@@ -10,11 +10,17 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="common-irrational/lesson-core.js"></script>
+<script defer src="common-irrational/lesson-a.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -44,7 +50,11 @@ window.addEventListener('DOMContentLoaded', function () {
   const rootTeX = (n) => { const [o, i] = sqrtSimp(n); return i === 1 ? String(o) : (o === 1 ? '' : o) + `\\sqrt{${i}}`; };
   const axesOf = (b) => { b.grid({ step: 1 }); b.axes({ tickStep: b.k < 32 ? 2 : 1 }); };
   // 변형 생성기: gen(이전 변형|null) → 새 변형. 처음에는 기출 유형 그대로(gen(null)).
-  function varier(gen) { let cur = gen(null); return { cur: () => cur, next: () => (cur = gen(cur)) }; }
+  const lirActive = (s) => !!(s && (s.lessonOn || s.lessonEntry));
+  function varier(gen) {
+    const first = gen(null); let cur = first;
+    return { cur: () => lirActive(window.lab && window.lab.s) ? first : cur, first: () => first, next: () => (cur = gen(cur)) };
+  }
   const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-new-prob>새 문제</button></div>`;
   document.addEventListener('click', (ev) => {
     const hit = ev.target && ev.target.closest && ev.target.closest('[data-new-prob]');
@@ -143,7 +153,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const { i1s: ss, i1d: dd, i1a: a, i1p: p, i1q: q } = s;
       if (s.i1all) {
         b.vline(p, { color: 'muted', dash: [4, 5], width: 1.4, alpha: 0.8 }); b.hline(q, { color: 'muted', dash: [4, 5], width: 1.4, alpha: 0.8 });
-        DIRS.forEach((D) => { const on = D.s === ss && D.d === dd; drawSq(b, a, D.s, D.d, p, q, { color: D.c, width: on ? 3.6 : 2.4, alpha: on ? 1 : 0.8, glow: on, ref: on ? 'curve' : undefined }); b.text([p + D.d * 3.6, q + D.s * Math.sqrt(a * 3.6)], D.f, { color: D.c, size: 12, align: D.d > 0 ? 'left' : 'right', dx: D.d * 6, dy: D.s > 0 ? -9 : 14 }); });
+        DIRS.forEach((D) => { const on = D.s === ss && D.d === dd; drawSq(b, a, D.s, D.d, p, q, { color: D.c, width: on ? 3.6 : 2.4, alpha: on ? 1 : 0.8, glow: on, ref: on ? 'curve' : undefined }); const label = `y=${D.s < 0 ? '−' : ''}√(${lin(D.d * a, -D.d * a * p).replace(/-/g, '−')})${addT(q).replace(/-/g, '−')}`; b.text([p + D.d * 3.6, q + D.s * Math.sqrt(a * 3.6)], label, { color: D.c, size: 12, align: D.d > 0 ? 'left' : 'right', dx: D.d * 6, dy: D.s > 0 ? -9 : 14 }); });
       } else {
         drawSq(b, a, 1, 1, 0, 0, { color: 'muted', dash: [5, 5], width: 2, alpha: 0.8, ref: 'base' });
         b.hline(q, { color: 'muted', dash: [4, 5], width: 1.3, alpha: 0.7 });
@@ -268,7 +278,7 @@ window.addEventListener('DOMContentLoaded', function () {
       drawSq(b, c, 1, 1, p, q, { color: 'sky', width: 3.6, glow: true });
       b.point([p, q], { r: 5.5, color: 'amber', label: `S(${p}, ${q})`, dx: -9, dy: 16, align: 'right', size: 13 });
       b.line([0, n], m, { color: col, width: 3, glow: true, ref: 'line' });
-      r.pts.forEach((pt) => b.point(pt, { r: 5.5, color: r.tan ? 'violet' : 'green', ref: 'line' }));
+      if (!lirActive(s) || s.lirIntersections) r.pts.forEach((pt) => b.point(pt, { r: 5.5, color: r.tan ? 'violet' : 'green', ref: 'line', ...(lirActive(s) ? { label: `${pt.every(Number.isInteger) ? '' : '≈ '}(${mn(pt[0])}, ${mn(pt[1])})`, size: 12, dx: 9, dy: -12 } : {}) }));
       b.handle('Hn', [0, n], { color: 'amber', r: 7, label: `y절편 ${mn(n)}`, dx: 10, dy: 16, size: 12, ariaLabel: '직선의 y절편 (위아래로 끌기)', drag: (w) => { s.i2n = clamp(Math.round(w.y * 8) / 8, -9, 9); } });
       return;
     }
@@ -306,7 +316,11 @@ window.addEventListener('DOMContentLoaded', function () {
       solution: {
         standardTitle: '판별식으로', standardTag: '기본 풀이', quickTitle: '두 직선만 그리면 끝', quickTag: '그림으로',
         standard: () => { const v = var2.cur(); return { steps: `접할 때 $k=${v.be}$, 끝점을 지날 때 $k=${v.al}$. 범위: $${v.ans.tex}$`, warning: '접할 때(한 점)와 끝점을 지날 때(두 점이 되기 시작)는 부등호에 =가 들어가는지 그림으로 확인하세요. 끝점을 지나는 직선은 곡선과 두 점에서 만납니다.' }; },
-        quick: () => { const v = var2.cur(); return { steps: `곡선의 시작점을 지나는 직선과 곡선에 접하는 직선, <b>두 직선</b>만 그립니다. 그 사이가 두 점입니다: $${v.al}\\le k<${v.be}$`, highlight: '무리함수는 끝점이 있어서, 접선 아래에서 직선이 끝점 아래를 지나면 다시 1개가 됩니다.' }; }
+        quick: () => {
+          const v = var2.cur();
+          const cases = v.ask === 'one' ? '끝점 아래를 지나는 직선은 한 번 가로지르고, 접선도 한 점에서 만납니다.' : v.ask === 'two' ? '끝점을 지나는 직선은 포함하고, 접하는 직선은 제외합니다.' : '접선보다 위에 있는 직선은 곡선과 만나지 않습니다.';
+          return { steps: `시작점을 지나는 직선과 접선을 먼저 그립니다. ${cases} 답: $${v.ans.tex}$`, highlight: '끝점을 지나는 직선에는 교점이 두 개이고, 접선에는 한 개입니다.' };
+        }
       },
       view: (s, lab) => {
         const { c, p, q } = CUR2;
@@ -392,7 +406,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function drawI3(b, s, lab) {
     axesOf(b);
     const vb = b.viewBox();
-    const showAll = lab.tab === 'explore';
+    const showAll = lab.tab === 'explore', lesson = lirActive(s);
     let c, sg, p, q, st = 99;
     if (showAll) { c = s.i3c; sg = s.i3dec ? -1 : 1; p = s.i3p; q = s.i3q; } else {
       const v = var3.cur(); st = stepOf(lab, s);
@@ -400,26 +414,28 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     const f = f3(c, sg, p, q), g = inv3(c, sg, p, q);
     const cr = cross3(c, sg, p, q);
-    if (showAll || st >= 1) b.line([0, 0], 1, { color: 'violet', dash: [7, 5], width: 2, ref: 'mirror' });
-    if (showAll) b.text([Math.min(vb.x1, vb.y1) - 0.9, Math.min(vb.x1, vb.y1) - 0.9], 'y=x', { color: 'violet', size: 13, align: 'right', dy: 14 });
+    if (lesson ? s.lirMirror : showAll || st >= 1) b.line([0, 0], 1, { color: 'violet', dash: [7, 5], width: 2, ref: 'mirror' });
+    if (showAll && (!lesson || s.lirMirror)) b.text([Math.min(vb.x1, vb.y1) - 0.9, Math.min(vb.x1, vb.y1) - 0.9], 'y=x', { color: 'violet', size: 13, align: 'right', dy: 14 });
     b.plot(f, { color: 'sky', width: 3.6, glow: true, from: p, ref: 'f' });
-    if (showAll || lab.tab !== 'explore') b.plot(g, { color: 'green', width: 3.2, dash: [8, 4], ...(sg > 0 ? { from: q } : { to: q }), ref: 'g' });
+    if (!lesson || s.lirInverse) b.plot(g, { color: 'green', width: 3.2, dash: [8, 4], ...(sg > 0 ? { from: q } : { to: q }), ref: 'g' });
     const symT = !showAll && var3.cur().type === 'T';
     if (symT) b.text([vb.x1, vb.y1], '그림은 범위 안의 k를 택한 예시', { color: 'muted', size: 12, align: 'right', dx: -8, dy: 66 });
     b.point([p, q], { r: 5, color: 'sky', label: symT ? `(${mn(p)}, k)` : `(${mn(p)}, ${mn(Math.round(q * 100) / 100)})`, dx: -9, dy: sg > 0 ? 16 : -12, align: 'right', size: 12 });
-    b.point([q, p], { r: 5, color: 'green', label: symT ? `(k, ${mn(p)})` : `(${mn(Math.round(q * 100) / 100)}, ${mn(p)})`, dx: sg > 0 ? 9 : 9, dy: sg > 0 ? 14 : 14, size: 12 });
-    if (showAll) {
+    if (!lesson || s.lirInverse) b.point([q, p], { r: 5, color: 'green', label: symT ? `(k, ${mn(p)})` : `(${mn(Math.round(q * 100) / 100)}, ${mn(p)})`, dx: 9, dy: 14, size: 12 });
+    if (showAll && (!lesson || s.lirPair)) {
       const u = clamp(s.i3u, 0, 14), P = [p + u, f(p + u)], Q = [P[1], P[0]];
       if (Number.isFinite(Q[1]) && g(Q[0]) != null) {
         b.seg(P, Q, { color: 'muted', dash: [3, 4], width: 1.5, ref: 'mirror' });
-        b.point(Q, { r: 5, color: 'green', label: 'P′', dx: 9, dy: 14, size: 13 });
+        b.point(Q, { r: 5, color: 'green', label: lesson ? `P′(${mn(Q[0])}, ${mn(Q[1])})` : 'P′', dx: 9, dy: 14, size: 13 });
       }
-      b.handle('P', P, { color: 'amber', r: 7, label: 'P', dx: 10, dy: -10, size: 13, ariaLabel: '곡선 위의 점 P (끌어서 이동)', drag: (w) => { s.i3u = clamp(w.x - p, 0, 14); } });
+      b.handle('P', P, { color: 'amber', r: 7, label: lesson ? `P(${mn(P[0])}, ${mn(P[1])})` : 'P', dx: 10, dy: -10, size: 13, ariaLabel: '곡선 위의 점 P (끌어서 이동)', drag: (w) => { s.i3u = clamp(w.x - p, 0, 14); } });
     }
     cr.forEach((z, i) => {
+      if (lesson && (s.lirCross < 1 || (!z.on && s.lirCross < 2))) return;
       if (!showAll && st < 2) return;
       if (!showAll && !z.on && st < 3) return;
-      b.point([z.x, z.y], { r: 6, color: z.on ? 'amber' : 'rose', hollow: !z.on, label: z.on ? '' : `≈ (${mn(z.x)}, ${mn(z.y)})`, dx: z.x < z.y ? -10 : 10, dy: z.x < z.y ? -10 : 16, align: z.x < z.y ? 'right' : 'left', size: 12, ref: 'cross' });
+      const label = lesson ? `${Number.isInteger(z.x) && Number.isInteger(z.y) ? '' : '≈ '}(${mn(z.x)}, ${mn(z.y)})` : z.on ? '' : `≈ (${mn(z.x)}, ${mn(z.y)})`;
+      b.point([z.x, z.y], { r: 6, color: z.on ? 'amber' : 'rose', hollow: !z.on, label, dx: z.x < z.y ? -10 : 10, dy: z.x < z.y ? -10 : 16, align: z.x < z.y ? 'right' : 'left', size: 12, ref: 'cross' });
     });
     if (!showAll && var3.cur().type === 'T') {
       const v = var3.cur();
@@ -472,6 +488,69 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ======================== 실험실 ======================== */
   const fm = (v) => mn(v);
+  const scenes = [sceneI1(), sceneI2(), sceneI3()];
+  const texts = { i1: text1, i2: text2, i3: text3 };
+  const sourceInfo = Object.fromEntries(scenes.map((sc) => {
+    const initial = {}; sc.enter(initial);
+    return [sc.id, { first: sc.vary.first(), initial, question: texts[sc.id](sc.vary.first()), inquiry: sc.question, steps: sc.steps() }];
+  }));
+  const source = window.APL_IRR_SOURCE = {
+    scenes,
+    first: id => sourceInfo[id].first,
+    initial: id => ({ ...sourceInfo[id].initial }),
+    question: id => sourceInfo[id].question,
+    inquiry: id => sourceInfo[id].inquiry,
+    steps: id => sourceInfo[id].steps.slice(),
+    intersections: inter2,
+    inverseIntersections: cross3
+  };
+  function curveTrace(b, s, id) {
+    const progress = clamp(Number(s.lirTrace) || 0, 0, 1);
+    if (s.lessonEntry || !progress) return;
+    let a, sg, d = 1, p, q, width = 3;
+    if (s.lirExplore) {
+      if (id === 'i1') { a = s.i1a; sg = s.i1s; d = s.i1d; p = s.i1p; q = s.i1q; }
+      else if (id === 'i2') { a = CUR2.c; sg = 1; p = CUR2.p; q = CUR2.q; }
+      else { a = s.i3c; sg = s.i3dec ? -1 : 1; p = s.i3p; q = s.i3q; }
+    } else {
+      const v = source.first(id);
+      if (id === 'i1') { a = v.a; sg = v.s; d = v.d; p = v.p; q = v.q; width = Math.abs(v.P[0] - p); }
+      else if (id === 'i2') { a = v.c; sg = 1; p = v.p; q = v.q; }
+      else { a = v.c; sg = -1; p = 0; q = v.q; }
+    }
+    const f = sqf(a, sg, d, p, q), x = p + d * width * progress, y = f(x);
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return;
+    b.plot(f, { from: Math.min(p, x), to: Math.max(p, x), color: 'violet', width: 4.2, alpha: 0.85 });
+    b.point([x, y], { r: 4.5, color: 'violet', glow: false });
+  }
+  function quadrantMarkers(b, s) {
+    if (s.lirTarget !== 'quadrants') return;
+    const vb = b.viewBox();
+    if (s.step >= 1) b.poly([[vb.x0, vb.y0], [0, vb.y0], [0, 0], [vb.x0, 0]], { color: null, fill: 'violet', fillAlpha: 0.08 });
+    if (s.step >= 2) {
+      const f = sqf(s.i1a, s.i1s, s.i1d, s.i1p, s.i1q), y = f(0);
+      if (Number.isFinite(y)) b.point([0, y], { r: 5, color: 'green', label: `f(0)${Math.abs(y) < 1e-9 ? '=' : y > 0 ? '>' : '<'}0`, dx: 10, dy: -10, size: 12 });
+      const x = s.i1p + s.i1q * s.i1q / s.i1a;
+      if (Math.abs(x) > 1e-8) b.point([x, 0], { r: 5, color: 'green', label: `(${mn(x)}, 0)`, dx: -8, dy: 16, align: 'right', size: 12 });
+    }
+  }
+  for (const sc of scenes) {
+    const original = { question: sc.question, reviewTop: sc.reviewTop, steps: sc.steps, view: sc.view, draw: sc.draw };
+    sc.question = (s, lab) => lirActive(s) ? s.lirQuestion || source.question(sc.id) : typeof original.question === 'function' ? original.question(s, lab) : original.question;
+    sc.reviewTop = (s, lab) => lirActive(s) ? '' : original.reviewTop(s, lab);
+    sc.steps = (s, lab) => lirActive(s) ? ['조건을 확인해요.', '그림에서 풀이 전략을 찾아요.', '식을 세워 계산해요.', '구하는 값을 확인해요.'] : original.steps(s, lab);
+    sc.view = (s, lab) => lirActive(s) ? {} : original.view(s, lab);
+    sc.draw = (b, s, v, lab) => {
+      if (!lirActive(s)) return original.draw(b, s, v, lab);
+      const state = { ...s, ...(s.lessonEntry ? s.lirInitial : {}), playing: false, step: s.lessonEntry ? 0 : Math.min(s.step || 0, s.lirShowAnswer ? 4 : 3) };
+      if (s.lessonEntry) { state.lirTrace = 0; state.lirShowAnswer = false; }
+      const shownLab = Object.create(lab); shownLab.tab = state.lirExplore ? 'explore' : 'review';
+      original.draw(b, state, {}, shownLab);
+      if (sc.id === 'i1') quadrantMarkers(b, state);
+      curveTrace(b, state, sc.id);
+    };
+  }
+  const lessons = window.APL_IRR_LESSONS ? window.APL_IRR_LESSONS.install(scenes, source) : {};
   APLab.createLab({
     id: 'common-irrational',
     stagedReveal: true,
@@ -490,7 +569,8 @@ window.addEventListener('DOMContentLoaded', function () {
       i3p: { value: 2, min: -3, max: 4, step: 1, color: 'amber', label: 'p', format: fm },
       i3q: { value: 2, min: -3, max: 9, step: 1, color: 'rose', label: 'q', format: fm }
     },
-    scenes: [sceneI1(), sceneI2(), sceneI3()]
+    scenes,
+    lessons
   });
 });
 </script>
