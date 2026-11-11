@@ -29,7 +29,7 @@
     qfS: P('정사각형의 한 변', 3, 6, 1, 4, { color: 'sky', format: lenF }),
     qfE: P('BE의 길이', 1, 7, 1, 2, { color: 'amber', hint: '그림의 점 E를 가로로 끌어도 돼요', format: lenF }),
     qfSp: P('한 변의 길이', 4, 8, 2, 6, { color: 'sky', format: lenF }),
-    qfRot: P('돌리기', 0, 1, 0.01, 0.28, { color: 'rose', hint: '▶를 누르거나 막대를 끌면 작은 정사각형이 점 O를 중심으로 제자리에서 돌아요', format: (v) => Math.round(v * 90) + '°' })
+    qfRot: P('돌리기', 0, 1, 0.01, 0.28, { color: 'rose', hint: '▶를 누르거나 막대를 끌면 합동인 정사각형이 점 O를 중심으로 제자리에서 돌아요', format: (v) => Math.round(v * 90) + '°' })
   };
 
   /* ====================================================================== 1. 대각선으로 접기 */
@@ -45,7 +45,7 @@
     },
     draw(b, s, M, cx) {
       const { A, B, C, D, Dp, E } = M, st = cx.step;
-      const t = cx.problem ? 1 : cx.review ? (st >= 2 ? 1 : 0) : cx.t, done = t >= 0.999;
+      const t = cx.lesson ? (cx.entry ? 0 : clamp(Number(s.qfT) || 0, 0, 1)) : cx.problem ? 1 : cx.review ? (st >= 2 ? 1 : 0) : cx.t, done = t >= 0.999;
       const yb = 0.31 * M.w + 0.3;
       const compactProblem = cx.problem && b.W < 560;
       fit(b, compactProblem ? bboxOf([A, B, C, D, Dp]) : { x0: -0.4, x1: M.w + 0.4, y0: -M.w * tanD(40) - 0.3, y1: yb }, compactProblem ? { t: 28, b: 32, l: 36, r: 36 } : { t: 30, b: 76, l: 40, r: 40 });
@@ -107,7 +107,7 @@
     },
     draw(b, s, M, cx) {
       const { A, B, C, D, E, F, G: G0, O } = M, st = cx.step;
-      const t = cx.problem ? 1 : cx.review ? (st >= 2 ? 1 : 0) : cx.t, done = t >= 0.999;
+      const t = cx.lesson ? (cx.entry ? 0 : clamp(Number(s.qfT) || 0, 0, 1)) : cx.problem ? 1 : cx.review ? (st >= 2 ? 1 : 0) : cx.t, done = t >= 0.999;
       const bb = unionBox(bboxOf([A, B, C, D, E, F, G0], 0.3), bboxOf([pt(0, -M.w * tanD(40)), pt(M.w, 0)], 0.3));
       fit(b, bb, { t: 30, b: 76, l: 40, r: 40 });
       const Ct = foldP(C, E, F, t), Dt = foldP(D, E, F, t);
@@ -279,7 +279,7 @@
 
   /* ====================================================================== 5. 정사각형 속 수직인 두 선분 */
   const sqPerp = {
-    id: 'q6-5', title: '정사각형 속 수직인 두 선분 AE, BF', short: '수직인 두 선분',
+    id: 'q6-5', title: '정사각형 속 두 선분 AE, BF', short: '정사각형 속 두 선분',
     question: '정사각형 ABCD에서 BE=CF가 되도록 변 BC, CD 위에 점 E, F를 잡으면 두 선분 AE와 BF는 어떤 관계일까?',
     ctl: ['qfSp', 'qfE'],
     init: (s) => { s.qfSp = 6; s.qfE = 2; s.qfK = 0; s.qfThA = 30; },
@@ -349,7 +349,7 @@
   }
   const polyAreaAbs = (Pp) => Math.abs(Pp.reduce((a, p, i) => a + (p.x * Pp[(i + 1) % Pp.length].y - Pp[(i + 1) % Pp.length].x * p.y), 0) / 2);
   const innerRot = {
-    id: 'q6-6', title: '정사각형의 중심에서 돌려도 겹친 넓이는 같다', short: '중심에서 회전',
+    id: 'q6-6', title: '정사각형의 중심에서 회전과 겹친 넓이', short: '중심에서 회전',
     question: '정사각형 ABCD의 대각선의 교점 O에 합동인 정사각형 OEFG의 한 꼭짓점을 두고 돌리면 겹쳐지는 부분의 넓이는 어떻게 변할까?',
     ctl: ['qfRot', 'qfSp'], anim: { key: 'qfRot', dur: 6, label: 'O를 중심으로 돌리기', start: 0.28 },
     init: (s) => { s.qfRot = 0.28; s.qfSp = 6; s.qfK = 0; },
@@ -384,20 +384,20 @@
         return;
       }
       if (cx.review ? st >= 1 : true) T(b, centroid2(over), `${M.ov}`, { size: 17, color: 'green' });
-      const cap = cx.review ? ['정사각형 ABCD의 넓이는 한 변×한 변', '작은 정사각형 OEFG를 돌려도 겹친 부분이 90° 부채꼴 모양으로 같은 넓이를 이뤄요', `겹친 넓이 = ${M.area}의 4분의 1 = ${M.ov}`][clamp(st, 1, 3) - 1] : `ABCD의 넓이 ${M.area} → 겹친 부분 ${M.ov} (돌려도 같아요)`;
+      const cap = cx.review ? ['정사각형 ABCD의 넓이는 한 변×한 변', '두 경계선을 O 둘레로 90°씩 돌리면 합동인 네 영역으로 나뉘어요', `겹친 넓이 = ${M.area}의 4분의 1 = ${M.ov}`][clamp(st, 1, 3) - 1] : `ABCD의 넓이 ${M.area} → 겹친 부분 ${M.ov} (돌려도 같아요)`;
       capLine(b, pt(0, R), cap, 'amber', { dy: 8 });
     },
     steps: (M) => [
       `정사각형 ABCD의 한 변이 ${M.S}이므로 넓이는 ${M.S}×${M.S}=${M.area}예요.`,
-      '점 O에서 두 변이 이루는 각은 직각(90°)이에요. 이 직각을 O를 중심으로 돌려도 ABCD 안에서 잘라 내는 모양은 합동이에요. (△OAB와 같은 합동인 네 조각으로 나뉘기 때문이에요.)',
+      '점 O에서 만나는 두 변은 직각이에요. 현재 두 경계 반직선을 O 주위로 90°씩 돌리면 ABCD가 네 영역으로 나뉘어요. 정사각형은 90° 회전하면 포개지므로 이 네 영역은 서로 합동이에요. 회전각을 바꾸면 영역의 모양은 달라져도 각각 전체의 4분의 1이에요.',
       `그래서 겹친 부분의 넓이는 언제나 ABCD의 넓이의 $\\frac{1}{4}$이에요. $\\frac{1}{4}$×${M.area}=${M.ov}`
     ],
     view: (M) => ({
-      guide: '막대나 ▶로 작은 정사각형 OEFG를 <b>점 O를 중심으로 돌려</b> 보세요(제자리 회전). 겹쳐진 초록 부분의 모양은 바뀌어도 <b>넓이는 늘 ABCD의 $\\frac{1}{4}$</b>이에요.',
+      guide: '막대나 ▶로 합동인 정사각형 OEFG를 <b>점 O를 중심으로 돌려</b> 보세요(제자리 회전). 겹쳐진 초록 부분의 모양은 바뀌어도 <b>넓이는 늘 ABCD의 $\\frac{1}{4}$</b>이에요.',
       readouts: [rd('□ABCD의 넓이', `${M.area}`, 'sky', `${M.S} × ${M.S}`), rd('겹친 부분의 넓이', `${M.ov}`, 'green', `$\\frac{1}{4}$ × ${M.area}`, null, true), rd('돌린 각', `${Math.round(M.rot)}°`, 'rose')],
       formula: `<p>(겹친 부분의 넓이) $=\\frac{1}{4}\\times\\square ABCD=\\frac{1}{4}\\times${M.area}=${M.ov}$</p>`,
       rule: '정사각형의 두 대각선의 교점 O에 합동인 정사각형의 한 꼭짓점을 두고 돌려도 겹친 부분의 넓이는 처음 정사각형의 넓이의 $\\frac{1}{4}$이다',
-      notes: notes('겹친 부분의 모양은 바뀌지만 <b>넓이는 늘 $\\frac{1}{4}$</b>이에요.', '정사각형의 대각선이 정사각형을 합동인 네 삼각형으로 나누기 때문이에요.')
+      notes: notes('겹친 부분의 모양은 바뀌지만 <b>넓이는 늘 $\\frac{1}{4}$</b>이에요.', '두 경계 반직선을 중심 O 둘레로 90°씩 돌려 얻는 네 영역은 서로 합동이에요.')
     }),
     prob: (M) => {
       const { S, area, ov } = M;
