@@ -46,8 +46,9 @@
 | `g7-polyhedra` 다면체 | 26 | 26 / 58 | **RELEASED_QA_PENDING** · [PR #1747](https://github.com/icefoxtail/AP------/pull/1747), merge `1e4fe2ce808fff9887e798b7ec7cf4e4f0461bbe`. 최소 검사 131/131, 누락 0. Pages run 42962929336 성공, 실제 HTML·10모듈 소스 일치 |
 | `g7-solids` 회전체 | 22 | 22 / 48 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1750](https://github.com/icefoxtail/AP------/pull/1750), merge `459c71d08b159a7fe5fffc91ea5c3553e78005b9`. 최소 검사 108/108, 누락 0. Pages 등록 작업 대기 |
 | `g7-polygons` 다각형 | 18 | 18 / 31 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1754](https://github.com/icefoxtail/AP------/pull/1754), merge `0f82b309173e29d399945bccedd0a52c8196b586`. 최소 검사 145/145, 누락 0. Pages 등록 작업 대기 |
-| `g7-area` 다각형의 넓이 | 14 | 14 / 30 | **IMPLEMENTED / QA_PENDING** · 신규 14장면/30해설, 누락 0. 최소 검사 102/102. `feat/lessons-g7-area`, PR·main·Pages 확인 예정 |
-| 중1 나머지 4개 | 86 | 0 | 미착수 (§5-3) |
+| `g7-area` 다각형의 넓이 | 14 | 14 / 30 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1755](https://github.com/icefoxtail/AP------/pull/1755), merge `68060cca4e6f89edaa806b7b5cafaafe102290e3`. 최소 검사 102/102, 누락 0. Pages 등록 작업 대기 |
+| `g7-parallel` 평행선의 성질 | 12 | 제작 중 | main `68060cca4e6f89edaa806b7b5cafaafe102290e3`에서 `feat/lessons-g7-parallel` 신규 시작. 기존 브랜치·PR 없음 확인 |
+| 중1 나머지 3개 | 74 | 0 | 미착수 (§5-3) |
 | 중2 4개 · 중3 2개 | 247 | 0 | 미착수, 선행 확인 필요 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
 
@@ -218,6 +219,9 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+- 2026-11-11 · 넓이 [PR #1755](https://github.com/icefoxtail/AP------/pull/1755) **main 운영 병합 완료**. head `e77560e43fc3594726d0b610abc66f3c22debad6`, merge `68060cca4e6f89edaa806b7b5cafaafe102290e3`, 원격 main 및 대상 파일 일치 확인. 14장면/30해설, 최소 검사 102/102. [등록 writer 42966336885](https://github.com/icefoxtail/AP------/actions/runs/42966336885) pending. 실제 학생 HTML은 이전 4079 bytes이며 lesson/player 연결이 없어 **Pages NOT_VERIFIED / QA_PENDING**이다. 중1 main 등록 196/282장면·319해설. 다음 평행선 12장면 제작을 시작했다.
+- 2026-11-11 · [AWCR r10](https://drive.google.com/file/d/1qUpyTRWLdvzzWuJLKe27kPlCjWqgxZ8z/view) 원격 저장·raw 재조회 완료. SHA-256 `7fb8497d9bb762f56133f8c28f6fd6bbe65f6a12d921ef8ca0033183f57256a8`, parent r9와 결속 확인. Surface·다면체의 실제 Pages 반영을 기록했으며 회전체·다각형·넓이는 배포 대기다. 다음 revision r11은 충돌 재확인 후 저장한다.
 
 - 2026-11-11 14:30 KST · **겉넓이·부피와 다면체의 실제 Pages 반영 확인: RELEASED_QA_PENDING.** [Pages run 42962929336](https://github.com/icefoxtail/AP------/actions/runs/42962929336) success, source `6c0c9030e2d6a5bf645e0c20fc567f1a885e291b`에 두 merge 포함 확인. 학생 HTTP 200 및 raw bytes/SHA 일치: Surface HTML+18모듈 19/19, 다면체 HTML+10모듈 11/11, 공통 JS 8개까지 중복 제거 38개. 회전체·다각형 구버전 HTML 2개까지 40/40 일치하며 이 두 merge는 해당 소스에 없으므로 계속 Pages NOT_VERIFIED다. 증거 JSON SHA-256 `bf82b1554600423f4d5abf71902c368ce073359f121308dab6c09b30c1e5c993`. 배포 파일 확인이며 전체 모바일·시각검수 NOT_RUN이다.
 

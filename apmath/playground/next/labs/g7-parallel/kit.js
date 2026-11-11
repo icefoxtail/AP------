@@ -194,27 +194,30 @@
 
   /* ------------------------------------------------------------------ 장면 만들기 */
   function baseCtx(s, lab, thumb) {
-    const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
+    const lesson = !thumb && !!(s.lessonOn || s.lessonEntry);
+    const tab = thumb ? 'explore' : s.lessonEntry ? 'review' : (lab && lab.tab) || 'explore';
     const review = !thumb && tab === 'review';
     const problem = !thumb && tab === 'problem';
-    return { mode: thumb ? 'thumb' : problem ? 'problem' : review ? 'review' : 'explore', tab, step: review ? Math.max(1, s.step || 1) : 99, plain: problem, review, problem, thumb: !!thumb };
+    return { mode: thumb ? 'thumb' : problem ? 'problem' : review ? 'review' : 'explore', tab, lesson, step: s.lessonEntry ? 0 : review ? (lesson ? Math.max(0, s.step || 0) : Math.max(1, s.step || 1)) : 99, plain: problem, review, problem, thumb: !!thumb };
   }
   function makeScene(D) {
+    // A previous manual choice keeps its own progress while a lesson fixes its givens.
+    const lessonState = s => (s.lessonOn || s.lessonEntry) ? { ...s, rReviewQuestion: false } : s;
     const isF = (v, s) => (typeof v === 'function' ? v(s) : v);
     return {
       id: D.id, title: D.title, short: D.short || D.title, pa: D,
-      question: D.question,
+      question: typeof D.question === 'function' ? s => D.question(lessonState(s)) : D.question,
       controls: (s) => isF(D.ctl, s) || [],
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions: (s) => (D.actions ? D.actions(s) : []),
-      steps: (s) => D.steps(D.model(s)),
+      steps: (s) => D.steps(D.model(lessonState(s))),
       notesTitle: D.notesTitle || '자주 틀리는 부분',
       problem: {
         tag: (s) => D.prob(D.model(s), s).tag,
         text: (s) => problemHTML(D, s),
         answer: (s) => answerText(D, s)
       },
-      focus: (s) => typeof D.focus === 'function' ? D.focus(D.model(s)) : D.focus,
+      focus: (s) => typeof D.focus === 'function' ? D.focus(D.model(lessonState(s))) : D.focus,
       enter: (s, lab) => {
         D.init(s);
         s.paseed = 0; s.papick = null; s.playing = false; s.pat = D.t0 == null ? 0 : D.t0;
@@ -224,14 +227,15 @@
       tick: D.tick || null,
       view: (s, lab) => {
         if (lab) curLab = lab;
-        if (D.syncContext && lab && lab.s === s && lab.scene && lab.scene.id === D.id) D.syncContext(s, lab);
+        s = lessonState(s);
+        const C = baseCtx(s, lab, false);
+        if (!C.lesson && D.syncContext && lab && lab.s === s && lab.scene && lab.scene.id === D.id) D.syncContext(s, lab);
         const M = D.model(s);
         const questionKey = keyOf(D, D.prob(M, s), s);
-        if (s.paQuestionKey !== questionKey) { s.paQuestionKey = questionKey; s.papick = null; s.revealed = false; s.step = 0; }
-        const C = baseCtx(s, lab, false);
+        if (!C.lesson && s.paQuestionKey !== questionKey) { s.paQuestionKey = questionKey; s.papick = null; s.revealed = false; s.step = 0; }
         const v = D.view(M, C, s) || {};
         // 값이 바뀌면(막대·끌기·숫자 바꾸기) 정리 단계 글도 새 값으로 다시 쓰도록 합니다.
-        if (lab && lab.scene && lab.scene.pa === D) {
+        if (!C.lesson && lab && lab.scene && lab.scene.pa === D) {
           const sig = D.steps(M).join('|');
           if (D._sig !== sig) {
             const first = D._sig == null;
@@ -241,9 +245,14 @@
         }
         if (C.mode === 'problem') { v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' }; v.chips = null; }
         else if (C.mode === 'review') { const n = D.steps(M).length; if (s.step < n) v.formula = ''; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        if (C.lesson) {
+          v.card = null; v.readouts = []; v.formula = null; v.rule = null; v.status = null; v.chips = null; v.notes = null;
+          v.guide = '문제의 조건을 확인하고 ▶ 해설을 시작해 보세요.';
+        }
         return v;
       },
       draw: (b, s, v, lab) => {
+        if (!b.thumb) s = lessonState(s);
         const C = baseCtx(s, lab, !!b.thumb);
         const M = D.model(s);
         if (typeof D.focus === 'function' && !b._bbox) b.setFocus(D.focus(M), false);
@@ -276,6 +285,7 @@
     { id: 'reset', icon: 'reset', label: '펼치기', run: (s) => { s.playing = false; s.pat = 0; } }
   ];
   K.foldTick = (dur, reviewTarget) => (s, dt, lab) => {
+    if (s.lessonOn || s.lessonEntry) return false;
     let again = false;
     if (s.playing) { s.pat = Math.min(1, s.pat + dt / dur); if (s.pat >= 1) s.playing = false; again = true; }
     else if (lab && lab.tab === 'review' && !s.dragging) {
