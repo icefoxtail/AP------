@@ -9,8 +9,8 @@
     "type": "CANDIDATE_CREATION_GATE",
     "metadataReviewed": false,
     "approvedBy": "claude-similar-high-gen",
-    "reviewStatus": "review_required",
-    "reviewPassCount": 0,
+    "reviewStatus": "independent_review_passed",
+    "reviewPassCount": 1,
     "evidenceRefs": []
   },
   "registryChanges": [],
@@ -1086,7 +1086,7 @@
       "variationNote": "원본 밑 $-w^2-1=-w$(22항, 답 $-w$) → 밑 $w-1=w^2$(22항, 답 $w-1$)",
       "reason": "광양제철고 1학기 기말 고1 원본 Q11 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
       "hold": [
-        "RPM_APPROXIMATE: 허근 거듭제곱 주기성(복소수 단원) 전용 2022 행은 i의 거듭제곱만 있어, 결정 단계의 앞 절반인 삼차방정식 인수분해형 H1-RPM-172를 Primary로 사용. L4 확정은 R1 검토 필요"
+        "RPM_APPROXIMATE: 허근 거듭제곱 주기성(복소수 단원) 전용 2022 행은 i의 거듭제곱만 있어, 결정 단계의 앞 절반인 삼차방정식 인수분해형 H1-RPM-172를 Primary로 사용. L4 확정은 R1 검토 필요 [R1 검수 확인: 잠긴 마스터에 맞는 리프 없음 → 새 리프 후보(newKeyProposal) 필요, 이 PR 범위 밖]"
       ],
       "evidenceRefs": [],
       "parentAssignment": {
@@ -1187,7 +1187,7 @@
       "variationNote": "원본 정수 -3~4(b가 1~4, 4·6=24) → 정수 -2~5(b가 1~5, 5·6=30)",
       "reason": "광양제철고 1학기 기말 고1 원본 Q12 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
       "hold": [
-        "RPM_APPROXIMATE: 2022 공통수학1 RPM에 '사분면 통과 조건' 전용 행이 없어 이차함수 그래프와 x축 교점 행(H1-RPM-166)을 가장 가까운 행으로 사용(PT/TPL은 크로스워크 값). L4 확정은 R1 검토 필요",
+        "RPM_APPROXIMATE: 2022 공통수학1 RPM에 '사분면 통과 조건' 전용 행이 없어 이차함수 그래프와 x축 교점 행(H1-RPM-166)을 가장 가까운 행으로 사용(PT/TPL은 크로스워크 값). L4 확정은 R1 검토 필요 [R1 검수 확인: 잠긴 마스터에 맞는 리프 없음 → 새 리프 후보(newKeyProposal) 필요, 이 PR 범위 밖]",
         "VISUAL_DEBT_CANDIDATE: 원본 해설에는 SVG 그림이 있었으나 이번 생성본은 해설 글로 완결해 EXEMPT로 둠(그림 제작 NOT_RUN). R1/R2에서 그림 필요성 재판정"
       ],
       "evidenceRefs": [],
@@ -1786,7 +1786,7 @@
       "variationNote": "원본 $3|x-1|-\\sqrt{4x^2+12x+9}<x-2$(답 $x>\\dfrac13$) → $3|x-2|-\\sqrt{4x^2+4x+1}<x-3$(답 $x>\\dfrac43$)",
       "reason": "광양제철고 1학기 기말 고1 원본 Q18 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
       "hold": [
-        "RPM_APPROXIMATE: 마스터에 절댓값 부등식 전용 리프가 없어 가장 가까운 연립일차부등식>해의 범위(H1-RPM-178 리프)를 사용하고, 크로스워크에 새 행 H1-RPM-290(PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY/TPL_H1_ABSOLUTE_DIRECT_INTERVAL, 소단원 INEQUALITY)을 추가. L4 확정은 R1 검토 필요",
+        "RPM_APPROXIMATE: 마스터에 절댓값 부등식 전용 리프가 없어 연립일차부등식>해의 범위 리프에 두고, 크로스워크에 새 행 H1-RPM-290(PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY/TPL_H1_ABSOLUTE_DIRECT_INTERVAL, 소단원 INEQUALITY)을 추가. L4 확정은 R1 검토 필요 [R1 검수 확인: 잠긴 마스터에 맞는 리프 없음 → 새 리프 후보(newKeyProposal) 필요, 이 PR 범위 밖]",
         "VISUAL_DEBT_CANDIDATE: 원본 해설에는 SVG 그림이 있었으나 이번 생성본은 해설 글로 완결해 EXEMPT로 둠(그림 제작 NOT_RUN). R1/R2에서 그림 필요성 재판정"
       ],
       "evidenceRefs": [],
@@ -1887,7 +1887,7 @@
       "variationNote": "원본 $x^3-3x^2+2x-4=0$, $f(x)=(x-2)^3+\\cdots$, 근 $2-\\dfrac6\\alpha$(p=3,q=27,r=54, 합 84) → $x^3-2x^2+x-3=0$, $f(x)=(x-3)^3+\\cdots$, 근 $3-\\dfrac6\\alpha$(p=2,q=24,r=72, 합 98)",
       "reason": "광양제철고 1학기 기말 고1 원본 Q19 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
       "hold": [
-        "RPM_APPROXIMATE: 마스터에 삼차방정식 근과 계수 전용 리프가 없어 이차방정식 근과 계수의 관계>근으로 방정식 구성(H1-RPM-163 리프)을 사용하고, 크로스워크에 새 행 H1-RPM-291(PT_H1_ROOT_COEFFICIENT_RELATION/TPL_H1_VIETA_TRANSFORMED_ROOT, 단원 H22-C-06)을 추가. L4 확정은 R1 검토 필요"
+        "RPM_APPROXIMATE: 마스터에 삼차방정식 근과 계수 전용 리프가 없어 이차방정식 근과 계수의 관계>근으로 방정식 구성(H1-RPM-163 리프)을 사용하고, 크로스워크에 새 행 H1-RPM-291(PT_H1_ROOT_COEFFICIENT_RELATION/TPL_H1_VIETA_TRANSFORMED_ROOT, 단원 H22-C-06)을 추가. L4 확정은 R1 검토 필요 [R1 검수 확인: 잠긴 마스터에 맞는 리프 없음 → 새 리프 후보(newKeyProposal) 필요, 이 PR 범위 밖]"
       ],
       "evidenceRefs": [],
       "parentAssignment": {
