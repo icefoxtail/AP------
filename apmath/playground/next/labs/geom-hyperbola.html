@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <!-- 원본 해설 문자열이 쓰는 text-rose-400 한 가지만 이 실험실 안에서 의미색(빨강)으로 연결합니다(키트 CSS는 그대로). -->
 <style>.apl .text-rose-400 { color: var(--m-red); }</style>
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
@@ -17,6 +18,12 @@
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="geom-hyperbola/lesson-core.js"></script>
+<script defer src="geom-hyperbola/lesson-a.js"></script>
+<script defer src="geom-hyperbola/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -32,6 +39,9 @@
    - 원본의 쓰이지 않던 그리기 함수(drawOFHBox·drawRotatedCoordinates·drawOPDiameterCircle·drawVertexComparison·drawReflectionCircle)는 옮기지 않았습니다.
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
+  const lhhActive=s=>!!(s&&(s.lessonOn||s.lessonEntry));
+  let lhhContext=null;
+  const lhhFirst=()=>lhhActive(lhhContext||(window.lab&&window.lab.s));
   const tex = APLab.tex;
 
 
@@ -363,7 +373,10 @@ window.addEventListener('DOMContentLoaded', function () {
     c.shadowBlur = 0;
     c.font = `700 ${12 * B.fs}px ${B.font}`;
     for (const label of state._labels) {
-      const { s, text, color, offset } = label, w = c.measureText(text).width + 12, h = 21 * B.fs;
+      const { s, color, offset } = label;
+      const text=lhhActive(CUR)?hhLessonLabel(label.text,CUR):label.text;
+      if(!text)continue;
+      const w = c.measureText(text).width + 12, h = 21 * B.fs;
       if (s.x < 0 || s.x > r.width || s.y < 0 || s.y > r.height) continue;
       const cand = [offset, { x: 12, y: 23 }, { x: 12, y: -28 }, { x: -w - 12, y: 22 }, { x: -w - 12, y: -27 }, { x: -w / 2, y: 37 }, { x: -w / 2, y: -40 }, { x: 25, y: -6 }, { x: -w - 25, y: -6 }];
       let best = null, sc = Infinity;
@@ -546,7 +559,7 @@ window.addEventListener('DOMContentLoaded', function () {
           drawCircle(g.O,g.c,'rgba(244,114,182,.32)');
           drawBottomTapeBanner(s===2?`두 점근선이 이루는 각 = ${fmt(g.angle,1)}° · e=${fmt(g.c/g.a,3)} · 수직 조건 a=b`:`OH=${fmt(dist(g.O,g.H))}, FH=${fmt(dist(g.F,g.H))}, P에서 점근선까지 ${fmt(g.l1)}`,dist(g.O,g.H),dist(g.F,g.H),'OH','FH');
         }
-        if(s===2&&state.steps[1]){
+        if(s===2&&state.steps[1]&&(!lhhActive(CUR)||CUR.lhhShowAnswer)){
           if(Math.abs(g.a-g.b)<1e-9){
             rightMark(g.O,g.u,g.v,palette.gold,13);
             // [표시 보강] a=b: 두 점근선이 직각(90°), 각 점근선은 x축과 45°(같은 색·같은 호)
@@ -1067,7 +1080,8 @@ window.addEventListener('DOMContentLoaded', function () {
   // 변형 생성기: 처음에는 list[0](기출 유형 그대로), 「새 문제」를 누를 때마다 직전과 다른 것을 무작위로 고릅니다.
   function varier(list, build) {
     let idx = 0, cur = build(list[0], 0);
-    return { cur: () => cur, idx: () => idx, count: list.length, set: (i) => { idx = i; cur = build(list[i], i); return cur; }, next: () => { let i; do { i = Math.floor(Math.random() * list.length); } while (list.length > 1 && i === idx); idx = i; cur = build(list[i], i); return cur; } };
+    const first=cur;
+    return { first:()=>first, cur:()=>lhhFirst()?first:cur, idx:()=>lhhFirst()?0:idx, count: list.length, set: (i) => { idx = i; cur = build(list[i], i); return cur; }, next: () => { let i; do { i = Math.floor(Math.random() * list.length); } while (list.length > 1 && i === idx); idx = i; cur = build(list[i], i); return cur; } };
   }
   const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-cq-new>새 문제 (숫자 바꾸기)</button></div>`;
   document.addEventListener('click', (ev) => {
@@ -1690,7 +1704,7 @@ window.addEventListener('DOMContentLoaded', function () {
     };
     F['2-2'] = (b, st, v) => {
       const a = v.a, c = a * Math.SQRT2, Fo = [c, 0], w = Object.assign({}, v, { b: a, c }); H(b, w, true);
-      if (st(1)) { rt(b, O, [1, 1], [1, -1], 'amber', 14); T(b, [0, -a * 1.7], '두 점근선이 이루는 각 = 90°', 'amber', 0, 0, 13); }
+      if (st(1)&&(!lhhActive(lhhContext)||(lhhContext.lhhTarget!=='이심률'&&lhhContext.lhhShowAnswer))) { rt(b, O, [1, 1], [1, -1], 'amber', 14); T(b, [0, -a * 1.7], '두 점근선이 이루는 각 = 90°', 'amber', 0, 0, 13); }
       if (st(2)) { const Hh = footLine(Fo, [1, 1]); seg(b, Fo, Hh, 'sky', 2.6); seg(b, O, Hh, 'green', 2.6); }
       T(b, [0, a * 1.7], `a = b = ${a}`, 'muted', 0, 0, 13);
       D(b, Fo, st(2) ? `F(${a}√2, 0)` : 'F', 'rose', O);
@@ -1818,9 +1832,90 @@ window.addEventListener('DOMContentLoaded', function () {
     { id: 'q7', title: '[기출 핵심] 타원과 쌍곡선이 합쳐진 곡선 |y²−1| = $\\frac{x^2}{a^2}$', short: '합쳐진 곡선', scenes: [sceneH7()] }
   ];
 
-  return { groups: KICE_GROUPS, params: KP, state: KS };
+  return { groups: KICE_GROUPS, params: KP, state: KS, math:{geoH5,geoH6u,geoH6p,geoH6y,geoH7,hyperPath,hyperPathV,ellipsePath} };
   })();
   /* [기출 핵심 유형 장면 끝] */
+
+
+  const lessonParams={
+      ...KICE.params,
+      a: { value: 3, min: 2, max: 5, step: 0.05, color: 'amber', label: '주축의 길이의 절반 $a$', hint: '꼭짓점이 $(\\pm a,0)$ · 주축의 길이는 $2a$', format: (v) => `a = ${fmt(v)} (2a = ${fmt(2 * v)})` },
+      b: { value: 4, min: 1.5, max: 5, step: 0.05, color: 'sky', label: '$b$ (점근선 기울기 $\\frac{b}{a}$)', hint: '초점은 $c=\\sqrt{a^2+b^2}$', format: (v) => `b = ${fmt(v)} (b² = ${fmt(v * v)})` },
+      py: { value: 5, min: -7.5, max: 7.5, step: 0.05, color: 'rose', label: '점 P의 $y$좌표 $y_1$', hint: '그림의 노란 점 P를 끌어도 같이 움직입니다', format: (v, s) => `y₁ = ${fmt(v)} (x₁ = ${fmt(s.branch * s.a * Math.hypot(1, v / s.b))})` }
+    };
+  const lessonState={ ...KICE.state, branch: 1, lens: 'all', animDir: 1 };
+  const lessonGroups=groups.concat(KICE.groups), lessonScenes=lessonGroups.flatMap(g=>g.scenes);
+  const sourceInfo=Object.fromEntries(lessonScenes.map(sc=>{
+    const initial={...lessonState,...Object.fromEntries(Object.entries(lessonParams).map(([key,p])=>[key,p.value]))};
+    sc.enter?.(initial);
+    return [sc.id,{initial,first:sc.vary.first(),question:sc.problem.text(initial).replace(/<div[^>]*>\s*<button[^>]*data-cq-new[\s\S]*$/,''),inquiry:sc.question,
+      steps:typeof sc.steps==='function'?sc.steps(initial,{tab:'review'}):sc.steps}];
+  }));
+  const lessonSource=window.APL_HH_SOURCE={
+    scenes:lessonScenes,first:id=>sourceInfo[id].first,initial:id=>({...sourceInfo[id].initial}),
+    question:id=>sourceInfo[id].question,inquiry:id=>sourceInfo[id].inquiry,steps:id=>sourceInfo[id].steps.slice(),
+    math:{geometry,lineFoot,calcPyFromPF,...KICE.math}
+  };
+  const hhMathKey=value=>String(value||'').normalize('NFKC').replace(/&gt;/g,'>').replace(/&lt;/g,'<').replace(/&#39;/g,"'")
+    .replace(/\\(?:left|right|,|!|;|quad|qquad)/g,'').replace(/\\(?:dfrac|tfrac|frac)\{([^{}]*)\}\{([^{}]*)\}/g,'$1/$2')
+    .replace(/\\sqrt\{([^{}]*)\}/g,'√$1').replace(/\\sqrt\s*(\w)/g,'√$1')
+    .replace(/\\(?:text|mathrm|mathbf|overline)\{([^{}]*)\}/g,'$1').replace(/\\theta/g,'θ').replace(/\\alpha/g,'α').replace(/\\circ/g,'°').replace(/\\angle/g,'∠').replace(/\\perp/g,'⊥').replace(/\\parallel/g,'∥')
+    .replace(/\\leq?/g,'≤').replace(/\\geq?/g,'≥').replace(/\\lt/g,'<').replace(/\\gt/g,'>')
+    .replace(/\\cdot|\\times/g,'×').replace(/−|–/g,'-').replace(/[′’]/g,"'")
+    .replace(/^([A-Z][A-Z0-9'*]*)\s+(?=-?\d)/,'$1=').replace(/[\s{}$^_()]/g,'').replace(/-?\d+\.\d+/g,x=>String(Number(x)));
+  function hhLessonLabel(value,s){
+    const str=String(value||''),key=hhMathKey(str),known=(s.lhhKnownMath||[]).map(hhMathKey);
+    if(key&&known.some(math=>math.includes(key)))return str;
+    const pair=key.split('=');
+    if(pair.length===2&&known.some(math=>{const chain=math.split('=');return chain.length>2&&chain.includes(pair[0])&&chain.includes(pair[1]);}))return str;
+    if(/^[A-Z][′'*₀₁₂]*$|^[xylabpcαθ]$|^[ld][₁₂]$/.test(str))return str;
+    const name=str.match(/^([A-Z][′'*₀₁₂]*)(?=[\s(=:≈]|$)/);if(name)return name[1];
+    if(/^준선/.test(str))return '준선';
+    if(str==='타원 부분'||str==='쌍곡선 부분')return str;
+    return '';
+  }
+  for(const sc of lessonScenes){
+    const original={question:sc.question,reviewTop:sc.reviewTop,steps:sc.steps,view:sc.view,draw:sc.draw,tick:sc.tick};
+    sc.question=(s,lab)=>lhhActive(s)?s.lhhQuestion||lessonSource.question(sc.id):typeof original.question==='function'?original.question(s,lab):original.question;
+    sc.reviewTop=(s,lab)=>lhhActive(s)?'':typeof original.reviewTop==='function'?original.reviewTop(s,lab):original.reviewTop;
+    sc.steps=(s,lab)=>lhhActive(s)?['조건 확인','정의와 보조선','관계식','계산','결론']:typeof original.steps==='function'?original.steps(s,lab):original.steps;
+    sc.view=(s,lab)=>lhhActive(s)?{}:original.view(s,lab);
+    if(original.tick)sc.tick=(s,dt,lab)=>lhhActive(s)?false:original.tick(s,dt,lab);
+    sc.draw=(b,s,v,lab)=>{
+      if(!lhhActive(s)){
+        if(b._hhLessonView){
+          if(b.focus===b._hhLessonView.appliedFocus)Object.assign(b,b._hhLessonView.before);
+          lab.__cqKey=b._hhLessonView.cqBefore;lab.__ovk=b._hhLessonView.ovBefore;delete b._hhLessonView;
+        }
+        return original.draw(b,s,v,lab);
+      }
+      if(!b._hhLessonView)b._hhLessonView={before:{focus:b.focus,zoom:b.zoom,panX:b.panX,panY:b.panY},cqBefore:lab.__cqKey,ovBefore:lab.__ovk};
+      const shown={...s,...(s.lessonEntry?s.lhhInitial:{}),playing:false,dragging:false,
+        step:s.lessonEntry?(s.lhhInitial?.lhhStartStep||0):Math.max(0,Math.min(s.step||0,5))};
+      if(s.lessonEntry){shown.lhhTrace=0;shown.lhhShowAnswer=false;}
+      const shownLab=Object.create(lab);shownLab.s=shown;shownLab.tab=shown.lhhExplore?'explore':'review';
+      const key=sc.id+'|'+!!shown.lhhExplore;
+      if(b._hhLessonView.key!==key){b._hhLessonView.cqKey='';b._hhLessonView.ovKey='n';b._hhLessonView.key=key;b.zoom=1;b.panX=0;b.panY=0;}
+      shownLab.__cqKey=b._hhLessonView.cqKey;shownLab.__ovk=b._hhLessonView.ovKey;
+      const text=b._text,path=b.path,axes=b.axes,curves=[];let axesDrawing=false;
+      b.axes=function(...args){axesDrawing=true;try{return axes.apply(this,args);}finally{axesDrawing=false;}};
+      b._text=function(x,y,label,options={},screen){return text.call(this,x,y,this._bbox||axesDrawing?label:hhLessonLabel(label,shown),options,screen);};
+      b.path=function(points,options={}){if(!this._bbox&&points.length>30)curves.push(points);return path.call(this,points,options);};
+      const previous=lhhContext;lhhContext=shown;
+      try{original.draw(b,shown,{},shownLab);}finally{lhhContext=previous;b._text=text;b.path=path;b.axes=axes;}
+      b._hhLessonView.appliedFocus=b.focus;b._hhLessonView.cqKey=shownLab.__cqKey;b._hhLessonView.ovKey=shownLab.__ovk;
+      if(!s.lessonEntry&&shown.lhhTrace>0&&!b._bbox){
+        const box=b.viewBox();
+        for(const points of curves){
+          const ps=points.map(p=>({x:p.x??p[0],y:p.y??p[1]})).filter(p=>p.x>box.x0&&p.x<box.x1&&p.y>box.y0&&p.y<box.y1);
+          if(ps.length>1&&(!sc.id.startsWith('m')||ps.reduce((sum,p)=>sum+p.x,0)*shown.branch>0)){
+            const u=shown.lhhTrace*(ps.length-1),i=Math.min(ps.length-2,Math.floor(u)),q=u-i,a=ps[i],c=ps[i+1];b.point([a.x+(c.x-a.x)*q,a.y+(c.y-a.y)*q],{color:'violet',r:4.5});break;
+          }
+        }
+      }
+    };
+  }
+  const lessons=window.APL_HH_LESSONS?window.APL_HH_LESSONS.install(lessonScenes,lessonSource):{};
 
   APLab.createLab({
     id: 'geom-hyperbola', stagedReveal: true,
@@ -1832,15 +1927,11 @@ window.addEventListener('DOMContentLoaded', function () {
     home: '../index.html#geom',
     legacy: '../../labs/기하와벡터/쌍곡선.html',
     board: { kind: 'cartesian', focus: { x: [-8.2, 8.2], y: [-6.6, 6.6] } },
-    params: {
-      ...KICE.params,
-      a: { value: 3, min: 2, max: 5, step: 0.05, color: 'amber', label: '주축의 길이의 절반 $a$', hint: '꼭짓점이 $(\\pm a,0)$ · 주축의 길이는 $2a$', format: (v) => `a = ${fmt(v)} (2a = ${fmt(2 * v)})` },
-      b: { value: 4, min: 1.5, max: 5, step: 0.05, color: 'sky', label: '$b$ (점근선 기울기 $\\frac{b}{a}$)', hint: '초점은 $c=\\sqrt{a^2+b^2}$', format: (v) => `b = ${fmt(v)} (b² = ${fmt(v * v)})` },
-      py: { value: 5, min: -7.5, max: 7.5, step: 0.05, color: 'rose', label: '점 P의 $y$좌표 $y_1$', hint: '그림의 노란 점 P를 끌어도 같이 움직입니다', format: (v, s) => `y₁ = ${fmt(v)} (x₁ = ${fmt(s.branch * s.a * Math.hypot(1, v / s.b))})` }
-    },
-    state: { ...KICE.state, branch: 1, lens: 'all', animDir: 1 },
+    params: lessonParams,
+    state: lessonState,
     persist: ['lens', 'branch'],
-    groups: groups.concat(KICE.groups)
+    groups: lessonGroups,
+    lessons
   });
 });
 </script>
