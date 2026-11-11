@@ -129,7 +129,7 @@ test('all authored cue states render finite source geometry, suppress old cards 
     apply(compiled, 0.8, base);
     const moving = lab.draw();
     assert.notEqual(drawingSignature(moving), drawingSignature(first), `${scene.id}/${lesson.label}: actual geometry moves within a second`);
-    assert.ok(moving.points.some(p => p.options.color === 'violet' && p.options.r === 4.5 && !p.options.label), `${scene.id}/${lesson.label}: visible trace lies on the source model`);
+    assert.ok(moving.points.some(p => p.options.color === 'violet' && p.options.r === 4.5 && !p.options.label), `${scene.id}/${lesson.label}: visible trace point is drawn`);
     const times = new Set([0, 0.8, compiled.length]);
     for (const cue of compiled.cues) { times.add(cue.at); times.add(Math.min(compiled.length, cue.at + cue.dur / 2)); }
     for (const time of times) {
