@@ -47,6 +47,113 @@ dialog.assign-panel::backdrop {
   dialog.assign-panel { animation: none; }
 }
 
+/* 패널 안 기본 모양 (2026-11-11). 이 패널은 작업공간(workspace.html)과 단원별 기출(unit-past-exams.html) 두 화면에서 열린다.
+   버튼·입력·링크의 기본 모양이 작업공간 전역 스타일(archive2.css의 button·.primary·.small·input·label 등)에 기대고 있어
+   단원별 기출에서는 브라우저 기본 회색 버튼으로 나왔다. 같은 패널이 두 화면에서 다르게 보이면 안 되므로 여기에서 스스로 갖는다.
+   값은 작업공간의 최종 계산값(archive2.css 뒤쪽 덮어쓰기까지)과 같고 색·모양은 archive2-tokens.css 토큰만 쓴다.
+   :where()로 우선순위를 요소 선택자 수준에 맞춰 아래의 .assign-* 규칙이 그대로 이기고, 작업공간의 모양은 바뀌지 않는다. */
+:where(dialog.assign-panel) button {
+  cursor: pointer;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-pill);
+  padding: 0 16px;
+  min-height: 44px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  touch-action: manipulation;
+}
+:where(dialog.assign-panel) button:hover { background: var(--chip); }
+:where(dialog.assign-panel) button:disabled { cursor: not-allowed; opacity: 0.45; }
+:where(dialog.assign-panel) button.primary {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+:where(dialog.assign-panel) button.primary:hover { background: var(--ink-hover); }
+:where(dialog.assign-panel) button.small {
+  font-size: 14px;
+  padding: 0 14px;
+  min-height: 44px;
+}
+:where(dialog.assign-panel) button[aria-pressed="true"] {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+:where(dialog.assign-panel) button[aria-pressed="true"]:hover { background: var(--ink-hover); }
+:where(dialog.assign-panel) a {
+  color: var(--brand);
+  text-underline-offset: 3px;
+  touch-action: manipulation;
+}
+:where(dialog.assign-panel) a:hover { color: var(--brand-hover); }
+/* 로그인 안내의 링크형 버튼 */
+:where(dialog.assign-panel) a.button-like {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-pill);
+  background: #fff;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+:where(dialog.assign-panel) a.button-like:hover { background: var(--chip); color: var(--ink); }
+:where(dialog.assign-panel) a.button-like.primary,
+:where(dialog.assign-panel) a.button-like.primary:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+:where(dialog.assign-panel) input,
+:where(dialog.assign-panel) select {
+  font: inherit;
+  min-height: 44px;
+  width: 100%;
+  border: 1.5px solid var(--control-line);
+  border-radius: var(--radius-field);
+  background: var(--surface);
+  padding: 8px 12px;
+  color: var(--ink);
+  touch-action: manipulation;
+}
+:where(dialog.assign-panel) input[type="checkbox"],
+:where(dialog.assign-panel) input[type="radio"] {
+  width: 20px;
+  min-height: 20px;
+  height: 20px;
+  accent-color: var(--ink);
+}
+:where(dialog.assign-panel) label {
+  display: grid;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+:where(dialog.assign-panel) h2 { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 14px; }
+:where(dialog.assign-panel) h3 { font-size: 15px; font-weight: 700; margin: 0; }
+:where(dialog.assign-panel) p { line-height: 1.6; }
+/* 단원별 기출 쪽 전역 규칙(`.unit-page button { font: inherit; color: inherit }`, 본문 15px·줄 높이 1.5)이 패널 안 글자에 번지지 않게
+   패널 자체가 글자 크기·줄 높이의 기준이 된다(작업공간 본문의 값과 같다). 버튼 글자는 위 전역 규칙(우선순위 0,1,1)을 넘도록 한 단계 높여 적는다. */
+dialog.assign-panel {
+  font-size: 16px;
+  line-height: normal;
+}
+dialog.assign-panel button { font-size: 15px; font-weight: 700; }
+dialog.assign-panel button.small { font-size: 14px; }
+dialog.assign-panel .assign-submit { font-size: 16px; }
+dialog.assign-panel .assign-foot-actions > button { font-size: 15px; }
+dialog.assign-panel .assign-foot-actions > button.primary { font-size: 16px; }
+dialog.assign-panel .assign-link { color: var(--brand-ink); }
+dialog.assign-panel .assign-link:hover { color: var(--brand-hover); }
+
 .assign-shell {
   display: flex;
   flex-direction: column;

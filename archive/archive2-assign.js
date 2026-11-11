@@ -891,6 +891,8 @@
       job.auth = Boolean(info.auth);
       // 원본·단원별 출제는 batch id가 없어 취소된 건과 같은 키를 피할 길이 날짜뿐이다: '새로 출제'를 주지 않는다.
       job.noReissue = job.kind !== "saved";
+      // 단원별: 같은 날 같은 이름의 확정 배부가 이미 있어 서버가 바꿀 수 없다고 하면 같은 본문을 다시 보내도 같은 409다.
+      job.noRetry = job.kind === "unit" && info.kind === "failed" && /확정 배부는 원본을 변경할 수 없/.test(text(error?.data?.error || error?.message));
       if (info.kind === "ok-pdf" && job.kind === "unit" && isCancelledAssignment(error?.data?.assignment)) {
         job.assignmentId = text(error.data.assignment.id);
         job.status = "cancelled";
@@ -933,6 +935,7 @@
       job.attempts += 1;
       job.message = "";
       job.auth = false;
+      job.noRetry = false;
       const startedAt = now();
       store.mark(job.paperId, job.classId, job.date, "sent");
       emit();
@@ -945,6 +948,9 @@
       } catch (error) {
         applyFailure(job, error);
         emit();
+        // 서버가 출제를 저장한 뒤 PDF만 실패하면 502 + assignment다: 출제는 됐으므로 이 경우에도 고르지 않은 학생을 뺀다
+        // (성공 분기와 같은 길). 취소된 건(status cancelled)과 진짜 실패는 여기서 제외하지 않는다.
+        if (job.kind === "unit" && job.status === "ok-pdf" && job.excludeIds.length) await excludeStep(job);
         return;
       }
       applySuccess(job, response, startedAt);
@@ -1131,7 +1137,7 @@
     }
     function resume(statuses, only = null, step = sendJob) {
       if (state.working || state.phase !== "done") return Promise.resolve(false);
-      const jobs = pendingJobs(statuses).filter((job) => !only || job.key === only);
+      const jobs = pendingJobs(statuses).filter((job) => (!only || job.key === only) && !job.noRetry);
       if (!jobs.length) return Promise.resolve(false);
       state.working = true;
       state.phase = "running";
@@ -1203,6 +1209,7 @@
       return {
         total: state.jobs.length, ok: count("ok"), okPdf: count("ok-pdf"), failed: count("failed"), cancelled: count("cancelled"),
         unknown: count("unknown"), queued: count("queued"), running: count("running"), excludeFailed: count("exclude-failed"),
+        retryable: state.jobs.filter((job) => (job.status === "failed" && !job.noRetry) || job.status === "queued").length,
       };
     }
 
@@ -1428,10 +1435,10 @@
       if (r.failed) bits.push(`실패 ${r.failed}건`);
       if (r.cancelled) bits.push(`취소된 출제 ${r.cancelled}건`);
       if (r.queued) bits.push(`보내지 않음 ${r.queued}건`);
-      const needRetry = r.failed + r.queued > 0;
+      const needRetry = r.retryable > 0;
       const buttons = [];
       if (r.excludeFailed) buttons.push(`<button type="button" class="${needRetry ? "" : "primary "}assign-submit" data-assign-action="exclude-retry-all" data-focus="exclude-all">다시 빼기</button>`);
-      if (needRetry) buttons.push(`<button type="button" class="primary assign-submit" data-assign-action="retry" data-focus="retry">${r.queued && !r.failed ? "남은 건 이어서 출제" : "실패한 건 다시 시도"}</button>`);
+      if (needRetry) buttons.push(`<button type="button" class="primary assign-submit" data-assign-action="retry" data-focus="retry">${r.queued && r.retryable === r.queued ? "남은 건 이어서 출제" : "실패한 건 다시 시도"}</button>`);
       if (r.unknown) buttons.push(`<button type="button" class="${needRetry ? "" : "primary "}assign-submit" data-assign-action="confirm-all" data-focus="confirm-all">${r.unknown > 1 ? "모두 확인하기" : "확인하기"}</button>`);
       buttons.push(`<button type="button" class="${buttons.length ? "" : "primary "}assign-submit" data-assign-action="close" data-focus="done-close">닫기</button>`);
       const closeWarn = model.state.closeWarn && r.excludeFailed

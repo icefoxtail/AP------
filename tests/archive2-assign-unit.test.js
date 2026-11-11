@@ -567,3 +567,106 @@ test("서버 소스 대조: 헤더 없는 POST는 기존 건을 갱신하고, �
   for (const key of ["class_id", "exam_title", "exam_date", "question_count", "archive_file", "source_type", "mixed_payload_json", "pdf_qpp", "subject", "grade_label", "assignment_batch_id", "target_scope"])
     assert.match(exams, new RegExp(`d\\.${key}\\b|d\\.pdf_qpp ?\\?\\?`), `서버가 ${key}를 읽는다`);
 });
+
+// ---- 출제는 저장됐고 PDF만 실패한 502 + assignment에서도 고르지 않은 학생을 뺀다 ----
+// 서버(exams.js 헤더 없는 POST)는 기존 건 갱신 뒤 PDF가 ready가 아니면 502와 assignment를 준다. 출제는 된 것이다.
+const pdfFail = (call, server, extra = {}) => {
+  const ok = server.post(call);
+  throw httpError(502, { success: false, error: "시험지 PDF 생성 실패", assignment: { ...ok.assignment, pdf_status: "failed", pdf_error: "render timeout", ...extra } });
+};
+
+test("일부 학생 + POST 502(assignment) → 고르지 않은 학생만 한 번 빼고 최종 상태는 PDF만 실패", async () => {
+  const api = makeApi({ post: pdfFail });
+  const { model } = await build({ api });
+  await pick(model, "c1");
+  model.toggleStudent("c1", "s2", false);
+  model.toggleStudent("c1", "s3", false);
+  await model.start();
+  assert.equal(api.posts().length, 1);
+  assert.equal(api.excludes().length, 1, "제외 요청이 한 번 나간다");
+  assert.deepEqual(api.excludes()[0].body.student_ids, ["s2", "s3"]);
+  assert.equal(api.excludes()[0].body.assignment_id, "a1");
+  const job = model.state.jobs[0];
+  assert.equal(job.status, "ok-pdf");
+  assert.deepEqual([...api.server.excluded.get("a1")], ["s2", "s3"]);
+  assert.match(Assign.render(model).body, /PDF 다시 준비/);
+  assert.doesNotMatch(Assign.render(model).body, /학생 제외 실패/);
+  // PDF 다시 준비는 제외 상태를 건드리지 않는다.
+  await model.retryPdf(job.key);
+  assert.equal(job.status, "ok");
+  assert.equal(api.excludes().length, 1);
+});
+
+test("같은 상황에서 제외도 실패하면 exclude-failed가 우선이고, 다시 빼기 뒤 POST는 늘지 않으며 PDF 실패 표시로 돌아간다", async () => {
+  let fail = true;
+  const api = makeApi({ post: pdfFail, exclude: (call, server) => { if (fail) throw httpError(500, { error: "boom" }); return server.exclude(call); } });
+  const { model } = await build({ api });
+  await pick(model, "c1");
+  model.toggleStudent("c1", "s2", false);
+  await model.start();
+  const job = model.state.jobs[0];
+  assert.equal(job.status, "exclude-failed");
+  assert.match(Assign.render(model).body, /출제됨 · 학생 제외 실패/);
+  assert.doesNotMatch(Assign.render(model).body, /PDF 다시 준비/, "제외 실패가 먼저 보인다");
+  fail = false;
+  await model.retryExclusion();
+  assert.equal(api.posts().length, 1, "출제를 다시 보내지 않는다");
+  assert.equal(api.excludes().length, 2);
+  assert.equal(job.status, "ok-pdf");
+  assert.match(Assign.render(model).body, /PDF 다시 준비/);
+});
+
+test("응답 모름 → 확인하기가 502(assignment)로 끝나도 제외까지 가고, 실패한 건 다시 시도도 같은 길이다", async () => {
+  let attempt = 0;
+  const api = makeApi({ post: (call, server) => { attempt += 1; if (attempt === 1) throw timeoutError(); return pdfFail(call, server); } });
+  const { model } = await build({ api });
+  await pick(model, "c1");
+  model.toggleStudent("c1", "s1", false);
+  await model.start();
+  assert.equal(model.state.jobs[0].status, "unknown");
+  assert.equal(api.excludes().length, 0);
+  await model.confirmUnknown();
+  assert.equal(api.excludes().length, 1);
+  assert.deepEqual(api.excludes()[0].body.student_ids, ["s1"]);
+  assert.equal(model.state.jobs[0].status, "ok-pdf");
+
+  let expired = true;
+  const api2 = makeApi({ post: (call, server) => { if (expired) throw httpError(401, { error: "Unauthorized" }); return pdfFail(call, server); } });
+  const second = await build({ api: api2 });
+  await pick(second.model, "c1");
+  second.model.toggleStudent("c1", "s1", false);
+  await second.model.start();
+  assert.equal(api2.excludes().length, 0);
+  expired = false;
+  await second.model.retryFailed();
+  assert.equal(api2.excludes().length, 1);
+  assert.equal(second.model.state.jobs[0].status, "ok-pdf");
+});
+
+test("반 전체 + 502(assignment)는 제외를 보내지 않고, 취소된 건의 502는 제외도 성공도 아니다", async () => {
+  const all = makeApi({ post: pdfFail });
+  const first = await build({ api: all });
+  await pick(first.model, "c1");
+  await first.model.start();
+  assert.equal(all.excludes().length, 0);
+  assert.equal(first.model.state.jobs[0].status, "ok-pdf");
+
+  const cancelled = makeApi({ post: (call, server) => pdfFail(call, server, { cancelled_at: "2026-11-01T00:00:00Z" }) });
+  const second = await build({ api: cancelled });
+  await pick(second.model, "c1");
+  second.model.toggleStudent("c1", "s2", false);
+  await second.model.start();
+  assert.equal(cancelled.excludes().length, 0);
+  assert.equal(second.model.state.jobs[0].status, "cancelled");
+});
+
+test("이미 낸 출제가 있어 바꿀 수 없는 409는 같은 본문을 다시 보내도 같으므로 '다시 시도'를 주지 않는다", async () => {
+  const api = makeApi({ post: () => { throw httpError(409, { success: false, error: "Archive 2.0의 확정 배부는 원본을 변경할 수 없습니다. 새 문제지로 출제하세요." }); } });
+  const { model } = await build({ api });
+  await pick(model, "c1");
+  await model.start();
+  assert.equal(model.state.jobs[0].status, "failed");
+  assert.doesNotMatch(Assign.render(model).foot, /다시 시도|data-assign-action="retry"/);
+  assert.equal(await model.retryFailed(), false);
+  assert.equal(api.posts().length, 1);
+});
