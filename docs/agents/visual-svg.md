@@ -56,7 +56,7 @@ Claude·GPT·Codex 어느 라인이든 기출·생성문항의 문제·해설 �
       결과가 ARCHIVE_BOUND여야 한다. 렌더 횟수에는 제한을 두지 않는다(사용자 지시 2026-11-07: 필요하면 충분히 여러 번 렌더한다. 횟수 한도는 품질을 막을 뿐 의미가 없다). 렌더는 한 번에 하나씩 한다. 부하가 높으면 기다린다.
    e. figure.png를 직접 보고 3번 기준으로 확인한다.
    f. publish.json을 쓴다: {"alt": 그림 설명, "caption": 풀이 요약 + 끝에 정답, "size": 렌더 결과 figure-result.json의 sizeClass와 같은 값}
-   g. out/figure-solution.svg 루트에 role="img"와 깨지지 않은 <title>이 있는지 본다. plan의 한글 문자열은 UTF-8로 쓴다(깨진 글자가 그대로 SVG 제목이 된다). 합성 패널(composite-panels) 출력은 루트 접근성 속성이 없으므로 ops/svg-m1/upgrade-svg-accessibility.mjs로 보완한다.
+   g. out/figure-solution.svg 루트에 role="img"와 깨지지 않은 <title>이 있는지 본다. plan의 한글 문자열은 UTF-8로 쓴다(깨진 글자가 그대로 SVG 제목이 된다). 합성 패널(composite-panels)·수직선·입체 출력도 엔진이 루트 role="img"·<title>·<desc>를 직접 쓴다(plan `caption`·선택 `accessibilityDescription`, 단일 그림과 같은 출처). 별도 보완 스크립트(a11y.sh·upgrade-svg-accessibility.mjs)는 이 엔진 이전에 만든 SVG에만 쓰며, 이미 들어 있으면 `METADATA_ALREADY_PRESENT`로 거절된다.
 
 3. 판정 기준(학생 기준, 모두 지킨다)
    - 정답(구하는 값, 보기 번호, 서술형 소문항 답)은 caption 끝에만 둔다. 그림 안에는 풀이 핵심 단계의 중간값만 넣는다.
