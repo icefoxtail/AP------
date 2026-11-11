@@ -51,4 +51,90 @@
     ], { start: { qcK: diagonal ? 1 : 0 } });
   }
   lessons['q3-2'] = [rhombusConcept(false), rhombusConcept(true), rhombusProblem(false), rhombusProblem(true)];
+  const squareCases = [
+    { label: '직각·이웃변', answer: '∠A=90°이고 AB=BC', rect: '한 내각이 90°이면 평행사변형의 네 각이 직각이에요.', rhomb: 'AB=BC이면 대변도 같아서 네 변이 모두 같아요.' },
+    { label: '같고 수직', answer: 'AC=BD이고 AC⊥BD', rect: '대각선 AC=BD이면 평행사변형은 직사각형이에요.', rhomb: '대각선 AC⊥BD이면 평행사변형은 마름모예요.' },
+    { label: '같고 이웃변', answer: 'AC=BD이고 AB=BC', rect: '대각선 AC=BD는 직사각형이 되는 조건이에요.', rhomb: '이웃한 변 AB=BC는 마름모가 되는 조건이에요.' },
+    { label: '같은각·수직', answer: '∠A=∠B이고 AC⊥BD', rect: '같은 이웃각의 합은 180°라서 각 90°가 돼요.', rhomb: '대각선이 수직이면 마름모 성질도 얻어요.' },
+    { label: '직각·수직', answer: '∠A=90°이고 AC⊥BD', rect: '한 내각이 90°이면 네 각이 직각인 직사각형이에요.', rhomb: '대각선이 수직이면 네 변이 같은 마름모이기도 해요.' }
+  ];
+  function squareConcept() {
+    return make('두 성질을 함께 가진 사각형', '두 성질 합', '정사각형', [
+      ch('서로 다른 두 조건', [{ at: 0, say: '네 각이 직각인 조건과 네 변이 같은 조건을 구분해요.', to: { qcSb: 76, qdBT: 1 }, dur: 4 }, { at: 6, say: '처음에는 평행사변형의 모양과 두 대각선을 보아요.' }]),
+      ch('먼저 네 각을 직각으로', [{ at: 0, say: '직사각형 조건을 켜면 네 각이 모두 90°예요.', set: { qcR: true } }, { at: 6, say: '이 상태만으로 이웃한 변의 길이까지 같지는 않아요.' }]),
+      ch('네 변도 같게 만들기', [{ at: 0, say: '마름모 조건을 함께 켜서 네 변도 같게 해요.', set: { qcM: true } }, { at: 6, say: '네 각이 직각이고 네 변이 같은 도형은 정사각형이에요.', set: { qdShowAnswer: true } }])
+    ], { problem: false, mode: 'square' });
+  }
+  function squareCondition(index) {
+    const item = squareCases[index];
+    return make('평행사변형을 정사각형으로', item.label, `③ ${item.answer}`, [
+      ch('주어진 도형과 목표', [{ at: 0, say: '평행사변형을 정사각형으로 만드는 추가 조건을 찾아요.' }, { at: 6, say: '네 각이 직각인 성질과 네 변이 같은 성질이 모두 필요해요.' }]),
+      ch('대각선 조건 한 가지만 있는 보기', [{ at: 0, say: '① AC=BD는 직사각형 조건 하나만 줘요.' }, { at: 6, say: '② AC⊥BD는 마름모 조건 하나만 줘요.' }]),
+      ch('변이나 각 조건 한 가지만 있는 보기', [{ at: 0, say: '④ AB=BC는 마름모가 되는 조건이에요.' }, { at: 6, say: '⑤ ∠A=90°는 직사각형이 되는 조건이에요.' }]),
+      ch('두 성질을 모두 주는 조건', [{ at: 0, say: item.rect, set: { qdShowAnswer: true } }, { at: 4, say: item.rhomb }, { at: 8, say: '두 성질을 함께 가진 ③이 정사각형을 보장해요.' }])
+    ], { key: { ...squareKey, c: index }, mode: 'square-condition' });
+  }
+  function rectangleToSquare(perp) {
+    return make('직사각형에 더할 정사각형 조건', perp ? '수직 추가' : '이웃변 추가', perp ? '③ AC⊥BD' : '③ AB=BC', [
+      ch('이미 가진 성질 구분', [{ at: 0, say: '주어진 도형은 직사각형이고 정사각형 조건을 찾아요.' }, { at: 6, say: '네 각이 직각인 것은 이미 알므로 같은 네 변을 확인해요.' }]),
+      ch('새 조건이 아닌 보기', [{ at: 0, say: '① AC=BD는 모든 직사각형이 이미 가지는 성질이에요.' }, { at: 6, say: '② ∠A=90°도 직사각형의 원래 성질이에요.' }]),
+      ch('평행사변형의 기본 성질 보기', [{ at: 0, say: '④ OA=OC는 대각선을 이등분하는 원래 성질이에요.' }, { at: 6, say: '⑤ AB∥DC도 이미 주어진 직사각형의 성질이에요.' }]),
+      ch('빠진 마름모 성질 추가', [{ at: 0, say: perp ? 'AC⊥BD를 더하면 마름모가 되어 네 변이 같아져요.' : 'AB=BC를 더하면 대변도 같아서 네 변이 모두 같아져요.', set: { qdShowAnswer: true } }, { at: 6, say: '네 각이 직각이고 네 변도 같아지는 ③이 정답이에요.' }])
+    ], { start: { qcK: 1 }, key: { ...squareKey, rc: perp ? 1 : 0 }, mode: 'rectangle-square' });
+  }
+  lessons['q3-3'] = [squareConcept(), ...squareCases.map((_, i) => squareCondition(i)), rectangleToSquare(false), rectangleToSquare(true)];
+  const diagonalKey = { a: 0, b: [0, 1, 3, 4], c: 0, d: [0, 1, 3, 4] };
+  function diagonalBase(counterexample) {
+    return make('대각선의 이등분 조건', counterexample ? '이등분 없음' : '이등분 기준', counterexample ? '같고 수직이어도 이등분이 없으면 정사각형이 아니에요' : '서로 이등분하면 평행사변형이에요', [
+      ch('교점과 반쪽 길이', [{ at: 0, say: counterexample ? '두 대각선은 길이가 같고 수직이지만 반쪽 길이는 달라요.' : 'O는 대각선의 교점이고 OA=OC, OB=OD예요.' }, { at: 6, say: '전체 길이가 같은 것과 서로 이등분하는 것은 달라요.' }]),
+      ch('반쪽 선분과 두 삼각형', [{ at: 0, say: counterexample ? '이 그림은 OA=OB=3, OC=OD=5인 반례예요.' : '△AOB와 △COD는 두 변과 맞꼭지각으로 SAS 합동이에요.' }, { at: 6, say: counterexample ? '대각선 전체는 각각 8이지만 3과 5로 나뉘어요.' : '대응하는 엇각이 같아 한 쌍의 대변이 평행해져요.' }]),
+      ch('이등분 조건의 역할', [{ at: 0, say: counterexample ? '평행사변형이라면 두 대각선이 서로 이등분해야 해요.' : '다른 두 삼각형도 같은 방법으로 비교하면 나머지 대변도 평행해요.' }, { at: 6, say: counterexample ? '따라서 같고 수직이라는 두 조건만으로 정사각형은 아니에요.' : '두 쌍의 대변이 각각 평행하므로 평행사변형이에요.', set: { qdShowAnswer: true } }])
+    ], { problem: false, mode: counterexample ? 'no-bisect' : 'bisect', key: diagonalKey,
+      set: { qcI: !counterexample, qcL: counterexample, qcV: counterexample } });
+  }
+  const rectConditions = [
+    { label: '대각선 같음', answer: 'AC=BD', proof: 'AB=DC, BC 공통, AC=BD로 두 삼각형이 SSS 합동이에요.', end: '같은 이웃각의 합이 180°라서 각 90°인 직사각형이에요.' },
+    { label: '한 각 직각', answer: '∠A=90°', proof: '한 내각이 90°이면 이웃한 각도 180°−90°예요.', end: '마주 보는 각도 같아서 네 각이 직각인 직사각형이에요.' },
+    { label: '이웃각 같음', answer: '∠A=∠B', proof: '같은 이웃각의 합이 180°이므로 두 각은 각각 90°예요.', end: '마주 보는 각도 같아 네 각이 직각인 직사각형이에요.' }
+  ];
+  const rhombConditions = [
+    { label: 'AB=BC', answer: 'AB=BC', proof: 'AB=BC를 평행사변형의 같은 대변과 연결해요.', end: 'AB=BC=CD=DA가 되어 네 변이 같은 마름모예요.' },
+    { label: '대각선 수직', answer: 'AC⊥BD', proof: 'AO=CO, BO 공통, 끼인각이 직각이라 SAS 합동이에요.', end: '대응변 AB=BC를 얻어 네 변이 같은 마름모예요.' },
+    { label: 'AB=AD', answer: 'AB=AD', proof: 'AB=AD도 같은 꼭짓점 A에서 만나는 이웃한 두 변이에요.', end: '같은 대변과 연결하면 네 변이 같은 마름모예요.' }
+  ];
+  function diagonalCondition(rhomb, index) {
+    const item = (rhomb ? rhombConditions : rectConditions)[index];
+    return make(rhomb ? '마름모를 보장하는 추가 조건' : '직사각형을 보장하는 추가 조건', item.label, `③ ${item.answer}`, [
+      ch('기본 조건과 새 조건', [{ at: 0, say: rhomb ? '평행사변형이 마름모가 되기 위한 추가 조건을 찾아요.' : '평행사변형이 직사각형이 되기 위한 추가 조건을 찾아요.' }, { at: 6, say: '대변의 평행과 대각선의 이등분은 이미 가진 성질이에요.' }]),
+      ch('다른 종류의 조건 보기', [{ at: 0, say: rhomb ? '① AC=BD는 직사각형을 보장하지만 마름모는 아니에요.' : '① AC⊥BD는 마름모를 보장하지만 직사각형은 아니에요.' }, { at: 6, say: rhomb ? '② ∠A=90°도 네 변이 같다는 조건은 아니에요.' : '② AB=BC도 네 각이 직각이라는 조건은 아니에요.' }]),
+      ch('원래 성질만 적힌 보기', [{ at: 0, say: '④ ∠A=∠C는 모든 평행사변형이 가지는 성질이에요.' }, { at: 6, say: rhomb ? '⑤ OB=OD도 대각선의 원래 이등분 성질이에요.' : '⑤ OA=OC도 대각선의 원래 이등분 성질이에요.' }]),
+      ch('추가 조건으로 목표 확인', [{ at: 0, say: item.proof, set: { qdShowAnswer: true } }, { at: 4, say: item.end }, { at: 8, say: '따라서 목표 사각형을 보장하는 조건은 ③이에요.' }])
+    ], { start: { qcK: rhomb ? 1 : 0 }, key: { ...diagonalKey, a: rhomb ? 0 : index, c: rhomb ? index : 0 }, mode: 'diagonal-condition' });
+  }
+  lessons['q3-4'] = [diagonalBase(false), diagonalBase(true), ...rectConditions.map((_, i) => diagonalCondition(false, i)), ...rhombConditions.map((_, i) => diagonalCondition(true, i))];
+  const inclusionKey = { t: [0, 1, 2, 3], f: [0, 1, 2, 3], a: 0, b: 0 };
+  const membership = [
+    { shape: 'gen', label: '사각형', given: '네 선분으로 둘러싸인 일반 사각형을 보아요.', reason: '특별한 평행·직각·같은 변 조건은 주어지지 않았어요.', chain: '네 변이라는 정의만으로 특별한 사각형은 보장하지 못해요.', answer: '주어진 조건만으로는 사각형이라고만 할 수 있어요.' },
+    { shape: 'trap', label: '사다리꼴', given: '그림의 윗변과 아랫변이 평행한 사다리꼴을 보아요.', reason: '이 실험실에서 사다리꼴은 한 쌍 이상의 대변이 평행해요.', chain: '평행한 한 쌍을 알아도 나머지 대변이 평행한지는 몰라요.', answer: '사다리꼴은 사각형에 포함돼요.' },
+    { shape: 'para', label: '평행사변형', given: '두 쌍의 대변이 각각 평행한 평행사변형을 보아요.', reason: '두 쌍이 평행하면 적어도 한 쌍도 평행해요.', chain: '따라서 사다리꼴의 조건과 사각형의 조건을 함께 만족해요.', answer: '평행사변형은 사다리꼴과 사각형에 포함돼요.' },
+    { shape: 'rect', label: '직사각형', given: '네 내각이 모두 직각인 직사각형을 보아요.', reason: '같은 직선에 수직인 두 직선은 평행해요.', chain: '두 쌍의 대변이 각각 평행해 평행사변형의 조건도 만족해요.', answer: '직사각형은 평행사변형·사다리꼴·사각형에 포함돼요.' },
+    { shape: 'rhomb', label: '마름모', given: '네 변의 길이가 모두 같은 마름모를 보아요.', reason: '두 쌍의 대변 길이도 각각 같아 평행사변형이 돼요.', chain: '평행사변형이므로 두 쌍의 대변이 평행해요.', answer: '마름모는 평행사변형·사다리꼴·사각형에 포함돼요.' },
+    { shape: 'sq', label: '정사각형', given: '네 각이 직각이고 네 변이 같은 정사각형을 보아요.', reason: '직각 조건은 직사각형, 같은 네 변 조건은 마름모의 정의예요.', chain: '두 종류에 모두 속하므로 그 바깥의 평행사변형에도 속해요.', answer: '정사각형은 직사각형과 마름모에 모두 포함돼요.' }
+  ];
+  function membershipConcept(item) {
+    return make('선택한 사각형의 포함 관계', item.label, item.answer, [
+      ch('주어진 도형의 정의', [{ at: 0, say: item.given }, { at: 6, say: '포함된다는 말은 바깥 도형의 조건도 모두 만족한다는 뜻이에요.' }]),
+      ch('더 넓은 종류의 조건', [{ at: 0, say: item.reason }, { at: 6, say: item.chain }]),
+      ch('포함되는 영역 확인', [{ at: 0, say: item.answer, set: { qdShowAnswer: true } }, { at: 6, say: '포함 관계를 거꾸로 읽으면 항상 맞는 것은 아니에요.' }])
+    ], { problem: false, shape: item.shape, key: inclusionKey, mode: 'inclusion' });
+  }
+  function inclusionProblem(wantTrue) {
+    return make('사각형 포함 관계의 보기 판별', wantTrue ? '옳은 보기' : '틀린 보기', wantTrue ? '③ 정사각형은 직사각형이다.' : '③ 직사각형은 마름모이다.가 옳지 않아요', [
+      ch('포함 방향의 뜻', [{ at: 0, say: wantTrue ? '이번에는 다섯 문장 중 항상 옳은 것을 찾아요.' : '이번에는 다섯 문장 중 항상 옳지는 않은 것을 찾아요.' }, { at: 6, say: '한 종류의 모든 도형이 다른 종류의 조건을 만족해야 해요.' }]),
+      ch('첫 두 문장을 도형으로 확인', [{ at: 0, say: wantTrue ? '① 직사각형은 이웃한 변이 달라도 되어 마름모는 아니에요.' : '① 정사각형은 네 각이 직각이므로 직사각형이에요.', set: { qdBShape: wantTrue ? 'rect' : 'sq' } }, { at: 6, say: wantTrue ? '② 마름모는 직각이 아니어도 되어 직사각형은 아니에요.' : '② 정사각형은 네 변이 같으므로 마름모이기도 해요.', set: { qdBShape: wantTrue ? 'rhomb' : 'sq' } }]),
+      ch('나머지 종류의 포함 방향', [{ at: 0, say: wantTrue ? '④ 기울어진 평행사변형은 직사각형의 반례예요.' : '④ 직사각형은 두 쌍의 대변이 평행해 평행사변형이에요.', set: { qdBShape: wantTrue ? 'para' : 'rect' } }, { at: 6, say: wantTrue ? '⑤ 한 쌍만 평행한 사다리꼴은 평행사변형이 아니에요.' : '⑤ 마름모도 두 쌍의 대변이 평행해 평행사변형이에요.', set: { qdBShape: wantTrue ? 'trap' : 'rhomb' } }]),
+      ch('요청한 참·거짓에 답하기', [{ at: 0, say: wantTrue ? '정사각형은 네 각이 직각이라 항상 직사각형이에요.' : '이웃한 변이 다른 직사각형은 마름모가 아닌 반례예요.', set: { qdShowAnswer: true, qdBShape: wantTrue ? 'sq' : 'rect' } }, { at: 6, say: wantTrue ? '따라서 옳은 포함 관계는 ③이에요.' : '따라서 옳지 않은 포함 관계는 ③이에요.' }])
+    ], { start: { qcK: wantTrue ? 1 : 0 }, key: inclusionKey, shape: wantTrue ? 'sq' : 'rect', mode: 'inclusion-choices' });
+  }
+  lessons['q3-5'] = [...membership.map(membershipConcept), inclusionProblem(false), inclusionProblem(true)];
 })();

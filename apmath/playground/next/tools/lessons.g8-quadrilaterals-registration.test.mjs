@@ -105,3 +105,19 @@ test('a real new-problem action cannot change the fixed lesson when it is replay
     lab.s.playing = false;
   }
 });
+
+
+test('the inverse area target is replaced only in the final original solution stage', async () => {
+  const lab = await load();
+  lab.go('q5-5');
+  Object.assign(lab.s, { qeK: 1, lessonOn: false, lessonEntry: false });
+  lab.tab = 'review';
+  const solution = lab.api.currentSolution(lab.scene.qd, lab.s);
+  const answer = solution.question.choices.find(choice => choice.ok).p;
+  lab.s.step = solution.steps.length - 1;
+  assert.ok(lab.draw().texts.includes('x = □ABCD의 넓이'), 'the question remains unresolved before the final stage');
+  lab.s.step = solution.steps.length;
+  const result = lab.draw();
+  assert.ok(result.texts.includes(answer + ' = □ABCD의 넓이'), 'the final drawing shows the same area as the original answer');
+  assert.ok(!result.texts.includes('x = □ABCD의 넓이'), 'the final target is resolved');
+});

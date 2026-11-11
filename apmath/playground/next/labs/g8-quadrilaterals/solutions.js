@@ -110,7 +110,14 @@
       // Replace its unknown only on the final step; intermediate calculations
       // appear in the step panel and supporting lines are added below.
       const text=b.text;
-      b.text=function(p,str,o){if(final&&!answer(Q).h)str=String(str).replace(/x(?:°|\s*cm)?$/,answer(Q).p);return text.call(this,p,str,o);};
+      b.text=function(p,str,o){
+        if(final&&!answer(Q).h){
+          str=String(str).replace(/x(?:°|\s*cm)?$/,answer(Q).p);
+          // The inverse area question puts x before the target's description.
+          if(D.id==='q5-5')str=str.replace(/^x(?=\s*=)/,answer(Q).p);
+        }
+        return text.call(this,p,str,o);
+      };
       try{D.draw(b,s,m,{...c,problem:true,review:false,full:false,step:99,t:1});}finally{b.text=text;}
       support(b,s,m,D.id,n);
     };
