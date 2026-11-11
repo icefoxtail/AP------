@@ -1,0 +1,32 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "평균 50"
+        },
+        {
+          "label": "표준편차 2"
+        }
+      ]
+    }
+  },
+  "caption": "표본평균의 기댓값과 표준편차를 각각 구해 더한다.",
+  "sourceConditions": [
+    {
+      "id": "mean",
+      "condition": "표본평균의 기댓값은 50",
+      "mappedTo": "첫째 가지"
+    },
+    {
+      "id": "sd",
+      "condition": "표본평균의 표준편차는 20/√100=2",
+      "mappedTo": "둘째 가지"
+    }
+  ],
+  "newVisualInformation": [
+    "표본평균의 기댓값과 표준편차를 별도 중간값으로 구분"
+  ]
+}

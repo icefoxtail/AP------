@@ -1,0 +1,24 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "PRODUCT",
+    "colVar": "첫째 눈",
+    "rowVar": "둘째 눈"
+  },
+  "caption": "서로 다른 두 주사위의 눈을 곱한 값을 36칸에 모두 적은 표이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 주사위의 눈의 곱만큼 시계방향으로 깃발을 이동한다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 눈의 곱이 될 수 있는 값과 그 위치를 표에서 확인한다."
+  ]
+}

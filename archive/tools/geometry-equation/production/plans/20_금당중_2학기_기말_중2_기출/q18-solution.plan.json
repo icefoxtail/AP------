@@ -1,0 +1,91 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A",
+        "count": "6",
+        "countUnit": "개"
+      },
+      {
+        "id": "B",
+        "name": "B",
+        "count": "3",
+        "countUnit": "개"
+      }
+    ],
+    "elements": [
+      {
+        "text": "2",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "7",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "11",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "13",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "5",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "10",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "15",
+        "in": [
+          "B"
+        ]
+      }
+    ],
+    "shade": "A∪B",
+    "universe": {
+      "name": "U",
+      "count": "15",
+      "countUnit": "개"
+    }
+  },
+  "caption": "1부터 15까지의 공 15개를 소수의 집합 A와 5의 배수의 집합 B로 나눈 벤 다이어그램이다. 색칠한 부분은 소수이거나 5의 배수인 수이고, 어느 집합에도 속하지 않는 수는 쓰지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "1부터 15까지의 자연수가 하나씩 적힌 공 중에서 소수이거나 5의 배수인 수를 센다.",
+      "mappedTo": [
+        "diagram",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "소수와 5의 배수에 모두 속하는 수 5가 한 번만 세어지는 모양을 보인다."
+  ]
+}

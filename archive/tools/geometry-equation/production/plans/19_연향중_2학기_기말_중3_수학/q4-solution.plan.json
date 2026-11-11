@@ -1,0 +1,413 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "45°-45°-90° 삼각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sPQ",
+            "refs": [
+              "P",
+              "Q"
+            ]
+          },
+          {
+            "id": "sPR",
+            "refs": [
+              "P",
+              "R"
+            ]
+          },
+          {
+            "id": "sQR",
+            "refs": [
+              "Q",
+              "R"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aQ",
+              "refs": [
+                "P",
+                "Q",
+                "R"
+              ],
+              "value": 45,
+              "factRole": "GIVEN",
+              "label": "45",
+              "color": "BLUE"
+            },
+            {
+              "id": "aR",
+              "refs": [
+                "P",
+                "R",
+                "Q"
+              ],
+              "value": 45,
+              "factRole": "GIVEN",
+              "label": "45",
+              "color": "BLUE"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lPQ",
+              "ownerSegment": "sPQ",
+              "text": "1"
+            },
+            {
+              "id": "lPR",
+              "ownerSegment": "sPR",
+              "text": "1"
+            },
+            {
+              "id": "lQR",
+              "ownerSegment": "sQR",
+              "text": "sqrt(2)"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sQR"
+              ],
+              "color": "GREEN"
+            }
+          ]
+        },
+        "caption": "직각이등변삼각형이다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "45°-45°-90° 삼각형의 세 변의 비는 1:1:√2이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "Q",
+              "P",
+              "R"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "hiddenPointStyle": "NONE",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "30°-60°-90° 삼각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sPQ",
+            "refs": [
+              "P",
+              "Q"
+            ]
+          },
+          {
+            "id": "sPR",
+            "refs": [
+              "P",
+              "R"
+            ]
+          },
+          {
+            "id": "sQR",
+            "refs": [
+              "Q",
+              "R"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aQ",
+              "refs": [
+                "P",
+                "Q",
+                "R"
+              ],
+              "value": 30,
+              "factRole": "GIVEN",
+              "label": "30",
+              "color": "WARM"
+            },
+            {
+              "id": "aR",
+              "refs": [
+                "P",
+                "R",
+                "Q"
+              ],
+              "value": 60,
+              "factRole": "GIVEN",
+              "label": "60",
+              "color": "ROSE"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lPQ",
+              "ownerSegment": "sPQ",
+              "text": "sqrt(3)"
+            },
+            {
+              "id": "lPR",
+              "ownerSegment": "sPR",
+              "text": "1"
+            },
+            {
+              "id": "lQR",
+              "ownerSegment": "sQR",
+              "text": "2"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sQR"
+              ],
+              "color": "GREEN"
+            }
+          ]
+        },
+        "caption": "한 각이 30°인 직각삼각형이다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "30°-60°-90° 삼각형의 세 변의 비는 1:√3:2이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "Q",
+              "P",
+              "R"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "hiddenPointStyle": "NONE",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        }
+      }
+    }
+  ],
+  "caption": "특수각의 삼각비는 두 직각삼각형의 변의 비로 읽는다. 45°-45°-90° 삼각형은 세 변의 비가 1:1:√2이고, 30°-60°-90° 삼각형은 1:√3:2이다. 초록색 변이 빗변이다. 각 보기의 값을 이 변의 비로 바꾸어 계산한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "30°, 45°, 60°의 삼각비 값을 대입해 보기 ㄱ~ㄹ의 참·거짓을 판정한다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "특수각 삼각비의 값을 만드는 두 직각삼각형의 변의 비를 보인다."
+  ]
+}

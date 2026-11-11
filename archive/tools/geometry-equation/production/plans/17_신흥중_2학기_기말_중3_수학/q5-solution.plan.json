@@ -1,0 +1,184 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "12"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayPoints": [
+  "A",
+  "B",
+  "C"
+ ],
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCA",
+   "refs": [
+    "C",
+    "A"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aA",
+    "refs": [
+     "C",
+     "A",
+     "B"
+    ],
+    "value": 22.61986494804043,
+    "noLabel": true,
+    "color": "ROSE",
+    "factRole": "GIVEN"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "lAC",
+    "ownerSegment": "sCA",
+    "text": "12k"
+   },
+   {
+    "id": "lBC",
+    "ownerSegment": "sBC",
+    "text": "5k"
+   },
+   {
+    "id": "lAB",
+    "ownerSegment": "sAB",
+    "text": "13k",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "segmentColors": [
+   {
+    "segments": [
+     "sBC"
+    ],
+    "color": "WARM"
+   },
+   {
+    "segments": [
+     "sCA"
+    ],
+    "color": "BLUE"
+   },
+   {
+    "segments": [
+     "sAB"
+    ],
+    "color": "GREEN"
+   }
+  ]
+ },
+ "caption": "tan A는 이웃변 분의 대변이므로 대변을 5k, 이웃변을 12k로 두면 빗변은 13k이다. 이 변들로 sin A와 cos A를 읽는다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "tan A=5/12, 0°<A<90°.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "A",
+    "C",
+    "B"
+   ]
+  }
+ ],
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 340
+ }
+}

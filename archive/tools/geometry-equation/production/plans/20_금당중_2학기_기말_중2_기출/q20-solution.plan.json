@@ -1,0 +1,31 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "3",
+        "title": "남학생"
+      },
+      {
+        "count": "4",
+        "title": "여학생"
+      }
+    ],
+    "join": "TIMES"
+  },
+  "caption": "남학생 3명 중 한 명, 여학생 4명 중 한 명을 고르는 두 단계를 칸에 적은 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "남학생 3명과 여학생 4명 중에서 남학생 1명과 여학생 1명을 뽑는다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "남학생을 고르는 단계와 여학생을 고르는 단계의 가짓수를 칸 두 개로 보인다."
+  ]
+}

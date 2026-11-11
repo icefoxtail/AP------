@@ -1,0 +1,120 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "10",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      -0.4,
+      3.4,
+      -1,
+      20
+    ],
+    "curveColor": "BLUE",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "T",
+        "x": 2,
+        "y": 16
+      },
+      {
+        "id": "E",
+        "x": 2.2222222222222223,
+        "y": 16.46090534979424
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "T",
+        "E"
+      ]
+    },
+    "exactCoordinates": {
+      "E": [
+        "20/9",
+        "4000/243"
+      ]
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "x"
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "g",
+          "slope": "4",
+          "intercept": "8",
+          "label": "Q"
+        }
+      ],
+      "points": [
+        {
+          "id": "pp",
+          "curveX": "5/2",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cp",
+          "point": "pp",
+          "text": "P",
+          "direction": "E"
+        }
+      ]
+    },
+    "axisScale": {
+      "x": 8,
+      "y": 1
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "점 P의 위치 곡선과 점 Q의 위치 직선이 t=2에서 접한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x_P(t)=10t^2-3t^3, x_Q(t)=8+kt",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "k가 최대일 때 직선 x=8+kt가 P의 위치 곡선에 접한다."
+  ]
+}

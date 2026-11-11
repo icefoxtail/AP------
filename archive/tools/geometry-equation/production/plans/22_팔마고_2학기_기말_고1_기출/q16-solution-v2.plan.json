@@ -1,0 +1,135 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "F",
+        "kind": "SQRT",
+        "radicand": [
+          "2",
+          "1"
+        ],
+        "offset": "5",
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "f(x)"
+      },
+      {
+        "id": "G",
+        "kind": "SQRT",
+        "radicand": [
+          "2",
+          "-1"
+        ],
+        "offset": "-5",
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "g(x)"
+      },
+      {
+        "id": "H5",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=5",
+        "style": "DASHED"
+      },
+      {
+        "id": "Hm5",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=-5",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "vL",
+          "x": "-2",
+          "label": "x=-2"
+        },
+        {
+          "id": "vR",
+          "x": "2",
+          "label": "x=2"
+        }
+      ]
+    },
+    "viewport": [
+      -3,
+      3,
+      -8,
+      10
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "between": [
+          "F",
+          "H5"
+        ],
+        "from": "-2",
+        "to": "2",
+        "fill": "BLUE"
+      },
+      {
+        "id": "S2",
+        "between": [
+          "G",
+          "Hm5"
+        ],
+        "from": "-2",
+        "to": "2",
+        "fill": "BLUE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 무리함수와 기준선 y=5, y=-5 사이의 좌우 대칭인 넓이 부분을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x는 -2부터 2까지이다.",
+      "mappedTo": [
+        "F",
+        "G",
+        "vL",
+        "vR"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "두 제곱근 그래프는 y축 대칭이다.",
+      "mappedTo": [
+        "F",
+        "G"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기준 직사각형 위와 안쪽의 대칭인 넓이 부분을 같은 색으로 확인한다."
+  ],
+  "sourceQuote": "f(x)=sqrt(x+2)+5, g(x)=sqrt(2-x)-5, x=-2 및 x=2"
+}

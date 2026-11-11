@@ -1,0 +1,364 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "작은 직각삼각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "J",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "P",
+          "F",
+          "J"
+        ],
+        "displaySegments": [
+          {
+            "id": "lx",
+            "refs": [
+              "P",
+              "F"
+            ]
+          },
+          {
+            "id": "l6",
+            "refs": [
+              "F",
+              "J"
+            ]
+          },
+          {
+            "id": "l10",
+            "refs": [
+              "P",
+              "J"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "l10"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "a",
+              "ownerSegment": "lx",
+              "text": "x",
+              "unit": "cm"
+            },
+            {
+              "id": "b",
+              "ownerSegment": "l6",
+              "text": "6",
+              "unit": "cm"
+            },
+            {
+              "id": "c",
+              "ownerSegment": "l10",
+              "text": "10",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "작은 직각삼각형",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 360
+        },
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "P",
+              "F",
+              "J"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "P",
+          "F",
+          "J"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "큰 직각삼각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "J",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "P",
+          "F",
+          "J",
+          "R"
+        ],
+        "displaySegments": [
+          {
+            "id": "l8",
+            "refs": [
+              "P",
+              "F"
+            ]
+          },
+          {
+            "id": "a6",
+            "refs": [
+              "F",
+              "J"
+            ]
+          },
+          {
+            "id": "a9",
+            "refs": [
+              "J",
+              "R"
+            ]
+          },
+          {
+            "id": "ly",
+            "refs": [
+              "P",
+              "R"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "ly"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "d6",
+              "from": "F",
+              "to": "J",
+              "label": "6",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "ARROW",
+              "offset": "AUTO",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "d9",
+              "from": "J",
+              "to": "R",
+              "label": "9",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "ARROW",
+              "offset": "AUTO",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "a",
+              "ownerSegment": "l8",
+              "text": "8",
+              "unit": "cm"
+            },
+            {
+              "id": "c",
+              "ownerSegment": "ly",
+              "text": "y",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "큰 직각삼각형",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 360
+        },
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "P",
+              "F",
+              "R"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "P",
+          "F",
+          "J",
+          "R"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "작은 직각삼각형에서 x를 구하고, 큰 직각삼각형의 밑변은 6과 9의 합이다."
+}

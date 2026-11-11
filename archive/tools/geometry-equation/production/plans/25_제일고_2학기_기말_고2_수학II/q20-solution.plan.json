@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "h",
+    "formula": "x^3-3x",
+    "sampleNote": "n=2",
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "-2"
+      ]
+    },
+    "domain": [
+      "-3/2",
+      "9/5"
+    ],
+    "viewport": [
+      "-3/2",
+      "9/5",
+      "-5/2",
+      "5/2"
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "boundary",
+          "x": "1",
+          "label": "x=1",
+          "style": "DASHED"
+        },
+        {
+          "id": "lower",
+          "slope": "0",
+          "intercept": "-2",
+          "label": "y=-2",
+          "style": "DASHED",
+          "color": "WARM"
+        }
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "id": "N",
+        "x": "1",
+        "y": "-2"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "M"
+      ]
+    }
+  },
+  "caption": "예: n=2이면 h(x)=x³−3x는 x=1에서 −2에 닿은 뒤 x>1에서 증가한다. x=1은 제외되므로 h(x)>−2이고 이 예에서는 부등식이 성립한다.",
+  "sourceConditions": [
+    "h(x)=x^(n+1)-(n+1)x",
+    "h′(x)=(n+1)(x^n-1)>0 for x>1",
+    "n=2일 때 h(1)=-2, n^2-10n+14=-2"
+  ],
+  "newVisualInformation": [
+    "n=2의 실제 함수 그래프에서 열린 경계 x=1의 하한 -2와 그 오른쪽의 증가를 나타낸다.",
+    "하한과 목표값이 같아도 x=1이 제외되어 부등식이 성립하는 예를 보여 준다."
+  ]
+}

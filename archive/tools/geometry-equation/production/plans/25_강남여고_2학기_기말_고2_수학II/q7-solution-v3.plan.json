@@ -1,0 +1,46 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "3",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "formula": "-x^3+3x+1",
+    "requiredPoints": [
+      {
+        "id": "m",
+        "x": -1,
+        "y": -1
+      },
+      {
+        "id": "M",
+        "x": 1,
+        "y": 3
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -1,
+        1
+      ],
+      "y": [
+        -1,
+        3
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "도함수의 부호로 극대와 극소를 확인한다."
+}

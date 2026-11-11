@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "36",
+          "-12",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2*(x-6)^2",
+    "functionName": "g",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 6,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 3,
+        "y": 81
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "plotHeightLimit": 480
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "M"
+  ],
+  "caption": "두 극솟점과 그 사이의 극댓점을 갖는 g의 그래프를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "최고차항 계수 1, f(0)=0, f(α)=f′(α)=0에서 원문 함수는 f(x)=x(x−α)²이다. g′(x)=f(x)+xf′(x)=(xf(x))′이므로 g(x)=x²(x−α)²+C이다. 이 f는 이 계획의 곡선이 아니다.",
+      "mappedTo": [
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "g의 최솟값 0에서 C=0, g의 극댓값 81에서 α⁴/16=81이다. α>0이므로 α=6, 따라서 그려지는 함수는 g(x)=x²(x−6)²이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.functionName",
+        "graphPlan.sourceDomain",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "g의 두 최솟점은 (0,0),(6,0), 극댓점은 (3,81)이다. α/6=1이며 g(1)=25이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "g의 두 극솟점과 극댓점의 위치 관계를 표시한다."
+  ],
+  "sourceQuote": "16. 최고차항의 계수가 1인 삼차함수 $f(x)$가 $f(0)=0$, $f(\\alpha)=0$, $f'(\\alpha)=0$이고 함수 $g(x)$가 다음 조건을 만족시킬 때, $g\\left(\\frac{\\alpha}{6}\\right)$의 값은? (단, $\\alpha$는 양수이다.) [4.8점]\n\n<img src=\"assets/images/22_금당고_2학기_기말_고2_수학II/q16.png\" style=\"max-width:300px; display:block; margin:10px auto;\" />\n\n(가) $g'(x) = f(x) + xf'(x)$\n(나) $g(x)$의 극댓값이 81이고 극솟값이 0이다."
+}

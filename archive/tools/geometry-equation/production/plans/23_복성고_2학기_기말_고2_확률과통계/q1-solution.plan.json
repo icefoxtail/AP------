@@ -1,0 +1,50 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "B'",
+          "p": "7/18",
+          "children": [
+            {
+              "label": "A",
+              "p": "2/7"
+            },
+            {
+              "label": "A'",
+              "p": "5/7"
+            }
+          ]
+        },
+        {
+          "label": "B",
+          "p": "11/18"
+        }
+      ]
+    },
+    "showPathProbability": true
+  },
+  "caption": "B의 여사건 안에서 A와 A의 여사건을 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "bc",
+      "condition": "B의 여사건 확률은 7/18",
+      "mappedTo": "tree"
+    },
+    {
+      "id": "acbc",
+      "condition": "A와 B의 여사건이 함께 일어날 확률은 1/9",
+      "mappedTo": "tree"
+    },
+    {
+      "id": "acbc_comp",
+      "condition": "A와 B의 여사건이 함께 일어나지 않을 확률은 5/18",
+      "mappedTo": "tree"
+    }
+  ],
+  "newVisualInformation": [
+    "B의 여사건 안 두 갈래와 각 경로의 확률"
+  ]
+}

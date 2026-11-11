@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "F",
+        "kind": "SQRT",
+        "radicand": [
+          "-5",
+          "1"
+        ],
+        "domain": [
+          "5",
+          "9"
+        ],
+        "label": "f(x)",
+        "amplitude": "-1"
+      },
+      {
+        "id": "L",
+        "kind": "LINE",
+        "coefficients": [
+          "19/4",
+          "-1"
+        ],
+        "domain": [
+          "5",
+          "9"
+        ],
+        "label": "y=-x+k"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "viewport": [
+      4,
+      10,
+      -5,
+      1
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "x": "21/4",
+          "y": "-1/2",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "무리함수 그래프와 기울기가 음수 1인 직선이 한 점에서 접하는 경계 상황을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=-sqrt(x-5)이고 x>=5이다.",
+      "mappedTo": [
+        "F"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "한 점에서 만나도록 하는 경계 직선의 기울기는 -1이다.",
+      "mappedTo": [
+        "L"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "접점은 x=21/4, y=-1/2이다.",
+      "mappedTo": [
+        "T"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 무리함수와 기울기 -1인 직선이 한 점에서 접하는 경계 상황을 나타낸다."
+  ]
+}

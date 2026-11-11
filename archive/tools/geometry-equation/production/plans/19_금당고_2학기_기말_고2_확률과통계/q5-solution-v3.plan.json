@@ -1,0 +1,104 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "x1",
+          "x2",
+          "x3",
+          "x4",
+          "x5"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "y1",
+          "y2",
+          "y3",
+          "y4",
+          "y5",
+          "y6"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "예: 다섯 입력이 서로 다른 출력에 대응하는 일대일 함수 하나를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정의역 X에 원소가 5개이고 공역 Y에 원소가 6개이다.",
+      "mappedTo": "대응도의 두 열에 각각 다섯 원소와 여섯 원소를 배치"
+    },
+    {
+      "id": "c2",
+      "condition": "서로 다른 입력은 서로 다른 출력으로 가야 한다.",
+      "mappedTo": "예시 화살표가 서로 다른 출력 원소에 도착하고 하나의 출력 원소가 남음"
+    }
+  ],
+  "newVisualInformation": [
+    "함수의 일대일 조건은 출력 원소의 중복 없이 화살표를 잇는 것임을 보여주는 예"
+  ]
+}

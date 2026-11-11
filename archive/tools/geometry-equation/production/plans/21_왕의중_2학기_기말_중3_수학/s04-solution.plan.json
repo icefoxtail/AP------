@@ -1,0 +1,71 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "A학급"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "DOT_PLOT",
+          "values": [
+            7,
+            4,
+            6,
+            3,
+            10
+          ],
+          "xTitle": "성공 개수(개)",
+          "marks": {
+            "meanLine": {
+              "value": "6",
+              "label": "평균 6"
+            },
+            "deviations": true
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "B학급"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "DOT_PLOT",
+          "values": [
+            6,
+            7,
+            3,
+            5,
+            9
+          ],
+          "xTitle": "성공 개수(개)",
+          "marks": {
+            "meanLine": {
+              "value": "6",
+              "label": "평균 6"
+            },
+            "deviations": true
+          }
+        }
+      }
+    }
+  ],
+  "caption": "두 학급 자유투 성공 개수의 평균과 편차를 나란히 비교하는 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A학급과 B학급 각각 5명의 자유투 성공 개수를 조사한 표이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 학급의 평균 6을 기준으로 각 변량의 편차와 흩어진 정도를 나란히 비교한다."
+  ]
+}

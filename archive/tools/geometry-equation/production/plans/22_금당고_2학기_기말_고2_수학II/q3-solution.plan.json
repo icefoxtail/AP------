@@ -1,0 +1,64 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 1,
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A"
+  ],
+  "caption": "도함수와 초기 함수값이 원함수의 그래프를 정하는 관계를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f′(x)=2x−2이고 f(0)=2이므로 f(x)=x²−2x+2=(x−1)²+1이다. 함수의 정의역은 R이며 최소점은 (1,1)이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.sourceDomain",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "기존 answer-exposure HOLD를 유지한다. 이 도식은 풀이에만 사용하며 질문 쪽 이미지로 쓰지 않는다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "초기조건을 이용해 적분상수를 정한 함수의 그래프를 표시한다."
+  ],
+  "sourceQuote": "3. 함수 $f(x)$가 $f'(x)=2x-2$를 만족시키고 $f(0)=2$일 때, $f(1)$의 값은? [4.0점]"
+}

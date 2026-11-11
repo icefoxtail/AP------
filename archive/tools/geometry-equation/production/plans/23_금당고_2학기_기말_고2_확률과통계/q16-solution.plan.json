@@ -1,0 +1,56 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "자리",
+      "children": [
+        {
+          "label": "예선 자리",
+          "p": "2/5",
+          "children": [
+            {
+              "label": "우승",
+              "p": "1/8"
+            },
+            {
+              "label": "탈락",
+              "p": "7/8"
+            }
+          ]
+        },
+        {
+          "label": "면제 자리",
+          "p": "3/5",
+          "children": [
+            {
+              "label": "우승",
+              "p": "1/4"
+            },
+            {
+              "label": "탈락",
+              "p": "3/4"
+            }
+          ]
+        }
+      ]
+    },
+    "labelWeight": "MATH"
+  },
+  "caption": "예선 유무에 따른 우승 가능성을 자리별로 나눈 수형도.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다섯 자리 중 예선 참가 자리는 둘, 예선 면제 자리는 셋이며 선수는 각 자리에 같은 확률로 배정된다.",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "c2",
+      "condition": "각 경기 승률은 1/2이고, 예선 자리는 우승까지 세 경기, 면제 자리는 두 경기를 이겨야 한다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "자리 유형별 우승 확률"
+  ]
+}

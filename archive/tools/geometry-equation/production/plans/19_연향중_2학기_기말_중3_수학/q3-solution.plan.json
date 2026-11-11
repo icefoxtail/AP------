@@ -1,0 +1,300 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "직육면체"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "kind": "PRISM",
+            "base": {
+              "kind": "RECT",
+              "width": 5,
+              "depth": 3
+            },
+            "height": 4,
+            "names": {
+              "base": [
+                "F",
+                "G",
+                "H",
+                "E"
+              ],
+              "top": [
+                "B",
+                "C",
+                "D",
+                "A"
+              ]
+            }
+          }
+        ],
+        "segments": [
+          {
+            "from": "E",
+            "to": "G",
+            "style": "DASHED"
+          },
+          {
+            "from": "A",
+            "to": "G",
+            "style": "SOLID"
+          }
+        ],
+        "dims": [
+          {
+            "from": "A",
+            "to": "D",
+            "label": "5"
+          },
+          {
+            "from": "D",
+            "to": "H",
+            "label": "4",
+            "side": "RIGHT"
+          },
+          {
+            "from": "G",
+            "to": "H",
+            "label": "3"
+          }
+        ],
+        "marks": {
+          "angles": [
+            {
+              "id": "x",
+              "refs": [
+                "A",
+                "G",
+                "E"
+              ],
+              "label": "x"
+            }
+          ],
+          "rightAngles": [
+            {
+              "at": "E",
+              "refs": [
+                "A",
+                "G"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "직각삼각형 AEG"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "34"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "E",
+          "G"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "sEG",
+            "refs": [
+              "E",
+              "G"
+            ]
+          },
+          {
+            "id": "sAG",
+            "refs": [
+              "A",
+              "G"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aX",
+              "refs": [
+                "A",
+                "G",
+                "E"
+              ],
+              "value": 34.45,
+              "factRole": "GIVEN",
+              "label": "x",
+              "color": "ROSE"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lAE",
+              "ownerSegment": "sAE",
+              "text": "4"
+            },
+            {
+              "id": "lEG",
+              "ownerSegment": "sEG",
+              "text": "sqrt(34)",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lAG",
+              "ownerSegment": "sAG",
+              "text": "5sqrt(2)",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sAE"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sEG"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sAG"
+              ],
+              "color": "GREEN"
+            }
+          ]
+        },
+        "caption": "직각삼각형 AEG를 떼어 낸 그림이다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "AE⊥EG, AE=4, EG=√34, x=∠AGE.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "A",
+              "E",
+              "G"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        }
+      }
+    }
+  ],
+  "caption": "밑면의 대각선 EG는 가로 5, 세로 3인 직사각형의 대각선이고 AE는 높이 4이며 AE는 밑면에 수직이다. 따라서 삼각형 AEG는 E에서 직각이다. 파란색 AE, 주황색 EG, 초록색 AG의 길이로 sin x와 cos x를 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직육면체의 AD=5cm, DH=4cm, GH=3cm이고 x=∠AGE이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직육면체 안의 직각삼각형 AEG를 따로 떼어 변의 길이를 보인다."
+  ]
+}

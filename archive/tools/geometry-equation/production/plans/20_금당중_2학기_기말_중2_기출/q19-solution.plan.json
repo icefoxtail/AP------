@@ -1,0 +1,62 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "맞힘",
+          "p": "3/5",
+          "children": [
+            {
+              "label": "맞힘",
+              "p": "3/5"
+            },
+            {
+              "label": "못 맞힘",
+              "p": "2/5"
+            }
+          ]
+        },
+        {
+          "label": "못 맞힘",
+          "p": "2/5",
+          "children": [
+            {
+              "label": "맞힘",
+              "p": "3/5"
+            },
+            {
+              "label": "못 맞힘",
+              "p": "2/5"
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "못 맞힘",
+          "못 맞힘"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "showPathProbability": true
+  },
+  "caption": "사격을 두 번 할 때 맞힘과 못 맞힘을 나타낸 수형도이다. 주황색 경로는 두 번 모두 맞히지 못하는 경우이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 번 사격에서 목표물을 맞힐 확률이 5분의 3이고 두 번 사격한다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 번 모두 맞히지 못하는 경로를 색으로 구분하고 각 경로의 확률을 보인다."
+  ]
+}

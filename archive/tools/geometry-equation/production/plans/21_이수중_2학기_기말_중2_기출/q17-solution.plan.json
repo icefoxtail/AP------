@@ -1,0 +1,31 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "join": "PLUS",
+    "slots": [
+      {
+        "count": "5",
+        "title": "월"
+      },
+      {
+        "count": "4",
+        "title": "금"
+      }
+    ]
+  },
+  "caption": "월요일인 날의 수와 금요일인 날의 수를 칸에 적은 합의 법칙 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "2021년 11월 달력에서 월요일 또는 금요일인 날을 고른다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "월요일인 날 수와 금요일인 날 수를 칸에 적어 더할 두 수를 보인다."
+  ]
+}

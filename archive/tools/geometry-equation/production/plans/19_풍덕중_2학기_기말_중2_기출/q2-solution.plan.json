@@ -1,0 +1,101 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      3,
+      -2,
+      5
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "2"
+        ],
+        "domain": [
+          "-5/2",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "y=2x+3"
+      },
+      {
+        "id": "g2",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "color": "GREEN",
+        "style": "DASHED",
+        "label": "y=1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "axis": "x",
+          "value": "-1",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "gP",
+          "from": "P",
+          "axis": "x"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cp",
+          "point": "P",
+          "text": "(a,1)",
+          "direction": "NW",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cq",
+          "point": "Q",
+          "text": "a",
+          "direction": "SW",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "caption": "일차함수 f(x)=2x+3의 그래프(파랑)에서 함숫값 f(a)가 1인 점 (a,1)은 y=1(초록 점선)과 만나는 점이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "일차함수 f(x)=2x+3에 대하여 f(a)=1이다.",
+      "mappedTo": [
+        "g1",
+        "g2",
+        "overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "함숫값 f(a)=1은 그래프에서 높이 1인 점의 x좌표가 a임을 뜻함을 보인다."
+  ]
+}

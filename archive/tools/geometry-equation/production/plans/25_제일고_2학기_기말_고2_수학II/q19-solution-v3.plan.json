@@ -1,0 +1,138 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3/2",
+        "0"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "domain": [
+      "-2",
+      "1/2"
+    ],
+    "viewport": [
+      "-2",
+      "1/2",
+      "-2",
+      "3/2"
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3/2"
+      ],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "-1",
+        "y": "-1"
+      }
+    ],
+    "referenceCurves": [
+      {
+        "id": "left",
+        "color": "GREEN",
+        "sourceDomain": {
+          "kind": "INTERVAL",
+          "range": [
+            "-3/2",
+            "-1"
+          ],
+          "states": [
+            "CLOSED",
+            "OPEN"
+          ]
+        },
+        "intersectionX": [
+          "-3/2"
+        ],
+        "pieces": [
+          {
+            "coefficients": [
+              "3",
+              "4",
+              "1"
+            ]
+          }
+        ],
+        "breakpoints": [],
+        "name": "g"
+      },
+      {
+        "id": "right",
+        "color": "GREEN",
+        "sourceDomain": {
+          "kind": "INTERVAL",
+          "range": [
+            "-1",
+            "0"
+          ],
+          "states": [
+            "CLOSED",
+            "CLOSED"
+          ]
+        },
+        "intersectionX": [],
+        "pieces": [
+          {
+            "coefficients": [
+              "1",
+              "0",
+              "-1"
+            ]
+          }
+        ],
+        "breakpoints": [],
+        "formula": "1-x^2"
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "left",
+        "lower": "f",
+        "from": "-3/2",
+        "to": "-1",
+        "fill": "BLUE",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "right",
+        "lower": "f",
+        "from": "-1",
+        "to": "0",
+        "fill": "WARM",
+        "label": "S_2"
+      }
+    ]
+  },
+  "caption": "x=−3/2부터 0까지 f(x)와 g(x)의 두 넓이 영역을 x=−1에서 나누어 표시한다.",
+  "sourceConditions": [
+    "x<0에서 f(x)=x^2+2x, x≥0에서 f(x)=-x^2+2x",
+    "구간 [x,x+1]에서의 최댓값 함수 g(x)",
+    "넓이를 구하는 범위 -3/2≤x≤0"
+  ],
+  "newVisualInformation": [
+    "파란 S₁은 -3/2≤x≤-1, 주황 S₂는 -1≤x≤0에서 g와 f 사이이다.",
+    "S₁과 S₂를 서로 다른 색으로 구분하고 각각의 이름을 영역 안에 표시한다."
+  ]
+}

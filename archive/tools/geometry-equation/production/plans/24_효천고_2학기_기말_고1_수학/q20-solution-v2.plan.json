@@ -1,0 +1,76 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "elements": [
+          "1"
+        ]
+      },
+      {
+        "id": "Y",
+        "elements": [
+          "-3"
+        ]
+      },
+      {
+        "id": "Z",
+        "elements": [
+          "z"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "1에서 -3으로 간 뒤 다음 함수에 대입하는 순서를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "역함수를 취할 때 합성의 순서가 바뀌는 성질을 이용한다.",
+      "mappedTo": [
+        "diagram.arrows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f의 역함수에서 1에 대응하는 값은 -3이다.",
+      "mappedTo": [
+        "diagram.columns",
+        "diagram.arrows[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "그 다음 g를 적용한다.",
+      "mappedTo": [
+        "diagram.arrows[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "1에서 -3에 대응한 뒤 다음 함수에 넣는 순서를 이어 그린다."
+  ]
+}

@@ -1,0 +1,584 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "L",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "L",
+          "P",
+          "T",
+          "R"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sLT",
+            "refs": [
+              "L",
+              "T"
+            ]
+          },
+          {
+            "id": "sLP",
+            "refs": [
+              "L",
+              "P"
+            ]
+          },
+          {
+            "id": "sPT",
+            "refs": [
+              "P",
+              "T"
+            ]
+          },
+          {
+            "id": "sTR",
+            "refs": [
+              "T",
+              "R"
+            ]
+          },
+          {
+            "id": "sRP",
+            "refs": [
+              "R",
+              "P"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lLT",
+              "ownerSegment": "sLT",
+              "text": "15",
+              "unit": "cm"
+            },
+            {
+              "id": "lRP",
+              "ownerSegment": "sRP",
+              "text": "13",
+              "unit": "cm"
+            },
+            {
+              "id": "lTR",
+              "ownerSegment": "sTR",
+              "text": "5",
+              "unit": "cm"
+            },
+            {
+              "id": "lLP",
+              "ownerSegment": "sLP",
+              "text": "y",
+              "unit": "cm"
+            },
+            {
+              "id": "lPT",
+              "ownerSegment": "sPT",
+              "text": "x",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "문제의 그림",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "두 직각삼각형이 변 PT를 공유한다. 한쪽 빗변 15cm, 다른 쪽 빗변 13cm, 직각변 5cm, PT=x cm, LP=y cm.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "L",
+              "P",
+              "T"
+            ]
+          },
+          {
+            "id": "r1",
+            "refs": [
+              "P",
+              "T",
+              "R"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "위쪽 직각삼각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "P",
+          "T",
+          "R"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sPT",
+            "refs": [
+              "P",
+              "T"
+            ]
+          },
+          {
+            "id": "sTR",
+            "refs": [
+              "T",
+              "R"
+            ]
+          },
+          {
+            "id": "sRP",
+            "refs": [
+              "R",
+              "P"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lPT",
+              "ownerSegment": "sPT",
+              "text": "x",
+              "unit": "cm"
+            },
+            {
+              "id": "lTR",
+              "ownerSegment": "sTR",
+              "text": "5",
+              "unit": "cm"
+            },
+            {
+              "id": "lRP",
+              "ownerSegment": "sRP",
+              "text": "13",
+              "unit": "cm"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sPT"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sTR"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sRP"
+              ],
+              "color": "GREEN"
+            }
+          ]
+        },
+        "caption": "위쪽 직각삼각형",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "직각변 5cm와 x cm, 빗변 13cm.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "P",
+              "T",
+              "R"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "아래쪽 직각삼각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "L",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "L",
+          "P",
+          "T"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sLP",
+            "refs": [
+              "L",
+              "P"
+            ]
+          },
+          {
+            "id": "sPT",
+            "refs": [
+              "P",
+              "T"
+            ]
+          },
+          {
+            "id": "sTL",
+            "refs": [
+              "T",
+              "L"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lPT",
+              "ownerSegment": "sPT",
+              "text": "12",
+              "unit": "cm"
+            },
+            {
+              "id": "lLP",
+              "ownerSegment": "sLP",
+              "text": "y",
+              "unit": "cm"
+            },
+            {
+              "id": "lTL",
+              "ownerSegment": "sTL",
+              "text": "15",
+              "unit": "cm"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sPT"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sLP"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sTL"
+              ],
+              "color": "GREEN"
+            }
+          ]
+        },
+        "caption": "아래쪽 직각삼각형",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "직각변 12cm와 y cm, 빗변 15cm.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "L",
+              "P",
+              "T"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        }
+      }
+    }
+  ],
+  "caption": "두 직각삼각형이 공유하는 변 PT를 파란색으로 나타냈다. 위쪽에서 x를 구하고 그 값을 아래쪽 삼각형에 쓴다. 직각삼각형의 직각변은 5와 x, 빗변은 13이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 직각삼각형이 공유하는 변 PT를 파란색으로 나타냈다. 위쪽에서 x를 구하고 그 값을 아래쪽 삼각형에 쓴다. 직각삼각형의 직각변은 5와 x, 빗변은 13이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

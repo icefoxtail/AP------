@@ -1,0 +1,69 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "첫 자료"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "DOT_PLOT",
+          "values": [
+            5,
+            3,
+            13,
+            7,
+            11
+          ],
+          "xTitle": "자료 값",
+          "marks": {
+            "medianLine": {
+              "value": "7",
+              "label": "중앙값"
+            }
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "둘째 자료"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "DOT_PLOT",
+          "values": [
+            9,
+            17,
+            12,
+            2,
+            7,
+            11
+          ],
+          "xTitle": "자료 값",
+          "marks": {
+            "medianLine": {
+              "value": "10",
+              "label": "중앙값"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "caption": "두 자료의 가운데 값과 가운데 두 값의 평균으로 중앙값을 정한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫 중앙값 7, 둘째 중앙값 10 조건을 해설에서 구한 a=7, b=11과 함께 점도표로 표시한다. 구하는 값은 a와 b의 곱이다.",
+      "mappedTo": [
+        "panels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 중앙값 조건을 점도표의 가운데 자료 위치로 확인한다."
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-24",
+      "24",
+      "-6"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -40,
+      8
+    ],
+    "formula": "-6(x-2)^2",
+    "functionName": "p"
+  },
+  "caption": "F의 도함수 y=−6(x−2)²의 그래프이다. 두 근이 겹쳐 x=2에서 x축에 접하고 부호가 바뀌지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "F′(x)=(x−2)(c−6x)이다.",
+      "mappedTo": [
+        "graphPlan.coefficients"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "극값이 없으려면 두 근이 겹쳐 c=12이다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ]
+}

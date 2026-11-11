@@ -1,0 +1,420 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "circ",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "6"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "11480503",
+       "denominator": "5000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "13858193",
+       "denominator": "2500000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "-11480503",
+       "denominator": "5000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "13858193",
+       "denominator": "2500000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "-13858193",
+       "denominator": "2500000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "11480503",
+       "denominator": "5000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "-13858193",
+       "denominator": "2500000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "-11480503",
+       "denominator": "5000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "E",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "-11480503",
+       "denominator": "5000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "-13858193",
+       "denominator": "2500000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "F",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "11480503",
+       "denominator": "5000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "-13858193",
+       "denominator": "2500000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "G",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "13858193",
+       "denominator": "2500000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "-11480503",
+       "denominator": "5000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "H",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "13858193",
+       "denominator": "2500000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "11480503",
+       "denominator": "5000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "circ"
+ ],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sOA",
+   "refs": [
+    "O",
+    "A"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sOB",
+   "refs": [
+    "O",
+    "B"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  },
+  {
+   "id": "sOC",
+   "refs": [
+    "O",
+    "C"
+   ]
+  },
+  {
+   "id": "sDE",
+   "refs": [
+    "D",
+    "E"
+   ]
+  },
+  {
+   "id": "sOD",
+   "refs": [
+    "O",
+    "D"
+   ]
+  },
+  {
+   "id": "sEF",
+   "refs": [
+    "E",
+    "F"
+   ]
+  },
+  {
+   "id": "sOE",
+   "refs": [
+    "O",
+    "E"
+   ]
+  },
+  {
+   "id": "sFG",
+   "refs": [
+    "F",
+    "G"
+   ]
+  },
+  {
+   "id": "sOF",
+   "refs": [
+    "O",
+    "F"
+   ]
+  },
+  {
+   "id": "sGH",
+   "refs": [
+    "G",
+    "H"
+   ]
+  },
+  {
+   "id": "sOG",
+   "refs": [
+    "O",
+    "G"
+   ]
+  },
+  {
+   "id": "sHA",
+   "refs": [
+    "H",
+    "A"
+   ]
+  },
+  {
+   "id": "sOH",
+   "refs": [
+    "O",
+    "H"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aO",
+    "refs": [
+     "A",
+     "O",
+     "B"
+    ],
+    "value": 45,
+    "label": "45",
+    "color": "ROSE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "lOA",
+    "ownerSegment": "sOA",
+    "text": "6",
+    "unit": "cm"
+   }
+  ],
+  "regions": [
+   {
+    "id": "rT",
+    "fill": "WARM",
+    "shapes": [
+     {
+      "polygon": [
+       "O",
+       "A",
+       "B"
+      ]
+     }
+    ]
+   }
+  ],
+  "equalLengths": [
+   {
+    "id": "e1",
+    "count": 1,
+    "segments": [
+     "sOA",
+     "sOB",
+     "sOC",
+     "sOD",
+     "sOE",
+     "sOF",
+     "sOG",
+     "sOH"
+    ],
+    "color": "BLUE"
+   }
+  ]
+ },
+ "caption": "원의 중심과 정팔각형의 각 꼭짓점을 이으면 합동인 이등변삼각형 8개로 나뉜다. 주황색 삼각형처럼 두 변은 반지름 6cm이고 끼인각은 360°를 8로 나눈 값이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "반지름 6cm인 원에 내접하는 정팔각형.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 560
+ }
+}

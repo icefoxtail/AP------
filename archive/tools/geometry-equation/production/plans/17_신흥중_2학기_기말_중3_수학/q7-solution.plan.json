@@ -1,0 +1,337 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "10"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "4"
+      },
+      {
+       "kind": "expression",
+       "op": "mul",
+       "args": [
+        {
+         "kind": "integer",
+         "value": "4"
+        },
+        {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "14"
+      },
+      {
+       "kind": "expression",
+       "op": "mul",
+       "args": [
+        {
+         "kind": "integer",
+         "value": "4"
+        },
+        {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "M",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "H",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "4"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "M",
+  "H"
+ ],
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBH",
+   "refs": [
+    "B",
+    "H"
+   ]
+  },
+  {
+   "id": "sHM",
+   "refs": [
+    "H",
+    "M"
+   ]
+  },
+  {
+   "id": "sMC",
+   "refs": [
+    "M",
+    "C"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  },
+  {
+   "id": "sDA",
+   "refs": [
+    "D",
+    "A"
+   ]
+  },
+  {
+   "id": "sAM",
+   "refs": [
+    "A",
+    "M"
+   ]
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sAH",
+   "refs": [
+    "A",
+    "H"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aB",
+    "refs": [
+     "C",
+     "B",
+     "A"
+    ],
+    "value": 60,
+    "label": "60",
+    "color": "ROSE",
+    "factRole": "GIVEN"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "lAB",
+    "ownerSegment": "sAB",
+    "text": "8",
+    "unit": "cm"
+   },
+   {
+    "id": "lDA",
+    "ownerSegment": "sDA",
+    "text": "10",
+    "unit": "cm"
+   },
+   {
+    "id": "lAH",
+    "ownerSegment": "sAH",
+    "text": "4sqrt(3)",
+    "unit": "cm",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lMC",
+    "ownerSegment": "sMC",
+    "text": "5",
+    "unit": "cm",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "regions": [
+   {
+    "id": "rT",
+    "fill": "BLUE",
+    "shapes": [
+     {
+      "polygon": [
+       "A",
+       "M",
+       "C"
+      ]
+     }
+    ]
+   }
+  ],
+  "segmentColors": [
+   {
+    "segments": [
+     "sAH"
+    ],
+    "color": "WARM"
+   },
+   {
+    "segments": [
+     "sMC"
+    ],
+    "color": "GREEN"
+   }
+  ]
+ },
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "A",
+    "H",
+    "C"
+   ]
+  }
+ ],
+ "caption": "평행사변형에서 BC=AD이고 M은 BC의 중점이므로 MC는 BC의 절반이다. A에서 BC에 내린 높이는 AB와 각 B로 구한다. 파란색으로 칠한 삼각형 AMC의 밑변은 초록색 MC, 높이는 주황색 AH이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "평행사변형 ABCD, AB=8, 각 B=60°, AD=10, M은 BC의 중점.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 길이와 각의 관계를 색과 표식으로 구별한다."
+ ],
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 380
+ }
+}

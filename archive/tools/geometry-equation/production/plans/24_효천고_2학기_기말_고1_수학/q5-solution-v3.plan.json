@@ -1,0 +1,70 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5/3",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT"
+      }
+    ]
+  },
+  "caption": "두 근호 안이 0 이상이 되는 범위의 공통부분을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "제곱근의 값이 실수가 되려면 근호 안의 식이 각각 $0$ 이상이어야 한다.",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "numberLine.rows[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "$3x+5\\ge0$",
+      "mappedTo": [
+        "numberLine.rows[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "$2-x\\ge0$",
+      "mappedTo": [
+        "numberLine.rows[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "제곱근의 값이 실수가 되려면 근호 안의 식이 각각 $0$ 이상이어야 한다.",
+      "mappedTo": [
+        "numberLine.rows[2]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "제곱근의 값이 실수가 되려면 근호 안의 식이 각각 $0$ 이상이어야 한다.",
+    "제곱근의 값이 실수가 되려면 근호 안의 식이 각각 $0$ 이상이어야 한다."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A",
+        "count": "4",
+        "countUnit": "개"
+      },
+      {
+        "id": "B",
+        "name": "B",
+        "count": "2",
+        "countUnit": "개"
+      }
+    ],
+    "disjoint": [
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "universe": {
+      "name": "U",
+      "count": "20",
+      "countUnit": "개"
+    }
+  },
+  "caption": "1부터 20까지의 수 중 5의 배수의 집합 A와 7의 배수의 집합 B는 공통인 원소가 없다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "1에서 20까지의 자연수 중 5의 배수 또는 7의 배수의 경우의 수를 구한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "5의 배수와 7의 배수가 겹치지 않아 합의 법칙을 그대로 쓸 수 있음을 보인다."
+  ]
+}

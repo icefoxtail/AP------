@@ -1,0 +1,66 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Y",
+        "mean": "10",
+        "sd": "5",
+        "label": "Y(10)"
+      },
+      {
+        "id": "X",
+        "mean": "16",
+        "sd": "6",
+        "label": "X(16)"
+      }
+    ],
+    "ticks": [
+      "0",
+      "5",
+      "10",
+      "15",
+      "22",
+      "28"
+    ],
+    "shades": [
+      {
+        "curve": "Y",
+        "from": null,
+        "to": "0"
+      },
+      {
+        "curve": "Y",
+        "from": "5",
+        "to": "15"
+      },
+      {
+        "curve": "X",
+        "from": "10",
+        "to": "22"
+      },
+      {
+        "curve": "X",
+        "from": "28",
+        "to": null
+      }
+    ]
+  },
+  "caption": "두 정규분포의 꼬리와 평균을 중심으로 한 구간을 비교한 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "Y는 평균 10, 표준편차 5이며 왼쪽 경계 0은 평균에서 표준편차 두 배만큼 낮다.",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "c2",
+      "condition": "X의 평균 m과 표준편차 σ에서 구간 10부터 2m-10까지는 평균 m을 중심으로 대칭이다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "두 정규분포와 각각의 주어진 확률영역"
+  ]
+}

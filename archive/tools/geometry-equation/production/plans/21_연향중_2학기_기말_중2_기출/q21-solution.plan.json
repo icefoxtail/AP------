@@ -1,0 +1,43 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "3의 배수",
+        "count": "16",
+        "countUnit": "개"
+      },
+      {
+        "id": "B",
+        "name": "17의 배수",
+        "count": "2",
+        "countUnit": "개"
+      }
+    ],
+    "disjoint": [
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "universe": {
+      "name": "U",
+      "count": "50",
+      "countUnit": "개"
+    },
+    "shade": "A∪B"
+  },
+  "caption": "1부터 50까지의 자연수 50개 가운데 3의 배수 16개와 17의 배수 2개는 서로 겹치지 않고, 색칠한 부분이 유한소수가 되는 수이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "1부터 50까지의 수를 120 또는 170으로 나누어 유한소수가 되는 경우",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "유한소수가 되는 두 경우(3의 배수, 17의 배수)가 겹치지 않음을 보인다"
+  ]
+}

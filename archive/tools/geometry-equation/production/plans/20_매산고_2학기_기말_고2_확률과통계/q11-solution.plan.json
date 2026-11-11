@@ -1,0 +1,40 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "한 발",
+      "children": [
+        {
+          "label": "+5점",
+          "p": "1/5"
+        },
+        {
+          "label": "-2점",
+          "p": "4/5"
+        }
+      ]
+    }
+  },
+  "caption": "한 번의 발사에서 고리 적중 여부에 따른 두 점수와 확률을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "색칠된 고리를 맞힐 확률은 1/5이다.",
+      "mappedTo": "chart.root.children[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "그 밖을 맞힐 확률은 4/5이고 점수는 2점 감소한다.",
+      "mappedTo": "chart.root.children[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "고리를 맞히면 5점을 얻는다.",
+      "mappedTo": "chart.root.children[0].label"
+    }
+  ],
+  "newVisualInformation": [
+    "한 번 시행의 점수와 확률을 두 갈래로 나타내 100회 이항모형 설정의 출발점을 보인다."
+  ]
+}

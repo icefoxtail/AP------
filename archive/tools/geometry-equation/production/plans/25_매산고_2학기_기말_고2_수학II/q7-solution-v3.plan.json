@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-12",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -4,
+      4,
+      -24,
+      24
+    ],
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "u",
+        "y": "16",
+        "intersectionX": [
+          "-2",
+          "4"
+        ],
+        "hideLabel": true
+      },
+      {
+        "id": "v",
+        "y": "-16",
+        "intersectionX": [
+          "2",
+          "-4"
+        ],
+        "hideLabel": true
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -2,
+        "y": 16
+      },
+      {
+        "id": "N",
+        "x": 2,
+        "y": -16
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "M",
+        "N"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "lu",
+          "slope": "0",
+          "intercept": "16",
+          "labelAt": "END"
+        },
+        {
+          "id": "lv",
+          "slope": "0",
+          "intercept": "-16",
+          "labelAt": "END"
+        }
+      ]
+    }
+  },
+  "caption": "홀함수인 삼차함수의 극대점과 극소점에서 두 수평선 y=16, y=-16이 곡선에 접한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "|f(x)|=16의 서로 다른 실근이 4개",
+      "mappedTo": "graphPlan.referenceLines"
+    }
+  ],
+  "newVisualInformation": [
+    "두 직선이 극대점과 극소점에서 접하고 다른 한 점에서 각각 만난다."
+  ]
+}
