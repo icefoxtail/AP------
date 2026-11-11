@@ -32,6 +32,8 @@
 9. **영수증 발급**: 최종 JS blob에 `<stem>_유사.review-receipt.json`을 결속한다(고등 `questionsReview` 구조). 생성자가 쓴 영수증은 인정하지 않는다.
 10. **게이트**: `node tools/harness/verify_similar_exam.mjs <similarStem>` exit 0. 실패하면 수리 후 재실행하고, 끝내 통과하지 못하면 병합하지 않고 PR에 사유를 남긴다. `--no-verify`·검사 완화 금지.
 11. **main 운영병합 (이것이 이 라인의 목적이다. main에 들어가지 않으면 의미가 없다)**: 하네스 게이트 exit 0이면 PR CI를 기다리지 않고(사용자 지시 2026-11-11: CI 대기 생략, 하네스 통과는 유지) **13번 루트 운영병합**을 실행한다: `python3 tools/main_merge_master.py --exam <similarStem> --apply`. 이 도구가 화이트리스트(JS·에셋·plans·영수증)와 등록 요청 `.archive-meta-register/inbox/<examUid>.json`을 만들어 main에 반영한다. 단순 PR 병합만으로는 메타 등록 요청이 빠질 수 있으므로 이 도구를 먼저 쓴다. 도구가 이 환경에서 막히면(예: main 직접 push 거부) 오류 문구를 PR에 남기고, 같은 도구가 만든 inbox 요청 파일을 PR 브랜치에 포함한 뒤 GitHub PR 병합(merge commit)으로 대신하며 그 사실을 보고한다. `--no-verify`·보호 규칙 우회·강제 push 금지. 병합 뒤 **원격 main의 SHA와 `<stem>_유사.js` blob을 재조회해 보고한다**(`MAIN_DONE`은 이 재조회까지 해야 선언한다). 병합 방식 세부는 `docs/agents/exam-release.md`, `docs/operations/Archive_MAIN_FIRST_CI_DEFERRED_CURRENT.md`를 따른다.
+11-1. **등록 요청 보류(`REQUEST DEFERRED: UID denominator mismatch`)는 실패가 아니라 순서다.** 병합 직후에는 main 등록 writer가 아직 그 시험지의 `question_metadata`·`question_identity_map` 행을 만들기 전이라 도구가 inbox 요청 생성을 보류한다(2026-11-11 실측: 광양제철고 유사 19문항, 행 0개). 임의로 inbox 파일을 만들지 않는다. 이때 병합 자체는 `MAIN_DONE`(파일 main 반영·원격 재조회)로 보고하고 등록 요청은 `INBOX_PENDING`으로 따로 적는다.
+11-2. **정산(reconcile)**: 매 회차 시작 시, main에는 있는데 inbox 요청 파일이 아직 없는 이전 회차 병합 시험지(`git log`의 `[HIGH-유사 출고]` 커밋과 `.archive-meta-register/inbox/`를 대조)가 있으면 그 시험지에 `python3 tools/main_merge_master.py --exam <stem> --apply`를 다시 실행한다. main 등록 writer가 행을 만든 뒤라면 요청이 생성돼 main에 반영된다. 아직 보류면 그 사실만 보고하고 다음 회차로 넘긴다. 정산은 새 시험지 인수보다 먼저 하되 한 회차 시간의 일부만 쓴다.
 12. 병합하지 못한 경우 PR을 draft로 두고 `REVIEW_BLOCKED` + 첫 막힌 단계를 PR에 남긴다. 다음 회차가 이어받을 수 있게 한다.
 
 ---
