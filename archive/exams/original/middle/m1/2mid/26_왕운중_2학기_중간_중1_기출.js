@@ -217,7 +217,7 @@ window.questionBank = [
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q003_question-v2.svg",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q3-solution-v3.svg",
-    "solutionImageAlt": "해설 그림: 합동인 두 삼각형 ABC와 DEF에서 대응하는 변과 각을 같은 색·같은 눈금으로 묶은 그림. AB와 DE는 파랑 눈금 1개로 4 cm, BC와 EF는 주황 눈금 2개로 5 cm, AC와 DF는 초록 눈금 3개이며, 각 B와 각 E는 같은 분홍색 호이고 각 B에 48°가 적혀 있다.",
+    "solutionImageAlt": "해설 그림: 합동인 두 삼각형 ABC와 DEF에서 대응하는 변과 각을 같은 색·같은 눈금으로 묶은 그림. AB와 DE는 파랑 눈금 1개, BC와 EF는 주황 눈금 2개, AC와 DF는 초록 눈금 3개이며, 각 B와 각 E는 같은 분홍색 호이고 각 B에 48°가 적혀 있다.",
     "solutionImageCaption": "△ABC≡△DEF에서 대응하는 꼭짓점은 A↔D, B↔E, C↔F이다. 따라서 AB=DE=4 cm, BC=EF=5 cm, AC=DF이고 ∠E=∠B=48°이다. 정답은 ③이다.",
     "solutionImageSize": "full"
   },
