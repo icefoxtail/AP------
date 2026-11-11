@@ -10,7 +10,7 @@
    - #…&play=1 (s=장면id 와 함께): 장면을 연 뒤 바로 재생. 그 밖에는 절대 자동 재생하지 않습니다(CI 가 막음).
    - 재생 중에 그림을 만지면 멈춥니다. prefers-reduced-motion 이면 자동 재생 대신 자막을 한 칸씩 넘깁니다.
    [쓰는 법] 실험실 페이지에서 kit/apl-video-core.js · apl-player.js · apl-toc.js · apl-video.css 를 apl-shell.js 다음에 불러오고,
-   createLab({ ..., videos: { 장면id: 대본 }, lessons: { 장면id: 해설 또는 [해설, 해설(최대 3)] } }) 또는 장면에 video: 대본 / lesson: 해설 을 줍니다(해설이 영상보다 우선).
+   createLab({ ..., videos: { 장면id: 대본 }, lessons: { 장면id: 해설 또는 [해설, 해설(최대 4)] } }) 또는 장면에 video: 대본 / lesson: 해설 을 줍니다(해설이 영상보다 우선).
    한 장면에 해설이 여럿이면(예: 겉넓이 / 부피) 진입 화면에 해설마다 ▶ 단추가 나란히 있고 단추 하나가 그 해설을 바로 재생합니다. 끝 카드의 「다음 ▶」는 같은 장면의 다음 해설 → 다음 장면 순서입니다. 자세한 형식: docs/guides/APMATH_LAB_VIDEO_SCRIPT_GUIDE_CURRENT.md
    ========================================================================== */
 (function () {
@@ -66,7 +66,7 @@
       this._bind();
       this._syncEntry(true);
       // #…&play=1 : 해설 링크로 열면 장면을 연 뒤 바로 재생(그 밖에는 자동 재생하지 않음)
-      // play=1 은 첫 해설, play=2·3 은 그 번째 해설, play=<label>(예: play=부피)은 그 이름의 해설
+      // play=1 은 첫 해설, play=2·3·4 는 그 번째 해설, play=<label>(예: play=부피)은 그 이름의 해설
       const pv = urlParam('play');
       if (pv && !lab.teach) {
         requestAnimationFrame(() => setTimeout(() => {
@@ -147,7 +147,7 @@
       if (!list.length) return -1;
       const byLabel = list.findIndex((c) => c.label && c.label === v);
       if (byLabel >= 0) return byLabel;
-      return /^[1-3]$/.test(v) && +v <= list.length ? +v - 1 : -1;
+      return /^[1-9]\d*$/.test(v) && +v <= list.length ? +v - 1 : -1;
     }
     /** i 다음으로 해설·영상이 있는 장면(없으면 -1). */
     nextIndex(i) {

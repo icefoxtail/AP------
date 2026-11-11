@@ -186,7 +186,7 @@ body.apl-vid .apl-vtbar[data-phase="small"] .apl-vtbig { display: none; }
 .apl-lentry { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 8px 10px; }
 .apl-lgo { width: auto; flex: 0 0 auto; min-height: 34px; padding: 0 12px; font-size: var(--fs-sm); font-weight: 800; justify-content: center; gap: 6px; white-space: nowrap; position: relative; }
 .apl-lgo .apl-ico { width: 16px; height: 16px; }
-/* 해설이 여럿이면 해설마다 ▶ 단추를 나란히(2개 = 반반, 3개 = 3등분). 글자는 줄이지 않고, 초 표시가 모자라면 둘째 줄로 내립니다. */
+/* 해설마다 내용 폭의 ▶ 단추를 둡니다. 최대 네 개이며 공간이 모자라면 flex-wrap으로 다음 줄에 놓습니다. 글자는 줄이지 않습니다. */
 .apl-lbtns { display: contents; }
 .apl-lgo.multi { flex-wrap: nowrap; padding: 0 12px; line-height: 1.2; }
 .apl-lgo.multi .m { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }

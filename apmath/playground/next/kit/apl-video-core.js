@@ -50,7 +50,7 @@
 
   // 쇼츠 규칙(선생님 지적 2026-11-03: 24초·22초 샘플이 늘어진다): 8~15초, 자막 2~3줄, 한 줄 40자(휴대폰 화면 2줄 이내), 첫 1초 안에 그림이 움직이기 시작
   const LIMITS = { minLen: 8, maxLen: 15, minSay: 2, maxSay: 3, maxSayChars: 40, minSayGap: 2.5, maxSummaryChars: 40, maxTaskChars: 90, maxTitleChars: 20, maxFirstMoveAt: 1 };
-  const LESSON_LIMITS = { minChapters: 2, maxChapters: 6, maxPerScene: 3, maxLabelChars: 6 };
+  const LESSON_LIMITS = { minChapters: 2, maxChapters: 6, maxPerScene: 4, maxLabelChars: 6 };
   const LESSON_FIELDS = ['title', 'tab', 'answer', 'answerText', 'label', 'summary', 'task', 'chapters'];
   const LESSON_TABS = ['review'];
   const EASE = {
