@@ -24,6 +24,7 @@
   const abOf = (s) => { const a = clamp(Math.round(s.pyBa), 2, 9), b = clamp(Math.round(s.pyBb), 2, 9); return { a, b, c2: a * a + b * b, ci: isSqN(a * a + b * b) ? isq(a * a + b * b) : null }; };
   const fr = (v) => texRat(v); // 분수는 \frac{ }{ } (그림 글자는 키트가 쌓아서 그림)
   const nextTri = (prev) => { let i; do { i = rint(0, TRIS.length - 1); } while (prev && i === prev.pyP); return i; };
+  const lessonProblem = (Q) => (Q.html || Q.stem) + '<br>보기: ' + Q.choices.map((c, i) => `${G.NUM[i]} ${c.h != null ? c.h : '$' + c.t + '$'}`).join(' · ');
 
   /* ====================================================================== 1. 유클리드의 증명 (빗변 AB 가로 · 아래 정사각형) */
   const eu = {
@@ -33,6 +34,7 @@
     init: (s) => { s.pyP = 0; s.pyG = 0; },
     gen: (s, prev) => ({ pyP: nextTri(prev), pyG: 0 }),
     model: (s) => { const t = triP(s); const { a, b, c } = t; return { ...t, p: (b * b) / c, q: (a * a) / c, a2: a * a, b2: b * b, c2: c * c, g: clamp(s.pyG || 0, 0, 1) }; },
+    lessonQuestion: (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : '빗변 위 정사각형을 수선으로 나눈 두 직사각형은 각각 어느 직각변 위 정사각형과 넓이가 같을까?',
     draw(b, s, M, C) {
       const { a, b: bb, c, p, g } = M;
       const A = pt(0, 0), B = pt(c, 0), Cc = pt(p, -(a * bb) / c), H = pt(p, 0), cen = G.centroid([A, B, Cc]);
@@ -59,6 +61,10 @@
       poly(b, [A, B, Cc], 'ink', 3.4);
       ang(b, Cc, A, B, { color: 'amber', r: 20 });
       if (stp(2)) { b.right(H, B, Cc, { size: 11, color: 'rose' }); b.point(H, { color: 'rose', r: 4 }); T(b, H, 'H', { dx: 12, dy: -12, size: 15, color: 'rose' }); }
+      if (C.lesson && !s.lessonEntry && s.pySupportReady) {
+        ang(b, A, B, Cc, { color: 'green', rings: 1, r: 28 });
+        T(b, mid(A, H), 'AH', { dy: 42, size: 15, color: 'green' });
+      }
       [[A, 'A', -1, -1], [B, 'B', 1, -1], [Cc, 'C', 0, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 13, dy: dy * 15, size: 17 }); });
       T(b, mid(A, B), prob ? `${c}` : `c=${c}`, { dy: 16, size: 15, color: 'amber' });
       // BC의 길이는 변 가까이에, a²의 넓이는 정사각형 중심에 구분해 둡니다.

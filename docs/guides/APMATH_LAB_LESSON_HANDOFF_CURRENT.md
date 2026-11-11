@@ -50,8 +50,9 @@
 | `g7-parallel` 평행선의 성질 | 12 | 12 / 29 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1757](https://github.com/icefoxtail/AP------/pull/1757), merge `22cad5a7005bc7ddedc0ab17fb760f4605b11dae`. 최소 검사 86/86, 누락 0. Pages 등록 작업 대기 |
 | `g7-points-lines` 점과 직선 | 24 | 24 / 63 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1758](https://github.com/icefoxtail/AP------/pull/1758), merge `87861a8b40debf3eb8e69153426721298e519e6d`. 최소 검사 120/120, 누락 0. Pages 등록 작업 대기 |
 | `g7-spatial` 공간 위치 관계 | 27 | 27 / 62 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1760](https://github.com/icefoxtail/AP------/pull/1760), merge `16460f7381b3ca9df8ee80934a2096e588fad380`. 최소 검사 102/102, 누락 0. 실제 학생 HTML은 이전 버전 |
-| `g7-construction` 작도와 합동 | 23 | 23 / 70 | **IMPLEMENTED / QA_PENDING** · 신규 23장면/70해설, 누락 0. 최소 검사 141/141. 네 번째 해설 지원 키트 PR #1762 반영. PR·main·Pages 확인 예정 |
-| 중2 4개 · 중3 2개 | 247 | 0 | 미착수, 선행 확인 필요 (§6) |
+| `g7-construction` 작도와 합동 | 23 | 23 / 70 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1764](https://github.com/icefoxtail/AP------/pull/1764), merge `87b09c58ac6cc061ba623c1e3e990ddcc18f6537`. 최소 검사 141/141, 누락 0. 실제 학생 HTML은 이전 버전 |
+| `g8-pythagoras` 피타고라스 정리 | 37 | 구현 중 | `feat/lessons-g8-pythagoras`, 개념 1·유형 2 시범을 먼저 확인하고 전체 장면으로 확장 (§6) |
+| 중2 나머지 3개 · 중3 2개 | 210 | 0 | 미착수 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
@@ -105,7 +106,7 @@
 
 권장 순서(그림 움직임이 이미 있는 것부터): `g7-polyhedra` → `g7-solids` → `g7-polygons` → `g7-area` → `g7-parallel` → `g7-points-lines` → `g7-spatial` → `g7-construction`.
 
-- `g7-polyhedra` 26장면/58해설, `g7-solids` 22/48, `g7-polygons` 18/31, `g7-area` 14/30, `g7-parallel` 12/29, `g7-points-lines` 24/63, `g7-spatial` 27/62, `g7-construction` 23/70을 구현했다. 중1 전체 282장면/543해설의 실제 등록과 각 실험실의 최소 검사를 완료했다. 마지막 작도의 운영 병합·Pages 확인 뒤 §6의 중2 피타고라스 시범으로 이동한다.
+- `g7-polyhedra` 26장면/58해설, `g7-solids` 22/48, `g7-polygons` 18/31, `g7-area` 14/30, `g7-parallel` 12/29, `g7-points-lines` 24/63, `g7-spatial` 27/62, `g7-construction` 23/70을 구현했다. 중1 전체 282장면/543해설의 실제 등록과 각 실험실의 최소 검사를 완료했다. 마지막 작도까지 main 운영 병합을 확인했다. Pages 반영은 §3처럼 별도로 추적하며 §6의 중2 피타고라스 시범을 시작한다.
 - `g7-parallel` 원본은 단계(`step`) 구동이 중심이다. 해설에는 보조선·각 표시의 실제 진행을 추가하고 종이 접기는 기존 `pat` 값을 재사용했다. 수동 화면의 기존 단계 동작은 유지한다.
 - 값이 바뀌면 단계를 0으로 되돌리는 `view()`가 있다(`g7-parallel/kit.js`, `g7-polygons/core.js`, `g7-construction/core.js`, `g7-points-lines/common.js`). 값 설정 → 단계 순으로 쓴다.
 
@@ -172,13 +173,13 @@
 
 **중1과 다른 점 (2026-11-10 실측):** 풀이(정리) 탭이 탐구 화면과 **다른 숫자의 문제**를 그린다. 예: `g8-pythagoras`의 `py2-euclid`는 탐구에서 3-4-5 그림인데 정리 탭은 문제 번호 상태 `s.pyQ`의 문제(빗변 20 등)를 그린다(`g8-pythagoras/core.js`의 `qState`, 약 317·487행). 슬라이더 값을 바꿔도 풀이 그림은 바뀌지 않는다.
 
-**방식:** 해설은 풀이 탭 그림을 쓰되 **문제를 t=0에 고정**한다(문제 번호 상태값을 첫 장 `at:0`의 `set`에 둔다). 자막의 수는 그 문제의 수다. 진입 화면도 같은 문제의 0단계 그림이어야 한다(K2가 들어가기 전에는 장면에 `lessonEntry` 처리).
+**방식:** 해설은 풀이 탭 그림을 쓰되 **문제를 t=0에 고정**한다(실제 문제 조건 객체 `pyQ`와 seed를 첫 장 `at:0`의 `set`에 둔다). 자막의 수는 그 문제의 수다. 진입 화면도 같은 문제의 0단계 그림이어야 한다(K2가 들어가기 전에는 장면에 `lessonEntry` 처리).
 
 **선행 작업 (첫 PR 전에):**
 
 1. `g8-pythagoras` 한 실험실로 시범을 만든다(개념 1 + 유형 2). 확인할 것: 문제 고정이 다시 보기·해설 전환에서 유지되는지, 「새 문제」 난수가 해설에 끼어들지 않는지, 풀이 탭의 `stepT` 보간이 재생 중에 보이는지(K3 관련).
-2. 이 실험실들은 풀이 흐름이 탐구 → 문제 → 풀이 탭이고 `SV.draw(..., stepIndex)` 방식이다(`g8-triangles/core.js` 약 584~643행). 문제 탭의 보기 선택(`[data-py-pick]` 등)은 해설이 건드리지 않는다.
-3. 알려진 장면 오류: `g8-pythagoras`의 `py5-sqarea`는 문제(97)와 해설(35)이 맞지 않는다. 해설을 얹기 전에 장면을 고치거나 건너뛴다.
+2. 풀이 흐름은 탐구 → 문제 → 풀이 탭이다. `g8-triangles` 등은 `SV.draw(..., stepIndex)`를 쓰지만, 최신 `g8-pythagoras`는 `D.draw`와 `C.answer`/`C.calculation`을 직접 사용하므로 실제 원본에 맞춰 연결한다. 문제 탭의 보기 선택(`[data-py-pick]` 등)은 해설이 건드리지 않는다.
+3. 과거 `py5-sqarea`의 문제 97/해설 35 불일치 기록은 최신 main `87b09c58...`에서 재현되지 않았다. 탐구 기본값은 20+15=35이며, 원본 생성 범위의 `pyQ:{pyS1:49,pyS2:48,pyUnk:'c'}`를 고정하면 문제 모델·질문·정답 보기·풀이 단계는 모두 97로 일치한다. 원본 계산을 재수정하지 않고 신규 해설에서 같은 `pyQ` 결속을 검사한다.
 4. 합동 장면: 두 삼각형이 겹쳐 있으면 대응 관계가 안 보인다. 두 삼각형을 떼어 놓고 대응변·대응각을 같은 색·같은 표시로 맞춘 그림이 해설의 핵심이다.
 
 시범이 통과하면 나머지 5개 실험실을 실험실 단위로 진행한다.
@@ -244,6 +245,10 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+- 2026-11-11 · 작도와 합동 [PR #1764](https://github.com/icefoxtail/AP------/pull/1764) **main 운영 병합 완료**. head `f59bd3eae154a2b60006352382ef78349d400f8f`, merge/main `87b09c58ac6cc061ba623c1e3e990ddcc18f6537`. API·Git main 일치, merge ancestor 및 대상 파일 차이 0 확인. 23장면/70해설, 최소 검사 141/141·구문 15파일. [등록 writer 42974755265](https://github.com/icefoxtail/AP------/actions/runs/42974755265) pending이며 학생 HTML은 HTTP 200·이전 4691 bytes(SHA-256 `59b40c1ca6e569c3b040287dfce7a95bccc0e3ea6b58860688f5d0309bb7e7fd`), player/lesson 연결이 없어 **Pages NOT_VERIFIED / QA_PENDING**이다. 최종 head CI 14개는 queued로 전체 CI PASS를 주장하지 않았다. **중1 main 10개 실험실·282/282장면·543해설 완료**. Pages는 6개 196장면/319해설 반영 확인, 나머지 4개 86장면/224해설 대기다.
+- 2026-11-11 · [AWCR r14](https://drive.google.com/file/d/1dHE9ihz08YR5OxmWADYbjqEe-VRNOT9k/view) immutable 저장·원격 raw 재조회 완료. SHA-256 `7dd3e7bcc67149d95dc7a0260f2dc3285a36b8f5ec8505161e8b6833b59aa2e3`, parent r13 `7d7ebfb5831bac372e830ba2cd6bd9c86a59951e8d8df363a58dca28ccd6f6fd` 결속 확인. 중1 main 전체 완료와 Pages 별도 상태, 실제 검증하지 않은 품질 UNKNOWN/모바일 NOT_RUN을 기록했다. 다음 revision r15. 다음 실험실 `g8-pythagoras`는 총 37장면이며 시범 3장면 뒤 남은 34장면을 구현한다.
+- 2026-11-11 · 중2 `g8-pythagoras`를 최신 main `87b09c58ac6cc061ba623c1e3e990ddcc18f6537`에서 새 브랜치로 시작했다. 실제 HTML은 37장면(t1 6, t2 5, t3 4, t4 5, t5 6, t6 3, t7 5, t8 3)이다. 시범은 `py1-sq` 개념·`py1-leg` 실제 문제·`py2-euclid` 실제 문제이며, `pyQ`는 번호가 아닌 문제 조건 객체다. 그림 진행값은 `pyQ`에 넣지 않고 별도 start/to로 움직인다. 첫 시범 세 장면에는 `stepT`가 없으므로 실제 모델 값 진행과 legacy tick 비개입을 검사하며, 접기 장면의 `anim`은 해당 장면에서 별도로 확인한다.
 
 - 2026-11-11 · `g7-construction` **23장면/70해설 신규 구현 완료**, 누락 0. 원격 main에서 시작해 필요한 별도 키트 merge `0eb89d192b650112782a1eb80b1c44f158fde0ec`를 반영했고 정상 단위마다 원격 보존했다. 최소 검사 141/141, JS/MJS 15파일 구문 통과. **IMPLEMENTED / QA_PENDING**, PR·main·Pages 확인 예정. 구현 분모는 중1 전체 **282/282장면·543해설**이며, 운영 병합 분모는 해당 PR의 실제 merge 후 갱신한다. 다음은 §6 `g8-pythagoras`의 개념 1·유형 2 시범이다.
 

@@ -34,6 +34,8 @@
   const L2 = (name, v2) => (isSqN(v2) ? `${name}=${isq(v2)}` : `${name}²=${v2}`);
   const lenOrSq = (v2) => (isSqN(v2) ? `${isq(v2)}` : null);
   const COL = { a: 'sky', b: 'green', c: 'amber' };
+  const lessonReady = (s, C, key) => !C.lesson || (!s.lessonEntry && !!s[key]);
+  const lessonProblem = (Q) => (Q.html || Q.stem) + '<br>보기: ' + Q.choices.map((c, i) => `${G.NUM[i]} ${c.h != null ? c.h : '$' + c.t + '$'}`).join(' · ');
 
   /* ---------------------------------------------------------------- 직각삼각형 그리기 (직각 C, 가로 BC=a, 세로 CA=b)
      o: sq(정사각형 3개), rot(제자리 회전 도), lab {a,b,c: 변 위 글자}, sqLab {a,b,c: 정사각형 안 글자}, names(꼭짓점 이름) */
@@ -71,6 +73,7 @@
       const t = o.lab && o.lab[k];
       if (t && !(small && o.sqLab && o.sqLab[k] && sh('s' + k))) sideTag(b, k === 'c' ? lerp(p, q, 0.25) : p, q, sc || (o.labOut || (cOut && k === 'c') ? cen : add(mul(mid(p, q), 2), mul(cen, -1))), t, { color: COL[k], size: o.size || 16, gap: o.gap == null ? 11 : o.gap });
       if (o.hi === k) line(b, p, q, COL[k], 6, { alpha: 0.9 });
+      if (o.traceSide === k && o.trace > 0) line(b, p, lerp(p, q, clamp(o.trace, 0, 1)), 'rose', 4.4);
     });
     const nm = o.names || ['A', 'B', 'C'];
     [[A, nm[0]], [B, nm[1]], [Cc, nm[2]]].forEach(([p, s]) => { b.point(p, { color: 'ink', r: 4.5 }); if (s) tagOut(b, p, cen, s, { size: 17, gap: 10 }); });
@@ -90,13 +93,14 @@
     init: (s) => { s.pyA = 3; s.pyB = 4; s.pyGrid = false; },
     gen: (s, prev) => { let t; do { t = pick(BASE_HYP, prev ? [prev.pyA, prev.pyB] : null); } while (prev && t[0] === prev.pyA && t[1] === prev.pyB); return { pyA: t[0], pyB: t[1] }; },
     model: (s) => triOf(s),
+    lessonQuestion: (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : `직각을 낀 두 변 a=${M.a}, b=${M.b}와 빗변 c 위에 세 정사각형을 그린다. 세 넓이 사이에는 어떤 관계가 있을까?`,
     draw(b, s, M, C) {
       const { a, b: bb, a2, b2, c2, ci } = M;
       const R = figRt(b, a, bb, C, {
         sq: !C.problem, bt: C.problem ? 40 : 50, size: 16,
-        lab: { a: `a=${a}`, b: `b=${bb}`, c: C.answer ? ci ? `c=x=${ci}` : 'c' : 'x' },
-        sqLab: { a: `a²=${a2}`, b: `b²=${bb * bb}`, c: C.calculation ? `c²=${c2}` : 'c²=x²' },
-        at: { sa: 2, sb: 2, sc: 3 }
+        lab: { a: `a=${a}`, b: `b=${bb}`, c: C.lesson && !s.pyLessonProblem ? 'c' : C.answer ? ci ? `c=x=${ci}` : 'c' : 'x' },
+        sqLab: { a: lessonReady(s, C, 'pySquareAReady') ? `a²=${a2}` : 'a²', b: lessonReady(s, C, 'pySquareBReady') ? `b²=${bb * bb}` : 'b²', c: C.calculation ? `c²=${c2}` : C.lesson && !s.pyLessonProblem ? 'c²' : 'c²=x²' },
+        at: { sa: 2, sb: 2, sc: 3 }, traceSide: C.lesson ? 'a' : null, trace: s.pyTrace || 0
       });
       if (C.problem) return;
       if (s.pyGrid && !C.problem && (!C.review || C.step >= 2)) {
@@ -149,14 +153,15 @@
     init: (s) => { s.pyH = 10; s.pyL = 6; s.pyK = 0; },
     gen: (s, prev) => { let t; do { t = pick(LEG_CHIPS); } while (prev && t[0] === prev.pyH && t[1] === prev.pyL); return { pyH: t[0], pyL: t[1], pyK: 0 }; },
     model: (s) => legOf(s),
+    lessonQuestion: (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : `빗변 c=${M.c}, 한 직각변 a=${M.a}일 때 나머지 직각변 b의 제곱은 어떻게 구할까?`,
     draw(b, s, M, C) {
       const { a, c, a2, c2, b2, bi } = M;
       const bq = Math.sqrt(b2); // 그림을 그릴 때만 쓰는 값(화면에 제곱근 기호는 쓰지 않음)
       const R = figRt(b, a, bq, C, {
         sq: !C.problem, bt: 40,
         lab: { a: `a=${a}`, b: C.answer ? bi ? `b=x=${bi}` : 'b' : 'x', c: `c=${c}` },
-        sqLab: { a: `a²=${a2}`, b: C.calculation ? `b²=${b2}` : 'b²=x²', c: `c²=${c2}` },
-        at: { sa: 2, sb: 3, sc: 2 }
+        sqLab: { a: lessonReady(s, C, 'pySquareAReady') ? `a²=${a2}` : 'a²', b: C.calculation ? `b²=${b2}` : 'b²=x²', c: lessonReady(s, C, 'pySquareCReady') ? `c²=${c2}` : 'c²' },
+        at: { sa: 2, sb: 3, sc: 2 }, traceSide: C.lesson ? 'c' : null, trace: s.pyTrace || 0
       });
       if (C.calculation && C.txt) T(b, pt(a / 2, a), `${c2} − ${a2} = ${b2}`, { dy: 34, size: 18, color: 'green' });
     },

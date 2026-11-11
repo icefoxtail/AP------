@@ -10,7 +10,7 @@
   'use strict';
   const G = window.APL_PY;
   if (!G || !G.figRt) return;
-  const { clamp, pt, add, mid, T, sideTag, line, poly, fillPoly, ang, fit, P, mkChoices, rd, notes, fmtN, pick, rint, bboxOf, tagOut, isSqN, isq, figRt, L2, lenOrSq } = G;
+  const { clamp, pt, add, mid, lerp, T, sideTag, line, poly, fillPoly, ang, fit, P, mkChoices, rd, notes, fmtN, pick, rint, bboxOf, tagOut, isSqN, isq, figRt, L2, lenOrSq } = G;
 
   const PARAMS = {
     pyK: P('배수 k', 1, 4, 1, 1, { color: 'green', hint: 'k배를 해도 직각삼각형이에요', format: (v) => `×${v}` }),
@@ -18,6 +18,12 @@
     pyQ2: P('긴 변 q', 3, 15, 1, 4, { color: 'green', format: (v) => `${v}` })
   };
   const num = (v) => `${v}`;
+  // Trace the actual right-triangle sides without changing any problem length.
+  function lessonTrace(b, R, s, C) {
+    if (!C.lesson) return;
+    const points = [R.B, R.C, R.A, R.B], t = clamp(s.pyBT || 0, 0, 1) * 3;
+    for (let i = 0; i < 3; i++) if (t > i) line(b, points[i], lerp(points[i], points[i + 1], Math.min(1, t - i)), ['sky', 'green', 'amber'][i], 6, { alpha: .8 });
+  }
 
   /* ---------------------------------------------------------------- 피타고라스 수의 k배 (공용)
      fams: [[a,b,c],…] 기본 삼각형들, kmax: [최대 k] */
@@ -34,6 +40,7 @@
         return { pyF: i, pyK: k, pyAsk: ask };
       },
       model: (s) => ({ ...famOf(s), ask: s.pyAsk || 'c' }),
+      lessonQuestion: (M, s, Q) => s.pyLessonProblem ? Q.stem : `피타고라스 수 (${M.a0}, ${M.b0}, ${M.c0})의 세 변을 모두 ${M.k}배 해도 직각삼각형일까?`,
       draw(b, s, M, C) {
         const { a, b: bb, c, k, ask } = M, prob = C.problem;
         const val = { a, b: bb, c };
@@ -41,9 +48,10 @@
         ['a', 'b', 'c'].forEach((q) => { lab[q] = C.givens ? (q === ask && !C.answer ? 'x' : `${val[q]}`) : `${q}=${val[q]}`; });
         const R = figRt(b, a, bb, C, {
           sq: !prob, bt: 44, lab, at: { sa: 2, sb: 2, sc: 2 },
-          sqLab: Object.fromEntries(['a', 'b', 'c'].map((q) => [q, q === ask && !C.calculation ? 'x²' : `${q}²=${val[q] * val[q]}`]))
+          sqLab: Object.fromEntries(['a', 'b', 'c'].map((q) => [q, C.lesson && !C.calculation ? (C.givens && q === ask ? 'x²' : `${q}²`) : q === ask && !C.calculation ? 'x²' : `${q}²=${val[q] * val[q]}`]))
         });
-        if (C.calculation && C.txt) T(b, pt(a / 2, a), `${a * a} + ${bb * bb} = ${c * c}`, { dy: 34, size: 18, color: 'amber' });
+        lessonTrace(b, R, s, C);
+        if ((C.lesson && !s.pyLessonProblem ? C.answer : C.calculation) && C.txt) T(b, pt(a / 2, a), `${a * a} + ${bb * bb} = ${c * c}`, { dy: 34, size: 18, color: 'amber' });
       },
       steps: (M) => {
         const known = ['a', 'b', 'c'].filter((k) => k !== M.ask), other = M.ask === 'a' ? 'b' : 'a';
@@ -104,6 +112,7 @@
       return { pyQ1: p, pyQ2: q, pyKind: kind };
     },
     model: (s) => trapOf(s),
+    lessonQuestion: (M, s, Q) => Q.stem,
     draw(b, s, M, C) {
       const { p, q, x1, x2, x1i, x2i, kind } = M, prob = C.problem;
       // 왼쪽: x 가 빗변(직각변 p, q), 오른쪽: q 가 빗변(직각변 p, x). 두 삼각형을 가로로 나란히 놓습니다.
@@ -115,11 +124,13 @@
       const x0 = stacked || !show1 ? 0 : q + gap, dy = stacked ? p + gap : 0;
       fit(b, { x0: -0.4, x1: (show2 ? Math.max(show1 ? q : 0, x0 + w2) : q) + 0.4, y0: -p, y1: dy }, { t: 44, b: 56, l: 34, r: 34 });
       if (show1) {
-        figRt(b, q, p, C, { noFit: true, dx: 0, sq: false, names: ['', '', ''], lab: { a: `${q}`, b: `${p}`, c: C.answer ? x1i ? `x=${x1i}` : `x²=${x1}` : 'x' }, labOut: true });
+        const R = figRt(b, q, p, C, { noFit: true, dx: 0, sq: false, names: ['', '', ''], lab: { a: `${q}`, b: `${p}`, c: C.answer || C.lesson && s.pyBFirstReady ? C.lesson ? `x²=${x1}` : x1i ? `x=${x1i}` : `x²=${x1}` : 'x' }, labOut: true });
+        lessonTrace(b, R, s, C);
         if (!prob) T(b, pt(q / 2, 0), 'x가 가장 긴 변', { dy: 40, size: 15, color: 'amber' });
       }
       if (show2) {
-        figRt(b, w2, p, C, { noFit: true, dx: x0, dy, sq: false, names: ['', '', ''], lab: { a: C.answer ? x2i ? `x=${x2i}` : `x²=${x2}` : 'x', b: `${p}`, c: `${q}` }, labOut: true });
+        const R = figRt(b, w2, p, C, { noFit: true, dx: x0, dy, sq: false, names: ['', '', ''], lab: { a: C.answer || C.lesson && s.pyBSecondReady ? C.lesson ? `x²=${x2}` : x2i ? `x=${x2i}` : `x²=${x2}` : 'x', b: `${p}`, c: `${q}` }, labOut: true });
+        lessonTrace(b, R, s, C);
         if (!prob) T(b, pt(x0 + w2 / 2, dy), `${q}가 가장 긴 변`, { dy: 40, size: 15, color: 'amber' });
       }
     },
