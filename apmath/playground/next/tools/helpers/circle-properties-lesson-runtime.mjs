@@ -27,11 +27,14 @@ export async function load() {
   let context;
   const ready = [];
   const listeners = new Map();
-  const element = (tag) => tag === 'canvas' ? canvas() : { tagName: tag.toUpperCase(), dataset: {}, style: { setProperty() {} }, classList: { add() {}, remove() {}, toggle() {} }, setAttribute() {}, addEventListener() {}, querySelector() { return null; }, querySelectorAll() { return []; }, append() {} };
+  const element = (tag) => tag === 'canvas' ? canvas() : { tagName: tag.toUpperCase(), dataset: {}, style: { setProperty() {} }, classList: { add() {}, remove() {}, toggle() {} }, setAttribute() {}, addEventListener() {}, querySelector() { return null; }, querySelectorAll() { return []; }, append() {}, remove() {} };
   const document = { getElementById() { return null; }, querySelector() { return null; }, createElement: element, createTextNode: (text) => ({ textContent: text }), addEventListener(event, fn) { const list = listeners.get(event) || []; list.push(fn); listeners.set(event, list); }, documentElement: element('html'), body: element('body'), head: element('head') };
   document.head.append = (el) => {
     if (el.tagName !== 'SCRIPT') return;
-    vm.runInContext(fs.readFileSync(path.join(labs, el.src), 'utf8'), context, { filename: el.src });
+    let source;
+    try { source = fs.readFileSync(path.join(labs, el.src), 'utf8'); }
+    catch (error) { if (error.code === 'ENOENT') { el.onerror?.(); return; } throw error; }
+    vm.runInContext(source, context, { filename: el.src });
     el.onload?.();
   };
   const sandbox = { innerWidth: 1440, document, console, Math, URLSearchParams, performance, setTimeout, clearTimeout, requestAnimationFrame: () => 0, cancelAnimationFrame() {}, devicePixelRatio: 1, location: { hash: '', search: '', pathname: '/labs/g9-circle.html' }, history: { replaceState() {} }, localStorage: { getItem() { return null; }, setItem() {} }, getComputedStyle: () => ({ getPropertyValue: (key) => key === '--font-ui' ? 'sans-serif' : key === '--m-glow' ? '0' : '#ffffff' }), matchMedia: () => ({ matches: false }), addEventListener: (event, fn) => { if (event === 'DOMContentLoaded') ready.push(fn); } };

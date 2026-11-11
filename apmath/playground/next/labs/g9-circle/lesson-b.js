@@ -34,7 +34,7 @@
           { at: 0, say: lines[0], step: 0, set: { ...sets, ciPk: fixture.pk, ciN: fixture.variant, ciSeed: 0,
             ciLessonProblem: !concept, ciLessonSource: options.source !== false,
             ciShowAnswer: false, ciCalculationReady: false,
-            ciBQuestion: options.question || '', ciBUnknown: options.unknown || '?', ciBMode: options.mode || '' } },
+            ciBQuestion: options.question || '', ciBUnknown: options.unknown ?? '?', ciBMode: options.mode || '' } },
           { at: .1, to: { ciBTrace: 1, ...(options.firstMotion || {}) }, dur: 4 },
           { at: 6, say: lines[1], step: 1 }
         ] },
@@ -304,7 +304,7 @@
         'P가 보는 호 AB는 반원이에요.', '반원의 중심각은 180°예요.',
         '원주각은 같은 호의 중심각을 반으로 나눠요.', '꼭짓점 P가 반원 위를 옮겨도 보는 호는 같아요.',
         '따라서 $\\angle APB=90^{\\circ}$예요.', '이 직각으로 길이 문제에는 피타고라스를 쓸 수 있어요.'
-      ], { unknown: 'β' });
+      ], { unknown: '', mode: 'thales' });
     for (let k = 0; k < 3; k++) {
       const f = source(id, k), q = f.pk;
       add(id, ['예각 계산', '현 길이', '중심각 응용'][k], f, [
@@ -414,19 +414,26 @@
   for (const id of ids) {
     const D = defs[id];
     D.lessonQuestion = (M, s) => s.ciLessonProblem ? null : s.ciBQuestion;
+    D.lessonModel = (M, s) => s.ciBMode === 'converse' && s.lessonEntry
+      ? D.model({ ...s, c4d: 2.2 }, { ...G.PC, problem: false }) : M;
     D.lessonDraw = (b, s, M, C, sol) => {
       if (s.ciLessonProblem) return false;
       if (!s.ciLessonSource) { D.draw(b, s, M, { ...C, tab: 'review', problem: false, review: true }); return true; }
-      const text = b.text;
+      const text = b.text, right = b.right;
       b.text = function (p, value, options) {
         const label = typeof value === 'string' && /(?:^x$|=\s*x$)/.test(value) ? value.replace(/x$/, s.ciBUnknown) : value;
         return text.call(this, p, label, options);
+      };
+      if (s.ciBMode === 'thales' && !C.answer) b.right = function (v, a, z, options) {
+        if (G.dist(v, M.g.P) > 1e-8) return right.call(this, v, a, z, options);
       };
       try {
         D.draw(b, s, M, { ...C, ...G.PC, lesson: true, review: true, t: C.t });
         const stage = C.entry ? 0 : C.answer ? sol.steps.length : Math.max(0, Math.min(C.step, C.calculation ? sol.steps.length - 1 : 3));
         if (sol.draw) sol.draw(b, stage);
-      } finally { b.text = text; }
+        if (s.ciBMode === 'thales') G.ang(b, M.g.P, M.g.A, M.g.B,
+          { label: C.answer ? '90°' : 'α', color: C.answer ? 'green' : 'rose', noRight: !C.answer, r: 25 });
+      } finally { b.text = text; b.right = right; }
       return true;
     };
     D.lessonAfterDraw = (b, s, M, C) => {
