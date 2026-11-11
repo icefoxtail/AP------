@@ -655,5 +655,42 @@
 
   /* @@SOLVE-END */
 
+  // 원클릭 해설은 원본의 합동 그림을 재사용하고, 자막의 cue가 설명을 맡아요.
+  // 고정된 문제의 수치를 바꾸지 않고 실제 보조선 위를 따라 그립니다.
+  b1.lessonModel = (M, s) => {
+    if (s.trLessonProblem && (s.trV || 0) % 3 === 2) {
+      const oe = 3 + ((M.h + M.d) % 6), d = oe * tan(M.h);
+      return { ...M, g: angGeom(M.h, d, d) };
+    }
+    return M;
+  };
+  b3.lessonModel = (M, s) => {
+    const v = (s.trV || 0) % 3;
+    const q = v === 0 ? Math.sqrt(M.pm * M.pm - M.m * M.m) : v === 1 ? M.m * tan(M.al) : M.m / tan(M.al);
+    return { ...M, q, Pp: pt(q, 0) };
+  };
+  const lessonPlans = [b1Plan, b2Plan, b3Plan, b4Plan, b5Plan, b6Plan];
+  [b1, b2, b3, b4, b5, b6].forEach((D, i) => {
+    const solve = mkSolve((M, s) => {
+      const plan = lessonPlans[i](M, s);
+      return { ...plan, steps: plan.steps.map(st => ({ ...st, cap: '' })) };
+    });
+    D.lessonDraw = (b, s, M, C, SV, ST, idx) => solve.draw(b, s, M, C, ST, idx);
+    D.lessonAfterDraw = (b, s, M, C) => {
+      const t = C.entry ? 0 : clamp(Number(s.trBT) || 0, 0, 1);
+      let p, q;
+      if (i === 0 || i === 1) { p = M.g.O; q = M.g.P; }
+      else if (i === 2) { p = M.Mm; q = M.Pp; }
+      else if (i === 3) { p = M.questionGeo.D; q = M.questionGeo.E; }
+      else if (i === 4 && (s.trV || 0) % 3 === 0) {
+        M.of.forEach((x, j) => { const u = clamp(t * M.of.length - j, 0, 1); if (u > 0) G.line(b, pt(0, -3), G.lerp(pt(0, -3), pt(x, 0), u), 'sky', 5); });
+        return;
+      }
+      else if (i === 4) { p = M.g.P; q = M.g.E; }
+      else { const g = midGeom(M.b, M.b); p = g.M; q = g.D; }
+      if (t > 0) G.line(b, p, G.lerp(p, q, t), 'green', 5);
+    };
+  });
+
   G.register(40, 't4', '④ 각의 이등분선·수직이등분선', '이등분선·수직이등분선', PARAMS, [b1, b2, b3, b4, b5, b6]);
 })();

@@ -887,6 +887,68 @@
   };
   i7.solve = mkSolve(i7Plan);
 
+  // 원클릭 해설은 기존 solve의 조건·단계·도형을 재사용한다.
+  // 비교 장면은 대응하는 꼭짓점 순서를 유지한 두 삼각형을 같은 방향으로 떼어 놓고 평행이동한다.
+  function lessonPair(b, s, config) {
+    const { triangles, names, kind = 'SAS' } = config, first = triangles[0], second = triangles[1];
+    const canonical = (points) => {
+      const e = unit(sub(points[1], points[0])), n = pt(-e.y, e.x);
+      const sign = (points[2].x - points[0].x) * n.x + (points[2].y - points[0].y) * n.y > 0 ? -1 : 1;
+      return points.map(p => { const v = sub(p, points[0]); return pt(v.x * e.x + v.y * e.y, sign * (v.x * n.x + v.y * n.y)); });
+    };
+    const p = canonical(first), q = canonical(second), box = bboxOf([...p, ...q]), w = Math.max(box.x1 - box.x0, Math.abs(box.y1 - box.y0), .4), gap = 1.45 * w;
+    const t = clamp(s.trMatch || 0, 0, 1), move = (points, dx) => points.map(p0 => pt(p0.x + dx, p0.y));
+    const Pp = move(p, gap * t / 2), Qq = move(q, gap * (1 - t / 2));
+    fit(b, { x0: box.x0 - .12 * w, x1: box.x1 + gap + .12 * w, y0: box.y0 - .15 * w, y1: box.y1 + .1 * w }, { t: 48, b: 90, l: 40, r: 40 });
+    const marks = (points, color) => {
+      const [A, B, Cc] = points;
+      if (kind === 'SAS' || kind === 'SSS' || kind === 'RHA' || kind === 'RHS') tick(b, A, B, 1, color);
+      if (kind === 'SAS' || kind === 'ASA' || kind === 'SSS' || kind === 'RHS') tick(b, A, Cc, 2, color);
+      if (kind === 'SSS') tick(b, B, Cc, 3, color);
+      if (kind === 'SAS' || kind === 'ASA' || kind === 'RHA') ang(b, A, B, Cc, { color, rings: 1, r: 25 });
+      if (kind === 'ASA' || kind === 'RHA' || kind === 'RHS') ang(b, Cc, A, B, { color, r: 18 });
+    };
+    [[Pp, 'sky'], [Qq, 'green']].forEach(([points, color]) => { fillPoly(b, points, color, .12); poly(b, points, color, 3.2); marks(points, color); });
+    if (t < .98) [Pp, Qq].forEach((points, j) => G.dots(b, points, names[j], G.centroid(points), { size: 16 }));
+    else G.dots(b, Pp, names[0].map((name, i) => name === names[1][i] ? name : name + '↔' + names[1][i]), G.centroid(Pp), { size: 16 });
+    if (s.trLine) rowT(b, pt((box.x0 + box.x1 + gap) / 2, box.y1), s.trLine, { dy: 56, size: fs(b, 16), color: 'amber' });
+  }
+  function lessonAttach(D, plan, traceOf, pairOf, conceptPlan) {
+    const selectedPlan = (M, s, b) => {
+      const p = s.trLessonProblem === false && conceptPlan ? conceptPlan(M, s, b) : plan(M, s, b);
+      return { ...p, steps: p.steps.map(st => ({ ...st, cap: '' })) };
+    };
+    const renderer = mkSolve(selectedPlan);
+    D.lessonDraw = (b, s, M, C, SV, ST, idx) => {
+      if (!C.entry && s.trCompare && pairOf) { lessonPair(b, s, pairOf(M, s)); return; }
+      renderer.draw(b, s, M, C, ST, idx);
+      if (!C.entry && s.trTrace > 0) { const [A, B] = traceOf(M, s); line(b, A, lerp(A, B, clamp(s.trTrace, 0, 1)), 'rose', 4.4); }
+      if (!C.entry && s.trLine) { const box = bboxOf(selectedPlan(M, s, b).fit); rowT(b, pt((box.x0 + box.x1) / 2, box.y1), s.trLine, { dy: 56, size: fs(b, 16), color: C.answer ? 'amber' : 'green' }); }
+    };
+  }
+  G.trLessonA = { attach: lessonAttach, pair: lessonPair };
+  const splitPair = (g, kind = 'SAS') => ({ triangles: [[g.A, g.B, g.D], [g.A, g.C, g.D]], names: [['A', 'B', 'D'], ['A', 'C', 'D']], kind });
+  lessonAttach(i1, i1Plan, (M, s) => { const g = i1Iso(s).g; return [g.A, g.B]; }, (M, s) => splitPair(i1Iso(s).g), (M, s) => {
+    const p = i1Plan(M, s), { A, B, C: Cc, D } = i1Iso(s).g;
+    return { ...p, items: p.items.filter(it => it.ty !== 'ang').concat(SK.seg(A, D, { at: 'idea', col: 'green', dash: [6, 5] }), SK.dot(D, 'D', { at: 'idea', dy: 18 }), SK.ang(B, Cc, A, { at: 'ans', col: 'green', rings: 2, label: 'β' }), SK.ang(Cc, A, B, { at: 'ans', col: 'green', rings: 2, label: 'β' })) };
+  });
+  lessonAttach(i2, i2Plan, (M, s) => { const g = i2Eq(s).tri; return [g.A, g.C]; }, (M, s) => splitPair({ ...i2Eq(s).tri, D: pt(0, 0) }, 'ASA'), (M, s) => {
+    const p = i2Plan(M, s); return { ...p, items: p.items.filter(it => it.ty !== 'len') };
+  });
+  lessonAttach(i3, i3Plan, M => [M.g.A, M.g.D], M => splitPair(M.g));
+  lessonAttach(i4, i4Plan, M => [M.g.A, M.g.D], M => splitPair(M.g, 'SSS'), (M, s) => {
+    const p = i4Plan(M, s);
+    return { ...p, items: p.items.map(it => it.ty === 'len' ? { ...it, str: 'AD', label: undefined, labels: undefined } : it.ty === 'dim' ? { ...it, str: 'BC', label: undefined, labels: undefined } : it) };
+  });
+  lessonAttach(i5, i5Plan, M => [M.g.A, M.g.B], null, (M, s) => {
+    const p = i5Plan(M, s), { A, B, C: Cc } = M.g;
+    return { ...p, items: p.items.filter(it => it.ty !== 'ang').concat(SK.ang(A, B, Cc, { at: 'ans', col: 'amber', rings: 3, label: '꼭지각', ld: 64 })) };
+  });
+  lessonAttach(i6, i6Plan, M => [M.P, M.g.B], M => ({ triangles: [[M.g.D, M.g.B, M.P], [M.g.D, M.g.C, M.P]], names: [['D', 'B', 'P'], ['D', 'C', 'P']], kind: 'SAS' }), (M, s) => {
+    const p = i6Plan(M, s); return { ...p, items: p.items.filter(it => it.ty !== 'ang') };
+  });
+  lessonAttach(i7, i7Plan, (M, s) => i7Plan(M, s).fit.slice(0, 2));
+
   /* @@SOLVE-END */
 
   G.register(10, 't1', '① 이등변삼각형', '이등변삼각형', PARAMS, [i1, i2, i3, i4, i5, i6, i7]);
