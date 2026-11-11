@@ -48,7 +48,8 @@ function convertNativePending({root,spec,metadata,identities,input,prod,drive}) 
   const maps=rows.map(rs=>{const map=new Map();for(const row of rs){const i=Number(sop?row.questionNumber:row.questionId);if(!Number.isInteger(i)||i<1||i>n||map.has(i))fail('DUPLICATE_OR_INVALID_ORDINAL');if(sop&&Number(row.sourceQuestionId)!==i)fail('ORDINAL_ID_MISMATCH');map.set(i,row);}return map;});
   const pairs=sop?['primaryTaxonomy','templatePattern','crossConcepts']:['problemTypeKey','templateKey','crossConceptKeys'];
   for(let i=1;i<=n;i++){
-    if(sop&&(maps[0].get(i).auditVerdict||maps[0].get(i).auditStatus)!=='PASS'||flat&&maps[0].get(i).auditVerdict!=='APPROVED_CANONICAL'||alias&&maps[0].get(i).auditVerdict!=='APPROVED')fail('QUESTION_AUDIT_NOT_APPROVED: '+i);
+    const verdict=maps[0].get(i).auditVerdict;
+    if(sop&&(verdict||maps[0].get(i).auditStatus)!=='PASS'||flat&&verdict!=='APPROVED_CANONICAL'||alias&&verdict!==undefined&&verdict!=='APPROVED')fail('QUESTION_AUDIT_NOT_APPROVED: '+i);
     if(sop&&maps[1].get(i).registrationStatus!=='READY_FOR_COURIER_REGISTRATION')fail('QUESTION_NOT_READY: '+i);
     for(const key of pairs){const v=maps.map((map,index)=>index===0&&alias?(map.get(i).classification||map.get(i))[key]:map.get(i)[key]);if(v.some(x=>x===undefined)||stable(v[0])!==stable(v[1])||stable(v[1])!==stable(v[2]))fail('CLASSIFICATION_PARITY_MISMATCH: '+i+'.'+key);}
   }
@@ -69,6 +70,7 @@ function convertNativePending({root,spec,metadata,identities,input,prod,drive}) 
   }
   const parityRef=evidence('source-parity',Buffer.from(json({schemaVersion:'archive-meta-pipeline-source-parity-v1',sourceFileDriveId:id(a),sourceArchiveFile:source,...(alias?{auditedExamAlias:spec.auditedExamAlias,aliasBasis:'EXACT_NON_SOLUTION_FIELDS_AND_UID_ORDINAL_PARITY'}:{}),auditSourceSha256:sourceSha,driveSourceSha256:sourceSha,productionSourceSha256:sha(prod),productionSourceBlobSha1:sourceBlobSha1,parityBasis:'PER_UID_STUDENT_FIELDS',status:parity.every(x=>x.studentPayloadEqual)?'EXACT_STUDENT_VISIBLE_PARITY':'CURRENT_SOURCE_PRESERVED_WITH_SUPPLEMENTS',studentFields,questionCount:n,records:parity})));
   const request={schemaVersion:'archive-reviewed-exam-meta-register-request-v2',requestId:spec.requestId,examUid:title,sourceArchiveFile:source,expectedSourceBlobSha1:sourceBlobSha1,expectedQuestionCount:n,approval:{type:'META_PIPELINE_AUDIT',metadataReviewed:false,approvedBy:'SOURCE_ONLY_PROVISIONAL_INPUT_NOT_A_METADATA_REVIEW',evidenceRefs:refs,metaPipelineAudit:{schemaVersion:'source-only-provisional-not-registrar-proof-v1',authorityStatus:'EVIDENCE_DEBT',sourceFileDriveId:id(a),auditPackageRef:auditRef,manifestRef,classificationRef,sourceParityRef:parityRef}},registryChanges:[],items,supplements:[{reason:'REGISTRAR_COMPATIBLE_METADATA_PROOF_REQUIRED',status:'NOT_VERIFIED'},...parity.filter(x=>!x.studentPayloadEqual).map(x=>({questionUid:x.questionUid,sourceOrdinal:x.sourceOrdinal,reason:'SOURCE_VERSION_CHANGED',fields:x.changedFields,policy:'PRESERVE_CURRENT_PRODUCTION'}))],provisionalApproval:{policy:'STUDENT_ACCESS_FIRST',verificationStatus:'NOT_VERIFIED',metadataApprovalStatus:'USER_APPROVED_PENDING_SUPPLEMENT'}};
+  if(alias)for(let i=1;i<=n;i++)if(maps[0].get(i).auditVerdict===undefined)request.supplements.push({questionUid:parity[i-1].questionUid,sourceOrdinal:i,reason:'ROW_AUDIT_VERDICT_NOT_PROVIDED',status:'NOT_VERIFIED'});
   outputs.set('.archive-meta-register/inbox/'+spec.requestId+'.json',Buffer.from(json(request)));return {request,outputs};
 }
 

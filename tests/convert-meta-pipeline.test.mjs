@@ -59,6 +59,11 @@ test('batch conversion preserves source bytes, isolates SHA failures, and writes
  const aliasSpec={...spec,requestId:'alias',sourceArchiveFile:'original/examc.js',auditedExamAlias:'exam',audit:aliasAudit,manifest:aliasManifest,classification:aliasClass};
  assert.equal(runBatch({root,out,write:true,batch:{packages:[aliasSpec]}})[0].status,'CONVERTED');
  const aliased=JSON.parse(fs.readFileSync(path.join(out,'.archive-meta-register/inbox/alias.json'),'utf8'));assert.equal(aliased.approval.metadataReviewed,false);
+ const aliasNoVerdict=JSON.parse(fs.readFileSync(aliasAudit));delete aliasNoVerdict.records[0].auditVerdict;fs.writeFileSync(aliasAudit,JSON.stringify(aliasNoVerdict));
+ assert.equal(runBatch({root,out,write:true,batch:{packages:[{...aliasSpec,requestId:'alias-no-verdict'}]}})[0].status,'CONVERTED');
+ assert.equal(JSON.parse(fs.readFileSync(path.join(out,'.archive-meta-register/inbox/alias-no-verdict.json'),'utf8')).supplements.some(x=>x.reason==='ROW_AUDIT_VERDICT_NOT_PROVIDED'),true);
+ aliasNoVerdict.records[0].auditVerdict='HOLD';fs.writeFileSync(aliasAudit,JSON.stringify(aliasNoVerdict));assert.match(runBatch({root,out,batch:{packages:[{...aliasSpec,requestId:'alias-hold'}]}})[0].reason,/QUESTION_AUDIT_NOT_APPROVED/);
+ aliasNoVerdict.records[0].auditVerdict='APPROVED';fs.writeFileSync(aliasAudit,JSON.stringify(aliasNoVerdict));
  put('archive/exams/original/examc.js','window.questionBank=[{id:1,content:"different",answer:"1",solution:"x=1"}];');
  assert.match(runBatch({root,out,batch:{packages:[{...aliasSpec,requestId:'bad-alias'}]}})[0].reason,/ALIAS_STUDENT_PAYLOAD_MISMATCH/);
  put('archive/data/question_metadata.json',{records:[{questionUid:'uid1',sourceOrdinal:1,sourceArchiveFile:'original/exam.js',standardCourse:'수학',curriculum:'2015',L1:'단원',L2:'소단원'}]});
