@@ -484,7 +484,10 @@
     const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
     const problem = !thumb && tab === 'problem';
     const review = !thumb && tab === 'review';
-    return { tab, problem, review, step: review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
+    const lesson = !thumb && !!(s.lessonOn || s.lessonEntry), entry = lesson && !!s.lessonEntry;
+    return { tab, problem, review, step: entry ? 0 : lesson || review ? s.step || 0 : 99,
+      txt: !thumb, thumb: !!thumb, full: !lesson && (tab === 'explore' || thumb), lesson, entry,
+      answer: lesson && !entry && !!s.tgShowAnswer, calculation: lesson && !entry && !!s.tgCalculationReady };
   }
 
   /* ====================================================================== 문제 탭 (보기 5개 · 숫자 바꾸기) */
@@ -580,6 +583,40 @@
            anim?:{key,dur,label,start}, stepT?(n,M) }
      q = { tag, stem, choices, key, note?, fig, wide?, html? } — 문제 하나가 그림(fig)·발문·보기를 모두 정해 저장합니다(숫자 바꾸기 한 번에 한 번만 만듦). */
   const texSafe = (t) => String(t == null ? t : t).replace(/\$([^$]+)\$/g, (m, x) => '$' + x.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
+  const inLesson = (s) => !!(s.lessonOn || s.lessonEntry);
+  // Keep the original generator, figure and choice order together. The temporary
+  // random stream is synchronous and always restored, including failed searches.
+  function fixedQuestion(id, seed = 1, accept = () => true) {
+    const scene = (window.APL_TG_GROUPS || []).flatMap(group => group.scenes).find(item => item.id === id);
+    if (!scene || !scene.tg || typeof scene.tg.gen !== 'function') throw new Error('해설 원본 장면 없음: ' + id);
+    const random = Math.random;
+    Math.random = seeded('lesson:' + id + ':' + seed);
+    try {
+      for (let i = 0; i < 1000; i++) {
+        const q = scene.tg.gen();
+        if (!accept(q)) continue;
+        const seen = new WeakSet();
+        const freeze = value => {
+          if (!value || typeof value !== 'object' || seen.has(value)) return value;
+          seen.add(value);
+          Object.values(value).forEach(freeze);
+          return Object.freeze(value);
+        };
+        return freeze(q);
+      }
+      throw new Error('해설 원본 유형을 찾지 못함: ' + id);
+    } finally { Math.random = random; }
+  }
+  function lessonQuestion(D, s) {
+    const M = D.model(s), Q = s.q;
+    const custom = D.lessonQuestion && D.lessonQuestion(M, s, Q);
+    if (custom != null) return texSafe(custom);
+    if (!s.tgLessonProblem) return texSafe(typeof D.question === 'function' ? D.question(s) : D.question);
+    let body = Q.html != null ? Q.html : Q.stem || '';
+    const choices = (Q.choices || []).map(c => c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : c.p);
+    if (choices.length && !choices.every(text => body.includes(String(text)))) body += '<br>' + choices.map((text, i) => NUM[i] + ' ' + text).join('<br>');
+    return texSafe(body);
+  }
   function makeScene(D) {
     const A = D.anim;
     const actions = A ? () => [
@@ -589,13 +626,13 @@
     return {
       id: D.id, title: D.title, short: D.short || D.title, tg: D,
       tabs: { order: ['explore', 'problem', 'review'], labels: { review: '풀이' } },
-      question: D.question,
+      question: (s) => inLesson(s) ? lessonQuestion(D, s) : (typeof D.question === 'function' ? D.question(s) : D.question),
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
       // 탐구와 문항은 독립 상태다. 풀이에서는 생성된 문항의 조건만 읽는다.
       steps: (s) => s.q.solution.steps.map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
-      reviewTop: (s) => `<div class="tg-current"><b>지금 푸는 문제</b><div class="tg-q">${texSafe(s.q.html != null ? s.q.html : s.q.stem)}</div></div>`,
+      reviewTop: (s) => inLesson(s) ? '' : `<div class="tg-current"><b>지금 푸는 문제</b><div class="tg-q">${texSafe(s.q.html != null ? s.q.html : s.q.stem)}</div></div>`,
       notesTitle: '자주 틀리는 부분',
       problem: {
         tag: (s) => (s.q ? s.q.tag : ''),
@@ -610,12 +647,14 @@
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
+        if (inLesson(s)) return false;
         let again = false;
         if (A && s.playing) { s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6)); if (s[A.key] >= 1) s.playing = false; again = true; }
         return again;
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
+        if (inLesson(s)) return { guide: null, card: null, readouts: [], formula: null, rule: null, status: null, alert: null, notes: [], chips: [] };
         const C = baseCtx(s, lab, false);
         if (C.problem || C.review) {
           const n = s.q.solution.steps.length, st = Math.max(1, Math.min(s.step || 1, n));
@@ -637,6 +676,21 @@
         b._tgRouteLeaderNames = D.id === 'r1-1' && !C.problem && !C.review;
         if (b.thumb) C.step = 99;
         G_STATE.problem = !!(C.problem || C.review);
+        if (C.lesson) {
+          const original = D.model(s), M = D.lessonModel ? D.lessonModel(original, s) : original;
+          C.t = A ? (s[A.key] || 0) : 1;
+          C.last = C.answer;
+          const custom = D.lessonDraw ? D.lessonDraw(b, s, M, C, s.q.solution) : false;
+          if (custom === false) {
+            if (s.tgLessonProblem) {
+              const n = s.q.solution.steps.length;
+              const step = C.entry ? 0 : C.answer ? n : Math.max(0, Math.min(C.step, n - 1));
+              D.pdraw(b, s.q, { ...C, review: true, step }, s);
+            } else D.draw(b, s, M, C);
+          }
+          if (D.lessonAfterDraw) D.lessonAfterDraw(b, s, M, C, s.q.solution);
+          return;
+        }
         if (C.problem || C.review) {
           C.last = C.review && C.step >= s.q.solution.steps.length;
           if (s.q) D.pdraw(b, s.q, C, s);
@@ -664,6 +718,6 @@
     textW, textW2, T, tagOut, vtx, sideTag, ang, tick, fillPoly, line, poly, dashed, fit, rowsBelow, rtGeo, drawRT, rtBox,
     P, degF, josa, seeded, shuffle, mkChoices, degChoices, mkTextChoices, checkQ,
     camOf, proj3, faceFront, p3, orbit, boxVerts, drawBox, BOX_EDGES, FACE_N,
-    baseCtx, makeScene, register, notes, rd, tex, texSafe
+    baseCtx, makeScene, register, notes, rd, tex, texSafe, fixedQuestion
   };
 })();
