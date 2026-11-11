@@ -161,7 +161,11 @@ window.examData = {
         "assets/images/20_이수중_2학기_기말_중2_수학/q04.png"
       ],
       "answer": "①",
-      "solution": "[원문 조건 및 구할 대상]\n두 닮은 삼각기둥에서 $\\overline{\\mathrm{AB}}$에 대응하는 변이 $\\overline{\\mathrm{A'B'}}$일 때 $x+y$의 값을 구한다.\n조건: 첫 번째 기둥은 $\\overline{\\mathrm{AC}}=6\\text{ cm}, \\overline{\\mathrm{AB}}=4\\text{ cm}$, 높이 $x$이고, 두 번째 기둥은 $\\overline{\\mathrm{A'C'}}=9\\text{ cm}, \\overline{\\mathrm{A'B'}}=y$, 높이 $12\\text{ cm}$이다.\n\n[핵심 발상/공식/보조선]\n닮은 두 입체도형에서 대응하는 모든 모서리의 길이의 비는 일정하다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 닮음비 계산\n$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{A'C'}} = 6 : 9 = 2 : 3$\n\n2단계: 높이로부터 $x$ 구하기\n$x : 12 = 2 : 3 \\implies 3x = 24 \\implies x = 8$\n\n3단계: $\\overline{\\mathrm{A'B'}}$로부터 $y$ 구하기\n$\\overline{\\mathrm{AB}} : \\overline{\\mathrm{A'B'}} = 4 : y = 2 : 3 \\implies 2y = 12 \\implies y = 6$\n\n4단계: $x+y$의 값 계산\n$x + y = 8 + 6 = 14$\n\n[경우 나눔 및 5개 선지 검토]\n① $14$: 계산 결과와 일치함 (정답)\n② $15$: 오답\n③ $16$: 오답\n④ $17$: 오답\n⑤ $18$: 오답\n\n[명확한 결론]\n따라서 $x+y$의 값은 ① $14$이다."
+      "solution": "[원문 조건 및 구할 대상]\n두 닮은 삼각기둥에서 $\\overline{\\mathrm{AB}}$에 대응하는 변이 $\\overline{\\mathrm{A'B'}}$일 때 $x+y$의 값을 구한다.\n조건: 첫 번째 기둥은 $\\overline{\\mathrm{AC}}=6\\text{ cm}, \\overline{\\mathrm{AB}}=4\\text{ cm}$, 높이 $x$이고, 두 번째 기둥은 $\\overline{\\mathrm{A'C'}}=9\\text{ cm}, \\overline{\\mathrm{A'B'}}=y$, 높이 $12\\text{ cm}$이다.\n\n[핵심 발상/공식/보조선]\n닮은 두 입체도형에서 대응하는 모든 모서리의 길이의 비는 일정하다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 닮음비 계산\n$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{A'C'}} = 6 : 9 = 2 : 3$\n\n2단계: 높이로부터 $x$ 구하기\n$x : 12 = 2 : 3 \\implies 3x = 24 \\implies x = 8$\n\n3단계: $\\overline{\\mathrm{A'B'}}$로부터 $y$ 구하기\n$\\overline{\\mathrm{AB}} : \\overline{\\mathrm{A'B'}} = 4 : y = 2 : 3 \\implies 2y = 12 \\implies y = 6$\n\n4단계: $x+y$의 값 계산\n$x + y = 8 + 6 = 14$\n\n[경우 나눔 및 5개 선지 검토]\n① $14$: 계산 결과와 일치함 (정답)\n② $15$: 오답\n③ $16$: 오답\n④ $17$: 오답\n⑤ $18$: 오답\n\n[명확한 결론]\n따라서 $x+y$의 값은 ① $14$이다.",
+      "solutionImage": "assets/images/20_이수중_2학기_기말_중2_수학/q4-solution.svg",
+      "solutionImageAlt": "해설 그림: 네 장의 그림이다. 첫째는 닮은 두 삼각기둥으로 작은 기둥은 AC 6 cm, 높이 x이고 큰 기둥은 A′C′ 9 cm, 높이 12 cm이다. 둘째는 두 기둥의 윗면인 삼각형으로 작은 삼각형은 AC 6, AB 4이고 큰 삼각형은 A′C′ 9, A′B′ y이며 대응변을 같은 색으로 나타냈다. 셋째는 닮음비로 구한 높이를 나타낸 두 삼각기둥으로 작은 기둥의 높이는 8 cm, 큰 기둥의 높이는 12 cm이다. 넷째는 구한 윗면의 변을 나타낸 두 삼각형으로 AB는 4, A′B′는 6이다.",
+      "solutionImageCaption": "대응변 AC와 A′C′가 6 cm와 9 cm이므로 닮음비는 2 대 3이다. 높이의 비도 2 대 3이므로 x 대 12가 2 대 3이고 x는 8이다. AB 대 A′B′도 2 대 3이므로 4 대 y가 2 대 3이고 y는 6이다. 정답은 ① 14이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 5,

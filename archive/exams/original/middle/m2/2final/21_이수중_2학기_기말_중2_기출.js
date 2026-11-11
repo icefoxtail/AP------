@@ -641,7 +641,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 대표 2명을 첫째, 둘째 순서로 나열한 나뭇가지 그림의 일부이다. 첫째가 A, B, C인 경우만 그렸고 첫째 A 둘째 B와 첫째 B 둘째 A는 파란색, 첫째 A 둘째 C와 첫째 C 둘째 A는 주황색으로 같은 짝끼리 같은 색으로 표시했다.",
+    "solutionImageCaption": "뽑는 순서를 구별하면 첫째 4가지, 둘째 3가지이므로 모두 늘어놓으면 4곱하기 3으로 12가지이다. 그림에서 같은 색으로 표시한 두 경로처럼 같은 두 사람이 순서만 바뀌어 두 번씩 세어진다. 그림은 첫째가 A, B, C인 경우만 보인 일부이다. 대표 두 명을 뽑는 순서는 상관없으므로 12를 2로 나눈다. 정답은 ② 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
