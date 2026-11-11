@@ -82,6 +82,65 @@
       ch('두 경우를 합쳐 답하기', [{ at: 0, say: `범위 안에서 조건을 만족하는 x는 ${answer}예요.`, set: { pyShowAnswer: true } }, { at: 6, say: count ? `따라서 물어본 자연수 x의 개수는 ${n}개예요.` : `빠짐없이 찾은 값은 ${answer}, 모두 ${n}개예요.`, step: 4 }])
     ], { problem: count, q: { pyRp: p, pyRq: q, pyRx: q, pyAsk: acute ? 'acute' : 'obtuse' }, start: { pyRp: p, pyRq: q, pyRx: q }, set: { pyAsk: acute ? 'acute' : 'obtuse' } });
   }
+  function treeLesson(abOnly) {
+    const first = ch('길이와 색칠한 정사각형', [{ at: 0, say: 'AB=12, AC=9이고 가지의 꼭짓점도 직각이에요.', to: { pyT1: 55 }, dur: 4 }, { at: 6, say: abOnly ? 'AB 쪽에 색칠한 두 정사각형의 넓이를 더해요.' : '양쪽에 색칠한 네 정사각형의 넓이를 더해요.', step: 1 }]);
+    const relation = ch('가지의 정사각형 두 개씩 묶기', [{ at: 0, say: '가지의 빗변은 큰 정사각형의 바깥 변이에요.', to: { pyT1: 30, pyT2: 40 }, dur: 4 }, { at: 6, say: '두 작은 넓이의 합은 그 빗변 위 정사각형의 넓이예요.', step: 2 }]);
+    const chapters = abOnly ? [first, relation,
+      ch('색칠한 쪽만 계산', [{ at: 0, say: 'AB 쪽 합은 AB²이고, AC 쪽은 색칠하지 않았어요.' }, { at: 6, say: '따라서 색칠한 두 넓이의 합은 12²=144예요.', set: { pyShowAnswer: true }, step: 4 }])
+    ] : [first, relation,
+      ch('각 가지의 중간 넓이', [{ at: 0, say: 'AB 쪽 두 넓이의 합은 AB²=12²=144예요.', set: { pyBFirstReady: true }, step: 3 }, { at: 6, say: 'AC 쪽 두 넓이의 합은 AC²=9²=81이에요.', set: { pyBSecondReady: true } }]),
+      ch('네 정사각형의 합', [{ at: 0, say: '가지의 각도가 바뀌어도 두 합은 변하지 않아요.' }, { at: 6, say: '네 넓이를 모두 더하면 144+81=225예요.', set: { pyShowAnswer: true }, step: 4 }])
+    ];
+    return make('피타고라스 나무의 색칠한 넓이', abOnly ? '한쪽 두 개' : '양쪽 네 개', abOnly ? '넓이의 합 144' : '넓이의 합 225', chapters,
+      { q: { pyTa: 12, pyTb: 9, pyShade: abOnly ? 'ab' : 'all' }, set: { pyShade: abOnly ? 'ab' : 'all' } });
+  }
+  function squareAreaLesson(subtract) {
+    return make('주어진 정사각형 넓이끼리 계산', subtract ? '넓이 빼기' : '넓이 더하기', `x=${subtract ? 48 : 97}`, [
+      ch('길이가 아니라 넓이인 조건', [{ at: 0, say: subtract ? '빗변 위 넓이는 97, 한 직각변 위 넓이는 49예요.' : '두 직각변 위 정사각형의 넓이가 49, 48이에요.' }, { at: 6, say: '숫자가 이미 넓이이므로 다시 제곱하지 않아요.', step: 1 }]),
+      ch('직각 표시로 더할지 뺄지 선택', [{ at: 0, say: '직각 C의 맞은편 AB 위가 빗변의 정사각형이에요.', step: 2 }, { at: 6, say: subtract ? '49+x=97이므로 x=97−49로 빼요.' : '빗변 위 넓이 x는 49+48로 더해요.', step: 3 }]),
+      ch('물어본 넓이의 값', [{ at: 0, say: subtract ? '모르는 것은 작은 쪽 넓이, 전체에서 아는 넓이를 빼요.' : '모르는 것은 빗변 위 넓이, 두 작은 넓이를 합쳐요.' }, { at: 6, say: subtract ? '계산하면 x=97−49=48이에요.' : '계산하면 x=49+48=97이에요.', set: { pyShowAnswer: true }, step: 4 }])
+    ], { q: { pyS1: 49, pyS2: 48, pyUnk: subtract ? 'b' : 'c' }, start: { pyS1: 49, pyS2: 48 }, set: { pyUnk: subtract ? 'b' : 'c' } });
+  }
+  function rectangleLesson(diagonal) {
+    return make('직사각형 바깥 네 초승달의 넓이', diagonal ? '대각선 조건' : '가로세로', '색칠한 넓이는 192', [
+      ch('주어진 길이와 큰 원', [{ at: 0, say: diagonal ? '가로 AD=12, 대각선 AC=20이 주어졌어요.' : '직사각형의 가로 AD=12, 세로 AB=16이에요.' }, { at: 6, say: '대각선 AC를 지름으로 하는 큰 원과 반원들을 봐요.', step: 1 }]),
+      ch(diagonal ? '알려지지 않은 세로 구하기' : '대각선의 제곱 확인', [{ at: 0, say: diagonal ? '세로 h에 대해 h²=20²−12²=256이에요.' : 'AC²=12²+16²=400이에요.', step: 2 }, { at: 6, say: diagonal ? '양수 16의 제곱이 256이므로 세로는 16이에요.' : '대각선이 큰 원의 지름이므로 그 제곱도 400이에요.', set: { pyBFirstReady: true, pyCalculationReady: true } }]),
+      ch('반원 합과 큰 원 비교', [{ at: 0, say: '지름 d인 반원의 넓이는 πd²/8이에요.', step: 3 }, { at: 6, say: '네 반원 합=π(12²+16²)/4, 큰 원 넓이도 같아요.' }]),
+      ch('겹치는 부분을 함께 빼기', [{ at: 0, say: '큰 원 안이면서 직사각형 밖인 부분은 공통이에요.', step: 4 }, { at: 6, say: '같은 넓이에서 공통 부분을 빼면 남은 넓이도 같아요.' }]),
+      ch('직사각형 넓이로 결론', [{ at: 0, say: '네 초승달의 합은 남은 직사각형의 넓이와 같아요.' }, { at: 6, say: '색칠한 넓이는 12×16=192예요.', set: { pyShowAnswer: true }, step: 5 }])
+    ], { q: { pyRw: 12, pyRh: 16, pyKind: diagonal ? 1 : 0 }, set: { pyKind: diagonal ? 1 : 0 } });
+  }
+  function hippoLesson(hypotenuse) {
+    return make('두 초승달을 직각삼각형 넓이로', hypotenuse ? '빗변 조건' : '두 직각변', '색칠한 넓이는 24', [
+      ch('직각과 주어진 길이', [{ at: 0, say: hypotenuse ? '직각 A, 직각변 AB=6과 빗변 BC=10이 주어졌어요.' : '직각 A를 끼는 AB=6, AC=8이 주어졌어요.' }, { at: 6, say: '작은 두 반원과 빗변 위 큰 반원의 넓이를 비교해요.', step: 1 }]),
+      ch(hypotenuse ? '다른 직각변부터 구하기' : '반원의 넓이 식', [{ at: 0, say: hypotenuse ? 'AC²=10²−6²=64를 먼저 계산해요.' : '지름 d인 반원의 넓이는 πd²/8이에요.', step: 2 }, { at: 6, say: hypotenuse ? '8²=64이므로 다른 직각변 AC는 8이에요.' : '세 변의 제곱 관계에 같은 상수 π/8을 곱해요.', set: { pyBFirstReady: true } }]),
+      ch('반원 넓이의 같은 합', [{ at: 0, say: 'AB²+AC²=BC²이므로 작은 반원 합=큰 반원이에요.', step: 3 }, { at: 6, say: '원 전체가 아니라 지름으로 만든 반원끼리 비교해요.' }]),
+      ch('공통인 두 활꼴을 빼기', [{ at: 0, say: '두 쪽에서 똑같이 겹치는 두 활꼴을 빼요.', step: 4 }, { at: 6, say: '초승달 두 개의 합이 직각삼각형 넓이로 남아요.' }]),
+      ch('직각을 낀 두 변으로 계산', [{ at: 0, say: '삼각형의 밑변과 높이는 직각변 6과 8이에요.' }, { at: 6, say: '색칠한 넓이는 6×8÷2=24예요.', set: { pyShowAnswer: true }, step: 5 }])
+    ], { q: { pyIa: 6, pyIb: 8, pyKind: hypotenuse ? 1 : 0 }, set: { pyKind: hypotenuse ? 1 : 0 } });
+  }
+  function semicircleConcept() {
+    return make('세 반원의 넓이가 따르는 관계', '넓이 관계', 'S₁+S₂=S₃', [
+      ch('세 기호가 가리키는 넓이', [{ at: 0, say: 'S₁, S₂는 직각변 위, S₃는 빗변 위 반원 넓이예요.' }, { at: 6, say: '삼각형의 직각은 A, 빗변은 BC예요.', step: 1 }]),
+      ch('지름과 반지름을 구분', [{ at: 0, say: '지름이 d이면 반지름은 d/2예요.' }, { at: 6, say: '반원 넓이는 π(d/2)²÷2=πd²/8이에요.', step: 2 }]),
+      ch('피타고라스 정리를 넓이로 바꾸기', [{ at: 0, say: 'AB²+AC²=BC²의 양쪽에 π/8을 곱해요.' }, { at: 6, say: '각 항이 반원 넓이이므로 S₁+S₂=S₃예요.', set: { pyShowAnswer: true }, step: 4 }])
+    ], { problem: false, q: { pyIa: 6, pyIb: 8, pyUnk: 'c' } });
+  }
+  function semicircleArea(subtract) {
+    return make('세 반원 중 모르는 넓이 구하기', subtract ? '반원 빼기' : '반원 더하기', `x=${subtract ? '9π/2' : '25π/2'}`, [
+      ch('알려진 넓이와 구할 반원', [{ at: 0, say: subtract ? 'S₂=8π, S₃=25π/2이고 S₁=x를 구해요.' : 'S₁=9π/2, S₂=8π이고 S₃=x를 구해요.' }, { at: 6, say: 'S₃는 직각 A의 맞은편인 빗변 위 반원이에요.', step: 1 }]),
+      ch('넓이 관계로 식 세우기', [{ at: 0, say: '반원 넓이는 지름 제곱의 π/8배이므로 S₁+S₂=S₃예요.', step: 2 }, { at: 6, say: subtract ? '모르는 직각변 위 넓이는 x=S₃−S₂로 빼요.' : '모르는 빗변 위 넓이는 x=S₁+S₂로 더해요.', step: 3 }]),
+      ch('π를 두고 계수끼리 계산', [{ at: 0, say: '8π=16π/2로 바꾸어 분모를 맞춰요.' }, { at: 6, say: subtract ? 'x=25π/2−16π/2=9π/2가 정답이에요.' : 'x=9π/2+16π/2=25π/2가 정답이에요.', set: { pyShowAnswer: true }, step: 4 }])
+    ], { q: { pyIa: 6, pyIb: 8, pyUnk: subtract ? 'a' : 'c' }, set: { pyUnk: subtract ? 'a' : 'c' } });
+  }
+  function hypotenuseFromArea() {
+    return make('반원 넓이의 합에서 빗변 구하기', '빗변 구하기', 'x=12', [
+      ch('주어진 합과 구할 길이', [{ at: 0, say: '두 직각변 위 반원의 넓이의 합은 18π예요.' }, { at: 6, say: '구할 x=BC는 큰 반원의 지름이고 반지름은 r예요.', step: 1 }]),
+      ch('빗변 위 반원의 넓이', [{ at: 0, say: '피타고라스 정리를 반원 넓이로 쓰면 S₁+S₂=S₃예요.', step: 2 }, { at: 6, say: '따라서 빗변 위 반원의 넓이 S₃도 18π예요.', set: { pyBFirstReady: true } }]),
+      ch('먼저 반지름 계산', [{ at: 0, say: 'πr²÷2=18π이므로 r²=36이에요.' }, { at: 6, say: '양수 6의 제곱이 36이므로 반지름 r=6이에요.', set: { pyBSecondReady: true, pyCalculationReady: true } }]),
+      ch('반지름에서 지름으로', [{ at: 0, say: '문제는 반지름이 아니라 빗변인 지름을 물었어요.' }, { at: 6, say: '지름 x=2r=2×6=12예요.', set: { pyShowAnswer: true }, step: 3 }])
+    ], { q: { pyHy: 3 } });
+  }
   Object.assign(lessons, {
     'py3-345': [familyConcept([3, 4, 5]), familyProblem([3, 4, 5], 'c'), familyProblem([3, 4, 5], 'b')],
     'py3-51213': [familyConcept([5, 12, 13]), familyProblem([5, 12, 13], 'c'), familyProblem([5, 12, 13], 'a')],
@@ -91,6 +150,12 @@
     'py4-acute': [judgeLesson(false)],
     'py4-obtuse': [judgeLesson(true)],
     'py4-orange': [rangeLesson(false, false), rangeLesson(false, true)],
-    'py4-arange': [rangeLesson(true, false), rangeLesson(true, true)]
+    'py4-arange': [rangeLesson(true, false), rangeLesson(true, true)],
+    'py5-tree': [treeLesson(false), treeLesson(true)],
+    'py5-sqarea': [squareAreaLesson(false), squareAreaLesson(true)],
+    'py5-rectsemi': [rectangleLesson(false), rectangleLesson(true)],
+    'py5-hippo': [hippoLesson(false), hippoLesson(true)],
+    'py5-semi': [semicircleConcept(), semicircleArea(false), semicircleArea(true)],
+    'py5-findhyp': [hypotenuseFromArea()]
   });
 })();

@@ -26,6 +26,7 @@
   };
   const TY = { acute: '예각', right: '직각', obtuse: '둔각' };
   const TYC = { acute: 'sky', right: 'green', obtuse: 'rose' };
+  const lessonProblem = (Q) => (Q.html || Q.stem) + '<br>보기: ' + Q.choices.map((c, i) => `${G.NUM[i]} ${c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : G.esc(c.p)}`).join(' · ');
   function lessonTrace(b, points, s, C) {
     if (!C.lesson) return;
     const t = clamp(s.pyBT || 0, 0, 1) * (points.length - 1);
@@ -57,7 +58,7 @@
   };
   const hinge = {
     id: 'py4-hinge', title: '∠C를 돌려 보기 (경첩)', short: '경첩 (∠C 바꾸기)',
-    question: '두 변 a, b를 경첩처럼 벌리면 ∠C가 커진다. ∠C가 예각·직각·둔각일 때 빗변 쪽 변 c의 제곱은 a²+b²와 어떻게 다를까?',
+    question: '두 변 a, b를 경첩처럼 벌리면 ∠C가 커진다. ∠C가 예각·직각·둔각일 때 ∠C의 맞은편 변 c의 제곱은 a²+b²와 어떻게 다를까?',
     ctl: ['pyHa', 'pyHb', 'pyHang'],
     presets: () => [65, 90, 115, 130].map((d, i) => ({ group: i === 0 ? '∠C의 크기' : '', label: `${d}°`, apply: (ss) => { ss.pyHang = d; }, on: (ss) => Math.round(ss.pyHang) === d })),
     init: (s) => { s.pyHa = 8; s.pyHb = 6; s.pyHang = 90; s.pyKind = 0; },
@@ -320,6 +321,6 @@
   const oRange = rangeScene({ id: 'py4-orange', title: '둔각삼각형이 되는 자연수 x', short: '둔각이 되는 x', ask: 'obtuse', start: [4, 5, 7], question: '두 변이 4, 5이고 나머지 한 변이 자연수 x일 때, 둔각삼각형이 되는 x는 어떤 값일까?' });
   const aRange = rangeScene({ id: 'py4-arange', title: '예각삼각형이 되는 자연수 x', short: '예각이 되는 x', ask: 'acute', start: [6, 8, 8], question: '가장 긴 변이 정해지지 않은 두 변 6, 8과 자연수 x로 예각삼각형이 되려면 x는 얼마여야 할까?' });
 
-  for (const D of [hinge, acuteEx, obtuseEx, oRange, aRange]) D.lessonQuestion = (M, s, Q) => s.pyLessonProblem ? Q.stem : D.question;
+  for (const D of [hinge, acuteEx, obtuseEx, oRange, aRange]) D.lessonQuestion = (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : D.question;
   G.register(40, 't4', '④ 예각·직각·둔각', '예각·직각·둔각', PARAMS, [hinge, acuteEx, obtuseEx, oRange, aRange]);
 })();

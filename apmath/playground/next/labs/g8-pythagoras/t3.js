@@ -18,6 +18,7 @@
     pyQ2: P('긴 변 q', 3, 15, 1, 4, { color: 'green', format: (v) => `${v}` })
   };
   const num = (v) => `${v}`;
+  const lessonProblem = (Q) => (Q.html || Q.stem) + '<br>보기: ' + Q.choices.map((c, i) => `${G.NUM[i]} ${c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : G.esc(c.p)}`).join(' · ');
   // Trace the actual right-triangle sides without changing any problem length.
   function lessonTrace(b, R, s, C) {
     if (!C.lesson) return;
@@ -40,7 +41,7 @@
         return { pyF: i, pyK: k, pyAsk: ask };
       },
       model: (s) => ({ ...famOf(s), ask: s.pyAsk || 'c' }),
-      lessonQuestion: (M, s, Q) => s.pyLessonProblem ? Q.stem : `피타고라스 수 (${M.a0}, ${M.b0}, ${M.c0})의 세 변을 모두 ${M.k}배 해도 직각삼각형일까?`,
+      lessonQuestion: (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : `피타고라스 수 (${M.a0}, ${M.b0}, ${M.c0})의 세 변을 모두 ${M.k}배 해도 직각삼각형일까?`,
       draw(b, s, M, C) {
         const { a, b: bb, c, k, ask } = M, prob = C.problem;
         const val = { a, b: bb, c };
@@ -112,7 +113,7 @@
       return { pyQ1: p, pyQ2: q, pyKind: kind };
     },
     model: (s) => trapOf(s),
-    lessonQuestion: (M, s, Q) => Q.stem,
+    lessonQuestion: (M, s, Q) => lessonProblem(Q),
     draw(b, s, M, C) {
       const { p, q, x1, x2, x1i, x2i, kind } = M, prob = C.problem;
       // 왼쪽: x 가 빗변(직각변 p, q), 오른쪽: q 가 빗변(직각변 p, x). 두 삼각형을 가로로 나란히 놓습니다.
