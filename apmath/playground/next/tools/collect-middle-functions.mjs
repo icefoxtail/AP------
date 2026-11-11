@@ -55,7 +55,8 @@ function assets(q) {
         try { asset = decodeURIComponent(asset); } catch {}
         const rel = asset.startsWith('archive/') ? asset : asset.startsWith('assets/') ? `archive/${asset}` : asset.replace(/^\.\.\//, 'archive/');
         const full = path.resolve(ROOT, rel);
-        result.push({ field, ref: asset, path: rel, exists: full.startsWith(ROOT + path.sep) && fs.existsSync(full), role: /solution|answer/i.test(field) ? 'solution' : 'problem' });
+        const role = /provenance|originalReview/i.test(field) ? 'provenance' : /solution|answer/i.test(field) ? 'solution' : 'problem';
+        result.push({ field, ref: asset, path: rel, exists: full.startsWith(ROOT + path.sep) && fs.existsSync(full), role });
       }
     } else if (Array.isArray(v)) v.forEach((x, i) => walk(x, `${field}[${i}]`));
     else if (v && typeof v === 'object') Object.entries(v).forEach(([k, x]) => walk(x, field ? `${field}.${k}` : k));
@@ -86,7 +87,7 @@ for (const { file, blob } of files) {
     // Metadata is a recall aid only. A later reviewer must read the actual item.
     const signals = rules.filter(([, re]) => re.test(allText)).map(([label]) => label);
     const problemImages = images.filter(x => x.role === 'problem');
-    const content = q.content ?? q.question ?? '';
+    const content = q.content ?? q.question ?? q.stem ?? '';
     const text = plain(content);
     const imageOnly = problemImages.length > 0 && text.replace(/[$\\{}]/g, '').length < 45;
     const status = signals.length ? 'RELEVANT_SIGNAL' : problemImages.length || imageOnly ? 'IMAGE_REVIEW' : 'NO_SIGNAL';
@@ -110,7 +111,9 @@ const count = xs => ({
   noSignal: xs.filter(x => x.candidateStatus === 'NO_SIGNAL').length,
   problemImageQuestions: xs.filter(x => x.images.some(i => i.role === 'problem')).length,
   imageOnlyQuestions: xs.filter(x => x.imageOnly).length,
-  missingAssetQuestions: xs.filter(x => x.images.some(i => !i.exists)).length
+  missingAssetQuestions: xs.filter(x => x.images.some(i => !i.exists && i.role !== 'provenance')).length,
+  missingProvenanceAssetQuestions: xs.filter(x => x.images.some(i => !i.exists && i.role === 'provenance')).length,
+  missingAnyAssetQuestions: xs.filter(x => x.images.some(i => !i.exists)).length
 });
 const summary = {
   schemaVersion: 1, sourceCommit: head, sourceRoot: 'archive/exams/original/middle',
