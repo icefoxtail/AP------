@@ -1263,6 +1263,9 @@
       "layer": "보류·부채",
       "kind": "상태",
       "sameMeaningAs": [],
+      "overlapsWith": [
+        "reviewFlag"
+      ],
       "note": "원본 결함 후보 표시(true/false)"
     },
     {
@@ -1270,6 +1273,9 @@
       "layer": "보류·부채",
       "kind": "증거",
       "sameMeaningAs": [],
+      "overlapsWith": [
+        "reviewFlagReason"
+      ],
       "note": "원본 결함 후보 사유"
     },
     {
@@ -1285,6 +1291,26 @@
       "kind": "증거",
       "sameMeaningAs": [],
       "note": "파운데이션 결함 후보 사유"
+    },
+    {
+      "name": "reviewFlag",
+      "layer": "보류·부채",
+      "kind": "상태",
+      "sameMeaningAs": [],
+      "overlapsWith": [
+        "sourceDefectCandidate"
+      ],
+      "note": "고등 유사시험지 야간 라인이 남은 결함을 문항에 적는 재검수 대상 표시(예: OPEN_DEFECT). 화면 사용을 막는 문턱이 아니라 재검수 대상을 알려 주는 꼬리표"
+    },
+    {
+      "name": "reviewFlagReason",
+      "layer": "보류·부채",
+      "kind": "증거",
+      "sameMeaningAs": [],
+      "overlapsWith": [
+        "sourceDefectReason"
+      ],
+      "note": "reviewFlag를 단 사유 문장(어떤 결함이 남았는지). 꼬리표의 근거이며 사용 문턱이 아님"
     },
     {
       "name": "metaFoundationHoldReason",
