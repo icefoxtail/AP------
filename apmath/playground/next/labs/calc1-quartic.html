@@ -15,6 +15,11 @@
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="calc1-quartic/lesson-core.js"></script>
+<script defer src="calc1-quartic/lesson-a.js"></script>
+<script defer src="calc1-quartic/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -31,6 +36,7 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
   const { tex, fmt, clamp } = APLab;
+  const lqtActive = s => !!s && !!(s.lessonOn || s.lessonEntry);
   const NARROW = window.matchMedia('(max-width: 859px)'); // 셸의 모바일 기준과 같은 값
 
   /* ---------- 1. 사차함수와 삼차 도함수 ----------
@@ -1469,6 +1475,108 @@ window.addEventListener('DOMContentLoaded', function () {
     })
   ];
 
+  const lessonParams = {
+      lambda: { value: 0, min: 0, max: 1, step: 0.02, color: 'amber', label: '가운데 극값 위치비 $\\lambda$', hint: '$\\lambda=\\dfrac{\\gamma-\\alpha}{\\beta-\\alpha}$ · 0 = 왼쪽 삼중근, 0.5 = 좌우 대칭, 1 = 오른쪽 삼중근 (극대 C를 끌어도 조절됩니다)',
+        format: (v, s) => `λ = ${fmt(v)} (${isLeft(s) ? '왼쪽 삼중근 3:1' : isRight(s) ? '오른쪽 삼중근 1:3' : isSym(s) ? '좌우 대칭 1:√2' : '좌우 비대칭'})` },
+      spanL: { value: 3, min: 1.5, max: 4, step: 0.1, color: 'sky', label: '극값 폭 $L=\\beta-\\alpha$', hint: '오른쪽 극소 B를 끌어도 조절됩니다', format: (v) => `L = ${fmt(v)}` },
+      a: { value: 0.25, min: 0.1, max: 0.8, step: 0.05, color: 'green', label: '최고차항 계수 $a$', format: (v) => `a = ${fmt(v)}` },
+      kLine: { value: 2, min: -6, max: 4, step: 0.1, color: 'violet', label: '기준선 $y=k$', hint: '$|f(x)-k|$ 가 미분가능하지 않은 점을 찾습니다 · 그림의 보라색 점으로도 끌 수 있어요', format: (v) => `k = ${fmt(v)}` },
+      // 그림에서 끌어 바꾸는 값 (슬라이더 없음): 왼쪽 극점 x(α)와 기준 높이 f(α)
+      alpha: { value: 0, min: -2, max: 1.5, step: 0.01 },
+      y0: { value: 2, min: -8, max: 6, step: 0.01 }
+    };
+
+  // Replay selects the preserved first source, leaving the manual variant untouched.
+  const lessonScenes=scenes,sourceInfo={};
+  for(const sc of lessonScenes){
+    const current=sc.vary.cur,first=current();sc.vary.first=()=>first;
+    sc.vary.cur=()=>lqtActive(window.lab&&window.lab.s)?first:current();
+    const initial=Object.fromEntries(Object.entries(lessonParams).map(([k,p])=>[k,p.value]));
+    Object.assign(initial,{dual:false,animDir:1});sc.enter(initial);
+    sourceInfo[sc.id]={first,initial,question:sc.problem.text().replace(/<div[^>]*>\s*<button[^>]*data-cx-new[\s\S]*$/,''),answer:sc.problem.answer(),steps:sc.steps(initial)};
+  }
+  const lessonSource=window.APL_QT_SOURCE={scenes:lessonScenes,first:id=>sourceInfo[id].first,initial:id=>({...sourceInfo[id].initial}),question:id=>sourceInfo[id].question,answer:id=>sourceInfo[id].answer,steps:id=>sourceInfo[id].steps.slice(),math:{evalF,evalFp,getRoots,getDerivativeAreas,findCrossings,stationaryCrossing,isLeft,isRight,isSym,area3}};
+  function lqtMathKey(value) {
+    return String(value||'').normalize('NFKC').replace(/\\(?:left|right|,|!|;|quad|qquad)/g,'')
+      .replace(/\\(?:dfrac|frac)\{([^{}]*)\}\{([^{}]*)\}/g,'($1)/($2)')
+      .replace(/\\sqrt\{([^{}]*)\}/g,'√($1)').replace(/\\sqrt\s*(\w)/g,'√($1)')
+      .replace(/\\(?:text|mathrm|mathbf|overline)\{([^{}]*)\}/g,'$1')
+      .replace(/\\leq?/g,'≤').replace(/\\geq?/g,'≥').replace(/\\lt/g,'<').replace(/\\gt/g,'>')
+      .replace(/\\cdot|\\times/g,'×').replace(/−|–/g,'-').replace(/[\s{}$^_()]/g,'');
+  }
+  function lqtLabel(value,s) {
+    const text=String(value||''), key=lqtMathKey(text), known=(s.lqtKnownMath||[]).map(lqtMathKey);
+    if (s.lqtShowAnswer) return text;
+    if (key && known.some(math=>math.includes(key))) return text;
+    const count=text.match(/^(\d+)개$/);
+    if(count&&known.some(math=>math.endsWith('='+count[1])))return text;
+    if (/^(?:[A-Z][′']*|[xy]|[αβ]|[xy][₁₂]|[PQRS]|f|g|y = x)$/.test(text)) return text;
+    if (/^(?:y = f[(]x[)]|y = f′[(]x[)]|[αβhO]|[xX]_[TQI]|S_d = Δy|극값의 차 Δy)$/.test(text)) return text;
+    if(/^(?:[ST][₀-₉]+|[?⋮])$/.test(text))return text;
+    const named=text.match(/^([A-Z][′']*)(?=[\s(=:]|$)/);
+    if (named) return named[1];
+    return /^(?:점근선|대칭축|산술평균|기하평균|직각|넓이|교점)/.exec(text)?.[0]||'';
+  }
+  for (const sc of lessonScenes) {
+    const original={question:sc.question,reviewTop:sc.reviewTop,steps:sc.steps,view:sc.view,draw:sc.draw,panes:sc.panes,tick:sc.tick};
+    sc.question=(s,lab)=>lqtActive(s)?s.lqtQuestion||lessonSource.question(sc.id):typeof original.question==='function'?original.question(s,lab):original.question;
+    sc.reviewTop=(s,lab)=>lqtActive(s)?'':typeof original.reviewTop==='function'?original.reviewTop(s,lab):original.reviewTop;
+    sc.steps=(s,lab)=>lqtActive(s)?['조건 확인','핵심 관계','식 세우기','계산과 결론']:(typeof original.steps==='function'?original.steps(s,lab):original.steps);
+    sc.view=(s,lab)=>lqtActive(s)?{}:original.view(s,lab);
+    sc.panes=s=>lqtActive(s)?(s.lqtExplore?panesOf(lessonScenes.indexOf(sc)+1)(s):null):original.panes(s);
+    sc.tick=(s,dt,lab)=>lqtActive(s)?false:original.tick(s,dt,lab);
+    sc.draw=(b,s,v,lab)=>{
+      if (!lqtActive(s)) {
+        if (b._qtLessonView) {
+          if (b.focus===b._qtLessonView.appliedFocus) Object.assign(b,b._qtLessonView.before);
+          else { b._cxKey=null; }
+          Object.assign(AUTO,b._qtLessonView.beforeAuto);
+          delete b._qtLessonView;
+        }
+        return original.draw(b,s,v,lab);
+      }
+      if (!b._qtLessonView) b._qtLessonView={beforeAuto:{...AUTO},before:{focus:b.focus,zoom:b.zoom,panX:b.panX,panY:b.panY,_cxKey:b._cxKey,__focusKey:b.__focusKey,aspect:b.aspect}};
+      const shown={...s,...(s.lessonEntry&&s.lqtInitial?JSON.parse(JSON.stringify(s.lqtInitial)):{}),playing:false,lqtKnownMath:s.lessonEntry?[]:s.lqtKnownMath,lqtShowAnswer:!s.lessonEntry&&!!s.lqtShowAnswer,step:s.lessonEntry?0:Math.max(0,Math.min(s.step||0,s.lqtShowAnswer?4:2))};
+      const shownLab=Object.create(lab);shownLab.tab=shown.lqtExplore?'explore':'review';shownLab.s=shown;
+      if(shown.lqtStage>=0)shown.step=Math.max(0,Math.round(shown.lqtStage));
+      if(s.lessonEntry)shown.step=0;
+      const key=sc.id+'|'+!!shown.lqtExplore;
+      if(shown.lqtExplore){AUTO.win=null;AUTO.panes=null;AUTO.m=0;}
+      if (b._qtLessonView.key!==key) { b._cxKey=null;b.__focusKey=null;b._qtLessonView.key=key;b.zoom=1;b.panX=0;b.panY=0; }
+      const plot=b.plot,text=b._text,axes=b.axes,path=b.path,point=b.point,roundRect=b.ctx.roundRect,curves=[],paths=[],points=[],rects=[];
+      let axesDrawing=false;
+      b.axes=function(...args){axesDrawing=true;try{return axes.apply(this,args);}finally{axesDrawing=false;}};
+      b.path=function(ps,options={}){if(!axesDrawing&&!this._bbox&&(options.width||0)>=1.8)paths.push(ps);return path.call(this,ps,options);};
+      b.point=function(p,options={}){if(!axesDrawing&&!this._bbox)points.push(p);return point.call(this,p,options);};
+      b.ctx.roundRect=function(x,y,w,h,r){if(!axesDrawing&&!b._bbox)rects.push([x,y,w,h]);return roundRect.call(this,x,y,w,h,r);};
+      b.plot=function(fn,options={}) {
+        if (!this._bbox && (options.width||2.6)>=1.8) curves.push({fn,options,pane:this.paneId});
+        return plot.call(this,fn,options);
+      };
+      b._text=function(x,y,label,options,screen) {return text.call(this,x,y,this._bbox||axesDrawing?label:lqtLabel(label,shown),options,screen);};
+      try {original.draw(b,shown,{},shownLab);} finally {b.plot=plot;b._text=text;b.axes=axes;b.path=path;b.point=point;b.ctx.roundRect=roundRect;}
+      b._qtLessonView.appliedFocus=b.focus;
+      // Trace a point on the native plotted function, within the actual viewport.
+      const u=clamp(Number(shown.lqtTrace)||0,0,1);
+      let traced=false;
+      if (!s.lessonEntry && u && !b._bbox) for (const {fn,options,pane} of curves) {
+        if(b.panes)b.use(pane||'main');
+        const box=b.viewBox(),lo=Math.max(box.x0,options.from??-Infinity),hi=Math.min(box.x1,options.to??Infinity),xs=[];
+        for (let i=0;i<=120;i++) {const x=lo+(hi-lo)*i/120,y=fn(x);if(Number.isFinite(y)&&y>box.y0&&y<box.y1)xs.push(x);}
+        if(xs.length>1){const x=xs[0]+(xs.at(-1)-xs[0])*u,y=fn(x);if(Number.isFinite(y)&&y>box.y0&&y<box.y1){b.point([x,y],{color:'violet',r:5,glow:false});traced=true;}break;}
+      }
+      const xy=p=>[p.x??p[0],p.y??p[1]];
+      if(!s.lessonEntry&&u&&!traced&&!b._bbox){
+        const segment=paths.find(ps=>ps.length>=2);
+        if(segment){const z=Math.min(segment.length-2,Math.floor(u*(segment.length-1))),t=u*(segment.length-1)-z,p=xy(segment[z]),q=xy(segment[z+1]);b.point([p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t],{color:'violet',r:5,glow:false});}
+        else if(points.length){b.point(xy(points[Math.min(points.length-1,Math.floor(u*points.length))]),{color:'violet',r:5,glow:false});}
+        else if(rects.length){const [x,y,w,h]=rects[0],q=b.toW(x+u*w,y);b.point([q.x,q.y],{color:'violet',r:5,glow:false});}
+      }
+    };
+  }
+  const lessons=window.APL_QT_LESSONS?window.APL_QT_LESSONS.install(lessonScenes,lessonSource):{};
+
+
   /* ---------- 7. 실험실 등록 ---------- */
   APLab.createLab({
     id: 'calc1-quartic',
@@ -1480,18 +1588,10 @@ window.addEventListener('DOMContentLoaded', function () {
     home: '../index.html#calc1',
     legacy: '../../labs/미적분1/사차함수 비율관계.html',
     board: { kind: 'cartesian', focus: focusFor(VIEW[1], false) },
-    params: {
-      lambda: { value: 0, min: 0, max: 1, step: 0.02, color: 'amber', label: '가운데 극값 위치비 $\\lambda$', hint: '$\\lambda=\\dfrac{\\gamma-\\alpha}{\\beta-\\alpha}$ · 0 = 왼쪽 삼중근, 0.5 = 좌우 대칭, 1 = 오른쪽 삼중근 (극대 C를 끌어도 조절됩니다)',
-        format: (v, s) => `λ = ${fmt(v)} (${isLeft(s) ? '왼쪽 삼중근 3:1' : isRight(s) ? '오른쪽 삼중근 1:3' : isSym(s) ? '좌우 대칭 1:√2' : '좌우 비대칭'})` },
-      spanL: { value: 3, min: 1.5, max: 4, step: 0.1, color: 'sky', label: '극값 폭 $L=\\beta-\\alpha$', hint: '오른쪽 극소 B를 끌어도 조절됩니다', format: (v) => `L = ${fmt(v)}` },
-      a: { value: 0.25, min: 0.1, max: 0.8, step: 0.05, color: 'green', label: '최고차항 계수 $a$', format: (v) => `a = ${fmt(v)}` },
-      kLine: { value: 2, min: -6, max: 4, step: 0.1, color: 'violet', label: '기준선 $y=k$', hint: '$|f(x)-k|$ 가 미분가능하지 않은 점을 찾습니다 · 그림의 보라색 점으로도 끌 수 있어요', format: (v) => `k = ${fmt(v)}` },
-      // 그림에서 끌어 바꾸는 값 (슬라이더 없음): 왼쪽 극점 x(α)와 기준 높이 f(α)
-      alpha: { value: 0, min: -2, max: 1.5, step: 0.01 },
-      y0: { value: 2, min: -8, max: 6, step: 0.01 }
-    },
+    params: lessonParams,
     state: { dual: false, animDir: 1 },
     persist: ['dual'],
+    lessons,
     scenes
   });
 });
