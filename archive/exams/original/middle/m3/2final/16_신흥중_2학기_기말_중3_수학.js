@@ -338,7 +338,11 @@ window.examData = {
         "$125^\\circ$"
       ],
       "answer": "⑤",
-      "solution": "$\\angle DAB=a$, $\\angle BCD=c$, $\\angle ADC=d$라 하자.<br>그림에서 $E,A,B$와 $E,D,C$가 각각 한 직선 위이므로 $\\triangle EAD$에서<br>$30^\\circ+(180^\\circ-a)+(180^\\circ-d)=180^\\circ$<br>$a+d=210^\\circ$<br>또 $A,D,F$와 $B,C,F$가 각각 한 직선 위이므로 $\\triangle DCF$에서<br>$40^\\circ+(180^\\circ-d)+(180^\\circ-c)=180^\\circ$<br>$c+d=220^\\circ$<br>원에 내접하는 사각형의 마주 보는 각은 보각이므로 $a+c=180^\\circ$이다.<br>앞의 두 식을 더하면 $a+c+2d=430^\\circ$이므로<br>$180^\\circ+2d=430^\\circ$, $d=125^\\circ$이다.<br>따라서 정답은 ⑤이다."
+      "solution": "$\\angle DAB=a$, $\\angle BCD=c$, $\\angle ADC=d$라 하자.<br>그림에서 $E,A,B$와 $E,D,C$가 각각 한 직선 위이므로 $\\triangle EAD$에서<br>$30^\\circ+(180^\\circ-a)+(180^\\circ-d)=180^\\circ$<br>$a+d=210^\\circ$<br>또 $A,D,F$와 $B,C,F$가 각각 한 직선 위이므로 $\\triangle DCF$에서<br>$40^\\circ+(180^\\circ-d)+(180^\\circ-c)=180^\\circ$<br>$c+d=220^\\circ$<br>원에 내접하는 사각형의 마주 보는 각은 보각이므로 $a+c=180^\\circ$이다.<br>앞의 두 식을 더하면 $a+c+2d=430^\\circ$이므로<br>$180^\\circ+2d=430^\\circ$, $d=125^\\circ$이다.<br>따라서 정답은 ⑤이다.",
+      "solutionImage": "assets/images/16_신흥중_2학기_기말_중3_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 첫 그림은 원에 내접하는 사각형(꼭짓점 A, B, C, D)의 변 BA와 CD를 연장한 점 E, 변 BC와 AD를 연장한 점 F가 있고 각 E는 30도, 각 F는 40도이며 사각형의 세 각 A, C, D가 a, c, d로 표시되어 있다. 둘째 그림은 삼각형 EAD로 각 E는 30도, 나머지 두 각은 180도에서 a를 뺀 값과 180도에서 d를 뺀 값이다. 셋째 그림은 삼각형 DCF로 각 F는 40도, 나머지 두 각은 180도에서 c를 뺀 값과 180도에서 d를 뺀 값이다.",
+      "solutionImageCaption": "삼각형 EAD에서 30°+(180°−a)+(180°−d)=180°이므로 a+d=210°이고, 삼각형 DCF에서 40°+(180°−d)+(180°−c)=180°이므로 c+d=220°이다. 두 식을 더하고 a+c=180°를 쓰면 180°+2d=430°이다. 정답은 ⑤ 125°이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 20,

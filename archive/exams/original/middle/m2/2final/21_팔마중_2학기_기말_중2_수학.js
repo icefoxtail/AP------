@@ -797,7 +797,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/s01.png"
       ],
-      "accessibility": "삼각형 ABC에서 선분 ED와 선분 BC가 평행한 도형"
+      "accessibility": "삼각형 ABC에서 선분 ED와 선분 BC가 평행한 도형",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 첫째 그림은 삼각형 ABC에서 변 AB 위의 점 E와 변 AC 위의 점 D를 이은 ED가 BC와 평행한 모습이며 AE는 8, EB는 4, BC는 12이다. 둘째 그림은 삼각형 ABC로 AB는 12, BC는 12이다. 셋째 그림은 같은 방향으로 놓은 삼각형 AED로 AE는 8이고, 대응하는 변은 같은 색이다.",
+      "solutionImageCaption": "(1) 삼각형 AED와 삼각형 ABC가 닮음이다. (2) 각 A가 공통이고 ED와 BC가 평행하여 동위각 AED와 ABC, ADE와 ACB가 같으므로 두 쌍의 대응각이 각각 같아 닮음이다. (3) AB는 AE와 EB의 합 12이고 AE 대 AB는 ED 대 BC와 같으므로 8 대 12와 ED 대 12가 같다. 정답은 ED가 8cm이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 22,
