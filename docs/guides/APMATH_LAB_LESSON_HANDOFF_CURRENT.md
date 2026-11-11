@@ -74,8 +74,9 @@
 | `alg-log` 로그함수 | 4 | 4 / 15 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1825](https://github.com/icefoxtail/AP------/pull/1825), merge `3cc707b98bf28761ff449db9ec91567f93328848`. 원문 목표6·탐구개념9. 최소68/68(수학7·runtime6·공통video/pins55),224개 실제 Board 상태·validator 오류/경고0 |
 | `alg-log-deep` 로그함수 심화 | 16 | 16 / 36 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1826](https://github.com/icefoxtail/AP------/pull/1826), merge `75f813753bf2a12712696a4711721827b89869ce`. 원문 목표28·개념8. 최소63개 통과 증거(수학16·runtime6·공통video41),468개 실제 Board 상태·validator 오류/경고0 |
 | `alg-unit-circle` 단위원과 그래프 | 8 | 8 / 31 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1829](https://github.com/icefoxtail/AP------/pull/1829), merge `a8e2324032e43bdf798e18de6d5d602b90f19fd8`. 탐구개념27·첫 원문4. 최소63/63(수학17·runtime5·공통video41),570개 실제 Board/raw canvas 상태·validator 오류/경고0 |
-| `alg-trig-geometry` 삼각함수 도형 | 16 | 16 / 40 | **IMPLEMENTED / QA_PENDING** · 원문 목표22·탐구개념18. 최소79/79(수학16·runtime8·공통video/pins55),616개 실제 Board 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
-| 고등 잔여 20개 | — | — | `alg-sequence` 21장면 → `calc1-limits` 9장면 → `calc1-derivative-shape` 7장면 → `calc1-cubic` 5장면. 수열21/41·삼차5/25는 각각 별도 원격 브랜치에 보존. 완료한 접선은 건너뛰고 실험실별 병합 |
+| `alg-trig-geometry` 삼각함수 도형 | 16 | 16 / 40 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1830](https://github.com/icefoxtail/AP------/pull/1830), merge `98508f393f16aedb22b3cad20300503df54b20df`. 원문 목표22·탐구개념18. 최소79/79(수학16·runtime8·공통video/pins55),616개 실제 Board 상태·validator 오류/경고0 |
+| `alg-sequence` 수열 | 21 | 21 / 41 | **IMPLEMENTED / QA_PENDING** · 원문 목표30·개념11. 최소84개(수학21·runtime6·공통video/pins/rate57),533개 실제 Board 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
+| 고등 잔여 19개 | — | — | `calc1-limits` 9장면 → `calc1-derivative-shape` 7장면 → `calc1-cubic` 5장면 → `calc1-quartic` 5장면. 삼차5/25는 별도 원격 브랜치에 보존. 완료한 접선은 건너뛰고 실험실별 병합 |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -265,6 +266,10 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 · **수열 전체 구현.** `feat/lessons-alg-sequence`, type1-0~type8-1 및 br-tree/cyc-table/pt-tri-diff/pt-tri-sum/fig-repeat **21장면/41해설**(원문 목표30·개념11), 누락0. 등차수열의 항·부분합·부호·최대 번호, 합 공식의 첫 항 예외, 등비 묶음, 부분분수 소거, 순환 진입/주기, 자연수·구간·홀짝 조건을 지킨 역추적, 도형 넓이 수열을 원문 목표별로 나누었다. 반복 도형의 기존 ‘이전 교육과정’ 표기도 유지한다. 기본1.5배 공통 Player·5장/60초, 첫 문항을 고정하면서 수동 새문제와 탐구를 보존한다. 순환 표는 실제로 그리는 항을 1→3→8 순서로 자막과 맞추고, 역추적 후보와 최종 합을 단계별로 표시한다. 최소 **84개 통과**(독립수학21·runtime6·공통video/pins/rate57), **533개** 실제 Board/canvas 상태·validator 오류/경고0·KaTeX·구문9단위·diff 통과. 새문제·형제/replay·최종→entry·보유상태·수동 focus/zoom/pan 복원 확인. 검사 입력20개는 최신 main 통합 후 동일 SHA256. 원격 보존 HEAD `afee4d66205da3aba108af1c5628f23d5409c1f3`을 부모로 이어 강제 push 없이 통합한다. 공통kit·원본문항/정답 변경 없음. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
+
+- 2026-11-12 · **삼각함수 도형 main 병합.** [PR #1830](https://github.com/icefoxtail/AP------/pull/1830), feature `55a0014088c213b396f70912d400a95ebffbe492`, merge/main readback `98508f393f16aedb22b3cad20300503df54b20df`. 누적 **34실험실/791장면/2,273해설**. AWCR r59 raw SHA256 `a631ccfe5713f34439c5faa3593f4721360a4de11f272af9e428d4078d22cc0d` readback 완료. 다음 극한9는 advanced, 도함수개형7은 basic, 삼차5/25는 root 원격보존 상태로 범위를 나눴다. Pages는 등록 writer 대기와 학생파일 미확인 상태이며 main 병합을 배포 완료로 기록하지 않는다.
 
 - 2026-11-12 · **삼각함수 도형 전체 구현.** `feat/lessons-alg-trig-geometry`, bas-1~8/adv-1~8 **16장면/40해설**(원문 목표22·실제 탐구/풀이 개념18), 누락0. 부채꼴 최적화의 반지름·호 길이·각·넓이, 방정식 근 수/합, 현/보조변, 내접사각형의 각/대각선 등 목표를 분리했다. 공통 Player 기본1.5배·첫 원문 고정·수동 새문제 유지. 실제 도형에 필요한 보조선·후보·각·좌표·치수 라벨을 해당 자막에서 공개하며 형제해설/최종→entry·보유상태·수동 카메라 복원을 확인했다. 현지 drawDimension이 분수를 raw fillText로 그리던 부분은 기존 Board annotationSize/_text를 사용하도록 고쳤고 adv-2의 문자 분수도 조판 경로로 연결했다. 최소 **79/79**(독립수학16·runtime8·공통video/pins55), 실제 **616개** Board/canvas 상태·validator 오류/경고0·구문6파일/2inline·CRLF 보존 diff 통과. 직접 stdout SHA256 `e9c4bf55f824d899d8c41166aa8663ff352d7a5b85ca00719b0a371b89e71cdc`, 실제 읽은 입력/스타일 manifest `b82e8dac11bd7d60fdd22db68f4a3fa5975138f6fb480037078a26344d2b2854`. 최신 main 반영 후 46입력 SHA256 동일. 공통kit 무수정. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
 
