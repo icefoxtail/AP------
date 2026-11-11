@@ -213,7 +213,7 @@
       'B=45°, C=60°, A=75°인 삼각형에서 두 직각삼각형에 30°·45°·60°를 남기는 수선을 골라보세요.', [
         '밑각은 45°와 60°, 나머지 각 A는 75°예요.', '수선은 내리는 꼭짓점의 각을 둘로 나눠요.',
         '60°인 C에서 AB에 수선을 내려 볼까요?', 'C의 각이 45°와 15°로 나뉘어 계산이 길어져요.',
-        '이제 75°인 A에서 BC에 수선을 내려요.', '두 직각삼각형에 45°와 60°가 그대로 남아요.',
+        '이제 남은 75°의 꼭짓점에서 수선을 내려요.', '두 직각삼각형에 45°와 60°가 그대로 남아요.',
         '선택은 A에서 BC에 수선이에요.', '75°가 45°와 30°로 나뉘는 것을 확인해요.'
       ], { mode: 'trapCompare' });
     for (const pair of [[45, 60], [60, 45], [45, 30], [30, 45]]) {
@@ -231,7 +231,163 @@
     }
   }
 
-  // GROUP_B_MORE
+  {
+    const id = 'r5-1';
+    concept(id, '두 각 원리', fixed(id, q => q.fig.ask === 'h' && q.fig.pair.join(',') === '45,60'),
+      '$h=\\frac{a}{\\tan x+\\tan y}$',
+      'AH=h, BC=a이고 H가 B와 C 사이예요. 꼭대기의 각 BAH=x, CAH=y로 높이를 나타내세요.', [
+        '탑 AH의 양쪽에 관측점 B와 C가 있어요.', '꼭대기에서 높이와 이루는 각을 x, y라 해요.',
+        '$\\tan x=\\frac{BH}{h}$이므로 $BH=h\\tan x$예요.',
+        '$\\tan y=\\frac{CH}{h}$이므로 $CH=h\\tan y$예요.',
+        '$BC=BH+CH$로 두 거리를 더해요.',
+        '$h(\\tan x+\\tan y)=a$로 정리해요.',
+        '따라서 $h=\\frac{a}{\\tan x+\\tan y}$예요.',
+        '여기서 x, y는 지면이 아닌 꼭대기의 각이에요.'
+      ], { unknown: 'h', mode: 'towerTop' });
+  }
+  {
+    const id = 'heightObtuse';
+    concept(id, '같은쪽 원리', fixed(id, q => q.fig.ask === 'h'), '$BC=BH-CH$',
+      '두 관측점이 탑의 같은 쪽에 있고 B, C, H 순서로 놓여요. 두 관측점의 거리를 어떻게 나타낼까요?', [
+        'B, C, H가 이 순서로 한 직선 위에 있어요.', 'A에서 지면에 내린 수선의 발은 H예요.',
+        '큰 직각삼각형 ABH의 밑변은 BH예요.', '작은 직각삼각형 ACH의 밑변은 CH예요.',
+        '두 밑변은 CH만큼 겹쳐 있어요.', '겹친 부분을 큰 밑변에서 빼야 BC가 남아요.',
+        '따라서 $BC=BH-CH$예요.', '각 ACH는 삼각형 ABC에서 외각이에요.'
+      ], { unknown: 'h' });
+  }
+  {
+    const id = 'std4560Height';
+    concept(id, '높이 원리', fixed(id, q => q.fig.ask === 'h'), '$h=\\frac{3-\\sqrt{3}}{2}a$',
+      '밑각 B=45°, C=60°이고 BC=a예요. 높이 AH=h를 a로 나타내세요.', [
+        'A에서 BC에 수선 AH를 내리고 높이를 h라 해요.', '45° 직각삼각형 ABH에서 BH=h예요.',
+        '$CH=\\frac{h}{\\tan60^{\\circ}}=\\frac{h}{\\sqrt{3}}$예요.',
+        '$BH+CH=BC$이므로 $h+\\frac{h}{\\sqrt{3}}=a$예요.',
+        '$h=\\frac{a}{1+\\sqrt{3}/3}$로 정리해요.',
+        '분모의 유리화를 위해 켤레인 식을 곱해요.',
+        '따라서 $h=\\frac{3-\\sqrt{3}}{2}a$예요.',
+        '높이가 밑변 BC보다 작은지도 확인해요.'
+      ], { unknown: 'h' });
+  }
+  for (const [id, asks, pairs] of [
+    ['r5-1', ['h', 'bh', 'ch'], [[30, 60], [45, 60], [60, 45]]],
+    ['heightObtuse', ['h', 'bh'], [[30, 45], [45, 60]]],
+    ['std4560Height', ['h', 'bh', 'ch'], [[45, 60], [45, 60], [45, 60]]]
+  ]) {
+    asks.forEach((ask, i) => {
+      const q = fixed(id, q => q.fig.ask === ask && q.fig.pair.join(',') === pairs[i].join(',')), f = q.fig;
+      const cb = G.vdiv(G.vi(1), G.tanD(f.pair[0])), cc = G.vdiv(G.vi(1), G.tanD(f.pair[1]));
+      const name = { h: 'AH', bh: 'BH', ch: 'CH' }[ask];
+      add(id, { h: '높이 계산', bh: 'BH거리', ch: 'CH거리' }[ask], q, [
+        `올려본 각은 ${f.pair[0]}°, ${f.pair[1]}°이고 $BC=${f.a0}$예요.`,
+        f.same ? 'B, C, H 순서이므로 두 밑변의 차를 써요.' : 'H가 B와 C 사이이므로 두 밑변을 더해요.',
+        `$BH=\\frac{h}{\\tan${f.pair[0]}^{\\circ}}$예요.`,
+        `$CH=\\frac{h}{\\tan${f.pair[1]}^{\\circ}}$예요.`,
+        `$h\\left(${tex(cb)}${f.same ? '-' : '+'}${tex(cc)}\\right)=${f.a0}$예요.`,
+        ask === 'h' ? '높이 h만 남기도록 나누고 분모를 유리화해요.' : `$h=${ctex(f.work.h)}$를 ${name}의 식에 넣어요.`,
+        answerLine(q, name),
+        ask === 'h' ? '높이와 두 지점 사이의 거리를 구별해요.' : `구하는 거리는 높이가 아닌 ${name}예요.`
+      ]);
+    });
+  }
+  {
+    const id = 'std3060Mountain', q = fixed(id);
+    concept(id, '이등변 원리', q, '$h=\\frac{\\sqrt{3}}{2}BC$',
+      '같은 쪽의 B, C에서 산을 올려본 각이 30°, 60°예요. 이등변삼각형을 찾아 높이를 나타내세요.', [
+        'B, C, H 순서이고 산의 수선의 발은 H예요.', '각 ACH=60°는 삼각형 ABC의 외각이에요.',
+        '$\\angle BAC=60^{\\circ}-30^{\\circ}=30^{\\circ}$예요.',
+        '각 BAC와 각 B가 같으므로 AC=BC예요.',
+        '직각삼각형 ACH에서 AC는 빗변이에요.',
+        '$h=AC\\sin60^{\\circ}$에 AC=BC를 넣어요.',
+        '따라서 $h=\\frac{\\sqrt{3}}{2}BC$예요.',
+        '가까운 관측점의 60°를 삼각형의 내각으로 보면 안 돼요.'
+      ], { unknown: 'h', mode: 'mountainIso' });
+    add(id, '산높이 계산', q, [
+      `먼 곳의 각은 30°, 가까운 곳은 60°, $BC=${q.fig.a0}$예요.`,
+      '60°인 외각은 서로 이웃하지 않는 두 내각의 합이에요.',
+      '$\\angle BAC=60^{\\circ}-30^{\\circ}=30^{\\circ}$예요.',
+      `같은 각의 대변이므로 $AC=BC=${q.fig.a0}$예요.`,
+      `$AH=AC\\sin60^{\\circ}$로 높이를 구해요.`,
+      `$AH=${q.fig.a0}\\times\\frac{\\sqrt{3}}{2}$를 계산해요.`,
+      answerLine(q, 'AH'), '이등변삼각형을 찾으면 높이 계산이 짧아져요.'
+    ], { mode: 'mountainIso' });
+  }
+  {
+    const id = 'treeEyeHeight';
+    concept(id, '눈높이 원리', fixed(id), '$H=d\\tan\\theta+h_0$',
+      '수평 거리 d, 올려본 각 θ, 눈높이 h₀를 알아요. 나무 전체 높이 H를 나타내세요.', [
+        '눈에서 나무까지 수평 보조선을 그어요.', '보조선 위쪽 높이만 직각삼각형의 대변이에요.',
+        '위쪽 높이를 u라 두면 $\\tan\\theta=\\frac{u}{d}$예요.',
+        '$u=d\\tan\\theta$로 눈보다 위의 높이를 구해요.',
+        '전체 높이에는 눈보다 아래쪽 부분도 포함돼요.', '눈높이 h₀를 위쪽 높이에 더해요.',
+        '따라서 $H=d\\tan\\theta+h_0$예요.', '땅이 평평하고 나무가 수직이라는 조건을 써요.'
+      ], { unknown: 'H' });
+    for (const theta of [30, 45, 60]) {
+      const q = fixed(id, q => q.fig.th === theta), f = q.fig;
+      add(id, `${theta}°나무`, q, [
+        `수평 거리 ${f.d}, 눈높이 ${f.e}, 올려본 각 ${theta}°예요.`,
+        '눈높이에서 수평선을 그어 직각삼각형을 만들어요.',
+        `위쪽 높이 u에 대해 $\\tan${theta}^{\\circ}=\\frac{u}{${f.d}}$예요.`,
+        `$u=${f.d}\\tan${theta}^{\\circ}$로 정리해요.`,
+        `$u=${f.d}\\times${tex(G.tanD(theta))}=${ctex(f.up)}$예요.`,
+        `전체 높이는 $${ctex(f.up)}+${f.e}$로 구해요.`,
+        answerLine(q), '삼각비로 구한 높이에 눈높이를 더했는지 확인해요.'
+      ]);
+    }
+  }
+  {
+    const id = 'pendulumSwing';
+    concept(id, '높이차 원리', fixed(id), '$h=L(1-\\cos\\theta)$',
+      '길이 L인 줄이 수직선과 θ만큼 기울었어요. 추의 가장 낮은 위치보다 올라간 높이 h를 나타내세요.', [
+        '줄의 길이 L은 흔들려도 변하지 않아요.', '추에서 원래의 수직선에 수선을 내려요.',
+        '걸이에서 현재 추 높이까지의 수직 거리를 보아요.',
+        '이 거리는 기준각의 이웃변이므로 L cosθ예요.',
+        '걸이에서 가장 낮은 위치까지는 L이에요.',
+        '전체 수직 거리에서 현재 수직 거리를 빼요.',
+        '따라서 $h=L(1-\\cos\\theta)$예요.', 'L cosθ는 올라간 높이가 아니라 내려온 거리예요.'
+      ], { unknown: 'h' });
+    for (const theta of [30, 45, 60]) {
+      const q = fixed(id, q => q.fig.th === theta), f = q.fig;
+      add(id, `${theta}°높이`, q, [
+        `줄의 길이는 ${f.L}, 수직선과 이룬 각은 ${theta}°예요.`,
+        '묻는 것은 점선의 가장 낮은 위치부터 올라간 높이예요.',
+        `걸이에서 현재 높이까지의 거리는 $${f.L}\\cos${theta}^{\\circ}$예요.`,
+        `$\\cos${theta}^{\\circ}=${tex(G.cosD(theta))}$를 사용해요.`,
+        `현재 수직 거리는 $${ctex(f.drop)}$예요.`,
+        `$x=${f.L}-${ctex(f.drop)}$로 두 높이의 차를 구해요.`,
+        answerLine(q), '양수이고 줄의 길이보다 작은지 확인해요.'
+      ]);
+    }
+  }
+  {
+    const id = 'brokenTreeCone';
+    for (const kind of ['h', 'L', 'H']) {
+      const q = fixed(id, q => q.fig.kind === kind);
+      const answer = { h: '$h=d\\tan\\theta$', L: '$L=\\frac{d}{\\cos\\theta}$', H: '$H=h+L$' }[kind];
+      concept(id, { h: '남은줄기', L: '부러진부분', H: '전체 원리' }[kind], q, answer,
+        { h: '부러진 나무가 거리 d인 땅에 닿아 θ를 이루어요. 서 있는 부분의 높이 h를 구하는 원리를 알아보세요.', L: '부러진 부분이 땅과 이루는 각 θ, 뿌리에서 닿은 점까지의 거리 d를 알아요. 부러진 길이 L을 나타내세요.', H: '부러진 나무의 남은 줄기 h와 부러진 부분 L을 알아요. 부러지기 전 전체 높이 H는 얼마일까요?' }[kind], [
+          '남은 줄기, 땅, 부러진 부분이 직각삼각형을 이뤄요.',
+          '닿은 점의 각 θ에서 땅 d는 이웃변이에요.',
+          kind === 'L' ? '부러진 초록색 부분 L은 직각의 맞은편 빗변이에요.' : '남은 줄기 h는 기준각 θ의 맞은편 대변이에요.',
+          kind === 'h' ? '$\\tan\\theta=\\frac{h}{d}$로 연결해요.' : kind === 'L' ? '$\\cos\\theta=\\frac{d}{L}$로 연결해요.' : '$h=d\\tan\\theta$로 남은 줄기를 구해요.',
+          kind === 'h' ? '양변에 수평 거리 d를 곱해요.' : kind === 'L' ? '양변에 L을 곱하고 cosθ로 나누어요.' : '$L=\\frac{d}{\\cos\\theta}$로 부러진 길이를 구해요.',
+          kind === 'H' ? '두 부분을 원래대로 세웠다고 생각하고 더해요.' : '이번에 구하는 부분과 전체 나무 높이를 구별해요.',
+          `따라서 ${answer}예요.`, '부러져도 각 부분의 길이는 변하지 않아요.'
+        ], { unknown: kind });
+    }
+    for (const kind of ['h', 'L', 'H']) {
+      const q = fixed(id, q => q.fig.kind === kind), f = q.fig;
+      add(id, { h: '줄기 계산', L: '부러짐 계산', H: '전체 계산' }[kind], q, [
+        `닿은 거리는 ${f.d}, 땅과 이루는 각은 ${f.th}°예요.`,
+        `묻는 것은 ${kind === 'h' ? '남은 줄기 h' : kind === 'L' ? '부러진 부분 L' : '부러지기 전 전체 높이 H'}예요.`,
+        kind === 'L' ? `$\\cos${f.th}^{\\circ}=\\frac{${f.d}}{L}$예요.` : `$\\tan${f.th}^{\\circ}=\\frac{h}{${f.d}}$예요.`,
+        kind === 'L' ? `$L=\\frac{${f.d}}{\\cos${f.th}^{\\circ}}$로 정리해요.` : `$h=${f.d}\\tan${f.th}^{\\circ}$로 정리해요.`,
+        kind === 'H' ? `$h=${ctex(f.work.h)}$, $L=${ctex(f.work.L)}$예요.` : kind === 'h' ? `$\\tan${f.th}^{\\circ}=${tex(G.tanD(f.th))}$를 대입해요.` : `$\\cos${f.th}^{\\circ}=${tex(G.cosD(f.th))}$를 대입해요.`,
+        kind === 'H' ? `$H=${ctex(f.work.h)}+${ctex(f.work.L)}$로 더해요.` : '반올림하지 말고 근호와 분수를 정확하게 계산해요.',
+        answerLine(q, kind),
+        kind === 'H' ? '전체 높이는 두 부분 중 어느 하나보다 길어요.' : '물어본 부분만 답하고 전체 높이와 혼동하지 않아요.'
+      ]);
+    }
+  }
 
   // Trace a real source outline. No question parameter or mathematical length is
   // altered by this motion. Concepts use the same source figures symbolically.
@@ -266,6 +422,13 @@
         if (!s.tgLessonProblem && s.tgBMode === 'trapCompare') D.draw(b, s, M, cue);
         else D.pdraw(b, q, cue, s);
       } finally { b.path = path; b.text = text; }
+      if (!C.entry && stage >= 1 && ['towerTop', 'mountainIso'].includes(s.tgBMode)) {
+          const f = q.fig, A = G.pt(0, -f.R.h), H = G.pt(0, 0), B = G.pt(-f.R.bh, 0), Z = G.pt(f.same ? -f.R.ch : f.R.ch, 0);
+          if (s.tgBMode === 'towerTop') {
+            G.ang(b, A, B, H, { color: 'sky', r: 30, label: 'x', size: 15, labelDist: 46 });
+            G.ang(b, A, H, Z, { color: 'green', r: 30, label: 'y', size: 15, rings: 2, labelDist: 46 });
+          } else if (stage >= 2) { G.tick(b, A, Z, 1, 'amber'); G.tick(b, B, Z, 1, 'amber'); }
+      }
       const amount = C.entry ? 0 : G.clamp(s.tgBTrace || 0, 0, 1);
       if (edge && amount) G.line(b, edge[0], G.lerp(edge[0], edge[1], amount), 'amber', 5.5, { alpha: .85 });
     };
