@@ -48,8 +48,9 @@
 | `g7-polygons` 다각형 | 18 | 18 / 31 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1754](https://github.com/icefoxtail/AP------/pull/1754), merge `0f82b309173e29d399945bccedd0a52c8196b586`. 최소 검사 145/145, 누락 0. Pages 등록 작업 대기 |
 | `g7-area` 다각형의 넓이 | 14 | 14 / 30 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1755](https://github.com/icefoxtail/AP------/pull/1755), merge `68060cca4e6f89edaa806b7b5cafaafe102290e3`. 최소 검사 102/102, 누락 0. Pages 등록 작업 대기 |
 | `g7-parallel` 평행선의 성질 | 12 | 12 / 29 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1757](https://github.com/icefoxtail/AP------/pull/1757), merge `22cad5a7005bc7ddedc0ab17fb760f4605b11dae`. 최소 검사 86/86, 누락 0. Pages 등록 작업 대기 |
-| `g7-points-lines` 점과 직선 | 24 | 24 / 63 | **IMPLEMENTED / QA_PENDING** · 신규 24장면/63해설, 누락 0. 최소 검사 120/120. `feat/lessons-g7-points-lines`, PR·main·Pages 확인 예정 |
-| 중1 나머지 2개 | 50 | 0 | 미착수 (§5-3) |
+| `g7-points-lines` 점과 직선 | 24 | 24 / 63 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1758](https://github.com/icefoxtail/AP------/pull/1758), merge `87861a8b40debf3eb8e69153426721298e519e6d`. 최소 검사 120/120, 누락 0. Pages 등록 작업 대기 |
+| `g7-spatial` 공간 위치 관계 | 27 | 구현 중 | 최신 main `87861a8b40debf3eb8e69153426721298e519e6d`에서 `feat/lessons-g7-spatial` 생성, 원문 질문별 제작 중 |
+| `g7-construction` 작도와 합동 | 23 | 0 | 미착수 (§5-3) |
 | 중2 4개 · 중3 2개 | 247 | 0 | 미착수, 선행 확인 필요 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
 
@@ -231,6 +232,9 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+- 2026-11-11 · 점과 직선 [PR #1758](https://github.com/icefoxtail/AP------/pull/1758) **main 운영 병합 완료**. head `8911c38fd1345d514424c88b8cd82757a88f2784`, merge `87861a8b40debf3eb8e69153426721298e519e6d`, 원격 main 및 대상 파일 일치 확인. 24장면/63해설, 최소 검사 120/120. [등록 writer 42969279316](https://github.com/icefoxtail/AP------/actions/runs/42969279316) pending. 실제 학생 HTML은 HTTP 200·이전 4774 bytes이고 lesson/player 연결이 없어 **Pages NOT_VERIFIED / QA_PENDING**이다. 최종 head의 CI 14개는 queued로 전체 CI PASS를 주장하지 않았다. 중1 main 등록 **232/282장면·411해설**. 다음 공간 위치 관계 27장면 제작을 시작했다.
+- 2026-11-11 · [AWCR r12](https://drive.google.com/file/d/1hXOk6MH6C8qLNuHLXkfNUEKx4flk_0FQ/view) 원격 저장·raw 재조회 완료. SHA-256 `fe67a6bb29ececdb999aa98a27310889be1b4c872009ad4df9a759d883c80a91`, parent r11 `646c65c84933b689a7ea6c514b75fa2e6e8e5040b2e617ea061f978ba1aa8fb1`와 결속 확인. 점과 직선까지 MAIN_MERGED, 원·겉넓이·다면체 RELEASED_QA_PENDING이며 전체 모바일 NOT_RUN. 다음 revision r13은 충돌 재확인 후 저장한다.
 
 - 2026-11-11 · `g7-points-lines` **24장면/63해설 신규 구현 완료**, 누락 0. main `22cad5a7005bc7ddedc0ab17fb760f4605b11dae`에서 신규 브랜치로 제작하고 정상 단위마다 원격 보존했다. 최소 검사 120/120, JS/MJS 13파일 구문 통과. **IMPLEMENTED / QA_PENDING**, PR·main·Pages 확인 예정. 제작 중 main `3b41a84e8dd93b4fe54cd4bba24702a4c3f6f4cb`로의 변경은 Archive SVG 작업이며 대상 실험실·공통 키트·필독 문서와 겹치는 변경은 없었다. 다음은 `g7-spatial` 27장면이다.
 
