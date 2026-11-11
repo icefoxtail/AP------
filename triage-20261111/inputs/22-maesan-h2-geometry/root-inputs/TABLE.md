@@ -1,7 +1,8 @@
 # 22 매산고 고2 기하와 벡터 1학기 중간 — SVG 입력 판정
 
 - Source: archive/exams/original/high/h2/1mid/22_매산고_1학기_중간_고2_기하와벡터_기출.js
-- Source blob: 580b9cd7602aa47774884bb3f6bb053a52cbccfa (verified against main at commit 44bcc832644068b5a56ffcbc2a54e4c758f15d11)
+- Source blob: 580b9cd7602aa47774884bb3f6bb053a52cbccfa (verified against current main; source unchanged)
+- Plan-contract check: inspected current main f792f2a77b76293bc8eebf863effee481585f979, validator blob 22917c19fac9831b84bab75cddfcd96d3ff6ea38. q01 FOCUS permits id, kind, label, coordinates, side, curve; side is optional, so q01’s {id, kind} passes this static key check.
 - Existing question images, source JS, and q13/q17 solution SVGs are preserved. This branch adds candidate input/triage files only; no renderer or engine was run here.
 - q18 reuses the existing bound GOLDEN plan at archive/tools/geometry-equation/ops/golden/item43/plan.json (blob 289c7ea5dca04cd4425b2c27eaf317e4ce67d6b1); no duplicate q18 plan is included. Its archived plan caption contains OP=5/2; review visible accessibility/output before publish.
 - q05 uses p=-1 as a representative because p is not uniquely fixed by q05. q06 uses the same exact geometry while preserving the source-image condition P left of F; no p or focus coordinate is labeled.
@@ -32,4 +33,4 @@
 | 19 | FIGURE | ellipse-figure-v1 | focus symmetry and major-axis endpoint |
 | 20 | FIGURE | construction-spike-v1 + G3 vectors | Q division, circle, representative P=D case |
 
-Plans are present for q01–q17 except q18, plus q19–q20; q03/q15 use the engine EXEMPT plan shape. q18 rendering uses the existing GOLDEN plan path above. publish.json is present for visual candidates only. All JSON inputs were JSON-parsed before upload. Official render, PNG inspection, and final sizeClass alignment remain pending the designated implementation/review worker.
+Plans are present for q01–q17 except q18, plus q19–q20; q03/q15 use the engine EXEMPT plan shape. q18 rendering uses the existing GOLDEN plan path above. publish.json is present for visual candidates only. Validation: JSON parsing, item binding, and static plan structure checks PASS. q01 FOCUS was checked against the current validator’s allowed-key contract and PASSes statically. Actual engine plan validation, construction expansion, renderer/observer, PNG inspection, and publish sizeClass match are all NOT_RUN. No runtime validation was available in this input-authoring workspace.

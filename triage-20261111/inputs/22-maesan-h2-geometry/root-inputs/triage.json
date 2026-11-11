@@ -116,8 +116,40 @@
   ],
   "inputRoot": "triage-20261111/inputs/22-maesan-h2-geometry/root-inputs",
   "pending": [
-    "official render",
+    "engine plan validator",
+    "construction expansion",
+    "renderer and observer",
     "rendered PNG inspection",
     "publish sizeClass reconciliation"
-  ]
+  ],
+  "currentContractCheck": {
+    "repositoryCommit": "f792f2a77b76293bc8eebf863effee481585f979",
+    "validatorPath": "archive/tools/geometry-equation/production/ellipse-figure-v1.mjs",
+    "validatorBlob": "22917c19fac9831b84bab75cddfcd96d3ff6ea38",
+    "q01FocusAllowedKeys": [
+      "id",
+      "kind",
+      "label",
+      "coordinates",
+      "side",
+      "curve"
+    ],
+    "q01FocusFieldsPresent": [
+      "id",
+      "kind"
+    ],
+    "q01StaticContractVerdict": "PASS",
+    "runtimeExecuted": false
+  },
+  "validation": {
+    "jsonParse": "PASS",
+    "itemBinding": "PASS",
+    "staticPlanStructure": "PASS",
+    "currentContractInspection": "PASS",
+    "enginePlanValidator": "NOT_RUN",
+    "constructionExpansion": "NOT_RUN",
+    "rendererAndObserver": "NOT_RUN",
+    "pngVisualReview": "NOT_RUN",
+    "publishSizeClassMatch": "NOT_RUN"
+  }
 }
