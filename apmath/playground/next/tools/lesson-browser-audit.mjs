@@ -122,6 +122,11 @@ for (const labId of targets) {
       const goButton = () => page.locator('.apl-lgo:visible').nth(sc.k);
       const snapshotOf = (lesson) => page.evaluate((fv) => ({ nums: Object.fromEntries(Object.keys(fv.nums).map((k) => [k, lab.s[k]])), sets: Object.fromEntries(Object.keys(fv.sets).map((k) => [k, lab.s[k]])), step: lab.s.step, tab: lab.tab, dragging: !!lab.s.dragging, lessonOn: lab.s.lessonOn, state: lab.video.state }), finalValues(lesson));
       const waitEnded = (ms = 60000) => page.waitForFunction(() => lab.video.state === 'ended', null, { timeout: ms });
+      // 플레이어는 시작(play()) 직후 0.45초 안의 실제 탭을 무시한다(두 번 탭 방지, kit/apl-player.js _startedAt). 그 뒤에 ▶ 를 눌러야 하므로 0.6초를 기다린 뒤 누른다.
+      const clickResume = async () => {
+        await page.waitForFunction(() => performance.now() - (lab.video._startedAt || 0) > 600);
+        await page.locator('.apl-vctl .primary').click();
+      };
       const clean = async (label) => {
         await sleep(250);
         const d = await page.evaluate(() => {
@@ -244,7 +249,7 @@ for (const labId of targets) {
           check('landscape paused: control row inside the viewport', inView(ctl) && inView(play), JSON.stringify({ ctl, play }));
           await shot('paused');
           await page.evaluate(() => { lab.video.rate = 8; });
-          await page.locator('.apl-vctl .primary').click();
+          await clickResume();
           await waitEnded();
           const card = await rectOf('.apl-vend'), nxt = await rectOf('.apl-vnext');
           check('landscape end card: card and 「다음 ▶」 inside the viewport', inView(card) && inView(nxt), JSON.stringify({ card, nxt }));
@@ -316,7 +321,7 @@ for (const labId of targets) {
           check('first play & replay: the answer text is never drawn on the figure before the final caption', !drawn.length, JSON.stringify(drawn.slice(0, 2)));
           check('first play & replay: every set value (reveal state) equals what the lesson has set up to that time (nothing is revealed before its cue)', !early.length, JSON.stringify(early.slice(0, 2)));
           await page.evaluate(() => { lab.video.rate = 6; });
-          await page.locator('.apl-vctl .primary').click();
+          await clickResume();
           await waitEnded();
         }
         // 멈춤·재개 ×5
@@ -330,12 +335,26 @@ for (const labId of targets) {
           await sleep(120);
           check(`pause ${n + 1}: time frozen`, await page.evaluate((t0) => lab.video.state === 'paused' && Math.abs(lab.video.t - t0) < 0.01 && lab.video._raf === 0, t));
           if (n === 0) await shot('paused');
-          await page.locator('.apl-vctl .primary').click();
+          await clickResume();
           await page.waitForFunction(() => lab.video.state === 'playing' || lab.video.state === 'ended');
         }
         await waitEnded();
         const e3 = await snapshot();
         check('pause/resume x5: same final state', JSON.stringify(e1) === JSON.stringify(e3), JSON.stringify({ e1, e3 }));
+
+        // 시작 직후 0.45초 가드를 문서화: 시작 뒤 0.45초 안의 ▶ 탭은 무시되고, 지난 뒤의 탭은 먹는다(가드를 바꾸면 여기서 알아챈다)
+        await page.evaluate(() => { lab.video.rate = 1; lab.video.ui.play.addEventListener('click', () => { window.__guardAge = performance.now() - lab.video._startedAt; }, true); });
+        await page.locator('.apl-vend-btns button', { hasText: '다시 보기' }).click();
+        await page.waitForFunction(() => lab.video.state === 'playing');
+        await page.locator('.apl-vmini').click(); // 멈춤 단추는 가드 대상이 아니다
+        await page.locator('.apl-vctl .primary').click({ force: true }); // 시작 0.45초 안의 실제 ▶ 탭
+        const early = await page.evaluate(() => ({ age: window.__guardAge, state: lab.video.state }));
+        if (early.age < 440) check('start guard: a real ▶ tap within 0.45 s of the start is ignored (stays paused)', early.state === 'paused', JSON.stringify(early));
+        else rec.checks.push({ name: 'start guard: a real ▶ tap within 0.45 s of the start is ignored', status: 'NOT_RUN', detail: `machine too slow, tap arrived ${Math.round(early.age)} ms after start` });
+        await clickResume();
+        check('start guard: a ▶ tap after the window works (plays)', await page.evaluate(() => lab.video.state === 'playing' && window.__guardAge > 450), await page.evaluate(() => `${lab.video.state} age ${Math.round(window.__guardAge)}`));
+        await page.evaluate(() => { lab.video.rate = 8; });
+        await waitEnded();
 
         // ---------- 장마다 나가기 ----------
         const chapters = await page.evaluate(() => { lab.video.cs && 0; return lab.video.cs.chapters.map((c) => ({ at: c.at, length: c.length })); });
