@@ -292,7 +292,7 @@ def _with_label_options(plan,result):
     return {**result,'graphPlan':fitted}
 
 def _fit_overview_family(plan):
-    if 'regions' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve') and not (plan.get('family')=='polynomial' and isinstance(plan.get('coefficients'),list) and any(isinstance(value,str) and 'sqrt' in value for value in plan['coefficients'])):raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')   # (G18c) multi-curve regions plus exact Q(sqrt(r)) cubic regions
+    if 'regions' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve','rational') and not (plan.get('family')=='polynomial' and isinstance(plan.get('coefficients'),list) and any(isinstance(value,str) and 'sqrt' in value for value in plan['coefficients'])):raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')   # (G18c) multi-curve regions plus exact Q(sqrt(r)) cubic regions
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
     if 'axisScale' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve'):raise ValueError('AXIS_SCALE_UNSUPPORTED_FAMILY')   # (G18c) a multi-curve figure may stretch y too (horizontal lines a unit apart need room for their labels)
     if 'displayWindow' in plan and plan.get('family')!='rational':raise ValueError('DISPLAY_WINDOW_UNSUPPORTED_FAMILY')
@@ -528,6 +528,46 @@ def _fit_quadratic_interval(plan,c,source_domain,required,line_points):
     fitted={**plan,'domain':[float(lo),float(hi)],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'POLYNOMIAL_INTERVAL_OVERVIEW_v1','intervalFeatures':features,'intervalFeaturePolicy':policy,'equalUnits':True,'axisRatio':ratio,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height}}
     return {'graphPlan':fitted,'policy':'POLYNOMIAL_INTERVAL_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 
+# ---- graphPlan.regions of an inverse proportion (rational-spike-v1, y=k/(d0+d1*x)) ----------------------------------------------------------------------
+# One region form, the one the multi-curve figure uses: {id, under:"f", from, to, fill?, label?}: the area between the curve and the x-axis over [from,to]
+# (the area under the curve of a positive k, the area above it of a negative k). The stretch may END at the asymptote (from or to equal to the pole: the curve then
+# leaves the window through its top or bottom edge and the fill is closed along that edge) but must not contain it (GRAPH_REGION_BOUNDARY_UNDEFINED) and must lie in
+# the drawn window (GRAPH_REGION_DOMAIN_INVALID). The fill is clipped to the plot window: its corners are on the window edge, never outside it.
+RATIONAL_REGION_FIELDS={'id','under','from','to','fill','label'}
+
+def _rational_inverse_regions(plan,result,k,denominator):
+    raw=plan.get('regions')
+    if raw is None:return result
+    if not isinstance(raw,list) or not 1<=len(raw)<=MULTI_CURVE_MAX_REGIONS:raise ValueError('GRAPH_REGION_COUNT_INVALID')
+    fitted=result['graphPlan'];x0,x1,y0,y1=(float(value) for value in fitted['viewport'])
+    pole=-denominator[0]/denominator[1];c=k/denominator[1]
+    rows=[];ids=set()
+    for entry in raw:
+        if not isinstance(entry,dict):raise ValueError('GRAPH_REGION_FIELD_INVALID')
+        unknown=sorted(set(entry)-RATIONAL_REGION_FIELDS)
+        if unknown:raise ValueError('GRAPH_REGION_FIELD_UNKNOWN:'+str(unknown[0]))
+        region_id=entry.get('id')
+        if not isinstance(region_id,str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]{0,31}',region_id):raise ValueError('GRAPH_REGION_ID_INVALID')
+        if region_id in ids:raise ValueError('GRAPH_REGION_ID_DUPLICATE:'+region_id)
+        ids.add(region_id)
+        if not {'under','from','to'}<=set(entry):raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+        if not isinstance(entry['under'],str):raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+        if entry['under']!='f':raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+region_id+':'+entry['under'])
+        fill=entry.get('fill','LIGHT')
+        if fill not in PIECEWISE_POLY_REGION_FILLS:raise ValueError('GRAPH_REGION_FILL_UNSUPPORTED:'+region_id)
+        label=entry.get('label')
+        if label is not None and (not isinstance(label,str) or not label.strip() or len(label)>40):raise ValueError('GRAPH_REGION_LABEL_INVALID:'+region_id)
+        start=_mc_fraction(entry['from'],'GRAPH_REGION_DOMAIN_INVALID:'+region_id);end=_mc_fraction(entry['to'],'GRAPH_REGION_DOMAIN_INVALID:'+region_id)
+        if not start<end or float(start)<x0-1e-9 or float(end)>x1+1e-9:raise ValueError('GRAPH_REGION_DOMAIN_INVALID:'+region_id)
+        if start<pole<end:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':f')   # a pole strictly inside: the area is unbounded on both sides of it
+        far=end if pole<=start else start   # the end farthest from the pole: the curve is lowest there
+        far_value=float(c/(far-pole))
+        if not y0-1e-9<=far_value<=y1+1e-9:raise ValueError('GRAPH_REGION_CURVE_NOT_VISIBLE:'+region_id)
+        positive=c/((start+end)/2-pole)>0
+        rows.append({'id':region_id,'kind':'UNDER','upper':'f' if positive else 'axis','lower':'axis' if positive else 'f','from':_mc_text(start),'to':_mc_text(end),
+                     'fromValue':float(start),'toValue':float(end),'fill':fill,**({'label':label} if label is not None else {})})
+    return {**result,'graphPlan':{**fitted,'graphRegionFeatures':{'regions':rows}}}
+
 def _rational_coefficients(values,name,allow_constant=False):
     if not isinstance(values,list) or len(values)!=2 or any(not isinstance(v,str) or len(v)>64 or not re.fullmatch(r'-?\d+(?:/\d+)?',v) for v in values):
         raise ValueError('UNSUPPORTED_RATIONAL_'+name.upper()+'_GRAMMAR')
@@ -560,7 +600,8 @@ def _fit_rational_overview(plan):
     # verticalAsymptoteLabelAt (G13a): TOP_LEFT | TOP_RIGHT | BOTTOM_LEFT | BOTTOM_RIGHT puts the label x=p on that side of the dashed vertical asymptote, at its top or bottom end; NONE draws
     # no automatic label (the author writes it, for example as a callout). The default place is kept without the field.
     if 'verticalAsymptoteLabelAt' in plan and plan['verticalAsymptoteLabelAt'] not in VERTICAL_ASYMPTOTE_LABEL_PLACES:raise ValueError('VERTICAL_ASYMPTOTE_LABEL_AT_INVALID')
-    if numerator[1]==0:return _fit_rational_constant_numerator(plan,numerator[0],denominator,original_domain,original_viewport)
+    if numerator[1]==0:return _rational_inverse_regions(plan,_fit_rational_constant_numerator(plan,numerator[0],denominator,original_domain,original_viewport),numerator[0],denominator)
+    if 'regions' in plan:raise ValueError('GRAPH_REGION_REQUIRES_INVERSE_PROPORTION')   # regions of a rational: the inverse proportion y=k/(d0+d1*x) only (the shaded stretch must not meet a second asymptote or the x-intercept)
     if plan.get('displayWindow') is not None:raise ValueError('DISPLAY_WINDOW_REQUIRES_INVERSE_PROPORTION')
     if plan.get('formulaAt') is not None:raise ValueError('FORMULA_AT_REQUIRES_DISPLAY_WINDOW')
     if plan.get('formulaLabel') is not None:raise ValueError('RATIONAL_FORMULA_LABEL_REQUIRES_CONSTANT_NUMERATOR')
@@ -2880,7 +2921,8 @@ OVERLAY_CALLOUT_TEXT_PATTERN=r'[가-힣A-Za-z0-9 (),.+\-=αβγθ′√]{1,14}' 
 OVERLAY_CALLOUT_PLAIN_MARKS=',αβγθ′√'
 OVERLAY_CALLOUT_MATH_PATTERN=re.compile(r'[0-9A-Za-zαβγδθπ′√=+*/().^ ,_-]{1,20}')   # (EXT-20261109-b) a MATH callout may carry a comma (a coordinate pair), a subscript (A_1) and a bracketed fraction ((x+2)/(x-2)), up to 20 characters
 OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')
-OVERLAY_LATTICE_FIELDS={'region','xRange','yMin','yMax','strict','counts','curve'}
+OVERLAY_LATTICE_FIELDS={'region','xRange','yMin','yMax','strict','counts','curve','color'}
+OVERLAY_POINT_MARKERS=('FILLED','OPEN')   # overlays.points[].marker: FILLED (the default dot) or OPEN (a hollow circle, stroked in the point's colour)
 OVERLAY_LATTICE_MAX_POINTS=40
 OVERLAY_LATTICE_MAX_COLUMNS=12
 OVERLAY_POLYGON_LABEL_KINDS=('MATH','TEXT')
@@ -3405,6 +3447,7 @@ def _overlay_lattice(plan,entry,exact_points):
     if span[1]-span[0]+1>OVERLAY_LATTICE_MAX_COLUMNS:_overlay_fail('OVERLAY_LATTICE_TOO_MANY')
     strict=entry.get('strict',True);counts=entry.get('counts',False)
     if not isinstance(strict,bool) or not isinstance(counts,bool):_overlay_fail('OVERLAY_LATTICE_INVALID')
+    if 'color' in entry and entry['color'] not in OVERLAY_COLOR_NAMES:_overlay_fail('OVERLAY_COLOR_INVALID','lattice.color')
     bound_key='yMin' if region=='BELOW_CURVE' else 'yMax';other_key='yMax' if region=='BELOW_CURVE' else 'yMin'
     bound=entry.get(bound_key)
     if other_key in entry or isinstance(bound,bool) or not isinstance(bound,int):_overlay_fail('OVERLAY_LATTICE_BOUND_INVALID')
@@ -3432,7 +3475,7 @@ def _overlay_lattice(plan,entry,exact_points):
     for point in points:
         if not (xmin<point['x']<xmax and ymin<point['y']<ymax):_overlay_fail('OVERLAY_POINT_OUTSIDE_VIEWPORT','lattice')
         if any(abs(point['x']-ex)<1e-9 and abs(point['y']-ey)<1e-9 for ex,ey in exact_points):_overlay_fail('OVERLAY_LATTICE_POINT_COINCIDES',str(point['x'])+','+str(point['y']))
-    return {'region':region,'strict':strict,'counts':counts,'xRange':list(span),bound_key:bound,'points':points,'columns':columns}
+    return {'region':region,'strict':strict,'counts':counts,'xRange':list(span),bound_key:bound,'points':points,'columns':columns,**({'color':entry['color']} if 'color' in entry else {})}
 
 def _overlay_math_name_is_the_curve(plan,entry,ident):
     """A MATH name beside the drawn curve (E31): when the curve is one straight piece with rational coefficients (y=c0+c1*x) and the text is an equation that can be read exactly
@@ -3762,7 +3805,7 @@ def _overlay_features(plan):
     required_ids={point.get('id') for point in plan.get('requiredPoints',[]) if isinstance(point,dict)}
     for entry in raw.get('points',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_POINT_INVALID','point')
-        if set(entry)-{'id','curveX','curve','on','x','y','axis','value','intersect','coordinates','labelDirection','unnamed','pick','onCircle'}:_overlay_fail('OVERLAY_POINT_INVALID',entry.get('id'))
+        if set(entry)-{'id','curveX','curve','on','x','y','axis','value','intersect','coordinates','labelDirection','unnamed','pick','onCircle','marker','color'}:_overlay_fail('OVERLAY_POINT_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'point')
         if ident in required_ids:_overlay_fail('OVERLAY_POINT_ID_CONFLICT',ident)
         claim('point:'+ident)
@@ -3831,6 +3874,13 @@ def _overlay_features(plan):
             # A layout hint only (the side to try first); it needs the label it is a hint for.
             if not row.get('coordinates') or entry['labelDirection'] not in ('N','NE','E','SE','S','SW','W','NW'):_overlay_fail('OVERLAY_LABEL_DIRECTION_INVALID',ident)
             row['labelDirection']=entry['labelDirection']
+        # marker (OPEN = a hollow circle) and color (a palette group) are optional looks of the dot; absent, the dot is the plain black one and the row carries neither key
+        if 'marker' in entry:
+            if entry['marker'] not in OVERLAY_POINT_MARKERS:_overlay_fail('OVERLAY_POINT_MARKER_INVALID',ident)
+            if entry['marker']=='OPEN':row['marker']='OPEN'
+        if 'color' in entry:
+            if entry['color'] not in OVERLAY_COLOR_NAMES:_overlay_fail('OVERLAY_COLOR_INVALID',str(ident)+'.color')
+            row['color']=entry['color']
         points.append(row);by_point[ident]=row;exact_by_point[ident]=(x,y)
     def point_ref(value,ident):
         if not isinstance(value,str) or value not in by_point:_overlay_fail('OVERLAY_POINT_UNKNOWN',ident)

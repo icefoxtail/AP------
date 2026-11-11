@@ -10,11 +10,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="common-transform/lesson-core.js"></script>
+<script defer src="common-transform/lesson-a.js"></script>
+<script defer src="common-transform/lesson-b.js"></script>
 <style>
 /* 펼친 수식의 위치 지정 요소가 풀이 제목의 클릭을 가로채지 않도록 합니다. */
 .apl-acc > summary { position: relative; z-index: 1; background: var(--card); }
@@ -77,9 +84,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ===== 변형 문제 (「새 문제」) ===== */
   // pool: 변형을 만드는 함수들. 처음에는 pool[0](기출 유형 그대로), 「새 문제」는 직전과 다른 변형.
+  const lctActive = s => !!(s && (s.lessonOn || s.lessonEntry));
   function varier(pool) {
     let idx = 0, cur = pool[0]();
-    return { pool, get idx() { return idx; }, cur: () => cur, set(j) { idx = j; cur = pool[j](); return cur; }, next() { let j; do { j = Math.floor(Math.random() * pool.length); } while (pool.length > 1 && j === idx); idx = j; cur = pool[j](); return cur; } };
+    const first = cur;
+    return { pool, get idx() { return idx; }, cur: () => lctActive(window.lab && window.lab.s) ? first : cur, first: () => first, set(j) { idx = j; cur = pool[j](); return cur; }, next() { let j; do { j = Math.floor(Math.random() * pool.length); } while (pool.length > 1 && j === idx); idx = j; cur = pool[j](); return cur; } };
   }
   const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-cc-new>새 문제</button></div>`;
   document.addEventListener('click', (ev) => {
@@ -617,13 +626,13 @@ window.addEventListener('DOMContentLoaded', function () {
           plane(b, s);
           if (s.mode === 'tri') {
             const A = P(7, 1), Ax = REF.x(A), Ad = REF.d(A), p1 = crossMir('x', Ax, Ad), q1 = crossMir('d', Ax, Ad);
-            drawBendTri(b, { A, P: P(s.pp, 0), Q: P(s.qq, s.qq), st: 2, handles: {
+            drawBendTri(b, { A, P: P(s.pp, 0), Q: P(s.qq, s.qq), st: lctActive(s) ? s.step : 2, handles: {
               p: (w) => { const t = snapTo(w.x, 0.25); s.pp = clamp(Math.abs(t - p1.x) < 0.3 ? p1.x : t, -2, 9); },
               q: (w) => { const t = snapTo(mirT('d', w), 0.25); s.qq = clamp(Math.abs(t - q1.x) < 0.3 ? q1.x : t, -2, 9); }
             } });
           } else {
             const m = s.mir, c = CFG[m], A = c.A, T = s.mode === 'circ' ? c.C : c.B, A2 = REF[m](A), ps = mirT(m, crossMir(m, A2, T));
-            drawBend(b, { m, A, T, r: s.mode === 'circ' ? 1 : null, P: mirPt(m, s.pp), st: 2, handle: (w) => { const t = snapTo(mirT(m, w), 0.25); s.pp = clamp(Math.abs(t - ps) < 0.3 ? ps : t, -2, 8); } });
+            drawBend(b, { m, A, T, r: s.mode === 'circ' ? 1 : null, P: mirPt(m, s.pp), st: lctActive(s) ? s.step : 2, handle: (w) => { const t = snapTo(mirT(m, w), 0.25); s.pp = clamp(Math.abs(t - ps) < 0.3 ? ps : t, -2, 8); } });
           }
         } else {
           const q = V9.cur(), st = stepOf(s, lab);
@@ -852,6 +861,185 @@ window.addEventListener('DOMContentLoaded', function () {
     ];
   }
 
+  const params = {
+      a: { value: 3, min: -5, max: 5, step: 1, color: 'sky', label: 'x축 방향 이동량 a', format: (v) => `a = ${v}` },
+      b: { value: 2, min: -4, max: 4, step: 1, color: 'rose', label: 'y축 방향 이동량 b', format: (v) => `b = ${v}` },
+      ca: { value: 1, min: -4, max: 4, step: 1, color: 'sky', label: 'x축 방향 이동량 a', format: (v) => `a = ${v}` },
+      cb: { value: 2, min: -4, max: 4, step: 1, color: 'rose', label: 'y축 방향 이동량 b', format: (v) => `b = ${v}` }
+    };
+
+  const scenes = [scene7(), scene8(), scene9(), scene10()];
+  const cloneLessonState = value => JSON.parse(JSON.stringify(value));
+  const sourceInfo = Object.fromEntries(scenes.map(sc => {
+    const initial = { ...Object.fromEntries(Object.entries(params).map(([key, p]) => [key, p.value])), grid: false };
+    sc.enter?.(initial);
+    return [sc.id, { initial, first: sc.vary.first(), tag: typeof sc.problem.tag === 'function' ? sc.problem.tag() : sc.problem.tag }];
+  }));
+  const source = window.APL_CT_SOURCE = {
+    scenes, initial: id => cloneLessonState(sourceInfo[id].initial), first: id => sourceInfo[id].first,
+    question: id => sourceInfo[id].first.text, answer: id => sourceInfo[id].first.ansTex,
+    tag: id => sourceInfo[id].tag, steps: id => sourceInfo[id].first.steps.slice()
+  };
+  function restoreLessonView(b) {
+    const saved = b._ctLessonView;
+    if (!saved) return;
+    if (b.focus === saved.appliedFocus) {
+      for (const [key, value] of Object.entries(saved.original)) {
+        if (saved.had[key]) b[key] = value; else delete b[key];
+      }
+    } else delete b.__ccKey;
+    delete b._ctLessonView;
+  }
+  function neutralLessonLabel(value) {
+    const label = String(value || '');
+    if (/^(?:x축|y축|x|y|O|y ?= ?x|원점 O|원)$/.test(label)) return label;
+    const named = label.match(/^([A-Z](?:[₀₁₂₃₄₅ₓ]|_[a-z])?['′″*]*)(?=[\s(=:≈]|$)/);
+    if (named) return named[1];
+    if (/^[①②]/.test(label)) return label[0];
+    const meaning = label.match(/^(?:꼭짓점|새 중심|중심|접점|교점|이동 전|이동 후|대칭이동한 원|Δ 최댓값)/);
+    return meaning ? meaning[0] : '';
+  }
+  function traceLessonGeometry(b, s, paths, circles, points, plots) {
+    const u = APLab.clamp(Number(s.lctTrace) || 0, 0, 1);
+    if (s.lessonEntry || !u) return;
+    const box = b.viewBox(), margin = 5 / Math.max(b.k, 0.01);
+    box.x0 += margin; box.x1 -= margin; box.y0 += margin; box.y1 -= margin;
+    const inside = p => p.x >= box.x0 && p.x <= box.x1 && p.y >= box.y0 && p.y <= box.y1;
+    const clip = (a, z) => {
+      const dx = z.x - a.x, dy = z.y - a.y; let lo = 0, hi = 1;
+      for (const [p, q] of [[-dx, a.x - box.x0], [dx, box.x1 - a.x], [-dy, a.y - box.y0], [dy, box.y1 - a.y]]) {
+        if (Math.abs(p) < 1e-12) { if (q < 0) return null; }
+        else { const r = q / p; if (p < 0) lo = Math.max(lo, r); else hi = Math.min(hi, r); if (lo > hi) return null; }
+      }
+      return [{ x: a.x + dx * lo, y: a.y + dy * lo }, { x: a.x + dx * hi, y: a.y + dy * hi }];
+    };
+    const choices = [];
+    for (const entry of paths) {
+      const points = entry.points.concat(entry.options.close ? [entry.points[0]] : []);
+      let best = [], bestLength = 0, run = [], length = 0;
+      const finish = () => { if (length > bestLength) { best = run; bestLength = length; } run = []; length = 0; };
+      for (let i = 1; i < points.length; i++) {
+        const edge = clip(points[i - 1], points[i]);
+        if (!edge) { finish(); continue; }
+        if (run.length && Math.hypot(run.at(-1).x - edge[0].x, run.at(-1).y - edge[0].y) > 1e-7) finish();
+        if (!run.length) run.push(edge[0]); run.push(edge[1]);
+        length += Math.hypot(edge[1].x - edge[0].x, edge[1].y - edge[0].y);
+      }
+      finish();
+      if (bestLength > 1e-6) choices.push({ points: best, length: bestLength, score: entry.options.width || 2.6 });
+    }
+    for (const entry of plots) {
+      const lo = Math.max(box.x0, entry.options.from ?? -Infinity), hi = Math.min(box.x1, entry.options.to ?? Infinity);
+      let run = [], best = [];
+      for (let i = 0; i <= 192; i++) {
+        const x = lo + (hi - lo) * i / 192, point = { x, y: entry.fn(x) };
+        if (Number.isFinite(point.y) && inside(point)) run.push(point);
+        else { if (run.length > best.length) best = run; run = []; }
+      }
+      if (run.length > best.length) best = run;
+      if (best.length > 2) {
+        let length = 0;
+        for (let i = 1; i < best.length; i++) length += Math.hypot(best[i].x - best[i-1].x, best[i].y - best[i-1].y);
+        choices.push({ ...entry, from: best[0].x, to: best.at(-1).x, length, score: entry.options.width || 3 });
+      }
+    }
+    for (const entry of circles) {
+      let start = null, best = null;
+      for (let i = 0; i <= 128; i++) {
+        const angle = i * Math.PI * 2 / 128;
+        const p = { x: entry.center.x + entry.radius * Math.cos(angle), y: entry.center.y + entry.radius * Math.sin(angle) };
+        if (inside(p)) { if (start === null) start = angle; }
+        else if (start !== null) { const end = (i - 1) * Math.PI * 2 / 128; if (!best || end - start > best[1] - best[0]) best = [start, end]; start = null; }
+      }
+      if (start !== null && (!best || Math.PI * 2 - start > best[1] - best[0])) best = [start, Math.PI * 2];
+      if (best && best[1] > best[0]) choices.push({ ...entry, angles: best, length: entry.radius * (best[1] - best[0]), score: entry.options.width || 2.6 });
+    }
+    choices.sort((a, z) => z.score - a.score || z.length - a.length);
+    const selected = choices[0];
+    if (!selected) {
+      const condition = points.find(p => inside(p));
+      if (condition) b.point(condition, { color: 'violet', r: 5 + 4 * Math.sin(Math.PI * u), hollow: true, glow: false });
+      return;
+    }
+    let p;
+    if (selected.fn) {
+      const x = selected.from + u * (selected.to - selected.from);
+      p = { x, y: selected.fn(x) };
+      b.plot(selected.fn, { from: selected.from, to: x, color: 'violet', width: 4.2, alpha: 0.85 });
+    } else if (selected.angles) {
+      const angle = selected.angles[0] + u * (selected.angles[1] - selected.angles[0]);
+      p = { x: selected.center.x + selected.radius * Math.cos(angle), y: selected.center.y + selected.radius * Math.sin(angle) };
+      b.arc(selected.center, selected.radius, selected.angles[0], angle, { color: 'violet', width: 4.2, alpha: 0.85 });
+    } else {
+      let remaining = selected.length * u; const drawn = [selected.points[0]];
+      for (let i = 1; i < selected.points.length; i++) {
+        const a = selected.points[i - 1], z = selected.points[i], length = Math.hypot(z.x - a.x, z.y - a.y);
+        if (remaining <= length || i === selected.points.length - 1) {
+          const f = length ? Math.min(1, remaining / length) : 0;
+          p = { x: a.x + f * (z.x - a.x), y: a.y + f * (z.y - a.y) }; drawn.push(p); break;
+        }
+        drawn.push(z); remaining -= length;
+      }
+      b.path(drawn, { color: 'violet', width: 4.2, alpha: 0.85 });
+    }
+    if (p) b.point(p, { color: 'violet', r: 4.5, glow: false });
+  }
+  for (const sc of scenes) {
+    const original = { question: sc.question, reviewTop: sc.reviewTop, steps: sc.steps, view: sc.view, draw: sc.draw };
+    sc.question = (s, lab) => lctActive(s) ? s.lctQuestion || source.question(sc.id) : typeof original.question === 'function' ? original.question(s, lab) : original.question;
+    sc.reviewTop = (s, lab) => lctActive(s) ? '' : typeof original.reviewTop === 'function' ? original.reviewTop(s, lab) : original.reviewTop;
+    sc.steps = (s, lab) => lctActive(s) ? ['조건과 좌표를 확인해요.', '좌표 관계를 식으로 연결해요.', '구하는 값을 확인해요.'] : original.steps(s, lab);
+    sc.view = (s, lab) => lctActive(s) ? {} : original.view(s, lab);
+    sc.draw = (b, s, v, lab) => {
+      if (b.thumb || b._bbox) return original.draw(b, s, v, lab);
+      if (!lctActive(s)) { restoreLessonView(b); return original.draw(b, s, v, lab); }
+      if (b._ctLessonView && b._ctLessonView.scene !== sc.id) restoreLessonView(b);
+      if (!b._ctLessonView) {
+        const keys = ['focus', 'zoom', 'panX', 'panY', '__ccKey'];
+        b._ctLessonView = { scene: sc.id, original: Object.fromEntries(keys.map(key => [key, b[key]])), had: Object.fromEntries(keys.map(key => [key, Object.hasOwn(b, key)])) };
+      }
+      const shown = { ...s, playing: false, lctShowAnswer: !s.lessonEntry && !!s.lctShowAnswer,
+        step: s.lessonEntry ? 0 : Math.max(0, Math.min(s.lctExplore && s.lctStage >= 0 ? s.lctStage : s.step || 0, s.lctShowAnswer || s.lctExplore && s.lctStage >= 0 ? 3 : 2)) };
+      const shownLab = Object.create(lab); shownLab.tab = s.lctExplore ? 'explore' : 'review'; shownLab.s = shown;
+      const key = sc.id + '|' + !!s.lctExplore + '|' + (s.lctMode || '') + '|' + (s.lctTarget || '');
+      if (b._ctLessonView.key !== key) { b._ctLessonView.key = key; delete b.__ccKey; b.zoom = 1; b.panX = 0; b.panY = 0; }
+      const paths = [], circles = [], points = [], plots = [], plot = b.plot, path = b.path, circle = b.circle, point = b.point, handle = b.handle, text = b._text, emph = b.emph;
+      b.emph = { ...emph, part: shown.part };
+      const eligible = options => !b._bbox && (!options.dash || Array.isArray(options.dash) && !options.dash.length) && options.color !== null && options.stroke !== false && (options.width || 2.6) >= 2.4;
+      b.plot = function (fn, options = {}) {
+        if (eligible(options)) plots.push({ fn, options });
+        return plot.call(this, fn, options);
+      };
+      b.path = function (ps, options = {}) {
+        if (ps.length >= 2 && eligible(options)) paths.push({ points: ps.map(p => this._P(p)), options });
+        return path.call(this, ps, options);
+      };
+      b.circle = function (center, radius, options = {}) {
+        if (radius > 0 && eligible(options)) circles.push({ center: this._P(center), radius, options });
+        return circle.call(this, center, radius, options);
+      };
+      b.point = function (p, options = {}) {
+        if (!b._bbox) points.push(this._P(p));
+        return point.call(this, p, !b._bbox && !shown.lctShowAnswer && options.label ? { ...options, label: neutralLessonLabel(options.label) } : options);
+      };
+      b.handle = function (id, p, options = {}) {
+        if (!b._bbox) points.push(this._P(p));
+        return handle.call(this, id, p, !b._bbox && !shown.lctShowAnswer && options.label ? { ...options, label: neutralLessonLabel(options.label) } : options);
+      };
+      b._text = function (x, y, label, options = {}) { return text.call(this, x, y, !b._bbox && !shown.lctShowAnswer ? neutralLessonLabel(label) : label, options); };
+      try {
+        const focus = shown.lctExplore && window.APL_CT_LESSONS?.focus?.(sc.id, shown.lctMode);
+        if (focus) { useView(b, 'lesson:' + sc.id + ':' + shown.lctMode, focus); plane(b, shown); }
+        const custom = shown.lctExplore && window.APL_CT_LESSONS?.drawConcept?.(b, shown, sc.id);
+        if (!custom) original.draw(b, shown, {}, shownLab);
+      }
+      finally { b.plot = plot; b.path = path; b.circle = circle; b.point = point; b.handle = handle; b._text = text; b.emph = emph; }
+      b._ctLessonView.appliedFocus = b.focus;
+      traceLessonGeometry(b, shown, paths, circles, points, plots);
+    };
+  }
+  const lessons = window.APL_CT_LESSONS ? window.APL_CT_LESSONS.install(scenes, source) : {};
+
   /* ===== 실험실 등록 ===== */
   APLab.createLab({
     id: 'common-transform',
@@ -862,13 +1050,7 @@ window.addEventListener('DOMContentLoaded', function () {
     courseColor: 'var(--m-violet)',
     home: '../index.html#common',
     board: { kind: 'cartesian', focus: { x: [-9, 9], y: [-6.5, 9] } },
-    params: {
-      a: { value: 3, min: -5, max: 5, step: 1, color: 'sky', label: 'x축 방향 이동량 a', format: (v) => `a = ${v}` },
-      b: { value: 2, min: -4, max: 4, step: 1, color: 'rose', label: 'y축 방향 이동량 b', format: (v) => `b = ${v}` },
-      ca: { value: 1, min: -4, max: 4, step: 1, color: 'sky', label: 'x축 방향 이동량 a', format: (v) => `a = ${v}` },
-      cb: { value: 2, min: -4, max: 4, step: 1, color: 'rose', label: 'y축 방향 이동량 b', format: (v) => `b = ${v}` }
-    },
-    scenes: [scene7(), scene8(), scene9(), scene10()]
+    params, scenes, lessons
   });
 });
 </script>

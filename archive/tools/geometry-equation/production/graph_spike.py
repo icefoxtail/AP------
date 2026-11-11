@@ -273,6 +273,8 @@ def _produce(plan):
     region_fills=[];region_labels=[]
     if plan['family']=='polynomial' and plan.get('graphRegionFeatures') is not None:
         region_fills,region_labels=_region_parts(plan['graphRegionFeatures'],vp)
+    if plan['family']=='rational' and plan.get('graphRegionFeatures') is not None:
+        region_fills,region_labels=_rational_region_parts(plan,vp)
     svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(region_fills+curves+region_labels)+'</svg>'
     return {'svg':svg,'sampling':result,'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
 
@@ -367,6 +369,38 @@ def _region_parts(features,vp):
         fills.append(f'<path id="region-{region["id"]}" data-role="region" data-mark="graph-region" data-mark-id="{region["id"]}" fill="{fill}"{opacity} fill-rule="evenodd" stroke="none" d="{path}"/>')
         if region.get('label') is not None:
             # A point inside the band: halfway between the two boundaries at the middle x (never a centroid that a concave band could leave).
+            mid=(min(point[0] for point in polygon)+max(point[0] for point in polygon))/2
+            upper_at=min(upper,key=lambda point:abs(point[0]-mid));lower_at=min(lower,key=lambda point:abs(point[0]-mid))
+            cx,cy=(upper_at[0]+lower_at[0])/2,(upper_at[1]+lower_at[1])/2
+            labels.append(f'<text id="region-{region["id"]}-label" x="{cx:.12g}" y="{cy:.12g}" text-anchor="middle" font-size="12">{html.escape(region["label"])}</text>')
+    return fills,labels
+
+def _rational_region_boundary(name,plan,start,end,vp):
+    """Screen points of one region boundary of an inverse proportion ('axis' or the curve) over [start,end], left to right, as the sampler draws them (a curve that leaves the
+    window is cut where it crosses the top or bottom edge)."""
+    result=sample('0' if name=='axis' else expression(plan),[start,end],vp,critical_x=[])
+    if len(result['branches'])!=1 or not result['branches'][0]:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+    return [vp.screen(value) for value in result['branches'][0]]
+
+def _rational_region_parts(plan,vp):
+    """The model-stage drawing of an inverse proportion's graphPlan.regions: one even-odd fill path (the band between the curve and the x-axis over [from,to], closed along the
+    window's top or bottom edge where the curve leaves the window) and its plain label, with the ids the final figure uses."""
+    import html
+    from graph_framing import pp_exact_float
+    from visual_engine.engine import _close_boundary_at_window
+    fills=[];labels=[]
+    for region in plan['graphRegionFeatures'].get('regions',[]):
+        start,end=pp_exact_float(region['from']),pp_exact_float(region['to'])
+        upper=_rational_region_boundary(region['upper'],plan,start,end,vp);lower=_rational_region_boundary(region['lower'],plan,start,end,vp)
+        left_x,right_x=vp.screen((start,vp.yMin))[0],vp.screen((end,vp.yMin))[0];edges=(vp.screen((start,vp.yMax))[1],vp.screen((start,vp.yMin))[1])
+        upper=_close_boundary_at_window(upper,left_x,right_x,edges);lower=_close_boundary_at_window(lower,left_x,right_x,edges)
+        polygon=upper+list(reversed(lower))
+        path='M'+','.join(svg_number(value) for value in polygon[0])+' '+' '.join('L'+','.join(svg_number(value) for value in point) for point in polygon[1:])+' Z'
+        tint=region.get('fill','LIGHT')
+        fill={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}[tint] if tint in ('LIGHT','MEDIUM') else PALETTE[tint]['fill']
+        opacity='' if tint in ('LIGHT','MEDIUM') else f' fill-opacity="{PALETTE[tint]["opacity"]}"'
+        fills.append(f'<path id="region-{region["id"]}" data-role="region" data-mark="graph-region" data-mark-id="{region["id"]}" fill="{fill}"{opacity} fill-rule="evenodd" stroke="none" d="{path}"/>')
+        if region.get('label') is not None:
             mid=(min(point[0] for point in polygon)+max(point[0] for point in polygon))/2
             upper_at=min(upper,key=lambda point:abs(point[0]-mid));lower_at=min(lower,key=lambda point:abs(point[0]-mid))
             cx,cy=(upper_at[0]+lower_at[0])/2,(upper_at[1]+lower_at[1])/2
@@ -788,15 +822,20 @@ def _overlay_model_svg(plan,transform):
         if polygon['fill']!='NONE':
             parts.append(f'<polygon id="overlay-polygon-{polygon["id"]}-fill" data-role="region" points="{outline}" fill="#eef2f7" stroke="none"/>')
         parts.append(f'<polyline id="overlay-polygon-{polygon["id"]}" data-role="overlayPolygon" points="{outline} {vertices[0][0]:.12g},{vertices[0][1]:.12g}" fill="none" stroke="black"/>')
+    def dot_look(row):
+        # marker OPEN: white inside, ring in the point's colour (black without one); a colour alone: the dot wears the palette's line colour. Neither key: the plain black dot.
+        line=PALETTE[row['color']]['line'] if row.get('color') else None
+        if row.get('marker')=='OPEN':return f'fill="#fff" stroke="{line or "black"}" stroke-width="1.8" data-state="OPEN"'
+        return f'fill="{line}" stroke="{line}"' if line else 'fill="#111" stroke="black"'
     for point in features['points']:
         x,y=screen(point['x'],point['y'])
-        parts.append(f'<circle id="{point["id"]}" data-role="point" data-overlay="true" cx="{x:.12g}" cy="{y:.12g}" r="3.2" fill="#111" stroke="black"/>')
+        parts.append(f'<circle id="{point["id"]}" data-role="point" data-overlay="true" cx="{x:.12g}" cy="{y:.12g}" r="3.2" {dot_look(point)}/>')
     lattice=features.get('latticePoints')
     if lattice:
         token=lambda value:'n'+str(-value) if value<0 else str(value)
         for dot in lattice['points']:
             x,y=screen(dot['x'],dot['y'])
-            parts.append(f'<circle id="overlay-lattice-x{token(dot["x"])}y{token(dot["y"])}" data-role="point" data-overlay="true" cx="{x:.12g}" cy="{y:.12g}" r="2.4" fill="#111" stroke="black"/>')
+            parts.append(f'<circle id="overlay-lattice-x{token(dot["x"])}y{token(dot["y"])}" data-role="point" data-overlay="true" cx="{x:.12g}" cy="{y:.12g}" r="2.4" {dot_look(lattice)}/>')
     return ''.join(parts)
 
 def produce(plan):

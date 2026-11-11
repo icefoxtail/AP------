@@ -129,9 +129,9 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q3-solution.svg",
-    "solutionImageAlt": "두 중선의 교점이 삼각형 ABC의 무게중심 G이다",
-    "solutionImageCaption": "두 중선의 교점이 삼각형 ABC의 무게중심 G이다",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표가 표시된 삼각형 ABC와 두 중선, 교점 G.",
+    "solutionImageCaption": "세 꼭짓점의 좌표를 평균내어 무게중심 G를 찾는다. 그림은 두 중선의 교점 관계를 보인다. 정답은 −4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -176,9 +176,9 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q4-solution.svg",
-    "solutionImageAlt": "선분 AB의 중점 M을 지나고 AB에 수직인 직선이 수직이등분선입니다.",
-    "solutionImageCaption": "선분 AB의 중점 M을 지나고 AB에 수직인 직선이 수직이등분선입니다.",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB의 중점 M과 두 반쪽을 나타낸 초록색 같은 길이 눈금.",
+    "solutionImageCaption": "A(−3, 5)와 B(5, 1)의 중점 M을 표시하고, 초록색 눈금으로 AM=MB를 나타낸다. M을 지나고 AB에 수직인 직선을 찾는다. 정답은 y=2x+1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -223,9 +223,9 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q5-solution.svg",
-    "solutionImageAlt": "점 P(1,3)에서 거리 1인 직선은 ㄴ과 ㄷ(y축)이고, ㄱ은 거리가 1이 아니며 ㄹ(x축)은 거리 3이다.",
-    "solutionImageCaption": "점 P(1,3)에서 거리 1인 직선은 ㄴ과 ㄷ(y축)이고, ㄱ은 거리가 1이 아니며 ㄹ(x축)은 거리 3이다.",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 P와 파란 선분 OV₁, 주황 선분 OV₂로 표시한 두 후보 직선.",
+    "solutionImageCaption": "파란 선분 OV₁과 주황 선분 OV₂가 두 후보 직선의 방향을 나타내며, 점 P에서 거리를 비교한다. 정답은 ㄴ, ㄷ이다.",
     "solutionImageSize": "full"
   },
   {
@@ -313,9 +313,9 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "CASE_SPLIT",
-    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q7-solution.svg",
-    "solutionImageAlt": "점 (2,1)을 지나고 두 축에 접하는 원의 중심은 C(1,1), D(5,5)이므로 중심 사이의 거리는 4√2이다.",
-    "solutionImageCaption": "점 (2,1)을 지나고 두 축에 접하는 원의 중심은 C(1,1), D(5,5)이므로 중심 사이의 거리는 4√2이다.",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 P(2, 1)이 파란 작은 원 위에 있으며, 파란 원과 주황 원은 두 좌표축에 접한다.",
+    "solutionImageCaption": "두 원의 중심을 각각 C, D라 두었다. 중심은 (1, 1), (5, 5)이고 파란 작은 원과 주황 큰 원의 반지름은 각각 1, 5이다. 정답은 4√2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -359,7 +359,11 @@ window.questionBank = [
     "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: k=3일 때 차 함수 y=2x²−2x+4의 포물선은 x축보다 위에 있다.",
+    "solutionImageCaption": "예: k=3일 때 두 그래프의 차가 모든 실수 x에서 양수이다. 이 예에서 이차함수 그래프는 직선보다 위에 있다. 정답은 15개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -446,9 +450,9 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "점 P는 직선 y=-x+2와 선분 AB의 수직이등분선의 교점이다",
-    "solutionImageCaption": "점 P는 직선 y=-x+2와 선분 AB의 수직이등분선의 교점이다",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 주어진 직선과 주황색 수직이등분선의 교점 P, 초록색 PA와 PB의 같은 길이 표시.",
+    "solutionImageCaption": "파란 주어진 직선 y=−x+2와 주황색 AB의 수직이등분선이 만나는 점이 P다. 초록색 눈금은 PA=PB를 나타낸다. 정답은 11이다.",
     "solutionImageSize": "full"
   },
   {
@@ -493,9 +497,9 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "점 P는 직선 AB 위에서 A의 바깥쪽에 있고, 삼각형 OAP와 OBP는 높이가 같아 넓이의 비가 AP : BP = 1 : 4이다.",
-    "solutionImageCaption": "점 P는 직선 AB 위에서 A의 바깥쪽에 있고, 삼각형 OAP와 OBP는 높이가 같아 넓이의 비가 AP : BP = 1 : 4이다.",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선 AB의 A 바깥쪽 점 P와 원점 O를 잇는 두 삼각형.",
+    "solutionImageCaption": "두 삼각형은 같은 높이를 가지므로 넓이의 비는 밑변 AP와 BP의 비와 같다. 주어진 넓이비로 P의 위치를 정한다. 정답은 6이다.",
     "solutionImageSize": "full"
   },
   {
@@ -540,9 +544,9 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "넓이가 같으려면 D는 BC의 중점 (1, 3)이고 직선 l은 AD",
-    "solutionImageCaption": "넓이가 같으려면 D는 BC의 중점 (1, 3)이고 직선 l은 AD",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 선분 BC의 중점 D와 초록색 같은 길이 눈금.",
+    "solutionImageCaption": "두 삼각형은 꼭짓점 A에서 BC까지의 높이가 같다. 초록색 눈금으로 BD=DC를 나타내므로 D는 BC의 중점이다. 정답은 y=2x+1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -589,7 +593,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: A, B, P가 이루는 직각삼각형을 비례가 정확하지 않게 나타냈다.",
+    "solutionImageCaption": "A(0, 2), B(n, 2), P(4, 4)의 배치와 P에서의 직각을 보이며, 도형은 비율이 정확하지 않다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -635,7 +643,11 @@ window.questionBank = [
     "templateKey": "TPL_AREA_DIRECT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 밑변 OA와 주황색 평행선, 점 P에서 밑변까지 내린 수선 PH.",
+    "solutionImageCaption": "예: P를 주어진 평행선의 y절편에 놓아 높이 PH를 표시했다. 파란색 밑변 OA와 주황색 평행선으로 두 직선을 구분한다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -674,9 +686,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접점 반지름과 접선의 직각 조건에서 P의 자취 반지름",
     "decisiveStep": "TANGENT_ANGLE_LOCUS",
-    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "접선 두 개가 이루는 각과 점 P의 자취 원",
-    "solutionImageCaption": "접선 각 120°일 때 OP=2√3",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 선분 PT₁과 주황 선분 PT₂, 원 O의 반지름 OT₁과 OT₂가 접점에서 직각을 이룬다.",
+    "solutionImageCaption": "두 접선은 파란색과 주황색으로 나누어 표시했다. 접선이 이루는 각은 120°이다. 정답은 4√3π이다.",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT",
@@ -721,9 +733,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름 원과 직선의 교점이 이루는 현 길이",
     "decisiveStep": "DIAMETER_CIRCLE_CHORD_LENGTH",
-    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "지름 AB인 원과 직선 위의 교점 P, Q가 만드는 현",
-    "solutionImageCaption": "직선 y=x−2가 지름 AB의 원을 자르는 현 PQ",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB인 원과 직선 y=x−2가 만나는 점 P, Q 및 현 PQ.",
+    "solutionImageCaption": "직선과 원의 중심 사이의 거리를 이용해 현 PQ의 길이를 구한다. 중심에서 현에 내린 수선은 현을 이등분한다. 정답은 42이다.",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
@@ -772,7 +784,11 @@ window.questionBank = [
     "templateKey": "TM_CIRCLE_POINT_DISTANCE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 U는 원 C 위에서 M에 가장 가깝고 V는 가장 멀며, 주황색 선분이 M, U, C, V를 잇는다.",
+    "solutionImageCaption": "U와 V는 각각 M에서 원 위에 가장 가깝고 먼 점이다. 주황색 선분은 M, U, C, V를 지나는 직선 방향을 나타낸다. 반지름은 2이다. 정답은 136이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -816,9 +832,9 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "a=1일 때 직선과 두 교점, 꼭짓점",
-    "solutionImageCaption": "a=1일 때 직선과 두 교점, 꼭짓점",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예: a=0일 때 파란 포물선과 주황색 y=4 직선이 A, B에서 만나고 꼭짓점은 C이다.",
+    "solutionImageCaption": "예: a=0일 때 파란 포물선은 이차함수, 주황색 수평선은 y=4인 직선이다. 두 교점 A, B와 꼭짓점 C를 보이며 이 예는 최댓값 사례가 아니다. 정답은 ⅔이다.",
     "solutionImageSize": "full"
   },
   {
@@ -862,7 +878,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: A와 B를 잇는 파란 직선이 x축과 만나는 점 P.",
+    "solutionImageCaption": "파란 직선 AB와 x축의 교점 P에서 삼각형 부등식의 등호가 성립한다. AB의 길이와 P의 x좌표를 식에 대입한다. 정답은 38이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -900,9 +920,9 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "점 (4,3)에서의 접선 4x+3y=25와 중심 (3,1)까지의 거리 2가 두 번째 원의 반지름이다.",
-    "solutionImageCaption": "점 (4,3)에서의 접선 4x+3y=25와 중심 (3,1)까지의 거리 2가 두 번째 원의 반지름이다.",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 점 T에서의 접선과 중심 C에서 접선까지 내린 수선 CH.",
+    "solutionImageCaption": "점 T에서의 접선 방정식을 구하고 C에서 그은 수선으로 접할 조건을 표시한다. 두 번째 원의 반지름은 접선까지의 거리와 같다. 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -978,9 +998,9 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "세 직선의 교점 A, B, C와 밑변 AB에 대한 높이 CH",
-    "solutionImageCaption": "세 직선의 교점 A, B, C와 밑변 AB에 대한 높이 CH",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란색, 주황색, 초록색 직선의 교점 A, B, C와 밑변 AB에 내린 수선 CH.",
+    "solutionImageCaption": "파란색, 주황색, 초록색 선은 각각 주어진 첫째, 둘째, 셋째 직선이다. 점 A, B, C는 교점이고 CH는 밑변 AB에 내린 수선이다. 정답은 14이다.",
     "solutionImageSize": "full"
   }
 ];

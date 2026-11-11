@@ -47,7 +47,10 @@
   }
 
   /* ---------- 변형 생성기 ---------- */
-  function varier(gen) { let cur = gen(null); return { cur: () => cur, next: () => (cur = gen(cur)) }; }
+  function varier(gen) {
+    let cur = gen(null); const first = cur;
+    return { cur: () => window.lab && (window.lab.s.lessonOn || window.lab.s.lessonEntry) ? first : cur, first: () => first, next: () => (cur = gen(cur)) };
+  }
   // 직전 문제와 같은 항목이 연달아 나오지 않게 고릅니다 (same(c) 가 참이면 다시 뽑음)
   function pickNew(pool, prev, same) {
     let c;
