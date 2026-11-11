@@ -13,12 +13,12 @@ test("Archive2 Finder exposes one-click exam, solution, and answer outputs besid
   assert.match(workspace.slice(workspace.indexOf("function renderFind()"), workspace.indexOf("function renderScopes()")), /examRowMarkup\(e, examIndexOf\(e\), \{[\s\S]*?more: true/);
   assert.match(finder, /\[\["exam", "시험지"\], \["sol", "해설"\], \["ans", "정답"\]\]/);
   assert.match(finder, /button\("source-output-direct", label,[\s\S]*?data-mode="\$\{mode\}"/);
-  assert.match(finder, /button\("source-issue", "반에 출제"/);
+  assert.match(finder, /button\("source-issue", "출제"/);
   assert.match(finder, /button\("source-toggle"/);
   // Order of the rendered row: the template, not the helper constants above it.
   const row = finder.slice(finder.indexOf("<article class=\"exam-row"));
   const directActionsIndex = row.indexOf(".map(direct)");
-  const issueIndex = row.indexOf('button("source-issue", "반에 출제"');
+  const issueIndex = row.indexOf('button("source-issue", "출제"');
   const selectionIndex = row.indexOf("${more}");
   assert.ok(directActionsIndex >= 0 && directActionsIndex < issueIndex && issueIndex < selectionIndex,
     "Finder actions should render exam, solution, answer, issue, then question selection");

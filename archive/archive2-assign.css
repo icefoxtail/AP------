@@ -334,6 +334,16 @@ dialog.assign-panel::backdrop {
   color: var(--ink-2);
   font-size: 14px;
 }
+/* 원본 시험지: 출제일 밑에 같은 줄 구성으로 한 쪽 문항 수 */
+.assign-date select {
+  width: auto;
+  min-width: 120px;
+}
+.assign-date.assign-qpp {
+  margin-top: 8px;
+  padding-top: 0;
+  border-top: 0;
+}
 
 /* 문제지 여러 권: 출제 건 확인 */
 .assign-combos {

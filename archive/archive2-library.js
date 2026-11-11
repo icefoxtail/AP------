@@ -278,7 +278,7 @@
       ? `<div class="exam-row-actions" role="group" aria-label="${esc(title)} 휴지통 메뉴">${statusAction}</div>`
       : `<div class="exam-row-actions" role="group" aria-label="${esc(title)} 시험지·해설·정답·출제">
           ${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => `<button type="button" data-library-action="output" data-paper-id="${id}" data-mode="${mode}">${label}</button>`).join("")}
-          <button type="button" class="primary" data-library-action="distribute" data-paper-id="${id}">반에 출제</button>
+          <button type="button" class="primary" data-library-action="distribute" data-paper-id="${id}" aria-label="${esc(title)} 반에 출제">출제</button>
           <details class="saved-paper-more"><summary>더보기</summary><div class="saved-paper-more-menu">
             <button type="button" data-library-action="detail" data-paper-id="${id}">상세 보기</button>
             ${batchAction(paper, id)}

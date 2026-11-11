@@ -326,7 +326,8 @@ test("a row shows grade spine with the question count, set position and the five
     assert.match(row, /저장/);
     for (const [mode, label] of [["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]])
       assert.match(row, new RegExp(`data-library-action="output"[^>]*data-mode="${mode}">${label}`));
-    assert.match(row, /data-library-action="distribute"[^>]*>반에 출제<\/button>/);
+    assert.match(row, /data-library-action="distribute"[^>]*>출제<\/button>/);
+    assert.match(row, /data-library-action="distribute"[^>]*aria-label="[^"]*반에 출제"/, "스크린리더용 이름은 풀어 쓴다");
     const menu = row.match(/<div class="saved-paper-more-menu">[\s\S]*?<\/div>/)[0];
     // everything the old row offered stays reachable, now inside 더보기
     for (const needle of ['data-library-action="detail"', "edit_saved_paper=", 'data-library-action="rename"',

@@ -2192,6 +2192,31 @@
     });
     return undefined;
   }
+  // 학교 기출·유사문제 줄·홈의 `출제`(source-issue)도 같은 패널로 낸다(2026-11-11). 옛 iframe(openOriginalIssue)은
+  // 주소에 assign=legacy가 있거나 패널 스크립트가 없을 때만 쓴다. 본문 만들기·재전송·이력은 archive2-assign.js(원본 항목).
+  // 원본 문항은 옛 iframe이 부모에게서 받던 것과 같은 방법(Source.load(file, sourceHash))으로 받고, 해시는 그대로 검증된다.
+  function openOriginalAssign(exam) {
+    const Assign = window.Archive2Assign;
+    if (!Assign?.open || Assign.useLegacy(location.search)) return openOriginalIssue(exam, "targets");
+    if (Assign.isOpen()) return undefined;
+    const sourceHash = new Map(state.catalog.sourceHashes).get(exam.file);
+    if (!sourceHash || !state.catalog.indexVersion) {
+      status("이 시험지의 원본 정보를 확인할 수 없습니다. 페이지를 새로고침한 뒤 다시 시도해 주세요.", true);
+      return undefined;
+    }
+    state.originalReceipts = [];
+    const settings = originalSettingsForExam(exam);
+    Assign.open({
+      items: [{
+        kind: "original", file: exam.file, title: O.displayTitle(exam), identityTitle: exam.identityTitle || exam.file.split("/").pop().replace(/\.js$/, ""),
+        grade: exam.grade, subject: exam.subject, count: exam.qCount, sourceHash, settings,
+      }],
+      original: { indexVersion: state.catalog.indexVersion, loadQuestions: (item) => Source.load(item.file, item.sourceHash) },
+      request: assignRequest,
+      opener: document.activeElement,
+    });
+    return undefined;
+  }
   function originalIssueBusy() {
     return Boolean(
       $("original-issue-frame")?.contentWindow?.isArchive2OriginalBusy?.() ||
@@ -2706,7 +2731,7 @@
     return `<article class="exam-row ${gradeClass(exam.grade)}${options.selected ? " selected" : ""}${withSimilarCell ? "" : " no-sim"}" data-similar-count="${similarCount}">
       <div class="exam-row-spine"><span class="exam-row-year">${esc(year || "–")}</span><span class="exam-row-grade">${esc(exam.grade || "")}</span></div>
       <div class="exam-row-main">${button("source-output-direct", esc(shortTitle), `type="button" class="exam-row-title" title="${esc(title)}" aria-label="${esc(title)} 시험지 열기" data-exam="${index}" data-mode="exam"`)}${tag}<div class="exam-row-meta">${esc(meta)}${badges}</div>${range ? `<div class="exam-row-range">범위 ${esc(range)}</div>` : ""}</div>
-      <div class="exam-row-actions" role="group" aria-label="${esc(title)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "반에 출제", `type="button" class="primary" data-exam="${index}"`)}${more}</div>
+      <div class="exam-row-actions" role="group" aria-label="${esc(title)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "출제", `type="button" class="primary" data-exam="${index}" aria-label="${esc(title)} 반에 출제"`)}${more}</div>
       ${withSimilarCell ? similarCellMarkup(exam, index, pairs) : ""}
     </article>`;
   }
@@ -2720,7 +2745,7 @@
       const detail = [set.primaryStandardCourse || set.subject, set.qCount ? `${set.qCount}문항` : ""].filter(Boolean).join(" · ");
       const direct = ([mode, label]) =>
         button("source-output-direct", label, `type="button" data-exam="${setIndex}" data-mode="${mode}"`);
-      return `<article class="similar-set"><div class="similar-set-main"><strong>${esc(setTitle)}</strong><div class="muted">${esc(detail)}</div></div><div class="similar-set-actions" role="group" aria-label="${esc(setTitle)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "출제", `type="button" class="primary" data-exam="${setIndex}"`)}</div></article>`;
+      return `<article class="similar-set"><div class="similar-set-main"><strong>${esc(setTitle)}</strong><div class="muted">${esc(detail)}</div></div><div class="similar-set-actions" role="group" aria-label="${esc(setTitle)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "출제", `type="button" class="primary" data-exam="${setIndex}" aria-label="${esc(setTitle)} 반에 출제"`)}</div></article>`;
     }).join("");
     showDialog(`${O.displayTitle(exam)} · 유사문제`, `<p class="muted">이 기출의 유사문제 ${sets.length}세트입니다.</p><div class="similar-sets">${rows}</div>`);
   }
@@ -2891,7 +2916,7 @@
       C.isHighSemanticSubjectGrade?.(state.filters.grade) &&
       !state.filters.semanticSubject
     )
-      return `<div class="resultbar"><h2>출제 범위</h2></div><p class="muted">과목을 먼저 선택해 주세요. 선택한 과목의 단원이 여기에 나타납니다.</p>`;
+      return `<div class="resultbar"><h2>단원</h2></div><p class="muted">과목을 먼저 선택해 주세요. 선택한 과목의 단원이 여기에 나타납니다.</p>`;
     const scopes = scopeOptions(),
       groups = unique(scopes.map((s) => s.L1)),
       basic = scopes;
@@ -2915,9 +2940,9 @@
       }).join("")}</div>`;
     };
     const unifiedNotice = unifiedIndex()
-      ? `<p class="muted">출제할 단원을 고르세요. 숫자는 지금 낼 수 있는 문항 수입니다.</p>${state.scopeNotice ? `<div class="callout" role="status">${esc(state.scopeNotice)}</div>` : ""}${!scopes.length ? '<p class="muted">현재 조건에 맞는 단원이 없습니다. 세부 조건(학교·시험 시기·연도·난이도)을 넓혀 보세요.</p>' : ""}`
+      ? `<p class="muted">단원을 고르세요. 숫자는 지금 낼 수 있는 문항 수입니다.</p>${state.scopeNotice ? `<div class="callout" role="status">${esc(state.scopeNotice)}</div>` : ""}${!scopes.length ? '<p class="muted">현재 조건에 맞는 단원이 없습니다. 세부 조건(학교·시험 시기·연도·난이도)을 넓혀 보세요.</p>' : ""}`
       : "";
-    return `<div class="resultbar"><h2>출제 범위</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
+    return `<div class="resultbar"><h2>단원</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
       ${unifiedNotice || '<p class="muted">학년의 1·2학기 전체 단원입니다. 숫자는 지금 출제할 수 있는 문항 수이며, 같은 문항은 한 번만 셉니다. 난이도를 고르지 않으면 난이도가 정해지지 않은 문항까지 포함해 전체에서 고릅니다.</p>'}
       ${groupMarkup(basic, false)}
       ${rangeOptions.length ? `<details class="range-more"><summary>연속 범위로 고르기</summary><div class="range-controls"><label>범위 시작<select id="scope-start">${options(
@@ -3207,7 +3232,7 @@
       printDisabled,
       print: button("print", "출력", `class="cz-secondary" ${printDisabled ? "disabled" : ""}`),
       save: button("save-paper", state.saveBusy ? "저장 중…" : "보관함에 저장", `class="cz-secondary" ${state.saveBusy || saveBlocked ? "disabled" : ""}`),
-      assign: button("save-and-assign", state.assignBusy ? "여는 중…" : alreadySaved ? "저장한 문제지 반에 출제" : "저장하고 반에 출제", `class="primary cz-primary" ${assignDisabled ? "disabled" : ""}`),
+      assign: button("save-and-assign", state.assignBusy ? "여는 중…" : alreadySaved ? "저장한 문제지 출제" : "저장하고 출제", `class="primary cz-primary"${state.assignBusy ? "" : ` aria-label="${alreadySaved ? "저장한 문제지 반에 출제" : "저장하고 반에 출제"}"`} ${assignDisabled ? "disabled" : ""}`),
     };
   }
   function renderResultFinish(r = state.selected.length ? review() : null) {
@@ -3267,7 +3292,7 @@
         return `<article class="compose-saved-continuity-paper" data-saved-paper-id="${esc(id)}">
           <strong>${part}</strong>
           <div class="actions" role="group" aria-label="${part} 출제·출력">
-            ${button("saved-paper-issue", ids.length > 1 ? `${index + 1}권 출제` : "이 저장본 출제", `data-paper-id="${esc(id)}" class="primary"`)}
+            ${button("saved-paper-issue", ids.length > 1 ? `${index + 1}권 출제` : "이 저장본 출제", `data-paper-id="${esc(id)}" class="primary" aria-label="${ids.length > 1 ? `${index + 1}권 반에 출제` : "이 저장본 반에 출제"}"`)}
             ${button("saved-output", "시험지", `data-paper-id="${esc(id)}" data-mode="exam" class="small"`)}
             ${button("saved-output", "해설", `data-paper-id="${esc(id)}" data-mode="sol" class="small"`)}
             ${button("saved-output", "정답", `data-paper-id="${esc(id)}" data-mode="ans" class="small"`)}
@@ -5582,7 +5607,7 @@
         render();
       } else if (a === "source-issue") {
         rememberRecentExam(recentTarget(state.catalog.exams[Number(b.dataset.exam)]));
-        openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)], "targets");
+        openOriginalAssign(state.catalog.exams[Number(b.dataset.exam)]);
       } else if (a === "source-output-direct") {
         rememberRecentExam(recentTarget(state.catalog.exams[Number(b.dataset.exam)]));
         await openFinderOutput(state.catalog.exams[Number(b.dataset.exam)], b.dataset.mode || "exam");
@@ -6351,13 +6376,13 @@
       const rows = route.rejected.slice(0, 10).map((item) =>
         `<li><code>${esc(item.uid.length > 24 ? item.uid.slice(0, 24) + "…" : item.uid)}</code> · ${esc(UID_ROUTE_REASONS[item.reason] || item.reason)}</li>`).join("");
       const more = route.rejected.length > 10 ? `<li>외 ${route.rejected.length - 10}문항</li>` : "";
-      return `<div class="resultbar"><h2>출제 범위</h2></div><div class="callout danger" role="alert" data-uid-route="rejected"><strong>선택한 문항으로 문제지를 만들 수 없습니다.</strong><p>${esc(route.error)}</p>${rows || more ? `<ul>${rows}${more}</ul>` : ""}<p>${back} · ${clear}</p></div>`;
+      return `<div class="resultbar"><h2>단원</h2></div><div class="callout danger" role="alert" data-uid-route="rejected"><strong>선택한 문항으로 문제지를 만들 수 없습니다.</strong><p>${esc(route.error)}</p>${rows || more ? `<ul>${rows}${more}</ul>` : ""}<p>${back} · ${clear}</p></div>`;
     }
     const names = route.records.slice(0, 8).map((record, i) =>
       `${esc([record.year, record.school].filter(Boolean).join(" "))} ${esc(record.sourceQuestionNo ?? record.sourceOrdinal)}번`).join(" · ");
     const rest = route.records.length > 8 ? ` 외 ${route.records.length - 8}문항` : "";
     const scope = route.scopes[0];
-    return `<div class="resultbar"><h2>출제 범위</h2></div><div class="callout" role="status" data-uid-route="accepted">검색에서 선택한 ${route.records.length}문항으로 범위가 고정되었습니다. ${names}${rest}<p>${back} · ${clear}</p></div>
+    return `<div class="resultbar"><h2>단원</h2></div><div class="callout" role="status" data-uid-route="accepted">검색에서 선택한 ${route.records.length}문항으로 범위가 고정되었습니다. ${names}${rest}<p>${back} · ${clear}</p></div>
       <div class="scope-list"><div class="scope-group"><div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(scope.key)}" ${scopeIsSelected(scope) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(scope.label)}</label><small>${scope.count}문항</small></div></div></div>`;
   }
   function applySourceRoute() {
