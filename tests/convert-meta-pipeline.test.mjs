@@ -77,6 +77,9 @@ test('batch conversion preserves source bytes, isolates SHA failures, and writes
  put('archive/exams/original/exam.js','window.questionBank=[{id:1,content:"not the same",answer:"1",solution:"x=1"}];');
  assert.match(runBatch({root,out,batch:{packages:[{...blankSpec,requestId:'bad-blank-alias'}]}})[0].reason,/SOURCE_ONLY_ALIAS_PAYLOAD_MISMATCH/);
  put('archive/exams/original/exam.js',source);
+ const matrixLike='window.questionBank='+JSON.stringify([{id:1,question:'x?\\\\',answer:'',solution:''}])+';',matrixSha=crypto.createHash('sha256').update(matrixLike).digest('hex');
+ fs.writeFileSync(blankPath,matrixLike);for(const f of ['blank-audit.json','blank-manifest.json','blank-class.json']){const pth=path.join(root,f),doc=JSON.parse(fs.readFileSync(pth));doc.sourceSha256=matrixSha;fs.writeFileSync(pth,JSON.stringify(doc));}
+ assert.match(runBatch({root,out,batch:{packages:[{...blankSpec,requestId:'matrix-break'}]}})[0].reason,/SOURCE_ONLY_ALIAS_PAYLOAD_MISMATCH/);
  put('archive/data/question_identity_map.json',{records:[{questionUid:'wrong',sourceOrdinal:1,sourceArchiveFile:'original/exam.js'}]});
  assert.match(runBatch({root,out,batch:{packages:[spec]}})[0].reason,/UID_MISMATCH/);
  put('archive/data/question_identity_map.json',{records:[{questionUid:'uid1',sourceOrdinal:1,sourceArchiveFile:'original/exam.js'}]});

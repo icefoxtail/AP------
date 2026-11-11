@@ -68,7 +68,7 @@ function convertNativePending({root,spec,metadata,identities,input,prod,drive}) 
     const uid=meta[0].questionUid;seen.add(uid);const payload=q=>stable(Object.fromEntries(studentFields.map(f=>[f,Object.hasOwn(q,f)?q[f]:null]))),changed=studentFields.filter(f=>stable(p[i][f]??null)!==stable(d[i][f]??null));
     if(alias&&changed.some(f=>!['solution','solutionImage','solutionFigureSvg'].includes(f)))fail('ALIAS_STUDENT_PAYLOAD_MISMATCH: '+(i+1));
     if(sourceOnlyAlias){
-      const norm=x=>typeof x==='string'?x.replace(/\\\\/g,'\\').replace(/\s+/g,' ').trim():x;
+      const norm=x=>typeof x==='string'?x.replace(/\\\\(?=[A-Za-z])/g,'\\').replace(/\s+/g,' ').trim():x;
       const prompt=q=>norm(q.content??q.question??q.stem??'');
       if(!prompt(d[i])||prompt(d[i])!==prompt(p[i])||stable((d[i].choices||[]).map(norm))!==stable((p[i].choices||[]).map(norm))||(d[i].answer??'')!==''||['image','images','figureSvg'].some(f=>stable(d[i][f]??null)!==stable(p[i][f]??null)))fail('SOURCE_ONLY_ALIAS_PAYLOAD_MISMATCH: '+(i+1));
     }
