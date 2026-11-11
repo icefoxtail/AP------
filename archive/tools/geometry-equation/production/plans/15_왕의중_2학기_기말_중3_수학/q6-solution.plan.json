@@ -1,0 +1,592 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "H",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "sub",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "18"
+           },
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "6"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "sub",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "18"
+           },
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "6"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "expression",
+          "op": "sub",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "6"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "6"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "C",
+     "H",
+     "A"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sBH",
+      "refs": [
+       "B",
+       "H"
+      ]
+     },
+     {
+      "id": "sHC",
+      "refs": [
+       "H",
+       "C"
+      ]
+     },
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     },
+     {
+      "id": "sAH",
+      "refs": [
+       "A",
+       "H"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aBz0",
+       "refs": [
+        "A",
+        "B",
+        "C"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "BLUE"
+      },
+      {
+       "id": "aCz0",
+       "refs": [
+        "A",
+        "C",
+        "B"
+       ],
+       "value": 45,
+       "label": "45",
+       "color": "WARM"
+      }
+     ],
+     "dimensions": [
+      {
+       "id": "dBCz0",
+       "from": "B",
+       "to": "C",
+       "label": "12",
+       "unit": "cm",
+       "side": "BELOW"
+      }
+     ]
+    },
+    "caption": "각 B가 30도, 각 C가 45도이고 BC=12cm인 삼각형에서 A에서 BC에 수선 AH를 내린 그림이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "H",
+       "C"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 AHC"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "H",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "1"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "H",
+     "C",
+     "A"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sHC",
+      "refs": [
+       "H",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     },
+     {
+      "id": "sAH",
+      "refs": [
+       "A",
+       "H"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aCz1",
+       "refs": [
+        "A",
+        "C",
+        "H"
+       ],
+       "value": 45,
+       "label": "45",
+       "color": "WARM"
+      },
+      {
+       "id": "aAz1",
+       "refs": [
+        "H",
+        "A",
+        "C"
+       ],
+       "value": 45,
+       "label": "45",
+       "color": "WARM"
+      }
+     ],
+     "equalLengths": [
+      {
+       "id": "e1z1",
+       "count": 1,
+       "segments": [
+        "sAH",
+        "sHC"
+       ],
+       "color": "BLUE"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAHz1",
+       "ownerSegment": "sAH",
+       "text": "x"
+      },
+      {
+       "id": "lHCz1",
+       "ownerSegment": "sHC",
+       "text": "x"
+      }
+     ]
+    },
+    "caption": "45도인 직각삼각형 AHC에서 AH와 HC가 같다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "H",
+       "C"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 ABH"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "H",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "1"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "H",
+     "B",
+     "A"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sHB",
+      "refs": [
+       "H",
+       "B"
+      ]
+     },
+     {
+      "id": "sBA",
+      "refs": [
+       "B",
+       "A"
+      ]
+     },
+     {
+      "id": "sAH",
+      "refs": [
+       "A",
+       "H"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aBz2",
+       "refs": [
+        "A",
+        "B",
+        "H"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "BLUE"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sAH"
+       ],
+       "color": "BLUE"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAHz2",
+       "ownerSegment": "sAH",
+       "text": "x"
+      },
+      {
+       "id": "lHBz2",
+       "ownerSegment": "sHB",
+       "text": "12-x"
+      }
+     ]
+    },
+    "caption": "30도인 직각삼각형 ABH에서 높이 AH를 x, 밑변 BH를 12-x로 둔 그림이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "H",
+       "B"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "AH를 x라 두면 45도인 삼각형 AHC에서 HC=x이고, BH=12−x이다. 파란색 AH는 두 직각삼각형이 함께 쓰는 높이이다."
+}

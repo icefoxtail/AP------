@@ -1,0 +1,36 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "EXPR",
+    "cellExpr": "y-x",
+    "colVar": "x",
+    "rowVar": "y",
+    "highlightGroups": [
+      {
+        "highlight": {
+          "expr": "y-x",
+          "in": [
+            1
+          ]
+        },
+        "tone": 2
+      }
+    ]
+  },
+  "caption": "가로는 첫 번째 눈 x, 세로는 두 번째 눈 y이고 칸 안의 수는 마이너스 x 더하기 y의 값이다. 짙은 칸은 그 값이 1인 경우이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주사위를 두 번 던져 첫 번째 눈 x, 두 번째 눈 y가 마이너스 x 더하기 y가 1을 만족한다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x와 y의 눈이 1부터 6까지일 때 마이너스 x 더하기 y의 값을 표로 보이고 값이 1인 칸을 표시한다."
+  ]
+}

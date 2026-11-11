@@ -1,0 +1,139 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "시작",
+      "children": [
+        {
+          "label": "안타",
+          "p": "1/5",
+          "children": [
+            {
+              "label": "안타",
+              "p": "1/5",
+              "children": [
+                {
+                  "label": "안타",
+                  "p": "1/4"
+                },
+                {
+                  "label": "무안타",
+                  "p": "3/4"
+                }
+              ]
+            },
+            {
+              "label": "무안타",
+              "p": "4/5",
+              "children": [
+                {
+                  "label": "안타",
+                  "p": "1/4"
+                },
+                {
+                  "label": "무안타",
+                  "p": "3/4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "무안타",
+          "p": "4/5",
+          "children": [
+            {
+              "label": "안타",
+              "p": "1/5",
+              "children": [
+                {
+                  "label": "안타",
+                  "p": "1/4"
+                },
+                {
+                  "label": "무안타",
+                  "p": "3/4"
+                }
+              ]
+            },
+            {
+              "label": "무안타",
+              "p": "4/5",
+              "children": [
+                {
+                  "label": "안타",
+                  "p": "1/4"
+                },
+                {
+                  "label": "무안타",
+                  "p": "3/4"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "pathColumn": true,
+    "highlightPaths": [
+      {
+        "path": [
+          "안타",
+          "안타",
+          "안타"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "안타",
+          "안타",
+          "무안타"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "안타",
+          "무안타",
+          "안타"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "무안타",
+          "안타",
+          "안타"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "2회 이상 안타를 치는 네 경로를 같은 색으로 표시하고 각 경로 확률을 곱한다.",
+  "sourceConditions": [
+    {
+      "id": "independent",
+      "condition": "세 타석의 안타 여부는 서로 독립",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "joo",
+      "condition": "김주봉과 두 번 대결하며 안타 확률은 각각 0.2",
+      "mappedTo": [
+        "chart.root.children[0]",
+        "chart.root.children[1]"
+      ]
+    },
+    {
+      "id": "yang",
+      "condition": "조양현과 한 번 대결하며 안타 확률은 0.25",
+      "mappedTo": "chart.root.children[*].children[*].children"
+    }
+  ],
+  "newVisualInformation": [
+    "2회 이상 안타에 해당하는 네 개의 서로 겹치지 않는 경로와 각 경로 확률을 표시한다."
+  ]
+}

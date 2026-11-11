@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1/6",
+          "0",
+          "1/4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "regions": [
+      {
+        "id": "prob",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "2",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "3/2",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "c1",
+          "point": "P",
+          "text": "f(x)",
+          "direction": "NW"
+        }
+      ]
+    }
+  },
+  "caption": "확률밀도 그래프에서 1≤x≤2에 해당하는 영역을 음영으로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "확률밀도 그래프에서 1≤x≤2에 해당하는 영역을 음영으로 표시한다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "확률밀도 그래프와 확률 구간의 면적을 표시하면 풀이 이해에 도움이 된다. 좌표 라벨에 여유와 지시선을 둔다."
+  ]
+}

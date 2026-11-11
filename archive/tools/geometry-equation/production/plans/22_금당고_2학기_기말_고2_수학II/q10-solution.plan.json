@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "3*x^3",
+    "functionName": "h",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -2,
+        "y": -24
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0,
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": 2,
+        "y": 24
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "L",
+    "R"
+  ],
+  "caption": "적분에 포함되는 홀수항 h(x)=3x³은 대칭 구간에서 원점 대칭이므로 양쪽 값이 서로 상쇄된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 적분 조건으로 f(x)=3x−2를 얻으므로 피적분함수 x²f(x)는 3x³−2x²이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.functionName"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "풀이에서 3x³ 항은 홀함수로 대칭 구간에서 적분이 0이고 −2x² 항만 남는다.",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "피적분식에서 홀수항이 대칭 구간에서 서로 상쇄되는 관계를 보여 준다."
+  ]
+}

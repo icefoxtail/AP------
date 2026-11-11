@@ -1,0 +1,360 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "10"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "18",
+       "denominator": "5"
+      },
+      {
+       "kind": "rational",
+       "numerator": "24",
+       "denominator": "5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "18",
+       "denominator": "5"
+      },
+      {
+       "kind": "rational",
+       "numerator": "-24",
+       "denominator": "5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "6"
+      },
+      {
+       "kind": "integer",
+       "value": "3"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "Q",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "6"
+      },
+      {
+       "kind": "integer",
+       "value": "-3"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "R",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "6"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "circ",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "6"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "C",
+  "P",
+  "Q",
+  "R"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "circ"
+ ],
+ "displaySegments": [
+  {
+   "id": "sCP",
+   "refs": [
+    "C",
+    "P"
+   ]
+  },
+  {
+   "id": "sPA",
+   "refs": [
+    "P",
+    "A"
+   ]
+  },
+  {
+   "id": "sCQ",
+   "refs": [
+    "C",
+    "Q"
+   ]
+  },
+  {
+   "id": "sQB",
+   "refs": [
+    "Q",
+    "B"
+   ]
+  },
+  {
+   "id": "sPR",
+   "refs": [
+    "P",
+    "R"
+   ]
+  },
+  {
+   "id": "sRQ",
+   "refs": [
+    "R",
+    "Q"
+   ]
+  },
+  {
+   "id": "sOA",
+   "refs": [
+    "O",
+    "A"
+   ]
+  },
+  {
+   "id": "sOR",
+   "refs": [
+    "O",
+    "R"
+   ]
+  },
+  {
+   "id": "sRC",
+   "refs": [
+    "R",
+    "C"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "expressionLabels": [
+   {
+    "id": "lOA",
+    "ownerSegment": "sOA",
+    "text": "6",
+    "unit": "cm"
+   }
+  ],
+  "pathLabels": [
+   {
+    "id": "pOC",
+    "points": [
+     "O",
+     "R",
+     "C"
+    ],
+    "label": "10",
+    "unit": "cm"
+   }
+  ],
+  "regions": [
+   {
+    "id": "rT",
+    "fill": "BLUE",
+    "shapes": [
+     {
+      "polygon": [
+       "C",
+       "P",
+       "Q"
+      ]
+     }
+    ]
+   }
+  ],
+  "equalLengths": [
+   {
+    "id": "e1",
+    "count": 1,
+    "segments": [
+     "sPA",
+     "sPR"
+    ],
+    "color": "GREEN"
+   },
+   {
+    "id": "e2",
+    "count": 2,
+    "segments": [
+     "sQB",
+     "sRQ"
+    ],
+    "color": "ROSE"
+   }
+  ],
+  "dimensions": [
+   {
+    "id": "dCA",
+    "from": "A",
+    "to": "C",
+    "label": "8",
+    "unit": "cm",
+    "side": "ABOVE",
+    "style": "BAR",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "dCB",
+    "from": "B",
+    "to": "C",
+    "label": "8",
+    "unit": "cm",
+    "side": "BELOW",
+    "style": "BAR",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "caption": "직각삼각형 OAC에서 CA=8cm이고 CB도 8cm이다. PA=PR, QB=QR이므로 파란색으로 칠한 삼각형 PQC의 둘레는 CA와 CB의 합과 같다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AC, BC, PQ는 원 O의 접선, 접점 A, B, R, OA=6cm, OC=10cm.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "O",
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "r2",
+   "refs": [
+    "O",
+    "R",
+    "P"
+   ]
+  }
+ ],
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 440
+ }
+}

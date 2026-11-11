@@ -1,0 +1,330 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "M",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "-5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "N",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "3"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "-13",
+       "denominator": "2"
+      },
+      {
+       "kind": "integer",
+       "value": "-5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "13",
+       "denominator": "2"
+      },
+      {
+       "kind": "integer",
+       "value": "-5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "-11",
+       "denominator": "5"
+      },
+      {
+       "kind": "rational",
+       "numerator": "79",
+       "denominator": "10"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "41",
+       "denominator": "5"
+      },
+      {
+       "kind": "rational",
+       "numerator": "1",
+       "denominator": "10"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "circ",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "expression",
+      "op": "mul",
+      "args": [
+       {
+        "kind": "rational",
+        "numerator": "1",
+        "denominator": "2"
+       },
+       {
+        "kind": "expression",
+        "op": "sqrt",
+        "args": [
+         {
+          "kind": "integer",
+          "value": "269"
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "C",
+  "D",
+  "M",
+  "N"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "circ"
+ ],
+ "displaySegments": [
+  {
+   "id": "sAM",
+   "refs": [
+    "A",
+    "M"
+   ]
+  },
+  {
+   "id": "sMB",
+   "refs": [
+    "M",
+    "B"
+   ]
+  },
+  {
+   "id": "sCN",
+   "refs": [
+    "C",
+    "N"
+   ]
+  },
+  {
+   "id": "sND",
+   "refs": [
+    "N",
+    "D"
+   ]
+  },
+  {
+   "id": "sOM",
+   "refs": [
+    "O",
+    "M"
+   ]
+  },
+  {
+   "id": "sON",
+   "refs": [
+    "O",
+    "N"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "expressionLabels": [
+   {
+    "id": "lOM",
+    "ownerSegment": "sOM",
+    "text": "5",
+    "unit": "cm"
+   },
+   {
+    "id": "lON",
+    "ownerSegment": "sON",
+    "text": "5",
+    "unit": "cm"
+   },
+   {
+    "id": "lMB",
+    "ownerSegment": "sMB",
+    "text": "6.5",
+    "unit": "cm"
+   }
+  ],
+  "equalLengths": [
+   {
+    "id": "e1",
+    "count": 1,
+    "segments": [
+     "sAM",
+     "sMB"
+    ],
+    "color": "WARM"
+   },
+   {
+    "id": "e2",
+    "count": 2,
+    "segments": [
+     "sCN",
+     "sND"
+    ],
+    "color": "GREEN"
+   },
+   {
+    "id": "e3",
+    "count": 3,
+    "segments": [
+     "sOM",
+     "sON"
+    ],
+    "color": "BLUE"
+   }
+  ]
+ },
+ "caption": "중심에서 현에 내린 수선은 현을 이등분하므로 AM=MB=6.5cm이다. 중심에서 두 현까지의 거리 OM, ON이 같으므로 두 현의 길이도 같다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "OM⊥AB, ON⊥CD, OM=ON=5cm, BM=6.5cm.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "O",
+    "M",
+    "A"
+   ]
+  },
+  {
+   "id": "r2",
+   "refs": [
+    "O",
+    "N",
+    "C"
+   ]
+  }
+ ],
+ "coordinateCanvas": {
+  "width": 520,
+  "height": 520
+ }
+}

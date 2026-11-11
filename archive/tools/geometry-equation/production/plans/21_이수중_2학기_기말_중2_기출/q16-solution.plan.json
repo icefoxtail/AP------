@@ -1,0 +1,46 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "SUM",
+    "colVar": "a",
+    "rowVar": "b",
+    "highlightGroups": [
+      {
+        "highlight": {
+          "expr": "a+b",
+          "in": [
+            5,
+            5
+          ]
+        },
+        "tone": 2
+      },
+      {
+        "highlight": {
+          "expr": "a+b",
+          "in": [
+            8,
+            8
+          ]
+        },
+        "tone": 1
+      }
+    ]
+  },
+  "caption": "가로는 주사위 A의 눈 a, 세로는 주사위 B의 눈 b이고 칸 안의 수는 두 눈의 합이다. 짙은 칸은 합이 5인 경우, 옅은 칸은 합이 8인 경우이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 개의 주사위를 동시에 던질 때 눈의 수의 합이 5 또는 8인 사건.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "합이 5인 칸과 합이 8인 칸을 진하기로 구분해 보인다."
+  ]
+}

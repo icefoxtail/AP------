@@ -1,0 +1,46 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      "-1",
+      "0",
+      "1"
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "1"
+      },
+      {
+        "from": "-1",
+        "to": null
+      }
+    ],
+    "xLabel": "z"
+  },
+  "caption": "표준정규곡선에서 1 왼쪽과 -1 오른쪽의 대칭 영역을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫 조건을 표준화하면 z가 1 이하인 영역이다.",
+      "mappedTo": "chart.shades[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "둘째 조건을 표준화하면 z가 -1 이상인 영역이다.",
+      "mappedTo": "chart.shades[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "표준정규곡선에서 서로 대칭인 두 누적 영역"
+  ]
+}

@@ -1,0 +1,593 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "정사각형 안의 원"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "S0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "S1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "S0"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "S2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "S0"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "S3",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "S0"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "S0"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "S0"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C3",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "S0"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C4",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "S0"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "M",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "S0"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "1",
+                      "denominator": "2"
+                    }
+                  ]
+                },
+                "dy": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "1",
+                      "denominator": "2"
+                    }
+                  ]
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k1",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k2",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "C2"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k3",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "C3"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k4",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "C4"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ks",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "M",
+                "T"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "S0",
+          "S1",
+          "S2",
+          "S3",
+          "P",
+          "C2",
+          "C3",
+          "C4",
+          "M",
+          "T"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "k1",
+          "k2",
+          "k3",
+          "k4",
+          "ks"
+        ],
+        "displaySegments": [
+          {
+            "id": "sA",
+            "refs": [
+              "S0",
+              "S1"
+            ]
+          },
+          {
+            "id": "sB",
+            "refs": [
+              "S1",
+              "S2"
+            ]
+          },
+          {
+            "id": "sC",
+            "refs": [
+              "S2",
+              "S3"
+            ]
+          },
+          {
+            "id": "sD",
+            "refs": [
+              "S3",
+              "S0"
+            ]
+          },
+          {
+            "id": "PT",
+            "refs": [
+              "P",
+              "T"
+            ]
+          },
+          {
+            "id": "TM",
+            "refs": [
+              "T",
+              "M"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "PT"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "TM"
+              ],
+              "color": "WARM"
+            }
+          ]
+        },
+        "caption": "정사각형 안의 원 5개와 중심을 이은 선분",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "정사각형 안에 반지름 1cm인 큰 원 4개와 작은 원 1개가 꼭 맞게 들어 있다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "큰 원의 반지름과 작은 원의 반지름을 서로 다른 색 선분으로 이어 보인다."
+        ],
+        "hiddenPointNames": [
+          "S0",
+          "S1",
+          "S2",
+          "S3",
+          "P",
+          "C2",
+          "C3",
+          "C4",
+          "M",
+          "T"
+        ],
+        "hiddenPointStyle": "DOT",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 360
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "중심 사이의 거리"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "M",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "P",
+          "T",
+          "M"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "PT",
+            "refs": [
+              "P",
+              "T"
+            ]
+          },
+          {
+            "id": "TM",
+            "refs": [
+              "T",
+              "M"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "PT"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "TM"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "PT",
+              "text": "1",
+              "unit": "cm",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lr",
+              "ownerSegment": "TM",
+              "text": "r",
+              "unit": "cm",
+              "factRole": "GIVEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dd",
+              "from": "P",
+              "to": "M",
+              "label": "sqrt(2)",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "caption": "큰 원의 중심에서 작은 원의 중심까지의 거리",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "큰 원의 중심 P에서 작은 원의 중심 M까지의 거리는 한 변이 2cm인 정사각형의 대각선의 절반 √2cm이고, 접점 T를 지나므로 1+r이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "선분 PM을 곧게 펴서 크게 그리고 큰 원의 반지름 1cm, 작은 원의 반지름 r, 전체 길이 √2cm를 나타낸다."
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "큰 원 네 개의 중심을 이은 정사각형의 대각선의 절반이 큰 원과 작은 원의 중심 사이의 거리이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각형 안에 반지름 1cm인 큰 원 4개와 작은 원 1개가 꼭 맞게 들어 있다. 큰 원의 중심에서 가운데 점까지의 거리는 한 변이 2cm인 정사각형의 대각선의 절반 √2cm이고, 큰 원과 작은 원이 접하므로 1+r이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원래 그림과 곧게 편 중심 사이 선분을 나란히 보인다."
+  ]
+}

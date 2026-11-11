@@ -1,0 +1,516 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제의 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "-12"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-45962667",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-38567257",
+          "denominator": "10000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "5677091",
+          "denominator": "1000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-1941813",
+          "denominator": "1000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "E",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "-3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "K",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "11183759",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "integer",
+          "value": "-6"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "circ",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "K"
+       ],
+       "args": {
+        "radius": {
+         "kind": "rational",
+         "numerator": "12206681",
+         "denominator": "2000000"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E",
+     "K"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "circ"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAE",
+      "refs": [
+       "A",
+       "E"
+      ]
+     },
+     {
+      "id": "sEB",
+      "refs": [
+       "E",
+       "B"
+      ]
+     },
+     {
+      "id": "sCE",
+      "refs": [
+       "C",
+       "E"
+      ]
+     },
+     {
+      "id": "sED",
+      "refs": [
+       "E",
+       "D"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     },
+     {
+      "id": "sAD",
+      "refs": [
+       "A",
+       "D"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "callouts": [
+      {
+       "id": "k1",
+       "kind": "SEGMENT",
+       "path": [
+        "A",
+        "E",
+        "B"
+       ],
+       "at": "RIGHT",
+       "orientation": "VERTICAL",
+       "link": "ENDS",
+       "dimensions": [
+        {
+         "id": "dAE",
+         "from": "A",
+         "to": "E",
+         "label": "3",
+         "unit": "cm",
+         "side": "RIGHT",
+         "style": "ARROW",
+         "offset": "AUTO"
+        },
+        {
+         "id": "dEB",
+         "from": "E",
+         "to": "B",
+         "label": "9",
+         "unit": "cm",
+         "side": "RIGHT",
+         "style": "ARROW",
+         "offset": "AUTO"
+        }
+       ]
+      }
+     ],
+     "equalLengths": [
+      {
+       "id": "e1",
+       "count": 2,
+       "segments": [
+        "sAC",
+        "sAD"
+       ],
+       "color": "BLUE"
+      }
+     ]
+    },
+    "caption": "문제의 그림",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "두 현 AB, CD가 E에서 만나고 AC=AD, AE=3cm, BE=9cm (잘린 그림을 조건대로 다시 그린 배치).",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 320
+    },
+    "hiddenPointNames": [
+     "K"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "닮음인 삼각형 ACE와 ABC"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "E",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "38567257",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "45962667",
+          "denominator": "10000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "E"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAE",
+      "refs": [
+       "A",
+       "E"
+      ]
+     },
+     {
+      "id": "sEB",
+      "refs": [
+       "E",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     },
+     {
+      "id": "sCE",
+      "refs": [
+       "C",
+       "E"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "B",
+        "A",
+        "C"
+       ],
+       "value": 50,
+       "noLabel": true,
+       "color": "ROSE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "C"
+       ],
+       "value": 29.44146394258786,
+       "noLabel": true,
+       "color": "BLUE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "aC",
+       "refs": [
+        "A",
+        "C",
+        "E"
+       ],
+       "value": 29.441463942587855,
+       "noLabel": true,
+       "color": "BLUE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAE",
+       "ownerSegment": "sAE",
+       "text": "3",
+       "unit": "cm"
+      },
+      {
+       "id": "lEB",
+       "ownerSegment": "sEB",
+       "text": "9",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "닮음인 삼각형 ACE와 ABC",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "∠ACE=∠ABC, ∠CAE는 공통.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 340
+    }
+   }
+  }
+ ],
+ "caption": "파란색 두 각 ACE와 ABC가 같고 분홍색 각 A는 공통이므로 삼각형 ACE와 ABC가 닮음이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AC=AD, AE=3cm, BE=9cm인 원의 두 현 AB, CD.",
+   "mappedTo": [
+    "panels",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "풀이 단계마다 그림을 나누어 보인다."
+ ]
+}

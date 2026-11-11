@@ -1,0 +1,766 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "A, G, G′에서 BC까지의 높이"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "69",
+                    "denominator": "10"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "77",
+                    "denominator": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "MIDPOINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "G",
+              "op": "CENTROID",
+              "inputs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "H",
+              "op": "CENTROID",
+              "inputs": [
+                "G",
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bc",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "fA",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "A",
+                "bc"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "fG",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "G",
+                "bc"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "fH",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "H",
+                "bc"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "G",
+          "H",
+          "fA",
+          "fG",
+          "fH"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "hA",
+            "refs": [
+              "A",
+              "fA"
+            ]
+          },
+          {
+            "id": "hG",
+            "refs": [
+              "G",
+              "fG"
+            ]
+          },
+          {
+            "id": "hH",
+            "refs": [
+              "H",
+              "fH"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "hA"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "hG"
+              ],
+              "color": "GREEN"
+            },
+            {
+              "segments": [
+                "hH"
+              ],
+              "color": "WARM"
+            }
+          ]
+        },
+        "caption": "A, G, G′에서 BC까지의 높이",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 400
+        },
+        "pointNames": {
+          "H": "G′"
+        },
+        "hiddenPointNames": [
+          "fA",
+          "fG",
+          "fH"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "높이를 나란히 편 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "a0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "77",
+                    "denominator": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "g0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "g1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "25667",
+                    "denominator": "10000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "k0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "k1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "2139",
+                    "denominator": "2500"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "a0",
+          "a1",
+          "g0",
+          "g1",
+          "k0",
+          "k1"
+        ],
+        "displaySegments": [
+          {
+            "id": "sa",
+            "refs": [
+              "a0",
+              "a1"
+            ]
+          },
+          {
+            "id": "sg",
+            "refs": [
+              "g0",
+              "g1"
+            ]
+          },
+          {
+            "id": "sk",
+            "refs": [
+              "k0",
+              "k1"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sa"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sg"
+              ],
+              "color": "GREEN"
+            },
+            {
+              "segments": [
+                "sk"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "d1",
+              "from": "a0",
+              "to": "a1",
+              "label": "h",
+              "side": "LEFT",
+              "style": "ARROW",
+              "offset": "AUTO"
+            },
+            {
+              "id": "d2",
+              "from": "g0",
+              "to": "g1",
+              "label": "h/3",
+              "side": "LEFT",
+              "style": "ARROW",
+              "offset": "AUTO"
+            },
+            {
+              "id": "d3",
+              "from": "k0",
+              "to": "k1",
+              "label": "h/9",
+              "side": "LEFT",
+              "style": "ARROW",
+              "offset": "AUTO"
+            }
+          ]
+        },
+        "caption": "높이를 나란히 편 그림",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 480
+        },
+        "hiddenPointNames": [
+          "a0",
+          "a1",
+          "g0",
+          "g1",
+          "k0",
+          "k1"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "무게중심이 나누는 넓이"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "69",
+                    "denominator": "10"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "77",
+                    "denominator": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "MIDPOINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "G",
+              "op": "CENTROID",
+              "inputs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "H",
+              "op": "CENTROID",
+              "inputs": [
+                "G",
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "G",
+          "H"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sAG",
+            "refs": [
+              "A",
+              "G"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sBG",
+            "refs": [
+              "B",
+              "G"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sGC",
+            "refs": [
+              "G",
+              "C"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sBH",
+            "refs": [
+              "B",
+              "H"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sHC",
+            "refs": [
+              "H",
+              "C"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sDH",
+            "refs": [
+              "D",
+              "H"
+            ],
+            "dashed": true
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "r1",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "G",
+                    "C"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "r2",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "G",
+                    "B"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "r3",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "G",
+                    "B",
+                    "C"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "r4",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "H",
+                    "B",
+                    "D"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "r5",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "H",
+                    "D",
+                    "C"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "넓이가 같은 삼각형",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 400
+        },
+        "pointNames": {
+          "H": "G′"
+        }
+      }
+    }
+  ],
+  "caption": "변 BC를 밑변으로 볼 때 A, G, G′의 높이는 h, 3분의 h, 9분의 h이다. 무게중심은 삼각형을 넓이가 같은 세 삼각형으로 나눈다."
+}

@@ -1,0 +1,708 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제의 배치"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "25",
+          "denominator": "2"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "circ",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "rational",
+         "numerator": "25",
+         "denominator": "2"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "25"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "16"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "16"
+         },
+         {
+          "kind": "integer",
+          "value": "12"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "circ"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAD",
+      "refs": [
+       "A",
+       "D"
+      ]
+     },
+     {
+      "id": "sDB",
+      "refs": [
+       "D",
+       "B"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     },
+     {
+      "id": "sCB",
+      "refs": [
+       "C",
+       "B"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aX",
+       "refs": [
+        "D",
+        "C",
+        "B"
+       ],
+       "value": 36.87,
+       "factRole": "GIVEN",
+       "label": "x",
+       "color": "ROSE"
+      },
+      {
+       "id": "aA",
+       "refs": [
+        "C",
+        "A",
+        "D"
+       ],
+       "value": 36.87,
+       "factRole": "GIVEN",
+       "noLabel": true,
+       "color": "ROSE"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAD",
+       "ownerSegment": "sAD",
+       "text": "16k"
+      },
+      {
+       "id": "lDB",
+       "ownerSegment": "sDB",
+       "text": "9k"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sAD"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sDB"
+       ],
+       "color": "WARM"
+      }
+     ]
+    },
+    "caption": "문제의 배치",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "AB는 반원의 지름, CD⊥AB, AD:DB=16:9, 각 DCB=x이다.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "A",
+       "C",
+       "B"
+      ]
+     },
+     {
+      "id": "r2",
+      "refs": [
+       "C",
+       "D",
+       "B"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 320
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 ACD"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "16"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "12"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "C",
+     "D"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     },
+     {
+      "id": "sDC",
+      "refs": [
+       "D",
+       "C"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "C",
+        "A",
+        "D"
+       ],
+       "value": 36.87,
+       "factRole": "GIVEN",
+       "label": "x",
+       "color": "ROSE"
+      },
+      {
+       "id": "aC",
+       "refs": [
+        "A",
+        "C",
+        "D"
+       ],
+       "value": 53.13,
+       "factRole": "GIVEN",
+       "noLabel": true,
+       "color": "VIOLET"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lDA",
+       "ownerSegment": "sDA",
+       "text": "16k"
+      },
+      {
+       "id": "lDC",
+       "ownerSegment": "sDC",
+       "text": "12k"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sDA"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sDC"
+       ],
+       "color": "WARM"
+      },
+      {
+       "segments": [
+        "sAC"
+       ],
+       "color": "GREEN"
+      }
+     ]
+    },
+    "caption": "삼각형 ACD",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "AB는 반원의 지름, CD⊥AB, AD:DB=16:9, 각 DCB=x이다.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "A",
+       "D",
+       "C"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 320
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 CBD"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "9"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Zh1",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "16"
+         },
+         {
+          "kind": "integer",
+          "value": "12"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "C",
+     "D",
+     "Zh1"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sDC",
+      "refs": [
+       "D",
+       "C"
+      ]
+     },
+     {
+      "id": "sDB",
+      "refs": [
+       "D",
+       "B"
+      ]
+     },
+     {
+      "id": "sCB",
+      "refs": [
+       "C",
+       "B"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aC",
+       "refs": [
+        "B",
+        "C",
+        "D"
+       ],
+       "value": 36.87,
+       "factRole": "GIVEN",
+       "label": "x",
+       "color": "ROSE"
+      },
+      {
+       "id": "aB",
+       "refs": [
+        "C",
+        "B",
+        "D"
+       ],
+       "value": 53.13,
+       "factRole": "GIVEN",
+       "noLabel": true,
+       "color": "VIOLET"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lDC",
+       "ownerSegment": "sDC",
+       "text": "12k"
+      },
+      {
+       "id": "lDB",
+       "ownerSegment": "sDB",
+       "text": "9k"
+      },
+      {
+       "id": "lCB",
+       "ownerSegment": "sCB",
+       "text": "15k"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sDC"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sDB"
+       ],
+       "color": "WARM"
+      },
+      {
+       "segments": [
+        "sCB"
+       ],
+       "color": "GREEN"
+      }
+     ]
+    },
+    "caption": "삼각형 CBD",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "AB는 반원의 지름, CD⊥AB, AD:DB=16:9, 각 DCB=x이다.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "C",
+       "D",
+       "B"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 320
+    },
+    "hiddenPointNames": [
+     "Zh1"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  }
+ ],
+ "caption": "AB가 지름이므로 각 ACB는 직각이고 CD⊥AB이므로 삼각형 ACD와 삼각형 CBD는 닮음이다. 대응변은 AD와 CD(파랑), CD와 BD(주황), AC와 CB(초록)이고 각 A와 각 DCB(분홍)는 같다. AD=16k, DB=9k로 두면 CD²=AD×DB에서 CD=12k이고 CB=15k이므로 cos x는 15k분의 12k이다. 정답은 ④이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AB는 반원의 지름, CD⊥AB, AD:DB=16:9, 각 DCB=x이다.",
+   "mappedTo": [
+    "panels",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "문제 배치와 닮은 두 직각삼각형 ACD, CBD를 같은 방향으로 펼쳐 대응변을 같은 색으로 보인다."
+ ]
+}

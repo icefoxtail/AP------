@@ -1,0 +1,47 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 3,
+      "rows": 3
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        3,
+        3
+      ]
+    },
+    "from": "A",
+    "to": "B",
+    "forbidden": [
+      [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    ],
+    "counts": true
+  },
+  "caption": "끊긴 도로를 점선으로 두고 교차점마다 그곳까지 가는 최단 경로의 수를 적었다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "3×3 도로망에서 윗줄 가운데 한 구간이 끊겨 있다.",
+      "mappedTo": [
+        "lattice"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "끊긴 구간을 피해 교차점마다 오는 방법의 수를 더해 가는 과정을 보인다."
+  ]
+}

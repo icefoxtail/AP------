@@ -1,0 +1,272 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "expression",
+       "op": "mul",
+       "args": [
+        {
+         "kind": "integer",
+         "value": "3"
+        },
+        {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "expression",
+       "op": "mul",
+       "args": [
+        {
+         "kind": "integer",
+         "value": "3"
+        },
+        {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "kind": "integer",
+       "value": "3"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "expression",
+       "op": "mul",
+       "args": [
+        {
+         "kind": "integer",
+         "value": "3"
+        },
+        {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "kind": "expression",
+       "op": "mul",
+       "args": [
+        {
+         "kind": "integer",
+         "value": "3"
+        },
+        {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayPoints": [
+  "B",
+  "C",
+  "D",
+  "A"
+ ],
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  },
+  {
+   "id": "sDA",
+   "refs": [
+    "D",
+    "A"
+   ]
+  },
+  {
+   "id": "sBD",
+   "refs": [
+    "B",
+    "D"
+   ]
+  },
+  {
+   "id": "sBA",
+   "refs": [
+    "B",
+    "A"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aABD",
+    "refs": [
+     "A",
+     "B",
+     "D"
+    ],
+    "value": 15,
+    "label": "15",
+    "color": "BLUE"
+   },
+   {
+    "id": "aDBC",
+    "refs": [
+     "D",
+     "B",
+     "C"
+    ],
+    "value": 30,
+    "label": "30",
+    "color": "WARM"
+   },
+   {
+    "id": "aABC",
+    "refs": [
+     "A",
+     "B",
+     "C"
+    ],
+    "value": 45,
+    "label": "45",
+    "color": "GREEN",
+    "over": [
+     "aABD",
+     "aDBC"
+    ]
+   }
+  ],
+  "segmentColors": [
+   {
+    "segments": [
+     "sDA"
+    ],
+    "color": "ROSE"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "lDC",
+    "ownerSegment": "sCD",
+    "text": "3",
+    "unit": "m"
+   },
+   {
+    "id": "lBC",
+    "ownerSegment": "sBC",
+    "text": "3sqrt(3)",
+    "unit": "m"
+   }
+  ]
+ },
+ "caption": "건물 BC 끝 C에서 직각이고, 점 B에서 올려다본 각 15도, 30도, 합 45도를 나타낸 그림이다. 장밋빛 선분 DA의 길이를 구한다.",
+ "rightAngles": [
+  {
+   "id": "r0",
+   "refs": [
+    "B",
+    "C",
+    "D"
+   ]
+  }
+ ]
+}

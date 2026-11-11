@@ -1,0 +1,68 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "−",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "+",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "+",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "g′(x)의 부호 구간"
+  },
+  "caption": "g′(x)의 부호는 −2에서만 바뀌고 4에서 0이 되어도 양수로 유지된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=32일 때 g′(x)=f(x)=(x+2)(x−4)^2이다.",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "c2",
+      "condition": "g′의 부호는 음수에서 양수로 한 번만 바뀌므로 g는 한 번 감소한 뒤 증가한다.",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "단순근 −2에서는 부호가 바뀌고 중근 4에서는 양수 부호가 유지되는 것을 나타낸다."
+  ]
+}

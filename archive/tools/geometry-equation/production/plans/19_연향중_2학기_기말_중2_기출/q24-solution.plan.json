@@ -1,0 +1,1094 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "173",
+              "denominator": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "173",
+              "denominator": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-173",
+              "denominator": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-173",
+              "denominator": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G0a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G0b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G0c",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G1a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G1b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G1c",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2c",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G3a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G3b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G3c",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G4a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "29",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G4b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "29",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G4c",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "29",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G5a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "33",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G5b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "33",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G5c",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "33",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G6a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "37",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G6b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "37",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G6c",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "37",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G7a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "41",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G7b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "41",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G7c",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "41",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "G0a",
+    "G0b",
+    "G0c",
+    "G1a",
+    "G1b",
+    "G1c",
+    "G2a",
+    "G2b",
+    "G2c",
+    "G3a",
+    "G3b",
+    "G3c",
+    "G4a",
+    "G4b",
+    "G4c",
+    "G5a",
+    "G5b",
+    "G5c",
+    "G6a",
+    "G6b",
+    "G6c",
+    "G7a",
+    "G7b",
+    "G7c"
+  ],
+  "displaySegments": [
+    {
+      "id": "sP1P2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "sP1P3",
+      "refs": [
+        "P1",
+        "P3"
+      ]
+    },
+    {
+      "id": "sP1P4",
+      "refs": [
+        "P1",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP1P5",
+      "refs": [
+        "P1",
+        "P5"
+      ]
+    },
+    {
+      "id": "sP1P6",
+      "refs": [
+        "P1",
+        "P6"
+      ]
+    },
+    {
+      "id": "sP2P3",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "sP2P4",
+      "refs": [
+        "P2",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP2P5",
+      "refs": [
+        "P2",
+        "P5"
+      ]
+    },
+    {
+      "id": "sP2P6",
+      "refs": [
+        "P2",
+        "P6"
+      ]
+    },
+    {
+      "id": "sP3P4",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP3P5",
+      "refs": [
+        "P3",
+        "P5"
+      ]
+    },
+    {
+      "id": "sP3P6",
+      "refs": [
+        "P3",
+        "P6"
+      ]
+    },
+    {
+      "id": "sP4P5",
+      "refs": [
+        "P4",
+        "P5"
+      ]
+    },
+    {
+      "id": "sP4P6",
+      "refs": [
+        "P4",
+        "P6"
+      ]
+    },
+    {
+      "id": "sP5P6",
+      "refs": [
+        "P5",
+        "P6"
+      ]
+    },
+    {
+      "id": "sG0aG7a",
+      "refs": [
+        "G0a",
+        "G7a"
+      ]
+    },
+    {
+      "id": "sG0bG7b",
+      "refs": [
+        "G0b",
+        "G7b"
+      ]
+    },
+    {
+      "id": "sG0cG7c",
+      "refs": [
+        "G0c",
+        "G7c"
+      ]
+    },
+    {
+      "id": "sG0aG0c",
+      "refs": [
+        "G0a",
+        "G0c"
+      ]
+    },
+    {
+      "id": "sG1aG1c",
+      "refs": [
+        "G1a",
+        "G1c"
+      ]
+    },
+    {
+      "id": "sG2aG2c",
+      "refs": [
+        "G2a",
+        "G2c"
+      ]
+    },
+    {
+      "id": "sG3aG3c",
+      "refs": [
+        "G3a",
+        "G3c"
+      ]
+    },
+    {
+      "id": "sG4aG4c",
+      "refs": [
+        "G4a",
+        "G4c"
+      ]
+    },
+    {
+      "id": "sG5aG5c",
+      "refs": [
+        "G5a",
+        "G5c"
+      ]
+    },
+    {
+      "id": "sG6aG6c",
+      "refs": [
+        "G6a",
+        "G6c"
+      ]
+    },
+    {
+      "id": "sG7aG7c",
+      "refs": [
+        "G7a",
+        "G7c"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "segmentColors": [
+      {
+        "segments": [
+          "sP2P5"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rw",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "G4b",
+              "G5b",
+              "G5c",
+              "G4c"
+            ]
+          }
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "n0",
+        "at": [
+          0,
+          4.8
+        ],
+        "text": "1"
+      },
+      {
+        "id": "n1",
+        "at": [
+          4.498,
+          2.4
+        ],
+        "text": "2"
+      },
+      {
+        "id": "n2",
+        "at": [
+          4.498,
+          -2.4
+        ],
+        "text": "3"
+      },
+      {
+        "id": "n3",
+        "at": [
+          0,
+          -4.8
+        ],
+        "text": "4"
+      },
+      {
+        "id": "n4",
+        "at": [
+          -4.498,
+          -2.4
+        ],
+        "text": "5"
+      },
+      {
+        "id": "n5",
+        "at": [
+          -4.498,
+          2.4
+        ],
+        "text": "6"
+      },
+      {
+        "id": "c1",
+        "at": [
+          0,
+          -6.4
+        ],
+        "text": "두 숫자 조합 15가지"
+      },
+      {
+        "id": "c2",
+        "at": [
+          0,
+          6.4
+        ],
+        "text": "금도끼: 숫자 6개 중 2개 맞히기"
+      },
+      {
+        "id": "g1",
+        "at": [
+          7.5,
+          1
+        ],
+        "text": "1"
+      },
+      {
+        "id": "g2",
+        "at": [
+          9.5,
+          1
+        ],
+        "text": "2"
+      },
+      {
+        "id": "g3",
+        "at": [
+          11.5,
+          1
+        ],
+        "text": "3"
+      },
+      {
+        "id": "g4",
+        "at": [
+          13.5,
+          1
+        ],
+        "text": "4"
+      },
+      {
+        "id": "g5",
+        "at": [
+          15.5,
+          1
+        ],
+        "text": "5"
+      },
+      {
+        "id": "g6",
+        "at": [
+          17.5,
+          1
+        ],
+        "text": "6"
+      },
+      {
+        "id": "g7",
+        "at": [
+          19.5,
+          1
+        ],
+        "text": "7"
+      },
+      {
+        "id": "g8",
+        "at": [
+          7.5,
+          -1
+        ],
+        "text": "8"
+      },
+      {
+        "id": "g9",
+        "at": [
+          9.5,
+          -1
+        ],
+        "text": "9"
+      },
+      {
+        "id": "g10",
+        "at": [
+          11.5,
+          -1
+        ],
+        "text": "10"
+      },
+      {
+        "id": "g11",
+        "at": [
+          13.5,
+          -1
+        ],
+        "text": "11"
+      },
+      {
+        "id": "g12",
+        "at": [
+          15.5,
+          -1
+        ],
+        "text": "12"
+      },
+      {
+        "id": "g13",
+        "at": [
+          17.5,
+          -1
+        ],
+        "text": "13"
+      },
+      {
+        "id": "c3",
+        "at": [
+          13.5,
+          2.6
+        ],
+        "text": "은도끼: 숫자 13개 중 1개 맞히기"
+      },
+      {
+        "id": "c4",
+        "at": [
+          13.5,
+          -3.2
+        ],
+        "text": "숫자 하나를 고르는 경우 13가지"
+      }
+    ]
+  },
+  "caption": "금도끼 복권은 1부터 6까지의 숫자 중 두 숫자를 고르는 조합(육각형의 선분 15개) 중 하나가 당첨이고, 은도끼 복권은 1부터 13까지의 숫자 칸 중 하나가 당첨이다(각각 파란색). 당첨되는 경우가 각각 전체의 몇 분의 1인지 비교한다.",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "G0a",
+    "G0b",
+    "G0c",
+    "G1a",
+    "G1b",
+    "G1c",
+    "G2a",
+    "G2b",
+    "G2c",
+    "G3a",
+    "G3b",
+    "G3c",
+    "G4a",
+    "G4b",
+    "G4c",
+    "G5a",
+    "G5b",
+    "G5c",
+    "G6a",
+    "G6b",
+    "G6c",
+    "G7a",
+    "G7b",
+    "G7c"
+  ],
+  "hiddenPointStyle": "DOT",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "금도끼는 6개 숫자 중 2개, 은도끼는 13개 숫자 중 1개를 맞히면 당첨",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 복권의 전체 경우와 당첨 경우를 나란히 보인다"
+  ]
+}

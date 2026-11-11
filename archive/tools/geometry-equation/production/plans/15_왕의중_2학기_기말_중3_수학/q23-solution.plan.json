@@ -1,0 +1,747 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "8"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "11",
+          "denominator": "2"
+         },
+         {
+          "kind": "expression",
+          "op": "div",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "5"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "2"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "I",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "5"
+         },
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "F",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "5"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "55",
+          "denominator": "14"
+         },
+         {
+          "kind": "expression",
+          "op": "div",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "25"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "14"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "E",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "13",
+          "denominator": "2"
+         },
+         {
+          "kind": "expression",
+          "op": "div",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "2"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "I"
+       ],
+       "args": {
+        "radius": {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          }
+         ]
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "C",
+     "A",
+     "I",
+     "F",
+     "D",
+     "E"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAD",
+      "refs": [
+       "A",
+       "D"
+      ]
+     },
+     {
+      "id": "sDB",
+      "refs": [
+       "D",
+       "B"
+      ]
+     },
+     {
+      "id": "sBF",
+      "refs": [
+       "B",
+       "F"
+      ]
+     },
+     {
+      "id": "sFC",
+      "refs": [
+       "F",
+       "C"
+      ]
+     },
+     {
+      "id": "sCE",
+      "refs": [
+       "C",
+       "E"
+      ]
+     },
+     {
+      "id": "sEA",
+      "refs": [
+       "E",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "dimensions": [
+      {
+       "id": "dABz0",
+       "from": "B",
+       "to": "A",
+       "label": "7",
+       "unit": "cm",
+       "side": "LEFT"
+      },
+      {
+       "id": "dACz0",
+       "from": "C",
+       "to": "A",
+       "label": "5",
+       "unit": "cm",
+       "side": "RIGHT"
+      },
+      {
+       "id": "dBCz0",
+       "from": "B",
+       "to": "C",
+       "label": "8",
+       "unit": "cm",
+       "side": "BELOW"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lBFz0",
+       "ownerSegment": "sBF",
+       "text": "x",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "삼각형 ABC에 내접하는 원과 접점 D, E, F를 나타낸 그림이다.",
+    "hiddenPointNames": [
+     "I"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "접선의 길이"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "8"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "11",
+          "denominator": "2"
+         },
+         {
+          "kind": "expression",
+          "op": "div",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "5"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "2"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "I",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "5"
+         },
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "F",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "5"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "55",
+          "denominator": "14"
+         },
+         {
+          "kind": "expression",
+          "op": "div",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "25"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "14"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "E",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "13",
+          "denominator": "2"
+         },
+         {
+          "kind": "expression",
+          "op": "div",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "2"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "I"
+       ],
+       "args": {
+        "radius": {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          }
+         ]
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "C",
+     "A",
+     "I",
+     "F",
+     "D",
+     "E"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAD",
+      "refs": [
+       "A",
+       "D"
+      ]
+     },
+     {
+      "id": "sDB",
+      "refs": [
+       "D",
+       "B"
+      ]
+     },
+     {
+      "id": "sBF",
+      "refs": [
+       "B",
+       "F"
+      ]
+     },
+     {
+      "id": "sFC",
+      "refs": [
+       "F",
+       "C"
+      ]
+     },
+     {
+      "id": "sCE",
+      "refs": [
+       "C",
+       "E"
+      ]
+     },
+     {
+      "id": "sEA",
+      "refs": [
+       "E",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "equalLengths": [
+      {
+       "id": "e1z1",
+       "count": 1,
+       "segments": [
+        "sAD",
+        "sEA"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "id": "e2z1",
+       "count": 2,
+       "segments": [
+        "sDB",
+        "sBF"
+       ],
+       "color": "WARM"
+      },
+      {
+       "id": "e3z1",
+       "count": 3,
+       "segments": [
+        "sFC",
+        "sCE"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lDBz1",
+       "ownerSegment": "sDB",
+       "text": "x"
+      },
+      {
+       "id": "lBFz1",
+       "ownerSegment": "sBF",
+       "text": "x"
+      },
+      {
+       "id": "lADz1",
+       "ownerSegment": "sAD",
+       "text": "7-x"
+      },
+      {
+       "id": "lEAz1",
+       "ownerSegment": "sEA",
+       "text": "7-x"
+      },
+      {
+       "id": "lFCz1",
+       "ownerSegment": "sFC",
+       "text": "8-x"
+      },
+      {
+       "id": "lCEz1",
+       "ownerSegment": "sCE",
+       "text": "8-x"
+      }
+     ]
+    },
+    "caption": "한 꼭짓점에서 접점까지의 두 접선의 길이가 같음을 같은 색으로 나타낸 그림이다.",
+    "hiddenPointNames": [
+     "I"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  }
+ ],
+ "caption": "같은 점에서 원에 그은 두 접선의 길이는 같다. 파란색 AD와 AE, 주황색 BD와 BF, 초록색 CF와 CE가 각각 같은 길이이다. 변 AC는 AE와 EC의 합이다."
+}

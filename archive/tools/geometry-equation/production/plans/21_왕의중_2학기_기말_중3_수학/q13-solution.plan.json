@@ -1,0 +1,49 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      7,
+      9,
+      8,
+      8,
+      7,
+      8,
+      6,
+      7,
+      8,
+      6
+    ],
+    "xTitle": "수면 시간(시간)",
+    "marks": {
+      "meanLine": {
+        "value": "37/5",
+        "label": "평균"
+      },
+      "medianLine": {
+        "value": "15/2",
+        "label": "중앙값"
+      },
+      "highlight": [
+        {
+          "value": 8,
+          "color": "WARM"
+        }
+      ]
+    }
+  },
+  "caption": "수면 시간 10개의 점도표에서 가장 많이 나온 값과 평균, 중앙값의 위치를 보여 주는 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "재권이의 10일간 수면 시간은 7, 9, 8, 8, 7, 8, 6, 7, 8, 6시간이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "가장 높게 쌓인 값이 최빈값이고 평균선과 중앙값선의 위치 순서를 한 그림에서 비교한다."
+  ]
+}

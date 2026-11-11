@@ -1,0 +1,342 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "B",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tan",
+        "op": "TANGENT_AT_POINT",
+        "inputs": [
+          "c",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lOB",
+          "tan"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "T",
+    "B",
+    "O",
+    "C",
+    "R"
+  ],
+  "displayLines": [
+    "tan"
+  ],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "CO",
+      "refs": [
+        "C",
+        "O"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "TB",
+      "refs": [
+        "T",
+        "B"
+      ]
+    },
+    {
+      "id": "TC",
+      "refs": [
+        "T",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a70",
+        "refs": [
+          "B",
+          "T",
+          "R"
+        ],
+        "value": 70,
+        "label": "70",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aATC",
+        "refs": [
+          "A",
+          "T",
+          "C"
+        ],
+        "value": 20,
+        "label": "20",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aCBT",
+        "refs": [
+          "C",
+          "B",
+          "T"
+        ],
+        "value": 20,
+        "label": "20",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aX",
+        "refs": [
+          "B",
+          "A",
+          "T"
+        ],
+        "value": 50,
+        "label": "x",
+        "color": "GREEN",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalAngles": [
+      {
+        "angles": [
+          "aATC",
+          "aCBT"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "callouts": [
+      {
+        "id": "kT",
+        "kind": "ANGLE",
+        "vertex": "T",
+        "rays": [
+          "A",
+          "C",
+          "B"
+        ],
+        "at": "RIGHT",
+        "link": "VERTEX",
+        "angles": [
+          {
+            "id": "k110",
+            "refs": [
+              "A",
+              "T",
+              "B"
+            ],
+            "value": 110,
+            "label": "110",
+            "ring": 2,
+            "style": "ARC",
+            "factRole": "DERIVED_INTERMEDIATE"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "지름에 대한 원주각과 접선과 현이 이루는 각",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직선 AB가 원의 중심 O를 지나므로 원과 만나는 가까운 점을 C라 하면 CB는 지름이고 ∠CTB=90°이다. 접선 AT와 TB가 이루는 각이 70°이므로 ∠ATB=110°, ∠ATC=20°이다. 접선과 현의 성질로 ∠CBT=20°이고 삼각형 ATB에서 ∠x를 구한다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각 ∠CTB, 같은 크기의 두 각 ∠ATC와 ∠CBT를 표시한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rT",
+      "refs": [
+        "C",
+        "T",
+        "B"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 600
+  }
+}

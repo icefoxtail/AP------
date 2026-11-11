@@ -1,0 +1,756 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제의 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "11858601",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "169585889",
+          "denominator": "10000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "20"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "20215791",
+          "denominator": "1250000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "87941921",
+          "denominator": "5000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "92710159",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "43226811",
+          "denominator": "5000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "3233567",
+          "denominator": "5000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "46242161",
+          "denominator": "5000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Q",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "92710159",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "R",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "177186799",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "52418193",
+          "denominator": "5000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "S",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "44540143",
+          "denominator": "5000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "5400969",
+          "denominator": "312500"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "circ",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "rational",
+         "numerator": "43226811",
+         "denominator": "5000000"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "O",
+     "P",
+     "Q",
+     "R",
+     "S"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "circ"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAP",
+      "refs": [
+       "A",
+       "P"
+      ]
+     },
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     },
+     {
+      "id": "sBQ",
+      "refs": [
+       "B",
+       "Q"
+      ]
+     },
+     {
+      "id": "sQC",
+      "refs": [
+       "Q",
+       "C"
+      ]
+     },
+     {
+      "id": "sCR",
+      "refs": [
+       "C",
+       "R"
+      ]
+     },
+     {
+      "id": "sRD",
+      "refs": [
+       "R",
+       "D"
+      ]
+     },
+     {
+      "id": "sDS",
+      "refs": [
+       "D",
+       "S"
+      ]
+     },
+     {
+      "id": "sSA",
+      "refs": [
+       "S",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "dimensions": [
+      {
+       "id": "dAD",
+       "from": "A",
+       "to": "D",
+       "label": "3k",
+       "unit": "cm",
+       "side": "ABOVE",
+       "style": "ARROW",
+       "offset": 2,
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "dBC",
+       "from": "B",
+       "to": "C",
+       "label": "4k",
+       "unit": "cm",
+       "side": "BELOW",
+       "style": "ARROW",
+       "offset": 2,
+       "factRole": "GIVEN"
+      }
+     ],
+     "pathLabels": [
+      {
+       "id": "pAB",
+       "points": [
+        "A",
+        "P",
+        "B"
+       ],
+       "label": "17",
+       "unit": "cm"
+      },
+      {
+       "id": "pCD",
+       "points": [
+        "C",
+        "R",
+        "D"
+       ],
+       "label": "18",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "문제의 그림",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "AB=17, CD=18, AD:BC=3:4인 원 O의 외접사각형.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 420
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "접선의 길이 a, b, c, d"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "11858601",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "169585889",
+          "denominator": "10000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "20"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "20215791",
+          "denominator": "1250000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "87941921",
+          "denominator": "5000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "92710159",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "43226811",
+          "denominator": "5000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "3233567",
+          "denominator": "5000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "46242161",
+          "denominator": "5000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Q",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "92710159",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "R",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "177186799",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "52418193",
+          "denominator": "5000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "S",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "44540143",
+          "denominator": "5000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "5400969",
+          "denominator": "312500"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "circ",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "rational",
+         "numerator": "43226811",
+         "denominator": "5000000"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "O",
+     "P",
+     "Q",
+     "R",
+     "S"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "circ"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAP",
+      "refs": [
+       "A",
+       "P"
+      ]
+     },
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     },
+     {
+      "id": "sBQ",
+      "refs": [
+       "B",
+       "Q"
+      ]
+     },
+     {
+      "id": "sQC",
+      "refs": [
+       "Q",
+       "C"
+      ]
+     },
+     {
+      "id": "sCR",
+      "refs": [
+       "C",
+       "R"
+      ]
+     },
+     {
+      "id": "sRD",
+      "refs": [
+       "R",
+       "D"
+      ]
+     },
+     {
+      "id": "sDS",
+      "refs": [
+       "D",
+       "S"
+      ]
+     },
+     {
+      "id": "sSA",
+      "refs": [
+       "S",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "expressionLabels": [
+      {
+       "id": "lAP",
+       "ownerSegment": "sAP",
+       "text": "a"
+      },
+      {
+       "id": "lPB",
+       "ownerSegment": "sPB",
+       "text": "b"
+      },
+      {
+       "id": "lQC",
+       "ownerSegment": "sQC",
+       "text": "c"
+      },
+      {
+       "id": "lRD",
+       "ownerSegment": "sRD",
+       "text": "d"
+      }
+     ],
+     "equalLengths": [
+      {
+       "id": "e1",
+       "count": 1,
+       "segments": [
+        "sAP",
+        "sSA"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "id": "e2",
+       "count": 2,
+       "segments": [
+        "sPB",
+        "sBQ"
+       ],
+       "color": "WARM"
+      },
+      {
+       "id": "e3",
+       "count": 3,
+       "segments": [
+        "sQC",
+        "sCR"
+       ],
+       "color": "GREEN"
+      },
+      {
+       "id": "e4",
+       "count": 1,
+       "markStyle": "CIRCLE",
+       "segments": [
+        "sRD",
+        "sDS"
+       ],
+       "color": "ROSE"
+      }
+     ]
+    },
+    "caption": "접선의 길이 a, b, c, d",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "꼭짓점에서 접점까지의 길이를 a, b, c, d로 둔다.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 420
+    },
+    "hiddenPointNames": [
+     "O"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  }
+ ],
+ "caption": "같은 색과 표시의 선분은 접선의 길이로 같다. 마주 보는 두 변의 길이의 합은 AB+CD=(a+b)+(c+d), AD+BC=(a+d)+(b+c)로 같다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "□ABCD가 원 O에 외접, AB=17cm, CD=18cm, AD:BC=3:4.",
+   "mappedTo": [
+    "panels",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "풀이 단계마다 그림을 나누어 보인다."
+ ]
+}

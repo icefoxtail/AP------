@@ -1,0 +1,69 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "A 맞힘",
+          "p": "5/6",
+          "children": [
+            {
+              "label": "B 맞힘",
+              "p": "7/8"
+            },
+            {
+              "label": "B 못 맞힘",
+              "p": "1/8"
+            }
+          ]
+        },
+        {
+          "label": "A 못 맞힘",
+          "p": "1/6",
+          "children": [
+            {
+              "label": "B 맞힘",
+              "p": "7/8"
+            },
+            {
+              "label": "B 못 맞힘",
+              "p": "1/8"
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "A 맞힘",
+          "B 못 맞힘"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "A 못 맞힘",
+          "B 맞힘"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "showPathProbability": true
+  },
+  "caption": "신호 A와 B를 차례로 맞히거나 못 맞히는 경우를 나타낸 수형도이다. 파란색 경로는 A만 맞히는 경우, 주황색 경로는 B만 맞히는 경우이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "신호 A와 B를 알아맞힐 확률이 각각 6분의 5와 8분의 7이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "하나만 알아맞히는 두 경로를 색으로 구분하고 각 경로의 확률을 보인다."
+  ]
+}

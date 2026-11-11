@@ -1,0 +1,94 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      4,
+      -2,
+      6
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "4/3",
+          "2/3"
+        ],
+        "domain": [
+          "-5",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "2x-3y+4=0"
+      },
+      {
+        "id": "g2",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ],
+        "color": "GREEN",
+        "style": "DASHED",
+        "label": "y=2x"
+      },
+      {
+        "id": "g3",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ],
+        "color": "WARM",
+        "label": "m"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "x축과 만나는 점을 지나고 y=2x와 평행한 직선 m(주황)이다. 파랑은 2x-3y+4=0의 그래프, 초록 점선은 y=2x의 그래프이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "2x-3y+4=0의 그래프와 x축 위에서 만나는 점을 지난다.",
+      "mappedTo": [
+        "g1",
+        "overlays.points"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "직선 y=2x와 평행하다.",
+      "mappedTo": [
+        "g2",
+        "g3"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x축과의 교점 (-2,0)을 지나 y=2x와 평행한 직선을 보여 준다."
+  ]
+}

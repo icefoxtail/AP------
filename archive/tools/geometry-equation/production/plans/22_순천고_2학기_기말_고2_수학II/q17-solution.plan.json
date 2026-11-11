@@ -1,0 +1,112 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "-3",
+          "6",
+          "5"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "5*x^3+6*x^2-3*x-4",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "Amax",
+        "x": -1,
+        "y": 0,
+        "marker": "NONE"
+      },
+      {
+        "id": "Emin",
+        "x": "1/5",
+        "y": "-108/25",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "pa",
+          "curveX": "-1",
+          "unnamed": true
+        },
+        {
+          "id": "pb",
+          "curveX": "-2/5",
+          "unnamed": true
+        },
+        {
+          "id": "pc",
+          "curveX": "1/2",
+          "unnamed": true
+        },
+        {
+          "id": "ps",
+          "curveX": "4/5",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "ca",
+          "point": "pa",
+          "text": "α",
+          "direction": "NW"
+        },
+        {
+          "id": "cb",
+          "point": "pb",
+          "text": "β",
+          "direction": "W"
+        },
+        {
+          "id": "cc",
+          "point": "pc",
+          "text": "γ",
+          "direction": "E"
+        },
+        {
+          "id": "cs",
+          "point": "ps",
+          "text": "s",
+          "direction": "NE"
+        }
+      ]
+    }
+  },
+  "caption": "예시 개형이다. f는 α에서 극대(중근), s에서 x축과 만나고 β, γ에서 f의 값은 음수이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)+xf'(x)=0의 세 근 α<β<0<γ 중 f(r)=0인 근 r은 f의 중근이고 r=α이며 f(x)=c(x-α)^2(x-s), s>0이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "α<β<0<γ<s이고 β, γ에서 f는 음수이며 f(x)=0의 서로 다른 실근은 α, s 두 개이다. 그림은 f(x)=(x+1)^2(5x-4)인 예시이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "조건을 만족하는 예 f(x)=(x+1)^2(5x-4)의 그래프로, α에서의 극대와 s에서의 교점, β·γ에서의 음의 함숫값을 한눈에 보인다."
+  ]
+}

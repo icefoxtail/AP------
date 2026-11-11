@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "40",
+          "-14",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      12
+    ],
+    "viewport": [
+      -1.5,
+      12,
+      -560,
+      160
+    ],
+    "axisScale": {
+      "x": 32,
+      "y": 1
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "D",
+        "x": 10,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": "5/2",
+        "y": "1125/16"
+      },
+      {
+        "id": "C",
+        "x": 8,
+        "y": -512
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "4",
+        "8",
+        "10"
+      ],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "D",
+        "M",
+        "C"
+      ]
+    }
+  },
+  "caption": "사차함수의 근과 부호가 바뀌는 구간 및 극솟점을 살펴본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(t)=t²(t−4)(t−10)",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "0은 이중근이고 4와 10에서 x축을 지나며 4<t<10에서 음수이다.",
+    "x=8에서 극솟값을 갖는다."
+  ]
+}

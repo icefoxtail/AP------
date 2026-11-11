@@ -1,0 +1,57 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "눈",
+      "children": [
+        {
+          "label": "반복",
+          "p": "4/9",
+          "children": [
+            {
+              "label": "0",
+              "p": "1"
+            }
+          ]
+        },
+        {
+          "label": "모두 다름",
+          "p": "5/9",
+          "children": [
+            {
+              "label": "3",
+              "p": "3/10"
+            },
+            {
+              "label": "12·27",
+              "p": "7/10",
+              "children": [
+                {
+                  "label": "12",
+                  "p": "6/7"
+                },
+                {
+                  "label": "27",
+                  "p": "1/7"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "labelWeight": "MATH"
+  },
+  "caption": "X의 값은 삼각형 넓이의 제곱이며 각 가지는 주사위 세 눈의 확률이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "같은 눈이 있으면 X=0이고, 세 눈이 모두 다를 때 넓이 제곱 3,12,27이 각각 6,12,2개의 무순서 꼭짓점 조합에서 나온다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "넓이 제곱 확률분포"
+  ]
+}

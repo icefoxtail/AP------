@@ -1,0 +1,516 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "지면 위에서 본 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "D"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "D",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "45"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "dx",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "D",
+                "X"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "C",
+                "dx"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Y",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "E"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "30"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "cy",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "C",
+                "Y"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "dx",
+                "cy"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sDE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "sEB",
+            "refs": [
+              "E",
+              "B"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aB",
+              "refs": [
+                "C",
+                "B",
+                "D"
+              ],
+              "value": 60,
+              "factRole": "GIVEN",
+              "color": "ROSE"
+            },
+            {
+              "id": "aD",
+              "refs": [
+                "C",
+                "D",
+                "B"
+              ],
+              "value": 45,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "color": "VIOLET"
+            },
+            {
+              "id": "aC",
+              "refs": [
+                "B",
+                "C",
+                "D"
+              ],
+              "value": 75,
+              "factRole": "GIVEN",
+              "color": "GREEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lCD",
+              "ownerSegment": "sCD",
+              "text": "390sqrt(3)",
+              "unit": "m"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sBC"
+              ],
+              "color": "BLUE"
+            }
+          ]
+        },
+        "caption": "지면 위에서 본 삼각형",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "탑 밑 지점 C, 지면의 두 지점 B, D에서 ∠CBD=60°, ∠BCD=75°, CD=390√3 m이고 B에서 탑 꼭대기를 올려다본 각이 30°이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "C",
+              "E",
+              "B"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "탑을 옆에서 본 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aB",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "value": 30,
+              "factRole": "GIVEN",
+              "color": "GREEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lBC",
+              "ownerSegment": "sBC",
+              "text": "390sqrt(2)",
+              "unit": "m",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sBC"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sCA"
+              ],
+              "color": "WARM"
+            }
+          ]
+        },
+        "caption": "탑을 옆에서 본 삼각형",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "탑 밑 지점 C, 지면의 두 지점 B, D에서 ∠CBD=60°, ∠BCD=75°, CD=390√3 m이고 B에서 탑 꼭대기를 올려다본 각이 30°이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "점 C는 탑 밑이다. 지면 위의 삼각형 B, C, D에서 ∠B=60°, ∠C=75°이므로 ∠D=45°이고, C에서 BD에 내린 수선 CE로 BC(파랑)를 구한다. 탑을 옆에서 본 직각삼각형 A, B, C에서 ∠B=30°이므로 같은 BC에 tan30°를 곱하면 탑 높이 AC(주황)이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "탑 밑 지점 C, 지면의 두 지점 B, D에서 ∠CBD=60°, ∠BCD=75°, CD=390√3 m이고 B에서 탑 꼭대기를 올려다본 각이 30°이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "지면 위의 삼각형으로 BC를 구하고, 같은 BC를 탑을 옆에서 본 직각삼각형에 이어 쓰는 과정을 두 그림으로 보인다."
+  ]
+}

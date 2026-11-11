@@ -1,0 +1,82 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-12",
+      "0",
+      "1"
+    ],
+    "domain": [
+      -4.2,
+      4.2
+    ],
+    "viewport": [
+      -4.2,
+      4.2,
+      -20,
+      20
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -2,
+        "y": 16
+      },
+      {
+        "id": "m",
+        "x": 2,
+        "y": -16
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "-16",
+        "16"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "6",
+          "color": "WARM",
+          "label": "y=n"
+        }
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "m"
+  ],
+  "caption": "예: f(x)=x³−12x의 극값 16, −16 사이의 수평선 y=n이 곡선과 세 점에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f는 최고차항 계수가 1인 홀함수 삼차함수이고 f(2)<0인 f(2)에서 접선 높이 조건으로 f(x)=x^3-12x이다.",
+      "mappedTo": [
+        "graphPlan.coefficients"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "극댓값 f(-2)=16, 극솟값 f(2)=-16이므로 -16<n<16일 때 f(x)=n은 서로 다른 세 실근이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.overlays",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "극값 16, -16 사이의 수평선이 곡선과 세 번 만나는 모습을 보인다(n은 예시 높이)."
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "24",
+          "-14",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      1,
+      3
+    ],
+    "viewport": [
+      0.5,
+      3.4,
+      0,
+      34
+    ],
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": 2,
+        "y": 11
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "B"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "u",
+      "y": "f(u)"
+    },
+    "axisScale": {
+      "x": 8,
+      "y": 1
+    },
+    "overlays": {
+      "callouts": [
+        {
+          "id": "cm",
+          "point": "B",
+          "text": "극소",
+          "direction": "S"
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "u≥1에서 f(u)는 u=2에서 극소이며 최솟값을 갖는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(u)=u^4-14u^2+24u+3, u>=1",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "u≥1에서 f(u)는 u=2에서 극소이고 이 값이 최솟값이다."
+  ]
+}

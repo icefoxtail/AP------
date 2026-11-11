@@ -1,0 +1,40 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "남(48%)",
+          "children": [
+            {
+              "label": "희망30%"
+            },
+            {
+              "label": "비희망18%"
+            }
+          ]
+        },
+        {
+          "label": "여(52%)"
+        }
+      ]
+    }
+  },
+  "caption": "가지의 비율은 모두 전체 학생 기준이다.",
+  "sourceConditions": [
+    {
+      "id": "male",
+      "condition": "남학생 전체 비율 48%",
+      "mappedTo": "male branch"
+    },
+    {
+      "id": "smale",
+      "condition": "남학생이면서 희망 30%",
+      "mappedTo": "male child branches"
+    }
+  ],
+  "newVisualInformation": [
+    "전체 학생 중 남학생과 응시 희망 남학생의 비율"
+  ]
+}

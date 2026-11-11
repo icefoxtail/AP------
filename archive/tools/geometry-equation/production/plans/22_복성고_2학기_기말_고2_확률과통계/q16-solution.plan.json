@@ -1,0 +1,874 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "chair0",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S0"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "2",
+            "denominator": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "chair1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "2",
+            "denominator": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "chair2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "2",
+            "denominator": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "chair3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "2",
+            "denominator": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "chair4",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S4"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "2",
+            "denominator": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "chair5",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S5"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "2",
+            "denominator": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "chair6",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S6"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "2",
+            "denominator": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "chair7",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S7"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "2",
+            "denominator": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-13",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C0",
+    "C1",
+    "C2",
+    "C3",
+    "O",
+    "S0",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "E0",
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    "E6",
+    "E7"
+  ],
+  "hiddenPointNames": [
+    "C0",
+    "C1",
+    "C2",
+    "C3",
+    "O",
+    "S0",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "E0",
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    "E6",
+    "E7"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [
+    "chair0",
+    "chair1",
+    "chair2",
+    "chair3",
+    "chair4",
+    "chair5",
+    "chair6",
+    "chair7"
+  ],
+  "displaySegments": [
+    {
+      "id": "tableTop",
+      "refs": [
+        "C0",
+        "C1"
+      ]
+    },
+    {
+      "id": "tableRight",
+      "refs": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "tableBottom",
+      "refs": [
+        "C2",
+        "C3"
+      ]
+    },
+    {
+      "id": "tableLeft",
+      "refs": [
+        "C3",
+        "C0"
+      ]
+    },
+    {
+      "id": "rotationAxis",
+      "refs": [
+        "S7",
+        "S3"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "seatFill0",
+        "fill": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "loop": {
+              "start": "E0",
+              "steps": [
+                {
+                  "to": "E0",
+                  "arc": {
+                    "center": "S0",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "seatFill4",
+        "fill": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "loop": {
+              "start": "E4",
+              "steps": [
+                {
+                  "to": "E4",
+                  "arc": {
+                    "center": "S4",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "seatFill1",
+        "fill": "WARM",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "loop": {
+              "start": "E1",
+              "steps": [
+                {
+                  "to": "E1",
+                  "arc": {
+                    "center": "S1",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "seatFill5",
+        "fill": "WARM",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "loop": {
+              "start": "E5",
+              "steps": [
+                {
+                  "to": "E5",
+                  "arc": {
+                    "center": "S5",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "seatFill2",
+        "fill": "GREEN",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "loop": {
+              "start": "E2",
+              "steps": [
+                {
+                  "to": "E2",
+                  "arc": {
+                    "center": "S2",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "seatFill6",
+        "fill": "GREEN",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "loop": {
+              "start": "E6",
+              "steps": [
+                {
+                  "to": "E6",
+                  "arc": {
+                    "center": "S6",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "seatFill3",
+        "fill": "ROSE",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "loop": {
+              "start": "E3",
+              "steps": [
+                {
+                  "to": "E3",
+                  "arc": {
+                    "center": "S3",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "seatFill7",
+        "fill": "ROSE",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "loop": {
+              "start": "E7",
+              "steps": [
+                {
+                  "to": "E7",
+                  "arc": {
+                    "center": "S7",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "halfTurn",
+        "refs": [
+          "S7",
+          "O",
+          "S3"
+        ],
+        "value": 180,
+        "label": "180",
+        "straight": true,
+        "side": "ABOVE",
+        "style": "ARC"
+      }
+    ]
+  },
+  "caption": "같은 색의 마주 보는 의자끼리는 반 바퀴 회전으로 서로 대응한다.",
+  "sourceConditions": [
+    {
+      "id": "seats",
+      "condition": "긴 변에 의자 3개씩, 짧은 변에 의자 1개씩 놓인다",
+      "mappedTo": [
+        "tableTop",
+        "tableRight",
+        "tableBottom",
+        "tableLeft",
+        "chair0",
+        "chair1",
+        "chair2",
+        "chair3",
+        "chair4",
+        "chair5",
+        "chair6",
+        "chair7"
+      ]
+    },
+    {
+      "id": "rotation",
+      "condition": "식탁을 180도 돌려 겹치는 자리는 같은 배치로 센다",
+      "mappedTo": [
+        "rotationAxis",
+        "halfTurn",
+        "seatFill0",
+        "seatFill1",
+        "seatFill2",
+        "seatFill3",
+        "seatFill4",
+        "seatFill5",
+        "seatFill6",
+        "seatFill7"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반 바퀴 회전으로 겹치는 마주 보는 네 의자 쌍을 같은 색으로 표시한다."
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  }
+}

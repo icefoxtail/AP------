@@ -1,0 +1,46 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      15,
+      18,
+      13,
+      11,
+      21,
+      13,
+      12,
+      11
+    ],
+    "xTitle": "자료 값",
+    "marks": {
+      "medianLine": {
+        "value": "13",
+        "label": "중앙값"
+      },
+      "highlight": [
+        {
+          "value": 11,
+          "color": "BLUE"
+        },
+        {
+          "value": 13,
+          "color": "BLUE"
+        }
+      ]
+    }
+  },
+  "caption": "중앙의 두 자료와 가장 많이 나온 값을 점도표에서 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 자료는 15,18,13,11,21,13,12,11이다. 중앙값은 13이며 최빈값은 11과 13이다.",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중앙값 위치와 두 최빈값의 반복 횟수를 점도표로 보여 준다."
+  ]
+}

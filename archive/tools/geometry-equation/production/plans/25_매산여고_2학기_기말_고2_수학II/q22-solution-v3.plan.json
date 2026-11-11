@@ -1,0 +1,23 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["0", "9", "-6", "1"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "INTERVAL", "range": ["0", "5"], "states": ["CLOSED", "CLOSED"] },
+    "formula": "x(x-3)^2",
+    "functionName": "p",
+    "domain": [0, 4.5],
+    "viewport": [-0.6, 4.8, -1.5, 9],
+    "requiredPoints": [{ "id": "M", "x": 1, "y": 4 }, { "id": "N", "x": 3, "y": 0 }],
+    "axisTitles": { "x": "x", "y": "y" },
+    "overlays": { "lines": [{ "id": "g", "slope": "-8", "intercept": "0" }, { "id": "k", "slope": "0", "intercept": "1" }] }
+  },
+  "caption": "예: k=1인 수평선과 p(x)=x(x−3)², y=−8x의 교점을 표시했다. 극대 높이는 4이고, 수평선이 그 높이와 x축 사이에 있을 때 양의 구간 교점 세 개와 음의 구간 해 하나를 얻는다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "x≥0에서 p(x)=x(x−3)²이다.", "mappedTo": ["graphPlan.pieces", "graphPlan.sourceDomain"] },
+    { "id": "c2", "condition": "p의 극대점은 (1,4), 극소점은 (3,0)이다.", "mappedTo": ["graphPlan.requiredPoints"] },
+    { "id": "c3", "condition": "x<0 구간의 해는 y=−8x와 y=k의 교점이다.", "mappedTo": ["graphPlan.overlays"] },
+    { "id": "c4", "condition": "예시로 k=1을 사용한다.", "mappedTo": ["graphPlan.overlays", "caption"] }
+  ]
+}

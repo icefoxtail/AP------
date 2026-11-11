@@ -1,0 +1,97 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      {
+        "x": 40,
+        "y": 55
+      },
+      {
+        "x": 55,
+        "y": 45
+      },
+      {
+        "x": 65,
+        "y": 55
+      },
+      {
+        "x": 65,
+        "y": 65
+      },
+      {
+        "x": 65,
+        "y": 75
+      },
+      {
+        "x": 70,
+        "y": 70
+      },
+      {
+        "x": 80,
+        "y": 75
+      },
+      {
+        "x": 85,
+        "y": 85
+      },
+      {
+        "x": 90,
+        "y": 90
+      },
+      {
+        "x": 95,
+        "y": 95
+      }
+    ],
+    "xRange": [
+      "40",
+      "100"
+    ],
+    "yRange": [
+      "40",
+      "100"
+    ],
+    "xStep": "10",
+    "yStep": "10",
+    "xTitle": "필기",
+    "yTitle": "실기",
+    "grid": true,
+    "equalUnits": true,
+    "regions": [
+      {
+        "kind": "HALF_PLANE",
+        "a": "-1",
+        "b": "1",
+        "c": "0",
+        "side": "GT",
+        "markPoints": true,
+        "tone": 1
+      }
+    ],
+    "refLines": [
+      {
+        "kind": "LINE",
+        "a": "1",
+        "b": "-1",
+        "c": "0",
+        "label": "x-y=0",
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "실기 점수가 필기 점수보다 높은 경우는 y>x이다. 원문 산점도에서 해당 학생은 (40,55), (65,75) 두 명으로, 10명 중 20%이다. 경계선 y=x 위의 점은 포함하지 않는다. 원문 산점도는 보존한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 산점도의 열 점을 직접 읽어 필기 x점, 실기 y점으로 기록했다. 실기 점수가 필기보다 높은 조건은 y>x이며 동점은 제외한다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "y=x 경계선과 y>x 영역을 구분해 두 점을 세고 경계의 동점은 제외한다. 축과 점 라벨에 여백을 둔다."
+  ]
+}

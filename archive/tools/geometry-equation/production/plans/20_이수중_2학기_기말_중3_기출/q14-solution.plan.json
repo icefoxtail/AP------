@@ -1,0 +1,337 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "320"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "280"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "value": 115,
+        "factRole": "GIVEN",
+        "color": "BLUE",
+        "noLabel": true
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 40,
+        "factRole": "GIVEN",
+        "color": "WARM",
+        "label": "40"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 25,
+        "factRole": "GIVEN",
+        "color": "GREEN",
+        "noLabel": true
+      },
+      {
+        "id": "a4",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 25,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "color": "GREEN",
+        "noLabel": true
+      }
+    ],
+    "equalAngles": [
+      {
+        "angles": [
+          "a3",
+          "a4"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "callouts": [
+      {
+        "id": "kA",
+        "kind": "ANGLE",
+        "vertex": "A",
+        "rays": [
+          "C",
+          "D"
+        ],
+        "at": "LEFT",
+        "link": "VERTEX",
+        "angles": [
+          {
+            "id": "cA",
+            "refs": [
+              "C",
+              "A",
+              "D"
+            ],
+            "value": 115,
+            "label": "115",
+            "color": "BLUE"
+          }
+        ],
+        "gap": 14
+      },
+      {
+        "id": "kB",
+        "kind": "ANGLE",
+        "vertex": "B",
+        "rays": [
+          "A",
+          "D"
+        ],
+        "at": "RIGHT",
+        "link": "VERTEX",
+        "angles": [
+          {
+            "id": "cB",
+            "refs": [
+              "A",
+              "B",
+              "D"
+            ],
+            "value": 25,
+            "label": "x",
+            "color": "GREEN"
+          }
+        ],
+        "gap": 14
+      }
+    ]
+  },
+  "caption": "삼각형 ACD의 내각의 합이 180°이므로 각 ACD를 구한다. 같은 현 AD를 보는 원주각 ABD와 ACD(초록)는 크기가 같다. 옆에 확대한 두 그림은 점 A의 각 CAD와 점 B의 각 ABD이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A, B, C, D는 순서대로 원에 내접하고 ∠CAD=115°, ∠ADC=40°이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 그림을 보존하고 대응하는 길이·각·보조점을 구분한다. 점과 라벨에는 여유를 둔다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  }
+}

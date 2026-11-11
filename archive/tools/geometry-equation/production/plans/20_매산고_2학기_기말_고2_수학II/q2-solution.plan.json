@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "9",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-6x^2+9x+3",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "7"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -14,
+      24
+    ],
+    "overlays": {
+      "points": []
+    }
+  },
+  "caption": "극대점은 (1, 7)이고 극소점은 (3, 3)이다. 주어진 조건으로 정해지는 함수의 두 극값 관계를 곡선에서 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 f(x)=x^3+ax^2+bx+3이며 x=3에서 극솟값 3을 갖는다. 해설에서 f′(3)=0, f(3)=3, f″(3)>0으로 a=−6, b=9를 얻어 f(x)=x^3−6x^2+9x+3으로 정한다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(x)=3(x−1)(x−3)에서 x=1은 극대, x=3은 극소이며 f(1)=7, f(3)=3이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도함수의 영점 두 곳을 극대점 A(1,7), 극소점 B(3,3)으로 읽는다."
+  ]
+}

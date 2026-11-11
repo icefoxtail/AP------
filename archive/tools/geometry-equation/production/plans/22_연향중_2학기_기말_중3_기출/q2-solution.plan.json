@@ -1,0 +1,648 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "접선과 현의 각"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "TRANSLATE_POINT",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "dx": {
+         "kind": "integer",
+         "value": "10"
+        },
+        "dy": {
+         "kind": "integer",
+         "value": "0"
+        }
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "A",
+       "op": "POINT_REFLECTION",
+       "inputs": [
+        "B",
+        "O"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "C",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "B"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "10"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "100"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "circ",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "10"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "ab",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "A",
+        "B"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "ac",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "A",
+        "C"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "bc",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "B",
+        "C"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "tan",
+       "op": "PERPENDICULAR_THROUGH",
+       "inputs": [
+        "B",
+        "ab"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "P",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "ac",
+        "tan"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "bis",
+       "op": "ANGLE_BISECTOR",
+       "inputs": [
+        "A",
+        "P",
+        "B"
+       ],
+       "args": {
+        "mode": "INTERNAL"
+       },
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "D",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "bis",
+        "ab"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "E",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "bis",
+        "bc"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "B",
+     "C",
+     "P"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "circ"
+    ],
+    "displaySegments": [
+     {
+      "id": "AB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "AP",
+      "refs": [
+       "A",
+       "P"
+      ]
+     },
+     {
+      "id": "BP",
+      "refs": [
+       "B",
+       "P"
+      ]
+     },
+     {
+      "id": "BC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "rC",
+       "refs": [
+        "A",
+        "C",
+        "B"
+       ],
+       "value": 90,
+       "factRole": "DERIVED_INTERMEDIATE",
+       "noLabel": true
+      },
+      {
+       "id": "al1",
+       "refs": [
+        "C",
+        "A",
+        "B"
+       ],
+       "value": 50,
+       "factRole": "CONCLUSION",
+       "label": "α",
+       "emphasisGroup": 1
+      },
+      {
+       "id": "al2",
+       "refs": [
+        "C",
+        "B",
+        "P"
+       ],
+       "value": 50,
+       "factRole": "DERIVED_INTERMEDIATE",
+       "emphasisGroup": 1,
+       "noLabel": true
+      }
+     ],
+     "arcs": [
+      {
+       "id": "semi",
+       "circle": "circ",
+       "center": "O",
+       "from": "B",
+       "to": "A",
+       "side": "CCW",
+       "color": "BLUE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "caption": "∠CAB=α라 하면 AB가 지름이므로 ∠ACB=90°이고 접선과 현의 각으로 ∠CBP=α(빨강)이다. 따라서 ∠APB=90°−α이고 PD가 이를 이등분한다. 맞꼭지각 ∠BEP=∠CED=110°를 삼각형 BEP에 쓰면 α=50°이다. 정답은 50°이다.",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "AB는 반원 O의 지름, BP는 B에서의 접선, PD는 ∠APB의 이등분선, ∠CED=110°.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displayCircles",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "해설이 쓰는 호와 각의 관계를 색으로 구분해 보인다."
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "이등분선과 맞꼭지각"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "TRANSLATE_POINT",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "dx": {
+         "kind": "integer",
+         "value": "10"
+        },
+        "dy": {
+         "kind": "integer",
+         "value": "0"
+        }
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "A",
+       "op": "POINT_REFLECTION",
+       "inputs": [
+        "B",
+        "O"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "C",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "B"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "10"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "100"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "circ",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "10"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "ab",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "A",
+        "B"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "ac",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "A",
+        "C"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "bc",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "B",
+        "C"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "tan",
+       "op": "PERPENDICULAR_THROUGH",
+       "inputs": [
+        "B",
+        "ab"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "P",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "ac",
+        "tan"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "bis",
+       "op": "ANGLE_BISECTOR",
+       "inputs": [
+        "A",
+        "P",
+        "B"
+       ],
+       "args": {
+        "mode": "INTERNAL"
+       },
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "D",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "bis",
+        "ab"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "E",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "bis",
+        "bc"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "B",
+     "C",
+     "D",
+     "E",
+     "P"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "AB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "AP",
+      "refs": [
+       "A",
+       "P"
+      ]
+     },
+     {
+      "id": "BP",
+      "refs": [
+       "B",
+       "P"
+      ]
+     },
+     {
+      "id": "BC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "PD",
+      "refs": [
+       "P",
+       "D"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "h1",
+       "refs": [
+        "A",
+        "P",
+        "D"
+       ],
+       "value": 20,
+       "factRole": "DERIVED_INTERMEDIATE",
+       "emphasisGroup": 2,
+       "noLabel": true,
+       "equalGroup": 1
+      },
+      {
+       "id": "h2",
+       "refs": [
+        "D",
+        "P",
+        "B"
+       ],
+       "value": 20,
+       "factRole": "DERIVED_INTERMEDIATE",
+       "emphasisGroup": 2,
+       "noLabel": true,
+       "equalGroup": 1
+      },
+      {
+       "id": "rB",
+       "refs": [
+        "A",
+        "B",
+        "P"
+       ],
+       "value": 90,
+       "factRole": "DERIVED_INTERMEDIATE",
+       "noLabel": true
+      },
+      {
+       "id": "given",
+       "refs": [
+        "C",
+        "E",
+        "D"
+       ],
+       "value": 110,
+       "factRole": "GIVEN",
+       "emphasisGroup": 3
+      },
+      {
+       "id": "vert",
+       "refs": [
+        "B",
+        "E",
+        "P"
+       ],
+       "value": 110,
+       "factRole": "DERIVED_INTERMEDIATE",
+       "emphasisGroup": 3,
+       "noLabel": true
+      }
+     ]
+    },
+    "caption": "∠CAB=α라 하면 AB가 지름이므로 ∠ACB=90°이고 접선과 현의 각으로 ∠CBP=α(빨강)이다. 따라서 ∠APB=90°−α이고 PD가 이를 이등분한다. 맞꼭지각 ∠BEP=∠CED=110°를 삼각형 BEP에 쓰면 α=50°이다. 정답은 50°이다.",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "AB는 반원 O의 지름, BP는 B에서의 접선, PD는 ∠APB의 이등분선, ∠CED=110°.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displayCircles",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "해설이 쓰는 호와 각의 관계를 색으로 구분해 보인다."
+    ]
+   }
+  }
+ ],
+ "caption": "∠CAB=α라 하면 AB가 지름이므로 ∠ACB=90°이고 접선과 현의 각으로 ∠CBP=α(빨강)이다. 따라서 ∠APB=90°−α이고 PD가 이를 이등분한다. 맞꼭지각 ∠BEP=∠CED=110°를 삼각형 BEP에 쓰면 α=50°이다. 정답은 50°이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AB는 반원 O의 지름, BP는 B에서의 접선, PD는 ∠APB의 이등분선, ∠CED=110°.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displayCircles",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "해설의 두 단계를 두 그림으로 나누어 각 관계를 색으로 구분해 보인다."
+ ]
+}
