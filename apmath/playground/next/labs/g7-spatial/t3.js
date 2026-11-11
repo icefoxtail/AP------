@@ -146,7 +146,12 @@
       problemT: 0,
       init: (s) => { Object.assign(s, cfg.init); s.spT = 0; s.spTh = cfg.init.spTh == null ? 0 : cfg.init.spTh; s.spPq = cfg.pq ? cfg.pq(s, true) : null; },
       reroll: (s) => { s.spPq = cfg.pq(s, false); },
-      model: (s) => ({ F: fanModel(cfg.type, s), s, pq: s.spPq }),
+      model: (s) => {
+        const M = { F: fanModel(cfg.type, s), s, pq: s.spPq };
+        if (cfg.problemLines) M.problemLines = cfg.problemLines(s.spPq);
+        if (cfg.id === 's3-5') M.problemSolid = skewSolid(M);
+        return M;
+      },
       draw(b, s, M, C) {
         const Dr = scene3(b, s, C);
         if (C.problem) { cfg.drawProb(Dr, b, s, M, C); return; }
@@ -154,7 +159,10 @@
         if (C.lesson) {
           if (s.spLessonMode === 'problem') { cfg.drawProb(Dr, b, s, M, C); return; }
           drawFan(Dr, F, th, C, { plane: ready(s, C, 'spPlaneReady'), test: true, angle: true, pierce: true });
-          if (ready(s, C, 'spShowAnswer')) capFan(b, F, th, C);
+          if (ready(s, C, 'spShowAnswer')) {
+            if (F.nPl === 0) caption(b, '두 직선을 모두 포함하는 평면 0개', { color: 'green' });
+            else capFan(b, F, th, C);
+          }
           return;
         }
         if (C.review) {
@@ -286,6 +294,12 @@
   /* ---------------- s3-3 한 점에서 만나는 두 직선 + 문제: k개 직선 */
   const DIRS = [v3(1, 0, 0), v3(0, 1, 0), v3(0, 0, 1), v3(1, 1, 1), v3(1, -1, 2)];
   const generalPos = (dirs) => { for (let i = 0; i < dirs.length; i++) for (let j = i + 1; j < dirs.length; j++) for (let k = j + 1; k < dirs.length; k++) if (Math.abs(dot3(dirs[i], cross3(dirs[j], dirs[k]))) < 1e-9) return false; return true; };
+  const countCaption = (b, s, M, C) => {
+    if (!C.lesson) return;
+    const k = M.pq.k;
+    if (ready(s, C, 'spShowAnswer')) caption(b, `서로 다른 평면 ${C2(k, 2)}개`, { color: 'green' });
+    else if (ready(s, C, 'spCountReady')) caption(b, `순서를 구별한 선택 ${k} × ${k - 1} = ${k * (k - 1)}가지`, { color: 'sky' });
+  };
   S.push(fanScene({
     id: 's3-3', type: 'cross', title: '한 점에서 만나는 두 직선', short: '만나는 두 직선',
     question: '한 점에서 만나는 두 직선 $l$, $m$을 모두 포함하는 평면은 몇 개일까? 두 직선이 이루는 각을 바꿔도 그럴까?',
@@ -297,15 +311,23 @@
     rule: '한 점에서 만나는 두 직선은 평면을 하나로 정한다',
     notes: notes('두 직선이 <b>한 점에서 만나야</b> 해요. 만나지 않는 꼬인 위치의 두 직선은 평면을 정하지 못해요.', '직선 $l$과 $m$ 위에서 점 $O$ 말고 점을 하나씩 잡으면 “한 직선 위에 있지 않은 세 점”과 같아요.'),
     pq: (s, first) => ({ k: first ? 3 : pick([3, 4, 5], (s.spPq && s.spPq.k) || 3) }),
+    problemLines: q => DIRS.slice(0, (q && q.k) || 3).map(d => ({ p: mul3(unit3(d), -2.3), q: mul3(unit3(d), 2.3) })),
     drawProb: (D, b, s, M, C) => {
-      const k = (M.pq && M.pq.k) || 3, ds = DIRS.slice(0, k).map(unit3), O = v3(0, 0, 0);
-      D.fitPts(ds.flatMap((d) => [mul3(d, 2.3), mul3(d, -2.3)]), { t: 50, b: 56, l: 50, r: 50 });
+      const ds = M.problemLines.map(l => unit3(sub3(l.q, l.p))), O = v3(0, 0, 0);
+      let plane = [];
+      if (C.lesson && ready(s, C, 'spPlaneReady')) {
+        const pair = s.spPlanePair || [0, 1], u = ds[pair[0]], v = ds[pair[1]];
+        plane = [[1, 1], [1, -1], [-1, -1], [-1, 1]].map(([a, c]) => mul3(add3(mul3(u, a), mul3(v, c)), 1.6));
+      }
+      D.fitPts(M.problemLines.flatMap(l => [l.p, l.q]).concat(plane), { t: 50, b: 56, l: 50, r: 50 });
+      if (plane.length) D.panel(plane, 'green', 0.14, 'green', 2.3);
       const names = ['l', 'm', 'n', 'p', 'q'], cols = ['sky', 'rose', 'amber', 'green', 'violet'];
-      ds.forEach((d, i) => D.line(mul3(d, -2.3), mul3(d, 2.3), cols[i], 4.4));
+      M.problemLines.forEach((l, i) => D.line(l.p, l.q, cols[i], 4.4));
       b.point(D.P(O), { color: 'ink', r: 5 }); D.obstacle(O, 8);
       ds.forEach((d, i) => D.label(mul3(d, 2.3), names[i], { color: cols[i], size: 18, dir: D.out(mul3(d, 2.3), O), gap: 10 }));
       D.label(O, 'O', { color: 'ink', size: 17, dir: { x: 1, y: 1 }, gap: 10 });
       D.flush();
+      countCaption(b, s, M, C);
     },
     prob: (M) => {
       const k = (M.pq && M.pq.k) || 3, ans = C2(k, 2), nm = ['$l$, $m$, $n$', '$l$, $m$, $n$, $p$', '$l$, $m$, $n$, $p$, $q$'][k - 3];
@@ -330,14 +352,17 @@
     rule: '평행한 두 직선은 평면을 하나로 정한다',
     notes: notes('평행한 두 직선은 <b>한 평면 위에 있어요</b>. 그래서 꼬인 위치가 아니에요.', '평행한 직선들은 방향이 같아서 한 직선 위의 한 점과 다른 직선을 합친 것과 같아요.'),
     pq: (s, first) => ({ k: first ? 3 : pick([3, 4, 5], (s.spPq && s.spPq.k) || 3) }),
+    problemLines: q => polyPos((q && q.k) || 3).map(p => ({ p: add3(p, v3(0, 0, -1.6)), q: add3(p, v3(0, 0, 1.6)) })),
     drawProb: (D, b, s, M, C) => {
-      const k = (M.pq && M.pq.k) || 3, ps = polyPos(k);
-      D.fitPts(ps.flatMap((p) => [add3(p, v3(0, 0, -1.6)), add3(p, v3(0, 0, 1.6))]), { t: 50, b: 56, l: 50, r: 50 });
+      const lines = M.problemLines;
+      D.fitPts(lines.flatMap(l => [l.p, l.q]), { t: 50, b: 56, l: 50, r: 50 });
+      if (C.lesson && ready(s, C, 'spPlaneReady')) { const pair = s.spPlanePair || [0, 1], a = lines[pair[0]], c = lines[pair[1]]; D.panel([a.p, a.q, c.q, c.p], 'green', 0.14, 'green', 2.3); }
       const names = ['l', 'm', 'n', 'p', 'q'], cols = ['sky', 'rose', 'amber', 'green', 'violet'];
-      ps.forEach((p, i) => { D.line(add3(p, v3(0, 0, -1.6)), add3(p, v3(0, 0, 1.6)), cols[i], 4.6); D.par(add3(p, v3(0, 0, -1.6)), add3(p, v3(0, 0, 1.6)), 1, cols[i], 0.5); });
-      D.path(ps.map((p) => add3(p, v3(0, 0, -1.6))), 'ink', 1.6, { close: true, dash: [4, 5], alpha: 0.5 });
-      ps.forEach((p, i) => D.label(add3(p, v3(0, 0, 1.6)), names[i], { color: cols[i], size: 18, dir: { x: 0, y: -1 }, gap: 10 }));
+      lines.forEach((l, i) => { D.line(l.p, l.q, cols[i], 4.6); D.par(l.p, l.q, 1, cols[i], 0.5); });
+      D.path(lines.map(l => l.p), 'ink', 1.6, { close: true, dash: [4, 5], alpha: 0.5 });
+      lines.forEach((l, i) => D.label(l.q, names[i], { color: cols[i], size: 18, dir: { x: 0, y: -1 }, gap: 10 }));
       D.flush();
+      countCaption(b, s, M, C);
     },
     prob: (M) => {
       const k = (M.pq && M.pq.k) || 3, ans = C2(k, 2), nm = ['$l$, $m$, $n$', '$l$, $m$, $n$, $p$', '$l$, $m$, $n$, $p$, $q$'][k - 3];
@@ -383,12 +408,17 @@
     return { sol, ref, c: classify(sol, ref) };
   }
   function drawSolidProb(D, b, s, M, C) {
-    const { sol, ref } = skewSolid(M);
+    const { sol, ref, c } = M.problemSolid || skewSolid(M);
     D.fitPts(sol.order.map((k) => sol.verts[k]), { t: 46, b: 56, l: 44, r: 44 });
-    drawSolid(D, sol, (e) => (e.key === ref.key ? { color: 'amber', width: 6.4, glow: true } : { color: 'ink', width: 3.2 }), { faceAlpha: 0.06 });
+    drawSolid(D, sol, (e) => e.key === ref.key ? { color: 'amber', width: 6.4, glow: true } : C.lesson && ready(s, C, 'spFirstReady') && (e.rel === 'meet' || e.rel === 'ext') ? { color: 'rose', width: 4.6 } : C.lesson && ready(s, C, 'spSecondReady') && e.rel === 'par' ? { color: 'sky', width: 4.6 } : { color: 'ink', width: 3.2 }, { faceAlpha: 0.06 });
     drawVerts(D, sol, { hot: (k) => k === ref.u || k === ref.v });
     D.label(mid3(sol.verts[ref.u], sol.verts[ref.v]), `기준 ${ref.name}`, { color: 'amber', size: 16, dir: D.out(mid3(sol.verts[ref.u], sol.verts[ref.v]), sol.ctr), gap: 14 });
     D.flush();
+    if (C.lesson) {
+      if (ready(s, C, 'spShowAnswer')) caption(b, `한 평면 위의 모서리 ${c.nMeet + c.nExt + c.nPar}개`, { color: 'green' });
+      else if (ready(s, C, 'spSecondReady')) caption(b, `만나는 모서리 ${c.nMeet + c.nExt}개, 평행한 모서리 ${c.nPar}개`, { color: 'sky' });
+      else if (ready(s, C, 'spFirstReady')) caption(b, `만나는 모서리 ${c.nMeet + c.nExt}개`, { color: 'rose' });
+    }
   }
   // 문제용 기준 모서리는 새로 고칠 때 정한다
   const s35 = S[4];
@@ -415,6 +445,7 @@
   const sc6 = {
     id: 's3-6', title: '꼭짓점 세 점으로 만드는 평면', short: '평면의 개수',
     question: '직육면체의 꼭짓점 8개 중 세 점을 골라 만들 수 있는 서로 다른 평면은 모두 몇 개일까? 세 점을 고르는 방법의 수와 같을까?',
+    lessonQuestion: (_M, _s, Q) => Q.stem,
     cam0: { yaw: -30, pitch: 22 },
     ctl: () => VIEW,
     presets: () => Object.keys(KIND6).map((k, i) => ({ group: i === 0 ? '입체 고르기' : '', label: KIND6[k], apply: (s) => { s.spK6 = k; s.spSel3 = defSel(k); }, on: (s) => (s.spK6 || 'cuboid') === k })),
@@ -438,18 +469,22 @@
         const c0 = mul3(cen, 1 / cx.length);
         const u0 = unit3(sub3(cx[1], cx[0])), w0 = unit3(cross3(cur.n, u0));
         const ord = Array.from(cur.set).map((k) => { const v = sub3(sol.verts[k], c0); return { k, a: Math.atan2(dot3(v, w0), dot3(v, u0)) }; }).sort((a, c) => a.a - c.a).map((q) => sol.verts[q.k]);
-        const showAll = C.tab === 'explore' || C.thumb || (C.review && C.step >= 2);
+        const showAll = C.lesson ? ready(s, C, 'spMembersReady') : C.tab === 'explore' || C.thumb || (C.review && C.step >= 2);
         if (showAll) D.panel(ord, 'green', 0.2, 'green', 2.6);
-        if (!C.review || C.step >= 1) D.path(sel.map((k) => sol.verts[k]), 'amber', 4, { close: true, fill: 'amber', fillAlpha: 0.18 });
+        if (C.lesson ? ready(s, C, 'spPlaneReady') : !C.review || C.step >= 1) D.path(sel.map((k) => sol.verts[k]), 'amber', 4, { close: true, fill: 'amber', fillAlpha: 0.18 });
         pts = Array.from(cur.set);
       }
       drawVerts(D, sol, { hot: (k) => sel.includes(k) && !C.problem });
-      if (C.txt && !C.problem) pts.forEach((k) => { if (!sel.includes(k)) b.point(D.P(sol.verts[k]), { color: 'green', r: 6 }); });
-      if (C.txt && !C.problem && cur) {
+      if (C.txt && !C.problem && ready(s, C, 'spMembersReady')) pts.forEach((k) => { if (!sel.includes(k)) b.point(D.P(sol.verts[k]), { color: 'green', r: 6 }); });
+      if (C.txt && !C.problem && cur && !C.lesson) {
         const txt = `이 평면 위의 꼭짓점 ${cur.set.size}개: ${Array.from(cur.set).join(' ')}`;
         caption(b, txt, { color: 'green' });
       }
       D.flush();
+      if (C.lesson && C.txt) {
+        const text = ready(s, C, 'spShowAnswer') ? `서로 다른 평면 ${M.ans}개` : ready(s, C, 'spDupReady') ? `중복해서 센 것 ${M.dup}가지 제외` : ready(s, C, 'spSecondReady') ? `네 점 이상이 놓인 평면 ${M.rep.length}개` : ready(s, C, 'spMembersReady') ? `이 평면 위의 꼭짓점 ${cur.set.size}개: ${Array.from(cur.set).join(' ')}` : ready(s, C, 'spFirstReady') ? `세 점을 고르는 방법 ${M.T}가지` : '';
+        if (text) caption(b, text, { color: ready(s, C, 'spShowAnswer') ? 'green' : 'sky' });
+      }
       if ((C.tab === 'explore') && C.txt && !C.thumb) {
         const mids = sol.order.map((k) => ({ k, p: D.P(sol.verts[k]) }));
         sel.forEach((k0, i) => {
