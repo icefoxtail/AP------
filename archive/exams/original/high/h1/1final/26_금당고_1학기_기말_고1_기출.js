@@ -202,7 +202,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "$a+2=-4$에서 $a=-6$, $b-5=3$에서 $b=8$, $c-2=-1$에서 $c=1$이다. 따라서 $a+b+c=3$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -234,7 +234,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "$AB=\\begin{pmatrix}-1\\cdot0+5\\cdot3\\\\7\\cdot0+1\\cdot3\\end{pmatrix}=\\begin{pmatrix}15\\\\3\\end{pmatrix}$이므로 모든 성분의 합은 $18$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -511,7 +511,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "행과 열의 성분을 곱하여 더하면\n$A^2=\\begin{pmatrix}0\\cdot0+1\\cdot(-1)&0\\cdot1+1\\cdot1\\\\(-1)\\cdot0+1\\cdot(-1)&(-1)\\cdot1+1\\cdot1\\end{pmatrix}$\n$=\\begin{pmatrix}-1&1\\\\-1&0\\end{pmatrix}$\n$=A-E$이다.\n이 관계를 다음 거듭제곱에 차례로 대입한다.\n$A^3=(A-E)A$\n$=A^2-A$\n$=(A-E)-A$\n$=-E$\n$A^4=(-E)A$\n$=-A$\n$A^5=(-A)A$\n$=-A^2$\n$=-(A-E)$\n$=E-A$\n$A^6=(E-A)A$\n$=A-A^2$\n$=A-(A-E)$\n$=E$\n따라서 모든 자연수 $r$에 대하여 $A^{r+6}=A^rA^6=A^r$이므로 여섯 종류만 확인하면 된다.\n한 주기의 값은 차례로 $A,A-E,-E,-A,E-A,E$이다.\n각 값에 더하여 $E$가 되려면 필요한 행렬은 차례로 다음과 같다.\n$E-A$, $2E-A$, $2E$, $E+A$, $A$, $O$\n이 중 한 주기 안에 있는 것은 $E-A$와 $A$뿐이다. 실제로 $uA+vE$의 $(1,2)$성분은 $u$, $(1,1)$성분은 $v$이므로 서로 다른 계수쌍의 행렬은 같을 수 없다.\n따라서 두 지수를 $6$으로 나눈 나머지는 $(1,5)$ 또는 $(5,1)$이어야 한다.\n나머지가 $1$인 자연수는 $1+6j$로 쓸 수 있다.\n$1+6j\\le100$\n$6j\\le99$\n정수 $j$의 범위는 $0\\le j\\le16$이므로 $17$개이다.\n나머지가 $5$인 자연수는 $5+6j$로 쓸 수 있다.\n$5+6j\\le100$\n$6j\\le95$\n정수 $j$의 범위는 $0\\le j\\le15$이므로 $16$개이다.\n순서쌍이므로 두 순서를 모두 세면\n$17\\cdot16+16\\cdot17$\n$=272+272$\n$=544$개이다.\n정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -608,7 +608,7 @@ window.questionBank = [
     "answer": "$X=\\begin{pmatrix}-1&0\\\\-2&7\\end{pmatrix}$, 성분의 합 $4$",
     "solution": "$a_{11}=1+1-2=0$\n$a_{12}=1+2-2=1$\n$a_{21}=2+1-2=1$\n$a_{22}=2+2-2=2$\n따라서 $A=\\begin{pmatrix}0&1\\\\1&2\\end{pmatrix}$이다.\n$4A-2B+E-X=O$의 양변에 $X$를 더하면\n$X=4A-2B+E$이다.\n각 행렬을 대입한다.\n$X=4\\begin{pmatrix}0&1\\\\1&2\\end{pmatrix}-2\\begin{pmatrix}1&2\\\\3&1\\end{pmatrix}+\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$\n$=\\begin{pmatrix}0&4\\\\4&8\\end{pmatrix}-\\begin{pmatrix}2&4\\\\6&2\\end{pmatrix}+\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$\n$=\\begin{pmatrix}0-2+1&4-4+0\\\\4-6+0&8-2+1\\end{pmatrix}$\n$=\\begin{pmatrix}-1&0\\\\-2&7\\end{pmatrix}$\n모든 성분의 합은\n$-1+0+(-2)+7$\n$=4$이다.\n따라서 $X=\\begin{pmatrix}-1&0\\\\-2&7\\end{pmatrix}$이고 성분의 합은 $4$이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

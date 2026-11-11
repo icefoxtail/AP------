@@ -228,7 +228,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "두 행렬이 같을 조건은 대응하는 각 성분이 모두 같아야 한다는 것이다.\n$A = B$이므로 각각의 $(i, j)$ 성분이 서로 같다.\n성분별로 방정식을 세워 $a, b, c$의 값을 차례로 구한다.\n$A=B$이므로 대응하는 성분을 비교하면 다음과 같은 연립방정식을 얻을 수 있다.\n(1행 2열) $a + 2 = b + 3$\n(2행 1열) $b - 4 = -b$\n(2행 2열) $c = -c + 2$\n\n먼저 2행 1열의 식을 풀면,\n$b + b = 4 \\implies 2b = 4 \\implies b = 2$\n\n구한 $b = 2$를 1행 2열의 식에 대입하면,\n$a + 2 = 2 + 3 \\implies a + 2 = 5 \\implies a = 3$\n\n2행 2열의 식을 풀면,\n$c + c = 2 \\implies 2c = 2 \\implies c = 1$\n\n따라서 $a = 3, b = 2, c = 1$이므로\n$a + b + c = 3 + 2 + 1 = 6$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -483,7 +483,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "행렬의 실수배, 덧셈, 곱셈의 정의와 성질을 명확히 이해하고, 특히 행렬 곱셈에서 영인자의 존재를 확인한다.\n$A, B$는 이차정사각행렬이다.\n각 선지의 참, 거짓을 행렬의 기본 성질을 통해 판별한다.\n① 거짓. 행렬의 실수배는 모든 성분에 실수 $k$를 곱해야 하므로 $kA = \\begin{pmatrix} ka_{11} & ka_{12} \\\\ ka_{21} & ka_{22} \\end{pmatrix}$이어야 한다.\n② 거짓. 행렬의 곱셈에 대하여 교환법칙이 '일반적으로' 성립하지 않는 것은 맞으나, $A=O$이거나 단위행렬일 때 등 $AB=BA$가 성립하는 경우도 존재하므로 '항상' $AB \\neq BA$인 것은 아니다.\n③ 거짓. 행렬의 곱셈은 대응하는 원소끼리 곱하는 것이 아니라, 앞 행렬의 각 행의 성분과 뒤 행렬의 각 열의 성분을 차례로 곱하여 더한 것이다.\n④ 참. $A + B = A - B$에서 양변에 $-A$를 더하면 $B = -B$가 되고, 이항하면 $2B = O$이므로 $B = O$이다.\n⑤ 거짓. $A \\neq O$ 이고 $B \\neq O$ 이지만 $AB = O$가 되는 영인자가 존재한다. 예를 들어 $A = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}, B = \\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}$이면 $AB = O$이지만 $A \\neq O, B \\neq O$이다.\n따라서 항상 옳은 것은 ④이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -677,7 +677,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "행렬의 각 성분을 판별식을 이용해 구하여 행렬 $A$를 완성한 후, 행렬의 거듭제곱의 규칙성을 파악한다.\n$a_{ij}$는 이차방정식 $2x^2 - 2ix + j = 0$의 서로 다른 실근의 개수이다.\n$i, j$에 각각 1과 2를 대입하여 판별식의 부호를 조사하고 행렬 $A$를 구한다. 그 후 $A^2, A^3, \\dots$ 을 구하며 거듭제곱의 규칙을 찾는다.\n이차방정식 $2x^2 - 2ix + j = 0$의 판별식을 $D$라 하면,\n$\\dfrac{D}{4} = (-i)^2 - 2j = i^2 - 2j$이다.\n실근의 개수 $a_{ij}$는 이 $\\dfrac{D}{4}$의 부호에 따라 결정된다.\n\n1) $i=1, j=1$ 일 때: $\\dfrac{D}{4} = 1^2 - 2(1) = -1 < 0$ 이므로 서로 다른 실근은 0개 $\\implies a_{11} = 0$\n2) $i=1, j=2$ 일 때: $\\dfrac{D}{4} = 1^2 - 2(2) = -3 < 0$ 이므로 서로 다른 실근은 0개 $\\implies a_{12} = 0$\n3) $i=2, j=1$ 일 때: $\\dfrac{D}{4} = 2^2 - 2(1) = 2 > 0$ 이므로 서로 다른 실근은 2개 $\\implies a_{21} = 2$\n4) $i=2, j=2$ 일 때: $\\dfrac{D}{4} = 2^2 - 2(2) = 0$ 이므로 중근을 가져 서로 다른 실근은 1개 $\\implies a_{22} = 1$\n\n따라서 행렬 $A = \\begin{pmatrix} 0 & 0 \\\\ 2 & 1 \\end{pmatrix}$이다.\n행렬 $A$의 거듭제곱을 계산해보면,\n$A^2 = \\begin{pmatrix} 0 & 0 \\\\ 2 & 1 \\end{pmatrix}\\begin{pmatrix} 0 & 0 \\\\ 2 & 1 \\end{pmatrix} = \\begin{pmatrix} 0 & 0 \\\\ 2 & 1 \\end{pmatrix} = A$이다.\n$A^2 = A$이므로, 자연수 $n$에 대하여 $A^n = A$가 성립한다.\n따라서 $A^{2025} = A = \\begin{pmatrix} 0 & 0 \\\\ 2 & 1 \\end{pmatrix}$이다.\n행렬 $A^{2025}$의 모든 성분의 합은 $0 + 0 + 2 + 1 = 3$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q18-solution.svg",
@@ -770,7 +770,7 @@ window.questionBank = [
     "answer": "18",
     "solution": "행렬에 대한 연립일차방정식은 실수에서의 연립방정식 풀이와 동일한 방법(가감법 등)으로 각 행렬을 먼저 구한 뒤 곱셈을 계산한다.\n$X+Y=A$, $X-Y=B$를 만족하는 행렬 $X, Y$를 구해 행렬 곱 $XY$의 성분의 합을 구한다.\n주어진 두 식을 더하고 빼서 행렬 $X$와 $Y$를 각각 구한 다음, 두 행렬의 곱 $XY$를 계산한다.\n주어진 행렬 방정식은 다음과 같다.\n$X + Y = \\begin{pmatrix} 5 & 4 \\\\ -2 & 3 \\end{pmatrix} \\quad \\cdots$ ①\n$X - Y = \\begin{pmatrix} 2 & -1 \\\\ 5 & -8 \\end{pmatrix} \\quad \\cdots$ ②\n\n두 식을 변끼리 더하면 (① + ②)\n$2X = \\begin{pmatrix} 5+2 & 4-1 \\\\ -2+5 & 3-8 \\end{pmatrix} = \\begin{pmatrix} 7 & 3 \\\\ 3 & -5 \\end{pmatrix}$\n양변에 $\\dfrac{1}{2}$을 곱하면, $X = \\dfrac{1}{2} \\begin{pmatrix} 7 & 3 \\\\ 3 & -5 \\end{pmatrix}$이다.\n\n두 식을 변끼리 빼면 (① - ②)\n$2Y = \\begin{pmatrix} 5-2 & 4-(-1) \\\\ -2-5 & 3-(-8) \\end{pmatrix} = \\begin{pmatrix} 3 & 5 \\\\ -7 & 11 \\end{pmatrix}$\n양변에 $\\dfrac{1}{2}$을 곱하면, $Y = \\dfrac{1}{2} \\begin{pmatrix} 3 & 5 \\\\ -7 & 11 \\end{pmatrix}$이다.\n\n이제 행렬 $XY$를 계산한다.\n$XY = \\left( \\dfrac{1}{2} \\begin{pmatrix} 7 & 3 \\\\ 3 & -5 \\end{pmatrix} \\right) \\left( \\dfrac{1}{2} \\begin{pmatrix} 3 & 5 \\\\ -7 & 11 \\end{pmatrix} \\right)$\n행렬의 곱셈 성질에 의해 상수는 앞으로 빼서 계산할 수 있으므로,\n$XY = \\dfrac{1}{4} \\begin{pmatrix} 7 & 3 \\\\ 3 & -5 \\end{pmatrix} \\begin{pmatrix} 3 & 5 \\\\ -7 & 11 \\end{pmatrix}$\n$= \\dfrac{1}{4} \\begin{pmatrix} 7(3) + 3(-7) & 7(5) + 3(11) \\\\ 3(3) + (-5)(-7) & 3(5) + (-5)(11) \\end{pmatrix}$\n$= \\dfrac{1}{4} \\begin{pmatrix} 21 - 21 & 35 + 33 \\\\ 9 + 35 & 15 - 55 \\end{pmatrix} = \\dfrac{1}{4} \\begin{pmatrix} 0 & 68 \\\\ 44 & -40 \\end{pmatrix} = \\begin{pmatrix} 0 & 17 \\\\ 11 & -10 \\end{pmatrix}$\n\n행렬 $XY$의 모든 성분의 합은 $0 + 17 + 11 + (-10) = 18$이다.\n따라서 구하는 값은 $18$이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
