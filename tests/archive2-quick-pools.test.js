@@ -204,6 +204,21 @@ test('real catalog: pools are built once, fast, from recorded difficulty and wit
   assert.deepEqual(subjects.map(subject => subject.label), ['공통수학1', '공통수학2']);
 });
 
+// The live bank grows until every unit can make every mix, so "short unit" cases cannot depend on it.
+// Clone the catalog and leave exactly one 3단계 question in one 고1 공통수학1 unit: that unit is
+// guaranteed short for the 중단원 평가 mix (needs 6 at 3단계) while every other unit stays as it is.
+async function catalogWithShortUnit() {
+  const data = structuredClone(await catalog());
+  const index = Unified.buildIndex(data.records, { projectionPolicy: data.projectionPolicy });
+  const units = Quick.unitsFor(Quick.buildPools(index), 'unit-test', '고1', 'COMMON_MATH_1');
+  assert.ok(units.length > 1, 'the catalog has several 고1 공통수학1 units');
+  const target = units[0];
+  const drop = new Set(target.buckets[3].slice(1).map(rec => rec.questionUid));
+  assert.ok(target.buckets[3].length >= 1, 'the chosen unit has a 3단계 question to keep');
+  data.records = data.records.filter(rec => !drop.has(rec.questionUid));
+  return { data, shortKey: target.key };
+}
+
 function harness(data, { quick = true } = {}) {
   const events = new Map(), nodes = new Map(), opened = [];
   const node = id => {
@@ -269,7 +284,7 @@ function harness(data, { quick = true } = {}) {
 }
 
 test('screens: each product shows unified units, no curriculum suffix, ready cards and disabled cards with reasons', async () => {
-  const data = await catalog();
+  const { data } = await catalogWithShortUnit();
   const h = harness(data);
   for (const view of Quick.VIEWS) {
     h.w.state.view = view;
@@ -298,6 +313,7 @@ test('screens: each product shows unified units, no curriculum suffix, ready car
   const unitHtml = h.w.renderQuick();
   assert.match(unitHtml, /class="quick-unit is-short" disabled aria-disabled="true"/);
   assert.match(unitHtml, /class="quick-reason">\d단계 \d+문항 필요 · \d+문항 가능/);
+  assert.match(unitHtml, /class="quick-reason">3단계 6문항 필요 · 1문항 가능/);
   h.w.state.view = 'monthly-test';
   const monthly = h.w.renderQuick();
   assert.match(monthly, /data-quick-bundle=/);
@@ -356,19 +372,19 @@ test('opening a unit selects the preset mix once per usable step and publishes 4
 });
 
 test('opening refuses a unit that cannot make the mix and a changed question state is caught before printing', async () => {
-  const data = structuredClone(await catalog());
+  const { data, shortKey } = await catalogWithShortUnit();
   const h = harness(data);
   h.w.state.view = 'unit-test';
   h.w.quickState.grade = '고1';
   h.w.quickState.subject = 'COMMON_MATH_1';
   const html = h.w.renderQuick();
   assert.ok(/is-short/.test(html));
-  // Do not hard-code a unit: its readiness changes when the reviewed catalog grows.
+  // The short unit is built by catalogWithShortUnit, not found in the growing live bank.
   const index = Unified.buildIndex(data.records, { projectionPolicy: data.projectionPolicy });
   const units = Quick.unitsFor(Quick.buildPools(index), 'unit-test', '고1', 'COMMON_MATH_1');
   const short = Quick.partition(units, Quick.PRODUCTS['unit-test'], 'standard').short;
-  assert.ok(short.length > 0, 'the current catalog contains a short unit');
-  await h.w.openQuickAssessment([short[0].unit.key]);
+  assert.ok(short.some(row => row.unit.key === shortKey), 'the prepared unit is short');
+  await h.w.openQuickAssessment([shortKey]);
   assert.equal(h.published.length, 0, 'a short unit never prints');
   // Review-only HOLD is intentionally usable; a genuine source-integrity failure is not.
   h.w.state.view = 'monthly-test';
