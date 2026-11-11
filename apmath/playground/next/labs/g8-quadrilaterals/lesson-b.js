@@ -15,7 +15,7 @@
       qdSeed: 0, qdOrd: [1, 2, 0, 3, 4], qcPk: options.key || squareKey,
       qcR: false, qcM: false, qcI: true, qcL: false, qcV: false, qcSh: options.shape || 'sq',
       qdBShape: options.shape || 'sq', qdBMode: options.mode || '', qdMd: options.method || 'par',
-      qdBFirstReady: false, qdBSecondReady: false, qdBFeet: false, ...(options.set || {}), ...(first.set || {}) };
+      qdBFirstReady: false, qdBSecondReady: false, qdBFeet: false, qdBBaseReady: false, ...(options.set || {}), ...(first.set || {}) };
     if (!first.to) Object.assign(first, { to: { qdBT: 1 }, dur: 4 });
     return { title, label, tab: 'review', answer, answerText: answer,
       summary: '주어진 사각형의 성질과 추가 조건을 구분하고 대응 관계로 계산해요',
@@ -137,4 +137,34 @@
     ], { start: { qcK: wantTrue ? 1 : 0 }, key: inclusionKey, shape: wantTrue ? 'sq' : 'rect', mode: 'inclusion-choices' });
   }
   lessons['q3-5'] = [...membership.map(membershipConcept), inclusionProblem(false), inclusionProblem(true)];
+  function isoscelesTrapezoidConcept(diagonal) {
+    return make('등변사다리꼴의 같은 길이', diagonal ? '대각선 성질' : '두 다리', diagonal ? 'AC=BD' : 'AB=DC', [
+      ch('평행한 변과 같은 밑각', [{ at: 0, say: 'AD∥BC이고 아랫변 양 끝각 ∠B=∠C=55°예요.' }, { at: 6, say: diagonal ? '두 대각선 AC와 BD를 잇고 두 삼각형을 비교해요.' : 'A, D에서 BC에 수선을 내려 발을 H, I라 해요.', set: { qdBFeet: true } }]),
+      ch(diagonal ? '두 변과 끼인각' : '같은 높이의 직각삼각형', [{ at: 0, say: diagonal ? '두 다리 AB=DC이고, BC는 두 삼각형에 공통이에요.' : '평행한 두 직선 사이의 높이 AH=DI는 같아요.', set: { qdBFirstReady: true } }, { at: 6, say: diagonal ? '두 변 사이의 밑각 ∠ABC=∠DCB도 같아요.' : '두 직각삼각형의 나머지 예각도 90°−55°로 같아요.' }]),
+      ch('합동인 대응변의 길이', [{ at: 0, say: diagonal ? '△ABC≡△DCB는 두 변과 끼인각에 의한 SAS 합동이에요.' : '같은 높이와 그 양 끝각으로 △ABH≡△DCI, ASA 합동이에요.' }, { at: 6, say: diagonal ? '따라서 대응변 AC=DB, 두 대각선의 길이가 같아요.' : '따라서 대응하는 빗변 AB=DC, 두 다리의 길이가 같아요.', set: { qdShowAnswer: true } }])
+    ], { problem: false, mode: diagonal ? 'iso-diagonal' : 'iso-legs' });
+  }
+  function isoscelesTrapezoidProblem(kind) {
+    return make('등변사다리꼴의 실제 값 계산', ['윗각 ∠A', '아랫각 ∠C', 'BD 길이'][kind], ['∠A=125°', '∠C=55°', 'BD=13'][kind], [
+      ch('주어진 값과 구할 대상', [{ at: 0, say: ['∠B=55°에서 윗각 ∠A를 구해요.', '∠A=125°에서 아랫각 ∠C를 구해요.', '대각선 AC=13에서 다른 대각선 BD를 구해요.'][kind] }, { at: 6, say: 'AD∥BC이고 아랫변 양 끝각이 같은 등변사다리꼴이에요.', step: 1 }]),
+      ch('평행선과 합동의 성질', [{ at: 0, say: kind === 2 ? 'AB=DC, BC 공통, ∠B=∠C로 두 삼각형은 SAS 합동이에요.' : '평행선 AD, BC에서 이웃한 두 내각의 합은 180°예요.', step: 2 }, { at: 6, say: ['∠A는 180°−55°로 구할 수 있어요.', '∠B=180°−125°=55°이고 ∠C=∠B예요.', '△ABC와 △DCB의 대응하는 대각선 AC, BD는 같아요.'][kind], step: 3, set: { qdCalculationReady: true } }]),
+      ch('물어본 각이나 길이', [{ at: 0, say: ['따라서 윗각 ∠A=125°가 정답이에요.', '따라서 아랫각 ∠C=55°가 정답이에요.', '따라서 BD=AC=13이 정답이에요.'][kind], step: 4, set: { qdShowAnswer: true } }, { at: 6, say: kind === 2 ? '대각선의 절반을 구하는 문제가 아니에요.' : '같은 밑변 양 끝각과 같은 다리 양 끝각을 구별해요.', step: 5 }])
+    ], { start: { qdK: kind } });
+  }
+  lessons['q4-1'] = [isoscelesTrapezoidConcept(false), isoscelesTrapezoidConcept(true), isoscelesTrapezoidProblem(0), isoscelesTrapezoidProblem(1), isoscelesTrapezoidProblem(2)];
+  function trapezoidAux(method, kind, concept = false) {
+    const perp = method === 'perp', known = kind === 1 ? 'BC=12, AB=6' : 'AD=6, AB=6';
+    const chapters = [
+      ch('조건과 보조선', [{ at: 0, say: `${known}인 그림에 ${perp ? '수선 AH, DI' : 'DE∥AB'}를 그어요.` }, { at: 4, say: 'AD∥BC이므로 ∠B=180°−120°=60°예요.', set: { qdCalculationReady: true } }, { at: 8, say: '등변사다리꼴이라 아랫변의 다른 각 ∠C도 60°예요.', set: { qdBFeet: true } }]),
+      ch(perp ? '30°의 맞은편 길이' : '평행사변형의 같은 대변', [{ at: 0, say: perp ? '△ABH는 직각삼각형이고 ∠BAH=30°예요.' : 'AB∥DE, AD∥BE이므로 ABED는 평행사변형이에요.' }, { at: 6, say: perp ? '30°의 맞은편 BH=AB÷2=3이고 CI도 3이에요.' : kind === 1 ? '따라서 BE=AD=x이고 DE=AB=6이에요.' : '따라서 BE=AD=6이고 DE=AB=6이에요.', set: { qdBFirstReady: true } }]),
+      ch(perp ? '가운데 부분의 길이' : '정삼각형의 나머지 변', [{ at: 0, say: perp ? 'AH와 DI는 BC에 수직이고 AD∥HI라서 AHID는 직사각형이에요.' : 'DE∥AB이므로 동위각 ∠DEC도 60°예요.' }, { at: 6, say: perp ? kind === 1 ? '따라서 HI=AD=x이고 BC=BH+HI+IC예요.' : '따라서 HI=AD=6이고 BC=BH+HI+IC예요.' : '△DEC는 정삼각형이므로 EC=DC=6이에요.', set: { qdBSecondReady: true } }])
+    ];
+    if (kind === 2) chapters.push(ch('둘레에 필요한 아랫변', [{ at: 0, say: perp ? 'BC=BH+HI+IC=3+6+3=12예요.' : 'BC=BE+EC=6+6=12예요.', set: { qdBBaseReady: true } }, { at: 6, say: '둘레에는 AD, BC와 같은 두 다리 AB, DC가 들어가요.' }]));
+    chapters.push(ch(concept ? '두 방법의 길이 관계' : kind === 2 ? '네 변을 모두 더하기' : '구할 밑변 계산', [{ at: 0, say: concept ? (perp ? '양쪽 반씩을 합하면 BC=AD+AB예요.' : 'BE=AD, EC=AB이므로 BC=AD+AB예요.') : kind === 0 ? (perp ? 'BC=3+6+3=12가 정답이에요.' : 'BC=6+6=12가 정답이에요.') : kind === 1 ? (perp ? 'AD=HI=12−3−3=6이 정답이에요.' : 'AD=BE=BC−EC=12−6=6이 정답이에요.') : '사각형의 둘레는 6+12+6+6=30이 정답이에요.', set: { qdShowAnswer: true } }, { at: 6, say: concept ? '이 그림에 대입하면 BC=6+6=12예요.' : kind === 2 ? '다리가 두 개라는 점까지 확인했어요.' : '아랫변을 구하면 더하고, 윗변을 구하면 바깥 부분을 빼요.' }]));
+    return make(perp ? '수선을 이용한 등변사다리꼴' : '평행선을 이용한 등변사다리꼴', concept ? (perp ? '수선 원리' : '평행선 원리') : (perp ? ['수선 BC', '수선 AD', '수선 둘레'][kind] : ['평행선 BC', '평행선 AD', '평행선 둘레'][kind]),
+      concept ? 'BC=AD+AB' : ['BC=12', 'AD=6', '둘레=30'][kind], chapters,
+      { problem: !concept, method, mode: concept ? 'aux-concept' : 'aux-problem', start: { qdK: kind } });
+  }
+  lessons['q4-2'] = [trapezoidAux('par', 0, true), trapezoidAux('perp', 0, true),
+    trapezoidAux('par', 0), trapezoidAux('perp', 0), trapezoidAux('par', 1), trapezoidAux('perp', 1), trapezoidAux('par', 2), trapezoidAux('perp', 2)];
 })();
