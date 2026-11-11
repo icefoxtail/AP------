@@ -192,13 +192,16 @@
 
   /* ------------------------------------------------------------------ 단계 강조 / 상태 */
   function baseCtx(s, lab, thumb) {
-    const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
+    // The lesson entry uses its fixed problem's unrevealed review drawing.
+    // Manual exploration keeps its own tab and state.
+    const lesson = !thumb && !!(s.lessonOn || s.lessonEntry);
+    const tab = thumb ? 'explore' : s.lessonEntry ? 'review' : (lab && lab.tab) || 'explore';
     const problem = !thumb && tab === 'problem';
     const review = !thumb && tab === 'review';
-    const step = review ? s.step || 0 : 99;
+    const step = s.lessonEntry ? 0 : review ? s.step || 0 : 99;
     // hl(k): 단계 k 의 대상을 얼마나 강조할지 — 0 흐리게 · 1 보통 · 2 강하게
     const hl = (k) => (!review ? 1 : step === k ? 2 : step > k ? 1 : 0);
-    return { tab, problem, review, step, hl, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
+    return { tab, problem, review, step, hl, lesson, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
   }
 
   /* ------------------------------------------------------------------ 조절 값 */
@@ -368,6 +371,12 @@
           const n = D.steps(M).length;
           v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` };
           if ((s.step || 0) < n) v.formula = null;
+        }
+        if (C.lesson) {
+          v.card = null;
+          v.readouts = [];
+          v.formula = null;
+          v.status = null;
         }
         return v;
       },

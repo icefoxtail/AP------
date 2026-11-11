@@ -31,7 +31,7 @@ function loadMore() {
 const lessons = loadMore();
 
 // 장면이 lab.s 에 등록하는 상태값(이름: [최소, 최대] 또는 null=숫자 아님). 소스(init·P(...) 범위)와 어긋나면 아래 「소스 확인」 테스트가 실패합니다.
-const COMMON = { svYaw: [-180, 180], svPitch: [-30, 85], svShowV: null };
+const COMMON = { svYaw: [-180, 180], svPitch: [-30, 85], svShowV: null, svBaseReady: null, svSideReady: null, svOtherReady: null, svBigReady: null, svSmallReady: null };
 const SCENE_STATE = {
   'sv1-4': { sA: [2, 15], sB: [2, 15], sH: [2, 20], sT4: [0, 1], svShape: null },
   'sv3-1': { s6R: [1, 15], s6T: [0, 1] },
@@ -338,13 +338,15 @@ test('해설 sv2-5 부피(각뿔대 9·3): 큰 각뿔 162 − 작은 각뿔 6 = 
   assert.deepEqual([h2, h1, big, small, big - small], [6, 2, 162, 6, 156]);
   const l5 = find('sv2-5', '부피'), s5 = sayList(l5);
   assert.equal(l5.chapters[0].cues[0].set.svMode, 'vol'); assert.equal(l5.chapters[0].cues[0].set.svKind5, 'frus');
-  assert.ok(s5[0][1].includes(`\\frac13\\times${a2}^2\\times${h2}=${big}`) && s5[1][1].includes(`한 변 ${a1}, 높이 ${h1}`) && s5[1][1].includes(`\\frac13\\times${a1}^2\\times${h1}=${small}`) && s5[2][1].includes(`${big}-${small}=${big - small}`));
-  okNums(l5, [a2, a1, h2, h1, big, small, big - small, 1, 2, 3]);
+  assert.ok(s5[1][1].includes(`\\frac13\\times${a2}^2\\times${h2}=${big}`) && s5[2][1].includes(`한 변 ${a1}, 높이 ${h1}`) && s5[2][1].includes(`\\frac13\\times${a1}^2\\times${h1}=${small}`) && s5[3][1].includes(`${big}-${small}=${big - small}`));
+  assert.ok(s5[0].join(' ').includes('높이의 비도 3:1') && s5[0].join(' ').includes('차가 4'));
+  okNums(l5, [a2, a1, h2, h1, big, small, big - small, h2 - h1, 1, 2, 3]);
   const r2 = 6, r1 = 3, H2 = 8, H1 = 4, v2 = (r2 * r2 * H2) / 3, v1 = (r1 * r1 * H1) / 3;
   assert.deepEqual([v2, v1, v2 - v1], [96, 12, 84]);
   const l4 = find('sv2-4', '부피'), s4 = sayList(l4);
   assert.equal(l4.chapters[0].cues[0].set.svMode, 'vol'); assert.equal(l4.chapters[0].start.s4K, 2);
-  assert.ok(s4[0][1].includes(`\\frac13\\pi\\times${r2}^2\\times${H2}=${v2}\\pi`) && s4[1][1].includes(`반지름 ${r1}, 높이 ${H1}`) && s4[1][1].includes(`${v1}\\pi`) && s4[2][1].includes(`${v2}\\pi-${v1}\\pi=${v2 - v1}\\pi`));
+  assert.ok(s4[1][1].includes(`\\frac13\\pi\\times${r2}^2\\times${H2}=${v2}\\pi`) && s4[2][1].includes(`반지름 ${r1}, 높이 ${H1}`) && s4[2][1].includes(`${v1}\\pi`) && s4[3][1].includes(`${v2}\\pi-${v1}\\pi=${v2 - v1}\\pi`));
+  assert.ok(s4[0].join(' ').includes('높이의 비도 2:1') && s4[0].join(' ').includes('차가 4'));
   okNums(l4, [r2, r1, H2, H1, v2, v1, v2 - v1, 1, 2, 3]);
   const t2 = src('t2.js'), s3js = src('solid3d.js');
   assert.match(t2, /if \(!D\.lessonHide\) D\.areaLab\(v3\(0, y0 \+ hf \* 0\.4, 0\), '각뿔대'/, '각뿔대 이름표(답)는 재생 중 결론까지 숨김');

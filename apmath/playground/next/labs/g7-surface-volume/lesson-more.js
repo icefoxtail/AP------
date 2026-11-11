@@ -119,7 +119,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '옆면을 펼치면',
         start: { s2r: 3, s2G: 5, s2U: 0, svYaw: 28, svPitch: 22 },
         cues: [
-          { at: 0, say: '원뿔의 옆면을 펼치면 어떤 모양일까요?', set: { svShowV: false }, to: { s2U: 1 }, dur: 5, ease: 'smooth' },
+          { at: 0, say: '원뿔의 옆면을 펼치면 어떤 모양일까요?', set: { svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, to: { s2U: 1 }, dur: 5, ease: 'smooth' },
           { at: 5.5, say: '부채꼴이에요. 반지름은 모선 5예요.' }
         ]
       },
@@ -128,15 +128,15 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '호의 길이',
         cues: [
           { at: 0, say: '부채꼴의 호는 밑면의 둘레와 같아요.', step: 2 },
-          { at: 4.5, say: '밑면의 둘레는 $2\\pi\\times3=6\\pi$예요.' }
+          { at: 4.5, say: '밑면의 둘레는 $2\\pi\\times3=6\\pi$예요.', set: { svOtherReady: true } }
         ]
       },
       {
         length: 12,
         title: '겉넓이는?',
         cues: [
-          { at: 0, say: '옆넓이는 $\\frac12\\times5\\times6\\pi=15\\pi$예요.', step: 3 },
-          { at: 4, say: '밑넓이는 $\\pi\\times3^2=9\\pi$예요.' },
+          { at: 0, say: '옆넓이는 $\\frac12\\times5\\times6\\pi=15\\pi$예요.', step: 3, set: { svSideReady: true } },
+          { at: 4, say: '밑넓이는 $\\pi\\times3^2=9\\pi$예요.', set: { svBaseReady: true } },
           { at: 8, say: '겉넓이 $=9\\pi+15\\pi=24\\pi$ cm²', set: { svShowV: true } }
         ]
       }
@@ -164,7 +164,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
           title: '어느 변이 축?',
           start: { s41K: 1, s41T: 0, svYaw: 28, svPitch: 20 },
           cues: [
-            { at: 0, say: '직각삼각형을 길이 4인 변을 축으로 돌려요.', set: { svTri: 'A', svAxis: 'long', svMode: 'surf', svShowV: false }, to: { s41T: 0.06 }, dur: 2.5, ease: 'smooth' },
+            { at: 0, say: '직각삼각형을 길이 4인 변을 축으로 돌려요.', set: { svTri: 'A', svAxis: 'long', svMode: 'surf', svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, to: { s41T: 0.06 }, dur: 2.5, ease: 'smooth' },
             { at: 3.5, say: '축이 높이 4, 다른 변이 반지름 3, 빗변이 모선 5.' },
             { at: 7, say: '한 바퀴 돌리면 원뿔이 돼요.', to: { s41T: 0.5 }, dur: 3.5, ease: 'smooth' }
           ]
@@ -174,15 +174,15 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
           title: '옆면 펼치기',
           cues: [
             { at: 0, say: '옆면을 펼치면 부채꼴이 돼요.', to: { s41T: 1 }, dur: 5, ease: 'smooth' },
-            { at: 6, say: '반지름은 모선 5, 호는 밑면의 둘레 $6\\pi$.' }
+            { at: 6, say: '반지름은 모선 5, 호는 밑면의 둘레 $6\\pi$.', set: { svOtherReady: true } }
           ]
         },
         {
           length: 12,
           title: '겉넓이는?',
           cues: [
-            { at: 0, say: '옆넓이는 $\\frac12\\times5\\times6\\pi=15\\pi$예요.', step: 2 },
-            { at: 4, say: '밑넓이는 $\\pi\\times3^2=9\\pi$예요.' },
+            { at: 0, say: '옆넓이는 $\\frac12\\times5\\times6\\pi=15\\pi$예요.', step: 2, set: { svSideReady: true } },
+            { at: 4, say: '밑넓이는 $\\pi\\times3^2=9\\pi$예요.', set: { svBaseReady: true } },
             { at: 8, say: '겉넓이 $=15\\pi+9\\pi=24\\pi$ cm²', step: 3, set: { svShowV: true } }
           ]
         }
@@ -202,7 +202,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
           title: '어느 변이 축?',
           start: { s41K: 1, s41T: 0, svYaw: 28, svPitch: 20 },
           cues: [
-            { at: 0, say: '직각삼각형을 길이 4인 변을 축으로 돌려요.', set: { svTri: 'A', svAxis: 'long', svMode: 'vol', svShowV: false }, to: { s41T: 0.06 }, dur: 2.5, ease: 'smooth' },
+            { at: 0, say: '직각삼각형을 길이 4인 변을 축으로 돌려요.', set: { svTri: 'A', svAxis: 'long', svMode: 'vol', svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, to: { s41T: 0.06 }, dur: 2.5, ease: 'smooth' },
             { at: 3.5, say: '축이 높이 4, 다른 변이 반지름 3, 빗변이 모선 5.' },
             { at: 7, say: '한 바퀴 돌리면 원뿔이 돼요.', to: { s41T: 0.5 }, dur: 3.5, ease: 'smooth' }
           ]
@@ -212,7 +212,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
           title: '밑넓이',
           cues: [
             { at: 0, say: '원뿔의 밑면은 반지름 3인 원이에요.', step: 1 },
-            { at: 4.5, say: '밑넓이는 $\\pi\\times3^2=9\\pi$예요.', step: 2 }
+            { at: 4.5, say: '밑넓이는 $\\pi\\times3^2=9\\pi$예요.', step: 2, set: { svBaseReady: true } }
           ]
         },
         {
@@ -245,7 +245,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '입체를 펼치기',
         start: { s5A: 9, s5B: 3, s5T: 0, svYaw: 28, svPitch: 24 },
         cues: [
-          { at: 0, say: '정사각뿔대의 겉면을 펼쳐 봐요.', set: { svKind5: 'frus', svMode: 'surf', svShowV: false }, to: { s5T: 1 }, dur: 5, ease: 'smooth' },
+          { at: 0, say: '정사각뿔대의 겉면을 펼쳐 봐요.', set: { svKind5: 'frus', svMode: 'surf', svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, to: { s5T: 1 }, dur: 5, ease: 'smooth' },
           { at: 5.5, say: '밑면 2개와 사다리꼴 옆면 4개가 나와요.', step: 1 }
         ]
       },
@@ -254,7 +254,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '밑면의 넓이',
         cues: [
           { at: 0, say: '밑면은 한 변이 3, 9인 정사각형이에요.', step: 1 },
-          { at: 4.5, say: '밑면의 넓이 합은 $3^2+9^2=9+81=90$예요.' }
+          { at: 4.5, say: '밑면의 넓이 합은 $3^2+9^2=9+81=90$예요.', set: { svBaseReady: true } }
         ]
       },
       {
@@ -262,7 +262,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '옆면의 넓이',
         cues: [
           { at: 0, say: '옆면은 윗변 3, 아랫변 9, 높이 5인 사다리꼴.', step: 2 },
-          { at: 4.5, say: '넓이는 $\\frac12\\times(3+9)\\times5=30$예요.' }
+          { at: 4.5, say: '넓이는 $\\frac12\\times(3+9)\\times5=30$예요.', set: { svSideReady: true } }
         ]
       },
       {
@@ -286,12 +286,21 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
     task: '아랫면과 윗면의 한 변을 바꿔 큰 각뿔과 작은 각뿔의 부피를 비교해 보세요',
     chapters: [
       {
+        length: 12, title: '높이부터 확인',
+        start: { s5A: 9, s5B: 3, s5T: 0, svYaw: 28, svPitch: 24 },
+        cues: [
+          { at: 0, say: '윗면 한 변은 3, 아랫면은 9, 뿔대 높이는 4예요.', set: { svKind5: 'frus', svMode: 'vol', svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, step: 1 },
+          { at: 4, say: '큰 뿔과 작은 뿔은 닮아 높이의 비도 3:1이에요.' },
+          { at: 8, say: '높이의 차가 4이므로 작은 높이 2, 큰 높이 6.' }
+        ]
+      },
+      {
         length: 11,
         title: '큰 각뿔로 만들기',
         start: { s5A: 9, s5B: 3, s5T: 0, svYaw: 28, svPitch: 24 },
         cues: [
-          { at: 0, say: '각뿔대의 윗부분을 이어 큰 각뿔을 만들어요.', set: { svKind5: 'frus', svMode: 'vol', svShowV: false }, step: 1 },
-          { at: 4.5, say: '큰 각뿔은 $\\frac13\\times9^2\\times6=162$예요.' }
+          { at: 0, say: '각뿔대의 윗부분을 이어 큰 각뿔을 만들어요.', set: { svKind5: 'frus', svMode: 'vol', svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, step: 1 },
+          { at: 4.5, say: '큰 각뿔은 $\\frac13\\times9^2\\times6=162$예요.', set: { svBigReady: true } }
         ]
       },
       {
@@ -300,7 +309,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         cues: [
           { at: 0, say: '이은 부분이 작은 각뿔이에요. 빼 볼게요.', step: 2 },
           { at: 0.5, to: { s5T: 1 }, dur: 4 },
-          { at: 5.5, say: '작은 각뿔(한 변 3, 높이 2)은 $\\frac13\\times3^2\\times2=6$.' }
+          { at: 5.5, say: '작은 각뿔(한 변 3, 높이 2)은 $\\frac13\\times3^2\\times2=6$.', set: { svSmallReady: true } }
         ]
       },
       {
@@ -334,7 +343,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
           title: '어떤 길이를 쓸까',
           start: { s3K: 1, s3U: 0, svYaw: 28, svPitch: 20 },
           cues: [
-            { at: 0, say: '반지름 3, 높이 4, 모선 5인 원뿔이에요.', set: { svTri: 'A', svMode: 'surf', sv23Started: true, svShowV: false }, step: 1 },
+            { at: 0, say: '반지름 3, 높이 4, 모선 5인 원뿔이에요.', set: { svTri: 'A', svMode: 'surf', sv23Started: true, svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, step: 1 },
             { at: 3.5, say: '겉넓이에는 모선 5를 쓰고 높이 4는 안 써요.', to: { s3U: 1 }, dur: 5.5, ease: 'smooth' }
           ]
         },
@@ -343,15 +352,15 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
           title: '옆면은 부채꼴',
           cues: [
             { at: 0, say: '펼치면 반지름이 모선 5인 부채꼴이에요.', step: 2 },
-            { at: 4.5, say: '호의 길이는 밑면의 둘레 $2\\pi\\times3=6\\pi$.' }
+            { at: 4.5, say: '호의 길이는 밑면의 둘레 $2\\pi\\times3=6\\pi$.', set: { svOtherReady: true } }
           ]
         },
         {
           length: 12,
           title: '겉넓이는?',
           cues: [
-            { at: 0, say: '옆넓이는 $\\frac12\\times5\\times6\\pi=15\\pi$예요.', step: 3 },
-            { at: 4, say: '밑넓이는 $\\pi\\times3^2=9\\pi$예요.' },
+            { at: 0, say: '옆넓이는 $\\frac12\\times5\\times6\\pi=15\\pi$예요.', step: 3, set: { svSideReady: true } },
+            { at: 4, say: '밑넓이는 $\\pi\\times3^2=9\\pi$예요.', set: { svBaseReady: true } },
             { at: 8, say: '겉넓이 $=15\\pi+9\\pi=24\\pi$ cm²', set: { svShowV: true } }
           ]
         }
@@ -371,7 +380,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
           title: '어떤 길이를 쓸까',
           start: { s3K: 1, s3U: 0, svYaw: 28, svPitch: 20 },
           cues: [
-            { at: 0, say: '반지름 3, 높이 4, 모선 5인 원뿔이에요.', set: { svTri: 'A', svMode: 'vol', sv23Started: true, svShowV: false }, step: 1 },
+            { at: 0, say: '반지름 3, 높이 4, 모선 5인 원뿔이에요.', set: { svTri: 'A', svMode: 'vol', sv23Started: true, svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, step: 1 },
             { at: 3.5, say: '부피에는 높이 4를 쓰고 모선 5는 안 써요.' }
           ]
         },
@@ -380,7 +389,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
           title: '밑넓이',
           cues: [
             { at: 0, say: '밑면은 반지름 3인 원이에요.', step: 1 },
-            { at: 4.5, say: '밑넓이는 $\\pi\\times3^2=9\\pi$예요.', step: 2 }
+            { at: 4.5, say: '밑넓이는 $\\pi\\times3^2=9\\pi$예요.', step: 2, set: { svBaseReady: true } }
           ]
         },
         {
@@ -414,7 +423,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '원뿔대 펼치기',
         start: { s4K: 2, s4J: 1, s4T: 0, svYaw: 28, svPitch: 22 },
         cues: [
-          { at: 0, say: '원뿔대의 겉면을 펼쳐 봐요.', set: { svTri4: 'A', svMode: 'surf', svShowV: false }, to: { s4T: 1 }, dur: 5.5, ease: 'smooth' },
+          { at: 0, say: '아랫면 반지름 6, 윗면 반지름 3인 원뿔대예요.', set: { svTri4: 'A', svMode: 'surf', svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, to: { s4T: 1 }, dur: 5.5, ease: 'smooth' },
           { at: 6, say: '옆면은 부채꼴 고리, 밑면은 원 2개예요.' }
         ]
       },
@@ -422,9 +431,9 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         length: 12,
         title: '큰 부채꼴, 작은 부채꼴',
         cues: [
-          { at: 0, say: '큰 부채꼴은 반지름 10, 호는 $12\\pi$예요.', step: 1 },
-          { at: 3, say: '넓이는 $\\pi\\times6\\times10=60\\pi$예요.' },
-          { at: 6.5, say: '작은 부채꼴은 $\\pi\\times3\\times5=15\\pi$.', step: 2 }
+          { at: 0, say: '큰 부채꼴은 반지름 10, 호는 $12\\pi$예요.', step: 1, set: { svOtherReady: true } },
+          { at: 3, say: '넓이는 $\\pi\\times6\\times10=60\\pi$예요.', set: { svBigReady: true } },
+          { at: 6.5, say: '작은 부채꼴은 $\\pi\\times3\\times5=15\\pi$.', step: 2, set: { svSmallReady: true } }
         ]
       },
       {
@@ -432,8 +441,8 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '겉넓이는?',
         cues: [
           { at: 0, say: '옆넓이는 큰 부채꼴 − 작은 부채꼴이에요.', step: 3 },
-          { at: 3.5, say: '$60\\pi-15\\pi=45\\pi$예요.' },
-          { at: 7, say: '겉넓이 $=45\\pi+9\\pi+36\\pi=90\\pi$ cm²', step: 4, set: { svShowV: true } }
+          { at: 3.5, say: '$60\\pi-15\\pi=45\\pi$예요.', set: { svSideReady: true } },
+          { at: 7, say: '겉넓이 $=45\\pi+9\\pi+36\\pi=90\\pi$ cm²', step: 4, set: { svBaseReady: true, svShowV: true } }
         ]
       }
     ]
@@ -449,12 +458,21 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
     task: '원뿔대의 크기를 바꿔 큰 원뿔과 작은 원뿔의 부피를 비교해 보세요',
     chapters: [
       {
+        length: 12, title: '높이부터 확인',
+        start: { s4K: 2, s4J: 1, s4T: 0, svYaw: 28, svPitch: 22 },
+        cues: [
+          { at: 0, say: '반지름은 아래 6, 위 3이고 뿔대 높이는 4예요.', set: { svTri4: 'A', svMode: 'vol', svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, step: 1 },
+          { at: 4, say: '큰 뿔과 작은 뿔은 닮아 높이의 비도 2:1이에요.' },
+          { at: 8, say: '높이의 차가 4이므로 작은 높이 4, 큰 높이 8.' }
+        ]
+      },
+      {
         length: 11,
         title: '큰 원뿔로 만들기',
         start: { s4K: 2, s4J: 1, s4T: 0, svYaw: 28, svPitch: 22 },
         cues: [
-          { at: 0, say: '원뿔대의 윗부분을 이어 큰 원뿔을 만들어요.', set: { svTri4: 'A', svMode: 'vol', svShowV: false }, step: 1 },
-          { at: 4.5, say: '큰 원뿔은 $\\frac13\\pi\\times6^2\\times8=96\\pi$예요.' }
+          { at: 0, say: '원뿔대의 윗부분을 이어 큰 원뿔을 만들어요.', set: { svTri4: 'A', svMode: 'vol', svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, step: 1 },
+          { at: 4.5, say: '큰 원뿔은 $\\frac13\\pi\\times6^2\\times8=96\\pi$예요.', set: { svBigReady: true } }
         ]
       },
       {
@@ -463,7 +481,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         cues: [
           { at: 0, say: '이은 부분이 작은 원뿔이에요. 빼 볼게요.', step: 2 },
           { at: 0.5, to: { s4T: 1 }, dur: 4 },
-          { at: 5.5, say: '작은 원뿔(반지름 3, 높이 4)은 $12\\pi$예요.' }
+          { at: 5.5, say: '작은 원뿔(반지름 3, 높이 4)은 $12\\pi$예요.', set: { svSmallReady: true } }
         ]
       },
       {
@@ -591,7 +609,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '붙은 자리는?',
         start: { s56A: 8, s56H: 4, s56R: 3, s56Z: 3, s56T: 0, svYaw: 28, svPitch: 24 },
         cues: [
-          { at: 0, say: '상자 위에 원기둥을 붙인 입체예요.', set: { svTop: 'cyl', svMode: 'surf', svShowV: false }, to: { s56T: 1 }, dur: 5, ease: 'smooth' },
+          { at: 0, say: '상자 위에 원기둥을 붙인 입체예요.', set: { svTop: 'cyl', svMode: 'surf', svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, to: { s56T: 1 }, dur: 5, ease: 'smooth' },
           { at: 5.5, say: '떼어 놓으면 붙었던 원이 드러나요.' }
         ]
       },
@@ -599,8 +617,8 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         length: 11,
         title: '상자와 붙은 자리',
         cues: [
-          { at: 0, say: '아래 상자의 겉넓이는 $2\\times8\\times8+4\\times8\\times4=256$.', step: 1 },
-          { at: 5, say: '붙은 자리 $-\\pi\\times3^2=-9\\pi$가 없어져요.', step: 2 }
+          { at: 0, say: '아래 상자의 겉넓이는 $2\\times8\\times8+4\\times8\\times4=256$.', step: 1, set: { svBaseReady: true } },
+          { at: 5, say: '붙은 자리 $-\\pi\\times3^2=-9\\pi$가 없어져요.', step: 2, set: { svSideReady: true } }
         ]
       },
       {
@@ -608,7 +626,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '겉넓이는?',
         cues: [
           { at: 0, say: '위 원기둥은 붙은 밑면만 빼고 더해요.', step: 3 },
-          { at: 4, say: '옆면과 윗면을 합하면 $27\\pi$예요.' },
+          { at: 4, say: '옆면과 윗면을 합하면 $27\\pi$예요.', set: { svOtherReady: true } },
           { at: 8, say: '겉넓이 $=256-9\\pi+27\\pi=256+18\\pi$ cm²', step: 4, set: { svShowV: true } }
         ]
       }
@@ -730,7 +748,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '돌려서 만든 입체',
         start: { s43T: 0, svYaw: 28, svPitch: 20 },
         cues: [
-          { at: 0, say: '삼각형을 밑변을 축으로 한 바퀴 돌려요.', set: { svDbl: 'D', svMode: 'surf', svShowV: false }, to: { s43T: 0.25 }, dur: 3 },
+          { at: 0, say: '삼각형을 밑변을 축으로 한 바퀴 돌려요.', set: { svDbl: 'D', svMode: 'surf', svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, to: { s43T: 0.25 }, dur: 3 },
           { at: 3.5, say: '반지름 3, 높이 4·4, 모선 5·5인 입체예요.', to: { s43T: 0.5 }, dur: 3 }
         ]
       },
@@ -746,7 +764,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         length: 11,
         title: '겉넓이는?',
         cues: [
-          { at: 0, say: '옆면 하나는 $\\pi\\times3\\times5=15\\pi$예요.', step: 2 },
+          { at: 0, say: '옆면 하나는 $\\pi\\times3\\times5=15\\pi$예요.', step: 2, set: { svBaseReady: true, svSideReady: true, svOtherReady: true } },
           { at: 4, say: '위와 아래가 같아서 옆면이 2개예요.' },
           { at: 7.5, say: '겉넓이 $=15\\pi+15\\pi=30\\pi$ cm²', step: 3, set: { svShowV: true } }
         ]
@@ -772,7 +790,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '세 입체로 나누기',
         start: { s44H: 4, s44T: 0, svYaw: 28, svPitch: 22 },
         cues: [
-          { at: 0, say: '원뿔·원기둥·반구를 붙인 입체예요.', set: { svTri4: 'A', svMode: 'surf', svShowV: false }, to: { s44T: 0.5 }, dur: 5 },
+          { at: 0, say: '반지름 3, 원기둥 높이 4, 원뿔 모선 5예요.', set: { svTri4: 'A', svMode: 'surf', svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, to: { s44T: 0.5 }, dur: 5 },
           { at: 5.5, say: '붙은 면은 겉에 드러나지 않아 겉넓이에서 빼요.' }
         ]
       },
@@ -780,7 +798,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         length: 11,
         title: '펼치기',
         cues: [
-          { at: 0, say: '겉에 드러난 세 면을 펼쳐 봐요.', to: { s44T: 1 }, dur: 5 },
+          { at: 0, say: '원뿔과 원기둥 옆면을 펼치고 반구는 그대로 둬요.', to: { s44T: 1 }, dur: 5 },
           { at: 6, say: '원뿔 옆면, 원기둥 옆면, 반구의 곡면이에요.', step: 1 }
         ]
       },
@@ -788,9 +806,9 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         length: 12,
         title: '면마다 넓이',
         cues: [
-          { at: 0, say: '원뿔 옆넓이는 $\\pi\\times3\\times5=15\\pi$예요.', step: 1 },
-          { at: 4, say: '원기둥 옆넓이는 $2\\pi\\times3\\times4=24\\pi$예요.', step: 2 },
-          { at: 8, say: '반구의 곡면은 $18\\pi$예요.', step: 3 }
+          { at: 0, say: '원뿔 옆넓이는 $\\pi\\times3\\times5=15\\pi$예요.', step: 1, set: { svSideReady: true } },
+          { at: 4, say: '원기둥 옆넓이는 $2\\pi\\times3\\times4=24\\pi$예요.', step: 2, set: { svOtherReady: true } },
+          { at: 8, say: '반구의 곡면은 $18\\pi$예요.', step: 3, set: { svBaseReady: true } }
         ]
       },
       {
@@ -860,15 +878,15 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '펼쳐 보기',
         start: { sTh: 90, sR2: 4, sH2: 7, sT2: 0, svYaw: 78, svPitch: 22 },
         cues: [
-          { at: 0, say: '반지름 4, 중심각 90°인 부채꼴 기둥이에요.', set: { svShowV: false }, to: { sT2: 1 }, dur: 5, ease: 'smooth' },
-          { at: 5.5, say: '펼치면 밑면 2개와 옆면 직사각형이 나와요.' }
+          { at: 0, say: '반지름 4, 중심각 90°인 부채꼴 기둥이에요.', set: { svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, to: { sT2: 1 }, dur: 5, ease: 'smooth' },
+          { at: 5.5, say: '높이는 7이에요. 밑면 2개와 옆면을 펼쳐요.' }
         ]
       },
       {
         length: 10,
         title: '밑넓이',
         cues: [
-          { at: 0, say: '밑면은 부채꼴이고 넓이는 $4\\pi$예요.', step: 1 },
+          { at: 0, say: '밑면은 부채꼴이고 넓이는 $4\\pi$예요.', step: 1, set: { svBaseReady: true } },
           { at: 4.5, say: '밑면이 2개라서 이 넓이를 두 번 더해요.' }
         ]
       },
@@ -877,8 +895,8 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '옆면의 가로',
         cues: [
           { at: 0, say: '옆면의 가로는 호만이 아니라 둘레 전체예요.', step: 2 },
-          { at: 4.5, say: '호 $2\\pi$에 반지름 4, 4를 더해 $8+2\\pi$.' },
-          { at: 8.5, say: '옆넓이는 $28+14\\pi+28=56+14\\pi$예요.' }
+          { at: 4.5, say: '호 $2\\pi$에 반지름 4, 4를 더해 $8+2\\pi$.', set: { svOtherReady: true } },
+          { at: 8.5, say: '옆넓이는 $28+14\\pi+28=56+14\\pi$예요.', set: { svSideReady: true } }
         ]
       },
       {
@@ -909,8 +927,8 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '펼쳐 보기',
         start: { sW: 4, sRr: 2, sH5: 5, sT5: 0, svYaw: 28, svPitch: 22 },
         cues: [
-          { at: 0, say: '밑면이 직사각형에 반원을 붙인 기둥이에요.', set: { svMode: 'surf', sv15Started: true, svShowV: false }, to: { sT5: 1 }, dur: 5, ease: 'smooth' },
-          { at: 5.5, say: '펼치면 밑면 2개와 옆면이 나와요.' }
+          { at: 0, say: '밑면은 4×4 직사각형과 반지름 2인 반원이에요.', set: { svMode: 'surf', sv15Started: true, svShowV: false, svBaseReady: false, svSideReady: false, svOtherReady: false, svBigReady: false, svSmallReady: false }, to: { sT5: 1 }, dur: 5, ease: 'smooth' },
+          { at: 5.5, say: '높이 5인 기둥을 펼치면 밑면 2개와 옆면이에요.' }
         ]
       },
       {
@@ -918,7 +936,7 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '밑넓이',
         cues: [
           { at: 0, say: '밑면의 넓이는 직사각형과 반원을 더해요.', step: 1 },
-          { at: 4.5, say: '밑넓이는 $16+2\\pi$예요.' }
+          { at: 4.5, say: '밑넓이는 $16+2\\pi$예요.', set: { svBaseReady: true } }
         ]
       },
       {
@@ -926,8 +944,8 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         title: '옆면의 가로',
         cues: [
           { at: 0, say: '밑면의 둘레에는 반원의 호가 들어가요.', step: 2 },
-          { at: 4.5, say: '붙인 변은 빼고 $4+4+2\\pi+4=12+2\\pi$.' },
-          { at: 8.5, say: '옆넓이는 $20+20+10\\pi+20=60+10\\pi$.' }
+          { at: 4.5, say: '붙인 변은 빼고 $4+4+2\\pi+4=12+2\\pi$.', set: { svOtherReady: true } },
+          { at: 8.5, say: '옆넓이는 $20+20+10\\pi+20=60+10\\pi$.', set: { svSideReady: true } }
         ]
       },
       {

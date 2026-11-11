@@ -215,6 +215,6 @@
 
   const base = G.scene3;
   // 해설 재생 중(s.lessonOn)이고 결론을 드러내는 표시(s.svShowV)가 아직 꺼져 있으면 D.lessonHide — 합 식의 결과 줄(sumRows 의 둘째 줄부터)처럼 정답이 들어 있는 글자를 아끼는 신호입니다. 탐구·문제 탭·썸네일은 lessonOn 이 없어 그대로입니다.
-  G.scene3 = function (b, s, C, o) { const D = install(base(b, s, C, o)); D.lessonHide = !!(s && s.lessonOn && !s.svShowV); return D; };
+  G.scene3 = function (b, s, C, o) { const D = install(base(b, s, C, o)); D.lessonHide = !!(s && (s.lessonOn || s.lessonEntry) && !s.svShowV); return D; };
   Object.assign(G, { PAIR, pairColor });
 })();
