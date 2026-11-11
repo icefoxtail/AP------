@@ -13,8 +13,8 @@ window.examData = {
         "$\\tan A = \\sqrt{2}$",
         "$\\tan B = \\sqrt{2}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=\\sqrt3$, $BC=1$이므로 피타고라스 정리에 의하여 $AC=\\sqrt{(\\sqrt3)^2-1^2}=\\sqrt2$이다.<br>① $\\sin A=\\dfrac{BC}{AB}=\\dfrac{1}{\\sqrt3}=\\dfrac{\\sqrt3}{3}$이다. ② $\\sin B=\\dfrac{AC}{AB}=\\dfrac{\\sqrt2}{\\sqrt3}=\\dfrac{\\sqrt6}{3}$이다. ③ $\\cos A=\\dfrac{AC}{AB}=\\dfrac{\\sqrt6}{3}$이다. ④ $\\tan A=\\dfrac{BC}{AC}=\\dfrac{1}{\\sqrt2}=\\dfrac{\\sqrt2}{2}$이다. ⑤ $\\tan B=\\dfrac{AC}{BC}=\\dfrac{\\sqrt2}{1}=\\sqrt2$이다.<br>따라서 옳은 것은 ⑤이다."
     },
     {
       "id": 2,
