@@ -60,8 +60,10 @@ function firstAnswer(id, packet) {
   return lab.old.specs[id] ? lab.old.specs[id].ans(packet) : packet.ans.tex;
 }
 // These source answers are numbers, one radical, or the original interval.
-// Normalize notation only; the preceding independent oracle verifies the math.
+// Normalize notation only; the independent oracle verifies the math.
 function answerValue(text) {
+  const singleMath = String(text).match(/^[^$]*\$([^$]+)\$[^$]*$/);
+  if (singleMath) text = singleMath[1];
   const count = String(text).match(/(?:정수\s*k는\s*|^)(-?\d+)\s*개/);
   if (count) return count[1];
   return String(text).replace(/\$|\s|\\text\{개\}/g, '').split('=').at(-1)
@@ -93,7 +95,9 @@ test('production HTML registers 36 scenes and 104 valid lessons with all origina
       const first = lesson.chapters[0].cues[0];
       first.set.lqcConcept ? concepts++ : originals++;
       for (const key of ['lqcQuestion', 'lqcConcept', 'lqcExplore', 'lqcTarget', 'lqcShowAnswer', 'lqcMode', 'lqcStrict']) assert.ok(Object.hasOwn(first.set, key), `${scene.id}/${lesson.label}: resets ${key}`);
-      assert.equal(first.at, 0); assert.equal(first.set.lqcShowAnswer, false); assert.equal(first.part, null);
+      assert.equal(first.at, 0); assert.equal(first.set.lqcShowAnswer, false);
+      assert.ok(Object.hasOwn(first, 'part'), `${scene.id}/${lesson.label}: emphasis starts explicitly`);
+      assert.ok(first.part === null || typeof first.part === 'string', 'an authored emphasis target or no emphasis is valid');
       if (!first.set.lqcConcept) {
         assert.equal(first.set.lqcQuestion, lab.api.question(scene.id), 'original condition text is retained exactly');
         const expected = answerValue(lab.api.answer(scene.id));
@@ -107,6 +111,7 @@ test('production HTML registers 36 scenes and 104 valid lessons with all origina
       const compiled = video.compileLesson(lesson);
       assert.ok(compiled.length >= 60 && compiled.length <= 90);
       for (const key of Object.keys(compiled.tracks)) assert.ok(Number.isFinite(compiled.start[key]), `${scene.id}/${lesson.label}: numeric ${key} starts explicitly`);
+      assert.equal(video.stateAt(compiled, 0, { nums: {}, sets: {}, step: 99, part: 'stale-other-lesson' }).part, first.part, 'the initial emphasis replaces the previous lesson target');
     }
   }
   assert.equal(concepts, 68); assert.equal(originals, 36); assert.equal(concepts + originals, 104);
@@ -339,13 +344,23 @@ function onSegment(p, a, b) {
   const u = length2 ? Math.max(0, Math.min(1, ((p.x - a.x) * dx + (p.y - a.y) * dy) / length2)) : 0;
   return Math.hypot(p.x - a.x - u * dx, p.y - a.y - u * dy) < 1e-7;
 }
-function traceOnSource(frame, label) {
+function traceOnSource(frame, label, sceneId) {
   const marker = frame.points.find(p => p.options.color === 'violet' && p.options.r === 4.5 && p.options.glow === false && !p.options.label);
   assert.ok(marker, `${label}: a visible trace marker starts within one second`);
   const p = marker.point;
   const onPlot = frame.plots.some(plot => !isTrace(plot.options) && p.x >= plot.from - 1e-7 && p.x <= plot.to + 1e-7 && Math.abs(plot.evaluate(p.x) - p.y) < 1e-7);
-  const onPath = frame.paths.some(path => !isTrace(path.options) && path.points.length >= 8 && path.points.slice(1).some((end, i) => onSegment(p, path.points[i], end)));
+  const onPath = frame.paths.some(path => !isTrace(path.options) &&
+    (path.points.length >= 8 || (sceneId === 'cq-sweep' && path.points.length === 2 && path.options.color === 'amber' && path.options.width === 3.2)) &&
+    path.points.slice(1).some((end, i) => onSegment(p, path.points[i], end)));
   assert.ok(onPlot || onPath, `${label}: the marker follows a curve/path already drawn by the source`);
+  if (sceneId === 'cq-sweep') {
+    const native = label => frame.points.find(point => point.options.label === label)?.point;
+    const D = native('D'), E = native('E'), F = native('F');
+    assert.ok(D && E && F, 'the three intersections of the actual sweeping line are present');
+    near(p.y, D.y, 'the trace stays on the original y=k cut');
+    near(E.y, D.y, 'E is on the horizontal cut'); near(F.y, D.y, 'F is on the horizontal cut');
+    assert.ok(p.x >= D.x && p.x <= F.x, 'the trace remains between the original cut endpoints');
+  }
   assert.ok(p.x >= frame.viewBox.x0 && p.x <= frame.viewBox.x1 && p.y >= frame.viewBox.y0 && p.y <= frame.viewBox.y1, 'the first trace is inside the visible Board');
 }
 
@@ -357,7 +372,7 @@ test('every authored cue draws finite native geometry and traces an actual sourc
     apply(compiled, 0.8, base); const motion = lab.draw();
     const label = `${scene.id}/${lesson.label}`;
     assert.notEqual(signature(motion), signature(first), `${label}: visible movement starts within one second`);
-    traceOnSource(motion, label);
+    traceOnSource(motion, label, scene.id);
     if (motion.plots.some(plot => isTrace(plot.options))) plotTraces++;
     if (motion.paths.some(path => isTrace(path.options))) pathTraces++;
     const times = new Set([0, 0.8, compiled.length]);
@@ -377,7 +392,7 @@ test('every authored cue draws finite native geometry and traces an actual sourc
     assert.deepEqual(plain(packet), before, 'source problem data are not mutated by playback');
   }
   assert.ok(plotTraces > 0 && pathTraces > 0, 'both the actual Board.plot and legacy Board.path routes were exercised');
-  t.diagnostic(`${frames} production Board/raw-canvas cue frames; first traces: ${plotTraces} native plots and ${pathTraces} legacy paths; full browser/mobile visual audit NOT_RUN`);
+  t.diagnostic(`${frames} production Board/raw-canvas cue frames; first traces: ${plotTraces} native plots and ${pathTraces} source paths/segments; full browser/mobile visual audit NOT_RUN`);
 });
 
 test('actual new-problem clicks, fixed original replay and manual problem state coexist', () => {

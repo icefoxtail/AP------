@@ -1454,8 +1454,15 @@ window.addEventListener('DOMContentLoaded', function () {
       b.emph = { ...emph, part: shown.part };
       b.plot = function (fn, options = {}) { if ((!options.dash || !options.dash.length) && (options.width || 3) >= 3) plots.push({ fn, options }); return plot.call(this, fn, options); };
       b.path = function (points, options = {}) {
-        if ((!options.dash || !options.dash.length) && (options.width || 3) >= 3 && points.length >= 8)
-          paths.push({ points: points.map(p => ({ x: p.x == null ? p[0] : p.x, y: p.y == null ? p[1] : p.y })), options });
+        const cutLine = sc.id === 'cq-sweep' && points.length === 2 && options.color === 'amber';
+        if ((!options.dash || !options.dash.length) && (options.width || 3) >= 3 && (points.length >= 8 || cutLine)) {
+          let captured = points.map(p => ({ x: p.x == null ? p[0] : p.x, y: p.y == null ? p[1] : p.y }));
+          if (cutLine) {
+            const [a, z] = captured;
+            captured = Array.from({ length: 17 }, (_, i) => ({ x: a.x + (z.x - a.x) * i / 16, y: a.y + (z.y - a.y) * i / 16 }));
+          }
+          paths.push({ points: captured, options });
+        }
         return path.call(this, points, options);
       };
       b.point = function (p, options = {}) {
