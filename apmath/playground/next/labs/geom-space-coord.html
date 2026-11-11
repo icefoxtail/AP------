@@ -20,7 +20,13 @@
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-space.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="geom-space-coord/lesson-core.js"></script>
+<script defer src="geom-space-coord/lesson-a.js"></script>
+<script defer src="geom-space-coord/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -38,6 +44,9 @@ window.addEventListener('DOMContentLoaded', function () {
   const { clamp } = APLab;
 
   /* ===== 원본 상태(이름 그대로) — 매 프레임 2.0 셸 상태에서 채웁니다 ===== */
+  const lscActive = s => !!(s && (s.lessonOn || s.lessonEntry));
+  let lscContext = null;
+
   const state = { mode: 1, t12: 1 / 3, d3: 3.0, theta4: Math.acos(3 / 5), lens: 'all', partIdx: null, steps: { 1: true, 2: false, 3: false } };
 
   /* ===== 원본 그대로: 4대 기출 문제 & 두 풀이 (원본 590–717행) ===== */
@@ -518,14 +527,14 @@ window.addEventListener('DOMContentLoaded', function () {
       inPart(0,()=>{ draw3DSphereWireframe(C, R); });
 
       // Step 2: 중심 관통선 및 최대(Q_max, 8), 최소(Q_min, 2) 표시
-      if (state.steps[2]) inPart(1,()=>{
-        draw3DLine(Qmax, P, 'rgba(52, 211, 153, 0.75)', 2.4, true);
-        draw3DPoint(Qmax, 6, '#34d399', sameAngle(theta, Math.PI) ? 'Q = Qmax' : 'Qmax', { x: -135, y: 18 });
-        draw3DPoint(Qmin, 6, '#f43f5e', (sameAngle(theta, 0) || sameAngle(theta, 2 * Math.PI)) ? 'Q = Qmin' : 'Qmin', { x: 12, y: 16 });
+      if (state.steps[2] && (!lscContext || lscContext.lscExtreme !== 'none')) inPart(1,()=>{
+        draw3DLine(lscContext?.lscExtreme === 'min' ? C : Qmax, P, 'rgba(52, 211, 153, 0.75)', 2.4, true);
+        if (!lscContext || ['both','max'].includes(lscContext.lscExtreme)) draw3DPoint(Qmax, 6, '#34d399', sameAngle(theta, Math.PI) ? 'Q = Qmax' : 'Qmax', { x: -135, y: 18 });
+        if (!lscContext || ['both','min'].includes(lscContext.lscExtreme)) draw3DPoint(Qmin, 6, '#f43f5e', (sameAngle(theta, 0) || sameAngle(theta, 2 * Math.PI)) ? 'Q = Qmin' : 'Qmin', { x: 12, y: 16 });
       });
 
       // Step 3: 접선 PT (길이 l = 4) 및 직각삼각형 ΔCTP (∠CTP = 90°)
-      if (state.steps[3]) inPart(2,()=>{
+      if (state.steps[3] && (!lscContext || lscContext.lscTangent)) inPart(2,()=>{
         // CP의 단위벡터 n, 접점 원 중심 = (R²/d)n; 반지름 R*l/d = 12/5.
         const n={x:4/5,y:0,z:3/5};
         const circleCenter={x:(R*R/5)*n.x,y:0,z:(R*R/5)*n.z};
@@ -545,13 +554,25 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DPoint(T, 6.5, '#fbbf24', sameAngle(theta, alpha) ? 'Q = T' : 'T', { x: -65, y: -14 });
 
         if(state.lens==='measure')drawFormulaFractionNear(circleCenter,'12','5');
+        if (lscContext?.lscTarget === '접점의원') {
+          draw3DLine(C, circleCenter, '#38bdf8', 2.4, true);
+          draw3DLine(circleCenter, T, '#34d399', 3.2);
+          draw3DPoint(circleCenter, 5, '#34d399', 'H');
+          draw3DRightAngle(circleCenter, C, T, .24, '#34d399');
+        }
       });
 
 
 
+      if (lscContext?.lscTarget === '각도와거리' && lscContext.step >= 1) {
+        draw3DLine(C, P, '#38bdf8', 2.5);
+        draw3DLine(C, Q, '#f472b6', 2.5);
+        draw3DAngleArc(C, P, Q, .8, '#fde047', 'θ');
+      }
       // 동점 Q 표시
       draw3DLine(P, Q, 'rgba(255,255,255,0.45)', 1.6, true);
-      const namedQ = state.steps[2] && ((sameAngle(theta, 0) || sameAngle(theta, 2 * Math.PI)) || sameAngle(theta, Math.PI)) || state.steps[3] && (sameAngle(theta, alpha) || sameAngle(theta, 2 * Math.PI - alpha));
+      const namedQ = state.steps[2] && ((!lscContext || ['both','min'].includes(lscContext.lscExtreme)) && (sameAngle(theta, 0) || sameAngle(theta, 2 * Math.PI)) || (!lscContext || ['both','max'].includes(lscContext.lscExtreme)) && sameAngle(theta, Math.PI))
+        || state.steps[3] && (!lscContext || lscContext.lscTangent) && (sameAngle(theta, alpha) || sameAngle(theta, 2 * Math.PI - alpha));
       if (!namedQ) draw3DPoint(Q, 5.5, '#e2e8f0', state.steps[3] ? `Q (PQ≈${pq.toFixed(2)})` : 'Q', { x: -18, y: -10 }, { problemLabel: 'Q' });
       draw3DPoint(C, 6, '#38bdf8', '중심 C(0,0,0)', { x: -45, y: 22 });
       draw3DPoint(P, 7.5, '#fbbf24', '외부 점 P(4, 0, 3)', { x: 12, y: -10 });
@@ -901,6 +922,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   /* 정리 탭: idx단계까지 나타났으면 그립니다(지금 단계가 아니면 흐리게) */
   function layer(s, lab, idx, fn) {
+    if (lscContext?.lscLayers?.length && !lscContext.lscLayers.includes(idx)) return;
     if (lab.tab !== 'review') { fn(); return; }
     if (s.step < idx) return;
     const c = BRD.ctx;
@@ -1261,7 +1283,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const G = rv(q.G), Gx = explore ? P3((A.x + B.x + C.x) / 3, (A.y + B.y + C.y) / 3, (A.z + B.z + C.z) / 3) : G;
     const cen = mul3(add3(add3(A, B), C), 1 / 3);
     let X = null, Xf = null, m, n, extMode = false;
-    if (explore) { m = s.m7 | 0; n = s.n7 | 0; extMode = (s.mode7 | 0) === 1; Xf = div7([A7[0], A7[1], A7[2]], B7, m, n, extMode); if (Xf) X = rv(Xf); }
+    if (explore) { m = s.m7 | 0; n = s.n7 | 0; extMode = (s.mode7 | 0) === 1; Xf = div7([A7[0], A7[1], A7[2]], B7, m, n, extMode); if (Xf && lscContext?.lscTarget !== '무게중심') X = rv(Xf); }
     const Qp = rv(q.Q);
     const pts = explore ? [A, B, C, ...(X ? [X] : []), ...(s.cent ? [Gx] : [])] : [A, B, C, G, Qp];
     const ext = extPts(pts, 4, 2);
@@ -1375,7 +1397,8 @@ window.addEventListener('DOMContentLoaded', function () {
         });
         layer(s, lab, 3, () => {
           draw3DPolygon([P, V.F, V.H], 'rgba(251,191,36,.22)', '#fbbf24', 2.4);
-          const tri3 = explore ? (s.tri | 0) === 1 : tab === 'review';
+          if (lscContext?.lscTarget === '직각확인' && lscContext.lscShowAnswer) draw3DRightAngle(P, V.F, V.H, rsz, '#34d399');
+          const tri3 = lscContext?.lscTarget === '직각확인' ? false : explore ? (s.tri | 0) === 1 : tab === 'review';
           if (tri3) {
             const same = u === a / 2, onBase = u === a;
             if (!onBase) draw3DLine(P, Q, rgb('sky'), 2.6, true);
@@ -1710,7 +1733,7 @@ window.addEventListener('DOMContentLoaded', function () {
   examData[3].textbook = () => ({steps:`① ${tex('z=0')}을 구의 방정식에 대입한다: ${tex('x^2+y^2+9=25')}.<br/>② 평면 위의 원의 방정식 ${tex('x^2+y^2=16')}에서 중심은 원점, 반지름은 ${tex('4')}이다.<br/>③ 넓이는 ${tex('16\\pi')}. 중심에서 평면까지 거리 ${tex('d=3')}가 반지름 ${tex('R=5')}보다 작아 실제 원이 생기는 조건도 만족한다.`,warning:'좌표평면에는 대입법이 간단합니다. 기울어진 평면에서는 중심까지의 수직 거리와 직각삼각형으로 같은 관계를 얻습니다.'});
   const sameAngle = (a, b) => Math.abs(a - b) <= 4 * Number.EPSILON * Math.max(1, Math.abs(a), Math.abs(b));
   function coordFixedState(s, m, lab) {
-    if (lab?.tab === 'explore') return s;
+    if (lab?.tab === 'explore' || lscActive(s)) return s;
     return { ...s, ...(m === 1 ? { t1: 1 / 3 } : m === 2 ? { t2: 2 / 3 } : m === 3 ? { d: 3 } : { th: TH4_TANGENT }) };
   }
   function fitCoordinates(pts, paint, options) {
@@ -1888,7 +1911,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return v;
   }
 
-  APLab.createLab({
+  const labDefinition = {
     stagedReveal: true,
     id: 'geom-space-coord',
     title: '공간좌표 3D',
@@ -1925,7 +1948,89 @@ window.addEventListener('DOMContentLoaded', function () {
     state: { lens: 'all', feet1: 0, kind: 0, tgt: 0, sel6: 0, mode7: 0, cent: 0, tri: 0, coord: 0, sd5: 0, sd6: 0, sd7: 0, sd8: 0 },
     persist: ['lens', 'feet1', 'kind', 'tgt', 'sel6', 'mode7', 'cent', 'tri', 'coord', 'sd5', 'sd6', 'sd7', 'sd8'],
     scenes: [...[1, 2, 3, 4].map(sceneOf), ...[5, 6, 7, 8].map(sceneNew)]
-  });
+
+  };
+
+  /* One-click lessons keep the original first problem, 3D renderer and controls. */
+  const lessonScenes = labDefinition.scenes;
+  const copy = value => JSON.parse(JSON.stringify(value));
+  const info = Object.fromEntries(lessonScenes.map(sc => {
+    const m = Number(sc.id.slice(4));
+    const initial = {...labDefinition.state, ...Object.fromEntries(Object.entries(labDefinition.params).map(([k,v]) => [k,v.value]))};
+    sc.enter(initial);
+    // Initial playback is the given geometry, not a user's previous seed/drag.
+    initial.sd5 = initial.sd6 = initial.sd7 = initial.sd8 = 0;
+    initial.lscOrbit = 0;
+    const question = (typeof sc.problem.text === 'function' ? sc.problem.text(initial) : sc.problem.text).replace(/<div class="nc-tools">[\s\S]*$/, '');
+    sync(initial, m);
+    const first = m <= 4 ? copy({geometry:KEY(m), question, answer:sc.problem.answer(initial), snap:sc.problem.snap(initial)}) : copy(NC[m](0));
+    return [sc.id, {initial, question, first, inquiry:sc.question}];
+  }));
+  const lessonSource = window.APL_SC_SOURCE = {
+    scenes:lessonScenes, initial:id=>{
+      const initial=copy(info[id].initial);
+      // Seed selection belongs to the original problem UI, never to a lesson track.
+      for(const key of ['sd5','sd6','sd7','sd8'])delete initial[key];
+      return initial;
+    }, first:id=>copy(info[id].first),
+    question:id=>info[id].question, inquiry:id=>info[id].inquiry,
+    variant:(id,seed)=>{const m=Number(id.slice(4));return m>=5?copy(NC[m](seed)):copy(info[id].first);},
+    math:{derive5,div7,mk8,sec6,cubeV,dist3,w,cam,th4Of,dist1}
+  };
+  const scMathKey = value => String(value||'').normalize('NFKC').replace(/&gt;/g,'>').replace(/&lt;/g,'<').replace(/&#(?:39|x27);/g,"'").replace(/^(?:중심 |외부 점 |대칭점 |탐구점 |최단점 )/,'').replace(/^([A-Z][0-9′'*]*)(?=\()/,'$1=')
+    .replace(/\\(?:left|right|,|!|;|quad|qquad)/g,'')
+    .replace(/\\(?:dfrac|tfrac|frac)\{([^{}]*)\}\{([^{}]*)\}/g,'$1/$2')
+    .replace(/\\sqrt\{([^{}]*)\}/g,'√$1').replace(/\\sqrt\s*(\w)/g,'√$1')
+    .replace(/\\(?:text|mathrm|mathbf|overline)\{([^{}]*)\}/g,'$1')
+    .replace(/\\theta/g,'θ').replace(/\\pi/g,'π').replace(/\\circ/g,'°').replace(/\\angle/g,'∠').replace(/\\perp/g,'⊥')
+    .replace(/\\leq?/g,'≤').replace(/\\geq?/g,'≥').replace(/\\lt/g,'<').replace(/\\gt/g,'>')
+    .replace(/\\cdot|\\times/g,'×').replace(/[−–]/g,'-').replace(/[′’]/g,"'").replace(/≈/g,'=')
+    .replace(/[\s{}$^_()]/g,'').replace(/-?\d+\.\d+/g,x=>String(Number(x)));
+  function scLessonLabel(value,s) {
+    const str=String(value||''),key=scMathKey(str),known=(s.lscKnownMath||[]).map(scMathKey);
+    if (key && known.some(k=>k.includes(key))) return str;
+    const pair=key.split('=');
+    if(pair.length===2&&known.some(k=>{const chain=k.split('=');return chain.length>2&&chain.includes(pair[0])&&chain.includes(pair[1]);}))return str;
+    if (/^(?:[A-Z][′'*₀₁₂]?|[xyzRrdθ]|[xyz]축(?:\(높이\))?|[xyz]{2}평면|접점|Qmax|Qmin)$/.test(str)) return str;
+    const name=str.match(/^(?:중심 |외부 점 |대칭점 |탐구점 |최단점 )?([A-Z][′'*₀₁₂]*)(?=[\s(=:≈]|$)/);
+    return name ? name[1] : '';
+  }
+  for(const sc of lessonScenes) {
+    const original={question:sc.question,steps:sc.steps,view:sc.view,draw:sc.draw,tick:sc.tick};
+    sc.question=(s,lab)=>lscActive(s)?s.lscQuestion||lessonSource.question(sc.id):typeof original.question==='function'?original.question(s,lab):original.question;
+    sc.steps=(s,lab)=>lscActive(s)?['조건 확인','전략과 보조선','계산','결론']:original.steps(s,lab);
+    sc.view=(s,lab)=>lscActive(s)?{}:original.view(s,lab);
+    sc.tick=(s,dt,lab)=>lscActive(s)?false:original.tick?.(s,dt,lab);
+    sc.draw=(b,s,v,lab)=>{
+      if(!lscActive(s)) {
+        if(b._scLessonView) {
+          Object.assign(b,b._scLessonView.before);
+          delete b._scLessonView;
+        }
+        return original.draw(b,s,v,lab);
+      }
+      if(!b._scLessonView)b._scLessonView={before:{focus:b.focus,zoom:b.zoom,panX:b.panX,panY:b.panY}};
+      const shown={...s,...(s.lessonEntry?s.lscInitial:{}),playing:false,dragging:false,
+        step:s.lessonEntry?(s.lscInitial?.lscStartStep||0):Math.max(0,Math.min(s.step||0,3))};
+      for(const [key,value] of Object.entries(lessonSource.initial(sc.id))){
+        const track=(typeof value==='number'?'lscN_':'lscS_')+key;
+        if(Object.hasOwn(shown,track))shown[key]=shown[track];
+      }
+      if(s.lessonEntry){shown.lscOrbit=0;shown.lscShowAnswer=false;}
+      shown.sd5=shown.sd6=shown.sd7=shown.sd8=0;
+      shown.yaw += 6*(shown.lscOrbit||0);
+      const shownLab=Object.create(lab);shownLab.s=shown;shownLab.tab=shown.lscExplore?'explore':'review';
+      b.zoom=1;b.panX=0;b.panY=0;
+      const text=b._text,math=b.math;
+      b._text=function(x,y,label,options={},screen){return text.call(this,x,y,this._bbox?label:scLessonLabel(label,shown),options,screen);};
+      b.math=function(id,p,value,options){return math.call(this,id,p,this._bbox||shown.lscShowAnswer?value:'',options);};
+      const previous=lscContext;lscContext=shown;
+      try {original.draw(b,shown,{},shownLab);}
+      finally {lscContext=previous;b._text=text;b.math=math;}
+    };
+  }
+  labDefinition.lessons=window.APL_SC_LESSONS?window.APL_SC_LESSONS.install(lessonScenes,lessonSource):{};
+  APLab.createLab(labDefinition);
 });
 </script>
 </body>

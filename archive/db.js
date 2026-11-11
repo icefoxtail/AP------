@@ -1757,6 +1757,99 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
+      "file": "similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사.js",
+      "school": "광양제철고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2026,
+      "semester": "1",
+      "examType": "final",
+      "subject": "공통수학1",
+      "contentType": "유형",
+      "qCount": 19,
+      "rangeStartUnitKey": "H22-C-04",
+      "rangeStartUnit": "복소수와 이차방정식",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-C-09",
+      "rangeEndUnit": "행렬과 그 연산",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-04",
+          "rangeStartUnit": "복소수와 이차방정식",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-C-09",
+          "rangeEndUnit": "행렬과 그 연산",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사2.js",
+      "school": "광양제철고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2026,
+      "semester": "1",
+      "examType": "final",
+      "subject": "공통수학1",
+      "contentType": "유형",
+      "qCount": 19,
+      "rangeStartUnitKey": "H22-C-04",
+      "rangeStartUnit": "복소수와 이차방정식",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-C-09",
+      "rangeEndUnit": "행렬과 그 연산",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-04",
+          "rangeStartUnit": "복소수와 이차방정식",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-C-09",
+          "rangeEndUnit": "행렬과 그 연산",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "similar/high/h1/1final/26_금당고_1학기_기말_고1_유사.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2026,
+      "semester": "1",
+      "examType": "final",
+      "subject": "공통수학1",
+      "contentType": "유형",
+      "qCount": 20,
+      "rangeStartUnitKey": "H22-C-04",
+      "rangeStartUnit": "복소수와 이차방정식",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-C-09",
+      "rangeEndUnit": "행렬과 그 연산",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-04",
+          "rangeStartUnit": "복소수와 이차방정식",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-C-09",
+          "rangeEndUnit": "행렬과 그 연산",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
       "file": "similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사.js",
       "school": "금당고",
       "topic": "",

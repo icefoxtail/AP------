@@ -1066,7 +1066,7 @@ def prepare(spec):
                 if style=='SECTOR':
                     # The fill's boundary is the outermost arc, so the darkest edge of the wedge is a real stroke drawn over it.
                     wedge=[v]+[(v[0]+outer_radius*math.cos(start+delta*i/steps),v[1]+outer_radius*math.sin(start+delta*i/steps)) for i in range(steps+1)]
-                    primitive({'id':oid+'-sector','kind':'polygon','points':wedge,'token':'secondaryShape','layer':12,'role':'angleSector','mark':'angle','markId':oid,'markIndex':0,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER',**(region_paint(obj['color']) if obj.get('color') else {'fill':SECTOR_FILL}),'noStroke':True,'ownerPoints':obj['refs']})
+                    primitive({'id':oid+'-sector','kind':'polygon','points':wedge,'token':'secondaryShape','layer':12,'role':'angleSector','mark':'angle','markId':oid,'markIndex':0,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER',**(region_paint(obj.get('fillColor') or obj['color']) if obj.get('fillColor') or obj.get('color') else {'fill':SECTOR_FILL}),'noStroke':True,'ownerPoints':obj['refs']})
                 group_stroke=PALETTE[obj['color']]['line'] if obj.get('color') else ANGLE_EMPHASIS_STROKES.get(obj.get('emphasisGroup'))
                 for k in range(count):
                     radius=outer_radius if obj.get('angleDimension') is not None else first+arc_gap*k
