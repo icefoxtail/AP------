@@ -60,7 +60,8 @@
 | `calc1-tangent` 접선과 미분계수 | 7 | 7 / 26 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1782](https://github.com/icefoxtail/AP------/pull/1782), merge `1e5c92ffd6beabd3225053f6ad35f8f25898522e`. 개념 17·첫 원문 소문항 9. 최소 검사 47/47·726 Board cue frames. 실제 운영 파일 0/2 일치 (§7) |
 | `alg-sine-cosine-law` 사인·코사인법칙 | 18 | 18 / 45 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1784](https://github.com/icefoxtail/AP------/pull/1784), merge `f30aaecf76d61a0a2a5c5a6d827c9d488af7dda5`. 개념 18·첫 원문 소문항 27. 최소 검사 47/47·1,188 Board/raw canvas cue frames. 실제 운영 파일 0/4 일치 (§7) |
 | `common-rational` 유리함수 | 4 | 4 / 19 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1786](https://github.com/icefoxtail/AP------/pull/1786), merge `b07a26bba6afde5dd00996dacb036ef6228668eb`. 개념 15·첫 원문 4. 최소 검사 47/47·546 Board/raw canvas cue frames. 실제 운영 파일 0/4 일치 (§7) |
-| 고등 잔여 35개 | — | — | 세 시범 다음 과목 순서로 진행. 다음 `common-poly-solid` 5장면 (§7) |
+| `common-poly-solid` 다항식과 입체 | 5 | 5 / 17 | **IMPLEMENTED / QA_PENDING** · 개념 12·첫 원문 5. 최소 검사 47/47·466 Board cue frames(392 native Space), 실제 입체 조각·공통면·부피 검산. PR/main/Pages 확인 예정 (§7) |
+| 고등 잔여 34개 | — | — | 과목 순서로 진행. 다음 `common-quadratic` 36장면 (§7) |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -250,6 +251,8 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-11 · `common-poly-solid` **5장면/17해설 구현 완료**(개념 12·첫 원문 5). 정사각형 합/차의 제곱·제곱합, 정육면체 여덟 조각/가운데 여섯 조각/세제곱합, 직육면체 모서리/겉넓이/공간대각선/세 면의 넓이 제곱합, 절단 입체의 두 차/단면/원문, 두 기둥의 합/차/내분점 길이를 독립 버튼으로 나누었다. 5~6장/60~72초, 첫 원문 고정·수동 새 문제 보존·마지막 장 정답 공개. 기존 `apl-space.js`와 실제 원본 입체를 그대로 사용하며 첫 회전·조각 분리·면 강조를 자막에 연결했다. 최소 검사 **47/47 통과**(신규 실제 HTML 통합 6+기존 video 41), validator 오류·경고 0, 원문 5종 독립 수학 검산, 실제 Board **466 cue frames** 중 **392 native Space frames**. 정육면체 8조각/24면, 절단 공통 단면 및 모서리/겉넓이 차, 삼각기둥 실제 부피·2D 네 조각을 검증했고 manual/new/replay/entry 및 AP 숫자 공개 게이트를 확인했다. JS/MJS 5파일·HTML 인라인 2개 구문과 diff 검사 통과. 로그 SHA-256 `3a2415ea0a9cef5a770e0dbbaeb36a72178455f62713a03f39cdd71d1c6917ff`, manifest SHA-256 `8a145359a5e71ba65b68236cce629f3f3ac7570a2d1ca5ec572620c7441b38bb`. 최초 validator의 자막 길이 1건을 축약해 수정한 뒤 위 최종 검사를 수행했다. 첫 원격 보존 head `0252f28b85fb7055561e27cf6efbf101b12c8172`에는 전체 17해설이 있으며 검사 manifest의 제품 파일 hash와 일치한다. 최종 PR/main/Pages는 다음 체크포인트에 기록한다. 공통 키트 추가 변경 없음, 실제 브라우저·전수 모바일·독립 시각 검수는 **NOT_RUN / QA_PENDING**이다.
 
 - 2026-11-11 · 유리함수 [PR #1786](https://github.com/icefoxtail/AP------/pull/1786) **main 병합 완료**. 최종 head `29f48a56d3ca84a40850498a92ed5c5763ccdea0`, merge/API·Git main `b07a26bba6afde5dd00996dacb036ef6228668eb`; ancestor 및 대상 7파일 차이 0 확인. 고등 누계 **3개 실험실·29장면/90해설**, 중등 포함 **19개·558장면/1,622해설**이다. 최소 검사 47/47·546 cue frames이며 병합 직전 CI 5개는 queued였다. 운영 HTML은 이전 파일, 신규 lesson-core/a/b는 404로 0/4 일치하여 **PAGES_NOT_VERIFIED / QA_PENDING**. 공개 배포 source는 `fb27d05ee921da9534d9fff332ac774d732b91cf`, writer 43018929846은 pending이다. [AWCR r36](https://drive.google.com/file/d/11HzkVbqkCexmDL7uFyb2Ci0HWVw5m7ok/view) raw SHA-256 `3b76f1f65651a61cd37fcb7d6748668ad12eb123cee797f8da40f7d588f62e48`·16,186 bytes를 다시 읽어 검증했다. 검사 manifest의 17파일을 최종 원격 tree와 대조해 동일함을 확인했다. 다음 `common-poly-solid`는 이 main에서 별도 브랜치를 시작했다. 기존 해설 브랜치/PR은 없고 열린 PR 45개의 2,729개 변경 경로에도 대상 충돌이 없었다.
 
