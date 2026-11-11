@@ -244,7 +244,8 @@
     const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
     const problem = !thumb && tab === 'problem';
     const review = !thumb && tab === 'review';
-    return { tab, problem, review, step: review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
+    const lesson = !thumb && !!(s.lessonOn || s.lessonEntry), entry = lesson && !!s.lessonEntry;
+    return { tab, problem, review, step: entry ? 0 : lesson || review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: !lesson && (tab === 'explore' || thumb), lesson, entry, answer: lesson && !entry && !!s.smShowAnswer, calculation: lesson && !entry && !!s.smCalculationReady };
   }
   const showAt = (C, n) => C.step >= n;
 
@@ -445,6 +446,17 @@
     q.forEach((e) => oText.call(b, e.p, e.str, { ...e.o, dx: (e.o.dx || 0) + (e.ox || 0), dy: (e.o.dy || 0) + (e.oy || 0) }));
   }
 
+  const inLesson = (s) => !!(s.lessonOn || s.lessonEntry);
+  function lessonQuestion(D, s) {
+    const M = D.model(s), Q = D.questionOf(s);
+    const custom = D.lessonQuestion && D.lessonQuestion(M, s, Q);
+    if (custom != null) return texSafe(custom);
+    if (!s.smLessonProblem) return texSafe(typeof D.question === 'function' ? D.question(s) : D.question);
+    let body = Q.html || Q.stem || '';
+    const choices = (Q.choices || []).map(c => c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : c.p);
+    if (choices.length && !choices.every(text => body.includes(String(text)))) body += '<br>' + choices.map((text, i) => NUM[i] + ' ' + text).join('<br>');
+    return texSafe(body);
+  }
   function makeScene(D) {
     const A = D.anim;
     const actions = A ? () => [
@@ -460,15 +472,16 @@
     const DD = { ...D, model, reroll: (s) => { s.smPk = D.gen(1 + Math.floor(Math.random() * 1e9)); } };
     DD.questionOf = (s) => qOf(DD, s);
     DD.solution = (s) => solutionOf(DD, s);
+    const modelFor = (s) => { const M = model(s); return inLesson(s) && DD.lessonModel ? DD.lessonModel(M, s) : M; };
     return {
       id: D.id, title: D.title, short: D.short || D.title, sm: DD,
       tabs: { order: ['explore', 'problem', 'review'], labels: { review: '풀이' } },
-      question: D.question,
+      question: (s) => inLesson(s) ? lessonQuestion(DD, s) : (typeof D.question === 'function' ? D.question(s) : D.question),
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
       steps: (s) => solutionOf(DD, s).steps,
-      reviewTop: (s) => { const Q = qOf(DD, s); return `<div class="sm-current"><b>지금 푸는 문제</b><div class="sm-q">${texSafe(Q.html != null ? Q.html : Q.stem)}</div></div>`; },
+      reviewTop: (s) => { if (inLesson(s)) return ''; const Q = qOf(DD, s); return `<div class="sm-current"><b>지금 푸는 문제</b><div class="sm-q">${texSafe(Q.html != null ? Q.html : Q.stem)}</div></div>`; },
       notesTitle: '자주 틀리는 부분',
       problem: D.prob ? {
         tag: (s) => D.prob(model(s), s).tag,
@@ -483,6 +496,7 @@
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
+        if (inLesson(s)) return false;
         let again = false;
         if (A && s.playing) {
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));
@@ -493,6 +507,7 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
+        if (inLesson(s)) return { guide: null, card: null, readouts: [], formula: null, rule: null, status: null, alert: null, notes: [], chips: [] };
         const C = baseCtx(s, lab, false);
         const M = model(s);
         const v = D.view(M, C, s) || {};
@@ -508,10 +523,20 @@
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
-        const M = model(s);
-        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
+        const M = modelFor(s);
+        C.t = A ? (C.lesson || C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
         drawResolved(b, () => {
-          if (C.review) window.APL_SM.drawSolution(b, DD, s, M, C, solutionOf(DD, s));
+          if (C.lesson) {
+            const solution = solutionOf(DD, s);
+            const custom = DD.lessonDraw ? DD.lessonDraw(b, s, M, C, solution) : false;
+            if (custom === false) {
+              if (s.smLessonProblem) {
+                const stage = C.entry ? 1 : C.answer ? solution.steps.length : Math.max(1, Math.min(C.step, solution.steps.length - 1));
+                window.APL_SM.drawSolution(b, DD, s, M, { ...C, step: stage }, solution);
+              } else DD.draw(b, s, M, C);
+            }
+            if (DD.lessonAfterDraw) DD.lessonAfterDraw(b, s, M, C, solution);
+          } else if (C.review) window.APL_SM.drawSolution(b, DD, s, M, C, solutionOf(DD, s));
           else D.draw(b, s, M, C);
         });
       }
