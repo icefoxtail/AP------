@@ -56,7 +56,14 @@ export function verifyStudentAccess(root, request) {
       if(!String(q.content??q.question??q.stem??'').trim())failures.push(`${qid}:QUESTION_EMPTY`);
       if(!String(q.solution??q.explanation??'').trim()&&!q.solutionImage&&!q.solutionFigureSvg)supplements.push(`${qid}:SOLUTION_PENDING`);
       if(q.questionType==='객관식'&&(!Array.isArray(q.choices)||!q.choices.length)&&!hasReviewedImageChoices(q,qid))failures.push(`${qid}:CHOICES_EMPTY`);
-      for(const value of [q.image,...(Array.isArray(q.images)?q.images:[])])checkAsset(value,qid);
+      checkAsset(q.image,qid);
+      const displayed=[q.image,...Array.from(String(q.content||'').matchAll(/(?:src|href)=["']([^"']+)["']/g),m=>m[1])].filter(x=>typeof x==='string'&&x.startsWith('assets/images/'));
+      for(const value of (Array.isArray(q.images)?q.images:[])){
+        // Legacy metadata sometimes repeats only the basename of a displayed asset.
+        // Resolve it only when the displayed canonical asset is unique and exists.
+        const aliases=typeof value==='string'&&!/[\\/]/.test(value)?displayed.filter(x=>path.posix.basename(x.split(/[?#]/)[0])===value):[];
+        if(aliases.length===1&&fs.existsSync(path.resolve(root,'archive',aliases[0])))checkAsset(aliases[0],qid);else checkAsset(value,qid);
+      }
       if(q.solutionImage)checkAsset(q.solutionImage,qid,{supplemental:true});
       for(const [html,supplemental] of [[q.content,false],[q.figureSvg,false],[q.solution,true],[q.solutionFigureSvg,true]])for(const m of String(html||'').matchAll(/(?:src|href)=["']([^"']+)["']/g)){
         if(!m[1].startsWith('#'))checkAsset(m[1],qid,{supplemental});

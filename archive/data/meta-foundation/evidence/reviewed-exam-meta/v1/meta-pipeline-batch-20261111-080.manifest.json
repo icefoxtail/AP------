@@ -1,0 +1,487 @@
+{
+  "schemaVersion": "ALIVE_COURIER_INTAKE_MANIFEST_v3",
+  "examTitle": "23_강남여고_2학기_기말_고2_확률과통계",
+  "sourceFileDriveId": "1Wx3w4wX9fbkERJDIxgYKv_Tn-RF96sgT",
+  "sourceSha256": "686501401d34552cb6ae1f788fb9e70ffbbb32f7997cc26dacb00d753f9faadc",
+  "status": "READY_FOR_COURIER_REGISTRATION",
+  "manifestTimestamp": "2026-10-23T16:22:48.212749+00:00",
+  "totalQuestions": 25,
+  "totalHoldCount": 0,
+  "recordsToBind": [
+    {
+      "questionId": 1,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-BINOMIAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_DISTRIBUTION",
+        "CC_EXPECTED_VALUE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "이항분포 B(18, 1/3)에서 평균 E(X)=np=18*(1/3)=6 직접 산출 (1단계)"
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_SUM_ONE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "확률의 총합 1/5+a+1/5+1/2=1에서 a=1/10 직접 산출 (1단계)"
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_MASS_FUNCTION",
+        "CC_PROBABILITY_SUM_ONE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "확률질량함수 합 (1+3+5)/a=9/a=1에서 a=9 직접 산출 (1단계)"
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_DENSITY_FUNCTION",
+        "CC_INTEGRATION_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "밀도함수 전체 적분 [kx²/2]_0^3 = 9k/2 = 1에서 k=2/9 산출 (2단계)"
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "평균 18 중심 대칭성으로 18-6=12에 대칭인 a=18+6=24 직접 산출 (1단계)"
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_NORMAL_RELATION",
+      "crossConceptKeys": [
+        "CC_NORMAL_APPROXIMATION_TO_BINOMIAL",
+        "CC_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "이항분포 B(720, 1/6)에서 mu=120, sigma=10 구하고 P(-1<=Z<=1)=2*0.3413=0.6826 산출 (3단계)"
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "crossConceptKeys": [
+        "CC_STANDARDIZATION",
+        "CC_NORMAL_DISTRIBUTION_CUMULATIVE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "z=(21.45-21)/0.3=1.5 구하고 P(Z<=1.5)=0.5+0.43=0.93 산출 (2단계)"
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_NORMAL_DISTRIBUTION_SYMMETRY",
+        "CC_LINEAR_TRANSFORMATION_VARIANCE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "대칭 조건으로 평균 m=6 구하고 V(1/2X)=1/4V(X)=1에서 분산 4 도출하여 N(6,4) 산출 (3단계)"
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "crossConceptKeys": [
+        "CC_DISCRETE_RANDOM_VARIABLE",
+        "CC_LINEAR_TRANSFORMATION_EXPECTATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "13개 어절 글자수 총합 36에서 E(X)=36/13 구하고 E(13X)=13*E(X)=36 산출 (3단계)"
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_STANDARD_ERROR",
+        "CC_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "표본평균 표준오차 6/sqrt(36)=1 구하고 P(-2<=Z<=1)=0.4772+0.3413=0.8185 산출 (3단계)"
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "E(Xbar)=150, V(Xbar)=36/9=4 구하고 합 154 직접 산출 (2단계)"
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+      "subUnit": "신뢰구간",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL_LENGTH",
+        "CC_SAMPLE_SIZE_RATIO"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "신뢰구간 길이 비 l/4l = sqrt(n2)/sqrt(n1) = 1/4에서 n1/n2 = 16 산출 (3단계)"
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "crossConceptKeys": [
+        "CC_ORDER_STATISTICS_EXTREMAL",
+        "CC_LINEAR_TRANSFORMATION_EXPECTATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "최댓값 X=3,4,5 확률분포(1/10, 3/10, 6/10)로 E(X)=9/2 구하고 E(4X+3)=4*(9/2)+3=21 산출 (4단계)"
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_HYPERGEOMETRIC_PROBABILITY",
+        "CC_COMPLEMENTARY_EVENT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "전체 10C2=45 중 여사건 불량품 2개 3C2=3에서 P(X<=1)=1-3/45=14/15 산출 (4단계)"
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_STANDARDIZATION",
+        "CC_SYMMETRIC_INTERVAL_PROBABILITY"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "표준화된 반폭 b/4 = 4/a에서 ab=16 산출 (3단계)"
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+      "subUnit": "신뢰구간",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL",
+        "CC_NORMAL_DISTRIBUTION_CRITICAL_VALUE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "오차한계 2.58*(30/15)=5.16에서 45±5.16, 39.84<=m<=50.16 산출 (3단계)"
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+      "subUnit": "신뢰구간",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL",
+        "CC_SAMPLE_MEAN_RECOVERY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "오차한계 1.96*(4/7)=1.12 구하고 xbar=196.64+1.12=197.76, a=198.88에서 xbar+a=396.64 산출 (4단계)"
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS",
+        "CC_SET_ELEMENT_MATCHING",
+        "CC_SECOND_MOMENT_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "{m, sigma, sigma/2}={3,5,a}에서 sigma/2=3, sigma=6, m=5 결정 후 E(X²)=V(X)+m²=36+25=61 산출 (4단계)"
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_STANDARD_ERROR",
+        "CC_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "sigma(Xbar)=12/4=3, 양쪽 꼬리확률 0.05 대응 임계점 k/3=2에서 k=6 산출 (3단계)"
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_STANDARD_ERROR",
+        "CC_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "z=2/sigma에서 sigma=2일 때 p1=0.1587, sigma=4일 때 p2=0.3085 구하여 합 0.4672 산출 (3단계)"
+    },
+    {
+      "questionId": 21,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_NORMAL_DENSITY_INTERSECTION",
+        "CC_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "교점 10에서 m1+m2=20, 각 구간 확률 0.4987 대응 z=3에서 (10-m1)/5=3, m1=-5, m2=25로부터 m2-m1=30 산출 (4단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 22,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-BINOMIAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_DISTRIBUTION",
+        "CC_LINEAR_TRANSFORMATION_VARIANCE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "(1) B(50, 1/5) 이항분포, E(X)=10, V(X)=8, (2) E(3X+2)=32, V(3X+2)=9*8=72 산출 (3단계 서술형)"
+    },
+    {
+      "questionId": 23,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_SUM_ONE",
+        "CC_VARIANCE_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "(1) a=1/4, (2) E(X)=9/2, E(X²)=25에서 V(X)=25-81/4=19/4 산출 (2단계 서술형)"
+    },
+    {
+      "questionId": 24,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_STANDARDIZATION",
+        "CC_PROBABILITY_TO_FREQUENCY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "z=(63.6-60)/12=0.3에서 P(Z>=0.3)=0.5-0.12=0.38, 500*0.38=190명 산출 (2단계 서술형)"
+    },
+    {
+      "questionId": 25,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+      "subUnit": "신뢰구간",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL",
+        "CC_SAMPLE_SIZE_RECOVERY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "중심 10, 반폭 0.392에서 n=100 구하고 99% 구간 a=9.484, b=10.516에서 n+xbar+a+b=100+10+20=130 산출 (4단계 서술형)"
+    }
+  ]
+}

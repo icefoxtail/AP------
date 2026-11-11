@@ -69,6 +69,21 @@ test('image-only choices require a matching reviewed image and evidence hash',()
  }finally{fs.rmSync(root,{recursive:true,force:true})}
 });
 
+test('legacy image basename resolves only to its unique displayed existing image',()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'asset-alias-'));
+ try{
+  fs.mkdirSync(path.join(root,'archive/exams/original'),{recursive:true});fs.mkdirSync(path.join(root,'archive/assets/images/exam'),{recursive:true});
+  fs.writeFileSync(path.join(root,'archive/engine.html'),'engine');fs.writeFileSync(path.join(root,'archive/assets/images/exam/q1.png'),'image');
+  const f=path.join(root,'archive/exams/original/exam.js'),req={sourceArchiveFile:'original/exam.js',expectedQuestionCount:1};
+  fs.writeFileSync(f,'window.questionBank=[{content:"Question",image:"assets/images/exam/q1.png",images:["q1.png"]}];');
+  assert.equal(verifyStudentAccess(root,req).status,'PASS');
+  fs.writeFileSync(f,'window.questionBank=[{content:"Question",image:"assets/images/exam/q1.png",images:["q2.png"]}];');
+  assert.match(verifyStudentAccess(root,req).failures.join(','),/ASSET_MISSING:q2.png/);
+  fs.writeFileSync(f,'window.questionBank=[{content:"Question",image:"assets/images/exam/missing.png",images:["missing.png"]}];');
+  assert.match(verifyStudentAccess(root,req).failures.join(','),/ASSET_MISSING/);
+ }finally{fs.rmSync(root,{recursive:true,force:true})}
+});
+
 test('consumer infrastructure failures are not swallowed as metadata supplements',()=>{
  assert.equal(semanticFailuresAreSupplementary({status:'FAIL',failures:[{reason:'NOT_APPROVED_IN_CONSUMER'}]}),true);
  for(const reason of ['CONSUMER_LOAD_FAILED','CHECKER_ERROR','UID_MISMATCH','SOURCE_UNREADABLE'])assert.equal(semanticFailuresAreSupplementary({status:'FAIL',failures:[{reason}]}),false);
