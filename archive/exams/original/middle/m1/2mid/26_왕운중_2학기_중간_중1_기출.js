@@ -804,8 +804,8 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q011_question-v2.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q11-solution-v3.svg",
-    "solutionImageAlt": "해설 그림: 세 장의 그림. 왼쪽 위는 평행사변형 ABCD에서 중점으로 나뉜 변에 같은 눈금(AE, EB, CG, GD는 1개, AH, HD, BF, FC는 2개)을 표시하고 귀퉁이 삼각형 AEH와 CGF는 파란색, EBF와 GDH는 주황색으로 칠한 그림이다. 오른쪽 위와 아래는 합동인 두 삼각형 AEH와 CGF, EBF와 GDH를 각각 떼어 같은 방향으로 나란히 놓고 같은 눈금과 같은 색의 각을 표시한 그림이다.",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q11-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 두 장의 그림. 위쪽 그림은 평행사변형 ABCD에서 중점으로 나뉜 변에 같은 눈금(AE, EB, CG, GD는 1개, AH, HD, BF, FC는 2개)을 표시하고 귀퉁이 삼각형 AEH와 CGF는 파란색, EBF와 GDH는 주황색으로 칠한 원래 배치이다. 아래쪽 그림은 합동인 두 삼각형 AEH와 CGF(파랑), EBF와 GDH(주황)를 같은 방향으로 놓고 같은 눈금과 같은 색의 각을 표시한 그림이다.",
     "solutionImageCaption": "평행사변형에서 AB=CD, AD=BC이고 E, F, G, H가 중점이므로 AE=CG, AH=CF이다. 또 ∠A=∠C이므로 △AEH≡△CGF(SAS)이고, 같은 방법으로 △EBF≡△GDH(SAS)이며 이로부터 EF=GH를 얻는다. EH∥FG이지만 EFGH가 항상 마름모인 것은 아니다. 정답은 ⑤이다.",
     "solutionImageSize": "full"
   },
