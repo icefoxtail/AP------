@@ -69,6 +69,41 @@ test('already-populated reviewed difficulty is accepted only when all four value
   assert.throws(() => legacySimilarPreservationPlan({ ...applied, difficultyBoundaryFlag: 'B12' }, row), /existing reviewed difficulty differs/);
 });
 
+test('legacy bucket-only ledger preserves existing ancillary difficulty fields', () => {
+  const { row } = syntheticCase(201, { independentDifficulty1to5: 4 });
+  delete row.difficultyConfidence;
+  delete row.difficultyBoundaryFlag;
+  delete row.legacyLevelCompatibility;
+  const prior = { difficultyBucket: 4, difficultyConfidence: 'medium',
+    difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL' };
+  const plan = legacySimilarPreservationPlan(prior, row);
+  assert.equal(plan.difficultyBucket, 4);
+  assert.equal(plan.difficultyConfidence, 'medium');
+  assert.equal(plan.difficultyBoundaryFlag, 'NONE');
+  assert.equal(plan.legacyLevelCompatibility, 'NORMAL');
+});
+
+test('legacy bucket-only ledger does not invent missing ancillary difficulty fields', () => {
+  const { row } = syntheticCase(202, { independentDifficulty1to5: 3 });
+  delete row.difficultyConfidence;
+  delete row.difficultyBoundaryFlag;
+  delete row.legacyLevelCompatibility;
+  const prior = { difficultyBucket: '중' };
+  const plan = legacySimilarPreservationPlan(prior, row);
+  assert.equal(plan.difficultyBucket, 3);
+  assert.equal(Object.hasOwn(plan, 'difficultyConfidence'), false);
+  assert.equal(Object.hasOwn(plan, 'difficultyBoundaryFlag'), false);
+  assert.equal(Object.hasOwn(plan, 'legacyLevelCompatibility'), false);
+});
+
+test('bucket-only ledger still fails closed on an actual existing numeric difficulty conflict', () => {
+  const { row } = syntheticCase(203, { independentDifficulty1to5: 2 });
+  delete row.difficultyConfidence;
+  delete row.difficultyBoundaryFlag;
+  delete row.legacyLevelCompatibility;
+  assert.throws(() => legacySimilarPreservationPlan({ difficultyBucket: 4 }, row), /existing reviewed difficulty differs/);
+});
+
 test('synthetic crosswalk proposal stays unconfirmed and debt is marker-only', () => {
   const { row, prior } = byQid.get(106);
   const plan = legacySimilarPreservationPlan(prior, row);
@@ -111,6 +146,23 @@ test('no-equivalent-L4 row uses the existing supported hold status', () => {
   assert.equal(plan.rpmSemanticStatus, 'HOLD');
   assert.equal(plan.rpmSemanticReason, row.holdReasons.join('; '));
   assert.ok(plan.rpmDebt.includes('NO_EQUIVALENT_RPM_L4'));
+});
+
+test('legacy no-equivalent-L4 evidence supplies its exact hold reason without new ledger fields', () => {
+  const { row, prior } = syntheticCase(204, { rpmStatus: 'HOLD_NO_EQUIVALENT_L4',
+    metaDebt: ['NO_EQUIVALENT_RPM_L4'] });
+  delete row.holdReasons;
+  const plan = legacySimilarPreservationPlan(prior, row);
+  assert.equal(plan.rpmPathStatus, 'HOLD_NO_EQUIVALENT_PATH');
+  assert.equal(plan.rpmSemanticStatus, 'HOLD');
+  assert.equal(plan.rpmSemanticReason, 'NO_EQUIVALENT_RPM_L4');
+});
+
+test('legacy RPM hold without its specific debt remains fail-closed', () => {
+  const { row, prior } = syntheticCase(205, { rpmStatus: 'HOLD_NO_EQUIVALENT_L4',
+    metaDebt: ['NO_VERIFIED_PT_TPL_BINDING'] });
+  delete row.holdReasons;
+  assert.throws(() => legacySimilarPreservationPlan(prior, row), /reviewed RPM hold reason missing/);
 });
 
 test('exact reviewed RPM row confirms while preserving an existing path classification', () => {
