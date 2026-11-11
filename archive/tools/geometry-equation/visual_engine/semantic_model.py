@@ -13,13 +13,14 @@ KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE','CIRC
     'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE','FILL_REGION','POLYGON','GRAPH_REGION','DIMENSION_LINE','PATH_LABEL','QUADRANT'}
 VISUAL_TYPES={'coordinate_geometry','line_circle_geometry','function_graph','calculus_graph','explanation_card'}
 RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUAL_MARK','PARALLEL_MARK'}
-FIELDS={'curveWeight','curveStyle','id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset','labelPlacement','span','labelAt','segments','freeLabel','anchor','straight','straightSide','lineAt','lineBand','ringLeader','leaderOnly','lineBarrier','quadrant','arcScale','angleDimension','leader','labeledPieces','arrowInset','color'}
+FIELDS={'curveWeight','curveStyle','id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset','labelPlacement','span','labelAt','segments','freeLabel','anchor','straight','straightSide','lineAt','lineBand','ringLeader','leaderOnly','lineBarrier','quadrant','arcScale','angleDimension','leader','labeledPieces','arrowInset','color','windowClosed'}
 REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'},'DIMENSION_LINE':{'refs','side'},'PATH_LABEL':{'labelText','refs'},'QUADRANT':{'quadrant'}}
 
 FIELDS|={'labelWeight','extension','offsetPx','paths','pathMark','autoOffset','over','ownership','markStyle','closed'}   # E32 additions to the component fields (kept apart from the long set above)
 FIELDS|={'squareSize'}   # G13a: the leg of a right-angle square (px) on a graph, bigger than the plane-figure token so it reads on a phone
 FIELDS|={'clipRefine'}   # G18b: a FUNCTION_GRAPH whose frame-cut ends are refined to about a pixel (equalUnits on a rational or a square root)
 FIELDS|={'nearCurve','nearLine','nearEnd'}   # G18b: a multi-curve label stands beside its own curve (nearCurve = curve id) or at the end of its own dashed asymptote (nearLine = asymptote primitive id)
+FIELDS|={'markerState'}   # a graph overlay point drawn as a hollow circle (markerState:'OPEN'); with `color` (POINT) a coloured dot
 FIELDS|={'guide','anchorAt'}   # E37: a light dotted guide line (a SEGMENT) from a point of the main figure to its pulled-out copy
 
 def parity(a,b):
@@ -69,6 +70,8 @@ def validate(spec):
         # marker:'NONE' is a nameless POINT that draws no dot at all (a plane figure's hiddenPointStyle NONE); nothing else carries a marker.
         # marker:'NO_DOT' (G3) is a named point that draws no dot, only its name: the end of a vector arrow, where the dot would cover the arrow head.
         if 'marker' in obj and (obj['kind']!='POINT' or obj['marker'] not in {'NONE','NO_DOT'} or (obj['marker']=='NONE' and ('name' not in obj or obj['name'] is not None))):raise ValueError('INVALID_POINT_MARKER')
+        # markerState:'OPEN' is a POINT drawn as a hollow circle (stroke in its colour, the figure background inside); a dot that draws nothing (marker) cannot be hollow
+        if 'markerState' in obj and (obj['kind']!='POINT' or obj['markerState']!='OPEN' or 'marker' in obj):raise ValueError('INVALID_POINT_MARKER_STATE:'+str(obj.get('id')))
         # A fill pattern belongs to a plane region only; no other object carries one.
         if 'pattern' in obj and obj['kind']!='FILL_REGION':raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
         # arrowInset (G3): the head of a vector arrow stops at the dot of its end point; only an arrow segment carries it.
@@ -88,7 +91,7 @@ def validate(spec):
         # color (C1): a palette colour of a segment, an angle mark or an equal / parallel mark group; an angle mark takes either a colour or an emphasisGroup, a guide / emphasised / dashed / arrow segment none
         if 'color' in obj:
             # (G12-2) a graph's overlay line or drawn curve wears a palette colour too (a curve keeps its own line style DASHED, but not the red ACCENT)
-            if obj['kind'] not in {'SEGMENT','ANGLE_MARK','EQUAL_MARK','PARALLEL_MARK','LINE','FUNCTION_GRAPH','CIRCULAR_ARC'} or obj['color'] not in PALETTE_NAMES:raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
+            if obj['kind'] not in {'SEGMENT','ANGLE_MARK','EQUAL_MARK','PARALLEL_MARK','LINE','FUNCTION_GRAPH','CIRCULAR_ARC','POINT'} or obj['color'] not in PALETTE_NAMES:raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
             if obj['kind']=='FUNCTION_GRAPH' and obj.get('curveStyle')=='ACCENT':raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
             if obj['kind']=='ANGLE_MARK' and 'emphasisGroup' in obj:raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
             if obj['kind']=='SEGMENT' and any(key in obj for key in ('guide','dash','arrow','emphasis')):raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
@@ -307,6 +310,7 @@ def validate(spec):
         if obj['fill'] not in {'LIGHT','MEDIUM',*PALETTE_NAMES}: raise ValueError('GRAPH_REGION_FILL_UNSUPPORTED:'+obj['id'])
         lo,hi=point(obj['domain'])
         if not lo<hi: raise ValueError('GRAPH_REGION_DOMAIN_INVALID:'+obj['id'])
+        if 'windowClosed' in obj and obj['windowClosed'] is not True: raise ValueError('GRAPH_REGION_FIELD_INVALID:'+obj['id'])   # windowClosed: the fill is closed along the window edge where a boundary leaves the window (engine.py)
         for side in ('upper','lower'):
             rows=obj[side]
             if not isinstance(rows,list) or not rows: raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+obj['id'])
