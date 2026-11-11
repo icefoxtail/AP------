@@ -10,11 +10,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="common-counting/lesson-core.js"></script>
+<script defer src="common-counting/lesson-a.js"></script>
+<script defer src="common-counting/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -41,7 +48,13 @@ window.addEventListener('DOMContentLoaded', function () {
   const PCOL = ['sky', 'rose', 'amber', 'green', 'violet', 'orange', 'red', 'muted'];
   const rint = (n) => Math.floor(Math.random() * n);
   const pickOf = (arr, not) => { let x; do x = arr[rint(arr.length)]; while (arr.length > 1 && x === not); return x; };
-  const varier = (gen) => { let cur = gen(null); return { cur: () => cur, next: () => (cur = gen(cur)) }; };
+  const lccClone = value => JSON.parse(JSON.stringify(value));
+  const lccActive = s => !!(s && (s.lessonOn || s.lessonEntry));
+  const lccNumberKnown = (s, n) => !lccActive(s) || (s.lccKnownNumbers || []).includes(String(n));
+  const varier = (gen) => {
+    const first = gen(null); let cur = first;
+    return { first: () => first, cur: () => lccActive(window.lab && window.lab.s) ? first : cur, next: () => (cur = gen(cur)) };
+  };
   const join = (a, sep = ', ') => a.join(sep);
   const T = (s) => '$' + s + '$';
   const ordinal = ['첫째', '둘째', '셋째', '넷째', '다섯째'];
@@ -86,7 +99,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (!d) return;
       const mv = Math.hypot(e.clientX - d.x, e.clientY - d.y), dt = performance.now() - d.t;
       d = null;
-      if (mv > 7 || dt > 700 || !LAB || LAB.tab !== 'explore') return;
+      if (mv > 7 || dt > 700 || !LAB || LAB.tab !== 'explore' || lccActive(LAB.s)) return;
       const r = canvas.getBoundingClientRect();
       const w = b.toW(e.clientX - r.left, e.clientY - r.top);
       const x = w.x, y = -w.y;
@@ -388,7 +401,7 @@ window.addEventListener('DOMContentLoaded', function () {
     drawSlots(b, {
       times: true,
       slots: Array.from({ length: r }, (_, i) => ({
-        label: ordinal[i] + ' 자리', count: n - i, hot: i === nf,
+        label: ordinal[i] + ' 자리', count: !lccActive(s) || s.lccStage >= i + 1 ? n - i : null, hot: i === nf,
         fill: i < nf ? { label: LET[seat[i]], color: PCOL[seat[i]] } : null,
         tap: i < nf ? (st) => { st.seat2.length = i; } : null
       })),
@@ -406,7 +419,7 @@ window.addEventListener('DOMContentLoaded', function () {
     drawSlots(b, {
       times: true, cards: true,
       slots: v.labels.map((label, i) => {
-        const shown = sp.step >= (rank(i) === 0 ? 1 : 2);
+        const shown = sp.step >= (rank(i) === 0 ? 1 : 2) && (!lccActive(s) || rank(i) < s.lccSlots);
         return { label, count: shown ? v.counts[i] : null, hot: sp.step === 1 ? i === first : sp.step === 2 && i !== first };
       }),
       tokens: v.cards.map((d) => ({ label: String(d), color: 'sky', dim: false, hot: sp.step === 1 && v.hot1.includes(d) })),
@@ -575,7 +588,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (v.kind === 'wm') {
         const men = Array.from({ length: v.x }, (_, i) => ({ t: 'tok', label: '남' + (i + 1), color: 'sky' })), wom = Array.from({ length: v.y }, (_, i) => ({ t: 'tok', label: '여' + (i + 1), color: 'rose' }));
         drawRow(b, 0.6, [...men, ...wom], `남학생 ${v.x}명, 여학생 ${v.y}명`);
-        if (st >= 1) drawRow(b, 3.4, [{ t: 'bun', labels: wom.map(q => ({ label: q.label, color: 'rose' })) }, ...men], `여학생을 한 묶음으로: ${v.x + 1}개를 세우고 묶음 안에서 ${v.y}! `, 'amber');
+        if (st >= 1 && (!lccActive(s) || s.lccTarget !== '남학생틈')) drawRow(b, 3.4, [{ t: 'bun', labels: wom.map(q => ({ label: q.label, color: 'rose' })) }, ...men], `여학생을 한 묶음으로: ${v.x + 1}개를 세우고 묶음 안에서 ${v.y}! `, 'amber');
         if (st >= 2) {
           const row = []; for (let i = 0; i <= v.y; i++) { row.push({ t: 'gap', on: true, n: i + 1 }); if (i < v.y) row.push({ t: 'tok', label: '여', color: 'rose' }); }
           drawRow(b, 6.4, row, `여학생 ${v.y}명을 세우고 틈 ${v.y + 1}곳 중 ${v.x}곳에 남학생`, 'amber');
@@ -645,23 +658,26 @@ window.addEventListener('DOMContentLoaded', function () {
   const perms = (arr) => (arr.length <= 1 ? [arr.slice()] : arr.flatMap((x, i) => perms([...arr.slice(0, i), ...arr.slice(i + 1)]).map((p) => [x, ...p])));
   function draw4Explore(b, s) {
     const n = s.n4, r = s.r4, all = combos(n, r), g = clamp(s.g4, 1, all.length) - 1, cur = all[g];
+    const stage = lccActive(s) ? s.lccStage : 99;
     figure(b, () => {
       const cs = 1.2;
       for (let j = 0; j < n; j++) token(b, (j - (n - 1) / 2) * cs, 0.6, 0.5, LET[j], PCOL[j], { dim: !cur.includes(j), hot: cur.includes(j), size: 14.5 });
       txt(b, 0, 1.75, `${n}명 중 ${r}명을 뽑는다`, { size: 13, color: 'muted' });
       // 순서를 따진 줄 세우기 r!개
       const orders = perms(cur), cols = Math.min(3, orders.length), cw = 0.45 * r + 1.25;
-      txt(b, 0, 2.95, `뽑힌 ${r}명을 줄 세우면 ${r}! = ${orders.length}가지 (순열)`, { size: 13, color: 'sky' });
-      orders.forEach((o, i) => {
+      if (stage >= 1) txt(b, 0, 2.95, `뽑힌 ${r}명을 줄 세우면 ${r}! = ${orders.length}가지 (순열)`, { size: 13, color: 'sky' });
+      if (stage >= 1) orders.forEach((o, i) => {
         const cx = ((i % cols) - (cols - 1) / 2) * (cw + 0.3), cy = 3.95 + Math.floor(i / cols) * 0.95;
         tile(b, cx, cy, cw, 0.78, o.map((q) => LET[q]).join(''), 'sky', { size: 13.5 });
       });
-      txt(b, 0, 6.0, '↓  순서를 지우면 모두 같은 한 묶음', { size: 13.5, color: 'amber' });
-      tile(b, 0, 6.95, 0.45 * r + 2.4, 0.95, '{' + cur.map((q) => LET[q]).join(', ') + '}', 'amber', { hot: true, size: 15 });
+      if (stage >= 2) {
+        txt(b, 0, 6.0, '↓  순서를 지우면 모두 같은 한 묶음', { size: 13.5, color: 'amber' });
+        tile(b, 0, 6.95, 0.45 * r + 2.4, 0.95, '{' + cur.map((q) => LET[q]).join(', ') + '}', 'amber', { hot: true, size: 15 });
+      }
       // 모든 묶음
-      txt(b, 0, 8.15, `${n}명 중 ${r}명을 뽑는 묶음은 모두 ${all.length}개 (조합)`, { size: 13, color: 'muted' });
+      if (stage >= 3) txt(b, 0, 8.15, `${n}명 중 ${r}명을 뽑는 묶음은 모두 ${all.length}개 (조합)`, { size: 13, color: 'muted' });
       const cols2 = all.length > 12 ? 7 : 5, cw2 = 0.42 * r + 0.95;
-      all.forEach((c, i) => {
+      if (stage >= 3) all.forEach((c, i) => {
         const cx = ((i % cols2) - (cols2 - 1) / 2) * (cw2 + 0.2), cy = 9.1 + Math.floor(i / cols2) * 0.92;
         tile(b, cx, cy, cw2, 0.74, c.map((q) => LET[q]).join(''), i === g ? 'amber' : 'sky', { hot: i === g, dim: i !== g, size: 12.5 });
       });
@@ -810,7 +826,7 @@ window.addEventListener('DOMContentLoaded', function () {
         all.slice(0, k).forEach((c, i) => { const cur = i === k - 1; chord(b, n, c[0], c[1], { color: cur ? 'amber' : 'sky', width: cur ? 3.6 : 1.8, alpha: cur ? 1 : 0.6 }); if (cur) lit = c; });
       } else if (s.mode5 === 'tri') {
         const all = combos(n, 3);
-        all.slice(0, k - 1).forEach((c) => poly(b, polyOf(n, c), { color: 'sky', width: 1.2, alpha: 0.28 }));
+        all.slice(0, Math.max(0, k - 1)).forEach((c) => poly(b, polyOf(n, c), { color: 'sky', width: 1.2, alpha: 0.28 }));
         if (k > 0) { const c = all[k - 1]; poly(b, polyOf(n, c), { fill: 'amber', fillAlpha: 0.34, color: 'amber', width: 3.2 }); lit = c; }
       } else {
         for (let i = 0; i < n; i++) chord(b, n, i, (i + 1) % n, { color: 'ink', width: 3.2, alpha: 0.9 });
@@ -1061,7 +1077,7 @@ window.addEventListener('DOMContentLoaded', function () {
           [`(다) ${pname(c.tg)} 같은 날 함께: ${ck.tgN}일 (${c.t}일이어야 함)`, ck.okTg]
         ];
         L.forEach(([t, ok], i) => txt(b, cx, y + i * 0.85, `${okMark(ok)} ${t}`, { size: 13, color: ok ? 'green' : 'red' }));
-        if (ck.all) txt(b, cx, y + 4 * 0.85 + 0.2, '조건을 모두 만족하는 신청서!', { size: 14.5, color: 'amber' });
+        if (ck.all && (!lccActive(s) || s.lccShowAnswer)) txt(b, cx, y + 4 * 0.85 + 0.2, '조건을 모두 만족하는 신청서!', { size: 14.5, color: 'amber' });
       } else {
         const c = BOX_EX, ck = boxCheck(c, s.cnt6);
         drawBoxes(b, c, s.cnt6, { tap: true });
@@ -1125,9 +1141,10 @@ window.addEventListener('DOMContentLoaded', function () {
           txt(b, 0, -0.8, '남은 날: 짝마다 쓰는 일수로 분류', { color: 'ink', size: 14 });
           I.rest4.forEach((p, j) => txt(b, (j - 2) * 1.5, 0.3, pname(p), { color: 'sky', size: 14 }));
           txt(b, 3, 0.3, '배열 수', { color: 'green', size: 13 });
-          I.comps.forEach((q, i) => {
+          const rows = lccActive(s) ? I.comps.slice().sort((a, z) => z.cnt[1] - a.cnt[1]).slice(0, s.lccRows) : I.comps;
+          rows.forEach((q, i) => {
             q.cnt.forEach((n, j) => tile(b, (j - 2) * 1.5, 1.3 + i, 1.15, 0.75, String(n), n ? 'sky' : 'muted', { dim: !n, size: 14 }));
-            txt(b, 3, 1.3 + i, String(q.ways), { color: 'green', size: 14 });
+            if (lccNumberKnown(s, q.ways)) txt(b, 3, 1.3 + i, String(q.ways), { color: 'green', size: 14 });
           });
           const y = 1.5 + I.comps.length;
           txt(b, 0, y, '(남은 날)! ÷ [(각 짝의 일수)!의 곱]', { color: 'muted', size: 12.5 });
@@ -1250,15 +1267,17 @@ window.addEventListener('DOMContentLoaded', function () {
       drawTable7(b, n, read.map((p) => ({ label: LET[p], color: PCOL[p], hot: p === 0 && fix })));
       const rots = Array.from({ length: n }, (_, k) => readRot(cyc, k).map((p) => LET[p]).join(''));
       if (!fix) {
-        txt(b, 0, 5.2, `돌려서 같아지는 ${n}개의 줄 (모두 같은 앉음새)`, { size: 12.5, color: 'muted' });
+        txt(b, 0, 5.2, lccActive(s) && !s.lccShowAnswer ? '한 칸씩 돌려 읽은 줄 (같은 앉음새)' : `돌려서 같아지는 ${n}개의 줄 (모두 같은 앉음새)`, { size: 12.5, color: 'muted' });
         const cols = n > 5 ? 3 : 3, cw = 0.42 * n + 1.0;
-        rots.forEach((t, k) => tile(b, ((k % cols) - (cols - 1) / 2) * (cw + 0.2), 6.1 + Math.floor(k / cols) * 0.9, cw, 0.74, t, 'sky', { hot: k === r, dim: k !== r, size: 12.5 }));
+        const shown = lccActive(s) && !s.lccShowAnswer ? rots.slice(0, r + 1) : rots;
+        shown.forEach((t, k) => tile(b, ((k % cols) - (cols - 1) / 2) * (cw + 0.2), 6.1 + Math.floor(k / cols) * 0.9, cw, 0.74, t, 'sky', { hot: k === r, dim: k !== r, size: 12.5 }));
       } else {
         txt(b, 0, 5.2, `A를 12시 자리에 고정하면 줄이 하나로 정해진다`, { size: 12.5, color: 'amber' });
         tile(b, 0, 6.1, 0.42 * n + 1.6, 0.8, rots[r], 'amber', { hot: true, size: 14 });
         // 나머지 n-1 자리의 후보 수
-        for (let i = 0; i < n - 1; i++) { const x = (i - (n - 2) / 2) * 1.15; txt(b, x, 7.2, String(n - 1 - i), { size: 15, color: 'sky' }); if (i) txt(b, x - 0.575, 7.2, '×', { size: 13, color: 'muted' }); }
-        txt(b, 0, 7.95, `나머지 ${n - 1}명을 한 줄로: ${n - 1}! = ${fact(n - 1)}`, { size: 13, color: 'sky' });
+        const count = !lccActive(s) ? n - 1 : s.lccStage >= 3 ? n - 1 : s.lccStage >= 2 ? 2 : 0;
+        for (let i = 0; i < count; i++) { const x = (i - (n - 2) / 2) * 1.15; txt(b, x, 7.2, String(n - 1 - i), { size: 15, color: 'sky' }); if (i) txt(b, x - 0.575, 7.2, '×', { size: 13, color: 'muted' }); }
+        if (!lccActive(s) || s.lccShowAnswer) txt(b, 0, 7.95, `나머지 ${n - 1}명을 한 줄로: ${n - 1}! = ${fact(n - 1)}`, { size: 13, color: 'sky' });
       }
     }, { margin: 0.04 });
   }
@@ -1356,7 +1375,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  APLab.createLab({
+  const definition = {
     stagedReveal: true,
     id: 'common-counting',
     title: '순열과 조합',
@@ -1387,7 +1406,117 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     state: { mode1: 'prod', mode5: 'line', mode6: 'table', lens7: 'rot', cyc7: [0, 1, 2, 3, 4], tab6: [[], [], [], [], []], cnt6: [0, 0, 0, 0, 0, 0], seat2: [], mode3: 'adj', pi6: 0 },
     scenes: [scene1(), scene2(), scene3(), scene4(), scene5(), scene6(), scene7()]
-  });
+  };
+  const scenes = definition.scenes;
+  const sourceInfo = Object.fromEntries(scenes.map(sc => {
+    const initial = lccClone(definition.state);
+    for (const [key, param] of Object.entries(definition.params)) initial[key] = param.value;
+    sc.enter(initial);
+    const read = value => typeof value === 'function' ? value(initial) : value;
+    return [sc.id, { initial, first: sc.vary.first(), question: String(read(sc.problem.text)).split('<div style="margin-top:10px">')[0],
+      steps: read(sc.steps), inquiry: sc.question, answer: sc.vary.first().ans.tex }];
+  }));
+  const source = window.APL_COUNTING_SOURCE = {
+    scenes, initial: id => lccClone(sourceInfo[id].initial), first: id => lccClone(sourceInfo[id].first),
+    question: id => sourceInfo[id].question, answer: id => sourceInfo[id].answer,
+    steps: id => lccClone(sourceInfo[id].steps), inquiry: id => sourceInfo[id].inquiry,
+    tableExample: lccClone(TBL_EX), boxExample: lccClone(BOX_EX)
+  };
+
+  function drawBoxLesson(b, s) {
+    const c = BOX_EX, stage = s.lccStage, patterns = boxPatterns(c).slice().reverse();
+    figure(b, () => {
+      if (stage < 2) {
+        drawBoxes(b, c, stage === 1 ? [2, 0, 0, 2, 0, 0] : null);
+        for (let i = 0; i < c.k; i++) token(b, (i - 1.5) * 1.2, 5.7, .5, LET[i], PCOL[i]);
+        if (stage === 1) {
+          seg(b, -3.95, 1.2, -.1, 1.2, { color: 'rose', width: 3 });
+          seg(b, .1, 1.2, 3.95, 1.2, { color: 'sky', width: 3 });
+          txt(b, 0, 7.1, '각 세 상자에 2개 든 상자 하나씩', { color: 'amber', size: 13 });
+        }
+        return;
+      }
+      patterns.slice(0, s.lccRows).forEach((p, row) => {
+        txt(b, -4.75, row * 1.0, '(' + p.flatMap((x, i) => x === 2 ? [i + 1] : []).join(',') + ')', { size: 12.5, color: 'muted' });
+        p.forEach((x, i) => tile(b, (i - 2.5) * 1.15, row * 1.0, .95, .74, String(x), x === 2 ? 'amber' : 'muted', { dim: x === 0 }));
+        if (stage >= 3 && s.lccBoxWays) txt(b, 4.4, row * 1.0, '× 6', { color: 'green', size: 13 });
+      });
+      txt(b, 0, -1.05, '상자마다 공의 개수 (0 또는 2)', { size: 13 });
+      if (stage >= 3) txt(b, 0, 6.25, '한 상자의 두 공을 고르면 다른 두 공은 자동', { color: 'green', size: 12.5 });
+      if (s.lccShowAnswer) txt(b, 0, 7.25, '6 × 6 = 36가지', { color: 'amber', size: 15 });
+    });
+  }
+  function restoreLessonBoard(b) {
+    if (!b._ccLessonView) return;
+    Object.assign(b, b._ccLessonView);
+    delete b._ccLessonView;
+  }
+  function traceCondition(b, s, paths, circles) {
+    const u = clamp(Number(s.lccTrace) || 0, 0, 1);
+    if (!u || s.lessonEntry) return;
+    const sorted = paths.map(p => ({ ...p, length: p.points.slice(1).reduce((sum, q, i) => sum + Math.hypot(q.x - p.points[i].x, q.y - p.points[i].y), 0) })).sort((a, z) => z.length - a.length);
+    const selected = sorted[0];
+    if (selected && selected.length > 0) {
+      let left = selected.length * u; const shown = [selected.points[0]];
+      for (let i = 1; i < selected.points.length; i++) {
+        const a = selected.points[i - 1], z = selected.points[i], length = Math.hypot(z.x - a.x, z.y - a.y);
+        if (left <= length || i === selected.points.length - 1) {
+          const f = length ? Math.min(1, left / length) : 0;
+          shown.push({ x: a.x + f * (z.x - a.x), y: a.y + f * (z.y - a.y) }); break;
+        }
+        shown.push(z); left -= length;
+      }
+      b.path(shown, { color: 'violet', width: 3.5, alpha: .8 });
+      b.point(shown.at(-1), { color: 'violet', r: 4, glow: false });
+    } else {
+      const circle = circles.sort((a, z) => z.radius - a.radius)[0];
+      if (!circle) return;
+      b.arc(circle.center, circle.radius, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * u, { color: 'violet', width: 3.5, alpha: .8 });
+    }
+  }
+  for (const sc of scenes) {
+    const original = { enter: sc.enter, question: sc.question, reviewTop: sc.reviewTop, steps: sc.steps, view: sc.view, draw: sc.draw };
+    sc.enter = (s, lab) => { if (lab && lab.board) restoreLessonBoard(lab.board); original.enter(s, lab); };
+    sc.question = (s, lab) => lccActive(s) ? s.lccQuestion || source.question(sc.id) : original.question;
+    sc.reviewTop = (s, lab) => lccActive(s) ? '' : original.reviewTop(s, lab);
+    sc.steps = (s, lab) => lccActive(s) ? ['조건을 확인해요.', '겹치지 않게 경우를 나눠요.', '각 경우를 계산해요.', '구하는 값을 확인해요.'] : original.steps(s, lab);
+    sc.view = (s, lab) => lccActive(s) ? {} : original.view(s, lab);
+    sc.draw = (b, s, v, lab) => {
+      if (b.thumb || b._bbox) return original.draw(b, s, v, lab);
+      if (!lccActive(s)) { restoreLessonBoard(b); return original.draw(b, s, v, lab); }
+      if (!b._ccLessonView) {
+        b._ccLessonView = Object.fromEntries(['focus', 'zoom', 'panX', 'panY'].map(key => [key, b[key]]));
+        b.zoom = 1; b.panX = 0; b.panY = 0;
+      }
+      const shown = { ...s, ...(s.lessonEntry && s.lccInitial ? lccClone(s.lccInitial) : {}), lccShowAnswer: !s.lessonEntry && !!s.lccShowAnswer,
+        step: s.lessonEntry ? 0 : Math.max(0, Math.min(s.step || 0, s.lccShowAnswer ? 3 : 2)) };
+      for (const key of ['aP', 'bP', 'aS', 'bS', 'n2', 'r2', 'n3', 'sel3', 'n4', 'r4', 'g4', 'n5', 'mP', 'nP', 'k5', 'n7', 'rot7', 'k1']) shown[key] = Math.round(shown[key]);
+      const shownLab = Object.create(lab); shownLab.tab = shown.lccExplore ? 'explore' : 'review'; shownLab.s = shown;
+      const paths = [], circles = [], originalPath = b.path, originalCircle = b.circle, originalText = b._text;
+      b.path = function (points, options = {}) {
+        if (!this._bbox && points.length > 1 && options.color !== null && (options.width || 2.6) >= 1.8) paths.push({ points: points.map(p => this._P(p)) });
+        return originalPath.call(this, points, options);
+      };
+      b.circle = function (center, radius, options = {}) {
+        if (!this._bbox && radius >= .45 && options.color !== null) circles.push({ center: this._P(center), radius });
+        return originalCircle.call(this, center, radius, options);
+      };
+      b._text = function (x, y, text, options, screen) {
+        // Keep the given card numbers and labels. A computed right-hand side
+        // appears only once its numerical value has actually been narrated.
+        const result = String(text || '').match(/=\s*(-?\d+(?:\.\d+)?)/g);
+        if (!this._bbox && result && !result.every(item => lccNumberKnown(shown, Number(item.replace(/^=\s*/, ''))))) return;
+        return originalText.call(this, x, y, text, options, screen);
+      };
+      try {
+        if (shown.lccMode === 'box-count') drawBoxLesson(b, shown);
+        else original.draw(b, shown, {}, shownLab);
+      } finally { b.path = originalPath; b.circle = originalCircle; b._text = originalText; }
+      traceCondition(b, shown, paths, circles);
+    };
+  }
+  definition.lessons = window.APL_COUNTING_LESSONS ? window.APL_COUNTING_LESSONS.install(scenes, source) : {};
+  APLab.createLab(definition);
   document.querySelectorAll('.apl-icon-btn[aria-label^="격자"]').forEach((e) => { e.hidden = true; });
 });
 </script>
