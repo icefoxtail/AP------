@@ -194,6 +194,10 @@
 
 **삼각형 전체 최소 확인:** 43장면/165해설(t1~t3 17/59, t4~t5 13/49, t6~t7 13/57) 구현, 통합 Node 검사 **171/171**·JS/MJS 구문 **16파일**·등록 누락 0·production Board 진입/첫 cue/결론 **495상태** 확인. 합동 조건과 반례를 분리하고 원본 수치·보기와 고정 입력을 결속했다. 첫 set이 각도 이동을 덮는 충돌, 계산값과 자막 cue의 어긋남, 첫 제목의 직접 답 공개를 최소 보완했다. 원본 내심의 수선발이 이등변 조건에서 중점이 될 수 있는 예외도 수정하고 실제 원본 회귀를 확인했다. 전수 모바일·독립 시각·실제 브라우저 장면별 정밀검수는 NOT_RUN / QA_PENDING이다.
 
+**사각형 복구·구현(2026-11-11):** 기존 원격 `2926398a88f24713eb8645aaddae4f5f6ad85df6`의 7개 커밋과 23장면/106해설을 보존하고 최신 main `aeef4eb029f9aadfa30aaa49080bff92efa3d7e5`를 충돌 없이 병합했다. 누락은 정확히 `q2-1`~`q2-9`였으며 별도 `lesson-d.js`에 27해설을 추가하여 **32장면/133해설**을 연결했다. 평행사변형의 다섯 조건·내접 평행사변형·대각 조건 증명·다섯 반례를 원본 질문과 고정 상태로 설명한다. 기존 미추적 B 검사 파일도 복구했다. 전체 등록/validator·진입/첫 cue/결론 399개 source Board 상태·숫자 바꾸기 뒤 원문 조건 복원을 통과했다. 최소 Node 검사 109/109·JS/MJS 구문 17파일이 통과했다. 기존 평행사변형 20해설도 원본 정답과 독립 길이/각/넓이 계산으로 확인했다. 실제 모바일·독립 시각검수는 NOT_RUN / QA_PENDING이다.
+
+**공통 Pages 상태(2026-11-11 추가 확인):** 공개 `_archive-release.json`의 실제 소스는 `fb27d05ee921da9534d9fff332ac774d732b91cf`이며 마지막 실제 배포는 [42966828800](https://github.com/icefoxtail/AP------/actions/runs/42966828800)이다. 후속 [Pages 42970224073](https://github.com/icefoxtail/AP------/actions/runs/42970224073)은 workflow success라도 deploy가 skipped여서 신규 공개 증거가 아니다. 직전 [등록 writer 42974755265](https://github.com/icefoxtail/AP------/actions/runs/42974755265)는 `reviewedFinal / FINAL_CONSUMER / assignment_missing`으로 `publishable:false`였고 다음 writer들이 대기/실행 중이다. 사각형 코드의 확정 결함과 분리하며, 등록/보호 검사를 우회하지 않는다. 실제 HTML/영수증이 갱신되기 전까지 해당 실험실은 PAGES_NOT_VERIFIED다.
+
 ## 7. 고등
 
 대상(카탈로그 `course`): 공통수학 10, 대수 8, 미적분Ⅰ 8, 기하 9, 확률과 통계 3.
