@@ -242,9 +242,9 @@ window.questionBank = [
     "originalCategory": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/21_금당고_1학기_중간_고1_기출/q6-solution.svg",
-    "solutionImageAlt": "꼭짓점 (2, 9)에서 최댓값 9를 가지므로 a+b=11이다.",
-    "solutionImageCaption": "꼭짓점 (2, 9)에서 최댓값 9를 가지므로 a+b=11이다.",
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 파란 포물선이다. 가장 높은 점은 (a, b)로 표시되어 있고, y축과 만나는 점 (0,5), x축과 만나는 두 점 (−1,0), (5,0)에 좌표가 표시되어 있다.",
+    "solutionImageCaption": "그래프는 위로 볼록한 파란 포물선이고 가장 높은 점의 좌표가 (a, b)이다. y=−x²+4x+5를 완전제곱식으로 고치면 y=−(x−2)²+9이므로 꼭짓점 (2,9)에서 최댓값을 갖는다. 따라서 a=2, b=9이다. 정답은 11이다.",
     "solutionImageSize": "full"
   },
   {
@@ -409,7 +409,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 모양이 같은 아래로 볼록한 포물선 세 개가 x축 위에서 옆으로 밀려 있고 모두 x축에 접하며, 오른쪽부터 파랑 k=0, 주황 k=1, 초록 k=2로 이름이 붙어 있다. 아래 그림도 포물선 세 개이지만 x축과의 관계가 서로 달라서 파랑 k=−1은 x축 위에 떠 있고, 주황 k=0은 x축에 접하고, 초록 k=1은 x축을 두 점에서 자른다.",
+    "solutionImageCaption": "그래프가 k의 값과 관계없이 x축에 접하려면 판별식 D가 k에 대한 일차식 (k의 계수)×k+(상수항)이므로 k의 계수와 상수항이 모두 0이어야 하고, 이로부터 a=3, b=4분의 9이다. 위 그림은 이때의 그래프로 k가 달라져도 꼭짓점이 x축 위를 움직이며 항상 접하고, 아래 그림은 조건을 만족하지 않는 예(a=2, b=1)로 k에 따라 접하거나 만나지 않거나 두 점에서 만난다. 위 그림에서 파랑은 k=0, 주황은 k=1, 초록은 k=2의 그래프이고, 아래 그림에서 파랑은 k=−1, 주황은 k=0, 초록은 k=1의 그래프이다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -492,7 +496,11 @@ window.questionBank = [
     "originalCategory": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "image": "assets/images/21_금당고_1학기_중간_고1_기출/q12.png"
+    "image": "assets/images/21_금당고_1학기_중간_고1_기출/q12.png",
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 가로축 h, 세로축 w인 오른쪽 아래로 내려가는 파란 직선 2w+3h=300이고 h가 양수이며 w도 양수인 구간이 실선, 양 끝은 속 빈 점이며 직선 위의 한 점에 h=50이 표시되어 있다. 아래 그림은 가로축 h, 세로축 S인 위로 볼록한 주황 포물선 S=wh로 양 끝이 속 빈 점이고 가장 높은 점이 h=50 위에 표시되어 있다.",
+    "solutionImageCaption": "전체 가로를 w, 세로를 h라 하면 철망 길이는 2w+3h=300이므로 w=2분의 (300−3h)이고 w>0이려면 0<h<100이다. 전체 넓이 S=wh는 h에 대한 위로 볼록한 이차식이고 꼭짓점 h=50에서 가장 크며, 이때 w=75로 조건을 만족한다. 위 그림의 파란 실선은 0<h<100인 부분이고 속 빈 점은 양 끝이 포함되지 않음을 뜻하며, 아래 그림의 주황 곡선이 S=wh이다. 정답은 3750이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -743,7 +751,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "stack",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 f(x)의 그래프(파랑)로 x가 −2부터 3까지이고 x=0인 점은 속 빈 점이며, 높이 6의 주황 점선이 점 (−2,6)과 속 빈 점을 지난다. 점 (2,2)와 (3,3)에 좌표가 표시되어 있다. 아래 그림은 t의 이차함수 A=t²−4t의 그래프로 t가 2부터 6까지는 실선, 그 밖은 점선이고 점 (2,−4)와 t=6인 끝점이 표시되어 있다.",
+    "solutionImageCaption": "x가 −2 이상 0 미만일 때 f(x)=(x+1)²+5이므로 5≤f(x)≤6이고, x가 0 초과 3 이하일 때 f(x)=(x−2)²+2이므로 2≤f(x)<6이다. 따라서 전체 범위에서 2≤f(x)≤6이고 최댓값 6은 x=−2에서만 얻는다. t=f(x)로 놓으면 A=t²−4t=(t−2)²−4이므로 2≤t≤6에서 t=6일 때 최대이다. 위 그림에서 파랑은 f(x)의 그래프, 주황 점선은 y=6이고 속 빈 점은 x=0이 제외됨을 뜻하며, 아래 그림에서 파랑은 A=t²−4t로 2≤t≤6인 부분은 실선, 그 밖은 점선이다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -788,7 +800,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 위로 볼록한 파란 포물선 f(x)가 x축(초록)에 접하는 모습이고 접점에 x=2분의 p가 표시되어 있다. 아래 그림은 같은 포물선에서 구간 −p≤x≤p가 초록으로 굵게 그려져 있고 왼쪽 끝점에 f(−p)=−72, 오른쪽 끝점에 f(p)=−q가 표시되어 있으며 왼쪽 끝점의 높이를 주황 점선이 가로로 보여 준다. 모양을 보이는 그림이라 비율은 정확하지 않다.",
+    "solutionImageCaption": "f(x)=−x²+px−q가 x축에 접하므로 판별식 p²−4q=0, 즉 q=4분의 p²이다. 위로 볼록한 포물선이라 구간 −p≤x≤p에서 최솟값은 양 끝점에서 정해지고 p>0이므로 f(−p)가 f(p)보다 작다. f(−p)=−2p²−q=−72에서 4분의 9×p²=72이므로 p²=32, q=8이다. 그림은 모양만 보이므로 비율은 정확하지 않다. 파랑은 f(x)의 그래프이고, 초록은 위 그림에서는 x축, 아래 그림에서는 구간 −p≤x≤p이며, 주황 점선은 f(−p)의 높이이다. 정답은 96이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -869,7 +885,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "stack",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 수평선 y=4(파랑)와 위로 볼록한 포물선 y=−x²+3x+5(주황)가 서로 다른 두 점에서 만나는 모습이다. 아래 그림은 수평선 y=4(파랑)가 아래로 볼록한 포물선 y=x²+9(초록)의 아래쪽에 있어 만나지 않는 모습이다.",
+    "solutionImageCaption": "직선 y=2kx+4에서 k=0인 예를 그렸다. 직선과 첫째 이차함수가 서로 다른 두 점에서 만나려면 x²−3x+3k−1=0의 판별식 D₁>0이어야 하고, 둘째 이차함수와 만나지 않으려면 x²+2kx+k²+3k+5=0의 판별식 D₂<0이어야 한다. 두 조건에서 k의 범위를 구하고, 그 범위의 자연수는 k=1뿐이므로 t=x²−2x로 놓아 y=−t²+3t+5의 최댓값을 구한다. 정답은 (1) −3분의 5<k<12분의 13, (2) 4분의 29이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

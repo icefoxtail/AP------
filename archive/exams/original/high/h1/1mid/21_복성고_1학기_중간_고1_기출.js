@@ -162,7 +162,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 파란 포물선이 가로축(x축)과 서로 다른 두 점에서 만나는 모습이며 두 교점이 점으로 표시되고 \"두 점에서 만남\"이라고 적혀 있다. 아래 그림은 파란 포물선이 x축 위쪽에만 있어 만나지 않는 모습이며 \"만나지 않음\"이라고 적혀 있다. x축에는 초록 선을 겹쳐 그렸다.",
+    "solutionImageCaption": "y=x²−6x+m+2의 그래프가 x축과 서로 다른 두 점에서 만나는 것은 이차방정식이 서로 다른 두 실근을 갖는 것과 같은 뜻이다. 그림의 파란 곡선은 이 그래프로, 위는 m이 작은 예, 아래는 m이 큰 예이고 초록 선은 x축이다. 판별식은 D=(−6)²−4(m+2)=28−4m이고, D가 양수가 되는 자연수 m을 센다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -244,9 +248,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q6-solution.svg",
-    "solutionImageAlt": "k=3/4일 때 그래프는 x축에 접한다",
-    "solutionImageCaption": "k=3/4일 때 그래프는 x축에 접한다",
+    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림에는 모양이 같은 파란 포물선과 초록 포물선이 있고, 파란 포물선은 x축과 두 점에서 만나며 두 교점이 점으로 표시되고 \"두 점에서 만남\", 초록 포물선은 x축 위쪽에 있어 \"만나지 않음\"이라고 적혀 있다. 아래 그림은 파란 포물선 y=3x²−3x+k가 x축에 접하는 모습으로, 접점 (2분의 1, 0)이 표시되고 y축과 만나는 점 옆에 k가 적혀 있다. 아래 그림의 x축에는 초록 선을 겹쳐 그렸다.",
+    "solutionImageCaption": "포물선이 x축에 접하면 이차방정식 3x²−3x+k=0이 중근을 가지므로 판별식 D=9−12k=0이다. 그림에서 위쪽은 D의 부호에 따른 두 경우(파란 곡선은 x축과 두 점에서 만나고, 초록 곡선은 만나지 않는다)이고, 아래쪽 파란 곡선은 x축에 접하는 경우이며 초록 선은 x축이다. 접할 때 꼭짓점은 x축 위의 점 (2분의 1, 0)이고, k는 y축과 만나는 점의 높이이다. 정답은 4분의 3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -288,7 +292,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "sourceRepairProvenance": "AUDITED_REPAIR:stem_math_noun_이차방정식_to_이차함수"
+    "sourceRepairProvenance": "AUDITED_REPAIR:stem_math_noun_이차방정식_to_이차함수",
+    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 아래로 열린 파란 포물선 y=−(x−2)²이고 꼭짓점이 x축 위의 x=2인 점에 있으며 초록 x축이 겹쳐 있다. 아래 그림은 파란 포물선 y=−x²+4x+5이고 가장 높은 점 V가 표시되어 있으며, 주황 점선 포물선 y=−(x−2)²의 꼭짓점에서 V까지 검은 점선이 이어져 있다.",
+    "solutionImageCaption": "(x−2)²≥0이므로 −(x−2)²≤0이다. 위 그림의 파란 곡선은 y=−(x−2)², 초록 선은 x축이다. y=−x²+4x+5는 −(x−2)²에 상수를 더한 꼴로 고칠 수 있어서, 아래 그림처럼 주황 점선 곡선(y=−(x−2)²)을 위로 옮긴 파란 곡선이 되고 꼭짓점 V에서 가장 큰 값을 가진다(검은 점선은 옮긴 거리). x=2일 때의 값이 최댓값이다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -536,9 +544,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "포물선 y=x²+x+1과 직선 y=2x+3이 x=-1, x=2인 두 점 A, B에서 만난다.",
-    "solutionImageCaption": "포물선 y=x²+x+1과 직선 y=2x+3이 x=-1, x=2인 두 점 A, B에서 만난다.",
+    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 파란 포물선 y=x²+ax+1과 주황 직선 y=2x+b가 두 점에서 만나는 모습이며, 두 교점에서 x축까지 검은 점선이 내려와 x좌표 −1과 2가 표시되어 있다. 아래 그림은 두 식의 차 y=x²+(a−2)x+(1−b)를 나타내는 파란 포물선이 초록 x축과 (−1, 0), (2, 0)에서 만나는 모습이다.",
+    "solutionImageCaption": "두 교점에서는 y값이 같으므로 x²+ax+1=2x+b, 즉 x²+(a−2)x+(1−b)=0이고 이 방정식의 두 근이 −1, 2이다. 위 그림의 파란 곡선은 이차함수, 주황 직선은 y=2x+b의 그래프이고, 아래 그림의 파란 곡선은 두 식의 차, 초록 선은 x축이다. (x+1)(x−2)와 계수를 비교해 a, b를 구한 뒤 더한다. 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -582,9 +590,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "구간 0≤x≤3에서 꼭짓점의 y값이 최소, 왼쪽 끝점의 y값이 최대이다.",
-    "solutionImageCaption": "구간 0≤x≤3에서 꼭짓점의 y값이 최소, 왼쪽 끝점의 y값이 최대이다.",
+    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 아래로 볼록한 파란 포물선 y=x²−4x+k에서 0≤x≤3인 부분을 초록 굵은 선으로 나타낸 것이며, 꼭짓점 (2, 4)가 표시되고 그 높이를 주황 점선이 이어 주며 x축에 2와 3이 적혀 있다. 아래 그림은 그 구간의 초록 곡선과 왼쪽 끝점 P, 꼭짓점 V, 오른쪽 끝점 Q이고, P와 V의 높이에 주황 점선이 있으며 y축에 4가 적혀 있다.",
+    "solutionImageCaption": "꼭짓점의 x좌표 2가 구간 0≤x≤3 안에 있으므로 최솟값은 꼭짓점에서 생기고, 그 값이 4이므로 k를 구한다. 위 그림의 파란 곡선은 y=x²−4x+k이고 구간 0≤x≤3인 부분은 초록 굵은 선, 주황 점선은 꼭짓점의 높이이다. 아래 그림에서 P는 구간의 왼쪽 끝점, Q는 오른쪽 끝점, V는 꼭짓점이고, 최댓값은 두 끝점의 값 중 큰 쪽이며 그림에서는 P가 Q보다 높다. 정답은 8이다.",
     "solutionImageSize": "full"
   },
   {
@@ -801,9 +809,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "sourceRepairProvenance": "AUDITED_REPAIR:choice_4_10_to_8_after_independent_solution",
-    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "직선 y=ax+7과 두 점에서 만나는 포물선, 꼭짓점 V에서 최솟값 3",
-    "solutionImageCaption": "직선 y=ax+7과 두 점에서 만나는 포물선, 꼭짓점 V에서 최솟값 3",
+    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 파란 이차함수 f(x)와 주황 직선 y=ax+7이 두 점에서 만나는 모습이며, 두 교점에서 x축까지 검은 점선이 내려와 x좌표 −1과 4가 표시되어 있다. 아래 그림은 f(x)의 그래프에서 1≤x≤3인 부분이 초록 굵은 선이고 꼭짓점 (1, 3)이 표시되어 있으며 그 높이를 주황 점선이 이어 주고 x축에 1과 3이 적혀 있다.",
+    "solutionImageCaption": "두 교점의 x좌표가 −1, 4이므로 f(x)−(ax+7)=a(x+1)(x−4)이고, 정리하면 f(x)=a(x−1)²+7−5a이다. 위 그림의 파란 곡선은 f(x), 주황 직선은 y=ax+7이고, 아래 그림의 초록 굵은 선은 구간 1≤x≤3인 부분, 주황 점선은 꼭짓점의 높이이다. 꼭짓점의 x좌표 1이 구간의 왼쪽 끝이므로 최솟값은 꼭짓점의 값 7−5a=3이다. 이 식에서 a를 구해 10a를 계산한다. 정답은 8이다.",
     "solutionImageSize": "full"
   },
   {
@@ -924,9 +932,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "stack",
     "wide": true,
-    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "AE=x, AH=10-x인 정사각형 ABCD와 내접 정사각형 EFGH의 실제 접점 배치",
-    "solutionImageCaption": "직각삼각형 AEH에서 EH²=x²+(10-x)², 최소 넓이는 50",
+    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 변의 길이가 10인 정사각형 A, B, C, D 안에 정사각형 E, F, G, H가 꼭짓점을 네 변 위에 두고 기울어져 내접해 있다. 꼭짓점 A의 모서리 직각삼각형은 주황색 옅은 면이고 직각 표시가 있으며, 짧은 변 AE는 x, 긴 변 AH는 10−x로 표시되어 있다. 네 모서리 삼각형에서 짧은 변은 주황, 긴 변은 초록으로 같은 길이 눈금을 붙였고 안쪽 정사각형은 파란 면이다. 한 변의 길이 10은 아래쪽에 표시되어 있다.",
+    "solutionImageCaption": "네 모서리의 직각삼각형은 합동이므로 AE=x이면 AH=10−x이다. 그림에서 주황 선은 짧은 변 x, 초록 선은 긴 변 10−x(같은 눈금은 같은 길이)이고, 옅은 주황 면은 모서리 직각삼각형, 파란 면은 안쪽 정사각형이다. 안쪽 정사각형의 한 변은 EH이므로 피타고라스 정리로 넓이 S=x²+(10−x)²를 얻고, 이를 완전제곱식으로 고쳐 최솟값을 구한다. 그림은 x의 한 예로 그렸으며 비율이 정확하지 않다. 정답은 50이다.",
     "solutionImageSize": "full"
   }
 ];
