@@ -1,0 +1,94 @@
+{
+ "capability": "composite-panels-v1",
+ "columns": 1,
+ "caption": "둘 다 선택하지 않은 학생 5명이 M∪A 밖이므로 n(M∪A)=40-5=35이고, n(M∩A)=19+25-35=9이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "전체 학생 40명, n(M)=19, n(A)=25, 둘 다 선택하지 않은 학생 5명",
+   "mappedTo": [
+    "p1",
+    "p2"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "M∪A를 색칠한 그림과 M∩A를 색칠한 그림을 위아래로 나란히 둔다"
+ ],
+ "panels": [
+  {
+   "caption": {
+    "text": "M∪A 전체"
+   },
+   "plan": {
+    "capability": "set-diagram-figure-v1",
+    "diagram": {
+     "kind": "VENN",
+     "universe": {
+      "name": "U",
+      "count": "40",
+      "countUnit": "명"
+     },
+     "sets": [
+      {
+       "id": "M",
+       "name": "M",
+       "count": "19",
+       "countUnit": "명"
+      },
+      {
+       "id": "A",
+       "name": "A",
+       "count": "25",
+       "countUnit": "명"
+      }
+     ],
+     "elements": [
+      {
+       "text": "5명",
+       "in": []
+      }
+     ],
+     "shade": "M∪A"
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "M∩A 공통"
+   },
+   "plan": {
+    "capability": "set-diagram-figure-v1",
+    "diagram": {
+     "kind": "VENN",
+     "universe": {
+      "name": "U",
+      "count": "40",
+      "countUnit": "명"
+     },
+     "sets": [
+      {
+       "id": "M",
+       "name": "M",
+       "count": "19",
+       "countUnit": "명"
+      },
+      {
+       "id": "A",
+       "name": "A",
+       "count": "25",
+       "countUnit": "명"
+      }
+     ],
+     "elements": [
+      {
+       "text": "5명",
+       "in": []
+      }
+     ],
+     "shade": "M∩A"
+    }
+   }
+  }
+ ]
+}
