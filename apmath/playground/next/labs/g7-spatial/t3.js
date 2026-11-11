@@ -11,6 +11,7 @@
   if (!G) return;
   const { lineRel, jo, DEG, clamp, pick, rint, shuffle, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, scene3, buildSolid, classify, edgeByKey, fit, bboxOf, caption, P, VIEW, mkChoices, mkText, rd, notes, ov, drawSolid, drawVerts, LET } = G;
   const EPS = 1e-9; // 작은 거리·각도도 실제 0과 구별합니다. 화면의 픽셀 간격은 수학 판정에 쓰지 않습니다.
+  const ready = (s, C, key) => !C.lesson || (!s.lessonEntry && !!s[key]);
 
   const PARAMS = {
     spCd: P('점의 위치 (직선에서 떨어진 거리)', 0, 1.8, 0.05, 1.2, { color: 'amber', hint: '0으로 맞추면 점이 직선 위에 놓여요', format: (v) => v.toFixed(2) }),
@@ -137,6 +138,7 @@
   function fanScene(cfg) {
     const D = {
       id: cfg.id, title: cfg.title, short: cfg.short, question: cfg.question,
+      lessonQuestion: (M, s, Q) => s.spLessonMode === 'problem' || cfg.id === 's3-1' || cfg.id === 's3-2' ? Q.stem : s.spLessonGoal === 'same' ? '두 직선 l, m이 일치할 때 두 직선을 모두 포함하는 평면은 몇 개일까요?' : cfg.question,
       cam0: { yaw: -28, pitch: 30 },
       ctl: (s) => cfg.ctl.concat(['spTh'], VIEW),
       anim: { key: 'spT', dur: 6, label: '평면 돌려 보기', start: 0 },
@@ -149,6 +151,12 @@
         const Dr = scene3(b, s, C);
         if (C.problem) { cfg.drawProb(Dr, b, s, M, C); return; }
         let F = M.F, th = s.spTh == null ? 0 : s.spTh;
+        if (C.lesson) {
+          if (s.spLessonMode === 'problem') { cfg.drawProb(Dr, b, s, M, C); return; }
+          drawFan(Dr, F, th, C, { plane: ready(s, C, 'spPlaneReady'), test: true, angle: true, pierce: true });
+          if (ready(s, C, 'spShowAnswer')) capFan(b, F, th, C);
+          return;
+        }
         if (C.review) {
           const st = C.step;
           const s2 = Object.assign({}, s);

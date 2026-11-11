@@ -70,12 +70,12 @@ test('a prior problem review cannot replace lesson geometry, reset its stage, or
   const lab = await load();
   for (const [id, value] of Object.entries(lab.def.lessons)) for (const lesson of core.lessonList(value)) {
     const initial = frame(lab, id, lesson, 1);
-    const step = lab.s.step;
+    const step = lab.s.step, fixed = { ...lab.s };
     // Retain an actual prior problem-review membership in the production WeakSet.
     Object.assign(lab.s, { lessonOn: false, lessonEntry: false });
     lab.tab = 'problem'; lab.scene.view(lab.s, lab);
     const manualPick = { key: 'previous-manual-problem', idx: 2 };
-    Object.assign(lab.s, { spPick: manualPick, lessonOn: true, lessonEntry: false, step });
+    Object.assign(lab.s, fixed, { spPick: manualPick, lessonOn: true, lessonEntry: false, step });
     lab.tab = 'review';
     const again = lab.draw();
     assert.deepEqual(again.texts, initial.texts, id + ': lesson labels ignore the previous problem');
