@@ -184,7 +184,7 @@
       chapters: [
         { length: 12, title: '세 점과 평면 구별하기', start: solidStart(), cues: [
           { at: 0, say: '직육면체의 꼭짓점은 8개예요. 세 점을 골라 정해지는 평면을 세어요.', set: solidSet('cuboid'), to: { spYaw: -38 }, dur: 5, ease: 'linear' },
-          { at: 6, say: 'A, B, C를 골라요. 세 점 선택과 서로 다른 평면 수는 구별해요.', step: 1, set: { spPlaneReady: true } }
+          { at: 6, say: 'A, B, C의 순서를 바꾼 여섯 경우는 같은 세 점 선택이에요.', step: 1, set: { spPlaneReady: true } }
         ] },
         { length: 12, title: '세 점 선택과 같은 평면', cues: [
           { at: 0, say: '세 점을 고르는 방법은 8×7×6÷6=56가지예요.', set: { spFirstReady: true } },
@@ -209,7 +209,7 @@
       chapters: [
         { length: 12, title: '다섯 꼭짓점에서 세 점 고르기', start: solidStart(), cues: [
           { at: 0, say: '정사각뿔의 꼭짓점은 V와 A, B, C, D의 다섯 개예요.', set: solidSet('pyr4'), to: { spYaw: -38 }, dur: 5, ease: 'linear' },
-          { at: 6, say: '세 점이 만드는 평면을 세되, 같은 평면을 여러 번 세지 않아요.', step: 1, set: { spPlaneReady: true } }
+          { at: 6, say: '세 점의 순서를 바꾼 여섯 경우는 같은 세 점 선택이에요.', step: 1, set: { spPlaneReady: true } }
         ] },
         { length: 12, title: '같은 밑면이 반복되는 경우', cues: [
           { at: 0, say: '세 점을 고르는 방법은 5×4×3÷6=10가지예요.', set: { spFirstReady: true } },

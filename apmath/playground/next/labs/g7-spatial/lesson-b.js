@@ -106,7 +106,7 @@
     ],
     's5-3': [
       make('평행한 두 평면을 자르는 두 교선', '두 교선', 'l ∥ m', 'concept', 'intersections', [
-        chapter('세 평면과 두 교선', [{ at: 0, say: 'P와 Q는 평행하고 R은 두 평면을 모두 잘라요.' }, { at: 5, say: 'R과 P의 교선은 l, R과 Q의 교선은 m이에요.', step: 1 }]),
+        chapter('세 평면과 두 교선', [{ at: 0, say: 'P와 Q는 평행하고 R은 두 평면을 모두 잘라요.' }, { at: 5, say: 'R과 P의 교선은 m, R과 Q의 교선은 l이에요.', step: 1 }]),
         chapter('같은 평면에 있는지 확인', [{ at: 0, say: 'l, m은 모두 같은 평면 R 위에 있어요.', step: 2 }, { at: 5, say: 'P와 Q가 만나지 않으므로 두 교선도 만나지 않아요.', set: { spBStage: 1 } }]),
         chapter('두 교선의 위치 관계', [{ at: 0, say: '같은 평면 위에서 만나지 않는 두 직선이에요.', step: 3 }, { at: 5, say: '따라서 l∥m이에요. 꼬인 위치가 아니에요.', set: { spShowAnswer: true } }])
       ], { q: { kind: 'cuboid', n: 4, face: 0 } }),
