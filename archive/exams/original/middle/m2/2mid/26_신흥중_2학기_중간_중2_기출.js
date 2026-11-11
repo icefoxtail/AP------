@@ -66,10 +66,10 @@ window.questionBank = [
     "answer": "5",
     "solution": "닮음인 두 사각형의 대응하는 변은 $AB\\leftrightarrow EF$, $BC\\leftrightarrow FG$이다.\n$AB:EF=8:12=2:3$이므로 $BC:FG=2:3$이다.\n$12:FG=2:3$에서 $FG=18$cm이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q02.png",
-    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 닮은 두 사각형 ABCD와 EFGH를 나란히 놓고, 대응하는 변 AB와 EF는 파란색, BC와 FG는 주황색으로 같은 색끼리 표시한 그림. 닮음비는 2:3이고 FG=18cm이다.",
-    "solutionImageCaption": "대응변의 비 AB:EF=8:12=2:3에서 FG=18cm이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "닮은 두 사각형을 같은 눈금으로 나란히 그렸다. 왼쪽 사각형 A, B, C, D는 AB=8cm, BC=12cm이고, 오른쪽 사각형 E, F, G, H는 EF=12cm이며 왼쪽보다 크게 그려졌다. 대응변 AB와 EF는 파란색, BC와 FG는 주황색이고 FG의 길이는 글자 FG로만 표시했다.",
+    "solutionImageCaption": "닮은 두 사각형을 같은 눈금으로 그렸으므로 오른쪽 사각형 E, F, G, H가 더 크다. 대응변 AB:EF=8:12=2:3이므로 닮음비는 2:3이고, 대응변 BC:FG도 2:3이다. BC=12cm이므로 12:FG=2:3에서 FG를 구한다. 정답은 18cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,

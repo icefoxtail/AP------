@@ -13,6 +13,7 @@ from .palette import PALETTE,COLORED_SEGMENT_WIDTH
 from .semantic_model import validate
 from .geometry_model import Circle,CircularArc,Line,clip_line,finite
 from .math_expression import parse as _parse_expression,evaluate as _evaluate_expression,parse_list as _parse_list
+OPEN_POINT_STROKE_WIDTH=1.8   # a hollow overlay point (markerState OPEN): the ring is heavier than a filled dot's 0.8 outline so it reads as a circle on a phone
 
 def _exact_float(text):
     """The float of an exact value string: a rational 'a/b' or an expression with sqrt (the surd endpoint of a quadratic's source interval)."""
@@ -87,6 +88,18 @@ def _sample_graph_boundary(rows,vp):
         if points and pts and abs(points[-1][0]-pts[0][0])<=1e-9:pts=pts[1:]
         points.extend(pts)
     return points
+
+def _close_boundary_at_window(points,left_x,right_x,edge_ys,tolerance=1e-6):
+    """A sampled region boundary whose first / last point stops short of the region's own side (left_x / right_x, screen px) because the curve left the window must stop ON the
+    window's top or bottom edge (edge_ys); the corner (side x, that edge) is added so the fill follows the edge. Anything else is a sampling failure, never bridged."""
+    closed=list(points)
+    if closed[0][0]>left_x+tolerance:
+        if not any(abs(closed[0][1]-edge)<=tolerance for edge in edge_ys):raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+        closed.insert(0,(left_x,closed[0][1]))
+    if closed[-1][0]<right_x-tolerance:
+        if not any(abs(closed[-1][1]-edge)<=tolerance for edge in edge_ys):raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+        closed.append((right_x,closed[-1][1]))
+    return closed
 
 REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
 def region_paint(name):
@@ -756,7 +769,10 @@ def prepare(spec):
             point_name=point_names.get(oid,obj.get('name',oid))
             if oid not in named and point_name is not None:labels.append({'id':oid+'-name','kind':'POINT_NAME','target':oid,'text':point_name,'at':vp.screen(value),'font':tokens['pointName'],'priority':obj.get('priority',1)})
         elif kind=='POINT':
-            primitive({'id':oid,'kind':'circle','at':vp.screen(value),'radius':obj['markerRadius'] if obj.get('markerRadius') is not None else tokens['criticalPoint'] if obj.get('priority')==0 else tokens['point'],'layer':70,'role':'point','token':'indicator'},'point')
+            # color (POINT): a dot in a palette group's line colour; markerState OPEN: a hollow circle, the same radius, stroked in that colour (black when none) with the figure's white inside
+            dot_line=PALETTE[obj['color']]['line'] if obj.get('color') else None
+            dot_look=({'fill':'#fff','stroke':dot_line or '#111','strokeWidth':OPEN_POINT_STROKE_WIDTH,'state':'OPEN'} if obj.get('markerState')=='OPEN' else {'fill':dot_line,'stroke':dot_line} if dot_line else {})
+            primitive({'id':oid,'kind':'circle','at':vp.screen(value),'radius':obj['markerRadius'] if obj.get('markerRadius') is not None else tokens['criticalPoint'] if obj.get('priority')==0 else tokens['point'],'layer':70,'role':'point','token':'indicator',**dot_look},'point')
             point_names=semantic.get('publication',{}).get('sourcePointLabels',{})
             point_name=point_names.get(oid,obj.get('name',oid))
             if oid not in named and point_name is not None:labels.append({'id':oid+'-name','kind':'POINT_NAME','target':oid,'text':point_name,'at':vp.screen(value),'font':tokens['pointName'],'priority':obj.get('priority',1)})
@@ -964,6 +980,12 @@ def prepare(spec):
             if obj['fill'] not in REGION_FILLS and obj['fill'] not in PALETTE:raise ValueError('GRAPH_REGION_FILL_UNSUPPORTED:'+oid)
             upper=_sample_graph_boundary(obj['upper'],vp);lower=_sample_graph_boundary(obj['lower'],vp)
             if len(upper)<2 or len(lower)<2:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+            if obj.get('windowClosed') is True:
+                # A boundary that leaves the window (the steep side of a pole) is cut where it crosses the top or bottom edge: the fill is closed along that edge, from the crossing to
+                # the region's own side x, so it has no empty wedge and never leaves the plot window.
+                region_lo,region_hi=float(obj['domain'][0]),float(obj['domain'][1]);left_x=vp.screen((region_lo,vp.yMin))[0];right_x=vp.screen((region_hi,vp.yMin))[0]
+                edges=(vp.screen((region_lo,vp.yMax))[1],vp.screen((region_lo,vp.yMin))[1])
+                upper=_close_boundary_at_window(upper,left_x,right_x,edges);lower=_close_boundary_at_window(lower,left_x,right_x,edges)
             polygon=upper+list(reversed(lower))
             if any(b[0]<a[0] for a,b in zip(upper,upper[1:])) or any(b[0]<a[0] for a,b in zip(lower,lower[1:])):raise ValueError('GRAPH_REGION_BOUNDARY_NOT_INCREASING')
             d='M'+_num(polygon[0][0])+' '+_num(polygon[0][1])+' '+' '.join('L'+_num(x)+' '+_num(y) for x,y in polygon[1:])+' Z'
