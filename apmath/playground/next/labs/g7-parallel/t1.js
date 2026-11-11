@@ -17,6 +17,19 @@
   const ALT = [['c', 'f'], ['d', 'e']];
   const FOCUS = { x: [-4.6, 4.6], y: [-4.2, 4.2] };
   const wdeg = (d1, d2) => { let w = norm(d2 - d1); if (w > 180) w = 360 - w; return Math.round(w * 1000) / 1000; };
+  const ready = (s, key = 'paShowAnswer') => !s.lessonEntry && s[key] === true;
+  const progress = s => s.lessonEntry ? 0 : clamp(s.paTrace || 0, 0, 1);
+  function lessonRow(b, s, text) {
+    if (!ready(s)) return;
+    const size = Math.min(18, (b.W - b.insets.left - b.insets.right - 26) / Math.max(1, K.textW(text, 18)) * 18);
+    b.stext((b.W + b.insets.left - b.insets.right) / 2, b.insets.top + 17, text, { color: 'green', size, weight: 800, align: 'center', baseline: 'middle' });
+  }
+  function tracePath(b, pts, f, options) {
+    if (f <= 0) return;
+    const n = pts.length - 1, p = Math.min(n, f * n), i = Math.floor(p), out = pts.slice(0, i + 1);
+    if (i < n) out.push(K.lerp(pts[i], pts[i + 1], p - i));
+    if (out.length > 1) b.path(out, options);
+  }
 
   /* ---------------- 도형 ---------------- */
   // theta: 횡단선 n 이 l 과 이루는 각, phi: m 의 기울기(평행이면 0), cx: n 의 가로 위치
@@ -54,13 +67,10 @@
     dot(b, P, 'rose', 5); dot(b, Q, 'rose', 5);
   }
   // F·Z 윤곽: 두 각의 변과 PQ 를 굵게 겹쳐 그림
-  function overlay(b, G, n1, n2, color, alpha = 0.42) {
+  function overlay(b, G, n1, n2, color, alpha = 0.42, f = 1) {
     const L = 1.15;
-    [n1, n2].forEach((n) => {
-      const w = G.W[n];
-      b.path([at(w.V, w.d1, L), w.V, at(w.V, w.d2, L)], { color, width: 9, alpha });
-    });
-    b.path([G.P, G.Q], { color, width: 9, alpha });
+    const path = n => { const w = G.W[n]; return [at(w.V, w.d1, L), w.V, at(w.V, w.d2, L)]; };
+    [path(n1), [G.P, G.Q], path(n2)].forEach((pts, i) => tracePath(b, pts, clamp(f * 3 - i, 0, 1), { color, width: 9, alpha }));
   }
   // 각 8개를 그립니다. spec: { name: { color, rings, text } } 에 없는 각은 연한 이름만.
   function drawWedges(b, G, spec, o = {}) {
@@ -111,6 +121,16 @@
       drawBase(b, G);
       const spec = {};
       let ov = [];
+      if (C.lesson) {
+        const kind = M.tkind, target = M.tar, partner = partnerOf(kind, target);
+        spec[target] = { color: 'green', text: target, rings: 1, size: 20 };
+        if (ready(s)) spec[partner] = { color: 'amber', text: partner, rings: 1, size: 20 };
+        overlay(b, G, target, partner, 'amber', .42, progress(s));
+        drawWedges(b, G, spec);
+        T(b, { x: 0, y: 3.55 }, ready(s) ? `∠${target}의 ${KIND(kind)}은 ∠${partner}` : kind === 'corr' ? '다른 교점의 같은 위치를 찾아요' : '두 직선 사이에서 엇갈린 위치를 찾아요', { color: 'amber', size: 17 });
+        lessonRow(b, s, `∠${partner}`);
+        return;
+      }
       if (C.mode === 'problem') {
         spec[M.tar] = { color: 'green', text: M.tar, rings: 1, size: 20 };
       } else if (C.mode === 'review') {
@@ -210,6 +230,26 @@
       return { G, theta: s.qT, phi: s.qPhi, mode: s.qMode, n1, n2, v1, v2, eq: v1 === v2, given: s.qGiven, ask: s.qAsk };
     },
     draw(b, s, M, C) {
+      if (C.lesson) {
+        const numeric = s.paLessonMode === 'conditionSolve', G = numeric ? geom(M.theta, 0, 0) : M.G, W = G.W, spec = {};
+        drawBase(b, G, { arrowL: numeric || ready(s), arrowM: numeric || ready(s) && M.eq });
+        if (numeric) {
+          spec[M.given] = { color: 'amber', text: `a=${mi(W[M.given].val)}°` };
+          spec.e = { color: 'violet', text: ready(s, 'paSupportReady') ? `e=${mi(W.e.val)}°` : 'e', rings: 2 };
+          spec[M.ask] = { color: 'green', text: ready(s) ? `x=${mi(W[M.ask].val)}°` : 'x', rings: 3 };
+          overlay(b, G, M.given, 'e', 'amber', .34, progress(s));
+          T(b, { x: 0, y: 3.55 }, ready(s) ? `x=180°−${mi(W.e.val)}°=${mi(W[M.ask].val)}°` : ready(s, 'paSupportReady') ? `e=${mi(W.e.val)}°, e+x=180°` : '같은 위치의 각을 찾아요', { color: 'violet', size: 17 });
+          lessonRow(b, s, `x=${mi(W[M.ask].val)}°`);
+        } else {
+          spec[M.n1] = { color: 'amber', text: `${M.n1}=${mi(M.v1)}°` };
+          spec[M.n2] = { color: 'violet', text: `${M.n2}=${mi(M.v2)}°`, rings: 2 };
+          overlay(b, G, M.n1, M.n2, 'amber', .34, progress(s));
+          T(b, { x: 0, y: 3.55 }, ready(s) ? `${KIND(M.mode)}이 같으므로 l ∥ m` : `${KIND(M.mode)} ${M.n1}, ${M.n2}의 크기를 비교해요`, { color: 'amber', size: 17 });
+          lessonRow(b, s, 'l ∥ m');
+        }
+        drawWedges(b, G, spec, { letters: false });
+        return;
+      }
       const prob = C.mode === 'problem';
       const G = prob ? geom(M.theta, 0, 0) : M.G, W = G.W;
       drawBase(b, G, { arrowM: prob ? true : M.eq });
@@ -335,6 +375,14 @@
     for (let i = all.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = all[i]; all[i] = all[j]; all[j] = t; }
     s.rList = all;
   }
+  // 원본 보기 형식 그대로 고정한 해설용 다섯 보기. 수동 문제의 rList는 보존합니다.
+  const LESSON_JUDGE = [
+    { kind: 'corr', vP: 70, vQ: 90, ok: false, hint: '동위각의 크기가 달라요.' },
+    { kind: 'alt', vP: 70, vQ: 110, ok: false, hint: '합이 아니라 엇각의 크기가 같아야 해요.' },
+    { kind: 'corr', vP: 60, vQ: 80, ok: false, hint: '동위각의 크기가 달라요.' },
+    { kind: 'alt', vP: 100, vQ: 115, ok: false, hint: '엇각의 크기가 달라요.' },
+    { kind: 'corr', vP: 65, vQ: 65, ok: true, hint: '' }
+  ];
   const D13 = {
     id: 'p1-3', title: '[함정] 평행인지 판별하기', short: '평행 판별',
     question: '동위각 또는 엇각이라고 표시한 두 각의 크기가 주어졌어요. 두 각의 크기가 어떨 때 두 직선 l, m 이 평행일까요?',
@@ -353,16 +401,29 @@
       s.rReviewTab = lab.tab;
     },
     model: (s) => {
-      const list = s.rList || [], problemReview = !!s.rReviewQuestion;
-      let pickIdx = s.papick ? s.papick.idx : 0;
+      const lessonJudge = !!(s.lessonOn || s.lessonEntry) && s.paLessonMode === 'judge';
+      const list = lessonJudge ? LESSON_JUDGE : s.rList || [], problemReview = !(s.lessonOn || s.lessonEntry) && !!s.rReviewQuestion;
+      let pickIdx = lessonJudge ? clamp(s.paCase || 0, 0, 4) : s.papick ? s.papick.idx : 0;
       if (problemReview && s.rReviewTab === 'review') pickIdx = s.step >= 6 ? list.findIndex(it => it.ok) : Math.max(0, (s.step || 1) - 1);
-      const it = problemReview ? list[pickIdx] : null, vP = it ? it.vP : s.rA, vQ = it ? it.vQ : s.rB, kind = it ? it.kind : s.rMode;
-      return { vP, vQ, kind, eq: vP === vQ, list, pickIdx, problemReview };
+      const it = problemReview || lessonJudge ? list[pickIdx] : null, vP = it ? it.vP : s.rA, vQ = it ? it.vQ : s.rB, kind = it ? it.kind : s.rMode;
+      return { vP, vQ, kind, eq: vP === vQ, list, pickIdx, problemReview, lessonJudge };
     },
     draw(b, s, M, C) {
       let vP = M.vP, vQ = M.vQ, kind = M.kind;
       if (C.mode === 'problem') { const it = M.list[M.pickIdx] || M.list[0]; if (!it) return; vP = it.vP; vQ = it.vQ; kind = it.kind; }
       const G = judgeGeom(vP, vQ), W = G.W, eq = vP === vQ;
+      if (C.lesson) {
+        const n1 = kind === 'corr' ? 'b' : 'c', spec = {};
+        drawBase(b, G, { arrowL: ready(s) && eq, arrowM: ready(s) && eq });
+        spec[n1] = { color: 'amber', text: `p=${mi(vP)}°` };
+        spec.f = { color: 'violet', text: `q=${mi(vQ)}°`, rings: 2 };
+        overlay(b, G, n1, 'f', 'amber', .3, progress(s));
+        drawWedges(b, G, spec, { letters: false });
+        if (M.lessonJudge) T(b, { x: 0, y: -3.7 }, `${NUM[M.pickIdx]} 그림 · ${KIND(kind)}`, { color: 'muted', size: 17 });
+        T(b, { x: 0, y: 3.55 }, ready(s) || ready(s, 'paCaseReady') ? eq ? '두 각의 크기가 같아요' : '두 각의 크기가 달라요' : `${KIND(kind)} p, q를 비교해요`, { color: 'amber', size: 17 });
+        lessonRow(b, s, M.lessonJudge ? '⑤' : eq ? 'l ∥ m' : '평행하지 않아요');
+        return;
+      }
       drawBase(b, G, { arrowL: C.mode !== 'problem', arrowM: C.mode !== 'problem' && eq });
       const n1 = kind === 'corr' ? 'b' : 'c', n2 = 'f';
       const spec = {};

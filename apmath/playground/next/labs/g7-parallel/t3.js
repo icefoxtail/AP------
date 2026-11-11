@@ -22,6 +22,13 @@
     parLine(b, { x: 0, y: YM }, 0, { e0: -XR, e1: XR, arrows: [-2.6, 2.3], name: 'm', nameAt: XR - 0.3 });
   };
   const dashAt = (b, p, color = 'muted') => b.line(p, { x: p.x + 1, y: p.y }, { color, width: 2.2, dash: [7, 6], alpha: 0.9 });
+  // Draw only the lesson's auxiliary line progressively; keep given angles fixed.
+  const lessonDash = (b, p, s) => {
+    const t = clamp(Number(s.paBLine) || 0, 0, 1), span = XR * t;
+    if (t > 0) b.path([{ x: p.x - span, y: p.y }, { x: p.x + span, y: p.y }], { color: 'muted', width: 2.2, dash: [7, 6], alpha: 0.9 });
+  };
+  const lessonOn = (s) => !!(s.lessonOn || s.lessonEntry);
+  const targetLabel = (s, G) => s.paBAsk === 'numeric' ? (s.paShowAnswer ? 'x=' + G.b + '°' : 'x') : 'b';
   const LET = 'ABCDEFGH';
   const POLY = { 4: '정사각형', 5: '정오각형', 6: '정육각형', 8: '정팔각형', 3: '정삼각형' };
   const interior = (n) => 180 - 360 / n;
@@ -44,14 +51,14 @@
   };
   const D31 = {
     id: 'p3-1', title: '평행선 사이의 정삼각형', short: '정삼각형',
-    question: '정삼각형의 꼭짓점 B는 직선 l 위에, 꼭짓점 C는 직선 m 위에 있어요. 정삼각형의 한 각 60°는 a, b와 어떤 관계일까요?',
+    question: (s) => lessonOn(s) && s.paBAsk === 'numeric' ? D31.prob(D31.model(s)).stem : '정삼각형의 꼭짓점 B는 직선 l 위에, 꼭짓점 C는 직선 m 위에 있어요. 정삼각형의 한 각 60°는 a, b와 어떤 관계일까요?',
     focus: (M) => fitPoly(M), ctl: ['tA', 'tX'],
     init: (s) => { s.tA = 30; s.tX = -1.0; s.tAux = 0; },
     reroll: (s) => { s.tA = pick([12, 16, 20, 24, 28, 32, 36, 40, 44], s.tA); s.tX = pick([-1.8, -1.0, -0.4, 0.2], s.tX); },
     actions: () => [{ id: 'aux', primary: true, icon: 'layers', label: (s) => (s.tAux ? '보조선 지우기' : '보조선 긋기 (A를 지나 l에 평행)'), on: (s) => !!s.tAux, run: (s) => { s.tAux = s.tAux ? 0 : 1; } }],
     model: (s) => Object.assign(triGeom(s.tA, s.tX), { aux: s.tAux || 0 }),
     draw(b, s, M, C) {
-      const G = M, { A, B, C: Cc } = G, st = C.mode === 'review' ? C.step : 99, prob = C.mode === 'problem';
+      const G = M, { A, B, C: Cc } = G, st = C.mode === 'review' ? C.step : 99, prob = C.mode === 'problem', lesson = C.lesson, stage = s.paBStage || 0;
       lines(b);
       b.path([A, B, Cc], { close: true, fill: 'sky', fillAlpha: 0.1, color: 'sky', width: 3.6 });
       ticks(b, A, B, 1, 'rose'); ticks(b, B, Cc, 1, 'rose'); ticks(b, Cc, A, 1, 'rose');
@@ -60,18 +67,21 @@
       // B, C 에서의 각 a, b
       const aT = prob ? G.a + '°' : 'a=' + G.a + '°';
       wedge(b, B, 0, angOf(B, A), { color: 'amber', rings: 1, text: aT, r: 26, size: 17, flip: true });
-      wedge(b, Cc, 0, angOf(Cc, A), { color: prob ? 'green' : 'violet', rings: 2, text: prob ? 'x' : C.mode === 'review' && st < 3 ? 'b' : 'b=' + G.b + '°', r: 26, size: prob ? 20 : 17, flip: true });
+      wedge(b, Cc, 0, angOf(Cc, A), { color: prob ? 'green' : 'violet', rings: 2, text: lesson ? targetLabel(s, G) : prob ? 'x' : C.mode === 'review' && st < 3 ? 'b' : 'b=' + G.b + '°', r: 26, size: prob ? 20 : 17, flip: true });
       // A 에서: 보조선과 옮긴 각, 60°
       const auxOn = prob ? false : C.mode === 'review' ? st >= 1 : G.aux;
-      if (auxOn) dashAt(b, A);
-      if (!prob && (C.mode === 'review' ? st >= 2 : G.aux)) {
+      if (lesson) lessonDash(b, A, s); else if (auxOn) dashAt(b, A);
+      if (lesson ? stage >= 1 : !prob && (C.mode === 'review' ? st >= 2 : G.aux)) {
         wedge(b, A, 180, angOf(A, B), { color: 'amber', rings: 1, text: G.a + '°', r: 22, size: 15 });
-        wedge(b, A, 180, angOf(A, Cc), { color: 'violet', rings: 2, text: C.mode === 'review' && st < 3 ? 'b' : G.b + '°', r: 22, size: 15 });
+        if (!lesson || stage >= 2) wedge(b, A, 180, angOf(A, Cc), { color: 'violet', rings: 2, text: lesson ? (s.paBAsk === 'numeric' ? 'x' : 'b') : C.mode === 'review' && st < 3 ? 'b' : G.b + '°', r: 22, size: 15 });
       }
-      const auxCopies = !prob && (C.mode === 'review' ? st >= 2 : G.aux);
-      const show60 = prob || C.mode === 'explore' || st !== 2;
-      if (show60 && (prob || C.mode !== 'review' || st >= 1)) wedge(b, A, angOf(A, B), angOf(A, Cc), { color: prob ? 'ink' : 'green', rings: 3, text: '60°', r: auxCopies ? 90 : 46, fa: 0.1, size: 18, tcolor: prob ? 'ink' : 'green' });
-      if (!prob && (C.mode === 'review' ? st >= 3 : G.aux)) T(b, { x: 0, y: 2.55 }, `60° = a + b = ${G.a}° + ${G.b}°`, { color: 'green', size: 17 });
+      const auxCopies = lesson ? stage >= 1 : !prob && (C.mode === 'review' ? st >= 2 : G.aux);
+      const show60 = lesson || prob || C.mode === 'explore' || st !== 2;
+      if (show60 && (lesson || prob || C.mode !== 'review' || st >= 1)) wedge(b, A, angOf(A, B), angOf(A, Cc), { color: prob ? 'ink' : 'green', rings: 3, text: '60°', r: auxCopies ? 90 : 46, fa: 0.1, size: 18, tcolor: prob ? 'ink' : 'green' });
+      if (lesson) {
+        if (s.paShowAnswer) T(b, { x: 0, y: 2.55 }, s.paBAsk === 'numeric' ? `x = 60° − ${G.a}° = ${G.b}°` : 'a + b = 60°', { color: 'green', size: 17 });
+        else if (s.paBAsk === 'numeric' && stage >= 3) T(b, { x: 0, y: 2.55 }, `${G.a}° + x = 60°`, { color: 'green', size: 17 });
+      } else if (!prob && (C.mode === 'review' ? st >= 3 : G.aux)) T(b, { x: 0, y: 2.55 }, `60° = a + b = ${G.a}° + ${G.b}°`, { color: 'green', size: 17 });
       if (C.mode === 'explore') {
         b.handle('hB', B, { color: 'sky', ariaLabel: '점 B 손잡이(정삼각형을 좌우로)', priority: 1, drag: (w) => { s.tX = clamp(Math.round(w.x * 20) / 20, -2.2, 0.6); } });
         b.handle('hC', Cc, { color: 'amber', ariaLabel: '점 C 손잡이(기울이기)', drag: (w) => { const dx = w.x - s.tX; s.tA = clamp(Math.round(Math.atan2(H, dx) / DEG) - 60, 10, 50); } });
@@ -167,7 +177,7 @@
   /* ---------------- p3-2 꼭짓점 하나가 꺾인 점 ---------------- */
   const D32 = {
     id: 'p3-2', title: '정다각형의 꼭짓점이 꺾인 점', short: '정다각형 꼭짓점 하나',
-    question: '정다각형의 꼭짓점 A는 l 위에, 꼭짓점 C는 m 위에 있어요. 정다각형의 내각 ∠ABC는 a, b와 어떤 관계일까요?',
+    question: (s) => lessonOn(s) && s.paBAsk === 'numeric' ? D32.prob(D32.model(s)).stem : '정다각형의 꼭짓점 A는 l 위에, 꼭짓점 C는 m 위에 있어요. 정다각형의 내각 ∠ABC는 a, b와 어떤 관계일까요?',
     focus: (M) => fitPoly(M, 3.4),
     ctl: ['gN', 'gT'],
     presets: () => [4, 5, 6].map((n, i) => ({ group: i === 0 ? '정다각형' : '', label: POLY[n], apply: (s) => { s.gN = n; }, on: (s) => s.gN === n })),
@@ -176,21 +186,24 @@
     reroll: (s) => { s.gN = pick([4, 5, 6], s.gN); s.gT = pick([15, 30, 45, 60, 75], s.gT); },
     model: (s) => { const n = nOK(Math.round(s.gN), [4, 5, 6]), a = aFrom(n, 1, s.gT); return Object.assign(chain(n, a, 1), { aux: s.gAux || 0 }); },
     draw(b, s, M, C) {
-      const G = M, prob = C.mode === 'problem', st = C.mode === 'review' ? C.step : 99;
+      const G = M, prob = C.mode === 'problem', st = C.mode === 'review' ? C.step : 99, lesson = C.lesson, stage = s.paBStage || 0;
       lines(b);
       drawPoly(b, G);
       const [A, B, Cc] = G.V;
       wedge(b, A, 0, angOf(A, B), { color: 'amber', rings: 1, text: prob ? G.a + '°' : 'a=' + G.a + '°', r: 26, size: 17, flip: true });
-      wedge(b, Cc, 0, angOf(Cc, B), { color: prob ? 'green' : 'violet', rings: 2, text: prob ? 'x' : C.mode === 'review' && st < 3 ? 'b' : 'b=' + G.b + '°', r: 26, size: prob ? 20 : 17, flip: true });
+      wedge(b, Cc, 0, angOf(Cc, B), { color: prob ? 'green' : 'violet', rings: 2, text: lesson ? targetLabel(s, G) : prob ? 'x' : C.mode === 'review' && st < 3 ? 'b' : 'b=' + G.b + '°', r: 26, size: prob ? 20 : 17, flip: true });
       const auxOn = prob ? false : C.mode === 'review' ? st >= 1 : G.aux;
-      if (auxOn) dashAt(b, B);
-      if (!prob && (C.mode === 'review' ? st >= 2 : G.aux)) {
+      if (lesson) lessonDash(b, B, s); else if (auxOn) dashAt(b, B);
+      if (lesson ? stage >= 2 : !prob && (C.mode === 'review' ? st >= 2 : G.aux)) {
         wedge(b, B, 180, angOf(B, A), { color: 'amber', rings: 1, text: G.a + '°', r: 22, size: 15 });
-        wedge(b, B, 180, angOf(B, Cc), { color: 'violet', rings: 2, text: C.mode === 'review' && st < 3 ? 'b' : G.b + '°', r: 22, size: 15 });
+        if (!lesson || stage >= 3) wedge(b, B, 180, angOf(B, Cc), { color: 'violet', rings: 2, text: lesson ? (s.paBAsk === 'numeric' ? 'x' : 'b') : C.mode === 'review' && st < 3 ? 'b' : G.b + '°', r: 22, size: 15 });
       }
-      const copies = !prob && (C.mode === 'review' ? st >= 2 : G.aux);
-      if (prob || C.mode === 'explore' || st === 1 || st >= 3) wedge(b, B, angOf(B, A), angOf(B, Cc), { color: prob ? 'ink' : 'green', rings: 3, text: copies ? '' : (prob ? '' : '∠B=') + G.I + '°', r: copies ? 90 : 44, fa: 0.1, size: 17, tcolor: prob ? 'ink' : 'green' });
-      if (!prob && (C.mode === 'review' ? st >= 3 : G.aux)) T(b, { x: 0, y: 3.05 }, `∠B = ${G.I}° = a + b = ${G.a}° + ${G.b}°`, { color: 'green', size: 17 });
+      const copies = lesson ? stage >= 2 : !prob && (C.mode === 'review' ? st >= 2 : G.aux);
+      if (lesson ? stage >= 1 : prob || C.mode === 'explore' || st === 1 || st >= 3) wedge(b, B, angOf(B, A), angOf(B, Cc), { color: prob ? 'ink' : 'green', rings: 3, text: copies && !lesson ? '' : (prob ? '' : '∠B=') + G.I + '°', r: copies ? 90 : 44, fa: 0.1, size: 17, tcolor: prob ? 'ink' : 'green' });
+      if (lesson) {
+        if (s.paShowAnswer) T(b, { x: 0, y: 3.05 }, s.paBAsk === 'numeric' ? `x = ${G.I}° − ${G.a}° = ${G.b}°` : `a + b = ${G.I}°`, { color: 'green', size: 17 });
+        else if (s.paBAsk === 'numeric' && stage >= 4) T(b, { x: 0, y: 3.05 }, `${G.a}° + x = ${G.I}°`, { color: 'green', size: 17 });
+      } else if (!prob && (C.mode === 'review' ? st >= 3 : G.aux)) T(b, { x: 0, y: 3.05 }, `∠B = ${G.I}° = a + b = ${G.a}° + ${G.b}°`, { color: 'green', size: 17 });
       if (C.mode === 'explore') tiltHandle(b, s, G, 'gT');
     },
     steps: (M) => [
@@ -228,7 +241,7 @@
   /* ---------------- p3-3 연속한 두 꼭짓점이 꺾인 점 ---------------- */
   const D33 = {
     id: 'p3-3', title: '정다각형의 두 꼭짓점이 꺾인 점', short: '정다각형 꼭짓점 둘',
-    question: '정다각형의 꼭짓점 A는 l 위에, 꼭짓점 D는 m 위에 있어요. 꼭짓점 B, C가 두 선 사이에 있을 때 a, b는 어떤 관계일까요?',
+    question: (s) => lessonOn(s) && s.paBAsk === 'numeric' ? D33.prob(D33.model(s)).stem : '정다각형의 꼭짓점 A는 l 위에, 꼭짓점 D는 m 위에 있어요. 꼭짓점 B, C가 두 선 사이에 있을 때 a, b는 어떤 관계일까요?',
     focus: (M) => fitPoly(M, 3.8),
     ctl: ['hT'],
     presets: () => [5, 6, 8].map((n, i) => ({ group: i === 0 ? '정다각형' : '', label: POLY[n], apply: (s) => { s.hN = n; }, on: (s) => s.hN === n })),
@@ -237,25 +250,26 @@
     reroll: (s) => { s.hN = pick([5, 6, 8], s.hN); s.hT = pick([15, 30, 45, 60, 75], s.hT); },
     model: (s) => { const n = nOK(Math.round(s.hN), [5, 6, 8]), a = aFrom(n, 2, s.hT); return Object.assign(chain(n, a, 2), { aux: s.hAux || 0 }); },
     draw(b, s, M, C) {
-      const G = M, prob = C.mode === 'problem', st = C.mode === 'review' ? C.step : 99;
+      const G = M, prob = C.mode === 'problem', st = C.mode === 'review' ? C.step : 99, lesson = C.lesson, stage = s.paBStage || 0;
       lines(b);
       drawPoly(b, G);
       const [A, B, Cc, D] = G.V;
       wedge(b, A, 0, angOf(A, B), { color: 'amber', rings: 1, text: prob ? G.a + '°' : 'a=' + G.a + '°', r: 26, size: 17, flip: true });
-      wedge(b, D, 0, angOf(D, Cc), { color: prob ? 'green' : 'violet', rings: 2, text: prob ? 'x' : C.mode === 'review' && st < 3 ? 'b' : 'b=' + G.b + '°', r: 26, size: prob ? 20 : 17, flip: true });
+      wedge(b, D, 0, angOf(D, Cc), { color: prob ? 'green' : 'violet', rings: 2, text: lesson ? targetLabel(s, G) : prob ? 'x' : C.mode === 'review' && st < 3 ? 'b' : 'b=' + G.b + '°', r: 26, size: prob ? 20 : 17, flip: true });
       const auxOn = prob ? false : C.mode === 'review' ? st >= 1 : G.aux;
-      if (auxOn) { dashAt(b, B); dashAt(b, Cc); }
-      const copies = !prob && (C.mode === 'review' ? st >= 2 : G.aux);
+      if (lesson) { lessonDash(b, B, s); lessonDash(b, Cc, s); }
+      else if (auxOn) { dashAt(b, B); dashAt(b, Cc); }
+      const copies = lesson ? stage >= 2 : !prob && (C.mode === 'review' ? st >= 2 : G.aux);
       if (copies) {
         wedge(b, B, 180, angOf(B, A), { color: 'amber', rings: 1, text: G.a + '°', r: 22, size: 15 });
-        wedge(b, Cc, 180, angOf(Cc, D), { color: 'violet', rings: 2, text: C.mode === 'review' && st < 3 ? 'b' : G.b + '°', r: 22, size: 15 });
+        wedge(b, Cc, 180, angOf(Cc, D), { color: 'violet', rings: 2, text: lesson ? (s.paBAsk === 'numeric' ? 'x' : 'b') : C.mode === 'review' && st < 3 ? 'b' : G.b + '°', r: 22, size: 15 });
       }
-      const mid = !prob && (C.mode === 'review' ? st >= 3 : G.aux);
+      const mid = lesson ? stage >= 3 : !prob && (C.mode === 'review' ? st >= 3 : G.aux);
       if (mid) {
         wedge(b, B, 180, angOf(B, Cc), { color: 'green', rings: 1, text: 'c', r: 20, size: 16, fa: 0.2 });
         wedge(b, Cc, 180, angOf(Cc, B), { color: 'green', rings: 2, text: 'd', r: 20, size: 16, fa: 0.2 });
       }
-      if (!mid && (prob || C.mode === 'explore' || st === 1 || st >= 3)) {
+      if (!mid && (lesson ? stage >= 1 : prob || C.mode === 'explore' || st === 1 || st >= 3)) {
         // 좁은 문제 그림에서는 두 이등분선 끝이 중앙에서 만나 내각 값이 겹칩니다.
         // 각각의 꼭짓점 높이에 값을 두고 작은 호와 연결해 B, C의 조건을 구별합니다.
         const compact = prob && b.W < 560;
@@ -265,7 +279,16 @@
         wedge(b, B, angOf(B, A), angOf(B, Cc), { ...interiorMark, at: atB });
         wedge(b, Cc, angOf(Cc, B), angOf(Cc, D), { ...interiorMark, at: atC });
       }
-      if (mid) {
+      if (lesson) {
+        const numeric = s.paBAsk === 'numeric', top = { x: 0, y: 2.95 }, bottom = { x: 0, y: 3.5 }, style = { color: 'green', size: 16 };
+        if (s.paShowAnswer || numeric && stage >= 6) {
+          T(b, top, numeric ? `${G.a}° + x = ${G.a + G.b}°` : `a + b = 2×${G.I}° − 180°`, style);
+          if (s.paShowAnswer) T(b, bottom, numeric ? `x = ${G.a + G.b}° − ${G.a}° = ${G.b}°` : `a + b = ${G.a + G.b}°`, style);
+        } else {
+          if (stage >= 4) T(b, top, numeric ? `${G.a}° + c = ${G.I}°, d + x = ${G.I}°` : `a + c = ${G.I}°, d + b = ${G.I}°`, style);
+          if (stage >= 5) T(b, bottom, 'c + d = 180°', style);
+        }
+      } else if (mid) {
         const cv = wdeg(180, angOf(B, Cc)), dv = wdeg(180, angOf(Cc, B));
         T(b, { x: 0, y: 2.95 }, `c = ${G.I}° − ${G.a}° = ${cv}° ,  d = ${G.I}° − ${G.b}° = ${dv}°`, { color: 'green', size: 16 });
         T(b, { x: 0, y: 3.5 }, `c + d = ${cv}° + ${dv}° = 180°`, { color: 'green', size: 16 });
