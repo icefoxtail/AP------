@@ -4401,6 +4401,105 @@ def multi_curve_region_errors(plan,transform,root,by_id,features):
                 if found:break
     return sorted(set(errors))
 
+RATIONAL_REGION_FIELDS={'id','under','from','to','fill','label'}
+RATIONAL_REGION_GRID=60          # the shape check classifies a (GRID+1) x (GRID+1) grid of points over the plot window
+RATIONAL_REGION_MARGIN_PX=2.0    # a grid point within this many px (any direction) of the region's edge or of the curve is not judged (the fill boundary is a sampled polyline)
+
+def rational_region_errors(plan,transform,root):
+    """Independent check of graphPlan.regions of an inverse proportion (y=k/(d0+d1*x), rational-spike-v1) on the model or the FINAL SVG. Each region is rebuilt from the plan's own
+    exact fields: the area between the curve and the x-axis over [from,to], cut by the plot window. The drawn fill path must have no vertex outside the window or outside [from,to],
+    must cover exactly that area (a grid of points over the window is classified inside / outside by this observer's own evaluation of the curve, and every point that is clear of the
+    boundary by a margin must be classified the same way by the path: an empty wedge beside the asymptote or a fill leaking past the curve, the axis or the window fails), carry
+    the declared fill, be painted beneath every stroke, hold its label inside, and no undeclared fill may exist. The frozen inventory must say the same."""
+    errors=[]
+    declared=plan.get('regions') or []
+    frozen=(plan.get('graphRegionFeatures') or {}).get('regions')
+    if not isinstance(declared,list) or not isinstance(frozen,list):return ['GRAPH_REGION_INVENTORY_REQUIRED']
+    frozen_by={row.get('id'):row for row in frozen if isinstance(row,dict)}
+    if sorted(frozen_by,key=str)!=sorted((row.get('id') for row in declared if isinstance(row,dict)),key=str):errors.append('GRAPH_REGION_INVENTORY_MISMATCH')
+    elements={node.get('id'):node for node in root.iter() if node.get('id')}
+    order={id(node):index for index,node in enumerate(root.iter())}
+    paths={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='path' and node.get('data-mark')=='graph-region'}
+    sx,sy,display=transform['sx'],transform['sy'],transform['displayScale']
+    to_model=lambda px,py:((px-transform['originX'])/sx,(transform['originY']-py)/sy)
+    xtol=GRAPH_REGION_BOUNDARY_TOLERANCE/max(1e-12,sx*display);ytol=GRAPH_REGION_BOUNDARY_TOLERANCE/max(1e-12,sy*display)
+    dx=RATIONAL_REGION_MARGIN_PX/max(1e-12,sx*display);dy=RATIONAL_REGION_MARGIN_PX/max(1e-12,sy*display)
+    x0,x1,y0,y1=(float(value) for value in plan['viewport'])
+    numerator=[Fraction(value) for value in plan['numerator']];denominator=[Fraction(value) for value in plan['denominator']]
+    k=numerator[0];pole=-denominator[0]/denominator[1];c=k/denominator[1]
+    curve=lambda x:float(c)/(x-float(pole))
+    polygons=[];declared_ids=set()
+    for entry in declared:
+        if not isinstance(entry,dict):errors.append('GRAPH_REGION_INVENTORY_MISMATCH');continue
+        region_id=entry.get('id')
+        if not isinstance(region_id,str):errors.append('GRAPH_REGION_INVENTORY_MISMATCH');continue
+        declared_ids.add(region_id)
+        try:
+            if set(entry)-RATIONAL_REGION_FIELDS:raise ValueError('GRAPH_REGION_FIELD_UNKNOWN:'+region_id)
+            if entry.get('under')!='f':raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+region_id+':'+str(entry.get('under')))
+            start=_mc_obs_fraction(entry.get('from'),'GRAPH_REGION_DOMAIN_INVALID:'+region_id);end=_mc_obs_fraction(entry.get('to'),'GRAPH_REGION_DOMAIN_INVALID:'+region_id)
+            if not start<end or float(start)<x0-1e-9 or float(end)>x1+1e-9:raise ValueError('GRAPH_REGION_DOMAIN_INVALID:'+region_id)
+            if start<pole<end:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':f')
+        except (ValueError,KeyError,TypeError) as error:
+            errors.append(str(error) if isinstance(error,ValueError) and str(error).startswith('GRAPH_REGION') else 'GRAPH_REGION_INVENTORY_MISMATCH:'+region_id);continue
+        left,right=float(start),float(end)
+        fill=entry.get('fill','LIGHT')
+        if fill not in GRAPH_REGION_FILLS:errors.append('GRAPH_REGION_FILL_UNSUPPORTED:'+region_id)
+        row=frozen_by.get(region_id)
+        if row is None:errors.append('GRAPH_REGION_INVENTORY_MISMATCH:'+region_id)
+        else:
+            try:same=row.get('fill')==fill and row.get('label')==entry.get('label') and row.get('kind')=='UNDER' and _pp_same(_pp_exact(row.get('from')),start) and _pp_same(_pp_exact(row.get('to')),end)
+            except (ValueError,TypeError):same=False
+            if not same:errors.append('GRAPH_REGION_INVENTORY_MISMATCH:'+region_id)
+        node=paths.get('region-'+region_id)
+        if node is None:errors.append('GRAPH_REGION_MISSING:'+region_id);continue
+        if node.get('fill')!=GRAPH_REGION_FILLS.get(fill) or (None if node.get('fill-opacity') is None else round(float(node.get('fill-opacity')),6))!=GRAPH_REGION_OPACITY.get(fill):errors.append('GRAPH_REGION_FILL_MISMATCH:'+region_id)
+        if node.get('fill-rule')!='evenodd':errors.append('GRAPH_REGION_FILL_RULE_MISMATCH:'+region_id)
+        if node.get('stroke') not in {None,'none'}:errors.append('GRAPH_REGION_STROKE_PRESENT:'+region_id)
+        try:polygon=[to_model(px,py) for px,py in _region_polygon(node)]
+        except ValueError as error:errors.append(str(error)+':'+region_id);continue
+        polygons.append((region_id,polygon))
+        # The fill stays inside the plot window and inside [from,to]: no vertex in the frame margin, none beyond the region's own sides.
+        if any(x<x0-xtol or x>x1+xtol or y<y0-ytol or y>y1+ytol for x,y in polygon):errors.append('GRAPH_REGION_OUTSIDE_WINDOW:'+region_id)
+        if any(x<left-xtol or x>right+xtol for x,_ in polygon) or abs(min(x for x,_ in polygon)-left)>xtol or abs(max(x for x,_ in polygon)-right)>xtol:errors.append('GRAPH_REGION_OUTSIDE_INTERVAL:'+region_id)
+        def truth(x,y):
+            if not (max(left,x0)<=x<=min(right,x1) and y0<=y<=y1):return False
+            if abs(x-float(pole))<1e-12:return y>=0 if c>0 else y<=0   # on the asymptote itself: the side the curve runs to
+            value=curve(x)
+            return 0<=y<=value if value>0 else value<=y<=0
+        bad_inside=bad_outside=False
+        for i in range(RATIONAL_REGION_GRID+1):
+            for j in range(RATIONAL_REGION_GRID+1):
+                x=x0+(x1-x0)*i/RATIONAL_REGION_GRID;y=y0+(y1-y0)*j/RATIONAL_REGION_GRID
+                around={truth(x+a*dx,y+b*dy) for a in (-1,0,1) for b in (-1,0,1)}
+                if len(around)!=1:continue   # within the margin of an edge or of the curve: not judged
+                if around=={True}:
+                    if not _region_inside(polygon,(x,y)):bad_inside=True
+                elif _region_inside(polygon,(x,y)):bad_outside=True
+        if bad_inside:errors.append('GRAPH_REGION_INTERIOR_MISSING:'+region_id)
+        if bad_outside:errors.append('GRAPH_REGION_OUTSIDE_BOUNDARY:'+region_id)
+        mine=order[id(node)]
+        if any(order[id(other)]<mine and (other.tag.split('}')[-1] in {'line','circle','polyline','polygon'} or (other.tag.split('}')[-1]=='path' and other.get('data-mark')!='graph-region')) for other in root.iter()):
+            errors.append('GRAPH_REGION_NOT_BENEATH_STROKES:'+region_id)
+        if entry.get('label') is not None:
+            box=_region_label_box(elements,'region-'+region_id+'-label')
+            if box is None:errors.append('GRAPH_REGION_LABEL_MISSING:'+region_id)
+            else:
+                x,y,w,h=box
+                corners=[to_model(x,y),to_model(x+w,y),to_model(x,y+h),to_model(x+w,y+h)]
+                if not _region_inside(polygon,to_model(x+w/2,y+h/2)) or any(not _region_inside(polygon,corner) for corner in corners):errors.append('GRAPH_REGION_LABEL_OUTSIDE:'+region_id)
+    for path_id in paths:
+        if path_id not in {'region-'+region_id for region_id in declared_ids}:errors.append('GRAPH_REGION_UNDECLARED:'+str(path_id))
+    for index,(left_id,left_polygon) in enumerate(polygons):
+        for right_id,right_polygon in polygons[index+1:]:
+            xs=sorted({point[0] for point in left_polygon});ys=sorted({point[1] for point in left_polygon});found=False
+            for i in range(1,10):
+                for j in range(1,10):
+                    point=(xs[0]+(xs[-1]-xs[0])*i/10,ys[0]+(ys[-1]-ys[0])*j/10)
+                    if _region_inside(left_polygon,point) and _region_inside(right_polygon,point):errors.append('GRAPH_REGION_OVERLAP:'+left_id+':'+right_id);found=True;break
+                if found:break
+    return sorted(set(errors))
+
 def multi_curve_audit(plan,svg,transform):
     """Independent multi-curve audit: every curve and branch is rebuilt from the plan's exact definitions, the frozen
     inventory is compared, and every final SVG polyline tagged CURVE_<id>[_POS|_NEG|_L|_R] is checked against the recomputed
@@ -4993,6 +5092,9 @@ def _audit_family(plan,svg,transform):
         else:
             region_errors,region_observations=graph_region_audit(plan,svg,transform,[poly],[(None,None)],[],region_features if isinstance(region_features,dict) else {},root)
             errors.extend(region_errors)
+    if plan.get('family')=='rational' and (plan.get('regions') is not None or 'graphRegionFeatures' in plan):
+        if (plan.get('numerator') or [None,None])[1] not in ('0',0):errors.append('GRAPH_REGION_REQUIRES_INVERSE_PROPORTION')
+        else:errors.extend(rational_region_errors(plan,transform,root))
     status='UNSUPPORTED' if overview['status']=='UNSUPPORTED' else 'FAIL' if errors else 'PASS'
     result={'status':status,'errors':sorted(set(errors)),'topology':topology,'segments':rows,'overview':overview,'maxChordErrorPx':tolerance,'verificationMethod':'INDEPENDENT_SOURCE_INTERVAL_AND_SECOND_DERIVATIVE_BOUND'}
     if plan.get('regions') or (plan.get('family')=='polynomial' and getattr(poly.domain,'is_AlgebraicField',False)):result['regions']=region_observations

@@ -89,6 +89,18 @@ def _sample_graph_boundary(rows,vp):
         points.extend(pts)
     return points
 
+def _close_boundary_at_window(points,left_x,right_x,edge_ys,tolerance=1e-6):
+    """A sampled region boundary whose first / last point stops short of the region's own side (left_x / right_x, screen px) because the curve left the window must stop ON the
+    window's top or bottom edge (edge_ys); the corner (side x, that edge) is added so the fill follows the edge. Anything else is a sampling failure, never bridged."""
+    closed=list(points)
+    if closed[0][0]>left_x+tolerance:
+        if not any(abs(closed[0][1]-edge)<=tolerance for edge in edge_ys):raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+        closed.insert(0,(left_x,closed[0][1]))
+    if closed[-1][0]<right_x-tolerance:
+        if not any(abs(closed[-1][1]-edge)<=tolerance for edge in edge_ys):raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+        closed.append((right_x,closed[-1][1]))
+    return closed
+
 REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
 def region_paint(name):
     """The fill fields of a region primitive: the opaque gray of LIGHT / MEDIUM (unchanged), or a palette colour (C1) as its tint colour plus fill-opacity."""
@@ -968,6 +980,12 @@ def prepare(spec):
             if obj['fill'] not in REGION_FILLS and obj['fill'] not in PALETTE:raise ValueError('GRAPH_REGION_FILL_UNSUPPORTED:'+oid)
             upper=_sample_graph_boundary(obj['upper'],vp);lower=_sample_graph_boundary(obj['lower'],vp)
             if len(upper)<2 or len(lower)<2:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+            if obj.get('windowClosed') is True:
+                # A boundary that leaves the window (the steep side of a pole) is cut where it crosses the top or bottom edge: the fill is closed along that edge, from the crossing to
+                # the region's own side x, so it has no empty wedge and never leaves the plot window.
+                region_lo,region_hi=float(obj['domain'][0]),float(obj['domain'][1]);left_x=vp.screen((region_lo,vp.yMin))[0];right_x=vp.screen((region_hi,vp.yMin))[0]
+                edges=(vp.screen((region_lo,vp.yMax))[1],vp.screen((region_lo,vp.yMin))[1])
+                upper=_close_boundary_at_window(upper,left_x,right_x,edges);lower=_close_boundary_at_window(lower,left_x,right_x,edges)
             polygon=upper+list(reversed(lower))
             if any(b[0]<a[0] for a,b in zip(upper,upper[1:])) or any(b[0]<a[0] for a,b in zip(lower,lower[1:])):raise ValueError('GRAPH_REGION_BOUNDARY_NOT_INCREASING')
             d='M'+_num(polygon[0][0])+' '+_num(polygon[0][1])+' '+' '.join('L'+_num(x)+' '+_num(y) for x,y in polygon[1:])+' Z'
