@@ -1,0 +1,1365 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h1/1final/26_금당고_1학기_기말_고1_유사.js",
+  "sourceGitBlobSha": "61618f68369e92936dc42ac5a32c4031cbccc12e",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "claude-similar-high-gen",
+    "at": "2026-11-11"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "x^3-25x=0"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "풀면"
+          }
+        ],
+        "method": [
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "공통인수 $x$로 묶으면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "x(x-5)(x+5)=0",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "x(x^2-25)",
+            "evidenceType": "IMPLIED",
+            "justification": "x^2-25=(x-5)(x+5)로 쓰는 단계는 합차공식(곱셈공식)과 같은 원리"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "공통인수 묶기 후 합차 인수분해로 모든 근을 구한다. 근 x=0을 놓치지 않는 것이 결정 단계"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "연립부등식"
+          },
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "3x-4>5"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "풀면"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "3x>9",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수직선",
+            "src": "solution",
+            "quote": "수직선에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "겹친 범위",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "경계조건",
+            "src": "solution",
+            "quote": "등호가 없으므로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "condition": "부등호에 등호가 없어 끝점을 제외하는 판정이 답의 형태를 정한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값부등식",
+            "src": "stem",
+            "quote": "|2x-5|\\ge7"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "풀면"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$|A|\\ge k$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "2x-5\\le-7$ 또는 $2x-5\\ge7",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "2x\\le-2",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "경계조건",
+            "src": "solution",
+            "quote": "등호가 있으므로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "절댓값이 k 이상이면 안쪽 식이 -k 이하 또는 k 이상인 두 경우로 가른다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "이차부등식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "풀면"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "인수분해하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "아래로볼록",
+            "src": "solution",
+            "quote": "아래로 볼록",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "그래프",
+            "src": "solution",
+            "quote": "x$축과 만나므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "경계조건",
+            "src": "solution",
+            "quote": "등호가 없으므로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "이항해 인수분해한 뒤 아래로 볼록한 그래프에서 음수인 구간을 읽는다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "{}_6P_2"
+          },
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "{}_6C_2"
+          },
+          {
+            "term": "팩토리얼",
+            "src": "stem",
+            "quote": "3!"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "{}_6P_2=6\\cdot5=30",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "{}_6C_2=\\dfrac{6\\cdot5}{2\\cdot1}=15",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "팩토리얼",
+            "src": "solution",
+            "quote": "3!=3\\cdot2\\cdot1=6",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "각 값을 따로 계산해 더한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "순열·조합·팩토리얼의 정의대로 각각 계산한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "\\begin{pmatrix}a+4&6"
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b+c$"
+          }
+        ],
+        "method": [
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "두 행렬이 같으면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "대응하는 성분",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "a+4=3",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수이다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "같은 행렬은 대응 성분이 같다는 정의로 a,b,c를 각각 구한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "A=\\begin{pmatrix}-2&6"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성분",
+            "src": "stem",
+            "quote": "모든 성분의 합"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "성분의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "행렬곱",
+            "src": "solution",
+            "quote": "행렬과 $2\\times1$ 행렬의 곱은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "성분은 (행)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "(열)의 합으로 구한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "(행)×(열) 규칙으로 AB의 성분을 구한 뒤 더한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          },
+          {
+            "term": "연립이차방정식",
+            "src": "stem",
+            "quote": "x^2+y^2=40"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "|x+y|"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "에 대입하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "x^2-4x-12=0",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(x-6)(x+2)=0",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "일차식을 이차식에 대입해 이차방정식으로 풀고 두 해 모두 |x+y|를 점검한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값부등식",
+            "src": "stem",
+            "quote": "2|x-2|+|x-5|\\le6"
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "단, $a,b$는 상수이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$ab$의 값은?"
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "의 해가"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "절댓값 안의 식이",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "세 구간으로 나눈다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "(i) $x<2$일 때",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "9-3x\\le6",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "절댓값 안이 0이 되는 점으로 세 구간을 나눠 각각 풀고 합친다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연속정수",
+            "src": "stem",
+            "quote": "연속하는 네 자연수"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "가장 큰 자연수"
+          }
+        ],
+        "method": [
+          {
+            "term": "문자식",
+            "src": "solution",
+            "quote": "가장 작은 수를 $n$이라 하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립부등식",
+            "src": "solution",
+            "quote": "50<4n+6<58",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "$n$은 자연수이므로"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "50보다 크고 58보다 작을 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "문장을 n의 연립일차부등식으로 바꾸고 자연수 조건으로 n을 정한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 공 3개"
+          },
+          {
+            "term": "구별불가",
+            "src": "stem",
+            "quote": "똑같은 공 3개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "{}_6P_3",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "{}_6C_3",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "a+b=120+20",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 공과 똑같은 공은 별개의 경우로 각각 세어 더하는 것은 합의 법칙과 같은 원리"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중복불허",
+            "src": "stem",
+            "quote": "많아야 공 1개"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "공이 구별되면 순열, 구별되지 않으면 조합으로 센다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "경로",
+            "src": "stem",
+            "quote": "도로망"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "지나는 지역의 순서에 따라 경우를 나누고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "도로 수를 곱한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "합의 법칙으로 더한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "재방문금지",
+            "src": "stem",
+            "quote": "두 번 이상 지나지 않으면서"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "지나는 지역 순서로 경우를 나누고 구간 도로 수의 곱을 합한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b+c$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "{}_4C_2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "각각 세어 곱한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "모두 남학생인 경우와 모두 여학생인 경우를 뺀다",
+            "evidenceType": "IMPLIED",
+            "justification": "적어도 1명씩을 전체에서 한 성별만 뽑는 경우를 빼 구하는 것은 여사건을 이용한 계산과 같다"
+          },
+          {
+            "term": "포함배제의원리",
+            "src": "solution",
+            "quote": "두 경우는 겹치지 않는다",
+            "evidenceType": "IMPLIED",
+            "justification": "빼는 두 경우가 겹치지 않음을 확인하는 단계가 포함배제의 판단에 해당"
+          }
+        ],
+        "condition": [
+          {
+            "term": "적어도",
+            "src": "stem",
+            "quote": "적어도 1명씩"
+          },
+          {
+            "term": "반드시포함",
+            "src": "stem",
+            "quote": "반드시 포함되도록"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "condition": "(나) 적어도 1명씩, (다) 특정 2명 필수 포함이 각 경우의 수 계산 방식을 정한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "연립부등식"
+          },
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "x^2-10x-24>0"
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "정수 $a$의 개수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수 $a$의 개수는?"
+          },
+          {
+            "term": "성립조건",
+            "src": "stem",
+            "quote": "해를 갖지 않도록"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(x+2)(x-12)>0",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=a^2+a$라 하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "안에 들어가야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경계조건",
+            "src": "solution",
+            "quote": "끝값 $t=12$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $a$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "공통해가 없을 조건을 두 번째 해의 끝값 t의 범위로 바꾸고 끝값 포함 여부를 판정한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "A=\\begin{pmatrix}0&1"
+          },
+          {
+            "term": "단위행렬",
+            "src": "stem",
+            "quote": "단위행렬"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "순서쌍 $(m,n)$의 개수"
+          },
+          {
+            "term": "순서쌍",
+            "src": "stem",
+            "quote": "순서쌍"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "거듭제곱을 직접 계산해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "A^6=(A^3)^2=E",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "나머지",
+            "src": "solution",
+            "quote": "으로 나눈 나머지",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "19\\cdot18",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "110 이하의 자연수"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "110 이하"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "거듭제곱의 주기 6을 찾고 합이 E가 되는 나머지 짝을 정해 개수를 센다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사차방정식",
+            "src": "stem",
+            "quote": "사차방정식"
+          },
+          {
+            "term": "켤레복소수",
+            "src": "stem",
+            "quote": "\\alpha+\\overline\\alpha=6"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값은?"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "a+b+c+d"
+          }
+        ],
+        "method": [
+          {
+            "term": "켤레복소수",
+            "src": "solution",
+            "quote": "켤레복소수도 근이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "실수부분",
+            "src": "solution",
+            "quote": "실수부분은 $3$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "허수부분",
+            "src": "solution",
+            "quote": "허수부분은 $2$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(x^2-6x+13)(x^2-2sx+s^2+4)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "a+b+c+d=P(1)-1",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "8\\{(s-1)^2+4\\}",
+            "evidenceType": "IMPLIED",
+            "justification": "s^2-2s+5를 (s-1)^2+4로 고쳐 최솟값을 읽는 단계는 완전제곱식 변형"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a,b,c,d$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "실계수 조건의 켤레근으로 네 근을 확정하고 계수의 합을 P(1)-1로 바꿔 s의 이차식 최솟값을 구한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "시행을 한다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "홀짝",
+            "src": "solution",
+            "quote": "홀수 번, 나머지 바구니는 짝수 번",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "가능한 경우는 두 가지이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "{}_5C_4",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "같은것이있는순열",
+            "src": "solution",
+            "quote": "\\dfrac{4!}{2!}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "30\\cdot4\\cdot3\\cdot12",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "6회째 시행에서 처음으로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "condition": "6회째에 처음으로 4개가 된다는 순서 조건이 5회째까지의 배열을 제한한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "B=\\begin{pmatrix}2&-1"
+          },
+          {
+            "term": "성분",
+            "src": "stem",
+            "quote": "성분"
+          },
+          {
+            "term": "단위행렬",
+            "src": "stem",
+            "quote": "E$는 단위행렬"
+          }
+        ],
+        "goal": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "행렬 $X$를 구하고"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "성분의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "등식 $3A-2B+E-X=O$에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "실수배",
+            "src": "solution",
+            "quote": "3A=\\begin{pmatrix}3&0",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "모든 성분의 합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "성분 규칙으로 A를 만들고 등식을 X에 대해 정리해 성분별로 계산한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "어른 3명과 어린이 2명"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "방법의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "어른 수를 $(p,q,r)$라 하자",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "(어른을 나누는 방법) $\\times$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분배",
+            "src": "solution",
+            "quote": "어린이 두 명을 남은 자리에 넣는 방법",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "같은것이있는순열",
+            "src": "solution",
+            "quote": "\\dfrac{3!}{1!\\,2!}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정원제한",
+            "src": "stem",
+            "quote": "최대 수용 인원이 각각"
+          },
+          {
+            "term": "동반자필수",
+            "src": "stem",
+            "quote": "어른 없이 어린이만 들어갈 수 없고"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "condition": "정원 제한과 '어른 없이 어린이만 불가'가 어린이를 넣을 수 있는 자리를 정한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "연립부등식"
+          },
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "x^2-2x+3 < k"
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "실수 $k$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$k$의 값을"
+          },
+          {
+            "term": "결정",
+            "src": "stem",
+            "quote": "$k$의 값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱 꼴로 고친다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "두 구간의 위치를 비교한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "두 구간의 위치를 비교한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "|b-c|=\\sqrt3|a-d|",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "제곱",
+            "src": "solution",
+            "quote": "양변을 제곱하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$2 < k < 6$인 실수"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "인 실수 $k$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "완전제곱 꼴로 해를 u,v로 나타내고 구간 순서로 a,b,c,d를 정해 길이 조건을 k의 방정식으로 푼다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "반드시포함",
+      "en": [
+        "REQUIRED_INCLUSION"
+      ],
+      "synonyms": [
+        "반드시 포함",
+        "필수 포함"
+      ],
+      "kind": "조건",
+      "parent": "조합",
+      "note": "선택 대상 중 특정 원소가 항상 뽑혀야 한다는 제약. 남은 자리만 나머지에서 조합으로 센다.",
+      "usedIn": [
+        "26_금당고_1학기_기말_고1_유사 Q13"
+      ]
+    },
+    {
+      "term": "정원제한",
+      "en": [
+        "CAPACITY_LIMIT"
+      ],
+      "synonyms": [
+        "수용 인원 제한",
+        "최대 수용 인원"
+      ],
+      "kind": "조건",
+      "parent": "중복불허",
+      "note": "각 칸(텐트·상자)에 넣을 수 있는 대상 수가 정해져 있다는 제약.",
+      "usedIn": [
+        "26_금당고_1학기_기말_고1_유사 Q19"
+      ]
+    },
+    {
+      "term": "동반자필수",
+      "en": [
+        "COMPANION_REQUIRED"
+      ],
+      "synonyms": [
+        "어른 없이 불가"
+      ],
+      "kind": "조건",
+      "parent": "",
+      "note": "특정 부류(어린이)는 다른 부류(어른)가 같은 칸에 있어야만 들어갈 수 있다는 제약.",
+      "usedIn": [
+        "26_금당고_1학기_기말_고1_유사 Q19"
+      ]
+    }
+  ],
+  "selfCheck": {
+    "note": "작성자 자체 점검(validate-4slot 실행). 독립 검토 전(UNREVIEWED)."
+  }
+}
