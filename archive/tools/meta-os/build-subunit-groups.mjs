@@ -24,10 +24,10 @@ const MASTER_PATH = "archive/data/master_tables/js_archive_tag_master.json";
 const META_PATH = "archive/data/question_metadata.json";
 
 export const TABLE_SCHEMA = "archive2-subunit-groups-v1";
-export const KINDS = Object.freeze(["subunit", "unit_general", "unit_other", "excluded"]);
+export const KINDS = Object.freeze(["subunit", "unit_general", "unit_other", "moved", "excluded"]);
 export const BASES = Object.freeze([
   "anchor", "standalone", "same_master_label", "curriculum_2015_2022", "unit_renumber", "content_checked",
-  "unit_general_key", "adhoc_to_other", "foreign_broad_key", "problem_number_key",
+  "unit_general_key", "adhoc_to_other", "foreign_broad_key", "moved_to_other_unit", "cross_grade_key", "problem_number_key",
 ]);
 export const UNCLASSIFIED_UNIT = "UNCLASSIFIED";
 export const KIND_LABELS = Object.freeze({ unit_general: "단원 일반", unit_other: "기타", excluded: "제외(문제 번호 키)" });
@@ -38,6 +38,23 @@ const compare = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 // A broad key covers a whole unit (…-CORE, or a master name that ends in 핵심 개념). It is never one 소단원 of a unit.
 export const isBroadKey = (key, masterLabels) => /-CORE$/.test(String(key || "")) || /핵심\s*개념$/.test(masterLabels?.get(key) || "");
 export const isProblemNumberKey = (key) => /-P\d+-Q\d+$|-Q\d+$/.test(String(key || ""));
+
+// Grade check: a middle-school scope (unitKey M22-<grade>-…) should only list keys of its own grade (M<grade>-…), and a
+// high-school scope should list no middle-school keys (M<grade>-…). A key of another grade is allowed only when it is
+// marked cross_grade_key, which tells the re-judging line that the question's own 소단원 value is the wrong one.
+export function scopeGrade(subject, unitKey) {
+  const middle = /^M22-(\d)-/.exec(String(unitKey || ""));
+  if (subject === "MIDDLE" && middle) return { level: "middle", grade: Number(middle[1]) };
+  if (subject === "MIDDLE") return null;
+  return { level: "high", grade: 0 };
+}
+export function keyGradeMismatch(subject, unitKey, key) {
+  const scope = scopeGrade(subject, unitKey);
+  if (!scope) return false;
+  const middleKey = /^M(\d)-/.exec(String(key || ""));
+  if (scope.level === "middle") return Boolean((middleKey && Number(middleKey[1]) !== scope.grade) || /^(H\d|HH\d|HIGH\d)/.test(String(key || "")));
+  return Boolean(middleKey);
+}
 
 function readJson(root, relative) {
   return JSON.parse(fs.readFileSync(path.join(root, relative), "utf8").replace(/^﻿/, ""));
@@ -101,8 +118,12 @@ export function buildTable({ rules, masterLabels, unitIndex }) {
       return true;
     };
     const groups = [];
+    const sections = scope.sections || [];
+    if (sections.some((name) => !hasHangul(name)) || new Set(sections).size !== sections.length) fail("RULES_SECTIONS", id);
     for (const group of scope.groups || []) {
       if (!KINDS.includes(group.kind)) { fail("RULES_KIND", `${id} ${group.kind}`); continue; }
+      if (group.kind === "moved" && !(group.belongsTo?.subject && group.belongsTo?.unitKey && group.belongsTo?.anchor)) { fail("RULES_MOVED_TARGET", id); continue; }
+      if (group.kind !== "moved" && group.belongsTo) fail("RULES_BELONGS_TO_NOT_MOVED", id);
       const entries = [];
       for (const entry of group.keys || []) {
         if (group.kind === "subunit" && isBroadKey(entry.key, masterLabels)) fail("RULES_BROAD_KEY_IN_SUBUNIT", `${id} ${entry.key}`);
@@ -113,6 +134,11 @@ export function buildTable({ rules, masterLabels, unitIndex }) {
         if (group.kind === "unit_other" && isMaster && entry.basis !== "foreign_broad_key") fail("RULES_OTHER_HAS_MASTER_KEY", `${id} ${entry.key}`);
         if (group.kind === "unit_other" && entry.basis === "foreign_broad_key" && !isBroadKey(entry.key, masterLabels)) fail("RULES_FOREIGN_KEY_NOT_BROAD", `${id} ${entry.key}`);
         if (group.kind === "unit_other" && isProblemNumberKey(entry.key)) fail("RULES_OTHER_HAS_NUMBER_KEY", `${id} ${entry.key}`);
+        if (group.kind !== "excluded") {
+          const mismatch = classified && keyGradeMismatch(scope.subject, scope.unitKey, entry.key);
+          if (mismatch && entry.basis !== "cross_grade_key") fail("RULES_CROSS_GRADE_UNMARKED", `${id} ${entry.key}`);
+          if (!mismatch && entry.basis === "cross_grade_key") fail("RULES_CROSS_GRADE_NOT_CROSS", `${id} ${entry.key}`);
+        }
         entries.push({ subUnitKey: entry.key, basis: entry.basis, reviewed: entry.reviewed === true });
       }
       if (!entries.length) continue;
@@ -127,30 +153,58 @@ export function buildTable({ rules, masterLabels, unitIndex }) {
         const label = override ? override.label : masterLabels.get(named ? named.subUnitKey : anchor) || "";
         if (!hasHangul(label)) fail("RULES_LABEL_NOT_KOREAN", `${id} ${anchor} "${label}"`);
         groups.push({ groupKey: `SG:${scope.subject}:${scope.unitKey}:${anchor}`, kind: "subunit", label, ...(override ? { labelReason: override.reason } : {}), keys: entries });
+      } else if (group.kind === "moved") {
+        // Keys that the unified unit list places in this unit but whose content belongs to a 소단원 of another unit.
+        // The label and target are filled in once every scope is built (the target group must really exist).
+        // The target is a 소단원 group named by its anchor key, or the unit's "단원 일반" group named GENERAL.
+        const target = group.belongsTo;
+        groups.push({ groupKey: `SG:${scope.subject}:${scope.unitKey}:MOVED:${target.unitKey}:${target.anchor}`, kind: "moved", label: "", belongsTo: { subject: target.subject, unitKey: target.unitKey, unitLabel: "", groupKey: `SG:${target.subject}:${target.unitKey}:${target.anchor}` }, keys: entries });
       } else {
         const tag = { unit_general: "GENERAL", unit_other: "OTHER", excluded: "EXCLUDED" }[group.kind];
         groups.push({ groupKey: `SG:${scope.subject}:${scope.unitKey}:${tag}`, kind: group.kind, label: KIND_LABELS[group.kind], keys: entries });
       }
     }
+    const crossStandalone = new Set(scope.crossGradeStandalone || []);
+    for (const key of crossStandalone) if (!(scope.standalone || []).includes(key)) fail("RULES_CROSS_GRADE_STANDALONE_UNUSED", `${id} ${key}`);
     for (const key of scope.standalone || []) {
       if (!claim(key, "standalone")) continue;
+      const mismatch = classified && keyGradeMismatch(scope.subject, scope.unitKey, key);
+      if (mismatch && !crossStandalone.has(key)) fail("RULES_CROSS_GRADE_UNMARKED", `${id} ${key}`);
+      if (!mismatch && crossStandalone.has(key)) fail("RULES_CROSS_GRADE_NOT_CROSS", `${id} ${key}`);
       const override = scope.labelOverrides?.[key];
       if (override && (!override.reason || !hasHangul(override.label))) fail("RULES_LABEL_OVERRIDE", `${id} ${key}`);
       const label = override ? override.label : masterLabels.get(key) || "";
       if (!masterLabels.has(key)) fail("RULES_STANDALONE_NOT_MASTER", `${id} ${key}`);
       else if (isBroadKey(key, masterLabels)) fail("RULES_BROAD_KEY_IN_SUBUNIT", `${id} ${key}`);
       else if (!hasHangul(label)) fail("RULES_LABEL_NOT_KOREAN", `${id} ${key} "${label}"`);
-      groups.push({ groupKey: `SG:${scope.subject}:${scope.unitKey}:${key}`, kind: "subunit", label, ...(override ? { labelReason: override.reason } : {}), keys: [{ subUnitKey: key, basis: "standalone", reviewed: false }] });
+      groups.push({ groupKey: `SG:${scope.subject}:${scope.unitKey}:${key}`, kind: "subunit", label, ...(override ? { labelReason: override.reason } : {}), keys: [{ subUnitKey: key, basis: crossStandalone.has(key) ? "cross_grade_key" : "standalone", reviewed: false }] });
     }
     for (const key of Object.keys(scope.labelOverrides || {}))
       if (!groups.some((group) => group.kind === "subunit" && group.groupKey.endsWith(`:${key}`))) fail("RULES_LABEL_OVERRIDE_UNUSED", `${id} ${key}`);
+    // Optional 구역(section): a heading a subunit list can be split by (e.g. 여러 가지 방정식 / 여러 가지 부등식).
+    for (const [key, name] of Object.entries(scope.sectionOf || {})) {
+      const group = groups.find((candidate) => candidate.kind === "subunit" && candidate.groupKey.endsWith(`:${key}`));
+      if (!group) fail("RULES_SECTION_UNUSED", `${id} ${key}`);
+      else if (!sections.includes(name)) fail("RULES_SECTION_VALUE", `${id} ${key} "${name}"`);
+      else group.section = name;
+    }
     const keyOf = new Set();
     for (const group of groups) {
       if (keyOf.has(group.groupKey)) fail("RULES_DUPLICATE_GROUP_KEY", group.groupKey);
       keyOf.add(group.groupKey);
     }
     groups.sort((a, b) => KIND_RANK[a.kind] - KIND_RANK[b.kind] || compare(a.groupKey, b.groupKey));
-    scopes.push({ subject: scope.subject, unitKey: scope.unitKey, unitLabel, groups });
+    scopes.push({ subject: scope.subject, unitKey: scope.unitKey, unitLabel, ...(sections.length ? { sections } : {}), groups });
+  }
+  // A moved group must point at a real subunit group of another unit; it shows that group's name.
+  const byGroupKey = new Map();
+  for (const scope of scopes) for (const group of scope.groups) byGroupKey.set(group.groupKey, { scope, group });
+  for (const scope of scopes) for (const group of scope.groups.filter((candidate) => candidate.kind === "moved")) {
+    const target = byGroupKey.get(group.belongsTo.groupKey);
+    // The target must be a real 소단원 or 단원 일반 group of another unit, never a moved group itself (no chains).
+    if (!target || !["subunit", "unit_general"].includes(target.group.kind)) fail("RULES_MOVED_TARGET_MISSING", `${scope.subject} ${scope.unitKey} -> ${group.belongsTo.groupKey}`);
+    else if (target.scope === scope) fail("RULES_MOVED_TARGET_SAME_UNIT", group.groupKey);
+    else { group.label = target.group.label; group.belongsTo.unitLabel = target.scope.unitLabel; }
   }
   if (problems.length) throw Object.assign(new Error(problems.slice(0, 40).join("\n")), { problems });
   const subjectRank = new Map(unitIndex.subjectOrder.map((subject, index) => [subject, index]));
@@ -162,7 +216,7 @@ export function buildTable({ rules, masterLabels, unitIndex }) {
     description: "소단원 묶음표. 같은 통합 단원 안에서 하나의 소단원으로 보여 주고 고르는 소단원 키(subUnitKey)의 묶음이다. 표시와 선택에만 쓰며 문항의 소단원 값과 정본 메타는 바꾸지 않는다. 표에 없는 키는 자기 자신이 하나의 묶음이다.",
     sources: { rules: RULES_PATH, masterTable: MASTER_PATH },
     scope: "통합 단원(subject + unitKey)마다 한 키는 한 묶음에만 속한다. unitKey UNCLASSIFIED는 '단원 미분류'다.",
-    kinds: { subunit: "소단원", unit_general: "단원 일반(넓은 키)", unit_other: "기타(임시 키)", excluded: "소단원 평가 제외" },
+    kinds: { subunit: "소단원", unit_general: "단원 일반(넓은 키)", unit_other: "기타(임시 키)", moved: "다른 단원의 소단원에 속하는 키(belongsTo)", excluded: "소단원 평가 제외" },
     scopes,
   };
 }

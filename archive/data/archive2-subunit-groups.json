@@ -10,6 +10,7 @@
   "subunit": "소단원",
   "unit_general": "단원 일반(넓은 키)",
   "unit_other": "기타(임시 키)",
+  "moved": "다른 단원의 소단원에 속하는 키(belongsTo)",
   "excluded": "소단원 평가 제외"
  },
  "scopes": [
@@ -61,54 +62,6 @@
    "unitKey": "M22-2-01",
    "unitLabel": "유리수와 순환소수",
    "groups": [
-    {
-     "groupKey": "SG:MIDDLE:M22-2-01:M1-03-ALGEBRAIC_EXPRESSION",
-     "kind": "subunit",
-     "label": "문자의 사용과 식의 값",
-     "keys": [
-      {
-       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-       "basis": "standalone",
-       "reviewed": false
-      }
-     ]
-    },
-    {
-     "groupKey": "SG:MIDDLE:M22-2-01:M1-07-SOLID_FIGURE_MEASURE",
-     "kind": "subunit",
-     "label": "입체도형의 측정",
-     "keys": [
-      {
-       "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
-       "basis": "standalone",
-       "reviewed": false
-      }
-     ]
-    },
-    {
-     "groupKey": "SG:MIDDLE:M22-2-01:M2-01-EXPONENT_LAW",
-     "kind": "subunit",
-     "label": "지수법칙",
-     "keys": [
-      {
-       "subUnitKey": "M2-01-EXPONENT_LAW",
-       "basis": "standalone",
-       "reviewed": false
-      }
-     ]
-    },
-    {
-     "groupKey": "SG:MIDDLE:M22-2-01:M2-01-POLYNOMIAL_OPERATIONS",
-     "kind": "subunit",
-     "label": "다항식의 계산",
-     "keys": [
-      {
-       "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-       "basis": "standalone",
-       "reviewed": false
-      }
-     ]
-    },
     {
      "groupKey": "SG:MIDDLE:M22-2-01:M2-01-REPEATING_DECIMAL",
      "kind": "subunit",
@@ -187,6 +140,52 @@
       {
        "subUnitKey": "M2-01-TERMINATING_UNKNOWN",
        "basis": "content_checked",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:MIDDLE:M22-2-01:MOVED:M22-2-02:M2-01-EXPONENT_LAW",
+     "kind": "moved",
+     "label": "지수법칙",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-2-02",
+      "unitLabel": "식의 계산",
+      "groupKey": "SG:MIDDLE:M22-2-02:M2-01-EXPONENT_LAW"
+     },
+     "keys": [
+      {
+       "subUnitKey": "M2-01-EXPONENT_LAW",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:MIDDLE:M22-2-01:MOVED:M22-2-02:M2-01-POLYNOMIAL_OPERATIONS",
+     "kind": "moved",
+     "label": "다항식의 계산",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-2-02",
+      "unitLabel": "식의 계산",
+      "groupKey": "SG:MIDDLE:M22-2-02:M2-01-POLYNOMIAL_OPERATIONS"
+     },
+     "keys": [
+      {
+       "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      },
+      {
+       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+       "basis": "cross_grade_key",
+       "reviewed": true
+      },
+      {
+       "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+       "basis": "cross_grade_key",
        "reviewed": true
       }
      ]
@@ -522,8 +521,13 @@
      "keys": [
       {
        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-       "basis": "standalone",
-       "reviewed": false
+       "basis": "anchor",
+       "reviewed": true
+      },
+      {
+       "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+       "basis": "cross_grade_key",
+       "reviewed": true
       }
      ]
     },
@@ -560,18 +564,6 @@
        "reviewed": false
       }
      ]
-    },
-    {
-     "groupKey": "SG:MIDDLE:M22-1-02:M2-02-LINEAR_INEQUALITY",
-     "kind": "subunit",
-     "label": "일차부등식",
-     "keys": [
-      {
-       "subUnitKey": "M2-02-LINEAR_INEQUALITY",
-       "basis": "standalone",
-       "reviewed": false
-      }
-     ]
     }
    ]
   },
@@ -580,18 +572,6 @@
    "unitKey": "M22-2-02",
    "unitLabel": "식의 계산",
    "groups": [
-    {
-     "groupKey": "SG:MIDDLE:M22-2-02:M1-07-SOLID_FIGURE_MEASURE",
-     "kind": "subunit",
-     "label": "입체도형의 측정",
-     "keys": [
-      {
-       "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
-       "basis": "standalone",
-       "reviewed": false
-      }
-     ]
-    },
     {
      "groupKey": "SG:MIDDLE:M22-2-02:M2-01-EXPONENT_LAW",
      "kind": "subunit",
@@ -631,8 +611,13 @@
      "keys": [
       {
        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-       "basis": "standalone",
-       "reviewed": false
+       "basis": "anchor",
+       "reviewed": true
+      },
+      {
+       "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+       "basis": "cross_grade_key",
+       "reviewed": true
       }
      ]
     },
@@ -1462,11 +1447,6 @@
        "reviewed": false
       },
       {
-       "subUnitKey": "M3-03-POLYNOMIAL_MULTIPLICATION_FACTORIZATION",
-       "basis": "adhoc_to_other",
-       "reviewed": false
-      },
-      {
        "subUnitKey": "M3-03-QUADRATIC_FORMULA",
        "basis": "adhoc_to_other",
        "reviewed": false
@@ -1520,6 +1500,24 @@
        "subUnitKey": "M3-04-GOLDEN_TRIANGLE",
        "basis": "adhoc_to_other",
        "reviewed": false
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:MIDDLE:M22-3-03:MOVED:M22-3-02:M3-02-FACTORIZATION",
+     "kind": "moved",
+     "label": "인수분해",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-3-02",
+      "unitLabel": "다항식의 곱셈과 인수분해",
+      "groupKey": "SG:MIDDLE:M22-3-02:M3-02-FACTORIZATION"
+     },
+     "keys": [
+      {
+       "subUnitKey": "M3-03-POLYNOMIAL_MULTIPLICATION_FACTORIZATION",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
       }
      ]
     }
@@ -1893,24 +1891,30 @@
      ]
     },
     {
-     "groupKey": "SG:MIDDLE:M22-2-04:OTHER",
-     "kind": "unit_other",
-     "label": "기타",
+     "groupKey": "SG:MIDDLE:M22-2-04:MOVED:H22-C-06:H15-SA-08-SYSTEM_INEQUALITY",
+     "kind": "moved",
+     "label": "연립부등식",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-06",
+      "unitLabel": "여러 가지 방정식과 부등식",
+      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H15-SA-08-SYSTEM_INEQUALITY"
+     },
      "keys": [
       {
        "subUnitKey": "M2-03-INTEGER_COUNT",
-       "basis": "adhoc_to_other",
-       "reviewed": false
+       "basis": "moved_to_other_unit",
+       "reviewed": true
       },
       {
        "subUnitKey": "M2-03-SYSTEM_INEQ_SOL",
-       "basis": "adhoc_to_other",
-       "reviewed": false
+       "basis": "moved_to_other_unit",
+       "reviewed": true
       },
       {
        "subUnitKey": "M2-03-SYSTEM_NO_SOL",
-       "basis": "adhoc_to_other",
-       "reviewed": false
+       "basis": "moved_to_other_unit",
+       "reviewed": true
       }
      ]
     }
@@ -2921,7 +2925,7 @@
      "keys": [
       {
        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
-       "basis": "standalone",
+       "basis": "cross_grade_key",
        "reviewed": false
       }
      ]
@@ -2933,7 +2937,7 @@
      "keys": [
       {
        "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
-       "basis": "standalone",
+       "basis": "cross_grade_key",
        "reviewed": false
       }
      ]
@@ -3478,18 +3482,6 @@
    "unitLabel": "도형의 닮음",
    "groups": [
     {
-     "groupKey": "SG:MIDDLE:M22-2-07:M2-05-TRIANGLE_PROPERTIES",
-     "kind": "subunit",
-     "label": "삼각형의 성질",
-     "keys": [
-      {
-       "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-       "basis": "standalone",
-       "reviewed": false
-      }
-     ]
-    },
-    {
      "groupKey": "SG:MIDDLE:M22-2-07:M2-06-PARALLEL_LENGTH_RATIO",
      "kind": "subunit",
      "label": "평행선 사이의 선분의 길이의 비",
@@ -3560,14 +3552,38 @@
      ]
     },
     {
-     "groupKey": "SG:MIDDLE:M22-2-07:M2-07-PYTHAGOREAN_APPLICATION",
-     "kind": "subunit",
+     "groupKey": "SG:MIDDLE:M22-2-07:MOVED:M22-2-06:M2-05-TRIANGLE_PROPERTIES",
+     "kind": "moved",
+     "label": "삼각형의 성질",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-2-06",
+      "unitLabel": "삼각형과 사각형의 성질",
+      "groupKey": "SG:MIDDLE:M22-2-06:M2-05-TRIANGLE_PROPERTIES"
+     },
+     "keys": [
+      {
+       "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:MIDDLE:M22-2-07:MOVED:M22-2-08:M2-07-PYTHAGOREAN_APPLICATION",
+     "kind": "moved",
      "label": "피타고라스 정리의 활용",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-2-08",
+      "unitLabel": "피타고라스 정리",
+      "groupKey": "SG:MIDDLE:M22-2-08:M2-07-PYTHAGOREAN_APPLICATION"
+     },
      "keys": [
       {
        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
-       "basis": "standalone",
-       "reviewed": false
+       "basis": "moved_to_other_unit",
+       "reviewed": true
       }
      ]
     }
@@ -3729,42 +3745,6 @@
      ]
     },
     {
-     "groupKey": "SG:MIDDLE:M22-2-08:M2-06-PARALLEL_LENGTH_RATIO",
-     "kind": "subunit",
-     "label": "평행선 사이의 선분의 길이의 비",
-     "keys": [
-      {
-       "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-       "basis": "standalone",
-       "reviewed": false
-      }
-     ]
-    },
-    {
-     "groupKey": "SG:MIDDLE:M22-2-08:M2-06-SIMILAR_FIGURE",
-     "kind": "subunit",
-     "label": "도형의 닮음",
-     "keys": [
-      {
-       "subUnitKey": "M2-06-SIMILAR_FIGURE",
-       "basis": "standalone",
-       "reviewed": false
-      }
-     ]
-    },
-    {
-     "groupKey": "SG:MIDDLE:M22-2-08:M2-06-TRIANGLE_CENTROID",
-     "kind": "subunit",
-     "label": "삼각형의 무게중심의 성질",
-     "keys": [
-      {
-       "subUnitKey": "M2-06-TRIANGLE_CENTROID",
-       "basis": "standalone",
-       "reviewed": false
-      }
-     ]
-    },
-    {
      "groupKey": "SG:MIDDLE:M22-2-08:M2-07-PYTHAGOREAN_APPLICATION",
      "kind": "subunit",
      "label": "피타고라스 정리의 활용",
@@ -3789,6 +3769,60 @@
       {
        "subUnitKey": "M2-09-PYTHAGOREAN_THEOREM",
        "basis": "content_checked",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:MIDDLE:M22-2-08:MOVED:M22-2-07:M2-06-PARALLEL_LENGTH_RATIO",
+     "kind": "moved",
+     "label": "평행선 사이의 선분의 길이의 비",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-2-07",
+      "unitLabel": "도형의 닮음",
+      "groupKey": "SG:MIDDLE:M22-2-07:M2-06-PARALLEL_LENGTH_RATIO"
+     },
+     "keys": [
+      {
+       "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:MIDDLE:M22-2-08:MOVED:M22-2-07:M2-06-SIMILAR_FIGURE",
+     "kind": "moved",
+     "label": "도형의 닮음",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-2-07",
+      "unitLabel": "도형의 닮음",
+      "groupKey": "SG:MIDDLE:M22-2-07:M2-06-SIMILAR_FIGURE"
+     },
+     "keys": [
+      {
+       "subUnitKey": "M2-06-SIMILAR_FIGURE",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:MIDDLE:M22-2-08:MOVED:M22-2-07:M2-06-TRIANGLE_CENTROID",
+     "kind": "moved",
+     "label": "삼각형의 무게중심의 성질",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-2-07",
+      "unitLabel": "도형의 닮음",
+      "groupKey": "SG:MIDDLE:M22-2-07:M2-06-TRIANGLE_CENTROID"
+     },
+     "keys": [
+      {
+       "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+       "basis": "moved_to_other_unit",
        "reviewed": true
       }
      ]
@@ -3876,8 +3910,13 @@
      "keys": [
       {
        "subUnitKey": "H15-SA-01-MULTIPLICATION_FORMULA",
-       "basis": "standalone",
-       "reviewed": false
+       "basis": "anchor",
+       "reviewed": true
+      },
+      {
+       "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+       "basis": "cross_grade_key",
+       "reviewed": true
       }
      ]
     },
@@ -3913,11 +3952,6 @@
       {
        "subUnitKey": "H22-C-01-FACTORIZATION",
        "basis": "anchor",
-       "reviewed": true
-      },
-      {
-       "subUnitKey": "H22-C-03-FACTORIZATION",
-       "basis": "unit_renumber",
        "reviewed": true
       },
       {
@@ -3967,18 +4001,6 @@
      ]
     },
     {
-     "groupKey": "SG:COMMON_MATH_1:H22-C-01:M1-07-SOLID_FIGURE_MEASURE",
-     "kind": "subunit",
-     "label": "입체도형의 측정",
-     "keys": [
-      {
-       "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
-       "basis": "standalone",
-       "reviewed": false
-      }
-     ]
-    },
-    {
      "groupKey": "SG:COMMON_MATH_1:H22-C-01:GENERAL",
      "kind": "unit_general",
      "label": "단원 일반",
@@ -3991,13 +4013,37 @@
      ]
     },
     {
-     "groupKey": "SG:COMMON_MATH_1:H22-C-01:OTHER",
-     "kind": "unit_other",
-     "label": "기타",
+     "groupKey": "SG:COMMON_MATH_1:H22-C-01:MOVED:H22-C-02:GENERAL",
+     "kind": "moved",
+     "label": "단원 일반",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-02",
+      "unitLabel": "항등식과 나머지 정리",
+      "groupKey": "SG:COMMON_MATH_1:H22-C-02:GENERAL"
+     },
      "keys": [
       {
        "subUnitKey": "H22-C-02-CORE",
-       "basis": "foreign_broad_key",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:COMMON_MATH_1:H22-C-01:MOVED:H22-C-03:H22-C-03-FACTORIZATION",
+     "kind": "moved",
+     "label": "인수분해",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-03",
+      "unitLabel": "인수분해",
+      "groupKey": "SG:COMMON_MATH_1:H22-C-03:H22-C-03-FACTORIZATION"
+     },
+     "keys": [
+      {
+       "subUnitKey": "H22-C-03-FACTORIZATION",
+       "basis": "moved_to_other_unit",
        "reviewed": true
       }
      ]
@@ -4397,18 +4443,6 @@
      ]
     },
     {
-     "groupKey": "SG:COMMON_MATH_1:H22-C-05:H22-C-01-POLYNOMIAL_BASIC",
-     "kind": "subunit",
-     "label": "다항식의 연산",
-     "keys": [
-      {
-       "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
-       "basis": "standalone",
-       "reviewed": false
-      }
-     ]
-    },
-    {
      "groupKey": "SG:COMMON_MATH_1:H22-C-05:H22-C-04-COMPLEX_ROOT",
      "kind": "subunit",
      "label": "복소수와 이차방정식",
@@ -4481,11 +4515,6 @@
        "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
        "basis": "same_master_label",
        "reviewed": true
-      },
-      {
-       "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
-       "basis": "unit_renumber",
-       "reviewed": true
       }
      ]
     },
@@ -4520,6 +4549,11 @@
        "subUnitKey": "H15-SA-13-QUADRATIC_MAXMIN",
        "basis": "same_master_label",
        "reviewed": true
+      },
+      {
+       "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+       "basis": "cross_grade_key",
+       "reviewed": true
       }
      ]
     },
@@ -4539,6 +4573,24 @@
        "reviewed": false
       }
      ]
+    },
+    {
+     "groupKey": "SG:COMMON_MATH_1:H22-C-05:MOVED:H22-C-01:H22-C-01-POLYNOMIAL_BASIC",
+     "kind": "moved",
+     "label": "다항식의 연산",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-01",
+      "unitLabel": "다항식의 연산",
+      "groupKey": "SG:COMMON_MATH_1:H22-C-01:H22-C-01-POLYNOMIAL_BASIC"
+     },
+     "keys": [
+      {
+       "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
     }
    ]
   },
@@ -4546,6 +4598,10 @@
    "subject": "COMMON_MATH_1",
    "unitKey": "H22-C-06",
    "unitLabel": "여러 가지 방정식과 부등식",
+   "sections": [
+    "여러 가지 방정식",
+    "여러 가지 부등식"
+   ],
    "groups": [
     {
      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H15-SA-07-SUBSTITUTION_SYSTEM",
@@ -4557,7 +4613,8 @@
        "basis": "standalone",
        "reviewed": false
       }
-     ]
+     ],
+     "section": "여러 가지 방정식"
     },
     {
      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H15-SA-08-ABSOLUTE_INEQUALITY",
@@ -4569,7 +4626,8 @@
        "basis": "standalone",
        "reviewed": false
       }
-     ]
+     ],
+     "section": "여러 가지 부등식"
     },
     {
      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H15-SA-08-INEQUALITY_APPLICATION",
@@ -4581,7 +4639,8 @@
        "basis": "standalone",
        "reviewed": false
       }
-     ]
+     ],
+     "section": "여러 가지 부등식"
     },
     {
      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H15-SA-08-QUADRATIC_INEQUALITY",
@@ -4599,19 +4658,27 @@
        "basis": "content_checked",
        "reviewed": true
       }
-     ]
+     ],
+     "section": "여러 가지 부등식"
     },
     {
      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H15-SA-08-SYSTEM_INEQUALITY",
      "kind": "subunit",
      "label": "연립부등식",
+     "labelReason": "H22-C-06-SYSTEM(마스터 이름 '연립방정식과 연립부등식')의 발문 5개가 모두 연립부등식이라 같은 소단원으로 묶고 이름을 연립부등식으로 쓴다.",
      "keys": [
       {
        "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
-       "basis": "standalone",
-       "reviewed": false
+       "basis": "anchor",
+       "reviewed": true
+      },
+      {
+       "subUnitKey": "H22-C-06-SYSTEM",
+       "basis": "content_checked",
+       "reviewed": true
       }
-     ]
+     ],
+     "section": "여러 가지 부등식"
     },
     {
      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H22-C-06-EQUATION",
@@ -4638,7 +4705,8 @@
        "basis": "content_checked",
        "reviewed": true
       }
-     ]
+     ],
+     "section": "여러 가지 방정식"
     },
     {
      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H22-C-06-EQUATION_APPLICATION",
@@ -4655,7 +4723,8 @@
        "basis": "curriculum_2015_2022",
        "reviewed": true
       }
-     ]
+     ],
+     "section": "여러 가지 방정식"
     },
     {
      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H22-C-06-EQUATION_BASIC",
@@ -4677,7 +4746,8 @@
        "basis": "curriculum_2015_2022",
        "reviewed": true
       }
-     ]
+     ],
+     "section": "여러 가지 방정식"
     },
     {
      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H22-C-06-HIGHER_INEQUALITY",
@@ -4694,7 +4764,8 @@
        "basis": "same_master_label",
        "reviewed": true
       }
-     ]
+     ],
+     "section": "여러 가지 부등식"
     },
     {
      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H22-C-06-INEQUALITY_BASIC",
@@ -4711,19 +4782,8 @@
        "basis": "curriculum_2015_2022",
        "reviewed": true
       }
-     ]
-    },
-    {
-     "groupKey": "SG:COMMON_MATH_1:H22-C-06:H22-C-06-SYSTEM",
-     "kind": "subunit",
-     "label": "연립방정식과 연립부등식",
-     "keys": [
-      {
-       "subUnitKey": "H22-C-06-SYSTEM",
-       "basis": "standalone",
-       "reviewed": false
-      }
-     ]
+     ],
+     "section": "여러 가지 부등식"
     },
     {
      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H22-C-06-SYSTEM_OF_EQUATIONS",
@@ -4740,7 +4800,8 @@
        "basis": "content_checked",
        "reviewed": true
       }
-     ]
+     ],
+     "section": "여러 가지 방정식"
     },
     {
      "groupKey": "SG:COMMON_MATH_1:H22-C-06:M3-01-SQUARE_ROOT_REAL_NUMBER",
@@ -4749,7 +4810,7 @@
      "keys": [
       {
        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-       "basis": "standalone",
+       "basis": "cross_grade_key",
        "reviewed": false
       }
      ]
@@ -5058,22 +5119,7 @@
      "label": "기타",
      "keys": [
       {
-       "subUnitKey": "H15-SA-09-ABSOLUTE_INEQUALITY",
-       "basis": "adhoc_to_other",
-       "reviewed": false
-      },
-      {
        "subUnitKey": "H15-SA-09-COORDINATE_GEOMETRY",
-       "basis": "adhoc_to_other",
-       "reviewed": false
-      },
-      {
-       "subUnitKey": "H15-SA-09-INEQUALITY_APPLICATION",
-       "basis": "adhoc_to_other",
-       "reviewed": false
-      },
-      {
-       "subUnitKey": "H15-SA-09-QUADRATIC_INEQUALITY",
        "basis": "adhoc_to_other",
        "reviewed": false
       },
@@ -5083,28 +5129,134 @@
        "reviewed": false
       },
       {
-       "subUnitKey": "H22-C2-01-LINE-EQUIDISTANT-BISECTOR-AREA",
-       "basis": "adhoc_to_other",
-       "reviewed": false
-      },
-      {
-       "subUnitKey": "H22-C2-01-LINE-PERP-PARALLEL",
-       "basis": "adhoc_to_other",
-       "reviewed": false
-      },
-      {
-       "subUnitKey": "H22-C2-01-LINE-TRANSLATION-REFLECTION",
-       "basis": "adhoc_to_other",
-       "reviewed": false
-      },
-      {
        "subUnitKey": "H22-C2-01-RHOMBUS-DISTANCE",
        "basis": "adhoc_to_other",
        "reviewed": false
-      },
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:COMMON_MATH_2:H22-C2-01:MOVED:H22-C-06:H15-SA-08-ABSOLUTE_INEQUALITY",
+     "kind": "moved",
+     "label": "절댓값 부등식",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-06",
+      "unitLabel": "여러 가지 방정식과 부등식",
+      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H15-SA-08-ABSOLUTE_INEQUALITY"
+     },
+     "keys": [
+      {
+       "subUnitKey": "H15-SA-09-ABSOLUTE_INEQUALITY",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:COMMON_MATH_2:H22-C2-01:MOVED:H22-C-06:H15-SA-08-INEQUALITY_APPLICATION",
+     "kind": "moved",
+     "label": "부등식의 활용",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-06",
+      "unitLabel": "여러 가지 방정식과 부등식",
+      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H15-SA-08-INEQUALITY_APPLICATION"
+     },
+     "keys": [
+      {
+       "subUnitKey": "H15-SA-09-INEQUALITY_APPLICATION",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:COMMON_MATH_2:H22-C2-01:MOVED:H22-C-06:H15-SA-08-QUADRATIC_INEQUALITY",
+     "kind": "moved",
+     "label": "이차부등식",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-06",
+      "unitLabel": "여러 가지 방정식과 부등식",
+      "groupKey": "SG:COMMON_MATH_1:H22-C-06:H15-SA-08-QUADRATIC_INEQUALITY"
+     },
+     "keys": [
+      {
+       "subUnitKey": "H15-SA-09-QUADRATIC_INEQUALITY",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:COMMON_MATH_2:H22-C2-01:MOVED:H22-C2-02:H15-SA-10-DISTANCE_ANGLE",
+     "kind": "moved",
+     "label": "직선 사이의 거리와 각",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-02",
+      "unitLabel": "직선의 방정식",
+      "groupKey": "SG:COMMON_MATH_2:H22-C2-02:H15-SA-10-DISTANCE_ANGLE"
+     },
+     "keys": [
+      {
+       "subUnitKey": "H22-C2-01-LINE-EQUIDISTANT-BISECTOR-AREA",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:COMMON_MATH_2:H22-C2-01:MOVED:H22-C2-02:H15-SA-10-PARALLEL_PERPENDICULAR",
+     "kind": "moved",
+     "label": "두 직선의 평행과 수직",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-02",
+      "unitLabel": "직선의 방정식",
+      "groupKey": "SG:COMMON_MATH_2:H22-C2-02:H15-SA-10-PARALLEL_PERPENDICULAR"
+     },
+     "keys": [
+      {
+       "subUnitKey": "H22-C2-01-LINE-PERP-PARALLEL",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:COMMON_MATH_2:H22-C2-01:MOVED:H22-C2-04:GENERAL",
+     "kind": "moved",
+     "label": "단원 일반",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-04",
+      "unitLabel": "도형의 이동",
+      "groupKey": "SG:COMMON_MATH_2:H22-C2-04:GENERAL"
+     },
+     "keys": [
       {
        "subUnitKey": "H22-C2-04-CORE",
-       "basis": "foreign_broad_key",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:COMMON_MATH_2:H22-C2-01:MOVED:H22-C2-04:H15-SA-12-COMPOSITE_TRANSFORMATION",
+     "kind": "moved",
+     "label": "합성 변환",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-04",
+      "unitLabel": "도형의 이동",
+      "groupKey": "SG:COMMON_MATH_2:H22-C2-04:H15-SA-12-COMPOSITE_TRANSFORMATION"
+     },
+     "keys": [
+      {
+       "subUnitKey": "H22-C2-01-LINE-TRANSLATION-REFLECTION",
+       "basis": "moved_to_other_unit",
        "reviewed": true
       }
      ]
@@ -5661,31 +5813,6 @@
      "label": "기타",
      "keys": [
       {
-       "subUnitKey": "H22-C2-05-CIRCLE-CHORD-LINE",
-       "basis": "adhoc_to_other",
-       "reviewed": false
-      },
-      {
-       "subUnitKey": "H22-C2-05-CIRCLE-QUARTER-LINES",
-       "basis": "adhoc_to_other",
-       "reviewed": false
-      },
-      {
-       "subUnitKey": "H22-C2-05-CIRCLE-TANGENT-SLOPES",
-       "basis": "adhoc_to_other",
-       "reviewed": false
-      },
-      {
-       "subUnitKey": "H22-C2-05-CIRCLE-TRANSLATION",
-       "basis": "adhoc_to_other",
-       "reviewed": false
-      },
-      {
-       "subUnitKey": "H22-C2-05-EXAM-AND-SET",
-       "basis": "adhoc_to_other",
-       "reviewed": false
-      },
-      {
        "subUnitKey": "H22-C2-05-INTERMEDIATE-SUBSETS",
        "basis": "adhoc_to_other",
        "reviewed": false
@@ -5739,6 +5866,96 @@
        "subUnitKey": "HIGH1-MOTHER-FINAL",
        "basis": "adhoc_to_other",
        "reviewed": false
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:COMMON_MATH_2:H22-C2-05:MOVED:H22-C2-01:H22-C2-01-COORDINATE_METRIC",
+     "kind": "moved",
+     "label": "평면좌표와 거리",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-01",
+      "unitLabel": "평면좌표",
+      "groupKey": "SG:COMMON_MATH_2:H22-C2-01:H22-C2-01-COORDINATE_METRIC"
+     },
+     "keys": [
+      {
+       "subUnitKey": "H22-C2-05-EXAM-AND-SET",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:COMMON_MATH_2:H22-C2-05:MOVED:H22-C2-03:H22-C2-03-CIRCLE_EQUATION",
+     "kind": "moved",
+     "label": "원의 방정식",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-03",
+      "unitLabel": "원의 방정식",
+      "groupKey": "SG:COMMON_MATH_2:H22-C2-03:H22-C2-03-CIRCLE_EQUATION"
+     },
+     "keys": [
+      {
+       "subUnitKey": "H22-C2-05-CIRCLE-QUARTER-LINES",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:COMMON_MATH_2:H22-C2-05:MOVED:H22-C2-03:H22-C2-03-INTERSECTION",
+     "kind": "moved",
+     "label": "원과 직선·원의 관계",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-03",
+      "unitLabel": "원의 방정식",
+      "groupKey": "SG:COMMON_MATH_2:H22-C2-03:H22-C2-03-INTERSECTION"
+     },
+     "keys": [
+      {
+       "subUnitKey": "H22-C2-05-CIRCLE-CHORD-LINE",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:COMMON_MATH_2:H22-C2-05:MOVED:H22-C2-03:H22-C2-03-TANGENT",
+     "kind": "moved",
+     "label": "원과 접선",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-03",
+      "unitLabel": "원의 방정식",
+      "groupKey": "SG:COMMON_MATH_2:H22-C2-03:H22-C2-03-TANGENT"
+     },
+     "keys": [
+      {
+       "subUnitKey": "H22-C2-05-CIRCLE-TANGENT-SLOPES",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "groupKey": "SG:COMMON_MATH_2:H22-C2-05:MOVED:H22-C2-04:H15-SA-12-TRANSLATION",
+     "kind": "moved",
+     "label": "평행이동",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-04",
+      "unitLabel": "도형의 이동",
+      "groupKey": "SG:COMMON_MATH_2:H22-C2-04:H15-SA-12-TRANSLATION"
+     },
+     "keys": [
+      {
+       "subUnitKey": "H22-C2-05-CIRCLE-TRANSLATION",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
       }
      ]
     },
@@ -6669,13 +6886,19 @@
      ]
     },
     {
-     "groupKey": "SG:ALGEBRA:H22-A-01:OTHER",
-     "kind": "unit_other",
-     "label": "기타",
+     "groupKey": "SG:ALGEBRA:H22-A-01:MOVED:H22-C-02:GENERAL",
+     "kind": "moved",
+     "label": "단원 일반",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-02",
+      "unitLabel": "항등식과 나머지 정리",
+      "groupKey": "SG:COMMON_MATH_1:H22-C-02:GENERAL"
+     },
      "keys": [
       {
        "subUnitKey": "H22-C-02-CORE",
-       "basis": "foreign_broad_key",
+       "basis": "moved_to_other_unit",
        "reviewed": true
       }
      ]

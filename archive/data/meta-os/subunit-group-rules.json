@@ -6,6 +6,21 @@
    "unitKey": "H22-A-01",
    "groups": [
     {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-02",
+      "anchor": "GENERAL"
+     },
+     "keys": [
+      {
+       "key": "H22-C-02-CORE",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
      "kind": "subunit",
      "anchor": "H22-A-01-FUNCTION_BASIC",
      "keys": [
@@ -32,16 +47,6 @@
       {
        "key": "H22-A-01-CORE",
        "basis": "unit_general_key",
-       "reviewed": true
-      }
-     ]
-    },
-    {
-     "kind": "unit_other",
-     "keys": [
-      {
-       "key": "H22-C-02-CORE",
-       "basis": "foreign_broad_key",
        "reviewed": true
       }
      ]
@@ -722,6 +727,36 @@
    "unitKey": "H22-C-01",
    "groups": [
     {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-03",
+      "anchor": "H22-C-03-FACTORIZATION"
+     },
+     "keys": [
+      {
+       "key": "H22-C-03-FACTORIZATION",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-02",
+      "anchor": "GENERAL"
+     },
+     "keys": [
+      {
+       "key": "H22-C-02-CORE",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
      "kind": "subunit",
      "anchor": "H22-C-01-POLYNOMIAL_BASIC",
      "keys": [
@@ -768,13 +803,24 @@
        "reviewed": true
       },
       {
-       "key": "H22-C-03-FACTORIZATION",
-       "basis": "unit_renumber",
+       "key": "HH15-SA-01-FACTORIZATION",
+       "basis": "curriculum_2015_2022",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "subunit",
+     "anchor": "H15-SA-01-MULTIPLICATION_FORMULA",
+     "keys": [
+      {
+       "key": "H15-SA-01-MULTIPLICATION_FORMULA",
+       "basis": "anchor",
        "reviewed": true
       },
       {
-       "key": "HH15-SA-01-FACTORIZATION",
-       "basis": "curriculum_2015_2022",
+       "key": "M1-07-SOLID_FIGURE_MEASURE",
+       "basis": "cross_grade_key",
        "reviewed": true
       }
      ]
@@ -788,23 +834,11 @@
        "reviewed": false
       }
      ]
-    },
-    {
-     "kind": "unit_other",
-     "keys": [
-      {
-       "key": "H22-C-02-CORE",
-       "basis": "foreign_broad_key",
-       "reviewed": true
-      }
-     ]
     }
    ],
    "standalone": [
-    "H15-SA-01-MULTIPLICATION_FORMULA",
     "H15-SA-01-POLYNOMIAL_DIVISION",
-    "H15-SA-02-REMAINDER_FACTOR",
-    "M1-07-SOLID_FIGURE_MEASURE"
+    "H15-SA-02-REMAINDER_FACTOR"
    ]
   },
   {
@@ -1001,6 +1035,21 @@
    "unitKey": "H22-C-05",
    "groups": [
     {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-01",
+      "anchor": "H22-C-01-POLYNOMIAL_BASIC"
+     },
+     "keys": [
+      {
+       "key": "H22-C-01-POLYNOMIAL_BASIC",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
      "kind": "subunit",
      "anchor": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
      "keys": [
@@ -1028,11 +1077,6 @@
       {
        "key": "H15-SA-13-QUADRATIC_APPLICATION",
        "basis": "same_master_label",
-       "reviewed": true
-      },
-      {
-       "key": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
-       "basis": "unit_renumber",
        "reviewed": true
       }
      ]
@@ -1087,6 +1131,11 @@
        "key": "H15-SA-13-QUADRATIC_MAXMIN",
        "basis": "same_master_label",
        "reviewed": true
+      },
+      {
+       "key": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+       "basis": "cross_grade_key",
+       "reviewed": true
       }
      ]
     },
@@ -1127,7 +1176,6 @@
     "H15-SA-05-INEQUALITY_BASIC",
     "H15-SA-05-QUADRATIC_SOLVING",
     "H15-SA-06-ROOT_CONDITION",
-    "H22-C-01-POLYNOMIAL_BASIC",
     "H22-C-04-COMPLEX_ROOT",
     "H22-C-05-FUNCTION_BASIC",
     "H22-C-05-QUADRATIC_EQUATION"
@@ -1142,6 +1190,23 @@
   {
    "subject": "COMMON_MATH_1",
    "unitKey": "H22-C-06",
+   "sections": [
+    "여러 가지 방정식",
+    "여러 가지 부등식"
+   ],
+   "sectionOf": {
+    "H15-SA-07-SUBSTITUTION_SYSTEM": "여러 가지 방정식",
+    "H22-C-06-EQUATION": "여러 가지 방정식",
+    "H22-C-06-EQUATION_APPLICATION": "여러 가지 방정식",
+    "H22-C-06-EQUATION_BASIC": "여러 가지 방정식",
+    "H22-C-06-SYSTEM_OF_EQUATIONS": "여러 가지 방정식",
+    "H15-SA-08-ABSOLUTE_INEQUALITY": "여러 가지 부등식",
+    "H15-SA-08-INEQUALITY_APPLICATION": "여러 가지 부등식",
+    "H15-SA-08-QUADRATIC_INEQUALITY": "여러 가지 부등식",
+    "H15-SA-08-SYSTEM_INEQUALITY": "여러 가지 부등식",
+    "H22-C-06-HIGHER_INEQUALITY": "여러 가지 부등식",
+    "H22-C-06-INEQUALITY_BASIC": "여러 가지 부등식"
+   },
    "groups": [
     {
      "kind": "subunit",
@@ -1154,6 +1219,22 @@
       },
       {
        "key": "H22-C-06-FUNCTION_BASIC",
+       "basis": "content_checked",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "subunit",
+     "anchor": "H15-SA-08-SYSTEM_INEQUALITY",
+     "keys": [
+      {
+       "key": "H15-SA-08-SYSTEM_INEQUALITY",
+       "basis": "anchor",
+       "reviewed": true
+      },
+      {
+       "key": "H22-C-06-SYSTEM",
        "basis": "content_checked",
        "reviewed": true
       }
@@ -1275,14 +1356,19 @@
     "H15-SA-07-SUBSTITUTION_SYSTEM",
     "H15-SA-08-ABSOLUTE_INEQUALITY",
     "H15-SA-08-INEQUALITY_APPLICATION",
-    "H15-SA-08-SYSTEM_INEQUALITY",
-    "H22-C-06-SYSTEM",
+    "M3-01-SQUARE_ROOT_REAL_NUMBER"
+   ],
+   "crossGradeStandalone": [
     "M3-01-SQUARE_ROOT_REAL_NUMBER"
    ],
    "labelOverrides": {
     "H15-SA-08-QUADRATIC_INEQUALITY": {
      "label": "이차부등식",
      "reason": "H22-C-06-FUNCTION_BASIC(마스터 이름 '함수의 뜻과 그래프')의 발문 2개가 모두 이차부등식이라 같은 소단원으로 묶고 이름을 이차부등식으로 쓴다."
+    },
+    "H15-SA-08-SYSTEM_INEQUALITY": {
+     "label": "연립부등식",
+     "reason": "H22-C-06-SYSTEM(마스터 이름 '연립방정식과 연립부등식')의 발문 5개가 모두 연립부등식이라 같은 소단원으로 묶고 이름을 연립부등식으로 쓴다."
     }
    }
   },
@@ -1413,6 +1499,111 @@
    "unitKey": "H22-C2-01",
    "groups": [
     {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-02",
+      "anchor": "H15-SA-10-PARALLEL_PERPENDICULAR"
+     },
+     "keys": [
+      {
+       "key": "H22-C2-01-LINE-PERP-PARALLEL",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-02",
+      "anchor": "H15-SA-10-DISTANCE_ANGLE"
+     },
+     "keys": [
+      {
+       "key": "H22-C2-01-LINE-EQUIDISTANT-BISECTOR-AREA",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-04",
+      "anchor": "H15-SA-12-COMPOSITE_TRANSFORMATION"
+     },
+     "keys": [
+      {
+       "key": "H22-C2-01-LINE-TRANSLATION-REFLECTION",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-06",
+      "anchor": "H15-SA-08-ABSOLUTE_INEQUALITY"
+     },
+     "keys": [
+      {
+       "key": "H15-SA-09-ABSOLUTE_INEQUALITY",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-06",
+      "anchor": "H15-SA-08-INEQUALITY_APPLICATION"
+     },
+     "keys": [
+      {
+       "key": "H15-SA-09-INEQUALITY_APPLICATION",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-06",
+      "anchor": "H15-SA-08-QUADRATIC_INEQUALITY"
+     },
+     "keys": [
+      {
+       "key": "H15-SA-09-QUADRATIC_INEQUALITY",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-04",
+      "anchor": "GENERAL"
+     },
+     "keys": [
+      {
+       "key": "H22-C2-04-CORE",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
      "kind": "subunit",
      "anchor": "H22-C2-01-COORDINATE_METRIC",
      "keys": [
@@ -1480,19 +1671,7 @@
      "kind": "unit_other",
      "keys": [
       {
-       "key": "H15-SA-09-ABSOLUTE_INEQUALITY",
-       "basis": "adhoc_to_other"
-      },
-      {
        "key": "H15-SA-09-COORDINATE_GEOMETRY",
-       "basis": "adhoc_to_other"
-      },
-      {
-       "key": "H15-SA-09-INEQUALITY_APPLICATION",
-       "basis": "adhoc_to_other"
-      },
-      {
-       "key": "H15-SA-09-QUADRATIC_INEQUALITY",
        "basis": "adhoc_to_other"
       },
       {
@@ -1500,25 +1679,8 @@
        "basis": "adhoc_to_other"
       },
       {
-       "key": "H22-C2-01-LINE-EQUIDISTANT-BISECTOR-AREA",
-       "basis": "adhoc_to_other"
-      },
-      {
-       "key": "H22-C2-01-LINE-PERP-PARALLEL",
-       "basis": "adhoc_to_other"
-      },
-      {
-       "key": "H22-C2-01-LINE-TRANSLATION-REFLECTION",
-       "basis": "adhoc_to_other"
-      },
-      {
        "key": "H22-C2-01-RHOMBUS-DISTANCE",
        "basis": "adhoc_to_other"
-      },
-      {
-       "key": "H22-C2-04-CORE",
-       "basis": "foreign_broad_key",
-       "reviewed": true
       }
      ]
     },
@@ -1858,6 +2020,81 @@
    "unitKey": "H22-C2-05",
    "groups": [
     {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-03",
+      "anchor": "H22-C2-03-INTERSECTION"
+     },
+     "keys": [
+      {
+       "key": "H22-C2-05-CIRCLE-CHORD-LINE",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-03",
+      "anchor": "H22-C2-03-CIRCLE_EQUATION"
+     },
+     "keys": [
+      {
+       "key": "H22-C2-05-CIRCLE-QUARTER-LINES",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-03",
+      "anchor": "H22-C2-03-TANGENT"
+     },
+     "keys": [
+      {
+       "key": "H22-C2-05-CIRCLE-TANGENT-SLOPES",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-04",
+      "anchor": "H15-SA-12-TRANSLATION"
+     },
+     "keys": [
+      {
+       "key": "H22-C2-05-CIRCLE-TRANSLATION",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_2",
+      "unitKey": "H22-C2-01",
+      "anchor": "H22-C2-01-COORDINATE_METRIC"
+     },
+     "keys": [
+      {
+       "key": "H22-C2-05-EXAM-AND-SET",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
      "kind": "subunit",
      "anchor": "H15-SB-01-SET_BASIC",
      "keys": [
@@ -1891,26 +2128,6 @@
     {
      "kind": "unit_other",
      "keys": [
-      {
-       "key": "H22-C2-05-CIRCLE-CHORD-LINE",
-       "basis": "adhoc_to_other"
-      },
-      {
-       "key": "H22-C2-05-CIRCLE-QUARTER-LINES",
-       "basis": "adhoc_to_other"
-      },
-      {
-       "key": "H22-C2-05-CIRCLE-TANGENT-SLOPES",
-       "basis": "adhoc_to_other"
-      },
-      {
-       "key": "H22-C2-05-CIRCLE-TRANSLATION",
-       "basis": "adhoc_to_other"
-      },
-      {
-       "key": "H22-C2-05-EXAM-AND-SET",
-       "basis": "adhoc_to_other"
-      },
       {
        "key": "H22-C2-05-INTERMEDIATE-SUBSETS",
        "basis": "adhoc_to_other"
@@ -2688,13 +2905,27 @@
        "reviewed": true
       }
      ]
+    },
+    {
+     "kind": "subunit",
+     "anchor": "M1-02-INTEGER_RATIONAL_NUMBER",
+     "keys": [
+      {
+       "key": "M1-02-INTEGER_RATIONAL_NUMBER",
+       "basis": "anchor",
+       "reviewed": true
+      },
+      {
+       "key": "M2-02-LINEAR_INEQUALITY",
+       "basis": "cross_grade_key",
+       "reviewed": true
+      }
+     ]
     }
    ],
    "standalone": [
     "M1-01-PRIME_FACTORIZATION",
-    "M1-02-INTEGER_RATIONAL_NUMBER",
-    "M1-03-ALGEBRAIC_EXPRESSION",
-    "M2-02-LINEAR_INEQUALITY"
+    "M1-03-ALGEBRAIC_EXPRESSION"
    ]
   },
   {
@@ -2889,6 +3120,46 @@
    "unitKey": "M22-2-01",
    "groups": [
     {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-2-02",
+      "anchor": "M2-01-EXPONENT_LAW"
+     },
+     "keys": [
+      {
+       "key": "M2-01-EXPONENT_LAW",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-2-02",
+      "anchor": "M2-01-POLYNOMIAL_OPERATIONS"
+     },
+     "keys": [
+      {
+       "key": "M2-01-POLYNOMIAL_OPERATIONS",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      },
+      {
+       "key": "M1-03-ALGEBRAIC_EXPRESSION",
+       "basis": "cross_grade_key",
+       "reviewed": true
+      },
+      {
+       "key": "M1-07-SOLID_FIGURE_MEASURE",
+       "basis": "cross_grade_key",
+       "reviewed": true
+      }
+     ]
+    },
+    {
      "kind": "subunit",
      "anchor": "M2-01-REPEATING_DECIMAL",
      "keys": [
@@ -2970,12 +3241,7 @@
      ]
     }
    ],
-   "standalone": [
-    "M1-03-ALGEBRAIC_EXPRESSION",
-    "M1-07-SOLID_FIGURE_MEASURE",
-    "M2-01-EXPONENT_LAW",
-    "M2-01-POLYNOMIAL_OPERATIONS"
-   ]
+   "standalone": []
   },
   {
    "subject": "MIDDLE",
@@ -3008,6 +3274,22 @@
       {
        "key": "M2-02-EXPONENT_BASIC",
        "basis": "content_checked",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "subunit",
+     "anchor": "M2-01-POLYNOMIAL_OPERATIONS",
+     "keys": [
+      {
+       "key": "M2-01-POLYNOMIAL_OPERATIONS",
+       "basis": "anchor",
+       "reviewed": true
+      },
+      {
+       "key": "M1-07-SOLID_FIGURE_MEASURE",
+       "basis": "cross_grade_key",
        "reviewed": true
       }
      ]
@@ -3110,10 +3392,7 @@
      ]
     }
    ],
-   "standalone": [
-    "M1-07-SOLID_FIGURE_MEASURE",
-    "M2-01-POLYNOMIAL_OPERATIONS"
-   ]
+   "standalone": []
   },
   {
    "subject": "MIDDLE",
@@ -3334,6 +3613,31 @@
    "subject": "MIDDLE",
    "unitKey": "M22-2-04",
    "groups": [
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "COMMON_MATH_1",
+      "unitKey": "H22-C-06",
+      "anchor": "H15-SA-08-SYSTEM_INEQUALITY"
+     },
+     "keys": [
+      {
+       "key": "M2-03-INTEGER_COUNT",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      },
+      {
+       "key": "M2-03-SYSTEM_INEQ_SOL",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      },
+      {
+       "key": "M2-03-SYSTEM_NO_SOL",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
     {
      "kind": "subunit",
      "anchor": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
@@ -3638,23 +3942,6 @@
        "key": "M2-07-DIST_SPEED_TIME",
        "basis": "content_checked",
        "reviewed": true
-      }
-     ]
-    },
-    {
-     "kind": "unit_other",
-     "keys": [
-      {
-       "key": "M2-03-INTEGER_COUNT",
-       "basis": "adhoc_to_other"
-      },
-      {
-       "key": "M2-03-SYSTEM_INEQ_SOL",
-       "basis": "adhoc_to_other"
-      },
-      {
-       "key": "M2-03-SYSTEM_NO_SOL",
-       "basis": "adhoc_to_other"
       }
      ]
     }
@@ -4231,6 +4518,36 @@
    "unitKey": "M22-2-07",
    "groups": [
     {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-2-08",
+      "anchor": "M2-07-PYTHAGOREAN_APPLICATION"
+     },
+     "keys": [
+      {
+       "key": "M2-07-PYTHAGOREAN_APPLICATION",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-2-06",
+      "anchor": "M2-05-TRIANGLE_PROPERTIES"
+     },
+     "keys": [
+      {
+       "key": "M2-05-TRIANGLE_PROPERTIES",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
      "kind": "subunit",
      "anchor": "M2-06-SIMILAR_FIGURE",
      "keys": [
@@ -4264,17 +4581,60 @@
     }
    ],
    "standalone": [
-    "M2-05-TRIANGLE_PROPERTIES",
     "M2-06-SIMILAR_FIGURES",
     "M2-06-TRIANGLE_CENTROID",
-    "M2-06-TRIANGLE_SIMILARITY",
-    "M2-07-PYTHAGOREAN_APPLICATION"
+    "M2-06-TRIANGLE_SIMILARITY"
    ]
   },
   {
    "subject": "MIDDLE",
    "unitKey": "M22-2-08",
    "groups": [
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-2-07",
+      "anchor": "M2-06-PARALLEL_LENGTH_RATIO"
+     },
+     "keys": [
+      {
+       "key": "M2-06-PARALLEL_LENGTH_RATIO",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-2-07",
+      "anchor": "M2-06-SIMILAR_FIGURE"
+     },
+     "keys": [
+      {
+       "key": "M2-06-SIMILAR_FIGURE",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-2-07",
+      "anchor": "M2-06-TRIANGLE_CENTROID"
+     },
+     "keys": [
+      {
+       "key": "M2-06-TRIANGLE_CENTROID",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
     {
      "kind": "subunit",
      "anchor": "M2-07-PYTHAGOREAN_THEOREM",
@@ -4294,9 +4654,6 @@
    ],
    "standalone": [
     "M2-05-TRIANGLE_PROPERTIES",
-    "M2-06-PARALLEL_LENGTH_RATIO",
-    "M2-06-SIMILAR_FIGURE",
-    "M2-06-TRIANGLE_CENTROID",
     "M2-07-PYTHAGOREAN_APPLICATION"
    ]
   },
@@ -4674,6 +5031,21 @@
    "unitKey": "M22-3-03",
    "groups": [
     {
+     "kind": "moved",
+     "belongsTo": {
+      "subject": "MIDDLE",
+      "unitKey": "M22-3-02",
+      "anchor": "M3-02-FACTORIZATION"
+     },
+     "keys": [
+      {
+       "key": "M3-03-POLYNOMIAL_MULTIPLICATION_FACTORIZATION",
+       "basis": "moved_to_other_unit",
+       "reviewed": true
+      }
+     ]
+    },
+    {
      "kind": "subunit",
      "anchor": "M3-03-QUADRATIC_EQUATION",
      "keys": [
@@ -4896,10 +5268,6 @@
       },
       {
        "key": "M3-03-EVEN_QUAD_FORMULA",
-       "basis": "adhoc_to_other"
-      },
-      {
-       "key": "M3-03-POLYNOMIAL_MULTIPLICATION_FACTORIZATION",
        "basis": "adhoc_to_other"
       },
       {
@@ -5344,6 +5712,10 @@
     "M2-07-PYTHAGOREAN_APPLICATION",
     "M2-07-PYTHAGOREAN_THEOREM",
     "M3-06-CIRCLE_INSCRIBED_ANGLE"
+   ],
+   "crossGradeStandalone": [
+    "M2-07-PYTHAGOREAN_APPLICATION",
+    "M2-07-PYTHAGOREAN_THEOREM"
    ]
   },
   {

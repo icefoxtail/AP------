@@ -6,7 +6,7 @@ import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import {
   BASES, KINDS, KIND_LABELS, RULES_PATH, TABLE_PATH, UNCLASSIFIED_UNIT, buildFromRepo, buildTable,
-  isBroadKey, isProblemNumberKey, loadCanonicalKeys, loadMaster, loadUnitIndex, serializeTable, tableKeys,
+  isBroadKey, isProblemNumberKey, keyGradeMismatch, loadCanonicalKeys, loadMaster, loadUnitIndex, serializeTable, tableKeys,
 } from "../archive/tools/meta-os/build-subunit-groups.mjs";
 
 // The subunit group table says which canonical subUnitKey values are one 소단원 inside one unified unit. These tests
@@ -72,7 +72,7 @@ test("labels are never empty and are Korean: master names for subunits, fixed wo
     assert.ok(KINDS.includes(group.kind));
     assert.ok(hasHangul(group.label), `${group.groupKey} label "${group.label}"`);
     if (group.kind === "subunit") assert.ok("labelReason" in group || [...group.keys].some((entry) => master.get(entry.subUnitKey) === group.label), `${group.groupKey} label is a master name or a recorded override`);
-    else assert.equal(group.label, KIND_LABELS[group.kind]);
+    else if (group.kind !== "moved") assert.equal(group.label, KIND_LABELS[group.kind]);
   }
 });
 
@@ -94,6 +94,7 @@ test("unit_general, unit_other and excluded follow their rules", () => {
       if (group.kind === "unit_general") assert.equal(tag, "GENERAL");
       if (group.kind === "unit_other") assert.equal(tag, "OTHER");
       if (group.kind === "excluded") assert.equal(tag, "EXCLUDED");
+      if (group.kind === "moved") assert.ok(group.groupKey.includes(":MOVED:"), group.groupKey);
       for (const entry of group.keys) {
         assert.ok(BASES.includes(entry.basis), `${entry.subUnitKey} basis ${entry.basis}`);
         assert.equal(typeof entry.reviewed, "boolean");
@@ -106,6 +107,7 @@ test("unit_general, unit_other and excluded follow their rules", () => {
         }
         if (group.kind === "unit_general") assert.equal(entry.basis, "unit_general_key");
         if (group.kind === "excluded") assert.equal(entry.basis, "problem_number_key");
+        if (group.kind === "moved") assert.ok(["moved_to_other_unit", "cross_grade_key"].includes(entry.basis), `${entry.subUnitKey} basis ${entry.basis}`);
       }
     }
     // The unclassified scope only marks question-number keys.
@@ -116,7 +118,7 @@ test("unit_general, unit_other and excluded follow their rules", () => {
 test("a broad key (…-CORE or a master name ending in 핵심 개념) is never part of a subunit: only 단원 일반 or 기타", () => {
   for (const scope of table.scopes) for (const group of scope.groups) for (const entry of group.keys) {
     if (!isBroadKey(entry.subUnitKey, master)) continue;
-    assert.ok(group.kind === "unit_general" || group.kind === "unit_other", `${scope.unitKey} ${entry.subUnitKey} is in ${group.kind}`);
+    assert.ok(["unit_general", "unit_other", "moved"].includes(group.kind), `${scope.unitKey} ${entry.subUnitKey} is in ${group.kind}`);
     // Another unit's broad key is not this unit's general key: it only goes to 기타.
     if (group.kind === "unit_other") assert.equal(entry.basis, "foreign_broad_key");
   }
@@ -126,8 +128,11 @@ test("a broad key (…-CORE or a master name ending in 핵심 개념) is never p
   assert.deepEqual(["X-1", "X-2", "X-3"].map((key) => isBroadKey(key, named)), [true, true, false]);
   const place = (subject, unit) => table.scopes.find((scope) => scope.subject === subject && scope.unitKey === unit).groups.find((group) => group.keys.some((entry) => entry.subUnitKey === "H22-C-02-CORE"));
   assert.equal(place("COMMON_MATH_1", "H22-C-02").kind, "unit_general");
-  assert.equal(place("COMMON_MATH_1", "H22-C-01").kind, "unit_other");
-  assert.equal(place("ALGEBRA", "H22-A-01").kind, "unit_other");
+  // Another unit's broad key points at its own unit's 단원 일반 (moved) when the question is that unit's content, and
+  // stays in 기타 when the stems show it really belongs to the unit it sits in.
+  assert.equal(place("COMMON_MATH_1", "H22-C-01").kind, "moved");
+  assert.equal(place("ALGEBRA", "H22-A-01").kind, "moved");
+  assert.equal(table.scopes.find((scope) => scope.subject === "PROB_STATS" && scope.unitKey === "H22-PS-01").groups.find((group) => group.keys.some((entry) => entry.subUnitKey === "H22-PS-02-CORE")).kind, "unit_other");
 });
 
 test("a group name that replaces the master name carries a recorded reason, and the master name is never the broad key's", () => {
@@ -148,7 +153,8 @@ test("a group name that replaces the master name carries a recorded reason, and 
 
 test("a merged subunit starts with its master anchor; only a content-checked ad-hoc key may sit next to master keys", () => {
   for (const scope of table.scopes) for (const group of scope.groups.filter((candidate) => candidate.kind === "subunit")) {
-    assert.equal(group.keys[0].basis, group.keys.length > 1 ? "anchor" : "standalone");
+    if (group.keys.length > 1) assert.equal(group.keys[0].basis, "anchor");
+    else assert.ok(["standalone", "cross_grade_key"].includes(group.keys[0].basis));
     assert.ok(master.has(group.keys[0].subUnitKey), `${group.groupKey} anchor is a master key`);
     assert.ok(group.groupKey.endsWith(`:${group.keys[0].subUnitKey}`));
     for (const entry of group.keys.slice(1)) {
@@ -203,4 +209,110 @@ test("the builder refuses inconsistent decisions with a named reason", () => {
 test("the rules file lists no group names except the recorded overrides", () => {
   const rules = JSON.parse(fs.readFileSync(path.join(repo, RULES_PATH), "utf8"));
   for (const scope of rules.scopes) for (const group of scope.groups || []) assert.ok(!("label" in group), "labels are derived from the master table or labelOverrides");
+});
+
+const allGroups = new Map();
+for (const scope of table.scopes) for (const group of scope.groups) allGroups.set(group.groupKey, { scope, group });
+
+test("a moved group points at a real 소단원 or 단원 일반 group of another unit, shows its name, and never chains", () => {
+  let moved = 0;
+  for (const scope of table.scopes) for (const group of scope.groups.filter((candidate) => candidate.kind === "moved")) {
+    moved++;
+    const target = allGroups.get(group.belongsTo.groupKey);
+    assert.ok(target, `${group.groupKey} points at ${group.belongsTo.groupKey}, which does not exist`);
+    assert.ok(["subunit", "unit_general"].includes(target.group.kind), `${group.groupKey} points at a ${target.group.kind} group (moves must not chain)`);
+    assert.notEqual(target.scope, scope, `${group.groupKey} points inside its own unit`);
+    assert.equal(group.belongsTo.subject, target.scope.subject);
+    assert.equal(group.belongsTo.unitKey, target.scope.unitKey);
+    assert.equal(group.belongsTo.unitLabel, target.scope.unitLabel);
+    assert.equal(group.label, target.group.label);
+    assert.ok(group.keys.length > 0);
+  }
+  assert.ok(moved > 0);
+});
+
+test("user decision: 연립일차부등식 (middle 2) is a 소단원 of 여러 가지 방정식과 부등식 in 고1, and 연립부등식 is one group there", () => {
+  const middle = table.scopes.find((scope) => scope.subject === "MIDDLE" && scope.unitKey === "M22-2-04");
+  const movedGroup = middle.groups.find((group) => group.kind === "moved");
+  assert.equal(movedGroup.belongsTo.groupKey, "SG:COMMON_MATH_1:H22-C-06:H15-SA-08-SYSTEM_INEQUALITY");
+  assert.deepEqual(movedGroup.keys.map((entry) => entry.subUnitKey).sort(), ["M2-03-INTEGER_COUNT", "M2-03-SYSTEM_INEQ_SOL", "M2-03-SYSTEM_NO_SOL"]);
+  assert.ok(!middle.groups.some((group) => group.kind === "unit_other"), "the middle-2 inequality keys are no longer 기타");
+  const target = allGroups.get("SG:COMMON_MATH_1:H22-C-06:H15-SA-08-SYSTEM_INEQUALITY").group;
+  assert.equal(target.label, "연립부등식");
+  assert.ok(target.keys.some((entry) => entry.subUnitKey === "H22-C-06-SYSTEM"));
+});
+
+test("구역(section) is an optional heading from the unit's own list; only subunit groups carry one", () => {
+  let withSections = 0;
+  for (const scope of table.scopes) {
+    const names = scope.sections || [];
+    assert.equal(new Set(names).size, names.length);
+    assert.ok(names.every(hasHangul));
+    if (names.length) withSections++;
+    for (const group of scope.groups) {
+      if (!("section" in group)) continue;
+      assert.equal(group.kind, "subunit", `${group.groupKey} is ${group.kind} but has a section`);
+      assert.ok(names.includes(group.section), `${group.groupKey} section "${group.section}"`);
+    }
+  }
+  assert.ok(withSections > 0);
+  const scope = table.scopes.find((candidate) => candidate.subject === "COMMON_MATH_1" && candidate.unitKey === "H22-C-06");
+  assert.deepEqual(scope.sections, ["여러 가지 방정식", "여러 가지 부등식"]);
+  const sectionOf = (key) => scope.groups.find((group) => group.keys.some((entry) => entry.subUnitKey === key)).section;
+  assert.equal(sectionOf("H22-C-06-EQUATION_BASIC"), "여러 가지 방정식");
+  assert.equal(sectionOf("H15-SA-08-SYSTEM_INEQUALITY"), "여러 가지 부등식");
+});
+
+test("a key of another grade sits in a unit only when it is marked cross_grade_key, and the mark is only for such keys", () => {
+  let crossGrade = 0;
+  for (const scope of table.scopes) for (const group of scope.groups) {
+    if (group.kind === "excluded") continue;
+    for (const entry of group.keys) {
+      const mismatch = keyGradeMismatch(scope.subject, scope.unitKey, entry.subUnitKey);
+      assert.equal(entry.basis === "cross_grade_key", mismatch, `${scope.unitKey} ${entry.subUnitKey} basis ${entry.basis}`);
+      if (mismatch) crossGrade++;
+    }
+  }
+  assert.ok(crossGrade > 0);
+  assert.equal(keyGradeMismatch("MIDDLE", "M22-2-02", "M2-01-EXPONENT_LAW"), false);
+  assert.equal(keyGradeMismatch("MIDDLE", "M22-2-02", "M1-07-SOLID_FIGURE_MEASURE"), true);
+  assert.equal(keyGradeMismatch("MIDDLE", "M22-1-07", "M1-2-GEOM-SOLID-01-CORE"), false);
+  assert.equal(keyGradeMismatch("COMMON_MATH_1", "H22-C-05", "M3-04-QUADRATIC_FUNCTION_APPLICATION"), true);
+  assert.equal(keyGradeMismatch("COMMON_MATH_1", "H22-C-05", "H15-SA-13-QUADRATIC_GRAPH"), false);
+});
+
+test("the builder refuses wrong moves, sections and grade marks with a named reason", () => {
+  const labels = new Map([["M1-01-A", "가"], ["M1-01-B", "나"], ["M2-01-A", "다"], ["M2-01-B", "라"]]);
+  const index = {
+    units: new Map([["MIDDLE|M22-1-01", "단원 하나"], ["MIDDLE|M22-2-01", "단원 둘"]]), subjects: new Map([["MIDDLE", "중학"]]), subjectOrder: ["MIDDLE"],
+    unitOrder: new Map([["MIDDLE|M22-1-01", 1], ["MIDDLE|M22-2-01", 2]]),
+  };
+  const run = (scopes) => buildTable({ rules: { schemaVersion: "archive2-subunit-group-rules-v1", scopes }, masterLabels: labels, unitIndex: index });
+  const one = { subject: "MIDDLE", unitKey: "M22-1-01", groups: [], standalone: ["M1-01-A"] };
+  const moveTo = (anchor, unitKey = "M22-1-01") => ({ subject: "MIDDLE", unitKey: "M22-2-01", groups: [{ kind: "moved", belongsTo: { subject: "MIDDLE", unitKey, anchor }, keys: [{ key: "M2-01-A", basis: "moved_to_other_unit" }] }], standalone: [] });
+  const ok = run([one, moveTo("M1-01-A")]);
+  const moved = ok.scopes[1].groups[0];
+  assert.equal(moved.label, "가");
+  assert.equal(moved.belongsTo.unitLabel, "단원 하나");
+  assert.throws(() => run([one, moveTo("M1-01-NOPE")]), /RULES_MOVED_TARGET_MISSING/);
+  assert.throws(() => run([moveTo("M1-01-A")]), /RULES_MOVED_TARGET_MISSING/);
+  assert.throws(() => run([one, moveTo("M2-01-A", "M22-2-01")]), /RULES_MOVED_TARGET_(MISSING|SAME_UNIT)/);
+  assert.throws(() => run([{ ...one, groups: [{ kind: "moved", belongsTo: { subject: "MIDDLE", unitKey: "M22-2-01", anchor: "M2-01-B" }, keys: [{ key: "M1-01-B", basis: "cross_grade_key" }] }] }, { subject: "MIDDLE", unitKey: "M22-2-01", groups: [{ kind: "moved", belongsTo: { subject: "MIDDLE", unitKey: "M22-1-01", anchor: "M1-01-A" }, keys: [{ key: "M2-01-B", basis: "cross_grade_key" }] }], standalone: [] }]), /RULES_MOVED_TARGET_MISSING/, "a move into a moved group is a chain");
+  assert.throws(() => run([{ ...one, groups: [{ kind: "subunit", belongsTo: { subject: "MIDDLE", unitKey: "M22-2-01", anchor: "x" }, anchor: "M1-01-B", keys: [{ key: "M1-01-B", basis: "anchor" }] }] }]), /RULES_BELONGS_TO_NOT_MOVED/);
+  assert.throws(() => run([{ subject: "MIDDLE", unitKey: "M22-2-01", groups: [{ kind: "moved", keys: [{ key: "M2-01-A", basis: "moved_to_other_unit" }] }], standalone: [] }]), /RULES_MOVED_TARGET/);
+  // Sections: a value must come from the unit's own list, and a section needs a group.
+  const sectioned = (sectionOf, sections = ["구역 하나", "구역 둘"]) => run([{ ...one, sections, sectionOf }]);
+  assert.equal(sectioned({ "M1-01-A": "구역 하나" }).scopes[0].groups[0].section, "구역 하나");
+  assert.throws(() => sectioned({ "M1-01-A": "다른 구역" }), /RULES_SECTION_VALUE/);
+  assert.throws(() => sectioned({ "M1-01-NOPE": "구역 하나" }), /RULES_SECTION_UNUSED/);
+  assert.throws(() => sectioned({}, ["구역 하나", "구역 하나"]), /RULES_SECTIONS/);
+  // Grade marks: a key of another grade must be marked, and the mark is only for such a key.
+  assert.throws(() => run([{ subject: "MIDDLE", unitKey: "M22-1-01", groups: [], standalone: ["M2-01-A"] }]), /RULES_CROSS_GRADE_UNMARKED/);
+  assert.throws(() => run([{ subject: "MIDDLE", unitKey: "M22-1-01", groups: [{ kind: "subunit", anchor: "M1-01-A", keys: [{ key: "M1-01-A", basis: "anchor" }, { key: "M2-01-A", basis: "content_checked" }] }], standalone: [] }]), /RULES_CROSS_GRADE_UNMARKED/);
+  assert.throws(() => run([{ subject: "MIDDLE", unitKey: "M22-1-01", groups: [{ kind: "subunit", anchor: "M1-01-A", keys: [{ key: "M1-01-A", basis: "anchor" }, { key: "M1-01-B", basis: "cross_grade_key" }] }], standalone: [] }]), /RULES_CROSS_GRADE_NOT_CROSS/);
+  const marked = run([{ subject: "MIDDLE", unitKey: "M22-1-01", groups: [{ kind: "subunit", anchor: "M1-01-A", keys: [{ key: "M1-01-A", basis: "anchor" }, { key: "M2-01-A", basis: "cross_grade_key", reviewed: true }] }], standalone: [] }]);
+  assert.equal(marked.scopes[0].groups[0].keys[1].basis, "cross_grade_key");
+  const standalone = run([{ subject: "MIDDLE", unitKey: "M22-1-01", groups: [], standalone: ["M2-01-A"], crossGradeStandalone: ["M2-01-A"] }]);
+  assert.equal(standalone.scopes[0].groups[0].keys[0].basis, "cross_grade_key");
+  assert.throws(() => run([{ subject: "MIDDLE", unitKey: "M22-1-01", groups: [], standalone: ["M1-01-A"], crossGradeStandalone: ["M2-01-A"] }]), /RULES_CROSS_GRADE_STANDALONE_UNUSED/);
 });
