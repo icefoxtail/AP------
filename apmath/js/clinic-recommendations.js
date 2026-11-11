@@ -386,16 +386,13 @@
         });
     }
 
-    function strictDifficultyEligible(record, archive2Core) {
+    // One shared difficulty gate (Archive2Core.difficultyEligible): integer 1..5, intact identity and
+    // source. Binding, confidence, boundary, compatibility and conflict markers are labels, not
+    // gates. The fallback below mirrors that rule.
+    function difficultyUsable(record, archive2Core) {
         if (typeof archive2Core?.difficultyEligible === 'function') return archive2Core.difficultyEligible(record);
-        return record?.sourceStatus === 'VERIFIED' &&
-            Number.isInteger(record?.difficultyBucket) && record.difficultyBucket >= 1 && record.difficultyBucket <= 5 &&
-            ['high', 'medium', 'low'].includes(record?.difficultyConfidence) &&
-            ['NONE', 'B12', 'B23', 'B34', 'B45'].includes(record?.difficultyBoundaryFlag) &&
-            ['NORMAL', 'BORDERLINE_ACCEPTABLE', 'STRONG_CONFLICT'].includes(record?.legacyLevelCompatibility) &&
-            !(Array.isArray(record?.metadataConflicts) && record.metadataConflicts.some(field => [
-                'difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility'
-            ].includes(field)));
+        return generalUseEligible(record, archive2Core) &&
+            Number.isInteger(record?.difficultyBucket) && record.difficultyBucket >= 1 && record.difficultyBucket <= 5;
     }
 
     function generalUseEligible(record, archive2Core) {
@@ -509,7 +506,7 @@
             const difficultyRecord = { ...record, ...meta };
             fact.path = path;
             fact.bucket = bucket;
-            fact.difficultyEligible = bucket != null && strictDifficultyEligible(difficultyRecord, archive2Core);
+            fact.difficultyEligible = bucket != null && difficultyUsable(difficultyRecord, archive2Core);
             fact.advancedPathEligible = path.depth <= 4 || advancedPathEligible(difficultyRecord, archive2Core, canonicalAuthority);
             for (let depth = 4; depth <= path.depth; depth++) {
                 const pathKey = pathKeyAtDepth(record, meta, depth, archive2Core);
