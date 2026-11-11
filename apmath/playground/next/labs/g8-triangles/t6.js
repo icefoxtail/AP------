@@ -691,7 +691,7 @@
 
   /* ====================================================================== 5. 내심의 각 */
   const n5 = {
-    id: 't6-5', title: '내심의 각 (x+y+z=90°, ∠BIC=90°+½∠A)', short: '내심의 각', solve: n5Solve,
+    id: 't6-5', title: '내심과 이등분선이 만드는 각', short: '내심의 각', solve: n5Solve,
     question: '내심 I에서 만든 각 ∠BIC는 ∠A와 어떤 관계일까?',
     ctl: ['trNa', 'trNb'],
     init: (s) => { s.trNa = 30; s.trNb = 30; s.trV = 0; },
