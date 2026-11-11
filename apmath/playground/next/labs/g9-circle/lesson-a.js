@@ -31,6 +31,7 @@
   const answerLine = f => `따라서 $${f.solution.target}=${chosen(f).t}$, 정답은 ${ordinal(f)}이에요.`;
   const cue = (at, say, step, set) => ({ at, ...(say ? { say } : {}), ...(step == null ? {} : { step }), ...(set ? { set } : {}) });
   function add(id, label, f, lines, options = {}) {
+    lines = lines.map(line => line?.replace(/\$([^$]+)\$/g, (_, math) => '$' + math.replace(/′/g, '^{\\prime}') + '$'));
     const init = { ...initialState(id), ...(options.initial || {}) }, concept = !options.problem;
     const folding = id === 'c1-5' || id === 'c1-6';
     if (folding) init.c1f = 0;
