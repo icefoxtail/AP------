@@ -16,6 +16,8 @@
   const pctF = (v) => Math.round(v * 100) + '%';
   const fsOf = (t, n) => Array.from({ length: n }, (_, i) => clamp(t * n - i, 0, 1));
   const KL = ['㉠', '㉡', '㉢', '㉣', '㉤', '㉥'];
+  const lessonReady = (s, C) => !C.lesson || (!s.lessonEntry && !!s.cnShowAnswer);
+  const lessonProblem = (Q) => (Q.html || Q.stem) + '<br>보기: ' + Q.choices.map((c, i) => `${G.NUM[i]} ${c.h != null ? c.h : '$' + c.t + '$'}`).join(' · ');
 
   const PARAMS = {
     cnL: P('선분 AB의 길이', 2, 4, 0.5, 3, { color: 'sky', format: cmF, hint: '노란 점 B를 끌어도 돼요' }),
@@ -55,8 +57,9 @@
     init: (s) => { s.cnL = 3; s.cnPhi = 20; s.cnT1 = 0; s.cnTool = 'compass'; s.cnKind = 0; s.cnPk = { c: 0, w: [0, 1, 2, 3] }; },
     reroll: (s) => { s.cnL = pick([2, 2.5, 3, 3.5, 4], s.cnL); s.cnPhi = rint(10, 35); s.cnKind = s.cnKind === 0 ? 1 : 0; s.cnPk = { c: rint(0, 2), w: shuffle([0, 1, 2, 3, 4], Math.random).slice(0, 4) }; },
     model: (s) => ({ L: clamp(s.cnL, 2, 4), phi: clamp(s.cnPhi, 5, 40), tool: s.cnTool || 'compass', kind: s.cnKind || 0, pk: s.cnPk || { c: 0, w: [0, 1, 2, 3] } }),
+    lessonQuestion: (M, s, Q) => s.cnLessonProblem ? lessonProblem(Q) : M.tool === 'ruler' ? '눈금 없는 자로 두 점 A, B를 지나는 선을 어떻게 그을까? 길이도 잴 수 있을까?' : '컴퍼스의 바늘을 P에 꽂고 벌림을 유지하면 어떤 선이 그려질까?',
     draw(b, s, M, C) {
-      const { L, phi } = M, tool = C.review ? (C.step <= 1 ? 'ruler' : 'compass') : C.problem ? 'compass' : M.tool;
+      const { L, phi } = M, tool = C.lesson ? M.tool : C.review ? (C.step <= 1 ? 'ruler' : 'compass') : C.problem ? 'compass' : M.tool;
       const A = pt(-5.6, 0), B = pt(-5.6 + L, 0), Pp = pt(0.6, 0), dx = Pp.x - A.x;
       fit(b, { x0: -6.4, x1: 6.4, y0: -3.8, y1: 0.2 }, { t: 30, b: 104 });
       const t = C.problem ? 1 : C.t;
@@ -69,8 +72,8 @@
         b.point(A, { color: 'sky', r: 5 }); b.point(B, { color: 'sky', r: 5 });
         T(b, A, 'A', { dy: -18, size: 17 }); T(b, B, 'B', { dy: -18, size: 17 });
         if (C.txt && f2 > 0.7) T(b, pt(6.3, 0), '직선 AB', { dx: -34, dy: -18, size: 15, color: 'green' });
-        if (C.txt) T(b, pt(0, 0), t < 0.05 ? '▶를 누르면 자를 따라 직선을 그어요' : '두 점을 지나는 직선을 그릴 수 있어요', { dy: 66, size: 15, color: 'amber' });
-        if (C.txt) T(b, pt(0, 0), '눈금이 없어서 길이는 잴 수 없어요', { dy: 92, size: 15, color: 'rose' });
+        if (C.txt && !C.lesson) T(b, pt(0, 0), t < 0.05 ? '▶를 누르면 자를 따라 직선을 그어요' : '두 점을 지나는 직선을 그릴 수 있어요', { dy: 66, size: 15, color: 'amber' });
+        if (C.txt && lessonReady(s, C)) T(b, pt(0, 0), '눈금이 없어서 길이는 잴 수 없어요', { dy: 92, size: 15, color: 'rose' });
         if (!C.problem && !C.review && C.txt) b.handle('B', B, { color: 'amber', r: 8, ariaLabel: '점 B 끌기', drag: (w) => { s.cnL = clamp(Math.round((w.x - A.x) * 2) / 2, 2, 4); } });
         return;
       }
@@ -94,10 +97,10 @@
       if (f2 >= 0.999 || C.problem) {
         b.point(Q, { color: 'green', r: 5.5 });
         T(b, Q, 'Q', { dx: -16, dy: -14, size: 17 });
-        if (!C.problem) { tick(b, A, B, 1, 'amber'); tick(b, Pp, Q, 1, 'amber'); }
-        if (C.txt && !C.problem) T(b, pt(mid(Pp, Q).x, Pp.y), `PQ = ${fmtN(L)} cm`, { dy: 50, size: 16, color: 'green' });
+        if (!C.problem && lessonReady(s, C)) { tick(b, A, B, 1, 'amber'); tick(b, Pp, Q, 1, 'amber'); }
+        if (C.txt && !C.problem && lessonReady(s, C)) T(b, pt(mid(Pp, Q).x, Pp.y), `PQ = ${fmtN(L)} cm`, { dy: 50, size: 16, color: 'green' });
       }
-      if (C.txt && !C.problem) caption(b, f1 <= 0 ? '컴퍼스를 AB의 길이만큼 벌려요' : f2 <= 0 ? '벌린 그대로 점 P로 옮겨요' : f2 < 1 ? '점 P에 바늘을 꽂고 호를 그려요' : '반직선과 만나는 점 Q → PQ = AB', 'amber', 0.2, 0, 84);
+      if (C.txt && !C.problem && !C.lesson) caption(b, f1 <= 0 ? '컴퍼스를 AB의 길이만큼 벌려요' : f2 <= 0 ? '벌린 그대로 점 P로 옮겨요' : f2 < 1 ? '점 P에 바늘을 꽂고 호를 그려요' : '반직선과 만나는 점 Q → PQ = AB', 'amber', 0.2, 0, 84);
       if (!C.problem && !C.review && C.txt) {
         b.handle('B', B, { color: 'amber', r: 8, ariaLabel: '점 B 끌기', drag: (w) => { s.cnL = clamp(Math.round((w.x - A.x) * 2) / 2, 2, 4); } });
         b.handle('R', R, { color: 'amber', r: 8, ariaLabel: '반직선 기울이기', drag: (w) => { s.cnPhi = clamp(-dirDeg(Pp, w), 5, 40); } });
@@ -167,7 +170,7 @@
     }
     if (o.marks) {
       ang(b, O, X, Y, { color: 'sky', rings: 1, label: dg(th), r: 30, labelDist: 52 });
-      if (f5 && !o.problem) ang(b, Pp, Q, Dd, { color: moved ? 'green' : 'sky', rings: 1, label: dg(th), r: 30, labelDist: 52 });
+      if (f5 && !o.problem && o.answerReady !== false) ang(b, Pp, Q, Dd, { color: moved ? 'green' : 'sky', rings: 1, label: dg(th), r: 30, labelDist: 52 });
     }
     // 점과 이름
     b.point(O, { color: 'ink', r: 4.8 }); b.point(Pp, { color: 'ink', r: 4.8 });
@@ -193,14 +196,15 @@
     reroll: (s) => { s.cnTh = pick([35, 40, 50, 70, 80, 100], s.cnTh); s.cnR = pick([1.8, 2, 2.2, 2.4], s.cnR); s.cnPk = { th: s.cnTh, f: rint(0, 4), t: shuffle([0, 1, 2, 3, 4, 5, 6], Math.random).slice(0, 4) }; s.cnT2 = 1; s.cnS = 0; },
     model: (s) => ({ th: clamp(Math.round(s.cnTh), 20, 110), r: clamp(s.cnR, 1.4, 2.6), S: clamp(s.cnS, 0, 1), T: s.cnS > 0.001 ? 1 : clamp(s.cnT2, 0, 1), pk: s.cnPk || { th: 40, f: 0, t: [0, 1, 2, 3] } }),
     reviewModel: (M) => ({ ...M, th: M.pk.th, S: 0 }),
+    lessonQuestion: (M, s, Q) => s.cnLessonProblem ? lessonProblem(Q) : `∠XOY=${fmtN(M.th)}°와 크기가 같은 각을 반직선 PQ 위에 어떻게 작도할까?`,
     draw(b, s, M, C) {
       fit(b, { x0: -1.6, x1: D2 + LR + 0.3, y0: -3.9, y1: 0.6 }, { t: 24, b: 66 });
       const tt = C.problem ? 1 : C.review ? C.t : M.S > 0.001 ? 1 : C.t;
       const fs = fsOf(C.problem ? 1 : tt, 5);
       const mm = C.problem ? { ...M, th: M.pk.th, S: 0 } : M;
       const stage = C.review ? C.step : angStage(tt);
-      const g = drawAng(b, mm, C, fs, { ticks: !C.problem, marks: true, problem: C.problem });
-      if (C.txt && !C.problem) {
+      const g = drawAng(b, mm, C, fs, { ticks: !C.problem, marks: true, problem: C.problem, answerReady: lessonReady(s, C) });
+      if (C.txt && !C.problem && !C.lesson) {
         if (M.S > 0.02 && fs[4] >= 1) caption(b, M.S > 0.98 ? '완전히 겹쳐요 → ∠QPD = ∠XOY' : '새 각을 왼쪽으로 밀어 겹쳐 봐요', 'green', 0.6, 4.2);
         else caption(b, stage <= 0 ? '▶를 누르거나 막대를 끌어 작도를 시작해요' : ANG_CAP[stage - 1], 'amber', 0.6, 4.2);
       }
@@ -273,7 +277,7 @@
       if (fs[3] > 0) tick(b, A, B, 2);
     }
     if (o.marks && fs[1] >= 1) ang(b, Q, A, B, { color: 'sky', rings: 1, r: 28, label: dg(th), labelDist: 50 });
-    if (o.marks && fs[5] >= 0.999) ang(b, Pp, M.mode === 'alt' ? Cc : Cc, Dd, { color: 'sky', rings: 1, r: 28, label: dg(th), labelDist: 50 });
+    if (o.marks && fs[5] >= 0.999 && o.answerReady !== false) ang(b, Pp, Cc, Dd, { color: 'sky', rings: 1, r: 28, label: dg(th), labelDist: 50 });
     if (o.arrows) { par(b, lA, lB, 1, 'green', 0.86); par(b, m0, m1, 1, 'green', 0.86); }
     b.point(Q, { color: 'ink', r: 5 }); b.point(Pp, { color: 'ink', r: 5 });
     T(b, lA, '직선 l', { dx: 34, dy: -16, size: 15, color: 'ink' });
@@ -312,13 +316,14 @@
       },
       model: (s) => ({ px: clamp(s.cnPx, PX_RANGE[0], PX_RANGE[1]), ph: clamp(s.cnPh, PH_RANGE[0], PH_RANGE[1]), al: clamp(s.cnPAl, -20, 20), r: clamp(s.cnPR, 1.1, 1.6), T: clamp(s.cnPT, 0, 1), mode, pmode: s.cnPm || mode, pk: s.cnPk || { px: 1.6, ph: 3.6, al: 0, f: 0, t: [0, 1, 2, 3] } }),
       reviewModel: (M) => ({ ...M, mode: M.pmode, px: M.pk.px, ph: M.pk.ph, al: M.pk.al }),
+      lessonQuestion: (M, s, Q) => s.cnLessonProblem ? lessonProblem(Q) : `직선 l 밖의 점 P를 지나는 평행선을 ${nameOf(M.mode)}을 이용하여 어떻게 작도할까?`,
       draw(b, s, M, C) {
         fit(b, PBOX, { t: 20, b: 58 });
         const MM = C.problem ? { ...M, mode: M.pmode, px: M.pk.px, ph: M.pk.ph, al: M.pk.al } : M;
         const fs = fsOf(C.problem ? 1 : C.t, 6);
         const stage = C.review ? C.step : parStage(C.t);
-        const g = drawPar(b, MM, C, fs, { ticks: !C.problem, marks: C.problem || !C.review || C.step >= 2, arrows: !C.problem && (C.review ? C.step >= 3 : fs[5] >= 0.999) });
-        if (C.txt && !C.problem) {
+        const g = drawPar(b, MM, C, fs, { ticks: !C.problem, marks: C.lesson ? !!s.cnSupportReady : C.problem || !C.review || C.step >= 2, arrows: !C.problem && lessonReady(s, C) && (C.lesson ? fs[5] >= 0.999 : C.review ? C.step >= 3 : fs[5] >= 0.999), answerReady: lessonReady(s, C) });
+        if (C.txt && !C.problem && !C.lesson) {
           if (C.review) caption(b, C.step === 1 ? `같은 크기의 ${nameOf(M.mode)}을 작도해요` : C.step === 2 ? `${nameOf(M.mode)}의 크기가 같아요: ${dg(g.th)}` : `${nameOf(M.mode)}의 크기가 같으니까 l ∥ m`, 'amber', 2.2);
           else caption(b, stage <= 0 ? '▶를 누르거나 막대를 끌어 작도를 시작해요' : fs[5] >= 0.999 ? `${nameOf(M.mode)}이 같아서 l ∥ m` : PAR_CAP[stage - 1], 'amber', 2.2);
         }
@@ -403,13 +408,14 @@
     },
     model: (s) => ({ perm: s.cnPerm || [0, 1, 2, 3, 4, 5], ord: s.cnOrd || [], msg: s.cnMsg || null, pk: s.cnPk || {}, px: clamp(s.cnPx == null ? 1.4 : s.cnPx, PX_RANGE[0], PX_RANGE[1]), ph: clamp(s.cnPh == null ? 3.8 : s.cnPh, PH_RANGE[0], PH_RANGE[1]) }),
     reviewModel: (M) => ({ ...M, px: M.pk.px ?? M.px, ph: M.pk.ph ?? M.ph, perm: M.pk.perm || M.perm }),
+    lessonQuestion: (M, s, Q) => s.cnLessonProblem ? lessonProblem(Q) : '직선 PQ, 같은 반지름의 두 호, AB 길이 옮기기, 직선 PD를 어떤 순서로 작도해야 할까?',
     draw(b, s, M, C) {
       fit(b, PBOX, { t: 20, b: 58 });
       const done = C.problem ? [0, 1, 2, 3, 4, 5] : C.review ? [0, 1, 2, 3, 4, 5].slice(0, C.step) : M.ord;
-      const fs = [0, 1, 2, 3, 4, 5].map((i) => (done.includes(i) ? 1 : 0));
+      const fs = C.lesson ? fsOf(s.cnOrderT || 0, 6) : [0, 1, 2, 3, 4, 5].map((i) => (done.includes(i) ? 1 : 0));
       const px = C.problem ? (M.pk.px || 1.4) : M.px, ph = C.problem ? (M.pk.ph || 3.8) : M.ph;
-      const g = drawPar(b, { px, ph, al: 0, r: 1.4, mode: 'corr' }, C, fs, { ticks: !C.problem, marks: !C.problem && done.length >= 6, arrows: !C.problem && done.length >= 6 });
-      if (C.txt && !C.problem) {
+      const g = drawPar(b, { px, ph, al: 0, r: 1.4, mode: 'corr' }, C, fs, { ticks: !C.problem, marks: !C.problem && (C.lesson ? lessonReady(s, C) : done.length >= 6), arrows: !C.problem && (C.lesson ? lessonReady(s, C) : done.length >= 6), answerReady: lessonReady(s, C) });
+      if (C.txt && !C.problem && !C.lesson) {
         if (C.review) { if (C.step >= 1) caption(b, `${C.step}단계: ${SNT[C.step - 1]}`, 'amber', 2.2); }
         else if (M.msg) caption(b, M.msg.text, 'rose', 2.2);
         else caption(b, done.length >= 6 ? '평행선을 모두 작도했어요! l ∥ m' : done.length ? `${done.length}단계 완료 · 다음 일을 골라 보세요` : '칩에서 첫 번째 일을 골라 보세요', done.length >= 6 ? 'green' : 'amber', 2.2);

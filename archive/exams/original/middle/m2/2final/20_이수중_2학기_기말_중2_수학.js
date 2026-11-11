@@ -161,7 +161,11 @@ window.examData = {
         "assets/images/20_이수중_2학기_기말_중2_수학/q04.png"
       ],
       "answer": "①",
-      "solution": "[원문 조건 및 구할 대상]\n두 닮은 삼각기둥에서 $\\overline{\\mathrm{AB}}$에 대응하는 변이 $\\overline{\\mathrm{A'B'}}$일 때 $x+y$의 값을 구한다.\n조건: 첫 번째 기둥은 $\\overline{\\mathrm{AC}}=6\\text{ cm}, \\overline{\\mathrm{AB}}=4\\text{ cm}$, 높이 $x$이고, 두 번째 기둥은 $\\overline{\\mathrm{A'C'}}=9\\text{ cm}, \\overline{\\mathrm{A'B'}}=y$, 높이 $12\\text{ cm}$이다.\n\n[핵심 발상/공식/보조선]\n닮은 두 입체도형에서 대응하는 모든 모서리의 길이의 비는 일정하다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 닮음비 계산\n$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{A'C'}} = 6 : 9 = 2 : 3$\n\n2단계: 높이로부터 $x$ 구하기\n$x : 12 = 2 : 3 \\implies 3x = 24 \\implies x = 8$\n\n3단계: $\\overline{\\mathrm{A'B'}}$로부터 $y$ 구하기\n$\\overline{\\mathrm{AB}} : \\overline{\\mathrm{A'B'}} = 4 : y = 2 : 3 \\implies 2y = 12 \\implies y = 6$\n\n4단계: $x+y$의 값 계산\n$x + y = 8 + 6 = 14$\n\n[경우 나눔 및 5개 선지 검토]\n① $14$: 계산 결과와 일치함 (정답)\n② $15$: 오답\n③ $16$: 오답\n④ $17$: 오답\n⑤ $18$: 오답\n\n[명확한 결론]\n따라서 $x+y$의 값은 ① $14$이다."
+      "solution": "[원문 조건 및 구할 대상]\n두 닮은 삼각기둥에서 $\\overline{\\mathrm{AB}}$에 대응하는 변이 $\\overline{\\mathrm{A'B'}}$일 때 $x+y$의 값을 구한다.\n조건: 첫 번째 기둥은 $\\overline{\\mathrm{AC}}=6\\text{ cm}, \\overline{\\mathrm{AB}}=4\\text{ cm}$, 높이 $x$이고, 두 번째 기둥은 $\\overline{\\mathrm{A'C'}}=9\\text{ cm}, \\overline{\\mathrm{A'B'}}=y$, 높이 $12\\text{ cm}$이다.\n\n[핵심 발상/공식/보조선]\n닮은 두 입체도형에서 대응하는 모든 모서리의 길이의 비는 일정하다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 닮음비 계산\n$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{A'C'}} = 6 : 9 = 2 : 3$\n\n2단계: 높이로부터 $x$ 구하기\n$x : 12 = 2 : 3 \\implies 3x = 24 \\implies x = 8$\n\n3단계: $\\overline{\\mathrm{A'B'}}$로부터 $y$ 구하기\n$\\overline{\\mathrm{AB}} : \\overline{\\mathrm{A'B'}} = 4 : y = 2 : 3 \\implies 2y = 12 \\implies y = 6$\n\n4단계: $x+y$의 값 계산\n$x + y = 8 + 6 = 14$\n\n[경우 나눔 및 5개 선지 검토]\n① $14$: 계산 결과와 일치함 (정답)\n② $15$: 오답\n③ $16$: 오답\n④ $17$: 오답\n⑤ $18$: 오답\n\n[명확한 결론]\n따라서 $x+y$의 값은 ① $14$이다.",
+      "solutionImage": "assets/images/20_이수중_2학기_기말_중2_수학/q4-solution.svg",
+      "solutionImageAlt": "해설 그림: 네 장의 그림이다. 첫째는 닮은 두 삼각기둥으로 작은 기둥은 AC 6 cm, 높이 x이고 큰 기둥은 A′C′ 9 cm, 높이 12 cm이다. 둘째는 두 기둥의 윗면인 삼각형으로 작은 삼각형은 AC 6, AB 4이고 큰 삼각형은 A′C′ 9, A′B′ y이며 대응변을 같은 색으로 나타냈다. 셋째는 닮음비로 구한 높이를 나타낸 두 삼각기둥으로 작은 기둥의 높이는 8 cm, 큰 기둥의 높이는 12 cm이다. 넷째는 구한 윗면의 변을 나타낸 두 삼각형으로 AB는 4, A′B′는 6이다.",
+      "solutionImageCaption": "대응변 AC와 A′C′가 6 cm와 9 cm이므로 닮음비는 2 대 3이다. 높이의 비도 2 대 3이므로 x 대 12가 2 대 3이고 x는 8이다. AB 대 A′B′도 2 대 3이므로 4 대 y가 2 대 3이고 y는 6이다. 정답은 ① 14이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 5,
@@ -236,7 +240,7 @@ window.examData = {
       ],
       "answer": "①",
       "solution": "[원문 조건 및 구할 대상]\n$\\triangle\\mathrm{ABC}$에서 점 $\\mathrm{D}$는 변 $\\overline{\\mathrm{AB}}$ 위에, 점 $\\mathrm{E}$는 변 $\\overline{\\mathrm{BC}}$ 위에 있을 때, 선분 $\\overline{\\mathrm{DE}}$의 길이를 구한다.\n조건: $\\overline{\\mathrm{AD}} = 5\\text{ cm}, \\overline{\\mathrm{DB}} = 4\\text{ cm}, \\overline{\\mathrm{BE}} = 3\\text{ cm}, \\overline{\\mathrm{EC}} = 9\\text{ cm}, \\overline{\\mathrm{AC}} = 6\\text{ cm}$.\n\n[핵심 발상/공식/보조선]\n$\\triangle\\mathrm{BDE}$와 $\\triangle\\mathrm{BCA}$의 닮음 판정 (SAS 닮음):\n1. 전체 변의 길이 계산:\n   $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AD}} + \\overline{\\mathrm{DB}} = 5 + 4 = 9\\text{ cm}$\n   $\\overline{\\mathrm{BC}} = \\overline{\\mathrm{BE}} + \\overline{\\mathrm{EC}} = 3 + 9 = 12\\text{ cm}$\n2. 공통각 $\\angle\\mathrm{B}$를 낀 두 쌍의 대응변의 길이의 비 비교:\n   $\\overline{\\mathrm{BD}} : \\overline{\\mathrm{BC}} = 4 : 12 = 1 : 3$\n   $\\overline{\\mathrm{BE}} : \\overline{\\mathrm{BA}} = 3 : 9 = 1 : 3$\n   두 쌍의 대응변의 길이의 비가 $1 : 3$으로 같고, 그 끼인각 $\\angle\\mathrm{B}$가 공통이므로\n   $\\triangle\\mathrm{BDE} \\sim \\triangle\\mathrm{BCA}$ (SAS 닮음)이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 닮음비 확인\n$\\triangle\\mathrm{BDE}$와 $\\triangle\\mathrm{BCA}$의 닮음비는 $1 : 3$이다.\n\n2단계: 대응변 $\\overline{\\mathrm{DE}}$의 길이 계산\n$\\overline{\\mathrm{DE}} : \\overline{\\mathrm{CA}} = 1 : 3$\n$\\overline{\\mathrm{CA}} = 6\\text{ cm}$이므로:\n$\\overline{\\mathrm{DE}} : 6 = 1 : 3 \\implies 3\\overline{\\mathrm{DE}} = 6 \\implies \\overline{\\mathrm{DE}} = 2\\text{ cm}$\n\n[경우 나눔 및 5개 선지 검토]\n① $2\\text{ cm}$: 계산 결과와 정확히 일치함 (정답)\n② $2.5\\text{ cm}$: 오답\n③ $3\\text{ cm}$: 오답\n④ $3.5\\text{ cm}$: 오답\n⑤ $4\\text{ cm}$: 오답\n\n[명확한 결론]\n따라서 $\\overline{\\mathrm{DE}}$의 길이는 ① $2\\text{ cm}$이다.",
-      "solutionImage": "assets/images/20_이수중_2학기_기말_중2_수학/q6-solution.svg",
+      "solutionImage": "assets/images/20_이수중_2학기_기말_중2_수학/q6-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC에서 AB 위의 점 D와 BC 위의 점 E를 이은 그림으로 AD는 5 cm, DB는 4 cm, BE는 3 cm, EC는 9 cm, AC는 6 cm이다. 나머지 두 칸에는 삼각형 BCA와 삼각형 BDE를 같은 방향으로 놓고 대응변을 같은 색으로 나타냈다.",
       "solutionImageCaption": "AB는 5와 4의 합인 9 cm, BC는 3과 9의 합인 12 cm이다. 삼각형 BDE와 삼각형 BCA에서 BD 대 BC는 4 대 12, BE 대 BA는 3 대 9로 모두 1 대 3이고 끼인각 B가 공통이므로 SAS 닮음이다. 대응변 DE는 CA의 3분의 1이므로 6 cm의 3분의 1이다. 정답은 ① 2 cm이다.",
       "solutionImageSize": "full"
@@ -277,7 +281,7 @@ window.examData = {
       ],
       "answer": "③",
       "solution": "[원문 조건 및 구할 대상]\n$\\angle\\mathrm{A}=90^\\circ$이고 $\\overline{\\mathrm{AH}} \\perp \\overline{\\mathrm{BC}}$인 직각삼각형 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AH}}=8\\text{ cm}, \\overline{\\mathrm{BH}}=4\\text{ cm}$일 때, 선분 $\\overline{\\mathrm{CH}}$의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n$\\angle\\mathrm{BAH} + \\angle\\mathrm{HAC} = 90^\\circ$이고 $\\angle\\mathrm{HAC} + \\angle\\mathrm{C} = 90^\\circ$이므로 $\\angle\\mathrm{BAH} = \\angle\\mathrm{C}$이다. 따라서 $\\triangle\\mathrm{ABH}$와 $\\triangle\\mathrm{CAH}$는 AA 닮음이다. 대응변은 $\\overline{\\mathrm{BH}}$와 $\\overline{\\mathrm{AH}}$, $\\overline{\\mathrm{AH}}$와 $\\overline{\\mathrm{CH}}$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 닮음비로 비례식 세우기\n$\\overline{\\mathrm{BH}} : \\overline{\\mathrm{AH}} = \\overline{\\mathrm{AH}} : \\overline{\\mathrm{CH}}$\n$4 : 8 = 8 : x$\n\n2단계: $x$의 값 계산\n$4x = 64 \\implies x = 16$\n\n[경우 나눔 및 5개 선지 검토]\n① $12\\text{ cm}$: 오답\n② $14\\text{ cm}$: 오답\n③ $16\\text{ cm}$: 계산 결과와 일치함 (정답)\n④ $18\\text{ cm}$: 오답\n⑤ $20\\text{ cm}$: 빗변 $\\overline{\\mathrm{BC}}=4+16$의 길이\n\n[명확한 결론]\n따라서 $\\overline{\\mathrm{CH}}$의 길이는 ③ $16\\text{ cm}$이다.",
-      "solutionImage": "assets/images/20_이수중_2학기_기말_중2_수학/q7-solution.svg",
+      "solutionImage": "assets/images/20_이수중_2학기_기말_중2_수학/q7-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 세 장의 그림이다. 첫째는 각 A가 직각인 삼각형 ABC와 꼭짓점 A에서 변 BC에 내린 수선 AH로 AH는 8 cm, BH는 4 cm, HC는 x cm이다. 둘째와 셋째는 직각삼각형 ABH와 직각삼각형 CAH를 같은 방향으로 놓고 대응하는 변과 각을 같은 색으로 나타냈다.",
       "solutionImageCaption": "각 BAH와 각 ACH는 각각 90도에서 각 CAH와 각 ABH를 뺀 값으로 같아 두 삼각형 ABH와 CAH는 닮음이다. 대응변은 BH와 AH, AH와 CH이므로 BH 대 AH가 AH 대 CH이고 4 대 8이 8 대 x이다. 따라서 4x는 64이다. 정답은 ③ 16 cm이다.",
       "solutionImageSize": "full"
@@ -318,7 +322,7 @@ window.examData = {
       ],
       "answer": "⑤",
       "solution": "[원문 조건 및 구할 대상]\n직사각형 $\\mathrm{ABCD}$를 꼭짓점 $\\mathrm{C}$가 변 $\\mathrm{AD}$ 위의 점 $\\mathrm{P}$에 오도록 접었을 때, $x=\\overline{\\mathrm{BP}}$의 값을 구한다.\n조건: $\\overline{\\mathrm{AB}}=9\\text{ cm}, \\overline{\\mathrm{PD}}=3\\text{ cm}, \\overline{\\mathrm{DQ}}=4\\text{ cm}$ ($\\mathrm{Q}$는 접는 선이 변 $\\mathrm{CD}$와 만나는 점).\n\n[핵심 발상/공식/보조선]\n1. 접은 도형의 성질에 의해 $\\overline{\\mathrm{PQ}}=\\overline{\\mathrm{CQ}}$, $\\overline{\\mathrm{BP}}=\\overline{\\mathrm{BC}}$이고 $\\angle\\mathrm{BPQ}=\\angle\\mathrm{BCQ}=90^\\circ$이다.\n2. $\\angle\\mathrm{APB}+\\angle\\mathrm{DPQ}=90^\\circ$이므로 $\\triangle\\mathrm{ABP} \\sim \\triangle\\mathrm{DPQ}$ (AA 닮음)이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $\\overline{\\mathrm{PQ}}$의 길이\n$\\overline{\\mathrm{CD}}=\\overline{\\mathrm{AB}}=9\\text{ cm}$이므로 $\\overline{\\mathrm{CQ}}=9-4=5\\text{ cm}$이고 $\\overline{\\mathrm{PQ}}=\\overline{\\mathrm{CQ}}=5\\text{ cm}$이다.\n\n2단계: 닮음비\n$\\triangle\\mathrm{ABP}$와 $\\triangle\\mathrm{DPQ}$에서 $\\overline{\\mathrm{AB}} : \\overline{\\mathrm{DP}} = 9 : 3 = 3 : 1$이므로\n$\\overline{\\mathrm{AP}} : \\overline{\\mathrm{DQ}} = 3 : 1 \\implies \\overline{\\mathrm{AP}} = 12\\text{ cm}$\n$\\overline{\\mathrm{BP}} : \\overline{\\mathrm{PQ}} = 3 : 1 \\implies \\overline{\\mathrm{BP}} = 15\\text{ cm}$\n\n3단계: $x$의 값\n$x=\\overline{\\mathrm{BP}}=15$ (확인: $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{AD}}=12+3=15$)\n\n[경우 나눔 및 5개 선지 검토]\n① $10$: 오답\n② $12$: $\\overline{\\mathrm{AP}}$의 길이\n③ $13$: 오답\n④ $14$: 오답\n⑤ $15$: 계산 결과와 일치함 (정답)\n\n[명확한 결론]\n따라서 $x$의 값은 ⑤ $15$이다.",
-      "solutionImage": "assets/images/20_이수중_2학기_기말_중2_수학/q8-solution.svg",
+      "solutionImage": "assets/images/20_이수중_2학기_기말_중2_수학/q8-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 세 장의 그림이다. 첫째는 직사각형을 접어 꼭짓점 C가 변 AD 위의 점 P에 온 모양으로 AB 9 cm, PD 3 cm, DQ 4 cm이고 BP는 x cm이며 각 BPQ가 직각이다. 둘째는 직각삼각형 ABP로 AB 9 cm, AP 12 cm, BP x cm이다. 셋째는 같은 방향의 직각삼각형 DPQ로 DP 3 cm, DQ 4 cm, PQ 5 cm이고 같은 색의 변이 대응한다.",
       "solutionImageCaption": "CD는 AB와 같은 9 cm이므로 CQ는 5 cm이고 접힌 PQ도 5 cm이다. 각 BPQ가 직각이어서 삼각형 ABP와 삼각형 DPQ는 닮음이고 AB 대 DP는 9 대 3이므로 닮음비는 3 대 1이다. 그러면 BP는 PQ의 3배이다. 정답은 ⑤ 15이다.",
       "solutionImageSize": "full"
@@ -874,15 +878,15 @@ window.examData = {
         "도형"
       ],
       "wide": false,
-      "content": "<p>[서답형 2] 키가 $1.5\\text{ m}$인 재민이는 나무로부터 $8.4\\text{ m}$ 떨어진 곳에 있으며 재민이 그림자의 길이는 $2.1\\text{ m}$이다. 지우의 그림자의 끝이 나무의 그림자의 끝과 일치할 때, 나무의 높이를 구하시오. [3점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/s02.png\" alt=\"키 1.5m인 사람이 나무로부터 8.4m 떨어져 있고 그림자 길이가 2.1m로 나무 그림자 끝과 일치하는 닮음 활용 그림\" /></p>",
-      "question": "<p>[서답형 2] 키가 $1.5\\text{ m}$인 재민이는 나무로부터 $8.4\\text{ m}$ 떨어진 곳에 있으며 재민이 그림자의 길이는 $2.1\\text{ m}$이다. 지우의 그림자의 끝이 나무의 그림자의 끝과 일치할 때, 나무의 높이를 구하시오. [3점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/s02.png\" alt=\"키 1.5m인 사람이 나무로부터 8.4m 떨어져 있고 그림자 길이가 2.1m로 나무 그림자 끝과 일치하는 닮음 활용 그림\" /></p>",
+      "content": "<p>[서답형 2] 키가 $1.5\\text{ m}$인 재민이는 나무로부터 $8.4\\text{ m}$ 떨어진 곳에 있으며 재민이 그림자의 길이는 $2.1\\text{ m}$이다. 지우의 그림자의 끝이 나무의 그림자의 끝과 일치할 때, 나무의 높이를 구하시오. [3점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/s02_question-v2.svg\" alt=\"키 1.5m인 사람이 나무로부터 8.4m 떨어져 있고 그림자 길이가 2.1m로 나무 그림자 끝과 일치하는 닮음 활용 그림\" /></p>",
+      "question": "<p>[서답형 2] 키가 $1.5\\text{ m}$인 재민이는 나무로부터 $8.4\\text{ m}$ 떨어진 곳에 있으며 재민이 그림자의 길이는 $2.1\\text{ m}$이다. 지우의 그림자의 끝이 나무의 그림자의 끝과 일치할 때, 나무의 높이를 구하시오. [3점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/s02_question-v2.svg\" alt=\"키 1.5m인 사람이 나무로부터 8.4m 떨어져 있고 그림자 길이가 2.1m로 나무 그림자 끝과 일치하는 닮음 활용 그림\" /></p>",
       "choices": [],
       "images": [
-        "assets/images/20_이수중_2학기_기말_중2_수학/s02.png"
+        "assets/images/20_이수중_2학기_기말_중2_수학/s02_question-v2.svg"
       ],
       "answer": "$7.5\\text{ m}$",
       "solution": "[원문 조건 및 구할 대상]\n키가 $1.5\\text{ m}$인 사람의 그림자 길이가 $2.1\\text{ m}$이고 나무로부터 $8.4\\text{ m}$ 떨어져 있을 때, 나무의 높이를 구한다.\n\n[핵심 발상/공식/보조선]\n햇빛에 의해 생기는 삼각형은 직각삼각형이며, 태양광선이 지면과 이루는 각의 크기가 같으므로 두 직각삼각형은 $\\mathrm{AA}$ 닮음이다.\n- 사람과 그림자로 이루어진 삼각형의 밑변: $2.1\\text{ m}$, 높이: $1.5\\text{ m}$\n- 나무와 나무의 전체 그림자로 이루어진 삼각형의 밑변: $8.4 + 2.1 = 10.5\\text{ m}$, 높이: $h$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 나무의 전체 그림자 길이 계산\n$\\text{나무 그림자 길이} = 8.4 + 2.1 = 10.5\\text{ m}$\n\n2단계: 비례식 세우기 및 나무 높이 계산\n$\\dfrac{\\text{나무 높이}}{\\text{사람 키}} = \\dfrac{\\text{나무 그림자 길이}}{\\text{사람 그림자 길이}}$\n$\\dfrac{h}{1.5} = \\dfrac{10.5}{2.1}$\n$\\dfrac{10.5}{2.1} = 5$이므로:\n$h = 1.5 \\times 5 = 7.5\\text{ m}$\n\n[조건 적합성 검토]\n비례식 수립 및 $h = 7.5\\text{ m}$ 계산 완료 (배점 3점).\n\n[명확한 결론]\n따라서 나무의 높이는 $7.5\\text{ m}$이다.",
-      "solutionImage": "assets/images/20_이수중_2학기_기말_중2_수학/q22-solution.svg",
+      "solutionImage": "assets/images/20_이수중_2학기_기말_중2_수학/q22-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 왼쪽 위에는 나무와 사람이 땅 위에 서 있고 나무의 높이는 h, 사람의 키는 1.5 m, 나무와 사람 사이는 8.4 m, 사람의 그림자는 2.1 m이며 나무 꼭대기에서 사람의 머리를 지나 그림자 끝까지 햇빛 선이 이어진다. 나머지 두 칸에는 사람과 그림자로 만든 직각삼각형과 나무와 나무의 그림자로 만든 직각삼각형이 있다.",
       "solutionImageCaption": "나무의 그림자 끝이 사람의 그림자 끝과 같으므로 나무의 그림자 길이는 8.4와 2.1을 더한 10.5 m이다. 햇빛이 땅과 이루는 각이 같아 두 직각삼각형은 닮음이므로 나무의 높이 h 대 사람의 키 1.5는 10.5 대 2.1이다. 10.5는 2.1의 5배이므로 h는 1.5의 5배이다. 정답은 7.5 m이다.",
       "solutionImageSize": "full"

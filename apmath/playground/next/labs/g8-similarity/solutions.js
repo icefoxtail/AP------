@@ -435,7 +435,7 @@
           // The selected family is marked only when the final answer is reached.
           if (final) {
             const i = p.items.findIndex(t => p.askAlways ? always.includes(t) : !always.includes(t)), cols = G.phone(b) ? 2 : 5;
-            const center = pt(3.4 * (i % cols), 4 * Math.floor(i / cols) - 1.1);
+            const center = pt((G.phone(b) ? 7.4 : 3.4) * (i % cols), 4 * Math.floor(i / cols) - 1.1);
             b.circle(center, 1.55, { color: 'amber', width: 3.5, dash: [6, 4] });
           }
           break;

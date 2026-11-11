@@ -14,7 +14,11 @@ window.examData = {
         "$\\tan x = \\overline{\\mathrm{CD}}$"
       ],
       "answer": "②",
-      "solution": "반지름이 1이므로 $OB=OC=1$이다. $BA\\perp OA$이므로 직각삼각형 $OAB$에서 $\\sin x=\\dfrac{AB}{OB}=AB$, $\\cos x=\\dfrac{OA}{OB}=OA$, $\\sin y=\\dfrac{OA}{OB}=OA$, $\\cos y=\\dfrac{AB}{OB}=AB$이다. 또 직각삼각형 $OCD$에서 $\\tan x=\\dfrac{CD}{OC}=CD$이다. 그림에서 $A$는 $O$와 $C$ 사이에 있으므로 $OA<OC=1$이다. 따라서 $\\cos x\\ne OC$이고, 옳지 않은 것은 ②이다."
+      "solution": "반지름이 1이므로 $OB=OC=1$이다. $BA\\perp OA$이므로 직각삼각형 $OAB$에서 $\\sin x=\\dfrac{AB}{OB}=AB$, $\\cos x=\\dfrac{OA}{OB}=OA$, $\\sin y=\\dfrac{OA}{OB}=OA$, $\\cos y=\\dfrac{AB}{OB}=AB$이다. 또 직각삼각형 $OCD$에서 $\\tan x=\\dfrac{CD}{OC}=CD$이다. 그림에서 $A$는 $O$와 $C$ 사이에 있으므로 $OA<OC=1$이다. 따라서 $\\cos x\\ne OC$이고, 옳지 않은 것은 ②이다.",
+      "solutionImage": "assets/images/15_신흥중_2학기_기말_중3_수학/q1-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽에는 반지름 1인 사분원에 선분 OA, AB, CD가 서로 다른 색으로 그려져 있고 각 x와 각 y가 표시되어 있다. 가운데에는 직각삼각형 OAB, 오른쪽에는 직각삼각형 OCD가 따로 그려져 있다.",
+      "solutionImageCaption": "반지름이 1이므로 OB=OC=1이다. 직각삼각형 OAB에서 사인 x는 AB, 코사인 x는 OA이고, 각 y에서는 사인 y가 OA, 코사인 y가 AB이다. 직각삼각형 OCD에서 탄젠트 x는 CD이다. 점 A는 O와 C 사이에 있어 OA는 1보다 작으므로 코사인 x는 OC와 같지 않다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 2,
@@ -163,7 +167,7 @@ window.examData = {
     {
       "id": 10,
       "score": 5.0,
-      "question": "수평인 지면에 수직으로 서 있는 광고판에 지면과 $60^\\circ$의 크기로 태양 광선이 비추어 다음 그림과 같이 그림자가 생겼다. 그림자의 일부는 지면과 $30^\\circ$의 각을 이루는 벽의 경사면에 의하여 꺾여 있다. 이때, 광고판의 높이는?(5점)<br><img src=\"assets/images/15_신흥중_2학기_기말_중3_수학/q10.png\" />",
+      "question": "수평인 지면에 수직으로 서 있는 광고판에 지면과 $60^\\circ$의 크기로 태양 광선이 비추어 다음 그림과 같이 그림자가 생겼다. 그림자의 일부는 지면과 $30^\\circ$의 각을 이루는 벽의 경사면에 의하여 꺾여 있다. 이때, 광고판의 높이는?(5점)<br><img src=\"assets/images/15_신흥중_2학기_기말_중3_수학/q10_question-v2.svg\" />",
       "choices": [
         "$12\\sqrt{3}\\,\\mathrm{m}$",
         "$11\\sqrt{3}\\,\\mathrm{m}$",
@@ -172,7 +176,11 @@ window.examData = {
         "$8\\sqrt{3}\\,\\mathrm{m}$"
       ],
       "answer": "②",
-      "solution": "그림에서 지면 위 그림자의 길이는 $5\\text{ m}$이고, 경사면 위 그림자의 길이는 $3\\sqrt3\\text{ m}$이며 경사면은 지면과 $30^\\circ$를 이룬다.<br>경사면 위 그림자의 수평 길이는 $3\\sqrt3\\cos30^\\circ=3\\sqrt3\\times\\dfrac{\\sqrt3}{2}=\\dfrac92\\text{ m}$이고 높이는 $3\\sqrt3\\sin30^\\circ=\\dfrac{3\\sqrt3}{2}\\text{ m}$이다. 따라서 그림자 끝은 광고판에서 수평으로 $5+\\dfrac92=\\dfrac{19}{2}\\text{ m}$ 떨어져 있고 지면에서 $\\dfrac{3\\sqrt3}{2}\\text{ m}$ 높이에 있다.<br>태양 광선이 지면과 $60^\\circ$를 이루므로 광고판 꼭대기에서 그림자 끝까지 내려온 높이는 $\\dfrac{19}{2}\\tan60^\\circ=\\dfrac{19\\sqrt3}{2}\\text{ m}$이다. 광고판의 높이는 $\\dfrac{3\\sqrt3}{2}+\\dfrac{19\\sqrt3}{2}=11\\sqrt3\\text{ m}$이므로 ②이다."
+      "solution": "그림에서 지면 위 그림자의 길이는 $5\\text{ m}$이고, 경사면 위 그림자의 길이는 $3\\sqrt3\\text{ m}$이며 경사면은 지면과 $30^\\circ$를 이룬다.<br>경사면 위 그림자의 수평 길이는 $3\\sqrt3\\cos30^\\circ=3\\sqrt3\\times\\dfrac{\\sqrt3}{2}=\\dfrac92\\text{ m}$이고 높이는 $3\\sqrt3\\sin30^\\circ=\\dfrac{3\\sqrt3}{2}\\text{ m}$이다. 따라서 그림자 끝은 광고판에서 수평으로 $5+\\dfrac92=\\dfrac{19}{2}\\text{ m}$ 떨어져 있고 지면에서 $\\dfrac{3\\sqrt3}{2}\\text{ m}$ 높이에 있다.<br>태양 광선이 지면과 $60^\\circ$를 이루므로 광고판 꼭대기에서 그림자 끝까지 내려온 높이는 $\\dfrac{19}{2}\\tan60^\\circ=\\dfrac{19\\sqrt3}{2}\\text{ m}$이다. 광고판의 높이는 $\\dfrac{3\\sqrt3}{2}+\\dfrac{19\\sqrt3}{2}=11\\sqrt3\\text{ m}$이므로 ②이다.",
+      "solutionImage": "assets/images/15_신흥중_2학기_기말_중3_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 장의 그림이다. 첫째는 광고판을 옆에서 본 단면으로, 지면 위 그림자가 5 m, 경사면 위 그림자가 3루트3 m, 경사면이 지면과 이루는 각이 30도이고 광고판 꼭대기에서 그림자 끝까지 태양 광선이 비친다. 둘째는 빗변 3루트3 m, 각 30도인 직각삼각형으로 수평 변이 2분의 9 m, 수직 변이 2분의 3루트3 m이다. 셋째는 광고판 꼭대기와 그림자 끝을 잇는 직각삼각형으로 수평 변이 2분의 19 m, 태양 광선이 지면과 이루는 각이 60도이고 수직 변이 2분의 19루트3 m, 그림자 끝의 높이가 2분의 3루트3 m이다.",
+      "solutionImageCaption": "경사면 위 그림자는 빗변이 3루트3 m이고 각이 30도이므로 수평으로 2분의 9 m, 높이로 2분의 3루트3 m이다. 그림자 끝은 광고판에서 수평으로 5 더하기 2분의 9, 곧 2분의 19 m 떨어져 있다. 태양 광선이 지면과 60도이므로 꼭대기에서 그림자 끝까지 내려온 높이는 2분의 19에 루트3을 곱한 값이다. 광고판 높이는 여기에 그림자 끝의 높이 2분의 3루트3을 더한 값이다. 정답은 ② 11루트3 m이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
@@ -222,7 +230,11 @@ window.examData = {
         "$84^\\circ$"
       ],
       "answer": "⑤",
-      "solution": "$AC$가 지름이므로 $\\angle ABC=90^\\circ$이다. 따라서 $\\angle ACB=90^\\circ-42^\\circ=48^\\circ$이다. 같은 호 $AB$에 대한 중심각은 원주각의 2배이므로 $\\angle AOB=96^\\circ$이다. 반지름과 접선은 접점에서 수직이므로 $\\angle OAP=\\angle OBP=90^\\circ$이다. 사각형 $AOBP$의 내각의 합에서 $\\angle APB=180^\\circ-96^\\circ=84^\\circ$이다. 정답은 ⑤이다."
+      "solution": "$AC$가 지름이므로 $\\angle ABC=90^\\circ$이다. 따라서 $\\angle ACB=90^\\circ-42^\\circ=48^\\circ$이다. 같은 호 $AB$에 대한 중심각은 원주각의 2배이므로 $\\angle AOB=96^\\circ$이다. 반지름과 접선은 접점에서 수직이므로 $\\angle OAP=\\angle OBP=90^\\circ$이다. 사각형 $AOBP$의 내각의 합에서 $\\angle APB=180^\\circ-96^\\circ=84^\\circ$이다. 정답은 ⑤이다.",
+      "solutionImage": "assets/images/15_신흥중_2학기_기말_중3_수학/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 첫째 그림은 원 O의 지름 AC와 접선 PA, PB가 있고 각 BAC가 42도, 점 B가 직각이다. 둘째 그림은 각 ACB가 48도, 중심각 AOB가 96도이다. 셋째 그림은 네 점 A, O, B, P를 이은 사각형에서 두 각 A, B가 직각이고 각 AOB가 96도이다.",
+      "solutionImageCaption": "AC가 지름이므로 각 ABC는 90°이고 각 ACB는 90°−42°=48°이다. 같은 호 AB에 대한 중심각 AOB는 원주각의 2배인 96°이다. 접선과 반지름은 수직이므로 네 점 A, O, B, P를 이은 사각형에서 각 OAP와 OBP가 90°이고, 내각의 합 360°에서 각 APB는 360°−90°−90°−96°이다. 정답은 ⑤ 84°이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 14,
@@ -254,7 +266,11 @@ window.examData = {
         "$16\\,\\mathrm{cm}$"
       ],
       "answer": "③",
-      "solution": "삼각형의 내접원에 같은 꼭짓점에서 그은 접선의 길이는 같다. $AF=AE$, $BF=BD$, $CE=CD$이므로 $AC+BC-AB=(AE+CE)+(BD+CD)-(AF+BF)=CE+CD=2CE$이다. 따라서 $CE=CD=\\dfrac{9+10-7}{2}=6$이다. $ST$와 원의 접점을 $X$라 하면 $SX=SE$, $TX=TD$이다. 그림에서 $X$는 $S$와 $T$ 사이에 있으므로 $ST=SX+XT$이다. 따라서 $CS+CT+ST=CS+CT+SE+TD=CE+CD=6+6=12$이다. 정답은 ③이다."
+      "solution": "삼각형의 내접원에 같은 꼭짓점에서 그은 접선의 길이는 같다. $AF=AE$, $BF=BD$, $CE=CD$이므로 $AC+BC-AB=(AE+CE)+(BD+CD)-(AF+BF)=CE+CD=2CE$이다. 따라서 $CE=CD=\\dfrac{9+10-7}{2}=6$이다. $ST$와 원의 접점을 $X$라 하면 $SX=SE$, $TX=TD$이다. 그림에서 $X$는 $S$와 $T$ 사이에 있으므로 $ST=SX+XT$이다. 따라서 $CS+CT+ST=CS+CT+SE+TD=CE+CD=6+6=12$이다. 정답은 ③이다.",
+      "solutionImage": "assets/images/15_신흥중_2학기_기말_중3_수학/q15-solution.svg",
+      "solutionImageAlt": "해설 그림: 첫째 그림은 삼각형 ABC의 내접원 O와 접점 D, E, F가 있고 AB 7 cm, AC 9 cm, BC 10 cm이며 변 CA와 BC 위의 점 S, T를 잇는 선분 ST가 원에 접한다. 둘째 그림은 각 꼭짓점에서 두 접점까지의 접선 길이가 같은 쌍이 색과 표시로 구분되어 있다. 셋째 그림은 ST와 원의 접점 X를 더해 SX와 SE, TX와 TD가 같다고 표시했다.",
+      "solutionImageCaption": "꼭짓점에서 원에 그은 두 접선의 길이가 같으므로 AF=AE, BF=BD, CD=CE이다. AC+BC−AB는 CE와 CD의 합이므로 CE=CD=2분의 (9+10−7)=6이다. ST와 원의 접점을 X라 하면 SX=SE, TX=TD이므로 삼각형 CST의 둘레는 CS+CT+SE+TD=CE+CD이다. 정답은 ③ 12 cm이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 16,

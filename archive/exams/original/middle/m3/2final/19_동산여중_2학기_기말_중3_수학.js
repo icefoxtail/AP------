@@ -46,7 +46,7 @@ window.examData = {
       ],
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q01_question-v2.svg",
       "imageSize": "full",
-      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q01-solution.svg",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q01-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 삼각형 ADE 안에 BC가 DE와 평행하게 놓인 문제 배치(AB는 5cm, AC는 4cm, BC는 3cm)와, 직각 꼭짓점을 오른쪽 아래에 두고 같은 방향으로 펼친 닮은 두 직각삼각형 ABC, AED이다. AB와 AE는 파란색, AC와 AD는 주황색, BC와 ED는 초록색이고 공통인 각 A는 분홍색으로 표시되어 있다.",
       "solutionImageCaption": "직각삼각형 ABC에서 AB=5 cm, AC=4 cm이므로 피타고라스 정리로 BC=3 cm이다. 삼각형 ABC와 삼각형 AED는 닮음이고 각 A는 공통이다. 각 A의 맞은편 변 BC와 빗변 AB의 비가 sin A이므로 BC를 AB로 나눈 값이다. 정답은 ①이다.",
       "solutionImageSize": "full"

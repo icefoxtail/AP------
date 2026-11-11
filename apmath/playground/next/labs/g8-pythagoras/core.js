@@ -253,10 +253,11 @@
 
   /* ------------------------------------------------------------------ 장면 상태 (탭·단계) */
   function baseCtx(s, lab, thumb) {
-    const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
+    const lesson = !thumb && !!(s.lessonOn || s.lessonEntry);
+    const tab = thumb ? 'explore' : lesson && s.lessonEntry ? 'review' : (lab && lab.tab) || 'explore';
     const problem = !thumb && tab === 'problem';
     const review = !thumb && tab === 'review';
-    return { tab, problem, review, step: review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
+    return { tab, problem, review, step: lesson && s.lessonEntry ? 0 : review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: !lesson && (tab === 'explore' || thumb), lesson };
   }
   const showAt = (C, n) => C.step >= n;
 
@@ -416,6 +417,16 @@
   const texSafe = (t) => String(t == null ? t : t).replace(/\$([^$]+)\$/g, (m, x) => '$' + x.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
   function makeScene(D, sceneParams) {
     const A = D.anim;
+    // A lesson fixes the source question independently of the manual exercise.
+    // Keep animated values in state, not in its fixed pyQ condition object.
+    const inLesson = (s) => !!(s.lessonOn || s.lessonEntry);
+    const stateFor = (s, review) => inLesson(s)
+      ? D.lessonState ? D.lessonState(s) : s.pyLessonProblem ? qState(s) : s
+      : review ? qState(s) : s;
+    const modelFor = (s, review) => {
+      const M = D.model(stateFor(s, review));
+      return inLesson(s) && D.lessonModel ? D.lessonModel(M, s) : M;
+    };
     const actions = A ? () => [
       {
         id: 'play', play: true, primary: true, icon: (s) => (s.playing ? 'pause' : 'play'),
@@ -427,14 +438,14 @@
     ] : undefined;
     return {
       id: D.id, title: D.title, short: D.short || D.title, py: D,
-      question: D.question,
+      question: (s) => inLesson(s) && D.lessonQuestion ? D.lessonQuestion(modelFor(s, true), s, D.prob(D.model(qState(s)), qState(s))) : typeof D.question === 'function' ? D.question(s) : D.question,
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
       tabs: { order: ['explore', 'problem', 'review'], labels: { review: '풀이' } },
-      reviewTop: (s) => reviewTop(D, s),
+      reviewTop: (s) => inLesson(s) ? '' : reviewTop(D, s),
       reviewTitles: { steps: '현재 문제의 풀이 · 단계마다 그림이 바뀌어요', solution: '풀이 확인' },
-      steps: (s) => D.steps(D.model(qState(s))).map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
+      steps: (s) => D.steps(modelFor(s, true)).map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
       notesTitle: '자주 틀리는 부분',
       problem: {
         tag: (s) => { const s2 = qState(s); return D.prob(D.model(s2), s2).tag; },
@@ -453,6 +464,7 @@
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
+        if (inLesson(s)) return false;
         let again = false;
         if (A && s.playing) {
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));
@@ -467,8 +479,9 @@
       view: (s, lab) => {
         if (lab) curLab = lab;
         const C = baseCtx(s, lab, false);
-        const s2 = C.problem || C.review ? qState(s) : s;
-        const M = D.model(s2);
+        if (C.lesson) return { guide: '문제의 조건을 확인하고 ▶ 해설을 시작해 보세요.', card: null, readouts: [], formula: null, rule: null, status: null, alert: null, notes: null, chips: [] };
+        const s2 = stateFor(s, C.problem || C.review);
+        const M = modelFor(s, C.problem || C.review);
         const v = D.view(M, C, s2) || {};
         if (C.problem || C.review) {
           // 탐구용 완성 수식/측정값이 풀이 첫 단계에서 답을 먼저 보여 주지 않도록 합니다.
@@ -484,13 +497,13 @@
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
-        const s2 = C.problem || C.review ? qState(s) : s;
-        const M = D.model(s2);
-        if (C.review) C.step = Math.max(1, C.step);
-        C.answer = C.full || (C.review && C.step >= D.steps(M).length);
-        C.calculation = C.full || (C.review && C.step >= D.steps(M).length - 1);
-        C.givens = C.problem || C.review;
-        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
+        const s2 = stateFor(s, C.problem || C.review);
+        const M = modelFor(s, C.problem || C.review);
+        if (C.review && !C.lesson) C.step = Math.max(1, C.step);
+        C.answer = C.lesson ? !s.lessonEntry && !!s.pyShowAnswer : C.full || (C.review && C.step >= D.steps(M).length);
+        C.calculation = C.lesson ? !s.lessonEntry && !!s.pyCalculationReady : C.full || (C.review && C.step >= D.steps(M).length - 1);
+        C.givens = C.lesson ? !!s.pyLessonProblem : C.problem || C.review;
+        C.t = A ? (C.lesson || C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
         D.draw(b, s2, M, C);
       }
     };

@@ -26,6 +26,12 @@
   };
   const TY = { acute: '예각', right: '직각', obtuse: '둔각' };
   const TYC = { acute: 'sky', right: 'green', obtuse: 'rose' };
+  const lessonProblem = (Q) => (Q.html || Q.stem) + '<br>보기: ' + Q.choices.map((c, i) => `${G.NUM[i]} ${c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : G.esc(c.p)}`).join(' · ');
+  function lessonTrace(b, points, s, C) {
+    if (!C.lesson) return;
+    const t = clamp(s.pyBT || 0, 0, 1) * (points.length - 1);
+    for (let i = 0; i < points.length - 1; i++) if (t > i) line(b, points[i], lerp(points[i], points[i + 1], Math.min(1, t - i)), 'amber', 6, { alpha: .8 });
+  }
   // 세 변 → 삼각형이 되는지, 가장 긴 변과 종류 (제곱끼리 비교)
   function classify(p, q, r) {
     const s = [p, q, r].slice().sort((a, b) => a - b), [x, y, z] = s;
@@ -52,7 +58,7 @@
   };
   const hinge = {
     id: 'py4-hinge', title: '∠C를 돌려 보기 (경첩)', short: '경첩 (∠C 바꾸기)',
-    question: '두 변 a, b를 경첩처럼 벌리면 ∠C가 커진다. ∠C가 예각·직각·둔각일 때 빗변 쪽 변 c의 제곱은 a²+b²와 어떻게 다를까?',
+    question: '두 변 a, b를 경첩처럼 벌리면 ∠C가 커진다. ∠C가 예각·직각·둔각일 때 ∠C의 맞은편 변 c의 제곱은 a²+b²와 어떻게 다를까?',
     ctl: ['pyHa', 'pyHb', 'pyHang'],
     presets: () => [65, 90, 115, 130].map((d, i) => ({ group: i === 0 ? '∠C의 크기' : '', label: `${d}°`, apply: (ss) => { ss.pyHang = d; }, on: (ss) => Math.round(ss.pyHang) === d })),
     init: (s) => { s.pyHa = 8; s.pyHb = 6; s.pyHang = 90; s.pyKind = 0; },
@@ -82,15 +88,17 @@
       const barW = a + bb + 1.2;
       const shape = bboxOf([O, A, B]), barLeft = C.full ? -bb : shape.x0, barRight = a;
       fit(b, { x0: barLeft - 0.5, x1: a + 0.8, y0: C.full ? -bb - 0.4 : shape.y0 - 0.4, y1: prob ? 0.3 : 4.2 }, { t: 30, b: 34, l: 30, r: 30 });
-      const st = (n) => !C.review || C.step >= n;
+      const st = (n) => C.lesson ? !!s.pyBBarReady : !C.review || C.step >= n;
       fillPoly(b, [O, B, A], C.answer ? TYC[type] : 'ink', C.answer ? 0.14 : 0.06);
       line(b, O, B, 'sky', 4); line(b, O, A, 'green', 4);
       line(b, A, B, 'amber', 4);
-      ang(b, O, B, A, { color: C.answer ? TYC[type] : 'rose', r: 26, label: C.answer ? `${Math.round(th)}°` : '', rings: 1, noRight: !C.answer });
+      lessonTrace(b, [B, O, A, B], s, C);
+      ang(b, O, B, A, { color: C.answer ? TYC[type] : 'rose', r: 26, label: C.answer ? C.lesson ? TY[type] : `${Math.round(th)}°` : '', rings: 1, noRight: !C.answer });
       [[O, 'C', -1, -1], [B, 'B', 1, 1], [A, 'A', 0, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 16, size: 17 }); });
       T(b, mid(O, B), `${a}`, { dy: 18, size: 17, color: 'sky' });
       sideTag(b, O, A, B, `${bb}`, { color: 'green', size: 17, gap: 11 });
-      if (C.full || C.review && C.step >= 2 || kind === 1) sideTag(b, A, B, O, prob ? `AB²=${c2}` : `c²${Math.abs(c2 - Math.round(c2)) < 1e-9 ? '=' : '≈'}${fmtN(c2)}`, { color: 'amber', size: 16, gap: 12 });
+      if (C.lesson) sideTag(b, A, B, O, s.pyLessonProblem ? kind === 1 ? `c²=${fmtN(c2)}` : `c=${Math.round(Math.sqrt(c2))}` : C.answer ? `c²=${fmtN(c2)}` : 'c', { color: 'amber', size: 16, gap: 12 });
+      else if (C.full || C.review && C.step >= 2 || kind === 1) sideTag(b, A, B, O, prob ? `AB²=${c2}` : `c²${Math.abs(c2 - Math.round(c2)) < 1e-9 ? '=' : '≈'}${fmtN(c2)}`, { color: 'amber', size: 16, gap: 12 });
       else sideTag(b, A, B, O, `${Math.round(Math.sqrt(c2))}`, { color: 'amber', size: 16, gap: 12 });
       if (!prob && !C.review && C.txt) b.handle('th', A, { color: 'amber', r: 8, ariaLabel: '꼭짓점 A 끌기', drag: (w) => { s.pyHang = clamp(Math.round(Math.atan2(-w.y, w.x) / DEG), 30, 150); } });
       if (prob) return;
@@ -102,8 +110,8 @@
         fillPoly(b, [pt(x0 + a * a * U, y1), pt(x0 + sum * U, y1), pt(x0 + sum * U, y1 + h), pt(x0 + a * a * U, y1 + h)], 'green', 0.3);
         fillPoly(b, [pt(x0, y2), pt(x0 + c2 * U, y2), pt(x0 + c2 * U, y2 + h), pt(x0, y2 + h)], 'amber', 0.3);
         poly(b, [pt(x0, y1), pt(x0 + sum * U, y1), pt(x0 + sum * U, y1 + h), pt(x0, y1 + h)], 'ink', 2); poly(b, [pt(x0, y2), pt(x0 + c2 * U, y2), pt(x0 + c2 * U, y2 + h), pt(x0, y2 + h)], 'ink', 2);
-        T(b, pt(x0, y1), `a²+b²=${a * a}+${bb * bb}=${sum}`, { dy: -12, align: 'left', size: 15, color: 'ink' });
-        T(b, pt(x0, y2), `c² ${Math.abs(c2 - Math.round(c2)) < 1e-9 ? '=' : '≈'} ${fmtN(c2)}`, { dy: -12, align: 'left', size: 15, color: 'amber' });
+        T(b, pt(x0, y1), C.lesson && !C.calculation ? 'a²+b²' : `a²+b²=${a * a}+${bb * bb}=${sum}`, { dy: -12, align: 'left', size: 15, color: 'ink' });
+        T(b, pt(x0, y2), C.lesson && (!C.calculation || !s.pyLessonProblem && !C.answer) ? 'c²' : `c² ${Math.abs(c2 - Math.round(c2)) < 1e-9 ? '=' : '≈'} ${fmtN(c2)}`, { dy: -12, align: 'left', size: 15, color: 'amber' });
       }
     },
     steps: (M) => [
@@ -181,13 +189,14 @@
         const ty = M.type;
         fillPoly(b, Tr, C.answer ? TYC[ty] : 'ink', C.answer ? 0.16 : 0.06);
         poly(b, Tr, 'ink', 3.4);
-        line(b, A, B, 'amber', 6, { alpha: st(1) ? 0.9 : 0 });
+        if (C.lesson) lessonTrace(b, [A, B], s, C);
+        else line(b, A, B, 'amber', 6, { alpha: st(1) ? 0.9 : 0 });
         ang(b, Cc, A, B, { color: C.answer ? TYC[ty] : 'rose', r: 28, rings: 1, noRight: !C.answer });
         [[A, 'A', -1, 1], [B, 'B', 1, 1], [Cc, 'C', 0, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 16, size: 17 }); });
         sideTag(b, A, B, Cc, `${L}`, { color: 'amber', size: 17, gap: 12 });
         sideTag(b, Cc, A, B, `${m1}`, { color: 'green', size: 17, gap: 12 });
         sideTag(b, B, Cc, A, `${m2}`, { color: 'sky', size: 17, gap: 12 });
-        if (!prob && C.txt && st(2)) { T(b, pt(L / 2, 0), `가장 긴 변의 제곱 ${L}²=${L * L}`, { dy: 46, size: 15, color: 'amber' }); T(b, pt(L / 2, 0), `나머지 제곱의 합 ${m1}²+${m2}²=${M.sum}`, { dy: 68, size: 15, color: 'ink' }); }
+        if (!prob && C.txt && (C.lesson ? C.calculation : st(2))) { T(b, pt(L / 2, 0), `가장 긴 변의 제곱 ${L}²=${L * L}`, { dy: 46, size: 15, color: 'amber' }); T(b, pt(L / 2, 0), `나머지 제곱의 합 ${m1}²+${m2}²=${M.sum}`, { dy: 68, size: 15, color: 'ink' }); }
       },
       steps: (M) => M.ok ? [
         `세 변 중 가장 긴 변은 $${M.L}$이에요. 가장 긴 변의 맞은편 각이 가장 큰 각이에요.`,
@@ -256,6 +265,7 @@
         const [A, B, Cc] = Tr;
         fillPoly(b, Tr, C.answer && tr.ok ? TYC[tr.type] : 'ink', C.answer ? 0.14 : 0.06);
         poly(b, Tr, 'ink', 3.4);
+        lessonTrace(b, [A, B, Cc, A], s, C);
         if (tr.ok) ang(b, Tr[2], A, B, { color: C.answer ? TYC[tr.type] : 'rose', r: 26, noRight: !C.answer });
         [[A, 'A', -1, 1], [B, 'B', 1, 1], [Cc, 'C', 0, -1]].forEach(([q2, nm, dx, dy]) => { b.point(q2, { color: 'ink', r: 4.5 }); T(b, q2, nm, { dx: dx * 14, dy: dy * 16, size: 17 }); });
         // 변 길이: 주어진 p, q 는 값, x 는 문제에서 문자
@@ -266,16 +276,16 @@
         lens.forEach(([P1, P2, len], i) => {
           let t = `${len}`;
           const idxUsed = used.indexOf(len);
-          if (idxUsed >= 0) used.splice(idxUsed, 1); else if (!xUsed) { t = C.givens ? 'x' : `x=${len}`; xUsed = true; }
+          if (idxUsed >= 0) used.splice(idxUsed, 1); else if (!xUsed) { t = C.givens || C.lesson ? 'x' : `x=${len}`; xUsed = true; }
           sideTag(b, P1, P2, centroid(Tr), t, { color: t[0] === 'x' ? 'amber' : (i === 0 ? 'amber' : i === 1 ? 'green' : 'sky'), size: 17, gap: 12 });
         });
         if (prob) return;
         // 수직선: 가능한 자연수 x 를 점으로 (색 = 예각/직각/둔각)
         const y = bx.y1 + 2.0, x0 = bx.x0 + step * 0.7;
         line(b, pt(bx.x0, y), pt(bx.x0 + W, y), 'muted', 2);
-        xs.forEach((r, i) => {
+        if (!C.lesson || s.pyBRangeReady) xs.forEach((r, i) => {
           const px = pt(x0 + i * step, y);
-          const classified = C.full || C.step >= (r.x > q ? 2 : 3), col = classified ? TYC[r.type] : 'muted';
+          const classified = C.lesson ? C.answer : C.full || C.step >= (r.x > q ? 2 : 3), col = classified ? TYC[r.type] : 'muted';
           const hit = C.answer && r.type === ask;
           b.point(px, { color: col, r: r.x === x && C.full ? 12 : 9, hollow: !hit });
           T(b, px, `${r.x}`, { size: 13, color: 'ink' });
@@ -311,5 +321,6 @@
   const oRange = rangeScene({ id: 'py4-orange', title: '둔각삼각형이 되는 자연수 x', short: '둔각이 되는 x', ask: 'obtuse', start: [4, 5, 7], question: '두 변이 4, 5이고 나머지 한 변이 자연수 x일 때, 둔각삼각형이 되는 x는 어떤 값일까?' });
   const aRange = rangeScene({ id: 'py4-arange', title: '예각삼각형이 되는 자연수 x', short: '예각이 되는 x', ask: 'acute', start: [6, 8, 8], question: '가장 긴 변이 정해지지 않은 두 변 6, 8과 자연수 x로 예각삼각형이 되려면 x는 얼마여야 할까?' });
 
+  for (const D of [hinge, acuteEx, obtuseEx, oRange, aRange]) D.lessonQuestion = (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : D.question;
   G.register(40, 't4', '④ 예각·직각·둔각', '예각·직각·둔각', PARAMS, [hinge, acuteEx, obtuseEx, oRange, aRange]);
 })();

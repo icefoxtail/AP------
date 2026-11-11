@@ -45,7 +45,7 @@
     for(const k of ['A','B','C','D']){b.point(g[k],{color:'ink',r:4.5});tagOut(b,g[k],cen,k,{size:17,gap:12});}
     if(g.O){b.point(g.O,{color:'ink',r:4});T(b,g.O,'O',{dx:12,dy:12,size:15});}
   }
-  function conditionDiagram(b,Q,step) {
+  function conditionDiagram(b,Q,step,lesson=false) {
     const id=Q.conditionId;
     let g;
     if(id==='f1'||id==='f3') g={A:pt(2,-4),B:pt(0,0),C:pt(8,0),D:pt(6,-4)};
@@ -53,7 +53,7 @@
     else if(id==='f4'||id==='f5') g={A:pt(0,-2),B:pt(-3,0),C:pt(0,5),D:pt(3,0)};
     else g=para(8,4,66);
     g.O=inter(g.A,g.C,g.B,g.D);const{A,B,C,D,O}=g;
-    fit(b,bboxOf([A,B,C,D]),{t:42,b:48,l:46,r:46});fillPoly(b,[A,B,C,D],'sky',.08);poly(b,[A,B,C,D],'ink',3.3);
+    fit(b,bboxOf([A,B,C,D]),{t:42,b:lesson?110:48,l:46,r:46});fillPoly(b,[A,B,C,D],'sky',.08);poly(b,[A,B,C,D],'ink',3.3);
     if(step>=2){
       if(['t4','f3','f4','f5'].includes(id)){line(b,A,C,'green',2.7);line(b,B,D,'green',2.7);}
       if(id==='t1')parAll(b,g);
@@ -99,7 +99,7 @@
     D.solve=book[D.id]||conditionSteps;
     D.solveDraw=(b,s,m,c,solution)=>{
       const n=Math.max(1,s.step||1),final=n>=solution.steps.length,Q=solution.question;
-      if(Q.conditionId&&n>=2){conditionDiagram(b,Q,n);return;}
+      if(Q.conditionId&&n>=2){conditionDiagram(b,Q,n,!!c.lesson);return;}
       if(D.id==='q3-3'&&n>=2){D.draw(b,s,m,{...c,problem:false,review:true,step:n-1});return;}
       if(D.id==='q3-4'&&n>=2){D.draw(b,s,{...m,bi:true,le:n>=3&&m.K===0,pe:n>=3&&m.K===1},{...c,problem:false,review:false,step:99});return;}
       if(D.id==='q3-5'&&n>=2){
@@ -110,7 +110,14 @@
       // Replace its unknown only on the final step; intermediate calculations
       // appear in the step panel and supporting lines are added below.
       const text=b.text;
-      b.text=function(p,str,o){if(final&&!answer(Q).h)str=String(str).replace(/x(?:°|\s*cm)?$/,answer(Q).p);return text.call(this,p,str,o);};
+      b.text=function(p,str,o){
+        if(final&&!answer(Q).h){
+          str=String(str).replace(/x(?:°|\s*cm)?$/,answer(Q).p);
+          // The inverse area question puts x before the target's description.
+          if(D.id==='q5-5')str=str.replace(/^x(?=\s*=)/,answer(Q).p);
+        }
+        return text.call(this,p,str,o);
+      };
       try{D.draw(b,s,m,{...c,problem:true,review:false,full:false,step:99,t:1});}finally{b.text=text;}
       support(b,s,m,D.id,n);
     };

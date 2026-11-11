@@ -17,6 +17,7 @@
   };
   const ROSE = 'rose', BLUE = 'sky', GREEN = 'green', AMB = 'amber', VIO = 'violet';
   const span = (c, t) => `<b style="color:var(--m-${c})">${t}</b>`;
+  const lessonReady = (s, key = 'spShowAnswer') => !s.lessonEntry && s[key] === true;
 
   /* 장면 정의 공통 틀 */
   function skewScene(cfg) {
@@ -25,6 +26,7 @@
     const solOf = (s) => buildSolid(cfg.kind, nOf(s));
     return {
       id: cfg.id, title: cfg.title, short: cfg.short, question: cfg.question,
+      lessonQuestion: (M, s, Q) => s.spLessonMode === 'pair' && M.tgt ? `그림은 ${M.sol.name}입니다. 모서리 ${M.ref.name}와 ${M.tgt.name}를 포함하는 두 직선은 만날까요, 평행할까요, 꼬인 위치일까요?` : Q.stem,
       ctl: (s) => (vary ? ['spN'] : []).concat(M0(s).nExt ? ['spExt'] : [], VIEW),
       presets: (s) => {
         const sol = solOf(s);
@@ -58,7 +60,7 @@
     };
     function M0(s) {
       const sol = solOf(s), ref = edgeByKey(sol, s.spRef, cfg.refs(sol)[0].key), c = classify(sol, ref);
-      const tgt = cfg.pair ? edgeByKey(sol, s.spTgt, sol.edges.find((e) => e !== ref).key) : null;
+      const tgt = cfg.pair && (!(s.lessonOn || s.lessonEntry) || s.spLessonMode === 'pair') ? edgeByKey(sol, s.spTgt, sol.edges.find((e) => e !== ref).key) : null;
       return { cfg, sol, ref, g: c.g, total: c.total, nMeet: c.nMeet, nExt: c.nExt, nPar: c.nPar, nSkew: c.nSkew, tgt, tgtRel: tgt ? relEdges(sol, ref, tgt) : null, n: sol.n };
     }
 
@@ -66,13 +68,14 @@
     function draw(b, s, M, C) {
       const { sol, ref, g } = M;
       const D = scene3(b, s, C);
-      const explore = C.tab === 'explore' || C.thumb;
-      const st = C.problem ? 0 : C.review ? C.step : 4; // 4 = 탐구(모두 색칠)
+      const explore = !C.lesson && (C.tab === 'explore' || C.thumb);
+      const done = C.lesson && lessonReady(s), pair = C.lesson && s.spLessonMode === 'pair';
+      const st = C.lesson ? (done ? 3 : lessonReady(s, 'spParallelReady') ? 2 : lessonReady(s, 'spMeetReady') ? 1 : 0) : C.problem ? 0 : C.review ? C.step : 4; // 4 = 탐구(모두 색칠)
       const fadedM = st >= 2 && st < 4, fadedP = st >= 3 && st < 4;
       const A = sol.verts[ref.u], B = sol.verts[ref.v];
       // 연장하면 만나는 모서리: 만나는 점
       const exts = g.ext.map((e) => ({ e, X: lineMeetPoint(A, B, sol.verts[e.u], sol.verts[e.v]) })).filter((q) => q.X);
-      const extAt = C.problem || st === 0 ? 0 : C.review ? (st >= 1 ? 1 : 0) : s.spExt;
+      const extAt = C.lesson ? (s.lessonEntry ? 0 : clamp(s.spExt || 0, 0, 1)) : C.problem || st === 0 ? 0 : C.review ? (st >= 1 ? 1 : 0) : s.spExt;
       const lean = !!cfg.lean; // 정보가 많은 장면: 첫 화면(탐구)에서는 번호를 빼고 '만나요'를 점 위에 두어 입체를 크게 보입니다
       // 늘인 선이 너무 멀리서 만나면(n각기둥 등) 그 점까지 그림을 넓히면 입체가 작아져 모양을 알아볼 수 없습니다.
       // 멀리 만나는 쌍은 입체 크기의 1.15배까지만 늘려 그리고 「늘이면 만나요」 글자로 알립니다(만나는 점 자체는 개수·정답에 쓰이지 않아요).
@@ -90,6 +93,18 @@
       D.fitPts(sol.order.map((k) => sol.verts[k]).concat(showExt ? extInfo.flatMap((q) => (q.far ? q.segs.map((g) => g.end) : [q.X])) : []), { t: C.problem ? 44 : lean && st === 4 ? 40 : 58, b: bottom, l: lr, r: lr });
       const style = (e) => {
         const r = e.rel;
+        if (C.lesson) {
+          if (r === 'ref') return { color: AMB, width: 3.3, alpha: .55 };
+          if (pair) {
+            if (M.tgt && e.key === M.tgt.key) return { color: done ? (r === 'skew' ? GREEN : r === 'par' ? BLUE : ROSE) : VIO, width: 5.4, glow: done };
+            return { color: 'ink', width: 2.6, alpha: .55 };
+          }
+          if (r === 'meet' && lessonReady(s, 'spMeetReady')) return { color: ROSE, width: st === 1 ? 5 : 2, alpha: st === 1 ? 1 : .42 };
+          if (r === 'ext' && lessonReady(s, 'spExtReady')) return { color: ROSE, width: st === 1 ? 5 : 2, alpha: st === 1 ? 1 : .42, dash: [7, 5] };
+          if (r === 'par' && lessonReady(s, 'spParallelReady')) return { color: BLUE, width: st === 2 ? 5 : 2, alpha: st === 2 ? 1 : .42 };
+          if (r === 'skew' && done) return { color: GREEN, width: 5.6, glow: true };
+          return { color: 'ink', width: 3.2 };
+        }
         if (r === 'ref') return { color: AMB, width: 6.4, glow: true };
         if (st === 0) return { color: 'ink', width: 3.2 };
         // 선택 강조도 같은 가림·교차 처리 안에서 그려 뒤 모서리의 점선을 보존합니다.
@@ -104,6 +119,7 @@
       // 꼬인 모서리가 기준 모서리와 화면에서 교차해 「만나는 것처럼」 보이지 않도록, 뒤쪽 모서리(점선)는 교차점에서 끊어 그립니다.
       const isKey = (e) => e.rel === 'ref' || (M.tgt && e.key === M.tgt.key);
       const { vis } = drawSolid(D, sol, style, { faceAlpha: 0.06, over: (f, e) => isKey(f) || isKey(e) });
+      if (C.lesson && !s.lessonEntry && s.spTrace > 0) D.line(A, lerp3(A, B, clamp(s.spTrace, 0, 1)), AMB, 6.4, { dash: vis(ref) ? undefined : [7, 5] });
       // 늘인 선(연장선)과 만나는 점
       if (extAt > 0 && !C.problem && (st === 4 || st === 1)) {
         extInfo.forEach((q) => {
@@ -111,7 +127,7 @@
           if (extAt > 0.98 && !q.far) { b.point(D.P(q.X), { color: VIO, r: 6 }); D.obstacle(q.X, 9); }
         });
         let farLabelled = 0;
-        if (extAt > 0.98) extInfo.forEach((q) => {
+        if (extAt > 0.98 && (!C.lesson || lessonReady(s, 'spExtReady'))) extInfo.forEach((q) => {
           if (q.far && farLabelled >= 2) return; // 멀리 만나는 쌍이 여럿이어도 글자는 두 곳까지만(겹침 방지)
           if (q.far) farLabelled++;
           if (!q.far) D.label(q.X, '만나요', { color: VIO, size: 15, dir: lean ? { x: D.out(q.X, sol.ctr).x * 0.8, y: -0.7 } : D.out(q.X, sol.ctr), gap: 8 });
@@ -119,19 +135,29 @@
         });
       }
       // 평행 표시(화살표)
-      if (!C.problem && (st === 4 || st === 2 || (st === 3 && false))) {
+      if (!C.problem && !pair && (st === 4 || st === 2 || (st === 3 && false))) {
         [ref].concat(g.par).forEach((e) => { if (vis(e)) D.par(sol.verts[e.u], sol.verts[e.v], 1, BLUE, 0.5); });
       }
       drawVerts(D, sol, { hot: (k) => k === ref.u || k === ref.v });
       // 기준 모서리 이름표
       if (C.txt) D.label(mid3(A, B), `기준 ${ref.name}`, { color: AMB, size: 16, dir: D.out(mid3(A, B), sol.ctr), gap: 14 });
       // 두 모서리 판별(s1-7): 고른 둘째 모서리
-      if (M.tgt && M.tgt.key !== ref.key && !C.problem && !C.review) {
+      if (M.tgt && M.tgt.key !== ref.key && !C.problem && (!C.review || pair)) {
         const t = M.tgt;
         D.label(mid3(sol.verts[t.u], sol.verts[t.v]), `고른 ${t.name}`, { color: VIO, size: 16, dir: D.out(mid3(sol.verts[t.u], sol.verts[t.v]), sol.ctr), gap: 14 });
       }
       // 맨 위 설명 한 줄
-      if (C.txt) {
+      if (C.txt && C.lesson) {
+        if (pair) {
+          const rel = M.tgtRel === 'skew' ? '꼬인 위치' : M.tgtRel === 'par' ? '평행' : M.tgtRel === 'ref' ? '같은 모서리' : '만남';
+          const text = done ? `${ref.name}와 ${M.tgt.name}: ${rel}` : lessonReady(s, 'spParallelReady') ? '두 모서리는 평행하지 않아요' : lessonReady(s, 'spMeetReady') ? '연장해도 만나지 않아요' : `기준 ${ref.name} · 비교 ${M.tgt.name}`;
+          caption(b, text, { color: done ? GREEN : AMB });
+        } else if (done) caption(b, `꼬인 위치 ${M.nSkew}개 = ${M.total} − 1 − ${M.nMeet + M.nExt} − ${M.nPar}`, { color: GREEN });
+        else if (lessonReady(s, 'spParallelReady')) caption(b, `평행: ${g.par.length ? g.par.map(e => e.name).join(', ') : '없음'} · ${M.nPar}개 제외`, { color: BLUE });
+        else if (lessonReady(s, 'spExtReady')) caption(b, `만남: 끝점 ${M.nMeet}개 + 연장 ${M.nExt}개 = ${M.nMeet + M.nExt}개`, { color: ROSE });
+        else if (lessonReady(s, 'spMeetReady')) caption(b, `끝점에서 만남: ${g.meet.map(e => e.name).join(', ')} · ${M.nMeet}개`, { color: ROSE });
+        else caption(b, `기준 ${ref.name} · 전체 모서리 ${M.total}개`, { color: AMB });
+      } else if (C.txt) {
         // 번호 대신 색과 이름으로: 꼬인 모서리는 이름을 나열하고 개수를 붙입니다(5개 넘으면 개수만, 이름은 풀이 문장에)
         const names = g.skew.map((e) => e.name);
         const cap = C.problem ? null : st === 1 ? `만나는 모서리 ${M.nMeet + M.nExt}개 지우기` : st === 2 ? `평행한 모서리 ${M.nPar}개 지우기` : st === 3 ? (names.length <= 5 ? `꼬인 위치: ${names.join(', ')} → ${M.nSkew}개` : `남은 ${M.nSkew}개 = 꼬인 위치`) : null;
@@ -222,7 +248,7 @@
   S.push(skewScene({
     id: 's1-3', title: '[함정] 사다리꼴기둥에서 꼬인 위치', short: '[함정] 사다리꼴기둥', kind: 'trap', n: 4, trap: true,
     question: '사다리꼴기둥에서 사다리꼴의 다리 $\\overline{AB}$와 $\\overline{CD}$는 평행하지 않아요. 그렇다면 꼬인 위치일까?',
-    refs: (sol) => [{ label: '다리', key: 'AB' }, { label: '긴 밑변', key: 'AD' }, { label: '옆모서리', key: 'AE' }],
+    refs: (sol) => [{ label: '다리', key: 'AB' }, { label: '긴 밑변', key: 'DA' }, { label: '옆모서리', key: 'AE' }],
     notes: (M) => notes('사다리꼴의 평행하지 않은 두 변(다리)은 <b>늘이면 한 점에서 만나요</b>. 같은 평면 위에 있으므로 꼬인 위치가 아니에요.', '막대로 모서리를 늘여서 만나는 점을 꼭 확인하세요.')
   }));
   S.push(skewScene({

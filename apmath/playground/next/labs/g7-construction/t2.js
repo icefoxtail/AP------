@@ -15,6 +15,9 @@
   const cmTex = (v) => `${fmtN(v)}\\text{ cm}`;
   const numTex = (v) => String(v);
   const jos = (n, a, b) => ([0, 1, 3, 6, 7, 8].includes(Math.abs(Math.round(n)) % 10) ? a : b); // 받침 있는 숫자(영 일 삼 육 칠 팔 → 이) / 없으면 가
+  const lessonFlag = (s, key) => !s.lessonEntry && !!s[key];
+  const lessonReady = (s, C) => !C.lesson || lessonFlag(s, 'cnShowAnswer');
+  const lessonProblem = (Q) => (Q.html || Q.stem) + '<br>보기: ' + Q.choices.map((c, i) => `${G.NUM[i]} ${c.h != null ? c.h : '$' + c.t + '$'}`).join(' · ');
 
   const PARAMS = {
     cnA: P('막대 a', 1, 12, 1, 4, { color: 'sky', format: lenF }),
@@ -55,7 +58,7 @@
       const cen = pt((A.x + B.x + (tp.x + tq.x) / 2) / 3, (A.y + B.y + (tp.y + tq.y) / 2) / 3 - 0.2 * sc);
       const sz = o.numSize || 16;
       const lab = (x) => (o.name ? `${x.n}=${fmtN(x.v)}` : fmtN(x.v));
-      if (tt > 0.2) {
+      if (tt > 0.2 || o.alwaysLabels) {
         sideTag(b, A, tp, cen, lab(p), { color: p.c || 'sky', size: sz, gap: 12 });
         sideTag(b, B, tq, cen, lab(q), { color: q.c || 'green', size: sz, gap: 12 });
       }
@@ -92,28 +95,31 @@
         `보기의 길이를 이 범위와 비교하면 삼각형을 만들 수 ${kind === 0 ? '없는' : '있는'} 것은 ${correct}예요. ${q.choices.map((c) => `${c.p}: ${parseFloat(c.p) > lo && parseFloat(c.p) < hi ? '가능' : '불가능'}`).join(' · ')}`
       ];
     },
+    lessonQuestion: (M, s, Q) => s.cnLessonProblem ? lessonProblem(Q) : `길이가 ${s.cnA}cm, ${s.cnB}cm, ${s.cnC}cm인 세 막대로 삼각형을 만들 수 있을까? 가장 긴 막대와 나머지 두 막대를 비교해 보자.`,
     draw(b, s, M, C) {
       const { L, sum, ok } = M;
-      if (C.problem || (C.review && C.step < 3)) { drawStickProblem(b, M); return; }
+      if (C.problem || (!C.lesson && C.review && C.step < 3) || (C.lesson && s.cnLessonProblem && !lessonReady(s, C))) { drawStickProblem(b, M, C.lesson ? s : null); return; }
       const cx = L / 2, tri = ok ? triSSS(M.srt[0].v, M.srt[1].v, L) : null;
       const top = Math.min(-6.1, tri ? tri[2].y - 0.8 : -M.srt[1].v * Math.sin(38 * DEG) - 0.8);
       fit(b, { x0: Math.min(cx - 6.6, -0.7), x1: Math.max(cx + 6.6, L + 0.7, sum + 0.7), y0: top, y1: 3.4 }, { t: 34, b: 34 });
-      const tt = C.review ? (C.step >= 3 ? 1 : 0) : C.t;
+      const tt = C.lesson ? C.t : C.review ? (C.step >= 3 ? 1 : 0) : C.t;
       // 밑변 강조(1단계) 후 경첩
       const items = M.srt.map((x) => ({ ...x, c: x === M.srt[2] ? 'amber' : x.c }));
-      const h = hinge(b, items, C.review ? (C.step >= 3 ? 1 : 0.0) : tt, { nums: true, name: true, baseDy: -18 });
+      const h = hinge(b, items, tt, { nums: true, name: true, baseDy: -18, alwaysLabels: C.lesson });
+      if (C.lesson && s.cnTrace > 0) line(b, pt(0, 0), pt(L * clamp(s.cnTrace, 0, 1), 0), 'ink', 2.4);
       // 길이 비교 줄 (작은 두 막대를 이어 붙이기)
       const y0 = 1.7, p = M.srt[0], q = M.srt[1];
-      if (!C.review || C.step >= 2) {
+      if (C.lesson ? lessonFlag(s, 'cnCompareReady') : !C.review || C.step >= 2) {
         line(b, pt(0, y0), pt(p.v, y0), 'sky', 7, { alpha: 0.95 });
         line(b, pt(p.v, y0), pt(sum, y0), 'green', 7, { alpha: 0.95 });
         b.point(pt(p.v, y0), { color: 'ink', r: 3.5 });
-        line(b, pt(L, -0.3), pt(L, y0 + 0.5), ok ? 'green' : 'rose', 2, { dash: [5, 5] });
-        T(b, pt(sum / 2, y0), `나머지 두 막대의 합 = ${fmtN(p.v)}+${fmtN(q.v)} = ${fmtN(sum)}`, { dy: 24, size: b.W < 560 ? 14 : 16, color: ok ? 'green' : 'rose' });
-        T(b, pt(sum / 2, y0), `가장 긴 막대 = ${fmtN(L)}  ${ok ? '<' : '≥'}  ${fmtN(sum)}`, { dy: 48, size: b.W < 560 ? 14 : 16, color: ok ? 'green' : 'rose' });
+        const compare = !C.lesson || lessonFlag(s, 'cnSupportReady'), color = compare ? ok ? 'green' : 'rose' : 'sky';
+        line(b, pt(L, -0.3), pt(L, y0 + 0.5), color, 2, { dash: [5, 5] });
+        T(b, pt(sum / 2, y0), `나머지 두 막대의 합 = ${fmtN(p.v)}+${fmtN(q.v)} = ${fmtN(sum)}`, { dy: 24, size: b.W < 560 ? 14 : 16, color });
+        if (compare) T(b, pt(sum / 2, y0), `가장 긴 막대 = ${fmtN(L)}  ${C.lesson && L === sum ? '=' : ok ? '<' : '≥'}  ${fmtN(sum)}`, { dy: 48, size: b.W < 560 ? 14 : 16, color });
       }
-      if (C.txt && (!C.review || C.step >= 3)) T(b, pt(cx, top), ok ? verdictText(true) + ' ✓' : verdictText(false) + ' ✗', { dy: 4, size: 18, color: ok ? 'green' : 'rose' });
-      else if (C.txt && C.review && C.step === 1) T(b, pt(cx, top), `가장 긴 막대: ${M.srt[2].n} = ${fmtN(L)}`, { dy: 4, size: 18, color: 'amber' });
+      if (C.txt && lessonReady(s, C) && (C.lesson || !C.review || C.step >= 3)) T(b, pt(cx, top), ok ? verdictText(true) + ' ✓' : verdictText(false) + ' ✗', { dy: 4, size: 18, color: ok ? 'green' : 'rose' });
+      else if (C.txt && !C.lesson && C.review && C.step === 1) T(b, pt(cx, top), `가장 긴 막대: ${M.srt[2].n} = ${fmtN(L)}`, { dy: 4, size: 18, color: 'amber' });
     },
     stepT: (n) => (n >= 3 ? 1 : 0),
     steps: (M) => [
@@ -153,14 +159,18 @@
       };
     }
   };
-  function drawStickProblem(b, M) {
+  function drawStickProblem(b, M, lessonState) {
     const { a, b: bb } = M.pk, W = Math.max(a, bb) + 3;
-    fit(b, { x0: -1, x1: Math.max(a + bb, 12) + 0.5, y0: -0.6, y1: 3.6 }, { t: 40, b: 50 });
+    fit(b, { x0: -1, x1: Math.max(a + bb, 12) + 0.5, y0: -0.6, y1: 3.6 }, { t: 40, b: lessonState ? 94 : 50 });
     line(b, pt(0, 0), pt(a, 0), 'sky', 8, { alpha: 0.95 });
     line(b, pt(0, 1.6), pt(bb, 1.6), 'green', 8, { alpha: 0.95 });
     line(b, pt(0, 3.2), pt(5, 3.2), 'rose', 6, { dash: [10, 8], alpha: 0.8 });
     [[a, 0, 'sky', `${a} cm`], [bb, 1.6, 'green', `${bb} cm`]].forEach(([v, y, c, t]) => { b.point(pt(0, y), { color: c, r: 5 }); b.point(pt(v, y), { color: c, r: 5 }); T(b, pt(v, y), t, { dx: 12, dy: 0, align: 'left', size: 17, color: c }); });
     T(b, pt(5, 3.2), '? cm', { dx: 12, dy: 0, align: 'left', size: 17, color: 'rose' });
+    if (lessonState) {
+      line(b, pt(0, 0), pt(a * clamp(lessonState.cnTrace || 0, 0, 1), 0), 'amber', 3.4);
+      if (lessonFlag(lessonState, 'cnRangeReady')) T(b, pt((a + bb) / 2, 3.2), `${Math.abs(a - bb)} < x < ${a + bb}`, { dy: 48, size: 18, color: 'green' });
+    }
   }
 
   /* ====================================================================== 2. x가 미지수 */
@@ -174,6 +184,7 @@
     reroll: (s) => { s.cnPk = { a: rint(3, 9), b: rint(3, 9), kind: ((s.cnPk && s.cnPk.kind) + 1) % 3 }; if (s.cnPk.a === s.cnPk.b) s.cnPk.b += 1; },
     model: (s) => { const a = s.cnXa, b2 = s.cnXb, r = xr(a, b2), x = s.cnXx; return { a, b: b2, ...r, x, ok: x > r.lo && x < r.hi, cnt: r.hi - r.lo - 1, pk: s.cnPk || { a: 3, b: 7, kind: 0 } }; },
     reviewModel: (M) => { const { a, b } = M.pk, r = xr(a, b), x = clamp(M.x, r.lo + 1, r.hi - 1); return { ...M, a, b, ...r, x, cnt: r.hi - r.lo - 1, ok: true }; },
+    lessonQuestion: (M, s, Q) => s.cnLessonProblem ? lessonProblem(Q) : `세 변의 길이가 ${M.a}cm, ${M.b}cm, x cm일 때, 삼각형이 되는 x의 범위를 구해 보자.`,
     draw(b, s, M, C) {
       if (C.problem) { drawXProblem(b, M); return; }
       const { a, b: b2, lo, hi, mx, mn, x } = M, span = Math.max(hi + 2, x + 1);
@@ -191,22 +202,32 @@
         T(b, pt(-0.6, y), label, { dx: 0, dy: -22, size: 14, color: c, align: 'left' });
       };
       const sz = b.W < 560 ? 13 : 15;
-      // 경우 ① : x 가 가장 긴 변
-      if (st >= 1) {
-        bar(rows[0], mx, hi, 'sky', false, true, st >= 2 ? `① x가 가장 긴 변 → ${fmtN(mx)} ≤ x < ${hi}` : '① x가 가장 긴 변일 때', '');
-        bar(rows[1], lo, mx, 'rose', true, true, st >= 2 ? `② 아닐 때 → ${lo} < x < ${fmtN(mx)}` : '② x가 가장 긴 변이 아닐 때', '');
+      if (C.lesson && !lessonFlag(s, 'cnUpperReady')) {
+        line(b, pt(0, rows[0]), pt(a, rows[0]), 'sky', 7);
+        T(b, pt(0, rows[0]), `주어진 변 a = ${a} cm`, { dy: -24, align: 'left', size: 15, color: 'sky' });
+        if (s.cnTrace > 0) line(b, pt(0, rows[0]), pt(a * clamp(s.cnTrace, 0, 1), rows[0]), 'ink', 2.4);
       }
-      if (st >= 3) {
+      if (C.lesson && !lessonFlag(s, 'cnLowerReady')) {
+        line(b, pt(0, rows[1]), pt(b2, rows[1]), 'rose', 7);
+        T(b, pt(0, rows[1]), `주어진 변 b = ${b2} cm`, { dy: -24, align: 'left', size: 15, color: 'rose' });
+      }
+      // 경우 ① : x 가 가장 긴 변
+      if (C.lesson ? lessonFlag(s, 'cnUpperReady') : st >= 1) bar(rows[0], mx, hi, 'sky', false, true, C.lesson || st >= 2 ? `① x가 가장 긴 변 → ${fmtN(mx)} ≤ x < ${hi}` : '① x가 가장 긴 변일 때', '');
+      if (C.lesson ? lessonFlag(s, 'cnLowerReady') : st >= 1) bar(rows[1], lo, mx, 'rose', true, true, C.lesson || st >= 2 ? `② 아닐 때 → ${lo} < x < ${fmtN(mx)}` : '② x가 가장 긴 변이 아닐 때', '');
+      if (C.lesson ? lessonFlag(s, 'cnRangeReady') : st >= 3) {
         bar(rows[2], lo, hi, 'green', true, true, `x의 범위: ${lo} < x < ${hi}`, '');
-        for (let v = lo + 1; v < hi; v++) b.point(pt(v, rows[2]), { color: 'ink', r: 2.6 });
+        if (!C.lesson || lessonFlag(s, 'cnSupportReady')) for (let v = lo + 1; v < hi; v++) b.point(pt(v, rows[2]), { color: 'ink', r: 2.6 });
       }
       // 점 x
-      if (!C.review) {
+      if (!C.review && !C.lesson) {
         const col = M.ok ? 'green' : 'rose';
         line(b, pt(x, rows[2]), pt(x, 0), col, 1.8, { dash: [4, 5] });
         b.handle('x', pt(x, 0), { color: 'rose', r: 8, ariaLabel: 'x 끌기', drag: (w) => { s.cnXx = clamp(Math.round(w.x), 1, 20); } });
         if (C.txt) T(b, pt((span - 1) / 2, 0), M.ok ? `x = ${x} 이면 삼각형이 만들어져요 ✓` : `x = ${x} 이면 삼각형이 안 만들어져요 ✗`, { dy: 44, size: 16, color: col });
-      } else if (C.txt) {
+      } else if (C.txt && C.lesson && lessonReady(s, C) && s.cnLessonMode !== 'range') {
+        const text = s.cnLessonMode === 'max' ? `정수 x의 최댓값은 ${hi - 1}` : s.cnLessonMode === 'min' ? `정수 x의 최솟값은 ${lo + 1}` : `정수 x는 ${M.cnt}개`;
+        T(b, pt((span - 1) / 2, 0), text, { dy: 44, size: 17, color: 'green' });
+      } else if (C.txt && !C.lesson) {
         T(b, pt((span - 1) / 2, 0), st >= 3 ? M.pk.kind === 1 ? `정수 x의 최댓값은 ${M.hi - 1}` : M.pk.kind === 2 ? `정수 x의 최솟값은 ${M.lo + 1}` : `정수 x는 ${M.cnt}개` : '', { dy: 44, size: 17, color: 'green' });
       }
     },
@@ -262,24 +283,25 @@
       return { v, cards, n: cards.filter((c) => c.ok).length, pk: s.cnPk || { v: [2, 4, 5, 9] } };
     },
     reviewModel: (M) => { const v = M.pk.v, cards = COMBO.map((c) => { const t = c.map((i) => v[i]).sort((a, b) => a - b); return { idx: c, t, ok: can(...t), sum: t[0] + t[1] }; }); return { ...M, v, cards, n: cards.filter((c) => c.ok).length }; },
+    lessonQuestion: (M, s, Q) => s.cnLessonProblem ? lessonProblem(Q) : `길이가 ${M.v.join('cm, ')}cm인 네 막대 중 세 개로 삼각형을 만들 수 있는 경우는 몇 가지일까?`,
     draw(b, s, M, C) {
       if (C.problem) { drawFourProblem(b, M); return; }
       const colsN = 2, Wc = 7.6, Hc = 8.2, Hi = Hc - 0.5;
       const bottomPad = b.W >= 560 && b.W < 900 && (b.insets.bottom || 0) < 40 ? 76 : 44;
       fit(b, { x0: -0.2, x1: colsN * Wc + 0.4, y0: -2 * Hc - 0.3, y1: 0.4 }, { t: 20, b: bottomPad, l: b.W < 560 ? 14 : 46, r: b.W < 560 ? 14 : 46 });
-      const tt = C.review ? (C.step >= 3 ? 1 : 1) : C.t, st = C.review ? C.step : 3;
+      const tt = C.lesson ? C.t : C.review ? 1 : C.t, st = C.review ? C.step : 3;
       M.cards.forEach((cd, i) => {
         const col = i % 2, row = Math.floor(i / 2), x0 = col * Wc + 0.2, y0 = -(2 - row) * Hc + 0.4;
         const sc = 5.6 / Math.max(cd.t[2], 1);
-        const show = st >= 2;
+        const show = C.lesson ? !s.lessonEntry && s.cnCardsReady > i : st >= 2;
         const c = cd.ok ? 'green' : 'rose';
         b.path([pt(x0, y0), pt(x0 + Wc - 0.4, y0), pt(x0 + Wc - 0.4, y0 + Hi), pt(x0, y0 + Hi)], { close: true, fill: show ? c : 'muted', fillAlpha: show ? 0.1 : 0.05, color: show ? c : 'muted', width: 1.6, alpha: 0.9 });
         const items = cd.t.map((v, k) => ({ v, n: '', c: k === 2 ? 'amber' : k === 0 ? 'sky' : 'green' }));
-        hinge(b, items, tt, { ox: x0 + 0.9, oy: y0 + Hi - 2.7, sc: sc * 0.9, w: 5, nums: true, numSize: 14 });
+        hinge(b, items, tt, { ox: x0 + 0.9, oy: y0 + Hi - 2.7, sc: sc * 0.9, w: 5, nums: true, numSize: 14, alwaysLabels: C.lesson });
         if (show) T(b, pt(x0 + (Wc - 0.4) / 2, y0 + Hi), `${fmtN(cd.t[0])}+${fmtN(cd.t[1])}=${fmtN(cd.sum)} ${cd.ok ? '>' : '≤'} ${fmtN(cd.t[2])}`, { dy: -8, size: 15, color: c });
-        if (st >= 3) T(b, pt(x0 + Wc - 0.4, y0), cd.ok ? '✓' : '✗', { dx: -16, dy: 18, size: 20, color: c });
+        if (C.lesson ? show : st >= 3) T(b, pt(x0 + Wc - 0.4, y0), cd.ok ? '✓' : '✗', { dx: -16, dy: 18, size: 20, color: c });
       });
-      if (C.txt && st >= 3) T(b, pt(Wc, 0), `삼각형을 만들 수 있는 경우: ${M.n}가지`, { dy: 20, size: 17, color: 'green' });
+      if (C.txt && lessonReady(s, C) && (C.lesson || st >= 3)) T(b, pt(Wc, 0), `삼각형을 만들 수 있는 경우: ${M.n}가지`, { dy: 20, size: 17, color: 'green' });
     },
     stepT: () => 1,
     steps: (M) => [

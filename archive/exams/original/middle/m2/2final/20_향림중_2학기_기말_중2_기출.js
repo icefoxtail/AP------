@@ -769,7 +769,7 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "metaNullReason": "",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q12-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽은 삼각형 ABC에서 DE와 BC가 평행하고 AB 12, AD 8, AE 6, BC 9이며 DE는 x, AC는 y인 문제 그림이다. 가운데는 삼각형 ADE(AD 8, DE 6, AE 6), 아래는 삼각형 ABC(AB 12, BC 9, AC는 y)로 대응하는 변을 같은 색으로 나타냈다.",
     "solutionImageCaption": "DE와 BC가 평행하므로 삼각형 ADE와 ABC는 닮음이고 닮음비는 AD:AB=8:12=2:3이다. DE:BC=2:3에서 x=9×3분의 2=6이다. AE:AC=2:3에서 6:y=2:3이므로 y=9이다. 따라서 x+y=15이고 정답은 ③ 15이다.",
     "solutionImageSize": "full"
@@ -1280,7 +1280,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 대표 2명을 첫째, 둘째 순서로 나열한 나뭇가지 그림의 일부이다. 첫째가 A이면 둘째는 B, C, D, E의 네 가지이고, 첫째가 B이면 둘째는 A, C, D, E의 네 가지이며, 첫째 A 둘째 B인 경로와 첫째 B 둘째 A인 경로는 같은 파란색으로 표시해 같은 짝임을 보인다.",
+    "solutionImageCaption": "회장과 부회장은 자리가 달라 순서를 구별하므로 회장 5명 중 1명, 부회장 남은 4명 중 1명을 뽑는 5곱하기 4로 a=20이다. 대표 2명은 순서를 구별하지 않으므로, 순서대로 나열하면 A, B와 B, A처럼 같은 짝이 두 번씩 나온다(그림의 파란색 두 경로). 그림은 첫째가 A, B인 경우만 보인 일부이다. 따라서 b는 5곱하기 4를 2로 나눈 10이다. 정답은 ② 30이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1520,7 +1524,7 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "metaNullReason": "",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q24-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽은 정사각형을 접어 꼭짓점 C가 AD 위의 점 E에 오도록 한 문제 그림으로 ED 8 cm, DI 6 cm, IC 10 cm이다. 가운데와 아래는 삼각형 AEF와 삼각형 DIE를 같은 방향으로 놓고 같은 색 각(파랑, 주황), 대응하는 변 AE와 DI(분홍), AF와 DE(초록)와 AE 8 cm, DI 6 cm, DE 8 cm를 나타낸 그림이다.",
     "solutionImageCaption": "(1) 삼각형 AEF와 DIE는 각 A=각 D=90°이고 각 AEF=각 DIE이므로 두 각이 각각 같아 닮음이다. (2) DC=6+10=16 cm이므로 AD=16 cm이고 AE=16−8=8 cm이다. (3) 닮음에서 AE:DI=AF:DE이므로 8:6=AF:8이고 AF=8×8÷6=3분의 32 cm이다. 정답은 (1) 삼각형 AEF∽삼각형 DIE (AA 닮음) (2) 8 cm (3) 3분의 32 cm이다.",
     "solutionImageSize": "full"

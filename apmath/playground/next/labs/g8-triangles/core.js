@@ -363,7 +363,8 @@
     const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
     const problem = !thumb && tab === 'problem';
     const review = !thumb && tab === 'review';
-    return { tab, problem, review, step: review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
+    const lesson = !thumb && !!(s.lessonOn || s.lessonEntry), entry = lesson && !!s.lessonEntry;
+    return { tab, problem, review, step: entry ? 0 : lesson || review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: !lesson && (tab === 'explore' || thumb), lesson, entry, answer: lesson && !entry && !!s.trShowAnswer, calculation: lesson && !entry && !!s.trCalculationReady };
   }
   const showAt = (C, n) => C.step >= n;
 
@@ -564,8 +565,22 @@
            prob(M,s)→{tag,stem|html,choices,key,note?}, anim?:{key,dur,label,start}, stepT?(n,M) } */
   // $…$ 안의 < > 는 HTML 로 이스케이프되어 수식 오류가 나므로 \lt \gt 로 바꿉니다.
   const texSafe = (t) => String(t == null ? t : t).replace(/\$([^$]+)\$/g, (m, x) => '$' + x.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
+  const inLesson = (s) => !!(s.lessonOn || s.lessonEntry);
+  function lessonQuestion(D, s) {
+    const M = D.model(s), Q = D.prob ? D.prob(M, s) : null;
+    if (D.lessonQuestion) return texSafe(D.lessonQuestion(M, s, Q));
+    if (s.trLessonProblem === false || !Q) return texSafe(typeof D.question === 'function' ? D.question(s) : D.question);
+    let body = Q.html || Q.stem || '';
+    // Some open-response questions keep their answer in p beside an empty t.
+    // That single placeholder is not a choice to disclose in the question.
+    const answerPlaceholder = Q.choices && Q.choices.length === 1 && Q.choices[0].h == null && Q.choices[0].t === '';
+    const choices = (answerPlaceholder ? [] : Q.choices || []).map(c => c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : c.p);
+    if (choices.length && !choices.every(text => body.includes(String(text)))) body += '<br>' + choices.map((text, i) => NUM[i] + ' ' + text).join('<br>');
+    return texSafe(body);
+  }
   function makeScene(D, sceneParams) {
     const A = D.anim, SV = D.solve;
+    const modelFor = (s) => { const M = D.model(s); return inLesson(s) && D.lessonModel ? D.lessonModel(M, s) : M; };
     const actions = A ? () => [
       {
         id: 'play', play: true, primary: true, icon: (s) => (s.playing ? 'pause' : 'play'),
@@ -577,11 +592,11 @@
     ] : undefined;
     return {
       id: D.id, title: D.title, short: D.short || D.title, tr: D,
-      question: D.question,
+      question: (s) => inLesson(s) ? lessonQuestion(D, s) : typeof D.question === 'function' ? D.question(s) : D.question,
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
-      steps: (s) => (SV ? SV.steps(D.model(s), s).map((st) => texSafe(stepText(st))) : D.steps(D.model(s)).map((t) => texSafe(String(t).replace(/<\/?b>/g, '')))),
+      steps: (s) => (SV ? SV.steps(modelFor(s), s).map((st) => texSafe(stepText(st))) : D.steps(modelFor(s)).map((t) => texSafe(String(t).replace(/<\/?b>/g, '')))),
       notesTitle: '자주 틀리는 부분',
       problem: D.prob ? {
         tag: SV ? undefined : (s) => D.prob(D.model(s), s).tag,
@@ -591,7 +606,7 @@
       } : undefined,
       // 풀이 흐름(opt-in): 탭 순서·이름을 탐구 · 문제 · 풀이 로, 풀이 탭 맨 위에 문제 다시 보기, 빠른 풀이는 접어서
       tabs: SV ? { order: ['explore', 'problem', 'review'], labels: { review: '풀이' } } : undefined,
-      reviewTop: SV ? (s) => solveRecapHTML(D, s) : undefined,
+      reviewTop: SV ? (s) => inLesson(s) ? '' : solveRecapHTML(D, s) : undefined,
       reviewTitles: SV ? { steps: '풀이 · 단계마다 그림이 바뀌어요', solution: '빠른 풀이' } : undefined,
       solution: SV && SV.quick ? { quickTitle: SV.quickTitle || '10초 컷', quickTag: '10초 컷', quick: (s) => SV.quick(D.model(s), s) } : undefined,
       enter: (s, lab) => {
@@ -606,6 +621,7 @@
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
+        if (inLesson(s)) return false;
         let again = false;
         if (A && s.playing) {
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));
@@ -619,6 +635,7 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
+        if (inLesson(s)) return { guide: null, card: null, readouts: [], formula: null, rule: null, status: null, alert: null, notes: [], chips: [] };
         const C = baseCtx(s, lab, false);
         const M = D.model(s);
         const v = D.view(M, C, s) || {};
@@ -634,10 +651,21 @@
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
-        const M = D.model(s);
-        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
+        const M = modelFor(s);
+        C.t = A ? (C.lesson || C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
         layoutLabels(b, () => {
-          if (SV && !b.thumb && (C.problem || C.review)) { // 문제·풀이 그림은 같은 그리기(같은 숫자·같은 배치)로
+          if (C.lesson) {
+            const ST = SV ? SV.steps(M, s) : [];
+            let idx = C.entry || C.step <= 0 ? -1 : clamp(C.step - 1, 0, Math.max(0, ST.length - 1));
+            // An authored answer gate supplements the original solve-stage index.
+            // Numeric intermediate stages are still timed by each scene's cues.
+            while (!C.answer && idx >= 0 && ST[idx] && ST[idx].k === 'ans') idx--;
+            C.idx = idx;
+            if (D.lessonDraw) D.lessonDraw(b, s, M, C, SV, ST, idx);
+            else if (SV) SV.draw(b, s, M, C, ST, idx);
+            else D.draw(b, s, M, C);
+            if (D.lessonAfterDraw) D.lessonAfterDraw(b, s, M, C, SV, ST, idx);
+          } else if (SV && !b.thumb && (C.problem || C.review)) { // 문제·풀이 그림은 같은 그리기(같은 숫자·같은 배치)로
             const ST = SV.steps(M, s);
             SV.draw(b, s, M, C, ST, C.problem ? -1 : clamp((s.step || 1) - 1, 0, ST.length - 1));
           } else D.draw(b, s, M, C);

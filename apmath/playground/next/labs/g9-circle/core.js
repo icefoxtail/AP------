@@ -292,7 +292,10 @@
     const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
     const problem = !thumb && tab === 'problem';
     const review = !thumb && tab === 'review';
-    return { tab, problem, review, step: review ? s.step || 1 : problem ? 0 : 99, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
+    const lesson = !thumb && !!(s.lessonOn || s.lessonEntry), entry = lesson && !!s.lessonEntry;
+    return { tab, problem, review, step: entry ? 0 : lesson ? s.step || 0 : review ? s.step || 1 : problem ? 0 : 99,
+      txt: !thumb, thumb: !!thumb, full: !lesson && (tab === 'explore' || thumb), lesson, entry,
+      answer: lesson && !entry && !!s.ciShowAnswer, calculation: lesson && !entry && !!s.ciCalculationReady };
   }
   const showAt = (C, n) => C.step >= n;
 
@@ -457,6 +460,31 @@
     }
     s.ciPk = pk;
   }
+  const inLesson = (s) => !!(s.lessonOn || s.lessonEntry);
+  // Each original generator accepts its own random stream and variant number.
+  // A lesson fixes that source packet without touching manual-question randomness.
+  function fixedPk(id, variant = 0, seed = 1) {
+    const scene = (window.APL_CI_GROUPS || []).flatMap(group => group.scenes).find(item => item.id === id);
+    if (!scene || !scene.ci || typeof scene.ci.gen !== 'function') throw new Error('해설 원본 장면 없음: ' + id);
+    const packet = scene.ci.gen(seeded('lesson|' + id + '|' + seed), variant), seen = new WeakSet();
+    const freeze = value => {
+      if (!value || typeof value !== 'object' || seen.has(value)) return value;
+      seen.add(value);
+      Object.values(value).forEach(freeze);
+      return Object.freeze(value);
+    };
+    return freeze(packet);
+  }
+  function lessonQuestion(D, s) {
+    const M = D.model(s, PC), Q = D.prob(M, s);
+    const custom = D.lessonQuestion && D.lessonQuestion(M, s, Q);
+    if (custom != null) return texSafe(custom);
+    if (!s.ciLessonProblem) return texSafe(typeof D.question === 'function' ? D.question(s) : D.question);
+    let body = Q.html != null ? Q.html : Q.stem || '';
+    const choices = (Q.choices || []).map(c => c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : c.p);
+    if (choices.length && !choices.every(text => body.includes(String(text)))) body += '<br>' + choices.map((text, i) => NUM[i] + ' ' + text).join('<br>');
+    return texSafe(body);
+  }
   function makeScene(D) {
     const A = D.anim;
     D.roll = (s) => { if (D.reroll) D.reroll(s); rollPk(D, s, false); };
@@ -472,14 +500,14 @@
     const RC = { ...PC, tab: 'review', review: true };
     return {
       id: D.id, title: D.title, short: D.short || D.title, ci: D,
-      question: D.question,
+      question: (s) => inLesson(s) ? lessonQuestion(D, s) : (typeof D.question === 'function' ? D.question(s) : D.question),
       tabs: { order: ['explore', 'problem', 'review'], labels: { explore: '탐구', problem: '문제', review: '풀이' } },
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
       solution: (s) => currentSolution(D, s),
       steps: (s) => currentSolution(D, s).steps.map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
-      reviewTop: (s) => { const Q = D.prob(D.model(s, PC), s); return `<div class="ci-current"><b>지금 풀고 있는 문제</b>${texSafe(Q.html || esc(Q.stem))}</div>`; },
+      reviewTop: (s) => { if (inLesson(s)) return ''; const Q = D.prob(D.model(s, PC), s); return `<div class="ci-current"><b>지금 풀고 있는 문제</b>${texSafe(Q.html || esc(Q.stem))}</div>`; },
       reviewTitles: { steps: '현재 문제의 풀이', solution: '답 확인' },
       notesTitle: '자주 틀리는 부분',
       problem: D.prob ? {
@@ -497,6 +525,7 @@
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
+        if (inLesson(s)) return false;
         let again = false;
         if (A && s.playing) {
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));
@@ -510,6 +539,7 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
+        if (inLesson(s)) return { guide: null, card: null, readouts: [], formula: null, rule: null, status: null, alert: null, notes: [], chips: [] };
         const C = baseCtx(s, lab, false);
         if (C.problem) return { guide: '주어진 조건과 구하는 값을 그림에서 찾고 먼저 풀어 보세요. 풀이 탭에서도 같은 문항이 이어져요.', readouts: [], status: { tone: 'info', text: '현재 문제 · 먼저 풀어 보기' } };
         if (C.review && D.solve) {
@@ -528,6 +558,26 @@
         b.ciMobileProblem = !b.thumb && b.W < 560 && (C.problem || C.review && D.solve) && mobileProblemScenes.has(D.id) ? D.id : null;
         try {
           if (b.thumb) C.step = 99;
+          if (C.lesson) {
+            const useSource = s.ciLessonProblem || s.ciLessonSource;
+            const sol = currentSolution(D, s), original = useSource ? sol.model : D.model(s, C);
+            const M = D.lessonModel ? D.lessonModel(original, s) : original;
+            C.t = A ? (s[A.key] || 0) : 1;
+            C.last = C.answer;
+            drawLabels(b, () => {
+              const custom = D.lessonDraw ? D.lessonDraw(b, s, M, C, sol) : false;
+              if (custom === false) {
+                if (useSource) {
+                  const n = sol.steps.length;
+                  const stage = C.entry ? 0 : C.answer ? n : Math.max(0, Math.min(C.step, C.calculation ? n - 1 : 3));
+                  D.draw(b, s, M, { ...C, ...PC, lesson: true, review: true, t: C.t });
+                  if (sol.draw) sol.draw(b, stage);
+                } else D.draw(b, s, M, C);
+              }
+              if (D.lessonAfterDraw) D.lessonAfterDraw(b, s, M, C, sol);
+            }, C.answer && useSource ? sol.display : null);
+            return;
+          }
           if (C.review && D.solve) {
             const sol = currentSolution(D, s), step = clamp(s.step || 1, 1, sol.steps.length);
             drawLabels(b, () => {
@@ -555,6 +605,7 @@
     pt, add, sub, mul, len, dist, unit, mid, lerp, polar, dirDeg, rotP, angBetween, cross, inter, polyArea, centroid, pick, rint, bboxOf, unionBox, shiftPts,
     textW, T, tagOut, vtx, sideTag, lenTag, ang, tick, par, fillPoly, line, poly, arcPart, fit,
     mp, degOf, norm360, circle, arcD, arcPts, fillSector, fillSeg, fillRing, circBox, dot, tangentPts, pname, segTag, sz, radSimp, isSq, fracOf, cv, nt, npl, ntD, eqv, exactQ, mkNum, mkPi, Pi, P, degF, cmF,
-    josa, seeded, shuffle, mkChoices, mkTextChoices, baseCtx, showAt, makeScene, register, notes, rd
+    josa, seeded, shuffle, mkChoices, mkTextChoices, baseCtx, showAt, makeScene, register, notes, rd,
+    PC, currentSolution, texSafe, fixedPk
   };
 })();

@@ -260,9 +260,9 @@ window.examData = {
         "도형"
       ],
       "wide": false,
-      "image": "assets/images/21_팔마중_2학기_기말_중2_수학/q07.png",
-      "question": "<p>7. 오른쪽 사다리꼴 $\\mathrm{ABCD}$의 넓이가 $300\\text{ cm}^2$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_기말_중2_수학/q07.png\" alt=\"넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD\" /></p>",
-      "content": "<p>7. 오른쪽 사다리꼴 $\\mathrm{ABCD}$의 넓이가 $300\\text{ cm}^2$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_기말_중2_수학/q07.png\" alt=\"넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD\" /></p>",
+      "image": "assets/images/21_팔마중_2학기_기말_중2_수학/q07_question-v2.svg",
+      "question": "<p>7. 오른쪽 사다리꼴 $\\mathrm{ABCD}$의 넓이가 $300\\text{ cm}^2$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_기말_중2_수학/q07_question-v2.svg\" alt=\"넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD\" /></p>",
+      "content": "<p>7. 오른쪽 사다리꼴 $\\mathrm{ABCD}$의 넓이가 $300\\text{ cm}^2$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_기말_중2_수학/q07_question-v2.svg\" alt=\"넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD\" /></p>",
       "choices": [
         "$20\\text{ cm}$",
         "$24\\text{ cm}$",
@@ -276,7 +276,7 @@ window.examData = {
       "questionNumber": 7,
       "hasVisual": true,
       "images": [
-        "assets/images/21_팔마중_2학기_기말_중2_수학/q07.png"
+        "assets/images/21_팔마중_2학기_기말_중2_수학/q07_question-v2.svg"
       ],
       "accessibility": "넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD",
       "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q7-solution.svg",
@@ -797,7 +797,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/s01.png"
       ],
-      "accessibility": "삼각형 ABC에서 선분 ED와 선분 BC가 평행한 도형"
+      "accessibility": "삼각형 ABC에서 선분 ED와 선분 BC가 평행한 도형",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 첫째 그림은 삼각형 ABC에서 변 AB 위의 점 E와 변 AC 위의 점 D를 이은 ED가 BC와 평행한 모습이며 AE는 8, EB는 4, BC는 12이다. 둘째 그림은 삼각형 ABC로 AB는 12, BC는 12이다. 셋째 그림은 같은 방향으로 놓은 삼각형 AED로 AE는 8이고, 대응하는 변은 같은 색이다.",
+      "solutionImageCaption": "(1) 삼각형 AED와 삼각형 ABC가 닮음이다. (2) 각 A가 공통이고 ED와 BC가 평행하여 동위각 AED와 ABC, ADE와 ACB가 같으므로 두 쌍의 대응각이 각각 같아 닮음이다. (3) AB는 AE와 EB의 합 12이고 AE 대 AB는 ED 대 BC와 같으므로 8 대 12와 ED 대 12가 같다. 정답은 ED가 8cm이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 22,
@@ -898,7 +902,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/s04.png"
       ],
-      "accessibility": "좌표평면 위의 x절편이 2이고 y절편이 -6인 직선의 그래프"
+      "accessibility": "좌표평면 위의 x절편이 2이고 y절편이 -6인 직선의 그래프",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q24-solution.svg",
+      "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=3x-6을 그리고, x좌표와 y좌표가 모두 1 이상 6 이하인 정사각형 영역을 회색으로 칠한 그림이다. 직선은 x축과 점 (2, 0)에서 만나고, 칠한 영역 안에서 점 (3, 3)과 영역의 윗변 위의 점 (4, 6)을 지난다.",
+      "solutionImageCaption": "(1) 직선이 x절편 (2, 0)과 y절편 (0, -6)을 지나므로 기울기는 2분의 6, 즉 3이고 식은 y=3x-6이다. (2) 점 (x, y)에서 x, y는 1 이상 6 이하의 자연수이므로 그림의 회색 정사각형 안(경계 포함)에서 직선 위의 점을 찾으면 (3, 3), (4, 6)이다. (3) 주사위를 두 번 던질 때 나오는 모든 경우의 수는 6 곱하기 6으로 36가지이고, 직선 위에 있는 경우는 이 두 점뿐이다. 정답은 (1) y=3x-6, (2) (3, 3), (4, 6), (3) 18분의 1이다.",
+      "solutionImageSize": "full"
     }
   ]
 };

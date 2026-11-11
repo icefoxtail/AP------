@@ -340,7 +340,7 @@
         segTag(b, g.B, g.Cc, String(W), { away: pt(W / 2, 0), color: 'sky', size: S(b), gap: 14 });
         if (q.kind === 0) segTag(b, g.E, g.Cc, 'x', { away: g.D, gap: 14 });
         if (q.kind === 1) segTag(b, g.D, g.E, 'x', { away: g.A, gap: 14 });
-        if (q.kind === 2) T(b, pt((g.E.x + 2 * g.Cc.x) / 3 + 0.2, H * 0.72), '둘레 x', { size: S(b) + 1 });
+        if (q.kind === 2) T(b, pt((g.E.x + 2 * g.Cc.x) / 3 + 0.2, H * 0.72), '둘레=x', { size: S(b) + 1 });
         return;
       }
       segTag(b, g.A, g.B, cv(H), { toward: pt(W / 2, H / 2), color: 'sky', size: S(b), gap: 14, dx: -4 });

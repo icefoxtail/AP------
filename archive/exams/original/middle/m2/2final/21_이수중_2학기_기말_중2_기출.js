@@ -180,7 +180,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q4-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 첫 그림은 각 C가 직각인 삼각형 ABC에서 C에서 빗변 AB에 내린 수선의 발 D를 나타낸다. 나머지 세 그림은 삼각형 ABC, ACD, CBD를 직각이 오른쪽 아래에 오도록 같은 방향으로 놓은 것으로, 대응하는 변은 같은 색(빗변 파랑, 짧은 변 주황, 긴 변 초록)이고 같은 크기의 각은 같은 색 호(분홍, 보라)로 표시되어 있다.",
     "solutionImageCaption": "삼각형 ABC, ACD, CBD는 각각 직각과 한 예각이 같아 닮음이다. 대응변의 비로부터 AC의 제곱은 AD×AB, CD의 제곱은 AD×DB, BC의 제곱은 DB×AB이다. 또 각 A는 각 BCD와 같다. 따라서 BC의 제곱에 곱해지는 두 길이는 DB와 AB이므로 DB×AD라고 쓴 식은 옳지 않다. 정답은 ④이다.",
     "solutionImageSize": "full"
@@ -321,7 +321,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q7-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 첫 그림은 점 A에서 직선 EC와 직선 DB가 만나고 BC와 DE가 평행한 모양이다. EA는 7.5 cm, AD는 9 cm, AB는 6 cm, BC는 8 cm이고 AC는 x cm, ED는 y cm이다. 나머지 두 그림은 삼각형 ADE와 삼각형 ABC를 같은 방향으로 놓은 것으로, 대응하는 변이 같은 색(AD와 AB 파랑, AE와 AC 주황, DE와 BC 초록)이고 꼭짓점 A의 각이 같은 색 호로 표시되어 있다.",
     "solutionImageCaption": "BC와 DE가 평행하므로 엇각이 같아 삼각형 ADE와 ABC는 닮음이다. 대응변은 AD와 AB, AE와 AC, DE와 BC(같은 색)이다. AD 대 AB가 9 대 6이므로 AE 대 AC도 9 대 6이어서 x는 5이고, DE 대 BC도 9 대 6이어서 y는 12이다. 따라서 x와 y의 합은 5와 12의 합이다. 정답은 ④ 17 cm이다.",
     "solutionImageSize": "full"
@@ -641,7 +641,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 대표 2명을 첫째, 둘째 순서로 나열한 나뭇가지 그림의 일부이다. 첫째가 A, B, C인 경우만 그렸고 첫째 A 둘째 B와 첫째 B 둘째 A는 파란색, 첫째 A 둘째 C와 첫째 C 둘째 A는 주황색으로 같은 짝끼리 같은 색으로 표시했다.",
+    "solutionImageCaption": "뽑는 순서를 구별하면 첫째 4가지, 둘째 3가지이므로 모두 늘어놓으면 4곱하기 3으로 12가지이다. 그림에서 같은 색으로 표시한 두 경로처럼 같은 두 사람이 순서만 바뀌어 두 번씩 세어진다. 그림은 첫째가 A, B, C인 경우만 보인 일부이다. 대표 두 명을 뽑는 순서는 상관없으므로 12를 2로 나눈다. 정답은 ② 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1039,7 +1043,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q23-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 첫 그림은 삼각형 ABC의 변 AB 위의 점 D와 변 AC 위의 점 E를 이은 모양이다. AD는 4 cm, DB는 8 cm, AE는 6 cm, EC는 x cm이고 각 ACB와 각 ADE가 같은 초록 호로 표시되어 있다. 둘째와 셋째 그림은 삼각형 ABC와 AED를 같은 방향으로 놓은 것으로 AB와 AE가 파랑, AC와 AD가 주황, BC와 ED가 초록이고 각 A는 분홍, 각 ACB와 각 ADE는 보라 호이다.",
     "solutionImageCaption": "(1) 각 A는 공통이고 각 ACB와 각 ADE가 같으므로 두 각이 같아 삼각형 ABC와 AED는 닮음(AA 닮음)이다. (2) AB는 4 더하기 8로 12 cm이고 대응변 AE는 6 cm이므로 닮음비는 12 대 6, 곧 2 대 1이다. (3) 대응변 AC와 AD의 비도 2 대 1이므로 AC는 AD의 두 배인 8 cm이고, x는 AC에서 AE를 뺀 값이다. 정답은 (1) 삼각형 ABC와 AED, AA 닮음 (2) 2 대 1 (3) 2 cm이다.",
     "solutionImageSize": "full"

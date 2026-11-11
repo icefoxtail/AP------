@@ -159,9 +159,10 @@
     init: (s) => { s.c7R = 6; s.c7f = 1; },
     gen(rnd, n) { const kind = n % 3, R = pickR(rnd, [3, 4, 5, 6, 8, 9, 10, 12]); return { kind, R, key: `f${kind}.${R}` }; },
     model(s, C) { if (C.problem) { const q = s.ciPk; return { q, g: foldG(q.R, 1) }; } return { g: foldG(clamp(Math.round(s.c7R), 2, 12), C.tab === 'explore' ? clamp(s.c7f, 0, 1) : 1) }; },
+    lessonModel(M, s) { return s.ciCAnimateFold ? { ...M, g: foldG(M.q.R, s.lessonEntry ? 0 : clamp(s.c7f || 0, 0, 1)) } : M; },
     draw(b, s, M, C) {
       const { g, q } = M, st = C.step, pr = C.problem, ex = C.tab === 'explore', { R, f, C: Cc, D, arc, farc } = g;
-      if (pr) fit(b, { x0: -R, x1: R, y0: -R, y1: 0.55 * R }, { t: 62, b: 84 + Math.max(0, 60 - b.insets.bottom), l: 44, r: 44 }); else fit(b, { x0: -R, x1: R, y0: -R, y1: R }, { t: 62, b: 44, l: 44, r: 44 });
+      if (pr && !C.lesson) fit(b, { x0: -R, x1: R, y0: -R, y1: 0.55 * R }, { t: 62, b: 84 + Math.max(0, 60 - b.insets.bottom), l: 44, r: 44 }); else fit(b, { x0: -R, x1: R, y0: -R, y1: R }, { t: 62, b: pr ? 84 + Math.max(0, 60 - b.insets.bottom) : 44, l: 44, r: 44 });
       // 접은 뒤에 보이는 도형(큰 쪽)
       if (pr && q.kind === 2) b.path(arcPts(O0, R, 330, 570, 96), { close: true, fill: 'rose', fillAlpha: 0.18, color: null });
       else if (!pr && (ex || st >= 3)) b.path(arcPts(O0, R, 330, 570, 96), { close: true, fill: 'sky', fillAlpha: 0.08, color: null });

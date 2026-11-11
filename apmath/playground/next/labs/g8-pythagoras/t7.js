@@ -41,7 +41,7 @@
 
   /* ====================================================================== 1. 직사각형 접기 */
   const rectOf = (s) => {
-    const [h, w] = FOLD_TAB[clamp(Math.round(s.pyFi), 0, FOLD_TAB.length - 1)];
+    const [h, w] = Number.isFinite(s.pyFoldH) && Number.isFinite(s.pyFoldW) ? [s.pyFoldH, s.pyFoldW] : FOLD_TAB[clamp(Math.round(s.pyFi), 0, FOLD_TAB.length - 1)];
     const be = isq(w * w - h * h), ec = w - be, x = (h * h + ec * ec) / (2 * h);
     return { h, w, be, ec, x, fc: h - x, p: clamp(s.pyFp || 0, 0, 1), kind: s.pyKind || 0 };
   };
@@ -59,7 +59,7 @@
       const A = pt(0, 0), D = pt(w, 0), B = pt(0, h), Cc = pt(w, h), E = pt(be, h), F = pt(w, x);
       fit(b, { x0: 0, x1: w, y0: 0, y1: h }, { t: 40, b: 44, l: 44, r: C.givens && kind === 0 ? 78 : 48 });
       const st = (n) => !C.review || C.step >= n;
-      const pp = prob ? 1 : C.review ? (C.step >= 1 ? 1 : 0) : p;
+      const pp = C.lesson ? p : prob ? 1 : C.review ? (C.step >= 1 ? 1 : 0) : p;
       const Dp = foldPt(D, A, F, pp);
       fillPoly(b, [A, B, Cc, D], 'ink', 0.06); poly(b, [A, B, Cc, D], 'ink', 3.2);
       // 접히는 부분(삼각형 A D F) — 접는 선 AF 를 축으로 제자리에서 돌아요
@@ -68,7 +68,8 @@
       if (pp > 0.5) { line(b, A, D, 'muted', 2, { dash: [5, 5] }); line(b, D, F, 'muted', 2, { dash: [5, 5] }); }
       [[A, 'A', -1, -1], [B, 'B', -1, 1], [Cc, 'C', 1, 1], [D, 'D', 1, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 15, size: 17 }); });
       b.point(F, { color: 'rose', r: 4.5 }); T(b, F, 'F', { dx: 14, dy: 0, size: 17, color: 'rose' });
-      if (pp > 0.5) { b.point(Dp, { color: 'amber', r: 4.5 }); T(b, Dp, 'E', { dx: 0, dy: 17, size: 17, color: 'amber' }); b.right(Dp, A, F, { size: 10, color: 'amber' }); tick(b, A, D, 2, 'amber'); tick(b, A, Dp, 2, 'amber'); tick(b, D, F, 1, 'sky'); tick(b, Dp, F, 1, 'sky'); }
+      if (C.lesson && pp < 0.999) { b.point(E, { color: 'amber', r: 4 }); T(b, E, 'E', { dy: 17, size: 17, color: 'amber' }); }
+      if (pp > 0.5) { b.point(Dp, { color: 'amber', r: 4.5 }); T(b, Dp, C.lesson && pp < 0.999 ? 'D′' : 'E', { dx: 0, dy: 17, size: 17, color: 'amber' }); b.right(Dp, A, F, { size: 10, color: 'amber' }); tick(b, A, D, 2, 'amber'); tick(b, A, Dp, 2, 'amber'); tick(b, D, F, 1, 'sky'); tick(b, Dp, F, 1, 'sky'); }
       b.right(B, A, Cc, { size: 10, color: 'ink' }); b.right(Cc, B, D, { size: 10, color: 'ink' });
       // 주어진 길이 (그림 안)
       sideTag(b, A, B, Cc, `${h}`, { color: 'green', size: 17, gap: 12 }); T(b, mid(A, D), `${w}`, { dy: -24, size: 17, color: 'sky' });
@@ -77,13 +78,13 @@
           T(b, mid(B, E), `${be}`, { dy: 16, size: 15, color: 'sky' }); T(b, mid(E, Cc), `${ec}`, { dy: 16, size: 15, color: 'green' });
           T(b, mid(Dp, F), `x=${f(x)}`, { dx: -22, dy: 0, size: 15, color: 'sky' }); T(b, mid(F, Cc), `${f(M.fc)}`, { dx: 14, size: 15, color: 'green' });
         }
-      } else {
+      } else if (!C.lesson || s.pyLessonProblem) {
         // x 는 묻는 선분에만, 구하는 것이 아닌 값은 적지 않음
         if (kind === 0) T(b, mid(F, Cc), C.answer ? `x=${f(M.fc)}` : 'x', { dx: C.answer ? 32 : 14, size: 17, color: 'amber' });
-        if (kind === 1) T(b, mid(Dp, F), C.answer ? `x=${f(x)}` : 'x', { dx: -16, dy: -12, size: 17, color: 'amber' });
+        if (kind === 1) T(b, mid(C.lesson ? E : Dp, F), C.answer ? `x=${f(x)}` : 'x', { dx: -16, dy: -12, size: 17, color: 'amber' });
         if (kind === 2) T(b, mid(B, Dp), C.answer ? `x=${be}` : 'x', { dy: 18, size: 17, color: 'amber' });
-        if (C.review && C.step >= 3 && kind !== 2) { T(b, mid(B, E), `${be}`, { dy: 18, size: 15, color: 'sky' }); T(b, mid(E, Cc), `${ec}`, { dy: 18, size: 15, color: 'green' }); }
-        if (C.review && C.step >= 4 && kind === 0) T(b, mid(Dp, F), `y=${f(x)}`, { dx: -22, dy: -8, size: 15, color: 'sky' });
+        if (C.review && C.step >= 3 && kind !== 2 && (!C.lesson || C.calculation)) { T(b, mid(B, E), `${be}`, { dy: 18, size: 15, color: 'sky' }); T(b, mid(E, Cc), `${ec}`, { dy: 18, size: 15, color: 'green' }); }
+        if (C.review && C.step >= 4 && kind === 0 && (!C.lesson || C.calculation)) T(b, mid(Dp, F), `y=${f(x)}`, { dx: -22, dy: -8, size: 15, color: 'sky' });
       }
     },
     steps: (M) => [
@@ -136,7 +137,7 @@
       const Cc = pt(0, 0), B = pt(a, 0), A = pt(0, -bb), D = mid(A, B), E = pt(a - y, 0);
       fit(b, { x0: 0, x1: a, y0: -bb, y1: 0 }, { t: 40, b: 62, l: 46, r: 40 });
       const st = (n) => !C.review || C.step >= n;
-      const pp = prob ? 1 : C.review ? (C.step >= 1 ? 1 : 0) : p;
+      const pp = C.lesson ? p : prob ? 1 : C.review ? (C.step >= 1 ? 1 : 0) : p;
       const Bp = foldPt(B, D, E, pp);
       fillPoly(b, [A, B, Cc], 'ink', 0.06); poly(b, [A, B, Cc], 'ink', 3.2);
       fillPoly(b, [D, Bp, E], pp > 0.5 ? 'amber' : 'sky', 0.3); poly(b, [D, Bp, E], pp > 0.5 ? 'amber' : 'sky', 3);
@@ -151,12 +152,12 @@
       if (C.full) {
         if (pp > 0.5) { T(b, mid(Cc, E), `${f(ce)}`, { dy: 16, size: 15, color: 'green' }); T(b, mid(E, B), `${f(y)}`, { dy: 16, size: 15, color: 'amber' }); }
         if (ci) T(b, lerp(A, B, 0.8), `${ci}`, { dx: 20, dy: -12, size: 16, color: 'ink' });
-      } else {
+      } else if (!C.lesson || s.pyLessonProblem) {
         if (kind === 0) T(b, mid(Cc, E), C.answer ? `x=${f(ce)}` : 'x', { dy: 19, size: 17, color: 'amber' });
         if (kind === 1) T(b, mid(E, A), C.answer ? `x=${f(y)}` : 'x', { dx: 26, dy: -4, size: 17, color: 'amber' });
         if (kind === 2) T(b, mid(D, E), C.answer ? `x=${f(M.de)}` : 'x', { dx: 20, dy: 12, size: 17, color: 'amber' });
-        if (C.review && kind === 2 && C.step >= 3) T(b, lerp(A, B, 0.8), `AB=${ci}`, { dx: 20, dy: -12, size: 15, color: 'ink' });
-        if (C.review && kind !== 2 && C.step >= 4) T(b, mid(E, B), `y=${f(y)}`, { dy: 18, size: 15, color: 'sky' });
+        if (C.review && kind === 2 && C.step >= 3 && (!C.lesson || C.calculation)) T(b, lerp(A, B, 0.8), `AB=${ci}`, { dx: 20, dy: -12, size: 15, color: 'ink' });
+        if (C.review && kind !== 2 && C.step >= 4 && (!C.lesson || (kind === 1 ? C.answer : C.calculation))) T(b, mid(E, B), `y=${f(y)}`, { dy: 18, size: 15, color: 'sky' });
       }
     },
     steps: (M) => [
@@ -202,14 +203,14 @@
     model: (s) => reflOf(s),
     draw(b, s, M, C) {
       const { d, p, q, t, ap, pb, tot, min2, mini, onBest } = M, prob = C.problem;
-      const tt = prob || C.review && C.step < 2 ? d / 2 : C.review ? M.tStar : t;
+      const tt = C.lesson ? t : prob || C.review && C.step < 2 ? d / 2 : C.review ? M.tStar : t;
       const A = pt(0, -p), B = pt(d, -q), H = pt(0, 0), K = pt(d, 0), Pp = pt(tt, 0), A2 = pt(0, p);
       const showMirror = !prob && (!C.review || C.step >= 2);
       fit(b, { x0: -1, x1: d + 1, y0: -Math.max(p, q) - 0.2, y1: showMirror ? p + 0.4 : 1.4 }, { t: 40, b: 70, l: 36, r: 36 });
       const st = (n) => !C.review || C.step >= n;
       line(b, pt(-1, 0), pt(d + 1, 0), 'ink', 3); T(b, pt(d + 1, 0), 'ℓ', { dx: -4, dy: 16, size: 18 });
       line(b, A, H, 'muted', 2, { dash: [5, 5] }); line(b, B, K, 'muted', 2, { dash: [5, 5] }); b.right(H, K, A, { size: 9, color: 'ink' }); b.right(K, H, B, { size: 9, color: 'ink' });
-      const best = C.full ? onBest : C.review && C.step >= 2;
+      const best = C.lesson ? onBest : C.full ? onBest : C.review && C.step >= 2;
       line(b, A, Pp, best ? 'green' : 'sky', 4); line(b, Pp, B, best ? 'green' : 'sky', 4);
       if (showMirror) { line(b, A2, pt(d, -q), 'amber', 2.4, { dash: [6, 5] }); line(b, A, A2, 'muted', 1.6, { dash: [4, 5] }); b.point(A2, { color: 'amber', r: 4 }); T(b, A2, "A′", { dx: -16, dy: 4, size: 17, color: 'amber' }); }
       [[A, 'A', -1, -1], [B, 'B', 1, -1]].forEach(([q2, nm, dx, dy]) => { b.point(q2, { color: 'ink', r: 4.5 }); T(b, q2, nm, { dx: dx * 14, dy: dy * 14, size: 17 }); });
@@ -295,7 +296,7 @@
         const rc = (r) => [pt(r[0], r[1]), pt(r[0] + r[2], r[1]), pt(r[0] + r[2], r[1] - r[3]), pt(r[0], r[1] - r[3])];
         fillPoly(b, rc(r1), 'ink', 0.06); fillPoly(b, rc(r2), 'sky', 0.14); poly(b, rc(r1), 'ink', 2.6); poly(b, rc(r2), 'ink', 2.6);
         const S = pt(X0, 0), Eg = pt(X0 + nw, -nh);
-        if (st(3)) { line(b, S, Eg, 'amber', 4.2); T(b, S, 'A', { dx: -12, dy: 14, size: 16, color: 'amber' }); T(b, Eg, 'G', { dx: 12, dy: -12, size: 16, color: 'rose' }); T(b, mid(S, Eg), isSqN(v[route]) ? `x=${isq(v[route])}` : `x²=${v[route]}`, { dx: 0, dy: 18, size: 16, color: 'amber' }); T(b, pt(X0 + nw / 2, 0), `${nw}`, { dy: 16, size: 15, color: 'sky' }); T(b, pt(X0 + nw, -nh / 2), `${nh}`, { dx: 12, size: 15, color: 'green' }); }
+        if (st(3)) { line(b, S, Eg, 'amber', 4.2); T(b, S, 'A', { dx: -12, dy: 14, size: 16, color: 'amber' }); T(b, Eg, 'G', { dx: 12, dy: -12, size: 16, color: 'rose' }); T(b, mid(S, Eg), C.lesson && !C.answer ? (C.calculation ? `x²=${v[route]}` : 'x') : isSqN(v[route]) ? `x=${isq(v[route])}` : `x²=${v[route]}`, { dx: 0, dy: 18, size: 16, color: 'amber' }); T(b, pt(X0 + nw / 2, 0), `${nw}`, { dy: 16, size: 15, color: 'sky' }); T(b, pt(X0 + nw, -nh / 2), `${nh}`, { dx: 12, size: 15, color: 'green' }); }
         T(b, pt(X0 + nw / 2, 0), st(3) ? '' : ROUTE_NM[route], { dy: 18, size: 14, color: 'ink' });
       }
     },
@@ -372,7 +373,7 @@
       if (st(2)) {
         const X0 = ox, rc = [pt(X0, 0), pt(X0 + W, 0), pt(X0 + W, -h), pt(X0, -h)];
         fillPoly(b, rc, 'sky', 0.12); poly(b, rc, 'ink', 2.8);
-        if (st(3)) { line(b, pt(X0, 0), pt(X0 + W, -h), 'amber', 4.2); T(b, pt(X0, 0), 'A', { dx: -12, dy: 14, size: 16, color: 'amber' }); T(b, pt(X0 + W, -h), 'B', { dx: 12, dy: -12, size: 16, color: 'rose' }); T(b, pt(X0 + W / 2, -h / 2), x ? `x=${x}` : `x²=${x2}`, { dx: 0, dy: 20, size: 16, color: 'amber' }); }
+        if (st(3)) { line(b, pt(X0, 0), pt(X0 + W, -h), 'amber', 4.2); T(b, pt(X0, 0), 'A', { dx: -12, dy: 14, size: 16, color: 'amber' }); T(b, pt(X0 + W, -h), 'B', { dx: 12, dy: -12, size: 16, color: 'rose' }); T(b, pt(X0 + W / 2, -h / 2), C.lesson && !C.answer ? 'x' : x ? `x=${x}` : `x²=${x2}`, { dx: 0, dy: 20, size: 16, color: 'amber' }); }
         T(b, pt(X0 + W / 2, 0), half ? `\\frac{${L}}{2}=${L / 2}` : `${L}`, { dy: 18, size: 15, color: 'sky' }); T(b, pt(X0 + W, -h / 2), `${h}`, { dx: 14, size: 15, color: 'green' });
       }
     },

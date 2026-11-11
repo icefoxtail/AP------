@@ -361,6 +361,17 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-difficulty5-missing-list.test.mjs']
   },
   {
+    // The subunit group table (archive/data/archive2-subunit-groups.json) is rebuilt from the decisions in
+    // archive/data/meta-os/subunit-group-rules.json; a stale table, a key in two groups or a missing key fails here.
+    label: 'tests/meta-os-subunit-groups.test.mjs',
+    args: ['--test', 'tests/meta-os-subunit-groups.test.mjs']
+  },
+  {
+    // Meta OS dictionaries are self-consistent and the read-only audit runs on the real data (no operating counts pinned).
+    label: 'tests/meta-os-audit.test.mjs',
+    args: ['--test', 'tests/meta-os-audit.test.mjs']
+  },
+  {
     label: 'tests/archive2-original-source-verification-shard.test.mjs',
     args: ['--test', 'tests/archive2-original-source-verification-shard.test.mjs']
   },

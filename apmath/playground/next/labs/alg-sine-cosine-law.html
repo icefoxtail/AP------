@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <style>
 /* 원본 해설 문자열에 남아 있는 Tailwind 클래스 이름만 최소한으로 되살립니다 */
 .font-bold{font-weight:800}.mb-1{margin-bottom:4px}.mt-1\.5{margin-top:6px}.my-1{margin:4px 0}
@@ -22,12 +23,20 @@
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="alg-sine-cosine-law/lesson-core.js"></script>
+<script defer src="alg-sine-cosine-law/lesson-a.js"></script>
+<script defer src="alg-sine-cosine-law/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 
 window.addEventListener('DOMContentLoaded', function () {
+    const lsActive = s => !!(s && (s.lessonOn || s.lessonEntry));
+    const lsValue = (target, shown, hidden) => lsActive(SS) && !SS.lsExplore && !SS.lsShowAnswer && SS.lsTarget === target ? hidden : shown;
     /* ==========================================================================
        대수 · 사인·코사인법칙 도형 탐구 (AP Math Lab 2.0 이식본) — 기본 8 + 심화 8 = 16장면
        원본: labs/대수/part2b.html
@@ -2464,7 +2473,10 @@ window.addEventListener('DOMContentLoaded', function () {
     const gcdL = (a, b) => (b ? gcdL(b, a % b) : Math.abs(a));
     const rintL = (n) => Math.floor(Math.random() * n);
     const pickL = (arr, not) => { let x; do x = arr[rintL(arr.length)]; while (arr.length > 1 && x === not); return x; };
-    function varierL(gen) { let cur = gen(null); return { cur: () => cur, next: () => (cur = gen(cur)) }; }
+    function varierL(gen) {
+      let cur = gen(null); const first = cur;
+      return { first: () => first, cur: () => lsActive(window.lab && window.lab.s) ? first : cur, next: () => (cur = gen(cur)) };
+    }
     const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-ls-new>새 문제</button></div>`;
     document.addEventListener('click', (ev) => {
       const hit = ev.target && ev.target.closest && ev.target.closest('[data-ls-new]');
@@ -2706,8 +2718,9 @@ window.addEventListener('DOMContentLoaded', function () {
     const rtP = (n) => { const [o, i] = sq2(n); return i === 1 ? String(o) : (o === 1 ? '' : String(o)) + `√${i}`; };
     const mkVar = (list, build) => {
       let idx = 0, cur = build(list[0], 0);
+      const first = cur;
       return {
-        cur: () => cur, idx: () => idx, count: list.length,
+        first: () => first, cur: () => lsActive(window.lab && window.lab.s) ? first : cur, idx: () => idx, count: list.length,
         set: (i) => { idx = i; cur = build(list[i], i); return cur; },
         next: () => { let i; do { i = rintL(list.length); } while (list.length > 1 && i === idx); idx = i; cur = build(list[i], i); return cur; }
       };
@@ -2853,7 +2866,7 @@ window.addEventListener('DOMContentLoaded', function () {
           dPoly([A, B, H], 'rgba(52, 211, 153, 0.18)', C.green, 2.2);
           dPoly([A, H, Cp], 'rgba(56, 189, 248, 0.18)', C.cyan, 2.2);
           drawRightAngle(H, Cp, A, 11, C.gold);
-          ahBadge(H, A, B, Cp, `AH = ${AH}`);
+          ahBadge(H, A, B, Cp, lsValue('height', `AH = ${AH}`, 'AH = ?'));
         }
         if (st >= 3) drawDimension(B, Cp, 56, `BC = ${BH} + ${CH} = ${BC}`, C.gold);
         nameV(B, 'B', cen); nameV(A, 'A', cen); nameV(Cp, 'C', cen);
@@ -2980,7 +2993,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (st >= 1) { drawRightAngle(D, A, B, 11, C.gold); drawRightAngle(E, A, Cp, 11, C.gold); }
       if (o.kind === 'bas-5' && st >= 2) {
         dCircle(M, (a / 2) * F.u, C.purple, 'rgba(192, 132, 252, 0.08)', 2.6, [6, 4]);
-        dBadge(M.x, M.y + 0.45 * (a / 2) * F.u + 8, `지름 BC = ${a},  R = ${a / 2}`, C.purple);
+        dBadge(M.x, M.y + 0.45 * (a / 2) * F.u + 8, lsValue('radius', `지름 BC = ${a},  R = ${a / 2}`, `지름 BC = ${a},  R = ?`), C.purple);
         BRD.point(M, { color: C.purple, r: 3.5 });
       }
       if (o.kind === 'adv-1' && st >= 1) {
@@ -2992,7 +3005,7 @@ window.addEventListener('DOMContentLoaded', function () {
         dArcAngle(D, A, E, 'x', C.cyan, 18); dArcAngle(B, A, Cp, 'x', C.cyan, 22);
         dArcAngle(E, A, D, 'y', C.pink, 18, 2); dArcAngle(Cp, A, B, 'y', C.pink, 22, 2);
         dLine(D, E, C.red, 3.0);
-        cornerBadgeR(0, `DE = ${o.deLabel}`, C.red);
+        cornerBadgeR(0, lsValue('de', `DE = ${o.deLabel}`, 'DE = ?'), C.red);
       }
       nameV(B, 'B', cen); nameV(Cp, 'C', cen); nameV(A, 'A', cen);
       dVertex(D, 'D', C.red, { x: 12, y: -4, align: 'left' }); dVertex(E, 'E', C.red, { x: -12, y: -4, align: 'right' });
@@ -3114,7 +3127,7 @@ window.addEventListener('DOMContentLoaded', function () {
           dLine(A, Fp, C.gold, 3.6); dLine(A, E, C.gold, 3.6); dLine(B, Fp, C.green, 3.4); dLine(B, D, C.green, 3.4); dLine(Cp, D, C.cyan, 3.4); dLine(Cp, E, C.cyan, 3.4);
           markTick(A, Fp, 1, C.gold); markTick(A, E, 1, C.gold); markTick(B, Fp, 2, C.green); markTick(B, D, 2, C.green); markTick(Cp, D, 3, C.cyan); markTick(Cp, E, 3, C.cyan);
           drawDimension(B, D, 26, `BD = ${s - b}`, C.green); drawDimension(D, Cp, 26, `CD = ${s - c}`, C.cyan);
-          iBadge(A, Fp, `AF = ${s - a}`, C.gold, cen);
+          iBadge(A, Fp, lsValue('tangent', `AF = ${s - a}`, 'AF = ?'), C.gold, cen);
         }
         nameV(B, 'B', cen); nameV(Cp, 'C', cen); nameV(A, 'A', cen);
         dVertex(D, 'D', C.red, { x: 0, y: -14, align: 'center' }); dVertex(E, 'E', C.red, { x: 13, y: -3, align: 'left' }); dVertex(Fp, 'F', C.red, { x: -13, y: -3, align: 'right' });
@@ -3268,7 +3281,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (st >= 1) {
           dPoly([P, O, T], 'rgba(251, 113, 133, 0.14)', C.red, 2.2);
           drawRightAngle(T, P, O, 11, C.red);
-          dBadge((P.x + T.x) / 2 - 24, (P.y + T.y) / 2 + 22, `PT = ${rtP(V.PT2)}`, C.red);
+          dBadge((P.x + T.x) / 2 - 24, (P.y + T.y) / 2 + 22, lsValue('tangent', `PT = ${rtP(V.PT2)}`, 'PT = ?'), C.red);
         }
         if (st >= 2) {
           dLine(O, A, C.cyan, 1.8, [4, 3]); dLine(O, B, C.cyan, 1.8, [4, 3]);
@@ -3321,7 +3334,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (st >= 2) {
           dPoly([P, A, D], 'rgba(251, 191, 36, 0.16)', C.gold, 2.5); dPoly([P, Cp, B], 'rgba(52, 211, 153, 0.16)', C.green, 2.5);
           dArcAngle(P, B, D, '', C.cyan, 40, 2);
-          dBadge(D.x, D.y + 32, `PD = ${PD}`, C.green);
+          dBadge(D.x, D.y + 32, lsValue('pd', `PD = ${PD}`, 'PD = ?'), C.green);
         }
         nameV(P, 'P', cen); nameV(A, 'A', cen, C.gold); nameV(B, 'B', cen, C.gold); nameV(Cp, 'C', cen, C.green); nameV(D, 'D', cen, C.green);
         if (st >= 3) banner(rect, [`PA·PB = PC·PD  →  PD = ${PD}`, `AD : BC = PA : PC = ${PA} : ${PC}`]);
@@ -3364,7 +3377,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (st >= 1) {
           dArcAngle(P, Cp, A, '', C.cyan, 30);
           markTick(A, B, 2, C.green); markTick(B, Cp, 2, C.green); markTick(A, Cp, 2, C.green);
-          cornerBadge(0, `한 변 AC = ${AC}`, C.green); cornerBadge(1, '∠APC = 120°', C.cyan);
+          cornerBadge(0, lsValue('side', `한 변 AC = ${AC}`, '한 변 AC = ?'), C.green); cornerBadge(1, '∠APC = 120°', C.cyan);
         }
         if (st >= 2) {
           dArcAngle(P, A, B, '', C.gold, 22);
@@ -3598,6 +3611,67 @@ window.addEventListener('DOMContentLoaded', function () {
       { id: 'ext', title: '기출 확장 · 외접원 위의 점', short: '기출 확장', scenes: [extScene('e1'), extScene('e2')] }
     ];
 
+    /* 원클릭 해설: 원래 탐구와 첫 문제를 분리하고 같은 source 도형을 재생합니다. */
+    const lsScenes = groups.flatMap(group => group.scenes);
+    const lsById = Object.fromEntries(lsScenes.map(sc => [sc.id, sc]));
+    const lsInquiry = Object.fromEntries(lsScenes.map(sc => [sc.id, sc.question]));
+    for (const sc of lsScenes) {
+      const extended = sc.id.startsWith('ext-'), kind = sc.id === 'ext-1' ? 'e1' : 'e2';
+      sc.lsSource = {
+        first: sc.vary.first,
+        question: () => extended ? (kind === 'e1' ? text1 : text2)(sc.vary.first()) : rm(sc.vary.first().text),
+        steps: () => extended ? stepsL(kind, sc.vary.first()) : sc.vary.first().steps
+      };
+    }
+    const lsSource = window.APL_SCL_SOURCE = {
+      scenes: lsScenes,
+      first: id => lsById[id].lsSource.first(),
+      question: id => lsById[id].lsSource.question(),
+      steps: id => lsById[id].lsSource.steps(),
+      inquiry: id => lsInquiry[id],
+      exploreSteps: id => EXPLORE_STEPS[id] || [],
+      defaultT: id => id.startsWith('ext-')
+        ? phiToT(geomL(5, 6), (id === 'ext-1' ? 120 : 150) * Math.PI / 180)
+        : initialSlider(P0(id)),
+      circleT: deg => phiToT(geomL(5, 6), deg * Math.PI / 180)
+    };
+    for (const sc of lsScenes) {
+      const original = { draw: sc.draw, view: sc.view, question: sc.question, reviewTop: sc.reviewTop, steps: sc.steps, tick: sc.tick };
+      const call = (value, ...args) => typeof value === 'function' ? value(...args) : value;
+      sc.question = (s, lab) => lsActive(s) ? (s.lsQuestion || sc.lsSource.question()) : call(original.question, s, lab);
+      sc.reviewTop = (s, lab) => lsActive(s) ? '' : call(original.reviewTop, s, lab);
+      sc.steps = (s, lab) => lsActive(s) ? ['주어진 조건과 구할 것', '성질을 연결하고 식 세우기', '계산과 결론'] : call(original.steps, s, lab);
+      sc.view = (s, lab) => lsActive(s) ? {} : call(original.view, s, lab);
+      if (original.tick) sc.tick = (s, dt, lab) => lsActive(s) ? false : original.tick(s, dt, lab);
+      sc.draw = (b, s, value, lab) => {
+        if (!lsActive(s) || b.thumb) return original.draw(b, s, value, lab);
+        const drawState = { ...s, cur: sc.id, playing: false,
+          step: s.lessonEntry ? 0 : Math.min(s.step || 0, s.lsShowAnswer ? 3 : 2),
+          lsShowAnswer: !s.lessonEntry && !!s.lsShowAnswer };
+        const frameLab = { ...lab, s: drawState, tab: s.lsExplore ? 'explore' : 'review', _answerOpen: () => drawState.lsShowAnswer };
+        const path = b.path;
+        let edge;
+        // 조건 도형의 실제 변 하나만 따라갑니다. 치수선이나 별도 좌표를 합성하지 않습니다.
+        b.path = function (points, options = {}) {
+          if (!edge && points.length > 1 && options.width >= 2.4 && options.color && (!options.dash || Array.isArray(options.dash) && !options.dash.length)) {
+            const xy = p => ({ x: p.x ?? p[0], y: p.y ?? p[1] });
+            const a = xy(points[0]), z = xy(points[1]);
+            if (Number.isFinite(a.x + a.y + z.x + z.y) && Math.hypot(z.x - a.x, z.y - a.y) > 1) edge = [a, z];
+          }
+          return path.call(this, points, options);
+        };
+        // 원본 frame()의 METRIC → v.summary 주입도 재생 패널로 넘어가지 않게 격리합니다.
+        try { original.draw(b, drawState, {}, frameLab); } finally { b.path = path; }
+        if (edge && !s.lessonEntry && s.lsTrace > 0) {
+          const t = Math.max(0, Math.min(1, s.lsTrace)), [a, z] = edge;
+          const p = { x: a.x + (z.x - a.x) * t, y: a.y + (z.y - a.y) * t };
+          b.seg(a, p, { color: 'violet', width: 4.6, alpha: 0.75 });
+          b.point(p, { color: 'violet', r: 4.5 });
+        }
+      };
+    }
+    const lessons = window.APL_SCL_LESSONS ? window.APL_SCL_LESSONS.install(lsScenes, lsSource) : {};
+
     APLab.createLab({
       id: 'alg-sine-cosine-law',
       stagedReveal: true,
@@ -3617,6 +3691,7 @@ window.addEventListener('DOMContentLoaded', function () {
           onInput: (s) => { s.t = Math.max(0, Math.min(1, s.t)); }
         }
       },
+      lessons,
       groups
     });
 
