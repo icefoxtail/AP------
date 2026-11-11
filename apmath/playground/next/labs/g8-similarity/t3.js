@@ -197,7 +197,7 @@
     model: (s) => { const m = clamp(Math.round(s.smOm), 1, 2), n = clamp(Math.round(s.smOn), 3, 4); return { m, n, rho: s.smOrot, t: s.smOt || 0, ...rotGeo(m, n, s.smOrot, s.smOt || 0) }; },
     draw(b, s, M, C) {
       const prob = C.problem, st = C.step, pk = M.pk;
-      const g = prob ? rotGeo(pk.m, pk.n, 210, C.solution && C.solStep >= 3 ? 1 : 0) : rotGeo(M.m, M.n, M.rho, C.t);
+      const g = prob ? rotGeo(pk.m, pk.n, 210, C.lesson ? (s.smOt || 0) : C.solution && C.solStep >= 3 ? 1 : 0) : rotGeo(M.m, M.n, M.rho, C.t);
       const all = [g.A, g.B, g.C, g.D, g.E], bb0 = bboxOf(all);
       const full = prob ? rotGeo(pk.m, pk.n, 210, 0) : rotGeo(M.m, M.n, M.rho, 0);
       const bbU = unionBox(bboxOf([full.A, full.B, full.C, full.D, full.E]), bb0);
