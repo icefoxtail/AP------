@@ -123,15 +123,80 @@
     ];
   }
 
+  {
+    const id = 'sm8-proof', p = fixed(id);
+    lessons[id] = [
+      concept(id, '중선의 비', '무게중심의 비를 닮음으로', 'AG:GD=BG:GE=2:1', [
+        ch('중선과 중점 연결', [cue(0, 'D와 E는 각 변의 중점이고 두 중선이 G에서 만나요.'), cue(6, '중점연결정리로 DE∥AB, DE:AB=1:2예요.', 1)]),
+        ch('두 삼각형의 대응', [cue(0, '엇각과 맞꼭지각으로 △GED∽△GBA예요.', 2), cue(6, 'G↔G, E↔B, D↔A의 대응 순서를 따라가요.', 2)]),
+        ch('돌려서 대응 방향 확인', [{ at: 0, say: '작은 삼각형을 반 바퀴 돌려 대응변 방향을 맞춰요.', to: { smGr: 1 }, dur: 4 }, finish(6, '대응변의 비를 뒤집으면 AG:GD=BG:GE=2:1예요.', 3)])
+      ], '두 중선의 교점 G가 중선을 나누는 비를 중점연결정리와 닮음으로 설명해 보세요.'),
+      ...[0, 1, 2].map(kind => {
+        const given = kind === 0 ? 3 * p.t : kind === 1 ? 2 * p.s : 2 * p.t;
+        const target = kind === 1 ? 'GE' : 'GD', givenName = kind === 0 ? 'AD' : kind === 1 ? 'BG' : 'AG';
+        const a = kind === 1 ? p.s : p.t, divisor = kind === 0 ? 3 : 2;
+        return problem(id, kind, ['중선 전체', 'BG→GE', 'AG→GD'][kind], '무게중심의 부분 길이', `x=${a}`, [
+          ch('전체와 부분을 구별', [cue(0, `${givenName}=${given}이고 G는 무게중심이에요.`), cue(6, kind === 0 ? 'AD는 중선 전체이고 GD가 x예요.' : `${givenName}는 꼭짓점 쪽이고 ${target}가 x예요.`, 1)]),
+          ch('닮음에서 얻은 중선의 비', [cue(0, '중점연결정리와 닮음으로 꼭짓점 쪽:중점 쪽은 2:1이에요.', 2), calc(6, kind === 0 ? '전체는 같은 길이 세 칸이고 GD는 한 칸이에요.' : `${givenName}는 두 칸, ${target}는 한 칸이에요.`, 3)]),
+          ch('구하는 한 칸 계산', [cue(0, `${target}는 ${given}÷${divisor}로 계산해요.`, 3), finish(6, `따라서 x=${a}예요. 전체를 반으로 나누지 않아요.`)])
+        ]);
+      })
+    ];
+  }
+  {
+    const id = 'sm8-six', p = fixed(id), total = 6 * p.u;
+    lessons[id] = [
+      concept(id, '여섯 넓이', '세 중선이 나누는 넓이', '작은 삼각형의 넓이=전체 넓이÷6', [
+        ch('같은 높이와 같은 밑변', [cue(0, 'D는 BC의 중점이므로 BD와 DC가 같아요.'), cue(6, 'GBD와 GCD는 G에서의 높이도 같아 넓이가 같아요.', 1)]),
+        ch('중선의 비와 작은 넓이', [cue(0, 'GAB와 GBD는 B에서 AD로 내린 높이가 같아요.', 2), cue(6, 'AG:GD=2:1이므로 GAB의 넓이는 GBD의 두 배예요.', 2)]),
+        ch('모든 조각으로 넓히기', [cue(0, 'F가 AB의 중점이라 GAF와 GFB는 GAB의 절반이에요.', 2), finish(6, '같은 방법으로 여섯 조각이 같아 각각 전체 넓이÷6이에요.', 3)])
+      ], '세 중선이 만든 작은 삼각형들의 넓이가 같은 이유를 밑변과 높이로 설명해 보세요.'),
+      ...[0, 1, 2].map(kind => {
+        const a = kind === 0 ? p.u : kind === 1 ? total : 2 * p.u;
+        return problem(id, kind, ['작은 넓이', '전체 넓이', '사각형 넓이'][kind], '무게중심과 넓이의 비', `x=${a}`, [
+          ch('전체와 물어본 영역', [cue(0, kind === 1 ? `작은 삼각형 GBD의 넓이는 ${p.u}예요.` : `삼각형 ABC의 전체 넓이는 ${total}예요.`), cue(6, kind === 0 ? '구하는 것은 작은 삼각형 GBD의 넓이예요.' : kind === 1 ? '구하는 것은 여섯 조각을 합친 ABC의 넓이예요.' : '사각형 AFGE는 GAF와 GAE 두 조각이에요.', 1)]),
+          ch('중점과 무게중심의 성질', [cue(0, '같은 밑변과 높이, 중선의 2:1 비를 연결해요.', 2), calc(6, '세 중선이 나눈 여섯 삼각형의 넓이는 모두 같아요.', 3)]),
+          ch('필요한 조각 수만 계산', [cue(0, kind === 0 ? `${total}÷6으로 한 조각을 구해요.` : kind === 1 ? `${p.u}×6으로 전체를 구해요.` : `${total}÷6×2로 두 조각을 구해요.`, 3), finish(6, `따라서 x=${a}예요. 길이의 단위가 아닌 넓이예요.`)])
+        ]);
+      })
+    ];
+  }
+  {
+    const id = 'sm8-gg', p = fixed(id), BC = 6 * p.k, GG = 2 * p.k;
+    lessons[id] = [
+      concept(id, '거리의 비', '두 무게중심 사이의 거리', 'GG′=BC÷3', [
+        ch('두 삼각형의 중선', [cue(0, 'D는 BC의 중점이고 P, Q는 BD, DC의 중점이에요.'), cue(6, 'G는 ABD, G′는 ADC의 무게중심이에요.', 1)]),
+        ch('같은 길이와 같은 비', [cue(0, 'PQ=PD+DQ=BC÷2예요.', 2), cue(6, 'AG:AP=AG′:AQ=2:3이고 A의 각이 공통이에요.', 2)]),
+        ch('닮음비와 밑변의 비 연결', [cue(0, '△AGG′∽△APQ이므로 GG′는 PQ의 3분의 2예요.', 2), finish(6, '절반의 3분의 2이므로 GG′=BC÷3이에요.', 3)])
+      ], 'G, G′가 각각 △ABD, △ADC의 무게중심일 때 GG′와 BC의 길이를 비교해 보세요.'),
+      ...[0, 1].map(kind => problem(id, kind, kind ? '밑변 BC' : '거리 GG′', '두 무게중심의 길이 계산', `x=${kind ? BC : GG}`, [
+        ch('무게중심이 속한 삼각형', [cue(0, 'G는 ABD, G′는 ADC의 무게중심이에요.'), cue(6, kind ? `GG′=${GG}이고 밑변 BC가 x예요.` : `BC=${BC}이고 두 점 사이 GG′가 x예요.`, 1)]),
+        ch('중점과 닮음 연결', [cue(0, 'P, Q를 각 밑변의 중점으로 잡으면 PQ=BC÷2예요.', 2), calc(6, '△AGG′∽△APQ의 비가 2:3이라 GG′=BC÷3예요.', 3)]),
+        ch('방향을 확인하고 계산', [cue(0, kind ? `전체 BC는 GG′의 세 배라 ${GG}×3이에요.` : `GG′는 BC의 3분의 1이라 ${BC}÷3이에요.`, 3), finish(6, `따라서 x=${kind ? BC : GG}예요. 중점 간 거리 PQ와 구별해요.`)])
+      ]))
+    ];
+  }
+  {
+    const id = 'sm8-chain', p = fixed(id), S = 18 * p.c;
+    lessons[id] = [
+      concept(id, '넓이의 비', '연속하는 무게중심의 넓이', '△G′BD=△ABC÷18', [
+        ch('첫 번째 무게중심의 높이', [cue(0, 'G는 ABC의 무게중심이고 D는 BC의 중점이에요.'), cue(6, 'GD는 AD의 3분의 1이라 GBC 넓이도 전체의 3분의 1이에요.', 1)]),
+        ch('기준 삼각형을 바꾸기', [cue(0, '이번 G′는 ABC가 아니라 GBC의 무게중심이에요.', 2), cue(6, 'G′BC의 넓이는 GBC의 3분의 1로 한 번 더 줄어요.', 2)]),
+        ch('마지막에 중점으로 나누기', [cue(0, 'BD=DC이고 높이가 같아 G′BD는 G′BC의 절반이에요.', 2), finish(6, '3으로 두 번, 2로 한 번 나누어 △G′BD=△ABC÷18예요.', 3)])
+      ], 'G는 △ABC, G′는 △GBC의 무게중심일 때 △G′BD와 △ABC의 넓이를 비교해 보세요.', { smGay: 7 }),
+      ...[0, 1].map(kind => problem(id, kind, kind ? '전체 넓이' : '작은 넓이', '연속 무게중심 넓이 계산', `x=${kind ? S : p.c}`, [
+        ch('두 무게중심과 주어진 넓이', [cue(0, kind ? `작은 삼각형 G′BD의 넓이는 ${p.c}예요.` : `전체 삼각형 ABC의 넓이는 ${S}예요.`), cue(6, 'G는 ABC, G′는 GBC의 무게중심이에요.', 1)]),
+        ch('두 번 바뀌는 기준', [cue(0, 'GBC는 ABC의 3분의 1, G′BC는 GBC의 3분의 1이에요.', 2), calc(6, 'D가 BC의 중점이므로 G′BD는 G′BC의 절반이에요.', 3)]),
+        ch('전체와 부분 방향 확인', [cue(0, kind ? `전체로 돌아가려면 ${p.c}×2×3×3을 계산해요.` : `${S}÷3÷3÷2로 작은 영역까지 내려가요.`, 4), finish(6, `따라서 x=${kind ? S : p.c}예요. 마지막 절반까지 반영했어요.`)])
+      ]))
+    ];
+  }
+
   // These hooks are read by the lesson-only route. Exploration and manual
   // current-question solving retain the original source drawing and controls.
   for (const id of Object.keys(lessons).filter(id => /^sm[678]-/.test(id))) {
     const D = source(id);
-    D.lessonQuestion = (M, s, Q) => {
-      if (!s.smLessonProblem) return s.smCQuestion || D.question;
-      const labels = ['①', '②', '③', '④', '⑤'];
-      return `<div class="sm-q">${Q.html != null ? Q.html : Q.stem}</div><div class="sm-lesson-choices">${Q.choices.map((choice, i) => `<span>${labels[i]} ${choice.h != null ? choice.h : '$' + choice.t + '$'}</span>`).join(' ')}</div>`;
-    };
+    D.lessonQuestion = (M, s) => s.smLessonProblem ? null : s.smCQuestion || D.question;
     D.lessonDraw = (b, s, M, C, sol) => {
       if (s.smLessonProblem) {
         const stage = C.answer ? sol.steps.length : Math.max(1, Math.min(sol.steps.length - 1, C.step || 1));
@@ -140,6 +205,18 @@
         step: C.answer ? 3 : Math.min(2, C.step || 0), t: s.smGr || 0 });
       const g = s.smLessonProblem ? G.solutionGeometry(id, M.pk) : id === 'sm8-six' ? G.geo.sixGeo(s, false, M.u)
         : id === 'sm8-gg' ? G.geo.ggGeo(s, false, M.k) : id === 'sm8-chain' ? G.geo.chGeo(s, false, M.c) : M;
+      if (!s.smLessonProblem && !C.entry) {
+        if (/^sm6-(trio|ab2|ac2|ah2)$/.test(id) && C.step >= 2) {
+          G.ang(b, g.A, g.B, g.H, { color: 'rose', rings: 1, r: 21 });
+          G.ang(b, g.C, g.A, g.B, { color: 'rose', rings: 1, r: 21 });
+          G.ang(b, g.A, g.H, g.C, { color: 'violet', rings: 2, r: 25 });
+          G.ang(b, g.B, g.A, g.C, { color: 'violet', rings: 2, r: 25 });
+        }
+        if (id === 'sm8-six' && C.step > 0) {
+          const pairs = C.step === 1 ? [[g.G, g.B, g.D], [g.G, g.D, g.C]] : [[g.G, g.A, g.B], [g.G, g.B, g.D]];
+          if (!C.answer) for (const [i, triangle] of pairs.entries()) { G.fillPoly(b, triangle, i ? 'green' : 'sky', .18); G.poly(b, triangle, i ? 'green' : 'sky', 3.8); }
+        }
+      }
       const pair = id === 'sm7-shadow' ? [g.A, g.Atop] : id === 'sm7-river' ? [g.Q, g.D]
         : id === 'sm8-proof' || id === 'sm8-chain' ? [g.A, g.D] : id === 'sm8-six' ? [g.B, g.D]
           : id === 'sm8-gg' ? [g.B, g.C] : id === 'sm6-area' ? [g.A, g.B] : [g.A, g.H];
