@@ -15,6 +15,13 @@
   const W = 12;
   const half = (v) => (Number.isInteger(v) ? String(v) : String(Math.round(v * 10) / 10));
   const BOX = [-1.0, -3.4, 13.0, 5.4];
+  const ready = (s, C, key) => !C.lesson || (!s.lessonEntry && !!s[key]);
+  // Trace the existing segment without changing any given length or ratio.
+  const trace = (b, s, C, y = 0.46) => {
+    if (!C.lesson || s.lessonEntry) return;
+    const t = clamp(Number(s.plTrace) || 0, 0, 1);
+    if (t > 0) b.seg({ x: 0, y }, { x: W * t, y }, { color: 'green', width: 4.5 });
+  };
 
   const PARAMS = {
     mL: { value: 12, min: 6, max: 20, step: 2, color: 'amber', label: '선분 AB의 길이', format: (v) => `${v} cm`, onInput: (s) => { s.mC = Math.min(s.mC, s.mL - 2); } },
@@ -56,6 +63,7 @@
     id: 'm-mid', title: '두 중점 사이의 거리', short: '두 중점 사이',
     box: BOX,
     question: '점 C가 어디에 있어도 두 중점 M, N 사이의 거리는 왜 변하지 않을까요?',
+    lessonQuestion: (_M, _s, Q) => Q.stem,
     init: { mL: 12, mC: 4 },
     controls: ['mL', 'mC'],
     model: (s) => { const L = s.mL, a = Math.min(s.mC, L - 2), b = L - a; return { L, a, b, M: a / 2, N: a + b / 2, p: a / 2, q: b / 2, mn: L / 2 }; },
@@ -86,7 +94,7 @@
       [[0, 'A'], [M.M, 'M'], [M.a, 'C'], [M.N, 'N'], [M.L, 'B']].forEach(([c, n]) => pt(b, X(c), 0, n, { color: n === 'C' ? 'amber' : n === 'M' || n === 'N' ? 'green' : 'ink' }));
       const above = lenLabels(b, X, 0, [{ a: 0, c: M.M, symbol: '○', value: M.p, color: 'sky' }, { a: M.M, c: M.a, symbol: '○', value: M.p, color: 'sky' }, { a: M.a, c: M.N, symbol: '△', value: M.q, color: 'rose' }, { a: M.N, c: M.L, symbol: '△', value: M.q, color: 'rose' }].map(q => ({ ...q, text: C.tab === 'explore' ? `${q.symbol} ${half(q.value)}` : q.symbol })));
       const reverse = (s.plSeed || 0) % 2 === 1;
-      const showAB = C.tab === 'explore' || !reverse || (C.tab === 'review' && st >= 3);
+      const showAB = C.lesson ? !reverse || ready(s, C, 'plShowAnswer') : C.tab === 'explore' || !reverse || (C.tab === 'review' && st >= 3);
       // Staggered part labels must stay below the total-length bracket even
       // when each half is only a few screen pixels wide on a phone.
       const abY = b.W < 560 ? Math.min(-2, -(above + 8) / (b.k || 30)) : -2;
@@ -95,9 +103,9 @@
         PL.dim(b, { x: X(0), y: 2.4 }, { x: X(M.a), y: 2.4 }, `AC = ${M.a} cm`, { color: 'sky', dy: 18, width: 2.6 });
         PL.dim(b, { x: X(M.a), y: 2.4 }, { x: X(M.L), y: 2.4 }, `CB = ${M.b} cm`, { color: 'rose', dy: 18, width: 2.6 });
       }
-      const showMN = C.tab === 'explore' || reverse || (C.tab === 'review' && st >= 2);
+      const showMN = C.lesson ? reverse || ready(s, C, 'plShowAnswer') : C.tab === 'explore' || reverse || (C.tab === 'review' && st >= 2);
       PL.dim(b, { x: X(M.M), y: 3.9 }, { x: X(M.N), y: 3.9 }, showMN ? `MN = ${half(M.mn)} cm` : 'MN = ?', { color: C.hide ? 'rose' : 'green', dy: 18, width: st >= 3 ? 5 : 3.4 });
-      b.handle('C', { x: X(M.a), y: 0 }, { color: 'amber', ariaLabel: '점 C', drag: (w) => { s.mC = clamp(Math.round(((w.x * M.L) / W) / 2) * 2, 2, M.L - 2); } });
+      if (!C.lesson) b.handle('C', { x: X(M.a), y: 0 }, { color: 'amber', ariaLabel: '점 C', drag: (w) => { s.mC = clamp(Math.round(((w.x * M.L) / W) / 2) * 2, 2, M.L - 2); } });
     },
     quiz: (M, s, rng) => {
       const kind = (s.plSeed || 0) % 2;
@@ -117,6 +125,7 @@
     id: 'm-dbl', title: '중점의 중점', short: '중점의 중점',
     box: BOX,
     question: '중점을 두 번 잡으면 선분은 똑같은 몇 칸으로 나뉠까요?',
+    lessonQuestion: (_M, _s, Q) => Q.stem,
     init: { dL: 12 },
     controls: ['dL'],
     model: (s) => { const L = s.dL, q = L / 4; return { L, q, AM: 2 * q, AN: 3 * q }; },
@@ -142,6 +151,20 @@
       const st = C.step, X = (c) => (c * W) / 4, kind = (s.plSeed || 0) % 3; // 칸 번호 → x
       for (let i = 0; i < 4; i++) cell(b, X, 0, i, i < 2 ? 'sky' : 'rose', i < 2 ? hl(st, st === 1) : hl(st, st >= 2));
       [[0, 'A'], [2, 'M'], [3, 'N'], [4, 'B']].forEach(([c, n]) => pt(b, X(c), 0.46, n, { color: n === 'M' || n === 'N' ? 'green' : 'ink', dy: 22 }));
+      if (C.lesson) {
+        trace(b, s, C);
+        const given = kind === 0 ? [0, 4, `AB = ${M.L} cm`] : kind === 1 ? [2, 3, `MN = ${M.q} cm`] : [0, 3, `AN = ${M.AN} cm`];
+        PL.dim(b, { x: X(given[0]), y: -2.7 }, { x: X(given[1]), y: -2.7 }, given[2], { color: 'ink', dy: -14 });
+        if (ready(s, C, 'plGroupsReady')) {
+          const known = kind !== 2 && ready(s, C, 'plFirstReady');
+          PL.dim(b, { x: X(0), y: -1.2 }, { x: X(2), y: -1.2 }, known ? `AM = ${M.AM} cm` : 'AM = 2칸', { color: 'sky', dy: -14, size: 14 });
+          PL.dim(b, { x: X(2), y: -1.2 }, { x: X(4), y: -1.2 }, known ? `MB = ${M.AM} cm` : 'MB = 2칸', { color: 'sky', dy: -14, size: 14 });
+        }
+        if (ready(s, C, 'plUnitReady') || kind === 1) PL.dim(b, { x: X(2), y: 2 }, { x: X(3), y: 2 }, `MN = ${M.q} cm`, { color: 'rose', dy: 17, size: 14 });
+        const end = kind === 0 ? 3 : 4, target = kind === 0 ? 'AN' : 'AB', value = kind === 0 ? M.AN : M.L;
+        PL.dim(b, { x: X(0), y: 3.4 }, { x: X(end), y: 3.4 }, ready(s, C, 'plShowAnswer') ? `${target} = ${value} cm` : `${target} = ?`, { color: 'green', dy: 18, width: 4 });
+        return;
+      }
       if (!C.hide) {
         const amShown = C.tab === 'explore' || st >= (kind === 0 ? 1 : kind === 1 ? 2 : 3);
         const mbShown = C.tab === 'explore' || st >= (kind === 2 ? 3 : 1);
@@ -171,6 +194,7 @@
     id: 'm-tri', title: '삼등분점과 중점', short: '삼등분점과 중점',
     box: BOX,
     question: '삼등분점과 중점이 함께 나오면 선분을 몇 칸으로 나누어 생각하면 좋을까요?',
+    lessonQuestion: (_M, _s, Q) => Q.stem,
     init: { tL: 18 },
     controls: ['tL'],
     model: (s) => { const L = s.tL, q = L / 6; return { L, q, AP: 2 * q, PM: q }; },
@@ -190,8 +214,19 @@
     notes: () => note(['통분 대신 <b>눈금 번호(A 0칸, P 2칸, M 3칸, Q 4칸, B 6칸)</b>를 빼면 어떤 구간이든 바로 구할 수 있습니다.']),
     draw: (b, s, M, C) => {
       const st = C.step, X = (c) => (c * W) / 6, kind = (s.plSeed || 0) % 3, target = kind === 2 ? 3 : 2;
-      for (let i = 0; i < 6; i++) { const result = !C.hide && st >= 3 && (kind === 1 || i === target); cell(b, X, 0, i, result ? 'green' : 'sky', 1); }
+      for (let i = 0; i < 6; i++) { const result = !C.hide && (C.lesson ? ready(s, C, 'plShowAnswer') : st >= 3) && (kind === 1 || i === target); cell(b, X, 0, i, result ? 'green' : 'sky', 1); }
       [[0, 'A', 'ink'], [2, 'P', 'sky'], [3, 'M', 'amber'], [4, 'Q', 'sky'], [6, 'B', 'ink']].forEach(([c, n, col]) => pt(b, X(c), 0.46, n, { color: col, dy: 22 }));
+      if (C.lesson) {
+        trace(b, s, C);
+        const given = kind === 1 ? [2, 3, `PM = ${M.q} cm`] : [0, 6, `AB = ${M.L} cm`];
+        PL.dim(b, { x: X(given[0]), y: -2.7 }, { x: X(given[1]), y: -2.7 }, given[2], { color: 'ink', dy: -14 });
+        if (kind !== 1 && ready(s, C, 'plFirstReady')) PL.dim(b, { x: X(0), y: -1.2 }, { x: X(kind === 2 ? 4 : 2), y: -1.2 }, kind === 2 ? `AQ = ${2 * M.AP} cm` : `AP = ${M.AP} cm`, { color: 'sky', dy: -14, size: 14 });
+        if (kind !== 1 && ready(s, C, 'plSecondReady')) PL.dim(b, { x: X(0), y: 2 }, { x: X(3), y: 2 }, `AM = ${3 * M.q} cm`, { color: 'rose', dy: 17 });
+        if (kind === 1 && ready(s, C, 'plGroupsReady')) T(b, { x: W / 2, y: 2 }, 'PM은 1칸, AB는 6칸', { color: 'sky', size: 16 });
+        const label = kind === 1 ? 'AB' : kind === 2 ? 'MQ' : 'PM', value = kind === 1 ? M.L : M.q;
+        PL.dim(b, { x: X(kind === 1 ? 0 : target), y: 3.4 }, { x: X(kind === 1 ? 6 : target + 1), y: 3.4 }, ready(s, C, 'plShowAnswer') ? `${label} = ${value} cm` : `${label} = ?`, { color: 'green', dy: 18, width: 4 });
+        return;
+      }
       if (!C.hide && (kind !== 1 || st >= 3)) {
         PL.dim(b, { x: X(0), y: -1.9 }, { x: X(2), y: -1.9 }, `AP = ${M.AP} cm`, { color: 'sky', dy: -16, width: 3, size: 14 });
         PL.dim(b, { x: X(2), y: -1.9 }, { x: X(4), y: -1.9 }, `PQ = ${M.AP} cm`, { color: 'sky', dy: -16, width: 3, size: 14 });
@@ -215,6 +250,7 @@
     id: 'm-ratio', title: '길이의 비를 칸으로', short: '길이의 비 → 칸',
     box: [-1.0, -3.4, 13.0, 5.4],
     question: '"AC = 2CB"처럼 길이의 관계가 식으로 주어지면 어떻게 그림으로 바꿀까요?',
+    lessonQuestion: (_M, _s, Q) => Q.stem,
     init: { rK: 2, rU: 3 },
     controls: ['rK', 'rU'],
     model: (s) => { const k = s.rK, u = s.rU, n = k + 1; return { k, u, n, AB: n * u, AC: k * u, mc: (k / 2) * u, MB: (k / 2 + 1) * u }; },
@@ -236,6 +272,16 @@
       const st = C.step, X = (c) => (c * W) / M.n, reverse = (s.plSeed || 0) % 2 === 1;
       for (let i = 0; i < M.n; i++) { const isCB = i === M.n - 1; cell(b, X, 0, i, isCB ? 'rose' : 'sky', hl(st, st === 1 ? true : st === 2 ? !isCB : true), '1칸'); }
       [[0, 'A', 'ink'], [M.k / 2, 'M', 'green'], [M.k, 'C', 'amber'], [M.n, 'B', 'ink']].forEach(([c, n, col]) => pt(b, X(c), 0.46, n, { color: col, dy: 22 }));
+      if (C.lesson) {
+        trace(b, s, C);
+        T(b, { x: W / 2, y: -2.7 }, `AC = ${M.k}CB, M은 AC의 중점`, { size: 16 });
+        PL.dim(b, { x: X(0), y: -1.2 }, { x: X(M.k), y: -1.2 }, ready(s, C, 'plFirstReady') ? `AC = ${M.AC} cm` : `AC = ${M.k}칸`, { color: 'sky', dy: -14, size: 14 });
+        PL.dim(b, { x: X(M.k), y: -1.2 }, { x: X(M.n), y: -1.2 }, ready(s, C, 'plUnitReady') ? `CB = ${M.u} cm` : 'CB = 1칸', { color: 'rose', dy: -14, size: 14 });
+        const result = !reverse && ready(s, C, 'plShowAnswer');
+        PL.dim(b, { x: X(M.k / 2), y: 2 }, { x: X(result ? M.n : M.k), y: 2 }, result ? `MB = ${M.MB} cm` : reverse || ready(s, C, 'plSecondReady') ? `MC = ${M.mc} cm` : 'MC = ?', { color: result ? 'green' : 'rose', dy: 17 });
+        PL.dim(b, { x: X(0), y: 3.4 }, { x: X(M.n), y: 3.4 }, !reverse || ready(s, C, 'plShowAnswer') ? `AB = ${M.AB} cm` : 'AB = ?', { color: reverse ? 'green' : 'ink', dy: 18, width: 3 });
+        return;
+      }
       if (!C.hide) {
         PL.dim(b, { x: X(0), y: -1.9 }, { x: X(M.k), y: -1.9 }, `AC = ${M.k}칸 = ${M.AC} cm`, { color: 'sky', dy: -16, width: 3 });
         PL.dim(b, { x: X(M.k), y: -1.9 }, { x: X(M.n), y: -1.9 }, `CB = 1칸`, { color: 'rose', dy: -16, width: 3 });
@@ -268,6 +314,7 @@
     id: 'm-eq', title: '중점으로 방정식 세우기', short: '중점과 방정식',
     box: [-1.0, -3.0, 13.0, 5.0],
     question: 'M이 선분 AB의 중점이면 AM = MB입니다. 이 식으로 x를 어떻게 구할까요?',
+    lessonQuestion: (_M, _s, Q) => Q.stem,
     init: () => Object.assign({ eX: 1 }, eqInit(() => 0.37)), // 처음 장면: 2x+... 형태의 고정 예
     controls: ['eX'],
     model: (s) => {
@@ -285,7 +332,7 @@
     rule: () => '중점이면 두 조각의 길이가 같다: AM = MB',
     notes: () => note(['풀이가 끝나면 <b>x를 식에 넣어 AM, MB가 정말 같은지</b> 확인하세요.', 'AB의 길이를 물으면 x만 구하고 끝내지 말고 <b>AM + MB</b>(= 2AM)까지 계산합니다.']),
     draw: (b, s, M, C) => {
-      const st = C.step, showTruth = C.tab === 'review', hide = C.hide || (showTruth && st < 3);
+      const st = C.step, showTruth = C.lesson || C.tab === 'review', hide = C.lesson || C.hide || (showTruth && st < 3);
       const x = showTruth ? M.x0 : M.x, am = M.a * x + M.bb, mb = M.c * x + M.d, tot = am + mb, X = (c) => (c * W) / tot;
       const same = hide ? true : am === mb;
       const mpos = hide ? W / 2 : X(am);
@@ -293,6 +340,17 @@
       b.seg({ x: mpos, y: 0 }, { x: W, y: 0 }, { color: 'rose', width: 8, cap: 'butt', alpha: hl(st, st === 1 || st >= 2) });
       if (same) { b.ticks({ x: 0, y: 0 }, { x: mpos, y: 0 }, { color: 'ink' }); b.ticks({ x: mpos, y: 0 }, { x: W, y: 0 }, { color: 'ink' }); }
       pt(b, 0, 0, 'A'); pt(b, W, 0, 'B'); pt(b, mpos, 0, 'M', { color: same ? 'green' : 'amber' });
+      if (C.lesson) {
+        trace(b, s, C, 0);
+        const known = ready(s, C, 'plLengthReady');
+        T(b, { x: W / 4, y: 0 }, known ? `AM = ${M.AM0} cm` : `AM = (${lin(M.a, M.bb)}) cm`, { dy: -24, color: 'sky', size: 15 });
+        T(b, { x: 3 * W / 4, y: 0 }, ready(s, C, 'plSecondReady') ? `MB = ${M.AM0} cm` : `MB = (${lin(M.c, M.d)}) cm`, { dy: -48, color: 'rose', size: 15 });
+        const solved = ready(s, C, 'plXReady') || (s.plLessonGoal === 'x' && ready(s, C, 'plShowAnswer'));
+        const row = solved ? `x = ${M.x0}` : ready(s, C, 'plFirstReady') ? `${Math.abs(M.a - M.c)}x = ${Math.abs(M.d - M.bb)}` : ready(s, C, 'plEquationReady') ? `${lin(M.a, M.bb)} = ${lin(M.c, M.d)}` : 'AM = MB (M은 중점)';
+        T(b, { x: W / 2, y: 2 }, row, { color: solved ? 'green' : 'sky', size: 18 });
+        if (s.plLessonGoal === 'length') PL.dim(b, { x: 0, y: 3.2 }, { x: W, y: 3.2 }, ready(s, C, 'plShowAnswer') ? `AB = ${M.AB0} cm` : 'AB = ?', { color: 'green', dy: 18 });
+        return;
+      }
       const labA = hide ? `AM = (${lin(M.a, M.bb)}) cm` : `AM = ${linT(M.a, M.bb)} = ${am} cm`, labB = hide ? `MB = (${lin(M.c, M.d)}) cm` : `MB = ${linT(M.c, M.d)} = ${mb} cm`;
       T(b, { x: mpos / 2, y: 0 }, labA, { dy: -24, color: 'sky', size: 15 });
       T(b, { x: (mpos + W) / 2, y: 0 }, labB, { dy: -24 - (mpos / 2 + 3.3 > (mpos + W) / 2 - 3.3 ? 24 : 0), color: 'rose', size: 15 });
