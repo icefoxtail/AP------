@@ -257,18 +257,19 @@
     // 공간 안의 기준 상자(옅은 틀): 직선만 떠 있으면 한 평면 위의 그림처럼 보이므로 3차원 공간임을 보입니다
     if (geo.box) refBox(D, geo.box);
     weave(D, geo.lines);
-    geo.rights.forEach((r) => D.right(r.O, r.a, r.c, r.size || 0.4, r.color));
+    geo.rights.forEach((r, i) => { if (!C.lesson || st.id !== 'door' || i > 0 || opts.showRelation) D.right(r.O, r.a, r.c, r.size || 0.4, r.color); });
     (geo.arcs || []).forEach((r) => D.arc(r.O, r.a, r.c, r.r, r.color, 1));
-    geo.pars.forEach(([p, q]) => D.par(p, q, 1, 'sky', 0.35));
+    if (!C.lesson || opts.showRelation) geo.pars.forEach(([p, q]) => D.par(p, q, 1, 'sky', 0.35));
     if (C.txt) {
       const ctr = fp.reduce((a, p) => add3(a, p), v3(0, 0, 0)); const cc = mul3(ctr, 1 / Math.max(1, fp.length));
       geo.panels.forEach((pn) => D.label(pn.nameAt, pn.name, { color: pn.color, size: 16, dir: D.out(pn.nameAt, cc), gap: 10 }));
       geo.lines.forEach((ln) => { if (ln.name) D.label(ln.nameAt, ln.name, { color: ln.color === 'red' ? 'red' : ln.color, size: 18, dir: D.out(ln.nameAt, cc), gap: 10 }); });
-      if (geo.arcText) D.label(add3(geo.rights[0].O, v3(0, 0.55, 0.35)), geo.arcText, { color: 'rose', size: 16, dir: { x: 1, y: 0 }, gap: 8 });
+      if (geo.arcText && (!C.lesson || opts.showRelation)) D.label(add3(geo.rights[0].O, v3(0, 0.55, 0.35)), geo.arcText, { color: 'rose', size: 16, dir: { x: 1, y: 0 }, gap: 8 });
       if (opts.caption !== false && !C.problem) {
         const cex = geo.given && !geo.holds, col = !geo.given ? 'rose' : cex ? 'red' : 'green';
         const txt = !geo.given ? (geo.note || '조건이 깨졌어요') : `${geo.relText}${cex ? ' → 반례!' : ''}`;
-        caption(b, txt, { color: col });
+        if (C.lesson) { if (opts.lessonText) caption(b, opts.lessonText, { color: opts.lessonColor || 'amber' }); }
+        else caption(b, txt, { color: col });
       }
     }
     D.flush();

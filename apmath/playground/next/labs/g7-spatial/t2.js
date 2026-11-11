@@ -63,12 +63,25 @@
       `${NUM[bank.indexOf(correct)]} ${STM[correct].text} — ${PROOF[correct]} 따라서 이 보기가 옳아요.`
     ];
   };
+  function lessonBankQuestion(M, s, Q) {
+    const k = clampSel(s.spSel, M.bank);
+    return Q.stem + ` 현재 보기 ${NUM[k]}: ` + STM[M.bank[k]].text;
+  }
+  function drawLessonBank(b, s, M, C) {
+    const k = clampSel(s.spSel, M.bank), st = STM[M.bank[k]], v = abAt(st, s.spT || 0), geo = st.geo(v.a, v.b);
+    let text = `보기 ${NUM[k]}의 조건을 지키며 확인해요`;
+    if (s.spBStage >= 1) text = `${NUM[k]} ${geo.relText}`;
+    if (s.spBStage >= 2) text = `보기 ${NUM[k]}: ${st.truth ? '참' : '거짓'}`;
+    if (s.spShowAnswer) text = `정답은 ${NUM[M.bank.findIndex(id => STM[id].truth)]}`;
+    render(scene3(b, s, C), st, v, C, { caption: true, showRelation: s.spBStage >= 1 || s.spShowAnswer, lessonText: text, lessonColor: s.spShowAnswer ? 'green' : 'amber' });
+  }
 
   /* ---------------- 설명 하나짜리 장면 */
   function propScene(o) {
     const st = STM[o.stm];
     const D = {
       id: o.id, title: o.title, short: o.short, question: o.question,
+      lessonQuestion: (M, s, Q) => s.spBMode === 'bank' ? lessonBankQuestion(M, s, Q) : o.question,
       ctl: (s) => st.ctl.concat(VIEW),
       anim: { key: 'spT', dur: 5, label: st.truth ? '다른 자리로 옮겨 보기' : '반례 만들어 보기', start: 0 },
       onAnim: (s, t) => setAB(st, s, abAt(st, t)),
@@ -77,14 +90,17 @@
       init: (s) => { setAB(st, s, st.init); s.spT = 0; s.spBank = makeBank(o.stm); },
       reroll: (s) => { s.spBank = makeBank(o.stm); },
       model: (s) => {
-        const bank = s.spBank || makeBank(o.stm), g0 = st.geo(st.init.a, st.init.b), g1 = st.geo(st.cex.a, st.cex.b), cur = st.geo(ab(st, s).a, ab(st, s).b);
+        const v = s.lessonOn || s.lessonEntry ? abAt(st, s.spT || 0) : ab(st, s);
+        const bank = s.spBank || makeBank(o.stm), g0 = st.geo(st.init.a, st.init.b), g1 = st.geo(st.cex.a, st.cex.b), cur = st.geo(v.a, v.b);
         return { o, st, bank, g0, g1, cur };
       },
       draw(b, s, M, C) {
+        if (C.lesson && s.spBMode === 'bank') { drawLessonBank(b, s, M, C); return; }
         if (C.problem) { refCuboid(b, s, C); return; }
         const Dr = scene3(b, s, C);
         const v = C.review ? abAt(st, C.t) : C.thumb ? st.cex : ab(st, s);
-        render(Dr, st, v, C, { caption: true });
+        const text = s.spShowAnswer ? `설명은 ${st.truth ? '참' : '거짓'}` : s.spBStage >= 1 ? st.geo(v.a, v.b).relText : '조건을 지키며 위치 관계를 확인해요';
+        render(Dr, st, v, C, { caption: true, showRelation: s.spBStage >= 1 || s.spShowAnswer, lessonText: text, lessonColor: s.spShowAnswer ? 'green' : 'amber' });
       },
       steps: (M) => {
         const { st: S, g1 } = M;
@@ -178,6 +194,7 @@
   const five = {
     id: 's2-7', title: '옳은 설명 찾기 (보기 5개)', short: '옳은 설명 찾기',
     question: '다섯 가지 설명 중 옳은 것은 몇 번일까? 설명마다 그림으로 반례를 찾아보자.',
+    lessonQuestion: lessonBankQuestion,
     problemSteps: (M) => bankSteps(M.bank),
     ctl: (s) => STM[(s.spBank || makeBank(null))[s.spSel || 0]].ctl.concat(VIEW),
     anim: { key: 'spT', dur: 5, label: '반례 만들어 보기', start: 0 },
@@ -190,9 +207,11 @@
     model: (s) => {
       const bank = s.spBank || makeBank(null), sel = clampSel(s.spSel, bank), st = STM[bank[sel]], ok = bank.findIndex((k) => STM[k].truth);
       const firstFalse = bank.findIndex((k) => !STM[k].truth);
-      return { bank, sel, st, ok, firstFalse, cur: st.geo(ab(st, s).a, ab(st, s).b) };
+      const v = s.lessonOn || s.lessonEntry ? abAt(st, s.spT || 0) : ab(st, s);
+      return { bank, sel, st, ok, firstFalse, cur: st.geo(v.a, v.b) };
     },
     draw(b, s, M, C) {
+      if (C.lesson) { drawLessonBank(b, s, M, C); return; }
       if (C.problem) { refCuboid(b, s, C); return; }
       const Dr = scene3(b, s, C);
       let st = M.st, v = ab(st, s);

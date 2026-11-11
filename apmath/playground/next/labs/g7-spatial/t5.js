@@ -7,7 +7,7 @@
   'use strict';
   const G = window.APL_SP;
   if (!G || !G.stmt) return;
-  const { jo, pick, rint, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, mid3, scene3, buildSolid, drawSolid, drawVerts, VIEW, rd, notes, mkChoices } = G;
+  const { jo, pick, rint, v3, add3, sub3, mul3, lerp3, dot3, cross3, len3, unit3, mid3, scene3, buildSolid, drawSolid, drawVerts, caption, VIEW, rd, notes, mkChoices } = G;
   const { STM, render, ab, abAt, setAB } = G.stmt;
   const span = (c, t) => `<b style="color:var(--m-${c})">${t}</b>`;
 
@@ -28,6 +28,7 @@
     const st = STM[o.stm];
     return {
       id: o.id, title: o.title, short: o.short, question: o.question,
+      lessonQuestion: (M, s, Q) => s.spBMode === 'solid' ? Q.stem : o.id === 's5-1' && s.spBAsk === 'two' ? '평면 P 위에서 O에 만나는 서로 다른 두 직선 m, n에 l이 모두 수직이면 l과 P는 어떤 관계일까요?' : o.question,
       ctl: () => st.ctl.concat(VIEW),
       anim: { key: 'spT', dur: 5, label: o.play, start: 0 },
       onAnim: (s, t) => setAB(st, s, abAt(st, t)),
@@ -35,13 +36,17 @@
       stepT: o.rev ? (n) => (n >= 3 ? 0 : 1) : (n) => (n >= 2 ? 1 : 0),
       init: (s) => { setAB(st, s, st.init); s.spT = 0; s.spQ = o.q0; },
       reroll: (s) => { s.spQ = pick(o.cases, s.spQ); },
-      model: (s) => { const q = s.spQ || o.q0, sol = solOf(q); return { q, sol, cur: st.geo(ab(st, s).a, ab(st, s).b), g0: st.geo(st.init.a, st.init.b), g1: st.geo(st.cex.a, st.cex.b) }; },
+      model: (s) => { const q = s.spQ || o.q0, sol = solOf(q), v = s.lessonOn || s.lessonEntry ? abAt(st, s.spT || 0) : ab(st, s); return { q, sol, cur: st.geo(v.a, v.b), g0: st.geo(st.init.a, st.init.b), g1: st.geo(st.cex.a, st.cex.b) }; },
       draw(b, s, M, C) {
         const D = scene3(b, s, C);
+        if (C.lesson && s.spBMode === 'solid') { drawSolidLesson(D, b, M, C, s, o.id); return; }
         if (o.tune && !C.problem) o.tune(D, b); // 장면별 맞춤 보정(공용 그림 틀 stmt.js 는 그대로 두고 여백·라벨 자리만 조절)
         if (C.problem) { o.drawProb(D, b, M, C); return; }
         const v = C.review ? abAt(st, C.t) : C.thumb ? st.cex : ab(st, s);
-        render(D, st, v, C, { caption: true });
+        let text = '주어진 직선과 평면의 조건을 확인해요';
+        if (s.spBStage >= 1) text = o.id === 's5-1' ? (s.spBAsk === 'two' ? 'm, n은 P 위에서 O에 만나고 l과 모두 수직' : 'l은 m과 90°, n과는 90°가 아니에요') : o.id === 's5-2' ? 'Q는 P에 수직인 직선 l을 계속 포함해요' : '두 교선 l, m은 같은 평면 R 위에 있어요';
+        if (s.spShowAnswer) text = o.id === 's5-1' ? (s.spBAsk === 'two' ? 'l ⊥ P' : '한 직선만으로는 부족해요') : o.id === 's5-2' ? 'P ⊥ Q' : 'l ∥ m';
+        render(D, st, v, C, { caption: true, showRelation: !!s.spShowAnswer, lessonText: text, lessonColor: s.spShowAnswer ? 'green' : 'amber' });
       },
       steps: (M) => o.steps(M),
       problemSteps: (M) => solidProblemSteps(o.id, M),
@@ -54,6 +59,44 @@
       }),
       prob: (M) => o.prob(M)
     };
+  }
+  // Keep the actual problem solid fixed and trace its reference face first.
+  function drawSolidLesson(D, b, M, C, s, id) {
+    const { sol, q } = M, fi = q.face % sol.faces.length, f = sol.faces[fi], stage = s.spBStage || 0, progress = Math.max(0, Math.min(1, s.spBTrace || 0));
+    D.fitPts(sol.order.map(k => sol.verts[k]), { t: 58, b: 56, l: 44, r: 44 });
+    const { vis } = drawSolid(D, sol, () => ({ color: 'ink', width: 3.2 }), { faceAlpha: 0.05 });
+    const markFace = (face, color) => {
+      if (D.facing(face.n)) D.fill(face.v.map(k => sol.verts[k]), color, 0.16);
+      face.v.forEach((a, i) => D.line(sol.verts[a], sol.verts[face.v[(i + 1) % face.v.length]], color, 4.4));
+    };
+    if (id !== 's5-3' || stage === 0) {
+      f.v.forEach((a, i) => {
+        const t = Math.max(0, Math.min(1, progress * f.v.length - i)), c = f.v[(i + 1) % f.v.length];
+        if (t > 0) D.line(sol.verts[a], lerp3(sol.verts[a], sol.verts[c], t), 'amber', 4.4);
+      });
+      if (C.txt) D.label(f.c, `면 ${faceName(f)}`, { color: 'amber', size: 16, at: [[0, 0], [0, 22], [0, -22]] });
+    }
+    let text = '기준 면과 다른 모서리·면의 관계를 살펴봐요';
+    if (id === 's5-1') {
+      const edges = perpEdges(sol, fi), shown = stage >= 2 ? edges : stage >= 1 ? edges.slice(0, 1) : [];
+      shown.forEach(e => D.line(sol.verts[e.u], sol.verts[e.v], 'rose', 5.4, { dash: vis(e) ? undefined : [6, 5] }));
+      if (stage >= 2) text = `수직인 모서리: ${edges.map(e => e.name).join(', ')}`;
+      if (s.spShowAnswer) text = `수직인 모서리 = ${edges.length}개`;
+    } else if (id === 's5-2') {
+      const faces = perpFaces(sol, fi), shown = stage >= 2 ? faces : stage >= 1 ? faces.slice(0, 2) : [];
+      shown.forEach(i => markFace(sol.faces[i], 'rose'));
+      if (stage >= 2) text = `수직인 면: ${faces.map(i => faceName(sol.faces[i])).join(', ')}`;
+      if (s.spShowAnswer) text = `수직인 면 = ${faces.length}개`;
+    } else {
+      const pairs = [];
+      for (let i = 0; i < sol.faces.length; i++) for (let j = i + 1; j < sol.faces.length; j++) if (dot3(sol.faces[i].n, sol.faces[j].n) < -0.999999) pairs.push([i, j]);
+      if (stage > 0 && pairs.length) {
+        const pair = pairs[Math.min(stage - 1, pairs.length - 1)]; pair.forEach(i => markFace(sol.faces[i], 'rose'));
+        text = `평행한 두 면: ${pair.map(i => faceName(sol.faces[i])).join(', ')}`;
+      }
+      if (s.spShowAnswer) text = `평행한 면 = ${pairs.length}쌍`;
+    }
+    drawVerts(D, sol, {}); if (C.txt) caption(b, text, { color: s.spShowAnswer ? 'green' : 'amber' }); D.flush();
   }
   const caseKey = (q) => `${q.kind}${q.n || ''}f${q.face}`;
   function solidProblemSteps(id, M) {
