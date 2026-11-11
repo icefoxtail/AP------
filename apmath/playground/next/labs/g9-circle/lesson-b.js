@@ -45,7 +45,7 @@
           { at: 0, say: lines[4], step: 3, set: { ciCalculationReady: true } },
           { at: 6, say: lines[5], step: 4 }
         ] },
-        { title: '결론과 답 확인', length: 12, cues: [
+        { title: '결론과 답 확인', length: 12, ...(options.finalStart ? { start: options.finalStart } : {}), cues: [
           { at: 0, say: final, step: fixture.solution.steps.length, set: { ciShowAnswer: true, ...(options.finalSet || {}) } },
           { at: 6, say: lines[7] }
         ] }
@@ -203,6 +203,208 @@
         k === 1 ? 'CD는 접점 E에서 두 부분으로 나뉘어요.' : 'D에서 직선 BC에 내린 수선으로 직각을 만들어요.',
         k === 1 ? `$CD=${q.a}+${q.b}$를 계산해요.` : k === 0 ? `$AB^2=4\\times${q.a}\\times${q.b}$의 양의 제곱근을 구해요.` : `$AD=\\frac{${q.ab}^{2}}{4\\times${q.b}}$를 계산해요.`,
         answerLine(f), k === 1 ? '두 접선 길이를 더한 값인지 확인해요.' : '지름과 반지름을 바꾸어 쓰지 않아요.'
+      ]);
+    }
+  }
+
+  {
+    const id = 'c4-1';
+    for (const position of ['in', 'side', 'out']) {
+      let f;
+      for (let seed = 1; seed <= 100; seed++) {
+        const candidate = source(id, 0, seed);
+        if (candidate.solution.model.g.cs === position) { f = candidate; break; }
+      }
+      if (!f) throw new Error('Missing original central-angle case: ' + position);
+      const label = { in: '중심 안쪽', side: '중심 변위', out: '중심 바깥' }[position];
+      concept(id, label, f, '$\\angle AOB=2\\angle APB$',
+        `중심 O가 원주각의 ${position === 'in' ? '안쪽' : position === 'side' ? '한 변 위' : '바깥'}에 있어요. 같은 호 AB에 대한 중심각과 원주각은 어떤 관계일까요?`, [
+          `그림에서 O는 각 APB의 ${position === 'in' ? '안쪽' : position === 'side' ? '한 변 위' : '바깥'}에 있어요.`,
+          'P에서 중심 O를 지나는 지름 PQ를 그어요.',
+          '반지름이 같은 이등변삼각형을 찾아요.',
+          position === 'side' ? '이 그림에서는 Q가 A 또는 B와 같은 점이에요.' : '$OA=OP$, $OB=OP$로 두 밑각을 짝지어요.',
+          '외각은 마주 보는 두 내각의 합이에요.',
+          position === 'in' ? '지름으로 나눈 두 각의 두 배 관계를 더해요.' : position === 'out' ? '두 배 관계의 큰 각에서 작은 각을 빼요.' : '지름 위가 아닌 삼각형의 외각을 이용해요.',
+          '따라서 $\\angle AOB=2\\angle APB$예요.', '같은 호를 보면 중심의 위치와 관계없이 성립해요.'
+        ], { unknown: 'α' });
+    }
+    for (let k = 0; k < 3; k++) {
+      const f = source(id, k), q = f.pk;
+      add(id, ['원주각 계산', '중심각 계산', '밑각 계산'][k], f, [
+        k === 0 ? `중심각 ∠AOB는 ${q.th}°예요.` : `원주각 ∠APB는 ${q.th / 2}°예요.`,
+        `구하는 각은 ∠${['APB', 'AOB', 'OAB'][k]}예요.`,
+        '중심각과 원주각이 같은 호 AB를 보아요.', '같은 호의 중심각은 원주각의 두 배예요.',
+        k === 2 ? `$\\angle AOB=2\\times${degree(q.th / 2)}=${degree(q.th)}$예요.` : '원주각을 구하면 나누고 중심각을 구하면 곱해요.',
+        k === 0 ? `$\\angle APB=${degree(q.th)}\\div2$예요.` : k === 1 ? `$\\angle AOB=2\\times${degree(q.th / 2)}$예요.` : `$OA=OB$이므로 밑각은 $(180^{\\circ}-${degree(q.th)})\\div2$예요.`,
+        answerLine(f), k === 2 ? '이등변삼각형의 두 밑각은 같아요.' : '다른 쪽 호를 보는 각과 혼동하지 않아요.'
+      ]);
+    }
+  }
+  {
+    const id = 'c4-2';
+    concept(id, '같은 호', source(id), '$\\angle APB=\\angle AQB$',
+      'P와 Q가 현 AB의 같은 쪽 원 위에 있어요. 두 원주각 APB, AQB는 어떤 관계일까요?', [
+        'P와 Q에서 A, B로 선분을 이어요.', 'P와 Q는 현 AB의 같은 쪽에 있어요.',
+        '두 각이 보는 호 AB를 강조해요.', '두 원주각에 대응하는 중심각은 하나예요.',
+        '두 원주각 모두 그 중심각의 절반이에요.', '꼭짓점의 위치가 달라도 보는 호는 같아요.',
+        '따라서 $\\angle APB=\\angle AQB$예요.', '같은 호인지 먼저 보고 각을 비교해요.'
+      ], { unknown: 'β' });
+    concept(id, '반대쪽 호', source(id, 1), '$\\angle APB+\\angle ARB=180^{\\circ}$',
+      'P와 R이 현 AB의 서로 반대쪽 원 위에 있어요. 두 원주각의 합은 얼마일까요?', [
+        'P와 R은 현 AB를 사이에 두고 반대쪽이에요.', 'P가 보는 호와 R이 보는 호를 나누어요.',
+        '두 호를 합하면 원 전체가 돼요.', '두 호에 대한 중심각의 합은 360°예요.',
+        '각 원주각은 자기가 보는 중심각의 절반이에요.', '두 중심각의 합을 반으로 나누어요.',
+        '따라서 $\\angle APB+\\angle ARB=180^{\\circ}$예요.', '반대쪽 꼭짓점에서는 같은 각이라고 하면 안 돼요.'
+      ], { unknown: 'β' });
+    for (let k = 0; k < 3; k++) {
+      const f = source(id, k), q = f.pk;
+      add(id, ['같은쪽 각', '반대쪽 각', '중심각 활용'][k], f, [
+        k === 2 ? `중심각 ∠AOB는 ${q.th}°예요.` : `원주각 ∠APB는 ${q.th / 2}°예요.`,
+        k === 1 ? 'P와 R은 현 AB의 서로 반대쪽에 있어요.' : 'P와 Q는 현 AB의 같은 쪽에 있어요.',
+        k === 1 ? '두 원주각은 서로 다른 쪽의 호를 보아요.' : '같은 호를 보는 원주각은 크기가 같아요.',
+        k === 1 ? '두 호의 중심각을 합하면 360°예요.' : '두 각이 보는 호 AB를 표시해요.',
+        k === 1 ? '두 원주각의 합은 그 절반인 180°예요.' : k === 2 ? '중심각의 절반이 원주각이에요.' : '꼭짓점만 옮겨도 같은 호를 보는 각은 변하지 않아요.',
+        k === 0 ? '$\\angle AQB=\\angle APB$를 사용해요.' : k === 1 ? `$\\angle ARB=180^{\\circ}-${degree(q.th / 2)}$예요.` : `$\\angle APB=${degree(q.th)}\\div2$예요.`,
+        answerLine(f), '현의 같은 쪽인지 반대쪽인지 함께 확인해요.'
+      ]);
+    }
+  }
+  {
+    const id = 'c4-3';
+    concept(id, '호의 비', source(id, 1), '$\\angle CAD=k\\angle ADB$',
+      '같은 원에서 호 CD의 길이가 호 AB의 k배예요. 이 호들을 보는 원주각은 어떤 관계일까요?', [
+        '각 ADB는 호 AB를 보고 각 CAD는 호 CD를 보아요.', '같은 원에서 호의 길이와 중심각은 비례해요.',
+        '호 CD가 k배이면 그 중심각도 k배예요.', '각 원주각은 대응하는 중심각의 절반이에요.',
+        '두 각을 모두 반으로 나누어도 비는 같아요.', '원주각끼리의 비를 k로 연결해요.',
+        '따라서 $\\angle CAD=k\\angle ADB$예요.', '현의 길이까지 k배인 것은 아니에요.'
+      ], { unknown: 'β' });
+    concept(id, '현의 교점', source(id, 2), '$\\angle APB=\\angle ADB+\\angle CAD$',
+      '현 AC와 BD의 교점을 P라 해요. 교점의 각 APB를 두 원주각으로 어떻게 나타낼까요?', [
+        'AC와 BD가 만나는 점이 P예요.', '보조선 AD를 그어 삼각형 APD를 보아요.',
+        'P, A, C는 한 직선 위에 있어요.', 'P, D, B도 한 직선 위에 있어요.',
+        '각 APB는 삼각형 APD의 외각이에요.', '외각은 이웃하지 않는 두 내각의 합이에요.',
+        '따라서 $\\angle APB=\\angle ADB+\\angle CAD$예요.', '옆의 각 APD를 구할 때는 180°에서 빼요.'
+      ], { unknown: 'α' });
+    for (let k = 0; k < 3; k++) {
+      const f = source(id, k), q = f.pk, kt = q.k * q.th;
+      add(id, ['교점 보각', '호비 계산', '교점각 계산'][k], f, [
+        `원주각 ∠ADB는 ${q.th}°예요.`, k === 2 ? `원주각 ∠CBD는 ${kt}°예요.` : `호 CD의 길이는 호 AB의 ${q.k}배예요.`,
+        '호 CD를 보는 원주각을 먼저 연결해요.', k === 2 ? '$\\angle CAD=\\angle CBD$예요.' : `$\\angle CAD=${q.k}\\angle ADB$예요.`,
+        k === 1 ? '호의 비가 원주각의 비와 같다는 것을 써요.' : `$\\angle CAD=${degree(kt)}$이고 AD를 보조선으로 그어요.`,
+        k === 1 ? `$\\angle CAD=${q.k}\\times${degree(q.th)}$예요.` : k === 0 ? `$\\angle APD=180^{\\circ}-(${degree(q.th)}+${degree(kt)})$예요.` : `$\\angle APB=${degree(q.th)}+${degree(kt)}$예요.`,
+        answerLine(f), k === 0 ? 'APD와 APB는 합이 180°인 이웃한 각이에요.' : '같은 호의 원주각과 삼각형 외각을 구별해 써요.'
+      ]);
+    }
+  }
+  {
+    const id = 'c4-4';
+    concept(id, '반원의 각', source(id), '$\\angle APB=90^{\\circ}$',
+      'AB는 원의 지름이고 P는 반원 위에 있어요. 지름을 보는 원주각 APB는 얼마일까요?', [
+        'AB는 중심 O를 지나는 지름이에요.', 'P에서 A와 B로 선분을 이어요.',
+        'P가 보는 호 AB는 반원이에요.', '반원의 중심각은 180°예요.',
+        '원주각은 같은 호의 중심각을 반으로 나눠요.', '꼭짓점 P가 반원 위를 옮겨도 보는 호는 같아요.',
+        '따라서 $\\angle APB=90^{\\circ}$예요.', '이 직각으로 길이 문제에는 피타고라스를 쓸 수 있어요.'
+      ], { unknown: 'β' });
+    for (let k = 0; k < 3; k++) {
+      const f = source(id, k), q = f.pk;
+      add(id, ['예각 계산', '현 길이', '중심각 응용'][k], f, [
+        k === 1 ? `지름 $AB=${q.d}$이고 $AP=${q.a}$예요.` : `AB는 지름이고 ∠PAB는 ${q.th}°예요.`,
+        k === 1 ? '구할 것은 현 PB의 길이예요.' : `구할 것은 ∠${k === 0 ? 'PBA' : 'POB'}예요.`,
+        '지름을 보는 원주각 APB는 90°예요.',
+        k === 1 ? '직각삼각형 APB의 빗변은 AB예요.' : k === 0 ? '직각삼각형의 두 예각을 합하면 90°예요.' : 'POB와 PAB는 같은 호 PB를 보아요.',
+        k === 1 ? '$PB^2=AB^2-AP^2$를 사용해요.' : k === 0 ? '다른 예각을 90°에서 빼면 돼요.' : '중심각은 원주각의 두 배예요.',
+        k === 1 ? `$PB=\\sqrt{${q.d}^{2}-${q.a}^{2}}$의 양의 값을 골라요.` : k === 0 ? `$\\angle PBA=90^{\\circ}-${degree(q.th)}$예요.` : `$\\angle POB=2\\times${degree(q.th)}$예요.`,
+        answerLine(f), '지름을 보는 각과 그 옆의 예각을 구별해요.'
+      ]);
+    }
+  }
+  {
+    const id = 'c4-5';
+    concept(id, '삼각비 원리', source(id, 3), '$BC=2R\\sin A$',
+      '원에 내접한 삼각형에서 각 A와 외접원의 반지름 R로 현 BC를 어떻게 나타낼까요?', [
+        'B에서 중심 O를 지나 반대편 D까지 이어요.', 'BD는 지름이므로 길이는 2R이에요.',
+        '지름을 보는 각 BCD는 90°예요.', '같은 호 BC를 보므로 ∠BDC는 ∠BAC와 같아요.',
+        '직각삼각형 BCD에서 대변은 BC예요.', '$\\sin A=\\frac{BC}{2R}$에서 양변에 2R을 곱해요.',
+        '따라서 $BC=2R\\sin A$예요.', '빗변이 반지름 R이 아니라 지름 2R임에 주의해요.'
+      ], { unknown: 'BC' });
+    for (let k = 0; k < 6; k++) {
+      const f = source(id, k), q = f.pk, askR = q.ask === 'R', bc = 2 * q.a * Math.sin(q.A0 * Math.PI / 180);
+      const sine = { 30: '\\frac12', 45: '\\frac{\\sqrt2}{2}', 60: '\\frac{\\sqrt3}{2}' }[q.A0];
+      add(id, `${q.A0}°${askR ? '반지름' : '현길이'}`, f, [
+        `원주각 A는 ${q.A0}°예요.`, askR ? `$BC=${n(bc)}$이고 반지름 R을 구해요.` : `반지름 $R=${q.a}$이고 현 BC를 구해요.`,
+        'B에서 그은 지름 BD로 직각삼각형을 만들어요.', '∠BCD는 90°, ∠BDC는 A와 같아요.',
+        `$\\sin${degree(q.A0)}=${sine}$예요.`,
+        askR ? `$R=\\frac{${n(bc)}}{2\\sin${degree(q.A0)}}$를 계산해요.` : `$BC=2\\times${q.a}\\times\\sin${degree(q.A0)}$를 계산해요.`,
+        answerLine(f), '근호를 소수로 바꾸지 않고 정확한 값으로 정리해요.'
+      ]);
+    }
+  }
+  {
+    const id = 'c4-6';
+    concept(id, '평행한 현', source(id, 1), '$\\angle COD=180^{\\circ}-4\\angle ADC$',
+      '지름 AB와 현 CD가 평행해요. 각 ADC로 호 CD의 중심각 COD를 어떻게 나타낼까요?', [
+        'AB와 CD는 평행하고 AB는 지름이에요.', '∠ADC를 α라 두고 엇각을 찾아요.',
+        '호 AC와 호 DB를 보는 원주각은 같아요.', '두 호의 중심각은 각각 2α예요.',
+        '반원은 호 AC, CD, DB 세 부분으로 나뉘어요.', '180°에서 양끝의 중심각 2α를 두 번 빼요.',
+        '따라서 $\\angle COD=180^{\\circ}-4\\angle ADC$예요.', '평행 조건이 양끝의 두 호를 같게 만들어요.'
+      ], { unknown: 'β' });
+    concept(id, '호 길이 비', source(id), '$\\frac{\\widehat{CD}}{\\widehat{DB}}=\\frac{\\angle COD}{\\angle DOB}$',
+      '같은 원의 두 호 CD, DB의 길이 비를 어떻게 중심각의 비로 바꿀까요?', [
+        '호의 길이를 비교할 때 같은 원인지 확인해요.', '각 호의 양끝과 중심 O를 이어요.',
+        '반지름이 같으므로 원 둘레도 하나예요.', '중심각이 큰 만큼 원 둘레에서 더 긴 부분을 차지해요.',
+        '호 길이는 중심각을 360°로 나눈 비율로 정해져요.', '두 식을 나누면 공통인 원 둘레가 약분돼요.',
+        '따라서 $\\frac{\\widehat{CD}}{\\widehat{DB}}=\\frac{\\angle COD}{\\angle DOB}$예요.', '각의 단위와 호 길이의 단위를 구별해요.'
+      ], { unknown: 'ℓ' });
+    for (let k = 0; k < 3; k++) {
+      const f = source(id, k), q = f.pk, central = 180 - 4 * q.th;
+      add(id, ['호길이 계산', '호크기 계산', '원주각 응용'][k], f, [
+        `지름 AB와 현 CD가 평행하고 ∠ADC=${q.th}°예요.`,
+        k === 0 ? `호 DB의 길이는 $${q.k}\\pi$이고 호 CD를 구해요.` : `구할 각은 ∠${k === 1 ? 'COD' : 'CAD'}예요.`,
+        '평행선의 엇각으로 호 AC와 호 DB가 같아요.', `두 호의 중심각은 각각 ${2 * q.th}°예요.`,
+        k === 1 ? '반원의 중심각에서 양끝의 두 중심각을 빼요.' : `호 CD의 중심각은 $180^{\\circ}-4\\times${degree(q.th)}=${degree(central)}$예요.`,
+        k === 0 ? `호 길이는 $\\frac{${central}}{${2 * q.th}}\\times${q.k}\\pi$예요.` : k === 1 ? `$\\angle COD=180^{\\circ}-4\\times${degree(q.th)}$를 계산해요.` : `$\\angle CAD=${degree(central)}\\div2$예요.`,
+        answerLine(f), k === 0 ? 'π를 남겨 정확한 호의 길이로 답해요.' : '중심각인지 원주각인지에 따라 마지막 계산을 골라요.'
+      ]);
+    }
+  }
+  {
+    const id = 'c4-7';
+    concept(id, '한원의 조건', source(id), '같은 쪽의 두 각이 같으면 네 점은 한 원 위',
+      'A와 D가 직선 BC의 같은 쪽에 있어요. 어떤 각의 조건이 네 점 A, B, C, D를 한 원 위에 놓이게 할까요?', [
+        'A와 D는 직선 BC의 같은 쪽에 있어요.', 'D를 가로로 움직이며 두 각 BAC, BDC를 비교해요.',
+        'A, B, C를 지나는 원을 기준으로 잡아요.', 'D가 원 안쪽이면 ∠BDC가 더 커요.',
+        'D를 바깥으로 옮기면 ∠BDC는 작아져요.', '원 위에 오는 순간 같은 호를 보는 두 각이 만나요.',
+        '같은 쪽에서 $\\angle BAC=\\angle BDC$이면 네 점은 한 원 위예요.', '반대쪽에 있는 점에는 이 조건을 그대로 쓰지 않아요.'
+      ], { source: false, mode: 'converse', firstMotion: { c4d: 3.2 }, finalStart: { c4d: Math.sqrt(36 - 3.3 ** 2) } });
+    const pairs = [['B', 'C', 'A', 'D'], ['C', 'D', 'B', 'A'], ['D', 'A', 'B', 'C']];
+    for (let k = 0; k < 3; k++) {
+      const f = source(id, k), q = f.pk, [a, z, v, w] = pairs[k], given = q.arcs[k + 1] / 2;
+      add(id, `${a}${z} 같은호`, f, [
+        'A, B, C, D는 한 원 위에 있어요.', `주어진 ∠${a}${v}${z}는 ${given}°예요.`,
+        `구할 ∠${a}${w}${z}와 같은 끝점 ${a}, ${z}를 찾아요.`, `꼭짓점 ${v}, ${w}는 현 ${a}${z}의 같은 쪽에 있어요.`,
+        `두 각이 보는 호 ${a}${z}를 강조해요.`, `$\\angle ${a}${w}${z}=\\angle ${a}${v}${z}$를 사용해요.`,
+        answerLine(f), '각 이름의 가운데 글자가 꼭짓점이에요.'
+      ]);
+    }
+  }
+  {
+    const id = 'c4-8';
+    concept(id, '외심과 밑각', source(id), '$\\angle OBC=90^{\\circ}-\\angle A$',
+      '원 O에 내접한 삼각형에서 각 A로 이등변삼각형 OBC의 밑각 OBC를 어떻게 구할까요?', [
+        'A, B, C는 한 원 위에 있고 O는 중심이에요.', '반지름 OB와 OC를 이어요.',
+        '중심각 BOC는 원주각 A의 두 배예요.', 'OB와 OC는 같은 원의 반지름이에요.',
+        '삼각형 OBC의 두 밑각은 서로 같아요.', '180°에서 중심각 2A를 빼고 둘로 나눠요.',
+        '따라서 $\\angle OBC=90^{\\circ}-\\angle A$예요.', '중심과 두 꼭짓점을 이으면 이등변삼각형이 생겨요.'
+      ], { unknown: 'β' });
+    for (let k = 0; k < 3; k++) {
+      const f = source(id, k), q = f.pk, beta = 90 - q.th;
+      add(id, ['밑각 계산', '원주각 역산', '각의 차'][k], f, [
+        k === 1 ? `주어진 ∠OBC는 ${beta}°예요.` : `주어진 원주각 A는 ${q.th}°예요.`,
+        k === 2 ? `∠ABC=${q.be}°이고 O는 삼각형 내부에 있어요.` : `구할 각은 ∠${k === 0 ? 'OBC' : 'BAC'}예요.`,
+        '중심각 BOC와 원주각 A는 같은 호를 보아요.', 'OB=OC이므로 삼각형 OBC의 두 밑각은 같아요.',
+        k === 2 ? `$\\angle OBC=90^{\\circ}-${degree(q.th)}=${degree(beta)}$예요.` : '$\\angle OBC=90^{\\circ}-\\angle A$를 사용해요.',
+        k === 0 ? `$\\angle OBC=90^{\\circ}-${degree(q.th)}$예요.` : k === 1 ? `$\\angle A=90^{\\circ}-${degree(beta)}$예요.` : `$\\angle OBA=${degree(q.be)}-${degree(beta)}$예요.`,
+        answerLine(f), k === 2 ? 'OB가 각 ABC의 안쪽에 있으므로 두 각을 빼요.' : '반지름으로 만든 이등변삼각형을 먼저 찾아요.'
       ]);
     }
   }
