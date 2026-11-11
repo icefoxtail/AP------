@@ -61,7 +61,7 @@
 | `alg-sine-cosine-law` 사인·코사인법칙 | 18 | 18 / 45 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1784](https://github.com/icefoxtail/AP------/pull/1784), merge `f30aaecf76d61a0a2a5c5a6d827c9d488af7dda5`. 개념 18·첫 원문 소문항 27. 최소 검사 47/47·1,188 Board/raw canvas cue frames. 실제 운영 파일 0/4 일치 (§7) |
 | `common-rational` 유리함수 | 4 | 4 / 19 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1786](https://github.com/icefoxtail/AP------/pull/1786), merge `b07a26bba6afde5dd00996dacb036ef6228668eb`. 개념 15·첫 원문 4. 최소 검사 47/47·546 Board/raw canvas cue frames. 실제 운영 파일 0/4 일치 (§7) |
 | `common-poly-solid` 다항식과 입체 | 5 | 5 / 17 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1790](https://github.com/icefoxtail/AP------/pull/1790), merge `7348e5114857ce2ef9664ba2f51f712b477d4eb4`. 개념 12·첫 원문 5. 최소 검사 47/47·466 Board cue frames(392 native Space). 실제 운영 파일 0/4 일치 (§7) |
-| `common-quadratic` 이차함수 | 36 | 20 / 60 (제작 중) | **WIP / QA_PENDING** · 목표 36장면·104해설. 등록분 validator 오류·경고 0, 전체 통합 검사·PR/main/Pages 대기 (§7) |
+| `common-quadratic` 이차함수 | 36 | 36 / 104 | **IMPLEMENTED / QA_PENDING** · 개념 68·첫 원문 36. 누락 0, validator 오류·경고 0. 전체 최소 검사·PR/main/Pages 진행 중 (§7) |
 | 고등 잔여 33개 | — | — | 이차함수 뒤 과목 순서로 진행. 다음 `common-lines` 30장면 (§7) |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
@@ -252,6 +252,8 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-11 · 이차함수 36장면/104해설(개념 68·첫 원문 36)의 작성과 등록을 완료했다. 첫 원격 보존 head `1b2f96686a97d5eceebd7b9b5791c5efc14484b4`는 20장면/60해설이며, 아래 r39도 이 snapshot에만 결속한다. 남은 16장면/44해설을 추가했고 A 18/44·B 18/60 각각 실제 HTML validator 오류·경고 0, 구문 검사를 확인했다. 원문 이동 구간 `cq-window`의 0단계는 기존 problem 그림을 재사용하여 처음부터 구간이 보이게 했다. 전체 104개 통합/수학/Board 검사는 진행 중이며 이 보존 시점의 결과는 **NOT_RUN**이다. [AWCR r39](https://drive.google.com/file/d/19PKRkYVuc5qxkPYkoVd5OYtnBtCFSfUv/view) raw SHA-256 `4458e3f3402044937310e12f58290694f54088af341c909f9f1e42d35c24a168`·21,847 bytes를 다시 읽어 확인했다. 최신 main `3d4ba3bf88a56daed262fa8cbe1cbaf1639e971e`의 별도 Archive 12파일은 변경 경로 기준 대상과 겹치지 않으며 정상 병합으로 반영한다.
 
 - 2026-11-11 · 이차함수는 최신 main `88bc24d90e2604844119076be1095d71c5a30b14`에서 `feat/lessons-common-quadratic`을 시작했다. 기존 36장면의 해설은 0개였고 열린 PR 47개의 2,743개 경로에 대상 충돌이 없었다. 기존 문서에 있는 개념 68개와 첫 원문 36개를 구분해 총 104해설을 제작한다. 첫 보존 묶음은 **20장면/60해설**(개념 40·원문 20), index snapshot에서 validator 오류·경고 0을 확인했다. 등록 없는 ID: `movingAxisMin`, `movingAxisMaxJump`, `movingWindowInterval`, `substitution2Stage`, `inscribedRectParabola`, `absWholeFold`, `absXSymmetry`, `absLineRotTangent`, `absPiecewiseSplit`, `maxMinEnvelope`, `cq-glue`, `cq-product`, `cq-rotate`, `cq-integers`, `cq-window`, `cq-sweep`. 고정 first packet의 함수 참조와 수동 새 문제를 보존하며, 개념의 좌우/부호/경계/중근 비교는 해설 전용 그림으로 연결한다. 중간 좌표 라벨의 정답 숫자는 최종 장까지 중립화한다. 이 snapshot의 전체 재생/Board·최종 104개 검사는 **NOT_RUN**이고 완료/PASS를 추정하지 않는다.
 

@@ -1449,7 +1449,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       const shown = { ...s, playing: false, cqOld: false, cqSig: s.lqcSig || '', part: typeof s.part === 'string' && /^-?\d+$/.test(s.part) ? Number(s.part) : s.part, lqcShowAnswer: !s.lessonEntry && !!s.lqcShowAnswer,
         step: s.lessonEntry ? 0 : Math.min(s.step || 0, s.lqcShowAnswer ? 3 : 2) };
-      const shownLab = Object.create(lab); shownLab.tab = s.lqcExplore ? 'explore' : 'review'; shownLab.s = shown;
+      const shownLab = Object.create(lab); shownLab.tab = s.lqcExplore ? 'explore' : sc.id === 'cq-window' && shown.step === 0 ? 'problem' : 'review'; shownLab.s = shown;
       const plots = [], paths = [], plot = b.plot, path = b.path, point = b.point, emph = b.emph;
       b.emph = { ...emph, part: shown.part };
       b.plot = function (fn, options = {}) { if ((!options.dash || !options.dash.length) && (options.width || 3) >= 3) plots.push({ fn, options }); return plot.call(this, fn, options); };
