@@ -22,6 +22,8 @@
   const REDUCED = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
   const NARROW = window.matchMedia ? window.matchMedia('(max-width: 859px)') : { matches: false };
   const TITLE_BIG_MS = 2000; // 제목이 크게 보이는 시간
+  const DEFAULT_PLAYBACK_RATE = 1.5; // 사용자 기본 재생 속도: 기존 대비 1.5배
+  const SLOW_PLAYBACK_RATE = 0.5; // 기존 '느리게' 동작 보존
   const mmss = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
 
   /** 주소의 ?이름=값 또는 #이름=값 */
@@ -47,7 +49,7 @@
       this.cs = null;
       this.base = null;
       this.t = 0;
-      this.rate = 1;
+      this.rate = DEFAULT_PLAYBACK_RATE;
       this.stepMode = false; // prefers-reduced-motion: 자동 재생 대신 자막 한 칸씩
       this._raf = 0;
       this._last = 0;
@@ -246,7 +248,7 @@
       ui.prev = h('button', { class: 'apl-btn apl-vbtn', 'aria-label': '이전 자막', title: '이전 자막 (←)', html: icon('prev') + '<span class="lbl">이전</span>', onclick: () => this.skip(-1) });
       ui.next = h('button', { class: 'apl-btn apl-vbtn', 'aria-label': '다음 자막', title: '다음 자막 (→)', html: '<span class="lbl">다음</span>' + icon('next'), onclick: () => this.skip(1) });
       ui.replay = h('button', { class: 'apl-btn apl-vbtn', 'aria-label': '다시 보기', title: '처음부터 다시 보기 (R)', html: icon('reset') + '<span class="lbl">다시 보기</span>', onclick: () => this.replay() });
-      ui.slow = h('button', { class: 'apl-btn apl-vbtn', 'aria-pressed': 'false', title: '천천히 보기 (0.5배)', html: '<span>느리게</span>', onclick: () => this.setRate(this.rate === 1 ? 0.5 : 1) });
+      ui.slow = h('button', { class: 'apl-btn apl-vbtn', 'aria-pressed': 'false', title: '천천히 보기 (0.5배)', html: '<span>느리게</span>', onclick: () => this.setRate(this.rate === DEFAULT_PLAYBACK_RATE ? SLOW_PLAYBACK_RATE : DEFAULT_PLAYBACK_RATE) });
       ui.close = h('button', { class: 'apl-btn apl-vbtn ghost', 'aria-label': '영상 닫고 직접 해 보기', title: '닫기 (Esc)', html: icon('x') + '<span class="lbl">탐구로</span>', onclick: () => this.close() });
       ui.live = h('div', { class: 'apl-vctl' }, ui.play, ui.prev, ui.next, ui.replay, ui.slow, h('span', { class: 'sp' }), ui.close);
       ui.prog = h('div', { class: 'apl-vprog' }, ui.rangeWrap, ui.time, ui.mini);
@@ -521,9 +523,10 @@
     _stepEnd(k) { const s = this.cs.says[k]; return s ? Math.max(s.at, s.end - 0.001) : this.cs.length; }
     setRate(r) {
       this.rate = r;
-      this.ui.slow.setAttribute('aria-pressed', String(r !== 1));
-      this.ui.slow.classList.toggle('on', r !== 1);
-      this.ui.slow.innerHTML = r === 1 ? '<span>느리게</span>' : '<span>0.5배</span>';
+      const slowed = r !== DEFAULT_PLAYBACK_RATE;
+      this.ui.slow.setAttribute('aria-pressed', String(slowed));
+      this.ui.slow.classList.toggle('on', slowed);
+      this.ui.slow.innerHTML = slowed ? '<span>0.5배</span>' : '<span>느리게</span>';
     }
     replay() {
       if (this.index < 0) return;
