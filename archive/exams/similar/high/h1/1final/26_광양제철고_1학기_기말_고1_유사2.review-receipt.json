@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "26_광양제철고_1학기_기말_고1_유사2",
+  "candidateJsPath": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사2.js",
+  "candidateMetaPath": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사2.meta-q01-q19.json",
+  "candidateGitBlobSha1": "0fa0a89b14a3c5b40231bd4fab8745f3f196d507",
+  "reviewTimestamp": "2026-11-12T00:30:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "PASS",
+  "blindFirstPass": {
+    "totalSolved": 19,
+    "answerMatches": 19,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "scratchpad blindFrozen.json (저장 정답·해설 열람 전 동결)",
+    "method": "발문·보기만 읽고 Python/sympy 전수·기호 계산으로 풀이한 뒤 저장 정답과 대조. 서답형 Q17(a≠b 6쌍), Q18(x>4/3), Q19(98)도 독립 계산 일치"
+  },
+  "questionsReview": [
+    {
+      "qid": 1,
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "method": "부등식 두 개를 풀어 -3<x≤3, 정수 6개 (Python 전수 확인)"
+    },
+    {
+      "qid": 2,
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "2m+n=13,m+2n=11에서 m=5,n=3, 흰색 하의 3m+n=18"
+    },
+    {
+      "qid": 3,
+      "blindFrozenAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "method": "A=(a+2b)/5,B=(b-2a)/5 대입 후 AB 성분합 2 (sympy)"
+    },
+    {
+      "qid": 4,
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "Python 순열 전수 열거 72"
+    },
+    {
+      "qid": 5,
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "Python 100~699 전수 열거 216"
+    },
+    {
+      "qid": 6,
+      "blindFrozenAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "method": "A^n 성분합 2+na=38, na=36의 양의 약수쌍 9 (전수)"
+    },
+    {
+      "qid": 7,
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "N=6t+10, 8(t-3)<N≤8(t-2)에서 t=13..16, 88+106=194"
+    },
+    {
+      "qid": 8,
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "a<0, 판별식≤0에서 a=-5..-1, 5개"
+    },
+    {
+      "qid": 9,
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "연립방정식 sympy 실근 전부 계산, α+β 최댓값 4√3"
+    },
+    {
+      "qid": 10,
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "method": "6·840+80·21=6720=8P5, n=8 (전수)"
+    },
+    {
+      "qid": 11,
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "w²=w-1이므로 w-1=w², 위수 3 주기 22항 합=w² = w-1 (sympy 직접합산)"
+    },
+    {
+      "qid": 12,
+      "blindFrozenAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "method": "c=0, y=x(ax+b) 1·3사분면 조건 a>0 또는 b>0·a<0 또는 b>0 순열 전수 30"
+    },
+    {
+      "qid": 13,
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "도형 14칸 좌표 모델에서 직사각형 열거 후 정사각형 제외 48"
+    },
+    {
+      "qid": 14,
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "l²+w²=208과 (l-4)(w+4)=lw-32에서 sympy로 l,w를 구해 A'B'C'D' 넓이 64"
+    },
+    {
+      "qid": 15,
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "method": "남3-여3-남3 순서만 가능: 6!·3!=4320"
+    },
+    {
+      "qid": 16,
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "Python 6^5 전수 열거 45"
+    },
+    {
+      "qid": 17,
+      "blindFrozenAnswer": "6 matrices a≠b in {2,3,4}",
+      "candidateAnswer": "$X=\\begin{pmatrix}a&a+2b\\\\0&b\\end{pmatrix}$\n$(a,b)=(2,3),(2,4),(3,2),(3,4),(4,2),(4,3)$",
+      "match": true,
+      "method": "서답형 17: 6 matrices a≠b in {2,3,4} (발문만으로 독립 풀이, 해설 답과 동일)"
+    },
+    {
+      "qid": 18,
+      "blindFrozenAnswer": "x>4/3",
+      "candidateAnswer": "$x>\\dfrac{4}{3}$",
+      "match": true,
+      "method": "서답형 18: x>4/3 (발문만으로 독립 풀이, 해설 답과 동일)"
+    },
+    {
+      "qid": 19,
+      "blindFrozenAnswer": "98",
+      "candidateAnswer": "$98$",
+      "match": true,
+      "method": "서답형 19: 98 (발문만으로 독립 풀이, 해설 답과 동일)"
+    }
+  ],
+  "originalComparison": {
+    "questionCount": "19 vs 19",
+    "pointsSum": "100 vs 100",
+    "notes": "형식·개념·풀이 구조·배점 보존, 수치·상수 변경. Q15 등 보기 정답이 원본과 다름"
+  },
+  "answerDistribution": {
+    "①": 3,
+    "②": 4,
+    "③": 3,
+    "④": 3,
+    "⑤": 3,
+    "note": "max-min=1, 3연속 없음"
+  },
+  "mathReview": "전 문항 정답 독립 일치. 해설은 칠판 판서형이며 제작 메모 없음. Q7·Q15·Q17~Q19 해설 직접 읽어 논리 정합 확인.",
+  "metaReview": {
+    "note": "빈 칸 없음, primaryMethod/difficultyReason 19종 모두 상이. Q11·Q12·Q18·Q19는 마스터 잠금 분류에 전용 리프가 없어 RPM_APPROXIMATE 유지(hold에 사유 명시)."
+  },
+  "visualReview": {
+    "plans": "38개 plan 존재, 전 문항 EXEMPT 사유 기재. Q13 그림은 CSS 격자(14칸)로 발문과 일치.",
+    "note": "원본 해설 그림 7문항은 해설 글로 완결, 그림 필요성 재판정은 후속"
+  },
+  "reviewerEdits": [],
+  "defects": [],
+  "unresolvedDefects": [],
+  "NOT_RUN": [
+    "실제 Chrome 렌더",
+    "tools/run-tests.js 전체 및 check-archive2-runtime(병합 직전)"
+  ]
+}

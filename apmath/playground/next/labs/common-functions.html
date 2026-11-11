@@ -3549,6 +3549,28 @@ window.addEventListener('DOMContentLoaded', function () {
     const meaning = label.match(/^(?:점근선|대칭축|수선의 발|접점|중점|중심|원점|수직|가로선|정의역|치역|시작점|기준선)/);
     return meaning ? meaning[0] : '';
   }
+  function lessonMathKey(value) {
+    return String(value || '').normalize('NFKC')
+      .replace(/\\(?:left|right|,|!|;|quad|qquad)/g, '')
+      .replace(/\\(?:dfrac|frac)\{([^{}]*)\}\{([^{}]*)\}/g, '($1)/($2)')
+      .replace(/\\sqrt\{([^{}]*)\}/g, '√($1)').replace(/\\sqrt\s*([\w])/g, '√($1)')
+      .replace(/\\(?:text|mathrm|mathbf|overline)\{([^{}]*)\}/g, '$1')
+      .replace(/\\leq?/g, '≤').replace(/\\geq?/g, '≥').replace(/\\lt/g, '<').replace(/\\gt/g, '>')
+      .replace(/\\cdot|\\times/g, '×').replace(/−|–/g, '-')
+      .replace(/([0-9]+)\.0+(?=[^0-9]|$)/g, '$1')
+      .replace(/[\s{}$]/g, '');
+  }
+  function revealedLessonLabel(label, s) {
+    const text = String(label || ''), key = lessonMathKey(text);
+    const known = (s.lcfKnownMath || []).map(lessonMathKey);
+    if (key && known.some(value => value.includes(key))) return text;
+    // Source labels sometimes add an instructional prefix or a bracketed hint.
+    // Reveal only the exact mathematical part already stated by the caption.
+    const fragment = text.replace(/^[가-힣\s:]+/, '').replace(/\s*\[[^\]]*\]\s*$/, '');
+    const fragmentKey = lessonMathKey(fragment);
+    if (fragmentKey && known.some(value => value.includes(fragmentKey))) return fragment;
+    return neutralLessonLabel(text);
+  }
   function traceLessonGeometry(b, s, paths, circles, points) {
     const u = APLab.clamp(Number(s.lcfTrace) || 0, 0, 1);
     if (s.lessonEntry || !u) return;
@@ -3651,7 +3673,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const eligible = options => !b._bbox && (!options.dash || Array.isArray(options.dash) && !options.dash.length) && options.color !== null && options.stroke !== false && (options.width || 2.6) >= 2.4;
       // B9's numeric nodes and coordinate ticks are given data. Keep them;
       // the legacy figure adapter's derived labels are delayed until the end.
-      const neutral = label => !shown.lcfShowAnswer && !sc.id.startsWith('b9-') ? neutralLessonLabel(label) : label;
+      const neutral = label => !sc.id.startsWith('b9-') ? revealedLessonLabel(label, shown) : label;
       b.path = function (ps, options = {}) {
         if (ps.length >= 2 && eligible(options)) paths.push({ points: ps.map(p => this._P(p)), options });
         return path.call(this, ps, options);

@@ -31,6 +31,21 @@
         first.cues.splice(1, 0, { at: 0.1, to: { lcfTrace: 1 }, dur: 4 });
         const final = chapters[chapters.length - 1].cues[0];
         final.set = { ...final.set, lcfShowAnswer: true };
+        // Keep the labels in the figure in the same order as the explanation.
+        // A different target in this scene must not reveal its result early.
+        const known = [];
+        const remember = text => {
+          for (const match of String(text || '').matchAll(/\$([^$]+)\$|<annotation[^>]*>([^<]+)<\/annotation>/g)) {
+            const value = match[1] || match[2];
+            if (!known.includes(value)) known.push(value);
+          }
+        };
+        remember(first.cues[0].set.lcfQuestion);
+        for (const chapter of chapters) for (const cue of chapter.cues) {
+          if (!cue.say) continue;
+          remember(cue.say);
+          cue.set = { ...cue.set, lcfKnownMath: known.slice() };
+        }
         (lessons[id] || (lessons[id] = [])).push({
           label, title, tab: 'review', answer, answerText: options.answerText || answer,
           summary: options.summary || '함수의 조건을 대응과 그래프로 읽고 식으로 확인해요.',
