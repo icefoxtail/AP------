@@ -14,11 +14,11 @@ window.questionBank = [
     "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
     "standardUnitOrder": 6,
-    "subUnitKey": "H22-C-06-SYSTEM",
+    "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "crosswalk_leaf_match_binding_review_required",
-    "subUnitClassificationDepth": "crosswalk_leaf_only",
-    "conceptClusterKey": "SYSTEM",
+    "subUnitConfidence": "active_binding_and_semantic_match",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "conceptClusterKey": "HIGHER_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -44,7 +44,7 @@ window.questionBank = [
     "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
     "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
     "crossConceptKeys": [
-      "CC_SYSTEM_OF_INEQUALITIES"
+      "CC_SIMULTANEOUS_LINEAR_INEQUALITIES"
     ],
     "conditionKeys": [
       "COND_INTEGER"
@@ -54,7 +54,7 @@ window.questionBank = [
     "rpmPrimaryL2": "여러 가지 부등식",
     "rpmPrimaryL3": "연립일차부등식",
     "rpmPrimaryL4": "정수해",
-    "rpmPrimaryRecordId": "H1-RPM-179",
+    "rpmPrimaryRecordId": "H1-RPM-285",
     "sourceQid": 1,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q01-problem.plan.json",
@@ -72,11 +72,11 @@ window.questionBank = [
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
     "standardUnitOrder": 9,
-    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬",
-    "subUnitConfidence": "crosswalk_leaf_match_binding_review_required",
-    "subUnitClassificationDepth": "crosswalk_leaf_only",
-    "conceptClusterKey": "MATRIX_OPERATION",
+    "subUnitConfidence": "active_binding_and_semantic_match",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "conceptClusterKey": "CORE",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -102,17 +102,15 @@ window.questionBank = [
     "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
     "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
     "crossConceptKeys": [
-      "CC_TWO_VARIABLE_SYSTEM_SOLVE"
+      "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
     ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryL1": "행렬",
     "rpmPrimaryL2": "행렬",
     "rpmPrimaryL3": "행렬의 연산",
     "rpmPrimaryL4": "덧셈·뺄셈·실수배",
-    "rpmPrimaryRecordId": "H1-RPM-200",
+    "rpmPrimaryRecordId": "H1-RPM-287",
     "sourceQid": 2,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q02-problem.plan.json",
@@ -130,11 +128,11 @@ window.questionBank = [
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
     "standardUnitOrder": 9,
-    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬",
-    "subUnitConfidence": "crosswalk_leaf_match_binding_review_required",
-    "subUnitClassificationDepth": "crosswalk_leaf_only",
-    "conceptClusterKey": "MATRIX_OPERATION",
+    "subUnitConfidence": "active_binding_and_semantic_match",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "conceptClusterKey": "CORE",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -160,7 +158,7 @@ window.questionBank = [
     "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
     "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
     "crossConceptKeys": [
-      "CC_TWO_VARIABLE_SYSTEM_SOLVE"
+      "CC_VARIABLE_ELIMINATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -168,7 +166,7 @@ window.questionBank = [
     "rpmPrimaryL2": "행렬",
     "rpmPrimaryL3": "행렬의 연산",
     "rpmPrimaryL4": "덧셈·뺄셈·실수배",
-    "rpmPrimaryRecordId": "H1-RPM-200",
+    "rpmPrimaryRecordId": "H1-RPM-287",
     "sourceQid": 3,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q03-problem.plan.json",
@@ -216,7 +214,8 @@ window.questionBank = [
     "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
     "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
     "crossConceptKeys": [
-      "CC_COMBINATORICS_COUNTING"
+      "CC_CASE_BRANCHING",
+      "CC_PERMUTATION"
     ],
     "conditionKeys": [
       "COND_DISTINCT_DIGITS"
@@ -274,11 +273,12 @@ window.questionBank = [
     "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
     "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
     "crossConceptKeys": [
-      "CC_COMBINATORICS_COUNTING"
+      "CC_CASE_BRANCHING"
     ],
     "conditionKeys": [
       "COND_DISTINCT_DIGITS",
-      "COND_PARITY_POSITION"
+      "COND_PARITY_POSITION",
+      "COND_UPPER_BOUND"
     ],
     "integrationPattern": "CASE_BRANCH",
     "rpmPrimaryL1": "경우의 수",
@@ -303,11 +303,11 @@ window.questionBank = [
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
     "standardUnitOrder": 9,
-    "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+    "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬",
-    "subUnitConfidence": "crosswalk_leaf_match_binding_review_required",
-    "subUnitClassificationDepth": "crosswalk_leaf_only",
-    "conceptClusterKey": "MATRIX_APPLICATION",
+    "subUnitConfidence": "active_binding_and_semantic_match",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "conceptClusterKey": "CORE",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -330,9 +330,11 @@ window.questionBank = [
     "score": 4.7,
     "points": 4.7,
     "difficultyBucket": 3,
-    "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
-    "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+    "templateKey": "TPL_H1_MATRIX_POWER_PERIOD",
+    "crossConceptKeys": [
+      "CC_PRIME_FACTORIZATION_DIVISOR_COUNT"
+    ],
     "conditionKeys": [
       "COND_POSITIVE"
     ],
@@ -341,7 +343,7 @@ window.questionBank = [
     "rpmPrimaryL2": "행렬",
     "rpmPrimaryL3": "행렬의 성질",
     "rpmPrimaryL4": "곱셈의 성질",
-    "rpmPrimaryRecordId": "H1-RPM-202",
+    "rpmPrimaryRecordId": "H1-RPM-288",
     "sourceQid": 6,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q06-problem.plan.json",
@@ -359,11 +361,11 @@ window.questionBank = [
     "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
     "standardUnitOrder": 6,
-    "subUnitKey": "H22-C-06-SYSTEM",
+    "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "crosswalk_leaf_match_binding_review_required",
-    "subUnitClassificationDepth": "crosswalk_leaf_only",
-    "conceptClusterKey": "SYSTEM",
+    "subUnitConfidence": "active_binding_and_semantic_match",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "conceptClusterKey": "HIGHER_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -389,17 +391,18 @@ window.questionBank = [
     "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
     "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
     "crossConceptKeys": [
-      "CC_SYSTEM_OF_INEQUALITIES"
+      "CC_SYSTEM_OF_INEQUALITIES",
+      "CC_INTERVAL_INTERSECTION"
     ],
     "conditionKeys": [
-      "COND_INTEGER"
+      "COND_NATURAL_NUMBER"
     ],
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryL1": "방정식과 부등식",
     "rpmPrimaryL2": "여러 가지 부등식",
     "rpmPrimaryL3": "연립일차부등식",
     "rpmPrimaryL4": "해의 범위",
-    "rpmPrimaryRecordId": "H1-RPM-178",
+    "rpmPrimaryRecordId": "H1-RPM-286",
     "sourceQid": 7,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q07-problem.plan.json",
@@ -447,8 +450,8 @@ window.questionBank = [
     "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
     "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
     "crossConceptKeys": [
-      "CC_DISCRIMINANT",
-      "CC_INEQUALITY_QUADRATIC"
+      "CC_GLOBAL_QUADRATIC_INEQUALITY_NO_SOLUTION",
+      "CC_DISCRIMINANT_APPLICATION"
     ],
     "conditionKeys": [
       "COND_INTEGER"
@@ -506,7 +509,8 @@ window.questionBank = [
     "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
     "templateKey": "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
     "crossConceptKeys": [
-      "CC_SYMMETRIC_SYSTEM_OF_EQUATIONS"
+      "CC_SYMMETRIC_SYSTEM_OF_EQUATIONS",
+      "CC_VARIABLE_SUBSTITUTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
@@ -561,9 +565,13 @@ window.questionBank = [
     "difficultyBucket": 2,
     "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
     "templateKey": "TPL_COMBINATION_SELECTION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_PERMUTATION_FORMULA",
+      "CC_COMBINATION_FORMULA"
+    ],
     "conditionKeys": [
-      "COND_NATURAL_NUMBER"
+      "COND_NATURAL_NUMBER",
+      "COND_LOWER_BOUND"
     ],
     "integrationPattern": "NONE",
     "rpmPrimaryL1": "경우의 수",
@@ -579,20 +587,20 @@ window.questionBank = [
   {
     "id": 11,
     "level": "중",
-    "category": "복소수",
-    "originalCategory": "복소수",
+    "category": "여러 가지 방정식",
+    "originalCategory": "여러 가지 방정식",
     "standardCourse": "공통수학1",
     "curriculum": "2022",
     "curriculumKey": "2022",
     "courseKey": "공통수학1",
-    "standardUnitKey": "H22-C-04",
-    "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 4,
-    "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
-    "subUnit": "복소수",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+    "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "active_binding_and_semantic_match",
     "subUnitClassificationDepth": "complete_active_binding",
-    "conceptClusterKey": "COMPLEX_OPERATION",
+    "conceptClusterKey": "HIGHER_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -615,16 +623,19 @@ window.questionBank = [
     "score": 4.9,
     "points": 4.9,
     "difficultyBucket": 2,
-    "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
-    "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+    "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+    "crossConceptKeys": [
+      "CC_CUBIC_OMEGA_PROPERTIES",
+      "CC_COMPLEX_UNIT_ROOT_PERIODICITY"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryL1": "방정식과 부등식",
-    "rpmPrimaryL2": "복소수",
-    "rpmPrimaryL3": "i의 거듭제곱",
-    "rpmPrimaryL4": "주기성",
-    "rpmPrimaryRecordId": "H1-RPM-158",
+    "rpmPrimaryL2": "여러 가지 방정식",
+    "rpmPrimaryL3": "삼차·사차방정식",
+    "rpmPrimaryL4": "인수분해형",
+    "rpmPrimaryRecordId": "H1-RPM-172",
     "sourceQid": 11,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q11-problem.plan.json",
@@ -633,20 +644,20 @@ window.questionBank = [
   {
     "id": 12,
     "level": "상",
-    "category": "조합",
-    "originalCategory": "조합",
+    "category": "이차방정식과 이차함수",
+    "originalCategory": "이차방정식과 이차함수",
     "standardCourse": "공통수학1",
     "curriculum": "2022",
     "curriculumKey": "2022",
     "courseKey": "공통수학1",
-    "standardUnitKey": "H22-C-08",
-    "standardUnit": "순열과 조합",
-    "standardUnitOrder": 8,
-    "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
-    "subUnit": "조합",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "이차방정식과 이차함수",
     "subUnitConfidence": "active_binding_and_semantic_match",
     "subUnitClassificationDepth": "complete_active_binding",
-    "conceptClusterKey": "COUNTING_PRINCIPLE",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -670,21 +681,20 @@ window.questionBank = [
     "score": 5.3,
     "points": 5.3,
     "difficultyBucket": 4,
-    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
-    "templateKey": "TPL_COMBINATION_SELECTION",
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
     "crossConceptKeys": [
-      "CC_QUADRATIC_FUNCTION",
-      "CC_COMBINATORICS_COUNTING"
+      "CC_QUADRANT_PASSAGE_CONDITION"
     ],
     "conditionKeys": [
       "COND_NONZERO"
     ],
     "integrationPattern": "SEQUENTIAL",
-    "rpmPrimaryL1": "경우의 수",
-    "rpmPrimaryL2": "조합",
-    "rpmPrimaryL3": "조합의 활용",
-    "rpmPrimaryL4": "선택 조건",
-    "rpmPrimaryRecordId": "H1-RPM-194",
+    "rpmPrimaryL1": "방정식과 부등식",
+    "rpmPrimaryL2": "이차방정식과 이차함수",
+    "rpmPrimaryL3": "그래프와 근",
+    "rpmPrimaryL4": "x축과의 교점",
+    "rpmPrimaryRecordId": "H1-RPM-166",
     "sourceQid": 12,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q12-problem.plan.json",
@@ -733,7 +743,8 @@ window.questionBank = [
     "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
     "templateKey": "TPL_COMBINATION_SELECTION",
     "crossConceptKeys": [
-      "CC_COMBINATORICS_COUNTING"
+      "CC_COMBINATION_SELECTION",
+      "CC_COMPLEMENTARY_COUNTING"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -759,11 +770,11 @@ window.questionBank = [
     "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
     "standardUnitOrder": 6,
-    "subUnitKey": "H22-C-06-EQUATION_APPLICATION",
+    "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
     "subUnit": "여러 가지 방정식",
-    "subUnitConfidence": "crosswalk_leaf_match_binding_review_required",
-    "subUnitClassificationDepth": "crosswalk_leaf_only",
-    "conceptClusterKey": "EQUATION_APPLICATION",
+    "subUnitConfidence": "active_binding_and_semantic_match",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "conceptClusterKey": "SYSTEM_OF_EQUATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -786,10 +797,11 @@ window.questionBank = [
     "score": 5.3,
     "points": 5.3,
     "difficultyBucket": 3,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+    "templateKey": "TPL_H1_SYSTEM_DIRECT",
     "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
+      "CC_PYTHAGOREAN_THEOREM",
+      "CC_RECTANGLE_AREA"
     ],
     "conditionKeys": [
       "COND_POSITIVE"
@@ -797,9 +809,9 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryL1": "방정식과 부등식",
     "rpmPrimaryL2": "여러 가지 방정식",
-    "rpmPrimaryL3": "방정식의 활용",
-    "rpmPrimaryL4": "도형·함수 결합",
-    "rpmPrimaryRecordId": "H1-RPM-177",
+    "rpmPrimaryL3": "연립방정식",
+    "rpmPrimaryL4": "이차식이 포함된 연립방정식",
+    "rpmPrimaryRecordId": "H1-RPM-174",
     "sourceQid": 14,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q14-problem.plan.json",
@@ -846,7 +858,8 @@ window.questionBank = [
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
     "crossConceptKeys": [
-      "CC_COMBINATORICS_COUNTING"
+      "CC_NEIGHBORING_PERMUTATION",
+      "CC_BLOCK_PERMUTATION"
     ],
     "conditionKeys": [
       "COND_CONSECUTIVE_GROUPING"
@@ -904,9 +917,11 @@ window.questionBank = [
     "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
     "templateKey": "TPL_COMBINATION_SELECTION",
     "crossConceptKeys": [
-      "CC_COMBINATORICS_COUNTING"
+      "CC_CASE_BRANCHING",
+      "CC_COMBINATION_SELECTION"
     ],
     "conditionKeys": [
+      "COND_INEQUALITY_CONSTRAINT",
       "COND_NATURAL_NUMBER"
     ],
     "integrationPattern": "CASE_BRANCH",
@@ -932,11 +947,11 @@ window.questionBank = [
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
     "standardUnitOrder": 9,
-    "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+    "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬",
-    "subUnitConfidence": "crosswalk_leaf_match_binding_review_required",
-    "subUnitClassificationDepth": "crosswalk_leaf_only",
-    "conceptClusterKey": "MATRIX_APPLICATION",
+    "subUnitConfidence": "active_binding_and_semantic_match",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "conceptClusterKey": "CORE",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -955,7 +970,9 @@ window.questionBank = [
     "difficultyBucket": 4,
     "problemTypeKey": "PT_H1_MATRIX_EQUATION",
     "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_CASE_EXHAUSTION"
+    ],
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
@@ -964,7 +981,7 @@ window.questionBank = [
     "rpmPrimaryL2": "행렬",
     "rpmPrimaryL3": "행렬의 성질",
     "rpmPrimaryL4": "조건을 만족하는 행렬",
-    "rpmPrimaryRecordId": "H1-RPM-203",
+    "rpmPrimaryRecordId": "H1-RPM-289",
     "sourceQid": 17,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q17-problem.plan.json",
@@ -973,8 +990,8 @@ window.questionBank = [
   {
     "id": 18,
     "level": "상",
-    "category": "절댓값 부등식",
-    "originalCategory": "절댓값 부등식",
+    "category": "여러 가지 부등식",
+    "originalCategory": "여러 가지 부등식",
     "standardCourse": "공통수학1",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -982,11 +999,11 @@ window.questionBank = [
     "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
     "standardUnitOrder": 6,
-    "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "절댓값 부등식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
-    "conceptClusterKey": "HIGHER_INEQUALITY",
+    "subUnitKey": "H22-C-06-INEQUALITY",
+    "subUnit": "여러 가지 부등식",
+    "subUnitConfidence": "active_binding_and_semantic_match",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "conceptClusterKey": "INEQUALITY",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1003,15 +1020,21 @@ window.questionBank = [
     "score": 7,
     "points": 7,
     "difficultyBucket": 4,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+    "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
     "crossConceptKeys": [
+      "CC_RADICAL_SQUARE_ABSOLUTE_VALUE",
       "CC_INEQUALITY_ABSOLUTE_VALUE"
     ],
     "conditionKeys": [
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
     "integrationPattern": "CASE_BRANCH",
+    "rpmPrimaryL1": "방정식과 부등식",
+    "rpmPrimaryL2": "여러 가지 부등식",
+    "rpmPrimaryL3": "연립일차부등식",
+    "rpmPrimaryL4": "해의 범위",
+    "rpmPrimaryRecordId": "H1-RPM-292",
     "sourceQid": 18,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q18-problem.plan.json",
@@ -1020,8 +1043,8 @@ window.questionBank = [
   {
     "id": 19,
     "level": "상",
-    "category": "삼차방정식",
-    "originalCategory": "삼차방정식",
+    "category": "이차방정식",
+    "originalCategory": "이차방정식",
     "standardCourse": "공통수학1",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -1029,11 +1052,11 @@ window.questionBank = [
     "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
     "standardUnitOrder": 6,
-    "subUnitKey": "H22-C-06-HIGHER_EQUATION",
-    "subUnit": "삼차방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
-    "conceptClusterKey": "HIGHER_EQUATION",
+    "subUnitKey": "H22-C-06-EQUATION",
+    "subUnit": "이차방정식",
+    "subUnitConfidence": "active_binding_and_semantic_match",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "conceptClusterKey": "EQUATION",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1050,13 +1073,19 @@ window.questionBank = [
     "score": 8,
     "points": 8,
     "difficultyBucket": 5,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+    "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
     "crossConceptKeys": [
-      "CC_VIETA_CUBIC"
+      "CC_VIETA_THIRD_DEGREE",
+      "CC_ROOT_REDUCTION_SYMMETRIC"
     ],
     "conditionKeys": [],
     "integrationPattern": "REINTERPRETATION",
+    "rpmPrimaryL1": "방정식과 부등식",
+    "rpmPrimaryL2": "이차방정식",
+    "rpmPrimaryL3": "근과 계수의 관계",
+    "rpmPrimaryL4": "근으로 방정식 구성",
+    "rpmPrimaryRecordId": "H1-RPM-291",
     "sourceQid": 19,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q19-problem.plan.json",

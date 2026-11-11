@@ -3,7 +3,7 @@
  "requestId": "26_광양제철고_1학기_기말_고1_유사-candidate-v1",
  "examUid": "26_광양제철고_1학기_기말_고1_유사",
  "sourceArchiveFile": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사.js",
- "expectedSourceBlobSha1": "f6bf92af3c3e7d2cc06eb06933c5dc3a6959f63c",
+ "expectedSourceBlobSha1": "dc15a48f7e0dfa57a9bfda00943d66e1c002fe47",
  "expectedQuestionCount": 19,
  "approval": {
   "type": "CANDIDATE_CREATION_GATE",
@@ -27,18 +27,18 @@
     "courseKey": "공통수학1",
     "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "subUnitKey": "H22-C-06-SYSTEM",
+    "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "conceptClusterKey": "SYSTEM",
+    "conceptClusterKey": "HIGHER_INEQUALITY",
     "rpmPrimaryRecordIds": [
-     "H1-RPM-179"
+     "H1-RPM-285"
     ],
     "rpmPrimary": {
      "l1": "방정식과 부등식",
      "l2": "여러 가지 부등식",
      "l3": "연립일차부등식",
      "l4": "정수해",
-     "recordId": "H1-RPM-179",
+     "recordId": "H1-RPM-285",
      "l3Label": "연립일차부등식",
      "l4Label": "정수해",
      "l4Source": "CANONICAL"
@@ -47,7 +47,7 @@
     "rpmPrimaryL2": "여러 가지 부등식",
     "rpmPrimaryL3": "연립일차부등식",
     "rpmPrimaryL4": "정수해",
-    "rpmPrimaryRecordId": "H1-RPM-179",
+    "rpmPrimaryRecordId": "H1-RPM-285",
     "L1": "방정식과 부등식",
     "L2": "여러 가지 부등식",
     "L3": "연립일차부등식",
@@ -57,10 +57,10 @@
     "ptTplCandidate": {
      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
      "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
-     "crosswalkMappingStatus": "DIRECT_BINDING_GAP"
+     "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
-     "CC_SYSTEM_OF_INEQUALITIES"
+     "CC_SIMULTANEOUS_LINEAR_INEQUALITIES"
     ],
     "conditionKeys": [
      "COND_INTEGER"
@@ -94,9 +94,23 @@
       "정수"
      ]
     },
-    "hold": [
-     "RPM-179 크로스워크 행이 DIRECT_BINDING_GAP(PT/TPL은 후보, 2022 H22-C-06-SYSTEM 바인딩 미결속) — 공식 Resolver 확인 전까지 후보로만 둠"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      68
+     ],
+     "goal": [
+      129,
+      2
+     ],
+     "method": [
+      63,
+      296
+     ],
+     "condition": [
+      2
+     ]
+    },
+    "hold": [],
     "levelBasis": "일차부등식 두 개를 풀고 겹치는 구간의 정수를 세는 직접 처리라 사고 단계가 2이다(부호 반전 한 곳).",
     "difficultyBasis": "일차부등식 두 개를 풀고 겹치는 구간의 정수를 세는 직접 처리라 사고 단계가 2이다(부호 반전 한 곳).",
     "visualNecessity": {
@@ -107,10 +121,10 @@
     },
     "metaRationale": {
      "problemType": "두 일차부등식을 각각 풀어 수직선에서 공통 범위를 잡고 그 안의 정수를 센다",
-     "crossConcept": "교차 개념 키: CC_SYSTEM_OF_INEQUALITIES",
+     "crossConcept": "교차 개념 키: CC_SIMULTANEOUS_LINEAR_INEQUALITIES",
      "condition": "조건 키: COND_INTEGER",
      "integration": "통합 패턴 NONE: 풀이 구조에 따라 판정",
-     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-179(DIRECT_BINDING_GAP) 기준"
+     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-285(DIRECT_ACTIVE) 기준"
     },
     "provenance": {
      "kind": "SIMILAR_FROM_ORIGINAL",
@@ -135,11 +149,11 @@
     "schemaVersion": "similar-high-parent-assignment-v1",
     "curriculum": "2022",
     "scope": "공통수학1",
-    "parentRefMode": "CROSSWALK_LEAF_ONLY",
-    "crosswalkRecordId": "H1-RPM-179",
-    "method": "HOLD_NO_EXACT_ACTIVE_ROW",
-    "basis": "결정 단계=연립일차부등식>정수해; 크로스워크 행 DIRECT_BINDING_GAP",
-    "confidence": "LOW",
+    "parentRefMode": "CROSSWALK_EXACT",
+    "crosswalkRecordId": "H1-RPM-285",
+    "method": "CROSSWALK_PT_TPL_EXACT",
+    "basis": "결정 단계=연립일차부등식>정수해; 크로스워크 행 DIRECT_ACTIVE",
+    "confidence": "HIGH",
     "assignedBy": "claude-similar-high-gen",
     "assignedAt": "2026-11-11",
     "fieldChanges": []
@@ -156,18 +170,18 @@
     "courseKey": "공통수학1",
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬",
-    "conceptClusterKey": "MATRIX_OPERATION",
+    "conceptClusterKey": "CORE",
     "rpmPrimaryRecordIds": [
-     "H1-RPM-200"
+     "H1-RPM-287"
     ],
     "rpmPrimary": {
      "l1": "행렬",
      "l2": "행렬",
      "l3": "행렬의 연산",
      "l4": "덧셈·뺄셈·실수배",
-     "recordId": "H1-RPM-200",
+     "recordId": "H1-RPM-287",
      "l3Label": "행렬의 연산",
      "l4Label": "덧셈·뺄셈·실수배",
      "l4Source": "CANONICAL"
@@ -176,7 +190,7 @@
     "rpmPrimaryL2": "행렬",
     "rpmPrimaryL3": "행렬의 연산",
     "rpmPrimaryL4": "덧셈·뺄셈·실수배",
-    "rpmPrimaryRecordId": "H1-RPM-200",
+    "rpmPrimaryRecordId": "H1-RPM-287",
     "L1": "행렬",
     "L2": "행렬",
     "L3": "행렬의 연산",
@@ -186,14 +200,12 @@
     "ptTplCandidate": {
      "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
      "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
-     "crosswalkMappingStatus": "DIRECT_BINDING_GAP"
+     "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
-     "CC_TWO_VARIABLE_SYSTEM_SOLVE"
+     "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
     ],
-    "conditionKeys": [
-     "COND_POSITIVE"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "level": "중",
     "difficultyBucket": 2,
@@ -209,8 +221,7 @@
     "rpmL4": "덧셈·뺄셈·실수배",
     "item4slot": {
      "given": [
-      "행렬",
-      "표"
+      "행렬"
      ],
      "goal": [
       "값",
@@ -220,14 +231,23 @@
       "연립방정식",
       "실수배"
      ],
-     "condition": [
-      "자연수"
-     ]
+     "condition": []
     },
-    "hold": [
-     "RPM-200 크로스워크 행이 DIRECT_BINDING_GAP — PT/TPL 후보만 기재",
-     "행렬의 합·실수배를 연립방정식으로 푸는 활용이라 CrossConcept 키는 CC_TWO_VARIABLE_SYSTEM_SOLVE로 근사 — 검수에서 적합성 확인"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      292
+     ],
+     "goal": [
+      131,
+      129
+     ],
+     "method": [
+      67,
+      547
+     ],
+     "condition": []
+    },
+    "hold": [],
     "levelBasis": "표를 행렬로 읽는 해석 한 단계 뒤에 연립방정식과 대입 계산이 이어져 사고 단계가 3이다.",
     "difficultyBasis": "표를 행렬로 읽는 해석 한 단계 뒤에 연립방정식과 대입 계산이 이어져 사고 단계가 3이다.",
     "visualNecessity": {
@@ -238,10 +258,10 @@
     },
     "metaRationale": {
      "problemType": "행렬의 성분을 읽어 작업일 수 x,y에 대한 연립일차방정식을 세워 풀고 같은 x,y로 흰색 하의 성분을 계산한다",
-     "crossConcept": "교차 개념 키: CC_TWO_VARIABLE_SYSTEM_SOLVE",
-     "condition": "조건 키: COND_POSITIVE",
+     "crossConcept": "교차 개념 키: CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+     "condition": "별도 제한 조건 키가 필요한 조건이 없다.",
      "integration": "통합 패턴 SEQUENTIAL: 풀이 구조에 따라 판정",
-     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-200(DIRECT_BINDING_GAP) 기준"
+     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-287(DIRECT_ACTIVE) 기준"
     },
     "provenance": {
      "kind": "SIMILAR_FROM_ORIGINAL",
@@ -266,11 +286,11 @@
     "schemaVersion": "similar-high-parent-assignment-v1",
     "curriculum": "2022",
     "scope": "공통수학1",
-    "parentRefMode": "CROSSWALK_LEAF_ONLY",
-    "crosswalkRecordId": "H1-RPM-200",
-    "method": "HOLD_NO_EXACT_ACTIVE_ROW",
-    "basis": "결정 단계=행렬의 연산>덧셈·뺄셈·실수배; 크로스워크 행 DIRECT_BINDING_GAP",
-    "confidence": "LOW",
+    "parentRefMode": "CROSSWALK_EXACT",
+    "crosswalkRecordId": "H1-RPM-287",
+    "method": "CROSSWALK_PT_TPL_EXACT",
+    "basis": "결정 단계=행렬의 연산>덧셈·뺄셈·실수배; 크로스워크 행 DIRECT_ACTIVE",
+    "confidence": "HIGH",
     "assignedBy": "claude-similar-high-gen",
     "assignedAt": "2026-11-11",
     "fieldChanges": []
@@ -287,18 +307,18 @@
     "courseKey": "공통수학1",
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬",
-    "conceptClusterKey": "MATRIX_OPERATION",
+    "conceptClusterKey": "CORE",
     "rpmPrimaryRecordIds": [
-     "H1-RPM-200"
+     "H1-RPM-287"
     ],
     "rpmPrimary": {
      "l1": "행렬",
      "l2": "행렬",
      "l3": "행렬의 연산",
      "l4": "덧셈·뺄셈·실수배",
-     "recordId": "H1-RPM-200",
+     "recordId": "H1-RPM-287",
      "l3Label": "행렬의 연산",
      "l4Label": "덧셈·뺄셈·실수배",
      "l4Source": "CANONICAL"
@@ -307,7 +327,7 @@
     "rpmPrimaryL2": "행렬",
     "rpmPrimaryL3": "행렬의 연산",
     "rpmPrimaryL4": "덧셈·뺄셈·실수배",
-    "rpmPrimaryRecordId": "H1-RPM-200",
+    "rpmPrimaryRecordId": "H1-RPM-287",
     "L1": "행렬",
     "L2": "행렬",
     "L3": "행렬의 연산",
@@ -317,10 +337,10 @@
     "ptTplCandidate": {
      "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
      "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
-     "crosswalkMappingStatus": "DIRECT_BINDING_GAP"
+     "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
-     "CC_TWO_VARIABLE_SYSTEM_SOLVE"
+     "CC_VARIABLE_ELIMINATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -352,10 +372,23 @@
      ],
      "condition": []
     },
-    "hold": [
-     "RPM-200 크로스워크 행이 DIRECT_BINDING_GAP — PT/TPL 후보만 기재",
-     "곱셈 단계(RPM-201)도 쓰나 결정 단계는 A,B를 구하는 연립이라 Primary를 200으로 둠"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      292,
+      67
+     ],
+     "goal": [
+      292,
+      286
+     ],
+     "method": [
+      368,
+      40,
+      547
+     ],
+     "condition": []
+    },
+    "hold": [],
     "levelBasis": "문자를 소거해 A,B를 구하고 행렬의 곱까지 이어지는 계산이 길지만 각 단계는 정해진 절차라 사고 단계가 3이다.",
     "difficultyBasis": "문자를 소거해 A,B를 구하고 행렬의 곱까지 이어지는 계산이 길지만 각 단계는 정해진 절차라 사고 단계가 3이다.",
     "visualNecessity": {
@@ -366,10 +399,10 @@
     },
     "metaRationale": {
      "problemType": "행렬 방정식 두 개를 연립해 A와 B를 각각 구한 뒤 곱 AB의 성분을 모두 더한다",
-     "crossConcept": "교차 개념 키: CC_TWO_VARIABLE_SYSTEM_SOLVE",
+     "crossConcept": "교차 개념 키: CC_VARIABLE_ELIMINATION",
      "condition": "별도 제한 조건 키가 필요한 조건이 없다.",
      "integration": "통합 패턴 SEQUENTIAL: 풀이 구조에 따라 판정",
-     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-200(DIRECT_BINDING_GAP) 기준"
+     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-287(DIRECT_ACTIVE) 기준"
     },
     "provenance": {
      "kind": "SIMILAR_FROM_ORIGINAL",
@@ -394,11 +427,11 @@
     "schemaVersion": "similar-high-parent-assignment-v1",
     "curriculum": "2022",
     "scope": "공통수학1",
-    "parentRefMode": "CROSSWALK_LEAF_ONLY",
-    "crosswalkRecordId": "H1-RPM-200",
-    "method": "HOLD_NO_EXACT_ACTIVE_ROW",
-    "basis": "결정 단계=행렬의 연산>덧셈·뺄셈·실수배; 크로스워크 행 DIRECT_BINDING_GAP",
-    "confidence": "LOW",
+    "parentRefMode": "CROSSWALK_EXACT",
+    "crosswalkRecordId": "H1-RPM-287",
+    "method": "CROSSWALK_PT_TPL_EXACT",
+    "basis": "결정 단계=행렬의 연산>덧셈·뺄셈·실수배; 크로스워크 행 DIRECT_ACTIVE",
+    "confidence": "HIGH",
     "assignedBy": "claude-similar-high-gen",
     "assignedAt": "2026-11-11",
     "fieldChanges": []
@@ -448,7 +481,8 @@
      "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
-     "CC_COMBINATORICS_COUNTING"
+     "CC_CASE_BRANCHING",
+     "CC_PERMUTATION"
     ],
     "conditionKeys": [
      "COND_DISTINCT_DIGITS"
@@ -482,9 +516,23 @@
       "합"
      ]
     },
-    "hold": [
-     "합·곱의 법칙 리프(H22-C-07)를 사용 — 원본 JS는 H22-C-08로 분류했으나 크로스워크 행 기준으로 재결정"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      1,
+      245
+     ],
+     "goal": [
+      129
+     ],
+     "method": [
+      270,
+      245
+     ],
+     "condition": [
+      286
+     ]
+    },
+    "hold": [],
     "levelBasis": "조건을 등차수열로 재해석한 뒤 공차별로 세는 두 단계라 사고 단계가 3이고, 재해석을 못하면 막힐 수 있어 경계 표시를 둔다.",
     "difficultyBasis": "조건을 등차수열로 재해석한 뒤 공차별로 세는 두 단계라 사고 단계가 3이고, 재해석을 못하면 막힐 수 있어 경계 표시를 둔다.",
     "visualNecessity": {
@@ -495,7 +543,7 @@
     },
     "metaRationale": {
      "problemType": "합이 2배 조건을 등차(평균) 조건으로 바꾸어 세 수의 집합을 공차별로 세고 배열의 수 3!을 곱한다",
-     "crossConcept": "교차 개념 키: CC_COMBINATORICS_COUNTING",
+     "crossConcept": "교차 개념 키: CC_CASE_BRANCHING, CC_PERMUTATION",
      "condition": "조건 키: COND_DISTINCT_DIGITS",
      "integration": "통합 패턴 SEQUENTIAL: 풀이 구조에 따라 판정",
      "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-186(DIRECT_ACTIVE) 기준"
@@ -577,11 +625,12 @@
      "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
-     "CC_COMBINATORICS_COUNTING"
+     "CC_CASE_BRANCHING"
     ],
     "conditionKeys": [
      "COND_DISTINCT_DIGITS",
-     "COND_PARITY_POSITION"
+     "COND_PARITY_POSITION",
+     "COND_UPPER_BOUND"
     ],
     "integrationPattern": "CASE_BRANCH",
     "level": "중",
@@ -605,17 +654,32 @@
       "개수"
      ],
      "method": [
-      "곱의 법칙",
-      "경우 나누기"
+      "곱의법칙",
+      "경우분류"
      ],
      "condition": [
       "짝수",
       "홀수"
      ]
     },
-    "hold": [
-     "합·곱의 법칙 리프(H22-C-07)를 사용 — 원본 JS는 H22-C-08로 분류했으나 크로스워크 행 기준으로 재결정"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      1,
+      559
+     ],
+     "goal": [
+      129
+     ],
+     "method": [
+      371,
+      293
+     ],
+     "condition": [
+      679,
+      680
+     ]
+    },
+    "hold": [],
     "levelBasis": "자리별 제약이 겹쳐 경우를 둘로 나누어 세야 하지만 각 경우는 곱의 법칙 한 번이라 사고 단계가 3이다.",
     "difficultyBasis": "자리별 제약이 겹쳐 경우를 둘로 나누어 세야 하지만 각 경우는 곱의 법칙 한 번이라 사고 단계가 3이다.",
     "visualNecessity": {
@@ -626,8 +690,8 @@
     },
     "metaRationale": {
      "problemType": "백의 자리가 홀수인지 짝수인지로 나누어 일의 자리·십의 자리를 곱의 법칙으로 센다",
-     "crossConcept": "교차 개념 키: CC_COMBINATORICS_COUNTING",
-     "condition": "조건 키: COND_DISTINCT_DIGITS, COND_PARITY_POSITION",
+     "crossConcept": "교차 개념 키: CC_CASE_BRANCHING",
+     "condition": "조건 키: COND_DISTINCT_DIGITS, COND_PARITY_POSITION, COND_UPPER_BOUND",
      "integration": "통합 패턴 CASE_BRANCH: 풀이 구조에 따라 판정",
      "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-187(DIRECT_ACTIVE) 기준"
     },
@@ -675,18 +739,18 @@
     "courseKey": "공통수학1",
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+    "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬",
-    "conceptClusterKey": "MATRIX_APPLICATION",
+    "conceptClusterKey": "CORE",
     "rpmPrimaryRecordIds": [
-     "H1-RPM-202"
+     "H1-RPM-288"
     ],
     "rpmPrimary": {
      "l1": "행렬",
      "l2": "행렬",
      "l3": "행렬의 성질",
      "l4": "곱셈의 성질",
-     "recordId": "H1-RPM-202",
+     "recordId": "H1-RPM-288",
      "l3Label": "행렬의 성질",
      "l4Label": "곱셈의 성질",
      "l4Source": "CANONICAL"
@@ -695,19 +759,21 @@
     "rpmPrimaryL2": "행렬",
     "rpmPrimaryL3": "행렬의 성질",
     "rpmPrimaryL4": "곱셈의 성질",
-    "rpmPrimaryRecordId": "H1-RPM-202",
+    "rpmPrimaryRecordId": "H1-RPM-288",
     "L1": "행렬",
     "L2": "행렬",
     "L3": "행렬의 성질",
     "L4": "곱셈의 성질",
-    "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
-    "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
+    "problemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+    "templateKey": "TPL_H1_MATRIX_POWER_PERIOD",
     "ptTplCandidate": {
-     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
-     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-     "crosswalkMappingStatus": "DIRECT_BINDING_GAP"
+     "problemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+     "templateKey": "TPL_H1_MATRIX_POWER_PERIOD",
+     "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+     "CC_PRIME_FACTORIZATION_DIVISOR_COUNT"
+    ],
     "conditionKeys": [
      "COND_POSITIVE"
     ],
@@ -742,10 +808,25 @@
       "자연수"
      ]
     },
-    "hold": [
-     "RPM-202 크로스워크 행이 DIRECT_BINDING_GAP — PT/TPL 후보만 기재",
-     "약수 개수 세기를 쓰나 결정 단계는 행렬 거듭제곱 구조라 CrossConcept 키 없이 비움"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      292,
+      20
+     ],
+     "goal": [
+      402,
+      129
+     ],
+     "method": [
+      557,
+      556,
+      11
+     ],
+     "condition": [
+      1
+     ]
+    },
+    "hold": [],
     "levelBasis": "거듭제곱의 구조를 분해해 일반항을 얻은 뒤 약수의 개수로 연결하는 세 단계라 사고 단계가 3이다.",
     "difficultyBasis": "거듭제곱의 구조를 분해해 일반항을 얻은 뒤 약수의 개수로 연결하는 세 단계라 사고 단계가 3이다.",
     "visualNecessity": {
@@ -756,10 +837,10 @@
     },
     "metaRationale": {
      "problemType": "A=E+N, N^2=O임을 이용해 A^n=E+nN을 얻고 na=64의 양의 약수 개수로 순서쌍을 센다",
-     "crossConcept": "사전에서 맞는 교차 개념 키를 확인하지 못해 비움(추정 금지)",
+     "crossConcept": "교차 개념 키: CC_PRIME_FACTORIZATION_DIVISOR_COUNT",
      "condition": "조건 키: COND_POSITIVE",
      "integration": "통합 패턴 SEQUENTIAL: 풀이 구조에 따라 판정",
-     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-202(DIRECT_BINDING_GAP) 기준"
+     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-288(DIRECT_ACTIVE) 기준"
     },
     "provenance": {
      "kind": "SIMILAR_FROM_ORIGINAL",
@@ -784,11 +865,11 @@
     "schemaVersion": "similar-high-parent-assignment-v1",
     "curriculum": "2022",
     "scope": "공통수학1",
-    "parentRefMode": "CROSSWALK_LEAF_ONLY",
-    "crosswalkRecordId": "H1-RPM-202",
-    "method": "HOLD_NO_EXACT_ACTIVE_ROW",
-    "basis": "결정 단계=행렬의 성질>곱셈의 성질; 크로스워크 행 DIRECT_BINDING_GAP",
-    "confidence": "LOW",
+    "parentRefMode": "CROSSWALK_EXACT",
+    "crosswalkRecordId": "H1-RPM-288",
+    "method": "CROSSWALK_PT_TPL_EXACT",
+    "basis": "결정 단계=행렬의 성질>곱셈의 성질; 크로스워크 행 DIRECT_ACTIVE",
+    "confidence": "HIGH",
     "assignedBy": "claude-similar-high-gen",
     "assignedAt": "2026-11-11",
     "fieldChanges": []
@@ -805,18 +886,18 @@
     "courseKey": "공통수학1",
     "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "subUnitKey": "H22-C-06-SYSTEM",
+    "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "conceptClusterKey": "SYSTEM",
+    "conceptClusterKey": "HIGHER_INEQUALITY",
     "rpmPrimaryRecordIds": [
-     "H1-RPM-178"
+     "H1-RPM-286"
     ],
     "rpmPrimary": {
      "l1": "방정식과 부등식",
      "l2": "여러 가지 부등식",
      "l3": "연립일차부등식",
      "l4": "해의 범위",
-     "recordId": "H1-RPM-178",
+     "recordId": "H1-RPM-286",
      "l3Label": "연립일차부등식",
      "l4Label": "해의 범위",
      "l4Source": "CANONICAL"
@@ -825,7 +906,7 @@
     "rpmPrimaryL2": "여러 가지 부등식",
     "rpmPrimaryL3": "연립일차부등식",
     "rpmPrimaryL4": "해의 범위",
-    "rpmPrimaryRecordId": "H1-RPM-178",
+    "rpmPrimaryRecordId": "H1-RPM-286",
     "L1": "방정식과 부등식",
     "L2": "여러 가지 부등식",
     "L3": "연립일차부등식",
@@ -835,13 +916,14 @@
     "ptTplCandidate": {
      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
      "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
-     "crosswalkMappingStatus": "DIRECT_BINDING_GAP"
+     "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
-     "CC_SYSTEM_OF_INEQUALITIES"
+     "CC_SYSTEM_OF_INEQUALITIES",
+     "CC_INTERVAL_INTERSECTION"
     ],
     "conditionKeys": [
-     "COND_INTEGER"
+     "COND_NATURAL_NUMBER"
     ],
     "integrationPattern": "SEQUENTIAL",
     "level": "중",
@@ -873,10 +955,24 @@
       "정수"
      ]
     },
-    "hold": [
-     "RPM-178 크로스워크 행이 DIRECT_BINDING_GAP — PT/TPL 후보만 기재",
-     "부등식의 활용 리프(RPM-184/185)는 PT/TPL이 맞지 않아 연립일차부등식 리프로 둠"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      355
+     ],
+     "goal": [
+      127,
+      128,
+      286
+     ],
+     "method": [
+      68,
+      63
+     ],
+     "condition": [
+      2
+     ]
+    },
+    "hold": [],
     "levelBasis": "문장을 부등식으로 옮기는 해석이 어렵고 이후 연립부등식과 최소·최대 계산이 이어져 사고 단계가 3이다.",
     "difficultyBasis": "문장을 부등식으로 옮기는 해석이 어렵고 이후 연립부등식과 최소·최대 계산이 이어져 사고 단계가 3이다.",
     "visualNecessity": {
@@ -887,10 +983,10 @@
     },
     "metaRationale": {
      "problemType": "학생 수를 N=6t+8로 놓고 마지막 사용 텐트에 1명 이상이라는 조건에서 연립부등식 8(t−3)<N≤8(t−2)를 세워 t의 범위를 구한다",
-     "crossConcept": "교차 개념 키: CC_SYSTEM_OF_INEQUALITIES",
-     "condition": "조건 키: COND_INTEGER",
+     "crossConcept": "교차 개념 키: CC_SYSTEM_OF_INEQUALITIES, CC_INTERVAL_INTERSECTION",
+     "condition": "조건 키: COND_NATURAL_NUMBER",
      "integration": "통합 패턴 SEQUENTIAL: 풀이 구조에 따라 판정",
-     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-178(DIRECT_BINDING_GAP) 기준"
+     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-286(DIRECT_ACTIVE) 기준"
     },
     "provenance": {
      "kind": "SIMILAR_FROM_ORIGINAL",
@@ -915,11 +1011,11 @@
     "schemaVersion": "similar-high-parent-assignment-v1",
     "curriculum": "2022",
     "scope": "공통수학1",
-    "parentRefMode": "CROSSWALK_LEAF_ONLY",
-    "crosswalkRecordId": "H1-RPM-178",
-    "method": "HOLD_NO_EXACT_ACTIVE_ROW",
-    "basis": "결정 단계=연립일차부등식>해의 범위; 크로스워크 행 DIRECT_BINDING_GAP",
-    "confidence": "LOW",
+    "parentRefMode": "CROSSWALK_EXACT",
+    "crosswalkRecordId": "H1-RPM-286",
+    "method": "CROSSWALK_PT_TPL_EXACT",
+    "basis": "결정 단계=연립일차부등식>해의 범위; 크로스워크 행 DIRECT_ACTIVE",
+    "confidence": "HIGH",
     "assignedBy": "claude-similar-high-gen",
     "assignedAt": "2026-11-11",
     "fieldChanges": []
@@ -969,8 +1065,8 @@
      "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
-     "CC_DISCRIMINANT",
-     "CC_INEQUALITY_QUADRATIC"
+     "CC_GLOBAL_QUADRATIC_INEQUALITY_NO_SOLUTION",
+     "CC_DISCRIMINANT_APPLICATION"
     ],
     "conditionKeys": [
      "COND_INTEGER"
@@ -999,10 +1095,27 @@
      ],
      "method": [
       "판별식",
-      "경우 나누기"
+      "경우분류"
      ],
      "condition": [
       "해"
+     ]
+    },
+    "item4slotTermIds": {
+     "given": [
+      69,
+      308
+     ],
+     "goal": [
+      129,
+      2
+     ],
+     "method": [
+      55,
+      293
+     ],
+     "condition": [
+      78
      ]
     },
     "hold": [],
@@ -1016,7 +1129,7 @@
     },
     "metaRationale": {
      "problemType": "a의 부호(a>0, a=0, a<0)로 나누어 해가 없으려면 a<0이고 판별식이 0 이하임을 이용해 정수 a의 범위를 센다",
-     "crossConcept": "교차 개념 키: CC_DISCRIMINANT, CC_INEQUALITY_QUADRATIC",
+     "crossConcept": "교차 개념 키: CC_GLOBAL_QUADRATIC_INEQUALITY_NO_SOLUTION, CC_DISCRIMINANT_APPLICATION",
      "condition": "조건 키: COND_INTEGER",
      "integration": "통합 패턴 CASE_BRANCH: 풀이 구조에 따라 판정",
      "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-180(DIRECT_ACTIVE) 기준"
@@ -1098,7 +1211,8 @@
      "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
-     "CC_SYMMETRIC_SYSTEM_OF_EQUATIONS"
+     "CC_SYMMETRIC_SYSTEM_OF_EQUATIONS",
+     "CC_VARIABLE_SUBSTITUTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
@@ -1129,6 +1243,21 @@
      ],
      "condition": []
     },
+    "item4slotTermIds": {
+     "given": [
+      67,
+      60
+     ],
+     "goal": [
+      127,
+      286
+     ],
+     "method": [
+      52,
+      40
+     ],
+     "condition": []
+    },
     "hold": [],
     "levelBasis": "치환 설계가 비자명하고 d의 두 값별로 이차방정식을 풀어 최댓값을 비교하는 다단계라 사고 단계가 4이다.",
     "difficultyBasis": "치환 설계가 비자명하고 d의 두 값별로 이차방정식을 풀어 최댓값을 비교하는 다단계라 사고 단계가 4이다.",
@@ -1140,7 +1269,7 @@
     },
     "metaRationale": {
      "problemType": "s=x+y, d=x−y로 치환해 첫째 식에서 d를 정하고 xy=(s²−d²)/4를 둘째 식에 대입해 s에 대한 이차방정식을 d의 부호별로 푼다",
-     "crossConcept": "교차 개념 키: CC_SYMMETRIC_SYSTEM_OF_EQUATIONS",
+     "crossConcept": "교차 개념 키: CC_SYMMETRIC_SYSTEM_OF_EQUATIONS, CC_VARIABLE_SUBSTITUTION",
      "condition": "별도 제한 조건 키가 필요한 조건이 없다.",
      "integration": "통합 패턴 CASE_BRANCH: 풀이 구조에 따라 판정",
      "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-175(DIRECT_ACTIVE) 기준"
@@ -1221,9 +1350,13 @@
      "templateKey": "TPL_COMBINATION_SELECTION",
      "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+     "CC_PERMUTATION_FORMULA",
+     "CC_COMBINATION_FORMULA"
+    ],
     "conditionKeys": [
-     "COND_NATURAL_NUMBER"
+     "COND_NATURAL_NUMBER",
+     "COND_LOWER_BOUND"
     ],
     "integrationPattern": "NONE",
     "level": "중",
@@ -1255,9 +1388,24 @@
       "자연수"
      ]
     },
-    "hold": [
-     "순열 기호 계산을 함께 쓰나 조합 계산 리프(RPM-192)를 Primary로 둠 — 계산 리프가 따로 없어 근사"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      245,
+      248,
+      349
+     ],
+     "goal": [
+      131
+     ],
+     "method": [
+      245,
+      248
+     ],
+     "condition": [
+      1
+     ]
+    },
+    "hold": [],
     "levelBasis": "순열·조합 기호의 값을 계산하고 곱을 맞춰 n을 찾는 직접 계산이라 사고 단계가 2이다.",
     "difficultyBasis": "순열·조합 기호의 값을 계산하고 곱을 맞춰 n을 찾는 직접 계산이라 사고 단계가 2이다.",
     "visualNecessity": {
@@ -1268,8 +1416,8 @@
     },
     "metaRationale": {
      "problemType": "순열과 조합의 값을 계산해 왼쪽을 정수로 만든 뒤 nP5가 n에 따라 증가함을 이용해 n을 찾는다",
-     "crossConcept": "사전에서 맞는 교차 개념 키를 확인하지 못해 비움(추정 금지)",
-     "condition": "조건 키: COND_NATURAL_NUMBER",
+     "crossConcept": "교차 개념 키: CC_PERMUTATION_FORMULA, CC_COMBINATION_FORMULA",
+     "condition": "조건 키: COND_NATURAL_NUMBER, COND_LOWER_BOUND",
      "integration": "통합 패턴 NONE: 풀이 구조에 따라 판정",
      "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-192(DIRECT_ACTIVE) 기준"
     },
@@ -1315,41 +1463,44 @@
     "curriculum": "2022",
     "curriculumKey": "2022",
     "courseKey": "공통수학1",
-    "standardUnitKey": "H22-C-04",
-    "standardUnit": "복소수와 이차방정식",
-    "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
-    "subUnit": "복소수",
-    "conceptClusterKey": "COMPLEX_OPERATION",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+    "subUnit": "여러 가지 방정식",
+    "conceptClusterKey": "HIGHER_EQUATION",
     "rpmPrimaryRecordIds": [
-     "H1-RPM-158"
+     "H1-RPM-172"
     ],
     "rpmPrimary": {
      "l1": "방정식과 부등식",
-     "l2": "복소수",
-     "l3": "i의 거듭제곱",
-     "l4": "주기성",
-     "recordId": "H1-RPM-158",
-     "l3Label": "i의 거듭제곱",
-     "l4Label": "주기성",
+     "l2": "여러 가지 방정식",
+     "l3": "삼차·사차방정식",
+     "l4": "인수분해형",
+     "recordId": "H1-RPM-172",
+     "l3Label": "삼차·사차방정식",
+     "l4Label": "인수분해형",
      "l4Source": "CANONICAL"
     },
     "rpmPrimaryL1": "방정식과 부등식",
-    "rpmPrimaryL2": "복소수",
-    "rpmPrimaryL3": "i의 거듭제곱",
-    "rpmPrimaryL4": "주기성",
-    "rpmPrimaryRecordId": "H1-RPM-158",
+    "rpmPrimaryL2": "여러 가지 방정식",
+    "rpmPrimaryL3": "삼차·사차방정식",
+    "rpmPrimaryL4": "인수분해형",
+    "rpmPrimaryRecordId": "H1-RPM-172",
     "L1": "방정식과 부등식",
-    "L2": "복소수",
-    "L3": "i의 거듭제곱",
-    "L4": "주기성",
-    "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
-    "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+    "L2": "여러 가지 방정식",
+    "L3": "삼차·사차방정식",
+    "L4": "인수분해형",
+    "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+    "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
     "ptTplCandidate": {
-     "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
-     "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+     "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+     "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
      "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+     "CC_CUBIC_OMEGA_PROPERTIES",
+     "CC_COMPLEX_UNIT_ROOT_PERIODICITY"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "level": "중",
@@ -1362,27 +1513,43 @@
     "rpmSemanticStatus": "SELF_CHECKED",
     "sourceQid": 11,
     "variationType": "STRICT_VARIANT",
-    "rpmL3": "i의 거듭제곱",
-    "rpmL4": "주기성",
+    "rpmL3": "삼차·사차방정식",
+    "rpmL4": "인수분해형",
     "item4slot": {
      "given": [
       "복소수",
-      "허근"
+      "허근",
+      "방정식"
      ],
      "goal": [
       "합",
       "값"
      ],
      "method": [
+      "인수분해",
       "거듭제곱",
       "주기성"
      ],
      "condition": []
     },
-    "hold": [
-     "x³+1=0의 허근(1의 허근과 같은 주기 3 구조)을 전용으로 다루는 리프가 없어 가장 가까운 'i의 거듭제곱–주기성'(RPM-158)을 Primary로 둠 — 검수에서 적합성 확인(EVIDENCE_DEBT)",
-     "CrossConcept 키 중 허근 거듭제곱에 정확히 맞는 것을 찾지 못해 비움"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      6,
+      80,
+      62
+     ],
+     "goal": [
+      286,
+      131
+     ],
+     "method": [
+      42,
+      20,
+      109
+     ],
+     "condition": []
+    },
+    "hold": [],
     "levelBasis": "허근의 성질로 식을 줄인 뒤 주기 3으로 묶는 두 단계이고 계산량은 적어 사고 단계가 3이다.",
     "difficultyBasis": "허근의 성질로 식을 줄인 뒤 주기 3으로 묶는 두 단계이고 계산량은 적어 사고 단계가 3이다.",
     "visualNecessity": {
@@ -1393,10 +1560,10 @@
     },
     "metaRationale": {
      "problemType": "w²−w+1=0을 이용해 −w²−1=−w로 줄이고, z=−w가 z³=1, z²+z+1=0임을 이용해 세 항씩 묶어 합을 줄인다",
-     "crossConcept": "사전에서 맞는 교차 개념 키를 확인하지 못해 비움(추정 금지)",
+     "crossConcept": "교차 개념 키: CC_CUBIC_OMEGA_PROPERTIES, CC_COMPLEX_UNIT_ROOT_PERIODICITY",
      "condition": "별도 제한 조건 키가 필요한 조건이 없다.",
      "integration": "통합 패턴 SEQUENTIAL: 풀이 구조에 따라 판정",
-     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-158(DIRECT_ACTIVE) 기준"
+     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-172(DIRECT_ACTIVE) 기준"
     },
     "provenance": {
      "kind": "SIMILAR_FROM_ORIGINAL",
@@ -1422,9 +1589,9 @@
     "curriculum": "2022",
     "scope": "공통수학1",
     "parentRefMode": "CROSSWALK_EXACT",
-    "crosswalkRecordId": "H1-RPM-158",
+    "crosswalkRecordId": "H1-RPM-172",
     "method": "CROSSWALK_PT_TPL_EXACT",
-    "basis": "결정 단계=i의 거듭제곱>주기성; 크로스워크 행 DIRECT_ACTIVE",
+    "basis": "결정 단계=삼차·사차방정식>인수분해형; 크로스워크 행 DIRECT_ACTIVE",
     "confidence": "HIGH",
     "assignedBy": "claude-similar-high-gen",
     "assignedAt": "2026-11-11",
@@ -1440,43 +1607,42 @@
     "curriculum": "2022",
     "curriculumKey": "2022",
     "courseKey": "공통수학1",
-    "standardUnitKey": "H22-C-08",
-    "standardUnit": "순열과 조합",
-    "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
-    "subUnit": "조합",
-    "conceptClusterKey": "COUNTING_PRINCIPLE",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "이차방정식과 이차함수",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "rpmPrimaryRecordIds": [
-     "H1-RPM-194"
+     "H1-RPM-166"
     ],
     "rpmPrimary": {
-     "l1": "경우의 수",
-     "l2": "조합",
-     "l3": "조합의 활용",
-     "l4": "선택 조건",
-     "recordId": "H1-RPM-194",
-     "l3Label": "조합의 활용",
-     "l4Label": "선택 조건",
+     "l1": "방정식과 부등식",
+     "l2": "이차방정식과 이차함수",
+     "l3": "그래프와 근",
+     "l4": "x축과의 교점",
+     "recordId": "H1-RPM-166",
+     "l3Label": "그래프와 근",
+     "l4Label": "x축과의 교점",
      "l4Source": "CANONICAL"
     },
-    "rpmPrimaryL1": "경우의 수",
-    "rpmPrimaryL2": "조합",
-    "rpmPrimaryL3": "조합의 활용",
-    "rpmPrimaryL4": "선택 조건",
-    "rpmPrimaryRecordId": "H1-RPM-194",
-    "L1": "경우의 수",
-    "L2": "조합",
-    "L3": "조합의 활용",
-    "L4": "선택 조건",
-    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
-    "templateKey": "TPL_COMBINATION_SELECTION",
+    "rpmPrimaryL1": "방정식과 부등식",
+    "rpmPrimaryL2": "이차방정식과 이차함수",
+    "rpmPrimaryL3": "그래프와 근",
+    "rpmPrimaryL4": "x축과의 교점",
+    "rpmPrimaryRecordId": "H1-RPM-166",
+    "L1": "방정식과 부등식",
+    "L2": "이차방정식과 이차함수",
+    "L3": "그래프와 근",
+    "L4": "x축과의 교점",
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
     "ptTplCandidate": {
-     "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
-     "templateKey": "TPL_COMBINATION_SELECTION",
+     "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+     "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
      "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
-     "CC_QUADRATIC_FUNCTION",
-     "CC_COMBINATORICS_COUNTING"
+     "CC_QUADRANT_PASSAGE_CONDITION"
     ],
     "conditionKeys": [
      "COND_NONZERO"
@@ -1492,8 +1658,8 @@
     "rpmSemanticStatus": "SELF_CHECKED",
     "sourceQid": 12,
     "variationType": "STRICT_VARIANT",
-    "rpmL3": "조합의 활용",
-    "rpmL4": "선택 조건",
+    "rpmL3": "그래프와 근",
+    "rpmL4": "x축과의 교점",
     "item4slot": {
      "given": [
       "이차함수",
@@ -1505,17 +1671,32 @@
      "method": [
       "사분면",
       "부호",
-      "조합"
+      "곱의법칙"
      ],
      "condition": [
       "정수",
       "원점"
      ]
     },
-    "hold": [
-     "이차함수 그래프의 사분면 조건 CrossConcept 키(CC_QUADRANTS 등)는 사전에서 이 용도로 확인하지 못해 비움",
-     "Primary는 마지막 단계의 선택 조건 센기(RPM-194)로 두었고 그래프 판정은 CrossConcept 자리에서 보강 필요(EVIDENCE_DEBT)"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      91,
+      107
+     ],
+     "goal": [
+      129
+     ],
+     "method": [
+      149,
+      25,
+      371
+     ],
+     "condition": [
+      2,
+      403
+     ]
+    },
+    "hold": [],
     "levelBasis": "그래프 조건을 계수 조건으로 번역하는 단계가 어렵고 이후 선택 수 세기가 이어지는 다단계라 사고 단계가 4이다.",
     "difficultyBasis": "그래프 조건을 계수 조건으로 번역하는 단계가 어렵고 이후 선택 수 세기가 이어지는 다단계라 사고 단계가 4이다.",
     "visualNecessity": {
@@ -1526,10 +1707,10 @@
     },
     "metaRationale": {
      "problemType": "원점 통과로 c=0을 얻고 y=x(ax+b)의 부호 판정으로 b>0이 필요충분임을 밝힌 뒤 a,b의 선택 가짓수를 곱한다",
-     "crossConcept": "교차 개념 키: CC_QUADRATIC_FUNCTION, CC_COMBINATORICS_COUNTING",
+     "crossConcept": "교차 개념 키: CC_QUADRANT_PASSAGE_CONDITION",
      "condition": "조건 키: COND_NONZERO",
      "integration": "통합 패턴 SEQUENTIAL: 풀이 구조에 따라 판정",
-     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-194(DIRECT_ACTIVE) 기준"
+     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-166(DIRECT_ACTIVE) 기준"
     },
     "provenance": {
      "kind": "SIMILAR_FROM_ORIGINAL",
@@ -1555,9 +1736,9 @@
     "curriculum": "2022",
     "scope": "공통수학1",
     "parentRefMode": "CROSSWALK_EXACT",
-    "crosswalkRecordId": "H1-RPM-194",
+    "crosswalkRecordId": "H1-RPM-166",
     "method": "CROSSWALK_PT_TPL_EXACT",
-    "basis": "결정 단계=조합의 활용>선택 조건; 크로스워크 행 DIRECT_ACTIVE",
+    "basis": "결정 단계=그래프와 근>x축과의 교점; 크로스워크 행 DIRECT_ACTIVE",
     "confidence": "HIGH",
     "assignedBy": "claude-similar-high-gen",
     "assignedAt": "2026-11-11",
@@ -1608,7 +1789,8 @@
      "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
-     "CC_COMBINATORICS_COUNTING"
+     "CC_COMBINATION_SELECTION",
+     "CC_COMPLEMENTARY_COUNTING"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -1639,6 +1821,21 @@
      ],
      "condition": []
     },
+    "item4slotTermIds": {
+     "given": [
+      327,
+      166
+     ],
+     "goal": [
+      165,
+      129
+     ],
+     "method": [
+      248,
+      253
+     ],
+     "condition": []
+    },
     "hold": [],
     "levelBasis": "높이별 분리 계산과 정사각형 별도 계산이 필요하고 영역 경계 처리가 까다로워 사고 단계가 4이다.",
     "difficultyBasis": "높이별 분리 계산과 정사각형 별도 계산이 필요하고 영역 경계 처리가 까다로워 사고 단계가 4이다.",
@@ -1650,7 +1847,7 @@
     },
     "metaRationale": {
      "problemType": "높이별(1,2,3칸)로 선택 가능한 가로선 쌍의 수를 조합으로 세어 전체 직사각형을 구하고 정사각형 수를 빼서 정사각형이 아닌 직사각형을 구한다",
-     "crossConcept": "교차 개념 키: CC_COMBINATORICS_COUNTING",
+     "crossConcept": "교차 개념 키: CC_COMBINATION_SELECTION, CC_COMPLEMENTARY_COUNTING",
      "condition": "별도 제한 조건 키가 필요한 조건이 없다.",
      "integration": "통합 패턴 SEQUENTIAL: 풀이 구조에 따라 판정",
      "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-195(DIRECT_ACTIVE) 기준"
@@ -1699,40 +1896,41 @@
     "courseKey": "공통수학1",
     "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "subUnitKey": "H22-C-06-EQUATION_APPLICATION",
+    "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
     "subUnit": "여러 가지 방정식",
-    "conceptClusterKey": "EQUATION_APPLICATION",
+    "conceptClusterKey": "SYSTEM_OF_EQUATIONS",
     "rpmPrimaryRecordIds": [
-     "H1-RPM-177"
+     "H1-RPM-174"
     ],
     "rpmPrimary": {
      "l1": "방정식과 부등식",
      "l2": "여러 가지 방정식",
-     "l3": "방정식의 활용",
-     "l4": "도형·함수 결합",
-     "recordId": "H1-RPM-177",
-     "l3Label": "방정식의 활용",
-     "l4Label": "도형·함수 결합",
+     "l3": "연립방정식",
+     "l4": "이차식이 포함된 연립방정식",
+     "recordId": "H1-RPM-174",
+     "l3Label": "연립방정식",
+     "l4Label": "이차식이 포함된 연립방정식",
      "l4Source": "CANONICAL"
     },
     "rpmPrimaryL1": "방정식과 부등식",
     "rpmPrimaryL2": "여러 가지 방정식",
-    "rpmPrimaryL3": "방정식의 활용",
-    "rpmPrimaryL4": "도형·함수 결합",
-    "rpmPrimaryRecordId": "H1-RPM-177",
+    "rpmPrimaryL3": "연립방정식",
+    "rpmPrimaryL4": "이차식이 포함된 연립방정식",
+    "rpmPrimaryRecordId": "H1-RPM-174",
     "L1": "방정식과 부등식",
     "L2": "여러 가지 방정식",
-    "L3": "방정식의 활용",
-    "L4": "도형·함수 결합",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "L3": "연립방정식",
+    "L4": "이차식이 포함된 연립방정식",
+    "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+    "templateKey": "TPL_H1_SYSTEM_DIRECT",
     "ptTplCandidate": {
-     "problemTypeKey": null,
-     "templateKey": null,
-     "crosswalkMappingStatus": "RPM_ONLY"
+     "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+     "templateKey": "TPL_H1_SYSTEM_DIRECT",
+     "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
-     "CC_PYTHAGOREAN"
+     "CC_PYTHAGOREAN_THEOREM",
+     "CC_RECTANGLE_AREA"
     ],
     "conditionKeys": [
      "COND_POSITIVE"
@@ -1748,8 +1946,8 @@
     "rpmSemanticStatus": "SELF_CHECKED",
     "sourceQid": 14,
     "variationType": "STRICT_VARIANT",
-    "rpmL3": "방정식의 활용",
-    "rpmL4": "도형·함수 결합",
+    "rpmL3": "연립방정식",
+    "rpmL4": "이차식이 포함된 연립방정식",
     "item4slot": {
      "given": [
       "직사각형",
@@ -1759,16 +1957,30 @@
       "넓이"
      ],
      "method": [
-      "피타고라스 정리",
+      "연립방정식",
       "이차방정식"
      ],
      "condition": [
       "길이"
      ]
     },
-    "hold": [
-     "RPM-177(도형·함수 결합)은 크로스워크 행이 RPM_ONLY라 PT/TPL을 붙일 ACTIVE 행이 없어 PT/TPL을 비움(추정 금지) — 기존 행 수정은 영향 확인이 필요해 이번 회차에서는 하지 않음(EVIDENCE_DEBT)"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      165,
+      310
+     ],
+     "goal": [
+      213
+     ],
+     "method": [
+      67,
+      65
+     ],
+     "condition": [
+      215
+     ]
+    },
+    "hold": [],
     "levelBasis": "두 조건에서 연립식을 세우고 xy가 소거되는 것을 알아 대입하는 두 단계라 사고 단계가 3이다.",
     "difficultyBasis": "두 조건에서 연립식을 세우고 xy가 소거되는 것을 알아 대입하는 두 단계라 사고 단계가 3이다.",
     "visualNecessity": {
@@ -1779,10 +1991,10 @@
     },
     "metaRationale": {
      "problemType": "가로 x, 세로 y로 놓고 대각선 조건 x²+y²=170과 넓이 차 조건에서 y=x+4를 얻어 대입해 이차방정식을 풀고 새 직사각형의 넓이를 구한다",
-     "crossConcept": "교차 개념 키: CC_PYTHAGOREAN",
+     "crossConcept": "교차 개념 키: CC_PYTHAGOREAN_THEOREM, CC_RECTANGLE_AREA",
      "condition": "조건 키: COND_POSITIVE",
      "integration": "통합 패턴 SEQUENTIAL: 풀이 구조에 따라 판정",
-     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-177(RPM_ONLY) 기준"
+     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-174(DIRECT_ACTIVE) 기준"
     },
     "provenance": {
      "kind": "SIMILAR_FROM_ORIGINAL",
@@ -1807,11 +2019,11 @@
     "schemaVersion": "similar-high-parent-assignment-v1",
     "curriculum": "2022",
     "scope": "공통수학1",
-    "parentRefMode": "CROSSWALK_LEAF_ONLY",
-    "crosswalkRecordId": "H1-RPM-177",
-    "method": "HOLD_NO_EXACT_ACTIVE_ROW",
-    "basis": "결정 단계=방정식의 활용>도형·함수 결합; 크로스워크 행 RPM_ONLY",
-    "confidence": "LOW",
+    "parentRefMode": "CROSSWALK_EXACT",
+    "crosswalkRecordId": "H1-RPM-174",
+    "method": "CROSSWALK_PT_TPL_EXACT",
+    "basis": "결정 단계=연립방정식>이차식이 포함된 연립방정식; 크로스워크 행 DIRECT_ACTIVE",
+    "confidence": "HIGH",
     "assignedBy": "claude-similar-high-gen",
     "assignedAt": "2026-11-11",
     "fieldChanges": []
@@ -1861,7 +2073,8 @@
      "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
-     "CC_COMBINATORICS_COUNTING"
+     "CC_NEIGHBORING_PERMUTATION",
+     "CC_BLOCK_PERMUTATION"
     ],
     "conditionKeys": [
      "COND_CONSECUTIVE_GROUPING"
@@ -1889,10 +2102,26 @@
      ],
      "method": [
       "순열",
-      "곱의 법칙"
+      "곱의법칙"
      ],
      "condition": [
       "이웃"
+     ]
+    },
+    "item4slotTermIds": {
+     "given": [
+      386,
+      245
+     ],
+     "goal": [
+      129
+     ],
+     "method": [
+      245,
+      371
+     ],
+     "condition": [
+      386
      ]
     },
     "hold": [],
@@ -1906,7 +2135,7 @@
     },
     "metaRationale": {
      "problemType": "여학생 묶음이 두 남학생 묶음 사이에 있어야 하므로 모양(3-여-2, 2-여-3) 2가지에 남학생 5명 배열과 여학생 순서를 곱한다",
-     "crossConcept": "교차 개념 키: CC_COMBINATORICS_COUNTING",
+     "crossConcept": "교차 개념 키: CC_NEIGHBORING_PERMUTATION, CC_BLOCK_PERMUTATION",
      "condition": "조건 키: COND_CONSECUTIVE_GROUPING",
      "integration": "통합 패턴 SEQUENTIAL: 풀이 구조에 따라 판정",
      "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-189(DIRECT_ACTIVE) 기준"
@@ -1988,9 +2217,11 @@
      "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
-     "CC_COMBINATORICS_COUNTING"
+     "CC_CASE_BRANCHING",
+     "CC_COMBINATION_SELECTION"
     ],
     "conditionKeys": [
+     "COND_INEQUALITY_CONSTRAINT",
      "COND_NATURAL_NUMBER"
     ],
     "integrationPattern": "CASE_BRANCH",
@@ -2014,17 +2245,33 @@
       "개수"
      ],
      "method": [
-      "경우 나누기",
-      "조합"
+      "조합",
+      "곱의법칙",
+      "경우분류"
      ],
      "condition": [
       "합",
       "자연수"
      ]
     },
-    "hold": [
-     "중복 허용 추출(복원추출)의 수열 조건 센기이며 'a1<a3<a5'를 조합으로 세는 점에서 RPM-194(선택 조건)를 Primary로 둠 — 전용 리프가 없어 근사"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      402
+     ],
+     "goal": [
+      129
+     ],
+     "method": [
+      248,
+      371,
+      293
+     ],
+     "condition": [
+      286,
+      1
+     ]
+    },
+    "hold": [],
     "levelBasis": "변수 사이의 연결(a1)을 기준으로 경우를 나누고 두 부분을 곱해 합하는 다단계라 사고 단계가 4이다.",
     "difficultyBasis": "변수 사이의 연결(a1)을 기준으로 경우를 나누고 두 부분을 곱해 합하는 다단계라 사고 단계가 4이다.",
     "visualNecessity": {
@@ -2035,8 +2282,8 @@
     },
     "metaRationale": {
      "problemType": "a1의 값별로 (a2,a4)의 합 조건 순서쌍 수와 a1<a3<a5의 조합 수를 구해 곱하고 더한다",
-     "crossConcept": "교차 개념 키: CC_COMBINATORICS_COUNTING",
-     "condition": "조건 키: COND_NATURAL_NUMBER",
+     "crossConcept": "교차 개념 키: CC_CASE_BRANCHING, CC_COMBINATION_SELECTION",
+     "condition": "조건 키: COND_INEQUALITY_CONSTRAINT, COND_NATURAL_NUMBER",
      "integration": "통합 패턴 CASE_BRANCH: 풀이 구조에 따라 판정",
      "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-194(DIRECT_ACTIVE) 기준"
     },
@@ -2084,18 +2331,18 @@
     "courseKey": "공통수학1",
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+    "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬",
-    "conceptClusterKey": "MATRIX_APPLICATION",
+    "conceptClusterKey": "CORE",
     "rpmPrimaryRecordIds": [
-     "H1-RPM-203"
+     "H1-RPM-289"
     ],
     "rpmPrimary": {
      "l1": "행렬",
      "l2": "행렬",
      "l3": "행렬의 성질",
      "l4": "조건을 만족하는 행렬",
-     "recordId": "H1-RPM-203",
+     "recordId": "H1-RPM-289",
      "l3Label": "행렬의 성질",
      "l4Label": "조건을 만족하는 행렬",
      "l4Source": "CANONICAL"
@@ -2104,7 +2351,7 @@
     "rpmPrimaryL2": "행렬",
     "rpmPrimaryL3": "행렬의 성질",
     "rpmPrimaryL4": "조건을 만족하는 행렬",
-    "rpmPrimaryRecordId": "H1-RPM-203",
+    "rpmPrimaryRecordId": "H1-RPM-289",
     "L1": "행렬",
     "L2": "행렬",
     "L3": "행렬의 성질",
@@ -2114,9 +2361,11 @@
     "ptTplCandidate": {
      "problemTypeKey": "PT_H1_MATRIX_EQUATION",
      "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
-     "crosswalkMappingStatus": "DIRECT_BINDING_GAP"
+     "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+     "CC_CASE_EXHAUSTION"
+    ],
     "conditionKeys": [
      "COND_NATURAL_NUMBER"
     ],
@@ -2144,14 +2393,26 @@
      ],
      "method": [
       "곱셈",
-      "경우 나누기"
+      "경우분류"
      ],
      "condition": []
     },
-    "hold": [
-     "RPM-203 크로스워크 행이 DIRECT_BINDING_GAP — PT/TPL 후보만 기재",
-     "CrossConcept 후보가 사전에 없어 비움"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      292,
+      557,
+      556
+     ],
+     "goal": [
+      292
+     ],
+     "method": [
+      40,
+      293
+     ],
+     "condition": []
+    },
+    "hold": [],
     "levelBasis": "대각성분과 비대각성분을 분리해 따지고 a=b, a≠b로 나누는 서술형이라 사고 단계가 4이다.",
     "difficultyBasis": "대각성분과 비대각성분을 분리해 따지고 a=b, a≠b로 나누는 서술형이라 사고 단계가 4이다.",
     "visualNecessity": {
@@ -2162,10 +2423,10 @@
     },
     "metaRationale": {
      "problemType": "상삼각행렬의 곱에서 대각성분 조건으로 a,b∈{1,2,4}를 얻고 오른쪽 위 성분을 계산해 a=b와 a≠b를 나누어 판정한다",
-     "crossConcept": "사전에서 맞는 교차 개념 키를 확인하지 못해 비움(추정 금지)",
+     "crossConcept": "교차 개념 키: CC_CASE_EXHAUSTION",
      "condition": "조건 키: COND_NATURAL_NUMBER",
      "integration": "통합 패턴 CASE_BRANCH: 풀이 구조에 따라 판정",
-     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-203(DIRECT_BINDING_GAP) 기준"
+     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-289(DIRECT_ACTIVE) 기준"
     },
     "provenance": {
      "kind": "SIMILAR_FROM_ORIGINAL",
@@ -2190,11 +2451,11 @@
     "schemaVersion": "similar-high-parent-assignment-v1",
     "curriculum": "2022",
     "scope": "공통수학1",
-    "parentRefMode": "CROSSWALK_LEAF_ONLY",
-    "crosswalkRecordId": "H1-RPM-203",
-    "method": "HOLD_NO_EXACT_ACTIVE_ROW",
-    "basis": "결정 단계=행렬의 성질>조건을 만족하는 행렬; 크로스워크 행 DIRECT_BINDING_GAP",
-    "confidence": "LOW",
+    "parentRefMode": "CROSSWALK_EXACT",
+    "crosswalkRecordId": "H1-RPM-289",
+    "method": "CROSSWALK_PT_TPL_EXACT",
+    "basis": "결정 단계=행렬의 성질>조건을 만족하는 행렬; 크로스워크 행 DIRECT_ACTIVE",
+    "confidence": "HIGH",
     "assignedBy": "claude-similar-high-gen",
     "assignedAt": "2026-11-11",
     "fieldChanges": []
@@ -2211,17 +2472,40 @@
     "courseKey": "공통수학1",
     "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "절댓값 부등식",
-    "conceptClusterKey": "HIGHER_INEQUALITY",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "subUnitKey": "H22-C-06-INEQUALITY",
+    "subUnit": "여러 가지 부등식",
+    "conceptClusterKey": "INEQUALITY",
+    "rpmPrimaryRecordIds": [
+     "H1-RPM-292"
+    ],
+    "rpmPrimary": {
+     "l1": "방정식과 부등식",
+     "l2": "여러 가지 부등식",
+     "l3": "연립일차부등식",
+     "l4": "해의 범위",
+     "recordId": "H1-RPM-292",
+     "l3Label": "연립일차부등식",
+     "l4Label": "해의 범위",
+     "l4Source": "CANONICAL"
+    },
+    "rpmPrimaryL1": "방정식과 부등식",
+    "rpmPrimaryL2": "여러 가지 부등식",
+    "rpmPrimaryL3": "연립일차부등식",
+    "rpmPrimaryL4": "해의 범위",
+    "rpmPrimaryRecordId": "H1-RPM-292",
+    "L1": "방정식과 부등식",
+    "L2": "여러 가지 부등식",
+    "L3": "연립일차부등식",
+    "L4": "해의 범위",
+    "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+    "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
     "ptTplCandidate": {
-     "problemTypeKey": null,
-     "templateKey": null,
-     "crosswalkMappingStatus": null
+     "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+     "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+     "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
+     "CC_RADICAL_SQUARE_ABSOLUTE_VALUE",
      "CC_INEQUALITY_ABSOLUTE_VALUE"
     ],
     "conditionKeys": [
@@ -2235,9 +2519,11 @@
     "difficultyReason": "근호를 절댓값으로 바꾸고 세 구간별로 부등식을 풀어 합치는 서술형이라 사고 단계가 4이다.",
     "primaryMethod": "근호를 절댓값으로 바꾸고 절댓값 안의 부호가 바뀌는 점으로 구간을 나누어 각 구간의 부등식을 풀어 합친다",
     "decisiveStep": "√((3x+2)²)=|3x+2|로 바꾸는 것과 세 구간 중 첫 구간은 성립하지 않아 해가 없음을 판정하는 것",
-    "rpmSemanticStatus": "EVIDENCE_DEBT",
+    "rpmSemanticStatus": "SELF_CHECKED",
     "sourceQid": 18,
     "variationType": "STRICT_VARIANT",
+    "rpmL3": "연립일차부등식",
+    "rpmL4": "해의 범위",
     "item4slot": {
      "given": [
       "부등식",
@@ -2248,15 +2534,29 @@
       "해"
      ],
      "method": [
-      "절댓값",
-      "구간별"
+      "완전제곱식",
+      "구간별",
+      "경우분류"
      ],
      "condition": []
     },
-    "hold": [
-     "2022 공통수학1 크로스워크에 '절댓값 부등식' 리프가 없어 RPM 경로를 비움(추정 금지) — 새 리프는 registryChanges가 필요해 이번 회차에서는 만들지 않음(EVIDENCE_DEBT)",
-     "PT/TPL도 같은 이유로 비움"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      63,
+      24,
+      23
+     ],
+     "goal": [
+      78
+     ],
+     "method": [
+      59,
+      293,
+      293
+     ],
+     "condition": []
+    },
+    "hold": [],
     "levelBasis": "근호를 절댓값으로 바꾸고 세 구간별로 부등식을 풀어 합치는 서술형이라 사고 단계가 4이다.",
     "difficultyBasis": "근호를 절댓값으로 바꾸고 세 구간별로 부등식을 풀어 합치는 서술형이라 사고 단계가 4이다.",
     "visualNecessity": {
@@ -2267,10 +2567,10 @@
     },
     "metaRationale": {
      "problemType": "근호를 절댓값으로 바꾸고 절댓값 안의 부호가 바뀌는 점으로 구간을 나누어 각 구간의 부등식을 풀어 합친다",
-     "crossConcept": "교차 개념 키: CC_INEQUALITY_ABSOLUTE_VALUE",
+     "crossConcept": "교차 개념 키: CC_RADICAL_SQUARE_ABSOLUTE_VALUE, CC_INEQUALITY_ABSOLUTE_VALUE",
      "condition": "조건 키: COND_PIECEWISE_DOMAIN_PARTITION",
      "integration": "통합 패턴 CASE_BRANCH: 풀이 구조에 따라 판정",
-     "curriculum": "2022 개정 공통수학1, 크로스워크 해당 리프 없음 기준"
+     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-292(DIRECT_ACTIVE) 기준"
     },
     "provenance": {
      "kind": "SIMILAR_FROM_ORIGINAL",
@@ -2285,6 +2585,10 @@
       "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
      },
      "status": "READY_FOR_INDEPENDENT_REVIEW"
+    },
+    "familyTemplateSelection": {
+     "crosswalkRecordId": "H1-RPM-292",
+     "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE"
     }
    },
    "decisiveStep": "√((3x+2)²)=|3x+2|로 바꾸는 것과 세 구간 중 첫 구간은 성립하지 않아 해가 없음을 판정하는 것",
@@ -2295,11 +2599,11 @@
     "schemaVersion": "similar-high-parent-assignment-v1",
     "curriculum": "2022",
     "scope": "공통수학1",
-    "parentRefMode": "NONE",
-    "crosswalkRecordId": null,
-    "method": "HOLD_NO_EXACT_ACTIVE_ROW",
-    "basis": "결정 단계=맞는 리프 없음; 크로스워크 행 없음",
-    "confidence": "LOW",
+    "parentRefMode": "CROSSWALK_EXACT",
+    "crosswalkRecordId": "H1-RPM-292",
+    "method": "CROSSWALK_PT_TPL_EXACT",
+    "basis": "결정 단계=연립일차부등식>해의 범위; 크로스워크 행 DIRECT_ACTIVE",
+    "confidence": "HIGH",
     "assignedBy": "claude-similar-high-gen",
     "assignedAt": "2026-11-11",
     "fieldChanges": []
@@ -2316,18 +2620,41 @@
     "courseKey": "공통수학1",
     "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "subUnitKey": "H22-C-06-HIGHER_EQUATION",
-    "subUnit": "삼차방정식",
-    "conceptClusterKey": "HIGHER_EQUATION",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "subUnitKey": "H22-C-06-EQUATION",
+    "subUnit": "이차방정식",
+    "conceptClusterKey": "EQUATION",
+    "rpmPrimaryRecordIds": [
+     "H1-RPM-291"
+    ],
+    "rpmPrimary": {
+     "l1": "방정식과 부등식",
+     "l2": "이차방정식",
+     "l3": "근과 계수의 관계",
+     "l4": "근으로 방정식 구성",
+     "recordId": "H1-RPM-291",
+     "l3Label": "근과 계수의 관계",
+     "l4Label": "근으로 방정식 구성",
+     "l4Source": "CANONICAL"
+    },
+    "rpmPrimaryL1": "방정식과 부등식",
+    "rpmPrimaryL2": "이차방정식",
+    "rpmPrimaryL3": "근과 계수의 관계",
+    "rpmPrimaryL4": "근으로 방정식 구성",
+    "rpmPrimaryRecordId": "H1-RPM-291",
+    "L1": "방정식과 부등식",
+    "L2": "이차방정식",
+    "L3": "근과 계수의 관계",
+    "L4": "근으로 방정식 구성",
+    "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+    "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
     "ptTplCandidate": {
-     "problemTypeKey": null,
-     "templateKey": null,
-     "crosswalkMappingStatus": null
+     "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+     "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+     "crosswalkMappingStatus": "DIRECT_ACTIVE"
     },
     "crossConceptKeys": [
-     "CC_VIETA_CUBIC"
+     "CC_VIETA_THIRD_DEGREE",
+     "CC_ROOT_REDUCTION_SYMMETRIC"
     ],
     "conditionKeys": [],
     "integrationPattern": "REINTERPRETATION",
@@ -2338,9 +2665,11 @@
     "difficultyReason": "근의 변환과 역수 대칭식, 삼차식의 근과 계수 관계까지 이어지는 가장 긴 서술형이라 사고 단계가 5이다.",
     "primaryMethod": "근과 계수의 관계로 e1=3, e2=4, e3=6을 구하고 f의 세 근이 2−6/α꼴임을 보여 t=x−2에 대한 삼차식의 근과 계수의 관계로 p,q,r을 구한다",
     "decisiveStep": "(−2β−2γ)/α를 α+β+γ=3으로 2−6/α로 고쳐 t=x−2에 대한 근 −6/α의 역수 대칭식으로 p,q,r을 얻는 것",
-    "rpmSemanticStatus": "EVIDENCE_DEBT",
+    "rpmSemanticStatus": "SELF_CHECKED",
     "sourceQid": 19,
     "variationType": "STRICT_VARIANT",
+    "rpmL3": "근과 계수의 관계",
+    "rpmL4": "근으로 방정식 구성",
     "item4slot": {
      "given": [
       "삼차방정식",
@@ -2351,15 +2680,29 @@
       "값"
      ],
      "method": [
-      "근과 계수의 관계",
+      "근",
+      "계수",
       "치환"
      ],
      "condition": []
     },
-    "hold": [
-     "2022 공통수학1 크로스워크에 삼차방정식의 근과 계수 관계(근의 변환) 리프가 없어 RPM 경로를 비움(추정 금지) — 새 리프는 registryChanges가 필요해 이번 회차에서는 만들지 않음(EVIDENCE_DEBT)",
-     "PT/TPL도 같은 이유로 비움"
-    ],
+    "item4slotTermIds": {
+     "given": [
+      566,
+      78
+     ],
+     "goal": [
+      286,
+      131
+     ],
+     "method": [
+      78,
+      50,
+      52
+     ],
+     "condition": []
+    },
+    "hold": [],
     "levelBasis": "근의 변환과 역수 대칭식, 삼차식의 근과 계수 관계까지 이어지는 가장 긴 서술형이라 사고 단계가 5이다.",
     "difficultyBasis": "근의 변환과 역수 대칭식, 삼차식의 근과 계수 관계까지 이어지는 가장 긴 서술형이라 사고 단계가 5이다.",
     "visualNecessity": {
@@ -2370,10 +2713,10 @@
     },
     "metaRationale": {
      "problemType": "근과 계수의 관계로 e1=3, e2=4, e3=6을 구하고 f의 세 근이 2−6/α꼴임을 보여 t=x−2에 대한 삼차식의 근과 계수의 관계로 p,q,r을 구한다",
-     "crossConcept": "교차 개념 키: CC_VIETA_CUBIC",
+     "crossConcept": "교차 개념 키: CC_VIETA_THIRD_DEGREE, CC_ROOT_REDUCTION_SYMMETRIC",
      "condition": "별도 제한 조건 키가 필요한 조건이 없다.",
      "integration": "통합 패턴 REINTERPRETATION: 풀이 구조에 따라 판정",
-     "curriculum": "2022 개정 공통수학1, 크로스워크 해당 리프 없음 기준"
+     "curriculum": "2022 개정 공통수학1, 크로스워크 H1-RPM-291(DIRECT_ACTIVE) 기준"
     },
     "provenance": {
      "kind": "SIMILAR_FROM_ORIGINAL",
@@ -2398,11 +2741,11 @@
     "schemaVersion": "similar-high-parent-assignment-v1",
     "curriculum": "2022",
     "scope": "공통수학1",
-    "parentRefMode": "NONE",
-    "crosswalkRecordId": null,
-    "method": "HOLD_NO_EXACT_ACTIVE_ROW",
-    "basis": "결정 단계=맞는 리프 없음; 크로스워크 행 없음",
-    "confidence": "LOW",
+    "parentRefMode": "CROSSWALK_EXACT",
+    "crosswalkRecordId": "H1-RPM-291",
+    "method": "CROSSWALK_PT_TPL_EXACT",
+    "basis": "결정 단계=근과 계수의 관계>근으로 방정식 구성; 크로스워크 행 DIRECT_ACTIVE",
+    "confidence": "HIGH",
     "assignedBy": "claude-similar-high-gen",
     "assignedAt": "2026-11-11",
     "fieldChanges": []
