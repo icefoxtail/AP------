@@ -308,7 +308,7 @@
 
   /* ====================================================================== 5. 각의 이등분선 → 이등변삼각형 */
   const isoBis = {
-    id: 'q1-5', title: '각의 이등분선과 이등변삼각형', short: '이등분선→이등변',
+    id: 'q1-5', title: '각의 이등분선과 변의 관계', short: '이등분선과 변',
     question: '평행사변형에서 ∠A의 이등분선이 변 BC와 만나는 점을 E라 하면 △ABE는 어떤 삼각형일까? EC의 길이는?',
     ctl: ['qaIW', 'qaIS', 'qaB'],
     init: (s) => { s.qaIW = 10; s.qaIS = 5; s.qaB = 66; s.qaK = 0; s.qaPa = 4; s.qaPb = 8; },
@@ -377,6 +377,94 @@
     dotsABCD(b, q); b.point(E, { color: 'ink', r: 4.5 }); T(b, E, 'E', { dy: 20, size: 17 });
   }
 
+  // 해설은 원래 문제 그림과 현재 문제 풀이를 그대로 사용한다.
+  // 개념은 같은 원본 좌표에서 필요한 표시만 더하고, 비교는 길이를 보존해 가로로 옮긴다.
+  function lessonQuad(b, g, extra = [], parallel = true) {
+    const pts = g.pts || [g.A, g.B, g.C, g.D];
+    fit(b, bboxOf(pts.concat(extra)), { t: 50, b: 90, l: 52, r: 52 });
+    fillPoly(b, pts, 'sky', .09); poly(b, pts, 'ink', 3.4);
+    if (parallel) parAll(b, g, .26);
+    dotsABCD(b, { ...g, O: g.O || G.centroid(pts) });
+  }
+  function lessonPair(b, s, cfg) {
+    const canonical = points => {
+      const u = unit(sub(points[1], points[0])), n = pt(-u.y, u.x), v = sub(points[2], points[0]);
+      const sign = v.x * n.x + v.y * n.y > 0 ? -1 : 1;
+      return points.map(p => { const d = sub(p, points[0]); return pt(d.x * u.x + d.y * u.y, sign * (d.x * n.x + d.y * n.y)); });
+    };
+    const p = canonical(cfg.polygons[0]), q = canonical(cfg.polygons[1]), box = bboxOf(p.concat(q));
+    const width = Math.max(box.x1 - box.x0, box.y1 - box.y0, .5), gap = width * 1.4, t = clamp(s.qdMatch || 0, 0, 1);
+    const Pp = p.map(v => pt(v.x + gap * t / 2, v.y)), Qq = q.map(v => pt(v.x + gap * (1 - t / 2), v.y));
+    fit(b, { x0: box.x0 - .1 * width, x1: box.x1 + gap + .1 * width, y0: box.y0 - .1 * width, y1: box.y1 + .1 * width }, { t: 48, b: 94, l: 42, r: 42 });
+    [[Pp, 'sky'], [Qq, 'green']].forEach(([points, color]) => {
+      fillPoly(b, points, color, .12); poly(b, points, color, 3.2);
+      (cfg.edges || []).forEach(([a, z, n]) => tick(b, points[a], points[z], n, color));
+      (cfg.angles || []).forEach(([v, a, z, rings = 1]) => ang(b, points[v], points[a], points[z], { color, rings, r: rings === 1 ? 22 : 28 }));
+    });
+    if (t < .98) [Pp, Qq].forEach((points, j) => points.forEach((p0, i) => { b.point(p0, { color: 'ink', r: 4 }); tagOut(b, p0, G.centroid(points), cfg.names[j][i], { size: 16 }); }));
+    else Pp.forEach((p0, i) => { b.point(p0, { color: 'ink', r: 4 }); const a = cfg.names[0][i], z = cfg.names[1][i]; tagOut(b, p0, G.centroid(Pp), a === z ? a : a + '↔' + z, { size: 16 }); });
+    if (s.qdLine) capLine(b, pt((box.x0 + box.x1 + gap) / 2, box.y1), s.qdLine, 'amber', { dy: 58 });
+  }
+  function lessonAttach(D, cfg) {
+    D.lessonDraw = (b, s, M, C, solution) => {
+      if (!C.entry && s.qdCompare && cfg.pair) { lessonPair(b, s, cfg.pair(M, s, solution)); return; }
+      if (s.qdLessonProblem === false && cfg.concept) cfg.concept(b, s, M, C);
+      else if (cfg.actual) cfg.actual(b, s, M, C, solution);
+      else if (C.entry) D.draw(b, s, M, { ...C, problem: true, review: false, full: false, step: 0 });
+      else {
+        const safe = { ...s, step: C.answer ? Math.max(s.step || 0, solution.steps.length) : Math.min(s.step || 0, solution.steps.length - 1) };
+        D.solveDraw(b, safe, M, C, solution);
+      }
+      if (cfg.overlay) cfg.overlay(b, s, M, C, solution);
+      if (!C.entry && s.qdTrace > 0 && (cfg.traceUntil == null || (s.step || 0) <= cfg.traceUntil)) {
+        const tr = cfg.trace(M, s, solution), traces = Array.isArray(tr[0]) ? tr : [tr];
+        traces.forEach(([a, z]) => line(b, a, lerp(a, z, clamp(s.qdTrace, 0, 1)), 'rose', 4.4));
+      }
+      if (!C.entry && s.qdLine) {
+        const g = cfg.geom(M, s, solution), box = bboxOf(g.pts || [g.A, g.B, g.C, g.D]);
+        capLine(b, pt((box.x0 + box.x1) / 2, box.y1), s.qdLine, C.answer ? 'amber' : 'green', { dy: 64 });
+      }
+    };
+  }
+  function lessonSourceQuestion(Q) {
+    let body = Q.html || Q.stem || '';
+    const items = (Q.choices || []).map(c => c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : c.p);
+    if (items.length && !items.every(text => body.includes(String(text)))) body += '<br>' + items.map((text, i) => G.NUM[i] + ' ' + text).join('<br>');
+    return body;
+  }
+  G.qdLessonA = { attach: lessonAttach, quad: lessonQuad, pair: lessonPair, question: lessonSourceQuestion };
+  const diagonalPair = M => ({ polygons: [[M.p.A, M.p.B, M.p.C], [M.p.C, M.p.D, M.p.A]], names: [['A', 'B', 'C'], ['C', 'D', 'A']], edges: [[0, 2, 1]], angles: [[0, 1, 2], [2, 0, 1, 2]] });
+  defSides.lessonQuestion = (M, s, Q) => s.qdLessonProblem ? lessonSourceQuestion(Q) : s.qdLessonMode === 'sides' ? '평행사변형 ABCD에서 마주 보는 두 쌍의 변의 길이는 각각 어떤 관계일까?' : '평행사변형 ABCD에서 마주 보는 두 쌍의 각의 크기는 각각 어떤 관계일까?';
+  lessonAttach(defSides, {
+    geom: M => M.p, trace: M => [M.p.A, M.p.C], pair: diagonalPair,
+    concept(b, s, M, Cx) {
+      const p = M.p, { A, B, C, D } = p, mark = Cx.entry ? 0 : s.qdMark;
+      lessonQuad(b, p);
+      if (mark >= 1) { line(b, A, C, 'green', 2.8); ang(b, A, B, C, { color: 'sky' }); ang(b, C, D, A, { color: 'sky' }); ang(b, C, A, B, { color: 'green', rings: 2 }); ang(b, A, C, D, { color: 'green', rings: 2 }); }
+      if (Cx.answer && s.qdLessonMode === 'sides') { tick(b, A, B, 1); tick(b, C, D, 1); tick(b, B, C, 2); tick(b, A, D, 2); }
+      if (Cx.answer && s.qdLessonMode === 'angles') { ang(b, A, B, D, { color: 'sky' }); ang(b, C, D, B, { color: 'sky' }); ang(b, B, A, C, { color: 'rose', rings: 2 }); ang(b, D, C, A, { color: 'rose', rings: 2 }); }
+    }
+  });
+  angles.lessonQuestion = (M, s, Q) => s.qdLessonProblem ? lessonSourceQuestion(Q) : s.qdLessonMode === 'adjacent' ? '평행사변형의 이웃한 두 내각 A와 B의 합은 얼마일까?' : '평행사변형의 이웃한 두 내각의 이등분선 AP와 BP가 점 P에서 만날 때, 두 선분은 어떻게 만날까?';
+  lessonAttach(angles, {
+    geom: M => M.p,
+    trace: (M, s) => s.qdLessonProblem ? M.K ? [M.p.A, M.E1] : [M.p.B, M.E0] : s.qdLessonMode === 'adjacent' ? [M.p.A, M.p.D] : [[M.p.A, M.P], [M.p.B, M.P]],
+    concept(b, s, M, Cx) {
+      const { A, B, C, D } = M.p, mark = Cx.entry ? 0 : s.qdMark;
+      lessonQuad(b, M.p);
+      if (s.qdLessonMode === 'adjacent') { ang(b, A, B, D, { label: 'α', color: 'sky', labelDist: 54 }); ang(b, B, C, A, { label: 'β', color: 'rose', rings: 2, labelDist: 54 }); }
+      else {
+        b.point(M.P, { color: 'amber', r: 4.5 }); T(b, M.P, 'P', { dy: -18, color: 'amber' });
+        if (mark >= 1) { line(b, A, M.P, 'green', 3); line(b, B, M.P, 'green', 3); ang2(b, A, B, M.P, D, { color: 'sky', label1: 'α/2', r: 26, labelDist: 58 }); ang2(b, B, A, M.P, C, { color: 'rose', rings: 2, label1: 'β/2', r: 26, labelDist: 58 }); }
+        if (Cx.answer) ang(b, M.P, A, B, { color: 'amber', label: '90°', labelDist: 42 });
+      }
+    },
+    overlay(b, s, M, Cx) {
+      if (!s.qdLessonProblem || Cx.entry) return;
+      if (M.K && s.qdMark >= 1) outsideAng(b, M.p.A, M.p.B, M.p.D, '114°', 'green');
+      if (s.qdMark >= 2) { const V = M.K ? M.p.A : M.p.B, X = M.K ? M.E1 : M.p.C, Y = M.K ? M.p.D : M.E0; ang(b, V, X, Y, { color: 'green', label: M.K ? '57°' : '33°', labelDist: 54 }); }
+    }
+  });
   const gl = [defSides, angles, diag, diagP, isoBis];
   G.register(10, 'qd1', '① 평행사변형의 성질', '평행사변형의 성질', PARAMS, gl);
 })();
