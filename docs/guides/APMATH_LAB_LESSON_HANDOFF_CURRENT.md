@@ -52,8 +52,9 @@
 | `g7-spatial` 공간 위치 관계 | 27 | 27 / 62 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1760](https://github.com/icefoxtail/AP------/pull/1760), merge `16460f7381b3ca9df8ee80934a2096e588fad380`. 최소 검사 102/102, 누락 0. 실제 학생 HTML은 이전 버전 |
 | `g7-construction` 작도와 합동 | 23 | 23 / 70 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1764](https://github.com/icefoxtail/AP------/pull/1764), merge `87b09c58ac6cc061ba623c1e3e990ddcc18f6537`. 최소 검사 141/141, 누락 0. 실제 학생 HTML은 이전 버전 |
 | `g8-pythagoras` 피타고라스 정리 | 37 | 37 / 87 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1766](https://github.com/icefoxtail/AP------/pull/1766), merge `8951ab5607b3e2d1b7fc54ae64738875a626fd87`. 최소 검사 151/151, 구문 17파일, 누락 0. 실제 학생 HTML은 이전 버전 |
-| `g8-triangles` 삼각형의 성질 | 43 | 43 / 165 | **IMPLEMENTED / QA_PENDING** · `feat/lessons-g8-triangles`, 별도 kit merge `3e084dec0a750e5855b907a0f25b1dc6d5d327bc` 반영. 최소 검사 171/171, 구문 16파일, 누락 0. PR·main·Pages 확인 예정 (§6) |
-| 중2 나머지 2개 · 중3 2개 | 167 | 0 | 미착수 (§6) |
+| `g8-triangles` 삼각형의 성질 | 43 | 43 / 165 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1768](https://github.com/icefoxtail/AP------/pull/1768), merge `c554314dab47bb18adf8f71d8cf50f0e87e45b3e`. 최소 검사 171/171, 구문 16파일, 누락 0. 실제 학생 HTML은 이전 버전 (§6) |
+| `g8-quadrilaterals` 사각형의 성질 | 32 | 제작 중 | `feat/lessons-g8-quadrilaterals`, main `c554314dab47bb18adf8f71d8cf50f0e87e45b3e`에서 시작. 원본 6모듈·32장면 확인 (§6) |
+| 중2 닮음 · 중3 2개 | 135 | 0 | 미착수 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
@@ -254,6 +255,9 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+- 2026-11-11 · 삼각형의 성질 [PR #1768](https://github.com/icefoxtail/AP------/pull/1768) **main 운영 병합 완료**. head `b971cbeb6b582cf603edbe8bae5bde6648d42990`, tree `a5c6b4648428139162a24a867f31903808868887`, merge/API·Git main `c554314dab47bb18adf8f71d8cf50f0e87e45b3e`; merge ancestor 및 대상 파일 차이 0 확인. 43장면/165해설, 최소 검사 171/171·구문 16파일. 최종 head CI 11개 queued로 전체 CI PASS를 주장하지 않았다. 07:35 UTC 실제 학생 HTML은 HTTP 200·이전 4749 bytes·SHA-256 `bc19600f10e5f800063f1ecfa90eb7f3f1fb7951e1ead8a9e10cb1961839396d`, player/lesson 연결 없음. 최신 등록 writer 42980514684는 pending이며 공개 배포 영수증 source는 `fb27d05ee921da9534d9fff332ac774d732b91cf`다. **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING**. main 누계 362장면/795해설, Pages 확인 196/319·대기 166/476. 다음 사각형 32장면을 시작했다.
+- 2026-11-11 · [AWCR r17](https://drive.google.com/file/d/1Qb_QoodPr1qF8uJmHCm-sqQ4WsgBtG_y/view) immutable 저장·원격 raw 재조회 완료. SHA-256 `71ad6615f5f359ca3228b4133067fbcce081b1d69d1b303421f991a86b2a6fe8`, 53,332 bytes, parent r16 `5c6886c821b9caa2241ccda94a8ad5336fe1944f29c869373a56fe0e7b86f33a`와 task/owner/revision/schema/byte equality 검증, 전후 revision 충돌 0. 삼각형 PR·main·최소 검사와 Pages 구버전 상태를 보존했으며 다음 실행 위치는 `feat/lessons-g8-quadrilaterals`다. 다음 revision r18은 최신 원격 충돌을 다시 확인해 저장한다.
 
 - 2026-11-11 · `g8-triangles` **43장면/165해설 신규 구현 및 최소 안전 검사 완료**. Node **171/171**(실패·skip·cancel 0), JS/MJS 구문 **16파일**, 실제 HTML/카탈로그 누락 0, production Board **495상태**. 실제 새 문제 click handler 이후 해설 조건·도형 복원, 기존 `trPick`/`trShow` 보존, legacy tick 비개입을 확인했다. 합동 비교의 대응 관계와 길이 보존, 각도·거리·넓이·외심/내심 조건을 독립 계산했다. 검사 기록 SHA-256 `c82c17bb11e4a23b0e1de3b19bf4f7e561854b596f02490061e8bc00e38b0ca7`. **IMPLEMENTED / QA_PENDING**, PR·main·Pages 확인 예정. 실제 모바일 전수/독립 시각/브라우저 정밀검수는 NOT_RUN이며 5~8버튼의 실제 모바일 배치와 각 장의 그림·자막 가독성은 후속 확인 대상이다.
 - 2026-11-11 · [AWCR r16](https://drive.google.com/file/d/1gu5k8N5U5Q7_k33jb6o6qdFQBXtBlp8i/view) immutable 저장·원격 raw 재조회 완료. SHA-256 `5c6886c821b9caa2241ccda94a8ad5336fe1944f29c869373a56fe0e7b86f33a`, 49,357 bytes, parent r15 `f7dd56f2702bbd93d4e6b3f4545bcb57b635a0f1ea2a761656fa06930de636dd`와 task/owner/revision/schema/byte equality 검증. kit #1767 병합과 45/45 결과, 삼각형 checkpoint6 `3c5d224aa8798027f2ee12919e44c07c07144f77` / tree `78296594c3d0c667e4bdb28298aa2f5062bd6e4e`의 39장면/151해설 **WIP**를 보존했다. 이 revision 시점의 삼각형 통합 검사·PR·main은 미완료이며 다음 실행은 최신 원격 브랜치를 재조회해 이미 완료한 구현을 반복하지 않는다. 다음 revision r17.

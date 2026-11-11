@@ -299,7 +299,8 @@
     const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
     const problem = !thumb && tab === 'problem';
     const review = !thumb && tab === 'review';
-    return { tab, problem, review, step: review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
+    const lesson = !thumb && !!(s.lessonOn || s.lessonEntry), entry = lesson && !!s.lessonEntry;
+    return { tab, problem, review, step: entry ? 0 : lesson || review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: !lesson && (tab === 'explore' || thumb), lesson, entry, answer: lesson && !entry && !!s.qdShowAnswer, calculation: lesson && !entry && !!s.qdCalculationReady };
   }
   const showAt = (C, n) => C.step >= n;
 
@@ -398,8 +399,20 @@
     const details = D.solve ? D.solve(M, s, Q) : D.steps(M);
     return { model: M, question: Q, key: Q.key, steps: details.map(t => texSafe(String(t).replace(/<\/?b>/g, ''))) };
   }
+  const inLesson = (s) => !!(s.lessonOn || s.lessonEntry);
+  function lessonQuestion(D, s) {
+    const M = D.model(s), Q = D.prob ? D.prob(M, s) : null;
+    if (D.lessonQuestion) return texSafe(D.lessonQuestion(M, s, Q));
+    if (s.qdLessonProblem === false || !Q) return texSafe(typeof D.question === 'function' ? D.question(s) : D.question);
+    let body = Q.html || Q.stem || '';
+    const answerPlaceholder = Q.choices && Q.choices.length === 1 && Q.choices[0].h == null && Q.choices[0].t === '';
+    const choices = (answerPlaceholder ? [] : Q.choices || []).map(c => c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : c.p);
+    if (choices.length && !choices.every(text => body.includes(String(text)))) body += '<br>' + choices.map((text, i) => NUM[i] + ' ' + text).join('<br>');
+    return texSafe(body);
+  }
   function makeScene(D) {
     const A = D.anim;
+    const modelFor = (s) => { const M = D.model(s); return inLesson(s) && D.lessonModel ? D.lessonModel(M, s) : M; };
     const actions = A ? () => [
       {
         id: 'play', play: true, primary: true, icon: (s) => (s.playing ? 'pause' : 'play'),
@@ -412,8 +425,8 @@
     return {
       id: D.id, title: D.title, short: D.short || D.title, qd: D,
       tabs: { order: ['explore', 'problem', 'review'], labels: { review: '풀이' } },
-      question: (s) => { const Q = D.prob(D.model(s), s); return Q.stem || Q.html; },
-      reviewTop: (s) => { const Q = D.prob(D.model(s), s); return `<div class="qd-q"><b>현재 문제</b><br>${Q.html || esc(Q.stem)}</div>`; },
+      question: (s) => { if (inLesson(s)) return lessonQuestion(D, s); const Q = D.prob(D.model(s), s); return Q.stem || Q.html; },
+      reviewTop: (s) => { if (inLesson(s)) return ''; const Q = D.prob(D.model(s), s); return `<div class="qd-q"><b>현재 문제</b><br>${Q.html || esc(Q.stem)}</div>`; },
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
@@ -431,6 +444,7 @@
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
+        if (inLesson(s)) return false;
         let again = false;
         if (A && s.playing) {
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));
@@ -444,6 +458,7 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
+        if (inLesson(s)) return { guide: null, card: null, readouts: [], formula: null, rule: null, status: null, alert: null, notes: [], chips: [] };
         const C = baseCtx(s, lab, false);
         const M = D.model(s);
         const Q = D.prob(M, s), key = D.id + '|' + Q.key;
@@ -462,9 +477,20 @@
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
-        const M = D.model(s);
-        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
-        if (C.review && D.solveDraw && !b.thumb) D.solveDraw(b, s, M, C, currentSolution(D, s));
+        const M = modelFor(s);
+        C.t = A ? (C.lesson || C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
+        if (C.lesson) {
+          // solutions.js installs solve/solveDraw after the scene is registered.
+          // Read them at draw time and keep authored timing separate from manual review.
+          const solution = currentSolution(D, s);
+          if (D.lessonDraw) D.lessonDraw(b, s, M, C, solution);
+          else if (D.solveDraw && !C.entry && C.step > 0) {
+            const stage = C.answer ? C.step : Math.min(C.step, solution.steps.length - 1);
+            if (stage > 0) D.solveDraw(b, { ...s, step: stage }, M, { ...C, step: stage }, solution);
+            else D.draw(b, s, M, { ...C, problem: true, review: false, full: false, step: 99 });
+          } else D.draw(b, s, M, { ...C, problem: true, review: false, full: false, step: 99 });
+          if (D.lessonAfterDraw) D.lessonAfterDraw(b, s, M, C, solution);
+        } else if (C.review && D.solveDraw && !b.thumb) D.solveDraw(b, s, M, C, currentSolution(D, s));
         else D.draw(b, s, M, C);
       }
     };
