@@ -51,7 +51,7 @@ window.examData = {
       ],
       "answer": "①",
       "solution": "직각삼각형 $ABC$에서 $AB=AD+DB=5+3=8$이다.<br>고도 정리에 따라 $\\triangle BCD\\sim\\triangle BAC$이므로 $\\dfrac{BC}{BA}=\\dfrac{BD}{BC}$, 즉 $BC^2=BD\\cdot BA=3\\cdot8=24$이다. 따라서 $BC=2\\sqrt6$이다.<br>$\\sin x=\\dfrac{BC}{AB}=\\dfrac{2\\sqrt6}{8}=\\dfrac{\\sqrt6}{4}$이므로 ①이다.",
-      "solutionImage": "assets/images/16_왕의중_2학기_기말_중3_수학/q3-solution.svg",
+      "solutionImage": "assets/images/16_왕의중_2학기_기말_중3_수학/q3-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 점 C에서 직각인 직각삼각형 ABC와 빗변 AB 위의 수선의 발 D로, AD는 5, DB는 3이고 각 A는 x이다. 오른쪽 위는 작은 직각삼각형 BCD이고 가로변 DB는 3이다. 아래는 같은 방향으로 놓은 큰 직각삼각형 BAC이고 빗변 BA는 8이다. 두 삼각형에서 대응하는 변은 파랑, 주황, 초록으로 같은 색이고 각 x는 분홍, 공통각은 보라이다.",
       "solutionImageCaption": "AB=AD+DB=8이다. 삼각형 BCD와 삼각형 BAC는 각 B가 공통이고 직각이 있어 닮음이므로 BC:BA=BD:BC에서 BC²=BD×BA=3×8=24, BC=2√6이다. 따라서 sin x는 BC를 빗변 AB로 나눈 값이다. 정답은 ①이다.",
       "solutionImageSize": "full"
@@ -321,7 +321,7 @@ window.examData = {
       ],
       "answer": "③",
       "solution": "$P,A,B$가 이 순서로 한 직선 위에 있으므로 $\\angle PBT=\\angle ABT$이다. 접선과 현 $AT$가 이루는 각은 현 $AT$를 보는 원주각과 같으므로 $\\angle ATP=\\angle ABT=\\angle PBT$이다.<br>주어진 $\\angle APT=\\angle PBT$와 합치면 $\\angle APT=\\angle ATP$이다. 따라서 $\\triangle APT$에서 같은 두 각의 맞은편 변의 길이가 같아 $AP=AT=6$이다. 그러므로 $PB=PA+AB=6+10=16$이다.<br>또 $\\angle TPA=\\angle BPT$, $\\angle PTA=\\angle PBT$이므로 $\\triangle PTA\\sim\\triangle PBT$이다. 대응변의 비에서 $\\dfrac{PT}{PB}=\\dfrac{PA}{PT}$이므로 $PT^2=PA\\cdot PB=6\\cdot16=96$이다.<br>길이는 양수이므로 $PT=4\\sqrt6$이고, 답은 ③이다.",
-      "solutionImage": "assets/images/16_왕의중_2학기_기말_중3_수학/q18-solution.svg",
+      "solutionImage": "assets/images/16_왕의중_2학기_기말_중3_수학/q18-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 네 그림이다. 왼쪽 위는 원의 접선 PT와 할선 PAB, 현 AT, BT를 나타낸 그림으로 AB는 10, AT는 6이고 각 APT와 각 PBT는 같은 파란색이다. 오른쪽 위는 각 ATP도 같은 파란색이 되고 PA와 AT가 같은 길이인 그림이다. 아래 두 그림은 같은 방향으로 놓은 삼각형 PTA와 삼각형 PBT이며 PA와 AT는 6, PB는 16이고 대응하는 변은 같은 색이다.",
       "solutionImageCaption": "접선과 현이 이루는 각은 그 현에 대한 원주각과 같으므로 각 ATP=각 ABT이다. 각 APT=각 PBT이므로 삼각형 APT는 AP=AT=6인 이등변삼각형이고 PB=PA+AB=16이다. 삼각형 PTA와 삼각형 PBT는 각 P가 공통이고 각 PTA=각 PBT이므로 닮음이다. 대응변의 비에서 PT:PB=PA:PT이므로 PT²=PA×PB=6×16=96이다. 정답은 ③이다.",
       "solutionImageSize": "full"
