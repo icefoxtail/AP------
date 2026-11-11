@@ -1,0 +1,68 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "R",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "1"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "4"
+        ],
+        "label": "f(x)"
+      },
+      {
+        "id": "L",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "4"
+        ],
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "viewport": [
+      -4,
+      4,
+      -4,
+      4
+    ]
+  },
+  "caption": "예: k=0일 때 y=x와 유리함수 그래프가 두 점에서 만난다. 일반적으로 두 점은 같은 기울기 1인 직선 위에 있으므로 좌표 차의 절댓값이 같아 거리의 제곱은 2k²+16이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "유리함수는 y=(x+1)/(x-1)이다.",
+      "mappedTo": [
+        "R"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "교점은 기울기 1인 직선 위에 있다.",
+      "mappedTo": [
+        "L"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "예시 직선과 함수 그래프의 두 교점을 보며 같은 기울기 직선 위의 거리 관계를 확인한다."
+  ]
+}

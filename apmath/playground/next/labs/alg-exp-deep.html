@@ -10,11 +10,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="alg-exp-deep/lesson-core.js"></script>
+<script defer src="alg-exp-deep/lesson-a.js"></script>
+<script defer src="alg-exp-deep/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -786,8 +793,10 @@ const x2 = p.xMid;
 const x3 = p.xMid + p.stepD;
 const y1 = Math.pow(2, x1), y2 = Math.pow(2, x2), y3 = Math.pow(2, x3);
 const r = Math.pow(2, p.stepD);
+const heightSign = [y1,y2,y3].every(y=>Number(y.toFixed(2))===y) ? '=' : '\\approx';
+const ratioSign = Number(r.toFixed(2))===r ? '=' : '\\approx';
 hudEq = (
-`$x = (${x1.toFixed(2)}, ${x2.toFixed(2)}, ${x3.toFixed(2)}) \\text{ [등차]} \\implies y = (${y1.toFixed(2)}, ${y2.toFixed(2)}, ${y3.toFixed(2)}) \\text{ [등비, } r=2^d=${r.toFixed(2)}\\text{]}$`
+`$x = (${x1.toFixed(2)}, ${x2.toFixed(2)}, ${x3.toFixed(2)}) \\text{ [등차]} \\implies y ${heightSign} (${y1.toFixed(2)}, ${y2.toFixed(2)}, ${y3.toFixed(2)}) \\text{ [등비, } r=2^d${ratioSign}${r.toFixed(2)}\\text{]}$`
 );
 cards = [
 { title: '가운데 함숫값 제곱 y₂²', val: (y2 * y2).toFixed(3), sub: `y₂ = ${y2.toFixed(3)}` },
@@ -882,8 +891,9 @@ problem = `**[숫자를 바꾼 문제]** 수평선 $y=t$에서 $\\overline{HA} :
 } else if (mId === 'type6') {
 const dVal = [1, 1.5, 2][Math.floor(Math.random() * 3)];
 q.stepD = dVal;
-const ratioR = Math.pow(2, dVal).toFixed(2);
-problem = `**[숫자를 바꾼 문제]** $y = 2^x$ 위의 세 점의 $x$좌표가 공차 $d = ${dVal}$인 등차수열을 이루면, $y$좌표는 공비가 **$r = 2^{${dVal}} = ${ratioR}$**인 등비수열($y_2^2 = y_1 y_3$)을 이룹니다.`;
+const ratioR = Math.pow(2, dVal);
+const ratioText = Number.isInteger(ratioR) ? '= '+ratioR : '\\approx '+ratioR.toFixed(2);
+problem = `**[숫자를 바꾼 문제]** $y = 2^x$ 위의 세 점의 $x$좌표가 공차 $d = ${dVal}$인 등차수열을 이루면, $y$좌표는 공비가 **$r = 2^{${dVal}} ${ratioText}$**인 등비수열($y_2^2 = y_1 y_3$)을 이룹니다.`;
 } else if (mId === 'type7') {
 const tVal = [2.0, 2.5, 3.0, 4.25][Math.floor(Math.random() * 4)];
 q.lineT = tVal;
@@ -1232,7 +1242,8 @@ ST[K('lineT')] = Math.max(0, Math.min(5.5, Math.round(mPos.y * 10) / 10));
   OV.f2 = (v, d = 2) => { const r = Math.round(v * Math.pow(10, d)) / Math.pow(10, d); return String(Object.is(r, -0) ? 0 : r); };
   OV.sqrtOf = (n) => { let o = 1, i = n; for (let f = 2; f * f <= i; f++) while (i % (f * f) === 0) { i /= f * f; o *= f; } return [o, i]; };
   OV.rt = (a, r) => { const [o, i] = OV.sqrtOf(r); a *= o; return i === 1 ? String(a) : (a === 1 ? '' : String(a)) + `\\sqrt{${i}}`; }; // a√r 를 간단히
-  OV.varier = (list) => { let cur = list[0]; return { all: list, set: (i) => { cur = list[i]; }, cur: () => cur, next: () => { const pool = list.filter((x) => x !== cur); cur = pool[Math.floor(Math.random() * pool.length)]; return cur; } }; };
+  const ledActive = s => !!(s && (s.lessonOn || s.lessonEntry));
+  OV.varier = (list) => { const first = list[0]; let cur = first; return { all: list, first: () => first, set: (i) => { cur = list[i]; }, cur: () => ledActive(window.lab && window.lab.s) ? first : cur, next: () => { const pool = list.filter((x) => x !== cur); cur = pool[Math.floor(Math.random() * pool.length)]; return cur; } }; };
   OV.newBtn = '<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-ov-new>새 문제 (숫자 바꾸기)</button></div>';
   document.addEventListener('click', (ev) => {
     const hit = ev.target && ev.target.closest && ev.target.closest('[data-ov-new]');
@@ -1538,15 +1549,16 @@ ST[K('lineT')] = Math.max(0, Math.min(5.5, Math.round(mPos.y * 10) / 10));
     b.plot(f, { color: 'green', width: 2.8, glow: true });
     OV.txt(b, [mid, f(mid)], 'y = f(x)', 'green', { dy: 20 });
     if (st >= 1) [r1, r2].forEach((r) => b.point([r, 0], { color: 'rose', r: 5.5, label: `k=${r}`, dx: 0, dy: -15, align: 'center' }));
-    if (st >= 2) { b.seg([r1, 0], [r2, 0], { color: 'rose', width: 5 }); OV.txt(b, [mid, 0], 'f(k) < 0', 'rose', { dy: -34, size: 12.5 }); }
+    if (st >= 2 && v.lessonTarget !== 'zero-sum') { b.seg([r1, 0], [r2, 0], { color: 'rose', width: 5 }); OV.txt(b, [mid, 0], 'f(k) < 0', 'rose', { dy: -34, size: 12.5 }); }
     if (st >= 3) v.ks.forEach((k) => b.point([k, 0], { color: 'amber', r: 6.5 }));
   };
   PF[1] = (b, v, st) => { // 유형 2: (m, n) 격자
     const { M, N } = v;
     for (let n = 2; n <= N; n++) {
-      if (st >= 2) b.seg([1, n], [M, n], { color: 'sky', alpha: 0.55, width: 1.8 });
-      for (let m = 1; m <= M; m++) (st >= 1 && m % n === 0) ? b.point([m, n], { color: 'amber', r: 5.5 }) : b.point([m, n], { color: 'muted', r: 3, glow: false });
-      OV.txt(b, [M + 0.7, n], st >= 3 ? `n=${n}: ${Math.floor(M / n)}개` : `n=${n}`, st >= 3 ? 'sky' : 'muted', { align: 'left', size: 12.5 });
+      const visible = v.lessonRows == null || (v.lessonRow > 0 ? n === v.lessonRow : n <= Math.floor(v.lessonRows));
+      if (st >= 2 && visible) b.seg([1, n], [M, n], { color: 'sky', alpha: 0.55, width: 1.8 });
+      for (let m = 1; m <= M; m++) (st >= 1 && visible && m % n === 0) ? b.point([m, n], { color: 'amber', r: 5.5 }) : b.point([m, n], { color: 'muted', r: 3, glow: false });
+      OV.txt(b, [M + 0.7, n], st >= 3 && visible ? `n=${n}: ${Math.floor(M / n)}개` : `n=${n}`, st >= 3 ? 'sky' : 'muted', { align: 'left', size: 12.5 });
     }
     OV.txt(b, [(M + 1) / 2, N + 1.0], '가로 m (1 ~ ' + M + ') · 세로 n (2 ~ ' + N + ')', 'muted', { size: 12.5 });
   };
@@ -1711,7 +1723,9 @@ ST[K('lineT')] = Math.max(0, Math.min(5.5, Math.round(mPos.y * 10) / 10));
     OV.autoFocus(b, `${lab.scene.id}|${idx}`, cur.focus);
     if (s.grid) b.grid({ step: OV.nice(34 / b.k) });
     b.axes({ tickStep: OV.nice(46 / b.k) });
-    PF[m](b, cur.fig, st);
+    const fig = ledActive(s) ? { ...cur.fig, lessonTarget: s.ledTarget, lessonRows: s.ledRows, lessonRow: s.ledRow } : cur.fig;
+    if (ledActive(s) && m === 0 && s.ledTarget === "zero-sum") fig.ks = [cur.chk.r1];
+    PF[m](b, fig, st);
   }
 
   /* ---------- 6. 장면 ---------- */
@@ -1824,6 +1838,98 @@ ST[K('lineT')] = Math.max(0, Math.min(5.5, Math.round(mPos.y * 10) / 10));
     sc.steps=(s,lab)=>{const active=lab||window.lab;return active?.tab==='explore'&&active.scene?.id===sc.id?currentExploreSteps(m,s).map(stepText):fixed(s,lab);};
   }
 
+  // One-click lessons keep the first source packet without changing manual variants.
+  const lessonScenes = groups.flatMap(group => group.scenes);
+  const sourceInfo = Object.fromEntries(lessonScenes.map(sc => {
+    const initial = Object.fromEntries(Object.entries(params).map(([key, p]) => [key, p.value]));
+    Object.assign(initial, { mut_symY:false, mut_abs:false, mut_dots:false, twinText:null, twinSnap:null });
+    sc.enter?.(initial);
+    return [sc.id, { initial, first:sc.vary.first(), question:sc.problem.text().replace(/<div[^>]*>\s*<button[^>]*data-(?:ov|pl)-new[\s\S]*$/, ''), steps:sc.steps() }];
+  }));
+  const lessonSource = window.APL_ED_SOURCE = {
+    scenes:lessonScenes,
+    first:id=>sourceInfo[id].first,
+    initial:id=>({...sourceInfo[id].initial}),
+    question:id=>sourceInfo[id].question,
+    steps:id=>sourceInfo[id].steps.slice()
+  };
+  function ledMathKey(value) {
+    return String(value||'').normalize('NFKC').replace(/\\(?:left|right|,|!|;|quad|qquad)/g,'')
+      .replace(/\\(?:dfrac|frac)\{([^{}]*)\}\{([^{}]*)\}/g,'($1)/($2)')
+      .replace(/\\sqrt\{([^{}]*)\}/g,'√($1)').replace(/\\sqrt\s*(\w)/g,'√($1)')
+      .replace(/\\(?:text|mathrm|mathbf|overline)\{([^{}]*)\}/g,'$1')
+      .replace(/\\leq?/g,'≤').replace(/\\geq?/g,'≥').replace(/\\lt/g,'<').replace(/\\gt/g,'>')
+      .replace(/\\cdot|\\times/g,'×').replace(/−|–/g,'-').replace(/[\s{}$^_()]/g,'');
+  }
+  function ledLabel(value,s) {
+    const text=String(value||''), key=ledMathKey(text), known=(s.ledKnownMath||[]).map(ledMathKey);
+    if (/^(?:가로 m |n=\d+(?:: \d+개)?$|u = 0$|y = uⁿ|y = \{|log x = )/.test(text)) return text;
+    if (key && known.some(math=>math.includes(key))) return text;
+    if (/^(?:[A-Z][′']*|[xy]|[αβ]|[xy][₁₂]|[PQRS]|f|g|y = x)$/.test(text)) return text;
+    const named=text.match(/^([A-Z][′']*)(?=[\s(=:]|$)/);
+    if (named) return named[1];
+    return /^(?:점근선|대칭축|산술평균|기하평균|직각|넓이|교점)/.exec(text)?.[0]||'';
+  }
+  for (const sc of lessonScenes) {
+    const original={question:sc.question,reviewTop:sc.reviewTop,steps:sc.steps,view:sc.view,draw:sc.draw};
+    sc.question=(s,lab)=>ledActive(s)?s.ledQuestion||lessonSource.question(sc.id):typeof original.question==='function'?original.question(s,lab):original.question;
+    sc.reviewTop=(s,lab)=>ledActive(s)?'':original.reviewTop(s,lab);
+    sc.steps=(s,lab)=>ledActive(s)?['조건 확인','핵심 관계','식 세우기','계산과 결론']:original.steps(s,lab);
+    sc.view=(s,lab)=>ledActive(s)?{}:original.view(s,lab);
+    sc.draw=(b,s,v,lab)=>{
+      if (!ledActive(s)) {
+        if (b._edLessonView) {
+          if (b.focus===b._edLessonView.appliedFocus) Object.assign(b,b._edLessonView.before);
+          else { b.__ovKey=null;b.__plKey=null; }
+          delete b._edLessonView;
+        }
+        return original.draw(b,s,v,lab);
+      }
+      if (!b._edLessonView) b._edLessonView={before:{focus:b.focus,zoom:b.zoom,panX:b.panX,panY:b.panY,__ovKey:b.__ovKey,__plKey:b.__plKey}};
+      const shown={...s,...(s.lessonEntry?s.ledInitial:{}),playing:false,step:s.lessonEntry?0:Math.max(0,Math.min(s.step||0,s.ledShowAnswer?4:3))};
+      if(s.lessonEntry){shown.ledTrace=0;shown.ledShowAnswer=false;}
+      const shownLab=Object.create(lab);shownLab.tab=shown.ledExplore?'explore':'review';shownLab.s=shown;
+      const key=sc.id+'|'+!!shown.ledExplore;
+      if (b._edLessonView.key!==key) { b.__ovKey=null;b.__plKey=null;b._edLessonView.key=key;b.zoom=1;b.panX=0;b.panY=0; }
+      const plot=b.plot,text=b._text,path=b.path,point=b.point,axes=b.axes,fillText=b.ctx.fillText,strokeText=b.ctx.strokeText,curves=[],paths=[],points=[];
+      let axesDrawing=false;
+      b.axes=function(...args){axesDrawing=true;try{return axes.apply(this,args);}finally{axesDrawing=false;}};
+      b.plot=function(fn,options={}) {
+        if (!this._bbox && (options.width||2.6)>=2.4 && !options.dash) curves.push({fn,options});
+        return plot.call(this,fn,options);
+      };
+      b.path=function(ps,options={}){if(!axesDrawing&&!this._bbox&&(options.width||0)>=2.4&&!options.dash)paths.push(ps);return path.call(this,ps,options);};
+      b.point=function(p,options={}){if(!axesDrawing&&!this._bbox)points.push(p);return point.call(this,p,options);};
+      b._text=function(x,y,label,options,screen) {return text.call(this,x,y,this._bbox||axesDrawing?label:ledLabel(label,shown),options,screen);};
+      b.ctx.fillText=function(label,...args){return fillText.call(this,axesDrawing||b._bbox?label:ledLabel(label,shown),...args);};
+      b.ctx.strokeText=function(label,...args){return strokeText.call(this,axesDrawing||b._bbox?label:ledLabel(label,shown),...args);};
+      try {original.draw(b,shown,{},shownLab);} finally {b.plot=plot;b._text=text;b.path=path;b.point=point;b.axes=axes;b.ctx.fillText=fillText;b.ctx.strokeText=strokeText;}
+      b._edLessonView.appliedFocus=b.focus;
+      // Trace a point on the native plotted function, within the actual viewport.
+      const u=clamp(Number(shown.ledTrace)||0,0,1), box=b.viewBox();
+      let traced=false;
+      if (!s.lessonEntry && u && !b._bbox) for (const {fn,options} of curves) {
+        const box=b.viewBox(),lo=Math.max(box.x0,options.from??-Infinity),hi=Math.min(box.x1,options.to??Infinity),xs=[];
+        for (let i=0;i<=120;i++) {const x=lo+(hi-lo)*i/120,y=fn(x);if(Number.isFinite(y)&&y>box.y0&&y<box.y1)xs.push(x);}
+        if(xs.length>1){const x=xs[0]+(xs.at(-1)-xs[0])*u,y=fn(x);if(Number.isFinite(y)&&y>box.y0&&y<box.y1){b.point([x,y],{color:'violet',r:5,glow:false});traced=true;}break;}
+      }
+      const xy=p=>[p.x??p[0],p.y??p[1]],inside=p=>p.every(Number.isFinite)&&p[0]>=box.x0&&p[0]<=box.x1&&p[1]>=box.y0&&p[1]<=box.y1;
+      if(!s.lessonEntry&&u&&!traced&&!b._bbox){
+        const segment=paths.find(ps=>ps.length===2&&inside(xy(ps[0]))&&inside(xy(ps[1])));
+        if(segment){const a=xy(segment[0]),z=xy(segment[1]),t=.02+.96*u;b.point([a[0]+(z[0]-a[0])*t,a[1]+(z[1]-a[1])*t],{color:'violet',r:5,glow:false});}
+        else{const visible=points.map(xy).filter(inside);if(visible.length)b.point(visible[Math.min(visible.length-1,Math.floor(u*visible.length))],{color:'violet',r:5,glow:false});}
+      }
+      if(shown.ledProbe){
+        const f=lessonSource.first(sc.id).fig, u=shown.ledU, frac=x=>Math.max(0,x-Math.floor(x+1e-10));
+        const y=frac(u),z=f.mode?1-frac(f.p*u):frac(f.p*u);
+        b.seg([u,0],[u,Math.max(y,z)],{color:'amber',dash:[3,4],width:1.5});
+        b.point([u,y],{color:'green',r:6,label:'P',dx:-9,dy:15,align:'right'});
+        b.point([u,z],{color:f.mode?'violet':'sky',r:6,hollow:true,label:'Q',dx:9,dy:-12});
+      }
+    };
+  }
+  const lessons=window.APL_ED_LESSONS?window.APL_ED_LESSONS.install(lessonScenes,lessonSource):{};
+
   /* ---------- 7. 실험실 등록 ---------- */
   APLab.createLab({
     id: 'alg-exp-deep',
@@ -1838,7 +1944,8 @@ ST[K('lineT')] = Math.max(0, Math.min(5.5, Math.round(mPos.y * 10) / 10));
     params,
     state: { mut_symY: false, mut_abs: false, mut_dots: false, twinText: null, twinSnap: null },
     persist: ['mut_symY', 'mut_abs', 'mut_dots'],
-    groups
+    groups,
+    lessons
   });
 });
 </script>

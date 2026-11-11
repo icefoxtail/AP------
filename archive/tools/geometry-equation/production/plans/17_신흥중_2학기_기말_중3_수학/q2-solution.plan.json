@@ -1,0 +1,427 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "30°, 60°, 90° 삼각형"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "1"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "C",
+        "A",
+        "B"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "ROSE",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "C"
+       ],
+       "value": 60,
+       "label": "60",
+       "color": "GREEN",
+       "factRole": "GIVEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAC",
+       "ownerSegment": "sCA",
+       "text": "sqrt(3)",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lBC",
+       "ownerSegment": "sBC",
+       "text": "1",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "2",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sBC"
+       ],
+       "color": "WARM"
+      },
+      {
+       "segments": [
+        "sAB"
+       ],
+       "color": "BLUE"
+      }
+     ]
+    },
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "A",
+       "C",
+       "B"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 384,
+     "height": 320
+    },
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "각 C=90°, 각 A=30°, 각 B=60°.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "특수각의 삼각비를 세 변의 길이 비에서 읽게 한다."
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "45°, 45°, 90° 삼각형"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "F",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "E",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "1"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "D",
+     "E",
+     "F"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sDE",
+      "refs": [
+       "D",
+       "E"
+      ]
+     },
+     {
+      "id": "sEF",
+      "refs": [
+       "E",
+       "F"
+      ]
+     },
+     {
+      "id": "sFD",
+      "refs": [
+       "F",
+       "D"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aD",
+       "refs": [
+        "F",
+        "D",
+        "E"
+       ],
+       "value": 45,
+       "label": "45",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aE",
+       "refs": [
+        "D",
+        "E",
+        "F"
+       ],
+       "value": 45,
+       "label": "45",
+       "factRole": "GIVEN"
+      }
+     ],
+     "equalAngles": [
+      {
+       "angles": [
+        "aD",
+        "aE"
+       ],
+       "color": "ROSE"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lDF",
+       "ownerSegment": "sFD",
+       "text": "1",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lEF",
+       "ownerSegment": "sEF",
+       "text": "1",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lDE",
+       "ownerSegment": "sDE",
+       "text": "sqrt(2)",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "equalLengths": [
+      {
+       "id": "e1",
+       "count": 1,
+       "segments": [
+        "sFD",
+        "sEF"
+       ],
+       "color": "WARM"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sDE"
+       ],
+       "color": "BLUE"
+      }
+     ]
+    },
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "D",
+       "F",
+       "E"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 384,
+     "height": 320
+    },
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "각 F=90°, 각 D=각 E=45°.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "특수각의 삼각비를 세 변의 길이 비에서 읽게 한다."
+    ]
+   }
+  }
+ ],
+ "caption": "30°·60°·90° 삼각형과 45°·45°·90° 삼각형의 세 변의 길이 비에서 특수각의 삼각비를 읽는다. 같은 색의 변은 같은 역할이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "sin 30°, cos 60°, tan 45°의 값을 이용해 계산한다.",
+   "mappedTo": [
+    "panels",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "특수각의 삼각비를 두 삼각형의 변의 길이 비로 보여 준다."
+ ]
+}

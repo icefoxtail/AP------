@@ -1,0 +1,619 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림: 각 ABC=120°"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "X",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "205"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "C",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "25"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "A",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "265"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "B",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "330"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "T",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "A",
+        "O"
+       ],
+       "args": {
+        "length": {
+         "kind": "rational",
+         "numerator": "3",
+         "denominator": "2"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "90"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "U",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "A",
+        "O"
+       ],
+       "args": {
+        "length": {
+         "kind": "rational",
+         "numerator": "3",
+         "denominator": "2"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "90"
+        },
+        "turn": "CW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "1"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "X",
+     "D",
+     "C",
+     "A",
+     "B",
+     "T",
+     "U"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sDC",
+      "refs": [
+       "D",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     },
+     {
+      "id": "sAD",
+      "refs": [
+       "A",
+       "D"
+      ]
+     },
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sTA",
+      "refs": [
+       "T",
+       "A"
+      ]
+     },
+     {
+      "id": "sAU",
+      "refs": [
+       "A",
+       "U"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aBz0",
+       "refs": [
+        "A",
+        "B",
+        "C"
+       ],
+       "value": 120,
+       "noLabel": true,
+       "color": "WARM",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aCz0",
+       "refs": [
+        "A",
+        "C",
+        "D"
+       ],
+       "value": 30,
+       "label": "x",
+       "color": "ROSE"
+      }
+     ]
+    },
+    "caption": "원의 지름 CD와 접선 AT, 원 위의 점 B가 있고 각 ABC가 120도인 그림이다.",
+    "hiddenPointNames": [
+     "U",
+     "X"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "호 AD=60°, 호 CD=180°"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "X",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "205"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "C",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "25"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "A",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "265"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "B",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "330"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "T",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "A",
+        "O"
+       ],
+       "args": {
+        "length": {
+         "kind": "rational",
+         "numerator": "3",
+         "denominator": "2"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "90"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "U",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "A",
+        "O"
+       ],
+       "args": {
+        "length": {
+         "kind": "rational",
+         "numerator": "3",
+         "denominator": "2"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "90"
+        },
+        "turn": "CW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "1"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "X",
+     "D",
+     "C",
+     "A",
+     "B",
+     "T",
+     "U"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sDC",
+      "refs": [
+       "D",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     },
+     {
+      "id": "sAD",
+      "refs": [
+       "A",
+       "D"
+      ]
+     },
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sTA",
+      "refs": [
+       "T",
+       "A"
+      ]
+     },
+     {
+      "id": "sAU",
+      "refs": [
+       "A",
+       "U"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aBz1",
+       "refs": [
+        "A",
+        "B",
+        "C"
+       ],
+       "value": 120,
+       "noLabel": true,
+       "color": "WARM"
+      },
+      {
+       "id": "aCz1",
+       "refs": [
+        "A",
+        "C",
+        "D"
+       ],
+       "value": 30,
+       "label": "x",
+       "color": "ROSE"
+      }
+     ],
+     "arcs": [
+      {
+       "id": "arcADz1",
+       "circle": "k",
+       "center": "O",
+       "from": "A",
+       "to": "D",
+       "side": "MINOR",
+       "color": "BLUE"
+      },
+      {
+       "id": "arcCDz1",
+       "circle": "k",
+       "center": "O",
+       "from": "C",
+       "to": "D",
+       "side": "CCW",
+       "color": "GREEN"
+      }
+     ]
+    },
+    "caption": "호 CD는 반원이고 호 AD는 호 ADC에서 반원을 뺀 호이다.",
+    "hiddenPointNames": [
+     "U",
+     "X"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  }
+ ],
+ "caption": "각 ABC는 호 ADC에 대한 원주각이므로 호 ADC의 크기는 그 두 배이다. 초록색 호 CD는 지름에 대한 반원이고, 파란색 호 AD가 각 x가 보는 호이다."
+}

@@ -1,0 +1,259 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "100"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "H",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "40"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "40"
+      },
+      {
+       "kind": "expression",
+       "op": "mul",
+       "args": [
+        {
+         "kind": "integer",
+         "value": "40"
+        },
+        {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "H"
+ ],
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBH",
+   "refs": [
+    "B",
+    "H"
+   ]
+  },
+  {
+   "id": "sHC",
+   "refs": [
+    "H",
+    "C"
+   ]
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sAH",
+   "refs": [
+    "A",
+    "H"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aB",
+    "refs": [
+     "C",
+     "B",
+     "A"
+    ],
+    "value": 60,
+    "label": "60",
+    "color": "ROSE",
+    "factRole": "GIVEN"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "lAB",
+    "ownerSegment": "sAB",
+    "text": "80",
+    "unit": "cm"
+   },
+   {
+    "id": "lAH",
+    "ownerSegment": "sAH",
+    "text": "40sqrt(3)",
+    "unit": "cm",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "dimensions": [
+   {
+    "id": "dBH",
+    "from": "B",
+    "to": "H",
+    "label": "40",
+    "unit": "cm",
+    "side": "BELOW",
+    "style": "BAR",
+    "offset": "AUTO",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "dHC",
+    "from": "H",
+    "to": "C",
+    "label": "60",
+    "unit": "cm",
+    "side": "BELOW",
+    "style": "BAR",
+    "offset": "AUTO",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "dBC",
+    "from": "B",
+    "to": "C",
+    "label": "100",
+    "unit": "cm",
+    "side": "BELOW",
+    "style": "BAR",
+    "offset": "AUTO"
+   }
+  ],
+  "segmentColors": [
+   {
+    "segments": [
+     "sAH"
+    ],
+    "color": "BLUE"
+   },
+   {
+    "segments": [
+     "sAC"
+    ],
+    "color": "WARM"
+   }
+  ]
+ },
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "A",
+    "H",
+    "C"
+   ]
+  }
+ ],
+ "caption": "A에서 BC에 내린 수선의 발 H를 이용한다. 직각삼각형 ABH에서 BH와 AH를 구하고 HC=BC−BH를 구한 뒤, 직각삼각형 AHC에서 주황색 AC를 구한다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AB=80, BC=100, 각 B=60°, AH는 BC에 수직.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 길이와 각의 관계를 색과 표식으로 구별한다."
+ ],
+ "coordinateCanvas": {
+  "width": 680,
+  "height": 440
+ }
+}

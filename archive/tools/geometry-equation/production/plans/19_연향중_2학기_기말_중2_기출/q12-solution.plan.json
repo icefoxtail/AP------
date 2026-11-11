@@ -1,0 +1,42 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "PAIR",
+    "colVar": "x",
+    "rowVar": "y",
+    "highlightGroups": [
+      {
+        "highlight": {
+          "expr": "x+3*y",
+          "cmp": "<=",
+          "value": 21
+        },
+        "tone": 1
+      },
+      {
+        "highlight": {
+          "expr": "x+3*y",
+          "cmp": ">",
+          "value": 21
+        },
+        "tone": 2
+      }
+    ]
+  },
+  "caption": "가로 x, 세로 y인 6×6 표에서 x+3y가 21 이하인 칸은 옅은 회색, 21보다 큰 칸은 진한 회색이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주사위를 두 번 던져 나온 눈의 수 x, y가 x+3y≤21을 만족하는 경우를 표에서 센다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x+3y≤21인 칸과 아닌 칸을 두 가지 진하기로 구분해 y=6인 줄만 일부 칸이 제외됨을 보인다."
+  ]
+}

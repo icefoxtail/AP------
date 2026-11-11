@@ -1,0 +1,303 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "5",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "5",
+                      "denominator": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "AOB120",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 120,
+        "factRole": "GIVEN",
+        "ring": 2
+      },
+      {
+        "id": "OAP90",
+        "refs": [
+          "O",
+          "A",
+          "P"
+        ],
+        "value": 90,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AOP60",
+        "refs": [
+          "A",
+          "O",
+          "P"
+        ],
+        "value": 60,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "OBP90",
+        "refs": [
+          "O",
+          "B",
+          "P"
+        ],
+        "value": 90,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "noLabel": true
+      },
+      {
+        "id": "BOP60",
+        "refs": [
+          "B",
+          "O",
+          "P"
+        ],
+        "value": 60,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "noLabel": true
+      }
+    ],
+    "equalAngles": [
+      {
+        "angles": [
+          "AOP60",
+          "BOP60"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eR",
+        "count": 1,
+        "segments": [
+          "OA",
+          "OB"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "eT",
+        "count": 2,
+        "segments": [
+          "PA",
+          "PB"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOB",
+        "ownerSegment": "OB",
+        "text": "5",
+        "unit": "cm"
+      }
+    ]
+  },
+  "caption": "직선 PA, PB는 원 O의 접선이고 A, B는 접점이다. OA=OB=5 cm, ∠AOB=120°이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "OA=OB=5 cm, ∠AOB=120°, PA와 PB는 접선이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "OP는 중심각 이등분을 나타내는 보조선이다. 점·라벨은 선과 충분히 떨어뜨린다."
+  ]
+}

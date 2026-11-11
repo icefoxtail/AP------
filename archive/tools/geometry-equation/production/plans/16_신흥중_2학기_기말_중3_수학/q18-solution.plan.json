@@ -1,0 +1,498 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제의 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-3"
+         },
+         {
+          "kind": "integer",
+          "value": "-4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "-4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "rational",
+          "numerator": "9797959",
+          "denominator": "2000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "circ",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "5"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "B",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "circ"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sOB",
+      "refs": [
+       "O",
+       "B"
+      ],
+      "dashed": true
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "B",
+        "A",
+        "C"
+       ],
+       "value": 36.86989764584402,
+       "noLabel": true,
+       "color": "ROSE",
+       "factRole": "GIVEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lOB",
+       "ownerSegment": "sOB",
+       "text": "5"
+      },
+      {
+       "id": "lBC",
+       "ownerSegment": "sBC",
+       "text": "6"
+      }
+     ]
+    },
+    "caption": "문제의 그림",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "반지름 5인 원 O에 내접하는 삼각형 ABC, BC=6.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 420
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "지름 BD를 그으면"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-3"
+         },
+         {
+          "kind": "integer",
+          "value": "-4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "-4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "rational",
+          "numerator": "9797959",
+          "denominator": "2000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "circ",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "5"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "circ"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sBO",
+      "refs": [
+       "B",
+       "O"
+      ]
+     },
+     {
+      "id": "sOD",
+      "refs": [
+       "O",
+       "D"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "B",
+        "A",
+        "C"
+       ],
+       "value": 36.86989764584402,
+       "noLabel": true,
+       "color": "ROSE",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aD",
+       "refs": [
+        "B",
+        "D",
+        "C"
+       ],
+       "value": 36.86989764584402,
+       "noLabel": true,
+       "color": "ROSE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lBC",
+       "ownerSegment": "sBC",
+       "text": "6"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sBC"
+       ],
+       "color": "BLUE"
+      }
+     ],
+     "equalLengths": [
+      {
+       "id": "e1",
+       "count": 1,
+       "segments": [
+        "sBO",
+        "sOD"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "pathLabels": [
+      {
+       "id": "pBD",
+       "points": [
+        "B",
+        "O",
+        "D"
+       ],
+       "label": "10",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "caption": "지름 BD를 그으면",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "BD는 지름, ∠BCD=90°, ∠BAC=∠BDC.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "B",
+       "C",
+       "D"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 420
+    }
+   }
+  }
+ ],
+ "caption": "지름 BD를 그으면 각 BCD가 직각이고, 같은 호 BC에 대한 원주각이므로 분홍색 두 각 A와 D가 같다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "반지름 5인 원 O에 내접하는 삼각형 ABC, BC=6.",
+   "mappedTo": [
+    "panels",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "풀이 단계마다 그림을 나누어 보인다."
+ ]
+}

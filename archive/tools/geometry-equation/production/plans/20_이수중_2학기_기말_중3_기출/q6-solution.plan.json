@@ -1,0 +1,272 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-15"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-27",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "36",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-27",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-36",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r1",
+        "refs": [
+          "O",
+          "A",
+          "P"
+        ],
+        "value": 90,
+        "factRole": "GIVEN",
+        "label": "90"
+      },
+      {
+        "id": "r2",
+        "refs": [
+          "O",
+          "B",
+          "P"
+        ],
+        "value": 90,
+        "factRole": "GIVEN",
+        "label": "90"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "OA",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "OP",
+        "text": "15",
+        "unit": "cm"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "PA",
+        "text": "12",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "PA",
+          "PB"
+        ],
+        "color": "ROSE"
+      },
+      {
+        "id": "e2",
+        "count": 2,
+        "segments": [
+          "OA",
+          "OB"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "t1",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "A",
+              "P"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "t2",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "B",
+              "P"
+            ]
+          }
+        ]
+      }
+    ],
+    "equalAreas": [
+      [
+        "t1",
+        "t2"
+      ]
+    ]
+  },
+  "caption": "접선과 반지름은 수직이므로 직각삼각형 OAP에서 AP=12cm이다. 사각형 A, P, B, O는 합동인 두 직각삼각형(파랑)으로 나뉜다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "PA,PB는 접선이고 OA=9cm, OP=15cm이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 그림을 보존하고 대응하는 길이·각·보조점을 구분한다. 점과 라벨에는 여유를 둔다."
+  ]
+}

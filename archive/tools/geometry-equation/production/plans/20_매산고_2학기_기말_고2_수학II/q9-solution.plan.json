@@ -1,0 +1,136 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-4",
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "2x^3-x^2-4x",
+    "functionName": "h",
+    "referenceLines": [
+      {
+        "id": "high",
+        "y": "44/27",
+        "intersectionX": [
+          "-2/3",
+          "11/6"
+        ],
+        "hideLabel": true
+      },
+      {
+        "id": "low",
+        "y": "-3",
+        "intersectionX": [
+          "-3/2",
+          "1"
+        ],
+        "hideLabel": true
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2/3",
+        "y": "44/27"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "-3"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-2/3",
+        "44/27"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "h(x)"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -5,
+      5
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "ly1",
+          "slope": "0",
+          "intercept": "44/27",
+          "color": "WARM",
+          "label": "y=44/27",
+          "labelAt": "END"
+        },
+        {
+          "id": "ly2",
+          "slope": "0",
+          "intercept": "-3",
+          "color": "GREEN",
+          "label": "y=-3",
+          "labelAt": "END"
+        }
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B"
+      ]
+    },
+    "curveColor": "BLUE"
+  },
+  "caption": "삼차함수의 극값과 두 극값 높이의 수평선을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 곡선의 교점 조건은 h(x)=a이며 h(x)=2x^3−x^2−4x로 둔다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "h′(x)=2(3x+2)(x−1), 극대는 A(−2/3,44/27), 극소는 B(1,−3)이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates",
+        "coordinateLeader"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "y=44/27은 x=−2/3과 x=11/6에서, y=−3은 x=−3/2와 x=1에서 만난다. 각 선은 극값점에서 접하며 서로 다른 교점은 둘이다.",
+      "mappedTo": [
+        "graphPlan.referenceLines",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "극댓값 및 극솟값 높이에 각각 수평선을 놓아 접점과 두 번째 교점을 함께 보인다."
+  ]
+}

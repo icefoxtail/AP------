@@ -1,0 +1,66 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3/8",
+          "-8",
+          "12",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.6,
+      3
+    ],
+    "viewport": [
+      -1,
+      3.5,
+      -2,
+      6
+    ],
+    "functionName": "g",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "1/2",
+        "y": "-21/16"
+      },
+      {
+        "id": "N",
+        "x": 2,
+        "y": "3/8"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "N"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": []
+    }
+  },
+  "caption": "g′(x)의 부호가 x=1/2에서 음에서 양으로 바뀌어 최솟값을 가지는 모양이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "g(x)=x(x-2)^3+C, g(1/2)=-21/16",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1/2에서 최솟값을 가진다."
+  ]
+}

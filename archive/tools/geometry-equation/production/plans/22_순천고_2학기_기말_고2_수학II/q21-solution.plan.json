@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-4",
+          "-3",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^4+2*x^3-3*x^2-4*x+4",
+    "functionName": "h",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": "-1/2",
+        "y": "81/16",
+        "marker": "NONE"
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": []
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "h=g−f는 (x+2)²(x−1)²이며 x=−2,1에서 접한다. 가운데의 극댓점은 두 접점 사이에 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "The line f and the monic quartic g are tangent at x=-2 and x=1. Therefore h=g-f has double roots at those x-values.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "h(x)=(x+2)^2(x-1)^2; h's local maximum is 81/16 at x=-1/2.",
+      "mappedTo": [
+        "graphPlan.formula",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Show only the exact difference function h(x)=g(x)-f(x), with its double zeros at the source contact abscissae and its local maximum (-1/2,81/16).",
+    "The original q21.png remains the source evidence for the two tangencies; this difference-function chart is not a reconstruction of the separate f and g curves.",
+    "사용자 사유: 함수 그래프가 풀이 이해에 도움이 되는 문항은 실제 곡선 도식으로 보조한다."
+  ],
+  "sourceQuote": "[그림에서 읽는 핵심] 직선 $f$와 최고차항 계수가 1인 사차함수 $g$가 $x=-2,1$에서 각각 접한다. 차이 $h(x)=g(x)-f(x)$는 최고차항 계수가 1인 사차다.\n접점에서는 두 함수값과 기울기가 같으므로 $h(-2)=h'(-2)=0$, $h(1)=h'(1)=0$. 따라서 두 점이 각각 이중근이고 $h(x)=(x+2)^2(x-1)^2$이다.\n$h'(x)=2(x+2)(x-1)(2x+1)$이므로 극점 후보는 $x=-2,-\\frac12,1$이다. $h(-2)=h(1)=0$이고 그 사이 $h>0$이므로 $x=-\\frac12$가 극대점이다.\n$h(-\\frac12)=(\\frac32)^2(-\\frac32)^2=\\frac{81}{16}$.\n따라서 $\\boxed{\\frac{81}{16}}$. 원본 그림은 접하는 $x$좌표를 확인하는 증거이며 그림의 눈대중 높이를 정답에 사용하지 않는다."
+}

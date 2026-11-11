@@ -1,0 +1,159 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "맞",
+          "p": "1/3",
+          "children": [
+            {
+              "label": "맞",
+              "p": "1/3",
+              "children": [
+                {
+                  "label": "맞",
+                  "p": "1/3"
+                },
+                {
+                  "label": "틀",
+                  "p": "2/3"
+                }
+              ]
+            },
+            {
+              "label": "틀",
+              "p": "2/3",
+              "children": [
+                {
+                  "label": "맞",
+                  "p": "1/3"
+                },
+                {
+                  "label": "틀",
+                  "p": "2/3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "틀",
+          "p": "2/3",
+          "children": [
+            {
+              "label": "맞",
+              "p": "1/3",
+              "children": [
+                {
+                  "label": "맞",
+                  "p": "1/3"
+                },
+                {
+                  "label": "틀",
+                  "p": "2/3"
+                }
+              ]
+            },
+            {
+              "label": "틀",
+              "p": "2/3",
+              "children": [
+                {
+                  "label": "맞",
+                  "p": "1/3"
+                },
+                {
+                  "label": "틀",
+                  "p": "2/3"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "맞",
+          "맞",
+          "맞"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "맞",
+          "맞",
+          "틀"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "맞",
+          "틀",
+          "맞"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "맞",
+          "틀",
+          "틀"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "틀",
+          "맞",
+          "맞"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "틀",
+          "맞",
+          "틀"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "틀",
+          "틀",
+          "맞"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "틀",
+          "틀",
+          "틀"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "showPathProbability": true
+  },
+  "caption": "세 문제를 차례로 푸는 수형도이다. 세 문제 모두 틀리는 경로는 파랑, 적어도 한 문제를 맞히는 나머지 7가지는 주황으로 칠했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 문제를 찍어 맞힐 확률은 3분의 1, 틀릴 확률은 3분의 2이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모두 틀리는 경로와 그 여사건을 색으로 나누어 보인다."
+  ]
+}

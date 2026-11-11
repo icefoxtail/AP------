@@ -1,0 +1,36 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "PAIR",
+    "colVar": "x",
+    "rowVar": "y",
+    "highlightGroups": [
+      {
+        "highlight": {
+          "expr": "x-y",
+          "in": [
+            0,
+            0
+          ]
+        },
+        "tone": 1
+      }
+    ]
+  },
+  "caption": "가로 x는 A의 눈, 세로 y는 B의 눈이다. 36가지 경우 중 두 눈이 같은 칸을 칠했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A, B가 주사위를 한 번씩 던져 큰 눈이 나오면 이기는 놀이에서 승부가 결정되는 경우.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 눈이 같아 승부가 나지 않는 칸을 표에서 보인다."
+  ]
+}

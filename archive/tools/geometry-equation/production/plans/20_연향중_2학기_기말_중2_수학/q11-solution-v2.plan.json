@@ -1,0 +1,1034 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "68"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "B"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "112"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lAB",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lAC",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lBD",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lBC",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lAC",
+                "lBD"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "pE",
+              "op": "PARALLEL_THROUGH",
+              "inputs": [
+                "E",
+                "lAB"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "pE",
+                "lBC"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sAE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "sEC",
+            "refs": [
+              "E",
+              "C"
+            ]
+          },
+          {
+            "id": "sBE",
+            "refs": [
+              "B",
+              "E"
+            ]
+          },
+          {
+            "id": "sED",
+            "refs": [
+              "E",
+              "D"
+            ]
+          },
+          {
+            "id": "sEF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "parallels": [
+            {
+              "id": "p1",
+              "count": 1,
+              "segments": [
+                "sAB",
+                "sEF",
+                "sCD"
+              ],
+              "color": "VIOLET"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sAB",
+              "text": "6"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sCD",
+              "text": "4"
+            }
+          ]
+        },
+        "caption": "AB∥EF∥DC",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "AB∥EF∥DC",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 ABE"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "5619",
+                    "denominator": "2500"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "55631",
+                    "denominator": "10000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "62991",
+                    "denominator": "10000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "5563",
+                    "denominator": "2500"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "E"
+        ],
+        "displaySegments": [
+          {
+            "id": "ab",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "ae",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "be",
+            "refs": [
+              "B",
+              "E"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "ab"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "ae"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "be"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "angles": [
+            {
+              "id": "a",
+              "refs": [
+                "B",
+                "A",
+                "E"
+              ],
+              "value": 72.51573238684155,
+              "arcs": 1,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "noLabel": true,
+              "color": "VIOLET",
+              "equalGroup": 1
+            },
+            {
+              "id": "b",
+              "refs": [
+                "A",
+                "B",
+                "E"
+              ],
+              "value": 48.54342548770643,
+              "arcs": 2,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "noLabel": true,
+              "color": "BLUE",
+              "equalGroup": 2
+            },
+            {
+              "id": "e",
+              "refs": [
+                "A",
+                "E",
+                "B"
+              ],
+              "value": 58.940842125452036,
+              "arcs": 3,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "noLabel": true,
+              "color": "ROSE",
+              "equalGroup": 3
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "ab",
+              "text": "6"
+            }
+          ]
+        },
+        "caption": "",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "문제의 그림",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 CDE (돌린 모양)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "35981",
+                    "denominator": "10000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "8901",
+                    "denominator": "2000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "20997",
+                    "denominator": "10000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "7417",
+                    "denominator": "10000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "62991",
+                    "denominator": "10000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "5563",
+                    "denominator": "2500"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Y1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "1050",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-185",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Y2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "7349",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "5378",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "C",
+          "D",
+          "E",
+          "Y1",
+          "Y2"
+        ],
+        "displaySegments": [
+          {
+            "id": "cd",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "ce",
+            "refs": [
+              "C",
+              "E"
+            ]
+          },
+          {
+            "id": "de",
+            "refs": [
+              "D",
+              "E"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "cd"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "ce"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "de"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "angles": [
+            {
+              "id": "a",
+              "refs": [
+                "D",
+                "C",
+                "E"
+              ],
+              "value": 72.51573238684155,
+              "arcs": 1,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "noLabel": true,
+              "color": "VIOLET",
+              "equalGroup": 1
+            },
+            {
+              "id": "b",
+              "refs": [
+                "C",
+                "D",
+                "E"
+              ],
+              "value": 48.54342548770643,
+              "arcs": 2,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "noLabel": true,
+              "color": "BLUE",
+              "equalGroup": 2
+            },
+            {
+              "id": "e",
+              "refs": [
+                "C",
+                "E",
+                "D"
+              ],
+              "value": 58.940842125452036,
+              "arcs": 3,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "noLabel": true,
+              "color": "ROSE",
+              "equalGroup": 3
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "cd",
+              "text": "4"
+            }
+          ]
+        },
+        "caption": "",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "문제의 그림",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "hiddenPointNames": [
+          "Y1",
+          "Y2"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 BCD에서 EF∥DC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "B"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "112"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lBD",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lBC",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "pD",
+              "op": "PARALLEL_THROUGH",
+              "inputs": [
+                "D",
+                "lBC"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "B",
+                "D"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lDC",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "D",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "pE",
+              "op": "PARALLEL_THROUGH",
+              "inputs": [
+                "E",
+                "lDC"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "pE",
+                "lBC"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "displaySegments": [
+          {
+            "id": "be",
+            "refs": [
+              "B",
+              "E"
+            ]
+          },
+          {
+            "id": "ed",
+            "refs": [
+              "E",
+              "D"
+            ]
+          },
+          {
+            "id": "dc",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "sCF",
+            "refs": [
+              "C",
+              "F"
+            ]
+          },
+          {
+            "id": "sFB",
+            "refs": [
+              "F",
+              "B"
+            ]
+          },
+          {
+            "id": "ef",
+            "refs": [
+              "E",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "be"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "ed"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "parallels": [
+            {
+              "id": "p1",
+              "count": 1,
+              "segments": [
+                "ef",
+                "dc"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "dc",
+              "text": "4"
+            }
+          ]
+        },
+        "caption": "",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "문제의 그림",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ]
+      }
+    }
+  ],
+  "caption": "삼각형 ABE와 CDE는 닮음이므로 BE와 ED의 비는 AB와 CD의 비 6 대 4이다. 삼각형 BCD에서 EF와 DC가 평행하므로 BE 대 BD가 EF 대 DC이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼각형 ABE와 CDE는 닮음이므로 BE와 ED의 비는 AB와 CD의 비 6 대 4이다. 삼각형 BCD에서 EF와 DC가 평행하므로 BE 대 BD가 EF 대 DC이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

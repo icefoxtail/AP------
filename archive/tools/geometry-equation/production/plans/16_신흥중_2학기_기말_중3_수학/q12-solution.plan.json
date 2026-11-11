@@ -1,0 +1,268 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "T",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "13",
+       "denominator": "10"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "E",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "-14",
+       "denominator": "10"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "9848078",
+       "denominator": "10000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "8263518",
+       "denominator": "10000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "-6427876",
+       "denominator": "10000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "17660444",
+       "denominator": "10000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "circ",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "O",
+  "T",
+  "E"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "circ"
+ ],
+ "displaySegments": [
+  {
+   "id": "sET",
+   "refs": [
+    "E",
+    "T"
+   ]
+  },
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sCB",
+   "refs": [
+    "C",
+    "B"
+   ]
+  },
+  {
+   "id": "sOA",
+   "refs": [
+    "O",
+    "A"
+   ]
+  },
+  {
+   "id": "sOB",
+   "refs": [
+    "O",
+    "B"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aBAT",
+    "refs": [
+     "B",
+     "A",
+     "T"
+    ],
+    "value": 40,
+    "label": "40",
+    "color": "BLUE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aACB",
+    "refs": [
+     "A",
+     "C",
+     "B"
+    ],
+    "value": 40,
+    "label": "x",
+    "color": "BLUE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "aAOB",
+    "refs": [
+     "A",
+     "O",
+     "B"
+    ],
+    "value": 80,
+    "label": "y",
+    "color": "ROSE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "caption": "파란색 두 각은 같은 호 AB를 보는 각으로, 접선과 현이 이루는 각 40°와 원주각 x는 크기가 같다. 분홍색 각 y는 같은 호 AB에 대한 중심각이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "직선 AT는 원 O의 접선, 접점 A, ∠BAT=40°. x=∠ACB, y=∠AOB.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "접선과 현이 이루는 각과 원주각을 같은 색으로, 중심각을 다른 색으로 구별한다."
+ ],
+ "coordinateCanvas": {
+  "width": 460,
+  "height": 420
+ },
+ "hiddenPointNames": [
+  "E"
+ ],
+ "hiddenPointStyle": "NONE"
+}

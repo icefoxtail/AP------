@@ -1,0 +1,31 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "shade": "A∩B"
+  },
+  "caption": "겹친 영역은 두 사건의 교집합이고 조건부확률과 합집합의 관계로 그 확률을 정한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 사건의 합집합 확률은 3/5이다.",
+      "mappedTo": "두 원이 차지하는 합집합 영역"
+    },
+    {
+      "id": "c2",
+      "condition": "두 조건부확률은 교집합을 각 사건의 확률로 나눈 비율이다.",
+      "mappedTo": "색칠한 교집합 영역과 각 원의 포함 관계"
+    }
+  ],
+  "newVisualInformation": [
+    "구하는 교집합을 두 사건의 겹친 부분으로 강조"
+  ]
+}

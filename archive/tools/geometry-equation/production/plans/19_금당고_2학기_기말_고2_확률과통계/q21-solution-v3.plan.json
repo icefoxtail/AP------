@@ -1,0 +1,51 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "예시",
+        "points": [
+          {
+            "id": "A",
+            "value": "2",
+            "style": "FILLED",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "5",
+            "style": "FILLED",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "7",
+            "style": "FILLED",
+            "name": "마지막"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "예: 불량품 위치가 2, 5, 7이라면 마지막 위치는 7이다. 정답은 k가 3부터 10까지일 때 마지막 위치의 확률이 앞의 k−1자리에서 두 곳을 고르는 경우의 수를 120으로 나눈 값이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "불량품은 전체 10개 중 3개이다.",
+      "mappedTo": "10개 위치 중 세 개를 채운 점으로 표시하고 나머지는 빈 점으로 표시"
+    },
+    {
+      "id": "c2",
+      "condition": "X=k이면 k번째 위치가 마지막 불량품이다.",
+      "mappedTo": "예시에서 마지막 불량품 위치 7을 이름표로 표시"
+    }
+  ],
+  "newVisualInformation": [
+    "마지막 불량품 위치가 k가 되려면 그보다 앞선 위치 중 두 곳에 불량품이 있어야 한다는 배치 관계"
+  ],
+  "numberLineCaption": {
+    "text": "불량품 위치"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      {
+        "x": 20,
+        "y": 30
+      },
+      {
+        "x": 40,
+        "y": 40
+      },
+      {
+        "x": 40,
+        "y": 60
+      },
+      {
+        "x": 50,
+        "y": 80
+      },
+      {
+        "x": 60,
+        "y": 50
+      },
+      {
+        "x": 60,
+        "y": 60
+      },
+      {
+        "x": 60,
+        "y": 70
+      },
+      {
+        "x": 70,
+        "y": 90
+      },
+      {
+        "x": 80,
+        "y": 80
+      },
+      {
+        "x": 100,
+        "y": 90
+      }
+    ],
+    "xRange": [
+      "0",
+      "100"
+    ],
+    "yRange": [
+      "0",
+      "100"
+    ],
+    "xStep": "20",
+    "yStep": "20",
+    "xTitle": "국어 점수",
+    "yTitle": "영어 점수",
+    "grid": true,
+    "equalUnits": true,
+    "refLines": [
+      {
+        "type": "y=x"
+      },
+      {
+        "kind": "LINE",
+        "a": -1,
+        "b": 1,
+        "c": 20,
+        "label": "y=x+20",
+        "style": "DASHED"
+      },
+      {
+        "kind": "LINE",
+        "a": -1,
+        "b": 1,
+        "c": -20,
+        "label": "y=x-20",
+        "style": "DASHED"
+      }
+    ],
+    "pointGroups": [
+      {
+        "points": [
+          [
+            "40",
+            "60"
+          ],
+          [
+            "50",
+            "80"
+          ],
+          [
+            "70",
+            "90"
+          ]
+        ],
+        "color": "WARM",
+        "label": "차 20 이상"
+      }
+    ]
+  },
+  "caption": "국어 점수와 영어 점수의 차가 20점 이상인 점을 기준선 y=x+20, y=x−20 바깥에서 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "국어·영어 점수 10명의 원문 산점도 점을 그대로 유지한다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 점수의 차가 20점 이상인 점을 기준선과 주황 점으로 강조한다."
+  ]
+}

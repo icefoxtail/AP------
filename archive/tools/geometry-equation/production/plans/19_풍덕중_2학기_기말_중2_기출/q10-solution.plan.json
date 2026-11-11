@@ -1,0 +1,80 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      6,
+      -3,
+      4
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-1/2"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "ax+2y=4"
+      },
+      {
+        "id": "g2",
+        "kind": "LINE",
+        "coefficients": [
+          "1/2",
+          "1/4"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "x+by=-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "1",
+          "coordinates": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "gP",
+          "from": "P",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "두 직선 ax+2y=4(파랑)와 x+by=-2(주황)의 교점이 연립방정식의 해이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 그래프의 교점의 x좌표는 2, y좌표는 1이다.",
+      "mappedTo": [
+        "overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "교점의 좌표를 각 식에 대입하는 과정을 그림에서 확인한다."
+  ]
+}

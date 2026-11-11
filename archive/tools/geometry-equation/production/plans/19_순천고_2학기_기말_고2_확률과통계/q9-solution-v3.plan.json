@@ -1,0 +1,39 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "4",
+        "sd": "10",
+        "label": "모집단"
+      },
+      {
+        "id": "M",
+        "mean": "4",
+        "sd": "2",
+        "label": "표본평균"
+      }
+    ],
+    "ticks": [
+      "-6",
+      "4",
+      "14"
+    ],
+    "shades": []
+  },
+  "caption": "두 분포는 평균 4를 공유하고 표본평균의 표준편차가 더 작다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모집단은 정규분포이고 평균 4, 분산 100이며 표본평균은 평균 4, 표준편차 2이다.",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 평균에서 표본평균 분포의 산포가 모집단보다 작음을 비교한다."
+  ]
+}

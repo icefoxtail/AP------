@@ -1,0 +1,799 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "합이 5인 눈의 쌍"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "r0k0b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k0t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k1b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k1t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k2b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k2t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "r0k0b",
+          "r0k0t",
+          "r0k1b",
+          "r0k1t",
+          "r0k2b",
+          "r0k2t"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sr0k0br0k0t",
+            "refs": [
+              "r0k0b",
+              "r0k0t"
+            ]
+          },
+          {
+            "id": "sr0k1br0k1t",
+            "refs": [
+              "r0k1b",
+              "r0k1t"
+            ]
+          },
+          {
+            "id": "sr0k2br0k2t",
+            "refs": [
+              "r0k2b",
+              "r0k2t"
+            ]
+          },
+          {
+            "id": "sr0k0br0k1b",
+            "refs": [
+              "r0k0b",
+              "r0k1b"
+            ]
+          },
+          {
+            "id": "sr0k0tr0k1t",
+            "refs": [
+              "r0k0t",
+              "r0k1t"
+            ]
+          },
+          {
+            "id": "sr0k1br0k2b",
+            "refs": [
+              "r0k1b",
+              "r0k2b"
+            ]
+          },
+          {
+            "id": "sr0k1tr0k2t",
+            "refs": [
+              "r0k1t",
+              "r0k2t"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rg0",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k0b",
+                    "r0k1b",
+                    "r0k1t",
+                    "r0k0t"
+                  ]
+                }
+              ],
+              "label": "1과 4",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg1",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k1b",
+                    "r0k2b",
+                    "r0k2t",
+                    "r0k1t"
+                  ]
+                }
+              ],
+              "label": "2와 3",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            }
+          ]
+        },
+        "caption": "합이 5인 눈의 쌍",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "두 눈의 합이 5인 눈의 쌍은 1과 4, 2와 3이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "r0k0b",
+          "r0k0t",
+          "r0k1b",
+          "r0k1t",
+          "r0k2b",
+          "r0k2t"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "합이 9인 눈의 쌍"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "r0k0b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k0t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k1b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k1t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k2b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k2t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "r0k0b",
+          "r0k0t",
+          "r0k1b",
+          "r0k1t",
+          "r0k2b",
+          "r0k2t"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sr0k0br0k0t",
+            "refs": [
+              "r0k0b",
+              "r0k0t"
+            ]
+          },
+          {
+            "id": "sr0k1br0k1t",
+            "refs": [
+              "r0k1b",
+              "r0k1t"
+            ]
+          },
+          {
+            "id": "sr0k2br0k2t",
+            "refs": [
+              "r0k2b",
+              "r0k2t"
+            ]
+          },
+          {
+            "id": "sr0k0br0k1b",
+            "refs": [
+              "r0k0b",
+              "r0k1b"
+            ]
+          },
+          {
+            "id": "sr0k0tr0k1t",
+            "refs": [
+              "r0k0t",
+              "r0k1t"
+            ]
+          },
+          {
+            "id": "sr0k1br0k2b",
+            "refs": [
+              "r0k1b",
+              "r0k2b"
+            ]
+          },
+          {
+            "id": "sr0k1tr0k2t",
+            "refs": [
+              "r0k1t",
+              "r0k2t"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rg0",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k0b",
+                    "r0k1b",
+                    "r0k1t",
+                    "r0k0t"
+                  ]
+                }
+              ],
+              "label": "3과 6",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg1",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k1b",
+                    "r0k2b",
+                    "r0k2t",
+                    "r0k1t"
+                  ]
+                }
+              ],
+              "label": "4와 5",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            }
+          ]
+        },
+        "caption": "합이 9인 눈의 쌍",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "두 눈의 합이 9인 눈의 쌍은 3과 6, 4와 5이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "r0k0b",
+          "r0k0t",
+          "r0k1b",
+          "r0k1t",
+          "r0k2b",
+          "r0k2t"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "순서가 다르면 다른 경우"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "r0k0b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k0t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k1b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k1t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k2b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k2t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "r0k0b",
+          "r0k0t",
+          "r0k1b",
+          "r0k1t",
+          "r0k2b",
+          "r0k2t"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sr0k0br0k0t",
+            "refs": [
+              "r0k0b",
+              "r0k0t"
+            ]
+          },
+          {
+            "id": "sr0k1br0k1t",
+            "refs": [
+              "r0k1b",
+              "r0k1t"
+            ]
+          },
+          {
+            "id": "sr0k2br0k2t",
+            "refs": [
+              "r0k2b",
+              "r0k2t"
+            ]
+          },
+          {
+            "id": "sr0k0br0k1b",
+            "refs": [
+              "r0k0b",
+              "r0k1b"
+            ]
+          },
+          {
+            "id": "sr0k0tr0k1t",
+            "refs": [
+              "r0k0t",
+              "r0k1t"
+            ]
+          },
+          {
+            "id": "sr0k1br0k2b",
+            "refs": [
+              "r0k1b",
+              "r0k2b"
+            ]
+          },
+          {
+            "id": "sr0k1tr0k2t",
+            "refs": [
+              "r0k1t",
+              "r0k2t"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rg0",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k0b",
+                    "r0k1b",
+                    "r0k1t",
+                    "r0k0t"
+                  ]
+                }
+              ],
+              "label": "(1, 4)",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg1",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k1b",
+                    "r0k2b",
+                    "r0k2t",
+                    "r0k1t"
+                  ]
+                }
+              ],
+              "label": "(4, 1)",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            }
+          ]
+        },
+        "caption": "순서가 다르면 다른 경우",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "서로 다른 두 주사위이므로 첫째 눈과 둘째 눈의 순서가 다르면 다른 경우이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "r0k0b",
+          "r0k0t",
+          "r0k1b",
+          "r0k1t",
+          "r0k2b",
+          "r0k2t"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "합이 5인 눈의 쌍과 합이 9인 눈의 쌍을 찾고, 서로 다른 두 주사위이므로 쌍마다 순서를 바꾼 경우도 센다. 두 경우는 겹치지 않으므로 더한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "합이 5인 눈의 쌍과 합이 9인 눈의 쌍을 찾고, 서로 다른 두 주사위이므로 쌍마다 순서를 바꾼 경우도 센다. 두 경우는 겹치지 않으므로 더한다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

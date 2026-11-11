@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "11/24",
+          "121/384"
+        ]
+      },
+      {
+        "coefficients": [
+          "11/24",
+          "-1/8"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "11/24"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-16/11",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 0,
+        "y": 0.4583333333333333
+      }
+    ],
+    "regions": [
+      {
+        "id": "left",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-16/11",
+        "to": "0",
+        "fill": "LIGHT",
+        "label": "L"
+      },
+      {
+        "id": "right",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "2",
+        "fill": "MEDIUM",
+        "label": "R"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "왼쪽 L과 오른쪽 R의 확률 비는 1:2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "전체 확률 1이고 오른쪽 넓이는 왼쪽의 두 배이다. b=11/24, a=16/11이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain",
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 지시: 밀도 함수 좌우 넓이의 비가 이해에 도움이 되므로 각 영역을 구분한다. 라벨에 지시선과 여유 공간을 둔다."
+  ],
+  "accessibilityDescription": "확률밀도 곡선 아래 왼쪽 L과 오른쪽 R 영역을 서로 다른 음영으로 표시했다."
+}

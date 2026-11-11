@@ -1,0 +1,1185 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "① 현에 내린 수선"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-4",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-3",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "4",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-3",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "M",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-3",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "1"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "B",
+     "M"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAM",
+      "refs": [
+       "A",
+       "M"
+      ]
+     },
+     {
+      "id": "sMB",
+      "refs": [
+       "M",
+       "B"
+      ]
+     },
+     {
+      "id": "sOA",
+      "refs": [
+       "O",
+       "A"
+      ]
+     },
+     {
+      "id": "sOB",
+      "refs": [
+       "O",
+       "B"
+      ]
+     },
+     {
+      "id": "sOM",
+      "refs": [
+       "O",
+       "M"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "equalLengths": [
+      {
+       "id": "e1z0",
+       "count": 1,
+       "segments": [
+        "sAM",
+        "sMB"
+       ],
+       "color": "BLUE"
+      }
+     ]
+    },
+    "caption": "중심 O에서 현 AB에 내린 수선의 발 M이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "O",
+       "M",
+       "A"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "② 중심에서 같은 거리"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-4"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "4"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "M",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "5"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-7",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-24",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "N",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "9",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-12",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "5"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "B",
+     "M",
+     "C",
+     "D",
+     "N"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAM",
+      "refs": [
+       "A",
+       "M"
+      ]
+     },
+     {
+      "id": "sMB",
+      "refs": [
+       "M",
+       "B"
+      ]
+     },
+     {
+      "id": "sCN",
+      "refs": [
+       "C",
+       "N"
+      ]
+     },
+     {
+      "id": "sND",
+      "refs": [
+       "N",
+       "D"
+      ]
+     },
+     {
+      "id": "sOM",
+      "refs": [
+       "O",
+       "M"
+      ]
+     },
+     {
+      "id": "sON",
+      "refs": [
+       "O",
+       "N"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "equalLengths": [
+      {
+       "id": "e1z1",
+       "count": 1,
+       "segments": [
+        "sOM",
+        "sON"
+       ],
+       "color": "WARM"
+      },
+      {
+       "id": "e2z1",
+       "count": 2,
+       "segments": [
+        "sAM",
+        "sMB",
+        "sCN",
+        "sND"
+       ],
+       "color": "BLUE"
+      }
+     ]
+    },
+    "caption": "중심 O에서 두 현 AB, CD에 내린 수선의 길이가 같은 그림이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "O",
+       "M",
+       "A"
+      ]
+     },
+     {
+      "id": "r1",
+      "refs": [
+       "O",
+       "N",
+       "C"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "③ 중심각과 원주각"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-3",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-4",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "3",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-4",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "1"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "1"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "B",
+     "P"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sPA",
+      "refs": [
+       "P",
+       "A"
+      ]
+     },
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     },
+     {
+      "id": "sOA",
+      "refs": [
+       "O",
+       "A"
+      ]
+     },
+     {
+      "id": "sOB",
+      "refs": [
+       "O",
+       "B"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aOz2",
+       "refs": [
+        "A",
+        "O",
+        "B"
+       ],
+       "value": 73.74,
+       "noLabel": true,
+       "color": "BLUE"
+      },
+      {
+       "id": "aPz2",
+       "refs": [
+        "A",
+        "P",
+        "B"
+       ],
+       "value": 36.87,
+       "noLabel": true,
+       "color": "WARM"
+      }
+     ]
+    },
+    "caption": "호 AB에 대한 중심각(파랑)과 원주각(주황)이다."
+   }
+  },
+  {
+   "caption": {
+    "text": "④ 원에 외접하는 사각형"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "X",
+       "op": "TRANSLATE_POINT",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "dx": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "dy": {
+         "kind": "integer",
+         "value": "0"
+        }
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "P",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "200"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "Q",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "280"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "R",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "10"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "S",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "85"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lOP",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "O",
+        "P"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "tP",
+       "op": "PERPENDICULAR_THROUGH",
+       "inputs": [
+        "P",
+        "lOP"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lOQ",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "O",
+        "Q"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "tQ",
+       "op": "PERPENDICULAR_THROUGH",
+       "inputs": [
+        "Q",
+        "lOQ"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lOR",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "O",
+        "R"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "tR",
+       "op": "PERPENDICULAR_THROUGH",
+       "inputs": [
+        "R",
+        "lOR"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lOS",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "O",
+        "S"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "tS",
+       "op": "PERPENDICULAR_THROUGH",
+       "inputs": [
+        "S",
+        "lOS"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "B",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "tP",
+        "tQ"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "C",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "tQ",
+        "tR"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "D",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "tR",
+        "tS"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "A",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "tS",
+        "tP"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "1"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "P",
+     "Q",
+     "R",
+     "S",
+     "B",
+     "C",
+     "D",
+     "A"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aAz3",
+       "refs": [
+        "D",
+        "A",
+        "B"
+       ],
+       "value": 65,
+       "label": "65",
+       "color": "BLUE"
+      }
+     ]
+    },
+    "caption": "원 O에 외접하는 사각형과 네 접점 P, Q, R, S이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "B",
+       "C",
+       "D"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "⑤ 원 밖의 점에서 그은 접선"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "3",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "4",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "3",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-4",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "5",
+          "denominator": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "1"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "B",
+     "P"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sPA",
+      "refs": [
+       "P",
+       "A"
+      ]
+     },
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     },
+     {
+      "id": "sOA",
+      "refs": [
+       "O",
+       "A"
+      ]
+     },
+     {
+      "id": "sOB",
+      "refs": [
+       "O",
+       "B"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "equalLengths": [
+      {
+       "id": "e1z4",
+       "count": 1,
+       "segments": [
+        "sPA",
+        "sPB"
+       ],
+       "color": "WARM"
+      }
+     ]
+    },
+    "caption": "원 밖의 점 P에서 그은 두 접선 PA, PB이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "O",
+       "A",
+       "P"
+      ]
+     },
+     {
+      "id": "r1",
+      "refs": [
+       "O",
+       "B",
+       "P"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "각 보기의 성질을 그림으로 확인한다. 같은 색은 크기나 길이가 같거나 같은 관계에 쓰이는 부분이다. 4번 그림은 마주 보는 각 A와 C의 크기를 확인하는 예이다."
+}

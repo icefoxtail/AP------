@@ -1,0 +1,115 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "연이"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "DOT_PLOT",
+          "values": [
+            5,
+            7,
+            3,
+            6,
+            4
+          ],
+          "xTitle": "점수(점)",
+          "marks": {
+            "meanLine": {
+              "value": "5",
+              "label": "평균 5"
+            },
+            "deviations": true,
+            "highlight": [
+              {
+                "value": 3,
+                "color": "BLUE"
+              },
+              {
+                "value": 4,
+                "color": "BLUE"
+              },
+              {
+                "value": 5,
+                "color": "BLUE"
+              },
+              {
+                "value": 6,
+                "color": "BLUE"
+              },
+              {
+                "value": 7,
+                "color": "BLUE"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "향이"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "DOT_PLOT",
+          "values": [
+            9,
+            1,
+            5,
+            2,
+            8
+          ],
+          "xTitle": "점수(점)",
+          "marks": {
+            "meanLine": {
+              "value": "5",
+              "label": "평균 5"
+            },
+            "deviations": true,
+            "highlight": [
+              {
+                "value": 1,
+                "color": "WARM"
+              },
+              {
+                "value": 2,
+                "color": "WARM"
+              },
+              {
+                "value": 5,
+                "color": "WARM"
+              },
+              {
+                "value": 8,
+                "color": "WARM"
+              },
+              {
+                "value": 9,
+                "color": "WARM"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "연이와 향이의 점수를 점도표로 나타내고 평균 5점과 각 점수의 편차를 표시했다. 향이의 점이 평균에서 더 멀리 흩어져 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "연이 5,7,3,6,4점, 향이 9,1,5,2,8점이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평균에서 각 점수까지의 편차와 흩어진 정도를 두 점도표로 비교한다."
+  ]
+}

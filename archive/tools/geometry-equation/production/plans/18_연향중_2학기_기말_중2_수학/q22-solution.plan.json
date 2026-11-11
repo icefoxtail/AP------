@@ -1,0 +1,640 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "외접원: 외심은 빗변의 중점"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Zpad1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "54",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Zpad2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-19",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "O",
+          "Zpad1",
+          "Zpad2"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAO",
+            "refs": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "id": "sOB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sOC",
+            "refs": [
+              "O",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "e0",
+              "count": 1,
+              "segments": [
+                "sAO",
+                "sOB",
+                "sOC"
+              ],
+              "color": "BLUE"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "d0",
+              "from": "B",
+              "to": "C",
+              "label": "6\\,cm",
+              "side": "BELOW",
+              "style": "ARROW",
+              "offset": 1
+            },
+            {
+              "id": "d1",
+              "from": "C",
+              "to": "A",
+              "label": "8\\,cm",
+              "side": "RIGHT",
+              "style": "ARROW",
+              "offset": 1
+            }
+          ],
+          "facts": [
+            {
+              "kind": "ON_CIRCLE",
+              "circle": "circ",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            }
+          ],
+          "callouts": [
+            {
+              "id": "k1",
+              "kind": "SEGMENT",
+              "path": [
+                "B",
+                "A"
+              ],
+              "at": "LEFT",
+              "link": "ENDS",
+              "dimensions": [
+                {
+                  "id": "kd1",
+                  "from": "B",
+                  "to": "A",
+                  "label": "10",
+                  "unit": "cm",
+                  "side": "ABOVE",
+                  "offset": "AUTO"
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "외접원: 외심은 빗변의 중점",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "O",
+          "Zpad1",
+          "Zpad2"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "내접원: 반지름 r, 세 삼각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "I",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "12",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "16",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "I"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "I",
+          "D",
+          "E",
+          "F"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sIA",
+            "refs": [
+              "I",
+              "A"
+            ]
+          },
+          {
+            "id": "sIB",
+            "refs": [
+              "I",
+              "B"
+            ]
+          },
+          {
+            "id": "sIC",
+            "refs": [
+              "I",
+              "C"
+            ]
+          },
+          {
+            "id": "sID",
+            "refs": [
+              "I",
+              "D"
+            ]
+          },
+          {
+            "id": "sIE",
+            "refs": [
+              "I",
+              "E"
+            ]
+          },
+          {
+            "id": "sIF",
+            "refs": [
+              "I",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "e0",
+              "count": 1,
+              "segments": [
+                "sIE",
+                "sIF",
+                "sID"
+              ],
+              "color": "VIOLET"
+            }
+          ],
+          "regions": [
+            {
+              "id": "r0",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "I",
+                    "A",
+                    "B"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "r1",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "I",
+                    "B",
+                    "C"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "r2",
+              "fill": "GREEN",
+              "shapes": [
+                {
+                  "polygon": [
+                    "I",
+                    "C",
+                    "A"
+                  ]
+                }
+              ]
+            }
+          ],
+          "facts": [
+            {
+              "kind": "ON_CIRCLE",
+              "circle": "circ",
+              "points": [
+                "D",
+                "E",
+                "F"
+              ]
+            }
+          ]
+        },
+        "caption": "내접원: 반지름 r, 세 삼각형",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "A",
+              "F",
+              "I"
+            ]
+          },
+          {
+            "id": "ra1",
+            "refs": [
+              "B",
+              "E",
+              "I"
+            ]
+          },
+          {
+            "id": "ra2",
+            "refs": [
+              "A",
+              "D",
+              "I"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "I"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "직각삼각형의 외심은 빗변의 중점이므로 외접원의 반지름은 빗변의 절반이다. 내접원의 반지름을 r라 하면 삼각형 ABC는 세 삼각형(파란색, 주황색, 초록색)으로 나뉘고 각 삼각형의 높이가 r이므로 넓이는 2분의 1×r×(세 변의 길이의 합)이다. 이 값이 직각을 낀 두 변으로 구한 넓이와 같다."
+}

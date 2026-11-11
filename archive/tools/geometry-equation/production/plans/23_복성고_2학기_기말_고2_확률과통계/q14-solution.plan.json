@@ -1,0 +1,31 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      4
+    ],
+    "xTitle": "X"
+  },
+  "caption": "각 면의 확률을 빈도에 따라 반영해 확률변수 X의 기댓값을 구한 뒤 선형변환한다.",
+  "sourceConditions": [
+    {
+      "id": "faces",
+      "condition": "1이 두 면, 2가 세 면, 4가 한 면",
+      "mappedTo": "점도표의 값별 빈도"
+    },
+    {
+      "id": "transform",
+      "condition": "E(5X+3)=5E(X)+3",
+      "mappedTo": "캡션"
+    }
+  ],
+  "newVisualInformation": [
+    "확률변수 X가 각 값을 갖는 빈도를 점 개수로 비교"
+  ]
+}

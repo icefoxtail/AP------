@@ -1,0 +1,125 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f(x)=|x+1|+|x|+|x-1|$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "3"
+      },
+      {
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "x": "1",
+        "y": "3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -1,
+      9
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "1",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "6"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "3"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "D",
+        "x": "1",
+        "y": "3"
+      },
+      {
+        "id": "E",
+        "x": "2",
+        "y": "6"
+      }
+    ],
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-2",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ]
+  },
+  "caption": "절댓값이 바뀌는 경계와 짝함수 대칭, 정적분 영역의 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "절댓값이 바뀌는 경계와 짝함수 대칭, 정적분 영역의 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값이 바뀌는 경계와 짝함수 대칭, 정적분 영역의 관계."
+  ]
+}

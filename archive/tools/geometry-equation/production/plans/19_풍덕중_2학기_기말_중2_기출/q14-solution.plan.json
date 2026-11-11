@@ -1,0 +1,94 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "leafLayout": "COMPACT",
+    "labelWeight": "MATH",
+    "root": {
+      "children": [
+        {
+          "label": "앞앞",
+          "children": [
+            {
+              "label": "앞앞"
+            },
+            {
+              "label": "앞뒤"
+            },
+            {
+              "label": "뒤앞"
+            },
+            {
+              "label": "뒤뒤"
+            }
+          ]
+        },
+        {
+          "label": "앞뒤",
+          "children": [
+            {
+              "label": "앞앞"
+            },
+            {
+              "label": "앞뒤"
+            },
+            {
+              "label": "뒤앞"
+            },
+            {
+              "label": "뒤뒤"
+            }
+          ]
+        },
+        {
+          "label": "뒤앞",
+          "children": [
+            {
+              "label": "앞앞"
+            },
+            {
+              "label": "앞뒤"
+            },
+            {
+              "label": "뒤앞"
+            },
+            {
+              "label": "뒤뒤"
+            }
+          ]
+        },
+        {
+          "label": "뒤뒤",
+          "children": [
+            {
+              "label": "앞앞"
+            },
+            {
+              "label": "앞뒤"
+            },
+            {
+              "label": "뒤앞"
+            },
+            {
+              "label": "뒤뒤"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "서로 다른 네 동전의 앞뒤를 앞의 두 동전(첫째 단계)과 뒤의 두 동전(둘째 단계)으로 나누어 나타낸 수형도이다. 끝 가지 하나가 네 동전의 앞뒤 결과 하나이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "서로 다른 4개의 동전을 동시에 던진다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "네 동전의 앞뒤 결과를 앞의 두 동전, 뒤의 두 동전으로 나누어 빠짐없이 보인다."
+  ]
+}

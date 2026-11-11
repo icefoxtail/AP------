@@ -1,0 +1,105 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "9-x^2",
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "g",
+        "y": "5",
+        "intersectionX": [
+          "-2",
+          "2"
+        ],
+        "hideLabel": true
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "9"
+      },
+      {
+        "id": "U",
+        "x": "2",
+        "y": "5"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "g",
+        "from": "0",
+        "to": "2",
+        "fill": "BLUE",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "g",
+        "lower": "f",
+        "from": "2",
+        "to": "3",
+        "fill": "WARM",
+        "label": "S_2"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "right",
+          "x": "3"
+        },
+        {
+          "id": "k",
+          "slope": "0",
+          "intercept": "5",
+          "label": "y=k"
+        }
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "U"
+      ]
+    }
+  },
+  "caption": "예: y=k가 포물선과 만나는 오른쪽 점 x=u를 경계로 S₁(파랑)과 S₂(주황)을 구분한다.",
+  "sourceConditions": [
+    "y=9-x^2",
+    "y=k(예 k=5)",
+    "x=0",
+    "x=3"
+  ],
+  "newVisualInformation": [
+    "S_1은 x=0부터 오른쪽 교점까지 포물선 위쪽과 수평선 사이",
+    "S_2는 오른쪽 교점부터 x=3까지 수평선 위쪽과 포물선 사이"
+  ]
+}

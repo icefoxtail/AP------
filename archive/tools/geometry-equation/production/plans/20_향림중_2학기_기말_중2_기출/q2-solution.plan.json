@@ -1,0 +1,444 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "10303",
+                    "denominator": "1250"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "bB",
+              "op": "ANGLE_BISECTOR",
+              "inputs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "args": {
+                "mode": "INTERNAL"
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bA",
+              "op": "ANGLE_BISECTOR",
+              "inputs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "args": {
+                "mode": "INTERNAL"
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "I",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "bB",
+                "bA"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "I"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sBI",
+            "refs": [
+              "B",
+              "I"
+            ]
+          },
+          {
+            "id": "sAI",
+            "refs": [
+              "A",
+              "I"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a1",
+              "refs": [
+                "I",
+                "B",
+                "A"
+              ],
+              "value": 35,
+              "label": "35",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a2",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 70,
+              "label": "70",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a3",
+              "refs": [
+                "I",
+                "A",
+                "C"
+              ],
+              "value": 20,
+              "label": "x",
+              "factRole": "CONCLUSION"
+            }
+          ]
+        },
+        "caption": "삼각형 ABC와 내심 I",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "내심은 각의 이등분선 위의 점"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "10303",
+                    "denominator": "1250"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "bB",
+              "op": "ANGLE_BISECTOR",
+              "inputs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "args": {
+                "mode": "INTERNAL"
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bA",
+              "op": "ANGLE_BISECTOR",
+              "inputs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "args": {
+                "mode": "INTERNAL"
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "I",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "bB",
+                "bA"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "I"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sBI",
+            "refs": [
+              "B",
+              "I"
+            ]
+          },
+          {
+            "id": "sAI",
+            "refs": [
+              "A",
+              "I"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "b1",
+              "refs": [
+                "I",
+                "B",
+                "A"
+              ],
+              "value": 35,
+              "label": "35",
+              "color": "BLUE",
+              "equalGroup": 1,
+              "arcs": 1,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b2",
+              "refs": [
+                "I",
+                "B",
+                "C"
+              ],
+              "value": 35,
+              "label": "35",
+              "color": "BLUE",
+              "equalGroup": 1,
+              "arcs": 1,
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "b3",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 70,
+              "label": "70",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b4",
+              "refs": [
+                "I",
+                "A",
+                "B"
+              ],
+              "value": 20,
+              "noLabel": true,
+              "color": "WARM",
+              "equalGroup": 2,
+              "arcs": 2,
+              "factRole": "CONCLUSION"
+            },
+            {
+              "id": "b5",
+              "refs": [
+                "I",
+                "A",
+                "C"
+              ],
+              "value": 20,
+              "noLabel": true,
+              "color": "WARM",
+              "equalGroup": 2,
+              "arcs": 2,
+              "factRole": "CONCLUSION"
+            }
+          ]
+        },
+        "caption": "각의 이등분선",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        }
+      }
+    }
+  ],
+  "caption": "내심 I는 세 각의 이등분선의 교점이므로 BI와 AI는 각 B, 각 A를 이등분한다."
+}

@@ -1,0 +1,155 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-3",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "16",
+          "-24",
+          "9",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-112",
+          "72",
+          "-15",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "320",
+          "-144",
+          "21",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "-4"
+      },
+      {
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "x": "6",
+        "y": "-4"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "8"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "m1",
+        "x": "2",
+        "y": "-4"
+      },
+      {
+        "id": "P",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "m2",
+        "x": "6",
+        "y": "-4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "y": [
+        "-4"
+      ]
+    },
+    "axisTitles": {
+      "y": "F(x)"
+    },
+    "curveColor": "BLUE",
+    "overlays": {
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "-2",
+          "color": "WARM",
+          "label": "y=-2",
+          "labelAt": "END"
+        }
+      ],
+      "points": [
+        {
+          "id": "a",
+          "curveX": "1",
+          "unnamed": true
+        },
+        {
+          "id": "b",
+          "curveX": "3",
+          "unnamed": true
+        },
+        {
+          "id": "c",
+          "curveX": "5",
+          "unnamed": true
+        },
+        {
+          "id": "d",
+          "curveX": "7",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "F의 두 주기(0≤x≤8)에서 극솟값 −4와 직선 y=−2의 반복되는 교점 네 개를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 주기에서 f의 적분이 0이므로 F의 주기는 4이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "두 주기에서 F의 극솟값은 x=2,6에서 −4이며 y=−2와 x=1,3,5,7에서 만난다. 이 모양은 주기 4로 반복된다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.referenceLines",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "F의 정확한 두 주기 구간 다항식을 그리고 주기 4를 시각적으로 반복한다.",
+    "두 극솟값 −4와 각 주기에서 y=−2와 만나는 두 교점을 표시한다."
+  ]
+}

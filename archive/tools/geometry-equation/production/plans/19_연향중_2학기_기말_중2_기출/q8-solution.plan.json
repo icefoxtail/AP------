@@ -1,0 +1,910 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "색칠한 네 초승달"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "16"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "16"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "D"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "R",
+              "op": "MIDPOINT",
+              "inputs": [
+                "D",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "U",
+              "op": "MIDPOINT",
+              "inputs": [
+                "C",
+                "B"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "W",
+              "op": "MIDPOINT",
+              "inputs": [
+                "B",
+                "A"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kO",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kT",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "T"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kR",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "R"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "8"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kU",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "U"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kW",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "W"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "8"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [
+          "kO"
+        ],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O",
+          "T",
+          "R",
+          "U",
+          "W"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "aT",
+              "circle": "kT",
+              "center": "T",
+              "from": "D",
+              "to": "A",
+              "side": "CCW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "aR",
+              "circle": "kR",
+              "center": "R",
+              "from": "C",
+              "to": "D",
+              "side": "CCW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "aU",
+              "circle": "kU",
+              "center": "U",
+              "from": "B",
+              "to": "C",
+              "side": "CCW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "aW",
+              "circle": "kW",
+              "center": "W",
+              "from": "A",
+              "to": "B",
+              "side": "CCW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rL",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "A",
+                    "steps": [
+                      {
+                        "to": "D",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "A",
+                        "arc": {
+                          "center": "T",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "loop": {
+                    "start": "D",
+                    "steps": [
+                      {
+                        "to": "C",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "D",
+                        "arc": {
+                          "center": "R",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "loop": {
+                    "start": "C",
+                    "steps": [
+                      {
+                        "to": "B",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "C",
+                        "arc": {
+                          "center": "U",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "loop": {
+                    "start": "B",
+                    "steps": [
+                      {
+                        "to": "A",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "B",
+                        "arc": {
+                          "center": "W",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lAD",
+              "ownerSegment": "sDA",
+              "text": "12",
+              "unit": "cm",
+              "ownership": "NEAREST",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lAB",
+              "ownerSegment": "sAB",
+              "text": "16",
+              "unit": "cm",
+              "ownership": "NEAREST",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "직사각형과 네 반원, 외접원",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        },
+        "hiddenPointNames": [
+          "O",
+          "T",
+          "R",
+          "U",
+          "W"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "대각선 BD는 원의 지름"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "16"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "16"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "D"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "R",
+              "op": "MIDPOINT",
+              "inputs": [
+                "D",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "U",
+              "op": "MIDPOINT",
+              "inputs": [
+                "C",
+                "B"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "W",
+              "op": "MIDPOINT",
+              "inputs": [
+                "B",
+                "A"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kO",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kT",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "T"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kR",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "R"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "8"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kU",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "U"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kW",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "W"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "8"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [
+          "kO"
+        ],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O",
+          "T",
+          "R",
+          "U",
+          "W"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "aT",
+              "circle": "kT",
+              "center": "T",
+              "from": "D",
+              "to": "A",
+              "side": "CCW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "aR",
+              "circle": "kR",
+              "center": "R",
+              "from": "C",
+              "to": "D",
+              "side": "CCW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "aU",
+              "circle": "kU",
+              "center": "U",
+              "from": "B",
+              "to": "C",
+              "side": "CCW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "aW",
+              "circle": "kW",
+              "center": "W",
+              "from": "A",
+              "to": "B",
+              "side": "CCW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rL1",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "A",
+                    "steps": [
+                      {
+                        "to": "D",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "A",
+                        "arc": {
+                          "center": "T",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "loop": {
+                    "start": "B",
+                    "steps": [
+                      {
+                        "to": "A",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "B",
+                        "arc": {
+                          "center": "W",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "id": "rT1",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "D"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rL2",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "D",
+                    "steps": [
+                      {
+                        "to": "C",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "D",
+                        "arc": {
+                          "center": "R",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "loop": {
+                    "start": "C",
+                    "steps": [
+                      {
+                        "to": "B",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "C",
+                        "arc": {
+                          "center": "U",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "id": "rT2",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "B",
+                    "C",
+                    "D"
+                  ]
+                }
+              ]
+            }
+          ],
+          "equalAreas": [
+            [
+              "rL1",
+              "rT1"
+            ],
+            [
+              "rL2",
+              "rT2"
+            ]
+          ],
+          "expressionLabels": [
+            {
+              "id": "lBD",
+              "ownerSegment": "sBD",
+              "text": "20",
+              "unit": "cm",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "caption": "대각선 BD로 나눈 두 직각삼각형",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        },
+        "hiddenPointNames": [
+          "O",
+          "T",
+          "R",
+          "U",
+          "W"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "직사각형의 대각선 BD는 외접원의 지름이다. 직각삼각형 ABD에서 두 직각변 위의 반원 넓이의 합과 빗변 위의 반원(원의 절반) 넓이가 같으므로, 파란색 두 초승달의 넓이의 합은 삼각형 ABD의 넓이와 같다. 주황색 두 초승달도 삼각형 BCD와 같다."
+}

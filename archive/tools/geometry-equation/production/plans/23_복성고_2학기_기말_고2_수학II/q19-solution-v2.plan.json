@@ -1,0 +1,105 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8"
+        ]
+      },
+      {
+        "coefficients": [
+          "8",
+          "12",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "8"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 8
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 24
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2"
+      ],
+      "y": [
+        "8",
+        "16",
+        "24"
+      ]
+    },
+    "functionName": "g",
+    "nameVariable": "t",
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-2",
+        "to": "0",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "S_2"
+      }
+    ]
+  },
+  "caption": "적분 구간에서 g(t) 아래의 두 영역을 구간별로 합한다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "−2≤t≤0에서 g(t)=8이다.",
+      "mappedTo": "첫 번째 영역"
+    },
+    {
+      "id": "S2",
+      "condition": "0≤t≤2에서 g(t)=−t³+12t+8이고 g(0)=8로 이어진다.",
+      "mappedTo": "두 번째 영역"
+    }
+  ],
+  "newVisualInformation": [
+    "적분 구간 [−2,2]를 두 부분으로 나누고, 양의 그래프 아래 넓이를 각각 표시한다."
+  ],
+  "sourceQuote": "$g(t)=8$이다.",
+  "coordinatePlacement": "PANEL"
+}

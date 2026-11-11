@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "12",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "3*(x+2)^2",
+    "functionName": "h",
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": -3,
+        "y": 3
+      },
+      {
+        "id": "M",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "Q",
+        "x": 1,
+        "y": 27
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "P",
+    "M",
+    "Q"
+  ],
+  "caption": "도함수의 x에 따른 이차식 부분 h(x)=3(x+2)²는 x=−2에서 최솟값 0을 갖는다. 실제 도함수에는 상수 k−12가 더해진다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f′(x)=3(x+2)²+k−12이므로 x에 따른 이차식 부분은 h(x)=3(x+2)²이고 최솟값은 x=−2에서 0이다.",
+      "mappedTo": [
+        "graphPlan.formula",
+        "graphPlan.functionName",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "문제의 구간 [−3,1]은 x=−2를 포함하므로 도함수의 최솟값은 k−12이다. 증가 조건은 k−12≥0이다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도함수에서 x에 따라 달라지는 이차식 부분의 최솟점이 구간 안에 있음을 보여 준다."
+  ],
+  "sourceQuote": "12. 함수 $f(x)=x^3+6x^2+kx-1$이 닫힌구간 $[-3, 1]$에서 증가하도록 하는 상수 $k$의 최솟값은? [4.8점]"
+}

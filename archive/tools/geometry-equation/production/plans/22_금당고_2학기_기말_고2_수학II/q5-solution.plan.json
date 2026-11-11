@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "곡선 $y=-x^2+2x$와",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -0.5,
+      2.5,
+      -0.5,
+      2.5
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": []
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "1",
+          "y": "1",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cl",
+          "point": "V",
+          "text": "y=f(x)",
+          "direction": "N",
+          "labelKind": "MATH"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "under": "f",
+        "from": "0",
+        "to": "2"
+      }
+    ]
+  },
+  "caption": "두 교점 사이에서 곡선이 축 위에 있어 넓이를 정적분으로 구하는 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 교점 사이에서 곡선이 축 위에 있어 넓이를 정적분으로 구하는 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 교점 사이에서 곡선이 축 위에 있어 넓이를 정적분으로 구하는 관계."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "자리",
+        "points": [
+          {
+            "id": "A",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "3",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "4",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "5",
+            "hideName": true
+          },
+          {
+            "id": "F",
+            "value": "6",
+            "hideName": true
+          },
+          {
+            "id": "G",
+            "value": "7",
+            "hideName": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "E"
+          },
+          {
+            "from": "B",
+            "to": "F",
+            "side": "BELOW"
+          },
+          {
+            "from": "C",
+            "to": "G"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "자리 차가 4인 세 쌍"
+  },
+  "caption": "a와 f의 자리 차가 4가 되려면 가능한 자리쌍은 앞에서부터 네 칸 떨어진 세 쌍이다. 각 쌍마다 두 문자의 순서와 나머지 다섯 문자의 배열을 곱한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a와 f 사이에 세 문자가 있다.",
+      "mappedTo": [
+        "자리"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "일곱 자리 중 a와 f가 차지할 수 있는 세 자리쌍을 수직선에서 확인한다."
+  ]
+}

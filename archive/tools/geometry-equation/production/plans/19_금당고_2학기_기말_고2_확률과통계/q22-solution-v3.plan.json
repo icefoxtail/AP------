@@ -1,0 +1,68 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "m",
+        "sd": "σ",
+        "label": "m",
+        "meanLine": false
+      }
+    ],
+    "ticks": [
+      {
+        "z": "-0.52",
+        "text": "3"
+      },
+      {
+        "z": "0.25",
+        "text": "80"
+      }
+    ],
+    "zAxis": true,
+    "span": "5/2",
+    "shades": [
+      {
+        "from": null,
+        "to": "3",
+        "color": "BLUE"
+      },
+      {
+        "from": "3",
+        "to": "80",
+        "color": "WARM"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.3",
+        "source": "TABLE"
+      },
+      {
+        "shade": 1,
+        "text": "0.3",
+        "source": "TABLE"
+      }
+    ],
+    "xLabel": "x"
+  },
+  "caption": "표준화 눈금에서 3의 왼쪽과 3부터 80까지의 넓이가 각각 0.3임을 본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P(X≤3)=0.3이고 P(3<X≤80)=0.3이다.",
+      "mappedTo": "정규곡선의 두 같은 넓이 구간"
+    },
+    {
+      "id": "c2",
+      "condition": "3<m<80이고 표준화 점수는 각각 −0.52와 0.25이다.",
+      "mappedTo": "x축의 경계 눈금, 평균 m의 꼭짓점, 아래 z 눈금"
+    }
+  ],
+  "newVisualInformation": [
+    "3에서 왼쪽 누적 영역과 3부터 80까지의 영역이 각각 0.3임을 표준화 눈금과 함께 나타냄"
+  ]
+}

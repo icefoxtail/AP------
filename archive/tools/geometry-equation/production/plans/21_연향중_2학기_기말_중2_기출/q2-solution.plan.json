@@ -1,0 +1,35 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "p",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "확률",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "확률 p가 될 수 있는 값은 0 이상 1 이하이다. 끝값 0과 1도 포함한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "확률의 범위",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "확률이 0 이상 1 이하이고 끝값을 포함함을 보인다"
+  ]
+}

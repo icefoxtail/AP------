@@ -662,6 +662,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 **오류와 한계.** 벤다이어그램 집합 4개 이상, 소속 표 집합 5개 이상, 열 4개 이상, 열당 원소 9개 이상, 벤다이어그램·소속 표 원소 13개 이상은 지원하지 않는다(`SET_COUNT_UNSUPPORTED`, `MAPPING_COLUMN_COUNT_UNSUPPORTED`, `MAPPING_TOO_MANY_ELEMENTS`, `SET_TOO_MANY_ELEMENTS`). 집합을 `{x|x≤10}` 같은 무한집합·구간 기호로 직접 쓰지 말고, 문제가 말한 유한 원소만 `elements`에 넣는다. 원소 글자가 영역에 들어갈 자리가 없으면 `SET_ELEMENT_NO_ROOM`/`SET_LABEL_NO_ROOM`, 집합 이름이 들어갈 자리가 없으면 `SET_LABEL_NO_ROOM`이니 원소 수나 집합 수를 줄인다. 대응도의 화살표가 다른 원소 글자를 가로지르면 `MAPPING_ARROW_BLOCKS_LABEL`, 원소 글자가 타원 밖으로 나가면 `MAPPING_ELEMENT_OUT_OF_OVAL`이다. 정답을 그림에 쓰지 말고 풀이에서 쓰는 값·영역·대응만 표시한다.
 
+**한 영역에 원소가 여럿일 때 (EXT-20261111, 21 매산고 고1 2학기 중간 q14·q19).** 같은 영역의 원소 글자가 하나씩 놓아서는 자리가 안 나오거나(`SET_ELEMENT_NO_ROOM`) 원 선에 너무 붙으면(`SD_ELEMENT_REGION:<번호>`, 관측기 기준 선과 2.5px 이상 떨어져야 한다) 엔진이 그 영역의 원소를 **함께** 가운데 정렬한 줄로 쌓아 놓는다(plan 순서대로 위에서 아래, 한 줄에 하나씩 안 되면 한 줄에 둘, 셋). 하나씩 놓아 통과하던 plan은 그대로(바이트 동일)다. 단일 집합 안에 긴 화살표 사슬 두 줄(`1→4→2→1`, `3→5→6→3`, `math:true`), 두 원의 교집합(렌즈) 안에 한글 글자 두 개(`최대점`, `최소점`)가 이렇게 들어간다(골든 `item152setrowsq14`·`item153setlensq19`). 줄로 쌓아도 안 들어가는 영역(원 하나에 긴 사슬 여섯 줄 등)은 여전히 `SET_ELEMENT_NO_ROOM`이니 원소를 줄이거나 짧게 쓴다. 정답 값(최댓값, 구하는 a·b)은 원소 글자에 쓰지 않고 `최대점`처럼 이름으로 쓴다.
+
 ### 3-13. 삼각함수 일반형: 진폭·주기·평행이동, π 계수, 탄젠트 가지: `ratePi`, `phase`, `keyPoints`, `axisTickPi`
 
 `y=a·sin(bx+c)+d`처럼 **b가 π의 유리수 배수이거나 c가 π의 배수·라디안인** 사인·코사인·탄젠트 그래프, 그리고 여러 주기를 한 그림에 보이는 풀이에 쓴다. 기본 한 주기·π 구간 문법(3-2, 3-7)은 그대로 두고 아래 필드만 더한다.
