@@ -91,3 +91,11 @@
 - **판정 원장 `meta-judgment-ledger-v1`(시험지 하나에 파일 하나):** 최상위 `schemaVersion`, `judge`(`pass1`|`pass2`), `createdAt`, `sourceArchiveFile`(목록 값 그대로), `items[]`. 문항마다 `ordinal`, `questionUid`, `primaryMethod`(핵심 풀이 한 문장), `decisiveStep`(결정 단계 한 문장), `rpmPath{majorUnit, midUnit, l3, l4}`, `crossConceptKeys[]`, `conditionKeys[]`, `integrationPattern`, 그리고 목록에서 단원·소단원이 빈 문항에만 `standardUnitKey`, `subUnitKey`. 키는 저장소가 내보낸 선택지 표에 있는 값만 쓰고, 맞는 값이 없거나 판정할 수 없으면 값을 비우고 `hold`에 사유를 적는다.
 - **아직 없는 것(Codex 1단계에서 만든다):** 빈 메타 목록·선택지 표를 내는 `list-missing-meta.mjs`, 원장 두 개를 대조해 v2 요청을 만드는 `build-meta-request.mjs`. 이 둘이 병합된 뒤에 분류 판정을 시작한다.
 - **이 계획 밖:** 소단원 값과 필드 승인은 있으나 문항 상태가 의미 검토 대기라 카탈로그가 빼는 문항이 약 11,800개 있다(`archive/tools/build-archive2-catalog.mjs`의 소단원 승인 조건). 값을 채울 일이 아니라 화면 규칙 결정이다.
+
+## CURRENT — 소단원 묶음표: 같은 내용의 소단원 키를 하나로 보여 주고 고른다 (2026-11-11, 사용자 결정)
+
+- **무엇:** `archive/data/archive2-subunit-groups.json`. 같은 통합 단원(subject + unitKey) 안에서 한 소단원으로 보여 주고 선택하는 `subUnitKey` 묶음이다. 기존 키·정본 값(`question_metadata.json`), 크로스워크, `sealed-digests`, 카탈로그는 바꾸지 않는다. 표시와 선택에만 쓰고 표에 없는 키는 자기 자신이 하나의 묶음이다. 이유: 같은 내용이 2015·2022 키, 표기, 단원 번호 때문에 여러 풀로 갈라져 소단원 평가가 모이지 않았다.
+- **원천과 도구:** 사람이 문항 발문을 읽고 정한 판정은 `archive/data/meta-os/subunit-group-rules.json`이 소유한다. 표는 `node archive/tools/meta-os/build-subunit-groups.mjs`로 만들고 `--check`로 같은지 본다. 표를 손으로 고치지 않는다. 새 묶음은 규칙 파일에 판정을 추가해 다시 만든다. 새 키가 정본에 생겨도 `--check`는 실패하지 않고 미분류(자기 묶음) 키 수만 센다.
+- **묶음 종류:** `subunit`(소단원, 이름은 마스터 표 `labelKo`이고 2022 체계 키가 있으면 그 이름), `unit_general`(`...-CORE` 같은 넓은 키, 쪼갠 키와 묶지 않음, 이름 "단원 일반"), `unit_other`(마스터 표에 없는 임시 키 중 분명한 마스터 소단원이 없는 것, 이름 "기타"), `excluded`(문제 번호가 키가 된 `...-P152-Q04` 류, 소단원 평가 제외).
+- **묶는 기준:** 이름·내용이 사실상 같을 때만 묶는다. 삼각함수 정의와 삼각함수 기본처럼 범위가 다르면 묶지 않고, 확신이 없으면 따로 둔다. 키마다 실제 문항 2~3개의 발문을 읽어 같은 내용인지 확인한 묶음만 `reviewed: true`다.
+- **검사:** `tests/meta-os-subunit-groups.test.mjs`(한 키는 통합 단원당 한 묶음, 표의 키가 정본에 있음, 라벨 한글·비어 있지 않음, 종류별 규칙, `--check` 일치). 운영 데이터의 정확한 개수는 고정하지 않는다.
