@@ -256,10 +256,11 @@
 
   /* ------------------------------------------------------------------ 장면 상태 (탭·단계) */
   function baseCtx(s, lab, thumb) {
-    const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
+    const lesson = !thumb && !!(s.lessonOn || s.lessonEntry);
+    const tab = thumb ? 'explore' : lesson && s.lessonEntry ? 'review' : (lab && lab.tab) || 'explore';
     const problem = !thumb && tab === 'problem';
     const review = !thumb && tab === 'review';
-    return { tab, problem, review, step: review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
+    return { tab, problem, review, step: lesson && s.lessonEntry ? 0 : review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: !lesson && (tab === 'explore' || thumb), lesson };
   }
   const showAt = (C, n) => C.step >= n;
 
@@ -353,8 +354,12 @@
     const A = D.anim;
     // Some questions have their own generated conditions. Their review must use
     // those same conditions while the exploration keeps its adjustable example.
-    const modelFor = (s, review) => { const M = D.model(s); return review && D.reviewModel ? D.reviewModel(M, s) : M; };
-    const reviewSteps = (s) => (D.reviewSteps || D.steps)(modelFor(s, true), s);
+    const modelFor = (s, review) => {
+      const M = D.model(s);
+      if (s.lessonOn || s.lessonEntry) return D.lessonModel ? D.lessonModel(M, s) : s.cnLessonProblem && D.reviewModel ? D.reviewModel(M, s) : M;
+      return review && D.reviewModel ? D.reviewModel(M, s) : M;
+    };
+    const reviewSteps = (s) => ((s.lessonOn || s.lessonEntry) && !s.cnLessonProblem ? D.steps : D.reviewSteps || D.steps)(modelFor(s, true), s);
     const keyOf = (s, M = D.model(s)) => D.prob ? D.id + '|' + D.prob(M, s).key + '|' + (s.cnSeed || 0) : '';
     const actions = A ? () => [
       {
@@ -367,7 +372,7 @@
     ] : undefined;
     return {
       id: D.id, title: D.title, short: D.short || D.title, cn: D,
-      question: D.question,
+      question: (s) => (s.lessonOn || s.lessonEntry) && D.lessonQuestion ? D.lessonQuestion(modelFor(s, true), s, D.prob ? D.prob(D.model(s), s) : null) : typeof D.question === 'function' ? D.question(s) : D.question,
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
@@ -386,6 +391,7 @@
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
+        if (s.lessonOn || s.lessonEntry) return false;
         let again = false;
         if (A && s.playing) {
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));
@@ -400,9 +406,10 @@
       view: (s, lab) => {
         if (lab) curLab = lab;
         if (lab && lab.s === s && document.body) document.body.dataset.cnScene = D.id;
+        const C = baseCtx(s, lab, false);
+        if (C.lesson) return { guide: '문제의 조건을 확인하고 ▶ 해설을 시작해 보세요.', card: null, readouts: [], formula: null, rule: null, status: null, alert: null, notes: null, chips: [] };
         const key = keyOf(s);
         if (s.cnQuestionKey !== key) { s.cnQuestionKey = key; s.cnPick = null; s.revealed = false; s.step = 0; }
-        const C = baseCtx(s, lab, false);
         // Review selects a complete construction stage; exploration keeps continuous playback.
         if (C.review && A && D.stepT) { s[A.key] = clamp(D.stepT(C.step, modelFor(s, true)), 0, 1); s.playing = false; }
         const M = modelFor(s, C.review);
@@ -417,7 +424,7 @@
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
         const M = modelFor(s, C.review);
-        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.review ? clamp(D.stepT(C.step, M), 0, 1) : 1)) : 1;
+        C.t = A ? (C.lesson || C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.review ? clamp(D.stepT(C.step, M), 0, 1) : 1)) : 1;
         D.draw(b, s, M, C);
       }
     };

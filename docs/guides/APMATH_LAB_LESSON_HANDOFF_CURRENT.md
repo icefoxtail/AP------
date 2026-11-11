@@ -49,8 +49,8 @@
 | `g7-area` 다각형의 넓이 | 14 | 14 / 30 | **RELEASED_QA_PENDING** · [PR #1755](https://github.com/icefoxtail/AP------/pull/1755), merge `68060cca4e6f89edaa806b7b5cafaafe102290e3`. 최소 검사 102/102, 누락 0. Pages run 42966828800 성공, 실제 HTML·7모듈 8/8 소스 일치 |
 | `g7-parallel` 평행선의 성질 | 12 | 12 / 29 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1757](https://github.com/icefoxtail/AP------/pull/1757), merge `22cad5a7005bc7ddedc0ab17fb760f4605b11dae`. 최소 검사 86/86, 누락 0. Pages 등록 작업 대기 |
 | `g7-points-lines` 점과 직선 | 24 | 24 / 63 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1758](https://github.com/icefoxtail/AP------/pull/1758), merge `87861a8b40debf3eb8e69153426721298e519e6d`. 최소 검사 120/120, 누락 0. Pages 등록 작업 대기 |
-| `g7-spatial` 공간 위치 관계 | 27 | 27 / 62 | **IMPLEMENTED / QA_PENDING** · 신규 27장면/62해설, 누락 0. 최소 검사 102/102. `feat/lessons-g7-spatial`, PR·main·Pages 확인 예정 |
-| `g7-construction` 작도와 합동 | 23 | 0 | 미착수 (§5-3) |
+| `g7-spatial` 공간 위치 관계 | 27 | 27 / 62 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1760](https://github.com/icefoxtail/AP------/pull/1760), merge `16460f7381b3ca9df8ee80934a2096e588fad380`. 최소 검사 102/102, 누락 0. 실제 학생 HTML은 이전 버전 |
+| `g7-construction` 작도와 합동 | 23 | 구현 중 | `feat/lessons-g7-construction`, 필요한 네 번째 해설 지원 키트 PR #1762 반영 후 제작 중 (§5-3) |
 | 중2 4개 · 중3 2개 | 247 | 0 | 미착수, 선행 확인 필요 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
 
@@ -238,6 +238,13 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+
+- 2026-11-11 · 작도에서 구별되는 네 질문을 각각 재생하기 위한 공통 키트 [PR #1762](https://github.com/icefoxtail/AP------/pull/1762) 정상 main 병합. head `7d855555fe4a4dbdddac9ec8710ebe1b1fc3f1ac`, merge `0eb89d192b650112782a1eb80b1c44f158fde0ec`. 네 번째 버튼·`play=4`·다음 해설을 지원한다. 라벨/정답 조기공개/형제 상태 초기화/장 길이 검사는 유지하며 다섯 해설은 거부한다. video 40/40, 겉넓이·부피/다면체 실제 등록·Board 4/4, JS/MJS 3파일 구문 통과. 전체 모바일 QA NOT_RUN, Pages 별도 확인. 작도 내용 브랜치에 fast-forward 반영했다.
+- 2026-11-11 · 공간 위치 관계 [PR #1760](https://github.com/icefoxtail/AP------/pull/1760) **main 운영 병합 완료**. head `c3029bdda2542c4c438ca845e43cff1a15e9c250`, merge `16460f7381b3ca9df8ee80934a2096e588fad380`. 이후 main `577c5739b3f67185c0483a2415e46ecd2d8a32ef`에 merge가 포함되고 대상 파일 차이가 없음을 확인했다. 27장면/62해설, 최소 검사 102/102, JS/MJS 15파일 구문 통과, 실제 Board 186상태. 실제 학생 HTML은 HTTP 200·기존 4862 bytes이며 lesson/player 연결이 없어 **Pages NOT_VERIFIED / QA_PENDING**이다. 전체 모바일 NOT_RUN. 중1 main 등록 **259/282장면·473해설**, 마지막 미구현 `g7-construction` 23장면 제작을 시작했다.
+- 2026-11-11 · [AWCR r13](https://drive.google.com/file/d/1NPYuuVli991wDptL1BHNW8lcqKDgfSo-/view) 원격 저장·raw 재조회 완료. SHA-256 `7d7ebfb5831bac372e830ba2cd6bd9c86a59951e8d8df363a58dca28ccd6f6fd`, parent r12 `fe67a6bb29ececdb999aa98a27310889be1b4c872009ad4df9a759d883c80a91` 결속 확인. 공간 위치 관계까지 MAIN_MERGED, 원·겉넓이·다면체·회전체·다각형·넓이 6개 RELEASED_QA_PENDING. 다음 revision r14는 충돌 재확인 후 저장한다.
+- 2026-11-11 · 배포 등록 작업 [42967549440/job130348176135](https://github.com/icefoxtail/AP------/actions/runs/42967549440/job/130348176135)은 **필수 등록 검증 실패로 게시 중단**. run head는 `22cad5a...`이나 실제 inputSha는 `87861a8b40debf3eb8e69153426721298e519e6d`였다. `verify-registered-consumer-approval.sh`의 `reviewedFinal`이 Archive 문항 `assignment_missing`으로 실패하여 `registrationReady=false`, `publishable=false`; test job은 skipped다. 이전 source 교체만으로 설명하지 않으며, AP Math 해설 변경으로 발생했다는 근거는 없어 원인 귀속은 미확정이다. 별도 step summary 크기 제한 초과도 있었으며 등록 실패와 구분한다. 새 writer 42970514545와 Pages 42970224073은 조회 시 queued로 해결 또는 배포 성공을 주장하지 않는다. CI·등록 기준은 변경하지 않았다.
+- 2026-11-11 · 작도 제작 중 실행 환경이 끊기고 이전 로컬 스냅샷으로 돌아오는 장애가 있었다. 원격 main과 브랜치에서 복구했으며 이미 병합한 실험실은 재제작하지 않았다. 미커밋 작도 연결부를 실제 파일과 대조해 복원했고 검증된 단위부터 다시 원격 보존한다. 복구 시 main `65aa4dae846d4121f034005f1e20678545c80669`의 추가 변경은 Archive 자료이며 AP Math 및 필독 문서와 겹치지 않았다. AWCR r13 원격 SHA를 정본으로 유지한다.
 
 - 2026-11-11 · `g7-spatial` **27장면/62해설 신규 구현 완료**, 누락 0. main `87861a8b40debf3eb8e69153426721298e519e6d`에서 신규 브랜치로 제작하고 정상 단위마다 원격 보존했다. 최소 검사 102/102, JS/MJS 15파일 구문 통과. **IMPLEMENTED / QA_PENDING**, PR·main·Pages 확인 예정. 다음은 중1의 마지막 미구현 실험실 `g7-construction` 23장면이다.
 
