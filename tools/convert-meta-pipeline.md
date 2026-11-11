@@ -25,4 +25,6 @@ batch.json 예시(입력 파일은 절대 경로 사용):
 
 `manifestType: META_AUDIT_ATOMIC_PACKAGE`인 실제 SOP v1.2 및 `ALIVE_META_AUDIT_ATOMIC_PACKAGE_v3` 입력은 감사·매니페스트·분류 원본을 보존하면서 파일 식별자·감사 SHA·승인 상태·전체 순번·UID·PT/TPL/CrossConcept 일치를 검사한다. 이 형식의 등록기용 메타 proof가 아직 준비되지 않은 경우 변환기는 메타 변경이 없는 access-only 요청을 내며, `metadataReviewed: false`와 `NOT_VERIFIED`를 기록한다. 공식 Action의 후보완 수납은 정본 메타 등록이나 검수 통과가 아니다. SHA·UID·감사/분류 불일치는 계속 차단한다.
 
+감사 제목에 없는 `c` 접미사가 production 파일명에만 붙은 경우 `auditedExamAlias`를 명시할 수 있다. 세 입력의 감사 제목이 이 별칭과 정확히 같고, source SHA·UID·순번과 해설 이외의 학생 필드가 모두 일치할 때만 access-only 요청을 만든다. 해설 필드의 차이는 parity와 후보완에 남긴다.
+
 검증 명령: `node --test tests/convert-meta-pipeline.test.mjs`.
