@@ -149,7 +149,7 @@
     model: (s) => { const t = clamp(Math.round(s.smRt), 1, 2); return { ...rtGeo(9 * t, 16 * t), t, AB: 15 * t, AC: 20 * t, BCl: 25 * t, AH: 12 * t, S: 150 * t * t }; },
     geo: (M) => rtGeo(9 * M.t, 16 * M.t), pgeo: (pk) => rtGeo(9 * pk.t, 16 * pk.t),
     hi: (M, C) => ({ big: C.review && C.step >= 1, ah: C.review && C.step >= 2 ? 'amber' : null }),
-    labels: (M, g, C) => ({ AB: String(M.AB), AC: String(M.AC), BC: String(M.BCl), AH: String(M.AH), cAB: 'sky', cAC: 'green', cBC: 'ink', cAH: 'amber' }),
+    labels: (M, g, C) => ({ AB: String(M.AB), AC: String(M.AC), BC: String(M.BCl), AH: C.lesson && !C.answer ? 'AH' : String(M.AH), cAB: 'sky', cAC: 'green', cBC: 'ink', cAH: 'amber' }),
     plabels: (pk, g) => (pk.kind === 0 ? { AB: String(15 * pk.t), AC: String(20 * pk.t), BC: String(25 * pk.t), AH: 'x', cAH: 'amber', cAB: 'sky', cAC: 'sky', cBC: 'sky' } : { AB: String(15 * pk.t), AC: String(20 * pk.t), AH: String(12 * pk.t), BC: 'x', cBC: 'amber', cAB: 'sky', cAC: 'sky', cAH: 'sky' }),
     cap: (M, C, st) => (st >= 3 ? `AB × AC = BC × AH → ${M.AB} × ${M.AC} = ${M.BCl} × AH → AH = ${M.AH}` : st >= 2 ? `넓이 = ${M.BCl} × AH ÷ 2` : st >= 1 ? `넓이 = ${M.AB} × ${M.AC} ÷ 2 = ${M.S}` : ''),
     steps: (M) => [
