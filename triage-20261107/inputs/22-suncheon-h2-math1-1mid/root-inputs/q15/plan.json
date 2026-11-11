@@ -1,0 +1,171 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "$\\sin\\theta+\\cos\\theta=-\\frac45$ and $\\sin^2\\theta+\\cos^2\\theta=1$",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "rational",
+            "numerator": "4",
+            "denominator": "5"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "INTERSECTION",
+        "inputs": [
+          "L",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "X"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "D",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "X"
+          ],
+          "sign": -1
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "U",
+    "D"
+  ],
+  "displayCircles": [
+    "C"
+  ],
+  "displayLines": [
+    "L"
+  ],
+  "displaySegments": [],
+  "hiddenPointNames": [
+    "U",
+    "D"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "L",
+      "form": "GENERAL"
+    }
+  ],
+  "accessibilityDescription": "좌표합 조건을 나타내는 직선과 단위원의 두 교점을 함께 나타내며, 두 좌표의 순서를 바꾼 두 경우를 구별한다.",
+  "caption": "좌표합이 같은 두 단위원 교점은 서로 좌표를 바꾼 두 경우로 나타난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "근의 합에서 sinθ+cosθ=−4/5이므로 좌표 (cosθ,sinθ)는 x+y=−4/5 위에 놓인다.",
+      "mappedTo": [
+        "mathPlan.nodes.L"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "삼각함수 기본항등식으로 (cosθ,sinθ)는 반지름 1 단위원 위에 놓인다.",
+      "mappedTo": [
+        "mathPlan.nodes.C"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "직선과 단위원의 두 교점은 x축 기준 위·아래의 두 점이며, 정확한 좌표나 p값은 그림에 쓰지 않는다.",
+      "mappedTo": [
+        "mathPlan.nodes.I",
+        "mathPlan.nodes.U",
+        "mathPlan.nodes.D"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "합 조건을 직선으로, 기본항등식을 단위원으로 나타내 두 대칭 교점을 시각화한다."
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "sourceQuote": "$h(k)=\\lfloor\\log_3(k^2+1)\\rfloor$, $0\\le k\\le19$",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "functionName": "h",
+    "axisVariable": "k",
+    "xWindow": [
+      0,
+      19
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          0,
+          "sqrt(2)"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          "sqrt(2)",
+          "2*sqrt(2)"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          "2*sqrt(2)",
+          "sqrt(26)"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3"
+        ],
+        "domain": [
+          "sqrt(26)",
+          "4*sqrt(5)"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4"
+        ],
+        "domain": [
+          "4*sqrt(5)",
+          "11*sqrt(2)"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "5"
+        ],
+        "domain": [
+          "11*sqrt(2)",
+          19
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "0≤k≤19에서 보조 계단함수 h(k)의 정확한 경계와 값을 나타낸다. 원래 합에서는 k=0이 한 번, k=1·2가 각각 두 번, k=3,…,19가 한 번씩 나타난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x²−6x+10=(x−3)²+1이고 k=|n−3|이므로 각 항은 h(k)=floor(log₃(k²+1))이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.axisVariable"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "정수 n=1,…,22에서 k의 범위는 0,…,19이며 k=0은 한 번, k=1,2는 각각 두 번, k=3,…,19는 한 번씩 나타난다.",
+      "mappedTo": [
+        "graphPlan.xWindow",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "log₃(k²+1) 정수 경계 k²+1=3^j에서 정확히 계단값이 증가한다. 여섯 조각은 0≤k≤19의 유한 범위만 나타낸다.",
+      "mappedTo": [
+        "graphPlan.pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정수항을 같은 거리 k에 따라 묶어 읽을 수 있도록 보조 함수의 정확한 계단 경계를 나타낸다."
+  ]
+}

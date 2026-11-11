@@ -1,0 +1,42 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1/9",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "로그부등식의 해"
+  },
+  "caption": "감소하는 밑에서 로그 조건과 x>0 정의역의 교집합을 열린 끝점으로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑 1/3은 1보다 작아 로그함수는 감소한다.",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "c2",
+      "condition": "로그 정의역은 x>0이며 부등식은 x<1/9을 준다.",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "정의역 경계와 부등식 경계를 열린 끝점으로 구분해 해집합을 나타낸다."
+  ]
+}

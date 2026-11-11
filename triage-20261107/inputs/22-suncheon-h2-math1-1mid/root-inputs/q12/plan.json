@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "sourceQuote": "$t=3^x>0$, $9^x+3^{x+1}=t^2+3t$",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "functionName": "h",
+    "axisVariable": "t",
+    "xWindow": [
+      0,
+      4
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3",
+          "1"
+        ],
+        "domain": [
+          0,
+          null
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "jumpValues": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 4,
+        "y": 28
+      }
+    ]
+  },
+  "caption": "치환 변수 t의 열린 반직선 일부를 표시하며, 원문 정의역은 모든 t>0이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "t=3^x이면 t>0이고, 원문의 지수식은 t^2+3t로 바뀐다.",
+      "mappedTo": [
+        "graphPlan.axisVariable",
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원문 정의역은 t>0인 열린 무한 반직선이다. xWindow=[0,4]는 표시창일 뿐 원문 정의역을 제한하지 않으며 t=0은 포함하지 않는다.",
+      "mappedTo": [
+        "graphPlan.pieces[0].domain",
+        "graphPlan.pieces[0].start",
+        "graphPlan.xWindow"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "치환 뒤 양의 정의역의 열린 경계를 보여 주고, 유한 표시창은 원문 정의역과 구분한다."
+  ]
+}

@@ -1,0 +1,1 @@
+UNSUPPORTED · exact pair-of-comparisons requirement cannot be encoded as one supported composite: exp-log-pair-v1 supports a pair of logarithmic-affine rows individually, while composite-panels-v1 currently rejects exp-log-pair panels (COMPOSITE_PLAN_INVALID / PANEL_PLAN_0). Do not replace log₇5 or log₇2 by decimal shifts. No render.

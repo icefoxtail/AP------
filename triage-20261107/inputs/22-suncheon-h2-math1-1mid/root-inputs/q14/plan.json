@@ -1,0 +1,215 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "π/2<θ<π",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "135"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "225"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "315"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+  ],
+  "displayCircles": [
+    "C"
+  ],
+  "displayLines": [
+    "Y"
+  ],
+  "displaySegments": [],
+  "hiddenPointNames": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+  ],
+  "unmarkedPointNames": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+  ],
+  "planeMarks": {
+    "quadrants": [
+      {
+        "id": "q2",
+        "quadrant": 2,
+        "label": "sin+, cos−",
+        "fill": "MEDIUM",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "accessibilityDescription": "좌표축과 단위원을 네 사분면에 걸쳐 표시하고, 원문에서 필요한 사분면 조건만 같은 축척으로 구분한다.",
+  "caption": "제2사분면에서 sinθ와 cosθ의 부호를 나타내는 단위원.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문의 각 범위는 제2사분면으로 한정한다. 그림은 해당 부호를 좌표축에서 보여 주되 절댓값 식을 계산하지 않는다.",
+      "mappedTo": [
+        "planeMarks.quadrants"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "삼각함수 표준 정의에서 단위원 좌표의 x성분은 cosθ, y성분은 sinθ이다. 이 그림의 대각선 점은 사분면 창을 보여 주는 대표점일 뿐 원문 각을 추가로 가정하지 않는다.",
+      "mappedTo": [
+        "mathPlan.realization",
+        "mathPlan.nodes",
+        "planeMarks.quadrants"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 조건에 명시된 사분면 구간을 단위원과 좌표축에 대응시켜 각의 위치와 부호 조건을 분리해서 읽게 한다."
+  ]
+}

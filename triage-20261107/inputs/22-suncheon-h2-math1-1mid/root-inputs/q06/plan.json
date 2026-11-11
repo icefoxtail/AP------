@@ -1,0 +1,236 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "cosθ>0, tanθ<0",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "135"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "225"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "315"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+  ],
+  "displayCircles": [
+    "C"
+  ],
+  "displayLines": [
+    "Y"
+  ],
+  "displaySegments": [],
+  "hiddenPointNames": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+  ],
+  "unmarkedPointNames": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+  ],
+  "planeMarks": {
+    "quadrants": [
+      {
+        "id": "q1",
+        "quadrant": 1,
+        "label": "C+,T+",
+        "fill": "LIGHT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "q2",
+        "quadrant": 2,
+        "label": "C−,T−",
+        "fill": "LIGHT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "q3",
+        "quadrant": 3,
+        "label": "C−,T+",
+        "fill": "LIGHT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "q4",
+        "quadrant": 4,
+        "label": "C+,T−",
+        "fill": "LIGHT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "accessibilityDescription": "좌표축과 단위원을 네 사분면에 걸쳐 표시하고, 원문에서 필요한 사분면 조건만 같은 축척으로 구분한다.",
+  "caption": "단위원 네 사분면의 cosθ와 tanθ 부호를 모두 같은 방식으로 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 cosθ의 부호와 tanθ의 부호를 조건으로 제시한다. 해당 조건은 표시된 네 사분면 부호표에서 함께 판정한다.",
+      "mappedTo": [
+        "planeMarks.quadrants"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "단위원 좌표에서 x=cosθ, y=sinθ이고 tanθ=sinθ/cosθ이다. 네 칸의 C/T 표기는 cosθ/tanθ 부호를 모두 같은 형식으로 표시하는 일반 참고도이며 특정 사분면을 강조하지 않는다.",
+      "mappedTo": [
+        "mathPlan.realization",
+        "mathPlan.nodes",
+        "planeMarks.quadrants"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 조건에 명시된 사분면 구간을 단위원과 좌표축에 대응시켜 각의 위치와 부호 조건을 분리해서 읽게 한다."
+  ]
+}

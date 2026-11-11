@@ -1,0 +1,58 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$a+b=4$, $a\\in[4/9,32/9]$, objective $a(4-a)$",
+  "graphPlan": {
+    "family": "polynomial",
+    "axisVariable": "a",
+    "coefficients": [
+      "0",
+      "4",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "4/9",
+        "32/9"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0.4444444444444444,
+      3.5555555555555554
+    ],
+    "viewport": [
+      0,
+      4.5,
+      0,
+      4.5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "허용된 닫힌 구간에서 objective a(4−a)를 그래프로 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(a+b)=2이면 a+b=4이므로 ab=a(4−a).",
+      "mappedTo": [
+        "graphPlan.coefficients"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "로그 차이 조건에서 a는 닫힌 구간 [4/9,32/9]에 있다.",
+      "mappedTo": [
+        "graphPlan.sourceDomain"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "허용 구간과 objective의 곡선 모양을 함께 보여 주어 구간 안에서의 값 비교를 돕는다."
+  ]
+}

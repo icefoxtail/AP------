@@ -1,0 +1,62 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "sourceQuote": "$y=5^{x+1}-4$",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "5",
+    "shiftX": "1",
+    "coefficients": [
+      "1",
+      "1",
+      "-4"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      0
+    ],
+    "viewport": [
+      -3.5,
+      0.5,
+      -4.5,
+      2.5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "asym",
+          "slope": "0",
+          "intercept": "-4",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "보기 창에서 증가하는 지수곡선과 수평 점근선을 함께 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 함수는 y=5^(x+1)-4이며 정의역은 모든 실수다.",
+      "mappedTo": [
+        "graphPlan.family",
+        "graphPlan.sourceDomain"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "5^(x+1)-4의 수평 점근선은 y=-4이다.",
+      "mappedTo": [
+        "graphPlan.overlays.lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 지수함수와 수평 점근선의 방향 관계를 같은 좌표창에 나타낸다."
+  ]
+}
