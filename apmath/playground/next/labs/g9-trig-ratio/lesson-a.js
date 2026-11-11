@@ -1,0 +1,197 @@
+/* 삼각비 A — 원본 t1–t3의 문제·정확값을 고정한 원클릭 해설.
+ * Source generators and exploration remain unchanged; lesson hooks stage only
+ * the lesson drawing. Browser/mobile visual review is recorded separately.
+ */
+(function () {
+  'use strict';
+  const G = window.APL_TG;
+  if (!G) return;
+  const ids = ['r1-1', 'refAngleSwap', 'r1-2', 'r1-3', 'simRightTri', 'r1-4',
+    'cut3060', 'cut45', 'chainSpecial', 'r2-1', 'r2-2', 'r2-3', 'absSignJudge',
+    'unitCircle', 'whyOuterTan', 'r3-1', 'r3-2', 'trigTableCalc', 'lineSlope'];
+  const defs = Object.fromEntries((window.APL_TG_GROUPS || []).flatMap(g => g.scenes).filter(s => ids.includes(s.id)).map(s => [s.id, s.tg]));
+  const lessons = (window.APL_LESSONS = window.APL_LESSONS || {})['g9-trig-ratio'] = window.APL_LESSONS['g9-trig-ratio'] || {};
+  const S = String.raw, frac = (a, b) => `\\frac{${a}}{${b}}`, tex = v => G.vtex(v);
+  const exact = q => q.choices.find(c => c.ok).t;
+  const choice = q => { const c = q.choices.find(c => c.ok); return c.h != null ? c.h : `$${c.t}$`; };
+  const fixed = (id, accept) => G.fixedQuestion(id, 1, accept);
+  const fnName = { s: 'sin', c: 'cos', t: 'tan' }, role = { a: '대변', b: '이웃변', c: '빗변' };
+  const given = q => Object.entries(q.fig.side || {}).filter(([, v]) => v.t !== 'x').map(([k, v]) => `$${G.sideTag2(q.fig.names, k)}=${v.t}$`).join(', ');
+  const cue = (at, say, step, set) => ({ at, ...(say ? { say } : {}), ...(step == null ? {} : { step }), ...(set ? { set } : {}) });
+  function add(id, label, captions, options = {}) {
+    const initial = {}; defs[id].init(initial); Object.assign(initial, options.initial || {});
+    const q = options.q || fixed(id), ordinal = G.NUM[q.choices.findIndex(c => c.ok)];
+    const answer = options.problem ? ordinal : options.answer;
+    const start = { ...Object.fromEntries(Object.entries(initial).filter(([, v]) => typeof v === 'number')), tgATrace: 0 };
+    const first = { ...Object.fromEntries(Object.entries(initial).filter(([, v]) => typeof v !== 'number')),
+      q, tgSeed: 0, tgLessonProblem: !!options.problem, tgShowAnswer: false, tgCalculationReady: false,
+      tgAQuestion: options.question || '', tgAUseProblemFigure: !!options.useProblem, tgAMode: options.mode || label, tgALine: '' };
+    const motion = options.motion || { tgATrace: 1 };
+    const final = options.problem ? `${choice(q)}이므로 정답은 ${ordinal}이에요.` : captions[5];
+    const item = { label, title: options.title || '기준각과 변의 비 연결', tab: 'review', answer,
+      answerText: options.problem ? `${ordinal} ${choice(q)}` : answer,
+      summary: '기준각을 정하고 같은 삼각형의 변을 짝지어요.',
+      task: '직접 해 보기에서 각과 길이를 바꾸고 같은 방법으로 변의 비를 다시 확인해 보세요.',
+      chapters: [
+        { title: '조건과 기준각', length: 12, start, cues: [cue(0, captions[0], 0, first), { at: .5, to: motion, dur: 4 }, cue(6, captions[1], 2)] },
+        { title: '풀이 전략과 관계', length: 12, cues: [cue(0, captions[2], 3), cue(6, captions[3], 3, { tgCalculationReady: true })] },
+        { title: '계산과 결론', length: 12, cues: [cue(0, captions[4], 3), cue(6, final, q.solution.steps.length, { tgShowAnswer: true, tgALine: options.line || '' })] }
+      ] };
+    (lessons[id] = lessons[id] || []).push(item);
+    return item;
+  }
+  const concept = (id, label, answer, captions, options = {}) => add(id, label, captions, { ...options, answer });
+  function problem(id, label, accept, build) {
+    const q = fixed(id, accept), data = build(q, q.solution.math);
+    return add(id, label, data.captions || data, { ...data, q, problem: true });
+  }
+
+  // The animated stroke follows actual source drawing edges. Table scenes use
+  // their existing grid edges; no unrelated decorative geometry is substituted.
+  function trace(b, s, C, draw) {
+    const t = C.entry || C.step !== 0 ? 0 : G.clamp(s.tgATrace || 0, 0, 1);
+    if (!t) { draw(); return; }
+    const path = b.path, edges = [], seen = new Set();
+    b.path = function (points, options = {}) {
+      if (points.length > 1 && (options.fill || options.width >= 1.5) && edges.length < 3) {
+        const a = points[0], z = points[1], key = `${a.x},${a.y}:${z.x},${z.y}`;
+        if (!seen.has(key)) { seen.add(key); edges.push([a, z]); }
+      }
+      return path.call(this, points, options);
+    };
+    try { draw(); } finally { b.path = path; }
+    for (const [a, z] of edges) G.line(b, a, G.lerp(a, z, t), 'violet', 4.8, { alpha: .8 });
+  }
+  for (const id of ids) {
+    const D = defs[id];
+    D.lessonQuestion = (M, s) => s.tgLessonProblem ? null : s.tgAQuestion || D.question;
+    D.lessonDraw = (b, s, M, C) => {
+      const stage = C.entry ? 0 : C.answer ? s.q.solution.steps.length : Math.min(C.step, s.q.solution.steps.length - 1);
+      if (s.tgLessonProblem || s.tgAUseProblemFigure) {
+        trace(b, s, C, () => {
+          if (id === 'r2-1' && C.answer) {
+            // The source angle problem keeps its x marker. Resolve that marker
+            // only at the lesson conclusion, without mutating the frozen q.
+            G.pdrawRT(b, { ...s.q.fig, angA: { ...s.q.fig.angA, t: `${s.q.solution.math.answer}°` } }, { ...C, review: true, step: stage, last: true });
+          } else D.pdraw(b, s.q, { ...C, review: true, step: stage, last: C.answer }, s);
+        });
+        return;
+      }
+      if (id === 'refAngleSwap') {
+        const ref = C.step >= 3 ? 'B' : 'A';
+        trace(b, s, C, () => G.pdrawRT(b, { a: M.a.v, b: M.b.v, names: { A: 'A', B: 'B', C: 'C' }, reference: ref,
+          side: { a: { t: tex(M.a) }, b: { t: tex(M.b) }, c: { t: tex(M.c) } },
+          angA: ref === 'A' ? { t: 'A', c: 'amber' } : null, angB: ref === 'B' ? { t: 'B', c: 'amber' } : null },
+        { ...C, review: true, step: C.entry ? 0 : Math.min(C.step, 2) }));
+        return;
+      }
+      if (id === 'chainSpecial') {
+        trace(b, s, C, () => G.drawChain(b, M, { problem: true, givenK: 'h', askK: 'bc', g: tex(M.h), review: true, step: Math.max(2, stage), last: C.answer }));
+        return;
+      }
+      const caps = { 'r1-1': 2, 'r1-2': 2, simRightTri: 2, 'r1-4': 2, cut3060: 2, cut45: 2,
+        'r2-1': 1, 'r2-2': 2, 'r2-3': 0, absSignJudge: 2, unitCircle: 3, trigTableCalc: 1 };
+      const step = C.answer ? 4 : Math.min(stage, caps[id] ?? stage);
+      trace(b, s, C, () => D.draw(b, s, M, { ...C, problem: false, review: true, full: false, step,
+        t: D.anim ? s[D.anim.key] : C.t }));
+    };
+    D.lessonAfterDraw = (b, s) => {
+      if (s.tgALine && s.tgShowAnswer && !s.lessonEntry) b.stext(b.W / 2, b.H - 22, s.tgALine,
+        { color: 'green', size: b.W < 560 ? 13 : 16, weight: 800, align: 'center', baseline: 'middle' });
+    };
+  }
+
+  // ① 삼각비의 뜻 — 함수·기준각·주어진 변의 종류를 각각 다룬다.
+  for (const fn of ['s', 'c', 't']) {
+    const num = fn === 'c' ? 4 : 3, den = fn === 't' ? 4 : 5, answer = `$${G.FN[fn]}A=${frac(num, den)}$`;
+    concept('r1-1', `${fnName[fn]} 뜻`, answer, [
+      '직각은 C이고 기준이 되는 각은 A예요.', '맞은편 BC는 3, 이웃한 CA는 4예요.',
+      '직각 맞은편 AB는 빗변이며 길이는 5예요.', `${fnName[fn]}은 ${fn === 'c' ? '이웃변÷빗변' : fn === 't' ? '대변÷이웃변' : '대변÷빗변'}이에요.`,
+      `$${G.FN[fn]}A=${frac(num, den)}$로 길이를 대입해요.`, `따라서 ${answer}예요.`
+    ], { question: `직각삼각형 ABC에서 BC=3, CA=4, AB=5일 때 ${fnName[fn]} A의 값은?` });
+  }
+  function ratioCaptions(q, m) {
+    const f = q.fig, nm = f.names, ref = nm[m.ref], opp = m.ref === 'A' ? 'a' : 'b', adj = m.ref === 'A' ? 'b' : 'a';
+    const num = m.fn === 'c' ? adj : opp, den = m.fn === 't' ? adj : 'c', ss = f.solutionSide;
+    return [`직각은 ${nm.C}, 기준각은 ${ref}예요.`, `주어진 길이는 ${given(q)}예요.`,
+      `대변은 $${G.sideTag2(nm, opp)}$, 이웃변은 $${G.sideTag2(nm, adj)}$예요.`,
+      q.key.split('|')[1] === 'legs' ? `$${G.sideTag2(nm, 'c')}=\\sqrt{${ss.a}^2+${ss.b}^2}$예요.` : `$${G.sideTag2(nm, 'b')}=\\sqrt{${ss.c}^2-${ss.a}^2}$예요.`,
+      `$${G.FN[m.fn]}${ref}=${frac(ss[num], ss[den])}$를 정리해요.`];
+  }
+  for (const [label, kind, radical, fn, ref] of [
+    ['정수 빗변', 'legs', false, 's', 'A'], ['근호 빗변', 'legs', true, 'c', 'B'],
+    ['빗변 주어짐', 'hyp', false, 't', 'B'], ['근호 이웃변', 'hyp', true, 's', 'A']
+  ]) problem('r1-1', label, q => { const m = q.solution.math; return q.key.split('|')[1] === kind && m.fn === fn && m.ref === ref && !Number.isInteger(kind === 'legs' ? m.c : m.b) === radical; }, ratioCaptions);
+
+  concept('refAngleSwap', '두 각 관계', '$\\sin A=\\cos B$', [
+    '직각은 C이며 A와 B의 합은 90°예요.', 'A를 기준으로 BC는 대변, CA는 이웃변이에요.',
+    '기준각을 B로 바꾸면 변의 역할이 서로 바뀌어요.', 'BC는 B의 이웃변이고 빗변 AB는 그대로예요.',
+    '$\\sin A=BC/AB$, $\\cos B=BC/AB$예요.', '따라서 $\\sin A=\\cos B$예요.'
+  ], { question: '직각삼각형에서 기준각을 A에서 B로 바꾸면 sin A와 cos B는 어떤 관계일까요?', line: 'sin A = cos B, cos A = sin B' });
+  concept('refAngleSwap', 'tan 곱', '$\\tan A\\tan B=1$', [
+    'A와 B는 직각삼각형의 두 예각이에요.', 'A를 기준으로 대변은 3, 이웃변은 4예요.',
+    'B를 기준으로 대변은 4, 이웃변은 3이 돼요.', 'tan은 대변을 이웃변으로 나눈 값이에요.',
+    '$\\frac34\\times\\frac43$에서 같은 수를 약분해요.', '따라서 $\\tan A\\tan B=1$이에요.'
+  ], { question: '대변과 이웃변이 바뀔 때 tan A와 tan B의 곱은 얼마일까요?', line: 'tan A × tan B = 1' });
+  const swapForms = [
+    ['sin합', (e, n) => e === `\\sin ${n.A}+\\cos ${n.B}`],
+    ['혼합곱', (e, n) => e === `\\sin ${n.A}\\times\\cos ${n.B}`],
+    ['cos합', (e, n) => e === `\\cos ${n.A}+\\sin ${n.B}`],
+    ['tan곱', (e, n) => e === `\\tan ${n.A}\\times\\tan ${n.B}`],
+    ['sin곱', (e, n) => e === `\\sin ${n.A}\\times\\sin ${n.B}`]
+  ];
+  for (const [label, accept] of swapForms) problem('refAngleSwap', label, q => accept(q.solution.math.expression, q.fig.names), (q, m) => {
+    const n = q.fig.names, c = tex(G.vsqrt(G.vi(m.a * m.a + m.b * m.b)));
+    return [`구하는 식은 $${m.expression}$예요.`, `주어진 두 변은 ${given(q)}예요.`,
+      `빗변은 $\\sqrt{${m.a}^2+${m.b}^2}=${c}$예요.`, `기준각 ${n.A}와 ${n.B}의 대변·이웃변을 바꿔요.`,
+      `$\\sin ${n.A}=\\cos ${n.B}=${frac(m.a, c)}$, $\\cos ${n.A}=\\sin ${n.B}=${frac(m.b, c)}$를 써요.`];
+  });
+
+  for (const fn of ['c', 't']) concept('r1-2', `${fnName[fn]} 찾기`, fn === 'c' ? '$\\cos A=\\frac45$' : '$\\tan A=\\frac34$', [
+    '$\\sin A=\\frac35$가 주어졌어요.', '대변을 3, 빗변을 5로 놓은 닮은 삼각형을 써요.',
+    '나머지 이웃변은 피타고라스 정리로 찾아요.', '$b=\\sqrt{5^2-3^2}=4$예요.',
+    fn === 'c' ? 'cos은 이웃변을 빗변으로 나누어요.' : 'tan은 대변을 이웃변으로 나누어요.',
+    fn === 'c' ? '따라서 $\\cos A=\\frac45$예요.' : '따라서 $\\tan A=\\frac34$예요.'
+  ], { question: `sin A=3/5인 예각 A의 ${fnName[fn]} A를 구해 보세요.` });
+  for (const fn of ['s', 'c', 't']) for (const kind of ['ratio', 'len']) problem('r1-2', `${fnName[fn]}→${kind === 'ratio' ? '비' : '변'}`,
+    q => q.key.split('|')[1] === kind && q.key.split('|')[2] === fn, (q, m) => {
+      const n = q.fig.names, ss = q.fig.solutionSide, a = q.fig.a, b = q.fig.b, c = Math.hypot(a, b);
+      return [`주어진 비 $${q.fig.notes[0].t}$를 확인해요.`, `기준각은 ${n.A}이고 직각은 ${n.C}예요.`,
+        `피타고라스로 세 변의 비 $${a}:${b}:${c}$를 얻어요.`,
+        kind === 'len' ? `빗변은 비의 ${c}에서 실제 길이 ${m.c}로 바뀌어요.` : '길이 자체가 아닌 같은 삼각형의 비를 써요.',
+        kind === 'len' ? `$x=${m.c}\\times${frac(m.ask === 'a' ? a : b, c)}$를 계산해요.` : `$${G.FN[m.fn]}${n.A}=${frac(m.fn === 'c' ? ss.b : ss.a, m.fn === 't' ? ss.b : ss.c)}$예요.`];
+    });
+
+  const chains = { s: S`\frac{BC}{AC}=\frac{DE}{AE}=\frac{FG}{AG}`, c: S`\frac{AB}{AC}=\frac{AD}{AE}=\frac{AF}{AG}`, t: S`\frac{BC}{AB}=\frac{DE}{AD}=\frac{FG}{AF}` };
+  for (const fn of ['s', 'c', 't']) concept('r1-3', `${fnName[fn]} 일정`, `${fnName[fn]}은 크기와 무관`, [
+    '세 직각삼각형은 각 A를 함께 가지고 있어요.', '직각도 같아서 AA 닮음이에요.',
+    '작은 삼각형의 변끼리 먼저 한 쌍을 골라요.', '큰 삼각형에서도 같은 역할의 변을 골라요.',
+    `$${chains[fn]}$가 성립해요.`, `같은 각의 ${fnName[fn]}은 크기와 무관해요.`
+  ], { question: `각 A가 같은 세 직각삼각형의 ${fnName[fn]} A는 크기에 따라 달라질까요?`, initial: { t13t: 45 }, line: `${fnName[fn]} A: 크기가 달라도 같은 비` });
+  for (const askWrong of [false, true]) problem('r1-3', askWrong ? '틀린 식' : '옳은 식', q => q.solution.math.askWrong === askWrong, () => [
+    askWrong ? '이번에는 옳지 않은 식을 골라요.' : '이번에는 옳은 식을 골라요.', '직각과 공통각 A를 가진 세 삼각형을 보아요.',
+    '대변은 BC·DE·FG, 이웃변은 AB·AD·AF예요.', '빗변은 AC·AE·AG로 같은 삼각형끼리 짝지어요.',
+    'sin은 대변÷빗변, cos은 이웃변÷빗변이에요.'
+  ]);
+  concept('simRightTri', '수선의 각', '$\\angle BAH=\\angle C$', [
+    '직각 A에서 빗변 BC에 수선 AH를 내려요.', '삼각형 ABH와 ABC는 각 B를 공유해요.',
+    '두 삼각형에서 나머지 두 각의 합은 90°예요.', '같은 각 B를 빼면 남는 예각도 같아요.',
+    '각 BAH 대신 큰 삼각형의 각 C를 사용해요.', '따라서 $\\angle BAH=\\angle C$예요.'
+  ], { question: '빗변에 수선 AH를 그었을 때 각 BAH는 큰 삼각형의 어느 각과 같을까요?', line: '∠BAH = ∠C, ∠HAC = ∠B' });
+  for (const ref of ['BAH', 'HAC']) for (const fn of ['s', 'c', 't']) problem('simRightTri', `${ref}${fnName[fn]}`,
+    q => q.solution.math.ref === ref && q.solution.math.fn === fn, (q, m) => {
+      const r = tex(G.vsqrt(G.vi(m.p * m.p + m.q * m.q))), atC = ref === 'BAH', num = fn === 'c' ? (atC ? m.q : m.p) : (atC ? m.p : m.q), den = fn === 't' ? (atC ? m.q : m.p) : r;
+      return [`$AB=${m.p}$, $AC=${m.q}$이고 A는 직각이에요.`, '수선 AH가 만든 같은 크기의 각을 찾아요.',
+        `$\\angle ${ref}=\\angle ${atC ? 'C' : 'B'}$예요.`, `$BC=\\sqrt{${m.p}^2+${m.q}^2}=${r}$예요.`,
+        `$${G.FN[fn]}(\\angle ${ref})=${frac(num, den)}$를 계산해요.`];
+    });
+  concept('r1-4', '돌려도 일정', '회전해도 삼각비는 같다', [
+    '같은 직각삼각형을 제자리에서 돌려 보아요.', '화면의 위아래 대신 직각과 기준각 A를 찾아요.',
+    '대변 3, 이웃변 4, 빗변 5의 길이는 그대로예요.', '각 A가 변하지 않으므로 각 변의 역할도 같아요.',
+    '$\\sin A=3/5$, $\\cos A=4/5$, $\\tan A=3/4$예요.', '따라서 회전해도 삼각비는 같아요.'
+  ], { question: '삼각형을 회전하면 같은 각 A의 삼각비는 달라질까요?', motion: { t16r: 100 }, line: '회전해도 대변·이웃변·빗변의 역할은 같다' });
+  for (const kind of ['legs', 'hyp']) for (const fn of ['s', 'c', 't']) problem('r1-4', `${kind === 'legs' ? '두 변' : '빗변'}${fnName[fn]}`,
+    q => q.key.split('|')[1] === kind && q.solution.math.fn === fn, ratioCaptions);
+
+  // GROUP_A_REMAINING
+})();

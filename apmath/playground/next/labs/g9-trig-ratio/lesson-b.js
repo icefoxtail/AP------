@@ -22,9 +22,10 @@
     const final = options.concept ? lines[6] : lines[6] || `따라서 $x=${exact(q)}$, 정답은 ${ordinal}이에요.`;
     const chapters = [
       { title: '조건과 구할 부분', length: 12, start, cues: [
-        { at: 0, say: lines[0], to: { tgBTrace: 1 }, dur: 4, set: { ...sets, q, tgSeed: 0,
+        { at: 0, say: lines[0], step: 0, set: { ...sets, q, tgSeed: 0,
           tgLessonProblem: !options.concept, tgShowAnswer: false, tgCalculationReady: false,
           tgBQuestion: options.question || '', tgBUnknown: options.unknown || '', tgBMode: options.mode || '' } },
+        { at: .1, to: { tgBTrace: 1 }, dur: 4 },
         { at: 6, say: lines[1], step: 1 }
       ] },
       { title: '직각삼각형과 삼각비', length: 12, cues: [
