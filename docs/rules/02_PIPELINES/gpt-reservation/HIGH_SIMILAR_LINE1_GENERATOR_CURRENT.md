@@ -14,7 +14,7 @@
 ## 1. 필독 정본 (회차 시작 시 실제 본문을 연다)
 
 1. `docs/agents/outcome-method-review.md` (공통 판단 계약) — 같은 세션에서 읽은 판본은 재사용.
-2. `docs/agents/exam-pipeline.md`, `docs/agents/metadata.md` — 메타·4칸 공통 계약.
+2. `docs/agents/exam-pipeline.md`, `docs/agents/metadata.md`(특히 "PT·TPL·CrossConcept·Condition·크로스워크 행 확장 원칙"과 "빈 메타 채우기"), `docs/architecture/JS_Archive_Meta_OS_CURRENT.md` — 메타·4칸 공통 계약. 유사 문항 1개의 메타 완성 = Meta OS + 4칸 계약 + 이 문서.
 3. `docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md` — RPM→CrossConcept/Condition/Integration 판정, PT/TPL은 공식 Resolver 결과만.
 4. `docs/rules/02_PIPELINES/gpt-reservation/CREATE_CURRENT.md` §2~§3 — 학생용 작은칠판 해설·정밀 Meta 책임. (예약 공용 README의 Library/Drive stage 변수는 이 라인에 쓰지 않는다. 입력과 인계는 Git이다.)
 5. `docs/rules/02_PIPELINES/해설프로토콜.md` — 칠판 판서형 해설.
@@ -56,7 +56,15 @@
 - 객관식 정답 번호 ①~⑤는 균등 분배(max−min ≤ 1)하고 같은 번호가 3문항 연속되지 않게 한다. 맞추는 방법은 보기 순서 재배열뿐이다. 오답 4개는 서로 다른 실제 오류 경로에서 만든다.
 - 해설은 칠판 판서형으로 쓴다: 조건과 목표 → 공식 선택 이유 → 등호 중심의 단계별 수식 전개 → 부호·구간·경계·보기 판정 → 정답. 그림에서 읽은 값은 해설에 다시 적는다. 줄글 사설 금지.
 - 수식은 전부 `$…$` 또는 `$$…$$`(KaTeX). `\(…\)` 금지.
-- 메타는 유사문항 자체를 풀고 판정한다. 원본 메타 복사로 끝내지 않는다. 키는 저장소의 현행 키·Resolver에 있는 것만 쓰고, 맞는 키가 없으면 추정하지 않고 비운 뒤 `hold`에 사유를 적는다. PT/TPL은 후보(`ptTplCandidate`)로만 쓴다. 난이도는 보수적으로(애매하면 낮은 단계 + 경계 플래그), `primaryMethod`·`decisiveStep`·`difficultyReason`은 문항마다 직접 쓴다.
+- **메타는 비우지 않고 전부 채운다 (사용자 결정 2026-11-11).** 유사문항 자체를 풀고 문항마다 모든 필드를 판정한다. 원본 메타·4칸을 복사해 끝내지 않는다(원본 4칸은 참고만).
+  - **맞는 기존 키가 없으면 비우지 않고 새로 만든다.** 가장 가까운 키에 억지로 붙이지도 않는다. [확장 원칙](../../../agents/metadata.md)(2026-11-02 사용자 결정 (a)~(e))대로 정식 `registryChanges`로 새 PT/TPL/CrossConcept/Condition 키를 만들고, 같은 형태 문항은 그 키를 재사용한다. 새 키의 이름·정의는 특정 시험의 숫자·식 없이 풀이 구조로 일반화해 쓴다.
+  - **크로스워크 행이 없으면(`DIRECT_BINDING_GAP`·`RPM_ONLY`) 행을 덧붙인다.** 문항·해설을 보고 마스터에 있는 RPM 리프를 정해 `archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/<파일>.json`에 `DIRECT_ACTIVE` 행을 추가하고 `summary` 개수를 갱신한다(`docs/agents/metadata.md` "크로스워크 행 확장"). 마스터에 맞는 리프가 없으면 새 리프를 `newKeyProposal`로 제안해 채운다. 이름이 비슷하다고 고르지 않는다.
+  - 근사 키로 때우지 않는다. 가장 가까운 리프로 "근사"한 문항은 허용되지 않는다. 해설이 두 리프 중 하나로 정해지지 않으면 `rpmPrimaryRecordId`로 지목한다.
+  - 메타 작성 도구·절차: `docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md`, `node archive/tools/meta-foundation/stage-meta-bridge.mjs --stage CREATE --input <stage-local decision.json> --out <stage-local evidence.json>`, 방향 원칙은 `docs/architecture/JS_Archive_Meta_OS_CURRENT.md` 0장(새 값은 받아 두고 나중에 묶는다 / 값이 있으면 쓴다 / 추정으로 만들지 않는다).
+  - PT/TPL 최종 값은 공식 Resolver 결과다. 후보(`ptTplCandidate`)에는 실제 키(기존 또는 `registryChanges`로 만든 새 키)를 적는다. null로 두지 않는다.
+  - 4칸(`item4slot`)은 문항마다 발문·해설을 읽고 판정하며, 용어는 `term-dictionary-v1.5.json`에 있는 것만 쓴다. 사전에 없는 용어는 후보로 선언한다(`JS_Archive_Item_4Slot_Term_Contract_CURRENT_v1.md`).
+  - 난이도는 보수적으로(애매하면 낮은 단계 + 경계 플래그), `primaryMethod`·`decisiveStep`·`difficultyReason`은 문항마다 직접 쓴다.
+  - 빈 칸 0이 목표다. 도구·권한 때문에 정말 만들 수 없는 칸만 `hold`에 구체적인 이유와 시도한 것을 적고 PR 본문 첫머리에 별도로 올린다. "맞는 키가 없다"는 이유로 비우는 것은 허용되지 않는다.
 
 ---
 
@@ -65,7 +73,7 @@
 - 문항 수·배점 합이 원본과 같은가. 정답 번호 max−min ≤ 1, 3연속 없음.
 - 문항마다 발문·보기만 보고 다시 풀어 답이 같은가.
 - `.js`가 문법 오류 없이 로드되는가(`node -e` 로 `window` 스텁 후 `require`). 메타·plan이 JSON으로 읽히는가.
-- plan이 문항 수 × 2개 있는가. 메타의 `rpm`이 현행 표의 한 줄인가. 빈 칸마다 `hold` 사유가 있는가.
+- plan이 문항 수 × 2개 있는가. 메타의 `rpm`이 현행 표(또는 새로 낸 `newKeyProposal`)의 한 줄인가. 빈 칸이 0인가(`hold`는 만들 수 없던 칸만, 구체 사유와 함께).
 - 같은 문장이 반복된 `primaryMethod`·`difficultyReason`이 없는가. 한 시험지의 전 문항이 같은 L3·난이도가 아닌가.
 
 ---
@@ -77,5 +85,5 @@
 저장소: icefoxtail/AP------ (세션에 없으면 add_repo로 추가). 브랜치는 main 기준으로 새로 판다.
 먼저 AGENTS.md와 docs/rules/02_PIPELINES/gpt-reservation/HIGH_SIMILAR_LINE1_GENERATOR_CURRENT.md 를 실제로 열어 끝까지 읽고 그대로 따른다.
 요약: (1) 열린 PR/원격 브랜치의 claude/similar-high-* 를 모아 'python3 tools/route_queue_high.py --next-in-line --json --skip ...' 로 이번 시험지 1개를 받는다. (2) 원본을 읽고 STRICT_VARIANT로 유사 JS·메타 JSON·plans를 archive/exams/similar/high/<g>/<term>/ 에 만든다. (3) 자체 점검과 verify_similar_exam.mjs --phase=draft 후, 브랜치 claude/similar-high-<similarStem> 에 push하고 제목 '[HIGH-유사 생성완료] <similarStem>' draft PR을 만든다. 영수증 작성, PR ready 전환, main 병합 금지. 시험지가 없으면 NO_INPUT으로 끝낸다. 이 회차에 시험지는 1개만 처리한다.
-마지막 보고: 시험지명, 문항 수, PR 링크, 읽은 정본/열지 못한 정본, 메타 hold 수와 대표 사유, 난이도 분포(1~5).
+마지막 보고: 시험지명, 문항 수, PR 링크, 읽은 정본/열지 못한 정본, 메타 필드별 채움 수/문항 수, 새로 만든 키 수, hold 수와 사유, 난이도 분포(1~5).
 ```
