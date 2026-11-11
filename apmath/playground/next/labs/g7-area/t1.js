@@ -199,7 +199,7 @@
       }
       if (C.lesson) {
         lessonRow(b, s, areaLesson(s, C) ? `${num(A)}cm²` : '평행사변형');
-        const row = ready(s) ? areaLesson(s, C) ? `${B}×${H}÷2 = ${num(A)}cm²` : '같은 삼각형 두 개로 만든 평행사변형' : ready(s, 'arAreaReady') ? `두 삼각형의 넓이 = ${B}×${H} = ${B * H}cm²` : ready(s, 'arBaseReady') ? `밑변 ${B}cm · 수직인 높이 ${H}cm` : '같은 삼각형을 복사해서 붙여요';
+        const row = ready(s) ? areaLesson(s, C) ? `${B}×${H}÷2 = ${num(A)}cm²` : '같은 삼각형 두 개' : ready(s, 'arAreaReady') ? `${B}×${H} = ${B * H}cm² (두 개)` : ready(s, 'arBaseReady') ? `밑변 ${B}cm · 수직인 높이 ${H}cm` : '같은 삼각형을 복사해서 붙여요';
         foot(b, pt((B + p) / 2, 0), row, ready(s) ? 'green' : 'amber');
         return;
       }
@@ -272,7 +272,7 @@
       }
       if (C.lesson) {
         lessonRow(b, s, areaLesson(s, C) ? `${num(S)}cm²` : '평행사변형');
-        const message = ready(s) ? areaLesson(s, C) ? `(${a}+${B})×${H}÷2 = ${num(S)}cm²` : '같은 사다리꼴 두 개로 만든 평행사변형' : ready(s, 'arAreaReady') ? `두 사다리꼴의 넓이 = ${a + B}×${H} = ${(a + B) * H}cm²` : '윗변과 아랫변을 한 밑변으로 붙여요';
+        const message = ready(s) ? areaLesson(s, C) ? `(${a}+${B})×${H}÷2 = ${num(S)}cm²` : '같은 사다리꼴 두 개' : ready(s, 'arAreaReady') ? `${a + B}×${H} = ${(a + B) * H}cm² (두 개)` : '윗변 + 아랫변 → 새 밑변';
         foot(b, pt((B + a) / 2, 0), message, ready(s) ? 'green' : 'amber', done ? 94 : 64);
         return;
       }
@@ -336,7 +336,7 @@
       if (C.problem) { T(b, pt(0, -y * 0.45), '넓이 ?', { size: 20, color: 'amber' }); return; }
       if (C.lesson) {
         lessonRow(b, s, areaLesson(s, C) ? `${num(A)}cm²` : '직사각형의 절반');
-        const row = ready(s) ? areaLesson(s, C) ? `${X}×${Y}÷2 = ${num(A)}cm²` : '바깥 네 조각과 안쪽 네 조각의 넓이가 같아요' : ready(s, 'arAreaReady') ? `직사각형의 넓이 = ${X}×${Y} = ${R}cm²` : `대각선 ${X}cm, ${Y}cm → 직사각형의 가로와 세로`;
+        const row = ready(s) ? areaLesson(s, C) ? `${X}×${Y}÷2 = ${num(A)}cm²` : '안쪽 네 조각 = 바깥 네 조각' : ready(s, 'arAreaReady') ? `직사각형 ${X}×${Y} = ${R}cm²` : `직사각형: 가로 ${X}cm · 세로 ${Y}cm`;
         foot(b, pt(0, y), row, ready(s) ? 'green' : 'amber', 58);
         return;
       }
@@ -413,7 +413,7 @@
       }
       if (C.lesson) {
         lessonRow(b, s, areaLesson(s, C) ? `${num(A)}cm²` : '넓이가 같아요');
-        const row = ready(s) ? areaLesson(s, C) ? `${B}×${H}÷2 = ${num(A)}cm²` : `밑변 ${B}cm · 높이 ${H}cm가 같으면 넓이도 같아요` : ready(s, 'arAreaReady') ? `밑변×높이 = ${B}×${H} = ${B * H}` : 'AH는 밑변 BC를 늘인 직선에 수직이에요';
+        const row = ready(s) ? areaLesson(s, C) ? `${B}×${H}÷2 = ${num(A)}cm²` : '밑변·높이가 같으면 넓이도 같아요' : ready(s, 'arAreaReady') ? `밑변×높이 = ${B}×${H} = ${B * H}` : 'AH는 BC의 연장선에 수직';
         foot(b, pt((Math.min(0, p) + Math.max(B, p)) / 2, 0), row, ready(s) ? 'green' : 'amber', 58);
         return;
       }
