@@ -861,7 +861,13 @@
      ]
     }
    ],
-   "standalone": []
+   "standalone": [],
+   "labelOverrides": {
+    "H15-SA-01-MULTIPLICATION_FORMULA": {
+     "label": "곱셈 공식의 변형",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 곱셈 공식의 변형이다."
+    }
+   }
   },
   {
    "subject": "COMMON_MATH_1",
@@ -930,7 +936,13 @@
      ]
     }
    ],
-   "standalone": []
+   "standalone": [],
+   "labelOverrides": {
+    "H15-SA-02-IDENTITY": {
+     "label": "항등식",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 항등식(계수 비교)이다."
+    }
+   }
   },
   {
    "subject": "COMMON_MATH_1",
@@ -997,6 +1009,15 @@
   {
    "subject": "COMMON_MATH_1",
    "unitKey": "H22-C-04",
+   "sections": [
+    "복소수",
+    "이차방정식"
+   ],
+   "sectionOf": {
+    "H22-C-04-COMPLEX_BASIC": "복소수",
+    "H22-C-04-COMPLEX_OPERATION": "복소수",
+    "H22-C-04-COMPLEX_ROOT": "이차방정식"
+   },
    "groups": [
     {
      "kind": "subunit",
@@ -1087,12 +1108,33 @@
     "H15-SA-04-EQUATION_BASIC": {
      "label": "방정식의 허근",
      "reason": "마스터 이름 '방정식의 풀이'이나 발문 3개가 x^3=1, x^4+x^2+1=0의 허근을 다룬다."
+    },
+    "H22-C-04-COMPLEX_BASIC": {
+     "label": "복소수",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 복소수의 뜻, 상등, i의 거듭제곱이다."
+    },
+    "H22-C-04-COMPLEX_OPERATION": {
+     "label": "복소수의 연산",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 복소수의 사칙연산과 켤레복소수다."
     }
    }
   },
   {
    "subject": "COMMON_MATH_1",
    "unitKey": "H22-C-05",
+   "sections": [
+    "이차방정식",
+    "이차방정식과 이차함수"
+   ],
+   "sectionOf": {
+    "H15-SA-05-DISCRIMINANT": "이차방정식",
+    "H15-SA-06-ROOT_COEFFICIENT_RELATION": "이차방정식",
+    "H15-SA-05-QUADRATIC_SOLVING": "이차방정식",
+    "H15-SA-05-EQUATION_FUNCTION_RELATION": "이차방정식과 이차함수",
+    "H22-C-05-QUADRATIC_FUNCTION_APPLICATION": "이차방정식과 이차함수",
+    "H22-C-05-QUADRATIC_FUNCTION_GRAPH": "이차방정식과 이차함수",
+    "H22-C-05-FUNCTION_BASIC": "이차방정식과 이차함수"
+   },
    "groups": [
     {
      "kind": "moved",
@@ -1138,6 +1180,21 @@
        "key": "H15-SA-13-QUADRATIC_APPLICATION",
        "basis": "same_master_label",
        "reviewed": true
+      },
+      {
+       "key": "H22-C-05-QUADRATIC_FUNCTION_MAXMIN",
+       "basis": "content_checked",
+       "reviewed": true
+      },
+      {
+       "key": "H15-SA-13-QUADRATIC_MAXMIN",
+       "basis": "content_checked",
+       "reviewed": true
+      },
+      {
+       "key": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+       "basis": "cross_grade_key",
+       "reviewed": true
       }
      ]
     },
@@ -1175,26 +1232,20 @@
        "key": "H15-SA-05-ROOT_COEFFICIENT",
        "basis": "same_master_label",
        "reviewed": true
-      }
-     ]
-    },
-    {
-     "kind": "subunit",
-     "anchor": "H22-C-05-QUADRATIC_FUNCTION_MAXMIN",
-     "keys": [
+      },
       {
-       "key": "H22-C-05-QUADRATIC_FUNCTION_MAXMIN",
-       "basis": "anchor",
+       "key": "H22-C-05-QUADRATIC_EQUATION",
+       "basis": "content_checked",
        "reviewed": true
       },
       {
-       "key": "H15-SA-13-QUADRATIC_MAXMIN",
-       "basis": "same_master_label",
+       "key": "H15-SA-06-ROOT_CONDITION",
+       "basis": "content_checked",
        "reviewed": true
       },
       {
-       "key": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
-       "basis": "cross_grade_key",
+       "key": "H22-C-04-COMPLEX_ROOT",
+       "basis": "content_checked",
        "reviewed": true
       }
      ]
@@ -1237,22 +1288,6 @@
      ]
     },
     {
-     "kind": "subunit",
-     "anchor": "H22-C-05-QUADRATIC_EQUATION",
-     "keys": [
-      {
-       "key": "H22-C-05-QUADRATIC_EQUATION",
-       "basis": "anchor",
-       "reviewed": true
-      },
-      {
-       "key": "H22-C-04-COMPLEX_ROOT",
-       "basis": "content_checked",
-       "reviewed": true
-      }
-     ]
-    },
-    {
      "kind": "unit_other",
      "keys": [
       {
@@ -1269,13 +1304,20 @@
    "standalone": [
     "H15-SA-05-EQUATION_APPLICATION",
     "H15-SA-05-QUADRATIC_SOLVING",
-    "H15-SA-06-ROOT_CONDITION",
     "H22-C-05-FUNCTION_BASIC"
    ],
    "labelOverrides": {
     "H22-C-05-FUNCTION_BASIC": {
      "label": "이차함수의 그래프와 직선의 교점",
      "reason": "마스터 이름 '함수의 뜻과 그래프'이나 발문 26개 중 12개가 이차함수 그래프와 직선의 교점·접점이고 최대·최소는 7개뿐이라 기존 '이차함수의 최대·최소' 묶음과 따로 둔다."
+    },
+    "H22-C-05-QUADRATIC_FUNCTION_APPLICATION": {
+     "label": "이차함수의 최대·최소",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문 5개 중 5개가 제한된 범위에서 이차함수의 최댓값·최솟값이라 '이차함수의 활용'과 '이차함수의 최대·최소'를 한 묶음으로 합쳤다."
+    },
+    "H15-SA-06-ROOT_COEFFICIENT_RELATION": {
+     "label": "이차방정식의 근과 계수의 관계",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. '이차방정식' 묶음의 발문 4개 중 3개가 두 근의 합과 곱이라 근과 계수의 관계 묶음과 합쳤다."
     }
    }
   },
@@ -1466,6 +1508,10 @@
     "H15-SA-08-SYSTEM_INEQUALITY": {
      "label": "연립부등식",
      "reason": "H22-C-06-SYSTEM(마스터 이름 '연립방정식과 연립부등식')의 발문 5개가 모두 연립부등식이라 같은 소단원으로 묶고 이름을 연립부등식으로 쓴다."
+    },
+    "H22-C-06-SYSTEM_OF_EQUATIONS": {
+     "label": "미지수가 2개인 연립이차방정식",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 모두 이차식을 포함한 연립방정식이다."
     }
    }
   },
@@ -1473,6 +1519,22 @@
    "subject": "COMMON_MATH_1",
    "unitKey": "H22-C-07",
    "groups": [
+    {
+     "kind": "subunit",
+     "anchor": "H15-SB-06-COUNTING_PRINCIPLE",
+     "keys": [
+      {
+       "key": "H15-SB-06-COUNTING_PRINCIPLE",
+       "basis": "anchor",
+       "reviewed": true
+      },
+      {
+       "key": "H15-SB-06-COUNTING_APPLICATION",
+       "basis": "content_checked",
+       "reviewed": true
+      }
+     ]
+    },
     {
      "kind": "unit_general",
      "keys": [
@@ -1484,14 +1546,26 @@
      ]
     }
    ],
-   "standalone": [
-    "H15-SB-06-COUNTING_APPLICATION",
-    "H15-SB-06-COUNTING_PRINCIPLE"
-   ]
+   "standalone": [],
+   "labelOverrides": {
+    "H15-SB-06-COUNTING_PRINCIPLE": {
+     "label": "경우의 수",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 기본 원리와 활용 묶음의 발문이 모두 합·곱의 법칙으로 세는 경우의 수라 한 묶음으로 합쳤다."
+    }
+   }
   },
   {
    "subject": "COMMON_MATH_1",
    "unitKey": "H22-C-08",
+   "sections": [
+    "경우의 수와 순열",
+    "조합"
+   ],
+   "sectionOf": {
+    "H22-C-08-PERMUTATION": "경우의 수와 순열",
+    "H22-C-08-COUNTING_PRINCIPLE": "경우의 수와 순열",
+    "H22-C-08-COMBINATION": "조합"
+   },
    "groups": [
     {
      "kind": "subunit",
@@ -1505,6 +1579,11 @@
       {
        "key": "H15-SB-08-COMBINATION_BASIC",
        "basis": "same_master_label",
+       "reviewed": true
+      },
+      {
+       "key": "H15-SB-08-COMBINATION_APPLICATION",
+       "basis": "content_checked",
        "reviewed": true
       }
      ]
@@ -1522,6 +1601,11 @@
        "key": "H15-SB-07-PERMUTATION_BASIC",
        "basis": "same_master_label",
        "reviewed": true
+      },
+      {
+       "key": "H15-SB-07-PERMUTATION_RESTRICTED",
+       "basis": "content_checked",
+       "reviewed": true
       }
      ]
     },
@@ -1537,8 +1621,6 @@
     }
    ],
    "standalone": [
-    "H15-SB-07-PERMUTATION_RESTRICTED",
-    "H15-SB-08-COMBINATION_APPLICATION",
     "H22-C-08-COUNTING_PRINCIPLE",
     "H22-C-08-EQUATION_APPLICATION"
    ],
@@ -1582,7 +1664,13 @@
    ],
    "standalone": [
     "H22-C-09-MATRIX_OPERATION"
-   ]
+   ],
+   "labelOverrides": {
+    "H22-A-09-MATRIX_BASIC": {
+     "label": "행렬",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 행렬의 뜻과 성분이다."
+    }
+   }
   },
   {
    "subject": "COMMON_MATH_1",
@@ -1802,12 +1890,34 @@
    "standalone": [
     "H15-SA-09-LOCUS_RATIO",
     "H15-SA-09-TRIANGLE_CENTROID_AREA"
-   ]
+   ],
+   "labelOverrides": {
+    "H15-SA-09-TRIANGLE_CENTROID_AREA": {
+     "label": "삼각형의 무게중심",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 삼각형의 무게중심의 좌표다."
+    }
+   }
   },
   {
    "subject": "COMMON_MATH_2",
    "unitKey": "H22-C2-02",
    "groups": [
+    {
+     "kind": "subunit",
+     "anchor": "H15-SA-10-PARALLEL_PERPENDICULAR",
+     "keys": [
+      {
+       "key": "H15-SA-10-PARALLEL_PERPENDICULAR",
+       "basis": "anchor",
+       "reviewed": true
+      },
+      {
+       "key": "H22-C2-02-RELATION",
+       "basis": "content_checked",
+       "reviewed": true
+      }
+     ]
+    },
     {
      "kind": "subunit",
      "anchor": "H22-C2-02-LINE_EQUATION",
@@ -1917,9 +2027,7 @@
    "standalone": [
     "H15-SA-10-DISTANCE_ANGLE",
     "H15-SA-10-EQUATION_BASIC",
-    "H15-SA-10-PARALLEL_PERPENDICULAR",
-    "H22-C2-02-INEQUALITY_BASIC",
-    "H22-C2-02-RELATION"
+    "H22-C2-02-INEQUALITY_BASIC"
    ],
    "labelOverrides": {
     "H22-C2-02-EQUATION_APPLICATION": {
@@ -1933,6 +2041,14 @@
     "H22-C2-02-INEQUALITY_BASIC": {
      "label": "직선의 위치와 계수의 범위",
      "reason": "마스터 이름 '부등식의 풀이'이나 발문 3개가 직선이 지나는 사분면 조건에서 미정계수의 범위를 구한다."
+    },
+    "H15-SA-10-DISTANCE_ANGLE": {
+     "label": "점과 직선 사이의 거리",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문 4개가 모두 점과 직선 사이의 거리다."
+    },
+    "H15-SA-10-PARALLEL_PERPENDICULAR": {
+     "label": "직선의 위치 관계",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. '두 직선의 평행과 수직'과 '두 직선의 관계' 묶음의 발문이 모두 평행·수직·평행선 사이 거리라 한 묶음으로 합쳤다."
     }
    }
   },
@@ -2019,6 +2135,10 @@
     "H15-SA-11-EQUATION_APPLICATION": {
      "label": "원의 대칭이동",
      "reason": "마스터 이름 '방정식과 부등식의 활용'이나 발문이 두 원의 대칭 직선을 구하는 문항이다."
+    },
+    "H22-C2-03-TANGENT": {
+     "label": "원의 접선의 방정식",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 원의 접선의 방정식과 접하는 조건이다."
     }
    }
   },
@@ -2124,11 +2244,26 @@
    "standalone": [
     "H15-SA-12-COMPOSITE_TRANSFORMATION",
     "H15-SA-12-TRANSLATION"
-   ]
+   ],
+   "labelOverrides": {
+    "H15-SA-12-REFLECTION": {
+     "label": "대칭이동",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 점·직선·원의 대칭이동이다. 원의 방정식 키 1개를 같은 묶음에 넣었고 이름은 차례의 대칭이동을 쓴다."
+    }
+   }
   },
   {
    "subject": "COMMON_MATH_2",
    "unitKey": "H22-C2-05",
+   "sections": [
+    "집합의 뜻과 포함 관계",
+    "집합의 연산"
+   ],
+   "sectionOf": {
+    "H15-SB-01-SET_BASIC": "집합의 뜻과 포함 관계",
+    "H15-SB-01-SET_COUNT": "집합의 연산",
+    "H15-SB-01-SET_OPERATION": "집합의 연산"
+   },
    "groups": [
     {
      "kind": "moved",
@@ -2728,7 +2863,13 @@
     "H15-SB-02-NECESSARY_SUFFICIENT",
     "H15-SB-02-PROOF",
     "H15-SB-02-PROPOSITION_BASIC"
-   ]
+   ],
+   "labelOverrides": {
+    "H15-SB-02-NECESSARY_SUFFICIENT": {
+     "label": "충분조건과 필요조건",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 충분조건과 필요조건이다."
+    }
+   }
   },
   {
    "subject": "COMMON_MATH_2",

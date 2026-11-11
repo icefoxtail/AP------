@@ -269,6 +269,22 @@ test("구역(section) is an optional heading from the unit's own list; only subu
   assert.equal(scope.groups.find((group) => group.keys.some((entry) => entry.subUnitKey === "H15-SA-08-EQUATION_BASIC")).label, "이차부등식");
   assert.equal(allGroups.get("SG:COMMON_MATH_2:H22-C2-01:MOVED:H22-C-06:H15-SA-08-SYSTEM_INEQUALITY").group.keys[0].subUnitKey, "H15-SA-09-QUADRATIC_INEQUALITY");
   assert.equal(sectionOf("H15-SA-08-SYSTEM_INEQUALITY"), "여러 가지 부등식");
+  // Common math units that merge two middle-level sections of the textbook contents carry sections; sections stay out of 일반·기타.
+  const sectionsOf = (subject, unit) => table.scopes.find((candidate) => candidate.subject === subject && candidate.unitKey === unit).sections;
+  assert.deepEqual(sectionsOf("COMMON_MATH_1", "H22-C-04"), ["복소수", "이차방정식"]);
+  assert.deepEqual(sectionsOf("COMMON_MATH_1", "H22-C-05"), ["이차방정식", "이차방정식과 이차함수"]);
+  assert.deepEqual(sectionsOf("COMMON_MATH_1", "H22-C-08"), ["경우의 수와 순열", "조합"]);
+  assert.deepEqual(sectionsOf("COMMON_MATH_2", "H22-C2-05"), ["집합의 뜻과 포함 관계", "집합의 연산"]);
+  assert.equal(sectionsOf("COMMON_MATH_1", "H22-C-01"), undefined, "a unit equal to one textbook section has no sections");
+});
+
+test("a name that replaces the master name because of the 2022 textbook contents carries that reason", () => {
+  const rules = JSON.parse(fs.readFileSync(path.join(repo, RULES_PATH), "utf8"));
+  let renamed = 0;
+  for (const scope of rules.scopes) for (const override of Object.values(scope.labelOverrides || {})) if (/^2022 교재 차례/.test(override.reason)) renamed++;
+  assert.ok(renamed > 0);
+  assert.equal(allGroups.get("SG:COMMON_MATH_2:H22-C2-03:H22-C2-03-TANGENT").group.label, "원의 접선의 방정식");
+  assert.equal(allGroups.get("SG:COMMON_MATH_2:H22-C2-04:H15-SA-12-REFLECTION").group.label, "대칭이동");
 });
 
 test("a key of another grade sits in a unit only when it is marked cross_grade_key, and the mark is only for such keys", () => {
