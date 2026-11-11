@@ -14,7 +14,7 @@ window.examData = {
         "$\\angle\\mathrm{A}=\\angle\\mathrm{B}$"
       ],
       "answer": "②, ④",
-      "solution": "$overline{AB}=overline{AC}$인 이등변삼각형에서 꼭지각의 이등분선은 밑변을 수직이등분한다.\n따라서 $overline{BD}=overline{CD}$이고 $overline{AD}perpoverline{BC}$이므로 ②, ④가 옳다.\n①, ③, ⑤는 항상 성립하지 않는다. 예를 들어 $overline{AB}$는 직각삼각형 $ABD$의 빗변이므로 $overline{AB}>overline{BD}=overline{CD}$이고, $angle A$는 $angle B$와 같다는 근거가 없다.\n정답은 ②, ④이다."
+      "solution": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형에서 꼭지각의 이등분선은 밑변을 수직이등분한다.\n따라서 $\\overline{BD}=\\overline{CD}$이고 $\\overline{AD}\\perp\\overline{BC}$이므로 ②, ④가 옳다.\n①, ③, ⑤는 항상 성립하지 않는다. 예를 들어 $\\overline{AB}$는 직각삼각형 $ABD$의 빗변이므로 $\\overline{AB}>\\overline{BD}=\\overline{CD}$이고, $\\angle A$는 $\\angle B$와 같다는 근거가 없다.\n정답은 ②, ④이다."
     },
     {
       "id": 2,
@@ -42,7 +42,7 @@ window.examData = {
         "$62^\\circ$"
       ],
       "answer": "①",
-      "solution": "점 $O$는 외심이므로 $overline{OA}=overline{OB}=overline{OC}$이다.\n$\triangle OBC$는 $overline{OB}=overline{OC}$인 이등변삼각형이므로 $angle OCB=angle OBC=32^circ$이고\n$angle BOC=180^circ-32^circ-32^circ=116^circ$이다.\n삼각형의 외심에서 $angle BOC=2angle A$이므로\n$angle A=dfrac{1}{2}angle BOC=dfrac{1}{2}\times116^circ=58^circ$이다.\n(다른 방법) $angle OAB=angle OBA=a$, $angle OAC=angle OCA=c$라 하면 삼각형의 세 각의 합에서 $2(a+c+32^circ)=180^circ$이므로 $a+c=58^circ$이고, $angle A=a+c=58^circ$이다.\n정답은 ①이다."
+      "solution": "점 $O$는 외심이므로 $\\overline{OA}=\\overline{OB}=\\overline{OC}$이다.\n$\\triangle OBC$는 $\\overline{OB}=\\overline{OC}$인 이등변삼각형이므로 $\\angle OCB=\\angle OBC=32^\\circ$이고\n$\\angle BOC=180^\\circ-32^\\circ-32^\\circ=116^\\circ$이다.\n삼각형의 외심에서 $\\angle BOC=2\\angle A$이므로\n$\\angle A=\\dfrac{1}{2}\\angle BOC=\\dfrac{1}{2}\\times116^\\circ=58^\\circ$이다.\n(다른 방법) $\\angle OAB=\\angle OBA=a$, $\\angle OAC=\\angle OCA=c$라 하면 삼각형의 세 각의 합에서 $2(a+c+32^\\circ)=180^\\circ$이므로 $a+c=58^\\circ$이고, $\\angle A=a+c=58^\\circ$이다.\n정답은 ①이다."
     },
     {
       "id": 4,
@@ -84,7 +84,7 @@ window.examData = {
         "$\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OD}}$, $\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OC}}$ (단, 점 $\\mathrm{O}$는 두 대각선의 교점이다.)"
       ],
       "answer": "④",
-      "solution": "① $overline{AB}=overline{BC}=5\text{ cm}$, $overline{CD}=overline{DA}=7\text{ cm}$이므로 이웃한 변끼리 길이가 같다. 마주 보는 변의 길이는 $overline{AB}\neoverline{CD}$이므로 평행사변형이 아니다.\n② 한 쌍의 대변이 평행하고 다른 한 쌍의 대변의 길이가 같은 것만으로는 평행사변형이 되지 않는다(등변사다리꼴도 가능). 한 쌍의 대변이 평행하고 그 두 변의 길이가 같아야 한다.\n③ $angle D=360^circ-100^circ-70^circ-100^circ=90^circ$이므로 $angle B\neangle D$이다. 두 쌍의 대각이 각각 같지 않으므로 아니다.\n④ $angle DAC=angle BCA$ (엇각)이므로 $overline{AD}paralleloverline{BC}$이고, $angle BAC=angle ACD$ (엇각)이므로 $overline{AB}paralleloverline{DC}$이다. 두 쌍의 대변이 각각 평행하므로 평행사변형이다.\n⑤ 평행사변형이 되려면 두 대각선이 서로 다른 것을 이등분해야 하므로 $overline{OA}=overline{OC}$, $overline{OB}=overline{OD}$이어야 한다. $overline{OA}=overline{OD}$, $overline{OB}=overline{OC}$는 그 조건이 아니다.\n정답은 ④이다."
+      "solution": "① $\\overline{AB}=\\overline{BC}=5\\text{ cm}$, $\\overline{CD}=\\overline{DA}=7\\text{ cm}$이므로 이웃한 변끼리 길이가 같다. 마주 보는 변의 길이는 $\\overline{AB}\\ne\\overline{CD}$이므로 평행사변형이 아니다.\n② 한 쌍의 대변이 평행하고 다른 한 쌍의 대변의 길이가 같은 것만으로는 평행사변형이 되지 않는다(등변사다리꼴도 가능). 한 쌍의 대변이 평행하고 그 두 변의 길이가 같아야 한다.\n③ $\\angle D=360^\\circ-100^\\circ-70^\\circ-100^\\circ=90^\\circ$이므로 $\\angle B\\ne\\angle D$이다. 두 쌍의 대각이 각각 같지 않으므로 아니다.\n④ $\\angle DAC=\\angle BCA$ (엇각)이므로 $\\overline{AD}\\parallel\\overline{BC}$이고, $\\angle BAC=\\angle ACD$ (엇각)이므로 $\\overline{AB}\\parallel\\overline{DC}$이다. 두 쌍의 대변이 각각 평행하므로 평행사변형이다.\n⑤ 평행사변형이 되려면 두 대각선이 서로 다른 것을 이등분해야 하므로 $\\overline{OA}=\\overline{OC}$, $\\overline{OB}=\\overline{OD}$이어야 한다. $\\overline{OA}=\\overline{OD}$, $\\overline{OB}=\\overline{OC}$는 그 조건이 아니다.\n정답은 ④이다."
     },
     {
       "id": 7,
