@@ -101,9 +101,28 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
   width: 100%;
   pointer-events: auto;
 }
+
+.universe-portal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  min-height: 44px;
+  margin-left: auto;
+  padding: 0 8px;
+  border-radius: 9px;
+  color: var(--text-silver);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.universe-portal-link:hover { color: var(--text-ivory); }
+.universe-portal-link:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3px; }
 
 .brand-sigil {
   display: inline-flex;
@@ -372,8 +391,14 @@ html, body {
   margin-bottom: 24px;
   max-width: 480px;
 }
+.webgl-fallback .universe-portal-link { margin: 16px 0 0; }
 
 /* Responsive adjustments */
+@media (max-width: 960px) {
+  .top-nav { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+  .universe-portal-link { margin-left: 0; }
+  .top-controls { grid-column: 1 / -1; justify-self: end; }
+}
 @media (max-width: 768px) {
   .universe-ui { padding: 16px; }
   .top-nav { gap: 8px; }
@@ -403,7 +428,6 @@ html, body {
   .celestial-selector-pills { max-width: 100%; }
 }
 @media (max-width: 360px) {
-  #btnToggleMotion { display: none; }
   .universe-ui { padding: 12px; }
   .nav-enter { padding: 0 8px; }
 }

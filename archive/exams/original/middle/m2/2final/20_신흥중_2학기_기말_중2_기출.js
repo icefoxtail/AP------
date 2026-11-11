@@ -113,7 +113,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "기울기·절편으로 그래프 성질 판정",
-    "decisiveStep": " 옳은 설명은 ④이다."
+    "decisiveStep": " 옳은 설명은 ④이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 직선 y=-2x+3이 y절편 (0,3), x절편 (2분의 3, 0), 점 (-2,7)을 지나고, 주황 직선 y=-2x+6이 파란 직선과 평행하게 그려져 있다.",
+    "solutionImageCaption": "x=-2를 대입하면 y=7이므로 점 (-2,3)을 지나지 않고, x절편은 2분의 3이다. 기울기가 음수이므로 x가 증가하면 y는 감소한다. y=-2x를 x축 방향으로 3만큼 옮기면 y=-2x+6(주황)이어서 파란 직선과 다르다. 이 직선은 제3사분면을 지나지 않는다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -228,7 +232,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "평행이동한 직선식에 점 대입",
-    "decisiveStep": " 정답은 ⑤이다."
+    "decisiveStep": " 정답은 ⑤이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 직선 y=-3x와 이를 y축 방향으로 k만큼 옮긴 주황 직선 y=-3x+k가 평행하게 있고, 주황 직선 위에 점 (2,-2)가 표시되어 있다.",
+    "solutionImageCaption": "y=-3x를 y축 방향으로 k만큼 옮기면 y=-3x+k이다(주황). 이 직선이 점 (2,-2)를 지나므로 -2=-6+k이다. 정답은 ⑤ 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -286,7 +294,11 @@ window.questionBank = [
     "projectionStatus": "RPM_ONLY",
     "projectionReasonCode": "RPM_ONLY",
     "primaryMethod": "절편 삼각형으로 원뿔 부피 계산",
-    "decisiveStep": " 정답은 ③이다."
+    "decisiveStep": " 정답은 ③이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 x축, y축과 직선이 이루는 직각삼각형으로 세로 변이 6, 가로 변이 8이고 가로 변이 회전축인 x축 위에 있다. 오른쪽은 높이 8 cm, 밑면의 반지름 6 cm인 원뿔이다.",
+    "solutionImageCaption": "직선과 x축, y축이 만나는 점은 (8,0), (0,6)이다. 이 직각삼각형을 x축을 회전축으로 1회전 시키면 반지름 6, 높이 8인 원뿔이 된다. 부피는 3분의 1 곱하기 π 곱하기 6의 제곱 곱하기 8이다. 정답은 ③ 96π이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -344,7 +356,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "연립방정식으로 교점 계산",
-    "decisiveStep": " 교점은 $(-2,1)$이므로 정답은 ①이다."
+    "decisiveStep": " 교점은 $(-2,1)$이므로 정답은 ①이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 직선 2x-y=-5와 주황 직선 -x+y=3이 한 점 P에서 만나는 모습이 그려져 있다.",
+    "solutionImageCaption": "두 그래프의 교점에서는 두 식이 동시에 성립한다. 두 식을 더하면 x=-2이고, 둘째 식에 대입하면 y=1이다. 점 P의 좌표가 연립방정식의 해이다. 정답은 ① (-2,1)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -402,7 +418,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "기울기와 절편 부호로 사분면 판정",
-    "decisiveStep": "직선은 제1, 제2, 제3사분면을 지나고 제4사분면은 지나지 않는다. 정답은 ④이다."
+    "decisiveStep": "직선은 제1, 제2, 제3사분면을 지나고 제4사분면은 지나지 않는다. 정답은 ④이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선 x-y+2=0(파랑)과 x-2y+2=0(주황)이 있고 제1, 2, 3, 4사분면의 이름이 쓰여 있다. 두 직선 모두 오른쪽 위로 향하고 y축과 양수인 점에서 만난다.",
+    "solutionImageCaption": "예: 파란 직선은 a=1, b=1, c=-2이고 주황 직선은 a=1, b=2, c=-2이다. ax-by-c=0을 정리하면 y=b분의 a x-b분의 c이고, a>0, b>0이므로 기울기는 양수이며 c<0이므로 y절편도 양수이다. 기울기와 y절편이 모두 양수인 직선은 제1, 2, 3사분면을 지나고 제4사분면은 지나지 않는다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -460,7 +480,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "평행사변형 대각선 성질 판정",
-    "decisiveStep": "일반적인 사다리꼴의 대각선은 서로를 이등분하지 않는다. 정답은 ①이다."
+    "decisiveStep": "일반적인 사다리꼴의 대각선은 서로를 이등분하지 않는다. 정답은 ①이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형, 직사각형, 마름모, 정사각형 네 사각형에 두 대각선을 긋고 만나는 점을 O로 나타냈다. 파란색 표시의 두 선분은 길이가 같고, 주황색 표시의 두 선분도 길이가 같다.",
+    "solutionImageCaption": "두 대각선이 서로를 이등분하는 사각형은 평행사변형이다. 직사각형, 마름모, 정사각형은 모두 평행사변형이므로 이 성질을 가진다. 일반적인 사다리꼴의 대각선은 서로를 이등분하지 않는다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -520,7 +544,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "외심의 꼭짓점 거리 성질",
-    "decisiveStep": "그림에 다른 변 길이나 중점 조건은 없으므로 나머지 등식·합동 관계는 항상 성립하지 않는다. 정답은 ①이다."
+    "decisiveStep": "그림에 다른 변 길이나 중점 조건은 없으므로 나머지 등식·합동 관계는 항상 성립하지 않는다. 정답은 ①이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC 안의 점 O에서 세 꼭짓점으로 선분을 긋고 같은 길이 표시(분홍색)를 했다. 점 O에서 세 변에 내린 수선의 발 M, N, L에 직각 표시가 있다.",
+    "solutionImageCaption": "외심 O는 삼각형의 세 꼭짓점에서 같은 거리에 있으므로 OA=OB=OC이다(분홍색 표시). 그림에는 다른 변의 길이나 중점 조건이 없으므로 나머지 등식과 합동 관계는 항상 성립하지 않는다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -580,7 +608,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "내심과 평행선 닮음비 계산",
-    "decisiveStep": " 정답은 ②이다."
+    "decisiveStep": " 정답은 ②이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 삼각형 ABC에서 내심 I를 지나고 BC에 평행한 파란 선분 DE가 있고 AD=5 cm, AE=6 cm이며 삼각형 ADE의 둘레가 20 cm이다. 오른쪽은 내접원이 있는 삼각형의 예시로, 높이 h가 h-r과 r로 나뉜 모습이다.",
+    "solutionImageCaption": "DE와 BC가 평행하므로 삼각형 ADE와 ABC는 닮음이고, DE=20-5-6=9 cm이다. 넓이를 rs로 나타내어 비교하면 r÷h=20분의 9이므로 AD÷AB=(h-r)÷h=20분의 11이다. 따라서 AB=11분의 100 cm, AC=11분의 120 cm이고 BD+EC=(AB-5)+(AC-6)이다. 정답은 ② 9 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -640,7 +672,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "외심의 이등변삼각형으로 각 계산",
-    "decisiveStep": " 정답은 ②이다."
+    "decisiveStep": " 정답은 ②이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 외심 O가 있는 삼각형 ABC에서 각 OBC=30°, 각 OCA=50°, 각 OAB=x로 표시한 그림이다. 오른쪽은 OA, OB, OC가 같아서 생긴 세 이등변삼각형에서 같은 색 호가 같은 크기의 밑각을 나타낸 그림으로, 파랑은 30°, 주황은 50°, 초록은 x이다.",
+    "solutionImageCaption": "외심이므로 OA=OB=OC이다. 삼각형 OCA에서 각 OAC=50°, 삼각형 OBC에서 각 OCB=30°이므로 각 ACB=80°이다. 삼각형 OAB에서 각 OAB=각 OBA=x이므로 (x+50°)+(x+30°)+80°=180°이다. 정답은 ② 10°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -700,7 +736,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "평행사변형 각 관계",
-    "decisiveStep": "$y-x=20^\\circ$ 정답은 ⑤이다."
+    "decisiveStep": "$y-x=20^\\circ$ 정답은 ⑤이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 평행사변형에서 점 A의 바깥각 x와 점 C의 각 y를 나타낸 그림이다. 오른쪽은 크기가 같은 각을 같은 색으로 나타낸 그림으로 각 DAB와 y는 100°(주황), 각 ADC와 x는 80°(파랑)이다.",
+    "solutionImageCaption": "이웃한 두 각의 합이 180°이므로 5t+4t=180°에서 t=20°이고, 각 DAB=100°, 각 ADC=80°이다. 바깥각 x는 각 ADC와 같아 80°이고, y는 각 DAB와 같아 100°이다. 따라서 y-x=20°이다. 정답은 ⑤ 20°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -760,7 +800,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "대응면 닮음비 계산",
-    "decisiveStep": "$EF=14$는 $AB=x$에 대응하므로 $14=2x$, $x=7$이다. $xy=56$이므로 정답은 ⑤이다."
+    "decisiveStep": "$EF=14$는 $AB=x$에 대응하므로 $14=2x$, $x=7$이다. $xy=56$이므로 정답은 ⑤이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 닮은 두 사면체가 나란히 있고 대응하는 모서리가 같은 색이다. 작은 사면체는 AB 7 cm, BC 6 cm, CD 4 cm이고 큰 사면체는 EF 14 cm, FG 12 cm, GH 8 cm이며 삼각형 BCD와 FGH 면이 연하게 칠해져 있다.",
+    "solutionImageCaption": "대응하는 면이 삼각형 BCD와 FGH이므로 BC와 FG가 대응하고 닮음비는 6대 12, 즉 1대 2이다. CD에 대응하는 GH=y이므로 y=8이고, AB=x에 대응하는 EF=14이므로 x=7이다. 정답은 ⑤ 56이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -820,7 +864,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "무게중심으로 넓이비 계산",
-    "decisiveStep": "무게중심에서 $[AGC]=[ABC]/3=30\\text{ cm}^2$이다. 정답은 ③이다."
+    "decisiveStep": "무게중심에서 $[AGC]=[ABC]/3=30\\text{ cm}^2$이다. 정답은 ③이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위는 삼각형 ABC의 중선 AD 위에 무게중심 G와 삼각형 GBC의 무게중심 G′이 있고 A, G, G′에서 변 BC에 내린 높이를 파랑, 초록, 주황으로 나타낸 그림이다. 오른쪽 위는 그 높이를 나란히 펴서 h, 3분의 h, 9분의 h로 나타낸 그림이다. 아래는 파란색의 넓이가 같은 세 삼각형(AGB, AGC, GBC)과 그 안의 주황색 두 삼각형(G′BD, G′DC)을 나타낸 그림이다.",
+    "solutionImageCaption": "변 BC를 밑변으로 보면 G의 높이는 A의 높이 h의 3분의 1이고, G′의 높이는 G의 높이의 3분의 1이므로 9분의 h이다(파랑 h, 초록 3분의 h, 주황 9분의 h). BC=2로 두면 BD=1이므로 삼각형 G′BD의 넓이는 2분의 1 곱하기 1 곱하기 9분의 h이고 삼각형 ABC의 넓이의 18분의 1이다. 삼각형 ABC의 넓이는 5 곱하기 18, 즉 90 cm²이고, 삼각형 AGC는 삼각형 ABC의 3분의 1이다. 정답은 ③ 30 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -938,7 +986,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "중점연결정리로 둘레 계산",
-    "decisiveStep": "$PQRS$의 둘레는 $2(PQ+QR)=2(7+5)=24\\text{ cm}$이다. 정답은 ④이다."
+    "decisiveStep": "$PQRS$의 둘레는 $2(PQ+QR)=2(7+5)=24\\text{ cm}$이다. 정답은 ④이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위는 사각형의 각 변의 중점 P, Q, R, S를 이은 그림으로 대각선 AC=14 cm, BD=10 cm이고 파란 선분은 AC와 평행, 주황 선분은 BD와 평행하다. 오른쪽 위와 아래는 삼각형 ABC에서 AC=14 cm, PQ=7 cm, 삼각형 BCD에서 BD=10 cm, QR=5 cm를 나타낸 그림이다.",
+    "solutionImageCaption": "삼각형 ABC에서 중점연결정리에 의해 PQ=AC÷2=7 cm이고, 삼각형 BCD에서 QR=BD÷2=5 cm이다. 점 P, Q, R, S를 이은 사각형은 마주 보는 변의 길이가 같으므로 둘레는 2(PQ+QR)이다. 정답은 ④ 24 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -998,7 +1050,11 @@ window.questionBank = [
     "projectionStatus": "RPM_ONLY",
     "projectionReasonCode": "RPM_ONLY",
     "primaryMethod": "직각삼각형의 빗변과 한 예각의 합동으로 넓이 계산",
-    "decisiveStep": "직각삼각형 ABD와 CAE는 빗변 AB=AC, 예각 ABD=CAE로 합동이므로 AD=CE=6, BD=AE=8이다. 따라서 AB=10, [ABC]=50 cm²."
+    "decisiveStep": "직각삼각형 ABD와 CAE는 빗변 AB=AC, 예각 ABD=CAE로 합동이므로 AD=CE=6, BD=AE=8이다. 따라서 AB=10, [ABC]=50 cm².",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 위의 점 D, A, E와 수선 BD=8 cm, CE=6 cm, 직각이등변삼각형 ABC가 있는 문제 그림이다. 두 직각삼각형 ABD와 CAE를 같은 방향으로 놓고 대응하는 변을 같은 색(빗변 분홍, 세로 파랑, 가로 주황)으로 나타냈다.",
+    "solutionImageCaption": "삼각형 ABD와 CAE는 직각이 있고 AB=AC이며 각 ABD=각 CAE이므로 합동이다. 따라서 AD=CE=6 cm, AE=BD=8 cm이다. 삼각형 ABD에서 AB²=6²+8²=100이므로 AB=10 cm이고, 삼각형 ABC의 넓이는 2분의 1 곱하기 10 곱하기 10이다. 정답은 ② 50 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1007,7 +1063,7 @@ window.questionBank = [
       "평행선과 선분의 길이",
       "도형"
     ],
-    "content": "다음 그림에서 $BC\\parallel DE$일 때, $x-y$의 값은? [4점]",
+    "content": "다음 그림에서 $BC\\parallel DE$이고 $BC=15\\text{ cm}$일 때, $x-y$의 값은? [4점]",
     "choices": [
       "$-6$",
       "$-5$",
@@ -1017,7 +1073,7 @@ window.questionBank = [
     ],
     "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q18.png",
     "answer": "①",
-    "solution": "$BC\\parallel DE$이므로 $\\triangle AED\\sim\\triangle ACB$이다. 그림에서 $\\angle EAD=90^\\circ$이다.\n\n$x^2+8^2=10^2$\n$x^2+64=100$\n$x^2=36$\n$x=6$\n\n닮음비에서 $x/AC=AD/AB$이므로\n$\\frac{6}{9}=\\frac{8}{y}$\n$6y=72$\n$y=12$\n\n$x-y=6-12=-6$이므로 정답은 ①이다.",
+    "solution": "$BC\\parallel DE$이므로 $\\triangle AED\\sim\\triangle ACB$이다. 대응하는 변의 길이의 비는 같으므로\n$AE:AC=AD:AB=ED:CB$이다.\n\n$ED:CB=10:15=2:3$이므로\n$\\frac{x}{9}=\\frac{2}{3}$에서 $x=6$이다.\n$\\frac{8}{y}=\\frac{2}{3}$에서 $2y=24$, $y=12$이다.\n\n$x-y=6-12=-6$이므로 정답은 ①이다.",
     "layoutTag": "",
     "wide": false,
     "sourceMode": "ORIGINAL",
@@ -1059,7 +1115,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "삼각형 닮음으로 선분 계산",
-    "decisiveStep": " $x-y=-6$이므로 정답은 ①이다."
+    "decisiveStep": " $x-y=-6$이므로 정답은 ①이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위는 BC와 DE가 평행하고 선분 EC와 DB가 A에서 만나는 문제 그림으로 DE=10 cm, AD=8 cm, AC=9 cm, BC=15 cm이고 AE=x cm, AB=y cm이다. 가운데와 오른쪽 아래는 닮은 두 삼각형 AED와 ACB를 같은 방향으로 나란히 놓고 대응하는 변을 같은 색(파랑, 주황, 초록)으로 나타낸 그림이다.",
+    "solutionImageCaption": "BC와 DE가 평행하므로 삼각형 AED와 삼각형 ACB는 닮음이고, 대응하는 변의 비 AE:AC=AD:AB=ED:CB가 같다. ED:CB=10:15=2:3이므로 x:9=2:3에서 x=6이고 8:y=2:3에서 y=12이다. 정답은 ① -6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1121,7 +1181,11 @@ window.questionBank = [
     "projectionStatus": "RPM_ONLY",
     "projectionReasonCode": "RPM_ONLY",
     "primaryMethod": "피타고라스 정리로 대각선 계산",
-    "decisiveStep": "$x=15$ 정답은 ④이다."
+    "decisiveStep": "$x=15$ 정답은 ④이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 넓이가 9 cm², 81 cm²인 두 정사각형이 아래가 맞춰져 붙어 있고 대각선이 x cm인 그림이다. 오른쪽은 아래변 3 cm와 9 cm, 세로 9 cm이고 빗변이 x cm인 직각삼각형이다.",
+    "solutionImageCaption": "두 정사각형의 한 변은 3 cm, 9 cm이다. x는 가로 3+9=12 cm, 세로 9 cm인 직각삼각형의 빗변이므로 x²=12²+9²=225이다. 정답은 ④ 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1180,7 +1244,11 @@ window.questionBank = [
     "projectionStatus": "RPM_ONLY",
     "projectionReasonCode": "RPM_ONLY",
     "primaryMethod": "빗변 경우를 나누어 제곱합 계산",
-    "decisiveStep": " 합은 $317+75=392$이므로 정답은 ⑤이다."
+    "decisiveStep": " 합은 $317+75=392$이므로 정답은 ⑤이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 두 변이 14 cm, 11 cm이고 빗변이 x cm인 직각삼각형이고, 오른쪽은 빗변이 14 cm이고 다른 두 변이 11 cm, x cm인 직각삼각형이다. 빗변은 주황색이다.",
+    "solutionImageCaption": "직각삼각형에서 가장 긴 변이 빗변이다. x가 빗변이면 x²=14²+11²=317이고, 14 cm가 빗변이면 x²+11²=14²에서 x²=75이다. 두 경우 모두 삼각형이 만들어지므로 x²의 합은 317+75이다. 정답은 ⑤ 392이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1232,7 +1300,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "기울기와 한 점으로 직선식 결정",
-    "decisiveStep": " 따라서 $y=-4x+3$이다."
+    "decisiveStep": " 따라서 $y=-4x+3$이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 직선 y=-4x+1과 평행한 주황 직선 y=-4x+b가 있고, 주황 직선 위에 점 (3,-9)가 표시되어 있다.",
+    "solutionImageCaption": "평행한 두 직선은 기울기가 같으므로 구하는 식을 y=-4x+b라 둔다(주황). 점 (3,-9)를 대입하면 -9=-12+b이므로 b=3이다. 정답은 y=-4x+3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1287,7 +1359,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "직각삼각형 외심의 위치",
-    "decisiveStep": " $\\pi r^2=\\pi\\cdot5^2=25\\pi\\text{ cm}^2$이다."
+    "decisiveStep": " $\\pi r^2=\\pi\\cdot5^2=25\\pi\\text{ cm}^2$이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 직각이 꼭짓점 C에 있고 AB=10 cm, BC=8 cm, CA=6 cm인 직각삼각형이다. 오른쪽은 빗변 AB의 중점 O를 중심으로 하는 외접원이고, OA, OB, OC에 같은 길이 표시(분홍색)가 있으며 OC=5 cm이다.",
+    "solutionImageCaption": "직각삼각형의 외심은 빗변의 중점이므로 외접원의 지름은 AB=10 cm이고 반지름은 5 cm이다. 외접원의 넓이는 π 곱하기 5²이다. 정답은 25π cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1344,7 +1420,11 @@ window.questionBank = [
     "projectionStatus": "RPM_ONLY",
     "projectionReasonCode": "RPM_ONLY",
     "primaryMethod": "연속 피타고라스 적용",
-    "decisiveStep": " $x+y=8+17=25$이다."
+    "decisiveStep": " $x+y=8+17=25$이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 변이 x, 6, 10 cm인 직각삼각형이고, 오른쪽은 세로 8 cm, 밑변이 6+9 cm이고 빗변이 y cm인 큰 직각삼각형이다.",
+    "solutionImageCaption": "작은 직각삼각형에서 x²+6²=10²이므로 x=8이다. 큰 직각삼각형의 밑변은 6+9=15이므로 y²=8²+15²=289, y=17이다. 정답은 25이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1402,6 +1482,10 @@ window.questionBank = [
     "projectionStatus": "RPM_ONLY",
     "projectionReasonCode": "RPM_ONLY",
     "primaryMethod": "삼각형의 닮음과 직각삼각형으로 넓이·거리 계산",
-    "decisiveStep": " $[EOD]=\\dfrac12\\cdot\\dfrac{25}{4}\\cdot3=\\dfrac{75}{8}\\text{ cm}^2$이다. $OH=6-3=3\\text{ cm}$이다."
+    "decisiveStep": " $[EOD]=\\dfrac12\\cdot\\dfrac{25}{4}\\cdot3=\\dfrac{75}{8}\\text{ cm}^2$이다. $OH=6-3=3\\text{ cm}$이다.",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위는 직사각형에 대각선 BD의 중점 O, 수직선 EF, 수선의 발 H를 나타낸 문제 그림이다. 오른쪽 위와 왼쪽 아래는 닮은 직각삼각형 BCD와 EOD를 같은 방향으로 놓고 대응하는 변을 같은 색으로 나타냈다. 오른쪽 아래는 점 O에서 변 AD와 BC까지의 거리를 나타낸 그림이다.",
+    "solutionImageCaption": "삼각형 EOD와 BCD는 닮음이므로 OD÷BC=ED÷BD에서 ED=4분의 25 cm이고 EO=4분의 15 cm이다. 삼각형 EOD의 넓이는 2분의 1 곱하기 5 곱하기 4분의 15이다. O는 직사각형의 중심이므로 OH는 세로 변 DC의 절반이다. 정답은 (1) 8분의 75 cm², (2) 3 cm이다.",
+    "solutionImageSize": "full"
   }
 ];

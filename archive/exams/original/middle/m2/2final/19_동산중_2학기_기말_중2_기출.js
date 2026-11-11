@@ -57,7 +57,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "닮음비로 길이와 넓이를 계산",
     "decisiveStep": " 정답은 ③이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 작은 직사각형과 큰 직사각형이 나란히 있고 세로 4, 가로 6과 9가 적혀 있다. 오른쪽에는 대응하는 가로를 파란색, 세로를 주황색으로 나타내고 큰 직사각형의 세로가 6이다.",
+    "solutionImageCaption": "닮은 두 직사각형은 대응변의 비가 같다. 작은 직사각형의 가로 6과 큰 직사각형의 가로 9에서 닮음비는 2대 3이다. 그래서 큰 직사각형의 세로 EF는 4에 2분의 3을 곱한 6이고, 넓이는 9곱하기 6으로 54이다. 따라서 넓이가 36이라는 ③이 옳지 않다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -116,7 +120,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "삼각형의 내각합과 AA 닮음으로 대응 관계 판정",
     "decisiveStep": "또 $BC$의 대응변은 $FE$이다. 따라서 옳지 않은 것은 ⑤이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 삼각형 ABC와 삼각형 DEF가 있고 AB는 9 cm, DF는 15 cm이며 각 A와 각 D는 80도, 각 C는 40도, 각 F는 60도이다. 오른쪽에는 두 삼각형을 같은 방향으로 놓고 대응하는 각과 변을 같은 색으로 나타냈다.",
+    "solutionImageCaption": "삼각형의 세 각의 합은 180도이므로 각 B는 60도, 각 E는 40도이다. 그래서 A는 D, B는 F, C는 E에 대응하고 두 각이 각각 같으므로 AA 닮음이다. 대응변 AB와 DF의 비가 9대 15, 곧 3대 5이므로 닮음비도 3대 5이고, BC에 대응하는 변은 FE이다. 따라서 변 ED가 BC에 대응한다고 한 ⑤가 옳지 않다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -175,7 +183,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "피타고라스 정리로 AD를 구한 뒤 SSS 닮음 판정",
     "decisiveStep": "따라서 $\\triangle ADC\\sim\\triangle BAC$이고 닮음비는 $3:4$이다. 정답은 ①이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC와 변 BC 위의 점 D가 있고 AB는 8 cm, AC는 12 cm, BD는 7 cm, DC는 9 cm이다. 다른 두 칸에는 삼각형 BAC와 삼각형 ADC를 대응하는 순서로 따로 그렸고 대응변은 같은 색이며 공통인 각 C는 분홍색이다.",
+    "solutionImageCaption": "BC는 16이다. A에서 BC에 수선을 내려 피타고라스 정리를 두 번 쓰면 AD는 6이다. 그러면 AD 대 BA는 6 대 8, DC 대 AC는 9 대 12, CA 대 CB는 12 대 16으로 모두 3 대 4이다. 세 변의 비가 같으므로 삼각형 ADC와 삼각형 BAC는 닮음이고 닮음비는 3 대 4이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -234,7 +246,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "원기둥의 높이비와 반지름비를 연결하여 밑넓이 계산",
     "decisiveStep": "$\\pi\\times3^2=9\\pi\\text{ cm}^2$이다. 정답은 ④이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 밑면 반지름 2 cm, 높이 6 cm인 작은 원기둥과 높이 9 cm인 큰 원기둥이 있다. 오른쪽에는 두 원기둥의 밑면을 색칠하고 반지름 2 cm와 3 cm, 높이 6 cm와 9 cm를 적었다.",
+    "solutionImageCaption": "닮은 두 원기둥에서 높이의 비는 6 대 9, 곧 2 대 3이다. 밑면 반지름의 비도 2 대 3이므로 큰 원기둥의 밑면 반지름은 2에 2분의 3을 곱한 3 cm이다. 따라서 큰 원기둥의 밑넓이는 원주율 곱하기 3의 제곱으로 9파이 제곱센티미터이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -253,7 +269,7 @@ window.questionBank = [
     ],
     "image": "assets/images/19_동산중_2학기_기말_중2_기출/q05.png",
     "answer": "③",
-    "solution": "두 원뿔의 모선의 길이의 비는\n$12:18=2:3$이다.\n닮은 입체도형의 부피의 비는 닮음비의 세제곱이므로\n\n$V_{작은}:V_{큰}=2^3:3^3=8:27$이다.\n\n큰 원뿔을 채우려면 작은 원뿔의 물이\n$\\dfrac{27}{8}=3\\dfrac{3}{8}$배 필요하다.\n따라서 적어도 4번 부어야 한다.\n정답은 ③이다.",
+    "solution": "두 원뿔의 높이의 비는\n$12:18=2:3$이다.\n닮은 입체도형의 부피의 비는 닮음비의 세제곱이므로\n\n$V_{작은}:V_{큰}=2^3:3^3=8:27$이다.\n\n큰 원뿔을 채우려면 작은 원뿔의 물이\n$\\dfrac{27}{8}=3\\dfrac{3}{8}$배 필요하다.\n따라서 적어도 4번 부어야 한다.\n정답은 ③이다.",
     "level": "중",
     "category": "원뿔",
     "originalCategory": "원뿔",
@@ -293,7 +309,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "닮음비의 세제곱으로 부피비 계산",
     "decisiveStep": "따라서 적어도 4번 부어야 한다. 정답은 ③이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 밑면 반지름 4 cm인 작은 원뿔과 큰 원뿔이 있고 높이가 각각 12 cm와 18 cm이다. 오른쪽 위에는 두 원뿔의 축을 지나는 단면인 이등변삼각형 두 개가 있고 높이는 12와 18, 밑변은 8과 12이다. 아래에는 같은 두 원뿔의 밑면을 색으로 구분했다.",
+    "solutionImageCaption": "두 원뿔은 닮았고 높이의 비가 12 대 18, 곧 2 대 3이므로 닮음비는 2 대 3이다. 닮은 입체의 부피의 비는 닮음비의 세제곱이므로 8 대 27이다. 큰 원뿔을 채우려면 작은 원뿔의 물이 8분의 27, 곧 3과 8분의 3배 필요하다. 따라서 물을 적어도 4번 부어야 한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -352,7 +372,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "직각삼각형의 닮음과 넓이 관계 확인",
     "decisiveStep": " 따라서 옳지 않은 것은 ⑤이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 직각삼각형 ABC에서 직각 꼭짓점 A에서 빗변 BC에 내린 수선의 발 H가 있고 AB 15, AC 20, BH 9, HC 16이 적혀 있다. 나머지 세 칸에는 삼각형 ABC, HBA, HAC를 같은 방향으로 놓고 대응하는 변을 같은 색으로 나타냈다.",
+    "solutionImageCaption": "직각삼각형에서 높이 AH를 그으면 삼각형 ABC, HBA, HAC는 모두 닮음이다. 예를 들어 AB=15, AC=20이면 BC=25, BH=9, HC=16, AH=12이다. 닮음에서 AB 대 CA는 BH 대 AH와 같고 AB 곱하기 AC는 BC 곱하기 AH와 같다. 그러나 AB 대 AC는 15 대 20, 곧 3 대 4이고 BH 대 HC는 9 대 16이라 같지 않다. 따라서 옳지 않은 것은 ⑤이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -470,7 +494,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "중점연결정리로 둘레를 절반으로 계산",
     "decisiveStep": "$36\\div2=18\\text{ cm}$이다. 정답은 ④이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 삼각형 ABC의 세 변의 중점 D, E, F가 있고 AB 10, AC 12, BC 14가 적혀 있다. 오른쪽에는 중점을 이은 삼각형 DEF의 세 변이 5, 6, 7이고 각 변이 마주 보는 큰 삼각형의 변과 같은 색이다.",
+    "solutionImageCaption": "삼각형의 두 변의 중점을 이은 선분은 나머지 한 변과 평행하고 길이가 그 절반이다. 그래서 EF는 AB의 절반인 5, DE는 AC의 절반인 6, DF는 BC의 절반인 7이다. 삼각형 ABC의 둘레가 10과 12와 14의 합인 36이므로 삼각형 DEF의 둘레는 그 절반인 18 cm이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -530,7 +558,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "평행사변형의 평행성과 닮음으로 대각선 분할비 계산",
     "decisiveStep": "$EB=\\dfrac13 BD=\\dfrac13\\times18=6\\text{ cm}$이다. 정답은 ②이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 평행사변형과 변 BC, CD의 중점 M, N, 대각선 BD(18)와 선분 AM, AN이 있다. 오른쪽 위에는 삼각형 BEM과 DEA의 대응변을 같은 색으로 나타내고 BM은 m, DA는 2m, BE는 x, ED는 2x이다. 아래에는 대각선 BD를 같은 길이 x 세 부분으로 나눈 그림이 있다.",
+    "solutionImageCaption": "평행사변형에서 BC와 AD는 평행하고 같으므로 삼각형 BEM과 DEA는 AA 닮음이다. M이 BC의 중점이라 BM 대 DA가 1 대 2이므로 BE 대 ED도 1 대 2이다. 같은 방법으로 점 F도 BD를 2 대 1로 나누므로 BD는 세 등분되고 BD가 18이므로 한 부분은 18의 3분의 1이다. 따라서 EB는 6 cm이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -589,7 +621,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "무게중심의 중선 분할과 넓이 비교",
     "decisiveStep": " 정답은 ③이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC와 세 변의 중점 D, E, F, 세 중선이 만나는 무게중심 G가 있고 같은 길이의 선분에 같은 표시가 있다. 오른쪽 위에는 세 중선이 나눈 여섯 개의 작은 삼각형이 같은 파란색으로 칠해져 있다. 아래에는 GD가 3, GE가 4, GF가 5인 예가 있다.",
+    "solutionImageCaption": "무게중심은 중선을 꼭짓점 쪽에서 2 대 1로 나누므로 GC 대 FG는 2 대 1이고 ①은 옳다. F가 AB의 중점이므로 AF와 BF가 같고 삼각형 AFG와 BGF의 넓이도 같아 ②와 ⑤가 옳으며, 세 중선은 삼각형을 넓이가 같은 여섯 삼각형으로 나누므로 ④도 옳다. 그러나 세 중선의 길이는 같을 필요가 없어서 예를 들어 GD, GE, GF가 3, 4, 5인 삼각형도 있다. 따라서 옳지 않은 것은 ③이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -649,7 +685,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "중점선과 무게중심의 넓이비 계산",
     "decisiveStep": "$[\\triangle CBG]=\\dfrac13[\\triangle ABC]=\\dfrac13\\times24=8\\text{ cm}^2$이다. 정답은 ⑤이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 삼각형 ABC, AB와 AC의 중점 F와 E, 무게중심 G가 있고 삼각형 FGE는 파랑, 삼각형 CBG는 주황으로 칠해져 있으며 삼각형 FGE의 넓이는 2제곱센티미터이다. 오른쪽에는 같은 삼각형 왼쪽에 세로 눈금이 있어 아래에서부터 BC에서 G까지 2t, G에서 FE까지 t, FE에서 A까지 3t로 높이를 나누었다.",
+    "solutionImageCaption": "F, E가 중점이므로 FE는 BC와 평행하고 길이는 BC의 절반이다. 높이 전체를 6t로 놓으면 G는 BC에서 2t 위, FE는 3t 위에 있어 G와 FE 사이의 높이는 t이다. 그러므로 삼각형 FGE의 넓이는 삼각형 ABC의 12분의 1이다. 이 넓이가 2이므로 삼각형 ABC의 넓이는 24 제곱센티미터이다. 삼각형 CBG는 밑변 BC가 같고 높이가 3분의 1이므로 넓이는 24의 3분의 1이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -711,7 +751,11 @@ window.questionBank = [
     "primaryMethod": "피타고라스 정리로 직각변 계산",
     "decisiveStep": " 정답은 ④이다.",
     "sourceMode": "ORIGINAL",
-    "metaNullReason": "Current 2015 M2-2 RPM crosswalk has only RPM_ONLY records for the Pythagorean path (M2-RPM-101–106); current ACTIVE taxonomy lookup found no exact primary PT/TPL projection. Keep RPM semantic fields populated; record explicit projection debt."
+    "metaNullReason": "Current 2015 M2-2 RPM crosswalk has only RPM_ONLY records for the Pythagorean path (M2-RPM-101–106); current ACTIVE taxonomy lookup found no exact primary PT/TPL projection. Keep RPM semantic fields populated; record explicit projection debt.",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 직각삼각형이 있고 한 직각변이 7 cm, 다른 직각변이 x cm, 빗변이 25 cm이다. 오른쪽에는 세 변 위에 각각 정사각형을 그렸고 넓이가 49, x의 제곱, 625이다.",
+    "solutionImageCaption": "직각삼각형에서 두 직각변을 한 변으로 하는 정사각형의 넓이의 합은 빗변을 한 변으로 하는 정사각형의 넓이와 같다. 그래서 x의 제곱에 49를 더하면 625이고 x의 제곱은 576이다. 길이이므로 x는 양수 24이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -773,7 +817,11 @@ window.questionBank = [
     "primaryMethod": "피타고라스 정리와 반원 넓이로 초승달 넓이 계산",
     "decisiveStep": "$\\dfrac12\\times12\\times9=54\\text{ cm}^2$이다. 정답은 ①이다.",
     "sourceMode": "ORIGINAL",
-    "metaNullReason": "Current 2015 M2-2 RPM crosswalk has only RPM_ONLY records for the Pythagorean path (M2-RPM-101–106); current ACTIVE taxonomy lookup found no exact primary PT/TPL projection. Keep RPM semantic fields populated; record explicit projection debt."
+    "metaNullReason": "Current 2015 M2-2 RPM crosswalk has only RPM_ONLY records for the Pythagorean path (M2-RPM-101–106); current ACTIVE taxonomy lookup found no exact primary PT/TPL projection. Keep RPM semantic fields populated; record explicit projection debt.",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 직각삼각형 ABC의 변 AB, AC, BC 위의 반원과 BC를 지름으로 하는 호가 있고 두 초승달이 주황색으로 칠해져 있으며 AB는 12 cm, BC는 15 cm이다. 오른쪽에는 직각삼각형 ABC가 파란색으로 칠해져 있고 AB 12, AC 9, BC 15이다.",
+    "solutionImageCaption": "BC가 반원의 지름이므로 각 A는 90도이다. 피타고라스 정리에서 AC의 제곱은 15의 제곱에서 12의 제곱을 뺀 81이고 AC는 9 cm이다. 두 직각변 위의 반원의 넓이의 합은 빗변 위의 반원의 넓이와 같으므로 색칠한 두 초승달의 넓이의 합은 직각삼각형 ABC의 넓이와 같다. 그 넓이는 2분의 1 곱하기 12 곱하기 9이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -835,7 +883,11 @@ window.questionBank = [
     "primaryMethod": "두 직각삼각형에 피타고라스 정리를 차례로 적용",
     "decisiveStep": "$AB=25$이다. 정답은 ⑤이다.",
     "sourceMode": "ORIGINAL",
-    "metaNullReason": "Current 2015 M2-2 RPM crosswalk has only RPM_ONLY records for the Pythagorean path (M2-RPM-101–106); current ACTIVE taxonomy lookup found no exact primary PT/TPL projection. Keep RPM semantic fields populated; record explicit projection debt."
+    "metaNullReason": "Current 2015 M2-2 RPM crosswalk has only RPM_ONLY records for the Pythagorean path (M2-RPM-101–106); current ACTIVE taxonomy lookup found no exact primary PT/TPL projection. Keep RPM semantic fields populated; record explicit projection debt.",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 직각삼각형 ABC와 변 BC 위의 점 D가 있고 AD는 17, BD는 12, DC는 8이다. 나머지 두 칸에는 직각삼각형 ACD에서 AC가 15, 직각삼각형 ABC에서 AC가 15, BC가 20임을 나타냈다.",
+    "solutionImageCaption": "직각삼각형 ACD에서 AD가 빗변이므로 AC의 제곱은 17의 제곱에서 8의 제곱을 뺀 225이고 AC는 15이다. BC는 BD와 DC의 합인 20이다. 직각삼각형 ABC에서 AB의 제곱은 15의 제곱과 20의 제곱의 합인 625이다. 따라서 AB는 25이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -897,7 +949,11 @@ window.questionBank = [
     "primaryMethod": "세 정사각형 넓이에 피타고라스 정리 적용",
     "decisiveStep": " 정답은 ①이다.",
     "sourceMode": "ORIGINAL",
-    "metaNullReason": "Current 2015 M2-2 RPM crosswalk has only RPM_ONLY records for the Pythagorean path (M2-RPM-101–106); current ACTIVE taxonomy lookup found no exact primary PT/TPL projection. Keep RPM semantic fields populated; record explicit projection debt."
+    "metaNullReason": "Current 2015 M2-2 RPM crosswalk has only RPM_ONLY records for the Pythagorean path (M2-RPM-101–106); current ACTIVE taxonomy lookup found no exact primary PT/TPL projection. Keep RPM semantic fields populated; record explicit projection debt.",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 직각삼각형 ABC의 세 변 위에 정사각형이 있고 아래쪽 정사각형은 35, 오른쪽 위 정사각형은 20, 왼쪽 위 정사각형은 x 제곱센티미터이다. 오른쪽에는 직각삼각형 ABC에서 AB는 루트 35, BC는 2루트 5이고 같은 색으로 정사각형과 대응한다.",
+    "solutionImageCaption": "정사각형의 넓이는 한 변의 길이의 제곱이다. 직각삼각형 ABC에서 AB가 빗변이므로 피타고라스 정리에 따라 두 직각변 위의 정사각형의 넓이의 합이 빗변 위의 정사각형의 넓이와 같다. 그래서 35는 왼쪽 위 정사각형의 넓이와 20의 합이고, 왼쪽 위 정사각형의 넓이 x는 35에서 20을 뺀 15 제곱센티미터이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -959,7 +1015,11 @@ window.questionBank = [
     "primaryMethod": "원뿔 단면의 피타고라스 정리 후 부피 계산",
     "decisiveStep": "$=96\\pi\\text{ cm}^3$이다. 정답은 ④이다.",
     "sourceMode": "ORIGINAL",
-    "metaNullReason": "Current 2015 M2-2 RPM crosswalk has only RPM_ONLY records for the Pythagorean path (M2-RPM-101–106); current ACTIVE taxonomy lookup found no exact primary PT/TPL projection. Keep RPM semantic fields populated; record explicit projection debt."
+    "metaNullReason": "Current 2015 M2-2 RPM crosswalk has only RPM_ONLY records for the Pythagorean path (M2-RPM-101–106); current ACTIVE taxonomy lookup found no exact primary PT/TPL projection. Keep RPM semantic fields populated; record explicit projection debt.",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 밑면의 반지름이 6 cm, 모선이 10 cm, 높이가 h인 원뿔이 있다. 오른쪽에는 높이 h, 반지름 6 cm, 모선 10 cm로 이루어진 직각삼각형이 있다.",
+    "solutionImageCaption": "높이와 반지름과 모선은 직각삼각형을 이루므로 높이의 제곱은 10의 제곱에서 6의 제곱을 뺀 64이다. 그래서 h는 8 cm이다. 원뿔의 부피는 3분의 1 곱하기 원주율 곱하기 6의 제곱 곱하기 8로 96파이 세제곱센티미터이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1035,8 +1095,8 @@ window.questionBank = [
       "10",
       "12"
     ],
-    "answer": "①",
-    "solution": "수학여행 장소는 서울 또는 부산 중 한 곳을 고른다.\n선택 대상은 두 지역이므로 경우의 수는\n$1+1=2$이다.\n서울과 부산 안의 세부 장소는 선택 조건에 포함되지 않았다.\n정답은 ①이다.",
+    "answer": "③",
+    "solution": "수학여행 장소를 서울 또는 부산 중에서 한 곳 고른다.\n서울에서 고르는 경우는 강남, 인사동, 명동, 홍대의 4가지이다.\n부산에서 고르는 경우는 해운대, 동래, 광안리의 3가지이다.\n\n서울과 부산에서 동시에 고를 수는 없으므로 합의 법칙에 따라\n$4+3=7$가지이다.\n정답은 ③이다.",
     "level": "하",
     "category": "경우의 수",
     "originalCategory": "경우의 수",
@@ -1074,10 +1134,14 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "projectionStatus": "RPM_ONLY",
     "projectionReasonCode": "RPM_ONLY",
-    "primaryMethod": "지역 선택의 합의 법칙",
-    "decisiveStep": "서울과 부산 안의 세부 장소는 선택 조건에 포함되지 않았다. 정답은 ①이다.",
+    "primaryMethod": "장소 선택의 합의 법칙",
+    "decisiveStep": "서울과 부산에서 동시에 고를 수는 없으므로 합의 법칙에 따라 $4+3=7$가지이다. 정답은 ③이다.",
     "sourceMode": "ORIGINAL",
-    "metaNullReason": "Current 2015 M2-2 RPM crosswalk classifies the sum/product rule path as RPM_ONLY (M2-RPM-107–108). ACTIVE lookup has no unique exact projection for the direct two-destination sum count."
+    "metaNullReason": "Current 2015 M2-2 RPM crosswalk classifies the sum/product rule path as RPM_ONLY (M2-RPM-107–108). ACTIVE lookup has no unique exact projection for the direct two-destination sum count.",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 서울과 부산 두 가지로 갈라지는 수형도이다. 서울에서는 강남, 인사동, 명동, 홍대로, 부산에서는 해운대, 동래, 광안리로 갈라진다.",
+    "solutionImageCaption": "수학여행 장소를 서울 또는 부산 중에서 한 곳 고른다. 서울에서 고르는 경우는 4가지, 부산에서 고르는 경우는 3가지이다. 두 경우는 동시에 일어날 수 없으므로 합의 법칙에 따라 4 더하기 3, 곧 7가지이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1191,7 +1255,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "서로 겹치지 않는 사건의 확률 합",
     "decisiveStep": "$\\dfrac68=\\dfrac34$이다. 정답은 ②이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 동전의 앞면과 뒷면을 나타낸 수형도로 끝 가지가 여덟 개이고 각 경로의 확률은 8분의 1이다. 앞면이 한 번인 세 경로는 파란색, 뒷면이 한 번인 세 경로는 주황색으로 표시되어 있다.",
+    "solutionImageCaption": "세 동전을 던지면 앞면 또는 뒷면이 나오므로 모든 경우는 2의 3제곱인 8가지이다. 앞면이 한 번 나오는 경우는 3가지이고 뒷면이 한 번 나오는 경우도 3가지이며, 두 사건은 동시에 일어날 수 없으므로 6가지이다. 따라서 구하는 확률은 8분의 6, 곧 4분의 3이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1248,7 +1316,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "전체 순서쌍에서 합이 4 미만인 경우를 제외",
     "decisiveStep": "$\\dfrac{33}{36}=\\dfrac{11}{12}$이다. 정답은 ⑤이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 6 곱하기 6 표의 칸마다 두 주사위의 눈의 합이 적혀 있다. 합이 2 또는 3인 세 칸은 진하게, 나머지 합이 4 이상인 칸은 옅게 칠해져 있다.",
+    "solutionImageCaption": "두 주사위의 눈이 나오는 경우는 모두 36가지이다. 합이 4보다 작은 경우는 합이 2인 1가지와 합이 3인 2가지로 모두 3가지이다. 합이 4 이상인 경우는 36에서 3을 뺀 33가지이므로 구하는 확률은 36분의 33, 곧 12분의 11이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1303,7 +1375,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "닮음비 제곱·세제곱으로 밑넓이와 부피 계산",
     "decisiveStep": "그러므로 원뿔 $A$의 부피는 $V_A=\\dfrac{27}{125}\\times\\dfrac{125\\pi}{2}=\\dfrac{27\\pi}{2}\\text{ cm}^3$이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 원뿔을 밑면에 평행하게 잘라 윗부분의 작은 원뿔 A와 아래의 원뿔대 B를 나타냈고 모선은 위쪽이 6 cm, 아래쪽이 4 cm이다. 오른쪽 위에는 모선이 6과 10인 두 원뿔이 나란히 있고, 아래에는 두 원뿔의 축을 지나는 단면인 닮은 이등변삼각형 두 개가 있다.",
+    "solutionImageCaption": "(1) 자른 단면은 원뿔 A의 밑면이고 원뿔대 B의 위쪽 밑면이다. 원뿔 A와 처음 원뿔은 닮았고 모선의 길이의 비가 6 대 10, 곧 3 대 5이다. 닮은 도형의 넓이의 비는 닮음비의 제곱이므로 원뿔 A의 밑면과 원뿔대 B의 아래 밑면의 넓이의 비는 9 대 25이다. (2) 부피의 비는 닮음비의 세제곱인 27 대 125이므로 원뿔대 B의 부피는 처음 원뿔의 125분의 98이다. B의 부피가 49파이이므로 처음 원뿔의 부피는 2분의 125파이이고 원뿔 A의 부피는 그것의 125분의 27인 2분의 27파이 세제곱센티미터이다. 정답은 (1) 9 대 25, (2) 2분의 27파이 세제곱센티미터이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1358,7 +1434,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "무게중심의 2:1과 중점연결정리",
     "decisiveStep": "$\\triangle ABD\\sim\\triangle EBM$의 닮음비가 $2:1$이므로 $EM=\\dfrac12 AD=\\dfrac{15}{2}=7.5\\text{ cm}$이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC의 중선 AD와 CE가 무게중심 G에서 만나고 M은 BD의 중점이며 AG는 10 cm이다. 오른쪽 위에는 삼각형 ABD에서 AG 10 cm, GD 5 cm이고, 아래에는 삼각형 EBM에서 EM이 x이며 대응변이 같은 색이다.",
+    "solutionImageCaption": "(1) D는 BC의 중점이고 E는 AB의 중점이며 M은 BD의 중점이다. 삼각형 ABD에서 AB와 BD의 중점을 이은 EM은 AD와 평행하므로 삼각형 ABD와 삼각형 EBM은 닮음이고 닮음비는 2 대 1이다. (2) 무게중심은 중선 AD를 2 대 1로 나누므로 AG가 10이면 GD는 5이고 AD는 15 cm이다. 닮음비가 2 대 1이므로 EM은 AD의 2분의 1인 7.5 cm이다. 정답은 (1) 삼각형 EBM, (2) 7.5 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1415,7 +1495,11 @@ window.questionBank = [
     "primaryMethod": "직교 대각선이 만든 직각삼각형에 피타고라스 적용",
     "decisiveStep": "따라서 $a^2-b^2=49-81=-32$이다.",
     "sourceMode": "ORIGINAL",
-    "metaNullReason": "Current 2015 M2-2 RPM crosswalk has only RPM_ONLY records for the Pythagorean path (M2-RPM-101–106); current ACTIVE taxonomy lookup found no exact primary PT/TPL projection. Keep RPM semantic fields populated; record explicit projection debt."
+    "metaNullReason": "Current 2015 M2-2 RPM crosswalk has only RPM_ONLY records for the Pythagorean path (M2-RPM-101–106); current ACTIVE taxonomy lookup found no exact primary PT/TPL projection. Keep RPM semantic fields populated; record explicit projection debt.",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 두 대각선이 수직으로 만나는 사각형이 있고 AB는 a, AD는 b, BC는 7, CD는 9이다. 오른쪽 위에는 AO를 공유하는 직각삼각형 AOB와 AOD, 아래에는 CO를 공유하는 직각삼각형 BOC와 COD가 있고 BO는 파란색, DO는 주황색, 공유하는 변은 초록색이다.",
+    "solutionImageCaption": "대각선이 수직이므로 네 삼각형은 모두 직각삼각형이다. 피타고라스 정리에서 a의 제곱은 AO의 제곱과 BO의 제곱의 합이고 b의 제곱은 AO의 제곱과 DO의 제곱의 합이므로 둘을 빼면 a의 제곱에서 b의 제곱을 뺀 값은 BO의 제곱에서 DO의 제곱을 뺀 값이다. 같은 방법으로 7의 제곱에서 9의 제곱을 뺀 값도 BO의 제곱에서 DO의 제곱을 뺀 값이다. 따라서 a의 제곱에서 b의 제곱을 뺀 값은 49에서 81을 뺀 값 −32이다. 정답은 −32이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

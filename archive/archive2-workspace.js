@@ -12,6 +12,9 @@
   // Unified 2022-based unit layer (user decision 2026-10-29). When the shared module is not
   // loaded the compose screen falls back to the canonical-parent scope list.
   const Unified = window.Archive2UnifiedUnits;
+  // First screen first (2026-11-10): archive2-boot.js owns progress, timing marks and the paint gate.
+  // Every use is optional so test harnesses and pages without it keep working.
+  const Boot = window.Archive2Boot;
   const frozenPaperCache = new Map();
   const composeMetaQueryCache = new Map();
   let renderComposeMetaFilters = null;
@@ -276,11 +279,12 @@
   }
   function activeAssessmentRecipeUids() {
     const recipe = activeAssessmentRecipe();
-    if (!recipe || !state.metaIndex?.length) return null;
+    const metaIndex = recipe ? ensureMetaIndex() : null;
+    if (!recipe || !metaIndex?.length) return null;
     const key = `${recipe.key}:${state.indexVersion}`;
     if (assessmentRecipeCache.key === key) return assessmentRecipeCache.uids;
     const result = AssessmentRecipes.queryRecipe(
-      state.metaIndex,
+      metaIndex,
       recipe.key,
       {},
       { profile: "DIRECT", count: recipe.defaultCount },
@@ -294,7 +298,7 @@
   }
   function assessmentSelectionOptions() {
     if (!isAssessmentRecipeMode() || !AssessmentRecipes?.representativeGroup) return {};
-    const byUid = new Map((state.metaIndex || []).map(row => [row.questionUid || row.uid, row]));
+    const byUid = new Map((ensureMetaIndex() || []).map(row => [row.questionUid || row.uid, row]));
     return { representativeGroupFor: record =>
       AssessmentRecipes.representativeGroup(byUid.get(record.questionUid)) };
   }
@@ -517,6 +521,16 @@
     urlUids: [],
     uidRoute: null,
     scopeNotice: "",
+    // 문제지 만들기 한 화면: 뽑은 뒤 모자랐던 곳, 뽑은 결과가 있었는데 조건이 바뀌어 비워졌는지, 미리보기·출력 설정 접힘.
+    composeShortage: [],
+    composeStale: false,
+    composeStalePins: 0,
+    composeNotice: "",
+    previewOpen: true,
+    outputSettingsOpen: false,
+    scopeGroupOpen: {},
+    composeAnnounce: "",
+    assignBusy: false,
   };
   let finderFilterRenderTimer = null;
   // Quick assessments (5분 테스트 / 소단원 / 중단원 / 종합평가) draw from pools built on the
@@ -592,7 +606,9 @@
       "교사 로그인이 필요합니다. 선생님 계정으로 로그인한 뒤 돌아와 주세요.",
     );
   }
-  async function api(route, body, method = body ? "POST" : "GET") {
+  // options (optional): { headers, timeoutMs } for one call. The 반에 출제 panel (archive2-assign.js) sends the
+  // X-Archive2-Contract header and its own time limits through it; every other caller is unchanged.
+  async function api(route, body, method = body ? "POST" : "GET", options = {}) {
     const base = (
       window.APMATH_API_BASE ||
       "https://ap-math-os-v2612.js-pdf.workers.dev/api"
@@ -600,8 +616,10 @@
     // Read requests give up after 30s so a stalled server cannot freeze the page. The saved-paper
     // POST is idempotent by save_batch_id and a timeout (no HTTP status) already falls into the
     // RESULT_UNKNOWN recovery path of savePapers(), so it gets a longer limit. Other writes
-    // (assignment, PDF) keep waiting: aborting them could hide a half-finished issue.
-    const timeoutMs = method === "GET" ? 30000
+    // (assignment, PDF) keep waiting unless the caller gives a limit: aborting them could hide a half-finished issue,
+    // so the assign panel treats a timeout as "결과 확인 필요" and re-sends the same batch id.
+    const timeoutMs = Number.isFinite(options.timeoutMs) && options.timeoutMs > 0 ? options.timeoutMs
+      : method === "GET" ? 30000
       : route === "/archive-saved-papers" ? 90000 : 0;
     const controller = timeoutMs && typeof AbortController === "function" ? new AbortController() : null;
     const perform = async () => {
@@ -610,6 +628,7 @@
         headers: {
           ...headers(),
           ...(body ? { "Content-Type": "application/json" } : {}),
+          ...(options.headers || {}),
         },
         ...(body ? { body: JSON.stringify(body) } : {}),
         ...(controller ? { signal: controller.signal } : {}),
@@ -746,6 +765,7 @@
       "saveResultSignature",
       "saveResultState",
       "derivationSource",
+      "composeShortage",
     ];
     return {
       schemaVersion: C.VERSION,
@@ -871,6 +891,8 @@
       saveResultSignature: (v) => typeof v === "string",
       saveResultState: (v) => ["", "SAVED", "FAILED", "SAVING", "RESULT_UNKNOWN"].includes(v),
       derivationSource: (v) => v === null || isObj(v),
+      composeShortage: (v) => Array.isArray(v) && v.length <= 200 && v.every((item) => isObj(item) &&
+        isStr(item.label, 500) && isBuckets(item.difficultyBuckets) && isInt(item.requested, 0, 100000) && isInt(item.got, 0, 100000)),
       pins: (v) => isStrArr(v, 5000),
       selected: (v) => Array.isArray(v) && v.length <= 400 && v.every((r) => isObj(r) &&
         isStr(r.questionUid, 200) && (r.rowId === undefined || isStr(r.rowId, 2000)) &&
@@ -1013,6 +1035,12 @@
     for (const key of allowed)
       if (data[key] !== undefined) state[key] = data[key];
     state.derivationSource = data.derivationSource || null;
+    // 모자라게 뽑은 문제지는 모자람 안내도 함께 복원한다(결과가 없으면 안내할 것도 없다).
+    state.composeShortage = data.selected.length && Array.isArray(data.composeShortage)
+      ? data.composeShortage.map((item) => ({ label: item.label, difficultyBuckets: item.difficultyBuckets, requested: item.requested, got: item.got }))
+      : [];
+    state.composeStale = false;
+    state.composeNotice = "";
     state.includeExtended = data.includeExtended === true;
     state.derivedBaseQuestions = null;
     derivedBaseLoad = null;
@@ -1241,6 +1269,13 @@
       throw new Error(
         "이미 출제한 문제지는 보존됩니다. 아직 출제하지 않은 문제지에서 문항을 교체하거나 다시 만들어 주세요.",
       );
+    // 결과가 있었는데 조건이 바뀌면 오른쪽이 빈 화면이 되지 않게 "조건이 바뀌었습니다" 안내를 띄운다.
+    if (state.selected.length) {
+      state.composeStale = true;
+      state.composeStalePins = state.pins.length;
+    }
+    state.composeNotice = "";
+    state.composeShortage = [];
     state.selected = [];
     state.pins = [];
     state.prepared = [];
@@ -1548,11 +1583,7 @@
       return (!filters.L1 || scopeText(supplementalParent.L1) === scopeText(filters.L1)) &&
         (!filters.L2 || scopeText(supplementalParent.L2) === scopeText(filters.L2));
     }
-    if (state.catalog?.records && state.metaIndexSource !== state.catalog.records) {
-      state.metaIndex = ProblemBankMeta.buildIndex(state.catalog.records, []);
-      state.metaIndexSource = state.catalog.records;
-      composeMetaQueryCache.clear();
-    }
+    ensureMetaIndex();
     let allowed = renderComposeMetaFilters?.get(filters);
     if (!allowed) {
       // Existing MF-qualified selectors keep their established canonical authority path.
@@ -1677,12 +1708,20 @@
     }
   }
   function unifiedPrimaryMarkup(filters) {
+    // 학년은 학년 색 버튼(학교별 기출·단원별 기출과 같은 구성요소), 과목은 2과목이면 2칸 전환·그 이상이면 칩이다.
     const subjects = Unified.subjectsForGrade(filters.grade);
-    const subjectField = subjects.length > 1
-      ? `<label>과목<select data-filter="semanticSubject" data-group="compose">${options(subjects.map(({ value, label }) => ({ value, label })), filters.semanticSubject, "전체 과목")}</select></label>`
-      : `<p class="compose-subject-note">${esc(subjects[0]?.label || "")}</p>`;
-    return `<div class="compose-step compose-grade"><div class="compose-step-head"><span class="compose-step-number">1</span><h2>학년</h2></div><label>학년<select data-filter="grade" data-group="compose">${options(["중1", "중2", "중3", "고1", "고2", "고3"], filters.grade, null)}</select></label></div>
-        <div class="compose-step compose-subject"><div class="compose-step-head"><span class="compose-step-number">2</span><h2>과목</h2></div><div class="compose-subject-fields">${subjectField}</div></div>`;
+    const locked = state.sealed || state.receipts.length > 0 ? "disabled" : "";
+    const pressed = (value) => `aria-pressed="${String(filters.semanticSubject || "") === String(value)}"`;
+    const subjectButton = ({ value, label }) =>
+      button("compose-subject", esc(label), `type="button" data-subject="${esc(value)}" ${pressed(value)} ${locked}`);
+    const subjectField = subjects.length === 2
+      ? `<div class="cz-seg" role="group" aria-label="과목">${subjects.map(subjectButton).join("")}</div>`
+      : subjects.length > 2
+        ? `<div class="cz-chips" role="group" aria-label="과목">${[{ value: "", label: "전체 과목" }, ...subjects].map(subjectButton).join("")}</div>`
+        : `<p class="compose-subject-note">${esc(subjects[0]?.label || "")}</p>`;
+    const grades = HOME_GRADES.map(([label, id]) =>
+      button("compose-grade", esc(label), `type="button" class="find-grade grade-${id}" data-grade="${label}" aria-pressed="${filters.grade === label}" ${locked}`)).join("");
+    return `<div class="cz-block cz-who"><div class="cz-grades" role="group" aria-label="학년">${grades}</div>${subjectField}</div>`;
   }
   function filterMarkup(filters, prefix, compose = false) {
     if (compose === "primary" && unifiedIndex()) return unifiedPrimaryMarkup(filters);
@@ -2114,7 +2153,45 @@
     $("modal").classList.add("saved-paper-issue-dialog");
     setOriginalStep("targets");
   }
-  window.Archive2WorkspaceSavedPaperIssue = openSavedPaperIssue;
+  window.Archive2WorkspaceSavedPaperIssue = openSavedPaperAssign;
+  // 저장본 출제(보관함 줄·상세·문제지 만들기 저장 뒤)는 화면 안 패널(archive2-assign.js)로 연다. 옛 iframe 모달은
+  // 주소에 assign=legacy가 있을 때(되돌릴 길)와 학교 기출·단원별 출제에서 그대로 쓴다.
+  function assignRequest(route, opt = {}) {
+    // 로그인이 없으면 요청을 보내지 않고 401로 알려 패널이 로그인 안내를 그린다(headers()의 일반 Error가 '응답 없음'으로 읽히지 않게).
+    if (!teacherSessionOk()) {
+      const error = new Error("교사 로그인이 필요합니다.");
+      error.status = 401;
+      return Promise.reject(error);
+    }
+    return api(route, opt.body, opt.method || (opt.body ? "POST" : "GET"), { headers: opt.headers, timeoutMs: opt.timeoutMs });
+  }
+  async function openSavedPaperAssign(id, options = {}) {
+    const paperId = String(id || "").trim();
+    if (!paperId) throw new Error("출제할 저장한 시험지를 확인할 수 없습니다. 목록으로 돌아가 다시 선택해 주세요.");
+    const Assign = window.Archive2Assign;
+    if (!Assign?.open || Assign.useLegacy(location.search)) return openSavedPaperIssue(paperId);
+    if (Assign.isOpen()) return undefined;
+    state.originalReceipts = [];
+    let papers = Array.isArray(options.papers) ? options.papers : [];
+    if (!papers.length) {
+      // 문제지 만들기에서 저장한 직후처럼 목록 정보가 없을 때는 한 권만 서버에서 읽어 이름·학년·문항 수를 얻는다.
+      const data = await api("/archive-saved-papers/" + encodeURIComponent(paperId));
+      const paper = data.paper;
+      if (!paper?.id) throw new Error("저장한 시험지를 확인할 수 없습니다. 새로고침한 뒤 다시 시도해 주세요.");
+      if (paper.library_status === "TRASHED") throw new Error("휴지통의 시험지는 출제할 수 없습니다. 보관함으로 복원한 뒤 출제해 주세요.");
+      papers = [paper];
+    }
+    const opener = document.activeElement;
+    Assign.open({
+      papers,
+      history: options.history || window.Archive2Library?.currentHistory?.() || null,
+      request: assignRequest,
+      opener,
+      // 출제가 하나라도 저장되면(끝났을 때·닫을 때) 보관함 줄의 출제 이력을 새로 고친다.
+      onDone: () => { window.Archive2Library?.refreshHistory?.(); },
+    });
+    return undefined;
+  }
   function originalIssueBusy() {
     return Boolean(
       $("original-issue-frame")?.contentWindow?.isArchive2OriginalBusy?.() ||
@@ -2252,9 +2329,11 @@
   function quickPools() {
     const index = unifiedIndex();
     if (!Quick || !index) return null;
-    if (quickPoolCache.index !== index || quickPoolCache.meta !== state.metaIndex) {
-      const metaByUid = new Map((state.metaIndex || []).map(row => [row.questionUid || row.uid, row]));
-      quickPoolCache = { index, meta: state.metaIndex, metaByUid, pools: Quick.buildPools(index, { metaByUid }) };
+    // Quick pools use the recorded-meta index; it is built here (not at boot) so it can never be missing.
+    const metaIndex = ensureMetaIndex();
+    if (quickPoolCache.index !== index || quickPoolCache.meta !== metaIndex) {
+      const metaByUid = new Map((metaIndex || []).map(row => [row.questionUid || row.uid, row]));
+      quickPoolCache = { index, meta: metaIndex, metaByUid, pools: Quick.buildPools(index, { metaByUid }) };
     }
     return quickPoolCache.pools;
   }
@@ -2646,10 +2725,54 @@
     showDialog(`${O.displayTitle(exam)} · 유사문제`, `<p class="muted">이 기출의 유사문제 ${sets.length}세트입니다.</p><div class="similar-sets">${rows}</div>`);
   }
   const homeExamRowMarkup = ({ index, exam, at }) => examRowMarkup(exam, index, { at });
+  // ---- First screen first (2026-11-10) ----------------------------------------------------------
+  // The catalog (tens of thousands of questions) takes seconds to download, verify and resolve. The home,
+  // 보관함 and 출제 내역 do not need it, so they are drawn first. The two home parts that read the catalog
+  // (school chips, recent exam rows) start as placeholders of the final height and are filled in place.
+  const HOME_CHIP_PLACEHOLDERS = 8; // homeSchoolChips() returns at most 8
+  const bootWaitText = '<p class="boot-wait-text"><span data-boot-label>자료 준비 중</span> <span data-boot-count aria-hidden="true"></span></p><div class="boot-progress-track" aria-hidden="true"><span class="boot-progress-bar" data-boot-bar></span></div>';
+  function homeChipsMarkup() {
+    if (!state.catalog)
+      return state.bootError ? "" : '<span class="home-chip is-pending" aria-hidden="true"></span>'.repeat(HOME_CHIP_PLACEHOLDERS);
+    return homeSchoolChips().map(({ school }) => button("home-school", esc(school), `type="button" class="home-chip" data-school="${esc(school)}"`)).join("");
+  }
+  function homeRecentTitle() {
+    if (!state.catalog) return readRecentExams().length ? "최근 연 기출" : "최근 연도 기출";
+    return homeExamList().kind === "opened" ? "최근 연 기출" : "최근 연도 기출";
+  }
+  function homeRecentBodyMarkup() {
+    if (!state.catalog) {
+      if (state.bootError)
+        return `<p class="callout danger" role="alert">${esc(state.bootError)} ${button("boot-retry", "다시 시도", 'class="small"')}</p>`;
+      return `<div class="home-recent-pending" data-boot-wait="loading" aria-busy="true"><div class="home-recent-skeleton" aria-hidden="true"><span></span><span></span><span></span></div><div class="home-recent-status">${bootWaitText}</div></div>`;
+    }
+    const examList = homeExamList();
+    return examList.rows.length
+      ? `<div class="exam-rows">${examList.rows.map(homeExamRowMarkup).join("")}</div>`
+      : '<p class="muted">기출 목록을 불러오면 이곳에 표시됩니다.</p>';
+  }
+  // Called when the catalog arrives (or fails): replaces only the two placeholder hosts, so text typed in
+  // the search box and keyboard focus stay where they are.
+  function fillHomeFromCatalog() {
+    if (state.view !== "home") return;
+    const chips = document.querySelector('[data-home-fill="chips"]');
+    const body = document.querySelector('[data-home-fill="recent"]');
+    const title = document.getElementById("home-recent-title");
+    if (chips) chips.innerHTML = homeChipsMarkup();
+    if (title) title.textContent = homeRecentTitle();
+    if (body) body.innerHTML = homeRecentBodyMarkup();
+  }
+  const PREPARING_TITLES = { find: "학교별 기출", compose: "문제지 만들기", health: "자료 점검" };
+  // Body of a screen that cannot be drawn before the catalog: the screen name and the live progress.
+  // The menu already switched; when the catalog is ready the real screen replaces this by itself.
+  function preparingMarkup() {
+    const title = (isQuickAssessmentView() && Quick?.PRODUCTS[state.view]?.title) || PREPARING_TITLES[state.view] || "아카이브";
+    if (state.bootError)
+      return `<section class="panel boot-wait" data-boot-wait="failed"><h1>${esc(title)}</h1><p class="callout danger" role="alert">${esc(state.bootError)}</p><p>${button("boot-retry", "다시 시도", 'class="primary"')} <a href="index.html?legacy=1">기존 아카이브 열기</a></p></section>`;
+    return `<section class="panel boot-wait" data-boot-wait="loading" aria-busy="true"><h1>${esc(title)}</h1>${bootWaitText}<p class="muted">자료 준비가 끝나면 이 화면이 저절로 열립니다.</p></section>`;
+  }
   function renderHome() {
     const recent = drafts().slice(0, 3);
-    const schools = homeSchoolChips();
-    const examList = homeExamList();
     // 학교 기출 is the search above; the four quick assessments come first, 생성문제 last.
     const products = HOME_PRODUCT_REGISTRY
       .filter((product) => product.productKey !== "school-exams")
@@ -2675,7 +2798,7 @@
             ${button("home-search", "찾기", 'type="button" class="primary home-search-submit"')}
           </form>
           <p class="home-hint">학교, 학년, 시험을 띄어 쓰면 모두 맞는 시험지만 나옵니다. 유사문제가 있는 기출은 옆에 함께 나옵니다.</p>
-          <div class="home-chips" aria-label="시험지가 많은 학교">${schools.map(({ school }) => button("home-school", esc(school), `type="button" class="home-chip" data-school="${esc(school)}"`)).join("")}${button("home-all-schools", "전체 학교", 'type="button" class="home-link"')}</div>
+          <div class="home-chips" aria-label="시험지가 많은 학교"><span class="home-chip-list" data-home-fill="chips">${homeChipsMarkup()}</span>${button("home-all-schools", "전체 학교", 'type="button" class="home-link"')}</div>
         </section>
         <section class="home-units" aria-labelledby="home-units-title">
           <h2 id="home-units-title" class="home-title">단원별로 난이도 골라 주기</h2>
@@ -2684,8 +2807,8 @@
         </section>
       </div>
       <section class="home-recent" aria-labelledby="home-recent-title">
-        <div class="home-section-head"><h2 id="home-recent-title">${examList.kind === "opened" ? "최근 연 기출" : "최근 연도 기출"}</h2>${button("home-all-schools", "학교별 기출 전체 보기", 'type="button" class="home-link"')}</div>
-        ${examList.rows.length ? `<div class="exam-rows">${examList.rows.map(homeExamRowMarkup).join("")}</div>` : '<p class="muted">기출 목록을 불러오면 이곳에 표시됩니다.</p>'}
+        <div class="home-section-head"><h2 id="home-recent-title">${homeRecentTitle()}</h2>${button("home-all-schools", "학교별 기출 전체 보기", 'type="button" class="home-link"')}</div>
+        <div data-home-fill="recent">${homeRecentBodyMarkup()}</div>
       </section>
       <div class="home-bottom">
         <section class="home-drafts" aria-labelledby="home-drafts-title">
@@ -2776,17 +2899,28 @@
     // the default end of a range.
     const rangeOptions = scopes.flatMap((s, i) => s.basicScope && !s.unclassified
       ? [{ value: i, label: s.fullLabel || `${s.L1} · ${s.label}` }] : []);
-    const groupMarkup = (rows, detail) => `<div class="scope-list">${unique(rows.map(s => s.L1)).map(g =>
-      `<div class="scope-group"><div class="group-head"><h3>${esc(g)}</h3>${button("scope-group", "모두", `data-group-index="${groups.indexOf(g)}" data-scope-kind="${detail ? "detail" : "basic"}" class="small"`)}</div>${rows.filter(s => s.L1 === g).map(s =>
-        `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}</label><small>${s.count}문항</small></div>`
-      ).join("")}</div>`
-    ).join("")}</div>`;
+    // 과목 묶음은 접을 수 있다. 직접 접고 펼친 것을 먼저 따르고, 아니면 넓은 화면(PC)은 모두 펼치며 좁은 화면은
+    // 고른 단원이 있는 묶음·현재 과목 묶음·첫 묶음만 펼친다(휴대폰에서 목록이 끝없이 길어지지 않게).
+    const wideScreen = Boolean(window.matchMedia?.("(min-width: 1100px)")?.matches);
+    const groupMarkup = (rows, detail) => {
+      const names = unique(rows.map(s => s.L1)), currentSubject = composeSubjectLabel();
+      return `<div class="scope-list">${names.map(g => {
+        const members = rows.filter(s => s.L1 === g);
+        const explicit = state.scopeGroupOpen[g];
+        const open = explicit !== undefined ? explicit
+          : wideScreen || names.length === 1 || g === names[0] || g === currentSubject || members.some(scopeIsSelected);
+        return `<details class="scope-group" data-scope-group="${esc(g)}"${open ? " open" : ""}><summary class="group-head"><h3>${esc(g)}</h3>${button("scope-group", "모두", `data-group-index="${groups.indexOf(g)}" data-scope-kind="${detail ? "detail" : "basic"}" class="small"`)}</summary>${members.map(s =>
+          `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}${s.unclassified ? ' <span class="scope-hint">단원 정보가 아직 없는 문항 · 선택하면 함께 출제</span>' : ""}</label><small>${s.count}문항</small></div>`
+        ).join("")}</details>`;
+      }).join("")}</div>`;
+    };
     const unifiedNotice = unifiedIndex()
-      ? `<p class="muted">출제할 단원을 고르세요. 2015·2022 개정 문항이 한 목록에 함께 들어 있고, 숫자는 지금 출제할 수 있는 문항 수입니다. ‘단원 미분류’는 단원 정보가 아직 없는 문항으로, 선택하면 함께 출제됩니다.</p>${state.scopeNotice ? `<div class="callout" role="status">${esc(state.scopeNotice)}</div>` : ""}${!scopes.length ? '<p class="muted">현재 조건에 맞는 단원이 없습니다. 세부 조건(학교·시험 시기·연도·난이도)을 넓혀 보세요.</p>' : ""}`
+      ? `<p class="muted">출제할 단원을 고르세요. 숫자는 지금 낼 수 있는 문항 수입니다.</p>${state.scopeNotice ? `<div class="callout" role="status">${esc(state.scopeNotice)}</div>` : ""}${!scopes.length ? '<p class="muted">현재 조건에 맞는 단원이 없습니다. 세부 조건(학교·시험 시기·연도·난이도)을 넓혀 보세요.</p>' : ""}`
       : "";
     return `<div class="resultbar"><h2>출제 범위</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
       ${unifiedNotice || '<p class="muted">학년의 1·2학기 전체 단원입니다. 숫자는 지금 출제할 수 있는 문항 수이며, 같은 문항은 한 번만 셉니다. 난이도를 고르지 않으면 난이도가 정해지지 않은 문항까지 포함해 전체에서 고릅니다.</p>'}
-      ${rangeOptions.length ? `<div class="range-controls"><label>범위 시작<select id="scope-start">${options(
+      ${groupMarkup(basic, false)}
+      ${rangeOptions.length ? `<details class="range-more"><summary>연속 범위로 고르기</summary><div class="range-controls"><label>범위 시작<select id="scope-start">${options(
         rangeOptions,
         rangeOptions[0]?.value ?? 0,
         null,
@@ -2794,8 +2928,7 @@
         rangeOptions,
         rangeOptions.at(-1)?.value ?? 0,
         null,
-      )}</select></label>${button("scope-range", "연속 범위 선택")}</div>` : ""}
-      ${groupMarkup(basic, false)}`;
+      )}</select></label>${button("scope-range", "연속 범위 선택")}</div></details>` : ""}`;
   }
   function bucketButtons(current, row = "") {
     return `<div class="bucket-set" role="group" aria-label="난이도 선택">${button("bucket-all", "전체", `data-row="${esc(row)}" aria-pressed="${!current.length}" ${state.sealed ? "disabled" : ""}`)}${[1, 2, 3, 4, 5].map((n) => button("bucket", n, `data-bucket="${n}" data-row="${esc(row)}" aria-pressed="${current.includes(n)}" ${state.sealed ? "disabled" : ""}`)).join("")}</div>`;
@@ -2869,8 +3002,61 @@
     const sourceTitle = state.derivationSource?.parentDisplayName || "저장한 시험지";
     return `<section class="panel compose-composition"><div class="compose-step-head"><span class="compose-step-number">4</span><h2>원본 저장 시험지의 고정된 범위</h2></div><p class="muted">원본 ${esc(sourceTitle)}의 범위와 ${state.selected.length}문항으로 새 문제지를 만들었습니다. 문항 교체와 출력 설정을 바꿔 새 시험지로 저장할 수 있습니다.</p><p class="muted">바꾸지 않은 문항은 저장 당시 내용 그대로 사용합니다. 원래 저장한 시험지는 바뀌지 않습니다.</p></section>`;
   }
+  // ---- 문제지 만들기 한 화면 (2026-11-10) -----------------------------------------------------------------
+  // 왼쪽은 조건(renderPrimary·renderScopes·renderComposition), 오른쪽은 결과와 마무리(renderResult). 로직(선택 엔진·저장·
+  // 초안 자동저장·고정/교체)은 그대로이고 마크업만 이 두 칸으로 재배치했다. 조건을 바꿔도 자동으로 다시 뽑지 않는다
+  // (교사가 고정·교체한 문항이 사라지기 때문). 대신 "지금 조건으로 N문항 가능 · 요청 M문항"을 항상 보인다.
+  // 선택된 문항의 단원 이름: 통합 단원 목록의 이름을 먼저 쓰고, 없으면 기록된 L2를 쓴다.
+  const composeUnitLabel = (record) => unifiedIndex()?.byUid.get(record.questionUid)?.unitLabel || record.L2 || "";
+  function composeStepLabel(row) {
+    const label = row.label || "선택한 전체 범위";
+    const buckets = row.difficultyBuckets || [];
+    return buckets.length ? `${label} · ${buckets.join("·")}단계` : label;
+  }
+  let composeLiveInfo = null;
+  function composeLiveMarkup(info) {
+    const { rows, perRow, shortages } = info;
+    const requested = rows.reduce((n, row) => n + row.count, 0);
+    const possible = perRow.reduce((n, item) => n + Math.min(item.row.count, item.available), 0);
+    const countValid = state.distribution === "all" ||
+      (Number.isInteger(state.count) && state.count >= 1 && state.count <= 400);
+    const regenerate = state.selected.length > 0;
+    const overLimit = countValid && requested > 400;
+    let line;
+    if (!rows.length)
+      line = '<p class="cz-feasible muted" data-cz-feasible="empty">단원을 고르면 뽑을 수 있는 문항 수가 여기에 보입니다.</p>';
+    else if (!countValid)
+      line = '<p class="cz-feasible muted" data-cz-feasible="count">문항 수는 1~400 사이로 입력해 주세요.</p>';
+    else if (overLimit)
+      line = `<p class="cz-feasible danger-text" data-cz-feasible="limit">한 번에 최대 400문항입니다(지금 요청 ${requested}문항). 단원이나 문항 수를 줄여 주세요.</p>`;
+    else if (!possible)
+      line = '<p class="cz-feasible danger-text" data-cz-feasible="none">고른 조건에 맞는 문항이 없습니다. 단원이나 난이도 단계 조건을 넓혀 보세요.</p>';
+    else {
+      const unitsNote = rows.length > 1 && state.distribution !== "pool" ? ` (단원 ${rows.length}개)` : "";
+      line = `<p class="cz-feasible" data-cz-feasible="ok"><span class="cz-feasible-n">${possible}문항</span> 가능 <span aria-hidden="true">·</span> 요청 ${requested}문항${unitsNote}</p>`;
+      if (shortages.length)
+        line += `<p class="cz-feasible-note" data-cz-feasible-short>모자라도 막지 않고 있는 만큼만 넣습니다. ${shortages.slice(0, 3).map((item) =>
+          `${esc(composeStepLabel(item.row))}: 요청 ${item.row.count} · 가능 ${item.available}`).join(" / ")}${shortages.length > 3 ? ` 외 ${shortages.length - 3}곳` : ""}</p>`;
+    }
+    const disabled = !rows.length || state.sealed || state.busy || !countValid || !possible || overLimit;
+    composeLiveInfo = { requested, possible, disabled, hasRows: rows.length > 0, overLimit };
+    return `<div class="cz-live" data-cz-live>${line}${button(
+      "generate",
+      regenerate ? "같은 조건으로 다시 뽑기" : "문제지 만들기",
+      `class="${regenerate ? "cz-generate" : "primary cz-generate"}" ${disabled ? "disabled" : ""}`,
+    )}</div>`;
+  }
+  function composeFilesMarkup() {
+    return `<div class="cz-files" role="group" aria-label="작업 파일">${button("backup", "작업 백업 다운로드", 'class="small"')}${button("import", "백업 불러오기", 'class="small"')}</div>`;
+  }
+  // 조건 순서: 학년 → 과목 → 난이도 단계 → 문항 수 → 단원(긴 목록) → 더 자세한 조건 → 요약 + 문제지 만들기.
+  // 짧은 조작을 위에 두고 긴 단원 목록을 마지막에 두어, 목록이 길어도 단계·문항 수가 화면 아래로 밀리지 않는다.
   function renderComposition() {
-    if (state.derivationSource) return renderDerivedComposition();
+    const parts = composeParts();
+    return parts.amount + parts.tail;
+  }
+  function composeParts() {
+    if (state.derivationSource) return { amount: renderDerivedComposition(), tail: "" };
     const fixedAssessment = isAssessmentRecipeMode();
     if (fixedAssessment) {
       state.distribution = "pool";
@@ -2881,8 +3067,7 @@
       sourceFiles: state.sources,
       primaryPaths: selectedScopePaths(),
     };
-    const rows = planRows(),
-      total = rows.reduce((n, r) => n + r.count, 0);
+    const rows = planRows();
     const excluded = C.composeExclusions(context()).union;
     const candidates = pool().filter(
       (r) =>
@@ -2891,12 +3076,11 @@
         workspaceEligibility(r).ok &&
         !excluded.has(r.questionUid),
     );
-    const shortages = rows
-      .map((row) => ({
-        row,
-        available: candidates.filter((r) => C.rowMatches(r, row, workspaceMatchOptions())).length,
-      }))
-      .filter((item) => item.available < item.row.count);
+    const perRow = rows.map((row) => ({
+      row,
+      available: candidates.filter((r) => C.rowMatches(r, row, workspaceMatchOptions())).length,
+    }));
+    const shortages = perRow.filter((item) => item.available < item.row.count);
     // Older drafts may still carry the strict concept/type pair; it is only shown while set.
     const legacyAdvanced = state.filters.L3 || state.filters.L4 ? composeAdvancedChoices(selectionFilters) : null;
     const facets = composeMetaFacets();
@@ -2913,21 +3097,31 @@
       : facets.l3.length || facets.pt.length || facets.tpl.length
         ? `이 범위 ${facets.poolSize}문항 중 기록된 분류가 있는 문항에서 고를 수 있습니다. ‘검토 대기’는 아직 승인되지 않은 분류이며, 승인된 분류와 같은 방식으로 사용할 수 있습니다.`
         : "이 범위의 문항에는 기록된 개념·유형·풀이 분류가 아직 없습니다.";
-    return `<section class="panel compose-composition"><div class="compose-step-head"><span class="compose-step-number">4</span><h2>구성</h2><span class="muted">문항 수 · 난이도</span></div><div class="inline"><label>배분 방식<select id="distribution" ${state.sealed ? "disabled" : ""}>${options(
-      [
-        { value: "equal", label: "단원별 균등" },
-        { value: "pool", label: "전체에서 선택" },
-        { value: "custom", label: "직접 배분" },
-        { value: "all", label: "조건 일치 전부" },
-      ],
-      state.distribution,
-      null,
-    )}</select></label><label>${state.distribution === "pool" ? "총 문항 수" : "단원당 문항 수"}<input id="count" type="number" min="1" max="400" value="${esc(state.count)}" ${state.distribution === "all" || state.sealed ? "disabled" : ""}></label></div>
-      <div class="compose-difficulty"><strong id="compose-difficulty-label">난이도</strong>${bucketButtons(state.buckets)}<p class="muted">고르지 않으면 전체에서 출제합니다. 난이도를 고르면 해당 난이도가 확인된 문항만 선택합니다.</p></div>
-      ${state.uidRoute ? "" : `<details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건${detailCount ? ` <span class="badge" aria-label="적용 중인 세부 조건 ${detailCount}개">${detailCount}개 적용 중</span>` : ""}</summary>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy" data-meta-facets><strong>개념·유형·풀이로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="metaL3" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.l3, state.filters.metaL3, "전체 개념")}</select></label><label>유형<select data-filter="metaPT" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.pt, state.filters.metaPT, "전체 유형")}</select></label><label>풀이<select data-filter="metaTPL" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.tpl, state.filters.metaTPL, "전체 풀이")}</select></label><label class="check"><input type="checkbox" data-filter="metaApprovedOnly" data-group="compose" ${state.filters.metaApprovedOnly ? "checked" : ""} ${facetDisabled}>승인된 분류만</label></div><p class="muted">${esc(facetNote)}</p>${legacyAdvanced ? `<div class="compose-detail-fields"><label>기존 개념 조건<select data-filter="L3" data-group="compose" ${facetDisabled}>${advancedOptions(legacyAdvanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>기존 유형 조건<select data-filter="L4" data-group="compose" ${facetDisabled}>${advancedOptions(legacyAdvanced.types, state.filters.L4, "전체 유형")}</select></label></div>` : ""}</div></details>`}
+    const amountNote = state.distribution === "pool"
+      ? `전체 ${esc(state.count)}문항`
+      : state.distribution === "all"
+        ? "조건에 맞는 문항 전부"
+        : `단원마다 ${esc(state.count)}문항씩`;
+    const countDisabled = state.distribution === "all" || state.sealed ? "disabled" : "";
+    const stepper = `<span class="cz-stepper" role="group" aria-labelledby="compose-count-label">${button("count-step", "", `type="button" class="cz-step-btn is-minus" data-step="-1" aria-label="문항 한 개 줄이기" ${countDisabled}`)}<input id="count" type="number" inputmode="numeric" min="1" max="400" value="${esc(state.count)}" aria-labelledby="compose-count-label" ${countDisabled}>${button("count-step", "", `type="button" class="cz-step-btn is-plus" data-step="1" aria-label="문항 한 개 늘리기" ${countDisabled}`)}</span>`;
+    const detail = `<details class="compose-detail cz-detail" ${state.composeDetailOpen ? "open" : ""}><summary>더 자세한 조건${detailCount ? ` <span class="badge" aria-label="적용 중인 세부 조건 ${detailCount}개">${detailCount}개 적용 중</span>` : ""}</summary><div class="cz-detail-body">
+      <div class="inline"><label>배분 방식<select id="distribution" ${state.sealed ? "disabled" : ""}>${options(
+        [
+          { value: "equal", label: "단원별 균등" },
+          { value: "pool", label: "전체에서 선택" },
+          { value: "custom", label: "직접 배분" },
+          { value: "all", label: "조건 일치 전부" },
+        ],
+        state.distribution,
+        null,
+      )}</select></label></div>
+      ${state.uidRoute ? "" : `${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy" data-meta-facets><strong>개념·유형·풀이로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="metaL3" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.l3, state.filters.metaL3, "전체 개념")}</select></label><label>유형<select data-filter="metaPT" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.pt, state.filters.metaPT, "전체 유형")}</select></label><label>풀이<select data-filter="metaTPL" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.tpl, state.filters.metaTPL, "전체 풀이")}</select></label><label class="check"><input type="checkbox" data-filter="metaApprovedOnly" data-group="compose" ${state.filters.metaApprovedOnly ? "checked" : ""} ${facetDisabled}>승인된 분류만</label></div><p class="muted">${esc(facetNote)}</p>${legacyAdvanced ? `<div class="compose-detail-fields"><label>기존 개념 조건<select data-filter="L3" data-group="compose" ${facetDisabled}>${advancedOptions(legacyAdvanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>기존 유형 조건<select data-filter="L4" data-group="compose" ${facetDisabled}>${advancedOptions(legacyAdvanced.types, state.filters.L4, "전체 유형")}</select></label></div>` : ""}</div>`}
       ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : esc(row.difficultyBuckets.join(" · ")) || "전체"}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${esc(row.count)}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : esc(row.count)}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
-      ${shortages.length ? `<div class="callout danger"><strong>현재 조건에서 ${shortages.reduce((n, s) => n + s.row.count - s.available, 0)}문항이 부족합니다.</strong>${shortages.map((s) => `<div>${esc(s.row.label || "선택 범위")} · 요청 ${s.row.count} / 신규 가능 ${s.available}</div>`).join("")}<p>문항 수를 낮추거나, 난이도·출처 범위를 직접 조정하세요.</p></div>` : ""}
-      <div class="resultbar compose-create-bar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 문항을 최신 연도부터(2026년, 2025년, 2024년 순) 선택하고, 연도를 알 수 없는 자료는 마지막에 선택합니다. 같은 연도 안에서는 문항을 섞습니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
+      <p class="muted">조건에 맞는 문항을 최신 연도부터(2026년, 2025년, 2024년 순) 선택하고, 연도를 알 수 없는 자료는 마지막에 선택합니다. 같은 연도 안에서는 문항을 섞습니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p>
+      ${composeFilesMarkup()}</div></details>`;
+    const amount = `<div class="cz-block cz-amount"><div class="compose-difficulty cz-levels"><div class="cz-levels-head"><strong id="compose-difficulty-label">난이도 단계</strong><span class="muted">고르지 않으면 모든 단계에서 뽑습니다.</span></div>${bucketButtons(state.buckets)}</div>
+      <div class="cz-amount-row"><span class="cz-label" id="compose-count-label">문항 수</span>${stepper}<span class="cz-amount-note">${amountNote}</span></div></div>`;
+    return { amount, tail: `${detail}${composeLiveMarkup({ rows, perRow, shortages })}` };
   }
   // Year spread of the generated paper, in the recency order the selection used.
   function yearDistribution(records) {
@@ -2947,20 +3141,42 @@
     const repeated = coverage.repeatedCount ? ` (같은 유형 중복 ${coverage.repeatedCount}문항)` : "";
     return `<div class="summary-line" data-type-coverage><span>기록된 유형</span><strong>${coverage.typedCount}문항 · 서로 다른 유형 ${coverage.distinctTypes}가지${repeated}</strong></div>`;
   }
-  function renderInspector() {
-    const r = state.selected.length ? review() : null;
-    const summary = `<h2>${esc(state.round)}차 테스트</h2><div class="summary-number">${state.selected.length}<small class="muted" style="font-size:14px"> 문항</small></div>
-      <div class="summary-line"><span>선택 범위</span><strong>${state.derivationSource ? "원본 유지" : `${selectedScopeOptions().length}개`}</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((r) => r.questionUids)).length}문항</strong></div>
+  // 요약: 문항 수·권 수·단원/단계 구성, 모자랐던 곳, 검증 결과. 저장 확인 탭이 하던 일을 오른쪽 위로 옮겼다.
+  function renderResultSummary(r = state.selected.length ? review() : null) {
+    const parts = Math.max(1, Math.ceil(state.selected.length / 50));
+    const tally = (keyOf) => {
+      const counts = new Map();
+      for (const record of state.selected) counts.set(keyOf(record), (counts.get(keyOf(record)) || 0) + 1);
+      return counts;
+    };
+    const units = [...tally((record) => composeUnitLabel(record) || "단원 미분류")];
+    const unitText = units.length > 4
+      ? `${units.slice(0, 4).map(([name, n]) => `${esc(name)} ${n}`).join(" · ")} 외 ${units.length - 4}개 단원`
+      : units.map(([name, n]) => `${esc(name)} ${n}`).join(" · ");
+    const steps = [...tally((record) => Number(record.difficultyBucket) || 0)]
+      .sort((a, b) => (a[0] || 99) - (b[0] || 99));
+    const stepText = steps.map(([step, n]) => `${step ? `${step}단계` : "단계 미지정"} ${n}`).join(" · ");
+    const shortage = state.composeShortage.length
+      ? `<div class="callout cz-shortage" role="status" data-compose-shortage><strong>모자라서 있는 만큼만 넣었습니다.</strong><ul>${state.composeShortage.map((item) =>
+        `<li>${esc(composeStepLabel(item))}: ${item.requested - item.got}문항 모자람 (요청 ${item.requested}, 넣은 문항 ${item.got})</li>`).join("")}</ul></div>`
+      : "";
+    return `<div class="cz-summary" data-cz-summary><h2 class="cz-result-title" data-cz-result-title>만들어진 문제지</h2>
+      <div class="cz-count"><span class="cz-big">${state.selected.length}문항</span><span class="cz-parts">${parts}권</span></div>
+      <p class="cz-mix">${unitText}</p><p class="cz-mix">${stepText}</p>
+      ${shortage}
+      <div class="cz-facts"><div class="summary-line"><span>회차</span><strong>${esc(state.round)}차</strong></div><div class="summary-line"><span>선택 범위</span><strong>${state.derivationSource ? "원본 유지" : `${selectedScopeOptions().length}개`}</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((round) => round.questionUids)).length}문항</strong></div>
       ${typeCoverageLine()}
-      ${state.selected.length ? `<div class="summary-line" data-year-distribution><span>출제 연도</span><strong>${yearDistribution(state.selected).map((item) => `${esc(item.label)} ${item.count}문항`).join(" · ")}</strong></div>` : ""}
+      ${state.selected.length ? `<div class="summary-line" data-year-distribution><span>출제 연도</span><strong>${yearDistribution(state.selected).map((item) => `${esc(item.label)} ${item.count}문항`).join(" · ")}</strong></div>` : ""}</div>
       ${r ? `<div class="callout ${r.status === "HARD_BLOCK" ? "danger" : r.status === "PASS" ? "good" : ""}"><strong>${r.status === "PASS" ? "검증 통과" : r.status === "WARN" ? "확인할 내용이 있습니다" : "출력·출제 차단"}</strong>${[...r.hardFailures, ...r.warnings].map((m) => `<div>${esc(m)}</div>`).join("")}<div>중복 없이 ${r.metrics.uniqueUidCount}문항 · 원본 ${r.metrics.sourceCount}개 시험</div></div>` : ""}
-      ${r?.warnings.length ? `<label class="check"><input type="checkbox" id="ack-warnings" ${state.ackWarnings ? "checked" : ""}>안내를 확인했습니다.</label>` : ""}`;
+      ${r?.warnings.length ? `<label class="check"><input type="checkbox" id="ack-warnings" ${state.ackWarnings ? "checked" : ""}>안내를 확인했습니다.</label>` : ""}</div>`;
+  }
+  // 출력 설정(제목·머리말·쪽당 문항·QR 등)은 접어 둔다. 열림 여부는 toggle 이벤트로 state에 기억한다.
+  function renderOutputSettings() {
     const frozen = Parts.receipt(state.receipts, state.previewIndex),
       frozenPaper = frozen && frozenPaperCache.get(frozen.key);
-    const header =
-      (frozen
-        ? '<p class="callout">이미 출제한 문제지의 출력 설정입니다. 수정할 문제지를 먼저 선택하세요.</p>'
-        : "") +
+    return `<details class="cz-output" data-cz-output ${state.outputSettingsOpen ? "open" : ""}><summary>출력 설정</summary>${(frozen
+      ? '<p class="callout">이미 출제한 문제지의 출력 설정입니다. 수정할 문제지를 먼저 선택하세요.</p>'
+      : "") +
       O.markup(
         frozenPaper
           ? {
@@ -2971,36 +3187,49 @@
           : state,
         "studio",
         Boolean(frozen) || state.sealed,
-      );
-    const saveHardFailures = (r?.hardFailures || []).filter((failure) => failure !== "문항 목록이 갱신되었습니다. 다시 만들어 주세요.");
-    const saveBlocked = !state.selected.length || saveHardFailures.length > 0;
+      )}</details>`;
+  }
+  // 현재 편집본이 이미 저장되어 있으면 그 저장본의 id들(권 순서)을, 아니면 빈 배열을 준다.
+  function currentSavedPaperIds() {
+    const saved = state.saveResultState === "SAVED" &&
+      Boolean(state.saveResultSignature) && state.saveResultSignature === saveWorkSignature();
+    return saved ? savedPaperIds(state.lastSavedPaperIds) : [];
+  }
+  // 마무리 버튼 세 개: 출력 · 보관함에 저장 · 저장하고 반에 출제(이 화면의 주 버튼).
+  function composeFinishButtons(r, { compact = false } = {}) {
+    const warnBlocked = r.warnings.length > 0 && !state.ackWarnings;
+    const saveHardFailures = r.hardFailures.filter((failure) => failure !== "문항 목록이 갱신되었습니다. 다시 만들어 주세요.");
+    const saveBlocked = !state.selected.length || saveHardFailures.length > 0 || warnBlocked;
+    const printDisabled = r.status === "HARD_BLOCK" || warnBlocked;
+    const alreadySaved = currentSavedPaperIds().length > 0;
+    const assignDisabled = state.assignBusy || state.saveBusy || (!alreadySaved && saveBlocked);
+    return {
+      printDisabled,
+      print: button("print", "출력", `class="cz-secondary" ${printDisabled ? "disabled" : ""}`),
+      save: button("save-paper", state.saveBusy ? "저장 중…" : "보관함에 저장", `class="cz-secondary" ${state.saveBusy || saveBlocked ? "disabled" : ""}`),
+      assign: button("save-and-assign", state.assignBusy ? "여는 중…" : alreadySaved ? "저장한 문제지 반에 출제" : "저장하고 반에 출제", `class="primary cz-primary" ${assignDisabled ? "disabled" : ""}`),
+    };
+  }
+  function renderResultFinish(r = state.selected.length ? review() : null) {
+    if (!r) return '<div class="cz-finish" data-cz-finish></div>';
+    const buttons = composeFinishButtons(r);
     const saveResultCurrent = Boolean(state.saveResultSignature) &&
       state.saveResultSignature === saveWorkSignature();
     const savedResult = state.saveResultState === "RESULT_UNKNOWN"
-      ? '<div class="callout danger" role="status" aria-live="polite">저장 응답을 확인하지 못했습니다. 작업 중인 문제지의 편집은 잠겨 있습니다. 본문 위의 ‘저장 결과 확인’을 눌러 주세요. 출력과 작업 백업은 사용할 수 있습니다.</div>'
+      ? '<div class="callout danger" role="status" aria-live="polite">저장 응답을 확인하지 못했습니다. 작업 중인 문제지의 편집은 잠겨 있습니다. 위의 ‘저장 결과 확인’을 눌러 주세요. 출력과 작업 백업은 사용할 수 있습니다.</div>'
       : state.saveError && saveResultCurrent
-      ? `<div class="callout danger" role="alert">저장하지 못했습니다. 편집한 문제지는 유지됩니다.<br>${esc(teacherErrorMessage(state.saveError))}</div>`
-      : state.saveMessage && saveResultCurrent
-        ? `<div class="callout good" role="status" aria-live="polite"><strong>${esc(state.saveMessage)}</strong><p>출제와 시험지·해설·정답 출력은 본문 위의 저장본을 사용합니다.</p></div>`
-          : "";
+        ? `<div class="callout danger" role="alert">저장하지 못했습니다. 편집한 문제지는 유지됩니다.<br>${esc(teacherErrorMessage(state.saveError))}</div>`
+        : ""; // 저장했다는 안내는 위의 "마지막 저장본"이 이미 말한다(같은 문장을 두 곳에 쓰지 않는다).
     const saveStaleNotice = state.indexVersion !== state.catalog.indexVersion
       ? '<div class="callout">문항 목록 버전이 달라 서버가 저장 시 각 문항 내용과 출제 범위를 다시 확인합니다.</div>'
       : "";
-    return `<aside class="inspector ${state.mobileInspectorOpen ? "mobile-open" : ""}"><section class="panel">${button("close-inspector", "설정 닫기", 'class="mobile-sheet-close"')}<div class="tabs" role="tablist">${[
-      ["summary", "저장 확인"],
-      ["header", "출력 설정"],
-    ]
-      .map(([k, l]) =>
-        button(
-          "inspector",
-          l,
-          `data-tab="${k}" role="tab" aria-selected="${state.inspector === k}" class="${state.inspector === k ? "active" : ""}"`,
-        ),
-      )
-      .join(
-        "",
-      )}</div><div>${state.inspector === "header" ? header : summary + saveStaleNotice}</div>
-      ${state.selected.length ? `<div class="actions" style="margin-top:18px">${button("print", "출력", `class="small" ${r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}${button("save-paper", state.saveBusy ? "저장 중…" : "시험지 저장", `class="primary" ${state.saveBusy || saveBlocked || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div><div class="actions" style="margin-top:12px">${button("backup", "작업 백업 다운로드", 'class="small"')}${button("import", "백업 불러오기", 'class="small"')}</div>${savedResult}` : '<p class="muted">문항을 선택한 뒤 시험지 저장을 눌러 완성본을 보관하세요.</p>'}</section></aside>`;
+    // 저장 결과를 모를 때는 위 복구 영역의 버튼(저장 결과 확인·출력·백업)만 쓴다.
+    if (state.saveResultState === "RESULT_UNKNOWN") return `<div class="cz-finish" data-cz-finish>${savedResult}</div>`;
+    return `<div class="cz-finish" data-cz-finish>${saveStaleNotice}${savedResult}<div class="cz-actions" role="group" aria-label="마무리">${buttons.print}${buttons.save}${buttons.assign}<details class="cz-more cz-finish-more"><summary>더보기</summary><div class="cz-more-menu">${button("backup", "작업 백업 다운로드", 'class="small"')}${button("import", "백업 불러오기", 'class="small"')}</div></details></div></div>`;
+  }
+  // 예전 오른쪽 패널(요약 + 마무리). 화면은 요약과 마무리를 따로 놓지만 함수명은 유지한다.
+  function renderInspector() {
+    return renderResultSummary() + renderOutputSettings() + renderResultFinish();
   }
   // Local output and backup stay available while the save result is unknown (they do not change it).
   function recoveryOutputMarkup() {
@@ -3051,13 +3280,17 @@
   function refreshComposeSaveContinuity() {
     const host = document.getElementById("compose-save-continuity");
     if (host) host.innerHTML = renderSaveRecovery() + renderSavedContinuity();
-    const mobileActions = document.querySelector(".mobile-actions");
-    const mobileMarkup = renderMobileActions();
-    if (mobileActions) {
-      if (mobileMarkup) mobileActions.outerHTML = mobileMarkup;
-      else mobileActions.remove();
-    } else if (mobileMarkup) {
-      document.querySelector("#content")?.insertAdjacentHTML("beforeend", mobileMarkup);
+    refreshComposeBar();
+  }
+  // 하단 고정 띠(휴대폰·좁은 화면)만 새로 그린다.
+  function refreshComposeBar() {
+    const bar = document.querySelector(".cz-bar");
+    const markup = renderMobileActions();
+    if (bar) {
+      if (markup) bar.outerHTML = markup;
+      else bar.remove();
+    } else if (markup) {
+      document.querySelector("#content")?.insertAdjacentHTML("beforeend", markup);
     }
   }
   function renderPaper() {
@@ -3070,7 +3303,7 @@
         button(
           "output-mode",
           l,
-          `data-mode="${k}" class="small ${state.outputMode === k ? "active" : ""}"`,
+          `data-mode="${k}" class="small ${state.outputMode === k ? "active" : ""}" aria-pressed="${state.outputMode === k}"`,
         ),
       )
       .join("");
@@ -3088,39 +3321,82 @@
       .map((r, i) =>
         Parts.partIndex(i) !== state.previewIndex
           ? ""
-          : `<div data-question-uid="${r.questionUid}" class="paper-row ${state.pins.includes(r.questionUid) ? "pinned" : ""}"><strong>${(i % 50) + 1}</strong><div class="description">${esc(r.L2)} · 난이도 ${r.difficultyBucket}<br><span class="muted">${esc(r.year)} ${esc(r.school)} · 원본 ${esc(r.sourceQuestionNo)}번 · ${esc(displayTemplate(r))}</span></div><div class="actions">${button("pin", state.pins.includes(r.questionUid) ? "고정됨" : "고정", `data-index="${i}" aria-pressed="${state.pins.includes(r.questionUid)}" class="small" ${state.sealed || lockedIndex(i) ? "disabled" : ""}`)}${button("replace", "교체", `data-index="${i}" class="small" ${state.sealed || lockedIndex(i) ? "disabled" : ""}`)}</div></div>`,
+          : `<div data-question-uid="${r.questionUid}" class="paper-row ${state.pins.includes(r.questionUid) ? "pinned" : ""}"><strong>${(i % 50) + 1}</strong><div class="description">${esc(composeUnitLabel(r))} · 난이도 ${r.difficultyBucket}<br><span class="muted">${esc(r.year)} ${esc(r.school)} · 원본 ${esc(r.sourceQuestionNo)}번 · ${esc(displayTemplate(r))}</span></div><div class="actions">${button("pin", state.pins.includes(r.questionUid) ? "고정됨" : "고정", `data-index="${i}" aria-pressed="${state.pins.includes(r.questionUid)}" class="small" ${state.sealed || lockedIndex(i) ? "disabled" : ""}`)}${button("replace", "교체", `data-index="${i}" class="small" ${state.sealed || lockedIndex(i) ? "disabled" : ""}`)}</div></div>`,
       )
       .join("");
-    return `<section class="panel paper-panel"><div class="paper-toolbar"><div class="actions mode-switch">${modes}</div><span class="muted paper-count">${state.selected.length}문항</span><label class="part-select">문제지<select id="preview-index">${options(
+    // 권 고르기: 여러 권일 때만 보인다(한 권이면 고를 것이 없다). 선택값은 미리보기·출력·교체 목록이 따른다.
+    const partSelect = parts < 2 ? "" : `<label class="part-select">문제지<select id="preview-index">${options(
       Array.from({ length: parts }, (_, i) => ({
         value: i,
         label: `${i + 1}권 / ${parts}권${Parts.receipt(state.receipts, i) ? " · 출제됨" : ""}`,
       })),
       state.previewIndex,
       null,
-    )}</select></label></div><details id="question-list" class="question-manager" ${state.questionListOpen ? "open" : ""}><summary>문항별 고정·교체 (${state.selected.length}문항)</summary><div class="actions batch-tools">${tools}</div><div class="paper-list">${rows}</div></details><div id="preview-host"><div class="loading">실제 출력 엔진으로 미리보기를 준비합니다.</div></div></section>`;
+    )}</select></label>`;
+    return `<section class="paper-panel cz-paper">${partSelect}<details id="question-list" class="question-manager" ${state.questionListOpen ? "open" : ""}><summary>문항별 고정·교체 (${state.selected.length}문항)</summary><div class="actions batch-tools">${tools}</div><div class="paper-list">${rows}</div></details>
+      <div class="paper-toolbar cz-preview-bar"><div class="actions mode-switch" role="group" aria-label="미리보기 종류">${modes}</div><span class="muted paper-count">${state.selected.length}문항</span>${button("preview-toggle", state.previewOpen ? "미리보기 접기" : "미리보기 펼치기", `class="small cz-preview-toggle" aria-expanded="${state.previewOpen}" aria-controls="preview-host"`)}</div>
+      ${state.previewOpen ? '<div id="preview-host"><div class="loading">실제 출력 엔진으로 미리보기를 준비합니다.</div></div>' : ""}</section>`;
   }
-  function renderMobileActions() {
+  // 하단 고정 띠(960~1100px 사이와 그보다 좁은 화면): 결과 전에는 "N문항 가능 + 문제지 만들기",
+  // 결과 뒤에는 "20문항 · 1권 + 출력 + 더보기". 폭이 넓으면 CSS가 숨긴다.
+  function renderMobileActions(r = state.selected.length ? review() : null) {
     if (state.saveResultState === "RESULT_UNKNOWN")
-      return '<div class="mobile-actions">' + button("save-paper", "저장 결과 확인", 'class="primary"') +
-        (state.selected.length ? button("print", "출력", 'class="small"') : "") + "</div>";
-    const savedCurrent = state.saveResultState === "SAVED" &&
-      Boolean(state.saveResultSignature) && state.saveResultSignature === saveWorkSignature();
-    if (savedCurrent && state.lastSavedPaperIds.length) {
-      const id = state.lastSavedPaperIds[0];
-      const label = state.lastSavedPaperIds.length > 1 ? "1권 출제" : "이 저장본 출제";
-      return `<div class="mobile-actions">${button("saved-paper-issue", label, `data-paper-id="${esc(id)}" class="primary mobile-saved-paper-assign"`)}</div>`;
+      return '<div class="cz-bar" role="region" aria-label="문제지 작업"><div class="cz-bar-text"><strong class="cz-bar-count">저장 결과 확인 필요</strong></div>' +
+        button("save-paper", "저장 결과 확인", 'class="primary cz-bar-main"') +
+        (state.selected.length ? button("print", "출력", 'class="cz-bar-sub"') : "") + "</div>";
+    if (!r) {
+      if (state.derivationSource) return "";
+      const info = composeLiveInfo;
+      const disabled = !info || info.disabled;
+      return `<div class="cz-bar" role="region" aria-label="문제지 작업"><div class="cz-bar-text">${info?.hasRows && info.overLimit
+        ? `<strong class="cz-bar-count">최대 400문항</strong><span class="cz-bar-note">지금 요청 ${info.requested}문항</span>`
+        : info?.hasRows
+        ? `<strong class="cz-bar-count">${info.possible}문항 가능</strong><span class="cz-bar-note">요청 ${info.requested}문항</span>`
+        : '<strong class="cz-bar-count">조건을 고르세요</strong><span class="cz-bar-note">단원을 고르면 문항 수가 보입니다</span>'}</div>${button("generate", "문제지 만들기", `class="primary cz-bar-main" ${disabled ? "disabled" : ""}`)}</div>`;
     }
-    if (!state.selected.length) return "";
-    const r = review(),
-      blocked =
-        r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings);
-    const saveBlocked = r.hardFailures.some((failure) => failure !== "문항 목록이 갱신되었습니다. 다시 만들어 주세요.");
-    return `<div class="mobile-actions">${button("mobile-inspector", "출력 설정")}${button("print", "출력", `class="small" ${blocked ? "disabled" : ""}`)}${button("save-paper", state.saveBusy ? "저장 중…" : "시험지 저장", `class="primary" ${state.saveBusy || saveBlocked || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div>`;
+    const buttons = composeFinishButtons(r);
+    const parts = Math.max(1, Math.ceil(state.selected.length / 50));
+    const saved = currentSavedPaperIds().length > 0;
+    return `<div class="cz-bar" role="region" aria-label="문제지 작업"><div class="cz-bar-text"><strong class="cz-bar-count">${state.selected.length}문항 · ${parts}권</strong>${saved ? '<span class="cz-bar-note">저장했습니다</span>' : ""}</div>${button("print", "출력", `class="cz-bar-sub" ${buttons.printDisabled ? "disabled" : ""}`)}<details class="cz-more cz-bar-more"><summary>더보기</summary><div class="cz-more-menu">${buttons.save}${buttons.assign}${button("backup", "작업 백업 다운로드", 'class="small"')}</div></details></div>`;
+  }
+  function composeSourceNote() {
+    if (state.uidRoute && !state.uidRoute.error)
+      return `<p class="cz-entry" data-cz-entry="uid">검색에서 고른 ${state.uidRoute.records.length}문항으로 범위가 고정되어 있습니다.</p>`;
+    if (state.sources.length)
+      return `<p class="cz-entry" data-cz-entry="sources">학교별 기출에서 고른 시험 ${state.sources.length}개 안에서 문항을 뽑습니다.</p>`;
+    return "";
+  }
+  function renderResultEmpty() {
+    const earlier = drafts().filter((item) => item.draftId !== state.draftId && item.selected?.length).length;
+    return `${state.composeStale
+      ? `<div class="callout cz-stale" role="status" data-compose-stale><strong>조건이 바뀌었습니다.</strong> <strong>문제지 만들기</strong>를 누르면 새로 뽑습니다.${state.composeStalePins ? ` 고정해 둔 ${state.composeStalePins}문항도 함께 지워졌습니다.` : ""}</div>`
+      : ""}<div class="cz-empty"><h2>만들어진 문제지가 여기에 나옵니다</h2><p data-cz-empty-guide><span class="cz-dir-wide">왼쪽</span><span class="cz-dir-narrow">위</span>에서 조건을 고르고 <strong>문제지 만들기</strong>를 누르면 여기에 문제지가 나옵니다.</p>${composeSourceNote()}${earlier ? `<p class="cz-entry" data-cz-entry="drafts">이어서 할 수 있는 이전 작업이 ${earlier}개 있습니다. ${`<button type="button" class="cz-link" data-view="recent">출제 내역에서 이어하기</button>`}</p>` : ""}</div>`;
+  }
+  function renderResult(r = state.selected.length ? review() : null) {
+    const unknown = state.saveResultState === "RESULT_UNKNOWN";
+    const notice = state.composeNotice
+      ? `<div class="callout cz-notice" role="status" data-compose-notice>${esc(state.composeNotice)}</div>`
+      : "";
+    const top = `<div id="compose-save-continuity">${renderSaveRecovery()}${renderSavedContinuity()}</div>${notice}`;
+    if (!r) return `${top}${renderResultEmpty()}`;
+    return `${top}<div class="cz-result-body" ${unknown ? "inert" : ""}>${renderResultSummary(r)}${renderPaper()}${renderOutputSettings()}${renderResultFinish(r)}</div>`;
+  }
+  function renderConditions() {
+    if (state.derivationSource) return `<div class="cz-block">${renderDerivedComposition()}</div>`;
+    const receiptNote = state.receipts.length
+      ? '<p class="callout" role="status">이미 출제한 문제지가 있어 조건은 바꿀 수 없습니다. 남은 문제지의 문항을 교체하거나 새 작업을 시작하세요.</p>'
+      : "";
+    const sources = state.sources.length
+      ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>`
+      : "";
+    const parts = composeParts();
+    return `${receiptNote}${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}${sources}${parts.amount}<div class="cz-block compose-range cz-scope">${renderScopes()}</div>${parts.tail}`;
   }
   function renderCompose() {
-    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${esc(state.round)}차</span></h1><p class="muted">${state.derivationSource ? "저장한 시험지에서 만든 새 문제지입니다. 원래 시험지는 그대로 보존됩니다." : "범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요."}</p></div><div class="actions"><button type="button" class="phone-quick-link" data-view="five-minute">빠른 평가</button>${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
-    <div id="compose-save-continuity">${renderSaveRecovery()}${renderSavedContinuity()}</div><div class="workspace" ${state.saveResultState === "RESULT_UNKNOWN" ? "inert" : ""}><div>${!state.selected.length ? `<section class="panel compose-setup">${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : state.derivationSource ? `<details class="panel plan-panel" open><summary>원본 시험지 범위</summary>${renderDerivedComposition()}</details>${renderPaper()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
+    const unknown = state.saveResultState === "RESULT_UNKNOWN";
+    const r = state.selected.length ? review() : null;
+    return `<p class="visually-hidden" role="status" aria-live="polite" data-cz-announce>${esc(state.composeAnnounce)}</p><div class="intro cz-intro"><div><h1>${esc(state.title)} <span class="badge">${esc(state.round)}차</span></h1><p class="muted">${state.derivationSource ? "저장한 시험지에서 만든 새 문제지입니다. 원래 시험지는 그대로 보존됩니다." : ""}</p></div><div class="actions"><button type="button" class="phone-quick-link" data-view="five-minute">빠른 평가</button>${button("new-draft", "새 작업")}</div></div>
+    <div class="cz${state.selected.length ? " has-result" : ""}"><section class="cz-conditions" aria-label="문제지 조건" data-cz-conditions ${unknown ? "inert" : ""}>${renderConditions()}</section><section class="cz-result" aria-label="만들어진 문제지" data-cz-result>${renderResult(r)}</section></div>${renderMobileActions(r)}`;
   }
   function recentClassOptions() {
     const grade = state.recentFilters.grade;
@@ -3383,8 +3659,10 @@
       const data = await api("/class-exam-assignments/recent-summary?" + params.toString());
       if (!isCurrentRequest()) return false;
       state.recentAssignments = Array.isArray(data.assignments) ? data.assignments : [];
+      // Without the catalog the exam lookup is empty (grade/subject fall back to the saved fields);
+      // refreshRecentRowsFromCatalog() normalizes again when the catalog arrives.
       state.recentRows = History.normalizeAssignments(
-        state.recentAssignments, classRows, state.catalog.exams, C,
+        state.recentAssignments, classRows, state.catalog?.exams || [], C,
       );
       rememberRecentSubjectOptions(state.recentRows);
       return true;
@@ -3595,10 +3873,33 @@
     }
     return result;
   }
+  // Both counts are needed only by the 자료 점검 screen; they used to be computed at boot (about 1s).
+  function ensureHealthStats() {
+    if (state.healthComposeScope !== null || !state.catalog?.records) return;
+    state.healthUnified = unifiedHealth();
+    state.healthComposeScope = state.healthUnified
+      ? state.healthUnified.placed
+      : state.catalog.records.reduce(
+        (n, record) => n + (C.generalUseEligibility(record).ok && workspaceScopeParent(record) ? 1 : 0), 0);
+  }
+  // The recorded-meta index is built the first time a screen needs it (quick assessments, compose meta
+  // filters), never at boot. Tests that set metaIndex and metaIndexSource together keep their index.
+  function ensureMetaIndex() {
+    if (!state.catalog?.records || !ProblemBankMeta) return state.metaIndex;
+    if (state.metaIndexSource !== state.catalog.records) {
+      Boot?.begin?.("meta-index");
+      state.metaIndex = ProblemBankMeta.buildIndex(state.catalog.records, []);
+      state.metaIndexSource = state.catalog.records;
+      composeMetaQueryCache.clear();
+      Boot?.end?.("meta-index");
+    }
+    return state.metaIndex;
+  }
   const UNPLACED_REASON_LABELS = {
     GRADE_UNRESOLVED: "학년 근거 없음(등록 학년 미확정)",
   };
   function renderHealth() {
+    ensureHealthStats();
     const h = state.catalog.health,
       total = Number(h.questions) || 0,
       fmt = (n) => Number(n || 0).toLocaleString(),
@@ -3638,23 +3939,40 @@
     return `<details class="health-unlinked"><summary>${esc(title)}</summary><p class="muted">같은 학교·학년·연도·학기·시험의 기출을 하나로 정할 수 없는 유사문제입니다. 틀린 짝보다 짝이 없는 편이 안전해서 연결하지 않았습니다. 파일 이름을 <code>&lt;원본 기출 이름&gt;_유사</code> 꼴로 고치면 연결됩니다.</p><table class="health-table"><tbody>${rows.map(({ exam, reason }) =>
       `<tr><th>${esc(String(exam.file || "").split("/").pop().replace(/\.js$/i, ""))}</th><td>${esc(reason)}</td></tr>`).join("")}</tbody></table></details>`;
   }
+  // 빠른 평가(?recipe=) 진입: 문항 수·배분은 평가 방식이 정하고, 저장·백업·새 작업은 없다. 아래 선택자는 문제지 만들기 마크업
+  // (renderComposition·renderResultEmpty·renderResultSummary·renderResultFinish·renderMobileActions)에 실제로 있는 표식이어야 하고,
+  // tests/archive2-compose-one-screen.test.js가 마크업과 이 목록이 어긋나지 않는지 지킨다.
+  const FIVE_MINUTE_GUARD = Object.freeze({
+    disable: ["#distribution", "#count", '[data-action="count-step"]'],
+    remove: [
+      '[data-action="save-paper"]', '[data-action="save-and-assign"]', '[data-action="backup"]',
+      '[data-action="import"]', '[data-action="new-draft"]',
+    ],
+    emptyGuide: "[data-cz-empty-guide]",
+    heading: "[data-cz-result-title]",
+    menu: ".cz-more",
+  });
   function applyFiveMinuteViewGuard() {
     if (!isAssessmentRecipeMode()) return;
-    $("distribution")?.setAttribute("disabled", "");
-    $("count")?.setAttribute("disabled", "");
-    document
-      .querySelectorAll('[data-action="save-paper"], [data-action="backup"], [data-action="import"], [data-action="new-draft"]')
-      .forEach((element) => element.remove());
-    const emptyInspector = document.querySelector(".inspector p.muted");
-    if (emptyInspector)
-      emptyInspector.textContent = "\uBB38\uD56D\uC744 \uC120\uD0DD\uD558\uBA74 \uBB38\uC81C\u00B7\uC815\uB2F5\u00B7\uD574\uC124 \uCD9C\uB825\uC744 \uD655\uC778\uD569\uB2C8\uB2E4.";
-    const inspectorHeading = document.querySelector(".inspector h2");
-    if (inspectorHeading)
-      inspectorHeading.textContent = `${state.title} ${state.round}\uCC28`;
+    for (const selector of FIVE_MINUTE_GUARD.disable)
+      document.querySelectorAll(selector).forEach((element) => element.setAttribute("disabled", ""));
+    document.querySelectorAll(FIVE_MINUTE_GUARD.remove.join(", ")).forEach((element) => element.remove());
+    // 저장·백업 버튼만 들어 있던 더보기 메뉴는 빈 채로 남기지 않는다.
+    document.querySelectorAll(FIVE_MINUTE_GUARD.menu).forEach((menu) => {
+      if (!menu.querySelector("button")) menu.remove();
+    });
+    const emptyGuide = document.querySelector(FIVE_MINUTE_GUARD.emptyGuide);
+    if (emptyGuide)
+      emptyGuide.textContent = "\uBB38\uD56D\uC744 \uC120\uD0DD\uD558\uBA74 \uBB38\uC81C\u00B7\uC815\uB2F5\u00B7\uD574\uC124 \uCD9C\uB825\uC744 \uD655\uC778\uD569\uB2C8\uB2E4.";
+    const heading = document.querySelector(FIVE_MINUTE_GUARD.heading);
+    if (heading) heading.textContent = `${state.title} ${state.round}\uCC28`;
   }
+  // 고정·되돌리기처럼 결과 일부만 바뀔 때: 요약과 마무리 버튼만 새로 그린다(미리보기·열린 접힘은 건드리지 않는다).
   function renderControls() {
-    const inspector = document.querySelector(".inspector");
-    if (inspector) inspector.outerHTML = renderInspector();
+    const summary = document.querySelector("[data-cz-summary]");
+    if (summary) summary.outerHTML = renderResultSummary();
+    const finish = document.querySelector("[data-cz-finish]");
+    if (finish) finish.outerHTML = renderResultFinish();
     applyFiveMinuteViewGuard();
     document
       .querySelectorAll(".paper-row[data-question-uid]")
@@ -3677,6 +3995,7 @@
       invalidateRecentRequests();
   }
   function render() {
+    dropStaleDeferredClick();
     // Reuse scope counts only within this render. Every interaction rechecks
     // the current filters, catalog quality gates and previous-round exclusions.
     scopeRenderCache = null;
@@ -3718,16 +4037,19 @@
     $("status").classList.remove("error");
     $("content").innerHTML = loginNoticeMarkup(kind);
   }
+  function syncViewNavigation() {
+    document.body.dataset.archiveView = state.view;
+    window.Archive2Navigation?.sync?.(state.view);
+    document.querySelectorAll("[data-view]").forEach((button) => {
+      button.classList.toggle("active", navViewActive(button));
+      button.setAttribute("aria-current", navViewActive(button) ? "page" : "false");
+    });
+  }
   function renderContent() {
     noteRenderedViewTransition();
     if (state.view !== "saved") window.Archive2Library?.invalidatePendingRequests?.();
     if (state.view === "saved") {
-      document.body.dataset.archiveView = state.view;
-      window.Archive2Navigation?.sync?.(state.view);
-      document.querySelectorAll("[data-view]").forEach((button) => {
-        button.classList.toggle("active", navViewActive(button));
-        button.setAttribute("aria-current", navViewActive(button) ? "page" : "false");
-      });
+      syncViewNavigation();
       if (!teacherSessionOk()) {
         window.Archive2Library?.invalidatePendingRequests?.();
         showLoginNotice("saved");
@@ -3750,7 +4072,16 @@
         });
       return;
     }
-    if (!state.catalog) return;
+    if (!state.catalog) {
+      // First screen first: home and 출제 내역 are drawn without the catalog; every other screen shows its
+      // name and the progress, and render() draws it for real as soon as the catalog is ready.
+      syncViewNavigation();
+      $("content").innerHTML = state.view === "home" ? renderHome()
+        : state.view === "recent" ? renderRecent()
+          : preparingMarkup();
+      Boot?.refresh?.();
+      return;
+    }
     const questionList = $("question-list");
     if (questionList) state.questionListOpen = questionList.open;
     const detail = document.querySelector(".compose-detail");
@@ -4154,6 +4485,7 @@
       rebuildUnissued();
       return;
     }
+    state.composeNotice = "";
     state.seed = crypto.randomUUID();
     const req = request();
     if (!rebuild) req.pins = [];
@@ -4163,15 +4495,45 @@
         .filter((r) => !state.pins.includes(r.questionUid))
         .map((r) => r.questionUid);
     const result = C.selectBlueprint(pool(), req, ctx, assessmentSelectionOptions());
-    if (!result.ok) {
+    // 선택 엔진이 거절한 것(학년 없음·고정 문항 충돌 등)은 그대로 알린다. 문항이 모자란 것은 거절이 아니다.
+    if (result.errors.length) {
       showDialog(
-        "현재 조건에서 문항이 부족합니다",
-        `<p>${result.errors.map(esc).join("<br>")}</p>${result.shortages.map((s) => `<div class="callout">${esc(req.rows.find((r) => r.id === s.id)?.label || "선택 범위")} · 요청 ${s.requested}, 선택 가능 ${s.selected}, 부족 ${s.shortage}</div>`).join("")}<p>문항 수·난이도·범위 또는 이력 정책을 직접 변경한 뒤 다시 만들어 주세요.</p>`,
+        "문제지를 만들 수 없습니다",
+        `<p>${result.errors.map(esc).join("<br>")}</p><p>범위·난이도·고정 문항을 확인한 뒤 다시 만들어 주세요.</p>`,
       );
       return;
     }
+    // 고정 외 다시 만들기는 지금 문항을 후보에서 빼고 뽑으므로 새 문항이 모자라면 문제지가 조용히 줄어든다. 줄어들면 적용하지 않고
+    // 지금 문제지를 그대로 둔다("모자라도 막지 않음"은 새로 만들 때만 적용한다).
+    if (rebuild && result.selected.length < state.selected.length) {
+      state.composeNotice = "바꿔 넣을 문항이 모자라 지금 문제지를 그대로 둡니다. 문항을 하나씩 교체하거나 조건을 넓혀 주세요.";
+      render();
+      return;
+    }
+    // 모자라도 막지 않는다(단원별 기출과 같은 원칙): 있는 만큼만 넣고, 어디가 얼마나 모자랐는지 결과 위에 알린다.
+    // 뽑힌 만큼으로 줄인 행(0인 행은 뺀다)으로 검증해야 C.review가 "요청한 문항 수가 충족되지 않았습니다"로 막지 않는다.
+    const picked = new Map(result.rowResults.map((item) => [item.id, item.selected]));
+    const usedRows = req.rows
+      .filter((row) => (picked.get(row.id) || 0) > 0)
+      .map((row) => (picked.get(row.id) === row.count ? row : { ...row, count: picked.get(row.id) }));
+    if (!result.selected.length || !usedRows.length) {
+      state.composeStale = false;
+      status("고른 조건에 맞는 문항이 없습니다. 단원이나 난이도 단계 조건을 넓혀 주세요.", true);
+      render();
+      return;
+    }
+    state.composeShortage = req.rows
+      .filter((row) => (picked.get(row.id) || 0) < row.count)
+      .map((row) => ({
+        label: row.label || "",
+        difficultyBuckets: row.difficultyBuckets || [],
+        requested: row.count,
+        got: picked.get(row.id) || 0,
+      }));
+    state.composeStale = false;
+    state.questionListOpen = true;
     state.selected = result.selected;
-    state.rows = req.rows;
+    state.rows = usedRows;
     state.indexVersion = state.catalog.indexVersion;
     state.prepared = [];
     state.undo = [];
@@ -4180,9 +4542,26 @@
     if (!rebuild) state.pins = [];
     save();
     render();
-    status(
-      `${result.selected.length}문항 선택 · 중복 없음 · ${result.diagnostics.elapsedMs}ms`,
-    );
+    if (!rebuild) focusComposeResult();
+    // 화면 상태 줄에는 내지 않는다(오른쪽 결과 요약과 겹치고, 처리 시간은 교사에게 필요 없다). 화면 읽기 프로그램용
+    // 숨은 안내(composeAnnounce)에만 두고, 처리 시간은 콘솔과 ?perf=1에서만 보인다.
+    state.composeAnnounce = `${result.selected.length}문항을 선택했습니다.`;
+    status("");
+    if (new URLSearchParams(location.search).get("perf") === "1") status(`${result.selected.length}문항 선택 · 중복 없음 · ${result.diagnostics.elapsedMs}ms`);
+    else console.debug("[archive2] generate", result.selected.length, "questions", result.diagnostics.elapsedMs + "ms");
+  }
+  // 좁은 화면(조건이 위, 결과가 아래)에서는 뽑은 결과가 화면 밖 아래에 생기므로 결과 머리로 옮기고 포커스를 둔다. 두 칸(PC)은
+  // 결과가 바로 옆에 보여 스크롤하지 않는다. 움직임 줄이기 설정이면 부드러운 스크롤 없이 바로 이동한다.
+  function focusComposeResult() {
+    try {
+      if (window.matchMedia?.("(min-width: 1100px)")?.matches) return;
+      const target = document.querySelector("[data-cz-result-title]");
+      if (!target) return;
+      target.setAttribute("tabindex", "-1");
+      const reduce = Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
+      target.scrollIntoView?.({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      target.focus?.({ preventScroll: true });
+    } catch {}
   }
   function showDialog(title, body) {
     $("modal").classList.remove("original-issue-dialog", "saved-paper-issue-dialog");
@@ -4241,6 +4620,7 @@
       after,
       wasPinned: state.pins.includes(before.questionUid),
     });
+    state.composeNotice = "";
     state.selected = next;
     state.pins = state.pins.map((uid) =>
       uid === before.questionUid ? after.questionUid : uid,
@@ -4644,7 +5024,7 @@
   window.Archive2WorkspaceShowSavedPaper = showSavedPaper;
   const UNKNOWN_RESULT_ALLOWED_ACTIONS = new Set([
     "save-paper", "saved-output", "saved-paper-issue", "saved-paper-view",
-    "print", "backup", "close-dialog", "close-inspector", "mobile-inspector",
+    "print", "backup", "close-dialog",
   ]);
   function newDraft() {
     if (state.saveResultState === "RESULT_UNKNOWN") {
@@ -4659,6 +5039,9 @@
     for (const key of META_FACET_FILTERS) state.filters[key] = "";
     Object.assign(state, {
       draftId: crypto.randomUUID(),
+      composeShortage: [],
+      composeStale: false,
+      composeNotice: "",
       selected: [],
       sources: [],
       scopes: [],
@@ -4701,13 +5084,168 @@
     render();
     scheduleSave();
   }
+  // 문항 수가 바뀔 때(입력·− / +): 전체를 다시 그리지 않고(입력 중인 칸과 포커스를 지키려고) 지금 조건의 요약·버튼과
+  // 오른쪽 안내, 하단 띠만 새로 그린다. 이미 뽑은 결과는 지금 동작대로 비우고 "조건이 바뀌었습니다"를 보인다.
+  function composeCountChanged() {
+    invalidate();
+    patchComposeLive();
+  }
+  function patchComposeLive() {
+    const live = document.querySelector("[data-cz-live]");
+    const fresh = document.createElement("template");
+    fresh.innerHTML = renderComposition();
+    const nextLive = fresh.content.querySelector("[data-cz-live]");
+    if (live && nextLive) live.replaceWith(nextLive);
+    const note = document.querySelector(".cz-amount-note"), nextNote = fresh.content.querySelector(".cz-amount-note");
+    if (note && nextNote) note.replaceWith(nextNote);
+    const result = document.querySelector("[data-cz-result]");
+    if (result) result.innerHTML = renderResult();
+    document.querySelector(".cz")?.classList.toggle("has-result", state.selected.length > 0);
+    refreshComposeBar();
+  }
+  function stepComposeCount(delta) {
+    if (state.sealed || state.receipts.length || state.distribution === "all") return;
+    const current = Number.isInteger(Number(state.count)) ? Number(state.count) : 0;
+    state.count = Math.min(400, Math.max(1, current + delta));
+    const input = document.getElementById("count");
+    if (input) input.value = String(state.count);
+    composeCountChanged();
+  }
+  // 저장하고 반에 출제: 저장이 확인된 뒤에만 출제 패널을 연다. 이미 현재 편집본이 저장되어 있으면 다시 저장하지 않고
+  // 그 저장본으로 바로 연다. 저장이 실패했거나 결과를 모르면(RESULT_UNKNOWN) 출제로 넘어가지 않는다.
+  async function saveAndAssign() {
+    if (state.assignBusy || state.saveBusy) return;
+    if (state.saveResultState === "RESULT_UNKNOWN") {
+      status("저장 결과를 먼저 확인해 주세요.", true);
+      return;
+    }
+    state.assignBusy = true;
+    try {
+      let ids = currentSavedPaperIds();
+      if (!ids.length) {
+        await savePapers();
+        ids = currentSavedPaperIds();
+        // 저장 실패·결과 모름: savePapers가 이미 화면과 알림으로 사정을 알렸다. 출제 패널은 열지 않는다.
+        if (!ids.length) return;
+      }
+      if (ids.length === 1) {
+        await openSavedPaperAssign(ids[0]);
+        return;
+      }
+      // 여러 권: 저장 묶음에서 권 정보를 받아 한 패널에 모두 넘긴다(권마다 따로 열지 않는다).
+      const data = await api("/archive-saved-papers/save-batches/" + encodeURIComponent(state.saveBatchId));
+      const byId = new Map((Array.isArray(data?.papers) ? data.papers : []).map((paper) => [paper.id, paper]));
+      const parts = ids.map((id) => byId.get(id)).filter((paper) => paper && (paper.library_status || "ACTIVE") !== "TRASHED");
+      if (parts.length !== ids.length)
+        throw new Error("저장한 문제지 " + ids.length + "권을 모두 확인하지 못했습니다. 위의 권별 출제 버튼이나 보관함에서 출제해 주세요.");
+      await openSavedPaperAssign(parts[0].id, { papers: parts });
+    } finally {
+      state.assignBusy = false;
+      renderControls();
+      refreshComposeBar();
+    }
+  }
+  // 문제지 만들기 조건(학년·과목·교육과정·세부 조건) 변경. 선택 상자의 change와 학년·과목 버튼이 같이 쓴다.
+  function changeComposeFilter(key, value) {
+    if (state.sealed) {
+      render();
+      return;
+    }
+    state.filters[key] = value;
+    if (key === "L3") delete state.filters.L4;
+    // PT -> TPL: a template belongs to one problem type, so a new type resets the template.
+    if (key === "metaPT") state.filters.metaTPL = "";
+    if (["grade", "curriculumKey", "courseKey", "semanticSubject", "originalCurriculum"].includes(key)) {
+      state.scopes = [];
+      state.scopeNotice = "";
+      delete state.filters.L3;
+      delete state.filters.L4;
+      for (const facet of META_FACET_FILTERS) state.filters[facet] = "";
+      if (key === "grade") {
+        state.sources = [];
+        state.buckets = [];
+        state.custom = {};
+        state.filters.curriculumKey = "";
+        state.filters.courseKey = "";
+        state.filters.semanticSubject = "";
+        state.filters.originalCurriculum = "";
+        state.filters.family = "";
+        state.filters.school = "";
+      }
+      if (unifiedIndex()) {
+        // The unified unit list owns subject and curriculum; the finder reconcile
+        // rules (2015/2022 course keys) do not apply to it.
+        state.filters = reconcileUnifiedFilters(state.filters);
+        if (key === "grade") state.filters = withDefaultComposeSubject(state.filters);
+      } else {
+        if (key === "curriculumKey" && !C.hasSubjectProjection?.(state.filters.grade))
+          state.filters.courseKey = "";
+        if (key === "semanticSubject") {
+          state.filters.courseKey = "";
+          state.filters.family = "";
+        }
+        state.filters = C.reconcileFinderFilters(state.filters, state.catalog.taxonomy);
+      }
+      reconcileFinderSchool(state.filters);
+    }
+    invalidate();
+    render();
+  }
+  // Actions that never read the catalog; everything else waits for it (see deferUntilCatalog).
+  const CATALOG_FREE_ACTIONS = new Set([
+    "boot-retry", "home-product", "home-school", "home-all-schools", "home-search", "delete-draft", "close-dialog",
+    "assignment-status", "assignment-output-direct", "assignment-output", "assignment-pdf", "library-reload",
+    "recent-retry", "recent-open-saved", "saved-output", "saved-paper-issue", "saved-paper-view",
+  ]);
+  let deferredClick = null;
+  const DEFERRED_NOTICE = "자료를 준비하는 중입니다. 준비가 끝나면 이어서 진행합니다.";
+  // A button that needs the catalog was pressed before it is ready: say so and press it again when it is.
+  function deferUntilCatalog(b) {
+    if (state.bootError) { status(state.bootError, true); return; }
+    deferredClick = { dataset: { ...b.dataset }, view: state.view };
+    status(DEFERRED_NOTICE);
+  }
+  // Leaving the screen cancels the pending press: it must not fire later when the teacher comes back to
+  // that screen, and its notice must not stay on the screen they moved to.
+  function dropStaleDeferredClick() {
+    if (!deferredClick || deferredClick.view === state.view) return;
+    deferredClick = null;
+    if ($("status")?.textContent === DEFERRED_NOTICE) status("");
+  }
+  function replayDeferredClick() {
+    const pending = deferredClick;
+    deferredClick = null;
+    if (!pending || pending.view !== state.view) return;
+    const el = document.createElement("button");
+    el.type = "button";
+    el.hidden = true;
+    for (const [key, value] of Object.entries(pending.dataset)) el.dataset[key] = value;
+    document.body.appendChild(el);
+    try { el.click(); } finally { el.remove(); }
+  }
+  // Opens a route of this same page without reloading it, so the catalog that is being prepared is not
+  // thrown away (a reload would start the whole download, hash check and resolve again).
+  function openRouteInPage(target) {
+    let url;
+    try { url = new URL(String(target), location.href); } catch { return false; }
+    if (url.origin !== location.origin || url.pathname !== location.pathname) return false;
+    rememberCurrentHistoryEntry();
+    history.pushState({ archive2ScrollY: 0 }, "", url.href);
+    readUrl();
+    syncUidRoute();
+    render();
+    window.scrollTo(0, 0);
+    return true;
+  }
   document.addEventListener("click", async (event) => {
-    if (!event.target.closest(".finder-card-more, .compose-saved-continuity-more, .history-draft-actions details"))
-      document.querySelectorAll(".finder-card-more[open], .compose-saved-continuity-more[open], .history-draft-actions details[open]")
+    if (!event.target.closest(".finder-card-more, .compose-saved-continuity-more, .history-draft-actions details, .cz-more"))
+      document.querySelectorAll(".finder-card-more[open], .compose-saved-continuity-more[open], .history-draft-actions details[open], .cz-more[open]")
         .forEach((menu) => { menu.open = false; });
     const b = event.target.closest("button");
     const savedPaperAction = ["saved-paper-issue", "saved-paper-view", "saved-output"].includes(b?.dataset?.action);
     if (!b || b.disabled || ((state.busy || state.saveBusy) && !savedPaperAction)) return;
+    // 더보기 메뉴 안의 버튼을 누르면 메뉴는 닫는다.
+    b.closest?.(".cz-more")?.removeAttribute?.("open");
     try {
       if (b.dataset.view) {
         if (b.dataset.view === state.view && !(state.view === "saved" && state.savedPaperId))
@@ -4729,6 +5267,11 @@
         return;
       }
       const a = b.dataset.action;
+      if (a === "boot-retry") { location.reload(); return; }
+      if (!state.catalog && a && !CATALOG_FREE_ACTIONS.has(a)) {
+        deferUntilCatalog(b);
+        return;
+      }
       // While a save result is unknown only actions that change the saved contents stay locked.
       // Local output, work backup, closing a dialog and sheet toggles never touch the save identity.
       if (state.saveResultState === "RESULT_UNKNOWN" && !UNKNOWN_RESULT_ALLOWED_ACTIONS.has(a)) {
@@ -4832,14 +5375,12 @@
         render();
         return;
       }
-      if (a === "close-inspector") {
-        state.mobileInspectorOpen = false;
-        renderControls();
-        return;
-      }
       if (
         state.receipts.length &&
         [
+          "compose-grade",
+          "compose-subject",
+          "count-step",
           "scope-all",
           "scope-clear",
           "scope-range",
@@ -4857,11 +5398,6 @@
         );
       if (["generate", "rebuild", "assign", "print"].includes(a) && state.busy)
         return;
-      if (a === "mobile-inspector") {
-        state.mobileInspectorOpen = !state.mobileInspectorOpen;
-        renderControls();
-        return;
-      }
       if (a === "close-dialog") {
         if (state.view === "recent" && state.recentSelectedAssignmentId) {
           state.assignmentStatusLoadVersion++;
@@ -4883,6 +5419,7 @@
         )
           return;
         const target = product.routeResolver();
+        if (target && !state.catalog && openRouteInPage(target)) return;
         if (target) location.href = String(target);
       } else if (a === "quick-unit") {
         await openQuickAssessment([b.dataset.unitKey]);
@@ -5103,9 +5640,21 @@
         invalidate();
         render();
       } else if (a === "generate" || a === "rebuild") generate(a === "rebuild");
-      else if (a === "inspector") {
-        state.inspector = b.dataset.tab;
-        renderControls();
+      else if (a === "compose-grade" || a === "compose-subject") {
+        if (state.sealed) return;
+        const filter = a === "compose-grade" ? "grade" : "semanticSubject";
+        const value = a === "compose-grade" ? b.dataset.grade : b.dataset.subject;
+        if (String(state.filters[filter] || "") === String(value ?? "")) return;
+        changeComposeFilter(filter, value ?? "");
+        // 다시 그린 뒤에도 키보드 위치가 그 버튼에 남게 한다.
+        document.querySelector(`[data-action="${a}"][data-${a === "compose-grade" ? "grade" : "subject"}="${value ?? ""}"]`)?.focus?.({ preventScroll: true });
+      } else if (a === "count-step") {
+        stepComposeCount(Number(b.dataset.step));
+      } else if (a === "preview-toggle") {
+        state.previewOpen = !state.previewOpen;
+        render();
+      } else if (a === "save-and-assign") {
+        await saveAndAssign();
       } else if (a === "pin") {
         if (lockedIndex(Number(b.dataset.index))) return;
         const uid = state.selected[Number(b.dataset.index)].questionUid;
@@ -5190,7 +5739,7 @@
         b.dataset.paperId,
         b.dataset.mode || "exam",
       );
-      else if (a === "saved-paper-issue") await openSavedPaperIssue(b.dataset.paperId);
+      else if (a === "saved-paper-issue") await openSavedPaperAssign(b.dataset.paperId);
       else if (a === "saved-paper-view") showSavedPaper(b.dataset.paperId);
       else if (a === "print") await print();
       else if (a === "save-paper") await savePapers();
@@ -5203,6 +5752,9 @@
         });
         state.round++;
         state.issueDate = "";
+        state.composeShortage = [];
+        state.composeStale = false;
+        state.composeNotice = "";
         state.selected = [];
         state.pins = [];
         state.rows = [];
@@ -5315,64 +5867,13 @@
         );
       }
       if (el.dataset.filter) {
-        if (state.sealed && el.dataset.group === "compose") {
-          render();
+        const value = el.type === "checkbox" ? (el.checked ? "1" : "") : el.value;
+        if (el.dataset.group === "compose") {
+          changeComposeFilter(el.dataset.filter, value);
           return;
         }
-        const dest = el.dataset.group === "find" ? state.find : state.filters;
-        dest[el.dataset.filter] = el.type === "checkbox" ? (el.checked ? "1" : "") : el.value;
-        if (el.dataset.group === "compose") {
-          if (el.dataset.filter === "L3") delete state.filters.L4;
-          // PT -> TPL: a template belongs to one problem type, so a new type resets the template.
-          if (el.dataset.filter === "metaPT") state.filters.metaTPL = "";
-          if (
-            ["grade", "curriculumKey", "courseKey", "semanticSubject", "originalCurriculum"].includes(
-              el.dataset.filter,
-            )
-          ) {
-            state.scopes = [];
-            state.scopeNotice = "";
-            delete state.filters.L3;
-            delete state.filters.L4;
-            for (const key of META_FACET_FILTERS) state.filters[key] = "";
-            if (el.dataset.filter === "grade") {
-              state.sources = [];
-              state.buckets = [];
-              state.custom = {};
-              state.filters.curriculumKey = "";
-              state.filters.courseKey = "";
-              state.filters.semanticSubject = "";
-              state.filters.originalCurriculum = "";
-              state.filters.family = "";
-              state.filters.school = "";
-            }
-            if (unifiedIndex()) {
-              // The unified unit list owns subject and curriculum; the finder reconcile
-              // rules (2015/2022 course keys) do not apply to it.
-              state.filters = reconcileUnifiedFilters(state.filters);
-              if (el.dataset.filter === "grade")
-                state.filters = withDefaultComposeSubject(state.filters);
-            } else {
-              if (
-                el.dataset.filter === "curriculumKey" &&
-                !C.hasSubjectProjection?.(state.filters.grade)
-              )
-                state.filters.courseKey = "";
-              if (el.dataset.filter === "semanticSubject") {
-                state.filters.courseKey = "";
-                state.filters.family = "";
-              }
-              state.filters = C.reconcileFinderFilters(
-                state.filters,
-                state.catalog.taxonomy,
-              );
-            }
-            reconcileFinderSchool(state.filters);
-          }
-          invalidate();
-        } else {
-          applyFinderFilterChange(el.dataset.filter);
-        }
+        state.find[el.dataset.filter] = value;
+        applyFinderFilterChange(el.dataset.filter);
         if (el.dataset.group === "find") {
           scheduleFinderFilterRender();
           return;
@@ -5473,31 +5974,7 @@
     }
     if (el.id === "count" && !state.busy && !state.receipts.length) {
       state.count = Number(el.value);
-      state.rows = [];
-      state.selected = [];
-      state.prepared = [];
-      scheduleSave();
-      const panel = el.closest(".panel"),
-        fragment = document.createElement("template");
-      fragment.innerHTML = renderComposition();
-      const fresh = fragment.content.firstElementChild;
-      for (const selector of [".composition", ".resultbar"]) {
-        const old = panel?.querySelector(selector),
-          next = fresh.querySelector(selector);
-        if (old && next) old.replaceWith(next);
-      }
-      panel?.querySelectorAll(".callout.danger").forEach((n) => n.remove());
-      const shortage = fresh.querySelector(".callout.danger");
-      if (shortage)
-        panel.insertBefore(shortage, panel.querySelector(".resultbar"));
-      if (
-        !Number.isInteger(state.count) ||
-        state.count < 1 ||
-        state.count > 400
-      ) {
-        const action = panel.querySelector('[data-action="generate"]');
-        if (action) action.disabled = true;
-      }
+      composeCountChanged();
       return;
     }
     if (!el.dataset.header || state.sealed || state.busy) return;
@@ -5514,6 +5991,12 @@
     clearTimeout(previewTimer);
     previewTimer = setTimeout(updatePreview, 600);
   });
+  // 출력 설정 접힘은 다시 그려도 유지한다(열림 여부를 state에 기억).
+  document.addEventListener("toggle", (event) => {
+    const target = event.target;
+    if (target?.matches?.("[data-cz-output]")) state.outputSettingsOpen = Boolean(target.open);
+    else if (target?.matches?.("[data-scope-group]")) state.scopeGroupOpen[target.dataset.scopeGroup] = Boolean(target.open);
+  }, true);
   function changeOutput(el) {
     if (state.busy) return;
     if (
@@ -5663,6 +6146,8 @@
   document.addEventListener("visibilitychange", resumeAfterLogin);
   window.addEventListener("storage", (event) => { if (!event.key || event.key === "APMATH_SESSION") resumeAfterLogin(); });
   window.addEventListener("popstate", async () => {
+    // 반에 출제 패널이 열려 있으면 뒤로 가기는 패널이 처리한다(진행 중이면 막고, 아니면 패널만 닫는다).
+    if (window.Archive2Assign?.handlePopState?.()) return;
     state.assignmentStatusLoadVersion++;
     const previousSelection = state.recentSelectedAssignmentId;
     readUrl();
@@ -5918,58 +6403,99 @@
       state.header.title = state.title;
     }
   }
+  // 출제 내역 list: started at boot when the URL opens it. It never waits for the catalog.
+  async function loadRecentOnBoot() {
+    const selectedAssignmentId = state.recentSelectedAssignmentId;
+    try {
+      const loaded = await loadRecent();
+      if (loaded && selectedAssignmentId && state.view === "recent" &&
+        state.recentSelectedAssignmentId === selectedAssignmentId)
+        await assignmentStatus(selectedAssignmentId);
+    } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true); }
+  }
+  // The catalog adds the exam lookup the recent rows use for grade/subject: normalize again (cheap).
+  function refreshRecentRowsFromCatalog() {
+    if (state.view !== "recent" || state.recentLoading || !state.recentAssignments?.length) return;
+    state.recentRows = History.normalizeAssignments(state.recentAssignments, classRows, state.catalog.exams, C);
+    rememberRecentSubjectOptions(state.recentRows);
+    updateRecentResults();
+  }
+  // Screens that read the unified unit index / recorded-meta index get them built before they are drawn,
+  // while the progress text ("문항 목록 정리 중") is already on screen. The rest builds them when idle.
+  const viewNeedsUnifiedIndex = () => ["find", "compose", "health"].includes(state.view) || isQuickAssessmentView();
+  async function settleIndexesForView() {
+    const unified = viewNeedsUnifiedIndex(), meta = isQuickAssessmentView();
+    if (!unified && !meta) return;
+    Boot?.setStage?.("index");
+    await Boot?.nextPaint?.();
+    if (unified) unifiedIndex();
+    if (meta) ensureMetaIndex();
+  }
+  // Idle warm-up, one step per idle slot, so the next screen does not pay for them (each step is skipped
+  // when something already built it). Nothing here is needed for correctness.
+  function scheduleIndexWarmUp() {
+    if (!Boot?.idle) return;
+    const steps = [() => unifiedIndex(), () => ensureHealthStats(), () => ensureMetaIndex()];
+    const next = () => {
+      const step = steps.shift();
+      if (!step) return;
+      try { step(); } catch (e) { console.warn("[archive2] index warm-up skipped:", e); }
+      Boot.idle(next, 10000);
+    };
+    Boot.idle(next, 10000);
+  }
   (async () => {
     readUrl();
-    const savedOnBoot = state.view === "saved";
-    if (savedOnBoot) {
-      render();
-    }
+    Boot?.mountProgress?.($("boot-progress"));
+    // 1) First screen: home / 보관함 / 출제 내역 are drawn now; every other screen shows its progress.
+    render();
+    Boot?.firstPaint?.();
+    if (state.view === "recent") loadRecentOnBoot();
     try {
       if (typeof window.applyArchiveMetaFoundationCatalog !== "function")
         throw Object.assign(new Error("단원·분류 기준을 불러오지 못했습니다. 새로고침해 다시 시도하고, 계속되면 관리자에게 알려 주세요."), { code: "CANONICAL_AUTHORITY_UNAVAILABLE" });
-      state.catalog = await window.applyArchiveMetaFoundationCatalog();
-      state.useMode = "general";
+      const catalog = await window.applyArchiveMetaFoundationCatalog();
       if (!ProblemBankMeta) throw Object.assign(new Error("문항 분류 자료를 불러오지 못했습니다. 새로고침해 다시 시도하고, 계속되면 관리자에게 알려 주세요."), { code: "PROBLEM_BANK_META_UNAVAILABLE" });
-      state.metaIndex = ProblemBankMeta.buildIndex(state.catalog.records, []);
-      state.metaIndexSource = state.catalog.records;
+      Boot?.begin?.("index");
+      Boot?.setStage?.("index");
+      state.useMode = "general";
+      state.indexVersion = catalog.indexVersion;
+      state.byUid = new Map(
+        catalog.records
+          .filter((r) => r.questionUid)
+          .map((r) => [r.questionUid, r]),
+      );
+      state.finderIndex = C.buildFinderIndex(catalog);
+      // The recorded-meta index and the 자료 점검 counts are built when a screen needs them (or when idle).
+      state.metaIndex = [];
+      state.metaIndexSource = null;
+      state.healthUnified = null;
+      state.healthComposeScope = null;
       composeMetaQueryCache.clear();
       state.crosswalkInventory = await fetch(
         "data/archive2-crosswalk-inventory.json",
       )
         .then((r) => (r.ok ? r.json() : null))
         .catch(() => null);
-      state.indexVersion = state.catalog.indexVersion;
-      state.finderIndex = C.buildFinderIndex(state.catalog);
-      // Compose runs in general mode: it offers records with general-use
-      // eligibility AND a scope parent. Count them once here (this also warms
-      // workspaceScopeParent's per-record cache) for the status line and health view.
-      state.healthUnified = unifiedHealth();
-      state.healthComposeScope = state.healthUnified
-        ? state.healthUnified.placed
-        : state.catalog.records.reduce(
-          (n, record) => n + (C.generalUseEligibility(record).ok && workspaceScopeParent(record) ? 1 : 0), 0);
-      state.byUid = new Map(
-        state.catalog.records
-          .filter((r) => r.questionUid)
-          .map((r) => [r.questionUid, r]),
-      );
+      // The catalog becomes visible to every handler only now, with its derived maps already in place.
+      state.catalog = catalog;
+      await settleIndexesForView();
       readUrl();
       applySourceRoute();
       syncUidRoute();
       if (state.uidRoute?.error) status(state.uidRoute.error, true);
-      if (!(savedOnBoot && state.view === "saved")) render();
+      // 2) Draw what the catalog adds. Home fills its two placeholders in place; 보관함 and 출제 내역
+      // are already on screen; every other screen is drawn now.
+      if (state.view === "home") fillHomeFromCatalog();
+      else if (state.view === "recent") refreshRecentRowsFromCatalog();
+      else if (state.view !== "saved") render();
       // The catalog totals live on the "자료 점검" screen; the status line only reports progress and problems.
       if (!state.uidRoute?.error) status("");
+      Boot?.end?.("index");
+      Boot?.finish?.(false);
+      replayDeferredClick();
+      scheduleIndexWarmUp();
       const previous = drafts();
-      if (state.view === "recent") {
-        const selectedAssignmentId = state.recentSelectedAssignmentId;
-        try {
-          const loaded = await loadRecent();
-          if (loaded && selectedAssignmentId && state.view === "recent" &&
-            state.recentSelectedAssignmentId === selectedAssignmentId)
-            await assignmentStatus(selectedAssignmentId);
-        } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true); }
-      }
       restoreCurrentHistoryScroll();
       if (state.view === "compose" && state.editSavedPaperId) {
         const sourceId = state.editSavedPaperId;
@@ -5981,16 +6507,21 @@
           `<p>${esc(previous[0].header?.title || previous[0].title)} · ${previous[0].selected?.length || 0}문항</p>${button("restore", "이전 작업 복원", 'data-draft="0" class="primary"')} ${button("close-dialog", "새로 시작")}`,
         );
     } catch (e) {
+      Boot?.finish?.(true);
       if (state.view === "saved") {
-        if (!savedOnBoot) render();
         status("문항 목록을 사용할 수 없어도 저장한 시험지는 서버에서 열 수 있습니다.");
         return;
       }
       console.error("[archive2] startup failed:", e?.code || "", e);
       const startupMessage = teacherErrorMessage(e, "아카이브 자료를 불러오지 못했습니다. 새로고침해 다시 시도하고, 계속되면 관리자에게 알려 주세요.");
-      $("content").innerHTML =
-        `<div class="empty">${esc(startupMessage)}<p><a href="index.html?legacy=1">기존 아카이브 열기</a></p></div>`;
-      status(startupMessage, true);
+      state.bootError = startupMessage;
+      // Home and 출제 내역 stay usable; the home placeholders turn into the message, any other screen shows it.
+      // The reason is written where the screen is waiting (home: the recent-exam block, others: the body), so
+      // no alert repeats it. 출제 내역 and 보관함 have no such place and keep the alert.
+      if (state.view === "home") fillHomeFromCatalog();
+      else if (state.view !== "recent")
+        $("content").innerHTML = preparingMarkup();
+      if (state.view === "recent") status(startupMessage, true);
     }
   })();
 })();

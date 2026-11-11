@@ -45,7 +45,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "그래프가 $x$축과 한 점에서 만나므로 이차방정식의 판별식이 $0$이다.\n\n$-x^2+3x+k=0$\n$x^2-3x-k=0$\n\n$D=(-3)^2-4(1)(-k)=9+4k$\n$9+4k=0$\n$k=-\\dfrac94$\n\n따라서 정답은 ③이다.",
     "decisiveStep": "그래프와 x축이 한 점에서 만나는 조건을 이차방정식의 판별식 D=0으로 옮겨 k를 구한다.",
-    "primaryMethod": "그래프와 근과 판별식으로 x축 접함을 결정"
+    "primaryMethod": "그래프와 근과 판별식으로 x축 접함을 결정",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 y=−x²+3x+k의 그래프를 k의 값에 따라 세 개 그린 그림이다. 위쪽 주황 포물선은 x축과 서로 다른 두 점에서 만나고, 가운데 파랑 포물선은 꼭짓점이 x축에 닿는 접점이 표시되어 있으며, 아래쪽 초록 포물선은 x축과 만나지 않는다.",
+    "solutionImageCaption": "그래프가 x축과 한 점에서 만나는 경우는 파랑 포물선처럼 꼭짓점이 x축에 닿을 때이다. 이차방정식 −x²+3x+k=0을 x²−3x−k=0으로 고치고 판별식 D=9+4k=0이 되는 k를 구한다. 주황은 D>0, 초록은 D<0인 예이다. 정답은 −4분의 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -91,7 +95,11 @@ window.questionBank = [
     "answer": "④",
     "solution": "절댓값 부등식의 범위를 먼저 구한다.\n\n$|x-3|<4$\n$-4<x-3<4$\n$-1<x<7$\n\n정수해는 $0,1,2,3,4,5,6$이다.\n따라서 정수해의 개수는 $7$이다. 정답은 ④이다.",
     "decisiveStep": "절댓값 부등식을 -1<x<7로 풀고 정수 범위의 양 끝을 확인한다.",
-    "primaryMethod": "절댓값 부등식을 정수 범위로 푼다"
+    "primaryMethod": "절댓값 부등식을 정수 범위로 푼다",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 3을 가운데로 양쪽으로 거리 4만큼 떨어진 −1과 7이 속이 빈 점으로 표시되어 있고, 아래 수직선에는 −1<x<7인 구간이 굵게 칠해져 있다.",
+    "solutionImageCaption": "|x−3|<4는 x와 3 사이의 거리가 4보다 작다는 뜻이므로 −4<x−3<4, 즉 −1<x<7이다. 이 구간에 들어 있는 정수는 0부터 6까지이다. 정답은 7개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -184,9 +192,9 @@ window.questionBank = [
     "solution": "기울기가 $-1$인 직선은 $y=-x+c$로 놓을 수 있다.\n원 $x^2+y^2=9$의 중심은 $(0,0)$이고 반지름은 $3$이다.\n\n직선 $x+y-c=0$과 중심 사이의 거리가 반지름과 같아야 하므로\n$\\dfrac{|c|}{\\sqrt{1^2+1^2}}=3$\n$|c|=3\\sqrt2$\n$c=\\pm3\\sqrt2$\n\n따라서 접선은 $y=-x\\pm3\\sqrt2$이고 정답은 ②이다.",
     "decisiveStep": "접선과 원의 중심 사이의 거리를 반지름 3과 같게 둔다.",
     "primaryMethod": "기울기가 주어진 직선과 원 중심 사이 거리를 반지름으로 둔다",
-    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q4-solution.svg",
-    "solutionImageAlt": "원에 접하는 기울기 -1인 두 접선 y=-x±3√2",
-    "solutionImageCaption": "원에 접하는 기울기 -1인 두 접선 y=-x±3√2",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점 O를 중심으로 하는 원에 접하고 기울기가 −1인 두 직선이 있다. 접점 S와 T까지의 반지름이 파란 선분으로 그려져 있고 길이 3과 직각 표시가 있다. 두 직선이 y축과 만나는 점은 (0,c)와 (0,−c)이고, 위쪽 직선과 y축이 이루는 각 45도가 표시되어 있다.",
+    "solutionImageCaption": "기울기가 −1인 접선을 y=−x+c로 놓는다. 원점에서 직선 x+y−c=0까지의 거리가 반지름 3과 같다는 식에서 c의 값을 구하면 접선은 위아래로 두 개이다. 그림의 직각삼각형에서 45도 각을 이용해도 같은 결과를 얻는다. 정답은 y=−x±3√2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -329,7 +337,11 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "수직이등분선의 기울기가 $2$이므로 선분 $AB$의 기울기는 $-\\dfrac12$이다. 따라서 $b+5\\ne0$이고\n$\\dfrac{-2-a}{b+5}=-\\dfrac12$이다.\n양변을 교차곱하면\n$2(-2-a)=-(b+5)$\n$-4-2a=-b-5$\n$b=2a-1$이다.\n\n중점 $M\\left(\\dfrac{b-5}{2},\\dfrac{a-2}{2}\\right)$은 수직이등분선 위에 있으므로\n$\\dfrac{a-2}{2}=2\\cdot\\dfrac{b-5}{2}+2$\n$\\dfrac{a-2}{2}=b-3$\n$a+4=2b$이다.\n\n$b=2a-1$을 대입하면\n$a+4=2(2a-1)$\n$a+4=4a-2$\n$3a=6$, 따라서 $a=2$, $b=3$이다.\n\n그러므로 $a-b=2-3=-1$이고 정답은 ⑤이다.",
     "decisiveStep": "AB의 기울기는 -1/2이고 그 중점은 주어진 수직이등분선 위에 있다는 두 조건을 함께 쓴다.",
-    "primaryMethod": "수직이등분선의 기울기와 중점 위치를 함께 쓴다"
+    "primaryMethod": "수직이등분선의 기울기와 중점 위치를 함께 쓴다",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 A(−5,a)와 점 B(b,−2)를 잇는 파란 선분이 있고, 직선 y=2x+2가 선분 AB의 중점 M을 지나며 직각으로 만난다. 선분 AM과 MB에는 길이가 같다는 표시가 있다.",
+    "solutionImageCaption": "수직이등분선이므로 선분 AB의 기울기는 −2분의 1이고 중점 M이 직선 y=2x+2 위에 있다. 이 두 조건으로 a와 b에 관한 식 두 개를 세워 푼다. 그림은 이 조건을 만족하는 위치로 그렸다. 정답은 −1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -375,7 +387,11 @@ window.questionBank = [
     "answer": "②",
     "solution": "두 직선을 일반형으로 쓰면\n$2x+y-1=0$, $2x+y-k=0$이다.\n\n평행한 두 직선 사이의 거리는\n$\\dfrac{|(-1)-(-k)|}{\\sqrt{2^2+1^2}}=\\dfrac{|k-1|}{\\sqrt5}$이다.\n주어진 거리를 대입하면\n$\\dfrac{|k-1|}{\\sqrt5}=\\sqrt5$\n$|k-1|=5$\n$k=6$ 또는 $k=-4$\n\n두 값의 합은 $2$이다. 정답은 ②이다.",
     "decisiveStep": "일반형 평행선 거리 공식으로 |k-1|=5를 얻고 두 k를 모두 합한다.",
-    "primaryMethod": "평행한 두 직선 사이 거리를 절댓값 식으로 둔다"
+    "primaryMethod": "평행한 두 직선 사이 거리를 절댓값 식으로 둔다",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 세 직선 y=−2x+6, y=−2x+1, y=−2x−4가 있다. 가운데 직선 위의 한 점에서 위쪽 직선과 아래쪽 직선에 내린 수선이 파란 선분이고 길이는 모두 √5이며 직각 표시가 있다.",
+    "solutionImageCaption": "직선 y=−2x+1과의 거리가 √5인 평행한 직선은 위아래에 하나씩 있다. 점과 직선 사이의 거리 공식에서 √5분의 |k−1|이 √5이므로 |k−1|=5, 즉 k=6 또는 k=−4이다. 두 직선이 그림의 위아래 직선이다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -615,7 +631,11 @@ window.questionBank = [
     "decisiveStep": "f=2와 f=-2의 교점은 각각 대칭축 x=1을 기준으로 짝을 이루며, 두 쌍의 합은 각각 2다.",
     "primaryMethod": "y=2와 y=-2의 교점 쌍을 대칭축으로 합산한다",
     "image": "assets/images/22_강남여고_1학기_기말_고1_기출/q13.png",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 y=f(x)의 파란 포물선이 x축과 (−1,0), (3,0)에서 만나고 y축과 (0,−3)에서 만난다. 주황 직선 y=2와 초록 직선 y=−2가 포물선과 각각 두 점에서 만나고, 보라 점선 x=1이 포물선의 대칭축이다.",
+    "solutionImageCaption": "그래프의 대칭축은 x=1이고 꼭짓점은 y=−3보다 아래에 있다. |f(x)|=2는 f(x)=2 또는 f(x)=−2이며, 두 수평선(주황, 초록)은 포물선과 각각 두 점에서 만난다. 각 수평선과 만나는 두 점은 x=1에 대칭이므로 두 근의 합은 각각 2이다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -714,7 +734,11 @@ window.questionBank = [
     "decisiveStep": "두 삼각형의 넓이비를 밑변비 CP:DP와 높이비 AC:BD로 나누어 계산한다.",
     "primaryMethod": "수선의 발과 교점에서 밑변·높이 관계를 구해 넓이비를 계산한다",
     "image": "assets/images/22_강남여고_1학기_기말_고1_기출/q15.png",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=x−1과 그 위에 있지 않은 두 점 A, B가 있다. 선분 AB가 직선과 만나는 점 P, A와 B에서 직선에 내린 수선의 발 C, D가 표시되어 있고 직각 표시가 있다. 삼각형 ACP는 파랑, 삼각형 BDP는 주황이며 AC는 √2, BD는 2분의 √2로 적혀 있다.",
+    "solutionImageCaption": "예: a=0일 때의 그림이다. 두 점 A, B에서 직선까지의 거리의 비가 2 대 1이므로 AP:PB=2:1이고, 삼각형 ACP와 BDP는 직각을 낀 닮은 삼각형이다. 닮음비가 2 대 1이므로 넓이의 비는 그 제곱이다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -763,9 +787,10 @@ window.questionBank = [
     "primaryMethod": "두 반사 원의 중심과 반지름으로 최댓거리를 구한다",
     "image": "assets/images/22_강남여고_1학기_기말_고1_기출/q16.png",
     "imageSize": "full",
-    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "반사된 두 원의 중심과 가장 멀리 떨어진 점을 보여 주는 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 원이 겹쳐 있다. 중심이 C₁(−1,−2)인 파란 원과 중심이 C₂(−2,1)인 주황 원은 반지름이 모두 √10이다. 두 중심을 지나는 직선 위에 파란 원 위의 점 P′과 주황 원 위의 점 Q′이 있고, 초록 선분 P′C₁, C₁C₂, C₂Q′는 길이가 같다는 표시가 있으며 P′C₁과 C₂Q′의 길이는 √10으로 적혀 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "점 P를 y축에 대칭이동한 점 P′의 자취는 중심이 C₁(−1,−2)인 원(파랑), 점 Q를 직선 y=x에 대칭이동한 점 Q′의 자취는 중심이 C₂(−2,1)인 원(주황)이고 반지름은 모두 √10이다. 두 중심 사이의 거리 C₁C₂도 √10이다(초록 선분 세 개는 길이가 같다). 두 중심을 지나는 직선 위에서 가장 먼 두 점 사이의 거리가 최댓값이다. 정답은 3√10이다."
   },
   {
     "id": 17,
@@ -814,7 +839,11 @@ window.questionBank = [
     "decisiveStep": "각의 이등분선 위의 점은 두 변까지의 거리가 같다는 사실을 M에 적용한다.",
     "primaryMethod": "각의 이등분선 위 점 M에서 두 변 AB, BC까지의 거리를 같게 둔다",
     "image": "assets/images/22_강남여고_1학기_기말_고1_기출/q17.png",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 B(−3,0), C(1,0)과 y축 위의 점 A(0,a)를 꼭짓점으로 하는 삼각형 ABC가 있다. 선분 AC의 중점 M과 B를 잇는 점선이 있고, M에서 변 AB와 변 BC에 내린 수선이 파란 선분이며 길이가 같다는 표시와 직각 표시가 있다.",
+    "solutionImageCaption": "각 B의 이등분선 위의 점 M에서 두 변 AB, BC까지의 거리가 같다. 변 BC까지의 거리는 M의 y좌표인 2분의 a이고, 변 AB까지의 거리는 점과 직선 사이의 거리 공식으로 구한다. 두 거리가 같다는 식에서 양수 a를 구한다. 정답은 √7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -913,9 +942,10 @@ window.questionBank = [
     "solution": "원의 중심은 $(2,0)$이고 반지름은 $2$이다. 현의 길이가 $2$이므로 중심에서 현에 내린 수선은 현을 반으로 나누어 길이 $1$을 만든다.\n\n중심에서 직선까지의 거리를 $d$라 하면\n$d^2+1^2=2^2$\n$d=\\sqrt3$\n\n직선은 $mx-y+2m=0$이다. 중심 $(2,0)$에서 직선까지의 거리는\n$\\dfrac{|4m|}{\\sqrt{m^2+1}}=\\sqrt3$\n\n$16m^2=3(m^2+1)$\n$13m^2=3$\n$|m|=\\sqrt{\\dfrac3{13}}$\n\n$y$절편은 $2m$, $x$절편은 $-2$이다. 두 축과 직선이 만드는 삼각형의 넓이는\n$\\dfrac12\\cdot2\\cdot|2m|=2|m|$\n$=2\\sqrt{\\dfrac3{13}}=\\dfrac{2\\sqrt{39}}{13}$\n\n따라서 정답은 ⑤이다.",
     "decisiveStep": "현의 반길이와 반지름으로 중심-직선 거리를 구한 뒤, 기울기 m의 절댓값으로 축 절편 삼각형의 넓이를 계산한다.",
     "primaryMethod": "현의 반길이와 반지름에서 중심과 직선 사이 거리를 구한다",
-    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "원에서 중심과 현의 수직거리 및 반현 길이를 보여 주는 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심이 C이고 반지름이 2인 원과 직선이 두 점 A, B에서 만난다. 중심에서 현 AB에 내린 수선의 발 H가 있고 CH는 √3으로 적혀 있으며 AH와 HB는 길이가 같다는 표시가 있다. 직선은 x축과 (−2,0)에서 만나고, 직선과 두 축이 둘러싼 삼각형이 주황으로 칠해져 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "현 AB=2이므로 AH=1이고, 반지름이 2이므로 CH=√3이다. 중심 (2,0)에서 직선까지의 거리가 √3이 되는 기울기 m을 구하면 y절편이 정해진다. x절편은 −2이므로 주황 삼각형의 밑변은 2이고 높이는 y절편이다. 정답은 13분의 2√39이다."
   },
   {
     "id": 20,
@@ -961,7 +991,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "직선 $l$은 $y=x-1$이다.\n대칭축 $y=2x-1$과의 교점 $E$는\n$x-1=2x-1$에서 $x=0$을 얻으므로 $E=(0,-1)$이다.\n대칭할 때 $E$는 축 위의 점이므로 그대로 남는다.\n\n$l$ 위의 다른 점 $T=(1,0)$을 잡는다.\n대칭축의 기울기가 $2$이므로 $T$에서 대칭축에 내린 수선의 기울기는 $-\\dfrac12$이다.\n수선의 방정식은\n$y=-\\dfrac12(x-1)$이다.\n대칭축과의 교점 $H$를 구하면\n$-\\dfrac12(x-1)=2x-1$\n$-x+1=4x-2$\n$x=\\dfrac35$, $y=\\dfrac15$이므로 $H=\\left(\\dfrac35,\\dfrac15\\right)$이다.\n\n반사축은 $TT'$의 수직이등분선이므로 $H$는 $TT'$의 중점이다.\n따라서 반사된 점은\n$T'=\\left(2\\cdot\\dfrac35-1,2\\cdot\\dfrac15-0\\right)=\\left(\\dfrac15,\\dfrac25\\right)$이다.\n\n$l'$은 $E$와 $T'$을 지나므로 기울기는\n$\\dfrac{\\frac25-(-1)}{\\frac15-0}=7$이다.\n점 $E(0,-1)$을 지나고 기울기가 $7$인 직선은\n$y+1=7x$, 즉 $y=7x-1$이다. 정답은 ③이다.",
     "decisiveStep": "직선의 방향각을 대칭축 방향각에 대해 반사해 기울기 7을 얻고 고정 교점 (0,-1)을 대입한다.",
-    "primaryMethod": "대칭축에 대한 방향각과 고정 교점으로 반사 직선을 구한다"
+    "primaryMethod": "대칭축에 대한 방향각과 고정 교점으로 반사 직선을 구한다",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=x−1 위의 점 T(1,0)에서 직선 y=2x−1에 내린 수선의 발 H와 대칭이동한 점 T′이 표시되어 있고, TH와 HT′의 길이가 같다는 표시와 직각 표시가 있다. 두 직선의 교점 E(0,−1)와 T′을 잇는 주황 선분이 대칭이동한 직선 위에 놓여 있다.",
+    "solutionImageCaption": "처음 직선 l: y=x−1과 대칭축 y=2x−1의 교점 E는 대칭이동해도 제자리이다. l 위의 다른 점 T를 대칭축에 대하여 옮긴 점 T′을 구하고, 대칭이동한 직선이 E와 T′을 지난다는 것을 이용해 기울기를 구한다. 정답은 y=7x−1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1002,9 +1036,9 @@ window.questionBank = [
     "solution": "직선의 기울기는 $\\tan60^\\circ=\\sqrt3$이다.\n따라서 직선을 $y=\\sqrt3x+c$로 둔다.\n\n원의 중심은 원점이고 반지름은 $3$이다. 직선 $\\sqrt3x-y+c=0$과 원점 사이의 거리가 $3$이므로\n$\\dfrac{|c|}{\\sqrt{(\\sqrt3)^2+(-1)^2}}=3$\n$\\dfrac{|c|}{2}=3$\n$|c|=6$\n$c=6$ 또는 $c=-6$\n\n따라서 구하는 직선은\n$y=\\sqrt3x+6$, $y=\\sqrt3x-6$이다.",
     "decisiveStep": "기울기 tan60°=√3인 직선을 놓고 원점과의 거리를 반지름 3으로 둔다.",
     "primaryMethod": "주어진 각에서 직선 기울기를 구해 중심거리로 접선 절편을 결정한다",
-    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "기울기가 √3인 직선 중 원점에서의 거리가 반지름 3인 직선은 y=√3x+6과 y=√3x-6이고, 접점은 A, B이다.",
-    "solutionImageCaption": "기울기가 √3인 직선 중 원점에서의 거리가 반지름 3인 직선은 y=√3x+6과 y=√3x-6이고, 접점은 A, B이다.",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점 O를 중심으로 반지름 3인 원과, x축의 양의 방향과 60도를 이루는 평행한 두 접선이 있다. 접점 A, B까지의 반지름이 파란 선분이고 직각 표시와 길이 3이 있으며, 왼쪽 접선과 x축이 이루는 각 60도가 표시되어 있다.",
+    "solutionImageCaption": "x축의 양의 방향과 이루는 각이 60도이므로 기울기는 tan60°=√3이고, 접선을 y=√3x+c로 놓는다. 원점과 직선 사이의 거리가 반지름 3과 같다는 식에서 c를 구하면 위쪽과 아래쪽 접선 두 개가 나온다. 정답은 y=√3x+6 또는 y=√3x−6이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1046,9 +1080,10 @@ window.questionBank = [
     "solution": "두 원을 완전제곱식으로 바꾼다.\n\n$x^2-2x+y^2-4y+4=0$\n$(x-1)^2+(y-2)^2=1$\n\n$x^2-6x+y^2-2y+9=0$\n$(x-3)^2+(y-1)^2=1$\n\n두 원은 반지름이 같으므로 대칭축은 두 중심을 잇는 선분의 수직이등분선이다. 중심은 $(1,2)$, $(3,1)$이다.\n중점은 $(2,\\dfrac32)$이고 중심을 잇는 기울기는 $-\\dfrac12$이므로 대칭축의 기울기는 $2$이다.\n\n$y-\\dfrac32=2(x-2)$\n$y=2x-\\dfrac52$\n\n$a=2$, $b=-\\dfrac52$이므로 $ab=-5$이다.",
     "decisiveStep": "같은 반지름인 두 원의 대칭축은 중심을 잇는 선분의 수직이등분선이다.",
     "primaryMethod": "같은 반지름 두 원의 대칭축은 중심선의 수직이등분선이다",
-    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "두 원의 중심과 중심선의 수직이등분선인 대칭축을 나타낸 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심이 A(1,2)인 파란 원과 중심이 B(3,1)인 주황 원은 반지름이 모두 1이다. 선분 AB의 중점을 지나며 AB와 직각으로 만나는 직선 y=ax+b가 그려져 있고, 초록 선분으로 그린 두 토막은 길이가 같다는 표시가 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 원의 식을 완전제곱식으로 고치면 중심은 (1,2)(파란 원), (3,1)(주황 원)이고 반지름은 모두 1이다. 반지름이 같은 두 원의 대칭축은 두 중심을 잇는 선분의 수직이등분선이므로 중점 (2, 2분의 3)을 지나고 기울기는 −2분의 1과 곱해서 −1이 되는 수이다. 이 직선에서 a와 b를 구해 ab를 계산한다. 정답은 −5이다."
   },
   {
     "id": 23,
@@ -1135,9 +1170,9 @@ window.questionBank = [
     "solution": "직선의 계수를 정리한다.\n\n$(1+k)x+(5-k)y-3=0$\n\n원점과 직선 사이의 거리는\n$f(k)=\\dfrac{3}{\\sqrt{(1+k)^2+(5-k)^2}}$이다.\n분모의 제곱을 완전제곱으로 정리하면\n$(k+1)^2+(5-k)^2$\n$=2k^2-8k+26$\n$=2(k-2)^2+18$\n\n분모는 $k=2$일 때 가장 작으므로 $f(k)$는 이때 가장 크다.\n\n$f(2)=\\dfrac3{\\sqrt{18}}=\\dfrac{\\sqrt2}{2}$\n\n따라서 최댓값은 $\\dfrac{\\sqrt2}{2}$이다.",
     "decisiveStep": "거리의 분모 제곱을 2(k-2)²+18로 완전제곱하여 최솟값을 찾는다.",
     "primaryMethod": "거리 분모의 이차식을 완전제곱해 최솟값을 정한다",
-    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q24-solution.svg",
-    "solutionImageAlt": "모든 직선은 점 P를 지나고, k=2일 때 직선 x+y-1=0이 OP에 수직이어서 거리가 최대이다.",
-    "solutionImageCaption": "모든 직선은 점 P를 지나고, k=2일 때 직선 x+y-1=0이 OP에 수직이어서 거리가 최대이다.",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점 O와 세 직선 x+5y−3=0, x−y=0, x+y−1=0이 있다. 세 직선은 점 P(2분의 1, 2분의 1)에서 만나고, 선분 OP가 주황색으로 그려져 있으며 직선 x+y−1=0이 P에서 OP와 직각을 이룬다.",
+    "solutionImageCaption": "직선 x+5y−3+k(x−y)=0은 k에 관계없이 두 직선 x+5y−3=0과 x−y=0의 교점 P를 지난다. 원점과 직선 사이의 거리는 OP 이하이고 직선이 OP에 수직일 때 가장 크다. 이때의 거리가 f(k)의 최댓값이다. 정답은 2분의 √2이다.",
     "solutionImageSize": "full"
   }
 ];

@@ -181,6 +181,23 @@ assert.doesNotMatch(wrongPrintContinuation.innerHTML, /sol-image-wrap|sol-ans/, 
 assert.match(wrongPrintEngine, /resolveArchiveAssetUrl\(q\.solutionImage, getQuestionArchiveFile\(q\)\)/, 'wrong print should invoke the archive resolver for solution images');
 assert.match(wrongPrintEngine, /\.sol-image-wrap img/, 'wrong print should constrain solution images in print layout');
 
+// 2026-11-11 user decision (solution SVGs are sized by label size, not by class): the small/medium/large size class
+// no longer caps an .svg solution figure; solution-render-executor.js shows it at natural width x 0.6 capped at the
+// column, and this CSS is the fallback if that script does not run (also matches the data: SVG the figure engine
+// probes with). Raster solution images (png/jpg) keep their old caps because enlarging them blurs. These pins fail
+// if an SVG cap is brought back or a raster cap is loosened.
+for (const [name, source] of [['engine', engine], ['mixed engine', mixedEngine], ['wrong print engine', wrongPrintEngine]]) {
+  const svgRule = source.match(/\.sol-image-wrap:is\(\.image-small, \.image-medium, \.image-large\):not\(\.layout-fullwidth\) img:is\(\[src\$="\.svg" i\], \[src\*="\.svg\?" i\], \[src\*="\.svg#" i\], \[src\^="data:image\/svg\+xml" i\]\) \{([^}]*)\}/);
+  assert(svgRule, `${name} should lift the small/medium/large cap for .svg solution images`);
+  assert.match(svgRule[1], /max-width:\s*100%/, `${name} svg solution images should reach the column width`);
+  assert.match(svgRule[1], /max-height:\s*none/, `${name} svg solution images should not be height-capped`);
+  assert(source.indexOf(svgRule[0]) > source.indexOf('.sol-image-wrap.image-full img'), `${name} svg rule must come after the base size-class caps so it wins`);
+  assert(source.includes('.sol-image-wrap.image-small img { max-width: 48%; max-height: 105px; }'), `${name} raster small cap must stay`);
+  assert(source.includes('.sol-image-wrap.image-medium img { max-width: 72%; max-height: 145px; }'), `${name} raster medium cap must stay`);
+  assert(source.includes('.sol-image-wrap.image-large img { max-width: 92%; max-height: 180px; }'), `${name} raster large cap must stay`);
+  assert(source.includes('.sol-image-wrap.image-full img { max-width: 100%; max-height: none; }'), `${name} full rule must stay`);
+}
+
 assert(audit.includes('missing solution image'), 'archive audit should reject missing solution-image assets');
 assert(layout.includes('solutionImageSize') && layout.includes('rendered only in solution mode'), 'archive authoring contract should document the solution-only image fields');
 

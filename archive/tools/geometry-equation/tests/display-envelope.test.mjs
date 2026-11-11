@@ -11,6 +11,10 @@ import {compareActualDisplayEnvelope,planDisplayEnvelope,qualifyDisplayEnvelope,
 
 const intrinsic={width:384,height:320};
 const rect=(width,height)=>({x:20,y:30,width,height});
+// NOTE (2026-11-11, user decision: solution SVGs are sized by label size, not by class): these four rows are the OLD per-class
+// page caps (48%/105px, 72%/145px, 92%/180px, full). The real page no longer measures an SVG this way (see the
+// 'real page measurement' test below, where every class measures the same). They are kept as a synthetic fixture on purpose:
+// the planner/qualifier must still handle classes that measure differently (escalation, refusal), so these assertions are not loosened.
 const classes=[
   ['small',126,105,'48%','105px'],
   ['medium',174,145,'72%','145px'],
@@ -27,6 +31,19 @@ test('requested profile font composition targets the measured CSS floor and refu
   assert.equal(requestedProfileTypographyPolicy({requestedSizeClass:'large',intrinsicSvg:intrinsic,observation}).baseFontPx,20);
   assert.throws(()=>requestedProfileTypographyPolicy({requestedSizeClass:'small',intrinsicSvg:intrinsic,observation}),/UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE/);
   assert.throws(()=>requestedProfileTypographyPolicy({requestedSizeClass:'medium',intrinsicSvg:intrinsic,observation:{...observation,synthetic:true}}),/ACTUAL_ARCHIVE_PROFILE_TYPOGRAPHY_MEASUREMENT_REQUIRED/);
+});
+test('real page measurement (2026-11-11): an SVG solution figure measures the same for every size class, so the requested class does not change the base font',()=>{
+  // Measured on the real Archive page at 1440x1000, qpp=4 (column content width 298px): a 384x320 figure is shown at natural width x 0.6
+  // = 230.4x192 for small, medium, large and full alike, max-width 100%, max-height none.
+  const realProfile=sizeClass=>({sizeClass,status:'PASS',imageRect:rect(230.4,192),naturalWidth:intrinsic.width,naturalHeight:intrinsic.height,computedStyle:{maxWidth:'100%',maxHeight:'none',objectFit:'contain',transform:'none'}});
+  const observation={status:'PASS',synthetic:false,runtime:'playwright-chromium',profiles:['small','medium','large','full'].map(realProfile)};
+  const bases=['small','medium','large','full'].map(requestedSizeClass=>requestedProfileTypographyPolicy({requestedSizeClass,intrinsicSvg:intrinsic,observation}));
+  for(const policy of bases){
+    assert.equal(policy.displayScale,0.6);
+    assert.equal(policy.baseFontPx,20);           // floor: 11.25 / 0.6 = 18.75 < 20
+    assert.equal(policy.baseFontPx*policy.displayScale>=11.25,true);
+  }
+  assert.equal(new Set(observation.profiles.map(value=>canonicalJson(value.computedStyle))).size,1);   // one profilePolicySha256 for all classes
 });
 const profile=([sizeClass,width,height,maxWidth,maxHeight])=>({
   status:'PASS',sizeClass,imageRect:rect(width,height),naturalWidth:intrinsic.width,naturalHeight:intrinsic.height,

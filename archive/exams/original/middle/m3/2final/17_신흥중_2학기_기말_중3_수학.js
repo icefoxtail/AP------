@@ -67,8 +67,12 @@ window.examData = {
         "$\\tan x = \\overline{\\mathrm{CD}}$",
         "$\\cos x = \\overline{\\mathrm{OD}}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "$\\cos x = \\overline{\\mathrm{OD}}$",
+      "solution": "반지름이 1이므로 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OD}}=1$이다.<br>직각삼각형 $\\mathrm{OAB}$에서 $\\sin x=\\dfrac{\\overline{\\mathrm{AB}}}{\\overline{\\mathrm{OA}}}=\\overline{\\mathrm{AB}}$, $\\cos x=\\dfrac{\\overline{\\mathrm{OB}}}{\\overline{\\mathrm{OA}}}=\\overline{\\mathrm{OB}}$이다.<br>$y=90^\\circ-x$이므로 $\\sin y=\\dfrac{\\overline{\\mathrm{OB}}}{\\overline{\\mathrm{OA}}}=\\overline{\\mathrm{OB}}$, $\\cos y=\\dfrac{\\overline{\\mathrm{AB}}}{\\overline{\\mathrm{OA}}}=\\overline{\\mathrm{AB}}$이다.<br>직각삼각형 $\\mathrm{OCD}$에서 $\\tan x=\\dfrac{\\overline{\\mathrm{CD}}}{\\overline{\\mathrm{OD}}}=\\overline{\\mathrm{CD}}$이다.<br>그러나 $\\cos x=\\overline{\\mathrm{OB}}$이고 $\\overline{\\mathrm{OD}}=1$이므로 $\\cos x=\\overline{\\mathrm{OD}}$는 옳지 않다. 따라서 옳지 않은 것은 ⑤이다.",
+      "solutionImage": "assets/images/17_신흥중_2학기_기말_중3_수학/q4-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름이 1인 사분원이다. 중심 O에서 호 위의 점 A로 반지름 OA가 있고 A에서 변 OD에 내린 수선의 발이 B이다. 점 D에서 사분원에 접선이 있고 직선 OA의 연장선과 만나는 점이 C이다. 각 AOB는 x, 각 OAB는 y이다. 파란색 AB, 주황색 OB, 초록색 CD가 구분되어 있다.",
+      "solutionImageCaption": "반지름이 1이므로 sin x는 선분 AB의 길이, cos x는 선분 OB의 길이, tan x는 선분 CD의 길이와 같다. 각 y는 90°−x이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 5,
@@ -113,8 +117,12 @@ window.examData = {
         "$15\\sqrt{3}\\text{ cm}^2$",
         "$10\\sqrt{3}\\text{ cm}^2$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "$10\\sqrt{3}\\text{ cm}^2$",
+      "solution": "평행사변형에서 $BC=AD=10\\text{ cm}$이고 $M$이 $BC$의 중점이므로 $MC=5\\text{ cm}$이다.<br>꼭짓점 $A$에서 $BC$에 내린 수선의 길이는 $AB\\sin60^\\circ=8\\times\\dfrac{\\sqrt{3}}{2}=4\\sqrt{3}\\text{ cm}$이다.<br>따라서 $\\triangle AMC=(\\dfrac{1}{2})\\times MC\\times(4\\sqrt{3})=(\\dfrac{1}{2})\\times5\\times4\\sqrt{3}=10\\sqrt{3}\\text{ cm}^2$이다.",
+      "solutionImage": "assets/images/17_신흥중_2학기_기말_중3_수학/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 평행사변형으로 변 AB는 8cm, 변 AD는 10cm, 각 B는 60도이다. 변 BC의 중점 M이 있고 점 A에서 변 BC에 내린 수선 AH는 주황색으로 4 루트 3이다. 선분 MC는 5cm이다. 삼각형 AMC가 파란색으로 칠해져 있다.",
+      "solutionImageCaption": "BC=AD=10이고 M이 BC의 중점이므로 MC=5cm이다. 높이 AH=8sin60°=4√3cm이다. 삼각형 AMC는 밑변 MC와 높이 AH로 넓이를 구한다. 정답은 10√3cm²이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 8,
@@ -127,8 +135,12 @@ window.examData = {
         "$25\\text{ cm}$",
         "$20\\sqrt{21}\\text{ cm}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "$20\\sqrt{21}\\text{ cm}$",
+      "solution": "직각삼각형 $ABH$에서 $BH=AB\\cos60^\\circ=80\\times\\dfrac{1}{2}=40\\text{ cm}$, $AH=AB\\sin60^\\circ=80\\times\\dfrac{\\sqrt{3}}{2}=40\\sqrt{3}\\text{ cm}$이다.<br>$HC=BC-BH=100-40=60\\text{ cm}$이다.<br>직각삼각형 $AHC$에서 $AC=\\sqrt{AH^2+HC^2}=\\sqrt{4800+3600}=\\sqrt{8400}=20\\sqrt{21}\\text{ cm}$이다.",
+      "solutionImage": "assets/images/17_신흥중_2학기_기말_중3_수학/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 삼각형 ABC에서 점 A에서 변 BC에 내린 수선의 발이 H이다. 변 AB는 80cm, 변 BC는 100cm, 각 B는 60도이다. 수선 AH는 40 루트 3, BH는 40cm, HC는 60cm로 적혀 있고 변 AC가 주황색으로 강조되어 있다.",
+      "solutionImageCaption": "BH=80cos60°=40cm, AH=80sin60°=40√3cm이고 HC=100−40=60cm이다. 직각삼각형 AHC에서 피타고라스 정리로 AC를 구한다. 정답은 20√21cm이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 9,
@@ -351,8 +363,12 @@ window.examData = {
       "score": 6,
       "question": "[서술형 1] 다음 그림을 보고 알맞은 값을 구하여라. (6점)<br><img src=\"assets/images/17_신흥중_2학기_기말_중3_수학/s01.png\" /><br>(1) $\\sin x$값은?(2점)<br>(2) $\\cos x$ 값은?(2점)<br>(3) $\\tan x$ 값은?(2점)",
       "choices": [],
-      "answer": "(1) $\\dfrac{\\sqrt{5}}{3}$, (2) $\\dfrac{2}{3}$, (3) $\\dfrac{\\sqrt{5}}{2}$",
-      "solution": "$\\angle A=90^\\circ$이고 $BC=12\\text{ cm}$, $AB=8\\text{ cm}$이므로 $AC=\\sqrt{BC^2-AB^2}=\\sqrt{144-64}=4\\sqrt{5}\\text{ cm}$이다.<br>그림의 수직선은 $BC$와 수직이므로 $x+\\angle C=90^\\circ$이고, $\\triangle ABC$에서도 $\\angle B+\\angle C=90^\\circ$이다.<br>따라서 $x=\\angle B$이다.<br>그러므로 (1) $\\sin x=AC/BC=(4\\sqrt{5})/12=\\sqrt{5}/3$, (2) $\\cos x=AB/BC=\\frac{8}{12}=\\frac{2}{3}$, (3) $\\tan x=AC/AB=(4\\sqrt{5})/8=\\sqrt{5}/2$이다."
+      "answer": "(1) $\\dfrac{15}{17}$, (2) $\\dfrac{8}{17}$, (3) $\\dfrac{15}{8}$",
+      "solution": "$\\angle A=90^\\circ$이고 $BC=17\\text{ cm}$, $AB=8\\text{ cm}$이므로 $AC=\\sqrt{BC^2-AB^2}=\\sqrt{289-64}=15\\text{ cm}$이다.<br>그림의 수직선은 $BC$와 수직이므로 $x+\\angle C=90^\\circ$이고, $\\triangle ABC$에서도 $\\angle B+\\angle C=90^\\circ$이다.<br>따라서 $x=\\angle B$이다.<br>그러므로 (1) $\\sin x=AC/BC=\\dfrac{15}{17}$, (2) $\\cos x=AB/BC=\\dfrac{8}{17}$, (3) $\\tan x=AC/AB=\\dfrac{15}{8}$이다.",
+      "solutionImage": "assets/images/17_신흥중_2학기_기말_중3_수학/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 점 A에서 직각인 직각삼각형으로 변 AB는 8cm, 변 BC는 17cm, 변 AC는 15cm이다. AC 위의 한 점에서 BC에 내린 수선이 있고 수선과 AC가 이루는 각 x와 꼭짓점 B의 각이 같은 분홍색으로 x로 표시되어 있다. 초록색 AB, 주황색 AC, 파란색 BC가 구분되어 있다.",
+      "solutionImageCaption": "AC=√(17²−8²)=15cm이다. 수선과 AC가 이루는 각 x는 각 B와 같으므로 sin x=AC/BC, cos x=AB/BC, tan x=AC/AB로 구한다. 정답은 (1) 15/17, (2) 8/17, (3) 15/8이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 22,

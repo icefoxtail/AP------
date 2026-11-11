@@ -130,7 +130,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q03-solution.svg"
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심이 C(5,−2)이고 반지름이 √26인 원과 직선 x−5y+k=0이 두 점 P, Q에서 만나는 그림이다. 중심 C에서 직선에 내린 수선의 발 H까지의 거리 d가 주황 선분으로, 반지름 CP가 파랑 선분으로 그려져 있고 직각 표시가 있다.",
+    "solutionImageCaption": "예: k=5일 때의 그림이다. 원과 직선이 서로 다른 두 점에서 만나려면 중심 (5,−2)에서 직선까지의 거리 d가 반지름 √26보다 작아야 한다. d는 √26분의 |k+15|이므로 |k+15|<26을 푼다. 정답은 −41<k<11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -258,7 +261,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q06-solution.svg"
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 직선 4x+3y−11=0과 3x−4y−2=0(검은색)이 점 P(2,1)에서 만나고, 두 직선이 이루는 각의 이등분선 1(파랑)과 이등분선 2(주황)가 그려져 있다. 이등분선 2 위의 점 (x,y)에서 두 직선에 내린 수선(보라 선분)은 길이가 같다는 표시와 직각 표시가 있다.",
+    "solutionImageCaption": "각의 이등분선 위의 점은 두 직선까지의 거리가 같으므로 |4x+3y−11|=|3x−4y−2|이다. 부호를 같게 놓으면 기울기가 −7분의 1인 이등분선 1(x+7y−9=0)이고, 부호를 다르게 놓으면 기울기가 7인 이등분선 2이다. 기울기가 양수인 것은 이등분선 2이므로 정답은 7x−y−13=0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -300,7 +306,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄이다. 위 줄은 x<2 또는 x>5이고, 가운데 줄은 1≤x≤2a−1이며, 아래 줄은 두 해의 공통 범위 1≤x<2와 5<x≤2a−1로 정수 1, 6, 7, 8이 점으로 표시되어 있다. a=4분의 19일 때의 그림이다.",
+    "solutionImageCaption": "예: a=4분의 19일 때의 그림이다. 첫째 부등식의 해는 x<2 또는 x>5이고 둘째 부등식의 해는 1≤x≤2a−1이다. a≥1이면 공통 범위의 정수는 1과 6, 7, …이므로 4개가 되려면 8≤2a−1<9이고, a<1이면 2a−1≤x≤1에서 정수가 −2, −1, 0, 1이어야 한다. 정답은 2분의 9≤a<5 또는 −1<a≤−2분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -343,7 +353,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/22_매산여고_1학기_기말_고1_기출/q08.png"
+    "image": "assets/images/22_매산여고_1학기_기말_고1_기출/q08.png",
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위의 사각형 A, B, C, D(A(3,0), B(6,0), C(3,6), D(1,4))와 선분 CB를 1:2로 내분하는 점 P(4,4)가 있다. P에서 변 DA 위의 점 (a,b)로 가는 직선 l이 그려져 있고, 점선 AP로 나뉜 삼각형 중 A, B, P를 꼭짓점으로 하는 삼각형은 파랑, 다른 삼각형은 주황으로 칠해져 있다.",
+    "solutionImageCaption": "사각형의 넓이는 15이므로 직선 l이 나누는 한쪽 넓이는 2분의 15이다. 선분 CB를 1:2로 내분하는 점은 P(4,4)이고 파랑 삼각형 ABP의 넓이는 6이다. 점 (a,b)를 변 AD 위의 점으로 놓고 주황 삼각형의 넓이를 더해 2분의 15가 되게 하면 (a,b)가 정해진다. 정답은 2분의 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -386,7 +400,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q09-solution.svg"
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선 AB 위에 A(−3,1), B(5,5)와 AP:PB=1:3인 두 점 P₁(−1,2), P₂(−7,−1)이 표시되어 있다. 원점 O에서 A, B, P₂로 가는 선분과 O에서 직선 AB에 내린 수선 OP₁(주황, 직각 표시)이 그려져 있다.",
+    "solutionImageCaption": "세 점 A, P, B가 한 직선 위에 있으므로 두 삼각형 OAP, OBP는 높이가 같고 넓이의 비는 밑변 AP, PB의 길이의 비와 같다. 따라서 PB=3AP이며, P가 선분 AB의 안쪽이면 P₁(−1,2), 바깥쪽이면 P₂(−7,−1)이다. 두 점 사이의 거리를 구한다. 정답은 3√5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -428,7 +445,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 a, 세로축이 t인 좌표평면에 직선 t=a−2(파랑)와 t=2a+3(주황)이 그려져 있고 t≥0인 위쪽 영역이 연하게 칠해져 있다. 두 직선이 가로축과 만나는 점 (2,0)과 (−2분의 3,0)이 표시되어 있다.",
+    "solutionImageCaption": "x²=t로 놓으면 방정식은 (t−a+2)(t−2a−3)=0이므로 t=a−2 또는 t=2a+3이다. t가 양수이면 x의 실근은 2개, 0이면 1개, 음수이면 없다. 그림에서 칠한 부분(t≥0)에 있는 직선의 개수와 가로축에 놓이는 경우를 따져 f(a)를 구한 뒤, 정수 a를 센다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -471,7 +492,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q11-solution.svg"
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 함수 f(x)=x²−7|x|+6의 그래프(파랑)가 y축 위의 점 (0,6)에서 만나는 두 포물선 조각 모양으로 그려져 있고, 기울기가 1인 직선 세 개가 있다. 분홍 직선 y=x−3은 왼쪽 조각에 접하고, 초록 직선 y=x+6은 (0,6)을 지나며, 주황 직선 y=x+2는 그래프와 서로 다른 네 점에서 만난다.",
+    "solutionImageCaption": "예: 주황 직선 y=x+2는 그래프와 네 점에서 만난다. f(x)=x+k에서 x≥0이면 k=(x−4)²−10, x<0이면 k=(x+3)²−3이므로 각 부분에서 두 점씩 만나려면 −10<k<6, −3<k<6이어야 한다. 분홍 직선(k=−3)과 초록 직선(k=6)이 경계이다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -514,7 +538,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q12-solution.svg"
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 C가 원점, A가 (14,0)이고 나머지 꼭짓점이 B(u,v)인 삼각형이 그려져 있다. A에서 변 BC의 중점 D로 그은 중선 a(파랑)와 B에서 변 AC의 중점 E로 그은 중선 b(주황)가 점 G에서 직각으로 만나고, BC=18, CA=14이며 변 AB는 c로 표시되어 있다.",
+    "solutionImageCaption": "C=(0,0), A=(14,0), B=(u,v)로 놓으면 BC=18에서 u²+v²=324이다. 두 중선의 기울기의 곱이 −1이므로 v²=−(u−28)(u−7)이고, 연립하면 u=7분의 104이다. 이로부터 a²=69, b²=165, c²=104를 얻는다. 정답은 130이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -556,7 +583,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: y=|2x+1|+2|x−1|의 그래프(파랑)가 세 개의 직선 조각으로 그려져 있고, 수평선 y=5(초록)와 만나는 점 (−1,5), (2분의 3,5)와 꺾이는 점 (−2분의 1,3), (1,3)이 표시되어 있다.",
+    "solutionImageCaption": "절댓값 안의 식이 0이 되는 x=−2분의 1, 1에서 구간을 나누면 그래프는 세 직선 조각이고 수평선 y=5와 x=−1, 2분의 3에서 만난다. 부등식의 해는 그래프가 y=5 아래에 있는 −1<x<2분의 3이다. 이 구간을 해로 갖는 이차부등식은 (x+1)(2x−3)<0 꼴이다. 정답은 2x²−x−3<0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -599,7 +630,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q14-solution.svg"
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 P(1,3)과 점 F(4,0)이 있고 F를 지나는 두 직선이 그려져 있다. 직선 x−y−4=0은 선분 PF(주황, 길이 3√2)와 직각을 이루고, 다른 직선 m에 P에서 내린 수선(초록)은 PF보다 짧다.",
+    "solutionImageCaption": "직선의 식을 k(2x+y−8)+(x−4)=0으로 정리하면 k의 값에 관계없이 점 F(4,0)을 지난다. P에서 F를 지나는 직선까지의 거리는 PF 이하이고 직선이 PF에 수직일 때 최대이며 PF=3√2이다. 이때 직선은 x−y−4=0이므로 k=−3분의 1이다. 정답은 −√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -642,7 +676,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q15-solution.svg"
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 네 점 A, P, B, Q가 이 순서로 놓여 있고, A와 P 사이 2, P와 B 사이 1, B와 Q 사이 3, A와 B 사이 3, A와 Q 사이 6이 화살표로 표시되어 있다.",
+    "solutionImageCaption": "예: AB=3인 경우로 A=0, B=3이라 두면 내분점 P=2, 외분점 Q=6이다. 그림의 길이로 ㄱ은 AQ의 중점이 B인지, ㄴ은 AP와 AQ의 길이의 비를, ㄷ은 P가 AQ의 중점인지를 확인한다. 정답은 ㄱ, ㄴ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -685,7 +722,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q16-solution.svg"
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심이 C(−3,2)인 파란 원과 직선 y=−x+3이 접하며 접점까지의 반지름에 직각 표시가 있다. 두 좌표축과 이 직선에 모두 접하는 작은 주황 원(중심 (r,r))이 제1사분면에 그려져 있고, 작은 원의 중심에서 x축, y축, 직선에 내린 수선에 각각 직각 표시가 있다.",
+    "solutionImageCaption": "파랑 원 (x+3)²+(y−2)²=8에 접하는 기울기 −1인 직선은 y=−x+b이고, 중심과의 거리가 2√2이므로 y절편이 양수인 직선은 y=−x+3이다. 두 좌표축과 이 직선에 모두 접하는 원의 중심은 (±r, ±r) 꼴이고, 이 중 반지름이 가장 작은 원이 주황 원(중심 (r,r))이다. 반지름 r을 p+q√2 꼴로 나타내 p+2q를 계산한다. 정답은 0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -728,7 +768,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q17-solution.svg"
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 사각형 O, A, B, C(O(0,0), A(4,−4), B(8,2), C(2,4))와 안쪽의 점 F(4,0)이 그려져 있다. F에서 꼭짓점까지의 선분 FB, FC는 파랑이며 길이가 같고 2√5로 적혀 있고, FO, FA는 초록이며 길이가 같다는 표시가 있다. F에서 변 AB에 내린 수선은 주황이고 직각 표시가 있다.",
+    "solutionImageCaption": "(x−4)²+y²은 점 F(4,0)에서 점 (x,y)까지의 거리의 제곱이므로, 둘레 위에서 가장 먼 곳은 꼭짓점 B, C이고 제곱은 20이다. 각 변에서 F까지의 최소 거리를 비교하면 가장 가까운 곳은 변 AB 위의 수선의 발이며 거리의 제곱은 13분의 64이다. 정답은 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -765,7 +808,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q18-solution.svg"
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: A(1,1), B(7,1), C(1,9)인 삼각형이 A에서 직각이고, 빗변 BC의 중점 P(4,5)를 중심으로 하는 외접원이 그려져 있다. PB, PC, PA에는 길이가 같다는 표시가 있고, 중선 AP 위에 무게중심 G(3, 3분의 11)이 표시되어 있다.",
+    "solutionImageCaption": "A에서 직각이므로 외심 P는 빗변 BC의 중점 (4,5)이다. 무게중심은 세 꼭짓점 좌표의 평균 (3, 3분의 11)이며 중선 AP를 2:1로 나눈다. 외심과 무게중심의 좌표로 ab+cd를 계산한다. 정답은 31이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -803,7 +849,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answerProvenanceNote": "Independent calculation retained after comparison with official solution PDF; see CREATE.source-correction-adjudication.json.",
-    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q19-solution.svg"
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 O, A, B(O(0,0), A(−5,5), B(10,20))에서 변 OB의 중점 M(5,10)과 A를 잇는 선분과 직선 y=ax+b가 그려져 있다. OM과 MB에는 길이가 같다는 표시가 있고 삼각형 OAM과 삼각형 AMB가 같은 파랑으로 칠해져 있다.",
+    "solutionImageCaption": "점 A를 지나는 직선이 삼각형의 넓이를 이등분하려면 반대쪽 변 OB의 중점 M(5,10)을 지나야 한다. 두 삼각형 OAM과 AMB는 밑변 OM, MB가 같고 높이가 같아 넓이가 같다. 직선은 A(−5,5)와 M을 지나므로 기울기 a는 2분의 1이고 b는 2분의 15이다. 정답은 4분의 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -840,7 +889,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q20-solution.svg"
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림에 이차함수 f(x)=x²−(2m+4)x−m의 파란 그래프, x축(초록), 세로 점선 두 개가 있다. 위쪽 그림은 x=−2, x=2의 점선과 점 (−2,−3), (2,21), 그래프가 x축과 만나는 점이 표시되어 있고, 아래쪽 그림은 x=−2, x=1의 점선과 점 (−2,12), (1,−3), 그래프가 x축과 만나는 점이 표시되어 있다.",
+    "solutionImageCaption": "예: 위쪽은 m=−5, 아래쪽은 m=0인 그래프이다. 판별식 D=4(m+1)(m+4)가 0 이상인 m에서만 실근이 있고, f(−2)≤0이면 f(2)>0이어서 구간 [−2,2] 안에 근이 있다(위쪽). f(−2)>0이면 f(1)≤0일 때 구간 [−2,1] 안에 근이 있다(아래쪽). 정답은 m≤−4 또는 m≥−1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -877,7 +929,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q21-solution.svg"
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심이 C(2,3)인 원과 직선 x+3y−35=0 위의 두 점 A(8,9), B(2,11), 직선에서 가장 먼 원 위의 점 P가 그려져 있다. 삼각형 PAB의 무게중심 G에서 직선 AB까지의 거리 d(초록)와 P에서 직선 AB까지의 거리 3d(주황)가 직각 표시와 함께 있다.",
+    "solutionImageCaption": "직선 AB는 x+3y−35=0이고, 무게중심 G에서 직선 AB까지의 거리는 P에서 직선까지 거리의 3분의 1이다. 원의 중심 C(2,3)에서 직선까지의 거리는 √10분의 24이고 반지름이 3이므로 P에서 직선까지의 최대 거리는 √10분의 24+3이다. 이를 3으로 나누어 G의 거리를 구한다. 정답은 1+5분의 (4√10)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -915,6 +970,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answerProvenanceNote": "Independent calculation retained after comparison with official solution PDF; see CREATE.source-correction-adjudication.json.",
-    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q22-solution.svg"
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄이다. 첫째 줄은 a−2≤x≤a+2이고 a=4일 때 정수 2, 3, 4, 5, 6이 점으로 표시되어 있다. 둘째 줄은 x<3분의 13이고, 셋째 줄은 공통 범위 a−2≤x<3분의 13로 정수 2, 3, 4가 점으로 표시되어 있다.",
+    "solutionImageCaption": "예: a=4일 때의 그림이다. 첫째 부등식의 해 a−2≤x≤a+2에는 정수가 5개 있고, a=4이면 둘째 부등식의 해가 x<3분의 13이어서 오른쪽의 정수 5, 6이 빠진다. 정수해가 5개가 되려면 다섯 정수가 모두 둘째 부등식을 만족해야 하므로 a>1, a=1, a<1로 나누어 조사한다. 정답은 1, 2이다.",
+    "solutionImageSize": "full"
   }
 ];

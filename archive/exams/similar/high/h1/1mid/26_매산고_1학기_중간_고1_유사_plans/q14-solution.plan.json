@@ -1,0 +1,82 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "꼭짓점 $V(6, -16)$을 갖고 $x$축과 두 점 $A(2, 0)$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "20",
+          "-12",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      1,
+      11
+    ],
+    "viewport": [
+      -2,
+      13,
+      -18,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 10,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 6,
+        "y": -16
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "2",
+        "0"
+      ],
+      "B": [
+        "10",
+        "0"
+      ],
+      "V": [
+        "6",
+        "-16"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "a=2일 때 y=x²-12x+20=(x-2)(x-10)의 그래프는 x축과 두 점 A(2,0), B(10,0)에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "q14-S1",
+      "condition": "a=2일 때 y=x^2-12x+20의 x절편 A(2,0), B(10,0)과 꼭짓점 V(6,-16)",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "a=2일 때 두 교점 A, B의 x좌표 2, 10과 꼭짓점의 위치를 보여 α²+β²의 값을 확인하게 한다."
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고1_유사/q14-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q14-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q14-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q14-solution.svg"
+  }
+}

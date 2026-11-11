@@ -1,0 +1,285 @@
+/* Student homework and planner surfaces. APMS DESIGN.md is the token authority.
+   Scoped to these pages so the teacher app and mathematical output stay intact. */
+body.student-tool-page {
+  --bg: #faf9f7;
+  --surface: #ffffff;
+  --surface-2: #f5f3f0;
+  --surface-alpha: rgba(250, 249, 247, .96);
+  --border: #e8e5e0;
+  --border-soft: #f1efeb;
+  --control-border: #857e78;
+  --text: #1c1917;
+  --text-soft: #44403c;
+  --secondary: #6b645f;
+  --action-primary: #1c1917;
+  --on-primary: #ffffff;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-soft: #eef4ff;
+  --primary-rgb: 37, 99, 235;
+  --success: #15803d;
+  --success-soft: #ecfdf3;
+  --warning: #b45309;
+  --warning-soft: #fdf3e3;
+  --error: #b91c1c;
+  --error-soft: #fef2f2;
+  --shadow: none;
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+body.student-tool-page.dark {
+  --bg: #0c0a09;
+  --surface: #1c1917;
+  --surface-2: #292524;
+  --surface-alpha: rgba(28, 25, 23, .96);
+  --border: #34302c;
+  --border-soft: #232020;
+  --control-border: #7c756f;
+  --text: #fafaf9;
+  --text-soft: #d6d3d1;
+  --secondary: #a8a29e;
+  --action-primary: #fafaf9;
+  --on-primary: #1c1917;
+  --primary: #93b4ff;
+  --primary-dark: #b5cbff;
+  --primary-soft: #202c43;
+  --primary-rgb: 147, 180, 255;
+  --success: #86efac;
+  --success-soft: #153322;
+  --warning: #fbbf24;
+  --warning-soft: #3a2b16;
+  --error: #fca5a5;
+  --error-soft: #411f1f;
+  color-scheme: dark;
+}
+.student-tool-page *, .student-tool-page *::before, .student-tool-page *::after { box-sizing: border-box; }
+.student-tool-page button, .student-tool-page input, .student-tool-page select, .student-tool-page textarea { font: inherit; }
+.student-tool-page button, .student-tool-page summary { cursor: pointer; touch-action: manipulation; }
+.student-tool-page a { color: var(--primary); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.student-tool-page :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+.student-tool-page .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.student-tool-page .skip-link { position: fixed; top: 8px; left: 8px; z-index: 10000; padding: 12px 16px; background: var(--surface); border: 1px solid var(--control-border); border-radius: 8px; transform: translateY(-160%); }
+.student-tool-page .skip-link:focus { transform: none; }
+.student-tool-page .top { position: sticky; top: 0; z-index: 20; min-height: 64px; padding: 0; background: var(--surface-alpha); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+.student-tool-page .top-inner { width: 100%; max-width: 1080px; min-height: 64px; height: auto; margin: 0 auto; padding: 8px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.student-tool-page .top-back { min-height: 44px; display: inline-flex; align-items: center; flex: 0 0 auto; border: 0; border-radius: 8px; background: transparent; padding: 0 8px; color: var(--secondary); font-size: 14px; font-weight: 500; text-decoration: none; white-space: nowrap; }
+.student-tool-page .top-back:hover { background: var(--surface-2); color: var(--text); }
+.student-tool-page .brand { display: flex; flex-direction: column; align-items: flex-start; gap: 0; min-width: 0; margin-right: auto; }
+.student-tool-page .brand-main { color: var(--text); font-size: 16px; font-weight: 600; line-height: 1.4; letter-spacing: -.3px; }
+.student-tool-page .brand-sub { color: var(--secondary); font-size: 12px; font-weight: 400; line-height: 1.4; }
+.student-tool-page .chip, .student-tool-page .student-chip { max-width: 30%; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--secondary); background: transparent; border: 0; padding: 0; font-size: 13px; font-weight: 500; }
+.student-tool-page .chip:empty { display: none; }
+.student-tool-page .app { width: 100%; max-width: 1080px; padding: 32px 24px 56px; margin: 0 auto; }
+.homework-page .app { max-width: 640px; }
+.student-tool-page .tool-intro { margin: 0 0 28px; }
+.student-tool-page .tool-eyebrow { margin: 0 0 6px; font-size: 12px; font-weight: 500; color: var(--secondary); }
+.student-tool-page .tool-title { margin: 0; font-size: clamp(25px, 3vw, 32px); line-height: 1.25; letter-spacing: -.8px; font-weight: 600; color: var(--text); }
+.student-tool-page .tool-description { margin: 10px 0 0; color: var(--secondary); font-size: 15px; line-height: 1.6; }
+.student-tool-page .card, .student-tool-page .pin-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: none; padding: 24px; }
+.homework-page .card { margin-bottom: 16px; }
+.student-tool-page .title { margin: 0; font-size: 21px; line-height: 1.4; letter-spacing: -.4px; font-weight: 600; }
+.student-tool-page .section-title { margin: 0 0 16px; font-size: 18px; font-weight: 600; line-height: 1.4; }
+.student-tool-page .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 16px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 14px; font-weight: 500; line-height: 1.4; box-shadow: none; text-decoration: none; transition: background .12s ease; cursor: pointer; touch-action: manipulation; }
+.student-tool-page .btn:hover { background: var(--surface-2); }
+.student-tool-page .btn:active { transform: none; }
+.student-tool-page .btn-primary { background: var(--action-primary); border-color: var(--action-primary); color: var(--on-primary); }
+.student-tool-page .btn-primary:hover { opacity: .9; background: var(--action-primary); }
+.student-tool-page .btn[disabled] { opacity: .55; cursor: wait; }
+.student-tool-page .input { display: block; min-height: 48px; width: 100%; padding: 12px 14px; border: 1px solid var(--control-border); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 16px; font-weight: 400; line-height: 1.4; box-shadow: none; }
+.student-tool-page .input::placeholder { color: var(--secondary); opacity: 1; }
+.student-tool-page .input:focus { outline: 2px solid var(--primary); outline-offset: 2px; border-color: var(--primary); }
+.student-tool-page .field-label { display: block; margin: 0 0 6px; font-size: 13px; font-weight: 500; color: var(--text-soft); }
+.student-tool-page .stack { display: flex; flex-direction: column; gap: 14px; }
+.student-tool-page .stack .field-label { margin-bottom: -6px; }
+.student-tool-page .muted { margin: 0; font-size: 13px; color: var(--secondary); font-weight: 400; line-height: 1.6; }
+.student-tool-page .notice { padding: 14px 16px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface-2); color: var(--secondary); font-size: 14px; font-weight: 400; line-height: 1.6; }
+.student-tool-page .notice strong { color: var(--text); font-weight: 500; }
+.student-tool-page .empty { border: 0; border-radius: 8px; padding: 28px 16px; background: var(--surface-2); color: var(--secondary); text-align: center; font-size: 14px; line-height: 1.7; font-weight: 400; }
+.student-tool-page .empty strong { color: var(--text); font-weight: 500; }
+.student-tool-page .toast { position: fixed; z-index: 10000; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom)); width: max-content; max-width: calc(100vw - 32px); padding: 12px 16px; border-radius: 12px; background: var(--text); color: var(--bg); font-size: 14px; font-weight: 400; line-height: 1.5; opacity: 0; pointer-events: none; transform: translate(-50%, 8px); transition: opacity .15s ease, transform .15s ease; white-space: normal; text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+.student-tool-page .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* Homework: three short steps, assignment context, and selected photo evidence. */
+.homework-steps { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 24px 0 0; padding: 18px 0 0; list-style: none; border-top: 1px solid var(--border); }
+.homework-steps li { display: inline-flex; align-items: center; gap: 7px; color: var(--secondary); font-size: 12px; white-space: nowrap; }
+.homework-steps .step-number { width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 50%; background: var(--surface); font-variant-numeric: tabular-nums; }
+.homework-steps .current { color: var(--text); font-weight: 600; }
+.homework-steps .current .step-number { background: var(--action-primary); border-color: var(--action-primary); color: var(--on-primary); }
+.homework-steps .complete .step-number { color: var(--success); background: var(--success-soft); border-color: var(--success-soft); }
+.homework-page .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 12px; color: var(--secondary); font-size: 13px; }
+.homework-page .meta-pill { padding: 4px 9px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-2); color: var(--text-soft); font-size: 12px; }
+.homework-page .meta-pill.primary { color: var(--secondary); }
+.homework-page .desc { margin: 16px 0 0; padding-top: 16px; border-top: 1px solid var(--border); font-size: 15px; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
+.homework-page .desc + .btn { margin-top: 20px; }
+.homework-page .stack > .btn, .homework-page .done-return { width: 100%; min-height: 48px; }
+.homework-page .input[type="file"] { padding: 8px; background: var(--surface-2); font-size: 13px; }
+.homework-page .input[type="file"]::file-selector-button { min-height: 44px; padding: 10px 12px; border: 1px solid var(--control-border); border-radius: 6px; background: var(--surface); color: var(--text); font: inherit; font-size: 14px; cursor: pointer; margin-right: 12px; }
+.homework-page .file-count { margin: 0 0 10px; font-size: 13px; color: var(--secondary); }
+.homework-page .file-count strong { color: var(--text); font-weight: 600; }
+.homework-page .selected-file { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.homework-page .selected-file:last-child { border-bottom: 0; }
+.homework-page .file-thumbnail { width: 64px; height: 64px; flex: 0 0 64px; border-radius: 8px; border: 1px solid var(--border); object-fit: cover; }
+.homework-page .file-thumbnail[hidden] { display: none; }
+.homework-page .file-info { flex: 1; min-width: 0; }
+.homework-page .file-name { font-size: 14px; font-weight: 500; overflow-wrap: anywhere; line-height: 1.4; }
+.homework-page .file-remove { flex: 0 0 auto; color: var(--error); padding: 10px 12px; }
+.homework-page .done-mark { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; border-radius: 50%; background: var(--success-soft); color: var(--success); font-size: 25px; }
+.homework-page .status-box { margin-top: 16px; padding: 14px 16px; border-radius: 8px; background: var(--success-soft); color: var(--success); font-size: 14px; }
+.homework-page .done-return { margin-top: 24px; }
+.homework-page .footer-note { margin: 20px auto 0; max-width: 450px; color: var(--secondary); text-align: center; font-size: 12px; line-height: 1.7; padding: 0 12px; }
+
+/* Planner: date and task first, quiet supporting metrics. */
+.planner-page .pin-wrap { min-height: calc(100dvh - 150px); padding: 24px 0; }
+.planner-page .pin-card { max-width: 420px; padding: 32px; }
+.planner-page .pin-kicker { margin-bottom: 12px; color: var(--secondary); text-align: center; font-size: 12px; font-weight: 500; }
+.planner-page .pin-title { font-size: 24px; font-weight: 600; line-height: 1.35; }
+.planner-page .pin-desc { margin: 12px 0 24px; font-size: 15px; font-weight: 400; line-height: 1.65; }
+.planner-page .pin-card > .btn { width: 100%; }
+.planner-page .hero { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-bottom: 24px; padding: 20px 0; border-block: 1px solid var(--border); }
+.planner-page .stat { display: block; min-width: 0; margin: 0; border: 0; border-right: 1px solid var(--border); border-radius: 0; padding: 0 20px; background: transparent; text-align: left; color: var(--text); }
+.planner-page .stat:first-child { padding-left: 0; }
+.planner-page .stat:last-child { border: 0; grid-column: auto; }
+.planner-page .stat-label { display: block; margin-bottom: 6px; color: var(--secondary); font-size: 12px; line-height: 1.5; font-weight: 400; }
+.planner-page .stat-value { display: block; font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.3; }
+.planner-page .stat-edit:hover .stat-value { text-decoration: underline; text-underline-offset: 4px; }
+.planner-page .progress-wrap { height: 5px; border: 0; max-width: 180px; background: var(--border); }
+.planner-page .progress-bar { background: var(--text-soft); }
+.planner-page .dashboard { grid-template-columns: 340px minmax(0, 1fr); gap: 24px; }
+.planner-page .side { position: sticky; top: 88px; }
+.planner-page .calendar-card { padding: 18px; }
+.planner-page .calendar-head { gap: 8px; margin-bottom: 16px; }
+.planner-page .calendar-title { font-size: 16px; font-weight: 600; }
+.planner-page .calendar-arrow { width: 44px; min-height: 44px; padding: 0; font-size: 24px; background: transparent; }
+.planner-page .calendar-grid { gap: 3px; }
+.planner-page .weekday { font-size: 12px; }
+.planner-page .day { min-height: 44px; min-width: 0; padding: 4px 0; border-radius: 8px; font-size: 14px; color: var(--text); }
+.planner-page .day.done-full { background: var(--success-soft); color: var(--success); }
+.planner-page .day.done-part { background: var(--warning-soft); color: var(--warning); }
+.planner-page .day.selected { border: 2px solid var(--primary); background: var(--primary-soft); color: var(--primary); font-weight: 600; }
+.planner-page .day.out { background: transparent; }
+.planner-page .calendar-hint { display: flex; justify-content: center; align-items: center; gap: 6px; margin: 18px 0 0; color: var(--secondary); font-size: 12px; }
+.planner-page .calendar-key { width: 8px; height: 8px; border-radius: 50%; }
+.planner-page .calendar-key.complete { background: var(--success); }
+.planner-page .calendar-key.pending { background: var(--warning); margin-left: 8px; }
+.planner-page .planner-date-nav { display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px auto; align-items: center; gap: 8px; margin-bottom: 16px; }
+.planner-page .date-field { min-width: 0; }
+.planner-page .date-field .input { min-height: 44px; padding: 9px 10px; text-align: center; }
+.planner-page .date-arrow { padding: 0; font-size: 24px; }
+.planner-page .date-today { padding-inline: 14px; }
+.planner-page .plan-head { align-items: center; margin-bottom: 20px; }
+.planner-page .plan-title { margin: 0; font-size: 20px; font-weight: 600; line-height: 1.4; }
+.planner-page .plan-date { margin-top: 4px; font-size: 12px; }
+.planner-page .lock-planner { color: var(--secondary); font-size: 13px; }
+.planner-page .plan-list { gap: 0; }
+.planner-page .plan-item { flex-wrap: wrap; min-height: 64px; padding: 16px 0; gap: 12px; border: 0; border-bottom: 1px solid var(--border); border-radius: 0; align-items: flex-start; }
+.planner-page .plan-item:first-child { padding-top: 0; }
+.planner-page .plan-item:last-child { border-bottom: 0; }
+.planner-page .check { width: 44px; height: 44px; border-radius: 8px; border: 1px solid var(--control-border); background: var(--surface); }
+.planner-page .check.done { background: var(--success-soft); border-color: var(--success); color: var(--success); }
+.planner-page .plan-main { flex: 1 1 calc(100% - 56px); padding-top: 1px; }
+.planner-page .plan-main.done { opacity: 1; color: var(--secondary); }
+.planner-page .plan-main.done .plan-item-title { color: var(--secondary); }
+.planner-page .plan-item-title { font-size: 16px; line-height: 1.5; font-weight: 500; }
+.planner-page .plan-sub { margin-top: 4px; font-size: 12px; }
+.planner-page .planner-action-row { margin-left: 56px; flex: 1 1 calc(100% - 56px); justify-content: flex-start; gap: 8px; }
+.planner-page .planner-action-btn { min-height: 44px; padding: 10px 12px; border-radius: 8px; background: var(--surface); color: var(--text-soft); font-size: 13px; }
+.planner-page .planner-action-btn.primary { background: var(--surface-2); color: var(--text); border-color: var(--border); }
+.planner-page .planner-action-btn.danger { margin-left: auto; color: var(--secondary); opacity: 1; padding: 10px; }
+.planner-page .planner-badge { min-height: 24px; padding: 3px 8px; border-color: var(--border); background: var(--surface-2); color: var(--secondary); font-size: 12px; line-height: 1.4; }
+.planner-page .planner-badge--done { background: var(--success-soft); border-color: var(--success-soft); color: var(--success); }
+.planner-page .planner-badge--locked { background: var(--error-soft); border-color: var(--error-soft); color: var(--error); }
+.planner-page .planner-badge--rest, .planner-page .planner-badge--wake { background: var(--warning-soft); border-color: var(--warning-soft); color: var(--warning); }
+.planner-page .planner-badge--question, .planner-page .planner-badge--reply { background: var(--primary-soft); border-color: var(--primary-soft); color: var(--primary); }
+.planner-page .quick-form { grid-template-columns: minmax(0,1fr) 90px auto; align-items: end; padding-top: 20px; margin-top: 16px; gap: 8px; }
+.planner-page .quick-form > .btn { min-height: 48px; }
+.planner-page .feedback { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--primary); border-radius: 8px; padding: 16px 18px; }
+.planner-page .feedback-title { color: var(--primary); font-size: 13px; font-weight: 500; }
+.planner-page .feedback-text { font-size: 15px; font-weight: 400; }
+.planner-page .mobile-calendar { margin-bottom: 16px; padding: 0 16px; }
+.planner-page .mobile-calendar > summary { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px; font-weight: 500; }
+.planner-page .mobile-calendar > summary::after { content: "+"; font-size: 20px; color: var(--secondary); }
+.planner-page .mobile-calendar[open] > summary::after { content: "−"; }
+.planner-page .mobile-calendar > summary .muted { margin-left: auto; font-size: 12px; }
+.planner-page .mobile-calendar-content { padding-top: 12px; border-top: 1px solid var(--border); }
+.planner-page .mobile-calendar .calendar-hint { margin-bottom: 16px; }
+/* Only renderPlanner enables this action after a valid planner has loaded. */
+.planner-page .mobile-add { display: none; min-height: 52px; border-radius: 8px; box-shadow: 0 0 0 8px var(--bg); }
+.planner-page .modal-overlay { background: rgba(0,0,0,.42); padding: 24px; align-items: center; }
+.planner-page .modal { max-width: 460px; max-height: calc(100dvh - 48px); overflow: auto; border-radius: 16px; padding: 24px; box-shadow: 0 16px 48px rgba(0,0,0,.14); }
+.planner-page .modal-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+.planner-page .modal-title { margin: 0; font-size: 20px; font-weight: 600; }
+.planner-page .modal-close { min-width: 44px; min-height: 44px; border: 0; border-radius: 8px; background: transparent; color: var(--secondary); font-size: 26px; }
+.planner-page .modal-date { margin-bottom: 8px; }
+.planner-page .modal-actions { display: grid; grid-template-columns: 1fr 1.5fr; gap: 8px; margin-top: 12px; padding-top: 16px; border-top: 1px solid var(--border); }
+.planner-page .planner-timer-mini { display: grid; grid-template-columns: 88px minmax(0, 1fr); width: min(380px, calc(100vw - 32px)); gap: 12px 16px; padding: 18px; border-radius: 16px; background: var(--surface); box-shadow: 0 8px 32px rgba(0,0,0,.14); }
+.planner-page .planner-timer-mini.hidden { display: none; }
+.planner-page .timer-time { align-self: center; min-width: 0; font-size: 28px; font-weight: 600; color: var(--text); }
+.planner-page .timer-label { font-size: 12px; line-height: 1.5; }
+.planner-page .timer-title { max-width: none; font-size: 14px; margin-top: 2px; }
+.planner-page .timer-presets { gap: 6px; margin-top: 10px; flex-wrap: nowrap; }
+.planner-page .timer-preset { flex: 1; min-width: 44px; min-height: 44px; padding: 4px; border-radius: 8px; font-size: 12px; }
+.planner-page .timer-preset.active { color: var(--primary); background: var(--primary-soft); border-color: var(--primary); }
+.planner-page .timer-actions { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr) 44px; gap: 8px; }
+.planner-page .timer-btn { min-height: 44px; padding: 10px 14px; border-radius: 8px; font-size: 14px; }
+.planner-page .timer-btn.primary { background: var(--action-primary); border-color: var(--action-primary); color: var(--on-primary); }
+.planner-page .timer-btn.close { width: 44px; font-size: 22px; }
+.planner-page:has(.planner-timer-mini:not(.hidden)) .app { padding-bottom: 300px; }
+.planner-page #exam-date-editor-overlay .input { font-size: 16px; }
+
+@media (max-width: 900px) and (min-width: 768px) {
+  .planner-page .dashboard { grid-template-columns: 300px minmax(0, 1fr); gap: 16px; }
+  .planner-page .calendar-card { padding: 12px; }
+  .planner-page .quick-form { grid-template-columns: minmax(0, 1fr) 90px; }
+  .planner-page .quick-form > .btn { grid-column: 1 / -1; }
+}
+@media (max-width: 767px) {
+  .student-tool-page .top-inner { min-height: 60px; padding: 6px 12px; gap: 12px; }
+  .student-tool-page .brand-main { font-size: 15px; }
+  .student-tool-page .brand-sub { font-size: 12px; }
+  .student-tool-page .top-back { font-size: 13px; padding-inline: 4px; }
+  .student-tool-page .app { padding: 24px 16px calc(32px + env(safe-area-inset-bottom)); }
+  .student-tool-page .tool-intro { margin-bottom: 24px; }
+  .student-tool-page .tool-description { font-size: 14px; }
+  .student-tool-page .card { padding: 20px; }
+  .student-tool-page .pin-card { padding: 28px 24px; }
+  .homework-steps { gap: 8px; }
+  .homework-steps li { gap: 5px; }
+  .homework-page .title { font-size: 20px; }
+  .homework-page .file-thumbnail { width: 52px; height: 64px; flex-basis: 52px; }
+  .planner-page .app { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+  .planner-page .hero { padding-block: 18px; margin-bottom: 20px; }
+  .planner-page .stat { padding-inline: 12px; }
+  .planner-page .stat-value { font-size: 20px; }
+  .planner-page .progress-wrap { margin-top: 8px; }
+  .planner-page .mobile-calendar { padding: 0 16px; }
+  .planner-page .plan-title { font-size: 19px; }
+  .planner-page .plan-item { gap: 12px; }
+  .planner-page .plan-main { flex: 1 1 calc(100% - 56px); }
+  .planner-page .planner-action-row { flex-basis: calc(100% - 56px); margin-left: 56px; gap: 6px; }
+  .planner-page .planner-action-btn { font-size: 12px; padding-inline: 10px; }
+  .planner-page .planner-action-btn.danger { padding-inline: 6px; }
+  .planner-page .modal-overlay { padding: 0; align-items: flex-end; }
+  .planner-page .modal { max-width: none; max-height: 92dvh; border-radius: 16px 16px 0 0; padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); }
+  .planner-page .planner-timer-mini { left: 16px; right: 16px; width: auto; bottom: calc(80px + env(safe-area-inset-bottom)); padding: 16px; }
+  .planner-page:has(.planner-timer-mini:not(.hidden)) .app { padding-bottom: calc(350px + env(safe-area-inset-bottom)); }
+  .planner-page .toast { bottom: calc(80px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 380px) {
+  .student-tool-page .app { padding-inline: 12px; }
+  .student-tool-page .card { padding: 16px; }
+  .planner-page .mobile-calendar { padding: 0 12px; }
+  .planner-page .planner-action-btn.danger svg { display: none; }
+  .planner-page .planner-date-nav { gap: 6px; }
+  .planner-page .date-today { padding-inline: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .student-tool-page *, .student-tool-page *::before, .student-tool-page *::after { scroll-behavior: auto; transition: none; animation: none; }
+}

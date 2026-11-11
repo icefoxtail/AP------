@@ -1,0 +1,125 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-18",
+      "-3",
+      "1"
+    ],
+    "domain": [
+      -7,
+      7.5
+    ],
+    "viewport": [
+      -8,
+      9,
+      -22,
+      40
+    ],
+    "axisSqueeze": true,
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "-3",
+          "intercept": "18",
+          "label": "y=-3x+18",
+          "labelAt": "END"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "axis": "x",
+          "value": "6"
+        },
+        {
+          "id": "B",
+          "axis": "x",
+          "value": "-3"
+        },
+        {
+          "id": "D",
+          "axis": "y",
+          "value": "18"
+        },
+        {
+          "id": "C",
+          "curveX": "-6"
+        },
+        {
+          "id": "Z",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "ZC",
+          "from": "Z",
+          "to": "C",
+          "dashed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "S1",
+          "points": [
+            "A",
+            "Z",
+            "D"
+          ],
+          "fill": "LIGHT"
+        },
+        {
+          "id": "S2",
+          "points": [
+            "B",
+            "Z",
+            "D",
+            "C"
+          ],
+          "fill": "MEDIUM"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "Z": "O"
+  },
+  "caption": "y=x²-3x-18의 그래프와 직선 y=-3x+18이 A(6,0), C(-6,36)에서 만나고, 삼각형 AOD(S₁)와 사각형 BODC(S₂)가 칠해진 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "y=(x+3)(x-6)의 x절편은 B(-3,0), A(6,0)이고 직선 y=-3x+18은 y절편 D(0,18)를 지난다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.overlays"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "교점 C(-6,36)에서 사각형 BODC를 선분 OC로 나누어 두 삼각형의 넓이를 더한다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 AOD와 사각형 BODC의 위치, 선분 OC로 사각형을 나누는 방법을 보인다."
+  ],
+  "sourceQuote": "사각형 $BODC$는 선분 $OC$로 나누면",
+  "assetPath": "assets/images/26_복성고_1학기_중간_고1_유사/q18-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/engine_evidence/q18-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/engine_evidence/q18-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/engine_evidence/q18-solution.svg"
+  }
+}

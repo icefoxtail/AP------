@@ -9,13 +9,15 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f1d18'/%3E%3Cpath d='M4 24c5 0 7-14 12-14s7 8 12 8' stroke='%23f2f7f4' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Cpath d='M5 17.5 27 7.5' stroke='%23ff6c9c' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='10.6' r='3.4' fill='%23ffc53d'/%3E%3C/svg%3E">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):'paper';document.documentElement.setAttribute('data-theme',t==='board'?'board':'paper')}catch(e){document.documentElement.setAttribute('data-theme','paper')}</script>
 <script>
-/* 첫 화면은 늘 AP Math Universe: 이 탭에서 Universe나 실험실을 거치지 않고 허브를 바로 연 경우(북마크·주소 입력)에만 Universe로 보냅니다(학년 해시 #g8 등은 유지).
-   표시는 탭 sessionStorage('apl:viaUniverse')이고 Universe·실험실이 남깁니다. sessionStorage를 못 쓰는 브라우저에서는 허브를 그대로 보여 줘 학생이 막히지 않게 합니다. */
-try{sessionStorage.setItem('apl:probe','1');sessionStorage.removeItem('apl:probe');if(!sessionStorage.getItem('apl:viaUniverse')){location.replace('../index.html'+location.hash)}}catch(e){}
+/* 학생 포털에서 온 portal=1은 학년별 실험실 목록을 바로 엽니다. 그 밖의 첫 직접 방문은 기존 Universe 입구를 유지합니다(학년 해시 #g8 등 보존).
+   표시는 탭 sessionStorage('apl:viaUniverse')이고 Universe·실험실·포털 입구가 남깁니다. 저장소가 막혀도 허브를 열어 학생이 막히지 않게 합니다. */
+try{sessionStorage.setItem('apl:probe','1');sessionStorage.removeItem('apl:probe');if(new URLSearchParams(location.search).get('portal')==='1')sessionStorage.setItem('apl:viaUniverse','1');if(!sessionStorage.getItem('apl:viaUniverse')){location.replace('../index.html'+location.hash)}}catch(e){}
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="./kit/apl.css">
 <link rel="stylesheet" href="./kit/apl-hub.css">
+<link rel="stylesheet" href="../../css/student-navigation.css?v=2026.11.11.4">
+<script defer src="../../js/student-navigation.js?v=2026.11.11.4" data-student-nav-active="labs" data-student-nav-context-only="true"></script>
 <script defer src="./kit/apl-core.js"></script>
 <script defer src="./kit/apl-board.js"></script>
 <script defer src="./kit/apl-catalog.js"></script>
