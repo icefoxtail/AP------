@@ -33,6 +33,7 @@ export const pointNameText=parsed=>parsed.coord?`(${parsed.coord[0]},${parsed.co
  */
 export function pointNameModel(plan,ids){
   const raw=plan?.pointNames;
+  if(raw===undefined&&plan?.pointNameGroups!==undefined)fail('POINT_NAME_GROUPS_INVALID','pointNames');
   const known=new Set(ids),names=new Map();
   if(raw!==undefined){
     if(!raw||typeof raw!=='object'||Array.isArray(raw)||Object.getPrototypeOf(raw)!==Object.prototype)fail('POINT_DISPLAY_NAME_INVALID','pointNames');
@@ -42,11 +43,24 @@ export function pointNameModel(plan,ids){
       if(!parsed)fail('POINT_DISPLAY_NAME_INVALID',id);
       names.set(id,{tex:pointNameTex(parsed),expr:pointNameExpr(parsed),text:pointNameText(parsed),coord:!!parsed.coord});
     }
-    const shown=new Map();
+    // pointNameGroups:[[ids],[ids]] (optional): points of separate figures drawn in one plane figure (the two congruent triangles of a composite panel). A display name must be
+    // unique inside its group, so two groups may both show A, B, C; the points outside every group are one more group. Without the field the whole figure is one group.
+    const groupOf=new Map(),groups=plan.pointNameGroups;
+    if(groups!==undefined){
+      if(!Array.isArray(groups)||groups.length<2||groups.length>4)fail('POINT_NAME_GROUPS_INVALID','pointNameGroups');
+      groups.forEach((group,index)=>{
+        if(!Array.isArray(group)||!group.length)fail('POINT_NAME_GROUPS_INVALID','pointNameGroups');
+        for(const id of group){
+          if(typeof id!=='string'||!known.has(id)||groupOf.has(id))fail('POINT_NAME_GROUPS_INVALID',String(id));
+          groupOf.set(id,index);
+        }
+      });
+    }
+    const shown=new Set();
     for(const id of known){
-      const text=names.get(id)?.text??id;
-      if(shown.has(text))fail('POINT_DISPLAY_NAME_DUPLICATE',text);
-      shown.set(text,id);
+      const text=names.get(id)?.text??id,key=(groupOf.get(id)??-1)+'|'+text;
+      if(shown.has(key))fail('POINT_DISPLAY_NAME_DUPLICATE',text);
+      shown.add(key);
     }
   }
   return {coord:id=>names.get(id)?.coord===true,has:id=>names.has(id),tex:id=>names.get(id)?.tex??id,expr:id=>names.get(id)?.expr??id,text:id=>names.get(id)?.text??id,size:names.size,entries:()=>[...names].map(([id,value])=>({id,...value}))};
