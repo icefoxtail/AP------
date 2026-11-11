@@ -77,7 +77,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 0과 1이 속이 찬 점으로 표시되고 그 사이 구간이 칠해져 있다. 확률이 0 이상 1 이하임을 나타낸다.",
+    "solutionImageCaption": "확률은 0 이상 1 이하이다. 절대로 일어나지 않는 사건의 확률은 0이고 반드시 일어나는 사건의 확률은 1이며, 이 두 값도 확률이 될 수 있다. 그러므로 0<p<1이라는 ③은 끝값을 포함하지 않아 옳지 않고, 확률이 1보다 클 수 있다는 ④도 옳지 않다. 정답은 ③, ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -161,7 +165,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 삼각형 ABC에서 중선 AD, BE가 만나는 무게중심 G와 평행한 BE, DF이며 GE는 8이다. 둘째는 BG를 파란색 16, GE를 주황색 8로 나타낸 같은 삼각형이다. 셋째는 삼각형 CBE에서 BC의 중점 D와 CE의 중점 F를 이은 DF이며 BE는 24, DF는 12이다. 길이의 단위는 cm이다.",
+    "solutionImageCaption": "G는 중선 BE를 2:1로 나누므로 BG는 GE의 2배인 16 cm이다. 삼각형 CBE에서 D, F가 중점이므로 DF는 BE의 절반이고 BE=16+8=24이므로 DF는 12 cm이다. 따라서 x=16, y=12이다. 정답은 28이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -203,7 +211,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 그림이다. 첫째는 AB와 AC가 같고 BC가 10인 이등변삼각형 ABC이며 넓이가 60이다. 둘째는 A에서 BC에 내린 수선의 발 M으로 나뉜 삼각형이다. AM은 12, BM은 5, AB는 13이고 파란색 직각삼각형 ABM이 표시되어 있다. 길이의 단위는 cm이다.",
+    "solutionImageCaption": "넓이가 60이므로 2분의 1×10×AM=60에서 AM=12이다. M은 BC의 중점이라 BM=5이므로 직각삼각형 ABM에서 AB²=12²+5²=169, AB=13이다. AC=AB=13이므로 둘레는 13+13+10이다. 정답은 36 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -245,7 +257,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 그림이다. 첫째는 큰 정사각형 안에 작은 정사각형(주황색)이 들어 있고 AC는 2이며 삼각형 ABC의 넓이는 5이다. 둘째는 직각삼각형 ABC에서 BC는 5, AC는 2이고 빗변 BA를 한 변으로 하는 정사각형이 주황색이다.",
+    "solutionImageCaption": "삼각형 ABC의 넓이가 5이므로 2분의 1×2×BC=5에서 BC=5이다. 작은 정사각형의 한 변은 직각삼각형 ABC의 빗변 BA이므로 BA²=2²+5²이다. 정답은 29이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -285,7 +301,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽에는 빨강, 주황, 노랑 세 칸과 초록, 파랑, 보라 세 칸이 두 줄로 있고 빨강은 분홍색, 파랑은 파란색이다. 아래쪽에는 주황, 노랑, 초록, 보라 네 칸이 초록색이며 나머지 네 색에서 2가지를 더 고른다고 적혀 있다.",
+    "solutionImageCaption": "빨강과 파랑을 이미 골랐으므로 나머지 네 색 중에서 두 색을 더 고르면 된다. 첫 번째 색은 4가지, 다음 색은 3가지이고 두 색의 순서만 바뀐 선택은 같으므로 2로 나눈다. 정답은 ③ 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -326,7 +346,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 학생 수를 시대별로 나타낸 띠이다. 삼국 시대 7, 고려 시대 8은 파란색으로 칠해져 있고 조선 시대 12, 기타 3은 칠해져 있지 않다. 아래에 7과 8의 합과 전체 30을 나타내는 치수선이 있다.",
+    "solutionImageCaption": "삼국 시대 또는 고려 시대의 신문을 만든 학생은 7+8=15명이고 전체 학생은 30명이다. 한 명을 임의로 선택하므로 확률은 전체 30명 중 15명의 비율이다. 정답은 ⑤ 2분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -368,7 +392,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 AD와 AB가 같고 AM과 MC가 같으며 AN과 BC가 평행하고 BC가 15 cm인 그림이다. 둘째는 삼각형 DBE에서 A를 지나 DE에 평행한 AP를 그어 BP와 PE가 같음을 나타낸 그림이다. 셋째는 삼각형 CAP에서 ME와 AP가 평행하고 BP, PE, EC가 같은 길이로 표시된 그림이다.",
+    "solutionImageCaption": "A는 DB의 중점이고 AP가 DE와 평행하므로 BP=PE이다. M은 AC의 중점이고 ME가 AP와 평행하므로 PE=EC이다. 그러므로 BP=PE=EC이고 BC는 이 세 길이의 합이므로 BE는 BC의 3분의 2이다. 정답은 10 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -410,7 +438,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 삼각형 ABC의 무게중심 G, 삼각형 GBC의 무게중심 G′과 파란색 삼각형 GG′C를 나타낸다. 둘째는 G가 삼각형 ABC를 넓이가 같은 세 삼각형으로 나눈 그림이다. 셋째는 G′이 삼각형 GBC를 넓이가 같은 세 삼각형으로 나눈 그림이다.",
+    "solutionImageCaption": "삼각형 ABC의 넓이를 S라 하면 삼각형 GBC는 3분의 1×S이다. G′은 삼각형 GBC의 무게중심이므로 삼각형 GG′C는 GBC의 3분의 1, 즉 9분의 1×S이다. 9분의 1×S=5이다. 정답은 45 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -453,7 +485,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 삼각형 ABC의 무게중심 G를 지나 BC에 평행한 DE와 중선 AM이 있는 그림이다. 둘째는 중선 AM을 한 줄로 펴서 AG를 파란색 2, GM을 주황색 1, 전체 AM을 3으로 나타낸 그림이다. 셋째는 삼각형 ADE를 파란색 4, 아래쪽 사각형을 주황색 5로 나타낸 그림이다.",
+    "solutionImageCaption": "AG:GM=2:1이므로 닮음비는 AG:AM=2:3이고 삼각형 ADE와 ABC의 넓이비는 4:9이다. 따라서 아래쪽 사각형의 넓이는 삼각형 ADE의 넓이의 5분의 4가 아니라 4분의 5배이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -496,7 +532,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 A가 직각인 직각삼각형 ABC에서 BC의 중점 D와 무게중심 G를 나타내며 GD는 5, AC는 18이다. 둘째는 중선 AD를 한 줄로 펴서 AG를 파란색 10, GD를 주황색 5, 전체 AD를 15로 나타낸 그림이다. 셋째는 AD, BD, CD가 같은 길이로 표시되고 BC가 30, AC가 18인 직각삼각형이다. 길이의 단위는 cm이다.",
+    "solutionImageCaption": "G가 중선 AD를 2:1로 나누므로 AG=10이고 AD=10+5=15이다. 직각삼각형에서 빗변의 중점 D는 세 꼭짓점에서 같은 거리에 있으므로 BC=2×15=30이다. AB²=30²−18²=576이다. 정답은 24 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -538,7 +578,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 개의 그림이다. 첫째는 OA, AB, BC, CD가 같고 A, B, C에서 직각이며 세 직각삼각형이 파란색, 주황색, 초록색으로 칠해진 도형이다. 나머지는 직각삼각형 OAB(두 변 a, a, 빗변 √2a), OBC(두 변 √2a, a, 빗변 √3a), OCD(두 변 √3a, a)를 따로 그린 것이다.",
+    "solutionImageCaption": "OA=AB=BC=CD=a라 하면 OB²=a²+a²=2a², OC²=OB²+a²=3a², OD²=OC²+a²=4a²이므로 OD=2a이다. 따라서 OA와 OD의 길이의 비는 a:2a이다. 정답은 ① 1:2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -577,7 +621,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 번의 대국 결과를 나타낸 수형도이다. 각 대국에서 연이가 이길 확률은 5분의 3, 향이가 이길 확률은 5분의 2이다. 연이가 먼저 이기고 향이가 이기는 경로는 파란색, 향이가 먼저 이기고 연이가 이기는 경로는 주황색으로 표시되어 있고 각 경로의 확률의 곱이 적혀 있다.",
+    "solutionImageCaption": "한 번의 대국에서 연이가 이길 확률이 5분의 3이므로 향이가 이길 확률은 5분의 2이다. 각자 한 번씩 이기는 경우는 연이 다음 향이(파란색), 향이 다음 연이(주황색)의 두 가지이고 각각 확률이 5분의 3×5분의 2이다. 두 확률을 더한다. 정답은 25분의 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -617,7 +665,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽에는 O가 파란색, R가 주황색으로 붙어 있는 묶음 칸과 M, T, H, E 네 칸이 있다. 아래쪽에는 5, 4, 3, 2, 1이 다섯 칸이 있고 자리마다 놓는 방법의 수를 곱한다고 적혀 있다.",
+    "solutionImageCaption": "O가 R 바로 앞에 오므로 OR를 순서가 정해진 한 묶음으로 본다. 이 묶음과 M, T, H, E를 합한 다섯 항목을 일렬로 배열하면 자리마다 놓을 수 있는 항목의 수가 5, 4, 3, 2, 1이다. 정답은 ① 120이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -657,7 +709,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 표이다. 500원 동전 개수가 0, 2, 4개인 대표 경우에서 남은 금액은 차례로 1550, 550, 0 미만이다. 50원과 100원 동전 5개씩으로 낼 수 있는 금액은 0원 이상 750원 이하이므로 2개인 열만 초록색이고 낼 수 있다고 표시되어 있다.",
+    "solutionImageCaption": "500원 동전을 c개 쓰면 남는 금액을 50원, 100원 동전으로 내야 한다. 50원, 100원 동전 5개씩으로 낼 수 있는 금액은 750원 이하이므로 c는 2 또는 3뿐이다. 50원 단위로 a+2b=11일 때와 a+2b=1일 때를 센다. 정답은 ① 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -699,7 +755,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 3칸, 세로 3칸 격자 모양 길이다. 왼쪽 아래가 A, 오른쪽에서 두 번째 칸이면서 위에서 두 번째 칸 교차점이 B, 오른쪽 위 꼭짓점이 C이다. A에서 B를 거쳐 C까지 가는 길 한 가지가 굵은 선으로 표시되어 있고 A에서 B까지 가는 길의 수가 교차점마다 작은 숫자로 쓰여 있다.",
+    "solutionImageCaption": "A에서 B까지는 오른쪽 2칸, 위쪽 2칸을 지나므로 교차점마다 길의 수를 더해 가면 B에서 6가지이다. B에서 C까지는 오른쪽 1칸, 위쪽 1칸이므로 2가지이다. B 뒤의 작은 숫자는 B에서 새로 센 수이다. 두 경우는 이어서 일어나므로 곱한다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -741,7 +801,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 위쪽 A, 왼쪽 B, 아래쪽 C, 오른쪽 D가 있는 원이다. 둘째는 시계 방향으로 A에서 B까지 3칸을 파란색 호, B에서 A까지 1칸을 주황색 호로 나타낸 그림이다. 셋째는 주사위 눈 1부터 6까지의 칸에서 창훈이는 3이 파란색으로, 지원이는 1과 5가 주황색으로 칠해져 있다.",
+    "solutionImageCaption": "시계 방향으로 창훈이의 말이 A에서 B로 가려면 3칸, 지원이의 말이 B에서 A로 가려면 1칸 움직여야 한다. 4칸이 한 바퀴이므로 창훈이는 눈이 3, 지원이는 눈이 1 또는 5이다. 이런 눈의 순서쌍은 모두 2가지이고 전체는 36가지이다. 정답은 ② 18분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -777,7 +841,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 삼각형 ABC의 변 BC 위에 점 E, D, F가 있고 삼각형 ABD와 ADC의 무게중심 G, G′을 이은 GG′이 있으며 BC는 30 cm이다. 둘째는 BC 위의 B, E, D, F, C를 한 줄로 펴서 BE와 ED, DF와 FC가 각각 같고 EF가 15, BC가 30임을 나타낸다. 셋째는 삼각형 AEF에서 파란색 GG′이 주황색 EF와 평행한 그림이다.",
+    "solutionImageCaption": "E, F가 BD, DC의 중점이므로 EF=2분의 1×BC=15 cm이다. G, G′은 AE, AF를 2:1로 나누는 점이므로 삼각형 AEF에서 GG′은 EF에 평행하고 GG′=3분의 2×EF이다. 정답은 10 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -814,7 +882,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 AB 12, BC 13, AC 5인 삼각형 ABC와 A에서 BC에 내린 수선의 발 H이다. 둘째는 직각을 낀 두 변 12와 5를 가진 파란색 삼각형이고, 셋째는 BC를 밑변, AH를 높이로 한 주황색 삼각형이며 두 삼각형은 같은 삼각형이다.",
+    "solutionImageCaption": "5²+12²=13²이므로 A는 직각이다. 직각을 낀 두 변으로 넓이를 구하면 2분의 1×12×5=30이다. BC를 밑변, AH를 높이로 보아도 넓이는 같으므로 2분의 1×13×AH=30이다. 정답은 13분의 60 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -848,6 +920,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체 50개 안에 서로 겹치지 않는 두 원이 있다. 하나는 3의 배수 16개, 다른 하나는 17의 배수 2개이며 두 원 안이 색칠되어 있다.",
+    "solutionImageCaption": "120=2³×3×5이므로 n이 3의 배수이면 120분의 n이 유한소수가 되고, 170=2×5×17이므로 n이 17의 배수이면 170분의 n이 유한소수가 된다. 1부터 50까지 3의 배수는 16개, 17의 배수는 2개이고 둘 다인 수는 51의 배수라 없다. 그러므로 합은 18개이고 전체 50개 중 18개이다. 정답은 25분의 9이다.",
+    "solutionImageSize": "full"
   }
 ];
