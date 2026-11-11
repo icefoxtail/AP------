@@ -435,7 +435,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "평행선의 선분비로 미지 길이 계산",
     "decisiveStep": "$a+b=8+6=14$이다. 정답은 ①이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 장의 그림이다. 첫째는 평행한 세 직선과 두 직선으로 한 직선에서 맨 위부터 맨 아래까지 9 cm, 가운데부터 맨 아래까지 3 cm이고 다른 직선에서 맨 위부터 가운데까지 a cm, 가운데부터 맨 아래까지 4 cm이다. 둘째는 점 A에서 만나는 두 직선과 평행한 BC와 DE로 AB 6 cm, AD 12 cm, AE b cm이고 CE는 따로 펴서 9 cm로 나타냈다. 셋째는 첫째 그림의 구간을 색으로 나누어 위쪽 구간을 6 cm로 나타냈다. 넷째는 B와 C를 점 A에 대하여 옮겨 삼각형 ADE 안에 DE와 평행한 선분 B′C′를 그린 그림이며 B′는 AD를 같은 길이 둘로 나누고 AD는 12 cm, AE는 b cm이다.",
+    "solutionImageCaption": "첫째 그림에서 맨 위부터 가운데까지는 9에서 3을 뺀 6 cm이다. 평행선 사이의 대응하는 구간의 비가 같으므로 a 대 4가 6 대 3이고 a는 8이다. 둘째 그림에서 BC와 ED가 평행하므로 삼각형 ABC와 삼각형 ADE는 닮음이고 닮음비는 6 대 12, 곧 1 대 2이다. 그래서 AC 대 AE가 1 대 2이고 CE가 9이므로 AE는 9의 3분의 2, 곧 b이다. 정답은 ① 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
