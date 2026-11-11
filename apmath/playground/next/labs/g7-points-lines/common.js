@@ -87,8 +87,10 @@
     const model = (s) => spec.model(s);
     const nSteps = (s) => spec.steps(model(s), s).length;
     const ctxOf = (s, lab, thumb) => {
-      const tab = lab && lab.tab ? lab.tab : 'explore';
-      return { tab, hide: tab === 'problem', thumb: !!thumb, step: thumb ? 99 : tab === 'review' ? Math.min(s.step || 1, 99) : 99 };
+      const lesson = !thumb && !!(s.lessonOn || s.lessonEntry);
+      const tab = lesson && s.lessonEntry ? 'review' : lab && lab.tab ? lab.tab : 'explore';
+      const step = thumb ? 99 : lesson && s.lessonEntry ? 0 : tab === 'review' ? Math.min(lesson ? s.step || 0 : s.step || 1, 99) : 99;
+      return { tab, hide: tab === 'problem', thumb: !!thumb, step, lesson };
     };
     const quizOf = (s) => spec.quiz(model(s), s, PL.rng(PL.hash(spec.id) + ((s.plSeed || 0) + 1) * 7919));
     // A drag or preset can change a question without changing its seed.
@@ -158,9 +160,11 @@
       tick: spec.tick,
       view: (s, lab) => {
         fitForStage(s, lab);
+        const C = ctxOf(s, lab);
         const questionKey = keyOf(s);
-        if (!fitting && s.plQuestionKey !== questionKey) { s.plQuestionKey = questionKey; s.plPick = null; s.revealed = false; s.step = 0; }
-        const M = model(s), C = ctxOf(s, lab);
+        if (!fitting && !C.lesson && s.plQuestionKey !== questionKey) { s.plQuestionKey = questionKey; s.plPick = null; s.revealed = false; s.step = 0; }
+        const M = model(s);
+        if (C.lesson) return { guide: '문제의 조건을 확인하고 ▶ 해설을 시작해 보세요.', card: null, readouts: [], formula: null, rule: null, status: null, notes: null };
         const v = { guide: spec.guide(M, s) };
         if (C.tab === 'problem') { v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' }; return v; }
         v.readouts = spec.readouts ? spec.readouts(M, s) : [];

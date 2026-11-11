@@ -47,8 +47,9 @@
 | `g7-solids` 회전체 | 22 | 22 / 48 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1750](https://github.com/icefoxtail/AP------/pull/1750), merge `459c71d08b159a7fe5fffc91ea5c3553e78005b9`. 최소 검사 108/108, 누락 0. Pages 등록 작업 대기 |
 | `g7-polygons` 다각형 | 18 | 18 / 31 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1754](https://github.com/icefoxtail/AP------/pull/1754), merge `0f82b309173e29d399945bccedd0a52c8196b586`. 최소 검사 145/145, 누락 0. Pages 등록 작업 대기 |
 | `g7-area` 다각형의 넓이 | 14 | 14 / 30 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1755](https://github.com/icefoxtail/AP------/pull/1755), merge `68060cca4e6f89edaa806b7b5cafaafe102290e3`. 최소 검사 102/102, 누락 0. Pages 등록 작업 대기 |
-| `g7-parallel` 평행선의 성질 | 12 | 12 / 29 | **IMPLEMENTED / QA_PENDING** · 신규 12장면/29해설, 누락 0. 최소 검사 86/86. `feat/lessons-g7-parallel`, PR·main·Pages 확인 예정 |
-| 중1 나머지 3개 | 74 | 0 | 미착수 (§5-3) |
+| `g7-parallel` 평행선의 성질 | 12 | 12 / 29 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1757](https://github.com/icefoxtail/AP------/pull/1757), merge `22cad5a7005bc7ddedc0ab17fb760f4605b11dae`. 최소 검사 86/86, 누락 0. Pages 등록 작업 대기 |
+| `g7-points-lines` 점과 직선 | 24 | 구현 중 | 최신 main `22cad5a7005bc7ddedc0ab17fb760f4605b11dae`에서 `feat/lessons-g7-points-lines` 생성, 실제 원문 질문별 제작 중 |
+| 중1 나머지 2개 | 50 | 0 | 미착수 (§5-3) |
 | 중2 4개 · 중3 2개 | 247 | 0 | 미착수, 선행 확인 필요 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
 
@@ -225,6 +226,9 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+- 2026-11-11 · 평행선 [PR #1757](https://github.com/icefoxtail/AP------/pull/1757) **main 운영 병합 완료**. head `2a4a5fb4d2e7a7ec9fb842c39cefc228e4877c80`, merge `22cad5a7005bc7ddedc0ab17fb760f4605b11dae`, 원격 main 및 대상 파일 일치 확인. 12장면/29해설, 최소 검사 86/86. [등록 writer 42967549440](https://github.com/icefoxtail/AP------/actions/runs/42967549440) queued. 실제 학생 HTML은 HTTP 200·이전 3922 bytes로 lesson/player 연결이 없어 **Pages NOT_VERIFIED / QA_PENDING**이다. 대기 중 Pages 42966828800·42967223392의 source `fb27d05ee921da9534d9fff332ac774d732b91cf`에는 평행선 merge가 없다. 중1 main 등록 **208/282장면·348해설**. 다음 점과 직선 24장면 제작을 시작했다.
+- 2026-11-11 · [AWCR r11](https://drive.google.com/file/d/1ezlQhyOQ--3kzrvk94dK3SQo3H5AhZD1/view) 원격 저장·raw 재조회 완료. SHA-256 `646c65c84933b689a7ea6c514b75fa2e6e8e5040b2e617ea061f978ba1aa8fb1`, parent r10 `7fb8497d9bb762f56133f8c28f6fd6bbe65f6a12d921ef8ca0033183f57256a8`와 결속 확인. 평행선까지 MAIN_MERGED, 원·겉넓이·다면체 RELEASED_QA_PENDING이며 전체 모바일 NOT_RUN. 다음 revision r12는 충돌 재확인 후 저장한다.
 
 - 2026-11-11 · `g7-parallel` **12장면/29해설 신규 구현 완료**, 누락 0. main `68060cca4e6f89edaa806b7b5cafaafe102290e3`에서 신규 브랜치로 제작하고 정상 단위마다 원격 보존했다. 최소 검사 86/86, JS/MJS 13파일 구문 통과. **IMPLEMENTED / QA_PENDING**, PR·main·Pages 확인 예정. 다음은 `g7-points-lines` 24장면이다.
 - 2026-11-11 05:39 UTC · 후속 CI 조회: 다면체의 [test job 130332626168](https://github.com/icefoxtail/AP------/actions/runs/42962457401/job/130332626168)도 Archive `runtime-bridge-receipt.json` stale로 328 test files 통과 / 1 실패이며 Surface와 같은 실패 서명이다. receipt 필드·환경 원인은 미확정이다. 회전체의 [test job 130337668035](https://github.com/icefoxtail/AP------/actions/runs/42963703911/job/130337668035)은 성공했다. 그 밖에 실행·대기 중 검사는 PASS로 간주하지 않았고 새 실험실 변경을 지목한 완료 실패는 해당 조회에서 관측되지 않았다. CI 취소·비활성화·기준 변경 없음.

@@ -10,11 +10,15 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -37,7 +41,7 @@
 window.addEventListener('DOMContentLoaded', function () {
 'use strict';
 window.APL_PL_GROUPS = window.APL_PL_GROUPS || [];
-const MODULES = ['common', 'solids', 'lines', 'mid', 'angles'];
+const MODULES = ['common', 'solids', 'lines', 'mid', 'angles', 'lesson-a', 'lesson-b', 'lesson-c'];
 const CANON_VIEW = { x: [-5, 5], y: [-4, 4] }; // 장면에 들어올 때마다 같은 처음 상태에서 맞춤을 잽니다
 const loadScript = (src) => new Promise((res) => {
   const el = document.createElement('script');
@@ -54,6 +58,7 @@ function start() {
   mods.forEach((g) => Object.assign(params, g.params || {}));
   APLab.createLab({
     id: 'g7-points-lines',
+    lessons: (window.APL_LESSONS || {})['g7-points-lines'],
     stackFractions: true, // 패널 글의 슬래시·유니코드 분수를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr)
     title: '점 · 직선 · 반직선 · 선분 · 각',
     courseName: '중1',

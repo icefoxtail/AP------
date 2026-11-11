@@ -28,6 +28,8 @@
   const pickOf = (arr) => arr[Math.floor(Math.random() * arr.length)];
   const shuffle = (arr) => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const textW = (t, size) => { let w = 0; for (const ch of String(t)) { const c = ch.charCodeAt(0); w += c >= 0x1100 ? size : ch === ' ' ? size * 0.32 : size * 0.62; } return w; };
+  const inLesson = (s) => !!(s.lessonOn || s.lessonEntry);
+  const lessonMove = (q) => clamp(Number(q.plBMove) || 0, 0, 1);
 
   (function css() {
     if (document.getElementById('pl-angles-css')) return;
@@ -51,7 +53,7 @@
   })();
 
   /* ---------- 그리기 도우미: 수학 좌표(y 위쪽, 각도는 반시계 방향)로 쓰면 보드(figure, y 아래쪽)에 맞춰 줍니다 ---------- */
-  function G(b) {
+  function G(b, lesson = false) {
     const P = (p) => [p[0], -p[1]];
     const pol = (c, r, d) => [c[0] + r * Math.cos(d * D2R), c[1] + r * Math.sin(d * D2R)];
     const K = () => b.k || 100;
@@ -90,6 +92,7 @@
         return g.text(c, str, { dx: Math.cos(m * D2R) * dist, dy: -Math.sin(m * D2R) * dist, color: o.color || 'amber', size, ref: o.ref });
       },
       handle(id, p, o = {}) {
+        if (lesson) return g;
         const oo = { color: 'amber', ...o };
         if (o.drag) oo.drag = (w) => o.drag({ x: w.x, y: -w.y });
         b.handle(id, P(p), oo);
@@ -124,6 +127,12 @@
   const unionFocus = (a, b) => (a ? { x: [Math.min(a.x[0], b.x[0]), Math.max(a.x[1], b.x[1])], y: [Math.min(a.y[0], b.y[0]), Math.max(a.y[1], b.y[1])] } : b);
   const stat = (tone, text) => ({ tone, text });
   const rd = (label, value, color, note, ref, wide) => ({ label, value, color, note, ref, wide });
+  function lessonQuestion(spec, q) {
+    if (spec.id === 'ck1' && q.plBAsk === 'hour') return `시계가 ${timeTxt(q.h, q.m)}을 가리킬 때 시침은 12에서 시계 방향으로 몇 도 돌았을까요?`;
+    if (spec.id === 'ck1' && q.plBAsk === 'minute') return `시계가 ${timeTxt(q.h, q.m)}을 가리킬 때 분침은 12에서 시계 방향으로 몇 도 돌았을까요?`;
+    if (q.plBAsk === 'speed' || q.plBAsk === 'sum' || q.plBAsk === 'shortest' || q.plBAsk === 'height') return spec.question;
+    return spec.problem(q).stem;
+  }
 
   function build(spec) {
     const pre = spec.id + '_';
@@ -151,7 +160,7 @@
     let measuring = false, fitStage = '', fitBoard = null;
     const box = spec.box || { x: [-2, 2], y: [-2, 2] };
     const fitForStage = (s, lab) => {
-      if (measuring || !lab || s !== lab.s || !lab.board || !lab._measureFocus) return;
+      if (inLesson(s) || measuring || !lab || s !== lab.s || !lab.board || !lab._measureFocus) return;
       const b = lab.board, i = b.insets;
       const key = [b.W, b.H, i.top, i.right, i.bottom, i.left].join('|');
       if (fitStage === key && fitBoard === b && sc._focus) return;
@@ -178,10 +187,11 @@
       if (uni) { sc._focus = uni; fitStage = key; fitBoard = b; b.setFocus(uni, false); }
     };
     const sc = {
-      id: spec.id, title: spec.title, short: spec.short || spec.title, question: spec.question,
+      id: spec.id, title: spec.title, short: spec.short || spec.title,
+      question: (s) => inLesson(s) ? lessonQuestion(spec, sv(s)) : typeof spec.question === 'function' ? spec.question(sv(s)) : spec.question,
       boardKind: 'figure', autoFit: true, notesTitle: spec.notesTitle || '꼭 기억할 점',
       __spec: spec, __sv: sv, __params: P,
-      guide: (s) => (typeof spec.guide === 'function' ? spec.guide(sv(s)) : spec.guide),
+      guide: (s) => inLesson(s) ? '' : (typeof spec.guide === 'function' ? spec.guide(sv(s)) : spec.guide),
       enter: (s, lab) => {
         const main = !!lab && s === lab.s;
         if (main) {
@@ -213,18 +223,19 @@
         text: (s) => problemHTML(spec, sv(s)),
         answer: (s) => { const p = spec.problem(sv(s)); const i = p.choices.findIndex((c) => c.ok); return `${CIRC[i]} ${p.choices[i].t}`; }
       },
-      focus: () => sc._focus || { x: box.x.slice(), y: [-box.y[1], -box.y[0]] },
+      focus: (s) => (inLesson(s || {}) ? null : sc._focus) || { x: box.x.slice(), y: [-box.y[1], -box.y[0]] },
       view: (s, lab) => {
         fitForStage(s, lab);
-        const q = sv(s), mode = modeOf(lab);
+        const q = sv(s), lesson = inLesson(s), mode = s.lessonEntry ? 'review' : modeOf(lab);
         const questionKey = spec.problem(q).key + '|' + q.seed;
-        if (!measuring && q.questionKey !== questionKey) { q.questionKey = questionKey; q.pk = ''; q.pi = -1; s.revealed = false; s.step = 0; }
-        if (!measuring && spec.currentFocus && lab && s === lab.s && lab.board) {
+        if (!lesson && !measuring && q.questionKey !== questionKey) { q.questionKey = questionKey; q.pk = ''; q.pi = -1; s.revealed = false; s.step = 0; }
+        if (lesson && !measuring && lab && s === lab.s && lab.board) lab.board.setFocus({ x: box.x.slice(), y: [-box.y[1], -box.y[0]] }, false);
+        if (!lesson && !measuring && spec.currentFocus && lab && s === lab.s && lab.board) {
           const current = spec.currentFocus(q, mode, lab.board);
           lab.board.setFocus(current || sc._focus || { x: box.x.slice(), y: [-box.y[1], -box.y[0]] }, false);
         }
         const v = (spec.view ? spec.view(q, mode, lab) : {}) || {};
-        if (lab && s === lab.s && !measuring && lab.refs && lab.refs.steps) {
+        if (!lesson && lab && s === lab.s && !measuring && lab.refs && lab.refs.steps) {
           const sig = spec.steps(q).join('\u0001');
           if (lab.refs.steps.__sig !== sig) { lab._buildReview(); if (lab.refs.steps) lab.refs.steps.__sig = sig; lab._dirtyPanel = true; }
         }
@@ -232,15 +243,17 @@
         else if (mode === 'review') { const n = spec.steps(q).length; v.status = stat((s.step | 0) >= n ? 'ok' : 'info', `풀이 ${Math.min(Math.max(s.step | 0, 1), n)} / ${n}단계`); }
         if (spec.work && mode !== 'explore') v.formula = mode === 'review' && (s.step | 0) >= spec.steps(q).length ? spec.work(q, s.step | 0) : '';
         if (spec.rule) v.rule = spec.rule(q);
+        if (lesson) Object.assign(v, { guide: '', card: null, readouts: [], formula: null, rule: null, status: null, alert: null, notes: null, chips: [] });
         return v;
       },
       draw: (b, s, v, lab) => {
-        const q = sv(s), mode = b.thumb ? 'explore' : modeOf(lab), step = b.thumb ? 0 : (s.step | 0);
-        if (mode === 'review' && spec.partOfStep && step < spec.steps(q).length) { const p = spec.partOfStep(step, q); b.emph = p ? { part: p, ref: p } : null; }
-        spec.draw(G(b), q, mode, step, lab);
+        const q = sv(b.thumb ? { ...s, lessonOn: false, lessonEntry: false } : s), lesson = !b.thumb && inLesson(s), mode = b.thumb ? 'explore' : s.lessonEntry ? 'review' : modeOf(lab), step = b.thumb || s.lessonEntry ? 0 : (s.step | 0);
+        if (lesson) b.emph = null;
+        else if (mode === 'review' && spec.partOfStep && step < spec.steps(q).length) { const p = spec.partOfStep(step, q); b.emph = p ? { part: p, ref: p } : null; }
+        spec.draw(G(b, lesson), q, mode, step, lab);
       }
     };
-    if (spec.tick) sc.tick = (s, dt, lab) => spec.tick(sv(s), dt, lab);
+    if (spec.tick) sc.tick = (s, dt, lab) => inLesson(s) ? false : spec.tick(sv(s), dt, lab);
     ALL.push(sc);
     return sc;
   }
@@ -267,7 +280,7 @@
     if (!t) return;
     const lab = LAB || window.lab;
     const sc = lab && lab.scene;
-    if (!sc || !sc.__spec) return;
+    if (!sc || !sc.__spec || inLesson(lab.s)) return;
     const spec = sc.__spec, q = sc.__sv(lab.s);
     if (t.hasAttribute('data-pln')) {
       spec.reroll(q, lab);
@@ -352,7 +365,7 @@
     const phi = (w) => mod(Math.atan2(w.x, w.y) / D2R, 360);
     g.handle('mh', mp, { color: 'sky', ariaLabel: '분침 끝', priority: 1, drag: (w) => { q.m = Math.round(phi(w) / 6) % 60; } });
     g.handle('hh', hp, { color: 'amber', ariaLabel: '시침 끝', drag: (w) => { const hh = mod(Math.round((phi(w) - 0.5 * q.m) / 30), 12); q.h = hh === 0 ? 12 : hh; } });
-    g.text([0, 1.04], timeTxt(q.h, q.m), { dy: -26, size: 20, color: 'ink' });
+    g.text([0, 1.04], timeTxt(q.h, inLesson(q) ? Math.round(q.m * 10) / 10 : q.m), { dy: -26, size: 20, color: 'ink' });
     return c;
   }
   const lineAt = (g, i, str, color, o = {}) => g.text([0, -1], str, { dy: 36 + i * 28, size: 17, color, ...o });
@@ -360,6 +373,47 @@
   // 탐구·풀이에서 쓰던 계산줄 여백 때문에 숫자와 바늘이 겹치지 않게 합니다.
   const clockProblemFocus = (q, mode, b) => mode === 'problem' && b.W < 560
     ? { x: [-1.3, 1.3], y: [-1.6, 1.2] } : null;
+
+  function drawClockLesson(g, q, chase) {
+    const stage = q.plBStage || 0, motion = lessonMove(q), answer = q.plShowAnswer, ask = q.plBAsk;
+    const c = clockOf(q.h, q.m), wedges = [], rows = [], row = (text, color) => rows.push([text, color]);
+    if (!chase) {
+      if (ask === 'minute') {
+        wedges.push({ from: 0, len: c.tm * motion, r: 0.4, color: 'sky' });
+        if (stage >= 1) row('분침은 1분에 360°÷60 = 6°', 'sky');
+        if (answer) row(`분침 = ${n1(c.tm)}°`, 'green');
+      } else {
+        wedges.push({ from: 0, len: c.th * motion, r: 0.2, color: 'amber' });
+        if (ask === 'hour') {
+          if (stage >= 1) row(`${c.hh}시간: 30°×${c.hh} = ${30 * c.hh}°`, 'amber');
+          if (stage >= 2) row(`${q.m}분: 0.5°×${q.m} = ${n1(0.5 * q.m)}°`, 'amber');
+          if (answer) row(`시침 = ${n1(c.th)}°`, 'green');
+        } else {
+          if (stage >= 1) row(`시침: 30°×${c.hh}+0.5°×${q.m} = ${n1(c.th)}°`, 'amber');
+          if (stage >= 2) { wedges.push({ from: 0, len: c.tm, r: 0.4, color: 'sky' }); row(`분침: 6°×${q.m} = ${n1(c.tm)}°`, 'sky'); }
+          if (answer) { wedges.push({ from: c.start, len: c.gap, r: 0.3, color: 'green', rings: 2 }); row(`사잇각 = ${n1(c.gap)}°`, 'green'); }
+        }
+      }
+      drawClock(g, q, 'review', { wedges, ref12: true });
+    } else if (ask === 'speed') {
+      // The concept follows the original clock model for one elapsed minute.
+      const shown = { h: q.h, m: motion, lessonOn: true }, A0 = 30 * (q.h % 12);
+      wedges.push({ from: 0, len: 6 * motion, r: 0.4, color: 'sky' }, { from: A0, len: 0.5 * motion, r: 0.2, color: 'amber' });
+      drawClock(g, shown, 'review', { wedges, ref12: true, ghostHour: A0 });
+      if (stage >= 1) row('1분: 분침 6°, 시침 0.5°', 'sky');
+      if (answer) row('1분에 5.5° 더 회전', 'green');
+    } else {
+      const A0 = 30 * c.hh, caught = 5.5 * q.m;
+      wedges.push({ from: 0, len: A0 * motion, r: 0.2, color: 'amber' });
+      if (answer) wedges.push({ from: c.start, len: c.gap, r: 0.3, color: 'green', rings: 2 });
+      drawClock(g, q, 'review', { wedges, ref12: true, ghostHour: A0 });
+      if (stage >= 1) row(`정각의 시침: 30°×${c.hh} = ${A0}°`, 'amber');
+      if (stage >= 2) row('1분에 더 도는 각: 6°−0.5° = 5.5°', 'sky');
+      if (stage >= 3) row(`따라잡은 각: 5.5°×${q.m} = ${n1(caught)}°`, 'sky');
+      if (answer) row(`사잇각 = ${n1(c.gap)}°`, 'green');
+    }
+    rows.slice(-3).forEach(([text, color], i) => lineAt(g, i, text, color));
+  }
 
   /* ---- 4-1 시침과 분침이 이루는 각 ---- */
   const sClock = build({
@@ -395,6 +449,7 @@
       };
     },
     draw: (g, q, mode, step) => {
+      if (inLesson(q)) return drawClockLesson(g, q, false);
       const c = clockOf(q.h, q.m), rev = mode === 'review', show = (n) => mode === 'explore' || (rev && step >= n);
       // 작은 시계 안의 수치는 숫자판을 가리므로 같은 색의 아래 계산줄에서 읽습니다.
       // 호와 두 바늘은 그대로 두고, 풀이 단계별 수치 공개도 아래 줄과 함께 유지합니다.
@@ -464,6 +519,7 @@
       };
     },
     draw: (g, q, mode, step) => {
+      if (inLesson(q)) return drawClockLesson(g, q, true);
       const c = clockOf(q.h, q.m), A0 = 30 * c.hh, ch = 5.5 * q.m, d = A0 - ch, ad = Math.abs(d), rev = mode === 'review';
       // 작은 숫자판의 값은 바늘·시각 숫자와 겹치지 않게 아래 계산줄에서 읽어요.
       // 실제 시계 반지름을 기준으로 하므로 세로 태블릿의 작은 시계도 보호합니다.
