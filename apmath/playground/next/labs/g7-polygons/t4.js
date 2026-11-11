@@ -75,7 +75,10 @@
       const cr = 0.3;
       if (!C.problem && (k > 0 || (lesson && kf > 0))) {
         for (let i = 0; i < k; i++) b.arc(O, cr, (i * e - 90) * DEG, ((i + 1) * e - 90) * DEG, { sector: true, fill: 'rose', fillAlpha: i % 2 ? 0.14 : 0.22, color: 'rose', width: 1.4 });
-        if (lesson && kf > k && k < n) b.arc(O, cr, (k * e - 90) * DEG, (kf * e - 90) * DEG, { sector: true, fill: 'rose', fillAlpha: 0.22, color: 'rose', width: 1.4 });
+        if (lesson && kf > k && k < n) {
+          b.arc(O, cr, (k * e - 90) * DEG, (kf * e - 90) * DEG, { sector: true, fill: 'rose', fillAlpha: 0.22, color: 'rose', width: 1.4 });
+          line(b, O, polar(O, cr, kf * e - 90), 'amber', 2.4);
+        }
         if (C.txt && k >= n && ready(s, C, 'pgCountReady')) T(b, O, '360°', { size: 20, color: 'amber' });
       }
       if (!C.txt) return;
@@ -83,6 +86,7 @@
       let r1, r2 = '', c1 = 'rose';
       if (lesson) {
         r1 = `정${n}각형: 같은 크기의 외각 ${n}개`;
+        if (ready(s, C, 'pgCountReady')) r1 = `외각 ${n}개의 합 = 360°`;
         if (exteriorReady) r1 = `한 외각 = 360° ÷ ${n} = ${fmtN(e)}°`;
         if (interiorReady) r2 = `한 내각 = 180° − ${fmtN(e)}° = ${fmtN(I)}°`;
       }
@@ -144,6 +148,7 @@
       fillPoly(b, [pt(xm, y), pt(x0 + W, y), pt(x0 + W, y + h), pt(xm, y + h)], 'rose', 0.18);
       poly(b, [pt(x0, y), pt(x0 + W, y), pt(x0 + W, y + h), pt(x0, y + h)], 'ink', 2.6);
       line(b, pt(xm, y - 0.04), pt(xm, y + h + 0.04), 'ink', 3);
+      if (lesson) for (let i = 1; i < a + bb; i++) line(b, pt(x0 + W * i / (a + bb), y), pt(x0 + W * i / (a + bb), y + h), 'ink', 1.2);
       if (lesson && s.pgTrace > 0) line(b, pt(x0, y + h), pt(x0 + W * clamp(s.pgTrace, 0, 1), y + h), 'amber', 4);
       if (C.txt) {
         const showRatio = C.problem || (C.review && st === 0);
@@ -399,7 +404,8 @@
     },
     draw(b, s, M, C) {
       const q = M, g = M.g, { n, m, In, Im, gap, x, valid, base } = q, { A, B, polyN, polyM, P: Pp, Q } = g;
-      const t = C.problem || C.review ? 1 : C.t, off = (1 - seg01(t, 0, 0.8)) * 1.3;
+      const lesson = lessonOn(s, C), angleReady = ready(s, C, 'pgAngleReady'), gapReady = ready(s, C, 'pgGapReady'), answerReady = ready(s, C, 'pgShowAnswer');
+      const t = C.problem || (C.review && !lesson) ? 1 : C.t, off = (1 - seg01(t, 0, 0.8)) * 1.3;
       const sh = (pts) => pts.map((p) => pt(p.x + off, p.y)), pM = sh(polyM), Qs = pt(Q.x + off, Q.y), As = pt(A.x + off, A.y), Bs = pt(B.x + off, B.y);
       const all = polyN.concat(pM), box = bboxOf(all);
       fit(b, box, { t: 52, b: !b.thumb && b.insets.bottom === 0 ? 140 : 100, l: 40, r: 40 });
@@ -416,16 +422,16 @@
         b.point(Pp, { color: 'ink', r: 4.5 }); b.point(Qs, { color: 'ink', r: 4.5 });
         tagOut(b, Pp, pt(0, 0.0), 'P', { size: 17, gap: 11 }); tagOut(b, Qs, pt(0, 0), 'Q', { size: 17, gap: 11 });
         T(b, A, 'A', { dy: -18, size: 18 }); T(b, B, 'B', { dy: 20, size: 18 });
-        if (!C.problem && done) T(b, mid(A, B), `${M.L} cm`, { dx: 8, dy: 40, size: 14, color: 'amber', align: 'left' });
+        if (!C.problem && (done || lesson)) T(b, mid(A, B), `${M.L} cm`, { dx: 8, dy: 40, size: 14, color: 'amber', align: 'left' });
       }
       if (done) {
         if (!C.problem && (C.full || st >= 1)) {
-          ang(b, A, B, Pp, { color: 'sky', r: 26, label: `${fmtN(In)}°`, size: 14, labelDist: 54, rings: 1 });
-          ang(b, A, Q, B, { color: 'green', r: 26, label: `${fmtN(Im)}°`, size: 14, labelDist: 54, rings: 1 });
+          ang(b, A, B, Pp, { color: 'sky', r: 26, label: angleReady ? `${fmtN(In)}°` : '', size: 14, labelDist: 54, rings: 1 });
+          ang(b, A, Q, B, { color: 'green', r: 26, label: angleReady ? `${fmtN(Im)}°` : '', size: 14, labelDist: 54, rings: 1 });
         }
-        if (!C.problem && (C.full || st >= 2)) ang(b, A, Pp, Q, { color: 'amber', r: 36, label: `${fmtN(x)}°`, size: 16, fa: 0.14, labelDist: 62 });
+        if (!C.problem && (C.full || st >= 2)) ang(b, A, Pp, Q, { color: 'amber', r: 36, label: gapReady ? `${fmtN(x)}°` : 'x', size: 16, fa: 0.14, labelDist: 62 });
         if (valid && (C.problem || C.full || st >= 3)) {
-          const label = C.problem ? 'x' : `${fmtN(base)}°`, size = C.problem ? 17 : 15;
+          const label = C.problem || !answerReady ? 'x' : `${fmtN(base)}°`, size = C.problem ? 17 : 15;
           let placement = { labelDist: 46, labelRot: 40 };
           if (!C.thumb && b.W < 560 && b.toS) {
             // 좁은 ∠APQ의 값이 A의 내각이나 AB의 길이처럼 보이지 않게
@@ -447,7 +453,15 @@
       let r1, r2 = '', c1 = 'amber';
       const gapRow = `A 둘레 남는 각: 360°−${fmtN(In)}°−${fmtN(Im)}°=${fmtN(gap)}°`;
       const apexRow = gap > 180 ? `△APQ의 안쪽 각: 360°−${fmtN(gap)}°=${fmtN(x)}°` : `∠PAQ = ${fmtN(x)}°`;
-      if (C.problem) { r1 = `정${n}각형과 정${m}각형이 변 AB를 공유해요`; r2 = valid ? `AP = AQ 일 때, ∠APQ = x 의 크기는?` : '세 점 P, A, Q의 위치는 어떨까요?'; }
+      if (lesson) {
+        r1 = `정${n}각형과 정${m}각형의 변 AB를 맞춰요`;
+        if (done && angleReady) r1 = `두 도형의 한 내각: ${fmtN(In)}°, ${fmtN(Im)}°`;
+        if (done && gapReady) { r1 = gapRow; r2 = gap > 180 ? apexRow : ''; }
+        if (done && s.pgLessonGoal === 'base' && ready(s, C, 'pgHalfReady')) r2 = `두 밑각의 합 = 180°−${fmtN(x)}° = ${fmtN(180 - x)}°`;
+        if (done && answerReady && s.pgLessonGoal === 'base' && valid) r2 = `∠APQ = (180°−${fmtN(x)}°)÷2 = ${fmtN(base)}°`;
+        if (done && answerReady && !valid) r2 = 'P, A, Q가 일직선이에요 (삼각형 APQ가 없어요)';
+      }
+      else if (C.problem) { r1 = `정${n}각형과 정${m}각형이 변 AB를 공유해요`; r2 = valid ? `AP = AQ 일 때, ∠APQ = x 의 크기는?` : '세 점 P, A, Q의 위치는 어떨까요?'; }
       else if (C.review && st === 0) r1 = '두 정다각형과 구할 각을 확인해요';
       else if (!done) { r1 = '오른쪽 도형을 가로로 밀어 붙여 보세요'; c1 = 'green'; }
       else if (C.review && st === 1) { r1 = `정${n}각형의 한 내각 ${fmtN(In)}°`; r2 = `정${m}각형의 한 내각 ${fmtN(Im)}°`; c1 = 'sky'; }
@@ -537,17 +551,23 @@
     },
     draw(b, s, M, C) {
       const { n, v, k, Pn, at, I, h, kk } = M, O = pt(0, 0), A = at(0), st = C.step;
+      const lesson = lessonOn(s, C), unitGoal = s.pgLessonGoal === 'unit', angleReady = ready(s, C, 'pgAngleReady'), halfReady = ready(s, C, 'pgHalfReady'), answerReady = ready(s, C, 'pgShowAnswer');
       fit(b, { x0: -1, x1: 1, y0: -1, y1: 1 }, { t: 40, b: 88, l: 50, r: 50 });
       fillPoly(b, Pn, 'sky', 0.08);
       if (!C.problem && !C.review && C.full) for (let j = 1; j <= k; j++) fillPoly(b, [A, at(j), at(j + 1)], 'amber', 0.13);
       if (C.problem || (C.review && st >= 3)) for (let j = 1; j <= k; j++) fillPoly(b, [A, at(j), at(j + 1)], 'amber', 0.16);
       poly(b, Pn, 'ink', 3.4);
-      const showD = C.problem ? true : C.review ? st >= 1 : true;
-      if (showD) for (let j = 2; j <= n - 2; j++) line(b, A, at(j), 'green', n > 9 ? 2.6 : 3.4);
-      if (!C.problem && (C.full || st >= 1)) ang(b, A, at(1), at(n - 1), { color: 'amber', r: 30, noMark: !(C.review && st === 1), fa: 0.12, label: C.review && st === 1 ? `${fmtN(I)}°` : '', size: 15, labelDist: 56 });
+      const showD = C.problem ? true : lesson ? s.pgTrace > 0 || st >= 1 : C.review ? st >= 1 : true;
+      if (showD) for (let j = 2; j <= n - 2; j++) line(b, A, lesson ? lerp(A, at(j), clamp(s.pgTrace || 0, 0, 1)) : at(j), 'green', n > 9 ? 2.6 : 3.4);
+      if (lesson && st >= 1) { tick(b, A, at(1), 1, 'sky'); tick(b, at(1), at(2), 1, 'sky'); }
+      if (!C.problem && (C.full || st >= 1)) ang(b, A, at(1), at(n - 1), { color: 'amber', r: 30, noMark: !(C.review && st === 1), fa: 0.12, label: C.review && st === 1 && angleReady ? `${fmtN(I)}°` : '', size: 15, labelDist: 56 });
       // 같은 크기의 각: 대각선이 나눈 n−2개의 각
-      if (!C.problem && (C.full || st >= 2)) for (let j = 1; j <= n - 2; j++) ang(b, A, at(j), at(j + 1), { color: 'sky', rings: 1, r: 36, label: j === Math.ceil((n - 2) / 2) ? `${fmtN(h)}°` : '', size: 15 });
+      if (!C.problem && (C.full || st >= 2)) for (let j = 1; j <= n - 2; j++) ang(b, A, at(j), at(j + 1), { color: 'sky', rings: 1, r: 36, label: j === Math.ceil((n - 2) / 2) && halfReady && (!lesson || !unitGoal) ? `${fmtN(h)}°` : '', size: 15 });
       if (C.problem) ang(b, A, at(1), at(k + 1), { color: 'amber', ...fanQuestionMark(b, A, Pn, n, v, k) });
+      if (lesson) {
+        const count = unitGoal ? 1 : k;
+        ang(b, A, at(1), at(count + 1), { color: 'amber', ...fanQuestionMark(b, A, Pn, n, v, count), label: answerReady ? `${fmtN(count * h)}°` : 'x' });
+      }
       Pn.forEach((p) => b.point(p, { color: 'ink', r: n > 9 ? 3.8 : 4.5 }));
       if (C.txt) {
         Pn.forEach((p, i) => tagOut(b, p, O, LET[(i - v + n) % n], { size: n > 9 ? 14 : 17, gap: 10 }));
@@ -555,7 +575,18 @@
         else b.point(A, { color: 'amber', r: 6.5 });
         const yb = Math.max(...Pn.map((p) => p.y));
         let r1, r2 = '', c1 = 'sky';
-        if (C.problem) r1 = `∠BA${LET[k + 1]} = x 의 크기는?`;
+        if (lesson) {
+          r1 = `정${n}각형의 꼭짓점 A에서 대각선을 그어요`;
+          if (angleReady) r1 = `한 내각 = 180°×(${n}−2)÷${n} = ${fmtN(I)}°`;
+          if (unitGoal && ready(s, C, 'pgGapReady')) r1 = `△ABC의 두 밑각의 합 = 180°−${fmtN(I)}° = ${fmtN(180 - I)}°`;
+          if (halfReady && !unitGoal) r1 = `나뉜 한 각 = (180°−${fmtN(I)}°)÷2 = ${fmtN(h)}°`;
+          if (ready(s, C, 'pgCountReady') && !unitGoal) r2 = `∠BA${LET[k + 1]}는 같은 각 ${k}개`;
+          if (answerReady) {
+            r1 = `내각은 같은 각 ${n - 2}개로 나뉘어요`;
+            r2 = unitGoal ? `한 각 = (180°−${fmtN(I)}°)÷2 = ${fmtN(h)}°` : `∠BA${LET[k + 1]} = ${fmtN(h)}° × ${k} = ${fmtN(kk)}°`;
+          }
+        }
+        else if (C.problem) r1 = `∠BA${LET[k + 1]} = x 의 크기는?`;
         else if (C.review && st === 0) r1 = '대각선으로 나뉜 각을 확인해요';
         else if (C.review && st === 1) r1 = `한 내각 = 180°×(${n}−2)÷${n} ${eq(I)} ${fmtN(I)}°`;
         else if (C.review && st === 2) r1 = `∠BAC = (180° − ${fmtN(I)}°) ÷ 2 ${eq(h)} ${fmtN(h)}°`;
