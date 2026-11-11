@@ -26,6 +26,9 @@ if (out) fs.mkdirSync(out, { recursive: true });
 const labsDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../labs');
 const only = (arg('--only') || '').split(',').filter(Boolean).map((x) => x.split(':'));
 const viewsOnly = (arg('--views') || '').split(',').filter(Boolean); // 예: --views 390x844 (일부 화면만 다시 검사)
+// --shard k/n : 해설(단위)을 발견 순서대로 n 묶음으로 나눠 k 번째(0부터)만 검사합니다. 해설 하나가 3~4분이라 CI 는 여러 작업으로 나눠 돕니다(나눈 묶음을 모두 돌리면 전체와 같습니다).
+const shard = (() => { const m = /^(\d+)\/(\d+)$/.exec(arg('--shard') || ''); if (!m) { if (arg('--shard')) throw Error('--shard must look like 0/12'); return null; } const k = +m[1], n = +m[2]; if (!(n > 0 && k < n)) throw Error('--shard k/n needs 0 <= k < n'); return { k, n }; })();
+let unitSeq = 0;
 const targets = [];
 for (const f of fs.readdirSync(labsDir).filter((x) => x.endsWith('.html')).sort()) {
   const lab = f.replace(/\.html$/, '');
@@ -95,6 +98,7 @@ for (const labId of targets) {
   const units = scenes.flatMap((sc) => sc.lessons.map((lesson, k) => ({ ...sc, k, n: sc.lessons.length, lesson })));
   for (const sc of units) {
     if (only.length && !only.some(([l, s]) => l === labId && (!s || s === sc.id))) continue;
+    if (shard && unitSeq++ % shard.n !== shard.k) continue;
     for (const view of VIEWS.filter((v) => !viewsOnly.length || viewsOnly.includes(v.name))) {
       if (view.entryOnly && sc.n < 2) continue; // 360px 진입 화면은 단추가 여럿일 때만
       const rec = { lab: labId, scene: sc.n > 1 ? `${sc.id}#${sc.lesson.label}` : sc.id, view: view.name, checks: [], errors: [] };

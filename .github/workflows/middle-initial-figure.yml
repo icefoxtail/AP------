@@ -72,8 +72,13 @@ jobs:
           retention-days: 14
   lesson-audit:
     # 해설(lesson): 해설이 있는 모든 장면을 휴대폰·태블릿 화면에서 ▶ 한 번으로 끝까지 재생하고, 장마다 나가 보며 탐구 화면이 깨끗한지 검사합니다(tools/lesson-browser-audit.mjs).
+    # 해설 하나가 3~4분 걸려 한 작업으로는 제한 시간(30분)을 넘습니다(2026-11-11, 해설 25개에서 취소됨). 발견 순서대로 12묶음으로 나눠 돌리며, 12묶음 전체가 모든 해설을 한 번씩 검사합니다.
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -99,11 +104,11 @@ jobs:
             if curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js > /dev/null; then break; fi
             sleep 1
           done
-          node apmath/playground/next/tools/lesson-browser-audit.mjs http://127.0.0.1:8765/apmath/playground/next/labs/ --out "$RUNNER_TEMP/lesson-audit" 2>&1 | tee "$RUNNER_TEMP/lesson-audit.log"
+          node apmath/playground/next/tools/lesson-browser-audit.mjs http://127.0.0.1:8765/apmath/playground/next/labs/ --shard "${{ matrix.shard }}/12" --out "$RUNNER_TEMP/lesson-audit" 2>&1 | tee "$RUNNER_TEMP/lesson-audit.log"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: middle-initial-${{ github.run_id }}-lesson-audit
+          name: middle-initial-${{ github.run_id }}-lesson-audit-${{ matrix.shard }}
           path: |
             ${{ runner.temp }}/lesson-audit.log
             ${{ runner.temp }}/lesson-audit/
