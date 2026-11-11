@@ -41,8 +41,8 @@
 
 | 실험실 | 장면 | 해설 있는 장면 / 해설 수 | 상태 |
 | --- | --- | --- | --- |
-| `g7-surface-volume` 겉넓이·부피 | 30 | 19 / 24 | main (PR #1644, #1713). 잔여 12장면 + 보완 8건(§5-2) |
-| `g7-circle-sector` 원과 부채꼴 | 86 | 86 / 98 구현 후보 | **[PR #1736](https://github.com/icefoxtail/AP------/pull/1736) main 병합 완료** · merge `480018bea30d86225b8e41c79eda5cd76ce03ebc`. 기존 45/51 + 신규 41/47 = 86장면/98해설. 제작 누락 0, 건너뜀 0. **`MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING`**(Git main 반영 완료, Pages 실화면 배포 및 모바일 전수검수는 미확인). 다음은 §5-2 |
+| `g7-surface-volume` 겉넓이·부피 | 30 | 30 / 54 | **IMPLEMENTED / QA_PENDING** · `feat/lessons-g7-surface-volume-remainder`. 실제 기존 등록 18장면/23해설에서 잔여 12장면/27해설 + 기존 4장면의 부피 4해설 추가. 최소 검사 182/182. PR·main·Pages 확인 후 갱신 (§5-2) |
+| `g7-circle-sector` 원과 부채꼴 | 86 | 86 / 98 | **RELEASED_QA_PENDING** · [PR #1736](https://github.com/icefoxtail/AP------/pull/1736), merge `480018bea30d86225b8e41c79eda5cd76ce03ebc`. [Pages run 42958902234](https://github.com/icefoxtail/AP------/actions/runs/42958902234) 성공, 실제 HTML 및 17개 모듈의 배포 소스 일치 확인. 전체 모바일 품질검수 NOT_RUN |
 | 중1 나머지 8개 | 166 | 0 | 미착수 (§5-3) |
 | 중2 4개 · 중3 2개 | 247 | 0 | 미착수, 선행 확인 필요 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
@@ -87,6 +87,12 @@
 - 해설 없는 12장면: sv1-3, sv2-6, sv2-7, sv3-3, sv3-5, sv3-6, sv3-7, sv4-2(전개도에 값이 전혀 없음, 그리기 확장 필요), sv5-2, sv5-4, sv5-5, sv6-1.
 - 중간 값이 자막보다 먼저 보이는 해설 8개(sv1-5, sv1-2, sv2-4 겉넓이, sv4-4, sv2-2, sv2-3 겉넓이, sv4-1 겉넓이, sv5-6): 면별 넓이가 그 값을 말하는 장에서 나타나게 한다. sv1-5는 정리 탭 전개도가 펼침 값(`sT5`)을 무시하고 처음부터 전부 그린다.
 - 주어진 길이를 자막으로 말하지 않는 해설(sv1-2 높이 7, sv1-5 치수, sv4-4의 3·4·5, sv2-4 반지름 6·3, sv2-5·sv2-4 부피의 높이와 닮음 단계)을 보완한다.
+
+**2026-11-11 구현 결과:** 최신 main `8a7a68d95d71acbfc6313022f5428a857fe9364d`에서 새 remainder 브랜치를 만들었다. 실제 HTML 모듈·카탈로그·lesson 등록 대조 결과는 **총 30장면, 기존 18장면/23해설, 잔여 12장면**이다. 종전 19/24 표기는 정정한다. 잔여 12장면에 27해설을 추가하고 기존 sv1-5·sv4-3·sv4-4·sv5-6의 부피 해설 4개를 보완하여 **30장면/54해설, 미등록 장면 0**이다. 기존 해설 객체는 보존했다.
+
+- 지정 8건의 중간값은 해당 자막 뒤에 보이며 sv1-5 전개는 `sT5`를 따른다. 주어진 치수·닮음에 의한 큰/작은 뿔 높이 설명, 진입 상태의 그림·답 가림, 다시 보기 초기화를 보완했다. sv4-4의 전개도 반구 라벨은 실제 곡면 `18π`로 바로잡았다.
+- `node --test --test-reporter=tap apmath/playground/next/tools/video.test.mjs apmath/playground/next/tools/lessons.g7-surface-volume*.test.mjs apmath/playground/next/tools/g7-surface-volume-*.test.mjs` → **182/182 통과, 실패 0**. 무필터 validator, 실제 등록 경로, 독립 수학 검산, 생산 Board의 진입·첫 cue·결론 162개 상태 포함. 수정 JS/MJS 20파일 구문 검사와 diff 공백 검사 통과. 공통 키트·CI·검사 기준 변경 없음.
+- 실제 390×844 화면·54해설 전체 자동 재생·글자 잘림·정밀 동기화·터치·수동 화면 전후 비교는 **NOT_RUN / QA_PENDING**이다. 소스/Board 검사를 화면 품질 PASS로 해석하지 않는다.
 
 ### 5-3. 중1 나머지 8개 실험실
 
@@ -187,6 +193,9 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+- 2026-11-11 · `g7-surface-volume` 잔여 구현 완료: 실제 30장면/54해설, 신규 31해설(잔여 12장면/27 + 기존 4장면/4), 미등록 장면 0. 위 최소 검사 182/182 및 구문 검사 통과. **IMPLEMENTED / QA_PENDING**, main·Pages는 병합 후 별도 확인. 다음 구현은 §5-3의 `g7-polyhedra`다.
+- 2026-11-11 · 원과 부채꼴 Pages 확인 완료: [run 42958902234](https://github.com/icefoxtail/AP------/actions/runs/42958902234), source `3fd795aa10ab9bd5652262b443797bc562f6dd53`에 PR #1736 merge 포함. 학생 HTML HTTP 200 및 17/17 모듈이 배포 소스와 바이트 단위 일치. 실제 브라우저에서 중심·반지름 해설의 버튼·진입·재생 시작 확인. **RELEASED_QA_PENDING**이며 전체 98해설/모바일 품질검수는 NOT_RUN이다. 아래 과거 Pages NOT_VERIFIED 기록을 이 확인 결과로 갱신한다.
 
 - 2026-11-11 · [PR #1736](https://github.com/icefoxtail/AP------/pull/1736) 실제 main 운영 병합 완료, merge SHA `480018bea30d86225b8e41c79eda5cd76ce03ebc`, main readback 확인. **98해설 QA_PENDING**, Pages 배포 **NOT_VERIFIED**(현재 실행 환경에서 실시간 사이트 확인 불가). 다음 §5-2.
 

@@ -147,6 +147,20 @@
     }
 
   }
+  // 해설에서 계산한 항만 공개합니다. 직접 해 보기의 원래 면 전개는 유지합니다.
+  function lessonRow(D,s,M,C) {
+    if(!C.lesson)return;
+    const stage=s.svBStage||0, rows=M.mode==='surf'?[null,
+      [{t:`원기둥 겉넓이 = 2×π×${M.r}² + 2×π×${M.r}×${M.h} = ${plainVal(M.lowerSurface)}`,c:'sky'}],
+      [{t:`반구 겉넓이 = 3×π×${M.r}² = ${plainVal(M.upperSurface)}`,c:'green'}],
+      [{t:`붙은 원 두 면 = 2×π×${M.r}² = ${plainVal(M.hidden)}`,c:'red'}],
+      [{t:`겉넓이 = ${plainVal(M.lowerSurface)} + ${plainVal(M.upperSurface)} − ${plainVal(M.hidden)} = ${plainVal(M.surface)}`,c:'green'}]
+    ]:[null,
+      [{t:`원기둥 부피 = π×${M.r}²×${M.h} = ${plainVal(M.lowerVolume)}`,c:'sky'}],
+      [{t:`반구 부피 = 2/3×π×${M.r}³ = ${plainVal(M.upperVolume)}`,c:'green'}],
+      [{t:`전체 부피 = ${plainVal(M.lowerVolume)} + ${plainVal(M.upperVolume)} = ${plainVal(M.volume)}`,c:'green'}]];
+    G.stepRow(D,C,rows[Math.min(stage,M.mode==='surf'?4:3)],{gated:stage>=(M.mode==='surf'?4:3)});
+  }
   const draw = (b,s,M,C) => {
     const D = scene3(b,s,C), square = M.kind==='pyramid';
     const width = square?M.a:2*M.r, capHeight = M.kind==='hemi'?M.r:M.topH;
@@ -154,7 +168,7 @@
     const w=width*scale,r=M.r*scale,a=M.a*scale,h=M.h*scale,
       topH=M.topH*scale,y0=-h/2,yj=h/2;
     const t=C.problem||(!s.jcStarted&&C.tab==='explore')?0:C.t, open=ease(lin01(t,0,0.55));
-    if(M.mode==='surf' && (s.jcStarted||C.tab!=='explore') && !C.problem && !b.thumb) { drawJoinedUnfold(b,s,M,C,t); return; }
+    if(M.mode==='surf' && (s.jcStarted||C.tab!=='explore') && !C.problem && !b.thumb) { drawJoinedUnfold(b,s,M,C,t); lessonRow(D,s,M,C); return; }
     const shift=D.hx(open*w*1.35), unfolded=ease(lin01(t,0.48,1));
     const narrow=b.W<560, showSolid=true;
     const base = square ? boxMesh(-a/2,a/2,y0,yj,-a/2,a/2) :
@@ -323,6 +337,7 @@
         '전체 부피 = '+plainVal(M.volume),
         {dy:32,size:D.fs(15),weight:800,color:'green',baseline:'middle'});
     }
+    lessonRow(D,s,M,C);
   };
   G.register(60,'t6','⑥ 기본 결합 모형','기본 결합',PARAMS,[{
     id:'sv6-1',title:'필수 결합 입체 3종',short:'기본 모형 3종',

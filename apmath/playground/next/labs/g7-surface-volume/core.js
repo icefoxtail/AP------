@@ -383,7 +383,7 @@
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
         const M = D.model(s);
-        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] == null ? 0 : s[A.key]) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : (D.problemT == null ? 1 : D.problemT))) : 1;
+        C.t = A ? (C.lesson || C.tab === 'explore' || b.thumb ? (s[A.key] == null ? 0 : s[A.key]) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : (D.problemT == null ? 1 : D.problemT))) : 1;
         if (b.thumb && A && D.thumbT != null) C.t = D.thumbT;
         D.draw(b, s, M, C);
       }

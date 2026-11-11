@@ -188,6 +188,14 @@
         D.radius(shift,add3(shift,mul3(e1,R)),`반지름 ${M.r}`,{color:'rose'});
         const frontCut=wm.faces.filter(f=>f.cut&&D.facing(f.n)).sort((a,b)=>D.depth(b.c)-D.depth(a.c))[0];
         if(C.txt&&!C.problem&&frontCut) D.label(frontCut.c,'단면',{color:'red',at:[[0,0],[0,20],[0,-20]],size:14});
+        if(C.lesson) {
+          const stage=s.svBStage||0;
+          G.stepRow(D,C,[null,
+            [{t:`구 전체 = 4×π×${M.r}² = ${plainVal(M.sphere)}`,c:'ink'}],
+            [{t:`남은 곡면 = ${plainVal(M.sphere)} × ${M.f.factor} = ${plainVal(M.curve)}`,c:'sky'}],
+            [{t:`${M.f.flats[0].name} ${M.f.flats.length}개 = ${plainVal(M.flat)}`,c:'red'}],
+            [{t:`겉넓이 = ${plainVal(M.curve)} + ${plainVal(M.flat)} = ${plainVal(M.tot)}`,c:'green'}]][stage],{gated:stage===4});
+        }
         return;
       }
       const D = scene3(b, s, C), st = C.step, R = 1.6, bcx = (isHalf ? 1.25 : 0.95) * 1.6, t = C.problem ? (isHalf ? 0.8 : 1) : C.t, fr = M.frac;
@@ -383,9 +391,9 @@
       const inAlpha = ease(sink);
       if (inAlpha > 0.02) D.body({ mesh: bodyMesh(0, 0), fill: colr, alpha: 0.12 * inAlpha, edge: 'ink', edgeW: 2.2, hidden: true, edgeFn: () => ({ alpha: inAlpha }) });
       // 길이: r, h
-      D.radius(v3(0, hT, 0), add3(v3(0, hT, 0), D.rightFront()), isN && sink < .2 && !C.problem ? '' : `반지름 ${M.r}`, {});
+      D.radius(v3(0, hT, 0), add3(v3(0, hT, 0), D.rightFront()), isN && sink < .2 && !C.problem && !C.lesson ? '' : `반지름 ${M.r}`, {});
       D.dim(add3(v3(0, 0, 0), D.hx(-1)), add3(v3(0, hT, 0), D.hx(-1)), M.k === 0 && !D.narrow ? `높이 ${M.h} = 지름` : `높이 ${M.h}`, { side: { x: -1, y: 0 }, off: 16, color: 'ink' });
-      if (!C.problem && !(D.lessonHide && M.mode === 'remain')) { // 남은 물 해설: 칸 막대(원뿔 18π = 답)는 결론 전까지 숨김
+      if (!C.problem && !(D.lessonHide && (M.mode === 'remain' || C.lesson))) { // 남은 물 해설: 칸 막대(원뿔 18π = 답)는 결론 전까지 숨김
         if (sink < 0.02) { D.tag(v3(bx, yRail + 1.2, 0), BODY[M.body], {size:13,color:'ink'}); }
         // 가로 막대: 원뿔·구·원기둥 (1칸 = 원뿔)
         if (!isN) { // 좁은 화면은 그림을 우선하고 수치는 아래에 표시 물체를 넣기 시작하기 전에는 막대 없이 수조·비커를 크게 보여 줘요
@@ -408,7 +416,10 @@
       {
         const bn = BODY[M.body], tkV = plainVal(M.tank), vB = plainVal(M.vols[M.body]);
         const fx = { cone: `⅓×π×${M.r}²×${M.h}`, sph: `4/3×π×${M.r}³`, cyl: `π×${M.r}²×${M.h}` }[M.body];
-        G.stepRow(D, C, [null,
+        if(C.lesson && fixedMode==='over') {
+          const stage=s.svBStage||0;
+          G.stepRow(D,C,stage===4?[{t:`원뿔 : 구 : 원기둥 = ${plainVal(M.vols.cone)} : ${plainVal(M.vols.sph)} : ${plainVal(M.vols.cyl)}${M.even?' = 1 : 2 : 3':''}`,c:'green'}]:stage?[{t:`${bn}의 부피 = ${fx} = ${vB}`,c:colorOf(M.body)}]:null,{gated:stage===4});
+        } else G.stepRow(D, C, [null,
           [[{ t: `수조 = π×${M.r}²×${M.h} = ${tkV}`, c: 'ink' }], [{ t: `${bn} = ${fx} = ${vB}`, c: 'green' }]],
           [[{ t: M.even ? '높이가 지름(2r)일 때  원뿔 : 구 : 원기둥 = 1 : 2 : 3' : '높이가 2r이 아니면 1 : 2 : 3 이 깨져요', c: 'ink' }]],
           [[{ t: `넘친 물 = ${bn}의 부피 = ${vB}`, c: 'sky' }]],
@@ -484,7 +495,23 @@
       D.fit(fit,[],{l:C.problem||b.W<500?12:40,r:C.tab==='explore' && window.innerWidth>=700 && b.W>=560?245:C.problem||b.W<500?12:40,t:C.problem||b.W<500?12:40,b:C.problem||b.W<500?12:40});
       D.body({mesh:m2,fill:'sky',alpha:.035,edge:'ink',edgeW:2.2,sil:M.shape==='full',edgeFn:e=>m2.faces[e.f1]?.tag==='cap'||m2.faces[e.f2]?.tag==='cap'?{color:'red'}:{},faceStyle:f=>f.tag==='cap'?{fill:'red',alpha:.08}:C.review && C.step===1?{fill:'sky',alpha:.1}:{}});
       if(M.shape==='half') limb(D,c,R,q=>q.y-c.y>=-1e-6);
-      sphereLabels(D,R,c,C.problem && M.ask==='rev'?'반지름 r':`반지름 ${M.r}`,{color:'rose'});
+      const stage=s.svBStage||0, unknown=M.ask==='rev'&&(C.problem||(C.lesson&&stage<1));
+      sphereLabels(D,R,c,unknown?'반지름 r':`반지름 ${M.r}`,{color:'rose'});
+      if(C.lesson) {
+        const rows=M.ask==='rev'?[
+          [{t:`주어진 부피 = ${plainVal(M.V)} cm³`,c:'ink'}],
+          [{t:`r³ = ${M.r**3},  반지름 r = ${M.r}`,c:'rose'}],
+          [{t:`겉넓이 = ${M.shape==='full'?4:3}×π×${M.r}²`,c:'sky'}],
+          [{t:`겉넓이 = ${plainVal(M.S)} cm²`,c:'green'}]
+        ]:M.ask==='V'?[
+          null,[{t:`부피 = ${M.shape==='full'?'4/3':'2/3'}×π×r³`,c:'ink'}],
+          [{t:`r³ = ${M.r}×${M.r}×${M.r} = ${M.r**3}`,c:'rose'}],
+          [{t:`부피 = ${plainVal(M.V)} cm³`,c:'green'}]
+        ]:[null,[{t:`겉넓이 = ${M.shape==='full'?4:3}×π×r²`,c:'ink'}],
+          [{t:`r² = ${M.r}×${M.r} = ${M.r**2}`,c:'rose'}],
+          [{t:`겉넓이 = ${plainVal(M.S)} cm²`,c:'green'}]];
+        G.stepRow(D,C,rows[Math.min(stage,3)],{gated:stage>=3});
+      }
     };
     return {
       id: 'sv3-6', title: '구 종합', short: '구 종합',

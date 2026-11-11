@@ -257,7 +257,7 @@ test('해설 sv2-4 겉넓이: 원뿔대(반지름 6·3, 모선 10·5) — 60π �
   okNums(l, [r2, r1, R2, R1, big, small, ring, top, bot, tot, 2 * r2, 2]); // 2 는 「원 2개」
   const t2 = src('t2.js'), s3 = src('solid3d.js');
   assert.match(t2, /t: C\.problem \? 0 : rv && !s\.lessonOn \? 1 : C\.t, problem: C\.problem, review: rv, hl,/);
-  assert.match(s3, /const ringRow = o\.cleanFrustum && s\.lessonOn && hl\.ring === 2 \?/);
+  assert.match(s3, /const ringRow = o\.cleanFrustum && s\.lessonOn && hl\.ring === 2 && ready\('side'\) \?/);
   assert.match(s3, /옆넓이 = 큰 부채꼴 − 작은 부채꼴 = \$\{V0\.big\} − \$\{V0\.small\} = \$\{V0\.ring\}/);
 });
 
@@ -369,9 +369,9 @@ test('해설 sv4-3 이중원뿔(r=3, 모선 5·5): 15π + 15π = 30π, 맞붙은
   assert.ok(s4[2][0].includes(`\\pi\\times${hr}\\times${Rr}=${cone}\\pi`) && s4[2][1].includes(`2\\pi\\times${hr}\\times${H}=${cyl}\\pi`) && s4[2][2].includes(`${hemi}\\pi`) && s4[3][1].includes(`${cone}\\pi+${cyl}\\pi+${hemi}\\pi=${all}\\pi`));
   okNums(l4, [hr, H, Rr, cone, cyl, hemi, all, 2]);
   const t4 = src('t4.js');
-  assert.match(t4, /u = \(C\.review && !s\.lessonOn\) \|\| thumb \? 1 : clamp\(\(C\.t - 0\.5\) \* 2, 0, 1\), e = ease\(u\);/);
-  assert.match(t4, /const simple = o\.simple && !\(s\.lessonOn && C\.review\);/);
-  assert.match(t4, /\(\(C\.review && !s\.lessonOn\) \|\| C\.t >= 1 \|\| b\.thumb\)\) return drawNet44/);
+  assert.match(t4, /u = \(C\.review && !C\.lesson\) \|\| thumb \? 1 : clamp\(\(C\.t - 0\.5\) \* 2, 0, 1\), e = ease\(u\);/);
+  assert.match(t4, /const simple = o\.simple && !\(C\.lesson && C\.review\);/);
+  assert.match(t4, /\(\(C\.review && !C\.lesson\) \|\| C\.t >= 1 \|\| b\.thumb\)\) return drawNet44/);
 });
 
 test('해설 sv2-1 뿔 ⅓(정육면체 4): 64, 합동인 사각뿔 3개, 하나는 64/3 — 증명이 아니라 그림으로 확인하는 어조', () => {
