@@ -20,6 +20,7 @@ FIELDS|={'labelWeight','extension','offsetPx','paths','pathMark','autoOffset','o
 FIELDS|={'squareSize'}   # G13a: the leg of a right-angle square (px) on a graph, bigger than the plane-figure token so it reads on a phone
 FIELDS|={'clipRefine'}   # G18b: a FUNCTION_GRAPH whose frame-cut ends are refined to about a pixel (equalUnits on a rational or a square root)
 FIELDS|={'nearCurve','nearLine','nearEnd'}   # G18b: a multi-curve label stands beside its own curve (nearCurve = curve id) or at the end of its own dashed asymptote (nearLine = asymptote primitive id)
+FIELDS|={'markerState'}   # a graph overlay point drawn as a hollow circle (markerState:'OPEN'); with `color` (POINT) a coloured dot
 FIELDS|={'guide','anchorAt'}   # E37: a light dotted guide line (a SEGMENT) from a point of the main figure to its pulled-out copy
 
 def parity(a,b):
@@ -69,6 +70,8 @@ def validate(spec):
         # marker:'NONE' is a nameless POINT that draws no dot at all (a plane figure's hiddenPointStyle NONE); nothing else carries a marker.
         # marker:'NO_DOT' (G3) is a named point that draws no dot, only its name: the end of a vector arrow, where the dot would cover the arrow head.
         if 'marker' in obj and (obj['kind']!='POINT' or obj['marker'] not in {'NONE','NO_DOT'} or (obj['marker']=='NONE' and ('name' not in obj or obj['name'] is not None))):raise ValueError('INVALID_POINT_MARKER')
+        # markerState:'OPEN' is a POINT drawn as a hollow circle (stroke in its colour, the figure background inside); a dot that draws nothing (marker) cannot be hollow
+        if 'markerState' in obj and (obj['kind']!='POINT' or obj['markerState']!='OPEN' or 'marker' in obj):raise ValueError('INVALID_POINT_MARKER_STATE:'+str(obj.get('id')))
         # A fill pattern belongs to a plane region only; no other object carries one.
         if 'pattern' in obj and obj['kind']!='FILL_REGION':raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
         # arrowInset (G3): the head of a vector arrow stops at the dot of its end point; only an arrow segment carries it.
@@ -88,7 +91,7 @@ def validate(spec):
         # color (C1): a palette colour of a segment, an angle mark or an equal / parallel mark group; an angle mark takes either a colour or an emphasisGroup, a guide / emphasised / dashed / arrow segment none
         if 'color' in obj:
             # (G12-2) a graph's overlay line or drawn curve wears a palette colour too (a curve keeps its own line style DASHED, but not the red ACCENT)
-            if obj['kind'] not in {'SEGMENT','ANGLE_MARK','EQUAL_MARK','PARALLEL_MARK','LINE','FUNCTION_GRAPH','CIRCULAR_ARC'} or obj['color'] not in PALETTE_NAMES:raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
+            if obj['kind'] not in {'SEGMENT','ANGLE_MARK','EQUAL_MARK','PARALLEL_MARK','LINE','FUNCTION_GRAPH','CIRCULAR_ARC','POINT'} or obj['color'] not in PALETTE_NAMES:raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
             if obj['kind']=='FUNCTION_GRAPH' and obj.get('curveStyle')=='ACCENT':raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
             if obj['kind']=='ANGLE_MARK' and 'emphasisGroup' in obj:raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
             if obj['kind']=='SEGMENT' and any(key in obj for key in ('guide','dash','arrow','emphasis')):raise ValueError('INVALID_COLOR:'+str(obj.get('id')))

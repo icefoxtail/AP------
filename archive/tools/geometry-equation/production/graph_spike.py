@@ -788,15 +788,20 @@ def _overlay_model_svg(plan,transform):
         if polygon['fill']!='NONE':
             parts.append(f'<polygon id="overlay-polygon-{polygon["id"]}-fill" data-role="region" points="{outline}" fill="#eef2f7" stroke="none"/>')
         parts.append(f'<polyline id="overlay-polygon-{polygon["id"]}" data-role="overlayPolygon" points="{outline} {vertices[0][0]:.12g},{vertices[0][1]:.12g}" fill="none" stroke="black"/>')
+    def dot_look(row):
+        # marker OPEN: white inside, ring in the point's colour (black without one); a colour alone: the dot wears the palette's line colour. Neither key: the plain black dot.
+        line=PALETTE[row['color']]['line'] if row.get('color') else None
+        if row.get('marker')=='OPEN':return f'fill="#fff" stroke="{line or "black"}" stroke-width="1.8" data-state="OPEN"'
+        return f'fill="{line}" stroke="{line}"' if line else 'fill="#111" stroke="black"'
     for point in features['points']:
         x,y=screen(point['x'],point['y'])
-        parts.append(f'<circle id="{point["id"]}" data-role="point" data-overlay="true" cx="{x:.12g}" cy="{y:.12g}" r="3.2" fill="#111" stroke="black"/>')
+        parts.append(f'<circle id="{point["id"]}" data-role="point" data-overlay="true" cx="{x:.12g}" cy="{y:.12g}" r="3.2" {dot_look(point)}/>')
     lattice=features.get('latticePoints')
     if lattice:
         token=lambda value:'n'+str(-value) if value<0 else str(value)
         for dot in lattice['points']:
             x,y=screen(dot['x'],dot['y'])
-            parts.append(f'<circle id="overlay-lattice-x{token(dot["x"])}y{token(dot["y"])}" data-role="point" data-overlay="true" cx="{x:.12g}" cy="{y:.12g}" r="2.4" fill="#111" stroke="black"/>')
+            parts.append(f'<circle id="overlay-lattice-x{token(dot["x"])}y{token(dot["y"])}" data-role="point" data-overlay="true" cx="{x:.12g}" cy="{y:.12g}" r="2.4" {dot_look(lattice)}/>')
     return ''.join(parts)
 
 def produce(plan):

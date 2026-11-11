@@ -13,6 +13,7 @@ from .palette import PALETTE,COLORED_SEGMENT_WIDTH
 from .semantic_model import validate
 from .geometry_model import Circle,CircularArc,Line,clip_line,finite
 from .math_expression import parse as _parse_expression,evaluate as _evaluate_expression,parse_list as _parse_list
+OPEN_POINT_STROKE_WIDTH=1.8   # a hollow overlay point (markerState OPEN): the ring is heavier than a filled dot's 0.8 outline so it reads as a circle on a phone
 
 def _exact_float(text):
     """The float of an exact value string: a rational 'a/b' or an expression with sqrt (the surd endpoint of a quadratic's source interval)."""
@@ -756,7 +757,10 @@ def prepare(spec):
             point_name=point_names.get(oid,obj.get('name',oid))
             if oid not in named and point_name is not None:labels.append({'id':oid+'-name','kind':'POINT_NAME','target':oid,'text':point_name,'at':vp.screen(value),'font':tokens['pointName'],'priority':obj.get('priority',1)})
         elif kind=='POINT':
-            primitive({'id':oid,'kind':'circle','at':vp.screen(value),'radius':obj['markerRadius'] if obj.get('markerRadius') is not None else tokens['criticalPoint'] if obj.get('priority')==0 else tokens['point'],'layer':70,'role':'point','token':'indicator'},'point')
+            # color (POINT): a dot in a palette group's line colour; markerState OPEN: a hollow circle, the same radius, stroked in that colour (black when none) with the figure's white inside
+            dot_line=PALETTE[obj['color']]['line'] if obj.get('color') else None
+            dot_look=({'fill':'#fff','stroke':dot_line or '#111','strokeWidth':OPEN_POINT_STROKE_WIDTH,'state':'OPEN'} if obj.get('markerState')=='OPEN' else {'fill':dot_line,'stroke':dot_line} if dot_line else {})
+            primitive({'id':oid,'kind':'circle','at':vp.screen(value),'radius':obj['markerRadius'] if obj.get('markerRadius') is not None else tokens['criticalPoint'] if obj.get('priority')==0 else tokens['point'],'layer':70,'role':'point','token':'indicator',**dot_look},'point')
             point_names=semantic.get('publication',{}).get('sourcePointLabels',{})
             point_name=point_names.get(oid,obj.get('name',oid))
             if oid not in named and point_name is not None:labels.append({'id':oid+'-name','kind':'POINT_NAME','target':oid,'text':point_name,'at':vp.screen(value),'font':tokens['pointName'],'priority':obj.get('priority',1)})
