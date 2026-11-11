@@ -164,7 +164,7 @@ function caption(value,fallback){
  */
 export function expandInequalityChain(plan){
   if(plan?.capability!==CHAIN_CAPABILITY||!plan.inequality||typeof plan.inequality!=='object')bad('CHAIN_PLAN_INVALID');
-  const allowed=['capability','inequality','graphCaption','numberLineCaption','caption','sourceConditions','newVisualInformation'];
+  const allowed=['capability','inequality','graphCaption','numberLineCaption','caption','accessibilityDescription','sourceConditions','newVisualInformation'];
   if(Object.keys(plan).some(key=>!allowed.includes(key)))bad('CHAIN_PLAN_INVALID');
   const solution=solveQuadraticInequality(plan.inequality),inequality=plan.inequality;
   const c=inequality.coefficients.map(value=>parseRat(value,'INVALID_INEQUALITY_COEFFICIENT'));
@@ -188,7 +188,7 @@ export function expandInequalityChain(plan){
   return {capability:'composite-panels-v1',chain:CHAIN_CAPABILITY,
     panels:[{caption:caption(plan.graphCaption,{text:'이차함수의 그래프'}),plan:{capability:'polynomial-spike-v1',graphPlan}},
       {caption:caption(plan.numberLineCaption,{text:'해의 범위'}),plan:{capability:NUMBER_LINE_CAPABILITY,numberLine:inequality}}],
-    caption:plan.caption,sourceConditions:plan.sourceConditions,newVisualInformation:plan.newVisualInformation};
+    caption:plan.caption,...(plan.accessibilityDescription!==undefined?{accessibilityDescription:plan.accessibilityDescription}:{}),sourceConditions:plan.sourceConditions,newVisualInformation:plan.newVisualInformation};
 }
 
 // --- the number-line panel -------------------------------------------------------------------------------------------------------------------

@@ -2921,7 +2921,8 @@ OVERLAY_CALLOUT_TEXT_PATTERN=r'[가-힣A-Za-z0-9 (),.+\-=αβγθ′√]{1,14}' 
 OVERLAY_CALLOUT_PLAIN_MARKS=',αβγθ′√'
 OVERLAY_CALLOUT_MATH_PATTERN=re.compile(r'[0-9A-Za-zαβγδθπ′√=+*/().^ ,_-]{1,20}')   # (EXT-20261109-b) a MATH callout may carry a comma (a coordinate pair), a subscript (A_1) and a bracketed fraction ((x+2)/(x-2)), up to 20 characters
 OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')
-OVERLAY_LATTICE_FIELDS={'region','xRange','yMin','yMax','strict','counts','curve'}
+OVERLAY_LATTICE_FIELDS={'region','xRange','yMin','yMax','strict','counts','curve','color'}
+OVERLAY_POINT_MARKERS=('FILLED','OPEN')   # overlays.points[].marker: FILLED (the default dot) or OPEN (a hollow circle, stroked in the point's colour)
 OVERLAY_LATTICE_MAX_POINTS=40
 OVERLAY_LATTICE_MAX_COLUMNS=12
 OVERLAY_POLYGON_LABEL_KINDS=('MATH','TEXT')
@@ -3446,6 +3447,7 @@ def _overlay_lattice(plan,entry,exact_points):
     if span[1]-span[0]+1>OVERLAY_LATTICE_MAX_COLUMNS:_overlay_fail('OVERLAY_LATTICE_TOO_MANY')
     strict=entry.get('strict',True);counts=entry.get('counts',False)
     if not isinstance(strict,bool) or not isinstance(counts,bool):_overlay_fail('OVERLAY_LATTICE_INVALID')
+    if 'color' in entry and entry['color'] not in OVERLAY_COLOR_NAMES:_overlay_fail('OVERLAY_COLOR_INVALID','lattice.color')
     bound_key='yMin' if region=='BELOW_CURVE' else 'yMax';other_key='yMax' if region=='BELOW_CURVE' else 'yMin'
     bound=entry.get(bound_key)
     if other_key in entry or isinstance(bound,bool) or not isinstance(bound,int):_overlay_fail('OVERLAY_LATTICE_BOUND_INVALID')
@@ -3473,7 +3475,7 @@ def _overlay_lattice(plan,entry,exact_points):
     for point in points:
         if not (xmin<point['x']<xmax and ymin<point['y']<ymax):_overlay_fail('OVERLAY_POINT_OUTSIDE_VIEWPORT','lattice')
         if any(abs(point['x']-ex)<1e-9 and abs(point['y']-ey)<1e-9 for ex,ey in exact_points):_overlay_fail('OVERLAY_LATTICE_POINT_COINCIDES',str(point['x'])+','+str(point['y']))
-    return {'region':region,'strict':strict,'counts':counts,'xRange':list(span),bound_key:bound,'points':points,'columns':columns}
+    return {'region':region,'strict':strict,'counts':counts,'xRange':list(span),bound_key:bound,'points':points,'columns':columns,**({'color':entry['color']} if 'color' in entry else {})}
 
 def _overlay_math_name_is_the_curve(plan,entry,ident):
     """A MATH name beside the drawn curve (E31): when the curve is one straight piece with rational coefficients (y=c0+c1*x) and the text is an equation that can be read exactly
@@ -3803,7 +3805,7 @@ def _overlay_features(plan):
     required_ids={point.get('id') for point in plan.get('requiredPoints',[]) if isinstance(point,dict)}
     for entry in raw.get('points',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_POINT_INVALID','point')
-        if set(entry)-{'id','curveX','curve','on','x','y','axis','value','intersect','coordinates','labelDirection','unnamed','pick','onCircle'}:_overlay_fail('OVERLAY_POINT_INVALID',entry.get('id'))
+        if set(entry)-{'id','curveX','curve','on','x','y','axis','value','intersect','coordinates','labelDirection','unnamed','pick','onCircle','marker','color'}:_overlay_fail('OVERLAY_POINT_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'point')
         if ident in required_ids:_overlay_fail('OVERLAY_POINT_ID_CONFLICT',ident)
         claim('point:'+ident)
@@ -3872,6 +3874,13 @@ def _overlay_features(plan):
             # A layout hint only (the side to try first); it needs the label it is a hint for.
             if not row.get('coordinates') or entry['labelDirection'] not in ('N','NE','E','SE','S','SW','W','NW'):_overlay_fail('OVERLAY_LABEL_DIRECTION_INVALID',ident)
             row['labelDirection']=entry['labelDirection']
+        # marker (OPEN = a hollow circle) and color (a palette group) are optional looks of the dot; absent, the dot is the plain black one and the row carries neither key
+        if 'marker' in entry:
+            if entry['marker'] not in OVERLAY_POINT_MARKERS:_overlay_fail('OVERLAY_POINT_MARKER_INVALID',ident)
+            if entry['marker']=='OPEN':row['marker']='OPEN'
+        if 'color' in entry:
+            if entry['color'] not in OVERLAY_COLOR_NAMES:_overlay_fail('OVERLAY_COLOR_INVALID',str(ident)+'.color')
+            row['color']=entry['color']
         points.append(row);by_point[ident]=row;exact_by_point[ident]=(x,y)
     def point_ref(value,ident):
         if not isinstance(value,str) or value not in by_point:_overlay_fail('OVERLAY_POINT_UNKNOWN',ident)

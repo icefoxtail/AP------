@@ -1,0 +1,150 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "8",
+   "0"
+  ],
+  "denominator": [
+   "0",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -2,
+   9
+  ],
+  "viewport": [
+   -2,
+   9,
+   -1.6,
+   9
+  ],
+  "displayWindow": [
+   -2,
+   9,
+   -1.6,
+   9
+  ],
+  "axisTickValues": {
+   "x": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "y": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ]
+  },
+  "formulaLabel": "y=a/x",
+  "overlays": {
+   "points": [
+    {
+     "id": "O",
+     "x": "0",
+     "y": "0",
+     "unnamed": true
+    },
+    {
+     "id": "c1",
+     "curveX": "1",
+     "unnamed": true,
+     "marker": "OPEN",
+     "color": "ROSE"
+    },
+    {
+     "id": "c2",
+     "curveX": "2",
+     "unnamed": true,
+     "marker": "OPEN",
+     "color": "ROSE"
+    },
+    {
+     "id": "c4",
+     "curveX": "4",
+     "unnamed": true,
+     "marker": "OPEN",
+     "color": "ROSE"
+    },
+    {
+     "id": "c8",
+     "curveX": "8",
+     "unnamed": true,
+     "marker": "OPEN",
+     "color": "ROSE"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "k1",
+     "point": "c1",
+     "text": "제외",
+     "labelKind": "TEXT",
+     "direction": "E"
+    },
+    {
+     "id": "k2",
+     "point": "c2",
+     "text": "제외",
+     "labelKind": "TEXT",
+     "direction": "NE"
+    },
+    {
+     "id": "k4",
+     "point": "c4",
+     "text": "제외",
+     "labelKind": "TEXT",
+     "direction": "NE"
+    },
+    {
+     "id": "k8",
+     "point": "c8",
+     "text": "제외",
+     "labelKind": "TEXT",
+     "direction": "N"
+    },
+    {
+     "id": "ko",
+     "point": "O",
+     "text": "O",
+     "labelKind": "MATH",
+     "direction": "NW"
+    },
+    {
+     "id": "kr",
+     "point": "O",
+     "text": "열별 개수",
+     "labelKind": "TEXT",
+     "direction": "SW"
+    }
+   ],
+   "latticePoints": {
+    "region": "BELOW_CURVE",
+    "xRange": [
+     1,
+     7
+    ],
+    "yMin": 1,
+    "strict": true,
+    "counts": true,
+    "color": "BLUE"
+   }
+  }
+ },
+ "caption": "반비례 y=a/x의 그래프 아래쪽(그래프 위의 점은 제외)에서 자연수 좌표 점을 열마다 센 그림이다."
+}
