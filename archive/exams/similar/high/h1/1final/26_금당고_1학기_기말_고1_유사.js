@@ -1018,6 +1018,8 @@ window.questionBank = [
     "score": 7,
     "points": 7,
     "difficultyBucket": 4,
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_COMBINATION_SELECTION",
     "crossConceptKeys": [],
     "conditionKeys": [
       "EXT-COND-CAPACITY-LIMIT-COMPANION-REQUIRED"

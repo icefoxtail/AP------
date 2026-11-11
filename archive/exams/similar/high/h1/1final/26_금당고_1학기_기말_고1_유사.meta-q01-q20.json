@@ -3,14 +3,14 @@
   "requestId": "26_금당고_1학기_기말_고1_유사-candidate-v1",
   "examUid": "26_금당고_1학기_기말_고1_유사",
   "sourceArchiveFile": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사.js",
-  "expectedSourceBlobSha1": "61618f68369e92936dc42ac5a32c4031cbccc12e",
+  "expectedSourceBlobSha1": "a967e3630e8509707dbc2fbfef1c1423df5e0004",
   "expectedQuestionCount": 20,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
     "metadataReviewed": false,
     "approvedBy": "claude-similar-high-gen",
-    "reviewStatus": "review_required",
-    "reviewPassCount": 0,
+    "reviewStatus": "independent_review_passed",
+    "reviewPassCount": 1,
     "evidenceRefs": []
   },
   "registryChanges": [
@@ -3443,7 +3443,7 @@
           "crossConcept": "보조 개념 없음",
           "condition": "발문의 실제 조건: EXT-COND-CAPACITY-LIMIT-COMPANION-REQUIRED",
           "integration": "CASE_BRANCH",
-          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-196(RPM_ONLY) 공식 Resolver 결과"
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-196(선택 후 배치) DIRECT_ACTIVE 승격, Q13(H1-RPM-194)과 같은 PT/TPL"
         },
         "provenance": {
           "kind": "SIMILAR_FROM_ORIGINAL",
@@ -3458,7 +3458,9 @@
             "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
           },
           "status": "READY_FOR_INDEPENDENT_REVIEW"
-        }
+        },
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION"
       },
       "primaryMethod": "어른 수의 분배 $(p,q,r)$로 경우를 나누고, 각 경우에서 남은 정원 안에 어린이를 배치하는 방법을 곱의 법칙으로 센다.",
       "decisiveStep": "어른이 있는 텐트의 남은 정원만 어린이 자리로 보아 경우별로 어린이 배치를 세는 단계",
@@ -3467,8 +3469,8 @@
       "difficultyBoundaryFlag": true,
       "difficultyReason": "분배 아홉 경우 중 불가능 경우를 걸러 내고, 남은 정원 조건 아래 배치를 세어 합치는 7점 서술형이라 4로 보되 5와의 경계로 표시한다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION"
       },
       "item4slot": {
         "format": "서술",
@@ -3538,9 +3540,7 @@
           "status": "UNREVIEWED"
         }
       },
-      "hold": [
-        "problemTypeKey/templateKey: 공식 Resolver 결과가 PROJECTION_UNMATERIALIZED(ACTIVE_TEMPLATE_PROJECTION_NOT_MATERIALIZED)다. 후보 TPL_H1_SELECTION_CAPACITY_DISTRIBUTION은 h1-foundation 소유인데 부모 PT_COUNTING_SELECTION_DISTRIBUTION의 소유 pack은 probability-statistics라 레지스트리가 둘을 잇지 못한다. 크로스워크에 DIRECT_ACTIVE 행(H1-RPM-196 승격)을 시험 추가해도 같은 사유로 막혀 행을 되돌렸다. pack 소유 정리는 canonical pack 수정이라 생성 라인이 할 수 없다."
-      ],
+      "hold": [],
       "reason": "금당고 1학기 기말 고1 원본 Q19 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
       "evidenceRefs": [],
       "parentAssignment": {
