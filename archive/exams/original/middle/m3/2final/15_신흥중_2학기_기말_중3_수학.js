@@ -135,8 +135,8 @@ window.examData = {
         "$51\\,\\mathrm{cm}^2$",
         "$100\\sqrt{2}\\,\\mathrm{cm}^2$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "마름모는 네 변의 길이가 같으므로 $AB=AD=10\\text{ cm}$이다. $\\angle A=135^\\circ$이므로 $\\angle B=180^\\circ-135^\\circ=45^\\circ$이다. 마름모는 평행사변형이므로 이웃한 두 변의 길이와 그 끼인각을 이용하여 넓이를 구하면 $10\\times10\\times\\sin45^\\circ=100\\times\\dfrac{\\sqrt2}{2}=50\\sqrt2\\text{ cm}^2$이다. 따라서 ③이다."
     },
     {
       "id": 9,
@@ -149,8 +149,8 @@ window.examData = {
         "$\\left(\\dfrac{32}{3}\\pi - 15\\sqrt{3}\\right)\\,\\mathrm{cm}^2$",
         "$\\left(\\dfrac{32}{3}\\pi - 16\\sqrt{3}\\right)\\,\\mathrm{cm}^2$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "색칠한 부분은 현 $BC$와 호 $BC$로 둘러싸인 활꼴이다. 원주각 $\\angle CAB=30^\\circ$이므로 중심각 $\\angle BOC=2\\times30^\\circ=60^\\circ$이다. 반지름의 길이는 $8\\text{ cm}$이다.<br>부채꼴 $OBC$의 넓이는 $\\pi\\times8^2\\times\\dfrac{60}{360}=\\dfrac{32}{3}\\pi\\text{ cm}^2$이다. $\\triangle OBC$는 $OB=OC=8\\text{ cm}$이고 $\\angle BOC=60^\\circ$이므로 넓이는 $\\dfrac12\\times8\\times8\\times\\sin60^\\circ=16\\sqrt3\\text{ cm}^2$이다.<br>따라서 색칠한 부분의 넓이는 $\\left(\\dfrac{32}{3}\\pi-16\\sqrt3\\right)\\text{ cm}^2$이므로 ⑤이다."
     },
     {
       "id": 10,
@@ -163,8 +163,8 @@ window.examData = {
         "$9\\sqrt{3}\\,\\mathrm{m}$",
         "$8\\sqrt{3}\\,\\mathrm{m}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "그림에서 지면 위 그림자의 길이는 $5\\text{ m}$이고, 경사면 위 그림자의 길이는 $3\\sqrt3\\text{ m}$이며 경사면은 지면과 $30^\\circ$를 이룬다.<br>경사면 위 그림자의 수평 길이는 $3\\sqrt3\\cos30^\\circ=3\\sqrt3\\times\\dfrac{\\sqrt3}{2}=\\dfrac92\\text{ m}$이고 높이는 $3\\sqrt3\\sin30^\\circ=\\dfrac{3\\sqrt3}{2}\\text{ m}$이다. 따라서 그림자 끝은 광고판에서 수평으로 $5+\\dfrac92=\\dfrac{19}{2}\\text{ m}$ 떨어져 있고 지면에서 $\\dfrac{3\\sqrt3}{2}\\text{ m}$ 높이에 있다.<br>태양 광선이 지면과 $60^\\circ$를 이루므로 광고판 꼭대기에서 그림자 끝까지 내려온 높이는 $\\dfrac{19}{2}\\tan60^\\circ=\\dfrac{19\\sqrt3}{2}\\text{ m}$이다. 광고판의 높이는 $\\dfrac{3\\sqrt3}{2}+\\dfrac{19\\sqrt3}{2}=11\\sqrt3\\text{ m}$이므로 ②이다."
     },
     {
       "id": 11,
@@ -259,8 +259,8 @@ window.examData = {
         "$50^\\circ$",
         "$55^\\circ$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "세 점 $P,A,B$는 한 직선 위에 있으므로 $\\angle BAT$는 $\\triangle PAT$의 한 외각이다. 따라서 $\\angle BAT=\\angle APT+\\angle ATP$에서 $80^\\circ=35^\\circ+\\angle ATP$이므로 $\\angle ATP=45^\\circ$이다.<br>$PT$가 원의 접선이므로 접선과 현이 이루는 각의 성질에 의하여 $\\angle ABT=\\angle ATP=45^\\circ$이다.<br>$\\triangle ABT$에서 $\\angle x=180^\\circ-\\angle BAT-\\angle ABT=180^\\circ-80^\\circ-45^\\circ=55^\\circ$이므로 ⑤이다."
     },
     {
       "id": 17,
@@ -291,8 +291,8 @@ window.examData = {
         "$30^\\circ$",
         "$35^\\circ$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "$\\angle AED=180^\\circ-\\angle AEB=180^\\circ-60^\\circ=120^\\circ$이다. $\\triangle AED$에서 $\\angle DAE=180^\\circ-\\angle ADE-\\angle AED=180^\\circ-40^\\circ-120^\\circ=20^\\circ$이다.<br>$\\angle DAC$와 $\\angle DBC$는 모두 호 $DC$에 대한 원주각이므로 $\\angle DBC=\\angle DAC=20^\\circ$이다. 따라서 ②이다."
     },
     {
       "id": 19,
@@ -305,8 +305,8 @@ window.examData = {
         "$7$",
         "$8$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "원 $P$는 반원 $O$의 지름 위의 점 $O$에서 접하고 호에도 접하므로 원 $P$의 지름은 반원의 반지름 $24$와 같다. 따라서 원 $P$의 반지름은 $12$이다.<br>원 $Q$의 반지름을 $r$, 원 $Q$의 중심에서 $OP$에 내린 수선의 발을 $M$, $QM=x$라 하자. $OM=r$이므로 $PM=12-r$이다.<br>원 $P$와 원 $Q$는 외접하므로 $PQ=12+r$이고, 직각삼각형 $PMQ$에서 $(12-r)^2+x^2=(12+r)^2$이므로 $x^2=48r$이다.<br>원 $Q$는 반원 $O$에 내접하므로 $OQ=24-r$이고, 직각삼각형 $OMQ$에서 $r^2+x^2=(24-r)^2$이므로 $x^2=576-48r$이다.<br>$48r=576-48r$에서 $r=6$이다. 따라서 ③이다."
     },
     {
       "id": 20,
