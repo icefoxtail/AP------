@@ -10,12 +10,19 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-space.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="common-poly-solid/lesson-core.js"></script>
+<script defer src="common-poly-solid/lesson-a.js"></script>
+<script defer src="common-poly-solid/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -35,7 +42,11 @@ window.addEventListener('DOMContentLoaded', function () {
   const R2D = 180 / Math.PI;
   const rint = (n) => Math.floor(Math.random() * n);
   const pickOf = (arr, not) => { let x; do x = arr[rint(arr.length)]; while (arr.length > 1 && x === not); return x; };
-  const varier = (gen) => { let cur = gen(null); return { cur: () => cur, next: () => (cur = gen(cur)) }; };
+  const lpsActive = s => !!(s && (s.lessonOn || s.lessonEntry));
+  const varier = (gen) => {
+    let cur = gen(null); const first = cur;
+    return { cur: () => lpsActive(window.lab && window.lab.s) ? first : cur, first: () => first, next: () => (cur = gen(cur)) };
+  };
   const num = (v, d = 2) => (Math.abs(v - Math.round(v)) < 1e-9 ? String(Math.round(v)) : v.toFixed(d).replace(/0+$/, '').replace(/\.$/, ''));
   const fmtN = (v) => num(v).replace('-', '−');
   const FITO = { margin: 0.04, px: 6 };
@@ -228,7 +239,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const a = (total + diff) / 2, bb = (total - diff) / 2;
           if (sum) {
             const cols = st === 0 ? { aa: 'muted', ab: 'muted', bb: 'muted' } : st === 1 ? { aa: 'amber', ab: 'amber', bb: 'amber' } : st === 2 ? { aa: 'muted', ab: 'green', bb: 'muted' } : { aa: 'sky', ab: 'green', bb: 'rose' };
-            drawSquare(b, { mode: 'plus', a, b: bb, gap: 0, vals: false, cols, labels: { aa: 'a²', ab1: `ab=${vv.p}`, ab2: `ab=${vv.p}`, bb: 'b²' }, dimTxt: { a: 'a', b: 'b', s: `a+b = ${vv.s}` } });
+            drawSquare(b, { mode: 'plus', a, b: bb, gap: lpsActive(s0) ? s0.gap1 : 0, vals: false, cols, labels: { aa: 'a²', ab1: `ab=${vv.p}`, ab2: `ab=${vv.p}`, bb: 'b²' }, dimTxt: { a: 'a', b: 'b', s: `a+b = ${vv.s}` } });
           } else {
             const cols = st === 0 ? { m: 'muted', ab: 'muted', bb: 'muted' } : st === 1 ? { m: 'green', ab: 'muted', bb: 'muted' } : st === 2 ? { m: 'green', ab: 'amber', bb: 'muted' } : { m: 'green', ab: 'amber', bb: 'rose' };
             drawSquare(b, { mode: 'minus', a, b: bb, gap: 0, vals: false, cols, strips: st >= 2, labels: { m: '(a−b)²', ab: '', bb: 'b²' }, dimTxt: { a: 'a', b: 'b', d: `a−b = ${vv.d}` } });
@@ -359,14 +370,14 @@ window.addEventListener('DOMContentLoaded', function () {
         LAB = lab;
         const s = pState(lab, s0);
         SP = APLab.space(b, camOf(s));
-        if (lab.tab === 'explore') drawCube3(s, { a: s0.a2, b: s0.b2, gap: s0.gap2, lens: s0.lens2 });
+        if (lab.tab === 'explore') drawCube3(s, { a: s0.a2, b: s0.b2, gap: s0.gap2, lens: s0.lens2, hot: lpsActive(s0) && s0.lens2 === 'middle' ? { a2b: true, ab2: true } : undefined });
         else {
           const vv = var2.cur(), st = lab.tab === 'problem' ? 0 : s0.step;
           const cols = vv.kind === 'sum3'
             ? (st === 0 ? { a3: 'muted', a2b: 'muted', ab2: 'muted', b3: 'muted' } : st === 1 ? { a3: 'amber', a2b: 'amber', ab2: 'amber', b3: 'amber' } : st === 2 ? { a3: 'muted', a2b: 'green', ab2: 'amber', b3: 'muted' } : { a3: 'sky', a2b: 'green', ab2: 'amber', b3: 'rose' })
             : (st === 0 ? { a3: 'muted', a2b: 'muted', ab2: 'muted', b3: 'muted' } : { a3: 'muted', a2b: 'green', ab2: 'amber', b3: 'muted' });
           const d = Math.sqrt(vv.s * vv.s - 4 * vv.p);
-          drawCube3(s, { a: (vv.s + d) / 2, b: (vv.s - d) / 2, gap: 0.55, cols, lens: 'all' });
+          drawCube3(s, { a: (vv.s + d) / 2, b: (vv.s - d) / 2, gap: lpsActive(s0) ? s0.gap2 : 0.55, cols, lens: 'all' });
         }
       }
     });
@@ -464,7 +475,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (lab.tab === 'explore') drawCuboid3({ a: s0.a3, b: s0.b3, c: s0.c3, groups: s0.lens3 === 'edges', faces: s0.lens3 === 'faces', diag: s0.lens3 === 'diag', helper: true, diagLabel: 'AG', faceLabels: s0.lens3 === 'faces', edgeLabels: s0.lens3 === 'all' || s0.lens3 === 'edges' ? { a: `a=${num(s0.a3)}`, b: `b=${num(s0.b3)}`, c: `c=${num(s0.c3)}` } : null });
         else {
           const vv = var3.cur(), st = lab.tab === 'problem' ? 0 : s0.step;
-          drawCuboid3({ a: vv.a, b: vv.b, c: vv.c, groups: st === 1, faces: st >= 3, faceLabels: true, diag: true, helper: st >= 2, diagLabel: `AG=√${vv.q}`, edgeLabels: st >= 1 ? { a: 'a', b: 'b', c: 'c' } : null });
+          drawCuboid3({ a: vv.a, b: vv.b, c: vv.c, groups: st === 1, faces: st >= 3 || (lpsActive(s0) && s0.lpsShowFaces), faceLabels: true, diag: true, helper: st >= 2, diagLabel: `AG=√${vv.q}`, edgeLabels: st >= 1 ? { a: 'a', b: 'b', c: 'c' } : null });
         }
       }
     });
@@ -566,11 +577,11 @@ window.addEventListener('DOMContentLoaded', function () {
         LAB = lab;
         const s = pState(lab, s0);
         SP = APLab.space(b, camOf(s));
-        if (lab.tab === 'explore') drawCut4({ a: s0.a4, b: s0.b4, c: s0.c4, cut: s0.cut4, fillCut: true });
+        if (lab.tab === 'explore') drawCut4({ a: s0.a4, b: s0.b4, c: s0.c4, cut: s0.cut4, fillCut: true, fillRight: lpsActive(s0) && s0.lpsCutMode === 'surface', cancelShared: lpsActive(s0) && ['edges', 'surface'].includes(s0.lpsCutMode), legCol: lpsActive(s0) && s0.lpsCutMode === 'edges' ? 'amber' : undefined, hypCol: lpsActive(s0) && s0.lpsCutMode === 'diagonals' ? 'green' : undefined });
         else {
           const st = lab.tab === 'problem' ? 0 : s0.step;
           const vv = var4.cur();
-          drawCut4({ a: vv.a, b: vv.b, c: vv.c, cut: lab.tab === 'problem' ? 0.5 : 0.7, fillCut: true, fillRight: st === 2, legCol: st === 1 ? 'amber' : 'ink', hypCol: st >= 3 ? 'green' : st >= 1 ? 'muted' : 'rose', cancelShared: st === 1 || st === 2 });
+          drawCut4({ a: vv.a, b: vv.b, c: vv.c, cut: lpsActive(s0) ? s0.cut4 : lab.tab === 'problem' ? 0.5 : 0.7, fillCut: true, fillRight: st === 2, legCol: st === 1 ? 'amber' : 'ink', hypCol: st >= 3 ? 'green' : st >= 1 ? 'muted' : 'rose', cancelShared: st === 1 || st === 2 });
         }
       }
     });
@@ -668,15 +679,60 @@ window.addEventListener('DOMContentLoaded', function () {
         LAB = lab;
         const s = pState(lab, s0);
         SP = APLab.space(b, camOf(s));
-        if (lab.tab === 'explore') drawPrism5({ L: s0.L5, a: s0.a5, ap: Math.min(s0.ap5, s0.L5 - 1), cut: s0.cut5, fill: true, tags: ['V₁', 'V₂'] });
+        if (lab.tab === 'explore') drawPrism5({ L: s0.L5, a: s0.a5, ap: Math.min(s0.ap5, s0.L5 - 1), cut: s0.cut5, fill: true, tags: ['V₁', 'V₂'], showDifference: lpsActive(s0) && s0.lpsDifference });
         else {
           const vv = var5.cur(), st = lab.tab === 'problem' ? 0 : s0.step;
-          drawPrism5({ L: (vv.a + 1) * vv.ap, a: vv.a, ap: vv.ap, showDifference: st >= 1, cut: st >= 1 ? 0.8 : 0, fill: st >= 1, tags: st >= 1 ? ['V₁', 'V₂'] : null, under: st === 2 ? ['V₁ − V₂ = a² · AP', 'amber'] : st >= 3 ? [`AP = ${vv.m === 1 ? '' : vv.m}a + ${vv.n} = ${vv.ans.val}`, 'amber'] : null });
+          drawPrism5({ L: (vv.a + 1) * vv.ap, a: vv.a, ap: vv.ap, showDifference: st >= 1, cut: lpsActive(s0) ? s0.cut5 : st >= 1 ? 0.8 : 0, fill: st >= 1, tags: st >= 1 ? ['V₁', 'V₂'] : null, under: st === 2 ? ['V₁ − V₂ = a² · AP', 'amber'] : st >= 3 && (!lpsActive(s0) || s0.lpsShowAnswer) ? [`AP = ${vv.m === 1 ? '' : vv.m}a + ${vv.n} = ${vv.ans.val}`, 'amber'] : null });
         }
       }
     });
   }
 
+  const scenes = [scene1(), scene2(), scene3(), scene4(), scene5()];
+  const texts = { sq: text1, cube: text2, box: text3, cut: text4, prism: text5 };
+  const packets = Object.fromEntries(scenes.map(sc => {
+    const initial = {}; sc.enter(initial);
+    return [sc.id, { initial, first: sc.vary.first(), question: texts[sc.id](sc.vary.first()), inquiry: sc.question, steps: sc.steps() }];
+  }));
+  const source = window.APL_PS_SOURCE = {
+    scenes,
+    initial: id => ({ ...packets[id].initial }), first: id => packets[id].first,
+    question: id => packets[id].question, inquiry: id => packets[id].inquiry,
+    steps: id => packets[id].steps.slice()
+  };
+  for (const sc of scenes) {
+    const original = { question: sc.question, reviewTop: sc.reviewTop, steps: sc.steps, view: sc.view, draw: sc.draw, tick: sc.tick };
+    sc.question = (s, lab) => lpsActive(s) ? s.lpsQuestion || source.question(sc.id) : typeof original.question === 'function' ? original.question(s, lab) : original.question;
+    sc.reviewTop = (s, lab) => lpsActive(s) ? '' : original.reviewTop(s, lab);
+    sc.steps = (s, lab) => lpsActive(s) ? ['조건과 도형을 확인해요.', '조각의 관계를 식으로 연결해요.', '계산한 값을 확인해요.'] : original.steps(s, lab);
+    sc.view = (s, lab) => lpsActive(s) ? {} : original.view(s, lab);
+    if (original.tick) sc.tick = (s, dt, lab) => lpsActive(s) ? false : original.tick(s, dt, lab);
+    sc.draw = (b, s, v, lab) => {
+      if (!lpsActive(s)) return original.draw(b, s, v, lab);
+      const state = { ...s, playing: false, lpsShowAnswer: !s.lessonEntry && !!s.lpsShowAnswer, step: s.lessonEntry ? 0 : Math.min(s.step || 0, s.lpsShowAnswer ? 3 : 2) };
+      const shownLab = Object.create(lab); shownLab.tab = s.lpsExplore ? 'explore' : 'review'; shownLab.s = state;
+      if (sc.id !== 'sq') return original.draw(b, state, {}, shownLab);
+      // Follow a real rectangle edge, including the stationary difference model.
+      let edge = null;
+      const path = b.path;
+      b.path = function (points, options = {}) {
+        if (!edge && options.width >= 2 && (!options.dash || !options.dash.length) && points.length >= 2) {
+          const a = points[0], z = points[1];
+          const A = { x: a.x ?? a[0], y: a.y ?? a[1] }, Z = { x: z.x ?? z[0], y: z.y ?? z[1] };
+          if (Math.hypot(Z.x - A.x, Z.y - A.y) > 1e-8) edge = [A, Z];
+        }
+        return path.call(this, points, options);
+      };
+      try { original.draw(b, state, {}, shownLab); } finally { b.path = path; }
+      const u = clamp(Number(s.lpsTrace) || 0, 0, 1);
+      if (!s.lessonEntry && edge && u > 0) {
+        const [a, z] = edge, p = { x: a.x + (z.x - a.x) * u, y: a.y + (z.y - a.y) * u };
+        b.seg(a, p, { color: 'violet', width: 4, alpha: 0.85 });
+        b.point(p, { color: 'violet', r: 4.5, glow: false });
+      }
+    };
+  }
+  const lessons = window.APL_PS_LESSONS.install(scenes, source);
   APLab.createLab({
     stagedReveal: true,
     id: 'common-poly-solid',
@@ -708,7 +764,8 @@ window.addEventListener('DOMContentLoaded', function () {
       ap5: { value: 2, min: 1, max: 14, step: 0.5, color: 'rose', label: 'AP의 길이', hint: '점 P(단면의 위치)를 옮깁니다', format: (v) => `AP = ${num(v)}` },
       cut5: { value: 0.6, min: 0, max: 1, step: 0.01, color: 'amber', label: '삼각기둥 잘라 내기', hint: '막대를 밀면 삼각기둥 V₂가 떨어져 나옵니다', format: (v) => `${Math.round(v * 100)} %` }
     },
-    scenes: [scene1(), scene2(), scene3(), scene4(), scene5()]
+    scenes,
+    lessons
   });
   document.querySelectorAll('.apl-icon-btn[aria-label^="격자"]').forEach((e) => { e.hidden = true; });
 });

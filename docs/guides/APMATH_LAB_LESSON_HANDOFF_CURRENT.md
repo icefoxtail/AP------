@@ -59,7 +59,7 @@
 | `g9-circle` 원의 성질 | 45 | 45 / 215 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1780](https://github.com/icefoxtail/AP------/pull/1780), merge `41a2cc430ee7f2c297d771587dee61e065b72df4`. 현·접선 14/71, 내접원·원주각 14/67, 내접사각형·접현각·넓이 17/77. 개념 69, 원문 예제 146, 누락 0. 최소 검사 126/126·구문 22파일 및 HTML 인라인 2개 통과. 실제 학생 파일은 미반영 (§6) |
 | `calc1-tangent` 접선과 미분계수 | 7 | 7 / 26 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1782](https://github.com/icefoxtail/AP------/pull/1782), merge `1e5c92ffd6beabd3225053f6ad35f8f25898522e`. 개념 17·첫 원문 소문항 9. 최소 검사 47/47·726 Board cue frames. 실제 운영 파일 0/2 일치 (§7) |
 | `alg-sine-cosine-law` 사인·코사인법칙 | 18 | 18 / 45 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1784](https://github.com/icefoxtail/AP------/pull/1784), merge `f30aaecf76d61a0a2a5c5a6d827c9d488af7dda5`. 개념 18·첫 원문 소문항 27. 최소 검사 47/47·1,188 Board/raw canvas cue frames. 실제 운영 파일 0/4 일치 (§7) |
-| `common-rational` 유리함수 | 4 | 4 / 19 | **IMPLEMENTED / QA_PENDING** · 개념 15·첫 원문 4. 최소 검사 47/47·546 Board/raw canvas cue frames. 고정 초기 격자점 41개와 해설 전용 화면 범위 복구 확인. PR/main/Pages 확인 예정 (§7) |
+| `common-rational` 유리함수 | 4 | 4 / 19 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1786](https://github.com/icefoxtail/AP------/pull/1786), merge `b07a26bba6afde5dd00996dacb036ef6228668eb`. 개념 15·첫 원문 4. 최소 검사 47/47·546 Board/raw canvas cue frames. 실제 운영 파일 0/4 일치 (§7) |
 | 고등 잔여 35개 | — | — | 세 시범 다음 과목 순서로 진행. 다음 `common-poly-solid` 5장면 (§7) |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
@@ -250,6 +250,10 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-11 · 유리함수 [PR #1786](https://github.com/icefoxtail/AP------/pull/1786) **main 병합 완료**. 최종 head `29f48a56d3ca84a40850498a92ed5c5763ccdea0`, merge/API·Git main `b07a26bba6afde5dd00996dacb036ef6228668eb`; ancestor 및 대상 7파일 차이 0 확인. 고등 누계 **3개 실험실·29장면/90해설**, 중등 포함 **19개·558장면/1,622해설**이다. 최소 검사 47/47·546 cue frames이며 병합 직전 CI 5개는 queued였다. 운영 HTML은 이전 파일, 신규 lesson-core/a/b는 404로 0/4 일치하여 **PAGES_NOT_VERIFIED / QA_PENDING**. 공개 배포 source는 `fb27d05ee921da9534d9fff332ac774d732b91cf`, writer 43018929846은 pending이다. [AWCR r36](https://drive.google.com/file/d/11HzkVbqkCexmDL7uFyb2Ci0HWVw5m7ok/view) raw SHA-256 `3b76f1f65651a61cd37fcb7d6748668ad12eb123cee797f8da40f7d588f62e48`·16,186 bytes를 다시 읽어 검증했다. 검사 manifest의 17파일을 최종 원격 tree와 대조해 동일함을 확인했다. 다음 `common-poly-solid`는 이 main에서 별도 브랜치를 시작했다. 기존 해설 브랜치/PR은 없고 열린 PR 45개의 2,729개 변경 경로에도 대상 충돌이 없었다.
+
+- 2026-11-11 · `common-poly-solid` 5장면은 기존 정사각형 조각·정육면체 조각·직육면체·절단 입체·삼각기둥 렌더러와 원문의 첫 문제를 보존하면서 제작 중이다. 개념 12개·첫 원문 5개, 총 17해설을 목표로 한다. 합·차의 제곱, 입체 부피/모서리/겉넓이/대각선은 별도 버튼으로 구별하며 완료 묶음부터 `feat/lessons-common-poly-solid`에 보존한다. 실제 3D 렌더러 검사는 후속 통합 검사에 결속하고 전체 브라우저/모바일/독립 시각 검수는 **NOT_RUN**이다.
 
 1. **진입 화면에 정답이 보인다.** 탐구 탭 그림이 결론을 처음부터 그리는 장면이 많다. `s.lessonEntry`일 때 답 없는 상태를 그린다(견본: `g7-circle-sector/basic.js`, `periScene`).
 2. **다시 보기에서 정답이 먼저 보인다.** 결과 표시를 켜는 상태값이 앞선 재생에서 남는다. 시작값 규칙이 막지만 직접 확인한다.
