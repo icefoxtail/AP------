@@ -77,4 +77,59 @@
     ], { problem: !concept, start: { trV: v } });
   }
   lessons['t4-6'] = [equalFeet(0, true), equalFeet(0), equalFeet(1), equalFeet(2)];
+  function circumcenterConcept(which) {
+    const center = which === 'center';
+    return make('외심과 수직이등분선', center ? '외심 위치' : '세 반지름', center ? '세 수직이등분선은 외심 O에서 만나요' : 'OA=OB=OC=R', [
+      ch('점과 선의 뜻', [{ at: 0, say: center ? 'D, E, F는 삼각형의 세 변에 있는 중점이에요.' : 'O는 외심이고, R은 외접원의 반지름을 뜻해요.' }, { at: 6, say: '수직이등분선 위의 점은 양 끝점에서 같은 거리에 있어요.', step: 1 }]),
+      ch('양 끝점까지의 거리 연결', [{ at: 0, say: 'AB의 수직이등분선 위에 있으므로 OA=OB예요.', step: 3 }, { at: 6, say: 'BC의 수직이등분선 위에 있으므로 OB=OC예요.' }]),
+      ch(center ? '세 번째 수직이등분선' : '같은 거리의 세 꼭짓점', [{ at: 0, say: center ? 'OA=OC도 되어 O는 AC의 수직이등분선 위에 있어요.' : '앞의 두 등식을 연결하면 세 꼭짓점까지 거리가 같아요.' }, { at: 6, say: center ? '세 수직이등분선이 만나는 한 점 O가 외심이에요.' : '따라서 OA=OB=OC=R, 모두 같은 원의 반지름이에요.', step: center ? 3 : 4, set: { trShowAnswer: true } }])
+    ], { problem: false, concept: which });
+  }
+  function circumcenterProblem(v) {
+    if (v === 2) return make('외심의 성질에서 옳지 않은 보기', '성질 판별', '② ∠AOB=∠BOC가 옳지 않아요', [
+      ch('보기와 판단 기준', [{ at: 0, say: 'O는 외심이고 D, E, F는 세 변의 중점이에요.' }, { at: 6, say: '옳지 않은 보기를 찾되, 참인 이유와 반례를 구별해요.', step: 1 }]),
+      ch('수직과 직각 보기', [{ at: 0, say: '① OD는 BC의 수직이등분선이므로 OD⊥BC예요.', step: 3 }, { at: 6, say: '③ 따라서 ∠ODB=90°도 참이에요.', step: 5 }]),
+      ch('중점과 같은 밑각 보기', [{ at: 0, say: '④ D가 중점이므로 BD=CD는 참이에요.', step: 6 }, { at: 6, say: '⑤ OA=OB인 이등변삼각형이므로 두 밑각도 같아요.', step: 7 }]),
+      ch('항상 같지 않은 각의 반례', [{ at: 0, say: '반례로 이 그림의 ∠A=60°, ∠C=55°를 보아요.' }, { at: 4, say: '∠AOB=110°, ∠BOC=120°로 서로 달라요.', step: 4, set: { trShowAnswer: true, trCalculationReady: true } }, { at: 8, say: '따라서 옳지 않은 것은 ② ∠AOB=∠BOC예요.', step: 8 }])
+    ], { start: { trV: 2 } });
+    const angle = v === 1;
+    return make('외심의 반지름과 이등변삼각형', angle ? '밑각 구하기' : '반지름 길이', angle ? '∠OAB=35°' : 'OB=6 cm', [
+      ch('조건과 구할 대상', [{ at: 0, say: angle ? 'O는 외심이고 ∠AOB=110°, ∠OAB=x예요.' : 'O는 외심이고 OA=6 cm, OB=x예요.' }, { at: 6, say: 'O에서 A, B까지의 선분은 같은 원의 반지름이에요.', step: 1 }]),
+      ch('같은 반지름으로 관계 만들기', [{ at: 0, say: '수직이등분선의 성질에서 OA=OB를 얻어요.', step: angle ? 3 : 3 }, { at: 6, say: angle ? '△OAB의 같은 밑각을 x로 두면 2x+110°=180°예요.' : '구할 OB와 알려진 OA가 대응하는 같은 길이예요.', step: angle ? 4 : 3 }]),
+      ch('구할 길이나 각 계산', [{ at: 0, say: angle ? '두 밑각의 합은 180°−110°=70°예요.' : '같은 반지름이므로 OB=OA=6 cm예요.', step: angle ? 4 : 4, set: angle ? { trCalculationReady: true } : { trCalculationReady: true, trShowAnswer: true } }, { at: 6, say: angle ? '같은 두 밑각으로 나누면 ∠OAB=70°÷2=35°예요.' : 'OA, OB, OC는 모두 같은 반지름 6 cm예요.', step: 6, set: { trShowAnswer: true } }])
+    ], { start: { trV: v } });
+  }
+  lessons['t5-1'] = [circumcenterConcept('center'), circumcenterConcept('radii'), circumcenterProblem(0), circumcenterProblem(1), circumcenterProblem(2)];
+  function rightCenterConcept() {
+    return make('직각삼각형의 외심 위치', '외심 위치', '직각삼각형의 외심은 빗변 AB의 중점이에요', [
+      ch('직각과 빗변 찾기', [{ at: 0, say: '∠C=90°이고 그 맞은편 AB가 빗변이에요.' }, { at: 6, say: '세 꼭짓점을 지나는 원과 빗변의 관계를 보아요.', step: 1 }]),
+      ch('직각을 보는 지름', [{ at: 0, say: 'C에서 직각으로 보이는 빗변 AB는 원의 지름이에요.', step: 2 }, { at: 6, say: '지름을 반으로 나눈 점에서 A, B까지의 거리가 같아요.' }]),
+      ch('세 꼭짓점까지 같은 거리', [{ at: 0, say: 'C까지도 같은 원의 반지름이 되어 OA=OB=OC예요.' }, { at: 6, say: '따라서 외심 O는 빗변 AB의 중점이에요.', step: 3, set: { trShowAnswer: true } }])
+    ], { problem: false, concept: 'right' });
+  }
+  function rightCenterProblem(v) {
+    const answers = ['OC=4 cm', '∠OCB=40°', 'AB=8 cm'];
+    return make('직각삼각형의 외심으로 계산', ['반지름 길이', '∠OCB', '빗변 길이'][v], answers[v], [
+      ch('주어진 직각과 외심', [{ at: 0, say: '∠C=90°이고 외심 O는 빗변 AB의 중점이에요.' }, { at: 6, say: ['AB=8 cm이며, 구할 길이는 OC예요.', '∠A=50°이며, 구할 각은 ∠OCB예요.', 'OC=4 cm이며, 구할 길이는 빗변 AB예요.'][v], step: 1 }]),
+      ch('반지름으로 식 세우기', [{ at: 0, say: v === 1 ? 'OB=OC이므로 △OBC의 밑각은 같아요.' : 'OA, OB, OC는 같은 원의 반지름이에요.', step: 2 }, { at: 6, say: ['OA=AB÷2이고 OC=OA이므로 8을 반으로 나눠요.', '두 예각의 합이 90°이므로 ∠B=90°−50°예요.', 'OA=OB=OC=4 cm이므로 AB는 4+4예요.'][v], step: v === 2 ? 3 : 2, set: { trCalculationReady: true } }]),
+      ch('요청한 길이나 각', [{ at: 0, say: ['OA=OB=8÷2=4 cm이고 OC도 같아요.', '∠B=40°이고 ∠OCB는 같은 밑각이에요.', '반지름 두 개를 이어 AB=4+4=8 cm예요.'][v], step: v === 0 ? 3 : v === 1 ? 3 : 4, set: { trShowAnswer: true } }, { at: 6, say: ['따라서 OC=4 cm가 정답이에요.', '따라서 ∠OCB=40°가 정답이에요.', '따라서 빗변 AB=8 cm가 정답이에요.'][v], step: 6 }])
+    ], { start: { trV: v } });
+  }
+  lessons['t5-2'] = [rightCenterConcept(), rightCenterProblem(0), rightCenterProblem(1), rightCenterProblem(2)];
+  function thirtyConcept() {
+    return make('30°의 맞은편 변과 반지름', '30° 원리', 'BC=R=AB÷2', [
+      ch('특별한 직각삼각형', [{ at: 0, say: '∠A=30°, ∠B=60°, ∠C=90°인 삼각형이에요.' }, { at: 6, say: 'O는 빗변 AB의 중점이고 R은 외접원의 반지름이에요.', step: 1 }]),
+      ch('같은 반지름의 두 변', [{ at: 0, say: '△OBC에서 OB=OC=R이므로 두 밑각은 같아요.', step: 3 }, { at: 6, say: '한 밑각 ∠B가 60°라서 다른 두 각도 60°예요.', step: 4 }]),
+      ch('정삼각형의 같은 세 변', [{ at: 0, say: '세 각이 60°인 △OBC는 정삼각형이에요.' }, { at: 6, say: '따라서 30°의 맞은편 BC=R=AB÷2예요.', step: 5, set: { trShowAnswer: true } }])
+    ], { problem: false, concept: 'thirty' });
+  }
+  function thirtyProblem(v) {
+    return make('30° 직각삼각형의 길이와 둘레', ['BC 길이', '빗변 길이', 'OBC 둘레'][v], ['BC=5 cm', 'AB=10 cm', '△OBC의 둘레=15 cm'][v], [
+      ch('각과 알려진 길이', [{ at: 0, say: '∠A=30°, ∠B=60°, ∠C=90°이고 O는 외심이에요.' }, { at: 6, say: ['AB=10 cm에서 BC의 길이를 구해요.', 'BC=5 cm에서 빗변 AB의 길이를 구해요.', 'AB=10 cm에서 △OBC의 둘레를 구해요.'][v], step: 1 }]),
+      ch('반지름과 60°를 연결', [{ at: 0, say: 'OB=OC인 △OBC의 두 밑각은 같아요.', step: 2 }, { at: 6, say: '세 각이 모두 60°이므로 △OBC는 정삼각형이에요.', step: 4 }]),
+      ...(v === 2 ? [ch('세 변에 공통인 길이', [{ at: 0, say: 'O는 AB의 중점이므로 OB=10÷2=5 cm예요.', step: 3, set: { trCalculationReady: true } }, { at: 6, say: '정삼각형의 나머지 변 BC, OC도 5 cm예요.', step: 5 }])] : []),
+      ch('물어본 길이나 둘레', [{ at: 0, say: ['BC는 빗변의 반이므로 10÷2=5 cm예요.', 'OB=BC=5 cm이고 AB=2×OB=10 cm예요.', '같은 세 변을 더하면 5+5+5=15 cm예요.'][v], step: 5, set: { trShowAnswer: true, trCalculationReady: true } }, { at: 6, say: ['따라서 BC=5 cm가 정답이에요.', '따라서 빗변 AB=10 cm가 정답이에요.', '따라서 △OBC의 둘레는 15 cm예요.'][v], step: 7 }])
+    ], { start: { trV: v } });
+  }
+  lessons['t5-3'] = [thirtyConcept(), thirtyProblem(0), thirtyProblem(1), thirtyProblem(2)];
 })();

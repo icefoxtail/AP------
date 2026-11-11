@@ -151,4 +151,74 @@
       cue(5.5, 'x=3이에요. 두 변은 모두 9 cm로 같고 양수예요.', 6, { trShowAnswer: true, trLine: 'x=3, AB=AC=9 cm' })
     ])
   ])];
+
+  function chain(v, concept = false) {
+    const sym = concept || v === 1;
+    return make(concept ? '연쇄원리' : v ? '거꾸로' : '마지막외각', '같은 선분을 이은 연쇄와 외각', concept ? '마지막 외각 = 4x' : v ? 'x = 20°' : 'x = 80°', [
+      ch('같은 선분 네 개를 세어요', [
+        { at: 0, say: 'AB=BC=CD=DE예요. 같은 눈금의 선분 네 개를 확인해요.', set: begin(!concept), to: { trTrace: 1 }, dur: 4 },
+        cue(5.5, concept ? 'A의 각을 x라 해요. 이등변의 밑각과 외각의 성질을 번갈아 써요.' : v ? 'EDF=80°예요. A의 각을 x라 놓고 마지막까지 이어 가요.' : 'BAC=20°예요. 마지막 바깥 각 EDF를 구해요.', 2)
+      ], fixed({ trCn: 4, trCx: 20, trV: sym ? 1 : 0 })),
+      ch('첫째와 둘째 삼각형', [
+        cue(0, sym ? 'AB=BC이므로 ACB는 A와 같은 x예요.' : 'AB=BC이므로 ACB는 A와 같은 20°예요.', 3, { trLine: sym ? '∠ACB=x' : '∠ACB=20°' }),
+        cue(5.5, sym ? '외각 CBD=x+x=2x예요. BC=CD라서 CDB도 2x예요.' : '외각 CBD=20°+20°=40°예요. CDB도 40°예요.', 4, { trLine: sym ? '∠CBD=∠CDB=2x' : '∠CBD=∠CDB=40°' })
+      ]),
+      ch('셋째 삼각형으로 이어 가요', [
+        cue(0, sym ? '외각 DCE=x+2x=3x예요. CD=DE라서 CED도 3x예요.' : '외각 DCE=20°+40°=60°예요. CED도 60°예요.', 5, { trCalculationReady: true, trLine: sym ? '∠DCE=∠CED=3x' : '∠DCE=∠CED=60°' }),
+        cue(5.5, '구하는 EDF는 이 밑각과 다른 바깥 각이에요. 한 번 더 더해요.')
+      ]),
+      ch('마지막 외각으로 마무리', [
+        cue(0, sym ? 'EDF는 A와 AED의 합이므로 x+3x예요.' : 'EDF는 A와 AED의 합이므로 20°+60°예요.', 6, { trLine: sym ? '∠EDF=x+3x' : '∠EDF=20°+60°' }),
+        cue(5.5, concept ? '따라서 마지막 외각은 4x예요. 같은 선분 네 개와 연결돼요.' : v ? '4x=80°이므로 x=20°예요.' : 'x=20°+60°=80°예요. 안쪽 각으로 답하지 않아요.', 7, { trShowAnswer: true, trLine: concept ? '마지막 외각=4x' : v ? '4x=80° → x=20°' : 'x=80°' })
+      ])
+    ]);
+  }
+  lessons['t2-1'] = [chain(1, true), chain(0), chain(1)];
+
+  function sharedVertex(v) {
+    const sym = v === 2, val = k => sym ? k === 1 ? 'x' : k + 'x' : k * 32 + '°';
+    return make(['마지막외각', '안쪽밑각', '거꾸로'][v], '공유 꼭짓점의 각을 차례로', ['x = 74°', 'x = 42°', 'x = 32°'][v], [
+      ch('같은 네 변과 물은 각', [
+        { at: 0, say: 'AB=AC=CD=CE예요. 같은 변이 만나는 꼭짓점을 찾아요.', set: begin(), to: { trTrace: 1 }, dur: 4 },
+        cue(5.5, sym ? 'EDF=74°예요. B의 각을 x라 놓고 앞에서부터 나타내요.' : v ? 'B=32°예요. 구하는 각은 안쪽 CDE예요.' : 'B=32°예요. 구하는 각은 바깥쪽 EDF예요.', 2)
+      ], fixed({ trEx: 32, trV: v })),
+      ch('첫 두 이등변삼각형', [
+        cue(0, `AB=AC이므로 ACB는 B와 같은 ${val(1)}예요.`, 3, { trLine: '∠ACB=' + val(1) }),
+        cue(5.5, `CAD는 외각이라 ${val(2)}예요. CA=CD이므로 CDA도 같아요.`, 4, { trLine: '∠CAD=∠CDA=' + val(2) })
+      ]),
+      ch('공유 꼭짓점 C의 다음 각', [
+        cue(0, `DCE는 B와 CDB의 합이라 ${val(3)}예요.`, 5, { trCalculationReady: true, trLine: '∠DCE=' + val(3) }),
+        cue(5.5, sym ? 'CD=CE이므로 CDE와 CED는 (180°−3x)÷2예요.' : v ? 'CD=CE이므로 두 밑각은 남은 180°−96°를 반씩 나눠요.' : 'CD=CE이므로 CDE와 CED는 (180°−96°)÷2=42°예요.', v === 1 ? undefined : 6, { trLine: sym ? '∠CDE=(180°−3x)÷2' : v ? '∠CDE=∠CED' : '∠CDE=∠CED=42°' })
+      ]),
+      ch('물은 각을 확인하고 계산', [
+        cue(0, sym ? 'EDF=180°−2x−(180°−3x)÷2=90°−x÷2예요.' : v ? 'CDE는 두 밑각 중 하나이므로 (180°−96°)를 2로 나누어요.' : 'D에서 일직선이므로 EDF=180°−64°−42°예요.', v === 1 ? 6 : 7, { trLine: sym ? '90°−x÷2=74°' : v ? '(180°−96°)÷2' : '180°−64°−42°' }),
+        cue(5.5, sym ? 'x÷2=90°−74°=16°이므로 x=32°예요.' : v ? 'x=84°÷2=42°예요.' : 'x=74°예요. 안쪽 밑각 42°에서 멈추지 않아요.', sym ? 9 : 8, { trShowAnswer: true, trLine: 'x=' + [74, 42, 32][v] + '°' })
+      ])
+    ]);
+  }
+  lessons['t2-2'] = [sharedVertex(0), sharedVertex(1), sharedVertex(2)];
+
+  function extended(v) {
+    const last = v === 2;
+    const chapters = [
+      ch('연장선 위의 조건', [
+        { at: 0, say: 'AB=AC=CD예요. B·C·D는 한 직선 위에 있고 CD를 따라가요.', set: begin(), to: { trTrace: 1 }, dur: 4 },
+        cue(5.5, v === 1 ? 'B=58°예요. 구하는 각 CDA는 삼각형 CAD의 밑각이에요.' : last ? 'A=64°예요. 구하는 BAD는 BAC와 CAD를 합친 각이에요.' : 'A=64°예요. 구하는 CDA를 알려면 CAD의 꼭지각부터 봐요.', 2)
+      ], fixed({ trDa: 64, trDd: 6, trV: v })),
+      ch('첫 밑각과 바깥 각', [
+        cue(0, v === 1 ? 'AB=AC이므로 ACB도 58°예요.' : 'AB=AC이므로 두 밑각은 (180°−64°)÷2=58°예요.', 3, { trCalculationReady: true, trLine: '∠B=∠ACB=58°' }),
+        cue(5.5, '외각 ACD는 안쪽 ACB와 합이 180°라서 122°예요.', 4, { trLine: '∠ACD=180°−58°=122°' })
+      ]),
+      ch('두 번째 이등변삼각형', [
+        cue(0, 'CA=CD이므로 CAD와 CDA는 같아요. 180°에서 꼭지각을 빼요.', 4),
+        cue(5.5, last ? 'CAD와 CDA는 (180°−122°)÷2=29°예요.' : 'x=(180°−122°)÷2=29°예요.', last ? 5 : 6, { trShowAnswer: !last, trLine: last ? '∠CAD=∠CDA=29°' : 'x=29°' })
+      ])
+    ];
+    if (last) chapters.push(ch('A에서 두 각을 더해요', [
+      cue(0, '구하는 BAD는 처음의 BAC와 방금 구한 CAD를 더한 각이에요.', 6, { trLine: '∠BAD=∠BAC+∠CAD' }),
+      cue(5.5, 'x=64°+29°=93°예요. 작은 각 CAD만 답하지 않아요.', 7, { trShowAnswer: true, trLine: 'x=93°' })
+    ]));
+    return make(['꼭지각부터', '밑각부터', '합친각'][v], '연장선과 두 이등변삼각형', last ? 'x = 93°' : 'x = 29°', chapters);
+  }
+  lessons['t2-3'] = [extended(0), extended(1), extended(2)];
 })();

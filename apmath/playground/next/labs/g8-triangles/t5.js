@@ -82,7 +82,7 @@
         const capSz = 15, plain = cur ? String(cur.cap).replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, '$1$2') : '', two = cur && G.textW(plain, G.fs(b, capSz)) * 1.1 > Math.max(180, b.W - 28);
         const p0 = G.pt((box.x0 + box.x1) / 2, box.y1);
         if (cur) G.solveCap(b, p0, cur, { dy: spec.captionDy ? spec.captionDy(X) : 52, size: capSz });
-        const lg = spec.legend ? spec.legend(M, s, X) : '';
+        const lg = !C.lessonNoLegend && spec.legend ? spec.legend(M, s, X) : '';
         if (lg) G.T(b, p0, lg, { dy: cur ? (two ? 106 : 80) : 52, size: G.fs(b, 14), color: 'ink', alpha: 0.8 });
       };
     }
@@ -1015,6 +1015,39 @@
   // 풀이 흐름: 보기가 글인 문제는 5지선다 대신 문장 ①~⑤ 를 발문 아래에 보여 줍니다
   const o1p = o1.prob;
   o1.prob = (M, s) => (((s.trV || 0) % 3 === 2) ? SVB.listStmts(o1p(M, s)) : o1p(M, s));
+
+  const lessonQuestions = {
+    center: '세 변의 수직이등분선은 한 점에서 만날까요? 그 점은 무엇이라고 할까요?',
+    radii: '외심 O에서 세 꼭짓점 A, B, C까지의 거리는 어떤 관계일까요?',
+    right: '∠C=90°인 직각삼각형 ABC의 외심은 어디에 있을까요?',
+    thirty: '∠A=30°인 직각삼각형에서 BC와 외접원의 반지름 R은 어떤 관계일까요?',
+    sum: '예각삼각형의 외심으로 만든 세 이등변삼각형의 밑각 x, y, z의 합은 얼마일까요?',
+    central: '예각삼각형의 외심 O에서 ∠BOC와 ∠A는 어떤 관계일까요?',
+    outside: '∠A가 둔각인 삼각형의 외심 O는 삼각형 안에 있을까요, 밖에 있을까요?',
+    ratio: '중심각의 비가 a:b:c일 때 ∠ACB를 구하는 식은 무엇일까요?',
+    radiusRule: '△OBC의 둘레와 BC의 길이로 외접원의 반지름 R을 어떻게 구할까요?',
+    circleRule: '△OBC의 둘레와 BC의 길이로 외접원의 둘레를 어떻게 구할까요?'
+  };
+  [o1, o2, o3, o4, o5, o6, o7].forEach((D, i) => {
+    D.lessonQuestion = (M, s, Q) => {
+      if (s.trLessonProblem === false) return lessonQuestions[s.trBConcept] || D.question;
+      let body = Q.html || Q.stem || '';
+      const choices = (Q.choices || []).map(c => c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : c.p);
+      if (choices.length && !choices.every(text => body.includes(String(text)))) body += '<br>' + choices.map((text, j) => G.NUM[j] + ' ' + text).join('<br>');
+      return body;
+    };
+    D.lessonDraw = (b, s, M, C, SV, ST, idx) => {
+      // 기존 수동 풀이의 캡션은 보존하고, 재생 중에는 플레이어 자막만 사용해요.
+      const stages = ST.map(st => ({ ...st, cap: '' }));
+      SV.draw(b, s, M, { ...C, lessonNoLegend: s.trLessonProblem === false }, stages, idx);
+    };
+    D.lessonAfterDraw = (b, s, M, C) => {
+      const t = C.entry ? 0 : clamp(Number(s.trBT) || 0, 0, 1), g = i === 6 ? o7geom(M) : M.g;
+      const segments = i === 0 && s.trBConcept === 'center' ? [[g.D, g.O], [g.E, g.O], [g.F, g.O]]
+        : i === 1 || i === 2 ? [[g.O, g.C]] : [[g.O, g.A], [g.O, g.B], [g.O, g.C]];
+      segments.forEach(([p, q], j) => { const u = clamp(t * segments.length - j, 0, 1); if (u > 0) G.line(b, p, G.lerp(p, q, u), 'green', 4.8); });
+    };
+  });
 
   G.register(50, 't5', '⑤ 외심', '외심', PARAMS, [o1, o2, o3, o4, o5, o6, o7]);
 })();
