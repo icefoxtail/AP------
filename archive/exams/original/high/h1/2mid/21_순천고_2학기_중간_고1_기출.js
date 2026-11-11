@@ -37,7 +37,7 @@ window.questionBank = [
     "subUnit": "합성 변환",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageCaption": "원을 완전제곱식으로 바꾸면 중심은 C(1,−2), 반지름은 2이다. 파란 원은 C, 주황 원은 O를 중심으로 하며 중심을 옮겨도 반지름은 보존된다. 그림은 축척을 나타내지 않는다. 정답은 ⑤이다."
+    "solutionImageCaption": "원을 완전제곱식으로 바꾸면 중심은 C(1,−2), 반지름은 2이다. 파란 원은 C, 주황 원은 O를 중심으로 하며 중심을 옮겨도 반지름은 보존된다. 정답은 ⑤이다."
   },
   {
     "id": 2,
