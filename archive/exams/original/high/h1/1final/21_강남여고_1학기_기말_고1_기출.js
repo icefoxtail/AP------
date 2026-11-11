@@ -134,7 +134,11 @@ window.questionBank = [
     "sourceEvidence": {
       "pdfPage": 1,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 삼각형 A, B, C가 있고 점 A, 변 AC의 중점 M, 무게중심 G, 꼭짓점 C의 좌표가 표시되어 있다. AM과 MC는 같은 길이 표시가 있고, 꼭짓점 B와 중점 M을 잇는 중선이 G를 지난다. 원점 O에서 B까지의 선분이 주황색으로 그려져 있다.",
+    "solutionImageCaption": "무게중심의 좌표는 세 꼭짓점 좌표의 평균이므로 A+B+C는 G의 좌표의 세 배이다. M이 AC의 중점이므로 A+C는 M의 좌표의 두 배이고, 이로 C(3, 3)을 구한 뒤 B의 좌표를 구한다. 마지막으로 원점 O에서 B까지의 거리 OB(주황)를 구한다(B의 좌표는 쓰지 않았다). 정답은 √5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -180,9 +184,9 @@ window.questionBank = [
       "pdfPage": 1,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
     },
-    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "4번 문항의 풀이에서 사용한 수학적 관계를 표시한 해설 그림",
-    "solutionImageCaption": "양의 y절편 5",
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점 O를 중심으로 하는 반지름 √5인 원과, 이 원에 접하고 기울기가 2인 두 직선이 있다. 접점 T와 S까지의 반지름이 파란 선분으로 그려져 있고 길이 √5와 직각 표시가 있다. 두 접선이 y축과 만나는 점은 (0,c)와 (0,−c)로 표시되어 있다.",
+    "solutionImageCaption": "주어진 직선 x+2y+1=0의 기울기는 −1/2이므로 수직인 접선의 기울기는 2이고, 접선을 y=2x+c로 놓는다. 원의 중심 O에서 직선 2x−y+c=0까지의 거리가 반지름 √5와 같다는 식으로 |c|를 구하면 접선은 위아래로 두 개이다(그림은 비율이 정확하지 않다). 이 중 y절편이 양수인 접선을 고른다. 정답은 y절편 5이다.",
     "solutionImageSize": "full"
   },
   {
@@ -229,9 +233,9 @@ window.questionBank = [
       "pdfPage": 1,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
     },
-    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q05-solution.svg",
-    "solutionImageAlt": "5번 문항의 풀이에서 사용한 수학적 관계를 표시한 해설 그림",
-    "solutionImageCaption": "a+b+c=9",
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x축과 y축에 동시에 접하는 원이 제4사분면에 있다. 원의 중심 C의 좌표가 표시되어 있고, 중심에서 x축 위의 접점과 y축 위의 접점까지 그은 두 반지름이 파란 선분으로 그려져 있으며 길이 3과 직각 표시가 있다.",
+    "solutionImageCaption": "원의 둘레가 6π이므로 반지름은 3이다. 두 축에 접하므로 중심에서 각 축까지의 거리가 모두 3이고, 중심이 제4사분면에 있으므로 중심은 (3, −3)이다. 원의 방정식 (x−3)²+(y+3)²=9를 전개해 x²+y²+ax+by+c=0과 계수를 비교한다. 정답은 9이다.",
     "solutionImageSize": "full"
   },
   {
@@ -458,9 +462,9 @@ window.questionBank = [
       "pdfPage": 2,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
     },
-    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "첫째 부등식의 해 x<-1 또는 x>2와 둘째 부등식의 해 a≤x≤4의 공통 범위가 2<x≤4가 되려면 a는 -1 이상 2 이하이고, a=2일 때 최댓값이다.",
-    "solutionImageCaption": "첫째 부등식의 해 x<-1 또는 x>2와 둘째 부등식의 해 a≤x≤4의 공통 범위가 2<x≤4가 되려면 a는 -1 이상 2 이하이고, a=2일 때 최댓값이다.",
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 a=1인 예에서 둘째 이차부등식의 해 구간 a≤x≤4가 그려져 있다. 닫힌 점 두 개 사이의 굵은 선분이 해 구간이며 양 끝은 a와 4이다.",
+    "solutionImageCaption": "둘째 식은 (x−a)(x−4)≤0이므로 x는 a와 4 사이의 닫힌 구간에 있다. 그림은 a=1인 예이다. 첫째 부등식의 해와 공통 범위를 비교해 a의 범위를 구한다. 정답은 2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -506,7 +510,11 @@ window.questionBank = [
     "sourceEvidence": {
       "pdfPage": 2,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽 그림은 위로 볼록한 파란 포물선이 x축(초록) 아래에만 있는 예이다. 아래쪽 그림은 위로 볼록한 주황 포물선의 꼭짓점이 x축(초록)에 닿는 접점을 표시한 경계의 예이다.",
+    "solutionImageCaption": "이차부등식 (k+1)x²+2x+3k+1>0이 해를 가지지 않으려면 이차함수의 그래프가 x축 위로 올라가는 부분이 없어야 한다. 그러려면 이차항의 계수 k+1이 음수여서 포물선이 위로 볼록해야 하고, 위 그림처럼 x축과 만나지 않거나 아래 그림처럼 접해야 하므로 판별식 D≤0이다. 두 그림의 곡선은 k의 값을 달리한 예이다. 이 조건을 k<−1과 함께 만족하는 정수 k 중 가장 큰 값을 구한다. 정답은 −2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -597,9 +605,9 @@ window.questionBank = [
       "pdfPage": 3,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
     },
-    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "점 (2,-5)에서 거리가 √2인 두 평행한 직선과 y절편의 차",
-    "solutionImageCaption": "점 (2,-5)에서 거리가 √2인 두 평행한 직선과 y절편의 차",
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 P(2,−5)와 주어진 직선이 있다. 주어진 직선의 일부는 분홍, 이에 평행한 두 직선의 일부는 주황과 초록이다. P에서 내린 두 수선은 파란 선분으로 같은 길이 표시가 있고 직각으로 만난다. y축과 만나는 점 S와 T는 좌표 없이 표시되어 있다.",
+    "solutionImageCaption": "주어진 직선과 평행한 직선은 기울기가 −1이므로 x+y+c=0으로 놓는다. P에서 두 직선까지의 거리가 √2라는 조건으로 두 c값을 구한다. 그림에서 주어진 직선은 분홍, 두 평행선은 주황과 초록으로 구별했고 파란 선분은 같은 길이의 수선이다. S,T는 y축과 만나는 점이며 좌표를 숨겼다. 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -691,9 +699,9 @@ window.questionBank = [
       "pdfPage": 3,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
     },
-    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "15번 문항의 풀이에서 사용한 수학적 관계를 표시한 해설 그림",
-    "solutionImageCaption": "−1≤a<2",
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 C의 좌표가 표시된 원이 있고, 중심에서 x축까지의 수선이 주황 선분으로 길이 1, 중심에서 y축까지의 수선이 초록 선분으로 길이 2로 표시되어 있다. 두 선분에는 직각 표시가 있다. 원은 x축과는 두 점에서 만나고 y축과는 만나지 않는다.",
+    "solutionImageCaption": "원 (x−2)²+(y−1)²=a+2의 중심은 (2, 1), 반지름은 √(a+2)이다. 중심에서 x축까지의 거리 1(주황)은 반지름 이하여야 x축과 만나고, 중심에서 y축까지의 거리 2(초록)는 반지름보다 커야 y축과 만나지 않는다. 그림은 반지름 3/2인 원을 예로 그린 것이다. 정답은 −1≤a<2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -741,9 +749,9 @@ window.questionBank = [
       "pdfPage": 3,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
     },
-    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "16번 문항의 풀이에서 사용한 수학적 관계를 표시한 해설 그림",
-    "solutionImageCaption": "정수 x 13개",
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위쪽 그림은 아래로 볼록한 파란 포물선 g₁이 x축과 −3, 8에서 만나고 y축과 (0,−24)에서 만나는 그림이다. 아래쪽 그림은 주황 포물선 g₂에서 높이가 같은 두 점 x=−7, x=−3을 초록 점선으로 잇고 두 점 한가운데를 지나는 대칭축 x=−5를 점선으로 나타낸 그림이다.",
+    "solutionImageCaption": "갑은 일차항만 잘못 보았으므로 g₁의 상수항이 b이다. g₁의 두 근이 −3, 8이므로 b는 두 근의 곱이다. 을은 상수항만 잘못 보았으므로 g₂의 일차항 계수가 a이고, g₂에서 높이가 같은 두 점 x=−7, x=−3의 한가운데가 대칭축 x=−5이므로 a를 구한다(g₂의 상수항은 임의로 그린 예이다). 구한 a, b로 x²+ax+b<0을 풀어 정수의 개수를 센다. 정답은 13개이다.",
     "solutionImageSize": "full"
   },
   {
@@ -791,9 +799,9 @@ window.questionBank = [
       "pdfPage": 4,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
     },
-    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "17번 문항의 풀이에서 사용한 수학적 관계를 표시한 해설 그림",
-    "solutionImageCaption": "최솟값 8, x_Q=15/4",
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 A(0,−5)와 이를 x축에 대칭이동한 A₁(0,5), 중심 C(6,−3)인 원이 있다. 점 A에서 x축 위의 점 Q를 거쳐 원 위의 점 P까지 가는 경로와, A₁에서 Q를 지나는 선분이 그려져 있고, 선분 AQ와 A₁Q는 같은 길이 표시가 있다. 반지름 PC는 초록 선분으로 길이 2이다.",
+    "solutionImageCaption": "A를 x축에 대칭이동한 A₁(0,5)를 잡으면 Q가 x축 위에 있으므로 AQ=A₁Q이고, AQ+QP=A₁Q+QP는 A₁에서 P까지의 거리 이상이다. 등호는 A₁, Q, P가 한 직선 위에 놓일 때이며, A₁에서 원까지의 가장 짧은 거리는 중심 C까지의 거리에서 반지름 2를 뺀 값이다. 그 직선이 x축과 만나는 점이 Q이다. 정답은 최솟값 8, 그때의 Q의 x좌표 4분의 15이다.",
     "solutionImageSize": "full"
   },
   {
@@ -840,9 +848,9 @@ window.questionBank = [
       "pdfPage": 4,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
     },
-    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "18번 문항의 풀이에서 사용한 수학적 관계를 표시한 해설 그림",
-    "solutionImageCaption": "y=−x+3",
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반지름이 같은 두 원이 있다. 왼쪽 아래 파란 원의 중심 C₁과 오른쪽 위 주황 원의 중심 C₂의 좌표가 표시되어 있다. 두 중심을 잇는 선분의 중점 M에서 이 선분과 수직으로 만나는 직선 l이 그려져 있고, 중점에서 양쪽 중심까지의 두 길이는 같은 길이 표시가 있으며 직각 표시가 있다.",
+    "solutionImageCaption": "두 원의 반지름이 같으므로 직선 l은 두 중심 C₁, C₂를 잇는 선분의 수직이등분선이다. 중점 M의 좌표와 C₁C₂의 기울기를 구하면 l의 기울기는 그 수직인 값이고, l은 M을 지난다(그림은 비율이 정확하지 않다). 정답은 y=−x+3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -890,9 +898,9 @@ window.questionBank = [
       "pdfPage": 4,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
     },
-    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "19번 문항의 풀이에서 사용한 수학적 관계를 표시한 해설 그림",
-    "solutionImageCaption": "실근 3개",
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위쪽에는 파란 포물선 y=x²−4x+2의 구간 1≤x≤3에서 양 끝 높이를 초록 점선 y=−1로, 꼭짓점 높이를 분홍 점선 y=−2로 표시했다. 아래쪽에는 파란 포물선과 주황 점선 y=−3가 그려져 있고, 교점 개수는 나타내지 않는다.",
+    "solutionImageCaption": "y=x²−4x+2=(x−2)²−2이므로 구간 1≤x≤3에서 최솟값은 −2, 최댓값은 −1이다. 위 그림에서 파란 포물선, 초록 점선 y=−1, 분홍 점선 y=−2로 높이를 구별한다. 주어진 방정식은 f(x)=−3 또는 f(x)=1로 바뀐다. 아래 그림은 파란 포물선과 주황 점선 y=−3의 꼭짓점 관계를 보여 준다. 정답은 3개이다.",
     "solutionImageSize": "full"
   },
   {
@@ -984,9 +992,9 @@ window.questionBank = [
       "pdfPage": 5,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
     },
-    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "m=0이면 직선 x-3=0, m=1이면 3x-y-3=0이다. 두 직선 모두 점 P(3,6)을 지나고, x절편은 각각 3, 1로 m이 커지면 작아진다(m=0에서 최대 3).",
-    "solutionImageCaption": "m=0이면 직선 x-3=0, m=1이면 3x-y-3=0이다. 두 직선 모두 점 P(3,6)을 지나고, x절편은 각각 3, 1로 m이 커지면 작아진다(m=0에서 최대 3).",
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: m이 0, 1, 4일 때의 직선 세 개가 한 점 P를 지나며, 각 직선의 일부는 파랑, 주황, 초록으로 구별되어 있다. x축과 만나는 점은 Q₁, Q₂, Q₃이다.",
+    "solutionImageCaption": "m=0, 1, 4인 예에서 각 직선은 한 점 P를 지나고 x절편은 순서대로 Q₁, Q₂, Q₃이다. 파란은 m=0, 주황은 m=1, 초록은 m=4인 직선이다. 원문의 보기는 식과 거리로 판단한다. 정답은 ㄱ, ㄷ이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1033,9 +1041,9 @@ window.questionBank = [
       "pdfPage": 5,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
     },
-    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "22번 문항의 풀이에서 사용한 수학적 관계를 표시한 해설 그림",
-    "solutionImageCaption": "곱 3/4",
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점 O를 중심으로 하는 단위원과 x축 위의 점 (n,0)이 있고, 이 점에서 원에 그은 접선의 접점 P가 제1사분면에 있다. 반지름 OP는 파란 선분으로 길이 1이고 접선 PA와 직각 표시가 있다. P에서 x축에 내린 수선의 발 H가 있고, OH는 초록 선분, HP는 주황 선분으로 길이 y_n이며 H에도 직각 표시가 있다.",
+    "solutionImageCaption": "접점 P(x_n, y_n)에서 반지름 OP와 접선은 수직이다. 직각삼각형 OPA에서 P에서 빗변에 내린 수선의 발 H를 잡으면 닮음에서 OP²=OH×OA이므로 x_n=1/n이고(접선의 방정식 x_n·x+y_n·y=1에 (n,0)을 대입해도 같다). 그림에서 초록 선분 OH의 길이가 x_n이다. x_n²+y_n²=1에서 y_n을 구한다. 그림은 n=2인 예이다. 정답은 4분의 3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1082,9 +1090,9 @@ window.questionBank = [
       "pdfPage": 5,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
     },
-    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q23-solution.svg",
-    "solutionImageAlt": "23번 문항의 풀이에서 사용한 수학적 관계를 표시한 해설 그림",
-    "solutionImageCaption": "m²=11",
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 C(0,4)인 원과 점 (0,−8)을 지나는 직선 y=mx−8이 두 점 A, B에서 만난다. 삼각형 CAB의 세 변은 초록 선분으로 같은 길이 표시가 있고 반지름 길이 4가 표시되어 있다. 중심 C에서 현 AB에 내린 수선의 발 H까지는 파란 선분으로 거리 d이며 직각 표시가 있다.",
+    "solutionImageCaption": "원 x²+(y−4)²=16의 중심은 C(0,4), 반지름은 4이다. 삼각형 CAB가 정삼각형이므로 AB=4이고, 중심 C에서 현 AB까지의 거리 d는 한 변이 4인 정삼각형의 높이이다. 한편 C에서 직선 mx−y−8=0까지의 거리를 점과 직선 사이의 거리 공식으로 나타내 두 거리를 같게 놓는다. 그림은 이 조건에 맞는 직선이지만 기울기의 값은 쓰지 않았다. 정답은 m²=11이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1164,7 +1172,11 @@ window.questionBank = [
     "sourceEvidence": {
       "pdfPage": 6,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 O에서 시작해 A, B, C를 차례로 잇는 평행사변형이 있고 A, B, C의 좌표가 표시되어 있다. 변 BC 위의 점 P가 BP는 주황 선분으로 2, PC는 초록 선분으로 1의 비율로 나눈다.",
+    "solutionImageCaption": "평행사변형 O, A, B, C에서 OA, AB를 이웃한 두 변으로 하므로 대변 OC는 AB와 같은 벡터이고(그림의 파란 선분), 이로 점 C의 좌표를 구한다. 점 P는 BC를 2:1로 내분하므로 BP:PC=2:1이고 내분점 공식으로 P의 좌표를 구한다(그림은 P의 좌표를 쓰지 않았다). 정답은 (11, 3분의 10)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 26,
@@ -1204,9 +1216,9 @@ window.questionBank = [
       "pdfPage": 6,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
     },
-    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q26-solution.svg",
-    "solutionImageAlt": "26번 문항의 풀이에서 사용한 수학적 관계를 표시한 해설 그림",
-    "solutionImageCaption": "현의 길이 8",
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q26-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점 O를 중심으로 하는 반지름 5인 파란 원과, 중심 C의 좌표가 표시된 주황 원이 있다. O에서 C까지 초록 선분이 이동을 나타내고, 주황 원이 y축과 만나는 두 점 P, Q를 잇는 현이 있다. C에서 y축에 내린 수선 CM(분홍)은 직각 표시와 함께 길이 3이 표시되어 있고, 반지름 CP와 CQ는 길이 5이다.",
+    "solutionImageCaption": "복소수 조건에서 (a,b)=(3,−1)을 구하면 원 x²+y²=25가 x축으로 3, y축으로 −1만큼 이동하여 중심은 C(3,−1), 반지름은 5이다(초록 선분은 이동 방향이다). y축에 의해 잘리는 현 PQ에서 중심 C에서 y축까지의 거리는 3이고 반지름이 5이므로 직각삼각형 CMP로 현의 길이의 절반을 구한다. 정답은 8이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1247,9 +1259,9 @@ window.questionBank = [
       "pdfPage": 6,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
     },
-    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q27-solution.svg",
-    "solutionImageAlt": "27번 문항의 풀이에서 사용한 수학적 관계를 표시한 해설 그림",
-    "solutionImageCaption": "점 26개",
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q27-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 A(−3,−1), B(1,−3)를 지나는 직선 AB와 중심 C(1,2)인 원이 있다. 중심에서 AB까지의 수선에는 직각 표시와 거리 2√5가 있다. AB에 평행한 접선은 주황과 초록, 중심을 지나는 현은 분홍으로 구별했다. 분홍 현의 넓이 예는 10이며, 원과 두 점 P₁, P₂에서 만난다.",
+    "solutionImageCaption": "직선 AB는 x+2y+5=0이고 AB=2√5이다. 중심 C에서 AB까지의 거리는 2√5이므로 반지름 3보다 크다. 삼각형 PAB의 넓이는 직선 AB까지의 거리에 √5를 곱한 값이다. 접선 사이의 넓이 범위 안에서 분홍 현은 중심을 통과하며 넓이 10인 예이다. 자연수 넓이를 각각 구하면 각 평행선은 원과 두 점에서 만난다. 정답은 26개이다.",
     "solutionImageSize": "full"
   }
 ];
