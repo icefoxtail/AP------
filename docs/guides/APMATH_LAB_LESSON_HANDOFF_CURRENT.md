@@ -91,8 +91,9 @@
 | `geom-space-coord` | 8장면·32해설(원문14·개념18) | MAIN_MERGED / QA_PENDING · PR #1847 · `11ae10ffd34aaec8f8bd7d5fab8f5439bcad0f36` · 최소74/74·native547상태·validator0/0·구문8단위 · PAGES_NOT_VERIFIED |
 | `geom-vector-ops` | 12장면·54해설(원문/등록유형28·개념26) | MAIN_MERGED / QA_PENDING · PR #1848 · `0739b7dad9d823fe858549d7c71d0d687c3cd0d9` · 최소64/64·native849상태·validator0/0·구문8단위 · PAGES_NOT_VERIFIED |
 | `geom-vector-dot` | 7장면·36해설(원문15·개념21) | MAIN_MERGED / QA_PENDING · PR #1849 · `dccd250ba102d997af5f4bd8796bdc1c36311fad` · 최소71/71·native566상태·validator0/0·구문8단위 · PAGES_NOT_VERIFIED |
-| `geom-vector-figure` | 6장면·28해설(원문9·개념19) | IMPLEMENTED / QA_PENDING · `feat/lessons-geom-vector-figure` · 최소74/74(수학26·native7·공통41)·native491상태·validator0/0·구문8단위·41입력SHA+1부재 동일 · PAGES_NOT_VERIFIED |
-| 고등 잔여 3개 | `prob-counting`(5), `prob-probability`(5), `prob-stats`(7) | 위 벡터 도형 main 병합 후 차례로 구현·최소 검사·PR·main 병합. 전수 모바일·독립 시각검수 후행. |
+| `geom-vector-figure` 벡터와 도형 | 6 | 6 / 28 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1850](https://github.com/icefoxtail/AP------/pull/1850), merge `768069c3d3599641ec2616bb824070dbcba3ecb6`. 원문9·개념19. 최소74/74·native491상태·validator0/0·구문8단위 |
+| `prob-counting` 경우의 수 | 5 | 5 / 34 | **IMPLEMENTED / PAGES_NOT_VERIFIED / QA_PENDING** · `feat/lessons-prob-counting` · 원문 생성기19유형·개념15. 최소68/68(수학19·native8·공통41),native544상태·validator0/0·구문8단위 |
+| 고등 잔여 2개 | `prob-probability`(5), `prob-stats`(7) | 위 경우의 수 main 병합 후 순서대로 구현·최소 검사·PR·main 병합. 전수 모바일·독립 시각검수 후행. |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -282,6 +283,10 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 경우의 수 `prob-counting` 실제5장면·34해설 구현(원문 생성기19유형+개념15). 동일 공 배분·함수·같은 카드·경유/금지점 경로·이웃 금지·원순열의 원래 그림과 질문을 사용. 유형별 source packet은 원래 생성기를 전용 seed로 호출하여 고정하고 수동 새 문제 RNG/선택은 보존. 재생 전용 lpc 트랙으로 원래 조작값·배열·Set을 보존, 실제 셸 복제 및 Player 중단/완료/entry/replay 검사. 독립 열거 수학19+native8+공통video41=68/68, 실제 Board/canvas544개 cue 상태, validator 오류0/경고0, JS6+inline2 구문·diff 확인. 최신 main647b332 반영으로 들어온 다른 실험실 및 Archive 변경 보존, 관련 검사 입력 동일. 전체 브라우저/모바일/독립 시각검수 NOT_RUN, PAGES_NOT_VERIFIED.
+
+- 2026-11-12 벡터와 도형 PR #1850 main `768069c3d3599641ec2616bb824070dbcba3ecb6`, 원격 feature `eaa9f1399488f677697485742f3f11d2429eb85c` exact readback 완료. 누적51실험실/948장면/2,789해설. AWCR r77 원격 raw SHA `33eb52059516486d08d571dd1bfc9f890de45fa7e5b2a4f7c77892bc2e63accf`, readback VERIFIED. Pages43077681642 Build queued, 후속 writer43077318288 queued 관찰. Deploy 영수증·학생 최신 파일 미확인.
 
 - 2026-11-12 벡터와 도형 `geom-vector-figure` 실제6장면·28해설 구현(원문9+개념19). 장면별4/5/4/5/5/5. 내분·계수영역·방향/법선·내적조건원·직선/원 최소거리·두 직선 각의 실제 원문과 탐구를 연결. 모든 원래 수치/선택값을 lvfN_/lvfS_ 재생값으로 분리하고 실제 Player 중단·완료 후 원래값·변형 보존 확인. 설명용 교차 예시를 실제 교점과 일치하게 수정해 원 위 두 점 일치·영벡터 각 제외·지름 끝점의 각 미정 검사. 최소74/74(독립수학26+native7+공통41), actual Board/canvas491상태, validator0/0, 구문JS6+inline2, diff/clean, 최신main dccd250 반영 뒤41입력SHA+1부재 동일. 브라우저/전수 모바일/독립 시각검수 NOT_RUN; PAGES_NOT_VERIFIED.
 

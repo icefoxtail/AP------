@@ -18,7 +18,13 @@
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="prob-counting/lesson-core.js"></script>
+<script defer src="prob-counting/lesson-a.js"></script>
+<script defer src="prob-counting/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -43,7 +49,8 @@ window.addEventListener('DOMContentLoaded', function () {
   const Hc = (n, r) => (r < 0 ? 0 : n === 0 ? (r === 0 ? 1 : 0) : C(n + r - 1, r)); // 중복조합 nHr
   const SUB = '₀₁₂₃₄₅₆₇₈₉';
   const sub = (n) => String(n).replace(/\d/g, (d) => SUB[+d]);
-  const rint = (n) => Math.floor(Math.random() * n);
+  let lessonRandom=null; // Only deterministic lesson packets use this local source.
+  const rint = (n) => Math.floor((lessonRandom||Math.random)() * n);
   const pickOf = (arr, not) => { let x; do x = arr[rint(arr.length)]; while (arr.length > 1 && x === not); return x; };
   const texC = (n, r) => `{}_{${n}}\\mathrm{C}_{${r}}`;
   const texP = (n, r) => `{}_{${n}}\\mathrm{P}_{${r}}`;
@@ -53,7 +60,7 @@ window.addEventListener('DOMContentLoaded', function () {
   // 변형 생성기: gen(이전 변형|null) → 새 변형(key 필수). 처음에는 기출 유형 그대로(gen(null)). 연속으로 같은 문제가 나오지 않게 합니다.
   function varier(gen) {
     let cur = gen(null);
-    return { cur: () => cur, next: () => { let nx, t = 0; do { nx = gen(cur); t++; } while (nx.key === cur.key && t < 60); cur = nx; return cur; } };
+    return { lessonSample: previous => gen(previous), cur: () => cur, next: () => { let nx, t = 0; do { nx = gen(cur); t++; } while (nx.key === cur.key && t < 60); cur = nx; return cur; } };
   }
   const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-pc-new>새 문제</button></div>`;
   document.addEventListener('click', (ev) => {
@@ -1832,6 +1839,50 @@ $n$개를 모두 다르게 보면 $n!$가지이고, 같은 것끼리 줄 세우�
       return out;
     };
   });
+  const copy=value=>JSON.parse(JSON.stringify(value));
+  const typeOrders={combo:['low','cap','coef','color'],func:['mono','atleast','range','comp'],perm:['ends','adj','via','viaAvoid'],gap:['ppl','ident','seats'],circ:['plain','adj','sep','pick']};
+  const textFns=[text1,text2,text3,text4,text5],stepFns=[stepsOf1,steps2,stepsOf3,steps4,steps5];
+  const problemDraw=[draw1Problem,draw2Problem,draw3Problem,draw4Problem,draw5Problem],reviewDraw=[draw1Review,draw2Review,draw3Review,draw4Review,draw5Review];
+  const banks={};
+  SCENES.forEach((sc,index)=>{
+    const first=copy(sc.vary.cur()),found={[first.kind]:first},previousRandom=lessonRandom;
+    let seed=982451653+index*137,previous=first;
+    lessonRandom=()=>((seed=(1664525*seed+1013904223)>>>0)/4294967296);
+    try{for(let i=0;i<200&&Object.keys(found).length<typeOrders[sc.id].length;i++){
+      previous=sc.vary.lessonSample(previous);if(!found[previous.kind])found[previous.kind]=copy(previous);
+    }}finally{lessonRandom=previousRandom;}
+    if(typeOrders[sc.id].some(kind=>!found[kind]))throw new Error('Incomplete counting lesson source '+sc.id);
+    banks[sc.id]=found;
+  });
+  const source=window.APL_PC_SOURCE={
+    scenes:SCENES,types:id=>typeOrders[id].slice(),packet:(id,kind)=>copy(banks[id][kind||typeOrders[id][0]]),
+    question(id,kind){return textFns[SCENES.findIndex(sc=>sc.id===id)](this.packet(id,kind));},
+    steps(id,kind){return stepFns[SCENES.findIndex(sc=>sc.id===id)](this.packet(id,kind));},
+    math:{fact,C,Pm,Hc,allTuples,formula1,surj,multi},
+  };
+  const active=s=>!!(s.lessonOn||s.lessonEntry);
+  SCENES.forEach((sc,index)=>{
+    const native={question:sc.question,steps:sc.steps,view:sc.view,draw:sc.draw,tick:sc.tick};
+    sc.question=(s,l)=>active(s)?s.lpcQuestion:typeof native.question==='function'?native.question(s,l):native.question;
+    sc.steps=(s,l)=>active(s)?['조건','전략','계산','결론']:native.steps(s,l);
+    sc.view=(s,l)=>active(s)?{}:native.view(s,l);
+    sc.tick=(s,dt,l)=>active(s)?false:native.tick?.(s,dt,l);
+    sc.draw=(b,s,v,l)=>{
+      if(!active(s))return native.draw(b,s,v,l);
+      const shown={...s,...(s.lessonEntry?s.lpcInitial:{})},I=source.packet(sc.id,shown.lpcKind);
+      const step=s.lessonEntry?0:Math.max(0,Math.min(3,s.step||0)),intro=s.lessonEntry?0:shown.lpcIntro||0;
+      const text=b._text,handle=b.handle;
+      b._text=function(x,y,label,opts,screen){
+        const str=String(label??'');
+        const result=new RegExp('(?:=\\s*|답\\s*|남은 해\\s*)'+I.ans+'(?![0-9])');
+        return text.call(this,x,y,!this._bbox&&!shown.lpcShowAnswer&&result.test(str)?'':label,opts,screen);
+      };
+      b.handle=()=>{};
+      try{paint(b,g=>{if(!b._bbox)g.dy+=(1-intro)*10;(step===0?problemDraw[index]:reviewDraw[index])(g,I,step);});}
+      finally{b._text=text;b.handle=handle;}
+    };
+  });
+  const lessonSet=window.APL_PC_LESSONS?window.APL_PC_LESSONS.install(SCENES,source):{};
   APLab.createLab({
     id: 'prob-counting',
     stagedReveal: true,
@@ -1843,7 +1894,8 @@ $n$개를 모두 다르게 보면 $n!$가지이고, 같은 것끼리 줄 세우�
     legacy: 'next/labs/prob-counting.html',
     board: { kind: 'cartesian', focus: { x: [0, 400], y: [0, 400] }, pad: 0.015 },
     params: PARAMS,
-    scenes: SCENES
+    scenes: SCENES,
+    lessons:lessonSet
   });
   lab = window.lab;
   lab.board.zoomable = false;
