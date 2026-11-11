@@ -293,5 +293,92 @@
       { q, problem: f !== 0, useProblem: true, answer: choice(q), question: q.stem });
   }
 
-  // GROUP_A_T3
+  // ③ 사분원과 표 — 선분↔각, 행/열 읽기, 근삿값 계산과 기울기.
+  concept('unitCircle', '길이로 읽기', '$AB=\\frac12,\\ OB=\\frac{\\sqrt3}{2},\\ CD=\\frac{\\sqrt3}{3}$', [
+    '반지름 OA와 OC는 1이고 θ는 30°예요.', 'A에서 수선 AB를 내려 직각삼각형 OAB를 보아요.',
+    '안쪽은 빗변 OA=1, 바깥쪽은 이웃변 OC=1이에요.', 'sin은 AB/OA, cos은 OB/OA, tan은 CD/OC예요.',
+    '각 분모가 1이므로 특수각 값을 길이로 읽어요.',
+    '$AB=\\frac12,\\ OB=\\frac{\\sqrt3}{2},\\ CD=\\frac{\\sqrt3}{3}$예요.'
+  ], { initial: { t31: 30 }, question: '반지름 1, θ=30°인 사분원에서 AB, OB, CD의 길이를 삼각비로 구해 보세요.' });
+  for (const ask of ['seg', 'ang']) for (const fn of ['s', 'c', 't']) problem('unitCircle', `${fnName[fn]}${ask === 'seg' ? '→변' : '→각'}`,
+    q => q.solution.math.ask === ask && q.solution.math.fn === fn, (q, m) => {
+      const sg = q.fig.seg, inner = fn !== 't';
+      return [ask === 'seg' ? `반지름은 1, 기준각은 ${m.theta}°예요.` : `반지름은 1이고 $${sg}=${q.fig.value}$예요.`,
+        `${inner ? 'OAB' : 'OCD'}에서 ${fnName[fn]}의 두 변을 골라요.`,
+        inner ? 'sin·cos의 분모는 빗변 OA=1이에요.' : 'tan의 분모는 이웃변 OC=1이에요.',
+        ask === 'seg' ? `$x=${G.FN[fn]}${m.theta}^{\\circ}$의 특수각 값을 찾아요.` : `$${G.FN[fn]}x=${q.fig.value}$인 예각을 찾아요.`,
+        ask === 'seg' ? '분모가 1이므로 구한 비가 곧 선분 길이예요.' : `특수각 표의 ${fnName[fn]} 열에서 같은 값을 읽어요.`];
+    });
+  {
+    const q = fixed('whyOuterTan', q => q.solution.math.expression === S`\tan\theta` && q.fig.th === 30);
+    concept('whyOuterTan', '바깥 높이', '$\\tan\\theta=CD$', [
+      '안쪽 OAB와 바깥쪽 OCD는 각 θ를 공유해요.', '두 삼각형은 직각도 같아서 AA 닮음이에요.',
+      '안쪽의 tan은 높이 AB를 밑변 OB로 나눈 값이에요.', '바깥쪽에서는 높이를 CD, 밑변을 OC로 읽어요.',
+      '$OC=1$이므로 $CD/OC=CD/1$이에요.', '따라서 $\\tan\\theta=CD$예요.'
+    ], { q, useProblem: true, question: '반지름이 1인 사분원에서 tan θ를 바깥 선분 하나로 읽는 이유를 알아보세요.', line: 'tan θ = AB/OB = CD/OC = CD' });
+  }
+  for (const [label, expression] of [['sin 선분', S`\sin\theta`], ['cos 선분', S`\cos\theta`], ['tan 선분', S`\tan\theta`],
+    ['여각sin', S`\sin(90^{\circ}-\theta)`], ['여각cos', S`\cos(90^{\circ}-\theta)`]]) problem('whyOuterTan', label,
+    q => q.solution.math.expression === expression, (q, m) => [
+      `지금 구하는 삼각비는 $${m.expression}$예요.`, '반지름 OA와 OC의 길이가 1인지 확인해요.',
+      '안쪽 OAB와 바깥쪽 OCD를 구별해요.',
+      expression.includes('90') ? '90°−θ는 θ와 대변·이웃변의 역할이 바뀌어요.' : '분모가 빗변인지 이웃변인지 확인해요.',
+      `$${m.expression}=\\overline{${m.segment}}$로 연결해요.`
+    ]);
+  {
+    const q = fixed('r3-1'), m = q.solution.math;
+    concept('r3-1', '표 읽기', '각의 행과 함수의 열이 만나는 칸', [
+      `먼저 표 왼쪽에서 ${m.angles[0]}°의 행을 찾아요.`, `다음은 ${fnName[m.functions[0]]}이라는 열 이름을 찾아요.`,
+      '그 행을 가로로 따라가 해당 열의 칸을 읽어요.', `$${G.FN[m.functions[0]]}${m.angles[0]}^{\\circ}\\approx${G.d4(m.values[0])}$예요.`,
+      '다른 항도 같은 방법으로 각과 함수를 확인해요.', '각의 행과 함수의 열이 만나는 칸을 읽으면 돼요.'
+    ], { q, useProblem: true, question: '삼각비의 표에서 원하는 값을 읽을 때 어느 행과 어느 열을 찾아야 할까요?' });
+  }
+  for (const op of ['+', '-']) problem('r3-1', op === '+' ? '표에서 합' : '표에서 차', q => q.solution.math.op === op, (q, m) => [
+    `$${G.FN[m.functions[0]]}${m.angles[0]}^{\\circ}${op}${G.FN[m.functions[1]]}${m.angles[1]}^{\\circ}$를 구해요.`,
+    '각은 행에서, 함수 이름은 열에서 찾아요.',
+    `첫 칸은 $${G.FN[m.functions[0]]}${m.angles[0]}^{\\circ}\\approx${G.d4(m.values[0])}$예요.`,
+    `둘째 칸은 $${G.FN[m.functions[1]]}${m.angles[1]}^{\\circ}\\approx${G.d4(m.values[1])}$예요.`,
+    `표의 값으로 $${G.d4(m.values[0])}${op}${G.d4(m.values[1])}$를 계산해요.`
+  ]);
+  {
+    const q = fixed('r3-2', q => q.solution.math.fn === 's'), m = q.solution.math;
+    concept('r3-2', '값→각 원리', `$x=${m.answer}^{\\circ}$`, [
+      `$\\sin x=${G.d4(m.value)}$가 주어졌어요.`, '표의 sin 열에서 같은 소수를 먼저 찾아요.',
+      'cos나 tan 열에 같은 수가 있어도 사용하지 않아요.', '찾은 칸에서 왼쪽으로 가서 각도 열을 읽어요.',
+      '읽은 각의 sin 값이 주어진 수와 같은지 확인해요.', `따라서 $x=${m.answer}^{\\circ}$예요.`
+    ], { q, useProblem: true, question: q.html });
+  }
+  for (const fn of ['s', 'c', 't']) problem('r3-2', `${fnName[fn]}역읽기`, q => q.solution.math.fn === fn, (q, m) => [
+    `$${G.FN[fn]}x=${G.d4(m.value)}$에서 함수를 먼저 확인해요.`, `이번에는 표의 ${fnName[fn]} 열만 내려가며 읽어요.`,
+    `주어진 값 $${G.d4(m.value)}$와 일치하는 칸을 찾아요.`, '그 칸과 같은 가로줄의 각도 열로 이동해요.',
+    '각을 다시 같은 함수에 넣어 표의 값과 비교해요.'
+  ]);
+  for (const fn of ['s', 'c']) {
+    const n = fn === 's' ? 'a' : 'b', value = fn === 's' ? .5736 : .8192, result = fn === 's' ? 5.736 : 8.192;
+    concept('trigTableCalc', fn === 's' ? '대변 원리' : '이웃변 원리', `$${n}=${result}$`, [
+      '빗변은 10이고 기준각 A는 35°예요.', `구하는 ${n}는 ${fn === 's' ? '맞은편 대변' : '옆의 이웃변'}이에요.`,
+      `$${G.FN[fn]}35^{\\circ}=${frac(n, 10)}$로 놓아요.`, `주어진 표에서 $${G.FN[fn]}35^{\\circ}\\approx${value}$예요.`,
+      `양변에 10을 곱해 $${n}=10\\times${value}$를 계산해요.`, `표의 근삿값으로 계산하면 $${n}=${result}$예요.`
+    ], { question: `빗변 10, 각 A=35°일 때 ${fn === 's' ? 'sin 35°≈0.5736으로 대변 a' : 'cos 35°≈0.8192로 이웃변 b'}를 구해 보세요.` });
+  }
+  for (const kind of ['hs', 'hc', 'bt']) problem('trigTableCalc', { hs: '빗변×sin', hc: '빗변×cos', bt: '밑변×tan' }[kind],
+    q => q.key.split('|')[2] === kind, (q, m) => [
+      `각은 ${m.theta}°, 주어진 ${kind === 'bt' ? '이웃변' : '빗변'}은 ${m.length}예요.`, `x는 ${kind === 'hc' ? '이웃변' : '대변'}이므로 ${fnName[m.fn]}을 써요.`,
+      `$${G.FN[m.fn]}${m.theta}^{\\circ}=${frac('x', m.length)}$예요.`, `문제에서 준 표의 값은 $${G.d4(m.value)}$예요.`,
+      `$x=${m.length}\\times${G.d4(m.value)}$를 계산해요.`
+    ]);
+  {
+    const q = fixed('lineSlope', q => q.solution.math.fn === 't' && q.solution.math.opposite === 3 && q.solution.math.adjacent === 4);
+    concept('lineSlope', '기울기 원리', '기울기는 tan a와 같다', [
+      '직선의 두 절편은 (−4, 0), (0, 3)이에요.', '두 점과 원점을 이어 직각삼각형을 만들어요.',
+      '가로로 4만큼 갈 때 세로로 3만큼 올라가요.', '기울기는 세로 증가량÷가로 증가량이에요.',
+      '$\\tan a=\\frac{3}{4}$도 같은 높이÷밑변이에요.', '따라서 이 직선의 기울기는 tan a와 같아요.'
+    ], { q, useProblem: true, question: '이 직선이 x축과 이루는 예각 a의 tan 값은 기울기와 어떤 관계일까요?', line: '기울기 = tan a = 3/4' });
+  }
+  for (const fn of ['s', 'c', 't']) problem('lineSlope', `${fnName[fn]}구하기`, q => q.solution.math.fn === fn, (q, m) => {
+    const c = Math.hypot(m.adjacent, m.opposite), n = fn === 'c' ? m.adjacent : m.opposite, d = fn === 't' ? m.adjacent : c;
+    return [`절편은 $(-${m.adjacent},0)$, $(0,${m.opposite})$예요.`, '음수인 좌표와 양수인 선분 길이를 구별해요.',
+      `기준각 a의 이웃변은 ${m.adjacent}, 대변은 ${m.opposite}예요.`, `$c=\\sqrt{${m.adjacent}^2+${m.opposite}^2}=${c}$예요.`,
+      `$${G.FN[fn]}a=${frac(n, d)}$를 약분해요.`];
+  });
 })();

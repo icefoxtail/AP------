@@ -7,11 +7,11 @@
   const scenes = (window.APL_TG_GROUPS || []).flatMap(group => group.scenes);
   const source = id => scenes.find(scene => scene.id === id).tg;
   const fixed = (id, accept = () => true) => G.fixedQuestion(id, 1, accept);
-  const text = value => '$' + G.vtex(value) + '$';
+  const narration = say => say.replace(/\$([^$]+)\$/g, (_, formula) => '$' + formula.replace(/√(\d+)/g, '\\sqrt{$1}').replace(/π/g, '\\pi') + '$');
   const value = q => q.choices.find(choice => choice.ok).t;
   const result = (q, symbol) => `$${symbol}=${value(q)}$`;
   const ending = (q, symbol) => `따라서 ${result(q, symbol)}예요.`;
-  const cue = (at, say, step) => ({ at, say, ...(step == null ? {} : { step }) });
+  const cue = (at, say, step) => ({ at, say: narration(say), ...(step == null ? {} : { step }) });
   const ch = (title, a, b, sa = 2, sb = 3) => ({ title, length: 12, cues: [cue(0, a, sa), cue(6, b, sb)] });
   const defaults = { tgCTrace: 0, tgYaw: -32, tgPitch: 22,
     t61b: 6, t61c: 8, t61a: 60, t62a: 120, t63a: 6, t64s: 12, t64c: 6, t64a: 60, t65a: 60, t66n: 6, t66r: 6,
@@ -22,8 +22,8 @@
     const first = chapters[0].cues[0], last = chapters.at(-1).cues.at(-1);
     first.set = { q, tgSeed: 0, tgLessonProblem: !options.concept, tgShowAnswer: false,
       tgCalculationReady: false, tgCQuestion: options.question || '', tgCMode: options.mode || '' };
-    delete first.step;
-    if (!first.to) Object.assign(first, { to: { tgCTrace: 1 }, dur: 4 });
+    first.step = 0;
+    chapters[0].cues.splice(1, 0, { at: .1, to: { tgCTrace: 1 }, dur: 4 });
     chapters.at(-1).cues[0].set = { tgCalculationReady: true };
     last.set = { tgShowAnswer: true, tgCalculationReady: true };
     last.step = q.solution.steps.length;
@@ -359,8 +359,10 @@
       b.path = function (points, options = {}) { paths.push({ points: points.map(p => ({ x: p.x ?? p[0], y: p.y ?? p[1] })), options }); return original.call(this, points, options); };
       try {
         const n = s.q.solution.steps.length, step = C.entry ? 0 : C.answer ? n : Math.max(0, Math.min(C.step, n - 1));
-        if (s.tgCMode === 'unfold' || s.tgCMode === 'slide') D.draw(b, s, M, { ...C, review: true, tab: 'review', step, t: s.t71k || 0 });
-        else D.pdraw(b, s.q, { ...C, review: true, step, last: C.answer }, s);
+        if (s.tgCMode === 'unfold' || s.tgCMode === 'slide') {
+          const shown = C.entry ? { ...s, t71k: 0, t71x: .3 } : s;
+          D.draw(b, shown, C.entry ? D.model(shown) : M, { ...C, review: true, tab: 'review', step, t: shown.t71k || 0 });
+        } else D.pdraw(b, s.q, { ...C, review: true, step, last: C.answer }, s);
       } finally { b.path = original; }
       drawTrace(b, paths, C.entry ? 0 : s.tgCTrace || 0, id, s.q);
     };
