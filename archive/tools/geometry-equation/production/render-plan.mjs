@@ -244,7 +244,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
         panelSizes.push({width:spec.viewport.width,height:spec.viewport.height});
       }
       watch.lap('panels');
-      plan={...current,panels:framedPanels};where.plan=plan;const stackLayout=comp.compositePanelLayout(checked);
+      plan={...current,panels:framedPanels};where.plan=plan;const stackLayout=comp.compositePanelLayout(checked,current);
       // The caption rows are as tall as the captions need at the measured font (E7): a figure whose captions fit keeps the standard row, so its measured size is the
       // first one; when the composed figure came out taller (or shorter) than measured, the policy is measured again for the size it really has and composed again.
       let captionRow=comp.COMPOSITE_CAPTION_ROW;
