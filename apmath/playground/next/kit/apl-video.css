@@ -43,6 +43,27 @@ body.apl-vid .apl-canvas-wrap { flex: 1 1 0; min-height: 0; }
 .apl-vcap b { color: var(--m-amber); font-weight: 800; }
 .apl-vcap .katex { font-size: 1.12em; }
 .apl-vcap.pop { animation: apl-vcap .18s var(--ease); }
+/* 고정 수식은 현재 시각까지의 최근 세 줄만 남깁니다. 핀이 없으면 숨겨 기존 자막 배치를 유지합니다. */
+.apl-vpins { display: grid; min-width: 0; gap: 2px; font-size: 17px; line-height: 1.55; }
+.apl-vpins[hidden] { display: none; }
+.apl-vpin {
+  min-width: 0; max-width: 100%; padding: 3px 10px; border-left: 3px solid transparent;
+  overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; white-space: nowrap;
+  color: var(--text-2); opacity: .62;
+}
+.apl-vpin.latest { color: var(--text); opacity: 1; font-weight: 800; border-left-color: var(--m-amber); background: color-mix(in srgb, var(--m-amber) 7%, transparent); }
+.apl-vpin:focus-visible { outline: 2px solid var(--m-sky); outline-offset: -2px; }
+.apl-vpin .katex { font-size: 1.08em; }
+@media (max-width: 699px) { .apl-vpins { font-size: 15px; } }
+/* 태블릿 세로: 핀이 있는 동안만 수식 왼쪽·현재 자막 오른쪽의 두 열. 조작부는 전체 폭입니다. */
+@media (min-width: 700px) and (max-width: 1024px) and (orientation: portrait) {
+  .apl-vbar.has-pins { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 16px; }
+  .apl-vbar.has-pins > .apl-vpins { grid-column: 1; grid-row: 1; align-self: center; }
+  .apl-vbar.has-pins > .apl-vcap { grid-column: 2; grid-row: 1; min-width: 0; align-self: center; }
+  .apl-vbar.has-pins > .apl-vprog,
+  .apl-vbar.has-pins > .apl-vctl,
+  .apl-vbar.has-pins > .apl-vend { grid-column: 1 / -1; }
+}
 @keyframes apl-vcap { from { opacity: .15; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 .apl-vprog { display: flex; align-items: center; gap: 10px; }
 .apl-vrw { position: relative; flex: 1; min-width: 0; display: flex; align-items: center; }
@@ -127,6 +148,7 @@ body.apl-vid .apl-vtbar[data-phase="small"] .apl-vtbig { display: none; }
 }
 
 /* ---------- 3. 끝 카드: 한 줄 정리 + 「다음 ▶」 + 다시 보기·직접 해 보기 ---------- */
+.apl-vbar[data-mode="end"] .apl-vpins,
 .apl-vbar[data-mode="end"] .apl-vcap,
 .apl-vbar[data-mode="end"] .apl-vprog,
 .apl-vbar[data-mode="end"] .apl-vctl { display: none !important; }
