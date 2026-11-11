@@ -234,11 +234,11 @@
           b.path(circ(m.sol.rmax * K), { close: true, color: 'muted', width: 1.6, dash: [5, 5], alpha: 0.7 });
           b.path(circ(rr), { close: true, fill: RED, fillAlpha: 0.2, color: RED, width: c.review && c.step === 2 ? 5.5 : 3.4 });
           if (c.txt) {
-            T(b, { x: cx, y: cy + ins.side * 0.46 + (ins.capUp || 0) }, '단면(실제 모양)', 'ink', { size: 15 });
+            T(b, { x: cx, y: cy + ins.side * 0.46 + (ins.capUp || 0) }, c.lesson && s.soShowAnswer && s.soBAsk !== 'radius' ? s.soBAsk === 'size' ? '꼭짓점 쪽으로 작아져요' : '단면은 원' : '단면(실제 모양)', 'ink', { size: 15 });
             if (m.kind !== 'sphere') {
               b.seg({ x: cx, y: cy }, { x: cx + rr, y: cy }, { color: ROSE, width: 2.8 });
               const radius = G.measureN(m.ru);
-              T(b, { x: cx, y: cy - ins.side * 0.46 }, `반지름 r ${radius.startsWith('≈') ? '' : '= '}${radius} cm`, ROSE, { size: 17 });
+              T(b, { x: cx, y: cy - ins.side * 0.46 }, c.lesson && !s.soShowAnswer ? '단면의 반지름 = ?' : `반지름 r ${radius.startsWith('≈') ? '' : '= '}${radius} cm`, ROSE, { size: 17 });
             } else T(b, { x: cx, y: cy - ins.side * 0.46 }, '가운데에서 가장 커요', AMB, { size: 16 });
           }
         }
@@ -295,8 +295,9 @@
         after: (D, m, c, ins, Rs) => {
           axSheet(D, m.sol, m.psi, sweepE(Rs / 1.2, c.t), sheetW(Rs / 1.2), Rs, ROSE, c.review && c.step === 1 ? 0.22 : 0.12);
           if (!ins) return;
-          T(b, { x: ins.cx, y: ins.cy + ins.side * 0.46 + (ins.capUp || 0) }, `단면의 모양: ${SEC_NAME[m.kind]}`, 'ink', { size: 15 });
-          drawSection(b, c, ins, m.sol, { hiW: c.review && c.step === 3 });
+          const cap = !c.lesson ? `단면의 모양: ${SEC_NAME[m.kind]}` : !s.soShowAnswer ? '축을 포함한 단면' : s.soBAsk === 'rotate' ? '모양과 크기가 같아요' : `단면의 모양: ${SEC_NAME[m.kind]}`;
+          T(b, { x: ins.cx, y: ins.cy + ins.side * 0.46 + (ins.capUp || 0) }, cap, 'ink', { size: 15 });
+          drawSection(b, c, ins, m.sol, { hiW: c.review && c.step === 3, noDims: c.lesson });
           slantTicks(b, ins, m.sol);
         }
       });
@@ -358,16 +359,17 @@
       stage(b, s, M, C, {
         pts: (D, m, Rs) => axCorners(D, m.sol, 0, Rs),
         after: (D, m, c, ins, Rs) => {
-          axSheet(D, m.sol, 0, Rs, 2 * Rs, Rs);
+          // 해설에서는 칼날 상태를 직접 사용하고, 지름 계산 뒤 치수를 공개해요.
+          axSheet(D, m.sol, 0, c.lesson ? sweepE(m.sol.rmax, s.soE) : Rs, c.lesson ? sheetW(m.sol.rmax) : 2 * Rs, Rs);
           if (!ins) return;
-          const { k, f } = drawSection(b, c, ins, m.sol, { hiW: c.review && c.step === 2 });
+          const { k, f } = drawSection(b, c, ins, m.sol, { hiW: c.review && c.step === 2, noDims: c.lesson && !s.soBStage });
           // 실제 오른쪽 반의 넓이: 원기둥에서만 r×h이고, 삼각형·사다리꼴은 각각의 넓이 공식을 씁니다.
-          if (c.txt && (c.review ? c.step >= 4 : true)) {
+          if (c.txt && (c.lesson ? s.soShowAnswer : c.review ? c.step >= 4 : true)) {
             const half = secPoly(m.sol).filter((p) => p[1] >= 0).map((p) => f(p[0], p[1]));
             b.path(half, { close: true, fill: ROSE, fillAlpha: 0.2, color: null });
             const halfArea = fmtN(m.area / 2);
             T(b, f(m.sol.ymax * 0.5, m.d.R * 0.5), b.W < 560 ? halfArea : m.kind === 'cyl' ? `r × h = ${halfArea}` : `단면의 반쪽 = ${halfArea}`, ROSE, { size: 15 });
-            T(b, { x: ins.cx, y: ins.cy + ins.side * 0.47 + (ins.capUp || 0) }, `단면의 넓이 = ${m.kind === 'cyl' ? `2r × h = ${2 * m.d.R} × ${m.d.h1}` : m.kind === 'cone' ? `½ × 2r × h = ½ × ${2 * m.d.R} × ${m.d.h1}` : `(${2 * m.d.R} + ${2 * m.d.r}) × ${m.d.h1} ÷ 2`} = ${m.area}`, GRN, { size: 15 });
+            T(b, { x: ins.cx, y: ins.cy + ins.side * 0.47 + (ins.capUp || 0) }, c.lesson ? `단면의 넓이 = ${m.area} cm²` : `단면의 넓이 = ${m.kind === 'cyl' ? `2r × h = ${2 * m.d.R} × ${m.d.h1}` : m.kind === 'cone' ? `½ × 2r × h = ½ × ${2 * m.d.R} × ${m.d.h1}` : `(${2 * m.d.R} + ${2 * m.d.r}) × ${m.d.h1} ÷ 2`} = ${m.area}`, GRN, { size: 15 });
           }
         }
       });
@@ -431,8 +433,8 @@
       if (!full && sweep > 0.02) D.g.path(S3.figAt(D, sol.poly, sweep), { close: true, fill: AMB, fillAlpha: 0.16, color: AMB, width: 2.2, dash: [6, 5] });
       D.g.path(S3.figAt(D, sol.poly, 0), { close: true, fill: AMB, fillAlpha: 0.32, color: AMB, width: C.review && C.step === 2 ? 5 : 3.4 });
       if (C.txt) {
-        T(b, { x: ins.cx, y: ins.cy + ins.side * 0.47 + (ins.capUp || 0) }, '축을 포함한 단면', 'ink', { size: 15 });
-        drawSection(b, C, ins, sol, { hiW: false });
+        T(b, { x: ins.cx, y: ins.cy + ins.side * 0.47 + (ins.capUp || 0) }, C.lesson && s.soShowAnswer ? `완성한 회전체: ${sol.name}` : '축을 포함한 단면', 'ink', { size: 15 });
+        drawSection(b, C, ins, sol, { hiW: false, noDims: C.lesson });
         slantTicks(b, ins, sol);
       }
     },
@@ -484,10 +486,10 @@
       b.path(lf, { close: true, fill: AMB, fillAlpha: 0.24, color: AMB, width: 3.4 });
       b.seg(sf.f(sol.ymin - 0.35, 0), sf.f(sol.ymax + 0.35, 0), { color: ROSE, width: 2.6, dash: [7, 5] });
       if (C.txt) {
-        T(b, sf.f(sol.ymax + 0.35, 0), '대칭축 = 회전축 l', ROSE, { dy: -16, size: 16 });
+        T(b, sf.f(sol.ymax + 0.35, 0), C.lesson && !s.soShowAnswer ? '회전축 l (접는 선)' : '대칭축 = 회전축 l', ROSE, { dy: -16, size: 16 });
         const done = G.complete(C.t);
         T(b, sf.f(sol.ymin - 0.35, 0), done ? '두 반쪽이 꼭 겹쳐져요' : C.t <= 0 ? '접기 전' : `${G.measureN(phi / DEG)}° 접는 중`, done ? GRN : 'ink', { dy: 20, size: 17 });
-        T(b, sf.f(sol.ymin - 0.35, 0), SEC_NAME[M.kind], 'ink', { dy: 42, size: 16 });
+        T(b, sf.f(sol.ymin - 0.35, 0), C.lesson && s.soShowAnswer ? '선대칭도형' : SEC_NAME[M.kind], 'ink', { dy: 42, size: 16 });
       }
       void hs;
     },
@@ -572,7 +574,10 @@
         T(b, { x: cx, y: cy + ins.side * 0.46 + (ins.capUp || 0) }, '두 밑면(원)', 'ink', { size: 15 });
         T(b, { x: cx, y: cy }, `${fmtN(rs)}`, AMB, { size: 16 });
         T(b, { x: cx + R * K * 0.72, y: cy + R * K * 0.72 }, `${fmtN(R)}`, SKY, { dx: 6, size: 16 });
-        if (!C.review || C.step >= 4) T(b, { x: cx, y: cy - ins.side * 0.46 }, `원뿔대의 높이 = ${fmtN(H)} − ${fmtN(hs)} = ${fmtN(H - hs)}`, GRN, { size: 15 });
+        if (C.lesson) {
+          const cap = s.soShowAnswer ? s.soBAsk === 'solid' ? '남은 입체: 원뿔대' : `높이 = ${fmtN(H)} − ${fmtN(hs)} = ${fmtN(H - hs)} cm` : `큰 높이 ${fmtN(H)} · 작은 높이 ${fmtN(hs)}`;
+          T(b, { x: cx, y: cy - ins.side * 0.46 }, cap, s.soShowAnswer ? GRN : 'ink', { size: 15 });
+        } else if (!C.review || C.step >= 4) T(b, { x: cx, y: cy - ins.side * 0.46 }, `원뿔대의 높이 = ${fmtN(H)} − ${fmtN(hs)} = ${fmtN(H - hs)}`, GRN, { size: 15 });
       }
     },
     steps: (M) => [
