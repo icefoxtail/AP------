@@ -44,9 +44,9 @@
       if (st >= 3) { line(b, A, C, 'green', 3, { dash: [8, 5] }); line(b, B, D, 'green', 3, { dash: [8, 5] }); tick(b, A, C, 3); tick(b, B, D, 3); fillPoly(b, [A, B, C], 'amber', 0.14); fillPoly(b, [D, C, B], 'amber', 0.14); }
       sd(b, A, D, O, `${M.a}`, 'amber'); sd(b, B, C, O, `${M.bb}`, 'sky');
       dotsT(b, A, B, C, D);
-      if (!cx.review) b.handle('A', A, { color: 'amber', r: 8, ariaLabel: '꼭짓점 A 가로로 끌기', drag: (w2) => { s.qdTa = clamp(Math.round(M.bb - 2 * w2.x), 4, 7); } });
+      if (!cx.review && !cx.lesson) b.handle('A', A, { color: 'amber', r: 8, ariaLabel: '꼭짓점 A 가로로 끌기', drag: (w2) => { s.qdTa = clamp(Math.round(M.bb - 2 * w2.x), 4, 7); } });
       const cap = cx.review ? ['AD∥BC이고 AB=DC인 등변사다리꼴 (아랫변의 양 끝각이 같아요)', `∠B=∠C=${M.t}°, ∠A=∠D=${M.top}°`, 'AC=BD (△ABC ≡ △DCB)'][clamp(st, 1, 3) - 1] : `∠B=∠C=${M.t}° · ∠A=∠D=${M.top}° · AB=DC, AC=BD`;
-      capLine(b, pt(M.bb / 2, 0), cap, 'amber', { dy: 76 });
+      if (!cx.lesson || cx.answer) capLine(b, pt(M.bb / 2, 0), cap, 'amber', { dy: 76 });
     },
     steps: (M) => [
       'AD∥BC인 사다리꼴에서 아랫변의 양 끝각이 같으면(∠B=∠C) 등변사다리꼴이에요. 이때 두 다리의 길이가 같아요(AB=DC).',
@@ -146,6 +146,72 @@
     }
   };
 
+  function trace(b, segments, progress) {
+    segments.forEach(([p, q], i) => { const t = clamp((Number(progress) || 0) * segments.length - i, 0, 1); if (t > 0) line(b, p, lerp(p, q, t), 'green', 4.6); });
+  }
+  iso.lessonQuestion = (M, s, Q) => s.qdLessonProblem === false
+    ? s.qdBMode === 'iso-legs' ? '아랫변의 양 끝각이 같은 등변사다리꼴에서 왜 두 다리의 길이가 같을까요?'
+      : '등변사다리꼴에서 왜 두 대각선의 길이가 같을까요?'
+    : (Q.html || Q.stem) + '<br>' + Q.choices.map((c, i) => G.NUM[i] + ' ' + (c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : c.p)).join('<br>');
+  iso.lessonDraw = (b, s, M, C, solution) => {
+    const { A, B, C: Cc, D } = M, t = C.entry ? 0 : s.qdBT;
+    if (s.qdLessonProblem) {
+      const n = C.entry ? 0 : C.answer ? solution.steps.length : Math.min(s.step || 1, solution.steps.length - 1);
+      iso.solveDraw(b, { ...s, step: n }, M, C, solution);
+      if (!C.entry && C.calculation && M.K === 1) outsideAng(b, B, Cc, A, dg(M.t), 'green');
+      trace(b, M.K === 2 ? [[A, Cc], [B, D]] : [[A, D], [B, Cc]], t);
+      return;
+    }
+    const legs = s.qdBMode === 'iso-legs', H = pt(M.k, 0), I = pt(M.k + M.a, 0);
+    iso.draw(b, s, M, { ...C, problem: false, review: true, step: C.answer ? (legs ? 1 : 3) : legs ? 0 : 1 });
+    if (legs) {
+      outsideAng(b, B, Cc, A, dg(M.t), 'sky'); outsideAng(b, Cc, D, B, dg(M.t), 'sky');
+      trace(b, [[A, H], [D, I]], t);
+      if (!C.entry && s.qdBFeet) {
+        b.right(H, A, B, { size: 11, color: 'green' }); b.right(I, D, Cc, { size: 11, color: 'green' });
+        b.point(H, { color: 'green', r: 4 }); b.point(I, { color: 'green', r: 4 });
+        T(b, H, 'H', { dy: 24, color: 'green' }); T(b, I, 'I', { dy: 24, color: 'green' });
+      }
+      if (!C.entry && s.qdBFirstReady) { tick(b, A, H, 2, 'rose'); tick(b, D, I, 2, 'rose'); fillPoly(b, [A, B, H], 'amber', .12); fillPoly(b, [D, Cc, I], 'amber', .12); }
+    } else {
+      trace(b, [[A, Cc], [B, D]], t);
+      if (!C.entry && s.qdBFirstReady) { fillPoly(b, [A, B, Cc], 'amber', .12); fillPoly(b, [D, Cc, B], 'amber', .12); tick(b, B, Cc, 2, 'rose'); }
+    }
+  };
+  aux.lessonQuestion = (M, s, Q) => s.qdLessonProblem === false
+    ? `∠A=120°인 등변사다리꼴에서 ${s.qdMd === 'perp' ? '수선' : '평행선'}을 보조선으로 그어 BC와 AD, AB의 관계를 구해 보세요.`
+    : (Q.html || Q.stem) + '<br>' + Q.choices.map((c, i) => G.NUM[i] + ' ' + (c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : c.p)).join('<br>');
+  aux.lessonDraw = (b, s, M, C, solution) => {
+    const { A, B, C: Cc, D, E, H, I } = M, center = mid(A, Cc), text = b.text;
+    const answer = solution.question.choices.find(c => c.ok).p;
+    b.text = function (p, str, options) {
+      if (C.answer) str = String(str) === 'x = 사각형 ABCD의 둘레' ? `사각형 ABCD의 둘레 = ${answer}` : String(str).replace(/x(?:°|\s*cm)?$/, answer);
+      return text.call(this, p, str, options);
+    };
+    try { aux.draw(b, s, M, { ...C, problem: true, review: false }); } finally { b.text = text; }
+    const t = C.entry ? 0 : s.qdBT;
+    if (M.md === 'par') {
+      trace(b, [[D, E]], t);
+      if (!C.entry && s.qdBFeet) { par(b, D, E, 2, 'green'); par(b, A, B, 2, 'green'); b.point(E, { color: 'green', r: 4 }); T(b, E, 'E', { dy: 36, color: 'green' }); }
+      if (!C.entry && s.qdBFirstReady) {
+        const known = M.K !== 1 || C.answer;
+        segTag(b, B, E, .5, known ? String(M.a) : 'x', 20, 'sky');
+        G.sideTag(b, D, E, center, String(M.l), { color: 'green', size: 15 });
+      }
+      if (!C.entry && s.qdBSecondReady) { fillPoly(b, [D, E, Cc], 'amber', .15); tick(b, E, Cc, 2, 'rose'); tick(b, D, E, 2, 'rose'); tick(b, D, Cc, 2, 'rose'); segTag(b, E, Cc, .5, String(M.l), 20, 'rose'); }
+    } else {
+      trace(b, [[A, H], [D, I]], t);
+      if (!C.entry && s.qdBFeet) {
+        b.right(H, A, B, { size: 11, color: 'green' }); b.right(I, D, Cc, { size: 11, color: 'green' });
+        b.point(H, { color: 'green', r: 4 }); b.point(I, { color: 'green', r: 4 });
+        T(b, H, 'H', { dy: 36, color: 'green' }); T(b, I, 'I', { dy: 36, color: 'green' });
+      }
+      if (!C.entry && s.qdBFirstReady) { fillPoly(b, [A, B, H], 'amber', .15); fillPoly(b, [D, Cc, I], 'amber', .15); segTag(b, B, H, .5, String(M.half), 20, 'rose'); segTag(b, I, Cc, .5, String(M.half), 20, 'rose'); }
+      if (!C.entry && s.qdBSecondReady) segTag(b, H, I, .5, M.K !== 1 || C.answer ? String(M.a) : 'x', 20, 'sky');
+    }
+    if (!C.entry && C.calculation) { outsideAng(b, B, Cc, A, '60°', 'sky'); outsideAng(b, Cc, D, B, '60°', 'sky'); }
+    if (!C.entry && s.qdBBaseReady && M.K === 2) T(b, mid(B, Cc), `BC = ${M.bc}`, { dy: 62, size: 16, color: 'green' });
+  };
   const gl = [iso, aux];
   G.register(40, 'qd4', '④ 사다리꼴', '사다리꼴', PARAMS, gl);
 })();
