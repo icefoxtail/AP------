@@ -628,7 +628,11 @@ window.questionBank = [
     },
     "metaEvidenceDebt": "",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 k=−2일 때의 파란 포물선 y=x²−4x+3이 초록색 x축과 두 점 (1,0), (3,0)에서 만나는 모습이다. 아래 그림은 k=2일 때의 파란 포물선 y=x²+4x+7이 x축 위에 떠서 만나지 않는 모습이고 꼭짓점 (−2,3)이 표시되어 있다. 가로 눈금을 늘려 그렸다.",
+    "solutionImageCaption": "이차방정식의 좌변을 y로 놓은 포물선(파란색)이 x축(초록색)과 만나는 점의 개수가 실근의 개수이다. k=−2일 때 판별식은 양수이고 포물선이 x축과 두 점에서 만난다. k=2일 때 판별식은 음수이고 포물선이 x축 위에 있어 실근이 없다. 이 방정식의 판별식은 Δ=(2k)²−4(k²+k+1)=−4(k+1)이고 Δ>0이어야 한다. 정답은 k<−1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -809,10 +813,13 @@ window.questionBank = [
       "sourceOnlyCheckpointSha256": "a3805d3f8ece80485b91e142c59ec45773329538c6803947f75fa52486a7bf55",
       "transcriptionStatus": "SOURCE_ONLY_300DPI_VISUALLY_REVIEWED"
     },
-    "solutionImage": "assets/images/21_효천고_1학기_중간_고1_기출/q9-solution.svg",
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고1_기출/q9-solution-v2.svg",
     "metaEvidenceDebt": "",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 파란 포물선 y=x²+3x−2와 주황 직선 y=x+6이 두 점 (−4,2), (2,8)에서 만나는 모습이고 제목은 k=6이다. 아래 그림은 같은 포물선과 주황 직선 y=x−5가 만나지 않는 모습이고 제목은 k=−5이다. 가로 눈금을 늘려 그려서 직선이 실제보다 완만해 보인다.",
+    "solutionImageCaption": "파란 포물선과 주황 직선의 교점의 x좌표는 x²+3x−2=x+k, 곧 x²+2x−(k+2)=0의 해이다. 위 그림은 k=6이어서 판별식이 양수이고 교점이 두 개이다. 아래 그림은 k=−5이어서 판별식이 음수이고 교점이 없다. 두 경우의 경계에서 직선이 포물선에 접하므로 판별식이 0, 곧 4(k+3)=0이다. 정답은 −3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -903,10 +910,13 @@ window.questionBank = [
       "sourceOnlyCheckpointSha256": "a3805d3f8ece80485b91e142c59ec45773329538c6803947f75fa52486a7bf55",
       "transcriptionStatus": "SOURCE_ONLY_300DPI_VISUALLY_REVIEWED"
     },
-    "solutionImage": "assets/images/21_효천고_1학기_중간_고1_기출/q10-solution.svg",
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고1_기출/q10-solution-v2.svg",
     "metaEvidenceDebt": "",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 주황색 포물선 y=−(x−1)²이 초록색 x축에 점 (1,0)에서 닿고 그 아래로 열린 모습이다. 아래 그림은 파란 포물선 y=−x²+2x+4와 같은 모양의 주황 점선 포물선을 함께 그린 것으로, 파란 포물선의 가장 높은 점에서 x축까지 점선이 내려와 x=1에 닿는다. 가로 눈금을 늘려 그렸다.",
+    "solutionImageCaption": "y=−x²+2x+4를 완전제곱식으로 고치면 −(x−1)²에 상수를 더한 꼴이다. 위 그림의 초록색은 x축이고, −(x−1)²(주황색)은 0 이하이며 x=1일 때 0이다. 아래 그림의 파란 포물선 y=−x²+2x+4는 −(x−1)²의 그래프(주황 점선)를 위로 평행이동한 모양이므로 가장 높은 점은 x=1에 있다. x=1은 도약한 뒤 1초이므로 시간의 범위 안이다. 정답은 5 m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -1273,9 +1283,12 @@ window.questionBank = [
       "sourceOnlyCheckpointSha256": "a3805d3f8ece80485b91e142c59ec45773329538c6803947f75fa52486a7bf55",
       "transcriptionStatus": "SOURCE_ONLY_300DPI_VISUALLY_REVIEWED"
     },
-    "solutionImage": "assets/images/21_효천고_1학기_중간_고1_기출/q14-solution.svg",
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고1_기출/q14-solution-v2.svg",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 파란 직선 f(x)와 주황 포물선 g(x)가 그려져 있고 점선 x=8이 g의 축이다. 두 그래프는 x좌표가 4와 16인 두 점에서 만나며 그 두 점에서 x축까지 점선이 이어져 있다. 아래 그림은 주황 점선 포물선 g(x)와, 그 x축 아래 부분을 위로 접어 만든 주황 실선 y=|g(x)|이다.",
+    "solutionImageCaption": "f(x)와 g(x)를 비교하는 모양의 예로 f(x)=x−8, g(x)=¼(x−8)²−8을 그렸다(교점의 x좌표 4, 16과 축 x=8이 문제의 조건이고 나머지 값은 예시이다). 위 그림에서 파란색은 f(x), 주황색은 g(x)이다. 해설은 t=x−8로 놓아 f=4a·t, g=a(t²−32)임을 구하고, 방정식을 4t+|t²−32|=0으로 바꾼 뒤 t²−32의 부호로 경우를 나누어 푼다. 아래 그림의 주황 실선 |g(x)|는 이 절댓값이 g(x)의 x축 아랫부분(주황 점선)을 위로 접은 것임을 보인다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1907,9 +1920,12 @@ window.questionBank = [
       "sourceOnlyCheckpointSha256": "a3805d3f8ece80485b91e142c59ec45773329538c6803947f75fa52486a7bf55",
       "transcriptionStatus": "SOURCE_ONLY_300DPI_VISUALLY_REVIEWED"
     },
-    "solutionImage": "assets/images/21_효천고_1학기_중간_고1_기출/q21-solution.svg",
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고1_기출/q21-solution-v2.svg",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 파란 f(x)=|x²−3x−4|의 그래프와 주황 직선 y=2x+k의 한 예를 그린 것이며 가로축에 −1과 4가 표시되어 있고 직선이 f의 왼쪽 가지와 오른쪽 가지를 지난다. 아래 그림은 h(x)=f(x)−2x의 파란 그래프와 주황 수평선 y=k로, 그래프의 왼쪽 꺾인 점 A, 가운데 꼭짓점 B, 오른쪽 꺾인 점 C가 표시되어 있고 수평선은 A보다 높고 B보다 낮은 곳에서 그래프를 네 점에서 지난다. 가로 눈금을 늘려 그렸다.",
+    "solutionImageCaption": "위 그림은 f(x)=|x²−3x−4|의 그래프(파랑)와 직선 y=2x+k(주황)의 한 예이다. 직선 y=2x+k와 f(x)의 교점의 x좌표는 h(x)=|x²−3x−4|−2x=k의 해와 같다. h는 x≤−1 또는 x≥4에서 x²−5x−4, −1≤x≤4에서 −x²+x+4이다. 아래 그림은 h(x)의 그래프(파랑)와 수평선 y=k(주황)이고, A는 왼쪽 꺾인 점, B는 꼭짓점, C는 오른쪽 꺾인 점이다. 위 그림의 k와 아래 그림의 k는 각각 한 예이다. 수평선 y=k가 h의 그래프와 세 점에서 만나는 때는 k가 A의 높이이거나 B의 높이일 때이고, 이 중 정수인 k를 찾는다. 정답은 8k=16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
