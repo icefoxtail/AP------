@@ -57,9 +57,25 @@ test('each explanation loads and draws at entry, first cue and conclusion withou
       assert.equal(result.value.card, null, id + ': exploration card hidden');
       assert.deepEqual(Array.from(result.value.readouts), [], id + ': exploration readouts hidden');
       assert.equal(result.value.formula, null, id + ': explanation owns formula timing');
+      assert.equal(result.value.rule, null, id + ': concept conclusion follows the explanation timing');
       if (entry) assert.equal(lab.s.arShowAnswer, false, id + ': prior conclusion reset');
       count++;
     }
   }
   t.diagnostic(`${count} source/Board safety frames; actual mobile playback quality NOT_RUN`);
+});
+
+test('a previous manual problem does not change the lesson figure or erase manual progress', async () => {
+  const lab = await load();
+  for (const [id, value] of Object.entries(lab.def.lessons)) for (const lesson of core.lessonList(value)) {
+    const initial = frame(lab, id, lesson, 1);
+    const step = lab.s.step;
+    Object.assign(lab.s, { arReviewQuestion: true, arProblemKey: 'previous-manual-problem', arProblemStep: 99 });
+    const again = lab.draw();
+    assert.deepEqual(again.texts, initial.texts, id + ': lesson labels ignore the manual question');
+    assert.deepEqual(again.paths.map(x => x.points), initial.paths.map(x => x.points), id + ': lesson figure uses its own givens');
+    assert.equal(lab.s.step, step, id + ': changed givens do not reset the lesson stage');
+    assert.equal(lab.s.arReviewQuestion, true, id + ': manual question choice is preserved');
+    assert.equal(lab.s.arProblemStep, 99, id + ': manual progress is preserved');
+  }
 });

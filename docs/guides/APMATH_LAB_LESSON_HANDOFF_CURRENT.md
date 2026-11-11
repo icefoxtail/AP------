@@ -46,7 +46,7 @@
 | `g7-polyhedra` 다면체 | 26 | 26 / 58 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1747](https://github.com/icefoxtail/AP------/pull/1747), merge `1e4fe2ce808fff9887e798b7ec7cf4e4f0461bbe`. 최소 검사 131/131, 누락 0. Pages 등록 작업 대기 |
 | `g7-solids` 회전체 | 22 | 22 / 48 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1750](https://github.com/icefoxtail/AP------/pull/1750), merge `459c71d08b159a7fe5fffc91ea5c3553e78005b9`. 최소 검사 108/108, 누락 0. Pages 등록 작업 대기 |
 | `g7-polygons` 다각형 | 18 | 18 / 31 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1754](https://github.com/icefoxtail/AP------/pull/1754), merge `0f82b309173e29d399945bccedd0a52c8196b586`. 최소 검사 145/145, 누락 0. Pages 등록 작업 대기 |
-| `g7-area` 다각형의 넓이 | 14 | 제작 중 | main `0f82b309173e29d399945bccedd0a52c8196b586`에서 `feat/lessons-g7-area` 신규 시작. 기존 브랜치·PR 없음 확인 |
+| `g7-area` 다각형의 넓이 | 14 | 14 / 30 | **IMPLEMENTED / QA_PENDING** · 신규 14장면/30해설, 누락 0. 최소 검사 102/102. `feat/lessons-g7-area`, PR·main·Pages 확인 예정 |
 | 중1 나머지 4개 | 86 | 0 | 미착수 (§5-3) |
 | 중2 4개 · 중3 2개 | 247 | 0 | 미착수, 선행 확인 필요 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
@@ -102,7 +102,7 @@
 
 권장 순서(그림 움직임이 이미 있는 것부터): `g7-polyhedra` → `g7-solids` → `g7-polygons` → `g7-area` → `g7-parallel` → `g7-points-lines` → `g7-spatial` → `g7-construction`.
 
-- `g7-polyhedra` 26장면/58해설, `g7-solids` 22장면/48해설을 구현했다. 나머지 6개 실험실의 HTML에는 안내서 §2의 플레이어 연결을 추가한다.
+- `g7-polyhedra` 26장면/58해설, `g7-solids` 22/48, `g7-polygons` 18/31, `g7-area` 14/30을 구현했다. 나머지 4개 실험실의 HTML에는 안내서 §2의 플레이어 연결을 추가한다.
 - `g7-parallel`은 `anim`·`stepT`가 없어 보조선이 한 번에 나타난다. 단계(`step`) 구동이 중심이고, 필요하면 보조선이 그려지는 단계 그림을 추가한다.
 - 값이 바뀌면 단계를 0으로 되돌리는 `view()`가 있다(`g7-parallel/kit.js`, `g7-polygons/core.js`, `g7-construction/core.js`, `g7-points-lines/common.js`). 값 설정 → 단계 순으로 쓴다.
 
@@ -121,6 +121,11 @@
 
 - 최소 실행: `node --test --test-reporter=tap apmath/playground/next/tools/video.test.mjs apmath/playground/next/tools/lessons.g7-polygons*.test.mjs apmath/playground/next/tools/g7-polygons-*.test.mjs` → **145/145 통과, 실패·skip 0**. 무필터 validator, 독립 좌표·벡터 검산, 실제 Board의 진입·첫 cue·결론 93개 상태 및 필수 중간값 공개 검사를 포함한다. 변경 JS/MJS 13파일 구문 및 diff 검사 통과. 역산 장면의 진입은 정답 행을 숨긴 채 후보 6각형과 목표 대각선 27개를 보여 준다.
 - 실제 390×844의 31해설 전체 재생·자막/그림 정밀 동기화·글자 잘림·터치는 **NOT_RUN / QA_PENDING**이다. 원본 모델과 Board 검사를 화면 품질 PASS로 해석하지 않는다.
+
+**넓이 구현 기록:** 실제 카탈로그·HTML 모듈 14장면과 30해설이 일치한다(t1 6장면/12해설, t2 5/11, t3 3/7). 원본 도형 만들기와 수치 문제, 넓이·높이·둘레·비·부분 넓이 등 서로 다른 질문을 나눴다. 사다리꼴 응용은 원본 세 prob를 각각 밑변·전체 넓이·부분 삼각형 버튼에 결속하고 전체 넓이 해설 안에서 두 풀이 방법을 비교한다. 원본문제에 없는 높이 수치는 해당 수치 해설에서 감추고, 주어진 넓이와 비로 풀이한다. 직접 해 보기의 이전 문제 선택과 단계는 보존하되 해설 그림·단계에 끼어들지 않는다.
+
+- 최소 실행: `node --test --test-reporter=tap apmath/playground/next/tools/video.test.mjs apmath/playground/next/tools/lessons.g7-area*.test.mjs apmath/playground/next/tools/g7-area-state.test.mjs` → **102/102 통과, 실패·skip 0**. 무필터 validator, 독립 좌표의 조각 합동·면적 보존·높이·넓이비·겹친 길 검산, 실제 Board 진입·첫 cue·결론 90개 상태와 중간값 공개 검사 포함. 기존 수동 상태 검사 20건을 유지했다. 변경 JS/MJS 12파일 구문 및 diff 검사 통과.
+- 실제 390×844의 30해설 전체 재생·터치·글자 잘림·자막과 그림 정밀 동기화는 **NOT_RUN / QA_PENDING**이다. 390폭의 계산 문구 생성 확인은 소스 검사이며 실제 모바일 시각 품질 PASS가 아니다.
 
 ### 5-4. 키트 보완 목록 (각각 별도 PR, 테스트 포함)
 
@@ -213,6 +218,8 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+- 2026-11-11 · `g7-area` **14장면/30해설 신규 구현 완료**, 미등록 장면 0. main `0f82b309173e29d399945bccedd0a52c8196b586`에서 신규 브랜치로 제작하고 정상 단위마다 원격 보존했다. 최소 검사 102/102, JS/MJS 12파일 구문 통과. **IMPLEMENTED / QA_PENDING**, PR·main·Pages 확인 예정. 다음은 `g7-parallel` 12장면이다.
 
 - 2026-11-11 · 다각형 [PR #1754](https://github.com/icefoxtail/AP------/pull/1754) **main 운영 병합 완료**. head `afe38dedceabe03e93c4ff366b13dd6ad70ebe40`, merge `0f82b309173e29d399945bccedd0a52c8196b586`, 원격 main 및 대상 파일 일치 확인. 18장면/31해설, 최소 검사 145/145. [등록 writer 42965086609](https://github.com/icefoxtail/AP------/actions/runs/42965086609) pending. 실제 학생 HTML은 기존 4608 bytes로 신규 모듈·player 연결이 없어 **Pages NOT_VERIFIED / QA_PENDING**이다. 중1 main 등록 182/282장면·289해설. 다음 넓이 14장면 제작을 시작했다.
 - 2026-11-11 · [AWCR r9](https://drive.google.com/file/d/1L1rZmz06Ag0A_0MEmBThb33YMo1F1vxJ/view) 원격 저장·raw 재조회 완료. SHA-256 `df9d7ca274f3368f57f9e65600ff37ad9b557969255c6a28a2aa1a50d51d48cc`, parent r8와 결속 확인. 다각형까지 MAIN_MERGED, 신규 네 실험실 Pages NOT_VERIFIED, 전체 모바일 NOT_RUN. 다음 revision r10은 충돌 재확인 후 저장한다.
