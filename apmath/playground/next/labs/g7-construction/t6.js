@@ -45,7 +45,7 @@
   /* ====================================================================== 1. 정삼각형 두 개 (B·C·E 일직선) */
   const geo1 = (a, b) => { const B = pt(0, 0), C = pt(a, 0), E = pt(a + b, 0), A = pt(a / 2, -a * S3 / 2), D = pt(a + b / 2, -b * S3 / 2); return { A, B, C, D, E, P: inter(B, D, A, E), a, b }; };
   const eq1 = {
-    id: 'c6-1', title: '정삼각형 두 개 · △BCD ≡ △ACE', short: '정삼각형 두 개',
+    id: 'c6-1', title: '정삼각형 두 개 · 숨은 합동', short: '정삼각형 두 개',
     question: '정삼각형 ABC와 CDE가 점 C를 공유하고 B, C, E가 한 직선 위에 있을 때, 숨어 있는 합동 삼각형은 무엇이고 무엇을 알 수 있을까?',
     ctl: ['cnGa', 'cnGb', 'cnGt'], anim: { key: 'cnGt', dur: 4.5, label: '△BCD 돌리기', start: 0 },
     init: (s) => { s.cnGa = 5; s.cnGb = 4; s.cnGt = 0; s.cnPk = { y: 30, k: 0, kind: 0, q: 0 }; },
@@ -82,11 +82,11 @@
         if (sm(b)) T(b, Pp, dg(M.apb), { dx: -22, dy: -26, size: 14, color: 'rose' });
       }
       if (prob || (C.review && (!C.lesson || s.cnLessonProblem))) {
-        if (pk.kind === 0) { ang(b, D, B, Cp, { color: 'sky', rings: 1, label: `${pk.y}°`, r: 26, labelDist: 52, size: 14 }); ang(b, E, D, A, { color: 'rose', rings: 1, label: C.review && st >= 4 && (!C.lesson || s.cnShowAnswer) ? `${60 - pk.y}°` : '?', r: 30, labelDist: 52, size: 15 }); }
-        else if (prob || st >= 4) { const o = [[A, B], [B, g.E], [g.E, D], [D, A]][pk.q]; ang(b, Pp, o[0], o[1], { color: 'rose', rings: 1, label: C.review && (!C.lesson || s.cnShowAnswer) ? `${pk.q % 2 ? 120 : 60}°` : '?', r: 24, labelDist: 44, size: 15 }); }
+        if (pk.kind === 0) { ang(b, D, B, Cp, { color: 'sky', rings: 1, label: `${pk.y}°`, r: 26, labelDist: 52, size: 14 }); ang(b, E, D, A, { color: 'rose', rings: 1, label: C.review && st >= 4 && (!C.lesson || (!s.lessonEntry && s.cnShowAnswer)) ? `${60 - pk.y}°` : '?', r: 30, labelDist: 52, size: 15 }); }
+        else if (prob || st >= 4 || C.lesson) { const o = [[A, B], [B, g.E], [g.E, D], [D, A]][pk.q]; ang(b, Pp, o[0], o[1], { color: 'rose', rings: 1, label: C.review && (!C.lesson || (!s.lessonEntry && s.cnShowAnswer)) ? `${pk.q % 2 ? 120 : 60}°` : '?', r: 24, labelDist: 44, size: 15 }); }
       }
       [[A, 'A'], [B, 'B'], [Cp, 'C'], [D, 'D'], [E, 'E']].forEach(([p, n]) => { b.point(p, { color: 'ink', r: 4.6 }); const o = n === 'C' ? pt(0, 1) : p; if (n === 'C') T(b, p, 'C', { dy: 18, size: 17 }); else tagOut(b, p, cen, n, { size: 17, gap: n === 'B' || n === 'E' ? 12 : 11 }); });
-      if ((prob ? pk.kind !== 0 : C.review ? pk.kind !== 0 && st >= 4 : st >= 4) || C.tab === 'explore') { if (Pp) { b.point(Pp, { color: 'rose', r: 4.2 }); if (C.txt) T(b, Pp, 'P', { dx: 12, dy: !prob && sm(b) ? -28 : 16, size: 16, color: 'rose' }); } }
+      if ((prob ? pk.kind !== 0 : C.review ? pk.kind !== 0 && st >= 4 : st >= 4) || C.tab === 'explore' || (C.lesson && s.cnLessonProblem && pk.kind !== 0)) { if (Pp) { b.point(Pp, { color: 'rose', r: 4.2 }); if (C.txt) T(b, Pp, 'P', { dx: 12, dy: !prob && sm(b) ? -28 : 16, size: 16, color: 'rose' }); } }
       if (C.txt && !prob && !C.lesson) {
         const msgs = ['같은 길이: AB=BC=CA, CD=DE=EC', '두 각 ∠BCD, ∠ACE는 모두 120°', t >= 0.999 ? '△BCD가 △ACE에 겹쳐요 → 합동 (SAS)' : '△BCD를 점 C 둘레로 60° 돌려요', C.review ? (pk.kind === 0 ? `∠DEA = 60° − ${pk.y}° = ${60 - pk.y}°` : `∠${['APB', 'BPE', 'EPD', 'DPA'][pk.q]} = ${pk.q % 2 ? 120 : 60}°`) : `합동이라서 BD = AE, 두 선분이 이루는 각 ∠APB = ${dg(M.apb)}`];
         const m = C.review ? msgs[Math.min(3, Math.max(0, st - 1))] : t >= 0.999 ? msgs[2] : t > 0 ? msgs[2] : '▶를 눌러 △BCD를 돌려 보세요';
@@ -126,7 +126,7 @@
   /* ====================================================================== 2. 정삼각형 ABC와 ADE (점 A 공유) */
   const geo2 = (L, d) => { const B = pt(0, 0), C = pt(L, 0), A = pt(L / 2, -L * S3 / 2), D = pt(d, 0), E = rot0(D, A, -60); return { A, B, C, D, E, L, d }; };
   const eq2 = {
-    id: 'c6-2', title: '정삼각형 ABC와 ADE · △ABD ≡ △ACE', short: '점 A를 공유한 정삼각형',
+    id: 'c6-2', title: '정삼각형 ABC와 ADE · 숨은 합동', short: '점 A를 공유한 정삼각형',
     question: '정삼각형 ABC의 변 BC 위에 점 D를 잡고 AD를 한 변으로 하는 정삼각형 ADE를 그리면, 어떤 삼각형이 합동일까?',
     ctl: ['cnHL', 'cnHd', 'cnHt'], anim: { key: 'cnHt', dur: 4.5, label: '△ABD 돌리기', start: 0 },
     init: (s) => { s.cnHL = 6; s.cnHd = 2; s.cnHt = 0; s.cnPk = { L: 8, c: 3, kind: 0, k: 0 }; },
@@ -143,7 +143,7 @@
       if (!prob && t > 0.001) { const R = [A, B, D].map((p) => rot0(p, A, -60 * t)); fillPoly(b, R, 'amber', 0.22); poly(b, R, 'amber', 3.2, { alpha: 0.9 }); }
       if (!prob && t >= 0.999) poly(b, [A, Cp, E], 'amber', 3, { dash: [8, 5] });
       if (prob || st >= 1) { [[A, B], [B, Cp], [Cp, A]].forEach(([p, q]) => tick(b, p, q, 1, 'amber')); [[A, D], [D, E], [E, A]].forEach(([p, q]) => tick(b, p, q, 2, 'amber')); }
-      if (prob && pk.kind === 2) ang(b, Cp, D, E, { color: 'rose', rings: 1, label: '?', r: 26, labelDist: 52, size: 15 });
+      if ((prob || (C.lesson && s.cnLessonProblem && (!s.cnShowAnswer || s.lessonEntry))) && pk.kind === 2) ang(b, Cp, D, E, { color: 'rose', rings: 1, label: '?', r: 26, labelDist: 52, size: 15 });
       if (!prob && st >= 2) { ang(b, A, B, D, { color: 'sky', rings: 1, label: '', r: 30, size: 13 }); ang(b, A, Cp, E, { color: 'sky', rings: 1, label: '', r: 36, size: 13 }); }
       if (!prob && st >= 3) { tick(b, B, D, 3, 'rose'); tick(b, Cp, E, 3, 'rose'); if (!C.lesson || (s.cnShowAnswer && s.cnLessonGoal === 'dce')) ang(b, Cp, D, E, { color: 'rose', rings: 2, label: C.review && pk.kind === 2 && st < 4 ? '?' : '120°', r: 26, labelDist: 52, size: 14 }); }
       if (C.txt) {
@@ -160,9 +160,9 @@
           else sd(Cp, E, `CE=${pk.c}`, 'rose', 12);
         } else if (C.review && (!C.lesson || s.cnLessonProblem)) {
           if (C.lesson) T(b, mid(B, Cp), `BC = ${pk.L} cm`, { dy: 48, size: 14, color: 'sky' });
-          if (pk.kind === 0) { sd(D, Cp, `CD=${L - d}`, 'sky', 14); if (st >= 4 && (!C.lesson || s.cnShowAnswer)) sd(B, D, `BD=${d}`, 'amber', 14); }
-          else if (pk.kind === 1) { sideTag(b, Cp, E, centroid([Cp, E, A]), `CE=${d}`, { size: sm(b) ? 14 : 16, color: 'rose', gap: 12 }); if (st >= 4 && (!C.lesson || s.cnShowAnswer)) sd(D, Cp, `CD=${L - d}`, 'sky', 14); }
-          if (pk.kind === 0 && st >= 4 && (!C.lesson || s.cnShowAnswer)) sideTag(b, Cp, E, centroid([Cp, E, A]), `CE=${d}`, { size: sm(b) ? 14 : 16, color: 'rose', gap: 12 });
+          if (pk.kind === 0) { sd(D, Cp, `CD=${L - d}`, 'sky', 14); if (st >= 4 && (!C.lesson || (!s.lessonEntry && s.cnShowAnswer))) sd(B, D, `BD=${d}`, 'amber', 14); }
+          else if (pk.kind === 1) { sideTag(b, Cp, E, centroid([Cp, E, A]), `CE=${d}`, { size: sm(b) ? 14 : 16, color: 'rose', gap: 12 }); if (st >= 4 && (!C.lesson || (!s.lessonEntry && s.cnShowAnswer))) sd(D, Cp, `CD=${L - d}`, 'sky', 14); }
+          if (pk.kind === 0 && st >= 4 && (!C.lesson || (!s.lessonEntry && s.cnShowAnswer))) sideTag(b, Cp, E, centroid([Cp, E, A]), `CE=${d}`, { size: sm(b) ? 14 : 16, color: 'rose', gap: 12 });
         } else {
           sd(B, D, `${d}`, 'amber', 14); sd(D, Cp, `${L - d}`, 'sky', 14);
           if (st >= 3) sideTag(b, Cp, E, centroid([Cp, E, A]), `${d}`, { size: sm(b) ? 14 : 16, color: 'rose', gap: 12 });
@@ -202,7 +202,7 @@
   /* ====================================================================== 3. 정사각형 둘 (꼭짓점 A 공유) */
   const geo3 = (a, e, th) => { const A = pt(0, 0), B = pt(a, 0), C = pt(a, -a), D = pt(0, -a), E = polar(A, e, -th), G = polar(A, e, -th - 90), F = add(E, G); return { A, B, C, D, E, F, G, a, e, th }; };
   const sq = {
-    id: 'c6-3', title: '정사각형 두 개 · △ABE ≡ △ADG', short: '정사각형 두 개',
+    id: 'c6-3', title: '정사각형 두 개 · 숨은 합동', short: '정사각형 두 개',
     question: '정사각형 ABCD와 AEFG가 꼭짓점 A를 공유할 때, 숨어 있는 합동 삼각형은 무엇이고 BE와 DG는 어떤 관계일까?',
     ctl: ['cnKa', 'cnKe', 'cnKth', 'cnKt'], anim: { key: 'cnKt', dur: 4.5, label: '△ABE 돌리기', start: 0 },
     init: (s) => { s.cnKa = 6; s.cnKe = 3; s.cnKth = 35; s.cnKt = 0; s.cnPk = { kind: 0, x: 4, k: 2, m: 1, n: 9, th: 40, p: 2, q: 10, k0: 0 }; },
@@ -286,7 +286,7 @@
   const geo4 = (a, inside) => { const A = pt(0, 0), B = pt(a, 0), C = pt(a, -a), D = pt(0, -a), E = pt(inside ? a - a * S3 / 2 : a + a * S3 / 2, -a / 2); return { A, B, C, D, E, a }; };
   const MODE4 = [['in', '정삼각형이 정사각형 안쪽'], ['out', '정삼각형이 정사각형 바깥쪽']];
   const sqtri = {
-    id: 'c6-4', title: '정사각형과 정삼각형 · △ABE ≡ △DCE', short: '정사각형과 정삼각형',
+    id: 'c6-4', title: '정사각형과 정삼각형 · 숨은 합동', short: '정사각형과 정삼각형',
     question: '정사각형 ABCD의 변 BC를 한 변으로 하는 정삼각형 BCE를 그리면, 숨어 있는 합동 삼각형은 무엇이고 ∠AED는 몇 도일까?',
     ctl: ['cnJa', 'cnJt'], anim: { key: 'cnJt', dur: 4.5, label: '△ABE 뒤집기', start: 0 },
     presets: () => MODE4.map(([id, label], i) => ({ group: i === 0 ? '정삼각형의 위치' : '', label, apply: (s) => { s.cnJm = id; s.cnJt = 0; s.playing = false; }, on: (s) => (s.cnJm || 'in') === id })),
@@ -307,13 +307,13 @@
       [[A, B], [B, Cp], [Cp, D], [D, A]].forEach(([p, q]) => tick(b, p, q, 1, 'amber'));
       [[B, E], [Cp, E]].forEach(([p, q]) => tick(b, p, q, 1, 'amber'));
       [[A, B, D], [B, Cp, A], [Cp, D, B], [D, A, Cp]].forEach(([v, p, q]) => ang(b, v, p, q, { color: 'sky', r: 16, noRight: false }));
-      if (prob) { const q = pk.q; if (q === 0) ang(b, A, B, E, { color: 'rose', rings: 1, label: '?', r: 34, labelDist: 56, size: 15 }); else if (q === 1) ang(b, E, A, D, { color: 'rose', rings: 1, label: '?', r: 26, labelDist: 46, size: 15 }); else if (q === 2) ang(b, A, E, D, { color: 'rose', rings: 1, label: '?', r: 34, labelDist: 56, size: 15 }); else ang(b, E, A, B, { color: 'rose', rings: 1, label: '?', r: 26, labelDist: 46, size: 15 }); }
+      if (prob || (C.lesson && s.cnLessonProblem && (!s.cnShowAnswer || s.lessonEntry))) { const q = pk.q; if (q === 0) ang(b, A, B, E, { color: 'rose', rings: 1, label: '?', r: 34, labelDist: 56, size: 15 }); else if (q === 1) ang(b, E, A, D, { color: 'rose', rings: 1, label: '?', r: 26, labelDist: 46, size: 15 }); else if (q === 2) ang(b, A, E, D, { color: 'rose', rings: 1, label: '?', r: 34, labelDist: 56, size: 15 }); else ang(b, E, A, B, { color: 'rose', rings: 1, label: '?', r: 26, labelDist: 46, size: 15 }); }
       if (!prob && st >= 2) {
         ang(b, B, A, E, { color: 'rose', rings: 1, label: dg(inside ? 30 : 150), r: 30, labelDist: 50, size: 13 });
         ang(b, Cp, D, E, { color: 'rose', rings: 1, label: dg(inside ? 30 : 150), r: 30, labelDist: 50, size: 13 });
       }
       if (!prob && st >= 3) { tick(b, A, E, 3, 'green'); tick(b, D, E, 3, 'green'); }
-      if (!prob && st >= 4 && (!C.lesson || s.cnShowAnswer)) {
+      if (!prob && st >= 4 && (!C.lesson || (!s.lessonEntry && s.cnShowAnswer))) {
         const target = C.review ? [[A, B, E, M.bae], [E, A, D, M.aed], [A, E, D, Math.abs(90 - M.bae)], [E, A, B, M.bae]][pk.q] : [E, A, D, M.aed];
         ang(b, target[0], target[1], target[2], { color: 'green', rings: 2, label: dg(target[3]), r: 24, labelDist: 46, size: 14 });
       }

@@ -56,7 +56,7 @@
   /* ====================================================================== 1. 합동 = 포개어짐 */
   const MODES = [['slide', '밀어서'], ['rot', '돌려서'], ['flip', '뒤집어서']];
   const overlap = {
-    id: 'c4-1', title: '합동 = 포개어지는 도형', short: '합동과 대응',
+    id: 'c4-1', title: '두 도형을 포개어 보기', short: '합동과 대응',
     question: '모양과 크기가 같아서 꼭 포개어지는 두 도형을 합동이라고 해. 포갰을 때 겹치는 점·변·각은 서로 어떻게 대응할까?',
     ctl: ['cnPt'], anim: { key: 'cnPt', dur: 5, label: '포개어 보기', start: 0 },
     presets: () => MODES.map(([id, label], i) => ({ group: i === 0 ? '포개는 방법' : '', label, apply: (s) => { s.cnPmode = id; s.cnPt = 0; s.playing = false; }, on: (s) => (s.cnPmode || 'rot') === id })),
