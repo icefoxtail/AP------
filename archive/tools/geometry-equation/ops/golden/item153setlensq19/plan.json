@@ -1,0 +1,74 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "VENN",
+  "sets": [
+   {
+    "id": "A"
+   },
+   {
+    "id": "B"
+   }
+  ],
+  "elements": [
+   {
+    "text": "(2,0)",
+    "math": true,
+    "in": [
+     "A"
+    ]
+   },
+   {
+    "text": "(0,1)",
+    "math": true,
+    "in": [
+     "A"
+    ]
+   },
+   {
+    "text": "최대점",
+    "in": [
+     "A",
+     "B"
+    ]
+   },
+   {
+    "text": "최소점",
+    "in": [
+     "A",
+     "B"
+    ]
+   },
+   {
+    "text": "(3,2)",
+    "math": true,
+    "in": [
+     "B"
+    ]
+   },
+   {
+    "text": "(−3,−2)",
+    "math": true,
+    "in": [
+     "B"
+    ]
+   }
+  ]
+ },
+ "caption": "A는 타원 a²+4b²=4 위의 점, B는 직선 2a=3b 위의 점이다. 두 집합이 만나는 두 점이 3a+8b의 최댓값과 최솟값을 준다.",
+ "sourceConditions": [
+  {
+   "id": "source",
+   "condition": "매산고 고1 2학기 중간고사 해당 문항",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  },
+  {
+   "id": "solution",
+   "condition": "등호 조건 2a=3b와 a²+4b²=4의 공통 점이 최대·최소를 준다.",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "타원 위의 점 집합 A와 등호 조건 직선 위의 점 집합 B의 교점"
+ ]
+}
