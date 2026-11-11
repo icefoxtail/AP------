@@ -46,6 +46,9 @@
 - 구간별 다항 `referenceLines[].hideLabel`(옵트인, 위쪽 띠의 `y=1` 끄기; 22 금당 수II Q08 골든 `item147ext7q08hidelabel`). 점 이름 P는 새 옵션 없이 `overlays.points[].unnamed:true`로 해결. 근호 표기 정리는 기존 골든 `item70d`·`item70f`·`item82`·`item88g3b`의 라벨 글자를 바꾼다(사용자 확인 필요).
 - 확인만 한 것: 22 순천고 확통 Q04는 `DENSITY_TRIANGLE` 없이 `piecewise-polynomial`+`regions`로 그려진다(골든 `item148ext7q04density`, 꼭짓점 좌표 숨김은 `coordinateBand.hide`). 22 순천고 수II Q11은 세제곱근 기울기(`16**(1/3)-2`)가 `PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID`(`p+q*sqrt(r)` 문법 밖)라 엔진 공백으로 남김.
 
+### 2026-11-11 점의 모양·색 (브랜치 svg-engine/lattice-markers-20261111)
+- `overlays.points[].marker`(`OPEN`=속이 빈 동그라미, 기본 `FILLED`)·`color`(BLUE WARM GREEN ROSE VIOLET, 대문자만)와 `overlays.latticePoints.color`를 추가했다. 세지 않는 점은 `OPEN`+다른 색, 색만으로 구별하지 않는다(AUTHOR_GUIDE "점의 모양과 색"). 두 항목을 안 쓰면 SVG는 바이트까지 같다(정답지 25개 비교). 이유: 중1 격자점 세기 해설(26 왕운중 q14)에서 센 점과 곡선 위 제외 점을 학생이 한눈에 가르려고 "제외" 말풍선 4개를 따로 붙였다. 정답지 `item151latticemarkers`, 시험 `tests/test_graph_point_markers.py`·`graph-point-markers.test.mjs`.
+
 ### 2026-11-09 엔진 확장 회차 f(브랜치 engine/ext-20261109-f, 지시선·plan으로 안 풀리는 것만)
 - 구간별 다항 `regions`가 기약 삼차 조각의 구간 **밖** 실근 때문에 `PIECEWISE_POLY_ROOT_NOT_CLOSED_FORM`으로 거절되던 것을, 구간 안 실근 수를 스투름으로 세어 0이면 통과하게 함(`graph_framing.py` `_pp_real_roots_inside`, 22 금당 수II q18, 골든 `item138ext6q18cubicarea`, 지시서 `briefs/engine-region-cubic-no-root-inside.md`). 나머지(q02·q19·q21·COORDINATE_LEADER_PANEL_CONFLICT)는 plan 수정으로 풀려 엔진 변경 없이 AUTHOR_GUIDE에 사용법만 남김(골든 `item139ext6q21hidelabels`).
 
