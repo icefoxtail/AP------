@@ -60,7 +60,8 @@
       return cur;
     };
     next();
-    return { cur: () => cur, next, pool, make };
+    const first = cur;
+    return { cur: () => window.lab && (window.lab.s.lessonOn || window.lab.s.lessonEntry) ? first : cur, first: () => first, next, pool, make };
   }
   const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-cq-new>새 문제</button></div>`;
   // 풀이 두 갈래(그림으로 읽기 / 식으로)
