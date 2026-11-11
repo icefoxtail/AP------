@@ -1,1 +1,1 @@
-PLAN_READY · NOT_RENDERED · size=medium is provisional until figure-result.json.
+PLAN_READY · NOT_RENDERED · actual graph-framing worker and phase2 `specFor` pass; size=medium remains provisional until figure-result.json.

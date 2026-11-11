@@ -1,0 +1,85 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "각 $\\theta$가 제3사분면의 각일 때",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {"length": {"kind": "integer", "value": "1"}},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {"kind": "integer", "value": "0"},
+          "b": {"kind": "integer", "value": "1"},
+          "c": {"kind": "integer", "value": "0"}
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["O"],
+        "args": {"radius": {"kind": "integer", "value": "1"}},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": ["O"],
+  "displayLines": ["L"],
+  "displayCircles": ["U"],
+  "planeMarks": {
+    "quadrants": [
+      {
+        "id": "quadrantIII",
+        "quadrant": 3,
+        "fill": "LIGHT",
+        "label": "제3사분면",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "θ가 제3사분면이면 sinθ와 cosθ가 모두 음수이므로 식은 1+sinθ로 간단해진다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "θ는 제3사분면의 각이다.",
+      "mappedTo": ["mathPlan.realization", "planeMarks.quadrants"]
+    },
+    {
+      "id": "c2",
+      "condition": "단위원에서 x=cosθ와 y=sinθ는 제3사분면에서 모두 음수다.",
+      "mappedTo": ["mathPlan.nodes", "planeMarks.quadrants"]
+    },
+    {
+      "id": "c3",
+      "condition": "이 부호로 절댓값을 풀면 식은 1+sinθ로 정리된다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "단위원의 제3사분면 음영으로 두 좌표 부호를 보여 주되 특정한 각도 방향이나 점은 임의로 선택하지 않는다."
+  ]
+}

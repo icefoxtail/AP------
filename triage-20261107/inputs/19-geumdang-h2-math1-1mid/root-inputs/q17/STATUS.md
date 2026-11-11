@@ -1,1 +1,1 @@
-PLAN_READY · NOT_RENDERED · size=medium is provisional until figure-result.json.
+PLAN_READY · NOT_RENDERED · `expandNumberLineFigure` and `numberLineFigureSpec` pass; size=medium remains provisional until figure-result.json.

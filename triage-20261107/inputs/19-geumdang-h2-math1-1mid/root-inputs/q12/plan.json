@@ -1,0 +1,168 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "점 $P(-8, 15)$는 제2사분면에 있다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P",
+    "F"
+  ],
+  "displayLines": [
+    "L"
+  ],
+  "hiddenPointNames": [
+    "X",
+    "F"
+  ],
+  "unmarkedPointNames": [
+    "X",
+    "F"
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    },
+    {
+      "id": "sFP",
+      "refs": [
+        "F",
+        "P"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "raF",
+      "refs": [
+        "O",
+        "F",
+        "P"
+      ]
+    }
+  ],
+  "caption": "점 P(-8,15)을 x축에 내리면 두 직각변의 길이는 8과 15이고, OP=17이다. 정답은 5이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "O는 원점이고 P=(-8,15)",
+      "mappedTo": [
+        "mathPlan.nodes"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P의 x축 수선의 발 F로 직각삼각형 O-F-P를 만든다",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "rightAngles"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "피타고라스 정리로 OP=17",
+      "mappedTo": [
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "좌표점 P와 원점을 이은 선분을 두 축 방향의 직각변으로 나누어 sin, cos, tan의 부호와 분모 17의 출처를 보여 준다."
+  ]
+}

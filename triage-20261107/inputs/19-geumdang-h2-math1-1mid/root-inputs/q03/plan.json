@@ -1,0 +1,124 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "호의 길이가 $6\\pi$이고 넓이가 $18\\pi$인 부채꼴",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "0"},
+            {"kind": "integer", "value": "0"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "6"},
+            {"kind": "integer", "value": "0"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "-6"},
+            {"kind": "integer", "value": "0"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["O"],
+        "args": {"radius": {"kind": "integer", "value": "6"}},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": ["O", "A", "B"],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id": "rOA", "refs": ["O", "A"]},
+    {"id": "rOB", "refs": ["O", "B"]}
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "C",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CCW",
+        "label": "6\\pi",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "radiusOA",
+        "from": "O",
+        "to": "A",
+        "label": "6",
+        "value": 6,
+        "side": "BELOW",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "regions": [
+      {
+        "id": "sector",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "label": "18\\pi",
+        "shapes": [
+          {"sector": {"center": "O", "from": "A", "to": "B", "side": "CCW"}}
+        ]
+      }
+    ]
+  },
+  "caption": "호의 길이 6π, 넓이 18π인 부채꼴에서 S=1/2rℓ이므로 r=6이다. 정답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "부채꼴의 호의 길이는 6π이고 넓이는 18π이다.",
+      "mappedTo": ["planeMarks.arcs", "planeMarks.regions"]
+    },
+    {
+      "id": "c2",
+      "condition": "S=1/2·r·ℓ에서 r=2S/ℓ=6이고 중심각은 ℓ/r=π이다.",
+      "mappedTo": ["mathPlan.nodes", "displaySegments", "planeMarks.dimensions"]
+    },
+    {
+      "id": "c3",
+      "condition": "중심 O와 반대 방향의 반지름 끝점 A,B가 이루는 부채꼴은 반원이다.",
+      "mappedTo": ["mathPlan.nodes", "planeMarks.regions"]
+    }
+  ],
+  "newVisualInformation": [
+    "반원 부채꼴의 반지름, 호의 길이, 넓이를 한 그림에서 연결해 S=1/2rℓ의 의미를 보여 준다."
+  ]
+}

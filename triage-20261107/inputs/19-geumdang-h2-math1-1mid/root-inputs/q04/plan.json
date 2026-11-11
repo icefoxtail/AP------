@@ -1,12 +1,9 @@
 {
   "capability": "number-line-figure-v1",
-  "sourceQuote": "두 조건을 합하면 $2<a<5$, $a\\ne3$",
   "numberLine": {
-    "axisVariable": "a",
     "rows": [
       {
         "kind": "SET",
-        "label": "2<a<3",
         "pieces": [
           {
             "lo": {
@@ -23,7 +20,6 @@
       },
       {
         "kind": "SET",
-        "label": "3<a<5",
         "pieces": [
           {
             "lo": {
@@ -38,7 +34,8 @@
         ],
         "integerPoints": true
       }
-    ]
+    ],
+    "variable": "a"
   },
   "numberLineCaption": {
     "text": "로그가 정의되는 정수 a"

@@ -1,0 +1,1 @@
+PLAN_READY · NOT_RENDERED · exact construction worker, displayed-geometry inventory, and phase2 specFor pass; no sample ray or point is invented; size=medium remains provisional until figure-result.json.

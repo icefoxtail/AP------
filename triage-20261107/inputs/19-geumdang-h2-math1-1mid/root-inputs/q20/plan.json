@@ -1,0 +1,59 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "axisVariable": true,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "3",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "모든 x에서 성립하는 정수 a"
+  },
+  "caption": "모든 t>0에서 부등식이 성립하는 정수 a는 0, 1, 2, 3이다. 답은 4이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "t=2^x로 두면 정의역은 정확히 t>0",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "c2",
+      "condition": "a<0은 제외, a=0은 포함, a>0일 때 정수 후보는 1,2,3",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "c3",
+      "condition": "따라서 가능한 정수 a는 0,1,2,3",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "해당 조건을 만족하는 정수 매개변수 네 값을 수직선의 분리된 점으로 나타낸다."
+  ]
+}

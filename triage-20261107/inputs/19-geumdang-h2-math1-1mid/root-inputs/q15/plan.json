@@ -1,0 +1,147 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "sourceQuote": "$u=\\log x$, $1\\le u<2$",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "layout": "SHARED",
+    "functionName": "f",
+    "axisVariable": "t",
+    "xWindow": [
+      0,
+      1
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "end": "OPEN"
+      }
+    ],
+    "jumpValues": [],
+    "axisTickValues": {
+      "x": [
+        0,
+        1
+      ],
+      "y": [
+        0,
+        1
+      ]
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "style": "DASHED",
+        "pieces": [
+          {
+            "coefficients": [
+              "1",
+              "-2"
+            ],
+            "domain": [
+              "0",
+              "1/2"
+            ],
+            "end": "CLOSED",
+            "start": "OPEN"
+          },
+          {
+            "coefficients": [
+              "2",
+              "-2"
+            ],
+            "domain": [
+              "1/2",
+              "1"
+            ],
+            "start": "OPEN",
+            "end": "OPEN"
+          }
+        ],
+        "jumpValues": [
+          {
+            "x": "0",
+            "y": "0"
+          }
+        ],
+        "axisTickValues": {
+          "x": [
+            0,
+            1
+          ],
+          "y": [
+            0,
+            1
+          ]
+        }
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "0",
+          "on": "g"
+        },
+        {
+          "id": "B",
+          "curveX": "1/3",
+          "on": "g"
+        },
+        {
+          "id": "C",
+          "curveX": "2/3",
+          "on": "g"
+        }
+      ],
+      "guides": [
+        {
+          "id": "gb",
+          "from": "B",
+          "axis": "x"
+        },
+        {
+          "id": "gc",
+          "from": "C",
+          "axis": "x"
+        }
+      ]
+    }
+  },
+  "caption": "t=log x−1에서 두 소수부분 그래프가 같은 t는 0, 1/3, 2/3이다. 해당 x값의 곱은 10⁴이다. 정답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "u=log x, 1≤u<2, t=u−1이므로 0≤t<1",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.xWindow"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "첫 소수부분은 t이고, 둘째는 frac(−2t)",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceCurves"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "두 그래프는 t=0,1/3,2/3에서만 같다",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 좌표평면에서 t와 frac(−2t)를 비교하고 세 교점의 t좌표를 수직 안내선으로 표시한다."
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "$\\pi < \\theta < \\dfrac{3}{2}\\pi$",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "225"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P"
+  ],
+  "displayLines": [
+    "L"
+  ],
+  "displayCircles": [
+    "C"
+  ],
+  "hiddenPointNames": [
+    "X"
+  ],
+  "unmarkedPointNames": [
+    "X"
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "rOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "theta",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 225,
+        "side": "OUTER",
+        "label": "θ",
+        "labelKind": "MATH",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "C",
+        "points": [
+          "P"
+        ]
+      }
+    ]
+  },
+  "caption": "제3사분면에서 tanθ=1이므로 θ=5π/4이다. 단위원의 점은 두 성분이 모두 음수이고 크기가 같다. 정답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "π<θ<3π/2이고 tanθ=1이므로 θ=5π/4",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "planeMarks.angles"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "단위원의 반지름은 1이며 P는 225° 방향에 놓인다",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "P는 단위원 위에 있고 제3사분면에 놓인다",
+      "mappedTo": [
+        "planeMarks.facts",
+        "planeMarks.angles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "제3사분면에서 θ=5π/4에 해당하는 반지름과 두 음수 좌표 성분을 단위원 위에 나타낸다."
+  ]
+}
