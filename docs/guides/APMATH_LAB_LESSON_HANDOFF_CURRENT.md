@@ -52,7 +52,7 @@
 | `g7-spatial` 공간 위치 관계 | 27 | 27 / 62 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1760](https://github.com/icefoxtail/AP------/pull/1760), merge `16460f7381b3ca9df8ee80934a2096e588fad380`. 최소 검사 102/102, 누락 0. 실제 학생 HTML은 이전 버전 |
 | `g7-construction` 작도와 합동 | 23 | 23 / 70 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1764](https://github.com/icefoxtail/AP------/pull/1764), merge `87b09c58ac6cc061ba623c1e3e990ddcc18f6537`. 최소 검사 141/141, 누락 0. 실제 학생 HTML은 이전 버전 |
 | `g8-pythagoras` 피타고라스 정리 | 37 | 37 / 87 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1766](https://github.com/icefoxtail/AP------/pull/1766), merge `8951ab5607b3e2d1b7fc54ae64738875a626fd87`. 최소 검사 151/151, 구문 17파일, 누락 0. 실제 학생 HTML은 이전 버전 |
-| `g8-triangles` 삼각형의 성질 | 43 | 구현 중 | `feat/lessons-g8-triangles`, main `8951ab5607b3e2d1b7fc54ae64738875a626fd87` 기준 신규 구현 (§6) |
+| `g8-triangles` 삼각형의 성질 | 43 | 43 / 165 | **IMPLEMENTED / QA_PENDING** · `feat/lessons-g8-triangles`, 별도 kit merge `3e084dec0a750e5855b907a0f25b1dc6d5d327bc` 반영. 최소 검사 171/171, 구문 16파일, 누락 0. PR·main·Pages 확인 예정 (§6) |
 | 중2 나머지 2개 · 중3 2개 | 167 | 0 | 미착수 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
 
@@ -174,7 +174,7 @@
 
 **중1과 다른 점 (2026-11-10 실측, 11-11 코드 재확인):** 풀이(정리) 탭이 탐구 화면과 **다른 숫자의 문제**를 그린다. 예: `g8-pythagoras`의 `py2-euclid`는 탐구에서 3-4-5 그림인데 정리 탭은 문제 조건 객체 `s.pyQ`의 문제(빗변 20 등)를 그린다(`g8-pythagoras/core.js`의 `qState`). 슬라이더 값을 바꿔도 고정 문제의 풀이 그림은 바뀌지 않아야 한다.
 
-**방식:** 해설은 풀이 탭 그림을 쓰되 **문제를 t=0에 고정**한다(실제 문제 조건 객체 `pyQ`와 seed를 첫 장 `at:0`의 `set`에 둔다). 자막의 수는 그 문제의 수다. 진입 화면도 같은 문제의 0단계 그림이어야 한다(K2가 들어가기 전에는 장면에 `lessonEntry` 처리).
+**방식:** 해설은 풀이 탭 그림을 쓰되 **문제를 t=0에 고정**한다. `g8-pythagoras`는 실제 문제 조건 객체 `pyQ`와 seed를 첫 장 `at:0`의 `set`에 둔다. `g8-triangles`는 별도 `pyQ`가 없고 `D.model(s)`와 `D.prob(M,s)`가 `tr*` 수치와 `trV`·`trQi`를 직접 읽으므로 해당 원본 조건을 첫 `start`/`set`에 고정한다. 움직일 값은 `start`/`to`로만 제어해 같은 키의 고정 `set`이 움직임을 덮지 않게 한다. 자막의 수는 그 문제의 수다. 진입 화면도 같은 문제의 0단계 그림이어야 한다(K2가 들어가기 전에는 장면에 `lessonEntry` 처리).
 
 **선행 작업 (첫 PR 전에):**
 
@@ -188,6 +188,10 @@
 **2026-11-11 전체 구현 최소 확인:** 총 **37장면/87해설**(t1·t2 11/24, t3·t4·t5 15/34, t6·t7·t8 11/29)을 구현했다. 기존 video 검사와 피타고라스 원본/신규 검사를 합쳐 **151/151**, JS/MJS 구문 **17파일**, HTML·카탈로그·등록 누락 0, production Board 진입/첫 cue/결론 **261상태**를 확인했다. 원본 문제·5보기·고정 조건 객체와 해설을 결속하고 실제 새 문제 처리 뒤 다시 보기에도 이를 복원한다. 접기 해설에서 직접 해 보기로 돌아간 뒤 탐구 슬라이더가 고정 문제까지 바꾸던 회귀와, 첫 cue가 기존 보기 선택을 지우던 회귀를 수정했다. 정수·유리수·제곱합·넓이·최단거리의 원본 수학 및 답 공개 시점을 검사했다. 실제 모바일 전수/독립 시각/장면별 브라우저 정밀검수는 **NOT_RUN / QA_PENDING**이다.
 
 피타고라스 운영 병합·Pages 확인 시도 후 `g8-triangles` → `g8-quadrilaterals` → `g8-similarity` → `g9-trig-ratio` → `g9-circle`을 실험실 단위로 진행한다.
+
+**삼각형의 성질 연결:** 원본 `SV.draw`/`SVK`/`SVB.runner`와 장면 모델을 재사용한다. 해설 진입 및 0단계는 풀이 index −1로 그려 주어진 조건만 먼저 보이며, 해설의 `start`/`to`가 이동을 담당하고 legacy `tick`은 해설 동안 상태를 덮지 않는다. 원래 `stepT` 기반 수동 움직임은 해설 밖에서 유지한다. 실제 선택지는 질문에 보존하되 `t3-3`의 단일 빈 `t`와 `p` 답 데이터는 답 입력용 항목이므로 보기로 노출하지 않는다. `trPick`·`trShow`는 재생 cue가 지우거나 선택하지 않는다.
+
+**삼각형 전체 최소 확인:** 43장면/165해설(t1~t3 17/59, t4~t5 13/49, t6~t7 13/57) 구현, 통합 Node 검사 **171/171**·JS/MJS 구문 **16파일**·등록 누락 0·production Board 진입/첫 cue/결론 **495상태** 확인. 합동 조건과 반례를 분리하고 원본 수치·보기와 고정 입력을 결속했다. 첫 set이 각도 이동을 덮는 충돌, 계산값과 자막 cue의 어긋남, 첫 제목의 직접 답 공개를 최소 보완했다. 원본 내심의 수선발이 이등변 조건에서 중점이 될 수 있는 예외도 수정하고 실제 원본 회귀를 확인했다. 전수 모바일·독립 시각·실제 브라우저 장면별 정밀검수는 NOT_RUN / QA_PENDING이다.
 
 ## 7. 고등
 
@@ -251,6 +255,8 @@
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
 
+- 2026-11-11 · `g8-triangles` **43장면/165해설 신규 구현 및 최소 안전 검사 완료**. Node **171/171**(실패·skip·cancel 0), JS/MJS 구문 **16파일**, 실제 HTML/카탈로그 누락 0, production Board **495상태**. 실제 새 문제 click handler 이후 해설 조건·도형 복원, 기존 `trPick`/`trShow` 보존, legacy tick 비개입을 확인했다. 합동 비교의 대응 관계와 길이 보존, 각도·거리·넓이·외심/내심 조건을 독립 계산했다. 검사 기록 SHA-256 `c82c17bb11e4a23b0e1de3b19bf4f7e561854b596f02490061e8bc00e38b0ca7`. **IMPLEMENTED / QA_PENDING**, PR·main·Pages 확인 예정. 실제 모바일 전수/독립 시각/브라우저 정밀검수는 NOT_RUN이며 5~8버튼의 실제 모바일 배치와 각 장의 그림·자막 가독성은 후속 확인 대상이다.
+- 2026-11-11 · [AWCR r16](https://drive.google.com/file/d/1gu5k8N5U5Q7_k33jb6o6qdFQBXtBlp8i/view) immutable 저장·원격 raw 재조회 완료. SHA-256 `5c6886c821b9caa2241ccda94a8ad5336fe1944f29c869373a56fe0e7b86f33a`, 49,357 bytes, parent r15 `f7dd56f2702bbd93d4e6b3f4545bcb57b635a0f1ea2a761656fa06930de636dd`와 task/owner/revision/schema/byte equality 검증. kit #1767 병합과 45/45 결과, 삼각형 checkpoint6 `3c5d224aa8798027f2ee12919e44c07c07144f77` / tree `78296594c3d0c667e4bdb28298aa2f5062bd6e4e`의 39장면/151해설 **WIP**를 보존했다. 이 revision 시점의 삼각형 통합 검사·PR·main은 미완료이며 다음 실행은 최신 원격 브랜치를 재조회해 이미 완료한 구현을 반복하지 않는다. 다음 revision r17.
 - 2026-11-11 · 삼각형의 합동 조건 판별 등 원본의 구별되는 개념을 각각 선택하기 위해 공통 키트 [PR #1767](https://github.com/icefoxtail/AP------/pull/1767)을 별도 정상 main 병합했다. head `9652c6beaff83ea733bbd5a5f3bbfd3ff7eeab23`, merge `3e084dec0a750e5855b907a0f25b1dc6d5d327bc`. 장면당 최대 8해설을 지원하며 9개는 거부한다. 기존 라벨 길이·중복, 장/자막 길이, 답 공개, 형제 상태 초기화 검사를 유지했다. video 41/41 및 두 기존 실험실 실제 등록·Board 회귀 4/4, 합계 45/45·구문 2파일 통과. 실제 Player prototype의 8번째 버튼·번호/이름 주소·다음 해설·음성 사례를 확인했으며 실제 모바일 QA는 NOT_RUN이다. 최종 head CI 23개 queued로 전체 CI PASS가 아니며 Pages는 별도 대기 상태다. 삼각형 내용 브랜치의 첫 원격 checkpoint는 이 merge를 부모로 사용해 별도 키트 작업을 포함한다.
 - 2026-11-11 · 중2 피타고라스 [PR #1766](https://github.com/icefoxtail/AP------/pull/1766) **main 운영 병합 완료**. head `e6f938722cbf2a3f8d198e316c3661f1cf0e46d9`, merge/API·Git main `8951ab5607b3e2d1b7fc54ae64738875a626fd87`; merge ancestor 및 대상 파일 차이 0 확인. 37장면/87해설, 최소 검사 151/151, 구문 17파일. 최종 head CI 11개 queued로 전체 CI PASS를 주장하지 않았다. 실제 학생 HTML은 HTTP 200·이전 4696 bytes·SHA-256 `5a0540c23a7222cbe1d5f99d854e97b598f792f4b7ff53c87789653b8983ed70`, player/lesson 연결 없음. 등록 writer 42977300462는 cancelled, 동일 source의 42977408585는 pending이다. **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING**. 다음 실험실 삼각형의 성질 43장면을 시작한다.
 - 2026-11-11 · [AWCR r15](https://drive.google.com/file/d/1wiikks2gZSnb_4JMQ0N8Q_viYu7_WDP1/view) immutable 저장·원격 raw 재조회 완료. raw SHA-256 `f7dd56f2702bbd93d4e6b3f4545bcb57b635a0f1ea2a761656fa06930de636dd`, 42,560 bytes, parent r14 `7dd3e7bcc67149d95dc7a0260f2dc3285a36b8f5ec8505161e8b6833b59aa2e3`와 task/owner/revision/schema/byte equality 결속 확인. main 누계 319장면/630해설, Pages 확인 196/319, 대기 123/311이며 품질 UNKNOWN·전수 QA NOT_RUN이다. 다음 revision r16.

@@ -72,7 +72,7 @@
       ]),
       ch('대응하는 부분을 겹쳐요', [
         { at: 0, say: 'A·B·D에 A·C·D가 대응해요. 두 삼각형을 겹쳐 보아요.', to: { trMatch: 1 }, dur: 4 },
-        cue(5.5, v === 2 ? '대응변 BD와 CD가 같으므로 CD도 6 cm예요.' : 'D의 두 각은 서로 같고, 일직선을 이루어 합이 180°예요.', v === 0 ? 4 : 3, { trCompare: false, trCalculationReady: true, trLine: v === 2 ? 'BD=CD=6 cm' : '∠ADB=∠ADC, 두 각의 합 180°' })
+        cue(5.5, v === 2 ? '대응변 BD와 CD가 같으므로 CD도 6 cm예요.' : v === 0 ? 'D의 두 각은 같고 합이 180°라, 각각 90°예요.' : 'D의 두 각은 서로 같고, 일직선을 이루어 합이 180°예요.', v === 0 ? 4 : 3, { trCompare: false, trCalculationReady: true, trLine: v === 2 ? 'BD=CD=6 cm' : v === 0 ? '∠ADB=∠ADC=90°' : '∠ADB=∠ADC, 두 각의 합 180°' })
       ]),
       ch('물은 값으로 계산해요', [
         cue(0, v === 0 ? 'D의 각은 90°예요. ABD에서 남은 B의 각을 구해요.' : v === 1 ? '같은 두 각의 합 180°를 2로 나누어요.' : 'D는 중점이에요. BD와 CD를 더하면 BC 전체가 돼요.', v === 0 ? 5 : 4),
@@ -191,7 +191,7 @@
         cue(5.5, sym ? 'CD=CE이므로 CDE와 CED는 (180°−3x)÷2예요.' : v ? 'CD=CE이므로 두 밑각은 남은 180°−96°를 반씩 나눠요.' : 'CD=CE이므로 CDE와 CED는 (180°−96°)÷2=42°예요.', v === 1 ? undefined : 6, { trLine: sym ? '∠CDE=(180°−3x)÷2' : v ? '∠CDE=∠CED' : '∠CDE=∠CED=42°' })
       ]),
       ch('물은 각을 확인하고 계산', [
-        cue(0, sym ? 'EDF=180°−2x−(180°−3x)÷2=90°−x÷2예요.' : v ? 'CDE는 두 밑각 중 하나이므로 (180°−96°)를 2로 나누어요.' : 'D에서 일직선이므로 EDF=180°−64°−42°예요.', v === 1 ? 6 : 7, { trLine: sym ? '90°−x÷2=74°' : v ? '(180°−96°)÷2' : '180°−64°−42°' }),
+        cue(0, sym ? 'EDF=180°−2x−(180°−3x)÷2=90°−x÷2예요.' : v ? 'CDE는 두 밑각 중 하나이므로 (180°−96°)를 2로 나누어요.' : 'D에서 일직선이므로 EDF=180°−64°−42°예요.', v === 1 ? 5 : 7, { trLine: sym ? '90°−x÷2=74°' : v ? '(180°−96°)÷2' : '180°−64°−42°' }),
         cue(5.5, sym ? 'x÷2=90°−74°=16°이므로 x=32°예요.' : v ? 'x=84°÷2=42°예요.' : 'x=74°예요. 안쪽 밑각 42°에서 멈추지 않아요.', sym ? 9 : 8, { trShowAnswer: true, trLine: 'x=' + [74, 42, 32][v] + '°' })
       ])
     ]);
@@ -261,7 +261,7 @@
         { at: 5.5, say: 'A와 D를 기준으로 옮겨 겹쳐 보아요. B와 C가 대응해요.', to: { trMatch: 1 }, dur: 4 }
       ]),
       ch('RHS 합동의 결과를 써요', [
-        cue(0, concept ? '직각·빗변·다른 한 변이 같아 RHS 합동이에요.' : v === 0 ? 'RHS 합동이라 CD=BD=4 cm예요. BC는 두 부분의 합이에요.' : v === 1 ? 'RHS 합동이라 BAD와 CAD는 100°의 반인 50°예요.' : 'RHS 합동이라 CAD는 BAD와 같아요. BAD=90°−40°예요.', concept ? 6 : 7, { trCompare: false, trCalculationReady: !concept, trLine: concept ? '△ABD≡△ACD (RHS)' : v === 0 ? 'CD=BD=4 cm' : v === 1 ? '∠BAD=∠CAD=50°' : '∠CAD=∠BAD=90°−40°' }),
+        cue(0, concept ? '직각·빗변·다른 한 변이 같아 RHS 합동이에요.' : v === 0 ? 'RHS 합동이라 CD=BD=4 cm예요. BC는 두 부분의 합이에요.' : v === 1 ? 'RHS 합동이라 BAD와 CAD는 100°의 반인 50°예요.' : 'RHS 합동이라 CAD=BAD이고, BAD=90°−40°=50°예요.', concept ? 6 : 7, { trCompare: false, trCalculationReady: !concept, trLine: concept ? '△ABD≡△ACD (RHS)' : v === 0 ? 'CD=BD=4 cm' : v === 1 ? '∠BAD=∠CAD=50°' : '∠CAD=∠BAD=90°−40°' }),
         cue(5.5, concept ? '붙인 전체 ABC는 AB=AC인 이등변삼각형이에요. 두 밑각도 같아요.' : v === 0 ? 'x=BD+CD=4+4=8 cm예요.' : v === 1 ? '직각삼각형 ABD에서 x=90°−50°=40°예요.' : 'x=50°예요. 전체 꼭지각과 반쪽 각을 구별해요.', 8, { trShowAnswer: true, trLine: answer })
       ])
     ]);
@@ -355,7 +355,7 @@
         { at: 5.5, say: '같은 예각 B와 A까지 맞추어 두 삼각형을 옮겨 겹쳐요.', to: { trMatch: 1 }, dur: 4 }
       ]),
       ch(concept ? '합동 관계를 읽어요' : '대응변의 길이를 이용', [
-        cue(0, concept ? '직각·빗변·한 예각이 같고, 대응하는 세 점이 모두 포개어져요.' : v === 1 ? 'RHA 합동이므로 CE는 AD와 대응해요. BD와 혼동하지 않아요.' : 'RHA 합동이므로 AE=BD=3 cm, AD=CE=5 cm예요.', concept ? 4 : 5, { trCompare: false, trCalculationReady: !concept, trLine: concept ? 'A↔C, B↔A, D↔E' : v === 1 ? 'CE=AD' : area ? 'AD=5, AE=3, 높이 DE=8 cm' : 'AE=3 cm, AD=5 cm' }),
+        cue(0, concept ? '직각·빗변·한 예각이 같고, 대응하는 세 점이 모두 포개어져요.' : v === 1 ? 'RHA 합동으로 AE=BD=3 cm, CE=AD예요.' : area ? 'RHA 합동으로 AE=3, AD=5, 높이 DE=8 cm예요.' : 'RHA 합동이므로 AE=BD=3 cm, AD=CE=5 cm예요.', concept ? 4 : 5, { trCompare: false, trCalculationReady: !concept, trLine: concept ? 'A↔C, B↔A, D↔E' : v === 1 ? 'CE=AD' : area ? 'AD=5, AE=3, 높이 DE=8 cm' : 'AE=3 cm, AD=5 cm' }),
         cue(5.5, concept ? '따라서 △ABD≡△CAE이고, 합동 조건은 RHA예요.' : v === 1 ? 'CE=AD이므로 x=5 cm예요.' : area ? '평행한 두 변 BD와 CE 사이의 높이는 DE=5+3=8 cm예요.' : 'DE=AD+AE이므로 x=5+3=8 cm예요.', concept || area ? 5 : 7, { trShowAnswer: concept || !area, trLine: concept ? answer : area ? 'BD=3, CE=5, 높이 DE=8 cm' : answer })
       ])
     ];
