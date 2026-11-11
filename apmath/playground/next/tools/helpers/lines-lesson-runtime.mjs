@@ -66,7 +66,7 @@ export async function load() {
   for (const fn of ready) fn();
   await new Promise(resolve => setTimeout(resolve, 0));
   assert.ok(definition, 'production inline page creates the lab');
-  const list = definition.groups.flatMap(group => group.scenes.map(scene => ({ ...scene, groupId: group.id }))); 
+  const list = definition.groups.flatMap(group => group.scenes.map(scene => ({ ...scene, groupId: group.id })));
   assert.ok(Array.isArray(list), 'the production page exposes its original scenes');
   const surface = canvas(), board = new context.APLab.Board(surface, { ...definition.board, interactive: false });
   board.resize(1000, 650);
