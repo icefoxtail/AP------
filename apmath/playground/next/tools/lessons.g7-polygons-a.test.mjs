@@ -111,6 +111,12 @@ test('the chain and attached-triangle lessons satisfy their equal-side condition
 });
 
 test('intermediate numbers appear when explained, while original given angles remain visible', () => {
+  frame('p1-find', find('p1-find', '몇각형'));
+  Object.assign(lab.s, { lessonOn: false, lessonEntry: true });
+  const candidate = lab.draw();
+  assert.ok(candidate.paths.length > 0, 'entry retains the actual candidate polygon');
+  assert.ok(candidate.texts.includes('목표 대각선 27개 · 후보 6각형'));
+  assert.equal(row(candidate).length, 0, 'candidate is not a revealed solution');
   const diagonal = find('p1-one', '대각선');
   assert.ok(!frame('p1-one', diagonal, 10).texts.includes('4'), 'numbered final diagonal is not an early answer');
   const count = find('p1-all', '전체개수');

@@ -204,7 +204,7 @@
       const n = C.lesson ? M.n : C.review || C.problem ? M.ns : M.n;
       fit(b, { x0: -1, x1: 1, y0: -1, y1: 1 }, { t: 40, b: 84 });
       const O = pt(0, 0);
-      if (C.problem || C.lesson && s.lessonEntry || (C.review && !C.lesson && C.step < 3)) {
+      if (C.problem || (C.review && !C.lesson && C.step < 3)) {
         b.circle(O, 1, { color: 'muted', width: 2.4, dash: [7, 6] });
         T(b, O, '?각형', { size: 26, color: 'amber' });
         T(b, pt(0, 1), C.review && C.step >= 2 ? `n(n−3) = ${M.two}` : `대각선 ${M.T0}개`, { dy: 46, size: 18, color: 'green' });
