@@ -83,8 +83,9 @@
 | `calc1-composite` 합성함수·절댓값 그래프 | 7 | 7 / 20 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1837](https://github.com/icefoxtail/AP------/pull/1837), merge `420f1de6ac9afe349501ba3caeae876bdb47aa0c`. 원문 목표10·탐구개념10. 최소66/66(수학20·runtime5·공통video41),323개 실제 Board/canvas 상태·validator 오류/경고0 |
 | `calc1-integral` 정적분과 넓이 | 8 | 8 / 27 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1839](https://github.com/icefoxtail/AP------/pull/1839), merge `d896c9f263b0a52a5764039e4062c29ebc15caa7`. 원문·등록유형 목표14·탐구개념13. 최소71/71(수학8·runtime8·공통video/pins55),408개 실제 Board/canvas 상태·validator 오류/경고0 |
 | `calc1-motion` 속도·가속도·이동거리 | 5 | 5 / 20 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1840](https://github.com/icefoxtail/AP------/pull/1840), merge `461493481fbcc268c5236f6a812614aa7c057002`. 원문 목표11·탐구개념9. 최소64/64(수학16·runtime7·공통video41),474개 실제 cue 상태·validator 오류/경고0 |
-| `geom-parabola` 포물선 | 14 | 14 / 38 | **IMPLEMENTED / QA_PENDING** · 원문 목표26·탐구개념12. 최소70/70(수학23·runtime6·공통video41),600개 실제 Board/canvas 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
-| 고등 잔여 11개 | — | — | `geom-ellipse` 12장면 → `geom-hyperbola` 15장면 → `geom-space` 9장면 → `geom-projection` 7장면. 타원·쌍곡선·공간도형은 별도 담당/브랜치로 진행 |
+| `geom-parabola` 포물선 | 14 | 14 / 38 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1841](https://github.com/icefoxtail/AP------/pull/1841), merge `fb69e8c06f00067dd0125b01745f6a07ad5b175c`. 원문 목표26·탐구개념12. 최소70/70(수학23·runtime6·공통video41),600개 실제 Board/canvas 상태·validator 오류/경고0 |
+| `geom-ellipse` 타원 | 12 | 12 / 35 | **IMPLEMENTED / QA_PENDING** · 원문 목표15·탐구개념20. 최소75/75(수학12·runtime8·공통video/pins55),544개 실제 Board/canvas 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
+| 고등 잔여 10개 | — | — | `geom-hyperbola` 15장면 → `geom-space` 9장면 → `geom-projection` 7장면 → `geom-space-coord` 8장면. 쌍곡선은 검증 완료·병합 대기, 3D 세 실험실은 별도 담당/브랜치로 진행 |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -274,6 +275,10 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 · **타원 전체 구현.** `feat/lessons-geom-ellipse`, catalog/HTML 1-A~4-B와 q5/q6 **12장면/35해설**(원문 목표15·탐구개념20), 누락0. 원본 접기·세로 축소·초점 이동·광선 반사와 원문 다중 목표를 분리했다. 첫 packet/질문 고정·수동 새문제·원래 탐구·형제/entry snapshot·카메라 보존. 원본 2-C의 x1=0일 때 설명만 있던 수평 접선 두 개를 기존 renderer로 보강했다. 실제 셸의 장면 복제 조건에서 first packet 선택 오류를 재현한 뒤 객체 동일성 대신 scene.id를 비교하도록 수정했다. helper도 실제 stackScene/복제 경계를 반영했고 최종75개를 다시 통과했다. 해설 화면에 공통 절편과 반사점 범위를 포함하고 전체 측정/가시 라벨 공개 순서를 구분했다. 최소 **75/75 PASS**(독립수학12·native8·공통video/pins55), **544개 실제 cue/mid 상태**, validator 오류/경고0·구문8단위·diff 통과. 최신 main 통합 후 실제 입력46파일 SHA256 동일. 공통 kit 수정 없음. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
+
+- 2026-11-12 · **포물선 main 병합.** [PR #1841](https://github.com/icefoxtail/AP------/pull/1841), feature `2db8d28ec08332344c74dc076bef0c82f0c3db7f`, merge/main readback `fb69e8c06f00067dd0125b01745f6a07ad5b175c`, tested tree `6ebf504a3ee7ac95ef9313dfba1b5dca77e88fe9`. 누적 **43실험실/872장면/2,514해설**. AWCR r69 raw SHA256 `16ad63bd77c6bc3f6a40e1fa6b2165fd2aa88550eda5424c86074f602bf2f172` 확인. Pages writer43060888403은 runner 배정 뒤 실행 중이며 성공 영수증 미확인, **PAGES_NOT_VERIFIED**. 다음 타원→쌍곡선→공간도형 순서로 병합한다.
 
 - 2026-11-12 · **포물선 전체 구현.** `feat/lessons-geom-parabola`, catalog/HTML legacy12+q5/q6 **14장면/38해설**(원문 목표26·탐구개념12), 누락0. 초점·준선 정의, 최소 거리와 등호 조건, 초점현, 접선 각과 수선, 정사각형/넓이, 자취, 공유 초점과 평행이동을 원문별로 나누었다. 실제 하단 띠의 TeX 소실과 분모에 들어가는 분수 표기를 lab-local로 수정하고 Board·KaTeX 경로를 확인했다. 과거 분수 오류 8개 화면을 개별 재캡처했다고 기록하지 않는다. 첫 원문·새문제·drag·외부 state·형제/entry 복원·각 목표별 최종 공개를 native로 확인. 최소 **70/70 PASS**(독립수학23·native6·공통video41), **600개 실제 상태**, validator 오류/경고0·구문8단위·diff 통과. 최신 main 통합 후 선택 입력17개 SHA256 동일. 공통 kit 수정 없음. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
 
