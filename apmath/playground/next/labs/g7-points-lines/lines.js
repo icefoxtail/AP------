@@ -52,6 +52,32 @@
   const pointsRow = (b, xs, names, y, colors) => xs.forEach((x, i) => { b.point({ x, y }, { color: 'ink', r: 5.5 }); PL.T(b, { x, y }, names[i], { dy: 21, size: 17, color: (colors && colors[i]) || 'ink' }); });
   const mainLine = (b, y) => b.seg({ x: XL, y }, { x: XR, y }, { color: 'muted', width: 1.8, alpha: 0.5 });
 
+  // 해설에서는 주어진 점을 움직이지 않고, 그 점을 지나는 선을 실제로 그린다.
+  // 직접 해 보기의 기존 도형·핸들·문제 생성은 아래 원래 경로를 그대로 사용한다.
+  const lessonReady = (s, key = 'plShowAnswer') => !s.lessonEntry && s[key] === true;
+  const lessonProgress = (s) => s.lessonEntry ? 0 : clamp(Number(s.plTrace) || 0, 0, 1);
+  const trace = (b, A, B, s, color, arrowHead = false, width = 4) => {
+    const p = lessonProgress(s);
+    if (p <= 0) return;
+    const end = { x: A.x + (B.x - A.x) * p, y: A.y + (B.y - A.y) * p };
+    if (arrowHead && Math.hypot(end.x - A.x, end.y - A.y) * b.k > 18) PL.arrow(b, A, end, { color, width, head: 10 });
+    else b.seg(A, end, { color, width });
+  };
+  const lessonLine = (b, s, y, color = 'sky') => {
+    straight(b, y, 'muted', .3, 2);
+    const A = { x: 6, y };
+    trace(b, A, { x: XL, y }, s, color, true);
+    trace(b, A, { x: XR, y }, s, color, true);
+  };
+  const lessonRay = (b, s, y, x, dir, color) => {
+    const A = { x, y }, B = { x: dir > 0 ? XR : XL, y };
+    PL.arrow(b, A, B, { color: 'muted', width: 2, alpha: .3 });
+    trace(b, A, B, s, color, true);
+    b.point(A, { color, r: 6 });
+  };
+  const lessonLabel = (b, y, text, color = 'ink') => rowLabel(b, y, text, color, 99, true);
+  const lessonText = (b, y, text, color = 'green') => T(b, { x: (XL + XR) / 2, y }, text, { color, size: 16 });
+
   /* ================================================================== 반직선 AB와 BA */
   const TRUE_R = [
     { t: '직선 AB와 직선 BA는 같다.' }, { t: '선분 AB와 선분 BA는 같다.' }, { t: '반직선 AB의 시작점은 점 A이다.' },
@@ -87,6 +113,25 @@
     notes: () => '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>반직선 AB의 \'A\'는 시작점, \'B\'는 가는 방향을 알려 주는 점입니다.</li><li>직선·반직선은 끝이 없어서 길이를 잴 수 없습니다.</li></ul>',
     draw: (b, s, M, C) => {
       const st = C.step, y = [0, 2.7, 4.8, 6.9, 9.3];
+      if (C.lesson) {
+        const mode = s.plLessonMode, done = lessonReady(s);
+        mainLine(b, 0);
+        pointsRow(b, [M.A, M.B], [`A(${M.A})`, `B(${M.B})`], 0);
+        guide(b, [M.A, M.B], 0, 8.9);
+        lessonLabel(b, y[1], done && mode === 'lineOrder' ? '직선 AB = 직선 BA' : '직선 AB, 직선 BA', 'sky');
+        lessonLine(b, s, y[1]);
+        lessonLabel(b, y[2], '반직선 AB · 시작점 A', 'violet');
+        lessonRay(b, s, y[2], M.A, M.dir, 'violet');
+        lessonLabel(b, y[3], '반직선 BA · 시작점 B', 'rose');
+        lessonRay(b, s, y[3], M.B, -M.dir, 'rose');
+        if (done && mode !== 'rayOrder') {
+          const A = { x: M.A, y: y[4] }, B = { x: M.B, y: y[4] };
+          b.seg(A, B, { color: 'green', width: 7 });
+          b.point(A, { color: 'green', r: 6 }); b.point(B, { color: 'green', r: 6 });
+          lessonLabel(b, y[4], mode === 'lineOrder' ? '선분 AB = 선분 BA' : `공통부분: 선분 AB · ${M.d} cm`, 'green');
+        } else lessonText(b, 8.8, done ? '반직선 AB ≠ 반직선 BA' : '이름과 방향을 비교해 보세요', done ? 'green' : 'muted');
+        return;
+      }
       guide(b, [M.A, M.B], y[0], y[4] - 0.35);
       mainLine(b, y[0]);
       b.point({ x: M.A, y: 0 }, { color: 'ink', r: 5.5 }); b.point({ x: M.B, y: 0 }, { color: 'ink', r: 5.5 });
@@ -145,6 +190,19 @@
     notes: () => '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>\'직선 AB의 길이는 반직선 AB의 길이의 2배이다\'는 <b>틀린 말</b>입니다. 둘 다 길이를 잴 수 없습니다.</li><li>서로 다른 두 점을 지나는 직선은 오직 1개입니다.</li></ul>',
     draw: (b, s, M, C) => {
       const st = C.step, y = [2.2, 4.6, 7.0];
+      if (C.lesson) {
+        const mode = s.plLessonMode, done = lessonReady(s);
+        mainLine(b, 0); pointsRow(b, [M.A, M.B], [`A(${M.A})`, `B(${M.B})`], 0);
+        guide(b, [M.A, M.B], 0, y[2]);
+        lessonLabel(b, y[0], '직선 AB', 'sky'); lessonLine(b, s, y[0]);
+        lessonLabel(b, y[1], '반직선 AB', 'violet'); lessonRay(b, s, y[1], M.A, 1, 'violet');
+        lessonLabel(b, y[2], '선분 AB', 'green');
+        b.seg({ x: M.A, y: y[2] }, { x: M.B, y: y[2] }, { color: 'muted', width: 2, alpha: .3 });
+        trace(b, { x: M.A, y: y[2] }, { x: M.B, y: y[2] }, s, 'green', false, 6);
+        [M.A, M.B].forEach(x => b.point({ x, y: y[2] }, { color: 'green', r: 6 }));
+        if (done) lessonText(b, 8.25, mode === 'typeLine' ? '직선: 끝점 0개 · 길이 측정 불가' : mode === 'typeRay' ? '반직선: 끝점 1개 · 길이 측정 불가' : `선분: 끝점 2개 · 길이 ${M.L} cm`);
+        return;
+      }
       rowLabel(b, y[0], '직선 AB  (끝점 없음)', 'sky', st, st === 1);
       straight(b, y[0], 'sky', al(st, st === 1));
       rowLabel(b, y[1], '반직선 AB  (끝점 A 하나)', 'violet', st, st === 2);
