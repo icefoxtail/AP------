@@ -101,9 +101,12 @@ test("unit_general, unit_other and excluded follow their rules", () => {
         // A question-number key is only ever excluded, and only question-number keys are.
         assert.equal(isProblemNumberKey(entry.subUnitKey), group.kind === "excluded", `${scope.unitKey} ${entry.subUnitKey} in ${group.kind}`);
         if (group.kind === "unit_other") {
-          // An ad-hoc key (not in the master table), or a broad key that came from another unit.
-          if (master.has(entry.subUnitKey)) { assert.equal(entry.basis, "foreign_broad_key"); assert.ok(isBroadKey(entry.subUnitKey, master), `${entry.subUnitKey} is a master key, not an ad-hoc key`); }
-          else assert.equal(entry.basis, "adhoc_to_other");
+          // An ad-hoc key (not in the master table), a broad key that came from another unit, or another unit's / grade's
+          // master key that fits no 소단원 of this unit.
+          if (master.has(entry.subUnitKey)) {
+            assert.ok(["foreign_broad_key", "foreign_unit_key", "cross_grade_key"].includes(entry.basis), `${scope.unitKey} ${entry.subUnitKey} basis ${entry.basis}`);
+            if (entry.basis === "foreign_broad_key") assert.ok(isBroadKey(entry.subUnitKey, master), `${entry.subUnitKey} is not a broad key`);
+          } else assert.equal(entry.basis, "adhoc_to_other");
         }
         if (group.kind === "unit_general") assert.equal(entry.basis, "unit_general_key");
         if (group.kind === "excluded") assert.equal(entry.basis, "problem_number_key");
@@ -260,6 +263,11 @@ test("구역(section) is an optional heading from the unit's own list; only subu
   assert.deepEqual(scope.sections, ["여러 가지 방정식", "여러 가지 부등식"]);
   const sectionOf = (key) => scope.groups.find((group) => group.keys.some((entry) => entry.subUnitKey === key)).section;
   assert.equal(sectionOf("H22-C-06-EQUATION_BASIC"), "여러 가지 방정식");
+  // 방정식과 부등식의 활용 mixes inequality word problems, so it has no section; 이차부등식 questions are not in 방정식의 풀이.
+  assert.equal(sectionOf("H22-C-06-EQUATION_APPLICATION"), undefined);
+  assert.equal(sectionOf("H15-SA-08-EQUATION_BASIC"), "여러 가지 부등식");
+  assert.equal(scope.groups.find((group) => group.keys.some((entry) => entry.subUnitKey === "H15-SA-08-EQUATION_BASIC")).label, "이차부등식");
+  assert.equal(allGroups.get("SG:COMMON_MATH_2:H22-C2-01:MOVED:H22-C-06:H15-SA-08-SYSTEM_INEQUALITY").group.keys[0].subUnitKey, "H15-SA-09-QUADRATIC_INEQUALITY");
   assert.equal(sectionOf("H15-SA-08-SYSTEM_INEQUALITY"), "여러 가지 부등식");
 });
 

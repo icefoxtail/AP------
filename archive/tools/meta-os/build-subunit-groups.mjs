@@ -27,7 +27,7 @@ export const TABLE_SCHEMA = "archive2-subunit-groups-v1";
 export const KINDS = Object.freeze(["subunit", "unit_general", "unit_other", "moved", "excluded"]);
 export const BASES = Object.freeze([
   "anchor", "standalone", "same_master_label", "curriculum_2015_2022", "unit_renumber", "content_checked",
-  "unit_general_key", "adhoc_to_other", "foreign_broad_key", "moved_to_other_unit", "cross_grade_key", "problem_number_key",
+  "unit_general_key", "adhoc_to_other", "foreign_broad_key", "foreign_unit_key", "moved_to_other_unit", "cross_grade_key", "problem_number_key",
 ]);
 export const UNCLASSIFIED_UNIT = "UNCLASSIFIED";
 export const KIND_LABELS = Object.freeze({ unit_general: "단원 일반", unit_other: "기타", excluded: "제외(문제 번호 키)" });
@@ -131,7 +131,8 @@ export function buildTable({ rules, masterLabels, unitIndex }) {
         if (!claim(entry.key, group.kind)) continue;
         const isMaster = masterLabels.has(entry.key);
         if (group.kind === "excluded" && !isProblemNumberKey(entry.key)) fail("RULES_EXCLUDED_NOT_NUMBER_KEY", `${id} ${entry.key}`);
-        if (group.kind === "unit_other" && isMaster && entry.basis !== "foreign_broad_key") fail("RULES_OTHER_HAS_MASTER_KEY", `${id} ${entry.key}`);
+        // 기타 holds ad-hoc keys, a broad key of another unit, or another unit's (or grade's) key that fits no 소단원 here.
+        if (group.kind === "unit_other" && isMaster && !["foreign_broad_key", "foreign_unit_key", "cross_grade_key"].includes(entry.basis)) fail("RULES_OTHER_HAS_MASTER_KEY", `${id} ${entry.key}`);
         if (group.kind === "unit_other" && entry.basis === "foreign_broad_key" && !isBroadKey(entry.key, masterLabels)) fail("RULES_FOREIGN_KEY_NOT_BROAD", `${id} ${entry.key}`);
         if (group.kind === "unit_other" && isProblemNumberKey(entry.key)) fail("RULES_OTHER_HAS_NUMBER_KEY", `${id} ${entry.key}`);
         if (group.kind !== "excluded") {
