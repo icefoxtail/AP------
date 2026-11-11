@@ -1,31 +1,31 @@
 {
  "capability": "composite-panels-v1",
  "columns": 1,
- "caption": "닮음비 AB:EF=8:12=2:3이므로 BC:FG=2:3이고, 12:FG=2:3에서 FG=18cm이다.",
- "sourceQuote": "$AB:EF=8:12=2:3$이므로 $BC:FG=2:3$이다.",
+ "caption": "두 변의 길이 8cm, 12cm와 그 끼인각 70°가 각각 같으므로 △ABC≡△DEF(SAS 합동)이다. 따라서 나머지 대응변 AC=DF이다.",
+ "sourceQuote": "두 삼각형이 합동이 되는 조건",
  "sourceConditions": [
   {
    "id": "c1",
-   "condition": "사각형 ABCD와 사각형 EFGH가 닮음, AB=8cm, BC=12cm, EF=12cm",
+   "condition": "△ABC: AB=8cm, BC=12cm, ∠B=70°",
    "mappedTo": [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H"
+    "p1"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "△DEF: DE=8cm, EF=12cm, ∠E=70°",
+   "mappedTo": [
+    "p2"
    ]
   }
  ],
  "newVisualInformation": [
-  "대응변 AB↔EF는 파란색, BC↔FG는 주황색 선으로 표시하고 닮음비 2:3"
+  "두 삼각형을 위아래로 같은 눈금으로 놓고, 같은 색·같은 눈금 표시·같은 호가 대응하는 변과 각을 나타낸다"
  ],
  "panels": [
   {
    "caption": {
-    "text": "□ABCD"
+    "text": "△ABC"
    },
    "plan": {
     "capability": "construction-spike-v1",
@@ -89,30 +89,9 @@
         },
         "angleDeg": {
          "kind": "integer",
-         "value": "80"
+         "value": "70"
         },
         "turn": "CCW"
-       },
-       "outputType": "POINT",
-       "factRole": "GIVEN"
-      },
-      {
-       "id": "D",
-       "op": "POLAR_POINT",
-       "inputs": [
-        "C",
-        "B"
-       ],
-       "args": {
-        "length": {
-         "kind": "integer",
-         "value": "9"
-        },
-        "angleDeg": {
-         "kind": "integer",
-         "value": "75"
-        },
-        "turn": "CW"
        },
        "outputType": "POINT",
        "factRole": "GIVEN"
@@ -141,16 +120,9 @@
       ]
      },
      {
-      "id": "sCD",
+      "id": "sCA",
       "refs": [
        "C",
-       "D"
-      ]
-     },
-     {
-      "id": "sDA",
-      "refs": [
-       "D",
        "A"
       ]
      }
@@ -158,10 +130,24 @@
     "displayPoints": [
      "A",
      "B",
-     "C",
-     "D"
+     "C"
     ],
     "planeMarks": {
+     "angles": [
+      {
+       "id": "aB",
+       "refs": [
+        "C",
+        "B",
+        "A"
+       ],
+       "value": 70,
+       "label": "70",
+       "arcs": 2,
+       "side": "INNER",
+       "factRole": "GIVEN"
+      }
+     ],
      "dimensions": [
       {
        "id": "dAB",
@@ -209,7 +195,7 @@
   },
   {
    "caption": {
-    "text": "□EFGH (닮음비 2:3)"
+    "text": "△DEF (SAS 합동)"
    },
    "plan": {
     "capability": "construction-spike-v1",
@@ -222,6 +208,25 @@
      },
      "nodes": [
       {
+       "id": "E",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
        "id": "F",
        "op": "SOURCE_POINT",
        "inputs": [],
@@ -229,7 +234,7 @@
         "coordinates": [
          {
           "kind": "integer",
-          "value": "0"
+          "value": "12"
          },
          {
           "kind": "integer",
@@ -241,63 +246,22 @@
        "factRole": "GIVEN"
       },
       {
-       "id": "G",
-       "op": "SOURCE_POINT",
-       "inputs": [],
-       "args": {
-        "coordinates": [
-         {
-          "kind": "integer",
-          "value": "18"
-         },
-         {
-          "kind": "integer",
-          "value": "0"
-         }
-        ]
-       },
-       "outputType": "POINT",
-       "factRole": "GIVEN"
-      },
-      {
-       "id": "E",
+       "id": "D",
        "op": "POLAR_POINT",
        "inputs": [
-        "F",
-        "G"
-       ],
-       "args": {
-        "length": {
-         "kind": "integer",
-         "value": "12"
-        },
-        "angleDeg": {
-         "kind": "integer",
-         "value": "80"
-        },
-        "turn": "CCW"
-       },
-       "outputType": "POINT",
-       "factRole": "GIVEN"
-      },
-      {
-       "id": "H",
-       "op": "POLAR_POINT",
-       "inputs": [
-        "G",
+        "E",
         "F"
        ],
        "args": {
         "length": {
-         "kind": "rational",
-         "numerator": "27",
-         "denominator": "2"
+         "kind": "integer",
+         "value": "8"
         },
         "angleDeg": {
          "kind": "integer",
-         "value": "75"
+         "value": "70"
         },
-        "turn": "CW"
+        "turn": "CCW"
        },
        "outputType": "POINT",
        "factRole": "GIVEN"
@@ -312,6 +276,13 @@
     "displayCircles": [],
     "displaySegments": [
      {
+      "id": "sDE",
+      "refs": [
+       "D",
+       "E"
+      ]
+     },
+     {
       "id": "sEF",
       "refs": [
        "E",
@@ -319,40 +290,40 @@
       ]
      },
      {
-      "id": "sFG",
+      "id": "sFD",
       "refs": [
        "F",
-       "G"
-      ]
-     },
-     {
-      "id": "sGH",
-      "refs": [
-       "G",
-       "H"
-      ]
-     },
-     {
-      "id": "sHE",
-      "refs": [
-       "H",
-       "E"
+       "D"
       ]
      }
     ],
     "displayPoints": [
+     "D",
      "E",
-     "F",
-     "G",
-     "H"
+     "F"
     ],
     "planeMarks": {
+     "angles": [
+      {
+       "id": "aE",
+       "refs": [
+        "F",
+        "E",
+        "D"
+       ],
+       "value": 70,
+       "label": "70",
+       "arcs": 2,
+       "side": "INNER",
+       "factRole": "GIVEN"
+      }
+     ],
      "dimensions": [
       {
-       "id": "dEF",
-       "from": "E",
-       "to": "F",
-       "label": "12",
+       "id": "dDE",
+       "from": "D",
+       "to": "E",
+       "label": "8",
        "unit": "cm",
        "side": "LEFT",
        "style": "BAR",
@@ -360,27 +331,27 @@
        "factRole": "GIVEN"
       },
       {
-       "id": "dFG",
-       "from": "F",
-       "to": "G",
-       "label": "FG",
-       "labelKind": "TEXT",
+       "id": "dEF",
+       "from": "E",
+       "to": "F",
+       "label": "12",
+       "unit": "cm",
        "side": "BELOW",
        "style": "BAR",
        "offset": 1,
-       "factRole": "DERIVED_INTERMEDIATE"
+       "factRole": "GIVEN"
       }
      ],
      "segmentColors": [
       {
        "segments": [
-        "sEF"
+        "sDE"
        ],
        "color": "BLUE"
       },
       {
        "segments": [
-        "sFG"
+        "sEF"
        ],
        "color": "WARM"
       }
