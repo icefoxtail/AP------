@@ -84,25 +84,31 @@ export async function load() {
     board.setPanes(call(lab.scene.panes, lab.s) || null);
     return lab.scene;
   };
-  lab.draw = () => {
-    const texts = [], textItems = [], paths = [], plots = [], points = [], handles = [];
-    const originals = Object.fromEntries(['_text', 'path', 'plot', 'point', 'handle'].map(key => [key, board[key]]));
-    board.path = function (ps, options = {}) { paths.push({ points: ps.map(point), options }); return originals.path.call(this, ps, options); };
-    board.plot = function (f, options = {}) {
+  // Keep recorders installed: the source installs its own persistent label hook
+  // on first draw, and a per-frame restore would silently remove that hook.
+  let frame;
+  const originals = Object.fromEntries(['_text', 'path', 'plot', 'point', 'handle'].map(key => [key, board[key]]));
+  board.path = function (ps, options = {}) { frame?.paths.push({ points: ps.map(point), options }); return originals.path.call(this, ps, options); };
+  board.plot = function (f, options = {}) {
+    if (frame) {
       const vb = this.viewBox(), lo = Math.max(options.from ?? -Infinity, vb.x0), hi = Math.min(options.to ?? Infinity, vb.x1);
       const samples = Array.from({ length: 5 }, (_, i) => { const x = lo + (hi - lo) * i / 4; return { x, y: f(x) }; }).filter(p => Number.isFinite(p.x) && Number.isFinite(p.y));
-      plots.push({ samples, options }); return originals.plot.call(this, f, options);
-    };
-    board.point = function (p, options = {}) { points.push({ point: point(p), options }); return originals.point.call(this, p, options); };
-    board.handle = function (id, p, options = {}) { handles.push({ id, point: point(p), options }); return originals.handle.call(this, id, p, options); };
-    board._text = function (x, y, text, options, screen) { if (text != null) { texts.push(String(text)); textItems.push({ x, y, text: String(text), options, screen }); } return originals._text.call(this, x, y, text, options, screen); };
+      frame.plots.push({ samples, options });
+    }
+    return originals.plot.call(this, f, options);
+  };
+  board.point = function (p, options = {}) { frame?.points.push({ point: point(p), options }); return originals.point.call(this, p, options); };
+  board.handle = function (id, p, options = {}) { frame?.handles.push({ id, point: point(p), options }); return originals.handle.call(this, id, p, options); };
+  board._text = function (x, y, text, options, screen) { if (frame && text != null) { frame.texts.push(String(text)); frame.textItems.push({ x, y, text: String(text), options, screen }); } return originals._text.call(this, x, y, text, options, screen); };
+  lab.draw = () => {
+    frame = { texts: [], textItems: [], paths: [], plots: [], points: [], handles: [] };
     surface.ops.length = 0;
     try {
       board.setPanes(call(lab.scene.panes, lab.s) || null);
       const value = call(lab.scene.view, lab.s, lab);
       board.begin(); lab.scene.draw(board, lab.s, value, lab); board.end();
-      return { texts, textItems, paths, plots, points, handles, value, canvas: surface.ops.slice() };
-    } finally { Object.assign(board, originals); }
+      return { ...frame, value, canvas: surface.ops.slice() };
+    } finally { frame = null; }
   };
   lab.newProblem = () => {
     const selector = lab.scene.vary.ou ? '[data-ou-new]' : '[data-cx-new]';
