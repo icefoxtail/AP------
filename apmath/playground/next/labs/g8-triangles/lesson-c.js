@@ -137,6 +137,10 @@
       } else {
         // 原 풀이의 eq에 완성된 답이 있어도, 현재 자막의 캡션만 보인다.
         const stages = ST.map(st => ({ ...st, cap: s.trCCap || '' }));
+        if (C.answer && stages[idx]?.k === 'ans' && ST.some(st => /^s\d$/.test(st.f))) {
+          const correct = D.prob(M, s).choices.findIndex(choice => choice.ok);
+          stages[idx].f = 's' + correct;
+        }
         SV.draw(b, s, M, C, stages, idx);
       }
     };
@@ -406,6 +410,9 @@
       ch('두 중심에서 만든 각 비교', '① 이 그림의 두 각은 140°와 145°로 달라요.', '같다는 설명이 틀리므로 정답은 ①예요.', calc(3, '∠BOC=140°, ∠BIC=145°'), done(8, '옳지 않은 것: ①'))
     ])
   ];
+  // trMx는 반례 탐구에서 움직이는 값이다. start로 초기화하며, set에
+  // 남겨 매 프레임 보간값을 덮지 않는다. 모든 형제 해설이 같은 규칙을 쓴다.
+  bank['t7-3'].forEach(item => { delete item.chapters[0].cues[0].set.trMx; });
   const equi = { trMr: 3, trV: 0 };
   bank['t7-4'] = [
     lesson('정삼각형의 두 중심 관계', '중심관계', '외심과 내심은 일치해요', equi, concept('equi-centres', '정삼각형의 외심과 내심은 어떤 관계일까요? 각의 이등분선과 수직이등분선을 비교해 보세요.'), [

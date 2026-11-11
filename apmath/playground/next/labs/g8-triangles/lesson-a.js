@@ -296,4 +296,127 @@
       cue(5.5, c.end, 6, { trShowAnswer: true, trLine: c.answer })
     ])
   ]));
+
+  function insideTrap(v, concept = false) {
+    if (v === 2) return make('대응각', '직선과 두 예각의 합 이용', 'x = 40°', [
+      ch('주어진 직각과 예각', [
+        { at: 0, say: 'A와 C는 직각이고 BE⊥BD예요. 주어진 ABE는 40°예요.', set: begin(), to: { trTrace: 1 }, dur: 4 },
+        cue(5.5, 'x는 CDB예요. B에서 일직선인 세 각과 BCD의 두 예각을 봐요.', 2)
+      ], fixed({ trQa: 5, trQb: 3, trAl: 40, trV: 2 })),
+      ch('먼저 B의 남은 각', [
+        cue(0, 'B에서 일직선이므로 CBD=180°−90°−40°=50°예요.', 3, { trCalculationReady: true, trLine: '∠CBD=50°' }),
+        cue(5.5, 'BCD에서 C가 직각이므로 CBD와 CDB의 합은 90°예요.', 4, { trLine: '∠CBD+∠CDB=90°' })
+      ]),
+      ch('물은 각 CDB를 구해요', [
+        cue(0, '구하는 x는 방금 구한 CBD가 아니에요. 90°에서 50°를 빼요.', 5, { trLine: 'x=90°−50°' }),
+        cue(5.5, 'x=40°예요. 처음 주어진 ABE와 같은 크기예요.', 6, { trShowAnswer: true, trLine: 'x=40°' })
+      ])
+    ]);
+    const area = v === 1, answer = concept ? '△EAB ≡ △BCD (RHA)' : area ? 'x = 32 cm²' : 'x = 8 cm';
+    const chapters = [
+      ch('두 직각삼각형을 찾아요', [
+        { at: 0, say: 'A와 C는 직각이고 BE⊥BD, BE=BD예요. 두 빗변을 확인해요.', set: begin(!concept), to: { trTrace: 1 }, dur: 4 },
+        cue(5.5, concept ? 'EAB와 BCD가 어떤 관계인지 같은 예각을 찾아 비교해요.' : area ? 'AE=5, AB=3 cm예요. 사다리꼴 AEDC의 넓이를 구해요.' : 'AE=5, AB=3 cm예요. AC=AB+BC에서 BC가 필요해요.', 2)
+      ], fixed({ trQa: 5, trQb: 3, trAl: 40, trV: v })),
+      ch('같은 예각을 찾아요', [
+        cue(0, 'B에서 일직선이므로 EBA와 CBD의 합은 180°−90°=90°예요.', 3, { trLine: '∠EBA+∠CBD=90°' }),
+        cue(5.5, 'BCD의 두 예각도 합이 90°예요. 따라서 EBA와 BDC가 같아요.', 4, { trLine: '∠EBA=∠BDC' })
+      ]),
+      ch('대응점을 따라 겹쳐요', [
+        cue(0, 'BEA와 DBC를 같은 방향으로 놓아요. B↔D, E↔B, A↔C예요.', 5, { trCompare: true, trLine: '직각·빗변·한 예각을 맞추기' }),
+        { at: 5.5, say: '직각과 같은 빗변, 방금 찾은 예각을 맞추어 옮겨 겹쳐요.', to: { trMatch: 1 }, dur: 4 }
+      ]),
+      ch(concept ? '두 삼각형의 관계' : '대응하는 길이를 구해요', [
+        cue(0, concept ? '직각·빗변·한 예각이 각각 같아 두 삼각형이 포개어져요.' : 'RHA 합동이므로 BC=AE=5 cm, CD=AB=3 cm예요.', concept ? 5 : 6, { trCompare: false, trCalculationReady: !concept, trLine: concept ? 'E↔B, A↔C, B↔D' : 'BC=5 cm, CD=3 cm' }),
+        cue(5.5, concept ? '따라서 △EAB≡△BCD이고, 합동 조건은 RHA예요.' : area ? 'AE와 CD가 평행해요. 그 사이 높이 AC는 3+5=8 cm예요.' : 'AC=AB+BC이므로 x=3+5=8 cm예요.', concept || area ? 6 : 8, { trShowAnswer: concept || !area, trLine: concept ? answer : area ? 'AE=5, CD=3, 높이 AC=8 cm' : answer })
+      ])
+    ];
+    if (area) chapters.push(ch('사다리꼴 넓이 계산', [
+      cue(0, '두 평행한 변의 합에 높이를 곱하고 2로 나누어요.', 7, { trLine: 'x=(5+3)×8÷2' }),
+      cue(5.5, 'x=32 cm²예요. 높이는 AB가 아니라 AC 전체예요.', 8, { trShowAnswer: true, trLine: answer })
+    ]));
+    return make(concept ? '합동찾기' : area ? '사다리꼴' : '전체길이', '사다리꼴 속 같은 직각삼각형', answer, chapters);
+  }
+  lessons['t3-4'] = [insideTrap(0, true), insideTrap(0), insideTrap(1), insideTrap(2)];
+
+  function throughVertex(v, concept = false) {
+    const area = v === 2, answer = concept ? '△ABD ≡ △CAE (RHA)' : ['x = 8 cm', 'x = 5 cm', 'x = 32 cm²'][v];
+    const chapters = [
+      ch('직선에 내린 수선', [
+        { at: 0, say: 'A는 직각이고 AB=AC예요. B와 C의 수선의 발이 D, E예요.', set: begin(!concept), to: { trTrace: 1 }, dur: 4 },
+        cue(5.5, concept ? 'ABD와 CAE를 비교해요. 두 삼각형이 어떤 관계인지 확인해요.' : v === 1 ? 'BD=3, AD=5 cm예요. CE의 길이 x를 구해요.' : area ? 'BD=3, CE=5 cm예요. 사다리꼴 BDEC의 넓이를 구해요.' : 'BD=3, CE=5 cm예요. DE=AD+AE를 구해요.', 2)
+      ], fixed({ trLm: 3, trLn: 5, trV: v })),
+      ch('같은 예각의 근거', [
+        cue(0, 'A에서 일직선이라 BAD와 CAE의 합은 90°예요.', 3, { trLine: '∠BAD+∠CAE=90°' }),
+        cue(5.5, 'ABD의 두 예각 합도 90°라서 ABD와 CAE가 같은 각이에요.', undefined, { trLine: '∠ABD=∠CAE' })
+      ]),
+      ch('직각·빗변·예각 비교', [
+        cue(0, 'BAD와 ACE를 떼어 놓아요. 직각 D↔E, 빗변 BA↔AC예요.', 4, { trCompare: true, trLine: 'B↔A, A↔C, D↔E' }),
+        { at: 5.5, say: '같은 예각 B와 A까지 맞추어 두 삼각형을 옮겨 겹쳐요.', to: { trMatch: 1 }, dur: 4 }
+      ]),
+      ch(concept ? '합동 관계를 읽어요' : '대응변의 길이를 이용', [
+        cue(0, concept ? '직각·빗변·한 예각이 같고, 대응하는 세 점이 모두 포개어져요.' : v === 1 ? 'RHA 합동이므로 CE는 AD와 대응해요. BD와 혼동하지 않아요.' : 'RHA 합동이므로 AE=BD=3 cm, AD=CE=5 cm예요.', concept ? 4 : 5, { trCompare: false, trCalculationReady: !concept, trLine: concept ? 'A↔C, B↔A, D↔E' : v === 1 ? 'CE=AD' : area ? 'AD=5, AE=3, 높이 DE=8 cm' : 'AE=3 cm, AD=5 cm' }),
+        cue(5.5, concept ? '따라서 △ABD≡△CAE이고, 합동 조건은 RHA예요.' : v === 1 ? 'CE=AD이므로 x=5 cm예요.' : area ? '평행한 두 변 BD와 CE 사이의 높이는 DE=5+3=8 cm예요.' : 'DE=AD+AE이므로 x=5+3=8 cm예요.', concept || area ? 5 : 7, { trShowAnswer: concept || !area, trLine: concept ? answer : area ? 'BD=3, CE=5, 높이 DE=8 cm' : answer })
+      ])
+    ];
+    if (area) chapters.push(ch('높이를 확인하고 넓이 계산', [
+      cue(0, '평행한 두 변의 합에 높이 DE를 곱하고 2로 나누어요.', 6, { trLine: 'x=(3+5)×8÷2' }),
+      cue(5.5, 'x=32 cm²예요. 3 cm인 BD를 높이로 쓰지 않아요.', 7, { trShowAnswer: true, trLine: answer })
+    ]));
+    return make(concept ? '합동찾기' : ['수선발사이', '한수선길이', '사다리꼴'][v], '꼭짓점과 직선에서 합동 찾기', answer, chapters);
+  }
+  lessons['t3-5'] = [throughVertex(0, true), throughVertex(0), throughVertex(1), throughVertex(2)];
+
+  function kite(v, concept = false) {
+    const answer = concept ? 'CB = CD인 연 모양' : ['x = 100°', 'x = 5 cm', 'x = 50°'][v];
+    const finalCues = [
+      cue(0, concept ? 'RHS 합동이라 B↔D예요. A와 C는 각각 자기 자신과 대응해요.' : v === 0 ? 'RHS 합동이에요. A는 40°씩, C는 90°−40°=50°씩이에요.' : v === 1 ? 'RHS 합동이므로 CD에 대응하는 변은 CB예요.' : 'RHS 합동으로 ACD=ACB예요. ACB=90°−40°=50°예요.', concept ? 6 : 7, { trCompare: false, trCalculationReady: !concept, trLine: concept ? '△ABC≡△ADC (RHS)' : v === 0 ? '∠BAC=40°, ∠BCA=50°' : v === 1 ? 'CD=CB' : '∠ACB=50°' }),
+      cue(5.5, concept ? 'CB=CD도 성립하므로 두 쌍의 이웃한 변이 같은 연 모양이에요.' : v === 0 ? '전체 각 BCD는 반쪽의 두 배라 x=2×50°=100°예요.' : v === 1 ? 'CD=CB이므로 x=5 cm예요.' : '대응각은 같으므로 x=50°예요.', 8, { trShowAnswer: true, trLine: answer })
+    ];
+    if (concept) finalCues.push(cue(9, '대응각도 같아 AC는 A와 C의 각을 각각 이등분해요.', undefined, { trLine: 'AC는 ∠A와 ∠C의 이등분선' }));
+    return make(concept ? '연의성질' : ['마주보는각', '대응변', '반쪽각'][v], '빗변을 공유하는 연 모양', answer, [
+      ch('공통인 빗변을 그어요', [
+        { at: 0, say: 'B와 D는 직각이고 AB=AD예요. 두 삼각형의 공통인 AC를 그어요.', set: begin(!concept), to: { trTrace: 1 }, dur: 4 },
+        cue(5.5, concept ? '빗변을 함께 쓰는 두 직각삼각형이 어떤 모양을 만드는지 살펴요.' : v === 0 ? 'BAD=80°예요. 반대편 전체 각 BCD의 x를 구해요.' : v === 1 ? 'BC=5 cm예요. 다른 쪽 CD의 길이 x를 구해요.' : 'BAC=40°예요. C의 반쪽 각 ACD의 x를 구해요.', 2)
+      ], fixed({ trKm: 6, trKa: 40, trKt: 0, trM: 5, trV: v })),
+      ch('직각과 공통인 빗변', [
+        cue(0, 'B와 D가 모두 직각이라는 조건이 R이에요.', 3, { trLine: 'R: ∠B=∠D=90°' }),
+        cue(5.5, '직각의 맞은편 AC가 두 삼각형에 공통인 빗변 H예요.', 4, { trLine: 'H: AC 공통' })
+      ]),
+      ch('다른 한 변까지 비교', [
+        cue(0, 'AB=AD가 S예요. ACB와 ACD를 같은 방향으로 떼어 놓아요.', 5, { trCompare: true, trLine: 'S: AB=AD, B↔D' }),
+        { at: 5.5, say: '빗변 AC와 대응점을 맞추어 두 삼각형을 옮겨 겹쳐요.', to: { trMatch: 1 }, dur: 4 }
+      ]),
+      ch('합동의 결과로 마무리', finalCues)
+    ]);
+  }
+  lessons['t3-6'] = [kite(0, true), kite(0), kite(1), kite(2)];
+
+  function congruentArea(v) {
+    const answer = v ? 'x = 50 cm²' : 'x = 26 cm²';
+    const chapters = [
+      ch('원래 조건과 물은 넓이', [
+        { at: 0, say: 'A는 직각이고 AB=AC예요. 수선 BD=4, CE=6 cm를 확인해요.', set: begin(), to: { trTrace: 1 }, dur: 4 },
+        cue(5.5, v ? '구하는 것은 사다리꼴 BDEC의 넓이예요. 높이 DE부터 구해요.' : '구하는 것은 ABC의 넓이예요. 큰 사다리꼴에서 두 삼각형을 빼요.', 2)
+      ], fixed({ trUm: 4, trUe: 2, trV: v })),
+      ch('합동에 쓸 예각을 찾아요', [
+        cue(0, 'A에서 일직선이므로 BAD와 CAE의 합은 90°예요.', 2, { trLine: '∠BAD+∠CAE=90°' }),
+        cue(5.5, 'ABD의 두 예각 합도 90°라서 ABD와 CAE가 같아요.', 3, { trLine: '∠ABD=∠CAE' })
+      ]),
+      ch('두 직각삼각형을 비교', [
+        cue(0, '직각 D와 E, 빗변 AB와 CA, 한 예각이 같아 RHA 합동이에요.', 3, { trCompare: true, trLine: 'B↔A, A↔C, D↔E' }),
+        { at: 5.5, say: '같은 방향의 두 삼각형을 옮겨 겹쳐서 대응변을 확인해요.', to: { trMatch: 1 }, dur: 4 }
+      ]),
+      ch('높이와 사다리꼴 넓이', [
+        cue(0, 'AE=4, AD=6 cm이므로 높이 DE=10 cm예요.', 4, { trCompare: false, trCalculationReady: true, trLine: '높이 DE=AD+AE=10 cm' }),
+        cue(5.5, v ? 'x=(4+6)×10÷2=50 cm²예요. 높이는 DE예요.' : '사다리꼴 BDEC의 넓이는 (4+6)×10÷2=50 cm²예요.', v ? 6 : 5, { trShowAnswer: !!v, trLine: v ? answer : '사다리꼴 BDEC=50 cm²' })
+      ])
+    ];
+    if (!v) chapters.push(ch('두 직각삼각형을 빼요', [
+      cue(0, '작은 두 삼각형의 넓이 합은 2×(4×6÷2)=24 cm²예요.', 6, { trLine: '△ABD+△CAE=24 cm²' }),
+      cue(5.5, 'x=50−24=26 cm²예요. 큰 사다리꼴 넓이에서 멈추지 않아요.', 7, { trShowAnswer: true, trLine: answer })
+    ]));
+    return make(v ? '사다리꼴' : '가운데넓이', '합동으로 높이를 구한 뒤 넓이', answer, chapters);
+  }
+  lessons['t3-7'] = [congruentArea(0), congruentArea(1)];
 })();

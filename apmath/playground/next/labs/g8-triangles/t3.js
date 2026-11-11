@@ -273,7 +273,7 @@
   const trapGeom = (p, q) => ({ A: pt(0, 0), B: pt(q, 0), C: pt(q + p, 0), E: pt(0, -p), D: pt(q + p, -q) });
   const vv4 = (M, s) => (((s.trV || 0) % 3 === 1 && (M.p + M.q) % 2) ? 0 : (s.trV || 0) % 3);
   const r4 = {
-    id: 't3-4', title: '사다리꼴 속 직각삼각형 (●+×=90°)', short: '사다리꼴 속 직각삼각형',
+    id: 't3-4', title: '사다리꼴 속 직각삼각형', short: '사다리꼴 속 직각삼각형',
     question: '직선 위의 점 B에서 BE⊥BD, BE=BD이면 두 직각삼각형 EAB, BCD는 어떤 관계일까?',
     ctl: ['trQa', 'trQb'],
     init: (s) => { s.trQa = 5; s.trQb = 3; s.trV = 0; },
@@ -889,7 +889,8 @@
     return pair([A, Cc, B], [A, Cc, D], ['A', 'C', 'B'], ['A', 'C', 'D'], 'RHS');
   }, (M, s, b) => {
     const p = withoutLengths(r6Plan)(M, s, b);
-    return { ...p, items: p.items.map(it => it.ty === 'ang' ? { ...it, label: '', labels: undefined, gl: false } : it) };
+    const Cc = pt(1, 0), B = pt(cos(M.a) ** 2, -cos(M.a) * sin(M.a)), D = pt(B.x, -B.y);
+    return { ...p, items: p.items.map(it => it.ty === 'ang' ? { ...it, label: '', labels: undefined, gl: false } : it).concat(SK.tick(B, Cc, 2, { at: 'ans', col: 'rose' }), SK.tick(D, Cc, 2, { at: 'ans', col: 'rose' })) };
   });
   r7.lessonDraw = (b, s, M, C, SV, ST, idx) => {
     if (!C.entry && s.trCompare) { G.trLessonA.pair(b, s, linePair(M)); return; }

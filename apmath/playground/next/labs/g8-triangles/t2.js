@@ -143,7 +143,7 @@
   };
 
   const c1 = {
-    id: 't2-1', title: '계단형 연쇄: x → 2x → 3x → …', short: '계단형 연쇄', solve: c1Solve,
+    id: 't2-1', title: '같은 선분의 계단형 연쇄', short: '계단형 연쇄', solve: c1Solve,
     question: 'AB=BC=CD=DE처럼 같은 길이의 선분을 두 직선 사이에 번갈아 이어 붙이면, 밑각은 어떻게 커질까?',
     ctl: ['trCn', 'trCx'],
     init: (s) => { s.trCn = 4; s.trCx = 20; s.trV = 0; },
