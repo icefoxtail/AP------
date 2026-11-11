@@ -7,7 +7,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 
 정확한 plan 형식은 이 문서 아래쪽 「plan 계약 전문」이 정본이다. 이 지침과 계약 전문이 충돌하면 계약 전문을 따른다.
 
-construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDescription`은 그림의 점·도형 관계를 설명하는 짧은 한국어 평문 한 줄(공백만은 불가, 500자 이하)이다. 지정하면 SVG의 접근성 `<desc>`에 XML 이스케이프하여 전달한다. 정답은 넣지 않는다. 생략하면 기존 기본 설명과 SVG 출력은 그대로 유지된다.
+construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDescription`은 그림의 점·도형 관계를 설명하는 짧은 한국어 평문 한 줄(공백만은 불가, 500자 이하)이다. 지정하면 SVG의 접근성 `<desc>`에 XML 이스케이프하여 전달한다. 정답은 넣지 않는다. 생략하면 기존 기본 설명과 SVG 출력은 그대로 유지된다. composite-panels·number-line-figure·solid-figure·quadratic-inequality-chain도 같은 선택 필드를 받는다: 엔진이 루트 `role="img"`와 `<title>`(plan `caption`)·`<desc>`(`accessibilityDescription`, 생략하면 위 기본 문장)를 직접 쓰므로 렌더 뒤에 접근성 보완 스크립트(a11y.sh)를 돌릴 필요가 없다. 이미 들어 있으면 그 스크립트는 `METADATA_ALREADY_PRESENT`로 거절되어 무해하다.
 
 ## 1. 순서
 
