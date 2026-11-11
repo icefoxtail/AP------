@@ -464,6 +464,111 @@
     notes: ['글자 순서가 비슷해도 어느 변끼리 같은지가 달라요. <b>그림에 눈금</b>을 직접 그려 보세요.', '마름모가 되려면 네 변이 모두 같아야 해요.']
   });
 
+
+  // Authored lessons use the same source models while keeping the manual tabs intact.
+  // Every conclusion caption is owned by a timed cue, rather than the explore caption.
+  const lessonTools = G.qdLessonA;
+  const sourceQuestion = Q => lessonTools.question(Q);
+  const representative = (id, s) => {
+    if (id === 'f1') return cTrap.model(s);
+    if (id === 'f2') return cName.model({ ...s, qbCn: 'trap' });
+    if (id === 'f3') return cDiag.model(s);
+    if (id === 'f4') return cKite.model(s);
+    if (id === 'f5') return cHalf.model(s);
+    return five.model(s);
+  };
+  function names(b, g, extra = []) {
+    const center = g.O || G.centroid([g.A, g.B, g.C, g.D]);
+    for (const [name, point] of [['A', g.A], ['B', g.B], ['C', g.C], ['D', g.D], ...extra]) {
+      b.point(point, { color: 'ink', r: 4.2 }); tagOut(b, point, center, name, { size: 16, gap: 12 });
+    }
+  }
+  function trace(b, g, progress) {
+    const points = [g.A, g.B, g.C, g.D];
+    points.forEach((p, i) => { const f = clamp((progress || 0) * 4 - i, 0, 1); if (f > 0) line(b, p, lerp(p, points[(i + 1) % 4], f), 'amber', 4.5); });
+  }
+  function conditionPair(g, id) {
+    const { A, B, C, D, O } = g;
+    if (id === 't4') return { polygons: [[A, O, B], [C, O, D]], names: [['A', 'O', 'B'], ['C', 'O', 'D']], edges: [[0, 1, 1], [1, 2, 2]], angles: [[1, 0, 2]] };
+    if (id === 't5') return { polygons: [[A, D, C], [C, B, A]], names: [['A', 'D', 'C'], ['C', 'B', 'A']], edges: [[0, 1, 1], [0, 2, 2]], angles: [[0, 1, 2]] };
+    return { polygons: [[A, B, C], [C, D, A]], names: [['A', 'B', 'C'], ['C', 'D', 'A']], edges: [[0, 1, 1], [1, 2, 2], [0, 2, 3]] };
+  }
+  function conditionFigure(b, s, Cx, id, given) {
+    const g = given || (id ? representative(id, s) : (() => {
+      const A = pt(1.3, -4.2), B = pt(0, 0), C = pt(7.2, 0), D = pt(6.4, -3.3);
+      return { A, B, C, D, O: crossO(A, B, C, D), pts: [A, B, C, D] };
+    })());
+    if (!Cx.entry && s.qdCompare) { lessonTools.pair(b, s, conditionPair(g, id)); return g; }
+    const { A, B, C, D, O } = g, pts = g.pts || [A, B, C, D], st = Cx.entry ? 0 : s.step || 0;
+    fit(b, bboxOf(pts), { t: 48, b: 112, l: 48, r: 48 });
+    fillPoly(b, pts, 'sky', .09); poly(b, pts, 'ink', 3.4);
+    if (!id || ['t4', 'f3', 'f4', 'f5'].includes(id)) { line(b, A, C, 'ink', 2.4); line(b, B, D, 'ink', 2.4); dotO(b, g); }
+    if (id === 't1') parAll(b, g);
+    if (id === 't2') { tick(b, A, B, 1); tick(b, C, D, 1); tick(b, B, C, 2); tick(b, A, D, 2); }
+    if (id === 't3') { ang(b, A, B, D, { rings: 1, color: 'sky' }); ang(b, C, B, D, { rings: 1, color: 'sky' }); ang(b, B, A, C, { rings: 2, color: 'rose' }); ang(b, D, A, C, { rings: 2, color: 'rose' }); }
+    if (id === 't4') { tick(b, A, O, 1); tick(b, O, C, 1); tick(b, B, O, 2); tick(b, O, D, 2); }
+    if (id === 't5' || id === 'f1') { par(b, A, D, 1, 'green', .24); par(b, B, C, 1, 'green', .24); if (id === 't5') { tick(b, A, D, 3); tick(b, B, C, 3); } else { tick(b, A, B, 1); tick(b, C, D, 1); sd(b, A, D, O, String(g.a), 'sky'); sd(b, B, C, O, String(g.bb), 'sky'); } }
+    if (id === 'f2') { tick(b, A, B, 1); tick(b, B, C, 1); tick(b, C, D, 2); tick(b, D, A, 2); if (st >= 2) { line(b, A, C, 'ink', 2.4); line(b, B, D, 'ink', 2.4); dotO(b, g); segTag(b, B, O, .5, String(g.q1), 15, 'sky'); segTag(b, O, D, .5, String(g.q2), 15, 'sky'); segTag(b, A, O, .5, String(g.p), 15, 'amber'); segTag(b, O, C, .5, String(g.p), 15, 'amber'); } }
+    if (id === 'f3') { tick(b, A, C, 1); tick(b, B, D, 1); segTag(b, A, O, .5, String(g.m), 15, 'amber'); segTag(b, O, C, .5, String(g.n), 15, 'sky'); segTag(b, B, O, .5, String(g.n), 15, 'sky'); segTag(b, O, D, .5, String(g.m), 15, 'amber'); }
+    if (id === 'f4' || id === 'f5') { if (id === 'f4') b.right(O, A, B, { size: 12, color: 'green' }); tick(b, B, O, 2); tick(b, O, D, 2); segTag(b, A, O, .5, String(g.p1), 15, 'amber'); segTag(b, O, C, .5, String(g.p2), 15, 'sky'); segTag(b, B, O, .5, String(g.q), 15, 'green'); segTag(b, O, D, .5, String(g.q), 15, 'green'); }
+    if (st >= 1 && ['t2', 't5'].includes(id)) line(b, A, C, 'green', 2.7, { dash: [7, 5] });
+    if (Cx.answer && id.startsWith('t')) parAll(b, g, .24);
+    names(b, g);
+    if (!Cx.entry) trace(b, g, s.qdTrace);
+    return g;
+  }
+  function hiddenFigure(b, s, M, Cx) {
+    const { A, B, C, D, E, F, O } = M, st = Cx.entry ? 0 : s.step || 0;
+    if (!Cx.entry && s.qdCompare) { lessonTools.pair(b, s, { polygons: [[A, E, B], [C, F, D]], names: [['A', 'E', 'B'], ['C', 'F', 'D']], edges: [[0, 2, 1]], angles: [[0, 1, 2], [1, 0, 2, 2]] }); return; }
+    if (s.qdLessonProblem) {
+      const stage = Cx.answer ? 5 : Math.min(st, 4);
+      hidden.solveDraw(b, { ...s, step: stage }, M, Cx, G.currentSolution(hidden, s));
+    } else {
+      lessonTools.quad(b, { A, B, C, D, O }); line(b, A, C, 'ink', 2.5);
+      line(b, B, E, 'amber', 3); line(b, D, F, 'amber', 3);
+      b.right(E, A, B, { size: 12, color: 'amber' }); b.right(F, C, D, { size: 12, color: 'amber' });
+      b.point(E, { color: 'amber', r: 4 }); T(b, E, 'E', { dy: -19, color: 'amber' });
+      b.point(F, { color: 'amber', r: 4 }); T(b, F, 'F', { dy: 19, color: 'amber' });
+      if (st >= 1) { par(b, B, E, 1, 'green', .4); par(b, D, F, 1, 'green', .4); }
+      if (Cx.answer) { fillPoly(b, [E, B, F, D], 'green', .16); poly(b, [E, B, F, D], 'green', 3); }
+    }
+    if (st >= 2) { tick(b, A, E, 1); tick(b, C, F, 1); tick(b, B, E, 2); tick(b, D, F, 2); }
+    if (!Cx.entry) trace(b, M, s.qdTrace);
+  }
+  function proofFigure(b, s, M, Cx) {
+    const { A, B, C, D, O } = M.pg, E = M.E, st = Cx.entry ? 0 : s.step || 0;
+    lessonTools.quad(b, M.pg, [E], false);
+    ang(b, A, B, D, { rings: 1, color: 'sky' }); ang(b, C, B, D, { rings: 1, color: 'sky' });
+    ang(b, B, A, C, { rings: 2, color: 'rose' }); ang(b, D, A, C, { rings: 2, color: 'rose' });
+    if (st >= 3) { line(b, A, E, 'green', 2.8); b.point(E, { color: 'green', r: 4 }); tagOut(b, E, A, 'E', { color: 'green' }); ang(b, A, E, D, { rings: 3, color: 'green' }); }
+    if (st >= 4) { ang(b, B, A, C, { rings: 3, color: 'green', r: 22 }); par(b, A, D, 1, 'green'); par(b, B, C, 1, 'green'); }
+    if (Cx.answer) { par(b, A, B, 2, 'green'); par(b, C, D, 2, 'green'); }
+    if (!Cx.entry) trace(b, M.pg, s.qdTrace);
+    void O;
+  }
   const gl = [five, para5, hidden, proof, cTrap, cKite, cDiag, cHalf, cName];
+  gl.forEach(D => {
+    D.lessonQuestion = (M, s, Q) => s.qdLessonProblem ? sourceQuestion(Q) : s.qdDQuestion || D.question;
+    D.lessonDraw = (b, s, M, Cx, solution) => {
+      let g = M.pg || M;
+      if ((s.qdLessonProblem && solution.question.conditionId) || D === five || D === para5 && !s.qdLessonProblem || [cTrap, cKite, cDiag, cHalf, cName].includes(D)) {
+        const id = s.qdDCondition || '';
+        const own = !s.qdLessonProblem && (D === five || D === para5 || D === cName && s.qbCn === 'ok') ? M : undefined;
+        g = conditionFigure(b, s, Cx, id, own);
+        if (!Cx.entry && s.qdCompare) return;
+      } else if (D === hidden) { hiddenFigure(b, s, M, Cx); if (!Cx.entry && s.qdCompare) return; }
+      else if (D === proof && !s.qdLessonProblem) proofFigure(b, s, M, Cx);
+      else {
+        const stage = Cx.answer ? solution.steps.length : Math.min(s.step || 0, solution.steps.length - 1);
+        D.solveDraw(b, { ...s, step: stage }, M, Cx, solution);
+        if (!Cx.entry) trace(b, g, s.qdTrace);
+      }
+      if (!Cx.entry && s.qdLine) {
+        const box = bboxOf(g.pts || [g.A, g.B, g.C, g.D]);
+        capLine(b, pt((box.x0 + box.x1) / 2, box.y1), s.qdLine, Cx.answer ? 'amber' : 'green', { dy: 84 });
+      }
+    };
+  });
+
   G.register(20, 'qd2', '② 평행사변형이 되는 조건', '평행사변형이 되는 조건', PARAMS, gl);
 })();
