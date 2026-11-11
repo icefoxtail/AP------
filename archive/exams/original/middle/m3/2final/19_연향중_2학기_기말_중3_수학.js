@@ -877,7 +877,11 @@ window.examData = {
         "conditionKeys": null,
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
-      }
+      },
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 연못 가장자리의 세 지점을 꼭짓점으로 하는 삼각형 ABC이고, 꼭짓점 A에서 변 BC에 내린 높이 AH가 주황색으로 그려져 있다. AC에 8이 적혀 있고 각 A는 75°, 각 B는 45°이며 각 BAH와 각 CAH는 서로 다른 색의 호로 표시되어 있다.",
+      "solutionImageCaption": "(1) 삼각형 ABH에서 ∠BAH=45°이다. (2) ∠CAH=75°−45°=30°이다. (3) 직각삼각형 ACH에서 AH=8cos30°=4√3 m이다. (4) 직각이등변삼각형 ABH에서 AB=AH×√2=4√6 m이다. 정답은 (1) 45°, (2) 30°, (3) 4√3 m, (4) 4√6 m이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 22,

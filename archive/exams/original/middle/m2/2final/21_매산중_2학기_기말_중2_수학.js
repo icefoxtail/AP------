@@ -141,7 +141,11 @@ window.examData = {
         "$\\angle\\text{FEH} = 90^\\circ$"
       ],
       answer: "④",
-      solution: "정사각형 $ABCD$의 네 귀퉁이의 직각삼각형 $AEH$, $BFE$, $CGF$, $DHG$는 직각을 낀 두 변의 길이가 $a$, $b$로 서로 합동이므로 사각형 $EFGH$의 네 변의 길이는 모두 같다. 그 한 변의 길이를 $c$라 하면 피타고라스 정리에 의해 $c^2=a^2+b^2=49$이므로 $c=7$이다.\n또 합동이므로 $\\angle BEF=\\angle AHE$이고, 삼각형 $AEH$에서 $\\angle AEH+\\angle AHE=90^\\circ$이므로 $\\angle AEH+\\angle BEF=90^\\circ$이다. 따라서 $\\angle FEH=180^\\circ-90^\\circ=90^\\circ$이다. 네 변의 길이가 같고 한 각이 직각이므로 사각형 $EFGH$는 정사각형이다. (①, ⑤ 옳다.)\n둘레의 길이는 $4\\times7=28$이다. (② 옳다.)\n넓이는 $7\\times7=49$이다. (③ 옳다.)\n④ 대각선 $\\overline{EG}$는 직각삼각형 $EFG$의 빗변이므로 $\\overline{EG}^2=7^2+7^2=98$이다. $49^2=2401$이므로 $\\overline{EG}=49$가 아니다. ($\\overline{EG}^2=98$이므로 $\\overline{EG}$는 $9$보다 크고 $10$보다 작다.) 옳지 않다.\n정답은 ④이다."
+      solution: "정사각형 $ABCD$의 네 귀퉁이의 직각삼각형 $AEH$, $BFE$, $CGF$, $DHG$는 직각을 낀 두 변의 길이가 $a$, $b$로 서로 합동이므로 사각형 $EFGH$의 네 변의 길이는 모두 같다. 그 한 변의 길이를 $c$라 하면 피타고라스 정리에 의해 $c^2=a^2+b^2=49$이므로 $c=7$이다.\n또 합동이므로 $\\angle BEF=\\angle AHE$이고, 삼각형 $AEH$에서 $\\angle AEH+\\angle AHE=90^\\circ$이므로 $\\angle AEH+\\angle BEF=90^\\circ$이다. 따라서 $\\angle FEH=180^\\circ-90^\\circ=90^\\circ$이다. 네 변의 길이가 같고 한 각이 직각이므로 사각형 $EFGH$는 정사각형이다. (①, ⑤ 옳다.)\n둘레의 길이는 $4\\times7=28$이다. (② 옳다.)\n넓이는 $7\\times7=49$이다. (③ 옳다.)\n④ 대각선 $\\overline{EG}$는 직각삼각형 $EFG$의 빗변이므로 $\\overline{EG}^2=7^2+7^2=98$이다. $49^2=2401$이므로 $\\overline{EG}=49$가 아니다. ($\\overline{EG}^2=98$이므로 $\\overline{EG}$는 $9$보다 크고 $10$보다 작다.) 옳지 않다.\n정답은 ④이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 정사각형의 네 변 위에 점 E, F, G, H를 잡아 안쪽 사각형을 만든 문제 그림으로, 각 변이 길이 a인 부분(파란색)과 b인 부분(주황색)으로 나뉘고 네 꼭짓점은 직각이다. 둘째는 네 귀퉁이의 합동인 직각삼각형을 파란색으로, 안쪽 사각형을 주황색으로 칠하고 한 변을 c로 나타낸 그림이다. 셋째는 정사각형과 대각선 EG를 그리고 두 변의 길이를 7로 나타낸 그림이다.",
+      "solutionImageCaption": "네 귀퉁이의 직각삼각형은 합동이므로 안쪽 사각형의 네 변이 같고 한 각이 직각이어서 정사각형이다. 한 변의 길이는 7이므로 둘레는 28, 넓이는 49이다. 대각선 EG는 직각삼각형 EFG의 빗변이므로 EG의 제곱은 7의 제곱의 2배인 98이어서 EG는 49가 아니다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 9,
