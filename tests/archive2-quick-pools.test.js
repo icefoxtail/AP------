@@ -42,6 +42,27 @@ const indexOf = entries => {
   return { views };
 };
 const many = (bucket, count, make = record) => Array.from({ length: count }, () => make(bucket));
+function shortageCatalog() {
+  const unitFields = {
+    sourceGrade: '고1', subject: '공통수학1', courseKey: '공통수학1',
+    legacyStandardUnitKey: 'H22-C-01', legacyStandardUnit: '다항식의 연산', year: 2025,
+  };
+  const sourceRecords = [...many(1, 4), ...many(2, 10), ...many(3, 6)]
+    .map(row => Object.assign(row, unitFields));
+  const sourceIndex = Unified.buildIndex(sourceRecords);
+  const sourceUnit = Quick.unitsFor(Quick.buildPools(sourceIndex), 'unit-test', '고1', 'COMMON_MATH_1')[0];
+  assert.ok(sourceUnit, 'the complete source fixture has a classified unit');
+  const removedBucket = 3;
+  const removedUids = new Set(sourceUnit.buckets[removedBucket].map(row => row.questionUid));
+  return {
+    data: {
+      indexVersion: 'quick-pools-shortage-fixture-v1',
+      records: sourceRecords.filter(row => !removedUids.has(row.questionUid)),
+    },
+    sourceUnit,
+    removedBucket,
+  };
+}
 
 test('the four products keep their sizes and difficulty mixes', () => {
   assert.deepEqual(Quick.VIEWS, ['five-minute', 'subunit-test', 'unit-test', 'monthly-test']);
@@ -293,9 +314,15 @@ test('screens: each product shows unified units, no curriculum suffix, ready car
   const html = h.w.renderQuick();
   assert.match(html, /data-action="quick-unit"/);
   assert.match(html, /이 난이도로 만들 수 있는 단원 \d+개/);
-  h.w.state.view = 'unit-test';
-  h.w.quickState.subject = 'COMMON_MATH_1';
-  const unitHtml = h.w.renderQuick();
+  const fixture = shortageCatalog();
+  assert.equal(fixture.sourceUnit.counts[1], 4, 'the source unit initially covers one required bucket');
+  assert.equal(fixture.sourceUnit.counts[2], 10, 'the source unit initially covers another required bucket');
+  assert.equal(fixture.sourceUnit.counts[fixture.removedBucket], 6, 'the source unit initially covers the bucket removed from the fixture');
+  const shortage = harness(fixture.data);
+  shortage.w.state.view = 'unit-test';
+  shortage.w.quickState.grade = '고1';
+  shortage.w.quickState.subject = 'COMMON_MATH_1';
+  const unitHtml = shortage.w.renderQuick();
   assert.match(unitHtml, /class="quick-unit is-short" disabled aria-disabled="true"/);
   assert.match(unitHtml, /class="quick-reason">\d단계 \d+문항 필요 · \d+문항 가능/);
   h.w.state.view = 'monthly-test';
@@ -356,22 +383,34 @@ test('opening a unit selects the preset mix once per usable step and publishes 4
 });
 
 test('opening refuses a unit that cannot make the mix and a changed question state is caught before printing', async () => {
-  const data = structuredClone(await catalog());
-  const h = harness(data);
-  h.w.state.view = 'unit-test';
-  h.w.quickState.grade = '고1';
-  h.w.quickState.subject = 'COMMON_MATH_1';
-  const html = h.w.renderQuick();
+  const fixture = shortageCatalog();
+  assert.equal(fixture.sourceUnit.counts[1], 4, 'the source unit initially covers one required bucket');
+  assert.equal(fixture.sourceUnit.counts[2], 10, 'the source unit initially covers another required bucket');
+  assert.equal(fixture.sourceUnit.counts[fixture.removedBucket], 6, 'the source unit initially covers the bucket removed from the fixture');
+  const shortageData = fixture.data;
+  const shortageHarness = harness(shortageData);
+  shortageHarness.w.state.view = 'unit-test';
+  shortageHarness.w.quickState.grade = '고1';
+  shortageHarness.w.quickState.subject = 'COMMON_MATH_1';
+  const html = shortageHarness.w.renderQuick();
   assert.ok(/is-short/.test(html));
-  // Do not hard-code a unit: its readiness changes when the reviewed catalog grows.
-  const index = Unified.buildIndex(data.records, { projectionPolicy: data.projectionPolicy });
+  const index = Unified.buildIndex(shortageData.records, { projectionPolicy: shortageData.projectionPolicy });
+  assert.equal(index.views['고1'].length, shortageData.records.length, 'Unified.buildIndex places every retained fixture question');
+  assert.ok(index.byUid.has(shortageData.records[0].questionUid), 'the fixture question is present in the unified index');
   const units = Quick.unitsFor(Quick.buildPools(index), 'unit-test', '고1', 'COMMON_MATH_1');
   const short = Quick.partition(units, Quick.PRODUCTS['unit-test'], 'standard').short;
-  assert.ok(short.length > 0, 'the current catalog contains a short unit');
-  await h.w.openQuickAssessment([short[0].unit.key]);
-  assert.equal(h.published.length, 0, 'a short unit never prints');
+  assert.ok(short.length > 0, 'the isolated fixture is missing required difficulty buckets');
+  assert.equal(short[0].unit.counts[fixture.removedBucket], 0, 'all questions in the removed required bucket are absent');
+  assert.equal(short[0].unit.counts[2], 10, 'the unit persists with another required bucket');
+  assert.ok(short[0].verdict.shortages.some(row => row.have === 0), 'the fixture has an empty required bucket');
+  await shortageHarness.w.openQuickAssessment([short[0].unit.key]);
+  assert.equal(shortageHarness.published.length, 0, 'a short unit never prints');
   // Review-only HOLD is intentionally usable; a genuine source-integrity failure is not.
+  const data = structuredClone(await catalog());
+  const h = harness(data);
   h.w.state.view = 'monthly-test';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
   h.w.renderQuick();
   for (const record of data.records) record.sourceIntegrityStatus = 'MISMATCH';
   await h.w.openQuickAssessment('all');
