@@ -1,6 +1,8 @@
 // Independent geometry/number checks and actual HTML/Board cue smoke tests.
 // These tests are not a browser or mobile visual audit.
 import test from 'node:test';
+import fs from 'node:fs';
+import vm from 'node:vm';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 import { load } from './helpers/pythagoras-lesson-runtime.mjs';
@@ -164,4 +166,54 @@ for (const id of ids) test(`${id}: actual Board remains visible at every cue and
     assert.equal(draw(id, i, reveal.at - 0.001).frame.texts.includes(answer), false, `${id}/${i} before answer`);
     assert.equal(draw(id, i, reveal.at).frame.texts.includes(answer), true, `${id}/${i} final answer`);
   }
+});
+
+
+test('actual Player release keeps the literal fold problem fixed while manual pyFi and legacy new questions still work', async () => {
+  const runtime = await load();
+  const environment = {
+    window: { APLab: { videoCore: video, h() {}, labHooks: [] }, matchMedia: () => ({ matches: false }) },
+    document: { body: { classList: { remove() {}, add() {}, toggle() {} } } },
+    location: { pathname: '/', search: '', hash: '' }, history: { replaceState() {} },
+    performance, setTimeout, clearTimeout, cancelAnimationFrame() {}, requestAnimationFrame() { return 0; }, console
+  };
+  vm.runInNewContext(fs.readFileSync(new URL('../kit/apl-player.js', import.meta.url), 'utf8'), environment);
+  runtime.go('py7-rect'); runtime.draw(); runtime.newProblem();
+  const source = runtime.scene.py;
+  const question = () => {
+    const s = { ...runtime.s, ...runtime.s.pyQ }, model = source.model(s), quiz = source.prob(model, s);
+    return { h: model.h, w: model.w, key: quiz.key, stem: quiz.stem, choices: JSON.stringify(quiz.choices) };
+  };
+  // Keep production play/apply/release state handling. Only presentation methods
+  // and animation scheduling are stubbed; this is not a browser UI assertion.
+  const player = Object.create(environment.window.APLab.Player.prototype);
+  Object.assign(player, {
+    lab: runtime, state: 'idle', _cache: new WeakMap(), _goScene: () => runtime.go('py7-rect'),
+    _clearTaskNote() {}, _renderTicks() {}, _layout() {}, _showTitle() {}, _syncUi() {},
+    ui: { end: {}, entry: {}, bar: { dataset: {} } }, rate: 1
+  });
+  runtime._tabAvailable = () => true; runtime.ui = { stage: { append() {} } };
+  const playAndRelease = replay => {
+    // _leave has already dismissed the previous end card before manual use.
+    player.state = 'idle';
+    if (replay) player.replay(); else player.play(runtime.index, 3);
+    player.t = player.cs.length; player.apply(); player.state = 'ended'; player._release();
+    assert.equal(runtime.s.lessonOn, undefined); assert.equal(runtime.tab, 'explore');
+  };
+  playAndRelease(false);
+  const fixed = question(); assert.equal(fixed.h, 9); assert.equal(fixed.w, 15);
+  assert.equal(Object.hasOwn(runtime.s, 'pyFoldH'), false); assert.equal(Object.hasOwn(runtime.s, 'pyFoldW'), false);
+  runtime.s.pyFi = 2;
+  assert.equal(source.model(runtime.s).h, 6); assert.equal(source.model(runtime.s).w, 10);
+  assert.deepEqual(question(), fixed, 'manual slider changes exploration but not the existing literal question or choices');
+  runtime.draw(); runtime.newProblem();
+  assert.equal(Object.hasOwn(runtime.s.pyQ, 'pyFi'), true);
+  assert.equal(Object.hasOwn(runtime.s.pyQ, 'pyFoldH'), false);
+  const legacy = question(); runtime.s.pyFi = (runtime.s.pyQ.pyFi + 1) % 12;
+  assert.deepEqual(question(), legacy, 'newProblem still freezes its original table index independently of exploration');
+  playAndRelease(true);
+  const replayed = question(); assert.equal(replayed.h, 9); assert.equal(replayed.w, 15);
+  runtime.s.pyFi = 0;
+  assert.equal(source.model(runtime.s).h, 3); assert.equal(source.model(runtime.s).w, 5);
+  assert.deepEqual(question(), replayed, 'newProblem → replay → manual retains the fixed literal question');
 });

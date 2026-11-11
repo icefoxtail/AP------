@@ -10,7 +10,7 @@
       pyS1: 20, pyS2: 15, pyRw: 12, pyRh: 16, pyIa: 6, pyIb: 8, pyHy: 3, ...(options.start || {}), ...(chapters[0].start || {}) };
     const first = chapters[0].cues[0];
     first.set = { pyShowAnswer: false, pyCalculationReady: false, pyLessonProblem: options.problem !== false,
-      pyQ: options.q || {}, pySeed: 0, pyPick: null, pyBFirstReady: false, pyBSecondReady: false,
+      pyQ: options.q || {}, pySeed: 0, pyBFirstReady: false, pyBSecondReady: false,
       pyBRangeReady: false, pyBBarReady: false, pyAsk: 'c', pyUnk: 'c', pyShade: 'all', pyKind: 0,
       ...(options.set || {}), ...(first.set || {}) };
     if (!first.to) Object.assign(first, { to: { pyBT: 1 }, dur: 4 });

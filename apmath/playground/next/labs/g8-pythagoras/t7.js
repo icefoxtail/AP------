@@ -41,7 +41,7 @@
 
   /* ====================================================================== 1. 직사각형 접기 */
   const rectOf = (s) => {
-    const [h, w] = (s.lessonOn || s.lessonEntry) && Number.isFinite(s.pyFoldH) && Number.isFinite(s.pyFoldW) ? [s.pyFoldH, s.pyFoldW] : FOLD_TAB[clamp(Math.round(s.pyFi), 0, FOLD_TAB.length - 1)];
+    const [h, w] = Number.isFinite(s.pyFoldH) && Number.isFinite(s.pyFoldW) ? [s.pyFoldH, s.pyFoldW] : FOLD_TAB[clamp(Math.round(s.pyFi), 0, FOLD_TAB.length - 1)];
     const be = isq(w * w - h * h), ec = w - be, x = (h * h + ec * ec) / (2 * h);
     return { h, w, be, ec, x, fc: h - x, p: clamp(s.pyFp || 0, 0, 1), kind: s.pyKind || 0 };
   };

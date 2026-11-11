@@ -279,7 +279,7 @@
     else chapters.push(
       ch('세 삼각형으로 나눠요', 12, [
         { at: 0, say: '파란 삼각형은 각각 ab÷2예요. 가운데 두 변은 빗변 c예요.', step: 3 },
-        { at: 5.5, say: '가운데 각은 180°−90°=90°라서 넓이는 c²÷2예요.' }
+        { at: 5.5, say: '두 예각 합이 90°라 가운데도 직각, 넓이는 c²÷2예요.', set: { pySquareCReady: true } }
       ]),
       ch('같은 넓이를 두 식으로', 12, [
         { at: 0, say: '두 넓이 식에 2를 곱하면 (a+b)²=2ab+c²예요.', set: { pyOtherReady: true } },

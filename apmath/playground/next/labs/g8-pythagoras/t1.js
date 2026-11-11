@@ -159,8 +159,8 @@
       const bq = Math.sqrt(b2); // 그림을 그릴 때만 쓰는 값(화면에 제곱근 기호는 쓰지 않음)
       const R = figRt(b, a, bq, C, {
         sq: !C.problem, bt: 40,
-        lab: { a: `a=${a}`, b: C.answer ? bi ? `b=x=${bi}` : 'b' : 'x', c: `c=${c}` },
-        sqLab: { a: lessonReady(s, C, 'pySquareAReady') ? `a²=${a2}` : 'a²', b: C.calculation ? `b²=${b2}` : 'b²=x²', c: lessonReady(s, C, 'pySquareCReady') ? `c²=${c2}` : 'c²' },
+        lab: { a: `a=${a}`, b: C.lesson && !s.pyLessonProblem ? 'b' : C.answer ? bi ? `b=x=${bi}` : 'b' : 'x', c: `c=${c}` },
+        sqLab: { a: lessonReady(s, C, 'pySquareAReady') ? `a²=${a2}` : 'a²', b: C.calculation ? `b²=${b2}` : C.lesson && !s.pyLessonProblem ? 'b²' : 'b²=x²', c: lessonReady(s, C, 'pySquareCReady') ? `c²=${c2}` : 'c²' },
         at: { sa: 2, sb: 3, sc: 2 }, traceSide: C.lesson ? 'c' : null, trace: s.pyTrace || 0
       });
       if (C.calculation && C.txt) T(b, pt(a / 2, a), `${c2} − ${a2} = ${b2}`, { dy: 34, size: 18, color: 'green' });
@@ -205,11 +205,15 @@
       const { a, b: bb, c2, ci, rot: r, kind } = M;
       // 문제에서 kind=1 이면 한 직각변을 구하는 문제: 빗변 값을 주고 직각변 x 를 구합니다.
       const pending = !C.answer, hypGiven = C.givens && kind === 1;
-      figRt(b, a, bb, C, {
-        rot: r, names: ['A', 'B', 'C'], hi: C.lesson ? lessonReady(s, C, s.pyLessonProblem ? 'pySupportReady' : 'pyShowAnswer') ? 'c' : null : C.review && C.step >= 2 ? 'c' : null, t: 26, bt: 26,
+      const R = figRt(b, a, bb, C, {
+        rot: r, names: ['A', 'B', 'C'], hi: C.lesson ? lessonReady(s, C, s.pyLessonProblem ? 'pySupportReady' : 'pyShowAnswer') ? 'c' : null : C.review && C.step >= 2 ? 'c' : null, t: 26, bt: C.lesson ? 76 : 26,
         lab: { a: pending && kind === 1 ? 'x' : `${a}`, b: `${bb}`, c: C.lesson && !s.pyLessonProblem ? C.answer ? '빗변 c' : '?' : hypGiven ? (ci || 'c') : pending ? 'x' : ci ? `${ci}` : 'c' },
         labOut: true
       });
+      if (C.lesson && C.calculation) {
+        const box = bboxOf([R.A, R.B, R.C]);
+        T(b, pt((box.x0 + box.x1) / 2, box.y1), C.answer ? `x=${kind === 1 ? a : ci}` : kind === 1 ? `x²=${c2}−${bb * bb}=${a * a}` : `x²=${a * a}+${bb * bb}=${c2}`, { dy: 46, size: 17, color: 'amber' });
+      }
       if (!C.problem && C.txt) T(b, pt(0, 0), '', {});
     },
     steps: (M) => [
@@ -387,7 +391,8 @@
     draw(b, s, M, C) {
       const { a, b: bb, c2, ci, area, kind } = M;
       const pending = C.lesson ? !lessonReady(s, C, 'pySupportReady') : C.problem || C.review && C.step < 3, ask = C.givens && kind === 1;
-      figRt(b, a, bb, C, { sq: false, bt: C.full ? 100 : C.answer ? 76 : 40, lab: { a: `${a}`, b: pending && ask ? 'b' : `${bb}`, c: pending && !ask ? 'c' : ci ? `${ci}` : 'c' }, labOut: true, hi: C.review && C.step === 2 ? 'c' : null, traceSide: C.lesson ? kind === 1 ? 'c' : 'a' : null, trace: s.pyTrace || 0 });
+      figRt(b, a, bb, C, { sq: false, bt: C.full ? 100 : C.lesson || C.answer ? 76 : 40, lab: { a: `${a}`, b: pending && ask ? 'b' : `${bb}`, c: pending && !ask ? 'c' : ci ? `${ci}` : 'c' }, labOut: true, hi: C.review && C.step === 2 ? 'c' : null, traceSide: C.lesson ? kind === 1 ? 'c' : 'a' : null, trace: s.pyTrace || 0 });
+      if (C.lesson && C.calculation && !C.answer) T(b, pt(a / 2, 0), kind === 1 ? `b²=${c2}−${a * a}=${bb * bb}` : `c²=${a * a}+${bb * bb}=${c2}`, { dy: 48, size: 17, color: 'amber' });
       if (C.answer && C.txt) {
         if (C.full || kind === 0) T(b, pt(a / 2, 0), M.per != null ? `둘레 ${a}+${bb}+${ci}=${M.per}` : `둘레: c²=${c2}`, { dy: 48, size: 17, color: 'amber' });
         if (C.full || kind === 1) T(b, pt(a / 2, 0), `넓이 \\frac{${a}×${bb}}{2}=${fmtN(area)}`, { dy: C.full ? 80 : 48, size: 17, color: 'sky' });

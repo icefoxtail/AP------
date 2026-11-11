@@ -258,11 +258,12 @@
         fillPoly(b, [Pp, X, L], 'sky', 0.26); fillPoly(b, [X, Q, Rr], 'sky', 0.26);
         poly(b, [Pp, X, L], 'sky', 2.6); poly(b, [X, Q, Rr], 'sky', 2.6);
         fillPoly(b, [L, X, Rr], 'amber', 0.24); poly(b, [L, X, Rr], 'amber', 2.6);
-        b.right(Pp, X, L, { size: 10, color: 'amber' }); b.right(Q, X, Rr, { size: 10, color: 'amber' }); b.right(X, L, Rr, { size: 11, color: 'amber' });
+        b.right(Pp, X, L, { size: 10, color: 'amber' }); b.right(Q, X, Rr, { size: 10, color: 'amber' });
+        if (!C.lesson || C.givens || lessonReady(s, C, 'pySquareCReady')) b.right(X, L, Rr, { size: 11, color: 'amber' });
         if (C.txt && !prob && st(3)) {
           T(b, pt(bb * 0.3, -a * 0.28), `\\frac{${a}×${bb}}{2}`, { size: 15, color: 'sky' });
           T(b, pt(bb + a * 0.7, -bb * 0.28), `\\frac{${a}×${bb}}{2}`, { size: 15, color: 'sky' });
-          T(b, pt((bb + sd) / 2 - bb * 0.0, -Math.max(a, bb) * 0.6), C.lesson ? '\\frac{c²}{2}' : `\\frac{${c2}}{2}`, { size: 16, color: 'amber' });
+          if (!C.lesson || lessonReady(s, C, 'pySquareCReady')) T(b, pt((bb + sd) / 2 - bb * 0.0, -Math.max(a, bb) * 0.6), C.lesson ? '\\frac{c²}{2}' : `\\frac{${c2}}{2}`, { size: 16, color: 'amber' });
         }
       }
       [[Pp, 'P', -1, 1], [X, 'X', 0, 1], [Q, 'Q', 1, 1], [L, 'L', -1, -1], [Rr, 'R', 1, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 13, dy: dy * 15, size: 17 }); });
