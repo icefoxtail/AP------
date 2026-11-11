@@ -66,8 +66,9 @@
 | `common-coord` 평면좌표 | 6 | 6 / 28 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1801](https://github.com/icefoxtail/AP------/pull/1801), merge `e0fa6e4de2440b9c93d62941b92c793c749a1c78`. 개념 22·첫 원문 6, 최소 검사 47/47·746 cue frames. 실제 운영 0/4 일치 (§7) |
 | `common-transform` 도형의 이동 | 4 | 4 / 25 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1803](https://github.com/icefoxtail/AP------/pull/1803), merge `142d7e268f73cc216dc2004a6fb99addda4f57d1`. 최소 검사 47/47·691 cue frames. 실제 운영 0/4 일치 (§7) |
 | `common-circle-eq` 원의 방정식 | 32 | 32 / 104 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1808](https://github.com/icefoxtail/AP------/pull/1808), merge `e9c23ee916936b1c00731064d6746f15a4f60182`. 최소 검사 47/47·2,716 cue frames. 실제 운영 0/4 일치 (§7) |
-| `common-functions` 합성·유리·무리함수 | 29 | 29 / 54 | **IMPLEMENTED / QA_PENDING** · 기존 WIP 보존·최신 main 반영 후 원문 목표별 38·개념 16해설. 최소 검사 74/74, 721개 실제 Board/canvas cue 상태. PR·main 반영 진행, Pages 별도 확인 |
-| 고등 잔여 28개 | — | — | `common-functions` 병합 후 `common-irrational` 3장면 → `common-counting` 7장면. 이미 병합한 실험실은 반복하지 않음 |
+| `common-functions` 합성·유리·무리함수 | 29 | 29 / 54 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1820](https://github.com/icefoxtail/AP------/pull/1820), merge `808e2e990a3b7fb2efcef00c033c91bf340508f7`. 기존 WIP 보존, 원문 목표별 38·개념 16해설. 최소 검사 74/74, 721개 실제 Board/canvas cue 상태. 실제 운영 HTML은 이전판·lesson-a 404 |
+| `common-irrational` 무리함수 | 3 | 3 / 12 | **IMPLEMENTED / QA_PENDING** · 개념9·첫 원문3. 최소검사59/59·source-only1/1·328개 실제 Board 상태·validator 오류/경고0. PR/main 반영 진행, Pages 미확인 |
+| 고등 잔여 27개 | — | — | `common-counting` 7장면 → `alg-explog` 21장면 → `alg-exp-deep` 16장면. 실험실별 브랜치로 분리하고 이 순서로 병합 |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -257,6 +258,10 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 · **무리함수 전체 구현.** `feat/lessons-common-irrational`, i1/i2/i3 **3장면/12해설**(개념9·첫 원문3), 누락0. 공통 Player 기본1.5배속·60~72초. 최소검사 **59/59**(독립수학12·실제HTML/Board6·공통video41), source-only 조작계약1/1, 실제 **328 cue/이동 중간 상태**, validator 오류/경고0, JS/MJS5·inline2 구문 및 diff 통과. 첫 원문 고정·수동 새문제 보존·형제해설 reset·진입 시 최종상태 제거 확인. i2 빠른풀이의 질문별 분기와 i1 이동한 네 방향 곡선의 식 라벨을 실제 원본 상태에 맞게 고쳤다. 공통kit 변경 없음. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**. `alg-explog` 다음 작업38해설은 원격 WIP `aafaa8d645137be2adab635fff1d2f88f7384d0d`에 별도 보존했으며 이 기록으로 main 병합이나 배포 완료를 주장하지 않는다.
+
+- 2026-11-12 · **함수 main 병합 및 다음 실험실 진입.** [PR #1820](https://github.com/icefoxtail/AP------/pull/1820), feature `25fccbebf640a059e9637dd366583cf2fec13711`, merge/main readback `808e2e990a3b7fb2efcef00c033c91bf340508f7`. 원격 tree `e188becfd8274535a2d718436d7796808f5bf4cc`는 검사한 로컬 tree와 동일하며 기존 WIP `3a6a76e`와 main `fdaf0221`의 계보를 보존했다. 누적 **26실험실/700장면/2,049해설**, 함수 미구현 장면0. Pages 복구 [PR #1819](https://github.com/icefoxtail/AP------/pull/1819)는 별도 merge `9c09507edec9f4e28c43d363e2595118b776e045`이며 최종 등록 gate 유지. 실제 학생 함수 HTML은 이전판·lesson-a 404여서 **PAGES_NOT_VERIFIED**. AWCR r50 raw readback SHA-256 `33cdc9ecb45e68caff76d72f84ecf7304013528e78fb196ace553b073bbd1c96` 확인. 다음 `feat/lessons-common-irrational`에서 i1/i2/i3를 이어서 구현하며 모바일·독립시각 QA는 후행한다.
 
 - 2026-11-12 · **함수 복구·전체 구현.** 원격 main `fdaf022100ea36ce77e9d1cdd6d4a357627ca2de`와 보존 WIP `3a6a76e545ea3896918e508632b87bbb8ac57971`을 확인하고 기존 계보를 유지해 최신 main을 충돌 없이 합쳤다. `lesson-a.js` 기본16장면/25해설, `lesson-b.js` 심화·B9 13장면/29해설로 **29장면/54해설, 누락0**. 조건·풀이·계산·마지막 결론을 각60~72초로 구성하고 공통1.5배속 Player를 재사용한다. 현재 자막까지 공개한 수식만 원본 그래프의 수치 라벨에 허용하며, bas2의 기울기 부호와 bas15 무연근은 해당 탐구 상태로 연결했다. 최소검사 **74/74**(원문 독립수학29, HTML/Board 통합4, 기존video41), validator 오류/경고0, 실제Board/canvas **721 cue 상태**, 새문제 보존·원문 고정·다시보기 확인. 로컬 Chromium은 process singleton socket 권한으로 실행 실패했고 공유 브라우저는 로컬서버 연결거부: 실제 브라우저 재생·전수모바일·독립시각 검수는 **NOT_RUN / QA_PENDING**. Pages 등록 복구는 별도 담당과 PR로 분리하며 게이트를 완화하지 않는다. AWCR r49 raw readback SHA-256 `5440a083d1bedc673b61546b5d7927bc09bbbbf32741e600d618f6265ae49f23` 확인. 아래 환경중단·완료0·r49 미저장 기록은 복구 전 이력이다.
 
