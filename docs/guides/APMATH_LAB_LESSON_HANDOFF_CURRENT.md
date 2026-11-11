@@ -165,7 +165,7 @@
 | K1 | `lesson-browser-audit`의 진입 화면 검사가 **그림 속 글자**(canvas `fillText`, 측정용 그리기 제외)와 칩·상태 줄까지 읽어 정답 노출을 잡게 한다. 재생 중 조기 노출 검사와 같은 방식 | 원과 부채꼴에서 진입 화면에 정답이 그려진 4개 장면을 감사가 통과시켰다 |
 | K2 | `tab:'review'` 해설의 진입 화면을 키트가 기본으로 정리 탭 0단계 그림으로 그리게 한다 | 지금은 장면마다 `lessonEntry` 처리를 따로 넣고 있다 |
 | K3 | 정리 탭 해설이 `s.dragging`을 쥐면 장면 `tick`이 멈춘다. 값 끌림만 막고 `tick` 보간은 살리는 방법(별도 표시)으로 바꾼다 | `tick`으로 보간하는 장면(f02)이 재생 중 단계 변화를 따라가지 못해 장면마다 우회하고 있다 |
-| K4 | **IMPLEMENTED · [PR #1781](https://github.com/icefoxtail/AP------/pull/1781) 병합 대기** — cue `pin: true`의 수식을 최근 3줄까지 유지. 이전 줄은 흐리게, 세로 태블릿 700~1024px은 수식·자막 두 열. 핀 없는 기존 해설은 같은 배치 유지 | §7 고등 수식 전개에 필요. core·Player·기존 두 실험실 VM 최소 검사 64/64, 실제 화면 QA는 NOT_RUN |
+| K4 | **MAIN_MERGED · [PR #1781](https://github.com/icefoxtail/AP------/pull/1781)** — cue `pin: true`의 수식을 최근 3줄까지 유지. 이전 줄은 흐리게, 세로 태블릿 700~1024px은 수식·자막 두 열. 핀 없는 기존 해설은 같은 배치 유지 | §7 고등 수식 전개에 필요. core·Player·기존 두 실험실 VM 최소 검사 64/64, 실제 화면 QA는 NOT_RUN |
 | K5 | 넓은 화면(860px 이상)에서 탐구 패널의 결론이 ▶ 전에 보이는 장면의 처리 | 사용자 결정 필요. 결정 전에는 손대지 않고 사례만 모은다 |
 | K6 | 360px 폭에서 버튼 2개 + 「직접 해 보기」가 두 줄로 넘어감 | 가려지는 것은 없다. 낮은 우선순위 |
 
@@ -229,7 +229,7 @@
 
 **선행 작업:** 유형이 다른 3개로 시범을 만든다 — 그래프형 `calc1-tangent`, 수식 전개형 `alg-sine-cosine-law`(K4 필요성 판단), 격자점형 `common-rational`의 r4. 시범에서 형식이나 키트가 바뀌어야 하면 키트 PR을 먼저 올린다. 그 뒤 과목 순서: 공통수학 → 대수 → 미적분Ⅰ → 기하 → 확률과 통계.
 
-**2026-11-11 고등 진입 재확인:** 최신 중등 완료 main `41a2cc430ee7f2c297d771587dee61e065b72df4`에서 세 시범의 실제 구조를 확인했다. `calc1-tangent`는 7장면, `alg-sine-cosine-law`는 18장면, `common-rational`은 4장면이다. K4를 별도 `feat/lessons-kit-pinned-formulas` 브랜치에서 구현했으며 고등 해설 전에 별도 PR로 병합한다. 앞 두 실험실의 실제 문항 화면은 기존 `ouUpgrade` / `SPEC`을 읽으며, `varier` 클로저의 첫 패킷을 해설 전용으로 선택해 수동 새 문제를 보존한다. `common-rational/r4`의 첫 원문은 최솟값으로 계수를 구하는 문제이며 격자점 문제가 아니다. 첫 원문 해설을 유지하고, 격자점 시범은 원본 탐구의 고정 초기 상태를 별도 개념 버튼으로 만든다. 난수 격자점 변형을 첫 원문으로 표시하지 않는다.
+**2026-11-11 고등 진입 재확인:** 최신 중등 완료 main `41a2cc430ee7f2c297d771587dee61e065b72df4`에서 세 시범의 실제 구조를 확인했다. `calc1-tangent`는 7장면, `alg-sine-cosine-law`는 18장면, `common-rational`은 4장면이다. K4는 별도 [PR #1781](https://github.com/icefoxtail/AP------/pull/1781)에서 main `680a4ba47ff54646a46dd0b56f3f2ca2e86cf4bc`로 병합했다. 키트 3개 운영 파일은 이전 내용이어서 PAGES_NOT_VERIFIED이며, 이 main에서 `feat/lessons-calc1-tangent`를 시작했다. 동일 해설 브랜치·PR은 없었고 기존 구조 개선 PR #1494는 이미 병합되어 재작성하지 않는다. 앞 두 실험실의 실제 문항 화면은 기존 `ouUpgrade` / `SPEC`을 읽으며, `varier` 클로저의 첫 패킷을 해설 전용으로 선택해 수동 새 문제를 보존한다. `common-rational/r4`의 첫 원문은 최솟값으로 계수를 구하는 문제이며 격자점 문제가 아니다. 첫 원문 해설을 유지하고, 격자점 시범은 원본 탐구의 고정 초기 상태를 별도 개념 버튼으로 만든다. 난수 격자점 변형을 첫 원문으로 표시하지 않는다.
 
 **알려진 장면 오류(해설을 얹기 전에 처리):** `calc1-integral`의 `signed` 장면 해설 식(F = x²/3 − x로 적혀 있으나 x³/3 − x²이어야 함), 분수 조판 미완(alg-trig-geometry 12, geom-parabola 8, common-functions 1). 근거: `docs/guides/APMATH_G7_EXAM_VIDEO_HANDOFF_CURRENT.md`.
 
@@ -267,6 +267,8 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+- 2026-11-11 · K4 [PR #1781](https://github.com/icefoxtail/AP------/pull/1781) **main 병합 완료**. head `19150a357a671f54ad617c3b54fcf5afd8ea47db`, merge/API·Git main `680a4ba47ff54646a46dd0b56f3f2ca2e86cf4bc`; ancestor 및 대상 7파일 차이 0 확인. 최소 검사 64/64이며 병합 직전 CI 23개는 queued로 전체 CI PASS를 주장하지 않는다. kit 3개 운영 파일은 모두 HTTP 200이지만 0개 일치하여 **PAGES_NOT_VERIFIED / QA_PENDING**. 공개 release는 `fb27d05ee921da9534d9fff332ac774d732b91cf`, 최신 Pages 실행은 workflow success/Deploy skipped이며 이전 writer는 required registration incomplete로 배포 dispatch를 건너뛰었다. 보호·검사 기준은 변경하지 않았다. [AWCR r30](https://drive.google.com/file/d/1V4KQYrJyoPYRcQ0M0_2c50uO83eISE6b/view) raw SHA-256 `d56ce2344295d4f31dfa8b154d8ee0e0d99cd479f1baac87cd282179c1fb6e5e`·7,931 bytes를 다시 읽어 검증했다. 다음 고등 첫 시범은 접선과 미분계수 7장면이다.
 
 - 2026-11-11 · K4 고정 수식 줄 [PR #1781](https://github.com/icefoxtail/AP------/pull/1781) **구현 및 최소 안전 검사 완료**. `pin:true`가 붙은 자막의 수식만 추출하여 현재 시간까지의 최근 3줄을 표시하고, 되감기·다시 보기·해설 전환·끝 카드에서 미래 수식/이전 해설의 수식을 비운다. 기존 컴파일 결과와 `stateAt`은 핀이 없는 대본에서 동일하며 기본 1.5배 속도를 유지했다. 세로 태블릿 700~1024px에서 핀이 있는 동안 수식 왼쪽·현재 자막 오른쪽, 다른 화면은 위아래 배치다. 신규 core 8·Player 6, 기존 video 41·속도 2·닮음 VM 3·원 VM 4로 **64/64 통과**, fail/skip/cancel 0. JS/MJS 4파일 구문·diff 검사 통과. 실제 브라우저 픽셀·전수 모바일·독립 시각 검수는 **NOT_RUN / QA_PENDING**. [AWCR r29](https://drive.google.com/file/d/1c8yebVhVbcRvpCcQnarBM7Z_7GN4Ruiz/view) raw SHA-256 `1841d3dae0e2fc996194de2d5e6b1d4b6728695c6af3c9c88847824d761bc9f7`·7,212 bytes는 첫 구현 원격 head `a937d27a70cd45385e4a64785e61b1b8e019ad85`에 고정한 저장본이며 최종 UI·통합 검사 결과는 다음 revision에 기록한다.
 
