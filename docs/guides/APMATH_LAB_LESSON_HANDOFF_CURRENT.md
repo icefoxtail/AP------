@@ -45,8 +45,9 @@
 | `g7-circle-sector` 원과 부채꼴 | 86 | 86 / 98 | **RELEASED_QA_PENDING** · [PR #1736](https://github.com/icefoxtail/AP------/pull/1736), merge `480018bea30d86225b8e41c79eda5cd76ce03ebc`. [Pages run 42958902234](https://github.com/icefoxtail/AP------/actions/runs/42958902234) 성공, 실제 HTML 및 17개 모듈의 배포 소스 일치 확인. 전체 모바일 품질검수 NOT_RUN |
 | `g7-polyhedra` 다면체 | 26 | 26 / 58 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1747](https://github.com/icefoxtail/AP------/pull/1747), merge `1e4fe2ce808fff9887e798b7ec7cf4e4f0461bbe`. 최소 검사 131/131, 누락 0. Pages 등록 작업 대기 |
 | `g7-solids` 회전체 | 22 | 22 / 48 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1750](https://github.com/icefoxtail/AP------/pull/1750), merge `459c71d08b159a7fe5fffc91ea5c3553e78005b9`. 최소 검사 108/108, 누락 0. Pages 등록 작업 대기 |
-| `g7-polygons` 다각형 | 18 | 18 / 31 | **IMPLEMENTED / QA_PENDING** · 신규 18장면/31해설, 누락 0. 최소 검사 145/145. 신규 브랜치 `feat/lessons-g7-polygons`, PR·main·Pages 확인 예정 |
-| 중1 나머지 5개 | 100 | 0 | 미착수 (§5-3) |
+| `g7-polygons` 다각형 | 18 | 18 / 31 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1754](https://github.com/icefoxtail/AP------/pull/1754), merge `0f82b309173e29d399945bccedd0a52c8196b586`. 최소 검사 145/145, 누락 0. Pages 등록 작업 대기 |
+| `g7-area` 다각형의 넓이 | 14 | 제작 중 | main `0f82b309173e29d399945bccedd0a52c8196b586`에서 `feat/lessons-g7-area` 신규 시작. 기존 브랜치·PR 없음 확인 |
+| 중1 나머지 4개 | 86 | 0 | 미착수 (§5-3) |
 | 중2 4개 · 중3 2개 | 247 | 0 | 미착수, 선행 확인 필요 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
 
@@ -212,6 +213,9 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+- 2026-11-11 · 다각형 [PR #1754](https://github.com/icefoxtail/AP------/pull/1754) **main 운영 병합 완료**. head `afe38dedceabe03e93c4ff366b13dd6ad70ebe40`, merge `0f82b309173e29d399945bccedd0a52c8196b586`, 원격 main 및 대상 파일 일치 확인. 18장면/31해설, 최소 검사 145/145. [등록 writer 42965086609](https://github.com/icefoxtail/AP------/actions/runs/42965086609) pending. 실제 학생 HTML은 기존 4608 bytes로 신규 모듈·player 연결이 없어 **Pages NOT_VERIFIED / QA_PENDING**이다. 중1 main 등록 182/282장면·289해설. 다음 넓이 14장면 제작을 시작했다.
+- 2026-11-11 · [AWCR r9](https://drive.google.com/file/d/1L1rZmz06Ag0A_0MEmBThb33YMo1F1vxJ/view) 원격 저장·raw 재조회 완료. SHA-256 `df9d7ca274f3368f57f9e65600ff37ad9b557969255c6a28a2aa1a50d51d48cc`, parent r8와 결속 확인. 다각형까지 MAIN_MERGED, 신규 네 실험실 Pages NOT_VERIFIED, 전체 모바일 NOT_RUN. 다음 revision r10은 충돌 재확인 후 저장한다.
 
 - 2026-11-11 · `g7-polygons` **18장면/31해설 신규 구현 완료**, 미등록 장면 0. 최신 main `459c71d08b159a7fe5fffc91ea5c3553e78005b9`에서 새 브랜치로 제작하고 정상 단위마다 원격 보존했다. 최소 검사 145/145, JS/MJS 13파일 구문 통과. **IMPLEMENTED / QA_PENDING**, PR·main·Pages 확인 예정. 다음은 `g7-area`다. 선행 Surface·다면체·회전체의 실제 HTML은 기존 버전이며, Pages run 42962929336은 Build success / Deploy queued여서 NOT_VERIFIED를 유지한다.
 
