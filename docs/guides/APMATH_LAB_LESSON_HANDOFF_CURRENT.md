@@ -79,8 +79,9 @@
 | `calc1-limits` 함수의 극한 | 9 | 9 / 25 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1832](https://github.com/icefoxtail/AP------/pull/1832), merge `c7e642eb71510a40ed56bbc0a23ee13d5c896642`. 원문 목표12·탐구개념13. 최소64/64(수학18·runtime5·공통video41),550개 실제 Board/canvas 상태·validator 오류/경고0 |
 | `calc1-derivative-shape` 도함수와 함수의 그래프 | 7 | 7 / 23 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1834](https://github.com/icefoxtail/AP------/pull/1834), merge `16f120347a36f7c06290226089c133d24a3de40c`. 원문 목표12·탐구개념11. 최소69/69(수학7·runtime7·공통video/pins55),370개 실제 Board/canvas 상태·validator 오류/경고0 |
 | `calc1-cubic` 삼차함수 비율관계 | 5 | 5 / 25 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1835](https://github.com/icefoxtail/AP------/pull/1835), merge `4a66317078cc606871f8100ccdb42097ceef25bc`. 원문 목표9·탐구개념16. 최소60/60(수학13·runtime6·공통video41),402개 실제 Board/canvas 상태·validator 오류/경고0 |
-| `calc1-quartic` 사차함수 비율관계 | 5 | 5 / 22 | **IMPLEMENTED / QA_PENDING** · 원문 목표8·탐구개념14. 최소63/63(수학16·runtime6·공통video41),362개 실제 Board/canvas 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
-| 고등 잔여 15개 | — | — | `calc1-composite` 7장면 → `calc1-integral` 8장면 → `calc1-motion` 5장면 → `geom-parabola` 14장면. 합성7/20 최소검사 후 인계, 정적분·운동·포물선 담당 범위를 분리하여 구현 중 |
+| `calc1-quartic` 사차함수 비율관계 | 5 | 5 / 22 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1836](https://github.com/icefoxtail/AP------/pull/1836), merge `b2d89d212e35fbd1057eb2ce0352a65c8634fca1`. 원문 목표8·탐구개념14. 최소63/63(수학16·runtime6·공통video41),362개 실제 Board/canvas 상태·validator 오류/경고0 |
+| `calc1-composite` 합성함수·절댓값 그래프 | 7 | 7 / 20 | **IMPLEMENTED / QA_PENDING** · 원문 목표10·탐구개념10. 최소66/66(수학20·runtime5·공통video41),323개 실제 Board/canvas 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
+| 고등 잔여 14개 | — | — | `calc1-integral` 8장면 → `calc1-motion` 5장면 → `geom-parabola` 14장면 → `geom-ellipse` 12장면. 정적분·운동·포물선 담당 범위를 나누어 구현, 기존 완료 실험실은 반복 제작하지 않음 |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -270,6 +271,10 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 · **합성함수·절댓값 그래프 전체 구현.** `feat/lessons-calc1-composite`, abs/scan/heal/extrema/solve/kinkcancel/glue **7장면/20해설**(첫 원문 목표10·탐구개념10), 누락0. 절댓값 반사, 접합점 함수값/기울기, 수평선과 실근 개수, 합성함수 치역 제한, 겹친 극값 후보, 꺾임 상쇄와 접점 중복도, 함수 접합을 분리했다. 원문/탐구의 glue 계수 차이를 조건에 명시하며 OU/CX 생성기 첫문항 고정·수동 변형 보존·원래 드래그·두 그림 보기·형제설정과 entry 초기화를 유지한다. 기존Player 기본1.5배속, 공유kit 변경 없음. 최소 **66/66 PASS**(독립수학20·native5·공통video41), **323 실제 상태**, validator 오류/경고0·KaTeX·JS6+inline2 구문·diff 통과. 최신 main 통합 뒤 검사 입력17개 SHA 동일. 실제브라우저·모바일전수·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
+
+- 2026-11-12 · **사차함수 main 병합.** [PR #1836](https://github.com/icefoxtail/AP------/pull/1836), feature `ea8012802533c0886c7fa596105af515403f1fef`, merge/main readback `b2d89d212e35fbd1057eb2ce0352a65c8634fca1`, tested tree `77c35d58b6fbeb8787ac9b5462b09c2729d58c10`. 누적 **39실험실/838장면/2,409해설**. AWCR r65 remote raw SHA256 `f2049d333f74e234b30a5287fc3e4cb826f9ec5c45e999f8178e21382a7261ac` 확인. Pages writer43060888403은 queued이며 **PAGES_NOT_VERIFIED**. 정적분 signed의 과거 원시함수 오타는 현행 원문/계산 코드에서 이미 교정됨을 담당자가 확인했으며, 기존 교정 상태를 보존하고 회귀 검산한다.
 
 - 2026-11-12 · **사차함수 전체 구현.** `feat/lessons-calc1-quartic`, triple/sym/area/sync/fold **5장면/22해설**(첫 원문 목표8·탐구개념14), 누락0. 삼중근3:1과 두 번째 변곡점의 가로좌표2:1, 좌우대칭1:√2, 조건 변화에 따른 보조 도형 제거, 접선넓이1/20·1/30와 길이의 다섯제곱, 도함수 넓이와 두 극솟값, 절댓값의 미분가능 조건·높이별 꺾임 개수·g+k 표시와 실제g 높이를 구분했다. 원문/변형 생성기는 수정하지 않고 첫 원문 고정·새 문제·원래 탐구/드래그·카메라와 자동보기 cache를 보존한다. 공통Player 기본1.5배속. 최종 실제stdout **63/63 PASS**(독립수학16·native6·공통video41), **362 실제 상태**, validator 오류/경고0·KaTeX·구문8단위·diff 통과. native의 3:1/1:√2 보조선 조건과 두 극솟값의 일치, 높이별 꺾임0/0/2/1/2를 확인했다. 기존 remote WIP `0f49c969426258573989182c35da1dc46d4a6d3c` 보존, 최신 main 통합 뒤 입력15개 SHA 동일. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
 
