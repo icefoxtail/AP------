@@ -10,11 +10,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="calc1-limits/lesson-core.js"></script>
+<script defer src="calc1-limits/lesson-a.js"></script>
+<script defer src="calc1-limits/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -30,6 +37,9 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
   const { tex, fmt, clamp } = APLab;
+  const lclActive=s=>!!(s&&(s.lessonOn||s.lessonEntry));
+  let lclContext=null;
+  const lclFirst=()=>lclActive(lclContext||(window.lab&&window.lab.s));
   const asc = (v, d = 1) => fmt(v, d).replace('−', '-'); // 수식(tex)용: 유니코드 마이너스 대신 '-'
 
   /* ---------- 1. 함수 (원본 renderMode1~5 · renderMode3Bottom · renderMode4Bottom) ---------- */
@@ -739,10 +749,10 @@ window.addEventListener('DOMContentLoaded', function () {
   const NARROWQ = () => !!(window.matchMedia && window.matchMedia('(max-width: 859px)').matches); // apl.css 모바일 기준과 같은 값
   const tabOf = (lab) => (lab && lab.tab) || 'explore';
   function varier(gen) {
-    let cur = gen(null);
+    const first=gen(null); let cur=first;
     // Generators rebuild pool objects. Compare mathematical data, not object identity.
     const key = (v) => JSON.stringify(v, (k, x) => k === 'item' || typeof x === 'function' ? undefined : x);
-    return { cur: () => cur, next: () => {
+    return { first:()=>first, cur:()=>lclFirst()?first:cur, next: () => {
       const old = key(cur);
       for (let i = 0; i < 128; i++) { const next = gen(cur); if (key(next) !== old) { cur = next; return cur; } }
       throw new Error('서로 다른 새 문제를 만들지 못했습니다.');
@@ -1857,12 +1867,13 @@ window.addEventListener('DOMContentLoaded', function () {
   // 변형 생성기: gen(이전)이 새 변형을 돌려주거나 null(다시 뽑기). 첫 변형 gen(null)은 원래 문제입니다.
   let ouSerial = 0;
   function ouVarier(gen) {
-    let cur = gen(null);
+    const first=gen(null); let cur=first;
     cur.first = true; cur.sid = ++ouSerial;
     const firstKey = cur.key;
     return {
       ou: true,
-      cur: () => cur,
+      first:()=>first,
+      cur:()=>lclFirst()?first:cur,
       next: () => {
         for (let i = 0; i < 600; i++) {
           const v = gen(cur);
@@ -1911,6 +1922,7 @@ window.addEventListener('DOMContentLoaded', function () {
     sc.reviewTop = () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${body(V.cur())}</div>`;
     sc.problem = { tag: pr0.tag, time: pr0.time, text: () => ouProb(body(V.cur())), answer: () => (V.cur().first ? ex.answerBadge() : spec.ans(V.cur())) };
     sc.vary = V;
+    sc.lessonPrepare = ouHook;
     const sol0 = sc.solution || {};
     sc.solution = {
       ...sol0,
@@ -1918,7 +1930,7 @@ window.addEventListener('DOMContentLoaded', function () {
       quick: () => ouQuick(spec.m, V.cur(), spec.core)
     };
     sc.view = (s, lab) => (inExplore(lab) ? (origView ? withStep(s, () => origView(s, lab)) : {}) : { formula: spec.core });
-    if (origPanes) sc.panes = (s) => { const L = window.lab; return L && L.tab && L.tab !== 'explore' ? null : origPanes(s); };
+    if (origPanes) sc.panes = (s) => { const L = window.lab; const explore=lclActive(s)?s.lclExplore:!L||!L.tab||L.tab==='explore'; return explore?origPanes(s):null; };
     sc.draw = (b, s, v, lab) => {
       if (b.thumb || inExplore(lab)) {
         if (!b.thumb) ouFocus(b, 'e:' + spec.m, typeof focus0 === 'function' ? focus0(s) : focus0 || (lab && lab.def && lab.def.board && lab.def.board.focus));
@@ -2258,6 +2270,103 @@ window.addEventListener('DOMContentLoaded', function () {
     };
   });
 
+  const lessonParams={
+      ...EXTRA_PARAMS,
+      gap: { value: 0, min: -2.0, max: 2.5, step: 0.05, color: 'sky', label: '오른쪽 식의 높이 변화 Δh (우극한 = 2 + Δh)', hint: 'Δh = 0 이면 좌극한과 우극한이 같아집니다', format: (v) => `Δh = ${fmt(v)}` },
+      k: { value: 2, min: -2.0, max: 3.0, step: 0.05, color: 'rose', label: '함숫값 f(1) = k', hint: '채운 점과 양쪽 조각의 높이를 비교하세요', format: (v) => `f(1) = ${fmt(v)}` },
+      d: { value: 0.65, min: 0.08, max: 0.95, step: 0.01, color: 'amber', label: '1에서 떨어진 거리 d (x = 1 ± d)', hint: 'd를 줄이면 x → 1 로 접근합니다', format: (v) => `d = ${fmt(v)}` },
+      px: { value: 1.8, min: 0.0, max: 2.0, step: 0.05, color: 'amber', label: '움직이는 점 x', hint: 'x를 양쪽에서 1에 가까이 보내고, x=1의 함수의 비와 극한값을 구별하세요', format: (v) => `x = ${probeNumber(v)}` },
+      r: { value: 1, min: 0.0, max: 2.2, step: 0.05, color: 'sky', label: 'g(x) = x − r 의 x절편 r', hint: '영점을 옮기며 곱함수의 좌·우 높이를 비교하세요', format: (v) => `r = ${fmt(v)}` },
+      t: { value: 2, min: -2.6, max: 2.6, step: 0.1, color: 'amber', label: '수평선 높이 t', hint: '수평선이 곡선에 닿을 때 교점의 개수를 세어 보세요', format: (v) => `t = ${fmt(v)}` },
+      a: { value: 1, min: -1.6, max: 2.2, step: 0.05, color: 'amber', label: '구간의 한 끝 a', hint: 'f(a)·f(b) < 0 이면 사이에 실근이 있습니다', format: (v) => `a = ${fmt(v)}` },
+      b: { value: 2, min: -1.6, max: 2.2, step: 0.05, color: 'violet', label: '구간의 다른 끝 b', format: (v) => `b = ${fmt(v)}` }
+    };
+
+  // The original first problem is fixed during lessons; manual variants remain intact.
+  const lessonState={dual:false,animDir:-1,...EXTRA_STATE};
+  const lclClone=s=>({...s,tr6:{...(s.tr6||{})},tr9:{...(s.tr9||{})}});
+  const sourceInfo=Object.fromEntries(scenes.map(sc=>{
+    const initial=lclClone({...lessonState,...Object.fromEntries(Object.entries(lessonParams).map(([key,p])=>[key,p.value]))});
+    sc.enter?.(initial);
+    return [sc.id,{initial,first:sc.vary.first(),question:sc.problem.text().replace(/<div[^>]*>\s*<button[^>]*data-(?:ou|c1)-new[\s\S]*$/,''),
+      inquiry:sc.question,steps:sc.steps(initial)}];
+  }));
+  const lessonSource=window.APL_C1L_SOURCE={
+    scenes,first:id=>sourceInfo[id].first,initial:id=>lclClone(sourceInfo[id].initial),
+    question:id=>sourceInfo[id].question,inquiry:id=>sourceInfo[id].inquiry,steps:id=>sourceInfo[id].steps.slice(),
+    math:{fLeft1,fRight1,fnF2,fnG2,hLeft3,hRight3,fn4,count4,roots4,fn5,ROOTS5,
+      cfg6,EXP6,cross6,events6,lim7,prodAt,geo8,lim8,win9,crit9,kinks9,polyAt,polyDer,EXP9}
+  };
+  function lclMathKey(value){
+    return String(value||'').normalize('NFKC').replace(/\\(?:left|right|,|!|;|quad|qquad)/g,'')
+      .replace(/\\(?:dfrac|tfrac|frac)\{([^{}]*)\}\{([^{}]*)\}/g,'$1/$2')
+      .replace(/\\sqrt\{([^{}]*)\}/g,'√$1').replace(/\\sqrt\s*(\w)/g,'√$1')
+      .replace(/\\(?:text|mathrm|mathbf|overline)\{([^{}]*)\}/g,'$1')
+      .replace(/\\(?:Delta)/g,'Δ').replace(/\\alpha/g,'α').replace(/\\beta/g,'β')
+      .replace(/\\leq?/g,'≤').replace(/\\geq?/g,'≥').replace(/\\lt/g,'<').replace(/\\gt/g,'>')
+      .replace(/\\cdot|\\times/g,'×').replace(/−|–/g,'-').replace(/[\s{}$^_()]/g,'')
+      .replace(/(-?\d+(?:\.\d+)?)\/(-?\d+(?:\.\d+)?)/g,(_,a,b)=>Number(b)?String(Number(a)/Number(b)):_ )
+      .replace(/-?\d+\.\d+/g,x=>String(Number(x)));
+  }
+  function lclLabel(value,s){
+    const text=String(value||''), key=lclMathKey(text),known=(s.lclKnownMath||[]).map(lclMathKey);
+    const role=text.replace(/^좌극한\s*/, 'L_-=').replace(/^우극한\s*/, 'L_+=').replace(/^g=/,'g(t)=');
+    if(role!==text&&known.some(math=>math.includes(lclMathKey(role))))return text;
+    if(key&&known.some(math=>math.includes(key)))return text;
+    const pair=key.split('=');
+    if(pair.length===2&&known.some(math=>{const chain=math.split('=');return chain.length>2&&chain.includes(pair[0])&&chain.includes(pair[1]);}))return text;
+    if(/^(?:[A-Z][′']*|[xyabkmrtd]|[αβ]|[fg]|[xy]=[fg]\(x\)|y = [fgh]\(x\)|2t|높이 [−]?β|높이 α)$/.test(text))return text;
+    const name=text.match(/^([A-Z][′']*)(?=[\s(=:]|$)/);if(name)return name[1];
+    // Keep the role of an object visible without exposing its calculated value.
+    return /^(?:좌극한|우극한|왼쪽 조각의 끝|오른쪽 조각의 끝|Δh 조절|분모의 영점|분자의 영점|약분한 그래프의 구멍|약분되어 생긴 구멍)/.exec(text)?.[0]||'';
+  }
+  for(const sc of scenes){
+    const original={question:sc.question,reviewTop:sc.reviewTop,steps:sc.steps,view:sc.view,draw:sc.draw,tick:sc.tick,panes:sc.panes};
+    sc.question=(s,lab)=>lclActive(s)?s.lclQuestion||lessonSource.question(sc.id):typeof original.question==='function'?original.question(s,lab):original.question;
+    sc.reviewTop=(s,lab)=>lclActive(s)?'':typeof original.reviewTop==='function'?original.reviewTop(s,lab):original.reviewTop;
+    sc.steps=(s,lab)=>lclActive(s)?['조건 확인','핵심 관계','식 정리','계산과 결론']:original.steps(s,lab);
+    sc.view=(s,lab)=>lclActive(s)?{}:original.view(s,lab);
+    if(original.panes)sc.panes=s=>original.panes(s.lessonEntry?lclClone({...s,...s.lclInitial}):s);
+    if(original.tick)sc.tick=(s,dt,lab)=>lclActive(s)?false:original.tick(s,dt,lab);
+    sc.draw=(b,s,v,lab)=>{
+      if(!lclActive(s)){
+        if(b._c1lView){
+          if(b.focus===b._c1lView.appliedFocus)Object.assign(b,b._c1lView.before);
+          else {b._ouKey=null;b._ouBoxes=b._c1lView.before._ouBoxes;}
+          delete b._c1lView;
+        }
+        return original.draw(b,s,v,lab);
+      }
+      if(!b._c1lView)b._c1lView={before:{focus:b.focus,zoom:b.zoom,panX:b.panX,panY:b.panY,_ouKey:b._ouKey,_ouBoxes:b._ouBoxes}};
+      const shown=lclClone({...s,...(s.lessonEntry?s.lclInitial:{}),playing:false,
+        step:s.lessonEntry?(s.lclInitial?.lclStartStep||0):Math.max(0,Math.min(s.step||0,s.lclShowAnswer?4:3))});
+      if(s.lessonEntry){shown.lclTrace=0;shown.lclShowAnswer=false;}
+      const shownLab=Object.create(lab);shownLab.s=shown;shownLab.tab=shown.lclExplore?'explore':'review';
+      const key=sc.id+'|'+!!shown.lclExplore;
+      if(b._c1lView.key!==key){b._ouKey=null;b._c1lView.key=key;b.zoom=1;b.panX=0;b.panY=0;}
+      // Install the source's persistent label-layout hook before temporary filtering.
+      sc.lessonPrepare?.(b);
+      b._ouBoxes=[];
+      const text=b._text,plot=b.plot,axes=b.axes,curves=[];let axesDrawing=false;
+      b.axes=function(...args){axesDrawing=true;try{return axes.apply(this,args);}finally{axesDrawing=false;}};
+      b._text=function(x,y,label,options={},screen){return text.call(this,x,y,this._bbox||axesDrawing||(options.color==='muted'&&/^(?:[−-]?\d+(?:\.\d+)?|[xygtOm])$/.test(String(label)))?label:lclLabel(label,shown),options,screen);};
+      b.plot=function(fn,options={}){if(!this._bbox)curves.push({fn,options});return plot.call(this,fn,options);};
+      const previous=lclContext;lclContext=shown;
+      try{original.draw(b,shown,{},shownLab);}finally{lclContext=previous;b._text=text;b.plot=plot;b.axes=axes;}
+      b._c1lView.appliedFocus=b.focus;
+      // Static first-problem figures follow a point along a function already drawn.
+      if(!s.lessonEntry&&shown.lclTrace>0&&!shown.lclExplore&&!b._bbox){
+        if(sc.id==='zero-zero'&&!curves.length)curves.push({fn:lessonSource.first(sc.id).g,options:{}});
+        for(const {fn,options} of curves){
+          const box=b.viewBox(),lo=Math.max(box.x0,options.from??-Infinity),hi=Math.min(box.x1,options.to??Infinity),xs=[];
+          for(let i=0;i<=100;i++){const x=lo+(hi-lo)*i/100,y=fn(x);if(Number.isFinite(y)&&y>box.y0&&y<box.y1)xs.push(x);}
+          if(xs.length>1){const x=xs[0]+(xs.at(-1)-xs[0])*shown.lclTrace,y=fn(x);if(Number.isFinite(y)&&y>box.y0&&y<box.y1)b.point([x,y],{color:'violet',r:4.5,glow:false});break;}
+        }
+      }
+    };
+  }
+  const lessons=window.APL_C1L_LESSONS?window.APL_C1L_LESSONS.install(scenes,lessonSource):{};
+
   APLab.createLab({
     stagedReveal: true,
     id: 'calc1-limits',
@@ -2268,20 +2377,11 @@ window.addEventListener('DOMContentLoaded', function () {
     home: '../index.html#calc1',
     legacy: '../../labs/미적분1/함수의 극한·연속.html',
     board: { kind: 'cartesian', focus: { x: [-1.2, 3.2], y: [-2.3, 4.7] }, pad: 0.04 },
-    params: {
-      ...EXTRA_PARAMS,
-      gap: { value: 0, min: -2.0, max: 2.5, step: 0.05, color: 'sky', label: '오른쪽 식의 높이 변화 Δh (우극한 = 2 + Δh)', hint: 'Δh = 0 이면 좌극한과 우극한이 같아집니다', format: (v) => `Δh = ${fmt(v)}` },
-      k: { value: 2, min: -2.0, max: 3.0, step: 0.05, color: 'rose', label: '함숫값 f(1) = k', hint: '채운 점과 양쪽 조각의 높이를 비교하세요', format: (v) => `f(1) = ${fmt(v)}` },
-      d: { value: 0.65, min: 0.08, max: 0.95, step: 0.01, color: 'amber', label: '1에서 떨어진 거리 d (x = 1 ± d)', hint: 'd를 줄이면 x → 1 로 접근합니다', format: (v) => `d = ${fmt(v)}` },
-      px: { value: 1.8, min: 0.0, max: 2.0, step: 0.05, color: 'amber', label: '움직이는 점 x', hint: 'x를 양쪽에서 1에 가까이 보내고, x=1의 함수의 비와 극한값을 구별하세요', format: (v) => `x = ${probeNumber(v)}` },
-      r: { value: 1, min: 0.0, max: 2.2, step: 0.05, color: 'sky', label: 'g(x) = x − r 의 x절편 r', hint: '영점을 옮기며 곱함수의 좌·우 높이를 비교하세요', format: (v) => `r = ${fmt(v)}` },
-      t: { value: 2, min: -2.6, max: 2.6, step: 0.1, color: 'amber', label: '수평선 높이 t', hint: '수평선이 곡선에 닿을 때 교점의 개수를 세어 보세요', format: (v) => `t = ${fmt(v)}` },
-      a: { value: 1, min: -1.6, max: 2.2, step: 0.05, color: 'amber', label: '구간의 한 끝 a', hint: 'f(a)·f(b) < 0 이면 사이에 실근이 있습니다', format: (v) => `a = ${fmt(v)}` },
-      b: { value: 2, min: -1.6, max: 2.2, step: 0.05, color: 'violet', label: '구간의 다른 끝 b', format: (v) => `b = ${fmt(v)}` }
-    },
-    state: { dual: false, animDir: -1, ...EXTRA_STATE },
+    params: lessonParams,
+    state: lessonState,
     persist: ['dual'],
-    scenes
+    scenes,
+    lessons
   });
 });
 </script>
