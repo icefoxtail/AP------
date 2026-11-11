@@ -185,10 +185,11 @@
 
   /* ------------------------------------------------------------------ 장면 상태 (탭·단계) */
   function baseCtx(s, lab, thumb) {
-    const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
+    const lesson = !thumb && !!(s.lessonOn || s.lessonEntry);
+    const tab = thumb ? 'explore' : s.lessonEntry ? 'review' : (lab && lab.tab) || 'explore';
     const problem = !thumb && tab === 'problem';
     const review = !thumb && tab === 'review';
-    return { tab, problem, review, step: review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
+    return { tab, problem, review, lesson, step: s.lessonEntry ? 0 : review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
   }
   // 풀이 단계 n 이상이면(정리 탭) 또는 탐구 탭이면 true
   const showAt = (C, n) => C.step >= n;
@@ -311,7 +312,7 @@
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));
           if (s[A.key] >= 1) s.playing = false;
           again = true;
-        } else if (A && D.stepT && lab && lab.tab === 'review' && !s.dragging) {
+        } else if (A && D.stepT && lab && lab.tab === 'review' && !s.dragging && !s.lessonOn && !s.lessonEntry) {
           const tg = D.stepT(s.step || 0), d = tg - s[A.key];
           if (Math.abs(d) > 8e-4) { s[A.key] += clamp(d, -0.35 * dt, 0.35 * dt); again = true; }
         }
@@ -320,22 +321,30 @@
       view: (s, lab) => {
         if (lab) curLab = lab;
         if (lab && lab.s === s && document.body) document.body.dataset.pgScene = D.id;
-        const key = keyOf(s);
-        if (s.pgQuestionKey !== key) { s.pgQuestionKey = key; s.pgPick = null; s.revealed = false; s.step = 0; }
         const C = baseCtx(s, lab, false);
-        if (C.review && A && D.stepT) { s[A.key] = clamp(D.stepT(C.step), 0, 1); s.playing = false; }
+        if (!C.lesson) {
+          const key = keyOf(s);
+          if (s.pgQuestionKey !== key) { s.pgQuestionKey = key; s.pgPick = null; s.revealed = false; s.step = 0; }
+        }
+        if (C.review && !C.lesson && A && D.stepT) { s[A.key] = clamp(D.stepT(C.step), 0, 1); s.playing = false; }
         const M = D.model(s);
         const v = D.view(M, C, s) || {};
         if (C.review && C.step < D.steps(M).length && v.formula) v.formula = '';
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
         else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        if (C.lesson) {
+          v.card = null;
+          v.readouts = [];
+          v.formula = null;
+          v.status = null;
+        }
         return v;
       },
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
         const M = D.model(s);
-        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.review ? clamp(D.stepT(C.step), 0, 1) : 1)) : 1;
+        C.t = A ? (C.lesson || C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.review ? clamp(D.stepT(C.step), 0, 1) : 1)) : 1;
         D.draw(b, s, M, C);
       }
     };
