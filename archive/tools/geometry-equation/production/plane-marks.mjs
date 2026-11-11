@@ -66,11 +66,11 @@ export function segmentLabelSite(row,p,q){
   return {at:mid,others,band:at==='START'?[0,.25]:at==='END'?[.75,1]:null};
 }
 const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides','quadrants','callouts','vectors','vectorOps','equalAreas','equalAngles','segmentColors'],
-  equalAngles:['angles','color'],segmentColors:['segments','color'],
+  equalAngles:['angles','color','fillColor'],segmentColors:['segments','color'],
   quadrants:['id','quadrant','label','fill','factRole'],textLabels:['id','at','text','labelKind','labelWeight','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelWeight','labelAt','factRole'],
   dimensions:['id','from','to','label','labelKind','labelWeight','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
   pathLabels:['id','points','label','labelKind','labelWeight','unit','value','factRole','closed','anchor','side','leader'],
-  angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over','arcScale','angleDimension','color'],
+  angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over','arcScale','angleDimension','color','fillColor'],
   equalLengths:['id','count','segments','pathMark','markStyle','color'],parallels:['id','count','segments','lines','color'],
   expressionLabels:['id','ownerSegment','text','factRole','labelKind','labelWeight','unit','labelAt','ownership','side'],
   arcs:['id','circle','center','from','to','side','label','labelKind','labelWeight','unit','labelPlacement','highlight','factRole','color'],
@@ -335,16 +335,26 @@ export function planeMarkSpec(plan,model,points,segmentIds){
   const groups=new Map(),angleInfo=new Map();
   const overInfo=resolveAngleOver(list(marks.angles,'angles'),at);   // angles[].over (E32): whole angles over their halves
   // equalAngles (C1): [{angles:[ids],color}] colours a whole group of equal angles at once; angles[].color colours one angle. One colour = one size of angle.
-  const angleGroupColor=new Map(),colorSizes=new Map();
+  // fillColor (two relations on one angle): angles[].fillColor / equalAngles[].fillColor is the sector's fill colour, a role of its own next to the arc colour `color`;
+  // equal size is checked inside each role, and while any angle uses fillColor a colour name serves one role only (an arc colour is never also a fill colour)
+  const angleGroupColor=new Map(),angleGroupFill=new Map(),colorSizes=new Map(),fillSizes=new Map();
+  const usesFillColor=list(marks.angles,'angles').some(row=>row&&typeof row==='object'&&row.fillColor!==undefined)||list(marks.equalAngles,'equalAngles').some(group=>group&&typeof group==='object'&&group.fillColor!==undefined);
+  const arcColorNames=new Set(),fillColorNames=new Set();
   list(marks.equalAngles,'equalAngles').forEach((group,index)=>{
     if(!group||typeof group!=='object'||Array.isArray(group))bad('MARK_FIELD_INVALID:equalAngles');
     keysOk(group,KEYS.equalAngles,'equalAngles');
-    if(!isPaletteName(group.color))bad('ANGLE_COLOR_INVALID:equalAngles.'+index);
+    if((group.color===undefined&&group.fillColor===undefined)||(group.color!==undefined&&!isPaletteName(group.color))||(group.fillColor!==undefined&&!isPaletteName(group.fillColor)))bad('ANGLE_COLOR_INVALID:equalAngles.'+index);
     if(!Array.isArray(group.angles)||group.angles.length<2||group.angles.some(id=>typeof id!=='string')||new Set(group.angles).size!==group.angles.length)bad('ANGLE_COLOR_INVALID:equalAngles.'+index+'.angles');
     for(const id of group.angles){
       if(!list(marks.angles,'angles').some(row=>row?.id===id))bad('ANGLE_COLOR_INVALID:equalAngles.'+index+':unknown angle '+id);
-      if(angleGroupColor.has(id))bad('ANGLE_COLOR_GROUP_MISMATCH:'+id+':in two equalAngles groups');
-      angleGroupColor.set(id,group.color);
+      if(group.color!==undefined){
+        if(angleGroupColor.has(id))bad('ANGLE_COLOR_GROUP_MISMATCH:'+id+':in two equalAngles groups');
+        angleGroupColor.set(id,group.color);
+      }
+      if(group.fillColor!==undefined){
+        if(angleGroupFill.has(id))bad('ANGLE_COLOR_GROUP_MISMATCH:'+id+':in two equalAngles fill groups');
+        angleGroupFill.set(id,group.fillColor);
+      }
     }
   });
   for(const row of list(marks.angles,'angles')){
@@ -397,7 +407,20 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       const seen=colorSizes.get(color);
       if(seen&&Math.abs(seen.measured-measured)>ANGLE_TOLERANCE_DEGREES)bad('ANGLE_COLOR_GROUP_MISMATCH:'+seen.id+'&'+row.id+':'+color+':'+seen.measured.toFixed(3)+'!='+measured.toFixed(3));
       if(!seen)colorSizes.set(color,{id:row.id,measured});
+      arcColorNames.add(color);
     }
+    // the fill role: the sector's fill colour is fillColor, else the colour; every sector of one fill colour is one size, and the fill needs a sector to stand in
+    if(row.fillColor!==undefined&&!isPaletteName(row.fillColor))bad('ANGLE_COLOR_INVALID:'+row.id+':fillColor');
+    if(row.fillColor!==undefined&&angleGroupFill.has(row.id)&&angleGroupFill.get(row.id)!==row.fillColor)bad('ANGLE_COLOR_INVALID:'+row.id+':fillColor differs from its equalAngles group');
+    const fillColor=row.fillColor??angleGroupFill.get(row.id);
+    if(fillColor!==undefined&&(straight||style!=='SECTOR'||row.emphasisGroup!==undefined))bad('ANGLE_COLOR_INVALID:'+row.id+':fillColor needs a SECTOR style angle'+(row.emphasisGroup!==undefined?' without emphasisGroup':''));
+    const sectorFill=style==='SECTOR'?(fillColor??color):undefined;
+    if(usesFillColor&&sectorFill!==undefined){
+      const seen=fillSizes.get(sectorFill);
+      if(seen&&Math.abs(seen.measured-measured)>ANGLE_TOLERANCE_DEGREES)bad('ANGLE_COLOR_GROUP_MISMATCH:'+seen.id+'&'+row.id+':'+sectorFill+':fill:'+seen.measured.toFixed(3)+'!='+measured.toFixed(3));
+      if(!seen)fillSizes.set(sectorFill,{id:row.id,measured});
+    }
+    if(fillColor!==undefined)fillColorNames.add(fillColor);
     if(row.emphasisGroup!==undefined&&(!Number.isInteger(row.emphasisGroup)||row.emphasisGroup<1||row.emphasisGroup>ANGLE_EMPHASIS_GROUPS))bad('ANGLE_EMPHASIS_GROUP_INVALID:'+row.id);
     // labelPlacement LEADER (E12b): the label stands outside its angle on a leader from its own arc even where the angle has room for it; AUTO (default) keeps the old search.
     if(row.labelPlacement!==undefined&&!ANGLE_LABEL_PLACEMENTS.includes(row.labelPlacement))bad('ANGLE_LABEL_PLACEMENT_INVALID:'+row.id);
@@ -418,10 +441,11 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       const dim=row.angleDimension,plainObject=!!dim&&typeof dim==='object'&&!Array.isArray(dim),factor=plainObject?(dim.radiusFactor===undefined?1.15:numberOf(dim.radiusFactor)):null;
       if(!plainObject||Object.keys(dim).some(key=>key!=='radiusFactor')||factor===null||factor<0.6||factor>1.5||straight||side==='OUTER'||arcs!==1||style!=='ARC')bad('CALLOUT_ANGLE_DIMENSION_INVALID:'+row.id);
     }
-    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,style,...(ring>1?{ring}:{}),...(straight?{straight:true,straightSide:side}:{}),...(side==='OUTER'?{outer:true}:{}),...(row.emphasisGroup!==undefined?{emphasisGroup:row.emphasisGroup}:{}),...(color!==undefined?{color}:{}),...(placement==='LEADER'?{labelPlacement:'LEADER'}:{}),...(overRow?{over:[...row.over]}:{}),...(row.arcScale!==undefined?{arcScale:row.arcScale}:{}),...(row.angleDimension!==undefined?{angleDimension:{radiusFactor:numberOf(row.angleDimension.radiusFactor??1.15)}}:{})};
+    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,style,...(ring>1?{ring}:{}),...(straight?{straight:true,straightSide:side}:{}),...(side==='OUTER'?{outer:true}:{}),...(row.emphasisGroup!==undefined?{emphasisGroup:row.emphasisGroup}:{}),...(color!==undefined?{color}:{}),...(fillColor!==undefined?{fillColor}:{}),...(placement==='LEADER'?{labelPlacement:'LEADER'}:{}),...(overRow?{over:[...row.over]}:{}),...(row.arcScale!==undefined?{arcScale:row.arcScale}:{}),...(row.angleDimension!==undefined?{angleDimension:{radiusFactor:numberOf(row.angleDimension.radiusFactor??1.15)}}:{})};
     if(text!==null){object.labelText=text;object.labelKind=kind;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);
   }
+  for(const name of arcColorNames)if(fillColorNames.has(name))bad('ANGLE_COLOR_ROLE_CLASH:'+name+':an arc colour and a fill colour of different angles');
   const arcCounts=new Map();
   for(const [group,g] of groups){if(arcCounts.has(g.arcs))bad('ANGLE_EQUAL_GROUP_AMBIGUOUS:'+group+'&'+arcCounts.get(g.arcs));arcCounts.set(g.arcs,group);}
 
