@@ -216,7 +216,7 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q003_question-v2.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q3-solution-v2.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q3-solution-v3.svg",
     "solutionImageAlt": "해설 그림: 합동인 두 삼각형 ABC와 DEF에서 대응하는 변과 각을 같은 색·같은 눈금으로 묶은 그림. AB와 DE는 파랑 눈금 1개, BC와 EF는 주황 눈금 2개, AC와 DF는 초록 눈금 3개이며, 각 B와 각 E는 같은 분홍색 호이고 각 B에 48°가 적혀 있다.",
     "solutionImageCaption": "△ABC≡△DEF에서 대응하는 꼭짓점은 A↔D, B↔E, C↔F이다. 따라서 AB=DE=4 cm, BC=EF=5 cm, AC=DF이고 ∠E=∠B=48°이다. 정답은 ③이다.",
     "solutionImageSize": "full"
@@ -804,8 +804,8 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q011_question-v2.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q11-solution-v3.svg",
-    "solutionImageAlt": "해설 그림: 세 장의 그림. 왼쪽 위는 평행사변형 ABCD에서 중점으로 나뉜 변에 같은 눈금(AE, EB, CG, GD는 1개, AH, HD, BF, FC는 2개)을 표시하고 귀퉁이 삼각형 AEH와 CGF는 파란색, EBF와 GDH는 주황색으로 칠한 그림이다. 오른쪽 위와 아래는 합동인 두 삼각형 AEH와 CGF, EBF와 GDH를 각각 떼어 같은 방향으로 나란히 놓고 같은 눈금과 같은 색의 각을 표시한 그림이다.",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q11-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 두 장의 그림. 위쪽 그림은 평행사변형 ABCD에서 중점으로 나뉜 변에 같은 눈금(AE, EB, CG, GD는 1개, AH, HD, BF, FC는 2개)을 표시하고 귀퉁이 삼각형 AEH와 CGF는 파란색, EBF와 GDH는 주황색으로 칠한 원래 배치이다. 아래쪽 그림은 합동인 두 삼각형 AEH와 CGF(파랑), EBF와 GDH(주황)를 같은 방향으로 놓고 같은 눈금과 같은 색의 각을 표시한 그림이다.",
     "solutionImageCaption": "평행사변형에서 AB=CD, AD=BC이고 E, F, G, H가 중점이므로 AE=CG, AH=CF이다. 또 ∠A=∠C이므로 △AEH≡△CGF(SAS)이고, 같은 방법으로 △EBF≡△GDH(SAS)이며 이로부터 EF=GH를 얻는다. EH∥FG이지만 EFGH가 항상 마름모인 것은 아니다. 정답은 ⑤이다.",
     "solutionImageSize": "full"
   },
@@ -881,8 +881,8 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q012_question-v2.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q12-solution-v3.svg",
-    "solutionImageAlt": "해설 그림: 두 장의 그림. 왼쪽은 평행한 두 직선 l, m 사이에서 엇각으로 같은 ∠CAO와 ∠DBO를 파란 호로, ∠ACO와 ∠BDO를 주황 호로 표시하고 삼각형 AOC와 BOD를 칠한 문제 그림이다. 오른쪽은 삼각형 AOC와 BOD를 떼어 같은 방향으로 나란히 놓고 같은 색의 호로 같은 각을 표시한 그림이다.",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q12-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 두 장의 그림. 위쪽 그림은 평행한 두 직선 l, m 사이에서 엇각으로 같은 ∠CAO와 ∠DBO를 파란 호로, ∠ACO와 ∠BDO를 주황 호로 표시하고 삼각형 AOC와 BOD를 칠한 문제 그림이다. 아래쪽 그림은 삼각형 AOC와 BOD를 떼어 같은 방향으로 나란히 놓고 같은 색의 호로 같은 각을 표시한 그림이다.",
     "solutionImageCaption": "l∥m이므로 엇각이 같아 ∠CAO=∠DBO, ∠ACO=∠BDO이다. 여기에 두 각 사이의 변 AC=BD가 주어지면 한 변과 그 양 끝각이 각각 같으므로 △AOC≡△BOD(ASA)이다. 정답은 ④이다.",
     "solutionImageSize": "full"
   },
@@ -1108,8 +1108,8 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q015_question-v2.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q15-solution-v3.svg",
-    "solutionImageAlt": "해설 그림: 두 패널. 왼쪽은 위쪽 교점에서 95° 각과 맞꼭지각 위치인 ∠b를 같은 파란색 호로 표시했고, 오른쪽은 ∠d와 ∠b를 같은 회색 부채꼴로 표시해 두 각이 엇각 위치임을 보여 준다.",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q15-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 두 패널. 위 패널은 위쪽 교점에서 95° 각과 맞꼭지각 위치인 ∠b를 같은 파란색 호로 표시했고, 아래 패널은 ∠d와 ∠b를 같은 회색 부채꼴로 표시해 두 각이 엇각 위치임을 보여 준다.",
     "solutionImageCaption": "위 교점에서 ∠b는 95°의 맞꼭지각이므로 ∠b=95°이다. ∠d와 엇각인 각은 ∠b이므로 구하는 크기는 95°이다. 정답은 ④이다.",
     "solutionImageSize": "full"
   },
@@ -1682,8 +1682,8 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q023_question-v2.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q23-solution-v3.svg",
-    "solutionImageAlt": "해설 그림: 두 패널. 왼쪽은 정삼각형 ABC에서 BD=CE인 점 D, E와 선분 AD, BE의 교점 P를 그리고, 삼각형 ABD와 BCE를 회색으로 칠해 AB=BC, BD=CE, AD=BE를 눈금으로, 같은 각 60°와 α를 같은 색 호로, ∠APB=120°를 표시했다. 오른쪽은 삼각형 ABD와 BCE를 떼어 같은 방향으로 나란히 놓고 대응하는 변과 각을 같은 색과 표시로 보여 준다.",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q23-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 두 패널. 위 패널은 정삼각형 ABC에서 BD=CE인 점 D, E와 선분 AD, BE의 교점 P를 그리고, 삼각형 ABD와 BCE를 회색으로 칠해 AB=BC, BD=CE, AD=BE를 눈금으로, 같은 각 60°와 α를 같은 색 호로, ∠APB=120°를 표시했다. 아래 패널은 삼각형 ABD와 BCE를 떼어 같은 방향으로 나란히 놓고 대응하는 변과 각을 같은 색과 표시로 보여 준다.",
     "solutionImageCaption": "AB=BC, ∠ABD=∠BCE=60°, BD=CE이므로 △ABD≡△BCE(SAS)이다. ∠BAD=∠CBE=α라 하면 ∠ABE=60°-α이므로 ∠APB=180°-α-(60°-α)=120°이다. B, P, E가 한 직선 위이므로 ∠APE=180°-120°=60°이다. 정답은 60°이다.",
     "solutionImageSize": "full"
   }
