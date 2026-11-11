@@ -27,7 +27,7 @@
 4. **원본 1:1 대조 (STRICT_VARIANT)**: 원본 문항과 유사 문항을 나란히 놓고 형식, 개념, 유형, 풀이 구조, 배점, 그림 구조가 보존됐는지, 수치·상수가 실제로 바뀌었는지, 교육과정 범위 안인지 확인한다. 원본과 숫자만 같은 복사본이거나, 풀이 구조가 바뀐 문항은 수리한다.
 5. **분포·형식 점검**: 문항 수와 배점 합 100.0, 정답 번호 max−min ≤ 1·3연속 없음, KaTeX 표기, 오답 4개가 서로 다른 오류 경로인지.
 6. **해설 점검**: 작은칠판 구조(조건·목표 → 공식 이유 → 등호 중심 전개 → 경계·판정 → 정답). 그림 값을 해설에 다시 적었는지. 학생에게 노출되면 안 되는 제작 메모가 없는지.
-7. **메타 점검**: 문항마다 `primaryMethod`·`decisiveStep`·`difficultyReason`이 서로 다르고 그 문항의 식·수·조건을 담았는지, `rpm`이 현행 표의 한 줄인지, PT/TPL을 확정값처럼 쓰지 않았는지, 난이도가 보수적인지, 빈 칸에 `hold` 사유가 있는지. `approval.reviewStatus`를 검수 결과에 맞게 갱신한다.
+7. **메타 점검**: 문항마다 `primaryMethod`·`decisiveStep`·`difficultyReason`이 서로 다르고 그 문항의 식·수·조건을 담았는지, `rpm`이 현행 표의 한 줄인지, PT/TPL을 확정값처럼 쓰지 않았는지, 난이도가 보수적인지, **빈 칸이 없는지**(PT/TPL·RPM·CrossConcept·Condition·4칸·난이도 전부 채워졌는지). 맞는 키가 없다는 이유로 비운 칸이 있으면 비워 두지 않고 직접 채운다(새 키는 `registryChanges`, 크로스워크 행 추가, 4칸 판정). 근사 키로 때운 문항도 정확한 키로 고친다. 정말 만들 수 없던 칸만 `hold`에 구체 사유가 있어야 한다. 하위 도구·절차는 생성 라인 문서 §3과 같다. `approval.reviewStatus`를 검수 결과에 맞게 갱신한다.
 8. **그림·plan 점검**: 문항 수 × 2개의 plan이 유효한 JSON인지, EXEMPT 사유 또는 capability/`sourceQuote`(12~40자 정확 인용)/`caption`/`engineEvidence`가 맞는지, 렌더된 SVG를 실제로 열어 점 라벨·값·음영이 발문과 일치하고 정답을 누설하지 않는지.
 9. **영수증 발급**: 최종 JS blob에 `<stem>_유사.review-receipt.json`을 결속한다(고등 `questionsReview` 구조). 생성자가 쓴 영수증은 인정하지 않는다.
 10. **게이트**: `node tools/harness/verify_similar_exam.mjs <similarStem>` exit 0. 실패하면 수리 후 재실행하고, 끝내 통과하지 못하면 병합하지 않고 PR에 사유를 남긴다. `--no-verify`·검사 완화 금지.
