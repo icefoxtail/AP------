@@ -6,8 +6,8 @@ import vm from "node:vm";
 import os from "node:os";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
-import { execFileSync } from "node:child_process";
-import { registerDifficulty5, computeLegacyCompat, wrapGeminiFile, SCHEMA } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
+import { execFileSync, spawnSync } from "node:child_process";
+import { registerDifficulty5, computeLegacyCompat, wrapGeminiFile, normalizeGeminiPayload, SCHEMA } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const FIXTURE = path.join(repo, "tests/fixtures/diff5/req_diff5_17.json");
@@ -307,4 +307,109 @@ test("wrap CLI helper and registrar CLI dry-run / verify", t => {
   execFileSync("node", [reg, "--repo-root", x.root, "--request", reqPath, "--write"]);
   const ver = JSON.parse(execFileSync("node", [reg, "--repo-root", x.root, "--request", reqPath, "--verify-projection"], { encoding: "utf8" }));
   assert.equal(ver.summary.VERIFIED, 23);
+});
+
+// Intake normalization (2026-11-11): the courier's hand repairs moved into the tool. See normalizeGeminiPayload.
+const ratingsOf = g => g.items.map(i => [i.ordinal, i.questionUid, i.after.difficultyBucket, i.after.difficultyBoundaryFlag, i.after.legacyLevelCompatibility]);
+const lfBlobSha = bytes => crypto.createHash("sha1").update("blob " + bytes.length + "\0").update(bytes).digest("hex");
+
+test("normalize: a clean Gemini file needs no repair and keeps every rating", t => {
+  const x = make(t);
+  const n = normalizeGeminiPayload(structuredClone(gemini), { root: x.root, driveFileId: "FILE_1" });
+  assert.deepEqual(n.repairs, []);
+  assert.deepEqual(ratingsOf(n.gemini), ratingsOf(gemini));
+  assert.equal(n.gemini.latestBlobSha, gemini.latestBlobSha);
+  assert.equal(n.gemini._intakeNote, "Extracted from Drive file FILE_1 (registration fields only)");
+  assert.deepEqual(Object.keys(n.gemini), ["_intakeNote", "schemaVersion", "requestId", "createdAt", "sourceArchiveFile", "latestBlobSha", "items"]);
+  assert.deepEqual(Object.keys(n.gemini.items[0]), ["ordinal", "questionUid", "before", "after"]);
+  assert.equal(registerDifficulty5({ root: x.root, request: x.req(n.gemini) }).summary.APPLY, 23);
+});
+
+test("normalize: sourceOrdinal, upper-case confidence and a missing schemaVersion are repaired, ratings are not", t => {
+  const x = make(t);
+  const drifted = structuredClone(gemini);
+  delete drifted.schemaVersion;
+  drifted.extraCommentary = "not a registration field";
+  for (const item of drifted.items) {
+    item.sourceOrdinal = item.ordinal; delete item.ordinal;
+    item.after.difficultyConfidence = item.after.difficultyConfidence.toUpperCase();
+    item.rationale = "long text that must not reach the inbox";
+  }
+  // unrepaired, this is exactly what the ledger shows being refused
+  assert.throws(() => registerDifficulty5({ root: x.root, request: x.req({ ...drifted, schemaVersion: "v1" }) }), /bad or duplicate ordinal undefined/);
+  const n = normalizeGeminiPayload(drifted, { root: x.root, driveFileId: "FILE_2" });
+  assert.deepEqual(n.repairs, ["REPAIRED_FORMAT"]);
+  assert.match(n.gemini._intakeNote, /REPAIRED_FORMAT/);
+  assert.equal(n.gemini.schemaVersion, "v1");
+  assert.deepEqual(ratingsOf(n.gemini), ratingsOf(gemini));
+  assert.deepEqual(n.gemini.items.map(i => i.after.difficultyConfidence), gemini.items.map(i => i.after.difficultyConfidence));
+  assert.equal("extraCommentary" in n.gemini, false);
+  assert.equal("rationale" in n.gemini.items[0], false);
+  const r = registerDifficulty5({ root: x.root, request: x.req(n.gemini) });
+  assert.equal(r.summary.APPLY, 23);
+  assert.equal(r.summary.SKIP_INVALID, 0);
+});
+
+test("normalize: values that are not a known format slip stay as they are and are still skipped", t => {
+  const x = make(t);
+  const g = structuredClone(gemini);
+  g.items.find(i => i.ordinal === 1).after.difficultyBucket = "3";
+  g.items.find(i => i.ordinal === 2).after.difficultyConfidence = "certain";
+  g.items.find(i => i.ordinal === 3).after.difficultyBoundaryFlag = "none";
+  const n = normalizeGeminiPayload(g, { root: x.root, driveFileId: "FILE_3" });
+  assert.deepEqual(n.repairs, []);
+  assert.equal(n.gemini.items[0].after.difficultyBucket, "3");
+  assert.equal(n.gemini.items[1].after.difficultyConfidence, "certain");
+  assert.equal(n.gemini.items[2].after.difficultyBoundaryFlag, "none");
+  const d = decisions(registerDifficulty5({ root: x.root, request: x.req(n.gemini) }));
+  assert.deepEqual([d[1], d[2], d[3], d[4]], ["SKIP_INVALID", "SKIP_INVALID", "SKIP_INVALID", "APPLY"]);
+});
+
+test("normalize: a stale latestBlobSha becomes the LF blob of the current file, also on a CRLF checkout", t => {
+  const lf = Buffer.from(sourceBytes.toString("utf8").replace(/\r\n/g, "\n"), "utf8");
+  const crlf = Buffer.from(lf.toString("utf8").replace(/\n/g, "\r\n"), "utf8");
+  const stale = structuredClone(gemini); stale.latestBlobSha = "0".repeat(40);
+  for (const [label, bytes] of [["LF checkout", lf], ["CRLF checkout", crlf]]) {
+    const x = make(t, { sourceOverride: bytes });
+    assert.throws(() => registerDifficulty5({ root: x.root, request: x.req(stale) }), /blob drift/, label);
+    const n = normalizeGeminiPayload(structuredClone(stale), { root: x.root, driveFileId: "FILE_4" });
+    assert.deepEqual(n.repairs, ["REPAIRED_SHA"], label);
+    assert.equal(n.gemini.latestBlobSha, lfBlobSha(lf), label + ": the number Git stores, not the working-file bytes");
+    assert.match(n.gemini._intakeNote, /REPAIRED_SHA; latestBlobSha was 0{40}$/, label);
+    assert.equal(registerDifficulty5({ root: x.root, request: x.req(n.gemini) }).summary.APPLY, 23, label);
+    // the same request must also pass where the workflow runs it: a Linux checkout with LF bytes
+    const linux = make(t, { sourceOverride: lf });
+    assert.equal(registerDifficulty5({ root: linux.root, request: linux.req(n.gemini) }).summary.APPLY, 23, label + " -> LF runner");
+  }
+});
+
+test("normalize: the identity guard is untouched, a wrong questionUid is still refused after repair", t => {
+  const x = make(t);
+  const g = withItem(5, i => { i.questionUid = gemini.items[0].questionUid; });
+  g.latestBlobSha = "0".repeat(40);
+  const n = normalizeGeminiPayload(g, { root: x.root, driveFileId: "FILE_5" });
+  assert.deepEqual(n.repairs, ["REPAIRED_SHA"]);
+  assert.throws(() => registerDifficulty5({ root: x.root, request: x.req(n.gemini) }), /mismatch/);
+});
+
+test("wrap --normalize: a fenced Drive export is unwrapped, repairs go to stderr and the request file keeps its shape", t => {
+  const x = make(t);
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), "diff5-norm-"));
+  t.after(() => fs.rmSync(temp, { recursive: true, force: true }));
+  const drifted = structuredClone(gemini);
+  for (const item of drifted.items) { item.sourceOrdinal = item.ordinal; delete item.ordinal; }
+  const fenced = path.join(temp, "fenced.json"), out = path.join(temp, "request.json");
+  fs.writeFileSync(fenced, "```json\n" + JSON.stringify(drifted, null, 2) + "\n```\n");
+  const tool = path.join(repo, "archive/tools/meta-foundation/register-difficulty5.mjs");
+  const run = spawnSync("node", [tool, "--repo-root", x.root, "--wrap", fenced, "--normalize", "--drive-file-id", "FILE_6", "--drive-checksum", "t|1", "--out", out], { encoding: "utf8" });
+  assert.equal(run.status, 0, run.stderr);
+  assert.match(run.stderr, /^DIFF5_INTAKE_REPAIRS: \[REPAIRED_FORMAT\]\s*$/);
+  const request = JSON.parse(fs.readFileSync(out, "utf8"));
+  assert.deepEqual(Object.keys(request), ["schemaVersion", "driveFileId", "driveSha256", "driveChecksumSource", "gemini"]);
+  assert.equal(request.driveSha256, "t|1");
+  assert.equal(registerDifficulty5({ root: x.root, request }).summary.APPLY, 23);
+  // without --normalize nothing changes: the old behaviour stays available
+  const plain = wrapGeminiFile(FIXTURE, "DRIVE_ID");
+  assert.deepEqual(plain.gemini, gemini);
+  assert.equal(plain.repairs, undefined);
 });

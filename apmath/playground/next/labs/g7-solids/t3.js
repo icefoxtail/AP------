@@ -17,6 +17,8 @@
   const rad = (d) => d * DEG;
   const pk = (n) => (n === 1 ? 'π' : n + 'π');
   const pkT = (n) => (n === 1 ? '\\pi' : n + '\\pi');
+  const lessonOn = (s, C) => !!(C.lesson || s.lessonOn || s.lessonEntry);
+  const ready = (s, C, key) => !lessonOn(s, C) || (!s.lessonEntry && !!s[key]);
 
   const PARAMS = {
     soCr: P('밑면의 반지름 r', 1, 15, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
@@ -95,7 +97,7 @@
     const { O, x, a0, a1 } = G0, rr = Math.min(G0.R * 0.32, px(b, 38));
     if (Math.abs(x - 90) < 1e-6) b.right(O, pt(O, 1, a0), pt(O, 1, a1), { size: 14, color: AMB });
     else b.arc(O, rr, rad(a0), rad(a1), { sector: true, fill: AMB, fillAlpha: 0.28, color: AMB, width: 2.4 });
-    if (C.txt) T(b, O, `${fmtN(x)}°`, AMB, { dy: 40, size: o.size || 17 });
+    if (C.txt && o.label !== false) T(b, O, o.label == null ? `${fmtN(x)}°` : o.label, AMB, { dy: 40, size: o.size || 17 });
   }
   // 부채꼴 + 밑면(원) 전개도 그리기. prog(0~1): 호와 원둘레를 같은 비율만큼 같은 색으로 칠합니다.
   function drawNet(b, C, G0, o = {}) {
@@ -107,7 +109,7 @@
       b.path(arcPts(O, R, a0, a0 + x * pr), { color: AMB, width: 7 });
       if (!o.noCircle) b.path(arcPts(Cc, r, 90, 90 + 360 * pr), { color: AMB, width: 7 });
     }
-    angMark(b, C, G0);
+    angMark(b, C, G0, { label: o.angleText });
     if (!o.noCircle) b.point(pt(Cc, r, 90), { color: 'ink', r: 3.5 });
   }
 
@@ -162,7 +164,7 @@
       b.poly([{ x: X0, y: Y0 }, { x: X0 + w, y: Y0 }, { x: X0 + w, y: Y0 + h }, { x: X0, y: Y0 + h }], { color: AMB, width: 2.4, dash: [6, 5] });
       b.poly([{ x: X0, y: Y0 }, { x: X0 + w * t, y: Y0 }, { x: X0 + w * t, y: Y0 + h }, { x: X0, y: Y0 + h }], { fill: AMB, fillAlpha: 0.32, color: AMB, width: 3 });
       if (C.txt) {
-        T(b, { x: X0 + w / 2, y: Y0 + h }, `가로 = 밑면의 둘레 = 2π × ${r} = ${2 * r}π cm`, AMB, { dy: -17, size: 16 });
+        T(b, { x: X0 + w / 2, y: Y0 + h }, ready(s, C, 'soArcReady') ? `가로 = 밑면의 둘레 = 2π × ${r} = ${2 * r}π cm` : '가로 = ?', AMB, { dy: -17, size: 16 });
         const rwPx = w * b.k; // 직사각형이 좁으면 세로 길이 글자를 오른쪽 바깥에 둡니다
         const thin = h * b.k < 26; // 직사각형이 아주 납작하면 세로 글자를 직사각형 아래에 둬요(선과 겹치지 않게)
         if (thin) T(b, { x: X0 + w / 2, y: Y0 }, `세로 h = ${h} cm`, AMB, { dy: 20, size: 16 });
@@ -174,7 +176,7 @@
         const hm = D.P({ x: r, y: h / 2, z: 0 });
         const hdx = b.toS(hm).x + 36 + G.textW(`h = ${h}`, G.FS(b, 15)) / 2 > b.W - 8 ? -36 : 36; // 원기둥이 무대 폭을 거의 채우면 h 글자를 입체 안쪽(왼쪽)에 둬요
         T(b, hm, `h = ${h}`, AMB, { dx: hdx, size: 15 });
-        if (C.review && C.step >= 4) {
+        if (C.review && C.step >= 4 && ready(s, C, 'soShowAnswer')) {
           const full = `옆넓이 = ${2 * r}π × ${h} = ${2 * r * h}π cm²`, short = `옆넓이 = ${2 * r * h}π cm²`, wide = w * b.k - 12 >= G.textW(full, G.FS(b, 17));
           if (wide) T(b, { x: X0 + w / 2, y: Y0 + h / 2 }, full, GRN, { size: 17 });
           else T(b, { x: X0 + w / 2, y: Y0 }, short, GRN, { size: 16, dy: thin ? 42 : 20 }); // 좁으면 짧은 식을 직사각형 아래에
@@ -266,12 +268,14 @@
         return;
       }
       const { r, R, t } = M, K = netScene(b, s, C, r, R, { extraBottom: 2.6 });
-      drawNet(b, C, K.G0, { prog: t });
-      if (K.off) { const cd = coneDraw3D(b, s, r, R, K.off.dx, K.off.dy, { prog: t, ms: K.ms }); const D = cd.D; D.line({ x: 0, y: cd.h, z: 0 }, { x: r, y: 0, z: 0 }, AMB, 3.4); if (C.txt) { const m = D.P({ x: r / 2, y: cd.h / 2, z: 0 }); T(b, m, `R = ${R}`, AMB, { dx: 36, size: 16 }); S3.rLabel(b, D, r, `r = ${r}`, SKY, 16); } }
+      const angleReady = ready(s, C, 'soAngleReady') || (s.soLessonGoal === 'angle' && ready(s, C, 'soShowAnswer'));
+      const lengthReady = !lessonOn(s, C) || s.soLessonGoal !== 'slant' || ready(s, C, 'soShowAnswer');
+      drawNet(b, C, K.G0, { prog: t, angleText: angleReady ? undefined : s.soLessonGoal === 'angle' ? 'x = ?' : false });
+      if (K.off) { const cd = coneDraw3D(b, s, r, R, K.off.dx, K.off.dy, { prog: t, ms: K.ms }); const D = cd.D; D.line({ x: 0, y: cd.h, z: 0 }, { x: r, y: 0, z: 0 }, AMB, 3.4); if (C.txt) { const m = D.P({ x: r / 2, y: cd.h / 2, z: 0 }); T(b, m, lengthReady ? `R = ${R}` : 'R = ?', AMB, { dx: 36, size: 16 }); S3.rLabel(b, D, r, `r = ${r}`, SKY, 16); } }
       if (C.txt) {
         const arcL = 2 * PI * r, G0 = K.G0;
         const e = pt(G0.O, R, G0.a1);
-        edgeT(b, e, `R = ${R} cm`, AMB, 16);
+        edgeT(b, e, lengthReady ? `R = ${R} cm` : 'R = ?', AMB, 16);
         b.seg(G0.Cc, pt(G0.Cc, r, 0), { color: SKY, width: 2.6 });
         T(b, pt(G0.Cc, r / 2, 0), `r = ${r}`, SKY, { dy: 16, size: 16 });
         // 같이 자라는 두 막대(가로): 호의 길이 · 밑면의 둘레
@@ -282,7 +286,7 @@
         b.seg({ x: x0, y: yb2 }, { x: x0 + Lw * tcap, y: yb2 }, { color: AMB, width: 7 });
         T(b, { x: x0, y: yb }, '호의 길이', 'ink', { dy: -13, align: 'left', size: 14 });
         T(b, { x: x0, y: yb2 }, '밑면의 둘레', 'ink', { dy: 13, align: 'left', size: 14 });
-        if (tcap > 0.97) T(b, { x: x0 + Lw, y: (yb + yb2) / 2 }, `둘 다 ${2 * r}π cm`, GRN, { size: 15, dx: -4, align: 'right' });
+        if (tcap > 0.97 && ready(s, C, 'soArcReady')) T(b, { x: x0 + Lw, y: (yb + yb2) / 2 }, `둘 다 ${2 * r}π cm`, GRN, { size: 15, dx: -4, align: 'right' });
       }
     },
     steps: (M) => [
@@ -342,13 +346,19 @@
         return;
       }
       if (prob) { edgeT(b, e, `R = ${R} cm`, AMB, 17); T(b, pt(G0.Cc, r / 2, 0), `r = ${r} cm`, SKY, { dy: 16, size: 16 }); b.arc(G0.O, Math.min(R * 0.3, px(b, 36)), rad(G0.a0), rad(G0.a1), { sector: true, fill: AMB, fillAlpha: 0.28, color: AMB, width: 2.4 }); T(b, G0.O, 'x = ?', AMB, { dy: 40, size: 17 }); return; }
-      angMark(b, C, G0);
-      edgeT(b, e, `R = ${R} cm`, AMB, 17);
+      const ratioLesson = lessonOn(s, C) && s.soLessonGoal === 'ratio';
+      angMark(b, C, G0, { label: ready(s, C, 'soAngleReady') || ready(s, C, 'soShowAnswer') ? undefined : 'x = ?' });
+      edgeT(b, e, ratioLesson ? '모선 R' : `R = ${R} cm`, AMB, 17);
+      if (lessonOn(s, C)) {
+        const progress = clamp(s.soNt || 0, 0, 1);
+        b.path(arcPts(G0.O, R, G0.a0, G0.a0 + x * progress), { color: AMB, width: 6 });
+        b.path(arcPts(G0.Cc, r, 90, 90 + 360 * progress), { color: AMB, width: 6 });
+      }
       T(b, pt(G0.Cc, r / 2, 0), `r = ${r} cm`, SKY, { dy: 16, size: 16 });
       if (C.txt) {
-        T(b, G0.Cc, `r : R = 1 : ${k}`, 'ink', { dy: -6, size: 16 });
+        if (!ratioLesson || ready(s, C, 'soShowAnswer')) T(b, G0.Cc, `r : R = 1 : ${k}`, 'ink', { dy: -6, size: 16 });
         const nm = x === 90 ? '직각' : x === 180 ? '반원' : x === 120 ? '원의 1/3' : x === 60 ? '정삼각형과 같은 각' : x === 72 ? '원의 1/5' : '';
-        if (nm) T(b, G0.O, nm, GRN, { dy: 62, size: 15 });
+        if (nm && ready(s, C, 'soShowAnswer')) T(b, G0.O, nm, GRN, { dy: 62, size: 15 });
       }
     },
     steps: (M) => [
@@ -390,6 +400,21 @@
     reroll: (s) => { s.soQr = pick([1, 2, 3, 4], s.soQr); s.soQR = rint(s.soQr + 1, 9); },
     model: (s) => Object.assign(areaM(s), { qr: s.soQr || 2, qR: s.soQR || 5 }),
     draw(b, s, M, C) {
+      if (lessonOn(s, C) && s.soLessonGoal === 'surface') {
+        // 겉넓이 해설은 원본 문제와 같은 부채꼴+밑면 전개도를 함께 읽습니다.
+        const { r, R, q } = M, K = netScene(b, s, C, r, R), G0 = K.G0;
+        drawNet(b, C, G0, { prog: q, angleText: false });
+        if (K.off) coneDraw3D(b, s, r, R, K.off.dx, K.off.dy, { prog: q, ms: K.ms });
+        if (C.txt) {
+          edgeT(b, pt(G0.O, R, G0.a1), `R = ${R} cm`, AMB, 16);
+          b.seg(G0.Cc, pt(G0.Cc, r, 0), { color: SKY, width: 2.6 });
+          T(b, G0.Cc, `r = ${r}`, SKY, { dy: 18, size: 16 });
+          if (ready(s, C, 'soAreaReady')) T(b, { x: 0, y: -R * 0.6 }, `옆넓이 ${pk(r * R)} cm²`, GRN, { size: 16 });
+          if (ready(s, C, 'soBaseReady')) T(b, G0.Cc, `밑넓이 ${pk(r * r)} cm²`, SKY, { dy: -20, size: 16 });
+          if (ready(s, C, 'soShowAnswer')) T(b, G0.O, `겉넓이 = ${pk(r * R)} + ${pk(r * r)} = ${pk(r * R + r * r)} cm²`, GRN, { dy: -20, size: 16 });
+        }
+        return;
+      }
       if (C.problem) { // 전개도 그림: r, R 만 주어짐
         const r = M.qr, R = M.qR, x = xOf(r, R), G0 = netGeom(R, r, x);
         const A = sectorBox(R, x, r, true);
@@ -417,20 +442,23 @@
         b.path(sectorPts(c, R, mid - d / 2, mid + d / 2), { close: true, fill: col, fillAlpha: 0.24, color: col, width: 1.6 });
       }
       if (C.txt) {
-        T(b, G0.O, `${xTxt(x)}°`, AMB, { dy: 36, size: 16 });
-        T(b, { x: 0, y: -R * 0.55 }, `호의 길이 2π×${r} = ${2 * r}π`, AMB, { dy: 0, size: 14 });
-        if (q > 0.6) {
+        if (!lessonOn(s, C)) T(b, G0.O, `${xTxt(x)}°`, AMB, { dy: 36, size: 16 });
+        if (ready(s, C, 'soArcReady')) T(b, { x: 0, y: -R * 0.55 }, `호의 길이 2π×${r} = ${2 * r}π`, AMB, { dy: 0, size: 14 });
+        if (lessonOn(s, C)) edgeT(b, pt(G0.O, R, G0.a1), `R = ${R} cm`, ROSE, 16);
+        if (q > 0.6 && ready(s, C, 'soLengthReady')) {
           const al = clamp((q - 0.6) / 0.35, 0, 1);
           b.seg({ x: x0, y: Yt + 0.15 }, { x: x0 + W, y: Yt + 0.15 }, { color: AMB, width: 3, alpha: al });
           T(b, { x: xc, y: Yt + 0.15 }, `가로 ≈ 호의 길이의 절반 = π×${r} = ${pk(r)}`, AMB, { dy: -17, size: 15, alpha: al });
           b.seg({ x: x0 - 0.2, y: Yt }, { x: x0 - 0.2, y: Yb }, { color: ROSE, width: 3, alpha: al });
           T(b, { x: x0 - 0.2, y: (Yt + Yb) / 2 }, `세로 ≈ R = ${R}`, ROSE, { dx: -8, align: 'right', size: 15, alpha: al });
-          if (!C.review || C.step >= 4) T(b, { x: xc, y: Yb }, `조각의 넓이 합 = ${pk(r * R)} cm²`, GRN, { dy: 24, size: 16, alpha: al });
+          if ((!C.review || C.step >= 4) && ready(s, C, 'soShowAnswer')) T(b, { x: xc, y: Yb }, `조각의 넓이 합 = ${pk(r * R)} cm²`, GRN, { dy: 24, size: 16, alpha: al });
         }
       }
       const handleY = Yb - px(b, 52); // 결과 글(24px 아래)과 조작 손잡이의 자리를 분리합니다.
-      b.handle('q', { x: x0 + W * q, y: handleY }, { color: AMB, ariaLabel: '조각을 가로로 밀기', drag: (w) => { s.playing = false; s.soNq = clamp((w.x - x0) / W, 0, 1); } });
-      b.seg({ x: x0, y: handleY }, { x: x0 + W, y: handleY }, { color: 'muted', width: 3, alpha: 0.6 });
+      if (!lessonOn(s, C)) {
+        b.handle('q', { x: x0 + W * q, y: handleY }, { color: AMB, ariaLabel: '조각을 가로로 밀기', drag: (w) => { s.playing = false; s.soNq = clamp((w.x - x0) / W, 0, 1); } });
+        b.seg({ x: x0, y: handleY }, { x: x0 + W, y: handleY }, { color: 'muted', width: 3, alpha: 0.6 });
+      }
       void chord;
     },
     steps: (M) => [
@@ -500,9 +528,9 @@
         b.path(sectorPts(Os, R1, a0, a1), { close: true, fill: AMB, fillAlpha: shiftX < 0.01 ? 0.18 : 0.26, color: AMB, width: 2.6, dash: shiftX < 0.01 ? [6, 5] : undefined });
         if (C.txt) {
           const e2 = pt(O, R2, a1), e1 = pt(O, R1, a1);
-          T(b, { x: (e1.x + e2.x) / 2, y: (e1.y + e2.y) / 2 }, `${k * (r2 - r1)} cm`, SKY, { dx: 34, size: 16 });
+          if (!lessonOn(s, C)) T(b, { x: (e1.x + e2.x) / 2, y: (e1.y + e2.y) / 2 }, `${k * (r2 - r1)} cm`, SKY, { dx: 34, size: 16 });
           const bigArcText = `큰 호 = 2π×${r2} = ${2 * r2}π`, smallArcText = `작은 호 = 2π×${r1} = ${2 * r1}π`;
-          if (compactCaptions) {
+          if (ready(s, C, 'soArcReady') && compactCaptions) {
             // 호가 가로로 가까워져도 두 식은 큰 호 아래의 서로 다른 줄에서 읽습니다.
             const anchor = b.toS(pt(O, R2, -90));
             const halfWidth = Math.max(G.textW(bigArcText, G.FS(b, 15)), G.textW(smallArcText, G.FS(b, 14))) / 2;
@@ -510,14 +538,21 @@
             const labelAt = b.toW(labelX, anchor.y);
             T(b, labelAt, bigArcText, SKY, { dy: 18, size: 15 });
             T(b, labelAt, smallArcText, AMB, { dy: 40, size: 14 });
-          } else {
+          } else if (ready(s, C, 'soArcReady')) {
             T(b, pt(O, R2, -90), bigArcText, SKY, { dy: 18, size: 15 });
             T(b, pt(Os, R1, -90), smallArcText, AMB, { dy: shiftX > 0.4 ? 30 : 18, size: 14 });
           }
-          { const eL = pt(O, R2, a0); T(b, { x: eL.x * 0.5, y: eL.y * 0.5 }, `R = ${R2}`, SKY, { dx: -6, dy: 0, size: 14, align: 'right' }); }
+          { const eL = pt(O, R2, a0); T(b, { x: eL.x * 0.5, y: eL.y * 0.5 }, `${lessonOn(s, C) ? 'R₂' : 'R'} = ${R2}`, SKY, { dx: -6, dy: 0, size: 14, align: 'right' }); }
+          if (lessonOn(s, C)) {
+            const ep = pt(Os, R1, a1);
+            T(b, { x: (Os.x + ep.x) / 2, y: ep.y / 2 }, `R₁ = ${R1}`, AMB, { dx: 24, size: 14 });
+            if (ready(s, C, 'soAreaReady')) T(b, O, `큰 부채꼴 ${pk(R2 * r2)}`, SKY, { dy: -16, size: 15 });
+            if (ready(s, C, 'soBaseReady')) T(b, Os, `작은 부채꼴 ${pk(R1 * r1)}`, AMB, { dy: -16, size: 15 });
+            if (s.soLessonGoal === 'area' && ready(s, C, 'soShowAnswer')) T(b, { x: 0, y: -R2 * 0.78 }, `옆넓이 = ${pk(R2 * r2)} − ${pk(R1 * r1)} = ${pk(M.area)} cm²`, GRN, { size: 15 });
+          }
           const rr = Math.min(R1 * 0.36, px(b, 30));
           b.arc(O, rr, rad(a0), rad(a1), { sector: true, fill: ROSE, fillAlpha: 0.3, color: ROSE, width: 2.2 });
-          T(b, O, `${fmtN(x)}°`, ROSE, { dy: 28, size: 15 });
+          if (ready(s, C, 'soAngleReady')) T(b, O, `${fmtN(x)}°`, ROSE, { dy: 28, size: 15 });
         }
       }
       if (off) {
