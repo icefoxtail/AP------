@@ -87,8 +87,9 @@
 | `geom-ellipse` 타원 | 12 | 12 / 35 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1843](https://github.com/icefoxtail/AP------/pull/1843), merge `3177ffe49e6df0880e8ca6a9b828cfb9c91882d7`. 원문 목표15·탐구개념20. 실제 셸 복제 대응 수정 후 최소75/75,544개 실제 Board/canvas 상태·validator 오류/경고0 |
 | `geom-hyperbola` 쌍곡선 | 15 | 15 / 32 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1844](https://github.com/icefoxtail/AP------/pull/1844), merge `74c020a6d909cf69fd940742f9b0af62700039b0`. 원문 목표21·탐구개념11. 실제 셸 복제 조건 포함 최소73/73,510개 실제 Board/canvas 상태·validator 오류/경고0 |
 | `geom-space` 공간도형 3D | 9 | 9 / 35 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1845](https://github.com/icefoxtail/AP------/pull/1845), merge `c1a4cd3645a03d99da1cf001866c3e1ae83adfb2`. 원문 목표13·탐구개념22. 최소73/73(수학24·runtime8·공통video41),606개 실제 3D/canvas cue 상태·validator 오류/경고0 |
-| `geom-projection` 정사영 | 7 | 7 / 23 | **IMPLEMENTED / QA_PENDING** · 원문·등록유형 목표13·탐구개념10. 최소70/70(수학7·runtime8·공통video/pins55),362개 실제 3D/canvas 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
-| 고등 잔여 7개 | — | — | `geom-space-coord` 8장면 → `geom-vector-ops` 12장면 → `geom-vector-dot` 7장면 → `geom-vector-figure` 6장면 → 확률과 통계3실험실. 공간좌표 검증 완료·병합 대기, 벡터3실험실 별도 담당/브랜치 진행 |
+| `geom-projection` | 7장면·23해설(원문/등록 유형13·개념10) | MAIN_MERGED / QA_PENDING · PR #1846 · `3f2ef62f80974513d6ba9eb9608dae2cd28a71b6` · 최소70/70·native362상태·validator0/0·구문8단위·47입력SHA 동일 · PAGES_NOT_VERIFIED |
+| `geom-space-coord` | 8장면·32해설(원문14·개념18) | IMPLEMENTED / QA_PENDING · `feat/lessons-geom-space-coord` · 최소74/74(수학26·native7·공통41)·native547상태·validator0/0·구문8단위·42입력SHA+1부재 동일 · PAGES_NOT_VERIFIED |
+| 고등 잔여 6개 | `geom-vector-ops`(12), `geom-vector-dot`(7), `geom-vector-figure`(6), `prob-counting`(5), `prob-probability`(5), `prob-stats`(7) | 위 공간좌표 main 병합 후 차례로 구현·최소 검사·PR·main 병합. 전수 모바일·독립 시각검수 후행. |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -278,6 +279,12 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 공간좌표 `geom-space-coord` 구현: 카탈로그·HTML 8장면 일치, 원문 목표14+개념18=32해설. 실제 Space/Board·stackScene 복제 경로 547개 cue/중간 상태, 수학26+native7+공통41=74/74, validator 오류0/경고0, JS6+inline2 구문 확인. 원본 변형 선택 seed를 해설 트랙에서 제외하고 첫 원문 조건·native 입체·기존 조작을 보존. 병합 전 원래 yaw가 51에서35로 덮이는 회귀를 재현한 뒤 모든 native 값을 lscN_/lscS_ 전용 재생 트랙으로 분리하고 실제 draw snapshot에만 적용해 원래 조작값 보존 검사를 추가. 구면 단면·내외분·접선·최단거리·퇴화 경계 검산. 최신 main `3f2ef62f80974513d6ba9eb9608dae2cd28a71b6` 반영 뒤42입력 SHA 및1부재 동일. 전수 모바일/독립 시각검수 NOT_RUN, PAGES_NOT_VERIFIED.
+
+- 2026-11-12 정사영 `geom-projection` PR #1846 main 병합 `3f2ef62f80974513d6ba9eb9608dae2cd28a71b6`, 원격 feature `84652a500efe6aa894053a9621b18b7efaca2c3b` 및 main 파일 일치 재조회 완료. 누적47실험실/915장면/2,639해설. AWCR r73 원격 raw SHA `62dfea958567688f47e9adbfdff72eb9b3126d29874cbb19b640cef97998b66b`, 저장본 재조회 VERIFIED.
+
+- 2026-11-12 별도 Pages 복구: Archive writer run43060888403 성공·등록 main `20bfae6fd839962a20df50295d772f4ff2125d23`; 최종 consumer27요청354/354 통과, sourceMutation0, 부적합14요청은 기존 rejected 경로에 보존. 필수 등록 gate 유지. 후속 Pages run43077681642 Build queued 관찰 시점이며 Deploy·학생 사이트 미확인. 이 기록은 운영 배포 완료가 아님.
 
 - 2026-11-12 · **정사영 전체 구현.** `feat/lessons-geom-projection`, catalog/HTML mode1~7 **7장면/23해설**(원문·등록유형 목표13·탐구개념10), 누락0. 높이·넓이, 타원 단면의 넓이와 두 축, 정육면체 단면각, 태양광 그림자, 부분 삼각형 및 면의 정사영을 목표별로 나누었다. mode5 GCD/GBC/GBD와 mode7 ABC/ABD는 실제 등록된 첫 해당 문항과 도형을 함께 고정했다. 원본3D 공간 투영/Board·원문/정사영 polygon 결속, shell stackScene/복제 경계, prefix 재생값에 의한 수동 시점·슬라이더·문제index 보존, N/M drag와 source-only 로딩을 확인했다. 최소 **70/70 PASS**(독립수학7·native8·공통video/pins55), **362개 실제 cue/전이 상태**, 등록 변형 mode5 15개·mode6 9개·mode7 12개 수학 검산, validator 오류/경고0·구문8단위·diff 통과. 최신 main 통합 후 입력47파일 SHA256 동일. 원본문항·공통 kit 수정 없음. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
 
