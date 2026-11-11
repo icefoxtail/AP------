@@ -93,4 +93,59 @@
       ])
     ])
   ];
+
+  lessons['p2-1'] = [false, true].map(numeric => make(numeric ? '각크기' : '각의관계', numeric ? '평행선 사이의 꺾인 각 계산' : '꺾인 각과 두 엇각의 관계', numeric ? 'x=80°' : 'x=a+b', '꺾인 점을 지나는 평행 보조선에 두 엇각을 모아요', '주어진 두 각을 바꾸고 같은 보조선을 그어 보세요', [
+    ch('주어진 각과 평행 보조선', 12, [
+      { at: 0, say: 'A쪽 각 a는 50°, B쪽 각 b는 30°예요.', set: begin(numeric ? 'bendSolve' : 'bendRelation'), to: { paTrace: 1 }, dur: 4 },
+      { at: 5.5, say: '꺾인 점 P를 지나 l, m에 평행한 보조선을 그어요.', step: 1 }
+    ], { bA: 50, bB: 30, bP: 1, bAux: 0, paTrace: 0 }),
+    ch('모인 두 엇각', 12, [
+      { at: 0, say: '엇각으로 옮긴 50°와 30°가 P에서 이웃해요.', step: 2, set: { paSupportReady: true } },
+      { at: 5.5, say: numeric ? '$x=50°+30°=80°$예요.' : 'x는 두 각을 합한 각이므로 $x=a+b$예요.', step: 3, set: { paShowAnswer: true } }
+    ])
+  ]));
+
+  lessons['p2-3'] = [make('보조선조건', '엇각을 쓸 수 있는 보조선', '보조선 ∥ l', '꺾인 점을 지나고 주어진 두 직선에 평행해야 해요', '직접 보조선을 돌려 같은 조건을 맞춰 보세요', [
+    ch('꺾인 점을 지나는 선', 12, [
+      { at: 0, say: '꺾인 점 P를 지나는 보조선의 방향을 바꿔 보아요.', set: begin('auxCondition'), to: { cPsi: 10 }, dur: 4, snap: 1 },
+      { at: 5.5, say: 'P를 지나도 방향이 다르면 엇각이 같다고 할 수 없어요.', step: 1 }
+    ], { cA: 45, cB: 35, cP: 1, cDir: 1, cPsi: 28, paTrace: 1 }),
+    ch('두 직선과 같은 방향', 12, [
+      { at: 0, say: '보조선을 l, m과 같은 방향으로 맞추어요.', to: { cPsi: 0 }, dur: 4, snap: 1 },
+      { at: 5.5, say: '보조선 ∥ l이어야 엇각의 성질을 쓸 수 있어요.', step: 3, set: { paShowAnswer: true } }
+    ])
+  ])];
+  for (const side of [1, -1]) lessons['p2-3'].push(make(side === 1 ? '오른쪽꺾임' : '왼쪽꺾임', '평행 보조선으로 꺾인 각 구하기', 'x=80°', '꺾인 방향이 달라도 평행 보조선과 엇각을 써요', '꺾인 방향을 바꾸고 같은 두 각을 찾아보세요', [
+    ch('주어진 각과 꺾인 점', 12, [
+      { at: 0, say: 'A쪽 각 a는 45°, B쪽 각 b는 35°예요.', set: begin('auxSolve'), to: { paTrace: 1 }, dur: 4 },
+      { at: 5.5, say: 'P를 지나는 보조선을 l, m과 평행하게 그어요.', step: 1 }
+    ], { cA: 45, cB: 35, cP: 1, cDir: side, cPsi: 0, paTrace: 0 }),
+    ch('방향이 달라도 같은 방법', 12, [
+      { at: 0, say: '엇각인 45°와 35°를 P로 옮기면 두 각이 이웃해요.', step: 2, set: { paSupportReady: true } },
+      { at: 5.5, say: '$x=45°+35°=80°$예요.', step: 3, set: { paShowAnswer: true } }
+    ])
+  ]));
+
+  lessons['p2-2'] = [1, 2, 3].map(k => {
+    const target = k === 3 ? 3 : 1, name = k === 3 ? 'R' : 'P', answer = k === 3 ? 105 : 95;
+    const chapters = [ch('꺾인 점마다 평행 보조선', 12, [
+      { at: 0, say: `꺾인 점은 ${k}개예요. ${name}에서의 초록 각을 x라 해요.`, set: begin('zig'), to: { paTrace: 1 }, dur: 5 },
+      { at: 5.5, say: 'l과 m은 평행해요. 각 꺾인 점에도 평행선을 그어요.', step: 1 }
+    ], { kK: k, uA: 55, uB: 40, uC: 60, uD: 45, zTar: target, zAux: 0, paTrace: 0 })];
+    if (k === 1) chapters.push(ch('두 방향의 각을 모아요', 12, [
+      { at: 0, say: '오른쪽의 55°와 40°가 엇각으로 옮겨져 x를 이루어요.', step: 2, set: { paSupportReady: true } },
+      { at: 5.5, say: '따라서 $x=55°+40°=95°$예요.', step: 3, set: { paShowAnswer: true } }
+    ]));
+    else {
+      chapters.push(ch('열린 방향에 따라 더해요', 12, [
+        { at: 0, say: '엇각을 모으면 오른쪽으로 열린 각의 합과 왼쪽 합이 같아요.', step: 2 },
+        { at: 5.5, say: k === 2 ? '오른쪽은 $55°+100°=155°$, 왼쪽은 $x+60°$예요.' : '오른쪽은 $55°+100°+45°=200°$, 왼쪽은 $95°+x$.', set: { paSupportReady: true } }
+      ]));
+      chapters.push(ch('같은 쪽의 나머지를 빼요', 12, [
+        { at: 0, say: k === 2 ? '왼쪽의 다른 각 60°를 오른쪽 합 155°에서 빼요.' : '왼쪽의 다른 각 95°를 오른쪽 합 200°에서 빼요.' },
+        { at: 5.5, say: k === 2 ? '$x=155°-60°=95°$예요.' : '$x=200°-95°=105°$예요.', step: 3, set: { paShowAnswer: true } }
+      ]));
+    }
+    return make(['한번꺾임', '두번꺾임', '세번꺾임'][k - 1], '열린 방향별 각의 합으로 계산', `x=${answer}°`, '끝점의 각도 포함해서 열린 방향별로 더해요', '꺾인 점 수와 구할 각을 바꾸어 같은 식을 세워 보세요', chapters);
+  });
 })();
