@@ -22,6 +22,17 @@
   const cInt = (p, h) => { if (!p) return null; const c = Math.hypot(p, h); return Math.abs(c - Math.round(c)) < 1e-9 ? Math.round(c) : null; }; // p=0 이면 옆변=높이라서 함정이 아니므로 옆변을 주지 않습니다
   const foot = (b, p, str, color = 'green', dy = 56) => T(b, p, str, { dy, size: 17, color });
   const handle = (b, C, id, p, label, drag) => { if (!C.problem && !C.thumb && !C.review) b.handle(id, p, { color: 'amber', r: 8, ariaLabel: label, drag }); };
+  const ready = (s, key = 'arShowAnswer') => !s.lessonEntry && s[key] === true;
+  const areaLesson = (s, C) => C.lesson && s.arLessonMode === 'area';
+  function lessonRow(b, s, text) {
+    if (!(s.lessonOn || s.lessonEntry) || !ready(s)) return;
+    const size = Math.min(17, (b.W - b.insets.left - b.insets.right - 26) / Math.max(1, G.textW(text, 17)) * 17);
+    b.stext((b.W + b.insets.left - b.insets.right) / 2, b.insets.top + 17, text, { color: 'green', size, weight: 800, align: 'center', baseline: 'middle' });
+  }
+  function heightTrace(b, s, C, top, base) {
+    const t = C.lesson && !s.lessonEntry ? clamp(s.arHeightT || 0, 0, 1) : 0;
+    if (t > 0) line(b, top, lerp(top, base, t), 'amber', 4);
+  }
 
   /* ====================================================================== 1. 직사각형 */
   const rect = {
@@ -34,7 +45,7 @@
     draw(b, s, M, C) {
       const { W, H, A } = M;
       FIT(b, { x0: 0, x1: W, y0: -H, y1: 0 }, { b: 92, l: 68 });
-      const kp = C.problem ? 0 : C.review ? (C.step >= 3 ? H : 0) : C.t * H; // 가로 W칸인 줄을 세로로 H줄 셉니다.
+      const kp = C.problem ? 0 : C.lesson ? (s.lessonEntry ? 0 : C.t * H) : C.review ? (C.step >= 3 ? H : 0) : C.t * H; // 가로 W칸인 줄을 세로로 H줄 셉니다.
       if (!C.problem) {
         for (let j = 0; j < H; j++) {
           const f = clamp(kp - j, 0, 1);
@@ -56,6 +67,12 @@
       dim(b, pt(0, 0), pt(W, 0), b.thumb ? `가로 ${W}cm` : `${W}cm`, { ref: c0, color: 'sky', curve: true });
       dim(b, pt(0, 0), pt(0, -H), b.thumb ? `세로 ${H}cm` : `${H}cm`, { ref: c0, color: 'sky', curve: true });
       if (C.problem) { T(b, c0, '넓이 ?', { size: 22, color: 'amber' }); return; }
+      if (C.lesson) {
+        lessonRow(b, s, s.arLessonMode === 'count' ? `${A}칸` : `${A}cm²`);
+        const row = ready(s) ? s.arLessonMode === 'count' ? `${W}칸×${H}줄 = ${A}칸` : `가로×세로 = ${W}×${H} = ${A}cm²` : ready(s, 'arBaseReady') ? `한 줄에 ${W}칸 · ${H}줄` : '한 칸 = 1cm × 1cm = 1cm²';
+        foot(b, pt(W / 2, 0), row, ready(s) ? 'green' : 'amber');
+        return;
+      }
       if (C.review && C.step < 1) foot(b, pt(W / 2, 0), '한 칸부터 차례로 세어 보세요', 'amber');
       else if (C.review && C.step === 1) foot(b, pt(W / 2, 0), '한 칸 = 1cm × 1cm = 1cm²', 'amber');
       else if (C.review && C.step === 2) foot(b, pt(W / 2, 0), `한 줄에 ${W}칸 × ${H}줄`, 'amber');
@@ -96,8 +113,8 @@
     geo: (M) => ({ para: [pt(0, 0), pt(M.B, 0), pt(M.B + M.S, -M.H), pt(M.S, -M.H)] }),
     draw(b, s, M, C) {
       const { B, H, S, A, c } = M, [P0, P1, P2, P3] = para.geo(M).para;
-      FIT(b, { x0: 0, x1: B + S, y0: -H, y1: 0 }, { b: 92, r: C.problem && c ? 78 : 46 });
-      const t = C.problem ? 0 : C.t, mv = ease(t) * B;
+      FIT(b, { x0: 0, x1: B + S, y0: -H, y1: 0 }, { b: 92, r: (C.problem || areaLesson(s, C)) && c ? 78 : 46 });
+      const t = C.problem || C.lesson && s.lessonEntry ? 0 : C.t, mv = ease(t) * B;
       const tri = [P0, pt(S, 0), pt(S, -H)], rest = [pt(S, 0), P1, P2, P3];
       if (C.problem) { fillPoly(b, [P0, P1, P2, P3], 'sky', 0.2); poly(b, [P0, P1, P2, P3], 'ink', 3.6); }
       else {
@@ -108,10 +125,17 @@
       }
       if (mv < 0.01 || C.problem) { tick(b, P3, P2, 1); tick(b, P0, P1, 1); }
       hgtTo(b, P3, P0, P1, { label: `높이 ${H}cm`, side: S > B / 2 ? -1 : 1 });
+      heightTrace(b, s, C, P3, pt(S, 0));
       const c0 = pt((B + S) / 2, -H / 2);
       dim(b, P0, P1, `밑변 ${B}cm`, { ref: c0, color: 'sky' });
-      if (C.problem && c) dim(b, P1, P2, `옆변 ${c}cm`, { ref: c0, color: 'rose' });
+      if ((C.problem || areaLesson(s, C)) && c) dim(b, P1, P2, `옆변 ${c}cm`, { ref: c0, color: 'rose' });
       if (C.problem) { foot(b, pt((B + S) / 2, 0), '넓이 = ? cm²', 'amber', 58); return; }
+      if (C.lesson) {
+        lessonRow(b, s, areaLesson(s, C) ? `${A}cm²` : '직사각형');
+        const row = ready(s) ? areaLesson(s, C) ? `밑변×높이 = ${B}×${H} = ${A}cm²` : '조각을 옮겨 만든 직사각형' : ready(s, 'arBaseReady') ? `밑변 ${B}cm · 수직인 높이 ${H}cm` : '높이를 따라 자른 조각을 옮겨요';
+        foot(b, pt((B + S) / 2, 0), row, ready(s) ? 'green' : 'amber');
+        return;
+      }
       const done = C.review ? C.step >= 3 : mv > B * 0.999;
       if (done) foot(b, pt((B + S) / 2, 0), `직사각형 ${B}×${H} = ${A}cm²`, 'green');
       else foot(b, pt((B + S) / 2, 0), C.review ? '삼각형 조각을 옆으로 옮겨요' : '평행사변형의 넓이 = ?', 'amber');
@@ -154,7 +178,7 @@
     geo: (M) => ({ tri: [pt(0, 0), pt(M.B, 0), pt(M.p, -M.H)] }),
     draw(b, s, M, C) {
       const { B, H, p, A, c } = M, [Bv, Cv, Av] = tri.geo(M).tri;
-      FIT(b, { x0: 0, x1: C.problem ? B : B + p, y0: -H, y1: 0 }, { b: 96, l: C.problem && c ? 84 : 46 });
+      FIT(b, { x0: 0, x1: C.problem ? B : B + p, y0: -H, y1: 0 }, { b: 96, l: (C.problem || areaLesson(s, C)) && c ? 84 : 46 });
       const t = C.problem ? 0 : C.t;
       const Q = pt(B / 2, -H / 2), d = p; // 제자리 180° 회전의 중심(삼각형을 감싸는 직사각형의 한가운데), 이어서 가로로 p 만큼 밀기
       const ang = Math.PI * seg01(t, 0.12, 0.55), slide = d * seg01(t, 0.55, 1), al = seg01(t, 0, 0.12);
@@ -164,11 +188,19 @@
         fillPoly(b, cp, 'green', 0.34 * al); poly(b, cp, 'green', 3.6, { alpha: Math.max(0.0, al), dash: t < 0.125 ? [7, 5] : undefined });
       }
       hgtTo(b, Av, Bv, Cv, { label: `높이 ${H}cm`, side: (C.problem ? p >= B / 2 : p > B / 2) ? -1 : 1, at: C.problem && c && p >= B / 2 ? 0.8 : 0.5 });
+      heightTrace(b, s, C, Av, pt(p, 0));
       const c0 = pt((B + p) / 2, -H / 2);
       dim(b, Bv, Cv, `밑변 ${B}cm`, { ref: pt(B / 2, -H), color: 'sky' });
+      if (areaLesson(s, C) && c) dim(b, Bv, Av, `옆변 ${c}cm`, { ref: Cv, color: 'rose', at: .7 });
       if (C.problem) {
         if (c) dim(b, Bv, Av, `옆변 ${c}cm`, { ref: Cv, color: 'rose', at: 0.7 });
         foot(b, pt(B / 2, 0), '넓이 = ? cm²', 'amber', 56);
+        return;
+      }
+      if (C.lesson) {
+        lessonRow(b, s, areaLesson(s, C) ? `${num(A)}cm²` : '평행사변형');
+        const row = ready(s) ? areaLesson(s, C) ? `${B}×${H}÷2 = ${num(A)}cm²` : '같은 삼각형 두 개' : ready(s, 'arAreaReady') ? `${B}×${H} = ${B * H}cm² (두 개)` : ready(s, 'arBaseReady') ? `밑변 ${B}cm · 수직인 높이 ${H}cm` : '같은 삼각형을 복사해서 붙여요';
+        foot(b, pt((B + p) / 2, 0), row, ready(s) ? 'green' : 'amber');
         return;
       }
       const done = C.review ? C.step >= 3 : t > 0.999;
@@ -213,7 +245,7 @@
     draw(b, s, M, C) {
       const { a, B, H, p, S, c } = M, [BL, BR, TR, TL] = trap.geo(M).trap;
       const xr = Math.max(B, p + a);
-      FIT(b, { x0: 0, x1: C.problem ? xr : xr + Math.max(a, 0) + p, y0: -H, y1: 0 }, { b: 112, l: C.problem && c ? 92 : 46 });
+      FIT(b, { x0: 0, x1: C.problem ? xr : xr + Math.max(a, 0) + p, y0: -H, y1: 0 }, { b: 112, l: (C.problem || areaLesson(s, C)) && c ? 92 : 46 });
       const t = C.problem ? 0 : C.t;
       const cx = xr / 2, Q = pt(cx, -H / 2), d = B + p + a - 2 * cx;
       const ang = Math.PI * seg01(t, 0.12, 0.55), slide = d * seg01(t, 0.55, 1), al = seg01(t, 0, 0.12);
@@ -224,16 +256,24 @@
       }
       par(b, TL, TR, 1, 'green'); par(b, BL, BR, 1, 'green');
       hgtTo(b, TL, BL, BR, { label: `높이 ${H}cm`, side: 1, gap: 10 });
-      const cc = pt(Math.max(B, p + a) / 2, -H / 2), done = C.review ? C.step >= 2 : t > 0.999;
+      heightTrace(b, s, C, TL, pt(p, 0));
+      const cc = pt(Math.max(B, p + a) / 2, -H / 2), done = C.lesson ? ready(s, 'arBaseReady') : C.review ? C.step >= 2 : t > 0.999;
       dim(b, TL, TR, `윗변 ${a}cm`, { ref: cc, color: 'sky' });
       if (done) {
         dim(b, BL, BR, `${B}`, { ref: cc, color: 'sky' });
         dim(b, BR, pt(B + a, 0), `${a}`, { ref: cc, color: 'green' });
         dim(b, BL, pt(B + a, 0), `밑변 ${a}+${B} = ${a + B}`, { ref: cc, color: 'green', off: 54 });
       } else dim(b, BL, BR, `아랫변 ${B}cm`, { ref: cc, color: 'sky' });
+      if (areaLesson(s, C) && c) dim(b, BL, TL, `옆변 ${c}cm`, { ref: BR, color: 'rose' });
       if (C.problem) {
         if (c) dim(b, BL, TL, `옆변 ${c}cm`, { ref: BR, color: 'rose' });
         foot(b, pt(xr / 2, 0), '넓이 = ? cm²', 'amber', 56);
+        return;
+      }
+      if (C.lesson) {
+        lessonRow(b, s, areaLesson(s, C) ? `${num(S)}cm²` : '평행사변형');
+        const message = ready(s) ? areaLesson(s, C) ? `(${a}+${B})×${H}÷2 = ${num(S)}cm²` : '같은 사다리꼴 두 개' : ready(s, 'arAreaReady') ? `${a + B}×${H} = ${(a + B) * H}cm² (두 개)` : '윗변 + 아랫변 → 새 밑변';
+        foot(b, pt((B + a) / 2, 0), message, ready(s) ? 'green' : 'amber', done ? 94 : 64);
         return;
       }
       const fin = C.review ? C.step >= 3 : t > 0.999;
@@ -294,6 +334,12 @@
       dim(b, pt(-x, y), pt(x, y), `대각선 ${X}cm`, { ref: O, color: 'green', off: 22, source: [pt(-x, 0), pt(x, 0)] });
       dim(b, pt(x, -y), pt(x, y), `${Y}cm`, { ref: O, color: 'green', off: 30, source: [pt(0, -y), pt(0, y)] });
       if (C.problem) { T(b, pt(0, -y * 0.45), '넓이 ?', { size: 20, color: 'amber' }); return; }
+      if (C.lesson) {
+        lessonRow(b, s, areaLesson(s, C) ? `${num(A)}cm²` : '직사각형의 절반');
+        const row = ready(s) ? areaLesson(s, C) ? `${X}×${Y}÷2 = ${num(A)}cm²` : '안쪽 네 조각 = 바깥 네 조각' : ready(s, 'arAreaReady') ? `직사각형 ${X}×${Y} = ${R}cm²` : `직사각형: 가로 ${X}cm · 세로 ${Y}cm`;
+        foot(b, pt(0, y), row, ready(s) ? 'green' : 'amber', 58);
+        return;
+      }
       const done = C.review ? C.step >= 3 : t > 0.999;
       if (done) foot(b, pt(0, y), `직사각형 ${X}×${Y} = ${R}의 절반 = ${num(A)}cm²`, 'green', 58);
       else foot(b, pt(0, y), C.review ? `가로 ${X}cm × 세로 ${Y}cm 직사각형` : '마름모의 넓이 = ?', 'amber', 58);
@@ -349,14 +395,26 @@
       fillPoly(b, [Bv, Cv, Av], 'sky', 0.24); poly(b, [Bv, Cv, Av], 'ink', 3.6);
       const side = C.problem ? (p < 0 ? 1 : p > B ? -1 : (p < B / 2 ? 1 : -1)) : (p < 0 ? -1 : p > B ? 1 : (p < B / 2 ? 1 : -1));
       hgtTo(b, Av, Bv, Cv, { label: C.problem && c ? `${H}cm` : `높이 ${H}cm`, side, at: C.problem && c ? 0.85 : 0.5, gap: 12 });
+      heightTrace(b, s, C, Av, pt(p, 0));
       dim(b, Bv, Cv, `밑변 ${B}cm`, { ref: pt(B / 2, -H), color: 'sky' });
       T(b, Av, 'A', { dy: -19, size: 18 }); T(b, Bv, 'B', { dx: -14, dy: 15, size: 18 }); T(b, Cv, 'C', { dx: 14, dy: 15, size: 18 }); T(b, pt(p, 0), 'H', { dx: p < B / 2 ? -14 : 14, dy: 15, size: 18, color: 'amber' });
+      if (areaLesson(s, C) && c) {
+        const e0 = p < 0 ? Bv : Cv, m = mid(e0, Av), cen = G.centroid([Bv, Cv, Av]), u = G.unit(sub(cen, m));
+        line(b, e0, Av, 'rose', 6, { alpha: .85 });
+        T(b, m, `옆변 ${c}cm`, { dx: u.x * 30, dy: u.y * 26, size: 18, color: 'rose' });
+      }
       if (C.problem) {
         if (c) { // 옆변은 분홍으로 칠하고, 삼각형 안쪽에 길이를 적습니다(높이 글자와 겹치지 않게)
           const e0 = p < 0 ? Bv : Cv, mm0 = mid(e0, Av), cen = G.centroid([Bv, Cv, Av]), k = b.k || 40, u = G.unit(sub(cen, mm0));
           line(b, e0, Av, 'rose', 6, { alpha: 0.85 }); T(b, mm0, `${c}cm`, { dx: u.x * 30, dy: u.y * 26, size: 18, color: 'rose' });
         }
         foot(b, pt((Math.max(B, p) + Math.min(0, p)) / 2, 0), '넓이 = ? cm²', 'amber', 58);
+        return;
+      }
+      if (C.lesson) {
+        lessonRow(b, s, areaLesson(s, C) ? `${num(A)}cm²` : '넓이가 같아요');
+        const row = ready(s) ? areaLesson(s, C) ? `${B}×${H}÷2 = ${num(A)}cm²` : '밑변·높이가 같으면 넓이도 같아요' : ready(s, 'arAreaReady') ? `밑변×높이 = ${B}×${H} = ${B * H}` : 'AH는 BC의 연장선에 수직';
+        foot(b, pt((Math.min(0, p) + Math.max(B, p)) / 2, 0), row, ready(s) ? 'green' : 'amber', 58);
         return;
       }
       foot(b, pt(Math.min(0, p) / 2 + Math.max(B, p) / 2, 0), C.review && C.step < 3 ? (C.step === 1 ? '높이는 밑변의 연장선에 내려요' : `밑변 ${B}cm, 높이 ${H}cm`) : `넓이 = ${HALF}×${B}×${H} = ${num(A)}cm²`, C.review && C.step < 3 ? 'amber' : 'green', 58);
