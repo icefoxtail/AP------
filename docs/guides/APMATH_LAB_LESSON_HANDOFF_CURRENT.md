@@ -55,7 +55,7 @@
 | `g8-triangles` 삼각형의 성질 | 43 | 43 / 165 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1768](https://github.com/icefoxtail/AP------/pull/1768), merge `c554314dab47bb18adf8f71d8cf50f0e87e45b3e`. 최소 검사 171/171, 구문 16파일, 누락 0. 실제 학생 HTML은 이전 버전 (§6) |
 | `g8-quadrilaterals` 사각형의 성질 | 32 | 32 / 133 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1775](https://github.com/icefoxtail/AP------/pull/1775), merge `1adb00ecf9d275d8b83df5e1089e27e9dfe77466`. 기존 23/106 보존 + 잔여 9/27 추가, 누락 0. 최소 검사 109/109·구문 17파일 통과. 공통 Pages 등록 대기 (§6) |
 | `g8-similarity` 도형의 닮음 | 39 | 39 / 144 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1777](https://github.com/icefoxtail/AP------/pull/1777), merge `80e3ecc5119c200b722c6e7563835e8fd772b2ea`. 기본 닮음·넓이/부피·삼각형 17/65, 평행선 11/44, 직각삼각형·활용·무게중심 11/35. 누락 0. 최소 검사 108/108·구문 18파일 통과. 실제 학생 HTML은 이전 버전 (§6) |
-| `g9-trig-ratio` 삼각비 | 51 | 51 / 245 | **IMPLEMENTED / QA_PENDING** · 뜻·특수각·표 19/111, 길이·높이 15/69, 넓이·입체 17/65. 개념 74, 원문 예제 171, 누락 0. 최소 검사 136/136·구문 22파일 통과. PR·main·Pages 확인 예정 (§6) |
+| `g9-trig-ratio` 삼각비 | 51 | 51 / 245 | **IMPLEMENTED / QA_PENDING** · [PR #1779](https://github.com/icefoxtail/AP------/pull/1779). 뜻·특수각·표 19/111, 길이·높이 15/69, 넓이·입체 17/65. 개념 74, 원문 예제 171, 누락 0. 최소 검사 136/136·구문 22파일 통과. PR·main·Pages 확인 예정 (§6) |
 | `g9-circle` 원의 성질 | 45 | 0 | 미착수 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
 
