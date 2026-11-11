@@ -277,7 +277,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q07-r4.png",
     "answer": "④",
-    "solution": "$BC\\parallel DE$이므로 $\\triangle ADE\\sim\\triangle ACB$이다.\\n$DA:AB=EA:AC$에서\\n$9:6=7.5:x$\\n$9x=45$\\n$x=5\\text{ cm}$이다.\\n또 대응변의 비에서\\n$ED:BC=DA:AB$\\n$y:8=9:6$\\n$6y=72$\\n$y=12\\text{ cm}$이다.\\n따라서\\n$x+y=5+12=17\\text{ cm}$이다.\\n따라서 정답은 ④이다.",
+    "solution": "$BC\\parallel DE$이므로 $\\triangle ADE\\sim\\triangle ABC$이다.\\n$DA:AB=EA:AC$에서\\n$9:6=7.5:x$\\n$9x=45$\\n$x=5\\text{ cm}$이다.\\n또 대응변의 비에서\\n$ED:BC=DA:AB$\\n$y:8=9:6$\\n$6y=72$\\n$y=12\\text{ cm}$이다.\\n따라서\\n$x+y=5+12=17\\text{ cm}$이다.\\n따라서 정답은 ④이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
