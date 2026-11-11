@@ -62,7 +62,7 @@
 | `common-rational` 유리함수 | 4 | 4 / 19 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1786](https://github.com/icefoxtail/AP------/pull/1786), merge `b07a26bba6afde5dd00996dacb036ef6228668eb`. 개념 15·첫 원문 4. 최소 검사 47/47·546 Board/raw canvas cue frames. 실제 운영 파일 0/4 일치 (§7) |
 | `common-poly-solid` 다항식과 입체 | 5 | 5 / 17 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1790](https://github.com/icefoxtail/AP------/pull/1790), merge `7348e5114857ce2ef9664ba2f51f712b477d4eb4`. 개념 12·첫 원문 5. 최소 검사 47/47·466 Board cue frames(392 native Space). 실제 운영 파일 0/4 일치 (§7) |
 | `common-quadratic` 이차함수 | 36 | 36 / 104 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1793](https://github.com/icefoxtail/AP------/pull/1793), merge `817fa40632b33e4d5b03d3829b9bce0c8df84896`. 개념 68·첫 원문 36. 최소 검사 47/47·2,718 cue frames, 실제 운영 파일 0/6 일치 (§7) |
-| `common-lines` 평면·직선·이동 | 30 | 20 / 60 (제작 중) | **WIP / QA_PENDING** · 목표 30장면·95해설. index snapshot 등록 validator 오류·경고 0, 전체 최소 검사·PR/main/Pages 대기 (§7) |
+| `common-lines` 평면·직선·이동 | 30 | 30 / 95 | **IMPLEMENTED / QA_PENDING** · 개념 65·첫 원문 30. validator 오류·경고 0, 전체 최소 검사·PR/main/Pages 진행 중 (§7) |
 | 고등 잔여 33개 | — | — | 이차함수 뒤 과목 순서로 진행. 다음 `common-lines` 30장면 (§7) |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
@@ -253,6 +253,8 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-11 · 평면·직선·이동 **30장면/95해설**(개념 65·첫 원문 30) 작성 완료. A 15/47(32+15), B 15/48(33+15) 각각 실제 HTML 등록 validator 오류·경고 0과 구문을 확인했고, 전체 통합 최소 검사는 진행 중이다. 마지막 장 전 중간값과 최종 합이 같아지는 `threeLinesNoTri` 원문 두 자막은 미계산 분수식으로 보류하도록 수정했다. 원문 조건·정답은 유지했다. 첫 원격 보존 head `1fe50a84db3c2758ca45fa7a452c3bbc4839b972`는 **20장면/60개**이고 이 snapshot의 전체 runtime/math는 **NOT_RUN**이다. [AWCR r41](https://drive.google.com/file/d/1RLzhXv3RcaoZU2YlkJPvRrscpUkgozXa/view) raw SHA-256 `7eb82885dd08c128825a0b07cdde275a608149a81447963be25c18dd0d8ab40e`·23,766 bytes를 다시 읽어 확인했으며 r41에는 이후 working 95개를 원격 완료로 기록하지 않았다.
 
 - 2026-11-11 · `common-lines`는 최신 main `817fa40632b33e4d5b03d3829b9bce0c8df84896`의 새 `feat/lessons-common-lines`에서 시작했다. 실제 30장면의 기존 해설은 0개였고, 원격 HEAD 960개 중 같은 이름의 작업 0개, 열린 PR 47개·2,745경로에 대상 중복 0개를 확인했다. 기존 병합 PR #1029/#1046/#1497의 이식·표시 수정은 유지한다. 개념 65·첫 원문 30의 총 95해설을 목표로 한다. 첫 보존 index snapshot은 **20장면/60해설**(개념 40·첫 원문 20), 실제 HTML validator 오류·경고 0이다. 잔여 ID: `shoelaceArea`, `pointLineDist`, `parallelLineDist`, `angleBisectorLine`, `maxDistFromPt`, `trapApollonius`, `trapLineSegmentMeet`, `trapInterceptZero`, `trapPerpDivideZero`, `trapCoordFold`. 첫 packet 고정과 수동 새 문제를 보존하며, native path/circle의 첫 trace 및 선/원이 아직 없는 원문 조건점의 실제 강조를 연결한다. 기존 notes에 있는 대칭·거리·경계 비교만 해설 전용으로 보완하고 새 원문 변형을 만들지 않는다. 전체 95개 통합/최소 수학 검사는 이 보존 시점에 **NOT_RUN**이다.
 
