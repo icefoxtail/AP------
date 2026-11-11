@@ -1,5 +1,11 @@
 # JS Archive GPT 예약라인 공용 프롬프트 정본 — 변경 이력
 
+## v2.1.0 — 2026-11-11: 고등 유사시험지 2-라인(HIGH_SIMILAR) 신설
+- 중등 2-라인과 같은 구조로 고등 생성 라인(`HIGH_SIMILAR_LINE1_GENERATOR_CURRENT.md`)과 검수·수리·출고 라인(`HIGH_SIMILAR_LINE2_REVIEWER_CURRENT.md`)을 추가했다. 산출물은 구글 드라이브 md가 아니라 저장소 `archive/exams/similar/high/<g>/<term>/`의 JS·메타·plans·영수증이다.
+- `tools/route_queue_high.py` 신설: 고등 전용 순차 큐. 유사가 없는 구간부터, 연도 최신순·학교 가나다순. `--skip`으로 진행 중(열린 PR/브랜치) 시험지를 제외한다. 중등 `route_queue.py`는 바꾸지 않았다.
+- 생성과 검수 사이의 인계는 Git(브랜치 `similar-high/<stem>` + 제목 `[HIGH-유사 생성완료]` draft PR)이다. Claude 예약은 회차마다 새 세션이라 로컬 상태를 이어받지 못하기 때문이다.
+- 이 문서 추가는 예약 등록·ON/OFF·실제 시험지 생성이나 하네스 PASS를 뜻하지 않는다.
+
 ## v2.0.1 — 2026-10-24: 2-라인 SVG 하네스 조건부 보완 (출고 게이트 fail-closed)
 - Windows 사용자 폴더 절대경로를 제거하여 검증기·회귀 테스트의 repo-relative root를 사용한다.
 - **영수증 순서 수리**: draft 진단(`--phase=draft`) → 독립 R1 freeze 및 직접 수리 → 최종 JS blob에 대한 review-receipt → 기본 strict release gate → 13번 병합. draft/legacy PASS는 출시 PASS가 아니다.
