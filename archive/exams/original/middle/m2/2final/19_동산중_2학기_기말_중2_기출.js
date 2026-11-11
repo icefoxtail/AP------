@@ -394,8 +394,8 @@ window.questionBank = [
       "30"
     ],
     "image": "assets/images/19_동산중_2학기_기말_중2_기출/q07.png",
-    "answer": "⑤",
-    "solution": "평행한 세 직선이 두 직선과 만날 때 대응하는 선분의 비가 같다.\n첫 번째 그림에서\n$a:4=9:3$이므로\n$a=4\\times3=12$이다.\n\n두 번째 그림에서 $BC\\parallel ED$이고, 두 직선 $BD$와 $CE$가 $A$에서 만난다.\n따라서 $\\triangle ABC\\sim\\triangle ADE$이다.\n\n$AB:AD=AC:AE$\n$6:12=9:b$\n$6b=108$\n$b=18$이다.\n\n그러므로\n$a+b=12+18=30$이다.\n정답은 ⑤이다.",
+    "answer": "①",
+    "solution": "평행한 세 직선이 두 직선과 만날 때 대응하는 선분의 길이의 비가 같다.\n첫 번째 그림에서 9 cm는 가장 위 직선에서 가장 아래 직선까지의 길이이고, 3 cm는 가운데 직선에서 가장 아래 직선까지의 길이이므로 가장 위 직선에서 가운데 직선까지는 $9-3=6\\text{ cm}$이다.\n같은 방법으로 다른 직선에서 $a$는 가장 위 직선에서 가운데 직선까지, $4\\text{ cm}$는 가운데 직선에서 가장 아래 직선까지이다.\n$a:4=6:3$이므로\n$3a=24$\n$a=8$이다.\n\n두 번째 그림에서 $BC\\parallel ED$이고, 두 직선 $BD$와 $CE$가 $A$에서 만난다.\n따라서 $\\triangle ABC\\sim\\triangle ADE$이다.\n$AB=6\\text{ cm}$, $AD=12\\text{ cm}$이므로 닮음비는 $6:12=1:2$이다.\n$AC:AE=1:2$이고 $CE=AC+AE=9\\text{ cm}$이므로\n$AE=9\\times\\dfrac{2}{3}=6\\text{ cm}$\n즉 $b=6$이다.\n\n그러므로\n$a+b=8+6=14$이다.\n정답은 ①이다.",
     "level": "중",
     "category": "평행선과 선분의 길이",
     "originalCategory": "평행선과 선분의 길이",
@@ -434,7 +434,7 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "평행선의 선분비로 미지 길이 계산",
-    "decisiveStep": "$a+b=12+18=30$이다. 정답은 ⑤이다.",
+    "decisiveStep": "$a+b=8+6=14$이다. 정답은 ①이다.",
     "sourceMode": "ORIGINAL"
   },
   {
