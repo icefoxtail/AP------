@@ -732,7 +732,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     };
   }
-  const lessons = window.APL_PS_LESSONS.install(scenes, source);
+  const lessons = window.APL_PS_LESSONS ? window.APL_PS_LESSONS.install(scenes, source) : {};
   APLab.createLab({
     stagedReveal: true,
     id: 'common-poly-solid',
