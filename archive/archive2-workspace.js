@@ -433,6 +433,9 @@
   };
   const state = {
     catalog: null,
+    // ?assign=legacy(옛 출제 화면으로 되돌리는 스위치)는 페이지를 열 때 읽어 둔다. 시작할 때 routeUrl()이 주소를
+    // 다시 쓰면 location.search에서 사라지므로, 이 값을 보고 주소를 다시 쓸 때마다 assign=legacy를 붙여 유지한다.
+    assignLegacy: new URLSearchParams(location.search).get("assign") === "legacy",
     recentRows: [],
     recentClassId: "",
     recentFilters: { from: "", to: "", grade: "", subject: "", query: "" },
@@ -1242,7 +1245,7 @@
     const data = await api("/archive-saved-papers/" + encodeURIComponent(id));
     applySavedPaperRevision(data.paper);
     state.editSavedPaperId = "";
-    history.replaceState(null, "", "workspace.html?view=compose");
+    history.replaceState(null, "", `workspace.html?view=compose${state.assignLegacy ? "&assign=legacy" : ""}`);
   }
   async function ensureDerivedBaseQuestions() {
     if (!state.derivationSource) return null;
@@ -2169,7 +2172,7 @@
     const paperId = String(id || "").trim();
     if (!paperId) throw new Error("출제할 저장한 시험지를 확인할 수 없습니다. 목록으로 돌아가 다시 선택해 주세요.");
     const Assign = window.Archive2Assign;
-    if (!Assign?.open || Assign.useLegacy(location.search)) return openSavedPaperIssue(paperId);
+    if (!Assign?.open || state.assignLegacy || Assign.useLegacy(location.search)) return openSavedPaperIssue(paperId);
     if (Assign.isOpen()) return undefined;
     state.originalReceipts = [];
     let papers = Array.isArray(options.papers) ? options.papers : [];
@@ -2197,7 +2200,7 @@
   // 원본 문항은 옛 iframe이 부모에게서 받던 것과 같은 방법(Source.load(file, sourceHash))으로 받고, 해시는 그대로 검증된다.
   function openOriginalAssign(exam) {
     const Assign = window.Archive2Assign;
-    if (!Assign?.open || Assign.useLegacy(location.search)) return openOriginalIssue(exam, "targets");
+    if (!Assign?.open || state.assignLegacy || Assign.useLegacy(location.search)) return openOriginalIssue(exam, "targets");
     if (Assign.isOpen()) return undefined;
     const sourceHash = new Map(state.catalog.sourceHashes).get(exam.file);
     if (!sourceHash || !state.catalog.indexVersion) {
@@ -2205,7 +2208,8 @@
       return undefined;
     }
     state.originalReceipts = [];
-    const settings = originalSettingsForExam(exam);
+    // 쪽당 문항은 늘 4로 시작한다: 옛 모달이 기억해 둔 값(APMATH_ARCHIVE2_ORIGINAL_QPP)은 쓰지 않는다.
+    const settings = { ...originalSettingsForExam(exam), qpp: 4 };
     Assign.open({
       items: [{
         kind: "original", file: exam.file, title: O.displayTitle(exam), identityTitle: exam.identityTitle || exam.file.split("/").pop().replace(/\.js$/, ""),
@@ -4942,6 +4946,7 @@
   function routeUrl() {
     const url = new URL("workspace.html", location.href);
     url.searchParams.set("view", state.view);
+    if (state.assignLegacy) url.searchParams.set("assign", "legacy");
     if (state.view === "compose" && state.assessmentRecipe)
       url.searchParams.set("recipe", state.assessmentRecipe);
     if (isQuickAssessmentView()) {
@@ -5254,6 +5259,7 @@
     let url;
     try { url = new URL(String(target), location.href); } catch { return false; }
     if (url.origin !== location.origin || url.pathname !== location.pathname) return false;
+    if (state.assignLegacy && !url.searchParams.has("assign")) url.searchParams.set("assign", "legacy");
     rememberCurrentHistoryEntry();
     history.pushState({ archive2ScrollY: 0 }, "", url.href);
     readUrl();

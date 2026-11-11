@@ -300,6 +300,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive2-find-similar.test.cjs']
   },
   {
+    label: 'tests/archive2-finder-direct-output.test.cjs',
+    args: ['--test', 'tests/archive2-finder-direct-output.test.cjs']
+  },
+  {
     label: 'tests/archive2-worker-runtime.mjs (workerd + D1)',
     args: ['tests/archive2-worker-runtime.mjs']
   },

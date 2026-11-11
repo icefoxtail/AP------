@@ -212,7 +212,7 @@ test("옛 구현과 대조: 쪽당 문항 6, 반 여러 개(target_scope grade)�
   const storage = memoryStorage();
   const { model, api } = await build({ items: [item], storage });
   assert.equal(model.setQpp(6), true);
-  assert.equal(storage.getItem(Assign.QPP_KEY), "6", "워크스페이스가 다음에 읽는 기억값과 같은 키");
+  assert.equal(storage.getItem("APMATH_ARCHIVE2_ORIGINAL_QPP"), null, "옛 모달의 기억값은 쓰지 않는다");
   await pick(model, "c1");
   await pick(model, "c2");
   await model.start();
@@ -391,7 +391,7 @@ test("409(학생 구성이 다름)는 그 건만 실패하고 교사 말로 알�
 
 test("서버가 '이미 배부된 시험'(내용 다름)이나 자료 불일치로 거절해도 서버 문장을 그대로 내지 않는다", async () => {
   const messages = [
-    ["이미 배부된 시험입니다. 수정본은 새 문제지로 출제하세요.", /내용이 달라 출제할 수 없습니다/],
+    ["이미 배부된 시험입니다. 수정본은 새 문제지로 출제하세요.", /이 반에 같은 날 이미 낸 것과 내용\(한 쪽 문항 수 등\)이 달라 출제할 수 없습니다\. 출제 내역에서 확인하거나 출제일을 바꿔 주세요\./],
     ["원본 내용 또는 문항 순서가 변경되었습니다. 목록을 새로고침하세요.", /새로고침한 뒤 다시 출제/],
     ["current projection index_version required", /새로고침한 뒤 다시 출제/],
     ["원본 시험의 문항 수가 일치하지 않습니다.", /새로고침한 뒤 다시 출제/],
@@ -617,13 +617,25 @@ test("패널 화면: 제목은 '반에 출제', 주 버튼은 '출제하기', �
   assert.match(parts.head, /<h2 id="assign-title"[^>]*>반에 출제<\/h2>/);
   assert.match(parts.head, /2025 왕운중 중1 1학기 중간고사 · 3문항/);
   assert.match(parts.foot, />출제하기<\/button>/);
-  assert.match(parts.body, /data-assign-action="qpp"/);
-  assert.match(parts.body, /<option value="4" selected>4문항<\/option>/);
+  // 쪽당 문항 수: 늘 4로 시작하고 한 줄만 보이며 `바꾸기`를 눌러야 4·6·8이 펼쳐진다
+  assert.match(parts.body, /<span class="assign-qpp-line">한 쪽 4문항<\/span><button[^>]*data-assign-action="qpp-toggle"[^>]*aria-expanded="false">바꾸기<\/button>/);
+  assert.doesNotMatch(parts.body, /data-assign-action="qpp-set"/);
+  model.toggleQpp();
+  const opened = Assign.render(model).body;
+  assert.match(opened, /aria-expanded="true">접기<\/button>/);
+  for (const n of [4, 6, 8]) assert.match(opened, new RegExp(`data-assign-action="qpp-set" data-qpp="${n}"[^>]*aria-pressed="${n === 4}"`));
+  model.setQpp(6);
+  assert.match(Assign.render(model).body, /assign-qpp-line is-changed">한 쪽 6문항</);
+  model.setQpp(4);
+  model.toggleQpp();
   assert.match(parts.body, /중1 시험지입니다\. 같은 학년 반을 먼저 보여 줍니다\./);
   // 저장본 패널에는 쪽당 문항 선택이 없다
   const saved = Assign.createModel({ papers: [{ id: "00000000-0000-4000-8000-000000000001", title: "저장본", question_count: 5, grade: "중1" }], request: makeApi().request, storage: memoryStorage(), now: () => NOW });
   await saved.load();
-  assert.doesNotMatch(Assign.render(saved).body, /assign-qpp-input/);
+  assert.doesNotMatch(Assign.render(saved).body, /assign-qpp-line/);
+  // 옛 모달이 기억해 둔 6문항으로 열리지 않는다: 설정이 6이어도 패널은 4로 시작
+  const six = Assign.createModel({ items: [examItem(EXAM, { settings: Output.settings({ header: { title: "t" }, qpp: 6 }) })], request: makeApi().request, storage: memoryStorage({ APMATH_ARCHIVE2_ORIGINAL_QPP: "6" }), now: () => NOW });
+  assert.equal(six.state.qpp, 4);
 });
 
 test("결과표: 출제된 반은 시험지·해설·정답 버튼(출제본 출력)이 있고, 성공·PDF 실패·실패가 섞여도 각각 보인다", async () => {
@@ -730,7 +742,7 @@ test("workspace: 학교 기출·유사문제·홈의 출제는 원본 항목으�
   assert.equal(item.count, 3);
   assert.equal(item.sourceHash, "hash-abc");
   assert.equal(item.identityTitle, EXAM.identityTitle);
-  assert.equal(item.settings.qpp, 6, "기억해 둔 쪽당 문항 수를 기본으로");
+  assert.equal(item.settings.qpp, 4, "옛 모달이 기억한 6문항이 있어도 패널은 4로 시작한다");
   assert.equal(opts.original.indexVersion, INDEX_VERSION);
   assert.equal(typeof opts.request, "function");
   assert.equal(opts.opener.id, "opener");

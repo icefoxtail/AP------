@@ -578,7 +578,7 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-core.js', '20261110-recency-1'],
     ['meta-foundation-runtime.js', '20261110-first-paint-1'],
     ['archive2-history.js', '20261110-teacher-copy-1'],
-    ['archive2-workspace.js', '20261111-assign-2'],
+    ['archive2-workspace.js', '20261111-assign-3'],
     ['archive2-similar.js', '20261110-similar-1'],
     ['archive2-unified-units.js', '20261030-s11-1'],
   ])

@@ -27,12 +27,17 @@ test("Archive2 Finder exposes one-click exam, solution, and answer outputs besid
 
 test("Finder direct output opens a current-source envelope in the existing engine", () => {
   const start = workspace.indexOf("async function openFinderOutput(");
-  const end = workspace.indexOf("function renderHome()", start);
+  const end = workspace.indexOf("let quickPoolCache", start);
   const action = workspace.slice(start, end);
   assert.notEqual(start, -1);
-  assert.match(action, /window\.open\("about:blank"/);
-  assert.match(action, /buildOriginalSourceOutput\(exam, safeMode, settings, false\)/);
-  assert.match(action, /popup\.location\.href\s*=\s*output\.url\.href/);
+  assert.ok(end > start && action.length < 2500, "함수 하나만 자른다");
+  // 원본 직접 열기 계약(Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1): engine.html?data=exams/<파일>&mode=...
+  // 로 바로 연다. 문항 목록·봉투(envelope)를 먼저 만들지 않는다.
+  assert.match(action, /new URL\("engine\.html", location\.href\)/);
+  assert.match(action, /url\.searchParams\.set\("data", "exams\/" \+ file\)/);
+  assert.match(action, /url\.searchParams\.set\("mode", safeMode\)/);
+  assert.match(action, /window\.open\(url\.href, "_blank"\)/);
+  assert.doesNotMatch(action, /publishOutputEnvelope|buildOriginalSourceOutput/);
   assert.match(workspace, /O\.publishOutputEnvelope\(/);
   assert.match(workspace, /O\.outputEnvelopeUrl\("engine\.html"/);
   const clickStart = workspace.indexOf("document.addEventListener(\"click\"");

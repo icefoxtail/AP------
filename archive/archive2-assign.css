@@ -344,6 +344,17 @@ dialog.assign-panel::backdrop {
   padding-top: 0;
   border-top: 0;
 }
+.assign-qpp-line {
+  color: var(--ink-2);
+}
+/* 4문항이 아닐 때는 눈에 띄게 */
+.assign-qpp-line.is-changed {
+  color: var(--ink);
+  font-weight: 700;
+  background: var(--brand-soft);
+  padding: 2px 10px;
+  border-radius: 999px;
+}
 
 /* 문제지 여러 권: 출제 건 확인 */
 .assign-combos {

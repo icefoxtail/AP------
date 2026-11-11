@@ -32,7 +32,6 @@
   const HISTORY_DAYS = 90;
   const HISTORY_LIMIT = 1000;
   const HISTORY_TTL_MS = 60000;
-  const QPP_KEY = "APMATH_ARCHIVE2_ORIGINAL_QPP"; // 워크스페이스 originalSettingsForExam이 읽는 기억값
   const QPP_VALUES = [4, 6, 8];
   const GRADES = ["중1", "중2", "중3", "고1", "고2", "고3"];
   const GRADE_CLASS = { 중1: "grade-m1", 중2: "grade-m2", 중3: "grade-m3", 고1: "grade-h1", 고2: "grade-h2", 고3: "grade-h3" };
@@ -224,6 +223,7 @@
   const ORIGINAL_MESSAGES = [
     [/취소된 Assignment/, ORIGINAL_CANCELLED_MESSAGE],
     [/고정 roster/, "이 반에 같은 날 이미 낸 출제와 학생 구성이 다릅니다. 출제일을 바꾸거나 출제 내역에서 확인해 주세요."],
+    [/이미 배부된 시험/, "이 반에 같은 날 이미 낸 것과 내용(한 쪽 문항 수 등)이 달라 출제할 수 없습니다. 출제 내역에서 확인하거나 출제일을 바꿔 주세요."],
     [/원본 시험의 문항 수가 일치|원본 내용 또는 문항 순서가 변경|index_version|projection|canonical/i, SOURCE_CHANGED_MESSAGE],
     [/최대 80문항/, "이 시험지는 문항이 80개를 넘어 한 번에 출제할 수 없습니다."],
     [/payload exceeds/i, "시험지가 너무 커서 이 방법으로는 낼 수 없습니다. 관리자에게 알려 주세요."],
@@ -389,7 +389,8 @@
       // 원본 출제 전용: 최근 출제 목록(같은 파일·반·날 확인)과 쪽당 문항 수.
       historyState: hasOriginal ? "loading" : "idle", // idle | loading | ready | error
       historyTruncated: false,
-      qpp: hasOriginal ? papers.find((paper) => paper.kind === "original").settings.qpp : 4,
+      qpp: 4, // 원본 패널은 항상 4문항으로 시작한다(`바꾸기`로만 6·8)
+      qppOpen: false,
       excluded: new Set(),
       jobs: [],
       starting: false,
@@ -614,12 +615,17 @@
       emit();
       return Promise.all(pending).then(() => true);
     }
-    // 원본 출제의 '한 쪽 문항 수'. 워크스페이스가 다음에 열 때 기본값으로 쓰도록 같은 키에 기억한다.
+    // 원본 출제의 '한 쪽 문항 수'. 패널은 늘 4문항으로 시작하고(옛 모달의 기억값은 읽지도 쓰지도 않는다)
+    // `바꾸기`로 고른 값은 이번 출제에만 쓴다.
+    function toggleQpp() {
+      if (!hasOriginal || state.phase !== "select" || state.starting) return;
+      state.qppOpen = !state.qppOpen;
+      emit();
+    }
     function setQpp(value) {
       const qpp = Number(value);
       if (!hasOriginal || state.phase !== "select" || state.starting || !QPP_VALUES.includes(qpp) || qpp === state.qpp) return false;
       state.qpp = qpp;
-      try { options.storage?.setItem(QPP_KEY, String(qpp)); } catch { /* 기억하지 못해도 이번 출제에는 적용된다 */ }
       emit();
       return true;
     }
@@ -964,7 +970,7 @@
       state, load, loadRoster, toggleClass, toggleStudent, selectAllStudents, toggleStudentList, toggleCombo, setDate,
       plan, canSubmit, start, retryFailed, confirmUnknown, retryPdf, isBusy, requestClose, results,
       dupInfo, pendingNotes, store, canCompareSubmitted, selectUnsubmitted, unsubmittedCount, reissue,
-      setQpp, loadOriginalHistory,
+      setQpp, toggleQpp, loadOriginalHistory,
       retryRoster: loadRoster,
       subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
     };
@@ -1085,12 +1091,12 @@
     return `<fieldset class="assign-classes"><legend>반 선택</legend><p class="assign-hint">${hint}</p>${historyNote}${body}</fieldset>`;
   }
   function dateMarkup(model) {
-    const { date, qpp } = model.state;
+    const { date, qpp, qppOpen } = model.state;
     const today = kstToday();
     // 원본 시험지는 한 쪽 문항 수가 PDF·학생 시험지에 그대로 쓰인다(서버가 같은 날 같은 시험지의 쪽당 문항이 다르면 거절한다).
     const original = model.state.papers.some((paper) => paper.kind === "original");
     const qppField = original
-      ? `<section class="assign-date assign-qpp"><label for="assign-qpp-input">한 쪽 문항 수</label><select id="assign-qpp-input" data-assign-action="qpp" data-focus="qpp">${QPP_VALUES.map((n) => `<option value="${n}"${n === qpp ? " selected" : ""}>${n}문항</option>`).join("")}</select></section>`
+      ? `<section class="assign-date assign-qpp"><span class="assign-qpp-line${qpp === 4 ? "" : " is-changed"}">한 쪽 ${qpp}문항</span><button type="button" class="assign-link" data-assign-action="qpp-toggle" data-focus="qpp-toggle" aria-expanded="${qppOpen ? "true" : "false"}">${qppOpen ? "접기" : "바꾸기"}</button>${qppOpen ? `<div id="assign-qpp-choices" class="assign-quick" role="group" aria-label="한 쪽 문항 수">${QPP_VALUES.map((n) => `<button type="button" class="small" data-assign-action="qpp-set" data-qpp="${n}" data-focus="qpp-${n}" aria-pressed="${n === qpp ? "true" : "false"}">${n}문항</button>`).join("")}</div>` : ""}</section>`
       : "";
     return `<section class="assign-date"><label for="assign-date-input">출제일</label><input id="assign-date-input" type="date" value="${esc(date)}" data-assign-action="date" data-focus="date"><span>${date === today ? "오늘" : esc(dayLabel(date, today))}</span></section>${qppField}`;
   }
@@ -1241,10 +1247,13 @@
       const scroll = body ? body.scrollTop : 0;
       const focusKey = doc.activeElement?.getAttribute?.("data-focus") || "";
       const focusWasInside = Boolean(doc.activeElement && dialog.contains?.(doc.activeElement));
+      // 머리를 다시 그리면 제목이 새 요소가 되어 포커스가 BODY로 빠진다(원본 출제는 이력·문항 받기로 같은 단계에서 다시 그릴 일이 많다).
+      const titleFocused = doc.activeElement?.id === "assign-title";
       const parts = render(model);
       region("head").innerHTML = parts.head;
       body.innerHTML = parts.body;
       region("foot").innerHTML = parts.foot;
+      if (titleFocused) region("head").querySelector("#assign-title")?.focus?.();
       if (model.state.phase === lastPhase) body.scrollTop = scroll;
       else {
         body.scrollTop = 0;
@@ -1324,6 +1333,8 @@
       else if (action === "confirm") model.confirmUnknown(el.dataset.key).catch(() => {});
       else if (action === "confirm-all") { el.disabled = true; model.confirmUnknown().catch(() => {}); }
       else if (action === "pdf") model.retryPdf(el.dataset.key).catch(() => {});
+      else if (action === "qpp-toggle") model.toggleQpp();
+      else if (action === "qpp-set") model.setQpp(el.dataset.qpp);
     });
     dialog.addEventListener("change", (event) => {
       const el = event.target;
@@ -1331,7 +1342,6 @@
       if (action === "class") model.toggleClass(el.dataset.classId, el.checked);
       else if (action === "student") model.toggleStudent(el.dataset.classId, el.dataset.studentId, el.checked);
       else if (action === "combo") model.toggleCombo(el.dataset.key, el.checked);
-      else if (action === "qpp") model.setQpp(el.value);
       else if (action === "date") {
         if (!model.setDate(el.value)) render_();
       }
@@ -1368,7 +1378,7 @@
   return {
     CONTRACT, STORAGE_KEY, READ_TIMEOUT_MS, WRITE_TIMEOUT_MS, BATCH_TTL_MS,
     createModel, createBatchStore, createDoneStore, classifyError, friendlyMessage, normalizePapers, kstToday, dayLabel,
-    groupIssuesByFile, createRecentCache, resetCaches: () => sharedRecent.reset(), QPP_KEY, HISTORY_LIMIT, HISTORY_TTL_MS,
+    groupIssuesByFile, createRecentCache, resetCaches: () => sharedRecent.reset(), HISTORY_LIMIT, HISTORY_TTL_MS,
     render, renderHead, renderBody, renderFoot, open, useLegacy, handlePopState, isOpen, isBusy,
   };
 });
