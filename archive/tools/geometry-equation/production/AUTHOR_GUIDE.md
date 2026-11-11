@@ -272,6 +272,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 ### 3-8. 중학교 평면도형: 각·선분·호 표식이 있는 축 없는 그림 (`PLANE_FIGURE_v1`, `planeMarks`)
 
+- **plan 최상위 `caption`은 필수다.** 평면도형·좌표 도형(`construction-spike-v1`)도 `caption`(한 문장, 정답·숨긴 점 이름 없이)이 있어야 하고, 없으면 `SPEC_ERROR`/`PLAN_CAPTION_REQUIRED`(path `caption`)로 거절된다. 숨긴 점(`hiddenPointNames`)의 이름을 caption에 쓰면 `HIDDEN_POINT_NAMED_IN_TEXT:<id>`이다. publish.json의 caption(풀이 요약+정답)과는 별개다. 이유: 금당고 14개 그림이 caption 없이 `NON_JSON_VALUE`(spec.title 미정의)로 거절됐다.
+
 삼각형·사각형·원 문항처럼 **좌표축이 필요 없고 각 크기, 같은 길이, 평행, 호의 크기를 보여 주는** 그림에 쓴다. `construction-spike-v1` plan에 `realization:{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false}`를 쓰면 축, 눈금, 단위점이 없는 그림이 되고(좌표띠와 `coordinateLabels`는 쓰지 않는다), 점은 엔진 내부에 정확한(또는 고정밀) 좌표를 가진다. 조건: `SOURCE_POINT`가 하나 이상, `NORMALIZATION_*` 노드는 없다. `coordinateCanvas`(384~720 x 320~600)를 쓸 수 있다. 렌더 러너는 이 그림을 `full` 크기로 잰다.
 
 **점 놓기.** 좌표를 아는 점은 `SOURCE_POINT`, 길이와 각으로 정해지는 점은 `POLAR_POINT`다.
