@@ -159,7 +159,7 @@ window.examData = {
       ],
       "answer": "①, ③",
       "solution": "$\\triangle ABC\\sim\\triangle DEF$이므로 $A\\leftrightarrow D$, $B\\leftrightarrow E$, $C\\leftrightarrow F$가 대응한다.\n① $\\angle E$의 대응각은 $\\angle B$이므로 옳다.\n② $\\overline{AC}$와 $\\overline{DF}$가 대응하므로 닮음비는 $3:9=1:3$이다. 옳지 않다.\n③ $\\overline{AB}$와 $\\overline{DE}$가 대응하고 닮음비가 $1:3$이므로 $\\overline{AB}=6\\times\\dfrac{1}{3}=2\\text{ cm}$이다. 옳다.\n④ $\\angle D=\\angle A=180^\\circ-75^\\circ-40^\\circ=65^\\circ$이다. ($\\angle B=75^\\circ$, $\\angle C=\\angle F=40^\\circ$) 옳지 않다.\n⑤ $\\overline{AB}$에 대응하는 변은 $\\overline{DE}$이다. 옳지 않다.\n정답은 ①, ③이다.",
-      "solutionImage": "assets/images/20_연향중_2학기_기말_중2_수학/q9-solution.svg",
+      "solutionImage": "assets/images/20_연향중_2학기_기말_중2_수학/q9-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 첫 그림은 왼쪽의 작은 삼각형 ABC와 오른쪽의 큰 삼각형 DEF이다. AC는 3, DF는 9, DE는 6이고 각 B는 75도, 각 F는 40도이다. 둘째와 셋째 그림은 두 삼각형을 같은 방향으로 놓은 것으로 AB와 DE는 파랑, BC와 EF는 초록, AC와 DF는 주황, 각 A와 D는 분홍, 각 B와 E는 보라(75도), 각 C와 F는 초록(40도) 호로 대응을 나타낸다.",
       "solutionImageCaption": "각 B와 각 E가 대응하는 75도이고 각 C와 각 F가 대응하는 40도이므로 A와 D, B와 E, C와 F가 각각 대응한다. 대응하는 변 AC와 DF의 길이의 비가 3 대 9이므로 닮음비는 1 대 3이고, AB는 대응하는 DE의 3분의 1인 2 cm이다. 각 D는 각 A와 같아 180도에서 75도와 40도를 뺀 값이다. 정답은 ①, ③이다.",
       "solutionImageSize": "full"
@@ -177,7 +177,7 @@ window.examData = {
       ],
       "answer": "④",
       "solution": "$\\triangle ABD$와 $\\triangle ACB$에서 $\\angle A$는 공통이고 $\\angle ADB=\\angle ABC=90^\\circ$이므로 $\\triangle ABD\\sim\\triangle ACB$ (AA 닮음)이다.\n대응하는 변의 길이의 비가 같으므로 $\\overline{AB}:\\overline{AC}=\\overline{AD}:\\overline{AB}$\n$6:\\overline{AC}=3:6$\n$3\\times\\overline{AC}=36$, $\\overline{AC}=12$이다.\n따라서 $\\overline{DC}=\\overline{AC}-\\overline{AD}=12-3=9$이다.\n정답은 ④이다.",
-      "solutionImage": "assets/images/20_연향중_2학기_기말_중2_수학/q10-solution.svg",
+      "solutionImage": "assets/images/20_연향중_2학기_기말_중2_수학/q10-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 첫 그림은 B에서 직각인 직각삼각형 ABC에서 B에서 AC에 내린 수선의 발 D를 나타내며 AD는 3, AB는 6이다. 둘째와 셋째 그림은 삼각형 ABD와 ACB를 직각이 왼쪽 아래에 오도록 같은 방향으로 놓은 것으로 빗변은 파랑, 가로 변은 주황, 세로 변은 초록이고 각 A는 분홍 호이다. 넷째 그림은 변 AC를 펴서 AD와 DC로 나눈 것으로 AD는 3이고 AC는 12이다.",
       "solutionImageCaption": "삼각형 ABD와 ACB에서 각 A는 공통이고 각 ADB와 각 ABC가 모두 90도이므로 AA 닮음이다. 대응하는 변의 비가 같으므로 AB 대 AC는 AD 대 AB이다. 6 대 AC가 3 대 6이므로 AC는 12이다. DC는 AC에서 AD를 뺀 길이이다. 정답은 ④ 9이다.",
       "solutionImageSize": "full"
@@ -195,7 +195,7 @@ window.examData = {
       ],
       "answer": "②",
       "solution": "$\\overline{AB}\\parallel\\overline{DC}$이므로 $\\triangle ABE\\sim\\triangle CDE$ (AA 닮음)이고\n$\\overline{BE}:\\overline{ED}=\\overline{AB}:\\overline{CD}=6:4=3:2$이다.\n따라서 $\\overline{BE}:\\overline{BD}=3:5$이다.\n$\\triangle BCD$에서 $\\overline{EF}\\parallel\\overline{DC}$이므로\n$\\overline{BE}:\\overline{BD}=\\overline{EF}:\\overline{DC}$\n$3:5=\\overline{EF}:4$\n$\\overline{EF}=\\dfrac{12}{5}$이다.\n정답은 ②이다.",
-      "solutionImage": "assets/images/20_연향중_2학기_기말_중2_수학/q11-solution.svg",
+      "solutionImage": "assets/images/20_연향중_2학기_기말_중2_수학/q11-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 첫 그림은 AB, EF, DC가 평행하고 AB는 6, CD는 4이며 대각선 AC와 BD가 점 E에서 만나는 모양이다. 둘째와 셋째 그림은 삼각형 ABE와, 삼각형 CDE를 180도 돌려 같은 방향으로 놓은 것으로 AB와 CD는 파랑, AE와 CE는 주황, BE와 DE는 초록이고 대응하는 각이 같은 색 호이다. 넷째 그림은 삼각형 BCD에서 BE(파랑)와 ED(주황)로 나뉜 BD, 그리고 DC와 평행한 EF(초록)이다.",
       "solutionImageCaption": "AB와 DC가 평행하므로 삼각형 ABE와 CDE는 AA 닮음이고 BE 대 ED는 AB 대 CD, 즉 6 대 4인 3 대 2이다. 그러므로 BE 대 BD는 3 대 5이다. 삼각형 BCD에서 EF와 DC가 평행하므로 BE 대 BD는 EF 대 DC이고 3 대 5는 EF 대 4이다. 정답은 ② 5분의 12이다.",
       "solutionImageSize": "full"
@@ -364,7 +364,11 @@ window.examData = {
       "question": "<p>[서술형 1] 다음 그림에서 $\\angle\\mathrm{ABC}=\\angle\\mathrm{AED}$이고, $\\overline{\\mathrm{AD}}=3\\text{cm}$, $\\overline{\\mathrm{AE}}=4\\text{cm}$, $\\overline{\\mathrm{DB}}=9\\text{cm}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 다음 단계에 따라 구하여라. [7점]</p><p><img src=\"assets/images/20_연향중_2학기_기말_중2_수학/s01.png\" /></p><p>(1) 닮은 삼각형을 기호를 사용하여 나타내기(2점)<br/>(반드시 대응하는 꼭짓점의 순서대로 쓸 것)</p><p>(2) 닮음 조건(2점)</p><p>(3) $\\overline{\\mathrm{AC}}=x$라 놓고, $x$구하기 (2점)<br/>(풀이)</p><p>(4) $\\overline{\\mathrm{AC}}$의 길이(1점)</p>",
       "choices": [],
       "answer": "$9\\text{ cm}$",
-      "solution": "(1) $\\triangle AED$와 $\\triangle ABC$에서 $\\angle A$는 공통이고 $\\angle AED=\\angle ABC$이다.\n대응하는 꼭짓점의 순서대로 쓰면 $A\\leftrightarrow A$, $E\\leftrightarrow B$, $D\\leftrightarrow C$이므로 $\\triangle AED\\sim\\triangle ABC$이다.\n\n(2) 두 쌍의 대응하는 각의 크기가 각각 같으므로 AA 닮음이다.\n\n(3) $\\overline{AB}=\\overline{AD}+\\overline{DB}=3+9=12\\text{ cm}$이다.\n닮은 도형에서 대응하는 변의 길이의 비가 같으므로 $\\overline{AE}:\\overline{AB}=\\overline{AD}:\\overline{AC}$\n$4:12=3:x$\n$4x=36$\n$x=9$이다.\n\n(4) $\\overline{AC}=9\\text{ cm}$이다."
+      "solution": "(1) $\\triangle AED$와 $\\triangle ABC$에서 $\\angle A$는 공통이고 $\\angle AED=\\angle ABC$이다.\n대응하는 꼭짓점의 순서대로 쓰면 $A\\leftrightarrow A$, $E\\leftrightarrow B$, $D\\leftrightarrow C$이므로 $\\triangle AED\\sim\\triangle ABC$이다.\n\n(2) 두 쌍의 대응하는 각의 크기가 각각 같으므로 AA 닮음이다.\n\n(3) $\\overline{AB}=\\overline{AD}+\\overline{DB}=3+9=12\\text{ cm}$이다.\n닮은 도형에서 대응하는 변의 길이의 비가 같으므로 $\\overline{AE}:\\overline{AB}=\\overline{AD}:\\overline{AC}$\n$4:12=3:x$\n$4x=36$\n$x=9$이다.\n\n(4) $\\overline{AC}=9\\text{ cm}$이다.",
+      "solutionImage": "assets/images/20_연향중_2학기_기말_중2_수학/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 첫 그림은 삼각형 ABC의 변 AB 위의 점 D와 변 AC 위의 점 E를 이은 모양으로 AD는 3, DB는 9, AE는 4이고 각 ABC와 각 AED가 같은 분홍 호이다. 둘째와 셋째 그림은 삼각형 ABC와 AED를 같은 방향으로 놓은 것으로 AB와 AE는 파랑, AC와 AD는 주황, BC와 ED는 초록이고 각 A는 보라, 각 ABC와 각 AED는 분홍 호이다. 삼각형 ABC에서 AB는 12, AC는 x이고 삼각형 AED에서 AE는 4, AD는 3이다.",
+      "solutionImageCaption": "(1) 삼각형 AED와 삼각형 ABC는 대응하는 꼭짓점의 순서대로 A와 A, E와 B, D와 C가 대응한다. (2) 각 A가 공통이고 각 AED와 각 ABC가 같으므로 두 쌍의 대응하는 각의 크기가 같아 AA 닮음이다. (3) AB는 3과 9를 더한 12 cm이고 대응하는 변의 길이의 비가 같으므로 AE 대 AB는 AD 대 AC, 즉 4 대 12가 3 대 x이다. 4x는 36이다. 정답은 (1) 삼각형 AED와 삼각형 ABC (2) AA 닮음 (3) 9 cm이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 22,
@@ -373,7 +377,7 @@ window.examData = {
       "choices": [],
       "answer": "$x=18$, $y=8$",
       "solution": "(1) $\\overline{BC}\\parallel\\overline{DE}$이므로 $\\triangle ADE\\sim\\triangle ABC$ (AA 닮음)이다.\n$\\overline{AB}=\\overline{AD}+\\overline{DB}=8+4=12$이므로\n$\\overline{AD}:\\overline{AB}=\\overline{DE}:\\overline{BC}$\n$8:12=12:x$\n$8x=144$\n$x=18$이다.\n\n(2) 같은 닮음에서 $\\overline{AD}:\\overline{AB}=\\overline{AE}:\\overline{AC}$이므로\n$8:12=16:\\overline{AC}$\n$8\\times\\overline{AC}=192$, $\\overline{AC}=24$이다.\n$y=\\overline{EC}=\\overline{AC}-\\overline{AE}=24-16=8$이다.\n따라서 $x=18$, $y=8$이다.",
-      "solutionImage": "assets/images/20_연향중_2학기_기말_중2_수학/q22-solution.svg",
+      "solutionImage": "assets/images/20_연향중_2학기_기말_중2_수학/q22-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 첫 그림은 삼각형 ABC의 변 AB 위의 점 D와 변 AC 위의 점 E에서 DE가 BC와 평행한 모양으로 AD는 8, DB는 4, DE는 12, AE는 16, EC는 y, BC는 x이다. 둘째와 셋째 그림은 삼각형 ADE와 ABC를 같은 방향으로 놓은 것으로 AD와 AB는 파랑, AE와 AC는 주황, DE와 BC는 초록이며 삼각형 ADE에서 AD는 8, AE는 16, DE는 12, 삼각형 ABC에서 AB는 12, AC는 24, BC는 x이다. 넷째 그림은 AC를 AE(16)와 EC(y)로 나눠 펴고 전체 24를 나타낸 것이다.",
       "solutionImageCaption": "(1) BC와 DE가 평행하므로 삼각형 ADE와 ABC는 닮음이고 AB는 8과 4를 더한 12이다. AD 대 AB가 DE 대 BC이므로 8 대 12가 12 대 x이고 8x는 144이다. (2) 같은 닮음에서 AD 대 AB가 AE 대 AC이므로 8 대 12가 16 대 AC이고 AC는 24이다. y는 AC에서 AE를 뺀 값이다. 정답은 x=18, y=8이다.",
       "solutionImageSize": "full"

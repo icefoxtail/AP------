@@ -87,7 +87,7 @@ window.questionBank = [
       "classificationDebt": "Historical topic label retained; canonical standard mapping unresolved.",
       "sourceUid": null,
       "sourceUidStatus": "ABSENT",
-      "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q4-solution.svg",
+      "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q4-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 지름 AB인 원과 점 C, 점 D가 있는 문제 배치(AD는 16k, DB는 9k)와, 직각 꼭짓점을 왼쪽 아래에 두고 같은 방향으로 펼친 닮은 두 직각삼각형 ACD와 CBD이다. AD와 CD는 파란색, CD와 BD는 주황색, AC와 CB는 초록색이고 각 x는 분홍색으로 표시되어 있다.",
       "solutionImageCaption": "AB가 지름이므로 각 ACB는 직각이고 CD⊥AB이므로 삼각형 ACD와 삼각형 CBD는 닮음이다. 대응변은 AD와 CD(파랑), CD와 BD(주황), AC와 CB(초록)이고 각 A와 각 DCB(분홍)는 같다. AD=16k, DB=9k로 두면 CD²=AD×DB에서 CD=12k이고 CB=15k이므로 cos x는 15k분의 12k이다. 정답은 ④이다.",
       "solutionImageSize": "full"
@@ -435,7 +435,7 @@ window.questionBank = [
       "classificationDebt": "Historical topic label retained; canonical standard mapping unresolved.",
       "sourceUid": null,
       "sourceUidStatus": "ABSENT",
-      "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q19-solution.svg",
+      "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q19-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 지름 AD인 원 O에 삼각형 A, B, C가 내접하고 A에서 BC에 내린 수선의 발 H가 있는 문제 배치(AB는 10cm, AC는 8cm, AD는 12cm)와, 직각 꼭짓점을 왼쪽 아래에 두고 같은 방향으로 펼친 닮은 두 직각삼각형 AHC와 ABD이다. AH와 AB는 파란색, AC와 AD는 주황색, HC와 BD는 초록색이고 같은 각은 분홍색이다.",
       "solutionImageCaption": "AD가 지름이므로 각 ABD=90°이고 AH⊥BC이므로 각 AHC=90°이다. 같은 현 AB를 보는 원주각이라 각 ACB와 각 ADB(분홍색)가 같아 삼각형 AHC와 삼각형 ABD는 닮음이다. 대응변은 AH와 AB(파랑), AC와 AD(주황), HC와 BD(초록)이므로 AH를 AB로 나눈 값은 AC를 AD로 나눈 값과 같다. 10분의 AH=12분의 8에서 구한다. 정답은 ④이다.",
       "solutionImageSize": "full"
@@ -458,7 +458,7 @@ window.questionBank = [
       "classificationDebt": "Historical topic label retained; canonical standard mapping unresolved.",
       "sourceUid": null,
       "sourceUidStatus": "ABSENT",
-      "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q20-solution.svg",
+      "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q20-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 점 P에서 원의 접선 PT와 할선 PAB가 있는 문제 배치(PT는 6cm, AB는 9cm, BT는 8cm)와, 점 P를 왼쪽 아래에 두고 같은 방향으로 펼친 닮은 두 삼각형 PTA와 PBT이다. PT와 PB는 파란색, PA와 PT는 초록색, TA와 BT는 주황색이고 공통인 각 P는 분홍색이다.",
       "solutionImageCaption": "접선과 할선에서 PA×PB=PT²이므로 PA=x로 두면 x(x+9)=36에서 PA=3, PB=12이다. 접선과 현이 이루는 각의 성질로 삼각형 PTA와 삼각형 PBT는 닮음이고 대응변은 PT와 PB(파랑), PA와 PT(초록), TA와 BT(주황)이며 각 P(분홍)는 공통이다. PA÷PT=AT÷BT이므로 6분의 3=8분의 AT이다. 정답은 ③이다.",
       "solutionImageSize": "full"

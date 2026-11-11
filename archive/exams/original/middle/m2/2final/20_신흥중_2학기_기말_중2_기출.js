@@ -1116,7 +1116,7 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "삼각형 닮음으로 선분 계산",
     "decisiveStep": " $x-y=-6$이므로 정답은 ①이다.",
-    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q18-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위는 BC와 DE가 평행하고 선분 EC와 DB가 A에서 만나는 문제 그림으로 DE=10 cm, AD=8 cm, AC=9 cm, BC=15 cm이고 AE=x cm, AB=y cm이다. 가운데와 오른쪽 아래는 닮은 두 삼각형 AED와 ACB를 같은 방향으로 나란히 놓고 대응하는 변을 같은 색(파랑, 주황, 초록)으로 나타낸 그림이다.",
     "solutionImageCaption": "BC와 DE가 평행하므로 삼각형 AED와 삼각형 ACB는 닮음이고, 대응하는 변의 비 AE:AC=AD:AB=ED:CB가 같다. ED:CB=10:15=2:3이므로 x:9=2:3에서 x=6이고 8:y=2:3에서 y=12이다. 정답은 ① -6이다.",
     "solutionImageSize": "full"
@@ -1483,7 +1483,7 @@ window.questionBank = [
     "projectionReasonCode": "RPM_ONLY",
     "primaryMethod": "삼각형의 닮음과 직각삼각형으로 넓이·거리 계산",
     "decisiveStep": " $[EOD]=\\dfrac12\\cdot\\dfrac{25}{4}\\cdot3=\\dfrac{75}{8}\\text{ cm}^2$이다. $OH=6-3=3\\text{ cm}$이다.",
-    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q24-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위는 직사각형에 대각선 BD의 중점 O, 수직선 EF, 수선의 발 H를 나타낸 문제 그림이다. 오른쪽 위와 왼쪽 아래는 닮은 직각삼각형 BCD와 EOD를 같은 방향으로 놓고 대응하는 변을 같은 색으로 나타냈다. 오른쪽 아래는 점 O에서 변 AD와 BC까지의 거리를 나타낸 그림이다.",
     "solutionImageCaption": "삼각형 EOD와 BCD는 닮음이므로 OD÷BC=ED÷BD에서 ED=4분의 25 cm이고 EO=4분의 15 cm이다. 삼각형 EOD의 넓이는 2분의 1 곱하기 5 곱하기 4분의 15이다. O는 직사각형의 중심이므로 OH는 세로 변 DC의 절반이다. 정답은 (1) 8분의 75 cm², (2) 3 cm이다.",
     "solutionImageSize": "full"

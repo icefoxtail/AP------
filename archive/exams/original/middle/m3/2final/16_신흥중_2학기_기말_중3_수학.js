@@ -231,7 +231,7 @@ window.examData = {
       ],
       "answer": "④",
       "solution": "$\\angle APC=\\angle DPB$는 맞꼭지각이고, $\\angle ACP=\\angle DBP$는 같은 호 $AD$를 보는 원주각이다.<br>따라서 $\\triangle APC\\sim\\triangle DPB$이다.<br>대응변의 길이의 비에서 $\\dfrac{AP}{DP}=\\dfrac{CP}{PB}$이므로 $\\dfrac63=\\dfrac4x$이다.<br>$6x=12$이므로 $x=2$이다.",
-      "solutionImage": "assets/images/16_신흥중_2학기_기말_중3_수학/q13-solution.svg",
+      "solutionImage": "assets/images/16_신흥중_2학기_기말_중3_수학/q13-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 왼쪽에는 원 안에서 두 현 AB와 CD가 점 P에서 만나고 AP는 6, PD는 3, CP는 4, PB는 x이다. 가운데에는 삼각형 APC로 AP는 6, CP는 4이고 각 P는 분홍색, 각 C는 보라색이다. 오른쪽에는 삼각형 DPB로 DP는 3, PB는 x이고 각 P는 분홍색, 각 B는 보라색이다. 대응하는 변 AP와 DP, CP와 PB, AC와 DB는 같은 색이다.",
       "solutionImageCaption": "각 APC와 DPB는 맞꼭지각이고 각 ACP와 DBP는 같은 호 AD에 대한 원주각이므로 삼각형 APC와 DPB는 닮음이다. 대응변의 비에서 AP분의 DP는 CP분의 PB이므로 6분의 3은 4분의 x이다. 정답은 ④ 2이다.",
       "solutionImageSize": "full"

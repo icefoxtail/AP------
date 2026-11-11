@@ -318,7 +318,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
     "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
-    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q7-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC의 변 AB 위의 점 D와 변 BC 위의 점 E가 있고 AD는 4 cm, DB는 6 cm, BE는 4 cm, EC는 x cm이며 각 C와 각 BDE가 같게 표시되어 있다. 오른쪽 위에는 삼각형 ABC, 아래에는 같은 방향으로 놓은 삼각형 EBD가 있고 대응하는 변은 같은 색이다. AB는 10, BC는 15, EB는 4, BD는 6이다.",
     "solutionImageCaption": "각 B가 공통이고 각 C와 각 BDE가 같으므로 삼각형 ABC와 삼각형 EBD는 닮음이다. 대응은 A와 E, B와 B, C와 D이다. AB는 AD와 DB의 합 10이므로 10 대 4는 BC 대 6이고 BC는 15 cm이다. EC는 BC에서 BE를 뺀 값이다. 정답은 ③이다.",
     "solutionImageSize": "full"
@@ -412,7 +412,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
     "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
-    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q9-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위에는 각 ACB가 직각인 삼각형 ABC와 점 C에서 변 AB에 내린 수선의 발 D가 있다. 나머지 세 그림은 삼각형 ABC, 삼각형 ACD, 삼각형 CBD를 같은 방향의 직각삼각형으로 놓은 것이고 대응하는 변은 같은 색, 같은 각은 분홍색과 보라색이다.",
     "solutionImageCaption": "삼각형 ABC, 삼각형 ACD, 삼각형 CBD는 모두 닮음이다. 삼각형 ABC와 삼각형 ACD에서 AC 대 AB는 AD 대 AC이므로 AC의 제곱은 AD 곱하기 AB이다. 삼각형 ABC와 삼각형 CBD에서 BC의 제곱은 BD 곱하기 BA이다. 따라서 BC의 제곱이 BD 곱하기 AD라고 한 ③은 성립하지 않는다. 정답은 ③이다.",
     "solutionImageSize": "full"
@@ -460,7 +460,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
-    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q10-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위에는 평행사변형의 변 AB의 연장선 위의 점 E와 선분 ED, 변 BC와 ED의 교점 F가 있고 AB는 4, AD는 9, BE는 3이며 BF는 x이다. 오른쪽 위에는 삼각형 EBF, 아래에는 삼각형 EAD가 같은 방향으로 있고 EB와 EA는 파란색, BF와 AD는 주황색, EF와 ED는 초록색이며 EB는 3, BF는 x, EA는 7, AD는 9이다.",
     "solutionImageCaption": "BF와 AD가 평행하므로 삼각형 EBF와 삼각형 EAD는 닮음이다. EA는 EB와 BA의 합 7이므로 EB 대 EA는 3 대 7이고 BF 대 AD와 같다. 3 대 7은 BF 대 9이므로 BF는 7분의 27이다. 정답은 ②이다.",
     "solutionImageSize": "full"
