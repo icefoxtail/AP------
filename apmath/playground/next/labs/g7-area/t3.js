@@ -35,6 +35,7 @@
     geo: (M) => { const BL = pt(0, 0), BR = pt(M.B, 0), TR = pt(M.p + M.a, -M.H), TL = pt(M.p, -M.H); return { BL, BR, TR, TL, trap: [BL, BR, TR, TL] }; },
     draw(b, s, M, C) {
       const { a, B, H, p, S, T1, T2 } = M, g = trap2.geo(M), { BL, BR, TR, TL } = g;
+      const lesson = lessonOn(s, C), answerReady = ready(s, C, 'arShowAnswer');
       const mode = C.problem ? (M.q === 2 ? 0 : 1) : M.mode, c0 = centroid(g.trap);
       const t = C.problem ? 0 : C.t;
       if (mode === 1) {
@@ -52,11 +53,20 @@
         par(b, TL, TR, 1, 'green'); par(b, BL, BR, 1, 'green');
         // 좁은 무대에서는 높이 글자를 왼쪽 빗변 밖에 두어 윤곽선을 가리지 않습니다.
         hgtTo(b, TL, BL, BR, { label: `높이 ${H}cm`, side: compactInquiry ? -1 : 1, gap: compactInquiry ? p * b.k / 2 + 10 + (p / H) * 12 : 10 });
-        const fin = !C.problem && (C.review ? C.step >= 2 : t > 0.999);
+        const fin = !C.problem && (C.review && !lesson ? C.step >= 2 : t > 0.999);
         dim(b, TL, TR, `윗변 ${a}cm`, { ref: c0, color: 'sky' });
         dim(b, BL, BR, fin ? `${B}` : `아랫변 ${B}cm`, { ref: c0, color: 'sky' });
-        if (fin) { dim(b, BR, pt(B + a, 0), `${a}`, { ref: c0, color: 'green' }); if (!compactInquiry) dim(b, BL, pt(B + a, 0), `밑변 ${a}+${B} = ${a + B}`, { ref: c0, color: 'green', off: 54 }); }
+        if (fin) { dim(b, BR, pt(B + a, 0), `${a}`, { ref: c0, color: 'green' }); if (!compactInquiry && ready(s, C, 'arBaseReady')) dim(b, BL, pt(B + a, 0), `밑변 ${a}+${B} = ${a + B}`, { ref: c0, color: 'green', off: 54 }); }
         if (C.problem) { foot(b, pt(B / 2, 0), M.q === 0 ? '사다리꼴 2개를 거꾸로 붙여요' : '사다리꼴의 넓이 = ? cm²', 'amber', 60); return; }
+        if (lesson) {
+          const center = pt((B + a) / 2, 0), y = compactInquiry ? 56 : 92;
+          if (s.arLessonGoal === 'base') foot(b, center, answerReady ? `붙인 밑변 = ${B}+${a} = ${a + B}cm` : '붙인 평행사변형의 밑변 = ?', 'amber', y);
+          else if (answerReady) foot(b, center, `사다리꼴 = ${a + B}×${H}÷2 = ${num(S)}cm²`, 'green', y);
+          else if (ready(s, C, 'arOuterReady')) foot(b, center, `평행사변형 = ${a + B}×${H} = ${(a + B) * H}cm²`, 'green', y);
+          else if (ready(s, C, 'arBaseReady')) foot(b, center, `붙인 밑변 = ${a}+${B} = ${a + B}cm`, 'green', y);
+          else foot(b, center, '같은 사다리꼴 두 개를 돌려 붙여요', 'amber', y);
+          return;
+        }
         // 계산은 기존 값·풀이 패널에 그대로 두고, 모바일 그림은 회전 전체에 같은 배율을 씁니다.
         if (compactInquiry) return;
         const fx = (B + a) / 2;
@@ -65,21 +75,32 @@
         return;
       }
       // 대각선 TL-BR 로 나누기: 윗변 쪽 삼각형이 가로로 떼어짐
-      const gap = 1.6 * ease(C.problem ? 0 : C.review ? (C.step >= 2 ? 1 : 0) : t);
+      const gap = 1.6 * ease(C.problem ? 0 : C.review && !lesson ? (C.step >= 2 ? 1 : 0) : t);
       FIT(b, { x0: 0, x1: Math.max(B, p + a) + (C.problem ? 0 : 1.6), y0: -H, y1: 0 }, { b: C.problem ? 76 : 122, ...(!b.thumb && b.W < 560 ? { r: 62 } : {}) });
       const t1 = [BL, BR, TL], t2 = [TL, TR, BR].map((q) => pt(q.x + gap, q.y));
       fillPoly(b, t1, 'sky', 0.26); poly(b, t1, 'ink', 3.6);
-      fillPoly(b, t2, C.problem && M.q === 2 ? 'amber' : 'green', 0.3); poly(b, t2, 'ink', 3.6);
+      fillPoly(b, t2, (C.problem && M.q === 2) || (lesson && s.arLessonGoal === 'triangle') ? 'amber' : 'green', 0.3); poly(b, t2, 'ink', 3.6);
       par(b, b.thumb ? TL : t2[0], b.thumb ? TR : t2[1], 1, 'green'); par(b, BL, BR, 1, 'green');
       if (!C.problem) {
         hgtTo(b, TL, BL, BR, { label: `높이 ${H}`, side: -1, gap: 8 });
         hgtTo(b, t2[2], t2[0], t2[1], { label: `높이 ${H}`, side: 1 });
       } else hgtTo(b, TL, BL, BR, { label: `높이 ${H}cm`, side: 1 });
       if (gap < 0.05) [[TL, 'A'], [BL, 'B'], [BR, 'C'], [TR, 'D']].forEach(([q, n]) => tagOut(b, q, c0, n, { size: 17, gap: 10 }));
+      else if (lesson) [[t2[0], 'A'], [t2[1], 'D'], [t2[2], 'C']].forEach(([q, n]) => tagOut(b, q, centroid(t2), n, { size: 17, gap: 10 }));
       dim(b, b.thumb ? TL : t2[0], b.thumb ? TR : t2[1], `윗변 ${a}cm`, { ref: c0, color: 'sky' });
       dim(b, BL, BR, `아랫변 ${B}cm`, { ref: c0, color: 'sky' });
       if (C.problem) { foot(b, pt(Math.max(B, p + a) / 2, 0), '삼각형 ACD의 넓이 = ? cm²', 'amber', 58); return; }
       const x0 = Math.max(B, p + a) / 2;
+      if (lesson) {
+        if (s.arLessonGoal === 'triangle') {
+          foot(b, pt(x0, 0), answerReady ? `△ACD = ${a}×${H}÷2 = ${num(T2)}cm²` : `△ACD: 밑변 AD ${a}cm, 높이 ${H}cm`, 'amber', 70);
+        } else {
+          if (ready(s, C, 'arOneReady')) foot(b, pt(x0, 0), `① ${B}×${H}÷2 = ${num(T1)}cm²`, 'sky', 58);
+          if (ready(s, C, 'arTwoReady')) foot(b, pt(x0, 0), `② ${a}×${H}÷2 = ${num(T2)}cm²`, 'green', 84);
+          if (answerReady) foot(b, pt(x0, 0), `① + ② = ${num(T1)} + ${num(T2)} = ${num(S)}cm²`, 'amber', 110);
+        }
+        return;
+      }
       if (!C.review || C.step >= 2) { foot(b, pt(x0, 0), `① ${HALF}×${B}×${H} = ${num(T1)}`, 'sky', 58); foot(b, pt(x0, 0), `② ${HALF}×${a}×${H} = ${num(T2)}`, 'green', 84); }
       if (!C.review || C.step >= 3) foot(b, pt(x0, 0), `① + ② = ${num(T1)} + ${num(T2)} = ${num(S)}cm²`, 'amber', 110);
     },
@@ -229,7 +250,8 @@
     },
     draw(b, s, M, C) {
       const { W, H, x, h1, A } = M, pc = road.pieces(M), C0 = pt(W / 2, H / 2);
-      const t = C.problem ? 0 : C.review ? (C.step === 1 ? 0.4 : 1) : C.t;
+      const lesson = lessonOn(s, C);
+      const t = C.problem ? 0 : C.review && !lesson ? (C.step === 1 ? 0.4 : 1) : C.t;
       const s1 = ease(seg01(t, 0, 0.4)), phi = (Math.PI / 2) * ease(seg01(t, 0.4, 0.7)), s3 = ease(seg01(t, 0.7, 1));
       const tf = (q) => rotAbout(q, C0, phi), sh = (P3, dx, dy) => P3.map((q) => pt(q.x + dx, q.y + dy)), out = (P3) => P3.map(tf);
       const field = [pt(0, 0), pt(W, 0), pt(W, H), pt(0, H)];
@@ -267,6 +289,19 @@
       }
       if (C.problem) { foot(b, pt(W / 2, H), '잔디밭의 넓이 = ? m²', 'amber', 56); return; }
       const cy = box.y1, cx = (box.x0 + box.x1) / 2;
+      if (lesson) {
+        const f = (str, color = 'amber', i = 0) => foot(b, pt(cx, cy), str, color, (t < 0.4 ? 56 : 36) + 28 * i);
+        const widthReady = ready(s, C, 'arWidthReady'), heightReady = ready(s, C, 'arHeightReady');
+        if (ready(s, C, 'arShowAnswer')) {
+          if (s.arLessonGoal === 'road') f(`길 = ${W * H}−${A} = ${W * H - A}m²`, 'rose');
+          else f(`잔디밭 = ${W - x}×${H - x} = ${A}m²`, 'green');
+        } else if (ready(s, C, 'arOuterReady')) { f(`땅 전체 = ${W}×${H} = ${W * H}m²`, 'sky'); f(`잔디밭 = ${A}m²`, 'green', 1); }
+        else if (ready(s, C, 'arTwoReady')) f(`잔디밭 = ${W - x}×${H - x} = ${A}m²`, 'green');
+        else if (heightReady) { f(`남은 세로 = ${H}−${x} = ${H - x}m`); f(`직사각형 ${W - x}m × ${H - x}m`, 'green', 1); }
+        else if (widthReady) f(`남은 가로 = ${W}−${x} = ${W - x}m`);
+        else f(`땅 ${W}m × ${H}m · 길의 ${M.mode ? '가로·세로 폭' : '폭'} ${x}m`);
+        return;
+      }
       if (t < 0.4) foot(b, pt(W / 2, H), `땅 ${W}×${H}, 길의 폭 ${x}`, 'amber', 56);
       else if (t < 0.999) foot(b, pt(cx, cy), t < 0.7 ? `가로 = ${W} − ${x} = ${W - x}` : `(돌려서) 세로 = ${H} − ${x} = ${H - x}`, 'amber', 36);
       else if (C.review && C.step < 3) foot(b, pt(cx, cy), `직사각형 ${W - x}m × ${H - x}m`, 'green', 36);
