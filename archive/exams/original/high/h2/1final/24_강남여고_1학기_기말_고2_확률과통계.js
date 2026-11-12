@@ -330,7 +330,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_강남여고_1학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 주사위 눈 1~6이 짝수 A, 홀수 B, 3의 배수 C 열에 속하는지 정리한 표이다.",
+    "solutionImageCaption": "A는 짝수, B는 홀수, C는 3의 배수인 사건이다. 표의 공통 원소를 비교해 독립과 배반을 판단한다. 정답은 A와 C가 독립사건이라는 진술이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -484,7 +488,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_강남여고_1학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫째 공의 색에 따라 둘째 공의 색으로 갈라지는 수형도이며, 둘째가 흰 공인 두 경로를 파란색으로 강조했다.",
+    "solutionImageCaption": "둘째 공이 흰 공인 파란색 두 경로의 확률을 더한다. 정답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -516,7 +524,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_강남여고_1학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 상자 A에서 옮긴 구슬 색에 따라 상자 B에서 꺼내는 색으로 갈라지는 수형도이며, 흰 구슬을 꺼내는 두 경로를 파란색으로 강조했다.",
+    "solutionImageCaption": "상자 A에서 옮긴 색에 따라 상자 B에서 흰 구슬을 꺼내는 두 경로를 파란색으로 표시했다. 그 경로 확률을 더한다. 정답은 19이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -576,7 +588,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_강남여고_1학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: H사, K사, S사에서 소형차와 그 외 자동차로 갈라지는 수형도이며 H사의 소형차 경로를 파란색으로 강조했다.",
+    "solutionImageCaption": "H사, K사, S사의 소형차 경로 비율을 비교하고 파란색 H사 경로를 전체 소형차 경로 합으로 나눈다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -736,6 +752,10 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_강남여고_1학기_기말_고2_확률과통계/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: B의 추가 승수가 0, 1, 2일 때의 세 경우는 파란색으로, B가 먼저 우승하는 경우는 검은색으로 나타낸 수형도이다.",
+    "solutionImageCaption": "B의 추가 승수가 0, 1, 2인 파란색 가지는 A 우승 경우이며, 검은색 3승 가지는 B 우승 경우이다. 정답은 9분의 8이다.",
+    "solutionImageSize": "full"
   }
 ];

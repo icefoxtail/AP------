@@ -180,7 +180,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "conditional probability",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: A팀의 1승 1패 뒤 세 번째 경기부터 5차전까지 이어지는 승패 경로 수형도",
+    "solutionImageCaption": "현재 전적 뒤의 승패를 차례로 나누어 우승이 확정되는 경로를 굵게 표시한다. 4차전에서 끝나는 경우와 5차전에서 끝나는 경우를 구분한다. 정답은 27분의 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -210,7 +214,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 0회부터 4회까지 가능한 양의 방향 이동 횟수를 점으로 놓고 X≥2를 파란색으로 구분한다",
+    "solutionImageCaption": "최종 좌표는 3X−4이므로 양수 조건은 X≥2이다. 가능한 X값을 0회부터 4회까지 놓고 조건을 만족하는 경우를 파란색으로 구분한다. 정답은 16분의 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -240,7 +248,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 20을 중심으로 17과 23까지의 두 넓이가 같은 정규분포 예시",
+    "solutionImageCaption": "두 경계의 중점은 평균이고 평균 이상일 확률은 전체의 절반이다. 예: 표준편차가 3인 곡선에서 17과 23은 평균 20을 중심으로 대칭이다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -271,7 +283,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 50인 종 모양 곡선에서 47부터 50, 50부터 52까지 칠한 두 영역과 표준화 눈금",
+    "solutionImageCaption": "47부터 52까지의 넓이를 평균 50에서 나누어 표준화한다. 각 영역에 해당하는 표의 값을 더한다. 정답은 0.7745이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -363,7 +379,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: x=0에서 꺾이는 확률밀도함수와 0부터 1까지 주황색으로 칠한 아래 영역",
+    "solutionImageCaption": "절댓값의 부호에 따라 두 일차식으로 나누면 x=0에서 밀도 그래프가 꺾인다. 구하는 확률은 0부터 1까지의 곡선 아래 영역이다. 정답은 11분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -394,7 +414,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 50, 표준편차 5인 정규곡선에서 55 이상으로 칠한 오른쪽 꼬리와 표준화 눈금",
+    "solutionImageCaption": "점수 조건을 앞면 횟수 55 이상으로 바꾼 뒤 정규분포로 근사한다. 경계의 표준화 값에서 오른쪽 꼬리확률을 읽는다. 정답은 0.1587이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -425,7 +449,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 320인 정규곡선에서 324와 k 사이를 칠한 영역",
+    "solutionImageCaption": "평균 320과 표준편차 8을 기준으로 구간의 양 끝을 표준화한다. 324에서 k까지의 넓이가 주어진 확률이 되게 끝점을 읽는다. 정답은 336이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -456,7 +484,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 표본평균 10인 정규곡선에서 9.9부터 10, 10부터 10.1까지 같은 넓이를 칠한 그림",
+    "solutionImageCaption": "구간의 반지름과 표본평균의 표준편차로 표준화 경계를 확인한다. 양쪽 넓이를 더해 신뢰도를 백분율로 나타낸다. 정답은 68.26%이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -486,7 +518,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 70인 정규곡선에서 75.2와 x부터 오른쪽 끝까지 칠한 두 꼬리 영역",
+    "solutionImageCaption": "상위 15퍼센트 경계로 표준편차를 구하고 상위 10퍼센트 경계 x를 표준화한다. 두 경계를 평균에서 잰 표준화 눈금에 놓는다. 정답은 81.4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -516,7 +552,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 0, 5, 10인 세 정규곡선의 0부터 10까지 영역을 비교한 그림",
+    "solutionImageCaption": "평균을 구간의 가운데에 둘 때 구간 안의 넓이가 가장 크고 양 끝에 둘 때 넓이는 같다. 이 비교를 보기의 대칭성과 최댓값에 대조한다. 정답은 ㄱ, ㄷ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -547,7 +587,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 80인 정규곡선에서 경계 x 왼쪽의 0.0228 꼬리 영역",
+    "solutionImageCaption": "네 칫솔 무게의 합의 분포는 평균 80, 표준편차 8인 정규분포다. 왼쪽 꼬리확률에서 경계의 표준화 값을 찾아 무게를 구한다. 정답은 64이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -603,7 +647,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 짝수 카드가 나오기 전까지 홀수와 짝수 순서를 나눈 수형도",
+    "solutionImageCaption": "첫 카드가 짝수인지 홀수인지 나누고, 홀수가 이어진 경우 남은 카드 구성에 따라 다음 확률을 계산한다. 각 경로의 확률을 곱해 분포를 완성한다. 정답은 b가 3분의 1, c가 6분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

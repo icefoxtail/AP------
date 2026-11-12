@@ -391,7 +391,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
     "subUnit": "수열의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_제일고_1학기_기말_고2_대수/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선 y=2√x와 주황 곡선 y=√x, k=5/2인 예시 세로선과 A, B, C, O의 위치를 나타낸다.",
+    "solutionImageCaption": "파란 곡선 y=2√x와 주황 곡선 y=√x에서 k=5/2인 예시 단면을 보인다. 일반적으로 BC=√k, OC=k, AC=2√k이므로 이 세 길이에 등비수열 조건을 적용한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -450,7 +454,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_제일고_1학기_기말_고2_대수/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: A, B, C를 잇는 삼각형과 BC를 지름으로 하는 반원, D와 E, 현 CD의 중점 H, OH⊥CD를 나타낸다. 파란 표시는 CH=HD, 주황 표시는 CE=DE이다.",
+    "solutionImageCaption": "파란 표시는 CH=HD, 주황 표시는 CE=DE를 나타낸다. 반원과 지름 BC, 점 D와 E, OH⊥CD를 보조해 삼각형 EDC의 밑변과 높이 관계를 찾는다. 정답은 5/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -482,7 +490,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_제일고_1학기_기말_고2_대수/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 2인 원, 점 P에서 그은 접선 PA와 PB, OP와 현 AB가 만나는 점 M을 나타낸다. 파란 표시는 OA=OB, 주황 표시는 PA=PB, 초록 표시는 AM=MB이며 A, B, M에 직각 표시가 있다.",
+    "solutionImageCaption": "파란 표시는 OA=OB=2, 주황 표시는 PA=PB=3, 초록 표시는 AM=MB를 나타낸다. 직각삼각형 OAP에서 OP=√13을 얻고 M에서의 수직과 닮음 관계를 이어 간다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -533,9 +545,9 @@ window.questionBank = [
     "answer": "$135^\\circ$",
     "solution": "그림에서 $\\theta$는 오른쪽 위의 직선 $y=2x$와 오른쪽 아래의 직선 $y=-3x$가 이루는 둔각이다.\n두 직선 위에서 $x=1$인 점을 각각 $P,Q$라 하면\n$P=(1,2)$, $Q=(1,-3)$이다.\n원점 $O=(0,0)$에 대하여 $\\angle POQ=\\theta$이다.\n\n두 점 사이의 거리 공식으로\n$OP^2=(1-0)^2+(2-0)^2$\n$=1+4$\n$=5$이므로 $OP=\\sqrt5$이다.\n마찬가지로\n$OQ^2=(1-0)^2+(-3-0)^2$\n$=1+9$\n$=10$이므로 $OQ=\\sqrt{10}$이다.\n$P,Q$의 $x$좌표는 같으므로\n$PQ=2-(-3)$\n$=5$이다.\n\n삼각형 $OPQ$에 코사인법칙을 적용하면\n$PQ^2=OP^2+OQ^2-2\\cdot OP\\cdot OQ\\cos\\theta$\n$25=5+10-2\\sqrt5\\sqrt{10}\\cos\\theta$\n$25=15-10\\sqrt2\\cos\\theta$\n$10\\sqrt2\\cos\\theta=-10$\n$\\cos\\theta=-\\dfrac1{\\sqrt2}$\n$=-\\dfrac{\\sqrt2}{2}$이다.\n\n$90^\\circ<\\theta<180^\\circ$이고 이 범위에서 코사인값이 $-\\dfrac{\\sqrt2}{2}$인 각은 $135^\\circ$이다.\n따라서 $\\theta=135^\\circ$이다.",
     "image": "assets/images/26_제일고_1학기_기말_고2_대수/q19.png",
-    "solutionImage": "assets/images/26_제일고_1학기_기말_고2_대수/q19-solution.svg",
-    "solutionImageAlt": "원점을 지나는 두 직선 y=2x, y=-3x와 문제에서 요구한 둔각 θ=135°를 표시한 좌표평면",
-    "solutionImageCaption": "예각 45°와 조건 90°<θ<180°를 비교해 둔각 θ=135°를 선택한다.",
+    "solutionImage": "assets/images/26_제일고_1학기_기말_고2_대수/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 직선 y=2x와 주황 직선 y=−3x, P(1,2), Q(1,−3), O를 이은 삼각형과 θ를 나타내는 둔각 호.",
+    "solutionImageCaption": "파란 직선 y=2x와 주황 직선 y=−3x에서 x=1인 점 P, Q를 잡고 O와 이은 삼각형 OPQ에 θ의 둔각 호를 표시한다. 변의 길이를 구해 코사인법칙을 적용한다. 정답은 135°이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",

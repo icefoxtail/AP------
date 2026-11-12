@@ -62,7 +62,11 @@ window.questionBank = [
     ],
     "wide": false,
     "layoutTag": "grid",
-    "questionUid": "qid_v1_57380e104ae2b5aa9110c9dd8b9c67985a609ce0a5eb803d45969954dd0f3522"
+    "questionUid": "qid_v1_57380e104ae2b5aa9110c9dd8b9c67985a609ce0a5eb803d45969954dd0f3522",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_수학I/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AB=4, BC=5와 끼인각 B=30°를 나타낸다.",
+    "solutionImageCaption": "두 변과 끼인각의 사인값을 삼각형 넓이 공식에 대입한다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -126,7 +130,11 @@ window.questionBank = [
     ],
     "wide": false,
     "layoutTag": "grid",
-    "questionUid": "qid_v1_0ea2a85d41cba7f90fe7d1577a66918628b870fd03f3afffe66ce6689cf9f93f"
+    "questionUid": "qid_v1_0ea2a85d41cba7f90fe7d1577a66918628b870fd03f3afffe66ce6689cf9f93f",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_수학I/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AB=6, BC=4, CA=5인 세 변을 나타낸다.",
+    "solutionImageCaption": "a=4는 A의 맞은편 변이므로 b=5, c=6을 코사인법칙에 대입한다. 정답은 4분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -450,7 +458,11 @@ window.questionBank = [
     ],
     "wide": false,
     "layoutTag": "grid",
-    "questionUid": "qid_v1_3480481600a77f186148505fe8f3339b5d2bdeed9894c0d683065dd31ddde69b"
+    "questionUid": "qid_v1_3480481600a77f186148505fe8f3339b5d2bdeed9894c0d683065dd31ddde69b",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_수학I/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 A=30°, BC=2√2, CA=4이고 C가 둔각인 모양을 나타낸다.",
+    "solutionImageCaption": "사인법칙으로 얻는 두 각 B의 가능성 가운데 C가 둔각인 가지를 고른다. 정답은 105°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -712,7 +724,11 @@ window.questionBank = [
     ],
     "wide": false,
     "layoutTag": "grid",
-    "questionUid": "qid_v1_3fd47db78f5588fad5ce5632bc5cf3b67f0be9ddac89f7b06fcfecddd21cf856"
+    "questionUid": "qid_v1_3fd47db78f5588fad5ce5632bc5cf3b67f0be9ddac89f7b06fcfecddd21cf856",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 4인 정삼각형 ABC와 AC 위의 점 P, 선분 BP, AP=x, CP=4−x를 나타낸다.",
+    "solutionImageCaption": "BP²는 코사인법칙으로, CP²는 4−x로 나타내 두 값을 합친다. 완전제곱식의 최솟값을 구한다. 정답은 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -905,7 +921,11 @@ window.questionBank = [
     ],
     "wide": false,
     "layoutTag": "grid",
-    "questionUid": "qid_v1_024bd126367a60ae3bdbd30572b606c117680cebfe6add40df3d870c850158d8"
+    "questionUid": "qid_v1_024bd126367a60ae3bdbd30572b606c117680cebfe6add40df3d870c850158d8",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_수학I/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 파란 포물선 y=x²와 주황 점선 수평선, P1, Q1, M1, P2를 보인다. 아래 패널은 다음 단계의 P2, Q2, M2, P3를 나타낸다.",
+    "solutionImageCaption": "P₁Q₁의 2:1 내분점 높이가 다음 점의 y좌표가 된다. 같은 관계를 한 번 더 반복해 제곱된 x좌표가 3분의 1씩 줄어드는 모습을 확인한다. 첫 10개 제곱좌표의 합을 등비급수로 계산한다. 정답은 3−3⁻⁹이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1040,9 +1060,9 @@ window.questionBank = [
     ],
     "wide": true,
     "layoutTag": "wide",
-    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_수학I/q16-solution.svg",
-    "solutionImageAlt": "접원 중심의 정삼각형 및 삼각형 각 관계 보조도",
-    "solutionImageCaption": "원본 도형 보존, 중심 연결만 보조 표시",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_수학I/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC 안에 반지름 2인 원 다섯 개가 있다. 밑변에 닿은 네 원의 중심은 일직선 위에 있고, C1, C4, C5의 중심을 잇는 파란 선은 정삼각형을 이룬다.",
+    "solutionImageCaption": "밑변에 닿은 원의 중심 간격은 같고, C1,C4,C5의 중심 연결은 파란색이다. C1C5와 CA가 평행하므로 ∠C=60°이다. 중심 차에서 tanB=√3/5를 얻고 사인법칙과 넓이 공식을 적용한다. 정답은 4분의 3√3k²이다.",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_1a174ec28541031e6570ddbc3ae471391da90e7271beb4c00f42037e774c848c"
   },
@@ -1225,9 +1245,9 @@ window.questionBank = [
     ],
     "wide": true,
     "layoutTag": "wide",
-    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_수학I/q19-solution.svg",
-    "solutionImageAlt": "원에 내접한 사각형의 현 BD 수직성과 AC의 투영 관계 보조도",
-    "solutionImageCaption": "AB=AD일 때 넓이와 대각선의 관계",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_수학I/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 O인 원에 내접한 사각형 A, B, C, D와 대각선 AC, 현 BD, 반지름 R을 나타낸다. AB와 AD에는 같은 길이 표시가 있고 OA와 BD는 수직이다.",
+    "solutionImageCaption": "예: 허용 범위 안의 R=6인 그림에서 AB=AD이므로 OA는 BD의 수직이등분선이다. AC=10과 넓이 40을 이용해 BD와 R의 비를 구한다. 정답은 13이다.",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_82e7c6fbc80afe5d481f3f317e7aded0cb500efccb7e50e472458d738ef1a470"
   },
@@ -1292,7 +1312,11 @@ window.questionBank = [
     ],
     "wide": true,
     "layoutTag": "wide",
-    "questionUid": "qid_v1_d5bc49fba412e464ae9938fb66aeb0bbe8df637d37e4258a13ed10f4d45b86db"
+    "questionUid": "qid_v1_d5bc49fba412e464ae9938fb66aeb0bbe8df637d37e4258a13ed10f4d45b86db",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC가 외접원 위에 있고 A에서 AB=10m, AC=8m, 끼인각 60°를 나타낸다.",
+    "solutionImageCaption": "코사인법칙으로 BC를 구하고 사인법칙으로 외접원의 반지름을 구한다. 이어 원의 넓이를 계산한다. 정답은 (1) 2√21m, (2) 2√7m, (3) 28πm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

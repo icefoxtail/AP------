@@ -124,7 +124,11 @@ window.questionBank = [
       "originalSourceOnly": true
     },
     "metaStatus": "RPM_SEMANTIC_FINAL_H15_UNIT_BINDING_PENDING",
-    "metaNullReason": "2015 수학I RPM crosswalk RPM_ONLY; 11 ACTIVE pack bindings checked; exact 2015 수학I binding count 0."
+    "metaNullReason": "2015 수학I RPM crosswalk RPM_ONLY; 11 ACTIVE pack bindings checked; exact 2015 수학I binding count 0.",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고2_수학I/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AC의 길이 3, BC의 길이 2√2, 끼인각 C가 45°이고 A에서 BC에 내린 높이 AH가 점선으로 표시되어 있다.",
+    "solutionImageCaption": "A에서 BC에 수선 AH를 내려 높이를 나타냈다. 두 변과 끼인각을 이용해 삼각형의 넓이를 계산한다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -571,7 +575,11 @@ window.questionBank = [
       "originalSourceOnly": true
     },
     "metaStatus": "RPM_SEMANTIC_FINAL_H15_UNIT_BINDING_PENDING",
-    "metaNullReason": "2015 수학I RPM crosswalk RPM_ONLY; 11 ACTIVE pack bindings checked; exact 2015 수학I binding count 0."
+    "metaNullReason": "2015 수학I RPM crosswalk RPM_ONLY; 11 ACTIVE pack bindings checked; exact 2015 수학I binding count 0.",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고2_수학I/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 등변사다리꼴 A, B, C, D의 두 대각선이 O에서 만나며, 대각선 사이의 한 각이 120°로 표시되어 있다.",
+    "solutionImageCaption": "대각선이 만드는 네 삼각형을 합쳐 사각형의 넓이를 나타낸다. 두 대각선은 같은 길이이므로 공통 길이를 두고 계산한다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -760,7 +768,11 @@ window.questionBank = [
       "originalSourceOnly": true
     },
     "metaStatus": "RPM_SEMANTIC_FINAL_H15_UNIT_BINDING_PENDING",
-    "metaNullReason": "2015 수학I exact ACTIVE binding 0 across 11 packs; RPM semantic and current crosswalk independently checked; do not invent PT/TPL."
+    "metaNullReason": "2015 수학I exact ACTIVE binding 0 across 11 packs; RPM semantic and current crosswalk independently checked; do not invent PT/TPL.",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 4인 원에 삼각형 A, B, C가 내접한다. 각 A는 45°, 각 B는 60°이고 BC는 4√2, CA는 4√3으로 표시되어 있다.",
+    "solutionImageCaption": "외접원의 반지름과 두 각을 표시하고 사인법칙으로 구한 BC와 CA를 적었다. AB는 표시하지 않아 코사인법칙으로 구하는 단계가 남는다. 정답은 2√2+2√6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

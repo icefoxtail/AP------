@@ -167,7 +167,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_1학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: A와 B의 벤 다이어그램에서 A와 겹치지 않는 B 부분을 색칠했다.",
+    "solutionImageCaption": "벤 다이어그램에서 A∪B 중 A를 제외한 부분이 B∩Aᶜ임을 보인다. 주어진 두 확률의 차로 해당 영역의 확률을 계산한다. 정답은 12분의 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -279,7 +283,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_1학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 주머니 A 또는 B를 고른 뒤 서로 다른 색 또는 같은 색의 두 공을 뽑는 수형도.",
+    "solutionImageCaption": "주머니 선택과 두 공의 색 조합에 따른 경로를 수형도로 나타냈다. 각 끝에는 해당 경로의 확률을 표시했다. 정답은 17분의 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -335,7 +343,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_1학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 사건 A와 B의 벤 다이어그램에서 공통 부분을 색칠했다.",
+    "solutionImageCaption": "벤 다이어그램의 색칠한 부분은 두 사건이 함께 일어나는 A∩B이다. 두 조건부확률에서 공통 분자를 확인한 뒤 합집합의 확률을 계산한다. 정답은 5분의 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -391,7 +403,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_1학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 주사위의 홀수·짝수 분기 뒤 동전 앞면이 2개인 가지를 파란색으로 나타낸 수형도.",
+    "solutionImageCaption": "주사위의 홀짝에 따라 던지는 동전 수가 달라지는 과정을 수형도로 나타냈다. 파란 가지는 앞면이 2개인 경우이고, 끝의 값은 해당 경로가 나타날 확률이다. 정답은 5분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -419,7 +435,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_1학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 옮긴 공 조합 세 가지에서 상자 B의 흰 공 또는 검은 공 추출로 이어지는 수형도이며, 흰 공 추출 경로는 파란색이다.",
+    "solutionImageCaption": "상자 A에서 옮긴 공의 조합에 따라 상자 B의 구성이 달라지는 과정을 수형도로 나타냈다. 파란 가지는 마지막에 흰 공을 뽑는 경우이며, 끝의 값은 각 경로의 확률이다. 정답은 38분의 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -587,7 +607,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_1학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 실제 암 환자 여부와 진단 결과를 잇는 수형도에서 암 진단으로 이어지는 두 가지 가지를 파란색으로 강조했다.",
+    "solutionImageCaption": "실제 환자 여부와 진단 결과를 수형도로 나타냈다. 파란 가지 두 개는 암 진단을 받은 전체 경로이고, 끝의 값은 각 경로의 확률이다. 정답은 11분의 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -612,7 +636,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_1학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 수의 차 1, 2, 3, 4 위에 열 개의 점을 도수에 따라 쌓은 점도표.",
+    "solutionImageCaption": "점 하나는 두 장을 뽑는 열 가지 카드 쌍 가운데 하나를 나타낸다. 값별 점의 수가 확률변수 X의 도수에 대응하며, 각 도수를 전체 경우의 수로 나누어 확률을 구한다. 정답은 E(X)=2, V(X)=1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

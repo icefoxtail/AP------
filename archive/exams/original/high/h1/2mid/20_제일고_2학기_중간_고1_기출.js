@@ -769,7 +769,11 @@ window.questionBank = [
     "sourceOrdinal": 16,
     "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
     "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
-    "difficultyReason": "제곱 비교로 최댓값·최솟값의 상하한과 실제 등호 조건을 찾는다."
+    "difficultyReason": "제곱 비교로 최댓값·최솟값의 상하한과 실제 등호 조건을 찾는다.",
+    "solutionImage": "assets/images/20_제일고_2학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 원과 원점을 지나는 직선이 그려져 있으며 직선이 원과 두 점에서 만난다.",
+    "solutionImageCaption": "조건 x²+y²=6에서 목표식의 제곱과 4(x²+y²)를 비교하면 등호 조건은 y=√3x이다. 이 직선과 원의 두 교점에서 최댓값과 최솟값이 실제로 얻어진다. 정답은 −24이다.",
+    "solutionImageSize": "full"
   
   },
   {

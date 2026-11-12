@@ -184,7 +184,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROOF",
     "subUnit": "증명과 절대부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_순천고_2학기_중간_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: x>−2에서 파란 유리곡선이 U자형으로 최저점을 지나고 주황 점선 y=x에 가까워진다. x=−2에는 수직 점근선이 있다.",
+    "solutionImageCaption": "x=−2의 수직 점근선 오른쪽 x>−2에서 파란색 유리곡선을 그리고, 주황 점선 y=x는 비스듬한 점근선으로 표시했다. 치환 t=x+2>0을 쓰면 식은 t에 16을 t로 나눈 값을 더한 뒤 2를 뺀 형태이다. 최소는 t=4일 때이므로 p=2, q=6이다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -647,7 +651,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_순천고_2학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 파랑·주황 두 직선 조각과 초록 점선 y=12가 두 입력값에서 만나는 모습이다. 아래 패널은 파란 포물선과 주황·초록 점선 두 수평선이 서로 다른 세 점에서 만나는 모습이다.",
+    "solutionImageCaption": "위 패널의 파란색·주황색 직선 조각과 초록 점선 y=12는 f(u)=12의 두 해 u=−2, 6을 나타낸다. 아래 패널의 파란 포물선과 주황·초록 점선 y=6, y=−2는 각각 ±2√2와 0인 x값을 나타낸다. 세 실근 조건에서 k=−2이다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
