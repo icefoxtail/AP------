@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "similar-exam-candidate-review-receipt-v1",
+  "examUid": "24_향림중_1학기_중간_중3_유사",
+  "source": {
+    "documentId": "1Z6p8eWukMLJ9JfE-8nVjIkFBziMY72Vk9j5gfM7DQHE",
+    "revisionId": "AHj4eMRhq0Lo9Pq3qjLIhPlg85kMNk5943YOJWBU7toCySRhS_UOTLXF57ZrMzXfk7jNu0XprUKjBsD-jQ5lZS1DMGW1FlyOspeDU_amT3U",
+    "title": "24_향림중_1학기_중간_중3_유사_일체형.md",
+    "questionCount": 24,
+    "totalScore": 100
+  },
+  "candidateJs": "archive/exams/similar/middle/m3/1mid/24_향림중_1학기_중간_중3_유사.js",
+  "candidateBlobSha1": "cb8c5fa8091492e4c9072a897d49788b448fc403",
+  "authoringStatus": "CANDIDATE_DRAFT",
+  "sourceAudit": {
+    "mainAndAccumulatorDuplicate": "NO_SAME_CANDIDATE",
+    "relatedBranches": "NO_MATCH_FOUND",
+    "relatedPullRequests": "NO_SAME_TRANSPLANT_FOUND",
+    "localOwnership": "CONFIRMED_NO_OTHER_WORKTREE_FOR_TARGET",
+    "docInlineObjects": 0,
+    "docPositionedObjects": 0,
+    "sourceVisualStatuses": {
+      "EXEMPT": 24
+    },
+    "delimiterAudit": {
+      "customMarkersRequested": [
+        "",
+        ""
+      ],
+      "customMarkersFoundInExtractedText": false,
+      "observedSectionMarker": "U+E907 ()",
+      "observedMetaBlocks": "visual status JSON and per-question metadata JSON parsed separately"
+    }
+  },
+  "fieldBoundaryAudit": {
+    "status": "PASS",
+    "questionCount": 24,
+    "objectiveQuestionsWith5Choices": 20,
+    "subjectiveQuestionsWithoutChoices": 4,
+    "contentContainsAnswerOrSolutionHeaders": false,
+    "answerIncludesSolutionOrMetadata": false
+  },
+  "contentRepairs": [
+    "Q1 ④의 “제곱근 16” 표현을 √16으로 명시하고 풀이 문장을 함께 명확히 했다. 독립 계산으로 정답 ①을 확인했다.",
+    "cm 단위 구두점을 LaTeX 표기로 정리했다. 수치·수식 의미는 바꾸지 않음."
+  ],
+  "mathReview": {
+    "status": "MANUAL_PASS_WITH_Q1_WORDING_REPAIR",
+    "scope": "24문항 발문·선지·정답·해설을 대조했다. Q1 ④의 표현을 근호 기호로 명확히 하고 보기·해설을 맞췄다.",
+    "correction": "Q1 ④ “제곱근 16은 ±4”를 “√16의 값은 ±4”로 수정. 정답은 ① 유지.",
+    "independentVerification": {
+      "status": "PASS",
+      "method": "Q1 각 보기 독립 계산",
+      "results": {
+        "①": "25의 제곱근은 ±5이므로 참",
+        "②": "4의 제곱근은 ±2 두 개이므로 거짓",
+        "③": "√9=3이고 3의 제곱근은 ±√3이므로 거짓",
+        "④": "√16=4이므로 값이 ±4라는 진술은 거짓",
+        "⑤": "(-3)^2=9이고 제곱근은 ±3이므로 하나만 3이라 한 진술은 거짓"
+      },
+      "uniqueCorrectAnswer": "①"
+    }
+  },
+  "metadataReview": {
+    "status": "EVIDENCE_DEBT",
+    "candidateRows": 24,
+    "resolverStatus": "NOT_RUN",
+    "4slotStatus": "UNREVIEWED_24",
+    "registrationStatus": "NOT_SUBMITTED"
+  },
+  "visualReview": {
+    "status": "NEEDS_FOLLOWUP",
+    "problemNeed": [
+      10,
+      14,
+      22
+    ],
+    "solutionNeed": [
+      10,
+      14,
+      15,
+      22,
+      24
+    ],
+    "createdAssets": [],
+    "renderedItems": []
+  },
+  "checks": {
+    "nodeCheck": "PASS",
+    "tableCheck": "PASS (1 file, 0 tables, 0 FAIL)",
+    "similarExamHarness": "EXPECTED_DRAFT_GATE_FAIL (Q10/Q14/Q22 problem figures UNSUPPORTED; solution figure warnings; not production PASS)",
+    "jsonParsing": "PASS; all sidecars parsed and source blob bindings verified; Q/JSON delimiter residue audit PASS"
+  },
+  "userScope": "Convert distinct MD into candidate JS/meta; audit all field boundaries; preserve figure needs; no SVG, new PR or main merge."
+}
