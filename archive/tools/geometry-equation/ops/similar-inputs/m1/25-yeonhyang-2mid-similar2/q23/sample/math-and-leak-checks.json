@@ -1,11 +1,17 @@
 {
-  "math": "PASS under existing solution ray ordering",
-  "sourceSemanticCheck": "Actual Q23 statement/answer110/explanation directly read. Diagram extracts ONLY explanation triangle/angles; not claimed reconstruction of folded rectangular tape. Prose needs DE interior to BDF to ensure difference not sum; single writer asked.",
-  "independentCheck": "Model angleBDF120,BDE50,EDF70 and both remaining angles sum110 directly computed by dot product. No equal-side assumption used.",
-  "problemLeakCheck": "PASS solution-only; no fabricated fold layout or derived70/110 added to problem",
-  "color": "PASS EDF70 BLUE, opposite sideEF WARM with black labels",
+  "math": "PASS",
+  "sourceBlob": "a576b738cca744d3b71faf577e3338b6de6fae0b",
+  "sourceSemanticCheck": "Latest actual Q23 triangle DEF with DE internal to BDF; 120/50 givens, sum of angles at E/F sought, answer110; no folded tape nor original exam reconstruction.",
+  "independentCheck": "Exact generated point vectors verify BDF120,BDE50,EDF70; independent E+F angles110.",
+  "problemLeakCheck": "PASS problem shows only120/50, no70/110 nor derived angle labels.",
+  "color": "Solution BLUE #1f5fa8 highlights DE/DF and derived70; problem neutral black given arcs, black labels.",
   "staticAudit": "PASS",
   "renderedLayout": "PASS",
   "visualQA": "NOT_RUN",
-  "actualArchive": "NOT_RUN"
+  "actualArchive": "NOT_RUN",
+  "attempts": [
+    "Initial source extra newline detected by blob guard, exact bytes restored; no bypass.",
+    "Removed invalid empty hiddenPointStyle; final unchanged engine audits PASS."
+  ],
+  "previousOutput": "Previous solution-only extracted relationships replaced by current exact source-bound problem+solution; other questions not implicitly revalidated."
 }

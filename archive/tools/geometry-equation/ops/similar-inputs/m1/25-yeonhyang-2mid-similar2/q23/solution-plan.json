@@ -77,7 +77,7 @@
         "args": {
           "length": {
             "kind": "integer",
-            "value": "8"
+            "value": "7"
           },
           "angleDeg": {
             "kind": "integer",
@@ -139,20 +139,7 @@
   "planeMarks": {
     "angles": [
       {
-        "id": "bde",
-        "refs": [
-          "B",
-          "D",
-          "E"
-        ],
-        "value": 50,
-        "label": "50",
-        "labelKind": "DEGREE",
-        "style": "ARC",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "edf",
+        "id": "derived70",
         "refs": [
           "E",
           "D",
@@ -169,18 +156,19 @@
     "segmentColors": [
       {
         "segments": [
-          "EF"
+          "DE",
+          "DF"
         ],
-        "color": "WARM"
+        "color": "BLUE"
       }
     ]
   },
-  "caption": "해설의 각 관계만 추출 · EDF=120−50=70° · 삼각형 나머지 두 각의 합=180−70=110°",
-  "sourceQuote": "해설 BDF120, BDE50을 빼 EDF70으로 구하는 관계; DEF/DFE합",
+  "caption": "∠EDF=120−50=70° · ∠DEF+∠DFE=180−70=110°",
+  "sourceQuote": "최신 Q23: 삼각형 DEF의 나머지 두 내각 합",
   "sourceConditions": [
     {
       "id": "givens",
-      "condition": "해설 BDF120, BDE50을 빼 EDF70으로 구하는 관계; DEF/DFE합",
+      "condition": "최신 Q23: 삼각형 DEF의 나머지 두 내각 합",
       "mappedTo": [
         "D",
         "B",

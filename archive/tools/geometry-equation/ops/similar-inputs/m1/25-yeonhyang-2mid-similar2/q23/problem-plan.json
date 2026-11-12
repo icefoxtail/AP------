@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "D",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "D",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "D",
+    "B",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given120",
+        "refs": [
+          "B",
+          "D",
+          "F"
+        ],
+        "value": 120,
+        "label": "120",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "given50",
+        "refs": [
+          "B",
+          "D",
+          "E"
+        ],
+        "value": 50,
+        "label": "50",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "DE는 ∠BDF 내부 · ∠BDF=120°, ∠BDE=50°",
+  "sourceQuote": "최신 Q23: 삼각형 DEF의 나머지 두 내각 합",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "최신 Q23: 삼각형 DEF의 나머지 두 내각 합",
+      "mappedTo": [
+        "D",
+        "B",
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "newVisualInformation": []
+}

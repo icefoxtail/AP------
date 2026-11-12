@@ -2,13 +2,13 @@
   "status": "SAMPLE_ONLY",
   "sourceRef": {
     "path": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사2.js",
-    "bytes": 46745,
-    "sha256": "sha256:e1535b16ef1e9a39e16840f7654aaeefb04149776920ca27db3c10e2d9a22bcf"
+    "bytes": 46749,
+    "sha256": "sha256:bd029a476b4c9379e7ecd5f27c2ceef9890bacac2aa73acde6a4708b50e653a7"
   },
-  "gitBlob": "368ffbb5d857f94132af7da6b8cfffca263157bd",
+  "gitBlob": "a576b738cca744d3b71faf577e3338b6de6fae0b",
   "sourceRefBranch": "work/similar-m1-accumulate",
   "questionUid": "25_연향중_2학기_중간_중1_유사2|23",
-  "questionSha256": "sha256:837f871c7195653d3813bfc9a874e44fdaff6c7c20356f541fb78df0d993ed86",
+  "questionSha256": "sha256:6c13cad354675b05d7d9c2b57465c8ca378e80b1f0ceb7d4452f9c3147bdbd05",
   "typographyPolicy": {
     "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
     "requestedSizeClass": "full",
@@ -26,30 +26,30 @@
   "productionAuthorized": false,
   "surfaces": [
     {
-      "surface": "solution",
+      "surface": "problem",
       "identity": {
         "questionUid": "25_연향중_2학기_중간_중1_유사2|23",
-        "surface": "SOLUTION_VISUAL",
+        "surface": "PROBLEM_VISUAL",
         "visualRole": "decisive-relation",
-        "visualAssetKey": "sha256:a8b0e9f5b60d12c76bfacab9ccaa17a9b45e8e6d60717ed6f49b3837bd171b4d",
-        "assetId": "va-281476c22974a50a6167a09d44239a0759195b929548c715a02cffb4bc46771a"
+        "visualAssetKey": "sha256:4be2a33f43748a17dfc6022df7aeeacfcab37de2659dc6dfe4c40b850753aa82",
+        "assetId": "va-56241f022133104b7bf28cf1615f798287189a193f82828aa1d2f5a36aedb8c9"
       },
       "status": "SAMPLE_ONLY",
       "compositionStatus": "COMPOSED",
       "planRef": {
-        "path": "yeon25-q23-inputs/solution-plan.json",
-        "bytes": 3674,
-        "sha256": "sha256:9e086de2adb461adfe9b517e5ae974aacf2c3221457690aadb92d6de33d2bc46"
+        "path": "yeon25-q23-inputs/problem-plan.json",
+        "bytes": 3441,
+        "sha256": "sha256:1e167420d4e61980571d195a05f27c5c74249aa4645a28ee5cc461e5d3f07bb2"
       },
       "svgRef": {
-        "path": "yeon25-q23-outputs/solution.svg",
-        "bytes": 13837,
-        "sha256": "sha256:3f1af7687e49a2aab0decfd2d1e4fb11ae4b9330b1a9576d665f7e08ba6a20c7"
+        "path": "yeon25-q23-outputs/problem.svg",
+        "bytes": 14549,
+        "sha256": "sha256:aa913a80dac51cdf86ac1a948f566364275a2430e118b818d2bc5ea717421aa5"
       },
       "pngRef": {
-        "path": "yeon25-q23-outputs/solution.png",
-        "bytes": 10029,
-        "sha256": "sha256:bcfbec2feee9dd41afdbd5027ecee722e87a2cf0d847a89cc13ded2757cd6d63"
+        "path": "yeon25-q23-outputs/problem.png",
+        "bytes": 9547,
+        "sha256": "sha256:460e6efcfed0c12ed364ba5aa88400279b0df0db4ccfa2442571ff3eedd1a09f"
       },
       "staticAudit": {
         "status": "PASS",
@@ -59,27 +59,20 @@
           "errors": [],
           "observations": [
             {
-              "id": "bde",
+              "id": "given120",
               "type": "ANGLE",
-              "drawnDegrees": 49.999999999087635,
+              "drawnDegrees": 120.00000000069747,
+              "pointsDegrees": 119.99999999999999,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "given50",
+              "type": "ANGLE",
+              "drawnDegrees": 50.00000000148151,
               "pointsDegrees": 50.00000000000001,
               "arcs": 1,
               "style": "ARC"
-            },
-            {
-              "id": "edf",
-              "type": "ANGLE",
-              "drawnDegrees": 69.99999999946772,
-              "pointsDegrees": 69.99999999999999,
-              "arcs": 1,
-              "style": "ARC"
-            },
-            {
-              "id": "EF",
-              "type": "SEGMENT_COLOR",
-              "color": "WARM",
-              "strokeWidth": 2.4,
-              "stroke": "#b85c00"
             }
           ]
         }
@@ -93,23 +86,108 @@
         "errors": []
       },
       "lineage": {
-        "planSha256": "sha256:03527b6da28667c8834f1747479d69802a47c8a13cf8aec57d11f3c7a4942308",
-        "modelSha256": "sha256:23c244b83e90a858db4d3eef5459ab0b545c15e3911d05f6ff9f2b7e9e91b23c",
+        "planSha256": "sha256:cf522d9f6e1ac4b81dd23d15a2dd48cb9e521957e09c5b6c17a0c95f9ee14b7c",
+        "modelSha256": "sha256:f41bd706c16b8b755ac2b42901b111ab9943d325cadc33bd8b152520dd1e217a",
         "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
-        "specSha256": "sha256:90194098ce0a80b7c515ea4e3a0e73d84c8e181d0dce23a83b37ad2a8d9dccfe",
+        "specSha256": "sha256:8b6d60868a88245a12b50cbab01ff5c8a93402e56244163b3ca9d664c63dfa1d",
+        "fragmentSha256s": {
+          "D-name": "sha256:b555a95397bcda132508dcbe5dfd699ad92c590862c489a41cd4056334d3e689",
+          "B-name": "sha256:8a003747033d6075b5abab95bddfeb89b0b17faeda5a6cb5703ab7a6cab24304",
+          "E-name": "sha256:17e6c9fb7b2944d0523152a927331bfe753c83678b2e004400d49ca6d12fb272",
+          "F-name": "sha256:05d61e81b45d12223c44b6fc7a9e44d858b3754d4537c8987645cf2c954baed0",
+          "given120-label": "sha256:e7e3ec8b3552b25b4c82f050133627f3c3be1a0caf2e08d58cf51c05c10937af",
+          "given50-label": "sha256:18ee1cdb0c339aab36c43b17d8215dac9775eecf86f48b04ee6de66ffba1a6cc"
+        },
+        "measurementsSha256": "sha256:ed259c762859f5bc4e1fc72d537d9569d3b1bbcbe01b9585c26765b76b0ae69f",
+        "svgSha256": "sha256:aa913a80dac51cdf86ac1a948f566364275a2430e118b818d2bc5ea717421aa5",
+        "witnessSha256": "sha256:71dc114d9b4d49edaab4ba8b25fb4077434bd6f92da0da22596eb57a1661a53c",
+        "staticAuditSha256": "sha256:bf45ead5520dfea30477be84dbc2c25bf18e9847296b690cf3f5720bfec31eb9",
+        "renderedLayoutSha256": "sha256:b4786c5cf5f79cb2f72ecb7f8858dd39ee7ba101d4394ac529e2da298eba8fa1"
+      }
+    },
+    {
+      "surface": "solution",
+      "identity": {
+        "questionUid": "25_연향중_2학기_중간_중1_유사2|23",
+        "surface": "SOLUTION_VISUAL",
+        "visualRole": "decisive-relation",
+        "visualAssetKey": "sha256:a8b0e9f5b60d12c76bfacab9ccaa17a9b45e8e6d60717ed6f49b3837bd171b4d",
+        "assetId": "va-281476c22974a50a6167a09d44239a0759195b929548c715a02cffb4bc46771a"
+      },
+      "status": "SAMPLE_ONLY",
+      "compositionStatus": "COMPOSED",
+      "planRef": {
+        "path": "yeon25-q23-inputs/solution-plan.json",
+        "bytes": 3376,
+        "sha256": "sha256:5c234547f9aac79276b49470d15269c563ebe29be37c0258d450e52693b5394c"
+      },
+      "svgRef": {
+        "path": "yeon25-q23-outputs/solution.svg",
+        "bytes": 10957,
+        "sha256": "sha256:85881f0eb0b88ce6287419e476ee92f8fba43bdafd73c2b550f5444a7c5345eb"
+      },
+      "pngRef": {
+        "path": "yeon25-q23-outputs/solution.png",
+        "bytes": 8803,
+        "sha256": "sha256:939cd301fba6fce0b94d38943ca9da3e8147da49541e4c803473b458da793890"
+      },
+      "staticAudit": {
+        "status": "PASS",
+        "errors": [],
+        "planeMarks": {
+          "status": "PASS",
+          "errors": [],
+          "observations": [
+            {
+              "id": "derived70",
+              "type": "ANGLE",
+              "drawnDegrees": 69.99999999921593,
+              "pointsDegrees": 69.99999999999999,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "DE",
+              "type": "SEGMENT_COLOR",
+              "color": "BLUE",
+              "strokeWidth": 2.4,
+              "stroke": "#1f5fa8"
+            },
+            {
+              "id": "DF",
+              "type": "SEGMENT_COLOR",
+              "color": "BLUE",
+              "strokeWidth": 2.4,
+              "stroke": "#1f5fa8"
+            }
+          ]
+        }
+      },
+      "renderedLayout": {
+        "status": "PASS",
+        "display": {
+          "width": 720,
+          "height": 560
+        },
+        "errors": []
+      },
+      "lineage": {
+        "planSha256": "sha256:f3a729765d7b22a04a9f2e235e73c4fc40d9c889fa6fbcf043beff28c5564039",
+        "modelSha256": "sha256:f41bd706c16b8b755ac2b42901b111ab9943d325cadc33bd8b152520dd1e217a",
+        "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
+        "specSha256": "sha256:885c3bcfb1a2640fd46c2883e22bd3778d18d8842e3e27456a374fe5bea6f4f3",
         "fragmentSha256s": {
           "D-name": "sha256:c12443cc385768e2733d89fa342c88cd5f5d892ffee167937dc3e7877fc35800",
           "B-name": "sha256:da701b92d2991cafaecc1adf31e4e4af5137bf4bef6727957ed7982f1a78d6b5",
           "E-name": "sha256:2da58f9eb4b7c6dd0aa0ce2e1759265f60fa85c4b9a34d725cc1d6376d3d4766",
           "F-name": "sha256:6acc2a777fd4d5c566fb4516eb3ff9ca55c169e680dac355983aa13db53d136d",
-          "bde-label": "sha256:d1937a87c1f5dc079b1b8ead214d0435e7572a3cf7e66dd0ee29f3e423dca1c6",
-          "edf-label": "sha256:dd77cc1bc84d522d38a69518fedf2817571c1d901c2f9a71f90b50118e529b69"
+          "derived70-label": "sha256:301724f4e0de6d1ded546cf7df4d4148245a2492bfd68048f042778ce9423e09"
         },
-        "measurementsSha256": "sha256:9a9559d72373fbf896b9439f2bbfccffd9b225bdafd4173f86e7af415323e99b",
-        "svgSha256": "sha256:3f1af7687e49a2aab0decfd2d1e4fb11ae4b9330b1a9576d665f7e08ba6a20c7",
-        "witnessSha256": "sha256:3d0050f1527ebf271b16ff4eadf29c171d6fe3897f6b834ae0e8d8b1a43e81e5",
-        "staticAuditSha256": "sha256:1b1afd6b7bc90cd9657fc470a03d21f4545e92607545094ea4937c229a344ee8",
-        "renderedLayoutSha256": "sha256:3459c004851d0d3618c5ffa59430f2e82f73c02111c7ad120232a3e184abbc7f"
+        "measurementsSha256": "sha256:f0933862b4a0a00e4f14974c807812b467ff20ee823a97417bb05be95138ca71",
+        "svgSha256": "sha256:85881f0eb0b88ce6287419e476ee92f8fba43bdafd73c2b550f5444a7c5345eb",
+        "witnessSha256": "sha256:c8b0b2a0ce8714ba245c86fe818236c7ee2571c1cfb00dba7bc7abf219c28d1b",
+        "staticAuditSha256": "sha256:a0d3c71282ed2e979c44cb143744b54c90f55e0220445dd480a978d3d451f121",
+        "renderedLayoutSha256": "sha256:87a1f0c116182f05c0ed15497e6a648097a587b9ff1bea58fcef2c04251407a1"
       }
     }
   ],
