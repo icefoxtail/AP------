@@ -1,0 +1,51 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "body",
+      "kind": "FRUSTUM",
+      "base": {
+        "kind": "RECT",
+        "width": 8,
+        "depth": 8
+      },
+      "height": 5.656854249492381,
+      "topScale": 0.5,
+      "names": "........"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "#b0",
+        "#b1"
+      ],
+      "label": "8"
+    },
+    {
+      "edge": [
+        "#t0",
+        "#t1"
+      ],
+      "label": "4"
+    }
+  ],
+  "caption": "밑면의 한 변 8 cm, 4 cm · 옆면 사다리꼴의 높이 6 cm",
+  "sourceQuote": "현 유사 Q17 정사각형 두 밑면4/8, 합동인 네 옆면의 높이6",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "밑면 한 변4와8, 옆면 높이6; 내부 수직높이는 도형 일관성을 위해 sqrt32이며 문제 표시하지 않음",
+      "mappedTo": [
+        "body"
+      ]
+    }
+  ],
+  "highlights": [
+    {
+      "face": "side0",
+      "fill": "LIGHT"
+    }
+  ]
+}
