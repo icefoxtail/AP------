@@ -29,7 +29,7 @@ test('catalog, production registration, shared player and all 12 scripts agree',
   assert.deepEqual(Object.keys(lab.def.lessons), ['i1', 'i2', 'i3']);
   for (const file of ['../kit/apl-core.js', '../kit/apl-board.js', '../kit/apl-shell.js', '../kit/apl-video-core.js', '../kit/apl-player.js', '../kit/apl-toc.js', 'common-irrational/lesson-core.js', 'common-irrational/lesson-a.js']) assert.ok(lab.loaded.includes(file), file);
   assert.ok(lab.html.includes('../kit/apl-video.css'));
-  assert.match(fs.readFileSync(new URL('../kit/apl-player.js', import.meta.url), 'utf8'), /DEFAULT_PLAYBACK_RATE\s*=\s*1\.5/);
+  assert.match(fs.readFileSync(new URL('../kit/apl-player.js', import.meta.url), 'utf8'), /DEFAULT_PLAYBACK_RATE\s*=\s*2/);
   let concepts = 0, originals = 0;
   for (const scene of lab.list) {
     assert.equal(list(scene.id).length, 4);
