@@ -14,7 +14,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 직각삼각형 ABC에서 sin A × tan B의 값은? (3점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q1.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q1_question-v2.png",
     "choices": [
       "$\\frac{1}{4}$",
       "$\\frac{\\sqrt{3}}{4}$",
@@ -56,7 +56,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 직각삼각형 ABC에서 sin B+cos A의 값은? (3점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q2.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q2_question-v2.png",
     "choices": [
       "$\\frac{\\sqrt{7}}{4}$",
       "$\\frac{\\sqrt{7}}{2}$",
@@ -221,7 +221,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 그림과 같이 점 O를 중심으로 하고 반지름의 길이가 1인 사분원에서 sin 32°−cos 58°+tan 32°의 값은? (4점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q6.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q6_question-v2.png",
     "choices": [
       "$0.3$",
       "$0.32$",
@@ -263,7 +263,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 그림과 같이 학생이 나무로부터 10 m 떨어진 지점 A에서 나무의 꼭대기 B를 올려본 각의 크기가 28°이다. 이 학생의 눈높이가 1.6 m일 때, 이 나무의 높이는? (단, sin 28°=0.470, cos 28°=0.883, tan 28°=0.532로 계산한다.) (4점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q7.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q7_question-v2.png",
     "choices": [
       "$5.48 m$",
       "$6.3 m$",
@@ -305,7 +305,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 삼각형 ABC에서 AB의 길이는? (4점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q8.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q8_question-v2.png",
     "choices": [
       "$3$",
       "$2\\sqrt{3}$",
@@ -347,7 +347,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 삼각형 ABC의 넓이가 15√3 cm²일 때, ∠A의 크기는? (단, ∠A는 둔각) (4점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q9.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q9_question-v2.png",
     "choices": [
       "$110^\\circ$",
       "$120^\\circ$",
@@ -389,7 +389,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 직각삼각형 ABC에서 AC ⟂ BD, AB ⟂ DE일 때, 삼각형 ABD의 넓이는? (4점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q10.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q10_question-v2.png",
     "choices": [
       "$34\\sqrt{3}$",
       "$38\\sqrt{2}$",
@@ -472,7 +472,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 직사각형 ABCD에서 cos x°의 값은? (5점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q12.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q12_question-v2.png",
     "choices": [
       "$\\frac{\\sqrt{5}}{5}$",
       "$\\frac{2\\sqrt{5}}{5}$",
@@ -514,7 +514,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 그림과 같이 폭이 8 cm인 종이를 선분 AC를 접는 선으로 하여 접었다. ∠ABC=45°일 때, 삼각형 ABC의 넓이는? (5점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q13.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q13_question-v2.png",
     "choices": [
       "$16 \\,\\mathrm{cm}^2$",
       "$32 \\,\\mathrm{cm}^2$",
@@ -556,7 +556,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 그림에서 x+y의 값은? (3점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q14.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q14_question-v2.png",
     "choices": [
       "$19$",
       "$22$",
@@ -598,7 +598,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 그림과 같이 원 O의 두 현 AB와 CD가 수직으로 만난다. AM=9 cm, MB=3 cm일 때, CD의 길이는? (4점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q15.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q15_question-v2.png",
     "choices": [
       "$\\sqrt{3} cm$",
       "$3\\sqrt{3} cm$",
@@ -640,7 +640,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 그림에서 OM ⟂ AB, ON ⟂ BC이고 OM=ON이다. ∠MON=110°일 때, ∠ACB의 크기는? (4점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q16.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q16_question-v2.png",
     "choices": [
       "$55^\\circ$",
       "$60^\\circ$",
@@ -682,7 +682,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 그림에서 두 점 A와 B는 점 P에서 원 O에 그은 두 접선의 접점이다. PA=6 cm, ∠APB=60°일 때, 삼각형 APB의 넓이는? (4점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q17.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q17_question-v2.png",
     "choices": [
       "$9 \\,\\mathrm{cm}^2$",
       "$9\\sqrt{2} \\,\\mathrm{cm}^2$",
@@ -724,7 +724,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 그림에서 사각형 ABCD가 원 O에 외접할 때, CD의 길이는? (4점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q18.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q18_question-v2.png",
     "choices": [
       "$5 cm$",
       "$6 cm$",
@@ -766,7 +766,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 그림에서 BC는 반원 O의 지름이고 AB, AD, CD는 반원 O의 접선이다. 점 E가 접점이고 AB=3 cm, CD=7 cm일 때, 반원 O의 넓이는? (4점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q19.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q19_question-v2.png",
     "choices": [
       "$\\sqrt{21}\\pi \\,\\mathrm{cm}^2$",
       "$21/2 \\pi \\,\\mathrm{cm}^2$",
@@ -808,7 +808,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 그림에서 중심이 같은 두 원의 반지름의 길이는 각각 6, 10이고 점 Q, R은 작은 원의 접점이다. 큰 원의 두 현 AB와 CD의 교점을 P라 할 때, AP의 길이는? (단, AB ⟂ CD) (5점)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q20.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q20_question-v2.png",
     "choices": [
       "$14$",
       "$15$",
@@ -850,7 +850,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 그림과 같이 한 모서리의 길이가 5인 정육면체에서 ∠CEG=x°라 할 때, sin x° × tan x°의 값을 구하는 과정을 설명하시오. (5점, 부분점수 있음)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q21.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q21_question-v2.png",
     "choices": [],
     "answer": "√6/6",
     "solution": "정육면체에서 $EG$는 밑면의 대각선이므로 $EG=5\\sqrt2$이다. $CG$는 모서리이므로 $CG=5$이고, 공간 대각선 $EC=5\\sqrt3$이다. 삼각형 EGC는 G에서 직각이다.\n\n따라서 $\\sin x=\\dfrac{CG}{EC}=\\dfrac1{\\sqrt3}$, $\\tan x=\\dfrac{CG}{EG}=\\dfrac1{\\sqrt2}$이다.\n\n$\\sin x\\times\\tan x=\\dfrac1{\\sqrt6}=\\dfrac{\\sqrt6}{6}$이다.",
@@ -886,7 +886,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 그림과 같이 성 밖의 A 지점에서 성벽의 꼭대기 B 지점을 올려본 각의 크기가 30°이고, 성 쪽으로 20 m 다가간 D 지점에서 B 지점을 올려본 각의 크기가 45°이었다. 이때 성벽의 높이를 구하는 과정을 설명하시오. (5점, 부분점수 있음)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q22.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q22_question-v2.png",
     "choices": [],
     "answer": "10(√3+1) m",
     "solution": "성벽의 높이를 $h$ m, 가까운 지점 $D$에서 성벽까지의 거리를 $d$ m라 하자.\n$D$에서 올려본 각이 $45^\\circ$이므로\n$$\\tan45^\\circ=\\dfrac hd=1$$\n따라서 $d=h$이다.\n\n먼 지점 $A$는 $D$보다 성벽에서 $20$ m 멀기 때문에 성벽까지의 거리는 $h+20$ m이다.\n$A$에서 올려본 각이 $30^\\circ$이므로\n$$\\tan30^\\circ=\\dfrac{h}{h+20}=\\dfrac1{\\sqrt3}$$\n$$\\sqrt3h=h+20$$\n$$(\\sqrt3-1)h=20$$\n분모를 유리화하면\n$$h=\\dfrac{20}{\\sqrt3-1}$$\n$$=\\dfrac{20(\\sqrt3+1)}{(\\sqrt3-1)(\\sqrt3+1)}$$\n$$=\\dfrac{20(\\sqrt3+1)}{3-1}$$\n$$=10(\\sqrt3+1)$$\n따라서 성벽의 높이는 $10(\\sqrt3+1)$ m이다.",
@@ -922,7 +922,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 그림에서 AB ⟂ OC이고 BM=6 cm, CM=3 cm일 때, 원의 반지름의 길이를 구하는 과정을 설명하시오. (5점, 부분점수 있음)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q23.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q23_question-v2.png",
     "choices": [],
     "answer": "15/2 cm",
     "solution": "$OM$은 현 $AB$의 수직이등분선이므로 $AM=MB=6$ cm이다. $AB\\perp OC$이고 $C$는 $M$에서 아래로 $3$ cm 떨어져 있으므로 $OC=OM+3$이다. 반지름을 $r$이라 하면 $OM=r-3$이다.\n\n직각삼각형 $OMB$에서\n$r^2=(r-3)^2+6^2$\n$r^2=r^2-6r+9+36$\n$6r=45$\n$r=\\dfrac{15}{2}$ cm이다.",
@@ -958,7 +958,7 @@ window.questionBank = [
     "tags": ["도형"],
     "wide": false,
     "content": "다음 그림에서 원 O는 직사각형 ABCD의 세 변과 접하고, 세 점 E, F, G는 접점이다. 또 DH는 원 O의 접선이고 점 I는 접점일 때, GH의 길이를 구하는 과정을 설명하시오. (5점, 부분점수 있음)",
-    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q24.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q24_question-v2.png",
     "choices": [],
     "answer": "3 cm",
     "solution": "그림에서 $DH=15$ cm, $DC=12$ cm이다. 직각삼각형 $DCH$에서 $CH=\\sqrt{15^2-12^2}=9$ cm이다. 원은 위·아래 변에 접하고 직사각형의 높이가 12 cm이므로 반지름은 6 cm이고, $BG=6$ cm이다. 직사각형의 가로를 $w$ cm라 하자. 꼭짓점 $A$에서 그은 두 접선의 길이가 같으므로 $AE=AF=6$ cm이고, $DE=w-6$ cm이다. 꼭짓점 $D$에서 그은 접선의 길이가 같아 $DI=DE=w-6$ cm이다. 또 $BC=w$ cm이므로 $GH=BC-BG-CH=w-6-9=w-15$ cm이다. 점 $H$에서 그은 두 접선의 길이가 같아 $HI=HG=w-15$ cm이다. 따라서 $DH=DI+IH=(w-6)+(w-15)=2w-21=15$이므로 $w=18$이다. 그러므로 $GH=w-15=3$ cm이다.",
