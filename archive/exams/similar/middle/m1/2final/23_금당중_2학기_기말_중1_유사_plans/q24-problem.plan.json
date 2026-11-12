@@ -1,0 +1,73 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "(1) 원기둥"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "CYLINDER",
+            "radius": 3,
+            "height": 6
+          }
+        ],
+        "dims": [
+          {
+            "radius": "bottom"
+          },
+          {
+            "height": true,
+            "side": "RIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "(2) 정사각뿔"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "PYRAMID",
+            "base": {
+              "kind": "RECT",
+              "width": 5,
+              "depth": 5
+            },
+            "height": 12,
+            "names": "....."
+          }
+        ],
+        "dims": [
+          {
+            "edge": [
+              "#b0",
+              "#b1"
+            ],
+            "label": "5"
+          },
+          {
+            "height": true,
+            "side": "RIGHT"
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "(1) 반지름 3cm, 높이 6cm인 원기둥과 (2) 밑면 한 변 5cm, 높이 12cm인 정사각뿔",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원기둥(r=3, h=6)과 정사각뿔(밑변 5, h=12)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": []
+}

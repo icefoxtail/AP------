@@ -1,0 +1,67 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-3"
+        ],
+        "label": "y=-3x"
+      },
+      {
+        "id": "g",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-12",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "label": "y=a/x"
+      }
+    ],
+    "viewport": [
+      -6,
+      6,
+      -10,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "-6"
+        }
+      ],
+      "guides": [
+        {
+          "id": "g1",
+          "from": "P",
+          "axis": "x"
+        }
+      ]
+    }
+  },
+  "caption": "y=-3x와 y=a/x의 그래프가 x=2에서 만나는 그림",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 그래프의 교점 x좌표가 2",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": []
+}

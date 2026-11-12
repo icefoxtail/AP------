@@ -1,0 +1,44 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CONE",
+      "radius": 4,
+      "height": 9,
+      "orientation": "APEX_DOWN",
+      "names": {
+        "apex": "."
+      }
+    },
+    {
+      "kind": "CYLINDER",
+      "radius": 6,
+      "height": 6
+    }
+  ],
+  "dims": [
+    {
+      "radius": "top",
+      "solid": "s1"
+    },
+    {
+      "height": true,
+      "solid": "s1",
+      "side": "LEFT"
+    },
+    {
+      "radius": "bottom",
+      "solid": "s2"
+    }
+  ],
+  "caption": "반지름 4cm, 높이 9cm인 원뿔 그릇과 반지름 6cm인 원기둥 그릇",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원뿔(r=4, h=9)에서 원기둥(r=6)으로 물 옮김",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": []
+}
