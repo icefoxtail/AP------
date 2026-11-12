@@ -16,22 +16,38 @@
         "scope": "Q12 choices",
         "before": "All five choice values were blank (`$개`); source solution derives a count of 3 and marks ③.",
         "after": "Restored the ordered count choices 1개 through 5개, preserving answer ③.",
-        "independentCheck": "Recomputed 2a+b=36; b even and two-digit with b<18 gives 10,12,14,16; a≠b removes 12, leaving three."
+        "independentCheck": "Recomputed 2a+b=36; b even and two-digit with b<18 gives 10,12,14,16; a≠b removes 12, leaving three.",
+        "independentReviewer": "/root/wangwoon_independent_review",
+        "independentReviewDate": "2026-11-12",
+        "independentReview": "Confirmed: b=10,12,14,16; a=(36-b)/2 yields 13,12,11,10, and distinctness excludes b=12, leaving 3 triangles; restored 1–5 choices correctly map answer ③."
       },
       {
         "scope": "Q13 answer/solution",
         "before": "Key ① asserted ASA congruence although the second triangle did not state which side of length 5 is between the 55° and 60° angles.",
         "after": "Changed answer to ⑤ and clarified the supplied side-location data is insufficient to conclude congruence.",
-        "independentCheck": "The first 5 cm side is opposite 60°; in the second triangle the 5 cm side has no specified endpoint-angle pair, so ASA correspondence is unproved."
+        "independentCheck": "The first 5 cm side is opposite 60°; in the second triangle the 5 cm side has no specified endpoint-angle pair, so ASA correspondence is unproved.",
+        "independentReviewer": "/root/wangwoon_independent_review",
+        "independentReviewDate": "2026-11-12",
+        "independentReview": "Confirmed: the second triangle does not identify which two angles bound the 5 cm side, so that side could correspond to a different angle/scale; congruence is not determined, making ⑤ sound. Source wording is awkward but does not remove the ambiguity."
       },
       {
-        "scope": "Q20 choices",
-        "status": "HELD",
-        "reason": "Several numerical values are missing from all five source choices. Kept source choice text and answer in the draft; did not invent distractors. The item is marked BLOCKED_SOURCE_DEFECT."
+        "scope": "Q20 choices and answer",
+        "before": "Drive MD had multiple blank choice values; source answer key was ⑤.",
+        "after": "Restored all five choices from the source exam PDF, page 4 (Drive file 1Hwzv7SWlboNlIdWjI4TTM_WbLCbywySf). Set answer to unconfirmed and kept Q20 blocked because both options ③ (≥4만원 count 31) and ④ (<3만원 share 10%) are supported by the displayed data; the MD answer ⑤ is inconsistent with the recovered PDF options.",
+        "independentCheck": "From graph labels: 1~2만원=2, 2~3만원=3, 3~4만원=14; total 50, so ≥4만원=50−(2+3+14)=31. Also <3만원=2+3=5 and 5/50=10%. The single-answer item has at least two correct options.",
+        "sourcePdfPage": 4,
+        "sourcePdfDriveId": "1Hwzv7SWlboNlIdWjI4TTM_WbLCbywySf",
+        "status": "BLOCKED_AMBIGUOUS_SOURCE"
       },
       {
         "scope": "Units",
         "change": "Replaced malformed number-comma-unit TeX (for example `4,\\mathrm{cm}`) with thin-space unit notation `4\\,\\mathrm{cm}` across prompt/choice/answer/solution strings."
+      },
+      {
+        "scope": "Q12/Q13 independent verification",
+        "reviewer": "/root/wangwoon_independent_review",
+        "reviewDate": "2026-11-12",
+        "result": "Q12 count and choices confirmed. Q13 answer ⑤ is justified because the second triangle’s 5 cm side has no specified endpoint-angle pair; source’s ASA claim assumes unstated placement. Reviewer notes the Q13 Korean phrase “서로 다른 여섯 개의 삼각형 중에서” is awkward."
       }
     ],
     "embeddedMetaTailRecords": [
@@ -1579,7 +1595,7 @@
         "currentCandidateAsset": null,
         "reason": "누락 구간과 보이는 계급을 시각적으로 대조해야 하나 보기 수치 원문 보완 대기."
       },
-      "reason": "다음은 학생 $50$명이 지난 $1$년 동안 저축한 금액을 조사하여 나타낸 도수분포다각형인데, $4$만 원 이상 $5$만 원 미만인 부분이 찢어져서 보이지 않는다. 다음 설명 중 옳은 것은? [4점]"
+      "reason": "다음은 학생 $50$명이 지난 $1$년 동안 저축한 금액을 조사하여 나타낸 도수분포다각형인데, $4$만 원 이상 $5$만 원 미만인 부분이 찢어져서 보이지 않는다. 다음 설명 중 옳은 것은? [4점] 원문 PDF 4쪽 확인으로 그래프 수치 존재 확인; 보기 ③·④가 모두 참이어서 문항 정답은 보류."
     },
     {
       "sourceOrdinal": 21,
@@ -1632,7 +1648,7 @@
   ],
   "validation": {
     "jsSyntax": "PASS (node --check)",
-    "mathReview": "UNREVIEWED except self-checks logged for Q12/Q13; Q20 blocked by source defect",
+    "mathReview": "Q12/Q13 independently verified by /root/wangwoon_independent_review; Q20 remains blocked as source has multiple correct statements after PDF recovery.",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "SVG intentionally deferred; no candidate images referenced",
     "contentResidueAudit": {
@@ -1646,10 +1662,10 @@
     "objectiveChoiceCountAudit": "PASS: 20 objective items have five option slots; Q20 option values remain unresolved and that question is source-blocked."
   },
   "pipelineState": "PARTIALLY_BLOCKED_SOURCE_DEFECT_Q20",
-  "expectedSourceBlobSha1": "60d960584916be0f367d036cb3119fcea5319c80",
+  "expectedSourceBlobSha1": "9ada6ff0be2c65ba2174d729db36e5ad70d3f63e",
   "fourSlotCandidate": {
     "path": "archive/exams/similar/middle/m1/2mid/24_왕운중_2학기_중간_중1_유사.4slot-candidate.json",
-    "sha256": "654219db69bf9b6baaac3b34e702ce657c240993de62936cdd6cd6284280f471",
+    "sha256": "d49a228469abfbe782db990aa188691786e00536f64fd72a7595e92007031ebb",
     "status": "UNREVIEWED"
   }
 }
