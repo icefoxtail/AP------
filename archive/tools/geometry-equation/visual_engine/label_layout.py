@@ -791,10 +791,10 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         retry=layout_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,tick_labels_first_order)
         if len(retry['unresolved'])<len(result['unresolved']):
             result=retry   # (trig) the tick numbers that are still unresolved go on to the leader fallback below instead of ending here
-    # tickCalloutFallback (set only by figures that opt in, e.g. discontinuous functions with dashed approach guides): a tick number whose two
-    # axis-normal sides are all blocked keeps its tick and moves to a small offset with a leader to that tick, never dropped. The first offset
+    # (every plan, not only tickLabelFallbackCallout ones: a tick number is never dropped) A tick number whose two
+    # axis-normal sides are all blocked (a segment running over its tick) keeps its tick and moves to a small offset with a leader to that tick, never dropped. The first offset
     # (of TICK_CALLOUT_OFFSETS) that resolves the label wins; a layout that already resolved is never changed.
-    pending=[label for label in labels if label['id'] in result['unresolved'] and label.get('kind')=='TICK_LABEL' and label.get('tickCalloutFallback') is True and label.get('tickLabelCallout') is None]
+    pending=[label for label in labels if label['id'] in result['unresolved'] and label.get('kind')=='TICK_LABEL' and label.get('tickLabelCallout') is None]
     if pending:
         current=labels
         for target in pending:
@@ -808,6 +808,10 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                 if target['id'] not in retry['unresolved'] and len(retry['unresolved'])<=len(result['unresolved']):
                     current=trial;result=retry;break
     return result
+
+def tick_ground_line_ids(obstacles,at):
+    """Ids of the drawn lines/segments (kind 'line', not an axis) that pass exactly through the tick point `at`."""
+    return {o.get('id') for o in obstacles if o.get('kind')=='line' and isinstance(o.get('id'),str) and not o['id'].endswith('-axis') and isinstance(o.get('geometry'),(list,tuple)) and any(point_segment_distance(at,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
 
 def tick_labels_first_order(label):
     """The tick-label retry order: at one priority the tick numbers go first (each is bound to its axis tick and may stand on two sides only), then every other label as in the first pass."""
@@ -916,6 +920,9 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 owner_ids|={o.get('id') for o in occupied if o.get('kind') in {'circle','point'} and math.dist((o['geometry'][0],o['geometry'][1]),label['at'])<=1e-3}
                 # Likewise a dashed approach guide, or an overlay line/guide (a vertical line x=a through the tick, G5b), that passes exactly through this tick belongs to it (the leader may touch it only at its start).
                 owner_ids|={o.get('id') for o in occupied if (o.get('kind')=='line' and ('-guide-' in str(o.get('id')) or str(o.get('id','')).startswith(('overlay-line-','overlay-guide-','trig-pole-','line-'))) or o.get('kind')=='curve' and str(o.get('id','')).split('-piece-')[0] in ('f','g')) and isinstance(o.get('geometry'),(list,tuple)) and any(point_segment_distance(label['at'],c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
+                if not leader_clear(label['at'],end,occupied,owner_ids):
+                    # A drawn segment or line running over the tick (the segment y=-5 over the tick -5) is the tick's own ground: its crossing at the leader's start is allowed.
+                    owner_ids|=tick_ground_line_ids(occupied,label['at'])
                 if not leader_clear(label['at'],end,occupied,owner_ids):
                     chosen=None;method=None
                     trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['OWNER_LEADER_CLEARANCE']})
