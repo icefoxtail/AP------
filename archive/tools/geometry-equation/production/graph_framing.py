@@ -4537,6 +4537,8 @@ def _mc_regions(plan,curves,viewport):
         rows.append(row)
     return rows
 
+MULTI_CURVE_TALL_PLOT_HEIGHT=1000   # plot height (canvas 1064) reached only when the usual 640 would refuse the figure as too narrow
+
 def fit_multi_curve(plan):
     curves=multi_curve_source(plan)
     window=_mc_window(plan) if any(curve['kind'] in MULTI_CURVE_FREE_KINDS or curve.get('inverseOf') is not None for curve in curves) else None
@@ -4549,10 +4551,17 @@ def fit_multi_curve(plan):
     xs=[point[0] for point in points];ys=[point[1] for point in points]
     xspan,yspan=max(xs)-min(xs),max(ys)-min(ys)
     if not math.isfinite(xspan) or not math.isfinite(yspan) or xspan<=0 or yspan<=0:raise ValueError('MULTI_CURVE_FRAME_DEGENERATE')
-    limit=plot_height_limit(plan)
-    for ratio in axis_ratios(plan,points,limit):
-        viewport,height,scale=equal_unit_frame(points,limit,ratio)
-        if xspan*scale>=EQUAL_UNIT_MIN_CURVE_PX and yspan*scale*ratio>=EQUAL_UNIT_MIN_CURVE_PX:break
+    limits=[plot_height_limit(plan)]
+    # (TOO_NARROW) A tall, narrow figure at one scale: the usual plot (at most 640 high) leaves the curves under 48 px wide. Before refusing, the plot grows
+    # up to MULTI_CURVE_TALL_PLOT_HEIGHT (a figure that still fits the 1099 px display height); the scale stays equal on both axes, only the canvas is taller.
+    # A panel of a stack (plotHeightLimit set by the composite) keeps its own limit.
+    if 'plotHeightLimit' not in plan:limits.append(MULTI_CURVE_TALL_PLOT_HEIGHT)
+    for limit in limits:
+        for ratio in axis_ratios(plan,points,limit):
+            viewport,height,scale=equal_unit_frame(points,limit,ratio)
+            if xspan*scale>=EQUAL_UNIT_MIN_CURVE_PX and yspan*scale*ratio>=EQUAL_UNIT_MIN_CURVE_PX:break
+        else:continue
+        break
     else:raise ValueError('MULTI_CURVE_TOO_NARROW')
     rows=[_mc_row(curve) for curve in curves]
     features={'schemaVersion':'MULTI_CURVE_FEATURES_v1','curves':rows}
