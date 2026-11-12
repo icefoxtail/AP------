@@ -226,7 +226,11 @@ window.questionBank = [
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 −1과 그 양쪽의 두 근, 근 사이 간격 1을 나타낸 수직선.",
+    "solutionImageCaption": "두 근 사이의 거리가 1이므로 2√(a/3)=1이다. 따라서 a=3/4, 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -291,7 +295,11 @@ window.questionBank = [
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 근 (−2−2√7)/3, (−2+2√7)/3 사이의 열린 구간과 정수 눈금.",
+    "solutionImageCaption": "근은 약 −2.43과 1.10이므로 사이의 정수는 −2, −1, 0, 1의 4개이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -324,7 +332,11 @@ window.questionBank = [
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 6에서 같은 거리만큼 떨어진 자연수 두 근의 대칭 위치와 가능한 거리 눈금.",
+    "solutionImageCaption": "두 근을 6±t라 하면 t=1,2,3,4,5이고 k=3t²−2이다. k값의 합은 155, 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -388,7 +400,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: y=2x²과 x축 대칭인 y=−2x², 그리고 P(−2,8)과 R(−2,−8)의 대응을 나타낸 그래프.",
+    "solutionImageCaption": "꼭짓점은 (0,0), 대칭축은 y축이다. y=2x²은 (−2,8)을 지나고 x축 대칭 그래프는 y=−2x²이다. 옳지 않은 설명은 ⑤이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -421,7 +437,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: y=−3x²과 x축 대칭인 y=3x², 그리고 대응점 P(−2,−12), Q(−2,12)를 나타낸 그래프.",
+    "solutionImageCaption": "a=−12, b=3이므로 a−b=−15이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -455,7 +475,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: x=3에 꼭짓점이 있는 아래로 열린 포물선과 y절편 (0,−9/2).",
+    "solutionImageCaption": "y=a(x−3)²에 (0,−9/2)를 대입하면 a=−1/2이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -523,7 +547,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통 높이 y=2/3에서 두 포물선의 교점 A, B, C, D와 수평거리 AC=3, BD=3을 나타낸 그래프.",
+    "solutionImageCaption": "A와 C, B와 D는 각각 같은 쪽의 교점으로 수평거리가 3이다. 따라서 AC+BD=6, 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -590,7 +618,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선 위 같은 x좌표의 A, B와 x축 발 H, 왼쪽의 C, D, E 및 주어진 DE=1/3을 나타낸 그래프. CE 값은 그림에 쓰지 않았다.",
+    "solutionImageCaption": "예시로 오른쪽은 x=√3에서 A와 B의 높이 차가 2, BH가 1인 관계를 보이고, 왼쪽은 주어진 ED=1/3을 나타낸다. 일반 조건에서 CE=1, 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -623,7 +655,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통 꼭짓점 (−2,3)을 가진 두 아래로 열린 포물선과 양수·음수 y절편을 비교한 예시 그래프.",
+    "solutionImageCaption": "예시 두 포물선은 공통 꼭짓점에서 아래로 열리고 y절편의 부호가 서로 달라 사분면 통과가 달라짐을 보인다. 전체 조건은 −3/4<a<0, 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -657,7 +693,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 그림 (1) P–Q와 그림 (2) P–R의 원본 꼭짓점 구간을 밑변으로 옮긴 두 높이 5 직사각형. 두 번째 밑변은 4+p로 표기하고 수치 p는 숨겼다.",
+    "solutionImageCaption": "그림 (1) 넓이는 5×4, 그림 (2)는 5(4+p)이다. 넓이 비가 4이므로 p=12, 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -711,7 +751,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 위 꼭짓점 A, y절편 B와 원점 O가 만드는 삼각형, 밑변 OB=19와 높이 AH=1.",
+    "solutionImageCaption": "넓이는 1/2×19×1=19/2이다. 정답은 19/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -739,6 +783,10 @@ window.questionBank = [
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
     "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC, C 중심의 원, BC 위의 D·C·E·B 배치와 같은 반지름 AC=CE=CD를 나타낸 작도도.",
+    "solutionImageCaption": "BC=BE+CE=x+b/2이고 피타고라스 정리로 c+(b/2)²=(x+b/2)²이다. 양의 해는 x=(−b+√(b²+4c))/2이다. 정답: (가) c+(b/2)²=(x+b/2)², (나) (−b+√(b²+4c))/2.",
+    "solutionImageSize": "full"
   }
 ];
