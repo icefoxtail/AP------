@@ -25,7 +25,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 행렬의 성분 정의를 이해하고 각 성분의 값을 대입하여 계산한다.\\n조건 정리: $a_{ij}=i^2+j$이고, $A$는 $2 \\times 2$ 행렬이므로 $i, j \\in \\{1, 2\\}$이다.\\n풀이 방향: 각 성분 $a_{11}, a_{12}, a_{21}, a_{22}$를 차례로 구하여 모두 더한다.\\n정석 풀이: \\n$a_{11} = 1^2 + 1 = 2$\\n$a_{12} = 1^2 + 2 = 3$\\n$a_{21} = 2^2 + 1 = 5$\\n$a_{22} = 2^2 + 2 = 6$\\n모든 성분의 합은 $2 + 3 + 5 + 6 = 16$이다.\\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -165,7 +165,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 두 행렬이 서로 같을 조건은 같은 위치에 대응하는 성분이 각각 일치해야 한다는 점을 이용한다.\\n조건 정리: 두 $2 \\times 2$ 행렬이 서로 같다.\\n풀이 방향: $(1, 1)$ 성분과 $(2, 2)$ 성분이 같음을 이용하여 $x, y$에 대한 방정식을 세운다.\\n정석 풀이: \\n두 행렬이 서로 같으므로 대응하는 성분이 같다.\\n$(1, 1)$ 성분을 비교하면,\\n$x+2 = 5 \\implies x = 3$\\n$(2, 2)$ 성분을 비교하면,\\n$y-4 = -2 \\implies y = 2$\\n따라서 $x - y = 3 - 2 = 1$이다.\\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -277,7 +277,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 행렬의 곱셈은 교환법칙이 성립하지 않으므로 곱셈 공식 변형을 사용하는 것보다 부분 행렬을 직접 연산하는 것이 오류를 방지한다.\\n조건 정리: $A=\\begin{pmatrix} 2 & 1 \\\\ 0 & -1 \\end{pmatrix}$, $B=\\begin{pmatrix} -1 & 0 \\\\ 1 & 2 \\end{pmatrix}$이다.\\n풀이 방향: 행렬 $A-B$를 구하여 제곱하고, $2AB$를 각각 따로 계산한 후 마지막에 더해 모든 성분의 합을 구한다.\\n정석 풀이: \\n먼저 $A-B$를 구하면 다음과 같다.\\n$A-B = \\begin{pmatrix} 2 - (-1) & 1 - 0 \\\\ 0 - 1 & -1 - 2 \\end{pmatrix} = \\begin{pmatrix} 3 & 1 \\\\ -1 & -3 \\end{pmatrix}$\\n이를 거듭제곱하면,\\n$(A-B)^2 = \\begin{pmatrix} 3 & 1 \\\\ -1 & -3 \\end{pmatrix} \\begin{pmatrix} 3 & 1 \\\\ -1 & -3 \\end{pmatrix} = \\begin{pmatrix} 9-1 & 3-3 \\\\ -3+3 & -1+9 \\end{pmatrix} = \\begin{pmatrix} 8 & 0 \\\\ 0 & 8 \\end{pmatrix}$이다.\\n다음으로 $AB$를 구하면 다음과 같다.\\n$AB = \\begin{pmatrix} 2 & 1 \\\\ 0 & -1 \\end{pmatrix} \\begin{pmatrix} -1 & 0 \\\\ 1 & 2 \\end{pmatrix} = \\begin{pmatrix} -2+1 & 0+2 \\\\ 0-1 & 0-2 \\end{pmatrix} = \\begin{pmatrix} -1 & 2 \\\\ -1 & -2 \\end{pmatrix}$\\n여기에 실수배 2를 곱하면,\\n$2AB = \\begin{pmatrix} -2 & 4 \\\\ -2 & -4 \\end{pmatrix}$이다.\\n따라서 두 행렬을 더하면,\\n$(A-B)^2 + 2AB = \\begin{pmatrix} 8 & 0 \\\\ 0 & 8 \\end{pmatrix} + \\begin{pmatrix} -2 & 4 \\\\ -2 & -4 \\end{pmatrix} = \\begin{pmatrix} 6 & 4 \\\\ -2 & 4 \\end{pmatrix}$이다.\\n모든 성분의 합은 $6 + 4 + (-2) + 4 = 12$이다.\\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -447,7 +447,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 대각행렬의 거듭제곱 성질과 이차방정식의 근과 계수의 관계 및 곱셈 공식의 변형을 이용하여 식의 값을 구한다.\\n조건 정리: $x^2-6x+4=0$의 두 실근이 $\\alpha, \\beta$이고, 주어진 행렬은 대각행렬이다.\\n풀이 방향: 대각행렬 $X$를 제곱하여 성분을 확인한 후, 모든 성분의 합이 $\\alpha^2 + \\beta^2$임을 파악하고 근과 계수의 관계로 이를 구한다.\\n정석 풀이: \\n이차방정식의 근과 계수의 관계에 의해 두 근의 합과 곱은 다음과 같다.\\n$\\alpha+\\beta=6$, $\\alpha\\beta=4$\\n행렬 $X^2$을 구하면,\\n$X^2 = \\begin{pmatrix} \\alpha & 0 \\\\ 0 & \\beta \\end{pmatrix} \\begin{pmatrix} \\alpha & 0 \\\\ 0 & \\beta \\end{pmatrix} = \\begin{pmatrix} \\alpha^2 & 0 \\\\ 0 & \\beta^2 \\end{pmatrix}$이다.\\n행렬 $X^2$의 모든 성분의 합은 $\\alpha^2 + \\beta^2$이다.\\n곱셈 공식의 변형을 이용하면,\\n$\\alpha^2 + \\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = 6^2 - 2 \\times 4 = 36 - 8 = 28$이다.\\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

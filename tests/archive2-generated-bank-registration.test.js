@@ -77,7 +77,8 @@ test('consumer DB preserves previous approvals, registers current Palma rows and
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B02-')).length, 38);
   // 2026-11-03 재승인: #1237, #1245에서 해설(solution)만 수정됨. 문제·정답·보기는 변경 없음.
   // 2026-11-10 #1575: 해설 그림(solutionImage*)만 추가·교체, 문제·정답·보기·해설 글 변경 없음.
-  assert.equal(canonicalSourceGitSha(fs.readFileSync(path.join(root, originalFile))), '4a48408434e74ae67ac09552fe182cf032de7878');
+  // 2026-11-12: subUnit 라벨만 수정(H22-C-09-CORE '경우의 수 핵심 개념' -> '행렬과 그 연산 핵심 개념'). 문제·정답·보기·해설 변경 없음.
+  assert.equal(canonicalSourceGitSha(fs.readFileSync(path.join(root, originalFile))), '4287ed127a54bdffcb37995cc9760794bcb5f054');
 });
 
 test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound consumer shards with five choices', () => {
