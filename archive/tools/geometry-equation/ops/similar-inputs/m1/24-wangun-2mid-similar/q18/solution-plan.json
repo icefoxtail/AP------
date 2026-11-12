@@ -1,0 +1,47 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "boundaries": [
+      "50",
+      "60",
+      "70",
+      "80",
+      "90",
+      "100"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          4,
+          5,
+          7,
+          8,
+          6
+        ]
+      }
+    ],
+    "yKind": "FREQUENCY",
+    "xTitle": "성적(점)",
+    "yTitle": "도수(명)",
+    "grid": true,
+    "showValues": true,
+    "total": 30,
+    "highlightClasses": [
+      3
+    ]
+  },
+  "caption": "상위 9번째는 80~90점 계급 · 이 계급의 도수는 8명",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "Q18 current similar draft: class frequencies [4, 5, 7, 8, 6]",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Solution visualization of supplied table; no duplicate problem SVG needed."
+  ]
+}

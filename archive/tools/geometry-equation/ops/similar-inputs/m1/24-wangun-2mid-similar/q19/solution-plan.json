@@ -1,0 +1,47 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "FREQUENCY_POLYGON",
+    "boundaries": [
+      "50",
+      "60",
+      "70",
+      "80",
+      "90",
+      "100"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          2,
+          7,
+          15,
+          9,
+          7
+        ]
+      }
+    ],
+    "yKind": "FREQUENCY",
+    "xTitle": "성적(점)",
+    "yTitle": "도수(명)",
+    "grid": true,
+    "showValues": true,
+    "total": 40,
+    "highlightClasses": [
+      2
+    ]
+  },
+  "caption": "하위 10명: 70점 미만 누적9명, 80점 미만 누적24명 → 확실한 제외는 80점 이상",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "Q19 current similar draft: class frequencies [2, 7, 15, 9, 7]",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Problem preserves only supplied class data; cumulative decision and highlighting appear in solution only."
+  ]
+}
