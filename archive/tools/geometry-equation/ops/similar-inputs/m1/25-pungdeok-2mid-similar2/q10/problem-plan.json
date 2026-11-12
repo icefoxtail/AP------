@@ -1,0 +1,326 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-4",
+            "denominator": "1"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "6",
+            "denominator": "1"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "70",
+            "denominator": "1"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-5",
+            "denominator": "1"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "4",
+            "denominator": "1"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "1"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "180",
+            "denominator": "1"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "1"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "180",
+            "denominator": "1"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "R",
+    "L",
+    "A",
+    "U",
+    "V",
+    "T",
+    "S"
+  ],
+  "displaySegments": [
+    {
+      "id": "LR",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "UV",
+      "refs": [
+        "U",
+        "V"
+      ]
+    },
+    {
+      "id": "ST",
+      "refs": [
+        "S",
+        "T"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "givenObtuse",
+        "refs": [
+          "B",
+          "A",
+          "V"
+        ],
+        "value": 110,
+        "label": "110",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "a",
+        "refs": [
+          "R",
+          "B",
+          "A"
+        ],
+        "value": 70,
+        "label": "a",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "b",
+        "refs": [
+          "L",
+          "B",
+          "A"
+        ],
+        "value": 110,
+        "label": "b",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "givenAcute",
+        "refs": [
+          "L",
+          "B",
+          "S"
+        ],
+        "value": 70,
+        "label": "70",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "parallel",
+        "segments": [
+          "LR",
+          "UV"
+        ],
+        "count": 1
+      }
+    ]
+  },
+  "caption": "평행한 두 직선과 한 직선 · 주어진110°,70°와 각 a,b",
+  "sourceQuote": "위쪽 둔각110°, 아래쪽 예각70°, a는 동위각 b는 엇각",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "위쪽 둔각110°, 아래쪽 예각70°, a는 동위각 b는 엇각",
+      "mappedTo": [
+        "B",
+        "R",
+        "L",
+        "A",
+        "U",
+        "V",
+        "T",
+        "S"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "hiddenPointNames": [
+    "B",
+    "R",
+    "L",
+    "A",
+    "U",
+    "V",
+    "T",
+    "S"
+  ],
+  "hiddenPointStyle": "NONE"
+}
