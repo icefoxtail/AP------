@@ -1,0 +1,48 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "boundaries": [
+      "0",
+      "2",
+      "4",
+      "6",
+      "8",
+      "10"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          4,
+          10,
+          3,
+          6,
+          2
+        ]
+      }
+    ],
+    "yKind": "FREQUENCY",
+    "xTitle": "영화 편수(편)",
+    "yTitle": "도수(명)",
+    "grid": true,
+    "showValues": true,
+    "total": 25,
+    "highlightClasses": [
+      0,
+      1
+    ]
+  },
+  "caption": "B=25×0.32−2=6, A=10 · 4편 미만 14/25=56%",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "Q22 table:4,A,3,B,2 total25; >=6=32%",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A10/B6 solved in solution only. Existing question table preserved without revealing unknown frequencies."
+  ]
+}

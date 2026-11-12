@@ -1,0 +1,211 @@
+{
+  "status": "SAMPLE_ONLY",
+  "sourceRef": {
+    "path": "archive/exams/similar/middle/m1/2mid/24_왕운중_2학기_중간_중1_유사.js",
+    "bytes": 50542,
+    "sha256": "sha256:779b8464eb306742575083adad596643084c633aa40a421a6e62118a2e44aa62"
+  },
+  "gitBlob": "9ada6ff0be2c65ba2174d729db36e5ad70d3f63e",
+  "sourceRefBranch": "work/similar-m1-accumulate",
+  "questionUid": "24_왕운중_2학기_중간_중1_유사|12",
+  "questionSha256": "sha256:f0dfd8c776f67d2ca0d3cb9a7b58b3ad28152774a31e7cae85b82f56aaf80d6a",
+  "typographyPolicy": {
+    "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+    "requestedSizeClass": "full",
+    "baseFontPx": 24,
+    "displayScale": 1,
+    "fontFloorCssPx": 11
+  },
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "engineMainRef": "1206d96c524b4fc50afc83311d2a6131c7e5ab46",
+  "engineChanges": [],
+  "browserPackage": "@sparticuz/chromium@143.0.4",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false,
+  "surfaces": [
+    {
+      "surface": "problem",
+      "identity": {
+        "questionUid": "24_왕운중_2학기_중간_중1_유사|12",
+        "surface": "PROBLEM_VISUAL",
+        "visualRole": "decisive-relation",
+        "visualAssetKey": "sha256:4090c582f9c3673c5f8e9aad95fb8603d0749ddbe457a2f01d6d1bc008843305",
+        "assetId": "va-7de596b5bb7782582746a971de57830fd26b94a0a11f3e04d5ccd1861f904ddc"
+      },
+      "status": "SAMPLE_ONLY",
+      "compositionStatus": "COMPOSED",
+      "planRef": {
+        "path": "wang24-q12-inputs/problem-plan.json",
+        "bytes": 2942,
+        "sha256": "sha256:46782573536dfe021bce1390a5aaa30ccaad6036d16ceb5341f26d701b8d3b07"
+      },
+      "svgRef": {
+        "path": "wang24-q12-outputs/problem.svg",
+        "bytes": 10586,
+        "sha256": "sha256:9c9c2e551e80a0882e977cdb3ed5ec68f0d479bc2ec727d801fbfde549504998"
+      },
+      "pngRef": {
+        "path": "wang24-q12-outputs/problem.png",
+        "bytes": 8167,
+        "sha256": "sha256:47da9467632f077e970c72145ae8198881307286e155ee4d68f66ba78338ce9a"
+      },
+      "staticAudit": {
+        "status": "PASS",
+        "errors": [],
+        "planeMarks": {
+          "status": "PASS",
+          "errors": [],
+          "observations": [
+            {
+              "id": "isosceles",
+              "type": "EQUAL",
+              "lengths": [
+                13.000000000023427,
+                13.000000000023427
+              ]
+            },
+            {
+              "id": "sideAB",
+              "type": "EXPRESSION_LABEL",
+              "ownerSegment": "AB",
+              "distancePx": 15.787384615798173
+            },
+            {
+              "id": "sideAC",
+              "type": "EXPRESSION_LABEL",
+              "ownerSegment": "AC",
+              "distancePx": 15.787384614967364
+            },
+            {
+              "id": "sideBC",
+              "type": "EXPRESSION_LABEL",
+              "ownerSegment": "BC",
+              "distancePx": 16.45999999999998
+            }
+          ]
+        }
+      },
+      "renderedLayout": {
+        "status": "PASS",
+        "display": {
+          "width": 640,
+          "height": 560
+        },
+        "errors": []
+      },
+      "lineage": {
+        "planSha256": "sha256:f19359fb9c18da14e2dfb24280c0412009a38d2255006a27e072c2e9b2a9c8e0",
+        "modelSha256": "sha256:85a8da00cc6714d79bfe76f009db672a1b90088c0844f2ab0606a3c9027f6548",
+        "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
+        "specSha256": "sha256:3b15fb8d5c887ed691eae4ab4f129e5847b69b11261d61d40576549a4fafb761",
+        "fragmentSha256s": {
+          "A-name": "sha256:7c8f7e815fab36bd1d65c720743a62f63ed8a646604102364cd46a9ddc1b36e9",
+          "B-name": "sha256:237498d7acee11aa971b28ac2c353a0088ad51f4be5ab012759b87d46c9308da",
+          "C-name": "sha256:cf24063ea89ce95c1d56a83be3e415c6eda0318c3c6d364898384c66558c5981",
+          "sideAB": "sha256:019d316461e9d77f7128679f070031f9d6944912e3b33677c1bd831507dfb3f8",
+          "sideAC": "sha256:0d49ceebad02571e3afff779272dbf3a136c85c476532f02934837f26f440c53",
+          "sideBC": "sha256:3b5988d4820e46356b6436747b6c9bbbbbb88806ba4c2cd1ab61089446b829d5"
+        },
+        "measurementsSha256": "sha256:7a45e753123c8efdbcb8453f31d2aa175b4b771eca29dfd64a90bd838a683eec",
+        "svgSha256": "sha256:9c9c2e551e80a0882e977cdb3ed5ec68f0d479bc2ec727d801fbfde549504998",
+        "witnessSha256": "sha256:a74d0e692d62f7989558ff41ae3064e88a594311d1da11b435f0f8dc48564b9f",
+        "staticAuditSha256": "sha256:bc47710c087d54c776e9e4f58db448790398bb2595d6390109b8fbf110a8d80a",
+        "renderedLayoutSha256": "sha256:046161fa9169206087c2d93674f1096b9bcac91a1d8293ada2d22af14296faa5"
+      }
+    },
+    {
+      "surface": "solution",
+      "identity": {
+        "questionUid": "24_왕운중_2학기_중간_중1_유사|12",
+        "surface": "SOLUTION_VISUAL",
+        "visualRole": "decisive-relation",
+        "visualAssetKey": "sha256:7eadc32c82433a30f1928c07196da788f77bf88c44577a6efd75c4712cd8b69a",
+        "assetId": "va-f91ca5367f3f6c654586d4789515453ce7f2f0b81255b371822928b9fd9a02f2"
+      },
+      "status": "SAMPLE_ONLY",
+      "compositionStatus": "COMPOSED",
+      "planRef": {
+        "path": "wang24-q12-inputs/solution-plan.json",
+        "bytes": 2921,
+        "sha256": "sha256:1e395f45ba7e03556c0a65fe67261596ea281ab64d0a1e00f05367b820d2d1dc"
+      },
+      "svgRef": {
+        "path": "wang24-q12-outputs/solution.svg",
+        "bytes": 10568,
+        "sha256": "sha256:8db1566fd77d823f227bbebe592d875eaaf7a34e561b7cfd34d1e91b92e26dd3"
+      },
+      "pngRef": {
+        "path": "wang24-q12-outputs/solution.png",
+        "bytes": 8167,
+        "sha256": "sha256:47da9467632f077e970c72145ae8198881307286e155ee4d68f66ba78338ce9a"
+      },
+      "staticAudit": {
+        "status": "PASS",
+        "errors": [],
+        "planeMarks": {
+          "status": "PASS",
+          "errors": [],
+          "observations": [
+            {
+              "id": "isosceles",
+              "type": "EQUAL",
+              "lengths": [
+                13.000000000023427,
+                13.000000000023427
+              ]
+            },
+            {
+              "id": "sideAB",
+              "type": "EXPRESSION_LABEL",
+              "ownerSegment": "AB",
+              "distancePx": 15.787384615798173
+            },
+            {
+              "id": "sideAC",
+              "type": "EXPRESSION_LABEL",
+              "ownerSegment": "AC",
+              "distancePx": 15.787384614967364
+            },
+            {
+              "id": "sideBC",
+              "type": "EXPRESSION_LABEL",
+              "ownerSegment": "BC",
+              "distancePx": 16.45999999999998
+            }
+          ]
+        }
+      },
+      "renderedLayout": {
+        "status": "PASS",
+        "display": {
+          "width": 640,
+          "height": 560
+        },
+        "errors": []
+      },
+      "lineage": {
+        "planSha256": "sha256:f5938f9cd5e1bd3596811e99f7484e5a1732c3ecc7db0b9171715f061388d030",
+        "modelSha256": "sha256:85a8da00cc6714d79bfe76f009db672a1b90088c0844f2ab0606a3c9027f6548",
+        "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
+        "specSha256": "sha256:036f4deadaad7104bc2c9a938c46944aa7767ce89c1b03b1a46b833524beaee5",
+        "fragmentSha256s": {
+          "A-name": "sha256:b23c70792d6ee2897ad953daa6c247a0a3edb776a0a939b3889756aac5304857",
+          "B-name": "sha256:70498a1d41fa531326fb40da7b487ad2562c92a4a7866b2aa40e323e1bf2c5fa",
+          "C-name": "sha256:b5db7f56ca748776e383ef2409b3736b17763ba0ad3a1cc5d7d504caa430c040",
+          "sideAB": "sha256:c08ef06d919a71a6d50802d87830e08d9ca85246935b6fe95b753b0ffe3a6f11",
+          "sideAC": "sha256:1677a4df6d6df2a63ced6d696b53126fd6606a578e36c08a0201a198af3b7090",
+          "sideBC": "sha256:69b687befe3b0c19971bad90755d2eed0fc8b3d9a28d5dcb8b0d3a91b528a570"
+        },
+        "measurementsSha256": "sha256:7a45e753123c8efdbcb8453f31d2aa175b4b771eca29dfd64a90bd838a683eec",
+        "svgSha256": "sha256:8db1566fd77d823f227bbebe592d875eaaf7a34e561b7cfd34d1e91b92e26dd3",
+        "witnessSha256": "sha256:d8216930a7337d76733ebd453b5de0d3b62a34fe39dd484d8129a9efafb830e4",
+        "staticAuditSha256": "sha256:bb21a43dc71ad865e75520afc2b7829b59be3b5b530eb7bef0773dd5624614a7",
+        "renderedLayoutSha256": "sha256:378d4ae5626d3cbaf4e793cc99fc489d9fed5c91f886d3ddf1aee721a7bd38d1"
+      }
+    }
+  ],
+  "browserVersion": "143.0.7499.0",
+  "browserContext": "ONE_TRANSIENT_SHARED_CONTEXT"
+}
