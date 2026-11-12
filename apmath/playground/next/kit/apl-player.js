@@ -222,7 +222,19 @@
           const m = b.querySelector('.m'), sp = b.querySelector('.s');
           if (m && sp && sp.offsetTop > m.offsetTop + 2) b.classList.add('wrap');
         });
+        this._syncEntrySpace();
       });
+    }
+
+    /** 고정 진입 단추가 여러 줄이어도 마지막 질문 줄까지 스크롤할 여유를 둡니다. */
+    _syncEntrySpace() {
+      const entry = this.ui.entry;
+      if (entry.hidden || entry.dataset.mode !== 'first') return;
+      const height = Math.ceil(entry.offsetHeight);
+      if (height > 0 && height !== this._entryHeight) {
+        this._entryHeight = height;
+        document.documentElement.style.setProperty('--apl-entry-height', `${height}px`);
+      }
     }
 
     /** 해설의 t=0 상태(첫 장 start · at:0 칸의 set)를 장면에 적용합니다. lessonOn·탭·step 은 건드리지 않고, 결론을 드러내는 것도 없습니다. */
@@ -314,6 +326,10 @@
       };
       if (NARROW.addEventListener) NARROW.addEventListener('change', () => this._syncEntry());
       window.addEventListener('resize', () => { if (!this.ui.entry.hidden) this._fitEntryLabels(); });
+      if (window.ResizeObserver) {
+        this._entryObserver = new window.ResizeObserver(() => this._syncEntrySpace());
+        this._entryObserver.observe(this.ui.entry);
+      }
     }
 
     _bind() {
@@ -693,10 +709,12 @@
       this.ui.end.hidden = true;
       this.lab.ui.stage.append(this.ui.bar); // 패널 재구성 전에 재생 막대를 보존
       document.body.classList.remove('apl-vend-on', 'apl-vplaying');
-      this._layout(false);
       const deferred = this._deferBuild;
       this._deferBuild = false;
       if (rebuild || deferred) { this.lab.tab = 'explore'; this.lab._buildPanel(); this.lab.invalidate(true); this.lab._saveHashSoon(); }
+      // 핀 제거 등에서 먼저 예약한 크기 조정도 복원 렌더 뒤로 옮깁니다.
+      if (this._resizeRaf) { cancelAnimationFrame(this._resizeRaf); this._resizeRaf = 0; }
+      this._layout(false); // 조작부를 복원하는 렌더 뒤에 캔버스 높이를 측정합니다.
       if (!this._internal) this._syncEntry(); // 나갈 때는 값을 되돌리지 않음(✕ 뒤에는 정리된 값 그대로 탐구)
     }
     close() {

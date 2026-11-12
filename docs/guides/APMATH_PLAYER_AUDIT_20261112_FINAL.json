@@ -1,0 +1,498 @@
+{
+  "schema": "apmath-three-phase-final-audit/1",
+  "recordedAt": "2026-11-12T09:07:55.863218+00:00",
+  "taskId": "fb948d9b-a2eb-5e22-b140-638e44ec7da1",
+  "owner": "CHATGPT_PRO_99F030406492",
+  "branch": "audit/apmath-player-fast-20261112-99f030",
+  "status": "COMPLETE",
+  "qualityScope": "Executed/reused mathematical contracts; current native browser contracts; independently selected visual/educational scope. No blanket PASS for unobserved images, parameter combinations or continuous frames.",
+  "baseMain": "5d49cb23cdc895aaedaf232d9438ce83e2845713",
+  "testedProductSource": "b9ef54d7441525500d3dbdfad01b3d3910ffebce",
+  "mainRuntimeComparison": {
+    "baseMainAtStart": "5d49cb23cdc895aaedaf232d9438ce83e2845713",
+    "mainObservedDuringFinalRegression": "fbe577f2a0dd1f03225a0301d6dce2f275ccefe3",
+    "observedAt": "2026-11-12T08:38:24.471102+00:00",
+    "examinedPaths": [
+      "apmath/playground",
+      "apmath/css",
+      "apmath/js"
+    ],
+    "upstreamChangesWithinAuditedRuntimePaths": [],
+    "rebasedOrMergedMain": false,
+    "reason": "Concurrent upstream changes are outside the audited runtime paths; preserve exact tested source and other workers changes."
+  },
+  "scope": {
+    "total": {
+      "labs": 58,
+      "scenes": 1067,
+      "lessons": 2989
+    },
+    "mathExcludedByVerifiedPriorEvidence": {
+      "labs": 22,
+      "scenes": 231,
+      "lessons": 767
+    },
+    "newMathReview": {
+      "labs": 4,
+      "scenes": 102,
+      "lessons": 102
+    },
+    "mathEvidenceDebtOrChangedRegression": {
+      "labs": 32,
+      "scenes": 734,
+      "lessons": 2120
+    },
+    "browser": {
+      "labs": 58,
+      "scenes": 1067,
+      "lessons": 2989,
+      "viewportUnits": 3103,
+      "primaryMobileUnits": 2989,
+      "additionalViewportUnits": 114,
+      "acceptedRawPass": 3068,
+      "acceptedScopedManualReviews": 35,
+      "pending": 0,
+      "failed": 0,
+      "notRun": 0
+    },
+    "browserSelectionHistory": {
+      "initialPriorNativeProofLessons": 102,
+      "initialPriorNativeExclusions": 87,
+      "localFixDeltas": [
+        672,
+        215,
+        87
+      ],
+      "finalBrowserExclusions": 0,
+      "finalReason": "The shared player close/layout correction changes every browser runtime dependency closure. All affected browser contracts were rechecked; completed math and unchanged independent content observations were retained."
+    },
+    "independentVisual": {
+      "scenes": 76,
+      "lessons": 98,
+      "captureReferences": 621,
+      "distinctImageBytes": 585,
+      "countingScope": "Cumulative actual observations across historical failures and corrected versions; not a count of current PASS screens.",
+      "sourceOnlyRiskScenesWithoutVisualPass": 4
+    }
+  },
+  "phases": [
+    {
+      "stage": 1,
+      "status": "COMPLETE",
+      "receipt": "APMATH_PLAYER_AUDIT_20261112_PHASE1.json",
+      "completionCommit": "fe13e3bd2ce02693a38be91bea4cfe56f359e18a",
+      "newlyExecutedUniqueAcceptedTests": 2050,
+      "defaultQuestionAnswerReviews": 102,
+      "independentFocusedTests": 24,
+      "historicalOpenWordingFinding": "Closed later by minimal lesson wording correction and independent evidence; the historical Phase1 receipt remains immutable."
+    },
+    {
+      "stage": 2,
+      "status": "COMPLETE",
+      "receipt": "APMATH_PLAYER_AUDIT_20261112_PHASE2.json",
+      "completionCommit": "5f049c18ab04d14edad1e8849e475f89b3cf3420",
+      "nativeRun": {
+        "runId": 43183779882,
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/43183779882",
+        "shards": 8,
+        "status": "completed",
+        "conclusion": "success",
+        "elapsedSeconds": 731.0,
+        "sampledStates": 56496,
+        "qaNativeExecutions": 187,
+        "qaNativeCompleted": 187,
+        "normalNativeExecutions": 2,
+        "normalNativeCompleted": 2,
+        "controls": {
+          "rows": 187,
+          "pinnedMidCloseRows": 110,
+          "passedChecks": {
+            "normal UI pause freezes native clock": 187,
+            "trusted forward scrub reaches final timeline while paused": 187,
+            "trusted rewind removes future captions/pins": 187,
+            "replay starts with same controlled values as rewind": 187,
+            "normal UI resume advances native clock": 187,
+            "mid-close pin setup matches compiled timeline": 187,
+            "mid-close restored canvas bitmap aspect matches displayed canvas": 187,
+            "mid-chapter UI close restores exploration": 187,
+            "end-card next opens the correct following lesson or contents": 187
+          }
+        },
+        "aspect": {
+          "ended canvas bitmap aspect matches displayed canvas": 3103,
+          "stable restored canvas bitmap aspect matches displayed canvas": 3103,
+          "mid-close restored canvas bitmap aspect matches displayed canvas": 187
+        }
+      },
+      "raw": {
+        "rows": 3103,
+        "unitStatuses": {
+          "PASS": 3068,
+          "FAIL": 0,
+          "REVIEW_REQUIRED": 35
+        },
+        "assertionStatuses": {
+          "PASS": 584976,
+          "FAIL": 0,
+          "REVIEW_REQUIRED": 139
+        },
+        "unitsWithAssertionStatus": {
+          "PASS": 3103,
+          "REVIEW_REQUIRED": 35
+        },
+        "sampleCount": 56496,
+        "sampleMethods": {
+          "NATIVE_SEEK_FROZEN_QA_CLOCK": 56496
+        }
+      },
+      "acceptedRawPass": 3068,
+      "acceptedExactScopedManualReview": 35,
+      "rawReviewChecks": 139,
+      "rawStatusesUnmodified": true,
+      "failed": 0,
+      "notRun": 0,
+      "pending": 0
+    },
+    {
+      "stage": 3,
+      "status": "COMPLETE",
+      "receipt": "APMATH_PLAYER_AUDIT_20261112_PHASE3.json",
+      "completionCommit": "The commit containing this receipt; no self-referential hash is embedded.",
+      "independentFindingFamiliesClosed": 10,
+      "additionalNativeFixVisuallyConfirmed": 1,
+      "independentRestoreLessonViewportPairs": 12,
+      "openConfirmedDefects": 0,
+      "requiredPendingItems": 0
+    }
+  ],
+  "actualProductChanges": {
+    "baseToTestedSource": {
+      "productFiles": 29,
+      "sharedProductFiles": 2,
+      "labProductFiles": 27,
+      "labsWithLocalProductChanges": 21,
+      "qaToolAndTestFiles": 17,
+      "ciWorkflowFiles": 3,
+      "checkpointDocFiles": 3,
+      "productDiffLines": {
+        "insertions": 129,
+        "deletions": 54
+      }
+    },
+    "countingPolicy": "File counts and summary groups are not unique defect counts. Historical ledger pending-native labels describe its earlier freeze; final native/visual evidence above supersedes that boundary.",
+    "groups": [
+      {
+        "id": "startup-circle",
+        "title": "원 방정식 첫 진입 기동",
+        "finalChange": "없는 steps를 truthy 함수로 감싸 undefined.length 예외가 나던 경로를 차단"
+      },
+      {
+        "id": "runtime-sequence",
+        "title": "수열 탐구 복원 예외",
+        "finalChange": "reviewTop의 함수/상수 두 형태를 보존"
+      },
+      {
+        "id": "runtime-probability",
+        "title": "확률 장면 전환 상태 소유권",
+        "finalChange": "이전 장면 packet이 다음 장면에 적용되지 않도록 lesson state에 scene ID를 결합"
+      },
+      {
+        "id": "entry-question",
+        "title": "공통 진입 질문 접근",
+        "finalChange": "고정 다중 버튼의 실제 높이만큼 스크롤 여유를 만들고 진입 도형의 sticky 덮임을 해제"
+      },
+      {
+        "id": "restore-canvas",
+        "title": "공통 종료·중간 닫기 캔버스 복원",
+        "finalChange": "패널 복원 렌더 이후로 크기 측정 예약을 옮기며 먼저 예약된 핀 제거 resize도 교체"
+      },
+      {
+        "id": "missing-player-css",
+        "title": "7랩 플레이어 CSS 누락",
+        "finalChange": "플레이어가 사용하는 apl-video.css를 해당 HTML에서 명시적으로 로드"
+      },
+      {
+        "id": "construction-choices",
+        "title": "작도 선택지 필수 데이터",
+        "finalChange": "HTML 선택지가 없으면 기존 TeX 선택지 텍스트를 사용해 undefined 노출 방지"
+      },
+      {
+        "id": "construction-layout",
+        "title": "합동 작도 중간 회전·각도 표기",
+        "finalChange": "회전 중간 위치까지 카메라에 포함하고 겹친 각도 조건을 분리"
+      },
+      {
+        "id": "mvt-control",
+        "title": "평균값 정리 활성 슬라이더 일치",
+        "finalChange": "해설의 dx 목표를 실제 조작 범위 상한 2.2로 맞춤"
+      },
+      {
+        "id": "exp-camera",
+        "title": "지수함수 해설 카메라 추적",
+        "finalChange": "플레이어의 dragging 소유 중에도 해설 끝점 증가를 따라 자동 초점 갱신"
+      },
+      {
+        "id": "swept-layout",
+        "title": "지나간 넓이 복사본·삼각형 표기",
+        "finalChange": "복사본 출현 전에 카메라 확장 완료, 작은 삼각형의 중복 길이와 내각 표기를 해설 단계별로 분리"
+      },
+      {
+        "id": "solid-net",
+        "title": "합성 입체 전환 중 도형 소실",
+        "finalChange": "0.5 정지 구간에서 입체 유지, 펼침 시작 때 전개도 전체 점선 윤곽 제공"
+      },
+      {
+        "id": "geometry-margins",
+        "title": "좁은 화면 치수·각도 라벨 여백",
+        "finalChange": "각 장면의 기존 focus/fit 여백만 늘려 외부 치수·각도 라벨을 보존"
+      },
+      {
+        "id": "sector-proof",
+        "title": "원·부채꼴 넓이 복원 배치",
+        "finalChange": "짧은 가로 화면의 호·높이 라벨과 결과식·조작점을 분리"
+      },
+      {
+        "id": "net-footer",
+        "title": "짧은 전개도 종료 계산식",
+        "finalChange": "360 높이 종료 도형 아래 둘레·겉넓이 두 줄 공간 확보"
+      },
+      {
+        "id": "cubic-labels",
+        "title": "삼차함수 접선 영역 설명",
+        "finalChange": "모바일 설명을 안쪽 정렬·두 줄 표시하고 P점 및 중심 표기와 분리"
+      },
+      {
+        "id": "tangent-label",
+        "title": "접선 최단거리 문구",
+        "finalChange": "모바일의 긴 거리/최단거리 문구를 실제 두 텍스트 호출로 분리"
+      },
+      {
+        "id": "axis-tangent-labels",
+        "title": "시간축·벡터 접선 라벨",
+        "finalChange": "실측 글자 폭으로 시간축 라벨을 제한하고 접선 이름을 화면 안의 같은 접선 가지로 이동"
+      },
+      {
+        "id": "vector-labels",
+        "title": "벡터 중점·B점 라벨",
+        "finalChange": "M 및 B 좌표 라벨을 선분·등분 눈금과 분리"
+      },
+      {
+        "id": "counting-compact",
+        "title": "계수 세기 작은 폰 탐구",
+        "finalChange": "360×640 복원의 격자·상자·집계가 겹치지 않도록 해당 탐구 무대에 최소 높이 적용"
+      },
+      {
+        "id": "quadratic-wording",
+        "title": "이차함수 개념 문구·정답 형식",
+        "finalChange": "교점과 x좌표를 구분하고 장문 계수 조건 정답을 일반 텍스트로 표시"
+      }
+    ],
+    "ledgerRef": {
+      "member": "evidence/stage2/product-change-ledger.json",
+      "sha256": "111b71bd20f30941caf305b494a8724c54c7a7ee9a8266f152b55662252f3c6a",
+      "evidencePackFileId": "1cPc1j2pgvCwKobrLG84AAY_BzC3hmFWP"
+    },
+    "finalRestoreTargetedTests": 59,
+    "studentDefaultPlaybackRate": 1.5,
+    "studentSlowPlaybackRate": 0.5
+  },
+  "speed": {
+    "qaRelativeMultiplier": 10,
+    "normalRate": 1.5,
+    "qaRate": 15,
+    "matchedNormalWallMs": 60158,
+    "matchedFastWallMs": 6153,
+    "observedPlaybackSpeedup": 9.777019340159272,
+    "pairedSamples": [
+      {
+        "key": "g8-linear-functions:triangle-degeneracy@2:0:390x844",
+        "normalWallMs": 20077,
+        "fastWallMs": 2071,
+        "observedSpeedup": 9.6943505552873,
+        "qaMultiplier": 10,
+        "normalRate": 1.5,
+        "fastRate": 15
+      },
+      {
+        "key": "calc1-integral:signed@0:0:390x844",
+        "normalWallMs": 40081,
+        "fastWallMs": 4082,
+        "observedSpeedup": 9.818961293483586,
+        "qaMultiplier": 10,
+        "normalRate": 1.5,
+        "fastRate": 15
+      }
+    ],
+    "qaNativeCompleted": 187,
+    "normalNativeCompleted": 2,
+    "nativeSampledStates": 56496,
+    "finalEightShardRunElapsedSeconds": 731,
+    "maximumQaTimelineJumpSeconds": 1.5,
+    "interpretation": "Measured speedup applies only to the paired playback intervals. Total audit time, human review and all-frame quality are not inferred."
+  },
+  "reuseSystem": {
+    "portableBaseline": {
+      "bytes": 28294017,
+      "sha256": "6d06acd7362b4d962554b1481d55e379f6672056af3526bfe8d9b7346a4ed296",
+      "members": 167,
+      "reviewPNGFiles": 139,
+      "baselineSha256": "230b51681c5ee11393783efd7ba080f70ad38de8209fcaaa809464e1dfb4e32b",
+      "status": "REMOTE_READBACK_VERIFIED",
+      "fileId": "12PSEtEGUSpLXyuNdyQTU5Krt6b1wuV73",
+      "internalManifestVerified": true
+    },
+    "sameSourceSelection": {
+      "totalPrimaryUnits": 2989,
+      "automaticallySelected": 0,
+      "excludedFromAutomaticPrimaryTargets": 2989,
+      "retainedPriorNativeScope": 0,
+      "retainedScopedManualReview": 35,
+      "explicitRiskTargets": 0
+    },
+    "syntheticToolValidation": {
+      "synthetic": true,
+      "productCoverage": 0,
+      "purpose": "Verify selective scheduling only; not product correctness",
+      "changedExisting": "g7-coordinate-graphs/coord-order/0",
+      "addedSynthetic": "g7-coordinate-graphs/__synthetic_new_lesson_fixture__/0",
+      "selected": [
+        "g7-coordinate-graphs/__synthetic_new_lesson_fixture__/0",
+        "g7-coordinate-graphs/coord-order/0"
+      ],
+      "selection": {
+        "totalPrimaryUnits": 2990,
+        "automaticallySelected": 2,
+        "excludedFromAutomaticPrimaryTargets": 2988,
+        "retainedPriorNativeScope": 0,
+        "retainedScopedManualReview": 35,
+        "explicitRiskTargets": 0
+      }
+    },
+    "procedure": "APMATH_PLAYER_DELTA_AUDIT.md",
+    "sourceClosureChangePolicy": "Revalidate affected browser evidence if a shared player, renderer or CSS dependency changes. Preserve separately valid math and independent content observations.",
+    "manualPolicy": "Retain raw REVIEW, allow only named-check/source/raw/PNG-bound independent decisions. Never override raw FAIL."
+  },
+  "remaining": {
+    "confirmedRequiredDefects": [],
+    "requiredNotRunItems": [],
+    "unverifiedLimits": [
+      "이번 독립 검토는 위험 표본 및 변경 부분의 검토입니다. 전체102함수 장면 또는 기존2887해설에 일괄 시각 PASS를 부여하지 않습니다.",
+      "초기/핵심/종료/복원 정지 화면은 해당 시점의 도형·문구·배치를 보여 줍니다. 연속 움직임의 자연스러움이나 모든 중간 프레임을 증명하지 않습니다.",
+      "10배속 자동재생이나 짧은 정상속도 기능 검사만으로 학생의 정상속도 읽기 속도·이해도·해설과 움직임의 전체 시간적 조화를 PASS 처리하지 않습니다.",
+      "SVG 내보내기/다운로드 산출물 품질, 음성·오디오 타이밍, 스크린리더, 실제 모바일 터치 장치, 모든 브라우저/테마/확대율은 이 독립 PNG 검토에서 검증하지 않았습니다.",
+      "geom-space-3d mode1의 질문 전체 접근은 native 스크롤 검사로 확인됐지만 해당 장면의 새 after-scroll PNG는 직접 검토하지 않았습니다. 공통 수정의3대표 after-scroll 이미지만 독립 확인했습니다.",
+      "calc1-integral signed/inverse/symint 및 geom-hyperbola q7은 교육적 소스 검토만 수행했습니다. 이 보고서에서 독립 시각 PASS는 부여하지 않습니다.",
+      "math_structure의 일부 desktop contact sheet는50퍼센트 크기로 표시됐습니다. 원본 크기 글자 접근성 전반을 그 contact sheet로 인증하지 않습니다.",
+      "이번 b9ef에는 관련 Git bytes·현재 native 회귀·새 복원 표본을 결합했습니다. 이후의 공유 플레이어/CSS/렌더러 변경에는 새 적용 판단이 필요합니다.",
+      "외부 호스팅 글꼴 bytes는 저장소 Git 소스 결합만으로 고정되지 않습니다.",
+      "보고서의 관찰 수에는 발견 당시 FAIL 화면 및 재검토 화면이 포함되므로 현재 PASS한 장면 수로 해석하면 안 됩니다."
+    ],
+    "scopeExclusions": [
+      "main merge",
+      "production deployment"
+    ]
+  },
+  "evidence": {
+    "stage1": {
+      "bytes": 909487,
+      "sha256": "bf04845941e7db16067755bb15b9d9daf0f9da5e6ecd82b7d3ae3cde791e7c4f",
+      "members": 64,
+      "internalManifestVerified": true,
+      "driveFileId": "1uAlEqNLBI1cm0aVpdmR51J8X6NlDprGd",
+      "driveUrl": "https://drive.google.com/file/d/1uAlEqNLBI1cm0aVpdmR51J8X6NlDprGd/view",
+      "driveFolderId": "1ig5H76hCL2HaDoThPdaCEDJCOvcSh63u",
+      "remoteMetadataAndRawReadback": "PASS"
+    },
+    "stage2RawPacks": [
+      {
+        "part": 1,
+        "bytes": 83780362,
+        "sha256": "b35b28cdf8434d93de3bf97131d418256c01e233d99fc8a579e39dcd2c8f731a",
+        "shards": [
+          6,
+          3
+        ],
+        "status": "REMOTE_READBACK_VERIFIED",
+        "fileId": "1yxxFFAleEdgGamveuwFD3_vCrrkR8f-L",
+        "internalManifestVerified": true
+      },
+      {
+        "part": 2,
+        "bytes": 83148447,
+        "sha256": "99e3087fc972a7f384b112ce558da58889759c5ea8ec3ddd0d2d7a5fdd6521aa",
+        "shards": [
+          7,
+          4
+        ],
+        "status": "REMOTE_READBACK_VERIFIED",
+        "fileId": "1FNgPvEN5ce6D8PwOIG0t_QiphH_qbkVv",
+        "internalManifestVerified": true
+      },
+      {
+        "part": 3,
+        "bytes": 85202139,
+        "sha256": "62a590ec44e13b30045dcc5a074109f6b590d0fe32ac86429cdd6a4ae4966c55",
+        "shards": [
+          1,
+          5
+        ],
+        "status": "REMOTE_READBACK_VERIFIED",
+        "fileId": "1XDCr0Q1-cBKIasGAKjA17wSRAA2teChD",
+        "internalManifestVerified": true
+      },
+      {
+        "part": 4,
+        "bytes": 82551101,
+        "sha256": "c18a098e51f1797bdbca0229112e04a4c831c25984c695497a9322f46614aa0f",
+        "shards": [
+          0,
+          2
+        ],
+        "status": "REMOTE_READBACK_VERIFIED",
+        "fileId": "1EiRftUnpkpALehD8U2YxmIbnwbdfDDM7",
+        "internalManifestVerified": true
+      }
+    ],
+    "portableBaseline": {
+      "bytes": 28294017,
+      "sha256": "6d06acd7362b4d962554b1481d55e379f6672056af3526bfe8d9b7346a4ed296",
+      "members": 167,
+      "reviewPNGFiles": 139,
+      "baselineSha256": "230b51681c5ee11393783efd7ba080f70ad38de8209fcaaa809464e1dfb4e32b",
+      "status": "REMOTE_READBACK_VERIFIED",
+      "fileId": "12PSEtEGUSpLXyuNdyQTU5Krt6b1wuV73",
+      "internalManifestVerified": true
+    },
+    "stage3MetadataPack": {
+      "fileId": "1cPc1j2pgvCwKobrLG84AAY_BzC3hmFWP",
+      "url": "https://drive.google.com/file/d/1cPc1j2pgvCwKobrLG84AAY_BzC3hmFWP/view",
+      "bytes": 486074,
+      "sha256": "716e6d9daf8a5ce65d485c61cd5e61b018240089d2ff93ff63744554a736fc22",
+      "members": 89,
+      "status": "REMOTE_READBACK_VERIFIED",
+      "internalManifestVerified": true
+    },
+    "sourceBoundFinalReview": {
+      "member": "evidence/stage3/final-review.json",
+      "bytes": 91825,
+      "sha256": "995a287f5a3defc102fdce8fd693d6a63f2db28b685e715f8f78cdbad018ce4d"
+    },
+    "sourceBoundFinalBinding": {
+      "member": "evidence/stage3/final-review-binding-validation.json",
+      "bytes": 35763,
+      "sha256": "4501ea2b9d0b524a33f11bed0b37879ce1003bae61548c20a9ba122a2d5ac51e"
+    },
+    "rootReconciliation": {
+      "member": "evidence/stage3/root-final-crosscheck.json",
+      "bytes": 2494,
+      "sha256": "9b7cf56fe3cf03f99bde718d7a9e34ccd565858552a6be2d082d9af29b633ffa"
+    },
+    "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43183779882",
+    "evidenceFolderUrl": "https://drive.google.com/drive/folders/1ig5H76hCL2HaDoThPdaCEDJCOvcSh63u",
+    "preservation": "Each referenced final pack was downloaded again; outer SHA/bytes, ZIP CRC and internal member manifests verified. Large raw evidence is kept outside Git."
+  },
+  "historicalRecords": "Earlier failure/progress receipts are retained as evidence of discovery and repair, not rewritten as current PASS. CURRENT and completion receipts identify the final scope.",
+  "nextAction": "Review the audit branch if desired. No remaining required verification execution. Do not merge or deploy without a separate instruction.",
+  "mainMerged": false,
+  "deployed": false
+}

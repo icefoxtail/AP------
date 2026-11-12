@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
@@ -244,10 +245,10 @@ window.addEventListener('DOMContentLoaded', function () {
           // [표시 보강] 평행사변형의 마주 보는 변: OA=BS(눈금 1개·파랑), OB=AS(눈금 2개·분홍) 같은 길이 표시
           if(t>.98){tickEq(ZERO,A,1,'#38bdf8',1);tickEq(B,S,1,'#38bdf8',1);tickEq(ZERO,B,2,'#f472b6',1);tickEq(A,S,2,'#f472b6',1);}
         }
-        if(state.steps[1]){seg(A,B,'#34d399',1.7,true,3);vec(ZERO,M,'#34d399','OM',3,.7);dot(M,'중점 M','#34d399',3,{x:-26,y:25});
+        if(state.steps[1]){seg(A,B,'#34d399',1.7,true,3);vec(ZERO,M,'#34d399','OM',3,.7);dot(M,'중점 M','#34d399',3,{x:-26,y:-30});
           tickEq(A,M,3,'#34d399',3);tickEq(M,B,3,'#34d399',3); // [표시 보강] AM = MB (중점)
         }
-        dot(ZERO,'O','#f8fafc',0,{x:-30,y:27});dot(A,`A(${fmt(A.x)},${fmt(A.y)})`,'#38bdf8');dot(B,`B(${fmt(B.x)},${fmt(B.y)})`,'#f472b6');
+        dot(ZERO,'O','#f8fafc',0,{x:-30,y:27});dot(A,`A(${fmt(A.x)},${fmt(A.y)})`,'#38bdf8');dot(B,`B(${fmt(B.x)},${fmt(B.y)})`,'#f472b6',0,{x:-65,y:-15});
         banner(`OA + OB = 2OM  |  |a+b|=${fmt(norm(S))}`,`OM=(${fmt(M.x)},${fmt(M.y)})`);
       }
       else if(id==='1-B'){

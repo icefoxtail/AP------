@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
@@ -320,7 +321,8 @@ window.addEventListener('DOMContentLoaded', function () {
     const r = b.paneRect(), org = b.toS(0, 0);
     if (b.thumb) return null;
     b.stext(org.x + 9, r.y + 14, title, { color, size: 12.5, align: 'left', baseline: 'middle', weight: 800 });
-    b.stext(b.toS(end, 0).x + 7, org.y + 11, 't(초)', { color: 'muted', size: 11.5, align: 'left', baseline: 'middle', weight: 700 });
+    const timeLabelX = clamp(b.toS(end, 0).x + 7, r.x + 4, r.x + r.w - textW(b, 't(초)', 11.5 * b._ts(), 700) - 4);
+    b.stext(timeLabelX, org.y + 11, 't(초)', { color: 'muted', size: 11.5, align: 'left', baseline: 'middle', weight: 700 });
     return [org.x + 7, r.y + 5, org.x + 11 + textW(b, title, 12.5), r.y + 23];   // 이름표 자리(라벨이 피하도록)
   }
   const syncLine = (b, s) => {

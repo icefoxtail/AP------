@@ -873,7 +873,11 @@ window.addEventListener('DOMContentLoaded', function () {
           b.seg([a, ya], [hx, hy], { color: isMin ? 'amber' : 'green', width: 2.8, glow: true, ref: 'dist' });
           b.right([hx, hy], [a, ya], [hx + 1, hy + 1], { color: isMin ? 'amber' : 'green', size: 10 });
           b.point([hx, hy], { color: 'sky', r: 5, label: `수선의 발 H${p2(hx, hy)}`, dx: 10, dy: 18 });
-          b.text([(a + hx) / 2, (ya + hy) / 2], `거리 d = ${fmt(d, 3)}${isMin ? ' (★최단거리 √2)' : ''}`, { color: 'amber', dx: 12, align: 'left', size: 12.5, ref: 'dist' });
+          const distancePoint = [(a + hx) / 2, (ya + hy) / 2];
+          if (b.W < 560 && isMin) {
+            cxTag(b, distancePoint, `거리 d = ${fmt(d, 3)}`, { color: 'amber', dx: 12, dy: -8, align: 'left', size: 12.5, ref: 'dist' });
+            cxTag(b, distancePoint, '★최단거리 √2', { color: 'amber', dx: 12, dy: 10, align: 'left', size: 12.5, ref: 'dist' });
+          } else b.text(distancePoint, `거리 d = ${fmt(d, 3)}${isMin ? ' (★최단거리 √2)' : ''}`, { color: 'amber', dx: 12, align: 'left', size: 12.5, ref: 'dist' });
         }
         b.handle('T', [a, ya], { color: 'amber', ref: 'A', label: `T${p2(a, ya)} [접선의 기울기=${fmt(m)}]`, dx: -14, dy: -14, align: 'right',
           drag: (w) => { s.a = clamp(+w.x.toFixed(2), -2.0, 2.5); } });

@@ -97,6 +97,25 @@ test('new-problem selection and manual state survive fixed-first replay', () => 
   }
 });
 
+test('manual review headings remain callable after lesson entry and release, including scenes without a heading', () => {
+  const noHeading = new Set(['br-tree', 'cyc-table', 'pt-tri-diff', 'pt-tri-sum', 'fig-repeat']);
+  for (const sc of lab.list) {
+    lab.go(sc.id);
+    const readHeading = () => typeof sc.reviewTop === 'function' ? sc.reviewTop(lab.s, lab) : sc.reviewTop;
+    const before = readHeading(), source = plain(sc.vary.cur());
+    if (noHeading.has(sc.id)) assert.equal(before, undefined, `${sc.id}: absent optional heading remains absent`);
+    else assert.equal(typeof before, 'string', `${sc.id}: existing heading remains readable`);
+    const compiled = video.compileLesson(lessons(sc.id)[0]), base = baseline();
+    apply(compiled, 0, base, true);
+    assert.equal(readHeading(), '', `${sc.id}: entry hides manual review heading`);
+    apply(compiled, compiled.length, base);
+    Object.assign(lab.s, { lessonOn: false, lessonEntry: false });
+    lab.tab = 'explore';
+    assert.equal(readHeading(), before, `${sc.id}: normal panel restores the original heading`);
+    assert.deepEqual(plain(sc.vary.cur()), source, `${sc.id}: heading lookup cannot change the selected problem`);
+  }
+});
+
 test('entry after a final frame and sibling transitions restore only the initial drawing', () => {
   for(const sc of lab.list) {
     lab.go(sc.id);const base=baseline();

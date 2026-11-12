@@ -1,0 +1,156 @@
+{
+  "schema": "apmath-stage1-audit-receipt/1",
+  "recordedAt": "2026-11-12T06:21:29.027591+00:00",
+  "baseMain": "5d49cb23cdc895aaedaf232d9438ce83e2845713",
+  "observedHead": "c17256073eb95d73050753ff5ece9b2863d2c42a",
+  "branch": "audit/apmath-player-fast-20261112-99f030",
+  "stage": 1,
+  "completion": "COMPLETE",
+  "result": "PASS_FOR_EXECUTED_AND_REUSED_MATH_STRUCTURE_CONTRACTS",
+  "qualityScope": "Mathematical source/contracts and VM structure only. Browser and independent visual/education decisions remain separate; a Stage3 wording finding is explicitly tracked below.",
+  "counts": {
+    "total": {
+      "labs": 58,
+      "scenes": 1067,
+      "lessons": 2989
+    },
+    "excludedByExactPriorMathEvidence": {
+      "labs": 22,
+      "scenes": 231,
+      "lessons": 767
+    },
+    "newMathReview": {
+      "labs": 4,
+      "scenes": 102,
+      "lessons": 102
+    },
+    "targetedEvidenceDebtOrChangedRegression": {
+      "labs": 32,
+      "scenes": 734,
+      "lessons": 2120
+    },
+    "newlyExecutedUniqueTests": 2050,
+    "manualDefaultQuestionAnswerReviews": 102,
+    "independentFocusedTests": 24
+  },
+  "sourceTrees": {
+    "apmath/playground/next/labs": "dc61f8d6d6c99cbdd0e9e39370e71eff0b29c615",
+    "apmath/playground/next/kit": "7514769ce3ed2916b21738f20be784de368c4b89",
+    "apmath/css": "59cc24478e2ee60b0bfa0f8cb97e18b1cf602a43",
+    "apmath/js": "4bc3b1c765a75be85b2e2ded409d7ec34d008ebc"
+  },
+  "newTools": [
+    {
+      "path": "apmath/playground/next/tools/player-audit-scope.mjs",
+      "sha256": "05e2cd7ad85233eeba72701d66cda8c3179f73bf26a6bb96871710b2a40b0412"
+    },
+    {
+      "path": "apmath/playground/next/tools/lessons.middle-functions-independent.test.mjs",
+      "sha256": "be2a9cd99493d491a73f7d71c3c8ced315ef770c08fe56e9d8b77dfab672733c"
+    }
+  ],
+  "executions": [
+    {
+      "path": "legacy-evidence-gaps.tap",
+      "bytes": 430671,
+      "sha256": "13a1b9fcc1bc9108020261dac3112e50352caa8fe0b26ce0af336886be8cfd56",
+      "tests": 1749,
+      "pass": 1749,
+      "fail": 0,
+      "skip": 0,
+      "scope": "102 selected existing lesson test files,32labs; exactbound22labs excluded. No whole-repository or shared-player rerun."
+    },
+    {
+      "path": "middle-functions-existing.tap",
+      "bytes": 63519,
+      "sha256": "d4fc609a8e75133d621903e4049156f75c4723fe699c008a142a67810b77cbd1",
+      "tests": 212,
+      "pass": 212,
+      "fail": 0,
+      "skip": 0,
+      "scope": "The middle-functions suite passed212. Combined run included catalog4PASS/4FAIL due sparse checkout; those catalog outcomes are not counted as accepted results.",
+      "combinedRun": {
+        "tests": 220,
+        "pass": 216,
+        "fail": 4,
+        "failureCause": "Required legacy/CSS/JS assets absent from sparse checkout, not product failures."
+      }
+    },
+    {
+      "path": "catalog-complete-checkout.tap",
+      "bytes": 1956,
+      "sha256": "c3bd41f1ad07e17112665f1f11572a29994e7480287692c84421a3ae9570daef",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skip": 0,
+      "scope": "Catalog-only rerun after completing checkout;8PASS."
+    },
+    {
+      "path": "middle-functions-independent.tap",
+      "bytes": 5514,
+      "sha256": "6bda5ca6e80566335f78940b6bff35779dd142d5b091d196a0f345bbaab402bf",
+      "tests": 24,
+      "pass": 24,
+      "fail": 0,
+      "skip": 0,
+      "scope": "Independent enumeration, polygon clipping, original-equation substitution, strict-boundary and physical-domain checks; never calls spec.verify."
+    },
+    {
+      "path": "shared-unit.tap",
+      "bytes": 6940,
+      "sha256": "eb829bb571b471a00e280336d5b008e4647ed791b3a549bf47000f61330e0466",
+      "tests": 57,
+      "pass": 57,
+      "fail": 0,
+      "skip": 0,
+      "scope": "Parent-owned shared player/video/pins/TOC unit contract run; not rerun by math agent."
+    }
+  ],
+  "findings": [
+    {
+      "id": "STAGE1-SPARSE-CHECKOUT",
+      "status": "RESOLVED_ENVIRONMENT",
+      "detail": "4catalog failures were missing checkout inputs; catalog-only8PASS after expansion."
+    },
+    {
+      "id": "STAGE1-EVIDENCE-DEBT",
+      "status": "RESOLVED_BY_TARGETED_EXECUTION",
+      "detail": "32oldlabs had absent/incomplete/mismatched raw evidence or changed source;1749targeted tests passed. Prior geom-ellipse raw SHA mismatch is retained in prior-math-bindings.json; its current tests were run."
+    },
+    {
+      "id": "STAGE3-CQ-INTERSECTION-WORDING",
+      "status": "OPEN_OWNED_BY_ROOT",
+      "detail": "Independent Stage3 reviewer found x called a graph intersection instead of intersection x-coordinate in common-quadratic/lesson-a.js. Root owns minimal wording fix and its targeted validation after Stage1 commit; not changed by this agent."
+    }
+  ],
+  "limitations": [
+    "Existing22lab reuse accepts the actual prior automated mathematical/VM contracts, not a new independent proof of every student exposition.",
+    "New102 defaults independently read; focused24tests cover mathematical risks and actual modes/boundaries, not all possible parameter combinations.",
+    "No Stage1 browser, font rendering, mobile reading pace or visual PASS is inferred.",
+    "FullCI336file aggregate was inspected but not used to claim54lab lesson math coverage.",
+    "Scope tool produces NOT_RUN plus REUSE_CANDIDATE even when a prior PASS fingerprint and refs match; artifact/provenance verification remains required."
+  ],
+  "rawEvidencePack": {
+    "bytes": 909487,
+    "sha256": "bf04845941e7db16067755bb15b9d9daf0f9da5e6ecd82b7d3ae3cde791e7c4f",
+    "members": 64,
+    "internalManifestVerified": true,
+    "driveFileId": "1uAlEqNLBI1cm0aVpdmR51J8X6NlDprGd",
+    "driveUrl": "https://drive.google.com/file/d/1uAlEqNLBI1cm0aVpdmR51J8X6NlDprGd/view",
+    "driveFolderId": "1ig5H76hCL2HaDoThPdaCEDJCOvcSh63u",
+    "remoteMetadataAndRawReadback": "PASS"
+  },
+  "detailReceipt": {
+    "member": "stage1/stage1-receipt.json",
+    "sha256": "954d7dc2b7915acbcaa4329f6501337ca078c0fdc1375a9919a8f992538324ed"
+  },
+  "resume": {
+    "completed": "Stage1 source/math/VM contracts",
+    "remaining": [
+      "Stage2 selective browser run",
+      "Stage3 independent visual review and tracked wording correction"
+    ],
+    "nextAction": "Use the explicit target manifest; do not rerun accepted unchanged Stage1 suites. No merge or deployment."
+  }
+}

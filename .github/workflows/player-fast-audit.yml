@@ -1,0 +1,82 @@
+name: Selective player fast audit
+
+on:
+  push:
+    branches: ['audit/apmath-player-fast-*']
+    paths:
+      - 'apmath/playground/next/kit/**'
+      - 'apmath/playground/next/labs/**'
+      - 'apmath/playground/next/tools/player-fast-audit.mjs'
+      - 'apmath/playground/next/tools/player-fast-audit.targets.json'
+      - '.github/workflows/player-fast-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: player-fast-audit-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  selection:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      shards: ${{ steps.select.outputs.shards }}
+      count: ${{ steps.select.outputs.count }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: apmath/playground/next/tools
+      - id: select
+        name: Read the explicit audit selection
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          const spec = JSON.parse(fs.readFileSync('apmath/playground/next/tools/player-fast-audit.targets.json', 'utf8'));
+          const count = spec.shards;
+          if (!Number.isInteger(count) || count < 1 || count > 8 || !spec.targets?.length) throw Error('Invalid audit selection');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `shards=${JSON.stringify(Array.from({length:count},(_,i)=>i))}\ncount=${count}\n`);
+          JS
+
+  browser:
+    needs: selection
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: ${{ fromJSON(needs.selection.outputs.shards) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            apmath/playground
+            apmath/css
+            apmath/js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install the existing browser test runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/player-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/player-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Check the exact candidate in an isolated local server
+        timeout-minutes: 30
+        env:
+          NODE_PATH: ${{ runner.temp }}/player-browser/node_modules
+          SHARD: ${{ matrix.shard }}
+          SHARD_COUNT: ${{ needs.selection.outputs.count }}
+        run: |
+          node apmath/playground/next/tools/player-fast-audit.mjs \
+            --manifest apmath/playground/next/tools/player-fast-audit.targets.json \
+            --shard "$SHARD/$SHARD_COUNT" \
+            --out "$RUNNER_TEMP/player-audit"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: player-fast-audit-${{ github.sha }}-${{ matrix.shard }}
+          path: ${{ runner.temp }}/player-audit
+          if-no-files-found: error
+          retention-days: 90

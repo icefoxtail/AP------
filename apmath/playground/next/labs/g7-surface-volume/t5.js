@@ -268,7 +268,7 @@
       const pts = cube8(v3(0, 0, 0), Math.max(A, Hh / 2)), bb = bboxOf(pts.map(D.P)), rowTop = bb.y1 + 0.9;
       const blend = narrow && R ? ease(lin01(te, 0, 0.15)) : 0, showSolid = true;
       if (blend > 0) { const mix = (p, q2) => p + (q2 - p) * blend; D.fit([], [{ x: mix(bb.x0, -R.total / 2), y: mix(bb.y0, rowTop) }, { x: mix(bb.x1, R.total / 2), y: mix(bb.y1, rowTop + R.height + 2.6) }], { l: 36, r: 36, t: 44, b: 40 }); }
-      else D.fit(pts, R && !narrow ? [{ x: -R.total / 2, y: rowTop }, { x: R.total / 2, y: rowTop + R.height + 2.6 }] : [], { l: 38, r: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 38), t: 36, b: 38 });
+      else D.fit(pts, R && !narrow ? [{ x: -R.total / 2, y: rowTop }, { x: R.total / 2, y: rowTop + R.height + 2.6 }] : [], { l: narrow ? 78 : 38, r: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 38), t: 36, b: 38 });
       if (R) spaceRows(D, R, narrow ? 4.6 : 6.4);
       const mats = [];
       if (M.kind === 'cb') {
@@ -480,7 +480,9 @@
       // 휴대폰: 조각이 다 빠지면 입체는 물러나고 조각 줄이 화면을 써요
       const blend = narrow && R ? ease(lin01(te, 0, 0.15)) : 0, showSolid = !(narrow && R && te > 0.15), rowsReg = R ? [{ x: -R.total / 2, y: rowTop }, { x: R.total / 2, y: rowTop + R.height + 3.4 }] : [];
       if (blend > 0) { const mix = (p0, q0) => p0 + (q0 - p0) * blend; D.fit([], [{ x: mix(bbx.x0, rowsReg[0].x), y: mix(bbx.y0, rowTop) }, { x: mix(bbx.x1, rowsReg[1].x), y: mix(bbx.y1, rowsReg[1].y) }], { l: 24, r: 24, t: 40, b: 30 }); }
-      else D.fit(pts, [], { l: 35, r: C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 35, t: 35, b: 30 });
+      // The removed piece's vertical dimension sits outside the left edge:
+      // reserve its line offset and full label width on a narrow canvas.
+      else D.fit(pts, [], { l: narrow ? 72 : 35, r: C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 35, t: 35, b: 30 });
       if (R) spaceRows(D, R, narrow ? 4.4 : 6.2);
       if (showSolid) {
       D.body({ mesh: body, fill: 'sky', alpha: 0.2, edge: 'ink', faceStyle: (f) => (f.tag === 'in' ? { fill: 'amber', alpha: lvA === 2 ? 0.55 : 0.36 } : {}) });

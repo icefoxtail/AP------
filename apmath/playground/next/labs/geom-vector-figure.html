@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
@@ -1883,7 +1884,8 @@ window.addEventListener('DOMContentLoaded', function () {
           const A=NQ.P(...info.m4.first.A),B=NQ.P(...info.m4.first.B),u=NQ.sub(B,A),d=NQ.mul(NQ.P(-u.y,u.x),1/NQ.len(u));
           b.seg(NQ.add(A,NQ.mul(d,-2)),NQ.add(A,NQ.mul(d,4)),{color:'violet',width:2.7});
           b.right(A,B,NQ.add(A,d),{color:'violet',size:12});
-          b.text(NQ.add(A,NQ.mul(d,2.2)),'접선',{color:'violet',size:13,dy:-12});
+          // 왼쪽으로 나가는 가지 대신 화면 안의 아래쪽 접선 옆에 이름을 둡니다.
+          b.text(NQ.add(A,NQ.mul(d,-1.6)),'접선',{color:'violet',size:13,dx:12,align:'left'});
         }
       }finally{lvfContext=previous;b._text=text;b.axes=axes;b.ctx.fillText=fill;}
       b._vfLessonView.appliedFocus=b.focus;b._vfLessonView.nq=b.__nq;b._vfLessonView.ov=b.__ovk;

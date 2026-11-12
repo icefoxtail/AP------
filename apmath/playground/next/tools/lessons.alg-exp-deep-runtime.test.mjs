@@ -138,6 +138,19 @@ test('unrelated results and stale final labels stay closed on entry', () => {
   assert.ok(!frame.points.some(p => p.options.label === 'P' || p.options.label === 'Q'));
 });
 
+test('the exponential lesson camera follows growing endpoints while the native player holds dragging', () => {
+  const { compiled, base } = select('t6a', '등차와등비');
+  lab.s.dragging = true;
+  try {
+    apply(compiled, 0, base);
+    for (const time of [26.2, 28.2, compiled.length]) {
+      const frame = apply(compiled, time, base);
+      const x3 = lab.s.type6_xMid + lab.s.type6_stepD, y3 = 2 ** x3;
+      assert.ok(frame.viewBox.y1 > y3 && frame.viewBox.x1 > x3, `visible C at ${time}`);
+    }
+  } finally { lab.s.dragging = false; }
+});
+
 test('the actual exploration action distinguishes rounded ratios from exact values', () => {
   lab.go('t6a');
   const action = lab.scene.actions().find(item => item.id === 'twin');

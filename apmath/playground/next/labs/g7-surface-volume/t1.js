@@ -792,9 +792,10 @@
         const sn = solidNet(poly, hu, 1, sm, 8), A = sn.A, B = sn.B, eNow = ease(t), glue = eNow > 0.3 && !C.problem && !b.thumb;
         const grp = (k) => (k === 0 ? 0 : k === 15 ? 2 : k === 16 ? 3 : 1);
         // 옆 패널이 있는 가로 태블릿에서 아래 밑면 끝이 도구막대에 가리지 않게 합니다.
-        const bottom = C.review && b.W >= 560 && b.W < 800 ? 54 : 30;
+        // 짧은 폰의 종료 카드 위에도 둘레식과 겉넓이식 두 줄의 자리를 남깁니다.
+        const bottom = C.lesson && b.W < 560 && b.H < 400 && eNow > 0.78 ? 112 : C.review && b.W >= 560 && b.W < 800 ? 54 : 30;
         netScene(b, s, C, {
-          sn, t, fitOpt: { l: 30, r: (M.started && C.tab === 'explore' && !C.problem && window.innerWidth >= 700 && b.W >= 560 ? 245 : 30), t: 25, b: bottom },
+          sn, t, fitOpt: { l: b.W < 560 ? 78 : 30, r: (M.started && C.tab === 'explore' && !C.problem && window.innerWidth >= 700 && b.W >= 560 ? 245 : 30), t: 25, b: bottom },
           style: (pc) => Object.assign(roleStyle(pc.tag === 'lat' ? 'lat' : 'base', pc.tag === 'lat' ? lvL : lvB), {
             edgeStyle: (e, p) => {
               if (!glue) return null;

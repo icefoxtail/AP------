@@ -614,7 +614,8 @@ function proofScene(type) {
         const source = [O0, ...arcPts(0, 0, 1, a0, a0 + th, 72)];
         const bx0 = Math.min(...source.map(p => p.x)), bx1 = Math.max(...source.map(p => p.x));
         const by0 = Math.min(...source.map(p => p.y)), by1 = Math.max(...source.map(p => p.y));
-        const wide = b.W >= 700, compact = b.W < 560, sourceX = (bx0 + bx1) / 2;
+        const shortStage = b.H < 300;
+        const wide = b.W >= 700, compact = b.W < 560 || shortStage, sourceX = (bx0 + bx1) / 2;
         const xc = wide ? bx1 + 1.55 + W * 0.725 : sourceX;
         const Yt = wide ? (by0 + by1 - h) / 2 : by1 + 0.85, Yb = Yt + h;
         const spread = 1 + 0.45 * (1 - t), x0 = xc - W / 2;
@@ -635,7 +636,7 @@ function proofScene(type) {
           tagN(b, lerp(O0, Pr, 0.5), Math.sin(-PI / 6), -Math.cos(-PI / 6), `r = ${r} cm`, { color: 'amber', size: 16, gap: 6 });
         }
         dot(b, O0, 'ink', 4.5);
-        if (!problem && (!guided || (st.lessonOn && st.csShowArc))) T(b, { x: sourceX, y: by0 }, circ ? `원주 = ${cmOf(ex(2 * r))}` : `호 l = ${cmOf(ex(r * st.csS, 180))}`, { dy: -24, color: 'sky', size: 17 });
+        if (!problem && (!guided || (st.lessonOn && st.csShowArc))) T(b, { x: sourceX, y: by0 }, circ ? `원주 = ${cmOf(ex(2 * r))}` : `호 l = ${cmOf(ex(r * st.csS, 180))}`, { dy: -24, dx: wide && shortStage ? -8 : 0, align: wide && shortStage ? 'right' : 'center', color: 'sky', size: 17 });
         for (let i = 0; i < N; i++) {
           const down = i % 2 === 0, j = Math.floor(i / 2);
           const px = x0 + (j + (down ? 0.5 : 1)) * chord, X = xc + (px - xc) * spread;
@@ -653,12 +654,16 @@ function proofScene(type) {
             ? (circ ? '가로 → πr = ' + cmOf(ex(r)) : '가로 → l ÷ 2 = ' + cmOf(ex(r * st.csS, 360)))
             : (circ ? '가로 → πr' : '가로 → l ÷ 2');
           T(b, { x: xc, y: Yt - 0.12 }, widthLabel, { dy: -22, color: 'amber', size: 16 });
-          b.seg({ x: xl - 0.12, y: Yt }, { x: xl - 0.12, y: Yb }, { color: 'rose', width: 2.5, alpha: al });
-          tagN(b, { x: xl - 0.12, y: (Yt + Yb) / 2 }, -1, 0, compact ? '세로 → r' : `세로 → r = ${r} cm`, { color: 'rose', size: 16, gap: 8 });
+          // 짧은 가로 화면에서는 두 그림 사이에 긴 높이 라벨을 넣지 않습니다.
+          const heightSide = wide && shortStage ? 1 : -1, heightX = heightSide > 0 ? xr + 0.12 : xl - 0.12;
+          b.seg({ x: heightX, y: Yt }, { x: heightX, y: Yb }, { color: 'rose', width: 2.5, alpha: al });
+          tagN(b, { x: heightX, y: (Yt + Yb) / 2 }, heightSide, 0, compact ? '세로 → r' : `세로 → r = ${r} cm`, { color: 'rose', size: 16, gap: 8 });
           // 해설(lesson) 재생 중(st.lessonOn)에는 결론 라벨을 해설이 csShowS 를 켤 때까지 아껴 둡니다(유도 자막보다 정답이 먼저 보이지 않게). 탐구 화면은 그대로.
           if (!guided || (st.lessonOn && st.csShowS)) T(b, { x: xc, y: Yb }, circ ? `S = πr² = ${cm2Of(ex(r * r))}` : `S = ½rl = ${cm2Of(ex(r * r * st.csS, 360))}`, { dy: 28, color: 'green', size: 17 });
         }
-        const yh = Yb + (compact ? 0.85 : 0.65), half = Math.max(0.7, Math.min(1.2, W * 0.6));
+        // 수식은 픽셀 크기이므로 무대가 낮아져도 조작점과의 간격을 유지합니다.
+        const handleGap = Math.max(compact ? 0.85 : 0.65, 64 / Math.max(1, b.k));
+        const yh = Yb + handleGap, half = Math.max(0.7, Math.min(1.2, W * 0.6));
         const xa = xc - half, xb = xc + half;
         b.seg({ x: xa, y: yh }, { x: xb, y: yh }, { color: 'muted', width: 3, alpha: 0.7 });
         b.handle('T', { x: xa + (xb - xa) * st.csT / 100, y: yh }, { color: 'amber', ariaLabel: '조각 가로로 밀기', drag: (w) => { s.playing = false; s.csT = clamp(Math.round((w.x - xa) / (xb - xa) * 100), 0, 100); } });

@@ -478,8 +478,9 @@
     }
   }
   /** 도형 안쪽에 변의 길이 표시 */
-  function drawEdgeLabels(w, M, alpha) {
+  function drawEdgeLabels(w, M, alpha, one = false) {
     M.E.forEach((e) => {
+      if (one && e.i !== 0) return;
       const mid = [(e.p[0] + e.q[0]) / 2, (e.p[1] + e.q[1]) / 2];
       w.text([mid[0] - e.n[0] * 0.45, mid[1] - e.n[1] * 0.45], num(e.len), { color: 'ink', alpha });
     });
@@ -504,8 +505,9 @@
     const t = thumb ? 1 : lesson && s.lessonEntry ? 0 : clamp(s.swT, 0, 1);
     const step = tab === 'review' ? s.step : 0;
     // 처음에는 도형 가까이를 크게, 복사본이 나타날 때 화면이 함께 넓어집니다(카메라만 움직임)
+    // 해설에서는 복사본이 보이기 전에 아래쪽 자리까지 확보해 네 각이 잘리지 않게 합니다.
     {
-      const k = ease(seg01(t, 0.55, 0.72));
+      const k = ease(seg01(t, 0.55, lesson ? T.c0 : 0.72));
       b.setFocus(w.box(lerp(L.home.x0, L.box.x0, k), lerp(L.home.x1, L.box.x1, k), lerp(L.home.y0, L.box.y0, k), lerp(L.home.y1, L.box.y1, k)), false);
     }
     const e = seg01(t, T.e0, T.e1), cp = seg01(t, T.c0, T.c1), g = ease(seg01(t, T.g0, T.g1));
@@ -520,7 +522,10 @@
     /* 2) 도형 */
     w.poly(M.V, { fill: 'muted', fillAlpha: 0.2, color: 'ink', width: 2.8 });
     if (!thumb) drawEdgeMarks(w, M);
-    drawEdgeLabels(w, M, 0.95);
+    const compactTri = lesson && M.shape === 'tri' && M.E[0].len * b.k < 100;
+    const innerAngle = lesson && !s.lessonEntry && s.swInner && M.shape === 'tri';
+    // 작은 삼각형은 같은 변의 길이를 한 번만 쓰고, 내각을 설명할 때는 60°에 자리를 내줍니다.
+    if (!compactTri || !innerAngle || read >= 4) drawEdgeLabels(w, M, 0.95, compactTri);
     // 새 해설의 치수 읽기: 지름을 계산하기 전에 같은 반지름 두 개를 보여 줍니다.
     if (lesson && measure > 0 && !pathMode) {
       const rc = M.rects[0], p = lerp2(rc.pts[0], rc.pts[1], 0.5);
@@ -530,7 +535,7 @@
       for (const f of [0.25, 0.75]) w.text(lerp2(p, q, f), num(r), { color: 'green', dx: 16, ref: 'circle' });
       if (measure >= 2) w.text(q, `폭 ${num(2 * r)} cm`, { color: 'green', dy: 18, ref: 'rects' });
     }
-    if (lesson && !s.lessonEntry && s.swInner && M.shape === 'tri') {
+    if (innerAngle && (!compactTri || read < 4)) {
       const p = M.V[0], a = w.toS(p), c = w.toS([M.V.reduce((sum, q) => sum + q[0], 0) / M.n, M.V.reduce((sum, q) => sum + q[1], 0) / M.n]);
       const d = Math.hypot(c.x - a.x, c.y - a.y) || 1;
       b.stext(a.x + (c.x - a.x) * 34 / d, a.y + (c.y - a.y) * 34 / d, '60°', { color: 'ink', size: 12.5, align: 'center', baseline: 'middle', weight: 800 });

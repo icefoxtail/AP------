@@ -718,11 +718,21 @@ window.addEventListener('DOMContentLoaded', function () {
     if (s.step >= 2) {
       region(b, fx, gx, minX, maxX, { fill: 'green', alpha: 0.2, ref: 'region' });
       const mid = (x) => (fx(x) + gx(x)) / 2;
-      // 곡선의 가지가 글자를 가로지르지 않도록 곡선에서 바깥쪽으로 정렬합니다.
-      b.text([m + 2.4, mid(m + 2.4)], '접선 3개 영역', { color: 'green', size: 12.5, weight: 800, align: 'left', ref: 'region' });
-      b.text([m - 2.4, mid(m - 2.4)], '접선 3개 영역', { color: 'green', size: 12.5, weight: 800, align: 'right', ref: 'region' });
-      b.text([m - 1.3, ym - a * 3.2], '접선 1개 영역 (왼쪽 굽은 부분의 안쪽)', { color: 'sky', size: 12.5, weight: 800 });
-      b.text([m + 1.3, ym + a * 3.2], '접선 1개 영역 (오른쪽 굽은 부분의 안쪽)', { color: 'sky', size: 12.5, weight: 800 });
+      // 좁은 화면에서는 양끝 라벨을 무대 안쪽으로 정렬해 문장이 잘리지 않게 합니다.
+      b.text([m + 2.4, mid(m + 2.4)], '접선 3개 영역', { color: 'green', size: 12.5, weight: 800, align: b.W < 560 ? 'right' : 'left', dy: b.W < 560 ? -26 : 0, ref: 'region' });
+      b.text([m - 2.4, mid(m - 2.4)], '접선 3개 영역', { color: 'green', size: 12.5, weight: 800, align: b.W < 560 ? 'left' : 'right', ref: 'region' });
+      if (b.W < 560) {
+        for (const side of [-1, 1]) {
+          const p = [m + side * 1.3, ym + side * a * 3.2], align = side > 0 ? 'right' : 'left';
+          // Keep the lower region note below the orange P label in compact playback.
+          const noteDy = side < 0 ? 33 : 0;
+          cxTag(b, p, '접선 1개 영역', { color: 'sky', size: 12.5, align, dy: noteDy - 9, ref: 'region' });
+          cxTag(b, p, side > 0 ? '(오른쪽 굽은 부분의 안쪽)' : '(왼쪽 굽은 부분의 안쪽)', { color: 'sky', size: 11.5, align, dy: noteDy + 8, ref: 'region' });
+        }
+      } else {
+        b.text([m - 1.3, ym - a * 3.2], '접선 1개 영역 (왼쪽 굽은 부분의 안쪽)', { color: 'sky', size: 12.5, weight: 800 });
+        b.text([m + 1.3, ym + a * 3.2], '접선 1개 영역 (오른쪽 굽은 부분의 안쪽)', { color: 'sky', size: 12.5, weight: 800 });
+      }
     }
     // Step 1: 변곡점 접선 경계선
     if (s.step >= 1) b.seg([minX, gx(minX)], [maxX, gx(maxX)], { color: 'violet', width: 2.4, dash: true, glow: true, ref: 'infl' });

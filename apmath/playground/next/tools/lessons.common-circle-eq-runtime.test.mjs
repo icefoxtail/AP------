@@ -18,6 +18,14 @@ const counts = {
   pappusMinSq: 5, bisectAreaBoth: 3, laserReflectTan: 3
 };
 const ids = Object.keys(counts), plain = value => JSON.parse(JSON.stringify(value));
+test('first shell construction never receives a truthy steps callback returning undefined', () => {
+  // The shell reads steps.length before PROB.attach installs the live getters.
+  const initial = { ...lab.def.state, lessonOn: false, lessonEntry: false };
+  for (const scene of lab.def.groups.flatMap(group => group.scenes)) {
+    const steps = typeof scene.steps === 'function' ? scene.steps(initial, { tab: 'explore', s: initial }) : scene.steps;
+    assert.ok(!scene.steps || Array.isArray(steps), `${scene.id}: available steps must be an array during initial panel construction`);
+  }
+});
 const near = (a, b, why) => assert.ok(Math.abs(a - b) < 1e-8, `${why}: ${a} != ${b}`);
 const sum = values => values.reduce((a, b) => a + b, 0);
 const length = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);

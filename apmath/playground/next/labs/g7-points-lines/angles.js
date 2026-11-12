@@ -420,7 +420,7 @@
     id: 'ck1', title: '시침과 분침이 이루는 각', short: '두 바늘의 각',
     question: '시계의 시침과 분침은 각각 12에서 몇 도 돌아 있을까? 두 바늘 사이의 각은 어떻게 구할까?',
     guide: '막대나 <b>바늘 끝(노랑·하늘 점)</b>을 끌어 시각을 바꿔 보세요. 분침은 1분에 <b>6°</b>, 시침은 1시간에 <b>30°</b>(1분에 <b>0.5°</b>)씩 움직여서, 분이 지나면 <b>시침도 조금씩</b> 앞으로 가요.',
-    box: { x: [-1.3, 1.3], y: [-3, 1.3] },
+    box: { x: [-1.3, 1.3], y: [-3, 1.75] },
     currentFocus: clockProblemFocus,
     params: { h: hourParam, m: minParam },
     controls: ['h', 'm'],
@@ -482,7 +482,9 @@
     currentFocus: clockProblemFocus,
     question: '분침은 1분에 6°, 시침은 1분에 0.5° 움직여요. 분이 지날수록 두 바늘 사이의 각은 어떻게 변할까?',
     guide: '<b>분 막대</b>를 끌거나 ▶를 눌러 분침을 돌려 보세요. 분침은 시침보다 1분에 <b>5.5°</b>씩 더 회전해요. 작은 쪽 사잇각은 두 바늘의 위치에 따라 줄거나 늘고, 0° 또는 180°에 이르면 변화 방향이 바뀌어요.',
-    box: { x: [-1.3, 1.3], y: [-3.3, 1.3] },
+    // The time label sits 26px above the clock and needs its own top margin
+    // while lesson entry/end layouts use a shorter mobile canvas.
+    box: { x: [-1.3, 1.3], y: [-3.3, 1.75] },
     params: { h: { ...hourParam, hint: '정각일 때 시침의 자리가 바뀌어요' }, m: { ...minParam, value: 20, hint: '그림의 분침 끝을 끌어도 됩니다' }, acc: { value: 0, min: 0, max: 1, step: 1 } },
     controls: ['h', 'm'],
     presets: [{ group: '시', label: '3시', apply: (q) => { q.h = 3; q.m = 0; }, on: (q) => q.h === 3 }, { label: '6시', apply: (q) => { q.h = 6; q.m = 0; }, on: (q) => q.h === 6 }, { label: '9시', apply: (q) => { q.h = 9; q.m = 0; }, on: (q) => q.h === 9 }, { label: '12시', apply: (q) => { q.h = 12; q.m = 0; }, on: (q) => q.h === 12 }],

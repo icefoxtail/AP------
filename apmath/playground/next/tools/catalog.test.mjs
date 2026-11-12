@@ -46,6 +46,15 @@ test('노선도의 역은 모두 실제 실험실이다', () => {
   for (const s of cat.strands) for (const st of s.stations) assert.ok(ids.has(st), `${s.id}: 없는 역 ${st}`);
 });
 
+test('원클릭 플레이어가 있는 페이지는 플레이어의 화면 스타일도 불러온다', () => {
+  for (const lab of cat.labs.filter(lab => lab.next)) {
+    const html = fs.readFileSync(path.join(PLAYGROUND, strip(lab.next)), 'utf8').replace(/<!--[\s\S]*?-->/g, '');
+    if (/<script\b[^>]*\bsrc=["'][^"']*\/apl-player\.js(?:[?#][^"']*)?["']/i.test(html)) {
+      assert.match(html, /<link\b(?=[^>]*\brel=["']stylesheet["'])[^>]*\bhref=["'][^"']*\/apl-video\.css(?:[?#][^"']*)?["']/i, `${lab.id}: missing player layout stylesheet`);
+    }
+  }
+});
+
 test('labs/ 안의 실험실 HTML은 모두 카탈로그에 등록되어 있다', () => {
   const registered = new Set(cat.labs.map((l) => path.normalize(strip(l.legacy))));
   const PORTALS = new Set([path.normalize('labs/대수/index.html'), path.normalize('labs/g7/nets-folding.html')]); // 허브 카드에서 뺀 묶음 포털(#978) · 옛 전개도 실험실(2.0 g7-nets 는 g7-polyhedra 로 합쳐 카탈로그에서 뺌, 옛 허브 카드만 연결)

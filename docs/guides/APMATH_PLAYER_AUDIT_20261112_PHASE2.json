@@ -1,0 +1,299 @@
+{
+  "schema": "apmath-phase2-completion/2",
+  "recordedAt": "2026-11-12T08:58:32.395871+00:00",
+  "taskId": "fb948d9b-a2eb-5e22-b140-638e44ec7da1",
+  "branch": "audit/apmath-player-fast-20261112-99f030",
+  "baseMain": "5d49cb23cdc895aaedaf232d9438ce83e2845713",
+  "testedSourceSha": "b9ef54d7441525500d3dbdfad01b3d3910ffebce",
+  "stage": 2,
+  "completion": "COMPLETE",
+  "result": "VALIDATED_BROWSER_CONTRACTS_WITH_EXACT_SCOPED_MANUAL_ADJUDICATIONS",
+  "rawStatusesUnmodified": true,
+  "rawAggregateStatus": "REVIEW_REQUIRED",
+  "raw": {
+    "rows": 3103,
+    "unitStatuses": {
+      "PASS": 3068,
+      "FAIL": 0,
+      "REVIEW_REQUIRED": 35
+    },
+    "assertionStatuses": {
+      "PASS": 584976,
+      "FAIL": 0,
+      "REVIEW_REQUIRED": 139
+    },
+    "unitsWithAssertionStatus": {
+      "PASS": 3103,
+      "REVIEW_REQUIRED": 35
+    },
+    "sampleCount": 56496,
+    "sampleMethods": {
+      "NATIVE_SEEK_FROZEN_QA_CLOCK": 56496
+    }
+  },
+  "coverage": {
+    "keyContract": "lab + scene + lessonIndex + viewport; gi included only when inventory explicitly provides it",
+    "expectedViewportUnits": 3103,
+    "observedUniqueExpectedUnits": 3103,
+    "notRunCount": 0,
+    "notRun": [],
+    "duplicateNativeKeys": [],
+    "unexpected": []
+  },
+  "sourceIntegrity": {
+    "status": "PASS",
+    "errors": [],
+    "warnings": []
+  },
+  "counts": {
+    "labs": 58,
+    "scenes": 1067,
+    "lessons": 2989,
+    "viewportUnits": 3103,
+    "primaryMobileUnits": 2989,
+    "additionalViewportUnits": 114,
+    "acceptedRawPass": 3068,
+    "acceptedScopedManualReviews": 35,
+    "pending": 0,
+    "failed": 0,
+    "notRun": 0
+  },
+  "selectionRationale": {
+    "initialPriorNativeProofLessons": 102,
+    "initialPriorNativeExclusions": 87,
+    "localFixDeltas": [
+      672,
+      215,
+      87
+    ],
+    "finalBrowserExclusions": 0,
+    "finalReason": "The shared player close/layout correction changes every browser runtime dependency closure. All affected browser contracts were rechecked; completed math and unchanged independent content observations were retained."
+  },
+  "execution": {
+    "runId": 43183779882,
+    "url": "https://github.com/icefoxtail/AP------/actions/runs/43183779882",
+    "shards": 8,
+    "status": "completed",
+    "conclusion": "success",
+    "elapsedSeconds": 731.0,
+    "sampledStates": 56496,
+    "qaNativeExecutions": 187,
+    "qaNativeCompleted": 187,
+    "normalNativeExecutions": 2,
+    "normalNativeCompleted": 2,
+    "controls": {
+      "rows": 187,
+      "pinnedMidCloseRows": 110,
+      "passedChecks": {
+        "normal UI pause freezes native clock": 187,
+        "trusted forward scrub reaches final timeline while paused": 187,
+        "trusted rewind removes future captions/pins": 187,
+        "replay starts with same controlled values as rewind": 187,
+        "normal UI resume advances native clock": 187,
+        "mid-close pin setup matches compiled timeline": 187,
+        "mid-close restored canvas bitmap aspect matches displayed canvas": 187,
+        "mid-chapter UI close restores exploration": 187,
+        "end-card next opens the correct following lesson or contents": 187
+      }
+    },
+    "aspect": {
+      "ended canvas bitmap aspect matches displayed canvas": 3103,
+      "stable restored canvas bitmap aspect matches displayed canvas": 3103,
+      "mid-close restored canvas bitmap aspect matches displayed canvas": 187
+    }
+  },
+  "speed": {
+    "studentDefaultRate": 1.5,
+    "qaMultiplier": 10,
+    "qaRate": 15,
+    "matchedNormalWallMs": 60158,
+    "matchedFastWallMs": 6153,
+    "matchedObservedSpeedup": 9.777019340159272,
+    "scope": "Two actual matched full playbacks; not overall audit throughput",
+    "pairs": [
+      {
+        "key": "g8-linear-functions:triangle-degeneracy@2:0:390x844",
+        "normalWallMs": 20077,
+        "fastWallMs": 2071,
+        "observedSpeedup": 9.6943505552873,
+        "qaMultiplier": 10,
+        "normalRate": 1.5,
+        "fastRate": 15
+      },
+      {
+        "key": "calc1-integral:signed@0:0:390x844",
+        "normalWallMs": 40081,
+        "fastWallMs": 4082,
+        "observedSpeedup": 9.818961293483586,
+        "qaMultiplier": 10,
+        "normalRate": 1.5,
+        "fastRate": 15
+      }
+    ]
+  },
+  "reuseBaseline": {
+    "counts": {
+      "rawRows": 3103,
+      "rawPassRows": 3068,
+      "rawFailedRows": 0,
+      "rawReviewRows": 35,
+      "accepted": 3103,
+      "pending": 0,
+      "acceptedRawPass": 3068,
+      "acceptedScopedReviews": 35
+    },
+    "artifactErrors": 0,
+    "portableBundle": {
+      "bytes": 28294017,
+      "sha256": "6d06acd7362b4d962554b1481d55e379f6672056af3526bfe8d9b7346a4ed296",
+      "members": 167,
+      "reviewPNGFiles": 139,
+      "baselineSha256": "230b51681c5ee11393783efd7ba080f70ad38de8209fcaaa809464e1dfb4e32b",
+      "status": "REMOTE_READBACK_VERIFIED",
+      "fileId": "12PSEtEGUSpLXyuNdyQTU5Krt6b1wuV73",
+      "internalManifestVerified": true
+    },
+    "unchangedSelection": {
+      "totalPrimaryUnits": 2989,
+      "automaticallySelected": 0,
+      "excludedFromAutomaticPrimaryTargets": 2989,
+      "retainedPriorNativeScope": 0,
+      "retainedScopedManualReview": 35,
+      "explicitRiskTargets": 0
+    },
+    "syntheticToolValidation": {
+      "synthetic": true,
+      "productCoverage": 0,
+      "purpose": "Verify selective scheduling only; not product correctness",
+      "changedExisting": "g7-coordinate-graphs/coord-order/0",
+      "addedSynthetic": "g7-coordinate-graphs/__synthetic_new_lesson_fixture__/0",
+      "selected": [
+        "g7-coordinate-graphs/__synthetic_new_lesson_fixture__/0",
+        "g7-coordinate-graphs/coord-order/0"
+      ],
+      "selection": {
+        "totalPrimaryUnits": 2990,
+        "automaticallySelected": 2,
+        "excludedFromAutomaticPrimaryTargets": 2988,
+        "retainedPriorNativeScope": 0,
+        "retainedScopedManualReview": 35,
+        "explicitRiskTargets": 0
+      }
+    },
+    "productPASSCountFromFixtures": 0
+  },
+  "evidenceRefs": {
+    "aggregate.json": {
+      "file": "aggregate.json",
+      "sha256": "faa4cfef979825594479b7269ace577b8f750fff2e7c8240dd14a38a6d5f701c"
+    },
+    "baseline.json": {
+      "file": "baseline.json",
+      "sha256": "230b51681c5ee11393783efd7ba080f70ad38de8209fcaaa809464e1dfb4e32b"
+    },
+    "baseline-input.json": {
+      "file": "baseline-input.json",
+      "sha256": "992116eaa742cbcd4e9f8ce29bc4b30d2fad8bac63f3df1a9a919e41500ef9db"
+    },
+    "inventory.json": {
+      "file": "inventory.json",
+      "sha256": "170c67041508d61ba804204b10812712d541d2362263834109fb3c1d95d6f4a2"
+    },
+    "adjudications.json": {
+      "file": "adjudications.json",
+      "sha256": "ef74aeb2819417b8a8d9c777149af631107a16e21a1e2d2061af741209115796"
+    },
+    "speed-and-controls.json": {
+      "file": "speed-and-controls.json",
+      "sha256": "e171b93f3aac4cfc7edfa7ebe9a307efacdbefca68c16052b6fdec128edb9e59"
+    },
+    "reuse-validation.json": {
+      "file": "reuse-validation.json",
+      "sha256": "ae08d6769c4922dd393171dd5ef062dd7e5ecd99a709ec8964bbd1e75d50f714"
+    },
+    "unchanged-selection.json": {
+      "file": "unchanged-selection.json",
+      "sha256": "a9a7c51d2e317db3089d30e17984dede099c7c542d5d57a89519dca43bd83c1d"
+    }
+  },
+  "rawEvidencePacks": [
+    {
+      "part": 1,
+      "bytes": 83780362,
+      "sha256": "b35b28cdf8434d93de3bf97131d418256c01e233d99fc8a579e39dcd2c8f731a",
+      "shards": [
+        6,
+        3
+      ],
+      "status": "REMOTE_READBACK_VERIFIED",
+      "fileId": "1yxxFFAleEdgGamveuwFD3_vCrrkR8f-L",
+      "internalManifestVerified": true
+    },
+    {
+      "part": 2,
+      "bytes": 83148447,
+      "sha256": "99e3087fc972a7f384b112ce558da58889759c5ea8ec3ddd0d2d7a5fdd6521aa",
+      "shards": [
+        7,
+        4
+      ],
+      "status": "REMOTE_READBACK_VERIFIED",
+      "fileId": "1FNgPvEN5ce6D8PwOIG0t_QiphH_qbkVv",
+      "internalManifestVerified": true
+    },
+    {
+      "part": 3,
+      "bytes": 85202139,
+      "sha256": "62a590ec44e13b30045dcc5a074109f6b590d0fe32ac86429cdd6a4ae4966c55",
+      "shards": [
+        1,
+        5
+      ],
+      "status": "REMOTE_READBACK_VERIFIED",
+      "fileId": "1XDCr0Q1-cBKIasGAKjA17wSRAA2teChD",
+      "internalManifestVerified": true
+    },
+    {
+      "part": 4,
+      "bytes": 82551101,
+      "sha256": "c18a098e51f1797bdbca0229112e04a4c831c25984c695497a9322f46614aa0f",
+      "shards": [
+        0,
+        2
+      ],
+      "status": "REMOTE_READBACK_VERIFIED",
+      "fileId": "1EiRftUnpkpALehD8U2YxmIbnwbdfDDM7",
+      "internalManifestVerified": true
+    }
+  ],
+  "independentReviewAuthority": {
+    "auditOwnerId": "/root",
+    "independentReviewerIds": [
+      "/root/continuity",
+      "/root/math_structure",
+      "/root/player_harness"
+    ]
+  },
+  "stage3Boundary": "Exact139 low-ink checks on35 raw REVIEW rows are independently resolved. Overall risk-selected visual/educational completion is recorded separately in Stage3.",
+  "knownOpenBrowserDefects": [],
+  "limitations": [
+    "High-speed playback and sampled states do not certify every continuous visual frame or normal reading/comprehension pace.",
+    "Chromium desktop execution at specified viewport sizes is not a physical mobile-device, touch-gesture or assistive-technology certification.",
+    "Browser PASS does not independently prove all parameter-space mathematics or exported SVG quality."
+  ],
+  "mainRuntimeComparison": {
+    "baseMainAtStart": "5d49cb23cdc895aaedaf232d9438ce83e2845713",
+    "mainObservedDuringFinalRegression": "fbe577f2a0dd1f03225a0301d6dce2f275ccefe3",
+    "observedAt": "2026-11-12T08:38:24.471102+00:00",
+    "examinedPaths": [
+      "apmath/playground",
+      "apmath/css",
+      "apmath/js"
+    ],
+    "upstreamChangesWithinAuditedRuntimePaths": [],
+    "rebasedOrMergedMain": false,
+    "reason": "Concurrent upstream changes are outside the audited runtime paths; preserve exact tested source and other workers changes."
+  },
+  "mainMerged": false,
+  "deployed": false
+}

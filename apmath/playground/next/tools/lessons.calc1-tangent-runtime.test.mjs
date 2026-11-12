@@ -54,6 +54,15 @@ test('actual inline HTML and deferred module register all seven scenes and 26 va
   assert.equal(examples, 9);
 });
 
+test('the MVT concept leaves its preserved endpoint interval inside the active slider range', () => {
+  lab.go('mvt');
+  const compiled = video.compileLesson(lessonsOf('mvt')[0]);
+  const state = video.stateAt(compiled, compiled.length, baseState());
+  const end = { ...state.nums, ...state.sets }, control = lab.def.params.dx;
+  assert.ok(end.dx > 0, 'the two endpoints remain distinct');
+  assert.ok(end.dx >= control.min && end.dx <= control.max, 'closing preserves a value that the displayed slider can represent');
+});
+
 test('the seven original packets independently satisfy the stated polynomial and geometry conditions', () => {
   const get = id => { const scene = lab.go(id), packet = lab.api.first(id); assert.equal(packet, scene.vary.first()); return packet; };
   {

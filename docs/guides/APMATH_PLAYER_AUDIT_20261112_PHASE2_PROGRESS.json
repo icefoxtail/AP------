@@ -1,0 +1,388 @@
+{
+  "schemaVersion": 2,
+  "taskId": "fb948d9b-a2eb-5e22-b140-638e44ec7da1",
+  "parentCommit": "46e0a61a68b28097420d968208b66f59a624a939",
+  "stage1": "COMPLETE",
+  "stage2": "IN_PROGRESS",
+  "stage3": "IN_PROGRESS",
+  "firstFull": {
+    "run": 43168128729,
+    "sourceSha": "f72561912ceb46cad747b0a6e598a3f79635f70c",
+    "status": "PARTIAL",
+    "unitStatuses": {
+      "PASS": 842,
+      "FAIL": 962,
+      "REVIEW_REQUIRED": 12
+    },
+    "executedViewportUnits": 1816,
+    "selectedViewportUnits": 2942,
+    "notCompletedViewportUnits": 1126,
+    "uniqueBoundsUnits": 29,
+    "uniqueParameterUnits": 133,
+    "uniqueStateUnits": 50,
+    "uniqueReviewUnits": 12,
+    "assertionStatuses": {
+      "PASS": 269325,
+      "REVIEW_REQUIRED": 24,
+      "FAIL": 2327
+    },
+    "assertionFailuresAndReviews": {
+      "low canvas ink needs semantic review": 24,
+      "full question can be read above the fixed lesson buttons": 822,
+      "emitted scene glyphs stay within canvas": 251,
+      "restored parameters and sliders valid": 133,
+      "rendered state remains bound to native timeline": 1120,
+      "visible caption/formula/entry text is accessible": 1
+    }
+  },
+  "nextSelection": {
+    "totalLabs": 58,
+    "totalScenes": 1067,
+    "totalLessons": 2989,
+    "selectedUniqueLabs": 58,
+    "selectedUniqueScenes": 1067,
+    "selectedUniqueLessons": 2989,
+    "selectedViewportUnits": 3103,
+    "selectedPrimaryMobileUnits": 2989,
+    "additionalViewportUnits": 114,
+    "capturedViewportUnits": 273,
+    "nativeContinuousViewportUnits": 187,
+    "normalSpeedViewportUnits": 2,
+    "stableRestoreChecksRequired": 3103,
+    "browserExclusionAfterSharedRuntimeChange": 0,
+    "priorMathEvidenceReusedLessons": 767,
+    "status": "NOT_RUN",
+    "manifestSha256": "7ad9d6d44bce5fb9ec63fa7d77ec94dc276622df48c38462eba28342a754c6be"
+  },
+  "harnessChanges": [
+    "Preserve startup errors and continue to other labs",
+    "Capture first two failing or uncertain sample frames per unit",
+    "Match native numeric/set precedence and initialized replay behavior",
+    "Distinguish expected derived lqcSig camera cache from instructional state",
+    "Validate active slider inputs and finite lesson numbers; preserve initial inactive range values and explicit semantic reviews",
+    "Detect visible missing-data tokens; keep hidden text out of judgments",
+    "Add independent SHA-bound delta selector; never infer PASS from source equality alone"
+  ],
+  "independentVisual": {
+    "status": "IN_PROGRESS",
+    "reviewManifest": {
+      "path": "/workspace/scratch/99f030406492/evidence/stage3/review.json",
+      "sha256": "56ee32096059ba7eb0047cd096f596bd0dc009c9f5d9f479b7605b50363adf69"
+    },
+    "originalPNGsObserved": 228,
+    "distinctScenes": 55,
+    "distinctLessonUnits": 59,
+    "sourceVersionScope": "Exact prior proof, pilot c172, first full f725 and tested 5691. No second-fix native captures yet.",
+    "currentReviewerStatus": "INDEPENDENT_REVIEW_IN_PROGRESS_FRESH_VISUAL_DEFECTS_PENDING_FIX",
+    "findingStates": [
+      {
+        "id": "S3-001",
+        "status": "FIX_VERIFIED_ACTUAL_NEW_CAPTURES"
+      },
+      {
+        "id": "S3-CANDIDATE-002",
+        "status": "NATIVE_SCROLL_ACCESS_VERIFIED_AFTER_SCROLL_IMAGE_PENDING"
+      },
+      {
+        "id": "S3-002",
+        "status": "NATIVE_SCROLL_FIX_VERIFIED_INDEPENDENT_AFTER_SCROLL_IMAGE_PENDING"
+      },
+      {
+        "id": "S3-003",
+        "status": "REMAINS_OPEN_AFTER_5691"
+      },
+      {
+        "id": "S3-004",
+        "status": "CONFIRMED_5691_AWAITING_FIX"
+      },
+      {
+        "id": "S3-005",
+        "status": "CONFIRMED_5691_AWAITING_FIX"
+      },
+      {
+        "id": "S3-006",
+        "status": "CONFIRMED_5691_AWAITING_FIX"
+      }
+    ],
+    "secondFixVisualStatus": "NOT_RUN",
+    "fullVisualPassClaimed": false
+  },
+  "limitations": [
+    "Latest5691 has all3063 rows but retains262FAIL and22REVIEW_REQUIRED; execution completeness is not quality PASS.",
+    "Second-fix candidate native and independent post-fix visual results are NOT_RUN.",
+    "Raw first-full and5691 verdicts remain immutable; scoped adjudications stay separate.",
+    "Seek samples and native clock caption indices do not prove every rendered frame, physical devices, audio synchronization, reading pace or learning effectiveness.",
+    "Independent228-image review is risk-selected and not an all-lesson visual PASS."
+  ],
+  "nextAction": "Run final shared-close regression, independently inspect repaired restore and changed risks, bind exact current-source review evidence, then commit Stage2 and Stage3 completion separately.",
+  "completedSharedRegressionSelection": {
+    "totalLabs": 58,
+    "totalScenes": 1067,
+    "totalLessons": 2989,
+    "priorProofUsedBeforeFix": 102,
+    "originalUnchangedFunctionExclusion": 87,
+    "newProductionSharedFixInvalidatesPriorBrowserFingerprint": true,
+    "unchangedMathEvidenceStillReused": true,
+    "primaryMobileUnits": 2989,
+    "selectedUniqueLessons": 2989,
+    "selectedUniqueScenes": 1067,
+    "selectedViewportUnits": 3063,
+    "additionalViewportUnits": 74,
+    "capturedViewportUnits": 212,
+    "nativeContinuousViewportUnits": 138,
+    "normalSpeedViewportUnits": 2
+  },
+  "historicalFirstFixCandidate": [
+    {
+      "id": "S3-002",
+      "scope": "shared player entry",
+      "defect": "Fixed multi-line entry buttons obscured the last question lines; measure actual bar height and permit initial-stage scroll."
+    },
+    {
+      "id": "S3-003",
+      "scope": "circle area proofs",
+      "defect": "Short landscape restored height labels and drag handle overlapped the source sector or formula."
+    },
+    {
+      "id": "B2-BOOT",
+      "scope": "common-circle-eq",
+      "defect": "A truthy steps wrapper returned undefined before problem attachment; native shell failed at undefined.length."
+    },
+    {
+      "id": "B2-CHOICES",
+      "scope": "g7-construction",
+      "affectedLessons": 13,
+      "defect": "Numeric choices were rendered as literal undefined; preserve the original h/t choice renderer."
+    },
+    {
+      "id": "B2-GLYPHS",
+      "scope": "clock, surface/volume, construction, quadrilateral, Pythagoras, similarity",
+      "defect": "Local camera margins did not include outside labels or intermediate rotated point E."
+    },
+    {
+      "id": "B2-SWEPT",
+      "scope": "circle swept copies",
+      "defect": "Camera widening completed after copied angle labels appeared, leaving them outside the canvas."
+    },
+    {
+      "id": "B2-CONE",
+      "scope": "sv4-3",
+      "defect": "At the held cone/net boundary the drawing emitted no path; preserve solid at boundary and preview full net outlines after unfolding starts."
+    },
+    {
+      "id": "B2-ANSWER",
+      "scope": "trapIrrationalCoeffs",
+      "defect": "Natural language answer was forced into one unbreakable KaTeX text box."
+    }
+  ],
+  "checkpointAt": "2026-11-12T07:43:34.200654+00:00",
+  "checkpointKind": "FINAL_SHARED_RESTORE_FIX_AWAITING_NATIVE_REGRESSION",
+  "latestTestedSourceSha": "46e0a61a68b28097420d968208b66f59a624a939",
+  "overallStatus": "IN_PROGRESS",
+  "latestRawQualityStatus": "FAIL",
+  "latestFull": {
+    "run": 43172360702,
+    "url": "https://github.com/icefoxtail/AP------/actions/runs/43172360702",
+    "sourceSha": "5691d6f4f340b94313ced7e3ad7f55d9d86830c3",
+    "manifestSha256": "b2414c7d9afa6841d0f95204fb2c7d9f2daddec0adb145c8e3c31ac088fa216b",
+    "executionStatus": "COMPLETE",
+    "qualityStatus": "FAIL",
+    "selectedViewportUnits": 3063,
+    "executedViewportUnits": 3063,
+    "unitStatuses": {
+      "PASS": 2779,
+      "FAIL": 262,
+      "REVIEW_REQUIRED": 22
+    },
+    "NOT_RUN": 0,
+    "assertionStatuses": {
+      "PASS": 565986,
+      "FAIL": 1334,
+      "REVIEW_REQUIRED": 187
+    },
+    "seekSamples": 55450,
+    "aggregate": {
+      "path": "/workspace/scratch/99f030406492/evidence/stage2/fixed-5691/aggregate.json",
+      "sha256": "c4cdab094fc529f1d2508641a138d7e37d1116fee9ff4dc798825b1196481859"
+    }
+  },
+  "verifiedBaseline": {
+    "counts": {
+      "rawRows": 3063,
+      "rawPassRows": 2779,
+      "rawFailedRows": 262,
+      "rawReviewRows": 22,
+      "accepted": 2429,
+      "pending": 634,
+      "acceptedRawPass": 2426,
+      "acceptedScopedReviews": 3
+    },
+    "status": "VERIFIED_SCOPE_BOUND_BASELINE",
+    "acceptedViewportUnits": 2429,
+    "acceptedRawPass": 2426,
+    "acceptedScopedIndependentReviews": 3,
+    "rawFailOverridden": 0,
+    "ref": {
+      "path": "/workspace/scratch/99f030406492/evidence/stage2/baseline-before-delta.json",
+      "sha256": "972580c8f662b4029db9c3bef914357fa70ee84c3a5d38c1311cfebbea82433c"
+    },
+    "reviewAuthority": {
+      "adjudications-5691.json": {
+        "path": "/workspace/scratch/99f030406492/evidence/stage3/adjudications-5691.json",
+        "sha256": "37f8cb67208c8bd3e04f0da4f2e93cc3b821c11e31485aef226e0fa257396a9e"
+      },
+      "adjudications-5691-evidence.json": {
+        "path": "/workspace/scratch/99f030406492/evidence/stage3/adjudications-5691-evidence.json",
+        "sha256": "e33accb4c1109d219a9d6075f3c12d983fd6f0e001094943511e6cd411ebf994"
+      },
+      "adjudications-5691.md": {
+        "path": "/workspace/scratch/99f030406492/evidence/stage3/adjudications-5691.md",
+        "sha256": "8a8c629527897d6d47ac5b513cc000857b4a6aad612f87855b93a4052fec32a9"
+      }
+    },
+    "scope": "Three exact low-ink rows only; no raw FAIL rewritten and no all-scene visual PASS."
+  },
+  "secondFixCandidate": {
+    "nativeBrowserStatus": "NOT_RUN",
+    "independentPostFixVisualStatus": "NOT_RUN",
+    "sourceCommit": "PENDING_CHECKPOINT_COMMIT",
+    "expectedViewportUnits": 672,
+    "nextManifest": "apmath/playground/next/tools/player-fast-audit.targets.json",
+    "manifestSha256": "729b3e0acab9a0f7aa740888e553ef1e289b32051d842e5a2c01529feeac8c3f",
+    "scope": "CSS compatibility, runtime/lesson data, active slider mismatch and selected label/layout fixes. Selected question-after-scroll and captureAllSamples evidence remains unexecuted."
+  },
+  "speedAndControls": {
+    "sourceSha": "5691d6f4f340b94313ced7e3ad7f55d9d86830c3",
+    "nativeQaViewportUnits": 138,
+    "nativeQaUniqueLessons": 90,
+    "nativeQaLabs": 58,
+    "nativeQaCompleted": 138,
+    "normalSpeedCompleted": 2,
+    "normalControlViewportUnits": 138,
+    "normalControlAssertionsPASS": 966,
+    "normalControlAssertionFailures": 0,
+    "matchedPairs": [
+      {
+        "key": "g8-linear-functions:triangle-degeneracy@2:0:390x844",
+        "rowStatus": "PASS",
+        "scriptSeconds": 30,
+        "normalWallMs": 20076,
+        "qaWallMs": 2072,
+        "measuredSpeedup": 9.68918918918919,
+        "measuredSavedMs": 18004,
+        "normalRate": 1.5,
+        "qaRate": 15,
+        "ref": {
+          "file": "/workspace/scratch/99f030406492/evidence/stage2/fixed-5691/shard-1/extracted/units.jsonl",
+          "line": 357,
+          "fileSha256": "e72a06409d9e83df8b2d23ed89bbd0a50f9805f2e0359f01b90c26332e453da1"
+        }
+      },
+      {
+        "key": "calc1-integral:signed@0:0:390x844",
+        "rowStatus": "PASS",
+        "scriptSeconds": 60,
+        "normalWallMs": 40085,
+        "qaWallMs": 4084,
+        "measuredSpeedup": 9.81513222331048,
+        "measuredSavedMs": 36001,
+        "normalRate": 1.5,
+        "qaRate": 15,
+        "ref": {
+          "file": "/workspace/scratch/99f030406492/evidence/stage2/fixed-5691/shard-5/extracted/units.jsonl",
+          "line": 329,
+          "fileSha256": "668f0f252e98e55034d01b5aa44b881042bebf8df5e6e51853ea13578a9f911e"
+        }
+      }
+    ],
+    "combinedMeasuredSpeedup": 9.7727420402859,
+    "matchedSavedMs": 54005,
+    "scope": "Two same-key normal/QA pairs; not whole-CI acceleration.17 native-target rows still raw FAIL for other checks.",
+    "report": {
+      "path": "/workspace/scratch/99f030406492/evidence/stage2/speed-and-controls-5691.json",
+      "sha256": "c5e5c5053cc99bc2335e655528bd992a93d818be24bd26a51aec143c49f5d210"
+    }
+  },
+  "preservedRawEvidence": {
+    "status": "REMOTE_READBACK_VERIFIED",
+    "receipt": {
+      "path": "/workspace/scratch/99f030406492/evidence/stage2/fixed-5691-pack-receipts.json",
+      "sha256": "e0d2b728e203dbeb0eb47264e6a6adfcc358180bd695fe9a47b32849080f71f3"
+    },
+    "parts": [
+      {
+        "part": 1,
+        "bytes": 64731018,
+        "sha256": "7ffd20eb0d9f8b2024b35a8213e7b2de2898f5a5aaa67e34ce9a35207864cc8b",
+        "status": "REMOTE_READBACK_VERIFIED",
+        "fileId": "1vg-Q0x5E0sJh-51d2knNt1qWF1jcvL2I",
+        "url": "https://drive.google.com/file/d/1vg-Q0x5E0sJh-51d2knNt1qWF1jcvL2I/view",
+        "internalManifestVerified": true
+      },
+      {
+        "part": 2,
+        "bytes": 78084268,
+        "sha256": "e4998948256edce0c6edeb6592fe53029e7c3bd4982f9564747c28a63ff32981",
+        "status": "REMOTE_READBACK_VERIFIED",
+        "fileId": "1wcPOahAWvbJ4f74iR7m3dmKufxjPyYNJ",
+        "url": "https://drive.google.com/file/d/1wcPOahAWvbJ4f74iR7m3dmKufxjPyYNJ/view",
+        "internalManifestVerified": true
+      },
+      {
+        "part": 3,
+        "bytes": 81921414,
+        "sha256": "70bf0eff4c1dfd3192c8cd67dd802f567d008adee910af1c68c17f00888e834c",
+        "status": "REMOTE_READBACK_VERIFIED",
+        "fileId": "1hst2c5HJ34kmZwVceD-RgBcifI8wmCGC",
+        "url": "https://drive.google.com/file/d/1hst2c5HJ34kmZwVceD-RgBcifI8wmCGC/view",
+        "internalManifestVerified": true
+      },
+      {
+        "part": 4,
+        "bytes": 66466143,
+        "sha256": "1774904c3f56f1969d1b3931670d6cca5f891dd1f4baf40185827ba81b1f7bde",
+        "status": "REMOTE_READBACK_VERIFIED",
+        "fileId": "1-tRpTzCOeMbx1JY345zizG3VsBUvIKG0",
+        "url": "https://drive.google.com/file/d/1-tRpTzCOeMbx1JY345zizG3VsBUvIKG0/view",
+        "internalManifestVerified": true
+      }
+    ]
+  },
+  "latestDelta": {
+    "run": 43182283240,
+    "sourceSha": "46e0a61a68b28097420d968208b66f59a624a939",
+    "status": "EXECUTION_COMPLETE_WITH_SCOPED_REVIEWS",
+    "viewportUnits": 87,
+    "unitStatuses": {
+      "PASS": 84,
+      "FAIL": 0,
+      "REVIEW_REQUIRED": 3
+    },
+    "notRun": 0
+  },
+  "environmentRecovery": {
+    "status": "RESTORED_FROM_REMOTE_VERIFIED_BYTES",
+    "sourceSha": "87b942df23c8a1ecfa979bcf27b0948702eff77f",
+    "metadataPackSha256": "ed31052419e3ca0e18b77532caa2cc89d2e271823c51375fa8e02f6bdd8c32a7",
+    "repeatedCompletedBrowserRuns": 0
+  },
+  "pendingVisualReview": [
+    "cubic region annotation",
+    "tangent distance annotation",
+    "motion axis label",
+    "vector tangent label",
+    "vector midpoint label",
+    "compact counting restored layout",
+    "counting restored canvas aspect after layout settles"
+  ],
+  "sharedRestoreFinding": {
+    "priorRawRun": 43180638838,
+    "row": "prob-counting:combo@0:0:1440x900",
+    "failure": "Stable restore bitmap1039x844 versus CSS1039x566.4375",
+    "diagnosticRun": 43182283469,
+    "observed": "close clears and later rebuilds controls; resize RAF can sample temporary height844 before render restores566. Diagnostic run recovered via ResizeObserver at second frame; the original non-instrumented raw FAIL remains preserved.",
+    "plannedCorrection": "Queue layout resize after panel rebuild/invalidation, including rescheduling any pending pin-triggered resize; preserve playback and mathematical state semantics.",
+    "regressionScope": "All3103 current browser viewport units because the shared runtime closure changed. No repetition of completed Stage1 math or unchanged independent content review.",
+    "additionalBoundary": "Independent code review requires a pinned mid-close path as well as ended/close; native harness measures ended aspect for all units and pinned mid-close aspect for selected controls."
+  }
+}

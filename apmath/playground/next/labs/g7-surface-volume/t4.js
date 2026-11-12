@@ -61,7 +61,7 @@
       if (!C.problem && ((rvw && !((lessonRun || C.lesson) && C.t < 0.5)) || C.t >= 0.5 || b.thumb)) {
         const t2 = b.thumb ? 1 : rvw && !lessonRun ? 1 : clamp((C.t - 0.5) * 2, 0, 1);
         const hl = !rvw ? {} : st <= 1 ? {} : surf ? (st === 2 ? { ring: 2, bot: 2 } : { ring: 3, bot: 2 }) : (st === 2 ? { bot: 2 } : { ring: 3, bot: 2 });
-        const res = G.coneNet(b, s, C, { r2: M.r, r1: 0, hf: M.h, R2: M.R, R1: 0, t: surf ? t2 : 0, problem: !surf, review: rvw, hl, lessonReveal: { base: s.svBaseReady, side: s.svSideReady, other: s.svOtherReady }, simpleNet: surf && C.tab === 'explore', fitL: surf && C.tab === 'explore' ? 24 : undefined, fitR: surf && C.tab === 'explore' ? (window.innerWidth>=700 && b.W>=560 ? 245 : 24) : undefined, fitT: surf && C.tab === 'explore' ? 24 : surf ? undefined : 84, fitB: surf && C.tab === 'explore' ? 24 : undefined, vals: { ring: plainVal(M.lat), bot: plainVal(M.S), arcBig: plainVal(V(0, 2 * M.r)), tot: plainVal(M.tot) } });
+        const res = G.coneNet(b, s, C, { r2: M.r, r1: 0, hf: M.h, R2: M.R, R1: 0, t: surf ? t2 : 0, problem: !surf, review: rvw, hl, lessonReveal: { base: s.svBaseReady, side: s.svSideReady, other: s.svOtherReady }, simpleNet: surf && C.tab === 'explore', fitL: surf && C.tab === 'explore' ? 24 : surf && C.lesson && b.W < 560 ? 54 : undefined, fitR: surf && C.tab === 'explore' ? (window.innerWidth>=700 && b.W>=560 ? 245 : 24) : undefined, fitT: surf && C.tab === 'explore' ? 24 : surf ? undefined : 84, fitB: surf && C.tab === 'explore' ? 24 : undefined, vals: { ring: plainVal(M.lat), bot: plainVal(M.S), arcBig: plainVal(V(0, 2 * M.r)), tot: plainVal(M.tot) } });
         if (!surf && !b.thumb && !(C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560)) {
           D4cone(res, M, s, C);
         }
@@ -324,6 +324,9 @@
       const hot = (i) => !C.review || (st <= 1) || (st === 2 && true) || st === 3;
       cones.forEach((c, i) => {
         const apex = v3(c.cx, 0, 0), arc = arcPts(c, c.ang);
+        // 펼치기 첫 순간에도 두 옆면의 전체 윤곽을 안내합니다. 각이 거의 0인
+        // 채색 조각만 그리면 학생 화면에서 입체가 통째로 사라져 보여요.
+        if (C.lesson && u < 1) D.path([apex].concat(arcPts(c, th(c)), [apex]), 'ink', 1.6, { alpha: 0.45, dash: true });
         if (c.ang < 0.5) return;
         D.panel([apex].concat(arc), C.review && st === 2 ? 'amber' : 'green', C.review && st === 2 ? 0.1 : 0.06, 'ink', 2);
         D.path(arc, 'ink', 1.8, {});
@@ -342,7 +345,9 @@
       G.sumRows(D, [[{ t: `각 호의 길이 = 맞붙은 원의 둘레 ${lessonValue(s, C, 'svOtherReady', plainVal(V(0, 2 * M.r)))}`, c: VIO }], [{ t: '맞붙은 원은 겉에 드러나지 않아 밑면은 더하지 않아요', c: 'red' }]], flatA, true);
     };
     const draw = (b, s, M, C) => {
-      if (M.mode === 'surf' && !C.problem && ((C.review && !(C.lesson && C.t < 0.5)) || C.t >= 0.5 || b.thumb)) return drawNet(b, s, M, C);
+      // 첫 장이 t=0.5에서 멈춘 동안은 완성된 입체를 유지하고, 다음 장의 펼침부터 전개도로 넘어갑니다.
+      const netReady = C.lesson ? C.t > 0.5 : C.review || C.t >= 0.5 || b.thumb;
+      if (M.mode === 'surf' && !C.problem && netReady) return drawNet(b, s, M, C);
       const sc = 4.6 / Math.max(M.h1 + M.h2, 2.2 * M.r), r = M.r * sc, h1 = M.h1 * sc, h2 = M.h2 * sc, D = scene3(b, s, C), st = C.step;
       const t = C.problem ? 0 : C.t, rotT = clamp(t / 0.5, 0, 1), sep = ease(lin01(t, 0.5, 0.8)) * (r * 2.6), flip = ease(lin01(t, 0.8, 1));
       const yy0 = -(h1 + h2) / 2, yMid = yy0 + h1;
@@ -352,7 +357,7 @@
       const lowM = xfMesh(low, Tl), upM = xfMesh(upm, shiftT(D.hx(sep)));
       // 지금 프레임의 입체만으로 맞춰요: 아래 원뿔(제자리에서 뒤집힘)과 위 원뿔(오른쪽으로 옮겨 가는 만큼). 처음엔 이중원뿔이 크게, 분해되면서 서서히 물러나요
       const bx4 = (cx, y0, y1) => bxc(add3(cx, v3(0, (y0 + y1) / 2, 0)), r, (y1 - y0) / 2);
-      D.fit(bx4(v3(0, 0, 0), yy0, yMid).concat(bx4(D.hx(sep), yMid, yMid + h2)), [], { l: 30, r: (C.tab === 'explore' && !C.problem && window.innerWidth >= 700 && b.W >= 560 ? 245 : 30), t: 34, b: 36 });
+      D.fit(bx4(v3(0, 0, 0), yy0, yMid).concat(bx4(D.hx(sep), yMid, yMid + h2)), [], { l: 30, r: (C.tab === 'explore' && !C.problem && window.innerWidth >= 700 && b.W >= 560 ? 245 : b.W < 560 ? 70 : 30), t: 34, b: 36 });
       const poly = [[0, yy0], [r, yMid], [0, yMid + h2]];
       if (sep < 0.01 && flip < 0.01) axisLine(D, yy0 - 0.5, yMid + h2 + 0.6);
       const faceS = (hot) => (f) => (f.tag === 'disc' ? { fill: 'red', alpha: sep > 0.2 ? 0.5 : 0.001 } : C.review && hot && f.tag === 'side' ? { fill: 'amber', alpha: 0.36 } : {});
@@ -567,7 +572,7 @@
       const parts = [{ m: xfMesh(hemi, Th), col: 'sky', k: 'h' }, { m: xfMesh(cyl, shiftT(D.hx(dx))), col: 'green', k: 'c' }, { m: xfMesh(cone, shiftT(D.hx(2 * dx))), col: 'violet', k: 'k' }];
       const ringAt = (c, y, rr) => Array.from({ length: 16 }, (_, i) => add3(c, v3(rr * Math.cos((TAU * i) / 16), y, rr * Math.sin((TAU * i) / 16))));
       // 윤곽을 정확히: 반구(제자리에서 뒤집힘)는 지름 원 둘레, 원기둥은 위·아래 원, 원뿔은 밑원과 꼭짓점
-      D.fit([].concat(ringAt(v3(0, 0, 0), yH, r), ringAt(v3(0, 0, 0), yB + r / 2, r * 0.9), [v3(0, yB, 0), v3(0, yH + r * 0.5, 0)], ringAt(D.hx(dx), yH, r), ringAt(D.hx(dx), yC, r), ringAt(D.hx(2 * dx), yC, r), [add3(D.hx(2 * dx), v3(0, yC + hc, 0))]), [], { l: C.problem ? 6 : 30, r: C.tab === 'explore' && !C.problem && window.innerWidth >= 700 && b.W >= 560 ? 245 : (C.problem ? 6 : 30), t: C.problem ? 30 : 30, b: C.problem ? 10 : 30 });
+      D.fit([].concat(ringAt(v3(0, 0, 0), yH, r), ringAt(v3(0, 0, 0), yB + r / 2, r * 0.9), [v3(0, yB, 0), v3(0, yH + r * 0.5, 0)], ringAt(D.hx(dx), yH, r), ringAt(D.hx(dx), yC, r), ringAt(D.hx(2 * dx), yC, r), [add3(D.hx(2 * dx), v3(0, yC + hc, 0))]), [], { l: C.problem ? 6 : 30, r: C.tab === 'explore' && !C.problem && window.innerWidth >= 700 && b.W >= 560 ? 245 : (C.problem ? 6 : b.W < 560 ? 80 : 30), t: C.problem ? 30 : 30, b: C.problem ? 10 : 30 });
       const lvK = !C.review ? 1 : st === 1 ? 2 : 1, lvC = !C.review ? 1 : st === 2 ? 2 : 1, lvH = !C.review ? 1 : st === 3 ? 2 : 1;
       const lv = { k: lvK, c: lvC, h: lvH };
       parts.forEach((p) => D.body({ mesh: p.m, fill: lv[p.k] === 2 ? 'amber' : p.col, alpha: lv[p.k] === 2 ? 0.38 : 0.26, edge: 'ink', edgeW: 2.6, dashBack: () => (dx < 1e-4 ? v3(0, 0, 0) : null), faceStyle: (f) => (f.tag === 'flat' && dx > r * 0.5 ? { fill: 'red', alpha: 0.4 } : f.tag === 'flat' ? { fill: p.col, alpha: 0.12 } : {}) }));

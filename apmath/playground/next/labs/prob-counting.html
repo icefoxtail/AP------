@@ -10,9 +10,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <style>
 /* 이 실험실은 그림을 화면 픽셀 크기에 맞춰 직접 배치하므로 확대·축소 단추는 쓰지 않습니다. */
 .apl-zoom-btn { display: none !important; }
+/* 짧은 세로형 폰의 직접 탐구: 공·상자·정수해 격자와 아래 도구가 겹치지 않게 합니다. */
+@media (max-width: 600px) and (min-height: 600px) and (max-height: 700px) {
+  body:not(.apl-vid):not(.apl-lessonfirst):has(.apl-scene-head[data-tab="explore"][data-many-ctl]) .apl-stage { min-height: 420px; }
+}
 </style>
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>

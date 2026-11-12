@@ -1,0 +1,140 @@
+{
+  "schema": "apmath-stage3-audit-receipt/1",
+  "recordedAt": "2026-11-12T09:07:55.863218+00:00",
+  "taskId": "fb948d9b-a2eb-5e22-b140-638e44ec7da1",
+  "branch": "audit/apmath-player-fast-20261112-99f030",
+  "baseMain": "5d49cb23cdc895aaedaf232d9438ce83e2845713",
+  "testedSourceSha": "b9ef54d7441525500d3dbdfad01b3d3910ffebce",
+  "nativeRunId": 43183779882,
+  "stage": 3,
+  "completion": "COMPLETE",
+  "result": "PASS_WITHIN_DECLARED_SELECTIVE_VISUAL_AND_EDUCATIONAL_SCOPE",
+  "summary": {
+    "reviewerCount": 3,
+    "distinctScenesWithActualVisualEvidence": 76,
+    "distinctLessonUnitsWithActualVisualEvidence": 98,
+    "distinctObservedPngByteHashesAcrossHistoricalSources": 585,
+    "captureReferencesAcrossReports": 621,
+    "independentFindingFamilies": 10,
+    "findingFamiliesVerifiedFixedInRecordedScope": 10,
+    "openFindingFamilies": 0,
+    "additionalNativeFailureFixVisuallyConfirmed": 1,
+    "semanticAdjudicatedUniqueRows": 35,
+    "semanticAdjudicatedNamedChecks": 139,
+    "rawFailOverrides": 0,
+    "sourceOnlyRiskScenesWithoutVisualPass": 4,
+    "countingBasis": "Metadata from actual-view records, deduplicated by PNG SHA for image content and by lab/scene/lesson for scope. Counts include historical failure images; they are not blanket PASS counts.",
+    "finalSourceNewActualCaptureReferences": 69,
+    "finalSourceNewDiagnosticCaptureReferences": 48,
+    "finalSourcePriorByteIdenticalDiagnosticReferencesReused": 91,
+    "finalSourceRestorationComparisonCaptureReferences": 21,
+    "finalSourceActuallyViewedRestoredCaptureReferences": 16,
+    "finalSourceInitialOrEndedComparisonCaptures": 5,
+    "finalSourceIndependentRestorationLessonViewportPairs": 12,
+    "prior530ImagesPromotedWholesaleToCurrentPass": false
+  },
+  "independence": {
+    "visualLead": "/root/continuity",
+    "reviewers": [
+      "/root/continuity",
+      "/root/math_structure",
+      "/root/player_harness"
+    ],
+    "leadAuthoredProductOrHarness": false,
+    "scopeBoundary": "The harness/player author only adjudicated unchanged probability/sequence semantic low-ink checks. Other reviewers independently verified the common player and rendering fixes."
+  },
+  "completionCriteria": [
+    {
+      "criterion": "No unresolved confirmed student-facing defect in selected required scope",
+      "status": "MET",
+      "evidence": "All10independent finding families closed in recorded/current applicable scope; native tangent follow-up separately confirmed."
+    },
+    {
+      "criterion": "Shared restore correction has native regressions and independent fresh pixels",
+      "status": "MET",
+      "evidence": "3103stable restore/ended aspect passes,187mid-close passes and12independent representative units."
+    },
+    {
+      "criterion": "Final source and exact manual evidence binding valid",
+      "status": "MET",
+      "evidence": "Current Git/closure builder accepted3103with pending0/errors0; independent binding receipt covers35rows139checks12restore units."
+    },
+    {
+      "criterion": "No raw FAIL overridden and limits remain explicit",
+      "status": "MET",
+      "evidence": "rawFAIL0in final run; historical FAIL and35rawREVIEW retained; scope limits below."
+    }
+  ],
+  "rawStatusesUnmodified": true,
+  "exactManualAdjudications": {
+    "rawReviewRows": 35,
+    "namedChecks": 139,
+    "rawFailOverrides": 0,
+    "unresolvedChecks": 0
+  },
+  "openItems": [],
+  "limitations": [
+    "이번 독립 검토는 위험 표본 및 변경 부분의 검토입니다. 전체102함수 장면 또는 기존2887해설에 일괄 시각 PASS를 부여하지 않습니다.",
+    "초기/핵심/종료/복원 정지 화면은 해당 시점의 도형·문구·배치를 보여 줍니다. 연속 움직임의 자연스러움이나 모든 중간 프레임을 증명하지 않습니다.",
+    "10배속 자동재생이나 짧은 정상속도 기능 검사만으로 학생의 정상속도 읽기 속도·이해도·해설과 움직임의 전체 시간적 조화를 PASS 처리하지 않습니다.",
+    "SVG 내보내기/다운로드 산출물 품질, 음성·오디오 타이밍, 스크린리더, 실제 모바일 터치 장치, 모든 브라우저/테마/확대율은 이 독립 PNG 검토에서 검증하지 않았습니다.",
+    "geom-space-3d mode1의 질문 전체 접근은 native 스크롤 검사로 확인됐지만 해당 장면의 새 after-scroll PNG는 직접 검토하지 않았습니다. 공통 수정의3대표 after-scroll 이미지만 독립 확인했습니다.",
+    "calc1-integral signed/inverse/symint 및 geom-hyperbola q7은 교육적 소스 검토만 수행했습니다. 이 보고서에서 독립 시각 PASS는 부여하지 않습니다.",
+    "math_structure의 일부 desktop contact sheet는50퍼센트 크기로 표시됐습니다. 원본 크기 글자 접근성 전반을 그 contact sheet로 인증하지 않습니다.",
+    "이번 b9ef에는 관련 Git bytes·현재 native 회귀·새 복원 표본을 결합했습니다. 이후의 공유 플레이어/CSS/렌더러 변경에는 새 적용 판단이 필요합니다.",
+    "외부 호스팅 글꼴 bytes는 저장소 Git 소스 결합만으로 고정되지 않습니다.",
+    "보고서의 관찰 수에는 발견 당시 FAIL 화면 및 재검토 화면이 포함되므로 현재 PASS한 장면 수로 해석하면 안 됩니다."
+  ],
+  "evidenceRefs": [
+    {
+      "member": "evidence/stage3/final-review.json",
+      "bytes": 91825,
+      "sha256": "995a287f5a3defc102fdce8fd693d6a63f2db28b685e715f8f78cdbad018ce4d"
+    },
+    {
+      "member": "evidence/stage3/final-review.md",
+      "bytes": 11979,
+      "sha256": "75c5834e33ac9edcea8dad447dbd4bb4ec98d72176de41b590f0103be8983931"
+    },
+    {
+      "member": "evidence/stage3/final-review-binding-validation.json",
+      "bytes": 35763,
+      "sha256": "4501ea2b9d0b524a33f11bed0b37879ce1003bae61548c20a9ba122a2d5ac51e"
+    },
+    {
+      "member": "evidence/stage3/root-final-crosscheck.json",
+      "bytes": 2494,
+      "sha256": "9b7cf56fe3cf03f99bde718d7a9e34ccd565858552a6be2d082d9af29b633ffa"
+    },
+    {
+      "member": "evidence/stage3/final-b9-restore-review.json",
+      "bytes": 15227,
+      "sha256": "05bc10269024dc8a55b5b9b95fce8cecbe26785e14b3ab99b07b418960242895"
+    },
+    {
+      "member": "evidence/stage3/final-restore-review.json",
+      "bytes": 63930,
+      "sha256": "4ac4da35404d1859f921cdf2d876ede8d6b72cc0e3eddfbef1b4d458527d3de3"
+    },
+    {
+      "member": "evidence/stage3/player-restore-code-review.json",
+      "bytes": 17124,
+      "sha256": "54fcc88e66223a22d18596d4bdb2051bc72d0b99df400f534206076d267c082d"
+    }
+  ],
+  "evidencePack": {
+    "fileId": "1cPc1j2pgvCwKobrLG84AAY_BzC3hmFWP",
+    "url": "https://drive.google.com/file/d/1cPc1j2pgvCwKobrLG84AAY_BzC3hmFWP/view",
+    "bytes": 486074,
+    "sha256": "716e6d9daf8a5ce65d485c61cd5e61b018240089d2ff93ff63744554a736fc22",
+    "members": 89,
+    "status": "REMOTE_READBACK_VERIFIED",
+    "internalManifestVerified": true
+  },
+  "priorStageCompletionCommits": {
+    "stage1": "fe13e3bd2ce02693a38be91bea4cfe56f359e18a",
+    "stage2": "5f049c18ab04d14edad1e8849e475f89b3cf3420"
+  },
+  "mainMerged": false,
+  "deployed": false
+}
