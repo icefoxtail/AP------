@@ -65,6 +65,12 @@
 }
 @media screen and (max-width: 767px) {
   .has-student-common-nav { --student-navigation-space: calc(66px + env(safe-area-inset-bottom)); padding-bottom: var(--student-navigation-space); scroll-padding-bottom: calc(var(--student-navigation-space) + 16px); }
+  .student-nav-lab-player .student-global-nav { display: none !important; }
+  .has-student-common-nav.student-nav-lab-player {
+    --student-navigation-space: 0px;
+    padding-bottom: 0;
+    scroll-padding-bottom: 0;
+  }
   .student-global-nav, .student-nav-labs .student-global-nav, .student-nav-reader .student-global-nav {
     position: fixed;
     inset: auto 0 0;
