@@ -40,6 +40,25 @@ try {
         // session-wide in the native player; reset it before the next case.
         await page.evaluate(i => { lab.video.close(); lab.video._setExplored(false); lab.goScene(i); lab.render(); window.scrollTo(0, 0); }, scene.i);
         await page.locator('.apl-lgo:visible').waitFor();
+        // Scene navigation may resize the backing canvas after render(). Wait
+        // for native layout/paint to settle, without painting or altering state.
+        row.paintReadiness = await page.evaluate(() => new Promise((resolve, reject) => {
+          const started = performance.now(); let previous = '', stable = 0, frames = 0;
+          const inspect = () => {
+            const canvas = lab.ui.canvas, rect = canvas.getBoundingClientRect();
+            const size = [canvas.width, canvas.height, rect.width, rect.height, rect.top].join(',');
+            stable = size === previous ? stable + 1 : 0; previous = size; frames++;
+            let ink = 0;
+            if (canvas.width && canvas.height) {
+              const pixels = lab.board.ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+              for (let i = 3; i < pixels.length; i += 16) if (pixels[i] > 30) ink++;
+            }
+            if (stable >= 3 && ink > 200) return resolve({ milliseconds: performance.now() - started, frames, ink });
+            if (performance.now() - started > 3000) return reject(Error(`Initial native paint did not settle: stable=${stable}, ink=${ink}`));
+            requestAnimationFrame(inspect);
+          };
+          requestAnimationFrame(inspect);
+        }));
         const initial = await page.evaluate(() => {
           const b = lab.board, r = lab.ui.canvas.getBoundingClientRect(), q = document.querySelector('.apl-question');
           const button = document.querySelector('.apl-lgo'), br = button.getBoundingClientRect();
@@ -69,6 +88,10 @@ try {
         check('native playback advances with a caption', middle.time > 0 && !!middle.caption, middle);
         await shot('progress');
         await page.waitForFunction(() => lab.video.state === 'ended', null, { timeout: Math.ceil(duration * 1000) + 8000 });
+        await page.locator('.apl-vend:visible').evaluate(async element => {
+          await Promise.all(element.getAnimations({ subtree: true }).filter(animation => Number.isFinite(animation.effect.getComputedTiming().endTime)).map(animation => animation.finished.catch(() => {})));
+          await new Promise(requestAnimationFrame);
+        });
         const end = await page.evaluate(() => {
           const answer = document.querySelector('.apl-vans'), r = answer.getBoundingClientRect();
           const sc = lab.scene, spec = sc._mf, values = APL_MF.values(spec, lab.s), model = spec.model(values);

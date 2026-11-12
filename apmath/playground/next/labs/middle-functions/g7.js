@@ -303,7 +303,7 @@
   coord.push(make({
     id:'axis-distance',tier:'basic',title:'점과 좌표축 사이의 거리',types:['A06'],vars:{x:V('점의 가로 좌표',5,-5,5),y:V('점의 세로 좌표',4,-5,5)},model:v=>({P:P(v.x,v.y),dx:Math.abs(v.x),dy:Math.abs(v.y)}),
     question:(v,m)=>T`$P${xy(m.P)}$에서 x축까지, y축까지의 거리를 각각 구하세요.`,guide:'점을 다른 사분면으로 옮겨도 거리가 음수가 되지 않는 이유를 보세요.',
-    steps:()=>['축과 수직인 가장 짧은 선분을 그어요.','x축까지는 세로 방향의 길이를 읽어요.','y축까지는 가로 방향의 길이를 읽어요.','거리에는 좌표의 절댓값을 사용해요.'],answer:(v,m)=>T`x축까지 $${F(m.dy)}$, y축까지 $${F(m.dx)}$`,
+    steps:(v,m)=>['축과 수직인 가장 짧은 선분을 그어요.',T`x축까지의 거리는 $|${F(v.y)}|=${F(m.dy)}$예요.`,T`y축까지의 거리는 $|${F(v.x)}|=${F(m.dx)}$예요.`,'거리는 0 이상이므로 좌표의 절댓값을 써요.'],answer:(v,m)=>T`x축까지 $${F(m.dy)}$, y축까지 $${F(m.dx)}$`,
     draw:(b,v,m,c)=>{M.drag(b,c,'P',m.P,{x:'x',y:'y',label:'P'});if(c.step>=1)b.seg(m.P,P(v.x,0),{color:'amber',width:3});if(c.step>=2)b.seg(m.P,P(0,v.y),rose);if(c.solved){M.label(b,P(v.x,v.y/2),N(m.dy),{dx:15,color:'amber'});M.label(b,P(v.x/2,v.y),N(m.dx),{dy:-15,color:'rose'});}},
     verify:(v,m)=>[m.dx<0||m.dy<0?'음의 거리':false,!close(m.dx*m.dx,v.x*v.x)&&'x축성분 거리 오류'].filter(Boolean)
   }));
@@ -451,7 +451,7 @@
     id:'direct-triangle',tier:'basic',title:'정비례와 삼각형 넓이',types:['B10'],vars:{x:V('밑변의 길이',8,2,8),numerator:V('상수의 분자',5,1,6)},
     model:v=>({a:v.numerator/4,A:P(v.x,v.numerator*v.x/4),B:P(v.x,0),area:v.numerator*v.x*v.x/8}),focus:(v,m)=>M.box([m.A,m.B],{minSpan:10,pad:2}),
     question:(v,m)=>T`$${lin(m.a)}$ 위의 점 A에서 x축에 내린 수선의 발은 $B(${F(v.x)},0)$입니다. A의 좌표와 삼각형 AOB의 넓이를 구하세요.`,guide:'밑변과 정비례 상수를 바꾸어 높이가 식에서 결정되는 과정을 보세요.',
-    steps:()=>['A와 수선의 발 B는 x좌표가 같아요.','A의 x좌표를 정비례 식에 대입해요.','삼각형의 밑변은 OB, 높이는 AB예요.','밑변과 높이를 곱한 뒤 2로 나누어요.'],answer:(v,m)=>T`$A${xy(m.A)}$, 넓이 $${F(m.area)}$`,
+    steps:(v,m)=>[T`A의 x좌표도 $${F(v.x)}$예요.`,T`대입하면 $y=${F(m.a)}\times${F(v.x)}=${F(m.A.y)}$예요.`,T`밑변 OB는 $${F(v.x)}$, 높이 AB는 $${F(m.A.y)}$예요.`,T`넓이는 $${F(v.x)}\times${F(m.A.y)}\div2=${F(m.area)}$예요.`],answer:(v,m)=>T`$A${xy(m.A)}$, 넓이 $${F(m.area)}$`,
     draw:(b,v,m,c)=>{M.line(b,m.a,0);M.polygon(b,[O,m.B,m.A]);M.point(b,m.A,'A');M.point(b,m.B,'B',{dy:18});if(c.step>=2)b.seg(m.A,m.B,{color:'amber',width:3});if(c.solved)M.label(b,P(v.x*.65,m.A.y/3),`넓이 ${N(m.area,3)}`,{color:'green'});},
     verify:(v,m)=>[!close(m.A.y,m.a*m.A.x)&&'점-식 불일치',!close(v.x*m.A.y/2,m.area)&&'삼각형넓이 불일치'].filter(Boolean)
   }));
@@ -490,7 +490,7 @@
     model:v=>({points:integerPoints(v.k,v.negativeOnly)}),focus:v=>({x:[-v.k-2,v.negativeOnly?2:v.k+2],y:[-v.k-2,v.negativeOnly?2:v.k+2]}),
     question:v=>T`$${inv(v.k)}$ 위에서 ${v.negativeOnly?'두 좌표가 모두 음의 정수인':'두 좌표가 모두 정수인'} 점을 모두 찾고 개수를 구하세요.`,
     guide:'비례상수를 정수로 바꾸고 정수 약수쌍이 곡선의 점이 되는지 확인하세요.',
-    steps:v=>[T`정수 좌표는 $xy=${F(v.k)}$를 만족해요.`,'양의 약수쌍을 빠짐없이 찾아요.',v.negativeOnly?'두 좌표가 음수인 쌍만 남겨요.':'양의 쌍과 두 부호를 바꾼 음의 쌍을 세어요.','같은 점을 중복해서 세지 않았는지 확인해요.'],
+    steps:(v,m)=>[T`정수 좌표는 $xy=${F(v.k)}$를 만족해요.`,T`양의 약수는 $${[...new Set(m.points.map(q=>Math.abs(q.x)))].sort((a,b)=>a-b).join(',')}$예요.`,'각 약수마다 y=k/x가 하나씩 정해져요.',v.negativeOnly?T`음의 약수쌍만 세면 $${m.points.length}$개예요.`:T`양과 음의 쌍을 합해 $${m.points.length/2}\times2=${m.points.length}$개예요.`],
     answer:(v,m)=>T`정수점 $${m.points.length}$개`,draw:(b,v,m,c)=>{M.inverse(b,v.k);if(c.step>=2)m.points.forEach(q=>M.point(b,q,'',{color:'amber',r:4}));},
     verify:(v,m)=>[m.points.some(q=>!Number.isInteger(q.x)||!Number.isInteger(q.y)||q.x*q.y!==v.k)&&'정수점 조건 오류',new Set(m.points.map(q=>`${q.x},${q.y}`)).size!==m.points.length&&'중복 정수점'].filter(Boolean)
   }));
@@ -501,7 +501,7 @@
     model:v=>({...lattice(v.target),k:v.target}),focus:v=>({x:[-1,Math.max(v.target,v.column)+1],y:[-1,v.target+1]}),
     question:(v,m)=>T`제1사분면에서 $y=k/x$ 아래에 두 좌표가 양의 정수인 점이 $${m.pts.length}$개 있습니다. 곡선 위의 점은 제외합니다. 2 이상 12 이하의 정수 k를 구하세요.`,
     guide:'x좌표를 옮겨 각 세로줄에 있는 점을 세어 보세요. 빈 동그라미는 곡선 위라서 제외합니다.',
-    steps:()=>[T`곡선 아래는 $xy\lt k$인 점이에요.`,'x=1,2,… 순서로 세로줄을 나누어요.','곡선 위의 xy=k인 점은 세지 않아요.','각 세로줄의 개수를 더해 조건과 비교해요.'],
+    steps:(v,m)=>[T`곡선 아래는 $xy\lt k$인 점이에요.`,'곡선 위의 점을 빼고 세로줄마다 세어요.',T`합은 $${Array.from({length:m.k-1},(_,i)=>m.pts.filter(q=>q.x===i+1).length).filter(Boolean).join('+')}=${m.pts.length}$개예요.`,T`조건과 맞는 상수는 $k=${m.k}$예요.`],
     answer:(v,m)=>T`$k=${m.k}$ · ${Array.from({length:m.k-1},(_,i)=>m.pts.filter(q=>q.x===i+1).length).filter(Boolean).join('+')} = ${m.pts.length}`,
     draw:(b,v,m,c)=>{M.inverse(b,m.k,{from:.05});b.vline(v.column,{color:'muted',width:1.5,dash:[4,4]});if(c.step>=1){m.pts.forEach(q=>M.point(b,q,'',{color:q.x===v.column?'amber':'sky',r:3.5}));m.edge.forEach(q=>M.point(b,q,'',{hollow:true,color:'rose',r:4}));}if(c.step>=2){const amount=m.pts.filter(q=>q.x===v.column).length;M.label(b,P(Math.min(v.column,m.k),m.k-.2),`${amount}개`,{color:'amber'});}},
     verify:(v,m)=>[m.pts.some(q=>q.x*q.y>=m.k)&&'경계 포함 오류',m.edge.some(q=>q.x*q.y!==m.k)&&'경계점 오류',Array.from({length:11},(_,i)=>i+2).filter(k=>lattice(k).pts.length===m.pts.length).length!==1&&'상수 유일성 오류'].filter(Boolean)
@@ -512,7 +512,8 @@
     focus:(v,m)=>({x:[-1,Math.max(55,m.required+5)],y:[-1,22]}),axes:{xLabel:'기계 수(대)',yLabel:'작업 시간(시간)'},
     question:v=>T`24대가 20시간 할 작업을 먼저 $${F(v.elapsed)}$시간 했습니다. 나머지를 $${F(v.remainingTime)}$시간 안에 마치려면 같은 성능의 기계가 최소 몇 대 더 필요할까요?`,
     guide:'이미 한 시간과 남은 시간을 바꾸어 완료한 일량과 남은 일량을 나누어 보세요.',
-    steps:(v,m)=>['전체 작업은 24×20=480대·시간이에요.',T`이미 한 일은 $24\times${F(v.elapsed)}$예요.`,T`남은 $${F(m.left)}$를 남은 시간으로 나누어요.`,'기계는 정수 대이므로 필요한 수를 올림해요.'],
+    steps:(v,m)=>['전체 작업은 24×20=480대·시간이에요.',T`이미 한 일은 $24\times${F(v.elapsed)}=${F(m.done)}$예요.`,T`남은 일은 $480-${F(m.done)}=${F(m.left)}$예요.`,T`전체 최소 $${Math.ceil(m.required-1e-9)}$대, 추가 $${Math.max(0,Math.ceil(m.required-1e-9)-24)}$대예요.`],
+    follow:(v,m)=>['일량은 기계 수와 시간의 곱이에요.','이미 끝낸 일은 다시 계산하지 않아요.',T`필요한 수 $${F(m.left)}/${F(v.remainingTime)}=${F(m.required)}$를 올림해요.`,'처음 24대를 빼고 추가할 수만 구해요.'],
     answer:(v,m)=>T`전체 최소 $${Math.ceil(m.required-1e-9)}$대 · 추가 $${Math.max(0,Math.ceil(m.required-1e-9)-24)}$대`,
     draw:(b,v,m,c)=>{rect(b,0,0,24,20,{color:'muted',fill:'muted',fillAlpha:.04});rect(b,0,0,24,v.elapsed,{color:'rose',fill:'rose',fillAlpha:.15});if(c.step>=2){M.inverse(b,m.left,{from:1});rect(b,0,0,m.required,v.remainingTime,{color:'sky',fill:'sky'});M.point(b,P(m.required,v.remainingTime),'남은 일',{color:'amber'});}M.label(b,P(12,21),'전체 일량');},
     verify:(v,m)=>[!close(m.done+m.left,480)&&'남은일 계산 오류',Math.max(24,Math.ceil(m.required-1e-9))*v.remainingTime<m.left-1e-7&&'완료시간 부족'].filter(Boolean)
@@ -550,7 +551,8 @@
     model:v=>{const A=P(v.x,v.k/v.x),B=P(v.x,-v.x/2),C=P(v.x,v.k/v.x-(v.k/v.x+v.x/2)*2.5);return {A,B,C,c:C.y/v.x,small:v.x*(A.y-B.y)/2,large:v.x*(A.y-C.y)/2};},
     focus:(v,m)=>M.box([m.A,m.B,m.C],{minSpan:12,pad:2}),question:v=>T`세 점 A,B,C의 x좌표는 $${F(v.x)}$로 같고 A,B,C 순서로 아래에 있습니다. A는 $y=${F(v.k)}/x$, B는 $y=-x/2$ 위에 있습니다. 삼각형 AOB:AOC=2:5일 때 C를 지나는 y=cx의 c를 구하세요.`,
     guide:'같은 높이를 가진 두 삼각형의 넓이비가 어느 선분의 비가 되는지 비교하세요.',
-    steps:()=>['같은 x좌표를 두 식에 넣어 A,B를 구해요.','원점에서 수직선 AB까지의 높이는 같아요.','넓이비 2:5이므로 AB:AC도 2:5예요.','AC로 C의 y좌표를 구한 뒤 x로 나누어요.'],
+    steps:(v,m)=>[T`대입하면 $A${xy(m.A)},\ B${xy(m.B)}$예요.`,'높이가 같으므로 AB:AC=2:5예요.',T`$AC=${F(m.A.y-m.B.y)}\times\frac52=${F(m.A.y-m.C.y)}$예요.`,T`$c=${F(m.C.y)}/${F(v.x)}=${F(m.c)}$예요.`],
+    follow:(v,m)=>['A와 B의 y좌표는 각 그래프에서 읽어요.','원점에서 공통 수직선까지의 높이가 같아요.',T`C의 y좌표는 $${F(m.A.y)}-${F(m.A.y-m.C.y)}=${F(m.C.y)}$예요.`,'C를 정비례 식에 대입해 다시 확인해요.'],
     answer:(v,m)=>T`$C${xy(m.C)}$, $c=${F(m.c)}$`,draw:(b,v,m,c)=>{M.inverse(b,v.k);M.line(b,-.5,0,{color:'rose'});M.line(b,m.c,0,{color:'muted'});M.polygon(b,[O,m.A,m.C],{fill:'sky',color:'sky'});M.polygon(b,[O,m.A,m.B],{fill:'green',color:'green'});[['A',m.A],['B',m.B],['C',m.C]].forEach(([name,q])=>M.point(b,q,name));if(c.step>=2)b.seg(O,P(v.x,0),{color:'amber',width:3});if(c.step>=3)b.seg(m.A,m.C,{color:'rose',width:4});},
     verify:(v,m)=>[!close(m.small/m.large,2/5)&&'넓이비 오류',!close(m.A.x*m.A.y,v.k)&&'A 곡선 불일치',!close(m.B.y,-m.B.x/2)&&'B 직선 불일치',!close(m.C.y,m.c*m.C.x)&&'C 직선 불일치'].filter(Boolean)
   }));
@@ -559,7 +561,8 @@
     model:v=>{const a=v.p/6,y=-v.height,A=P(y/a,y),B=P(-2*y,y),K=P(y/a+(-2*y-y/a)*v.ratio/(v.ratio+1),y);return {a,A,B,K,H:P(K.x,0),length:B.x-A.x};},
     focus:(v,m)=>M.box([m.A,m.B,m.H],{minSpan:12,pad:2}),question:(v,m)=>T`$${lin(m.a)}$, $y=-x/2$가 $y=-${F(v.height)}$와 만나는 점을 A,B라 합니다. 선분 AB 위에서 AK:KB=${F(v.ratio)}:1인 점 K에서 x축에 내린 수선의 발 H를 구하세요.`,
     guide:'수평선의 높이나 비를 바꾸고 가로 길이를 같은 칸으로 나누어 점 K를 찾으세요.',
-    steps:(v,m)=>[T`두 식에 같은 $y=-${F(v.height)}$를 대입해요.`,'두 x좌표의 차가 수평 선분 AB의 길이예요.',T`AB를 ${v.ratio+1}등분하여 A에서 ${v.ratio}칸 가요.`,'수선의 발 H는 K와 x좌표가 같고 y=0이에요.'],
+    steps:(v,m)=>[T`대입하면 $A${xy(m.A)},\ B${xy(m.B)}$예요.`,T`$AB=${F(m.B.x)}-(${F(m.A.x)})=${F(m.length)}$예요.`,T`$AK=${F(m.length)}\times\frac{${v.ratio}}{${v.ratio+1}}=${F(m.K.x-m.A.x)}$예요.`,T`같은 x좌표의 수선발은 $H${xy(m.H)}$예요.`],
+    follow:(v,m)=>[T`두 식에서 $y=-${F(v.height)}$로 놓았어요.`,'수평선분의 길이는 x좌표의 차예요.',T`K의 x좌표는 $${F(m.A.x)}+${F(m.K.x-m.A.x)}=${F(m.K.x)}$예요.`,'x축 위에서는 y좌표가 0이에요.'],
     answer:(v,m)=>T`$H${xy(m.H)}$`,draw:(b,v,m,c)=>{M.line(b,m.a,0);M.line(b,-.5,0,{color:'rose'});b.hline(-v.height,muted);b.seg(m.A,m.B,{color:'sky',width:3});M.point(b,m.A,'A');M.point(b,m.B,'B');if(c.step>=2){for(let i=1;i<=v.ratio;i++)M.point(b,P(m.A.x+m.length*i/(v.ratio+1),-v.height),'',{color:'muted',r:3});M.point(b,m.K,'K',{color:'amber'});}if(c.step>=3)b.seg(m.K,m.H,{color:'amber',dash:[5,4]});if(c.solved)M.point(b,m.H,'H',{color:'green'});},
     verify:(v,m)=>[!close(m.A.y,m.a*m.A.x)&&'A 교점 오류',!close(m.B.y,-m.B.x/2)&&'B 교점 오류',!close((m.K.x-m.A.x)/(m.B.x-m.K.x),v.ratio)&&'선분비 오류',m.H.y!==0||m.H.x!==m.K.x?'수선발 오류':false].filter(Boolean)
   }));

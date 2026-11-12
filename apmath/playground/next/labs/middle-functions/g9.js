@@ -20,6 +20,7 @@
   const vertexFormula = m => `${m.a === 1 ? '' : m.a === -1 ? '-' : F(m.a)}${shifted(m.p)}^2${term(m.q)}`;
   const generalFormula = m => polynomial(m.a, m.b, m.c);
   const y = (m, x) => m.a * (x - m.p) ** 2 + m.q;
+  const scalarLabel = value => `${Math.abs(value - Math.round(value * 100) / 100) > 1e-9 ? '≈' : ''}${N(value)}`;
   const pairLabel = q => `${[q.x, q.y].some(v => Math.abs(v - Math.round(v * 100) / 100) > 1e-9) ? '≈' : ''}(${N(q.x)}, ${N(q.y)})`;
   const parabola = (a, p, q) => ({ a, p, q, b: -2 * a * p, c: a * p * p + q, V: P(p, q) });
   const shape = (v) => parabola(v.sign * v.mag, v.p || 0, v.q || 0);
@@ -301,11 +302,11 @@
     vars: { t: variable('점 B의 양의 x좌표', 1, 1, 2), area: variable('삼각형 ABO의 넓이', 2, 1, 4), up: variable('BD의 비', 2, 1, 3), down: variable('CD의 비', 3, 1, 3) },
     model: v => { const a = v.area / v.t ** 3, beta = -a * v.down / v.up, m = parabola(a, 0, 0); return { ...m, lower: parabola(beta, 0, 0), A: P(-v.t, a * v.t * v.t), B: P(v.t, a * v.t * v.t), C: P(v.t, beta * v.t * v.t), D: P(v.t, 0), O: P(0, 0), beta, sum: a + beta }; },
     focus: (v, m) => M.box([m.A, m.B, m.C, m.D, m.O, P(-v.t, m.C.y)], { pad: 2, minSpan: 8 }),
-    question: v => T`A, B는 $y=ax^2$ 위에 있고 x좌표가 각각 $-${F(v.t)},\ ${F(v.t)}$입니다. C는 $y=bx^2$ 위에서 B의 바로 아래, D는 x축 위에 있습니다. $\triangle ABO$의 넓이가 $${F(v.area)}$, $BD:CD=${F(v.up)}:${F(v.down)}$일 때 $a+b$를 구하세요.`,
+    question: v => T`A, B는 $y=ax^2$ 위에 있고 x좌표가 각각 $-${F(v.t)},\ ${F(v.t)}$입니다. C는 $y=bx^2$ 위에서 B와 x좌표가 같고 x축 아래에 있습니다. D는 선분 BC와 x축의 교점입니다. $\triangle ABO$의 넓이가 $${F(v.area)}$, $BD:CD=${F(v.up)}:${F(v.down)}$일 때 $a+b$를 구하세요.`,
     guide: '삼각형 넓이로 위쪽 높이를 구한 뒤, 길이비로 아래쪽 높이를 연결하세요. 길이는 양수지만 C의 y좌표는 음수입니다.',
     steps: (v, m) => [T`AB의 길이는 $${F(2 * v.t)}$이고, O에서 AB까지 높이는 $a\times${F(v.t ** 2)}$입니다.`, T`넓이 $${F(v.area)}=\frac12\times${F(2 * v.t)}\times a\times${F(v.t ** 2)}$에서 $a=${F(m.a)}$입니다.`, T`$CD=BD\times\frac{${F(v.down)}}{${F(v.up)}}$이고 C는 x축 아래이므로 $b=${F(m.beta)}$입니다.`, T`따라서 $a+b=${F(m.sum)}$입니다.`],
     answer: (v, m) => T`$a=${F(m.a)},\ b=${F(m.beta)},\ a+b=${F(m.sum)}$`,
-    draw(b, v, m, ctx) { M.polygon(b, [m.A, m.B, m.O]); plot(b, m); plot(b, m.lower, { color: 'rose' }); [m.A, m.B, m.C, m.D].forEach((q, i) => M.point(b, q, ['A', 'B', 'C', 'D'][i], { color: i === 2 ? 'rose' : 'green', dx: i === 0 ? -14 : 14 })); if (ctx.step >= 2) { b.seg(m.B, m.D, { color: 'green', width: 4 }); b.seg(m.D, m.C, { color: 'rose', width: 4 }); } if (ctx.solved) { M.label(b, P(v.t, m.B.y / 2), `BD ${N(m.B.y)}`, { dx: 20, align: 'left', color: 'green' }); M.label(b, P(v.t, m.C.y / 2), `CD ${N(-m.C.y)}`, { dx: 20, align: 'left', color: 'rose' }); } },
+    draw(b, v, m, ctx) { M.polygon(b, [m.A, m.B, m.O]); plot(b, m); plot(b, m.lower, { color: 'rose' }); [m.A, m.B, m.C, m.D].forEach((q, i) => M.point(b, q, ['A', 'B', 'C', 'D'][i], { color: i === 2 ? 'rose' : 'green', dx: i === 0 ? -14 : 14 })); if (ctx.step >= 2) { b.seg(m.B, m.D, { color: 'green', width: 4 }); b.seg(m.D, m.C, { color: 'rose', width: 4 }); } if (ctx.solved) { M.label(b, P(v.t, m.B.y / 2), `BD ${N(m.B.y)}`, { dx: 20, align: 'left', color: 'green' }); M.label(b, P(v.t, m.C.y / 2), `CD ${scalarLabel(-m.C.y)}`, { dx: 20, align: 'left', color: 'rose' }); } },
     voice: ['삼각형의 밑변과 높이를 읽어요.', '넓이에서 위 포물선의 계수를 구해요.', '길이비를 아래쪽 높이에 적용해요.', 'C의 음의 좌표를 넣어 b를 구해요.'],
     verify: (v, m) => [...verifyPara(m), Math.abs((m.B.x - m.A.x) * m.B.y / 2 - v.area) > 1e-8 && '주어진 넓이 불일치', Math.abs(m.B.y / -m.C.y - v.up / v.down) > 1e-8 && '길이비 불일치', Math.abs(m.lower.a * m.C.x ** 2 - m.C.y) > 1e-8 && 'C 대입 불일치'].filter(Boolean)
   });
@@ -382,7 +383,7 @@
     guide: '상황 버튼으로 세 가지 모델을 비교하세요. 세로축의 양과 단위를 먼저 읽고, 해당 상황의 막대만 조절합니다.',
     steps: (v, m) => v.mode === 'height' ? [T`t는 초, h는 m이며 처음 높이는 $${F(v.initial)}$m입니다.`, T`$h=-5\times(${F(v.time)})^2+20\times${F(v.time)}+${F(v.initial)}$입니다.`, T`현재 그래프의 가로좌표 $${F(v.time)}$에서 높이를 확인합니다.`, T`공의 높이는 $${F(m.value)}$m입니다.`] : v.mode === 'braking' ? [T`속력의 제곱에 정비례하므로 $d=kv^2$로 놓습니다.`, T`$4=k\times20^2$에서 $k=\frac1{100}$입니다.`, T`따라서 $d=\frac1{100}v^2$이고 $v=${F(v.speed)}$를 넣습니다.`, T`제동 거리는 $${F(m.value)}$m입니다.`] : [T`가로와 세로의 합이 4이므로 세로는 $4-x$cm입니다.`, T`넓이는 $S=x(4-x)=-x^2+4x$입니다. 실제 길이의 범위는 $0<x<4$입니다.`, T`$x=${F(v.width)}$이면 세로는 $${F(m.height)}$cm입니다.`, T`넓이는 $${F(v.width)}\times${F(m.height)}=${F(m.value)}\mathrm{cm}^2$입니다.`],
     answer: (v, m) => v.mode === 'height' ? T`$${F(m.value)}\mathrm m$` : v.mode === 'braking' ? T`$${F(m.value)}\mathrm m$` : T`$S=-x^2+4x$, 넓이 $${F(m.value)}\mathrm{cm}^2$`,
-    draw(b, v, m, ctx) { if (v.mode === 'height') { M.curve(b, x => -5 * x * x + 20 * x + v.initial, { from: 0, to: 4 }); M.point(b, m.start, '처음', { color: 'muted', dx: 15 }); onCurve(b, ctx, 'T', m.A, q => ({ time: q.x })); } else if (v.mode === 'braking') { M.curve(b, x => x * x / 100, { from: 0, to: 80 }); M.point(b, m.given, '조건', { color: 'green', dx: -18 }); onCurve(b, ctx, 'V', m.A, q => ({ speed: q.x })); } else { M.curve(b, x => x * (4 - x), { from: 0, to: 4 }); onCurve(b, ctx, 'W', m.A, q => ({ width: q.x })); } if (ctx.step >= 2) M.projection(b, m.A); if (ctx.solved) M.label(b, m.A, `${N(m.value)}${v.mode === 'area' ? 'cm²' : 'm'}`, { color: 'amber', dy: -28 }); },
+    draw(b, v, m, ctx) { if (v.mode === 'height') { M.curve(b, x => -5 * x * x + 20 * x + v.initial, { from: 0, to: 4 }); M.point(b, m.start, '처음', { color: 'muted', dx: 15 }); onCurve(b, ctx, 'T', m.A, q => ({ time: q.x })); } else if (v.mode === 'braking') { M.curve(b, x => x * x / 100, { from: 0, to: 80 }); M.point(b, m.given, '조건', { color: 'green', dx: -18 }); onCurve(b, ctx, 'V', m.A, q => ({ speed: q.x })); } else { M.curve(b, x => x * (4 - x), { from: 0, to: 4 }); onCurve(b, ctx, 'W', m.A, q => ({ width: q.x })); } if (ctx.step >= 2) M.projection(b, m.A); if (ctx.solved) M.label(b, m.A, `${scalarLabel(m.value)}${v.mode === 'area' ? 'cm²' : 'm'}`, { color: 'amber', dy: -28 }); },
     voice: ['가로축과 세로축의 양을 읽어요.', '상황의 관계를 식으로 나타내요.', '현재 입력을 식과 그래프에 넣어요.', '계산한 값에 단위를 붙여 답해요.'],
     verify: (v, m) => [Math.abs(m.A.y - m.value) > 1e-8 && '상황 점 불일치', v.mode === 'height' && m.value < 0 && '관찰 범위 높이 불일치', v.mode === 'braking' && Math.abs(m.coefficient * 20 ** 2 - 4) > 1e-8 && '제동 거리 조건 불일치', v.mode === 'area' && Math.abs(2 * (v.width + m.height) - 8) > 1e-8 && '둘레 조건 불일치'].filter(Boolean)
   });
@@ -393,11 +394,12 @@
     model: v => { const upper = parabola(1, 1, -1), lower = parabola(1, 1, -1 - v.gap); return { ...upper, lower, A: P(v.left, y(upper, v.left)), B: P(v.right, y(upper, v.right)), C: P(v.right, y(lower, v.right)), D: P(v.left, y(lower, v.left)), width: v.right - v.left, area: (v.right - v.left) * v.gap }; },
     focus: (v, m) => M.box([m.A, m.B, m.C, m.D, m.V, m.lower.V], { pad: 2, minSpan: 9 }),
     question: v => T`$y=x^2-2x$와 이를 아래로 $${F(v.gap)}$만큼 옮긴 그래프, 두 직선 $x=${F(v.left)}$, $x=${F(v.right)}$로 둘러싸인 부분의 넓이를 구하세요.`,
-    guide: '두 곡선은 세로로 같은 길이만큼 떨어져 있습니다. 대응하는 곡선 조각의 합동을 이용하여 평행사변형의 넓이로 바꿉니다.',
-    steps: (v, m) => [T`각 x에서 위·아래 두 점 사이의 세로 거리는 항상 $${F(v.gap)}$입니다.`, T`위쪽 끝점끼리, 아래쪽 끝점끼리 선분을 그으면 서로 평행한 두 선분이 됩니다.`, '선분과 곡선 사이의 두 조각은 세로 평행이동으로 겹칩니다. 같은 넓이를 옮기면 평행사변형이 됩니다.', T`세로 변을 밑변으로 보면 길이가 $${F(v.gap)}$, 수평 높이가 $${F(m.width)}$이므로 넓이는 $${F(m.area)}$입니다.`],
+    guide: '두 곡선의 세로 간격은 일정합니다. 공통된 큰 영역에서 합동인 두 곡선 조각을 각각 빼면 목표 영역과 평행사변형의 넓이가 같습니다.',
+    steps: (v, m) => [T`각 x에서 위·아래 두 점 사이의 세로 거리는 항상 $${F(v.gap)}$입니다.`, T`위쪽 끝점끼리, 아래쪽 끝점끼리 선분을 그으면 서로 평행한 두 선분이 됩니다.`, '위쪽 선분 AB와 아래쪽 곡선 사이를 큰 영역으로 봅니다. 여기서 위 곡선의 조각을 빼면 목표 영역, 아래 곡선의 합동인 조각을 빼면 평행사변형이 남으므로 넓이가 같습니다.', T`세로 변을 밑변으로 보면 길이가 $${F(v.gap)}$, 수평 높이가 $${F(m.width)}$이므로 넓이는 $${F(m.area)}$입니다.`],
+    captions: (v, m) => [T`세로 간격은 $${F(v.gap)}$로 일정해요.`, '위·아래 끝점을 잇는 선분은 평행해요.', '같은 큰 영역에서 합동인 조각을 빼요.', T`넓이는 $${F(v.gap)}\times${F(m.width)}=${F(m.area)}$예요.`],
     answer: (v, m) => T`넓이 $${F(v.gap)}\times${F(m.width)}=${F(m.area)}$`,
     draw(b, v, m, ctx) { const top = [], bottom = []; for (let i = 0; i <= 80; i++) { const x = v.left + (v.right - v.left) * i / 80; top.push(P(x, y(m, x))); bottom.push(P(x, y(m.lower, x))); } M.polygon(b, [...top, ...bottom.slice().reverse()], { width: 0.5 }); plot(b, m); plot(b, m.lower, { color: 'rose' }); b.seg(m.A, m.D, { color: 'amber', width: 3 }); b.seg(m.B, m.C, { color: 'amber', width: 3 }); [m.A, m.B, m.C, m.D].forEach((q, i) => M.point(b, q, ['A', 'B', 'C', 'D'][i], { color: 'amber', dx: i === 0 || i === 3 ? -15 : 15 })); if (ctx.step >= 2) { b.seg(m.A, m.B, { color: 'green', dash: [5, 4] }); b.seg(m.D, m.C, { color: 'green', dash: [5, 4] }); } if (ctx.step >= 3) { M.polygon(b, [...top, m.A], { color: 'amber', fill: 'amber', fillAlpha: 0.17, width: 1 }); M.polygon(b, [...bottom, m.D], { color: 'amber', fill: 'amber', fillAlpha: 0.17, width: 1 }); } if (ctx.solved) M.polygon(b, [m.A, m.B, m.C, m.D], { color: 'green', fillAlpha: 0.2, dash: [5, 4] }); },
-    voice: ['두 곡선의 세로 간격은 같아요.', '대응하는 끝점끼리 선분을 그어요.', '같은 곡선 조각을 옮겨 합쳐요.', '평행사변형의 밑변과 높이를 곱해요.'],
+    voice: ['두 곡선의 세로 간격은 같아요.', '대응하는 끝점끼리 선분을 그어요.', '합동인 조각을 각각 빼서 넓이를 비교해요.', '평행사변형의 밑변과 높이를 곱해요.'],
     verify: (v, m) => [...verifyPara(m), ...[v.left, (v.left + v.right) / 2, v.right].map(x => Math.abs(y(m, x) - y(m.lower, x) - v.gap) > 1e-8 && '평행이동 간격 불일치'), Math.abs((m.A.y - m.D.y) * (m.B.x - m.A.x) - m.area) > 1e-8 && '평행사변형 넓이 불일치'].filter(Boolean)
   });
 

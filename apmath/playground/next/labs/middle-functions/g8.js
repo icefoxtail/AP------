@@ -203,6 +203,52 @@
   function pts(b, pairs) { pairs.forEach(([P,name,color])=>point(b,P,name,color)); }
   function expression(A,B) { return near(A.x,B.x) ? `x=${f(A.x)}` : `y=${eq((B.y-A.y)/(B.x-A.x),A.y-(B.y-A.y)/(B.x-A.x)*A.x)}`; }
   const empty = () => [];
+  const T=String.raw;
+  const CAPTIONS={
+    'function-mapping':(v,m)=>[T`입력은 자연수 $1,2,3,4,5$입니다.`,T`지금은 입력 $x=${v.x}$를 봅니다.`,'같은 세로선 위의 출력들을 세어요.',T`대응하는 출력은 $${m.outputs.map(f).join(',')}$입니다.`,m.isFunction?'다른 입력에도 출력이 하나씩 있어요.':'한 입력에 서로 다른 출력이 둘이에요.',m.isFunction?'입력마다 출력이 하나이므로 함수입니다.':'한 입력에 출력이 둘이므로 함수가 아닙니다.'],
+    'linear-or-not':(v,m)=>[T`현재 식은 $y=${m.form}$입니다.`,'정리한 뒤 x의 차수와 계수를 봐요.',v.mode===3?T`$(x+1)^2=x^2+2x+1$입니다.`:v.mode===2?T`입력 x가 분모인 $6/x$입니다.`:v.mode===1?T`$y=3$은 x에 따라 변하지 않아요.`:T`x의 계수는 2, 상수항은 1이에요.`,v.mode===3?T`두 $x^2$항은 서로 없어져요.`:v.mode===2?'변화량의 비가 일정하지 않아요.':v.mode===1?'기울기는 0입니다.':'기울기 2는 0이 아니에요.',m.linear?T`정리하면 $y=2x+1$입니다.`:v.mode===1?T`$a=0$이므로 일차함수 조건에서 빠져요.`:T`$y=ax+b$ 꼴로 정리되지 않아요.`,m.linear?'따라서 일차함수입니다.':'함수이지만 일차함수는 아닙니다.'],
+    'function-value':(v,m)=>[T`$f(x)=${eq(v.a,v.b)}$입니다.`,T`입력은 $x=${f(v.x)}$입니다.`,T`$f(${f(v.x)})=${f(v.a)}\times(${f(v.x)})${v.b>=0?'+':''}${f(v.b)}$`,T`곱한 값은 $${f(v.a*v.x)}$입니다.`,T`여기에 $${f(v.b)}$을 더하면 $${f(m.P.y)}$입니다.`,T`$f(${f(v.x)})=${f(m.P.y)}$: 점의 y좌표예요.`],
+    'slope-change':(v,m)=>[T`두 점은 $A${xy(m.A)}$, $B${xy(m.B)}$입니다.`,'A에서 B로 오른쪽으로 움직여요.',T`가로 변화량은 $\Delta x=${v.dx}$입니다.`,T`세로 변화량은 $\Delta y=${v.dy}$입니다.`,T`기울기 $=\frac{${v.dy}}{${v.dx}}=${f(m.a)}$`,v.dy>0?'양의 기울기: 오른쪽으로 갈수록 올라가요.':v.dy<0?'음의 기울기: 오른쪽으로 갈수록 내려가요.':'기울기 0: 수평인 직선이에요.'],
+    'intercepts':(v,m)=>[T`직선은 $y=${eq(m.a,v.b)}$입니다.`,'축 위에서는 한 좌표가 0이에요.',T`x축에서는 $0=${eq(m.a,v.b)}$입니다.`,T`y축에서는 $x=0$을 대입해요.`,T`두 절편점은 $${xy(m.A)},${xy(m.B)}$입니다.`,T`x절편 $${f(m.A.x)}$, y절편 $${f(v.b)}$입니다.`],
+    'signs-quadrants':(v,m)=>[T`직선은 $y=${eq(m.a,v.b)}$입니다.`,T`기울기 $${f(m.a)}$의 부호를 봐요.`,T`y축과 만나는 점은 $(0,${v.b})$입니다.`,T`x축과는 $(${f(m.A.x)},0)$에서 만나요.`,'두 절편을 지나 직선을 양쪽으로 늘려요.',`제${m.quadrants.join(', 제')}사분면을 지납니다.`],
+    'quadrant-parameters':(v,m)=>[T`$a=${v.a}>0$, $b=${v.b}<0$입니다.`,T`살펴볼 식은 $y=abx+(a+b)$입니다.`,T`기울기는 $ab=${m.slope}<0$입니다.`,T`y절편은 $a+b=${m.intercept}$입니다.`,T`따라서 직선은 $y=${eq(m.slope,m.intercept)}$입니다.`,`제${m.quadrants.join(', 제')}사분면을 지납니다.`],
+    'vertical-translation':(v,m)=>[T`처음 기울기 $${v.a}$, y절편 $${v.b}$입니다.`,T`y축 방향 이동량은 $${f(v.k)}$입니다.`,'같은 x에서 y에 이동량을 더해요.',T`기울기 $${v.a}$는 그대로입니다.`,T`새 절편은 $${v.b}+(${v.k})=${m.shifted}$입니다.`,T`이동한 식은 $y=${eq(v.a,m.shifted)}$입니다.`],
+    'two-points':(v,m)=>[T`주어진 점은 $A${xy(m.A)}$, $B${xy(m.B)}$예요.`,T`가로 변화는 $${v.x2}-(${f(v.x1)})=${v.x2-v.x1}$입니다.`,T`기울기 $a=\frac{${f(v.y2)}-(${f(v.y1)})}{${v.x2}-(${f(v.x1)})}=${f(m.a)}$`,T`A를 대입하면 $${f(v.y1)}=${f(m.a)}\times(${f(v.x1)})+b$`,T`정리하면 $b=${f(m.b)}$입니다.`,T`따라서 $y=${eq(m.a,m.b)}$입니다.`],
+    'slope-and-point':(v,m)=>[T`기준 직선의 기울기는 $${f(m.a)}$입니다.`,T`지나야 할 점은 $P${xy(m.P)}$입니다.`,T`같은 기울기이므로 $a=${f(m.a)}$입니다.`,T`P를 대입해 $${f(v.y)}=${f(m.a)}\times(${f(v.x)})+b$`,T`따라서 $b=${f(m.b)}$입니다.`,T`구한 식은 $y=${eq(m.a,m.b)}$입니다.`],
+    'point-membership':(v,m)=>[T`점은 $P${xy(m.P)}$입니다.`,T`직선은 $y=${eq(2,v.b)}$입니다.`,T`점의 x좌표 $${f(v.x)}$를 대입해요.`,T`우변 $=2\times(${f(v.x)})${v.b>=0?'+':''}${v.b}=${f(m.expected)}$`,T`P의 y좌표 $${f(v.y)}$와 ${m.on?'같아요':'달라요'}.`,m.on?'P는 그래프 위에 있습니다.':'P는 그래프 위에 있지 않습니다.'],
+    'equation-graph':(v,m)=>[T`주어진 식은 $${v.A}x+${v.B}y-(${v.C})=0$입니다.`,'x항을 오른쪽으로 옮겨요.',T`$${v.B}y=${v.C}-(${v.A})x$의 양변을 ${v.B}로 나눠요.`,T`$x=${f(v.x)}$일 때 해는 $${xy(m.P)}$입니다.`,T`정리한 식은 $y=${eq(m.a,m.b)}$입니다.`,'식의 해들이 모여 이 직선을 만듭니다.'],
+    'axis-parallel':(v,m)=>[T`조건은 $x=${v.k}$, $y=${v.h}$입니다.`,T`$x=${v.k}$는 x좌표가 일정한 세로선이에요.`,T`$y=${v.h}$는 y좌표가 일정한 가로선이에요.`,'교점은 두 조건을 동시에 만족해요.',T`그 점의 x는 $${v.k}$, y는 $${v.h}$입니다.`,T`따라서 교점은 $${xy(m.P)}$입니다.`],
+    'intersection':(v,m)=>[T`첫 직선은 $y=${eq(v.a,v.b)}$입니다.`,T`둘째 직선은 $y=${eq(v.c,v.d)}$입니다.`,T`교점에서는 $${eq(v.a,v.b)}=${eq(v.c,v.d)}$`,T`정리하면 $x=${f(m.P.x)}$입니다.`,T`대입하여 $y=${f(m.P.y)}$도 구합니다.`,T`교점은 $${xy(m.P)}$입니다.`],
+    'line-positions':(v,m)=>[T`두 식은 $y=x+1$, $y=${eq(v.a,v.b)}$예요.`,T`기울기 1과 $${f(v.a)}$를 비교해요.`,m.kind==='one'?'기울기가 다르므로 한 점에서 만나요.':T`기울기가 같아 절편 1과 $${v.b}$를 비교해요.`,m.kind==='one'?T`$x+1=${eq(v.a,v.b)}$을 풉니다.`:m.kind==='parallel'?'절편이 달라 두 직선이 평행해요.':'절편까지 같아 두 직선이 겹쳐요.',m.kind==='one'?T`$x=${f(m.P.x)},\ y=${f(m.P.y)}$입니다.`:m.kind==='parallel'?'공통으로 만족하는 순서쌍이 없어요.':'직선 위 모든 점이 두 식을 만족해요.',m.kind==='one'?T`교점 1개: $${xy(m.P)}$`:m.kind==='parallel'?'교점 0개, 해가 없습니다.':'교점과 해가 무수히 많습니다.'],
+    'three-line-concurrency':(v,m)=>[T`먼저 $x+2y=1$, $2x-y=7$을 봅니다.`,'두 식의 공통점을 먼저 정해요.',T`첫째 식과 둘째 식의 2배를 더해 $5x=15$`,T`공통점은 $P(3,-1)$입니다.`,T`세 번째 식에 넣으면 $9-a=${v.K}$입니다.`,T`따라서 $a=${m.answer}$입니다.`],
+    'triangle-degeneracy':(v,m)=>[T`두 고정 직선은 기울기 $2,-\frac12$예요.`,T`셋째 직선은 $y=ax+${v.b}$입니다.`,'한 쌍이 평행하거나 세 직선이 공점이면 돼요.',T`고정 직선의 교점은 $(1,-1)$입니다.`,T`공점 조건은 $-1=a+${v.b}$입니다.`,T`모든 답은 $a=2,-\frac12,${m.common}$입니다.`],
+    'axes-triangle-area':(v,m)=>[T`직선은 $y=${eq(m.a,m.b)}$입니다.`,T`절편점은 $A${xy(m.A)}$, $B${xy(m.B)}$예요.`,'음의 좌표도 변의 길이는 양수로 읽어요.',T`밑변은 $${v.r}$, 높이는 $${v.h}$입니다.`,T`넓이 $=\frac12\times${v.r}\times${v.h}$`,T`따라서 넓이는 $${f(m.area)}$입니다.`],
+    'lines-polygon-area':(v,m)=>[T`경계 직선은 $${m.lines.slice(0,2).join(',')}$입니다.`,T`나머지 경계는 $${m.lines.slice(2).join(',')}$입니다.`,v.mode===3?T`좌우 길이는 $${v.R}-(-${v.L})=${v.L+v.R}$입니다.`:T`교점은 $${m.poly.map(xy).join(',')}$입니다.`,v.mode===2?T`바깥 직사각형 넓이는 $${(v.L+v.R)*v.h}$입니다.`:T`밑변 $${v.L+v.R}$, 높이 $${v.h}$를 읽어요.`,v.mode===2?T`세 바깥 삼각형 $${f(v.L*v.h/2)},${f(v.R*(v.h-1)/2)},${f((v.L+v.R)/2)}$를 빼요.`:v.mode===3?T`직사각형이므로 $${v.L+v.R}\times${v.h}$입니다.`:T`삼각형이므로 $\frac12\times${v.L+v.R}\times${v.h}$입니다.`,T`따라서 넓이는 $${f(m.area)}$입니다.`],
+    'rectangle-bisection':(v,m)=>[T`직사각형의 범위는 $2\le x\le6$, $3\le y\le5$예요.`,T`이등분선은 $y=ax${v.b>=0?'+':''}${v.b}$ 꼴입니다.`,T`중심은 $((2+6)/2,(3+5)/2)=(4,4)$예요.`,'중심을 지나는 직선은 넓이를 이등분해요.',T`중심을 넣으면 $4=4a${v.b>=0?'+':''}${v.b}$입니다.`,T`$a=${f(m.a)}$, 두 넓이는 각각 4입니다.`],
+    'triangle-area-ratio':(v,m)=>[T`절편점은 $A(${v.r},0)$, $B(0,${v.h})$예요.`,T`두 넓이의 비는 $${v.m}:${v.q}$입니다.`,'O에서 AB까지의 높이는 같아요.',T`따라서 밑변비도 $BP:PA=${v.m}:${v.q}$입니다.`,T`분할점은 $P${xy(m.P)}$입니다.`,T`OP의 식은 $y=${eq(m.a,0)}$입니다.`],
+    'slope-range':(v,m)=>[T`경계점은 $A${xy(m.A)}$, $B${xy(m.B)}$예요.`,v.mode===1?T`기울기는 3으로 고정해요.`:T`고정점은 $(0,${v.b})$입니다.`,v.mode===1?T`B에서 $b=3-3\times3=-6$입니다.`:T`B에서 기울기는 $${f(m.lo)}$입니다.`,v.mode===1?T`A에서 $b=4-3\times1=1$입니다.`:T`A에서 기울기는 $${f(m.hi)}$입니다.`,T`범위는 $${f(m.lo)}${v.closed?'\\le ':'\\lt '}${v.mode===1?'b':'a'}${v.closed?'\\le ':'\\lt '}${f(m.hi)}$입니다.`,`${v.mode===1?'정수':'자연수'}는 ${m.ints.length}개, 경계는 ${v.closed?'포함':'제외'}해요.`],
+    'moving-area':(v,m)=>[T`직사각형 가로 ${v.W} cm, 세로 ${v.H} cm예요.`,v.mode===2?T`P, Q의 속력은 ${v.s}, ${v.u} cm/초예요.`:T`P의 속력은 ${v.s} cm/초입니다.`,v.mode===2?T`남은 두 밑변은 $${v.W}-${v.s}x$, $${v.W}-${v.u}x$예요.`:T`P가 이동한 뒤 남은 길이는 $${v.W}-${v.s}x$예요.`,v.mode===0?T`$y=\frac12(${v.W}-${v.s}x)\times${v.H}$`:v.mode===1?T`$y=\frac12(${2*v.W}-${v.s}x)\times${v.H}$`:T`$y=\frac12(${2*v.W}-${v.s+v.u}x)\times${v.H}$`,T`정리하면 $y=${eq(m.a,m.b)}$입니다.`,T`이동 구간은 $0\le x\le${f(m.end)}$입니다.`],
+    'constant-rate':(v,m)=>[T`처음 물은 ${v.b} L입니다.`,T`매분 ${v.r} L씩 ${v.sign===1?'늘어납니다':'줄어듭니다'}.`,T`기울기는 $${m.a}$, 절편은 $${v.b}$입니다.`,T`목표 양은 $${m.target}$ L입니다.`,T`$${m.target}=${eq(m.a,v.b)}$를 풀어요.`,T`$y=${eq(m.a,v.b)}$, 목표까지 $${f(m.end)}$분입니다.`],
+    'rate-from-data':(v,m)=>[T`관측점은 $(5,${v.y1})$, $(15,${v.y2})$입니다.`,'두 관측값 사이의 변화율을 구해요.',T`$a=\frac{${v.y2}-${v.y1}}{15-5}=${f(m.a)}$`,T`$${v.y1}=5\times${f(m.a)}+b$에서 $b=${f(m.b)}$`,T`$${v.target}=${eq(m.a,m.b)}$를 풀어요.`,T`$y=${eq(m.a,m.b)}$, 목표 시간 $${f(m.T.x)}$분입니다.`],
+    'motion-intersection':(v,m)=>[v.mode===2?T`느린 사람 분속${v.b} m, 늦은 출발은${v.d}분 뒤예요.`:v.mode===1?T`처음 물은 ${40+v.d} L와 40 L입니다.`:T`앞선 사람은 ${v.d} m 앞에 있어요.`,v.mode===1?T`분당 각각 ${v.a} L, ${v.b} L를 빼요.`:T`빠른 속력 ${v.a}, 느린 속력 ${v.b} m/분이에요.`,T`두 식은 $y=${eq(m.a,m.c)}$, $y=${eq(m.b,m.d)}$입니다.`,T`같을 때는 $${eq(m.a,m.c)}=${eq(m.b,m.d)}$`,T`정리하면 $x=${f(m.t)}$분입니다.`,T`교점 $${xy(m.P)}$: $${f(m.t)}$분 후 같아져요.`],
+    'pattern-count':(v,m)=>[T`정사각형 ${v.count}개를 이어 붙여요.`,'첫 정사각형에는 성냥 4개가 필요해요.','하나 더 붙일 때마다 성냥 3개가 늘어요.',T`x개에서 추가한 성냥은 $3(x-1)$개예요.`,T`$y=4+3(x-1)=3x+1$입니다.`,T`현재는 $3\times${v.count}+1=${m.sticks}$개입니다.`],
+    'lattice-solutions':(v,m)=>[T`식은 $${v.a}x+${v.b}y=${v.c}$입니다.`,'자연수 x,y는 모두 1 이상이에요.',T`$y=\frac{${v.c}-${v.a}x}{${v.b}}$로 읽어요.`,'정수 격자점 중 직선 위의 점만 찾아요.',m.points.length?T`첫 점은 $${v.a}\times${m.points[0].x}+${v.b}\times${m.points[0].y}=${v.c}$을 만족해요.`:'식 위에 조건을 만족하는 격자점이 없어요.',m.points.length<=5?T`$${m.points.map(xy).join(',')||'\\varnothing'}$: 총 ${m.points.length}개입니다.`:T`모든 주황색 격자점을 세면 ${m.points.length}개입니다.`],
+    'graph-pythagoras':(v,m)=>[T`두 절편 길이는 ${m.r}, ${m.h}입니다.`,'축과 만드는 삼각형은 직각삼각형이에요.',T`$AB^2=${m.r}^2+${m.h}^2=${m.length*m.length}$`,T`따라서 빗변 $AB=${m.length}$입니다.`,T`같은 넓이로 $${m.r}\times${m.h}=${m.length}\times OH$`,T`구한 높이는 $OH=${f(m.altitude)}$입니다.`],
+    'graph-rotation':(v,m)=>[T`절편 삼각형의 두 길이는 ${v.r}, ${v.h}입니다.`,`${v.axis?'y':'x'}축 둘레로 유한한 삼각형을 회전해요.`,T`원뿔의 높이는 $${m.height}$입니다.`,T`밑면 원의 반지름은 $${m.radius}$입니다.`,T`$V=\frac13\pi\times${m.radius}^2\times${m.height}$`,T`부피는 $${f(m.factor)}\pi$입니다.`],
+    'graph-probability':(v,m)=>['주사위 두 번의 눈을 (a,b)로 나타내요.','전체 경우는 6×6=36가지입니다.',v.mode===0?T`그래프 위 조건은 $b=a+${v.k}$입니다.`:v.mode===1?T`한 교점 조건은 $a\ne${v.k}$입니다.`:T`교점에서는 $2x-a=x-b$입니다.`,v.mode===1?T`추가 조건 $a\ne b$도 함께 적용해요.`:v.mode===2?T`따라서 $a-b=${v.k}$인 눈을 찾아요.`:'1부터 6까지의 격자점으로 확인해요.',T`조건에 맞는 경우는 ${m.points.length}가지입니다.`,T`확률은 $\frac{${m.points.length}}{36}=${M.frac(m.points.length,36)}$입니다.`],
+    'misread-graphs':(v,m)=>[T`민수는 $y=${eq(m.a,m.wrongB)}$를 그렸어요.`,T`지수는 $y=${eq(m.wrongA,m.b)}$를 그렸어요.`,'민수는 절편만 틀려 기울기는 정확해요.',T`따라서 원래 기울기는 $${m.a}$입니다.`,'지수는 기울기만 틀려 절편은 정확해요.',T`절편 ${m.b}를 합치면 $y=${eq(m.a,m.b)}$입니다.`],
+    'cost-comparison':(v,m)=>[T`A 단가 ${v.a}원, B 단가 ${v.b}원입니다.`,T`B에는 배송비 ${v.fee}원이 더 들어요.`,T`비용은 $${v.a}x$, $${v.b}x+${v.fee}$원입니다.`,T`같을 때 $${v.a}x=${v.b}x+${v.fee}$입니다.`,T`교점은 $x=${f(m.x)}$, 그 오른쪽에서 B가 싸요.`,T`정수 개수이므로 최소 ${m.first}개입니다.`],
+    'system-parameters':(v,m)=>[T`알려진 식은 $x+y=${v.S}$, $2x-y=${v.D}$예요.`,T`같은 해가 $ax+y=${v.K}$도 만족해요.`,T`두 식을 더하면 $3x=${v.S+v.D}$입니다.`,T`공통해는 $${xy(m.P)}$입니다.`,T`$${f(m.P.x)}a+${f(m.P.y)}=${v.K}$를 풀어요.`,T`따라서 $a=${f(m.a)}$입니다.`],
+    'system-model':(v,m)=>[v.mode?T`5%와 10% 소금물로 ${v.percent}%를 만들어요.`:T`2점 슛과 3점 슛을 합쳐 ${v.score}점이에요.`,T`전체 양은 $x+y=${m.total}$입니다.`,v.mode?T`소금 조건 $0.05x+0.10y=${v.percent*5}$`:T`점수 조건 $2x+3y=${v.score}$`,T`첫 식을 이용해 $y=${m.total}-x$를 대입해요.`,T`계산하면 $x=${f(m.P.x)},\ y=${f(m.P.y)}$입니다.`,v.mode?T`5% ${f(m.P.x)} g, 10% ${f(m.P.y)} g입니다.`:T`2점 슛 ${m.P.x}골, 3점 슛 ${m.P.y}골입니다.`],
+    'coordinate-walk':(v,m)=>[T`도착점은 $(${v.x},2)$입니다.`,'홀수 눈은 오른쪽, 짝수 눈은 위로 가요.','위쪽 합이 2라서 눈 2는 한 번만 나와요.',T`가로 순서는 $${Object.keys(m.groups).map(k=>'('+k+')').join(',')}$입니다.`,T`눈 2를 넣을 틈은 $${Object.values(m.groups).join('+')}=${m.paths.length}$곳이에요.`,T`경우를 모두 합하면 ${m.paths.length}가지입니다.`],
+    'travel-budget':(v,m)=>[T`갈 때 시속${v.out}, 올 때 시속${v.back} km예요.`,T`총 ${v.limit}시간 중 $${f(v.rest)}$시간은 쉬어요.`,T`이동 시간은 $x/${v.out}+x/${v.back}=${f(m.a)}x$`,T`제한 조건은 $${f(m.a)}x+${f(v.rest)}\le${v.limit}$`,T`경계식에서 $x=${f(m.max)}$입니다.`,T`한쪽 거리 $${f(m.max)}$ km 이하입니다.`],
+    'area-to-equation':(v,m)=>[T`높이는 ${v.H}, 주어진 넓이는 ${v.S}입니다.`,'넓이에서 전체 밑변을 거꾸로 구해요.',T`전체 밑변 $=2\times${v.S}\div${v.H}=${f(m.totalBase)}$`,v.mode?T`아는 절편 $${f(v.H/2)}$를 빼면 길이 $${f(m.r)}$예요.`:T`x절편은 음수이므로 $-${f(m.r)}$입니다.`,T`기울기 $a=${v.H}\div${f(m.r)}=${f(m.a)}$`,T`구한 직선은 $y=${eq(m.a,v.H)}$입니다.`],
+    'quadrant-parameter-range':()=>[T`식은 $y=(k-2)x-(3+k)$입니다.`,'제1사분면을 지나지 않아야 해요.','기울기는 음수, 절편은 0 이하예요.',T`두 조건은 $k-2<0$, $-(3+k)\le0$입니다.`,T`따로 풀면 $k<2$, $k\ge-3$입니다.`,T`함께 만족하는 범위는 $-3\le k<2$입니다.`],
+    'intersection-parameter':()=>[T`두 직선은 $y=-2x-4$, $y=mx-2$예요.`,'교점의 x<0, y>0 조건을 함께 봐요.',T`두 식을 같게 놓으면 $(m+2)x=-2$`,T`x<0에서 $m+2>0$, y>0에서 $x<-2$`,T`결합하면 $0\lt m+2\lt1$입니다.`,T`따라서 $-2\lt m\lt-1$입니다.`],
+    'area-cancellation':(v,m)=>[T`점 $(a,2a)$와 밑변 $y=-8$을 봐요.`,T`주어진 넓이는 ${v.S}입니다.`,T`높이는 $2(a+4)$, 기울기 크기는 $(a+4)/7$`,T`밑변 $=2(a+4)\div((a+4)/7)=14$`,T`$14(a+4)=${v.S}$에서 $a=${m.a}$입니다.`,T`$b=a^2+18a=${m.b}$, 답은 $(${m.a},${m.b})$입니다.`],
+    'area-integer-condition':(v,m)=>[T`두 직선의 공통점은 $(0,${v.c})$입니다.`,T`넓이는 ${v.bound} 미만이고 삼각형이어야 해요.`,'수평선까지의 정수 거리를 h라고 해요.',T`밑변 $4h/3$, 넓이 $2h^2/3$입니다.`,T`정수 높이는 $1\le h\le${m.maxHeight}$, h=0은 제외해요.`,T`$m=${m.ints.join(',')}$이고 합은 ${m.sum}입니다.`],
+    'parallel-area':(v,m)=>[T`처음 식은 $y=${eq(v.a,v.b)}$입니다.`,T`아래로 ${v.drop}만큼 옮겨 $y=${eq(v.a,m.low)}$예요.`,'색칠한 부분은 큰 삼각형에서 작은 것을 뺀 거예요.',T`큰 넓이 $=\frac12\times${f(v.b/v.a)}\times${v.b}=${f(m.outer)}$`,T`작은 넓이 $=\frac12\times${f(m.low/v.a)}\times${m.low}=${f(m.inner)}$`,T`차는 $${f(m.outer)}-${f(m.inner)}=${f(m.S)}$입니다.`]
+  };
   function add(type, spec) {
     const types = Array.isArray(type) ? type : [type];
     const scene = {
@@ -213,11 +259,13 @@
       ...spec
     };
     scene.lesson = (v,m) => {
-      const voice = typeof scene.voice === 'function' ? scene.voice(v,m) : (scene.voice || ['조건을 그래프에서 확인해요.','각 수가 무엇을 뜻하는지 살펴봐요.','보조선으로 관계를 연결해요.','그림의 관계를 식으로 나타내요.','계산한 결과를 그래프에 대입해요.','마지막으로 조건과 답을 확인해요.']);
-      return {title:scene.title,tab:'review',answer:scene.answer(v,m),answerText:scene.answer(v,m),summary:'조건을 그림에 옮기고 식과 연결합니다.',task:'수치를 바꾸고 같은 원리가 유지되는지 확인하세요.',chapters:[
-        {title:'조건을 그림에',length:10,cues:[{at:0,step:1,say:voice[0]},{at:5,say:voice[1]}]},
-        {title:'관계를 식으로',length:10,cues:[{at:0,step:2,say:voice[2]},{at:5,step:3,say:voice[3]}]},
-        {title:'풀이와 확인',length:10,cues:[{at:0,say:voice[4]},{at:5,step:4,say:voice[5]}]}
+      const makeCaptions=CAPTIONS[scene.id];
+      if(!makeCaptions)throw Error('Missing concrete one-click script: '+scene.id);
+      const c=makeCaptions(v,m);
+      return {title:scene.title,tab:'review',answer:scene.answer(v,m),answerText:scene.answer(v,m),summary:'조건을 그림에 옮기고 실제 계산으로 연결합니다.',task:'수치를 바꾸고 같은 원리가 유지되는지 확인하세요.',chapters:[
+        {title:'조건을 그림에',length:10,cues:[{at:0,step:1,say:c[0]},{at:5,say:c[1]}]},
+        {title:'관계를 식으로',length:10,cues:[{at:0,step:2,say:c[2]},{at:5,step:3,say:c[3]}]},
+        {title:'풀이와 확인',length:10,cues:[{at:0,say:c[4]},{at:5,step:4,say:c[5]}]}
       ]};
     };
     scenes.push(scene);
@@ -328,7 +376,7 @@
     vars:{x1:V('A의 x좌표',-1,-4,-1),y1:V('A의 y좌표',4,-5,5),x2:V('B의 x좌표',3,1,4),y2:V('B의 y좌표',-4,-5,5)},
     model:v=>{const A=p(v.x1,v.y1),B=p(v.x2,v.y2),a=(v.y2-v.y1)/(v.x2-v.x1);return{A,B,a,b:v.y1-a*v.x1};},focus:(v,m)=>M.box([m.A,m.B,p(0,m.b)],{pad:2}),
     question:(v,m)=>`두 점 $A${xy(m.A)}$, $B${xy(m.B)}$를 지나는 직선의 식을 구하세요.`,
-    steps:(v,m)=>[`가로 변화량은 $${v.x2}-${f(v.x1)}=${v.x2-v.x1}$입니다.`,`기울기 $a=\\frac{${f(v.y2)}-(${f(v.y1)})}{${v.x2}-(${f(v.x1)})}=${f(m.a)}$입니다.`,`A를 $y=ax+b$에 대입하면 $b=${f(m.b)}$입니다.`,`$y=${eq(m.a,m.b)}$에 A와 B를 각각 대입해 확인합니다.`],
+    steps:(v,m)=>[`가로 변화량은 $${v.x2}-(${f(v.x1)})=${v.x2-v.x1}$입니다.`,`기울기 $a=\\frac{${f(v.y2)}-(${f(v.y1)})}{${v.x2}-(${f(v.x1)})}=${f(m.a)}$입니다.`,`A를 $y=ax+b$에 대입하면 $b=${f(m.b)}$입니다.`,`$y=${eq(m.a,m.b)}$에 A와 B를 각각 대입해 확인합니다.`],
     answer:(v,m)=>givenLine(m.a,m.b),
     draw:(b,v,m,c)=>{M.line(b,m.a,m.b);pts(b,[[m.A,'A','amber'],[m.B,'B','rose']]);M.drag(b,c,'A',m.A,{x:'x1',y:'y1'});M.drag(b,c,'B',m.B,{x:'x2',y:'y2',color:'rose'});if(c.step>=2)M.riseRun(b,m.A,m.B,{dxLabel:`Δx=${n(v.x2-v.x1)}`,dyLabel:`Δy=${n(v.y2-v.y1)}`});},
     verify:(v,m)=>[near(m.a*m.A.x+m.b,m.A.y)?null:'A off line',near(m.a*m.B.x+m.b,m.B.y)?null:'B off line'].filter(Boolean),
@@ -406,8 +454,8 @@
     question:v=>`세 직선 $x+2y=1$, $2x-y=7$, $3x+ay=${v.K}$가 한 점에서 만나도록 하는 a를 구하세요.`,
     steps:(v,m)=>['첫 두 식을 연립하여 먼저 공통점을 찾습니다.','$x=3$, $y=-1$이므로 공통점은 $(3,-1)$입니다.',`세 번째 식에 대입하면 $9-a=${v.K}$입니다.`,`따라서 $a=${m.answer}$일 때 세 직선이 한 점에서 만납니다.`],
     answer:(v,m)=>`$a=${m.answer}$`,
-    draw:(b,v,m,c)=>{M.line(b,-0.5,0.5);M.line(b,2,-7,{color:'rose'});M.line(b,m.slope,m.intercept,{color:'amber',dash:[7,3]});point(b,m.P,'P','green');if(c.step>=3)M.line(b,-3/m.answer,v.K/m.answer,{color:'green',width:3});},
-    readouts:(v,m,c)=>[{label:'탐색 중 a',value:`$${f(v.trial)}$`,color:'amber'}],
+    draw:(b,v,m,c)=>{M.line(b,-0.5,0.5);M.line(b,2,-7,{color:'rose'});if(c.solved||c.step>=3)M.line(b,-3/m.answer,v.K/m.answer,{color:'green',width:4});else M.line(b,m.slope,m.intercept,{color:'amber',dash:[7,3]});point(b,m.P,'P','green');},
+    readouts:(v,m,c)=>[{label:c.solved?'구한 a':'탐색 중 a',value:`$${f(c.solved?m.answer:v.trial)}$`,color:c.solved?'green':'amber'}],
     verify:(v,m)=>[near(m.P.x+2*m.P.y,1)?null:'first condition',near(2*m.P.x-m.P.y,7)?null:'second condition',near(3*m.P.x+m.answer*m.P.y,v.K)?null:'third condition'].filter(Boolean)
   });
   add('no-triangle',{
@@ -459,8 +507,8 @@
     question:v=>`$2\\le x\\le6$, $3\\le y\\le5$인 직사각형을 $y=ax${v.b>=0?'+':''}${v.b}$가 이등분할 때 a를 구하세요.`,
     steps:(v,m)=>['직사각형 중심은 가로·세로 중간인 $(4,4)$입니다.','중심을 지나는 직선은 마주 보는 두 부분을 같은 넓이로 나눕니다.',`중심을 대입하면 $4=4a${v.b>=0?'+':''}${v.b}$입니다.`,`따라서 $a=${f(m.a)}$이며 두 부분의 넓이는 각각 4입니다.`],
     answer:(v,m)=>`$a=${f(m.a)}$`,
-    draw:(b,v,m,c)=>{M.polygon(b,m.upper,{fill:'sky',color:'sky',fillAlpha:0.18});M.polygon(b,m.lower,{fill:'rose',color:'rose',fillAlpha:0.18});M.polygon(b,m.rect,{fillAlpha:0,color:'muted'});M.line(b,v.trial,v.b,{color:'amber'});point(b,m.C,'C','green');if(c.step>=3)M.line(b,m.a,v.b,{color:'green',dash:[5,3]});},
-    readouts:(v,m,c)=>[{label:'탐색 직선 위쪽',value:`$${f(area(m.upper))}$`,color:'sky'},{label:'탐색 직선 아래쪽',value:`$${f(area(m.lower))}$`,color:'rose'}],
+    draw:(b,v,m,c)=>{const done=c.solved||c.step>=3,a=done?m.a:v.trial,upper=done?clip(m.rect,a,v.b,1):m.upper,lower=done?clip(m.rect,a,v.b,-1):m.lower;M.polygon(b,upper,{fill:'sky',color:'sky',fillAlpha:0.18});M.polygon(b,lower,{fill:'rose',color:'rose',fillAlpha:0.18});M.polygon(b,m.rect,{fillAlpha:0,color:'muted'});M.line(b,a,v.b,{color:done?'green':'amber',width:done?4:3});point(b,m.C,'C','green');},
+    readouts:(v,m,c)=>{const done=c.solved||c.step>=3;return[{label:done?'풀이 직선 위쪽':'탐색 직선 위쪽',value:`$${f(done?4:area(m.upper))}$`,color:'sky'},{label:done?'풀이 직선 아래쪽':'탐색 직선 아래쪽',value:`$${f(done?4:area(m.lower))}$`,color:'rose'}];},
     verify:(v,m)=>[near(area(m.upper)+area(m.lower),8)?null:'partition area',near(area(clip(m.rect,m.a,v.b,1)),4)?null:'bisector area'].filter(Boolean)
   });
   add('triangle-ratio',{
@@ -485,7 +533,7 @@
     },focus:(v,m)=>M.box([m.P,m.A,m.B],{pad:2}),
     question:(v,m)=>v.mode===1?`$y=3x+b$가 A(1,4), B(3,3)를 잇는 선분을 만나는 b의 범위와 정수 b의 개수를 구하세요. 끝점은 ${v.closed?'포함':'제외'}합니다.`:v.mode===2?`$y=ax${v.b>=0?'+':''}${v.b}$가 $1\\le x\\le3$, $1\\le y\\le3$인 직사각형${v.closed?'과':'의 내부와'} 만나는 a의 범위와 자연수 a의 개수를 구하세요.`:`고정점 $(0,${v.b})$을 지나는 $y=ax${v.b>=0?'+':''}${v.b}$가 A(1,6), B(4,2)를 잇는 선분을 만나는 a의 범위와 자연수 a의 개수를 구하세요. 끝점은 ${v.closed?'포함':'제외'}합니다.`,
     steps:(v,m)=>v.mode===1?['A를 지날 때 y절편은 $4-3×1=1$입니다.','B를 지날 때 y절편은 $3-3×3=-6$입니다.',`기울기 3을 유지하며 두 경계 직선 사이로 평행이동하면 선분을 만납니다. 경계는 ${v.closed?'포함':'제외'}합니다.`,`범위의 정수는 $${m.ints.join(',')}$, ${m.ints.length}개입니다.`]:[`가장 낮은 경계의 ${v.mode===2?'꼭짓점':'끝점'} B를 지나는 기울기는 $${f(m.lo)}$입니다.`,`가장 높은 경계의 ${v.mode===2?'꼭짓점':'끝점'} A를 지나는 기울기는 $${f(m.hi)}$입니다.`,`그 사이로 회전한 직선은 ${v.mode===2?'직사각형 내부':'선분 내부'}를 만납니다. 경계는 ${v.closed?'포함':'제외'}합니다.`,`범위의 자연수는 $${m.ints.join(',')}$, ${m.ints.length}개입니다.`],
-    answer:(v,m)=>`$${f(m.lo)}${v.closed?'\\le ':'<'}${v.mode===1?'b':'a'}${v.closed?'\\le ':'<'}${f(m.hi)}$, ${v.mode===1?'정수':'자연수'} ${m.ints.length}개`,
+    answer:(v,m)=>`$${f(m.lo)}${v.closed?'\\le ':'\\lt '}${v.mode===1?'b':'a'}${v.closed?'\\le ':'\\lt '}${f(m.hi)}$, ${v.mode===1?'정수':'자연수'} ${m.ints.length}개`,
     draw:(b,v,m,c)=>{
       if(v.mode===2)M.polygon(b,m.rect,{color:'rose',fill:'rose'});else b.seg(m.A,m.B,{color:'rose',width:5});
       M.line(b,v.mode===1?3:v.trial,v.mode===1?v.trial:v.b,{color:'amber'});point(b,m.P,'P','green');
@@ -499,7 +547,7 @@
     // A separate labelled schematic below the coordinate graph, in screen pixels.
     // Its lengths share one scale; it does not pretend to use the time/area axes.
     if(!b.ctx||!b.W||!b.H)return;
-    const c=b.ctx,scale=Math.min(b.W*0.58/m.W,b.H*0.18/m.H),w=m.W*scale,h=m.H*scale,x=(b.W-w)/2,y=b.H*0.80;
+    const c=b.ctx,scale=Math.min(b.W*0.58/m.W,b.H*0.18/m.H),w=m.W*scale,h=m.H*scale,x=(b.W-w)/2,y=Math.min(b.H*0.80,b.H-h-24);
     const P=[x+m.distance*scale,y+h],Q=[x+m.otherDistance*scale,y];
     c.save();c.fillStyle=b.color('halo');c.fillRect(x-32,y-27,w+64,h+48);
     c.strokeStyle=b.color('muted');c.lineWidth=1.8;c.strokeRect(x,y,w,h);
@@ -558,15 +606,23 @@
     vars:{a:V('빠른 변화율의 크기',4,3,6),b:V('느린 변화율의 크기',2,1,2),d:V('처음 차이 또는 출발 지연',6,4,12),phase:V('관찰 구간 진행(%)',45,0,100,5)},state:{mode:0},
     presets:[{label:'앞선 사람 따라잡기',values:{mode:0}},{label:'물통의 양이 같아짐',values:{mode:1}},{label:'늦게 출발해 따라잡기',values:{mode:2}}],
     axes:v=>({xLabel:'시간(분)',yLabel:v.mode===1?'물의 양(L)':'거리(m)'}),
-    model:v=>{let a=v.a,b=v.b,c=0,d=v.d,start=0;if(v.mode===1){a=-v.a;b=-v.b;c=40+v.d;d=40;}if(v.mode===2){c=-v.a*v.d;d=0;start=v.d;}const t=(d-c)/(a-b),P=p(t,a*t+c),end=t*1.3,time=end*v.phase/100;return{a,b,c,d,t,P,start,end,time,A:p(time,time<start?0:a*time+c),B:p(time,b*time+d)};},
-    focus:(v,m)=>({x:[-m.end*0.1,m.end*1.15],y:[-Math.max(m.P.y,40)*0.1,Math.max(m.P.y*1.5,m.c,m.d,1)*1.2]}),
+    model:v=>{let a=v.a,b=v.b,c=0,d=v.d,start=0;if(v.mode===1){a=-v.a;b=-v.b;c=40+v.d;d=40;}if(v.mode===2){c=-v.a*v.d;d=0;start=v.d;}const t=(d-c)/(a-b),P=p(t,a*t+c),emptyAt=v.mode===1?Math.min(c/v.a,d/v.b):null,end=v.mode===1?Math.min(t*1.3,emptyAt):t*1.3,time=end*v.phase/100;return{a,b,c,d,t,P,start,end,time,emptyAt,A:p(time,time<start?0:a*time+c),B:p(time,b*time+d)};},
+    focus:(v,m)=>{const heights=[0,m.a*m.start+m.c,m.d,m.a*m.end+m.c,m.b*m.end+m.d],lo=Math.min(...heights),hi=Math.max(...heights),pad=Math.max(1,(hi-lo)*0.12);return{x:[-m.end*0.1,m.end*1.15],y:[lo-pad,hi+pad]};},
     question:v=>v.mode===1?`A에는 ${40+v.d} L, B에는 40 L가 있습니다. 매분 각각 ${v.a} L, ${v.b} L씩 빼면 언제 양이 같아지나요?`:v.mode===2?`먼저 출발한 사람은 분속 ${v.b} m, ${v.d}분 늦게 출발한 사람은 분속 ${v.a} m입니다. 처음 출발한 때부터 몇 분 후 만나나요?`:`앞선 사람은 ${v.d} m 앞에서 분속 ${v.b} m로, 뒤 사람은 분속 ${v.a} m로 이동합니다. 몇 분 후 만나나요?`,
     steps:(v,m)=>[`첫 변화는 $y=${eq(m.a,m.c)}$${m.start?` ($x\\ge${m.start}$)`:''}입니다.`,`다른 변화는 $y=${eq(m.b,m.d)}$입니다.`,`같아지는 순간 두 식을 같게 놓으면 $x=${f(m.t)}$입니다.`,`교점 $${xy(m.P)}$의 x좌표가 걸린 시간입니다.`],
     answer:(v,m)=>`$${f(m.t)}$분 후, ${v.mode===1?'물의 양':'거리'} $${f(m.P.y)}${v.mode===1?'\\,\\mathrm L':'\\,\\mathrm m'}$`,
     draw:(b,v,m,c)=>{M.curve(b,x=>m.a*x+m.c,{from:m.start,to:m.end});if(m.start)b.seg(O,p(m.start,0),{color:'sky',dash:[4,3]});M.curve(b,x=>m.b*x+m.d,{from:0,to:m.end,color:'rose'});point(b,m.A,'A','sky');point(b,m.B,'B','rose');if(c.step>=2){point(b,m.P,'만남','green');M.projection(b,m.P,{color:'green'});}},
     readouts:(v,m)=>[{label:'현재 시간',value:`$${f(m.time)}$분`,color:'amber'}],
-    verify:(v,m)=>[near(m.a*m.t+m.c,m.b*m.t+m.d)?null:'meeting equality',m.t>=m.start?null:'meeting before start',v.mode===1&&m.P.y<0?'empty before meeting':null].filter(Boolean)
+    verify:(v,m)=>[near(m.a*m.t+m.c,m.b*m.t+m.d)?null:'meeting equality',m.t>=m.start?null:'meeting before start',v.mode===1&&m.P.y<-1e-8?'empty before meeting':null,v.mode===1&&m.end>m.emptyAt+1e-8?'observation after empty tank':null,v.mode===1&&(m.A.y<-1e-8||m.B.y<-1e-8||m.a*m.end+m.c<-1e-8||m.b*m.end+m.d<-1e-8)?'negative water amount':null].filter(Boolean)
   });
+  function patternInset(b,count) {
+    if(!b.ctx||!b.W||!b.H)return;
+    const c=b.ctx,size=Math.min(28,(b.W-60)/count,b.H*0.1),width=count*size,x=(b.W-width)/2,y=b.H-size-18,panel=Math.max(200,width+24);
+    c.save();c.fillStyle=b.color('halo');c.fillRect((b.W-panel)/2,y-26,panel,size+42);c.lineWidth=2.5;
+    for(let i=0;i<count;i++){c.strokeStyle=b.color(i===0?'sky':'green');c.beginPath();c.moveTo(x+i*size,y);c.lineTo(x+(i+1)*size,y);c.moveTo(x+i*size,y+size);c.lineTo(x+(i+1)*size,y+size);c.stroke();}
+    for(let i=0;i<=count;i++){c.strokeStyle=b.color(i<=1?'sky':'green');c.beginPath();c.moveTo(x+i*size,y);c.lineTo(x+i*size,y+size);c.stroke();}
+    c.font='12px sans-serif';c.textAlign='center';c.fillStyle=b.color('ink');c.fillText(`성냥 모형 · 정사각형 ${count}개`,b.W/2,y-10);c.restore();
+  }
   add('pattern',{
     id:'pattern-count',title:'반복되는 모양에서 식 찾기',aspect:'free',axes:{xLabel:'정사각형 개수',yLabel:'성냥 개수'},
     vars:{count:V('이어 붙인 정사각형 수',4,1,8)},
@@ -574,7 +630,7 @@
     question:v=>`성냥으로 정사각형 ${v.count}개를 일렬로 이어 붙입니다. 정사각형 x개에 필요한 성냥 수 y의 식을 구하세요.`,
     steps:v=>['첫 정사각형에는 성냥 4개가 필요합니다.','정사각형이 하나 늘 때마다 공유 변을 빼고 3개가 늘어납니다.',`$y=4+3(x-1)$을 정리하면 $y=3x+1$입니다.`,`현재 ${v.count}개를 만들 때 성냥은 $${3*v.count+1}$개입니다.`],
     answer:(v,m)=>`$y=3x+1$ ($x$는 자연수), 현재 ${m.sticks}개`,
-    draw:(b,v,m,c)=>{M.curve(b,x=>3*x+1,{from:1,to:8,color:'muted',dash:[4,4]});for(let x=1;x<=8;x++)point(b,p(x,3*x+1),'',x===v.count?'amber':'sky');point(b,m.P,'P','amber');for(let i=0;i<v.count;i++){const y=-4;b.seg(p(i,y),p(i+1,y),{color:'green',width:3});b.seg(p(i,y+2),p(i+1,y+2),{color:'green',width:3});b.seg(p(i,y),p(i,y+2),{color:i===0?'sky':'green',width:3});}b.seg(p(v.count,-4),p(v.count,-2),{color:'green',width:3});},
+    draw:(b,v,m,c)=>{M.curve(b,x=>3*x+1,{from:1,to:8,color:'muted',dash:[4,4]});for(let x=1;x<=8;x++)point(b,p(x,3*x+1),'',x===v.count?'amber':'sky');point(b,m.P,'P','amber');patternInset(b,v.count);},
     notes:()=>['성냥 수와 정사각형 수는 자연수입니다. 점 사이 점선은 변화 경향을 안내합니다.'],
     verify:(v,m)=>[m.sticks===(v.count+1)+2*v.count?null:'shared-edge count'].filter(Boolean)
   });
@@ -657,7 +713,7 @@
     question:v=>`$x+y=${v.S}$, $2x-y=${v.D}$의 공통해가 $ax+y=${v.K}$도 만족합니다. a를 구하세요.`,
     steps:(v,m)=>[`앞의 두 식을 더하면 $3x=${v.S+v.D}$입니다.`,`따라서 공통해는 $${xy(m.P)}$입니다.`,`공통해를 마지막 식에 넣으면 $${f(m.P.x)}a+${f(m.P.y)}=${v.K}$입니다.`,`이 식을 풀면 $a=${f(m.a)}$입니다.`],
     answer:(v,m)=>`$a=${f(m.a)}$`,
-    draw:(b,v,m,c)=>{M.line(b,-1,v.S);M.line(b,2,-v.D,{color:'rose'});M.line(b,-v.trial,v.K,{color:'amber',dash:[5,4]});point(b,m.P,'P','green');if(c.step>=3)M.line(b,-m.a,v.K,{color:'green'});},
+    draw:(b,v,m,c)=>{M.line(b,-1,v.S);M.line(b,2,-v.D,{color:'rose'});if(c.solved||c.step>=3)M.line(b,-m.a,v.K,{color:'green',width:4});else M.line(b,-v.trial,v.K,{color:'amber',dash:[5,4]});point(b,m.P,'P','green');},
     verify:(v,m)=>[near(m.P.x+m.P.y,v.S)?null:'sum condition',near(2*m.P.x-m.P.y,v.D)?null:'difference condition',near(m.a*m.P.x+m.P.y,v.K)?null:'parameter condition'].filter(Boolean)
   });
   add('system-model',{
@@ -696,7 +752,7 @@
     vars:{out:V('갈 때 속력(km/h)',3,3,6),back:V('올 때 속력(km/h)',4,4,8),limit:V('허용 전체 시간(h)',6,3,6),rest:V('쉬는 시간(h)',1.5,0.5,1.5,0.5),x:V('비교할 한쪽 거리(km)',5,0,15,0.5)},
     model:v=>{const a=1/v.out+1/v.back,max=(v.limit-v.rest)/a;return{a,max,P:p(max,v.limit),current:p(v.x,a*v.x+v.rest)};},
     focus:(v,m)=>({x:[-1,Math.max(m.max,v.x)*1.25+1],y:[-1,Math.max(v.limit,m.current.y)*1.25+0.5]}),
-    question:v=>`갈 때 시속 ${v.out} km, 올 때 시속 ${v.back} km로 걷고 ${f(v.rest)}시간을 쉽니다. 총 ${v.limit}시간 이내로 다녀오려면 한쪽 거리는 몇 km 이하여야 하나요?`,
+    question:v=>`갈 때 시속 ${v.out} km, 올 때 시속 ${v.back} km로 걷고 $${f(v.rest)}$시간을 쉽니다. 총 ${v.limit}시간 이내로 다녀오려면 한쪽 거리는 몇 km 이하여야 하나요?`,
     steps:(v,m)=>[`한쪽 거리를 x km라 하면 갈 때 시간은 $x/${v.out}$, 올 때 시간은 $x/${v.back}$입니다.`,`전체 시간은 $y=${f(m.a)}x+${f(v.rest)}$입니다.`,`허용 시간과 만나는 곳은 $${f(m.a)}x+${f(v.rest)}=${v.limit}$입니다.`,`시간은 거리에 따라 늘어나므로 $0\\le x\\le${f(m.max)}$ km입니다.`],
     answer:(v,m)=>`한쪽 거리 $${f(m.max)}$ km 이하`,
     draw:(b,v,m,c)=>{M.curve(b,x=>m.a*x+v.rest,{from:0});b.hline(v.limit,{color:'rose',width:3});point(b,m.current,'현재','amber');M.projection(b,m.current);if(c.step>=2){point(b,m.P,'경계','green');M.projection(b,m.P,{color:'green'});}if(c.solved)b.seg(O,p(m.max,0),{color:'green',width:5});},

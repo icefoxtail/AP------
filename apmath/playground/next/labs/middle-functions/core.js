@@ -54,7 +54,11 @@
     curve(b, x => k / x, { ...opts, from: opts.from, to: Math.min(-gap, opts.to == null ? -gap : opts.to) });
     curve(b, x => k / x, { ...opts, from: Math.max(gap, opts.from == null ? gap : opts.from), to: opts.to });
   }
-  const point = (b, P, name, opts = {}) => b.point(P, { r: 5, size: 14, color: 'sky', label: name, ...opts });
+  // The native point-label API expects both pixel offsets when either is set.
+  // Leave an offset-free option untouched so its automatic/toward placement works.
+  const pointOptions = opts => opts.dx != null || opts.dy != null
+    ? { ...opts, dx: opts.dx ?? 10, dy: opts.dy ?? -10 } : opts;
+  const point = (b, P, name, opts = {}) => b.point(P, { r: 5, size: 14, color: 'sky', label: name, ...pointOptions(opts) });
   const label = (b, P, text, opts = {}) => b.text(P, text, { size: 14, color: 'ink', align: 'center', ...opts });
   function projection(b, P, opts = {}) {
     const o = { color: 'muted', width: 1.5, dash: [5, 4], ...opts };
@@ -69,7 +73,7 @@
   const polygon = (b, pts, opts = {}) => b.poly(pts, { color: 'green', width: 2, fill: 'green', fillAlpha: 0.13, ...opts });
   function drag(b, ctx, id, P, opts = {}) {
     const { x, y, ...style } = opts;
-    b.handle(`${ctx.spec.id}:${id}`, P, { color: 'amber', size: 14, ...style,
+    b.handle(`${ctx.spec.id}:${id}`, P, { color: 'amber', size: 14, ...pointOptions(style),
       drag(q) { const next = {}; if (x) next[x] = q.x; if (y) next[y] = q.y; ctx.set(next); }
     });
   }

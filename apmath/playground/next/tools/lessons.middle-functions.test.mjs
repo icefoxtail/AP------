@@ -14,6 +14,9 @@ for (const file of ['core', 'g7', 'g8', 'g9']) {
   vm.runInContext(fs.readFileSync(path.join(NEXT, 'labs/middle-functions', file + '.js'), 'utf8'), ctx, { filename: file + '.js' });
 }
 const M = ctx.window.APL_MF;
+ctx.window.APLab = { clamp: (value, min, max) => Math.max(min, Math.min(max, value)) };
+vm.runInContext(fs.readFileSync(path.join(NEXT, 'kit/apl-board.js'), 'utf8'), ctx, { filename: 'apl-board.js' });
+const nativePointLabel = ctx.window.APLab.Board.prototype._pointLabel;
 const V = createRequire(import.meta.url)('../kit/apl-video-core.js');
 const katex = createRequire(import.meta.url)('../kit/vendor/katex/katex.min.js');
 const defs = Object.values(M.labs);
@@ -51,8 +54,13 @@ function board(focus) {
   const b = { focus, k: 30, W: 390, H: 420, fs: 1, thumb: false,
     setFocus(f) { this.focus = f; }, grid() {}, axes() {},
     viewBox() { return { x0: this.focus.x[0], x1: this.focus.x[1], y0: this.focus.y[0], y1: this.focus.y[1] }; },
-    point(p) { finite(p, 'draw.point'); points.push(p); primitives.push('point'); return this; },
-    handle(id, p) { finite(p, `draw.handle.${id}`); points.push(p); primitives.push('handle'); return this; },
+    point(p, opts = {}) { finite(p, 'draw.point'); points.push(p); primitives.push('point'); this.pointLabel(p, opts); return this; },
+    handle(id, p, opts = {}) { finite(p, `draw.handle.${id}`); points.push(p); primitives.push('handle'); this.pointLabel(p, opts); return this; },
+    pointLabel(p, opts) {
+      if (opts.label) nativePointLabel.call({ _bbox: true, _P: p => p, toS: p => this.toS(p),
+        _text(x, y) { finite({ x, y }, `native point label ${opts.label}`); }
+      }, this.toS(p), opts);
+    },
     line(p, slope) { finite(p, 'line origin'); if (typeof slope === 'number') finite(slope, 'slope'); primitives.push('line'); return this; },
     seg(p, q) { finite([p, q], 'segment'); if (p.x !== q.x || p.y !== q.y) primitives.push('segment'); return this; },
     path(p) { finite(p, 'path'); paths.push(p); if (p.length >= 2) primitives.push('path'); return this; },
@@ -102,6 +110,18 @@ test('common fractions, focus bounds and reciprocal branch separation', () => {
   assert.equal(plots[1].fn(3), -4);
 });
 
+test('partial point-label offsets remain finite in the unchanged native Board', () => {
+  const rendered = [];
+  const native = { _bbox: true, _P: p => p, toS: p => p,
+    _text(x, y, label) { finite({ x, y }, label); rendered.push({ x, y }); } };
+  const b = { point(p, opts) { nativePointLabel.call(native, p, opts); } };
+  M.point(b, { x: 100, y: 100 }, 'A', { dx: -20 });
+  M.point(b, { x: 100, y: 100 }, 'B', { dy: 20 });
+  M.point(b, { x: 100, y: 100 }, 'C', { dx: 0, dy: 0 });
+  M.point(b, { x: 100, y: 100 }, 'D', { toward: { x: 82, y: 100 } });
+  assert.deepEqual(rendered, [{ x: 80, y: 90 }, { x: 110, y: 120 }, { x: 100, y: 100 }, { x: 118, y: 100 }]);
+});
+
 for (const def of defs) for (const spec of def.scenes) {
   const tag = `${def.id}:${spec.id}`;
   test(`${tag}: source, current values, mathematical domains and initial geometry`, () => {
@@ -139,6 +159,12 @@ for (const def of defs) for (const spec of def.scenes) {
       assert.ok(typeof finalView.summary === 'string' && finalView.summary.trim(), `${tag}: final answer available`);
       validMath(finalView.summary, tag);
       scene.draw(b, state, finalView);
+      for (let step = 1; step < steps.length; step++) {
+        state.step = step;
+        scene.draw(b, state, scene.view(state));
+      }
+      for (const point of points) assert.ok(point.x >= focus.x[0] - 1e-7 && point.x <= focus.x[1] + 1e-7 && point.y >= focus.y[0] - 1e-7 && point.y <= focus.y[1] + 1e-7,
+        `${tag}: revealed point outside focus ${JSON.stringify({ point, focus, values })}`);
     }
   });
   test(`${tag}: native one-click chapters, restart state and numerical ranges`, () => {
