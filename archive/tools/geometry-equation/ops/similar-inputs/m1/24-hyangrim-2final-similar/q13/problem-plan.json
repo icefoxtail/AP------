@@ -1,0 +1,44 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "boundaries": [
+      "0",
+      "2",
+      "4",
+      "6",
+      "8",
+      "10"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          2,
+          5,
+          15,
+          10,
+          8
+        ]
+      }
+    ],
+    "yKind": "FREQUENCY",
+    "xTitle": "컴퓨터 사용시간(시간)",
+    "yTitle": "학생수(명)",
+    "grid": true,
+    "showValues": true,
+    "total": 40
+  },
+  "caption": "하루 컴퓨터 사용 시간의 도수",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최신 유사 JS Q13의 표·발문에 따른 값",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서만 대상 계급 강조 및 계산 결과 공개"
+  ]
+}

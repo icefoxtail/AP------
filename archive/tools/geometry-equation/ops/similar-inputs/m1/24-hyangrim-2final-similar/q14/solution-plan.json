@@ -1,0 +1,47 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "boundaries": [
+      "0",
+      "5",
+      "10",
+      "15",
+      "20",
+      "25"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          15,
+          15,
+          20,
+          110,
+          40
+        ]
+      }
+    ],
+    "yKind": "FREQUENCY",
+    "xTitle": "상점(점)",
+    "yTitle": "학생수(명)",
+    "grid": true,
+    "showValues": true,
+    "total": 200,
+    "highlightClasses": [
+      2
+    ]
+  },
+  "caption": "15점 미만50명·이상150명: x=20명",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최신 유사 JS Q14의 표·발문에 따른 값",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서만 대상 계급 강조 및 계산 결과 공개"
+  ]
+}
