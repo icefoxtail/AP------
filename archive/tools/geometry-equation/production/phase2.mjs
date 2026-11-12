@@ -31,7 +31,7 @@ export {verifyConstructionConditionBindings} from './fact-display-map-v1.mjs';
 import {resolveQuestion,runQuestion} from './resolve-request.mjs';
 import {blindThenCompare,reuseReviewAuthority,verificationBinding,conditionBinding,validateReviewLineage} from './blinded-review.mjs';
 import {vectorTipIds,vectorInsetIds} from './plane-vectors.mjs';
-import {planeMarkSpec,collectSegmentColors,planeMarkPointRefs,isPlaneFigure,isCoordinateFigure,unmarkedPointIds,planNameTexts,textNamesPoint,arcLabelFraming,dimensionFraming,traceJoinExtentPoints,textLabelExtentPoints,TEXT_LABEL_MATH,TEXT_LABEL_HANGUL,TEXT_LABEL_FUNCTIONS} from './plane-marks.mjs';
+import {planeMarkSpec,collectSegmentColors,collectLineColors,planeMarkPointRefs,isPlaneFigure,isCoordinateFigure,unmarkedPointIds,planNameTexts,textNamesPoint,arcLabelFraming,dimensionFraming,traceJoinExtentPoints,textLabelExtentPoints,TEXT_LABEL_MATH,TEXT_LABEL_HANGUL,TEXT_LABEL_FUNCTIONS} from './plane-marks.mjs';
 import {regionExtentPoints} from './plane-regions.mjs';
 import {calloutEntries,calloutExtentPoints,calloutDimensionSites,calloutSpec} from './plane-callouts.mjs';
 
@@ -974,10 +974,11 @@ function specForFamily(plan,model,id){
   // (G3) a point that ends a vector arrow and starts none keeps its name but draws no dot (marker NO_DOT): the dot would cover the arrow head
   const noDot=new Set(vectorTipIds(plan));
   const objects=Object.entries(points).map(([name,p])=>({id:name,kind:'POINT',at:p.approximation,...(hiddenNames.has(name)?{name:null,...(unmarked.has(name)?{marker:'NONE'}:{})}:{...(pointNames.has(name)?{name:pointNames.tex(name)}:{}),...(noDot.has(name)?{marker:'NO_DOT'}:{})})}));const notationByLabel={},factRolesByLabel={},axisCoincidentLines=displayed.axisCoincidentLines;
+  const lineColors=collectLineColors(plan);   // (K) palette colours of displayed lines (planeMarks.lineColors)
   for(const node of plan.mathPlan.nodes){
     if(node.outputType==='LINE'&&Object.hasOwn(displayed.lines,node.id)){
       const fact=model.lines?.[node.id];if(!fact||!Array.isArray(fact.approximation)||fact.approximation.length!==3)throw Error('CONSTRUCTION_LINE_FACT_REQUIRED:'+node.id);
-      objects.push({id:node.id,kind:'LINE',coefficients:fact.approximation});
+      objects.push({id:node.id,kind:'LINE',coefficients:fact.approximation,...(lineColors.has(node.id)?{color:lineColors.get(node.id)}:{})});
     }else if(node.outputType==='CIRCLE'&&Object.hasOwn(displayed.circles,node.id)){
       const fact=model.circles?.[node.id];if(!fact||!Array.isArray(fact.approximation)||fact.approximation.length!==3)throw Error('CONSTRUCTION_CIRCLE_FACT_REQUIRED:'+node.id);
       objects.push({id:node.id,kind:'CIRCLE',center:fact.approximation.slice(0,2),radius:fact.approximation[2]});
@@ -1065,6 +1066,8 @@ function specForFamily(plan,model,id){
   }
   for(const label of plan.segmentLabels||[]){
     const segment=plan.displaySegments.find(s=>s.id===label.ownerSegment);if(!segment||!/^[A-Za-z]$/.test(label.variable))throw Error('UNSUPPORTED_SEGMENT_NOTATION');
+    // factRole is required (GIVEN / DERIVED_INTERMEDIATE / CONCLUSION); a missing one used to surface only as an opaque NON_JSON_VALUE at the spec digest
+    if(!['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'].includes(label.factRole))throw Error('SEGMENT_LABEL_FACT_ROLE_INVALID:'+label.id);
     const [a,b]=segment.refs.map(r=>points[r].approximation);
     objects.push({id:label.id,kind:'EQUATION_LABEL',target:label.ownerSegment,text:label.variable,at:[(a[0]+b[0])/2,(a[1]+b[1])/2],priority:1});
     notationByLabel[label.id]=label.unit?{unit:label.unit}:{};factRolesByLabel[label.id]=label.factRole;
