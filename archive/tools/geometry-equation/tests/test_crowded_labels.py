@@ -66,6 +66,35 @@ class CrossingLeaderTests(unittest.TestCase):
         self.assertEqual(both['unresolved'],[])
         self.assertEqual([l['box'] for l in both['labels'] if l['id']=='H-name'],[l['box'] for l in alone['labels']])
 
+    def test_crossing_point_leader_keeps_the_tick_callout_under_a_segment(self):
+        tick_id = 'tick-y--5'
+        tick_label = {
+            'id': tick_id+'-label', 'kind': 'TICK_LABEL', 'at': [100,160],
+            'text': '−5', 'font': 13.25, 'priority': 0, 'tickId': tick_id,
+            'tickAxis': 'y', 'tickValue': -5, 'tickDisplayValue': '−5',
+            'directions': ('W','E'), 'gaps': (8,12), 'allowSuppress': False,
+        }
+        obstacles = [
+            {'id': tick_id, 'kind': 'line', 'role': 'tick', 'axis': 'y',
+             'value': -5, 'geometry': [(100,160),(96,160)]},
+            {'id': 'y-axis', 'kind': 'axis', 'role': 'axis', 'axis': 'y',
+             'geometry': [(100,0),(100,300)]},
+            edge('segmentAB',(20,160),(180,160)),
+            point('G',(270,150)),
+            *triangle('t',270,150,22),
+            *ring(270,150,48),
+        ]
+        labels = [tick_label, name('G',(270,150))]
+        standard = run(labels,obstacles,last_resort=False)
+        self.assertEqual(standard['unresolved'],['G-name'])
+        tick = next(row for row in standard['labels'] if row['id']==tick_label['id'])
+        self.assertEqual(tick['placement'],'OWNER_BOUND_TICK_LEADER')
+
+        last = run(labels,obstacles)
+        self.assertEqual(last['unresolved'],[])
+        self.assertEqual(next(row for row in last['labels'] if row['id']==tick_label['id']),tick)
+        self.assertTrue(any(leader.get('crossFallback') for leader in last['leaders']))
+
     def test_three_nested_triangles_are_too_many_crossings(self):
         obstacles=[point('G',(200,150))]+triangle('a',200,150,22)+triangle('b',200,150,30)+triangle('c',200,150,38)+ring(200,150,56)
         result=run([name('G',(200,150))],obstacles)

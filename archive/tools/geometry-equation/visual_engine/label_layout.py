@@ -852,37 +852,26 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     """The placement pass, and - only when some angle label found no place in it - a second pass that places the angle labels narrowest angle first
     (a vertex with several nested angles); the second result replaces the first only when it leaves fewer labels unresolved, so a layout that
     resolved at the first pass is never changed."""
+    order=lambda label:(label.get('priority',2),label['id'])
     result=layout_pass(labels,obstacles,safe_area,panel,measurements,require_measurements)
+    current=labels
     if any(any(label['id']==label_id and 'wedgeSearch' in label for label in labels) for label_id in result['unresolved']):
         retry=layout_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,angle_labels_first_order)
-        if len(retry['unresolved'])<len(result['unresolved']):return retry
+        if len(retry['unresolved'])<len(result['unresolved']):
+            if not last_resort or not retry['unresolved']:return retry
+            result=retry;order=angle_labels_first_order
     if any(any(label['id']==label_id and label.get('kind')=='TICK_LABEL' for label in labels) for label_id in result['unresolved']):
         # A tick number beside a point name (the O of the origin and the tick 3 right next to it) found no room because the name took its place first
         # (equal priority, ordered by id): the second pass places the tick numbers first, so the point name moves to the free side instead.
         retry=layout_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,tick_labels_first_order)
-        if len(retry['unresolved'])<len(result['unresolved']):return retry
-    # (CL) Last resort (the caller asks for it only after every other way to compose the figure failed): the labels still unresolved get one more pass, placed after every other
-    # label so those keep the places they had. A point name may take a leader that crosses a thin stroke or two (crossFallbackAllowed); a segment label whose own segment lies
-    # wholly on a longer one (the radius OM on the diameter OA) no longer counts that longer segment as a competitor (collinearOwners).
-    if last_resort and result['unresolved']:
-        stuck_ids={label['id'] for label in labels if label['id'] in result['unresolved'] and (
-            (label.get('kind')=='POINT_NAME' and not label.get('directions') and not label.get('gaps') and label.get('preferred') is None)
-            or (label.get('lineOwned') and not label.get('collinearOwners')))}
-        if stuck_ids:
-            trial=[]
-            for label in labels:
-                label=copy.deepcopy(label)
-                if label['id'] in stuck_ids:label['crossFallbackAllowed' if label.get('kind')=='POINT_NAME' else 'collinearOwners']=True
-                trial.append(label)
-            try:retry=layout_pass(trial,obstacles,safe_area,panel,measurements,require_measurements,lambda v:(1 if v['id'] in stuck_ids else 0,v.get('priority',2),v['id']))
-            except ValueError:retry=None
-            if retry is not None and len(retry['unresolved'])<len(result['unresolved']):result=retry
-    # tickCalloutFallback (set only by figures that opt in, e.g. discontinuous functions with dashed approach guides): a tick number whose two
-    # axis-normal sides are all blocked keeps its tick and moves to a small offset with a leader to that tick, never dropped. The first offset
+        if len(retry['unresolved'])<len(result['unresolved']):
+            if not last_resort or not retry['unresolved']:return retry
+            result=retry;order=tick_labels_first_order
+    # (every plan, not only tickLabelFallbackCallout ones: a tick number is never dropped) A tick number whose two
+    # axis-normal sides are all blocked (a segment running over its tick) keeps its tick and moves to a small offset with a leader to that tick, never dropped. The first offset
     # (of TICK_CALLOUT_OFFSETS) that resolves the label wins; a layout that already resolved is never changed.
-    pending=[label for label in labels if label['id'] in result['unresolved'] and label.get('kind')=='TICK_LABEL' and label.get('tickCalloutFallback') is True and label.get('tickLabelCallout') is None]
+    pending=[label for label in labels if label['id'] in result['unresolved'] and label.get('kind')=='TICK_LABEL' and label.get('tickLabelCallout') is None]
     if pending:
-        current=labels
         for target in pending:
             for offset in TICK_CALLOUT_OFFSETS:
                 trial=copy.deepcopy(current)
@@ -892,8 +881,28 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                 try:retry=layout_pass(copy.deepcopy(trial),obstacles,safe_area,panel,measurements,require_measurements,tick_labels_first_order)
                 except ValueError:continue
                 if target['id'] not in retry['unresolved'] and len(retry['unresolved'])<=len(result['unresolved']):
-                    current=trial;result=retry;break
+                    current=trial;result=retry;order=tick_labels_first_order;break
+    # (CL) Last resort (the caller asks for it only after every other way to compose the figure failed): the labels still unresolved get one more pass, placed after every other
+    # label so those keep the places they had. A point name may take a leader that crosses a thin stroke or two (crossFallbackAllowed); a segment label whose own segment lies
+    # wholly on a longer one (the radius OM on the diameter OA) no longer counts that longer segment as a competitor (collinearOwners).
+    if last_resort and result['unresolved']:
+        stuck_ids={label['id'] for label in current if label['id'] in result['unresolved'] and (
+            (label.get('kind')=='POINT_NAME' and not label.get('directions') and not label.get('gaps') and label.get('preferred') is None)
+            or (label.get('lineOwned') and not label.get('collinearOwners')))}
+        if stuck_ids:
+            trial=[]
+            for label in current:
+                label=copy.deepcopy(label)
+                if label['id'] in stuck_ids:label['crossFallbackAllowed' if label.get('kind')=='POINT_NAME' else 'collinearOwners']=True
+                trial.append(label)
+            try:retry=layout_pass(trial,obstacles,safe_area,panel,measurements,require_measurements,lambda v:(1 if v['id'] in stuck_ids else 0,*order(v)))
+            except ValueError:retry=None
+            if retry is not None and len(retry['unresolved'])<len(result['unresolved']):result=retry
     return result
+
+def tick_ground_line_ids(obstacles,at):
+    """Ids of the drawn lines/segments (kind 'line', not an axis) that pass exactly through the tick point `at`."""
+    return {o.get('id') for o in obstacles if o.get('kind')=='line' and isinstance(o.get('id'),str) and not o['id'].endswith('-axis') and isinstance(o.get('geometry'),(list,tuple)) and any(point_segment_distance(at,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
 
 def tick_labels_first_order(label):
     """The tick-label retry order: at one priority the tick numbers go first (each is bound to its axis tick and may stand on two sides only), then every other label as in the first pass."""
@@ -1002,6 +1011,9 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 owner_ids|={o.get('id') for o in occupied if o.get('kind') in {'circle','point'} and math.dist((o['geometry'][0],o['geometry'][1]),label['at'])<=1e-3}
                 # Likewise a dashed approach guide, or an overlay line/guide (a vertical line x=a through the tick, G5b), that passes exactly through this tick belongs to it (the leader may touch it only at its start).
                 owner_ids|={o.get('id') for o in occupied if (o.get('kind')=='line' and ('-guide-' in str(o.get('id')) or str(o.get('id','')).startswith(('overlay-line-','overlay-guide-'))) or o.get('kind')=='curve' and str(o.get('id','')).split('-piece-')[0] in ('f','g')) and isinstance(o.get('geometry'),(list,tuple)) and any(point_segment_distance(label['at'],c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
+                if not leader_clear(label['at'],end,occupied,owner_ids):
+                    # A drawn segment or line running over the tick (the segment y=-5 over the tick -5) is the tick's own ground: its crossing at the leader's start is allowed.
+                    owner_ids|=tick_ground_line_ids(occupied,label['at'])
                 if not leader_clear(label['at'],end,occupied,owner_ids):
                     chosen=None;method=None
                     trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['OWNER_LEADER_CLEARANCE']})

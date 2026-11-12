@@ -109,7 +109,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "행렬의 곱 $XY$는 앞 행렬 $X$의 열의 수와 뒤 행렬 $Y$의 행의 수가 같을 때에만 정의된다.\n\n각 행렬의 크기는\n$$\\begin{aligned}\nA &: 1\\times2\\\\\nB &: 2\\times3\\\\\nC &: 3\\times2\\\\\nD &: 3\\times1\n\\end{aligned}$$\n이다.\n\n$AB$: $A$의 열의 수가 $2$이고 $B$의 행의 수가 $2$이므로 곱이 정의된다.\n\n$BD$: $B$의 열의 수와 $D$의 행의 수가 모두 $3$이므로 정의된다.\n\n$CB$: $C$의 열의 수와 $B$의 행의 수가 모두 $2$이므로 정의된다.\n\n$CD$: $C$의 열의 수는 $2$, $D$의 행의 수는 $3$이다. 서로 달라 정의되지 않는다.\n\n$DA$: $D$의 열의 수와 $A$의 행의 수가 모두 $1$이므로 정의된다.\n\n$DC$: $D$의 열의 수는 $1$, $C$의 행의 수는 $3$이다. 서로 달라 정의되지 않는다.\n\n따라서 곱이 정의되는 것은 $AB$, $BD$, $CB$, $DA$의 $4$개이며 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -201,7 +201,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "행렬 $A$의 첫째 열은 $\\begin{pmatrix}1\\\\-1\\end{pmatrix}$이고, 둘째 열은 $\\begin{pmatrix}2\\\\-1\\end{pmatrix}$이다.\n따라서\n$A=\\begin{pmatrix}1&2\\\\-1&-1\\end{pmatrix}$이다.\n행렬을 곱하면\n$A\\begin{pmatrix}1\\\\3\\end{pmatrix}\n=\\begin{pmatrix}1\\cdot1+2\\cdot3\\\\(-1)\\cdot1+(-1)\\cdot3\\end{pmatrix}$\n$=\\begin{pmatrix}7\\\\-4\\end{pmatrix}$이다.\n모든 성분의 곱은\n$7\\cdot(-4)=-28$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -261,7 +261,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "$T=A+B=\\begin{pmatrix}1&0\\\\4&1\\end{pmatrix}$이라 두자.\n$n=1$일 때\n$T^1=\\begin{pmatrix}1&0\\\\4&1\\end{pmatrix}$이므로 아래 왼쪽 성분은 $4n$이다.\n$T^n=\\begin{pmatrix}1&0\\\\4n&1\\end{pmatrix}$이라고 가정하면\n$T^{n+1}=T^nT$\n$=\\begin{pmatrix}1&0\\\\4n&1\\end{pmatrix}\\begin{pmatrix}1&0\\\\4&1\\end{pmatrix}$\n$=\\begin{pmatrix}1\\cdot1+0\\cdot4&1\\cdot0+0\\cdot1\\\\4n\\cdot1+1\\cdot4&4n\\cdot0+1\\cdot1\\end{pmatrix}$\n$=\\begin{pmatrix}1&0\\\\4n+4&1\\end{pmatrix}$\n$=\\begin{pmatrix}1&0\\\\4(n+1)&1\\end{pmatrix}$이다.\n따라서 수학적 귀납법으로 모든 자연수 $n$에 대하여\n$T^n=\\begin{pmatrix}1&0\\\\4n&1\\end{pmatrix}$이다.\n모든 성분의 합은\n$1+0+4n+1=4n+2$이다.\n$4n+2=34$\n$4n=32$\n$n=8$이다.\n그러므로 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -413,7 +413,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "근과 계수의 관계에서\n$\\alpha+\\beta=3$, $\\alpha\\beta=k$이다.\n행렬을 곱하면\n$A^2=\\begin{pmatrix}\\alpha&k\\\\k&\\beta\\end{pmatrix}\n\\begin{pmatrix}\\alpha&k\\\\k&\\beta\\end{pmatrix}$\n$=\\begin{pmatrix}\\alpha^2+k^2&\\alpha k+k\\beta\\\\k\\alpha+\\beta k&k^2+\\beta^2\\end{pmatrix}$\n$=\\begin{pmatrix}\\alpha^2+k^2&k(\\alpha+\\beta)\\\\k(\\alpha+\\beta)&k^2+\\beta^2\\end{pmatrix}$이다.\n네 성분의 합은\n$\\alpha^2+k^2+k(\\alpha+\\beta)+k(\\alpha+\\beta)+k^2+\\beta^2$\n$=\\alpha^2+\\beta^2+2k^2+2k(\\alpha+\\beta)$이다.\n$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta$를 대입하면\n$=3^2-2k+2k^2+2k\\cdot3$\n$=9-2k+2k^2+6k$\n$=2k^2+4k+9$이다.\n이 합이 25이므로\n$2k^2+4k+9=25$\n$2k^2+4k-16=0$\n$k^2+2k-8=0$\n$(k+4)(k-2)=0$이다.\n따라서 $k=-4$ 또는 $k=2$이고, $k$는 자연수이므로 $k=2$이다.\n이때 원래 이차방정식의 판별식은\n$9-4k=9-4\\cdot2=1\\ge0$이므로 두 실근이 실제로 존재한다.\n그러므로 정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

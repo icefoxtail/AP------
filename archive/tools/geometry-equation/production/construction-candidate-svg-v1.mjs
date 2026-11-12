@@ -52,7 +52,7 @@ const LINEAGE_KEYS=['planSha256','modelSha256','typographyPolicySha256','specSha
 
 // Internal control flow only: every domain outcome is returned as a status; anything else is a defect and propagates.
 class Stop extends Error{constructor(status,detail=null){super(status);this.status=status;this.detail=detail;}}
-const digest=(value,field,status)=>{try{return objectSha(value);}catch(error){throw new Stop(status,{field,code:error.code||error.message});}};
+const digest=(value,field,status)=>{try{return objectSha(value);}catch(error){throw new Stop(status,{field,code:error.code||error.message,...(error.path?{path:error.path}:{})});}};
 const errorText=error=>String(error?.message??error);
 // A domain refusal is a plain Error whose message is an UPPER_SNAKE code (optionally ':detail'); TypeError and friends are defects.
 const isDomainCode=error=>error?.constructor===Error&&/^[A-Z][A-Z0-9_]*(?::|$)/.test(error.message);
@@ -148,6 +148,9 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
       if(typeof description!=='string'||!description.trim()||description.length>500||/[\r\n]/.test(description))throw new Stop('SPEC_ERROR',{code:'INVALID_ACCESSIBILITY_DESCRIPTION'});
       spec.description=description;
     }
+    // Every spec family writes title:plan.caption; a plan without a top-level caption left the title undefined and surfaced only as a
+    // NON_JSON_VALUE on spec. Name the real cause (the figure needs the plan-level caption string, also its SVG <title>).
+    if(spec.title===undefined)throw new Stop('SPEC_ERROR',{code:'PLAN_CAPTION_REQUIRED',path:'caption'});
     lineage.specSha256=digest(spec,'spec','OUTPUT_NOT_CANONICAL');
     const bridged=reserveCurveBranches(spec);
     if(diagnostic)diagnostic.spec=bridged.spec;

@@ -180,7 +180,7 @@ export function createPolyhedronObject({ radius = 3.8, isMobile = false } = {}) 
       formula: 'V - E + F = 2',
       grade: '중1 · 고등 기하',
       category: '다면체',
-      description: '정규 12면체와 내접 쌍대 20면체의 결정 기하학. 투명 크리스털 면과 골든 코어의 3차원 투과 구조를 탐구합니다.',
+      description: '정십이면체와 정이십면체가 빛나는 감상용 결정. 주변의 작은 결정을 선택하면 정확한 면 중심과 꼭짓점의 쌍대관계를 관찰합니다.',
     },
     update(time) {
       // Outer dodecahedron rotates along cosmic oblique axis
@@ -886,13 +886,19 @@ export function createCircleSectorObject({ radius = 3.8 } = {}) {
     opacity: 0.22,
     side: THREE.DoubleSide,
   });
-  let sectorMesh = new THREE.Mesh(new THREE.BufferGeometry(), sectorMat);
+  const sectorSegments = 48;
+  const sectorPositions = new Float32Array(sectorSegments * 9);
+  const sectorGeo = new THREE.BufferGeometry();
+  sectorGeo.setAttribute('position', new THREE.BufferAttribute(sectorPositions, 3).setUsage(THREE.DynamicDrawUsage));
+  sectorGeo.boundingSphere = new THREE.Sphere(new THREE.Vector3(), radius);
+  const sectorMesh = new THREE.Mesh(sectorGeo, sectorMat);
   group.add(sectorMesh);
 
   // Radius Lines: center to 0 and center to theta
   const radLineGeo = new THREE.BufferGeometry();
-  const radPos = new Float32Array(6 * 3);
+  const radPos = new Float32Array(4 * 3);
   radLineGeo.setAttribute('position', new THREE.BufferAttribute(radPos, 3));
+  radLineGeo.boundingSphere = new THREE.Sphere(new THREE.Vector3(), radius + 0.02);
   const radLineMat = new THREE.LineBasicMaterial({ color: MATH_COLORS.champagneGold, linewidth: 2 });
   const radLines = new THREE.LineSegments(radLineGeo, radLineMat);
   group.add(radLines);
@@ -916,18 +922,18 @@ export function createCircleSectorObject({ radius = 3.8 } = {}) {
       description: '중심각의 크기에 비례하는 호의 길이와 부채꼴의 넓이. 선(둘레)과 면(넓이)의 기본 원리를 직관적으로 체감합니다.',
     },
     update(time) {
-      // Oscillate angle theta from PI/6 to 5*PI/6
+      // Preserve the existing 15–105 degree sector motion.
       const theta = (Math.PI / 3) + Math.sin(time * 0.8) * (Math.PI / 4);
-
-      // Rebuild sector shape
-      const shape = new THREE.Shape();
-      shape.moveTo(0, 0);
-      shape.absarc(0, 0, radius, 0, theta, false);
-      shape.lineTo(0, 0);
-
-      const oldGeo = sectorMesh.geometry;
-      sectorMesh.geometry = new THREE.ShapeGeometry(shape, 48);
-      if (oldGeo) oldGeo.dispose();
+      // Reuse one triangle fan: opening an entire circle family must not cause
+      // per-frame WebGL geometry allocation/disposal.
+      for (let i = 0; i < sectorSegments; i++) {
+        const a = theta * i / sectorSegments, b = theta * (i + 1) / sectorSegments;
+        const k = i * 9;
+        sectorPositions[k] = 0; sectorPositions[k + 1] = 0; sectorPositions[k + 2] = 0;
+        sectorPositions[k + 3] = radius * Math.cos(a); sectorPositions[k + 4] = radius * Math.sin(a); sectorPositions[k + 5] = 0;
+        sectorPositions[k + 6] = radius * Math.cos(b); sectorPositions[k + 7] = radius * Math.sin(b); sectorPositions[k + 8] = 0;
+      }
+      sectorGeo.attributes.position.needsUpdate = true;
 
       // Update radius segment positions
       const p = radLineGeo.attributes.position.array;
@@ -947,10 +953,12 @@ export function createCircleSectorObject({ radius = 3.8 } = {}) {
     dispose() {
       ringGeo.dispose();
       ringMat.dispose();
+      sectorGeo.dispose();
       sectorMat.dispose();
       radLineGeo.dispose();
       radLineMat.dispose();
       centerMesh.geometry.dispose();
+      centerMesh.material.dispose();
     },
   };
 }
