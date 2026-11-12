@@ -1244,7 +1244,7 @@
     "questionCount": "23",
     "totalPoints": 100,
     "mathReview": "Q10, Q19, and Q21 independently checked; other items remain UNREVIEWED.",
-    "imageReferenceCheck": "STATIC_PASS: 21 SAMPLE_ONLY SVG references remain (10 problem+solution pairs and Q13 solution only); Q07 sample was removed after content mismatch was confirmed. Visual QA and actual Archive screen not run. Q19 latest JS differs from prepared source and has no sample asset; not connected."
+    "imageReferenceCheck": "STATIC_PASS: 23 SAMPLE_ONLY SVG references connected; Q07 exact source UID and midpoint/length conditions match the prepared sample. XML/static/math/leak checks passed. Visual QA and actual Archive screen not run. Q19 latest JS differs from prepared source and has no sample asset; not connected."
   },
   "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
   "visualAudit": [
@@ -1348,15 +1348,19 @@
       "questionId": 7,
       "problem": {
         "need": "NEEDED",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "status": "CONNECTED_VISUAL_QA_PENDING",
         "reason": "도형 배치·각 표시·입체 구조가 발문 조건의 위치/관계를 정하므로 필요",
-        "statusDetail": "Prepared Q07 sample was inspected and is a different midpoint/length problem (AB=24, BC=18, MN=21), not the folding/angle question in this exam. No image connected; a matching asset is still needed."
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q07.svg",
+        "sourceSha256": "sha256:b0a0531364ad7827357acbd6ab4cd944df5995d50c5d5ec09ac9d9a2c1fd0c3f",
+        "statusDetail": "SAMPLE_ONLY connected; static/math/leak checks passed; visual QA and actual Archive not run."
       },
       "solution": {
         "need": "HELPFUL",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "status": "CONNECTED_VISUAL_QA_PENDING",
         "reason": "풀이의 관계·위치·단계를 시각화하면 이해에 도움",
-        "statusDetail": "Prepared Q07 sample was inspected and is a different midpoint/length problem (AB=24, BC=18, MN=21), not the folding/angle question in this exam. No image connected; a matching asset is still needed."
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q07-solution.svg",
+        "sourceSha256": "sha256:1817b38799989a742994fa59d89ef72d9cc09ffd156edef228ba66b2090a751a",
+        "statusDetail": "SAMPLE_ONLY connected; static/math/leak checks passed; visual QA and actual Archive not run."
       }
     },
     {
@@ -1613,7 +1617,7 @@
       }
     }
   ],
-  "expectedSourceBlobSha1": "9c3a382541a4a403c643872f619df57303a6d4c8",
+  "expectedSourceBlobSha1": "f23b8a33de66e6c6bb2807e11f5688fbcce56abf",
   "fourSlotCandidate": {
     "path": "archive/exams/similar/middle/m1/2mid/24_향림중_2학기_중간_중1_유사.4slot-candidate.json",
     "sha256": "a0b7b8bb2d1a7d2e8801a78dfd576811a235c0d9f539f3b831a6a6c0b581b010",
