@@ -1,0 +1,226 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "33"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "42"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "M",
+    "B",
+    "N",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "BN",
+      "refs": [
+        "B",
+        "N"
+      ]
+    },
+    {
+      "id": "NC",
+      "refs": [
+        "N",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 400
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "midAB",
+        "segments": [
+          "AM",
+          "MB"
+        ],
+        "count": 1
+      },
+      {
+        "id": "midBC",
+        "segments": [
+          "BN",
+          "NC"
+        ],
+        "count": 2
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "amlen",
+        "from": "A",
+        "to": "M",
+        "label": "12",
+        "unit": "cm",
+        "style": "BAR",
+        "side": "BELOW",
+        "offsetPx": 30,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "mblen",
+        "from": "M",
+        "to": "B",
+        "label": "12",
+        "unit": "cm",
+        "style": "BAR",
+        "side": "BELOW",
+        "offsetPx": 30,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bnlen",
+        "from": "B",
+        "to": "N",
+        "label": "9",
+        "unit": "cm",
+        "style": "BAR",
+        "side": "BELOW",
+        "offsetPx": 30,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "AB=24, BC=18 · MN=MB+BN=12+9=21cm",
+  "sourceQuote": "A,M,B,N,C 순서, M/N중점, AM12, 3AB=4BC",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "A,M,B,N,C 순서, M/N중점, AM12, 3AB=4BC",
+      "mappedTo": [
+        "A",
+        "M",
+        "B",
+        "N",
+        "C"
+      ]
+    }
+  ],
+  "newVisualInformation": []
+}
