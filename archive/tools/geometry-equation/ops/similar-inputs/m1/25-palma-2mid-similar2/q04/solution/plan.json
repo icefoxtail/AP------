@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "M",
+    "P",
+    "U",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "VU",
+      "refs": [
+        "V",
+        "U"
+      ],
+      "arrow": "BOTH"
+    },
+    {
+      "id": "MP",
+      "refs": [
+        "M",
+        "P"
+      ],
+      "emphasis": "ACCENT"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "bisect",
+        "count": 1,
+        "segments": [
+          "AM",
+          "MB"
+        ]
+      }
+    ]
+  },
+  "caption": "수선의 발은 M, 점 P와 직선 AB 사이의 거리는 PM. AM과 PM의 같음은 보장되지 않는다.",
+  "sourceQuote": "M은 AB중점, l⊥AB, P는 l위 M과 다른 임의점",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "M은 AB중점, l⊥AB, P는 l위 M과 다른 임의점",
+      "mappedTo": [
+        "A",
+        "B",
+        "M",
+        "P",
+        "U",
+        "V"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "hiddenPointNames": [
+    "U",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "perp",
+      "refs": [
+        "B",
+        "M",
+        "P"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}
