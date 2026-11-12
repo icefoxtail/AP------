@@ -1,0 +1,111 @@
+{
+  "math": "PASS",
+  "vertices3D": {
+    "A": [
+      0,
+      0,
+      4
+    ],
+    "B": [
+      4,
+      0,
+      4
+    ],
+    "C": [
+      4,
+      3,
+      4
+    ],
+    "D": [
+      0,
+      3,
+      4
+    ],
+    "E": [
+      0,
+      0,
+      0
+    ],
+    "F": [
+      4,
+      0,
+      0
+    ],
+    "G": [
+      4,
+      3,
+      0
+    ],
+    "H": [
+      0,
+      3,
+      0
+    ]
+  },
+  "relations": {
+    "EF": {
+      "AB": "PARALLEL",
+      "BC": "SKEW",
+      "CD": "PARALLEL",
+      "DA": "SKEW",
+      "FG": "INTERSECT",
+      "GH": "PARALLEL",
+      "HE": "INTERSECT",
+      "AE": "INTERSECT",
+      "BF": "INTERSECT",
+      "CG": "SKEW",
+      "DH": "SKEW"
+    },
+    "AB": {
+      "BC": "INTERSECT",
+      "CD": "PARALLEL",
+      "DA": "INTERSECT",
+      "EF": "PARALLEL",
+      "FG": "SKEW",
+      "GH": "PARALLEL",
+      "HE": "SKEW",
+      "AE": "INTERSECT",
+      "BF": "INTERSECT",
+      "CG": "SKEW",
+      "DH": "SKEW"
+    },
+    "AD": {
+      "AB": "INTERSECT",
+      "BC": "PARALLEL",
+      "CD": "INTERSECT",
+      "EF": "SKEW",
+      "FG": "PARALLEL",
+      "GH": "SKEW",
+      "HE": "PARALLEL",
+      "AE": "INTERSECT",
+      "BF": "SKEW",
+      "CG": "SKEW",
+      "DH": "INTERSECT"
+    },
+    "BF": {
+      "AB": "INTERSECT",
+      "BC": "INTERSECT",
+      "CD": "SKEW",
+      "DA": "SKEW",
+      "EF": "INTERSECT",
+      "FG": "INTERSECT",
+      "GH": "SKEW",
+      "HE": "SKEW",
+      "AE": "PARALLEL",
+      "CG": "PARALLEL",
+      "DH": "PARALLEL"
+    }
+  },
+  "Q7Counts": [
+    3,
+    4,
+    4
+  ],
+  "Q9OppositePlanesParallel": "PASS",
+  "projection": "x=X+2Y/3, y=Z+Y/3; construction API with independent 3D audit, not a solid-engine audit",
+  "problemLeakCheck": "PASS: common unhighlighted labeled cuboid only",
+  "staticAudit": "PASS",
+  "renderedLayout": "PASS",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN"
+}
