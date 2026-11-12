@@ -724,8 +724,10 @@ window.addEventListener('DOMContentLoaded', function () {
       if (b.W < 560) {
         for (const side of [-1, 1]) {
           const p = [m + side * 1.3, ym + side * a * 3.2], align = side > 0 ? 'right' : 'left';
-          cxTag(b, p, '접선 1개 영역', { color: 'sky', size: 12.5, align, dy: -9, ref: 'region' });
-          cxTag(b, p, side > 0 ? '(오른쪽 굽은 부분의 안쪽)' : '(왼쪽 굽은 부분의 안쪽)', { color: 'sky', size: 11.5, align, dy: 8, ref: 'region' });
+          // Keep the lower region note below the orange P label in compact playback.
+          const noteDy = side < 0 ? 33 : 0;
+          cxTag(b, p, '접선 1개 영역', { color: 'sky', size: 12.5, align, dy: noteDy - 9, ref: 'region' });
+          cxTag(b, p, side > 0 ? '(오른쪽 굽은 부분의 안쪽)' : '(왼쪽 굽은 부분의 안쪽)', { color: 'sky', size: 11.5, align, dy: noteDy + 8, ref: 'region' });
         }
       } else {
         b.text([m - 1.3, ym - a * 3.2], '접선 1개 영역 (왼쪽 굽은 부분의 안쪽)', { color: 'sky', size: 12.5, weight: 800 });

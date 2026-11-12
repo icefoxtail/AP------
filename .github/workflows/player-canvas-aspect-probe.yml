@@ -1,0 +1,47 @@
+name: Player canvas restore diagnostic
+
+on:
+  push:
+    branches: ['audit/apmath-player-fast-*']
+    paths:
+      - 'apmath/playground/next/tools/player-canvas-aspect-probe.mjs'
+      - '.github/workflows/player-canvas-aspect-probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  observe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            apmath/playground
+            apmath/css
+            apmath/js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install existing browser runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/player-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/player-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Observe native restore dimensions
+        env:
+          NODE_PATH: ${{ runner.temp }}/player-browser/node_modules
+        run: |
+          mkdir -p "$RUNNER_TEMP/canvas-probe"
+          python3 -m http.server 8765 > "$RUNNER_TEMP/canvas-probe/server.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          node apmath/playground/next/tools/player-canvas-aspect-probe.mjs --out "$RUNNER_TEMP/canvas-probe"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: player-canvas-probe-${{ github.sha }}
+          path: ${{ runner.temp }}/canvas-probe
+          retention-days: 90
+          if-no-files-found: error

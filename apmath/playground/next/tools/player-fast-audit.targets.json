@@ -1,121 +1,566 @@
 {
   "schemaVersion": 1,
-  "phase": "third-label-fix-delta",
-  "baseSha": "87b942df23c8a1ecfa979bcf27b0948702eff77f",
-  "shards": 4,
+  "phase": "cubic-and-vector-mobile-label-delta",
+  "baseSha": "87ade21a32e6888345cc695b9e7e483c3ce6b33b",
+  "shards": 3,
   "selection": {
     "totalLabs": 58,
     "totalScenes": 1067,
     "totalLessons": 2989,
-    "priorViewportUniverse": 3099,
-    "affectedExistingViewportUnits": 211,
-    "retainedPriorPairsForEvidenceResolution": 2888,
-    "newAdditionalViewportUnits": 4,
-    "selectedUniqueLabs": 6,
-    "selectedUniqueScenes": 40,
-    "selectedUniqueLessons": 187,
-    "selectedViewportUnits": 215,
-    "selectedPrimaryMobileUnits": 187,
-    "capturedViewportUnits": 47,
-    "nativeContinuousViewportUnits": 37,
-    "normalSpeedViewportUnits": 0
+    "priorViewportUniverse": 3103,
+    "selectedViewportUnits": 87,
+    "changedClosures": [
+      "calc1-cubic",
+      "geom-vector-ops"
+    ],
+    "remainingIndependentDefect": "prob-counting desktop stable restore aspect (separate native diagnostic)"
   },
   "reuseEvidence": {
     "priorSourceSha": "87b942df23c8a1ecfa979bcf27b0948702eff77f",
-    "run": 43177457283,
-    "rawObserved": 672,
-    "rawPass": 636,
-    "rawFail": 4,
-    "rawReview": 32,
+    "latestSourceSha": "87ade21a32e6888345cc695b9e7e483c3ce6b33b",
+    "latestRun": 43180638838,
+    "rawObserved": 215,
+    "rawPass": 211,
+    "rawFail": 1,
+    "rawReview": 3,
     "notRun": 0,
-    "independentAdjudicationInProgress": true,
     "rawStatusImmutable": true
-  }
-,
+  },
   "targets": [
-    {"lab":"calc1-tangent","scene":"secant","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-tangent","scene":"secant","gi":0,"lessonIndices":[1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-tangent","scene":"mvt","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-tangent","scene":"mvt","gi":0,"lessonIndices":[1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-tangent","scene":"cusp","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-tangent","scene":"normal","gi":0,"lessonIndices":[0,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-tangent","scene":"normal","gi":0,"lessonIndices":[1],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-tangent","scene":"common","gi":0,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-tangent","scene":"tanint","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-tangent","scene":"mvtband","gi":0,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-cubic","scene":"box","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-cubic","scene":"box","gi":0,"lessonIndices":[1,2,3,4,5],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-cubic","scene":"oblique","gi":0,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-cubic","scene":"area","gi":0,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-cubic","scene":"sync","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-cubic","scene":"external","gi":0,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-cubic","scene":"external","gi":0,"lessonIndices":[2,4],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-cubic","scene":"external","gi":0,"lessonIndices":[3],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-motion","scene":"disp","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-motion","scene":"disp","gi":0,"lessonIndices":[1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-motion","scene":"turn","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-motion","scene":"origin","gi":0,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-motion","scene":"origin","gi":0,"lessonIndices":[3],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-motion","scene":"chase","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-motion","scene":"trap","gi":0,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-motion","scene":"trap","gi":0,"lessonIndices":[3],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"1-A","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"1-A","gi":0,"lessonIndices":[1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"1-B","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"2-A","gi":1,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"2-B","gi":1,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"2-C","gi":1,"lessonIndices":[0,1,2,3,4,5,6,7],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"3-A","gi":2,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"3-B","gi":2,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"3-C","gi":2,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"4-A","gi":3,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"4-B","gi":3,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"hex5","gi":4,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"rng6","gi":5,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"rng6","gi":5,"lessonIndices":[4],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-figure","scene":"m1","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-figure","scene":"m1","gi":0,"lessonIndices":[1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-figure","scene":"m2","gi":0,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-figure","scene":"m3","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-figure","scene":"m4","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-figure","scene":"m4","gi":0,"lessonIndices":[4],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-figure","scene":"cnd5","gi":0,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-figure","scene":"ang6","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-figure","scene":"ang6","gi":0,"lessonIndices":[4],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"prob-counting","scene":"combo","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews.","captureStableRestore":true},
-    {"lab":"prob-counting","scene":"combo","gi":0,"lessonIndices":[1,2,3,4,5,6],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"prob-counting","scene":"func","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"prob-counting","scene":"func","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"prob-counting","scene":"func","gi":0,"lessonIndices":[0],"views":["1024x768"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"prob-counting","scene":"func","gi":0,"lessonIndices":[0],"views":["820x1180"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"prob-counting","scene":"func","gi":0,"lessonIndices":[0],"views":["844x390"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"prob-counting","scene":"func","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"prob-counting","scene":"func","gi":0,"lessonIndices":[1,2,3,4,5,6],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"prob-counting","scene":"perm","gi":0,"lessonIndices":[0,1,2,3,4,5,6],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"prob-counting","scene":"gap","gi":0,"lessonIndices":[0,1,2,3,4,5],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"prob-counting","scene":"circ","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"prob-counting","scene":"circ","gi":0,"lessonIndices":[1,2,3,4,5],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"prob-counting","scene":"circ","gi":0,"lessonIndices":[6],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-motion","scene":"disp","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-motion","scene":"disp","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"1-A","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-ops","scene":"1-A","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-figure","scene":"m1","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-figure","scene":"m1","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"prob-counting","scene":"combo","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews.","captureStableRestore":true},
-    {"lab":"prob-counting","scene":"combo","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews.","captureStableRestore":true},
-    {"lab":"geom-vector-figure","scene":"m1","gi":0,"lessonIndices":[0],"views":["820x1180"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-tangent","scene":"mvt","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-tangent","scene":"mvt","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-tangent","scene":"normal","gi":0,"lessonIndices":[1],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-tangent","scene":"normal","gi":0,"lessonIndices":[1],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-cubic","scene":"external","gi":0,"lessonIndices":[2,4],"views":["360x640"],"capture":true,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-cubic","scene":"external","gi":0,"lessonIndices":[2,4],"views":["1440x900"],"capture":true,"playback":false,"normalPlayback":false,"captureAllSamples":false,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-cubic","scene":"external","gi":0,"lessonIndices":[3],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-cubic","scene":"external","gi":0,"lessonIndices":[3],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-figure","scene":"m4","gi":0,"lessonIndices":[4],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"geom-vector-figure","scene":"m4","gi":0,"lessonIndices":[4],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-motion","scene":"origin","gi":0,"lessonIndices":[3],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."},
-    {"lab":"calc1-motion","scene":"origin","gi":0,"lessonIndices":[3],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureAllSamples":true,"diagnosticLimit":32,"reason":"Third delta: only six changed rendering closures; preserve other verified raw observations and independent reviews."}
+    {
+      "lab": "calc1-cubic",
+      "scene": "box",
+      "gi": 0,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "calc1-cubic",
+      "scene": "box",
+      "gi": 0,
+      "lessonIndices": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "calc1-cubic",
+      "scene": "oblique",
+      "gi": 0,
+      "lessonIndices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "calc1-cubic",
+      "scene": "area",
+      "gi": 0,
+      "lessonIndices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "calc1-cubic",
+      "scene": "sync",
+      "gi": 0,
+      "lessonIndices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "calc1-cubic",
+      "scene": "external",
+      "gi": 0,
+      "lessonIndices": [
+        0,
+        1
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "calc1-cubic",
+      "scene": "external",
+      "gi": 0,
+      "lessonIndices": [
+        2,
+        4
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "calc1-cubic",
+      "scene": "external",
+      "gi": 0,
+      "lessonIndices": [
+        3
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "captureAllSamples": true,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "calc1-cubic",
+      "scene": "external",
+      "gi": 0,
+      "lessonIndices": [
+        2,
+        4
+      ],
+      "views": [
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "calc1-cubic",
+      "scene": "external",
+      "gi": 0,
+      "lessonIndices": [
+        2,
+        4
+      ],
+      "views": [
+        "1440x900"
+      ],
+      "capture": true,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "calc1-cubic",
+      "scene": "external",
+      "gi": 0,
+      "lessonIndices": [
+        3
+      ],
+      "views": [
+        "360x640"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "captureAllSamples": true,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "calc1-cubic",
+      "scene": "external",
+      "gi": 0,
+      "lessonIndices": [
+        3
+      ],
+      "views": [
+        "1440x900"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "captureAllSamples": true,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "1-A",
+      "gi": 0,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "captureAllSamples": true,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "1-A",
+      "gi": 0,
+      "lessonIndices": [
+        1,
+        2,
+        3
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "1-B",
+      "gi": 0,
+      "lessonIndices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "2-A",
+      "gi": 1,
+      "lessonIndices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "2-B",
+      "gi": 1,
+      "lessonIndices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "2-C",
+      "gi": 1,
+      "lessonIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "3-A",
+      "gi": 2,
+      "lessonIndices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "3-B",
+      "gi": 2,
+      "lessonIndices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "3-C",
+      "gi": 2,
+      "lessonIndices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "4-A",
+      "gi": 3,
+      "lessonIndices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "4-B",
+      "gi": 3,
+      "lessonIndices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "hex5",
+      "gi": 4,
+      "lessonIndices": [
+        0,
+        1,
+        2
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "rng6",
+      "gi": 5,
+      "lessonIndices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": false,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "rng6",
+      "gi": 5,
+      "lessonIndices": [
+        4
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": false,
+      "normalPlayback": false,
+      "captureAllSamples": false,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "1-A",
+      "gi": 0,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "360x640"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "captureAllSamples": true,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "1-A",
+      "gi": 0,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "1440x900"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "captureAllSamples": true,
+      "diagnosticLimit": 32,
+      "reason": "Fourth delta: cubic region note / vector B label spacing only; native canvas restore diagnostic runs separately."
+    }
   ]
 }
