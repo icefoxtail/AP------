@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "similar-exam-candidate-review-receipt-v1",
+  "examUid": "24_금당중_1학기_중간_중3_유사",
+  "source": {
+    "documentId": "19GJfYFla7KNu0bwpM5o839CtJAinkwtSTIe9rAlOxNA",
+    "revisionId": "AHj4eMQiulAT3yrOWBsNc6Gh6s8QqNJiMyVHRDzvObKOgUflDV8j1eW6sjNjYINFiATmJXh0d6jjY8iFj7bmCidwnjiAEiTjQ4D6fLB74IE",
+    "title": "24_금당중_1학기_중간_중3_유사_일체형.md",
+    "questionCount": 24
+  },
+  "candidateJs": "archive/exams/similar/middle/m3/1mid/24_금당중_1학기_중간_중3_유사.js",
+  "candidateBlobSha1": "0d684d93c35bdb5f117822acca7521bd5d8daba2",
+  "authoringStatus": "CANDIDATE_DRAFT",
+  "sourceAudit": {
+    "docStructureRead": true,
+    "inlineObjects": 0,
+    "positionedObjects": 0,
+    "q05SourceTextAndSolutionConflict": "OPEN: question states right triangle ABC and AB=AP, AC=AQ; solution assigns AB=AC=sqrt(5) from 2-by-1 grid legs and places A at 2, which cannot be established from the text-only source.",
+    "q11NotationRepair": "Normalized corrupted cm^2/cm punctuation in the converted prompt, choices, and explanation."
+  },
+  "mathReview": {
+    "status": "HOLD_Q05_AND_FULL_REVIEW_NOT_RUN",
+    "scope": "MD converted; no full independent R1/R2 review performed",
+    "openIssues": [
+      "Q5 problem diagram is missing from the Drive Doc text and native document structure (no embedded object); its stated triangle conditions conflict with the supplied solution lengths/coordinate. Correct geometry and answer cannot be inferred.",
+      "Q5 must be independently re-solved after the exact source diagram/conditions are recovered.",
+      "Full independent answer/solution review remains required."
+    ]
+  },
+  "metadataReview": {
+    "status": "EVIDENCE_DEBT",
+    "candidateRows": 24,
+    "resolverStatus": "NOT_RUN",
+    "4slotStatus": "UNREVIEWED_24",
+    "registrationStatus": "NOT_SUBMITTED"
+  },
+  "visualReview": {
+    "status": "PENDING_ASSET_CREATION_AND_RENDER",
+    "problemNeed": [
+      5,
+      11
+    ],
+    "solutionNeed": [
+      5,
+      11
+    ],
+    "createdAssets": [],
+    "renderedItems": []
+  },
+  "checks": {
+    "nodeCheck": "PASS",
+    "tableCheck": "PASS: 1 file scanned; 0 tables; 0 failures",
+    "similarExamHarness": "GATE_FAIL: Q5 and Q11 problem figures remain unsupported; expected visual debt. Draft only.",
+    "jsonParsing": "PASS: JS payload + 4 JSON sidecars, 24 items each for metadata/4slot"
+  },
+  "userScope": "Candidate conversion, per-question problem/solution figure assessment and accumulator push. No SVG, PR, or main merge."
+}
