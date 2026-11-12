@@ -84,6 +84,20 @@
         "after": "Added the explicit condition that zero students had savings below 1만원. This makes the count below 3만원 exactly 2+3=5 and the count at least 3만원 exactly 45.",
         "independentCheck": "The lower bound is now exhaustive: below 3만원 = 0+2+3=5, so option ④ is 5/50=10%. At least 3만원 = 45, so option ⑤ is false; options ①–③ contradict the stated frequencies. Thus ④ remains unique.",
         "reviewStatus": "Author-side independent recalculation completed; formal independent review remains UNREVIEWED."
+      },
+      {
+        "scope": "Q7 stem/solution",
+        "before": "The stem relied on an unavailable diagram to identify angles a and b and the points reflected by folding.",
+        "after": "Defined Q and R on the parallel segments, named P′ and O′ as the images of P and O under folding, and defined a and b as the smaller angles between the specified lines.",
+        "independentCheck": "From ∠PQR=120°, the acute line angle between QR and PO is 60°. Since PO∥AB, b=60°. Reflection of a line across QR with acute line angle 60° gives an image line with acute line angle 60° to PO; therefore a=60°, unique answer ②. Author-side independent coordinate/direction check; formal reviewer remains pending.",
+        "reviewStatus": "UNREVIEWED"
+      },
+      {
+        "scope": "Q8 option ④",
+        "before": "Said only that two non-vertical angles sum to 175°, without naming their relative positions; this does not determine whether l and m are parallel.",
+        "after": "Specified a pair of alternate angles as 70° and 105°, which are unequal and therefore establish that l and m are not parallel.",
+        "independentCheck": "Option ③ alone gives same-side interior angles summing to 180°. Option ④ explicitly gives unequal alternate angles; options ①, ②, and ⑤ give unequal corresponding/alternate angles. Thus ③ is unique. Author-side independent check; formal reviewer remains pending.",
+        "reviewStatus": "UNREVIEWED"
       }
     ],
     "embeddedMetaTailRecords": [
@@ -1684,7 +1698,7 @@
   ],
   "validation": {
     "jsSyntax": "PASS (node --check)",
-    "mathReview": "Q12/Q13 independently verified by /root/wangwoon_independent_review. Q9, Q15, Q20 (including lower-bound repair), Q23 calculations author-checked; formal independent math review pending. Q20 uses only source-verified counts except the explicit no-below-1 condition added to close the source gap; no unspecified class count was invented.",
+    "mathReview": "Q12/Q13 independently verified by /root/wangwoon_independent_review. Q9, Q15, Q20 (including lower-bound repair), Q23 calculations author-checked; formal independent math review pending. Q20 uses only source-verified counts except the explicit no-below-1 condition added to close the source gap; no unspecified class count was invented. Q7 definitions/angle calculation and Q8 unique parallel criterion were author-checked; formal independent review pending.",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "SVG intentionally deferred; no candidate images referenced",
     "contentResidueAudit": {
@@ -1698,7 +1712,7 @@
     "objectiveChoiceCountAudit": "20 objective items have five options; Q9 and Q20 repairs are author-checked, formal independent review pending."
   },
   "pipelineState": "PARTIALLY_BLOCKED_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "a8be0667f6bea440a73ff154bf2ca32c46301ae6",
+  "expectedSourceBlobSha1": "a794fa31b9cf24321cd7325e18b1655dfb203838",
   "fourSlotCandidate": {
     "path": "archive/exams/similar/middle/m1/2mid/24_왕운중_2학기_중간_중1_유사.4slot-candidate.json",
     "sha256": "d49a228469abfbe782db990aa188691786e00536f64fd72a7595e92007031ebb",
