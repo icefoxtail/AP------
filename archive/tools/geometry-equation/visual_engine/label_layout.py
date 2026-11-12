@@ -521,6 +521,7 @@ def near_leader_placement(near,w,h,occupied,acceptable,safe):
         for gap in NEAR_LEADER_GAPS:
             for index in indices:
                 anchor=tuple(line[index]);before,after=line[max(0,index-1)],line[min(len(line)-1,index+1)]
+                if any(point_segment_distance(anchor,a,b)<NEAR_OTHER_MARGIN_PX for other in near['others'] for a,b in zip(other,other[1:])):continue
                 length=math.dist(before,after) or 1.0;tangent=((after[0]-before[0])/length,(after[1]-before[1])/length);normal=(-tangent[1],tangent[0])
                 incident={o.get('id') for o in occupied if o.get('kind') in {'line','axis','auxiliary','curve'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
                           and any(point_segment_distance(anchor,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
@@ -1052,7 +1053,10 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                     box=Box(x-w/2,y-h/2,w,h)
                     if acceptable(box):
                         chosen=box;method='NEAR_OWN_STROKE';default_gaps=()
-                        near_won=min(near_box_polyline_distance(box,pts) for pts in label['_nearOwn'])<=label['_nearReach']   # a far-tier box beyond the observer's reach of its stroke still stands nearest to it, but is flagged
+                        own_gap=min(near_box_polyline_distance(box,pts) for pts in label['_nearOwn'])
+                        near_won=own_gap<=label['_nearReach']
+                        if near_won and '_nearData' in label:
+                            near_won=not any(near_box_polyline_distance(box,pts)<own_gap+NEAR_OTHER_MARGIN_PX for pts in label['_nearData']['others'])
                         break
                 if not near_won and '_nearData' in label:
                     # (G18c) the usual centres found no free box within reach of the stroke: the finer search (every branch, 2 % anchors, more slides) before the label is flagged as having no room
