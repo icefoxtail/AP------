@@ -1,0 +1,50 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "cube",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "ABCDEFGH",
+      "cuts": [
+        {
+          "through": [
+            [
+              "CG",
+              "1/2",
+              "I"
+            ],
+            [
+              "FG",
+              "1/2",
+              "J"
+            ],
+            [
+              "HG",
+              "1/2",
+              "K"
+            ]
+          ],
+          "keep": "A"
+        }
+      ]
+    }
+  ],
+  "caption": "한 꼭짓점을 잘라낸 직육면체",
+  "sourceQuote": "직육면체 한 꼭짓점을 평면으로 잘라 삼각뿔을 떼어낸 나머지",
+  "sourceConditions": [
+    {
+      "id": "cut",
+      "condition": "직육면체 한 꼭짓점을 평면으로 잘라 삼각뿔을 떼어낸 나머지",
+      "mappedTo": [
+        "cube"
+      ]
+    }
+  ],
+  "newVisualInformation": []
+}
