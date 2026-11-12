@@ -505,9 +505,9 @@ window.questionBank = [
     "subUnit": "복소수와 이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면의 두 원과 수평선 및 원점과 제1사분면 교점의 좌표",
-    "solutionImageCaption": "풀이에서 복소수의 실수부와 허수부를 두 실수 좌표로 두면 두 원과 수평선의 조건을 얻는다. 원점은 조건에서 제외되므로 남는 교점으로 두 계수를 계산한다. 정답은 6이다.",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 원과 주황 원, 검은 수평선 y=3, 원점 (0,0)과 제1사분면의 교점 (3,3)을 나타낸 그림.",
+    "solutionImageCaption": "복소수의 실수부와 허수부를 좌표로 두면 조건은 파란 원, 주황 원, 검은 수평선으로 표현된다. 두 원의 교점과 수평선의 조건으로 계수를 구한다. 정답은 6이다.",
     "solutionImageSize": "full"
   },
   {

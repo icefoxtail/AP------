@@ -268,6 +268,26 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 오류 코드: `TRIG_LINE_INTERSECTION_COUNT_MISMATCH:<id>:engine finds N intersection(s)`(주장한 개수가 다르다. N으로 고치거나, 기울어진 직선이 곡선에 접하기만 하면 접점은 안 찾으니 다른 표본값을 쓴다), `TRIG_LINE_THROUGH_INTERVAL_END:<id>`(닫힌 끝에서 만난다. 끝 상태를 OPEN으로 하거나 값을 바꾼다), `TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED`(1/4주기 미만 또는 12주기 초과), `INVALID_TRIG_INTERVAL`, `TRIG_LINE_FORM_INVALID`/`TRIG_LINE_SLOPE_ZERO`/`TRIG_LINE_COEFFICIENT_INVALID`/`TRIG_LINE_INTERSECTION_COUNT_INVALID`/`TRIG_REFERENCE_LINES_INVALID`(필드 형식), `TRIG_REFERENCE_LINES_REQUIRE_INTERVAL_PI`(직선은 `INTERVAL_PI` 형식에서만), `TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED`(TAN이거나 구간 형식이 틀리다), `TRIG_INTERSECTIONS_BELOW_PROFILE_FLOOR`(교점이 너무 붙어 구분이 안 된다. 주기 수를 줄인다).
 
+### 3-7b. 삼각함수 구간형 확장: 절댓값 · 임의 구간 · π 눈금 · 색 있는 기준선 · 크기 `full`
+
+3-7의 `INTERVAL_PI`(또는 `INTERVAL`) 구간형에 아래 필드를 더한다. 모두 새 필드이므로 쓰지 않으면 그림은 이전과 바이트까지 같다.
+
+- **절댓값**: `graphPlan.absolute:true`이면 `y=A·|F(rate·x+phase)|+C`를 그린다(F는 SIN·COS·TAN, `phasePi`는 π의 배수). 접힌 부분이 위로 올라오고, F의 영점마다 뾰족한 꼭짓점(cusp)이 생기며, tan의 점근선(점선)은 그대로다. 접힌 반주기가 1/4~12주기 한도에 들어간다. 한 주기형(`ALL_REALS`)에는 쓸 수 없고(`TRIG_ABSOLUTE_REQUIRES_INTERVAL`) 항상 구간을 준다. `keyPoints:true`이면 cusp(`CUSP`)와 접힌 봉우리(`MAXIMUM`, A<0이면 `MINIMUM`)에 점이 찍힌다.
+- **임의 구간**: `rangePi`는 정확한 `[lo,hi]` 어떤 값이든 된다(`["-1/2","3/2"]`처럼 음수·0 포함, `states` OPEN/CLOSED). 끝점은 속 빈 점(OPEN)·찬 점(CLOSED)이고, 끝 라벨은 그 끝점 옆(곡선이 들어가지 않는 쪽)에 붙는다.
+- **π 눈금**: `axisTickPi:true`이면 `axisTickValues.x`(π의 정확한 배수, 구간 안쪽)가 `π/6`, `2π/3`, `−π/2`처럼 **쌓은 분수**로 쓰인다. y 눈금(`axisTickValues.y`)은 보통 숫자로 함께 쓴다. `axisTickPiStep:"1/6"`을 더하면 구간 안의 모든 1/6π 배수를 엔진이 깐 뒤 **글자가 겹치지 않게 솎아 낸다**(라벨 간격이 모자라면 2칸·3칸 간격으로, `axisTickValues.x`에 적은 눈금과 끝 라벨 가까이 있는 것은 뺀다). 이때 `axisTickValues.x`에는 그림에 꼭 있어야 할 눈금(풀이의 경계각 등)만 적는다(비어도 된다). 눈금이 점근선·세로선과 겹쳐 자리가 없으면 짧은 지시선으로 빼내며 지우지 않는다.
+- **기준선**(`referenceLines`, 최대 3개)의 새 필드: `color:"BLUE"|"WARM"|"GREEN"|"ROSE"|"VIOLET"`(그 선, 교점 점, 선 옆 식 라벨이 같은 색; `TRIG_LINE_COLOR_INVALID`), 수평선 높이를 근호로 `y:"-sqrt(3)/2"`, 세로선 `{"id":"v","x":"1/2","intersectionCount":1}`(x는 축 단위의 정확한 값, `INTERVAL_PI`에서는 π의 배수; 곡선과 한 점에서 만나므로 0 또는 1), 기울기를 π로 나눈 직선 `{"id":"n","slope":"2/3","intercept":"0","perPi":true,...}`(`y=2x/(3π)`), 직선이 닫힌 끝에서 곡선과 만나면 `endCrossing:true`(그 교점도 센다; 쓰지 않으면 `TRIG_LINE_THROUGH_INTERVAL_END`). 수평선과 `|F|`의 교점은 접힌 곡선에서 직접 센다.
+- **크기**: `graphPlan.displaySize:"full"`이면 이 그림을 `full`로 요청한다(기본은 `medium`; 곡선이 가로로 길거나 라벨이 많을 때 쓴다). 결과의 `sizeClass`가 `full`이어야 한다.
+
+```json
+{"capability":"trigonometric-spike-v1","graphPlan":{"family":"trigonometric","function":"SIN","coefficients":["2","2","0"],"phasePi":"0","absolute":true,
+ "sourceDomain":{"kind":"INTERVAL_PI","rangePi":["0","3"],"states":["CLOSED","CLOSED"]},
+ "referenceLines":[{"id":"n1","slope":"2","perPi":true,"intercept":"0","intersectionCount":4,"color":"BLUE","endCrossing":true}],
+ "axisTickPi":true,"axisTickPiStep":"1/2","axisTickValues":{"x":[],"y":["1","2"]},"displaySize":"full"},
+ "caption":"…","sourceConditions":[…],"newVisualInformation":["…"]}
+```
+
+정답지: `ops/golden/item154trigabslines`(`y=2|sin2x|`과 세 직선), `item155trigpiticks`(`cosx<−√3/2`, 근호 수평선과 솎은 π 눈금), `item156trigq15color`(색 있는 선, `full`).
+
 ### 3-8. 중학교 평면도형: 각·선분·호 표식이 있는 축 없는 그림 (`PLANE_FIGURE_v1`, `planeMarks`)
 
 - **plan 최상위 `caption`은 필수다.** 평면도형·좌표 도형(`construction-spike-v1`)도 `caption`(한 문장, 정답·숨긴 점 이름 없이)이 있어야 하고, 없으면 `SPEC_ERROR`/`PLAN_CAPTION_REQUIRED`(path `caption`)로 거절된다. 숨긴 점(`hiddenPointNames`)의 이름을 caption에 쓰면 `HIDDEN_POINT_NAMED_IN_TEXT:<id>`이다. publish.json의 caption(풀이 요약+정답)과는 별개다. 이유: 금당고 14개 그림이 caption 없이 `NON_JSON_VALUE`(spec.title 미정의)로 거절됐다.
@@ -851,7 +871,7 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 ### 3-40. 서로 다른 곡선 2~6개를 한 그림에: `multi-curve-figure-v1`
 
-한 문항의 그림이 **서로 다른 곡선 2~6개**(이차곡선, 직선, 유리함수, 무리함수, 역함수 쌍)로 이루어지거나 둘러싸일 때 쓴다. 한 곡선의 조각(가지)만 있는 그림은 이 기능의 대상이 아니며 기존 family(`piecewise-*`)를 쓴다. 곡선이 둘일 때는 아래 "유리·무리·직선 섞기" 종류(`LINE`·`RATIONAL`·`SQRT`·`inverseOf`)를 쓴다. 실제 예: 22 효천고 2학기 기말 고2 수학II q10의 `y=2-x^2`, `x=2-y^2`, `y=x^2-2`, `x=y^2-2` 네 포물선.
+한 문항의 그림이 **서로 다른 곡선 2~6개**(이차곡선, 직선, 유리함수, 무리함수, 역함수 쌍)로 이루어지거나 둘러싸일 때 쓴다. 한 곡선의 조각(가지)에는 `piecewise-*`를 쓴다. 22 효천고 2학기 기말 고2 수학II q10의 `y=2-x^2`, `x=2-y^2`, `y=x^2-2`, `x=y^2-2` 네 포물선과 26 삼산중 1학기 기말 중3 Q9의 위아래 포물선 쌍이 이 기능을 쓴다.
 
 ```json
 {"capability":"multi-curve-figure-v1","graphPlan":{"family":"multi-curve","curves":[
@@ -900,7 +920,9 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 **점 옆 설명 `callouts` 글자 (G18b).** 쉼표가 있는 좌표쌍 `(3,4)`, 그리스 문자 `α β γ θ`, 프라임 `′`, 근호 `√`(예: `√(2a)`)가 든 글자는 수식이 아니라 일반 글자로 쓴다(14자까지: 한글·영문·숫자·공백·`( ) , . + - =`와 그 표시). 지시선은 먼저 축·눈금을 가로지르지 않는 자리를 찾고, 없을 때만 가로지른다.
 
-**multi-curve 라벨 자리 (G18b).** 곡선 식 라벨은 자기 곡선 옆(박스와 곡선 사이 20px 이내, 다른 곡선이 더 가깝지 않게), 점근선 값 `x=p`·`y=q`는 자기 점선의 끝(12px 이내, 다른 점선이 더 가깝지 않게), `y=x` 같은 직선 라벨은 오른쪽 위 끝에 선다. 독립 관측기가 `LABEL_NEAREST_CURVE_MISMATCH`, `ASYMPTOTE_LABEL_DETACHED`로 어긋난 라벨을 거절한다. 곡선 옆에 자리가 없는 큰 라벨(작은 창의 분수 식)은 보통 자리에 두고 그 사실을 그림에 표시하며(`data-near-room="NONE"`), 관측기는 자기 곡선이 가장 가까운지(64px 이내, 점근선 값은 40px 이내)만 본다. 그마저 안 되면 `hideLabel`·`hideLabels:["asymptotes"]`로 글자를 빼고 캡션에 쓴다. 선언한 점(`overlays.points`, 직선과 곡선의 교점)이 창 밖이면 multi-curve 틀이 그 점까지 넓어진다.
+**multi-curve 라벨 자리 (G18b).** `LINE`·`RATIONAL`·`SQRT`의 식과 `Y_OF_X` 포물선 두 개 이상으로만 구성한 그림의 `label`은 자기 곡선 옆에 선다. 라벨 상자에서 자기 곡선까지 24px 이내이고 다른 곡선까지의 거리보다 2px 이상 짧아야 한다. 자리가 부족하면 더 촘촘히 다시 찾고, 그래도 없으면 자기 곡선의 표본점에서 빈 곳으로 지시선을 잇는다. 독립 관측기는 지시선이 다른 곡선과 떨어진 곳에서 시작해 라벨 상자에 닿고, 중간에 곡선을 가로지르거나 따라가지 않는지 확인한다. 라벨 소유가 불분명하면 `LABEL_NEAREST_CURVE_MISMATCH`로 거절한다.
+
+점근선 값 `x=p`·`y=q`는 자기 점선의 끝(12px 이내, 다른 점선이 더 가깝지 않게), `y=x` 같은 직선 라벨은 오른쪽 위 끝에 선다. 점근선 값이 어긋나면 `ASYMPTOTE_LABEL_DETACHED`로 거절한다. 직선·유리·무리함수 식의 큰 라벨이 자기 곡선 옆이나 지시선 자리를 찾지 못하면 `data-near-room="NONE"`을 표시하고 자기 곡선이 가장 가까운지 검사한다(64px 이내, 점근선 값은 40px 이내). 선언한 점(`overlays.points`, 직선과 곡선의 교점)이 창 밖이면 multi-curve 틀이 그 점까지 넓어진다.
 
 **영역 색칠 `graphPlan.regions` (multi-curve, G18c).** 풀이가 "두 곡선 사이 넓이", "x<2, y<3인 영역"처럼 **어느 영역인지**를 보여 줘야 하면 multi-curve plan에 `regions`(최대 4개)를 쓴다. 영역은 곡선 한 개만 있어도 그림이 된다. 세 가지 꼴이다.
 - 두 곡선 사이: `{"id":"S","between":["f","g"],"from":"3","to":"5"}` (곡선 id 두 개, `"axis"`도 된다. 어느 쪽이 위인지는 엔진이 계산한다), 곡선과 x축 사이는 `{"id":"A","under":"f","from":"-1","to":"1"}`, 곡선과 직선(현) 사이 활꼴은 직선을 `LINE` 곡선으로 두고 `between`으로 쓴다. 두 경계는 `from`~`to` 전체에서 정의되고(유리함수의 극점·무리함수의 시작 앞은 `GRAPH_REGION_BOUNDARY_UNDEFINED`) 서로 엇갈리지 않아야 한다(`GRAPH_REGION_BOUNDARIES_CROSS`: 교점에서 나눠 영역을 둘로 쓴다. 끝점에서 닿는 것은 된다).
@@ -911,7 +933,7 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 **세로로 늘리기 `axisScale`와 가로선 라벨 `ownership` (multi-curve·overlay, G18c).** 가로선이 한 칸(약 22px) 간격으로 모여 있으면(`y=1`, `y=2`, `y=3`) 글자가 선 사이에 못 들어가 `LAYOUT_INVENTORY_INCOMPLETE`가 난다. multi-curve plan도 `graphPlan.axisScale:{"x":1,"y":2}`(세로 눈금을 가로의 2배로, 1/64~64배)를 쓸 수 있어 세로로 늘려 자리를 만든다. 눈금 숫자를 쓰지 않는 그림에만 쓰고 `y=x` 대칭·원이 중요하면 쓰지 않는다. `overlays.lines[].ownership:"NEAREST"`는 그 식 글자가 자기 선에 가장 가깝기만 하면(14px 이내, 다른 선보다 4px 더 가깝게) 놓이게 한다(기본 `STRICT`는 24px 차이를 요구한다). 값이 다르면 `OVERLAY_LINE_OWNERSHIP_INVALID:<id>`.
 
-**G18c 덧붙임.** (1) `axisScale`을 쓴 그래프(확률밀도 그림처럼 세로를 6~20배 늘린 것)는 틀을 원점 (0,1)·(1,0)에 맞춰 넓히지 않는다(예전에는 창이 y=1에 못 미치면 8% 넓어져 `EQUAL_UNIT_SCALE_MISMATCH`가 났다). (2) `axisTickValues`에 분수 문자열 `"1/4"`, `"2/9"`를 쓰면 눈금 글자도 `0.2222…`가 아니라 분수 `2/9`로 쓴다. (3) 점 옆 설명 `callouts`의 지시선은 먼저 아무것도 가로지르지 않는 자리를 찾고, 그림이 빽빽해 없을 때만 축·눈금·점선 안내선을 가로지르는 자리를 쓴다(곡선·선·글자는 끝내 가로지르지 않는다). (4) multi-curve 곡선 식 글자는 자기 곡선 옆을 먼저 찾고, 곡선 셋이 빽빽해 자리가 없으면 더 촘촘히(곡선 가지마다 2% 간격, 더 많은 어긋남) 다시 찾고, 그래도 없으면 자기 곡선의 꼭짓점에서 나오는 지시선으로 빈 곳에 쓴다(관측기는 지시선이 자기 곡선에서 시작해 글자 상자에서 끝나는지 확인한다).
+**G18c 덧붙임.** (1) `axisScale`을 쓴 그래프(확률밀도 그림처럼 세로를 6~20배 늘린 것)는 틀을 원점 (0,1)·(1,0)에 맞춰 넓히지 않는다(예전에는 창이 y=1에 못 미치면 8% 넓어져 `EQUAL_UNIT_SCALE_MISMATCH`가 났다). (2) `axisTickValues`에 분수 문자열 `"1/4"`, `"2/9"`를 쓰면 눈금 글자도 분수 `2/9`로 쓴다. (3) 점 옆 설명 `callouts`의 지시선은 먼저 아무것도 가로지르지 않는 자리를 찾고, 그림이 빽빽해 없을 때만 축·눈금·점선 안내선을 가로지르는 자리를 쓴다(곡선·선·글자는 끝내 가로지르지 않는다).
 
 **확률밀도·통계 그래프 세로 확대와 분수 눈금 (EXT-20261109-a).** 확률밀도함수처럼 y값(최대 2/5)이 가로 범위(0~5)보다 아주 작아 그림이 납작해지면 `graphPlan.axisScale:{"x":1,"y":10}`으로 세로를 늘린다(piecewise-polynomial·multi-curve; 새 기능이 아니라 기존 필드다). 이차함수 등 일반 그래프는 같은 배율이 우선이고, 확률밀도·통계처럼 읽기 위해 늘릴 때만 쓰며, 눈금 라벨로 실제 값을 보여 준다(그림 모양만 늘어나고 값은 그대로). 눈금은 `axisTickValues:{"x":["1","3","5"],"y":["4/35","2/5"]}`처럼 쓰고 **분수 문자열 눈금은 세로분수로 그려진다**(`2/5` 빗금이 아니라 위 2·아래 5; 음수 `-1/3`도 같다). 빗금 분수는 어떤 라벨에서도 쓰지 않는다: 눈금은 `axisTickValues` 분수 문자열, 점 좌표는 `coordinates:true`(좌표 띠), 식은 수식 필드를 쓴다. 예: 골든 `item119ext1`(22 효천고 2학기 기말 고2 확률과통계 Q24, g(y) 꺾은선, `y: 0~5`, 높이 2/5). 곡선 이름의 변수는 `graphPlan.nameVariable:"y"`로 정한다(구간별 다항, 소문자 한 글자, `functionName`과 달라야 함; 이름 라벨·머리글 식이 `g(y)`가 된다; 틀리면 `PIECEWISE_POLY_NAME_VARIABLE_INVALID`). 가로축 글자는 `axisTitles.x`로 따로 쓴다.
 

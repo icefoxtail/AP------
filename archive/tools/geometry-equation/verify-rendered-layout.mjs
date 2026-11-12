@@ -226,7 +226,7 @@ function ownerLeaderClearance(label,leader,geometry,tickIntersection,scale) {
     }
     // A dot drawn exactly on this tick, and a dashed approach guide that ends on it, belong to the tick the leader names (the leader may touch the guide only at its start). A drawn line or segment running over this tick (the segment y=-5 over the tick -5) is the tick's own ground, touched only at the start too.
     const nearTick=point=>Array.isArray(point)&&Math.hypot(point[0]-tickIntersection[0],point[1]-tickIntersection[1])<=1*scale+.25;
-    const owner=allowedOwnerIds.has(other.id)||((other.kind==='point'||other.kind==='circle')&&nearTick(other.at))||(/-guide-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.some(nearTick))||(/^overlay-(line|guide)-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(other.kind==='line'&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(/^[fg]-piece-\d+/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25));
+    const owner=allowedOwnerIds.has(other.id)||((other.kind==='point'||other.kind==='circle')&&nearTick(other.at))||(/-guide-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.some(nearTick))||(/^(overlay-(line|guide)|trig-pole|line)-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(other.kind==='line'&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(/^[fg]-piece-\d+/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25));
     if(owner){
       if(intersections.some(point=>Math.hypot(point[0]-tickIntersection[0],point[1]-tickIntersection[1])>1*scale+.25))errors.push('LEADER_OWNER_ENDPOINT_CROSSING:'+other.id);
     }else if(minimum<=clearance)errors.push('LEADER_NEAR_GEOMETRY:'+leader.id+':'+other.id);
@@ -285,8 +285,8 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
   }
   const ownedCounts=new Map(tickLabels.map(v=>[v.tickOwner,(tickLabels.filter(x=>x.tickOwner===v.tickOwner).length)]));
   const normalized=v=>String(v??'').replace(/−/g,'-').trim();
-  const parsePiMultiple=value=>{const match=/^(\d+)(?:\/(\d+))?$/.exec(String(value??''));if(!match)return null;const denominator=match[2]?Number(match[2]):1;return denominator>0?Number(match[1])/denominator:null;};
-  const piLabelText=value=>{const match=/^(\d+)(?:\/(\d+))?$/.exec(String(value??''));const numerator=Number(match[1]),denominator=match[2]?Number(match[2]):1;const head=numerator===1?'π':numerator+'π';return head+(denominator===1?'':'/'+denominator);};
+  const parsePiMultiple=value=>{const match=/^(-?\d+)(?:\/(\d+))?$/.exec(String(value??''));if(!match)return null;const denominator=match[2]?Number(match[2]):1;return denominator>0?Number(match[1])/denominator:null;};
+  const piLabelText=value=>{const match=/^(-?)(\d+)(?:\/(\d+))?$/.exec(String(value??''));const numerator=Number(match[2]),denominator=match[3]?Number(match[3]):1;const head=numerator===1?'π':numerator+'π';return (match[1]?'-':'')+head+(denominator===1?'':'/'+denominator);};
   for(const label of tickLabels) {
     const labelErrors=[],ownerId=label.tickOwner,ownerMatches=capture.geometry.filter(v=>v.id===ownerId&&v.kind==='tick'),owner=ownerMatches.length===1?ownerMatches[0]:null;
     const axisMatches=capture.geometry.filter(v=>v.id===`${label.tickAxis}-axis`&&v.kind==='axis'),axis=axisMatches.length===1?axisMatches[0]:null;
@@ -307,7 +307,7 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
       const multiple=parsePiMultiple(piValue);
       if(multiple===null)fail('TICK_LABEL_PI_VALUE_INVALID');
       else if(tickValue===null||Math.abs(tickValue-multiple*Math.PI)>1e-9)fail('TICK_LABEL_PI_VALUE_MISMATCH');
-      if(normalized(label.value)!==normalized(piLabelText(piValue)))fail('TICK_LABEL_PI_TEXT_MISMATCH');
+      if(normalized(label.font==='FROZEN_OUTLINE'?label.tickDisplayValue:label.value)!==normalized(piLabelText(piValue)))fail('TICK_LABEL_PI_TEXT_MISMATCH');   // a stacked fraction is outlines: its plain text rides on data-tick-display-value
     }
     if(label.font!=='FROZEN_OUTLINE'&&normalized(label.value)!==normalized(label.tickDisplayValue))fail('TICK_LABEL_RENDERED_TEXT_PARITY');
     if(!labelVisibility.ok)fail(labelVisibility.code);
