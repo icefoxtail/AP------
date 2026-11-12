@@ -764,7 +764,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 3,
     "problemTypeKey": "PT_EVENT_INDEPENDENCE",
-    "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT"
+    "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 검은 선으로 그린 벤 다이어그램이다. 전체 사건 공간 U는 문항의 S를 뜻하고, 사건 A와 B는 서로 겹치지 않는다.",
+    "solutionImageCaption": "검은 선은 전체 사건 공간의 경계와 사건 A, B의 경계를 나타낸다. 그림의 U는 문항의 S를 뜻한다. 서로 배반이면 A가 일어날 때 B의 여사건이 반드시 일어나며, 이를 조건부확률 정의와 함께 확인한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

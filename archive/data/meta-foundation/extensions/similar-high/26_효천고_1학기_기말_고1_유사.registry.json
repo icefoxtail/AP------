@@ -1,0 +1,53 @@
+{
+ "schemaVersion": "similar-high-generated-extension-registry-v1",
+ "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+ "scope": "26_효천고_1학기_기말_고1_유사",
+ "sourceExam": "archive/exams/original/high/h1/1final/26_효천고_1학기_기말_고1_기출.js",
+ "rpmLockPolicy": "UNCHANGED",
+ "authorityRefs": {
+  "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+  "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+  "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+  "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+ },
+ "generatedL4": [],
+ "generatedCrossConcepts": [
+  {
+   "key": "EXT-CROSS-LAST-STEP-RECURRENCE-COUNT",
+   "status": "GENERATED_ACTIVE",
+   "canonicalRpmPromotion": false,
+   "labelKo": "마지막 단계 분류로 세운 점화식으로 경우의 수 세기",
+   "definition": "일정한 걸음(한 칸 또는 두 칸)으로 목표까지 가는 방법의 수를, 마지막 걸음이 한 칸인 경우와 두 칸인 경우로 나누어 앞 단계의 방법 수의 합 $a_n=a_{n-1}+a_{n-2}$로 세우고 처음 항부터 차례로 계산하는 개념.",
+   "parentKey": "CC_COMBINATORICS_COUNTING",
+   "parentLabelKo": "순열과 조합을 이용한 경우의 수",
+   "standardUnitKey": "H22-C-07",
+   "subUnitKey": "H22-C-07-CORE",
+   "standardCourse": "공통수학1",
+   "curriculum": "2022",
+   "basis": "기존 CrossConcept 중 마지막 이동으로 경우를 나누어 앞 단계 방법 수를 더하는 관계(점화식)로 경우의 수를 세는 개념을 가리키는 키가 없다.",
+   "firstUsed": {
+    "stem": "26_효천고_1학기_기말_고1_유사",
+    "qid": 10
+   },
+   "provenance": {
+    "sourceExam": "archive/exams/original/high/h1/1final/26_효천고_1학기_기말_고1_기출.js",
+    "generator": "claude-similar-high-gen",
+    "createdAt": "2026-11-12",
+    "reviewRequired": true
+   },
+   "aliases": []
+  }
+ ],
+ "generatedConditions": [],
+ "reusedGeneratedKeys": [
+  {
+   "key": "EXT-COND-CAPACITY-LIMIT-COMPANION-REQUIRED",
+   "definedIn": "archive/data/meta-foundation/extensions/similar-high/26_금당고_1학기_기말_고1_유사.registry.json",
+   "usedInQids": [
+    26
+   ]
+  }
+ ],
+ "aliasProposals": [],
+ "noStudentRelease": true
+}

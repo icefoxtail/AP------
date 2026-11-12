@@ -1,0 +1,117 @@
+{
+ "capability": "composite-panels-v1",
+ "columns": 1,
+ "panels": [
+  {
+   "caption": {
+    "text": "교집합 15명 (최대)"
+   },
+   "plan": {
+    "capability": "set-diagram-figure-v1",
+    "diagram": {
+     "kind": "VENN",
+     "universe": {
+      "name": "U",
+      "count": "34",
+      "countUnit": "명"
+     },
+     "sets": [
+      {
+       "id": "R",
+       "name": "빨강",
+       "count": "22",
+       "countUnit": "명"
+      },
+      {
+       "id": "Y",
+       "name": "노랑",
+       "count": "15",
+       "countUnit": "명"
+      }
+     ],
+     "elements": [
+      {
+       "text": "15명",
+       "in": [
+        "R",
+        "Y"
+       ]
+      },
+      {
+       "text": "7명",
+       "in": [
+        "R"
+       ]
+      },
+      {
+       "text": "12명",
+       "in": []
+      }
+     ]
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "교집합 3명 (최소)"
+   },
+   "plan": {
+    "capability": "set-diagram-figure-v1",
+    "diagram": {
+     "kind": "VENN",
+     "universe": {
+      "name": "U",
+      "count": "34",
+      "countUnit": "명"
+     },
+     "sets": [
+      {
+       "id": "R",
+       "name": "빨강",
+       "count": "22",
+       "countUnit": "명"
+      },
+      {
+       "id": "Y",
+       "name": "노랑",
+       "count": "15",
+       "countUnit": "명"
+      }
+     ],
+     "elements": [
+      {
+       "text": "3명",
+       "in": [
+        "R",
+        "Y"
+       ]
+      },
+      {
+       "text": "19명",
+       "in": [
+        "R"
+       ]
+      },
+      {
+       "text": "12명",
+       "in": [
+        "Y"
+       ]
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "caption": "교집합이 15명일 때와 3명일 때 모두 빨강 22명, 노랑 15명, 전체 34명을 만족한다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "34명 중 빨강 22명, 노랑 15명",
+   "mappedTo": "panels"
+  }
+ ],
+ "newVisualInformation": [
+  "교집합 최대·최소 배치의 구성 인원"
+ ]
+}

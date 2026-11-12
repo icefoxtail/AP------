@@ -292,9 +292,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/26_강남여고_1학기_중간_고1_기출/q07.png",
-    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 포물선 y=x²와 직선 y=2x+4의 교점 P, Q에 x좌표 1−√5, 1+√5가 표시된 그림.",
-    "solutionImageCaption": "두 교점의 x좌표는 켤레인 무리수이므로 근의 합과 곱으로 a, b를 구한다. 정답은 2이다.",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=x²과 주황 직선 y=ax+b가 P와 Q에서 만나며, 두 점의 가로좌표는 각각 1−√5와 1+√5이다.",
+    "solutionImageCaption": "파란 포물선과 주황 직선 y=ax+b의 두 교점은 서로 켤레인 무리수 가로좌표를 갖는다. 근의 합과 곱으로 계수를 구한다. 정답은 2이다.",
     "solutionImageSize": "full"
   },
   {

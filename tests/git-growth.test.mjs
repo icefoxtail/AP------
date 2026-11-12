@@ -7,8 +7,56 @@ import test from 'node:test';
 
 import { auditGitGrowth, FOOTPRINT_LIMITS } from '../tools/check-git-growth.mjs';
 
-test('ordinary changed-blob and changeset limit is 64 MiB', () => {
+test('per-file ordinary limit stays 64 MiB; the whole-change-set limit is a separate 512 MiB', () => {
   assert.equal(FOOTPRINT_LIMITS.changedBlobBytes, 64 * 1024 * 1024);
+  assert.equal(FOOTPRINT_LIMITS.changesetBytes, 512 * 1024 * 1024);
+  assert.equal(FOOTPRINT_LIMITS.analysisBlobBytes, 2 * 1024 * 1024);
+  assert.equal(FOOTPRINT_LIMITS.transientBlobBytes, 8 * 1024 * 1024);
+});
+
+test('change-set limit blocks an over-cap total of individually allowed files, and a larger cap admits it', () => {
+  const repo = makeRepo();
+  try {
+    for (const name of ['a', 'b', 'c']) write(repo.root, `receipts/${name}.bin`, Buffer.alloc(1024 * 1024, name.charCodeAt(0)));
+    commit(repo.root, 'three 1 MiB files');
+    const capped = auditGitGrowth({ root: repo.root, base: repo.base, head: 'HEAD', changesetBytes: 2 * 1024 * 1024 });
+    assert.equal(capped.ok, false);
+    assert.ok(capped.errors.some(error => error.startsWith('GIT_GROWTH_CHANGESET_LIMIT:')));
+    assert.ok(!capped.errors.some(error => error.startsWith('GIT_GROWTH_FILE_LIMIT:')));
+    const relaxed = auditGitGrowth({ root: repo.root, base: repo.base, head: 'HEAD', changesetBytes: 4 * 1024 * 1024 });
+    assert.equal(relaxed.ok, true, relaxed.errors.join('\n'));
+    assert.equal(relaxed.limits.changesetBytes, 4 * 1024 * 1024);
+  } finally {
+    cleanRepo(repo);
+  }
+});
+
+test('a PR test-merge is charged only for its own change when the event base is stale', () => {
+  const repo = makeRepo();
+  try {
+    const git = (...args) => execFileSync('git', args, { cwd: repo.root, encoding: 'utf8' }).trim();
+    git('switch', '--quiet', '-c', 'pr');
+    write(repo.root, 'receipts/pr-change.txt', 'small PR change\n');
+    commit(repo.root, 'PR change');
+    const prHead = git('rev-parse', 'HEAD');
+    git('switch', '--quiet', '--detach', repo.base);
+    write(repo.root, 'receipts/other-people.bin', Buffer.alloc(3 * 1024 * 1024, 9));
+    commit(repo.root, 'main moved after the PR opened');
+    const mainTip = git('rev-parse', 'HEAD');
+    git('merge', '--quiet', '--no-ff', '-m', 'test merge', prHead);
+    const merge = git('rev-parse', 'HEAD');
+    const cap = 1024 * 1024;
+    // The stale event base reproduces the defect: main's 3 MiB is charged to the PR.
+    const stale = auditGitGrowth({ root: repo.root, base: repo.base, head: merge, changesetBytes: cap });
+    assert.ok(stale.errors.some(error => error.startsWith('GIT_GROWTH_CHANGESET_LIMIT:')));
+    // The merge's first parent is the base tip it was merged onto: only the PR's own file counts.
+    assert.equal(git('rev-parse', `${merge}^1`), mainTip);
+    const fixed = auditGitGrowth({ root: repo.root, base: mainTip, head: merge, changesetBytes: cap });
+    assert.equal(fixed.ok, true, fixed.errors.join('\n'));
+    assert.deepEqual(fixed.files.map(file => file.path), ['receipts/pr-change.txt']);
+  } finally {
+    cleanRepo(repo);
+  }
 });
 
 test('ordinary change between 32 and 64 MiB passes the growth audit', () => {
@@ -391,7 +439,7 @@ test('unrelated-root tree comparison still rejects oversized ordinary and raw ad
     fs.rmSync(path.join(repo.root, 'archive/analysis'), { recursive: true, force: true });
     assert.throws(() => execFileSync('git', ['merge-base', base, unrelatedHead], { cwd: repo.root, stdio: 'ignore' }));
 
-    const report = auditGitGrowth({ root: repo.root, base, head: unrelatedHead });
+    const report = auditGitGrowth({ root: repo.root, base, head: unrelatedHead, changesetBytes: 64 * 1024 * 1024 });
     assert.equal(report.ok, false);
     assert.ok(report.errors.some(error => error.startsWith('GIT_GROWTH_FILE_LIMIT:receipts/disconnected-large.bin:')));
     assert.ok(report.errors.includes(`GIT_RAW_OUTPUT_FORBIDDEN:${rawPath}`), report.errors.join('\n'));

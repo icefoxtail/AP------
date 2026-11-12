@@ -1,0 +1,119 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "만나는 두 점의 $x$좌표는",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -1,
+      8.5
+    ],
+    "viewport": [
+      -2,
+      9.5,
+      -8,
+      22
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "-3",
+              "2"
+            ]
+          }
+        ],
+        "intersectionX": [
+          "1",
+          "7"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        7
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "curveX": "7",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "GA",
+          "from": "A",
+          "axis": "x"
+        },
+        {
+          "id": "GB",
+          "from": "B",
+          "axis": "x"
+        }
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": -5
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    }
+  },
+  "caption": "이차함수 y=f(x)의 그래프와 직선 y=g(x)는 x=1, x=7인 두 점에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "q24-S1",
+      "condition": "y=f(x)와 y=g(x)의 교점의 x좌표는 1, 7이다",
+      "mappedTo": "graphPlan.referenceCurves, graphPlan.axisTickValues"
+    },
+    {
+      "id": "q24-S2",
+      "condition": "f는 위로 열린 이차함수이고 g는 직선이다",
+      "mappedTo": "graphPlan.pieces, graphPlan.referenceCurves"
+    }
+  ],
+  "newVisualInformation": [
+    "위로 열린 포물선 f와 직선 g의 모양, 두 그래프의 교점의 x좌표 1과 7의 위치를 보여 준다."
+  ],
+  "assetPath": "assets/images/26_효천고_1학기_기말_고1_유사/q24.svg",
+  "hiddenPointNames": [
+    "V"
+  ],
+  "coordinatePlacement": "PANEL",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/engine_evidence/q24-problem-result.json",
+    "statePath": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/engine_evidence/q24-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/engine_evidence/q24-problem.svg"
+  }
+}

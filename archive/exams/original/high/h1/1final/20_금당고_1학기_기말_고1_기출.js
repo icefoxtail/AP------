@@ -46,7 +46,10 @@ window.questionBank = [
     "difficultyReason": "주어진 거리를 절댓값 방정식으로 바꾸고 수직선에서 가능한 두 위치를 나눈다.",
     "sourceOrdinal": 1,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q1-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 A(−3)와 한쪽으로 7만큼 떨어진 예시 위치를 점으로 나타낸다.",
+    "solutionImageCaption": "절댓값 방정식을 기준점에서 떨어진 거리로 해석한다. 그림은 한 방향의 예만 보여 주며, 다른 해와 두 값의 합은 나타내지 않는다. 두 값의 합은 −6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -93,7 +96,10 @@ window.questionBank = [
     "difficultyReason": "외분비와 점의 순서를 이용해 B에서 Q까지의 좌표 변화를 구한다.",
     "sourceOrdinal": 2,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q2-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q2-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 점 A, B, Q가 한 직선에 있고 두 구간의 길이 비가 2:1인 그림.",
+    "solutionImageCaption": "A(3,1), B(6,4)에서 외분점 Q는 A, B 순서 뒤에 있으며 AB:BQ=2:1이다. 정답은 (15/2, 11/2)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -140,9 +146,9 @@ window.questionBank = [
     "difficultyReason": "주어진 점과 기울기를 점-기울기 식에 바로 대입해 직선식을 정리한다.",
     "sourceOrdinal": 3,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q3-solution.svg",
-    "solutionImageAlt": "점 (-2, 1)을 지나고 기울기가 -2인 직선",
-    "solutionImageCaption": "점 (-2, 1)을 지나고 기울기가 -2인 직선",
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q3-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위 점 P에서 뻗는 기울기 −2의 직선 그림.",
+    "solutionImageCaption": "P(−2,1)을 지나고 기울기가 −2인 직선을 나타낸다. 정답은 2x+y+3=0이다.",
     "solutionImageSize": "full"
   },
   {
@@ -190,7 +196,10 @@ window.questionBank = [
     "difficultyReason": "두 직선의 기울기를 비교해 수직 조건으로 매개변수를 정한다.",
     "sourceOrdinal": 4,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q4-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q4-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 두 직선이 교차하고 교점에 직각 표시가 있으며 파란색과 주황색으로 구별된다.",
+    "solutionImageCaption": "파란색은 x−9y+7=0, 주황색은 3x+ay=1이며 교점에서 서로 수직이다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -237,7 +246,10 @@ window.questionBank = [
     "difficultyReason": "원과 직선이 두 점에서 만나도록 중심-직선 거리와 반지름을 비교하고 엄격한 범위를 결정한다.",
     "sourceOrdinal": 5,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q5-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q5-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위의 파란 원과 주황색 직선이 두 점에서 교차하는 그림.",
+    "solutionImageCaption": "파란 원의 중심은 O이고 반지름은 √5이다. 주황색 직선은 y=2x+k 꼴의 예이며, 두 교점이 생길 조건은 중심에서 직선까지의 거리가 반지름보다 작은 것이다. 정답은 0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -282,7 +294,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "완전제곱식의 최솟값과 엄격한 양수 조건을 함께 사용한다.",
     "sourceOrdinal": 6,
-    "sourceMode": "SOURCE_ONLY"
+    "sourceMode": "SOURCE_ONLY",
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점이 x축 위에 놓인 위로 열린 포물선과 좌표축을 나타낸다.",
+    "solutionImageCaption": "a=−3인 경우를 예로 들어 완전제곱식의 꼭짓점이 x축 위에 있음을 확인한다. 범위의 경계값은 그림에 표시하지 않는다. a는 −2.25보다 작다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -468,7 +484,10 @@ window.questionBank = [
     "difficultyReason": "교점을 직접 풀기보다 제1사분면 선분의 두 끝점에서 매개변수 경계를 구한다.",
     "sourceOrdinal": 10,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q10-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q10-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 제1사분면에서 파란 고정 직선과 주황 직선 예가 만나는 그림.",
+    "solutionImageCaption": "파란색은 3x+4y−12=0의 제1사분면 선분이고 주황색은 y=kx+k+1 꼴 직선의 한 예다. 교점은 제1사분면에 있다. 정답은 9/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -562,7 +581,10 @@ window.questionBank = [
     "difficultyReason": "삼각형 넓이를 원 위 점과 고정 직선 사이 거리로 바꾸어 최솟값과 최댓값을 구한다.",
     "sourceOrdinal": 12,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q12-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q12-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 파란 원, 주황색 직선 AB, 초록색 중심에서 AB로 내린 수선이 있는 그림.",
+    "solutionImageCaption": "A(2,−5), B(4,−3), C(1,−2)이며 원의 반지름은 √2이다. 파란 원의 두 반대 점은 AB에 가장 가깝고 먼 위치이고, 중심에서 AB까지의 거리는 2√2, |AB|=2√2이다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -611,7 +633,10 @@ window.questionBank = [
     "difficultyReason": "축 접선과 축에 생긴 현 길이를 함께 이용해 중심의 부호와 반지름을 정한다.",
     "sourceOrdinal": 13,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q13-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q13-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위 파란 원과 주황색 중심 자취 직선, 초록색 같은 길이 표시가 있는 x축 현을 나타낸다. T는 y축 접점이고 L, R은 현의 끝점이다. 위아래 검은 점은 원의 지름 끝점이다.",
+    "solutionImageCaption": "T는 y축 접점이고 L, R은 x축 현의 끝점이다. 위아래 검은 점은 파란 원의 지름 끝점이다. 파란 원의 중심은 주황색 직선 x+y−5=0 위에 있다. 현의 길이는 2이며 초록색 같은 눈금은 중심에서 현의 양 끝까지의 반지름이 같음을 나타낸다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -660,7 +685,10 @@ window.questionBank = [
     "difficultyReason": "닮음비를 세운 뒤 두 덧셈 조건을 연립해 각 삼각형의 둘레를 구한다.",
     "sourceOrdinal": 14,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q14-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q14-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 위에는 C를 공유하는 두 삼각형의 문제 배치, 아래에는 같은 방향으로 떨어뜨린 대응 삼각형이 있다. 아래 큰 삼각형의 C₁, A₁, B₁은 위쪽 C, A, B에 대응한다. 파란색은 DE와 AB, 주황색은 CD와 CA, 초록색은 CE와 CB를 구별한다.",
+    "solutionImageCaption": "위쪽 그림은 원래의 교차 배치, 아래쪽 그림은 대응 삼각형을 분리한 배치다. 아래 큰 삼각형의 C₁, A₁, B₁은 위쪽 C, A, B에 대응한다. 두 그림에서 작은 삼각형과 큰 삼각형의 실제 비는 1:2이며 색으로 대응변을 구별한다. 그림에 표시한 변의 길이는 각각 3, 4, 6, 8, 10이다. 정답은 36이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -706,7 +734,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "두 대칭식에서 합과 곱으로 바꾸어 매개변수 후보를 찾고 실수 해의 존재를 확인한다.",
     "sourceOrdinal": 15,
-    "sourceMode": "SOURCE_ONLY"
+    "sourceMode": "SOURCE_ONLY",
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 위에는 파란 b=f(a)와 주황 b=g(a)의 교점을, 아래에는 파란 D(a)와 주황 D=0을 나타낸다.",
+    "solutionImageCaption": "a=x+y, b=xy로 두면 첫 패널의 파란 곡선은 b=f(a), f(a)=(a²+a−2)/2이고 주황 곡선은 b=g(a), g(a)=a²−1이다. 둘째 패널에서 파란 곡선은 D(a)=f(a)−g(a), 주황 가로축은 D=0이다. 가능한 쌍에서 a+b의 최댓값은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -800,7 +832,10 @@ window.questionBank = [
     "difficultyReason": "절댓값 부등식의 구간별 해를 구한 뒤 동일한 이차부등식의 근과 계수 부호를 추론한다.",
     "sourceOrdinal": 17,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q17-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 해에 속하는 예 −1, 0과 해에 속하지 않는 예 2, 3을 서로 다른 줄에 표시한다.",
+    "solutionImageCaption": "절댓값 부등식의 해를 구간별로 살펴보는 예를 표시한다. 경계와 이차식 두 근의 합은 그림에 나타내지 않는다. 옳은 말은 ㄴ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -847,7 +882,10 @@ window.questionBank = [
     "difficultyReason": "중심 부호에 따른 네 경우를 풀고 양수 반지름만 골라 넓이를 합한다.",
     "sourceOrdinal": 18,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q18-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q18-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위에서 M(1,2)를 중심으로 한 파란 기준 원과 네 접원을 호 색으로 구별하고, 주황색 두 대각선은 접원 중심의 자취를 나타낸다.",
+    "solutionImageCaption": "M(1,2)는 주어진 원의 중심이고 반지름은 3이다. 주황색 직선 y=x와 y=−x는 좌표축에 접하는 원들의 중심이 놓이는 자취다. 파란색은 기준 원, 주황색·초록색·분홍색·보라색 호는 각각 제1·제2·제4·제3사분면의 접원을 구별한다. 정답은 18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -894,7 +932,10 @@ window.questionBank = [
     "difficultyReason": "정사각형의 같은 변 길이와 중점 조건을 좌표 변화로 연결해 기울기를 정한다.",
     "sourceOrdinal": 19,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q19-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q19-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위의 정사각형 O, A, B, C와 아래쪽 주황색 선분을 나타낸다. 파란색 한 눈금은 네 변, 주황색 두 눈금은 복사 선분의 양쪽 반이 같음을 보인다.",
+    "solutionImageCaption": "파란색 눈금은 정사각형 네 변의 같음, 아래 주황색 복사 선분의 두 눈금은 AB의 두 반쪽이 같음을 나타낸다. AB는 x+my−4=0 위에 있고 x축이 AB를 이등분한다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -942,7 +983,10 @@ window.questionBank = [
     "difficultyReason": "무게중심의 직선거리와 원 위 점의 거리 사이의 1:3 관계를 세운 뒤 원-직선 거리로 최솟값을 구한다.",
     "sourceOrdinal": 20,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q20-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q20-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 파란 원, 주황색 직선 AB, 초록색 중심과 무게중심에서 내린 수선이 있는 그림.",
+    "solutionImageCaption": "원의 중심은 C(1,2), 반지름은 2이며 AB: 4x+3y−25=0이다. 중심에서 AB까지의 거리는 3이다. 초록색 수선은 원 위의 점 P와 무게중심 G에서 AB에 내린 수선을 함께 나타낸다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -985,7 +1029,10 @@ window.questionBank = [
     "difficultyReason": "좌표축과 빗변까지 같은 거리를 이용해 내심을 정한 뒤 넓이 조건으로 Q의 위치를 구한다.",
     "sourceOrdinal": 21,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q21-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q21-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 파란색 삼각형 OAB 안의 주황색 삼각형 APQ와 초록색 같은 길이 표식을 나타낸 그림.",
+    "solutionImageCaption": "A(0,6), B(8,0), P(2,2)이며 AQ:AB=4:5이다. 파란색은 △OAB, 주황색은 △APQ를 나타내고 초록색 표식은 P에서 세 변까지의 거리가 같음을 나타낸다. 정답은 38/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1028,6 +1075,9 @@ window.questionBank = [
     "difficultyReason": "접선과 반지름의 수직 관계로 직각삼각형을 만들고 이등변 조건과 접점 좌표를 결합한다.",
     "sourceOrdinal": 22,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q22-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q22-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 파란 원, 주황색 접선 AP와 지름 PQ, P의 직각 표시와 AP, PQ의 같은 길이 눈금이 있는 그림.",
+    "solutionImageCaption": "파란색 호는 원을, 주황색 AP와 PQ는 같은 길이인 두 직각변을 나타낸다. 접점 P에서 접선과 지름 방향은 서로 수직이다. 정답은 −12/25이다.",
+    "solutionImageSize": "full"
   }
 ];

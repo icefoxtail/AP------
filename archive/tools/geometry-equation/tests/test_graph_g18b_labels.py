@@ -51,9 +51,27 @@ class Observer(unittest.TestCase):
         wrong=figure(175,170,40).replace('<g id="curve-f-equation" ','<g id="curve-f-equation" data-near-room="NONE" ')
         self.assertIn('LABEL_NEAREST_CURVE_MISMATCH:curve-f-equation',multi_curve_label_audit(PLAN,wrong,{})['errors'])
 
-    def test_older_quadratic_arcs_are_not_judged(self):
+    def test_mixed_vertical_and_sideways_quadratic_arcs_keep_the_existing_layout(self):
         plan={**PLAN,'multiCurveFeatures':{'curves':[{'id':'f','kind':'Y_OF_X'},{'id':'g','kind':'X_OF_Y'}]}}
         self.assertEqual(multi_curve_label_audit(plan,figure(175,170,40),{})['errors'],[])
+
+    def test_opposite_vertical_parabola_labels_must_stay_with_their_own_curves(self):
+        plan={**PLAN,'curves':[{'id':'f','label':'y=-x^2'},{'id':'f_ref','label':'y=x^2'}],
+              'multiCurveFeatures':{'curves':[{'id':'f','kind':'Y_OF_X'},{'id':'f_ref','kind':'Y_OF_X'}]}}
+        def parabolas(lower_label_y,upper_label_y):
+            def box(ident,y):
+                return f'<g id="curve-{ident}-equation" data-label-kind="EQUATION_LABEL" transform="translate(292 {y})"><svg width="60" height="20"/></g>'
+            return ('<svg data-publication-profile="fragment-publication-spike-v1">'
+                    '<polyline data-role="curve" data-branch="CURVE_f" points="40,200 100,120 160,100 220,120 280,200"/>'
+                    '<polyline data-role="curve" data-branch="CURVE_f_ref" points="40,0 100,80 160,100 220,80 280,0"/>'
+                    +box('f',lower_label_y)+box('f_ref',upper_label_y)+'</svg>')
+        self.assertEqual(multi_curve_label_audit(plan,parabolas(177,3),{})['errors'],[])
+        self.assertEqual(multi_curve_label_audit(plan,parabolas(3,177),{})['errors'],
+                         ['LABEL_NEAREST_CURVE_MISMATCH:curve-f-equation','LABEL_NEAREST_CURVE_MISMATCH:curve-f_ref-equation'])
+        detached=parabolas(245,3).replace('<g id="curve-f-equation" ','<g id="curve-f-equation" data-near-room="NONE" ')
+        self.assertIn('LABEL_NEAREST_CURVE_MISMATCH:curve-f-equation',multi_curve_label_audit(plan,detached,{})['errors'])
+        missing=parabolas(177,3).replace('id="curve-f-equation"','id="unbound"')
+        self.assertIn('LABEL_NEAREST_CURVE_MISMATCH:curve-f-equation',multi_curve_label_audit(plan,missing,{})['errors'])
 
     def test_other_families_are_not_read(self):
         self.assertIsNone(multi_curve_label_audit({'family':'rational'},figure(70,170),{}))

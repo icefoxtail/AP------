@@ -202,9 +202,9 @@ window.questionBank = [
     "sourceOrdinal": 3,
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q03-solution.svg",
-    "solutionImageAlt": "점 P(1,2)를 지나며 기울기가 3인 직선과 y절편 −1을 나타낸 그림",
-    "solutionImageCaption": "기울기 3인 직선은 점 (1, 2)를 지난다.",
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 점 P(1,2)를 지나는 오른쪽 위로 올라가는 직선이 그려져 있다. P에서 오른쪽으로 1, 다시 위로 3만큼 간 직각 표시의 선분 두 개가 기울기 3을 나타낸다.",
+    "solutionImageCaption": "기울기가 3이므로 점 P(1,2)에서 오른쪽으로 1 가면 위로 3 올라간다. 점기울기식 y−2=3(x−1)을 정리하면 y=3x−1이다. 정답은 y=3x−1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -342,9 +342,9 @@ window.questionBank = [
     "sourceOrdinal": 5,
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q05-solution.svg",
-    "solutionImageAlt": "원점 중심, 반지름 √7인 원에 접하는 기울기 2의 두 직선과 접점 반지름",
-    "solutionImageCaption": "접선과 반지름은 접점에서 수직이다.",
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 원점 O를 중심으로 하는 원 x²+y²=7이 있고, 기울기가 같은 두 직선이 원의 양쪽에서 점 T₁, T₂에 접한다. 중심 O에서 T₁, T₂까지의 초록 선분은 길이 √7로 같고 각각 접선과 직각 표시가 있다.",
+    "solutionImageCaption": "초록 선분은 중심 O와 접점 T₁, T₂를 잇는 반지름이고, 같은 눈금은 두 반지름의 길이가 같음을, 네모 표시는 반지름과 접선이 수직임을 뜻한다. 기울기가 2인 접선을 y=2x+c라 하면 접점 T₁, T₂는 원점 O에서 접선에 내린 수선의 발이고, 이 수선은 기울기가 −1/2인 직선 위에 있다. 두 직선의 교점을 구해 거리를 구하면 OT=|c|/√5이고 반지름 √7과 같으므로 |c|=√35이다. 정답은 y=2x+√35, y=2x−√35이다.",
     "solutionImageSize": "full"
   },
   {
@@ -489,9 +489,9 @@ window.questionBank = [
     "wide": false,
     "imageAlt": "문항 7의 좌표·도형 관계를 표시한 문제 그림",
     "imageCaption": "식과 일치하도록 x절편을 −2, 2로 바로잡은 포물선과 직사각형",
-    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q07-solution.svg",
-    "solutionImageAlt": "포물선 y=−x²+4와 x축 사이에 놓인 직사각형 PQRS, 가로 2a와 세로 4−a²",
-    "solutionImageCaption": "가로 2a, 세로 4−a²인 직사각형의 둘레",
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 파란 포물선 y=−x²+4와 꼭짓점 (0,4), 포물선 안쪽의 직사각형 P, Q, R, S가 있다. P, S는 포물선 위, Q, R는 x축 위에 있고 S 곁에 좌표 (a, 4−a²), R 곁에 a가 적혀 있다.",
+    "solutionImageCaption": "파란 포물선은 y=−x²+4이다. S(a, 4−a²)이면 P(−a, 4−a²)이고 가로는 2a, 세로는 4−a², 0<a<2이다(그림은 예로 a=3/2). 둘레 L=2(2a+4−a²)=−2(a−1)²+10이므로 a=1일 때 최대이다. 정답은 10이다.",
     "solutionImageSize": "full",
     "sourceRepair": {
       "status": "SOURCE_REPAIRED",
@@ -655,9 +655,9 @@ window.questionBank = [
     "image": "assets/images/21_효천고_1학기_기말_고1_기출/q09-problem.svg",
     "imageAlt": "문항 9의 좌표·도형 관계를 표시한 문제 그림",
     "imageCaption": "점 (1, 4)에서 원에 그은 두 접선",
-    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q09-solution.svg",
-    "solutionImageAlt": "점 (1,4)에서 원 x²+y²=4에 그은 두 접선과 두 접점까지의 반지름",
-    "solutionImageCaption": "접점 반지름과 두 접선의 기울기 관계",
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 원점 O를 중심으로 하는 반지름 2의 원이 있고 점 P(1,4)에서 원에 두 접선이 그어져 접점 T₁, T₂에서 닿는다. 중심 O에서 T₁, T₂까지의 초록 선분은 길이가 같고 접선과 직각 표시가 있으며 하나에 2가 적혀 있다.",
+    "solutionImageCaption": "초록 선분은 두 반지름이며 같은 눈금은 두 길이가 같음을 나타낸다. 점 P(1,4)를 지나는 접선을 y=m(x−1)+4로 놓고 원의 방정식에 대입하면 x에 대한 이차방정식이 된다. 접하므로 D/4=0에서 3m²+8m−12=0이고 두 접선의 기울기 m₁, m₂가 이 방정식의 두 근이므로 m₁m₂=−4이다. (가)=4, (나)=12, (다)=8이다. 정답은 24이다.",
     "solutionImageSize": "full"
   },
   {
@@ -802,9 +802,9 @@ window.questionBank = [
     "sourceOrdinal": 11,
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "O(0,0), A(3,5), B(6,2)와 대각선 AB로 나뉜 평행사변형 OADB",
-    "solutionImageCaption": "두 배 넓이인 평행사변형으로 삼각형 넓이를 확인한다.",
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 점 O, 윗변 위의 점 A, 오른쪽 변 위의 점 B(6,2)와 직사각형의 꼭짓점 U, V, W가 있다. 삼각형 OAB 바깥의 직각삼각형 세 개 O U A(파랑), A V B(주황), O W B(초록)가 칠해져 있고 변마다 5, a, 6−a, 3, 2, 6이 적혀 있다.",
+    "solutionImageCaption": "파랑, 주황, 초록은 각각 삼각형 OUA, AVB, OWB를 나타낸다. 직사각형 O, U, V, W의 넓이는 6×5=30이다. 세 색칠된 직각삼각형의 넓이는 5a/2, 3(6−a)/2, 6이므로 삼각형 OAB의 넓이는 30−(a+15)=15−a이다. 넓이가 12이므로 15−a=12이다. 정답은 a=3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -877,9 +877,9 @@ window.questionBank = [
     "image": "assets/images/21_효천고_1학기_기말_고1_기출/q12-problem.svg",
     "imageAlt": "문항 12의 좌표·도형 관계를 표시한 문제 그림",
     "imageCaption": "두 중점 조건과 외분점의 위치",
-    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "A, B, C와 두 중점 M, N, 그리고 BC를 3:2로 외분하는 점 P를 나타낸 좌표 그림",
-    "solutionImageCaption": "복원한 좌표와 B-C-P 순서 및 외분비",
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 삼각형 A, B, C가 있고 점 A(−3,−2), B(−5,8), C(3,−6), AB의 중점 M(−4,3), BC의 중점 N(−1,1)이 좌표와 함께 표시되어 있다. AM과 MB는 초록 표시, BN과 NC는 주황 표시로 길이가 같다.",
+    "solutionImageCaption": "초록 눈금은 AM=MB, 주황 눈금은 BN=NC를 나타낸다. M이 AB의 중점이므로 B(−5,8), N이 BC의 중점이므로 C(3,−6)이다. BP:PC=3:2로 외분하는 점 P는 B, C를 지나는 직선에서 C 쪽에 있고(그림 밖), BP=3s, PC=2s, BC=s이므로 B에서 C 방향으로 BC의 세 배만큼 간 곳이다. x좌표와 y좌표를 따로 계산하면 P(19,−34)이다. 정답은 −15이다.",
     "solutionImageSize": "full"
   },
   {
@@ -950,7 +950,11 @@ window.questionBank = [
     "sourceArchiveFile": "archive/exams/original/high/h1/1final/21_효천고_1학기_기말_고1_기출.js",
     "sourceOrdinal": 13,
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선이 그려져 있고 꼭짓점은 x축 아래에 있으며, 그래프가 x축을 두 곳에서 가로지른다.",
+    "solutionImageCaption": "조건 (나)는 y=7x²+6x−1이 음수인 경우이므로 그림에서 포물선이 x축 아래인 범위를 찾는다. 정답은 −1<x<1/7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1090,9 +1094,9 @@ window.questionBank = [
     "image": "assets/images/21_효천고_1학기_기말_고1_기출/q15-problem.svg",
     "imageAlt": "문항 15의 좌표·도형 관계를 표시한 문제 그림",
     "imageCaption": "두 원의 교점과 y축 위 중심 조건",
-    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "두 원 C₁, C₂의 공통 현 AB와 y축 위 중심을 갖는 원 C",
-    "solutionImageCaption": "두 원의 교점을 지나는 원의 족과 y축 위 새 중심",
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 원 C₁과 주황 원 C₂가 두 점 A, B에서 만나고 선분 AB가 그어져 있다. A, B를 지나면서 중심이 y축 위에 있는 초록 원도 그려져 있다.",
+    "solutionImageCaption": "파랑 원 C₁, 주황 원 C₂의 두 교점을 A, B라 하고, A, B를 지나면서 중심이 y축 위에 있는 원이 초록 원이다. 두 원의 방정식을 정리해 서로 빼면 두 교점 A, B를 지나는 직선 4x−7y−8=0을 얻는다. 중심이 y축 위인 원을 x²+y²+dy+e=0으로 놓고 첫째 원과 빼면 얻는 직선이 이 직선과 같아야 하므로 d=−1, e=−20이다. 정답은 x²+y²−y−20=0이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1196,9 +1200,9 @@ window.questionBank = [
     "image": "assets/images/21_효천고_1학기_기말_고1_기출/q16-problem.svg",
     "imageAlt": "문항 16의 좌표·도형 관계를 표시한 문제 그림",
     "imageCaption": "외심과 y축 위 수선의 발",
-    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "P(0,2)일 때 두 삼각형의 외심 O′, O″와 y축에 내린 수선의 발 D, E",
-    "solutionImageCaption": "t=2인 배치 예: 두 외심의 y축까지 거리",
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 삼각형 A, B, C와 변 BC 위의 점 P가 있고 선분 AP가 점선으로 그려져 있다. 삼각형 ABP의 외접원(파랑)과 삼각형 APC의 외접원(주황)이 있으며 두 외심 O′, O″에서 y축에 내린 수선의 발 D, E가 직각 표시와 함께 있다.",
+    "solutionImageCaption": "파란 원은 삼각형 ABP의 외접원이고 주황 원은 삼각형 APC의 외접원이다. P(0,t), 세로변의 끝점 (0,u)라 하고 외심을 (h,v)라 하면 v=(u+t)/2이고 A와 P에서 같은 거리라는 조건에서 h=2+ut/8이다. u=−3이면 O′의 x좌표는 2−3t/8, u=3이면 O″의 x좌표는 2+3t/8이고 둘 다 양수이므로 O′D, O″E는 이 값과 같다(그림은 t의 한 예). 두 길이를 더하면 t가 사라진다. 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1277,9 +1281,9 @@ window.questionBank = [
     "sourceOrdinal": 17,
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "각의 이등분선으로 정한 D, R과 AD·BC의 교점 P, B(3,√3)를 표시한 그림",
-    "solutionImageCaption": "계산 좌표 P,D,R과 △PRB의 높이",
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 삼각형 O, A, B와 OA 위의 점 C가 있다. OA와 AB는 초록 표시로 길이가 같고, OB의 중점 D에서 AD가 OB와 직각이며 OD와 DB는 주황 표시로 같다. AD와 BC가 만나는 점 P에서 점선이 OB 위의 점 R로 이어지고 삼각형 P, R, B가 주황으로 칠해져 있다. 점 B에 좌표 (3, √3)가 적혀 있고 BC의 길이는 √7이다(문제의 조건).",
+    "solutionImageCaption": "초록 눈금은 OA=AB, 주황 눈금은 OD=DB를 나타내고, 주황색으로 칠한 삼각형은 PRB이다. OB²=12, BC²=7에서 a=3, b=√3이므로 B(3,√3)이고 ㄱ은 참이다. AB=OA=2이므로 D는 OB의 중점이고, AD와 BC의 교점 P(5/3,√3/3)은 세 꼭짓점 좌표의 평균이므로 무게중심이라 ㄴ도 참이다. 각의 이등분선 정리로 BR:RD=2√7:1이고 삼각형 PRB의 넓이는 √21/[3(1+2√7)]이라 ㄷ은 거짓이다. 정답은 ㄱ, ㄴ이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1351,9 +1355,9 @@ window.questionBank = [
     "sourceOrdinal": 18,
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "원 C와 직선 y=2x의 교점 A, B, 원 위의 P와 AB=AP, BP=8의 조건",
-    "solutionImageCaption": "같은 중심각에 대응하는 같은 길이 현과 두 교점",
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 원과 직선 y=2x가 두 점 A, B에서 만난다. 점 A를 중심으로 B를 지나는 주황 원이 파란 원과 B가 아닌 점 P에서 만난다. 선분 AB와 AP는 초록 표시로 길이가 같고 선분 BP에는 8이 적혀 있다.",
+    "solutionImageCaption": "파란 원은 C, 주황 원은 A를 중심으로 한 원이며 초록 눈금은 AB=AP를 나타낸다. 선분 BP 옆의 8은 주어진 길이다. 직선 위의 점의 x좌표를 s라 하면 5s²−6ks+k²=0이므로 A(k/5,2k/5), B(k,2k)이다. AP=AB이므로 P는 A를 중심으로 반지름 AB인 원 위에 있다. 두 원의 식을 빼서 얻은 직선 4x+3y=10k를 원 C에 대입하면 P(49k/25,18k/25)이고 BP=8k/5=8에서 k=5이다. 정답은 67이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1421,9 +1425,9 @@ window.questionBank = [
     "sourceOrdinal": 19,
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "A(4,0), B(8,−3), C(5,1), D(1,4)로 이루어진 마름모와 두 대각선",
-    "solutionImageCaption": "대각선 중점과 이웃한 변 길이 조건",
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 마름모 A, B, C, D가 그려져 있다. 점 C(5,1)과 D(1,4)에 좌표가 적혀 있고 네 변에 같은 길이를 뜻하는 초록 표시가 있다. 두 대각선 AC, BD는 점선이며 한 점에서 만나며 그 점이 두 대각선의 중점이다.",
+    "solutionImageCaption": "초록 눈금은 네 변의 길이가 같음을 나타낸다. 마름모는 평행사변형이므로 두 대각선의 중점이 같다. A+C=B+D에서 a+5=b+1, 즉 b=a+4이다. AB=BC에서 AB²=(b−a)²+9=25이고 BC²=(5−b)²+16이므로 (5−b)²=9, b=2 또는 b=8이다. a>0이므로 b=8, a=4이다. 정답은 a=4, b=8이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1517,9 +1521,9 @@ window.questionBank = [
     "sourceOrdinal": 20,
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "직각삼각형 ABC의 직각변 길이 3, 4와 빗변 길이 5",
-    "solutionImageCaption": "근의 합·곱과 직각삼각형의 변 길이",
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 A에서 직각인 직각삼각형 A, B, C가 있다. 직각을 낀 두 변 AB와 AC의 길이는 4와 3이고 빗변 BC의 길이는 5로 적혀 있다.",
+    "solutionImageCaption": "세 근을 직각을 낀 두 변 a, b와 빗변 c라 하면 a+b+c=12, abc=60, ab+bc+ca=k이다. 직각 표시는 두 변이 수직임을 나타내고, 그림은 조건에서 얻는 3, 4, 5의 한 예다. c²=(a+b)²−2ab에 대입하면 c²−6c+5=0이므로 c=1 또는 5인데, c=1이면 a, b가 실수가 아니므로 c=5, a+b=7, ab=12이고 세 변은 3, 4, 5이다. 정답은 47이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1586,9 +1590,9 @@ window.questionBank = [
     "image": "assets/images/21_효천고_1학기_기말_고1_기출/q21-problem.svg",
     "imageAlt": "문항 21의 좌표·도형 관계를 표시한 문제 그림",
     "imageCaption": "기준 직선과 점 (2, −5)",
-    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "점 P(2,−5)에서 각각 √2 떨어진 평행선 x+y+1=0, x+y+5=0",
-    "solutionImageCaption": "점에서 두 평행 후보까지의 수선 거리",
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 3x+3y−2=0과 이 직선에 평행한 직선 y=−x+b가 그려져 있다. 점 P(2,−5)에서 평행한 직선에 내린 수직선의 발 H와 선분 PH가 직각 표시와 함께 있다.",
+    "solutionImageCaption": "주어진 직선의 기울기는 −1이므로 구하는 직선을 y=−x+b라 하고(그림은 b의 한 예), P를 지나 수직인 직선 y=x−7과의 교점 H를 구하면 H(2분의 (b+7), 2분의 (b−7))이다. PH=2분의 |b+3|×√2이고 PH=√2에서 |b+3|=2이므로 b=−1 또는 b=−5이다. 정답은 x+y+1=0, x+y+5=0이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1661,9 +1665,9 @@ window.questionBank = [
     "image": "assets/images/21_효천고_1학기_기말_고1_기출/q22-problem.svg",
     "imageAlt": "문항 22의 좌표·도형 관계를 표시한 문제 그림",
     "imageCaption": "두 원, 교점 A·B, P가 놓이는 직선",
-    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "두 원 C₁, C₂의 공통 현 AB와 원 C₁ 위 점 D가 놓일 수 있는 수평 높이",
-    "solutionImageCaption": "수평 높이별로 원과 만나는 점의 수",
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 원 C₁과 주황 원 C₂가 두 점 A, B에서 만나고 선분 AB가 점선으로 그려져 있다. AB에 대해 위아래로 대칭인 두 수평선 두 개(아래쪽이 y=t)가 그려져 있고 이 수평선들이 파란 원과 만나는 네 점이 점으로 표시되어 있다.",
+    "solutionImageCaption": "파란 원 C₁과 주황 원 C₂의 교점 A, B를 잇는 선분 AB는 y=−1이다. A(−√3,−1), B(√3,−1)이고, 두 삼각형은 밑변 AB가 같으므로 높이가 같아야 해서 D의 y좌표는 t 또는 −t−2이다. 각 수평선이 파란 원 C₁과 두 점, 한 점, 0개에서 만나는 경우를 세어(그림은 t=−3/2인 예) f(−2), f(−3/2), f(0)을 더한다. 정답은 10이다.",
     "solutionImageSize": "full"
   }
 ];
