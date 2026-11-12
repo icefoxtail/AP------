@@ -442,7 +442,7 @@
 
 ### 24_향림중_2학기_중간_중1_유사 — Drive 신규 판본
 
-- Drive 문서 1j4fznU3PEWRdrbk5QTGhxi5rXgBHpC5bhhCUD8DLywo, revision AHj4eMRGpurja0ZuzlRbn-8nldAXBAa3uESJyRpd50UMS2_vuIUm2YoY7kjPDqBgX2af3g3f-Ht9uJVPjMiwfrYTDVWzyaG9UyeYuiG-lr4; 23문항, 100점. Q10의 손상된 해설과 Q21의 공선 조건 누락을 최소 보완했습니다. 기존 유사판·그림 자산은 바꾸지 않았습니다. 그림은 아직 제작하지 않았습니다.
+- Drive 문서 1j4fznU3PEWRdrbk5QTGhxi5rXgBHpC5bhhCUD8DLywo, revision AHj4eMRGpurja0ZuzlRbn-8nldAXBAa3uESJyRpd50UMS2_vuIUm2YoY7kjPDqBgX2af3g3f-Ht9uJVPjMiwfrYTDVWzyaG9UyeYuiG-lr4; 23문항, 100점. Q5의 단일 삼각형과 맞지 않는 “오른쪽 작은 삼각형” 해설 표현을 정리했습니다. Q10은 E가 AC 위의 수선의 발임을 반영해 점과 선분 사이 거리의 설명을 명확히 했습니다. Q7의 SAMPLE_ONLY 문제·해설 그림을 복구했습니다. 4칸 검토와 시각 QA·운영 화면 검증은 미실행입니다.
 
 | Q | 문제 그림 | 해설 그림 | 판단 근거 |
 |---:|---|---|---|
@@ -450,12 +450,12 @@
 | Q02 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | 최신 대응 발문·풀이 검산, 정적·누출 검사는 통과; 시각 검수와 실제 Archive 확인은 미실행. |
 | Q03 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | 최신 대응 발문·풀이 검산, 정적·누출 검사는 통과; 시각 검수와 실제 Archive 확인은 미실행. |
 | Q04 | 불필요 | 불필요 | 텍스트 조건과 계산만으로 충분; 원문 그림 신호: 정다각형의 외각 공식을 통한 n 결정 및 대각선, 내각합 계산 진위 문항; 해설: 텍스트 풀이만으로 충분 |
-| Q05 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | 최신 대응 발문·풀이 검산, 정적·누출 검사는 통과; 시각 검수와 실제 Archive 확인은 미실행. |
+| Q05 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | 단일 △ABC의 외각 115°·내각 45° 조건에 맞는 그림. 해설의 불일치 표현을 제거하고 x=110°로 풀이를 정리; 시각 검수·Archive 확인은 미실행. |
 | Q06 | 필요·P1·미완 | 도움·P2·미완 | 도형 배치·각 표시·입체 구조가 발문 조건의 위치/관계를 정하므로 필요; 원문 그림 신호: 네 내각과 외각 x가 표시된 오각형 다이어그램; 해설: 풀이의 관계·위치·단계를 시각화하면 이해에 도움 |
-| Q07 | 필요·P1·미완 | 도움·P2·미완 | 연결된 SAMPLE_ONLY 그림이 실제로는 AB=24, BC=18, MN=21인 중점 길이 문제로, 이 문항의 접기·각 문제와 불일치해 참조·자산을 제거함. 일치하는 그림이 없어 문제·해설 모두 미완. 시각 QA·Archive 검증은 미실행. |
+| Q07 | SAMPLE_ONLY 연결·시각 QA 대기 | SAMPLE_ONLY 연결·시각 QA 대기 | A,B,C가 일직선 위에 있고 M,N이 AB,BC의 중점이며 AM=12cm, 3AB=4BC인 문항과 샘플 SVG의 조건이 일치함. AB=24, BC=18, MB=12, BN=9, MN=21. 시각 QA·Archive 검증은 미실행. |
 | Q08 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | 최신 대응 발문·풀이 검산, 정적·누출 검사는 통과; 시각 검수와 실제 Archive 확인은 미실행. |
 | Q09 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | 최신 대응 발문·풀이 검산, 정적·누출 검사는 통과; 시각 검수와 실제 Archive 확인은 미실행. |
-| Q10 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | 최신 대응 발문·풀이 검산, 정적·누출 검사는 통과; 시각 검수와 실제 Archive 확인은 미실행. |
+| Q10 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | E는 선분 AC 위의 수선의 발이며 DE=3cm. 점과 선분 사이 거리는 DE로 해설 정의를 바로잡음; 시각 검수·Archive 확인은 미실행. |
 | Q11 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | SAMPLE_ONLY SVG 연결·시각 QA 대기 | 최신 대응 발문·풀이 검산, 정적·누출 검사는 통과; 시각 검수와 실제 Archive 확인은 미실행. |
 | Q12 | 도움·P2·미완 | 도움·P2·미완 | 텍스트로 풀 수 있으나 배치/관계를 시각화하면 이해에 도움; 원문 그림 신호: 내각합의 보존으로 다각형의 변 수 n=6을 구하고 대각선 개수를 계산하는 대수적 문항; 해설: 풀이의 관계·위치·단계를 시각화하면 이해에 도움 |
 | Q13 | 그림 미연결·정답 노출 방지 | SVG 연결·시각 QA 대기 | 해설에만 꼭짓점 90°·120°·150°와 n=12를 표시. 문제 그림은 미제공해 답 노출을 막음. 해설 샘플의 static/math/leak 검사는 통과; 시각/Archive QA 미실행. |

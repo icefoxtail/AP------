@@ -1236,6 +1236,30 @@
         "before": "Only A, B, C were stated to be collinear; additional collinear triples involving D or E could change the line/ray counts.",
         "after": "Added that no other three of the five points are collinear and stated this in the count reasoning.",
         "independentCheck": "There are 10 segments. The only repeated line is ABC, giving 8 lines. Of the 20 ordered rays, only AB=AC and CB=CA are duplicates, giving 18. Total 10+8+18=36."
+      },
+      {
+        "scope": "Q5 solution wording",
+        "before": "The solution referred to a “right small triangle,” but the source-matched drawing is a single triangle ABC with an exterior angle at C and x adjacent to the interior angle at B.",
+        "after": "Rewrote the calculation using the right exterior angle 115° to obtain C=65°, then triangle ABC angle sum to obtain B=70° and adjacent exterior x=110°.",
+        "independentCheck": "Vector/angle-plan audit gives A=45°, C=65°, B=70°, x=110°, answer ①; matches the current problem statement and the single-triangle sample. Formal independent review remains pending."
+      },
+      {
+        "scope": "Q10 solution definition",
+        "before": "Said “the length of a perpendicular dropped from a point on a segment onto that segment,” which describes the foot incorrectly.",
+        "after": "States that E is the perpendicular foot from D and lies on segment AC, so the point-to-segment distance is DE=3 cm.",
+        "independentCheck": "Source-matched plan explicitly has E inside AC, DE perpendicular AC, and DE=3 cm; answer ② is unchanged. Formal independent review remains pending."
+      },
+      {
+        "scope": "Q5 solution wording",
+        "before": "The solution referred to a “right small triangle,” but the source-matched drawing is a single triangle ABC with an exterior angle at C and x adjacent to the interior angle at B.",
+        "after": "Rewrote the calculation using the right exterior angle 115° to obtain C=65°, then triangle ABC angle sum to obtain B=70° and adjacent exterior x=110°.",
+        "independentCheck": "Vector/angle-plan audit gives A=45°, C=65°, B=70°, x=110°, answer ①; matches the current problem statement and the single-triangle sample. Formal independent review remains pending."
+      },
+      {
+        "scope": "Q10 solution definition",
+        "before": "Said “the length of a perpendicular dropped from a point on a segment onto that segment,” which describes the foot incorrectly.",
+        "after": "States that E is the perpendicular foot from D and lies on segment AC, so the point-to-segment distance is DE=3 cm.",
+        "independentCheck": "Source-matched plan explicitly has E inside AC, DE perpendicular AC, and DE=3 cm; answer ② is unchanged. Formal independent review remains pending."
       }
     ]
   },
@@ -1243,7 +1267,7 @@
     "jsSyntax": "PASS",
     "questionCount": "23",
     "totalPoints": 100,
-    "mathReview": "Q10, Q19, and Q21 independently checked; other items remain UNREVIEWED.",
+    "mathReview": "Q10, Q19, and Q21 independently checked; other items remain UNREVIEWED. Q5 solution wording and 110° result checked against source-matched single-triangle SVG plan; Q10 point-to-segment distance wording checked against E∈AC and DE⊥AC. Formal independent review pending. Q5 solution wording and 110° result checked against source-matched single-triangle SVG plan; Q10 point-to-segment distance wording checked against E∈AC and DE⊥AC. Formal independent review pending.",
     "imageReferenceCheck": "STATIC_PASS: 23 SAMPLE_ONLY SVG references connected; Q07 exact source UID and midpoint/length conditions match the prepared sample. XML/static/math/leak checks passed. Visual QA and actual Archive screen not run. Q19 latest JS differs from prepared source and has no sample asset; not connected."
   },
   "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
@@ -1617,7 +1641,7 @@
       }
     }
   ],
-  "expectedSourceBlobSha1": "f23b8a33de66e6c6bb2807e11f5688fbcce56abf",
+  "expectedSourceBlobSha1": "a1a8b9db439abd4ac252ab590276ddd24505315f",
   "fourSlotCandidate": {
     "path": "archive/exams/similar/middle/m1/2mid/24_향림중_2학기_중간_중1_유사.4slot-candidate.json",
     "sha256": "a0b7b8bb2d1a7d2e8801a78dfd576811a235c0d9f539f3b831a6a6c0b581b010",
