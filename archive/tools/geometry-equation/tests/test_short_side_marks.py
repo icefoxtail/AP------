@@ -40,6 +40,14 @@ class ShortAngleRayTests(unittest.TestCase):
         self.assertIsNone(element(result['svg'],'aV-ext-from'));self.assertIsNone(element(result['svg'],'aV-ext-to'))
         radius=self.arc_radius_px(result['svg']);self.assertGreaterEqual(radius,6.0);self.assertLessEqual(radius,19.0-3.0)
         report=audit(pts,result,marks);self.assertEqual(report['errors'],[]);self.assertEqual(report['status'],'PASS')
+    def test_an_8_to_9px_ray_gets_a_small_arc_without_an_extension(self):
+        pts,result,marks=self.render(0.135)
+        self.assertIsNone(element(result['svg'],'aV-ext-from'))
+        self.assertIsNone(element(result['svg'],'aV-ext-to'))
+        self.assertGreaterEqual(self.arc_radius_px(result['svg']),3.0)
+        self.assertLess(self.arc_radius_px(result['svg']),8.0)
+        self.assertEqual(audit(pts,result,marks)['errors'],[])
+
     def test_a_10px_ray_gets_the_pulled_arc_with_its_ray_prolonged(self):
         pts,result,marks=self.render(0.16)
         ext=element(result['svg'],'aV-ext-from')
