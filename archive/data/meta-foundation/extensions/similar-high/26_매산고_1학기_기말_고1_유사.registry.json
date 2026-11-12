@@ -1,0 +1,207 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "26_매산고_1학기_기말_고1_유사",
+  "sourceExam": "archive/exams/original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "generatedL4": [
+    {
+      "key": "EXT-L4-ABS-SUM-INEQUALITY-INTEGER-COUNT-PARAMETER-RANGE",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "절댓값 두 개의 합 부등식에서 정수해 개수로 매개변수 범위 정하기",
+      "definition": "|x−p|+|x−q|≤(매개변수가 든 식) 꼴을 영점 기준 구간으로 나누어 해를 한 구간으로 정리한 뒤, 그 구간 안의 정수가 정해진 개수가 되도록 매개변수의 범위를 끝점 포함 여부까지 판정해 정하는 유형.",
+      "parentRpmRecordId": "H1-RPM-292",
+      "parentRpmL1": "방정식과 부등식",
+      "parentRpmL2": "여러 가지 부등식",
+      "parentRpmL3": "연립일차부등식",
+      "parentRpmL4": "해의 범위",
+      "parentProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "parentTemplateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+      "standardUnitKey": "H22-C-06",
+      "subUnitKey": "H22-C-06-INEQUALITY",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "마스터 RPM 공통수학1에는 절댓값이 둘인 부등식에서 정수해 개수로 매개변수 범위를 정하는 리프가 없다. 기존 Generated L4(영점 기준 구간 분리)는 매개변수·정수 개수 판정을 포함하지 않아 정의를 넓히지 않고 새로 둔다. 연립일차부등식 리프 아래에 둔다.",
+      "firstUsed": {
+        "stem": "26_매산고_1학기_기말_고1_유사",
+        "qid": 13
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-11",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-POSITIVE-PART-FUNCTION-INEQUALITY-INTEGER-COUNT-PARAMETER-RANGE",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "함수의 양의 부분 (|f|+f)/2 를 포함한 부등식을 부호별로 풀고 정수해 개수로 매개변수 범위 정하기",
+      "definition": "(|f(x)|+f(x))/2 ≤ (일차식)×(매개변수) 꼴에서 f의 부호에 따라 식을 f 또는 0으로 바꿔 구간별로 해를 구하고, 정수해가 정해진 개수가 되도록 매개변수의 범위를 정하는 유형.",
+      "parentRpmRecordId": "H1-RPM-292",
+      "parentRpmL1": "방정식과 부등식",
+      "parentRpmL2": "여러 가지 부등식",
+      "parentRpmL3": "연립일차부등식",
+      "parentRpmL4": "해의 범위",
+      "parentProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "parentTemplateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+      "standardUnitKey": "H22-C-06",
+      "subUnitKey": "H22-C-06-INEQUALITY",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "마스터 RPM 공통수학1에는 절댓값이 든 함수식을 부호별로 나누어 푸는 부등식에서 정수 개수로 매개변수를 정하는 리프가 없다. 절댓값 일차부등식 행(H1-RPM-292) 아래에 Generated L4로 둔다.",
+      "firstUsed": {
+        "stem": "26_매산고_1학기_기말_고1_유사",
+        "qid": 14
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-11",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-DIAGONAL-MATRIX-POWER-SUM-ENTRY-CANDIDATE-FILTER",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "대각행렬의 거듭제곱 합 조건에서 대각성분 후보를 구해 주기 합으로 거르기",
+      "definition": "대각행렬의 거듭제곱은 대각성분별 거듭제곱이므로 한 성분 z에 대해 거듭제곱의 합 조건을 인수분해해 후보를 구하고, 다른 거듭제곱 합 조건을 주기성으로 계산해 후보를 거른 뒤 성분들의 합을 구하는 유형.",
+      "parentRpmRecordId": "H1-RPM-288",
+      "parentRpmL1": "행렬",
+      "parentRpmL2": "행렬",
+      "parentRpmL3": "행렬의 성질",
+      "parentRpmL4": "곱셈의 성질",
+      "parentProblemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+      "parentTemplateKey": "TPL_H1_MATRIX_POWER_PERIOD",
+      "standardUnitKey": "H22-C-09",
+      "subUnitKey": "H22-C-09-CORE",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "RPM 곱셈의 성질 행(H1-RPM-288)은 행렬 거듭제곱의 주기를 다루지만 대각성분 후보를 구해 거르는 단계는 포함하지 않는다. 기존 Generated L4(지수 짝 세기)와 정의가 달라 새로 둔다.",
+      "firstUsed": {
+        "stem": "26_매산고_1학기_기말_고1_유사",
+        "qid": 15
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-11",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-CUBIC-ROOT-FACTORED-QUADRATIC-DISTINCT-REAL-ROOTS-PARAMETER",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "근 하나로 인수분해한 삼차방정식이 서로 다른 세 실근을 갖는 매개변수 범위",
+      "definition": "삼차방정식에서 매개변수와 무관한 근을 찾아 이차식과 일차식으로 인수분해한 뒤, 최고차항 계수가 0이 아님·이차식의 판별식이 양수·이차식의 근이 이미 얻은 근과 겹치지 않음의 세 조건을 모아 매개변수의 범위를 정하는 유형.",
+      "parentRpmRecordId": "H1-RPM-172",
+      "parentRpmL1": "방정식과 부등식",
+      "parentRpmL2": "여러 가지 방정식",
+      "parentRpmL3": "삼차·사차방정식",
+      "parentRpmL4": "인수분해형",
+      "parentProblemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "parentTemplateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "standardUnitKey": "H22-C-06",
+      "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "RPM 공통수학1 삼차·사차방정식 행(H1-RPM-172)은 인수분해해 근을 구하는 데까지만 다루고 서로 다른 세 실근이 되기 위한 매개변수 조건 종합은 포함하지 않는다(근의 조건 행 H1-RPM-176은 PT/TPL이 없는 RPM_ONLY). 인수분해형 행 아래에 Generated L4로 둔다.",
+      "firstUsed": {
+        "stem": "26_매산고_1학기_기말_고1_유사",
+        "qid": 17
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-11",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedCrossConcepts": [],
+  "generatedConditions": [
+    {
+      "key": "EXT-COND-ALTERNATING-TWO-GROUP-ARRANGEMENT",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "두 부류가 번갈아 놓여야 하는 배열 조건",
+      "definition": "서로 다른 두 부류의 대상을 일렬로 놓을 때 같은 부류끼리 이웃하지 않고 번갈아 놓아야 한다는 제한. 시작 부류에 따라 가능한 형태를 나누는 근거가 된다.",
+      "parentKey": "COND_RANGE",
+      "parentLabelKo": "범위 조건",
+      "standardUnitKey": "H22-C-08",
+      "subUnitKey": "H22-C-08-PERMUTATION",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "기존 COND 키 중 두 부류의 번갈아 배열을 나타내는 키가 없다.",
+      "firstUsed": {
+        "stem": "26_매산고_1학기_기말_고1_유사",
+        "qid": 7
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-11",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-COND-EVERY-OTHER-ADJACENT-TO-DESIGNATED-SEAT",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "나머지 대상이 모두 지정된 부류와 이웃해야 하는 배치 조건",
+      "definition": "배치에서 지정된 부류가 아닌 모든 대상이 지정된 부류의 대상 중 적어도 하나와 이웃해야 한다는 제한. 지정된 부류의 자리 모양을 확정하는 근거가 된다.",
+      "parentKey": "COND_RANGE",
+      "parentLabelKo": "범위 조건",
+      "standardUnitKey": "H22-C-07",
+      "subUnitKey": "H22-C-07-CORE",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "기존 COND 키 중 나머지 대상이 지정된 부류와 반드시 이웃해야 한다는 제한을 나타내는 키가 없다(COND_NO_ADJACENT_EVEN은 이웃 금지만 표현한다).",
+      "firstUsed": {
+        "stem": "26_매산고_1학기_기말_고1_유사",
+        "qid": 18
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-11",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "reusedGeneratedKeys": [
+    {
+      "key": "EXT-L4-PERMUTATION-COMBINATION-FACTORIAL-EVALUATION",
+      "registryPath": "archive/data/meta-foundation/extensions/similar-high/26_금당고_1학기_기말_고1_유사.registry.json",
+      "firstUsed": {
+        "stem": "26_금당고_1학기_기말_고1_유사",
+        "qid": 5
+      },
+      "reusedIn": [
+        {
+          "stem": "26_매산고_1학기_기말_고1_유사",
+          "qid": 2
+        }
+      ],
+      "note": "이미 커밋된 확장 키를 이름·정의 변경 없이 재사용한다(새 키 아님)."
+    }
+  ],
+  "aliasProposals": [],
+  "noStudentRelease": true
+}
