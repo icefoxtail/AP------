@@ -1,0 +1,308 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Z",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "A",
+    "P",
+    "Q",
+    "H",
+    "U",
+    "V",
+    "W",
+    "Z"
+  ],
+  "displaySegments": [
+    {
+      "id": "UV",
+      "refs": [
+        "U",
+        "V"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "WZ",
+      "refs": [
+        "W",
+        "Z"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "OH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "HA",
+      "refs": [
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "segmentColors": [
+      {
+        "segments": [
+          "PQ"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "HA"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "xaxis",
+        "at": "V",
+        "text": "x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yaxis",
+        "at": "Z",
+        "text": "y",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "height",
+        "ownerSegment": "HA",
+        "text": "6",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "A(-4,6)와 원점을 지나는 직선 · a=6÷(-4)=−3/2",
+  "sourceQuote": "정비례 y=ax가 원점과 (-4,6)을 지나며 a를 구함",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "정비례 y=ax가 원점과 (-4,6)을 지나며 a를 구함",
+      "mappedTo": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "hiddenPointNames": [
+    "P",
+    "Q",
+    "H",
+    "U",
+    "V",
+    "W",
+    "Z"
+  ],
+  "hiddenPointStyle": "NONE"
+}
