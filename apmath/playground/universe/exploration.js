@@ -19,9 +19,12 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
   let flight = null, warpCallback = null, transitionToken = 0;
   let universePose = snapshot(), galaxyPose = null;
   let mathTime = 0, mathPlaying = false, explicitMathMotion = false;
+  let explicitAmbientMotion = false;
+  let ambientTime = 0;
   let portrait = window.innerWidth < 768, uiVisible = true, disposed = false;
   let projected = [], lastAnchor = null;
   let pauseBeforePreference = false;
+  let mathPlayingBeforePreference = false;
   const delta = new THREE.Vector3(), zero = new THREE.Vector3();
   const pointerNdc = new THREE.Vector2();
   const forward = new THREE.Vector3(0, 0, 1);
@@ -30,24 +33,20 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
     if (o.isMesh || o.isLine) { o.userData.celestialId = c.metadata.id; pickMeshes.push(o); }
   });
 
-  // Tiny physical companions are present in the existing universe. The detailed
-  // mathematical objects are created only when their family is explored.
+  // The same real mathematical objects remain visible from the opening universe
+  // through close observation. Selecting changes their scale/camera, not whether
+  // the relationship exists or starts moving.
   for (const [id, definition] of Object.entries(CONCEPT_GALAXIES)) {
     const host = celestialRegistry.find(c => c.metadata.id === id);
     const root = new THREE.Group(); root.name = `concept-galaxy-${id}`;
     scene.add(root);
-    const ringGeometry = new THREE.TorusGeometry(0.52, 0.055, 6, 32);
-    const crystalGeometry = new THREE.IcosahedronGeometry(0.72, 0);
-    const material = new THREE.MeshStandardMaterial({ color: 0x55cba3, metalness: 0.38, roughness: 0.24, emissive: 0x153c30, emissiveIntensity: 0.55 });
-    const gold = new THREE.MeshStandardMaterial({ color: 0xd8b77e, metalness: 0.45, roughness: 0.24, emissive: 0x352719, emissiveIntensity: 0.4 });
     const nodes = definition.concepts.map((def, i) => {
       const slot = new THREE.Group(); slot.name = def.id;
-      const marker = new THREE.Mesh(id === 'polyhedra' ? crystalGeometry : ringGeometry, i % 2 ? gold : material);
-      marker.userData.conceptId = def.id; marker.userData.celestialId = id;
-      slot.add(marker); root.add(slot); slot.position.fromArray(def.compact);
-      return { def, slot, marker, object: null, orientation: new THREE.Quaternion().setFromEuler(new THREE.Euler(0.16 * Math.sin(i + 1), 0.25 * Math.cos(i), 0.08 * (i - 2))), detailOrientation: new THREE.Quaternion().setFromEuler(new THREE.Euler(...(definition.detailRotation || [0, 0, 0]))), world: new THREE.Vector3() };
+      root.add(slot); slot.position.fromArray(def.compact);
+      return { def, slot, object: null, time: i * 0.73, orientation: new THREE.Quaternion().setFromEuler(new THREE.Euler(0.16 * Math.sin(i + 1), 0.25 * Math.cos(i), 0.08 * (i - 2))), detailOrientation: new THREE.Quaternion().setFromEuler(new THREE.Euler(...(definition.detailRotation || [0, 0, 0]))), world: new THREE.Vector3() };
     });
-    families.set(id, { id, definition, host, root, nodes, open: 0, basis: new THREE.Quaternion(), ringGeometry, crystalGeometry, material, gold });
+    const family = { id, definition, host, root, nodes, open: 0, basis: new THREE.Quaternion() };
+    families.set(id, family); loadFamily(family);
   }
 
   function snapshot(anchor = null) {
@@ -58,6 +57,7 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
   function hostOf(id) { return celestialRegistry.find(c => c.metadata.id === id); }
   function anchorOf(id) { return hostOf(id)?.anchor.position || zero; }
   function localToWorld(local, family) { return vec(local).applyQuaternion(family.basis).add(family.host.anchor.position); }
+  function isMathPlaying() { return mathPlaying && ((!motionEngine.paused && (!reducedMotion || explicitAmbientMotion)) || explicitMathMotion); }
   function state() {
     const family = activeFamily(), concept = getConcept(route.celestialId, route.conceptId);
     const host = hostOf(route.celestialId);
@@ -69,7 +69,7 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
       subtitle: concept ? (family.nodes.find(n => n.def.id === concept.id)?.object?.metadata.summary || '') : (family?.definition.subtitle || host?.metadata.subtitle || '작은 천체들이 품은 수학의 관계를 발견해 보세요.'),
       concepts: family ? family.definition.concepts.map(c => ({ id: c.id, label: c.label })) : [],
       motionPlaying: !motionEngine.paused, reducedMotion,
-      mathPlaying, mathTime, mathDuration: DURATION,
+      mathPlaying: isMathPlaying(), mathTime, mathDuration: DURATION,
     };
   }
   function emit(history = 'none') { onStateChange?.(state(), { history }); }
@@ -79,9 +79,9 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
       node.object = createConceptObject({ id: node.def.id, isMobile: portrait });
       node.object.group.name = `math-concept-${node.def.id}`;
       node.object.group.traverse(o => { o.userData.conceptId = node.def.id; o.userData.celestialId = family.id; });
-      node.object.group.scale.setScalar(node.def.radius / node.object.radius);
+      node.object.group.scale.setScalar(0.55 * node.def.radius / node.object.radius);
       node.slot.add(node.object.group);
-      node.object.update(DURATION, { detail: false, reducedMotion });
+      node.object.update(node.time, { detail: false, loop: true, reducedMotion });
     }
   }
   function unloadFamily(family) {
@@ -176,11 +176,12 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
     if (!node || disposed || warpCallback) return false;
     if (route.mode === 'galaxy' && !flight) galaxyPose = snapshot(family.host.anchor.position);
     route = { mode: 'concept', celestialId: family.id, conceptId: id };
-    for (const other of family.nodes) if (other !== node) other.object?.update(DURATION, { detail: false, reducedMotion });
     explicitMathMotion = false;
-    mathTime = reducedMotion ? DURATION : 0; mathPlaying = !reducedMotion;
+    const holdForPreference = reducedMotion && !explicitAmbientMotion;
+    mathTime = holdForPreference ? DURATION : node.time; mathPlaying = !holdForPreference;
+    mathPlayingBeforePreference = true;
     loadFamily(family); setLimits();
-    node.object.update(mathTime, { detail: true, reducedMotion });
+    node.object.update(mathTime, { detail: true, loop: true, reducedMotion: holdForPreference });
     emit(history); beginFlight(null, animate);
     return true;
   }
@@ -189,7 +190,6 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
       const family = activeFamily();
       route = { mode: 'galaxy', celestialId: family.id, conceptId: null };
       mathPlaying = false; setLimits();
-      family.nodes.forEach(n => n.object?.update(DURATION, { detail: false, reducedMotion }));
       emit('replace');
       const pose = galaxyPose ? { position: galaxyPose.position.clone().add(family.host.anchor.position), target: galaxyPose.target.clone().add(family.host.anchor.position) } : null;
       beginFlight(pose);
@@ -201,14 +201,15 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
     mathPlaying = false; lastAnchor = null; galaxyPose = null;
     setLimits(); emit(history); beginFlight(null, animate);
   }
-  function replayConcept() { if (route.mode !== 'concept') return; explicitMathMotion = true; mathTime = 0; mathPlaying = true; emit(); }
+  function replayConcept() { if (route.mode !== 'concept') return; explicitMathMotion = true; mathTime = 0; mathPlaying = true; mathPlayingBeforePreference = true; emit(); }
   function toggleConceptPlayback() {
     if (route.mode !== 'concept') return false;
     if (mathTime >= DURATION) mathTime = 0;
+    const playing = isMathPlaying();
     explicitMathMotion = true;
-    mathPlaying = !mathPlaying; emit(); return mathPlaying;
+    mathPlaying = !playing; mathPlayingBeforePreference = mathPlaying; emit(); return mathPlaying;
   }
-  function seekConcept(seconds) { if (route.mode !== 'concept') return; explicitMathMotion = true; mathTime = clamp(Number(seconds) || 0, 0, DURATION); mathPlaying = false; emit(); }
+  function seekConcept(seconds) { if (route.mode !== 'concept') return; explicitMathMotion = true; mathTime = clamp(Number(seconds) || 0, 0, DURATION); mathPlaying = false; mathPlayingBeforePreference = false; emit(); }
 
   function visibleBody(id) {
     if (!id || route.mode === 'universe') return true;
@@ -221,6 +222,12 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
   }
   function update(dt, time) {
     if (disposed) return;
+    const holdForPreference = reducedMotion && !explicitAmbientMotion;
+    const autoMotion = !motionEngine.paused && !holdForPreference;
+    if (autoMotion) ambientTime += dt;
+    // A camera transition must never be the start button for a mathematical
+    // figure. The selected loop continues through flights and past its endpoint.
+    if (route.mode === 'concept' && isMathPlaying()) mathTime = (mathTime + dt) % DURATION;
     if (route.celestialId) {
       const anchor = anchorOf(route.celestialId);
       if (lastAnchor) {
@@ -233,8 +240,7 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
     const selectedFamily = activeFamily();
     for (const family of families.values()) {
       const active = family === selectedFamily && route.mode !== 'universe';
-      // Reduced motion has no hidden closing animation: the visual state and
-      // resource lifetime reach their endpoint together on this frame.
+      // Reduced motion has no hidden opening/closing animation.
       family.open = reducedMotion ? (active ? 1 : 0) : clamp(family.open + (active ? dt / 0.95 : -dt / 0.7), 0, 1);
       const opening = smooth(family.open);
       family.root.position.copy(family.host.anchor.position);
@@ -248,24 +254,23 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
         const node = family.nodes[i], selected = active && route.conceptId === node.def.id;
         node.slot.visible = !active || route.mode !== 'concept' || selected;
         node.slot.position.fromArray(node.def.compact).lerp(vec(layout.bodies[i].position), opening);
-        if (!active && !motionEngine.paused && !reducedMotion) {
-          node.slot.position.z += Math.sin(time * 0.16 + i * 1.7) * 0.45;
-          node.slot.rotation.set(0.18 * Math.sin(time * 0.1 + i), 0.25 * Math.cos(time * 0.08 + i), time * 0.025 + i * 0.2);
-        } else node.slot.quaternion.slerp(selected ? node.detailOrientation : node.orientation, reducedMotion ? 1 : 1 - Math.exp(-dt * 5));
-        node.marker.visible = !node.object || opening < 0.12;
+        if (!active && !holdForPreference) {
+          // Derive even paused poses from the frozen clock, rather than settling
+          // to a different quaternion after the pause button was pressed.
+          node.slot.position.z += Math.sin(ambientTime * 0.16 + i * 1.7) * 0.45;
+          node.slot.rotation.set(0.18 * Math.sin(ambientTime * 0.1 + i), 0.25 * Math.cos(ambientTime * 0.08 + i), ambientTime * 0.025 + i * 0.2);
+        } else if (autoMotion || holdForPreference || flight || (family.open > 0 && family.open < 1)) {
+          node.slot.quaternion.slerp(selected ? node.detailOrientation : node.orientation, holdForPreference ? 1 : 1 - Math.exp(-dt * 5));
+        }
         if (node.object) {
-          node.object.group.visible = opening >= 0.12 && node.slot.visible;
-          const scale = node.def.radius / node.object.radius * (0.32 + opening * 0.68);
+          node.object.group.visible = node.slot.visible;
+          const scale = node.def.radius / node.object.radius * (0.55 + opening * 0.45);
           node.object.group.scale.setScalar(scale);
-          // Non-selected previews are complete, static, and need no frame updater.
-          if (selected) node.object.update(mathTime, { detail: true, reducedMotion: reducedMotion && !explicitMathMotion });
+          if (selected) node.time = mathTime;
+          else if (autoMotion) node.time = (node.time + dt) % DURATION;
+          if (family.root.visible && node.slot.visible) node.object.update(node.time, { detail: selected, loop: true, reducedMotion: holdForPreference && !(selected && explicitMathMotion) });
         }
       }
-      if (!active && family.open === 0) unloadFamily(family);
-    }
-    if (mathPlaying && route.mode === 'concept' && !flight) {
-      mathTime = Math.min(DURATION, mathTime + dt);
-      if (mathTime === DURATION) { mathPlaying = false; emit(); }
     }
     if (flight) {
       const current = flight, to = current.to || destination();
@@ -289,11 +294,11 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
         const p = node.world.clone().project(camera);
         const distance = Math.max(0.1, node.world.distanceTo(camera.position));
         const pixels = node.def.radius * height / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * distance);
-        const x = (p.x + 1) * width / 2, y = (1 - p.y) * height / 2 + pixels + 22;
-        projected.push({ id: node.def.id, label: node.def.label, x, y, depth: p.z, visible: uiVisible && p.z > -1 && p.z < 1 && x > pad.left && x < width - pad.right && y > pad.top && y < height - pad.bottom + 10, isSelected: false });
+        const x = (p.x + 1) * width / 2, y = (1 - p.y) * height / 2;
+        projected.push({ id: node.def.id, label: node.def.label, x, y, radiusPx: pixels, depth: p.z, visible: uiVisible && p.z > -1 && p.z < 1 && x > pad.left && x < width - pad.right && y > pad.top && y < height - pad.bottom + 10, isSelected: false });
       }
     }
-    onFrame?.({ labels: projected, mathTime, mathPlaying, mathDuration: DURATION });
+    onFrame?.({ labels: projected, mathTime, mathPlaying: isMathPlaying(), mathDuration: DURATION });
   }
 
   function clickAt(e) {
@@ -320,7 +325,9 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
     }
     if (route.mode === 'universe') {
       const all = pickMeshes.filter(o => o.visible);
-      for (const f of families.values()) for (const n of f.nodes) if (n.marker.visible) all.push(n.marker);
+      for (const f of families.values()) for (const n of f.nodes) {
+        n.object?.group.traverse(o => { if (o.isMesh && o.visible) all.push(o); });
+      }
       const hit = raycaster.intersectObjects(all, false)[0];
       if (hit?.object.userData.celestialId) focusOnCelestial(hit.object.userData.celestialId);
     }
@@ -346,8 +353,13 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
   function pointerCancel(e) { pointers.delete(e.pointerId); }
   function preferenceChange(e) {
     reducedMotion = e.matches;
-    if (reducedMotion) { pauseBeforePreference = motionEngine.paused; motionEngine.setPaused(true); cancelFlight(); explicitMathMotion = false; mathTime = DURATION; mathPlaying = false; }
-    else motionEngine.setPaused(pauseBeforePreference);
+    if (reducedMotion) {
+      pauseBeforePreference = motionEngine.paused; mathPlayingBeforePreference = mathPlaying;
+      motionEngine.setPaused(true); cancelFlight(); explicitMathMotion = false; explicitAmbientMotion = false; mathTime = DURATION; mathPlaying = false;
+    } else {
+      motionEngine.setPaused(pauseBeforePreference);
+      mathPlaying = route.mode === 'concept' && mathPlayingBeforePreference;
+    }
     emit();
   }
   if (reducedMotion) motionEngine.setPaused(true);
@@ -367,7 +379,17 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
     getState: state,
     getProjected: () => projected.map(p => ({ ...p })),
     setUiVisible(value) { uiVisible = !!value; },
-    toggleMotion() { motionEngine.setPaused(!motionEngine.paused); emit(); return !motionEngine.paused; },
+    toggleMotion() {
+      const paused = !motionEngine.paused;
+      // A new global pause also overrides a previously explicit replay. Explicit
+      // replay can still be requested afterwards while the universe is paused.
+      if (paused) explicitMathMotion = false;
+      else {
+        explicitAmbientMotion = true;
+        if (reducedMotion && route.mode === 'concept' && mathPlayingBeforePreference && !explicitMathMotion) mathPlaying = true;
+      }
+      motionEngine.setPaused(paused); emit(); return !paused;
+    },
     update,
     resize() {
       portrait = window.innerWidth < 768;
@@ -381,14 +403,27 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
       beginFlight(to, !reducedMotion, () => { const callback = warpCallback; warpCallback = null; callback?.(); });
     },
     debug() {
-      return { ...state(), projected: projected.map(p => ({ ...p })), camera: { position: camera.position.toArray(), target: controls.target.toArray() }, families: [...families.values()].map(f => ({ id: f.id, open: f.open, detailedObjects: f.nodes.filter(n => n.object).length, anchor: f.host.anchor.position.toArray() })) };
+      return {
+        ...state(), ambientTime, projected: projected.map(p => ({ ...p })),
+        camera: { position: camera.position.toArray(), target: controls.target.toArray() },
+        families: [...families.values()].map(f => ({
+          id: f.id, open: f.open, detailedObjects: f.nodes.filter(n => n.object).length, anchor: f.host.anchor.position.toArray(),
+          concepts: f.nodes.map(n => {
+            let bufferSignature = 0;
+            n.object?.group.traverse(o => {
+              if (o.instanceMatrix) o.instanceMatrix.array.forEach((value, index) => { bufferSignature += value * (index + 1); });
+            });
+            return { id: n.def.id, time: n.time, visible: f.root.visible && n.slot.visible && !!n.object?.group.visible, bufferSignature, localQuaternion: n.object?.group.getObjectByName('concept-local')?.quaternion.toArray() };
+          }),
+        })),
+      };
     },
     dispose() {
       if (disposed) return; disposed = true; flight = null; pointers.clear();
       canvas.removeEventListener('pointerdown', pointerDown, true); canvas.removeEventListener('pointermove', pointerMove); canvas.removeEventListener('pointerup', pointerUp);
       canvas.removeEventListener('pointercancel', pointerCancel); canvas.removeEventListener('lostpointercapture', pointerCancel); canvas.removeEventListener('wheel', cancelFlight, true);
       controls.removeEventListener('start', cancelFlight); media.removeEventListener('change', preferenceChange);
-      for (const f of families.values()) { unloadFamily(f); f.ringGeometry.dispose(); f.crystalGeometry.dispose(); f.material.dispose(); f.gold.dispose(); scene.remove(f.root); }
+      for (const f of families.values()) { unloadFamily(f); scene.remove(f.root); }
       families.clear();
     },
   };

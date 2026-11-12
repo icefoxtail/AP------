@@ -29,7 +29,7 @@ test('all five catalog scenes bind 34 valid source and concept buttons in the ac
  }
  assert.equal(count,34);assert.equal(originals,19);assert.equal(concepts,15);assert.ok(lab.loaded.includes('../kit/apl-player.js'));assert.deepEqual(lab.missing,[]);
  const playerSource=fs.readFileSync(new URL('../kit/apl-player.js',import.meta.url),'utf8');
- assert.equal(playerSource.match(/DEFAULT_PLAYBACK_RATE\s*=\s*([0-9.]+)/)?.[1],'1.5');assert.ok(playerSource.includes('this.rate = DEFAULT_PLAYBACK_RATE'));
+ assert.equal(playerSource.match(/DEFAULT_PLAYBACK_RATE\s*=\s*([0-9.]+)/)?.[1],'2');assert.ok(playerSource.includes('this.rate = DEFAULT_PLAYBACK_RATE'));
  t.diagnostic('5 scenes / 34 lessons = 19 actual generator types + 15 source exploration concepts; validator0/0');
 });
 test('every cue and motion boundary draws finite native geometry without changing manual state',t=>{

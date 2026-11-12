@@ -4247,7 +4247,10 @@ def _mc_interval_fractions(value,code):
     return lo,hi
 
 def mc_rational_value(curve,x_value):
-    n0,n1=curve['numerator'];d0,d1=curve['denominator']
+    d0,d1=curve['denominator']
+    if len(curve['numerator'])==3:
+        n0,n1,n2=curve['numerator'];return (n0+n1*x_value+n2*x_value*x_value)/(d0+d1*x_value)   # a quadratic numerator: an oblique asymptote, no horizontal one
+    n0,n1=curve['numerator']
     return (n0+n1*x_value)/(d0+d1*x_value)
 
 def mc_sqrt_value(curve,x_value):
@@ -4297,11 +4300,15 @@ def _mc_free_curve(entry,ident,kind,window,look):
     elif kind=='RATIONAL':
         for key in ('numerator','denominator'):
             raw=entry.get(key)
-            if not isinstance(raw,list) or len(raw)!=2:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
+            # the numerator may be a quadratic [c0,c1,c2] (y=(c2x^2+c1x+c0)/(d0+d1x): a vertical and an oblique asymptote); everything else is linear
+            if not isinstance(raw,list) or len(raw) not in ((2,3) if key=='numerator' else (2,)):raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
             curve[key]=[_mc_fraction(v,'MULTI_CURVE_COEFFICIENT_INVALID:'+ident) for v in raw]
         if curve['denominator'][1]==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
         pole=-curve['denominator'][0]/curve['denominator'][1]
-        if curve['numerator'][0]+curve['numerator'][1]*pole==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
+        if len(curve['numerator'])==3:
+            if curve['numerator'][2]==0 or entry.get('abs') is True:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)   # a zero x^2 coefficient is a linear numerator; |f| of an oblique rational is not drawn
+            if curve['numerator'][0]+curve['numerator'][1]*pole+curve['numerator'][2]*pole*pole==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
+        elif curve['numerator'][0]+curve['numerator'][1]*pole==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
     else:
         raw=entry.get('radicand')
         if not isinstance(raw,list) or len(raw)!=2:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
@@ -4325,6 +4332,7 @@ def _mc_inverse_curve(entry,ident,source,look):
     kind=source['kind'];curve={'id':ident,'look':look,'inverseOf':source['id']}
     if source.get('abs'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)   # |f| is not one-to-one
     if kind=='RATIONAL':
+        if len(source['numerator'])!=2:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)   # the inverse of an oblique rational is not a rational
         a0,a1=source['numerator'];d0,d1=source['denominator']
         curve.update({'kind':'RATIONAL','numerator':[a0,-d0],'denominator':[-a1,d1]})
         if curve['denominator'][1]==0:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
@@ -4483,7 +4491,12 @@ def _mc_bbox_points(curves,window=None):
                 vertex=-c1/(2*c2)
                 if lo<vertex<hi:points.append((float(vertex),float(c0+c1*vertex+c2*vertex*vertex)))
             elif kind=='RATIONAL':
-                pole=-curve['denominator'][0]/curve['denominator'][1];horizontal=curve['numerator'][1]/curve['denominator'][1]
+                pole=-curve['denominator'][0]/curve['denominator'][1]
+                if len(curve['numerator'])==3:
+                    for edge in (lo,hi):
+                        if edge!=pole:points.append((float(edge),float(mc_rational_value(curve,edge))))   # no horizontal asymptote: the curve's own end points frame it
+                    continue
+                horizontal=curve['numerator'][1]/curve['denominator'][1]
                 # A pole that is an open source-domain end has no finite point to contribute to the frame.
                 if pole not in (lo,hi):points.append((float(min(max(pole,lo),hi)),float(abs(horizontal) if curve.get('abs') else horizontal)))
             else:
@@ -4522,7 +4535,8 @@ def _mc_row(curve):
         if kind in ('LINE','Y_OF_X'):row['coefficients']=[_mc_text(value) for value in curve['coefficients']]
         elif kind=='RATIONAL':
             row['numerator']=[_mc_text(value) for value in curve['numerator']];row['denominator']=[_mc_text(value) for value in curve['denominator']]
-            pole=-curve['denominator'][0]/curve['denominator'][1];horizontal=curve['numerator'][1]/curve['denominator'][1]
+            pole=-curve['denominator'][0]/curve['denominator'][1]
+            horizontal=Fraction(0) if len(curve['numerator'])==3 else curve['numerator'][1]/curve['denominator'][1]   # an oblique rational has no horizontal asymptote (the author draws y=mx+b as an overlay line)
             if curve.get('abs'):horizontal=abs(horizontal)   # the asymptote of |f| is |h|
             lo,hi=curve['interval']
             row['asymptotes']={'vertical':{'x':_mc_text(pole),'drawn':bool(lo<=pole<=hi and pole!=0)},'horizontal':{'y':_mc_text(horizontal),'drawn':bool(horizontal!=0)}}

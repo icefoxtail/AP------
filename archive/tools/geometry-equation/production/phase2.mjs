@@ -31,7 +31,7 @@ export {verifyConstructionConditionBindings} from './fact-display-map-v1.mjs';
 import {resolveQuestion,runQuestion} from './resolve-request.mjs';
 import {blindThenCompare,reuseReviewAuthority,verificationBinding,conditionBinding,validateReviewLineage} from './blinded-review.mjs';
 import {vectorTipIds,vectorInsetIds} from './plane-vectors.mjs';
-import {planeMarkSpec,collectSegmentColors,planeMarkPointRefs,isPlaneFigure,isCoordinateFigure,unmarkedPointIds,planNameTexts,textNamesPoint,arcLabelFraming,dimensionFraming,traceJoinExtentPoints,textLabelExtentPoints,TEXT_LABEL_MATH,TEXT_LABEL_HANGUL,TEXT_LABEL_FUNCTIONS} from './plane-marks.mjs';
+import {planeMarkSpec,collectSegmentColors,collectLineColors,planeMarkPointRefs,isPlaneFigure,isCoordinateFigure,unmarkedPointIds,planNameTexts,textNamesPoint,arcLabelFraming,dimensionFraming,traceJoinExtentPoints,textLabelExtentPoints,TEXT_LABEL_MATH,TEXT_LABEL_HANGUL,TEXT_LABEL_FUNCTIONS} from './plane-marks.mjs';
 import {regionExtentPoints} from './plane-regions.mjs';
 import {calloutEntries,calloutExtentPoints,calloutDimensionSites,calloutSpec} from './plane-callouts.mjs';
 
@@ -974,10 +974,11 @@ function specForFamily(plan,model,id){
   // (G3) a point that ends a vector arrow and starts none keeps its name but draws no dot (marker NO_DOT): the dot would cover the arrow head
   const noDot=new Set(vectorTipIds(plan));
   const objects=Object.entries(points).map(([name,p])=>({id:name,kind:'POINT',at:p.approximation,...(hiddenNames.has(name)?{name:null,...(unmarked.has(name)?{marker:'NONE'}:{})}:{...(pointNames.has(name)?{name:pointNames.tex(name)}:{}),...(noDot.has(name)?{marker:'NO_DOT'}:{})})}));const notationByLabel={},factRolesByLabel={},axisCoincidentLines=displayed.axisCoincidentLines;
+  const lineColors=collectLineColors(plan);   // (K) palette colours of displayed lines (planeMarks.lineColors)
   for(const node of plan.mathPlan.nodes){
     if(node.outputType==='LINE'&&Object.hasOwn(displayed.lines,node.id)){
       const fact=model.lines?.[node.id];if(!fact||!Array.isArray(fact.approximation)||fact.approximation.length!==3)throw Error('CONSTRUCTION_LINE_FACT_REQUIRED:'+node.id);
-      objects.push({id:node.id,kind:'LINE',coefficients:fact.approximation});
+      objects.push({id:node.id,kind:'LINE',coefficients:fact.approximation,...(lineColors.has(node.id)?{color:lineColors.get(node.id)}:{})});
     }else if(node.outputType==='CIRCLE'&&Object.hasOwn(displayed.circles,node.id)){
       const fact=model.circles?.[node.id];if(!fact||!Array.isArray(fact.approximation)||fact.approximation.length!==3)throw Error('CONSTRUCTION_CIRCLE_FACT_REQUIRED:'+node.id);
       objects.push({id:node.id,kind:'CIRCLE',center:fact.approximation.slice(0,2),radius:fact.approximation[2]});
@@ -1065,6 +1066,8 @@ function specForFamily(plan,model,id){
   }
   for(const label of plan.segmentLabels||[]){
     const segment=plan.displaySegments.find(s=>s.id===label.ownerSegment);if(!segment||!/^[A-Za-z]$/.test(label.variable))throw Error('UNSUPPORTED_SEGMENT_NOTATION');
+    // factRole is required (GIVEN / DERIVED_INTERMEDIATE / CONCLUSION); a missing one used to surface only as an opaque NON_JSON_VALUE at the spec digest
+    if(!['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'].includes(label.factRole))throw Error('SEGMENT_LABEL_FACT_ROLE_INVALID:'+label.id);
     const [a,b]=segment.refs.map(r=>points[r].approximation);
     objects.push({id:label.id,kind:'EQUATION_LABEL',target:label.ownerSegment,text:label.variable,at:[(a[0]+b[0])/2,(a[1]+b[1])/2],priority:1});
     notationByLabel[label.id]=label.unit?{unit:label.unit}:{};factRolesByLabel[label.id]=label.factRole;
@@ -1412,7 +1415,7 @@ function multiCurveSpec(plan,id){
   })());
   const plainValueOf=(curve,x)=>{
     if(curve.kind==='LINE')return exactValue(curve.coefficients[0])+exactValue(curve.coefficients[1])*x;
-    if(curve.kind==='RATIONAL')return (exactValue(curve.numerator[0])+exactValue(curve.numerator[1])*x)/(exactValue(curve.denominator[0])+exactValue(curve.denominator[1])*x);
+    if(curve.kind==='RATIONAL')return (exactValue(curve.numerator[0])+exactValue(curve.numerator[1])*x+(curve.numerator.length===3?exactValue(curve.numerator[2])*x*x:0))/(exactValue(curve.denominator[0])+exactValue(curve.denominator[1])*x);
     return exactValue(curve.offset)+exactValue(curve.amplitude)*Math.sqrt(Math.max(0,exactValue(curve.radicand[0])+exactValue(curve.radicand[1])*x));
   };
   // G18c: abs:true draws y=|f(x)|; the kink (where f is 0) is a sampled position, so the folded corner is exact.
@@ -1465,8 +1468,13 @@ function multiCurveSpec(plan,id){
         if(typeof text!=='string'||!/^[0-9A-Za-z=+\-*/().\^ ]{1,40}$/.test(text))throw Error('MULTI_CURVE_LABEL_INVALID:'+curve.id);
         let x,y;
         if(curve.kind==='RATIONAL'){
-          const pole=-exactValue(curve.denominator[0])/exactValue(curve.denominator[1]),horizontal=exactValue(curve.numerator[1])/exactValue(curve.denominator[1]);
-          const farRight=hi-pole>=pole-lo;x=farRight?pole+(hi-pole)*.8:pole-(pole-lo)*.8;y=valueOf(curve,x);y+=(y>=horizontal?1:-1)*spanY*.06;
+          const pole=-exactValue(curve.denominator[0])/exactValue(curve.denominator[1]);
+          // an oblique rational (quadratic numerator) has no horizontal asymptote: the label stands on the side of its oblique asymptote y=qx+r
+          const farRight=hi-pole>=pole-lo;x=farRight?pole+(hi-pole)*.8:pole-(pole-lo)*.8;y=valueOf(curve,x);
+          let horizontal;
+          if(curve.numerator.length===3){const d0=exactValue(curve.denominator[0]),d1=exactValue(curve.denominator[1]),q=exactValue(curve.numerator[2])/d1;horizontal=q*x+(exactValue(curve.numerator[1])-q*d0)/d1;}
+          else horizontal=exactValue(curve.numerator[1])/exactValue(curve.denominator[1]);
+          y+=(y>=horizontal?1:-1)*spanY*.06;
         }else{x=lo+(hi-lo)*(curve.kind==='SQRT'?.7:.62);y=valueOf(curve,x)+(curve.kind==='SQRT'&&exactValue(curve.amplitude)<0?-1:1)*spanY*.06;}
         objects.push({id:'curve-'+curve.id+'-equation',kind:'EQUATION_LABEL',text,at:[clampX(x),clampY(y)],priority:0,nearCurve:curve.id,...(curve.kind==='LINE'?{nearEnd:'END'}:{})});
       }
@@ -1775,6 +1783,7 @@ const CONTAINER_FILL_CONTRACT=` CONTAINER FILL FIGURES (container-fill-figure-v1
     extendedContract+=SOLID_FIGURE_CONTRACT;
     extendedContract+=SET_DIAGRAM_CONTRACT;
     extendedContract+=MULTI_CURVE_CONTRACT;
+    extendedContract+=' OBLIQUE RATIONAL (multi-curve-figure-v1): a RATIONAL curve may carry a quadratic numerator [a0,a1,a2] with a2 nonzero, y=(a0+a1x+a2x^2)/(d0+d1x). It has the vertical asymptote x=p (dashed, with its text) but no horizontal one; the oblique asymptote y=qx+r, q=a2/d1, is not drawn by the curve: draw it as a dashed LINE curve of the same figure. a2=0 is MULTI_CURVE_COEFFICIENT_INVALID (use the linear numerator), a numerator that vanishes at the pole is MULTI_CURVE_RATIONAL_DEGENERATE, abs:true is MULTI_CURVE_COEFFICIENT_INVALID and a curve with inverseOf pointing at it is MULTI_CURVE_INVERSE_UNSUPPORTED. Use it only when the problem itself is that function (it is outside the high-school graph syllabus), never as a detour of a solution.';
     extendedContract+=CONTAINER_FILL_CONTRACT;
     extendedContract+=LATTICE_PATH_CONTRACT;
     let planner=recoveredPlanner??await provider('PLAN_VISUAL',{instruction:extendedContract,source:sourceOnly,verifiedSolution:question.solution,verification:verified.payload},images,folder);

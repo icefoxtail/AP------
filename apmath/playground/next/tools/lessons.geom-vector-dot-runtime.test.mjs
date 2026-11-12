@@ -37,7 +37,7 @@ test('seven real scenes bind 15 source goals and 21 inquiry concepts to the shar
     }
   }
   assert.equal(total,36);assert.equal(originals,15);
-  assert.match(fs.readFileSync(new URL('../kit/apl-player.js',import.meta.url),'utf8'),/const DEFAULT_PLAYBACK_RATE = 1\.5;/);
+  assert.match(fs.readFileSync(new URL('../kit/apl-player.js',import.meta.url),'utf8'),/const DEFAULT_PLAYBACK_RATE = 2;/);
   t.diagnostic('7 scenes / 36 lessons: 15 source goals + 21 existing inquiry concepts; actual shell clones');
 });
 
