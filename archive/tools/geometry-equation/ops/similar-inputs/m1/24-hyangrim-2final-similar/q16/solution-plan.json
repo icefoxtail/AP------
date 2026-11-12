@@ -1,0 +1,35 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "cylinder",
+      "kind": "CYLINDER",
+      "radius": 4,
+      "height": 10
+    }
+  ],
+  "dims": [
+    {
+      "solid": "cylinder",
+      "radius": "top",
+      "label": "4"
+    },
+    {
+      "solid": "cylinder",
+      "height": true,
+      "label": "10",
+      "side": "RIGHT"
+    }
+  ],
+  "caption": "밑면 둘레8π → 반지름4 · 겉넓이32π+80π=112π cm²",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "유사판 Q16 주어진 조건",
+      "mappedTo": [
+        "solid"
+      ]
+    }
+  ]
+}
