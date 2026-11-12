@@ -1,0 +1,79 @@
+{
+  "capability": "container-fill-figure-v1",
+  "container": {
+    "pairs": [
+      {
+        "vessel": {
+          "name": "A",
+          "profile": [
+            {
+              "kind": "FRUSTUM",
+              "r0": "1",
+              "r1": "2",
+              "height": "4"
+            }
+          ]
+        },
+        "graphName": "(가)",
+        "segmentNotes": [
+          {
+            "segment": 0,
+            "text": "점점 완만해짐"
+          }
+        ]
+      },
+      {
+        "vessel": {
+          "name": "B",
+          "profile": [
+            {
+              "kind": "CYLINDER",
+              "radius": "1",
+              "height": "4"
+            }
+          ]
+        },
+        "graphName": "(나)",
+        "segmentNotes": [
+          {
+            "segment": 0,
+            "text": "일정한 증가"
+          }
+        ]
+      },
+      {
+        "vessel": {
+          "name": "C",
+          "profile": [
+            {
+              "kind": "FRUSTUM",
+              "r0": "2",
+              "r1": "1",
+              "height": "4"
+            }
+          ]
+        },
+        "graphName": "(다)",
+        "segmentNotes": [
+          {
+            "segment": 0,
+            "text": "점점 가팔라짐"
+          }
+        ]
+      }
+    ],
+    "guides": true,
+    "xTitle": "시간",
+    "yTitle": "높이"
+  },
+  "caption": "일정한 유입량 · 넓어지면 높이 증가가 느려지고, 좁아지면 빨라짐 · 용기 형태의 대표 예",
+  "sourceQuote": "wideningA cylinderB narrowingC match concavedown linear concaveup",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "constant inflow and three stated shapes",
+      "mappedTo": []
+    }
+  ],
+  "newVisualInformation": []
+}
