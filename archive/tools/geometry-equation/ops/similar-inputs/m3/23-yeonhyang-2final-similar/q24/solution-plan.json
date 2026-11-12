@@ -1,0 +1,177 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "xRange": [
+      "10",
+      "45"
+    ],
+    "yRange": [
+      "4",
+      "10"
+    ],
+    "xTitle": "사용시간(h)",
+    "yTitle": "수면시간(h)",
+    "points": [
+      {
+        "x": "12",
+        "y": "9"
+      },
+      {
+        "x": "15",
+        "y": "17/2"
+      },
+      {
+        "x": "18",
+        "y": "8"
+      },
+      {
+        "x": "20",
+        "y": "8"
+      },
+      {
+        "x": "20",
+        "y": "7"
+      },
+      {
+        "x": "22",
+        "y": "15/2"
+      },
+      {
+        "x": "25",
+        "y": "7"
+      },
+      {
+        "x": "25",
+        "y": "13/2"
+      },
+      {
+        "x": "28",
+        "y": "13/2"
+      },
+      {
+        "x": "30",
+        "y": "6"
+      },
+      {
+        "x": "30",
+        "y": "7"
+      },
+      {
+        "x": "32",
+        "y": "6"
+      },
+      {
+        "x": "35",
+        "y": "11/2"
+      },
+      {
+        "x": "35",
+        "y": "13/2"
+      },
+      {
+        "x": "38",
+        "y": "5"
+      },
+      {
+        "x": "40",
+        "y": "5"
+      },
+      {
+        "x": "40",
+        "y": "11/2"
+      },
+      {
+        "x": "42",
+        "y": "9/2"
+      },
+      {
+        "x": "15",
+        "y": "15/2"
+      },
+      {
+        "x": "28",
+        "y": "11/2"
+      }
+    ],
+    "xStep": "5",
+    "yStep": "1",
+    "labelEvery": 1,
+    "pointGroups": [
+      {
+        "points": [
+          [
+            "30",
+            "6"
+          ],
+          [
+            "32",
+            "6"
+          ],
+          [
+            "35",
+            "11/2"
+          ],
+          [
+            "38",
+            "5"
+          ],
+          [
+            "40",
+            "5"
+          ],
+          [
+            "40",
+            "11/2"
+          ],
+          [
+            "42",
+            "9/2"
+          ],
+          [
+            "28",
+            "11/2"
+          ]
+        ],
+        "color": "BLUE",
+        "label": "6시간 이하"
+      },
+      {
+        "points": [
+          [
+            "18",
+            "8"
+          ],
+          [
+            "20",
+            "8"
+          ]
+        ],
+        "color": "WARM",
+        "label": "8시간"
+      }
+    ],
+    "refLines": [
+      {
+        "type": "y=k",
+        "value": "6"
+      }
+    ],
+    "trendArrow": {
+      "direction": "DOWN"
+    }
+  },
+  "caption": "음의 상관 · 수면8시간 점의 사용시간18/20 · 수면6시간 이하8명(40%)",
+  "sourceConditions": [
+    {
+      "id": "data",
+      "condition": "Actual similar-plan complete dataset matched against current JS solution; notoriginalimage restoration",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Problem allneutral data, no referenceanswerline or highlightedsubset. Solution colors/reference lines only."
+  ]
+}
