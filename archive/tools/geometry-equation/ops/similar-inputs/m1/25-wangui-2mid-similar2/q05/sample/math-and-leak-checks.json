@@ -1,0 +1,22 @@
+{
+  "math": "PASS",
+  "sourceSemanticCheck": "Q5 upwardwidening cross-section and constantinflow, answer2, fivegraphdescriptions andsolution read. Representative frustum not uniquelyspecified vessel.",
+  "independentCheck": {
+    "radius": "1+z/4",
+    "volumeOverPi": "z+z²/4+z³/48",
+    "equalHeightVolumeSteps": [
+      "61/48",
+      "91/48",
+      "127/48",
+      "169/48"
+    ],
+    "proof": "Cross-section increasing makes positiveheight rise slower at constantvolume rate; allother4choices false."
+  },
+  "problemLeakCheck": "PASS solutionOnly; no answercurve added to question",
+  "color": "NOT_APPLIED: existing container-fill-v1 fixes blackcurve and grayvessel; no caller palette parameter. No SVGpatch or new engine development. Labels and guide lines distinguish vessel/graph.",
+  "initialAttempt": "Long vesselname rejected; caller shortened to supported shortnames; rules unchanged",
+  "staticAudit": "PASS",
+  "renderedLayout": "PASS",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN"
+}
