@@ -1,0 +1,445 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "E"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "55"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ML",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "LL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "LR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "PB",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "E"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "235"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "PT",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "E"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "55"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "QB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "PB"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "QT",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "PT"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "C",
+    "ML",
+    "MR",
+    "LL",
+    "LR",
+    "PB",
+    "PT",
+    "QB",
+    "QT"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "D",
+    "C",
+    "ML",
+    "MR",
+    "LL",
+    "LR",
+    "PB",
+    "PT",
+    "QB",
+    "QT"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sl",
+      "refs": [
+        "LL",
+        "LR"
+      ]
+    },
+    {
+      "id": "sm",
+      "refs": [
+        "ML",
+        "MR"
+      ]
+    },
+    {
+      "id": "sp",
+      "refs": [
+        "PB",
+        "PT"
+      ]
+    },
+    {
+      "id": "sq",
+      "refs": [
+        "QB",
+        "QT"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "lm",
+        "count": 1,
+        "segments": [
+          "sl",
+          "sm"
+        ]
+      },
+      {
+        "id": "pq",
+        "count": 2,
+        "segments": [
+          "sp",
+          "sq"
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tl",
+        "at": "LR",
+        "text": "l",
+        "anchor": "E"
+      },
+      {
+        "id": "tm",
+        "at": "MR",
+        "text": "m",
+        "anchor": "E"
+      },
+      {
+        "id": "tp",
+        "at": "PT",
+        "text": "p",
+        "anchor": "N"
+      },
+      {
+        "id": "tq",
+        "at": "QT",
+        "text": "q",
+        "anchor": "N"
+      }
+    ],
+    "angles": [
+      {
+        "id": "given",
+        "refs": [
+          "LL",
+          "B",
+          "PT"
+        ],
+        "value": 125,
+        "label": "125",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "x",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "value": 55,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "y",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 55,
+        "label": "y",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "두 쌍의 평행선이 만드는 주어진 각과 두 예각",
+  "sourceQuote": "두 쌍의 평행선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "l ∥ m, p ∥ q",
+      "mappedTo": [
+        "sl",
+        "sm",
+        "sp",
+        "sq"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "한 교각의 크기가 125°이고 x, y는 각각 교차점의 예각",
+      "mappedTo": [
+        "given",
+        "x",
+        "y"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "발문이 가리키는 주어진 둔각과 예각 x, y의 위치를 표시한다."
+  ]
+}
