@@ -17,7 +17,7 @@ const render=async(item,plan,name)=>{
 const titleOf=svg=>svg.match(/<title id="visual-title">([^<]*)<\/title>/)[1];
 
 test('the contract text and the guide describe the quadratic numerator',()=>{
-  assert.ok(contractText().includes('numerator may also be a quadratic [a0,a1,a2]'));
+  assert.ok(contractText().includes('OBLIQUE RATIONAL (multi-curve-figure-v1)'));
   const guide=fs.readFileSync(new URL('../production/AUTHOR_GUIDE.md',import.meta.url),'utf8');
   assert.ok(guide.includes('분자가 이차인 유리곡선')&&guide.includes('item156obliquerationalq05'));
   assert.ok(guide.includes('g가 일차식(직선)이면 `referenceCurves`가 아니라 `overlays`로 그린다')&&guide.includes('item157linegq21'));
