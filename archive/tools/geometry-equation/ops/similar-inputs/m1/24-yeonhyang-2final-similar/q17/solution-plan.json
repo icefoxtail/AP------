@@ -1,0 +1,54 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "boundaries": [
+      "0",
+      "2",
+      "4",
+      "6",
+      "8",
+      "10"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          6,
+          12,
+          14,
+          13,
+          5
+        ]
+      }
+    ],
+    "yKind": "FREQUENCY",
+    "xTitle": "독서시간(시간)",
+    "yTitle": "학생수(명)",
+    "grid": true,
+    "showValues": true,
+    "total": 50,
+    "highlightClasses": [
+      2
+    ]
+  },
+  "caption": "독서4시간 이상6시간 미만: 상대도수0.28×50=14명",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "Q17 상대도수와총50명",
+      "mappedTo": [
+        "chart"
+      ]
+    },
+    {
+      "id": "derived",
+      "condition": "독서4시간 이상6시간 미만: 상대도수0.28×50=14명",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "표의 미지값 계산 후 도수로 변환한 해설 전용 히스토그램. 문제용은 생성하지 않음."
+  ]
+}
