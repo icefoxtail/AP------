@@ -1,0 +1,197 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "square",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hexagon",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 120,
+        "label": "120",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "remaining",
+        "refs": [
+          "C",
+          "O",
+          "A"
+        ],
+        "value": 150,
+        "label": "150",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "한 꼭짓점 주변: 정사각형90° + 정육각형120° + 정n각형150° · n=12",
+  "sourceQuote": "한 점 주위 정사각형 정육각형 정n각형이 빈틈없이 만남",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "한 점 주위 정사각형 정육각형 정n각형이 빈틈없이 만남",
+      "mappedTo": [
+        "O",
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "hiddenPointStyle": "NONE"
+}
