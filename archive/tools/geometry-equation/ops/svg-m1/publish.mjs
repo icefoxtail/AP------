@@ -9,44 +9,82 @@ const apply=flag('--apply'),limit=Number(opt('--exams')||1e9),only=opt('--only')
 const rows=JSON.parse(fs.readFileSync(rowsPath,'utf8'));
 const NEW_KEYS=['solutionImage','solutionImageAlt','solutionImageCaption','solutionImageSize'];
 
-// ---- a tiny scanner: positions of every object's braces, skipping strings --------------------------------------------------
+// Locate the active literal without reserializing the bank or touching a separate examData mirror.
+// This scanner only needs source ranges. The VM still decides which bank the Archive uses.
 function scan(text){
-  const pairs=new Map(),stack=[];
-  for(let i=0;i<text.length;i++){
-    const ch=text[i];
-    if(ch==='"'||ch==="'"||ch==='`'){const q=ch;i++;while(i<text.length&&text[i]!==q){if(text[i]==='\\')i++;i++;}continue;}
-    if(ch==='/'&&text[i+1]==='/'){while(i<text.length&&text[i]!=='\n')i++;continue;}
-    if(ch==='/'&&text[i+1]==='*'){i=text.indexOf('*/',i+2);if(i<0)break;i++;continue;}
-    if(ch==='{')stack.push(i);else if(ch==='}'){const s=stack.pop();if(s!==undefined)pairs.set(s,i);}
+  const pattern=/\s+|\/\/[^\r\n]*|\/\*[\s\S]*?\*\/|"(?:\\[\s\S]|[^"\\])*"|'(?:\\[\s\S]|[^'\\])*'|\x60(?:\\[\s\S]|[^\x60\\])*\x60|[A-Za-z_$][\w$]*|===|==|=>|&&=|\|\|=|\?\?=|[+\-*/%&|^]=|[\s\S]/g;
+  const tokens=[],stack=[],closing={'{':'}','[':']','(':')'};
+  for(const match of text.matchAll(pattern)){
+    const value=match[0];
+    if(/^\s/.test(value)||value.startsWith('//')||value.startsWith('/*'))continue;
+    const index=tokens.length;
+    tokens.push({value,start:match.index,end:match.index+value.length-1,parent:stack.at(-1)});
+    if(Object.hasOwn(closing,value))stack.push(index);
+    else if(value==='}'||value===']'||value===')'){
+      const open=stack.pop();
+      if(open===undefined||closing[tokens[open].value]!==value)return null;
+      tokens[open].close=index;
+    }
   }
-  return pairs;
+  return stack.length?null:tokens;
 }
-// top-level property keys of the object [open,close] (depth 1 only)
-function topKeys(text,open,close){
-  const keys=[];let depth=0;
-  for(let i=open;i<=close;i++){
-    const ch=text[i];
-    if(ch==='"'||ch==="'"||ch==='`'){const q=ch,start=i;i++;while(i<=close&&text[i]!==q){if(text[i]==='\\')i++;i++;}
-      if(depth===1&&q==='"'){let j=i+1;while(/\s/.test(text[j]||''))j++;if(text[j]===':')keys.push(text.slice(start+1,i));}continue;}
-    // unquoted identifier keys (id: 6, solution: "...") at depth 1
-    if(depth===1&&/[A-Za-z_$]/.test(ch)&&!/[A-Za-z0-9_$]/.test(text[i-1]||'')){let j=i;while(/[A-Za-z0-9_$]/.test(text[j]||''))j++;let k=j;while(/\s/.test(text[k]||''))k++;if(text[k]===':'&&text[k+1]!==':'){keys.push(text.slice(i,j));}i=j-1;continue;}
-    if(ch==='{'||ch==='[')depth++;else if(ch==='}'||ch===']')depth--;
+const isKey=(token,name)=>[name,'"'+name+'"',"'"+name+"'"].includes(token?.value);
+function accessEnd(tokens,index,name){
+  if(tokens[index]?.value==='.'&&tokens[index+1]?.value===name)return index+2;
+  if(tokens[index]?.value==='['&&tokens[index+1]?.value!==name&&isKey(tokens[index+1],name)&&tokens[index+2]?.value===']')return index+3;
+  return null;
+}
+function assignments(tokens,name){
+  const found=[];
+  for(let i=0;i<tokens.length;i++){
+    if(tokens[i].value!=='window')continue;
+    const end=accessEnd(tokens,i+1,name);
+    if(end!==null&&/^(?:=|&&=|\|\|=|\?\?=|[+\-*/%&|^]=)$/.test(tokens[end]?.value??''))found.push(end);
   }
-  return keys;
+  return found;
 }
-// 숫자 번호는 id: 6, 문자열 id 는 id: "q01"(따옴표 종류 무관). 파일명: 숫자 → q6-solution.svg, 문자열 → q01-solution.svg
+function activeQuestionObjects(text,bank){
+  const tokens=scan(text);
+  if(!tokens)return null;
+  const primary=assignments(tokens,'questionBank');
+  if(primary.length>1||primary.some(i=>tokens[i].value!=='='))return null;
+  const rhs=primary.length?primary[0]+1:null;
+  let array=rhs;
+  if(rhs===null||tokens[rhs]?.value!=='['){
+    // Legacy sources publish the same literal through examData.questions, with or without an alias.
+    if(rhs!==null&&!['null','undefined'].includes(tokens[rhs]?.value)){
+      const end=tokens[rhs]?.value==='window'?accessEnd(tokens,rhs+1,'examData'):null;
+      if(end===null||accessEnd(tokens,end,'questions')===null)return null;
+    }
+    const legacy=assignments(tokens,'examData');
+    if(legacy.length!==1||tokens[legacy[0]].value!=='=')return null;
+    const object=legacy[0]+1;
+    if(tokens[object]?.value!=='{')return null;
+    const fields=tokens.flatMap((token,i)=>token.parent===object&&isKey(token,'questions')
+      &&['{',','].includes(tokens[i-1]?.value)&&tokens[i+1]?.value===':'?[i+2]:[]);
+    if(fields.length!==1)return null;
+    [array]=fields;
+  }
+  if(tokens[array]?.value!=='[')return null;
+  const end=tokens[array].close,objects=[];
+  for(let i=array+1;i<end;){
+    if(tokens[i].value!=='{')return null;
+    const close=tokens[i].close;
+    objects.push([tokens[i].start,tokens[close].end]);
+    i=close+1;
+    if(i===end)break;
+    if(tokens[i++].value!==',')return null;
+  }
+  if(objects.length!==bank.length)return null;
+  // Match the complete literal to the VM-selected bank before relying on its object order.
+  try{
+    const literal=text.slice(tokens[array].start,tokens[end].end+1);
+    if(JSON.stringify(vm.runInNewContext('('+literal+')',{}, {timeout:5000}))!==JSON.stringify(bank))return null;
+  }catch{return null;}
+  return objects;
+}
+// 숫자 번호는 id: 6, 문자열 id 는 id: "q01". 파일명: 숫자 → q6-solution.svg, 문자열 → q01-solution.svg
 const assetFile=(ord,suffix='')=>(typeof ord==='number'?'q'+ord:String(ord))+'-solution'+suffix+'.svg';
-function findQuestionObject(text,pairs,qid){
-  const lit=typeof qid==='string'?"[\"']"+qid.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+"[\"']":qid+'\\b';
-  const re=new RegExp('(?:"id"|\\bid)\\s*:\\s*'+lit,'g');const hits=[];let m;
-  while((m=re.exec(text))){
-    // innermost object that contains this position
-    let best=null;for(const [o,c] of pairs)if(o<m.index&&c>m.index&&(best===null||o>best[0]))best=[o,c];
-    if(best&&topKeys(text,best[0],best[1]).includes('solution')&&topKeys(text,best[0],best[1]).includes('id'))hits.push(best);
-  }
-  const uniq=[...new Map(hits.map(h=>[h[0],h])).values()];
-  return uniq.length===1?uniq[0]:null;
-}
 function insertFields(text,obj,fields){
   const [open,close]=obj;let last=close-1;while(/\s/.test(text[last]))last--;
   const lineStart=text.lastIndexOf('\n',last)+1,indent=/^[ \t]*/.exec(text.slice(lineStart))[0];
@@ -77,12 +115,13 @@ for(const [rel,items] of exams){
   const file=path.join(root,'archive',rel),uid=path.basename(rel,'.js'),res={exam:uid,items:[],status:'OK'};
   if(!fs.existsSync(file)){res.status='MISSING_EXAM';report.push(res);continue;}
   let text=fs.readFileSync(file,'utf8'),before;
-  try{before=bankOf(text);}catch(e){res.status='UNPARSEABLE:'+String(e).slice(0,60);report.push(res);continue;}
-  let patched=text;const assets=[];
-  const orderOf=new Map(before.map((q,i)=>[q.id,i]));
+  try{before=bankOf(text);if(!Array.isArray(before))throw Error('ACTIVE_BANK_NOT_ARRAY');}catch(e){res.status='UNPARSEABLE:'+String(e).slice(0,60);report.push(res);continue;}
+  let patched=text,offset=0;const assets=[],expected=new Map();
+  const active=activeQuestionObjects(text,before),orderOf=new Map(before.map((q,i)=>[q.id,i]));
   for(const it of items.sort((a,b)=>(orderOf.get(a.ord)??1e9)-(orderOf.get(b.ord)??1e9))){
     const q=before.find(x=>x.id===it.ord);
     if(!q){res.items.push({ord:it.ord,skip:'NO_SUCH_QUESTION'});continue;}
+    if(items.filter(row=>row.ord===it.ord).length!==1){res.items.push({ord:it.ord,skip:'DUPLICATE_QUESTION_ROWS'});continue;}
     // Any existing solutionImage* field means someone already registered (or half-registered) a figure for this question: never overwrite, report it.
     if(!it.replace&&NEW_KEYS.some(k=>Object.hasOwn(q,k))){res.items.push({ord:it.ord,skip:'HAS_EXISTING_SOLUTION_IMAGE_FIELDS:'+NEW_KEYS.filter(k=>Object.hasOwn(q,k)).join('+')});continue;}
     // m1 campaign: alt/caption/size come from the row (author publish.json), not from a state file.
@@ -91,17 +130,22 @@ for(const [rel,items] of exams){
     const assetRel=`assets/images/${uid}/${it.asset||assetFile(it.ord)}`;
     // Never overwrite an existing file: a figure with this name already exists in the repository (possibly another question's registered figure).
     if(fs.existsSync(path.join(root,'archive',assetRel))){res.items.push({ord:it.ord,skip:'ASSET_ALREADY_EXISTS'});continue;}
-    const pairs=scan(patched),obj=findQuestionObject(patched,pairs,it.ord);
-    if(!obj){res.items.push({ord:it.ord,skip:'QUESTION_OBJECT_NOT_LOCATED'});continue;}
-    patched=(it.replace?replaceFields:insertFields)(patched,obj,{solutionImage:assetRel,solutionImageAlt:alt,solutionImageCaption:caption,solutionImageSize:size});
+    const index=orderOf.get(it.ord);
+    const bounds=before.findIndex(x=>x.id===it.ord)===index?active?.[index]:null;
+    if(!bounds){res.items.push({ord:it.ord,skip:'QUESTION_OBJECT_NOT_LOCATED'});continue;}
+    const fields={solutionImage:assetRel,solutionImageAlt:alt,solutionImageCaption:caption,solutionImageSize:size};
+    const obj=bounds.map(pos=>pos+offset),length=patched.length;
+    patched=(it.replace?replaceFields:insertFields)(patched,obj,fields);
+    offset+=patched.length-length; // items are ordered by their positions in the active array
+    expected.set(it.ord,fields);
     if(process.env.DEBUG_EACH){try{bankOf(patched);}catch(e){const k=patched.indexOf('/q'+it.ord+'-solution.svg');console.log('BREAKS at q'+it.ord,JSON.stringify(patched.slice(Math.max(0,k-300),k+60)));}}assets.push({from:it.svg,to:path.join(root,'archive',assetRel)});res.items.push({ord:it.ord,ok:true,size});
   }
   if(assets.length){
     // verification: the patched bank equals the original except for the four fields on the chosen questions
     let after;try{after=bankOf(patched);}catch(e){res.status='PATCH_UNPARSEABLE:'+String(e.message).slice(0,80);{const k=patched.indexOf('"solutionImage"');if(process.env.DEBUG_SNIP)console.log(JSON.stringify(patched.slice(Math.max(0,k-120),k+260)));}report.push(res);continue;}
-    const chosen=new Set(res.items.filter(i=>i.ok).map(i=>i.ord));let bad=null;
+    let bad=null;
     if(after.length!==before.length)bad='LENGTH';
-    else before.forEach((q0,i)=>{const a={...after[i]},q={...q0};if(chosen.has(q.id))for(const k of NEW_KEYS){delete a[k];delete q[k];}if(JSON.stringify(a)!==JSON.stringify(q)){const ks=[...new Set([...Object.keys(a),...Object.keys(q)])].filter(k=>JSON.stringify(a[k])!==JSON.stringify(q[k]));bad=bad||('FIELDS_CHANGED_Q'+q.id+':'+ks.join(','));}});
+    else before.forEach((q0,i)=>{const a={...after[i]},q={...q0};if(expected.has(q.id))for(const k of NEW_KEYS){if(a[k]!==expected.get(q.id)[k])bad=bad||('FIELDS_NOT_APPLIED_Q'+q.id+':'+k);delete a[k];delete q[k];}if(JSON.stringify(a)!==JSON.stringify(q)){const ks=[...new Set([...Object.keys(a),...Object.keys(q)])].filter(k=>JSON.stringify(a[k])!==JSON.stringify(q[k]));bad=bad||('FIELDS_CHANGED_Q'+q.id+':'+ks.join(','));}});
     if(bad){res.status='VERIFY_FAIL:'+bad;report.push(res);continue;}
     if(apply){fs.writeFileSync(file,patched);for(const a of assets){fs.mkdirSync(path.dirname(a.to),{recursive:true});fs.copyFileSync(a.from,a.to);}}
   }else res.status='NOTHING';

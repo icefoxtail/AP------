@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import vm from 'node:vm';
 import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -100,4 +101,64 @@ test('batch failure exits nonzero without Git mutation',()=>{
     const before=fs.readdirSync(path.join(x.root,'.git'));const result=x.call('pubflow.py',['--batch',manifest]);
     assert.notEqual(result.status,0);assert.deepEqual(fs.readdirSync(path.join(x.root,'.git')),before);
   }finally{fs.rmSync(x.dir,{recursive:true,force:true});}
+});
+
+function publishLiteral(source,ord,check){
+  const root=fs.mkdtempSync(path.join(os.tmpdir(),'svg-active-bank-'));
+  try{
+    const src='archive/exams/original/dual-bank.js',file=path.join(root,src);
+    fs.mkdirSync(path.dirname(file),{recursive:true});
+    fs.writeFileSync(file,source);
+    const svg=path.join(root,'figure.svg'),rows=path.join(root,'rows.json');
+    fs.writeFileSync(svg,'<svg/>');
+    fs.writeFileSync(rows,JSON.stringify([{src,ord,svg,alt:'Graph',caption:'Solution',size:'full'}]));
+    const result=spawnSync(process.execPath,[path.join(here,'publish.mjs'),rows,root,'--apply'],
+      {env:{...process.env,PUBLISH_REPORT:path.join(root,'report.json')},encoding:'utf8'});
+    assert.equal(result.status,0,result.stderr);
+    const after=fs.readFileSync(file,'utf8'),window={};
+    vm.runInNewContext(after,{window});
+    check({after,window,report:JSON.parse(result.stdout),root});
+  }finally{fs.rmSync(root,{recursive:true,force:true});}
+}
+
+test('publisher patches the direct active question and preserves the mirror and every other byte',()=>{
+  const prefix='window.examTitle = "window.questionBank = [ ]";\r\n'
+    +'window.questionBank = [{id:1, solution:"active", note:{id:1,solution:"nested"}';
+  const tail='}, {id:2, solution:"untouched"}];\r\n'
+    +'/* window.questionBank = [{id:1,solution:"decoy"}]; */\r\n'
+    +'window.examData = {questions:[{id:1, solution:"mirror"}, {id:2, solution:"mirror"}]};\r\n';
+  const fields={
+    solutionImage:'assets/images/dual-bank/q1-solution.svg',solutionImageAlt:'Graph',
+    solutionImageCaption:'Solution',solutionImageSize:'full'
+  };
+  publishLiteral(prefix+tail,1,({after,window,report,root})=>{
+    assert.equal(report.figures,1);
+    assert.deepEqual(report.skips,[]);
+    const inserted=',\r\n'+Object.entries(fields).map(([k,v])=>JSON.stringify(k)+': '+JSON.stringify(v)).join(',\r\n');
+    assert.equal(after,prefix+inserted+tail);
+    for(const [key,value] of Object.entries(fields))assert.equal(window.questionBank[0][key],value);
+    assert.equal(fs.readFileSync(path.join(root,'archive',fields.solutionImage),'utf8'),'<svg/>');
+  });
+});
+
+test('publisher refuses multiple active assignments even when their banks match',()=>{
+  const source='window.questionBank = [{id:1, solution:"same"}];\n'
+    +'window["questionBank"] = [{id:1, solution:"same"}];\n';
+  publishLiteral(source,1,({after,report,root})=>{
+    assert.equal(report.figures,0);
+    assert.deepEqual(report.skips,['dual-bank q1 QUESTION_OBJECT_NOT_LOCATED']);
+    assert.equal(after,source);
+    assert.equal(fs.existsSync(path.join(root,'archive/assets')),false);
+  });
+});
+
+test('publisher still reads a legacy examData literal with or without the questionBank alias',()=>{
+  const source='window.examData = {"questions":[{id:"q01", solution:"legacy"}]};\n';
+  for(const suffix of ['', 'window.questionBank = window.examData.questions;\n']){
+    publishLiteral(source+suffix,'q01',({after,window,report})=>{
+      assert.equal(report.figures,1);
+      assert.equal(window.examData.questions[0].solutionImage,'assets/images/dual-bank/q01-solution.svg');
+      assert.ok(after.endsWith('}]};\n'+suffix));
+    });
+  }
 });
