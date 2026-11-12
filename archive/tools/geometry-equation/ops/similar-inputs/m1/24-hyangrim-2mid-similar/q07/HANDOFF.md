@@ -1,6 +1,8 @@
 # 향림 중1 2중간 유사 Q7
-- 최신source 37629da58be545eb6f23bb08d03b350ccb783d32. 기존 SVG목록/소유확인, 학년 JS미수정.
-- 독립 벡터각도·위치 검산: AB24 BC18; 3AB=4BC; midpoint MB12 BN9; MN21.
-- 문제는 주어진각과x만. 해설에서만 MB12 BN9 표시.
-- XML/staticAudit/renderedLayout PASS, 시각검수NOT_RUN. SAMPLE_ONLY.
-- 운영게시/Archive/main미변경.
+- 생성 당시 source 37629da58be545eb6f23bb08d03b350ccb783d32. 재대조한 중1 누적 브랜치 source 9c3a382541a4a403c643872f619df57303a6d4c8의 실제 id7 발문·보기·정답·해설은 기존 계획 및 그림과 일치한다.
+- 문항은 선분의 중점·길이 문제이다. A,M,B,N,C가 한 직선에 순서대로 있고 M,N은 각각 AB,BC의 중점, AM=12cm, 3AB=4BC이다.
+- 독립 길이 검산: AB=24, BC=18; 3AB=4BC=72; MB=12, BN=9; MN=21cm로 정답④와 일치한다.
+- 문제 그림은 주어진 중점 표식, AM=12cm 및 비례 조건만 표시한다. 해설 그림에만 MB=12cm, BN=9cm와 MN=21cm 계산을 표시한다. 문제에 정답이나 추가 풀이 힌트를 넣지 않는다.
+- 정정: 이전 HANDOFF의 ‘벡터각도’ 및 ‘문제는 주어진각과x만’은 다른 문항에서 복사된 부정확한 설명이었다. 실제 Q7 계획·SVG는 중점·길이 문제와 일치하며 이번에는 문서만 바로잡았다.
+- 기존 XML/staticAudit/renderedLayout PASS 기록 유지. 이번 변경은 HANDOFF만이며 SVG 재생성·검사 재실행 없음. 시각 검수 NOT_RUN, SAMPLE_ONLY.
+- 학년 JS·운영 자산 복구는 기존 중1 담당자 소유로 이 작업에서 수정하지 않았다. 운영 게시·Archive 연결·main 병합 미실행.
