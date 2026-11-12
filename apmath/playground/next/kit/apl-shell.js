@@ -19,6 +19,9 @@
     // explicit metadata; only those visits load the shared student navigation.
     const params = new URLSearchParams(window.location?.search || '');
     if (params.get('portal') !== '1' && params.get('teacher_preview') !== '1') return;
+    const markLabPlayer = () => document.body?.classList.add('student-nav-lab-player');
+    if (document.body) markLabPlayer();
+    else document.addEventListener('DOMContentLoaded', markLabPlayer, { once: true });
     const css = document.createElement('link');
     css.rel = 'stylesheet';
     css.href = new URL('../../../css/student-navigation.css?v=2026.11.11.4', shellScriptUrl).href;
