@@ -457,9 +457,9 @@ window.questionBank = [
     "content": "이차함수 $y=x^2-2x+6$의 그래프가 직선 $y=-x+k$보다 항상 위쪽에 있도록 하는 자연수 $k$의 최댓값을 구하시오. [4.2점]",
     "answer": "④",
     "solution": "포물선이 직선보다 항상 위에 있으려면 두 식의 차가 모든 실수 $x$에서 양수여야 한다.\n$(x^2-2x+6)-(-x+k)=x^2-x+6-k$이다.\n완전제곱식으로 정리하면\n$x^2-x+6-k=\\left(x-\\dfrac12\\right)^2+\\dfrac{23}{4}-k$이다.\n제곱항의 최소값은 $0$이므로 차의 최소값은 $\\dfrac{23}{4}-k$이다.\n항상 위쪽에 있으려면 $\\dfrac{23}{4}-k>0$, 즉 $k<\\dfrac{23}{4}$이다.\n이 조건을 만족하는 자연수 중 최대는 $5$이다. 정답은 ④이다.",
-    "solutionImage": "assets/images/20_매산여고_1학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "k=5이면 직선 y=-x+5가 포물선 y=x²-2x+6보다 항상 아래에 있고, k=23/4이면 점 T(1/2, 21/4)에서 접하므로 k<23/4이다.",
-    "solutionImageCaption": "k=5이면 직선 y=-x+5가 포물선 y=x²-2x+6보다 항상 아래에 있고, k=23/4이면 점 T(1/2, 21/4)에서 접하므로 k<23/4이다.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고1_기출/q11-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 파란색 포물선과 주황색 직선 두 개를 비교한다. 첫 그래프에서는 직선이 포물선보다 항상 아래에 있고, 둘째 그래프에서는 두 그래프가 두 점에서 만난다.",
+    "solutionImageCaption": "파란색 포물선과 주황색 직선의 차를 완전제곱식으로 정리한다. 직선 y=−x+k에서 k는 y절편이며, 포물선이 직선보다 위에 있는 자연수 k의 범위를 판단한다. 정답은 5이다.",
     "solutionImageSize": "full",
     "choices": [
       "$2$",
@@ -600,7 +600,10 @@ window.questionBank = [
     "answer": "③",
     "solution": "직사각형의 가로를 $BF=x$, 세로를 $EB=y$라 둔다.\n그림에서 $AB=8$, $BC=20$이므로 두 직각삼각형 $ABC$, $DFC$는 닮음이다.\n따라서 $\\dfrac y{20-x}=\\dfrac8{20}$이다.\n$y=8-\\dfrac25x$이다.\n직사각형의 넓이 $S$는\n$S=xy=x\\left(8-\\dfrac25x\\right)$이다.\n$=-\\dfrac25(x-10)^2+40$이다.\n제곱항은 $0$ 이상이므로 $x=10$일 때 넓이가 최대이다.\n이때 $y=8-\\dfrac25\\times10=4$이다.\n따라서 둘레는 $2(x+y)=2(10+4)=28$이다. 정답은 ③이다.",
     "image": "assets/images/20_매산여고_1학기_중간_고1_기출/q14.png",
-    "solutionImage": "assets/images/20_매산여고_1학기_중간_고1_기출/q14-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고1_기출/q14-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 검은 선의 직각삼각형(점 A, B, C) 안에 파란색 직사각형(점 E, B, F, D)이 놓여 있다. 밑변 BC는 20, 높이 AB는 8이고, BF=x, BE=y로 표시된다.",
+    "solutionImageCaption": "검은 선의 직각삼각형과 파란색 직사각형에서 BF=x, BE=y로 두고 닮음으로 y를 x의 식으로 나타낸다. 넓이를 이차식으로 정리해 최댓값을 찾고, 그때의 둘레를 계산한다. 정답은 28이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -642,7 +645,11 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "⑤",
-    "solution": "이차함수의 그래프가 $x$축과 만나려면 방정식 $x^2+7x+2a+3=0$이 실근을 가져야 한다.\n판별식은 $D=7^2-4(2a+3)$이다.\n$D=49-8a-12=37-8a$이다.\n$D\\ge0$이므로 $37-8a\\ge0$이다.\n따라서 $a\\le\\dfrac{37}{8}=4.625$이다.\n자연수 $a$는 $1,2,3,4$의 네 가지이다. 정답은 ⑤이다."
+    "solution": "이차함수의 그래프가 $x$축과 만나려면 방정식 $x^2+7x+2a+3=0$이 실근을 가져야 한다.\n판별식은 $D=7^2-4(2a+3)$이다.\n$D=49-8a-12=37-8a$이다.\n$D\\ge0$이므로 $37-8a\\ge0$이다.\n따라서 $a\\le\\dfrac{37}{8}=4.625$이다.\n자연수 $a$는 $1,2,3,4$의 네 가지이다. 정답은 ⑤이다.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란색 포물선과 검은 x축을 함께 그린 두 그래프이다. x축의 일부는 주황색으로 강조되어 있다. 첫 그래프는 x축과 교점이 두 개이고, 둘째 그래프는 교점이 없다.",
+    "solutionImageCaption": "예: 계수 a=2일 때 파란색 포물선은 x축과 만나고, 계수 a=6일 때는 만나지 않는다. x축 일부를 주황색으로 강조해 교점 여부를 비교한다. 판별식 조건과 연결해 가능한 자연수 a를 센다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -727,9 +734,9 @@ window.questionBank = [
       "$9$",
       "$11$"
     ],
-    "solutionImage": "assets/images/20_매산여고_1학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "a=6이면 꼭짓점에서 최솟값 2, 왼쪽 끝점 x=-1에서 최댓값 11이다.",
-    "solutionImageCaption": "a=6이면 꼭짓점에서 최솟값 2, 왼쪽 끝점 x=-1에서 최댓값 11이다.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고1_기출/q17-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 첫 패널은 파란색 포물선 y=x²−4x+6과 꼭짓점을 보인다. 둘째 패널은 같은 포물선, 주황색 x축 구간 −1≤x≤3, 꼭짓점을 보인다.",
+    "solutionImageCaption": "파란색 포물선의 꼭짓점에서 최솟값을 확인하고, 주황색으로 표시한 x축의 구간 −1≤x≤3에서 양 끝의 함수값을 비교한다. 구간 안에서는 꼭짓점에서 감소하다가 증가하므로 끝점 중 더 큰 값을 찾는다. 정답은 11이다.",
     "solutionImageSize": "full"
   },
   {
@@ -916,6 +923,9 @@ window.questionBank = [
     "answer": "높이 3 cm, 넓이 18 cm²",
     "solution": "물받이의 높이를 $x\\,\\mathrm{cm}$라고 놓는다. 양쪽에서 폭 $x$씩 구부리므로 밑면의 폭은 $(12-2x)\\,\\mathrm{cm}$이다.\n실제로 물받이를 만들려면 $0<x<6$이다.\n색칠한 직사각형 단면의 넓이를 $S$라 하면\n$S=x(12-2x)$이다.\n$S=-2x^2+12x$이다.\n완전제곱식으로 정리하면\n$S=-2(x-3)^2+18$이다.\n$-2(x-3)^2\\le0$이므로 $x=3$일 때 넓이가 최대이다.\n그때 최대 넓이는 $S=18\\,\\mathrm{cm}^2$이다.\n따라서 물받이 높이는 $3\\,\\mathrm{cm}$, 단면의 최대 넓이는 $18\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/20_매산여고_1학기_중간_고1_기출/q22.png",
-    "solutionImage": "assets/images/20_매산여고_1학기_중간_고1_기출/q22-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고1_기출/q22-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 검은 선으로 나타낸 직사각형 단면 안이 파란색으로 칠해져 있다. 양쪽 세로 변은 x, 밑변은 12−2x로 표시된다.",
+    "solutionImageCaption": "검은 선으로 그린 물받이 단면을 파란색으로 나타내고, 양쪽 높이를 x, 밑면 폭을 12−2x로 표시한다. 단면 넓이 S=x(12−2x)를 완전제곱식으로 정리해 최댓값을 구한다. 정답은 높이 3 cm, 넓이 18 cm²이다.",
+    "solutionImageSize": "full"
   }
 ];
