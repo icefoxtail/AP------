@@ -1,14 +1,16 @@
 {
-  "geometryStatus": "PASS",
+  "status": "PASS",
   "independentMath": {
-    "axisLvolumePi": 84,
-    "axisMvolumePi": 64,
-    "axisNvolumePi": 80,
-    "independentIntegration": "m: integral 0..3 16 dx + integral3..6 [4(6-x)/3]^2 dx =64; n: 16*6 - integral3..6 [4(x-3)/3]^2 dx=80",
-    "correctOrder": "a>c>b"
+    "aPi": 84.0,
+    "bPi": 64.0,
+    "cPi": 80.0,
+    "order": "a>c>b",
+    "answer": "②",
+    "sourceMathFix": "verified",
+    "sourceFormatting": "literal TeX n reported to writer; not treated as math failure"
   },
-  "state": "OPEN_SOURCE_REPAIR: existing solution b/c swapped. Parent notified for single-writer fix. Only given problem geometry preserved; solution excluded.",
-  "problemLeak": "Only supplied dimensions/axes in Q16 problem. Q13 derived annulus calculation solution-only.",
+  "state": "MATH_SOURCE_REPAIR_RESOLVED; formatting follow-up pending",
+  "problemLeak": "Q16 problem only givens; Q23 derived net solution-only.",
   "staticAudit": "PASS",
   "headlessLayout": "PASS",
   "visualQA": "NOT_RUN",

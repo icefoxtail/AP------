@@ -1,4 +1,3 @@
 # yeonfinal24-q16
 
-Source b9292b9add37aab04daff62dacd16674f3f2a517. OPEN_SOURCE_REPAIR: existing solution b/c swapped. Parent notified for single-writer fix. Only given problem geometry preserved; solution excluded.
-Independent geometry, leak and official static/headless layout checked. VisualQA NOT_RUN; SAMPLE_ONLY, no publication/main merge.
+Source eb6ccfc0a4c629b824c39508051e4e1f98d9cb05. MATH_SOURCE_REPAIR_RESOLVED; formatting follow-up pending. Independent math and problem leak check PASS; official static/headless layout PASS; visualQA NOT_RUN. SAMPLE_ONLY, Archive/publication unverified, main unchanged.
