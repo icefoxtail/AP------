@@ -198,7 +198,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x, 세로축 v=(y−2)/√3인 탄젠트 그래프의 두 가지, 중심선 v=0, 점근선을 나타낸다.",
+    "solutionImageCaption": "v=(y−2)/√3로 두면 v=tan(x/3)이다. 중심선 v=0은 원래 y=2이고, 점근선은 x=3π/2+3nπ이다. 옳지 않은 설명은 점근선이 x=3nπ+π/2라는 진술이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -251,9 +255,9 @@ window.questionBank = [
       "$8\\pi$"
     ],
     "answer": "①",
-    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q9-solution.svg",
-    "solutionImageAlt": "최댓값 3, 최솟값 −3이고 한 주기가 π인 사인곡선 y=3sin(2x−π/3)의 그래프이다. y=3, y=−3 기준선과 원점 O를 표시해 진폭 3, 주기 π, 오른쪽 이동 π/6을 읽도록 한 그림이다.",
-    "solutionImageCaption": "y=3sin(2x−π/3), amplitude 3, period π, phase shift π/6",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축 u와 세로축 v인 사인곡선의 한 주기와 중심선, 최댓값·최솟값을 나타낸다.",
+    "solutionImageCaption": "원래 그래프의 진폭, 한 주기의 길이, 수평 이동량을 차례로 읽어 a, b, c를 정한다. 정답은 2π이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "solution": "[키포인트] 사인 그래프에서 진폭, 주기, 위상 이동을 순서대로 읽는다.\n조건 정리: 함수는 $y=a\\sin(bx-c)$이고 $a>0$, $b>0$, $0<c<\\pi$이다.\n풀이 방향: 그래프에서 $a$는 진폭, $b$는 주기 $\\dfrac{2\\pi}{b}$, $\\dfrac{c}{b}$는 오른쪽 이동량이다.\n정석 풀이: 그래프의 최댓값과 최솟값의 차가 $6$이므로 진폭은 $a=3$이다.\n그래프의 한 주기 길이가 $\\pi$이므로 $\\dfrac{2\\pi}{b}=\\pi$이고, 따라서 $b=2$이다.\n그래프가 기본 $\\sin$ 그래프에서 오른쪽으로 $\\dfrac{\\pi}{6}$만큼 이동한 형태이므로 $\\dfrac{c}{b}=\\dfrac{\\pi}{6}$이다. $b=2$이므로 $c=\\dfrac{\\pi}{3}$이다.\n따라서 $abc=3\\cdot2\\cdot\\dfrac{\\pi}{3}=2\\pi$이다.\n따라서 정답은 ①이다.",
@@ -317,7 +321,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주기 코사인 곡선과 파란 수평선 y=−1/4, 두 그래프의 네 교점을 나타낸다.",
+    "solutionImageCaption": "파란 기준선 h는 y=−1/4이다. 두 주기에서 코사인 곡선과 만나는 네 교점은 대칭과 주기 π 이동으로 대응한다. 정답은 4π이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -345,7 +353,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
     "subUnit": "삼각부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 u인 코사인 곡선과 파란 수평선 y=−√3/2, 두 그래프의 교점을 나타낸다.",
+    "solutionImageCaption": "u=π(t−1)/6로 두면 T(t)≤0은 cos u≤−√3/2가 된다. 파란 수평선은 0°C 경계이며, 자연수 달에 해당하는 u값에서 조건을 판정한다. 정답은 48이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -401,7 +413,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 주기 코사인 곡선과 그 위를 가로지르는 파란 점선 p, q, r을 나타낸다.",
+    "solutionImageCaption": "u=x/π로 두면 코사인 곡선은 y=2cos(2πu)−1이다. 파란 점선 p, q, r은 탄젠트의 점근선 위치를 나타내며, 한 주기에서 교점의 서로 다른 세 높이를 확인한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -464,7 +480,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 사인곡선, 파란 수평선 y=1, 주황 직선 OB, 점선 AC와 점 A, B, C, O를 나타낸다.",
+    "solutionImageCaption": "구하는 θ는 점 A에서 AB와 점선 AC가 이루는 ∠BAC이다. 파란 수평선 y=1은 A, B를 지나고, 주황 직선 OB는 C, O, B를 지난다. 삼각형 ABC의 넓이와 변의 길이로 sin²θ를 구한다. 정답은 10분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

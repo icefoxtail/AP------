@@ -1026,7 +1026,11 @@ window.questionBank = [
       "originalSourceOnly": true
     },
     "metaStatus": "RPM_SEMANTIC_FINAL_H15_UNIT_BINDING_PENDING",
-    "metaNullReason": "2015 수학I exact ACTIVE binding 0 across 11 packs; RPM semantic and current crosswalk independently checked; do not invent PT/TPL."
+    "metaNullReason": "2015 수학I exact ACTIVE binding 0 across 11 packs; RPM semantic and current crosswalk independently checked; do not invent PT/TPL.",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고2_수학I/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 A, B, C의 밑변 BC 위에 삼등분점 P, Q와 높이의 발 M이 있다. 삼각형 APQ는 파란색이고, 같은 길이인 AP와 AQ는 주황색으로 표시되어 있다.",
+    "solutionImageCaption": "한 변을 1로 두면 M에서 P와 Q까지의 거리가 같아 AP=AQ이다. 검은 외곽선은 정삼각형 ABC, 파란 면은 삼각형 APQ, 주황색 선은 AP와 AQ이다. 검은 두 줄 표식은 AP=AQ, 한 줄 표식은 BC의 세 등분을 나타내고, 점선 AM은 높이다. APQ의 넓이를 밑변·높이와 두 변·끼인각으로 각각 나타내어 θ를 구한다. 정답은 14분의 3√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
