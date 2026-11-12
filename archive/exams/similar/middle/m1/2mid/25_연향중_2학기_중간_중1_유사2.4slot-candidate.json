@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사2.js",
-  "sourceGitBlobSha": "3ac340018bb0765fb04c4aa591888d76bedd2871",
+  "sourceGitBlobSha": "a576b738cca744d3b71faf577e3338b6de6fae0b",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "Codex",
@@ -536,40 +536,59 @@
       "slots": {
         "given": [
           {
-            "term": "엇각",
+            "term": "평행선",
             "src": "stem",
-            "quote": "두 직선과 두 개의 횡단선이 만날 때 생기는 교각들 중에서, 특정 각 $\\angle c$에 대하여 엇각의 위치에 있는 각을 모두 고른 것은?"
+            "quote": "서로 평행한 두 수평선 $l,m$에서 $l$이 위에 있고"
           },
           {
-            "term": "각",
+            "term": "횡단선",
             "src": "stem",
-            "quote": "두 직선과 두 개의 횡단선이 만날 때 생기는 교각들 중에서, 특정 각 $\\angle c$에 대하여 엇각의 위치에 있는 각을 모두 고른 것은?"
+            "quote": "두 횡단선 $p,q$가 각각 두 직선을 만난다."
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "$A=p\\cap l$, $B=p\\cap m$, $C=q\\cap l$, $D=q\\cap m$이라 하자."
+          },
+          {
+            "term": "각의 위치",
+            "src": "stem",
+            "quote": "$A$에서 생기는 네 각을 위쪽 왼쪽부터 시계방향으로 $\\angle a,\\angle b,\\angle c,\\angle d$"
           }
         ],
         "goal": [
           {
-            "term": "각",
+            "term": "엇각",
             "src": "stem",
-            "quote": "두 직선과 두 개의 횡단선이 만날 때 생기는 교각들 중에서, 특정 각 $\\angle c$에 대하여 엇각의 위치에 있는 각을 모두 고른 것은?"
+            "quote": "$\\angle c$의 엇각은?"
           }
         ],
         "method": [
           {
+            "term": "엇각 위치 판정",
+            "src": "solution",
+            "quote": "$\\angle c$는 $A$에서 두 평행선 사이의 아래쪽 오른편 부채꼴에 있다."
+          },
+          {
             "term": "엇각",
             "src": "solution",
-            "quote": "엇각은 두 직선을 한 직선이 가로지를 때 엇갈린 안쪽 위치에 있는 각이다. $$\\begin{aligned} \\text{첫 번째 횡단선 기준}: &\\quad \\angle c\\text{의 엇각은 } \\angle e \\ \\text{두 번째 횡단선 기준}: &\\quad \\angle c\\text{의 엇각은 } \\angle k \\end{aligned}$$ 따라서 엇각인 것은 $\\angle e, \\angle k$이므로 정답은 ③이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"다중 횡단선 교차 상태에서 엇각의 상대적 기하 위치 판별\"\n}\n\n{\n  \"sourceQid\": \"14\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"횡단선별로 엇갈린 위치의 각 e와 k를 각각 식별하여 짝을 짓는다.\",\n  \"decisiveStep\": \"두 횡단선 각각에 대해 엇각 e와 k를 빠짐없이 선별\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"기본 도형\",\n    \"l3\": \"평행선과 각\",\n    \"l4\": \"동위각·엇각\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLEL_ANGLE_POSITION\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_POSITION_ALTERNATE_POSITION_IDENTIFICATION\",\n    \"why\": \"교차선에서 특정 각에 대한 엇각의 위치를 식별하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"두 횡단선과의 교차점에서 엇각의 위치를 각각 찾아내는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"엇각\",\n      \"각\"\n    ],\n    \"goal\": [\n      \"각\"\n    ],\n    \"method\": [\n      \"엇각\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
-            "evidenceType": "IMPLIED",
-            "justification": "Drive MD 4-slot draft; independent review pending"
+            "quote": "이 중 $\\angle c$와 직선 $p$의 서로 반대쪽에 있는 각은 $\\angle e$이다."
           }
         ],
-        "condition": []
+        "condition": [
+          {
+            "term": "평행선",
+            "src": "stem",
+            "quote": "서로 평행한 두 수평선 $l,m$"
+          }
+        ]
       },
       "steps": [],
-      "scenarioNote": "",
+      "scenarioNote": "새로 명시한 유사 문항 배치이며 원래 그림 복원 아님.",
       "reasons": {},
       "review": {
-        "status": "BLOCKED_SOURCE_GEOMETRY",
-        "reason": "Source MD has no angle-incidence diagram; the named alternate-angle positions and answer are unverified."
+        "status": "UNREVIEWED",
+        "reason": "Author-side coordinate verification done; formal independent review pending."
       }
     },
     {

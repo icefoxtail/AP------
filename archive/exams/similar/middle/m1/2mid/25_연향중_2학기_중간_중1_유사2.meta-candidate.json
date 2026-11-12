@@ -1413,6 +1413,12 @@
         "before": "P and Q could include square vertices, making OPCQ degenerate in endpoint cases.",
         "after": "Require P and Q to lie in the interiors of BC and CD; the perpendicular-ray condition then defines a nondegenerate shaded quadrilateral while preserving the area/congruence argument.",
         "independentCheck": "Let O=(0,0), C=(5,5), P=(5,p), Q=(q,5). Perpendicularity gives 5(p+q)=0, so q=−p; when P,Q are interior, ray OC lies between OP and OQ, so the 90° angle decomposition and ASA proof hold. The interior restriction excludes degenerate endpoint polygons. Author-side check; formal independent review pending."
+      },
+      {
+        "scope": "Q14 alternate-angle reconstruction",
+        "before": "The Drive MD names c,e,k and key ③ but has no angle-incidence diagram or intersection labels, so the source geometry was not recoverable.",
+        "after": "Rebuilt only the similar item with two explicit parallel horizontals, named intersections A–D, p/q slope and placement, clockwise angle-label order at A/B, and k at D. Choices retained; only e is alternate interior to c with respect to p, so answer changed to ①. This is a new explicit variant, not a restoration of the original drawing.",
+        "independentCheck": "Coordinate witness: l:y=2, m:y=0, p:y=−x, q:y=x−4. Then A=(−2,2), B=(0,0), C=(6,2), D=(4,0); c is the lower-right sector at A and e the upper-left sector at B, interior on opposite sides of p. f is the other interior angle at B on the same side as c; k is at q∩m, so only e qualifies. Author-side coordinate check; formal independent review pending."
       }
     ]
   },
@@ -1644,9 +1650,9 @@
       "sourceOrdinal": 14,
       "problem": {
         "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "need": "NEEDED",
+        "need": "HELPFUL",
         "currentCandidateAsset": null,
-        "reason": "도형·그래프·각의 배치가 발문 자료이므로 정확한 판독에 문제 그림 필요."
+        "reason": "Fully specified text layout is solvable without a figure; a diagram clarifies labeled intersections and sectors. No SVG yet."
       },
       "solution": {
         "status": "DEFERRED_TO_LATER_SVG_BATCH",
@@ -1654,7 +1660,7 @@
         "currentCandidateAsset": null,
         "reason": "풀이 관계·단계의 도식화가 학습에 도움; 후보 그림은 없음."
       },
-      "reason": "두 직선과 두 개의 횡단선이 만날 때 생기는 교각들 중에서, 특정 각 $\\angle c$에 대하여 엇각의 위치에 있는 각을 모두 고른 것은?"
+      "reason": "Reconstructed similar-item layout; does not assert original source geometry."
     },
     {
       "sourceOrdinal": 15,
@@ -1819,7 +1825,7 @@
   ],
   "validation": {
     "jsSyntax": "PASS (node --check)",
-    "mathReview": "Q19 author-side independent SSA check: with AB=6 and angle A=40°, C lies on a fixed ray from A; BC=8 places C on a circle centered at B with radius 8. Since A is inside that circle (AB=6<8), the ray from A meets the circle exactly once. Thus ㄷ has exactly one triangle; ㄱ,ㄴ,ㄷ are true and answer ④. Formal independent review remains UNREVIEWED. Q11 ray order added; adjacent-angle equation gives COE=50° and answer ②, author-checked; formal independent review pending. Q15 stem disclosure removed; 45° and 100° givens imply a=45°, b=80°, sum 125°, answer ⑤, author-checked. Q15 corrected: alternate and same-side interior angle pairs are on distinct transversals; one-transversal version was inconsistent. New values a=45°, b=80°, sum125°, answer⑤, author-checked.\nQ16 rewritten with named ray/triangle incidence; recomputation gives 75−35=40, triangle angles 40,70,70, exterior x=110 (②). Q23 states DE is inside ∠BDF; EDF=120−50=70, requested sum=110. Q24 made self-contained with P∈BC, Q∈CD, OP⊥OQ, and the O-reflected shaded quadrilateral; ASA gives OPC≅OQD, each area 25 cm², total 50 cm². Author-side recomputation; formal independent review pending. Q14 BLOCKED_SOURCE_GEOMETRY: no source diagram or angle-incidence labels are supplied, so e,k and answer③ cannot be confirmed; no guessed configuration added. Q24 endpoint exclusion added; P,Q now interior to BC,CD so the quadrilateral is nondegenerate. Formal independent review pending. Q24 now explicitly requires interior points, excluding endpoint degeneracies; formal independent review pending.",
+    "mathReview": "Q19 author-side independent SSA check: with AB=6 and angle A=40°, C lies on a fixed ray from A; BC=8 places C on a circle centered at B with radius 8. Since A is inside that circle (AB=6<8), the ray from A meets the circle exactly once. Thus ㄷ has exactly one triangle; ㄱ,ㄴ,ㄷ are true and answer ④. Formal independent review remains UNREVIEWED. Q11 ray order added; adjacent-angle equation gives COE=50° and answer ②, author-checked; formal independent review pending. Q15 stem disclosure removed; 45° and 100° givens imply a=45°, b=80°, sum 125°, answer ⑤, author-checked. Q15 corrected: alternate and same-side interior angle pairs are on distinct transversals; one-transversal version was inconsistent. New values a=45°, b=80°, sum125°, answer⑤, author-checked.\nQ16 rewritten with named ray/triangle incidence; recomputation gives 75−35=40, triangle angles 40,70,70, exterior x=110 (②). Q23 states DE is inside ∠BDF; EDF=120−50=70, requested sum=110. Q24 made self-contained with P∈BC, Q∈CD, OP⊥OQ, and the O-reflected shaded quadrilateral; ASA gives OPC≅OQD, each area 25 cm², total 50 cm². Author-side recomputation; formal independent review pending. Q14 rebuilt with explicit p/l,m incidence and angle labels; coordinate witness verifies only e is alternate interior to c relative to p, answer ①. Formal independent review pending. Q24 endpoint exclusion added; P,Q now interior to BC,CD so the quadrilateral is nondegenerate. Formal independent review pending. Q24 now explicitly requires interior points, excluding endpoint degeneracies; formal independent review pending.",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "NOT_RUN",
     "metadataMarkerAudit": {
@@ -1839,14 +1845,14 @@
       "engineContract": "window.questionBank numeric points are passed through by archive/engine.html but not summed/displayed per item; header score line remains /100."
     },
     "sourceQuestionRepairs": {
-      "Q14": "BLOCKED_SOURCE_GEOMETRY; source positions unavailable, no edit",
+      "Q14": "AUTHOR_CHECKED_RECONSTRUCTED; explicit new geometry and label positions; answer ①; not a claim about the original unseen layout.",
       "Q16": "AUTHOR_CHECKED; ray and triangle incidence specified",
       "Q23": "AUTHOR_CHECKED; DE-inside-angle condition specified",
       "Q24": "AUTHOR_CHECKED; P and Q restricted to interiors of BC and CD to exclude degenerate endpoint cases; area/congruence argument retained."
     }
   },
   "pipelineState": "PARTIALLY_BLOCKED_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "3ac340018bb0765fb04c4aa591888d76bedd2871",
+  "expectedSourceBlobSha1": "a576b738cca744d3b71faf577e3338b6de6fae0b",
   "currentMainReleaseAudit": {
     "mainCommit": "c07df518f76927602fa8cb789b9ecd8e5e0d08f2",
     "existingSimilarJs": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사.js",

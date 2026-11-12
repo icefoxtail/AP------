@@ -488,22 +488,22 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "두 직선과 두 개의 횡단선이 만날 때 생기는 교각들 중에서, 특정 각 $\\angle c$에 대하여 엇각의 위치에 있는 각을 모두 고른 것은?",
+    "content": "서로 평행한 두 수평선 $l,m$에서 $l$이 위에 있고, 두 횡단선 $p,q$가 각각 두 직선을 만난다. 두 직선 사이에서 $p$는 왼쪽 위에서 오른쪽 아래로, $q$는 왼쪽 아래에서 오른쪽 위로 기울며 $q$는 $p$의 오른쪽에 있다. $A=p\\cap l$, $B=p\\cap m$, $C=q\\cap l$, $D=q\\cap m$이라 하자. $A$에서 생기는 네 각을 위쪽 왼쪽부터 시계방향으로 $\\angle a,\\angle b,\\angle c,\\angle d$, $B$에서 생기는 네 각을 같은 순서로 $\\angle e,\\angle f,\\angle g,\\angle h$라 하고, $D$에서 위쪽 왼쪽에 있는 각을 $\\angle k$라 한다. $\\angle c$의 엇각은?",
     "choices": [
       "$\\angle e$",
       "$\\angle f$",
-      "$\\angle e, \\angle k$",
+      "$\\angle e,\\angle k$",
       "$\\angle g$",
-      "$\\angle f, \\angle h$"
+      "$\\angle f,\\angle h$"
     ],
-    "answer": "③",
+    "answer": "①",
     "points": 4,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ALTERNATE_POSITION_IDENTIFICATION",
-    "solution": "엇각은 두 직선을 한 직선이 가로지를 때 엇갈린 안쪽 위치에 있는 각이다. $$\\begin{aligned} \\text{첫 번째 횡단선 기준}: &\\quad \\angle c\\text{의 엇각은 } \\angle e \\ \\text{두 번째 횡단선 기준}: &\\quad \\angle c\\text{의 엇각은 } \\angle k \\end{aligned}$$ 따라서 엇각인 것은 $\\angle e, \\angle k$이므로 정답은 ③이다.",
-    "reviewStatus": "BLOCKED_SOURCE_GEOMETRY",
-    "solutionStatus": "BLOCKED_SOURCE_GEOMETRY",
-    "pipelineState": "BLOCKED_SOURCE_GEOMETRY"
+    "solution": "엇각은 두 평행선의 안쪽에 있고, 횡단선의 서로 반대쪽에 있는 두 각이다. $\\angle c$는 $A$에서 두 평행선 사이의 아래쪽 오른편 부채꼴에 있다. $B$에서 두 평행선 사이에 있는 각은 $\\angle e,\\angle f$이며, 이 중 $\\angle c$와 직선 $p$의 서로 반대쪽에 있는 각은 $\\angle e$이다. $\\angle k$는 다른 횡단선 $q$와 $m$의 교점 $D$에서 생기므로 $p$를 기준으로 한 $\\angle c$의 엇각이 아니다. 따라서 엇각은 $\\angle e$ 하나이며 정답은 ①이다.",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 15,
