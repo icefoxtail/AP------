@@ -31,7 +31,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "행렬의 각 성분을 직접 구하여 합한다.\n$a_{ij}=i^2+j^2$이고 $A$는 $2 \\times 2$ 행렬이므로 $i, j \\in \\{1, 2\\}$이다.\n각 성분을 구하면\n$a_{11}=1^2+1^2=2$\n$a_{12}=1^2+2^2=5$\n$a_{21}=2^2+1^2=5$\n$a_{22}=2^2+2^2=8$\n모든 성분의 합은 $2+5+5+8=20$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -213,7 +213,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "두 행렬이 같을 조건은 대응하는 각 성분이 모두 같은 것이다.\n두 행렬의 대응 성분을 비교한다.\n$(1,1)$성분을 비교하면\n$5=y+1$이므로 $y=4$이다.\n$(2,2)$성분을 비교하면\n$x=-5$이다.\n따라서\n$x+y=-5+4=-1$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -361,7 +361,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "행렬의 덧셈과 곱셈을 직접 계산하여 식에 대입한다.\n$(A+B)^2$와 $2AB$를 각각 구하여 뺀다.\n$A+B=\\begin{pmatrix}3-2&1-1\\\\-1+1&-2+3\\end{pmatrix}=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$\n따라서 $(A+B)^2=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$이다.\n또한\n$AB=\\begin{pmatrix}3&1\\\\-1&-2\\end{pmatrix}\\begin{pmatrix}-2&-1\\\\1&3\\end{pmatrix}$\n$=\\begin{pmatrix}3\\cdot(-2)+1\\cdot1&3\\cdot(-1)+1\\cdot3\\\\(-1)\\cdot(-2)+(-2)\\cdot1&(-1)\\cdot(-1)+(-2)\\cdot3\\end{pmatrix}$\n$=\\begin{pmatrix}-5&0\\\\0&-5\\end{pmatrix}$\n따라서\n$2AB=\\begin{pmatrix}-10&0\\\\0&-10\\end{pmatrix}$\n그러므로\n$(A+B)^2-2AB=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}-\\begin{pmatrix}-10&0\\\\0&-10\\end{pmatrix}=\\begin{pmatrix}11&0\\\\0&11\\end{pmatrix}$\n모든 성분의 합은 $11+0+0+11=22$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -594,7 +594,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "대각행렬의 거듭제곱 성질과 이차방정식의 근과 계수의 관계를 이용한다.\n$X=\\begin{pmatrix}\\alpha&0\\\\0&\\beta\\end{pmatrix}$이고, $\\alpha,\\beta$는 $x^2-4x-3=0$의 두 실근이다.\n대각행렬은 각 대각성분을 제곱하면 되므로\n$X^2=\\begin{pmatrix}\\alpha^2&0\\\\0&\\beta^2\\end{pmatrix}$이다.\n따라서 행렬 $X^2$의 모든 성분의 합은\n$\\alpha^2+\\beta^2$이다.\n근과 계수의 관계에 의해\n$\\alpha+\\beta=4$, $\\alpha\\beta=-3$이다.\n그러므로\n$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta$\n$=4^2-2(-3)=16+6=22$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
