@@ -1,0 +1,2604 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+  "sourceGitBlobSha": "a632b04e4a41dccba9e056640a341afde91e690a",
+  "sourceSha256": "76ef593d99f423197f8901f9fba37c53307ffe873a4a3340bcffa7e58fbd7ae5",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex stage-local MD migration",
+    "at": "2026-11-12",
+    "role": "strict Markdown section transfer and visual benefit assessment; independent review not claimed"
+  },
+  "stage": "CREATE_4SLOT_STAGE_LOCAL",
+  "review": {
+    "status": "UNREVIEWED",
+    "independentReview": "NOT_RUN",
+    "scope": "4-slot semantics; independent review not claimed."
+  },
+  "selfCheck": {
+    "status": "SOURCE_TRANSFER_ONLY",
+    "itemsChecked": 23,
+    "sourceRead": "Direct Drive doc 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+    "sectionIsolation": "Prompt, choices, answer, solution, plan and metadata parsed only from their fenced/heading-bounded sections.",
+    "visualReview": "NOT_RUN: no rendering QA and no SVG creation.",
+    "identityBinding": "Official UID formula used; identity-map registration NOT_RUN.",
+    "registration": "NOT_RUN"
+  },
+  "scope": {
+    "items": 23,
+    "sourceOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "operation": "CREATE",
+    "before": null,
+    "after": "MD transfer into JS + cited 4-slot candidate",
+    "reason": "User-requested migration of existing Markdown exam."
+  },
+  "visualQueue": [
+    {
+      "sourceOrdinal": 1,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "발문은 방정식의 차수와 미지수 개수 판별로 도식이 필수는 아님."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "다섯 식을 미지수 수·차수·정리 결과로 비교하는 표. Q1 LaTeX는 교정됨."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "해를 대입해 계수를 구하는 기호식 문항으로 공간 도식 불필요."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "주어진 x,y 대입→b→a→ab 순서를 값 표로 구분."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "연립식의 한 식에서 목표식을 직접 얻는 기호식 문항."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "두 번째 식에 6을 곱해 x−2y=k로 정리되는 등식 흐름."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "무수히 많은 해 조건을 계수비로 판정하는 문항."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "두 식의 x계수·y계수·상수항 비를 나란히 비교하는 표."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "x=2y 조건을 연립식에 대입하는 대수 문제."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "먼저 y를 구한 뒤 x와 a를 구하는 대입 순서표."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "problem": {
+        "status": "필요·미제작",
+        "priority": "P1",
+        "note": "타일 가로·세로 길이와 두 이어 붙이기 조건을 배열 그림으로 대응시키면 x,y 계수 해석이 분명함. 원본 Q6 이미지 파일은 있으나 유사 변형과의 적합성 미확인, 유사 JS에 미연결."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "두 조건을 2x−3y=8, x+2y=18로 옮기고 x=10,y=4를 넓이로 연결하는 단계표."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "속력별 이동 구간과 총 80분·8km 관계를 시간선/거리표로 표현하면 두 구간을 구분하기 쉬움."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "빠른 구간과 느린 구간의 시간·속력·거리 표에서 40분 및 4800m 도출."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "발문이 다섯 상황을 문장으로 완결해 도형 정보가 필수는 아님."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "각 상황의 x-y 관계를 y=ax+b인지 역비례인지 분류하는 비교표."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "함수식에 x값을 대입하는 수치 계산 문항."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "f(9), f(−3), 3f(9)+f(−3)을 행별로 계산하는 표."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "y축 방향 평행이동과 x절편의 위치를 좌표평면에서 보면 변화가 분명함."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "원래 직선과 위로 3/2 이동한 직선, x절편 2를 좌표평면에 표시."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "서로 평행한 두 직선과 다른 직선의 x축 위 교점을 함께 그리면 조건 연결에 도움."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "기울기 2의 평행선이 (6,0)을 지남을 좌표평면으로 확인."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "기울기와 x 변화량으로 y 증가량을 계산하는 식 문항."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "기울기 삼각형에서 Δx=−3, Δy=12를 표시."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "세 점의 일직선 관계를 좌표평면에 표시하면 같은 기울기 조건을 시각화함."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "두 점 사이 기울기 3을 비교해 k=14가 되는 점의 위치를 표시."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "직선이 주어진 점을 지나고 x축과 만나는 위치를 좌표평면으로 보여 주면 좌표 역할을 구분하기 쉬움. 원본 Q14 이미지 파일은 있으나 유사 변형과의 적합성 미확인, 미연결."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "점 (3,−2), x절편 (2,0), 직선식을 한 좌표평면에 표시."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "problem": {
+        "status": "필요·미제작",
+        "priority": "P1",
+        "note": "직사각형 ABCD와 BC 위 이동점 P, 사다리꼴 APCD를 정확히 읽어야 함. 원본 Q15 이미지 파일은 있으나 유사 변형과의 적합성 미확인, 미연결."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "BP=2x, PC=12−2x와 높이 8을 사다리꼴 넓이 식에 연결한 그림."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "절편·사분면·증감·평행이동을 직선 그래프에서 판정하면 보기 검토에 도움."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "y=−4/3x+4와 절편 (3,0),(0,4), 네 사분면을 좌표평면으로 확인."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "y축에 평행한 직선과 두 점의 x좌표 같음을 좌표평면에서 보면 조건이 직관적임."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "두 점이 같은 수직선 위에 놓이는 모습과 a=−4를 표시."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "problem": {
+        "status": "필요·미제작",
+        "priority": "P1",
+        "note": "두 직선과 x축이 만드는 삼각형의 꼭짓점·밑변·높이를 좌표평면에서 식별해야 함."
+      },
+      "solution": {
+        "status": "필요·미제작",
+        "priority": "P1",
+        "note": "교점 (2,2), x절편 (4,0),(−2,0), 밑변 6과 높이 2를 표시."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "두 직선의 교점 좌표와 각 식의 의미를 좌표평면에서 연결하면 a,b 결정에 도움. 원본 Q19 이미지 파일은 있으나 유사 변형과의 적합성 미확인, 미연결."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "첫 직선의 교점 (−1,3)을 두 번째 식에 대입하는 순서를 좌표와 함께 표시."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "세 사분면 조건으로 a,b 부호를 읽고 새 직선 모양을 판단하는 시각성이 핵심. 원본 Q20 이미지 파일은 있으나 유사 변형과의 적합성 미확인, 미연결."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "원래 그래프와 새 그래프의 기울기·y절편 부호 및 사분면을 비교."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "오독한 계수와 대입 조건을 이용한 연립방정식 풀이로 기하 도식 불필요."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "오독으로 구한 두 해에서 b,a를 복원하고 연립식에 대입하는 단계표."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "정오의 선행 방류와 오후 2시 이후 시간 경과를 시간선으로 나타내면 기준 시각이 명확함."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "정오 600t 이후 14시부터 시간당 160t 증가하는 시간-방류량 그래프."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "두 물통의 잔량이 시간에 따라 감소하고 만나는 시점을 좌표평면에서 비교하면 해석에 도움. 원본 Q23 이미지 파일은 있으나 유사 변형과의 적합성 미확인, 미연결."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "A: y=−8x+48, B: y=−2x+30의 선분과 교점 (3,24)을 표시."
+      }
+    }
+  ],
+  "candidates": [],
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": " 미지수가 $2$개인 일차방정식인 것은? [3점]",
+            "termId": 64
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": " 미지수가 $2$개인 일차방정식인 것은? [3점]",
+            "termId": 64
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "미지수가 $2$개인 일차방정식은 동류항을 모두 이항하여 정리했을 때 $a",
+            "termId": 132,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "지수가 $2$개인 일차방정식인 것은? [3점]",
+            "termId": 62
+          }
+        ]
+      },
+      "reasons": {
+        "method": "식들을 정리하여 ax+by+c=0(a, b≠0) 꼴이 되는 선지 ①을 식별한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_06fe0bb5af012227e88afe962e312316e128b74cf7d906864941d4d5dec51d83",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bdb6adce177a585248f6e69da495c2c0221694a76ed4a5a1e03c9f703906cb85"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "73d0c391cfe2c46a8a6c6f8000c0a360ca9dc29b48898a5b6709c84a4fb6fc4c"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 1
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "src": "stem",
+            "quote": "연립방정식 $\\begin{cases} ax - 3y = 3 \\\\ 3x +",
+            "termId": 568,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "d{cases}$ 의 해가 $x = 3, y = b$ 일",
+            "termId": 78
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "연립방정식 $\\begin{cases} ax - 3y = 3 \\\\ 3x +",
+            "termId": 61,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "+ 2y = -1$에 대입하여 $b$를 구한다.\n$$\n\\b",
+            "termId": 53,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "1단계: $x = 3, y = b$를 두 번째 식 $3x + 2y = -",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "1단계: $x = 3, y = b$를 두 번째 식 $3x + 2y = -",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "(단, $a, b$는 상수) [4점]",
+            "termId": 309
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x=3, y=b를 둘째 식에 대입해 b=-5를 얻고, 첫째 식에서 a=-4를 구해 ab=20을 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_3fff107a4d730d17d557350dce2f1df857c89a0801118b1d576d8f2c67265af8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cd579c753e2c4b8e20471e1715908dfcb5434790dc5db029d9af2b3c7eac4c82"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b0278ee11918706960a463bc1b51c6f29986c365262fe666229d930c856873d0"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 2
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "src": "stem",
+            "quote": "연립방정식 $\\begin{cases} \\dfrac{x}{3} - 0.2y",
+            "termId": 568,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "k$를 만족시킬 때, 상수 $k$의 값은? [4점]",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "연립방정식의 두 번째 식을 정리하여 $x ",
+            "termId": 62,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "연립방정식의 두 번째 식을 정리하여 $x - 2y$의 형태를 직접 유도한",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "연립방정식의 두 번째 식을 정리하여 $x - 2y$의 형태를 직접 유도한",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "k$를 만족시킬 때, 상수 $k$의 값은? [4점]",
+            "termId": 309
+          }
+        ]
+      },
+      "reasons": {
+        "method": "둘째 식의 양변에 6을 곱해 x-2(y-2)=12로부터 x-2y=8을 얻어 k=8을 확정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_4e74fd2ec64baf72f4fe787007f021deaa4bfd22f2ca24720c6c7bc3e42ab047",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a223f26022eab7b2d97cc79b9343891e7a795b025c887f7936399d0f42bde109"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b8808ff04fcf709b66d327f48ca495ee7c006cdf30c546cd6e4a3943504f4c24"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 3
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "src": "stem",
+            "quote": "연립방정식 $\\begin{cases} x + 2y = a \\\\ 4x - ",
+            "termId": 568,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "d{cases}$ 의 해가 무수히 많을 때, $a - b",
+            "termId": 78
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "연립방정식 $\\begin{cases} x + 2y = a \\\\ 4x - ",
+            "termId": 61,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "연립방정식의 해가 무수히 많으려면 두 일차",
+            "termId": 62,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "연립방정식의 해가 무수히 많으려면 두 일차방정식의 계수와 상수항의 비가 ",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "연립방정식의 해가 무수히 많으려면 두 일차방정식의 계수와 상수항의 비가 ",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "(단, $a, b$는 상수) [4점]",
+            "termId": 309
+          }
+        ]
+      },
+      "reasons": {
+        "method": "1/4 = 2/(-b) = a/28의 일치 조건에서 b=-8, a=7을 구하고 a-b=15를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_ba55f7c306c9374b571dfbc3a6a4e3c163c9065e3e4e1fa63b811cba7357c1cf",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ef5f78c67b09a183573e328dfaa42d389ab1e70110bbc16265d586a8aa3ff6a7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "758d6105a2cf5ab2956e3aecc056bd9ed0ac82f4a1bc74e5eb938df7a7e8c365"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 4
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "src": "stem",
+            "quote": "연립방정식 $\\begin{cases} 2x - ay = 4 \\\\ x - ",
+            "termId": 568,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$의 $2$배일 때, 상수 $a$의 값을 구하면? [4점]",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": " - 5y = 6$에 대입한다.\n$$\n\\begin{alig",
+            "termId": 53,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "연립방정식 $\\begin{cases} 2x",
+            "termId": 62,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$의 $2$배일 때, 상수 $a$의 값을 구하면? [4점]",
+            "termId": 309
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x=2y를 x-5y=6에 대입해 y=-2, x=-4를 얻고 첫째 식에 대입해 a=6을 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_af3b3e6e96ef7b6ef0c20283f8e40a70c2b9b31d038d5cd2bc8bbaca858339a6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a789165b5042119d67a14fe5ee5d3ff6355083120d616bc863da3cc473ea33e7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a533e4b1cf985e72c54fb6ba2966ace47229f0dd69c67349694d890c259e5e5f"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 5
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "모양과 크기가 같은 직사각형 모양의 타일 여러 장을 이어 붙",
+            "termId": 165
+          },
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "모양과 크기가 같은 직사각형 모양의 타일 여러 장을 이어 붙이려고 한다.",
+            "termId": 214,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "각형 타일 $1$장의 넓이를 구하면? [4점]",
+            "termId": 213
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "제의 조건에 따라 연립방정식을 세운다.\n$$\n\\begin{c",
+            "termId": 62,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립일차방정식",
+            "src": "solution",
+            "quote": "1단계: 문제의 조건에 따라 연립방정식을 세운다.\n$$\n\\begin{ca",
+            "termId": 568,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "1단계: 문제의 조건에 따라 연립방정식을 세운다.\n$$\n\\begin{ca",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "모양과 크기가 같은 직사각형 모양의 타일 여러 장을 이어 붙",
+            "termId": 165
+          }
+        ]
+      },
+      "reasons": {
+        "method": "2x-3y=8과 x+2y=18을 연립하여 x=10, y=4를 구하고 타일 넓이 40을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_5b97ba6e54e0941cc388274dbf9db7a120390999500a2253d359aee6b9af0485",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ec87dd29b314040a2e673c89a23978e42d8015b2a5d35f06c677072f5dbdfde4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "344475cecaae2ccbe7457cd0113c63ac5005524ca57bd5cdff341ea0c9b08c86"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 6
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "총 거리가 $8\\,\\mathrm{km}$",
+            "termId": 216
+          },
+          {
+            "term": "속력",
+            "src": "stem",
+            "quote": "총 거리가 $8\\,\\mathrm{km}$인 건강 걷기 대회에 참가하였다.",
+            "termId": 704,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "총 거리가 $8\\,\\mathrm{km}$",
+            "termId": 216
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": " 미지수를 정하고 연립방정식을 세운다.\n분속 $120\\,\\m",
+            "termId": 62,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립일차방정식",
+            "src": "solution",
+            "quote": "1단계: 단위를 통일한다.\n총 거리: $8\\,\\mathrm{km} = 8",
+            "termId": 568,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "1단계: 단위를 통일한다.\n총 거리: $8\\,\\mathrm{km} = 8",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "총 거리가 $8\\,\\mathrm{km}$인 건강 걷기 대회에 참가하였다.",
+            "termId": 1,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x+y=80과 120x+80y=8000을 연립해 x=40분을 구하고 거리 120*40=4800m를 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_8c4f89b97dad1f3767a9131544fe42ef1364d051df3bc3fdd9e4136a12be4470",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6c541e2ee8dcac16e15d1a99f1f69c659723eba1ab8f4c4b3b680a6dc409397b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d7f7eeace10ed7a9af1266ccfc76d20b001df72586ccb8d6e5a0da242fd35089"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 7
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "서 $y$가 $x$의 일차함수가 아닌 것은? [3점]",
+            "termId": 90
+          },
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "$y$가 $x$의 일차함수가 아닌 것은? [3점]",
+            "termId": 84
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "서 $y$가 $x$의 일차함수가 아닌 것은? [3점]",
+            "termId": 90
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "각 보기를 $x$와 $y$ 사이의 관계식으로 나타낸다.\n$$\n\\begin",
+            "termId": 132,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "$y$가 $x$의 일차함수가 아닌 것은? [3점]",
+            "termId": 84
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평행사변형 관계식 y = 30/x가 반비례 함수이므로 일차함수가 아님을 선별한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_e9cbbf819375aa5e437d500ddff2a45808606c8ea938818eca0cd32437109d6b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d96354af378b883ec1adaeb7d00c5a663a9110a7d489a7b68d5f0abbccaf4d39"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f1c36fabda310b284bdd243da94dd3b7c7a5ac4563feb0d35b7399e6f7051544"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 8
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x) = -\\dfrac{1",
+            "termId": 84
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "함수 $f(x) = -\\dfrac{18}{x} + 4$ 에 대하여 $3f",
+            "termId": 61,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "1단계: $f(9)$의 값을 구한다.\n$$\nf(9) = -\\frac{18",
+            "termId": 53,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "1단계: $f(9)$의 값을 구한다.\n$$\nf(9) = -\\frac{18",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "1단계: $f(9)$의 값을 구한다.\n$$\nf(9) = -\\frac{18",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "함수 $f(x) = -\\dfrac{18}{x} + 4$ 에 대하여 $3f",
+            "termId": 309,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "f(9)=2와 f(-3)=10을 구하고 3*2+10=16을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_bf9565b3f04ff5bfbcc9510640549d24751b338a76411b97d62e0890b41b5b0c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dd4f04b6e38c40c72c54f6507d3d308938d5410261accb53f0ae8db80c5b785b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4cb89101092db5f46842aa53265618988019d0d3f7d307fd3ca3139b4768f596"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 9
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y = \\dfrac{3}{4}",
+            "termId": 90
+          }
+        ],
+        "goal": [
+          {
+            "term": "절편",
+            "src": "stem",
+            "quote": "이동한 그래프의 $x$절편을 구하면? [3점]",
+            "termId": 151
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "1단계: 평행이동한 일차함수의 식을 구한다.\n일차",
+            "termId": 210,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "1단계: 평행이동한 일차함수의 식을 구한다.\n일차함수 $y = \\dfra",
+            "termId": 62,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "일차함수 $y = \\dfrac{3}{4}x - 3$ 의 그래프를 $y$축",
+            "termId": 309,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "y = (3/4)x - 3/2로 평행이동한 뒤 y=0을 대입하여 x절편 2를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_243f3848f3f4d8de2f4b84ee9a4d17dd51f5c0e01d292f332eec8c0ea8f92847",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8e7cfe863125e1a0b522f85ad835bab14637c6c666397a24d471efbb7b347261"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d863aa3033df1fd6b62c79b56e0607cf8be2a09431a768bebfd20d59670e0fe6"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 10
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y = ax + b$의 그래프",
+            "termId": 90
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": " - 5$의 그래프와 평행하고, 일차함수 $y = \\dfr",
+            "termId": 180
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "(단, $a, b$는 상수) [4점]",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "1단계: 기울기 $a$를 구한다.\n일차함수 $y",
+            "termId": 150,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "위해 $y = 0$을 대입한다.\n$$\n\\frac{2}{3}",
+            "termId": 53,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "(단, $a, b$는 상수) [4점]",
+            "termId": 309
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평행에서 a=2, x절편 (6, 0) 대입에서 b=-12를 구해 a+b=-10을 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_502072eb7acdeb6c7f26aa5f3a507cc8b547a4ea04e1517d1eed60563e4ad2ca",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c73fd625f3e4e3ec42df3a7d3c0e50c52ae8be0acd10741194b9af85313fad97"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d852164f428d4504c304b29a0a576ac564c47b58080aaf34bf3c7335b6f71bba"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 11
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y = -4x + \\dfrac",
+            "termId": 90
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "= ax + b$에서 기울기 $a$의 정의는 다음과 같다.\n",
+            "termId": 150
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "가한다고 한다. 이때 상수 $k$의 값을 구하면? [3점]",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "= ax + b$에서 기울기 $a$의 정의는 다음과 같다.\n",
+            "termId": 150,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "일차함수 $y = ax + b$에서 기울기 $a$의 정의는 다음과 같다.",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "일차함수 $y = ax + b$에서 기울기 $a$의 정의는 다음과 같다.",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "가한다고 한다. 이때 상수 $k$의 값을 구하면? [3점]",
+            "termId": 309
+          }
+        ]
+      },
+      "reasons": {
+        "method": "기울기 k/(-3) = -4로부터 k = 12를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_9e8cae92f47db31969e04379f1400dbba4b60c164ea452bfbfe9660598991186",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8dab2ee83dee1fc45f205de4a124646e77d7bd2525bb15395b0b09af7f750c93"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7f694b12b91fd7678dbd8b1ddc5e468f782503582128295b13d9c6530629718d"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 12
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": ", k+6)$ 이 한 직선 위에 있을 때, 상수 $k$의 ",
+            "termId": 143
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "세 점 $(-2, -1)$, $(3, k)$, $(5, k+6)$ 이 한",
+            "termId": 148,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "직선 위에 있을 때, 상수 $k$의 값을 구하면? [4점]",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "두 점을 택하여 구한 기울기가 모두 서로 같아야 한다.\n1단",
+            "termId": 150,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "세 점이 한 직선 위에 있으므로, 임의의 두 점을 택하여 구한 기울기가 ",
+            "termId": 62,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "직선 위에 있을 때, 상수 $k$의 값을 구하면? [4점]",
+            "termId": 309
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 점 (3, k), (5, k+6)의 기울기 3을 구하고 (k+1)/5 = 3에서 k=14를 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_165f6f9bec897768c71a82f7e967d14b9f1c5dd2f9e06d53830d95a982f438d0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7298437c46f74b3a305500a13a95fd5f018dd55818658f2a6788d8bb830c745c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ad907c04645da701572a343598f9b9121d3869cb33e4ae7e92c3c06cb90d8a17"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 13
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식 $2x + ky - 4k = 0",
+            "termId": 64
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "x$축과 만나는 점의 좌표를 구하면? (단, $k$는 상수",
+            "termId": 148
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "x$축과 만나는 점의 좌표를 구하면? (단, $k$는 상수",
+            "termId": 148
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": " - 4k = 0$에 대입하여 $k$의 값을 구한다.\n$$",
+            "termId": 53,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "(3, -2)$를 일차방정식 $2x + ky - 4k = 0",
+            "termId": 62,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "면? (단, $k$는 상수) [4점]",
+            "termId": 309
+          }
+        ]
+      },
+      "reasons": {
+        "method": "점 (3, -2) 대입으로 k=1을 구하고 2x+y-4=0에서 y=0일 때 x=2를 찾아 (2, 0)을 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_fd3a64174975e561a4870218f3a4c2b10c500ae6eb1d423e7d64a3b3471edfa2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a90c77593feb93419c80adea70bcd3b700716ad8c8f595e6849e94c597281324"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "26d600580a8f698d0e98f9f67bcbdb0b22dc6e61b825ae3a56da807614452388"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 14
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $ABCD$에서 가로 $BC =",
+            "termId": 165
+          },
+          {
+            "term": "속력",
+            "src": "stem",
+            "quote": "athrm{cm}$의 속력으로 움직이고 있다. 점 $P$가",
+            "termId": 704
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "직사각형 $ABCD$에서 가로 $BC = 12\\,\\mathrm{cm}$,",
+            "termId": 61,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "1단계: $x$초 후 선분의 길이를 $x$에 대한 식으로 나타낸다.\n점 ",
+            "termId": 62,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "다리꼴 $APCD$의 넓이를 구하는 관계식을 세운다.\n윗변",
+            "termId": 213,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $ABCD$에서 가로 $BC =",
+            "termId": 165
+          }
+        ]
+      },
+      "reasons": {
+        "method": "PC=12-2x를 이용해 사다리꼴 넓이 96-8x=64를 세우고 x=4를 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_b15e81afabc0829908ca15299e6726f9de6b9ffeac8427a1b4ddafc8e0dee0aa",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "eccc129cfe6f1ad87fc411ca0dbd09cf7a077a39de3d54525d8021c490fc3d87"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "63a59682767e57cddee4b325f0607c11c5e56de340abb69f61a2747abbc97b66"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 15
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식 $4x + 3y - 12 = 0",
+            "termId": 64
+          }
+        ],
+        "goal": [
+          {
+            "term": "절편",
+            "src": "choices",
+            "quote": "$x$절편은 $3$이고, $y$절편은 $4",
+            "termId": 151
+          },
+          {
+            "term": "사분면",
+            "src": "choices",
+            "quote": "제$4$사분면을 지나지 않는다.",
+            "termId": 149
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "③ } & \\text{기울기가 } -\\frac{4}{3} <",
+            "termId": 150,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "} 4\\text{만큼 평행이동한 것이다. (거짓)}\n\\end{",
+            "termId": 210,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "일차방정식 $4x + 3y - 12 = 0$ 의 그래프에 대한 설명으로 ",
+            "termId": 143,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "식 y=-(4/3)x+4로 정리하여 x절편 3, y절편 4임을 확인해 선지 ①을 확정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_e2b1294fae4ebbd5b2b68a0f6945bc22822d6bebce4ff6a39ef62f4edadc029a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "da90d661c5ee1f62d3746f006a98836ae42f9409f12402f8fef62eef4ff16db1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "97d735cdf3916ba29b8f2658d7d54894de6b966b652e88f2cfecde1cfcdfadcc"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 16
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": ", a)$ 를 지나는 직선이 $y$축에 평행할 때, 상수 ",
+            "termId": 143
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "위의 모든 점은 $x$좌표가 서로 같다.\n따라서 두 점 $",
+            "termId": 148
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "는 직선이 $y$축에 평행할 때, 상수 $a$의 값을 구하",
+            "termId": 180
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "y$축에 평행할 때, 상수 $a$의 값을 구하면? [4점]",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$좌표를 같다고 놓고 방정식을 푼다.\n$$\n\\begin{al",
+            "termId": 62,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "y$축에 평행할 때, 상수 $a$의 값을 구하면? [4점]",
+            "termId": 309
+          }
+        ]
+      },
+      "reasons": {
+        "method": "y축 평행 직선 위의 점은 x좌표가 같으므로 2a-3 = 4a+5에서 a=-4를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_a29b3fe21dca308cd6136adca120cdd87bd1ce7d27762aa8c802e0ec551e3cb5",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "19ce4e81531c4b7b488657ede979250ade8db6de80e578679f8b7b70134f873c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f2e89a60e6f988b16e61804b95a05ed7a75c76a789dbd6556d948d59430facbd"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 17
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "두 일차함수 $y = -x + 4$ 와 $y",
+            "termId": 90
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": ": 두 직선의 교점의 좌표를 구한다.\n$$\n\\begin{a",
+            "termId": 148
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "로 둘러싸인 삼각형의 넓이를 구하면? [5점]",
+            "termId": 213
+          }
+        ],
+        "method": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "1단계: 두 직선의 교점의 좌표를 구한다.\n$$\n\\beg",
+            "termId": 181,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "계: 두 직선의 $x$절편을 각각 구한다.\n- $y = -",
+            "termId": 151,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "1단계: 두 직선의 교점의 좌표를 구한다.\n$$\n\\begin{aligne",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직선",
+            "src": "solution",
+            "quote": "1단계: 두 직선의 교점의 좌표를 구한다.\n$$\n",
+            "termId": 143
+          }
+        ]
+      },
+      "reasons": {
+        "method": "교점 (2, 2)와 x절편 4, -2로부터 밑변 6, 높이 2를 얻어 넓이 (1/2)*6*2=6을 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_3da1f26617811bd56e236d81b84118a79b3a6992862387a4bcfe29eac024ab98",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3922ee28ac409f200f90ffc5bfe44bb4659f754dd16e84b1a92aa53b61d9ef0c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "846657bc4515f9f933406027de7e010b00cc219a4a283fad5d1f75bb0889db1e"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 18
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "두 일차방정식 $x - y = -4$ 와 $a",
+            "termId": 64
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": " 10$ 의 그래프의 교점의 좌표가 $(-1, b)$ 일 ",
+            "termId": 181
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "(단, $a, b$는 상수) [5점]",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": " - y = -4$에 대입하여 $b$를 구한다.\n$$\n\\b",
+            "termId": 53,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "두 일차방정식 $x - y = -4$ 와 $a",
+            "termId": 62,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "(단, $a, b$는 상수) [5점]",
+            "termId": 309
+          }
+        ]
+      },
+      "reasons": {
+        "method": "(-1, b)를 x-y=-4에 대입해 b=3을 얻고 ax+2y=10에 대입해 a=-4를 구해 a+b=-1을 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_455594c2928a976c3e9a13e94ca165f9d211f567c56edaf763486126c0e42668",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c1e607ec624ccf4c9ef6c529e0b99b3ff68d0c2440bb76b7ae6fc278883ab8ed"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e4cd2b5cb24a1b54ab5716364115e53c14e9514f476d9f81bf6b87b42d66a7a5"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 19
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y = ax + b$의 그래프",
+            "termId": 90
+          },
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "1$, $3$, $4$사분면을 지날 때, 일차함수 $y = ",
+            "termId": 149
+          }
+        ],
+        "goal": [
+          {
+            "term": "기울기",
+            "src": "choices",
+            "quote": "기울기가 음수이고 $y$절편이 양수인 ",
+            "termId": 150
+          },
+          {
+            "term": "절편",
+            "src": "choices",
+            "quote": "울기가 음수이고 $y$절편이 양수인 직선 (제$1$, $2",
+            "termId": 151
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "$와 $b$의 부호를 판정한다.\n일차함수 $y = ax +",
+            "termId": 132,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "(단, $a, b$는 상수) [5점]",
+            "termId": 309
+          }
+        ]
+      },
+      "reasons": {
+        "method": "y=ax+b가 1, 3, 4사분면을 지나므로 a>0, b<0이고, 새 함수의 기울기 -a/b>0, y절편 ab<0을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_4000cb0762374438d0e7b0d046162e0e29aaa19d9cc9f89cd87b577f8d830311",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "05525db50330badd87f24e5258782fdb2f21a2e5bf817e3f7e55d002e5894189"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6c814b50e6677ddc4c3fe8e56828b6cdb267e7403c4a490d62ef9c764ab83e7a"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 20
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "src": "stem",
+            "quote": "[서술형 1번]\n민재와 서아가 연립방정식 $\\begin{cases} ax",
+            "termId": 568,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": ") 처음 연립방정식의 해를 바르게 구하시오. [3점]",
+            "termId": 78
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": ") 처음 연립방정식의 해를 바르게 구하시오. [3점]",
+            "termId": 78
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "(단, $a, b$는 상수) [7점]\n(1) 두 수 $a$",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": " 2, y = 1$을 대입하면\n$$\n\\begin{align",
+            "termId": 53,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "가감법",
+            "src": "solution",
+            "quote": "(1) 두 상수 $a, b$의 값을 구한다.\n민재는 $a$를 잘못 보았으",
+            "termId": 434,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "다.\n(2) 처음 연립방정식을 바르게 푼다.\n$a = 3, ",
+            "termId": 62,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "(단, $a, b$는 상수) [7점]\n(1) 두 수 $a$",
+            "termId": 309
+          }
+        ]
+      },
+      "reasons": {
+        "method": "민재 해를 둘째 식에 대입해 b=2, 서아 해를 첫째 식에 대입해 a=3을 얻고 3x+2y=5, 3x-2y=4를 풀어 해를 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_de8c02788b226200289c867c79efbf1cfa41b79b1066b4667f43620cbfe43866",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4372a96e020374bf7d0e7c20b69be828cefe24911c033e445084f7f71eafbc0f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0a3852b68fffd41b5dc740ce9596d5615a2e2342e598acefd27fa5454cd5a323"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 21
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "[서술형 2번]\n어느 저수지에서 오늘 정오에 수문을 열어 $600\\,\\m",
+            "termId": 90,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "[서술형 2번]\n어느 저수지에서 오늘 정오에 수문을 열어 $600\\,\\m",
+            "termId": 90,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "(1) $y$를 $x$에 대한 식으로 나타낸다.\n$15$분마다 $40\\,",
+            "termId": 150,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "(1) $y$를 $x$에 대한 식으로 나타낸다.\n$15$분마다 $40\\,",
+            "termId": 62,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "[서술형 2번]\n어느 저수지에서 오늘 정오에 수문을 열어 $600\\,\\m",
+            "termId": 309,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "시간당 160톤 변화율로 y=160x+600을 세우고, y=1400에서 x=5를 구해 오후 7시를 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_7ca07e7bee7567baaedac3ed6905f6a2c89a13734e0f4decbddf412df3a22454",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ec2b70d600fbbabceaf2cedb34f0c5fccf49dc304b4eab4bae527cc4044995ac"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "044d097b0e3a014d04bf43f269718d485fd3c65515fa856e33c3a789b3280f9a"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 22
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "[서술형 3번]\n$48\\,\\mathrm{L}$, $30\\,\\mathrm{",
+            "termId": 90,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "[서술형 3번]\n$48\\,\\mathrm{L}$, $30\\,\\mathrm{",
+            "termId": 148,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "[서술형 3번]\n$48\\,\\mathrm{L}$, $30\\,\\mathrm{",
+            "termId": 90,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "[서술형 3번]\n$48\\,\\mathrm{L}$, $30\\,\\mathrm{",
+            "termId": 61,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "다.\n$$\n\\text{기울기} = \\frac{0 - 48}{",
+            "termId": 150,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "m{L}$이므로 $y$절편은 $48$이고, $6$분 후 물",
+            "termId": 151,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": " $y$값이 같으므로 방정식을 세운다.\n$$\n\\begin{a",
+            "termId": 62,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "[서술형 3번]\n$48\\,\\mathrm{L}$, $30\\,\\mathrm{",
+            "termId": 309,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "절편으로부터 y=-8x+48, y=-2x+30을 도출하고 연립방정식 -8x+48=-2x+30을 풀어 x=3분 후를 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_4ead8f0cdc0a684fdab661bea4c8ed1f7a7391e1faa1bf164fe5d697d53c18ea",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6b5ce2475f6679c2964a35f42e217c5364fecbb754d1072879eb029a42eea914"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "61df300d906db8ff4dbbac2742916f2f2244f434585666a7589c8bfe8024e3b3"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 1OCMr_r-HJz7A5Fd49F06VaiFji6KlPhKdOVSKk6kgPE, revision AHj4eMTAzja0RXv9eBU3cfvzYl8cwax_9EKmYISXSeYJW4uOLjPnolw0iFaAGc2s7oC1CGOmTd2TT3LWF-IjOwJXI3HhNqHi7IPD3cvfRKA.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사.js",
+          "sourceOrdinal": 23
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    }
+  ]
+}
