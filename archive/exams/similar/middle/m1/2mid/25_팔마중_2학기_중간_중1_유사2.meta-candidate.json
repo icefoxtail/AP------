@@ -3,7 +3,7 @@
   "requestId": "similar-25-palma-m1-2mid-v2-candidate-v1",
   "examUid": "25_팔마중_2학기_중간_중1_유사2",
   "sourceArchiveFile": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사2.js",
-  "expectedSourceBlobSha1": "188dc2cac1b88fda90c14b7d67d75714fce8fc0d",
+  "expectedSourceBlobSha1": "286cef80d9ddfc0776a04e9f34aad2f6745727f4",
   "expectedQuestionCount": 24,
   "sourceProvenance": {
     "driveDocumentId": "1Wlrc5c5_K3xWD4HH4Gj1Wv5w-cdwiKxjk82KBsLxG20",
@@ -20,6 +20,16 @@
         "scope": "Q5 stem, solution, and condition metadata",
         "change": "Added that O lies inside both segments AD and BE, and ray OB lies inside ∠AOC; the earlier text did not guarantee opposite rays or the 90° subtraction.",
         "independentCheck": "Independent verifier confirmed the original text lacked betweenness. With O interior to both segments, ∠DOE and ∠AOB are vertical; with OB inside ∠AOC, ∠AOB=90°−x. Thus 90−x=4x, x=18°, ∠AOB=72°, and ∠AOE=108° (choice ③)."
+      },
+      {
+        "scope": "Q13 stem and solution",
+        "change": "Corrected malformed TeX unit spacing `,\\mathrm{cm}` to `\\,\\mathrm{cm}`.",
+        "mathContentChanged": false
+      },
+      {
+        "scope": "Q1–Q24 problem/solution visual audit",
+        "change": "Independently re-read each candidate question and solution instead of inheriting the source MD visual status. Reclassified Q8 and Q20 problem/solution visuals as DEFERRED_TO_LATER_SVG_BATCH; the other 22 pairs remain EXEMPT after direct text audit. Existing main Q8 (42°/38°) and Q20 (14°) SVGs are incompatible and were not copied.",
+        "visualsCreated": false
       }
     ],
     "variantDecision": {
@@ -28,7 +38,7 @@
       "newIdentity": "25_팔마중_2학기_중간_중1_유사2",
       "reason": "The new source document supplies a distinct 24-question version, including changed Q2 and Q3. The current main JS and its SVGs are retained; this candidate points to no assets from the older version."
     },
-    "visualAssetAudit": "The supplied MD marks all 24 items EXEMPT for separate problem figures. Each item received an explicit EXEMPT problem and solution plan. Q5 wording was made determinate by stating O is interior to AD and BE and ray OB is inside ∠AOC. The candidate JS has no image or solutionImage refs; existing main-version SVGs remain untouched and are not reused.",
+    "visualAssetAudit": "Directly audited the question and solution text for each of 24 items, separately for problem and solution. Q8 and Q20 need distinct figures; the other 22 question/solution pairs can be solved and explained from text. Existing main-version Q8 and Q20 SVGs remain untouched and are incompatible with the new values/content. No SVG was created.",
     "currentMainReleaseAudit": {
       "mainCommit": "f3d9320f6ec1db150c6bbc38787799591b16fbd8",
       "existingSimilarJs": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사.js",
@@ -169,16 +179,23 @@
     {
       "sourceOrdinal": 8,
       "problem": {
-        "status": "EXEMPT",
-        "need": "NO_SEPARATE_PROBLEM_FIGURE",
-        "currentCandidateAsset": null
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "REQUIRED",
+        "currentCandidateAsset": null,
+        "existingMainAsset": "assets/images/25_팔마중_2학기_중간_중1_유사/q08.svg",
+        "reuseStatus": "NOT_REUSABLE_PARAMETER_OR_CONTENT_MISMATCH"
       },
       "solution": {
-        "status": "EXEMPT",
-        "need": "NO_SEPARATE_SOLUTION_FIGURE",
-        "currentCandidateAsset": null
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "REQUIRED",
+        "currentCandidateAsset": null,
+        "existingMainAsset": "assets/images/25_팔마중_2학기_중간_중1_유사/q08.svg",
+        "reuseStatus": "NOT_REUSABLE_PARAMETER_OR_CONTENT_MISMATCH"
       },
-      "reason": "평행선 사이의 꺾인 각 합산 및 동측내각의 합 180도 성질을 연계한 기본 문항"
+      "reason": {
+        "problem": "두 번째 평행선 쌍 p∥q와 횡단선, 동측내각 y,z를 함께 보여 주고, 첫 번째 꺾인 선의 25°·35° 위치 및 x 방향을 특정하는 문제 그림이 필요하다. 이전 main판 q08.svg는 42°·38°만 표시하고 y,z 조건이 없어서 재사용할 수 없다.",
+        "solution": "첫 번째 꺾인 선의 각을 25°+35°로 나누는 보조 평행선과 p∥q의 y+z=180°를 같은 문항 배열에 대응시켜 보이는 해설 그림이 필요하다. 이전 main판 q08.svg는 숫자·구성이 달라 재사용할 수 없다."
+      }
     },
     {
       "sourceOrdinal": 9,
@@ -337,16 +354,23 @@
     {
       "sourceOrdinal": 20,
       "problem": {
-        "status": "EXEMPT",
-        "need": "NO_SEPARATE_PROBLEM_FIGURE",
-        "currentCandidateAsset": null
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "REQUIRED",
+        "currentCandidateAsset": null,
+        "existingMainAsset": "assets/images/25_팔마중_2학기_중간_중1_유사/q20.svg",
+        "reuseStatus": "NOT_REUSABLE_PARAMETER_OR_CONTENT_MISMATCH"
       },
       "solution": {
-        "status": "EXEMPT",
-        "need": "NO_SEPARATE_SOLUTION_FIGURE",
-        "currentCandidateAsset": null
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "REQUIRED",
+        "currentCandidateAsset": null,
+        "existingMainAsset": "assets/images/25_팔마중_2학기_중간_중1_유사/q20.svg",
+        "reuseStatus": "NOT_REUSABLE_PARAMETER_OR_CONTENT_MISMATCH"
       },
-      "reason": "평행선 사이의 정오각형 외각 회전각을 이용한 교각 계산 문항"
+      "reason": {
+        "problem": "정오각형이 두 평행선 사이에 놓인 꼭짓점 순서, 24°인 아래쪽 변, 위쪽 변의 위치를 특정하는 문제 그림이 필요하다. 이전 main판 q20.svg는 14°를 표시하므로 재사용할 수 없다.",
+        "solution": "외각 72° 두 번의 방향 변화와 아래 24°에서 위쪽 각 x=12°로 가는 경로를 표시하는 해설 그림이 필요하다. 기존 q20.svg는 14° 판본이므로 재사용하지 않는다."
+      }
     },
     {
       "sourceOrdinal": 21,
@@ -876,8 +900,8 @@
           "평행선"
         ]
       },
-      "visualPlanStatus": "EXEMPT",
-      "visualPlanReason": "평행선 사이의 꺾인 각 합산 및 동측내각의 합 180도 성질을 연계한 기본 문항"
+      "visualPlanStatus": "DEFERRED_TO_LATER_SVG_BATCH",
+      "visualPlanReason": "두 번째 평행선 쌍 p∥q와 횡단선, 동측내각 y,z를 함께 보여 주고, 첫 번째 꺾인 선의 25°·35° 위치 및 x 방향을 특정하는 문제 그림이 필요하다. 이전 main판 q08.svg는 42°·38°만 표시하고 y,z 조건이 없어서 재사용할 수 없다."
     },
     {
       "sourceOrdinal": 9,
@@ -1576,8 +1600,8 @@
           "평행선"
         ]
       },
-      "visualPlanStatus": "EXEMPT",
-      "visualPlanReason": "평행선 사이의 정오각형 외각 회전각을 이용한 교각 계산 문항"
+      "visualPlanStatus": "DEFERRED_TO_LATER_SVG_BATCH",
+      "visualPlanReason": "정오각형이 두 평행선 사이에 놓인 꼭짓점 순서, 24°인 아래쪽 변, 위쪽 변의 위치를 특정하는 문제 그림이 필요하다. 이전 main판 q20.svg는 14°를 표시하므로 재사용할 수 없다."
     },
     {
       "sourceOrdinal": 21,

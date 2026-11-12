@@ -467,7 +467,7 @@ window.questionBank = [
       "합",
       "연산"
     ],
-    "content": "두 삼각형 $ABC$와 $DEF$가 서로 합동($\\triangle ABC \\equiv \\triangle DEF$)이다. $\\angle B = 65^\\circ$, $\\angle F = 45^\\circ$이고 $\\overline{BC} = 7,\\mathrm{cm}$일 때, $\\angle A = a^\\circ$, $\\overline{EF} = b,\\mathrm{cm}$라 하자. 이때 $a + b$의 값은? [4점]",
+    "content": "두 삼각형 $ABC$와 $DEF$가 서로 합동($\\triangle ABC \\equiv \\triangle DEF$)이다. $\\angle B = 65^\\circ$, $\\angle F = 45^\\circ$이고 $\\overline{BC} = 7\\,\\mathrm{cm}$일 때, $\\angle A = a^\\circ$, $\\overline{EF} = b\\,\\mathrm{cm}$라 하자. 이때 $a + b$의 값은? [4점]",
     "choices": [
       "$71$",
       "$73$",
