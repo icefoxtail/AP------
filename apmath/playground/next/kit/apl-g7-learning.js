@@ -1,7 +1,8 @@
 /* Grade 7 learning entry. The existing explorer and full lessons remain intact.
  * A short is opt-in, bound to the actual current instance, and owns a separate
  * playback model. No global speed-up or guessed solution is used as a short.
- * Source contract: docs/guides/APMATH_G7_VISUAL_SHORTS_CURRENT.md.
+ * Source contracts: APMATH_LAB_UI_CONTRACT_CURRENT.md and
+ * APMATH_G7_GEOMETRY_VISUAL_STANDARD_CURRENT.md in docs/guides/.
  */
 (function () {
   'use strict';
@@ -150,9 +151,11 @@
           const nativeInfo = p.lessonInfo;
           p.lessonInfo = i => {
             const rows = nativeInfo.call(p, i), sc = lab.list[i];
+            const info = A.G7ShortInfo?.[`${lab.id}/${sc.id}`];
             const recipe = A.G7ShortCoordinates?.recipes[sc.id] || A.G7ShortProportion?.recipes[sc.id];
             const durations = { 'f1-star': { '넓이': 8.8, '둘레': 8.4 }, 'f3-leaf-area': { '넓이': 8.8 }, 'sv2-4': { '겉넓이': 9, '부피': 9 }, 'sv3-4': { '남은 물': 9 } }[sc.id];
-            return rows.map(row => ({ ...row, length: recipe && sc._mf ? recipe.duration || 9 : durations?.[row.label] || row.length }));
+            return rows.map(row => ({ ...row, length: info?.find(item => item.legacyLabel === row.label)?.duration
+              || (recipe && sc._mf ? recipe.duration || 9 : durations?.[row.label] || row.length) }));
           };
           try { return render(); } finally { p.lessonInfo = nativeInfo; }
         };

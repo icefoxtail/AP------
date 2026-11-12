@@ -239,7 +239,20 @@
     el.onload = resolve; el.onerror = () => reject(new Error('Grade 7 learning module unavailable: ' + name));
     document.head.append(el);
   });
-  const ready = load('apl-g7-short-scenes.js').then(() => load('apl-g7-short-solids.js')).then(() => load('apl-g7-short-coordinates.js')).then(() => load('apl-g7-short-proportion.js')).then(() => load('apl-g7-learning.js'));
+  // Each lab needs only its own proof models. Loading every unit here makes
+  // the common entry progressively heavier as the G7 collection grows.
+  const shortModules = {
+    'g7-circle-sector': 'apl-g7-short-scenes.js',
+    'g7-surface-volume': 'apl-g7-short-solids.js',
+    'g7-coordinate-graphs': 'apl-g7-short-coordinates.js',
+    'g7-proportion': 'apl-g7-short-proportion.js',
+    'g7-area': 'apl-g7-short-area.js',
+    'g7-polygons': 'apl-g7-short-polygons.js',
+    'g7-parallel': 'apl-g7-short-parallel.js'
+  };
+  const unit = location.pathname.split('/').pop().replace(/\.html$/, '');
+  const ready = (shortModules[unit] ? load(shortModules[unit]) : Promise.resolve())
+    .then(() => load('apl-g7-learning.js'));
   // This hook runs before the legacy player can substitute its fixed example.
   A.labHooks.unshift(lab => {
     if (!lab.id?.startsWith('g7-') || lab.teach) return;

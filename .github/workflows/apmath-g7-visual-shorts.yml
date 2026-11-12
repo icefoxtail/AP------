@@ -80,3 +80,37 @@ jobs:
             ${{ runner.temp }}/g7-http.log
           retention-days: 14
           if-no-files-found: warn
+  geometry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            apmath/playground
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium and Korean fonts
+        run: |
+          npm install --prefix "$RUNNER_TEMP/g7-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/g7-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+      - name: New geometry questions at four sizes and actual normal-speed playback
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
+          G7_EVIDENCE: ${{ runner.temp }}/g7-geometry-evidence
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/g7-geometry-http.log" 2>&1 &
+          for i in {1..20}; do curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js >/dev/null && break; sleep 1; done
+          node apmath/playground/next/tools/g7-geometry-shorts-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g7-geometry-browser-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/g7-geometry-evidence/
+            ${{ runner.temp }}/g7-geometry-http.log
+          retention-days: 14
+          if-no-files-found: warn
