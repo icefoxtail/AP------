@@ -212,7 +212,7 @@ window.questionBank = [
     "points": 5,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
-    "solution": "직선 $l,m$에 평행한 수평선을 보조선으로 생각하고, 선분 $BC$가 수평선과 이루는 예각을 $\\alpha$라 하자. $A$에서 $AB$와 오른쪽 방향이 이루는 각은 $180^\\circ-145^\\circ=35^\\circ$이다. 평행선의 엇각·동위각에 따라 $x=145^\\circ-\\alpha$, $y=\\alpha+45^\\circ$이므로 $\\alpha$가 소거된다.\\n$\\begin{aligned} x+y&=(145^\\circ-\\alpha)+(\\alpha+45^\\circ) \\\\ &=190^\\circ \\end{aligned}$\\n따라서 정답은 ⑤이다.\\n",
+    "solution": "직선 $l,m$에 평행한 수평선을 보조선으로 생각하고, 선분 $BC$가 수평선과 이루는 예각을 $\\alpha$라 하자. $A$에서 $AB$와 오른쪽 방향이 이루는 각은 $180^\\circ-145^\\circ=35^\\circ$이다. 평행선의 엇각·동위각에 따라 $x=145^\\circ-\\alpha$, $y=\\alpha+45^\\circ$이므로 $\\alpha$가 소거된다.\n$\\begin{aligned} x+y&=(145^\\circ-\\alpha)+(\\alpha+45^\\circ) \\\\ &=190^\\circ \\end{aligned}$\n따라서 정답은 ⑤이다.\n",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -284,7 +284,7 @@ window.questionBank = [
     "points": 5,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
-    "solution": "직선 $AB$와 평행선 $l,m$이 이루는 같은 쪽 내각의 합은 $180^\\circ$이다. 발문에서 점 $A$의 그 내각은 $a+b+35^\\circ$, 점 $B$의 그 내각은 $c+d$이므로\\n$\\begin{aligned} (\\angle a+\\angle b+35^\\circ)+(\\angle c+\\angle d)&=180^\\circ \\\\ \\angle a+\\angle b+\\angle c+\\angle d&=180^\\circ-35^\\circ \\\\ &=145^\\circ \\end{aligned}$\\n따라서 정답은 ⑤이다.\\n",
+    "solution": "직선 $AB$와 평행선 $l,m$이 이루는 같은 쪽 내각의 합은 $180^\\circ$이다. 발문에서 점 $A$의 그 내각은 $a+b+35^\\circ$, 점 $B$의 그 내각은 $c+d$이므로\n$\\begin{aligned} (\\angle a+\\angle b+35^\\circ)+(\\angle c+\\angle d)&=180^\\circ \\\\ \\angle a+\\angle b+\\angle c+\\angle d&=180^\\circ-35^\\circ \\\\ &=145^\\circ \\end{aligned}$\n따라서 정답은 ⑤이다.\n",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
