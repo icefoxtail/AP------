@@ -63,7 +63,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "먼저 완전제곱식으로 고쳐 쓴다.\n$y=-2x^2+4x+3=-2(x-1)^2+5$이다.\n이 포물선은 아래로 열리고 꼭짓점은 $(1,5)$이다.\n$x=1$은 $-2\\le x\\le3$의 내부이므로 꼭짓점의 함숫값 $5$는 최댓값이다.\n따라서 최솟값은 구간의 두 끝점에서 비교한다.\n$f(-2)=-2(-2-1)^2+5=-2\\cdot9+5=-13$,\n$f(3)=-2(3-1)^2+5=-2\\cdot4+5=-3$이다.\n$-13<-3$이므로 최솟값은 $-13$이고, 정답은 ②이다.",
-    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q2-solution.svg",
+    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q2-solution-v2.svg",
     "category": "이차함수의 활용",
     "originalCategory": "이차함수의 활용",
     "standardCourse": "수학(상)",
@@ -89,7 +89,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "하",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선에서 꼭짓점과 닫힌 구간 양 끝점의 위치를 눈금으로 나타낸 그래프.",
+    "solutionImageCaption": "꼭짓점은 구간 안에 있으므로 최솟값은 양 끝에서 비교한다. 축 눈금은 구간의 끝과 꼭짓점, 오른쪽 끝의 함숫값을 확인하게 한다. 정답은 −13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -133,9 +136,9 @@ window.questionBank = [
     "level": "하",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q3-solution.svg",
-    "solutionImageAlt": "a=2, b=5일 때 x=2에서 최댓값 9",
-    "solutionImageCaption": "a=2, b=5일 때 x=2에서 최댓값 9",
+    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)로 표시한 아래로 열린 포물선에서 점 V가 꼭짓점을 가리킨다.",
+    "solutionImageCaption": "f(x)는 문제에서 주어진 이차함수이고 V는 그 꼭짓점이다. 꼭짓점의 위치와 높이를 이용해 계수를 정한다. 정답은 (a,b)=(2,5)이다.",
     "solutionImageSize": "full"
   },
   {
@@ -243,7 +246,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "두 부등식을 각각 푼다.\n$3x\\ge x-2$에서 $x\\ge-1$이고,\n$x+3>2x+a$에서 $x<3-a$이다.\n따라서 연립부등식의 해는 $-1\\le x<3-a$이다.\n해가 없으려면 오른쪽 끝점이 왼쪽 끝점 이하이어야 한다.\n$3-a\\le-1$이므로 $a\\ge4$이다.\n$a$는 정수이므로 최솟값은 $4$이고, 정답은 ④이다.",
-    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q6-solution.svg",
+    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q6-solution-v2.svg",
     "category": "여러 가지 부등식",
     "originalCategory": "여러 가지 부등식",
     "standardCourse": "수학(상)",
@@ -268,7 +271,10 @@ window.questionBank = [
     "level": "중",
     "layoutTag": "grid",
     "wide": false,
-    "metaEvidenceDebt": "EVIDENCE_DEBT: the strict upper endpoint x<3−a is decisive, but the active Condition registry has no separate strict-endpoint key; preserve source strictness in the solution and do not invent a condition key."
+    "metaEvidenceDebt": "EVIDENCE_DEBT: the strict upper endpoint x<3−a is decisive, but the active Condition registry has no separate strict-endpoint key; preserve source strictness in the solution and do not invent a condition key.",
+    "solutionImageAlt": "해설 그림: 위쪽 a=2 사례와 아래쪽 a=6 사례에서 두 부등식 해의 겹침 여부를 비교한 수직선.",
+    "solutionImageCaption": "첫째 부등식의 해 x≥−1과 둘째 부등식의 해를 겹쳐 본다. a=2에서는 공통 구간이 있고 a=6에서는 없다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -288,7 +294,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "교점에서는 두 함수의 $y$값이 같으므로\n$x^2+3x-2=x-k$이다.\n정리하면\n$x^2+2x+k-2=0$이다.\n직선과 포물선이 적어도 한 점에서 만나려면 이 방정식이 실근을 가져야 하므로 판별식이 $0$ 이상이어야 한다.\n$D=2^2-4(k-2)=12-4k\\ge0$,\n따라서 $k\\le3$이다.\n이 범위의 최댓값은 $3$이고, 이때 직선은 포물선에 접한다.\n정답은 ④이다.",
-    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q7-solution-v2.svg",
     "category": "이차방정식과 이차함수의 관계",
     "originalCategory": "이차방정식과 이차함수의 관계",
     "standardCourse": "수학(상)",
@@ -312,7 +318,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 위쪽에는 파란 포물선과 주황 직선이 두 점에서 만나고, 아래쪽에는 만나지 않는 두 그래프.",
+    "solutionImageCaption": "위 예에서는 두 점에서 만나고 아래 예에서는 만나지 않으므로 접하는 경계를 판단한다. 파란 포물선은 y=x²+3x−2, 주황 직선은 y=x−k의 예이다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -418,7 +427,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "복소수에서 $\\sqrt{-u}=i\\sqrt{u}$ ($u>0$)로 둔다.\n먼저 첫째 식을 구간별로 확인한다.\n$x<2$이면\n$\\sqrt{x-2}\\sqrt{x-4}=(i\\sqrt{2-x})(i\\sqrt{4-x})$\n$=-\\sqrt{(2-x)(4-x)}$\n$=-\\sqrt{(x-2)(x-4)}$이므로 성립한다.\n$x=2$에서는 양변이 $0$이다.\n$2<x<4$이면\n$\\sqrt{x-2}\\sqrt{x-4}=i\\sqrt{(x-2)(4-x)}$,\n$-\\sqrt{(x-2)(x-4)}=-i\\sqrt{(x-2)(4-x)}$이므로 성립하지 않는다.\n$x=4$에서는 양변이 $0$이다.\n$x>4$이면\n$\\sqrt{x-2}\\sqrt{x-4}=+\\sqrt{(x-2)(x-4)}$이고 오른쪽은 $-\\sqrt{(x-2)(x-4)}$이므로 성립하지 않는다.\n따라서 첫째 식은 $x\\le2$ 또는 $x=4$에서 성립한다.\n이제 둘째 식을 본다.\n$x<1$이면\n$\\dfrac{\\sqrt{x-1}}{\\sqrt{x-3}}=\\dfrac{i\\sqrt{1-x}}{i\\sqrt{3-x}}$\n$=+\\sqrt{\\dfrac{1-x}{3-x}}$,\n$-\\sqrt{\\dfrac{x-1}{x-3}}=-\\sqrt{\\dfrac{1-x}{3-x}}$이므로 성립하지 않는다.\n$x=1$에서는 양변이 $0$이다.\n$1<x<3$이면\n$\\dfrac{\\sqrt{x-1}}{\\sqrt{x-3}}=\\dfrac{\\sqrt{x-1}}{i\\sqrt{3-x}}$\n$=-i\\sqrt{\\dfrac{x-1}{3-x}}$,\n$-\\sqrt{\\dfrac{x-1}{x-3}}=-\\sqrt{-\\dfrac{x-1}{3-x}}$\n$=-i\\sqrt{\\dfrac{x-1}{3-x}}$이므로 성립한다.\n$x=3$에서는 분모가 $0$이라 식이 정의되지 않는다.\n$x>3$이면 왼쪽은 양수이고 오른쪽은 음수여서 성립하지 않는다.\n따라서 둘째 식은 $1\\le x<3$에서 성립한다.\n두 조건의 교집합은 $[1,2]$이다.\n이 범위에서\n$\\sqrt{(x-2)^2}=|x-2|$\n$=2-x$,\n$|x+1|=x+1$이다.\n따라서\n$\\sqrt{(x-2)^2}+|x+1|=(2-x)+(x+1)$\n$=3$이다.\n정답은 ⑤이다.",
-    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q10-solution.svg",
+    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q10-solution-v2.svg",
     "category": "복소수",
     "originalCategory": "복소수",
     "standardCourse": "수학(상)",
@@ -446,7 +455,10 @@ window.questionBank = [
     "level": "상",
     "layoutTag": "grid",
     "wide": false,
-    "metaEvidenceDebt": "EVIDENCE_DEBT: high1 record H1-RPM-031 is DIRECT_BINDING_GAP. It describes complex-root/imaginary-root conditions; the active PT is exact, while the active real/imaginary constraint template is a semantic fit but lacks this subunit binding. Confirm in R1."
+    "metaEvidenceDebt": "EVIDENCE_DEBT: high1 record H1-RPM-031 is DIRECT_BINDING_GAP. It describes complex-root/imaginary-root conditions; the active PT is exact, while the active real/imaginary constraint template is a semantic fit but lacks this subunit binding. Confirm in R1.",
+    "solutionImageAlt": "해설 그림: x≤2와 1≤x<3의 공통 구간을 나타낸 수직선.",
+    "solutionImageCaption": "첫째 식의 해는 x≤2 또는 x=4이고, x=4는 둘째 범위 1≤x<3에 속하지 않는다. 수직선은 두 조건의 공통 범위를 나타낸다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -466,7 +478,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "두 그래프가 $(2,1)$에서 접하므로\n$f(x)-(2x-3)$은 $x=2$를 중근으로 갖는다.\n따라서\n$f(x)-(2x-3)=(x-2)^2$이다.\n좌변을 정리하면\n$x^2+ax+b-(2x-3)=x^2+(a-2)x+(b+3)$이다.\n$(x-2)^2=x^2-4x+4$와 계수를 비교하여\n$a-2=-4$, $b+3=4$를 얻는다.\n따라서 $a=-2$, $b=1$이고\n$a-b=-3$이다.\n정답은 ①이다.",
-    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q11-solution-v2.svg",
     "category": "이차방정식과 이차함수의 관계",
     "originalCategory": "이차방정식과 이차함수의 관계",
     "standardCourse": "수학(상)",
@@ -490,7 +502,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 파란 포물선과 주황 직선이 주어진 점 P에서 접하는 그래프.",
+    "solutionImageCaption": "파란 포물선 f(x)와 주황 직선 y=2x−3은 P=(2,1)에서 접한다. 접점의 x좌표가 중근이 됨을 이용한다. 정답은 −3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -510,7 +525,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "접선이면 교점 방정식이 중근을 가지므로 판별식이 $0$이다.\n두 식을 같게 놓으면\n$x^2-2ax+a^2+2a=mx+n$,\n즉 $x^2-(2a+m)x+(a^2+2a-n)=0$이다.\n판별식은\n$\\Delta=(2a+m)^2-4(a^2+2a-n)\n=4a(m-2)+m^2+4n$이다.\n이 값이 모든 실수 $a$에 대하여 $0$이어야 한다.\n따라서 $a$의 계수와 상수항이 각각 $0$이므로\n$m-2=0$, $m^2+4n=0$이다.\n$m=2$를 대입하면 $n=-1$이다.\n따라서 $m+n=1$이고, 정답은 ③이다.",
-    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q12-solution-v2.svg",
     "category": "이차방정식과 이차함수의 관계",
     "originalCategory": "이차방정식과 이차함수의 관계",
     "standardCourse": "수학(상)",
@@ -534,7 +549,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 위쪽 a=0, 아래쪽 a=2의 예에서 파란 포물선과 같은 주황 직선이 각각 접하는 두 그래프.",
+    "solutionImageCaption": "위 예는 a=0에서 y=x², 아래 예는 a=2에서 y=x²−4x+8이다. 주황 직선 y=mx+n은 두 예에서 같은 직선을 나타내며, 각각 한 점에서 접한다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -665,7 +683,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선 f(x)가 x축과 만나는 A, B를 선분으로 잇고 길이 2√5를 표시한 그래프.",
+    "solutionImageCaption": "파란 곡선 f(x)는 문제의 이차함수이며 A, B는 x절편이다. 선분 AB의 길이는 2√5이다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -688,7 +710,7 @@ window.questionBank = [
     "image": "assets/images/19_순천고_1학기_중간_고1_기출/q16.png",
     "answer": "③",
     "solution": "포물선을 꼭짓점이 보이는 꼴로 고치면\n$y=-x^2+6x=-(x-3)^2+9$이다.\n직사각형의 왼쪽·오른쪽 아래 꼭짓점을 $A=(t,0)$, $B=(s,0)$라 두자.\n그림처럼 윗변이 수평이므로 $D$, $C$의 높이가 같다.\n두 점이 포물선 위에 있으므로\n$-t^2+6t=-s^2+6s$,\n$(s-t)(s+t-6)=0$이다.\n$A$가 $B$의 왼쪽이므로 $s>t$이고, 따라서 $s+t=6$이다.\n그래서 $s=6-t$이며, $C,D$가 제1사분면에 있고 $s>t$이므로 $0<t<3$이다.\n밑변과 높이는\n$AB=s-t=6-2t$,\n$AD=-t^2+6t$이다.\n둘레는\n$P=2(AB+AD)$,\n$P=2\\{(6-2t)+(-t^2+6t)\\}$,\n$P=-2t^2+8t+12=-2(t-2)^2+20$이다.\n$t=2$는 $0<t<3$ 안에 있으므로 둘레는 $t=2$일 때 최대이다.\n이때 $AB=4-2=2$, $AD=-2^2+6\\cdot2=8$이다.\n따라서 넓이는 $2\\cdot8=16$이고 정답은 ③이다.",
-    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q16-solution-v2.svg",
     "category": "이차함수의 활용",
     "originalCategory": "이차함수의 활용",
     "standardCourse": "수학(상)",
@@ -714,7 +736,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 예: 점선 대칭축 x=3과 파란 포물선 위의 같은 높이 두 점으로 만든 직사각형.",
+    "solutionImageCaption": "파란 포물선 위에서 대칭축 x=3에 대해 대칭인 두 점을 고르면 같은 높이의 직사각형이 만들어진다. 그림은 한 예이다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -781,7 +806,7 @@ window.questionBank = [
     "image": "assets/images/19_순천고_1학기_중간_고1_기출/q18.png",
     "answer": "③",
     "solution": "$A$를 원점으로 두면 조형물은 $x=0$, $x=7$에서 지면과 만난다.\n따라서 포물선을 $y=cx(x-7)$로 놓는다.\n폭의 중점은 $x=\\dfrac72$이고, 그곳의 높이가 $\\dfrac{49}{4}$이므로\n$c\\cdot\\dfrac72\\left(-\\dfrac72\\right)=\\dfrac{49}{4}$,\n$-\\dfrac{49}{4}c=\\dfrac{49}{4}$,\n$c=-1$이다.\n그래서 조형물의 식은 $y=-x^2+7x$이다.\n조명은 $L=(0,16)$에 있으므로 경계 광선을 $y=mx+16$으로 놓는다.\n광선이 포물선에 접할 때의 교점 방정식은\n$-x^2+7x=mx+16$,\n$x^2+(m-7)x+16=0$이다.\n접하려면 이 방정식이 중근을 가져야 하므로\n$D=(m-7)^2-4\\cdot1\\cdot16=0$,\n$(m-7)^2=64$,\n$m=15$ 또는 $m=-1$이다.\n$m=15$일 때 방정식은 $(x+4)^2=0$이어서 접점은 $x=-4$이다. 이 점은 조형물의 구간 $0\\le x\\le7$ 밖에 있다.\n$m=-1$일 때 방정식은 $(x-4)^2=0$이어서 접점 $x=4$가 조형물 위에 있고, 그림자 끝 $C$가 $B$의 오른쪽에 생기는 경계 광선이다.\n이 광선은 $y=-x+16$이고, 지면에서는 $y=0$이므로\n$0=-x+16$,\n$x=16$이다.\n$A=(0,0)$이므로 $AC=16\\,\\mathrm{m}$이고 정답은 ③이다.",
-    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q18-solution-v2.svg",
     "category": "이차방정식과 이차함수의 관계",
     "originalCategory": "이차방정식과 이차함수의 관계",
     "standardCourse": "수학(상)",
@@ -805,7 +830,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 파란 포물선의 꼭짓점 V, 조명 L, 접점 T, 지면 교점 A와 B 및 주황 경계 광선을 나타낸 그래프.",
+    "solutionImageCaption": "A=(0,0), B=(7,0)로 AB=7 m이고 L=(0,16)은 조명 위치이다. 포물선의 꼭짓점은 V=(7/2,49/4), 접점은 T=(4,12)이다. 정답은 AC=16 m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -859,7 +887,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$-x^2+4x-4$",
     "solution": "직선과의 교점의 $x$좌표가 $2$, $4$이고 이차함수의 최고차항 계수가 $a$이므로\n$f(x)-(2ax+4)=a(x-2)(x-4)$이다.\n이를 풀어 쓰면\n$f(x)=2ax+4+a(x-2)(x-4)$,\n$f(x)=ax^2-4ax+8a+4$이다.\n구간의 양 끝에서\n$f(2)=4a+4$,\n$f(4)=8a+4$이다.\n$a<0$이므로 포물선은 아래로 열리고 구간의 최솟값은 양 끝에서 얻는다.\n두 끝값의 차는\n$f(4)-f(2)=(8a+4)-(4a+4)=4a<0$이다.\n따라서 최솟값은 $f(4)$이고,\n$8a+4=-4$,\n$a=-1$이다.\n식을 대입하면 $f(x)=-x^2+4x-4$이다.\n실제로 $f(2)=0$, $f(4)=-4$이므로 주어진 구간의 최솟값은 $-4$이다.",
-    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q20-solution-v2.svg",
     "category": "이차함수의 활용",
     "originalCategory": "이차함수의 활용",
     "standardCourse": "수학(상)",
@@ -886,7 +914,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 위쪽은 파란 포물선과 주황 직선의 교점 x=2,4, 아래쪽은 구간 끝값 비교를 나타낸다.",
+    "solutionImageCaption": "위쪽은 파란 포물선 f와 주황 직선 y=2ax+4의 교점 x=2,4를, 아래쪽은 a<0일 때 2≤x≤4의 끝값 비교를 보인다. 정답은 f(x)=−x²+4x−4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -901,7 +932,7 @@ window.questionBank = [
     "choices": [],
     "answer": "2",
     "solution": "식을 한쪽으로 모아 인수분해하면\n$f(x)^3-x^2f(x)-2x^2-3x-1=0$,\n$(f(x)-x-1)\\{f(x)^2+(x+1)f(x)+2x+1\\}=0$이다.\n이 등식은 모든 실수 $x$에서 성립하므로 두 다항식의 곱은 영다항식이다.\n먼저 두 번째 다항식이 항등적으로 $0$일 수 없음을 확인한다.\n$f$의 차수가 $d\\ge2$이면 $f^2$의 차수 $2d$가 나머지 항의 차수보다 커서 없어질 수 없다.\n$f(x)=ax+b$이고 $a>0$이면 두 번째 다항식의 $x^2$ 계수는 $a^2+a>0$이다.\n$f(x)=b$인 상수함수이고 $b>0$이면 그 다항식의 $x$ 계수는 $b+2>0$이다.\n따라서 두 번째 인수는 영다항식이 아니다. 다항식에는 영인수가 없으므로 첫 번째 인수가 영다항식이다.\n$f(x)-x-1=0$,\n$f(x)=x+1$이다.\n교점을 $P=(t,t+1)$이라 두면 제2사분면 또는 그 경계에 있으므로\n$t\\le0$, $t+1\\ge0$,\n$-1\\le t\\le0$이다.\n직선 $y=kx-3k=k(x-3)$는 $C=(3,0)$을 지나고, $y=x+1$은 $A=(-1,0)$을 지난다.\n따라서 삼각형의 밑변은 $AC=3-(-1)=4$, 높이는 $t+1$이다.\n넓이는\n$S=\\dfrac12\\cdot4\\cdot(t+1)=2(t+1)$,\n$t\\le0$이므로 $S\\le2$이다.\n허용된 경계점 $t=0$에서 $P=(0,1)$이고, 이 점과 $C$를 잇는 직선은 $y=-\\dfrac13x+1$이므로 조건을 만족한다.\n이때 $S=2$가 되어 최댓값은 $2$이다.",
-    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q21-solution.svg",
+    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q21-solution-v2.svg",
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "standardCourse": "수학(상)",
@@ -927,6 +958,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 파란 직선과 주황 직선의 교점 P에서 x축으로 내린 점선 높이 PQ, 길이 4인 밑변 AC와 직각 표시.",
+    "solutionImageCaption": "파란 직선은 y=x+1, 주황 직선은 y=k(x−3)이다. P에서 내린 점선 PQ는 AC와 직각이고 밑변 AC의 길이는 4이다. 예로 P를 제2사분면에 두어 높이를 나타낸다. 정답은 2이다.",
+    "solutionImageSize": "full"
   }
 ];
