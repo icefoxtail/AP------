@@ -134,7 +134,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "problemTypeKey": null,
-    "templateKey": null
+    "templateKey": null,
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고2_수학I/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육각형의 꼭짓점과 변 BC의 중점 M, 선분 ME가 표시되어 있다.",
+    "solutionImageCaption": "정육각형에서 중점 M과 E를 이은 길이를 좌표로 계산한다. 정답은 2√13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -225,7 +229,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "problemTypeKey": null,
-    "templateKey": null
+    "templateKey": null,
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고2_수학I/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형에 대각선 AC를 그어 두 삼각형으로 나눈 그림.",
+    "solutionImageCaption": "대각선 AC로 나눈 두 삼각형의 넓이를 각각 계산해 합한다. 정답은 3√3+3√21이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -362,7 +370,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "problemTypeKey": null,
-    "templateKey": null
+    "templateKey": null,
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고2_수학I/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위의 A, B, C와 그 위에 놓이지 않은 점 P, 그리고 P에서 각 지점으로 이은 선분이 표시되어 있다.",
+    "solutionImageCaption": "PB와 PC의 거리 차를 이용해 P의 위치를 찾고 PA까지의 거리를 계산한다. 정답은 50√3초이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -407,7 +419,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "problemTypeKey": null,
-    "templateKey": null
+    "templateKey": null,
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고2_수학I/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O의 큰 원 C₁은 파란색, 중심 Q의 작은 원 C₂는 주황색 호로 구분되고, 양의 x좌표 교점 T가 표시되어 있다.",
+    "solutionImageCaption": "파란색 큰 원 C₁(중심 O)과 주황색 작은 원 C₂(중심 Q)에서 n=1 교점 T를 예로 들어 두 원의 방정식을 뺀다. 정답은 20/41이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -682,7 +698,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "problemTypeKey": null,
-    "templateKey": null
+    "templateKey": null,
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내부점 P에서 세 변에 내린 수선의 발 D, E, F와 수직 관계가 표시되어 있다.",
+    "solutionImageCaption": "세 수선으로 생긴 작은 삼각형의 넓이를 구하기 위해 큰 삼각형을 세 부분으로 나눈다. 정답은 19이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -728,7 +748,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "problemTypeKey": null,
-    "templateKey": null
+    "templateKey": null,
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고2_수학I/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 내접한 삼각형 A, B, C에서 AB와 AC의 같은 길이 눈금, 현 BC를 나타낸다.",
+    "solutionImageCaption": "같은 길이 표시로 AB=AC인 대칭 배치를 확인한다. 정답은 320이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -807,7 +831,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "problemTypeKey": null,
-    "templateKey": null
+    "templateKey": null,
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란색 단위원 부채꼴 OAB와 주황색 안쪽 원 C, 접점 P 및 수선의 발 H가 표시되어 있다.",
+    "solutionImageCaption": "파란색 단위원 부채꼴 안의 주황색 원 C를 나타낸다. IP⊥OA와 AH⊥OB를 이용해 삼각형 OPH의 넓이를 구한다. 정답은 (√10−2)/25이다.",
+    "solutionImageSize": "full"
   }
 ];
 window.examData = {

@@ -111,7 +111,11 @@ window.questionBank = [
       "$\\dfrac{5\\sqrt{3}}{3}$"
     ],
     "answer": "④",
-    "solution": "삼각형의 내각의 합은 $180^\\circ$이므로\n$\\angle ACB=180^\\circ-75^\\circ-45^\\circ=60^\\circ$이다.\n외접원의 반지름을 $R$이라 하면 사인법칙에서\n$\\dfrac{\\overline{AB}}{\\sin\\angle ACB}=2R$이다.\n주어진 값을 대입하면\n$\\dfrac{4}{\\sin60^\\circ}=2R$,\n$\\dfrac{4}{\\sqrt3/2}=2R$,\n$\\dfrac{8}{\\sqrt3}=2R$,\n$R=\\dfrac{4}{\\sqrt3}=\\dfrac{4\\sqrt3}{3}$이다.\n따라서 정답은 ④이다."
+    "solution": "삼각형의 내각의 합은 $180^\\circ$이므로\n$\\angle ACB=180^\\circ-75^\\circ-45^\\circ=60^\\circ$이다.\n외접원의 반지름을 $R$이라 하면 사인법칙에서\n$\\dfrac{\\overline{AB}}{\\sin\\angle ACB}=2R$이다.\n주어진 값을 대입하면\n$\\dfrac{4}{\\sin60^\\circ}=2R$,\n$\\dfrac{4}{\\sqrt3/2}=2R$,\n$\\dfrac{8}{\\sqrt3}=2R$,\n$R=\\dfrac{4}{\\sqrt3}=\\dfrac{4\\sqrt3}{3}$이다.\n따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/22_금당고_1학기_기말_고2_수학I/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC가 외접원에 놓이고, 중심 O와 세 내각 및 변 AB=4를 보인다.",
+    "solutionImageCaption": "삼각형의 내각의 합으로 ∠C를 구한 뒤 사인법칙을 적용한다. AB는 ∠C의 맞은편 변이며, 외접원의 반지름을 R이라 두어 계산한다. 정답은 4√3/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -195,7 +199,11 @@ window.questionBank = [
       "$-\\dfrac{3}{4}$"
     ],
     "answer": "⑤",
-    "solution": "선분 $AB$가 반원의 지름이므로 $\\angle ACB=90^\\circ$이다.\n따라서\n$\\alpha+\\beta=90^\\circ$이다.\n구하려는 식은\n$\\cos(\\alpha+2\\beta)=\\cos(90^\\circ+\\beta)=-\\sin\\beta$이다.\n또\n$\\sin(\\alpha-\\beta)=\\sin(90^\\circ-2\\beta)=\\cos2\\beta=-\\dfrac18$이다.\n선분 $AB$의 중점을 $O$라 하면 $O$는 반원의 중심이므로\n$OA=OB=OC=2$이다.\n삼각형 $OBC$는 $OB=OC$인 이등변삼각형이고 $\\angle OBC=\\beta$이므로\n$\\angle BOC=180^\\circ-2\\beta$이다.\n점 $A,O,B$가 일직선 위에 있으므로\n$\\angle AOC=180^\\circ-\\angle BOC=2\\beta$이다.\n삼각형 $AOC$에 코사인법칙을 적용하면\n$AC^2=OA^2+OC^2-2\\cdot OA\\cdot OC\\cos2\\beta$\n$=2^2+2^2-2\\cdot2\\cdot2\\left(-\\dfrac18\\right)$\n$=8+1=9$이다.\n길이는 양수이므로 $AC=3$이다.\n직각삼각형 $ABC$에서\n$\\sin\\beta=\\dfrac{AC}{AB}=\\dfrac34$이다.\n따라서\n$\\cos(\\alpha+2\\beta)=-\\dfrac34$이고 정답은 ⑤이다."
+    "solution": "선분 $AB$가 반원의 지름이므로 $\\angle ACB=90^\\circ$이다.\n따라서\n$\\alpha+\\beta=90^\\circ$이다.\n구하려는 식은\n$\\cos(\\alpha+2\\beta)=\\cos(90^\\circ+\\beta)=-\\sin\\beta$이다.\n또\n$\\sin(\\alpha-\\beta)=\\sin(90^\\circ-2\\beta)=\\cos2\\beta=-\\dfrac18$이다.\n선분 $AB$의 중점을 $O$라 하면 $O$는 반원의 중심이므로\n$OA=OB=OC=2$이다.\n삼각형 $OBC$는 $OB=OC$인 이등변삼각형이고 $\\angle OBC=\\beta$이므로\n$\\angle BOC=180^\\circ-2\\beta$이다.\n점 $A,O,B$가 일직선 위에 있으므로\n$\\angle AOC=180^\\circ-\\angle BOC=2\\beta$이다.\n삼각형 $AOC$에 코사인법칙을 적용하면\n$AC^2=OA^2+OC^2-2\\cdot OA\\cdot OC\\cos2\\beta$\n$=2^2+2^2-2\\cdot2\\cdot2\\left(-\\dfrac18\\right)$\n$=8+1=9$이다.\n길이는 양수이므로 $AC=3$이다.\n직각삼각형 $ABC$에서\n$\\sin\\beta=\\dfrac{AC}{AB}=\\dfrac34$이다.\n따라서\n$\\cos(\\alpha+2\\beta)=-\\dfrac34$이고 정답은 ⑤이다.",
+    "solutionImage": "assets/images/22_금당고_1학기_기말_고2_수학I/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 윗반원 안에 직각삼각형 ABC가 있고 지름 AB=4, 중심 O, 각 α·β·2β, 파란색 같은 길이 눈금이 표시되어 있다.",
+    "solutionImageCaption": "지름 AB=4에서 중심 O를 잡고 파란색 눈금으로 OA=OB=OC를 확인한다. ∠AOC=2β이며, cos2β=−1/8을 코사인법칙에 적용해 AC를 구한다. 이어 직각삼각형 ABC에서 sinβ를 계산한다. 정답은 −3/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -209,7 +217,11 @@ window.questionBank = [
       "380"
     ],
     "answer": "①",
-    "solution": "$t=\\dfrac{\\pi}{2^n}x$라 두면 $0\\le x<2^{n+1}$에서 $0\\le t<2\\pi$이다.\n이 범위에서 $\\cos t\\le-\\dfrac12$인 구간은\n$\\dfrac{2\\pi}{3}\\le t\\le\\dfrac{4\\pi}{3}$이다.\n$t=\\dfrac{\\pi}{2^n}x$를 대입하면\n$\\dfrac{2\\pi}{3}\\le\\dfrac{\\pi x}{2^n}\\le\\dfrac{4\\pi}{3}$,\n$\\dfrac{2^{n+1}}3\\le x\\le\\dfrac{2^{n+2}}3$이다.\n각 $n$에 대하여 위 구간에 들어가는 자연수를 센다.\n$n=1$: $\\dfrac43\\le x\\le\\dfrac83$에서 $x=2$, 따라서 $a_1=1$.\n$n=2$: $\\dfrac83\\le x\\le\\dfrac{16}3$에서 $x=3,4,5$, 따라서 $a_2=3$.\n$n=3$: $x=6,\\ldots,10$이므로 $a_3=10-6+1=5$.\n$n=4$: $x=11,\\ldots,21$이므로 $a_4=21-11+1=11$.\n$n=5$: $x=22,\\ldots,42$이므로 $a_5=42-22+1=21$.\n$n=6$: $x=43,\\ldots,85$이므로 $a_6=85-43+1=43$.\n$n=7$: $x=86,\\ldots,170$이므로 $a_7=170-86+1=85$.\n$n=8$: $x=171,\\ldots,341$이므로 $a_8=341-171+1=171$.\n그러므로\n$\\displaystyle\\sum_{n=1}^{8}a_n=1+3+5+11+21+43+85+171=340$이다.\n따라서 정답은 ①이다."
+    "solution": "$t=\\dfrac{\\pi}{2^n}x$라 두면 $0\\le x<2^{n+1}$에서 $0\\le t<2\\pi$이다.\n이 범위에서 $\\cos t\\le-\\dfrac12$인 구간은\n$\\dfrac{2\\pi}{3}\\le t\\le\\dfrac{4\\pi}{3}$이다.\n$t=\\dfrac{\\pi}{2^n}x$를 대입하면\n$\\dfrac{2\\pi}{3}\\le\\dfrac{\\pi x}{2^n}\\le\\dfrac{4\\pi}{3}$,\n$\\dfrac{2^{n+1}}3\\le x\\le\\dfrac{2^{n+2}}3$이다.\n각 $n$에 대하여 위 구간에 들어가는 자연수를 센다.\n$n=1$: $\\dfrac43\\le x\\le\\dfrac83$에서 $x=2$, 따라서 $a_1=1$.\n$n=2$: $\\dfrac83\\le x\\le\\dfrac{16}3$에서 $x=3,4,5$, 따라서 $a_2=3$.\n$n=3$: $x=6,\\ldots,10$이므로 $a_3=10-6+1=5$.\n$n=4$: $x=11,\\ldots,21$이므로 $a_4=21-11+1=11$.\n$n=5$: $x=22,\\ldots,42$이므로 $a_5=42-22+1=21$.\n$n=6$: $x=43,\\ldots,85$이므로 $a_6=85-43+1=43$.\n$n=7$: $x=86,\\ldots,170$이므로 $a_7=170-86+1=85$.\n$n=8$: $x=171,\\ldots,341$이므로 $a_8=341-171+1=171$.\n그러므로\n$\\displaystyle\\sum_{n=1}^{8}a_n=1+3+5+11+21+43+85+171=340$이다.\n따라서 정답은 ①이다.",
+    "solutionImage": "assets/images/22_금당고_1학기_기말_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 3분의 16과 3분의 32를 양끝으로 하는 닫힌 구간과 그 안의 정수 x 다섯 개를 보인다.",
+    "solutionImageCaption": "예: n=3에서 정수 x의 범위는 3분의 16부터 3분의 32까지이다. 구간 안의 정수를 세는 방법을 나타낸다. 정답은 340이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -231,7 +243,11 @@ window.questionBank = [
     "content": "[단답형 1] $-n\\pi < x \\le n\\pi$에서 정의된 두 함수 $f(x)=\\tan x$, $g(x)=\\sin x$에 대하여 방정식 $f(x)=g(x)$의 서로 다른 실근의 개수를 $a_n$이라 할 때, $\\sum_{k=1}^{15} a_k$의 값을 구하시오. [5점]",
     "choices": [],
     "answer": "240",
-    "solution": "$f(x)=g(x)$에서 $\\tan x=\\sin x$이다.\n$\\tan x$가 정의되려면 $\\cos x\\ne0$이어야 한다.\n$\\tan x=\\dfrac{\\sin x}{\\cos x}$이므로 양변에 $\\cos x$를 곱하면\n$\\sin x=\\sin x\\cos x$,\n$\\sin x(1-\\cos x)=0$이다.\n따라서 $\\sin x=0$ 또는 $\\cos x=1$이다.\n$\\cos x=1$인 각도 $x=2k\\pi$는 이미 $\\sin x=0$에 포함된다.\n그러므로 서로 다른 실근은 $x=k\\pi$ ($k$는 정수)이다.\n주어진 범위를 대입하면\n$-n\\pi<k\\pi\\le n\\pi$,\n$-n<k\\le n$이다.\n가능한 정수 $k$는 $-n+1,-n+2,\\ldots,n$으로 모두 $2n$개이다.\n따라서 $a_n=2n$이고,\n$\\displaystyle\\sum_{k=1}^{15}a_k=2(1+2+\\cdots+15)$\n$=2\\cdot\\dfrac{15\\cdot16}{2}$\n$=240$이다."
+    "solution": "$f(x)=g(x)$에서 $\\tan x=\\sin x$이다.\n$\\tan x$가 정의되려면 $\\cos x\\ne0$이어야 한다.\n$\\tan x=\\dfrac{\\sin x}{\\cos x}$이므로 양변에 $\\cos x$를 곱하면\n$\\sin x=\\sin x\\cos x$,\n$\\sin x(1-\\cos x)=0$이다.\n따라서 $\\sin x=0$ 또는 $\\cos x=1$이다.\n$\\cos x=1$인 각도 $x=2k\\pi$는 이미 $\\sin x=0$에 포함된다.\n그러므로 서로 다른 실근은 $x=k\\pi$ ($k$는 정수)이다.\n주어진 범위를 대입하면\n$-n\\pi<k\\pi\\le n\\pi$,\n$-n<k\\le n$이다.\n가능한 정수 $k$는 $-n+1,-n+2,\\ldots,n$으로 모두 $2n$개이다.\n따라서 $a_n=2n$이고,\n$\\displaystyle\\sum_{k=1}^{15}a_k=2(1+2+\\cdots+15)$\n$=2\\cdot\\dfrac{15\\cdot16}{2}$\n$=240$이다.",
+    "solutionImage": "assets/images/22_금당고_1학기_기말_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: −2보다 크고 2 이하인 k의 범위와 그 안의 정수 −1, 0, 1, 2를 보인다.",
+    "solutionImageCaption": "예: n=2에서 해 x=kπ에 대응하는 정수 k의 위치를 나타낸다. 열린 왼쪽 끝과 닫힌 오른쪽 끝의 차이를 확인한다. 정답은 240이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
