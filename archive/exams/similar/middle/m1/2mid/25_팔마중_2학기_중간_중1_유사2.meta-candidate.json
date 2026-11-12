@@ -3,7 +3,7 @@
   "requestId": "similar-25-palma-m1-2mid-v2-candidate-v1",
   "examUid": "25_팔마중_2학기_중간_중1_유사2",
   "sourceArchiveFile": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사2.js",
-  "expectedSourceBlobSha1": "f4c96c884a7f2481998c53836b659697a554b987",
+  "expectedSourceBlobSha1": "6c3760cbcfbad3e0f98c4d28f1370c0e9101103c",
   "expectedQuestionCount": 24,
   "sourceProvenance": {
     "driveDocumentId": "1Wlrc5c5_K3xWD4HH4Gj1Wv5w-cdwiKxjk82KBsLxG20",
@@ -42,6 +42,18 @@
         "before": "The stem excluded A and B even though they do not lie on the perpendicular bisector, and allowed P=M; truth was also not explicitly scoped as an invariant property for an arbitrary P.",
         "after": "Specified P as an arbitrary point on l distinct from M and asked which statements are always true from the conditions.",
         "independentCheck": "Set A=(-a,0), B=(a,0), M=(0,0), l as the y-axis, and P=(0,t), t≠0. Then l⊥AB, the perpendicular foot from P to AB is M, and dist(P,AB)=PM=|t|. AM=a is not always equal to |t|, so only ㄱ, ㄷ, ㄹ are guaranteed; choice ④. The stem does not reveal the answer."
+      },
+      {
+        "scope": "Q8 stem",
+        "before": "The zigzag angles lacked line and vertex placement, so ∠x could not be identified from the text alone.",
+        "after": "Specified l above m, A on l, C on m, B between the lines and to the right of A,C; defined x=∠ABC and retained the parallel p,q same-side interior-angle condition.",
+        "independentCheck": "At B, ray BA points up-left and makes 25° with the parallel horizontal; ray BC points down-left and makes 35° with it, so ∠ABC=25°+35°=60°. For p∥q, y+z=180°. Thus x+y+z=240°, choice ⑤. The stem does not disclose the result."
+      },
+      {
+        "scope": "Q20 stem",
+        "before": "“A regular pentagon between two parallel lines” did not identify which vertices lay on the lines or the direction of its lower side; the requested angle could vary with placement/orientation.",
+        "after": "Specified horizontal l above m, A on m, D on l, B to the right of A, and directed acute angle 24° from the rightward ray of m to AB; asked for the acute angle of CD with l.",
+        "independentCheck": "Set m horizontal and AB direction 24°. In the convex vertex order A→B→C→D→E, each exterior turn is +72°, so BC is at 96° and CD at 168°. The acute angle of CD with horizontal l is 12°, choice ②. This orientation places D above A as stated. The stem does not disclose the result."
       }
     ],
     "variantDecision": {
@@ -194,22 +206,21 @@
       "sourceOrdinal": 8,
       "problem": {
         "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "need": "REQUIRED",
+        "need": "HELPFUL",
         "currentCandidateAsset": null,
         "existingMainAsset": "assets/images/25_팔마중_2학기_중간_중1_유사/q08.svg",
-        "reuseStatus": "NOT_REUSABLE_PARAMETER_OR_CONTENT_MISMATCH"
+        "reuseStatus": "NOT_REUSABLE_PARAMETER_OR_CONTENT_MISMATCH",
+        "reason": "The stem now fixes orientation and angle placement; an illustration would aid visual reading but is not required to determine a unique answer. No variant asset."
       },
       "solution": {
         "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "need": "REQUIRED",
+        "need": "HELPFUL",
         "currentCandidateAsset": null,
         "existingMainAsset": "assets/images/25_팔마중_2학기_중간_중1_유사/q08.svg",
-        "reuseStatus": "NOT_REUSABLE_PARAMETER_OR_CONTENT_MISMATCH"
+        "reuseStatus": "NOT_REUSABLE_PARAMETER_OR_CONTENT_MISMATCH",
+        "reason": "A diagram can reinforce the angle chase and turning directions; no variant solution asset."
       },
-      "reason": {
-        "problem": "두 번째 평행선 쌍 p∥q와 횡단선, 동측내각 y,z를 함께 보여 주고, 첫 번째 꺾인 선의 25°·35° 위치 및 x 방향을 특정하는 문제 그림이 필요하다. 이전 main판 q08.svg는 42°·38°만 표시하고 y,z 조건이 없어서 재사용할 수 없다.",
-        "solution": "첫 번째 꺾인 선의 각을 25°+35°로 나누는 보조 평행선과 p∥q의 y+z=180°를 같은 문항 배열에 대응시켜 보이는 해설 그림이 필요하다. 이전 main판 q08.svg는 숫자·구성이 달라 재사용할 수 없다."
-      }
+      "reason": "Explicit placement conditions now determine the answer from text alone; a variant-matched diagram remains helpful but is still deferred to the later SVG batch."
     },
     {
       "sourceOrdinal": 9,
@@ -371,22 +382,21 @@
       "sourceOrdinal": 20,
       "problem": {
         "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "need": "REQUIRED",
+        "need": "HELPFUL",
         "currentCandidateAsset": null,
         "existingMainAsset": "assets/images/25_팔마중_2학기_중간_중1_유사/q20.svg",
-        "reuseStatus": "NOT_REUSABLE_PARAMETER_OR_CONTENT_MISMATCH"
+        "reuseStatus": "NOT_REUSABLE_PARAMETER_OR_CONTENT_MISMATCH",
+        "reason": "The stem now fixes orientation and angle placement; an illustration would aid visual reading but is not required to determine a unique answer. No variant asset."
       },
       "solution": {
         "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "need": "REQUIRED",
+        "need": "HELPFUL",
         "currentCandidateAsset": null,
         "existingMainAsset": "assets/images/25_팔마중_2학기_중간_중1_유사/q20.svg",
-        "reuseStatus": "NOT_REUSABLE_PARAMETER_OR_CONTENT_MISMATCH"
+        "reuseStatus": "NOT_REUSABLE_PARAMETER_OR_CONTENT_MISMATCH",
+        "reason": "A diagram can reinforce the angle chase and turning directions; no variant solution asset."
       },
-      "reason": {
-        "problem": "정오각형이 두 평행선 사이에 놓인 꼭짓점 순서, 24°인 아래쪽 변, 위쪽 변의 위치를 특정하는 문제 그림이 필요하다. 이전 main판 q20.svg는 14°를 표시하므로 재사용할 수 없다.",
-        "solution": "외각 72° 두 번의 방향 변화와 아래 24°에서 위쪽 각 x=12°로 가는 경로를 표시하는 해설 그림이 필요하다. 기존 q20.svg는 14° 판본이므로 재사용하지 않는다."
-      }
+      "reason": "Explicit placement conditions now determine the answer from text alone; a variant-matched diagram remains helpful but is still deferred to the later SVG batch."
     },
     {
       "sourceOrdinal": 21,
@@ -1857,6 +1867,6 @@
     }
   ],
   "validation": {
-    "mathReview": "Q3/Q13 notation and Q5/Q17 stem corrections independently checked; remaining items not marked PASS."
+    "mathReview": "Q8/Q20 placement and angle calculations independently checked; other items remain at their recorded review status."
   }
 }
