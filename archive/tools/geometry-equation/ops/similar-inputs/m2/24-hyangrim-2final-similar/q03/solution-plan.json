@@ -1,0 +1,279 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H",
+    "J"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "DJ",
+      "refs": [
+        "D",
+        "J"
+      ]
+    },
+    {
+      "id": "BH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "HJ",
+      "refs": [
+        "H",
+        "J"
+      ]
+    },
+    {
+      "id": "JC",
+      "refs": [
+        "J",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "leg",
+        "ownerSegment": "AB",
+        "text": "10"
+      },
+      {
+        "id": "h",
+        "ownerSegment": "AH",
+        "text": "8"
+      },
+      {
+        "id": "base",
+        "ownerSegment": "BH",
+        "text": "6"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "top",
+        "from": "A",
+        "to": "D",
+        "label": "6",
+        "unit": "cm",
+        "side": "ABOVE",
+        "style": "BAR"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "AH",
+          "DJ"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "BH"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "BH=(18−6)/2=6 · 높이 AH=8 · 넓이 (6+18)×8/2=96cm²",
+  "sourceQuote": "Actual M2 Hyangrim Q3 given lengths and quadrilateral type",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "Actual M2 Hyangrim Q3 given lengths and quadrilateral type",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "H",
+        "J"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "pointNames": {
+    "J": "H'"
+  },
+  "rightAngles": [
+    {
+      "id": "height",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}
