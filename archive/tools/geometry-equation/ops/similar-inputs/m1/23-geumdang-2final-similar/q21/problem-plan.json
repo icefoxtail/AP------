@@ -1,0 +1,193 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "axisScale": {
+      "x": 64,
+      "y": 1
+    },
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "200",
+        "1000"
+      ]
+    },
+    "axisTitles": {
+      "x": "시간(분)",
+      "y": "거리(m)"
+    },
+    "curves": [
+      {
+        "coefficients": [
+          "0",
+          "500"
+        ],
+        "color": "BLUE",
+        "id": "f",
+        "kind": "LINE",
+        "label": "f",
+        "domain": [
+          "-1",
+          "15"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "100"
+        ],
+        "color": "WARM",
+        "id": "g",
+        "kind": "LINE",
+        "label": "g",
+        "domain": [
+          "-1",
+          "15"
+        ]
+      }
+    ],
+    "family": "multi-curve",
+    "overlays": {
+      "guides": [
+        {
+          "axis": "BOTH",
+          "from": "A",
+          "id": "a"
+        },
+        {
+          "axis": "BOTH",
+          "from": "B",
+          "id": "b"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "1000"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "200"
+        }
+      ]
+    },
+    "domain": [
+      -42.99999999999999,
+      56.99999999999999
+    ],
+    "viewport": [
+      -42.99999999999999,
+      56.99999999999999,
+      -1071.4285714285706,
+      8071.428571428571
+    ],
+    "shapeIntent": "OVERVIEW",
+    "overviewPolicy": "MULTI_CURVE_OVERVIEW_v1",
+    "equalUnits": true,
+    "axisRatio": 0.015625,
+    "plotCanvas": {
+      "width": 448,
+      "height": 640
+    },
+    "multiCurveFeatures": {
+      "schemaVersion": "MULTI_CURVE_FEATURES_v1",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "LINE",
+          "interval": [
+            "-1",
+            "15"
+          ],
+          "coefficients": [
+            "0",
+            "500"
+          ],
+          "color": "BLUE",
+          "label": "f",
+          "branches": [
+            {
+              "side": "FUNCTION",
+              "xInterval": [
+                "-1",
+                "15"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g",
+          "kind": "LINE",
+          "interval": [
+            "-1",
+            "15"
+          ],
+          "coefficients": [
+            "0",
+            "100"
+          ],
+          "color": "WARM",
+          "label": "g",
+          "branches": [
+            {
+              "side": "FUNCTION",
+              "xInterval": [
+                "-1",
+                "15"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "overlaysFeatures": {
+      "schemaVersion": "GRAPH_OVERLAYS_FEATURES_v1",
+      "points": [
+        {
+          "id": "A",
+          "x": 2,
+          "y": 1000,
+          "xExact": "2",
+          "yExact": "1000"
+        },
+        {
+          "id": "B",
+          "x": 2,
+          "y": 200,
+          "xExact": "2",
+          "yExact": "200"
+        }
+      ],
+      "lines": [],
+      "segments": [],
+      "guides": [
+        {
+          "id": "a",
+          "from": "A",
+          "axis": "BOTH",
+          "dashed": true
+        },
+        {
+          "id": "b",
+          "from": "B",
+          "axis": "BOTH",
+          "dashed": true
+        }
+      ],
+      "polygons": []
+    }
+  },
+  "caption": "민수: 파랑 f, 지수: 주황 g · 2분 동안 각각1000m, 200m 이동",
+  "sourceQuote": "현Q21 및보존계획 민수(2,1000),지수(2,200), 목표거리5km",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "동시출발, 2분거리가1000/200m, 도서관5km",
+      "mappedTo": []
+    }
+  ]
+}

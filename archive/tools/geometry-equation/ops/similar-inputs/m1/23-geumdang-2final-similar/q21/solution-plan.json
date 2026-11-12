@@ -1,0 +1,208 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "axisScale": {
+      "x": 64,
+      "y": 1
+    },
+    "axisTickValues": {
+      "x": [
+        "10",
+        "50"
+      ],
+      "y": [
+        "5000"
+      ]
+    },
+    "axisTitles": {
+      "x": "시간(분)",
+      "y": "거리(m)"
+    },
+    "curves": [
+      {
+        "coefficients": [
+          "0",
+          "500"
+        ],
+        "color": "BLUE",
+        "id": "f",
+        "kind": "LINE",
+        "label": "y=500x",
+        "domain": [
+          "-2",
+          "58"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "100"
+        ],
+        "color": "WARM",
+        "id": "g",
+        "kind": "LINE",
+        "label": "y=100x",
+        "domain": [
+          "-2",
+          "58"
+        ]
+      }
+    ],
+    "family": "multi-curve",
+    "overlays": {
+      "guides": [
+        {
+          "axis": "x",
+          "from": "M",
+          "id": "m"
+        },
+        {
+          "axis": "x",
+          "from": "J",
+          "id": "j"
+        }
+      ],
+      "points": [
+        {
+          "id": "M",
+          "x": "10",
+          "y": "5000"
+        },
+        {
+          "id": "J",
+          "x": "50",
+          "y": "5000"
+        }
+      ],
+      "segments": [
+        {
+          "dashed": true,
+          "from": "M",
+          "id": "arrival",
+          "to": "J"
+        }
+      ]
+    },
+    "domain": [
+      -159.49999999999997,
+      215.49999999999997
+    ],
+    "viewport": [
+      -159.49999999999997,
+      215.49999999999997,
+      -3142.8571428571413,
+      31142.85714285714
+    ],
+    "shapeIntent": "OVERVIEW",
+    "overviewPolicy": "MULTI_CURVE_OVERVIEW_v1",
+    "equalUnits": true,
+    "axisRatio": 0.015625,
+    "plotCanvas": {
+      "width": 448,
+      "height": 640
+    },
+    "multiCurveFeatures": {
+      "schemaVersion": "MULTI_CURVE_FEATURES_v1",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "LINE",
+          "interval": [
+            "-2",
+            "58"
+          ],
+          "coefficients": [
+            "0",
+            "500"
+          ],
+          "color": "BLUE",
+          "label": "y=500x",
+          "branches": [
+            {
+              "side": "FUNCTION",
+              "xInterval": [
+                "-2",
+                "58"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g",
+          "kind": "LINE",
+          "interval": [
+            "-2",
+            "58"
+          ],
+          "coefficients": [
+            "0",
+            "100"
+          ],
+          "color": "WARM",
+          "label": "y=100x",
+          "branches": [
+            {
+              "side": "FUNCTION",
+              "xInterval": [
+                "-2",
+                "58"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "overlaysFeatures": {
+      "schemaVersion": "GRAPH_OVERLAYS_FEATURES_v1",
+      "points": [
+        {
+          "id": "M",
+          "x": 10,
+          "y": 5000,
+          "xExact": "10",
+          "yExact": "5000"
+        },
+        {
+          "id": "J",
+          "x": 50,
+          "y": 5000,
+          "xExact": "50",
+          "yExact": "5000"
+        }
+      ],
+      "lines": [],
+      "segments": [
+        {
+          "id": "arrival",
+          "from": "M",
+          "to": "J",
+          "dashed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "m",
+          "from": "M",
+          "axis": "x",
+          "dashed": true
+        },
+        {
+          "id": "j",
+          "from": "J",
+          "axis": "x",
+          "dashed": true
+        }
+      ],
+      "polygons": []
+    }
+  },
+  "caption": "민수 y=500x:10분 · 지수 y=100x:50분 · 도착 차이40분",
+  "sourceQuote": "현Q21 및보존계획 민수(2,1000),지수(2,200), 목표거리5km",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "동시출발, 2분거리가1000/200m, 도서관5km",
+      "mappedTo": []
+    }
+  ]
+}
