@@ -266,7 +266,9 @@ async function run() {
       await page.setViewportSize({ width: 800, height: 1280 });
       await capture(page, 'student-lab-hub-800'); await assertNav(page, 'labs');
       await page.setViewportSize({ width: 390, height: 844 });
-      await page.getByRole('link', { name: /^시작하기 · 삼각형의 성질$/ }).click();
+      // The recommended first lab can change as the grade catalog grows.
+      // Exercise the same triangle destination through its explicit course link.
+      await page.getByRole('link', { name: '삼각형의 성질', exact: true }).click();
       await page.waitForURL(/g8-triangles\.html/); await assertNav(page, 'labs');
       await capture(page, 'student-lab-scene-390');
       await page.setViewportSize({ width: 800, height: 1280 });
