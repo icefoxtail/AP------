@@ -1,0 +1,162 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "M",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 400
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "midpoint",
+        "count": 1,
+        "segments": [
+          "AM",
+          "MB"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "whole",
+        "from": "A",
+        "to": "B",
+        "label": "240",
+        "unit": "m",
+        "style": "BAR",
+        "side": "BELOW",
+        "offsetPx": 75,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "left",
+        "from": "A",
+        "to": "M",
+        "label": "120",
+        "unit": "m",
+        "style": "BAR",
+        "side": "BELOW",
+        "offsetPx": 20,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "right",
+        "from": "M",
+        "to": "B",
+        "label": "120",
+        "unit": "m",
+        "style": "BAR",
+        "side": "BELOW",
+        "offsetPx": 20,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "두 점 사이의 거리 AB=240m · 도로 이동 거리380m와 구별",
+  "sourceQuote": "AB=240m, M은 AB의 중점, 도로 이동 거리380m",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "AB=240m, M은 AB의 중점, 도로 이동 거리380m",
+      "mappedTo": [
+        "A",
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "newVisualInformation": []
+}
