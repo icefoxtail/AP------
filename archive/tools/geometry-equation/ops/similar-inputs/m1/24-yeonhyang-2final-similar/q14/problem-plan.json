@@ -1,0 +1,65 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "a",
+      "kind": "CONE",
+      "radius": 4,
+      "height": 9,
+      "orientation": "APEX_DOWN",
+      "names": {
+        "center": "A",
+        "apex": "P"
+      }
+    },
+    {
+      "id": "b",
+      "kind": "CONE",
+      "radius": 8,
+      "height": 9,
+      "orientation": "APEX_DOWN",
+      "names": {
+        "center": "B",
+        "apex": "Q"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "solid": "a",
+      "radius": "top",
+      "label": "4"
+    },
+    {
+      "solid": "a",
+      "height": true,
+      "label": "9",
+      "side": "RIGHT"
+    },
+    {
+      "solid": "b",
+      "radius": "top",
+      "label": "8"
+    },
+    {
+      "solid": "b",
+      "height": true,
+      "label": "9",
+      "side": "RIGHT"
+    }
+  ],
+  "caption": "원뿔 컵 A: 반지름4, 높이9 / 컵 B: 반지름8, 높이9",
+  "sourceQuote": "컵A r4 h9, 컵B r8 h9",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 컵의 주어진 반지름과 높이",
+      "mappedTo": [
+        "a",
+        "b"
+      ]
+    }
+  ],
+  "newVisualInformation": []
+}
