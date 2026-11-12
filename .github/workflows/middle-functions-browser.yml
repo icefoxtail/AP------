@@ -1,0 +1,98 @@
+name: Middle functions release checks
+
+on:
+  push:
+    branches: ['feat/middle-functions-labs-*']
+    paths:
+      - 'apmath/playground/next/labs/middle-functions/**'
+      - 'apmath/playground/next/labs/g7-coordinate-graphs.html'
+      - 'apmath/playground/next/labs/g7-proportion.html'
+      - 'apmath/playground/next/labs/g8-linear-functions.html'
+      - 'apmath/playground/next/labs/g9-quadratic-functions.html'
+      - 'apmath/playground/next/tools/*middle-functions*'
+      - '.github/workflows/middle-functions-browser.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apmath/playground/next/labs/middle-functions/**'
+      - 'apmath/playground/next/labs/g7-coordinate-graphs.html'
+      - 'apmath/playground/next/labs/g7-proportion.html'
+      - 'apmath/playground/next/labs/g8-linear-functions.html'
+      - 'apmath/playground/next/labs/g9-quadratic-functions.html'
+      - 'apmath/playground/next/tools/*middle-functions*'
+      - '.github/workflows/middle-functions-browser.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: middle-functions-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  math-and-lessons:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            apmath/playground
+            apmath/css
+            apmath/js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check graph domains, source links and native lesson contracts
+        run: node --test apmath/playground/next/tools/lessons.middle-functions.test.mjs apmath/playground/next/tools/catalog.test.mjs
+  browser:
+    needs: math-and-lessons
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        lab: [g7-coordinate-graphs, g7-proportion, g8-linear-functions, g9-quadratic-functions]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            apmath/playground
+            apmath/css
+            apmath/js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/mf-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/mf-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Serve the exact candidate source
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/mf-server.log" 2>&1 &
+          for attempt in {1..20}; do
+            if curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-core.js > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          exit 1
+      - name: All new scene initial figures in five standard environments
+        env:
+          NODE_PATH: ${{ runner.temp }}/mf-browser/node_modules
+          LAB: ${{ matrix.lab }}
+        run: node apmath/playground/next/tools/scene-smoke.mjs --only "$LAB" --report "$RUNNER_TEMP/mf-scene-smoke.json"
+      - name: Single real mobile playback and exploration per new scene
+        if: success() || failure()
+        env:
+          NODE_PATH: ${{ runner.temp }}/mf-browser/node_modules
+          LAB: ${{ matrix.lab }}
+        run: node apmath/playground/next/tools/middle-functions-browser.mjs --only "$LAB" --out "$RUNNER_TEMP/mf-evidence"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-functions-${{ matrix.lab }}-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/mf-evidence
+            ${{ runner.temp }}/mf-scene-smoke.json
+            ${{ runner.temp }}/mf-server.log
+          retention-days: 14
