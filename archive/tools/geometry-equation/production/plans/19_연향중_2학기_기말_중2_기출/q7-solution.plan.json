@@ -1,0 +1,459 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "c²<a²+b²이면 예각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sAB"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sBC",
+                "sCA"
+              ],
+              "color": "BLUE"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "la",
+              "ownerSegment": "sBC",
+              "text": "a",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lb",
+              "ownerSegment": "sCA",
+              "text": "b",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lc",
+              "ownerSegment": "sAB",
+              "text": "c",
+              "ownership": "NEAREST"
+            }
+          ]
+        },
+        "caption": "예각삼각형",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "c²=a²+b²이면 직각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "9",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "12",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sAB"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sBC",
+                "sCA"
+              ],
+              "color": "BLUE"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "la",
+              "ownerSegment": "sBC",
+              "text": "a",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lb",
+              "ownerSegment": "sCA",
+              "text": "b",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lc",
+              "ownerSegment": "sAB",
+              "text": "c",
+              "ownership": "NEAREST"
+            }
+          ]
+        },
+        "caption": "직각삼각형",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        },
+        "rightAngles": [
+          {
+            "id": "rC",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "c²>a²+b²이면 둔각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sAB"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sBC",
+                "sCA"
+              ],
+              "color": "BLUE"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "la",
+              "ownerSegment": "sBC",
+              "text": "a",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lb",
+              "ownerSegment": "sCA",
+              "text": "b",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lc",
+              "ownerSegment": "sAB",
+              "text": "c",
+              "ownership": "NEAREST"
+            }
+          ]
+        },
+        "caption": "둔각삼각형",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        }
+      }
+    }
+  ],
+  "caption": "가장 긴 변을 c(주황색), 나머지 두 변을 a, b(파란색)라 하고 c의 제곱과 a, b의 제곱의 합을 비교하면 삼각형의 종류를 알 수 있다."
+}

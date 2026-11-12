@@ -1,0 +1,31 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "3",
+        "title": "식빵"
+      },
+      {
+        "count": "4",
+        "title": "소스"
+      }
+    ],
+    "join": "TIMES"
+  },
+  "caption": "샌드위치를 주문할 때 식빵을 고르는 방법의 수와 소스를 고르는 방법의 수를 칸에 적은 그림이다. 두 단계를 차례로 거친다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "식빵 3가지 중 한 가지, 소스 4가지 중 한 가지를 고른다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "식빵을 고르는 단계와 소스를 고르는 단계의 가짓수를 칸 두 개로 나누어 보인다."
+  ]
+}

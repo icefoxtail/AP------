@@ -1,0 +1,360 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "330"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lAC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "M",
+    "N",
+    "L"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "ON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "OL",
+      "refs": [
+        "O",
+        "L"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aom",
+        "refs": [
+          "A",
+          "O",
+          "M"
+        ],
+        "value": 60,
+        "color": "GREEN",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eO",
+        "count": 1,
+        "segments": [
+          "OM",
+          "ON",
+          "OL"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "eS",
+        "count": 2,
+        "segments": [
+          "AB",
+          "AC",
+          "BC"
+        ],
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "OA",
+        "text": "r"
+      },
+      {
+        "id": "elAB",
+        "ownerSegment": "AB",
+        "text": "4sqrt(3)",
+        "ownership": "NEAREST"
+      }
+    ]
+  },
+  "caption": "중심에서 세 현까지의 거리가 같으면 세 현의 길이가 같아 삼각형 ABC는 정삼각형이고 직각삼각형 AOM에서 반지름을 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원 O에서 OM=ON=OL이고 AB=4√3 cm인 그림. M, N, L은 중심에서 세 현에 내린 수선의 발이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 거리의 세 현을 같은 길이 표시로 묶고 정삼각형의 세 변과 직각삼각형 AOM의 각 AOM을 보인다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rN",
+      "refs": [
+        "O",
+        "N",
+        "A"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rL",
+      "refs": [
+        "O",
+        "L",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  }
+}

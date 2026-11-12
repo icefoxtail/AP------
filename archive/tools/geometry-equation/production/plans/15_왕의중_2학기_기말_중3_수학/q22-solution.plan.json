@@ -1,0 +1,527 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "sub",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "-6"
+           },
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "2"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-6"
+         },
+         {
+          "kind": "integer",
+          "value": "6"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "A",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aBz0",
+       "refs": [
+        "A",
+        "B",
+        "C"
+       ],
+       "value": 45,
+       "label": "45",
+       "color": "BLUE"
+      },
+      {
+       "id": "aCz0",
+       "refs": [
+        "A",
+        "C",
+        "B"
+       ],
+       "value": 75,
+       "label": "75",
+       "color": "WARM"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lBCz0",
+       "ownerSegment": "sBC",
+       "text": "6sqrt(2)",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "각 B가 45도, 각 C가 75도이고 BC가 6루트2cm인 삼각형이다."
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 BCH"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "H",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "6"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "H",
+     "B",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sHB",
+      "refs": [
+       "H",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCH",
+      "refs": [
+       "C",
+       "H"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aBz1",
+       "refs": [
+        "H",
+        "B",
+        "C"
+       ],
+       "value": 45,
+       "label": "45",
+       "color": "BLUE"
+      },
+      {
+       "id": "aCz1",
+       "refs": [
+        "H",
+        "C",
+        "B"
+       ],
+       "value": 45,
+       "label": "45",
+       "color": "BLUE"
+      }
+     ],
+     "equalLengths": [
+      {
+       "id": "e1z1",
+       "count": 1,
+       "segments": [
+        "sHB",
+        "sCH"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lHBz1",
+       "ownerSegment": "sHB",
+       "text": "6",
+       "unit": "cm"
+      },
+      {
+       "id": "lCHz1",
+       "ownerSegment": "sCH",
+       "text": "6",
+       "unit": "cm"
+      },
+      {
+       "id": "lBCz1",
+       "ownerSegment": "sBC",
+       "text": "6sqrt(2)",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "C에서 AB에 내린 수선의 발 H로 만든 직각이등변삼각형 BCH이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "B",
+       "H",
+       "C"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 ACH"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "H",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "-2"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "6"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "H",
+     "A",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAH",
+      "refs": [
+       "A",
+       "H"
+      ]
+     },
+     {
+      "id": "sHC",
+      "refs": [
+       "H",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aAz2",
+       "refs": [
+        "H",
+        "A",
+        "C"
+       ],
+       "value": 60,
+       "label": "60",
+       "color": "WARM"
+      },
+      {
+       "id": "aCz2",
+       "refs": [
+        "A",
+        "C",
+        "H"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "VIOLET"
+      }
+     ],
+     "dimensions": [
+      {
+       "id": "dAHz2",
+       "from": "A",
+       "to": "H",
+       "label": "2sqrt(3)",
+       "unit": "cm",
+       "side": "BELOW"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lCHz2",
+       "ownerSegment": "sHC",
+       "text": "6",
+       "unit": "cm"
+      },
+      {
+       "id": "lCAz2",
+       "ownerSegment": "sCA",
+       "text": "4sqrt(3)",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "30도, 60도, 90도인 직각삼각형 ACH이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "H",
+       "C"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "각 A는 60도이다. C에서 AB에 수선의 발 H를 내리면 삼각형 BCH는 직각이등변삼각형(파란 두 각)이고 삼각형 ACH는 30도, 60도, 90도 삼각형이다. 세 변 AB, BC, CA의 길이로 둘레와 넓이를 구한다."
+}

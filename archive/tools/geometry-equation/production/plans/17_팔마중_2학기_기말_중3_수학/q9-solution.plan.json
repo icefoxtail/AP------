@@ -1,0 +1,334 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "117",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-44",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-72",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M",
+    "C",
+    "D",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "ON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "OMA90",
+        "refs": [
+          "O",
+          "M",
+          "A"
+        ],
+        "value": 90,
+        "factRole": "GIVEN",
+        "noLabel": true
+      },
+      {
+        "id": "OND90",
+        "refs": [
+          "O",
+          "N",
+          "D"
+        ],
+        "value": 90,
+        "factRole": "GIVEN",
+        "noLabel": true
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eAB",
+        "count": 1,
+        "segments": [
+          "AB",
+          "CD"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "eOR",
+        "count": 2,
+        "segments": [
+          "OA",
+          "OB",
+          "OC",
+          "OD"
+        ],
+        "color": "ROSE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "tOAB",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "A",
+              "B"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tOCD",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    ],
+    "equalAreas": [
+      [
+        "tOAB",
+        "tOCD"
+      ]
+    ]
+  },
+  "caption": "예: 원 O에서 두 현 AB와 CD가 중심에서 같은 거리에 있도록 그린 그림이다. AB⊥OM, CD⊥ON이고 AM=DN이다. 두 현의 상대적 위치는 조건에 없다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB⊥OM, CD⊥ON, AM=DN이며 A·B·C·D는 같은 원 위의 점이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "현의 방향과 길이는 조건을 만족하는 예시이며, 두 현이 평행하거나 호 AC와 BD가 같다는 추가 조건이 아니다. 점 라벨을 지시선으로 분리한다."
+  ]
+}

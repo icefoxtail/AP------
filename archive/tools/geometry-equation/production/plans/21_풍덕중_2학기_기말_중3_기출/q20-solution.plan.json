@@ -1,0 +1,858 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "두 현 AE=2 EC=6 BE=4 ED=3"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "E"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "E"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "E"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "rational",
+                  "numerator": "12",
+                  "denominator": "5"
+                },
+                "dy": {
+                  "kind": "rational",
+                  "numerator": "16",
+                  "denominator": "5"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "E"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "rational",
+                  "numerator": "-9",
+                  "denominator": "5"
+                },
+                "dy": {
+                  "kind": "rational",
+                  "numerator": "-12",
+                  "denominator": "5"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_THROUGH_3",
+              "inputs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 400
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "AE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "EC",
+            "refs": [
+              "E",
+              "C"
+            ]
+          },
+          {
+            "id": "BE",
+            "refs": [
+              "B",
+              "E"
+            ]
+          },
+          {
+            "id": "ED",
+            "refs": [
+              "E",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "AE",
+                "EC"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "BE",
+                "ED"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lAE",
+              "ownerSegment": "AE",
+              "text": "2",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lEC",
+              "ownerSegment": "EC",
+              "text": "6",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lBE",
+              "ownerSegment": "BE",
+              "text": "4",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lED",
+              "ownerSegment": "ED",
+              "text": "3",
+              "ownership": "NEAREST"
+            }
+          ]
+        },
+        "caption": "두 현 AE=2 EC=6 BE=4 ED=3",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "E는 AC와 BD의 교점이고 AE=2, EC=6, BE=4, ED=3이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "길이와 곱을 구별해 보여 주며, 배치 각도는 보기의 조건이 아니라 설명을 위한 예시이다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "두 할선 PD=3 DA=4 PC=2 CB=6"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "7"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 400
+        },
+        "displayPoints": [
+          "P",
+          "D",
+          "A",
+          "C",
+          "B"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "PD",
+            "refs": [
+              "P",
+              "D"
+            ]
+          },
+          {
+            "id": "DA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "PC",
+            "refs": [
+              "P",
+              "C"
+            ]
+          },
+          {
+            "id": "CB",
+            "refs": [
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "DC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lPD",
+              "ownerSegment": "PD",
+              "text": "3",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lDA",
+              "ownerSegment": "DA",
+              "text": "4",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lPC",
+              "ownerSegment": "PC",
+              "text": "2",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lCB",
+              "ownerSegment": "CB",
+              "text": "6",
+              "ownership": "NEAREST"
+            }
+          ]
+        },
+        "caption": "두 할선 PD=3 DA=4 PC=2 CB=6",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "P, D, A와 P, C, B가 각각 한 직선 위에 있고 PD=3, DA=4, PC=2, CB=6이다. 각도는 예시이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "길이와 곱을 구별해 보여 주며, 배치 각도는 보기의 조건이 아니라 설명을 위한 예시이다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 PDC: PD=3, PC=2"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 400
+        },
+        "displayPoints": [
+          "P",
+          "D",
+          "C"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "PD",
+            "refs": [
+              "P",
+              "D"
+            ]
+          },
+          {
+            "id": "PC",
+            "refs": [
+              "P",
+              "C"
+            ]
+          },
+          {
+            "id": "DC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aP",
+              "refs": [
+                "D",
+                "P",
+                "C"
+              ],
+              "value": 60,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "color": "VIOLET",
+              "noLabel": true
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "PD"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "PC"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "DC"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lPD",
+              "ownerSegment": "PD",
+              "text": "3",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lPC",
+              "ownerSegment": "PC",
+              "text": "2",
+              "ownership": "NEAREST"
+            }
+          ]
+        },
+        "caption": "삼각형 PDC: PD=3, PC=2",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "삼각형 PDC의 두 변 PD=3, PC=2이다. 각도는 예시이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "길이와 곱을 구별해 보여 주며, 배치 각도는 보기의 조건이 아니라 설명을 위한 예시이다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 PBA: PB=8, PA=7"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "rational",
+                  "numerator": "7",
+                  "denominator": "2"
+                },
+                "dy": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "7",
+                      "denominator": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 400
+        },
+        "displayPoints": [
+          "P",
+          "B",
+          "A"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "PB",
+            "refs": [
+              "P",
+              "B"
+            ]
+          },
+          {
+            "id": "PA",
+            "refs": [
+              "P",
+              "A"
+            ]
+          },
+          {
+            "id": "BA",
+            "refs": [
+              "B",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aP",
+              "refs": [
+                "B",
+                "P",
+                "A"
+              ],
+              "value": 60,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "color": "VIOLET",
+              "noLabel": true
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "PB"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "PA"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "BA"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lPB",
+              "ownerSegment": "PB",
+              "text": "8",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lPA",
+              "ownerSegment": "PA",
+              "text": "7",
+              "ownership": "NEAREST"
+            }
+          ]
+        },
+        "caption": "삼각형 PBA: PB=8, PA=7",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "삼각형 PBA의 두 변 PB=8, PA=7이다. 각도는 예시이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "길이와 곱을 구별해 보여 주며, 배치 각도는 보기의 조건이 아니라 설명을 위한 예시이다."
+        ]
+      }
+    }
+  ],
+  "caption": "두 현이 만나는 경우는 AE×EC=2×6=12이고 BE×ED=4×3=12로 같으므로 한 원 위에 있다. 두 할선이 만나는 경우 한 원 위에 있다면 삼각형 PDC와 PBA가 닮아 PD×PA=PC×PB이어야 한다. 그런데 PD×PA=3×7=21, PC×PB=2×8=16으로 달라 한 원 위에 있지 않다. 정답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다섯 보기 중 네 점이 한 원 위에 있지 않은 것을 찾는 문제이며, 길이 조건이 있는 두 경우를 비교한다.",
+      "mappedTo": [
+        "panels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 현의 곱과 두 할선의 곱을 비교하고, 한 원 위라고 가정했을 때의 닮음 삼각형을 떼어 놓아 대응을 보인다."
+  ]
+}

@@ -1,0 +1,714 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "47273",
+                    "denominator": "10000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "64539",
+                    "denominator": "10000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "bB",
+              "op": "ANGLE_BISECTOR",
+              "inputs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "args": {
+                "mode": "INTERNAL"
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bC",
+              "op": "ANGLE_BISECTOR",
+              "inputs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "args": {
+                "mode": "INTERNAL"
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "I",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "bB",
+                "bC"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lab",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lbc",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lca",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "C",
+                "A"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "I",
+                "lab"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "I",
+                "lbc"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "I",
+                "lca"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "I",
+                "E"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [
+          "k"
+        ],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "I"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sDB",
+            "refs": [
+              "D",
+              "B"
+            ]
+          },
+          {
+            "id": "sBE",
+            "refs": [
+              "B",
+              "E"
+            ]
+          },
+          {
+            "id": "sEC",
+            "refs": [
+              "E",
+              "C"
+            ]
+          },
+          {
+            "id": "sCF",
+            "refs": [
+              "C",
+              "F"
+            ]
+          },
+          {
+            "id": "sFA",
+            "refs": [
+              "F",
+              "A"
+            ]
+          },
+          {
+            "id": "sID",
+            "refs": [
+              "I",
+              "D"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sIE",
+            "refs": [
+              "I",
+              "E"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sIF",
+            "refs": [
+              "I",
+              "F"
+            ],
+            "dashed": true
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "a",
+              "ownerSegment": "sFA",
+              "text": "3",
+              "unit": "cm"
+            },
+            {
+              "id": "b",
+              "ownerSegment": "sEC",
+              "text": "6",
+              "unit": "cm"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dAB",
+              "from": "A",
+              "to": "B",
+              "label": "8",
+              "unit": "cm",
+              "side": "LEFT",
+              "style": "ARROW",
+              "offset": "AUTO",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "삼각형 ABC와 내접원",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 380
+        },
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "I",
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "r1",
+            "refs": [
+              "I",
+              "E",
+              "B"
+            ]
+          },
+          {
+            "id": "r2",
+            "refs": [
+              "I",
+              "F",
+              "A"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "한 점에서 그은 두 접선의 길이는 같다"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "47273",
+                    "denominator": "10000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "64539",
+                    "denominator": "10000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "bB",
+              "op": "ANGLE_BISECTOR",
+              "inputs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "args": {
+                "mode": "INTERNAL"
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bC",
+              "op": "ANGLE_BISECTOR",
+              "inputs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "args": {
+                "mode": "INTERNAL"
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "I",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "bB",
+                "bC"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lab",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lbc",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lca",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "C",
+                "A"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "I",
+                "lab"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "I",
+                "lbc"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "I",
+                "lca"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "I",
+                "E"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [
+          "k"
+        ],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "I"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sDB",
+            "refs": [
+              "D",
+              "B"
+            ]
+          },
+          {
+            "id": "sBE",
+            "refs": [
+              "B",
+              "E"
+            ]
+          },
+          {
+            "id": "sEC",
+            "refs": [
+              "E",
+              "C"
+            ]
+          },
+          {
+            "id": "sCF",
+            "refs": [
+              "C",
+              "F"
+            ]
+          },
+          {
+            "id": "sFA",
+            "refs": [
+              "F",
+              "A"
+            ]
+          },
+          {
+            "id": "sID",
+            "refs": [
+              "I",
+              "D"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sIE",
+            "refs": [
+              "I",
+              "E"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sIF",
+            "refs": [
+              "I",
+              "F"
+            ],
+            "dashed": true
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "e1",
+              "count": 1,
+              "segments": [
+                "sAD",
+                "sFA"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "id": "e2",
+              "count": 2,
+              "segments": [
+                "sDB",
+                "sBE"
+              ],
+              "color": "WARM"
+            },
+            {
+              "id": "e3",
+              "count": 3,
+              "segments": [
+                "sEC",
+                "sCF"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "a1",
+              "ownerSegment": "sAD",
+              "text": "3",
+              "unit": "cm"
+            },
+            {
+              "id": "a2",
+              "ownerSegment": "sFA",
+              "text": "3",
+              "unit": "cm"
+            },
+            {
+              "id": "b1",
+              "ownerSegment": "sDB",
+              "text": "5",
+              "unit": "cm"
+            },
+            {
+              "id": "b2",
+              "ownerSegment": "sBE",
+              "text": "5",
+              "unit": "cm"
+            },
+            {
+              "id": "c1",
+              "ownerSegment": "sEC",
+              "text": "6",
+              "unit": "cm"
+            },
+            {
+              "id": "c2",
+              "ownerSegment": "sCF",
+              "text": "6",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "접선의 길이",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 380
+        },
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "I",
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "r1",
+            "refs": [
+              "I",
+              "E",
+              "B"
+            ]
+          },
+          {
+            "id": "r2",
+            "refs": [
+              "I",
+              "F",
+              "A"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "내접원과 접선의 길이"
+}

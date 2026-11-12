@@ -1,0 +1,119 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "두 함수 $f(x)=-|x+1|+1$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "1"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "-4/3",
+          "0",
+          "1/3"
+        ],
+        "intersectionX": [
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      2
+    ],
+    "viewport": [
+      -3,
+      2,
+      -3,
+      2
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-1",
+        "1"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "id": "C",
+        "x": "1",
+        "y": "-1"
+      },
+      {
+        "id": "D",
+        "x": "0",
+        "y": "-4/3"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "D"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "g",
+        "from": "-2",
+        "to": "1",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ],
+    "axisTitles": {
+      "x": "x"
+    }
+  },
+  "caption": "두 곡선의 교점과 꺾임점을 기준으로 사이 넓이를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "절댓값 그래프의 꺾임점은 (-1,1), 두 그래프의 교점은 x=-2,1이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "f(x), g(x) 곡선을 각 곡선 가까이에 이름표로 표시하고 교점 사이의 적분 영역을 보인다."
+  ],
+  "coordinatePlacement": "PANEL"
+}

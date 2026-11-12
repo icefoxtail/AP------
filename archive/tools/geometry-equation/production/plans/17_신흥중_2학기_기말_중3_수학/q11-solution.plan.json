@@ -1,0 +1,342 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "X0",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "A",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X0"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "90"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "B",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X0"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "200"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "C",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X0"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "340"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "M",
+    "op": "MIDPOINT",
+    "inputs": [
+     "A",
+     "C"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "N",
+    "op": "MIDPOINT",
+    "inputs": [
+     "A",
+     "B"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "circ",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "C",
+  "M",
+  "N"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "circ"
+ ],
+ "displaySegments": [
+  {
+   "id": "sAN",
+   "refs": [
+    "A",
+    "N"
+   ]
+  },
+  {
+   "id": "sNB",
+   "refs": [
+    "N",
+    "B"
+   ]
+  },
+  {
+   "id": "sAM",
+   "refs": [
+    "A",
+    "M"
+   ]
+  },
+  {
+   "id": "sMC",
+   "refs": [
+    "M",
+    "C"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sOM",
+   "refs": [
+    "O",
+    "M"
+   ]
+  },
+  {
+   "id": "sON",
+   "refs": [
+    "O",
+    "N"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aC",
+    "refs": [
+     "A",
+     "C",
+     "B"
+    ],
+    "value": 55,
+    "label": "55",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aB",
+    "refs": [
+     "A",
+     "B",
+     "C"
+    ],
+    "value": 55,
+    "label": "55",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "aA",
+    "refs": [
+     "B",
+     "A",
+     "C"
+    ],
+    "value": 70,
+    "label": "70",
+    "color": "WARM",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "aO",
+    "refs": [
+     "M",
+     "O",
+     "N"
+    ],
+    "value": 110,
+    "noLabel": true,
+    "color": "ROSE",
+    "factRole": "GIVEN"
+   }
+  ],
+  "equalAngles": [
+   {
+    "angles": [
+     "aC",
+     "aB"
+    ],
+    "color": "GREEN"
+   }
+  ],
+  "equalLengths": [
+   {
+    "id": "e1",
+    "count": 1,
+    "segments": [
+     "sON",
+     "sOM"
+    ],
+    "color": "BLUE"
+   },
+   {
+    "id": "e2",
+    "count": 2,
+    "segments": [
+     {
+      "path": [
+       "sAN",
+       "sNB"
+      ]
+     },
+     {
+      "path": [
+       "sAM",
+       "sMC"
+      ]
+     }
+    ],
+    "pathMark": "TICK",
+    "color": "WARM"
+   }
+  ]
+ },
+ "caption": "OM=ON이므로 AB=AC이고 삼각형 ABC는 이등변삼각형이어서 각 B와 각 C는 같다. 각 A를 구한 뒤 네 각의 합이 360°인 A, N, O, M을 꼭짓점으로 하는 사각형에서 분홍색 각 MON을 구한다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "원 O, AB⊥ON, AC⊥OM, OM=ON, ∠C=55°.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "O",
+    "N",
+    "A"
+   ]
+  },
+  {
+   "id": "r2",
+   "refs": [
+    "O",
+    "M",
+    "A"
+   ]
+  }
+ ],
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 500
+ }
+}

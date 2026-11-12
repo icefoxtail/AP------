@@ -1,0 +1,323 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "E",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "5591929",
+       "denominator": "10000000"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "5591929",
+       "denominator": "10000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "1036297",
+       "denominator": "1250000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "rational",
+       "numerator": "1482561",
+       "denominator": "1000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "circ",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "C",
+  "D",
+  "E"
+ ],
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sOD",
+   "refs": [
+    "O",
+    "D"
+   ]
+  },
+  {
+   "id": "sOE",
+   "refs": [
+    "O",
+    "E"
+   ]
+  },
+  {
+   "id": "sOA",
+   "refs": [
+    "O",
+    "A"
+   ]
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  },
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aO",
+    "refs": [
+     "D",
+     "O",
+     "A"
+    ],
+    "value": 56,
+    "label": "56",
+    "color": "ROSE",
+    "factRole": "GIVEN"
+   }
+  ],
+  "arcs": [
+   {
+    "id": "arcED",
+    "circle": "circ",
+    "center": "O",
+    "from": "E",
+    "to": "D",
+    "side": "MINOR",
+    "factRole": "GIVEN"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "lOA",
+    "ownerSegment": "sOA",
+    "text": "1"
+   },
+   {
+    "id": "lAB",
+    "ownerSegment": "sAB",
+    "text": "0.83",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "segmentColors": [
+   {
+    "segments": [
+     "sAB"
+    ],
+    "color": "BLUE"
+   },
+   {
+    "segments": [
+     "sCD"
+    ],
+    "color": "WARM"
+   },
+   {
+    "segments": [
+     "sOA",
+     "sOD"
+    ],
+    "color": "GREEN"
+   }
+  ],
+  "dimensions": [
+   {
+    "id": "dOD",
+    "from": "O",
+    "to": "D",
+    "label": "1",
+    "side": "BELOW",
+    "style": "ARROW",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "dCD",
+    "from": "C",
+    "to": "D",
+    "label": "1.48",
+    "side": "RIGHT",
+    "style": "ARROW",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "caption": "반지름이 1인 사분원에서 파란색 AB는 sin56°의 값, 주황색 CD는 tan56°의 값이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "반지름 1인 사분원, ∠AOB=56°.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "O",
+    "B",
+    "A"
+   ]
+  },
+  {
+   "id": "r2",
+   "refs": [
+    "O",
+    "D",
+    "C"
+   ]
+  }
+ ],
+ "coordinateCanvas": {
+  "width": 620,
+  "height": 520
+ },
+ "hiddenPointNames": [
+  "E"
+ ],
+ "hiddenPointStyle": "NONE"
+}

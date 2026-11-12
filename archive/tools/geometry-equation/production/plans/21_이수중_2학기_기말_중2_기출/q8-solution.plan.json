@@ -1,0 +1,674 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림 (AG=4cm)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "MIDPOINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "MIDPOINT",
+              "inputs": [
+                "B",
+                "D"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lAD",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lCE",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "C",
+                "E"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "G",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lAD",
+                "lCE"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAG",
+            "refs": [
+              "A",
+              "G"
+            ]
+          },
+          {
+            "id": "sGD",
+            "refs": [
+              "G",
+              "D"
+            ]
+          },
+          {
+            "id": "sCG",
+            "refs": [
+              "C",
+              "G"
+            ]
+          },
+          {
+            "id": "sGE",
+            "refs": [
+              "G",
+              "E"
+            ]
+          },
+          {
+            "id": "sAE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "sEB",
+            "refs": [
+              "E",
+              "B"
+            ]
+          },
+          {
+            "id": "sBF",
+            "refs": [
+              "B",
+              "F"
+            ]
+          },
+          {
+            "id": "sFD",
+            "refs": [
+              "F",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sEF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "e1",
+              "count": 1,
+              "segments": [
+                "sAE",
+                "sEB"
+              ]
+            },
+            {
+              "id": "e2",
+              "count": 2,
+              "segments": [
+                "sBF",
+                "sFD"
+              ]
+            }
+          ]
+        },
+        "caption": "무게중심 G와 중점 D, E, F",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 360
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "무게중심 G와 중점 D, E, F",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "중선 AD를 2 대 1로"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "G",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "ag",
+            "refs": [
+              "A",
+              "G"
+            ]
+          },
+          {
+            "id": "gd",
+            "refs": [
+              "G",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "ag"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "gd"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "a",
+              "ownerSegment": "ag",
+              "text": "4",
+              "unit": "cm"
+            },
+            {
+              "id": "b",
+              "ownerSegment": "gd",
+              "text": "2",
+              "unit": "cm"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dAD",
+              "from": "A",
+              "to": "D",
+              "label": "6",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "ARROW",
+              "offset": "AUTO",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "중선 AD",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "중선 AD",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 ABD의 중점연결"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "16583",
+                    "denominator": "5000"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "MIDPOINT",
+              "inputs": [
+                "B",
+                "D"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "D",
+          "E",
+          "F"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "sEB",
+            "refs": [
+              "E",
+              "B"
+            ]
+          },
+          {
+            "id": "sBF",
+            "refs": [
+              "B",
+              "F"
+            ]
+          },
+          {
+            "id": "sFD",
+            "refs": [
+              "F",
+              "D"
+            ]
+          },
+          {
+            "id": "da",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "ef",
+            "refs": [
+              "E",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "e1",
+              "count": 1,
+              "segments": [
+                "sAE",
+                "sEB"
+              ]
+            },
+            {
+              "id": "e2",
+              "count": 2,
+              "segments": [
+                "sBF",
+                "sFD"
+              ]
+            }
+          ],
+          "parallels": [
+            {
+              "id": "p1",
+              "count": 1,
+              "segments": [
+                "da",
+                "ef"
+              ]
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "da",
+                "ef"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dDA",
+              "from": "D",
+              "to": "A",
+              "label": "6",
+              "unit": "cm",
+              "side": "RIGHT",
+              "style": "ARROW",
+              "offset": "AUTO",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "삼각형 ABD",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 360
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "삼각형 ABD",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ]
+      }
+    }
+  ],
+  "caption": "무게중심 G는 중선 AD를 꼭짓점 쪽에서 2 대 1로 나눈다. 삼각형 ABD에서 E, F가 중점이므로 EF는 AD와 평행하다(초록).",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "무게중심 G는 중선 AD를 꼭짓점 쪽에서 2 대 1로 나눈다. 삼각형 ABD에서 E, F가 중점이므로 EF는 AD와 평행하다(초록).",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

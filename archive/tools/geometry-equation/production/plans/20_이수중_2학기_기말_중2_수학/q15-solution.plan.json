@@ -1,0 +1,734 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림 (GNM의 넓이 3cm²)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "N",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "5",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "3",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "15",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "9",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "9",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "M",
+          "G",
+          "N",
+          "E",
+          "F"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBM",
+            "refs": [
+              "B",
+              "M"
+            ]
+          },
+          {
+            "id": "sMC",
+            "refs": [
+              "M",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sAG",
+            "refs": [
+              "A",
+              "G"
+            ]
+          },
+          {
+            "id": "sGM",
+            "refs": [
+              "G",
+              "M"
+            ]
+          },
+          {
+            "id": "sBN",
+            "refs": [
+              "B",
+              "N"
+            ]
+          },
+          {
+            "id": "sNG",
+            "refs": [
+              "N",
+              "G"
+            ]
+          },
+          {
+            "id": "sNM",
+            "refs": [
+              "N",
+              "M"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "e0",
+              "count": 1,
+              "segments": [
+                "sBN",
+                "sNG"
+              ],
+              "color": "BLUE"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rg0",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "G",
+                    "N",
+                    "M"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "문제의 그림",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "G는 삼각형 ABC의 무게중심, AM은 중선, N은 BG의 중점이고 삼각형 GNM의 넓이는 3cm².",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        },
+        "hiddenPointNames": [
+          "E",
+          "F"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "세 중선이 나누는 여섯 삼각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "N",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "5",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "3",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "15",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "9",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "9",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "M",
+          "G",
+          "N",
+          "E",
+          "F"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAF",
+            "refs": [
+              "A",
+              "F"
+            ]
+          },
+          {
+            "id": "sFB",
+            "refs": [
+              "F",
+              "B"
+            ]
+          },
+          {
+            "id": "sBM",
+            "refs": [
+              "B",
+              "M"
+            ]
+          },
+          {
+            "id": "sMC",
+            "refs": [
+              "M",
+              "C"
+            ]
+          },
+          {
+            "id": "sCE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          },
+          {
+            "id": "sEA",
+            "refs": [
+              "E",
+              "A"
+            ]
+          },
+          {
+            "id": "sAG",
+            "refs": [
+              "A",
+              "G"
+            ]
+          },
+          {
+            "id": "sGM",
+            "refs": [
+              "G",
+              "M"
+            ]
+          },
+          {
+            "id": "sBN",
+            "refs": [
+              "B",
+              "N"
+            ]
+          },
+          {
+            "id": "sNG",
+            "refs": [
+              "N",
+              "G"
+            ]
+          },
+          {
+            "id": "sGE",
+            "refs": [
+              "G",
+              "E"
+            ]
+          },
+          {
+            "id": "sCG",
+            "refs": [
+              "C",
+              "G"
+            ]
+          },
+          {
+            "id": "sGF",
+            "refs": [
+              "G",
+              "F"
+            ]
+          },
+          {
+            "id": "sNM",
+            "refs": [
+              "N",
+              "M"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rg0",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "F",
+                    "G"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rg1",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "F",
+                    "B",
+                    "N",
+                    "G"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rg2",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "B",
+                    "N",
+                    "M"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rg3",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "N",
+                    "G",
+                    "M"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rg4",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "M",
+                    "C",
+                    "G"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rg5",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "C",
+                    "E",
+                    "G"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rg6",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "E",
+                    "A",
+                    "G"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "중선이 나누는 여섯 삼각형",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "세 중선은 삼각형을 넓이가 같은 여섯 삼각형으로 나눈다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        },
+        "hiddenPointNames": [
+          "E",
+          "F"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "세 중선은 삼각형 ABC를 넓이가 같은 여섯 삼각형으로 나눈다. 파란색 삼각형은 모두 넓이가 같고, N이 BG의 중점이므로 삼각형 GBM은 삼각형 GNM의 2배이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세 중선은 삼각형 ABC를 넓이가 같은 여섯 삼각형으로 나눈다. 파란색 삼각형은 모두 넓이가 같고, N이 BG의 중점이므로 삼각형 GBM은 삼각형 GNM의 2배이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

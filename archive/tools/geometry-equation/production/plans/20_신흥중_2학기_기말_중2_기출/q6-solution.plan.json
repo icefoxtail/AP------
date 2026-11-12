@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      4,
+      -3,
+      7
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "2"
+        ],
+        "domain": [
+          "-4",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "2x-y=-5"
+      },
+      {
+        "id": "g2",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "-x+y=3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "1"
+        }
+      ]
+    }
+  },
+  "caption": "두 일차방정식 2x-y=-5(파랑)와 -x+y=3(주황)의 그래프와 두 그래프의 교점 P",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 직선의 교점은 두 방정식을 동시에 만족하는 점이다.",
+      "mappedTo": [
+        "g1",
+        "g2",
+        "overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 그래프가 만나는 점이 연립방정식의 해이다."
+  ]
+}

@@ -1,0 +1,257 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "17"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "64",
+       "denominator": "17"
+      },
+      {
+       "kind": "rational",
+       "numerator": "120",
+       "denominator": "17"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "12"
+      },
+      {
+       "kind": "rational",
+       "numerator": "8",
+       "denominator": "3"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "Q",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "12"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "P",
+  "Q"
+ ],
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sPQ",
+   "refs": [
+    "P",
+    "Q"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aB",
+    "refs": [
+     "A",
+     "B",
+     "C"
+    ],
+    "value": 61.92751306414704,
+    "label": "x",
+    "color": "ROSE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "aX",
+    "refs": [
+     "C",
+     "P",
+     "Q"
+    ],
+    "value": 61.92751306414704,
+    "label": "x",
+    "color": "ROSE",
+    "factRole": "GIVEN"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "lAB",
+    "ownerSegment": "sAB",
+    "text": "8",
+    "unit": "cm"
+   },
+   {
+    "id": "lBC",
+    "ownerSegment": "sBC",
+    "text": "17",
+    "unit": "cm"
+   },
+   {
+    "id": "lAC",
+    "ownerSegment": "sAC",
+    "text": "15",
+    "unit": "cm",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "segmentColors": [
+   {
+    "segments": [
+     "sAB"
+    ],
+    "color": "GREEN"
+   },
+   {
+    "segments": [
+     "sAC"
+    ],
+    "color": "WARM"
+   },
+   {
+    "segments": [
+     "sBC"
+    ],
+    "color": "BLUE"
+   }
+  ]
+ },
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "B",
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "r2",
+   "refs": [
+    "P",
+    "Q",
+    "C"
+   ]
+  }
+ ],
+ "caption": "직각삼각형에서 AC는 피타고라스 정리로 구한다. 수선과 AC가 이루는 각 x는 각 B와 같아 같은 분홍색으로 표시했다. 초록 AB, 주황 AC, 파랑 BC로 삼각비를 읽는다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "각 A=90°, AB=8, BC=17, 수선과 AC가 이루는 각 x.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 길이와 각의 관계를 색과 표식으로 구별한다."
+ ],
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 420
+ }
+}

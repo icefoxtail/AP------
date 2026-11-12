@@ -1,0 +1,598 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림 (ADE의 둘레 20cm)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "180"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "388889",
+                    "denominator": "5000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "628539",
+                    "denominator": "10000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "11"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "9"
+                },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "11"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "9"
+                },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bB",
+              "op": "ANGLE_BISECTOR",
+              "inputs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "args": {
+                "mode": "INTERNAL"
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bC",
+              "op": "ANGLE_BISECTOR",
+              "inputs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "args": {
+                "mode": "INTERNAL"
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "I",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "bB",
+                "bC"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "I"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sDB",
+            "refs": [
+              "D",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          },
+          {
+            "id": "sEA",
+            "refs": [
+              "E",
+              "A"
+            ]
+          },
+          {
+            "id": "sDE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "sBI",
+            "refs": [
+              "B",
+              "I"
+            ]
+          },
+          {
+            "id": "sIC",
+            "refs": [
+              "I",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "parallels": [
+            {
+              "id": "p1",
+              "count": 1,
+              "segments": [
+                "sDE",
+                "sBC"
+              ]
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sDE"
+              ],
+              "color": "BLUE"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "a",
+              "ownerSegment": "sAD",
+              "text": "5",
+              "unit": "cm"
+            },
+            {
+              "id": "b",
+              "ownerSegment": "sEA",
+              "text": "6",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "내심 I를 지나고 BC에 평행한 DE",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 360
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "내접원의 반지름 r과 높이 h"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "bB",
+              "op": "ANGLE_BISECTOR",
+              "inputs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "args": {
+                "mode": "INTERNAL"
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bC",
+              "op": "ANGLE_BISECTOR",
+              "inputs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "args": {
+                "mode": "INTERNAL"
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "I",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "bB",
+                "bC"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bc",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "H",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "A",
+                "bc"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "I",
+                "H"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ab",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ac",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ah",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "H"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "hl",
+              "op": "PERPENDICULAR_THROUGH",
+              "inputs": [
+                "I",
+                "ah"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "hl",
+                "ab"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "hl",
+                "ac"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [
+          "k"
+        ],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "I",
+          "H"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "de",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "ah",
+            "refs": [
+              "A",
+              "H"
+            ],
+            "dashed": true
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "de"
+              ],
+              "color": "BLUE"
+            }
+          ],
+          "callouts": [
+            {
+              "id": "k1",
+              "kind": "SEGMENT",
+              "path": [
+                "A",
+                "I",
+                "H"
+              ],
+              "at": "RIGHT",
+              "orientation": "VERTICAL",
+              "scale": 1.5,
+              "dimensions": [
+                {
+                  "id": "dAK",
+                  "from": "A",
+                  "to": "I",
+                  "label": "h-r",
+                  "side": "LEFT",
+                  "style": "ARROW",
+                  "offset": "AUTO"
+                },
+                {
+                  "id": "dKH",
+                  "from": "I",
+                  "to": "H",
+                  "label": "r",
+                  "side": "RIGHT",
+                  "style": "ARROW",
+                  "offset": "AUTO"
+                },
+                {
+                  "id": "dAH",
+                  "from": "A",
+                  "to": "H",
+                  "label": "h",
+                  "side": "RIGHT",
+                  "style": "ARROW",
+                  "offset": "AUTO"
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "내접원",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 440
+        },
+        "hiddenPointNames": [
+          "D",
+          "E"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "내심 I를 지나고 BC에 평행한 DE와, 내접원의 반지름 r과 높이 h의 관계이다."
+}

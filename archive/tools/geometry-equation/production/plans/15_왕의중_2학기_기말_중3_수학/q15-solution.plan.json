@@ -1,0 +1,490 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "X",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "270"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "C",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "20"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "B",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "130"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "T",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "A",
+        "O"
+       ],
+       "args": {
+        "length": {
+         "kind": "rational",
+         "numerator": "3",
+         "denominator": "2"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "90"
+        },
+        "turn": "CW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "U",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "A",
+        "O"
+       ],
+       "args": {
+        "length": {
+         "kind": "rational",
+         "numerator": "3",
+         "denominator": "2"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "90"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "1"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "X",
+     "A",
+     "C",
+     "B",
+     "T",
+     "U"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     },
+     {
+      "id": "sCB",
+      "refs": [
+       "C",
+       "B"
+      ]
+     },
+     {
+      "id": "sTA",
+      "refs": [
+       "T",
+       "A"
+      ]
+     },
+     {
+      "id": "sAU",
+      "refs": [
+       "A",
+       "U"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aAz0",
+       "refs": [
+        "C",
+        "A",
+        "T"
+       ],
+       "value": 55,
+       "label": "55",
+       "color": "BLUE",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aCz0",
+       "refs": [
+        "A",
+        "C",
+        "B"
+       ],
+       "value": 70,
+       "label": "x",
+       "color": "ROSE"
+      }
+     ],
+     "arcs": [
+      {
+       "id": "arcACz0",
+       "circle": "k",
+       "center": "O",
+       "from": "A",
+       "to": "C",
+       "side": "MINOR",
+       "color": "WARM"
+      },
+      {
+       "id": "arcBCz0",
+       "circle": "k",
+       "center": "O",
+       "from": "C",
+       "to": "B",
+       "side": "MINOR",
+       "color": "WARM"
+      }
+     ]
+    },
+    "caption": "접선 AT와 현 AC가 이루는 각이 55도이고 호 AC와 호 BC가 같은 그림이다.",
+    "hiddenPointNames": [
+     "U",
+     "X"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 ABC"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "4"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "uC1",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "A",
+        "B"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "55"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "uC2",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "B",
+        "A"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "55"
+        },
+        "turn": "CW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lC1",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "A",
+        "uC1"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lC2",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "B",
+        "uC2"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "C",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "lC1",
+        "lC2"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aAz1",
+       "refs": [
+        "B",
+        "A",
+        "C"
+       ],
+       "value": 55,
+       "label": "55",
+       "color": "BLUE"
+      },
+      {
+       "id": "aBz1",
+       "refs": [
+        "A",
+        "B",
+        "C"
+       ],
+       "value": 55,
+       "label": "55",
+       "color": "BLUE"
+      },
+      {
+       "id": "aCz1",
+       "refs": [
+        "A",
+        "C",
+        "B"
+       ],
+       "value": 70,
+       "label": "x",
+       "color": "ROSE"
+      }
+     ],
+     "equalLengths": [
+      {
+       "id": "e1z1",
+       "count": 1,
+       "segments": [
+        "sCA",
+        "sBC"
+       ],
+       "color": "WARM"
+      }
+     ]
+    },
+    "caption": "CA와 CB가 같은 이등변삼각형 ABC이다."
+   }
+  }
+ ],
+ "caption": "접선과 현이 이루는 각 55도는 호 AC에 대한 원주각 B와 같다. 호 AC와 호 BC가 같으므로 CA=CB(주황)이고 두 밑각이 같은 파란색이다. 분홍색 각 x는 꼭지각이다."
+}

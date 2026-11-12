@@ -1,0 +1,170 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "음의 상관"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "SCATTER",
+          "points": [
+            {
+              "x": 1,
+              "y": 5
+            },
+            {
+              "x": 2,
+              "y": 3
+            },
+            {
+              "x": 3,
+              "y": 4
+            },
+            {
+              "x": 4,
+              "y": 1
+            },
+            {
+              "x": 5,
+              "y": 2
+            }
+          ],
+          "xRange": [
+            "0",
+            "6"
+          ],
+          "yRange": [
+            "0",
+            "6"
+          ],
+          "xStep": "1",
+          "yStep": "1",
+          "xTitle": "변량 1",
+          "yTitle": "변량 2",
+          "grid": true,
+          "trendArrow": {
+            "direction": "DOWN"
+          },
+          "pointGroups": [
+            {
+              "points": [
+                [
+                  1,
+                  5
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ]
+              ],
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "양의 상관"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "SCATTER",
+          "points": [
+            {
+              "x": 1,
+              "y": 1
+            },
+            {
+              "x": 2,
+              "y": 3
+            },
+            {
+              "x": 3,
+              "y": 2
+            },
+            {
+              "x": 4,
+              "y": 4
+            },
+            {
+              "x": 5,
+              "y": 5
+            }
+          ],
+          "xRange": [
+            "0",
+            "6"
+          ],
+          "yRange": [
+            "0",
+            "6"
+          ],
+          "xStep": "1",
+          "yStep": "1",
+          "xTitle": "변량 1",
+          "yTitle": "변량 2",
+          "grid": true,
+          "trendArrow": {
+            "direction": "UP"
+          },
+          "pointGroups": [
+            {
+              "points": [
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ]
+              ],
+              "color": "WARM"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "예: 오른쪽으로 갈수록 내려가면 음의 상관, 올라가면 양의 상관이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에는 수치 자료가 없으므로 두 그림은 음·양의 상관을 구분하는 예시이며 실제 관측값이 아니다.",
+      "mappedTo": [
+        "panels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점의 방향으로 음의 상관과 양의 상관을 구별하는 개념 예를 제공한다."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      3,
+      5,
+      6,
+      7,
+      7,
+      8,
+      10,
+      10
+    ],
+    "step": 1,
+    "xTitle": "성공 횟수(회)",
+    "marks": {
+      "meanLine": {
+        "value": "7",
+        "label": "평균 7"
+      },
+      "deviations": true
+    }
+  },
+  "caption": "평균 7을 기준으로 각 자료의 편차를 점도표에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평균 7회, x=10으로 정한 자료 3, 5, 6, 7, 7, 8, 10, 10의 편차를 열마다 표시했다.",
+      "mappedTo": [
+        "chart.values",
+        "chart.marks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평균에서 각 자료까지의 편차 부호와 크기를 읽어 편차의 제곱의 합을 구하는 과정을 돕는다."
+  ]
+}

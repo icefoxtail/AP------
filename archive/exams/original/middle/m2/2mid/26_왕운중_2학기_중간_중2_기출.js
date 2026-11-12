@@ -1337,10 +1337,10 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q019_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 닮은 두 삼각형 ABC와 DEF에서 대응각을 같은 개수의 호(A와 D, B와 E, C와 F)로 표시하고 ∠A=39°, ∠F=110°, 대응변 BC=6cm, EF=8cm를 굵은 선으로 보였다.",
-    "solutionImageCaption": "같은 개수의 호로 표시한 각이 대응각이고, 대응변 BC와 EF의 길이는 6cm, 8cm이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 닮은 두 삼각형 ABC와 DEF에서 대응각을 같은 개수의 호(A와 D, B와 E, C와 F)로 표시하고 ∠A=39°, ∠F=110°, 대응변 BC=6cm, EF=8cm를 굵은 선으로 보였다. (AB=9cm).",
+    "solutionImageCaption": "$\\triangle ABC\\sim\\triangle DEF$에서 대응은 $A\\leftrightarrow D$, $B\\leftrightarrow E$, $C\\leftrightarrow F$이다. 따라서 닮음비는 $BC:EF=6:8=3:4$이다. 옳은 것은 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

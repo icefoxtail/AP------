@@ -1,0 +1,47 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      "0",
+      "1.7"
+    ],
+    "shades": [
+      {
+        "curve": "Z",
+        "from": "1.7",
+        "to": null
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.04",
+        "source": "TABLE"
+      }
+    ],
+    "xLabel": "z"
+  },
+  "caption": "총무게 분포에서 경고 기준에 해당하는 오른쪽 꼬리를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "화물 36개의 총무게 평균은 838.8kg, 표준편차는 36kg이다. 오른쪽 꼬리 0.04의 경계는 z=1.7이므로 a=900kg이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 지시: 정규분포의 확률 구간·대칭·표준화가 풀이 이해에 도움이 되므로 계획한다. 축값과 라벨은 충분히 띄운다."
+  ]
+}

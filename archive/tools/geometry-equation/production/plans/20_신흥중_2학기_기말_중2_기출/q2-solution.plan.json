@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      5,
+      -2,
+      8
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-2"
+        ],
+        "domain": [
+          "-5/2",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=-2x+3"
+      },
+      {
+        "id": "g3",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=-2x+6"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "3/2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "-2",
+          "y": "7",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "일차함수 y=-2x+3의 그래프(파랑)와 y=-2x의 그래프를 x축 방향으로 3만큼 옮긴 y=-2x+6의 그래프(주황)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=-2x+3의 그래프의 기울기, 절편, 지나는 점.",
+      "mappedTo": [
+        "g1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "보기별로 절편, 지나는 점, 사분면, 평행이동을 한 좌표평면에서 확인한다."
+  ]
+}

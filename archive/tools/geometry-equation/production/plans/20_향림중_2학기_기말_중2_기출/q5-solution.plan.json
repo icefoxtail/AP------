@@ -1,0 +1,528 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "8391",
+                    "denominator": "1250"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "8391",
+                    "denominator": "1250"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lac",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lbd",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "O",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lac",
+                "lbd"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sAO",
+            "refs": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "id": "sOC",
+            "refs": [
+              "O",
+              "C"
+            ]
+          },
+          {
+            "id": "sBO",
+            "refs": [
+              "B",
+              "O"
+            ]
+          },
+          {
+            "id": "sOD",
+            "refs": [
+              "O",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a1",
+              "refs": [
+                "B",
+                "O",
+                "C"
+              ],
+              "value": 100,
+              "label": "100",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a2",
+              "refs": [
+                "A",
+                "D",
+                "O"
+              ],
+              "value": 40,
+              "label": "x",
+              "factRole": "CONCLUSION"
+            },
+            {
+              "id": "a3",
+              "refs": [
+                "O",
+                "A",
+                "B"
+              ],
+              "value": 50,
+              "label": "y",
+              "factRole": "CONCLUSION"
+            }
+          ]
+        },
+        "caption": "직사각형",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "이등변삼각형 AOD와 직각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "8391",
+                    "denominator": "1250"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "8391",
+                    "denominator": "1250"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lac",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lbd",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "O",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lac",
+                "lbd"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sAO",
+            "refs": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "id": "sOC",
+            "refs": [
+              "O",
+              "C"
+            ]
+          },
+          {
+            "id": "sBO",
+            "refs": [
+              "B",
+              "O"
+            ]
+          },
+          {
+            "id": "sOD",
+            "refs": [
+              "O",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "e1",
+              "count": 1,
+              "segments": [
+                "sAO",
+                "sOD"
+              ],
+              "color": "ROSE"
+            }
+          ],
+          "angles": [
+            {
+              "id": "b1",
+              "refs": [
+                "B",
+                "O",
+                "C"
+              ],
+              "value": 100,
+              "label": "100",
+              "color": "BLUE",
+              "equalGroup": 1,
+              "arcs": 1,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b2",
+              "refs": [
+                "A",
+                "O",
+                "D"
+              ],
+              "value": 100,
+              "label": "100",
+              "color": "BLUE",
+              "equalGroup": 1,
+              "arcs": 1,
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "b3",
+              "refs": [
+                "A",
+                "D",
+                "O"
+              ],
+              "value": 40,
+              "label": "40",
+              "color": "WARM",
+              "equalGroup": 2,
+              "arcs": 2,
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "b4",
+              "refs": [
+                "O",
+                "A",
+                "D"
+              ],
+              "value": 40,
+              "label": "40",
+              "color": "WARM",
+              "equalGroup": 2,
+              "arcs": 2,
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "b5",
+              "refs": [
+                "D",
+                "A",
+                "B"
+              ],
+              "value": 90,
+              "label": "90",
+              "ring": 2,
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "이등변삼각형 AOD",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        }
+      }
+    }
+  ],
+  "caption": "직사각형의 두 대각선은 길이가 같고 서로를 이등분하므로 삼각형 AOD는 이등변삼각형이다."
+}

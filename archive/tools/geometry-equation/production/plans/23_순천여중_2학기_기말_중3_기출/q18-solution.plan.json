@@ -1,0 +1,37 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "step": 1,
+    "xTitle": "시간",
+    "marks": {
+      "meanLine": {
+        "value": "4",
+        "label": "평균 4"
+      },
+      "deviations": true
+    }
+  },
+  "caption": "평균 4를 기준으로 각 자료의 편차를 점도표에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 자료 2, 5, 6, 3, 4의 평균 4와 편차 −2, 1, 2, −1, 0을 표시했다.",
+      "mappedTo": [
+        "chart.values",
+        "chart.marks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평균을 가운데로 한 편차의 부호와 크기를 읽어 분산과 표준편차를 구하는 과정을 돕는다."
+  ]
+}

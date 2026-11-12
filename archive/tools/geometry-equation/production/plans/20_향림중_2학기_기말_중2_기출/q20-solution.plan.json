@@ -1,0 +1,73 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "labelWeight": "MATH",
+    "root": {
+      "label": "대표",
+      "children": [
+        {
+          "label": "A",
+          "children": [
+            {
+              "label": "B"
+            },
+            {
+              "label": "C"
+            },
+            {
+              "label": "D"
+            },
+            {
+              "label": "E"
+            }
+          ]
+        },
+        {
+          "label": "B",
+          "children": [
+            {
+              "label": "A"
+            },
+            {
+              "label": "C"
+            },
+            {
+              "label": "D"
+            },
+            {
+              "label": "E"
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "A",
+          "B"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "B",
+          "A"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "대표 2명을 첫째, 둘째 순서로 나열한 나뭇가지 그림의 일부이다. 첫째가 A, B인 경우만 그렸고 같은 색으로 표시한 두 경로는 같은 짝이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "5명 중 대표 2명을 뽑는 경우의 수를 b라 한다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "순서를 구별해 나열하면 같은 짝이 두 번 나오는 것을 보인다."
+  ]
+}

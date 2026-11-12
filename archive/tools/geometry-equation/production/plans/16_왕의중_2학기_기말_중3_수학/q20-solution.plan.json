@@ -1,0 +1,568 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "12"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "5"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "720",
+          "denominator": "169"
+         },
+         {
+          "kind": "rational",
+          "numerator": "300",
+          "denominator": "169"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "6"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "6"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "O"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     },
+     {
+      "id": "sBD",
+      "refs": [
+       "B",
+       "D"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "expressionLabels": [
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "12",
+       "unit": "cm"
+      },
+      {
+       "id": "lBC",
+       "ownerSegment": "sBC",
+       "text": "5",
+       "unit": "cm"
+      },
+      {
+       "id": "lCA",
+       "ownerSegment": "sCA",
+       "text": "13",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "AB를 지름으로 하는 원 O와 직각삼각형 ABC, 변 AC 위의 점 D이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "r1",
+      "refs": [
+       "A",
+       "D",
+       "B"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 ABD"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "rational",
+          "numerator": "144",
+          "denominator": "13"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "60",
+          "denominator": "13"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "D",
+     "A",
+     "B"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAD",
+      "refs": [
+       "A",
+       "D"
+      ]
+     },
+     {
+      "id": "sDB",
+      "refs": [
+       "D",
+       "B"
+      ]
+     },
+     {
+      "id": "sBA",
+      "refs": [
+       "B",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "segmentColors": [
+      {
+       "segments": [
+        "sBA"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sAD"
+       ],
+       "color": "WARM"
+      },
+      {
+       "segments": [
+        "sDB"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "B",
+        "A",
+        "D"
+       ],
+       "value": 22.62,
+       "noLabel": true,
+       "color": "ROSE"
+      },
+      {
+       "id": "aB",
+       "refs": [
+        "D",
+        "B",
+        "A"
+       ],
+       "value": 67.38,
+       "noLabel": true,
+       "color": "VIOLET"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lBA",
+       "ownerSegment": "sBA",
+       "text": "12"
+      }
+     ]
+    },
+    "caption": "직각삼각형 ABD이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "D",
+       "B"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 ACB"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "12"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "5"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "A",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "segmentColors": [
+      {
+       "segments": [
+        "sCA"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sAB"
+       ],
+       "color": "WARM"
+      },
+      {
+       "segments": [
+        "sBC"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "C",
+        "A",
+        "B"
+       ],
+       "value": 22.62,
+       "noLabel": true,
+       "color": "ROSE"
+      },
+      {
+       "id": "aC",
+       "refs": [
+        "B",
+        "C",
+        "A"
+       ],
+       "value": 67.38,
+       "noLabel": true,
+       "color": "VIOLET"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lCA",
+       "ownerSegment": "sCA",
+       "text": "13"
+      },
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "12"
+      },
+      {
+       "id": "lBC",
+       "ownerSegment": "sBC",
+       "text": "5"
+      }
+     ]
+    },
+    "caption": "직각삼각형 ACB이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "B",
+       "C"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "지름 AB 위의 원주각 ADB가 직각이므로 삼각형 ABD와 삼각형 ACB가 닮음이다. 대응하는 변과 각은 같은 색이다."
+}

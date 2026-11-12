@@ -1,0 +1,32 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "일어남",
+          "p": "2/5"
+        },
+        {
+          "label": "안 일어남",
+          "p": "3/5"
+        }
+      ]
+    }
+  },
+  "caption": "예: 사건 A가 일어날 확률을 5분의 2라 하면 일어나지 않을 확률은 5분의 3이다. 두 가지 경우의 확률의 합은 1이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "사건 A가 일어날 확률을 p라 할 때 일어나지 않을 확률.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "한 사건이 일어나는 경우와 일어나지 않는 경우의 확률의 합이 1임을 수형도로 보인다."
+  ]
+}

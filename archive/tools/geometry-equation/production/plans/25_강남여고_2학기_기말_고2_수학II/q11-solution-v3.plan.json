@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "functionName": "h",
+    "formula": "x^3-x^2-x+2",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "OPEN",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      2
+    ],
+    "viewport": [
+      0,
+      2,
+      0,
+      4.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "m",
+        "x": 1,
+        "y": 1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "예: a=3일 때 x>0의 그래프 일부를 보여 주며 h(x)는 x=1에서 최솟값 1을 갖는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x>0에서 h′(x)=3x²−2x−1은 x=1에서 음수에서 양수로 바뀐다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "h(1)=4−a이고 h(x)≥0이어야 한다.",
+      "mappedTo": "publish.caption"
+    }
+  ],
+  "newVisualInformation": [
+    "x>0의 양수 구간에서 h(x)의 감소 후 증가와 x=1의 최솟값을 보인다.",
+    "예시 a=3의 최소값 1은 정답 a=4와 다르다."
+  ]
+}

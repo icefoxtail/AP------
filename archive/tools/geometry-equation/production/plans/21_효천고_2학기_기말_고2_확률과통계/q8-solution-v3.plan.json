@@ -1,0 +1,41 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      "0",
+      "1.96"
+    ],
+    "shades": [
+      {
+        "from": "1.96",
+        "to": null
+      }
+    ],
+    "xLabel": "z"
+  },
+  "caption": "표준정규곡선에서 1.96 오른쪽의 꼬리 영역을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "표준화한 합격 경계는 1.96이다.",
+      "mappedTo": "chart.ticks[1]"
+    },
+    {
+      "id": "c2",
+      "condition": "경계점보다 큰 값이 상위 2.5퍼센트이다.",
+      "mappedTo": "chart.shades[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "경계점 1.96과 그 오른쪽의 꼬리 영역"
+  ]
+}

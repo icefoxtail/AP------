@@ -1,0 +1,401 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "M",
+    "A",
+    "B",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sMQ",
+      "refs": [
+        "M",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQP",
+      "refs": [
+        "Q",
+        "P"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sAQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "sOA",
+        "text": "4sqrt(3)"
+      },
+      {
+        "id": "lAM",
+        "ownerSegment": "sAM",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOM",
+        "ownerSegment": "sOM",
+        "text": "2sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e2",
+        "count": 1,
+        "segments": [
+          "sMQ",
+          "sQP"
+        ]
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sOM",
+          "sMQ",
+          "sQP"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sAM"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rPAQ",
+        "fill": "ROSE",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "A",
+              "Q"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "점 P와 중심 O가 겹치도록 접으므로 접는 선 AB는 PO의 수직이등분선이고 PM=MO(파란색)이다. 반지름이 4√3이므로 PM=2√3이고 Q는 PM의 중점이므로 PQ=√3이다. 직각삼각형 OMA에서 AM=6(주황색)이다. 분홍색 삼각형 PAQ의 밑변을 PQ, 높이를 AM으로 보고 넓이를 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름이 4√3cm인 원 O 위의 점 P가 접는 선 AB에 의해 O와 겹치고 PO와 AB의 교점이 M, PM 위의 점 Q에 대해 PQ=MQ이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 480
+  }
+}

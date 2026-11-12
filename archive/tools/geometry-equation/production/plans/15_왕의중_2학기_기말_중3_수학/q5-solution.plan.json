@@ -1,0 +1,523 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "9"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aAz0",
+       "refs": [
+        "B",
+        "A",
+        "C"
+       ],
+       "value": 60,
+       "label": "60",
+       "color": "BLUE"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lCAz0",
+       "ownerSegment": "sCA",
+       "text": "6"
+      },
+      {
+       "id": "lABz0",
+       "ownerSegment": "sAB",
+       "text": "9"
+      }
+     ]
+    },
+    "caption": "두 변 CA=6, AB=9이고 끼인각이 60도인 삼각형이다."
+   }
+  },
+  {
+   "caption": {
+    "text": "수선 CH"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "H",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "9"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "H",
+     "B",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAH",
+      "refs": [
+       "A",
+       "H"
+      ]
+     },
+     {
+      "id": "sHB",
+      "refs": [
+       "H",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     },
+     {
+      "id": "sCH",
+      "refs": [
+       "C",
+       "H"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aAz1",
+       "refs": [
+        "H",
+        "A",
+        "C"
+       ],
+       "value": 60,
+       "label": "60",
+       "color": "BLUE"
+      },
+      {
+       "id": "aCz1",
+       "refs": [
+        "A",
+        "C",
+        "H"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "WARM"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lCAz1",
+       "ownerSegment": "sCA",
+       "text": "6"
+      },
+      {
+       "id": "lAHz1",
+       "ownerSegment": "sAH",
+       "text": "3"
+      },
+      {
+       "id": "lHBz1",
+       "ownerSegment": "sHB",
+       "text": "6"
+      },
+      {
+       "id": "lCHz1",
+       "ownerSegment": "sCH",
+       "text": "3sqrt(3)"
+      }
+     ]
+    },
+    "caption": "C에서 AB에 내린 수선의 발 H를 잡은 그림이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "H",
+       "C"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 BCH"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "H",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "H",
+     "B",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sHB",
+      "refs": [
+       "H",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCH",
+      "refs": [
+       "C",
+       "H"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "expressionLabels": [
+      {
+       "id": "lHBz2",
+       "ownerSegment": "sHB",
+       "text": "6"
+      },
+      {
+       "id": "lCHz2",
+       "ownerSegment": "sCH",
+       "text": "3sqrt(3)"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sBC"
+       ],
+       "color": "GREEN"
+      }
+     ]
+    },
+    "caption": "직각삼각형 BCH이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "B",
+       "H",
+       "C"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "꼭짓점 C에서 AB에 수선의 발 H를 내리면 삼각형 ACH는 30도, 60도, 90도 삼각형이다. 초록색 CB가 구하려는 변이고 삼각형 BCH는 직각삼각형이다."
+}

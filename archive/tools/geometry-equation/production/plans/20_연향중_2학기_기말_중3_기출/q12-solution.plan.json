@@ -1,0 +1,65 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "10",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "15",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT"
+      }
+    ]
+  },
+  "caption": "조건 (가)에서 구한 a의 범위와 조건 (나)에서 구한 a의 범위가 겹치는 부분을 수직선에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(가) 자료 a, 10, 7, 8, 11의 중앙값이 10이면 a는 10 이상이다.",
+      "mappedTo": [
+        "numberLine.rows[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "(나) 자료 19, 20, a, 13, 17, 15의 중앙값이 16이면 a는 15 이하이다.",
+      "mappedTo": [
+        "numberLine.rows[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "두 조건을 모두 만족시키는 a의 범위는 공통 부분이다.",
+      "mappedTo": [
+        "numberLine.rows[2]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 조건의 범위가 겹치는 구간을 보여 보기의 값이 그 안에 드는지 확인하게 한다."
+  ],
+  "numberLineCaption": {
+    "text": "위에서부터 (가), (나), 공통 범위"
+  }
+}

@@ -1,0 +1,392 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c4",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M4"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "M2",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "hiddenPointNames": [
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "BP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rP",
+      "refs": [
+        "B",
+        "P",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arc1",
+        "circle": "c1",
+        "center": "M1",
+        "from": "A",
+        "to": "B",
+        "side": "CCW",
+        "color": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc2",
+        "circle": "c2",
+        "center": "M2",
+        "from": "B",
+        "to": "C",
+        "side": "CCW",
+        "color": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc3",
+        "circle": "c3",
+        "center": "M3",
+        "from": "C",
+        "to": "D",
+        "side": "CCW",
+        "color": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc4",
+        "circle": "c4",
+        "center": "M4",
+        "from": "D",
+        "to": "A",
+        "side": "CCW",
+        "color": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "la",
+        "ownerSegment": "DA",
+        "text": "a",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "각 변을 지름으로 하는 바깥 반원",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각형 ABCD의 한 변은 a이고, 외부의 점 P에서 이웃한 두 꼭짓점을 이은 두 선분이 직각이다. 그림은 한 변이 10인 예시이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "각 변을 지름으로 하는 바깥쪽 반원 네 개(파랑)가 P의 자취이고, 반원 위의 한 점 P에서 ∠BPC=90°임을 보인다."
+  ]
+}

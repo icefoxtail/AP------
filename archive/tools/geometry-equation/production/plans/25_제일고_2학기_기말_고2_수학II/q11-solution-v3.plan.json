@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "6",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "6"
+      },
+      {
+        "id": "D1",
+        "x": "(3-sqrt(6))/3",
+        "y": "4"
+      },
+      {
+        "id": "D2",
+        "x": "(3+sqrt(6))/3",
+        "y": "4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "3",
+        "6"
+      ]
+    },
+    "domain": [
+      0,
+      2.5
+    ],
+    "viewport": [
+      0,
+      2.5,
+      -1,
+      7
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "sample",
+          "slope": "0",
+          "intercept": "4",
+          "label": "y=k",
+          "style": "DASHED",
+          "color": "WARM"
+        }
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "D1",
+        "D2"
+      ]
+    }
+  },
+  "caption": "예: k=4인 수평선 y=k는 t>0에서 포물선과 두 점에서 만난다. 두 양의 해가 생기는 범위는 3<k<6이며 정수 k의 합은 9이다.",
+  "sourceConditions": [
+    "k=-3(t-1)^2+6, t>0",
+    "t=0에서 y=3이며 이 시각은 정의역에서 제외"
+  ],
+  "newVisualInformation": [
+    "꼭짓점 (1,6), 경계값 t=0의 높이 3, 예시선 y=k(k=4)의 두 양의 교점을 표시한다."
+  ]
+}

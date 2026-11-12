@@ -1,0 +1,75 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "상자 무게 합계"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "S",
+              "mean": "120",
+              "sd": "8",
+              "label": "S"
+            }
+          ],
+          "ticks": [
+            "108",
+            "120"
+          ],
+          "zAxis": true,
+          "shades": [
+            {
+              "from": null,
+              "to": "108"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "불량 상자 수"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Y",
+              "mean": "40",
+              "sd": "6",
+              "label": "Y"
+            }
+          ],
+          "ticks": [
+            "40",
+            "49"
+          ],
+          "zAxis": true,
+          "shades": [
+            {
+              "from": null,
+              "to": "49"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "상자 무게를 표준화한 뒤 불량 상자 수를 정규근사하는 두 단계를 보인다.",
+  "sourceConditions": [
+    "상자 무게의 분포는 평균 120, 표준편차 8",
+    "불량 개수의 근사분포는 평균 40, 표준편차 6"
+  ],
+  "newVisualInformation": [
+    [
+      "상자별 불량 확률의 표준화와 여러 상자의 불량 개수 표준화를 순서대로 연결한다."
+    ]
+  ]
+}

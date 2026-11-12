@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$v(t)=2$를 대입하면",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -7,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "-5",
+        "-4",
+        "-3",
+        "-1"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2/3",
+        "y": "-16/3"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2/3",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "0"
+        }
+      ]
+    },
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "-4",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "formula": "3*x^2-4*x-4"
+  },
+  "caption": "그림의 가로좌표 x는 문제의 시각 t를 나타낸다. 두 영점 중 t≥0인 후보를 고른다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 속도와의 차가 0이 되는 두 후보 중 음이 아닌 시각을 구분한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 속도와의 차가 0이 되는 두 후보 중 음이 아닌 시각을 구분한다."
+  ]
+}

@@ -1,0 +1,696 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "세 정사각형 (넓이 단위 cm²)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "144",
+                    "denominator": "13"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "60",
+                    "denominator": "13"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "84",
+                    "denominator": "13"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "204",
+                    "denominator": "13"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-60",
+                    "denominator": "13"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "144",
+                    "denominator": "13"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-13"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-13"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "229",
+                    "denominator": "13"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "25",
+                    "denominator": "13"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "I",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "204",
+                    "denominator": "13"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "85",
+                    "denominator": "13"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sBF",
+            "refs": [
+              "B",
+              "F"
+            ]
+          },
+          {
+            "id": "sFG",
+            "refs": [
+              "F",
+              "G"
+            ]
+          },
+          {
+            "id": "sGC",
+            "refs": [
+              "G",
+              "C"
+            ]
+          },
+          {
+            "id": "sAI",
+            "refs": [
+              "A",
+              "I"
+            ]
+          },
+          {
+            "id": "sIH",
+            "refs": [
+              "I",
+              "H"
+            ]
+          },
+          {
+            "id": "sHC",
+            "refs": [
+              "H",
+              "C"
+            ]
+          },
+          {
+            "id": "sBE",
+            "refs": [
+              "B",
+              "E"
+            ]
+          },
+          {
+            "id": "sED",
+            "refs": [
+              "E",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rBig",
+              "fill": "BLUE",
+              "label": "169",
+              "shapes": [
+                {
+                  "polygon": [
+                    "B",
+                    "C",
+                    "G",
+                    "F"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rSmall",
+              "fill": "GREEN",
+              "label": "25",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "I",
+                    "H",
+                    "C"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rAns",
+              "fill": "WARM",
+              "label": "S",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "E",
+                    "D"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "세 정사각형 (넓이 단위 cm²)",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 520
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "OA와 바깥 변은 모두 1"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q1",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "A",
+                "O"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q2",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Q1",
+                "O"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q3",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Q2",
+                "O"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q4",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Q3",
+                "O"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Q4",
+                "O"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "O",
+          "A",
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4",
+          "B"
+        ],
+        "displaySegments": [
+          {
+            "id": "sOA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "sAQ1",
+            "refs": [
+              "A",
+              "Q1"
+            ]
+          },
+          {
+            "id": "sOQ1",
+            "refs": [
+              "O",
+              "Q1"
+            ]
+          },
+          {
+            "id": "sQ1Q2",
+            "refs": [
+              "Q1",
+              "Q2"
+            ]
+          },
+          {
+            "id": "sOQ2",
+            "refs": [
+              "O",
+              "Q2"
+            ]
+          },
+          {
+            "id": "sQ2Q3",
+            "refs": [
+              "Q2",
+              "Q3"
+            ]
+          },
+          {
+            "id": "sOQ3",
+            "refs": [
+              "O",
+              "Q3"
+            ]
+          },
+          {
+            "id": "sQ3Q4",
+            "refs": [
+              "Q3",
+              "Q4"
+            ]
+          },
+          {
+            "id": "sOQ4",
+            "refs": [
+              "O",
+              "Q4"
+            ]
+          },
+          {
+            "id": "sQ4B",
+            "refs": [
+              "Q4",
+              "B"
+            ]
+          },
+          {
+            "id": "sOB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sAQ1",
+              "text": "1",
+              "ownership": "NEAREST"
+            }
+          ],
+          "equalLengths": [
+            {
+              "id": "e1",
+              "count": 1,
+              "segments": [
+                "sOA",
+                "sAQ1",
+                "sQ1Q2",
+                "sQ2Q3",
+                "sQ3Q4",
+                "sQ4B"
+              ]
+            }
+          ]
+        },
+        "caption": "OA와 바깥 변은 모두 1",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 520
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "O",
+              "A",
+              "Q1"
+            ]
+          },
+          {
+            "id": "ra1",
+            "refs": [
+              "O",
+              "Q1",
+              "Q2"
+            ]
+          },
+          {
+            "id": "ra2",
+            "refs": [
+              "O",
+              "Q2",
+              "Q3"
+            ]
+          },
+          {
+            "id": "ra3",
+            "refs": [
+              "O",
+              "Q3",
+              "Q4"
+            ]
+          },
+          {
+            "id": "ra4",
+            "refs": [
+              "O",
+              "Q4",
+              "B"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4"
+        ]
+      }
+    }
+  ],
+  "caption": "2-① 세 정사각형의 넓이 사이의 관계(피타고라스 정리). 2-② 직각삼각형을 붙일 때마다 빗변의 제곱이 1씩 커진다."
+}

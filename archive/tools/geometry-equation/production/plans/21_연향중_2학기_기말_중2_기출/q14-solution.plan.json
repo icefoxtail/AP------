@@ -1,0 +1,68 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "연이 승",
+          "p": "3/5",
+          "children": [
+            {
+              "label": "연이 승",
+              "p": "3/5"
+            },
+            {
+              "label": "향이 승",
+              "p": "2/5"
+            }
+          ]
+        },
+        {
+          "label": "향이 승",
+          "p": "2/5",
+          "children": [
+            {
+              "label": "연이 승",
+              "p": "3/5"
+            },
+            {
+              "label": "향이 승",
+              "p": "2/5"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "pathColumn": true,
+    "labelWeight": "MATH",
+    "highlightPaths": [
+      {
+        "path": [
+          "연이 승",
+          "향이 승"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "향이 승",
+          "연이 승"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "첫째 대국과 둘째 대국의 결과를 수형도로 나타낸다. 각자 한 번씩 이기는 두 경로를 파란색과 주황색으로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "연이가 이길 확률은 5분의 3이고 두 번 두어 각자 한 번씩 이기는 경우",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "각자 한 번씩 이기는 두 경로의 확률을 곱으로 보인다"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "95%",
+        "pieces": [
+          {
+            "lo": {
+              "value": "20.3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "39.9",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "99%",
+        "pieces": [
+          {
+            "lo": {
+              "value": "17.2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "43.0",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ],
+    "variable": "m"
+  },
+  "numberLineCaption": {
+    "text": "같은 표본에서 99% 구간이 더 넓다."
+  },
+  "caption": "같은 중심을 갖는 95%와 99% 신뢰구간을 비교하고, 새 구간에 포함되는 자연수를 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "95% 신뢰구간은 20.3부터 39.9까지이다.",
+      "mappedTo": [
+        "numberLine.rows[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "99% 신뢰구간은 17.2부터 43.0까지이다.",
+      "mappedTo": [
+        "numberLine.rows[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "신뢰도 증가로 신뢰구간이 넓어지는 관계와 자연수 경계를 수직선에서 확인할 수 있다."
+  ]
+}

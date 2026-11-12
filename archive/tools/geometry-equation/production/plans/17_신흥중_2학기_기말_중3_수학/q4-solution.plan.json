@@ -1,0 +1,379 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "E",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "D"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "35"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Dp",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "D"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "0"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Ap",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "A"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "0"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lOA",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "O",
+     "A"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lD",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "D",
+     "Dp"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "C",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "lOA",
+     "lD"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lOD",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "O",
+     "D"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lA",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "A",
+     "Ap"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "B",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "lOD",
+     "lA"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "k",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "C",
+  "D",
+  "E"
+ ],
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sOE",
+   "refs": [
+    "O",
+    "E"
+   ]
+  },
+  {
+   "id": "sOB",
+   "refs": [
+    "O",
+    "B"
+   ]
+  },
+  {
+   "id": "sBD",
+   "refs": [
+    "B",
+    "D"
+   ]
+  },
+  {
+   "id": "sOA",
+   "refs": [
+    "O",
+    "A"
+   ]
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aX",
+    "refs": [
+     "D",
+     "O",
+     "A"
+    ],
+    "value": 35,
+    "label": "x",
+    "color": "ROSE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aY",
+    "refs": [
+     "O",
+     "A",
+     "B"
+    ],
+    "value": 55,
+    "label": "y",
+    "color": "VIOLET",
+    "factRole": "GIVEN"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "tlOE",
+    "ownerSegment": "sOE",
+    "text": "1"
+   },
+   {
+    "id": "tlOA",
+    "ownerSegment": "sOA",
+    "text": "1"
+   }
+  ],
+  "arcs": [
+   {
+    "id": "arc1",
+    "circle": "k",
+    "center": "O",
+    "from": "D",
+    "to": "E",
+    "side": "MINOR"
+   }
+  ],
+  "segmentColors": [
+   {
+    "segments": [
+     "sAB"
+    ],
+    "color": "BLUE"
+   },
+   {
+    "segments": [
+     "sOB"
+    ],
+    "color": "WARM"
+   },
+   {
+    "segments": [
+     "sCD"
+    ],
+    "color": "GREEN"
+   }
+  ]
+ },
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "A",
+    "B",
+    "O"
+   ]
+  },
+  {
+   "id": "r2",
+   "refs": [
+    "C",
+    "D",
+    "O"
+   ]
+  }
+ ],
+ "caption": "반지름이 1이므로 직각삼각형 OAB와 OCD에서 삼각비를 선분의 길이로 읽는다. 파란색 AB, 주황색 OB, 초록색 CD가 각각 어떤 삼각비에 해당하는지 보기와 비교한다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "반지름 1인 사분원, 각 x=각 AOB, 각 y=각 OAB, 접선 CD.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 길이와 각의 관계를 색과 표식으로 구별한다."
+ ],
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 560
+ }
+}

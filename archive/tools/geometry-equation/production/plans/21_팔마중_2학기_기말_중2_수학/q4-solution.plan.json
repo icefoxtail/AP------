@@ -1,0 +1,689 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림 (단위 cm)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "11619",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "14"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0",
+              "refs": [
+                "B",
+                "A",
+                "D"
+              ],
+              "value": 28.95502437185983,
+              "color": "ROSE",
+              "noLabel": true,
+              "arcs": 1,
+              "equalGroup": 1
+            },
+            {
+              "id": "a1",
+              "refs": [
+                "D",
+                "A",
+                "C"
+              ],
+              "value": 28.955024371859825,
+              "color": "ROSE",
+              "noLabel": true,
+              "arcs": 1,
+              "equalGroup": 1
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l0",
+              "ownerSegment": "sAB",
+              "text": "16"
+            },
+            {
+              "id": "l1",
+              "ownerSegment": "sAC",
+              "text": "12"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sDC",
+              "text": "x"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "d0",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "from": "B",
+              "to": "C",
+              "label": "14",
+              "side": "BELOW"
+            }
+          ]
+        },
+        "caption": "문제의 그림 (단위 cm)",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "삼각형 ABC에서 AD는 각 A의 이등분선이고 AB=16, AC=12, BC=14, DC=x이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 384
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "이등분선은 BC를 AB 대 AC로 나눈다"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "11619",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "14"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sAB",
+                "sBD"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sAC",
+                "sDC"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l0",
+              "ownerSegment": "sAB",
+              "text": "16"
+            },
+            {
+              "id": "l1",
+              "ownerSegment": "sAC",
+              "text": "12"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sBD",
+              "text": "8"
+            },
+            {
+              "id": "l3",
+              "ownerSegment": "sDC",
+              "text": "6"
+            }
+          ]
+        },
+        "caption": "이등분선은 BC를 AB 대 AC로 나눈다",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "각의 이등분선 정리에 의해 BD 대 DC는 AB 대 AC와 같다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 384
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "높이가 같으면 넓이의 비는 밑변의 비"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "11619",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "14"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "H",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "sAH",
+            "refs": [
+              "A",
+              "H"
+            ],
+            "dashed": true
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "d0",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "from": "B",
+              "to": "D",
+              "label": "8",
+              "side": "BELOW"
+            },
+            {
+              "id": "d1",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "from": "D",
+              "to": "C",
+              "label": "6",
+              "side": "BELOW"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rg0",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "D"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rg1",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "D",
+                    "C"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "높이가 같으면 넓이의 비는 밑변의 비",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "삼각형 ABD와 ACD는 높이가 같으므로 넓이의 비는 BD 대 DC와 같다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 384
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "A",
+              "H",
+              "C"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "H"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "이등분선 AD는 변 BC를 두 변의 길이의 비 16 대 12, 곧 4 대 3으로 나눈다. 삼각형 ABD와 ACD는 높이가 같으므로 넓이의 비도 밑변 BD 대 DC와 같다. 파랑과 주황은 서로 대응하는 부분이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이등분선 AD는 변 BC를 두 변의 길이의 비 16 대 12, 곧 4 대 3으로 나눈다. 삼각형 ABD와 ACD는 높이가 같으므로 넓이의 비도 밑변 BD 대 DC와 같다. 파랑과 주황은 서로 대응하는 부분이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

@@ -1,0 +1,744 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-6"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "8"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-2"
+         },
+         {
+          "kind": "integer",
+          "value": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Q",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-2"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "R",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-18",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "16",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "2"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "C",
+     "B",
+     "A",
+     "O",
+     "Q",
+     "R",
+     "P"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAP",
+      "refs": [
+       "A",
+       "P"
+      ]
+     },
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     },
+     {
+      "id": "sBQ",
+      "refs": [
+       "B",
+       "Q"
+      ]
+     },
+     {
+      "id": "sQC",
+      "refs": [
+       "Q",
+       "C"
+      ]
+     },
+     {
+      "id": "sCR",
+      "refs": [
+       "C",
+       "R"
+      ]
+     },
+     {
+      "id": "sRA",
+      "refs": [
+       "R",
+       "A"
+      ]
+     },
+     {
+      "id": "sOQ",
+      "refs": [
+       "O",
+       "Q"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "dimensions": [
+      {
+       "id": "dABz0",
+       "from": "B",
+       "to": "A",
+       "label": "10",
+       "unit": "cm",
+       "side": "LEFT"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAPz0",
+       "ownerSegment": "sAP",
+       "text": "x"
+      },
+      {
+       "id": "lOQz0",
+       "ownerSegment": "sOQ",
+       "text": "2"
+      }
+     ]
+    },
+    "caption": "직각삼각형 ABC에 내접하는 원 O와 접점 P, Q, R을 나타낸 그림이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "B",
+       "C",
+       "A"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "접선의 길이"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-6"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "8"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-2"
+         },
+         {
+          "kind": "integer",
+          "value": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Q",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-2"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "R",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-18",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "16",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "2"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "C",
+     "B",
+     "A",
+     "O",
+     "Q",
+     "R",
+     "P"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAP",
+      "refs": [
+       "A",
+       "P"
+      ]
+     },
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     },
+     {
+      "id": "sBQ",
+      "refs": [
+       "B",
+       "Q"
+      ]
+     },
+     {
+      "id": "sQC",
+      "refs": [
+       "Q",
+       "C"
+      ]
+     },
+     {
+      "id": "sCR",
+      "refs": [
+       "C",
+       "R"
+      ]
+     },
+     {
+      "id": "sRA",
+      "refs": [
+       "R",
+       "A"
+      ]
+     },
+     {
+      "id": "sOQ",
+      "refs": [
+       "O",
+       "Q"
+      ]
+     },
+     {
+      "id": "sOR",
+      "refs": [
+       "O",
+       "R"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "equalLengths": [
+      {
+       "id": "e1z1",
+       "count": 1,
+       "segments": [
+        "sAP",
+        "sRA"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "id": "e2z1",
+       "count": 2,
+       "segments": [
+        "sPB",
+        "sBQ"
+       ],
+       "color": "WARM"
+      },
+      {
+       "id": "e3z1",
+       "count": 3,
+       "segments": [
+        "sQC",
+        "sCR",
+        "sOQ",
+        "sOR"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAPz1",
+       "ownerSegment": "sAP",
+       "text": "x"
+      },
+      {
+       "id": "lPBz1",
+       "ownerSegment": "sPB",
+       "text": "10-x"
+      },
+      {
+       "id": "lOQz1",
+       "ownerSegment": "sOQ",
+       "text": "2"
+      }
+     ]
+    },
+    "caption": "같은 점에서 그은 접선의 길이가 같음을 나타내고, 네 점 C, Q, O, R을 꼭짓점으로 하는 사각형이 한 변이 2인 정사각형임을 보이는 그림이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "B",
+       "C",
+       "A"
+      ]
+     },
+     {
+      "id": "r1",
+      "refs": [
+       "O",
+       "Q",
+       "C"
+      ]
+     },
+     {
+      "id": "r2",
+      "refs": [
+       "O",
+       "R",
+       "C"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 ABC의 세 변"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-6"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "8"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "C",
+     "B",
+     "A"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sCB",
+      "refs": [
+       "C",
+       "B"
+      ]
+     },
+     {
+      "id": "sBA",
+      "refs": [
+       "B",
+       "A"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "segmentColors": [
+      {
+       "segments": [
+        "sBA"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sAC"
+       ],
+       "color": "WARM"
+      },
+      {
+       "segments": [
+        "sCB"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lABz2",
+       "ownerSegment": "sBA",
+       "text": "10"
+      },
+      {
+       "id": "lACz2",
+       "ownerSegment": "sAC",
+       "text": "x+2"
+      },
+      {
+       "id": "lBCz2",
+       "ownerSegment": "sCB",
+       "text": "12-x"
+      }
+     ]
+    },
+    "caption": "세 변의 길이를 x로 나타낸 직각삼각형 ABC이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "B",
+       "C",
+       "A"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "네 점 C, Q, O, R을 꼭짓점으로 하는 사각형은 한 변이 2인 정사각형이므로 CQ=CR=2이다. 파란색 AP와 AR, 주황색 BP와 BQ가 각각 같은 길이이고, 직각삼각형 ABC의 세 변을 x로 나타내 피타고라스 정리를 쓴다. 그림의 AP는 AP>BP인 값으로 그렸다."
+}

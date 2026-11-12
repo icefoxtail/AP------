@@ -1,0 +1,95 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      2,
+      -2,
+      4
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": 1
+    },
+    "curves": [
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "-1",
+          "-2"
+        ],
+        "amplitude": "1",
+        "offset": "-1",
+        "domain": [
+          "-5",
+          "-1/2"
+        ],
+        "color": "BLUE",
+        "label": "g(x)"
+      }
+    ],
+    "regions": [
+      {
+        "id": "upper",
+        "between": [
+          "g",
+          "axis"
+        ],
+        "from": "-5",
+        "to": "-1",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "lower",
+        "between": [
+          "axis",
+          "g"
+        ],
+        "from": "-1",
+        "to": "-1/2",
+        "fill": "MEDIUM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "Z",
+          "x": "-1",
+          "y": "0",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "예: 한 수치 예에서 x절편을 기준으로 함수값의 부호를 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a>0, b>0, c<0인 부호 조건을 만족하는 한 예",
+      "mappedTo": [
+        "graphPlan.curves[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x절편은 x=(a²+b)/c이다.",
+      "mappedTo": [
+        "graphPlan.overlays.points[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "x절편의 왼쪽에서는 g(x)>0이고 그 오른쪽 정의역에서는 g(x)<0이다.",
+      "mappedTo": [
+        "graphPlan.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "예시에서 끝점과 x절편의 위치 및 x절편 양쪽의 함수값 부호를 색으로 구분한다."
+  ],
+  "sourceQuote": "주어진 유리함수의 그래프에서 먼저 a,b,c의 부호를 알아낸다."
+}

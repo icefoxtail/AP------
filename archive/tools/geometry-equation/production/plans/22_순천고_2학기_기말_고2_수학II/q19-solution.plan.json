@@ -1,0 +1,55 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "counts": [
+      {
+        "value": 1,
+        "count": 4
+      },
+      {
+        "value": 2,
+        "count": 4
+      },
+      {
+        "value": 3,
+        "count": 4
+      },
+      {
+        "value": 4,
+        "count": 3
+      },
+      {
+        "value": 5,
+        "count": 3
+      },
+      {
+        "value": 6,
+        "count": 3
+      }
+    ],
+    "xTitle": "b"
+  },
+  "caption": "각 정수 b에서 가능한 a의 개수를 점으로 나타낸 도표다. 앞의 세 b값에는 점 네 개씩, 뒤의 세 b값에는 점 세 개씩 대응한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f′(x)=(x−a)²−b이고 x>1에서 극댓값을 가지려면 b>0, a−√b>1이다. a,b는 7보다 작은 정수다.",
+      "mappedTo": "chart.counts"
+    },
+    {
+      "id": "c2",
+      "condition": "b=1,2,3이면 각 가능한 a는 3,4,5,6의 4개이고, b=4,5,6이면 각 가능한 a는 4,5,6의 3개다.",
+      "mappedTo": "chart.counts"
+    },
+    {
+      "id": "c3",
+      "condition": "대칭구간 적분식으로 f(0)=2a/3이며 허용된 a 중 최솟값 3에서 최소라서 k=3; m은 21이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "각 열의 점은 해당 b값에서 가능한 정수 a의 개수를 나타낸다. 총 21개의 경우이며, 이산 정수 조합을 연속 구간처럼 표현하지 않았다.",
+    "b=1,2,3의 개별 빈도는 각각 4, b=4,5,6의 개별 빈도는 각각 3이다."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "n일",
+      "children": [
+        {
+          "label": "…E"
+        },
+        {
+          "label": "…EM"
+        },
+        {
+          "label": "…EMM"
+        }
+      ]
+    }
+  },
+  "caption": "E는 영어, M은 수학이다. MMM이 없는 n일 계획은 끝이 E, EM, EMM 중 하나이고, 각각 앞의 n−1일, n−2일, n−3일 계획으로 이어져 점화식의 세 항이 된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "연속된 수학이 세 날 이상인 경우의 수를 여사건으로 센다.",
+      "mappedTo": "수학이 세 날 연속 나오지 않는 계획의 끝부분 분류"
+    },
+    {
+      "id": "c2",
+      "condition": "끝부분의 영어 날 수는 0, 1, 2일 중 하나다.",
+      "mappedTo": "영어로 끝남, 수학 1일로 끝남, 수학 2일로 끝남의 세 가지 가지"
+    }
+  ],
+  "newVisualInformation": [
+    "마지막 연속 수학 구간 길이가 서로 겹치지 않는 세 경우로 나뉨"
+  ]
+}

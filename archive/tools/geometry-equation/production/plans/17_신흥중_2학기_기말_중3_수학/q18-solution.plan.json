@@ -1,0 +1,313 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "42426407",
+       "denominator": "10000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "24333491",
+       "denominator": "5000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "412479",
+       "denominator": "1250000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "197259",
+       "denominator": "100000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "Q",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "8249579",
+       "denominator": "10000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "49314749",
+       "denominator": "10000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "7424621",
+       "denominator": "5000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "22191637",
+       "denominator": "2500000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "-3142697",
+       "denominator": "10000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "32876499",
+       "denominator": "5000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "T",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "42426407",
+       "denominator": "10000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "0",
+       "denominator": "1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "circ",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "rational",
+      "numerator": "24333491",
+      "denominator": "5000000"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "P",
+  "A",
+  "Q",
+  "B",
+  "C",
+  "T"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "circ"
+ ],
+ "displaySegments": [
+  {
+   "id": "sPA",
+   "refs": [
+    "P",
+    "A"
+   ]
+  },
+  {
+   "id": "sAQ",
+   "refs": [
+    "A",
+    "Q"
+   ]
+  },
+  {
+   "id": "sQB",
+   "refs": [
+    "Q",
+    "B"
+   ]
+  },
+  {
+   "id": "sCQ",
+   "refs": [
+    "C",
+    "Q"
+   ]
+  },
+  {
+   "id": "sQT",
+   "refs": [
+    "Q",
+    "T"
+   ]
+  },
+  {
+   "id": "sPT",
+   "refs": [
+    "P",
+    "T"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "expressionLabels": [
+   {
+    "id": "lPA",
+    "ownerSegment": "sPA",
+    "text": "x"
+   },
+   {
+    "id": "lAQ",
+    "ownerSegment": "sAQ",
+    "text": "3",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lQB",
+    "ownerSegment": "sQB",
+    "text": "4"
+   },
+   {
+    "id": "lCQ",
+    "ownerSegment": "sCQ",
+    "text": "2",
+    "labelAt": "START"
+   },
+   {
+    "id": "lQT",
+    "ownerSegment": "sQT",
+    "text": "6"
+   },
+   {
+    "id": "lPT",
+    "ownerSegment": "sPT",
+    "text": "3sqrt(2)"
+   }
+  ],
+  "segmentColors": [
+   {
+    "segments": [
+     "sAQ",
+     "sQB"
+    ],
+    "color": "BLUE"
+   },
+   {
+    "segments": [
+     "sCQ",
+     "sQT"
+    ],
+    "color": "WARM"
+   },
+   {
+    "segments": [
+     "sPT"
+    ],
+    "color": "GREEN"
+   }
+  ]
+ },
+ "caption": "파란색 두 선분의 곱과 주황색 두 선분의 곱이 같으므로 QA를 구한다. 그다음 점 P에서 원에 그은 접선 PT와 할선 PAB에서 초록색 접선의 길이를 제곱한 값이 PA와 PB의 곱과 같다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "PT는 원의 접선, CQ=2, BQ=4, QT=6, PT=3√2.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 520
+ },
+ "hiddenPointNames": [
+  "O"
+ ],
+ "hiddenPointStyle": "NONE"
+}

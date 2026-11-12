@@ -10,11 +10,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="calc1-composite/lesson-core.js"></script>
+<script defer src="calc1-composite/lesson-a.js"></script>
+<script defer src="calc1-composite/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -33,6 +40,9 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
   const { tex, fmt, clamp } = APLab;
+  const lccActive=s=>!!(s&&(s.lessonOn||s.lessonEntry));
+  let lccContext=null;
+  const lccFirst=()=>lccActive(lccContext||(window.lab&&window.lab.s));
   const num = (v, d = 2) => fmt(v, d).replace('−', '-'); // 수식(TeX) 문자열용
   const round05 = (v) => Math.round(v * 20) / 20;
   const same = (a, b) => Math.abs(a - b) <= 1e-11 * Math.max(1, Math.abs(a), Math.abs(b));
@@ -423,7 +433,8 @@ window.addEventListener('DOMContentLoaded', function () {
   const cxRint = (n) => Math.floor(Math.random() * n);
   const cxPick = (arr, not) => { let x; do x = arr[cxRint(arr.length)]; while (arr.length > 1 && x === not); return x; };
   let cxSerial = 0;
-  function cxVarier(gen) { let cur = gen(null); cur.sid = ++cxSerial; return { cur: () => cur, next: () => { cur = gen(cur); cur.sid = ++cxSerial; return cur; } }; }
+  function cxVarier(gen) { let cur = gen(null); cur.sid = ++cxSerial;
+    const first=cur; return { first:()=>first, cur:()=>lccFirst()?first:cur, next: () => { cur = gen(cur); cur.sid = ++cxSerial; return cur; } }; }
   const cxProb = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-cx-new>새 문제</button></div>`;
   document.addEventListener('click', (ev) => {
     const hit = ev.target && ev.target.closest && ev.target.closest('[data-cx-new]');
@@ -1494,10 +1505,10 @@ window.addEventListener('DOMContentLoaded', function () {
   function ouVarier(gen) {
     let cur = gen(null);
     cur.first = true; cur.sid = ++ouSerial;
-    const firstKey = cur.key;
+    const first=cur, firstKey = cur.key;
     return {
       ou: true,
-      cur: () => cur,
+      first:()=>first, cur:()=>lccFirst()?first:cur,
       next: () => {
         for (let i = 0; i < 600; i++) {
           const v = gen(cur);
@@ -1532,6 +1543,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const withStep = (s, fn) => { const k = s.step; s.step = Math.max(0, Math.min(3, k)); try { return fn(); } finally { s.step = k; } };
     const stepsOf = (v) => spec.steps(v).map(ouFix);
     const stepsHtml = (v) => stepsOf(v).map((t, i) => `<b>${i + 1}.</b> ${t}`).join('<br>');
+    sc.lessonPrepare=ouHook;
     sc.startStep = 0;
     sc.steps = (s, lab) => inExplore(lab) ? exploreSteps(spec.m, s) : stepsOf(V.cur());
     sc.guide = [
@@ -1565,7 +1577,7 @@ window.addEventListener('DOMContentLoaded', function () {
       out.notes = '현재 탐구 그림은 조절한 값의 모델입니다. 정리·문제 탭에서는 발문에 주어진 함수와 조건을 사용합니다.';
       return out;
     };
-    if (origPanes) sc.panes = (s) => { const L = window.lab; return L && L.tab && L.tab !== 'explore' ? null : origPanes(s); };
+    if (origPanes) sc.panes = s => { const L=window.lab; const explore=lccActive(s)?s.lccExplore:!L||!L.tab||L.tab==='explore'; return explore?origPanes(s):null; };
     sc.draw = (b, s, v, lab) => {
       if (b.thumb || inExplore(lab)) {
         if (!b.thumb && !s.dragging) {
@@ -1844,17 +1856,8 @@ window.addEventListener('DOMContentLoaded', function () {
   })();
   /* OU-END */
 
-  APLab.createLab({
-    id: 'calc1-composite',
-    stagedReveal: true,
-    title: '합성함수 · 절댓값 그래프',
-    courseName: '미적분Ⅰ',
-    unit: '함수 · 합성함수와 절댓값',
-    courseColor: 'var(--m-orange)',
-    home: '../index.html#calc1',
-    legacy: '../../labs/미적분1/합성함수·절댓값 그래프.html',
-    board: { kind: 'cartesian', focus: { x: [-3.6, 3.6], y: [-2.5, 2.6] }, pad: 0.04 },
-    params: {
+
+  const lessonParams={
       m: { value: 1, min: -2.5, max: 2.5, step: 0.05, color: 'amber', label: '평행이동 m', hint: '원점의 왼쪽과 오른쪽에서 접선의 기울기를 비교하세요', format: (v) => `m = ${fmt(v)}` },
       t: { value: 0, min: -2.5, max: 2.5, step: 0.05, color: 'amber', label: '기준선 y = t', hint: '점선 그래프 y = f(x) − t 의 x축 아랫부분이 위로 접혀 올라옵니다', format: (v) => `t = ${fmt(v)}` },
       k2: { value: 2, min: 0, max: 3.8, step: 0.05, color: 'sky', label: '수평선 y = k', hint: '극점의 높이와 그 바로 위·아래에서 교점 수를 비교하세요', format: (v) => `k = ${fmt(v)}` },
@@ -1865,10 +1868,113 @@ window.addEventListener('DOMContentLoaded', function () {
       cp: { value: 0.5, min: -1.8, max: 1.8, step: 0.05, color: 'amber', label: '접점 P의 x좌표 p', hint: 'P를 곡선 위에서 움직입니다', format: (v) => `p = ${fmt(v)}` },
       cm: { value: 1, min: -4, max: 7, step: 0.05, color: 'sky', label: '직선 g의 기울기 m', hint: 'm = f′(p) 이면 g는 P에서의 접선입니다', format: (v) => `m = ${fmt(v)}` },
       gp: { value: 1, min: 0.2, max: 3.6, step: 0.05, color: 'amber', label: '오른쪽 조각을 가져오는 위치 p', hint: '원래 곡선의 x=0과 P에서 접선 기울기를 비교하세요', format: (v) => `p = ${fmt(v)}` }
-    },
-    state: { absType: 'in', dual: false, animDir: -1, mk: 'max' },
+    };
+  const lessonState={ absType: 'in', dual: false, animDir: -1, mk: 'max' };
+  const lccClone=s=>({...s});
+  const sourceInfo=Object.fromEntries(scenes.map(sc=>{
+    const initial=lccClone({...lessonState,...Object.fromEntries(Object.entries(lessonParams).map(([key,p])=>[key,p.value]))});
+    sc.enter?.(initial);
+    return [sc.id,{initial,first:sc.vary.first(),question:sc.problem.text().replace(/<div[^>]*>\s*<button[^>]*data-(?:ou|cx)-new[\s\S]*$/,''),
+      inquiry:sc.question,steps:sc.steps(initial,{tab:'review'})}];
+  }));
+  const lessonSource=window.APL_C1C_SOURCE={
+    scenes,first:id=>sourceInfo[id].first,initial:id=>lccClone(sourceInfo[id].initial),
+    question:id=>sourceInfo[id].question,inquiry:id=>sourceInfo[id].inquiry,steps:id=>sourceInfo[id].steps.slice(),
+    math:{baseCubic,outerF,innerG,innerRoots,cubicLevels,foldedLevels,transOf,originSlope,extremaCount,stepTwoCount,
+      f6,fp6,g6,H6,side6,roots6,slopes6,f7,fp7}
+  };
+
+  function lccMathKey(value){
+    return String(value||'').normalize('NFKC').replace(/\\(?:left|right|,|!|;|quad|qquad)/g,'')
+      .replace(/\\(?:dfrac|tfrac|frac)\{([^{}]*)\}\{([^{}]*)\}/g,'$1/$2')
+      .replace(/\\sqrt\{([^{}]*)\}/g,'√$1').replace(/\\sqrt\s*(\w)/g,'√$1')
+      .replace(/\\(?:text|mathrm|mathbf|overline)\{([^{}]*)\}/g,'$1')
+      .replace(/\\(?:Delta)/g,'Δ').replace(/\\alpha/g,'α').replace(/\\beta/g,'β')
+      .replace(/\\leq?/g,'≤').replace(/\\geq?/g,'≥').replace(/\\lt/g,'<').replace(/\\gt/g,'>')
+      .replace(/\\cdot|\\times/g,'×').replace(/−|–/g,'-').replace(/[\s{}$^_()]/g,'')
+      .replace(/(-?\d+(?:\.\d+)?)\/(-?\d+(?:\.\d+)?)/g,(_,a,b)=>Number(b)?String(Number(a)/Number(b)):_ )
+      .replace(/-?\d+\.\d+/g,x=>String(Number(x)));
+  }
+  function lccLabel(value,s){
+    const text=String(value||''), key=lccMathKey(text),known=(s.lccKnownMath||[]).map(lccMathKey);
+    const role=text.replace(/^좌미분계수\s*/, 'L=').replace(/^우미분계수\s*/, 'R=');
+    if(role!==text&&known.some(math=>math.includes(lccMathKey(role))))return text;
+    if(key&&known.some(math=>math.includes(key)))return text;
+    const pair=key.split('=');
+    if(pair.length===2&&known.some(math=>{const chain=math.split('=');return chain.length>2&&chain.includes(pair[0])&&chain.includes(pair[1]);}))return text;
+    if(/^(?:[A-Z][′']*|[xyabkmrtd]|[αβ]|[fg]|[xy]=[fg]\(x\)|y = [fgh]\(x\)|2t|높이 [−]?β|높이 α)$/.test(text))return text;
+    const name=text.match(/^([A-Z][′']*)(?=[\s(=:]|$)/);if(name)return name[1];
+    // Keep the role of an object visible without exposing its calculated value.
+    if(/^(?:y\s*=|h\s*=)/.test(text)&&!/[0-9]/.test(text))return text;
+    if(/^점선은 예시/.test(text))return '점선: m=2인 예시';
+    if(/^실선: m =/.test(text)&&known.some(x=>x.includes('m=1')))return '실선: m=1';
+    const count=text.match(/(?:실근|극값을 갖는 x\s*:)\s*(\d+)개/);
+    if(count&&known.some(x=>x.includes(count[1]+'개')))return text;
+    if(text==='(0, 2)'&&known.some(x=>x.includes('g0=2')))return text;
+    return /^(?:좌미분계수|우미분계수|꺾인 점|교점|접점)/.exec(text)?.[0]||'';
+  }
+  for(const sc of scenes){
+    const original={question:sc.question,reviewTop:sc.reviewTop,steps:sc.steps,view:sc.view,draw:sc.draw,tick:sc.tick,panes:sc.panes};
+    sc.question=(s,lab)=>lccActive(s)?s.lccQuestion||lessonSource.question(sc.id):typeof original.question==='function'?original.question(s,lab):original.question;
+    sc.reviewTop=(s,lab)=>lccActive(s)?'':typeof original.reviewTop==='function'?original.reviewTop(s,lab):original.reviewTop;
+    sc.steps=(s,lab)=>lccActive(s)?['조건 확인','핵심 관계','식 정리','계산과 결론']:original.steps(s,lab);
+    sc.view=(s,lab)=>lccActive(s)?{}:original.view(s,lab);
+    if(original.panes)sc.panes=s=>original.panes(s.lessonEntry?lccClone({...s,...s.lccInitial}):s);
+    if(original.tick)sc.tick=(s,dt,lab)=>lccActive(s)?false:original.tick(s,dt,lab);
+    sc.draw=(b,s,v,lab)=>{
+      if(!lccActive(s)){
+        if(b._c1cView){
+          if(b.focus===b._c1cView.appliedFocus)Object.assign(b,b._c1cView.before);
+          else {b._ouKey=null;b._cxKey=null;b._ouBoxes=b._c1cView.before._ouBoxes;}
+          delete b._c1cView;
+        }
+        return original.draw(b,s,v,lab);
+      }
+      if(!b._c1cView)b._c1cView={before:{focus:b.focus,zoom:b.zoom,panX:b.panX,panY:b.panY,_ouKey:b._ouKey,_cxKey:b._cxKey,_ouBoxes:b._ouBoxes}};
+      const shown=lccClone({...s,...(s.lessonEntry?s.lccInitial:{}),playing:false,dragging:false,
+        step:s.lessonEntry?(s.lccInitial?.lccStartStep||0):Math.max(0,Math.min(s.step||0,s.lccShowAnswer?4:3))});
+      if(s.lessonEntry){shown.lccTrace=0;shown.lccShowAnswer=false;}
+      const shownLab=Object.create(lab);shownLab.s=shown;shownLab.tab=shown.lccExplore?'explore':'review';
+      const key=sc.id+'|'+!!shown.lccExplore;
+      if(b._c1cView.key!==key){b._ouKey=null;b._cxKey=null;b._c1cView.key=key;b.zoom=1;b.panX=0;b.panY=0;}
+      // Install the source's persistent label-layout hook before temporary filtering.
+      sc.lessonPrepare?.(b);
+      b._ouBoxes=[];
+      const text=b._text,plot=b.plot,axes=b.axes,curves=[];let axesDrawing=false;
+      b.axes=function(...args){axesDrawing=true;try{return axes.apply(this,args);}finally{axesDrawing=false;}};
+      b._text=function(x,y,label,options={},screen){return text.call(this,x,y,this._bbox||axesDrawing||(options.color==='muted'&&/^(?:[−-]?\d+(?:\.\d+)?|[xygtOm])$/.test(String(label)))?label:lccLabel(label,shown),options,screen);};
+      b.plot=function(fn,options={}){if(!this._bbox)curves.push({fn,options});return plot.call(this,fn,options);};
+      const previous=lccContext;lccContext=shown;
+      try{original.draw(b,shown,{},shownLab);}finally{lccContext=previous;b._text=text;b.plot=plot;b.axes=axes;}
+      b._c1cView.appliedFocus=b.focus;
+      // A tracing point follows a function already drawn by the source renderer.
+      if(!s.lessonEntry&&shown.lccTrace>0&&!b._bbox){
+        for(const {fn,options} of curves){
+          const box=b.viewBox(),lo=Math.max(box.x0,options.from??-Infinity),hi=Math.min(box.x1,options.to??Infinity),xs=[];
+          for(let i=0;i<=100;i++){const x=lo+(hi-lo)*i/100,y=fn(x);if(Number.isFinite(y)&&y>box.y0&&y<box.y1)xs.push(x);}
+          if(xs.length>1){const x=xs[0]+(xs.at(-1)-xs[0])*shown.lccTrace,y=fn(x);if(Number.isFinite(y)&&y>box.y0&&y<box.y1)b.point([x,y],{color:'violet',r:4.5,glow:false});break;}
+        }
+      }
+    };
+  }
+  const lessons=window.APL_C1C_LESSONS?window.APL_C1C_LESSONS.install(scenes,lessonSource):{};
+
+
+  APLab.createLab({
+    id: 'calc1-composite',
+    stagedReveal: true,
+    title: '합성함수 · 절댓값 그래프',
+    courseName: '미적분Ⅰ',
+    unit: '함수 · 합성함수와 절댓값',
+    courseColor: 'var(--m-orange)',
+    home: '../index.html#calc1',
+    legacy: '../../labs/미적분1/합성함수·절댓값 그래프.html',
+    board: { kind: 'cartesian', focus: { x: [-3.6, 3.6], y: [-2.5, 2.6] }, pad: 0.04 },
+    params: lessonParams,
+    state: lessonState,
     persist: ['absType', 'dual'],
-    scenes
+    scenes,
+    lessons
   });
 });
 </script>

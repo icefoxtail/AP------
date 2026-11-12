@@ -1,0 +1,44 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "SUM",
+    "colVar": "a",
+    "rowVar": "b",
+    "highlightGroups": [
+      {
+        "highlight": {
+          "expr": "a+b",
+          "in": [
+            5
+          ]
+        },
+        "tone": 2
+      },
+      {
+        "highlight": {
+          "expr": "a+b",
+          "in": [
+            7
+          ]
+        },
+        "tone": 1
+      }
+    ]
+  },
+  "caption": "가로는 한 주사위의 눈 a, 세로는 다른 주사위의 눈 b이고 칸 안의 수는 두 눈의 합이다. 짙은 칸은 합이 5인 경우, 옅은 칸은 합이 7인 경우이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "서로 다른 두 주사위를 던져 나오는 눈의 합이 5 또는 7이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "합이 5인 칸과 합이 7인 칸을 진하기로 나누어 두 경우가 겹치지 않음을 보인다."
+  ]
+}

@@ -1,0 +1,476 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "16"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-12"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "rational",
+          "numerator": "7",
+          "denominator": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "M",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-6"
+         },
+         {
+          "kind": "integer",
+          "value": "8"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "N",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "8"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "rational",
+         "numerator": "25",
+         "denominator": "2"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "O",
+     "M",
+     "N"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAM",
+      "refs": [
+       "A",
+       "M"
+      ]
+     },
+     {
+      "id": "sMB",
+      "refs": [
+       "M",
+       "B"
+      ]
+     },
+     {
+      "id": "sAN",
+      "refs": [
+       "A",
+       "N"
+      ]
+     },
+     {
+      "id": "sNC",
+      "refs": [
+       "N",
+       "C"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sOM",
+      "refs": [
+       "O",
+       "M"
+      ]
+     },
+     {
+      "id": "sON",
+      "refs": [
+       "O",
+       "N"
+      ]
+     },
+     {
+      "id": "sMN",
+      "refs": [
+       "M",
+       "N"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "segmentColors": [
+      {
+       "segments": [
+        "sOM",
+        "sON"
+       ],
+       "color": "WARM"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAM",
+       "ownerSegment": "sAM",
+       "text": "10"
+      }
+     ]
+    },
+    "caption": "원 O에 내접하는 삼각형 ABC에서 OM과 ON은 현 AB, AC에 내린 수선이고 길이가 같다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "O",
+       "M",
+       "A"
+      ]
+     },
+     {
+      "id": "r1",
+      "refs": [
+       "O",
+       "N",
+       "A"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 384,
+     "height": 480
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 ABC와 선분 MN"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "16"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-12"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "M",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-6"
+         },
+         {
+          "kind": "integer",
+          "value": "8"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "N",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "8"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "M",
+     "N"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAM",
+      "refs": [
+       "A",
+       "M"
+      ]
+     },
+     {
+      "id": "sMB",
+      "refs": [
+       "M",
+       "B"
+      ]
+     },
+     {
+      "id": "sAN",
+      "refs": [
+       "A",
+       "N"
+      ]
+     },
+     {
+      "id": "sNC",
+      "refs": [
+       "N",
+       "C"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sMN",
+      "refs": [
+       "M",
+       "N"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "equalLengths": [
+      {
+       "id": "e1",
+       "count": 1,
+       "segments": [
+        "sAM",
+        "sMB",
+        "sAN",
+        "sNC"
+       ],
+       "color": "WARM"
+      }
+     ],
+     "parallels": [
+      {
+       "id": "p1",
+       "count": 1,
+       "segments": [
+        "sMN",
+        "sBC"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAM",
+       "ownerSegment": "sAM",
+       "text": "10"
+      },
+      {
+       "id": "lMN",
+       "ownerSegment": "sMN",
+       "text": "12"
+      },
+      {
+       "id": "lBC",
+       "ownerSegment": "sBC",
+       "text": "24"
+      }
+     ]
+    },
+    "caption": "M과 N은 AB와 AC의 중점이므로 선분 MN은 BC와 평행하다."
+   }
+  }
+ ],
+ "caption": "수선은 현을 이등분하므로 M, N은 AB, AC의 중점이다. 주황색 네 선분은 같은 길이 10cm이고, 초록색 선분 MN과 BC는 평행하다."
+}

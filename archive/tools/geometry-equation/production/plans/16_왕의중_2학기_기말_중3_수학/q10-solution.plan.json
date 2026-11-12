@@ -1,0 +1,537 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "색칠한 부분 나누기"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "neg",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "div",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "2"
+           }
+          ]
+         },
+         {
+          "kind": "rational",
+          "numerator": "3",
+          "denominator": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          }
+         ]
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "O",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAO",
+      "refs": [
+       "A",
+       "O"
+      ]
+     },
+     {
+      "id": "sOB",
+      "refs": [
+       "O",
+       "B"
+      ]
+     },
+     {
+      "id": "sOC",
+      "refs": [
+       "O",
+       "C"
+      ]
+     },
+     {
+      "id": "sCB",
+      "refs": [
+       "C",
+       "B"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "arcs": [
+      {
+       "id": "arAC",
+       "circle": "k",
+       "center": "O",
+       "from": "A",
+       "to": "C",
+       "side": "MINOR"
+      },
+      {
+       "id": "arCB",
+       "circle": "k",
+       "center": "O",
+       "from": "C",
+       "to": "B",
+       "side": "MINOR"
+      }
+     ],
+     "angles": [
+      {
+       "id": "aO",
+       "refs": [
+        "A",
+        "O",
+        "C"
+       ],
+       "value": 60,
+       "label": "60",
+       "color": "BLUE"
+      },
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "C"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "GREEN"
+      }
+     ],
+     "regions": [
+      {
+       "id": "rgS",
+       "fill": "BLUE",
+       "shapes": [
+        {
+         "sector": {
+          "center": "O",
+          "from": "A",
+          "to": "C"
+         }
+        }
+       ]
+      },
+      {
+       "id": "rgT",
+       "fill": "WARM",
+       "shapes": [
+        {
+         "polygon": [
+          "O",
+          "B",
+          "C"
+         ]
+        }
+       ]
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lOA",
+       "ownerSegment": "sAO",
+       "text": "sqrt(3)"
+      }
+     ]
+    },
+    "caption": "반원 O에서 색칠한 부분을 부채꼴 AOC(파랑)와 삼각형 OBC(주황)로 나눈 그림이다."
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 OBC의 높이 CH"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "div",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "2"
+           }
+          ]
+         },
+         {
+          "kind": "rational",
+          "numerator": "3",
+          "denominator": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "H",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "div",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "2"
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "B",
+     "C",
+     "H"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sOB",
+      "refs": [
+       "O",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCO",
+      "refs": [
+       "C",
+       "O"
+      ]
+     },
+     {
+      "id": "sHO",
+      "refs": [
+       "H",
+       "O"
+      ],
+      "dashed": true
+     },
+     {
+      "id": "sCH",
+      "refs": [
+       "C",
+       "H"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "regions": [
+      {
+       "id": "rgT",
+       "fill": "WARM",
+       "shapes": [
+        {
+         "polygon": [
+          "O",
+          "B",
+          "C"
+         ]
+        }
+       ]
+      }
+     ],
+     "angles": [
+      {
+       "id": "aO",
+       "refs": [
+        "C",
+        "O",
+        "H"
+       ],
+       "value": 60,
+       "label": "60",
+       "color": "BLUE"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sCH"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lOB",
+       "ownerSegment": "sOB",
+       "text": "sqrt(3)"
+      },
+      {
+       "id": "lOC",
+       "ownerSegment": "sCO",
+       "text": "sqrt(3)"
+      },
+      {
+       "id": "lCH",
+       "ownerSegment": "sCH",
+       "text": "3/2"
+      }
+     ]
+    },
+    "caption": "삼각형 OBC(주황)에서 꼭짓점 C에서 지름의 연장선에 내린 수선 CH(초록)이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "C",
+       "H",
+       "O"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "반원 O의 색칠한 부분은 부채꼴 AOC(파랑)와 삼각형 OBC(주황)를 합친 것이고, 삼각형 OBC의 높이는 초록색 선분 CH이다."
+}

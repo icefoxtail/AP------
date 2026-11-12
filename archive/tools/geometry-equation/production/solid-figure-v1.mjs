@@ -1185,7 +1185,7 @@ const POLY_KINDS=['PRISM','PYRAMID','FRUSTUM','REGULAR_POLYHEDRON','BIPYRAMID'],
 const UNIT=/^(cm|mm|m|km)$/;
 export function solveSolidFigure(plan){
   if(!isPlain(plan)||plan.capability!==SOLID_CAPABILITY)bad('SOLID_PLAN_INVALID');
-  onlyKeys(plan,['capability','unit','solids','net','space','dims','highlights','segments','section','marks','labels','solidCaption','caption','sourceConditions','newVisualInformation','sourceQuote','panelWidth'],'SOLID_PLAN_INVALID');
+  onlyKeys(plan,['capability','unit','solids','net','space','dims','highlights','segments','section','marks','labels','solidCaption','caption','accessibilityDescription','sourceConditions','newVisualInformation','sourceQuote','panelWidth'],'SOLID_PLAN_INVALID');
   // a figure is a net, or solids and/or a space (free points, planes and lines, G4b)
   if(plan.net!==undefined?plan.solids!==undefined||plan.space!==undefined:plan.solids===undefined&&plan.space===undefined)bad('SOLID_PLAN_INVALID');
   if(plan.labels!==undefined&&plan.net!==undefined)bad('SOLID_LABELS_UNSUPPORTED:NET');
@@ -3396,6 +3396,6 @@ export function expandSolidFigure(plan){
     ||(cap.text!==undefined&&(typeof cap.text!=='string'||!CAPTION_TEXT.test(cap.text)))||(cap.math!==undefined&&(typeof cap.math!=='string'||!CAPTION_MATH_OK.test(cap.math)))))bad('SOLID_CAPTION_INVALID');
   if(plan.panelWidth!==undefined)bad('SOLID_PLAN_INVALID');
   // the author's solidCaption stays in the panel's plan: it is what lets a figure with nothing written on it stand (the panel caption carries the text)
-  const {caption,sourceConditions,newVisualInformation,solidCaption,sourceQuote,...figure}=plan;void solidCaption;
-  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,panels:[{caption:cap??{text:model.mode==='NET'?'전개도':model.solids.length===0?'공간도형':'입체도형'},plan:cap!==undefined?{...figure,solidCaption:cap}:figure}],caption,sourceConditions,newVisualInformation,...(sourceQuote!==undefined?{sourceQuote}:{})};
+  const {caption,accessibilityDescription,sourceConditions,newVisualInformation,solidCaption,sourceQuote,...figure}=plan;void solidCaption;
+  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,panels:[{caption:cap??{text:model.mode==='NET'?'전개도':model.solids.length===0?'공간도형':'입체도형'},plan:cap!==undefined?{...figure,solidCaption:cap}:figure}],caption,...(accessibilityDescription!==undefined?{accessibilityDescription}:{}),sourceConditions,newVisualInformation,...(sourceQuote!==undefined?{sourceQuote}:{})};
 }

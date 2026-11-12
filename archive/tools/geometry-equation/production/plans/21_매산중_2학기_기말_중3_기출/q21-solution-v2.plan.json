@@ -1,0 +1,859 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "(1) 지름과 원주각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "180"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "AC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "A45",
+              "refs": [
+                "C",
+                "A",
+                "B"
+              ],
+              "value": 45,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B45",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "value": 45,
+              "label": "x",
+              "factRole": "CONCLUSION"
+            }
+          ]
+        },
+        "caption": "지름에 대한 직각과 주어진 45°를 나타내는 예시 그림이다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "AB는 지름이고 ∠CAB=45°이다. ∠ABC=x이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displayCircles",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "지름과 직각삼각형의 각을 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "rC",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "(2) 색칠한 부분"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "M",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "L",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "R",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "7"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "G",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "6"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "S",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "big",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "M"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "small1",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "L"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "small2",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "R"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "G",
+          "M",
+          "L",
+          "R",
+          "S"
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "AC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "CB",
+            "refs": [
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "CG",
+            "refs": [
+              "C",
+              "G"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "bigArc",
+              "circle": "big",
+              "center": "M",
+              "from": "B",
+              "to": "A",
+              "side": "CCW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "smallArc1",
+              "circle": "small1",
+              "center": "L",
+              "from": "C",
+              "to": "A",
+              "side": "CCW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "smallArc2",
+              "circle": "small2",
+              "center": "R",
+              "from": "B",
+              "to": "C",
+              "side": "CCW",
+              "factRole": "GIVEN"
+            }
+          ],
+          "regions": [
+            {
+              "id": "arbelos",
+              "fill": "BLUE",
+              "factRole": "GIVEN",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "A",
+                    "steps": [
+                      {
+                        "to": "B"
+                      },
+                      {
+                        "to": "A",
+                        "arc": {
+                          "center": "M",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "holes": [
+                {
+                  "loop": {
+                    "start": "A",
+                    "steps": [
+                      {
+                        "to": "C"
+                      },
+                      {
+                        "to": "A",
+                        "arc": {
+                          "center": "L",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "loop": {
+                    "start": "C",
+                    "steps": [
+                      {
+                        "to": "B"
+                      },
+                      {
+                        "to": "C",
+                        "arc": {
+                          "center": "R",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "cg",
+              "ownerSegment": "CG",
+              "text": "2r"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dm",
+              "from": "A",
+              "to": "C",
+              "label": "m",
+              "side": "BELOW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "dn",
+              "from": "C",
+              "to": "B",
+              "label": "n",
+              "side": "BELOW",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "예: m=4, n=6인 모양으로 큰 반원에서 두 작은 반원을 뺀 영역을 나타낸다.",
+        "sourceConditions": [
+          {
+            "id": "c2",
+            "condition": "AB는 큰 반원의 지름, 작은 반원의 지름은 AC,CB이며 CG⊥AB, CG=2r이고 CG를 지름으로 원을 그린다. 예시에서는 AC=4, CB=6이다. M,L,R는 각 반원의 중심을 나타내는 보조점이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displayCircles",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "세 반원으로 둘러싸인 영역과 CG를 지름으로 하는 원을 구별한다. 원문 두 그림과 기존 SVG를 보존한다."
+        ],
+        "hiddenPointNames": [
+          "M",
+          "L",
+          "R",
+          "S"
+        ],
+        "unmarkedPointNames": [
+          "M",
+          "L",
+          "R",
+          "S"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "(2) 지름 CG인 원"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "S",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "G",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "6"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "compare",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "S"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "C",
+          "G",
+          "S"
+        ],
+        "displayCircles": [
+          "compare"
+        ],
+        "displayLines": [],
+        "displaySegments": [
+          {
+            "id": "CG",
+            "refs": [
+              "C",
+              "G"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "disk",
+              "fill": "BLUE",
+              "factRole": "GIVEN",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "C",
+                    "steps": [
+                      {
+                        "to": "G",
+                        "arc": {
+                          "center": "S",
+                          "side": "CCW"
+                        }
+                      },
+                      {
+                        "to": "C",
+                        "arc": {
+                          "center": "S",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "cg",
+              "ownerSegment": "CG",
+              "text": "2r"
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "S"
+        ],
+        "unmarkedPointNames": [
+          "S"
+        ],
+        "caption": "지름이 CG인 원을 나타낸다.",
+        "sourceConditions": [
+          {
+            "id": "c3",
+            "condition": "CG=2r를 지름으로 하는 원 O를 그린다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displayCircles",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "색칠한 영역의 넓이와 비교할 원을 따로 보인다."
+        ]
+      }
+    }
+  ],
+  "caption": "두 소문항의 원과 선분 관계를 구분하고 색칠한 영역을 지름이 CG인 원과 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문의 두 소문항을 각각 분리해 표현한다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 소문항의 그림을 분리해 판독한다."
+  ]
+}

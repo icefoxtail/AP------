@@ -1,0 +1,53 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "labelWeight": "MATH",
+    "root": {
+      "children": [
+        {
+          "label": "1 포함",
+          "children": [
+            {
+              "label": "1,2"
+            },
+            {
+              "label": "1,3"
+            },
+            {
+              "label": "1,4"
+            }
+          ]
+        },
+        {
+          "label": "1 제외",
+          "children": [
+            {
+              "label": "2,3"
+            },
+            {
+              "label": "2,4"
+            },
+            {
+              "label": "3,4"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "네 윷가락 가운데 뒤집히는 두 가락의 번호 쌍을 1번 가락이 포함되는지로 나누어 나열한 수형도이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "4개의 윷가락을 던질 때 두 개가 뒤집히는 경우(개).",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "뒤집히는 두 윷가락의 번호 쌍을 중복 없이 나열해 보인다."
+  ]
+}

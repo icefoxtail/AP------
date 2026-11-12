@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-100/9",
+          "40/3",
+          "-7/3",
+          "1/9"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3/9-7x^2/3+40x/3-100/9",
+    "functionName": "f",
+    "sampleNote": "c=1/9",
+    "domain": [
+      "-1",
+      "11"
+    ],
+    "viewport": [
+      "-1",
+      "11",
+      "-15",
+      "15"
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "12"
+      },
+      {
+        "id": "C",
+        "x": "10",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4",
+        "10"
+      ],
+      "y": [
+        "12"
+      ]
+    }
+  },
+  "caption": "예: c=1/9인 모양에서 영점과 극대·감소 구간을 읽는다."
+}

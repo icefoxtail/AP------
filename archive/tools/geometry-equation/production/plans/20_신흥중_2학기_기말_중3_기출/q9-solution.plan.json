@@ -1,0 +1,308 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "64",
+              "denominator": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "120",
+              "denominator": "17"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "64",
+              "denominator": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-120",
+              "denominator": "17"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "T"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "CQ",
+      "refs": [
+        "C",
+        "Q"
+      ]
+    },
+    {
+      "id": "BT",
+      "refs": [
+        "B",
+        "T"
+      ]
+    },
+    {
+      "id": "TC",
+      "refs": [
+        "T",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rP",
+      "refs": [
+        "O",
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOP",
+        "ownerSegment": "OP",
+        "text": "8",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "lOA",
+        "ownerSegment": "OA",
+        "text": "17",
+        "factRole": "GIVEN",
+        "unit": "cm",
+        "labelAt": 0.3
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "BP",
+          "BT"
+        ],
+        "color": "WARM"
+      },
+      {
+        "id": "e2",
+        "count": 2,
+        "segments": [
+          "CQ",
+          "TC"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "caption": "접선의 길이와 둘레",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AP, AQ는 원 O의 접선이고 OP=8cm, OA=17cm이다. BC는 접점 T에서 원에 접한다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접점 P에서 직각삼각형 OPA를 보이고 BP=BT(주황), CQ=CT(초록) 접선 길이를 같은 색·눈금으로 묶는다."
+  ]
+}

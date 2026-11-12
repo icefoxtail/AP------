@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-2/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "formula": "-2/3*x+1",
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "axis": "x",
+          "value": "3/2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "curveX": "3",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "직선과 x축, y축이 만나는 점, 그리고 지나는 점을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=-2/3x+1의 그래프.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x절편, y절편, 지나는 점을 직선 위에서 확인한다."
+  ]
+}

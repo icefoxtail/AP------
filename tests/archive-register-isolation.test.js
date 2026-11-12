@@ -171,7 +171,7 @@ function passFixture(t, behaviors, { buildFailOnce = false } = {}) {
   git(dir, 'init', '-q', '--initial-branch=main');
   for (const [k, v] of [['user.name', 'test'], ['user.email', 'test@example.invalid'], ['core.autocrlf', 'false']]) git(dir, 'config', k, v);
   const put = (rel, text) => { fs.mkdirSync(path.dirname(path.join(dir, rel)), { recursive: true }); fs.writeFileSync(path.join(dir, rel), text); };
-  for (const rel of ['tools/ci/reviewed-meta-register-pass.sh', 'tools/ci/register-reviewed-meta-requests.mjs', 'tools/ci/archive-meta-register-commit.paths', 'archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs'])
+  for (const rel of ['tools/ci/reviewed-meta-register-pass.sh', 'tools/ci/register-reviewed-meta-requests.mjs', 'tools/ci/collect-reviewed-consumer-refusals.mjs', 'tools/ci/archive-meta-register-commit.paths', 'archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs'])
     put(rel, read(rel));
   // The real registration paths plus `derived/`, where the stub registrar writes its output.
   put('tools/ci/archive-meta-register-commit.paths', read('tools/ci/archive-meta-register-commit.paths') + 'derived/\n');
@@ -196,6 +196,22 @@ if (args.includes('--verify-projection')) {
 }
 if (body.behavior === 'fail') { console.error('Error: before mismatch: qid_' + name + '.standardCourse'); process.exit(1); }
 fs.mkdirSync('derived', { recursive: true }); fs.writeFileSync('derived/' + name + '.out', 'applied\\n'); console.log('{}');
+`);
+  put('archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs', `import fs from 'node:fs'; import path from 'node:path';
+export function verifyChangedUidConsumerApproval({ requestPaths }) {
+  const exams = [], failures = [];
+  for (const file of requestPaths) {
+    const body = JSON.parse(fs.readFileSync(file, 'utf8')), exam = path.basename(file, '.json');
+    exams.push({ file, exam, changed: 1, checked: 1, passed: 1 });
+    if (body.behavior === 'consumer-global-fail') failures.push({ exam: '-', reason: 'CONSUMER_LOAD_FAILED', detail: 'manifest digest drift' });
+    else if (body.behavior === 'consumer-fail' || (body.consumerNeeds && !fs.existsSync('derived/' + body.consumerNeeds + '.out'))) {
+      failures.push({ exam, qid: 1, uid: 'fixture-' + exam, reason: 'VALUE_MISMATCH', detail: 'request 2 != consumer 3' });
+      exams.at(-1).passed = 0;
+    }
+  }
+  return { status: failures.length ? 'FAIL' : 'PASS', exams, failures,
+    counts: { changed: exams.length, checked: exams.length, passed: exams.length - failures.length } };
+}
 `);
   for (const [name, body] of Object.entries(behaviors))
     put(`.archive-meta-register/inbox/${name}.json`, JSON.stringify({ schemaVersion: 'archive-reviewed-exam-meta-register-request-v2', approval: { type: 'FINAL_QA' }, ...(typeof body === 'string' ? { behavior: body } : body) }, null, 2) + '\n');
@@ -247,6 +263,45 @@ test('pass: still fail-closed when the second round is refused too (no endless i
   assert.match(r.stderr, /still refuses 1 request\(s\) after the second round/);
   assert.equal(r.builds, 2);
   assert.ok(f.exists('.archive-meta-register/inbox/y-needs-x.json'), 'nothing was consumed by the failed pass');
+});
+
+test('pass: actual consumer refusals are rolled back and recorded before valid requests are consumed', t => {
+  const f = passFixture(t, { '1-good': 'ok', '2-consumer-bad': 'consumer-fail', '3-projection-bad': 'verify-fail' });
+  const original = fs.readFileSync(path.join(f.dir, '.archive-meta-register/inbox/2-consumer-bad.json'));
+  const r = f.run();
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.equal(r.builds, 2);
+  assert.ok(f.exists('derived/1-good.out'));
+  assert.ok(!f.exists('derived/2-consumer-bad.out') && !f.exists('derived/3-projection-bad.out'));
+  assert.deepEqual(fs.readFileSync(path.join(f.dir, '.archive-meta-register/rejected/2-consumer-bad.json')), original);
+  const rejection = f.readJson('.archive-meta-register/rejected/2-consumer-bad.rejection.json');
+  assert.equal(rejection.stage, 'consumer-verify');
+  assert.match(rejection.error, /VALUE_MISMATCH Q1: request 2 != consumer 3/);
+  assert.equal(f.readJson('runner-temp/archive-meta-register-pass/consumer-preflight-1.json').status, 'FAIL');
+  assert.equal(f.readJson('runner-temp/archive-meta-register-pass/consumer-preflight-2.json').status, 'PASS');
+  assert.deepEqual(r.inbox, []);
+  assert.deepEqual(r.copies, ['1-good.json'], 'only actually verified requests reach the independent final gate');
+});
+
+test('pass: global consumer failure stops the pass without rejecting or consuming requests', t => {
+  const f = passFixture(t, { '1-good': 'ok', '2-global': 'consumer-global-fail' });
+  const r = f.run();
+  assert.equal(r.status, 1, r.stdout + r.stderr);
+  assert.match(r.stderr, /Non-isolatable consumer failure: CONSUMER_LOAD_FAILED/);
+  assert.equal(r.builds, 1);
+  assert.deepEqual(r.inbox, ['1-good.json', '2-global.json']);
+  assert.deepEqual(r.copies, []);
+  assert.ok(!f.exists('.archive-meta-register/rejected/2-global.json'));
+});
+
+test('pass: actual consumer must still pass after the second rebuild', t => {
+  const f = passFixture(t, { 'x-bad': 'consumer-fail', 'y-needs-x': { behavior: 'ok', consumerNeeds: 'x-bad' } });
+  const r = f.run();
+  assert.equal(r.status, 1);
+  assert.equal(r.builds, 2);
+  assert.match(r.stderr, /still refuses 1 request\(s\) after the second round/);
+  assert.deepEqual(r.inbox, ['y-needs-x.json']);
+  assert.deepEqual(r.copies, []);
 });
 
 test('pass: build_db may need one re-run to reach its fixed point, then the pass is green', t => {

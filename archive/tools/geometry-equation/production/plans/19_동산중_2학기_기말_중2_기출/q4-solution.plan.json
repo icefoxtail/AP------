@@ -1,0 +1,434 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "CYLINDER",
+            "radius": 2,
+            "height": 6
+          },
+          {
+            "id": "s2",
+            "kind": "CYLINDER",
+            "radius": 3,
+            "height": 9
+          }
+        ],
+        "dims": [
+          {
+            "solid": "s1",
+            "radius": "bottom",
+            "label": "2"
+          },
+          {
+            "solid": "s1",
+            "height": true,
+            "label": "6",
+            "side": "LEFT"
+          },
+          {
+            "solid": "s2",
+            "height": true,
+            "label": "9",
+            "side": "RIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "높이의 비와 반지름의 비"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "CYLINDER",
+            "radius": 2,
+            "height": 6,
+            "baseFill": {
+              "fill": "LIGHT"
+            }
+          },
+          {
+            "id": "s2",
+            "kind": "CYLINDER",
+            "radius": 3,
+            "height": 9,
+            "baseFill": {
+              "fill": "LIGHT"
+            }
+          }
+        ],
+        "dims": [
+          {
+            "solid": "s1",
+            "radius": "bottom",
+            "label": "2"
+          },
+          {
+            "solid": "s1",
+            "height": true,
+            "label": "6",
+            "side": "LEFT"
+          },
+          {
+            "solid": "s2",
+            "radius": "bottom",
+            "label": "3"
+          },
+          {
+            "solid": "s2",
+            "height": true,
+            "label": "9",
+            "side": "RIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "축을 지나는 단면"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "14"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "14"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sEF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "sFG",
+            "refs": [
+              "F",
+              "G"
+            ]
+          },
+          {
+            "id": "sGH",
+            "refs": [
+              "G",
+              "H"
+            ]
+          },
+          {
+            "id": "sHE",
+            "refs": [
+              "H",
+              "E"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sBC",
+                "sDA",
+                "sFG",
+                "sHE"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sAB",
+                "sCD",
+                "sEF",
+                "sGH"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dBC",
+              "from": "B",
+              "to": "C",
+              "label": "4",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "dFG",
+              "from": "F",
+              "to": "G",
+              "label": "6",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "dBA",
+              "from": "B",
+              "to": "A",
+              "label": "6",
+              "side": "LEFT",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "dFE",
+              "from": "F",
+              "to": "E",
+              "label": "9",
+              "side": "LEFT",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "축을 지나는 단면",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "두 원기둥의 축을 지나는 단면은 가로 4, 세로 6인 직사각형과 가로 6, 세로 9인 직사각형이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "닮은 두 원기둥은 높이의 비와 밑면 반지름의 비가 같다. 색칠한 부분은 밑면이다. 세 번째 그림은 축을 지나는 단면이고 지름과 높이가 같은 색이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "닮은 두 원기둥은 높이의 비와 밑면 반지름의 비가 같다. 색칠한 부분은 밑면이다. 세 번째 그림은 축을 지나는 단면이고 지름과 높이가 같은 색이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

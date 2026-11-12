@@ -1,0 +1,197 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "근 1, 2, 3은 서로 다르다"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "-6",
+                "11",
+                "-6",
+                "1"
+              ]
+            }
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "A",
+              "x": "1",
+              "y": "0"
+            },
+            {
+              "id": "B",
+              "x": "2",
+              "y": "0"
+            },
+            {
+              "id": "C",
+              "x": "3",
+              "y": "0"
+            },
+            {
+              "id": "M",
+              "x": "2-sqrt(3)/3",
+              "y": "2*sqrt(3)/9"
+            },
+            {
+              "id": "N",
+              "x": "2+sqrt(3)/3",
+              "y": "-2*sqrt(3)/9"
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              "1",
+              "2",
+              "3"
+            ],
+            "y": []
+          },
+          "axisTitles": {
+            "x": "x",
+            "y": "f(x)"
+          },
+          "domain": [
+            0.5,
+            3.5
+          ],
+          "viewport": [
+            0.5,
+            3.5,
+            -2.2,
+            2.2
+          ],
+          "overlays": {
+            "points": []
+          },
+          "coordinateBand": {
+            "hide": [
+              "A",
+              "B",
+              "C",
+              "M",
+              "N"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "근 1은 단순근, 3은 중근"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "-9",
+                "15",
+                "-7",
+                "1"
+              ]
+            }
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "A",
+              "x": "1",
+              "y": "0"
+            },
+            {
+              "id": "B",
+              "x": "3",
+              "y": "0"
+            },
+            {
+              "id": "M",
+              "x": "5/3",
+              "y": "32/27"
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              "1",
+              "2",
+              "3"
+            ],
+            "y": []
+          },
+          "axisTitles": {
+            "x": "x",
+            "y": "f(x)"
+          },
+          "domain": [
+            0.5,
+            3.5
+          ],
+          "viewport": [
+            0.5,
+            3.5,
+            -3.5,
+            1.5
+          ],
+          "overlays": {
+            "points": []
+          },
+          "coordinateBand": {
+            "hide": [
+              "A",
+              "B",
+              "M"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "조건을 만족하는 두 삼차함수의 근과 곡선 모양을 별도 패널로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "g=f+|f|=2*max(f,0) is nonnegative; (a)-(d) and the integer-root condition reduce the candidates to f1=(x-1)(x-2)(x-3) and f2=(x-1)(x-3)^2.",
+      "mappedTo": [
+        "panels[0].plan.graphPlan.coefficients",
+        "panels[1].plan.graphPlan.coefficients",
+        "panels[0].caption",
+        "panels[1].caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "For f1 the three roots are simple and the sign pattern is negative, positive, negative, positive. For f2, 1 is a simple root and 3 is a double root, so f2 remains positive on both sides of 3.",
+      "mappedTo": [
+        "panels[0].caption",
+        "panels[1].caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "Integral from 1 to 3 of f1 is 0; integral from 1 to 3 of f2 is 4/3. Thus the maximum is 4/3.",
+      "mappedTo": [
+        "panels[0].caption",
+        "panels[1].caption",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "The two valid source-derived cubics are shown in separate exact panels, with their roots, repeated-root distinction, and corresponding exact integral values. They are not spliced into one function."
+  ],
+  "sourceQuote": "[단답형3] 최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 $g(x)=f(x)+|f(x)|$가 다음 조건을 만족시킬 때, $\\displaystyle\\int_1^3 f(x)dx$의 최댓값을 구하시오. [6점]\n(가) $g(0)+g(3)=0$\n(나) $\\displaystyle\\int_0^x g(t)dt=0$을 만족시키는 자연수 $x$의 개수는 $1$이다.\n(다) $x\\ge3$인 실수 $x$에 대하여 $\\displaystyle\\int_3^x f(t)dt\\ge0$이다.\n(라) $f(x)=0$의 근은 모두 정수이다."
+}

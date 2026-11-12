@@ -1,0 +1,311 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "161021",
+            "denominator": "10000"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ad",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "ad"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDH",
+      "refs": [
+        "D",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "factRole": "GIVEN",
+        "color": "BLUE"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 150,
+        "factRole": "GIVEN",
+        "color": "WARM"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "2sqrt(3)"
+      },
+      {
+        "id": "lDA",
+        "ownerSegment": "sDA",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "lCH",
+        "ownerSegment": "sCH",
+        "text": "sqrt(3)",
+        "unit": "cm",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rABC",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rADC",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "D",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "대각선 AC로 사각형을 두 삼각형으로 나눈다. 파란 삼각형 ABC의 넓이는 AB, BC, ∠B로 구한다. C에서 AD의 연장선에 내린 수선의 발을 H라 하면 ∠CDH=30°이므로 CH=DC의 절반이고, 주황 삼각형 ADC의 넓이를 구할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "사각형 A, B, C, D에서 AB=6 cm, BC=8 cm, ∠B=60°, CD=2√3 cm, DA=4 cm, ∠ADC=150°이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "C",
+        "H",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  }
+}

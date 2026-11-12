@@ -1,0 +1,584 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림 (넓이 cm²)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "32",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "24",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-24",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "32",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "8",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "56",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "I",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "56",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "42",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "74",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "18",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sBE",
+            "refs": [
+              "B",
+              "E"
+            ]
+          },
+          {
+            "id": "sED",
+            "refs": [
+              "E",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sCG",
+            "refs": [
+              "C",
+              "G"
+            ]
+          },
+          {
+            "id": "sGF",
+            "refs": [
+              "G",
+              "F"
+            ]
+          },
+          {
+            "id": "sFB",
+            "refs": [
+              "F",
+              "B"
+            ]
+          },
+          {
+            "id": "sCH",
+            "refs": [
+              "C",
+              "H"
+            ]
+          },
+          {
+            "id": "sHI",
+            "refs": [
+              "H",
+              "I"
+            ]
+          },
+          {
+            "id": "sIA",
+            "refs": [
+              "I",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rBC",
+              "fill": "BLUE",
+              "label": "100",
+              "unit": "cm^2",
+              "labelPlacement": "AUTO_LEADER",
+              "shapes": [
+                {
+                  "polygon": [
+                    "B",
+                    "C",
+                    "G",
+                    "F"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rAB",
+              "fill": "WARM",
+              "label": "64",
+              "unit": "cm^2",
+              "labelPlacement": "AUTO_LEADER",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "E",
+                    "D"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rAC",
+              "fill": "GREEN",
+              "label": "36",
+              "unit": "cm^2",
+              "labelPlacement": "AUTO_LEADER",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "C",
+                    "H",
+                    "I"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rT",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "C"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 420
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "문제의 그림",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "6² + 8² = 10²"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "32",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "24",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "ab",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "bc",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "ca",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "ab"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "bc"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "ca"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "a",
+              "ownerSegment": "ab",
+              "text": "8",
+              "unit": "cm"
+            },
+            {
+              "id": "b",
+              "ownerSegment": "bc",
+              "text": "10",
+              "unit": "cm"
+            },
+            {
+              "id": "c",
+              "ownerSegment": "ca",
+              "text": "6",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "문제의 그림",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "정사각형의 넓이 36, 64, 100에서 세 변의 길이는 6, 8, 10이고 6²+8²=10²이므로 삼각형 ABC는 빗변이 10인 직각삼각형이다. 색은 정사각형과 그 한 변을 대응시킨 것이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각형의 넓이 36, 64, 100에서 세 변의 길이는 6, 8, 10이고 6²+8²=10²이므로 삼각형 ABC는 빗변이 10인 직각삼각형이다. 색은 정사각형과 그 한 변을 대응시킨 것이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "3333",
+        "in": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "shade": "(A∪B)^c"
+  },
+  "caption": "A와 B는 각각 2와 5가 나오지 않는 사건이고, 두 원 바깥을 칠해 두 수가 모두 나온 경우를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A는 2가 나오지 않는 사건, B는 5가 나오지 않는 사건이다. 두 사건이 겹치는 유일한 순서쌍은 3333이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "두 여사건이 겹치는 경우와 둘 다 아닌 바깥 영역을 분리해 포함배제의 구조를 보인다."
+  ]
+}
