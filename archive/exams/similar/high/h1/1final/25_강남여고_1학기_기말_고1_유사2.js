@@ -193,7 +193,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -333,7 +333,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -445,7 +445,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -653,7 +653,7 @@ window.questionBank = [
     "answer": "4",
     "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 4이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

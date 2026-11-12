@@ -11,6 +11,10 @@
 - Cold evidence is hydrated on demand into `.codex/archive-analysis-drive-cache/`. Verify the ZIP, internal manifest, member bytes, reconstructed full object SHA-256, size, and Git blob SHA-1 before returning bytes. Missing or corrupt evidence remains unavailable and cannot be converted to PASS.
 - ROOT consumes compact verified completion receipts and fetches raw proof only when needed. Workers still inspect the actual source/evidence and perform the assigned independent quality review. Validators, review scope, and quality gates remain unchanged; Drive access must not become a GitHub CI prerequisite.
 
+## Git 증가량 검사 한도 (2026-11-12 사용자 결정)
+- `tools/check-git-growth.mjs`는 파일 하나당 한도(일반 64MB, 분석 2MB, 임시 8MB)와 변경 묶음 전체 한도(새로 들어오는 객체 합계, **512MB**, `FOOTPRINT_LIMITS.changesetBytes`)를 따로 본다. 묶음 한도를 64MB에서 512MB로 올렸다. 이유: 이 검사는 이미지 자산 때문에 만들었는데 이미지는 어차피 저장소 밖으로 나가고, 등록 요청 수백 개나 등록 봇의 스냅샷 같은 정상 데이터 PR도 커서 한도가 빡빡하면 거짓 차단만 난다. 파일당 한도와 분류 규칙은 그대로다.
+- PR 검사는 `pull_request.base.sha`가 아니라 테스트 병합 커밋(HEAD)의 첫 부모를 기준으로 잰다. 이유: PR을 연 뒤 main이 앞서가면 base.sha가 낡아 남이 main에 올린 커밋까지 이 PR의 변경으로 세어졌다(2026-11-12 문서 2개짜리 PR이 130MB로 차단).
+
 ## 워크트리 정리 (2026-11-10 사용자 지시)
 
 모든 라인(Claude·Codex·GPT, 메인과 하위 에이전트를 띄운 세션) 공통이다. 이유: 2026-11-10에 C 드라이브(232GB) 여유가 767MB까지 떨어져 작업을 멈췄고, 병합이 끝난 에이전트 워크트리 2개를 지우니 약 15GB가 확보됐다(워크트리 하나가 약 7GB).

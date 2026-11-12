@@ -160,7 +160,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당고_1학기_중간_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 일반 예시로 그린 위로 열린 포물선이 가로축에 한 점에서 접한다.",
+    "solutionImageCaption": "일반 포물선 예시에서 가로축과 한 점에서 접하는 모양을 보인다. 실제 방정식은 판별식이 0이 되는 조건으로 푼다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -246,9 +250,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_금당고_1학기_중간_고1_기출/q6-solution.svg",
-    "solutionImageAlt": "k=6이면 x축과 두 점에서 만나고 k=7이면 만나지 않는다",
-    "solutionImageCaption": "k=6이면 x축과 두 점에서 만나고 k=7이면 만나지 않는다",
+    "solutionImage": "assets/images/20_금당고_1학기_중간_고1_기출/q6-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: k=4인 예에서는 포물선이 가로축과 두 점에서 만나고, k=8인 예에서는 만나지 않는다.",
+    "solutionImageCaption": "k는 포물선 식의 상수항이다. 서로 다른 두 근이 필요한 조건을 판별식으로 바꾸고, k=4와 k=8인 두 예를 비교한다. 정답은 6이다.",
     "solutionImageSize": "full"
   },
   {
@@ -333,7 +337,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당고_1학기_중간_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 1부터 5까지의 구간에서 위로 열린 포물선을 보인다. 꼭짓점은 구간 안에 있고 양 끝도 표시된다.",
+    "solutionImageCaption": "꼭짓점이 구간 안에 있으므로 그 점에서 최솟값을 읽는다. 최댓값은 두 끝에서의 함수값을 비교한다. 정답은 17이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -510,7 +518,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당고_1학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 도형의 부피를 빼어 남는 부피를 비교하도록 큰 정육면체와 작은 정육면체를 나란히 보인다.",
+    "solutionImageCaption": "큰 큐브의 한 변은 a+3, 제거한 큐브의 한 변은 a이다. 그림은 설명용 예시라 실제 길이 비율과 다르다. 각 정육면체의 부피를 구해 큰 것에서 작은 것을 뺀다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -553,9 +565,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_금당고_1학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "두 근 A, B의 중점 M이 대칭축 x=6 위에 있다",
-    "solutionImageCaption": "두 근 A, B의 중점 M이 대칭축 x=6 위에 있다",
+    "solutionImage": "assets/images/20_금당고_1학기_중간_고1_기출/q13-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 두 근 A와 B 사이의 중점 M을 표시한 예시이다.",
+    "solutionImageCaption": "이차함수의 대칭축은 두 근의 중점에 놓인다. 예시로 두 근 A, B와 중점 M의 관계를 수직선에 보인다. 정답은 ㄱ이다.",
     "solutionImageSize": "full"
   },
   {
@@ -817,7 +829,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당고_1학기_중간_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x축과 y축을 둔 일반 예시로, 아래로 열린 포물선이 꼭짓점에서 가장 높아진다.",
+    "solutionImageCaption": "예시 포물선은 꼭짓점에서 최댓값을 갖는다. 실제 풀이에서는 문제의 이차함수에 같은 원리를 적용해 판매량을 구한다. 정답은 40이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -933,6 +949,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당고_1학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 포물선과 수평선이 두 점에서 만나고, 아래 패널은 포물선과 직선이 한 점에서 접하는 예이다.",
+    "solutionImageCaption": "일반 예시에서 파란 포물선은 y=x²이고 주황 직선은 위에서 y=1, 아래에서 y=2x−1이다. 두 식의 교점은 같게 놓아 얻는 이차방정식의 근이다. 한 점에서 접하면 중근이므로 판별식이 0이 된다. 정답은 −2이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -8,7 +8,7 @@ import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mj
 import {PALETTE,PALETTE_NAMES,isPaletteName} from './palette.mjs';
 
 // A standalone set figure (set-diagram-figure-v1): a Venn diagram of 1-3 sets with the elements the author places and a shaded
-// region given as a set expression, and a finite mapping diagram of 2-3 columns with the declared arrows. The author gives only
+// region given as a set expression, and a finite mapping diagram of 2-4 columns with the declared arrows. The author gives only
 // the set data (which elements belong to which sets, the correspondence); the engine works out each atomic region, the exact
 // geometry of the region to shade from the plan's set expression, and places every element in its own region. The independent
 // observer (set_diagram_observer.py) re-derives the regions and the expression from the same plan with its own code and reads
@@ -53,6 +53,9 @@ const elementText=(raw,max,code)=>{
 // (EXT-20261109-c) one font: a name or element without Korean letters (A, 10, AB, g(0), f(x)) is math like every other letter and number of the figure
 // (EXT-20261109-g) up to 8 characters, the length cleanText allows a name: f(f(x)) (7) used to fall back to the thin plain-text face
 const labelMath=text=>!HANGUL.test(text)&&/^[A-Za-z0-9()]{1,8}$/.test(text);
+// (EXT-20261112) a Unicode superscript/subscript (4k², x₁, 10⁻²) is typeset as the TeX it stands for. MathJax would draw it as a font-fallback <text> glyph that is neither an outline nor a labelled box: the rendered check then read it as a nameless label at under 11 px (LABEL_OVERLAP::element-N + PUBLICATION_FONT_BELOW_11_CSS_PX:). Only the typeset copy changes: data-tex and the observer keep the author's text.
+const SCRIPT_DIGITS={'⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9','⁺':'+','⁻':'-','₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9','₊':'+','₋':'-'};
+export const setDiagramTypesetTex=tex=>tex.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻]+/gu,run=>'^{'+[...run].map(ch=>SCRIPT_DIGITS[ch]).join('')+'}').replace(/[₀-₉₊₋]+/gu,run=>'_{'+[...run].map(ch=>SCRIPT_DIGITS[ch]).join('')+'}');
 
 // --- set expressions: ∪ ∩ - and a postfix complement (ᶜ, ^c, ^C), with U the universal set --------------------------------
 function parseShade(raw,setIds){
@@ -232,7 +235,7 @@ function mappingElement(value){
 }
 function solveMapping(diagram){
   onlyKeys(diagram,['kind','columns','arrows','highlight','arrowGroups','highlightPaths'],'SET_DIAGRAM_PLAN_INVALID');
-  if(!Array.isArray(diagram.columns)||diagram.columns.length<2||diagram.columns.length>3)bad(diagram.columns?.length>3?'MAPPING_COLUMN_COUNT_UNSUPPORTED':'MAPPING_COLUMNS_INVALID');
+  if(!Array.isArray(diagram.columns)||diagram.columns.length<2||diagram.columns.length>4)bad(diagram.columns?.length>4?'MAPPING_COLUMN_COUNT_UNSUPPORTED':'MAPPING_COLUMNS_INVALID');
   const columnIds=new Set();
   const columns=diagram.columns.map(raw=>{
     onlyKeys(raw,['id','name','elements'],'MAPPING_COLUMNS_INVALID');
@@ -425,10 +428,14 @@ function vennLayout(model,opts={}){
   return {size,rect,circles};
 }
 const MAPPING_ROW=34,MAPPING_PAD=22,MAPPING_TOP=50,MAPPING_RX=72;
-function mappingLayout(model){
+// A two-column mapping panel of a composite (compact) is COMPACT_WIDTH wide like a Venn panel, so two of them and the gap fit the 848-unit width the Archive solution column allows;
+// a three-column mapping keeps its own width (it only stands in a one-column composite), and a standalone mapping is never compact.
+function mappingLayout(model,opts={}){
   const rows=model.columns.map(c=>c.elements.length),rowMax=Math.max(...rows);
-  const width=model.columns.length===2?460:660;
-  const centers=model.columns.length===2?[120,width-120]:[110,width/2,width-110];
+  const narrow=opts.compact&&model.columns.length===2;
+  const four=model.columns.length===4;// X to Y to Z to W (three functions f, g, h): narrower ovals so the figure stays inside the 848-unit width
+  const width=narrow?COMPACT_WIDTH:four?816:model.columns.length===2?460:660;
+  const centers=narrow?[105,width-105]:four?[84,300,516,732]:model.columns.length===2?[120,width-120]:[110,width/2,width-110];
   const ovalH=rowMax*MAPPING_ROW+2*MAPPING_PAD,top=MAPPING_TOP,height=top+ovalH+24;
   return {size:{width,height},top,ovalH,rowMax,
     // G17: every oval has the height of the longest column; a shorter column's elements keep the row spacing and sit centred vertically in their oval
@@ -606,6 +613,52 @@ function simplifyLoop(points,eps){
   return points.filter((_,i)=>keep[i]);
 }
 
+// A shaded cell with a hole (the complement of a set: the universal rectangle with the circles cut out) is one path of several loops. The rendered-layout
+// check samples a path along its length, and between two loops it joins the end of one loop (its first point: the loop closes) to the first point of the next with
+// a straight line that is not drawn but is measured: that line may cross a label (the universal name, a set name) and fail with LABEL_GEOMETRY_COLLISION. Where
+// the default start points make such a line hit a label, each loop starts at another of its own points so the joining lines run clear of every label. A path
+// whose joining lines already miss all labels keeps its bytes.
+const JUMP_MARGIN=2,JUMP_CANDIDATES=48;
+const segmentTouchesBox=(a,b,box,pad)=>{
+  const x=box.x-pad,y=box.y-pad,w=box.width+2*pad,h=box.height+2*pad,dx=b[0]-a[0],dy=b[1]-a[1];
+  let t0=0,t1=1;
+  for(const [p,q] of [[-dx,a[0]-x],[dx,x+w-a[0]],[-dy,a[1]-y],[dy,y+h-a[1]]]){
+    if(Math.abs(p)<1e-12){if(q<0)return false;continue;}
+    const t=q/p;
+    if(p<0)t0=Math.max(t0,t);else t1=Math.min(t1,t);
+    if(t0>t1)return false;
+  }
+  return true;
+};
+// The test for "the default line hits a label" is the rendered check's own (the box as it is, no margin), so a figure that renders today keeps its bytes; the replacement
+// start points are searched with JUMP_MARGIN of air around every label first (and with none if no start point leaves that much).
+export function routeShadeJumps(spec,placed){
+  const boxes=placed.map(item=>item.box),clear=(a,b,pad)=>!boxes.some(box=>segmentTouchesBox(a,b,box,pad));
+  for(const prim of spec.prims){
+    if(prim.role!=='shade'||prim.t!=='path')continue;
+    const mask=Number(prim.id.slice('shade-'.length)),loops=cellContours(mask,spec.layout.circles,spec.layout.rect);
+    if(loops.length<2)continue;
+    if(loops.slice(1).every((loop,k)=>clear(loops[k][0],loop[0],0)))continue;
+    const candidates=loops.map(loop=>{const step=Math.max(1,Math.ceil(loop.length/JUMP_CANDIDATES)),list=[];for(let i=0;i<loop.length;i+=step)list.push(i);return list;});
+    let starts=null;
+    for(const pad of [JUMP_MARGIN,0]){
+      const chosen=[],search=k=>{
+        if(k===loops.length)return true;
+        for(const index of candidates[k]){
+          if(k>0&&!clear(loops[k-1][chosen[k-1]],loops[k][index],pad))continue;
+          chosen[k]=index;
+          if(search(k+1))return true;
+        }
+        return false;
+      };
+      if(search(0)){starts=chosen;break;}
+    }
+    if(!starts)continue;
+    const rotated=loops.map((loop,k)=>[...loop.slice(starts[k]),...loop.slice(0,starts[k])]);
+    prim.d=rotated.map(loop=>'M '+loop.map(([x,y])=>px2(x)+' '+px2(y)).join(' L ')+' Z').join(' ');
+  }
+}
+
 // --- spec: primitives and labels (element placement happens after typesetting) ---------------------------------------------------------------
 const ARROW_COLOR_WIDTH=1.8;
 const STYLE={
@@ -750,13 +803,13 @@ function tableSpec(model,layout){
   });
   return {size:layout.size,prims,labels,kind:'MEMBERSHIP_TABLE',layout,geometry:{frame:{...frame},vertical:[...vertical],horizontal:[...horizontal]}};
 }
-const sizeOf=(model,opts)=>model.kind==='VENN'?{...vennLayout(model,opts).size}:model.kind==='MAPPING'?{...mappingLayout(model).size}:{...tableLayout(model).size};
-// opts.compact: the Venn panel of a composite (narrower, see vennLayout); only a Venn diagram has a compact form
+const sizeOf=(model,opts)=>model.kind==='VENN'?{...vennLayout(model,opts).size}:model.kind==='MAPPING'?{...mappingLayout(model,opts).size}:{...tableLayout(model).size};
+// opts.compact: the Venn or two-column mapping panel of a composite (narrower, see vennLayout and mappingLayout); a table has no compact form
 export const setDiagramSize=(model,opts={})=>({...sizeOf(model,opts)});
 export function setDiagramSpec(plan,model,opts={}){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.diagram))bad('SET_DIAGRAM_PLAN_INVALID');
   if(objectSha(solveDiagram(plan.diagram))!==objectSha(model))bad('SET_MODEL_MISMATCH');
-  const spec=model.kind==='VENN'?vennSpec(model,vennLayout(model,opts)):model.kind==='MAPPING'?mappingSpec(model,mappingLayout(model)):tableSpec(model,tableLayout(model));
+  const spec=model.kind==='VENN'?vennSpec(model,vennLayout(model,opts)):model.kind==='MAPPING'?mappingSpec(model,mappingLayout(model,opts)):tableSpec(model,tableLayout(model));
   return {schemaVersion:SPEC_VERSION,...spec};
 }
 /** The spec of a Venn panel of a composite exactly as its lineage hashes it (what the composite's observation re-derives), and the texts its labels write. */
@@ -1057,8 +1110,10 @@ export async function composeSetDiagramFigure({plan,model,identity,typographyPol
     const typeset=typesetter(),font=typographyPolicy.baseFontPx,placed=[];
     for(const label of spec.labels){
       let fragment;
-      try{fragment=typeset({id:label.id,owner:label.owner,factRole:label.role==='element'?'GIVEN':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'set-diagram',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text})},identity);}
+      try{fragment=typeset({id:label.id,owner:label.owner,factRole:label.role==='element'?'GIVEN':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'set-diagram',...(label.kind==='MATH'?{kind:'MATH',tex:setDiagramTypesetTex(label.tex)}:{kind:'TEXT',text:label.text})},identity);}
       catch(error){if(!isDomainCode(error))throw error;throw new Stop('SET_TYPESET_ERROR',{labelId:label.id,code:error.message});}
+      // a math label MathJax could not outline (a symbol outside its math fonts) leaves a <text> glyph: say which label it is instead of letting the rendered check report a nameless overlap
+      if(label.kind==='MATH'&&/<text[\s>]/.test(fragment.svg))throw new Stop('SET_TYPESET_ERROR',{labelId:label.id,code:'MATH_GLYPH_NOT_OUTLINED',tex:label.tex});
       const {width,height}=fragment.intrinsic,{x,y,ax,ay}=label.anchor;
       placed.push({label,fragment,box:{x:r6(ax==='end'?x-width:ax==='center'?x-width/2:x),y:r6(ay==='bottom'?y-height:ay==='middle'?y-height/2:y),width,height}});
     }
@@ -1069,6 +1124,7 @@ export async function composeSetDiagramFigure({plan,model,identity,typographyPol
         if(!loops.length)throw new Stop('SET_SPEC_ERROR',{code:'SET_ELEMENT_REGION_EMPTY'});
       }
       resolveVenn(spec,placed);
+      routeShadeJumps(spec,placed);
     }else if(spec.kind==='MAPPING')resolveMapping(spec,placed);
     const {width,height}=spec.size;
     for(const item of placed){

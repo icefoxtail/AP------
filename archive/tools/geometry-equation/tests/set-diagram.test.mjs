@@ -122,7 +122,7 @@ test('set figures that cannot be drawn faithfully are refused with their codes',
   refuse({kind:'VENN',sets:[{id:'A'},{id:'B'},{id:'C'}],subset:['B','A']},'SET_LAYOUT_UNSUPPORTED');
   refuse({kind:'VENN',sets:[{id:'A'},{id:'B'}],subset:['B','A'],elements:[{text:'1',in:['B']}]},'SET_ELEMENT_REGION_EMPTY');
   refuse({kind:'MAPPING',columns:[{id:'X',elements:['1']}]},'MAPPING_COLUMNS_INVALID');
-  refuse({kind:'MAPPING',columns:[{id:'X',elements:['1']},{id:'Y',elements:['a']},{id:'Z',elements:['p']},{id:'W',elements:['q']}],arrows:[{from:{column:0,element:0},to:{column:1,element:0}}]},'MAPPING_COLUMN_COUNT_UNSUPPORTED');
+  refuse({kind:'MAPPING',columns:[{id:'X',elements:['1']},{id:'Y',elements:['a']},{id:'Z',elements:['p']},{id:'W',elements:['q']},{id:'V',elements:['r']}],arrows:[{from:{column:0,element:0},to:{column:1,element:0}}]},'MAPPING_COLUMN_COUNT_UNSUPPORTED');
   refuse({kind:'MAPPING',columns:[{id:'X',elements:['1','2','3','4','5','6','7','8','9']},{id:'Y',elements:['a']}],arrows:[]},'MAPPING_TOO_MANY_ELEMENTS');
   refuse({kind:'MAPPING',columns:[{id:'X',elements:['1']},{id:'Y',elements:['a']}]},'MAPPING_NEEDS_ARROWS');
   refuse({...map2,arrows:[{from:{column:0,element:3},to:{column:1,element:0}}]},'MAPPING_ARROW_INVALID');

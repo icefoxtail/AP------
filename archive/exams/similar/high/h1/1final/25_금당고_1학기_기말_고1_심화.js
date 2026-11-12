@@ -25,7 +25,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 행렬의 각 성분 위치 $(i, j)$에 따른 조건부 정의를 정확히 판별하여 합산한다.\\n1단계: 행렬 $A$의 각 성분을 구한다.\\n$a_{11}: i+j=2$ (소수) $\\implies a_{11}=2$\\n$a_{12}: i+j=3$ (소수) $\\implies a_{12}=3$\\n$a_{21}: i+j=3$ (소수) $\\implies a_{21}=3$\\n$a_{22}: i+j=4$ (소수 아님) $\\implies a_{22}=|2-2|+1=1$\\n2단계: 모든 성분의 합을 구한다.\\n$2 + 3 + 3 + 1 = 9$\\n∴ 정답: ①",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -165,7 +165,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 두 행렬이 같으려면 대응하는 모든 성분의 값이 같아야 한다.\\n1단계: 성분별 방정식 세우기\\n$(1,1)$성분: $x^2-x = 2 \\implies x^2-x-2=0 \\implies (x-2)(x+1)=0$\\n따라서 $x=2$ 또는 $x=-1$이다.\\n$(2,2)$성분: $y = |x-1|$\\n2단계: 실수 $x$의 조건 확인\\n문제에서 $x$는 모든 성분이 같아지도록 하는 실수이므로 $x=2$ 또는 $x=-1$일 때 $y$값이 각각 존재하여 $A=B$가 성립한다.\\n따라서 가능한 모든 $x$의 합은 $2 + (-1) = 1$이다.\\n∴ 정답: ⑤",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -279,7 +279,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 행렬의 곱셈은 일반적으로 교환법칙이 성립하지 않음을 인지하고 각 명제를 증명한다.\\n정석 풀이:\\nㄱ. (참) 좌변을 전개하면 $(A+B)(A-B) = A^2 - AB + BA - B^2$이다. 이것이 $A^2 - B^2$과 같으려면 $-AB + BA = O$, 즉 $AB = BA$여야 한다. 따라서 교환법칙이 성립함을 의미하므로 옳다.\\nㄴ. (거짓) 행렬에서는 $A \\ne O$일지라도 $A^2 = O$가 될 수 있는 영인자가 존재한다. \\n예를 들어 $A = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$이면 $A^2 = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix} \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix} = \\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix} = O$이지만 $A \\ne O$이다. 따라서 옳지 않다.\\nㄷ. (참) 정사각행렬 $A, B$에 대하여 $AB = E$이면 $B$는 $A$의 역행렬($B = A^{-1}$)이고, 역행렬의 정의에 의해 $AA^{-1} = A^{-1}A = E$이므로 $BA = E$가 성립한다. 따라서 옳다.\\n결론: 옳은 것은 ㄱ, ㄷ이다.\\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
