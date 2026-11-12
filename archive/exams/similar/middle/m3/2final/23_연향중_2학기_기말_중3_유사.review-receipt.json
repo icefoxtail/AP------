@@ -13,7 +13,7 @@
     "sourcePathStatus": "RESOLVED: MD path plus archive/exams/ prefix on main"
   },
   "candidateJs": "archive/exams/similar/middle/m3/2final/23_연향중_2학기_기말_중3_유사.js",
-  "candidateBlobSha1": "6cd8354623679380e8cdff62938f6c2ef094f459",
+  "candidateBlobSha1": "ed9d79bd246da197967df0c78a576c410462bd40",
   "authoringStatus": "CANDIDATE_DRAFT_WITH_CONTENT_REPAIRS_AND_VISUAL_DEBT",
   "sourceAudit": {
     "mainAndAccumulatorDuplicate": "NO_SAME_CANDIDATE_PATH_FOUND",
@@ -82,10 +82,9 @@
     }
   ],
   "mathReview": {
-    "status": "MANUAL_REVIEW_CANDIDATE_WITH_Q17_LABEL_MAPPING_UNCONFIRMED",
-    "summary": "Checked all 24 stems/options/answers/solutions and numerical plans. Source path resolves by adding archive/exams/ to the MD path. Q5 same-exam source figure/code confirms tangent/parallel-chord incidence and the candidate’s stated equal-angle argument; source has 40° while candidate has 50°, so source asset is not reused. Q6 candidate stem now fixes cyclic order and identifies x as the exterior angle APB; independently recomputed 30°+45°=75°. Q17 ordered MD data gives unique upper-left first point consistent with solution A, but no explicit label-to-coordinate schema or mapping; this remains unconfirmed.",
+    "status": "MANUAL_REVIEW_CANDIDATE_WITH_VISUAL_ASSETS_PENDING",
+    "summary": "Checked all 24 stems/options/answers/solutions and numerical plans. Source path resolves by adding archive/exams/ to the MD path. Q5 same-exam source figure/code confirms tangent/parallel-chord incidence and the candidate’s stated equal-angle argument; source has 40° while candidate has 50°, so source asset is not reused. Q6 candidate stem now fixes cyclic order and identifies x as the exterior angle APB; independently recomputed 30°+45°=75°. Q17 uses an explicit new candidate mapping A=(2,32), B=(4,28), C=(6,22), D=(8,18), E=(9,14); A has the unique minimum x=2 and maximum y=32 among the five named points, making it the upper-left point and unique answer. This is a candidate reconstruction, not a claim about the original layout.",
     "openIssues": [
-      "Q17 stat chart plan lists 5 coordinates but MD does not explicitly bind each label A–E to a coordinate; mapping remains unconfirmed.",
       "Candidate problem figures Q2–8, Q17–18, Q20–22, Q24 remain uncreated; no visual rendering or review."
     ]
   },
@@ -141,19 +140,20 @@
       "No candidate SVG/PNG figures were created or viewed.",
       "Q5/Q6 geometry proof was rechecked in text/source code; source assets have different values and are not reused.",
       "Q6 stem now states cyclic order A-B-C-D and defines x as exterior angle APB.",
-      "Q17 A–E point-to-coordinate mapping remains unconfirmed.",
-      "13 problem figures remain blockers."
+      "13 problem figures remain blockers.",
+      "Q17 assigns A=(2,32), B=(4,28), C=(6,22), D=(8,18), E=(9,14) in a new candidate layout; original layout is not claimed."
     ],
-    "productionStatus": "BLOCKED_13_UNSUPPORTED_PROBLEM_FIGURES; Q17_LABEL_MAPPING_UNCONFIRMED"
+    "productionStatus": "BLOCKED_13_UNSUPPORTED_PROBLEM_FIGURES; Q17_MAPPING_DEFINED_RENDER_PENDING"
   },
   "checks": {
     "nodeCheck": "PASS",
     "tableCheck": "PASS_1_FILE_0_FAIL",
-    "similarExamHarness": "DRAFT_GATE_FAIL_13_UNSUPPORTED_PROBLEM_FIGURES; content/balance/meta gates pass",
+    "similarExamHarness": "DRAFT_GATE_FAIL_13_PROBLEM_FIGURES_UNRENDERED; content/balance/meta gates pass",
     "questionCount": "24",
     "totalPoints": 100,
-    "candidateBlobSha1": "6cd8354623679380e8cdff62938f6c2ef094f459",
-    "4slotCheck": "PASS_FAIL0_WARN25 (review still UNREVIEWED)"
+    "candidateBlobSha1": "ed9d79bd246da197967df0c78a576c410462bd40",
+    "4slotCheck": "PASS_FAIL0_WARN25 (review still UNREVIEWED)",
+    "q17NamedScatterPlan": "PASS: solveStatChart accepted five named points A–E and preserved the MD coordinates; no rendering performed."
   },
   "userScope": "Read the supplied 23 Yeonhyang M3 2final MD, repair clear candidate mistakes, keep P/S image checklist, commit and push to work/similar-m3-accumulate; no screen, no new PR or main merge; do not touch 24/25 variants."
 }
