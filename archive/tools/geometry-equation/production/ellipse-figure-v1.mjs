@@ -779,7 +779,18 @@ function printPrim(prim){
   return `<g data-layer="${prim.layer}">${tag}</g>`;
 }
 
-export async function renderEllipseSvg({plan,model,identity,typographyPolicy}){
+// The browser reads a curve path as a sampled polyline whose chords cut each corner of the printed path by a few hundredths of a pixel, so a name leader that comes from the inside of a
+// bend (a parabola name whose leader meets the arm from the opening: 26 복성고 2mid Q12) and ends exactly on the stroke crosses such a chord and fails as
+// LEADER_CROSSING:leader-curve-<id>:curve-<id>.  composeEllipseFigure retries once with curveLeaderStop: the leader then ends that many pixels short of the curve (the observer allows 0.9 px
+// between the leader end and the curve, the 0.9 px line still touches the 1.5 px stroke).  A figure that passes the first time keeps its bytes.
+export const CURVE_LEADER_STOP=0.4;
+export function stopCurveLeaderShort(leader,stop=CURVE_LEADER_STOP){
+  const dx=leader.b[0]-leader.a[0],dy=leader.b[1]-leader.a[1],length=Math.hypot(dx,dy);
+  if(!(length>8+stop))return leader;
+  return {...leader,b:[leader.b[0]-dx/length*stop,leader.b[1]-dy/length*stop]};
+}
+
+export async function renderEllipseSvg({plan,model,identity,typographyPolicy,stopCurveLeaders=false}){
   if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
   const spec=ellipseFigureSpec(plan,model);
   const font=typographyPolicy.baseFontPx,typeset=typesetter(),prepared=[];
@@ -798,6 +809,7 @@ export async function renderEllipseSvg({plan,model,identity,typographyPolicy}){
     specSha256:null,fragmentSha256s:{},svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
   lineage.specSha256=objectSha(spec);
   for(const item of placed)if(item.leader){
+    if(stopCurveLeaders&&item.role==='curve')item.leader=stopCurveLeaderShort(item.leader);
     const ownerAttr=item.role==='point'?`data-owner-point="${esc(item.pointId)}"`:item.role==='line'?`data-owner-line="${esc(item.lineId)}"`:item.role==='curve'?`data-owner-curve="${esc(item.curveId)}"`:`data-owner-segment="${item.segmentId}"`;
     body+=`<g data-layer="50"><line id="leader-${item.key}" data-role="leader" data-owner-label="${item.key}" ${ownerAttr} data-label="${item.key}" stroke="#555" stroke-width="0.9" fill="none" x1="${r6(item.leader.a[0])}" y1="${r6(item.leader.a[1])}" x2="${r6(item.leader.b[0])}" y2="${r6(item.leader.b[1])}"/></g>`;
   }
@@ -859,7 +871,10 @@ export async function composeEllipseFigure({plan,model,identity,typographyPolicy
     renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
   let ownBrowser=null;
   try{
-    const rendered=await renderEllipseSvg({plan,model,identity,typographyPolicy});
+    // One pass renders, audits and measures the figure.  A browser LEADER_CROSSING on a curve-name leader is a grazing end on a corner of the sampled path, so the figure is
+    // composed once more with its curve leaders ended short of the stroke (stopCurveLeaders); every other outcome, and a figure that passes the first time, is as before.
+    const pass=async stopCurveLeaders=>{
+    const rendered=await renderEllipseSvg({plan,model,identity,typographyPolicy,stopCurveLeaders});
     Object.assign(lineage,rendered.lineage);state.svg=rendered.svg;
     let audit;
     try{audit=await auditEllipseSvg({plan,svg:rendered.svg});}
@@ -874,7 +889,7 @@ export async function composeEllipseFigure({plan,model,identity,typographyPolicy
     if(state.staticAudit.status!=='PASS')return outcome('ELLIPSE_FIGURE_STATIC_AUDIT_FAIL',{errors});
     const {width,height}=rendered.spec.size;
     const display={width:width*typographyPolicy.displayScale,height:height*typographyPolicy.displayScale};
-    const page=await (browser??(ownBrowser=await launchBrowser())).newPage({viewport:{width:Math.max(1,Math.ceil(display.width)),height:Math.max(1,Math.ceil(display.height))}});
+    const page=await (browser??(ownBrowser??=await launchBrowser())).newPage({viewport:{width:Math.max(1,Math.ceil(display.width)),height:Math.max(1,Math.ceil(display.height))}});
     let layout;
     try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,rendered.svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}
     finally{await page.close();}
@@ -882,6 +897,10 @@ export async function composeEllipseFigure({plan,model,identity,typographyPolicy
     state.renderedLayout={status:layout.status,display,errors:layout.errors};
     if(layout.status!=='PASS')return outcome('ELLIPSE_FIGURE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
     return outcome('COMPOSED');
+    };
+    const first=await pass(false);
+    if(first.status==='ELLIPSE_FIGURE_RENDERED_LAYOUT_FAIL'&&first.detail.errors.some(code=>/^LEADER_CROSSING:leader-curve-/.test(code)))return await pass(true);
+    return first;
   }catch(error){
     if(!(error instanceof Stop))throw error;
     return outcome(error.status,error.detail);

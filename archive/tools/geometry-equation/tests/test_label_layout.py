@@ -225,11 +225,29 @@ class LayoutTests(unittest.TestCase):
         line={'id':'overlay-line-k','kind':'line','role':'line','geometry':[(100,0),(100,240)]}
         item=label('tick-x-2-label',(100,160),'2','TICK_LABEL',0,tickId='tick-x-2',tickAxis='x',tickValue=2,tickDisplayValue='2',directions=('S','N'),gaps=(8,12),allowSuppress=False)
         plain=layout([copy.deepcopy(item)],[tick,axis,line],Box(0,0,200,240),measurements={item['id']:(12,14)},require_measurements=True)
-        self.assertEqual(plain['unresolved'],[item['id']])                                    # without the opt-in it stays unplaced
+        self.assertEqual(plain['unresolved'],[],'a tick number is never dropped: the leader fallback no longer needs the opt-in (2026-11-11)')
+        self.assertEqual(plain['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
         result=layout([{**item,'tickCalloutFallback':True}],[tick,axis,line],Box(0,0,200,240),measurements={item['id']:(12,14)},require_measurements=True)
         self.assertEqual(result['status'],'PASS',result['unresolved'])
         self.assertEqual(result['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
         self.assertEqual(result['leaders'][0]['from'],[100,160])
+    def test_a_segment_running_over_a_tick_keeps_its_number_on_an_owner_leader(self):
+        # 26 왕운중 중1 q22: the segment y=-5 (A to B) crosses the y axis exactly at the tick -5, so the number's two axis-normal places (W and E) lie on the segment.
+        tick={'id':'tick-y--5','kind':'line','role':'tick','axis':'y','value':-5,'geometry':[(100,160),(96,160)]}
+        axis={'id':'y-axis','kind':'axis','role':'axis','axis':'y','geometry':[(100,0),(100,240)]}
+        segment={'id':'segmentAB','kind':'line','role':'line','geometry':[(20,160),(180,160)]}
+        item=label('tick-y--5-label',(100,160),'−5','TICK_LABEL',0,tickId='tick-y--5',tickAxis='y',tickValue=-5,tickDisplayValue='−5',directions=('W','E'),gaps=(8,12),allowSuppress=False)
+        result=layout([item],[tick,axis,segment],Box(0,0,200,240),measurements={item['id']:(27,16)},require_measurements=True)
+        self.assertEqual(result['status'],'PASS',result['unresolved'])
+        self.assertEqual(result['unresolved'],[])
+        placed=result['labels'][0];box=Box(**placed['box'])
+        self.assertEqual(placed['placement'],'OWNER_BOUND_TICK_LEADER')
+        self.assertEqual(result['leaders'][0]['from'],[100,160])           # the leader names its own tick
+        self.assertGreaterEqual(abs(box.y+box.height/2-160)-box.height/2,6,'the number clears the segment')
+        # the same crossing by a CURVE is still refused (a curve is never a tick's own ground): the number is not laid over it
+        curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(20,160),(180,160)]}
+        refused=layout([copy.deepcopy(item)],[tick,axis,curve],Box(0,0,200,240),measurements={item['id']:(27,16)},require_measurements=True)
+        self.assertEqual(refused['unresolved'],[item['id']])
     def test_tick_label_cannot_fallback_to_panel_or_suppression(self):
         tick={'id':'tick-x--2','kind':'line','role':'tick','axis':'x','value':-2,'geometry':[(34.84,156),(34.84,164)]}
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,160),(250,160)]}
