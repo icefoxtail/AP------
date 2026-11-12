@@ -34,7 +34,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 BC의 중점 D, 각 BAD, 작은 삼각형 ABD 및 BD와 AD의 길이.",
+    "solutionImageCaption": "sin x=BD/AD=√10/√19=√190/19이다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -67,7 +71,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 여각 A, B를 가진 3:4:5 직각삼각형에서 세 변과 직각을 표시한 정규화 그림.",
+    "solutionImageCaption": "tan A=4/3, cos B=sin A=4/5이므로 식의 값은 41/15이다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -341,7 +349,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 지면에서 관찰자 눈까지의 높이, 수평거리와 시선각, 눈높이에서 나무 꼭대기까지의 증가분.",
+    "solutionImageCaption": "눈높이 위 증가는 50×0.78=39 m이고, 전체 높이는 39+1.5=40.5 m이다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -376,7 +388,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 45° 꼭짓점 B, 밑변 BC와 A에서 내린 수직 높이 AH.",
+    "solutionImageCaption": "넓이는 1/2×10×(7√2/2)=35√2/2 cm²이다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -411,7 +427,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 안의 삼각형 ABC, 중심 O와 현 AB에 내린 수선 OM, 호의 비, 반지름 및 삼각형 ABO의 높이를 나타낸다.",
+    "solutionImageCaption": "중심각 120°, 반현 4√3 cm와 높이 4 cm이므로 △ABO의 넓이는 16√3 cm²이다. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -481,7 +501,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 중심 O에서 현 AB로 내린 수선 OM과 같은 길이의 반현 AM, MB.",
+    "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분하므로 AM=MB=4√2 cm이고 AB=8√2 cm이다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -550,7 +574,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위 점 P와 중심 O를 이은 선분, 그 수직이등분선인 접는 현 AB 및 중점 M.",
+    "solutionImageCaption": "접는 선 AB의 길이는 4√3 cm이다. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -756,9 +784,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q22-solution-v2.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageAlt": "해설 그림: 좌표가 표시된 A, B, C와 수선의 발 H, 선분 BH 및 AH 길이.",
+    "solutionImageCaption": "tan B=AH/BH=(26/5)/(18/5)=13/9이다. 답: 13/9"
   },
   {
     "id": 23,

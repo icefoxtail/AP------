@@ -125,7 +125,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 1인 사분원과 직각삼각형 ADE, 평행한 수직선에서 같은 여각 y와 z.",
+    "solutionImageCaption": "표에서 x=57°이므로 y=33°이고 cos y=0.8387이다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -157,7 +161,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사면체 밑면의 무게중심 H와 중점 M, 파란색으로 강조한 ADH 단면.",
+    "solutionImageCaption": "직각삼각형 ADH에서 sin x=AH/AD=√6/3이다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -189,7 +197,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 30°를 공유하는 연속 직각삼각형 ABC, BCD, BDE와 BC·BD 치수.",
+    "solutionImageCaption": "BC=4√3과 BD=6을 차례로 적용한다. 정답: ④",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -219,7 +231,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 1/2인 직선과 x축 사이의 run 2, rise 1 직각삼각형.",
+    "solutionImageCaption": "빗변이 √5인 삼각형에서 사인과 코사인을 더한다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -251,7 +267,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=4, AC=6인 삼각형 ABC에서 A에서 밑변 BC에 내린 수선 AH와 양쪽 직각삼각형의 길이.",
+    "solutionImageCaption": "BH=2, AH=2√3, HC=2√6이므로 BC는 두 밑변 조각의 합이다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -283,7 +303,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑변 BC=7인 삼각형 ABC에서 수선 AH로 표시한 높이 3.",
+    "solutionImageCaption": "삼각형의 밑변과 수선의 높이를 이용한다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -350,7 +374,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형에서 밑변 수선 AD와 15° 반각, BD=DE인 보조점 E 및 수선의 발 F.",
+    "solutionImageCaption": "보조삼각형을 이용하면 AB=5+5√3이다. 정답: ④",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -382,7 +410,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=6 m인 직각삼각형 ABC에서 BC 위 수선 AD, B/C 각도와 대응하는 실제 길이.",
+    "solutionImageCaption": "수선의 발 D에서 각 작은 직각삼각형의 길이 관계를 확인한다. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -414,7 +446,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 현에 내린 수선과 반현 4 cm, 중심거리 3 cm, 반지름 x.",
+    "solutionImageCaption": "직각삼각형에서 x²=3²+4²이므로 x=5 cm이다. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -446,7 +482,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형의 세 변에 내린 같은 길이의 수선과 2:1로 나뉜 중선 AE.",
+    "solutionImageCaption": "중심 O는 중선을 2:1로 나누므로 반지름 OA=4 cm이고 원의 넓이는 16π cm²이다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -478,7 +518,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 현 AB의 중점 M으로 내린 수선과 BM=6 cm, MC=2 cm, 반지름 OA.",
+    "solutionImageCaption": "r²=(r−2)²+6²을 풀면 OA=r=10 cm이다. 정답: ④",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -510,7 +554,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 내심 I와 세 변의 안쪽에 놓인 동일한 현 DE, FG, HJ.",
+    "solutionImageCaption": "FG=HJ=6 cm이므로 FG+HJ=12 cm이다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -542,7 +590,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 길이 표식이 있는 이등변삼각형 PAB와 50° 꼭짓각.",
+    "solutionImageCaption": "밑각은 각각 65°이므로 ∠PAB=65°이다. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -574,7 +626,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형에 접하는 원, 접점 U/V/T와 D·E에서 같은 접선 길이, 음영 삼각형 DEC.",
+    "solutionImageCaption": "EC=10/3 cm이므로 [DEC]=1/2×8×10/3=40/3이다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -606,7 +662,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형의 내접원, 세 변에 수직인 반지름과 세 삼각형 분할.",
+    "solutionImageCaption": "전체 넓이 54 cm²는 반둘레 18 cm와 반지름 r의 곱이므로 r=3 cm이다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -638,7 +698,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 반원 지름 AB, D/E에서 그은 접선 쌍, 접선 DE와 수선 CF.",
+    "solutionImageCaption": "비례식 1:3=(CF−3):(9−CF)에서 CF=9/2 cm이다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -664,7 +728,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: AC=3 cm인 직각삼각형 ABC에서 높이 BC와 빗변 AB.",
+    "solutionImageCaption": "AB=3√3 cm이므로 cos A=AC/AB=√3/3이다. 정답: 서술형 답 √3/3",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -690,7 +758,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 지점 A, B 사이의 수선 발 H와 45°·60°로 올려보는 열기구 C.",
+    "solutionImageCaption": "높이는 h=75−25√3 m이다. 정답: 서술형 답 (75−25√3) m",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -745,6 +817,10 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: OP가 ∠APB를 이등분하는 두 접선 삼각형과 부채꼴을 뺀 음영 영역.",
+    "solutionImageCaption": "음영 넓이는 36√3−12π이다. 정답: 서술형 답 36√3−12π",
+    "solutionImageSize": "full"
   }
 ];
