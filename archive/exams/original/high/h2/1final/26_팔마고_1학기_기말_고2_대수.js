@@ -65,7 +65,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고2_대수/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 ∠B=60°와 맞은편 변 b=6√3을 나타낸다.",
+    "solutionImageCaption": "각 B=60°와 맞은편 변 b=6√3의 대응을 보여 확장된 사인법칙으로 연결한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -318,7 +322,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고2_대수/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: sin C=1/4인 한 삼각형에서 각 C와 변 a=3, b=4를 나타낸다.",
+    "solutionImageCaption": "조건 sin C=1/4인 한 삼각형에서 변 a=3, b=4와 사이각 C를 표시해 넓이 관계를 보여준다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -416,7 +424,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고2_대수/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 ∠A=60°, AB:AC=3:1, 외접원 중심 O와 OA=7을 나타낸다.",
+    "solutionImageCaption": "외접원 중심 O와 반지름 OA=7을 ∠A=60°, AB:AC=3:1에 연결한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -527,7 +539,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고2_대수/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 반원 지름 AB=4, 각 CAB=30°, 파란색 AP와 OC, 주황색 QD와 PO를 표시한다.",
+    "solutionImageCaption": "파란색 AP와 OC, 주황색 QD와 PO가 각각 평행이다. 두 삼각형의 넓이는 각각 4분의 √3과 2분의 √3이다. 따라서 정답은 4분의 (3√3)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -608,7 +624,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-07-SEQUENCE_SUM",
     "subUnit": "수열의 합",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고2_대수/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 A, B, C와 보조점 D, E, F, G로 만든 직각이등변삼각형, 파란 정사각형, 빗변의 같은 세 구간을 나타낸다.",
+    "solutionImageCaption": "직각변 AB, AC가 각각 길이 1이고 점 D, E, F, G가 파란 정사각형의 꼭짓점임을 보인다. 빗변의 세 같은 구간도 표시한다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
