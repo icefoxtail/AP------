@@ -1045,6 +1045,8 @@ function specForFamily(plan,model,id){
   }
   for(const label of plan.segmentLabels||[]){
     const segment=plan.displaySegments.find(s=>s.id===label.ownerSegment);if(!segment||!/^[A-Za-z]$/.test(label.variable))throw Error('UNSUPPORTED_SEGMENT_NOTATION');
+    // factRole is required (GIVEN / DERIVED_INTERMEDIATE / CONCLUSION); a missing one used to surface only as an opaque NON_JSON_VALUE at the spec digest
+    if(!['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'].includes(label.factRole))throw Error('SEGMENT_LABEL_FACT_ROLE_INVALID:'+label.id);
     const [a,b]=segment.refs.map(r=>points[r].approximation);
     objects.push({id:label.id,kind:'EQUATION_LABEL',target:label.ownerSegment,text:label.variable,at:[(a[0]+b[0])/2,(a[1]+b[1])/2],priority:1});
     notationByLabel[label.id]=label.unit?{unit:label.unit}:{};factRolesByLabel[label.id]=label.factRole;

@@ -173,6 +173,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - `PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:<id>`: 점의 좌표가 곡선 위에 정확히 있지 않다(계산 실수). 정확한 값을 다시 구한다.
 - 문자 계수(`a`가 값 없이 주어짐), `a`에 따라 모양이 달라지는 전체 답, 곡선 둘(`f`와 `g`)은 이 계열로도 못 그린다. UNSUPPORTED.
 
+**근호가 들어간 좌표 작도 (원·직선의 접점·교점):** `construction-spike-v1`의 `SOURCE_LINE`·`CIRCLE_CENTER_RADIUS`는 근호 값을 `{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"6"}]}`(mul·neg·div·add·sub도 같은 모양)로 받는다. 반지름 √6의 원, `x+√3y=±2√6`인 접선, `y=√3x`, 그 접점(`PERPENDICULAR_FOOT`·교점)이 모두 정확하게 계산되고, `coordinateLabels`에 넣으면 접점 좌표가 `(√6/2, 3√2/2)`처럼 분수·근호로 써진다(그림 위치만 소수). 근호 값을 소수나 JS 식으로 쓰지 않는다. **`NON_JSON_VALUE`/`NON_CANONICAL_NUMBER`가 나오면** 근호 때문이 아니라 plan에 `undefined`·`NaN`이 들어간 것이다(예: 필수 `factRole`이 빠진 `segmentLabels`는 이제 `SEGMENT_LABEL_FACT_ROLE_INVALID:<id>`로 거절된다: `factRole`은 GIVEN·DERIVED_INTERMEDIATE·CONCLUSION).
+
 ### 3-5. 응용 문제의 축: 개수와 금액처럼 단위가 다른 두 축
 
 이익금(0~45000원)과 판매 횟수(0~50)처럼 **가로축과 세로축이 서로 다른 양**을 재는 문장제 그래프는 같은 배율로 그리면 곡선이 선처럼 된다. 이때만 `polynomial-spike-v1`의 이차함수에 `graphPlan.applicationAxes:true`를 쓴다. 순수 수학 그래프(`y=x²-2x` 같은 것)에는 쓰지 않는다. 그런 그래프는 같은 배율이 원칙이다(5절).
