@@ -53,7 +53,7 @@ def main():
         elif action == 'build':
             sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
             from visual_engine.engine import build
-            result = build(payload['spec'],payload.get('measurements'),payload.get('fragments'),strict_measured_fragments=True)
+            result = build(payload['spec'],payload.get('measurements'),payload.get('fragments'),strict_measured_fragments=True,last_resort=payload.get('lastResort') is True)
         elif action == 'prepare':
             sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
             from visual_engine.engine import prepare
