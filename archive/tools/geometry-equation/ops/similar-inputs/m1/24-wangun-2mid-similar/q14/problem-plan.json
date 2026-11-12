@@ -1,0 +1,244 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "BO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "midAC",
+        "segments": [
+          "AO",
+          "OC"
+        ],
+        "count": 1
+      },
+      {
+        "id": "midBD",
+        "segments": [
+          "BO",
+          "OD"
+        ],
+        "count": 2
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "given3",
+        "ownerSegment": "AO",
+        "text": "3cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "given4",
+        "ownerSegment": "BO",
+        "text": "4cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "두 대각선이 서로 수직이등분 · AO=3cm, BO=4cm",
+  "sourceQuote": "perpendicular midpoint diagonals AO3 BO4",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "perpendicular midpoint diagonals AO3 BO4",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "O"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "rightAngles": [
+    {
+      "id": "rightO",
+      "refs": [
+        "A",
+        "O",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}
