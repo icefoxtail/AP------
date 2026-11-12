@@ -572,14 +572,17 @@ def prepare(spec):
                     if axis_tick_values is not None and not any(item['id']==oid for item in primitives):primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
                 else:primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
                 text=fraction_text.get((axis,value),display_token).replace('-','−');tick_pi=None
-                if tick_pi_labels is not None:
-                    matches=[row for row in tick_pi_labels if axis=='x' and abs(float(row['value'])-value)<=1e-9]
+                if tick_pi_labels is not None and axis=='x':   # the pi labels belong to the x axis; y ticks beside them keep their plain / fraction text
+                    matches=[row for row in tick_pi_labels if abs(float(row['value'])-value)<=1e-9]
                     if len(matches)!=1:raise ValueError('TICK_PI_LABEL_MISMATCH')
                     tick_pi=matches[0];text=tick_pi['text'];used_pi.add(id(tick_pi))
                 tick_id=('model-x-unit' if axis=='x' else 'model-y-unit') if abs(value-1)<=1e-12 else oid
                 # (EXT-20261109) a tick written as a fraction is a stacked fraction (frac), never the slash form 2/5; the plain text stays the parity value
-                tick_fraction=re.fullmatch(r'([-−]?)(\d+)/(\d+)',text) if tick_pi_labels is None else None
+                tick_fraction=re.fullmatch(r'([-−]?)(\d+)/(\d+)',text) if tick_pi is None else None
                 tick_fraction_tex=(('-' if tick_fraction.group(1) else '')+'{\\displaystyle\\frac{'+tick_fraction.group(2)+'}{'+tick_fraction.group(3)+'}}') if tick_fraction else None
+                # a pi multiple with a denominator (π/6, 2π/3, −π/2) is a stacked fraction too; the plain text 2π/3 stays the parity value (data-tick-display-value)
+                pi_fraction=re.fullmatch(r'([-−]?)(\d*)π/(\d+)',text) if tick_pi is not None else None
+                if pi_fraction:tick_fraction_tex=('-' if pi_fraction.group(1) else '')+'{\\displaystyle\\frac{'+pi_fraction.group(2)+'\\pi}{'+pi_fraction.group(3)+'}}'
                 label_id=f'tick-{axis}-{id_token}-label'
                 tick_primitive=next((item for item in primitives if item['id']==tick_id),None)
                 if tick_primitive is None:raise ValueError('TICK_LABEL_REQUIRED_PRIMITIVE_MISSING:'+label_id)

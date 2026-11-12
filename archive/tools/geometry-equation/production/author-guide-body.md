@@ -268,6 +268,26 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 오류 코드: `TRIG_LINE_INTERSECTION_COUNT_MISMATCH:<id>:engine finds N intersection(s)`(주장한 개수가 다르다. N으로 고치거나, 기울어진 직선이 곡선에 접하기만 하면 접점은 안 찾으니 다른 표본값을 쓴다), `TRIG_LINE_THROUGH_INTERVAL_END:<id>`(닫힌 끝에서 만난다. 끝 상태를 OPEN으로 하거나 값을 바꾼다), `TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED`(1/4주기 미만 또는 12주기 초과), `INVALID_TRIG_INTERVAL`, `TRIG_LINE_FORM_INVALID`/`TRIG_LINE_SLOPE_ZERO`/`TRIG_LINE_COEFFICIENT_INVALID`/`TRIG_LINE_INTERSECTION_COUNT_INVALID`/`TRIG_REFERENCE_LINES_INVALID`(필드 형식), `TRIG_REFERENCE_LINES_REQUIRE_INTERVAL_PI`(직선은 `INTERVAL_PI` 형식에서만), `TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED`(TAN이거나 구간 형식이 틀리다), `TRIG_INTERSECTIONS_BELOW_PROFILE_FLOOR`(교점이 너무 붙어 구분이 안 된다. 주기 수를 줄인다).
 
+### 3-7b. 삼각함수 구간형 확장: 절댓값 · 임의 구간 · π 눈금 · 색 있는 기준선 · 크기 `full`
+
+3-7의 `INTERVAL_PI`(또는 `INTERVAL`) 구간형에 아래 필드를 더한다. 모두 새 필드이므로 쓰지 않으면 그림은 이전과 바이트까지 같다.
+
+- **절댓값**: `graphPlan.absolute:true`이면 `y=A·|F(rate·x+phase)|+C`를 그린다(F는 SIN·COS·TAN, `phasePi`는 π의 배수). 접힌 부분이 위로 올라오고, F의 영점마다 뾰족한 꼭짓점(cusp)이 생기며, tan의 점근선(점선)은 그대로다. 접힌 반주기가 1/4~12주기 한도에 들어간다. 한 주기형(`ALL_REALS`)에는 쓸 수 없고(`TRIG_ABSOLUTE_REQUIRES_INTERVAL`) 항상 구간을 준다. `keyPoints:true`이면 cusp(`CUSP`)와 접힌 봉우리(`MAXIMUM`, A<0이면 `MINIMUM`)에 점이 찍힌다.
+- **임의 구간**: `rangePi`는 정확한 `[lo,hi]` 어떤 값이든 된다(`["-1/2","3/2"]`처럼 음수·0 포함, `states` OPEN/CLOSED). 끝점은 속 빈 점(OPEN)·찬 점(CLOSED)이고, 끝 라벨은 그 끝점 옆(곡선이 들어가지 않는 쪽)에 붙는다.
+- **π 눈금**: `axisTickPi:true`이면 `axisTickValues.x`(π의 정확한 배수, 구간 안쪽)가 `π/6`, `2π/3`, `−π/2`처럼 **쌓은 분수**로 쓰인다. y 눈금(`axisTickValues.y`)은 보통 숫자로 함께 쓴다. `axisTickPiStep:"1/6"`을 더하면 구간 안의 모든 1/6π 배수를 엔진이 깐 뒤 **글자가 겹치지 않게 솎아 낸다**(라벨 간격이 모자라면 2칸·3칸 간격으로, `axisTickValues.x`에 적은 눈금과 끝 라벨 가까이 있는 것은 뺀다). 이때 `axisTickValues.x`에는 그림에 꼭 있어야 할 눈금(풀이의 경계각 등)만 적는다(비어도 된다). 눈금이 점근선·세로선과 겹쳐 자리가 없으면 짧은 지시선으로 빼내며 지우지 않는다.
+- **기준선**(`referenceLines`, 최대 3개)의 새 필드: `color:"BLUE"|"WARM"|"GREEN"|"ROSE"|"VIOLET"`(그 선, 교점 점, 선 옆 식 라벨이 같은 색; `TRIG_LINE_COLOR_INVALID`), 수평선 높이를 근호로 `y:"-sqrt(3)/2"`, 세로선 `{"id":"v","x":"1/2","intersectionCount":1}`(x는 축 단위의 정확한 값, `INTERVAL_PI`에서는 π의 배수; 곡선과 한 점에서 만나므로 0 또는 1), 기울기를 π로 나눈 직선 `{"id":"n","slope":"2/3","intercept":"0","perPi":true,...}`(`y=2x/(3π)`), 직선이 닫힌 끝에서 곡선과 만나면 `endCrossing:true`(그 교점도 센다; 쓰지 않으면 `TRIG_LINE_THROUGH_INTERVAL_END`). 수평선과 `|F|`의 교점은 접힌 곡선에서 직접 센다.
+- **크기**: `graphPlan.displaySize:"full"`이면 이 그림을 `full`로 요청한다(기본은 `medium`; 곡선이 가로로 길거나 라벨이 많을 때 쓴다). 결과의 `sizeClass`가 `full`이어야 한다.
+
+```json
+{"capability":"trigonometric-spike-v1","graphPlan":{"family":"trigonometric","function":"SIN","coefficients":["2","2","0"],"phasePi":"0","absolute":true,
+ "sourceDomain":{"kind":"INTERVAL_PI","rangePi":["0","3"],"states":["CLOSED","CLOSED"]},
+ "referenceLines":[{"id":"n1","slope":"2","perPi":true,"intercept":"0","intersectionCount":4,"color":"BLUE","endCrossing":true}],
+ "axisTickPi":true,"axisTickPiStep":"1/2","axisTickValues":{"x":[],"y":["1","2"]},"displaySize":"full"},
+ "caption":"…","sourceConditions":[…],"newVisualInformation":["…"]}
+```
+
+정답지: `ops/golden/item154trigabslines`(`y=2|sin2x|`과 세 직선), `item155trigpiticks`(`cosx<−√3/2`, 근호 수평선과 솎은 π 눈금), `item156trigq15color`(색 있는 선, `full`).
+
 ### 3-8. 중학교 평면도형: 각·선분·호 표식이 있는 축 없는 그림 (`PLANE_FIGURE_v1`, `planeMarks`)
 
 - **plan 최상위 `caption`은 필수다.** 평면도형·좌표 도형(`construction-spike-v1`)도 `caption`(한 문장, 정답·숨긴 점 이름 없이)이 있어야 하고, 없으면 `SPEC_ERROR`/`PLAN_CAPTION_REQUIRED`(path `caption`)로 거절된다. 숨긴 점(`hiddenPointNames`)의 이름을 caption에 쓰면 `HIDDEN_POINT_NAMED_IN_TEXT:<id>`이다. publish.json의 caption(풀이 요약+정답)과는 별개다. 이유: 금당고 14개 그림이 caption 없이 `NON_JSON_VALUE`(spec.title 미정의)로 거절됐다.
