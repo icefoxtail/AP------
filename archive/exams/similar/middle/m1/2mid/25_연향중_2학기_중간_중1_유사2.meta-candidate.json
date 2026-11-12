@@ -1407,6 +1407,12 @@
         "before": "Stem put a 45° alternate-angle pair and a 100° same-side interior pair on a single implied transversal; for the same transversal, parallel lines force all interior angles to be 45° or 135°, so 100° is impossible.",
         "after": "Made the pairs belong to two distinct transversals p and q of the same parallel lines, preserving 45°, 100°, choices, answer and point value.",
         "independentCheck": "For transversal p, alternate angles give a=45°. For distinct transversal q, same-side interior angles give b=180−100=80°. Thus a+b=125°, unique choice ⑤; the two conditions are independently realizable. Author-side check; formal independent review pending."
+      },
+      {
+        "scope": "Q24 endpoint cases",
+        "before": "P and Q could include square vertices, making OPCQ degenerate in endpoint cases.",
+        "after": "Require P and Q to lie in the interiors of BC and CD; the perpendicular-ray condition then defines a nondegenerate shaded quadrilateral while preserving the area/congruence argument.",
+        "independentCheck": "Let O=(0,0), C=(5,5), P=(5,p), Q=(q,5). Perpendicularity gives 5(p+q)=0, so q=−p; when P,Q are interior, ray OC lies between OP and OQ, so the 90° angle decomposition and ASA proof hold. The interior restriction excludes degenerate endpoint polygons. Author-side check; formal independent review pending."
       }
     ]
   },
@@ -1813,7 +1819,7 @@
   ],
   "validation": {
     "jsSyntax": "PASS (node --check)",
-    "mathReview": "Q19 author-side independent SSA check: with AB=6 and angle A=40°, C lies on a fixed ray from A; BC=8 places C on a circle centered at B with radius 8. Since A is inside that circle (AB=6<8), the ray from A meets the circle exactly once. Thus ㄷ has exactly one triangle; ㄱ,ㄴ,ㄷ are true and answer ④. Formal independent review remains UNREVIEWED. Q11 ray order added; adjacent-angle equation gives COE=50° and answer ②, author-checked; formal independent review pending. Q15 stem disclosure removed; 45° and 100° givens imply a=45°, b=80°, sum 125°, answer ⑤, author-checked. Q15 corrected: alternate and same-side interior angle pairs are on distinct transversals; one-transversal version was inconsistent. New values a=45°, b=80°, sum125°, answer⑤, author-checked.\nQ16 rewritten with named ray/triangle incidence; recomputation gives 75−35=40, triangle angles 40,70,70, exterior x=110 (②). Q23 states DE is inside ∠BDF; EDF=120−50=70, requested sum=110. Q24 made self-contained with P∈BC, Q∈CD, OP⊥OQ, and the O-reflected shaded quadrilateral; ASA gives OPC≅OQD, each area 25 cm², total 50 cm². Author-side recomputation; formal independent review pending. Q14 BLOCKED_SOURCE_GEOMETRY: no source diagram or angle-incidence labels are supplied, so e,k and answer③ cannot be confirmed; no guessed configuration added.",
+    "mathReview": "Q19 author-side independent SSA check: with AB=6 and angle A=40°, C lies on a fixed ray from A; BC=8 places C on a circle centered at B with radius 8. Since A is inside that circle (AB=6<8), the ray from A meets the circle exactly once. Thus ㄷ has exactly one triangle; ㄱ,ㄴ,ㄷ are true and answer ④. Formal independent review remains UNREVIEWED. Q11 ray order added; adjacent-angle equation gives COE=50° and answer ②, author-checked; formal independent review pending. Q15 stem disclosure removed; 45° and 100° givens imply a=45°, b=80°, sum 125°, answer ⑤, author-checked. Q15 corrected: alternate and same-side interior angle pairs are on distinct transversals; one-transversal version was inconsistent. New values a=45°, b=80°, sum125°, answer⑤, author-checked.\nQ16 rewritten with named ray/triangle incidence; recomputation gives 75−35=40, triangle angles 40,70,70, exterior x=110 (②). Q23 states DE is inside ∠BDF; EDF=120−50=70, requested sum=110. Q24 made self-contained with P∈BC, Q∈CD, OP⊥OQ, and the O-reflected shaded quadrilateral; ASA gives OPC≅OQD, each area 25 cm², total 50 cm². Author-side recomputation; formal independent review pending. Q14 BLOCKED_SOURCE_GEOMETRY: no source diagram or angle-incidence labels are supplied, so e,k and answer③ cannot be confirmed; no guessed configuration added. Q24 endpoint exclusion added; P,Q now interior to BC,CD so the quadrilateral is nondegenerate. Formal independent review pending. Q24 now explicitly requires interior points, excluding endpoint degeneracies; formal independent review pending.",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "NOT_RUN",
     "metadataMarkerAudit": {
@@ -1836,11 +1842,11 @@
       "Q14": "BLOCKED_SOURCE_GEOMETRY; source positions unavailable, no edit",
       "Q16": "AUTHOR_CHECKED; ray and triangle incidence specified",
       "Q23": "AUTHOR_CHECKED; DE-inside-angle condition specified",
-      "Q24": "AUTHOR_CHECKED; point placement and shaded regions defined"
+      "Q24": "AUTHOR_CHECKED; P and Q restricted to interiors of BC and CD to exclude degenerate endpoint cases; area/congruence argument retained."
     }
   },
   "pipelineState": "PARTIALLY_BLOCKED_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "ccbceac1e0da66638d97250cf5f763854278e458",
+  "expectedSourceBlobSha1": "3ac340018bb0765fb04c4aa591888d76bedd2871",
   "currentMainReleaseAudit": {
     "mainCommit": "c07df518f76927602fa8cb789b9ecd8e5e0d08f2",
     "existingSimilarJs": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사.js",

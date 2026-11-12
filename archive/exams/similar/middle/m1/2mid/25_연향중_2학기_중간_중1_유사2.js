@@ -1,5 +1,5 @@
-/* 2025 연향중 중1 2학기 중간 유사 문서 판본 2. Drive MD 이식 후보; 기존 판본과 에셋 보존. */
-window.examTitle = "25_연향중_2학기_중간_중1_유사2";
+window.examTitle = "25_연향중_2학기_중간_중1_유사";
+window.archiveStatus = "candidate";
 window.questionBank = [
   {
     "id": 1,
@@ -830,7 +830,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "[서술형 4] 한 변의 길이가 $10\\text{ cm}$인 정사각형 $ABCD$의 두 대각선의 교점을 $O$라 하자. 점 $P$는 선분 $BC$ 위, 점 $Q$는 선분 $CD$ 위에 있고, $\\overline{OP}\\perp\\overline{OQ}$이다. 사각형 $OPCQ$와 이를 점 $O$에 대하여 대칭이동한 사각형을 색칠하였다. 다음 물음에 답하고 그 과정을 서술하시오.\n\n(1) $\\triangle OPC$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (2점) (2) 사각형 $OPCQ$의 넓이를 구하시오. (2점) (3) 색칠한 두 사각형의 넓이의 합을 구하시오. (2점)",
+    "content": "[서술형 4] 한 변의 길이가 $10\\text{ cm}$인 정사각형 $ABCD$의 두 대각선의 교점을 $O$라 하자. 점 $P$는 선분 $BC$의 내부에 있고, 점 $Q$는 선분 $CD$의 내부에 있으며, $\\overline{OP}\\perp\\overline{OQ}$이다. 사각형 $OPCQ$와 이를 점 $O$에 대하여 대칭이동한 사각형을 색칠하였다. 다음 물음에 답하고 그 과정을 서술하시오.\n\n(1) $\\triangle OPC$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (2점) (2) 사각형 $OPCQ$의 넓이를 구하시오. (2점) (3) 색칠한 두 사각형의 넓이의 합을 구하시오. (2점)",
     "choices": [],
     "answer": "(1) $\\triangle OPC \\equiv \\triangle OQD$ (ASA 합동), (2) $25\\text{ cm}^2$, (3) $50\\text{ cm}^2$",
     "points": 6,
