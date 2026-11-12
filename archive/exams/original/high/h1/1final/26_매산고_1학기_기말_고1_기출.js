@@ -27,7 +27,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "행렬의 덧셈은 같은 위치의 성분끼리 더한다.\n$A+B=\\begin{pmatrix}1+5&2+(-1)\\\\3+0&4+2\\end{pmatrix}$\n$=\\begin{pmatrix}6&1\\\\3&6\\end{pmatrix}$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -120,7 +120,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "두 행렬이 같으므로 같은 위치의 성분을 비교한다.\n첫째 행의 첫째 성분에서\n$3a=12$\n$a=4$이다.\n첫째 행의 셋째 성분에서\n$b-2=3$\n$b=5$이다.\n둘째 행의 둘째 성분에서 $c=1$이다.\n둘째 행의 셋째 성분에서\n$d+1=4$\n$d=3$이다.\n따라서\n$a+b+c+d=4+5+1+3$\n$=13$이다.\n정답은 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -318,7 +318,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "먼저 행렬을 제곱한다.\n$X^2=\\begin{pmatrix}1&x\\\\0&-1\\end{pmatrix}\\begin{pmatrix}1&x\\\\0&-1\\end{pmatrix}$\n$=\\begin{pmatrix}1\\cdot1+x\\cdot0&1\\cdot x+x\\cdot(-1)\\\\0\\cdot1+(-1)\\cdot0&0\\cdot x+(-1)\\cdot(-1)\\end{pmatrix}$\n$=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}=E$이다.\n그러므로 홀수 제곱은 $X$, 짝수 제곱은 $E$이다.\n1부터 50까지 홀수와 짝수가 각각 25개이므로\n$X+X^2+\\cdots+X^{50}=25X+25E$\n$=25\\begin{pmatrix}2&x\\\\0&0\\end{pmatrix}$\n$=\\begin{pmatrix}50&25x\\\\0&0\\end{pmatrix}$이다.\n모든 성분의 합이 175이므로\n$50+25x=175$\n$25x=125$\n$x=5$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -481,7 +481,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "대각행렬의 거듭제곱은 대각성분을 각각 거듭제곱하므로, 대각성분 하나를 $z$라 놓고 조건을 조사한다.\n(가)에서 $n=1$인 식은\n$z+z^2+z^3+z^4=0$\n$z(1+z+z^2+z^3)=0$\n$z(z+1)(z^2+1)=0$이다.\n따라서 후보는 $z=0,-1,i,-i$이다. 이 값들은 모두 (가)의 모든 자연수 $n$에 대한 식도 만족한다.\n\n이제 (나)의 합 $S=z-z^2+z^3-\\cdots-z^{98}+z^{99}$가 1인지 확인한다.\n$z=0$이면 $S=0$이므로 탈락한다.\n$z=-1$이면 홀수 차수 항은 $-1$, 짝수 차수 앞의 음수 항도 $-1$이다.\n즉 99개 항이 모두 $-1$이므로 $S=-99$여서 탈락한다.\n\n$z=i$ 또는 $z=-i$이면 $z^2=-1$, $z^3=-z$, $z^4=1$이다.\n네 항의 합은\n$z-z^2+z^3-z^4$\n$=z+1-z-1$\n$=0$이다.\n거듭제곱이 네 항마다 반복되고 $99=4\\cdot24+3$이므로, 처음 96항은 네 항씩 24묶음으로 합이 0이다.\n남은 세 항의 합은\n$z^{97}-z^{98}+z^{99}$\n$=z-z^2+z^3$\n$=z+1-z$\n$=1$이다.\n따라서 $i,-i$는 모두 (나)를 만족한다.\n$a\\ne b$이므로 두 대각성분은 $i$와 $-i$를 하나씩 갖는다.\n모든 성분의 합은\n$i+0+0+(-i)=0$이다.\n정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -506,7 +506,7 @@ window.questionBank = [
     "answer": "$6$",
     "solution": "행렬곱은 왼쪽 행과 오른쪽 열의 성분을 곱해 더한다.\n$AB=\\begin{pmatrix}1&1\\\\1&2\\end{pmatrix}\\begin{pmatrix}2&-x\\\\0&x\\end{pmatrix}$\n$=\\begin{pmatrix}1\\cdot2+1\\cdot0&1\\cdot(-x)+1\\cdot x\\\\1\\cdot2+2\\cdot0&1\\cdot(-x)+2\\cdot x\\end{pmatrix}$\n$=\\begin{pmatrix}2&0\\\\2&x\\end{pmatrix}$이다.\n이 행렬이 $\\begin{pmatrix}2&0\\\\2&6\\end{pmatrix}$와 같으므로 둘째 행 둘째 성분을 비교하면\n$x=6$이다.\n나머지 세 성분도 주어진 행렬과 일치한다.\n따라서 구하는 값은 $6$이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -651,7 +651,7 @@ window.questionBank = [
     "answer": "$-4$",
     "solution":"행렬의 곱은 순서를 바꿀 수 없으므로 곱하는 위치를 유지하며 두 조건을 이용한다.\n$A+B=BA$를 첫째 조건의 오른쪽에 대입하면\n$ABA=BA-2E$\n$ABA-BA=-2E$\n$(A-E)BA=-2E$이다.\n또 둘째 조건에서\n$BA-B=A$\n$B(A-E)=A$이다.\n이를 이용하기 위해 $(A-E)BA=-2E$의 양변 왼쪽에 $B$를 곱한다.\n$B(A-E)BA=-2B$\n$ABA=-2B$이다.\n처음 얻은 $ABA=BA-2E$와 비교하면\n$BA-2E=-2B$\n$BA+2B=2E$이다.\n$BA=A+B$를 대입하면\n$A+B+2B=2E$\n$A+3B=2E$\n$3B=2E-A$\n$B=\\dfrac{2E-A}{3}$이다.\n이제 $BA=A+B$에 이 값을 대입한다.\n$\\dfrac{2E-A}{3}A=A+\\dfrac{2E-A}{3}$\n양변에 3을 곱하면\n$(2E-A)A=3A+(2E-A)$\n$2A-A^2=2A+2E$\n$-A^2=2E$\n$A^2=-2E$이다.\n따라서\n$A^2=\\begin{pmatrix}-2&0\\\\0&-2\\end{pmatrix}$이고,\n모든 성분의 합은\n$-2+0+0-2=-4$이다.\n구하는 값은 $-4$이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

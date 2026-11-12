@@ -60,7 +60,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "P라인의 작업일을 $x$일, Q라인의 작업일을 $y$일이라 하자.\n주어진 행렬에서 첫째 행은 파란색, 둘째 행은 흰색을 나타내고,\n첫째 열은 상의, 둘째 열은 하의를 나타낸다.\n\n파란색 상의는 두 라인에서 각각 하루 $1$개, $2$개 생산하므로\n$x+2y=11$이다.\n흰색 상의는 각각 하루 $3$개, $1$개 생산하므로\n$3x+y=13$이다.\n\n첫째 식을 $3$배 하여 둘째 식을 빼면\n$3x+6y=33$\n$3x+y=13$\n$5y=20$\n$y=4$이다.\n따라서 $x+2\\cdot4=11$이므로 $x=3$이다.\n\n흰색 하의는 P라인에서 하루 $1$개, Q라인에서 하루 $2$개 생산한다.\n따라서 지난주 생산량은\n$x+2y=3+2\\cdot4=11$개이다.\n정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -88,7 +88,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "$M=\\begin{pmatrix}1&-2\\\\6&5\\end{pmatrix}$, $N=\\begin{pmatrix}2&-4\\\\-3&5\\end{pmatrix}$라 두면\n$A-2B=M$, $2A+B=N$이다.\n첫째 식과 둘째 식의 2배를 더하면\n$5A=M+2N$이다.\n따라서\n$A=\\dfrac{M+2N}{5}$\n$=\\dfrac{1}{5}\\left\\{\\begin{pmatrix}1&-2\\\\6&5\\end{pmatrix}+2\\begin{pmatrix}2&-4\\\\-3&5\\end{pmatrix}\\right\\}$\n$=\\dfrac{1}{5}\\begin{pmatrix}5&-10\\\\0&15\\end{pmatrix}$\n$=\\begin{pmatrix}1&-2\\\\0&3\\end{pmatrix}$이다.\n둘째 식에서 첫째 식의 2배를 빼면\n$5B=N-2M$이다.\n따라서\n$B=\\dfrac{N-2M}{5}$\n$=\\dfrac{1}{5}\\left\\{\\begin{pmatrix}2&-4\\\\-3&5\\end{pmatrix}-2\\begin{pmatrix}1&-2\\\\6&5\\end{pmatrix}\\right\\}$\n$=\\dfrac{1}{5}\\begin{pmatrix}0&0\\\\-15&-5\\end{pmatrix}$\n$=\\begin{pmatrix}0&0\\\\-3&-1\\end{pmatrix}$이다.\n그러므로\n$AB=\\begin{pmatrix}1&-2\\\\0&3\\end{pmatrix}\\begin{pmatrix}0&0\\\\-3&-1\\end{pmatrix}$\n$=\\begin{pmatrix}6&2\\\\-9&-3\\end{pmatrix}$이다.\n모든 성분의 합은 $6+2-9-3=-4$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -172,7 +172,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "$N=\\begin{pmatrix}0&a\\\\0&0\\end{pmatrix}$라 두면\n$A=E+N$이고 $N^2=O$이다.\n따라서 $A^n=(E+N)^n=E+nN$이다. $N^2=O$이므로 이항전개에서 $N$의 2차항부터 모두 0이 되기 때문이다.\n즉\n$A^n=\\begin{pmatrix}1&na\\\\0&1\\end{pmatrix}$이다.\n성분의 합이 56이므로\n$1+na+0+1=56$\n$na=54$이다.\n$54=2\\cdot3^3$이므로 54의 양의 약수 개수는\n$(1+1)(3+1)=8$이다.\n각 양의 약수 $n$마다 $a=\\frac{54}{n}$이 하나씩 정해지므로 순서쌍 $(a,n)$도 8개이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -498,7 +498,7 @@ window.questionBank = [
     "answer": "$X=\\begin{pmatrix}a&a+b\\\\0&b\\end{pmatrix}$\n$(a,b)=(1,2),(1,3),(2,1),(2,3),(3,1),(3,2)$",
     "solution": "$X=\\begin{pmatrix}a&a+b\\\\0&b\\end{pmatrix}$이므로\n$X-kE=\\begin{pmatrix}a-k&a+b\\\\0&b-k\\end{pmatrix}$이다.\n\n세 행렬 $(X-E)(X-2E)(X-3E)$의 대각성분이 모두 $0$이어야 하므로\n$(a-1)(a-2)(a-3)=0$,\n$(b-1)(b-2)(b-3)=0$이다.\n따라서 $a,b\\in\\{1,2,3\\}$이다.\n\n비대각성분도 확인하자.\n먼저\n$(X-E)(X-2E)$\n$=\\begin{pmatrix}(a-1)(a-2)&(a+b)(a+b-3)\\\\0&(b-1)(b-2)\\end{pmatrix}$이다.\n여기에 $(X-3E)$를 곱하면 오른쪽 위 성분은\n$(a+b)\\{(a-1)(a-2)+(a+b-3)(b-3)\\}$이다.\n\n① $a=b$일 때\n$a=b=1,2,3$을 대입하면 오른쪽 위 성분이 차례로\n$4,-4,12$가 된다. 모두 $0$이 아니므로 불가능하다.\n\n② $a\\ne b$일 때\n$(a,b)=(1,2),(1,3),(2,1),(2,3),(3,1),(3,2)$의 여섯 경우를 대입하면\n위 비대각성분은 모두 $0$이다. 대각성분 역시 모두 $0$이므로 성립한다.\n\n따라서 구하는 모든 행렬은\n$\\begin{pmatrix}1&3\\\\0&2\\end{pmatrix}$,\n$\\begin{pmatrix}1&4\\\\0&3\\end{pmatrix}$,\n$\\begin{pmatrix}2&3\\\\0&1\\end{pmatrix}$,\n$\\begin{pmatrix}2&5\\\\0&3\\end{pmatrix}$,\n$\\begin{pmatrix}3&4\\\\0&1\\end{pmatrix}$,\n$\\begin{pmatrix}3&5\\\\0&2\\end{pmatrix}$이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
