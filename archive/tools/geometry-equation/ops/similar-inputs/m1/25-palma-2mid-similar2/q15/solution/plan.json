@@ -1,0 +1,410 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "L",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "35"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "L"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "R",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "25"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lu",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "L",
+          "I"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ou",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "J"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rv",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "R",
+          "K"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ov",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lu",
+          "ou"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "rv",
+          "ov"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "L",
+    "R",
+    "I",
+    "J",
+    "K",
+    "T",
+    "U",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "LO",
+      "refs": [
+        "L",
+        "O"
+      ]
+    },
+    {
+      "id": "LU",
+      "refs": [
+        "L",
+        "U"
+      ]
+    },
+    {
+      "id": "UO",
+      "refs": [
+        "U",
+        "O"
+      ]
+    },
+    {
+      "id": "OR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "id": "RV",
+      "refs": [
+        "R",
+        "V"
+      ]
+    },
+    {
+      "id": "VO",
+      "refs": [
+        "V",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "givenLeft",
+        "refs": [
+          "O",
+          "L",
+          "U"
+        ],
+        "value": 35,
+        "label": "35",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "a",
+        "refs": [
+          "L",
+          "O",
+          "U"
+        ],
+        "value": 60,
+        "label": "a",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "b",
+        "refs": [
+          "L",
+          "U",
+          "O"
+        ],
+        "value": 85,
+        "label": "b",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "givenRight",
+        "refs": [
+          "O",
+          "R",
+          "V"
+        ],
+        "value": 25,
+        "label": "25",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "refs": [
+          "R",
+          "O",
+          "V"
+        ],
+        "value": 70,
+        "label": "c",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "d",
+        "refs": [
+          "R",
+          "V",
+          "O"
+        ],
+        "value": 85,
+        "label": "d",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "leftSum",
+        "at": "U",
+        "text": "a+b=145°",
+        "labelKind": "TEXT",
+        "anchor": "N",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rightSum",
+        "at": "V",
+        "text": "c+d=155°",
+        "labelKind": "TEXT",
+        "anchor": "N",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "a+b=145°, c+d=155°이므로 네 각의 합300°",
+  "sourceQuote": "왼쪽 삼각형 내각35,a,b. 오른쪽 내각25,c,d. 한 꼭짓점 공유",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "왼쪽 삼각형 내각35,a,b. 오른쪽 내각25,c,d. 한 꼭짓점 공유",
+      "mappedTo": [
+        "givenLeft",
+        "a",
+        "b",
+        "givenRight",
+        "c",
+        "d"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설에만 각 삼각형의 미지각 합 표시. 내부 예시 각60,70,85를 개별값으로 표시하지 않는다."
+  ],
+  "hiddenPointNames": [
+    "O",
+    "L",
+    "R",
+    "I",
+    "J",
+    "K",
+    "T",
+    "U",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE"
+}

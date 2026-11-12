@@ -1,0 +1,66 @@
+{
+  "checks": [
+    {
+      "surface": "problem",
+      "glyphReadback": {
+        "a": "a∘",
+        "b": "b∘",
+        "c": "c∘",
+        "d": "d∘",
+        "givenLeft": "35∘",
+        "givenRight": "25∘"
+      },
+      "independentAtan2Angles": {
+        "givenLeft": 35.00000000000001,
+        "a": 60.00000000000001,
+        "b": 85.0,
+        "givenRight": 25.0,
+        "c": 70.00000000000001,
+        "d": 85.0
+      },
+      "math": {
+        "leftUnknownSum": 145,
+        "rightUnknownSum": 155,
+        "sum": 300
+      },
+      "staticAudit": "PASS",
+      "renderedLayout": "PASS",
+      "problemAnswerLeakCheck": "PASS"
+    },
+    {
+      "surface": "solution",
+      "glyphReadback": {
+        "a": "a∘",
+        "b": "b∘",
+        "c": "c∘",
+        "d": "d∘",
+        "givenLeft": "35∘",
+        "givenRight": "25∘",
+        "leftSum": "",
+        "rightSum": ""
+      },
+      "independentAtan2Angles": {
+        "givenLeft": 35.00000000000001,
+        "a": 60.00000000000001,
+        "b": 85.0,
+        "givenRight": 25.0,
+        "c": 70.00000000000001,
+        "d": 85.0
+      },
+      "math": {
+        "leftUnknownSum": 145,
+        "rightUnknownSum": 155,
+        "sum": 300
+      },
+      "staticAudit": "PASS",
+      "renderedLayout": "PASS",
+      "problemAnswerLeakCheck": "NOT_APPLICABLE"
+    }
+  ],
+  "sourceGitBlob": "286cef80d9ddfc0776a04e9f34aad2f6745727f4",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false,
+  "textOutlineNote": "TEXT labels are rendered as outlines without data-c characters; intended texts a+b=145°,c+d=155° are plan-bound and checked by engine staticAudit, not independently recovered as glyph text."
+}

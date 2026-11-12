@@ -1,0 +1,71 @@
+{
+  "checks": [
+    {
+      "surface": "problem",
+      "glyphReadback": {
+        "givenB": "65∘",
+        "givenF": "45∘",
+        "unknownA": "a∘",
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D",
+        "E": "E",
+        "F": "F",
+        "BC": "7",
+        "EF": "b"
+      },
+      "independentAtan2Angles": {
+        "givenB": 65.0,
+        "givenF": 45.0,
+        "unknownA": 70.00000000000001
+      },
+      "math": {
+        "a": 70,
+        "b": 7,
+        "sum": 77,
+        "congruence": "Translation by (11,0), all corresponding sides and angles preserved"
+      },
+      "staticAudit": "PASS",
+      "renderedLayout": "PASS",
+      "problemAnswerLeakCheck": "PASS"
+    },
+    {
+      "surface": "solution",
+      "glyphReadback": {
+        "derivedC": "45∘",
+        "givenB": "65∘",
+        "givenF": "45∘",
+        "unknownA": "70∘",
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D",
+        "E": "E",
+        "F": "F",
+        "BC": "7",
+        "EF": "7"
+      },
+      "independentAtan2Angles": {
+        "givenB": 65.0,
+        "givenF": 45.0,
+        "unknownA": 70.00000000000001,
+        "derivedC": 45.0
+      },
+      "math": {
+        "a": 70,
+        "b": 7,
+        "sum": 77,
+        "congruence": "Translation by (11,0), all corresponding sides and angles preserved"
+      },
+      "staticAudit": "PASS",
+      "renderedLayout": "PASS",
+      "problemAnswerLeakCheck": "NOT_APPLICABLE"
+    }
+  ],
+  "sourceGitBlob": "286cef80d9ddfc0776a04e9f34aad2f6745727f4",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+}

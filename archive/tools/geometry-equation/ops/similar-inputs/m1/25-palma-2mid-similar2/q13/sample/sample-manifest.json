@@ -1,0 +1,250 @@
+{
+  "status": "SAMPLE_ONLY",
+  "sourceRef": {
+    "path": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사2.js",
+    "bytes": 50235,
+    "sha256": "sha256:8fa777e914e5e0b005b3d9a1ee22af1bf750e956eaf8a5ebe5fa4e31bd863ea9"
+  },
+  "gitBlob": "286cef80d9ddfc0776a04e9f34aad2f6745727f4",
+  "sourceRefBranch": "work/similar-m1-accumulate",
+  "questionUid": "25_팔마중_2학기_중간_중1_유사2|13",
+  "questionSha256": "sha256:dec1e829d92503c6459dd7c9bf53d0ffa1f177a0d7729afc2f92bdeedcc97f93",
+  "typographyPolicy": {
+    "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+    "requestedSizeClass": "full",
+    "baseFontPx": 24,
+    "displayScale": 1,
+    "fontFloorCssPx": 11
+  },
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "engineMainRef": "1206d96c524b4fc50afc83311d2a6131c7e5ab46",
+  "engineChanges": [],
+  "browserPackage": "@sparticuz/chromium@143.0.4",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false,
+  "surfaces": [
+    {
+      "surface": "problem",
+      "identity": {
+        "questionUid": "25_팔마중_2학기_중간_중1_유사2|13",
+        "surface": "PROBLEM_VISUAL",
+        "visualRole": "decisive-relation",
+        "visualAssetKey": "sha256:47f27b363dfaef108932afcc904cd3dce1b40aed11c5451bfcb0df5787541643",
+        "assetId": "va-01e21994bc8796c0a54faf35253cfb3bec52f2e27e4cd395347464eaeec2de2f"
+      },
+      "status": "SAMPLE_ONLY",
+      "compositionStatus": "COMPOSED",
+      "planRef": {
+        "path": "palma25-q13-inputs/problem-plan.json",
+        "bytes": 5886,
+        "sha256": "sha256:9a59011fd8c9eba0e68b8f904443c790ac3b9e33f22bb7cd1c51581517626bce"
+      },
+      "svgRef": {
+        "path": "palma25-q13-outputs/problem.svg",
+        "bytes": 22393,
+        "sha256": "sha256:f2facbaae303b42615aa0d813fd5c47cb790238e166e2f46e96336c820d5e7c7"
+      },
+      "pngRef": {
+        "path": "palma25-q13-outputs/problem.png",
+        "bytes": 9495,
+        "sha256": "sha256:c3f637c03bb497250e5799ae2bfea623d9cc8ffb03b38ac050619d4cc29ed2e6"
+      },
+      "staticAudit": {
+        "status": "PASS",
+        "errors": [],
+        "planeMarks": {
+          "status": "PASS",
+          "errors": [],
+          "observations": [
+            {
+              "id": "givenB",
+              "type": "ANGLE",
+              "drawnDegrees": 64.99999999917324,
+              "pointsDegrees": 65,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "givenF",
+              "type": "ANGLE",
+              "drawnDegrees": 44.99999999976464,
+              "pointsDegrees": 44.99999999999994,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "unknownA",
+              "type": "ANGLE",
+              "drawnDegrees": 70.00000000020825,
+              "pointsDegrees": 70.00000000000006,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "givenBC",
+              "type": "EXPRESSION_LABEL",
+              "ownerSegment": "BC",
+              "distancePx": 16.376000000000033
+            },
+            {
+              "id": "unknownEF",
+              "type": "EXPRESSION_LABEL",
+              "ownerSegment": "EF",
+              "distancePx": 16.460000000000036
+            }
+          ]
+        }
+      },
+      "renderedLayout": {
+        "status": "PASS",
+        "display": {
+          "width": 720,
+          "height": 480
+        },
+        "errors": []
+      },
+      "lineage": {
+        "planSha256": "sha256:e0a7620564b0674a0665f9e373524558efb5e2cc69f5c43dfb7f4cb3c0252c91",
+        "modelSha256": "sha256:68126af8a521a06d337e681b3ac10387375b4fd6477ce324a9781b769cdc08cc",
+        "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
+        "specSha256": "sha256:e88ee84c95ea12b54ec8d7cd23092768be5174ec0bd8cdf319bffb5839e3da90",
+        "fragmentSha256s": {
+          "A-name": "sha256:37672df4f8cab3c6f590216fc56a8e74b201a6e20a11f618346ef1e24472b760",
+          "B-name": "sha256:07e9bfd6f84830b4e69ad816b9cb6c3a0c42fcb0450ab75ae902222915bc5b63",
+          "C-name": "sha256:9d6e6270ea95f6a0ed7b22b0523e6f0dde969848bd992207be44be6c99b529a5",
+          "D-name": "sha256:f8743a345946bceece68c8758001a66ae6a6556f898852923bc7920a8c6d0713",
+          "E-name": "sha256:08fed539c5d4061740d60737a7951f14fecb514499933505fe988f68cd181691",
+          "F-name": "sha256:bde5d27657913cea6c77c61075c74eb1aa6a2d78c4b2d4ef25970d4dbc88bcb3",
+          "givenB-label": "sha256:812cfa00a7460658b64effcbe2af20b76f5f11a9bb115e40621c915b626db650",
+          "givenF-label": "sha256:27e01edf5612295f834f8a93810f286c02d91463605e5bca24639403ecb3ac12",
+          "unknownA-label": "sha256:291019fa8f8f215c7ac7d062cfa6540bcbcdf73b18ed1536a0cabfdde42273e5",
+          "givenBC": "sha256:7eeffc45aa2eaea82e079835a4b672cf2237e78dbf506c86d7cb84f850a368cc",
+          "unknownEF": "sha256:e3b590d8916fe571f2d9af54f968372c46666a68d9d923db63c10eceb52acd1b"
+        },
+        "measurementsSha256": "sha256:5d3e2eb906a95f9e15e36cfe7a75a3ca0c272b67675311b2ab7c92c6c47eac4e",
+        "svgSha256": "sha256:f2facbaae303b42615aa0d813fd5c47cb790238e166e2f46e96336c820d5e7c7",
+        "witnessSha256": "sha256:35c6c1e32340014c8e1ca8b493bf7b32d7e90dc48df7250c2c26913d2c8d5800",
+        "staticAuditSha256": "sha256:639271e54940488105d6558c8833f1728d230509e8f1e631081ce7de48534dcf",
+        "renderedLayoutSha256": "sha256:32e1126b72ee3dac3abcbb3ec95616a82669f59553a3e98d50e4966268f513a1"
+      }
+    },
+    {
+      "surface": "solution",
+      "identity": {
+        "questionUid": "25_팔마중_2학기_중간_중1_유사2|13",
+        "surface": "SOLUTION_VISUAL",
+        "visualRole": "decisive-relation",
+        "visualAssetKey": "sha256:2812b6f98c80fe5704e8e3ebfd192183ccd66af194a26745a67914a872f8bba8",
+        "assetId": "va-1070eac33282f4614a5ca56181a9b08fc8632802ca618555fa594afa4963c52a"
+      },
+      "status": "SAMPLE_ONLY",
+      "compositionStatus": "COMPOSED",
+      "planRef": {
+        "path": "palma25-q13-inputs/solution-plan.json",
+        "bytes": 6154,
+        "sha256": "sha256:1ff8a098dbb70472b8de350d44ed984aed4e8b34369e60256050ec943a0d259d"
+      },
+      "svgRef": {
+        "path": "palma25-q13-outputs/solution.svg",
+        "bytes": 25239,
+        "sha256": "sha256:cc4830c1e0dc717a35dd9932b606b75b9c4d2c94d44f82681ffcd6f69dbd567d"
+      },
+      "pngRef": {
+        "path": "palma25-q13-outputs/solution.png",
+        "bytes": 9950,
+        "sha256": "sha256:5f4ac371e82cf387c03152bafff4b5dfe995c6266613c726ffe1b668a481632e"
+      },
+      "staticAudit": {
+        "status": "PASS",
+        "errors": [],
+        "planeMarks": {
+          "status": "PASS",
+          "errors": [],
+          "observations": [
+            {
+              "id": "givenB",
+              "type": "ANGLE",
+              "drawnDegrees": 64.99999999917324,
+              "pointsDegrees": 65,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "givenF",
+              "type": "ANGLE",
+              "drawnDegrees": 44.99999999976464,
+              "pointsDegrees": 44.99999999999994,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "unknownA",
+              "type": "ANGLE",
+              "drawnDegrees": 70.00000000020825,
+              "pointsDegrees": 70.00000000000006,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "derivedC",
+              "type": "ANGLE",
+              "drawnDegrees": 44.99999999905273,
+              "pointsDegrees": 44.99999999999994,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "givenBC",
+              "type": "EXPRESSION_LABEL",
+              "ownerSegment": "BC",
+              "distancePx": 16.376000000000033
+            },
+            {
+              "id": "unknownEF",
+              "type": "EXPRESSION_LABEL",
+              "ownerSegment": "EF",
+              "distancePx": 16.376000000000033
+            }
+          ]
+        }
+      },
+      "renderedLayout": {
+        "status": "PASS",
+        "display": {
+          "width": 720,
+          "height": 480
+        },
+        "errors": []
+      },
+      "lineage": {
+        "planSha256": "sha256:44a6befed55c833800fbb4c3c878505182a61025e8d919f32719d1b547c9ca21",
+        "modelSha256": "sha256:68126af8a521a06d337e681b3ac10387375b4fd6477ce324a9781b769cdc08cc",
+        "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
+        "specSha256": "sha256:ebc445343652d0da9e2af4e2ad4b55650320bebc75cce8128f635937b800a340",
+        "fragmentSha256s": {
+          "A-name": "sha256:d616f1e3c3d664fe7533f4471d277cf42c46b4b5993cab3b3900acaa64054b2b",
+          "B-name": "sha256:5c51bf8e58d3eac4a7218935ffcf587722d006ce53923317daed92dcb85af1e7",
+          "C-name": "sha256:935f381e9832f8ced5bb5c192642c244fcc3aa1738899d4979b9cb648e89e41e",
+          "D-name": "sha256:771bc763f5946ac51272b9ecbee1e1316f87bee53ac4af33094895415877c6ac",
+          "E-name": "sha256:55722a583f3d19cf73f8b21c47cce0ec8fa56d20fc7441a0d0b8773ecf85737e",
+          "F-name": "sha256:46940d785e3d046ff36aea4f5d9a6c6262e8bfbbfe66dc6bd06abc5e658f1a3c",
+          "givenB-label": "sha256:ff0d37c88b6d183d35e6ad4ee05787e5263347a6b87388da9ab00cc6153a1fe9",
+          "givenF-label": "sha256:8a57baabba7dbc3e97385018a5fd76ebd6ffccd706d144a7b8f8795b7c90606d",
+          "unknownA-label": "sha256:e100b01b86ad905a5df5d2e5ad34d373184a93a9cd99d00e21f15f3dd20cf310",
+          "derivedC-label": "sha256:d9d41504bd4c9f5c524d57330f758c1924031b448ed2f0d1992d8bd36eee9622",
+          "givenBC": "sha256:3755ff1ac4c8638b4a7efc01f3244efeb12a2ec0cdfc2ed0c2d022f8ab38d34e",
+          "unknownEF": "sha256:3178e9006a7ecb897ffe783ac489ca58fd0b5e9bf7835d773dd1ca396330e8db"
+        },
+        "measurementsSha256": "sha256:4a13bcdbc581d5a6af1d11982aa6878966386e6b3e94719964793aea16e25e62",
+        "svgSha256": "sha256:cc4830c1e0dc717a35dd9932b606b75b9c4d2c94d44f82681ffcd6f69dbd567d",
+        "witnessSha256": "sha256:2f3fb7e3b0cfe6129080dedb9108cc1853f1519d6f9809e1d0f5ce1e567ac80e",
+        "staticAuditSha256": "sha256:240f1249cee90a9e0a638c3ad1f6daee738d6a800d41f46d6eb04243e5d92e96",
+        "renderedLayoutSha256": "sha256:c8c5589380a9760eff9c881e5c3b45ca69ce442bedebc777990280391d937c45"
+      }
+    }
+  ],
+  "browserVersion": "143.0.7499.0",
+  "browserContext": "ONE_TRANSIENT_SHARED_CONTEXT"
+}
