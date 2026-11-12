@@ -1944,10 +1944,10 @@ window.questionBank = [
     "solutionVisualReason": "Exact paired roots at 1/6 and 5/6 in each period are a new quantitative relation beyond the source graph; solution SVG locates several pairs.",
     "sourcePageNo": 3,
     "problemImageSha256": "8c46463e4affe48154b2b575f2d04eeedea443df01dc0d808c712d2beadfe97f",
-    "solutionImage": "assets/images/26_강남여고_1학기_2차_고2_대수/q20-solution.svg",
-    "solutionImageAlt": "y=sin πx와 y=1/2의 교점이 주기마다 1/6과 5/6에 놓임을 보이는 해설 그래프",
-    "solutionImageCaption": "각 주기에서 두 교점의 x좌표 차는 2/3이다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/26_강남여고_1학기_2차_고2_대수/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: t축에 사인 곡선과 y=1/2 기준선이 네 주기 동안 그려져 있다.",
+    "solutionImageCaption": "주기마다 두 교점의 순서를 비교한다. 정답은 118이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 21,

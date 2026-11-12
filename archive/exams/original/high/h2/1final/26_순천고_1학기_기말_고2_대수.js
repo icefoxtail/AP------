@@ -647,7 +647,11 @@ window.questionBank = [
       "COND_EXACT_INTERSECTION_COUNT"
     ],
     "integrationPattern": "NONE",
-    "metadataEvidenceRef": "H2-M1-RPM-107"
+    "metadataEvidenceRef": "H2-M1-RPM-107",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고2_대수/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 사인 곡선의 교점 A, B, C, D와 원점 O에서 B, C로 이어진 선분, A와 D를 잇는 선분이 보인다.",
+    "solutionImageCaption": "B와 C 사이의 길이는 4이고, O에서 BC까지의 높이는 2분의 3, A와 D 사이의 길이는 8이다. 정답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -733,7 +737,11 @@ window.questionBank = [
       "COND_EXACT_INTERSECTION_COUNT"
     ],
     "integrationPattern": "CASE_BRANCH",
-    "metadataEvidenceRef": "H2-M1-RPM-107"
+    "metadataEvidenceRef": "H2-M1-RPM-107",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고2_대수/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 절댓값 사인 곡선과 파란색·주황색·초록색 직선이 0≤t≤3에서 그려져 있다.",
+    "solutionImageCaption": "t=x/π로 치환한다. 파란색 y=2t, 주황색 y=t, 초록색 y=2t/3 직선과 절댓값 사인곡선의 교점 수를 비교한다. 정답은 24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

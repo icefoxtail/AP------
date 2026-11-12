@@ -385,7 +385,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
     "subUnit": "trigonometric function",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 코사인 곡선과 파란색 y=1, 주황색 y=−1 기준선이 보인다.",
+    "solutionImageCaption": "파란색 y=1, 주황색 y=−1 기준선에서 절댓값 코사인의 교점을 한 주기에 두 개씩 세고, 0≤x≤10의 다섯 주기에 적용한다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
