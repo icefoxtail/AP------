@@ -1,0 +1,201 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "72"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "circle"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 54,
+        "label": "54",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "color": "BLUE"
+      },
+      {
+        "id": "result",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 36,
+        "label": "36",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "지름 AB에 대한 원주각 C=90° · x=90−54=36°",
+  "sourceQuote": "23연향중3 유사 Q3 실제 원주각/중심각 조건",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "23연향중3 유사 Q3 실제 원주각/중심각 조건",
+      "mappedTo": [
+        "O",
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "rightAngles": [
+    {
+      "id": "semicircle",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}
