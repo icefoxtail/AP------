@@ -1693,7 +1693,7 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "level": "상",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q23-solution.svg",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q23-solution-v2.svg",
     "metaEvidence": {
       "curriculum": "2015",
       "curriculumKey": "2015",
@@ -1721,6 +1721,9 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 좌표축 위에 원의 중심 M(3,−4), 접선, 원 위의 O, A, B, 점 P와 수선의 발 Q가 보인다.",
+    "solutionImageCaption": "O(0,0), A(6,−8), B(7,−1)로 정해지는 원의 중심은 M(3,−4), 반지름은 5이다. 같은 넓이의 삼각형 OAB, OPB와 P에서 가로축에 내린 수선을 보인다. QO의 값은 그림에 쓰지 않았다. 정답은 8이다.",
+    "solutionImageSize": "full"
   }
 ];
