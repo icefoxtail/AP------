@@ -280,7 +280,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 정확한 열린 경계 사이의 구간, 후보점 P와 정수점 6~9.",
+    "solutionImageCaption": "후보점 P=4+2√2는 3+√8과 5+√17 사이에 있다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -311,7 +315,10 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_1학기_중간_중3_기출/q9-solution.svg"
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중3_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 칸 1인 모눈의 두 정사각형 변을 각각 반지름으로 원호를 수직선에 옮긴다.",
+    "solutionImageCaption": "AB=√10이므로 P=−3+√10이고, EF=2√2이므로 Q=2+2√2이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -348,7 +355,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 자연수 20~35에서 f(x)=2, 36~40에서 f(x)=3인 두 구간과 정수점.",
+    "solutionImageCaption": "20부터 35까지 16개 입력은 각각 2개, 36부터 40까지 5개 입력은 각각 3개를 더해 합은 47이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -632,7 +643,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 a>−3이면 a+3>0, a<2이면 a−2<0인 두 부호 구간을 나타낸다.",
+    "solutionImageCaption": "−3<a<2이므로 주어진 식은 3(a+3)−2(2−a)=5a+5이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -663,7 +678,10 @@ window.questionBank = [
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented",
-    "solutionImage": "assets/images/25_왕운중_1학기_중간_중3_기출/q19-solution.svg"
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중3_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 네 칸의 넓이 2x², 7x, 8x, 28과 공통 폭 2x·7, 높이 x·4.",
+    "solutionImageCaption": "가로가 2x+7, 세로가 x+4이므로 둘레는 2((2x+7)+(x+4))=6x+22이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -798,6 +816,9 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_1학기_중간_중3_기출/q24-solution.svg"
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중3_기출/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 −4와 2에서 반지름 √5, √10인 두 반원호가 수직선과 만나는 점 A, B, C, D.",
+    "solutionImageCaption": "A=−4−√5, B=−4+√5, C=2−√10, D=2+√10이다. AD−BC=2√5+2√10이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -189,7 +189,11 @@ window.questionBank = [
     "templateKey": null,
     "rpmPrimaryId": "M3-RPM-002",
     "rpmL3": "제곱근",
-    "rpmL4": "제곱근의 성질"
+    "rpmL4": "제곱근의 성질",
+    "solutionImage": "assets/images/25_연향중_1학기_중간_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 49 이상 64 미만의 범위와 그 사이의 정수 눈금.",
+    "solutionImageCaption": "49≤a<64이므로 자연수 a는 49, 50, …, 63의 15개이다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -289,7 +293,10 @@ window.questionBank = [
     "rpmPrimaryId": "M3-RPM-005",
     "rpmL3": "수직선과 제곱근",
     "rpmL4": "무리수의 위치",
-    "solutionImage": "assets/images/25_연향중_1학기_중간_중3_수학/q06-solution.svg"
+    "solutionImage": "assets/images/25_연향중_1학기_중간_중3_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD, AB의 1칸·3칸 변위, 빗변 길이 √10, A에서 오른쪽으로 옮긴 같은 길이 AP.",
+    "solutionImageCaption": "A=−4이고 AB=√(1²+3²)=√10이므로 P=−4+√10이다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -964,7 +971,11 @@ window.questionBank = [
     "templateKey": null,
     "rpmPrimaryId": "M3-RPM-002",
     "rpmL3": "제곱근",
-    "rpmL4": "제곱근의 성질"
+    "rpmL4": "제곱근의 성질",
+    "solutionImage": "assets/images/25_연향중_1학기_중간_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: x+5가 양수인 오른쪽 범위와 x−6이 음수인 왼쪽 범위의 공통 구간.",
+    "solutionImageCaption": "(x+5)−(6−x)=2x−1이다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1007,7 +1018,11 @@ window.questionBank = [
     "templateKey": null,
     "rpmPrimaryId": "M3-RPM-002",
     "rpmL3": "제곱근",
-    "rpmL4": "제곱근의 성질"
+    "rpmL4": "제곱근의 성질",
+    "solutionImage": "assets/images/25_연향중_1학기_중간_중3_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 10 이상 200 미만의 범위와 n=15k² 후보값의 위치.",
+    "solutionImageCaption": "가능한 n은 15, 60, 135이므로 3개이다. 정답: 3개",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
