@@ -119,6 +119,15 @@
     const map = object => Object.fromEntries(Object.entries(object || {}).map(([k, val]) => [prefix(spec, k), val]));
     const nums = Object.fromEntries(Object.entries(v).filter(([, val]) => typeof val === 'number'));
     const flags = Object.fromEntries(Object.entries(v).filter(([, val]) => typeof val !== 'number'));
+    // Numeric modes also use set (an instantaneous change, never a tween through
+    // an invalid coefficient). The native player requires every set key to be
+    // reset explicitly in the first cue as well as numeric start values.
+    for (const ch of lesson.chapters) for (const cue of ch.cues || []) {
+      for (const key of Object.keys(cue.set || {})) {
+        if (!(key in v)) throw Error(`Unknown lesson state ${spec.id}.${key}`);
+        flags[key] = v[key];
+      }
+    }
     lesson.chapters.forEach((chapter, i) => {
       chapter.start = map(i === 0 ? { ...nums, ...(chapter.start || {}) } : chapter.start);
       chapter.cues = chapter.cues.map((cue, j) => ({ ...cue,
@@ -150,7 +159,7 @@
       presets: (spec.presets || []).map(preset => ({ label: preset.label,
         apply(state, lab) { assign(spec, state, preset.values, true); state.step = 0; state.revealed = false; lab.board.fit(); } })),
       actions: [{ id: `reset-${spec.id}`, label: '처음 값으로', icon: 'reset', run(state, lab) {
-        if (lab.video && lab.video.state !== 'idle' && typeof lab.video.stop === 'function') lab.video.stop();
+        if (lab.video && lab.video.state !== 'idle') lab.video.close();
         assign(spec, state, defaults(spec)); state.step = 0; state.revealed = false; lab.board.fit();
       } }],
       draw(b, state, view, lab) {
