@@ -1,0 +1,50 @@
+{
+  "checks": [
+    {
+      "surface": "problem",
+      "glyphReadback": {
+        "B": "B",
+        "C": "C",
+        "sBC": "6"
+      },
+      "problemGivenOnly": "PASS",
+      "staticAudit": "PASS",
+      "renderedLayout": "PASS"
+    },
+    {
+      "surface": "solution",
+      "glyphReadback": {
+        "B": "B",
+        "C": "C",
+        "sBC": "6",
+        "rB": "2",
+        "rC": "3"
+      },
+      "problemGivenOnly": "NOT_APPLICABLE",
+      "staticAudit": "PASS",
+      "renderedLayout": "PASS"
+    }
+  ],
+  "math": {
+    "baseline": 6,
+    "radii": [
+      2,
+      3
+    ],
+    "centerDistance": 6,
+    "radiusSum": 5,
+    "minimumCircleGap": 1,
+    "intersectionCount": 0,
+    "triangleExists": false,
+    "choice1": "6<5+4; SSS valid",
+    "choice2": "SAS valid",
+    "choice3": "40+70<180; ASA valid",
+    "choice4": "SAS valid",
+    "correctChoice": 5
+  },
+  "answerLeakCheck": "Problem has only B,C and6. No circles, radii2/3, derived inequality or answer choice.",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "productionAuthorized": false,
+  "sourceGitBlob": "4f300aeae1bae07e956a266c76a78a0c3e59b6b0"
+}

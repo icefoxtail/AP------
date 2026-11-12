@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "circleB",
+    "circleC"
+  ],
+  "displayPoints": [
+    "B",
+    "C",
+    "U",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "B",
+        "U"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "C",
+        "V"
+      ],
+      "emphasis": "ACCENT"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "bc",
+        "ownerSegment": "sBC",
+        "text": "6"
+      },
+      {
+        "id": "r2",
+        "ownerSegment": "rB",
+        "text": "2"
+      },
+      {
+        "id": "r3",
+        "ownerSegment": "rC",
+        "text": "3"
+      }
+    ]
+  },
+  "caption": "선지⑤: 두 원이 만나지 않아 점 A를 정할 수 없음 (길이 단위 cm)",
+  "sourceQuote": "BC=6cm가 주어졌을 때 삼각형 ABC가 하나로 정해지는 조건 중 옳지 않은 것",
+  "sourceConditions": [
+    {
+      "id": "base",
+      "condition": "BC=6cm",
+      "mappedTo": [
+        "B",
+        "C",
+        "sBC"
+      ]
+    },
+    {
+      "id": "choice5",
+      "condition": "선지⑤ AB=2cm,AC=3cm",
+      "mappedTo": [
+        "circleB",
+        "circleC",
+        "rB",
+        "rC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "선지⑤를 두 원으로 검토한다. 중심거리6>반지름합5이므로 교점 A가 없다. 문제에는 원과 반지름을 넣지 않는다."
+  ],
+  "hiddenPointNames": [
+    "U",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE"
+}
