@@ -1,0 +1,339 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "55"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "65"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAC",
+          "lBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 400
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 55,
+        "label": "55",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 65,
+        "label": "65",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 60,
+        "label": "60",
+        "color": "BLUE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "d",
+        "refs": [
+          "E",
+          "D",
+          "F"
+        ],
+        "value": 55,
+        "label": "55",
+        "color": "WARM",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "de",
+        "ownerSegment": "sDE",
+        "text": "7"
+      },
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "7"
+      }
+    ]
+  },
+  "caption": "합동인 두 삼각형의 주어진 각과 변 (길이 단위 cm)",
+  "sourceQuote": "△ABC≡△DEF; 해설에서 확인한 주어진 ∠A55°,∠B65°,DE7cm",
+  "sourceConditions": [
+    {
+      "id": "congruent",
+      "condition": "△ABC≡△DEF",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "givens",
+      "condition": "기존 해설의 계산에 사용된 A55°,B65°,DE7cm",
+      "mappedTo": [
+        "a",
+        "b",
+        "de"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 구한 C60°, 대응각 D55°, 대응변 AB7을 추가한다. 대응 순서 A-D,B-E,C-F는 원문의 합동 기호로 설명한다."
+  ]
+}

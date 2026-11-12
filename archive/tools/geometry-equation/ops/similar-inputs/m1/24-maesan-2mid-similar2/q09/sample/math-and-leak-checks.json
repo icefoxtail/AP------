@@ -1,0 +1,41 @@
+{
+  "checks": [
+    {
+      "surface": "problem",
+      "glyphReadback": {
+        "a": "55°",
+        "b": "65°",
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D",
+        "E": "E",
+        "F": "F",
+        "sDE": "7"
+      },
+      "computedFactsHiddenInProblem": "PASS"
+    },
+    {
+      "surface": "solution",
+      "glyphReadback": {
+        "a": "55°",
+        "b": "65°",
+        "c": "60°",
+        "d": "55°",
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D",
+        "E": "E",
+        "F": "F",
+        "sAB": "7",
+        "sDE": "7"
+      },
+      "computedFactsHiddenInProblem": "NOT_APPLICABLE"
+    }
+  ],
+  "math": "C=180-55-65=60; A-D,B-E,C-F correspondence; AB=DE7; incorrect choice B-F is 5. Translation preserves all angles and sides.",
+  "initialError": "Unequal derived angles shared BLUE; corrected D55 to WARM, retained original error.",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN"
+}
