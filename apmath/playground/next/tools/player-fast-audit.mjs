@@ -1,0 +1,354 @@
+// Selective one-click player audit. This file is never loaded by student pages.
+// --manifest FILE: {targets:[{lab,scene?,gi?,lessonIndices?,views?,capture?,
+//                            playback?,normalPlayback?,reason?}]}
+// Explicit seeks sample every caption, chapter and animated-track midpoint/end.
+// They are NOT continuous playback evidence. Marked playback units additionally
+// run the unchanged native requestAnimationFrame player at defaultRate * 10;
+// marked normalPlayback units run to the end at the observed student default.
+// Outputs are append-only unit JSONL, compact summary and selected screenshots.
+// Resume reuses only PASS rows with the same source/configuration fingerprint.
+import fs from 'node:fs';
+import path from 'node:path';
+import http from 'node:http';
+import { createRequire } from 'node:module';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { captureSmokeCalibrationFrame, isObservedAxisDecoration } from './scene-smoke-semantic-calibration.mjs';
+import { createScreenshotGuard } from './browser-screenshot-guard.mjs';
+
+const DIR = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.resolve(DIR, '../../../..');
+const require = createRequire(import.meta.url);
+const args = process.argv.slice(2);
+const opt = (key, fallback) => { const n = args.indexOf(key); return n < 0 ? fallback : args[n + 1]; };
+const manifestPath = opt('--manifest');
+if (!manifestPath) throw Error('An explicit --manifest FILE is required; no implicit full-repository audit.');
+const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+if (!Array.isArray(manifest.targets) || !manifest.targets.length) throw Error('Manifest must contain non-empty targets.');
+const out = path.resolve(opt('--out', '.tmp/player-fast-audit'));
+const qaMultiplier = Number(opt('--multiplier', '10'));
+if (!(qaMultiplier > 0 && qaMultiplier <= 20)) throw Error('QA multiplier must be in (0, 20].');
+const limit = Number(opt('--limit', 'Infinity'));
+const shardText = opt('--shard');
+const shard = shardText && /^(\d+)\/(\d+)$/.exec(shardText);
+if (shardText && (!shard || +shard[2] < 1 || +shard[1] >= +shard[2])) throw Error('--shard must be k/n with 0 <= k < n.');
+const onlyLabs = opt('--only', '').split(',').filter(Boolean);
+const explicitViews = opt('--views', '').split(',').filter(Boolean);
+const rowFile = path.join(out, 'units.jsonl');
+fs.mkdirSync(out, { recursive: true });
+const hash = text => createHash('sha256').update(text).digest('hex');
+const sourceSha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: ROOT, encoding: 'utf8' }).trim();
+const filesUnder = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(e => e.isDirectory() ? filesUnder(path.join(dir, e.name)) : [path.join(dir, e.name)]);
+const sharedFiles = filesUnder(path.resolve(DIR, '../kit')).filter(f => /\.(js|css|woff2)$/.test(f));
+const toolFiles = ['player-fast-audit.mjs', 'scene-smoke-semantic-calibration.mjs', 'browser-screenshot-guard.mjs'].map(f => path.join(DIR, f));
+const fingerprint = (lab, observedUrls = []) => {
+  const dir = path.resolve(DIR, '../labs', lab);
+  const closure = new Set([...sharedFiles, ...toolFiles, dir + '.html', ...(fs.existsSync(dir) ? filesUnder(dir) : [])]);
+  // Direct HTML imports cover shared middle-functions sources and aliases such
+  // as geom-space-3d.html -> geom-space/lesson-*.js. CSS URLs bind local fonts.
+  const pending = [...closure];
+  while (pending.length) {
+    const file = pending.pop();
+    if (!/\.(html|css)$/.test(file)) continue;
+    const text = fs.readFileSync(file, 'utf8');
+    const refs = file.endsWith('.html')
+      ? [...text.matchAll(/<(?:script|link|img)\b[^>]*?\b(?:src|href)=["']([^"']+)["']/gi)].map(m=>m[1])
+      : [...text.matchAll(/url\(\s*["']?([^)'"\s]+)["']?\s*\)/g)].map(m=>m[1]);
+    for (const ref of refs) {
+      if (/^(?:[a-z]+:|\/\/|#)/i.test(ref)) continue;
+      const dep = ref.startsWith('/') ? path.resolve(ROOT, '.' + ref.split(/[?#]/)[0]) : path.resolve(path.dirname(file), ref.split(/[?#]/)[0]);
+      if (dep.startsWith(ROOT + path.sep) && fs.existsSync(dep) && fs.statSync(dep).isFile() && !closure.has(dep)) { closure.add(dep); pending.push(dep); }
+    }
+  }
+  // Capture script/link resources actually imported by dynamic module loaders.
+  // Same-origin browser URLs are mapped back to their checked-out local bytes.
+  for (const url of observedUrls) {
+    const pathname = decodeURIComponent(new URL(url).pathname), marker = pathname.indexOf('/apmath/');
+    const file = path.resolve(ROOT, '.' + (marker >= 0 ? pathname.slice(marker) : pathname));
+    if (file.startsWith(ROOT + path.sep) && fs.existsSync(file) && fs.statSync(file).isFile()) closure.add(file);
+  }
+  const files = [...closure].sort();
+  const sourceFiles = files.map(file => ({ file: path.relative(ROOT, file), sha256: hash(fs.readFileSync(file)) }));
+  return { sourceFiles, sha256: hash(JSON.stringify(sourceFiles)) };
+};
+const views = {
+  '390x844': { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 },
+  '360x640': { viewport: { width: 360, height: 640 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 },
+  '844x390': { viewport: { width: 844, height: 390 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 },
+  '1024x768': { viewport: { width: 1024, height: 768 }, hasTouch: true, deviceScaleFactor: 1 },
+  '1280x820': { viewport: { width: 1280, height: 820 }, hasTouch: false, deviceScaleFactor: 1 }
+};
+const targets = manifest.targets.filter(t => !onlyLabs.length || onlyLabs.includes(t.lab));
+if (!targets.length) throw Error('No manifest targets match --only.');
+for (const t of targets) {
+  if (!/^[a-z0-9-]+$/.test(t.lab)) throw Error('Invalid lab id: ' + t.lab);
+  for (const v of explicitViews.length ? explicitViews : t.views || ['390x844']) if (!views[v]) throw Error('Unknown viewport: ' + v);
+}
+
+let server;
+let base = opt('--base');
+if (!base) {
+  const mime = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.woff2': 'font/woff2', '.png': 'image/png', '.svg': 'image/svg+xml' };
+  server = http.createServer((req, res) => {
+    try {
+      const pathname = decodeURIComponent(new URL(req.url, 'http://127.0.0.1').pathname);
+      const file = path.resolve(ROOT, '.' + pathname);
+      if (!file.startsWith(ROOT + path.sep)) { res.writeHead(403).end(); return; }
+      const stat = fs.statSync(file);
+      if (!stat.isFile()) { res.writeHead(404).end(); return; }
+      res.writeHead(200, { 'Content-Type': mime[path.extname(file)] || 'application/octet-stream', 'Cache-Control': 'no-store' });
+      fs.createReadStream(file).pipe(res);
+    } catch { res.writeHead(404).end(); }
+  });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  base = `http://127.0.0.1:${server.address().port}/apmath/playground/next/labs/`;
+}
+base = base.replace(/\/?$/, '/');
+const origins = new URL(base).origin;
+const prior = new Map();
+if (args.includes('--resume') && fs.existsSync(rowFile)) {
+  for (const line of fs.readFileSync(rowFile, 'utf8').trim().split('\n').filter(Boolean)) {
+    const row = JSON.parse(line); prior.set(row.key, row);
+  }
+} else if (fs.existsSync(rowFile) && fs.statSync(rowFile).size) throw Error('Output already has rows; choose a new directory or --resume.');
+
+// Reuse the existing source-bound canvas glyph/fraction/axis observation. It
+// preserves raw clipped labels, while separately identifying proven native axis
+// decorations. Pixel presence is not a mathematical/educational quality verdict.
+const observeFrame = new Function(`return function observeFrame() {
+  ${isObservedAxisDecoration.toString()}
+  ${captureSmokeCalibrationFrame.toString()}
+  const f = captureSmokeCalibrationFrame(), b = lab.board;
+  const outside = g => ![g.x0,g.x1,g.y0,g.y1].every(Number.isFinite) || Math.max(-g.x0,g.x1-b.W,-g.y0,g.y1-b.H)>2;
+  const marks = [...f.glyphs,...f.fractionBars], rawClipped = marks.filter(outside);
+  const clipped = rawClipped.filter(g => !isObservedAxisDecoration(f,g));
+  const rect = e => { const r=e.getBoundingClientRect(); return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}; };
+  const inViewport = r => r.left>=-2 && r.top>=-2 && r.right<=innerWidth+2 && r.bottom<=innerHeight+2;
+  const dom=[];
+  for(const selector of ['.apl-vcap .t','.apl-vpin','.apl-vsum','.apl-vans','.apl-vtaskline','.apl-vnext','.apl-vend-btns .apl-vbtn','.apl-lgo','.apl-question .q']) {
+    for(const e of document.querySelectorAll(selector)) {
+      if(!e.checkVisibility() || !e.getBoundingClientRect().height) continue;
+      const r=rect(e), style=getComputedStyle(e), clippedX=e.scrollWidth>e.clientWidth+2 && ['hidden','clip'].includes(style.overflowX);
+      const math=[...e.querySelectorAll('.katex')].map(k=>({text:k.textContent.slice(0,100),rect:rect(k)}));
+      let scrollable=false; for(let a=e;a && a!==document.body;a=a.parentElement){const s=getComputedStyle(a);if(['auto','scroll'].includes(s.overflowX) && a.scrollWidth>a.clientWidth+2)scrollable=true;}
+      dom.push({selector,text:e.textContent.slice(0,240),rect:r,inViewport:inViewport(r),clippedX,scrollable,mathOverflow:math.filter(k=>k.rect.left<r.left-2||k.rect.right>r.right+2)});
+    }
+  }
+  let pixelHash=2166136261;
+  for(let i=0;i<f.rgba.length;i+=Math.max(4,Math.round(f.rgba.length/4096/4)*4)){pixelHash^=f.rgba[i];pixelHash=Math.imul(pixelHash,16777619);pixelHash^=f.rgba[i+3];pixelHash=Math.imul(pixelHash,16777619);}
+  return {canvas:f.canvas,ink:f.legacy.ink,pixelHash:(pixelHash>>>0).toString(16),glyphs:f.glyphs.length,fractionBars:f.fractionBars.length,
+    clipped,rawClipped,axisDecorations:rawClipped.filter(g=>isObservedAxisDecoration(f,g)),dom,
+    katexErrors:[...document.querySelectorAll('.katex-error')].filter(e=>e.checkVisibility()).map(e=>e.textContent),
+    documentOverflow:document.documentElement.scrollWidth>innerWidth+2,viewport:{width:innerWidth,height:innerHeight},
+    state:{player:lab.video.state,time:lab.video.t,step:lab.s.step,part:lab.s.part,tab:lab.tab,lessonOn:lab.s.lessonOn,dragging:lab.s.dragging},
+    caption:lab.video.ui.cap.textContent,captionExpected:!!lab.video.cs&&APLab.videoCore.stateAt(lab.video.cs,lab.video.t,lab.video.base).say>=0,pinCount:lab.video.ui.pins.childElementCount};
+}`)();
+
+const summary = { version: 1, sourceSha, manifestSha256: hash(fs.readFileSync(manifestPath)), startedAt: new Date().toISOString(),
+  method: 'DETERMINISTIC_NATIVE_SEEK_SAMPLES_PLUS_SELECTED_NATIVE_RAF_PLAYBACK', qaMultiplier, shard:shardText||null,
+  visualEducationalQuality: 'NOT_ASSERTED_REQUIRES_INDEPENDENT_REVIEW', base,
+  completed: 0, passed: 0, failed: 0, reviewRequired: 0, reused: 0, samples: 0, continuous: [], failures: [], sourceFiles: {}, rows: [] };
+const saveSummary = () => fs.writeFileSync(path.join(out, 'summary.json'), JSON.stringify(summary, null, 2) + '\n');
+const writeRow = row => { fs.appendFileSync(rowFile, JSON.stringify(row)+'\n'); summary.completed++; summary.samples+=row.samples?.length||0;
+  if(row.status==='PASS')summary.passed++;else if(row.status==='REVIEW_REQUIRED')summary.reviewRequired++;else summary.failed++;
+  summary.rows.push({key:row.key,status:row.status,failed:row.checks.filter(c=>c.status!=='PASS'),screenshots:row.screenshots});
+  if(row.status!=='PASS')summary.failures.push({key:row.key,status:row.status,failed:row.checks.filter(c=>c.status!=='PASS')});
+  if(row.continuous)summary.continuous.push(...row.continuous.map(c=>({key:row.key,...c}))); saveSummary(); };
+const safe = s => String(s).replace(/[^a-zA-Z0-9@_-]/g,'_');
+const {chromium} = require('playwright');
+let browser, done=0;
+try {
+  browser=await chromium.launch(process.env.CHROME_PATH ? {executablePath:process.env.CHROME_PATH,headless:true} : {headless:true});
+  for(const labId of [...new Set(targets.map(t=>t.lab))]) {
+    const labTargets=targets.filter(t=>t.lab===labId);
+    const requestedViews=[...new Set(labTargets.flatMap(t=>explicitViews.length?explicitViews:t.views||['390x844']))];
+    for(const view of requestedViews) {
+      const context=await browser.newContext({...views[view],reducedMotion:'no-preference'});
+      const page=await context.newPage(), runtimeErrors=[], resourceErrors=[], warnings=[];
+      page.on('pageerror',e=>runtimeErrors.push(e.message));
+      page.on('console',m=>{if(m.type()==='error'&&!m.text().startsWith('Failed to load resource'))runtimeErrors.push(m.text());if(m.type()==='warning'&&/^\[(해설|영상 대본)\]/.test(m.text()))warnings.push(m.text());});
+      page.on('response',r=>{if(r.status()>=400&&new URL(r.url()).origin===origins&&!r.url().endsWith('/favicon.ico'))resourceErrors.push(`HTTP ${r.status()} ${r.url()}`);});
+      page.on('requestfailed',r=>{if(new URL(r.url()).origin===origins)resourceErrors.push(`${r.url()} ${r.failure()?.errorText}`);});
+      await page.goto(`${base}${labId}.html?theme=paper`,{waitUntil:'load',timeout:30000});
+      await page.waitForFunction(()=>window.lab?.video&&lab.board&&lab.list.length,null,{timeout:15000});
+      await page.evaluate(()=>document.fonts.ready);
+      const observedUrls=await page.evaluate(()=>[...new Set([...document.querySelectorAll('script[src],link[href]')].map(e=>e.src||e.href)
+        .concat(performance.getEntriesByType('resource').map(e=>e.name)))].filter(url=>new URL(url).origin===location.origin));
+      const source=fingerprint(labId,observedUrls);summary.sourceFiles[labId]=source;
+      const screenshotObservations=[];
+      const guard=await createScreenshotGuard(page,{expectedTouch:!!views[view].hasTouch,onObservation:o=>screenshotObservations.push(o)});
+      const units=await page.evaluate(()=>lab.list.flatMap((sc,i)=>lab.video.entries(i).map((c,k)=>({i,k,id:String(sc.id),gi:sc.gi,title:sc.title,lessonTitle:c.title,label:c.label,length:c.length,kind:c.kind}))));
+      for(const t of labTargets.filter(t=>!explicitViews.length&&t.views&&!t.views.includes(view)?false:true)) if(t.scene!=null&&!units.some(u=>u.id===String(t.scene)&&(t.gi==null||u.gi===t.gi)))throw Error(`Manifest scene has no playable unit: ${labId}:${t.scene}`);
+      for(const unit of units) {
+        const matches=labTargets.filter(t=>(explicitViews.length||!t.views||t.views.includes(view))&&(t.scene==null||String(t.scene)===unit.id)&&(t.gi==null||t.gi===unit.gi)&&(!t.lessonIndices||t.lessonIndices.includes(unit.k)));
+        if(!matches.length)continue;
+        const config={capture:matches.some(t=>t.capture),playback:matches.some(t=>t.playback),normalPlayback:matches.some(t=>t.normalPlayback),qaMultiplier,view};
+        const key=`${labId}:${unit.id}@${unit.gi}:${unit.k}:${view}`, sourceConfig=hash(JSON.stringify({source:source.sha256,config}));
+        if(shard&&parseInt(hash(key).slice(0,8),16)%+shard[2]!==+shard[1])continue;
+        const previous=prior.get(key);
+        if(previous?.status==='PASS'&&previous.sourceConfig===sourceConfig){summary.reused++;continue;}
+        if(done>=limit)break;
+        done++;
+        const row={key,lab:labId,scene:unit.id,gi:unit.gi,lessonIndex:unit.k,title:unit.lessonTitle,view,sourceConfig,sourceFingerprint:source.sha256,
+          status:'RUNNING',startedAt:new Date().toISOString(),reason:matches.map(t=>t.reason).filter(Boolean),checks:[],samples:[],screenshots:[],continuous:[]};
+        const check=(name,pass,details)=>row.checks.push({name,status:pass?'PASS':'FAIL',...(pass?{}:{details})});
+        const review=(name,details)=>row.checks.push({name,status:'REVIEW_REQUIRED',details});
+        const shot=async label=>{const file=`${safe(key)}--${safe(label)}.png`;await guard.capture(()=>page.screenshot({path:path.join(out,file),fullPage:false}),{file,fullPage:false});row.screenshots.push(file);};
+        const settle=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+        const inspect=async(label,{caption=false,final=false,entry=false}={})=>{
+          const f=await page.evaluate(observeFrame); f.label=label;
+          check(`${label}: finite usable canvas`,f.canvas.cssWidth>=100&&f.canvas.cssHeight>=80,f.canvas);
+          check(`${label}: emitted scene glyphs stay within canvas`,!f.clipped.length,f.clipped);
+          check(`${label}: no KaTeX error`,!f.katexErrors.length,f.katexErrors);
+          check(`${label}: no page horizontal overflow`,!f.documentOverflow,{});
+          if(f.ink<200)review(`${label}: low canvas ink needs semantic review`,{ink:f.ink,threshold:200,pixelHash:f.pixelHash});
+          const required=f.dom.filter(d=>caption?['.apl-vcap .t','.apl-vpin'].includes(d.selector):final?['.apl-vsum','.apl-vans','.apl-vtaskline','.apl-vnext','.apl-vend-btns .apl-vbtn'].includes(d.selector):entry?['.apl-lgo','.apl-question .q'].includes(d.selector):false);
+          // Narrow portrait keeps the final figure and full end card on screen.
+          // Native landscape and desktop panels intentionally allow scrolling.
+          const portraitEnd=final&&f.viewport.width<=859&&f.viewport.height>=480;
+          const bad=required.filter(d=>d.clippedX||(!d.scrollable&&d.mathOverflow.length)||((caption||portraitEnd||entry&&d.selector==='.apl-lgo')&&!d.inViewport));
+          check(`${label}: visible caption/formula/entry text is accessible`,!bad.length,bad);
+          if(caption&&f.captionExpected)check(`${label}: caption exists`,!!f.caption.trim(),{});
+          return f;
+        };
+        try {
+          await page.evaluate(i=>{lab.video.close();lab.video._setExplored(false);lab.goScene(i);window.scrollTo(0,0);},unit.i);
+          await settle();
+          row.defaultRate=await page.evaluate(()=>lab.video.rate);
+          check('student default rate is 1.5',row.defaultRate===1.5,{observed:row.defaultRate});
+          row.initial=await inspect('initial',{entry:true});
+          check('initial player idle and answer unrevealed',row.initial.state.player==='idle'&&!await page.evaluate(()=>lab.s.revealed),row.initial.state);
+          const buttons=await page.locator('.apl-lgo:visible').count();
+          check('one entry button per valid lesson',buttons===units.filter(u=>u.i===unit.i).length,{buttons});
+          if(config.capture)await shot('initial');
+
+          // A frozen QA clock leaves the actual playing layout intact. Every
+          // value is set by the native seek/apply API, never by editing lab.s.
+          await page.evaluate(({i,k})=>{lab.video.rate=0;lab.video.play(i,k);},unit);
+          const samplePlan=await page.evaluate(()=>{
+            const cs=lab.video.cs, points=new Map();
+            // The native RAF calls finish at length even with a frozen clock.
+            // Keep sampled frames before that boundary and inspect finish below.
+            const add=(t,why)=>{t=Math.max(0,Math.min(cs.length-.002,Math.round(t*1000)/1000));const key=t.toFixed(3);if(!points.has(key))points.set(key,{time:t,reasons:[]});points.get(key).reasons.push(why);};
+            add(0,'initial');add(cs.length-.002,'last-frame-before-finish');
+            cs.chapters.forEach((c,i)=>{add(c.at+.001,`chapter-${i+1}-start`);add(c.at+c.length/2,`chapter-${i+1}-middle`);});
+            cs.cues.forEach((c,i)=>{add(c.at+.001,`cue-${i+1}`);if(c.to&&c.dur>0){add(c.at+c.dur/2,`motion-${i+1}-middle`);add(c.at+c.dur,`motion-${i+1}-end`);}});
+            return [...points.values()].sort((a,b)=>a.time-b.time);
+          });
+          row.samplePlan=samplePlan;
+          for(const p of samplePlan) {
+            await page.evaluate(t=>lab.video.seek(t),p.time);
+            await settle();
+            const f=await inspect(`t=${p.time}`,{caption:true});
+            const stateMatch=await page.evaluate(()=>{
+              const v=lab.video,expected=APLab.videoCore.stateAt(v.cs,v.t,v.base),bad=[];
+              for(const [k,x]of Object.entries(expected.nums))if(!Number.isFinite(lab.s[k])||Math.abs(lab.s[k]-x)>1e-6)bad.push({key:k,expected:x,actual:lab.s[k]});
+              for(const [k,x]of Object.entries(expected.sets))if(lab.s[k]!==x)bad.push({key:k,expected:x,actual:lab.s[k]});
+              if(v.cs.usesStep&&lab.s.step!==expected.step)bad.push({key:'step',expected:expected.step,actual:lab.s.step});
+              if(v.cs.usesPart&&lab.s.part!==expected.part)bad.push({key:'part',expected:expected.part,actual:lab.s.part});
+              return bad;
+            });
+            check(`t=${p.time}: rendered state remains bound to native timeline`,!stateMatch.length,stateMatch);
+            row.samples.push({...p,method:'NATIVE_SEEK_FROZEN_QA_CLOCK',frame:f});
+            if(config.capture&&p.reasons.some(r=>/^chapter-\d+-middle$/.test(r)))await shot(`sample-${p.time}`);
+          }
+          await page.evaluate(()=>lab.video.finish());await settle();
+          await page.locator('.apl-vend:visible').evaluate(e=>Promise.all(e.getAnimations({subtree:true}).filter(a=>Number.isFinite(a.effect.getComputedTiming().endTime)).map(a=>a.finished.catch(()=>{}))));
+          row.final=await inspect('seek-ended',{final:true});
+          check('native finish shows end card',await page.locator('.apl-vend:visible').count()===1,{});
+          if(config.capture)await shot('ended');
+          await page.evaluate(()=>lab.video.close());await settle();
+          const restore=await page.evaluate(()=>({state:lab.video.state,raf:lab.video._raf,tab:lab.tab,dragging:lab.s.dragging,lessonOn:lab.s.lessonOn,
+            videoClass:document.body.classList.contains('apl-vid'),pins:lab.video.ui.pins.childElementCount,
+            bad:Object.entries(lab.params).filter(([k,p])=>typeof p.min==='number'&&(typeof lab.s[k]!=='number'||lab.s[k]<p.min-1e-8||lab.s[k]>p.max+1e-8)).map(([k,p])=>({key:k,value:lab.s[k],min:p.min,max:p.max})),
+            mismatch:Object.entries(lab._ctls||{}).filter(([k,c])=>Math.abs(+c.input.value-lab.s[k])>(+c.input.step||.001)/2+1e-6).map(([k,c])=>({key:k,state:lab.s[k],slider:c.input.value}))}));
+          row.restore=restore;
+          check('close restores idle/explore, releases lesson state and pins',restore.state==='idle'&&restore.raf===0&&restore.tab==='explore'&&!restore.dragging&&restore.lessonOn===undefined&&!restore.videoClass&&restore.pins===0,restore);
+          check('restored parameters and sliders valid',!restore.bad.length&&!restore.mismatch.length,restore);
+          if(config.capture)await shot('restored');
+          // Actual playback is kept separate from seek/finish coverage.
+          for(const multiplier of [...(config.playback?[qaMultiplier]:[]),...(config.normalPlayback?[1]:[])]){
+            await page.evaluate(({i,rate})=>{lab.video.close();lab.video._setExplored(false);lab.goScene(i);lab.video.rate=rate;}, {i:unit.i,rate:row.defaultRate*multiplier});
+            await settle();
+            const started=Date.now();
+            await page.locator('.apl-lgo:visible').nth(unit.k).click();
+            await page.waitForFunction(()=>lab.video.state==='playing',null,{timeout:5000});
+            const trace=await page.evaluate(()=>{
+              const v=lab.video,trace=window.__fastAuditTrace={frames:0,first:null,last:0,maximumJump:0,seenCaptions:[],seenChapters:[],finished:false};
+              const poll=()=>{trace.frames++;const t=v.t;if(trace.first===null)trace.first=t;trace.maximumJump=Math.max(trace.maximumJump,t-trace.last);trace.last=t;
+                const say=APLab.videoCore.stateAt(v.cs,t,v.base).say,ch=APLab.videoCore.chapterAt(v.cs,t);
+                if(!trace.seenCaptions.includes(say))trace.seenCaptions.push(say);if(!trace.seenChapters.includes(ch))trace.seenChapters.push(ch);
+                if(v.state==='ended'){trace.finished=true;return;}requestAnimationFrame(poll);};requestAnimationFrame(poll);return {length:v.cs.length,says:v.cs.says.length,chapters:v.cs.chapters.length,rate:v.rate};
+            });
+            await page.waitForFunction(()=>lab.video.state==='ended',null,{timeout:Math.max(10000,unit.length/(row.defaultRate*multiplier)*1500+8000)});
+            const metrics=await page.evaluate(()=>window.__fastAuditTrace);
+            const played={method:'NATIVE_RAF_PLAYBACK',multiplier,rate:trace.rate,duration:unit.length,wallMs:Date.now()-started,...metrics};
+            row.continuous.push(played);
+            check(`${multiplier}x native playback reaches ended`,metrics.finished&&metrics.last>=unit.length-1e-6,played);
+            check(`${multiplier}x native playback observes every caption and chapter`,metrics.seenCaptions.filter(x=>x>=0).length===trace.says&&metrics.seenChapters.length===trace.chapters,{...trace,...metrics});
+            if(multiplier===1){
+              await page.locator('.apl-vend:visible').evaluate(e=>Promise.all(e.getAnimations({subtree:true}).filter(a=>Number.isFinite(a.effect.getComputedTiming().endTime)).map(a=>a.finished.catch(()=>{}))));
+              row.normalFinal=await inspect('normal-ended',{final:true});
+            }
+            await page.evaluate(()=>lab.video.close());await settle();
+          }
+          if(config.playback||config.normalPlayback){
+            // Representative UI regression: real buttons and trusted keyboard
+            // scrubbing, separate from the fast seek coverage above.
+            await page.evaluate(({i,k,rate})=>{lab.video.rate=rate;lab.video.play(i,k);},{...unit,rate:row.defaultRate});
+            await page.waitForFunction(()=>lab.video.t>.9,null,{timeout:5000});
+            await page.locator('.apl-vmini:visible').click();
+            const paused=await page.evaluate(()=>({time:lab.video.t,state:lab.video.state,raf:lab.video._raf}));
+            await page.waitForTimeout(220);
+            const frozen=await page.evaluate(()=>({time:lab.video.t,state:lab.video.state,raf:lab.video._raf}));
+            check('normal UI pause freezes native clock',paused.state==='paused'&&frozen.state==='paused'&&frozen.raf===0&&Math.abs(frozen.time-paused.time)<1e-9,{paused,frozen});
+            await page.locator('.apl-vrange:visible').press('End');await settle();
+            const forward=await page.evaluate(()=>({time:lab.video.t,length:lab.video.cs.length,state:lab.video.state,pins:lab.video.ui.pins.childElementCount}));
+            check('trusted forward scrub reaches final timeline while paused',forward.state==='paused'&&Math.abs(forward.time-forward.length)<1e-6,forward);
+            await page.locator('.apl-vrange:visible').press('Home');await settle();
+            const rewind=await page.evaluate(()=>({time:lab.video.t,state:lab.video.state,pins:lab.video.ui.pins.childElementCount,expectedPins:APLab.videoCore.pinnedAt(lab.video.cs,0).length,
+              controlled:JSON.stringify({...Object.fromEntries(Object.keys(lab.video.cs.tracks).map(k=>[k,lab.s[k]])),...Object.fromEntries(lab.video.cs.setKeys.map(k=>[k,lab.s[k]])),step:lab.s.step,part:lab.s.part})}));
+            check('trusted rewind removes future captions/pins',rewind.time===0&&rewind.state==='paused'&&rewind.pins===rewind.expectedPins,rewind);
+            await page.locator('.apl-vctl [aria-label="다시 보기"]:visible').click();
+            await page.evaluate(()=>{lab.video.pause();lab.video.seek(0);});await settle();
+            const replay=await page.evaluate(()=>JSON.stringify({...Object.fromEntries(Object.keys(lab.video.cs.tracks).map(k=>[k,lab.s[k]])),...Object.fromEntries(lab.video.cs.setKeys.map(k=>[k,lab.s[k]])),step:lab.s.step,part:lab.s.part}));
+            check('replay starts with same controlled values as rewind',replay===rewind.controlled,{rewind:rewind.controlled,replay});
+            await page.waitForFunction(()=>performance.now()-lab.video._startedAt>500);
+            await page.locator('.apl-vctl .primary:visible').click();
+            await page.waitForFunction(()=>lab.video.state==='playing'&&lab.video.t>.25,null,{timeout:5000});
+            check('normal UI resume advances native clock',true);
+            await page.evaluate(()=>{lab.video.pause();lab.video.seek(lab.video.cs.length/2);});await settle();
+            await page.locator('.apl-vctl [aria-label="영상 닫고 직접 해 보기"]:visible').click();await settle();
+            const midClose=await page.evaluate(()=>({state:lab.video.state,raf:lab.video._raf,tab:lab.tab,dragging:lab.s.dragging,lessonOn:lab.s.lessonOn,pins:lab.video.ui.pins.childElementCount,
+              mismatch:Object.entries(lab._ctls||{}).filter(([k,c])=>Math.abs(+c.input.value-lab.s[k])>(+c.input.step||.001)/2+1e-6).map(([k])=>k)}));
+            check('mid-chapter UI close restores exploration',midClose.state==='idle'&&midClose.raf===0&&midClose.tab==='explore'&&!midClose.dragging&&midClose.lessonOn===undefined&&!midClose.pins&&!midClose.mismatch.length,midClose);
+            // Next uses the native end card but no extra continuous-play claim.
+            await page.evaluate(({i,k})=>{lab.video.rate=0;lab.video.play(i,k);lab.video.finish();},unit);await settle();
+            const next=await page.evaluate(()=>lab.video.nextTarget());
+            await page.locator('.apl-vnext:visible').click();await settle();
+            const nextState=await page.evaluate(()=>({index:lab.video.index,lessonIndex:lab.video.lessonIndex,state:lab.video.state,toc:!!lab.toc?.isOpen}));
+            check('end-card next opens the correct following lesson or contents',next?nextState.index===next.i&&nextState.lessonIndex===next.k&&nextState.state==='playing':nextState.state==='idle'&&nextState.toc,{expected:next,actual:nextState});
+            await page.evaluate(()=>{lab.video.close();if(lab.toc?.isOpen)lab.toc.close();});await settle();
+            row.controls={method:'NATIVE_UI_BUTTONS_AND_TRUSTED_KEYBOARD_RANGE',paused,frozen,forward,rewind,replay,midClose,next,nextState};
+          }
+          await page.evaluate(rate=>{lab.video.rate=rate;},row.defaultRate);
+          check('no page runtime/resource/invalid-script errors',!runtimeErrors.length&&!resourceErrors.length&&!warnings.length,{runtimeErrors,resourceErrors,warnings});
+        } catch(error){row.error=String(error?.stack||error);check('execution completed',false,row.error);try{await shot('failure');}catch{}}
+        finally{try{await page.evaluate(()=>{lab.video.close();lab.video.rate=1.5;});}catch{}}
+        row.finishedAt=new Date().toISOString();
+        row.status=row.checks.some(c=>c.status==='FAIL')?'FAIL':row.checks.some(c=>c.status==='REVIEW_REQUIRED')?'REVIEW_REQUIRED':'PASS';
+        writeRow(row);console.log(`${row.status} ${key} samples=${row.samples.length} checks=${row.checks.length}`);
+      }
+      summary.screenshotEnvironmentObservations=(summary.screenshotEnvironmentObservations||[]).concat(screenshotObservations);
+      await guard.close();await context.close();
+      if(done>=limit)break;
+    }
+    if(done>=limit)break;
+  }
+}catch(error){summary.fatalError=String(error?.stack||error);console.error(summary.fatalError);}
+finally{await browser?.close();if(server)await new Promise(r=>server.close(r));summary.finishedAt=new Date().toISOString();summary.limited=done>=limit;
+  summary.executionStatus=summary.fatalError&&summary.completed===0?'BLOCKED':summary.fatalError||summary.limited?'PARTIAL':'COMPLETE';
+  summary.status=summary.executionStatus==='BLOCKED'?'NOT_RUN':summary.fatalError||summary.failed?'FAIL':summary.limited?'PARTIAL':summary.reviewRequired?'REVIEW_REQUIRED':'PASS';saveSummary();}
+console.log(JSON.stringify({status:summary.status,completed:summary.completed,reused:summary.reused,samples:summary.samples,failed:summary.failed,reviewRequired:summary.reviewRequired,summary:path.join(out,'summary.json')}));
+if(['FAIL','NOT_RUN'].includes(summary.status))process.exitCode=1;
