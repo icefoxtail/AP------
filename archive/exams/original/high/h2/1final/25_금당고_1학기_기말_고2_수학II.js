@@ -455,7 +455,11 @@ window.questionBank = [
     "primaryL4": "극대·극소",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 도함수의 포물선과 영점 위치를, 아래 패널은 원함수의 두 극점과 증가·감소 모양을 나타낸다.",
+    "solutionImageCaption": "도함수 f′(x)=3(x−3)(x+2)는 x=−2에서 양에서 음으로 바뀌므로 원함수의 극댓값은 f(−2)이다. 정답은 22이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
