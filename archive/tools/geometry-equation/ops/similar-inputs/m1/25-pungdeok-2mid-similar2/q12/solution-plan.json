@@ -1,0 +1,169 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleB",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleC",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "circleB",
+    "circleC"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "sideAB",
+        "ownerSegment": "AB",
+        "text": "c",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sideBC",
+        "ownerSegment": "BC",
+        "text": "a",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sideCA",
+        "ownerSegment": "CA",
+        "text": "b",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "B 중심 반지름c, C 중심 반지름b인 두 원의 교점A · 세 변으로 삼각형 작도",
+  "sourceQuote": "B 중심 반지름c, C 중심 반지름b인 두 원의 교점A · 세 변으로 삼각형 작도",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "B 중심 반지름c, C 중심 반지름b인 두 원의 교점A · 세 변으로 삼각형 작도",
+      "mappedTo": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "newVisualInformation": []
+}
