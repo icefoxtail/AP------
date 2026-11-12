@@ -10,7 +10,15 @@
     "sourceOriginalJs": "archive/exams/original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js",
     "evidenceDebt": "Drive source document revision is recorded; flattened source text SHA256 not yet calculated.",
     "sourceOriginalJsBlobSha1": "41a1af8a2c96078e25abb51489fde8857699b926",
-    "sourceTextHashMethod": "NOT_RUN; Drive content is retained at the recorded document revision."
+    "sourceTextHashMethod": "NOT_RUN; Drive content is retained at the recorded document revision.",
+    "correctionLog": [
+      {
+        "scope": "Q19 educational scope",
+        "change": "Replaced both sin30° distance calculations with reflection and equilateral-triangle construction, then circle-ray intersection/distance arguments.",
+        "answerPreserved": "①",
+        "formalReview": "PENDING"
+      }
+    ]
   },
   "variantDecision": {
     "existingMainIdentity": "25_왕의중_2학기_중간_중1_유사",
@@ -415,16 +423,16 @@
   ],
   "validation": {
     "jsSyntax": "NOT_RUN",
-    "mathReview": "UNREVIEWED\nQ19: changed ② to AB=4, AC=3, ∠B=30°. The distance from A to the BC ray is 2; the foot is 2√3 from B, so the radius-3 circle intersects the ray twice. ① remains the only unique condition; ③ impossible, ④ scale-free, ⑤ impossible (height 3.5>BC3). Q20: ㅁ now states that its side 8 is between 50° and 60°. The 5-8-60° SAS triangle has third side 7; ㄱ/ㄹ share sides 5,7,8. ㄷ/ㅁ put side8 opposite different angles, so answer② (ㄱ,ㄹ). Author recomputation; formal independent review pending.",
+    "mathReview": "UNREVIEWED\nQ19: Replaced trigonometric ratios with reflection/equilateral construction. In ②, reflect A across the perpendicular BH; the resulting equilateral triangle gives AH=2. The radius-3 circle is inside at H and outside at B, so it intersects ray BC twice. In ⑤, reflect B across AC; the equilateral triangle gives perpendicular distance 7/2>BC=3, so no C exists. ③ fails triangle inequality; ④ does not fix scale; ① remains the only unique triangle by ASA. Author-side geometric check; formal independent review pending. Q20 remains author-checked with formal review pending.",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "NOT_RUN",
     "sourceQuestionRepairs": {
-      "Q19": "AUTHOR_CHECKED; ② is a two-solution SSA case; ① remains unique",
+      "Q19": "AUTHOR_CHECKED; removed sin30°; uses circle-ray intersections and reflection/equilateral constructions to establish options ② (two triangles), ⑤ (no triangle), answer ①. Formal review pending.",
       "Q20": "AUTHOR_CHECKED; ㅁ side endpoints specified; answer ② (ㄱ,ㄹ)"
     }
   },
   "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "bd7b9a1213075347ee145b7d88feb50bd142fb0e",
+  "expectedSourceBlobSha1": "0ceab2a59006ab98a1085b0cb603a7739037384a",
   "currentMainReleaseAudit": {
     "mainCommit": "c07df518f76927602fa8cb789b9ecd8e5e0d08f2",
     "existingSimilarJs": "archive/exams/similar/middle/m1/2mid/25_왕의중_2학기_중간_중1_유사.js",

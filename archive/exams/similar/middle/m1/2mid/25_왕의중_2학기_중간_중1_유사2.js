@@ -1,5 +1,5 @@
-/* 2025 왕의중 중1 2학기 중간 유사 문서 판본 2. Drive MD 이식 후보; 기존 판본과 에셋 보존. */
 window.examTitle = "25_왕의중_2학기_중간_중1_유사2";
+window.archiveStatus = "candidate";
 window.questionBank = [
   {
     "id": 1,
@@ -680,7 +680,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_DETERMINATION_CRITERIA",
-    "solution": "삼각형이 한 가지로 결정되는 조건과 실제 작도 가능성을 점검한다. ①은 한 변과 그 양 끝 각이 주어져 ASA로 하나로 정해진다. ②에서는 $AB=4$, $AC=3$, $\\angle B=30^\\circ$이다. 점 $C$는 $B$에서 $BA$와 $30^\\circ$를 이루는 반직선 위에 있고, 동시에 중심 $A$, 반지름 $3$인 원 위에 있어야 한다. $A$에서 그 반직선까지의 거리는 $4\\sin30^\\circ=2$이고, 수선의 발은 $B$에서 $2\\sqrt3$만큼 떨어져 있어 원의 교점 두 개가 모두 반직선 위에 놓인다. 따라서 서로 다른 두 삼각형이 만들어진다. ③은 가장 긴 변 12가 나머지 두 변의 합 11보다 커 삼각형이 되지 않는다. ④는 각만 주어져 크기가 정해지지 않는다. ⑤에서는 점 $B$에서 직선 $AC$까지의 거리가 $7\\sin30^\\circ=3.5$로 $BC=3$보다 커 삼각형이 만들어지지 않는다. 따라서 하나로 정해지는 것은 ①이다.",
+    "solution": "삼각형이 한 가지로 결정되는 조건과 각 조건에서 삼각형을 작도할 수 있는지 확인한다. ①은 한 변과 그 양 끝 각이 주어져 ASA로 하나로 정해진다.\n\n②에서 $AB=4$, $AC=3$, $\\angle B=30^\\circ$이다. $A$에서 반직선 $BC$에 내린 수선의 발을 $H$라 하자. $\\angle ABH=30^\\circ$이므로 직각삼각형 $ABH$를 $BH$에 대하여 대칭이동하면 $A$의 대칭점 $A\\prime$가 생긴다. $\\angle ABA\\prime=60^\\circ$이고 $AB=BA\\prime=4$이므로 $\\triangle ABA\\prime$은 정삼각형이다. $H$는 $AA\\prime$의 중점이므로 $AH=2$이다. 따라서 중심이 $A$이고 반지름이 $AC=3$인 원은 $H$에서는 안쪽($AH=2<3$), $B$에서는 바깥쪽($AB=4>3$)에 있다. 반직선 $BC$를 따라가면 원과 두 점에서 만나므로 서로 다른 두 삼각형을 만들 수 있다.\n\n③은 가장 긴 변 $12$가 나머지 두 변의 합 $5+6=11$보다 커 삼각형이 되지 않는다. ④는 각만 주어져 크기가 정해지지 않는다.\n\n⑤에서 $AB=7$, $BC=3$, $\\angle A=30^\\circ$이다. $B$를 직선 $AC$에 대하여 대칭이동한 점을 $B\\prime$라 하면 $\\angle BAB\\prime=60^\\circ$이고 $AB=AB\\prime=7$이므로 $\\triangle ABB\\prime$은 정삼각형이다. 직선 $AC$는 $BB\\prime$의 수직이등분선이므로 $B$에서 직선 $AC$까지의 거리는 $BB\\prime/2=7/2=3.5$이다. 이는 $BC=3$보다 크므로 $C$는 직선 $AC$ 위에 있을 수 없다. 따라서 하나로 정해지는 조건은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
