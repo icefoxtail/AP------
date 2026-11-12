@@ -128,6 +128,21 @@ test('spec: each exact branch is a FUNCTION_GRAPH with the CURVE_ tag the observ
   assert.equal(left.branch,'CURVE_left_NEG');assert.deepEqual(left.domain,[-2,-1]);
 });
 
+test('spec binds both equation labels to their own vertical parabola',async()=>{
+  const plan=structuredClone(FOUR);
+  plan.graphPlan.curves=[
+    {id:'f',kind:'Y_OF_X',coefficients:['0','0','-1/9'],domain:['-1','5'],label:'y=ax^2'},
+    {id:'g',kind:'Y_OF_X',coefficients:['0','0','1/9'],domain:['-1','5'],label:'y=-ax^2'}
+  ];
+  const graphPlan=(await frame(plan.graphPlan)).result.graphPlan;
+  const built=await model(graphPlan);
+  const spec=specFor({...plan,graphPlan},built.result,'two-labelled-parabolas');
+  assert.deepEqual(spec.objects.filter(object=>object.kind==='EQUATION_LABEL').map(object=>[object.id,object.text,object.nearCurve]),[
+    ['curve-f-equation','y=ax^2','f'],
+    ['curve-g-equation','y=-ax^2','g']
+  ]);
+});
+
 test('the independent observer passes the model SVG and rejects a changed inventory or a moved curve',async()=>{
   const framed=(await frame(FOUR.graphPlan)).result.graphPlan;
   const built=await model(framed);assert.equal(built.status,'OK',JSON.stringify(built.result));

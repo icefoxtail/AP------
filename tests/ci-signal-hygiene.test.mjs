@@ -189,7 +189,7 @@ function guardFixture(t, commits = 3) {
     const r = spawnSync("bash", ["-c", guardStep], { cwd: dir, encoding: "utf8", env: { PATH: process.env.PATH, GITHUB_REF: "refs/heads/main", ...env } });
     return { ...r, args: fs.existsSync(path.join(dir, "growth-args.txt")) ? fs.readFileSync(path.join(dir, "growth-args.txt"), "utf8") : null };
   };
-  return { shas, run };
+  return { shas, run, dir };
 }
 
 test("guard step: retired workflow_run and unknown events stop before any footprint claim", t => {
@@ -212,6 +212,22 @@ test("guard step: a PR audits its event base, independent of a later remote-main
     assert.notEqual(invalid.status, 0, base);
     assert.equal(invalid.args, null, "no audit can claim an unavailable event base");
   }
+});
+
+test("guard step: a PR whose event base is stale audits against the base tip its test-merge was built on", t => {
+  const f = guardFixture(t);
+  const git = (...args) => { const r = spawnSync("git", args, { cwd: f.dir, encoding: "utf8" }); assert.equal(r.status, 0, r.stderr); return r.stdout.trim(); };
+  const [staleBase] = f.shas;
+  git("switch", "-q", "-c", "pr"); fs.writeFileSync(path.join(f.dir, "pr.txt"), "pr"); git("add", "-A"); git("commit", "-q", "-m", "pr");
+  const prHead = git("rev-parse", "HEAD");
+  git("switch", "-q", "--detach", f.shas[2]);
+  fs.writeFileSync(path.join(f.dir, "later-main.txt"), "main moved"); git("add", "-A"); git("commit", "-q", "-m", "main moved");
+  const mainTip = git("rev-parse", "HEAD");
+  git("merge", "-q", "--no-ff", "-m", "test merge", prHead);
+  const r = f.run({ EVENT_NAME: "pull_request", PR_BASE_SHA: staleBase });
+  assert.equal(r.status, 0, r.stderr);
+  assert.equal(r.args, `--base ${mainTip} --head HEAD`, "the stale PR_BASE_SHA must not decide the audited range");
+  assert.notEqual(r.args, `--base ${staleBase} --head HEAD`);
 });
 
 test("skills: later unrelated main commits reproduce the old failure but do not invalidate the fixed PR base", t => {

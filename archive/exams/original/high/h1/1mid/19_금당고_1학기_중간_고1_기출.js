@@ -588,9 +588,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "이차함수 $f(x)=x^2+ax+b$의 대칭축은 $x=-\\dfrac a2$이다.\n대칭축이 $x=2$이므로 $-\\dfrac a2=2$, 따라서 $a=-4$이다.\n$f(x)=x^2-4x+b=(x-2)^2+b-4$이다.\n계수가 양수인 포물선이므로 $0\\le x\\le3$의 최댓값은 양 끝점 중 꼭짓점에서 더 먼 쪽에 있다.\n$f(0)=b$, $f(3)=9-12+b=b-3$이므로 최댓값은 $b$이다.\n이 값이 $8$이므로 $b=8$이다.\n따라서 $a+b=-4+8=4$, 정답은 ①이다.",
-    "solutionImage": "assets/images/19_금당고_1학기_중간_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "0≤x≤3에서 최댓값은 x=0일 때 8이다.",
-    "solutionImageCaption": "0≤x≤3에서 최댓값은 x=0일 때 8이다.",
+    "solutionImage": "assets/images/19_금당고_1학기_중간_고1_기출/q14-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선의 대칭축은 x=2이다. x축의 점선 선분은 0≤x≤3 구간을 나타내며, 세로 높이는 압축되어 있다.",
+    "solutionImageCaption": "세로 높이는 비교를 위해 압축해 그렸다. x축의 점선 선분이 구간 0≤x≤3을 나타내며, 대칭축 x=2에서 왼쪽 끝이 더 멀어 최댓값은 x=0에서 나타난다. 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {

@@ -347,6 +347,7 @@ def _arc_leader_anchors(arc,vp):
 # Short sides (H1 batch: the foot of a perpendicular a quarter unit from its point, a sliver triangle's short leg). The normal marks need a 24 px ray (angle arc) or a 30+6n px
 # segment (ticks); below that the engine draws the COMPACT form instead of refusing: a small arc (ray >= ANGLE_COMPACT_MIN_RAY_PX), ticks on a segment of COMPACT_TICK_BASE_PX+pitch*(n-1)
 # or more, and for a ray too short even for the small arc a PULLED arc: a full-size first arc ANGLE_PULLED_RADIUS_PX out, the short ray prolonged to it by a thin extension line.
+ANGLE_SHORTEST_RAY_PX=8.0
 ANGLE_COMPACT_MIN_RAY_PX=14.0
 ANGLE_COMPACT_GAP_PX=3.0
 ANGLE_COMPACT_MIN_RADIUS_PX=6.0
@@ -571,14 +572,17 @@ def prepare(spec):
                     if axis_tick_values is not None and not any(item['id']==oid for item in primitives):primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
                 else:primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
                 text=fraction_text.get((axis,value),display_token).replace('-','−');tick_pi=None
-                if tick_pi_labels is not None:
-                    matches=[row for row in tick_pi_labels if axis=='x' and abs(float(row['value'])-value)<=1e-9]
+                if tick_pi_labels is not None and axis=='x':   # the pi labels belong to the x axis; y ticks beside them keep their plain / fraction text
+                    matches=[row for row in tick_pi_labels if abs(float(row['value'])-value)<=1e-9]
                     if len(matches)!=1:raise ValueError('TICK_PI_LABEL_MISMATCH')
                     tick_pi=matches[0];text=tick_pi['text'];used_pi.add(id(tick_pi))
                 tick_id=('model-x-unit' if axis=='x' else 'model-y-unit') if abs(value-1)<=1e-12 else oid
                 # (EXT-20261109) a tick written as a fraction is a stacked fraction (frac), never the slash form 2/5; the plain text stays the parity value
-                tick_fraction=re.fullmatch(r'([-−]?)(\d+)/(\d+)',text) if tick_pi_labels is None else None
+                tick_fraction=re.fullmatch(r'([-−]?)(\d+)/(\d+)',text) if tick_pi is None else None
                 tick_fraction_tex=(('-' if tick_fraction.group(1) else '')+'{\\displaystyle\\frac{'+tick_fraction.group(2)+'}{'+tick_fraction.group(3)+'}}') if tick_fraction else None
+                # a pi multiple with a denominator (π/6, 2π/3, −π/2) is a stacked fraction too; the plain text 2π/3 stays the parity value (data-tick-display-value)
+                pi_fraction=re.fullmatch(r'([-−]?)(\d*)π/(\d+)',text) if tick_pi is not None else None
+                if pi_fraction:tick_fraction_tex=('-' if pi_fraction.group(1) else '')+'{\\displaystyle\\frac{'+pi_fraction.group(2)+'\\pi}{'+pi_fraction.group(3)+'}}'
                 label_id=f'tick-{axis}-{id_token}-label'
                 tick_primitive=next((item for item in primitives if item['id']==tick_id),None)
                 if tick_primitive is None:raise ValueError('TICK_LABEL_REQUIRED_PRIMITIVE_MISSING:'+label_id)
@@ -1055,11 +1059,22 @@ def prepare(spec):
                 if obj.get('arcScale')=='PROPORTIONAL':
                     # (G11) a pulled-out angle keeps its arcs in proportion to the drawn rays (the fixed 28 px cap does not apply): the first arc at 0.30 of the ray, clamped to [16 px, 0.55 of the ray]
                     arc_gap=max(4.5,.04*rays);first=min(max(.30*rays,16.0),.55*rays)+2*arc_gap*(ring-1)
+                compact=False
                 if rays<first+arc_gap*(count-1)+8:
-                    # short ray: a smaller arc that still reads, else the pulled arc with the ray prolonged to it, else refuse (only the plain single-ring angle has a compact form)
-                    if ring!=1 or obj.get('angleDimension') is not None or rays<ANGLE_PULLED_MIN_RAY_PX:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
-                    arc_gap=ANGLE_COMPACT_GAP_PX;first=max(ANGLE_COMPACT_MIN_RADIUS_PX,.6*rays-arc_gap*(count-1))
-                    if rays<ANGLE_COMPACT_MIN_RAY_PX or first+arc_gap*(count-1)>rays-3:first=ANGLE_PULLED_RADIUS_PX
+                    if ring!=1 or obj.get('angleDimension') is not None or rays<ANGLE_SHORTEST_RAY_PX:
+                        raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
+                    if rays<ANGLE_PULLED_MIN_RAY_PX:
+                        # (CL) Just below the pulled form's minimum, keep the arcs inside the short ray.
+                        arc_gap=2.5
+                        first=max(3.0,.55*rays-arc_gap*(count-1))
+                        compact=True
+                    else:
+                        arc_gap=ANGLE_COMPACT_GAP_PX
+                        first=max(ANGLE_COMPACT_MIN_RADIUS_PX,.6*rays-arc_gap*(count-1))
+                        if rays<ANGLE_COMPACT_MIN_RAY_PX or first+arc_gap*(count-1)>rays-3:
+                            first=ANGLE_PULLED_RADIUS_PX
+                        else:
+                            compact=True
                 steps=max(16,math.ceil(abs(math.degrees(delta))/4));outer_radius=first+arc_gap*(count-1)
                 if obj.get('angleDimension') is not None:
                     # (G11) the angle as a dimension: one arc at radiusFactor times the shorter ray (1.15 by default), an arrowhead at each end, and the rays prolonged to the arc when it stands beyond them
@@ -1094,7 +1109,8 @@ def prepare(spec):
                         primitive({'id':oid+'-'+part,'kind':'line','from':(v[0]+ray[0]*(reach+DIM_EXT_GAP_PX/2),v[1]+ray[1]*(reach+DIM_EXT_GAP_PX/2)),'to':(v[0]+ray[0]*(outer_radius+DIM_ARROW_OVERSHOOT_PX),v[1]+ray[1]*(outer_radius+DIM_ARROW_OVERSHOOT_PX)),'token':'indicator','layer':52,'role':'indicator','mark':'angle','markId':oid,'markPart':part,'dash':'3 3',**({'stroke':group_stroke} if group_stroke else {})},'curve')
                 if obj.get('labelText') is not None:
                     middle=start+delta/2;anchor=(v[0]+outer_radius*math.cos(middle),v[1]+outer_radius*math.sin(middle))
-                    labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),anchor,{'wedgeSearch':{'vertex':list(v),'bisector':middle,'start':start,'delta':delta,'rMin':outer_radius+4.0,'rMax':max(outer_radius+12.0,min(outer_radius+44.0,.9*rays)),'rFar':max(outer_radius+12.0,.92*rays),'arcRadius':outer_radius,'farDistance':ANGLE_LABEL_FAR_DISTANCE_PX,**({'forceLeader':True} if obj.get('labelPlacement')=='LEADER' else {})},'gaps':(24,32,48,64),'leaderOwned':[oid+'-arc-'+str(k+1) for k in range(count)]}))
+                    label_reach=max(math.dist(a,v),math.dist(b,v)) if compact else rays   # (CL) a compact mark's label may stand as far out as the longer ray reaches
+                    labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),anchor,{'wedgeSearch':{'vertex':list(v),'bisector':middle,'start':start,'delta':delta,'rMin':outer_radius+4.0,'rMax':max(outer_radius+12.0,min(outer_radius+44.0,.9*label_reach)),'rFar':max(outer_radius+12.0,.92*label_reach),'arcRadius':outer_radius,'farDistance':ANGLE_LABEL_FAR_DISTANCE_PX,**({'forceLeader':True} if obj.get('labelPlacement')=='LEADER' else {})},'gaps':(24,32,48,64),'leaderOwned':[oid+'-arc-'+str(k+1) for k in range(count)]}))
                 continue
             primitive({'id':oid,'kind':'polyline','points':pts,'token':'secondaryShape' if 'squareSize' in obj else 'indicator','layer':60,'role':'indicator'},'curve')
         elif kind=='DIMENSION_LINE':
@@ -1387,7 +1403,7 @@ def prepare(spec):
         decorate(prepared, labels, obstacles, vp, semantic)
     return prepared,labels,obstacles,vp,semantic,sampling
 
-def build(spec,measurements=None,fragments=None,strict_measured_fragments=False):
+def build(spec,measurements=None,fragments=None,strict_measured_fragments=False,last_resort=False):
     prepared,labels,obstacles,vp,semantic,sampling=prepare(spec)
     if strict_measured_fragments:
         if not isinstance(measurements,dict) or not isinstance(fragments,dict):raise ValueError('BROWSER_MEASURED_TYPOGRAPHY_REQUIRED')
@@ -1435,7 +1451,7 @@ def build(spec,measurements=None,fragments=None,strict_measured_fragments=False)
     label_margin=12 if fragments is not None else vp.margin
     safe=Box(label_margin,label_margin,vp.width-2*label_margin,vp.height-2*label_margin)
     panel=Box(vp.width-vp.margin-vp.panel,vp.margin,vp.panel,vp.height-2*vp.margin)
-    result=layout(labels,obstacles,safe,panel,measurements,require_measurements=strict_measured_fragments)
+    result=layout(labels,obstacles,safe,panel,measurements,require_measurements=strict_measured_fragments,last_resort=last_resort)
     for row in result.get('labels',[])+result.get('suppressed',[]):
         if isinstance(row,dict):row.pop('tickInk',None)   # a placement input only: the witness and the SVG carry what they carried before
     if fragments is not None:result['basis']='BROWSER_MEASURED_FROZEN_FRAGMENTS'
