@@ -2,13 +2,13 @@
   "status": "SAMPLE_ONLY",
   "sourceRef": {
     "path": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사2.js",
-    "bytes": 46715,
-    "sha256": "sha256:0132c7b40d2abc0e24fbbf9966e884168e8d216b6895f77ec9e3cfdedee3f711"
+    "bytes": 46854,
+    "sha256": "sha256:e3bddc7796b5f7a8df100662a7dee214fffa7d6606ffafd7f817136152d998ec"
   },
-  "gitBlob": "0432622d32906d2d153af7f9f34e35b49744754f",
+  "gitBlob": "0f74a80d46688d941ee538bb1b7eea78fcf10c11",
   "sourceRefBranch": "work/similar-m1-accumulate",
   "questionUid": "25_연향중_2학기_중간_중1_유사2|11",
-  "questionSha256": "sha256:5906a5a682f1a2366b999cea3fef72ce793015151200943fd203c58c4c5ae215",
+  "questionSha256": "sha256:f1e198c68befb48a1c15da581f5b748ec586804c0a9df0b9a10951d350446abf",
   "typographyPolicy": {
     "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
     "requestedSizeClass": "full",
@@ -26,6 +26,80 @@
   "productionAuthorized": false,
   "surfaces": [
     {
+      "surface": "problem",
+      "identity": {
+        "questionUid": "25_연향중_2학기_중간_중1_유사2|11",
+        "surface": "PROBLEM_VISUAL",
+        "visualRole": "decisive-relation",
+        "visualAssetKey": "sha256:90d743068309a8de9dc90bd13388e93aafd7e33b58f135ec1fffe28fa73661d1",
+        "assetId": "va-2fa7e22423243e77316fa5a30940dc8a6989be4a1625bfe96583b108606ecd65"
+      },
+      "status": "SAMPLE_ONLY",
+      "compositionStatus": "COMPOSED",
+      "planRef": {
+        "path": "yeon25-q11-inputs/problem-plan.json",
+        "bytes": 4771,
+        "sha256": "sha256:f932e362be2d4fd1c461ab6d85cbe9a7d8a53d152f9b86823c48da37ec6ac9bf"
+      },
+      "svgRef": {
+        "path": "yeon25-q11-outputs/problem.svg",
+        "bytes": 15544,
+        "sha256": "sha256:71e98cac60d85ee11a3d44bcd508450434a911841d4ebf090cf330103d480320"
+      },
+      "pngRef": {
+        "path": "yeon25-q11-outputs/problem.png",
+        "bytes": 9874,
+        "sha256": "sha256:67878f72091878297eb534f1b14802cdbd098ab7a8ac9d8f8484956b74614f2b"
+      },
+      "staticAudit": {
+        "status": "PASS",
+        "errors": [],
+        "planeMarks": {
+          "status": "PASS",
+          "errors": [],
+          "observations": [
+            {
+              "id": "a30",
+              "type": "ANGLE",
+              "drawnDegrees": 30.000000000080945,
+              "pointsDegrees": 29.999999999999993,
+              "arcs": 1,
+              "style": "ARC"
+            }
+          ]
+        }
+      },
+      "renderedLayout": {
+        "status": "PASS",
+        "display": {
+          "width": 720,
+          "height": 520
+        },
+        "errors": []
+      },
+      "lineage": {
+        "planSha256": "sha256:3759431710db8f241c2597c2795a05d554affdae171e356edd74a299c0be3563",
+        "modelSha256": "sha256:29f8daee72da4bbb426767751e32fe6a2adca8f9663aae6585f4a0b5c99a28e7",
+        "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
+        "specSha256": "sha256:b2a977b1130931dabbe86146c3f8c62a498149d1202b36b1462f8b34b85c8bf2",
+        "fragmentSha256s": {
+          "O-name": "sha256:cee80869998fac1c4d02a55e57e3ee1b18d4a6dbde4d9e1f8799ee199965ae4b",
+          "A-name": "sha256:0e31b8900395f5480a192d028f32ae7955273e26b4b2666a1220d744d9486f82",
+          "B-name": "sha256:b541bcd0761c2ed138653491ad05b176445f3fa0f99e488b6d9e1a36049a3c44",
+          "C-name": "sha256:f097ec58813cdfa50dd71fba6c754d70e1f7f4c2db92b81b6727461f6f313f9f",
+          "D-name": "sha256:d1dd3ba7ec108122a6ab83ea8aed40cd87c6f4520c23baf1ec838b751727e7a4",
+          "E-name": "sha256:606c97f103b826797abd91181d20769539756da915c0e14af8b7e7f511fc20a4",
+          "F-name": "sha256:bb88cb39760c444cd2742d1aa00b0acb70fb588ba1dccaf434e3ff7ea98cf3f0",
+          "a30-label": "sha256:fa67ac46c98506baa17207fd884cc3bdafb1a27cc5428d4401b21862aa7e1fc9"
+        },
+        "measurementsSha256": "sha256:fe074e6b428341c91bb2ad13f2342ca1159b1e234f62fdb27554c036e200a54e",
+        "svgSha256": "sha256:71e98cac60d85ee11a3d44bcd508450434a911841d4ebf090cf330103d480320",
+        "witnessSha256": "sha256:53d2e81d0321cb227683c1ae6f1b2644c10cc8646aa313ddf688946a69cd7982",
+        "staticAuditSha256": "sha256:a7c3020ee4e400ea3b1a8275e4767460cdfd1907a57a5173d147fb9a8a36c8a4",
+        "renderedLayoutSha256": "sha256:ebb7da1fee4bf2812a1bfdd2f688feafb967acc4c71d5645e5aa673f6373049b"
+      }
+    },
+    {
       "surface": "solution",
       "identity": {
         "questionUid": "25_연향중_2학기_중간_중1_유사2|11",
@@ -38,8 +112,8 @@
       "compositionStatus": "COMPOSED",
       "planRef": {
         "path": "yeon25-q11-inputs/solution-plan.json",
-        "bytes": 5784,
-        "sha256": "sha256:bcd73c59c0743a8614903ad879915f3c45764395320e08e5008d2bf7159cef4e"
+        "bytes": 5803,
+        "sha256": "sha256:6c8a42806bc63df10c9e194d2ba33acd1b0d02bee252b039c85e3107643cbb2d"
       },
       "svgRef": {
         "path": "yeon25-q11-outputs/solution.svg",
@@ -110,7 +184,7 @@
         "errors": []
       },
       "lineage": {
-        "planSha256": "sha256:469694417227f0aa728ce7e20e10a12986e05484352f87dc431aa6bb0d4bf036",
+        "planSha256": "sha256:c54f54206036f69c2696bda8afd94903892ae25ea48591995da30be3e3013fb0",
         "modelSha256": "sha256:29f8daee72da4bbb426767751e32fe6a2adca8f9663aae6585f4a0b5c99a28e7",
         "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
         "specSha256": "sha256:6cf78ded39dd495a11ef6302e700fa8615e1cd4550925ef19bfa9d8335261231",
