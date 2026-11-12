@@ -1813,7 +1813,7 @@
   ],
   "validation": {
     "jsSyntax": "PASS (node --check)",
-    "mathReview": "Q19 author-side independent SSA check: with AB=6 and angle A=40°, C lies on a fixed ray from A; BC=8 places C on a circle centered at B with radius 8. Since A is inside that circle (AB=6<8), the ray from A meets the circle exactly once. Thus ㄷ has exactly one triangle; ㄱ,ㄴ,ㄷ are true and answer ④. Formal independent review remains UNREVIEWED. Q11 ray order added; adjacent-angle equation gives COE=50° and answer ②, author-checked; formal independent review pending. Q15 stem disclosure removed; 45° and 100° givens imply a=45°, b=80°, sum 125°, answer ⑤, author-checked. Q15 corrected: alternate and same-side interior angle pairs are on distinct transversals; one-transversal version was inconsistent. New values a=45°, b=80°, sum125°, answer⑤, author-checked.",
+    "mathReview": "Q19 author-side independent SSA check: with AB=6 and angle A=40°, C lies on a fixed ray from A; BC=8 places C on a circle centered at B with radius 8. Since A is inside that circle (AB=6<8), the ray from A meets the circle exactly once. Thus ㄷ has exactly one triangle; ㄱ,ㄴ,ㄷ are true and answer ④. Formal independent review remains UNREVIEWED. Q11 ray order added; adjacent-angle equation gives COE=50° and answer ②, author-checked; formal independent review pending. Q15 stem disclosure removed; 45° and 100° givens imply a=45°, b=80°, sum 125°, answer ⑤, author-checked. Q15 corrected: alternate and same-side interior angle pairs are on distinct transversals; one-transversal version was inconsistent. New values a=45°, b=80°, sum125°, answer⑤, author-checked.\nQ16 rewritten with named ray/triangle incidence; recomputation gives 75−35=40, triangle angles 40,70,70, exterior x=110 (②). Q23 states DE is inside ∠BDF; EDF=120−50=70, requested sum=110. Q24 made self-contained with P∈BC, Q∈CD, OP⊥OQ, and the O-reflected shaded quadrilateral; ASA gives OPC≅OQD, each area 25 cm², total 50 cm². Author-side recomputation; formal independent review pending. Q14 BLOCKED_SOURCE_GEOMETRY: no source diagram or angle-incidence labels are supplied, so e,k and answer③ cannot be confirmed; no guessed configuration added.",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "NOT_RUN",
     "metadataMarkerAudit": {
@@ -1831,10 +1831,16 @@
       "candidateTotalPoints": 100,
       "unclearQuestionPoints": [],
       "engineContract": "window.questionBank numeric points are passed through by archive/engine.html but not summed/displayed per item; header score line remains /100."
+    },
+    "sourceQuestionRepairs": {
+      "Q14": "BLOCKED_SOURCE_GEOMETRY; source positions unavailable, no edit",
+      "Q16": "AUTHOR_CHECKED; ray and triangle incidence specified",
+      "Q23": "AUTHOR_CHECKED; DE-inside-angle condition specified",
+      "Q24": "AUTHOR_CHECKED; point placement and shaded regions defined"
     }
   },
   "pipelineState": "PARTIALLY_BLOCKED_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "02d1777c809037e2344e07fee1d712e53d76fecc",
+  "expectedSourceBlobSha1": "ccbceac1e0da66638d97250cf5f763854278e458",
   "currentMainReleaseAudit": {
     "mainCommit": "c07df518f76927602fa8cb789b9ecd8e5e0d08f2",
     "existingSimilarJs": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사.js",
@@ -1844,7 +1850,7 @@
   },
   "fourSlotCandidate": {
     "path": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사2.4slot-candidate.json",
-    "sha256": "ef883a28baeac23d23f41e9d63ce9095452f6f9982760c7e873b7c3da8a9504d",
+    "sha256": "2928b8daa84605fba1d7d3b46c1d7aa6a5c7b4b921655a7d2059e58bbf9928c4",
     "status": "UNREVIEWED"
   }
 }

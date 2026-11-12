@@ -501,9 +501,9 @@ window.questionBank = [
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ALTERNATE_POSITION_IDENTIFICATION",
     "solution": "엇각은 두 직선을 한 직선이 가로지를 때 엇갈린 안쪽 위치에 있는 각이다. $$\\begin{aligned} \\text{첫 번째 횡단선 기준}: &\\quad \\angle c\\text{의 엇각은 } \\angle e \\ \\text{두 번째 횡단선 기준}: &\\quad \\angle c\\text{의 엇각은 } \\angle k \\end{aligned}$$ 따라서 엇각인 것은 $\\angle e, \\angle k$이므로 정답은 ③이다.",
-    "reviewStatus": "UNREVIEWED",
-    "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "reviewStatus": "BLOCKED_SOURCE_GEOMETRY",
+    "solutionStatus": "BLOCKED_SOURCE_GEOMETRY",
+    "pipelineState": "BLOCKED_SOURCE_GEOMETRY"
   },
   {
     "id": 15,
@@ -560,7 +560,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "두 직선 $l$과 $m$이 서로 평행하다. 평행선 사이에 꺾인 점을 갖는 꺾은선에서 아래쪽 직선과 이루는 각이 $35^\\circ$이고, 꺾인 점의 전체 각이 $75^\\circ$이다. 이때 윗부분 삼각형의 다른 한 내각이 $70^\\circ$일 때, 둔각 $\\angle x$의 크기는?",
+    "content": "두 직선 $l$과 $m$은 서로 평행하다. 점 $A$는 $m$ 위, 점 $C$는 $l$ 위에 있고, 꺾은선 $A-B-C$의 점 $B$는 두 직선 사이에 있다. 점 $B$에서 $l,m$에 평행한 반직선 $Br$를 그어 $\\angle ABC$의 내부에 놓이게 하였다. $\\angle ABr=35^\\circ$, $\\angle ABC=75^\\circ$이다. 점 $D$는 $Br$ 위, 점 $E$는 $BC$ 위에 있어 삼각형 $BDE$를 이루며, $\\angle BDE=70^\\circ$이다. $\\angle BED$에 이웃한 외각을 $x$라 할 때, 둔각 $x$의 크기는? [5점]",
     "choices": [
       "$100^\\circ$",
       "$110^\\circ$",
@@ -572,7 +572,7 @@ window.questionBank = [
     "points": 5,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
-    "solution": "꺾인 점을 지나고 두 직선 $l, m$에 평행한 보조선을 긋는다. 엇각의 크기가 같으므로 아래쪽 각이 $35^\\circ$이면 꺾인 점의 위쪽 각은 $$\\begin{aligned} 75^\\circ - 35^\\circ &= 40^\\circ \\end{aligned}$$ 이다. 삼각형의 세 내각은 $40^\\circ, 70^\\circ, 180^\\circ - x$이다. 삼각형의 내각의 합은 $180^\\circ$이므로 $$\\begin{aligned} 40^\\circ + 70^\\circ + (180^\\circ - x) &= 180^\\circ \\ 110^\\circ + 180^\\circ - x &= 180^\\circ \\ x &= 110^\\circ \\end{aligned}$$ 이다. 따라서 정답은 ②이다.",
+    "solution": "반직선 $Br$가 $\\angle ABC$의 내부에 있으므로 $\\angle rBC=\\angle ABC-\\angle ABr=75^\\circ-35^\\circ=40^\\circ$이다. $D$가 $Br$ 위에 있고 $E$가 $BC$ 위에 있으므로 $\\angle DBE=40^\\circ$이다. 삼각형 $BDE$에서 $\\angle BDE=70^\\circ$이므로 $\\angle BED=180^\\circ-40^\\circ-70^\\circ=70^\\circ$이다. 따라서 이에 이웃한 외각은 $x=180^\\circ-70^\\circ=110^\\circ$이고, 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -800,13 +800,13 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "[서술형 3] 직사각형 모양의 종이테이프를 접었을 때, 접은 선에 의해 생기는 삼각형 $DEF$에서 한 외각과 평행선 엇각 관계로부터 $\\angle BDF = 120^\\circ$, $\\angle BDE = 50^\\circ$이다. 이때 $\\angle DEF + \\angle DFE$의 크기를 구하고 그 풀이과정을 자세히 서술하시오.",
+    "content": "[서술형 3] 삼각형 $DEF$에서 점 $D$의 반직선 $DE$는 $\\angle BDF$의 내부에 있다. $\\angle BDF=120^\\circ$, $\\angle BDE=50^\\circ$일 때, $\\angle DEF+\\angle DFE$의 크기를 구하고 그 풀이 과정을 자세히 서술하시오.",
     "choices": [],
     "answer": "$110^\\circ$",
     "points": 5,
     "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
-    "solution": "직사각형의 마주 보는 두 변은 서로 평행하다. 점 $D$에서 선분들이 이루는 각의 관계를 구한다. $$\\begin{aligned} \\angle EDF &= \\angle BDF - \\angle BDE \\ &= 120^\\circ - 50^\\circ = 70^\\circ \\end{aligned}$$ 이다. 삼각형 $DEF$에서 세 내각의 크기의 합은 $180^\\circ$이므로 $$\\begin{aligned} \\angle EDF + \\angle DEF + \\angle DFE &= 180^\\circ \\ 70^\\circ + \\angle DEF + \\angle DFE &= 180^\\circ \\ \\angle DEF + \\angle DFE &= 180^\\circ - 70^\\circ \\ &= 110^\\circ \\end{aligned}$$ 이다.",
+    "solution": "반직선 $DE$가 $\\angle BDF$의 내부에 있으므로 $\\angle EDF=\\angle BDF-\\angle BDE=120^\\circ-50^\\circ=70^\\circ$이다. 삼각형 $DEF$의 내각의 합은 $180^\\circ$이므로 $\\angle DEF+\\angle DFE=180^\\circ-70^\\circ=110^\\circ$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -830,13 +830,13 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "[서술형 4] 한 변의 길이가 $10\\text{ cm}$인 정사각형 $ABCD$의 두 대각선의 교점을 $O$라 하고, 점 $O$를 한 꼭짓점으로 하는 두 정사각형 $OEFG, OHIJ$를 그렸다. 다음 물음에 답하고 그 과정을 서술하시오.\n\n(1) $\\triangle OPC$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (2점) (2) 사각형 $OPCQ$의 넓이를 구하시오. (2점) (3) 두 사각형이 겹쳐 생기는 색칠한 부분 전체의 넓이를 구하시오. (2점)",
+    "content": "[서술형 4] 한 변의 길이가 $10\\text{ cm}$인 정사각형 $ABCD$의 두 대각선의 교점을 $O$라 하자. 점 $P$는 선분 $BC$ 위, 점 $Q$는 선분 $CD$ 위에 있고, $\\overline{OP}\\perp\\overline{OQ}$이다. 사각형 $OPCQ$와 이를 점 $O$에 대하여 대칭이동한 사각형을 색칠하였다. 다음 물음에 답하고 그 과정을 서술하시오.\n\n(1) $\\triangle OPC$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (2점) (2) 사각형 $OPCQ$의 넓이를 구하시오. (2점) (3) 색칠한 두 사각형의 넓이의 합을 구하시오. (2점)",
     "choices": [],
     "answer": "(1) $\\triangle OPC \\equiv \\triangle OQD$ (ASA 합동), (2) $25\\text{ cm}^2$, (3) $50\\text{ cm}^2$",
     "points": 6,
     "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
-    "solution": "(1) 합동인 삼각형과 그 이유: 정사각형 $ABCD$의 대각선은 서로 수직이고 길이가 같으며 서로를 이등분한다. $$\\begin{aligned} \\overline{OC} &= \\overline{OD} \\ \\angle PCO &= \\angle QDO = 45^\\circ \\end{aligned}$$ 또한 $\\angle POQ = 90^\\circ$이고 $\\angle COD = 90^\\circ$이므로 $$\\begin{aligned} \\angle POC &= 90^\\circ - \\angle COQ = \\angle QOD \\end{aligned}$$ 이다. 따라서 한 변의 길이와 그 양 끝 각이 각각 같으므로 $$\\begin{aligned} \\triangle OPC &\\equiv \\triangle OQD \\quad (\\text{ASA}\\text{ 합동}) \\end{aligned}$$ 이다.\n\n(2) 사각형 $OPCQ$의 넓이: $\\triangle OPC \\equiv \\triangle OQD$이므로 두 삼각형의 넓이는 같다. $$\\begin{aligned} [OPCQ] &= [\\triangle OPC] + [\\triangle OCQ] \\ &= [\\triangle OQD] + [\\triangle OCQ] \\ &= [\\triangle OCD] \\end{aligned}$$ 정사각형 $ABCD$의 넓이는 $10 \\times 10 = 100\\text{ cm}^2$이고 대각선은 넓이를 $4$등분하므로 $$\\begin{aligned} [\\triangle OCD] &= \\dfrac{100}{4} = 25\\text{ cm}^2 \\end{aligned}$$ 따라서 사각형 $OPCQ$의 넓이는 $25\\text{ cm}^2$이다.\n\n(3) 색칠한 부분 전체의 넓이: 반대쪽 겹친 사각형도 같은 방법으로 넓이가 $25\\text{ cm}^2$이다. 따라서 색칠한 부분 전체의 넓이는 $$\\begin{aligned} 25 + 25 &= 50\\text{ cm}^2 \\end{aligned}$$ 이다.",
+    "solution": "(1) 정사각형의 대각선은 서로 수직으로 이등분하므로 $OC=OD$이고 $\\angle PCO=\\angle QDO=45^\\circ$이다. $P$는 $BC$ 위, $Q$는 $CD$ 위에 있으므로 $\\angle POC+\\angle COQ=\\angle POQ=90^\\circ$이고, $\\angle COQ+\\angle QOD=\\angle COD=90^\\circ$이다. 따라서 $\\angle POC=\\angle QOD$이다. 그러므로 한 변과 그 양 끝 각이 각각 같아 $\\triangle OPC\\equiv\\triangle OQD$ (ASA 합동)이다.\n\n(2) 합동인 두 삼각형의 넓이는 같으므로 $[OPCQ]=[\\triangle OPC]+[\\triangle OCQ]=[\\triangle OQD]+[\\triangle OCQ]=[\\triangle OCD]$. 정사각형 $ABCD$의 넓이는 $100\\text{ cm}^2$이고 대각선은 이를 네 개의 같은 넓이로 나누므로 $[OPCQ]=100\\div4=25\\text{ cm}^2$이다.\n\n(3) 점 $O$에 대한 대칭이동은 넓이를 보존하므로 두 번째 색칠한 사각형도 $25\\text{ cm}^2$이다. 따라서 두 넓이의 합은 $25+25=50\\text{ cm}^2$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"

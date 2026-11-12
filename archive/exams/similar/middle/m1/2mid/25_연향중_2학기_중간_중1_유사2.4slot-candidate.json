@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사2.js",
-  "sourceGitBlobSha": "02d1777c809037e2344e07fee1d712e53d76fecc",
+  "sourceGitBlobSha": "ccbceac1e0da66638d97250cf5f763854278e458",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "Codex",
@@ -568,8 +568,8 @@
       "scenarioNote": "",
       "reasons": {},
       "review": {
-        "status": "UNREVIEWED",
-        "reason": "Drive MD candidate 4-slot; independent review pending"
+        "status": "BLOCKED_SOURCE_GEOMETRY",
+        "reason": "Source MD has no angle-incidence diagram; the named alternate-angle positions and answer are unverified."
       }
     },
     {
@@ -622,26 +622,26 @@
           {
             "term": "평행선",
             "src": "stem",
-            "quote": "두 직선 $l$과 $m$이 서로 평행하다. 평행선 사이에 꺾인 점을 갖는 꺾은선에서 아래쪽 직선과 이루는 각이 $35^\\circ$이고, 꺾인 점의 전체 각이 $75^\\circ$이다. 이때 윗부분 삼각형의 다른 한 내각이 $70^\\circ$일 때, 둔각 $\\angle x$의 크기는?"
+            "quote": "두 직선 $l$과 $m$은 서로 평행하다. 점 $A$는 $m$ 위, 점 $C$는 $l$ 위에 있고, 꺾은선 $A-B-C$의 점 $B$는 두 직선 사이에 있다. 점 $B$에서 $l,m$에 평행한 반직선 $Br$를 그어 $\\angle ABC$의 내부에 놓이게 하였다. $\\angle ABr=35^\\circ$, $\\angle ABC=75^\\circ$이다. 점 $D$는 $Br$ 위, 점 $E$는 $BC$ 위에 있어 삼각형 $BDE$를 이루며, $\\angle BDE=70^\\circ$이다. $\\angle BED$에 이웃한 외각을 $x$라 할 때, 둔각 $x$의 크기는? [5점]"
           },
           {
             "term": "삼각형",
             "src": "stem",
-            "quote": "두 직선 $l$과 $m$이 서로 평행하다. 평행선 사이에 꺾인 점을 갖는 꺾은선에서 아래쪽 직선과 이루는 각이 $35^\\circ$이고, 꺾인 점의 전체 각이 $75^\\circ$이다. 이때 윗부분 삼각형의 다른 한 내각이 $70^\\circ$일 때, 둔각 $\\angle x$의 크기는?"
+            "quote": "두 직선 $l$과 $m$은 서로 평행하다. 점 $A$는 $m$ 위, 점 $C$는 $l$ 위에 있고, 꺾은선 $A-B-C$의 점 $B$는 두 직선 사이에 있다. 점 $B$에서 $l,m$에 평행한 반직선 $Br$를 그어 $\\angle ABC$의 내부에 놓이게 하였다. $\\angle ABr=35^\\circ$, $\\angle ABC=75^\\circ$이다. 점 $D$는 $Br$ 위, 점 $E$는 $BC$ 위에 있어 삼각형 $BDE$를 이루며, $\\angle BDE=70^\\circ$이다. $\\angle BED$에 이웃한 외각을 $x$라 할 때, 둔각 $x$의 크기는? [5점]"
           }
         ],
         "goal": [
           {
             "term": "각",
             "src": "stem",
-            "quote": "두 직선 $l$과 $m$이 서로 평행하다. 평행선 사이에 꺾인 점을 갖는 꺾은선에서 아래쪽 직선과 이루는 각이 $35^\\circ$이고, 꺾인 점의 전체 각이 $75^\\circ$이다. 이때 윗부분 삼각형의 다른 한 내각이 $70^\\circ$일 때, 둔각 $\\angle x$의 크기는?"
+            "quote": "두 직선 $l$과 $m$은 서로 평행하다. 점 $A$는 $m$ 위, 점 $C$는 $l$ 위에 있고, 꺾은선 $A-B-C$의 점 $B$는 두 직선 사이에 있다. 점 $B$에서 $l,m$에 평행한 반직선 $Br$를 그어 $\\angle ABC$의 내부에 놓이게 하였다. $\\angle ABr=35^\\circ$, $\\angle ABC=75^\\circ$이다. 점 $D$는 $Br$ 위, 점 $E$는 $BC$ 위에 있어 삼각형 $BDE$를 이루며, $\\angle BDE=70^\\circ$이다. $\\angle BED$에 이웃한 외각을 $x$라 할 때, 둔각 $x$의 크기는? [5점]"
           }
         ],
         "method": [
           {
             "term": "내각",
             "src": "solution",
-            "quote": "꺾인 점을 지나고 두 직선 $l, m$에 평행한 보조선을 긋는다. 엇각의 크기가 같으므로 아래쪽 각이 $35^\\circ$이면 꺾인 점의 위쪽 각은 $$\\begin{aligned} 75^\\circ - 35^\\circ &= 40^\\circ \\end{aligned}$$ 이다. 삼각형의 세 내각은 $40^\\circ, 70^\\circ, 180^\\circ - x$이다. 삼각형의 내각의 합은 $180^\\circ$이므로 $$\\begin{aligned} 40^\\circ + 70^\\circ + (180^\\circ - x) &= 180^\\circ \\ 110^\\circ + 180^\\circ - x &= 180^\\circ \\ x &= 110^\\circ \\end{aligned}$$ 이다. 따라서 정답은 ②이다.\n\n{\n  \"status\": \"PROPOSED\",\n  \"source\": {\n    \"qid\": \"16\",\n    \"points\": 5\n  },\n  \"strategy\": \"평행 보조선 엇각 차감으로 삼각형 내각 도출 후 내각합 방정식 풀이\"\n}\n\n{\n  \"sourceQid\": \"16\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"보조선으로 75-35=40도를 구하고 삼각형 내각합 40+70+(180-x)=180에서 x=110도를 산출한다.\",\n  \"decisiveStep\": \"보조선 엇각 40도 산출 및 삼각형 내각합에서 x=110도 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"기본 도형\",\n    \"l3\": \"평행선과 각\",\n    \"l4\": \"평행선 조건\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLEL_ANGLE_TRANSFER\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER\",\n    \"why\": \"평행 보조선과 삼각형 내각합을 연계하여 미지각을 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [\n    \"CC_AUXILIARY_PARALLEL_LINE\"\n  ],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"평행 보조선 엇각과 삼각형 내각합을 연립하는 2단계 복합 각 계산 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"평행선\",\n      \"삼각형\"\n    ],\n    \"goal\": [\n      \"각\"\n    ],\n    \"method\": [\n      \"내각\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+            "quote": "반직선 $Br$가 $\\angle ABC$의 내부에 있으므로 $\\angle rBC=\\angle ABC-\\angle ABr=75^\\circ-35^\\circ=40^\\circ$이다. $D$가 $Br$ 위에 있고 $E$가 $BC$ 위에 있으므로 $\\angle DBE=40^\\circ$이다. 삼각형 $BDE$에서 $\\angle BDE=70^\\circ$이므로 $\\angle BED=180^\\circ-40^\\circ-70^\\circ=70^\\circ$이다. 따라서 이에 이웃한 외각은 $x=180^\\circ-70^\\circ=110^\\circ$이고, 정답은 ②이다.\n\n{\n  \"status\": \"PROPOSED\",\n  \"source\": {\n    \"qid\": \"16\",\n    \"points\": 5\n  },\n  \"strategy\": \"평행 보조선 엇각 차감으로 삼각형 내각 도출 후 내각합 방정식 풀이\"\n}\n\n{\n  \"sourceQid\": \"16\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"보조선으로 75-35=40도를 구하고 삼각형 내각합 40+70+(180-x)=180에서 x=110도를 산출한다.\",\n  \"decisiveStep\": \"보조선 엇각 40도 산출 및 삼각형 내각합에서 x=110도 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"기본 도형\",\n    \"l3\": \"평행선과 각\",\n    \"l4\": \"평행선 조건\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLEL_ANGLE_TRANSFER\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER\",\n    \"why\": \"평행 보조선과 삼각형 내각합을 연계하여 미지각을 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [\n    \"CC_AUXILIARY_PARALLEL_LINE\"\n  ],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"평행 보조선 엇각과 삼각형 내각합을 연립하는 2단계 복합 각 계산 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"평행선\",\n      \"삼각형\"\n    ],\n    \"goal\": [\n      \"각\"\n    ],\n    \"method\": [\n      \"내각\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
             "evidenceType": "IMPLIED",
             "justification": "Drive MD 4-slot draft; independent review pending"
           }
@@ -652,8 +652,8 @@
       "scenarioNote": "",
       "reasons": {},
       "review": {
-        "status": "UNREVIEWED",
-        "reason": "Drive MD candidate 4-slot; independent review pending"
+        "status": "AUTHOR_CHECKED_FORMAL_REVIEW_PENDING",
+        "reason": "Stem and solution clarified in the JS; separate formal review remains pending."
       }
     },
     {
@@ -918,26 +918,26 @@
           {
             "term": "삼각형",
             "src": "stem",
-            "quote": "[서술형 3] 직사각형 모양의 종이테이프를 접었을 때, 접은 선에 의해 생기는 삼각형 $DEF$에서 한 외각과 평행선 엇각 관계로부터 $\\angle BDF = 120^\\circ$, $\\angle BDE = 50^\\circ$이다. 이때 $\\angle DEF + \\angle DFE$의 크기를 구하고 그 풀이과정을 자세히 서술하시오."
+            "quote": "[서술형 3] 삼각형 $DEF$에서 점 $D$의 반직선 $DE$는 $\\angle BDF$의 내부에 있다. $\\angle BDF=120^\\circ$, $\\angle BDE=50^\\circ$일 때, $\\angle DEF+\\angle DFE$의 크기를 구하고 그 풀이 과정을 자세히 서술하시오."
           },
           {
             "term": "평행선",
             "src": "stem",
-            "quote": "[서술형 3] 직사각형 모양의 종이테이프를 접었을 때, 접은 선에 의해 생기는 삼각형 $DEF$에서 한 외각과 평행선 엇각 관계로부터 $\\angle BDF = 120^\\circ$, $\\angle BDE = 50^\\circ$이다. 이때 $\\angle DEF + \\angle DFE$의 크기를 구하고 그 풀이과정을 자세히 서술하시오."
+            "quote": "[서술형 3] 삼각형 $DEF$에서 점 $D$의 반직선 $DE$는 $\\angle BDF$의 내부에 있다. $\\angle BDF=120^\\circ$, $\\angle BDE=50^\\circ$일 때, $\\angle DEF+\\angle DFE$의 크기를 구하고 그 풀이 과정을 자세히 서술하시오."
           }
         ],
         "goal": [
           {
             "term": "각",
             "src": "stem",
-            "quote": "[서술형 3] 직사각형 모양의 종이테이프를 접었을 때, 접은 선에 의해 생기는 삼각형 $DEF$에서 한 외각과 평행선 엇각 관계로부터 $\\angle BDF = 120^\\circ$, $\\angle BDE = 50^\\circ$이다. 이때 $\\angle DEF + \\angle DFE$의 크기를 구하고 그 풀이과정을 자세히 서술하시오."
+            "quote": "[서술형 3] 삼각형 $DEF$에서 점 $D$의 반직선 $DE$는 $\\angle BDF$의 내부에 있다. $\\angle BDF=120^\\circ$, $\\angle BDE=50^\\circ$일 때, $\\angle DEF+\\angle DFE$의 크기를 구하고 그 풀이 과정을 자세히 서술하시오."
           }
         ],
         "method": [
           {
             "term": "내각",
             "src": "solution",
-            "quote": "직사각형의 마주 보는 두 변은 서로 평행하다. 점 $D$에서 선분들이 이루는 각의 관계를 구한다. $$\\begin{aligned} \\angle EDF &= \\angle BDF - \\angle BDE \\ &= 120^\\circ - 50^\\circ = 70^\\circ \\end{aligned}$$ 이다. 삼각형 $DEF$에서 세 내각의 크기의 합은 $180^\\circ$이므로 $$\\begin{aligned} \\angle EDF + \\angle DEF + \\angle DFE &= 180^\\circ \\ 70^\\circ + \\angle DEF + \\angle DFE &= 180^\\circ \\ \\angle DEF + \\angle DFE &= 180^\\circ - 70^\\circ \\ &= 110^\\circ \\end{aligned}$$ 이다.\n\n{\n  \"status\": \"PROPOSED\",\n  \"source\": {\n    \"qid\": \"23\",\n    \"points\": 5\n  },\n  \"strategy\": \"종이접기 평행선 각 차감으로 꼭짓각 도출 후 삼각형 내각합 나머지 각 합산\"\n}\n\n{\n  \"sourceQid\": \"23\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"각 EDF=120-50=70도를 구하고 삼각형 내각합에서 각 DEF+DFE=180-70=110도를 산출한다.\",\n  \"decisiveStep\": \"각 EDF=70도 산출 후 삼각형 내각합 180-70=110도 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"기본 도형\",\n    \"l3\": \"평행선과 각\",\n    \"l4\": \"동위각·엇각\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_TRIANGLE_ANGLE_CONDITION\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER\",\n    \"why\": \"종이접기 평행선 각과 삼각형 내각합을 결합하여 두 각의 합을 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [\n    \"CC_PAPER_FOLDING_ANGLES\"\n  ],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"평행선 각의 차이와 삼각형 내각합 정리를 연계하는 2단계 서술형 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"삼각형\",\n      \"평행선\"\n    ],\n    \"goal\": [\n      \"각\"\n    ],\n    \"method\": [\n      \"내각\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+            "quote": "반직선 $DE$가 $\\angle BDF$의 내부에 있으므로 $\\angle EDF=\\angle BDF-\\angle BDE=120^\\circ-50^\\circ=70^\\circ$이다. 삼각형 $DEF$의 내각의 합은 $180^\\circ$이므로 $\\angle DEF+\\angle DFE=180^\\circ-70^\\circ=110^\\circ$이다.\n\n{\n  \"status\": \"PROPOSED\",\n  \"source\": {\n    \"qid\": \"23\",\n    \"points\": 5\n  },\n  \"strategy\": \"종이접기 평행선 각 차감으로 꼭짓각 도출 후 삼각형 내각합 나머지 각 합산\"\n}\n\n{\n  \"sourceQid\": \"23\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"각 EDF=120-50=70도를 구하고 삼각형 내각합에서 각 DEF+DFE=180-70=110도를 산출한다.\",\n  \"decisiveStep\": \"각 EDF=70도 산출 후 삼각형 내각합 180-70=110도 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"기본 도형\",\n    \"l3\": \"평행선과 각\",\n    \"l4\": \"동위각·엇각\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_TRIANGLE_ANGLE_CONDITION\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER\",\n    \"why\": \"종이접기 평행선 각과 삼각형 내각합을 결합하여 두 각의 합을 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [\n    \"CC_PAPER_FOLDING_ANGLES\"\n  ],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"평행선 각의 차이와 삼각형 내각합 정리를 연계하는 2단계 서술형 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"삼각형\",\n      \"평행선\"\n    ],\n    \"goal\": [\n      \"각\"\n    ],\n    \"method\": [\n      \"내각\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
             "evidenceType": "IMPLIED",
             "justification": "Drive MD 4-slot draft; independent review pending"
           }
@@ -948,8 +948,8 @@
       "scenarioNote": "",
       "reasons": {},
       "review": {
-        "status": "UNREVIEWED",
-        "reason": "Drive MD candidate 4-slot; independent review pending"
+        "status": "AUTHOR_CHECKED_FORMAL_REVIEW_PENDING",
+        "reason": "Stem and solution clarified in the JS; separate formal review remains pending."
       }
     },
     {
@@ -960,33 +960,33 @@
           {
             "term": "정사각형",
             "src": "stem",
-            "quote": "[서술형 4] 한 변의 길이가 $10\\text{ cm}$인 정사각형 $ABCD$의 두 대각선의 교점을 $O$라 하고, 점 $O$를 한 꼭짓점으로 하는 두 정사각형 $OEFG, OHIJ$를 그렸다. 다음 물음에 답하고 그 과정을 서술하시오.\n\n(1) $\\triangle OPC$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (2점) (2) 사각형 $OPCQ$의 넓이를 구하시오. (2점) (3) 두 사각형이 겹쳐 생기는 색칠한 부분 전체의 넓이를 구하시오. (2점)"
+            "quote": "[서술형 4] 한 변의 길이가 $10\\text{ cm}$인 정사각형 $ABCD$의 두 대각선의 교점을 $O$라 하자. 점 $P$는 선분 $BC$ 위, 점 $Q$는 선분 $CD$ 위에 있고, $\\overline{OP}\\perp\\overline{OQ}$이다. 사각형 $OPCQ$와 이를 점 $O$에 대하여 대칭이동한 사각형을 색칠하였다. 다음 물음에 답하고 그 과정을 서술하시오.\n\n(1) $\\triangle OPC$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (2점) (2) 사각형 $OPCQ$의 넓이를 구하시오. (2점) (3) 색칠한 두 사각형의 넓이의 합을 구하시오. (2점)"
           },
           {
             "term": "합동",
             "src": "stem",
-            "quote": "[서술형 4] 한 변의 길이가 $10\\text{ cm}$인 정사각형 $ABCD$의 두 대각선의 교점을 $O$라 하고, 점 $O$를 한 꼭짓점으로 하는 두 정사각형 $OEFG, OHIJ$를 그렸다. 다음 물음에 답하고 그 과정을 서술하시오.\n\n(1) $\\triangle OPC$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (2점) (2) 사각형 $OPCQ$의 넓이를 구하시오. (2점) (3) 두 사각형이 겹쳐 생기는 색칠한 부분 전체의 넓이를 구하시오. (2점)"
+            "quote": "[서술형 4] 한 변의 길이가 $10\\text{ cm}$인 정사각형 $ABCD$의 두 대각선의 교점을 $O$라 하자. 점 $P$는 선분 $BC$ 위, 점 $Q$는 선분 $CD$ 위에 있고, $\\overline{OP}\\perp\\overline{OQ}$이다. 사각형 $OPCQ$와 이를 점 $O$에 대하여 대칭이동한 사각형을 색칠하였다. 다음 물음에 답하고 그 과정을 서술하시오.\n\n(1) $\\triangle OPC$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (2점) (2) 사각형 $OPCQ$의 넓이를 구하시오. (2점) (3) 색칠한 두 사각형의 넓이의 합을 구하시오. (2점)"
           }
         ],
         "goal": [
           {
             "term": "넓이",
             "src": "stem",
-            "quote": "[서술형 4] 한 변의 길이가 $10\\text{ cm}$인 정사각형 $ABCD$의 두 대각선의 교점을 $O$라 하고, 점 $O$를 한 꼭짓점으로 하는 두 정사각형 $OEFG, OHIJ$를 그렸다. 다음 물음에 답하고 그 과정을 서술하시오.\n\n(1) $\\triangle OPC$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (2점) (2) 사각형 $OPCQ$의 넓이를 구하시오. (2점) (3) 두 사각형이 겹쳐 생기는 색칠한 부분 전체의 넓이를 구하시오. (2점)"
+            "quote": "[서술형 4] 한 변의 길이가 $10\\text{ cm}$인 정사각형 $ABCD$의 두 대각선의 교점을 $O$라 하자. 점 $P$는 선분 $BC$ 위, 점 $Q$는 선분 $CD$ 위에 있고, $\\overline{OP}\\perp\\overline{OQ}$이다. 사각형 $OPCQ$와 이를 점 $O$에 대하여 대칭이동한 사각형을 색칠하였다. 다음 물음에 답하고 그 과정을 서술하시오.\n\n(1) $\\triangle OPC$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (2점) (2) 사각형 $OPCQ$의 넓이를 구하시오. (2점) (3) 색칠한 두 사각형의 넓이의 합을 구하시오. (2점)"
           }
         ],
         "method": [
           {
             "term": "합동",
             "src": "solution",
-            "quote": "(1) 합동인 삼각형과 그 이유: 정사각형 $ABCD$의 대각선은 서로 수직이고 길이가 같으며 서로를 이등분한다. $$\\begin{aligned} \\overline{OC} &= \\overline{OD} \\ \\angle PCO &= \\angle QDO = 45^\\circ \\end{aligned}$$ 또한 $\\angle POQ = 90^\\circ$이고 $\\angle COD = 90^\\circ$이므로 $$\\begin{aligned} \\angle POC &= 90^\\circ - \\angle COQ = \\angle QOD \\end{aligned}$$ 이다. 따라서 한 변의 길이와 그 양 끝 각이 각각 같으므로 $$\\begin{aligned} \\triangle OPC &\\equiv \\triangle OQD \\quad (\\text{ASA}\\text{ 합동}) \\end{aligned}$$ 이다.\n\n(2) 사각형 $OPCQ$의 넓이: $\\triangle OPC \\equiv \\triangle OQD$이므로 두 삼각형의 넓이는 같다. $$\\begin{aligned} [OPCQ] &= [\\triangle OPC] + [\\triangle OCQ] \\ &= [\\triangle OQD] + [\\triangle OCQ] \\ &= [\\triangle OCD] \\end{aligned}$$ 정사각형 $ABCD$의 넓이는 $10 \\times 10 = 100\\text{ cm}^2$이고 대각선은 넓이를 $4$등분하므로 $$\\begin{aligned} [\\triangle OCD] &= \\dfrac{100}{4} = 25\\text{ cm}^2 \\end{aligned}$$ 따라서 사각형 $OPCQ$의 넓이는 $25\\text{ cm}^2$이다.\n\n(3) 색칠한 부분 전체의 넓이: 반대쪽 겹친 사각형도 같은 방법으로 넓이가 $25\\text{ cm}^2$이다. 따라서 색칠한 부분 전체의 넓이는 $$\\begin{aligned} 25 + 25 &= 50\\text{ cm}^2 \\end{aligned}$$ 이다.\n\n{\n  \"status\": \"PROPOSED\",\n  \"source\": {\n    \"qid\": \"24\",\n    \"points\": 6\n  },\n  \"strategy\": \"정사각형 중심 회전 배치에서 ASA 삼각형 합동 증명 및 4분할 넓이 합산 서술\"\n}\n\n{\n  \"sourceQid\": \"24\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"CONGRUENCE\",\n  \"primaryMethod\": \"대각선 성질로 삼각형 OPC와 OQD의 ASA 합동을 증명하고 사각형 넓이 25와 전체 넓이 50을 산출한다.\",\n  \"decisiveStep\": \"ASA 합동 증명 후 사각형=1/4*10^2=25cm^2 및 전체 25*2=50cm^2 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 합동\",\n    \"l4\": \"ASA 합동\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION\",\n    \"why\": \"정사각형 배치에서 삼각형 합동을 증명하고 분할 넓이를 구하는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [\n    \"CC_TRIANGLE_CONGRUENCE\"\n  ],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"정사각형 대각선 교점에서 직각 회전에 따른 삼각형 합동을 증명하고 포괄 넓이를 구하는 3단계 서술형 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"정사각형\",\n      \"합동\"\n    ],\n    \"goal\": [\n      \"넓이\"\n    ],\n    \"method\": [\n      \"합동\",\n      \"넓이\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}\n",
+            "quote": "(1) 정사각형의 대각선은 서로 수직으로 이등분하므로 $OC=OD$이고 $\\angle PCO=\\angle QDO=45^\\circ$이다. $P$는 $BC$ 위, $Q$는 $CD$ 위에 있으며 $OP\\perp OQ$, $OC\\perp OD$이다. 따라서 $\\angle POC=\\angle QOD$이다. 그러므로 한 변과 그 양 끝 각이 각각 같아 $\\triangle OPC\\equiv\\triangle OQD$ (ASA 합동)이다.\n\n(2) 합동인 두 삼각형의 넓이는 같으므로 $[OPCQ]=[\\triangle OPC]+[\\triangle OCQ]=[\\triangle OQD]+[\\triangle OCQ]=[\\triangle OCD]$. 정사각형 $ABCD$의 넓이는 $100\\text{ cm}^2$이고 대각선은 이를 네 개의 같은 넓이로 나누므로 $[OPCQ]=100\\div4=25\\text{ cm}^2$이다.\n\n(3) 점 $O$에 대한 대칭이동은 넓이를 보존하므로 두 번째 색칠한 사각형도 $25\\text{ cm}^2$이다. 따라서 두 넓이의 합은 $25+25=50\\text{ cm}^2$이다.\n\n{\n  \"status\": \"PROPOSED\",\n  \"source\": {\n    \"qid\": \"24\",\n    \"points\": 6\n  },\n  \"strategy\": \"정사각형 중심 회전 배치에서 ASA 삼각형 합동 증명 및 4분할 넓이 합산 서술\"\n}\n\n{\n  \"sourceQid\": \"24\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"CONGRUENCE\",\n  \"primaryMethod\": \"대각선 성질로 삼각형 OPC와 OQD의 ASA 합동을 증명하고 사각형 넓이 25와 전체 넓이 50을 산출한다.\",\n  \"decisiveStep\": \"ASA 합동 증명 후 사각형=1/4*10^2=25cm^2 및 전체 25*2=50cm^2 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 합동\",\n    \"l4\": \"ASA 합동\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION\",\n    \"why\": \"정사각형 배치에서 삼각형 합동을 증명하고 분할 넓이를 구하는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [\n    \"CC_TRIANGLE_CONGRUENCE\"\n  ],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"정사각형 대각선 교점에서 직각 회전에 따른 삼각형 합동을 증명하고 포괄 넓이를 구하는 3단계 서술형 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"정사각형\",\n      \"합동\"\n    ],\n    \"goal\": [\n      \"넓이\"\n    ],\n    \"method\": [\n      \"합동\",\n      \"넓이\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}\n",
             "evidenceType": "IMPLIED",
             "justification": "Drive MD 4-slot draft; independent review pending"
           },
           {
             "term": "넓이",
             "src": "solution",
-            "quote": "(1) 합동인 삼각형과 그 이유: 정사각형 $ABCD$의 대각선은 서로 수직이고 길이가 같으며 서로를 이등분한다. $$\\begin{aligned} \\overline{OC} &= \\overline{OD} \\ \\angle PCO &= \\angle QDO = 45^\\circ \\end{aligned}$$ 또한 $\\angle POQ = 90^\\circ$이고 $\\angle COD = 90^\\circ$이므로 $$\\begin{aligned} \\angle POC &= 90^\\circ - \\angle COQ = \\angle QOD \\end{aligned}$$ 이다. 따라서 한 변의 길이와 그 양 끝 각이 각각 같으므로 $$\\begin{aligned} \\triangle OPC &\\equiv \\triangle OQD \\quad (\\text{ASA}\\text{ 합동}) \\end{aligned}$$ 이다.\n\n(2) 사각형 $OPCQ$의 넓이: $\\triangle OPC \\equiv \\triangle OQD$이므로 두 삼각형의 넓이는 같다. $$\\begin{aligned} [OPCQ] &= [\\triangle OPC] + [\\triangle OCQ] \\ &= [\\triangle OQD] + [\\triangle OCQ] \\ &= [\\triangle OCD] \\end{aligned}$$ 정사각형 $ABCD$의 넓이는 $10 \\times 10 = 100\\text{ cm}^2$이고 대각선은 넓이를 $4$등분하므로 $$\\begin{aligned} [\\triangle OCD] &= \\dfrac{100}{4} = 25\\text{ cm}^2 \\end{aligned}$$ 따라서 사각형 $OPCQ$의 넓이는 $25\\text{ cm}^2$이다.\n\n(3) 색칠한 부분 전체의 넓이: 반대쪽 겹친 사각형도 같은 방법으로 넓이가 $25\\text{ cm}^2$이다. 따라서 색칠한 부분 전체의 넓이는 $$\\begin{aligned} 25 + 25 &= 50\\text{ cm}^2 \\end{aligned}$$ 이다.\n\n{\n  \"status\": \"PROPOSED\",\n  \"source\": {\n    \"qid\": \"24\",\n    \"points\": 6\n  },\n  \"strategy\": \"정사각형 중심 회전 배치에서 ASA 삼각형 합동 증명 및 4분할 넓이 합산 서술\"\n}\n\n{\n  \"sourceQid\": \"24\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"CONGRUENCE\",\n  \"primaryMethod\": \"대각선 성질로 삼각형 OPC와 OQD의 ASA 합동을 증명하고 사각형 넓이 25와 전체 넓이 50을 산출한다.\",\n  \"decisiveStep\": \"ASA 합동 증명 후 사각형=1/4*10^2=25cm^2 및 전체 25*2=50cm^2 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 합동\",\n    \"l4\": \"ASA 합동\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION\",\n    \"why\": \"정사각형 배치에서 삼각형 합동을 증명하고 분할 넓이를 구하는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [\n    \"CC_TRIANGLE_CONGRUENCE\"\n  ],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"정사각형 대각선 교점에서 직각 회전에 따른 삼각형 합동을 증명하고 포괄 넓이를 구하는 3단계 서술형 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"정사각형\",\n      \"합동\"\n    ],\n    \"goal\": [\n      \"넓이\"\n    ],\n    \"method\": [\n      \"합동\",\n      \"넓이\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}\n",
+            "quote": "(1) 정사각형의 대각선은 서로 수직으로 이등분하므로 $OC=OD$이고 $\\angle PCO=\\angle QDO=45^\\circ$이다. $P$는 $BC$ 위, $Q$는 $CD$ 위에 있으며 $OP\\perp OQ$, $OC\\perp OD$이다. 따라서 $\\angle POC=\\angle QOD$이다. 그러므로 한 변과 그 양 끝 각이 각각 같아 $\\triangle OPC\\equiv\\triangle OQD$ (ASA 합동)이다.\n\n(2) 합동인 두 삼각형의 넓이는 같으므로 $[OPCQ]=[\\triangle OPC]+[\\triangle OCQ]=[\\triangle OQD]+[\\triangle OCQ]=[\\triangle OCD]$. 정사각형 $ABCD$의 넓이는 $100\\text{ cm}^2$이고 대각선은 이를 네 개의 같은 넓이로 나누므로 $[OPCQ]=100\\div4=25\\text{ cm}^2$이다.\n\n(3) 점 $O$에 대한 대칭이동은 넓이를 보존하므로 두 번째 색칠한 사각형도 $25\\text{ cm}^2$이다. 따라서 두 넓이의 합은 $25+25=50\\text{ cm}^2$이다.\n\n{\n  \"status\": \"PROPOSED\",\n  \"source\": {\n    \"qid\": \"24\",\n    \"points\": 6\n  },\n  \"strategy\": \"정사각형 중심 회전 배치에서 ASA 삼각형 합동 증명 및 4분할 넓이 합산 서술\"\n}\n\n{\n  \"sourceQid\": \"24\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"CONGRUENCE\",\n  \"primaryMethod\": \"대각선 성질로 삼각형 OPC와 OQD의 ASA 합동을 증명하고 사각형 넓이 25와 전체 넓이 50을 산출한다.\",\n  \"decisiveStep\": \"ASA 합동 증명 후 사각형=1/4*10^2=25cm^2 및 전체 25*2=50cm^2 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 합동\",\n    \"l4\": \"ASA 합동\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION\",\n    \"why\": \"정사각형 배치에서 삼각형 합동을 증명하고 분할 넓이를 구하는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [\n    \"CC_TRIANGLE_CONGRUENCE\"\n  ],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"정사각형 대각선 교점에서 직각 회전에 따른 삼각형 합동을 증명하고 포괄 넓이를 구하는 3단계 서술형 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"정사각형\",\n      \"합동\"\n    ],\n    \"goal\": [\n      \"넓이\"\n    ],\n    \"method\": [\n      \"합동\",\n      \"넓이\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}\n",
             "evidenceType": "IMPLIED",
             "justification": "Drive MD 4-slot draft; independent review pending"
           }
@@ -997,8 +997,8 @@
       "scenarioNote": "",
       "reasons": {},
       "review": {
-        "status": "UNREVIEWED",
-        "reason": "Drive MD candidate 4-slot; independent review pending"
+        "status": "AUTHOR_CHECKED_FORMAL_REVIEW_PENDING",
+        "reason": "Stem and solution clarified in the JS; separate formal review remains pending."
       }
     }
   ]
