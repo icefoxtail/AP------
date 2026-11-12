@@ -88,7 +88,17 @@ jobs:
         with:
           node-version: '22'
       - id: inventory
-        run: echo "units=$(node apmath/playground/next/tools/middle-initial-figure-audit.mjs --list-units)" >> "$GITHUB_OUTPUT"
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          const units = JSON.parse(execFileSync(process.execPath, ['apmath/playground/next/tools/middle-initial-figure-audit.mjs', '--list-units'], { encoding: 'utf8' }));
+          // Check the shared function adapter early. Every existing unit remains
+          // in the same matrix with the same baseline, observations and gates.
+          const first = new Map(['g7-coordinate-graphs', 'g7-proportion', 'g8-linear-functions', 'g9-quadratic-functions'].map((id, i) => [id, i]));
+          units.sort((a, b) => (first.get(a) ?? 4) - (first.get(b) ?? 4));
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `units=${JSON.stringify(units)}\n`);
+          NODE
       - name: Initial figure regression contracts
         run: node --test apmath/playground/next/tools/middle-initial-*.test.mjs apmath/playground/next/tools/apl-stage-insets.test.mjs
       - name: Actual annotation, semantic measurement and failure-report regressions
@@ -137,7 +147,28 @@ jobs:
         run: |
           git fetch --no-tags --depth=1 origin "$BASE_SHA"
           git worktree add --detach "$RUNNER_TEMP/initial-baseline" "$BASE_SHA"
-          node apmath/playground/next/tools/middle-initial-figure-audit.mjs --root "$RUNNER_TEMP/initial-baseline" --units "$UNIT" --out "$RUNNER_TEMP/initial-evidence/before" --baseline-observe
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import vm from 'node:vm';
+          import { execFileSync, spawnSync } from 'node:child_process';
+          const root = path.join(process.env.RUNNER_TEMP, 'initial-baseline');
+          const out = path.join(process.env.RUNNER_TEMP, 'initial-evidence/before');
+          const unit = process.env.UNIT;
+          const context = { window: {} };
+          vm.runInNewContext(fs.readFileSync(path.join(root, 'apmath/playground/next/kit/apl-catalog.js'), 'utf8'), context);
+          if (context.window.APLab.catalog.labs.some(l => l.id === unit)) {
+            const result = spawnSync(process.execPath, ['apmath/playground/next/tools/middle-initial-figure-audit.mjs', '--root', root, '--units', unit, '--out', out, '--baseline-observe'], { stdio: 'inherit' });
+            if (result.error) throw result.error;
+            process.exit(result.status ?? 1);
+          }
+          // A newly added lab has no historical screen. Preserve that absence
+          // explicitly; the unchanged candidate audit below still checks it.
+          fs.mkdirSync(out, { recursive: true });
+          const commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
+          fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify({ kind: 'BASELINE_INITIAL_FIGURE', commit, unit, status: 'NOT_PRESENT', browser: 'NOT_RUN', reason: 'Lab does not exist in the exact baseline catalog.' }, null, 2) + '\n');
+          console.log(`${unit}: NOT_PRESENT in baseline ${commit}`);
+          NODE
       - name: Verify all initial scenes at five viewports
         if: ${{ !cancelled() }}
         env:

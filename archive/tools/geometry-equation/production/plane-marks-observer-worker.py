@@ -687,6 +687,16 @@ def audit(p):
                 elif need:
                     e0,e1=line_model(prolonged[part]);direction=sub(ray_end,v)
                     if abs(wrap180(direction_degrees(sub(e1,e0))-direction_degrees(direction)))>0.5 or norm(sub(e0,v))<norm(direction)-1e-9:dim_error(part+' off the ray')
+        # (short sides) a pulled angle arc stands beyond its short ray: that ray is prolonged to the arc by a thin dashed line along the ray (no other ray has one)
+        if row.get('angleDimension') is None:
+            outer_px=max(radii)*sx;extensions={n.get('data-mark-part'):n for n in nodes if tag(n)=='line'}
+            if set(extensions)-{'ext-from','ext-to'}:errors.append('ANGLE_EXTENSION_UNDECLARED:'+oid)
+            for part,ray_end in (('ext-from',a),('ext-to',c)):
+                need=outer_px>norm(sub(ray_end,v))*sx+2.0
+                if need!=(part in extensions):errors.append('ANGLE_EXTENSION_'+('MISSING' if need else 'UNEXPECTED')+':'+oid+':'+part)
+                elif need:
+                    e0,e1=line_model(extensions[part]);direction=sub(ray_end,v)
+                    if abs(wrap180(direction_degrees(sub(e1,e0))-direction_degrees(direction)))>0.5 or norm(sub(e0,v))<norm(direction)-1e-9 or abs(norm(sub(e1,v))*sx-outer_px)>4.0:errors.append('ANGLE_EXTENSION_OFF_RAY:'+oid+':'+part)
         if straight:
             # the semicircle faces the screen side the plan names: the middle of its first arc, seen from the vertex in svg px, points that way
             want_side=DIM_SIDE_VECTORS.get(row.get('side'))

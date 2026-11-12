@@ -344,6 +344,16 @@ def _arc_leader_anchors(arc,vp):
 # The dimension line stands DIM_FIRST_PX from the two points (further levels DIM_STEP_PX apart, so a label fits between two levels). Its ends are the feet of
 # the perpendiculars from the two points. BAR: thin extension lines from the points and a short perpendicular tick at each end; ARROW: the same with an
 # arrowhead at each end instead of a tick; BRACE: a curly brace whose two ends stand just off the points and whose tip, DIM_FIRST_PX away, points outward.
+# Short sides (H1 batch: the foot of a perpendicular a quarter unit from its point, a sliver triangle's short leg). The normal marks need a 24 px ray (angle arc) or a 30+6n px
+# segment (ticks); below that the engine draws the COMPACT form instead of refusing: a small arc (ray >= ANGLE_COMPACT_MIN_RAY_PX), ticks on a segment of COMPACT_TICK_BASE_PX+pitch*(n-1)
+# or more, and for a ray too short even for the small arc a PULLED arc: a full-size first arc ANGLE_PULLED_RADIUS_PX out, the short ray prolonged to it by a thin extension line.
+ANGLE_COMPACT_MIN_RAY_PX=14.0
+ANGLE_COMPACT_GAP_PX=3.0
+ANGLE_COMPACT_MIN_RADIUS_PX=6.0
+ANGLE_PULLED_MIN_RAY_PX=9.0
+ANGLE_PULLED_RADIUS_PX=16.0
+ANGLE_PULLED_EXT_BEYOND_PX=2.0   # an arc standing more than this beyond a ray's end gets the ray prolonged to it (an observer reads the same number)
+COMPACT_TICK_BASE_PX=14.0
 DIM_FIRST_PX=24.0
 DIM_STEP_PX=44.0
 DIM_EXT_GAP_PX=4.0               # an extension line starts this far from its point (clear of the point's dot)
@@ -1045,7 +1055,11 @@ def prepare(spec):
                 if obj.get('arcScale')=='PROPORTIONAL':
                     # (G11) a pulled-out angle keeps its arcs in proportion to the drawn rays (the fixed 28 px cap does not apply): the first arc at 0.30 of the ray, clamped to [16 px, 0.55 of the ray]
                     arc_gap=max(4.5,.04*rays);first=min(max(.30*rays,16.0),.55*rays)+2*arc_gap*(ring-1)
-                if rays<first+arc_gap*(count-1)+8:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
+                if rays<first+arc_gap*(count-1)+8:
+                    # short ray: a smaller arc that still reads, else the pulled arc with the ray prolonged to it, else refuse (only the plain single-ring angle has a compact form)
+                    if ring!=1 or obj.get('angleDimension') is not None or rays<ANGLE_PULLED_MIN_RAY_PX:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
+                    arc_gap=ANGLE_COMPACT_GAP_PX;first=max(ANGLE_COMPACT_MIN_RADIUS_PX,.6*rays-arc_gap*(count-1))
+                    if rays<ANGLE_COMPACT_MIN_RAY_PX or first+arc_gap*(count-1)>rays-3:first=ANGLE_PULLED_RADIUS_PX
                 steps=max(16,math.ceil(abs(math.degrees(delta))/4));outer_radius=first+arc_gap*(count-1)
                 if obj.get('angleDimension') is not None:
                     # (G11) the angle as a dimension: one arc at radiusFactor times the shorter ray (1.15 by default), an arrowhead at each end, and the rays prolonged to the arc when it stands beyond them
@@ -1071,6 +1085,13 @@ def prepare(spec):
                 for k in range(count):
                     radius=outer_radius if obj.get('angleDimension') is not None else first+arc_gap*k
                     primitive({'id':oid+'-arc-'+str(k+1),'kind':'polyline','points':[(v[0]+radius*math.cos(start+delta*i/steps),v[1]+radius*math.sin(start+delta*i/steps)) for i in range(steps+1)],'token':'secondaryShape','layer':60,'role':'indicator','ownerPoints':obj['refs'],'mark':'angle','markId':oid,'markIndex':k+1,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER',**({'stroke':group_stroke} if group_stroke else {})},'curve')
+                if obj.get('angleDimension') is None:
+                    # pulled arc: each ray the arc stands beyond is prolonged to it by a thin line (a ray that reaches the arc needs none)
+                    for part,theta,end in (('ext-from',start,a),('ext-to',start+delta,b)):
+                        reach=math.dist(end,v)
+                        if outer_radius<=reach+ANGLE_PULLED_EXT_BEYOND_PX:continue
+                        ray=(math.cos(theta),math.sin(theta))
+                        primitive({'id':oid+'-'+part,'kind':'line','from':(v[0]+ray[0]*(reach+DIM_EXT_GAP_PX/2),v[1]+ray[1]*(reach+DIM_EXT_GAP_PX/2)),'to':(v[0]+ray[0]*(outer_radius+DIM_ARROW_OVERSHOOT_PX),v[1]+ray[1]*(outer_radius+DIM_ARROW_OVERSHOOT_PX)),'token':'indicator','layer':52,'role':'indicator','mark':'angle','markId':oid,'markPart':part,'dash':'3 3',**({'stroke':group_stroke} if group_stroke else {})},'curve')
                 if obj.get('labelText') is not None:
                     middle=start+delta/2;anchor=(v[0]+outer_radius*math.cos(middle),v[1]+outer_radius*math.sin(middle))
                     labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),anchor,{'wedgeSearch':{'vertex':list(v),'bisector':middle,'start':start,'delta':delta,'rMin':outer_radius+4.0,'rMax':max(outer_radius+12.0,min(outer_radius+44.0,.9*rays)),'rFar':max(outer_radius+12.0,.92*rays),'arcRadius':outer_radius,'farDistance':ANGLE_LABEL_FAR_DISTANCE_PX,**({'forceLeader':True} if obj.get('labelPlacement')=='LEADER' else {})},'gaps':(24,32,48,64),'leaderOwned':[oid+'-arc-'+str(k+1) for k in range(count)]}))
@@ -1211,7 +1232,7 @@ def prepare(spec):
                     # E32: one mark for a whole path of pieces (B-E-D): at the path's middle (by length) or at the nearest of a few other places clear of every displayed point,
                     # the inner joints (E) above all; on whichever piece that place falls
                     chain=_segment_chain([geometry[s] for s in paths[ref]],vp);pieces=list(zip(chain,chain[1:]));piece_lengths=[math.dist(a,b) for a,b in pieces];total=sum(piece_lengths)
-                    if total<30+6*count:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+ref)
+                    if total<30+6*count and total<COMPACT_TICK_BASE_PX+(9 if obj.get('markStyle')=='CIRCLE' else 5 if kind=='EQUAL_MARK' else 6)*(count-1):raise ValueError('MARK_SEGMENT_TOO_SHORT:'+ref)
                     def locate(t,pieces=pieces,piece_lengths=piece_lengths,total=total):
                         distance=t*total
                         for (a,b),piece in zip(pieces,piece_lengths):
@@ -1239,7 +1260,7 @@ def prepare(spec):
                             primitive({'id':oid+'-'+ref+'-bracket-'+part,'kind':'line','from':c0,'to':c1,'token':'indicator','layer':55,'role':'indicator','mark':'equal-bracket','markId':oid,'markSegment':ref,'markPart':part,**mark_stroke},'curve')
                 else:
                     length=math.dist(p,q)
-                    if length<30+6*count:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+ref)
+                    if length<30+6*count and length<COMPACT_TICK_BASE_PX+(9 if obj.get('markStyle')=='CIRCLE' else 5 if kind=='EQUAL_MARK' else 6)*(count-1):raise ValueError('MARK_SEGMENT_TOO_SHORT:'+ref)
                     d=((q[0]-p[0])/length,(q[1]-p[1])/length);n=(-d[1],d[0])
                     # The marks sit at the middle of the segment, or at the nearest of a few other places that keeps clear of any displayed point (a midpoint M, a foot H).
                     spots=[.5,.3,.7,.2,.8] if not crossings[index] else [.5,.35,.65,.25,.75,.2,.8];room=lambda t:min([math.dist((p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t),at) for at in [*point_marks,*mark_spots,*crossings[index]] if math.dist(at,p)>1e-6 and math.dist(at,q)>1e-6]+[1e9])

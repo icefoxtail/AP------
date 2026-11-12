@@ -89,7 +89,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "행렬이 같으면 같은 위치의 성분이 각각 같다.\n숫자만 있는 $(2,1)$성분에서 $k$를 먼저 구한다.\n$3=-2k$\n$k=-\\dfrac32$\n$(1,2)$성분을 비교하면\n$a=k\\cdot1$\n$a=-\\dfrac32$\n$(1,1)$성분을 비교하면\n$-6=kb$\n$-6=-\\dfrac32b$\n$b=4$\n따라서\n$a+b+k=-\\dfrac32+4-\\dfrac32$\n$=4-3$\n$=1$이다. 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -186,7 +186,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "필요한 위치의 성분만 계산하면 된다.\n$a$는 $A+2B$의 $(1,1)$성분이고, $b$는 $2A-B$의 $(2,1)$성분이다.\n전체 행렬을 모두 계산하지 않고 해당 성분을 직접 구한다.\n$a=2+2\\times1=4$이다. 또한 $b=2\\times(-5)-3=-13$이다. 따라서 $a-b=4-(-13)=17$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -314,7 +314,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "행렬의 크기는 행의 수 × 열의 수로 나타낸다.\n\n$$A=\\begin{pmatrix}1\\\\2\\end{pmatrix},\\qquad\nB=\\begin{pmatrix}0&-1\\\\2&1\\end{pmatrix}$$\n이므로 $A$는 $2\\times1$ 행렬, $B$는 $2\\times2$ 행렬이다.\n\n(가) $A$는 2개의 행과 1개의 열로 이루어져 있다. 1개의 행과 2개의 열이라는 설명은 거짓이다.\n\n(나) 영행렬 $O$에서 $B$를 빼면\n$$O-B=-B=\\begin{pmatrix}0&1\\\\-2&-1\\end{pmatrix}$$\n이다. 따라서 $(1,2)$성분은 $1$이므로 참이다.\n\n(다) 곱 $AB$가 정의되려면 앞 행렬 $A$의 열의 수와 뒤 행렬 $B$의 행의 수가 같아야 한다.\n$$A:\\ 2\\times1,\\qquad B:\\ 2\\times2$$\n에서 $1\\ne2$이므로 $AB$는 정의되지 않는다. 따라서 이차정사각행렬이라는 설명은 거짓이다.\n\n옳은 것은 (나)뿐이므로 정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -539,7 +539,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "성분의 조건을 대입하면\n$A=\\begin{pmatrix}1&0\\\\1&1\\end{pmatrix}$이다.\n먼저 한 번 더 곱해 보면\n$A^2=\\begin{pmatrix}1&0\\\\1&1\\end{pmatrix}\\begin{pmatrix}1&0\\\\1&1\\end{pmatrix}$\n$=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$이다.\n왼쪽 아래 성분이 $m$인 행렬에 $A$를 한 번 더 곱하면\n$\\begin{pmatrix}1&0\\\\m&1\\end{pmatrix}\\begin{pmatrix}1&0\\\\1&1\\end{pmatrix}$\n$=\\begin{pmatrix}1&0\\\\m+1&1\\end{pmatrix}$이다.\n따라서 $A$를 곱할 때마다 왼쪽 아래 성분만 $1$씩 커지므로\n$A^m=\\begin{pmatrix}1&0\\\\m&1\\end{pmatrix}$이다.\n이에 따라\n$A+A^2+\\cdots+A^{10}=\\begin{pmatrix}10&0\\\\1+2+\\cdots+10&10\\end{pmatrix}$이다.\n아래 성분의 합은 앞뒤를 짝지어\n$1+2+\\cdots+10=(1+10)+(2+9)+(3+8)+(4+7)+(5+6)$\n$=5\\cdot11$\n$=55$이다.\n그러므로 모든 성분의 합은\n$10+0+55+10=75$이다. 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -644,7 +644,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "행렬을 더할 때는 같은 위치의 성분끼리 더한다.\n따라서 $B+C$의 모든 성분의 합은 $B$의 성분합과 $C$의 성분합을 더한 값이다.\n주어진 합행렬의 성분합은\n$0+(-2)+1+2=1$이다.\n$C$의 모든 성분의 합을 $s$라 놓으면, $B$의 성분합이 $-2$이므로\n$-2+s=1$\n$s=3$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -724,7 +724,7 @@ window.questionBank = [
     "answer": "$A=\\begin{pmatrix}0&2\\\\2&1\\end{pmatrix},\\ 33$",
     "solution": "(1) 행은 출발 지점, 열은 도착 지점을 나타낸다.\n$1\\to1$인 코스는 없고, $1\\to2$인 코스는 A, B의 $2$개이다.\n$2\\to1$인 코스는 C, D의 $2$개이고, $2\\to2$인 코스는 E의 $1$개이다.\n따라서\n$A=\\begin{pmatrix}0&2\\\\2&1\\end{pmatrix}$이다.\n(2) 두 코스를 잇는 경우는 중간 지점이 $1$인 경우와 $2$인 경우로 나눈다.\n각 경우에는 첫 코스의 수와 둘째 코스의 수를 곱하고, 두 경우의 수를 더한다.\n이 계산이 행렬 곱의 성분 계산과 같으므로 두 코스를 잇는 경우의 수 행렬은 $A^2$이다.\n$A^2=\\begin{pmatrix}0\\cdot0+2\\cdot2&0\\cdot2+2\\cdot1\\\\2\\cdot0+1\\cdot2&2\\cdot2+1\\cdot1\\end{pmatrix}$\n$=\\begin{pmatrix}4&2\\\\2&5\\end{pmatrix}$이다.\n여기에 한 코스를 더 이어 붙이면 $A^2A=A^3$이 된다.\n$A^3=\\begin{pmatrix}4&2\\\\2&5\\end{pmatrix}\\begin{pmatrix}0&2\\\\2&1\\end{pmatrix}$\n$=\\begin{pmatrix}4\\cdot0+2\\cdot2&4\\cdot2+2\\cdot1\\\\2\\cdot0+5\\cdot2&2\\cdot2+5\\cdot1\\end{pmatrix}$\n$=\\begin{pmatrix}4&10\\\\10&9\\end{pmatrix}$이다.\n출발·도착 지점의 네 가지 경우는 서로 겹치지 않으므로 모든 성분을 더한다.\n$4+10+10+9=33$\n따라서 구하는 행렬은 $A=\\begin{pmatrix}0&2\\\\2&1\\end{pmatrix}$이고, 모든 경우의 수의 합은 $33$이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_복성고_1학기_기말_고1_기출/q23-solution.svg",

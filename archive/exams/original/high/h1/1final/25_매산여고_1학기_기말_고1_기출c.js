@@ -216,7 +216,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "행렬의 덧셈과 실수배의 성질을 이용하여 행렬 $X$를 구한다.\n\n주어진 방정식 $X-3B=2X-A$를 $X$에 대하여 정리하면\n$X = A-3B$\n\n행렬 $A$와 $B$를 대입하여 계산하면\n$X = \\begin{pmatrix} 1 & 0 \\\\ 4 & -2 \\end{pmatrix} - 3\\begin{pmatrix} 2 & -1 \\\\ 4 & -2 \\end{pmatrix}$\n$X = \\begin{pmatrix} 1 & 0 \\\\ 4 & -2 \\end{pmatrix} - \\begin{pmatrix} 6 & -3 \\\\ 12 & -6 \\end{pmatrix}$\n$X = \\begin{pmatrix} -5 & 3 \\\\ -8 & 4 \\end{pmatrix}$\n\n따라서 행렬 $X$의 $(2, 1)$ 성분은 $-8$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -511,7 +511,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "행렬 조건 $A^2+A+E=O$에서 먼저 상수 $a$를 구한 뒤, 거듭제곱의 주기를 이용한다.\n\n$A=\\begin{pmatrix} 1 & a \\\\ 3 & -2 \\end{pmatrix}$라 하자.\n먼저 $A^2$을 계산하면\n$A^2=\\begin{pmatrix} 1+3a & a-2a \\\\ 3-6 & 3a+4 \\end{pmatrix}=\\begin{pmatrix} 1+3a & -a \\\\ -3 & 3a+4 \\end{pmatrix}$이다.\n\n따라서\n$A^2+A+E=\\begin{pmatrix} 1+3a & -a \\\\ -3 & 3a+4 \\end{pmatrix}+\\begin{pmatrix} 1 & a \\\\ 3 & -2 \\end{pmatrix}+\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$\n$=\\begin{pmatrix} 3+3a & 0 \\\\ 0 & 3a+3 \\end{pmatrix}$이다.\n\n이 행렬이 영행렬이므로\n$3+3a=0 \\implies a=-1$이다.\n따라서\n$A=\\begin{pmatrix} 1 & -1 \\\\ 3 & -2 \\end{pmatrix}$이다.\n\n주어진 식 $A^2+A+E=O$에서\n$A^2=-A-E$이고, 양변에 $A-E$를 곱하면\n$(A-E)(A^2+A+E)=O$\n$A^3-E=O \\implies A^3=E$이다.\n\n따라서\n$A^{1004}=A^{3\\times334+2}=(A^3)^{334}A^2=A^2$이다.\n또 $A^2=-A-E$이므로\n$A^{1004}=-A-E=-\\begin{pmatrix} 1 & -1 \\\\ 3 & -2 \\end{pmatrix}-\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}=\\begin{pmatrix} -2 & 1 \\\\ -3 & 1 \\end{pmatrix}$이다.\n\n모든 성분의 합은\n$-2+1-3+1=-3$이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -696,7 +696,7 @@ window.questionBank = [
     "answer": "②",
     "solution":"$A=\\begin{pmatrix}p&2\\\\r&3\\end{pmatrix}$이라 하자. 조건 (나)에서 $A\\begin{pmatrix}0\\\\1\\end{pmatrix}=\\begin{pmatrix}2\\\\3\\end{pmatrix}$이므로 둘째 열이 정해진다.\n\n$A^2=\\begin{pmatrix}p^2+2r&2p+6\\\\rp+3r&2r+9\\end{pmatrix}$이고,\n$3A-6E=\\begin{pmatrix}3p-6&6\\\\3r&3\\end{pmatrix}$이다.\n조건 (가)에서 $(1,2)$ 성분을 비교하면\n$2p+6=6\\implies p=0$이다.\n$(2,2)$ 성분을 비교하면\n$2r+9=3\\implies r=-3$이다.\n따라서 $A=\\begin{pmatrix}0&2\\\\-3&3\\end{pmatrix}$이다.\n\n이제\n$A^2=\\begin{pmatrix}-6&6\\\\-9&3\\end{pmatrix}$,\n$A+A^2=\\begin{pmatrix}-6&8\\\\-12&6\\end{pmatrix}$이다.\n모든 성분의 합은\n$-6+8-12+6=-4$이므로 정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -730,7 +730,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "행렬의 결합법칙과 분배법칙을 이용하여 식을 적절히 변형하여 행렬 $A$를 직접 구하지 않고 값을 구한다.\n\n주어진 조건 $AB+BA = \\begin{pmatrix} 2 & 1 \\\\ -1 & 0 \\end{pmatrix}$을 이용하기 위해 식을 변형한다.\n구하고자 하는 식은 $AB^2-B^2A$이다.\n여기에 $BAB - BAB$를 더하고 빼서 식을 조작해본다.\n$AB^2 - B^2A = (AB^2 + BAB) - (BAB + B^2A)$\n$= (AB+BA)B - B(AB+BA)$\n\n$AB+BA = \\begin{pmatrix} 2 & 1 \\\\ -1 & 0 \\end{pmatrix}$이고 $B = \\begin{pmatrix} 3 & 2 \\\\ 0 & 1 \\end{pmatrix}$이므로 대입하여 계산한다.\n\n$(AB+BA)B = \\begin{pmatrix} 2 & 1 \\\\ -1 & 0 \\end{pmatrix}\\begin{pmatrix} 3 & 2 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 6 & 5 \\\\ -3 & -2 \\end{pmatrix}$\n$B(AB+BA) = \\begin{pmatrix} 3 & 2 \\\\ 0 & 1 \\end{pmatrix}\\begin{pmatrix} 2 & 1 \\\\ -1 & 0 \\end{pmatrix} = \\begin{pmatrix} 4 & 3 \\\\ -1 & 0 \\end{pmatrix}$\n\n두 행렬을 빼면\n$AB^2-B^2A = \\begin{pmatrix} 6 & 5 \\\\ -3 & -2 \\end{pmatrix} - \\begin{pmatrix} 4 & 3 \\\\ -1 & 0 \\end{pmatrix} = \\begin{pmatrix} 2 & 2 \\\\ -2 & -2 \\end{pmatrix}$\n\n모든 성분의 합은 $2+2-2-2=0$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -782,7 +782,7 @@ window.questionBank = [
     "answer": "$17$",
     "solution": "이차방정식의 근과 계수의 관계를 이용하여 행렬의 곱셈 결과를 식으로 표현하고 값을 계산한다.\n\n이차방정식 $x^2-5x+3=0$의 근과 계수의 관계에 의하여\n$\\alpha+\\beta=5$, $\\alpha\\beta=3$이다.\n\n행렬 $A^2$을 직접 계산하면\n$A^2=\\begin{pmatrix} \\alpha & -2 \\\\ -2 & \\beta \\end{pmatrix}\\begin{pmatrix} \\alpha & -2 \\\\ -2 & \\beta \\end{pmatrix}=\\begin{pmatrix} \\alpha^2+4 & -2\\alpha-2\\beta \\\\ -2\\alpha-2\\beta & \\beta^2+4 \\end{pmatrix}$이다.\n\n대응하는 성분을 비교하면\n$a=\\alpha^2+4$\n$b=-2(\\alpha+\\beta)$\n$d=\\beta^2+4$이다.\n\n따라서\n$a+b+d=(\\alpha^2+4)-2(\\alpha+\\beta)+(\\beta^2+4)$\n$=\\alpha^2+\\beta^2-2(\\alpha+\\beta)+8$이다.\n\n이때\n$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=5^2-2\\cdot3=25-6=19$이므로\n$a+b+d=19-2\\cdot5+8=19-10+8=17$이다.\n\n따라서 구하는 값은 $17$이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

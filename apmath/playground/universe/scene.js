@@ -20,12 +20,15 @@ import {
   createHyperboloidObject,
   createTorusVillarceauObject,
 } from './math-objects.js';
-import { MathGalaxyMotionEngine } from './math-motion.js';
+import { MathGalaxyMotionEngine, createFrameClock } from './math-motion.js';
+import { createExploration } from './exploration.js';
 
 export function createMathUniverse({
   canvas,
   onSelectNode,
   onTravelComplete,
+  onStateChange,
+  onFrame,
 } = {}) {
   const profile = getVisualProfile();
   const isMobile = profile.isMobile;
@@ -144,16 +147,22 @@ export function createMathUniverse({
   // 7. Motion Engine
   const motionEngine = new MathGalaxyMotionEngine({ scene, camera, isMobile });
 
-  // 8. Construct & Place the 8 Celestial Objects
+  // 8. Construct & Place the 12 Celestial Objects
   const celestialRegistry = [];
 
   function addCelestial({ builder, options, basePos, orbitRadius, orbitSpeed, orbitPlane, selfRot }) {
     const obj = builder({ ...options, isMobile });
-    scene.add(obj.group);
+    // The translation anchor follows the original orbit. The visual's rotation
+    // and the new satellite layout do not inherit one another's transforms.
+    const anchor = new THREE.Group();
+    anchor.name = `anchor-${obj.metadata.id}`;
+    anchor.add(obj.group);
+    scene.add(anchor);
 
     const motionNode = motionEngine.registerCelestialNode({
       id: obj.metadata.id,
-      group: obj.group,
+      group: anchor,
+      rotationGroup: obj.group,
       updater: obj.update.bind(obj),
       basePosition: basePos,
       orbitRadius,
@@ -161,6 +170,7 @@ export function createMathUniverse({
       orbitPlane,
       selfRotationSpeed: selfRot,
     });
+    obj.update(0, 0); // Reduced-motion and first-frame users see complete figures.
 
     // Tag for Raycasting
     obj.group.traverse((child) => {
@@ -172,6 +182,7 @@ export function createMathUniverse({
 
     celestialRegistry.push({
       ...obj,
+      anchor,
       motionNode,
     });
   }
@@ -316,241 +327,100 @@ export function createMathUniverse({
     selfRot: new THREE.Vector3(0.04, 0.05, 0.02),
   });
 
-  // 9. Raycasting & User Interaction
-  const raycaster = new THREE.Raycaster();
-  let pointerDownPos = { x: 0, y: 0, time: 0 };
-  let selectedNode = null;
-
-  // Camera flight interpolation state
-  let flightState = null;
-
-  function onPointerMove(e) {
-    // The universe is a visual showcase: update parallax only.
-    // Do not raycast or render hover labels over mathematical objects.
-    const rect = canvas.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-    const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-    motionEngine.setPointer(x, y);
+  // 9. One exploration controller owns route, camera and picking.
+  controls.update();
+  for (const c of celestialRegistry) {
+    c.anchor.updateMatrixWorld(true);
+    const box = new THREE.Box3().setFromObject(c.group);
+    c.focusRadius = box.getBoundingSphere(new THREE.Sphere()).radius;
   }
-
-  function onPointerDown(e) {
-    pointerDownPos = { x: e.clientX, y: e.clientY, time: performance.now() };
-  }
-
-  function onPointerUp(e) {
-    const dist = Math.hypot(e.clientX - pointerDownPos.x, e.clientY - pointerDownPos.y);
-    const duration = performance.now() - pointerDownPos.time;
-    // Differentiate drag vs genuine click
-    if (dist < 6 && duration < 500) {
-      if (flightState) return;
-
-      const rect = canvas.getBoundingClientRect();
-      const clickMouse = new THREE.Vector2(
-        ((e.clientX - rect.left) / rect.width) * 2 - 1,
-        -((e.clientY - rect.top) / rect.height) * 2 + 1
-      );
-      raycaster.setFromCamera(clickMouse, camera);
-
-      const meshes = [];
-      celestialRegistry.forEach((c) => {
-        c.group.traverse((ch) => {
-          if (ch.isMesh) meshes.push(ch);
-        });
-      });
-
-      const intersects = raycaster.intersectObjects(meshes, false);
-      if (intersects.length > 0) {
-        const hit = intersects[0].object;
-        const id = hit.userData.celestialId;
-        const meta = hit.userData.celestialMeta;
-        focusOnCelestial(id);
-        if (typeof onSelectNode === 'function') onSelectNode(meta);
-      } else {
-        resetFocus();
-        if (typeof onSelectNode === 'function') onSelectNode(null);
-      }
-    }
-  }
-
-  function focusOnCelestial(id) {
-    const found = celestialRegistry.find((c) => c.metadata.id === id);
-    if (!found) return;
-    selectedNode = found;
-
-    const targetPos = new THREE.Vector3();
-    found.group.getWorldPosition(targetPos);
-
-    // Position camera slightly offset in front of the celestial object
-    const offset = new THREE.Vector3(0, 1.2, 12);
-    const destination = targetPos.clone().add(offset);
-
-    flightState = {
-      fromPos: camera.position.clone(),
-      toPos: destination,
-      fromTarget: controls.target.clone(),
-      toTarget: targetPos.clone(),
-      startTime: performance.now(),
-      duration: 1200,
-      onComplete: () => {
-        // The detail-card reset button is gone: keep orbit interaction usable.
-        controls.enabled = true;
-      },
-    };
-    controls.enabled = false;
-  }
-
-  function resetFocus() {
-    selectedNode = null;
-    flightState = {
-      fromPos: camera.position.clone(),
-      toPos: initialCamPos.clone(),
-      fromTarget: controls.target.clone(),
-      toTarget: initialCamTarget.clone(),
-      startTime: performance.now(),
-      duration: 1000,
-      onComplete: () => {
-        controls.enabled = true;
-      },
-    };
-  }
-
-  // Cinematic Entrance: Camera warps straight forward into deep space
-  function triggerLabEntranceFlight(onFinished) {
-    const forwardDirection = new THREE.Vector3(0, 0, -1).applyQuaternion(camera.quaternion).normalize();
-    const warpDestination = camera.position.clone().add(forwardDirection.multiplyScalar(70));
-
-    flightState = {
-      fromPos: camera.position.clone(),
-      toPos: warpDestination,
-      fromTarget: controls.target.clone(),
-      toTarget: controls.target.clone().add(forwardDirection.multiplyScalar(70)),
-      startTime: performance.now(),
-      duration: 1100,
-      easePower: 2.6,
-      onComplete: () => {
-        if (typeof onFinished === 'function') onFinished();
-        if (typeof onTravelComplete === 'function') onTravelComplete();
-      },
-    };
-    controls.enabled = false;
-  }
-
-  // Attach event listeners
-  canvas.addEventListener('pointermove', onPointerMove, { passive: true });
-  canvas.addEventListener('pointerdown', onPointerDown, { passive: true });
-  canvas.addEventListener('pointerup', onPointerUp, { passive: true });
+  const exploration = createExploration({
+    scene, camera, controls, canvas, celestialRegistry, motionEngine,
+    onStateChange: (state, change) => {
+      onStateChange?.(state, change);
+      onSelectNode?.(celestialRegistry.find(c => c.metadata.id === state.celestialId)?.metadata || null);
+    },
+    onFrame,
+  });
 
   function onResize() {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    camera.aspect = width / height;
+    camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(width, height);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    exploration.resize();
   }
   window.addEventListener('resize', onResize, { passive: true });
 
-  // 10. Animation Loop & Framerate Cap
-  let running = true;
-  let lastFrameTime = performance.now();
-  const minFrameInterval = 1000 / profile.maxFps;
-  let animId = null;
-
+  // Active clocks stop when the tab is hidden. Pausing ambient motion does not
+  // erase an independently selected mathematical relationship.
+  let running = !document.hidden, disposed = false;
+  let activeTime = 0, animId = null;
+  const frameClock = createFrameClock(profile.maxFps, performance.now());
   function animate(now) {
-    if (!running) return;
+    if (!running || disposed) return;
     animId = requestAnimationFrame(animate);
-
-    const deltaMs = now - lastFrameTime;
-    if (deltaMs < minFrameInterval) return;
-    lastFrameTime = now - (deltaMs % minFrameInterval);
-
-    const time = now * 0.001;
-    const delta = Math.min(deltaMs * 0.001, 0.1);
-
-    // Camera flight interpolation
-    if (flightState) {
-      const elapsed = now - flightState.startTime;
-      const progress = THREE.MathUtils.clamp(elapsed / flightState.duration, 0, 1);
-      const ease = flightState.easePower
-        ? Math.pow(progress, flightState.easePower)
-        : (progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2);
-
-      camera.position.lerpVectors(flightState.fromPos, flightState.toPos, ease);
-      controls.target.lerpVectors(flightState.fromTarget, flightState.toTarget, ease);
-
-      if (progress >= 1) {
-        const doneCb = flightState.onComplete;
-        flightState = null;
-        if (doneCb) doneCb();
-      }
-    } else {
-      controls.update();
-    }
-
-    // Motion engine updates (celestial orbits + internal formulas)
-    motionEngine.update(time, delta);
-
-    // Subtle starfield counter-drift
-    backdrop.update(time);
-    nebulaSky.rotation.y = time * 0.002;
-
+    const dt = frameClock.sample(now);
+    if (dt === null) return;
+    if (!motionEngine.paused) activeTime += dt;
+    motionEngine.update(activeTime, dt);
+    backdrop.update(activeTime);
+    nebulaSky.rotation.y = activeTime * 0.002;
+    exploration.update(dt, activeTime);
     renderer.render(scene, camera);
   }
-
-  animId = requestAnimationFrame(animate);
-
-  // Tab visibility pause
+  if (running) animId = requestAnimationFrame(animate);
   function onVisibilityChange() {
+    if (disposed) return;
     if (document.hidden) {
       running = false;
       if (animId) cancelAnimationFrame(animId);
-    } else {
-      if (!running) {
-        running = true;
-        lastFrameTime = performance.now();
-        animId = requestAnimationFrame(animate);
-      }
+    } else if (!running) {
+      running = true;
+      frameClock.reset(performance.now());
+      animId = requestAnimationFrame(animate);
     }
   }
   document.addEventListener('visibilitychange', onVisibilityChange);
 
-  // Reduced motion preference
-  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (mediaQuery.matches) {
-    motionEngine.setPaused(true);
-  }
-  mediaQuery.addEventListener('change', (e) => {
-    motionEngine.setPaused(e.matches);
-  });
-
-  return {
-    scene,
-    camera,
-    controls,
-    renderer,
-    celestialRegistry,
-    motionEngine,
-    focusOnCelestial,
-    resetFocus,
-    triggerLabEntranceFlight,
-    toggleMotion() {
-      const next = !motionEngine.paused;
-      motionEngine.setPaused(next);
-      return !next;
+  const api = {
+    scene, camera, controls, renderer, celestialRegistry, motionEngine,
+    focusOnCelestial: exploration.focusOnCelestial,
+    selectConcept: exploration.selectConcept,
+    resetFocus: exploration.resetFocus,
+    back: exploration.back,
+    getState: exploration.getState,
+    replayConcept: exploration.replayConcept,
+    toggleConceptPlayback: exploration.toggleConceptPlayback,
+    seekConcept: exploration.seekConcept,
+    setUiVisible: exploration.setUiVisible,
+    toggleMotion: exploration.toggleMotion,
+    triggerLabEntranceFlight(onFinished) {
+      exploration.triggerLabEntranceFlight(() => { onFinished?.(); onTravelComplete?.(); });
+    },
+    getDebugState() {
+      return {
+        ...exploration.debug(),
+        renderer: { ...renderer.info.render },
+        resources: { ...renderer.info.memory, programs: renderer.info.programs?.length || 0 },
+        representatives: celestialRegistry.length,
+        webglVersion: renderer.capabilities.isWebGL2 ? 2 : 1,
+      };
     },
     resize: onResize,
     dispose() {
-      running = false;
+      if (disposed) return;
+      disposed = true; running = false;
       if (animId) cancelAnimationFrame(animId);
       window.removeEventListener('resize', onResize);
       document.removeEventListener('visibilitychange', onVisibilityChange);
-      canvas.removeEventListener('pointermove', onPointerMove);
-      canvas.removeEventListener('pointerdown', onPointerDown);
-      canvas.removeEventListener('pointerup', onPointerUp);
-      controls.dispose();
-      backdrop.dispose();
-      renderer.dispose();
-      celestialRegistry.forEach((c) => c.dispose());
+      exploration.dispose(); controls.dispose(); backdrop.dispose();
+      celestialRegistry.forEach(c => c.dispose());
       motionEngine.dispose();
+      scene.environment?.dispose(); nebulaTexture.dispose();
+      nebulaSky.geometry.dispose(); nebulaSky.material.dispose();
+      renderer.dispose();
     },
   };
+  queueMicrotask(() => { if (!disposed) onStateChange?.(api.getState(), { history: 'none' }); });
+  return api;
 }
