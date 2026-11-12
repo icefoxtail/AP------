@@ -1,0 +1,90 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "선택",
+      "children": [
+        {
+          "label": "가위",
+          "children": [
+            {
+              "label": "가위"
+            },
+            {
+              "label": "바위"
+            },
+            {
+              "label": "보"
+            }
+          ]
+        },
+        {
+          "label": "바위",
+          "children": [
+            {
+              "label": "가위"
+            },
+            {
+              "label": "바위"
+            },
+            {
+              "label": "보"
+            }
+          ]
+        },
+        {
+          "label": "보",
+          "children": [
+            {
+              "label": "가위"
+            },
+            {
+              "label": "바위"
+            },
+            {
+              "label": "보"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": false,
+    "highlightPaths": [
+      {
+        "path": [
+          "가위",
+          "보"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "바위",
+          "가위"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "보",
+          "바위"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "첫째 가지 A, 둘째 가지 B · 파란 경로는 A 승리: 가위→보, 바위→가위, 보→바위 3가지",
+  "sourceConditions": [
+    {
+      "id": "dice",
+      "condition": "실제 유사판 선택/배열 조건과 일치하는 경우의 수",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설 전용: 선택 과정과 경우의 수 표시. 문제에 정답 집합 노출 금지."
+  ]
+}
