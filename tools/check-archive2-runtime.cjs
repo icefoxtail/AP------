@@ -16,6 +16,7 @@ const files = [
   'tests/archive2-unit-envelope-handoff.test.cjs',
   'tests/archive2-output-contract.test.cjs',
   'tests/archive2-output-envelope-routing.test.cjs',
+  'tests/archive-student-svg-refresh.test.mjs',
   'tests/archive2-reader-controls.test.cjs',
   'tests/archive2-output-capacity.test.cjs',
   'tests/archive2-pdf-readiness.test.cjs',

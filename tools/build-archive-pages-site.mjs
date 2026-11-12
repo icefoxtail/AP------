@@ -4,6 +4,7 @@ import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
+import { buildStudentSvgRefresh } from './lib/build-student-svg-refresh.mjs';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 // The compact mixed verification rows are decoded with the same function the browser and Worker loader use.
@@ -553,6 +554,15 @@ export function planPagesSite({
     const stat = fs.statSync(absolute);
     return materializeEntry({ path: relative, absolute, bytes: stat.size, reasons }, targets);
   });
+  if (manifest.studentSvgRefresh === true) {
+    for (const projection of buildStudentSvgRefresh(root, entries)) {
+      if (selectedPaths.has(projection.path)) fail('student SVG projection conflicts with a packaged file');
+      for (const input of projection.studentSvgInputs) {
+        assertNoSymlinkComponents(root, resolveInside(root, input), 'student SVG projection input');
+      }
+      entries.push(projection);
+    }
+  }
   const unusedTarget = targets.find((item) => !item.used);
   if (unusedTarget) fail(`minifyJson entry matches no packaged JSON file: ${unusedTarget.path}${unusedTarget.tree ? '/' : ''}`);
   const totalBytes = entries.reduce((sum, entry) => sum + entry.bytes, 0);
@@ -612,7 +622,8 @@ export async function buildPagesSite({
       bytes: entry.bytes,
       sha256: entry.content ? crypto.createHash('sha256').update(entry.content).digest('hex') : await sha256File(entry.absolute),
       reasons: entry.reasons,
-      ...(entry.content ? { transform: 'minify-json', sourceBytes: entry.sourceBytes } : {}),
+      ...(entry.studentSvgInputs ? { transform: 'student-svg-refresh' }
+        : entry.content ? { transform: 'minify-json', sourceBytes: entry.sourceBytes } : {}),
     });
   }
   const report = {
@@ -624,8 +635,8 @@ export async function buildPagesSite({
     totalMiB: Number((totalBytes / (1024 * 1024)).toFixed(2)),
     maxBytes,
     buildOnlyInputs: buildOnly,
-    minifiedFileCount: inventory.filter((item) => item.transform).length,
-    minifiedSavedBytes: inventory.reduce((sum, item) => sum + (item.transform ? item.sourceBytes - item.bytes : 0), 0),
+    minifiedFileCount: inventory.filter((item) => item.transform === 'minify-json').length,
+    minifiedSavedBytes: inventory.reduce((sum, item) => sum + (item.transform === 'minify-json' ? item.sourceBytes - item.bytes : 0), 0),
     headroomBytes: sizeSummary.headroomBytes,
     topGroups: sizeSummary.topGroups,
     topFiles: sizeSummary.topFiles,
