@@ -1,0 +1,1749 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "similar-26-dongsan-m2-1final-candidate-v1",
+  "examUid": "26_동산중_1학기_기말_중2_유사",
+  "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/26_동산중_1학기_기말_중2_유사.js",
+  "expectedSourceBlobSha1": "3c103c07f372f4541fce05e1293f801c942c48d2",
+  "expectedSourceSha256": "a3e02e40aea110131851b3f309eb0aeaa409b2d6125ba3ccec425d8f69e48fce",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "approvedBy": null,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "sourceEvidence": {
+    "sourceArchiveFile": "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
+    "sourceBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+    "sourceMDFileId": "1gVzUxD25HzXdnDyLE6sfx9afHPtTSmITMQnCevSBDk8",
+    "sourceRevision": "AHj4eMTvqAo_tf7vxW5tEu0fYA5-ABkrkInmPo0vee96GkFLhyWuCCosp0Dhu0CB5du2R8VLE8T3KFXQgISIDpTP5gGMoC6b6vJMvSGGVNw",
+    "hydratedTextSha256": "e66a9fd82286fa863117b7671eeedf10fcd167027a118c7990eddd9c2c59c4dc",
+    "sourceRevisionRead": "DIRECT_READ_SUCCESS via Google Docs get_document_text; revision ID recorded.",
+    "declaredQuestionCount": 24,
+    "declaredTotalScore": 100,
+    "verifiedItemScoreTotal": 100,
+    "note": "Direct Markdown revision read. All 24 prompts, choices, answers, solutions and per-item metadata were parsed separately. Summed numeric item scores including Q10=4.5 and Q18=4.5: 100. No point edits. Q10 wording clarified to exclude the b=0 case; Q11 explicitly names side lengths. The MD uses unsupported subUnitKey/conceptClusterKey values in several items; the JS uses supported source keys and sidecar hold notes the proposed keys. Recalculated item answers locally; no independent reviewer. Original source preserved."
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_bfbb31f39969204dc5343074e032c7113a5cefae9fe8abdb75fcf3eac99335e9",
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "함수의 일대일 대응 여부를 일상 언어 수량 관계에서 판별하는 1단계 문항",
+        "primaryMethod": "x의 각 값에 대응하는 y의 값이 오직 하나인지 판별한다.",
+        "decisiveStep": "자연수의 배수는 무수히 많으므로 함수가 아님을 확인",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그래프",
+        "rpmL3Label": "함수의 뜻과 함숫값",
+        "rpmL4Label": "함수의 뜻",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그래프",
+          "l3": "함수의 뜻과 함숫값",
+          "l4": "함수의 뜻"
+        },
+        "crossConceptKeys": [
+          "CC_MULTIPLE"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 1,
+      "sourceUid": "qid_v1_b5f948b1c05049cb26406ca7b780d0185bc04824dea297a05401d0bda8a3ca0b",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_FUNCTION_CONCEPT",
+        "templateKey": "TPL_FUNCTION_UNIQUENESS_PROPERTY",
+        "why": "수량 관계에서 함수의 정의를 만족하는지 판별하는 기본 유형"
+      },
+      "item4slot": {
+        "given": [
+          "자연수"
+        ],
+        "goal": [
+          "일차함수"
+        ],
+        "method": [
+          "대입"
+        ],
+        "condition": [
+          "자연수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD conceptClusterKey FUNCTION_DEFINITION_UNIQUENESS is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD conceptClusterKey FUNCTION_DEFINITION_UNIQUENESS is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_fe7a609f66351ba3659659e4a1eb7cc34f9678065404f173618fc8a3112c997d",
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "정수 대입을 통한 기본 사칙연산 1단계 문항",
+        "primaryMethod": "일차식 형태의 함수에 주어진 입력값을 대입하여 함숫값을 산출한다.",
+        "decisiveStep": "f(4) = 2*4 - 1 = 7 계산",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그래프",
+        "rpmL3Label": "함수의 뜻과 함숫값",
+        "rpmL4Label": "함숫값 구하기",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그래프",
+          "l3": "함수의 뜻과 함숫값",
+          "l4": "함숫값 구하기"
+        },
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 2,
+      "sourceUid": "qid_v1_129c8ea42d8da49427f9e91087c098223d7c16c0d2b0fcc9a9a2f34a102171ee",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE",
+        "templateKey": "TPL_FUNCTION_VALUE_SUBSTITUTION",
+        "why": "함수식에 정수를 대입하여 함숫값을 구하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수"
+        ],
+        "goal": [
+          "함숫값"
+        ],
+        "method": [
+          "대입",
+          "사칙연산"
+        ],
+        "condition": [
+          "자연수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD conceptClusterKey FUNCTION_VALUE_EVALUATION is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD conceptClusterKey FUNCTION_VALUE_EVALUATION is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_042d63647aa05ca44746f07814d5c0a4cca6c2a5c4a1364ea1585484346db09a",
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "일차함수의 기본 정의를 묻는 1단계 문항",
+        "primaryMethod": "식의 동류항을 정리하여 y = ax + b (a != 0) 형태인지 확인한다.",
+        "decisiveStep": "1차 다항식 형태인 y = 3x - 5 판별",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그래프",
+        "rpmL3Label": "일차함수의 뜻과 그래프",
+        "rpmL4Label": "일차함수의 뜻",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그래프",
+          "l3": "일차함수의 뜻과 그래프",
+          "l4": "일차함수의 뜻"
+        },
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_EXPANSION"
+        ],
+        "conditionKeys": [
+          "COND_REAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 3,
+      "sourceUid": "qid_v1_5f1d045139a5d807ddc67c0792f73f0f6090cd16564b40eb8b6caa68d3b3a815",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_DEFINITION",
+        "templateKey": "TPL_LINEAR_FUNCTION_IDENTIFICATION",
+        "why": "다양한 대수식 중에서 일차함수를 식별하는 기본 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수"
+        ],
+        "goal": [
+          "일차함수"
+        ],
+        "method": [
+          "동류항"
+        ],
+        "condition": [
+          "상수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD conceptClusterKey LINEAR_FUNCTION_IDENTIFICATION is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD conceptClusterKey LINEAR_FUNCTION_IDENTIFICATION is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_a36d83f0f62cda828b5df93ff16949d818dc357933c827da53694385a573ee6c",
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "평행이동 공식을 그대로 대입하는 1단계 기본 문항",
+        "primaryMethod": "y축 방향 평행이동 공식 y = ax + b를 직접 적용한다.",
+        "decisiveStep": "y = 4x - 5 작성",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그래프",
+        "rpmL3Label": "일차함수의 그래프",
+        "rpmL4Label": "일차함수의 그래프의 평행이동",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "일차함수의 그래프의 평행이동"
+        },
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 4,
+      "sourceUid": "qid_v1_4ea12ccaeee048d1167ad0805300c6dacc3c33fbf76a1395bd1f94ece2d1e4ac",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_TRANSLATION",
+        "templateKey": "TPL_LINEAR_TRANSLATION_Y_AXIS",
+        "why": "y축 평행이동 시 상수항 변환을 묻는 기본 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수",
+          "평행"
+        ],
+        "goal": [
+          "일차함수"
+        ],
+        "method": [
+          "사칙연산"
+        ],
+        "condition": [
+          "정수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD conceptClusterKey LINEAR_FUNCTION_Y_AXIS_TRANSLATION is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD conceptClusterKey LINEAR_FUNCTION_Y_AXIS_TRANSLATION is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_8189d563cb4adaa6c6c48c90a4f6813b10a08768a8e963d6d898e308a9d321fd",
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "기울기와 절편의 계수 정의를 직접 확인하는 1단계 문항",
+        "primaryMethod": "표준형 y = mx + n에서 기울기와 y절편을 식별하여 합산한다.",
+        "decisiveStep": "a=4, b=2 도출 후 a+b=6 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그래프",
+        "rpmL3Label": "일차함수의 그래프",
+        "rpmL4Label": "기울기와 y절편",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기와 y절편"
+        },
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 5,
+      "sourceUid": "qid_v1_4bae0c6af803324d40592b0c352a7dde6c80ae644fc9631825ec65c2c010153a",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_SLOPE_INTERCEPT_SUM",
+        "templateKey": "TPL_LINEAR_COEFFICIENTS_READING",
+        "why": "일차함수 식에서 기울기와 y절편을 판독하여 합을 구하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수"
+        ],
+        "goal": [
+          "식의값"
+        ],
+        "method": [
+          "사칙연산"
+        ],
+        "condition": [
+          "자연수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD conceptClusterKey LINEAR_FUNCTION_SLOPE_Y_INTERCEPT_SUM is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD conceptClusterKey LINEAR_FUNCTION_SLOPE_Y_INTERCEPT_SUM is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_8cb2e5936761958988dde146a8c66fd5043687659929bbe502e7bba681bab24f",
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "일차함수의 기본 그래프 성질을 참/거짓으로 검증하는 문항",
+        "primaryMethod": "기울기, 절편, 증가/감소, 사분면 통과 및 평행 조건을 종합 분석한다.",
+        "decisiveStep": "기울기가 -3으로 같아 y = -3x와 평행함을 확인",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그래프",
+        "rpmL3Label": "일차함수의 그래프의 성질",
+        "rpmL4Label": "일차함수의 그래프의 평행과 일치",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그래프",
+          "l3": "일차함수의 그래프의 성질",
+          "l4": "일차함수의 그래프의 평행과 일치"
+        },
+        "crossConceptKeys": [
+          "CC_COORDINATE_PLANE"
+        ],
+        "conditionKeys": [
+          "COND_REAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 6,
+      "sourceUid": "qid_v1_06136f922c1bf1ad3996418ba16d2c26d68f2bffcf0c0b0867460ec4b4ef8650",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_PROPERTIES",
+        "templateKey": "TPL_LINEAR_FUNCTION_MULTI_PROPERTIES",
+        "why": "일차함수의 절편, 기울기, 평행성, 사분면을 종합 점검하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수",
+          "평행"
+        ],
+        "goal": [
+          "일차함수"
+        ],
+        "method": [
+          "대소비교"
+        ],
+        "condition": [
+          "상수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD conceptClusterKey LINEAR_FUNCTION_PROPERTIES_AUDIT is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD conceptClusterKey LINEAR_FUNCTION_PROPERTIES_AUDIT is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_8042183d902cdfd6bbe08a02583f5b0669c45d260daaa3452625e1cd7e2a88ac",
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "기울기 정의와 비례 관계식을 적용하는 표준 문항",
+        "primaryMethod": "기울기 공식 Delta y / Delta x를 세우고 새로운 x 변화량에 곱한다.",
+        "decisiveStep": "기울기 -2/3 도출 후 Delta y = (-2/3) * 9 = -6 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그래프",
+        "rpmL3Label": "일차함수의 그래프",
+        "rpmL4Label": "기울기의 뜻",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기의 뜻"
+        },
+        "crossConceptKeys": [
+          "CC_FRACTION_ARITHMETIC"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 7,
+      "sourceUid": "qid_v1_ae1e84dc8ae07e4715d9edaf21eac7ed3d1dabd87baab2925a7055f2810f2cb1",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_RATE_OF_CHANGE",
+        "templateKey": "TPL_SLOPE_CHANGE_PROPORTIONALITY",
+        "why": "기울기를 구하고 x의 증가량에 따른 y의 증가량을 계산하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수",
+          "기울기"
+        ],
+        "goal": [
+          "식의값"
+        ],
+        "method": [
+          "사칙연산"
+        ],
+        "condition": [
+          "정수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD conceptClusterKey SLOPE_RATE_OF_CHANGE_CALCULATION is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD conceptClusterKey SLOPE_RATE_OF_CHANGE_CALCULATION is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_070434d6d3bb08196ef56987403cf81707a8e45c474bc792669324c1b2ac920f",
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "평행과 y축 교점의 의미를 각각 해석해 계수를 결정하는 표준 문항",
+        "primaryMethod": "평행 조건에서 기울기를, y축 교점 조건에서 y절편을 각각 추출하여 곱한다.",
+        "decisiveStep": "a = -3, b = -3 도출 후 ab = 9 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그래프",
+        "rpmL3Label": "일차함수의 식 구하기",
+        "rpmL4Label": "기울기와 y절편이 주어진 일차함수의 식",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그래프",
+          "l3": "일차함수의 식 구하기",
+          "l4": "기울기와 y절편이 주어진 일차함수의 식"
+        },
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 8,
+      "sourceUid": "qid_v1_541a528be8a444ae0656931e87e7fb3a79ade703e9ed631a0b75cc2ae94ec323",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINE_FORMULATION_CONDITIONS",
+        "templateKey": "TPL_PARALLEL_AND_INTERCEPT_PRODUCT",
+        "why": "평행 조건과 y절편 조건을 조합해 계수 곱을 구하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수",
+          "평행"
+        ],
+        "goal": [
+          "식의값"
+        ],
+        "method": [
+          "사칙연산"
+        ],
+        "condition": [
+          "정수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD conceptClusterKey PARALLEL_AND_Y_INTERCEPT_CONCURRENCE is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD conceptClusterKey PARALLEL_AND_Y_INTERCEPT_CONCURRENCE is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_32a4c9d3d76a8ec8bee278f0d0f020a78f32bc47f99d32cbe3516fa72edd28d1",
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "두 절편으로부터 기울기를 구하고 함수식을 완성하는 표준 문항",
+        "primaryMethod": "두 절편 좌표 (-3, 0), (0, -6)으로 기울기를 구하고 y절편을 결합한다.",
+        "decisiveStep": "기울기 -2 산출 후 y = -2x - 6 완성",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그래프",
+        "rpmL3Label": "일차함수의 식 구하기",
+        "rpmL4Label": "x절편과 y절편이 주어진 일차함수의 식",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그래프",
+          "l3": "일차함수의 식 구하기",
+          "l4": "x절편과 y절편이 주어진 일차함수의 식"
+        },
+        "crossConceptKeys": [
+          "CC_COORDINATE_PLANE"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 9,
+      "sourceUid": "qid_v1_ed32fef7b15b04a3a675c484708327e93b7cf47df6f9c841e89493537c3692a3",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINE_FROM_INTERCEPTS",
+        "templateKey": "TPL_TWO_INTERCEPTS_LINEAR_EQUATION",
+        "why": "두 절편이 주어졌을 때 일차함수 식을 작성하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "x절편",
+          "y절편"
+        ],
+        "goal": [
+          "일차함수"
+        ],
+        "method": [
+          "사칙연산"
+        ],
+        "condition": [
+          "정수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD conceptClusterKey TWO_INTERCEPTS_LINE_EQUATION is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD conceptClusterKey TWO_INTERCEPTS_LINE_EQUATION is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_0ccb38ad01d5a74bfad8d4e88bc696026fb5869d352c4442290171eeb0a936ec",
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": null,
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "부호 추론과 제2함수의 개형 분석을 연계하는 2단계 심화 문항",
+        "primaryMethod": "지나지 않는 사분면으로부터 a, b 부호를 결정한 후 변형된 함수의 사분면 개형을 추론한다.",
+        "decisiveStep": "a>0, b>0 도출 후 기울기 음수, 절편 양수로 제3사분면 미경유 판정",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그래프",
+        "rpmL3Label": "일차함수의 그래프의 성질",
+        "rpmL4Label": "a, b의 부호와 일차함수의 그래프",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그래프",
+          "l3": "일차함수의 그래프의 성질",
+          "l4": "a, b의 부호와 일차함수의 그래프"
+        },
+        "crossConceptKeys": [
+          "CC_COORDINATE_PLANE"
+        ],
+        "conditionKeys": [
+          "COND_REAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 10,
+      "sourceUid": "qid_v1_5c8309093fdff364a8dc188732754316ae43891da247bccc98a4ae39560cc4b9",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_QUADRANT_ANALYSIS",
+        "templateKey": "TPL_QUADRANT_SIGN_ANALYSIS_LINEAR",
+        "why": "사분면 통과 조건으로부터 미정계수 부호를 유추하는 심화 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수"
+        ],
+        "goal": [
+          "일차함수"
+        ],
+        "method": [
+          "대소비교"
+        ],
+        "condition": [
+          "상수",
+          "양수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD conceptClusterKey QUADRANT_CONDITION_COEFFICIENT_SIGNS is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD conceptClusterKey QUADRANT_CONDITION_COEFFICIENT_SIGNS is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_5d2be1b39cac87bdc9f919b5ce514da8bb357080e98f662a4056326474117e1e",
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "동점 기하 모델링과 함숫값 역산 검증을 결합한 표준 합답형 문항",
+        "primaryMethod": "동점의 이동 거리를 일차식으로 나타내어 전체 도형 넓이에서 감산하여 관계식을 세운다.",
+        "decisiveStep": "y = -8x + 160 도출 및 y=100일 때 x=7.5 확인",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수의 활용",
+        "rpmL3Label": "일차함수의 활용",
+        "rpmL4Label": "도형에서의 일차함수의 활용",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수의 활용",
+          "l3": "일차함수의 활용",
+          "l4": "도형에서의 일차함수의 활용"
+        },
+        "crossConceptKeys": [
+          "CC_TRAPEZOID_AREA"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 11,
+      "sourceUid": "qid_v1_4b60b216146dbd490c527f16074315670f39939d3c3ef33024d1eeb5cd395d9d",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_MOVING_POINT_AREA",
+        "templateKey": "TPL_RECTANGLE_MOVING_POINT_TRAPEZOID",
+        "why": "동점 이동에 따른 사다리꼴 넓이 변화를 일차함수로 모델링하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "직사각형",
+          "사다리꼴"
+        ],
+        "goal": [
+          "넓이",
+          "일차함수"
+        ],
+        "method": [
+          "이항",
+          "사칙연산"
+        ],
+        "condition": [
+          "자연수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD subUnitKey M2-04-LINEAR_FUNCTION_APPLICATION is not current master key; retained source-supported M2-04-LINEAR_FUNCTION_BASIC. MD conceptClusterKey MOVING_POINT_GEOMETRIC_AREA_FUNCTION is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD subUnitKey M2-04-LINEAR_FUNCTION_APPLICATION is not current master key; retained source-supported M2-04-LINEAR_FUNCTION_BASIC. MD conceptClusterKey MOVING_POINT_GEOMETRIC_AREA_FUNCTION is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_b6d5d923e476731e9041ed6e0daf227768c9f0bb98d9926e9008e50c345c3692",
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "conceptClusterKey": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "미지수 개수와 차수의 정의를 직접 대조하는 1단계 문항",
+        "primaryMethod": "모든 항을 정리하여 ax + by = c (a!=0, b!=0) 꼴인지 확인한다.",
+        "decisiveStep": "3x - 5y = 7 의 미지수 2개 및 1차식 충족 확인",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "연립일차방정식",
+        "rpmL2Label": "연립일차방정식",
+        "rpmL3Label": "미지수가 2개인 일차방정식",
+        "rpmL4Label": "미지수가 2개인 일차방정식의 뜻",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "미지수가 2개인 일차방정식",
+          "l4": "미지수가 2개인 일차방정식의 뜻"
+        },
+        "crossConceptKeys": [
+          "CC_DEGREE_OF_POLYNOMIAL"
+        ],
+        "conditionKeys": [
+          "COND_REAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_42d22e6b3bc88dfe727cce2a2f3e98adbb8e52825e1bb085ceeb2e54b3375d3a",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_EQ_DEFINITION",
+        "templateKey": "TPL_TWO_VARIABLE_LINEAR_EQUATION_JUDGMENT",
+        "why": "미지수가 2개인 일차방정식을 식별하는 기본 개념 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차방정식"
+        ],
+        "goal": [
+          "일차방정식"
+        ],
+        "method": [
+          "동류항"
+        ],
+        "condition": [
+          "상수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD subUnitKey M2-03-LINEAR_SYSTEM_BASIC is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION. MD conceptClusterKey TWO_VARIABLE_LINEAR_EQUATION_DEFINITION is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD subUnitKey M2-03-LINEAR_SYSTEM_BASIC is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION. MD conceptClusterKey TWO_VARIABLE_LINEAR_EQUATION_DEFINITION is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_09b3089ecee3f2647f37af615bc24fe5ec3a42de0f358b9f3d0d02839fbad2ff",
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "conceptClusterKey": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "자연수 조건하의 해와 실수 전체에서의 직선 그래프 개념을 구별하는 표준 문항",
+        "primaryMethod": "해의 대입 검증, 자연수 해 카운팅, 실수 범위 그래프 연속성을 순차적으로 판별한다.",
+        "decisiveStep": "자연수 해 (1, 4), (2, 2) 2개로 유한함 확인 및 그래프가 직선임 확인",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 일차방정식",
+        "rpmL3Label": "일차방정식과 일차함수",
+        "rpmL4Label": "일차방정식의 해와 그래프",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식",
+          "l3": "일차방정식과 일차함수",
+          "l4": "일차방정식의 해와 그래프"
+        },
+        "crossConceptKeys": [
+          "CC_COORDINATE_PLANE"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 13,
+      "sourceUid": "qid_v1_edb3e124795d593ed14862450410c0c2307d511d84901a0042dc6f0216eeade4",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_SOLUTION_SET",
+        "templateKey": "TPL_LINEAR_EQ_SOLUTION_DOMAIN_PROPERTIES",
+        "why": "수 체계 조건에 따른 일차방정식 해의 개수와 그래프 연속성을 판별하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차방정식",
+          "해"
+        ],
+        "goal": [
+          "해"
+        ],
+        "method": [
+          "대입",
+          "사칙연산"
+        ],
+        "condition": [
+          "자연수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD subUnitKey M2-04-LINEAR_FUNCTION_EQ is not current master key; retained source-supported M2-04-LINEAR_FUNCTION_EQUATION. MD conceptClusterKey LINEAR_EQUATION_SOLUTION_SET_ANALYSIS is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD subUnitKey M2-04-LINEAR_FUNCTION_EQ is not current master key; retained source-supported M2-04-LINEAR_FUNCTION_EQUATION. MD conceptClusterKey LINEAR_EQUATION_SOLUTION_SET_ANALYSIS is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_fd84cd55cc604fa657be70d678de10dfc1e319cd6e4d9380377b006c514a2280",
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "conceptClusterKey": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "방정식을 함수형으로 바꾸어 여러 성질을 대조 판정하는 표준 문항",
+        "primaryMethod": "일차방정식을 표준형 일차함수로 변형하여 절편과 기울기 및 사분면을 판정한다.",
+        "decisiveStep": "y = -2/3x + 2 로부터 x절편 3, y절편 2로 1, 2, 4분면 통과 확인",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 일차방정식",
+        "rpmL3Label": "일차방정식과 일차함수",
+        "rpmL4Label": "일차방정식의 그래프",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식",
+          "l3": "일차방정식과 일차함수",
+          "l4": "일차방정식의 그래프"
+        },
+        "crossConceptKeys": [
+          "CC_COORDINATE_PLANE"
+        ],
+        "conditionKeys": [
+          "COND_REAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 14,
+      "sourceUid": "qid_v1_1e30ca44f64cb4f6b7d8fa139ed0ab49cd26fa93dce42bc1470b269f526aa79d",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_EQ_GRAPH",
+        "templateKey": "TPL_LINEAR_EQUATION_GRAPHICAL_AUDIT",
+        "why": "일차방정식을 함수 표준형으로 고쳐 그래프 성질을 검증하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차방정식"
+        ],
+        "goal": [
+          "일차함수"
+        ],
+        "method": [
+          "이항"
+        ],
+        "condition": [
+          "상수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD subUnitKey M2-04-LINEAR_FUNCTION_EQ is not current master key; retained source-supported M2-04-LINEAR_FUNCTION_EQUATION. MD conceptClusterKey LINEAR_EQUATION_GRAPH_PROPERTIES is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD subUnitKey M2-04-LINEAR_FUNCTION_EQ is not current master key; retained source-supported M2-04-LINEAR_FUNCTION_EQUATION. MD conceptClusterKey LINEAR_EQUATION_GRAPH_PROPERTIES is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_cfb49d02bc418a5b120f7738d031a986545349ed10ca81d9801e6d0f0bdc240c",
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "conceptClusterKey": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "x축에 평행한 직선의 형태 y=k를 이해하는 기초 1단계 문항",
+        "primaryMethod": "x축에 평행한 직선의 방정식 y=k에 지나는 점의 y좌표를 대입한다.",
+        "decisiveStep": "점 (0, -3)으로부터 y = -3 결정",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 일차방정식",
+        "rpmL3Label": "좌표축에 평행한 직선의 방정식",
+        "rpmL4Label": "x축에 평행한 직선의 방정식",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식",
+          "l3": "좌표축에 평행한 직선의 방정식",
+          "l4": "x축에 평행한 직선의 방정식"
+        },
+        "crossConceptKeys": [
+          "CC_COORDINATE_PLANE"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 15,
+      "sourceUid": "qid_v1_10f2c1a3c3c3ae904ba4662963dfbc205501849a144ee81e96a96531e91ae118",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_AXIS_PARALLEL_LINE",
+        "templateKey": "TPL_HORIZONTAL_LINE_FROM_POINT",
+        "why": "특정 점을 지나고 x축에 평행한 직선의 식을 구하는 기본 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차방정식",
+          "평행"
+        ],
+        "goal": [
+          "일차방정식"
+        ],
+        "method": [
+          "대입"
+        ],
+        "condition": [
+          "정수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD subUnitKey M2-04-LINEAR_FUNCTION_EQ is not current master key; retained source-supported M2-04-LINEAR_FUNCTION_EQUATION. MD conceptClusterKey HORIZONTAL_LINE_EQUATION is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD subUnitKey M2-04-LINEAR_FUNCTION_EQ is not current master key; retained source-supported M2-04-LINEAR_FUNCTION_EQUATION. MD conceptClusterKey HORIZONTAL_LINE_EQUATION is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_82913116537251f23591b092c85dc30a3cc1940e1885d028d274681773a4b29d",
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "conceptClusterKey": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "정수 대입 계산을 복수 방정식에 적용하여 판정하는 문항",
+        "primaryMethod": "주어진 순서쌍을 4개 식에 대입하여 등식이 성립하는 조합을 찾는다.",
+        "decisiveStep": "(가), (나)에서 등식 성립 확인",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "연립일차방정식",
+        "rpmL2Label": "연립일차방정식",
+        "rpmL3Label": "미지수가 2개인 일차방정식",
+        "rpmL4Label": "일차방정식의 해",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "미지수가 2개인 일차방정식",
+          "l4": "일차방정식의 해"
+        },
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 16,
+      "sourceUid": "qid_v1_57209bcd9e33fdd8b39c039c3039647e34145e2278d1d593d9b846d16d437c18",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_SOLUTION_MATCH",
+        "templateKey": "TPL_EQUATION_PAIR_BY_SOLUTION",
+        "why": "공통해를 만족하는 방정식을 역선별하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차방정식",
+          "해"
+        ],
+        "goal": [
+          "일차방정식"
+        ],
+        "method": [
+          "대입",
+          "사칙연산"
+        ],
+        "condition": [
+          "정수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD subUnitKey M2-03-LINEAR_SYSTEM_BASIC is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION. MD conceptClusterKey SOLUTION_PAIR_EQUATION_MATCHING is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD subUnitKey M2-03-LINEAR_SYSTEM_BASIC is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION. MD conceptClusterKey SOLUTION_PAIR_EQUATION_MATCHING is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_a46918ac37155d6ccf426be0c4a28337623406d45fbdbc1dcd0c800b5ee65ab6",
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "conceptClusterKey": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "대입법의 표준 풀이 과정을 적용하는 1단계 문항",
+        "primaryMethod": "x = y - 4로 정리하여 두 번째 식에 대입하여 일차방정식을 푼다.",
+        "decisiveStep": "5y = 15에서 y=3, x=-1 도출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "연립일차방정식",
+        "rpmL2Label": "연립일차방정식의 풀이",
+        "rpmL3Label": "연립일차방정식의 풀이",
+        "rpmL4Label": "대입법을 이용한 풀이",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 풀이",
+          "l3": "연립일차방정식의 풀이",
+          "l4": "대입법을 이용한 풀이"
+        },
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 17,
+      "sourceUid": "qid_v1_3b8eb836604523aaafa326ddeff3cd26119739a5d45b7d4cd8d8f65992b1cf5b",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM_SUBSTITUTION",
+        "templateKey": "TPL_LINEAR_SYSTEM_SUBSTITUTION_BASIC",
+        "why": "기본 대입법을 활용한 연립방정식 풀이 유형"
+      },
+      "item4slot": {
+        "given": [
+          "연립방정식"
+        ],
+        "goal": [
+          "해"
+        ],
+        "method": [
+          "대입법",
+          "이항"
+        ],
+        "condition": [
+          "정수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD subUnitKey M2-03-LINEAR_SYSTEM_SOLVE is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION. MD conceptClusterKey LINEAR_SYSTEM_SUBSTITUTION_BASIC is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD subUnitKey M2-03-LINEAR_SYSTEM_SOLVE is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION. MD conceptClusterKey LINEAR_SYSTEM_SUBSTITUTION_BASIC is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_7bb64a6085983dfd461f360027009706625572646c42682e526debdfcbc4495a",
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "conceptClusterKey": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "조건 분기와 계수 역산 및 연립방정식 풀이를 결합한 전형적 활용 문항",
+        "primaryMethod": "잘못 보지 않은 식에 각각의 해를 대입하여 원래 계수 a, b를 복원한 뒤 연립방정식을 푼다.",
+        "decisiveStep": "b=1, a=2 복원 후 2x-y=4, x+y=-1 풀어 x=1, y=-2 도출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "연립일차방정식",
+        "rpmL2Label": "연립일차방정식의 풀이",
+        "rpmL3Label": "연립일차방정식의 풀이",
+        "rpmL4Label": "계수를 잘못 보고 푼 문제",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 풀이",
+          "l3": "연립일차방정식의 풀이",
+          "l4": "계수를 잘못 보고 푼 문제"
+        },
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 18,
+      "sourceUid": "qid_v1_31039a9f001502e801a68a76ac357123c7ef1f08f08b012a03e8f7c2a44c12c4",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_MISREAD_COEFFICIENTS",
+        "templateKey": "TPL_MISREAD_COEFFICIENTS_SYSTEM_SOLVE",
+        "why": "계수를 잘못 본 조건으로부터 올바른 방정식을 재구성하여 해를 구하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "연립방정식",
+          "해"
+        ],
+        "goal": [
+          "해"
+        ],
+        "method": [
+          "대입",
+          "가감법"
+        ],
+        "condition": [
+          "정수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD subUnitKey M2-03-LINEAR_SYSTEM_SOLVE is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION. MD conceptClusterKey WRONGLY_VIEWED_COEFFICIENT_RESTORATION is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD subUnitKey M2-03-LINEAR_SYSTEM_SOLVE is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION. MD conceptClusterKey WRONGLY_VIEWED_COEFFICIENT_RESTORATION is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_82bfac25261430cf82d66ca3a8df74e0f7c97f68c275c4d495d57ed173fa7f4b",
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "conceptClusterKey": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "정수 계수화 변환과 가감법 풀이 절차를 요구하는 표준 문항",
+        "primaryMethod": "소수 식과 분수 식을 정수 계수로 변환한 후 가감법으로 해결한다.",
+        "decisiveStep": "2x-y=4, 2x+3y=12 로부터 x=3, y=2 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "연립일차방정식",
+        "rpmL2Label": "연립일차방정식의 풀이",
+        "rpmL3Label": "여러 가지 연립일차방정식",
+        "rpmL4Label": "계수가 소수 또는 분수인 연립방정식",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 풀이",
+          "l3": "여러 가지 연립일차방정식",
+          "l4": "계수가 소수 또는 분수인 연립방정식"
+        },
+        "crossConceptKeys": [
+          "CC_FRACTION_ARITHMETIC",
+          "CC_DECIMAL_ARITHMETIC"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 19,
+      "sourceUid": "qid_v1_5d22eeccd75ab71be15accacee6c64cc1be7d48989576f9c45533b80b5a8755b",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_SYSTEM_DECIMAL_FRACTION",
+        "templateKey": "TPL_DECIMAL_FRACTION_COEFFICIENTS_SYSTEM",
+        "why": "계수가 소수와 분수인 연립방정식을 정수화하여 푸는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "연립방정식"
+        ],
+        "goal": [
+          "해"
+        ],
+        "method": [
+          "가감법",
+          "사칙연산"
+        ],
+        "condition": [
+          "자연수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD subUnitKey M2-03-LINEAR_SYSTEM_SOLVE is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION. MD conceptClusterKey DECIMAL_FRACTION_COEFFICIENT_SYSTEM is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD subUnitKey M2-03-LINEAR_SYSTEM_SOLVE is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION. MD conceptClusterKey DECIMAL_FRACTION_COEFFICIENT_SYSTEM is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_afa22adcda41cd1db5eba6a4240d1ad94bb20d973d0f65feada12a5c4dda77f9",
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "conceptClusterKey": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "교점의 기하학적 의미를 대수적 해로 연결하는 기본 연계 문항",
+        "primaryMethod": "두 그래프의 교점이 연립방정식의 해임을 이용하여 미정계수 a, b를 구하고 합산한다.",
+        "decisiveStep": "a = -1, b = 2 도출 후 a+b = 1 계산",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 일차방정식",
+        "rpmL3Label": "두 일차방정식의 그래프와 연립방정식",
+        "rpmL4Label": "연립방정식의 해와 두 직선의 교점",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식",
+          "l3": "두 일차방정식의 그래프와 연립방정식",
+          "l4": "연립방정식의 해와 두 직선의 교점"
+        },
+        "crossConceptKeys": [
+          "CC_COORDINATE_PLANE"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 20,
+      "sourceUid": "qid_v1_8d422f0dee02cc17deb1ce77486024024d2cd96d63fa95cf27f5f06d74c14fc1",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_INTERSECTION_PARAMETERS",
+        "templateKey": "TPL_INTERSECTION_COORDINATE_SUBSTITUTION",
+        "why": "직선의 교점 좌표를 대입하여 미정계수의 합을 구하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "연립방정식",
+          "일차함수"
+        ],
+        "goal": [
+          "식의값"
+        ],
+        "method": [
+          "대입",
+          "사칙연산"
+        ],
+        "condition": [
+          "정수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD standardUnitKey M2-04 differed from source-supported M2-03; retained current supported source key. MD subUnitKey M2-04-LINEAR_FUNCTION_EQ is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION. MD conceptClusterKey INTERSECTION_POINT_SYSTEM_SOLUTION_SUM is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD standardUnitKey M2-04 differed from source-supported M2-03; retained current supported source key. MD subUnitKey M2-04-LINEAR_FUNCTION_EQ is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION. MD conceptClusterKey INTERSECTION_POINT_SYSTEM_SOLUTION_SUM is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_1dc72011e42fd0c55d550e2c17c4177f54fde6bf26ce2519aecb3e1d68af85c2",
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "conceptClusterKey": null,
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "평행과 일치의 기하학적 위치 관계를 2개의 대수 방정식으로 변환하여 해결하는 심화 문항",
+        "primaryMethod": "평행 조건(기울기 일치)과 일치 조건(계수비 일치)을 연립하여 a, b를 구한다.",
+        "decisiveStep": "a = -b - 1 과 2a = -b + 5 연립하여 b = -7, a = 6 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 일차방정식",
+        "rpmL3Label": "두 일차방정식의 그래프와 연립방정식",
+        "rpmL4Label": "해가 특수한 연립방정식과 두 직선의 위치 관계",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식",
+          "l3": "두 일차방정식의 그래프와 연립방정식",
+          "l4": "해가 특수한 연립방정식과 두 직선의 위치 관계"
+        },
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 21,
+      "sourceUid": "qid_v1_a1cfc88955e709008f4d830e0754ffc72d98e54816c9342657633f638e457145",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_SPECIAL_LINES_CONDITIONS",
+        "templateKey": "TPL_PARALLEL_AND_COINCIDENT_SYSTEM",
+        "why": "두 직선의 평행과 일치 조건을 결합하여 미정계수를 연립방정식으로 푸는 심화 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차방정식",
+          "평행"
+        ],
+        "goal": [
+          "상수"
+        ],
+        "method": [
+          "가감법",
+          "사칙연산"
+        ],
+        "condition": [
+          "상수",
+          "정수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD standardUnitKey M2-04 differed from source-supported M2-03; retained current supported source key. MD subUnitKey M2-04-LINEAR_FUNCTION_EQ is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION. MD conceptClusterKey PARALLEL_AND_COINCIDENT_LINES_SIMULTANEOUS is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD standardUnitKey M2-04 differed from source-supported M2-03; retained current supported source key. MD subUnitKey M2-04-LINEAR_FUNCTION_EQ is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION. MD conceptClusterKey PARALLEL_AND_COINCIDENT_LINES_SIMULTANEOUS is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_824d15e245758e518b860f22fae9dddc56145bfecad14faa7e3c6deb7841d641",
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "초깃값과 기울기를 판독해 식을 작성하고 일차방정식을 푸는 표준 서술형 문항",
+        "primaryMethod": "표에서 초깃값과 단위 시간당 변화율을 읽어 일차함수 식을 세우고 특정 함숫값에 대한 x를 구한다.",
+        "decisiveStep": "y = 4x + 10 도출 후 90 = 4x + 10에서 x = 20분 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수의 활용",
+        "rpmL3Label": "일차함수의 활용",
+        "rpmL4Label": "온도에 대한 일차함수의 활용",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수의 활용",
+          "l3": "일차함수의 활용",
+          "l4": "온도에 대한 일차함수의 활용"
+        },
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 22,
+      "sourceUid": "qid_v1_8601d5596c641c72210da62ea12a4110207141d97e62ccc7db260c2b017d6000",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_TEMPERATURE_LINEAR_MODEL",
+        "templateKey": "TPL_TEMPERATURE_TIME_LINEAR_EQUATION",
+        "why": "온도 변화 표를 일차함수로 모델링하여 목표 시간에 도달하는 값을 구하는 실생활 서술형 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수"
+        ],
+        "goal": [
+          "일차함수",
+          "자연수"
+        ],
+        "method": [
+          "대입",
+          "사칙연산"
+        ],
+        "condition": [
+          "자연수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD subUnitKey M2-04-LINEAR_FUNCTION_APPLICATION is not current master key; retained source-supported M2-04-LINEAR_FUNCTION_BASIC. MD conceptClusterKey TEMPERATURE_INCREASE_LINEAR_FUNCTION_APPLICATION is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD subUnitKey M2-04-LINEAR_FUNCTION_APPLICATION is not current master key; retained source-supported M2-04-LINEAR_FUNCTION_BASIC. MD conceptClusterKey TEMPERATURE_INCREASE_LINEAR_FUNCTION_APPLICATION is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_19a9904f4d1107512bca22796a76481f6f50b6a7451771f6009b933f16e30ec1",
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "subUnit": "연립일차방정식의 활용",
+        "conceptClusterKey": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "미지수 정의, 관계식 수립, 가감법 풀이 및 해 검증의 서술형 4단계를 수행하는 문항",
+        "primaryMethod": "현재 나이와 n년 후 나이의 조건을 미지수로 설정하고 연립방정식을 세워 가감법으로 푼다.",
+        "decisiveStep": "x - y = 6, x - 2y = -1 연립하여 y=7, x=13 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "연립일차방정식",
+        "rpmL2Label": "연립일차방정식의 활용",
+        "rpmL3Label": "실생활에 대한 문제",
+        "rpmL4Label": "나이에 대한 문제",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "실생활에 대한 문제",
+          "l4": "나이에 대한 문제"
+        },
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 23,
+      "sourceUid": "qid_v1_fdd7b1346f55c2dca017471ca8f6ad61dd0d0d8110c0a7511a3e4bbbe56431a5",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_AGE_WORD_PROBLEM",
+        "templateKey": "TPL_AGE_DIFFERENCE_AND_FUTURE_RATIO",
+        "why": "나이 차이와 미래 시점의 배수 관계를 연립일차방정식으로 해결하는 대표 서술형 유형"
+      },
+      "item4slot": {
+        "given": [
+          "연립방정식",
+          "자연수"
+        ],
+        "goal": [
+          "해"
+        ],
+        "method": [
+          "가감법",
+          "대입"
+        ],
+        "condition": [
+          "자연수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD subUnitKey M2-03-LINEAR_SYSTEM_APPLICATION is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD. MD conceptClusterKey AGE_RELATION_LINEAR_SYSTEM is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD subUnitKey M2-03-LINEAR_SYSTEM_APPLICATION is not current master key; retained source-supported M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD. MD conceptClusterKey AGE_RELATION_LINEAR_SYSTEM is absent from current conceptCluster master; omitted pending authorized registration/review."
+    },
+    {
+      "questionUid": "qid_v1_3b1f5eea0e9a7730df8f40042ee36c79f2a16fe4804849d6842dd5de2d4dc7da",
+      "sourceOrdinal": 24,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "conceptClusterKey": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "절편 계산, 연립방정식 교점 도출, 도형 넓이 산출의 3단계를 순차적으로 서술하는 문항",
+        "primaryMethod": "두 직선의 x절편으로 밑변 길이를 구하고 연립방정식으로 교점의 y좌표를 구해 삼각형 넓이를 계산한다.",
+        "decisiveStep": "밑변 10, 교점 (2, 4)의 y좌표 4를 구해 넓이 1/2 * 10 * 4 = 20 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 일차방정식",
+        "rpmL3Label": "두 일차방정식의 그래프와 연립방정식",
+        "rpmL4Label": "두 직선과 좌표축으로 둘러싸인 도형의 넓이",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식",
+          "l3": "두 일차방정식의 그래프와 연립방정식",
+          "l4": "두 직선과 좌표축으로 둘러싸인 도형의 넓이"
+        },
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA",
+          "CC_COORDINATE_PLANE"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 24,
+      "sourceUid": "qid_v1_8b789787a15c89885b99fe4ea5fc68060d94d473639183e7f0938474dc1d7ff1",
+      "sourceFileBlobSha1": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINES_ENCLOSED_AREA",
+        "templateKey": "TPL_TWO_LINES_X_AXIS_TRIANGLE_AREA",
+        "why": "두 직선과 x축이 이루는 삼각형의 절편과 교점 높이로 넓이를 구하는 대표 서술형 유형"
+      },
+      "item4slot": {
+        "given": [
+          "일차방정식",
+          "삼각형"
+        ],
+        "goal": [
+          "넓이"
+        ],
+        "method": [
+          "가감법",
+          "사칙연산"
+        ],
+        "condition": [
+          "자연수"
+        ]
+      },
+      "hold": "Official resolver and identity-map / metadata registration have not been run. Metadata classification debt: MD subUnitKey M2-04-LINEAR_FUNCTION_EQ is not current master key; retained source-supported M2-04-LINEAR_FUNCTION_EQUATION. MD conceptClusterKey TWO_LINES_AND_AXIS_ENCLOSED_AREA is absent from current conceptCluster master; omitted pending authorized registration/review.",
+      "reason": "MD subUnitKey M2-04-LINEAR_FUNCTION_EQ is not current master key; retained source-supported M2-04-LINEAR_FUNCTION_EQUATION. MD conceptClusterKey TWO_LINES_AND_AXIS_ENCLOSED_AREA is absent from current conceptCluster master; omitted pending authorized registration/review."
+    }
+  ],
+  "changeLog": [
+    {
+      "sourceOrdinal": 10,
+      "field": "content",
+      "before": "The graph does not pass quadrant IV.",
+      "after": "It does not pass quadrant IV and intersects the positive y-axis.",
+      "reason": "The prior condition permits b=0, making y=-b/a the x-axis and the requested missing quadrant non-unique."
+    },
+    {
+      "sourceOrdinal": 11,
+      "field": "content",
+      "before": "Rectangle width/height not assigned to named sides AB/BC.",
+      "after": "AB=8 cm and BC=20 cm explicit.",
+      "reason": "The solution uses perpendicular height AB=8 and BP along BC; explicit sides remove ambiguity."
+    },
+    {
+      "sourceOrdinal": "all",
+      "field": "metadata keys",
+      "before": "MD candidate keys carried as supplied.",
+      "after": "Unsupported subUnitKey values mapped to same-question source-supported keys; unregistered conceptClusterKey values omitted.",
+      "reason": "Those keys are absent from current master, so they are not written as canonical values; pending authorized metadata resolution."
+    }
+  ],
+  "reviewEvidence": {
+    "independentMathReview": "NOT_RUN",
+    "localSelfCheck": "PASS_WITH_Q10_Q11_REPAIRS",
+    "reviewScope": "Recomputed outcomes for all 24 items from final stems and checked key solutions. Q10 includes b=0 edge case fix; Q11 yields area 160−8x, hence y=100 at x=7.5. Score sum 100. This is local self-check only.",
+    "reviewer": "Codex local self-check; separate reviewer not run."
+  }
+}
