@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "19"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "CF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "AB",
+        "text": "12"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "BC",
+        "text": "8"
+      },
+      {
+        "id": "de",
+        "ownerSegment": "DE",
+        "text": "15"
+      }
+    ]
+  },
+  "caption": "AD∥BE∥CF · 두 직선 위 A,B,C와 D,E,F · 길이 단위 cm",
+  "sourceQuote": "Actual Q9 three parallels and AB12 BC8 DE15",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "Actual Q9 three parallels and AB12 BC8 DE15",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "newVisualInformation": []
+}
