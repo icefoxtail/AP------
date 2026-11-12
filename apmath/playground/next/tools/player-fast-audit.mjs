@@ -245,6 +245,15 @@ try {
           row.firstFailureCaptures.push({label,checks:failed,file:row.screenshots.at(-1)});
         };
         const settle=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+        const stableAspect=async(label)=>{
+          await page.locator('.apl-stage').evaluate(e=>Promise.all(e.getAnimations({subtree:true}).filter(a=>Number.isFinite(a.effect?.getComputedTiming().endTime)).map(a=>a.finished.catch(()=>{}))));
+          await settle();
+          const dimensions=await page.evaluate(()=>{const c=document.querySelector('canvas'),r=c.getBoundingClientRect();return {width:c.width,height:c.height,cssWidth:r.width,cssHeight:r.height,ratioX:c.width/r.width,ratioY:c.height/r.height};});
+          const first=row.checks.length;
+          check(`${label} canvas bitmap aspect matches displayed canvas`,Math.abs(dimensions.ratioX/dimensions.ratioY-1)<.02,dimensions);
+          await captureFailed(`${label}-aspect`,first);
+          return dimensions;
+        };
         const inspect=async(label,{caption=false,final=false,entry=false}={})=>{
           const checkStart=row.checks.length;
           const f=await page.evaluate(observeFrame); f.label=label;
@@ -360,6 +369,7 @@ try {
           }
           await page.evaluate(()=>lab.video.finish());await settle();
           await page.locator('.apl-vend:visible').evaluate(e=>Promise.all(e.getAnimations({subtree:true}).filter(a=>Number.isFinite(a.effect.getComputedTiming().endTime)).map(a=>a.finished.catch(()=>{}))));
+          row.finalAspect=await stableAspect('ended');
           row.final=await inspect('seek-ended',{final:true});
           check('native finish shows end card',await page.locator('.apl-vend:visible').count()===1,{});
           if(config.capture)await shot('ended');
@@ -400,13 +410,10 @@ try {
           if(restore.lessonReview.length)review('inactive lesson parameter changes need semantic review',restore.lessonReview);
           await captureFailed('restored',restoreCheckStart);
           if(config.capture)await shot('restored');
-          if(config.captureStableRestore){
-            await page.locator('.apl-stage').evaluate(e=>Promise.all(e.getAnimations({subtree:true}).filter(a=>Number.isFinite(a.effect?.getComputedTiming().endTime)).map(a=>a.finished.catch(()=>{}))));
-            await settle();
-            row.stableRestore=await page.evaluate(()=>{const c=document.querySelector('canvas'),r=c.getBoundingClientRect();return {width:c.width,height:c.height,cssWidth:r.width,cssHeight:r.height,ratioX:c.width/r.width,ratioY:c.height/r.height};});
-            check('stable restored canvas bitmap aspect matches displayed canvas',Math.abs(row.stableRestore.ratioX/row.stableRestore.ratioY-1)<.02,row.stableRestore);
-            await shot('restored-stable');
-          }
+          // All lessons share the close/layout lifecycle. Measure every restored
+          // bitmap; retain additional screenshots only for selected visual risks.
+          row.stableRestore=await stableAspect('stable restored');
+          if(config.captureStableRestore)await shot('restored-stable');
           // Actual playback is kept separate from seek/finish coverage.
           for(const multiplier of [...(config.playback?[qaMultiplier]:[]),...(config.normalPlayback?[1]:[])]){
             await page.evaluate(({i,rate})=>{lab.video.close();lab.video._setExplored(false);lab.goScene(i);lab.video.rate=rate;}, {i:unit.i,rate:row.defaultRate*multiplier});
@@ -462,8 +469,16 @@ try {
             await page.locator('.apl-vctl .primary:visible').click();
             await page.waitForFunction(()=>lab.video.state==='playing'&&lab.video.t>.25,null,{timeout:5000});
             check('normal UI resume advances native clock',true);
-            await page.evaluate(()=>{lab.video.pause();lab.video.seek(lab.video.cs.length/2);});await settle();
+            const midClosePrepared=await page.evaluate(()=>{
+              lab.video.pause();const cs=lab.video.cs,half=cs.length/2;
+              const candidates=[half,...cs.says.map(s=>(s.at+s.end)/2)];
+              const time=candidates.find(t=>t>0&&t<cs.length&&APLab.videoCore.pinnedAt(cs,t).length>0)??half;
+              lab.video.seek(time);return {time,expectedPins:APLab.videoCore.pinnedAt(cs,time).length};
+            });await settle();
+            midClosePrepared.actualPins=await page.evaluate(()=>lab.video.ui.pins.childElementCount);
+            check('mid-close pin setup matches compiled timeline',midClosePrepared.actualPins===midClosePrepared.expectedPins,midClosePrepared);
             await page.locator('.apl-vctl [aria-label="영상 닫고 직접 해 보기"]:visible').click();await settle();
+            const midCloseAspect=await stableAspect('mid-close restored');
             const midClose=await page.evaluate(()=>({state:lab.video.state,raf:lab.video._raf,tab:lab.tab,dragging:lab.s.dragging,lessonOn:lab.s.lessonOn,pins:lab.video.ui.pins.childElementCount,
               mismatch:Object.entries(lab._ctls||{}).filter(([k,c])=>Math.abs(+c.input.value-lab.s[k])>(+c.input.step||.001)/2+1e-6).map(([k])=>k)}));
             check('mid-chapter UI close restores exploration',midClose.state==='idle'&&midClose.raf===0&&midClose.tab==='explore'&&!midClose.dragging&&midClose.lessonOn===undefined&&!midClose.pins&&!midClose.mismatch.length,midClose);
@@ -474,7 +489,7 @@ try {
             const nextState=await page.evaluate(()=>({index:lab.video.index,lessonIndex:lab.video.lessonIndex,state:lab.video.state,toc:!!lab.toc?.isOpen}));
             check('end-card next opens the correct following lesson or contents',next?nextState.index===next.i&&nextState.lessonIndex===next.k&&nextState.state==='playing':nextState.state==='idle'&&nextState.toc,{expected:next,actual:nextState});
             await page.evaluate(()=>{lab.video.close();if(lab.toc?.isOpen)lab.toc.close();});await settle();
-            row.controls={method:'NATIVE_UI_BUTTONS_AND_TRUSTED_KEYBOARD_RANGE',paused,frozen,forward,rewind,replay,midClose,next,nextState};
+            row.controls={method:'NATIVE_UI_BUTTONS_AND_TRUSTED_KEYBOARD_RANGE',paused,frozen,forward,rewind,replay,midClosePrepared,midCloseAspect,midClose,next,nextState};
           }
           await page.evaluate(rate=>{lab.video.rate=rate;},row.defaultRate);
           check('no page runtime/resource/invalid-script errors',!runtimeErrors.length&&!resourceErrors.length&&!warnings.length,{runtimeErrors,resourceErrors,warnings});

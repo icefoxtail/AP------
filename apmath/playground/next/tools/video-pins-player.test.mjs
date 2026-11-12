@@ -129,7 +129,7 @@ function setup(width = 390, height = 844, reduced = false) {
   };
   const player = new sandbox.APLab.Player(lab);
   const flush = () => { const batch = [...frames.values()]; frames.clear(); batch.forEach(fn => fn(5000)); };
-  return { player, lab, document, counters, viewport, flush };
+  return { player, lab, document, counters, viewport, flush, requestFrame: sandbox.requestAnimationFrame };
 }
 function pinTex(player) { return player.ui.pins.children.map(row => row.innerHTML.match(/<annotation encoding="application\/x-tex">([^<]*)<\/annotation>/)?.[1]); }
 function start(player, index = 0, lesson = 0) { assert.equal(player.play(index, lesson), true); player.pause(); }
@@ -188,6 +188,65 @@ test('pin changes coalesce board/ink size updates and reduced-motion seeks use t
   const reduced = setup(768, 1024, true).player; reduced.play(0, 0);
   assert.equal(reduced.stepMode, true); assert.equal(reduced.state, 'paused'); assert.deepEqual(pinTex(reduced), []);
   reduced.skip(1); assert.deepEqual(pinTex(reduced), ['x+2=5']); reduced.skip(1); assert.deepEqual(pinTex(reduced), ['x+2=5', 'x=5-2']); reduced.skip(-1); assert.deepEqual(pinTex(reduced), ['x+2=5']);
+});
+
+test('closing an ended lesson measures the canvas after rebuilt controls render, without a ResizeObserver retry', () => {
+  const { player: p, lab, flush, requestFrame } = setup(1440, 900);
+  start(p); p.seek(14); p.finish(); flush(); flush();
+  // Shell panel reconstruction temporarily removes the control dock. Its next
+  // render restores it. The final host size can equal the last observed size,
+  // so an extra ResizeObserver callback is not a reliable repair mechanism.
+  let hostHeight = 566, bitmapHeight = 566, renderPending = false;
+  const measured = [];
+  lab._buildPanel = () => { hostHeight = 844; };
+  lab.invalidate = () => {
+    if (renderPending) return;
+    renderPending = true;
+    requestFrame(() => { renderPending = false; hostHeight = 566; });
+  };
+  lab.board.resize = () => {
+    const previous = bitmapHeight;
+    measured.push(hostHeight); bitmapHeight = hostHeight;
+    return previous !== bitmapHeight;
+  };
+  p.close();
+  assert.equal(hostHeight, 844, 'panel rebuild has temporarily removed the dock');
+  flush();
+  assert.equal(hostHeight, 566, 'scheduled render restores the controls');
+  assert.equal(bitmapHeight, hostHeight, 'explicit player resize uses the restored host height');
+  assert.deepEqual(measured, [566], 'the temporary dock-free height is never copied to the bitmap');
+  assert.equal(p.state, 'idle'); assert.equal(lab.tab, 'explore');
+  assert.equal(lab.s.lessonOn, undefined); assert.equal(p.rate, 1.5);
+  flush();
+  assert.equal(bitmapHeight, hostHeight, 'correct aspect persists without a resize observer');
+});
+
+test('closing mid-lesson with visible pins reschedules the pending resize after the control-restoration render', () => {
+  const { player: p, lab, flush, requestFrame } = setup(1440, 900);
+  start(p); p.seek(14); flush(); flush();
+  assert.equal(p.ui.pins.children.length, 3, 'the lesson has visible pinned formulas before close');
+  let hostHeight = 650, bitmapHeight = 650, renderPending = false;
+  const measured = [];
+  lab._buildPanel = () => { hostHeight = 844; };
+  lab.invalidate = () => {
+    if (renderPending) return;
+    renderPending = true;
+    requestFrame(() => { renderPending = false; hostHeight = 566; });
+  };
+  lab.board.resize = () => {
+    const previous = bitmapHeight;
+    measured.push(hostHeight); bitmapHeight = hostHeight;
+    return previous !== bitmapHeight;
+  };
+  p.close();
+  assert.equal(p.ui.pins.hidden, true); assert.equal(p.ui.pins.children.length, 0);
+  flush();
+  assert.equal(hostHeight, 566, 'the exploration controls have rendered');
+  assert.equal(bitmapHeight, hostHeight, 'clearing pins must not resize before the restored controls');
+  assert.deepEqual(measured, [566], 'one final resize replaces the earlier pin-removal request');
+  assert.equal(p.state, 'idle'); assert.equal(lab.s.lessonOn, undefined); assert.equal(p.rate, 1.5);
+  flush();
+  assert.equal(bitmapHeight, hostHeight, 'no ResizeObserver retry is needed');
 });
 
 // Parse stylesheet block nesting and select the actual responsive declarations.

@@ -709,10 +709,12 @@
       this.ui.end.hidden = true;
       this.lab.ui.stage.append(this.ui.bar); // 패널 재구성 전에 재생 막대를 보존
       document.body.classList.remove('apl-vend-on', 'apl-vplaying');
-      this._layout(false);
       const deferred = this._deferBuild;
       this._deferBuild = false;
       if (rebuild || deferred) { this.lab.tab = 'explore'; this.lab._buildPanel(); this.lab.invalidate(true); this.lab._saveHashSoon(); }
+      // 핀 제거 등에서 먼저 예약한 크기 조정도 복원 렌더 뒤로 옮깁니다.
+      if (this._resizeRaf) { cancelAnimationFrame(this._resizeRaf); this._resizeRaf = 0; }
+      this._layout(false); // 조작부를 복원하는 렌더 뒤에 캔버스 높이를 측정합니다.
       if (!this._internal) this._syncEntry(); // 나갈 때는 값을 되돌리지 않음(✕ 뒤에는 정리된 값 그대로 탐구)
     }
     close() {

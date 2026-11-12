@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "taskId": "fb948d9b-a2eb-5e22-b140-638e44ec7da1",
-  "parentCommit": "87b942df23c8a1ecfa979bcf27b0948702eff77f",
+  "parentCommit": "46e0a61a68b28097420d968208b66f59a624a939",
   "stage1": "COMPLETE",
   "stage2": "IN_PROGRESS",
   "stage3": "IN_PROGRESS",
@@ -39,20 +39,20 @@
     "totalLabs": 58,
     "totalScenes": 1067,
     "totalLessons": 2989,
-    "priorViewportUniverse": 3099,
-    "affectedExistingViewportUnits": 211,
-    "retainedPriorPairsForEvidenceResolution": 2888,
-    "newAdditionalViewportUnits": 4,
-    "selectedUniqueLabs": 6,
-    "selectedUniqueScenes": 40,
-    "selectedUniqueLessons": 187,
-    "selectedViewportUnits": 215,
-    "selectedPrimaryMobileUnits": 187,
-    "capturedViewportUnits": 47,
-    "nativeContinuousViewportUnits": 37,
-    "normalSpeedViewportUnits": 0,
+    "selectedUniqueLabs": 58,
+    "selectedUniqueScenes": 1067,
+    "selectedUniqueLessons": 2989,
+    "selectedViewportUnits": 3103,
+    "selectedPrimaryMobileUnits": 2989,
+    "additionalViewportUnits": 114,
+    "capturedViewportUnits": 273,
+    "nativeContinuousViewportUnits": 187,
+    "normalSpeedViewportUnits": 2,
+    "stableRestoreChecksRequired": 3103,
+    "browserExclusionAfterSharedRuntimeChange": 0,
+    "priorMathEvidenceReusedLessons": 767,
     "status": "NOT_RUN",
-    "manifestSha256": "7121cc5479c3b832d7a1276050f9f46c2fbb61e82cac8f62825059b1fa9b043f"
+    "manifestSha256": "7ad9d6d44bce5fb9ec63fa7d77ec94dc276622df48c38462eba28342a754c6be"
   },
   "harnessChanges": [
     "Preserve startup errors and continue to other labs",
@@ -114,7 +114,7 @@
     "Seek samples and native clock caption indices do not prove every rendered frame, physical devices, audio synchronization, reading pace or learning effectiveness.",
     "Independent228-image review is risk-selected and not an all-lesson visual PASS."
   ],
-  "nextAction": "Execute only the six changed rendering closures and finish independent exact-image reviews; preserve phase2 and phase3 completion commits separately.",
+  "nextAction": "Run final shared-close regression, independently inspect repaired restore and changed risks, bind exact current-source review evidence, then commit Stage2 and Stage3 completion separately.",
   "completedSharedRegressionSelection": {
     "totalLabs": 58,
     "totalScenes": 1067,
@@ -176,8 +176,8 @@
     }
   ],
   "checkpointAt": "2026-11-12T07:43:34.200654+00:00",
-  "checkpointKind": "THIRD_LABEL_FIX_AWAITING_NATIVE_RECHECK",
-  "latestTestedSourceSha": "87b942df23c8a1ecfa979bcf27b0948702eff77f",
+  "checkpointKind": "FINAL_SHARED_RESTORE_FIX_AWAITING_NATIVE_REGRESSION",
+  "latestTestedSourceSha": "46e0a61a68b28097420d968208b66f59a624a939",
   "overallStatus": "IN_PROGRESS",
   "latestRawQualityStatus": "FAIL",
   "latestFull": {
@@ -349,22 +349,16 @@
     ]
   },
   "latestDelta": {
-    "run": 43177457283,
-    "sourceSha": "87b942df23c8a1ecfa979bcf27b0948702eff77f",
-    "status": "EXECUTION_COMPLETE_WITH_FINDINGS",
-    "viewportUnits": 672,
+    "run": 43182283240,
+    "sourceSha": "46e0a61a68b28097420d968208b66f59a624a939",
+    "status": "EXECUTION_COMPLETE_WITH_SCOPED_REVIEWS",
+    "viewportUnits": 87,
     "unitStatuses": {
-      "PASS": 636,
-      "FAIL": 4,
-      "REVIEW_REQUIRED": 32
+      "PASS": 84,
+      "FAIL": 0,
+      "REVIEW_REQUIRED": 3
     },
-    "notRun": 0,
-    "assertionStatuses": {
-      "PASS": 139743,
-      "FAIL": 35,
-      "REVIEW_REQUIRED": 134
-    },
-    "integrity": "PASS"
+    "notRun": 0
   },
   "environmentRecovery": {
     "status": "RESTORED_FROM_REMOTE_VERIFIED_BYTES",
@@ -380,5 +374,15 @@
     "vector midpoint label",
     "compact counting restored layout",
     "counting restored canvas aspect after layout settles"
-  ]
+  ],
+  "sharedRestoreFinding": {
+    "priorRawRun": 43180638838,
+    "row": "prob-counting:combo@0:0:1440x900",
+    "failure": "Stable restore bitmap1039x844 versus CSS1039x566.4375",
+    "diagnosticRun": 43182283469,
+    "observed": "close clears and later rebuilds controls; resize RAF can sample temporary height844 before render restores566. Diagnostic run recovered via ResizeObserver at second frame; the original non-instrumented raw FAIL remains preserved.",
+    "plannedCorrection": "Queue layout resize after panel rebuild/invalidation, including rescheduling any pending pin-triggered resize; preserve playback and mathematical state semantics.",
+    "regressionScope": "All3103 current browser viewport units because the shared runtime closure changed. No repetition of completed Stage1 math or unchanged independent content review.",
+    "additionalBoundary": "Independent code review requires a pinned mid-close path as well as ended/close; native harness measures ended aspect for all units and pinned mid-close aspect for selected controls."
+  }
 }
