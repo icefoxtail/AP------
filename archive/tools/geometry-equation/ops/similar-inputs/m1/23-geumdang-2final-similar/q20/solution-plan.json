@@ -1,0 +1,48 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "frust",
+      "kind": "CONE_FRUSTUM",
+      "radius": 5,
+      "topRadius": 2,
+      "height": 4,
+      "orientation": "APEX_DOWN",
+      "baseFill": {
+        "face": "BOTTOM",
+        "fill": "WARM"
+      }
+    },
+    {
+      "id": "hemi",
+      "kind": "HEMISPHERE",
+      "radius": 5,
+      "on": "frust"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "frust",
+      "radius": "bottom",
+      "label": "2"
+    },
+    {
+      "solid": "frust",
+      "slant": true,
+      "label": "5"
+    }
+  ],
+  "caption": "반구 곡면50π + 원뿔대 옆면35π + 아래 밑면4π =89π cm²",
+  "sourceQuote": "현해설 반구r5, 원뿔대윗r5/아래r2/모선5; 맞닿은 원은 외부겉넓이에서 제외",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "상단반구r5와 원뿔대위r5아래r2높이4가연결",
+      "mappedTo": [
+        "hemi",
+        "frust"
+      ]
+    }
+  ]
+}
