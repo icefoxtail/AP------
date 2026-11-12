@@ -308,7 +308,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "다음 그림에서 $\\triangle ABC \\equiv \\triangle DEF$일 때, 옳지 않은 것은? [4점]",
+    "content": "두 삼각형 $\\triangle ABC$와 $\\triangle DEF$가 합동이고 $\\angle A=55^\\circ$, $\\angle B=65^\\circ$, $\\overline{DE}=7\\,\\mathrm{cm}$일 때, 옳지 않은 것은? [4점]",
     "choices": [
       "$\\angle C = 60^\\circ$이다.",
       "$\\angle D = 55^\\circ$이다.",
@@ -380,7 +380,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "다음 그림에서 $l \\parallel m$일 때, 각의 크기가 나머지 넷과 다른 하나는? [3점]",
+    "content": "두 평행한 직선 $l$, $m$을 직선 $t$가 수직이 아니게 가로지른다. $l$과 $t$의 교점에서 왼쪽 위, 오른쪽 위, 오른쪽 아래, 왼쪽 아래의 각을 차례로 $a,b,c,d$라 하고, $m$과 $t$의 교점에서 같은 위치의 각을 차례로 $e,f,g,h$라 할 때, 각의 크기가 나머지 넷과 다른 하나는? [3점]",
     "choices": [
       "$\\angle a$",
       "$\\angle f$",
