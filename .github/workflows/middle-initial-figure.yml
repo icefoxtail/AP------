@@ -88,7 +88,17 @@ jobs:
         with:
           node-version: '22'
       - id: inventory
-        run: echo "units=$(node apmath/playground/next/tools/middle-initial-figure-audit.mjs --list-units)" >> "$GITHUB_OUTPUT"
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          const units = JSON.parse(execFileSync(process.execPath, ['apmath/playground/next/tools/middle-initial-figure-audit.mjs', '--list-units'], { encoding: 'utf8' }));
+          // Check the shared function adapter early. Every existing unit remains
+          // in the same matrix with the same baseline, observations and gates.
+          const first = new Map(['g7-coordinate-graphs', 'g7-proportion', 'g8-linear-functions', 'g9-quadratic-functions'].map((id, i) => [id, i]));
+          units.sort((a, b) => (first.get(a) ?? 4) - (first.get(b) ?? 4));
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `units=${JSON.stringify(units)}\n`);
+          NODE
       - name: Initial figure regression contracts
         run: node --test apmath/playground/next/tools/middle-initial-*.test.mjs apmath/playground/next/tools/apl-stage-insets.test.mjs
       - name: Actual annotation, semantic measurement and failure-report regressions

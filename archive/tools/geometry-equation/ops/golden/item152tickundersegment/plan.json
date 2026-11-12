@@ -1,0 +1,203 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "U",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "l1",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "-6"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "l2",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "2"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "l3",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "0"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "A",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "l1",
+     "l3"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "l2",
+     "l3"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "K",
+    "op": "DIVISION_POINT",
+    "inputs": [
+     "A",
+     "B"
+    ],
+    "args": {
+     "m": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "n": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "mode": "INTERNAL"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayLines": [
+  "l1",
+  "l2"
+ ],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "K"
+ ],
+ "lineLabels": [
+  {
+   "nodeId": "l1",
+   "form": "SLOPE_INTERCEPT"
+  },
+  {
+   "nodeId": "l2",
+   "form": "SLOPE_INTERCEPT"
+  }
+ ],
+ "axisTickValues": {
+  "x": [],
+  "y": [
+   -5
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 480
+ },
+ "caption": "좌표평면에 정비례 그래프 y=5/6x, y=-1/2x가 있고, y좌표가 -5인 두 점 A, B를 잇는 선분 AB 위에 점 K가 있는 그림.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "두 정비례 관계 y=5/6x, y=-1/2x의 그래프가 y좌표가 -5인 두 점 A, B를 각각 지난다",
+   "mappedTo": [
+    "l1",
+    "l2",
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "점 K는 선분 AB 위에 있고 AK:KB=3:1이다",
+   "mappedTo": [
+    "K"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "문제 그림"
+ ]
+}

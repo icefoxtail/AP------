@@ -228,7 +228,7 @@
     guide:'노란 점 P를 움직여 두 좌표와 축까지의 보조선을 비교하세요.',
     steps:(v,m)=>['원점에서 가로 방향을 먼저 읽어요.',T`가로 좌표는 $x=${F(v.x)}$예요.`,T`세로 좌표는 $y=${F(v.y)}$예요.`,T`순서쌍은 $P${xy(m.P)}$예요.`],
     answer:(v,m)=>T`$P${xy(m.P)}$: 가로 좌표 다음에 세로 좌표`,
-    draw:(b,v,m,c)=>{M.projection(b,m.P);M.drag(b,c,'P',m.P,{x:'x',y:'y',label:'P'});if(c.step>=2)M.riseRun(b,O,m.P,{dxLabel:N(v.x),dyLabel:N(v.y)});},
+    draw:(b,v,m,c)=>{M.projection(b,m.P);M.riseRun(b,O,m.P,{dxLabel:c.step>=2?N(v.x):'x',dyLabel:c.step>=2?N(v.y):'y'});M.drag(b,c,'P',m.P,{x:'x',y:'y',label:'P'});},
     verify:(v,m)=>[!close(m.P.x,v.x)&&'가로 좌표 불일치',!close(m.P.y,v.y)&&'세로 좌표 불일치'].filter(Boolean)
   }));
   coord.push(make({
@@ -304,7 +304,7 @@
     id:'axis-distance',tier:'basic',title:'점과 좌표축 사이의 거리',types:['A06'],vars:{x:V('점의 가로 좌표',5,-5,5),y:V('점의 세로 좌표',4,-5,5)},model:v=>({P:P(v.x,v.y),dx:Math.abs(v.x),dy:Math.abs(v.y)}),
     question:(v,m)=>T`$P${xy(m.P)}$에서 x축까지, y축까지의 거리를 각각 구하세요.`,guide:'점을 다른 사분면으로 옮겨도 거리가 음수가 되지 않는 이유를 보세요.',
     steps:(v,m)=>['축과 수직인 가장 짧은 선분을 그어요.',T`x축까지의 거리는 $|${F(v.y)}|=${F(m.dy)}$예요.`,T`y축까지의 거리는 $|${F(v.x)}|=${F(m.dx)}$예요.`,'거리는 0 이상이므로 좌표의 절댓값을 써요.'],answer:(v,m)=>T`x축까지 $${F(m.dy)}$, y축까지 $${F(m.dx)}$`,
-    draw:(b,v,m,c)=>{M.projection(b,m.P);M.drag(b,c,'P',m.P,{x:'x',y:'y',label:'P'});if(c.step>=1)b.seg(m.P,P(v.x,0),{color:'amber',width:3});if(c.step>=2)b.seg(m.P,P(0,v.y),rose);if(c.solved){M.label(b,P(v.x,v.y/2),N(m.dy),{dx:15,color:'amber'});M.label(b,P(v.x/2,v.y),N(m.dx),{dy:-15,color:'rose'});}},
+    draw:(b,v,m,c)=>{b.seg(m.P,P(v.x,0),{color:'amber',width:3});b.seg(m.P,P(0,v.y),{color:'rose',width:3});M.drag(b,c,'P',m.P,{x:'x',y:'y',label:'P'});if(c.solved){M.label(b,P(v.x,v.y/2),N(m.dy),{dx:15,color:'amber'});M.label(b,P(v.x/2,v.y),N(m.dx),{dy:-15,color:'rose'});}},
     verify:(v,m)=>[m.dx<0||m.dy<0?'음의 거리':false,!close(m.dx*m.dx,v.x*v.x)&&'x축성분 거리 오류'].filter(Boolean)
   }));
   coord.push(make({

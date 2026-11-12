@@ -1,0 +1,140 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "포물선 모양의 조형물이 지면과 만나는 두 지점",
+  "caption": "폭이 8, 높이가 8인 포물선 모양의 조형물이 지면과 만나는 두 지점이 A, B이다. A에 세운 높이 25/2인 조명의 끝이 C이고, C에서 조형물에 접하는 빛이 지면과 만나는 점이 D, 조형물과 접하는 점이 E이다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "8"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      8
+    ],
+    "viewport": [
+      -1,
+      14,
+      -1,
+      14
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 4,
+        "y": 8
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "axis": "x",
+          "value": "0"
+        },
+        {
+          "id": "B",
+          "axis": "x",
+          "value": "8"
+        },
+        {
+          "id": "C",
+          "axis": "y",
+          "value": "25/2"
+        },
+        {
+          "id": "D",
+          "axis": "x",
+          "value": "25/2"
+        },
+        {
+          "id": "E",
+          "curveX": "5"
+        }
+      ],
+      "segments": [
+        {
+          "id": "CA",
+          "from": "C",
+          "to": "A"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        }
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "E": "E"
+  },
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "폭 8, 높이 8인 포물선 모양 조형물이 지면과 만나는 두 지점 A, B",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.overlays"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "A지점에 높이 25/2인 조명이 지면과 수직으로 서 있고 윗점이 C",
+      "mappedTo": [
+        "graphPlan.overlays"
+      ]
+    },
+    {
+      "id": "S3",
+      "condition": "C에서 나온 빛이 조형물과 접하는 점 E를 지나 지면과 만나는 점 D",
+      "mappedTo": [
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "조명 기둥 AC, 빛의 직선 CD가 조형물에 접하는 모양과 점 A, B, C, D, E의 위치 관계를 보여 준다."
+  ],
+  "assetPath": "assets/images/26_순천여고_1학기_기말_고1_유사/q23-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/engine_evidence/q23-problem-result.json",
+    "statePath": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/engine_evidence/q23-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/engine_evidence/q23-problem.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h1/1final/26_순천여고_1학기_기말_고1_기출.js",
+      "ordinal": 23,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 graphPlan에서만 결정된다."
+    }
+  }
+}

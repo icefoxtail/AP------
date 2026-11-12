@@ -7,6 +7,7 @@ import vm from 'node:vm';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
+import { labelsOutsideCanvas, toolbarOcclusions } from './middle-initial-figure-audit.mjs';
 
 const NEXT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ctx = vm.createContext({ window: {}, console });
@@ -17,8 +18,12 @@ const M = ctx.window.APL_MF;
 ctx.window.APLab = { clamp: (value, min, max) => Math.max(min, Math.min(max, value)) };
 vm.runInContext(fs.readFileSync(path.join(NEXT, 'kit/apl-board.js'), 'utf8'), ctx, { filename: 'apl-board.js' });
 const nativePointLabel = ctx.window.APLab.Board.prototype._pointLabel;
+const nativeAxes = ctx.window.APLab.Board.prototype.axes;
 const V = createRequire(import.meta.url)('../kit/apl-video-core.js');
 const katex = createRequire(import.meta.url)('../kit/vendor/katex/katex.min.js');
+const mathContext = vm.createContext({ window: { katex }, URLSearchParams, location: { search: '' },
+  document: { documentElement: { setAttribute() {} } } });
+vm.runInContext(fs.readFileSync(path.join(NEXT, 'kit/apl-core.js'), 'utf8'), mathContext, { filename: 'apl-core.js' });
 const defs = Object.values(M.labs);
 const plain = value => JSON.parse(JSON.stringify(value));
 
@@ -48,6 +53,9 @@ function validMath(text, label) {
   for (const match of String(text).matchAll(/\$([^$]+)\$/g)) {
     assert.doesNotThrow(() => katex.renderToString(match[1], { throwOnError: true, strict: 'ignore' }), `${label}: ${match[1]}`);
   }
+  // The real HTML-aware shell treats a literal < as a tag boundary; valid
+  // standalone KaTeX is insufficient when that leaves raw $ delimiters visible.
+  assert.ok(!mathContext.window.APLab.renderMath(text).includes('$'), `${label}: native shell left an unrendered math delimiter in ${text}`);
 }
 function board(focus) {
   const points = [], paths = [], primitives = [];
@@ -122,6 +130,130 @@ test('partial point-label offsets remain finite in the unchanged native Board', 
   assert.deepEqual(rendered, [{ x: 80, y: 90 }, { x: 110, y: 120 }, { x: 100, y: 100 }, { x: 118, y: 100 }]);
 });
 
+// Exercise the real native axes with known glyph/font metrics; this fixture has
+// no DOM globals and records both text and untouched axis/tick drawing commands.
+function axisBoard({ dpr = 1, origin = { x: 160, y: 120 }, cssScale = 1 } = {}) {
+  const texts = [], geometry = [], stack = [], W = 320, H = 240;
+  const canvasRect = { left: 100, top: 50, width: W * cssScale, height: H * cssScale };
+  const c = { font: '13px sans-serif', textAlign: 'left', textBaseline: 'alphabetic', direction: 'ltr',
+    save() { stack.push({ font: this.font, textAlign: this.textAlign, textBaseline: this.textBaseline }); },
+    restore() { Object.assign(this, stack.pop()); },
+    getTransform() { return { a: dpr, b: 0, c: 0, d: dpr, e: 0, f: 0 }; },
+    measureText(value) {
+      const size = +this.font.match(/([\d.]+)px/)[1];
+      const width = [...String(value)].reduce((sum, ch) => sum + (ch.charCodeAt(0) > 255 ? .9 : .6) * size, 0);
+      const left = this.textAlign === 'right' ? -width : this.textAlign === 'center' ? -width / 2 : 0;
+      const top = ({ top: .1, middle: -.4, bottom: -.9 })[this.textBaseline] ?? -.8;
+      const fontTop = ({ top: -.15, middle: -.65, bottom: -1.15 })[this.textBaseline] ?? -.95;
+      return { width, actualBoundingBoxLeft: -left + (this.font.includes('italic') ? 1 : 0), actualBoundingBoxRight: left + width,
+        actualBoundingBoxAscent: -top * size, actualBoundingBoxDescent: (top + .8) * size,
+        fontBoundingBoxAscent: -fontTop * size, fontBoundingBoxDescent: (fontTop + 1.3) * size };
+    },
+    fillText(value, x, y) {
+      const m = this.measureText(value);
+      texts.push({ text: String(value), x, y, arguments: arguments.length,
+        left: x - m.actualBoundingBoxLeft, right: x + m.actualBoundingBoxRight,
+        top: y - m.actualBoundingBoxAscent, bottom: y + m.actualBoundingBoxDescent,
+        fontBox: { left: x - m.actualBoundingBoxLeft, right: x + m.actualBoundingBoxRight,
+          top: y - m.fontBoundingBoxAscent, bottom: y + m.fontBoundingBoxDescent } });
+    }
+  };
+  for (const method of ['beginPath', 'rect', 'clip', 'setLineDash', 'moveTo', 'lineTo', 'stroke', 'translate', 'rotate', 'closePath', 'fill', 'fillRect']) c[method] = (...args) => geometry.push([method, ...args]);
+  const b = { ctx: c, W, H, k: 20, ky: 20, fs: 1, lw: 1, font: 'sans-serif', kind: 'cartesian', colors: {},
+    canvas: { width: W * dpr, height: H * dpr, getBoundingClientRect: () => canvasRect },
+    _drawRect: () => ({ x: 0, y: 0, w: W, h: H }), axes: nativeAxes,
+    toS: (x, y) => ({ x: origin.x + 20 * x, y: origin.y - 20 * y }),
+    viewBox: () => ({ x0: -origin.x / 20, x1: (W - origin.x) / 20, y0: (origin.y - H) / 20, y1: origin.y / 20 }) };
+  const element = (r, visible = true) => ({ hidden: !visible, checkVisibility: () => visible,
+    getBoundingClientRect: () => ({ left: canvasRect.left + r.left * cssScale, right: canvasRect.left + r.right * cssScale,
+      top: canvasRect.top + r.top * cssScale, bottom: canvasRect.top + r.bottom * cssScale,
+      width: (r.right - r.left) * cssScale, height: (r.bottom - r.top) * cssScale }) });
+  return { b, texts, geometry, element, canvas: { cssWidth: W, cssHeight: H } };
+}
+const numericAxisText = row => /^[−-]?\d+(?:\.\d+)?$/.test(row.text);
+function checkBoundedAxes(actual, original, options, obstacles = []) {
+  assert.deepEqual(actual.geometry, original.geometry, 'native lines, arrows and every tick stay unchanged');
+  assert.equal(labelsOutsideCanvas(actual.texts, actual.canvas).length, 0, 'unchanged actual-glyph audit boundary');
+  assert.equal(labelsOutsideCanvas(actual.texts.map(t => t.fontBox), actual.canvas).length, 0, 'conservative font-box boundary');
+  const ticks = actual.texts.filter(numericAxisText);
+  assert.ok(ticks.length >= 6, 'readable numbered ticks remain');
+  for (const tick of ticks) assert.ok(original.texts.some(r => r.text === tick.text && r.x === tick.x && r.y === tick.y), `tick ${tick.text} retains its exact coordinate`);
+  for (const label of [options.xLabel || 'x', options.yLabel || 'y']) {
+    assert.equal(actual.texts.filter(t => t.text === label).length, 1, `complete axis name and unit ${label}`);
+    assert.equal(actual.texts.find(t => t.text === label).arguments, 3, 'do not pass undefined maxWidth to Canvas');
+  }
+  for (const obstacle of obstacles) {
+    assert.equal(toolbarOcclusions(actual.texts, obstacle).length, 0, 'visible tool/TOC/status does not cover a glyph');
+    assert.equal(toolbarOcclusions(actual.texts.map(t => t.fontBox), obstacle).length, 0, 'font box also avoids the overlay');
+  }
+}
+
+test('new adapter bounds real native axis text at DPR1/DPR2 without changing tick positions', () => {
+  const options = { tickStep: 2, xLabel: '시간(초)', yLabel: '거리(m)' };
+  for (const dpr of [1, 2]) {
+    const raw = axisBoard({ dpr }), bounded = axisBoard({ dpr });
+    raw.b.axes(options); const original = bounded.b.ctx.fillText;
+    assert.ok(labelsOutsideCanvas(raw.texts, raw.canvas).length > 0, 'fixture reproduces partial edge ticks');
+    M.axes(bounded.b, options);
+    assert.equal(bounded.b.ctx.fillText, original);
+    checkBoundedAxes(bounded, raw, options);
+    assert.ok(bounded.texts.filter(numericAxisText).length < raw.texts.filter(numericAxisText).length);
+  }
+});
+
+test('new adapter avoids actual visible overlays with canvas offsets/scaling and preserves axis units', () => {
+  const options = { tickStep: 2, xLabel: '시간(분)', yLabel: '정사각형 개수' };
+  const raw = axisBoard({ dpr: 2, cssScale: 2 }), bounded = axisBoard({ dpr: 2, cssScale: 2 });
+  const toolbar = { left: 100, right: 320, top: 195, bottom: 240 }, toc = { left: 280, right: 320, top: 75, bottom: 135 }, status = { left: 166, right: 270, top: 0, bottom: 40 };
+  const lab = { ui: { tools: bounded.element(toolbar), status: bounded.element(status) }, toc: { ui: { handle: bounded.element(toc) } } };
+  raw.b.axes(options); M.axes(bounded.b, options, lab);
+  checkBoundedAxes(bounded, raw, options, [toolbar, toc, status]);
+  for (const name of [options.xLabel, options.yLabel]) {
+    const before = raw.texts.find(t => t.text === name), after = bounded.texts.find(t => t.text === name);
+    assert.ok(before.x !== after.x || before.y !== after.y, `${name} moves away from its actual occluder`);
+  }
+  const hidden = axisBoard(), absent = axisBoard();
+  M.axes(absent.b, options);
+  M.axes(hidden.b, options, { ui: { tools: hidden.element({ left: 0, right: 320, top: 0, bottom: 240 }, false) } });
+  assert.deepEqual(hidden.texts, absent.texts, 'hidden UI never reserves canvas space');
+});
+
+test('panning cannot create a fake origin and the fillText guard is local even after errors', () => {
+  const options = { tickStep: 2, xLabel: 't(초)', yLabel: 'h(m)' };
+  const raw = axisBoard({ origin: { x: -100, y: 400 } }), bounded = axisBoard({ origin: { x: -100, y: 400 } });
+  raw.b.axes(options); M.axes(bounded.b, options);
+  checkBoundedAxes(bounded, raw, options);
+  assert.equal(bounded.texts.filter(t => t.text === 'O').length, 0, 'true origin is outside the canvas');
+  const original = bounded.b.ctx.fillText;
+  bounded.b.axes = () => { throw Error('native drawing failed'); };
+  assert.throws(() => M.axes(bounded.b), /native drawing failed/);
+  assert.equal(bounded.b.ctx.fillText, original, 'finally restores the existing instrumentation/native method');
+  bounded.b.ctx.fillText('P', -20, -20);
+  assert.equal(bounded.texts.at(-1).text, 'P', 'subsequent scene labels are never filtered by the axis helper');
+  assert.doesNotThrow(() => M.axes({ axes() {} }), 'the existing mathematical VM board needs no DOM/canvas');
+});
+
+test('three-line playback shows both parallel cases and ends at the common point', () => {
+  const spec = M.labs['g8-linear-functions'].scenes.find(s => s.id === 'triangle-degeneracy');
+  const lesson = V.compileLesson(M.lessonFor(spec)), initial = M.defaults(spec), seed = {};
+  for (const [key, value] of Object.entries(initial)) seed[M.prefix(spec, key)] = value;
+  const base = { nums: { ...seed }, sets: { ...seed }, step: 0, part: null };
+  for (const [time, slope] of [[3, 2], [10, -.5], [20, -1 - initial.b], [lesson.length, -1 - initial.b]]) {
+    const frame = V.stateAt(lesson, time, base);
+    const values = M.values(spec, { ...seed, ...frame.nums, ...frame.sets }), model = spec.model(values);
+    assert.equal(values.trial, slope);
+    const { b, points, primitives } = board(spec.focus(values, model));
+    spec.draw(b, values, model, { step: frame.step, solved: frame.step === 4 });
+    assert.ok(!primitives.includes('polygon'), 'a degeneracy cue must not show a filled triangle');
+    if (slope === 2) assert.equal(model.Q, null, 'the first pair is parallel');
+    else if (slope === -.5) assert.equal(model.R, null, 'the second pair is parallel');
+    else {
+      for (const q of [model.P, model.Q, model.R]) { assert.equal(q.x, 1); assert.equal(q.y, -1); }
+      assert.equal(points.length, 1, 'one common point, without overlapping P/Q/R labels');
+    }
+  }
+});
+
 test('quadratic moving-area playback ends at the first target-area configuration', () => {
   const spec = M.labs['g9-quadratic-functions'].scenes.find(s => s.id === 'moving-area');
   const lesson = V.compileLesson(M.lessonFor(spec)), initial = M.defaults(spec), seed = {};
@@ -184,6 +316,7 @@ for (const def of defs) for (const spec of def.scenes) {
     const lesson = M.lessonFor(spec), validation = V.validateLesson(lesson);
     assert.deepEqual(validation.errors, [], `${tag}: ${validation.errors.join('; ')}`);
     assert.deepEqual(validation.warnings, [], `${tag}: ${validation.warnings.join('; ')}`);
+    for (const chapter of lesson.chapters) for (const cue of chapter.cues) if (cue.say) validMath(cue.say, `${tag}: caption`);
     const compiled = V.compileLesson(lesson), initial = M.defaults(spec), seed = {};
     for (const [key, value] of Object.entries(initial)) seed[M.prefix(spec, key)] = value;
     const playbackBase = { nums: { ...seed }, sets: { ...seed }, step: 0, part: null };

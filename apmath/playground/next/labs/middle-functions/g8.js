@@ -211,7 +211,7 @@
     'slope-change':(v,m)=>[T`두 점은 $A${xy(m.A)}$, $B${xy(m.B)}$입니다.`,'A에서 B로 오른쪽으로 움직여요.',T`가로 변화량은 $\Delta x=${v.dx}$입니다.`,T`세로 변화량은 $\Delta y=${v.dy}$입니다.`,T`기울기 $=\frac{${v.dy}}{${v.dx}}=${f(m.a)}$`,v.dy>0?'양의 기울기: 오른쪽으로 갈수록 올라가요.':v.dy<0?'음의 기울기: 오른쪽으로 갈수록 내려가요.':'기울기 0: 수평인 직선이에요.'],
     'intercepts':(v,m)=>[T`직선은 $y=${eq(m.a,v.b)}$입니다.`,'축 위에서는 한 좌표가 0이에요.',T`x축에서는 $0=${eq(m.a,v.b)}$입니다.`,T`y축에서는 $x=0$을 대입해요.`,T`두 절편점은 $${xy(m.A)},${xy(m.B)}$입니다.`,T`x절편 $${f(m.A.x)}$, y절편 $${f(v.b)}$입니다.`],
     'signs-quadrants':(v,m)=>[T`직선은 $y=${eq(m.a,v.b)}$입니다.`,T`기울기 $${f(m.a)}$의 부호를 봐요.`,T`y축과 만나는 점은 $(0,${v.b})$입니다.`,T`x축과는 $(${f(m.A.x)},0)$에서 만나요.`,'두 절편을 지나 직선을 양쪽으로 늘려요.',`제${m.quadrants.join(', 제')}사분면을 지납니다.`],
-    'quadrant-parameters':(v,m)=>[T`$a=${v.a}>0$, $b=${v.b}<0$입니다.`,T`살펴볼 식은 $y=abx+(a+b)$입니다.`,T`기울기는 $ab=${m.slope}<0$입니다.`,T`y절편은 $a+b=${m.intercept}$입니다.`,T`따라서 직선은 $y=${eq(m.slope,m.intercept)}$입니다.`,`제${m.quadrants.join(', 제')}사분면을 지납니다.`],
+    'quadrant-parameters':(v,m)=>[T`$a=${v.a}>0$, $b=${v.b}\lt0$입니다.`,T`살펴볼 식은 $y=abx+(a+b)$입니다.`,T`기울기는 $ab=${m.slope}\lt0$입니다.`,T`y절편은 $a+b=${m.intercept}$입니다.`,T`따라서 직선은 $y=${eq(m.slope,m.intercept)}$입니다.`,`제${m.quadrants.join(', 제')}사분면을 지납니다.`],
     'vertical-translation':(v,m)=>[T`처음 기울기 $${v.a}$, y절편 $${v.b}$입니다.`,T`y축 방향 이동량은 $${f(v.k)}$입니다.`,'같은 x에서 y에 이동량을 더해요.',T`기울기 $${v.a}$는 그대로입니다.`,T`새 절편은 $${v.b}+(${v.k})=${m.shifted}$입니다.`,T`이동한 식은 $y=${eq(v.a,m.shifted)}$입니다.`],
     'two-points':(v,m)=>[T`주어진 점은 $A${xy(m.A)}$, $B${xy(m.B)}$예요.`,T`가로 변화는 $${v.x2}-(${f(v.x1)})=${v.x2-v.x1}$입니다.`,T`기울기 $a=\frac{${f(v.y2)}-(${f(v.y1)})}{${v.x2}-(${f(v.x1)})}=${f(m.a)}$`,T`A를 대입하면 $${f(v.y1)}=${f(m.a)}\times(${f(v.x1)})+b$`,T`정리하면 $b=${f(m.b)}$입니다.`,T`따라서 $y=${eq(m.a,m.b)}$입니다.`],
     'slope-and-point':(v,m)=>[T`기준 직선의 기울기는 $${f(m.a)}$입니다.`,T`지나야 할 점은 $P${xy(m.P)}$입니다.`,T`같은 기울기이므로 $a=${f(m.a)}$입니다.`,T`P를 대입해 $${f(v.y)}=${f(m.a)}\times(${f(v.x)})+b$`,T`따라서 $b=${f(m.b)}$입니다.`,T`구한 식은 $y=${eq(m.a,m.b)}$입니다.`],
@@ -221,7 +221,7 @@
     'intersection':(v,m)=>[T`첫 직선은 $y=${eq(v.a,v.b)}$입니다.`,T`둘째 직선은 $y=${eq(v.c,v.d)}$입니다.`,T`교점에서는 $${eq(v.a,v.b)}=${eq(v.c,v.d)}$`,T`정리하면 $x=${f(m.P.x)}$입니다.`,T`대입하여 $y=${f(m.P.y)}$도 구합니다.`,T`교점은 $${xy(m.P)}$입니다.`],
     'line-positions':(v,m)=>[T`두 식은 $y=x+1$, $y=${eq(v.a,v.b)}$예요.`,T`기울기 1과 $${f(v.a)}$를 비교해요.`,m.kind==='one'?'기울기가 다르므로 한 점에서 만나요.':T`기울기가 같아 절편 1과 $${v.b}$를 비교해요.`,m.kind==='one'?T`$x+1=${eq(v.a,v.b)}$을 풉니다.`:m.kind==='parallel'?'절편이 달라 두 직선이 평행해요.':'절편까지 같아 두 직선이 겹쳐요.',m.kind==='one'?T`$x=${f(m.P.x)},\ y=${f(m.P.y)}$입니다.`:m.kind==='parallel'?'공통으로 만족하는 순서쌍이 없어요.':'직선 위 모든 점이 두 식을 만족해요.',m.kind==='one'?T`교점 1개: $${xy(m.P)}$`:m.kind==='parallel'?'교점 0개, 해가 없습니다.':'교점과 해가 무수히 많습니다.'],
     'three-line-concurrency':(v,m)=>[T`먼저 $x+2y=1$, $2x-y=7$을 봅니다.`,'두 식의 공통점을 먼저 정해요.',T`첫째 식과 둘째 식의 2배를 더해 $5x=15$`,T`공통점은 $P(3,-1)$입니다.`,T`세 번째 식에 넣으면 $9-a=${v.K}$입니다.`,T`따라서 $a=${m.answer}$입니다.`],
-    'triangle-degeneracy':(v,m)=>[T`두 고정 직선은 기울기 $2,-\frac12$예요.`,T`셋째 직선은 $y=ax+${v.b}$입니다.`,'한 쌍이 평행하거나 세 직선이 공점이면 돼요.',T`고정 직선의 교점은 $(1,-1)$입니다.`,T`공점 조건은 $-1=a+${v.b}$입니다.`,T`모든 답은 $a=2,-\frac12,${m.common}$입니다.`],
+    'triangle-degeneracy':(v,m)=>[T`고정 직선의 기울기는 $2,-\frac12$입니다.`,T`$a=2$: 첫째 직선과 평행합니다.`,T`$a=-\frac12$: 둘째 직선과 평행합니다.`,'두 경우 모두 삼각형이 생기지 않아요.',T`마지막은 세 직선이 $P(1,-1)$에서 만나요.`,T`$-1=a+${v.b}$에서 $a=${m.common}$입니다.`],
     'axes-triangle-area':(v,m)=>[T`직선은 $y=${eq(m.a,m.b)}$입니다.`,T`절편점은 $A${xy(m.A)}$, $B${xy(m.B)}$예요.`,'음의 좌표도 변의 길이는 양수로 읽어요.',T`밑변은 $${v.r}$, 높이는 $${v.h}$입니다.`,T`넓이 $=\frac12\times${v.r}\times${v.h}$`,T`따라서 넓이는 $${f(m.area)}$입니다.`],
     'lines-polygon-area':(v,m)=>[T`경계 직선은 $${m.lines.slice(0,2).join(',')}$입니다.`,T`나머지 경계는 $${m.lines.slice(2).join(',')}$입니다.`,v.mode===3?T`좌우 길이는 $${v.R}-(-${v.L})=${v.L+v.R}$입니다.`:T`교점은 $${m.poly.map(xy).join(',')}$입니다.`,v.mode===2?T`바깥 직사각형 넓이는 $${(v.L+v.R)*v.h}$입니다.`:T`밑변 $${v.L+v.R}$, 높이 $${v.h}$를 읽어요.`,v.mode===2?T`세 바깥 삼각형 $${f(v.L*v.h/2)},${f(v.R*(v.h-1)/2)},${f((v.L+v.R)/2)}$를 빼요.`:v.mode===3?T`직사각형이므로 $${v.L+v.R}\times${v.h}$입니다.`:T`삼각형이므로 $\frac12\times${v.L+v.R}\times${v.h}$입니다.`,T`따라서 넓이는 $${f(m.area)}$입니다.`],
     'rectangle-bisection':(v,m)=>[T`직사각형의 범위는 $2\le x\le6$, $3\le y\le5$예요.`,T`이등분선은 $y=ax${v.b>=0?'+':''}${v.b}$ 꼴입니다.`,T`중심은 $((2+6)/2,(3+5)/2)=(4,4)$예요.`,'중심을 지나는 직선은 넓이를 이등분해요.',T`중심을 넣으면 $4=4a${v.b>=0?'+':''}${v.b}$입니다.`,T`$a=${f(m.a)}$, 두 넓이는 각각 4입니다.`],
@@ -243,8 +243,8 @@
     'coordinate-walk':(v,m)=>[T`도착점은 $(${v.x},2)$입니다.`,'홀수 눈은 오른쪽, 짝수 눈은 위로 가요.','위쪽 합이 2라서 눈 2는 한 번만 나와요.',T`가로 순서는 $${Object.keys(m.groups).map(k=>'('+k+')').join(',')}$입니다.`,T`눈 2를 넣을 틈은 $${Object.values(m.groups).join('+')}=${m.paths.length}$곳이에요.`,T`경우를 모두 합하면 ${m.paths.length}가지입니다.`],
     'travel-budget':(v,m)=>[T`갈 때 시속${v.out}, 올 때 시속${v.back} km예요.`,T`총 ${v.limit}시간 중 $${f(v.rest)}$시간은 쉬어요.`,T`이동 시간은 $x/${v.out}+x/${v.back}=${f(m.a)}x$`,T`제한 조건은 $${f(m.a)}x+${f(v.rest)}\le${v.limit}$`,T`경계식에서 $x=${f(m.max)}$입니다.`,T`한쪽 거리 $${f(m.max)}$ km 이하입니다.`],
     'area-to-equation':(v,m)=>[T`높이는 ${v.H}, 주어진 넓이는 ${v.S}입니다.`,'넓이에서 전체 밑변을 거꾸로 구해요.',T`전체 밑변 $=2\times${v.S}\div${v.H}=${f(m.totalBase)}$`,v.mode?T`아는 절편 $${f(v.H/2)}$를 빼면 길이 $${f(m.r)}$예요.`:T`x절편은 음수이므로 $-${f(m.r)}$입니다.`,T`기울기 $a=${v.H}\div${f(m.r)}=${f(m.a)}$`,T`구한 직선은 $y=${eq(m.a,v.H)}$입니다.`],
-    'quadrant-parameter-range':()=>[T`식은 $y=(k-2)x-(3+k)$입니다.`,'제1사분면을 지나지 않아야 해요.','기울기는 음수, 절편은 0 이하예요.',T`두 조건은 $k-2<0$, $-(3+k)\le0$입니다.`,T`따로 풀면 $k<2$, $k\ge-3$입니다.`,T`함께 만족하는 범위는 $-3\le k<2$입니다.`],
-    'intersection-parameter':()=>[T`두 직선은 $y=-2x-4$, $y=mx-2$예요.`,'교점의 x<0, y>0 조건을 함께 봐요.',T`두 식을 같게 놓으면 $(m+2)x=-2$`,T`x<0에서 $m+2>0$, y>0에서 $x<-2$`,T`결합하면 $0\lt m+2\lt1$입니다.`,T`따라서 $-2\lt m\lt-1$입니다.`],
+    'quadrant-parameter-range':()=>[T`식은 $y=(k-2)x-(3+k)$입니다.`,'제1사분면을 지나지 않아야 해요.','기울기는 음수, 절편은 0 이하예요.',T`두 조건은 $k-2\lt0$, $-(3+k)\le0$입니다.`,T`따로 풀면 $k\lt2$, $k\ge-3$입니다.`,T`함께 만족하는 범위는 $-3\le k\lt2$입니다.`],
+    'intersection-parameter':()=>[T`두 직선은 $y=-2x-4$, $y=mx-2$예요.`,T`교점의 $x\lt0$, $y>0$ 조건을 함께 봐요.`,T`두 식을 같게 놓으면 $(m+2)x=-2$`,T`$x\lt0$에서 $m+2>0$, $y>0$에서 $x\lt-2$`,T`결합하면 $0\lt m+2\lt1$입니다.`,T`따라서 $-2\lt m\lt-1$입니다.`],
     'area-cancellation':(v,m)=>[T`점 $(a,2a)$와 밑변 $y=-8$을 봐요.`,T`주어진 넓이는 ${v.S}입니다.`,T`높이는 $2(a+4)$, 기울기 크기는 $(a+4)/7$`,T`밑변 $=2(a+4)\div((a+4)/7)=14$`,T`$14(a+4)=${v.S}$에서 $a=${m.a}$입니다.`,T`$b=a^2+18a=${m.b}$, 답은 $(${m.a},${m.b})$입니다.`],
     'area-integer-condition':(v,m)=>[T`두 직선의 공통점은 $(0,${v.c})$입니다.`,T`넓이는 ${v.bound} 미만이고 삼각형이어야 해요.`,'수평선까지의 정수 거리를 h라고 해요.',T`밑변 $4h/3$, 넓이 $2h^2/3$입니다.`,T`정수 높이는 $1\le h\le${m.maxHeight}$, h=0은 제외해요.`,T`$m=${m.ints.join(',')}$이고 합은 ${m.sum}입니다.`],
     'parallel-area':(v,m)=>[T`처음 식은 $y=${eq(v.a,v.b)}$입니다.`,T`아래로 ${v.drop}만큼 옮겨 $y=${eq(v.a,m.low)}$예요.`,'색칠한 부분은 큰 삼각형에서 작은 것을 뺀 거예요.',T`큰 넓이 $=\frac12\times${f(v.b/v.a)}\times${v.b}=${f(m.outer)}$`,T`작은 넓이 $=\frac12\times${f(m.low/v.a)}\times${m.low}=${f(m.inner)}$`,T`차는 $${f(m.outer)}-${f(m.inner)}=${f(m.S)}$입니다.`]
@@ -262,6 +262,13 @@
       const makeCaptions=CAPTIONS[scene.id];
       if(!makeCaptions)throw Error('Missing concrete one-click script: '+scene.id);
       const c=makeCaptions(v,m);
+      if(scene.id==='triangle-degeneracy'){
+        return {title:scene.title,tab:'review',answer:scene.answer(v,m),answerText:scene.answer(v,m),summary:'평행 두 경우와 공점 한 경우를 확인합니다.',task:'기울기를 바꾸며 세 경우를 다시 확인하세요.',chapters:[
+          {title:'첫 직선과 평행',length:10,cues:[{at:0,step:1,say:c[0]},{at:3,set:{trial:2},say:c[1]}]},
+          {title:'둘째와 평행',length:10,cues:[{at:0,step:2,set:{trial:-0.5},say:c[2]},{at:5,say:c[3]}]},
+          {title:'세 직선의 공점',length:10,cues:[{at:0,step:3,set:{trial:m.common},say:c[4]},{at:5,step:4,say:c[5]}]}
+        ]};
+      }
       return {title:scene.title,tab:'review',answer:scene.answer(v,m),answerText:scene.answer(v,m),summary:'조건을 그림에 옮기고 실제 계산으로 연결합니다.',task:'수치를 바꾸고 같은 원리가 유지되는지 확인하세요.',chapters:[
         {title:'조건을 그림에',length:10,cues:[{at:0,step:1,say:c[0]},{at:5,say:c[1]}]},
         {title:'관계를 식으로',length:10,cues:[{at:0,step:2,say:c[2]},{at:5,step:3,say:c[3]}]},
@@ -355,11 +362,11 @@
     id:'quadrant-parameters',tier:'advanced',title:'계수 조건을 부호로',
     vars:{a:V('양수 a',3,1,5),b:V('음수 b',-2,-5,-1)},
     model:v=>({slope:v.a*v.b,intercept:v.a+v.b,quadrants:quadrants(v.a*v.b,v.a+v.b)}),focus:{x:[-5,5],y:[-10,10]},
-    question:()=>'$a>0$, $b<0$일 때 $y=abx+(a+b)$를 살펴보세요. a와 b의 현재 값에서 지나는 사분면을 구하세요.',
-    steps:(v,m)=>[`$a=${v.a}>0$, $b=${v.b}<0$이므로 $ab=${m.slope}<0$입니다.`,`y절편은 $a+b=${m.intercept}$입니다.`,`$a$와 $-b$의 크기를 비교하면 y절편이 ${m.intercept>0?'양수':m.intercept<0?'음수':'0'}임을 알 수 있습니다.`,`따라서 제${m.quadrants.join(', 제')}사분면을 지납니다.`],
+    question:()=>T`$a>0$, $b\lt0$일 때 $y=abx+(a+b)$를 살펴보세요. a와 b의 현재 값에서 지나는 사분면을 구하세요.`,
+    steps:(v,m)=>[T`$a=${v.a}>0$, $b=${v.b}\lt0$이므로 $ab=${m.slope}\lt0$입니다.`,`y절편은 $a+b=${m.intercept}$입니다.`,`$a$와 $-b$의 크기를 비교하면 y절편이 ${m.intercept>0?'양수':m.intercept<0?'음수':'0'}임을 알 수 있습니다.`,`따라서 제${m.quadrants.join(', 제')}사분면을 지납니다.`],
     answer:(v,m)=>`$y=${eq(m.slope,m.intercept)}$: 제${m.quadrants.join(', 제')}사분면`,
     draw:(b,v,m,c)=>{M.line(b,m.slope,m.intercept);point(b,p(0,m.intercept),'B','rose');if(c.step>=2)M.riseRun(b,p(0,m.intercept),p(Math.min(1,4/Math.abs(m.slope)),m.intercept-Math.min(Math.abs(m.slope),4)));},
-    notes:()=>['a>0, b<0만으로 a+b의 부호는 정해지지 않습니다. 경계 a=-b를 직접 확인하세요.']
+    notes:()=>[T`$a>0$, $b\lt0$만으로 $a+b$의 부호는 정해지지 않습니다. 경계 $a=-b$를 직접 확인하세요.`]
   });
   add('translation',{
     id:'vertical-translation',title:'기울기는 그대로 평행이동',
@@ -467,7 +474,15 @@
     question:v=>`$y=2x-3$, $y=-\\frac12x-\\frac12$, $y=ax+${v.b}$가 삼각형을 만들지 않는 a를 모두 구하세요.`,
     steps:(v,m)=>['첫째, 세 번째 직선이 첫 직선과 평행하면 a=2입니다.','둘째, 세 번째 직선이 둘째 직선과 평행하면 a=-1/2입니다.',`셋째, 첫 두 직선의 교점 $(1,-1)$을 지나면 $-1=a+${v.b}$입니다.`,`세 경우를 합하면 $a=2,-\\frac12,${m.common}$입니다.`],
     answer:(v,m)=>`$a=2,-\\frac12,${m.common}$`,
-    draw:(b,v,m,c)=>{if(m.Q&&m.R)M.polygon(b,[m.P,m.Q,m.R]);M.line(b,2,-3);M.line(b,-0.5,-0.5,{color:'rose'});M.line(b,v.trial,v.b,{color:'amber'});point(b,m.P,'P','green');if(m.Q)point(b,m.Q,'Q','amber');if(m.R)point(b,m.R,'R','amber');},
+    draw:(b,v,m,c)=>{
+      const same=(A,B)=>A&&B&&near(A.x,B.x)&&near(A.y,B.y);
+      const common=same(m.P,m.Q)&&same(m.P,m.R);
+      if(m.Q&&m.R&&!common)M.polygon(b,[m.P,m.Q,m.R]);
+      M.line(b,2,-3);M.line(b,-0.5,-0.5,{color:'rose'});M.line(b,v.trial,v.b,{color:c.solved&&common?'green':'amber'});
+      point(b,m.P,'P','green');
+      if(m.Q&&!same(m.P,m.Q))point(b,m.Q,'Q','amber');
+      if(m.R&&!same(m.P,m.R)&&!same(m.Q,m.R))point(b,m.R,'R','amber');
+    },
     notes:()=>['평행한 경우만 찾으면 공점인 경우를 놓칩니다. 서로 다른 세 직선의 위치를 모두 나눕니다.'],
     verify:(v,m)=>[near(m.common*m.P.x+v.b,m.P.y)?null:'concurrency value',m.Q&&!near(2*m.Q.x-3,v.trial*m.Q.x+v.b)?'Q':null,m.R&&!near(-0.5*m.R.x-0.5,v.trial*m.R.x+v.b)?'R':null].filter(Boolean)
   });
@@ -788,8 +803,8 @@
     model:v=>({a:v.k-2,b:-3-v.k,allowed:v.k>=-3&&v.k<2}),
     focus:{x:[-7,7],y:[-9,9]},
     question:()=>'$y=(k-2)x-(3+k)$가 일차함수이고 제1사분면을 지나지 않도록 하는 k의 범위를 구하세요.',
-    steps:()=>['제1사분면을 지나지 않는 일차함수는 기울기가 음수이고 y절편은 0 이하입니다.','기울기 조건 $k-2<0$에서 $k<2$입니다.','절편 조건 $-(3+k)≤0$에서 $k≥-3$입니다.','두 조건을 함께 만족하는 범위는 $-3≤k<2$입니다.'],
-    answer:()=>'$-3\\le k<2$',
+    steps:()=>['제1사분면을 지나지 않는 일차함수는 기울기가 음수이고 y절편은 0 이하입니다.',T`기울기 조건 $k-2\lt0$에서 $k\lt2$입니다.`,T`절편 조건 $-(3+k)\le0$에서 $k\ge-3$입니다.`,T`두 조건을 함께 만족하는 범위는 $-3\le k\lt2$입니다.`],
+    answer:()=>T`$-3\le k\lt2$`,
     draw:(b,v,m,c)=>{M.polygon(b,[O,p(7,0),p(7,9),p(0,9)],{fill:'rose',color:'rose',fillAlpha:0.06,width:0.5});M.label(b,p(4,6),'제1사분면',{color:'rose'});M.line(b,m.a,m.b);point(b,p(0,m.b),'B','amber');if(c.step>=2)M.label(b,p(-4,6),m.a===0?'기울기 0':'기울기 '+n(m.a),{size:13});},
     readouts:(v,m)=>[{label:'현재 기울기',value:`$${f(m.a)}$`,color:'sky'},{label:'현재 y절편',value:`$${f(m.b)}$`,color:'amber'}],
     notes:()=>['k=2에서는 상수함수이므로 제외합니다. k=-3이면 원점을 지나는 내려가는 직선이라 포함합니다.'],
@@ -805,8 +820,8 @@
     model:v=>({P:near(v.m,-2)?null:p(-2/(v.m+2),4/(v.m+2)-4),allowed:v.m>-2&&v.m<-1}),
     focus:(v,m)=>M.box([p(-2,0),p(0,-4),p(0,-2),m.P],{pad:2}),
     question:()=>'$2x+y+4=0$과 $mx-y-2=0$의 교점이 제2사분면 위에 있도록 하는 m의 범위를 구하세요.',
-    steps:()=>['두 식을 같게 놓으면 $(m+2)x=-2$입니다.','교점의 x<0이려면 m+2>0, 즉 m>-2입니다.','첫 직선에서 y>0이려면 x<-2입니다. 양수 m+2를 곱하면 0<m+2<1입니다.','따라서 -2<m<-1입니다. 두 경계에서는 평행하거나 교점이 축 위에 있습니다.'],
-    answer:()=>'$-2<m<-1$',
+    steps:()=>['두 식을 같게 놓으면 $(m+2)x=-2$입니다.',T`교점의 $x\lt0$이려면 $m+2>0$, 즉 $m>-2$입니다.`,T`첫 직선에서 $y>0$이려면 $x\lt-2$입니다. 양수 $m+2$를 곱하면 $0\lt m+2\lt1$입니다.`,T`따라서 $-2\lt m\lt-1$입니다. 두 경계에서는 평행하거나 교점이 축 위에 있습니다.`],
+    answer:()=>T`$-2\lt m\lt-1$`,
     draw:(b,v,m,c)=>{M.line(b,-2,-4);M.line(b,v.m,-2,{color:'rose'});point(b,p(-2,0),'경계','muted');if(m.P){point(b,m.P,'P','amber');if(c.step>=2)M.projection(b,m.P,{color:'amber'});}else M.label(b,p(-2,3),'두 직선이 평행해요',{color:'amber'});},
     readouts:(v,m)=>[{label:'관찰 중 교점',value:m.P?`$${xy(m.P)}$`:'교점 없음',color:'amber'}],
     verify:(v,m)=>[m.P&&!near(2*m.P.x+m.P.y+4,0)?'first equation':null,m.P&&!near(v.m*m.P.x-m.P.y-2,0)?'second equation':null,m.allowed!==!!(m.P&&m.P.x<0&&m.P.y>0)?'quadrant condition':null].filter(Boolean)

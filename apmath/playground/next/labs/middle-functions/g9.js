@@ -83,7 +83,7 @@
     steps: (v, m) => [T`현재 식은 $y=${polynomial(m.a, m.b, m.c)}$입니다.`, T`정리한 식의 $x^2$의 계수는 $k=${F(v.k)}$입니다.`, T`입력 $x=${F(v.x)}$에서 출력은 $${F(m.value)}$입니다.`, v.k ? '이차항의 계수가 0이 아니므로 이차함수입니다.' : '이차항이 사라져 y=2x+1인 일차함수가 됩니다.'],
     answer: (v, m) => m.quadratic ? T`$k=${F(v.k)}\ne0$: 이차함수` : '$k=0$: 일차함수 $y=2x+1$',
     draw(b, v, m, ctx) { M.curve(b, x => m.a * x * x + 2 * x + 1); const q = P(v.x, m.value); M.point(b, q, 'P'); if (ctx.step >= 2) M.projection(b, q); onCurve(b, ctx, 'P', q, q => ({ x: q.x })); },
-    chips: v => [{ tex: `k=${F(v.k)}`, color: 'sky' }],
+    chips: (v, m, ctx) => ctx.step === 0 ? [{ tex: `k=${F(v.k)}`, color: 'sky' }] : [],
     voice: ['이차항이 남는지 확인해요.', '계수가 0이면 이차항이 사라져요.', '입력과 출력은 그래프의 한 점이에요.', '정리한 식의 차수로 판단해요.'],
     verify: (v, m) => [m.quadratic !== (v.k !== 0) && '이차함수 판정 불일치', Math.abs(m.value - (v.k * v.x ** 2 + 2 * v.x + 1)) > 1e-9 && '함숫값 불일치'].filter(Boolean)
   });
@@ -151,8 +151,8 @@
     focus: (v, m) => focus(m, [m.A], 2.3),
     question: (v, m) => T`$y=${vertexFormula(m)}$에서 x가 커질 때 y가 증가하는 쪽과 감소하는 쪽을 찾아보세요.`,
     guide: '곡선 위 주황점을 좌우로 끌어 보세요. 꼭짓점의 어느 쪽인지 먼저 판단합니다.',
-    steps: (v, m) => [T`축은 $x=${F(m.p)}$입니다.`, T`축의 왼쪽 $x<${F(m.p)}$에서는 x가 커질수록 y가 ${m.left}합니다.`, T`축의 오른쪽 $x>${F(m.p)}$에서는 x가 커질수록 y가 ${m.right}합니다.`, '꼭짓점을 지나면 높이가 변하는 방향이 바뀝니다.'],
-    answer: (v, m) => T`$x<${F(m.p)}$: ${m.left}, $x>${F(m.p)}$: ${m.right}`,
+    steps: (v, m) => [T`축은 $x=${F(m.p)}$입니다.`, T`축의 왼쪽 $x\lt ${F(m.p)}$에서는 x가 커질수록 y가 ${m.left}합니다.`, T`축의 오른쪽 $x>${F(m.p)}$에서는 x가 커질수록 y가 ${m.right}합니다.`, '꼭짓점을 지나면 높이가 변하는 방향이 바뀝니다.'],
+    answer: (v, m) => T`$x\lt ${F(m.p)}$: ${m.left}, $x>${F(m.p)}$: ${m.right}`,
     draw(b, v, m, ctx) { plot(b, m); vertex(b, m, ctx); onCurve(b, ctx, 'P', m.A, q => ({ t: q.x - v.p })); if (ctx.step >= 2) M.projection(b, m.A); if (ctx.solved) { M.label(b, P(m.p - 1.5, m.q), m.left, { dy: m.a > 0 ? 25 : -25, color: 'green' }); M.label(b, P(m.p + 1.5, m.q), m.right, { dy: m.a > 0 ? 25 : -25, color: 'rose' }); } },
     voice: ['꼭짓점과 축을 먼저 찾아요.', '왼쪽에서 오른쪽으로 점을 옮겨요.', '축을 지난 뒤 높이 변화를 비교해요.', '열린 방향과 축의 위치를 함께 봐요.']
   });
@@ -282,7 +282,7 @@
     focus: (v, m) => M.box([m.V, m.C, P(-0.6, y(m, -0.6)), P(2 * m.p + 0.6, y(m, 2 * m.p + 0.6))], { pad: 2, minSpan: 9 }),
     question: (v, m) => T`꼭짓점이 $(${F(v.p)},-${F(v.depth)})$인 $y=a(x-${F(v.p)})^2-${F(v.depth)}$에서 $a>0$입니다. 제3사분면을 지나지 않도록 하는 a의 범위를 구하세요.`,
     guide: 'a를 바꾸어 y절편이 x축을 지나는 순간을 찾아보세요. x<0인 왼쪽 가지의 높이가 판단의 근거입니다.',
-    steps: (v, m) => [T`꼭짓점은 y축의 오른쪽에 있고 그래프는 위로 열립니다.`, T`$x<0$에서는 축으로부터의 거리가 $${F(v.p)}$보다 크므로 $y>y(0)$입니다.`, T`따라서 제3사분면을 지나지 않을 조건은 $y(0)=${F(v.p ** 2)}a-${F(v.depth)}\ge0$입니다.`, T`정리하면 $a\ge${F(m.threshold)}$입니다. 등호일 때도 제3사분면 내부는 지나지 않습니다.`],
+    steps: (v, m) => [T`꼭짓점은 y축의 오른쪽에 있고 그래프는 위로 열립니다.`, T`$x\lt0$에서는 축으로부터의 거리가 $${F(v.p)}$보다 크므로 $y>y(0)$입니다.`, T`따라서 제3사분면을 지나지 않을 조건은 $y(0)=${F(v.p ** 2)}a-${F(v.depth)}\ge0$입니다.`, T`정리하면 $a\ge${F(m.threshold)}$입니다. 등호일 때도 제3사분면 내부는 지나지 않습니다.`],
     answer: (v, m) => T`$a\ge${F(m.threshold)}$ · 현재 그래프는 제3사분면을 ${m.avoidsThird ? '지나지 않음' : '지남'}`,
     draw(b, v, m, ctx) { plot(b, m); M.point(b, m.V, 'V', { color: 'amber' }); M.point(b, m.C, 'C', { color: 'rose', dx: -15 }); if (ctx.step >= 2) { b.vline(m.p, { color: 'amber', dash: [5, 4] }); M.curve(b, x => y(m, x), { color: 'green', to: 0, width: 4 }); } if (ctx.solved) M.label(b, m.C, `y절편 ${N(m.c)}`, { color: 'rose', dx: -12, dy: -30 }); },
     voice: ['꼭짓점과 열린 방향을 먼저 보세요.', 'y축 왼쪽 가지의 높이를 비교해요.', 'y절편이 0 이상이어야 해요.', '경계인 등호의 경우도 확인해요.'],
@@ -390,7 +390,7 @@
     focus: v => v.mode === 'height' ? { x: [-0.5, 4.5], y: [-2, 26] } : v.mode === 'braking' ? { x: [-8, 88], y: [-6, 72] } : { x: [-0.5, 4.5], y: [-0.5, 5] },
     question: v => v.mode === 'height' ? T`공의 높이가 $h=-5t^2+20t+${F(v.initial)}$(m)로 주어집니다. $t=${F(v.time)}$초일 때 높이를 구하세요.` : v.mode === 'braking' ? T`차의 제동 거리가 속력의 제곱에 정비례합니다. 속력 20km/h일 때 제동 거리가 4m라면, 속력 $${F(v.speed)}$km/h에서 제동 거리를 구하세요.` : T`둘레가 8cm인 직사각형의 가로가 xcm일 때 넓이 S를 x의 식으로 나타내고, $x=${F(v.width)}$일 때 넓이를 구하세요.`,
     guide: '상황 버튼으로 세 가지 모델을 비교하세요. 세로축의 양과 단위를 먼저 읽고, 해당 상황의 막대만 조절합니다.',
-    steps: (v, m) => v.mode === 'height' ? [T`t는 초, h는 m이며 처음 높이는 $${F(v.initial)}$m입니다.`, T`$h=-5\times(${F(v.time)})^2+20\times${F(v.time)}+${F(v.initial)}$입니다.`, T`현재 그래프의 가로좌표 $${F(v.time)}$에서 높이를 확인합니다.`, T`공의 높이는 $${F(m.value)}$m입니다.`] : v.mode === 'braking' ? [T`속력의 제곱에 정비례하므로 $d=kv^2$로 놓습니다.`, T`$4=k\times20^2$에서 $k=\frac1{100}$입니다.`, T`따라서 $d=\frac1{100}v^2$이고 $v=${F(v.speed)}$를 넣습니다.`, T`제동 거리는 $${F(m.value)}$m입니다.`] : [T`가로와 세로의 합이 4이므로 세로는 $4-x$cm입니다.`, T`넓이는 $S=x(4-x)=-x^2+4x$입니다. 실제 길이의 범위는 $0<x<4$입니다.`, T`$x=${F(v.width)}$이면 세로는 $${F(m.height)}$cm입니다.`, T`넓이는 $${F(v.width)}\times${F(m.height)}=${F(m.value)}\mathrm{cm}^2$입니다.`],
+    steps: (v, m) => v.mode === 'height' ? [T`t는 초, h는 m이며 처음 높이는 $${F(v.initial)}$m입니다.`, T`$h=-5\times(${F(v.time)})^2+20\times${F(v.time)}+${F(v.initial)}$입니다.`, T`현재 그래프의 가로좌표 $${F(v.time)}$에서 높이를 확인합니다.`, T`공의 높이는 $${F(m.value)}$m입니다.`] : v.mode === 'braking' ? [T`속력의 제곱에 정비례하므로 $d=kv^2$로 놓습니다.`, T`$4=k\times20^2$에서 $k=\frac1{100}$입니다.`, T`따라서 $d=\frac1{100}v^2$이고 $v=${F(v.speed)}$를 넣습니다.`, T`제동 거리는 $${F(m.value)}$m입니다.`] : [T`가로와 세로의 합이 4이므로 세로는 $4-x$cm입니다.`, T`넓이는 $S=x(4-x)=-x^2+4x$입니다. 실제 길이의 범위는 $0\lt x\lt4$입니다.`, T`$x=${F(v.width)}$이면 세로는 $${F(m.height)}$cm입니다.`, T`넓이는 $${F(v.width)}\times${F(m.height)}=${F(m.value)}\mathrm{cm}^2$입니다.`],
     answer: (v, m) => v.mode === 'height' ? T`$${F(m.value)}\mathrm m$` : v.mode === 'braking' ? T`$${F(m.value)}\mathrm m$` : T`$S=-x^2+4x$, 넓이 $${F(m.value)}\mathrm{cm}^2$`,
     draw(b, v, m, ctx) { if (v.mode === 'height') { M.curve(b, x => -5 * x * x + 20 * x + v.initial, { from: 0, to: 4 }); M.point(b, m.start, '처음', { color: 'muted', dx: 15 }); onCurve(b, ctx, 'T', m.A, q => ({ time: q.x })); } else if (v.mode === 'braking') { M.curve(b, x => x * x / 100, { from: 0, to: 80 }); M.point(b, m.given, '조건', { color: 'green', dx: -18 }); onCurve(b, ctx, 'V', m.A, q => ({ speed: q.x })); } else { M.curve(b, x => x * (4 - x), { from: 0, to: 4 }); onCurve(b, ctx, 'W', m.A, q => ({ width: q.x })); } if (ctx.step >= 2) M.projection(b, m.A); if (ctx.solved) M.label(b, m.A, `${scalarLabel(m.value)}${v.mode === 'area' ? 'cm²' : 'm'}`, { color: 'amber', dy: -28 }); },
     voice: ['가로축과 세로축의 양을 읽어요.', '상황의 관계를 식으로 나타내요.', '현재 입력을 식과 그래프에 넣어요.', '계산한 값에 단위를 붙여 답해요.'],

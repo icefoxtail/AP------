@@ -64,6 +64,81 @@
     const o = { color: 'muted', width: 1.5, dash: [5, 4], ...opts };
     b.seg(p(P.x, 0), P, o); b.seg(p(0, P.y), P, o);
   }
+  function axisOccluders(b, lab) {
+    const canvas = b.canvas?.getBoundingClientRect?.();
+    if (!canvas?.width || !canvas?.height) return [];
+    const sx = b.W / canvas.width, sy = b.H / canvas.height;
+    return [lab?.ui?.tools, lab?.toc?.ui?.handle, lab?.ui?.status].flatMap(el => {
+      if (!el?.getBoundingClientRect || el.hidden || el.isConnected === false) return [];
+      if (el.checkVisibility) {
+        if (!el.checkVisibility({ opacityProperty: true, visibilityProperty: true })) return [];
+      } else {
+        const style = el.ownerDocument?.defaultView?.getComputedStyle?.(el);
+        if (style && (style.display === 'none' || style.visibility === 'hidden' || +style.opacity === 0)) return [];
+      }
+      const r = el.getBoundingClientRect();
+      if (!r.width || !r.height) return [];
+      return [{ left: (r.left - canvas.left) * sx, right: (r.right - canvas.left) * sx,
+        top: (r.top - canvas.top) * sy, bottom: (r.bottom - canvas.top) * sy }];
+    });
+  }
+  // Keep native axis geometry/spacing. Only its text is bounded for these labs:
+  // a partial/covered number is omitted at its original tick; names retain units.
+  function axes(b, options = {}, lab) {
+    const c = b.ctx;
+    if (!c?.fillText || !c.measureText || b.thumb || b._bbox || !(b.W > 0 && b.H > 0)) return b.axes(options);
+    const r = b._drawRect ? b._drawRect(b.paneId) : { x: 0, y: 0, w: b.W, h: b.H };
+    const safe = { left: Math.max(0, r.x) + 2, right: Math.min(b.W, r.x + r.w) - 2,
+      top: Math.max(0, r.y) + 2, bottom: Math.min(b.H, r.y + r.h) - 2 };
+    const obstacles = axisOccluders(b, lab), names = [];
+    const overlap = (a, z) => a.left < z.right + 2 && a.right > z.left - 2 && a.top < z.bottom + 2 && a.bottom > z.top - 2;
+    const fits = (a, avoid) => a.left >= safe.left && a.right <= safe.right && a.top >= safe.top && a.bottom <= safe.bottom && !avoid.some(z => overlap(a, z));
+    const original = c.fillText, origin = b.toS(0, 0);
+    c.fillText = function (value, x, y, maxWidth) {
+      const text = String(value), m = this.measureText(text), size = +(this.font.match(/([\d.]+)px/)?.[1] || 13);
+      const scale = Number.isFinite(maxWidth) && maxWidth < m.width ? maxWidth / m.width : 1, width = m.width * scale;
+      const right = this.textAlign === 'right' || (this.textAlign === 'end' && this.direction !== 'rtl') || (this.textAlign === 'start' && this.direction === 'rtl');
+      const left = this.textAlign === 'center' ? -width / 2 : right ? -width : 0;
+      const top = ({ top: 0, hanging: -.2, middle: -.6, bottom: -1.2, ideographic: -1.2 })[this.textBaseline] ?? -.9;
+      // Include font-box/fallback bounds as well as actual glyphs (italic bearings
+      // and font ascent can exceed the advance width and the nominal font size).
+      const xs = [x + left, x + left + width], ys = [y + top * size, y + (top + 1.2) * size];
+      if (Number.isFinite(m.actualBoundingBoxLeft) && Number.isFinite(m.actualBoundingBoxRight)) xs.push(x - m.actualBoundingBoxLeft * scale, x + m.actualBoundingBoxRight * scale);
+      for (const kind of ['actual', 'font']) if (Number.isFinite(m[`${kind}BoundingBoxAscent`]) && Number.isFinite(m[`${kind}BoundingBoxDescent`])) ys.push(y - m[`${kind}BoundingBoxAscent`], y + m[`${kind}BoundingBoxDescent`]);
+      const sx = b.W / (b.canvas?.width || b.W), sy = b.H / (b.canvas?.height || b.H);
+      const t = this.getTransform ? this.getTransform() : { a: 1 / sx, b: 0, c: 0, d: 1 / sy, e: 0, f: 0 };
+      const a = t.a * sx, d = t.d * sy, bc = t.b * sy, cc = t.c * sx, det = a * d - bc * cc;
+      if (!Number.isFinite(det) || Math.abs(det) < 1e-10) return original.apply(this, arguments);
+      const points = xs.flatMap(px => ys.map(py => ({ x: a * px + cc * py + t.e * sx, y: bc * px + d * py + t.f * sy })));
+      const bounds = { left: Math.min(...points.map(p => p.x)), right: Math.max(...points.map(p => p.x)), top: Math.min(...points.map(p => p.y)), bottom: Math.max(...points.map(p => p.y)) };
+      const axis = /\bitalic\b/.test(this.font) && (text === (options.xLabel || 'x') ? 'x' : text === (options.yLabel || 'y') ? 'y' : null);
+      if (!axis) {
+        // O must never be clamped to an edge when the true origin is off screen.
+        if (text === 'O' && !(origin.x >= r.x && origin.x <= r.x + r.w && origin.y >= r.y && origin.y <= r.y + r.h)) return;
+        if (fits(bounds, obstacles)) return original.apply(this, arguments);
+        return;
+      }
+      const avoid = [...obstacles, ...names];
+      let dx = 0, dy = 0;
+      if (!fits(bounds, avoid)) {
+        const x0 = safe.left - bounds.left, x1 = safe.right - bounds.right, y0 = safe.top - bounds.top, y1 = safe.bottom - bounds.bottom;
+        if (x0 > x1 || y0 > y1) return;
+        const xx = [clamp(0, x0, x1), x0, x1], yy = [clamp(0, y0, y1), y0, y1];
+        for (const z of avoid) { xx.push(z.left - bounds.right - 2, z.right - bounds.left + 2); yy.push(z.top - bounds.bottom - 2, z.bottom - bounds.top + 2); }
+        let best = Infinity;
+        for (const tx of xx) for (const ty of yy) {
+          const shifted = { left: bounds.left + tx, right: bounds.right + tx, top: bounds.top + ty, bottom: bounds.bottom + ty };
+          const score = axis === 'x' ? tx * tx + 4 * ty * ty : 4 * tx * tx + ty * ty;
+          if (score < best && fits(shifted, avoid)) { best = score; dx = tx; dy = ty; }
+        }
+        if (!Number.isFinite(best)) return;
+      }
+      names.push({ left: bounds.left + dx, right: bounds.right + dx, top: bounds.top + dy, bottom: bounds.bottom + dy });
+      const nx = x + (d * dx - cc * dy) / det, ny = y + (a * dy - bc * dx) / det;
+      return arguments.length > 3 ? original.call(this, value, nx, ny, maxWidth) : original.call(this, value, nx, ny);
+    };
+    try { return b.axes(options); } finally { c.fillText = original; }
+  }
   function riseRun(b, P, Q, opts = {}) {
     const corner = p(Q.x, P.y), o = { color: 'green', width: 2.4, ...opts };
     b.seg(P, corner, o); b.seg(corner, Q, o);
@@ -170,7 +245,7 @@
         const { v, model } = compute(state), ctx = context(spec, state, lab, v, model);
         b.setFocus(call(spec.focus, v, model) || { x: [-6, 6], y: [-6, 6] }, false);
         b.grid(call(spec.grid, v, model) || {});
-        b.axes(call(spec.axes, v, model) || {});
+        axes(b, call(spec.axes, v, model) || {}, lab);
         spec.draw(b, v, model, ctx);
       },
       view(state, lab) {
@@ -230,5 +305,5 @@
     const loading = document.getElementById('mf-loading'); if (loading) loading.remove();
   }
   window.APL_MF = { labs, tiers, register, compile, mount, defaults, values, prefix, lessonFor,
-    n, f, frac, signed, clamp, p, box, line, curve, inverse, point, label, projection, riseRun, polygon, drag, esc };
+    n, f, frac, signed, clamp, p, box, line, curve, inverse, point, label, projection, axes, riseRun, polygon, drag, esc };
 })();
