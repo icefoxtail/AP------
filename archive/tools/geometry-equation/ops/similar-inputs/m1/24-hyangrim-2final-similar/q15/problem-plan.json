@@ -1,0 +1,220 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "L",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "LR",
+      "refs": [
+        "L",
+        "R"
+      ],
+      "arrow": "BOTH"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "boundary",
+        "circle": "circle",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle",
+        "refs": [
+          "B",
+          "O",
+          "A"
+        ],
+        "value": 90,
+        "label": "90",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "radius",
+        "ownerSegment": "OA",
+        "text": "6cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "반지름6 cm인 부채꼴을 직선 위에서 미끄러지지 않게 한 바퀴 굴린다",
+  "sourceQuote": "반지름6 중심각90° 부채꼴의 한 바퀴 굴림",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "반지름6 중심각90° 부채꼴의 한 바퀴 굴림",
+      "mappedTo": [
+        "O",
+        "B",
+        "C",
+        "D",
+        "A",
+        "E",
+        "L",
+        "R"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "hiddenPointNames": [
+    "L",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE"
+}

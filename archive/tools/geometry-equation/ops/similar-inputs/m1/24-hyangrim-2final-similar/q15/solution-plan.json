@@ -1,0 +1,324 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7712389",
+              "denominator": "500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7712389",
+              "denominator": "500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10712389",
+              "denominator": "500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2",
+              "denominator": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11712389",
+              "denominator": "500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "first",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "B",
+          "O"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "last",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "B",
+    "C",
+    "D",
+    "A",
+    "E",
+    "L",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "LR",
+      "refs": [
+        "L",
+        "R"
+      ],
+      "arrow": "BOTH"
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "firstPath",
+        "circle": "first",
+        "center": "B",
+        "from": "O",
+        "to": "C",
+        "side": "CW",
+        "label": "3pi",
+        "labelKind": "MATH",
+        "unit": "cm",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lastPath",
+        "circle": "last",
+        "center": "A",
+        "from": "D",
+        "to": "E",
+        "side": "CW",
+        "label": "3pi",
+        "labelKind": "MATH",
+        "unit": "cm",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "rollingDistance",
+        "ownerSegment": "CD",
+        "text": "3pi",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "radius6",
+        "ownerSegment": "BC",
+        "text": "6cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "점 O의 경로: 사분원 호 + 수평 이동 + 사분원 호 = 9π cm",
+  "sourceQuote": "반지름6 중심각90° 부채꼴의 한 바퀴 굴림",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "반지름6 중심각90° 부채꼴의 한 바퀴 굴림",
+      "mappedTo": [
+        "O",
+        "B",
+        "C",
+        "D",
+        "A",
+        "E",
+        "L",
+        "R"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "hiddenPointNames": [
+    "B",
+    "L",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE"
+}
