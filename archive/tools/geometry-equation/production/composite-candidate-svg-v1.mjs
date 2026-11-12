@@ -267,12 +267,19 @@ export function compositePanelBytes(svg){
  * captureArchiveCandidate can decode and re-hash them. Each panel keeps its own L1 static and rendered audits; this module adds the stack
  * and a rendered layout check of the stack (captions, panel boxes).
  */
-// The composite's accessible name, the same source and defaults a single figure uses (spec title = plan caption; description = plan.accessibilityDescription, else the fixed sentence).
+// The composite's accessible name, the same source and defaults a single figure uses (spec title = plan caption; description = plan.accessibilityDescription, else a fixed sentence per figure kind).
 const xmlText=value=>String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+// Default <desc> per figure kind (plan.chain), used only when the plan has no accessibilityDescription. Never a value, a scale note or a '?'.
+const DEFAULT_DESCRIPTION={
+  'number-line-figure-v1':'수직선 위에 범위를 나타낸 그림이다.',
+  [SOLID_CAPABILITY]:'입체도형과 주어진 길이·위치를 나타낸 그림이다.',
+  'quadratic-inequality-chain-v1':'그래프로 조건을 나타낸 그림이다.',
+  plane:'점과 도형의 관계를 확인한다.'
+};
 export function compositeAccessibleNames(plan){
   const text=value=>typeof value==='string'&&value.trim()&&value.length<=500&&!/[\r\n]/.test(value)?value:null;
   if(plan?.accessibilityDescription!==undefined&&!text(plan.accessibilityDescription))throw new Stop('SPEC_ERROR',{code:'INVALID_ACCESSIBILITY_DESCRIPTION'});
-  const title=text(plan?.caption)??'해설 도형',description=plan?.accessibilityDescription??'점과 도형의 관계를 확인한다.';
+  const title=text(plan?.caption)??'해설 도형',description=plan?.accessibilityDescription??DEFAULT_DESCRIPTION[plan?.chain]??DEFAULT_DESCRIPTION.plane;
   return `<title id="visual-title">${xmlText(title)}</title><desc id="visual-desc">${xmlText(description)}</desc>`;
 }
 export async function composeCompositeCandidate({plan,panels,identity,typographyPolicy,repairContext=null,browser}={}){
@@ -399,7 +406,7 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
       });
       if(y!==stackHeight)throw new Stop('COMPOSITE_STACK_SIZE_MISMATCH',{expected:stackHeight,actual:y});
     }
-    // Same accessible name as a single figure: <title> from the plan caption, <desc> from accessibilityDescription (else the same fixed sentence), bound by aria-labelledby.
+    // Same accessible name as a single figure: <title> from the plan caption, <desc> from accessibilityDescription (else the per-kind default), bound by aria-labelledby.
     const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${y}" viewBox="0 0 ${width} ${y}" role="img" aria-labelledby="visual-title visual-desc" data-composite="${COMPOSITE_CAPABILITY}">${compositeAccessibleNames(plan)}${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     const display={width:width*typographyPolicy.displayScale,height:y*typographyPolicy.displayScale};
