@@ -1,0 +1,1263 @@
+{
+  "examUid": "24_연향중_2학기_기말_중3_유사",
+  "sourceDocumentId": "1WW8SJYIkWpDsKO66sGcVQYb17DHRPLZ-8mciDllvQmc",
+  "sourceDocumentRevisionId": "AHj4eMSHAwe10aogxJ4VgrZxKQ47x-6gv-4ZTlVwFRZitnVELXQhFOfkNmB-XAMBVBH_-zAbklQEvt22qOgFdimkxZHqlaCBX5nhOhysmtg",
+  "classificationStatus": "unclassified_unregistered",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "candidate": {
+        "sourceQid": "1",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "primaryMethod": "현의 수직이등분 성질로 AM=3을 구하고 직각삼각형 OAM에서 OM=sqrt(49-9)=2sqrt(10)을 산출한다.",
+        "decisiveStep": "피타고라스 정리 OM^2 = 7^2 - 3^2 = 40 적용",
+        "rpm": {
+          "majorUnit": "기하",
+          "midUnit": "원의 성질",
+          "l3": "원과 직선",
+          "l4": "원의 중심과 현의 수직이등분선"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_CHORD_DISTANCE_PYTHAGORAS",
+          "templateKey": "TPL_M3_CHORD_HALF_RIGHT_TRIANGLE",
+          "why": "원의 중심에서 현까지의 거리를 직각삼각형 피타고라스 정리로 구하는 표준형 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_PYTHAGORAS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "현의 이등분 성질 파악 후 피타고라스 정리를 적용하는 2단계 기본 문항",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "원",
+            "반지름",
+            "현"
+          ],
+          "goal": [
+            "거리"
+          ],
+          "method": [
+            "피타고라스",
+            "수직이등분"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 2,
+      "candidate": {
+        "sourceQid": "2",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "primaryMethod": "접선과 반지름의 수직 성질로부터 직각삼각형 OPB를 세우고 PB=sqrt(81-25)=2sqrt(14)를 계산한다.",
+        "decisiveStep": "직각삼각형 OPB에서 PB^2 = 9^2 - 5^2 = 56 산출",
+        "rpm": {
+          "majorUnit": "기하",
+          "midUnit": "원의 성질",
+          "l3": "원과 직선",
+          "l4": "원의 접선의 성질"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_TANGENT_SEGMENT_LENGTH",
+          "templateKey": "TPL_M3_TANGENT_RIGHT_TRIANGLE_PYTHAGORAS",
+          "why": "접점 수직 조건을 이용하여 외부 점에서 접점까지의 거리를 계산하는 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_TANGENCY",
+          "CC_PYTHAGORAS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "접선 수직 성질과 직각삼각형 피타고라스 1단계 연산 문항",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "원",
+            "접선",
+            "반지름"
+          ],
+          "goal": [
+            "길이"
+          ],
+          "method": [
+            "피타고라스",
+            "수직"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 3,
+      "candidate": {
+        "sourceQid": "3",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "primaryMethod": "접선의 길이 성질 DA=DE, CB=CE로부터 AD+BC=CD=11을 얻고 지름 8과 합산하여 둘레 30을 구한다.",
+        "decisiveStep": "AD + BC = CD = 11 치환 및 둘레 8 + 11 + 11 = 30 산출",
+        "rpm": {
+          "majorUnit": "기하",
+          "midUnit": "원의 성질",
+          "l3": "원과 직선",
+          "l4": "원의 외접다각형의 성질"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_TANGENT_QUADRILATERAL_PERIMETER",
+          "templateKey": "TPL_M3_SEMI_CIRCLE_CIRCUMSCRIBED_TRAPEZOID",
+          "why": "반원에 접하는 사다리꼴의 둘레를 접선 길이 합등식으로 해결하는 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_TANGENCY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "두 접선의 길이 일치 관계를 윗변과 아랫변의 합에 대응시키는 표준 문항",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "반원",
+            "접선",
+            "사다리꼴"
+          ],
+          "goal": [
+            "둘레"
+          ],
+          "method": [
+            "접선의성질",
+            "치환"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 4,
+      "candidate": {
+        "sourceQid": "4",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "primaryMethod": "삼각형 PAB에서 각 PAB=180-(40+75)=65도를 구하고 내접사각형 외각 성질로 각 PCD=65도를 결정한다.",
+        "decisiveStep": "내접사각형 외각-대내각 일치 관계 각 PCD = 각 PAB = 65도 적용",
+        "rpm": {
+          "majorUnit": "기하",
+          "midUnit": "원의 성질",
+          "l3": "원주각의 활용",
+          "l4": "원에 내접하는 사각형의 성질"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_INSCRIBED_QUAD_EXTERIOR_ANGLE",
+          "templateKey": "TPL_M3_INSCRIBED_QUAD_INTERSECTING_SECANTS",
+          "why": "외부 교점 삼각형의 각도와 내접사각형의 외각-대내각 관계를 연립하는 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_INSCRIBED_QUAD"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "삼각형 내각합과 내접사각형 대내각 정리를 순차 연계하는 표준 문항",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "원",
+            "사각형",
+            "교점",
+            "각"
+          ],
+          "goal": [
+            "각"
+          ],
+          "method": [
+            "내접사각형",
+            "외각",
+            "삼각형내각합"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 5,
+      "candidate": {
+        "sourceQid": "5",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "primaryMethod": "중심 O가 직선 CD 위에 있음을 이용해 r^2=(r-2)^2+6^2 방정식을 세워 r=10을 도출한다.",
+        "decisiveStep": "이차항 소거 4r=40 풀이로 반지름 r=10 산출",
+        "rpm": {
+          "majorUnit": "기하",
+          "midUnit": "원의 성질",
+          "l3": "원과 직선",
+          "l4": "원의 중심과 현의 길이의 활용"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_BROKEN_PLATE_RADIUS",
+          "templateKey": "TPL_M3_CHORD_ALTITUDE_RADIUS_EQUATION",
+          "why": "깨진 접시 현의 길이와 높이로부터 피타고라스 방정식으로 반지름을 구하는 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_PYTHAGORAS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "기하적 모델링을 거쳐 일차방정식을 세워 미지수 반지름을 구하는 고배점 문항",
+        "level": "상",
+        "item4slot": {
+          "given": [
+            "호",
+            "현",
+            "중점",
+            "수선"
+          ],
+          "goal": [
+            "반지름"
+          ],
+          "method": [
+            "피타고라스",
+            "방정식"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 6,
+      "candidate": {
+        "sourceQid": "6",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "primaryMethod": "내각 C=70도에서 사각형 OECF의 중심각 EOF=110도를 구하고 접현각 성질로 x=110/2=55도를 도출한다.",
+        "decisiveStep": "중심각 110도의 절반 취하여 접선과 현이 이루는 각 55도 산출",
+        "rpm": {
+          "majorUnit": "기하",
+          "midUnit": "원의 성질",
+          "l3": "원주각의 활용",
+          "l4": "접선과 현이 이루는 각"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_INSCRIBED_CIRCLE_CHORD_ANGLE",
+          "templateKey": "TPL_M3_TRIANGLE_INCIRCLE_TANGENT_CHORD",
+          "why": "내접원의 접점을 꼭짓점으로 하는 삼각형의 각을 접선과 현의 성질로 구하는 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_TANGENCY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "삼각형 내각합, 사각형 내각합, 이등변삼각형 성질을 단계별로 연결하는 표준 문항",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "삼각형",
+            "내접원",
+            "접점",
+            "각"
+          ],
+          "goal": [
+            "각"
+          ],
+          "method": [
+            "내접원",
+            "수직",
+            "이등변삼각형"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 7,
+      "candidate": {
+        "sourceQid": "7",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "primaryMethod": "지름 원주각으로 각 ACB=55도를 구하고 중심각 AOB=110도로부터 각 APB=180-110=70도를 계산한다.",
+        "decisiveStep": "원주각 55도로부터 중심각 110도 산출 후 180도 보각 계산",
+        "rpm": {
+          "majorUnit": "기하",
+          "midUnit": "원의 성질",
+          "l3": "원주각",
+          "l4": "원주각과 접선의 성질"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_DIAMETER_INSCRIBED_TANGENT_ANGLE",
+          "templateKey": "TPL_M3_DIAMETER_SUBTENDED_TWO_TANGENTS",
+          "why": "지름 원주각과 두 접선 사잇각 공식을 결합하여 해결하는 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_DIAMETER",
+          "CC_TANGENCY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "반원 직각 성질과 접선 사각형의 보각 관계를 순차 연결하는 표준 문항",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "원",
+            "지름",
+            "접선",
+            "각"
+          ],
+          "goal": [
+            "각"
+          ],
+          "method": [
+            "원주각",
+            "중심각",
+            "보각"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 8,
+      "candidate": {
+        "sourceQid": "8",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "primaryMethod": "30도 직각삼각형에서 r=(8+r)/2로 반지름 r=8을 구하고 PT=16*cos30도=8sqrt(3)을 계산한다.",
+        "decisiveStep": "빗변-대변 비율 방정식 r=(8+r)/2 풀이 및 삼각비 적용",
+        "rpm": {
+          "majorUnit": "기하",
+          "midUnit": "원의 성질",
+          "l3": "원과 직선",
+          "l4": "원의 접선과 삼각비"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_TANGENT_SPECIAL_ANGLE_LENGTH",
+          "templateKey": "TPL_M3_TANGENT_30_DEGREE_RADIUS_EQUATION",
+          "why": "30도 특수각 직각삼각형에서 반지름 방정식을 세워 접선 길이를 구하는 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_TRIG_SPECIAL_ANGLES",
+          "CC_TANGENCY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "특수각 삼각비와 원의 반지름 관계식을 연립하는 표준 문항",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "원",
+            "접선",
+            "각",
+            "선분"
+          ],
+          "goal": [
+            "길이"
+          ],
+          "method": [
+            "삼각비",
+            "방정식",
+            "반지름"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 9,
+      "candidate": {
+        "sourceQid": "9",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "primaryMethod": "피타고라스 정리로 BC=16을 구하고 내접원 반지름 r=(12+16-20)/2=4를 도출하여 넓이 16pi를 계산한다.",
+        "decisiveStep": "내접원 반지름 r=4 산출 및 넓이 pi*r^2 = 16pi 계산",
+        "rpm": {
+          "majorUnit": "기하",
+          "midUnit": "원의 성질",
+          "l3": "원과 직선",
+          "l4": "직각삼각형의 내접원의 반지름"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_INCIRCLE_RIGHT_TRIANGLE_AREA",
+          "templateKey": "TPL_M3_RIGHT_TRIANGLE_INCIRCLE_RADIUS",
+          "why": "직각삼각형의 세 변으로부터 내접원의 반지름과 넓이를 구하는 대표 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_PYTHAGORAS",
+          "CC_INCIRCLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "피타고라스 정리와 직각삼각형 내접원 반지름 공식을 연계하는 2단계 문항",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "직각삼각형",
+            "내접원",
+            "변"
+          ],
+          "goal": [
+            "넓이"
+          ],
+          "method": [
+            "피타고라스",
+            "내접원반지름",
+            "원넓이"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 10,
+      "candidate": {
+        "sourceQid": "10",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "primaryMethod": "반원 180도를 5등분하여 호당 중심각 36도와 원주각 18도를 얻고 x+y=36도를 도출한다.",
+        "decisiveStep": "등분 호 중심각 36도 산출 및 원주각 합 18도 + 18도 = 36도 계산",
+        "rpm": {
+          "majorUnit": "기하",
+          "midUnit": "원의 성질",
+          "l3": "원주각",
+          "l4": "원주각의 크기와 호의 길이"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_EQUAL_ARCS_INSCRIBED_ANGLE_SUM",
+          "templateKey": "TPL_M3_SEMI_CIRCLE_ARC_PARTITION_ANGLE",
+          "why": "반원 둘레를 등분할한 호들의 원주각의 합을 구하는 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_DIAMETER"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "반원 중심각 등분할과 원주각 1/2 공식을 단순 결합하는 기본 문항",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "원",
+            "지름",
+            "호",
+            "등분"
+          ],
+          "goal": [
+            "합",
+            "각"
+          ],
+          "method": [
+            "원주각",
+            "비례배분"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 11,
+      "candidate": {
+        "sourceQid": "11",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "primaryMethod": "AH=4sqrt(3)을 구하고 삼각형 ABH와 AQC의 닮음비 12:AQ=4sqrt(3):8에서 지름 AQ=8sqrt(3), 반지름 4sqrt(3)을 도출한다.",
+        "decisiveStep": "닮음비 12:AQ = sqrt(3):2 수립 및 반지름 4sqrt(3) 계산",
+        "rpm": {
+          "majorUnit": "기하",
+          "midUnit": "원의 성질",
+          "l3": "원주각",
+          "l4": "원주각과 삼각형의 닮음"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_CIRCUMCIRCLE_DIAMETER_SIMILARITY",
+          "templateKey": "TPL_M3_ALTITUDE_CIRCUMCIRCLE_DIAMETER_RATIO",
+          "why": "수선의 높이와 외접원 지름을 연결하는 AA 닮음 표준형 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_SIMILARITY",
+          "CC_DIAMETER",
+          "CC_PYTHAGORAS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "피타고라스 연산, 원주각 일치 발견, AA 닮음비 유도를 통합적으로 수행해야 하는 고난도 문항",
+        "level": "상",
+        "item4slot": {
+          "given": [
+            "외접원",
+            "지름",
+            "삼각형",
+            "수선"
+          ],
+          "goal": [
+            "반지름"
+          ],
+          "method": [
+            "닮음",
+            "피타고라스",
+            "원주각"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 12,
+      "candidate": {
+        "sourceQid": "12",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "primaryMethod": "자료 3에 포함된 극단치 50이 평균을 왜곡함을 파악하여 중앙값 적합 자료로 판정한다.",
+        "decisiveStep": "극단값 50의 존재로 인한 평균 왜곡 및 중앙값(5)의 대표성 식별",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "대푯값의 특성과 선택"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_OUTLIER_REPRESENTATIVE_SELECTION",
+          "templateKey": "TPL_M3_OUTLIER_MEDIAN_OVER_MEAN",
+          "why": "극단값이 존재하는 데이터셋에서 중앙값의 비교우위를 판별하는 개념 템플릿"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "극단값의 유무를 대조하여 중앙값의 필요성을 판별하는 1단계 개념 문항",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "자료",
+            "대푯값"
+          ],
+          "goal": [
+            "판정"
+          ],
+          "method": [
+            "중앙값",
+            "평균",
+            "이상치"
+          ],
+          "condition": [
+            "극단값"
+          ]
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 13,
+      "candidate": {
+        "sourceQid": "13",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "primaryMethod": "누적도수로 20, 21번째 값 5시간(a=5)을 찾고 최대도수 13명의 6시간(b=6)을 더해 11을 구한다.",
+        "decisiveStep": "누적도수 구간으로 중앙값 a=5 특정 및 b=6 합산",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "도수분포표에서의 중앙값과 최빈값"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_FREQUENCY_TABLE_MEDIAN_MODE",
+          "templateKey": "TPL_M3_CUMULATIVE_FREQUENCY_MEDIAN_MODE_SUM",
+          "why": "도수분포표에서 누적도수를 이용해 중앙값과 최빈값을 산출하는 표준형 템플릿"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "누적도수 집계를 통해 짝수 개 중앙값과 최빈값을 차례로 도출하는 표준 문항",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "도수분포표",
+            "학생수",
+            "변량"
+          ],
+          "goal": [
+            "합",
+            "대푯값"
+          ],
+          "method": [
+            "중앙값",
+            "최빈값",
+            "누적도수"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 14,
+      "candidate": {
+        "sourceQid": "14",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "primaryMethod": "총합 108에서 x=26을 구하고 가운데 두 값 26과 30의 평균 28살을 중앙값으로 산출한다.",
+        "decisiveStep": "x=26 산출 후 중앙값 (26+30)/2=28 계산",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "평균과 중앙값의 관계"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_MEAN_TO_MEDIAN_RECOVERY",
+          "templateKey": "TPL_M3_SUM_EQUATION_THEN_MEDIAN",
+          "why": "평균으로부터 미지의 변량을 특정하고 중앙값을 산출하는 템플릿"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "평균 공식 역산과 짝수 개 중앙값 정의를 순차 적용하는 표준 문항",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "자료",
+            "평균",
+            "인원수"
+          ],
+          "goal": [
+            "중앙값"
+          ],
+          "method": [
+            "방정식",
+            "평균",
+            "중앙값"
+          ],
+          "condition": [
+            "순서"
+          ]
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 15,
+      "candidate": {
+        "sourceQid": "15",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "primaryMethod": "평균 8회를 구하고 8보다 큰 변량이 9, 11, 13의 3개임을 확인하여 선지 4번의 오류를 식별한다.",
+        "decisiveStep": "평균 초과 변량이 3개임을 카운팅하여 4번 진술(4개) 오류 판정",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "분산과 표준편차의 계산"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_VARIANCE_PROPERTY_AUDIT",
+          "templateKey": "TPL_M3_STATISTICS_MULTI_CLAIM_AUDIT",
+          "why": "데이터셋의 대푯값과 산포도 관련 5가지 진술의 참거짓을 종합 감사하는 템플릿"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "평균, 편차, 분산, 표준편차의 계산 과정을 종합적으로 확인하는 5점 배점 문항",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "자료",
+            "변량"
+          ],
+          "goal": [
+            "판정"
+          ],
+          "method": [
+            "평균",
+            "편차",
+            "분산",
+            "표준편차"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 16,
+      "candidate": {
+        "sourceQid": "16",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "primaryMethod": "편차합 0으로부터 x=-3을 구하고 평균 16에 편차 -3을 더해 B의 대기시간 13분을 계산한다.",
+        "decisiveStep": "편차합 방정식 x+3=0에서 x=-3 도출 및 16+(-3)=13 계산",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "편차의 성질"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_DEVIATION_SUM_ZERO",
+          "templateKey": "TPL_M3_DEVIATION_TABLE_VARIABLE_RECOVERY",
+          "why": "편차의 총합이 0임을 이용하여 표의 미지수와 해당 변량을 구하는 템플릿"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "편차합 0의 기본 성질을 적용하는 1단계 대수 문항",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "편차표",
+            "평균"
+          ],
+          "goal": [
+            "변량"
+          ],
+          "method": [
+            "편차합",
+            "방정식"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 17,
+      "candidate": {
+        "sourceQid": "17",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "primaryMethod": "a<=9 조건으로부터 b=13을 특정하고 평균 11의 총합 방정식 a+47=55에서 a=8을 얻어 21을 구한다.",
+        "decisiveStep": "a<=9 조건으로 b=13 결정 후 총합 55에서 a=8 산출",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "중앙값과 평균의 연립 추론"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_DUAL_CONDITION_MEDIAN_MEAN",
+          "templateKey": "TPL_M3_TWO_DATASET_MEDIAN_RANK_INFERENCE",
+          "why": "두 데이터셋의 중앙값 순서 관계와 평균을 결합하여 두 변수를 결정하는 템플릿"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "부등식 영역 추론과 평균 일차방정식을 다단계로 연계하는 복합 추론 문항",
+        "level": "상",
+        "item4slot": {
+          "given": [
+            "자료",
+            "중앙값",
+            "평균"
+          ],
+          "goal": [
+            "합",
+            "변수"
+          ],
+          "method": [
+            "부등식",
+            "추론",
+            "방정식"
+          ],
+          "condition": [
+            "순위"
+          ]
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 18,
+      "candidate": {
+        "sourceQid": "18",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+        "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
+        "primaryMethod": "산점도의 y좌표 빈도를 집계하여 8점이 4명으로 가장 많음을 확인하고 최빈값 8점을 결정한다.",
+        "decisiveStep": "y=8에 대응하는 점 4개 확인 및 최빈값 8점 판정",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "상관관계",
+          "l3": "산점도와 상관관계",
+          "l4": "산점도에서의 대푯값"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_SCATTER_PLOT_MODE",
+          "templateKey": "TPL_M3_SCATTER_COORDINATE_FREQUENCY_MODE",
+          "why": "산점도의 한 축 좌표들의 빈도를 세어 최빈값을 구하는 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_SCATTER_PLOT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "산점도에서 세로선 또는 가로선 상의 점의 개수를 세어 최빈값을 찾는 기본 문항",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "산점도",
+            "변량"
+          ],
+          "goal": [
+            "최빈값"
+          ],
+          "method": [
+            "빈도",
+            "해석"
+          ],
+          "condition": []
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 19,
+      "candidate": {
+        "sourceQid": "19",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+        "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
+        "primaryMethod": "x>=8 및 y>=8 조건을 동시에 만족하는 5개 격자점을 선별하여 인원수 5명을 구한다.",
+        "decisiveStep": "조건 만족 점 (8,8), (8,9), (9,8), (9,9), (10,9) 5개 식별",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "상관관계",
+          "l3": "산점도와 상관관계",
+          "l4": "산점도에서의 영역별 빈도 해석"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_SCATTER_PLOT_INEQUALITY_COUNT",
+          "templateKey": "TPL_M3_SCATTER_TWO_VARIABLE_THRESHOLD_COUNT",
+          "why": "산점도에서 두 변량의 임계값 이상인 점의 개수를 세는 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_SCATTER_PLOT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "부등식 영역에 해당하는 점의 개수를 직접 카운팅하는 1단계 해석 문항",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "산점도",
+            "조건"
+          ],
+          "goal": [
+            "인원수"
+          ],
+          "method": [
+            "부등식",
+            "카운팅"
+          ],
+          "condition": [
+            "이상"
+          ]
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 20,
+      "candidate": {
+        "sourceQid": "20",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+        "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
+        "primaryMethod": "기준 직선 y=x 위쪽 영역의 점 5개를 식별하여 전체 15명 중 비율 5/15=1/3을 도출한다.",
+        "decisiveStep": "y>x 만족 점 5개 식별 후 5/15=1/3 계산",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "상관관계",
+          "l3": "산점도와 상관관계",
+          "l4": "산점도에서의 비율 계산"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_SCATTER_DIAGONAL_RATIO",
+          "templateKey": "TPL_M3_SCATTER_Y_GREATER_THAN_X_PROPORTION",
+          "why": "산점도에서 대각선 y=x 기준 상방 점의 비율을 구하는 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_SCATTER_PLOT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "대각선 경계선을 기준으로 부등식 영역을 해석하고 비율을 분수로 나타내는 표준 문항",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "산점도",
+            "변량"
+          ],
+          "goal": [
+            "비율"
+          ],
+          "method": [
+            "부등식",
+            "해석",
+            "비율"
+          ],
+          "condition": [
+            "대소관계"
+          ]
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 21,
+      "candidate": {
+        "sourceQid": "21",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "primaryMethod": "중심거리 OM=12-r과 PM=r-2로 피타고라스 이차방정식 r^2-28r+148=0을 풀어 r=14-4sqrt(3), PQ=24-8sqrt(3)을 도출한다.",
+        "decisiveStep": "피타고라스 이차방정식 수립 및 근의 공식으로 r=14-4sqrt(3) 산출",
+        "rpm": {
+          "majorUnit": "기하",
+          "midUnit": "원의 성질",
+          "l3": "원과 직선",
+          "l4": "원의 접선과 현의 길이의 종합 활용"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_SQUARE_INSCRIBED_SECANT_CHORD",
+          "templateKey": "TPL_M3_SQUARE_TANGENT_SECANT_QUADRATIC",
+          "why": "정사각형에 접하면서 변과 만나는 원의 현 길이를 이차방정식으로 구하는 서술형 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_PYTHAGORAS",
+          "CC_TANGENCY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "기하적 대칭성 모델링, 이차방정식 유도 및 무리수 근 판별까지 요구하는 고난도 서술형 문항",
+        "level": "상",
+        "item4slot": {
+          "given": [
+            "정사각형",
+            "원",
+            "접선",
+            "교점"
+          ],
+          "goal": [
+            "길이",
+            "현"
+          ],
+          "method": [
+            "피타고라스",
+            "이차방정식",
+            "근의공식"
+          ],
+          "condition": [
+            "범위"
+          ]
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 22,
+      "candidate": {
+        "sourceQid": "22",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "primaryMethod": "호당 원주각 x에 대해 36+2(180-2x)=180에서 x=54도를 구하고 삼각형 AFD에서 각 AFD=180-108=72도를 도출한다.",
+        "decisiveStep": "삼각형 EAD 내각합 방정식 4x=216 풀이 및 x=54도에서 72도 계산",
+        "rpm": {
+          "majorUnit": "기하",
+          "midUnit": "원의 성질",
+          "l3": "원주각",
+          "l4": "원주각과 현의 연장선의 교각"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_EQUAL_CHORD_EXTERIOR_ANGLE",
+          "templateKey": "TPL_M3_CONSECUTIVE_EQUAL_ARCS_INTERSECTION",
+          "why": "연속된 동일 호의 원주각과 연장선 교각을 연립하여 대각선 교각을 구하는 서술형 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_INSCRIBED_QUAD"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "원주각의 비례 표현과 두 삼각형의 내각합 관계를 연립하여 증명 서술하는 문항",
+        "level": "상",
+        "item4slot": {
+          "given": [
+            "원",
+            "호",
+            "교점",
+            "각"
+          ],
+          "goal": [
+            "각"
+          ],
+          "method": [
+            "원주각",
+            "내각합",
+            "방정식"
+          ],
+          "condition": [
+            "동일호"
+          ]
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    },
+    {
+      "sourceOrdinal": 23,
+      "candidate": {
+        "sourceQid": "23",
+        "variationType": "STRICT_VARIANT",
+        "standardCourse": "중3",
+        "courseKey": "MID-MATH-3",
+        "curriculum": "2015",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "primaryMethod": "평균 a+1과 편차제곱합 2(a-1)^2+26을 세워 분산 방정식 2(a-1)^2+26=30에서 a=1+sqrt(2), 평균 2+sqrt(2)를 도출한다.",
+        "decisiveStep": "분산 방정식 (a-1)^2=2 풀이 및 양수 조건으로 a=1+sqrt(2), 평균 2+sqrt(2) 계산",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "분산의 계산과 식의 값"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_VARIANCE_ALGEBRAIC_VARIABLE",
+          "templateKey": "TPL_M3_VARIANCE_QUADRATIC_RECOVERY_MEAN",
+          "why": "문자가 포함된 변량의 분산 방정식으로부터 변수를 구하고 평균을 도출하는 서술형 템플릿"
+        },
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "문자 변량의 평균식, 편차식 전개, 분산 방정식 풀이 및 무리수 평균 도출의 다단계 서술 문항",
+        "level": "상",
+        "item4slot": {
+          "given": [
+            "변량",
+            "분산",
+            "양수조건"
+          ],
+          "goal": [
+            "평균"
+          ],
+          "method": [
+            "평균",
+            "편차",
+            "분산",
+            "이차방정식"
+          ],
+          "condition": [
+            "양수"
+          ]
+        },
+        "hold": ""
+      },
+      "status": "unclassified_unregistered"
+    }
+  ]
+}
