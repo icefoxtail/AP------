@@ -484,6 +484,24 @@ function cellClearance(box,cell,circles,rect){
   return best;
 }
 
+// The smallest distance (px) from a box to any circle's line, measured the way the independent observer measures it (-Infinity when the box crosses a line or sits in the wrong cell).
+// The observer refuses an element label nearer than ELEMENT_LINE_MARGIN to a line (SD_ELEMENT_REGION), so the engine must keep that room too.
+const ELEMENT_LINE_MARGIN=2.5,ELEMENT_ROW_MARGIN=3.5,ELEMENT_ROW_GAP=8;
+function observerMargin(box,cell,circles){
+  let best=Infinity;
+  for(let i=0;i<circles.length;i++){
+    const c=circles[i];
+    const cx=Math.max(box.x,Math.min(c.cx,box.x+box.width)),cy=Math.max(box.y,Math.min(c.cy,box.y+box.height));
+    const low=norm2(cx,cy,c);
+    const high=Math.max(norm2(box.x,box.y,c),norm2(box.x+box.width,box.y,c),norm2(box.x,box.y+box.height,c),norm2(box.x+box.width,box.y+box.height,c));
+    if(low<1&&high>1)return -Infinity;
+    const inside=low<1;
+    if(inside!==(((cell>>i)&1)===1))return -Infinity;
+    best=Math.min(best,inside?(1-Math.sqrt(high))*c.r:(Math.sqrt(low)-1)*c.r);
+  }
+  return best;
+}
+
 // The contour of one atomic cell within the universal rectangle (marching squares on the exact membership field).
 const MARCH_STEP=2,MARCH_PAD=4.3;
 function cellContours(cell,circles,rect){
@@ -785,11 +803,62 @@ function resolveVenn(spec,placed){
       const score=Math.min(clearance,30)+(labelBand>-Infinity?(box.y-U.y)/U.h*40:Math.min(near,40)*0.6);
       if(!best||score>best.score+1e-9){best={x,y,score};}
     }
-    if(!best)bad('SET_ELEMENT_NO_ROOM');
+    if(!best)return false;
     item.box={x:best.x,y:best.y,width,height};
     item.label.anchor={x:r6(best.x),y:r6(best.y),ax:'start',ay:'top'};
     occupied.push({x:best.x-4,y:best.y-4,width:width+8,height:height+8});
-  }};
+  }return true;};
+  // Elements of one region are packed together in centred rows (one per row first, then two, three... per row) when the one-by-one placement left no room
+  // or left a label nearer to a circle's line than the observer allows: the labels of a region are laid out jointly, so the last one is not squeezed against the line.
+  const placeElementRows=()=>{
+    const groups=new Map();
+    for(const item of elementItems){const key=item.label.cellMask;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(item);}
+    const stackHeight=rows=>rows.reduce((sum,item)=>sum+item.box.height,0)+(rows.length-1)*ELEMENT_ROW_GAP;
+    for(const items of [...groups.values()].sort((a,b)=>stackHeight(b)-stackHeight(a))){
+      const cell=items[0].label.cellMask;
+      let chosen=null;
+      for(let perRow=1;perRow<=items.length&&!chosen;perRow++){
+        const rows=[];for(let k=0;k<items.length;k+=perRow)rows.push(items.slice(k,k+perRow));
+        const rowWidth=row=>row.reduce((sum,item)=>sum+item.box.width,0)+(row.length-1)*ELEMENT_ROW_GAP;
+        const rowHeight=row=>Math.max(...row.map(item=>item.box.height));
+        const total=rows.reduce((sum,row)=>sum+rowHeight(row),0)+(rows.length-1)*ELEMENT_ROW_GAP;
+        let best=null;
+        for(let top=U.y+4;top+total<=U.y+U.h-4;top+=2){
+          if(top<labelBand)continue;
+          for(let centre=U.x+4;centre<=U.x+U.w-4;centre+=2){
+            const boxes=[];let y=top,ok=true,score=Infinity;
+            for(const row of rows){
+              let x=centre-rowWidth(row)/2;const high=rowHeight(row);
+              for(const item of row){
+                const box={x,y:y+(high-item.box.height)/2,width:item.box.width,height:item.box.height};
+                const margin=observerMargin(box,cell,circles);
+                if(!boxInCell(box,cell,circles,U,4)||margin<ELEMENT_ROW_MARGIN||occupied.some(other=>overlaps({x:box.x-4,y:box.y-4,width:box.width+8,height:box.height+8},other))){ok=false;break;}
+                score=Math.min(score,margin);boxes.push({item,box});x+=item.box.width+ELEMENT_ROW_GAP;
+              }
+              if(!ok)break;y+=high+ELEMENT_ROW_GAP;
+            }
+            if(ok&&(!best||Math.min(score,30)>best.score+1e-9))best={boxes,score:Math.min(score,30)};
+          }
+        }
+        if(best)chosen=best;
+      }
+      if(!chosen)return false;
+      for(const {item,box} of chosen.boxes){
+        item.box={x:r6(box.x),y:r6(box.y),width:box.width,height:box.height};
+        item.label.anchor={x:r6(box.x),y:r6(box.y),ax:'start',ay:'top'};
+        occupied.push({x:box.x-4,y:box.y-4,width:box.width+8,height:box.height+8});
+      }
+    }
+    return true;
+  };
+  const placeAllElements=()=>{
+    const mark=occupied.length,original=elementItems.map(item=>({box:{...item.box},anchor:{...item.label.anchor}}));
+    const placedFirst=placeElements();
+    if(placedFirst&&elementItems.every(item=>observerMargin(item.box,item.label.cellMask,circles)>=ELEMENT_LINE_MARGIN+0.05))return;
+    occupied.length=mark;
+    elementItems.forEach((item,k)=>{item.box={...original[k].box};item.label.anchor={...original[k].anchor};});
+    if(!placeElementRows())bad('SET_ELEMENT_NO_ROOM');
+  };
   const setItems=placed.filter(item=>item.label.placement==='set');
   const placeSetLabels=()=>{for(const item of setItems){
     const setIndex=spec.setIds.indexOf(item.label.extra.set);
@@ -876,7 +945,7 @@ function resolveVenn(spec,placed){
     occupied.push({x:chosen.x-4,y:chosen.y-4,width:width+8,height:height+8});
   }};
   // A figure with headcounts places the set names (with their counts) first, so a loose outside element cannot take the place a name needs; otherwise elements come first as always.
-  if(labelBand>-Infinity){placeSetLabels();placeElements();}else{placeElements();placeSetLabels();}
+  if(labelBand>-Infinity){placeSetLabels();placeAllElements();}else{placeAllElements();placeSetLabels();}
   void byLabel;void otherBoxes;
 }
 

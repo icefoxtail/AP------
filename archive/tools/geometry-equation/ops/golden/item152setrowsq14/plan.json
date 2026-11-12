@@ -1,0 +1,100 @@
+{
+  "capability": "composite-panels-v1",
+  "columns": 1,
+  "panels": [
+    {
+      "caption": {
+        "text": "두 순환"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "S"
+            }
+          ],
+          "elements": [
+            {
+              "text": "1→4→2→1",
+              "math": true,
+              "in": [
+                "S"
+              ]
+            },
+            {
+              "text": "3→5→6→3",
+              "math": true,
+              "in": [
+                "S"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "고정과 부착"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "S"
+            }
+          ],
+          "elements": [
+            {
+              "text": "7→7",
+              "math": true,
+              "in": [
+                "S"
+              ]
+            },
+            {
+              "text": "8→4",
+              "math": true,
+              "in": [
+                "S"
+              ]
+            },
+            {
+              "text": "9→8",
+              "math": true,
+              "in": [
+                "S"
+              ]
+            },
+            {
+              "text": "10→5",
+              "math": true,
+              "in": [
+                "S"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "화살표 u→v는 u∈A일 때 v∈A도 강제된다는 뜻이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "매산고 고1 2학기 중간고사 해당 문항",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "기존 풀이의 핵심 단계를 순서대로 나타낸다.",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "전체집합 S 안의 두 순환과 고정점, 연결 관계"
+  ]
+}
