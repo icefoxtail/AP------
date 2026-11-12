@@ -1,0 +1,205 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "상수함수 f"
+   },
+   "plan": {
+    "capability": "set-diagram-figure-v1",
+    "diagram": {
+     "kind": "MAPPING",
+     "columns": [
+      {
+       "id": "X",
+       "name": "X",
+       "elements": [
+        "1",
+        "2",
+        "3"
+       ]
+      },
+      {
+       "id": "Y",
+       "name": "X",
+       "elements": [
+        "1",
+        "2",
+        "3"
+       ]
+      }
+     ],
+     "arrows": [
+      {
+       "from": {
+        "column": 0,
+        "element": 0
+       },
+       "to": {
+        "column": 1,
+        "element": 1
+       }
+      },
+      {
+       "from": {
+        "column": 0,
+        "element": 1
+       },
+       "to": {
+        "column": 1,
+        "element": 1
+       }
+      },
+      {
+       "from": {
+        "column": 0,
+        "element": 2
+       },
+       "to": {
+        "column": 1,
+        "element": 1
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "항등함수 g"
+   },
+   "plan": {
+    "capability": "set-diagram-figure-v1",
+    "diagram": {
+     "kind": "MAPPING",
+     "columns": [
+      {
+       "id": "X",
+       "name": "X",
+       "elements": [
+        "1",
+        "2",
+        "3"
+       ]
+      },
+      {
+       "id": "Y",
+       "name": "X",
+       "elements": [
+        "1",
+        "2",
+        "3"
+       ]
+      }
+     ],
+     "arrows": [
+      {
+       "from": {
+        "column": 0,
+        "element": 0
+       },
+       "to": {
+        "column": 1,
+        "element": 0
+       }
+      },
+      {
+       "from": {
+        "column": 0,
+        "element": 1
+       },
+       "to": {
+        "column": 1,
+        "element": 1
+       }
+      },
+      {
+       "from": {
+        "column": 0,
+        "element": 2
+       },
+       "to": {
+        "column": 1,
+        "element": 2
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "일대일대응 h"
+   },
+   "plan": {
+    "capability": "set-diagram-figure-v1",
+    "diagram": {
+     "kind": "MAPPING",
+     "columns": [
+      {
+       "id": "X",
+       "name": "X",
+       "elements": [
+        "1",
+        "2",
+        "3"
+       ]
+      },
+      {
+       "id": "Y",
+       "name": "X",
+       "elements": [
+        "1",
+        "2",
+        "3"
+       ]
+      }
+     ],
+     "arrows": [
+      {
+       "from": {
+        "column": 0,
+        "element": 0
+       },
+       "to": {
+        "column": 1,
+        "element": 2
+       }
+      },
+      {
+       "from": {
+        "column": 0,
+        "element": 1
+       },
+       "to": {
+        "column": 1,
+        "element": 1
+       }
+      },
+      {
+       "from": {
+        "column": 0,
+        "element": 2
+       },
+       "to": {
+        "column": 1,
+        "element": 0
+       }
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "caption": "g(2)=2이므로 f(2)=h(2)=2, f는 상수 2, g는 항등, h(1)=f(1)+g(1)=3, 일대일대응이므로 h(3)=1이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f 상수함수, g 항등함수, h 일대일대응",
+   "mappedTo": "panels"
+  }
+ ],
+ "newVisualInformation": [
+  "세 함수를 각각 대응도로 그린다"
+ ]
+}

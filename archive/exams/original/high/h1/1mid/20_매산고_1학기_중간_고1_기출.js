@@ -241,9 +241,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산고_1학기_중간_고1_기출/q6-solution.svg",
-    "solutionImageAlt": "k=−1, 0, 1일 때 포물선과 y=x−1의 접점",
-    "solutionImageCaption": "포물선과 직선의 차가 (x+k)²이므로 접점 Pₖ=(−k,−k−1)이다."
+    "solutionImage": "assets/images/20_매산고_1학기_중간_고1_기출/q6-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 두 패널에서 파란 포물선과 주황 직선 y=x−1이 각각 한 점에서 접한다.",
+    "solutionImageCaption": "예: k=−1과 k=1에서 파란 포물선과 주황 직선 y=x−1이 각각 접한다. 이 관계가 모든 k에서 성립하도록 계수 조건을 정한다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -534,9 +535,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산고_1학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "k=7일 때 x축에 접하는 첫째 포물선과 x축을 두 점에서 지나는 둘째 포물선",
-    "solutionImageCaption": "판별식이 0이면 접하고, 양수이면 서로 다른 두 교점이 생긴다."
+    "solutionImage": "assets/images/20_매산고_1학기_중간_고1_기출/q13-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 첫 패널은 포물선이 x축에 접하고, 둘째 패널은 x축과 두 점에서 만난다.",
+    "solutionImageCaption": "예: k=−1에서는 파란 포물선이 주황 x축에 접하고, k=3에서는 파란 포물선이 주황 x축과 두 점에서 만난다. 두 판별식 조건을 함께 적용한다. 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -661,9 +663,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산고_1학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "a=8일 때 x축 위에 놓이고 최솟값이 7/8인 이차함수 그래프",
-    "solutionImageCaption": "정수 후보의 경계 a=8에서는 이차식이 모든 실수 x에서 양수이다."
+    "solutionImage": "assets/images/20_매산고_1학기_중간_고1_기출/q16-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 그래프: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "예: a=4에서 그래프가 x축 위에 놓여 부등식의 해가 없다. 판별식이 음수인 정수 범위를 확인한다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -736,9 +739,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산고_1학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "접선 y=0과 y=x, 직선 x=8이 만드는 직각삼각형 OAB",
-    "solutionImageCaption": "두 직선의 교점과 x=8의 교점으로 밑변과 높이가 8인 삼각형을 확인한다."
+    "solutionImage": "assets/images/20_매산고_1학기_중간_고1_기출/q18-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 파란 OA와 주황 AB, 초록 BO가 점 O, A, B의 직각삼각형을 이룬다.",
+    "solutionImageCaption": "파란 OA는 x축, 초록 BO는 y=x, 주황 AB는 수직 경계다. 세 경계가 만드는 직각삼각형의 넓이를 구한다. 정답은 32이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -812,8 +816,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산고_1학기_중간_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "대표값 n=−1에서 교집합의 네 정수해를 표시한 수직선",
-    "solutionImageCaption": "일반 조건은 본문에서 n+2만 제외됨을 보이고, 그림은 n=−1의 경우를 나타낸다."
+    "solutionImage": "assets/images/20_매산고_1학기_중간_고1_기출/q20-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 첫째 부등식의 열린 구간 −2<x<4가 표시되어 있다.",
+    "solutionImageCaption": "첫째 부등식에서 정수 후보 구간을 얻고, 둘째 부등식은 n+2 하나만 제외한다. 예: n=−1이면 x=1이 제외된다. 정답은 −5이다.",
+    "solutionImageSize": "full"
   }
 ];

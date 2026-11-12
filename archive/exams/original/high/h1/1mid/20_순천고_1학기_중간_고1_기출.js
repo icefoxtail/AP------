@@ -84,7 +84,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 모서리에 a, b, c가 붙은 직육면체와 서로 마주 보는 꼭짓점을 잇는 공간대각선 AG.",
+    "solutionImageCaption": "검은 선은 직육면체의 모서리이고, 빨간 선은 공간대각선 AG이다. 세 방향 모서리 길이를 a, b, c로 두고, 겉넓이와 모서리 길이의 합에서 세 변의 대칭식 합을 구해 대각선 길이에 연결한다. 정답은 3 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -467,7 +471,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "하",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 표본 이차함수의 포물선이 x축과 서로 다른 두 점에서 만나는 그래프.",
+    "solutionImageCaption": "a=0인 표본 그래프에서 포물선과 x축의 두 교점을 확인한다. V는 이 포물선의 꼭짓점 이름이다. 서로 다른 실근 조건을 판별식으로 일반화한다. 정답은 a<1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -511,9 +519,9 @@ window.questionBank = [
     "level": "하",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "k=-1일 때 직선 y=x-1이 포물선 y=x²+3x에 점 T(-1,-2)에서 접한다.",
-    "solutionImageCaption": "k=-1일 때 직선 y=x-1이 포물선 y=x²+3x에 점 T(-1,-2)에서 접한다.",
+    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 두 표본 직선을 위아래 두 그래프로 비교한다. 위에서는 두 교점이 있고 아래에서는 교점이 없다.",
+    "solutionImageCaption": "파란색 포물선 y=x²+3x와 주황색 표본 직선 y=x, y=x−2의 교점 개수를 비교해 접할 경계가 있음을 확인한다. 직선은 각각 k=0, k=−2인 예이며, V는 포물선의 꼭짓점으로 좌표는 (2분의 −3, 4분의 −9)이다. 판별식이 0인 조건으로 접하는 경우를 찾는다. 정답은 k=−1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -556,9 +564,9 @@ window.questionBank = [
     "level": "하",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "y=x²+4x-2=(x+2)²-6의 그래프는 꼭짓점 V(-2,-6)에서 최솟값 -6을 갖는다.",
-    "solutionImageCaption": "y=x²+4x-2=(x+2)²-6의 그래프는 꼭짓점 V(-2,-6)에서 최솟값 -6을 갖는다.",
+    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선의 꼭짓점 V와 좌우 대칭인 예시점 P, Q.",
+    "solutionImageCaption": "V는 꼭짓점이고 가로좌표는 −2이다. P와 Q는 서로 대칭인 예시점이다. 완전제곱식으로 바꾼 포물선의 꼭짓점에서 최솟값이 정해짐을 확인한다. 꼭짓점의 수치 높이는 그림에 나타내지 않는다. 정답은 −6이다.",
     "solutionImageSize": "full"
   },
   {
@@ -605,9 +613,9 @@ window.questionBank = [
     "level": "중",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "-2≤x≤2에서 y=-2(x-1)²+10은 꼭짓점 V에서 최댓값 10, 왼쪽 끝점 A에서 최솟값 -8을 갖는다.",
-    "solutionImageCaption": "-2≤x≤2에서 y=-2(x-1)²+10은 꼭짓점 V에서 최댓값 10, 왼쪽 끝점 A에서 최솟값 -8을 갖는다.",
+    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 제한된 x 구간에서 아래로 열린 포물선과 구간 양 끝 A, B 및 꼭짓점 V.",
+    "solutionImageCaption": "원 조건에서 x의 허용 구간을 얻고, 그 안의 꼭짓점과 두 끝에서 함수값을 비교한다. A, V, B는 각각 x=−2, 1, 2인 왼쪽 끝점, 꼭짓점, 오른쪽 끝점의 임시 이름이다. 세 점의 높이는 숫자로 표시하지 않는다. 정답은 2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -655,7 +663,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그래프. 위쪽은 파란 포물선과 주황 직선이 두 교점에서 만나고, 아래쪽은 파란 포물선의 구간 안 꼭짓점과 주황 수평선 y=−7을 보여 준다.",
+    "solutionImageCaption": "a=1인 표본이다. 위쪽 그래프에서는 파란색 f(x)=x²−6x+2와 주황색 y=−2x−1이 x=1, 3에서 만난다. 아래쪽 그래프는 같은 포물선에서 x∈[1,6] 안의 꼭짓점과 주황색 y=−7을 보여 준다. 이를 이용해 최솟값 조건을 세운다. 정답은 a=2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -917,9 +929,9 @@ window.questionBank = [
       "이차함수"
     ],
     "content": "함수 $f(x)=|x^2+x-6|$의 그래프와 직선 $y=-2x+k$가 서로 다른 네 점에서 만나도록 하는 실수 $k$의 범위를 구하시오. [7점, 부분점수 있음.]",
-    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "절댓값 이차함수의 세 구간과 k=5 수평선이 만드는 네 교점, 상한 25/4",
-    "solutionImageCaption": "중간 구간의 꼭짓점 높이와 오른쪽 구간 시작 높이를 비교하여 4<k<25/4를 확인한다.",
+    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 절댓값 이차함수의 세 조각과 y=5인 표본 수평선, 네 교점.",
+    "solutionImageCaption": "파란색은 g(x)=|x²+x−6|+2x의 세 조각, 주황 점선은 y=5인 표본 수평선이다. L은 (−3,−6)인 꺾임점이고 R은 x=2인 꺾임점, V는 x=2분의 1인 가운데 꼭짓점이다. k=5인 예에서 네 교점을 세고, 이를 이용해 가운데 꼭짓점 높이와 오른쪽 조각의 시작 높이를 비교한다. 답 경계가 되는 높이는 숫자로 나타내지 않는다. 정답은 4<k<4분의 25이다.",
     "solutionImageSize": "full",
     "answer": "$4<k<\\dfrac{25}{4}$",
     "solution": "두 그래프의 교점은\n$|x^2+x-6|=-2x+k$를 만족하므로\n$k=|x^2+x-6|+2x$로 바꾸어 생각한다.\n$x^2+x-6=(x+3)(x-2)$이므로 부호가 바뀌는 곳은 $x=-3,2$이다.\n① $x\\le-3$ 또는 $x\\ge2$에서는 $x^2+x-6\\ge0$이다.\n따라서 $k=x^2+3x-6$이다. 이 식을 완전제곱하면\n$k=\\left(x+\\dfrac32\\right)^2-\\dfrac{33}{4}$이다.\n$x\\le-3$에서는 $x$가 증가할수록 값이 감소하여, $x=-3$에서 $k=-6$이고 그보다 크거나 같은 모든 $k$에 대해 교점이 하나 있다.\n$x\\ge2$에서는 $x$가 증가할수록 값이 증가하여, $x=2$에서 $k=4$이고 $k\\ge4$에 대해 교점이 하나 있다.\n② $-3\\le x\\le2$에서는 $x^2+x-6\\le0$이므로\n$k=-x^2+x+6$\n$=-\\left(x-\\dfrac12\\right)^2+\\dfrac{25}{4}$이다.\n이 가운데 구간은 꼭짓점 $x=\\dfrac12$에서 최댓값 $\\dfrac{25}{4}$를 갖고, 왼쪽 끝에서는 $-6$, 오른쪽 끝에서는 $4$이다.\n서로 다른 네 교점이 생기려면 바깥 두 구간에서 각각 한 점, 가운데 구간에서 서로 다른 두 점이 생겨야 한다.\n가운데에서 두 점을 갖기 위해 $k<\\dfrac{25}{4}$이어야 하고, 오른쪽 바깥 구간에서도 교점이 존재하려면 $k>4$이어야 한다.\n$k=4$이면 $x=2$는 두 구간의 공통 끝점으로 중복되어 네 점이 되지 않고, $k=\\dfrac{25}{4}$이면 가운데 두 점이 꼭짓점에서 하나로 합쳐진다.\n따라서 구하는 범위는 $4<k<\\dfrac{25}{4}$이다.",
@@ -987,6 +999,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "layoutTag": "subjective-2up",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 표본 포물선 위의 경계점 B에서 x축까지 이어진 점선 안내와 x축의 두 교점.",
+    "solutionImageCaption": "B는 x=−2 경계에서 표본 포물선 위에 있는 점이며, 점선은 그 x좌표를 x축에 옮겨 표시한다. 원래 식에서 표본 k=0일 때 두 근이 경계의 오른쪽에 놓이는 모습을 본다. 판별식과 근의 합·곱 조건으로 전체 범위를 정리한다. 정답은 −8<k<8이다.",
+    "solutionImageSize": "full"
   }
 ];

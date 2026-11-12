@@ -1249,7 +1249,19 @@ function makeSolutionHtmlChunks(html) {
     host.innerHTML = html || '';
     const chunks = [];
     const pushTextChunks = (text) => {
-        const parts = String(text || '').split(/(\s+)/);
+        const source = String(text || '');
+        const parts = [];
+        // Complete TeX segments are pagination atoms, even above 260 characters.
+        // The final alternative consumes escapes outside math without treating
+        // an escaped dollar as an opening delimiter.
+        const mathOrEscape = /(\$\$(?:\\[\s\S]|(?!\$\$)[^\\])*?\$\$|\$(?:\\[\s\S]|[^\\$])*?\$|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\])|\\[\s\S]/g;
+        let cursor = 0;
+        for (const match of source.matchAll(mathOrEscape)) {
+            if (!match[1]) continue;
+            parts.push(...source.slice(cursor, match.index).split(/(\s+)/), match[1]);
+            cursor = match.index + match[1].length;
+        }
+        parts.push(...source.slice(cursor).split(/(\s+)/));
         let buf = '';
         for (const part of parts) {
             if ((buf + part).length > 260 && buf.trim()) {

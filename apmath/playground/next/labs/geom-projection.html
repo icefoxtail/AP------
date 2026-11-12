@@ -10,12 +10,19 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-space.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="geom-projection/lesson-core.js"></script>
+<script defer src="geom-projection/lesson-a.js"></script>
+<script defer src="geom-projection/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -1060,8 +1067,37 @@ window.addEventListener('DOMContentLoaded', function () {
   // Standard axis method versus projection shortcut; both preserve the original question and answer.
   examData[2].textbook=()=>({steps:`교선 방향의 반축은 ${tex('b=3')}입니다. 경사 방향의 지름은 ${tex('2a\\cos60^\\circ=6')}이므로 ${tex('a=6')}.<br/>타원 공식으로 ${tex('S=\\pi ab=18\\pi')}, 장축 ${tex('12')}, 단축 ${tex('6')}을 얻습니다.`,warning:'90° 절단은 이 유한한 타원 공식의 범위 밖입니다. 평면을 기울인 길이와 수직 투영 길이를 구별합니다.'});
 
+  const projectionScenes = [1, 2, 3, 4, 5, 6, 7].map(sceneOf);
+  const projectionInitial = {}, projectionPackets = {};
+  for (const sc of projectionScenes) {
+    const initial = { yaw: -38, pitch: 24, th: 60, board: 30, sun: 60, press: 0, cn: 3, mt: 50, lens: 'all', dir: 1, acd: false, v5: 0, v6: 0, v7: 0 };
+    sc.enter(initial); projectionInitial[sc.id] = initial;
+  }
+  function projectionPacket(id, index = 0) {
+    const key = id + '/' + index;
+    if (!projectionPackets[key]) {
+      const m = Number(id.slice(4)), initial = { ...projectionInitial[id], ['v' + m]: index };
+      projectionPackets[key] = {
+        index, input: VARS[m]?.[index] || null,
+        question: examData[m].question(initial).split('<div class="proj-new-row"')[0],
+        answer: examData[m].answerBadge(initial), check: checkData(m, initial)
+      };
+    }
+    return projectionPackets[key];
+  }
+  const projectionSource = window.APL_PROJECTION_SOURCE = {
+    initial: id => ({ ...projectionInitial[id] }), first: projectionPacket,
+    question: (id, index = 0) => projectionPacket(id, index).question,
+    inquiry: id => QUESTIONS[Number(id.slice(4)) - 1], variants: VARS, cameras: CAMS,
+    geometry(id, values = {}, explore = false, index = 0) {
+      const m = Number(id.slice(4)), s = { ...projectionInitial[id], ...values, ['v' + m]: index };
+      sync(projectionState(s, m, { tab: explore ? 'explore' : 'review' }), m);
+      return m === 5 ? geo5(!explore) : m === 6 ? geo6(!explore) : m === 7 ? geo7(!explore) : currentGeometry();
+    }
+  };
+  const projectionLessons = window.APL_PROJECTION_LESSONS?.install(projectionScenes, projectionSource) || {};
   APLab.createLab({
-    id: 'geom-projection',
+    id: 'geom-projection', lessons: projectionLessons,
     stagedReveal: true,
     title: '정사영 3D',
     courseName: '기하',
@@ -1091,7 +1127,7 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     state: { lens: 'all', dir: 1, press: 0, cn: 3, mt: 50, acd: false, v5: 0, v6: 0, v7: 0 },
     persist: ['lens'],
-    scenes: [1, 2, 3, 4, 5, 6, 7].map(sceneOf)
+    scenes: projectionScenes
   });
 });
 </script>

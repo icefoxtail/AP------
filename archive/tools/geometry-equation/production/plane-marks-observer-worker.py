@@ -24,6 +24,21 @@ ANGLE_GROUP_STROKES={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}   # emphasisGroup of a
 
 # colour groups (C1): this observer's own copy of the line colours (the tints come from plane_regions_observer.PALETTE_FILLS); tests/test_palette_c1.py ties both to the engine's table
 PALETTE_LINES={'BLUE':'#1f5fa8','WARM':'#b85c00','GREEN':'#2e7d32','ROSE':'#b8325f','VIOLET':'#6b46b3'}
+ARC_FILL_MIN_CONTRAST=3.0    # an angle arc over its sector fill: the arc stays visible (WCAG large-graphics ratio)
+def _full_hex(hex_colour):
+    h=str(hex_colour).lower()
+    return '#'+''.join(c*2 for c in h[1:4]) if len(h)==4 and h[0]=='#' else h
+def _luminance(hex_colour):
+    hex_colour=_full_hex(hex_colour)
+    channels=[int(hex_colour[i:i+2],16)/255.0 for i in (1,3,5)]
+    linear=[c/12.92 if c<=0.03928 else ((c+0.055)/1.055)**2.4 for c in channels]
+    return 0.2126*linear[0]+0.7152*linear[1]+0.0722*linear[2]
+def contrast_ratio(stroke_hex,fill_hex,opacity):
+    try:
+        fill_hex=_full_hex(fill_hex);mixed='#'+''.join('%02x'%round(int(fill_hex[i:i+2],16)*opacity+255*(1-opacity)) for i in (1,3,5))   # the tint over the white page
+        a,b=_luminance(stroke_hex),_luminance(mixed)
+    except (ValueError,TypeError):return 0.0
+    return (max(a,b)+0.05)/(min(a,b)+0.05)
 COLORED_SEGMENT_WIDTH=2.4    # px: a coloured segment's stroke (the default is 1.6, an emphasized one 3.0)
 
 VECTOR_CALL=re.compile(r'(?<![A-Za-z])vec\(([^()]*)\)')              # (G3) a vector name written in a plan label
@@ -592,18 +607,31 @@ def audit(p):
             if t=='g' and n.get('data-fragment-sha'):return True
         return False
     # colour groups of angles (C1): angles[].color and the groups of equalAngles, resolved from the plan alone; angles of one colour must be drawn the same size
-    angle_colors={};angle_ids={r.get('id') for r in marks.get('angles',[]) if isinstance(r,dict)}
+    # fillColor: the sector fill colour is a second role next to the arc colour (angles[].color / equalAngles[].color); the equal-size rule holds inside each role
+    angle_colors={};angle_fills={};angle_ids={r.get('id') for r in marks.get('angles',[]) if isinstance(r,dict)}
+    uses_fill=any(isinstance(r,dict) and r.get('fillColor') is not None for r in marks.get('angles',[])) or any(isinstance(g,dict) and g.get('fillColor') is not None for g in marks.get('equalAngles') or [])
     for index,group in enumerate(marks.get('equalAngles') or []):
-        if not isinstance(group,dict) or group.get('color') not in PALETTE_LINES or not isinstance(group.get('angles'),list) or len(group['angles'])<2:errors.append('ANGLE_COLOR_INVALID:equalAngles.'+str(index));continue
+        if (not isinstance(group,dict) or not isinstance(group.get('angles'),list) or len(group['angles'])<2 or (group.get('color') is None and group.get('fillColor') is None)
+                or (group.get('color') is not None and group['color'] not in PALETTE_LINES) or (group.get('fillColor') is not None and group['fillColor'] not in PALETTE_LINES)):errors.append('ANGLE_COLOR_INVALID:equalAngles.'+str(index));continue
         for aid in group['angles']:
-            if aid not in angle_ids:errors.append('ANGLE_COLOR_INVALID:'+str(aid))
-            elif aid in angle_colors:errors.append('ANGLE_COLOR_GROUP_MISMATCH:'+aid)
-            else:angle_colors[aid]=group['color']
+            if aid not in angle_ids:errors.append('ANGLE_COLOR_INVALID:'+str(aid));continue
+            if group.get('color') is not None:
+                if aid in angle_colors:errors.append('ANGLE_COLOR_GROUP_MISMATCH:'+aid)
+                else:angle_colors[aid]=group['color']
+            if group.get('fillColor') is not None:
+                if aid in angle_fills:errors.append('ANGLE_COLOR_GROUP_MISMATCH:'+aid)
+                else:angle_fills[aid]=group['fillColor']
     for row in marks.get('angles',[]):
         if row.get('color') is not None:
             if row['color'] not in PALETTE_LINES:errors.append('ANGLE_COLOR_INVALID:'+row['id'])
             elif angle_colors.get(row['id'],row['color'])!=row['color']:errors.append('ANGLE_COLOR_INVALID:'+row['id'])
             else:angle_colors[row['id']]=row['color']
+        if row.get('fillColor') is not None:
+            if row['fillColor'] not in PALETTE_LINES:errors.append('ANGLE_COLOR_INVALID:'+row['id'])
+            elif angle_fills.get(row['id'],row['fillColor'])!=row['fillColor']:errors.append('ANGLE_COLOR_INVALID:'+row['id'])
+            else:angle_fills[row['id']]=row['fillColor']
+    sector_fill_names={}
+    if uses_fill and set(angle_colors.values())&set(angle_fills.values()):errors.append('ANGLE_COLOR_ROLE_CLASH:'+','.join(sorted(set(angle_colors.values())&set(angle_fills.values()))))   # one colour name is one role
     for row in marks.get('angles',[]):
         oid=row['id'];nodes=by_mark.get(('angle',oid),[])
         arcs=sorted((n for n in nodes if tag(n)=='polyline'),key=lambda n:int(n.get('data-mark-index','0')))
@@ -659,6 +687,16 @@ def audit(p):
                 elif need:
                     e0,e1=line_model(prolonged[part]);direction=sub(ray_end,v)
                     if abs(wrap180(direction_degrees(sub(e1,e0))-direction_degrees(direction)))>0.5 or norm(sub(e0,v))<norm(direction)-1e-9:dim_error(part+' off the ray')
+        # (short sides) a pulled angle arc stands beyond its short ray: that ray is prolonged to the arc by a thin dashed line along the ray (no other ray has one)
+        if row.get('angleDimension') is None:
+            outer_px=max(radii)*sx;extensions={n.get('data-mark-part'):n for n in nodes if tag(n)=='line'}
+            if set(extensions)-{'ext-from','ext-to'}:errors.append('ANGLE_EXTENSION_UNDECLARED:'+oid)
+            for part,ray_end in (('ext-from',a),('ext-to',c)):
+                need=outer_px>norm(sub(ray_end,v))*sx+2.0
+                if need!=(part in extensions):errors.append('ANGLE_EXTENSION_'+('MISSING' if need else 'UNEXPECTED')+':'+oid+':'+part)
+                elif need:
+                    e0,e1=line_model(extensions[part]);direction=sub(ray_end,v)
+                    if abs(wrap180(direction_degrees(sub(e1,e0))-direction_degrees(direction)))>0.5 or norm(sub(e0,v))<norm(direction)-1e-9 or abs(norm(sub(e1,v))*sx-outer_px)>4.0:errors.append('ANGLE_EXTENSION_OFF_RAY:'+oid+':'+part)
         if straight:
             # the semicircle faces the screen side the plan names: the middle of its first arc, seen from the vertex in svg px, points that way
             want_side=DIM_SIDE_VECTORS.get(row.get('side'))
@@ -684,9 +722,15 @@ def audit(p):
         if sectors:
             node=sectors[0]
             if node.get('stroke') not in (None,'none'):errors.append('ANGLE_SECTOR_STROKE_PRESENT:'+oid)
-            if color is not None:
-                if drawn_fill(node)!=PALETTE_FILLS[color]:errors.append('ANGLE_COLOR_MISMATCH:'+oid+':sector')
+            fill_name=angle_fills.get(oid) or color
+            if fill_name is not None:
+                sector_fill_names[oid]=fill_name
+                if drawn_fill(node)!=PALETTE_FILLS[fill_name]:errors.append('ANGLE_COLOR_MISMATCH:'+oid+':sector')
             elif str(node.get('fill','')).lower()!=SECTOR_FILL or node.get('fill-opacity') is not None:errors.append('ANGLE_SECTOR_FILL_MISMATCH:'+oid)
+            # the arc is drawn over the fill: its stroke must stand out from the tint (WCAG contrast of the stroke against the fill over white, at least 3)
+            stroke_hex=next((str(n.get('stroke') or '').lower() for n in arcs if n.get('stroke')),DEFAULT_STROKE)
+            tint_hex,tint_opacity=(PALETTE_FILLS[fill_name] if fill_name is not None else (SECTOR_FILL,1.0))
+            if contrast_ratio(stroke_hex,tint_hex,tint_opacity)<ARC_FILL_MIN_CONTRAST:errors.append('ANGLE_ARC_LOW_CONTRAST:'+oid)
             wedge=poly_model(node)
             if len(wedge)<3:errors.append('ANGLE_SECTOR_MISSING:'+oid)
             else:
@@ -702,6 +746,9 @@ def audit(p):
                 if stroke_before(node):errors.append('ANGLE_SECTOR_NOT_BENEATH_STROKES:'+oid)
                 observations.append({'id':oid+'-sector','type':'ANGLE_SECTOR','drawnDegrees':abs(total),'radius':mean,'atVertex':bool(norm(sub(wedge[0],v))*sx<=SECTOR_TOLERANCE)})
         drawn_angles[oid]=drawn
+        if uses_fill and oid in sector_fill_names:
+            earlier=[(other,drawn_angles[other]) for other in drawn_angles if other!=oid and sector_fill_names.get(other)==sector_fill_names[oid]]
+            if earlier and abs(earlier[0][1]-drawn)>ANGLE_TOLERANCE:errors.append('ANGLE_COLOR_GROUP_MISMATCH:'+earlier[0][0]+'&'+oid+':'+sector_fill_names[oid]+':fill:%.3f!=%.3f'%(earlier[0][1],drawn))
         if color is not None:
             # the same colour means the same size: against the first angle of this colour, drawn and from the peer points
             earlier=[(other,drawn_angles[other]) for other in drawn_angles if other!=oid and angle_colors.get(other)==color]

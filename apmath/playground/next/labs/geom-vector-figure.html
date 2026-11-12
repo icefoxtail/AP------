@@ -14,7 +14,13 @@
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="geom-vector-figure/lesson-core.js"></script>
+<script defer src="geom-vector-figure/lesson-a.js"></script>
+<script defer src="geom-vector-figure/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -32,6 +38,8 @@ window.addEventListener('DOMContentLoaded', function () {
   const clamp = APLab.clamp;
   const tex = (s) => APLab.tex(s);
   const R2D = 180 / Math.PI, D2R = Math.PI / 180;
+  const lvfActive=s=>!!(s&&(s.lessonOn||s.lessonEntry));
+  let lvfContext=null;
   let BD = null;     // 지금 그리는 무대
   let state = null;  // 지금 장면의 값(원본 state와 같은 이름·모양으로 셸 상태 s에서 만듭니다)
   let TAPE = null;   // 원본의 하단 줄자 배너 → 셸의 하단 띠
@@ -378,6 +386,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ctx.restore();
     }
     function drawCanvasFraction(px, py, numStr, denStr, color = '#fef08a', fontSize = 12) {
+      if(lvfContext)return 0; // Lesson equations use the shared pinned math line.
       ctx.save();
       ctx.font = `bold ${fontSize}px Pretendard, monospace`;
       ctx.fillStyle = color;
@@ -546,7 +555,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
 
       // Step 2 (partIdx = 1, lens = 'aux'): 2배 확장 벡터 2OA(A'), 2OB(B') 및 선분 m+n = 2 + 세로 분수 판서
-      if (state.steps[2]) {
+      if (state.steps[2] && (!lvfContext || !['para','tri1','seg1'].includes(state.preset2))) {
         drawChalkLine(0, 0, A2p.x, A2p.y, 'rgba(56, 189, 248, 0.5)', 2.0, true, false, 1, 'aux');
         drawChalkLine(0, 0, B2p.x, B2p.y, 'rgba(244, 114, 182, 0.5)', 2.0, true, false, 1, 'aux');
         drawChalkLine(A2p.x, A2p.y, B2p.x, B2p.y, '#fbbf24', state.preset2 === 'seg2' ? 4.8 : 2.6, false, true, 1, 'locus');
@@ -1703,13 +1712,13 @@ window.addEventListener('DOMContentLoaded', function () {
         L.inf(A, u, { color: 'ink', width: 2.4, dash: [8, 5] });
         L.vec(A, add(A, u), { color: 'sky', width: 3.4 });
         if (step >= 1) { L.vec(O, A, { color: 'ink', width: 2.2, alpha: 0.8 }); }
-        if (step >= 2) { L.vec(A, add(A, n), { color: 'rose', width: 3.4 }); b.right(A, add(A, un), add(A, nn), { color: 'amber', size: 10 }); }
+        if (step >= 2 && (!lvfContext || lvfContext.lvfNormal)) { L.vec(A, add(A, n), { color: 'rose', width: 3.4 }); b.right(A, add(A, un), add(A, nn), { color: 'amber', size: 10 }); }
         if (step >= 3) { L.line(P(I.xp, I.k), P(I.xp, 0), { color: 'amber', width: 1.4, dash: [5, 5] }); L.pt(Pp, { color: 'amber', r: 5 }); }
         L.pt(A, { color: 'ink' });
         L.O();
         L.at(A, `A(${I.A[0]}, ${I.A[1]})`, { color: 'ink', dirDeg: 120 });
         L.along(A, add(A, u), `u = (${I.u[0]}, ${I.u[1]})`, { color: 'sky', side: 1, off: 16, at: 0.7 });
-        if (step >= 2) L.along(A, add(A, n), `n = (${I.n[0]}, ${I.n[1]})`, { color: 'rose', side: -1, off: 16, at: 0.7 });
+        if (step >= 2 && (!lvfContext || lvfContext.lvfNormal)) L.along(A, add(A, n), `n = (${I.n[0]}, ${I.n[1]})`, { color: 'rose', side: -1, off: 16, at: 0.7 });
         if (step >= 3) L.at(Pp, `P(${I.xp}, ${I.k})`, { color: 'amber', dirDeg: -30 });
       },
       4: (b, step, I) => {
@@ -1759,7 +1768,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return sc;
   }
 
-  APLab.createLab({
+  const labDefinition={
     id: 'geom-vector-figure',
     stagedReveal: true,
     stackFractions: true, // 패널·칩·값 칸 글 속 숫자 분수(1/2, 3/5)를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr). 그림 글은 무대가 쌓습니다.
@@ -1783,7 +1792,108 @@ window.addEventListener('DOMContentLoaded', function () {
     state: { sid: '1', lens: 'all', preset2: 'trap', animDir: 1 },
     persist: ['lens', 'preset2'],
     scenes: [1, 2, 3, 4].map((m) => figOverlay(sceneOf(m), m)).concat([sceneCnd(), sceneAng()])
-  });
+
+  };
+  const copy=value=>JSON.parse(JSON.stringify(value));
+  const lessonScenes=labDefinition.scenes;
+  const info=Object.fromEntries(lessonScenes.map(sc=>{
+    const initial={...labDefinition.state,...Object.fromEntries(Object.entries(labDefinition.params).map(([k,v])=>[k,v.value]))};
+    sc.enter(initial);
+    const first=sc.vary.cur(),question=sc.problem.text(initial).replace(/<div[^>]*>\s*<button[^>]*data-nq-new[\s\S]*$/,'');
+    const current=sc.vary.cur;
+    sc.vary.first=()=>first;
+    sc.vary.cur=()=>lvfActive(lvfContext||window.lab?.s)?first:current();
+    return [sc.id,{initial,first,question,inquiry:sc.question}];
+  }));
+  const lessonSource=window.APL_VF_SOURCE={
+    scenes:lessonScenes,initial:id=>copy(info[id].initial),first:id=>copy(info[id].first),
+    question:id=>info[id].question,inquiry:id=>info[id].inquiry,
+    math:{regionContains,geom:CND.geom,firstConditions:CND.SETS,anglePairs:ANG.PAIRS,firstPool:OVF.POOL,generators:OVF.G,NQ},
+    nativeKeys:id=>Object.keys(info[id].initial)
+  };
+  const vfMathKey=value=>String(value||'').normalize('NFKC').replace(/&#(?:39|x27);/g,"'")
+    .replace(/^(?:점 |중점 |중심 |방향벡터 |법선벡터 )/,'').replace(/^([A-Za-z][0-9′']*)(?=\()/,'$1=')
+    .replace(/\\(?:left|right|,|!|;|quad|qquad)/g,'')
+    .replace(/\\(?:dfrac|tfrac|frac)\s*(?:\{([^{}]*)\}|([A-Za-z0-9]))\s*(?:\{([^{}]*)\}|([A-Za-z0-9]))/g,(_,a,b,c,d)=>(a??b)+'/'+(c??d))
+    .replace(/\\sqrt\{([^{}]*)\}/g,'√$1').replace(/\\sqrt\s*(\w)/g,'√$1')
+    .replace(/\\(?:text|mathrm|mathbf|overline|overrightarrow|vec)\{([^{}]*)\}/g,'$1')
+    .replace(/\\(cos|sin|tan|min|max)/g,'$1')
+    .replace(/\\theta/g,'θ').replace(/\\phi/g,'φ').replace(/\\pi/g,'π').replace(/\\circ/g,'°').replace(/\\angle/g,'∠').replace(/\\perp/g,'⊥').replace(/\\parallel/g,'∥')
+    .replace(/\\leq?/g,'≤').replace(/\\geq?/g,'≥').replace(/\\lt/g,'<').replace(/\\gt/g,'>')
+    .replace(/\\cdot|\\times/g,'×').replace(/[−–]/g,'-').replace(/[′’]/g,"'").replace(/≈/g,'=')
+    .replace(/[\s{}$^_()]/g,'').replace(/-?\d+\.\d+/g,x=>String(Number(x)));
+  function vfLabel(value,s){
+    const str=String(value||''),key=vfMathKey(str),known=(s.lvfKnownMath||[]).map(vfMathKey);
+    if(/^최소\s/.test(str))return s.lvfShowAnswer?str:'';
+    if(key&&known.some(k=>k.includes(key)))return str;
+    const pair=key.split('=');
+    if(pair.length===2&&known.some(k=>{const parts=k.split('=');return parts.length>2&&parts.includes(pair[0])&&parts.includes(pair[1]);}))return str;
+    if(/^(?:[A-Z][′'*₀₁₂]?|O[APB]|[xyunrmtθφ]|[dl][₁₂]|접선|최근접점|공통점)$/.test(str))return str;
+    const name=str.match(/^(?:점 |중점 |중심 |방향벡터 |법선벡터 |끝점 )?([A-Za-z][′'*₀₁₂]*)(?=[\s(=:≈]|$)/);
+    return name?name[1]:'';
+  }
+  const shownState=(s)=>{
+    const data={...s,...(s.lessonEntry?s.lvfInitial:{})},shown={...data};
+    for(const [key,value] of Object.entries(data))if(/^lvf[NS]_/.test(key))shown[key.slice(5)]=value;
+    shown.step=s.lessonEntry?(s.lvfInitial?.step||0):Math.max(0,Math.min(s.step||0,3));
+    shown.part=null;shown.playing=false;shown.dragging=false;
+    if(s.lessonEntry){shown.lvfTrace=0;shown.lvfShowAnswer=false;}
+    return shown;
+  };
+  const traceEnds=(id,s)=>{
+    const I=info[id].first;
+    if(id==='m1')return [NQ.P(...I.A),NQ.P(...I.B)];
+    if(id==='m2')return [NQ.P(0,0),s.lvfExplore?NQ.P(3.2,.4):NQ.P(4,1)];
+    if(id==='m3')return [NQ.P(...I.A),NQ.add(NQ.P(...I.A),NQ.P(...I.u))];
+    if(id==='m4')return [NQ.P(...I.A),NQ.P(...I.B)];
+    if(id==='cnd5')return s.lvfExplore?[NQ.P(s.cn_Cx,s.cn_Cy),NQ.P(s.cn_Cx+s.cn_r,s.cn_Cy)]:[NQ.P(0,0),I.B];
+    const X=s.lvfExplore?NQ.P(1,1):I.X;
+    const d=s.lvfExplore?(s.an_x1||s.an_y1?NQ.P(s.an_x1,s.an_y1):NQ.P(s.an_x2,s.an_y2)):I.d1;
+    return [X,NQ.add(X,d)];
+  };
+  for(const sc of lessonScenes){
+    const original={question:sc.question,reviewTop:sc.reviewTop,steps:sc.steps,view:sc.view,draw:sc.draw,tick:sc.tick};
+    sc.question=(s,lab)=>lvfActive(s)?s.lvfQuestion||lessonSource.question(sc.id):typeof original.question==='function'?original.question(s,lab):original.question;
+    sc.reviewTop=(s,lab)=>lvfActive(s)?'':typeof original.reviewTop==='function'?original.reviewTop(s,lab):original.reviewTop;
+    sc.steps=(s,lab)=>lvfActive(s)?['조건 확인','전략과 보조선','계산','결론']:original.steps(s,lab);
+    sc.view=(s,lab)=>lvfActive(s)?{}:original.view(s,lab);
+    sc.tick=(s,dt,lab)=>lvfActive(s)?false:original.tick?.(s,dt,lab);
+    sc.draw=(b,s,v,lab)=>{
+      if(!lvfActive(s)){
+        if(b._vfLessonView){
+          if(b.focus===b._vfLessonView.appliedFocus)Object.assign(b,b._vfLessonView.before);
+          b.__nq=b._vfLessonView.nqBefore;b.__ovk=b._vfLessonView.ovBefore;delete b._vfLessonView;
+        }
+        return original.draw(b,s,v,lab);
+      }
+      if(!b._vfLessonView)b._vfLessonView={before:{focus:b.focus,zoom:b.zoom,panX:b.panX,panY:b.panY},nqBefore:b.__nq,ovBefore:b.__ovk};
+      const shown=shownState(s),shownLab=Object.create(lab);
+      shownLab.s=shown;shownLab.tab=shown.lvfExplore?'explore':'review';
+      const key=sc.id+'|'+!!shown.lvfExplore;
+      if(b._vfLessonView.key!==key){b._vfLessonView.key=key;b._vfLessonView.nq='';b._vfLessonView.ov='';b.zoom=1;b.panX=b.panY=0;}
+      b.__nq=b._vfLessonView.nq;b.__ovk=b._vfLessonView.ov;
+      const text=b._text,axes=b.axes,fill=b.ctx.fillText;let isAxes=false;
+      b.axes=function(...args){isAxes=true;try{return axes.apply(this,args);}finally{isAxes=false;}};
+      b._text=function(x,y,label,options={},screen){return text.call(this,x,y,this._bbox||isAxes?label:vfLabel(label,shown),options,screen);};
+      b.ctx.fillText=function(label,...args){return fill.call(this,b._bbox||isAxes?label:vfLabel(label,shown),...args);};
+      const previous=lvfContext;lvfContext=shown;
+      try{
+        original.draw(b,shown,{},shownLab);
+        if(sc.id==='m4'&&shown.lvfMode==='tangent'&&shown.step>=2&&!b._bbox){
+          const A=NQ.P(...info.m4.first.A),B=NQ.P(...info.m4.first.B),u=NQ.sub(B,A),d=NQ.mul(NQ.P(-u.y,u.x),1/NQ.len(u));
+          b.seg(NQ.add(A,NQ.mul(d,-2)),NQ.add(A,NQ.mul(d,4)),{color:'violet',width:2.7});
+          b.right(A,B,NQ.add(A,d),{color:'violet',size:12});
+          b.text(NQ.add(A,NQ.mul(d,2.2)),'접선',{color:'violet',size:13,dy:-12});
+        }
+      }finally{lvfContext=previous;b._text=text;b.axes=axes;b.ctx.fillText=fill;}
+      b._vfLessonView.appliedFocus=b.focus;b._vfLessonView.nq=b.__nq;b._vfLessonView.ov=b.__ovk;
+      if(!s.lessonEntry&&shown.lvfTrace>0&&!b._bbox){
+        const [a,c]=traceEnds(sc.id,shown);b.point(NQ.lerp(a,c,shown.lvfTrace),{color:'violet',r:4.5});
+      }
+    };
+  }
+  labDefinition.lessons=window.APL_VF_LESSONS?window.APL_VF_LESSONS.install(lessonScenes,lessonSource):{};
+  APLab.createLab(labDefinition);
 });
 </script>
 </body>

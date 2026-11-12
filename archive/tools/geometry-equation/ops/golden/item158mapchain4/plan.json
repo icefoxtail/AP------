@@ -1,0 +1,177 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MAPPING",
+  "columns": [
+   {
+    "id": "X",
+    "name": "X",
+    "elements": [
+     "1",
+     "2",
+     "3"
+    ]
+   },
+   {
+    "id": "Y",
+    "name": "Y",
+    "elements": [
+     "a",
+     "b",
+     "c"
+    ]
+   },
+   {
+    "id": "Z",
+    "name": "Z",
+    "elements": [
+     "4",
+     "5",
+     "6"
+    ]
+   },
+   {
+    "id": "W",
+    "name": "W",
+    "elements": [
+     "7",
+     "8",
+     "9"
+    ]
+   }
+  ],
+  "arrows": [
+   {
+    "from": {
+     "column": 0,
+     "element": 0
+    },
+    "to": {
+     "column": 1,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 1
+    },
+    "to": {
+     "column": 1,
+     "element": 2
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 2
+    },
+    "to": {
+     "column": 1,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 0
+    },
+    "to": {
+     "column": 2,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 1
+    },
+    "to": {
+     "column": 2,
+     "element": 2
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 2
+    },
+    "to": {
+     "column": 2,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 2,
+     "element": 0
+    },
+    "to": {
+     "column": 3,
+     "element": 2
+    }
+   },
+   {
+    "from": {
+     "column": 2,
+     "element": 1
+    },
+    "to": {
+     "column": 3,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 2,
+     "element": 2
+    },
+    "to": {
+     "column": 3,
+     "element": 1
+    }
+   }
+  ],
+  "arrowGroups": [
+   {
+    "name": "f",
+    "from": "X",
+    "to": "Y",
+    "color": "BLUE"
+   },
+   {
+    "name": "g",
+    "from": "Y",
+    "to": "Z",
+    "color": "WARM"
+   },
+   {
+    "name": "h",
+    "from": "Z",
+    "to": "W",
+    "color": "GREEN"
+   }
+  ],
+  "highlightPaths": [
+   {
+    "path": [
+     "1",
+     "b",
+     "6",
+     "8"
+    ]
+   }
+  ]
+ },
+ "caption": "f, g, h를 차례로 적용하는 합성 경로",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "세 함수의 합성",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "세 함수를 한 대응도에 잇는다"
+ ]
+}

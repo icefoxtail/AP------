@@ -736,7 +736,11 @@ window.questionBank = [
     "tags": [
       "H22-A-03-FUNCTION_COMPOSITION"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 검은 포물선이 x∈[0,5]에서 위로 열리고 꼭짓점과 양 끝점이 표시되어 있다.",
+    "solutionImageCaption": "포물선에서 f(x)의 범위를 읽고 합성 로그함수의 극값을 정한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 15,
@@ -788,7 +792,11 @@ window.questionBank = [
     "tags": [
       "H22-A-04-TRIGONOMETRIC_BASIC"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 원과 직선, 두 교점 P와 Q의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "원과 직선의 교점 P, Q의 좌표로 각의 사인과 코사인 값을 구한다. 두 값을 더해 정리한다. 정답은 2√10/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 16,
@@ -1157,7 +1165,11 @@ window.questionBank = [
     "tags": [
       "H22-A-01-EXPONENT_LOG"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 n과 두 점에서 만나는 포물선이다. 두 점 사이에서는 세로축 값이 음수이고 구간 양 끝에서는 양수이다.",
+    "solutionImageCaption": "포물선의 두 근 사이에서 식의 부호를 확인하고 n의 짝홀성에 따른 실근 수를 합한다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 23,

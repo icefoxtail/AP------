@@ -388,7 +388,7 @@ window.questionBank = [
       "비례상수"
     ],
     "wide": false,
-    "content": "다음 표에서 $y$가 $x$에 정비례할 때, $a$의 값을 구하면? (3점)",
+    "content": "다음 표에서 $y$가 $x$에 정비례할 때, $a$의 값을 구하면? (3점)\n\n| $x$ | $1$ | $2$ | $3$ | $4$ | $\\cdots$ |\n| :---: | :---: | :---: | :---: | :---: | :---: |\n| $y$ | $5$ | $10$ | $a$ | $20$ | $\\cdots$ |",
     "choices": [
       "$15$",
       "$20$",
@@ -433,8 +433,7 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "itemHold": false,
-    "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q006_visual.svg"
+    "itemHoldReasons": []
   },
   {
     "id": 7,
@@ -881,7 +880,7 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q012_question-v2.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q12-solution-v4.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q12-solution-v5.svg",
     "solutionImageAlt": "해설 그림: 두 장의 그림. 위쪽 그림은 평행한 두 직선 l, m 사이에서 엇각으로 같은 ∠CAO와 ∠DBO를 파란 호로, ∠ACO와 ∠BDO를 주황 호로 표시하고 삼각형 AOC와 BOD를 칠한 문제 그림이다. 아래쪽 그림은 삼각형 AOC와 BOD를 떼어 같은 방향으로 나란히 놓고 같은 색의 호로 같은 각을 표시한 그림이다.",
     "solutionImageCaption": "l∥m이므로 엇각이 같아 ∠CAO=∠DBO, ∠ACO=∠BDO이다. 여기에 두 각 사이의 변 AC=BD가 주어지면 한 변과 그 양 끝각이 각각 같으므로 △AOC≡△BOD(ASA)이다. 정답은 ④이다.",
     "solutionImageSize": "full"
@@ -1030,10 +1029,11 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q014_question-v2.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q14-solution-v3.svg",
-    "solutionImageAlt": "해설 그림: 제1사분면에 반비례 y=a/x의 그래프가 있고, x축과 y축에 눈금이 1부터 8까지 표시되어 있다. 그래프 아래쪽에는 자연수 좌표의 점이 x=1, 2, …, 7인 열마다 7개, 3개, 2개, 1개, 1개, 1개, 1개 찍혀 있고, x축 아래 줄에 \"열별 개수\"라는 이름과 함께 각 열의 개수가 적혀 있다. 그래프 위에 놓인 격자점 네 개에는 \"제외\"라고 표시되어 있다.",
-    "solutionImageCaption": "그래프 아래쪽의 자연수 좌표 점은 xy<a를 만족한다(그래프 위의 점은 제외). a=8일 때 x=1, 2, …, 7인 열마다 세면 7+3+2+1+1+1+1=16개이다. 정답은 ④이다.",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q014_question_v3.svg",
+    "imageAlt": "좌표평면의 제1사분면에 y=a/x 곡선이 있고, 곡선 아래쪽 영역이 회색으로 음영 처리되어 있다.",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q14-solution-v5.svg",
+    "solutionImageAlt": "해설 그림: 제1사분면의 반비례 y=a/x 그래프와 자연수 격자점이 있다. 그래프 아래의 점은 파란색으로 표시하고, 그래프 위의 네 점은 속이 빈 장미색 점으로 나타내어 세지 않음을 구별한다. x=1부터 7까지 열별 개수가 아래에 표시되어 있다.",
+    "solutionImageCaption": "그래프 아래의 자연수 좌표 점은 xy<a를 만족하고 그래프 위의 점은 세지 않는다. x=1부터 7까지 열마다 세면 7+3+2+1+1+1+1=16개이다. 정답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1204,7 +1204,7 @@ window.questionBank = [
       "자료 정렬"
     ],
     "wide": false,
-    "content": "다음은 자연수인 변량들을 작은 값부터 크기순으로 나열한 것이다. 최빈값이 $x$로 유일할 때, 중앙값은? (단, $x\\ne y$이다.) (4점)",
+    "content": "다음은 자연수인 변량들을 작은 값부터 크기순으로 나열한 것이다. 최빈값이 $x$로 유일할 때, 중앙값은? (단, $x\\ne y$이다.) (4점)<div class='question-note-box' style='text-align:center'>$6\\quad 7\\quad 8\\quad 8\\quad 8\\quad x\\quad y\\quad 10\\quad 10\\quad 10$</div>",
     "choices": [
       "10",
       "9.5",
@@ -1249,8 +1249,7 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "itemHold": false,
-    "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q017_visual.svg"
+    "itemHoldReasons": []
   },
   {
     "id": 18,
@@ -1275,7 +1274,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "다음 표는 어느 중학교 32명의 학생들이 한 달 동안 읽은 책의 수를 조사하여 나타낸 것이다. 이에 대한 설명으로 옳은 것을 고르면? (4점)",
+    "content": "다음 표는 어느 중학교 32명의 학생들이 한 달 동안 읽은 책의 수를 조사하여 나타낸 것이다. 이에 대한 설명으로 옳은 것을 고르면? (4점)\n\n| 읽은 책의 수(권) | 학생 수(명) |\n| :---: | :---: |\n| $1$ | $8$ |\n| $2$ | $4$ |\n| $3$ | $8$ |\n| $4$ | $10$ |\n| $5$ | $2$ |",
     "choices": [
       "최빈값은 10명이다.",
       "중앙값은 3권이다.",
@@ -1320,8 +1319,7 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "itemHold": false,
-    "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q018_visual.svg"
+    "itemHoldReasons": []
   },
   {
     "id": 19,
@@ -1346,7 +1344,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "[19.~20.] 다음은 어느 중학교 학생 20명의 일주일 동안의 스마트폰 사용 시간을 조사하여 줄기와 잎 그림과 도수분포표로 나타낸 것이다. 잎은 크기 순으로 나열되어 있고, 중앙값이 16시간일 때, 다음 물음에 답하시오.<br>a+b+A+B의 값은? (5점)",
+    "content": "[19.~20.] 다음은 어느 중학교 학생 20명의 일주일 동안의 스마트폰 사용 시간을 조사하여 줄기와 잎 그림과 도수분포표로 나타낸 것이다. 잎은 크기 순으로 나열되어 있고, 중앙값이 16시간일 때, 다음 물음에 답하시오.\n\n<table><thead><tr><th>사용 시간(시간)</th><th>학생 수(명)</th></tr></thead><tbody><tr><td>$0^{\\text{이상}} \\sim 5^{\\text{미만}}$</td><td></td></tr><tr><td>$5 \\sim 10$</td><td>$A$</td></tr><tr><td colspan=\"2\">(중략)</td></tr><tr><td>$20 \\sim 25$</td><td>$B$</td></tr><tr><td>$25 \\sim 30$</td><td></td></tr><tr><td>$30 \\sim 35$</td><td></td></tr><tr><td>합계</td><td>$20$</td></tr></tbody></table>\n\n$a+b+A+B$의 값은? (5점)",
     "choices": [
       "16",
       "24",
@@ -1394,7 +1392,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q019_visual.svg",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q019_stemleaf.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q19-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 스마트폰 사용 시간 20명의 줄기와 잎 그림에서 크기 순 10번째와 11번째 잎인 a, b를 동그라미로 표시하고, 줄기 0의 5시간 이상 10시간 미만 잎 7, 8, 9를 괄호로 묶어 도수 3으로, 줄기 2의 20시간 이상 25시간 미만 잎 3을 괄호로 묶어 도수 1로 나타낸 그림.",
@@ -1682,7 +1680,7 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q023_question-v2.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q23-solution-v4.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q23-solution-v5.svg",
     "solutionImageAlt": "해설 그림: 두 패널. 위 패널은 정삼각형 ABC에서 BD=CE인 점 D, E와 선분 AD, BE의 교점 P를 그리고, 삼각형 ABD와 BCE를 회색으로 칠해 AB=BC, BD=CE, AD=BE를 눈금으로, 같은 각 60°와 α를 같은 색 호로, ∠APB=120°를 표시했다. 아래 패널은 삼각형 ABD와 BCE를 떼어 같은 방향으로 나란히 놓고 대응하는 변과 각을 같은 색과 표시로 보여 준다.",
     "solutionImageCaption": "AB=BC, ∠ABD=∠BCE=60°, BD=CE이므로 △ABD≡△BCE(SAS)이다. ∠BAD=∠CBE=α라 하면 ∠ABE=60°-α이므로 ∠APB=180°-α-(60°-α)=120°이다. B, P, E가 한 직선 위이므로 ∠APE=180°-120°=60°이다. 정답은 60°이다.",
     "solutionImageSize": "full"
