@@ -899,9 +899,9 @@ window.questionBank = [
       "$b \\gt c \\gt a$",
       "$c \\gt a \\gt b$"
     ],
-    "answer": "①",
+    "answer": "②",
     "points": 5,
-    "solution": "직각사다리꼴의 빗변을 연장하여 각 회전체의 모양을 분석하자.\n윗변과 아랫변의 길이의 비가 $3 : 6 = 1 : 2$이므로, 빗변을 연장해 만들어지는 큰 원뿔의 높이는 $4 \\times 2 = 8\\rm\\,cm$이고, 잘라낸 작은 원뿔의 높이는 $4\\rm\\,cm$이다.\n(1) 직선 $l$을 축으로 $1$회전 할 때 생기는 회전체는 원뿔대이므로 부피 $a$는\n$$\\begin{aligned}\na &= \\dfrac{1}{3}\\pi \\times 6^2 \\times 8 - \\dfrac{1}{3}\\pi \\times 3^2 \\times 4 \\\\\n&= 96\\pi - 12\\pi \\\\\n&= 84\\pi\\rm\\,cm^3\n\\end{aligned}$$\n(2) 직선 $m$을 축으로 $1$회전 할 때 생기는 회전체는 밑면의 반지름이 $4\\rm\\,cm$, 높이가 $6\\rm\\,cm$인 원기둥에서 밑면의 반지름이 $4\\rm\\,cm$, 높이가 $3\\rm\\,cm$인 원뿔을 파낸 모양이므로 부피 $b$는\n$$\\begin{aligned}\nb &= \\pi \\times 4^2 \\times 6 - \\dfrac{1}{3}\\pi \\times 4^2 \\times 3 \\\\\n&= 96\\pi - 16\\pi \\\\\n&= 80\\pi\\rm\\,cm^3\n\\end{aligned}$$\n(3) 직선 $n$을 축으로 $1$회전 할 때 생기는 회전체는 밑면의 반지름이 $4\\rm\\,cm$, 높이가 $3\\rm\\,cm$인 원기둥에 밑면의 반지름이 $4\\rm\\,cm$, 높이가 $3\\rm\\,cm$인 원뿔이 붙은 모양이므로 부피 $c$는\n$$\\begin{aligned}\nc &= \\pi \\times 4^2 \\times 3 + \\dfrac{1}{3}\\pi \\times 4^2 \\times 3 \\\\\n&= 48\\pi + 16\\pi \\\\\n&= 64\\pi\\rm\\,cm^3\n\\end{aligned}$$\n따라서 $a, b, c$의 크기를 비교하면\n$$\\begin{aligned}\na > b > c\n\\end{aligned}$$\n이므로 정답은 ①이다.",
+    "solution": "(1) 직선 $l$을 축으로 회전하면 높이 $4\\rm\\,cm$, 밑면의 반지름이 각각 $6\\rm\\,cm$, $3\\rm\\,cm$인 원뿔대가 생긴다. 원뿔대의 부피는\n$$\\begin{aligned}\na &= \\dfrac{1}{3}\\pi \\times 4 \\times (6^2 + 6 \\times 3 + 3^2) \\\\\n&= \\dfrac{4}{3}\\pi \\times 63 \\\\\n&= 84\\pi\\rm\\,cm^3\\n\\end{aligned}$$\n(2) 직선 $m$을 축으로 회전하면 반지름 $4\\rm\\,cm$, 길이 $3\\rm\\,cm$인 원기둥과 반지름 $4\\rm\\,cm$, 높이 $3\\rm\\,cm$인 원뿔이 이어진다. 따라서\n$$\\begin{aligned}\nb &= \\pi \\times 4^2 \\times 3 + \\dfrac{1}{3}\\pi \\times 4^2 \\times 3 \\\\\n&= 48\\pi + 16\\pi \\\\\n&= 64\\pi\\rm\\,cm^3\\n\\end{aligned}$$\n(3) 직선 $n$을 축으로 회전하면 반지름 $4\\rm\\,cm$, 길이 $6\\rm\\,cm$인 원기둥에서 반지름 $4\\rm\\,cm$, 높이 $3\\rm\\,cm$인 원뿔을 뺀 모양이 된다. 따라서\n$$\\begin{aligned}\nc &= \\pi \\times 4^2 \\times 6 - \\dfrac{1}{3}\\pi \\times 4^2 \\times 3 \\\\\n&= 96\\pi - 16\\pi \\\\\n&= 80\\pi\\rm\\,cm^3\\n\\end{aligned}$$\n이므로 $a=84\\pi$, $b=64\\pi$, $c=80\\pi$이다. 따라서 $a>c>b$이고 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
@@ -909,7 +909,7 @@ window.questionBank = [
     "candidateMetadata": {
       "curriculum": "2015",
       "conceptClusterKey": "SOLID_FIGURE",
-      "primaryMethod": "직선 l, m, n 회전체의 부피를 각각 84pi, 80pi, 64pi로 계산하여 대소 관계 a>b>c를 확정한다.",
+      "primaryMethod": "직선 l, m, n 회전체의 부피를 각각 84pi, 64pi, 80pi로 계산하여 대소 관계 a>c>b를 확정한다.",
       "decisiveStep": "세 회전축에 따른 원기둥과 원뿔의 결합 및 감산 체적 계산",
       "rpm": {
         "majorUnit": "입체도형",
