@@ -62,20 +62,20 @@
 | Q | 문제 그림 필요·현재 상태 | 해설 그림 필요·현재 상태 | 이유 및 참고 자산 |
 |---:|---|---|---|
 | Q01 | 불필요 — 현재 후보 텍스트로 해결 가능 | 불필요 — 별도 해설 그림 없이 텍스트 풀이 | 문제 원본: 참조 없음; 해설 원본: 참조 없음; 다각형의 기본 정의 및 외각·내각 성질에 대한 진위 판정 문항 |
-| Q02 | 불필요 — 현재 후보 텍스트로 해결 가능 | 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토 | 문제 원본: 참조 없음; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q2-solution.svg`; 정다각형 한 내각의 크기 계산 기본 수식 문항 |
-| Q03 | 필요·P1·미완 — 유사 JS 연결/자산 없음 | 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토 | 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q3.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q3-solution.svg`; variant 재사용 불가: The main original exam image exists, but its source question parameters differ from the similar-exam MD; reusing it would show conflicting data. Keep the problem visual unresolved until a matching asset is available. |
-| Q04 | 불필요 — 현재 후보 텍스트로 해결 가능 | 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토 | 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q4.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q4-solution.svg`; 다각형의 대각선의 개수 공식을 실생활 악수 상황에 적용한 문항 |
-| Q05 | 불필요 — 현재 후보 텍스트로 해결 가능 | 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토 | 문제 원본: 참조 없음; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q5-solution.svg`; 원과 부채꼴, 현의 성질에 관한 개념 진위 판정 문항 |
-| Q06 | 불필요 — 현재 후보 텍스트로 해결 가능 | 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토 | 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q6.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q6-solution.svg`; 부채꼴의 넓이와 중심각 크기의 정비례 관계를 이용한 일차방정식 비례식 문항 |
+| Q02 | 불필요 — 현재 후보 텍스트로 해결 가능 | 불필요 — 해설은 정의·대수 계산 중심이며 별도 시각화가 풀이 이해를 유의미하게 높이지 않음 | 문제 원본: 참조 없음; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q2-solution.svg`; 정다각형 한 내각의 크기 계산 기본 수식 문항 |
+| Q03 | 필요·P1·미완 — 유사 JS 연결/자산 없음 | 도움·P2 / 새 해설 그림은 학습에 도움; 원본 자산의 variant 호환성 미확인 | 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q3.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q3-solution.svg`; variant 재사용 불가: The main original exam image exists, but its source question parameters differ from the similar-exam MD; reusing it would show conflicting data. Keep the problem visual unresolved until a matching asset is available. |
+| Q04 | 불필요 — 현재 후보 텍스트로 해결 가능 | 도움·P2 / 새 해설 그림은 학습에 도움; 원본 자산의 variant 호환성 미확인 | 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q4.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q4-solution.svg`; 다각형의 대각선의 개수 공식을 실생활 악수 상황에 적용한 문항 |
+| Q05 | 불필요 — 현재 후보 텍스트로 해결 가능 | 도움·P2 / 새 해설 그림은 학습에 도움; 원본 자산의 variant 호환성 미확인 | 문제 원본: 참조 없음; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q5-solution.svg`; 원과 부채꼴, 현의 성질에 관한 개념 진위 판정 문항 |
+| Q06 | 불필요 — 현재 후보 텍스트로 해결 가능 | 도움·P2 / 새 해설 그림은 학습에 도움; 원본 자산의 variant 호환성 미확인 | 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q6.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q6-solution.svg`; 부채꼴의 넓이와 중심각 크기의 정비례 관계를 이용한 일차방정식 비례식 문항 |
 | Q07 | 필요·P1·미완 — 유사 JS 연결/자산 없음 | 도움·P2 판정 / 자산 호환성 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토| 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q7.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q7-solution.svg`; variant 재사용 불가: The main original exam image exists, but its source question parameters differ from the similar-exam MD; reusing it would show conflicting data. Keep the problem visual unresolved until a matching asset is available. |
-| Q08 | 불필요 — 현재 후보 텍스트로 해결 가능 | 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토 | 문제 원본: 참조 없음; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q8-solution.svg`; 각기둥, 각뿔, 각뿔대, 정다면체의 구성 요소 및 성질에 대한 개념 판정 문항 |
-| Q09 | 불필요 — 현재 후보 텍스트로 해결 가능 | 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토 | 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q9.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q9-solution.svg`; 조건에 따른 다면체의 모서리 수 역산 및 명칭 판별 문항 |
+| Q08 | 불필요 — 현재 후보 텍스트로 해결 가능 | 도움·P2 / 새 해설 그림은 학습에 도움; 원본 자산의 variant 호환성 미확인 | 문제 원본: 참조 없음; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q8-solution.svg`; 각기둥, 각뿔, 각뿔대, 정다면체의 구성 요소 및 성질에 대한 개념 판정 문항 |
+| Q09 | 불필요 — 현재 후보 텍스트로 해결 가능 | 도움·P2 / 새 해설 그림은 학습에 도움; 원본 자산의 variant 호환성 미확인 | 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q9.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q9-solution.svg`; 조건에 따른 다면체의 모서리 수 역산 및 명칭 판별 문항 |
 | Q10 | 도움·P2 — 발문/해설의 위치·관계·풀이 단계를 보이면 이해에 도움; 현재 후보 텍스트로 해결 가능| 도움·P2 판정 / 자산 호환성 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토| 문제 원본: 참조 없음; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q10-solution.svg`; 회전체의 회전축을 포함하는 평면으로 자른 단면의 형태 판정 문항 |
 | Q11 | 도움·P2 — 발문/해설의 위치·관계·풀이 단계를 보이면 이해에 도움; 현재 후보 텍스트로 해결 가능| 도움·P2 판정 / 자산 호환성 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토| 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q11.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q11-solution-v2.svg`; 축에서 떨어진 평면도형의 회전체 및 수직 단면의 기하학적 형태 판정 문항 |
 | Q12 | 필요·P1·미완 — 유사 JS 연결/자산 없음 | 도움·P2 판정 / 자산 호환성 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토| 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q12.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q12-solution-v2.svg`; variant 재사용 불가: The main original exam image exists, but its source question parameters differ from the similar-exam MD; reusing it would show conflicting data. Keep the problem visual unresolved until a matching asset is available. |
 | Q13 | 필요·P1·미완 — 유사 JS 연결/자산 없음 | 도움·P2 판정 / 자산 호환성 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토| 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q13.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q13-solution.svg`; variant 재사용 불가: The main original exam image exists, but its source question parameters differ from the similar-exam MD; reusing it would show conflicting data. Keep the problem visual unresolved until a matching asset is available. |
-| Q14 | 불필요 — 현재 후보 텍스트로 해결 가능 | 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토 | 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q14.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q14-solution.svg`; 원뿔의 부피 공식을 활용한 두 컵의 용량 배수 비교 문항 |
-| Q15 | 불필요 — 현재 후보 텍스트로 해결 가능 | 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토 | 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q15.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q15-solution.svg`; 구의 부피 및 겉넓이 공식의 닮음비/거듭제곱비 연계 계산 문항 |
+| Q14 | 불필요 — 현재 후보 텍스트로 해결 가능 | 도움·P2 / 새 해설 그림은 학습에 도움; 원본 자산의 variant 호환성 미확인 | 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q14.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q14-solution.svg`; 원뿔의 부피 공식을 활용한 두 컵의 용량 배수 비교 문항 |
+| Q15 | 불필요 — 현재 후보 텍스트로 해결 가능 | 도움·P2 / 새 해설 그림은 학습에 도움; 원본 자산의 variant 호환성 미확인 | 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q15.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q15-solution.svg`; 구의 부피 및 겉넓이 공식의 닮음비/거듭제곱비 연계 계산 문항 |
 | Q16 | 필요·P1·미완 — 유사 JS 연결/자산 없음 | 도움·P2 판정 / 자산 호환성 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토| 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q16.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q16-solution.svg`; variant 재사용 불가: The main original exam image exists, but its source question parameters differ from the similar-exam MD; reusing it would show conflicting data. Keep the problem visual unresolved until a matching asset is available. |
 | Q17 | 불필요 — 현재 후보 텍스트로 해결 가능 | 불필요 — 별도 해설 그림 없이 텍스트 풀이 | 문제 원본: 참조 없음; 해설 원본: 참조 없음; 상대도수 분포표의 합 1 성질을 이용한 특정 계급 도수 역산 문항 |
 | Q18 | 필요·P1·미완 — 유사 JS 연결/자산 없음 | 도움·P2 판정 / 자산 호환성 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토| 문제 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q18.png`; 해설 원본: 있음 `assets/images/24_연향중_2학기_기말_중1_기출/q18-solution.svg`; variant 재사용 불가: The main original exam image exists, but its source question parameters differ from the similar-exam MD; reusing it would show conflicting data. Keep the problem visual unresolved until a matching asset is available. |
@@ -92,8 +92,8 @@
 
 | Q | 문제 그림 필요·현재 상태 | 해설 그림 필요·현재 상태 | 이유 및 참고 자산 |
 |---:|---|---|---|
-| Q01 | 불필요 — 현재 후보 텍스트로 해결 가능 | 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토 | 문제 원본: 참조 없음; 해설 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q1-solution.svg`; 원, 현, 할선, 부채꼴의 기본 정의 진술 판별 문항 |
-| Q02 | 불필요 — 현재 후보 텍스트로 해결 가능 | 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토 | 문제 원본: 참조 없음; 해설 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q2-solution.svg`; 면의 수와 옆면 모양 조건으로 각뿔대 식별 대수 문항 |
+| Q01 | 불필요 — 현재 후보 텍스트로 해결 가능 | 도움·P2 / 새 해설 그림은 학습에 도움; 원본 자산의 variant 호환성 미확인 | 문제 원본: 참조 없음; 해설 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q1-solution.svg`; 원, 현, 할선, 부채꼴의 기본 정의 진술 판별 문항 |
+| Q02 | 불필요 — 현재 후보 텍스트로 해결 가능 | 도움·P2 / 새 해설 그림은 학습에 도움; 원본 자산의 variant 호환성 미확인 | 문제 원본: 참조 없음; 해설 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q2-solution.svg`; 면의 수와 옆면 모양 조건으로 각뿔대 식별 대수 문항 |
 | Q03 | 도움·P2 — 발문/해설의 위치·관계·풀이 단계를 보이면 이해에 도움; 현재 후보 텍스트로 해결 가능| 도움·P2 판정 / 자산 호환성 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토| 문제 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q3.png`; 해설 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q3-solution-v2.svg`; 원뿔대 축단면 기하 형태 판정 문항 |
 | Q04 | 필요·P1·미완 — 유사 JS 연결/자산 없음 | 도움·P2 판정 / 자산 호환성 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토| 문제 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q4.png`; 해설 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q4-solution-v2.svg`; variant 재사용 불가: The main original exam image exists, but its source question parameters differ from the similar-exam MD; reusing it would show conflicting data. Keep the problem visual unresolved until a matching asset is available. |
 | Q05 | 불필요 — 현재 후보 텍스트로 해결 가능 | 불필요 — 별도 해설 그림 없이 텍스트 풀이 | 문제 원본: 참조 없음; 해설 원본: 참조 없음; 변량, 계급, 도수, 상대도수 총합 기본 성질 판별 문항 |
@@ -115,7 +115,7 @@
 | Q21 | 필요·P1·미완 — 유사 JS 연결/자산 없음 | 도움·P2 판정 / 자산 호환성 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토| 문제 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q21.png`; 해설 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q21-solution-v2.svg`; variant 재사용 불가: The main original exam image exists, but its source question parameters differ from the similar-exam MD; reusing it would show conflicting data. Keep the problem visual unresolved until a matching asset is available. |
 | Q22 | 필요·P1·미완 — 유사 JS 연결/자산 없음 | 도움·P2 판정 / 자산 호환성 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토| 문제 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q22.png`; 해설 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q22-solution-v2.svg`; variant 재사용 불가: The main original exam image exists, but its source question parameters differ from the similar-exam MD; reusing it would show conflicting data. Keep the problem visual unresolved until a matching asset is available. |
 | Q23 | 필요·P1·미완 — 유사 JS 연결/자산 없음 | 도움·P2 판정 / 자산 호환성 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토| 문제 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q23.png`; 해설 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q23-solution-v2.svg`; variant 재사용 불가: The main original exam image exists, but its source question parameters differ from the similar-exam MD; reusing it would show conflicting data. Keep the problem visual unresolved until a matching asset is available. |
-| Q24 | 불필요 — 현재 후보 텍스트로 해결 가능 | 미확인 — 유사 JS 해설 그림 없음; 원본 SVG 있음, 호환성 미검토 | 문제 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q24.png`; 해설 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q24-solution.svg`; 줄기와 잎 그림 작성 서술형 문항 |
+| Q24 | 불필요 — 현재 후보 텍스트로 해결 가능 | 불필요 — 해설은 정의·대수 계산 중심이며 별도 시각화가 풀이 이해를 유의미하게 높이지 않음 | 문제 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q24.png`; 해설 원본: 있음 `assets/images/24_향림중_2학기_기말_중1_기출/q24-solution.svg`; 줄기와 잎 그림 작성 서술형 문항 |
 
 ### 26_신흥중_2학기_중간_중1_유사 — main에 이미 릴리스된 버전
 
@@ -125,30 +125,30 @@
 
 | Q | 문제 그림 필요·현재 상태 | 해설 그림 필요·현재 상태 | 이유 및 참고 자산 |
 |---:|---|---|---|
-| Q01 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q01.svg` 존재; 해설: 참조 없음 |
-| Q02 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q02.svg` 존재; 해설: 참조 없음 |
-| Q03 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q03.svg` 존재; 해설: 참조 없음 |
-| Q04 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q04.svg` 존재; 해설: 참조 없음 |
-| Q05 | 불필요 — main 릴리스는 텍스트 조건만 사용 | 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨 | 문제: 별도 파일 없음; 해설: 참조 없음 |
-| Q06 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨 | 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q06.svg` 존재; 해설: 참조 없음 |
-| Q07 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q07.svg` 존재; 해설: 참조 없음 |
-| Q08 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q08.svg` 존재; 해설: 참조 없음 |
-| Q09 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q09.svg` 존재; 해설: 참조 없음; 해설은 꺾인 점을 지나는 평행 보조선을 사용하므로 보조선 그림 필요성 확인 |
-| Q10 | 불필요 — main 릴리스는 텍스트 조건만 사용 | 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨 | 문제: 별도 파일 없음; 해설: 참조 없음 |
-| Q11 | 불필요 — main 릴리스는 텍스트 조건만 사용 | 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨 | 문제: 별도 파일 없음; 해설: 참조 없음 |
-| Q12 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q12.svg` 존재; 해설: 참조 없음 |
-| Q13 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q13.svg` 존재; 해설: 참조 없음 |
-| Q14 | 불필요 — main 릴리스는 텍스트 조건만 사용 | 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨 | 문제: 별도 파일 없음; 해설: 참조 없음 |
-| Q15 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q15.svg` 존재; 해설: 참조 없음 |
-| Q16 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q16.svg` 존재; 해설: 참조 없음 |
-| Q17 | 불필요 — main 릴리스는 텍스트 조건만 사용 | 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨 | 문제: 별도 파일 없음; 해설: 참조 없음 |
-| Q18 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q18.svg` 존재; 해설: 참조 없음 |
-| Q19 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q19.svg` 존재; 해설: 참조 없음 |
-| Q20 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q20.svg` 존재; 해설: 참조 없음 |
-| Q21 | 불필요 — main 릴리스는 텍스트 조건만 사용 | 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨 | 문제: 별도 파일 없음; 해설: 참조 없음 |
-| Q22 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q22.svg` 존재; 해설: 참조 없음 |
-| Q23 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q23.svg` 존재; 해설: 참조 없음 |
-| Q24 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 판정 / 자산 호환성 미확인 — main에는 별도 해설 그림 없음; 필요성 판정 안 됨| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q24.svg` 존재; 해설: 참조 없음 |
+| Q01 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q01.svg` 존재; 해설: 참조 없음 |
+| Q02 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q02.svg` 존재; 해설: 참조 없음 |
+| Q03 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q03.svg` 존재; 해설: 참조 없음 |
+| Q04 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q04.svg` 존재; 해설: 참조 없음 |
+| Q05 | 불필요 — main 릴리스는 텍스트 조건만 사용 | 불필요 — 해설은 정의·대수 계산 중심이며 별도 시각화가 풀이 이해를 유의미하게 높이지 않음 | 문제: 별도 파일 없음; 해설: 참조 없음 |
+| Q06 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 풀이의 기하 관계를 보이면 이해에 도움; 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음 | 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q06.svg` 존재; 해설: 참조 없음 |
+| Q07 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q07.svg` 존재; 해설: 참조 없음 |
+| Q08 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q08.svg` 존재; 해설: 참조 없음 |
+| Q09 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q09.svg` 존재; 해설: 참조 없음; 해설은 꺾인 점을 지나는 평행 보조선을 사용하므로 보조선 그림 필요성 확인 |
+| Q10 | 불필요 — main 릴리스는 텍스트 조건만 사용 | 불필요 — 해설은 정의·대수 계산 중심이며 별도 시각화가 풀이 이해를 유의미하게 높이지 않음 | 문제: 별도 파일 없음; 해설: 참조 없음 |
+| Q11 | 불필요 — main 릴리스는 텍스트 조건만 사용 | 불필요 — 해설은 정의·대수 계산 중심이며 별도 시각화가 풀이 이해를 유의미하게 높이지 않음 | 문제: 별도 파일 없음; 해설: 참조 없음 |
+| Q12 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q12.svg` 존재; 해설: 참조 없음 |
+| Q13 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q13.svg` 존재; 해설: 참조 없음 |
+| Q14 | 불필요 — main 릴리스는 텍스트 조건만 사용 | 불필요 — 해설은 정의·대수 계산 중심이며 별도 시각화가 풀이 이해를 유의미하게 높이지 않음 | 문제: 별도 파일 없음; 해설: 참조 없음 |
+| Q15 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q15.svg` 존재; 해설: 참조 없음 |
+| Q16 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q16.svg` 존재; 해설: 참조 없음 |
+| Q17 | 불필요 — main 릴리스는 텍스트 조건만 사용 | 도움·P2 — 풀이의 기하 관계를 보이면 이해에 도움; 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음 | 문제: 별도 파일 없음; 해설: 참조 없음 |
+| Q18 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q18.svg` 존재; 해설: 참조 없음 |
+| Q19 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q19.svg` 존재; 해설: 참조 없음 |
+| Q20 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q20.svg` 존재; 해설: 참조 없음 |
+| Q21 | 불필요 — main 릴리스는 텍스트 조건만 사용 | 도움·P2 — 풀이의 기하 관계를 보이면 이해에 도움; 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음 | 문제: 별도 파일 없음; 해설: 참조 없음 |
+| Q22 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q22.svg` 존재; 해설: 참조 없음 |
+| Q23 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q23.svg` 존재; 해설: 참조 없음 |
+| Q24 | 필요·P1·있음·참조됨 — 기존 main SVG 보존 | 도움·P2 — 해설 그림은 현재 JS에 연결되지 않았고 제작되지 않음| 문제: `assets/images/26_신흥중_2학기_중간_중1_유사/q24.svg` 존재; 해설: 참조 없음 |
 
 ### 23_동산중_1학기_중간_중1_유사 — main에서 지정된 Q15
 
