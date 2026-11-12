@@ -1,0 +1,76 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "홀수",
+      "children": [
+        {
+          "label": "1",
+          "children": [
+            {
+              "label": "21"
+            },
+            {
+              "label": "31"
+            },
+            {
+              "label": "41"
+            },
+            {
+              "label": "51"
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "children": [
+            {
+              "label": "13"
+            },
+            {
+              "label": "23"
+            },
+            {
+              "label": "43"
+            },
+            {
+              "label": "53"
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "children": [
+            {
+              "label": "15"
+            },
+            {
+              "label": "25"
+            },
+            {
+              "label": "35"
+            },
+            {
+              "label": "45"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": false
+  },
+  "caption": "일의 자리 1·3·5별로 십의 자리 0과 같은 숫자를 제외 · 4+4+4=12개",
+  "sourceConditions": [
+    {
+      "id": "dice",
+      "condition": "실제 유사판 선택/배열 조건과 일치하는 경우의 수",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설 전용: 선택 과정과 경우의 수 표시. 문제에 정답 집합 노출 금지."
+  ]
+}

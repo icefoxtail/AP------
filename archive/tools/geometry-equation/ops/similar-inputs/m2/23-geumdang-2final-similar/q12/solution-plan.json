@@ -1,0 +1,69 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "주문",
+      "children": [
+        {
+          "label": "떡볶이",
+          "children": [
+            {
+              "label": "탄산음료"
+            },
+            {
+              "label": "주스"
+            }
+          ]
+        },
+        {
+          "label": "김밥",
+          "children": [
+            {
+              "label": "탄산음료"
+            },
+            {
+              "label": "주스"
+            }
+          ]
+        },
+        {
+          "label": "라면",
+          "children": [
+            {
+              "label": "탄산음료"
+            },
+            {
+              "label": "주스"
+            }
+          ]
+        },
+        {
+          "label": "순대",
+          "children": [
+            {
+              "label": "탄산음료"
+            },
+            {
+              "label": "주스"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": false
+  },
+  "caption": "간식 4가지에서 각각 음료 2가지로 연결 · 서로 다른 주문 4×2=8가지",
+  "sourceConditions": [
+    {
+      "id": "dice",
+      "condition": "실제 유사판 선택/배열 조건과 일치하는 경우의 수",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설 전용: 선택 과정과 경우의 수 표시. 문제에 정답 집합 노출 금지."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "4",
+        "title": "첫묶음"
+      },
+      {
+        "count": "3",
+        "title": "둘째"
+      },
+      {
+        "count": "2",
+        "title": "셋째"
+      },
+      {
+        "count": "1",
+        "title": "넷째"
+      },
+      {
+        "count": "2",
+        "title": "내부순서"
+      }
+    ],
+    "join": "TIMES"
+  },
+  "caption": "AB를 한 묶음으로: 묶음·C·D·E의 순서 4×3×2×1, 묶음 내부 AB/BA 2가지 → 48",
+  "sourceConditions": [
+    {
+      "id": "dice",
+      "condition": "실제 유사판 선택/배열 조건과 일치하는 경우의 수",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설 전용: 선택 과정과 경우의 수 표시. 문제에 정답 집합 노출 금지."
+  ]
+}
