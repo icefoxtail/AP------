@@ -652,7 +652,10 @@ window.questionBank = [
     "sourceIdentity": "original/high/h1/1mid/19_효천고_1학기_중간_고1_기출.js#9",
     "sourceJsPath": "archive/exams/original/high/h1/1mid/19_효천고_1학기_중간_고1_기출.js",
     "sourceInputSha256": "e1db6397369d8cd253c054e0250d027f35b7a85758c700426a5c62402c621e5e",
-    "solutionImage": "assets/images/19_효천고_1학기_중간_고1_기출/q09-solution.svg"
+    "solutionImage": "assets/images/19_효천고_1학기_중간_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 패널과 아래 패널에서 파란 포물선과 주황 직선이 서로 다른 두 경우로 접하는 모습을 보인다.",
+    "solutionImageCaption": "위와 아래의 두 패널에서 파란 포물선 f(x)와 주황 직선 y=x−1이 접하는 경우를 보여 준다. 각 경우의 중근 조건을 판별식으로 확인하고 매개변수의 합을 구한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "questionUid": "qid_v1_3ed06aaf5c63be9e359fbf449f07d2a0b152de3f565b4f0ad0ed93e397ecbe8b",
@@ -895,7 +898,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "완전제곱식으로 고쳐 최고높이를 구한다.\n$h(t)=-4t^2+24t+28$\n$=-4(t^2-6t)+28$\n$=-4\\{(t-3)^2-9\\}+28$\n$=-4(t-3)^2+64$이다.\n아래로 열린 포물선이므로 꼭짓점에서 최고높이를 얻는다.\n따라서 $a=3$, $b=64$이다.\n지면에 닿는 시각은 $h(t)=0$을 만족한다.\n$-4(t-3)^2+64=0$\n$(t-3)^2=16$\n$t-3=\\pm4$\n$t=-1$ 또는 $t=7$이다.\n던진 뒤의 시간이므로 $t\\ge0$이고 $c=7$이다.\n따라서\n$a+b-c=3+64-7$\n$=67-7$\n$=60$이다.\n정답은 ④이다.",
-    "solutionImage": "assets/images/19_효천고_1학기_중간_고1_기출/q13-solution.svg",
+    "solutionImage": "assets/images/19_효천고_1학기_중간_고1_기출/q13-solution-v2.svg",
     "score": 4.7,
     "level": "중",
     "difficultyBucket": 3,
@@ -946,7 +949,10 @@ window.questionBank = [
     "sourceOrdinal": 13,
     "sourceIdentity": "original/high/h1/1mid/19_효천고_1학기_중간_고1_기출.js#13",
     "sourceJsPath": "archive/exams/original/high/h1/1mid/19_효천고_1학기_중간_고1_기출.js",
-    "sourceInputSha256": "f54bb9a2519a06412b4b4097de82ad6011fa04d9cb688e1cc7fcce2ad58346a7"
+    "sourceInputSha256": "f54bb9a2519a06412b4b4097de82ad6011fa04d9cb688e1cc7fcce2ad58346a7",
+    "solutionImageAlt": "해설 그림: 위 패널에서는 파란 높이 곡선이 주황 수평선에 닿고, 아래 패널에서는 곡선이 주황 지면 선과 만난다.",
+    "solutionImageCaption": "위 패널의 파란 높이 함수 h(t)는 꼭짓점에서 최고 높이를 갖고, 주황 y=64 선은 그 높이를 나타낸다. 아래 패널의 주황 y=0 선은 지면이며, 곡선과 만나는 양의 시각을 확인한다. 정답은 60이다.",
+    "solutionImageSize": "full"
   },
   {
     "questionUid": "qid_v1_81006fc81f33c0aa00a5b98b1c589da39c70e9111e1cc139948f573057e40034",
@@ -1306,7 +1312,10 @@ window.questionBank = [
     "sourceIdentity": "original/high/h1/1mid/19_효천고_1학기_중간_고1_기출.js#18",
     "sourceJsPath": "archive/exams/original/high/h1/1mid/19_효천고_1학기_중간_고1_기출.js",
     "sourceInputSha256": "1c5edc078061d0bcc6051b77328fa65c30062d801acfe994e1e341bdb20b5cfd",
-    "solutionImage": "assets/images/19_효천고_1학기_중간_고1_기출/q18-solution.svg"
+    "solutionImage": "assets/images/19_효천고_1학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 패널에서는 파란 포물선이 주황 x축에 닿고, 아래 패널에서는 포물선이 축 위쪽에 놓인다.",
+    "solutionImageCaption": "위 패널에서는 파란 포물선 f(x)가 주황 x축 y=0에 닿고, 아래 패널에서는 축 위쪽에 놓인다. 두 경우를 비교해 항상 양수인 조건을 살핀다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "questionUid": "qid_v1_4bcdabf488a55e4a59c2c178a11b3388eb070aeffbf76fcd1817fbc5faa2c8cb",
@@ -1442,7 +1451,10 @@ window.questionBank = [
     "sourceIdentity": "original/high/h1/1mid/19_효천고_1학기_중간_고1_기출.js#20",
     "sourceJsPath": "archive/exams/original/high/h1/1mid/19_효천고_1학기_중간_고1_기출.js",
     "sourceInputSha256": "3bf21bde0e6f20aa6bb55794d9fe877342c49118a3880d71d1072884d4c70f25",
-    "solutionImage": "assets/images/19_효천고_1학기_중간_고1_기출/q20-solution.svg"
+    "solutionImage": "assets/images/19_효천고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 파란 u(x) 곡선으로 x와 u의 관계를 보이고, 아래 패널은 파란 G(u)를 나타낸다. 주황 구간은 각 가로축에서 살피는 범위다.",
+    "solutionImageCaption": "위 패널의 파란 u(x)는 주어진 x 구간에서 u가 바뀌는 모습을, 아래 패널의 파란 G(u)는 해당 u 구간의 함수값을 나타낸다. 주황 구간은 각 패널에서 살피는 입력 범위이고, y=0은 기준축이다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "questionUid": "qid_v1_c4e3718051be5d2ca3e35cb09223346ba1cb78188a3caeea35bcb6bf59e93255",
