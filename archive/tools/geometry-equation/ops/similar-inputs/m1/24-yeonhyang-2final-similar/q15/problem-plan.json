@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "large",
+      "kind": "SPHERE",
+      "radius": 3
+    },
+    {
+      "id": "small",
+      "kind": "SPHERE",
+      "radius": 1
+    }
+  ],
+  "dims": [
+    {
+      "solid": "large",
+      "radius": "center",
+      "label": "r"
+    },
+    {
+      "solid": "small",
+      "radius": "center",
+      "label": "\\frac{r}{3}"
+    }
+  ],
+  "caption": "큰 구와 작은 구 한 개의 반지름 비교",
+  "sourceQuote": "큰구반지름r,작은구반지름r/3; 녹여만들때부피보존",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "반지름비3:1",
+      "mappedTo": [
+        "large",
+        "small"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "작은 구는 대표1개만 보인다. 개수a는 문제 그림에서 알려주지 않는다."
+  ]
+}
