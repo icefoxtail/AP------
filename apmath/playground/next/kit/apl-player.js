@@ -222,7 +222,19 @@
           const m = b.querySelector('.m'), sp = b.querySelector('.s');
           if (m && sp && sp.offsetTop > m.offsetTop + 2) b.classList.add('wrap');
         });
+        this._syncEntrySpace();
       });
+    }
+
+    /** 고정 진입 단추가 여러 줄이어도 마지막 질문 줄까지 스크롤할 여유를 둡니다. */
+    _syncEntrySpace() {
+      const entry = this.ui.entry;
+      if (entry.hidden || entry.dataset.mode !== 'first') return;
+      const height = Math.ceil(entry.offsetHeight);
+      if (height > 0 && height !== this._entryHeight) {
+        this._entryHeight = height;
+        document.documentElement.style.setProperty('--apl-entry-height', `${height}px`);
+      }
     }
 
     /** 해설의 t=0 상태(첫 장 start · at:0 칸의 set)를 장면에 적용합니다. lessonOn·탭·step 은 건드리지 않고, 결론을 드러내는 것도 없습니다. */
@@ -314,6 +326,10 @@
       };
       if (NARROW.addEventListener) NARROW.addEventListener('change', () => this._syncEntry());
       window.addEventListener('resize', () => { if (!this.ui.entry.hidden) this._fitEntryLabels(); });
+      if (window.ResizeObserver) {
+        this._entryObserver = new window.ResizeObserver(() => this._syncEntrySpace());
+        this._entryObserver.observe(this.ui.entry);
+      }
     }
 
     _bind() {

@@ -504,8 +504,9 @@
     const t = thumb ? 1 : lesson && s.lessonEntry ? 0 : clamp(s.swT, 0, 1);
     const step = tab === 'review' ? s.step : 0;
     // 처음에는 도형 가까이를 크게, 복사본이 나타날 때 화면이 함께 넓어집니다(카메라만 움직임)
+    // 해설에서는 복사본이 보이기 전에 아래쪽 자리까지 확보해 네 각이 잘리지 않게 합니다.
     {
-      const k = ease(seg01(t, 0.55, 0.72));
+      const k = ease(seg01(t, 0.55, lesson ? T.c0 : 0.72));
       b.setFocus(w.box(lerp(L.home.x0, L.box.x0, k), lerp(L.home.x1, L.box.x1, k), lerp(L.home.y0, L.box.y0, k), lerp(L.home.y1, L.box.y1, k)), false);
     }
     const e = seg01(t, T.e0, T.e1), cp = seg01(t, T.c0, T.c1), g = ease(seg01(t, T.g0, T.g1));

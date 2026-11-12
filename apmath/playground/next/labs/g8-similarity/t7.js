@@ -93,7 +93,7 @@
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = prob ? rvGeo(pk.m, pk.n, pk.u, pk.w) : M;
       const riverColor = g.m <= g.n ? 'sky' : 'green', landColor = g.m <= g.n ? 'green' : 'sky';
-      fit(b, { x0: -1.2, x1: g.A.x + 1.3, y0: -g.PQ - 1, y1: g.AE + 1 }, { t: 40, b: 60, l: 44, r: 44 });
+      fit(b, { x0: -1.2, x1: g.A.x + 1.3, y0: -g.PQ - 1, y1: g.AE + 1 }, { t: 40, b: 60, l: 52, r: 44 });
       fillPoly(b, [pt(-1.2, -g.PQ), pt(g.A.x + 1.3, -g.PQ), pt(g.A.x + 1.3, 0), pt(-1.2, 0)], 'sky', 0.16);
       line(b, pt(-1.2, 0), pt(g.A.x + 1.3, 0), 'ink', 3.2); line(b, pt(-1.2, -g.PQ), pt(g.A.x + 1.3, -g.PQ), 'ink', 3.2);
       T(b, pt(g.A.x + 0.2, -g.PQ / 2), '강', { size: 15, color: 'sky', dx: 8 });

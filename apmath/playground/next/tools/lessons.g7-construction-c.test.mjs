@@ -55,11 +55,31 @@ test('seven correspondence and hidden-congruence scenes have twenty-four valid i
         assert.equal(first.quiz.choices.filter(c => c.ok).length, 1);
         const question = first.source.lessonQuestion(first.model, first.s, first.quiz);
         assert.ok(question.includes(first.quiz.stem));
-        for (const choice of first.quiz.choices) assert.ok(question.includes(choice.h), `${id}/${i} includes every original choice`);
+        assert.doesNotMatch(question, /\b(?:undefined|NaN)\b/, `${id}/${i}: no missing choice data`);
       }
     }
   }
   assert.equal(count, 24);
+});
+
+test('lesson questions retain all five formatted choices from the original problem at entry and during playback', () => {
+  let checked = 0;
+  for (const id of ids) for (const [index] of video.lessonList(lab.def.lessons[id]).entries()) {
+    const first = state(id, index, 0);
+    if (!first.s.cnLessonProblem) continue;
+    for (const [time, entry] of [[0, true], [0, false], [first.compiled.length, false]]) {
+      const value = state(id, index, time);
+      Object.assign(lab.s, value.s, { lessonOn: !entry, lessonEntry: entry });
+      const question = lab.scene.question(lab.s), manual = lab.scene.problem.text(lab.s);
+      const originalChoices = [...manual.matchAll(/<span class="v">([\s\S]*?)<\/span>/g)].map(match => match[1]);
+      const lessonChoices = [...question.matchAll(/<li>([\s\S]*?)<\/li>/g)].map(match => match[1]);
+      assert.equal(originalChoices.length, 5, `${id}/${index}: five original choices`);
+      assert.deepEqual(lessonChoices, originalChoices, `${id}/${index}: choice text, math formatting and order are preserved`);
+      assert.doesNotMatch(question, /\b(?:undefined|NaN)\b/);
+      checked++;
+    }
+  }
+  assert.ok(checked >= 30, 'both text and numeric problems are checked in all three states');
 });
 
 test('actual correspondence labels and drawn side/angle conditions agree with the three original problem types', () => {

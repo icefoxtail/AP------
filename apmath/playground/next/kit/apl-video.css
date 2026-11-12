@@ -239,8 +239,10 @@ body.apl-vid .apl-lentry { display: none !important; }
   body.apl-lessonfirst:not(.apl-vid) .sv-student-tip, body.apl-lessonfirst:not(.apl-vid) .apl-float.br { display: none !important; }
   /* 슬라이더 수에 따라 무대를 줄이는 규칙(44svh)을 쓰지 않고 기본 크기(54svh) 그대로 */
   /* 낮은 화면(360×640 등)에서는 질문이 고정 ▶ 막대 뒤로 숨지 않도록 무대를 줄입니다(머리글 약 145 + 질문 약 80 + 막대 약 125 를 뺀 높이). 844 높이에서는 예전 54svh 그대로 */
-  html body.apl-lessonfirst:not(.apl-vid):has(.apl-main) .apl-stage { height: clamp(240px, min(63svh, calc(100svh - 300px)), 600px); }
-  body.apl-lessonfirst:not(.apl-vid) .apl-panel-inner { padding-bottom: calc(66px + env(safe-area-inset-bottom)); }
+  /* 질문을 읽으려고 스크롤할 때 진입 그림이 질문 위에 고정되어 덮지 않게 합니다. */
+  html body.apl-lessonfirst:not(.apl-vid):has(.apl-main) .apl-stage { position: relative; top: auto; height: clamp(240px, min(63svh, calc(100svh - 300px)), 600px); }
+  /* 단추 막대의 실제 높이(안전 영역 포함)만큼 스크롤 여유를 확보합니다. */
+  body.apl-lessonfirst:not(.apl-vid) .apl-panel-inner { padding-bottom: calc(var(--apl-entry-height, calc(66px + env(safe-area-inset-bottom))) + 14px); }
 }
 /* 휴대폰 가로: 장면 띠를 접고 그림(왼쪽)과 문제·▶(오른쪽 열)을 한 화면에 */
 @media (max-width: 859px) and (max-height: 479px) {
@@ -250,7 +252,7 @@ body.apl-vid .apl-lentry { display: none !important; }
   html body.apl-lessonfirst:not(.apl-vid):has(.apl-main) .apl-stage { position: relative; top: auto; height: auto; align-self: stretch; }
   body.apl-lessonfirst:not(.apl-vid) .apl-panel { overflow-y: auto; min-height: 0; border-left: 1px solid var(--line); }
   body.apl-lessonfirst:not(.apl-vid) .apl-lentry[data-mode="first"] { left: auto; width: clamp(280px, 42vw, 380px); }
-  body.apl-lessonfirst:not(.apl-vid) .apl-panel-inner { padding-bottom: calc(66px + env(safe-area-inset-bottom)); }
+  body.apl-lessonfirst:not(.apl-vid) .apl-panel-inner { padding-bottom: calc(var(--apl-entry-height, calc(66px + env(safe-area-inset-bottom))) + 14px); }
 }
 
 /* ---------- 4. 목차 패널 ---------- */

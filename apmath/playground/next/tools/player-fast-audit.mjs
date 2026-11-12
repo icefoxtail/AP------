@@ -50,11 +50,13 @@ const fingerprint = (lab, observedUrls = []) => {
   const pending = [...closure];
   while (pending.length) {
     const file = pending.pop();
-    if (!/\.(html|css)$/.test(file)) continue;
+    if (!/\.(html|css|js|mjs)$/.test(file)) continue;
     const text = fs.readFileSync(file, 'utf8');
     const refs = file.endsWith('.html')
       ? [...text.matchAll(/<(?:script|link|img)\b[^>]*?\b(?:src|href)=["']([^"']+)["']/gi)].map(m=>m[1])
-      : [...text.matchAll(/url\(\s*["']?([^)'"\s]+)["']?\s*\)/g)].map(m=>m[1]);
+      : file.endsWith('.css')
+        ? [...text.matchAll(/url\(\s*["']?([^)'"\s]+)["']?\s*\)/g)].map(m=>m[1])
+        : [...text.matchAll(/new URL\(\s*["']([^"']+)["']/g)].map(m=>m[1]);
     for (const ref of refs) {
       if (/^(?:[a-z]+:|\/\/|#)/i.test(ref)) continue;
       const dep = ref.startsWith('/') ? path.resolve(ROOT, '.' + ref.split(/[?#]/)[0]) : path.resolve(path.dirname(file), ref.split(/[?#]/)[0]);
@@ -115,12 +117,37 @@ if (args.includes('--resume') && fs.existsSync(rowFile)) {
   }
 } else if (fs.existsSync(rowFile) && fs.statSync(rowFile).size) throw Error('Output already has rows; choose a new directory or --resume.');
 
+// Inspect rendered student text only. KaTeX's clipped accessibility duplicate
+// and genuinely hidden descendants must not contribute placeholder tokens.
+function visibleDataLeaks() {
+  const leaks=[];
+  const visible=e=>e.checkVisibility({checkOpacity:true,checkVisibilityCSS:true});
+  for(const selector of ['.apl-question .q','.apl-vcap .t','.apl-vpin','.apl-vsum','.apl-vans']) {
+    for(const e of document.querySelectorAll(selector)) {
+      if(!visible(e))continue;
+      const parts=[],walker=document.createTreeWalker(e,NodeFilter.SHOW_TEXT);
+      let node;
+      while(node=walker.nextNode()) {
+        const parent=node.parentElement;
+        if(!parent||!visible(parent)||parent.closest('.katex-mathml,.apl-sr'))continue;
+        const range=document.createRange();range.selectNodeContents(node);
+        if([...range.getClientRects()].some(r=>r.width>0&&r.height>0))parts.push(node.textContent);
+      }
+      const text=parts.join('');
+      const hits=[...text.matchAll(/\b(?:undefined|NaN)\b|\[object Object\]/g)].map(m=>({token:m[0],context:text.slice(Math.max(0,m.index-60),m.index+m[0].length+60)}));
+      if(hits.length)leaks.push({selector,hits});
+    }
+  }
+  return leaks;
+}
+
 // Reuse the existing source-bound canvas glyph/fraction/axis observation. It
 // preserves raw clipped labels, while separately identifying proven native axis
 // decorations. Pixel presence is not a mathematical/educational quality verdict.
 const observeFrame = new Function(`return function observeFrame() {
   ${isObservedAxisDecoration.toString()}
   ${captureSmokeCalibrationFrame.toString()}
+  ${visibleDataLeaks.toString()}
   const f = captureSmokeCalibrationFrame(), b = lab.board;
   const outside = g => ![g.x0,g.x1,g.y0,g.y1].every(Number.isFinite) || Math.max(-g.x0,g.x1-b.W,-g.y0,g.y1-b.H)>2;
   const marks = [...f.glyphs,...f.fractionBars], rawClipped = marks.filter(outside);
@@ -144,7 +171,7 @@ const observeFrame = new Function(`return function observeFrame() {
   let pixelHash=2166136261;
   for(let i=0;i<f.rgba.length;i+=Math.max(4,Math.round(f.rgba.length/4096/4)*4)){pixelHash^=f.rgba[i];pixelHash=Math.imul(pixelHash,16777619);pixelHash^=f.rgba[i+3];pixelHash=Math.imul(pixelHash,16777619);}
   return {canvas:f.canvas,ink:f.legacy.ink,pixelHash:(pixelHash>>>0).toString(16),glyphs:f.glyphs.length,fractionBars:f.fractionBars.length,
-    clipped,rawClipped,axisDecorations:rawClipped.filter(g=>isObservedAxisDecoration(f,g)),dom,overlayLabels,
+    clipped,rawClipped,axisDecorations:rawClipped.filter(g=>isObservedAxisDecoration(f,g)),dom,overlayLabels,dataLeaks:visibleDataLeaks(),
     katexErrors:[...document.querySelectorAll('.katex-error')].filter(e=>e.checkVisibility()).map(e=>e.textContent),
     documentOverflow:document.documentElement.scrollWidth>innerWidth+2,viewport:{width:innerWidth,height:innerHeight},
     state:{player:lab.video.state,time:lab.video.t,step:lab.s.step,part:lab.s.part,tab:lab.tab,lessonOn:lab.s.lessonOn,dragging:lab.s.dragging},
@@ -154,7 +181,7 @@ const observeFrame = new Function(`return function observeFrame() {
 const summary = { version: 1, sourceSha, manifestSha256: hash(fs.readFileSync(manifestPath)), startedAt: new Date().toISOString(),
   method: 'DETERMINISTIC_NATIVE_SEEK_SAMPLES_PLUS_SELECTED_NATIVE_RAF_PLAYBACK', qaMultiplier, shard:shardText||null,
   visualEducationalQuality: 'NOT_ASSERTED_REQUIRES_INDEPENDENT_REVIEW', base,
-  completed: 0, passed: 0, failed: 0, reviewRequired: 0, reused: 0, samples: 0, continuous: [], failures: [], sourceFiles: {}, rows: [] };
+  completed: 0, passed: 0, failed: 0, reviewRequired: 0, reused: 0, samples: 0, continuous: [], failures: [], labFailures: [], sourceFiles: {}, rows: [] };
 const saveSummary = () => fs.writeFileSync(path.join(out, 'summary.json'), JSON.stringify(summary, null, 2) + '\n');
 const writeRow = row => { fs.appendFileSync(rowFile, JSON.stringify(row)+'\n'); summary.completed++; summary.samples+=row.samples?.length||0;
   if(row.status==='PASS')summary.passed++;else if(row.status==='REVIEW_REQUIRED')summary.reviewRequired++;else summary.failed++;
@@ -170,20 +197,26 @@ try {
     const labTargets=targets.filter(t=>t.lab===labId);
     const requestedViews=[...new Set(labTargets.flatMap(t=>explicitViews.length?explicitViews:t.views||['390x844']))];
     for(const view of requestedViews) {
-      const context=await browser.newContext({...views[view],reducedMotion:'no-preference'});
-      const page=await context.newPage(), runtimeErrors=[], resourceErrors=[], warnings=[];
+      let context,page,guard,phase='create-context';
+      const runtimeErrors=[],resourceErrors=[],warnings=[],screenshotObservations=[];
+      try {
+      context=await browser.newContext({...views[view],reducedMotion:'no-preference'});
+      page=await context.newPage();
       page.on('pageerror',e=>runtimeErrors.push(e.message));
       page.on('console',m=>{if(m.type()==='error'&&!m.text().startsWith('Failed to load resource'))runtimeErrors.push(m.text());if(m.type()==='warning'&&/^\[(해설|영상 대본)\]/.test(m.text()))warnings.push(m.text());});
       page.on('response',r=>{if(r.status()>=400&&new URL(r.url()).origin===origins&&!r.url().endsWith('/favicon.ico'))resourceErrors.push(`HTTP ${r.status()} ${r.url()}`);});
       page.on('requestfailed',r=>{if(new URL(r.url()).origin===origins)resourceErrors.push(`${r.url()} ${r.failure()?.errorText}`);});
+      summary.sourceFiles[labId]=fingerprint(labId);
+      phase='page-load';
       await page.goto(`${base}${labId}.html?theme=paper`,{waitUntil:'load',timeout:30000});
+      phase='player-ready';
       await page.waitForFunction(()=>window.lab?.video&&lab.board&&lab.list.length,null,{timeout:15000});
       await page.evaluate(()=>document.fonts.ready);
       const observedUrls=await page.evaluate(()=>[...new Set([...document.querySelectorAll('script[src],link[href]')].map(e=>e.src||e.href)
         .concat(performance.getEntriesByType('resource').map(e=>e.name)))].filter(url=>new URL(url).origin===location.origin));
       const source=fingerprint(labId,observedUrls);summary.sourceFiles[labId]=source;
-      const screenshotObservations=[];
-      const guard=await createScreenshotGuard(page,{expectedTouch:!!views[view].hasTouch,onObservation:o=>screenshotObservations.push(o)});
+      guard=await createScreenshotGuard(page,{expectedTouch:!!views[view].hasTouch,onObservation:o=>screenshotObservations.push(o)});
+      phase='unit-enumeration';
       const units=await page.evaluate(()=>lab.list.flatMap((sc,i)=>lab.video.entries(i).map((c,k)=>({i,k,id:String(sc.id),gi:sc.gi,title:sc.title,lessonTitle:c.title,label:c.label,length:c.length,kind:c.kind}))));
       for(const t of labTargets.filter(t=>!explicitViews.length&&t.views&&!t.views.includes(view)?false:true)) if(t.scene!=null&&!units.some(u=>u.id===String(t.scene)&&(t.gi==null||u.gi===t.gi)))throw Error(`Manifest scene has no playable unit: ${labId}:${t.scene}`);
       for(const unit of units) {
@@ -201,13 +234,25 @@ try {
         const check=(name,pass,details)=>row.checks.push({name,status:pass?'PASS':'FAIL',...(pass?{}:{details})});
         const review=(name,details)=>row.checks.push({name,status:'REVIEW_REQUIRED',details});
         const shot=async label=>{const file=`${safe(key)}--${safe(label)}.png`;await guard.capture(()=>page.screenshot({path:path.join(out,file),fullPage:false}),{file,fullPage:false});row.screenshots.push(file);};
+        const captureFailed=async(label,from)=>{
+          const failed=row.checks.slice(from).filter(c=>c.status!=='PASS').map(c=>c.name);
+          if(!failed.length)return;
+          row.firstFailureCaptures??=[];
+          const prior=row.firstFailureCaptures.find(c=>c.label===label);
+          if(prior){prior.checks.push(...failed);return;}
+          if(row.firstFailureCaptures.length>=2)return;
+          await shot(`diagnostic-${label}`);
+          row.firstFailureCaptures.push({label,checks:failed,file:row.screenshots.at(-1)});
+        };
         const settle=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
         const inspect=async(label,{caption=false,final=false,entry=false}={})=>{
+          const checkStart=row.checks.length;
           const f=await page.evaluate(observeFrame); f.label=label;
           check(`${label}: finite usable canvas`,f.canvas.cssWidth>=100&&f.canvas.cssHeight>=80,f.canvas);
           check(`${label}: emitted scene glyphs stay within canvas`,!f.clipped.length,f.clipped);
           check(`${label}: HTML math labels stay inside their clipping layer`,!f.overlayLabels.some(x=>x.clipped),f.overlayLabels.filter(x=>x.clipped));
           check(`${label}: no KaTeX error`,!f.katexErrors.length,f.katexErrors);
+          check(`${label}: visible question/caption/answer has no missing-data tokens`,!f.dataLeaks.length,f.dataLeaks);
           check(`${label}: no page horizontal overflow`,!f.documentOverflow,{});
           if(f.ink<200)review(`${label}: low canvas ink needs semantic review`,{ink:f.ink,threshold:200,pixelHash:f.pixelHash});
           const required=f.dom.filter(d=>caption?['.apl-vcap .t','.apl-vpin'].includes(d.selector):final?['.apl-vsum','.apl-vans','.apl-vtaskline','.apl-vnext','.apl-vend-btns .apl-vbtn'].includes(d.selector):entry?['.apl-lgo','.apl-question .q'].includes(d.selector):false);
@@ -217,8 +262,10 @@ try {
           const bad=required.filter(d=>d.clippedX||(!d.scrollable&&d.mathOverflow.length)||((caption||portraitEnd||entry&&d.selector==='.apl-lgo')&&!d.inViewport));
           check(`${label}: visible caption/formula/entry text is accessible`,!bad.length,bad);
           if(caption&&f.captionExpected)check(`${label}: caption exists`,!!f.caption.trim(),{});
+          await captureFailed(label,checkStart);
           return f;
         };
+        phase=`unit:${key}`;
         try {
           await page.evaluate(i=>{lab.video.close();lab.video._setExplored(false);lab.goScene(i);window.scrollTo(0,0);},unit.i);
           await settle();
@@ -228,6 +275,15 @@ try {
           check('initial player idle and answer unrevealed',row.initial.state.player==='idle'&&!await page.evaluate(()=>lab.s.revealed),row.initial.state);
           const buttons=await page.locator('.apl-lgo:visible').count();
           check('one entry button per valid lesson',buttons===units.filter(u=>u.i===unit.i).length,{buttons});
+          row.parameterBaseline=await page.evaluate(k=>{
+            const sc=lab.scene,cs=lab.video.compiled(lab.index,k);
+            const controls=(typeof sc.controls==='function'?sc.controls(lab.s):sc.controls)||[];
+            return {activeControls:[...new Set([...controls,...Object.keys(lab._ctls||{})])],
+              lessonControlled:[...new Set([...Object.keys(cs.tracks),...cs.setKeys])],
+              values:Object.fromEntries(Object.entries(lab.params).filter(([,p])=>typeof p.min==='number').map(([key,p])=>{
+                const value=lab.s[key];return [key,{value,type:typeof value,inRange:Number.isFinite(value)&&value>=p.min-1e-8&&value<=p.max+1e-8}];
+              }))};
+          },unit.k);
           if(config.capture)await shot('initial');
           row.questionAccess=await page.evaluate(async()=>{
             const q=[...document.querySelectorAll('.apl-question .q')].find(e=>e.checkVisibility()),footer=[...document.querySelectorAll('.apl-lentry')].find(e=>e.checkVisibility());
@@ -252,8 +308,9 @@ try {
             await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
             return result;
           });
+          const questionCheckStart=row.checks.length;
           if(row.questionAccess.applicable)check('full question can be read above the fixed lesson buttons',row.questionAccess.pass,row.questionAccess);
-          if(row.questionAccess.applicable&&!row.questionAccess.pass)await shot('question-access-failure');
+          await captureFailed('question-access',questionCheckStart);
 
           // A frozen QA clock leaves the actual playing layout intact. Every
           // value is set by the native seek/apply API, never by editing lab.s.
@@ -270,20 +327,29 @@ try {
           });
           row.samplePlan=samplePlan;
           for(const p of samplePlan) {
-            await page.evaluate(t=>lab.video.seek(t),p.time);
+            const applied=await page.evaluate(t=>{lab.video.seek(t);return {lqcSig:lab.s.lqcSig};},p.time);
             await settle();
             const f=await inspect(`t=${p.time}`,{caption:true});
-            const stateMatch=await page.evaluate(()=>{
-              const v=lab.video,expected=APLab.videoCore.stateAt(v.cs,v.t,v.base),bad=[];
+            const stateMatch=await page.evaluate(({labId,applied})=>{
+              const v=lab.video,expected=APLab.videoCore.stateAt(v.cs,v.t,v.base),bad=[],derived=[];
               // Native apply intentionally gives set cues precedence over the
               // numeric track/start defaults (e.g. trial slope presets).
-              for(const [k,x]of Object.entries({...expected.nums,...expected.sets}))if(typeof x==='number'?(!Number.isFinite(lab.s[k])||Math.abs(lab.s[k]-x)>1e-6):lab.s[k]!==x)bad.push({key:k,expected:x,actual:lab.s[k]});
+              for(const [k,x]of Object.entries({...expected.nums,...expected.sets}))if(typeof x==='number'?(!Number.isFinite(lab.s[k])||Math.abs(lab.s[k]-x)>1e-6):lab.s[k]!==x){
+                // Exact documented cache only: common-quadratic.html's draw
+                // copies shown.cqSig (stage focus cache) back to s.lqcSig.
+                // The reset must still be applied by the native player before
+                // draw. Numerical/pedagogical state is never exempted.
+                if(labId==='common-quadratic'&&k==='lqcSig'&&x===''&&applied.lqcSig===''&&typeof lab.s[k]==='string')derived.push({key:k,expected:x,afterNativeApply:applied.lqcSig,afterDraw:lab.s[k],contract:'common-quadratic draw focus cache'});
+                else bad.push({key:k,expected:x,actual:lab.s[k]});
+              }
               if(v.cs.usesStep&&lab.s.step!==expected.step)bad.push({key:'step',expected:expected.step,actual:lab.s.step});
               if(v.cs.usesPart&&lab.s.part!==expected.part)bad.push({key:'part',expected:expected.part,actual:lab.s.part});
-              return bad;
-            });
-            check(`t=${p.time}: rendered state remains bound to native timeline`,!stateMatch.length,stateMatch);
-            row.samples.push({...p,method:'NATIVE_SEEK_FROZEN_QA_CLOCK',frame:f});
+              return {bad,derived};
+            },{labId,applied});
+            const stateCheckStart=row.checks.length;
+            check(`t=${p.time}: rendered state remains bound to native timeline`,!stateMatch.bad.length,stateMatch.bad);
+            await captureFailed(`t=${p.time}`,stateCheckStart);
+            row.samples.push({...p,method:'NATIVE_SEEK_FROZEN_QA_CLOCK',frame:f,...(stateMatch.derived.length?{derivedRenderState:stateMatch.derived}:{})});
             if(config.capture&&p.reasons.some(r=>/^chapter-\d+-middle$/.test(r)))await shot(`sample-${p.time}`);
           }
           await page.evaluate(()=>lab.video.finish());await settle();
@@ -291,14 +357,42 @@ try {
           row.final=await inspect('seek-ended',{final:true});
           check('native finish shows end card',await page.locator('.apl-vend:visible').count()===1,{});
           if(config.capture)await shot('ended');
-          await page.evaluate(()=>lab.video.close());await settle();
-          const restore=await page.evaluate(()=>({state:lab.video.state,raf:lab.video._raf,tab:lab.tab,dragging:lab.s.dragging,lessonOn:lab.s.lessonOn,
-            videoClass:document.body.classList.contains('apl-vid'),pins:lab.video.ui.pins.childElementCount,
-            bad:Object.entries(lab.params).filter(([k,p])=>typeof p.min==='number'&&(typeof lab.s[k]!=='number'||lab.s[k]<p.min-1e-8||lab.s[k]>p.max+1e-8)).map(([k,p])=>({key:k,value:lab.s[k],min:p.min,max:p.max})),
-            mismatch:Object.entries(lab._ctls||{}).filter(([k,c])=>Math.abs(+c.input.value-lab.s[k])>(+c.input.step||.001)/2+1e-6).map(([k,c])=>({key:k,state:lab.s[k],slider:c.input.value}))}));
+          row.parameterBeforeClose=await page.evaluate(()=>{
+            const values=Object.fromEntries(Object.keys(lab.params).map(k=>[k,lab.s[k]]));
+            lab.video.close();return values;
+          });await settle();
+          const restore=await page.evaluate(({baseline,beforeClose})=>{
+            const sc=lab.scene,controls=(typeof sc.controls==='function'?sc.controls(lab.s):sc.controls)||[];
+            const activeControls=[...new Set([...controls,...Object.keys(lab._ctls||{})])];
+            const active=new Set([...baseline.activeControls,...activeControls]),lesson=new Set(baseline.lessonControlled);
+            const assessed=new Set([...active,...lesson]);
+            const parameters=Object.entries(lab.params).filter(([,p])=>typeof p.min==='number').map(([key,p])=>{
+              const value=lab.s[key],initial=baseline.values[key];
+              return {key,value,type:typeof value,min:p.min,max:p.max,inRange:Number.isFinite(value)&&value>=p.min-1e-8&&value<=p.max+1e-8,
+                initial,beforeClose:beforeClose[key],changedOnClose:!Object.is(value,beforeClose[key]),
+                changedFromInitial:!initial||typeof value!==initial.type||!Object.is(value,initial.value)};
+            });
+            // Registry min/max describes the UI range. It is not proof that a
+            // pre-existing inactive lesson value is mathematically invalid.
+            const inactiveLesson=parameters.filter(p=>!active.has(p.key)&&lesson.has(p.key));
+            const lessonReview=inactiveLesson.filter(p=>Number.isFinite(p.value)&&p.changedFromInitial&&(!p.inRange||p.changedOnClose)).map(p=>({...p,status:'REVIEW_REQUIRED',reason:!p.inRange?'NEW_OR_CHANGED_VALUE_OUTSIDE_SLIDER_INPUT_RANGE':'NONINTERACTIVE_LESSON_VALUE_CHANGED_ON_CLOSE'}));
+            return {state:lab.video.state,raf:lab.video._raf,tab:lab.tab,dragging:lab.s.dragging,lessonOn:lab.s.lessonOn,
+              videoClass:document.body.classList.contains('apl-vid'),pins:lab.video.ui.pins.childElementCount,
+              parameterScope:{contract:'ACTIVE_CONTROL_RANGE_AND_BASELINE_RELATIVE_LESSON_VALUES',initialActiveControls:baseline.activeControls,restoredActiveControls:activeControls,lessonControlled:baseline.lessonControlled,assessedNumericParameters:parameters.filter(p=>assessed.has(p.key)).map(p=>p.key)},
+              bad:parameters.filter(p=>active.has(p.key)&&!p.inRange||lesson.has(p.key)&&!Number.isFinite(p.value)),
+              existingInactiveLessonRange:inactiveLesson.filter(p=>Number.isFinite(p.value)&&!p.inRange&&!p.changedFromInitial).map(p=>({...p,status:'EXISTING_INACTIVE_LESSON_VALUE_OUTSIDE_SLIDER_INPUT_RANGE',restorationDamage:false})),
+              lessonReview,
+              inactiveLessonChanged:inactiveLesson.filter(p=>p.changedFromInitial).map(p=>({...p,status:lessonReview.some(r=>r.key===p.key)?'REVIEW_REQUIRED':'OBSERVED_PROGRAMMATIC_LESSON_VALUE'})),
+              inactiveBad:parameters.filter(p=>!assessed.has(p.key)&&!p.inRange).map(p=>({...p,status:'NOT_ASSESSED_INACTIVE_REGISTRY_PARAMETER'})),
+              inactiveChanged:parameters.filter(p=>!assessed.has(p.key)&&p.changedFromInitial).map(p=>({...p,status:'NOT_ASSESSED_INACTIVE_REGISTRY_PARAMETER'})),
+              mismatch:Object.entries(lab._ctls||{}).filter(([k,c])=>!Number.isFinite(lab.s[k])||Math.abs(+c.input.value-lab.s[k])>(+c.input.step||.001)/2+1e-6).map(([k,c])=>({key:k,state:lab.s[k],slider:c.input.value}))};
+          },{baseline:row.parameterBaseline,beforeClose:row.parameterBeforeClose});
           row.restore=restore;
+          const restoreCheckStart=row.checks.length;
           check('close restores idle/explore, releases lesson state and pins',restore.state==='idle'&&restore.raf===0&&restore.tab==='explore'&&!restore.dragging&&restore.lessonOn===undefined&&!restore.videoClass&&restore.pins===0,restore);
           check('restored parameters and sliders valid',!restore.bad.length&&!restore.mismatch.length,restore);
+          if(restore.lessonReview.length)review('inactive lesson parameter changes need semantic review',restore.lessonReview);
+          await captureFailed('restored',restoreCheckStart);
           if(config.capture)await shot('restored');
           // Actual playback is kept separate from seek/finish coverage.
           for(const multiplier of [...(config.playback?[qaMultiplier]:[]),...(config.normalPlayback?[1]:[])]){
@@ -377,15 +471,26 @@ try {
         row.status=row.checks.some(c=>c.status==='FAIL')?'FAIL':row.checks.some(c=>c.status==='REVIEW_REQUIRED')?'REVIEW_REQUIRED':'PASS';
         writeRow(row);console.log(`${row.status} ${key} samples=${row.samples.length} checks=${row.checks.length}`);
       }
-      summary.screenshotEnvironmentObservations=(summary.screenshotEnvironmentObservations||[]).concat(screenshotObservations);
-      await guard.close();await context.close();
+      }catch(error){
+        const failure={lab:labId,view,phase,status:'NOT_COMPLETED',error:String(error?.stack||error),runtimeErrors,resourceErrors,warnings,at:new Date().toISOString(),targets:labTargets};
+        if(page){
+          try{failure.page=await page.evaluate(()=>({url:location.href,title:document.title,body:document.body?.innerText?.slice(0,4000),labType:typeof window.lab,labVideo:!!window.lab?.video,sceneCount:window.lab?.list?.length}));}catch{}
+          try{const file=`${safe(labId)}--${view}--lab-failure.png`;await page.screenshot({path:path.join(out,file),fullPage:false,timeout:5000});failure.screenshot=file;}catch{}
+        }
+        summary.labFailures.push(failure);
+        fs.appendFileSync(path.join(out,'lab-failures.jsonl'),JSON.stringify(failure)+'\n');
+        saveSummary();console.error(`LAB_FAILURE ${labId}:${view} ${phase}: ${failure.error}`);
+      }finally{
+        summary.screenshotEnvironmentObservations=(summary.screenshotEnvironmentObservations||[]).concat(screenshotObservations);
+        try{await guard?.close();}catch{}try{await context?.close();}catch{}
+      }
       if(done>=limit)break;
     }
     if(done>=limit)break;
   }
 }catch(error){summary.fatalError=String(error?.stack||error);console.error(summary.fatalError);}
 finally{await browser?.close();if(server)await new Promise(r=>server.close(r));summary.finishedAt=new Date().toISOString();summary.limited=done>=limit;
-  summary.executionStatus=summary.fatalError&&summary.completed===0?'BLOCKED':summary.fatalError||summary.limited?'PARTIAL':'COMPLETE';
-  summary.status=summary.executionStatus==='BLOCKED'?'NOT_RUN':summary.fatalError||summary.failed?'FAIL':summary.limited?'PARTIAL':summary.reviewRequired?'REVIEW_REQUIRED':'PASS';saveSummary();}
+  summary.executionStatus=summary.fatalError&&summary.completed===0?'BLOCKED':summary.fatalError||summary.labFailures.length||summary.limited?'PARTIAL':'COMPLETE';
+  summary.status=summary.executionStatus==='BLOCKED'?'NOT_RUN':summary.fatalError||summary.labFailures.length||summary.failed?'FAIL':summary.limited?'PARTIAL':summary.reviewRequired?'REVIEW_REQUIRED':'PASS';saveSummary();}
 console.log(JSON.stringify({status:summary.status,completed:summary.completed,reused:summary.reused,samples:summary.samples,failed:summary.failed,reviewRequired:summary.reviewRequired,summary:path.join(out,'summary.json')}));
 if(['FAIL','NOT_RUN'].includes(summary.status))process.exitCode=1;

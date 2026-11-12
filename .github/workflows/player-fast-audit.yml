@@ -6,7 +6,8 @@ on:
     paths:
       - 'apmath/playground/next/kit/**'
       - 'apmath/playground/next/labs/**'
-      - 'apmath/playground/next/tools/player-*'
+      - 'apmath/playground/next/tools/player-fast-audit.mjs'
+      - 'apmath/playground/next/tools/player-fast-audit.targets.json'
       - '.github/workflows/player-fast-audit.yml'
   workflow_dispatch:
 
@@ -62,6 +63,7 @@ jobs:
           npm install --prefix "$RUNNER_TEMP/player-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
           "$RUNNER_TEMP/player-browser/node_modules/.bin/playwright" install --with-deps chromium
       - name: Check the exact candidate in an isolated local server
+        timeout-minutes: 30
         env:
           NODE_PATH: ${{ runner.temp }}/player-browser/node_modules
           SHARD: ${{ matrix.shard }}

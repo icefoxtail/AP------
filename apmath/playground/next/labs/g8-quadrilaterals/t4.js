@@ -93,7 +93,8 @@
     },
     draw(b, s, M, cx) {
       const { A, B, C, D, E, H, I } = M, pts = [A, B, C, D], st = cx.step, O = mid(A, C);
-      fit(b, { x0: -0.2, x1: M.bc + 0.2, y0: -M.h - 0.2, y1: 0 }, { t: 30, b: 80, l: 36, r: 36 });
+      // The lesson places the two 60° labels outside B and C.
+      fit(b, { x0: -0.2, x1: M.bc + 0.2, y0: -M.h - 0.2, y1: 0 }, { t: 30, b: 80, l: 64, r: 64 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       par(b, A, D, 1, 'green'); par(b, B, C, 1, 'green'); tick(b, A, B, 1); tick(b, D, C, 1);
       const md = cx.review ? M.md : M.md;

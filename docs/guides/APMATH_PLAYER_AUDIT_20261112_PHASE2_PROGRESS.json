@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "taskId": "fb948d9b-a2eb-5e22-b140-638e44ec7da1",
+  "parentCommit": "77d33aa6b59124c0ea88d633a0ec347a34cb9c07",
+  "stage1": "COMPLETE",
+  "stage2": "IN_PROGRESS",
+  "stage3": "IN_PROGRESS",
+  "firstFull": {
+    "run": 43168128729,
+    "sourceSha": "f72561912ceb46cad747b0a6e598a3f79635f70c",
+    "status": "PARTIAL",
+    "unitStatuses": {
+      "PASS": 842,
+      "FAIL": 962,
+      "REVIEW_REQUIRED": 12
+    },
+    "executedViewportUnits": 1816,
+    "selectedViewportUnits": 2942,
+    "notCompletedViewportUnits": 1126,
+    "uniqueBoundsUnits": 29,
+    "uniqueParameterUnits": 133,
+    "uniqueStateUnits": 50,
+    "uniqueReviewUnits": 12,
+    "assertionStatuses": {
+      "PASS": 269325,
+      "REVIEW_REQUIRED": 24,
+      "FAIL": 2327
+    },
+    "assertionFailuresAndReviews": {
+      "low canvas ink needs semantic review": 24,
+      "full question can be read above the fixed lesson buttons": 822,
+      "emitted scene glyphs stay within canvas": 251,
+      "restored parameters and sliders valid": 133,
+      "rendered state remains bound to native timeline": 1120,
+      "visible caption/formula/entry text is accessible": 1
+    }
+  },
+  "nextSelection": {
+    "totalLabs": 58,
+    "totalScenes": 1067,
+    "totalLessons": 2989,
+    "priorProofUsedBeforeFix": 102,
+    "originalUnchangedFunctionExclusion": 87,
+    "newProductionSharedFixInvalidatesPriorBrowserFingerprint": true,
+    "unchangedMathEvidenceStillReused": true,
+    "primaryMobileUnits": 2989,
+    "selectedUniqueLessons": 2989,
+    "selectedUniqueScenes": 1067,
+    "selectedViewportUnits": 3063,
+    "additionalViewportUnits": 74,
+    "capturedViewportUnits": 212,
+    "nativeContinuousViewportUnits": 138,
+    "normalSpeedViewportUnits": 2
+  },
+  "fixedAwaitingBrowser": [
+    {
+      "id": "S3-002",
+      "scope": "shared player entry",
+      "defect": "Fixed multi-line entry buttons obscured the last question lines; measure actual bar height and permit initial-stage scroll."
+    },
+    {
+      "id": "S3-003",
+      "scope": "circle area proofs",
+      "defect": "Short landscape restored height labels and drag handle overlapped the source sector or formula."
+    },
+    {
+      "id": "B2-BOOT",
+      "scope": "common-circle-eq",
+      "defect": "A truthy steps wrapper returned undefined before problem attachment; native shell failed at undefined.length."
+    },
+    {
+      "id": "B2-CHOICES",
+      "scope": "g7-construction",
+      "affectedLessons": 13,
+      "defect": "Numeric choices were rendered as literal undefined; preserve the original h/t choice renderer."
+    },
+    {
+      "id": "B2-GLYPHS",
+      "scope": "clock, surface/volume, construction, quadrilateral, Pythagoras, similarity",
+      "defect": "Local camera margins did not include outside labels or intermediate rotated point E."
+    },
+    {
+      "id": "B2-SWEPT",
+      "scope": "circle swept copies",
+      "defect": "Camera widening completed after copied angle labels appeared, leaving them outside the canvas."
+    },
+    {
+      "id": "B2-CONE",
+      "scope": "sv4-3",
+      "defect": "At the held cone/net boundary the drawing emitted no path; preserve solid at boundary and preview full net outlines after unfolding starts."
+    },
+    {
+      "id": "B2-ANSWER",
+      "scope": "trapIrrationalCoeffs",
+      "defect": "Natural language answer was forced into one unbreakable KaTeX text box."
+    }
+  ],
+  "harnessChanges": [
+    "Preserve startup errors and continue to other labs",
+    "Capture first two failing or uncertain sample frames per unit",
+    "Match native numeric/set precedence and initialized replay behavior",
+    "Distinguish expected derived lqcSig camera cache from instructional state",
+    "Validate active slider inputs and finite lesson numbers; preserve initial inactive range values and explicit semantic reviews",
+    "Detect visible missing-data tokens; keep hidden text out of judgments",
+    "Add independent SHA-bound delta selector; never infer PASS from source equality alone"
+  ],
+  "independentVisual": {
+    "originalPNGsObserved": 146,
+    "sourceVersionScope": "Historical exact native proof and first-full f725 only",
+    "currentFixVisualStatus": "NOT_RUN"
+  },
+  "limitations": [
+    "First full execution stopped on a real startup defect after 1816 of 2942 selected viewport units.",
+    "Raw first-full FAIL and REVIEW statuses remain immutable; no retroactive automatic PASS.",
+    "QA speed does not prove narration/readability timing or unsampled continuous transitions."
+  ],
+  "nextAction": "Run the fixed exact candidate across shared-player affected units; triage only remaining failures/reviews and independently inspect current captures. Preserve phase2 and phase3 commits separately."
+}

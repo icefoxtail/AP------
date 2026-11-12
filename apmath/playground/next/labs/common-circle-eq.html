@@ -2795,7 +2795,9 @@ window.addEventListener('DOMContentLoaded', function () {
     const original = { question: sc.question, reviewTop: sc.reviewTop, steps: sc.steps, view: sc.view, draw: sc.draw };
     sc.question = (s, lab) => lceActive(s) ? s.lceQuestion || source.question(sc.id) : typeof original.question === 'function' ? original.question(s, lab) : original.question;
     sc.reviewTop = (s, lab) => lceActive(s) ? '' : typeof original.reviewTop === 'function' ? original.reviewTop(s, lab) : original.reviewTop;
-    sc.steps = (s, lab) => lceActive(s) ? ['조건과 도형을 확인해요.', '좌표와 위치 관계를 식으로 연결해요.', '구하는 값을 확인해요.'] : typeof original.steps === 'function' ? original.steps(s, lab) : original.steps;
+    // 실제 문제 단계 getter는 생성 뒤 PROB.attach가 붙입니다. 없는 단계를
+    // truthy 함수로 바꾸면 첫 패널이 undefined.length를 읽어 기동에 실패합니다.
+    if (original.steps) sc.steps = (s, lab) => lceActive(s) ? ['조건과 도형을 확인해요.', '좌표와 위치 관계를 식으로 연결해요.', '구하는 값을 확인해요.'] : typeof original.steps === 'function' ? original.steps(s, lab) : original.steps;
     sc.view = (s, lab) => lceActive(s) ? {} : original.view(s, lab);
     sc.draw = (b, s, v, lab) => {
       if (b.thumb || b._bbox) return original.draw(b, s, v, lab);

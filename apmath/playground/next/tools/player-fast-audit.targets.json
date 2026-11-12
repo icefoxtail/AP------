@@ -1,23 +1,23 @@
 {
   "schemaVersion": 1,
-  "phase": "SELECTIVE_STAGE2",
+  "phase": "SHARED_ENTRY_FIX_REQUIRED_REGRESSION",
   "baseSha": "5d49cb23cdc895aaedaf232d9438ce83e2845713",
   "shards": 8,
   "selection": {
     "totalLabs": 58,
     "totalScenes": 1067,
     "totalLessons": 2989,
-    "priorNativeFunctionLessonsReused": 102,
-    "priorNativeFunctionScenesWithTargetedAdditionalRegression": 15,
-    "unchangedFunctionScenesExcludedFromNewBrowserRun": 87,
-    "previouslyUnverifiedLessonUnits": 2887,
-    "primaryMobileRegressionFunctionUnits": 15,
-    "additionalViewportUnits": 40,
-    "selectedUniqueLessons": 2902,
-    "selectedUniqueScenes": 980,
-    "selectedViewportUnits": 2942,
-    "capturedViewportUnits": 121,
-    "nativeContinuousViewportUnits": 121,
+    "priorProofUsedBeforeFix": 102,
+    "originalUnchangedFunctionExclusion": 87,
+    "newProductionSharedFixInvalidatesPriorBrowserFingerprint": true,
+    "unchangedMathEvidenceStillReused": true,
+    "primaryMobileUnits": 2989,
+    "selectedUniqueLessons": 2989,
+    "selectedUniqueScenes": 1067,
+    "selectedViewportUnits": 3063,
+    "additionalViewportUnits": 74,
+    "capturedViewportUnits": 212,
+    "nativeContinuousViewportUnits": 138,
     "normalSpeedViewportUnits": 2
   },
   "reuseEvidence": {
@@ -25,7 +25,8 @@
     "actualSourceSha": "3fd4977ebafb9b7650fc03392624a02441b2c6cc",
     "binding": "Exact apmath/playground, apmath/css, apmath/js tree equality; see phase1 receipt.",
     "native102Checks": 1218,
-    "initialViewportRows": 510
+    "initialViewportRows": 510,
+    "currentBrowserReuse": "Historical native proof was consumed for the first selection; changed shared entry source now requires browser regression. Mathematics remains separately reusable."
   },
   "targets": [
     {
@@ -1636,6 +1637,793 @@
       "capture": true,
       "playback": true,
       "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
+    },
+    {
+      "lab": "g7-coordinate-graphs",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Required regression after confirmed shared entry/footer production fix; previous native math and playback proof stays historical."
+    },
+    {
+      "lab": "g8-linear-functions",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Required regression after confirmed shared entry/footer production fix; previous native math and playback proof stays historical."
+    },
+    {
+      "lab": "g9-quadratic-functions",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Required regression after confirmed shared entry/footer production fix; previous native math and playback proof stays historical."
+    },
+    {
+      "lab": "common-lines",
+      "scene": "compositeStepByStep",
+      "gi": 3,
+      "lessonIndices": [
+        1
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "common-lines",
+      "scene": "diffMaxLine",
+      "gi": 4,
+      "lessonIndices": [
+        2
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "scene": "ns",
+      "gi": 5,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "scene": "sw-center",
+      "gi": 10,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "scene": "sw-rect",
+      "gi": 10,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "scene": "sw-square",
+      "gi": 10,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "scene": "sw-tri",
+      "gi": 10,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-construction",
+      "scene": "c1-3",
+      "gi": 0,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-construction",
+      "scene": "c1-3",
+      "gi": 0,
+      "lessonIndices": [
+        1
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-construction",
+      "scene": "c1-4",
+      "gi": 0,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-construction",
+      "scene": "c1-4",
+      "gi": 0,
+      "lessonIndices": [
+        1
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-construction",
+      "scene": "c1-4",
+      "gi": 0,
+      "lessonIndices": [
+        2
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-construction",
+      "scene": "c1-5",
+      "gi": 0,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-construction",
+      "scene": "c1-5",
+      "gi": 0,
+      "lessonIndices": [
+        1
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-construction",
+      "scene": "c4-3",
+      "gi": 3,
+      "lessonIndices": [
+        1
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-points-lines",
+      "scene": "ck1",
+      "gi": 3,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-points-lines",
+      "scene": "ck1",
+      "gi": 3,
+      "lessonIndices": [
+        1
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-points-lines",
+      "scene": "ck1",
+      "gi": 3,
+      "lessonIndices": [
+        2
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-points-lines",
+      "scene": "ck2",
+      "gi": 3,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-points-lines",
+      "scene": "ck2",
+      "gi": 3,
+      "lessonIndices": [
+        1
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "scene": "sv1-5",
+      "gi": 3,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "scene": "sv4-1",
+      "gi": 1,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "scene": "sv4-3",
+      "gi": 3,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "scene": "sv4-3",
+      "gi": 3,
+      "lessonIndices": [
+        1
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "scene": "sv4-4",
+      "gi": 3,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "scene": "sv4-4",
+      "gi": 3,
+      "lessonIndices": [
+        1
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "scene": "sv5-2",
+      "gi": 3,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "scene": "sv5-2",
+      "gi": 3,
+      "lessonIndices": [
+        1
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "scene": "sv5-2",
+      "gi": 3,
+      "lessonIndices": [
+        2
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "scene": "sv5-4",
+      "gi": 3,
+      "lessonIndices": [
+        1
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "scene": "sv6-1",
+      "gi": 3,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g8-pythagoras",
+      "scene": "py8-quad",
+      "gi": 7,
+      "lessonIndices": [
+        1
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g8-quadrilaterals",
+      "scene": "q4-2",
+      "gi": 3,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g8-quadrilaterals",
+      "scene": "q4-2",
+      "gi": 3,
+      "lessonIndices": [
+        1
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g8-quadrilaterals",
+      "scene": "q4-2",
+      "gi": 3,
+      "lessonIndices": [
+        2
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g8-quadrilaterals",
+      "scene": "q4-2",
+      "gi": 3,
+      "lessonIndices": [
+        3
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g8-quadrilaterals",
+      "scene": "q4-2",
+      "gi": 3,
+      "lessonIndices": [
+        4
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g8-quadrilaterals",
+      "scene": "q4-2",
+      "gi": 3,
+      "lessonIndices": [
+        5
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g8-quadrilaterals",
+      "scene": "q4-2",
+      "gi": 3,
+      "lessonIndices": [
+        6
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g8-quadrilaterals",
+      "scene": "q4-2",
+      "gi": 3,
+      "lessonIndices": [
+        7
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g8-similarity",
+      "scene": "sm7-river",
+      "gi": 6,
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": false,
+      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
+    },
+    {
+      "lab": "g8-triangles",
+      "scene": "t3-3",
+      "lessonIndices": [
+        0,
+        7
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Eight-lesson selector layout and final lesson next routing; stronger UI control contract only."
+    },
+    {
+      "lab": "prob-stats",
+      "scene": "ci",
+      "lessonIndices": [
+        4
+      ],
+      "views": [
+        "390x844",
+        "1440x900"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Final catalog lesson next button must return to contents; stronger UI control contract only."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "scene": "z3-circleProof",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "844x390"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Independent visual finding: verify short-landscape restored formula, height label and handle separation."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "scene": "z3-sectorProof",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "844x390"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Independent visual finding: verify short-landscape restored formula, height label and handle separation."
+    },
+    {
+      "lab": "common-quadratic",
+      "scene": "trapIrrationalCoeffs",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844",
+        "360x640"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Long answer prose formerly forced into a single KaTeX text box; verify readable natural wrapping."
+    },
+    {
+      "lab": "g7-construction",
+      "scene": "c4-3",
+      "lessonIndices": [
+        0,
+        1
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "reason": "Numeric choices were literally undefined; preserve fixed native initial and ending question captures."
+    },
+    {
+      "lab": "g7-construction",
+      "scene": "c6-1",
+      "lessonIndices": [
+        1,
+        2,
+        3
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "reason": "Numeric choices were literally undefined; preserve fixed native initial and ending question captures."
+    },
+    {
+      "lab": "g7-construction",
+      "scene": "c6-2",
+      "lessonIndices": [
+        1,
+        2,
+        3
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "reason": "Numeric choices were literally undefined; preserve fixed native initial and ending question captures."
+    },
+    {
+      "lab": "g7-construction",
+      "scene": "c6-3",
+      "lessonIndices": [
+        1,
+        2
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "reason": "Numeric choices were literally undefined; preserve fixed native initial and ending question captures."
+    },
+    {
+      "lab": "g7-construction",
+      "scene": "c6-4",
+      "lessonIndices": [
+        1,
+        2,
+        3
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "reason": "Numeric choices were literally undefined; preserve fixed native initial and ending question captures."
+    },
+    {
+      "lab": "g7-proportion",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Required regression after confirmed shared entry/footer production fix; previous native math and playback proof stays historical."
+    }
+  ],
+  "selectionHistory": [
+    {
+      "totalLabs": 58,
+      "totalScenes": 1067,
+      "totalLessons": 2989,
+      "priorNativeFunctionLessonsReused": 102,
+      "priorNativeFunctionScenesWithTargetedAdditionalRegression": 15,
+      "unchangedFunctionScenesExcludedFromNewBrowserRun": 87,
+      "previouslyUnverifiedLessonUnits": 2887,
+      "primaryMobileRegressionFunctionUnits": 15,
+      "additionalViewportUnits": 40,
+      "selectedUniqueLessons": 2902,
+      "selectedUniqueScenes": 980,
+      "selectedViewportUnits": 2942,
+      "capturedViewportUnits": 121,
+      "nativeContinuousViewportUnits": 121,
+      "normalSpeedViewportUnits": 2
     }
   ]
 }

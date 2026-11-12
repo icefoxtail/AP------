@@ -186,7 +186,7 @@
     const D = source[id];
     if (!D) continue;
     D.lessonQuestion = (M, s, Q) => s.cnLessonProblem && Q
-      ? `<p>${Q.stem}</p><ol>${Q.choices.map(c => `<li>${c.h}</li>`).join('')}</ol>`
+      ? `<p>${Q.stem}</p><ol>${Q.choices.map(c => `<li>${c.h != null ? c.h : '$' + c.t + '$'}</li>`).join('')}</ol>`
       : s.cnLessonQuestion || D.question;
     const original = D.draw;
     D.draw = function (b, s, M, C) {

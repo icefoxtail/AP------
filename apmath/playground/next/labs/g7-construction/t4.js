@@ -296,7 +296,8 @@
       } else Tr = mode === 'side' ? triSSS(M.a, M.b, M.c) : triASA(6, M.A, M.B);
       if (!Tr) Tr = triSSS(6, 7, 8);
       const X0 = bboxOf(Tr).x1 - bboxOf(Tr).x0 + 3.2, t = C.lesson ? C.t : C.problem ? 0 : (C.review ? 0 : C.t);
-      const bb = unionBox(bboxOf(Tr, 0.3), (() => { let u = bboxOf(Tr, 0.3); [0, 1].forEach((tt) => { u = unionBox(u, bboxOf(imageAt(Tr, 'rot', tt, X0), 0.3)); }); return u; })());
+      // Intermediate rotation positions can extend beyond both endpoints.
+      const bb = pairBox(Tr, 'rot', X0);
       fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 0.6 }, { t: 40, b: 58 });
       const img = imageAt(Tr, 'rot', t, X0), done = t >= 0.999, cA = centroid(Tr), cB = centroid(img), st = C.review ? C.step : 3;
       fillPoly(b, Tr, 'sky', 0.1); poly(b, Tr, 'ink', 3.4); fillPoly(b, img, 'green', 0.1); poly(b, img, 'ink', 3.4);

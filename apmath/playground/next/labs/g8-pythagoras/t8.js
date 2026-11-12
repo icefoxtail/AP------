@@ -53,7 +53,8 @@
       const ext = Math.max(a, bb, c, d);
       const shapeBox = bboxOf([A, B, Cc, D]);
       const separateFooter = C.full && !b.thumb && b.W < 900;
-      fit(b, shapeBox, { t: 44, b: C.full ? (separateFooter ? 96 : 74) : C.answer ? 60 : 44, l: 58, r: 58 });
+      // Reserve space for the outward answer label (for example x²=225).
+      fit(b, shapeBox, { t: 44, b: C.full ? (separateFooter ? 96 : 74) : C.answer ? 60 : 44, l: 76, r: 76 });
       const st = (n) => !C.review || C.step >= n;
       fillPoly(b, [A, B, Cc, D], 'ink', 0.07); poly(b, [A, B, Cc, D], 'ink', 3.4);
       if (st(1)) { line(b, A, Cc, 'rose', 2.6, { dash: [7, 6] }); line(b, B, D, 'rose', 2.6, { dash: [7, 6] }); b.right(O, A, B, { size: 11, color: 'rose' }); }
