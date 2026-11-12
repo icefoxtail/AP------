@@ -111,7 +111,13 @@ try {
         await page.locator('.apl-vend [aria-label="직접 해 보기"]').click();
         await page.waitForFunction(() => lab.video.state === 'idle' && !document.body.classList.contains('apl-lessonfirst'));
         const range = page.locator('.apl-ctl input[type="range"]:visible').first();
-        if (await range.count()) {
+        row.explorationControls = { expectedParameterKeys: initial.parameterKeys,
+          status: initial.parameterKeys.length ? 'WAITING_FOR_NATIVE_RENDER' : 'NOT_APPLICABLE' };
+        if (initial.parameterKeys.length) {
+          // Native exit sets idle before its next frame creates the controls.
+          // A declared range must become visible; a timeout records a scene FAIL.
+          await range.waitFor({ state: 'visible', timeout: 5000 });
+          row.explorationControls.status = 'OBSERVED';
           const before = await range.inputValue();
           await range.press('End'); if (await range.inputValue() === before) await range.press('Home');
           const after = await range.inputValue();

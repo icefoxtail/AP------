@@ -273,10 +273,16 @@ async function run() {
       await capture(page, 'student-lab-scene-390');
       await page.setViewportSize({ width: 800, height: 1280 });
       await capture(page, 'student-lab-scene-800'); await assertNav(page, 'labs');
-      // The compact exploration stage is reached through the student's own
-      // control; the lesson-first entry intentionally gives its figure more room.
-      await page.getByRole('button', { name: '직접 해 보기', exact: true }).click();
-      await page.waitForFunction(() => !document.body.classList.contains('apl-lessonfirst'));
+      // Existing lesson-first contract (574e8de62db): enlarge the entry figure to
+      // a 600px cap; ordinary exploration retains its 560px cap and nearby controls.
+      // Exercise both modes instead of applying the exploration limit to entry.
+      await page.locator('body.apl-lessonfirst').waitFor({ state: 'visible' });
+      const entryStage = await page.locator('.apl-stage').boundingBox();
+      assert.ok(entryStage && Math.abs(entryStage.height - 600) <= 1, 'portrait tablet lesson-first stage reaches its existing 600px cap');
+      await page.locator('.apl-lentry[data-mode="first"] .apl-lmanual').click();
+      await page.locator('body.apl-lessonfirst').waitFor({ state: 'detached' });
+      const firstSlider = page.locator('.apl-controls input[type="range"]').first();
+      await firstSlider.waitFor({ state: 'visible' });
       // Leaving lesson-first resizes the native canvas. Observe its completed
       // paint before capturing; do not force render or inject application state.
       report.labExplorationPaint = await page.evaluate(() => new Promise((resolve, reject) => {
@@ -299,7 +305,14 @@ async function run() {
       }));
       await capture(page, 'student-lab-explore-800'); await assertNav(page, 'labs');
       const stage = await page.locator('.apl-stage').boundingBox();
-      assert.ok(stage && stage.height <= 561, 'portrait tablet keeps the existing bounded stage so experiment controls remain close');
+      const tabs = await page.locator('.apl-tabs').boundingBox();
+      const controls = await page.locator('.apl-controls').boundingBox();
+      const slider = await firstSlider.boundingBox();
+      assert.ok(stage && stage.height > 0 && stage.height <= 561, 'portrait tablet exploration retains its existing 560px stage cap');
+      assert.ok(tabs && controls && controls.y >= tabs.y + tabs.height - 1 && controls.y <= tabs.y + tabs.height + 11, 'exploration controls immediately follow the tabs with the existing 10px panel gap');
+      assert.ok(slider && slider.y >= stage.y + stage.height - 1 && slider.y + slider.height <= page.viewportSize().height + 1, 'first exploration slider is below the stage and fully visible in the first viewport');
+      assert.ok(await firstSlider.isEnabled(), 'first exploration slider is usable after choosing direct exploration');
+      await capture(page, 'student-lab-manual-800'); await assertNav(page, 'labs');
       await page.setViewportSize({ width: 390, height: 844 });
       await page.locator(selectors.navItem('home')).click(); await assertHome(page);
     }));
