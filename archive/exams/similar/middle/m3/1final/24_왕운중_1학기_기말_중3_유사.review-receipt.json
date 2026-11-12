@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "similar-exam-candidate-review-receipt-v1",
+  "examUid": "24_왕운중_1학기_기말_중3_유사",
+  "source": {
+    "documentId": "1SLvujIfLvvVX6Fftqo-R6feOwuYP4BVyESrV-BFx19g",
+    "revisionId": "AHj4eMSQm_QaYYxSW9ep0P93KGZcERL86t6t6xd5zWXosxEuoXiWBuXMvnb79LjW9lxyS18YbWfUCPnwxbam2kejtzDDCRq4dA6zQrbOenA",
+    "title": "24_왕운중_1학기_기말_중3_유사_일체형.md",
+    "questionCount": 23,
+    "totalScore": 100,
+    "declaredSourceArchiveFile": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
+    "resolvedSourceArchiveFile": "archive/exams/original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
+    "resolvedSourceGitBlobSha1": "fadb9095cca8e37b4828b341bd52a9a48614b6a7"
+  },
+  "candidateJs": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사.js",
+  "candidateBlobSha1": "400694a5e0e0d3fb0da3f827a292e90801fa1afa",
+  "authoringStatus": "CANDIDATE_DRAFT",
+  "sourceAudit": {
+    "mainAndAccumulatorDuplicate": "NO_SAME_CANDIDATE_FOUND",
+    "relatedBranches": "NO_MATCH_FOUND",
+    "relatedPullRequests": "NO_MATCH_FOUND",
+    "localOwnership": "NO_OTHER_WORKTREE_FOR_THIS_SIMILAR_TRANSPLANT",
+    "restricted25Wangun2final": "NOT_OPENED_OR_MODIFIED",
+    "sourceDeclaredPathOnMain": "NOT_FOUND_WITHOUT_ARCHIVE_PREFIX",
+    "resolvedSourcePathOnMain": "archive/exams/original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
+    "docInlineObjects": 0,
+    "docPositionedObjects": 0,
+    "sourceVisualStatuses": {
+      "EXEMPT": 23
+    },
+    "relatedMainSha": "8f8fb0b178b02503b43162bcbcea55d63251b196",
+    "candidatePathOnMain": "NOT_FOUND",
+    "resolvedSourceBlobInAccumulator": "fadb9095cca8e37b4828b341bd52a9a48614b6a7",
+    "originalVisualAssets": {
+      "sameVariantAssetsReused": false,
+      "inspection": "NOT_PERFORMED"
+    }
+  },
+  "fieldBoundaryAudit": {
+    "status": "PASS",
+    "questionCount": 23,
+    "objectiveQuestionsWith5Choices": 20,
+    "subjectiveQuestionsWithoutChoices": 3,
+    "contentContainsAnswerOrSolutionHeaders": false,
+    "answerIncludesSolutionOrMetadata": false
+  },
+  "contentRepairs": [
+    {
+      "question": 2,
+      "field": "choice ①",
+      "before": "4ax+8a=a(4x+8)",
+      "after": "4ax+8a=a(4x+2)",
+      "reason": "원래 보기는 항등식으로 참이지만 공통인수 4를 더 묶을 수 있는 부분인수분해라 정답 ②와 답의 유일성이 모호했다. 우변을 고쳐 실제로 거짓이 되게 했다.",
+      "independentVerification": "a(4x+2)=4ax+2a, which is not identically 4ax+8a; Q2 choice ② expands exactly to 6x²y-3x. Remaining choices are not equivalent or are not a product factorization."
+    }
+  ],
+  "mathReview": {
+    "status": "CORRECTION_Q2_INDEPENDENTLY_RECHECKED",
+    "scope": "23문항 답·해설 대조. Q2 보기 ①의 모호성을 수정하고 전개식으로 별도 검산했다. 다른 명백한 수학 오류는 발견하지 않음.",
+    "openIssues": [],
+    "independentQ2Check": {
+      "option1": "a(4x+2)=4ax+2a; e.g., at a=1,x=0 RHS=2 while LHS=8, so equality is false",
+      "option2": "3x(2xy-1)=6x²y-3x, exact identity and full common-factor extraction",
+      "result": "② is the unique correctly factored choice"
+    }
+  },
+  "metadataReview": {
+    "status": "EVIDENCE_DEBT",
+    "candidateRows": 23,
+    "resolverStatus": "NOT_RUN",
+    "4slotStatus": "UNREVIEWED_23",
+    "registrationStatus": "NOT_SUBMITTED"
+  },
+  "visualReview": {
+    "status": "NEEDS_FOLLOWUP",
+    "problemNeed": [
+      16,
+      18,
+      21,
+      23
+    ],
+    "solutionNeed": [
+      16,
+      18,
+      21,
+      23
+    ],
+    "createdAssets": [],
+    "renderedItems": [],
+    "notes": [
+      "원문 MD는 전 문항 EXEMPT지만 학습에 도움되는 그림 항목을 문제/해설별로 재판정했다."
+    ],
+    "productionStatus": "BLOCKED_UNSUPPORTED_FIGURES_4_PROBLEM_ITEMS; 4_SOLUTION_PLANS_AWAIT_SVG; SVG_SCOPE_DEFERRED"
+  },
+  "checks": {
+    "nodeCheck": "PASS",
+    "tableCheck": "PASS_1_FILE_0_FAIL",
+    "similarExamHarness": "DRAFT_GATE_FAIL_EXPECTED_4_UNSUPPORTED_PROBLEM_VISUALS; DRAFT_WARNING_NO_PRODUCTION_AUTHORIZATION",
+    "jsonParsing": "PASS_23_QUESTIONS_100_POINTS_20_MC_3_WRITTEN"
+  },
+  "userScope": "Convert 2024 Wangun M3 first semester final MD into candidate JS/meta; correct and independently verify Q2 ambiguity; maintain figure checklist; do not touch 2025 Wangun second-semester final; no SVG/PR/main merge."
+}

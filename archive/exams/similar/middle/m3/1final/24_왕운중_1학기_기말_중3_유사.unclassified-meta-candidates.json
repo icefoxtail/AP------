@@ -1,0 +1,1209 @@
+{
+  "sourceDocumentId": "1SLvujIfLvvVX6Fftqo-R6feOwuYP4BVyESrV-BFx19g",
+  "sourceDocumentRevisionId": "AHj4eMSQm_QaYYxSW9ep0P93KGZcERL86t6t6xd5zWXosxEuoXiWBuXMvnb79LjW9lxyS18YbWfUCPnwxbam2kejtzDDCRq4dA6zQrbOenA",
+  "declaredSourceArchiveFile": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
+  "resolvedSourceArchiveFile": "archive/exams/original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
+  "resolvedSourceGitBlobSha1": "fadb9095cca8e37b4828b341bd52a9a48614b6a7",
+  "note": "MD 분류와 item4slot 후보를 보존한다. Resolver 정본 대조, 의미 분류와 등록은 미완료. 25 왕운중 2학기 기말은 별도 제한 항목이며 이 작업에서 열지 않는다.",
+  "items": [
+    {
+      "ordinal": 1,
+      "sourceQid": "1",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_COMMON_FACTORS",
+      "primaryMethod": "ab^3(a-b)로 인수분해하여 a의 차수가 2차인 a^2b가 인수가 될 수 없음을 판별한다.",
+      "decisiveStep": "ab^3(a-b)에서 a의 최고차수가 1차이므로 a^2b 불포함 판정",
+      "rpm": {
+        "majorUnit": "수와 식의 연산",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "공통인수로 묶기"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_FACTORIZATION_FIND_NON_FACTOR",
+        "templateKey": "TPL_M3_POLYNOMIAL_FACTOR_AUDIT",
+        "why": "공통인수 인수분해와 다항식의 약수(인수)의 차수 한계 점검"
+      },
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_FACTOR"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "공통인수 묶기 후 인수의 차수를 단순 대조하는 하 난이도 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          2,
+          3,
+          4
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 2,
+      "sourceQid": "2",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_VERIFICATION",
+      "primaryMethod": "각 보기를 검토하여 6x^2y-3x=3x(2xy-1)이 올바른 인수분해임을 확인한다.",
+      "decisiveStep": "공통인수 3x를 완전히 묶어낸 2번 보기 선택",
+      "rpm": {
+        "majorUnit": "수와 식의 연산",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "공통인수로 묶기"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_FACTORIZATION_CORRECT_CHOICE",
+        "templateKey": "TPL_M3_COMMON_FACTOR_EXPANSION_AUDIT",
+        "why": "공통인수를 남김없이 묶어내는 기본 인수분해 절차의 완전성 평가"
+      },
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_FACTOR"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "5개 보기의 계수와 문자의 최대공약수 분해를 점검하는 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          4,
+          8,
+          6,
+          -3
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 3,
+      "sourceQid": "3",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_PERFECT_SQUARE_MULTIVARIABLE",
+      "primaryMethod": "3을 묶고 x^2-10xy+25y^2=(x-5y)^2으로 인수분해하여 네모가 -5y임을 구한다.",
+      "decisiveStep": "완전제곱식 구조 x^2-10xy+25y^2 = (x-5y)^2 식별",
+      "rpm": {
+        "majorUnit": "수와 식의 연산",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_PERFECT_SQUARE_FILL_BLANK",
+        "templateKey": "TPL_M3_QUADRATIC_PERFECT_SQUARE_STRUCTURE",
+        "why": "공통인수와 완전제곱식 공식의 2단계 결합 숙달도 점검"
+      },
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_FACTORIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "공통인수 추출 후 기본 완전제곱식 적용 하 난이도 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          3,
+          -30,
+          75
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 4,
+      "sourceQid": "4",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_PERFECT_SQUARE_COEFFICIENT",
+      "primaryMethod": "각 식이 완전제곱식이 되는 양수 a=9, b=9, c=4를 구하고 a+b+c=22를 산출한다.",
+      "decisiveStep": "세 이차식의 완전제곱식 조건 비교로 a=9, b=9, c=4 도출",
+      "rpm": {
+        "majorUnit": "수와 식의 연산",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_PERFECT_SQUARE_CONDITION_SUM",
+        "templateKey": "TPL_M3_TRIPLE_PERFECT_SQUARE_EVAL",
+        "why": "완전제곱식이 되기 위한 일차항과 최고차항/상수항 사이의 관계 이해도 점검"
+      },
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_FACTORIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "세 개의 완전제곱식 미정계수를 각각 계산하고 합산하는 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          4,
+          12,
+          -6,
+          -12,
+          9
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 5,
+      "sourceQid": "5",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_APPLICATION_EVALUATION",
+      "primaryMethod": "a^2-6a+9=(a-3)^2으로 묶고 a-3=-√5를 대입하여 (-√5)^2=5를 구한다.",
+      "decisiveStep": "(a-3)^2으로 변형 후 a-3=-√5 대입",
+      "rpm": {
+        "majorUnit": "수와 식의 연산",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해 공식의 활용"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_FACTORIZATION_VALUE_EVALUATION",
+        "templateKey": "TPL_M3_PERFECT_SQUARE_RADICAL_SUBSTITUTION",
+        "why": "직접 전개 대입 대신 인수분해를 활용하여 무리수 식을 단순화하는 기법 평가"
+      },
+      "crossConceptKeys": [
+        "CC_SQUARE_ROOT_PROPERTY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "인수분해를 이용한 연산 간소화 2단계 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          3,
+          5,
+          -6,
+          9
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 6,
+      "sourceQid": "6",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_DIFFERENCE_OF_SQUARES",
+      "primaryMethod": "(3x)^2-(2y)^2=(3x+2y)(3x-2y) 합차 공식을 적용한다.",
+      "decisiveStep": "(3x)^2과 (2y)^2의 차로 인식 후 합차 공식 전개",
+      "rpm": {
+        "majorUnit": "수와 식의 연산",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_DIFFERENCE_OF_SQUARES_FACTOR",
+        "templateKey": "TPL_M3_TWO_TERM_SQUARE_DIFF_EVAL",
+        "why": "합차 공식을 이용한 기본 인수분해 능력 평가"
+      },
+      "crossConceptKeys": [
+        "CC_DIFFERENCE_OF_SQUARES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "기본 공식 1회 적용으로 해결되는 하 난이도 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          9,
+          -4
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 7,
+      "sourceQid": "7",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_DIFFERENCE_OF_SQUARES_RELATION",
+      "primaryMethod": "(2x+b)(2x-b)=4x^2-b^2에서 a=-b^2이므로 a+b^2=0임을 도출한다.",
+      "decisiveStep": "a=-b^2에서 등식 a+b^2=0 유도",
+      "rpm": {
+        "majorUnit": "수와 식의 연산",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_FACTORIZATION_RELATION_ANALYSIS",
+        "templateKey": "TPL_M3_COEFFICIENT_SIGN_RELATION_AUDIT",
+        "why": "대수적 항등식 계수 비교와 실수의 제곱 성질을 이용한 논리적 판별력 점검"
+      },
+      "crossConceptKeys": [
+        "CC_DIFFERENCE_OF_SQUARES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "계수 비교 후 음수 조건 및 거듭제곱 부호를 종합 검증하는 상 난이도 문항",
+      "level": "상",
+      "item4slot": {
+        "given": [
+          4
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 8,
+      "sourceQid": "8",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_MONIC_QUADRATIC",
+      "primaryMethod": "(x+a)(x+b)의 일차항 계수가 a+b=-4임을 계수 비교로 즉시 산출한다.",
+      "decisiveStep": "일차항 계수 a+b = -4 확인",
+      "rpm": {
+        "majorUnit": "수와 식의 연산",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_MONIC_FACTOR_SUM_EVAL",
+        "templateKey": "TPL_M3_QUADRATIC_COEFF_SUM_MATCH",
+        "why": "이차식 인수분해의 계수 관계(합과 곱)에 대한 기초 개념 평가"
+      },
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_FACTOR"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "계수 직접 비교로 즉시 풀리는 기본 하 난이도 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          -4,
+          -21
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 9,
+      "sourceQid": "9",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_CROSS_MULTIPLICATION_COEFF",
+      "primaryMethod": "전개 계수 비교 bd=2, ce=-3, be+cd=a를 통해 bd=-3이 거짓임을 확인한다.",
+      "decisiveStep": "이차항 계수 bd=2 확인으로 보기 4번 bd=-3 배제",
+      "rpm": {
+        "majorUnit": "수와 식의 연산",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_CROSS_FACTORIZATION_COEFF_ANALYSIS",
+        "templateKey": "TPL_M3_EXPANSION_INTEGER_PARAM_AUDIT",
+        "why": "대각선 인수분해 공식의 구조적 원리와 정수 약수 조합의 체계적 분석력 점검"
+      },
+      "crossConceptKeys": [
+        "CC_INTEGER_DIVISORS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "전개 계수 비교 및 정수 순서쌍을 전수 분류하는 상 난이도 문항",
+      "level": "상",
+      "item4slot": {
+        "given": [
+          2,
+          -3
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24,
+          20
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 10,
+      "sourceQid": "10",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_RE_FACTORING",
+      "primaryMethod": "전개하여 2x^2+x-15=(x+3)(2x-5)로 재인수분해한 후 두 인수의 합 3x-2를 계산한다.",
+      "decisiveStep": "2x^2+x-15 = (x+3)(2x-5) 도출 및 합산 (x+3)+(2x-5)=3x-2",
+      "rpm": {
+        "majorUnit": "수와 식의 연산",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_RE_FACTORIZATION_SUM_FACTORS",
+        "templateKey": "TPL_M3_EXPAND_COLLECT_REFACTOR_SUM",
+        "why": "불완전하게 인수분해된 식을 전개 정리 후 재인수분해하는 대수적 조작력 평가"
+      },
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_FACTOR"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "전개, 동류항 계산, 인수분해, 다항식 덧셈의 다단계 연산 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          2,
+          -3,
+          -9
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 11,
+      "sourceQid": "11",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_INTEGER_SUM_PRODUCT_ORDER",
+      "primaryMethod": "a+b=10, k=ab에서 음의 정수 b=-1, -2, -3에 따른 k=-11, -24, -39를 조사하여 3번째 값 -39를 확정한다.",
+      "decisiveStep": "b=-3일 때 a=13, k=-39가 3번째로 큰 값임을 판정",
+      "rpm": {
+        "majorUnit": "수와 식의 연산",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_INTEGER_FACTOR_PARAMETER_RANK",
+        "templateKey": "TPL_M3_QUADRATIC_CONSTANT_RANK_ORDER",
+        "why": "정수 조건과 합/곱의 부등식 관계를 활용한 정수론적 탐색 능력 평가"
+      },
+      "crossConceptKeys": [
+        "CC_INTEGER_DIVISORS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "음수 정수 조건에서 곱의 크기 순서를 논리적으로 나열해야 하는 상 난이도 문항",
+      "level": "상",
+      "item4slot": {
+        "given": [
+          10,
+          3
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24,
+          20
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 12,
+      "sourceQid": "12",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION_DEFINITION",
+      "conceptClusterKey": "QUADRATIC_EQUATION_DEFINITION_CHECK",
+      "primaryMethod": "각 식을 좌변으로 이항 정리하여 최고차항이 2차인 x^2-3=0을 선택한다.",
+      "decisiveStep": "x^2-3=0의 2차 방정식 구조 확인",
+      "rpm": {
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "이차방정식",
+        "l3": "이차방정식의 뜻과 풀이",
+        "l4": "이차방정식의 뜻"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_IDENTIFICATION",
+        "templateKey": "TPL_M3_EQUATION_DEGREE_CLASSIFICATION",
+        "why": "이차방정식의 정의(동류항 정리 후 2차식=0)에 대한 기본 개념 점검"
+      },
+      "crossConceptKeys": [
+        "CC_DEGREE_OF_EQUATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "기본 식 정리 후 차수 확인 하 난이도 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          2,
+          -3
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 13,
+      "sourceQid": "13",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION_SOLUTION",
+      "conceptClusterKey": "QUADRATIC_ROOT_DEFINITION_TABLE",
+      "primaryMethod": "대입 결과에서 등식이 참이 되는 x=0이 해임을 판정한다.",
+      "decisiveStep": "x=0에서 참 판정 결과 대조",
+      "rpm": {
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "이차방정식",
+        "l3": "이차방정식의 뜻과 풀이",
+        "l4": "이차방정식의 해"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_EQUATION_ROOT_TABLE_INTERPRETATION",
+        "templateKey": "TPL_M3_ROOT_TRUTH_VALUE_AUDIT",
+        "why": "방정식의 해의 기본 정의(참이 되는 값) 이해도 평가"
+      },
+      "crossConceptKeys": [
+        "CC_EQUATION_ROOT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "자료 해석을 통해 참인 행의 미지수 값을 찾는 기본 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          -2,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 14,
+      "sourceQid": "14",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION_SOLUTION",
+      "conceptClusterKey": "QUADRATIC_ROOT_FIND_COEFF",
+      "primaryMethod": "x=2를 대입하여 4+2a-8=0에서 a=2를 산출한다.",
+      "decisiveStep": "x=2 대입 후 2a=4 풀이",
+      "rpm": {
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "이차방정식",
+        "l3": "이차방정식의 뜻과 풀이",
+        "l4": "이차방정식의 해"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_QUADRATIC_ROOT_UNKNOWN_COEFF",
+        "templateKey": "TPL_M3_ROOT_SUBSTITUTION_LINEAR_SOLVE",
+        "why": "근의 성질을 이용한 계수 결정의 기초 연산력 점검"
+      },
+      "crossConceptKeys": [
+        "CC_EQUATION_ROOT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "단순 대입 일차방정식 해결 하 난이도 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          -8,
+          2
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 15,
+      "sourceQid": "15",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION_SOLUTION",
+      "conceptClusterKey": "QUADRATIC_SOLVE_TWO_EQUATIONS_SUM",
+      "primaryMethod": "두 방정식의 해 x=2, -4와 x=10, 0을 각각 구해 총합 8을 계산한다.",
+      "decisiveStep": "각 방정식의 해 2, -4, 10, 0 정확한 도출 및 합산",
+      "rpm": {
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "이차방정식",
+        "l3": "이차방정식의 뜻과 풀이",
+        "l4": "제곱근을 이용한 풀이"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_TWO_EQUATIONS_ALL_ROOTS_SUM",
+        "templateKey": "TPL_M3_DUAL_QUADRATIC_ROOTS_TOTAL_SUM",
+        "why": "인수분해 및 제곱근 성질을 활용한 복수 방정식 해결력 종합 점검"
+      },
+      "crossConceptKeys": [
+        "CC_SQUARE_ROOT_PROPERTY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "서로 다른 풀이법을 적용하는 두 방정식의 해를 종합하는 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          3,
+          -6,
+          4,
+          -5,
+          25
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 16,
+      "sourceQid": "16",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION_SOLUTION",
+      "conceptClusterKey": "QUADRATIC_DOUBLE_ROOT_PROBABILITY",
+      "primaryMethod": "중근 조건 a^2=4b를 만족하는 주사위 눈 순서쌍 (2, 1), (4, 4)의 2개로부터 확률 2/36=1/18을 구한다.",
+      "decisiveStep": "순서쌍 (2, 1), (4, 4) 특정 및 확률 2/36 = 1/18 계산",
+      "rpm": {
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "이차방정식",
+        "l3": "이차방정식의 뜻과 풀이",
+        "l4": "근의 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_DOUBLE_ROOT_DICE_PROBABILITY",
+        "templateKey": "TPL_M3_DISCRIMINANT_PROBABILITY_PAIR_COUNT",
+        "why": "판별식(중근 조건)과 확률(주사위 눈의 순서쌍)의 학제간 융합 추론력 평가"
+      },
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT_DOUBLE_ROOT",
+        "CC_PROBABILITY_BASIC"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "판별식 조건과 주사위 눈 전수 조사를 융합하는 상 난이도 문항",
+      "level": "상",
+      "item4slot": {
+        "given": [
+          6,
+          4
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24,
+          20
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 17,
+      "sourceQid": "17",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION_SOLUTION",
+      "conceptClusterKey": "QUADRATIC_SQUARE_ROOT_RATIONALIZE",
+      "primaryMethod": "x^2=6/5에서 제곱근 x=±√(6/5)를 구하고 유리화하여 ±√30/5를 산출한다.",
+      "decisiveStep": "x=±√(6/5)의 분모 유리화 ±√30/5 계산",
+      "rpm": {
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "이차방정식",
+        "l3": "이차방정식의 뜻과 풀이",
+        "l4": "제곱근을 이용한 풀이"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_METHOD_RATIONALIZE",
+        "templateKey": "TPL_M3_PURE_QUADRATIC_ROOT_RATIONALIZATION",
+        "why": "제곱근 성질 적용과 무리수 분모 유리화의 결합 연산력 평가"
+      },
+      "crossConceptKeys": [
+        "CC_RATIONALIZE_DENOMINATOR"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "제곱근 풀이 및 유리화 2단계 기본 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          5,
+          -6
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 18,
+      "sourceQid": "18",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION_SOLUTION",
+      "conceptClusterKey": "QUADRATIC_COMPLETING_SQUARE_FRACTION",
+      "primaryMethod": "양변에 49/4를 더하여 (x-7/2)^2 = 37/4을 얻고 보기 ③의 37/4가 일치함을 확인한다.",
+      "decisiveStep": "우변 계산 -3 + 49/4 = 37/4 도출 및 ③번 선지 일치 확인",
+      "rpm": {
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "이차방정식",
+        "l3": "이차방정식의 뜻과 풀이",
+        "l4": "완전제곱식을 이용한 풀이"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_COMPLETING_SQUARE_INFERENCE",
+        "templateKey": "TPL_M3_QUADRATIC_STEP_INFERENCE",
+        "why": "근의 공식의 기초가 되는 완전제곱식 유도 단계의 대수적 정확도 평가"
+      },
+      "crossConceptKeys": [
+        "CC_COMPLETING_SQUARE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "분수 연산이 포함된 완전제곱식 변형 3단계를 대조하는 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          -7,
+          3
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 19,
+      "sourceQid": "19",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION_SOLUTION",
+      "conceptClusterKey": "QUADRATIC_FRACTION_DECIMAL_COEFFICIENT",
+      "primaryMethod": "10을 곱해 2x^2+3x-5=0으로 정수화하고 (2x+5)(x-1)=0에서 x=1 또는 x=-5/2를 구한다.",
+      "decisiveStep": "10 곱한 후 (2x+5)(x-1)=0 인수분해",
+      "rpm": {
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "이차방정식",
+        "l3": "이차방정식의 뜻과 풀이",
+        "l4": "인수분해를 이용한 풀이"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_COMPLEX_COEFFICIENT_QUADRATIC",
+        "templateKey": "TPL_M3_RATIONAL_COEFF_EQUATION_SOLVE",
+        "why": "복잡한 계수를 갖는 이차방정식을 정수 계수로 표준화하여 해결하는 연산 적응력 평가"
+      },
+      "crossConceptKeys": [
+        "CC_FRACTION_DECIMAL_OPERATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "계수 정수화 및 대각선 인수분해의 2단계 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          5,
+          3,
+          2
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 20,
+      "sourceQid": "20",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION_SOLUTION",
+      "conceptClusterKey": "QUADRATIC_FORMULA_COEFFICIENT_MATCHING",
+      "primaryMethod": "근의 공식으로 x=(3±√(9-8A))/4를 구하고 B=3, 9-8A=17에서 A=-1을 찾아 A+B=2를 도출한다.",
+      "decisiveStep": "B=3 도출 및 9-8A=17에서 A=-1 산출 후 합 계산",
+      "rpm": {
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "이차방정식",
+        "l3": "이차방정식의 뜻과 풀이",
+        "l4": "근의 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FORMULA_COEFF_SOLVE",
+        "templateKey": "TPL_M3_ROOT_COMPARE_UNKNOWN_COEFF",
+        "why": "근의 공식의 구조적 부품(유리수부와 근호부)과 주어진 해를 일대일 대응하는 대수력 점검"
+      },
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "근의 공식 전개 후 두 미정계수 연립 계산 중 난이도 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          2,
+          -3,
+          17
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 21,
+      "sourceQid": "21",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_GEOMETRIC_RECTANGLE_PERIMETER",
+      "primaryMethod": "6x^2+19xy+15y^2=(2x+3y)(3x+5y)에서 세로 3x+5y를 얻고 둘레 2(5x+8y)=10x+16y를 도출한다.",
+      "decisiveStep": "인수분해로 세로 3x+5y 도출 후 둘레 공식 적용",
+      "rpm": {
+        "majorUnit": "수와 식의 연산",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해 공식의 활용"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_RECTANGLE_AREA_PERIMETER_FACTOR",
+        "templateKey": "TPL_M3_POLYNOMIAL_GEOMETRY_PERIMETER_SOLVE",
+        "why": "다항식의 인수분해를 도형의 넓이 및 둘레 계산에 응용하는 서술력 평가"
+      },
+      "crossConceptKeys": [
+        "CC_RECTANGLE_PERIMETER_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "다항식 인수분해, 세로 추출, 둘레 연산의 3단계 서술형 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          6,
+          19,
+          15,
+          2,
+          3
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 22,
+      "sourceQid": "22",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION_SOLUTION",
+      "conceptClusterKey": "QUADRATIC_CHAINED_ROOT_SUBSTITUTION",
+      "primaryMethod": "x=-1 대입으로 p=3을 얻어 다른 근 x=7을 찾고, 제2방정식에 x=7을 대입하여 q=-7/2을 도출한다.",
+      "decisiveStep": "p=3 도출, 다른 근 7 산출, 10q+35=0에서 q=-7/2 확정",
+      "rpm": {
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "이차방정식",
+        "l3": "이차방정식의 뜻과 풀이",
+        "l4": "이차방정식의 해"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_CHAINED_ROOT_DUAL_EQUATION",
+        "templateKey": "TPL_M3_TWO_EQUATION_ROOT_TRANSFER_SOLVE",
+        "why": "연쇄적인 근의 전이와 방정식 대입을 통한 복합 미정계수 결정 서술력 평가"
+      },
+      "crossConceptKeys": [
+        "CC_EQUATION_ROOT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "두 단계 대입과 인수분해, 일차방정식 풀이가 결합된 상 난이도 서술형 문항",
+      "level": "상",
+      "item4slot": {
+        "given": [
+          -1,
+          -7,
+          -2,
+          3
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 23,
+      "sourceQid": "23",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION_APPLICATION",
+      "conceptClusterKey": "QUADRATIC_WORD_PROBLEM_SUM_OF_SQUARES",
+      "primaryMethod": "x^2+(x+4)^2=106에서 x^2+4x-45=(x+9)(x-5)=0을 유도하여 자연수 해 x=5살을 도출한다.",
+      "decisiveStep": "x^2+4x-45=0 인수분해 및 자연수 조건 x=5 선택",
+      "rpm": {
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "이차방정식",
+        "l3": "이차방정식의 활용",
+        "l4": "수와 도형에 관한 문제"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_QUADRATIC_WORD_PROBLEM_AGE_SUM_SQUARES",
+        "templateKey": "TPL_M3_AGE_SQUARE_SUM_EQUATION_SOLVE",
+        "why": "문장제 조건을 대수적 이차방정식으로 번역하고 해의 실생활 타당성을 검증하는 능력 평가"
+      },
+      "crossConceptKeys": [
+        "CC_WORD_PROBLEM_MODELING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "미지수 설정, 완전제곱식 전개, 인수분해, 자연수 해 선별의 4단계 서술형 상 난이도 문항",
+      "level": "상",
+      "item4slot": {
+        "given": [
+          4,
+          106
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    }
+  ]
+}
