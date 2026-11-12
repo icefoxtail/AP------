@@ -1,0 +1,157 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "curves": [
+      {
+        "color": "BLUE",
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "emphasis": [
+          {
+            "color": "WARM",
+            "from": "-5",
+            "fromState": "NONE",
+            "to": "-2",
+            "toState": "NONE"
+          }
+        ],
+        "id": "f",
+        "kind": "RATIONAL",
+        "label": "y=-12/x",
+        "numerator": [
+          "-12",
+          "0"
+        ],
+        "domain": [
+          "-8",
+          "8"
+        ]
+      }
+    ],
+    "family": "multi-curve",
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-3",
+          "y": "4"
+        },
+        {
+          "id": "Q",
+          "x": "-4",
+          "y": "2"
+        }
+      ]
+    },
+    "domain": [
+      -9.73913043478261,
+      9.73913043478261
+    ],
+    "viewport": [
+      -9.73913043478261,
+      9.73913043478261,
+      -9.73913043478261,
+      9.73913043478261
+    ],
+    "shapeIntent": "OVERVIEW",
+    "overviewPolicy": "MULTI_CURVE_OVERVIEW_v1",
+    "equalUnits": true,
+    "axisRatio": 1,
+    "plotCanvas": {
+      "width": 448,
+      "height": 448
+    },
+    "multiCurveFeatures": {
+      "schemaVersion": "MULTI_CURVE_FEATURES_v1",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "RATIONAL",
+          "interval": [
+            "-8",
+            "8"
+          ],
+          "numerator": [
+            "-12",
+            "0"
+          ],
+          "denominator": [
+            "0",
+            "1"
+          ],
+          "asymptotes": {
+            "vertical": {
+              "x": "0",
+              "drawn": false
+            },
+            "horizontal": {
+              "y": "0",
+              "drawn": false
+            }
+          },
+          "color": "BLUE",
+          "label": "y=-12/x",
+          "emphasis": [
+            {
+              "from": "-5",
+              "to": "-2",
+              "color": "WARM",
+              "fromState": "NONE",
+              "toState": "NONE"
+            }
+          ],
+          "branches": [
+            {
+              "side": "LEFT",
+              "xInterval": [
+                "-8",
+                "0"
+              ]
+            },
+            {
+              "side": "RIGHT",
+              "xInterval": [
+                "0",
+                "8"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "overlaysFeatures": {
+      "schemaVersion": "GRAPH_OVERLAYS_FEATURES_v1",
+      "points": [
+        {
+          "id": "P",
+          "x": -3,
+          "y": 4,
+          "xExact": "-3",
+          "yExact": "4"
+        },
+        {
+          "id": "Q",
+          "x": -4,
+          "y": 2,
+          "xExact": "-4",
+          "yExact": "2"
+        }
+      ],
+      "lines": [],
+      "segments": [],
+      "guides": [],
+      "polygons": []
+    }
+  },
+  "caption": "P(-3,4) → xy=−12 · 보기② Q(-4,2)는 xy=−8이므로 곡선 밖",
+  "sourceQuote": "주어진P(-3,4)와 다섯보기의그래프위여부",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "주어진점과보기②좌표",
+      "mappedTo": []
+    }
+  ]
+}
