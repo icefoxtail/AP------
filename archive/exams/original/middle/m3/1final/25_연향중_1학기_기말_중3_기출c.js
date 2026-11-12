@@ -222,7 +222,11 @@ window.questionBank = [
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중3_기출c/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 근 −1/4과 3/2를 열린 끝점으로 표시한 구간과 그 사이의 정수점.",
+    "solutionImageCaption": "두 근 사이의 정수는 0과 1이므로 합은 1이다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -331,7 +335,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중3_기출c/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선과 x축 대칭인 아래로 열린 포물선, 주어진 점과 그 대칭 위치를 나타낸 그래프.",
+    "solutionImageCaption": "점 (-6,12)를 지나는 그래프와 x축 대칭인 그래프에서 y=-27일 때 양의 x좌표는 9이다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -371,7 +379,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
     "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
-    "crossConceptKeys": ["CC_FUNCTION_MONOTONICITY", "CC_FUNCTION_SYMMETRY"]
+    "crossConceptKeys": ["CC_FUNCTION_MONOTONICITY", "CC_FUNCTION_SYMMETRY"],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중3_기출c/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 폭의 위로 열린 포물선 두 개와 서로 다른 높이의 꼭짓점.",
+    "solutionImageCaption": "y=3x²−1은 y=3x²를 아래로 1만큼 옮긴 그래프이다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -437,7 +449,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중3_기출c/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 기본 포물선과 같은 모양으로 오른쪽·아래로 옮긴 포물선 및 두 꼭짓점.",
+    "solutionImageCaption": "오른쪽으로 3, 아래로 1만큼 옮긴 그래프는 y=(x−3)^2−1이다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -474,7 +490,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중3_기출c/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 폭으로 열린 포물선 두 개와 꼭짓점 O, V.",
+    "solutionImageCaption": "꼭짓점형은 y=1/2(x+3)²−5이다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -542,7 +562,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중3_기출c/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 보기 ㄱ, ㄴ, ㄷ, ㄹ, ㅁ의 포물선 다섯 개와 꼭짓점.",
+    "solutionImageCaption": "열린 방향과 폭이 같은 그래프는 ㄱ과 ㅁ이다. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -605,7 +629,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중3_기출c/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선과 직선, 포물선의 꼭짓점.",
+    "solutionImageCaption": "꼭짓점 조건을 대입하면 (k+2)²=0이므로 k=−2이다. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -640,7 +668,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중3_기출c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점과 y축과의 교점을 표시한 아래로 열린 포물선.",
+    "solutionImageCaption": "그래프는 제3·4사분면만 지나므로 지나지 않는 사분면은 제1·2사분면이다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -676,7 +708,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중3_기출c/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: x축에 꼭짓점이 닿는 아래로 열린 포물선.",
+    "solutionImageCaption": "15−3a=0에서 a=5이다. 정답: ④",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -756,7 +792,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중3_기출c/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 대칭축 x=−2와 포물선 위의 주어진 두 점 및 첫 점의 대칭점.",
+    "solutionImageCaption": "y=2(x+2)²+1, 즉 y=2x²+8x+9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -782,9 +822,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_1학기_기말_중3_기출/q23-solution.svg",
-    "solutionImageAlt": "a>0, b<0, c>0일 때 y=bx^2+cx+a가 위로 볼록하고 모든 사분면을 지나는 모식도",
-    "solutionImageCaption": "부호 조건만 반영한 모식도: 두 x절편은 서로 다른 부호이고 y절편은 양수이다.",
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중3_기출c/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 제3사분면을 연하게 표시한 좌표평면에 두 대표 포물선을 겹쳐 그린 그림.",
+    "solutionImageCaption": "a>0, b<0, c>0이며 y=bx²+cx+a는 네 사분면을 모두 지난다.",
     "solutionImageSize": "full"
   }
 ];
