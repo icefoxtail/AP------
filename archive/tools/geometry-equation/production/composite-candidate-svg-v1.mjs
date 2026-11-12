@@ -13,7 +13,7 @@ import {FIGURE_CAPABILITY as SET_DIAGRAM_CAPABILITY,solveDiagram as solveSetDiag
 import {FIGURE_CAPABILITY as STAT_CHART_CAPABILITY,solveStatPanel,composeStatChartFigure} from './stat-chart-v1.mjs';
 export const isNumberLinePanel=plan=>plan?.capability===NUMBER_LINE_CAPABILITY;
 export const isSolidPanel=plan=>plan?.capability===SOLID_CAPABILITY;
-// A Venn panel (G13b): a set-diagram-figure-v1 plan, 2-4 of them in the same two-column grid; never mixed with the other panel kinds.
+// A Venn or mapping panel (G13b; mapping since the 대응도 composite): a set-diagram-figure-v1 plan, 2-6 of them in the same two-column grid; never mixed with the other panel kinds.
 export const isSetPanel=plan=>plan?.capability===SET_DIAGRAM_CAPABILITY;
 // A statistics panel (G16): a stat-chart-figure-v1 dot plot drawn compact, 2-4 of them in the same two-column grid; never mixed with the other panel kinds.
 export const isStatPanel=plan=>plan?.capability===STAT_CHART_CAPABILITY;
@@ -142,10 +142,12 @@ export function compositePanels(plan){
       ||(caption.math!==undefined&&(typeof caption.math!=='string'||!(CAPTION_MATH.test(caption.math)||captionMathValid(caption.math))))||(caption.text!==undefined&&(typeof caption.text!=='string'||!caption.text||caption.text.length>24))
       ||(caption.weight!==undefined&&(caption.weight!=='MATH'||!caption.text)))bad('PANEL_CAPTION_'+index);
     if(setGrid){
-      // A Venn panel is only {capability,diagram} (a VENN diagram): the composite owns the figure's caption, conditions and quote, the grid owns the panel width.
+      // A set panel is only {capability,diagram} (a VENN or MAPPING diagram): the composite owns the figure's caption, conditions and quote, the grid owns the panel width.
       const panelPlan=panel.plan,code=reason=>new Stop('PANEL_'+index+':'+reason,{reason:'PANEL_'+index+':'+reason});
       if(Object.keys(panelPlan).some(key=>!['capability','diagram'].includes(key)))throw code('SET_PANEL_PLAN_INVALID');
-      if(!panelPlan.diagram||typeof panelPlan.diagram!=='object'||panelPlan.diagram.kind!=='VENN')throw code('SET_PANEL_KIND_UNSUPPORTED');
+      if(!panelPlan.diagram||typeof panelPlan.diagram!=='object'||!['VENN','MAPPING'].includes(panelPlan.diagram.kind))throw code('SET_PANEL_KIND_UNSUPPORTED');
+      // A mapping panel (대응도) is drawn compact in the two-column grid only with two columns (X to Y); X to Y to Z is 660 wide and stands in a one-column composite (columns:1).
+      if(panelPlan.diagram.kind==='MAPPING'&&Array.isArray(panelPlan.diagram.columns)&&panelPlan.diagram.columns.length>2&&plan.columns!==1)throw code('SET_PANEL_MAPPING_COLUMNS_UNSUPPORTED');
       try{solveSetDiagram(panelPlan.diagram);}catch(error){if(!isDomainCode(error))throw error;throw code(error.message);}
       return {index,plan:panelPlan,caption};
     }
