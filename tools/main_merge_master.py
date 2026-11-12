@@ -235,6 +235,25 @@ def _crosswalk_row_fits(doc_status, row: dict, assignment: dict, classification:
     return True
 
 
+def complete_parent_assignment(assignment: dict) -> dict:
+    """Fill L1/L2 of a parentAssignment that names only a crosswalk record."""
+    if not (assignment.get("L1") and assignment.get("L2")) and assignment.get("crosswalkRecordId"):
+        # A similar-high small meta records only the crosswalk row (similar-high-parent-assignment-v1). The parent
+        # L1/L2 is then that row's own rpmPath, read from the official crosswalk (never guessed).
+        assignment = dict(assignment)
+        record_id = assignment["crosswalkRecordId"]
+        hits = []
+        for crosswalk_file in sorted((REPO_ROOT / CROSSWALK_REL_DIR).glob("*.json")):
+            doc = json.loads(crosswalk_file.read_text(encoding="utf-8"))
+            hits += [r for r in doc.get("records", []) if r.get("id") == record_id]
+        rpm_path_row = (hits[0].get("rpmPath") or {}) if len(hits) == 1 else {}
+        if not (rpm_path_row.get("majorUnit") and rpm_path_row.get("midUnit")):
+            raise RequestGenerationError(
+                f"parentAssignment has no L1/L2 and crosswalk record {record_id} gives no rpmPath (found {len(hits)}).")
+        assignment["L1"], assignment["L2"] = rpm_path_row["majorUnit"], rpm_path_row["midUnit"]
+    return assignment
+
+
 def build_target_parent_ref(assignment: dict, classification: dict | None = None, notes: list | None = None) -> tuple[dict, list]:
     """Build the registrar `targetParentRef` (+ the evidence refs it needs) from a small-meta `parentAssignment`.
 
@@ -252,6 +271,7 @@ def build_target_parent_ref(assignment: dict, classification: dict | None = None
     exact ACTIVE row for the same PT/TPL and parent is used instead, else no crosswalkRef is carried (reported in `notes`)
     and the registrar decides whether the unit-label parent is acceptable.
     """
+    assignment = complete_parent_assignment(assignment)
     L1, L2 = assignment["L1"], assignment["L2"]
     curriculum = assignment["curriculum"]
     master_path = REPO_ROOT / RPM_MASTER_REL
@@ -497,6 +517,8 @@ def generate_inbox_request(files: dict, rpm_path_delta: bool = False, request_ta
         # Per-question parent unit (student-screen L1/L2). The registrar only accepts L1/L2 that equal the parent
         # it derives from the evidence-bound reference, so the same assignment sets both after.L1/L2 and the reference.
         parent_assignment = s_item.get("parentAssignment")
+        if parent_assignment:
+            parent_assignment = complete_parent_assignment(parent_assignment)
         parent_ref = None
         item_evidence = list(evidence_refs)
         if parent_assignment:
