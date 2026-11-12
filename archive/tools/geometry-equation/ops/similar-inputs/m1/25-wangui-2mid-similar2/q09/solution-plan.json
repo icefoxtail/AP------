@@ -1,0 +1,157 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "curves": [
+      {
+        "color": "BLUE",
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "emphasis": [
+          {
+            "color": "WARM",
+            "from": "3",
+            "fromState": "NONE",
+            "to": "6",
+            "toState": "NONE"
+          }
+        ],
+        "id": "f",
+        "kind": "RATIONAL",
+        "label": "y=6/x",
+        "numerator": [
+          "6",
+          "0"
+        ],
+        "domain": [
+          "-8",
+          "8"
+        ]
+      }
+    ],
+    "family": "multi-curve",
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "2"
+        },
+        {
+          "id": "Q",
+          "x": "6",
+          "y": "1"
+        }
+      ]
+    },
+    "domain": [
+      -9.73913043478261,
+      9.73913043478261
+    ],
+    "viewport": [
+      -9.73913043478261,
+      9.73913043478261,
+      -7.739130434782608,
+      7.739130434782608
+    ],
+    "shapeIntent": "OVERVIEW",
+    "overviewPolicy": "MULTI_CURVE_OVERVIEW_v1",
+    "equalUnits": true,
+    "axisRatio": 1,
+    "plotCanvas": {
+      "width": 448,
+      "height": 356
+    },
+    "multiCurveFeatures": {
+      "schemaVersion": "MULTI_CURVE_FEATURES_v1",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "RATIONAL",
+          "interval": [
+            "-8",
+            "8"
+          ],
+          "numerator": [
+            "6",
+            "0"
+          ],
+          "denominator": [
+            "0",
+            "1"
+          ],
+          "asymptotes": {
+            "vertical": {
+              "x": "0",
+              "drawn": false
+            },
+            "horizontal": {
+              "y": "0",
+              "drawn": false
+            }
+          },
+          "color": "BLUE",
+          "label": "y=6/x",
+          "emphasis": [
+            {
+              "from": "3",
+              "to": "6",
+              "color": "WARM",
+              "fromState": "NONE",
+              "toState": "NONE"
+            }
+          ],
+          "branches": [
+            {
+              "side": "LEFT",
+              "xInterval": [
+                "-8",
+                "0"
+              ]
+            },
+            {
+              "side": "RIGHT",
+              "xInterval": [
+                "0",
+                "8"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "overlaysFeatures": {
+      "schemaVersion": "GRAPH_OVERLAYS_FEATURES_v1",
+      "points": [
+        {
+          "id": "P",
+          "x": 3,
+          "y": 2,
+          "xExact": "3",
+          "yExact": "2"
+        },
+        {
+          "id": "Q",
+          "x": 6,
+          "y": 1,
+          "xExact": "6",
+          "yExact": "1"
+        }
+      ],
+      "lines": [],
+      "segments": [],
+      "guides": [],
+      "polygons": []
+    }
+  },
+  "caption": "반비례 xy=6 · P(3,2)에서 x가 두 배면 Q(6,1)로 y는 절반",
+  "sourceQuote": "반비례 배수관계, 제1·3사분면, (3,2)를 지나는 관계식",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "반비례 배수관계, 제1·3사분면, (3,2)를 지나는 관계식",
+      "mappedTo": []
+    }
+  ]
+}

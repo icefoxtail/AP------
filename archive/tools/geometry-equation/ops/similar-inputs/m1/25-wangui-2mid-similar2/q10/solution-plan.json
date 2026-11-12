@@ -1,0 +1,157 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "curves": [
+      {
+        "color": "BLUE",
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "emphasis": [
+          {
+            "color": "WARM",
+            "from": "-10",
+            "fromState": "NONE",
+            "to": "-6",
+            "toState": "NONE"
+          }
+        ],
+        "id": "f",
+        "kind": "RATIONAL",
+        "label": "y=-24/x",
+        "numerator": [
+          "-24",
+          "0"
+        ],
+        "domain": [
+          "-12",
+          "8"
+        ]
+      }
+    ],
+    "family": "multi-curve",
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "4",
+          "y": "-6"
+        },
+        {
+          "id": "Q",
+          "x": "-8",
+          "y": "3"
+        }
+      ]
+    },
+    "domain": [
+      -14.173913043478262,
+      10.173913043478262
+    ],
+    "viewport": [
+      -14.173913043478262,
+      10.173913043478262,
+      -11.195652173913045,
+      11.195652173913045
+    ],
+    "shapeIntent": "OVERVIEW",
+    "overviewPolicy": "MULTI_CURVE_OVERVIEW_v1",
+    "equalUnits": true,
+    "axisRatio": 1,
+    "plotCanvas": {
+      "width": 448,
+      "height": 412
+    },
+    "multiCurveFeatures": {
+      "schemaVersion": "MULTI_CURVE_FEATURES_v1",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "RATIONAL",
+          "interval": [
+            "-12",
+            "8"
+          ],
+          "numerator": [
+            "-24",
+            "0"
+          ],
+          "denominator": [
+            "0",
+            "1"
+          ],
+          "asymptotes": {
+            "vertical": {
+              "x": "0",
+              "drawn": false
+            },
+            "horizontal": {
+              "y": "0",
+              "drawn": false
+            }
+          },
+          "color": "BLUE",
+          "label": "y=-24/x",
+          "emphasis": [
+            {
+              "from": "-10",
+              "to": "-6",
+              "color": "WARM",
+              "fromState": "NONE",
+              "toState": "NONE"
+            }
+          ],
+          "branches": [
+            {
+              "side": "LEFT",
+              "xInterval": [
+                "-12",
+                "0"
+              ]
+            },
+            {
+              "side": "RIGHT",
+              "xInterval": [
+                "0",
+                "8"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "overlaysFeatures": {
+      "schemaVersion": "GRAPH_OVERLAYS_FEATURES_v1",
+      "points": [
+        {
+          "id": "P",
+          "x": 4,
+          "y": -6,
+          "xExact": "4",
+          "yExact": "-6"
+        },
+        {
+          "id": "Q",
+          "x": -8,
+          "y": 3,
+          "xExact": "-8",
+          "yExact": "3"
+        }
+      ],
+      "lines": [],
+      "segments": [],
+      "guides": [],
+      "polygons": []
+    }
+  },
+  "caption": "반비례 xy=−24 · P(4,−6)에서 상수 결정 · Q(−8,3)",
+  "sourceQuote": "y가x에 반비례, x4일때y-6, x-8일때y 구하기",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "y가x에 반비례, x4일때y-6, x-8일때y 구하기",
+      "mappedTo": []
+    }
+  ]
+}
