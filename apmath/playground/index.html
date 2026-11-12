@@ -21,7 +21,7 @@
 <body>
   <!-- 3D Cosmic Space Canvas -->
   <div class="cosmic-gradient-sky"></div>
-  <canvas id="space" aria-label="3차원 수학 우주 공간"></canvas>
+  <canvas id="space" tabindex="0" aria-label="3차원 수학 우주 공간" aria-describedby="spaceInstructions"></canvas>
   <div class="cosmic-vignette"></div>
 
   <!-- Warp Curtain for Cinematic Entrance -->
@@ -61,12 +61,46 @@
       </div>
     </header>
 
-    <!-- Bottom Navigation Bar & Celestial Selector Pills -->
+    <div class="projected-labels" id="projectedLabels" role="group" aria-label="공간의 수학 개념"></div>
+
+    <!-- The exploration controls leave the middle of the 3D view open. -->
     <footer class="bottom-bar">
-      <div class="bottom-hint">
-        <span class="hint-dot"></span>
-        <span>하단 버튼을 누르면 해당 도형으로 이동합니다. 도형 자체를 클릭하면 실험실 허브로 들어갑니다.</span>
-      </div>
+      <section class="explore-panel" id="explorePanel" aria-label="수학 우주 탐험 도구" hidden>
+        <div class="explore-navigation">
+          <div class="explore-heading">
+            <p class="explore-breadcrumb" id="exploreBreadcrumb">전체 우주</p>
+            <p class="explore-subtitle" id="exploreSubtitle"></p>
+          </div>
+          <div class="explore-actions">
+            <button class="glass-btn" id="btnExploreBack" data-universe-action="back" type="button">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 5-7 7 7 7M5 12h14"/></svg>
+              <span id="exploreBackText">뒤로</span>
+            </button>
+            <button class="glass-btn" id="btnUniverseHome" data-universe-action="home" type="button">전체 우주</button>
+          </div>
+        </div>
+        <div class="concept-controls" id="conceptControls" hidden>
+          <button class="glass-btn" id="btnReplayConcept" data-universe-action="replay" type="button" aria-label="수학 움직임 처음부터 다시 보기">
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6"/></svg>
+            <span>다시 보기</span>
+          </button>
+          <button class="glass-btn" id="btnPauseConcept" data-universe-action="pause" type="button" aria-label="수학 움직임 일시정지">
+            <svg id="conceptPlaybackIcon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 5v14M16 5v14"/></svg>
+            <span id="conceptPlaybackText">일시정지</span>
+          </button>
+          <label class="concept-scrubber" for="conceptSeek">
+            <span class="sr-only">수학 움직임 진행 위치</span>
+            <input id="conceptSeek" type="range" min="0" max="8" step="0.05" value="0" aria-valuetext="0초 / 8초">
+          </label>
+          <output class="concept-time" id="conceptTime" for="conceptSeek" aria-hidden="true">0.0 / 8초</output>
+        </div>
+      </section>
+
+      <div class="universe-navigation">
+        <div class="bottom-hint">
+          <span class="hint-dot"></span>
+          <span id="exploreHint">도형을 선택해 가까이 탐험해 보세요</span>
+        </div>
 
       <nav class="celestial-selector-pills" aria-label="수학 천체 바로가기">
         <button class="celestial-pill" type="button" data-celestial="polyhedra">💎 정다면체</button>
@@ -82,8 +116,16 @@
         <button class="celestial-pill" type="button" data-celestial="vector">↗️ 벡터</button>
         <button class="celestial-pill" type="button" data-celestial="calculus">📈 미적분</button>
       </nav>
+      </div>
     </footer>
+    <p class="sr-only" id="spaceInstructions">드래그하여 둘러보고 휠이나 두 손가락으로 확대합니다. 도형 또는 이름을 선택하면 가까이 탐험합니다. 키보드로는 아래 천체 버튼과 공간의 이름 버튼을 이용하세요. Escape 키로 한 단계 돌아옵니다.</p>
+    <p class="sr-only" id="exploreStatus" role="status" aria-live="polite" aria-atomic="true"></p>
   </div>
+
+  <button class="glass-btn restore-hud" id="btnRestoreHud" type="button" aria-label="우주 탐험 정보 다시 보기" hidden>
+    <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+    <span>정보 보기</span>
+  </button>
 
   <!-- WebGL Fallback Screen (Graceful Degradation) -->
   <noscript>
@@ -103,130 +145,357 @@
     const universeUi = document.getElementById('universeUi');
     const btnEnterLab = document.getElementById('btnEnterLab');
     const btnToggleHud = document.getElementById('btnToggleHud');
-    const hudBtnText = document.getElementById('hudBtnText');
+    const btnRestoreHud = document.getElementById('btnRestoreHud');
     const btnToggleMotion = document.getElementById('btnToggleMotion');
     const motionBtnText = document.getElementById('motionBtnText');
     const motionIcon = document.getElementById('motionIcon');
-
-    // 이 탭에서 Universe를 거쳤다는 표시. 허브(next/index.html)를 주소창 등으로 바로 연 경우에만 허브가 이 화면으로 보냅니다.
-    try { sessionStorage.setItem('apl:viaUniverse', '1'); } catch (e) {}
-    // 학생 포털·APMS에서 #g8 처럼 학년 해시를 붙여 오면 입장할 때 허브에 그대로 넘깁니다.
-    const hubPath = './next/index.html' + (/^#[a-z0-9]+$/.test(location.hash) ? location.hash : '');
-    const hubHref = window.StudentPortalNavigation?.withContext(hubPath) || hubPath;
-
+    const explorePanel = document.getElementById('explorePanel');
+    const exploreBreadcrumb = document.getElementById('exploreBreadcrumb');
+    const exploreSubtitle = document.getElementById('exploreSubtitle');
+    const exploreStatus = document.getElementById('exploreStatus');
+    const exploreHint = document.getElementById('exploreHint');
+    const btnExploreBack = document.getElementById('btnExploreBack');
+    const btnUniverseHome = document.getElementById('btnUniverseHome');
+    const exploreBackText = document.getElementById('exploreBackText');
+    const projectedLabels = document.getElementById('projectedLabels');
+    const conceptControls = document.getElementById('conceptControls');
+    const btnReplayConcept = document.getElementById('btnReplayConcept');
+    const btnPauseConcept = document.getElementById('btnPauseConcept');
+    const conceptPlaybackText = document.getElementById('conceptPlaybackText');
+    const conceptPlaybackIcon = document.getElementById('conceptPlaybackIcon');
+    const conceptSeek = document.getElementById('conceptSeek');
+    const conceptTime = document.getElementById('conceptTime');
+    const celestialPills = Array.from(document.querySelectorAll('.celestial-pill'));
+    const celestialNames = new Map(celestialPills.map(pill => [pill.dataset.celestial, pill.textContent.replace(/^\S+\s/, '')]));
+    const labelButtons = new Map();
+    const labelSizes = new Map();
+    const consumedPointers = new Set();
+    let labelMeasurementFrame = null;
     let universe = null;
+    let bootstrapping = true;
+    let restoringHistory = false;
+    let hudVisible = true;
+    let seeking = false;
+    let lastPlaybackState = null;
+    let state = { mode: 'universe', celestialId: null, conceptId: null, concepts: [], motionPlaying: true, mathPlaying: false, mathTime: 0, mathDuration: 8 };
 
-    try {
-      universe = createMathUniverse({
-        canvas,
-        // Clicking the 3D object enters the lab hub; clicking empty space returns the camera.
-        onSelectNode: (meta) => {
-          if (meta) {
-            window.location.href = hubHref;
-          } else {
-            document.querySelectorAll('.celestial-pill').forEach(p => {
-              p.classList.remove('active');
-              p.setAttribute('aria-pressed', 'false');
-            });
-          }
-        },
-      });
-    } catch (err) {
-      console.error('Failed to initialize Math Universe 3D Engine:', err);
-      const fallback = document.createElement('div');
-      fallback.className = 'webgl-fallback';
-      fallback.innerHTML = `
-        <h2>3D 그래픽 초기화 실패</h2>
-        <p>기기의 WebGL 가속을 시작할 수 없습니다. 메인 허브를 통해 모든 수학 실험실을 이용하실 수 있습니다.</p>
-        <a class="cta-entrance" href="${hubHref}">실험실 허브 바로가기</a>
-        <a class="universe-portal-link" href="../student/">학생 포털로 돌아가기</a>
-      `;
-      document.body.appendChild(fallback);
+    // Preserve the student navigation contract independently of exploration URLs.
+    try { sessionStorage.setItem('apl:viaUniverse', '1'); } catch (_) {}
+    function getHubHref() {
+      const gradeHash = /^#[a-z0-9]+$/.test(location.hash) ? location.hash : '';
+      const hubPath = './next/index.html' + gradeHash;
+      return window.StudentPortalNavigation?.withContext(hubPath) || hubPath;
+    }
+    function readRoute() {
+      const params = new URLSearchParams(location.search);
+      const requested = params.get('celestial');
+      const id = requested === 'circle' ? 'circle-sector' : requested;
+      return { celestialId: celestialNames.has(id) ? id : null, conceptId: celestialNames.has(id) ? params.get('concept') : null };
+    }
+    // Capture the entry route before createMathUniverse can synchronously report its initial state.
+    const initialRoute = readRoute();
+    const exposeTestApi = new URLSearchParams(location.search).get('universeTest') === '1';
+    function routeDepth(value) { return value.mode === 'concept' ? 2 : value.mode === 'universe' ? 0 : 1; }
+    function sameRoute(a, b) { return (a.celestialId || null) === (b.celestialId || null) && (a.conceptId || null) === (b.conceptId || null); }
+    function writeRoute(value, requested, previous, force = false) {
+      if (bootstrapping || restoringHistory || requested === 'none') return;
+      if (!force && sameRoute(value, previous)) return;
+      const url = new URL(location.href);
+      if (value.celestialId && value.mode !== 'universe') url.searchParams.set('celestial', value.celestialId);
+      else url.searchParams.delete('celestial');
+      if (value.mode === 'concept' && value.conceptId) url.searchParams.set('concept', value.conceptId);
+      else url.searchParams.delete('concept');
+      const apu = { version: 1, mode: value.mode, celestialId: value.celestialId || null, conceptId: value.conceptId || null };
+      const entry = { ...(history.state && typeof history.state === 'object' ? history.state : {}), apu };
+      // A deeper visit gets a Back entry; siblings and explicit returns replace the current visit.
+      const method = requested === 'replace' || force || routeDepth(value) <= routeDepth(previous) ? 'replaceState' : 'pushState';
+      history[method](entry, '', url);
+    }
+    function applyRoute(route) {
+      if (!universe) return;
+      if (route.celestialId) universe.focusOnCelestial(route.celestialId, { history: 'none', conceptId: route.conceptId, animate: false });
+      else universe.resetFocus({ history: 'none', animate: false });
     }
 
-    // 1. Entrance Action (Camera Warp Flight & Page Transition)
-    btnEnterLab.addEventListener('click', () => {
-      btnEnterLab.disabled = true;
-      btnEnterLab.style.pointerEvents = 'none';
-      warpCurtain.classList.add('active');
+    function setHudVisible(visible, restoreFocus = false) {
+      hudVisible = visible;
+      universeUi.classList.toggle('hud-hidden', !visible);
+      universeUi.inert = !visible;
+      universeUi.setAttribute('aria-hidden', String(!visible));
+      btnRestoreHud.hidden = visible;
+      universe?.setUiVisible(visible);
+      if (!visible) btnRestoreHud.focus({ preventScroll: true });
+      else if (restoreFocus) btnToggleHud.focus({ preventScroll: true });
+    }
+    btnToggleHud.addEventListener('click', () => setHudVisible(false));
+    btnRestoreHud.addEventListener('click', () => setHudVisible(true, true));
 
-      if (universe && typeof universe.triggerLabEntranceFlight === 'function') {
-        universe.triggerLabEntranceFlight(() => {
-          setTimeout(() => {
-            window.location.href = hubHref;
-          }, 450);
-        });
-      } else {
-        setTimeout(() => {
-          window.location.href = hubHref;
-        }, 500);
+    // Consume the entire first gesture when restoring the HUD. It must never also pick a 3D object.
+    canvas.addEventListener('pointerdown', event => {
+      if (hudVisible && consumedPointers.size === 0) return;
+      consumedPointers.add(event.pointerId);
+      setHudVisible(true);
+      canvas.setPointerCapture?.(event.pointerId);
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }, { capture: true, passive: false });
+    canvas.addEventListener('pointermove', event => {
+      if (!consumedPointers.has(event.pointerId)) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }, { capture: true, passive: false });
+    for (const type of ['pointerup', 'pointercancel']) {
+      canvas.addEventListener(type, event => {
+        if (!consumedPointers.delete(event.pointerId)) return;
+        if (canvas.hasPointerCapture?.(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }, { capture: true, passive: false });
+    }
+
+    function scheduleLabelMeasurement() {
+      if (labelMeasurementFrame !== null) return;
+      labelMeasurementFrame = requestAnimationFrame(() => {
+        labelMeasurementFrame = null;
+        // Hidden buttons need one invisible layout pass; visible/focused buttons
+        // keep their visibility. Reads are batched after all display changes.
+        const hiddenButtons = Array.from(labelButtons.values()).filter(button => button.hidden);
+        for (const button of hiddenButtons) button.classList.add('measuring');
+        for (const [id, button] of labelButtons) {
+          const box = button.getBoundingClientRect();
+          if (box.width > 0 && box.height > 0) labelSizes.set(id, { width: box.width, height: box.height });
+        }
+        for (const button of hiddenButtons) button.classList.remove('measuring');
+      });
+    }
+    window.addEventListener('resize', scheduleLabelMeasurement, { passive: true });
+    document.fonts?.ready.then(scheduleLabelMeasurement);
+
+    function reconcileLabels(value) {
+      // Create and remove DOM only on state changes; camera frames only position existing buttons.
+      const definitions = [
+        ...Array.from(celestialNames, ([id, label]) => ({ id, label, kind: 'celestial' })),
+        ...(value.concepts || []).map(item => ({ ...item, kind: 'concept' })),
+      ];
+      const liveIds = new Set(definitions.map(item => item.id));
+      let needsMeasurement = false;
+      for (const [id, button] of labelButtons) {
+        if (!liveIds.has(id)) { button.remove(); labelButtons.delete(id); labelSizes.delete(id); }
       }
-    });
-
-    // 2. Toggle HUD (우주 감상 모드)
-    let hudVisible = true;
-    btnToggleHud.addEventListener('click', () => {
-      hudVisible = !hudVisible;
-      universeUi.classList.toggle('hud-hidden', !hudVisible);
-      btnToggleHud.classList.toggle('active', !hudVisible);
-      hudBtnText.textContent = hudVisible ? '우주 감상' : '정보 보기';
-    });
-
-    // Double tap/click canvas in HUD-hidden mode to restore UI
-    canvas.addEventListener('dblclick', () => {
-      if (!hudVisible) {
-        hudVisible = true;
-        universeUi.classList.remove('hud-hidden');
-        hudBtnText.textContent = '우주 감상';
+      for (const item of definitions) {
+        let button = labelButtons.get(item.id);
+        if (!button) {
+          button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'projected-label';
+          button.hidden = true;
+          const caption = document.createElement('span');
+          caption.className = 'projected-label-caption';
+          button.appendChild(caption);
+          button.addEventListener('click', () => {
+            if (!universe) return;
+            if (button.dataset.concept) universe.selectConcept(button.dataset.concept);
+            else universe.focusOnCelestial(button.dataset.celestial);
+          });
+          projectedLabels.appendChild(button);
+          labelButtons.set(item.id, button);
+          needsMeasurement = true;
+        }
+        if (item.kind === 'concept') { button.dataset.concept = item.id; delete button.dataset.celestial; }
+        else { button.dataset.celestial = item.id; delete button.dataset.concept; }
+        if (button.firstElementChild.textContent !== item.label) {
+          button.firstElementChild.textContent = item.label;
+          needsMeasurement = true;
+        }
+        button.setAttribute('aria-label', `${item.label} 탐험`);
+        const selected = item.kind === 'concept' ? value.conceptId === item.id : value.celestialId === item.id;
+        button.classList.toggle('selected', selected);
+        button.setAttribute('aria-pressed', String(selected));
       }
-    });
-
-    // 3. Motion Toggle (일시정지/재개)
-    btnToggleMotion.addEventListener('click', () => {
-      if (!universe) return;
-      const isRunning = universe.toggleMotion();
-      motionBtnText.textContent = isRunning ? '모션 정지' : '모션 재생';
-      motionIcon.innerHTML = isRunning
+      if (needsMeasurement) scheduleLabelMeasurement();
+    }
+    function renderPlayback(value) {
+      const duration = Number.isFinite(value.mathDuration) && value.mathDuration > 0 ? value.mathDuration : 8;
+      const time = Math.min(duration, Math.max(0, Number(value.mathTime) || 0));
+      conceptSeek.max = String(duration);
+      if (!seeking) conceptSeek.value = String(time);
+      conceptSeek.setAttribute('aria-valuetext', `${time.toFixed(1)}초 / ${duration}초`);
+      conceptTime.textContent = `${time.toFixed(1)} / ${duration}초`;
+      const playing = value.mathPlaying === true;
+      if (lastPlaybackState !== playing) {
+        lastPlaybackState = playing;
+        conceptPlaybackText.textContent = playing ? '일시정지' : '재생';
+        btnPauseConcept.setAttribute('aria-label', playing ? '수학 움직임 일시정지' : '수학 움직임 재생');
+        btnPauseConcept.setAttribute('aria-pressed', String(!playing));
+        conceptPlaybackIcon.innerHTML = playing ? '<path d="M8 5v14M16 5v14"/>' : '<path d="m7 4 14 8-14 8Z"/>';
+      }
+    }
+    function renderState(value, metadata = {}) {
+      const previous = state;
+      const activeElement = document.activeElement;
+      const focusWasInLabels = projectedLabels.contains(activeElement);
+      const focusWasInConcept = conceptControls.contains(activeElement);
+      const focusWasInExplore = explorePanel.contains(activeElement);
+      state = value;
+      const exploring = value.mode !== 'universe';
+      const inConcept = value.mode === 'concept';
+      const family = celestialNames.get(value.celestialId) || value.title || '';
+      universeUi.dataset.mode = value.mode;
+      explorePanel.hidden = !exploring;
+      conceptControls.hidden = !inConcept;
+      exploreBreadcrumb.textContent = ['전체 우주', ...(exploring ? [family] : []), ...(inConcept ? [value.title] : [])].filter(Boolean).join('  /  ');
+      exploreSubtitle.textContent = value.subtitle || '';
+      exploreSubtitle.hidden = !value.subtitle;
+      exploreBackText.textContent = inConcept ? '은하로' : '뒤로';
+      btnExploreBack.setAttribute('aria-label', inConcept ? `${family} 은하로 돌아가기` : '이전 전체 우주 시점으로 돌아가기');
+      exploreHint.textContent = value.mode === 'galaxy' ? '작은 도형이나 이름을 선택해 보세요' : inConcept ? '돌려 보며 수학적 관계를 살펴보세요' : '도형을 선택해 가까이 탐험해 보세요';
+      for (const pill of celestialPills) {
+        const selected = value.celestialId === pill.dataset.celestial && exploring;
+        pill.classList.toggle('active', selected);
+        pill.setAttribute('aria-pressed', String(selected));
+      }
+      motionBtnText.textContent = value.motionPlaying ? '모션 정지' : '모션 재생';
+      btnToggleMotion.setAttribute('aria-label', value.motionPlaying ? '천체 움직임 일시정지' : '천체 움직임 재생');
+      btnToggleMotion.setAttribute('aria-pressed', String(!value.motionPlaying));
+      motionIcon.innerHTML = value.motionPlaying
         ? '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>'
         : '<polygon points="5,3 19,12 5,21"/>';
-    });
-
-    // 4. Bottom selectors only move the camera; no detail modal.
-    // Selecting the same button again returns to the full universe view.
-    document.querySelectorAll('.celestial-pill').forEach((pill) => {
-      pill.setAttribute('aria-pressed', 'false');
-      pill.addEventListener('click', () => {
-        if (!universe) return;
-        const id = pill.dataset.celestial;
-        if (!universe.celestialRegistry.some(c => c.metadata.id === id)) return;
-
-        const alreadyActive = pill.classList.contains('active');
-        document.querySelectorAll('.celestial-pill').forEach(p => {
-          p.classList.remove('active');
-          p.setAttribute('aria-pressed', 'false');
-        });
-
-        if (alreadyActive) {
-          universe.resetFocus();
-        } else {
-          universe.focusOnCelestial(id);
-          pill.classList.add('active');
-          pill.setAttribute('aria-pressed', 'true');
+      reconcileLabels(value);
+      renderPlayback(value);
+      if (!sameRoute(value, previous)) {
+        exploreStatus.textContent = exploring ? `${family}${inConcept ? `, ${value.title}` : ''}. ${value.subtitle || ''}` : '전체 우주로 돌아왔습니다.';
+        // A selected projected label disappears at concept depth. Keep keyboard
+        // focus on a visible control instead of leaving it in a hidden subtree.
+        if (hudVisible) {
+          if (inConcept && focusWasInLabels) btnPauseConcept.focus({ preventScroll: true });
+          else if (exploring && !inConcept && focusWasInConcept) btnExploreBack.focus({ preventScroll: true });
+          else if (!exploring && (focusWasInExplore || focusWasInLabels)) {
+            celestialPills.find(pill => pill.dataset.celestial === previous.celestialId)?.focus();
+          }
         }
-      });
+      }
+      writeRoute(value, metadata.history || 'none', previous);
+    }
+    function renderFrame(frame) {
+      const visibleIds = new Set();
+      const acceptedBoxes = [];
+      const focusedButton = projectedLabels.contains(document.activeElement) ? document.activeElement : null;
+      const candidates = [];
+      let decluttered = false;
+      for (const [index, label] of (frame.labels || []).entries()) {
+        const button = labelButtons.get(label.id);
+        const size = labelSizes.get(label.id);
+        if (!button || !size || !label.visible || !Number.isFinite(label.x) || !Number.isFinite(label.y)) continue;
+        const halfW = size.width / 2, halfH = size.height / 2;
+        const x = Math.max(halfW + 4, Math.min(window.innerWidth - halfW - 4, label.x));
+        const box = { left: x - halfW, right: x + halfW, top: label.y - halfH, bottom: label.y + halfH };
+        // At most one caption-sized nudge horizontally; never move a caption
+        // away from its physical object to manufacture a menu-like arrangement.
+        if (Math.abs(x - label.x) > 12 || box.left < 0 || box.right > window.innerWidth || box.top < 0 || box.bottom > window.innerHeight) {
+          decluttered = true;
+          continue;
+        }
+        candidates.push({ label, button, box, x, index, focused: button === focusedButton, depth: Number.isFinite(label.depth) ? label.depth : 0 });
+      }
+      candidates.sort((a, b) => Number(b.focused) - Number(a.focused) || a.depth - b.depth || a.index - b.index);
+      for (const item of candidates) {
+        const box = item.box;
+        if (acceptedBoxes.some(other => box.left < other.right && box.right > other.left && box.top < other.bottom && box.bottom > other.top)) {
+          decluttered = true;
+          continue;
+        }
+        acceptedBoxes.push(box);
+        visibleIds.add(item.label.id);
+        item.button.style.transform = `translate3d(${item.x.toFixed(1)}px, ${item.label.y.toFixed(1)}px, 0) translate(-50%, -50%)`;
+      }
+      for (const [id, button] of labelButtons) button.hidden = !visibleIds.has(id);
+      if (focusedButton?.hidden && hudVisible && state.mode === 'galaxy') btnExploreBack.focus({ preventScroll: true });
+      if (state.mode === 'galaxy') {
+        const hint = decluttered ? '돌려서 다른 도형도 찾아보세요' : '작은 도형이나 이름을 선택해 보세요';
+        if (exploreHint.textContent !== hint) exploreHint.textContent = hint;
+      }
+      if (state.mode === 'concept') renderPlayback(frame);
+    }
+
+    btnToggleMotion.addEventListener('click', () => universe?.toggleMotion());
+    btnExploreBack.addEventListener('click', () => universe?.back());
+    btnUniverseHome.addEventListener('click', () => universe?.resetFocus({ history: 'replace' }));
+    btnReplayConcept.addEventListener('click', () => universe?.replayConcept());
+    btnPauseConcept.addEventListener('click', () => universe?.toggleConceptPlayback());
+    conceptSeek.addEventListener('pointerdown', () => { seeking = true; });
+    for (const type of ['pointerup', 'pointercancel', 'change', 'blur']) conceptSeek.addEventListener(type, () => { seeking = false; });
+    conceptSeek.addEventListener('input', () => universe?.seekConcept(Number(conceptSeek.value)));
+    for (const pill of celestialPills) {
+      pill.setAttribute('aria-pressed', 'false');
+      pill.addEventListener('click', () => universe?.focusOnCelestial(pill.dataset.celestial));
+    }
+    window.addEventListener('popstate', () => {
+      const route = readRoute();
+      if (sameRoute(route, state)) return;
+      restoringHistory = true;
+      try { applyRoute(route); } finally { restoringHistory = false; }
+    });
+    window.addEventListener('keydown', event => {
+      if (event.key !== 'Escape' || event.defaultPrevented || warpCurtain.classList.contains('active')) return;
+      if (!hudVisible) setHudVisible(true, true);
+      else if (state.mode !== 'universe') universe?.back();
+      else return;
+      event.preventDefault();
     });
 
-    // 5. Deep Link Support: ?celestial=id
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialCelestial = urlParams.get('celestial');
-    if (initialCelestial) {
-      setTimeout(() => {
-        // Accept older links using ?celestial=circle, while the real object id is circle-sector.
-        const id = initialCelestial === 'circle' ? 'circle-sector' : initialCelestial;
-        const targetPill = Array.from(document.querySelectorAll('.celestial-pill'))
-          .find(pill => pill.dataset.celestial === id);
-        if (targetPill) targetPill.click();
-      }, 350);
+    // Only this explicit lab action leaves the 3D exploration experience.
+    btnEnterLab.addEventListener('click', () => {
+      if (btnEnterLab.disabled) return;
+      btnEnterLab.disabled = true;
+      warpCurtain.classList.add('active');
+      const hubHref = getHubHref();
+      let navigating = false;
+      let fallbackTimer;
+      const navigate = () => {
+        if (navigating) return;
+        navigating = true;
+        clearTimeout(fallbackTimer);
+        location.assign(hubHref);
+      };
+      // An inactive tab must not strand a student while the animation frame loop is suspended.
+      fallbackTimer = setTimeout(navigate, 3200);
+      if (universe?.triggerLabEntranceFlight && !state.reducedMotion) {
+        universe.triggerLabEntranceFlight(() => setTimeout(navigate, 450));
+      } else setTimeout(navigate, state.reducedMotion ? 0 : 500);
+    });
+
+    try {
+      universe = createMathUniverse({ canvas, onStateChange: renderState, onFrame: renderFrame });
+      applyRoute(initialRoute);
+      renderState(universe.getState(), { history: 'none' });
+      bootstrapping = false;
+      writeRoute(state, 'replace', state, true);
+      if (exposeTestApi) window.__APMathUniverse = universe;
+    } catch (error) {
+      bootstrapping = false;
+      console.error('Failed to initialize Math Universe 3D Engine:', error);
+      universeUi.inert = true;
+      universeUi.setAttribute('aria-hidden', 'true');
+      btnRestoreHud.hidden = true;
+      const fallback = document.createElement('section');
+      fallback.className = 'webgl-fallback';
+      fallback.setAttribute('aria-labelledby', 'fallbackTitle');
+      const title = document.createElement('h2');
+      title.id = 'fallbackTitle';
+      title.textContent = '실험실에서 계속 탐험할 수 있어요';
+      const description = document.createElement('p');
+      description.textContent = '이 기기에서 3D 우주를 시작하지 못했습니다. 실험실 허브에서 모든 수학 실험실을 이용하실 수 있습니다.';
+      const hubLink = document.createElement('a');
+      hubLink.className = 'cta-entrance';
+      hubLink.href = getHubHref();
+      hubLink.textContent = '실험실 허브 바로가기';
+      const portalLink = document.createElement('a');
+      portalLink.className = 'universe-portal-link';
+      portalLink.href = window.StudentPortalNavigation?.portalHref('home') || '../student/';
+      portalLink.textContent = '학생 포털로 돌아가기';
+      fallback.append(title, description, hubLink, portalLink);
+      document.body.appendChild(fallback);
+      hubLink.focus({ preventScroll: true });
     }
   </script>
 </body>

@@ -1,0 +1,106 @@
+name: AP Math Universe exploration
+
+# Read-only browser verification. Publishing remains the existing Pages release job.
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apmath/playground/index.html'
+      - 'apmath/playground/universe/**'
+      - 'apmath/js/student-navigation.js'
+      - 'apmath/css/student-navigation.css'
+      - 'tests/apmath-universe-math.test.js'
+      - 'tests/apmath-universe-exploration.test.js'
+      - 'tools/check-universe-browser.mjs'
+      - '.github/workflows/apmath-universe-exploration.yml'
+  workflow_dispatch:
+    inputs:
+      baseline_sha:
+        description: 'Optional exact 40-character baseline commit; otherwise use the event snapshot.'
+        required: false
+        default: ''
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: universe-exploration-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  browser:
+    name: Universe Chromium WebGL2
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      BASELINE_SHA: ${{ inputs.baseline_sha || github.event.pull_request.base.sha || github.sha }}
+    steps:
+      - name: Check out the exact candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.CANDIDATE_SHA }}
+          path: source
+          persist-credentials: false
+          sparse-checkout: |
+            apmath/playground
+            apmath/js
+            apmath/css
+            tools
+            tests
+      - name: Check out the fixed comparison source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BASELINE_SHA }}
+          path: baseline
+          persist-credentials: false
+          sparse-checkout: |
+            apmath/playground
+            apmath/js
+            apmath/css
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify mathematical invariants and exploration state
+        run: |
+          node source/tests/apmath-universe-math.test.js
+          node source/tests/apmath-universe-exploration.test.js
+      - name: Install the isolated browser driver and PNG reader
+        run: |
+          npm install --prefix "$RUNNER_TEMP/universe-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1 pngjs@7.0.0
+          "$RUNNER_TEMP/universe-browser/node_modules/.bin/playwright" install chromium
+      - name: Verify source syntax and browser journeys
+        env:
+          NODE_PATH: ${{ runner.temp }}/universe-browser/node_modules
+        run: |
+          node --check source/tools/check-universe-browser.mjs
+          node source/tools/check-universe-browser.mjs \
+            --root source \
+            --baseline baseline \
+            --candidate-sha "$CANDIDATE_SHA" \
+            --baseline-sha "$BASELINE_SHA" \
+            --out "$RUNNER_TEMP/universe-evidence"
+      - name: Upload actual browser screenshots and evidence
+        id: evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apmath-universe-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/universe-evidence/
+          retention-days: 14
+          if-no-files-found: error
+      - name: State the verification scope
+        if: always()
+        env:
+          ARTIFACT_URL: ${{ steps.evidence.outputs.artifact-url }}
+        run: |
+          {
+            printf '### AP Math Universe browser verification\n'
+            printf 'Candidate: `%s`\n\nBaseline: `%s`\n\n' "$CANDIDATE_SHA" "$BASELINE_SHA"
+            printf 'Chromium uses software WebGL2 (ANGLE/SwiftShader), not a physical GPU.\n'
+            printf 'The checker targets PC/mobile interactions, errors, label bounds and 20 resource round trips, plus PC blank-space, HUD-restoration and reduced-motion checks; inspect report.json for executed checks and failures.\n'
+            printf 'Baseline/after PNGs require visual review; no pixel-equivalence or physical-device FPS claim is made.\n'
+            printf '[Download screenshots, report and gallery](%s)\n' "$ARTIFACT_URL"
+            printf 'Deployment and production account operations: NONE.\n'
+          } >> "$GITHUB_STEP_SUMMARY"
