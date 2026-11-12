@@ -618,7 +618,7 @@ window.questionBank = [
       "엇각",
       "연산"
     ],
-    "content": "$\\triangle ABC$에서 $\\angle B = 30^\\circ$, $\\angle C = 40^\\circ$이다. 세 점 $B, A, D$가 순서대로 한 직선 위에 있고, 선분 $DE$가 변 $AC$와 평행($DE \\parallel AC$)하며 $\\overline{DA} = \\overline{DE}$일 때, $\\angle AED$의 크기는? [4점]",
+    "content": "$\\triangle ABC$에서 $\\angle B = 30^\\circ$, $\\angle C = 40^\\circ$이다. 세 점 $B, A, D$가 순서대로 한 직선 위에 있고, 선분 $DE$가 변 $AC$와 평행($DE \\parallel AC$)하며 점 $C$와 점 $E$는 직선 $BD$의 서로 반대쪽에 있다. $\\overline{DA} = \\overline{DE}$일 때, $\\angle AED$의 크기는? [4점]",
     "choices": [
       "$50^\\circ$",
       "$55^\\circ$",

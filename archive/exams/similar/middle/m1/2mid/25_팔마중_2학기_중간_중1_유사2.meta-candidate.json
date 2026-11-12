@@ -3,7 +3,7 @@
   "requestId": "similar-25-palma-m1-2mid-v2-candidate-v1",
   "examUid": "25_팔마중_2학기_중간_중1_유사2",
   "sourceArchiveFile": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사2.js",
-  "expectedSourceBlobSha1": "286cef80d9ddfc0776a04e9f34aad2f6745727f4",
+  "expectedSourceBlobSha1": "7f4533ce4731ef63799198747c1687dfa47f01e5",
   "expectedQuestionCount": 24,
   "sourceProvenance": {
     "driveDocumentId": "1Wlrc5c5_K3xWD4HH4Gj1Wv5w-cdwiKxjk82KBsLxG20",
@@ -30,6 +30,12 @@
         "scope": "Q1–Q24 problem/solution visual audit",
         "change": "Independently re-read each candidate question and solution instead of inheriting the source MD visual status. Reclassified Q8 and Q20 problem/solution visuals as DEFERRED_TO_LATER_SVG_BATCH; the other 22 pairs remain EXEMPT after direct text audit. Existing main Q8 (42°/38°) and Q20 (14°) SVGs are incompatible and were not copied.",
         "visualsCreated": false
+      },
+      {
+        "scope": "Q17 stem",
+        "before": "DE∥AC and DA=DE did not determine which ray on the parallel through D was E; ∠AED could be 35° or 55°.",
+        "after": "Added that C and E lie on opposite sides of line BD.",
+        "independentCheck": "Triangle ABC gives ∠BAC=180°−30°−40°=110°. Since B,A,D are collinear in that order, ∠DAC=70°. With C and E on opposite sides of BD and DE∥AC, the rays DA and DE make ∠ADE=70°. DA=DE makes △ADE isosceles, so ∠AED=(180°−70°)/2=55°, uniquely choice ②. The added condition does not state the answer."
       }
     ],
     "variantDecision": {
@@ -314,14 +320,16 @@
       "problem": {
         "status": "EXEMPT",
         "need": "NO_SEPARATE_PROBLEM_FIGURE",
-        "currentCandidateAsset": null
+        "currentCandidateAsset": null,
+        "reason": "The text fully specifies the orientation; a matching diagram can still help show the parallel relation and the two triangles. No SVG candidate asset."
       },
       "solution": {
         "status": "EXEMPT",
         "need": "NO_SEPARATE_SOLUTION_FIGURE",
-        "currentCandidateAsset": null
+        "currentCandidateAsset": null,
+        "reason": "A diagram can help students see ∠DAC=∠ADE and the equal sides DA=DE; no solution SVG candidate asset."
       },
-      "reason": "삼각형 외각과 평행선 엇각을 매개로 이등변삼각형의 밑각을 계산하는 문항"
+      "reason": "Q17 now states C and E lie on opposite sides of BD, removing the two possible ray orientations. A diagram remains helpful·P2 for visualizing the parallel and isosceles-triangle relations; no candidate asset."
     },
     {
       "sourceOrdinal": 18,
@@ -1839,5 +1847,8 @@
       "visualPlanStatus": "EXEMPT",
       "visualPlanReason": "대각선 분할 영역의 모서리 계수 원리로 다각형을 역산하고 내외각 합을 구하는 서술형 문항"
     }
-  ]
+  ],
+  "validation": {
+    "mathReview": "Q3/Q13 notation and Q5/Q17 stem corrections independently checked; remaining items not marked PASS."
+  }
 }
