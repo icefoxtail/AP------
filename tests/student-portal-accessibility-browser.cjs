@@ -273,6 +273,11 @@ async function run() {
       await capture(page, 'student-lab-scene-390');
       await page.setViewportSize({ width: 800, height: 1280 });
       await capture(page, 'student-lab-scene-800'); await assertNav(page, 'labs');
+      // The compact exploration stage is reached through the student's own
+      // control; the lesson-first entry intentionally gives its figure more room.
+      await page.getByRole('button', { name: '직접 해 보기', exact: true }).click();
+      await page.waitForFunction(() => !document.body.classList.contains('apl-lessonfirst'));
+      await capture(page, 'student-lab-explore-800'); await assertNav(page, 'labs');
       const stage = await page.locator('.apl-stage').boundingBox();
       assert.ok(stage && stage.height <= 561, 'portrait tablet keeps the existing bounded stage so experiment controls remain close');
       await page.setViewportSize({ width: 390, height: 844 });
