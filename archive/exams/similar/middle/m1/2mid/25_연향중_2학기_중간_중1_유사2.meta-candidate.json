@@ -1389,6 +1389,18 @@
         "before": "Candidate JS points was 0.",
         "after": "Set points to 3 to match the Q15 source MD heading “배점: 3”.",
         "evidence": "Drive document 1n78zw5jQbaC-z7HKvv8bruFYl_ZKsq3g_3EybyNEln4 at recorded revision AHj4eMQVqgfiEFtUGRTqsVs6avizwXOIP4L06k9xQd_DBjQ9u_W6VRbzmmAgtECFlTFJVtJ9uR3XIE3uEBhkjHAfuqYKyFePAcQVDXRzCxI; question paragraphs identify Q15 and 3 points."
+      },
+      {
+        "scope": "Q01-Q24 points audit",
+        "before": "Candidate JS had points={1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 3, 16: 0, 17: 0, 18: 0, 19: 0, 20: 0, 21: 0, 22: 0, 23: 0, 24: 0}; 23 values were 0 and Q15 was 3.",
+        "after": "Set points from the per-question “배점” headings in the recorded Drive MD revision: {1: 3, 2: 5, 3: 4, 4: 4, 5: 4, 6: 3, 7: 4, 8: 4, 9: 5, 10: 3, 11: 5, 12: 4, 13: 4, 14: 4, 15: 3, 16: 5, 17: 4, 18: 4, 19: 3, 20: 5, 21: 5, 22: 4, 23: 5, 24: 6}.",
+        "sourceEvidence": {
+          "driveDocumentId": "1n78zw5jQbaC-z7HKvv8bruFYl_ZKsq3g_3EybyNEln4",
+          "driveRevisionId": "AHj4eMQVqgfiEFtUGRTqsVs6avizwXOIP4L06k9xQd_DBjQ9u_W6VRbzmmAgtECFlTFJVtJ9uR3XIE3uEBhkjHAfuqYKyFePAcQVDXRzCxI",
+          "questionCount": 24,
+          "sumPoints": 100
+        },
+        "engineContractFinding": "archive/engine.html loads window.questionBank entries into AppState.data without summing question.points; no per-question rendering of points was found. The numeric points field is retained as exam data metadata; the print-header score line is independently fixed to /100. No score was inferred."
       }
     ]
   },
@@ -1804,10 +1816,19 @@
       "studentVisibleU907AfterCleanup": false,
       "embeddedMetadataRecordCount": 48,
       "status": "CLEAN; metadata preserved in sourceProvenance.removedSolutionMetaTails"
+    },
+    "pointAudit": {
+      "status": "PASS",
+      "sourceRevision": "AHj4eMQVqgfiEFtUGRTqsVs6avizwXOIP4L06k9xQd_DBjQ9u_W6VRbzmmAgtECFlTFJVtJ9uR3XIE3uEBhkjHAfuqYKyFePAcQVDXRzCxI",
+      "questionCount": 24,
+      "sourceTotalPoints": 100,
+      "candidateTotalPoints": 100,
+      "unclearQuestionPoints": [],
+      "engineContract": "window.questionBank numeric points are passed through by archive/engine.html but not summed/displayed per item; header score line remains /100."
     }
   },
   "pipelineState": "PARTIALLY_BLOCKED_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "9fab1a780cd3afebee1285db308e70ccbcc9ecb3",
+  "expectedSourceBlobSha1": "368ffbb5d857f94132af7da6b8cfffca263157bd",
   "currentMainReleaseAudit": {
     "mainCommit": "c07df518f76927602fa8cb789b9ecd8e5e0d08f2",
     "existingSimilarJs": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사.js",
