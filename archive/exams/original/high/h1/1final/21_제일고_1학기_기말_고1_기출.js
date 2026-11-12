@@ -181,9 +181,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q3-solution.svg",
-    "solutionImageAlt": "두 점 A, B의 x좌표가 모두 3이므로 직선 x=3은 y축에 평행한 수직선이다.",
-    "solutionImageCaption": "두 점 A, B의 x좌표가 모두 3이므로 직선 x=3은 y축에 평행한 수직선이다.",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 A와 B를 지나는 수직선.",
+    "solutionImageCaption": "두 점 A와 B의 x좌표가 같아 두 점을 잇는 선은 y축과 나란하다. 수직선의 방정식은 x좌표가 일정하다는 점으로 나타낸다. 정답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -215,7 +215,7 @@ window.questionBank = [
     "standardUnitOrder": 11,
     "subUnitKey": "H15-SA-11-TANGENT",
     "subUnit": "원과 접선",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q04-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q4-solution-v2.svg",
     "questionUid": "qid_v1_0623d7147bbbf268486abe0c6a40aa34b83c9e055aeb9cb2da9cabde1397fc60",
     "sourceQid": "4",
     "sourceIdentityKey": "qid_v1_0623d7147bbbf268486abe0c6a40aa34b83c9e055aeb9cb2da9cabde1397fc60",
@@ -245,7 +245,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 원과 접점 P, 파란색 반지름 OP, 주황색 접선 부분과 접점의 직각 표시.",
+    "solutionImageCaption": "파란색 반지름 OP는 주황색 접선 부분과 접점에서 수직이다. 원의 중심과 접점이 주어졌으므로 이 관계로 직선의 기울기를 찾는다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -276,7 +279,7 @@ window.questionBank = [
     "standardUnitOrder": 8,
     "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
     "subUnit": "이차부등식",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q05-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q5-solution-v2.svg",
     "questionUid": "qid_v1_b4bf67b49747d3ef9a3687a3ab6f8e0fe779ab22ea9540a4face4bf6efc1951b",
     "sourceQid": "5",
     "sourceIdentityKey": "qid_v1_b4bf67b49747d3ef9a3687a3ab6f8e0fe779ab22ea9540a4face4bf6efc1951b",
@@ -310,7 +313,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 1과 5가 열린 끝점인 구간, 포함되는 예 3과 제외되는 4.",
+    "solutionImageCaption": "첫째 조건은 1과 5 사이의 열린구간을 정한다. 둘째 조건은 제곱이 0이 되는 값을 제외하며, 수직선은 포함되는 수와 제외되는 수의 예를 하나씩 비교한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -341,7 +347,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
     "subUnit": "이차방정식과 이차함수의 관계",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q06-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q6-solution-v2.svg",
     "questionUid": "qid_v1_bb7ad23fd810a13a939a73624984543755badcd9a1fa30596658398afa1a1173",
     "sourceQid": "6",
     "sourceIdentityKey": "qid_v1_bb7ad23fd810a13a939a73624984543755badcd9a1fa30596658398afa1a1173",
@@ -373,7 +379,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 위쪽은 파란색 차의 포물선과 초록색 x축, 아래쪽은 파란색 이차함수와 주황색 직선, 두 교점이 보인다.",
+    "solutionImageCaption": "위쪽 패널에서 파란색 f(x)는 두 식의 차이고 초록색 y=0은 x축이다. 아래쪽 패널에서 파란색 f(x)는 문제의 이차함수, 주황색 y=g(x)는 y=x−11이다. 두 그래프의 교점의 x좌표는 두 식의 차가 0이 되는 근이다. 주어진 근 4와 근의 관계로 계수를 구한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -435,7 +444,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위의 고정점 −2와 5 사이에 x를 두고 두 점 사이의 거리를 7로 표시했다.",
+    "solutionImageCaption": "수직선에서 x와 −2, x와 5의 거리를 본다. 두 고정점 사이의 거리가 7이므로 두 거리의 합은 이보다 작지 않다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -528,7 +541,7 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
     "subUnit": "삼각형의 좌표와 무게중심",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q09-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q9-solution-v2.svg",
     "questionUid": "qid_v1_4abfce426c5dd28e92fd6c0272c432ad2016df009f316f8650da5d21f403c4a8",
     "sourceQid": "9",
     "sourceIdentityKey": "qid_v1_4abfce426c5dd28e92fd6c0272c432ad2016df009f316f8650da5d21f403c4a8",
@@ -560,7 +573,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C와 변 AC, 주황색 선분 BM, 변 AC의 중점 M, 무게중심 G.",
+    "solutionImageCaption": "주어진 A, M, G를 이용해 먼저 C를 복원하고, 세 꼭짓점의 평균으로 B를 찾는다. 주황색 BM은 무게중심 G를 지난다. B의 좌표와 OB 길이는 표시하지 않는다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -591,7 +607,7 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "subUnitKey": "H15-SA-09-GEOMETRY_APPLICATION",
     "subUnit": "도형의 방정식 활용",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q10-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q10-solution-v2.svg",
     "questionUid": "qid_v1_31e019535320a59ee63a37c8ad665dd56671037849cfab3317fd58943c2537ec",
     "sourceQid": "10",
     "sourceIdentityKey": "qid_v1_31e019535320a59ee63a37c8ad665dd56671037849cfab3317fd58943c2537ec",
@@ -625,7 +641,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 한 직선 위의 A, B와 양쪽 바깥에 놓인 C₁, C₂.",
+    "solutionImageCaption": "그림의 C₁, C₂는 점 C가 선분 AB 바깥에 놓이는 두 경우를 뜻한다. 각 경우의 외분비로 좌표를 정한 뒤 좌표 성분별 합을 구한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -656,7 +675,7 @@ window.questionBank = [
     "standardUnitOrder": 11,
     "subUnitKey": "H15-SA-11-TANGENT",
     "subUnit": "원과 접선",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q11-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q11-solution-v2.svg",
     "questionUid": "qid_v1_0a4455e437d9213afbb7778fee33af56127fc24ce1db7f21b4e3bc63c7bd048f",
     "sourceQid": "11",
     "sourceIdentityKey": "qid_v1_0a4455e437d9213afbb7778fee33af56127fc24ce1db7f21b4e3bc63c7bd048f",
@@ -686,7 +705,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 파란색과 주황색 반지름, 초록색과 장미색 접선 부분이 표시된 원과 접점 T₁, T₂.",
+    "solutionImageCaption": "원점 O에서 접점 T₁, T₂로 이은 파란색과 주황색 반지름은 각각 초록색과 장미색 접선 부분에 수직이다. 접선의 방정식에서 상수항을 판별하는 도형 관계를 보여 준다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -717,7 +739,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "subUnitKey": "H15-SA-10-LINE_EQUATION",
     "subUnit": "직선의 방정식",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q12-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q12-solution-v2.svg",
     "questionUid": "qid_v1_20dc525646ceef3bd623c5a87b268b51282e629c107d294079297430a78ee249",
     "sourceQid": "12",
     "sourceIdentityKey": "qid_v1_20dc525646ceef3bd623c5a87b268b51282e629c107d294079297430a78ee249",
@@ -749,7 +771,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C에서 주황색 선분 AD가 변 BC의 중점 D를 지난다.",
+    "solutionImageCaption": "직선은 꼭짓점 A와 변 BC의 중점 D를 지난다. 같은 높이를 가진 두 삼각형의 넓이를 비교해 직선의 기울기를 찾는다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -844,7 +869,7 @@ window.questionBank = [
     "standardUnitOrder": 11,
     "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
     "subUnit": "원의 방정식",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q14-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q14-solution-v2.svg",
     "questionUid": "qid_v1_3c84489ab428be03373d9b0424a9acef173922f94d58aed3b46e8e993ea10da7",
     "sourceQid": "14",
     "sourceIdentityKey": "qid_v1_3c84489ab428be03373d9b0424a9acef173922f94d58aed3b46e8e993ea10da7",
@@ -876,7 +901,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 중심 K가 주어진 원, y축 위 접점 T와 반지름 KT, 접점의 직각 표시.",
+    "solutionImageCaption": "중심 K(−2,3)에서 y축까지의 거리가 반지름이다. 접점 T를 지나는 수평 반지름이 y축과 직각임을 표시해 원의 계수를 구한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -908,7 +936,7 @@ window.questionBank = [
     "standardUnitOrder": 11,
     "subUnitKey": "H15-SA-11-TANGENT",
     "subUnit": "원과 접선",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q15-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q15-solution-v2.svg",
     "questionUid": "qid_v1_ae3b520eb678d22fdf87615bc0c741d976d84365957bc968a99f7621bfed84b3",
     "sourceQid": "15",
     "sourceIdentityKey": "qid_v1_ae3b520eb678d22fdf87615bc0c741d976d84365957bc968a99f7621bfed84b3",
@@ -942,7 +970,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 제2사분면 단위원의 중심 C, 파란색 반지름 CT와 주황색 반지름 CU, 초록색 접선 부분과 두 접점의 직각 표시.",
+    "solutionImageCaption": "접점 T는 y축 위이고 U는 다른 직선의 접점이다. 파란색 반지름 CT는 y축과, 주황색 반지름 CU는 초록색 접선 부분과 각각 수직이다. 사분면 조건으로 중심 좌표 후보를 고른다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -974,7 +1005,7 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "subUnitKey": "H15-SA-09-LOCUS_RATIO",
     "subUnit": "거리 조건과 자취",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q16-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q16-solution-v2.svg",
     "questionUid": "qid_v1_eef5b4d12fdc2b5b471f122ce4367cf4f4063fc2443784469ff9055a92c68c5d",
     "sourceQid": "16",
     "sourceIdentityKey": "qid_v1_eef5b4d12fdc2b5b471f122ce4367cf4f4063fc2443784469ff9055a92c68c5d",
@@ -1006,7 +1037,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 한 변의 길이가 4인 정사각형과 내부의 예시점 P, 파란색 AP와 주황색 CP.",
+    "solutionImageCaption": "정사각형 안의 예시점 P에서 두 마주 보는 꼭짓점까지의 거리를 파란색과 주황색으로 구분한다. 조건을 만족하는 예를 보이고 완성된 자취는 그리지 않는다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1038,7 +1072,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q17-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q17-solution-v2.svg",
     "questionUid": "qid_v1_b8c08f2809c3c384f3d445f8aea3330358663b9338a0d47668de4fc9b4553d4f",
     "sourceQid": "17",
     "sourceIdentityKey": "qid_v1_b8c08f2809c3c384f3d445f8aea3330358663b9338a0d47668de4fc9b4553d4f",
@@ -1068,7 +1102,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 원점 O에서 수직인 두 직선과 x=2의 수직선, 파란색 OP·주황색 OQ·초록색 PQ.",
+    "solutionImageCaption": "파란색 OP와 주황색 OQ는 원점에서 직각을 이룬다. 초록색 PQ를 세 번째 변으로 하여 세 길이의 제곱을 비교한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1099,7 +1136,7 @@ window.questionBank = [
     "standardUnitOrder": 8,
     "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
     "subUnit": "이차부등식",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q18-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q18-solution-v2.svg",
     "questionUid": "qid_v1_71b647043d5a3ba52871743e1ad67f99667095d25fb2bc86cf4fcf03ba7615ba",
     "sourceQid": "18",
     "sourceIdentityKey": "qid_v1_71b647043d5a3ba52871743e1ad67f99667095d25fb2bc86cf4fcf03ba7615ba",
@@ -1131,7 +1168,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: (나)의 판별식 조건이 주는 열린구간 −2<k<6과 수직선의 0 눈금.",
+    "solutionImageCaption": "그림은 (나)의 판별식에서 얻은 열린구간 −2<k<6을 나타낸다. (가)에서 얻은 범위와 교차한 뒤 정수 조건을 적용한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1156,7 +1196,7 @@ window.questionBank = [
     "standardUnitOrder": 11,
     "subUnitKey": "H15-SA-11-INTERSECTION",
     "subUnit": "원과 직선·원의 교점",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q19-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q19-solution-v2.svg",
     "questionUid": "qid_v1_92cc3b004c8d27adc9b385bca8adf8455aa4b4a7cc5c434fb0c0816bab16ea54",
     "sourceQid": "서술형 1",
     "sourceIdentityKey": "qid_v1_92cc3b004c8d27adc9b385bca8adf8455aa4b4a7cc5c434fb0c0816bab16ea54",
@@ -1190,7 +1230,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 반지름 √3인 원과 접점 H, 파란색 반지름 OH, 주황색 접선 부분과 직각 표시.",
+    "solutionImageCaption": "연립방정식의 해는 원과 직선의 교점이다. 한 쌍의 해만 있으므로 직선은 접하고, 파란색 반지름 OH는 주황색 접선 부분과 수직이다. 정답은 √15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1215,7 +1258,7 @@ window.questionBank = [
     "standardUnitOrder": 8,
     "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
     "subUnit": "이차부등식",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q20-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q20-solution-v2.svg",
     "questionUid": "qid_v1_a42583b7430f5b4584df22140a79f476a0f1ff3e53efc09d398e0222139057a6",
     "sourceQid": "서술형 2",
     "sourceIdentityKey": "qid_v1_a42583b7430f5b4584df22140a79f476a0f1ff3e53efc09d398e0222139057a6",
@@ -1247,7 +1290,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: x≤−1 또는 x≥4인 구간과 −3과 a 사이의 열린 구간.",
+    "solutionImageCaption": "첫 부등식은 두 바깥 구간을 정한다. 두 번째 이차식은 −3과 a 사이에서 음수가 되므로, 정수 세 개가 들어오는 경우를 양쪽 구간에서 따로 비교한다. 정답은 −7≤a<−6 또는 4<a≤5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1274,7 +1320,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "subUnitKey": "H15-SA-10-LINE_EQUATION",
     "subUnit": "직선의 방정식",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q21-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q21-solution-v2.svg",
     "questionUid": "qid_v1_98a246055069ec4c2f7200b90a554512df0717c2553e2376df9c7a2464432988",
     "sourceQid": "서술형 3",
     "sourceIdentityKey": "qid_v1_98a246055069ec4c2f7200b90a554512df0717c2553e2376df9c7a2464432988",
@@ -1308,7 +1354,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 삼각형 O, A, B와 주황색 절단선 DE의 한 예.",
+    "solutionImageCaption": "A와 B를 지나는 변의 기울기를 좌표로 구한다. 주황색 절단선은 예시이며, 넓이를 이등분하는 선은 교점 위치별로 계산한다. 정답은 (1) y=−x+6, (2) k=−6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1333,7 +1382,7 @@ window.questionBank = [
     "standardUnitOrder": 11,
     "subUnitKey": "H15-SA-11-INTERSECTION",
     "subUnit": "원과 직선·원의 교점",
-    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q22-solution-v2.svg",
     "questionUid": "qid_v1_6b5c6c8420d122cf2c55320ff70b846dead2cdb9cd6d8ae03973fb33e750cecc",
     "sourceQid": "서술형 4",
     "sourceIdentityKey": "qid_v1_6b5c6c8420d122cf2c55320ff70b846dead2cdb9cd6d8ae03973fb33e750cecc",
@@ -1365,6 +1414,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 원과 파란색 현 AB, 중심 C, 현의 중점 H, 수직 반지름과 원 위의 예시점 P.",
+    "solutionImageCaption": "중심에서 현에 내린 수선은 파란색 현 AB의 중점 H를 지난다. 점 P는 원 위의 예시점이다. 직각삼각형에서 반지름과 중심에서 직선까지의 거리를 사용하고, 넓이에서는 원 위 점의 높이를 비교한다. 정답은 (1) 8, (2) 32이다.",
+    "solutionImageSize": "full"
   }
 ];
