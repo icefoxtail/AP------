@@ -135,7 +135,46 @@ def expected_end_directions(poly):
     left=sign if degree%2==0 else -sign
     return {'left':'UP' if left>0 else 'DOWN','right':'UP' if sign>0 else 'DOWN'}
 
-def cubic_quartic_overview_audit(plan,poly,points,transform):
+def _hidden_overview_point_errors(plan,poly,point,index,root,transform):
+    """Bind the marker to the exact curve point, then look for its suppressed coordinate label or leader."""
+    ident=point['id']
+    marker_id=f'required-point-{index}'
+    try:
+        exact=(plan.get('exactCoordinates') or {}).get(ident)
+        if exact is None:
+            px,py=(S.Rational(str(point[key])) for key in ('x','y'))
+        else:
+            px,py=(_pp_exact(value.replace(' ','')) for value in exact)
+        if any(abs(float(value)-point[key])>1e-9*max(1,abs(point[key])) for key,value in (('x',px),('y',py))):
+            return ['EXACT_COORDINATES_MISMATCH:'+ident]
+        if S.simplify(poly.eval(px)-py)!=0:
+            return ['OVERVIEW_REQUIRED_FEATURE_NOT_ON_CURVE:'+ident]
+    except (ValueError,TypeError,AttributeError):
+        return ['EXACT_COORDINATES_MISMATCH:'+ident]
+
+    errors=[]
+    markers=[node for node in root.iter() if node.get('id')==marker_id]
+    marker=markers[0] if len(markers)==1 else None
+    if marker is None or marker.tag.split('}')[-1]!='circle' or marker.get('data-role')!='point':
+        errors.append('OVERVIEW_REQUIRED_FEATURE_DOT_MISSING:'+ident)
+    else:
+        try:
+            cx,cy,radius=(float(marker.get(key)) for key in ('cx','cy','r'))
+            expected_x=transform['originX']+float(px)*transform['sx']
+            expected_y=transform['originY']-float(py)*transform['sy']
+            if (not all(math.isfinite(value) for value in (cx,cy,radius)) or radius<=0 or
+                marker.get('fill') not in ('#111','#000','black') or
+                max(abs(cx-expected_x),abs(cy-expected_y))*transform['displayScale']>.35):
+                errors.append('OVERVIEW_REQUIRED_FEATURE_DOT_MISMATCH:'+ident)
+        except (TypeError,ValueError):
+            errors.append('OVERVIEW_REQUIRED_FEATURE_DOT_MISMATCH:'+ident)
+    prefix=marker_id+'-coordinate'
+    if any((node.get('id') or '').startswith(prefix) or (node.get('data-owner-label') or '').startswith(prefix) or
+           (node.get('data-owner')==marker_id and node.get('data-label-kind')=='COORDINATE_LABEL') for node in root.iter()):
+        errors.append('COORDINATE_BAND_HIDDEN_POINT_SHOWN:'+ident)
+    return errors
+
+def cubic_quartic_overview_audit(plan,poly,points,transform,root):
     if poly.degree() not in (3,4):return {'status':'UNSUPPORTED','errors':['UNSUPPORTED_CUBIC_QUARTIC_OVERVIEW_DEGREE']}
     if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:return {'status':'UNSUPPORTED','errors':['CUBIC_QUARTIC_SOURCE_DOMAIN_UNSUPPORTED']}
     if plan.get('overviewPolicy')!='POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1':return {'status':'UNSUPPORTED','errors':['CUBIC_QUARTIC_OVERVIEW_POLICY_REQUIRED']}
@@ -169,13 +208,16 @@ def cubic_quartic_overview_audit(plan,poly,points,transform):
         if not xmin+.05*(xmax-xmin)<fx<xmax-.05*(xmax-xmin) or not ymin+.05*(ymax-ymin)<fy<ymax-.05*(ymax-ymin):errors.append('OVERVIEW_FEATURE_OUTSIDE_INTERIOR:'+feature['id'])
         if not any(abs(point[0]-fx)<=px_tol and abs(point[1]-fy)<=py_tol for point in points):errors.append('OVERVIEW_FEATURE_NOT_OBSERVED:'+feature['id'])
     required=plan.get('requiredPoints',[])
-    for point in required:
+    band=plan.get('coordinateBand')
+    hidden=band['hide'] if isinstance(band,dict) and isinstance(band.get('hide'),list) else []
+    for index,point in enumerate(required,1):
         if not isinstance(point,dict) or set(point)!={'id','x','y'}:errors.append('INVALID_REQUIRED_GRAPH_POINT');continue
         px,py=float(point['x']),float(point['y'])
         if not xmin+.05*(xmax-xmin)<=px<=xmax-.05*(xmax-xmin) or not ymin+.05*(ymax-ymin)<=py<=ymax-.05*(ymax-ymin):errors.append('OVERVIEW_REQUIRED_FEATURE_CLIPPED:'+point['id'])
         if not any(abs(q[0]-px)<=px_tol and abs(q[1]-py)<=py_tol for q in points):errors.append('OVERVIEW_REQUIRED_FEATURE_NOT_OBSERVED:'+point['id'])
         exact_y=float(poly.eval(S.Rational(str(px))))
         if abs(exact_y-py)>1e-8:errors.append('OVERVIEW_REQUIRED_FEATURE_NOT_ON_CURVE:'+point['id'])
+        if point['id'] in hidden:errors.extend(_hidden_overview_point_errors(plan,poly,point,index,root,transform))
     critical=[row for row in math_features if any(role.startswith('STATIONARY_') for role in row['roles'])]
     if not critical:critical=[row for row in math_features if 'INFLECTION' in row['roles']]
     sorted_points=sorted(points,key=lambda point:point[0]);tails={row['side']:row for row in expected if row['kind']=='TAIL_DIRECTION'};arms=[]
@@ -474,10 +516,10 @@ def equal_unit_overview_audit(plan,poly,points,transform):
         if max((abs(p[0]-h) for p in arm),default=0)<natural*(1-1e-6):errors.append('OVERVIEW_'+name+'_ARM_TOO_NARROW')
     return {'status':'FAIL' if errors else 'PASS','errors':errors,'vertex':[h,k],'opening':'UP' if a>0 else 'DOWN','plotCssSize':[(xmax-xmin)*sx,(ymax-ymin)*sy],'naturalWindowCssPx':2*natural*sx,'policy':'QUADRATIC_EQUAL_UNIT_OVERVIEW_v1'}
 
-def overview_audit(plan,poly,points,transform):
+def overview_audit(plan,poly,points,transform,root):
     """Independent shape adequacy from source coefficients and observed curves."""
     if poly.degree()==2 and plan.get('overviewPolicy')=='QUADRATIC_EQUAL_UNIT_OVERVIEW_v1':return equal_unit_overview_audit(plan,poly,points,transform)
-    if poly.degree() in (3,4):return cubic_quartic_overview_audit(plan,poly,points,transform)
+    if poly.degree() in (3,4):return cubic_quartic_overview_audit(plan,poly,points,transform,root)
     if poly.degree()!=2:return {'status':'UNSUPPORTED','errors':['UNSUPPORTED_OVERVIEW_DEGREE']}
     a=poly.nth(2);h=-poly.nth(1)/(2*a);k=poly.eval(h);h,k,a=map(float,(h,k,a))
     xmin,xmax,ymin,ymax=plan['viewport'];lo,hi=plan['domain'];errors=[]
@@ -5079,7 +5121,7 @@ def _audit_family(plan,svg,transform):
     elif plan.get('family')=='sqrt-affine' and plan.get('shapeIntent')=='OVERVIEW':overview=sqrt_affine_general_overview_audit(plan,actual_points,transform,topology,root) if plan.get('overviewPolicy')==SQRT_AFFINE_GENERAL_POLICY else sqrt_affine_overview_audit(plan,poly,actual_points,transform,topology,root)
     elif plan.get('family')=='absolute-value' and plan.get('shapeIntent')=='OVERVIEW':overview=absolute_value_overview_audit(plan,poly,actual_points,transform,topology,root)
     elif plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL':overview=polynomial_interval_audit(plan,poly,actual_points,transform,root)
-    else:overview=overview_audit(plan,poly,actual_points,transform) if plan.get('shapeIntent')=='OVERVIEW' else {'status':'NOT_REQUESTED'}
+    else:overview=overview_audit(plan,poly,actual_points,transform,root) if plan.get('shapeIntent')=='OVERVIEW' else {'status':'NOT_REQUESTED'}
     if overview['status'] in ('FAIL','UNSUPPORTED'):errors.extend(overview['errors'])
     region_observations=[]
     if plan.get('family')=='polynomial':

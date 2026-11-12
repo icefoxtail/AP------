@@ -141,6 +141,8 @@ def _produce(plan):
         if vertical['drawn']:
             singular_x=float(Fraction(vertical['x']));a,b=vp.screen((singular_x,ymin)),vp.screen((singular_x,ymax))
             curves.append(f'<line id="rational-asymptote-vertical" data-role="asymptote" data-axis="vertical" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
+    # The observer checks the required-point markers in both the model and the composed SVG.
+    if (plan['family']=='rational' and plan.get('overviewPolicy')=='RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_v1') or (overview and 'coordinateBand' in plan):
         for index,point in enumerate(plan.get('requiredPoints',[]),1):
             cx,cy=vp.screen((point['x'],point['y']))
             curves.append(f'<circle id="required-point-{index}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
