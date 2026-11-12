@@ -15,6 +15,1182 @@
         "scope": "Q4, Q11, Q13, Q16, Q18, Q19, Q20 formatting",
         "change": "Normalized malformed centimeter spacing from comma-plus-unit to thin-space notation and escaped literal percent signs in TeX in Q16/Q18.",
         "independentCheck": "No numeric expression changed. Q16 independently recalculated as 7/20×100=35% (⑤); Q18 as 40×20%=8 and 8−3=5 (①), confirmed by separate reviewer /root/maesan_math_review on 2026-11-12."
+      },
+      {
+        "scope": "Q1–Q22 solution tails, including reported Q2/Q3/Q4/Q14/Q20/Q21",
+        "change": "Removed only the appended U+E907 visual-status and source-question-metadata JSON blocks from solution strings. Preserved parsed visual status, parsed source metadata, and each exact raw source metadata block in sourceProvenance.embeddedMetaTailRecords.",
+        "independentCheck": "Detected and parsed the same two-block tail pattern in Q1–Q22. The six reported items are included. Pre/post object comparison confirms question count, ids, content, choices, answers, points, and all normal solution text are unchanged; only metadata suffixes were removed."
+      }
+    ],
+    "embeddedMetaTailRecords": [
+      {
+        "sourceOrdinal": 1,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "기본도형의 개념 및 용어 정의에 대한 진위 판정 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "1",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "점, 선, 면의 정의와 교점, 교선의 개수를 기본 입체/평면도형과 대조하여 참인 진술을 판별한다.",
+          "decisiveStep": "도형의 기본 요소인 점, 선, 면 정의 확인",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "점·선·면",
+            "l4": "점, 선, 면"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+            "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT",
+            "why": "기본도형의 용어 정의와 교점, 교선의 성질을 묻는 기본 판별형 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "기본도형의 정의와 용어 지식을 직접 대조하는 1단계 개념 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "직육면체",
+              "삼각형"
+            ],
+            "goal": [
+              "교점",
+              "교선"
+            ],
+            "method": [
+              "정의"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"1\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"점, 선, 면의 정의와 교점, 교선의 개수를 기본 입체/평면도형과 대조하여 참인 진술을 판별한다.\",\n  \"decisiveStep\": \"도형의 기본 요소인 점, 선, 면 정의 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"기본 도형\",\n    \"l3\": \"점·선·면\",\n    \"l4\": \"점, 선, 면\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_BASIC_GEOMETRY_JUDGMENT\",\n    \"templateKey\": \"TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT\",\n    \"why\": \"기본도형의 용어 정의와 교점, 교선의 성질을 묻는 기본 판별형 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"기본도형의 정의와 용어 지식을 직접 대조하는 1단계 개념 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"직육면체\",\n      \"삼각형\"\n    ],\n    \"goal\": [\n      \"교점\",\n      \"교선\"\n    ],\n    \"method\": [\n      \"정의\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 2,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "한 원 또는 평면 위의 5개 점에서 만들어지는 반직선의 개수를 구하는 조합 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "2",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "어느 세 점도 일직선 위에 있지 않은 5개 점에서 시작점 5개와 방향점 4개의 곱으로 반직선의 개수 20개를 계산한다.",
+          "decisiveStep": "5 × 4 = 20개 산출",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "점·선·면",
+            "l4": "직선·반직선·선분"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
+            "templateKey": "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_MULTI_OBJECT_COUNT",
+            "why": "점들의 위치 조건에서 만들 수 있는 반직선의 개수를 세는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "시작점과 방향점의 순서쌍 개념을 적용하여 반직선 수를 곱의 법칙으로 구하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "점"
+            ],
+            "goal": [
+              "반직선",
+              "개수"
+            ],
+            "method": [
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"2\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"어느 세 점도 일직선 위에 있지 않은 5개 점에서 시작점 5개와 방향점 4개의 곱으로 반직선의 개수 20개를 계산한다.\",\n  \"decisiveStep\": \"5 × 4 = 20개 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"기본 도형\",\n    \"l3\": \"점·선·면\",\n    \"l4\": \"직선·반직선·선분\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT\",\n    \"templateKey\": \"TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_MULTI_OBJECT_COUNT\",\n    \"why\": \"점들의 위치 조건에서 만들 수 있는 반직선의 개수를 세는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"시작점과 방향점의 순서쌍 개념을 적용하여 반직선 수를 곱의 법칙으로 구하는 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"점\"\n    ],\n    \"goal\": [\n      \"반직선\",\n      \"개수\"\n    ],\n    \"method\": [\n      \"사칙연산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 3,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "두 직선이 한 점에서 교차하며 맞꼭지각 2x+10도, 70도와 이웃각 y도가 표시된 각 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "3",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "맞꼭지각의 성질 2x+10=70에서 x=30을 구하고 평각의 성질 y=180-70=110을 구하여 합 140을 계산한다.",
+          "decisiveStep": "x=30, y=110 도출 및 합산",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "각",
+            "l4": "맞꼭지각"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+            "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+            "why": "맞꼭지각과 평각의 일차방정식을 풀어 미지각의 합을 구하는 표준 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "맞꼭지각의 일치와 평각 180도의 관계식을 연립하여 두 미지수를 각각 구하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "직선",
+              "각"
+            ],
+            "goal": [
+              "맞꼭지각",
+              "평각"
+            ],
+            "method": [
+              "일차방정식"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"3\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"맞꼭지각의 성질 2x+10=70에서 x=30을 구하고 평각의 성질 y=180-70=110을 구하여 합 140을 계산한다.\",\n  \"decisiveStep\": \"x=30, y=110 도출 및 합산\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"기본 도형\",\n    \"l3\": \"각\",\n    \"l4\": \"맞꼭지각\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_INTERSECTING_ANGLE_RELATIONS\",\n    \"templateKey\": \"TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION\",\n    \"why\": \"맞꼭지각과 평각의 일차방정식을 풀어 미지각의 합을 구하는 표준 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"맞꼭지각의 일치와 평각 180도의 관계식을 연립하여 두 미지수를 각각 구하는 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"직선\",\n      \"각\"\n    ],\n    \"goal\": [\n      \"맞꼭지각\",\n      \"평각\"\n    ],\n    \"method\": [\n      \"일차방정식\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 4,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "선분 AB 위에 점 M, N이 위치하고 중점 관계가 표시된 1차원 선분 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "4",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "선분의 중점 관계를 순차적으로 적용하여 AM=12cm, NM=6cm를 산출한다.",
+          "decisiveStep": "24cm를 2단계로 연속 반분하여 6cm 산출",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "점·선·면",
+            "l4": "선분의 중점"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+            "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_CHAINED_MIDPOINT",
+            "why": "선분의 연쇄 중점 성질을 이용해 부분 선분의 길이를 구하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "중점 정의를 2회 순차 적용하는 1단계 기본 계산 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "선분",
+              "중점"
+            ],
+            "goal": [
+              "길이"
+            ],
+            "method": [
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"4\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"선분의 중점 관계를 순차적으로 적용하여 AM=12cm, NM=6cm를 산출한다.\",\n  \"decisiveStep\": \"24cm를 2단계로 연속 반분하여 6cm 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"기본 도형\",\n    \"l3\": \"점·선·면\",\n    \"l4\": \"선분의 중점\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_SEGMENT_LENGTH_RELATIONS\",\n    \"templateKey\": \"TPL_M1_SEGMENT_LENGTH_RELATIONS_CHAINED_MIDPOINT\",\n    \"why\": \"선분의 연쇄 중점 성질을 이용해 부분 선분의 길이를 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"중점 정의를 2회 순차 적용하는 1단계 기본 계산 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"선분\",\n      \"중점\"\n    ],\n    \"goal\": [\n      \"길이\"\n    ],\n    \"method\": [\n      \"사칙연산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 5,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "공간에서 직선과 평면의 위치 관계 명제에 대한 진위 판정 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "5",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "conceptClusterKey": "POSITION_RELATION",
+          "primaryMethod": "공간에서 직선 간 평행의 추이성을 참으로 식별하고 직육면체 반례로 나머지 명제를 기각한다.",
+          "decisiveStep": "직선 평행 관계의 추이성 성립 확인",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "위치 관계",
+            "l3": "공간에서의 위치 관계",
+            "l4": "직선과 평면의 위치 관계"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+            "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT",
+            "why": "공간에서 직선과 평면의 평행·수직 공리 및 위치 관계 진위를 검토하는 표준 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "직육면체 공간 모델을 활용하여 다양한 위치 관계의 참·거짓을 반례로 판별하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "직선",
+              "평면"
+            ],
+            "goal": [
+              "위치관계"
+            ],
+            "method": [
+              "성질"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"5\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"공간에서 직선 간 평행의 추이성을 참으로 식별하고 직육면체 반례로 나머지 명제를 기각한다.\",\n  \"decisiveStep\": \"직선 평행 관계의 추이성 성립 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"공간에서의 위치 관계\",\n    \"l4\": \"직선과 평면의 위치 관계\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_SPATIAL_LINE_PLANE_RELATIONS\",\n    \"templateKey\": \"TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT\",\n    \"why\": \"공간에서 직선과 평면의 평행·수직 공리 및 위치 관계 진위를 검토하는 표준 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"직육면체 공간 모델을 활용하여 다양한 위치 관계의 참·거짓을 반례로 판별하는 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"직선\",\n      \"평면\"\n    ],\n    \"goal\": [\n      \"위치관계\"\n    ],\n    \"method\": [\n      \"성질\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 6,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "평행선 l, m 사이에 두 번 꺾인 선과 각 x, y가 표시된 기하 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "6",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "conceptClusterKey": "POSITION_RELATION",
+          "primaryMethod": "평행한 보조선을 두 꺾인 점에 그어 엇각의 매개변수 알파를 상쇄시켜 x+y=190도를 구한다.",
+          "decisiveStep": "보조선에 의한 매개각 상쇄로 145도+45도=190도 산출",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "위치 관계",
+            "l3": "동위각과 엇각",
+            "l4": "평행선에서 꺾인 선의 각"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+            "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+            "why": "평행선 사이 다중 꺾인 선에서 보조선을 작도하여 각의 합을 도출하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "두 개의 평행 보조선을 도입하고 매개변수 상쇄를 통해 각의 합을 구하는 응용 문항",
+          "level": "상",
+          "item4slot": {
+            "given": [
+              "평행선"
+            ],
+            "goal": [
+              "각"
+            ],
+            "method": [
+              "엇각"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"6\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"평행한 보조선을 두 꺾인 점에 그어 엇각의 매개변수 알파를 상쇄시켜 x+y=190도를 구한다.\",\n  \"decisiveStep\": \"보조선에 의한 매개각 상쇄로 145도+45도=190도 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"동위각과 엇각\",\n    \"l4\": \"평행선에서 꺾인 선의 각\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLEL_ANGLE_TRANSFER\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE\",\n    \"why\": \"평행선 사이 다중 꺾인 선에서 보조선을 작도하여 각의 합을 도출하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"두 개의 평행 보조선을 도입하고 매개변수 상쇄를 통해 각의 합을 구하는 응용 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"평행선\"\n    ],\n    \"goal\": [\n      \"각\"\n    ],\n    \"method\": [\n      \"엇각\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 7,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "정육면체의 전개도와 꼭짓점 알파벳 라벨이 표시된 전개도 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "7",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-07",
+          "subUnitKey": "M1-07-SOLID_FIGURE",
+          "conceptClusterKey": "SOLID_FIGURE",
+          "primaryMethod": "전개도를 접어 정육면체를 구성한 후 모서리 AB와 평행한 모서리 DE를 꼬인 위치에서 제외한다.",
+          "decisiveStep": "AB와 DE가 평행함을 식별",
+          "rpm": {
+            "majorUnit": "입체도형",
+            "midUnit": "입체도형의 성질",
+            "l3": "다면체",
+            "l4": "정육면체의 전개도와 위치 관계"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+            "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FOLDED_NET_RELATION_AUDIT",
+            "why": "정육면체 전개도를 접었을 때 특정 모서리와 꼬인 위치, 평행, 만남 관계를 판별하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "REINTERPRETATION",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "2차원 전개도를 3차원 입체로 공간 회전하여 꼭짓점 일치 및 평행 모서리를 파악해야 하는 고난도 문항",
+          "level": "상",
+          "item4slot": {
+            "given": [
+              "정육면체",
+              "전개도"
+            ],
+            "goal": [
+              "꼬인위치"
+            ],
+            "method": [
+              "성질"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"7\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-07\",\n  \"subUnitKey\": \"M1-07-SOLID_FIGURE\",\n  \"conceptClusterKey\": \"SOLID_FIGURE\",\n  \"primaryMethod\": \"전개도를 접어 정육면체를 구성한 후 모서리 AB와 평행한 모서리 DE를 꼬인 위치에서 제외한다.\",\n  \"decisiveStep\": \"AB와 DE가 평행함을 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"입체도형\",\n    \"midUnit\": \"입체도형의 성질\",\n    \"l3\": \"다면체\",\n    \"l4\": \"정육면체의 전개도와 위치 관계\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS\",\n    \"templateKey\": \"TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FOLDED_NET_RELATION_AUDIT\",\n    \"why\": \"정육면체 전개도를 접었을 때 특정 모서리와 꼬인 위치, 평행, 만남 관계를 판별하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"REINTERPRETATION\",\n  \"difficultyBucket\": 4,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"2차원 전개도를 3차원 입체로 공간 회전하여 꼭짓점 일치 및 평행 모서리를 파악해야 하는 고난도 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"정육면체\",\n      \"전개도\"\n    ],\n    \"goal\": [\n      \"꼬인위치\"\n    ],\n    \"method\": [\n      \"성질\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 8,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "평행선 l, m 사이에 지그재그로 꺾인 선분들과 각 a, b, c, d 및 35도가 표시된 기하 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "8",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "conceptClusterKey": "POSITION_RELATION",
+          "primaryMethod": "모든 꺾인 점에 평행선을 그어 각 a, b, c, d와 35도를 평각 180도 위에 모아 145도를 구한다.",
+          "decisiveStep": "180도 - 35도 = 145도 도출",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "위치 관계",
+            "l3": "동위각과 엇각",
+            "l4": "평행선에서 꺾인 선의 각"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+            "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+            "why": "다중 꺾인 선에서 평행 보조선을 활용해 각의 합을 평각으로 귀착시키는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "여러 개의 평행 보조선을 도입하여 각들을 한 점에서의 평각으로 누적 이송하는 응용 문항",
+          "level": "상",
+          "item4slot": {
+            "given": [
+              "평행선"
+            ],
+            "goal": [
+              "평각"
+            ],
+            "method": [
+              "엇각",
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"8\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"모든 꺾인 점에 평행선을 그어 각 a, b, c, d와 35도를 평각 180도 위에 모아 145도를 구한다.\",\n  \"decisiveStep\": \"180도 - 35도 = 145도 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"동위각과 엇각\",\n    \"l4\": \"평행선에서 꺾인 선의 각\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLEL_ANGLE_TRANSFER\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE\",\n    \"why\": \"다중 꺾인 선에서 평행 보조선을 활용해 각의 합을 평각으로 귀착시키는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"여러 개의 평행 보조선을 도입하여 각들을 한 점에서의 평각으로 누적 이송하는 응용 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"평행선\"\n    ],\n    \"goal\": [\n      \"평각\"\n    ],\n    \"method\": [\n      \"엇각\",\n      \"사칙연산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 9,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "작도 도구(눈금 없는 자, 컴퍼스)의 정의 및 사용 목적 진위 판별 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "9",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "작도 도구의 고유 역할(길이 이동은 컴퍼스, 직선 긋기는 자)을 대조하여 틀린 진술을 찾는다.",
+          "decisiveStep": "선분의 길이를 옮기는 도구는 컴퍼스임을 확인",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "기본 도형의 작도",
+            "l4": "작도의 뜻과 도구"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+            "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
+            "why": "작도 도구의 올바른 사용법과 작도의 기본 용어를 점검하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "작도 도구의 정의와 역할을 직접 묻는 1단계 개념 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "작도"
+            ],
+            "goal": [
+              "선분"
+            ],
+            "method": [
+              "정의"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"9\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"작도 도구의 고유 역할(길이 이동은 컴퍼스, 직선 긋기는 자)을 대조하여 틀린 진술을 찾는다.\",\n  \"decisiveStep\": \"선분의 길이를 옮기는 도구는 컴퍼스임을 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"기본 도형의 작도\",\n    \"l4\": \"작도의 뜻과 도구\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_BASIC_CONSTRUCTION\",\n    \"templateKey\": \"TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE\",\n    \"why\": \"작도 도구의 올바른 사용법과 작도의 기본 용어를 점검하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"작도 도구의 정의와 역할을 직접 묻는 1단계 개념 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"작도\"\n    ],\n    \"goal\": [\n      \"선분\"\n    ],\n    \"method\": [\n      \"정의\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 10,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "직선 l과 한 점 P, 평행선을 작도하는 보조선과 호 흔적이 기호 ㉠~㉥으로 표시된 작도 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "10",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "conceptClusterKey": "POSITION_RELATION",
+          "primaryMethod": "동위각 복사 작도의 논리적 6단계를 순차적으로 대조하여 올바른 작도 순서를 판별한다.",
+          "decisiveStep": "보조선 긋기 후 호 그리기와 거리 재기의 순서 확정",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "기본 도형의 작도",
+            "l4": "평행선의 작도"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+            "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
+            "why": "동위각 작도를 이용한 평행선 작도의 표준 절차를 평가하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "평행선 작도의 각 단계가 갖는 기하학적 인과관계를 바르게 이해해야 하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "작도",
+              "평행선"
+            ],
+            "goal": [
+              "동위각"
+            ],
+            "method": [
+              "정의"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"10\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"동위각 복사 작도의 논리적 6단계를 순차적으로 대조하여 올바른 작도 순서를 판별한다.\",\n  \"decisiveStep\": \"보조선 긋기 후 호 그리기와 거리 재기의 순서 확정\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"기본 도형의 작도\",\n    \"l4\": \"평행선의 작도\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLEL_ANGLE_TRANSFER\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER\",\n    \"why\": \"동위각 작도를 이용한 평행선 작도의 표준 절차를 평가하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"평행선 작도의 각 단계가 갖는 기하학적 인과관계를 바르게 이해해야 하는 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"작도\",\n      \"평행선\"\n    ],\n    \"goal\": [\n      \"동위각\"\n    ],\n    \"method\": [\n      \"정의\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 11,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "삼각형의 결정 조건에 대한 대수적 수치 진위 판별 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "11",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "두 변과 그 끼인각이 아닌 각이 주어진 경우 삼각형이 하나로 결정되지 않음을 식별한다.",
+          "decisiveStep": "두 변과 비끼인각 조건의 불완전성 확인",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "삼각형의 작도",
+            "l4": "삼각형이 하나로 정해지는 조건"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+            "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+            "why": "주어진 변과 각의 조건에서 삼각형이 유일하게 결정되는지 판별하는 표준 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "삼각형의 합동 조건과 결정 조건의 필요충분 관계를 각 보기별로 엄밀히 대조하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "삼각형",
+              "길이"
+            ],
+            "goal": [
+              "삼각형이하나로결정"
+            ],
+            "method": [
+              "성립조건"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"11\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"두 변과 그 끼인각이 아닌 각이 주어진 경우 삼각형이 하나로 결정되지 않음을 식별한다.\",\n  \"decisiveStep\": \"두 변과 비끼인각 조건의 불완전성 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 작도\",\n    \"l4\": \"삼각형이 하나로 정해지는 조건\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_UNIQUENESS\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA\",\n    \"why\": \"주어진 변과 각의 조건에서 삼각형이 유일하게 결정되는지 판별하는 표준 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"삼각형의 합동 조건과 결정 조건의 필요충분 관계를 각 보기별로 엄밀히 대조하는 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"삼각형\",\n      \"길이\"\n    ],\n    \"goal\": [\n      \"삼각형이하나로결정\"\n    ],\n    \"method\": [\n      \"성립조건\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 12,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "합동인 두 삼각형 ABC와 DEF의 대응점 및 변/각 수치가 표시된 기하 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "12",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "합동 기호의 꼭짓점 순서 대응 관계를 대조하여 정보가 누락된 변 EF를 판별한다.",
+          "decisiveStep": "BC에 대응하는 EF의 미제시 확인",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "삼각형의 합동",
+            "l4": "합동인 도형의 성질"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+            "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
+            "why": "합동 기호의 알파벳 순서 대응과 도형의 성질을 대조하는 기본 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "도형 합동의 기본 정의와 대응점 일치 관계를 직접 묻는 1단계 개념 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "삼각형",
+              "합동"
+            ],
+            "goal": [
+              "대응변",
+              "대응각"
+            ],
+            "method": [
+              "성질"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"12\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"합동 기호의 꼭짓점 순서 대응 관계를 대조하여 정보가 누락된 변 EF를 판별한다.\",\n  \"decisiveStep\": \"BC에 대응하는 EF의 미제시 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 합동\",\n    \"l4\": \"합동인 도형의 성질\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_DATA_TRANSFER\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE\",\n    \"why\": \"합동 기호의 알파벳 순서 대응과 도형의 성질을 대조하는 기본 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"도형 합동의 기본 정의와 대응점 일치 관계를 직접 묻는 1단계 개념 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"삼각형\",\n      \"합동\"\n    ],\n    \"goal\": [\n      \"대응변\",\n      \"대응각\"\n    ],\n    \"method\": [\n      \"성질\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 13,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "삼각형 세 변의 길이 부등식 범위 계산 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "13",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "삼각부등식 11-5 < x < 11+5에서 6 < x < 16을 유도하여 범위 밖의 x=5를 찾는다.",
+          "decisiveStep": "부등식 범위 6 < x < 16 도출",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "삼각형의 작도",
+            "l4": "삼각형의 세 변의 길이 사이의 관계"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+            "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_THIRD_SIDE_RANGE",
+            "why": "두 변의 길이가 주어졌을 때 셋째 변의 존재 범위를 삼각부등식으로 구하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "삼각형의 세 변 성립 부등식을 1차원적으로 적용하는 1단계 기본 계산 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "삼각형",
+              "길이"
+            ],
+            "goal": [
+              "부등식"
+            ],
+            "method": [
+              "성립조건"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"13\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"삼각부등식 11-5 < x < 11+5에서 6 < x < 16을 유도하여 범위 밖의 x=5를 찾는다.\",\n  \"decisiveStep\": \"부등식 범위 6 < x < 16 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 작도\",\n    \"l4\": \"삼각형의 세 변의 길이 사이의 관계\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_TRIANGLE_SIDE_FEASIBILITY\",\n    \"templateKey\": \"TPL_M1_TRIANGLE_SIDE_FEASIBILITY_THIRD_SIDE_RANGE\",\n    \"why\": \"두 변의 길이가 주어졌을 때 셋째 변의 존재 범위를 삼각부등식으로 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [\n    \"COND_RANGE\"\n  ],\n  \"integrationPattern\": \"NONE\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"삼각형의 세 변 성립 부등식을 1차원적으로 적용하는 1단계 기본 계산 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"삼각형\",\n      \"길이\"\n    ],\n    \"goal\": [\n      \"부등식\"\n    ],\n    \"method\": [\n      \"성립조건\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 14,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "한 변이 연장된 두 정삼각형과 교점 F가 표시된 기하 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "14",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "정삼각형의 변과 180-60=120도의 끼인각 일치를 확인하여 SAS 합동을 증명한다.",
+          "decisiveStep": "AC=BC, CD=CE 및 끼인각 120도 일치 확인",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "삼각형의 합동",
+            "l4": "삼각형의 합동 조건"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+            "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+            "why": "도형 속에서 두 삼각형의 합동 조건을 찾고 근거를 판별하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "정삼각형 성질과 평각을 연계하여 두 변과 끼인각의 동등성을 도출해야 하는 증명형 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "정삼각형"
+            ],
+            "goal": [
+              "합동"
+            ],
+            "method": [
+              "SAS"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"14\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"정삼각형의 변과 180-60=120도의 끼인각 일치를 확인하여 SAS 합동을 증명한다.\",\n  \"decisiveStep\": \"AC=BC, CD=CE 및 끼인각 120도 일치 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 합동\",\n    \"l4\": \"삼각형의 합동 조건\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_UNIQUENESS\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION\",\n    \"why\": \"도형 속에서 두 삼각형의 합동 조건을 찾고 근거를 판별하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"정삼각형 성질과 평각을 연계하여 두 변과 끼인각의 동등성을 도출해야 하는 증명형 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"정삼각형\"\n    ],\n    \"goal\": [\n      \"합동\"\n    ],\n    \"method\": [\n      \"SAS\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 15,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "줄기와 잎 그림의 원자료 정렬 및 빈칸 미지수 계산 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "15",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-08",
+          "subUnitKey": "M1-08-DATA_ORGANIZATION",
+          "conceptClusterKey": "DATA_ORGANIZATION",
+          "primaryMethod": "원자료 20개를 줄기별로 정렬하여 잎 a=5, b=9, c=6을 식별하고 5*9-6=39를 계산한다.",
+          "decisiveStep": "크기순 잎 a=5, b=9, c=6 산출",
+          "rpm": {
+            "majorUnit": "통계",
+            "midUnit": "자료의 정리와 해석",
+            "l3": "도수분포",
+            "l4": "도수분포표"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_STEM_LEAF_PLACEHOLDER_EVALUATION",
+            "templateKey": "TPL_M1_STEM_LEAF_PLACEHOLDER_EVALUATION_CORE",
+            "why": "원자료를 줄기와 잎 그림으로 변환할 때 특정 위치의 잎을 추출하여 계산하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "자료를 크기순으로 분류하고 순서 위치의 잎 값을 정확히 추출하여 연산하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "자료"
+            ],
+            "goal": [
+              "변량"
+            ],
+            "method": [
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"15\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-08\",\n  \"subUnitKey\": \"M1-08-DATA_ORGANIZATION\",\n  \"conceptClusterKey\": \"DATA_ORGANIZATION\",\n  \"primaryMethod\": \"원자료 20개를 줄기별로 정렬하여 잎 a=5, b=9, c=6을 식별하고 5*9-6=39를 계산한다.\",\n  \"decisiveStep\": \"크기순 잎 a=5, b=9, c=6 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"통계\",\n    \"midUnit\": \"자료의 정리와 해석\",\n    \"l3\": \"도수분포\",\n    \"l4\": \"도수분포표\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_STEM_LEAF_PLACEHOLDER_EVALUATION\",\n    \"templateKey\": \"TPL_M1_STEM_LEAF_PLACEHOLDER_EVALUATION_CORE\",\n    \"why\": \"원자료를 줄기와 잎 그림으로 변환할 때 특정 위치의 잎을 추출하여 계산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"자료를 크기순으로 분류하고 순서 위치의 잎 값을 정확히 추출하여 연산하는 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"자료\"\n    ],\n    \"goal\": [\n      \"변량\"\n    ],\n    \"method\": [\n      \"사칙연산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 16,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "특정 구간 인원수의 백분율 계산 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "16",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-08",
+          "subUnitKey": "M1-08-DATA_ORGANIZATION",
+          "conceptClusterKey": "DATA_ORGANIZATION",
+          "primaryMethod": "40대 교사 7명을 세어 전체 20명에 대한 백분율 7/20*100=35\\%를 산출한다.",
+          "decisiveStep": "7 / 20 * 100 = 35\\% 계산",
+          "rpm": {
+            "majorUnit": "통계",
+            "midUnit": "자료의 정리와 해석",
+            "l3": "자료 해석",
+            "l4": "자료에서 정보 추론"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+            "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
+            "why": "자료의 특정 구간 빈도를 전체 도수에 대한 비율 및 백분율로 환산하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "자료에서 특정 계급의 도수를 세고 백분율 공식을 적용하는 1단계 계산 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "자료"
+            ],
+            "goal": [
+              "백분율",
+              "비율"
+            ],
+            "method": [
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"16\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-08\",\n  \"subUnitKey\": \"M1-08-DATA_ORGANIZATION\",\n  \"conceptClusterKey\": \"DATA_ORGANIZATION\",\n  \"primaryMethod\": \"40대 교사 7명을 세어 전체 20명에 대한 백분율 7/20*100=35\\%를 산출한다.\",\n  \"decisiveStep\": \"7 / 20 * 100 = 35\\% 계산\",\n  \"rpm\": {\n    \"majorUnit\": \"통계\",\n    \"midUnit\": \"자료의 정리와 해석\",\n    \"l3\": \"자료 해석\",\n    \"l4\": \"자료에서 정보 추론\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_DATA_CATEGORY_PERCENTAGE\",\n    \"templateKey\": \"TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE\",\n    \"why\": \"자료의 특정 구간 빈도를 전체 도수에 대한 비율 및 백분율로 환산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"자료에서 특정 계급의 도수를 세고 백분율 공식을 적용하는 1단계 계산 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"자료\"\n    ],\n    \"goal\": [\n      \"백분율\",\n      \"비율\"\n    ],\n    \"method\": [\n      \"사칙연산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 17,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "자료의 양 끝 극값 식별 및 덧셈 계산 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "17",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-08",
+          "subUnitKey": "M1-08-DATA_ORGANIZATION",
+          "conceptClusterKey": "DATA_ORGANIZATION",
+          "primaryMethod": "자료의 최솟값 23세와 최댓값 56세를 찾아 합 79세를 계산한다.",
+          "decisiveStep": "23 + 56 = 79 도출",
+          "rpm": {
+            "majorUnit": "통계",
+            "midUnit": "자료의 정리와 해석",
+            "l3": "자료 해석",
+            "l4": "자료에서 정보 추론"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_DATA_EXTREME_VALUE_SUM",
+            "templateKey": "TPL_M1_DATA_EXTREME_VALUE_SUM_CORE",
+            "why": "자료의 극값(최댓값과 최솟값)을 읽어 합을 계산하는 표준 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "자료의 최댓값과 최솟값을 직접 읽고 덧셈을 수행하는 1단계 기본 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "자료"
+            ],
+            "goal": [
+              "변량"
+            ],
+            "method": [
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"17\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-08\",\n  \"subUnitKey\": \"M1-08-DATA_ORGANIZATION\",\n  \"conceptClusterKey\": \"DATA_ORGANIZATION\",\n  \"primaryMethod\": \"자료의 최솟값 23세와 최댓값 56세를 찾아 합 79세를 계산한다.\",\n  \"decisiveStep\": \"23 + 56 = 79 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"통계\",\n    \"midUnit\": \"자료의 정리와 해석\",\n    \"l3\": \"자료 해석\",\n    \"l4\": \"자료에서 정보 추론\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_DATA_EXTREME_VALUE_SUM\",\n    \"templateKey\": \"TPL_M1_DATA_EXTREME_VALUE_SUM_CORE\",\n    \"why\": \"자료의 극값(최댓값과 최솟값)을 읽어 합을 계산하는 표준 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"NONE\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"자료의 최댓값과 최솟값을 직접 읽고 덧셈을 수행하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"자료\"\n    ],\n    \"goal\": [\n      \"변량\"\n    ],\n    \"method\": [\n      \"사칙연산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 18,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "도수분포표에서 백분율 조건을 이용한 빈칸 계급 도수 계산 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "18",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-08",
+          "subUnitKey": "M1-08-DATA_ORGANIZATION",
+          "conceptClusterKey": "DATA_ORGANIZATION",
+          "primaryMethod": "전체 40명의 20\\%인 8명에서 170~180 계급 3명을 빼서 160~170 계급 도수 5명을 구한다.",
+          "decisiveStep": "40 * 0.2 - 3 = 5 도출",
+          "rpm": {
+            "majorUnit": "통계",
+            "midUnit": "자료의 정리와 해석",
+            "l3": "도수분포",
+            "l4": "도수분포표"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+            "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "why": "도수분포표의 누적 비율 조건에서 특정 계급의 빈칸 도수를 계산하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "백분율을 실제 도수로 환산하고 부분 계급의 도수를 차감하는 연계 계산 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "도수분포표"
+            ],
+            "goal": [
+              "도수",
+              "계급"
+            ],
+            "method": [
+              "사칙연산",
+              "백분율"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"18\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-08\",\n  \"subUnitKey\": \"M1-08-DATA_ORGANIZATION\",\n  \"conceptClusterKey\": \"DATA_ORGANIZATION\",\n  \"primaryMethod\": \"전체 40명의 20\\%인 8명에서 170~180 계급 3명을 빼서 160~170 계급 도수 5명을 구한다.\",\n  \"decisiveStep\": \"40 * 0.2 - 3 = 5 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"통계\",\n    \"midUnit\": \"자료의 정리와 해석\",\n    \"l3\": \"도수분포\",\n    \"l4\": \"도수분포표\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_FREQUENCY_DISTRIBUTION_READING\",\n    \"templateKey\": \"TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY\",\n    \"why\": \"도수분포표의 누적 비율 조건에서 특정 계급의 빈칸 도수를 계산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"백분율을 실제 도수로 환산하고 부분 계급의 도수를 차감하는 연계 계산 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"도수분포표\"\n    ],\n    \"goal\": [\n      \"도수\",\n      \"계급\"\n    ],\n    \"method\": [\n      \"사칙연산\",\n      \"백분율\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 19,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "도수분포표에서 총합으로 빈칸 도수를 구하고 특정 기준 미만의 누적 도수를 합산하는 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "19",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-08",
+          "subUnitKey": "M1-08-DATA_ORGANIZATION",
+          "conceptClusterKey": "DATA_ORGANIZATION",
+          "primaryMethod": "총합 40명에서 나머지 도수를 빼서 140~150 계급의 14명을 구하고 150미만 학생 수 5+14=19명을 산출한다.",
+          "decisiveStep": "빈칸 도수 14명 산출 및 5+14=19명 누적",
+          "rpm": {
+            "majorUnit": "통계",
+            "midUnit": "자료의 정리와 해석",
+            "l3": "도수분포",
+            "l4": "도수분포표"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+            "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "why": "도수분포표의 합계 관계로부터 특정 계급 도수를 복원하고 구간 누적 도수를 구하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "전체 합계에서 여집합 도수를 빼는 단계와 구간 합산 단계를 연결하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "도수분포표"
+            ],
+            "goal": [
+              "도수"
+            ],
+            "method": [
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"19\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-08\",\n  \"subUnitKey\": \"M1-08-DATA_ORGANIZATION\",\n  \"conceptClusterKey\": \"DATA_ORGANIZATION\",\n  \"primaryMethod\": \"총합 40명에서 나머지 도수를 빼서 140~150 계급의 14명을 구하고 150미만 학생 수 5+14=19명을 산출한다.\",\n  \"decisiveStep\": \"빈칸 도수 14명 산출 및 5+14=19명 누적\",\n  \"rpm\": {\n    \"majorUnit\": \"통계\",\n    \"midUnit\": \"자료의 정리와 해석\",\n    \"l3\": \"도수분포\",\n    \"l4\": \"도수분포표\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_FREQUENCY_DISTRIBUTION_READING\",\n    \"templateKey\": \"TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT\",\n    \"why\": \"도수분포표의 합계 관계로부터 특정 계급 도수를 복원하고 구간 누적 도수를 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"전체 합계에서 여집합 도수를 빼는 단계와 구간 합산 단계를 연결하는 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"도수분포표\"\n    ],\n    \"goal\": [\n      \"도수\"\n    ],\n    \"method\": [\n      \"사칙연산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 20,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "한 직선 위의 네 점 A, B, C, D와 비율 관계 BD=4AB, 중점 C가 표시된 선분 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "20",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "AB=x로 두고 BD=4x, AD=5x, AC=2.5x를 세워 BC=1.5x=9에서 x=6을 구한 후 AD=30cm를 계산한다.",
+          "decisiveStep": "1.5x=9에서 x=6 산출 및 AD=5x=30 대입",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "점·선·면",
+            "l4": "선분의 내분과 중점"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+            "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+            "why": "선분의 비율 조건과 중점 조건을 결합하여 전체 길이를 서술형으로 구하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "비례식을 미지수 x로 설정하고 중점 분할과 차를 연립하여 미지수를 해결하는 서술형 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "선분",
+              "중점"
+            ],
+            "goal": [
+              "길이"
+            ],
+            "method": [
+              "일차방정식",
+              "비율"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"20\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"AB=x로 두고 BD=4x, AD=5x, AC=2.5x를 세워 BC=1.5x=9에서 x=6을 구한 후 AD=30cm를 계산한다.\",\n  \"decisiveStep\": \"1.5x=9에서 x=6 산출 및 AD=5x=30 대입\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"기본 도형\",\n    \"l3\": \"점·선·면\",\n    \"l4\": \"선분의 내분과 중점\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_SEGMENT_LENGTH_RELATIONS\",\n    \"templateKey\": \"TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT\",\n    \"why\": \"선분의 비율 조건과 중점 조건을 결합하여 전체 길이를 서술형으로 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"비례식을 미지수 x로 설정하고 중점 분할과 차를 연립하여 미지수를 해결하는 서술형 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"선분\",\n      \"중점\"\n    ],\n    \"goal\": [\n      \"길이\"\n    ],\n    \"method\": [\n      \"일차방정식\",\n      \"비율\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 21,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "평행사변형 ABCD와 대각선 AC, 엇각 쌍이 호로 표시된 기하 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "21",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "conceptClusterKey": "POSITION_RELATION",
+          "primaryMethod": "평행선의 엇각 성질로 각 BCA=각 DAC, 각 BAC=각 DCA를 유도하고 공통변 AC를 결합하여 ASA 합동을 증명한다.",
+          "decisiveStep": "엇각 2쌍과 공통변 AC에 의한 ASA 합동 판정",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "삼각형의 합동",
+            "l4": "삼각형의 합동 조건의 활용"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+            "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+            "why": "평행선 조건에서 엇각과 공통변을 찾아 삼각형의 합동을 증명하는 서술형 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "평행선의 위치 관계 성질과 삼각형의 합동 조건을 논리적으로 결합하여 완성하는 정통 서술형 문항",
+          "level": "상",
+          "item4slot": {
+            "given": [
+              "평행선",
+              "삼각형"
+            ],
+            "goal": [
+              "합동"
+            ],
+            "method": [
+              "합동조건",
+              "엇각"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"21\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"평행선의 엇각 성질로 각 BCA=각 DAC, 각 BAC=각 DCA를 유도하고 공통변 AC를 결합하여 ASA 합동을 증명한다.\",\n  \"decisiveStep\": \"엇각 2쌍과 공통변 AC에 의한 ASA 합동 판정\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 합동\",\n    \"l4\": \"삼각형의 합동 조건의 활용\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_UNIQUENESS\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION\",\n    \"why\": \"평행선 조건에서 엇각과 공통변을 찾아 삼각형의 합동을 증명하는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"평행선의 위치 관계 성질과 삼각형의 합동 조건을 논리적으로 결합하여 완성하는 정통 서술형 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"평행선\",\n      \"삼각형\"\n    ],\n    \"goal\": [\n      \"합동\"\n    ],\n    \"method\": [\n      \"합동조건\",\n      \"엇각\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 22,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "직사각형 종이테이프를 접은 형태와 꼭짓점 E, F, G 및 각 EGF=140도가 표시된 기하 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "22",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "접은 각과 평행선 엇각의 성질로 삼각형 EGF가 이등변삼각형임을 밝히고 (180-140)/2=20도를 구한다.",
+          "decisiveStep": "이등변삼각형 성질 확인 및 밑각 20도 산출",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "위치 관계",
+            "l3": "동위각과 엇각",
+            "l4": "종이접기와 각"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+            "templateKey": "TPL_MOVE_FOLDING_REFLECTION_CORE",
+            "why": "직사각형 종이접기에서 접힌 각과 엇각으로 이등변삼각형을 찾아 각을 구하는 대표 서술형 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "REINTERPRETATION",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "종이접기의 대칭성과 평행선의 엇각을 종합하여 이등변삼각형을 재해석하는 고난도 서술형 문항",
+          "level": "상",
+          "item4slot": {
+            "given": [
+              "평행선",
+              "삼각형"
+            ],
+            "goal": [
+              "각"
+            ],
+            "method": [
+              "엇각",
+              "성질"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "sourceQuestionMetadataRaw": "{\n  \"sourceQid\": \"22\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"접은 각과 평행선 엇각의 성질로 삼각형 EGF가 이등변삼각형임을 밝히고 (180-140)/2=20도를 구한다.\",\n  \"decisiveStep\": \"이등변삼각형 성질 확인 및 밑각 20도 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"동위각과 엇각\",\n    \"l4\": \"종이접기와 각\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_MOVE_FOLDING_REFLECTION\",\n    \"templateKey\": \"TPL_MOVE_FOLDING_REFLECTION_CORE\",\n    \"why\": \"직사각형 종이접기에서 접힌 각과 엇각으로 이등변삼각형을 찾아 각을 구하는 대표 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"REINTERPRETATION\",\n  \"difficultyBucket\": 4,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"종이접기의 대칭성과 평행선의 엇각을 종합하여 이등변삼각형을 재해석하는 고난도 서술형 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"평행선\",\n      \"삼각형\"\n    ],\n    \"goal\": [\n      \"각\"\n    ],\n    \"method\": [\n      \"엇각\",\n      \"성질\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
       }
     ]
   },
@@ -396,17 +1572,47 @@
     }
   ],
   "validation": {
-    "jsSyntax": "NOT_RUN",
+    "jsSyntax": "PASS",
     "mathReview": "UNREVIEWED except Q16/Q18 calculations rechecked",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "NOT_RUN",
-    "sourceTextSha256": "NOT_RUN"
+    "sourceTextSha256": "NOT_RUN",
+    "solutionResidueAudit": {
+      "questionCountScanned": 22,
+      "affectedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "affectedQuestionCount": 22,
+      "sourceMetaPreservedInSidecar": true,
+      "status": "CLEANUP_APPLIED"
+    }
   },
   "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "c39ef567483aa5eed309da431984b4b78195efd9",
+  "expectedSourceBlobSha1": "638c5c263b441bbd3b757e459f8e55f58907dac4",
   "fourSlotCandidate": {
     "path": "archive/exams/similar/middle/m1/2mid/24_연향중_2학기_중간_중1_유사.4slot-candidate.json",
-    "sha256": "0c1738fbcdb4edb2c7a497031e57a543cbbb72972a94c1c2a29990649ac05d4c",
+    "sha256": "f2d7c8d6f16943f658d740029d76d154945c08d2a0da7dd21e7f6d35f63758a9",
     "status": "UNREVIEWED"
   }
 }
