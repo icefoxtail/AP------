@@ -861,14 +861,14 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[서답형 4]\n한 변의 길이가 $24,\\text{cm}$인 정사각형 $ABCD$에서 점 $E$는 변 $BC$ 위에 있고 $\\overline{BE} = 18,\\text{cm}$이다. 점 $F$는 변 $CD$ 위에 있고 $\\overline{DF} = x,\\text{cm}$이다. 사각형 $AECF$의 넓이가 정사각형 $ABCD$의 넓이의 $\\dfrac{5}{9}$ 이하가 된다고 할 때, 가능한 $x$의 값 중 가장 작은 자연수를 풀이과정과 함께 구하시오. [5점]",
+    "content": "[서답형 4]\n한 변의 길이가 $24\\text{ cm}$인 정사각형 $ABCD$에서 점 $E$는 변 $BC$ 위에 있고 $\\overline{BE} = 18\\text{ cm}$이다. 점 $F$는 변 $CD$ 위에 있고 $\\overline{DF} = x\\text{ cm}$이다. 사각형 $AECF$의 넓이가 정사각형 $ABCD$의 넓이의 $\\dfrac{5}{9}$ 이하가 된다고 할 때, 가능한 $x$의 값 중 가장 작은 자연수를 풀이과정과 함께 구하시오. [5점]",
     "choices": [],
     "answer": "4",
     "curriculum": "2022",
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "GEOMETRIC_AREA_INEQUALITY_INTEGER_MIN_ESSAY",
-    "solution": "1단계: 정사각형 $ABCD$의 넓이와 기준 넓이를 구한다. 정사각형의 한 변의 길이가 $24,\\text{cm}$이므로 $$ (\\text{정사각형 } ABCD\\text{의 넓이}) = 24 \\times 24 = 576,\\text{cm}^2 $$ 정사각형 넓이의 $\\frac{5}{9}$는 $$ 576 \\times \\frac{5}{9} = 64 \\times 5 = 320,\\text{cm}^2 \\quad [1점] $$\n2단계: 사각형 $AECF$의 넓이를 $x$에 대한 식으로 나타낸다. 사각형 $AECF$의 넓이는 정사각형 $ABCD$의 넓이에서 두 직각삼각형 $\\triangle ABE$와 $\\triangle ADF$의 넓이를 뺀 것과 같다.\n$\\triangle ABE$의 넓이: $$ \\frac{1}{2} \\times \\overline{AB} \\times \\overline{BE} = \\frac{1}{2} \\times 24 \\times 18 = 216,\\text{cm}^2 $$\n$\\triangle ADF$의 넓이: $$ \\frac{1}{2} \\times \\overline{AD} \\times \\overline{DF} = \\frac{1}{2} \\times 24 \\times x = 12x,\\text{cm}^2 $$ 따라서 사각형 $AECF$의 넓이는 $$ (\\text{사각형 } AECF) = 576 - (216 + 12x) = 360 - 12x,\\text{cm}^2 \\quad [2점] $$\n3단계: 일차부등식을 세우고 풀이하여 가장 작은 자연수 $x$를 구한다. 사각형 $AECF$의 넓이가 $320,\\text{cm}^2$ 이하이어야 하므로 $$ 360 - 12x \\le 320 $$ 상수항을 이항하면 $$ -12x \\le 320 - 360 $$ $$ -12x \\le -40 $$ 양변을 음수 $-12$로 나누면 부등호의 방향이 반대로 바뀌므로 $$ x \\ge \\frac{-40}{-12} = \\frac{10}{3} = 3.\\dot{3} \\quad [1점] $$ $x \\ge \\frac{10}{3}$을 만족시키는 가장 작은 자연수는 $4$이다. [1점] 따라서 가능한 $x$의 값 중 가장 작은 자연수는 $4$이다.",
+    "solution": "1단계: 정사각형 $ABCD$의 넓이와 기준 넓이를 구한다. 정사각형의 한 변의 길이가 $24\\text{ cm}$이므로 $$ (\\text{정사각형 } ABCD\\text{의 넓이}) = 24 \\times 24 = 576\\text{ cm}^2 $$ 정사각형 넓이의 $\\frac{5}{9}$는 $$ 576 \\times \\frac{5}{9} = 64 \\times 5 = 320\\text{ cm}^2 \\quad [1점] $$\n2단계: 사각형 $AECF$의 넓이를 $x$에 대한 식으로 나타낸다. 사각형 $AECF$의 넓이는 정사각형 $ABCD$의 넓이에서 두 직각삼각형 $\\triangle ABE$와 $\\triangle ADF$의 넓이를 뺀 것과 같다.\n$\\triangle ABE$의 넓이: $$ \\frac{1}{2} \\times \\overline{AB} \\times \\overline{BE} = \\frac{1}{2} \\times 24 \\times 18 = 216\\text{ cm}^2 $$\n$\\triangle ADF$의 넓이: $$ \\frac{1}{2} \\times \\overline{AD} \\times \\overline{DF} = \\frac{1}{2} \\times 24 \\times x = 12x\\text{ cm}^2 $$ 따라서 사각형 $AECF$의 넓이는 $$ (\\text{사각형 } AECF) = 576 - (216 + 12x) = 360 - 12x\\text{ cm}^2 \\quad [2점] $$\n3단계: 일차부등식을 세우고 풀이하여 가장 작은 자연수 $x$를 구한다. 사각형 $AECF$의 넓이가 $320\\text{ cm}^2$ 이하이어야 하므로 $$ 360 - 12x \\le 320 $$ 상수항을 이항하면 $$ -12x \\le 320 - 360 $$ $$ -12x \\le -40 $$ 양변을 음수 $-12$로 나누면 부등호의 방향이 반대로 바뀌므로 $$ x \\ge \\frac{-40}{-12} = \\frac{10}{3} = 3.\\dot{3} \\quad [1점] $$ $x \\ge \\frac{10}{3}$을 만족시키는 가장 작은 자연수는 $4$이다. [1점] 따라서 가능한 $x$의 값 중 가장 작은 자연수는 $4$이다.",
     "points": 5
   }
 ];
