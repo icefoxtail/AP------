@@ -598,7 +598,7 @@ window.questionBank = [
     "wide": false,
     "content": "선분 $AD$와 선분 $BC$의 교점을 $M$이라 할 때, $\\overline{BM} = \\overline{CM}$이고 $\\overline{AB} \\parallel \\overline{CD}$이다. 다음 설명 중 옳지 않은 것은? [4점]",
     "choices": [
-      "$\\triangle ABM \\equiv \\triangle DCM$ ($\\mathrm{SAS}$ 합동)",
+      "$\\triangle ABM$과 $\\triangle DCM$은 세 각이 각각 같다는 사실만으로 합동이다. ($\\mathrm{AAA}$)",
       "$\\angle ABM = \\angle DCM$",
       "$\\angle BAM = \\angle CDM$",
       "$\\overline{AM} = \\overline{DM}$",
@@ -608,7 +608,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_PARALLEL_ALTERNATE_ASA_TEST",
-    "solution": "평행선에서 생기는 엇각의 성질과 맞꼭지각을 이용하여 합동 조건을 정확히 판정한다. $$\\begin{aligned} &\\overline{AB} \\parallel \\overline{CD}\\text{이므로 엇각에 의해 } \\angle ABM = \\angle DCM, ; \\angle BAM = \\angle CDM\\text{이다. (②, ③ 참)} \\ &\\text{또한 맞꼭지각에 의해 } \\angle AMB = \\angle DMC\\text{이다.} \\ &\\triangle ABM\\text{과 } \\triangle DCM\\text{에서 한 변 } \\overline{BM} = \\overline{CM}\\text{의 양 끝 각이 각각 같으므로} \\ &\\triangle ABM \\equiv \\triangle DCM ; (\\mathrm{ASA}\\text{ 합동})\\text{이다.} \\ &\\text{따라서 } \\mathrm{SAS}\\text{ 합동이라고 한 ①은 옳지 않다.} \\ &\\text{합동인 두 삼각형의 대응변의 길이는 서로 같으므로 } \\overline{AM} = \\overline{DM}, ; \\overline{AB} = \\overline{CD}\\text{이다. (④, ⑤ 참)} \\end{aligned}$$ 따라서 옳지 않은 것은 ①이다.",
+    "solution": "평행선 $AB\\parallel CD$에서 엇각이 같으므로 $\\angle ABM=\\angle DCM$, $\\angle BAM=\\angle CDM$이다. 두 직선 $AD,BC$가 $M$에서 만나므로 맞꼭지각 $\\angle AMB=\\angle DMC$도 같다. 여기에 주어진 $\\overline{BM}=\\overline{CM}$을 더하면 이 변이 같은 두 각 사이에 있으므로 $\\triangle ABM\\equiv\\triangle DCM$ (ASA 합동)이다. 따라서 ②, ③은 참이고, 대응변의 길이도 같아 ④, ⑤도 참이다.\n①은 세 각이 각각 같다는 정보만으로 합동을 결론 내릴 수 있다고 한 점이 틀렸다. AAA는 삼각형의 닮음을 보일 뿐 합동을 보장하지 않는다. 이 문항의 두 삼각형은 $BM=CM$을 포함한 ASA로 실제 합동이며, 그 결과 $AB=DC$와 $\\angle ABM=\\angle DCM$도 알 수 있어 SAS로도 합동을 보일 수 있다. 따라서 옳지 않은 것은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
