@@ -109,7 +109,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 눈금에서 7과 19는 열린 경계이다. 다섯 보기의 양수를 제곱한 값을 여러 줄로 나누어 표시했다.",
+    "solutionImageCaption": "보기는 모두 양수이므로 제곱해 7과 19 사이인지 확인한다. 제곱값 9, 15, 8+2√7, 25−4√6은 그 사이에 있고, 14+6√5는 19보다 크다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -182,7 +186,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 변 2인 정사각형 ABCD·DCFE, 대각선 BD·BE와 이를 수직선 위 P·Q로 옮긴 두 호.",
+    "solutionImageCaption": "BD=BP=2√2, BE=BQ=2√5이므로 PQ=2√5−2√2이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -356,7 +364,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑변과 수직 높이가 표시된 파란 삼각형과 서로 수직인 두 대각선이 표시된 주황 마름모.",
+    "solutionImageCaption": "파란 삼각형의 밑변은 √45, 높이는 √24여서 넓이는 3√30이다. 주황 마름모의 넓이는 그 3분의 1인 √30이고, GE=√3과 DF는 수직인 대각선이다. 따라서 DF=2√10이므로 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -570,7 +582,11 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변 100 정사각형에서 폭 5인 두 띠와 그 겹친 5×5 모서리를 구분한 넓이 모형.",
+    "solutionImageCaption": "(100−5)²=100²−2·100·5+5²이므로 찬혁의 계산은 틀렸다. 수현의 합차공식 계산과 곱셈공식의 편리함 설명은 옳다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -607,7 +623,11 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변 3x인 정사각형 사진 여섯 장의 2×3 배열과 좌우 2·상하 1의 외곽 여백.",
+    "solutionImageCaption": "그림은 사진 한 변을 2로 잡아 배치를 보인 예이다. 전체 가로는 6x+4, 세로는 9x+2이므로 넓이는 (6x+4)(9x+2)=54x²+48x+8이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -742,7 +762,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 소문항의 근호 경계와 자연수 눈금, 둘째 소문항의 √b 경계 및 5~8 자연수 위치를 나타낸 수직선.",
+    "solutionImageCaption": "(1) 자연수 a는 6,7,8,9의 4개이다. (2) 8<√b≤9이므로 자연수 b는 65부터 81까지 17개이다. 정답: (1) 4, (2) 17.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -816,6 +840,10 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 반복 이등분한 직사각형 안의 사다리꼴 ABJK, 평행한 AB·JK와 수평거리 BJ를 나타낸 도형.",
+    "solutionImageCaption": "x=2√3일 때 AB=√6, JK=√6/4, BJ=3√3/2이다. 사다리꼴 넓이는 45√2/16이다. 정답: (1) 2√3, (2) 45√2/16.",
+    "solutionImageSize": "full"
   }
 ];

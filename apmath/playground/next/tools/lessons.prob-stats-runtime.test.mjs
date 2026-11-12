@@ -53,7 +53,7 @@ test('seven shell-cloned source scenes bind all 18 original branches and 19 conc
   }
  }
  assert.equal(count,37);assert.equal(original,18);assert.equal(concepts,19);
- assert.match(fs.readFileSync(new URL('../kit/apl-player.js',import.meta.url),'utf8'),/const DEFAULT_PLAYBACK_RATE = 1\.5/);
+ assert.match(fs.readFileSync(new URL('../kit/apl-player.js',import.meta.url),'utf8'),/const DEFAULT_PLAYBACK_RATE = 2/);
  assert.equal(lab.randomCalls(),0);
  t.diagnostic('7 scenes / 37 lessons = 18 original source branches + 19 concepts; validator 0 errors / 0 warnings');
 });

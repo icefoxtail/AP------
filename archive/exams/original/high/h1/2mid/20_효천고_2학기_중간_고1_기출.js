@@ -405,13 +405,16 @@ window.questionBank = [
     "tags": ["객관식", "함수"],
     "answer": "②",
     "solution": "함수와 그 역함수의 그래프가 만나는 점에서는 두 좌표가 같아야 한다. 따라서 교점의 $x$좌표 $a$는 $f(a)=a$를 만족한다.\n\n$3a+2=a$에서 $2a=-2$, $a=-1$이다.\n\n실제로 역함수는 $f^{-1}(x)=\\dfrac{x-2}{3}$이고 두 식을 같게 놓아도 $3x+2=\\dfrac{x-2}{3}$에서 $x=-1$을 얻는다.\n\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/20_효천고_2학기_중간_고1_기출/q10-solution.svg",
+    "solutionImage": "assets/images/20_효천고_2학기_중간_고1_기출/q10-solution-v2.svg",
     "questionUid": "qid_v1_678fc4d63c9403676dbc9e99c19092b89a956ae1f38be4f79cfdfa1d630678b2",
     "sourceQid": 10,
     "sourceOrdinal": 10,
     "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
     "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":10,"sourceQid":10,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
-    "difficultyReason": "역함수 그래프의 교점을 고정점 방정식으로 바꾸는 문항."
+    "difficultyReason": "역함수 그래프의 교점을 고정점 방정식으로 바꾸는 문항.",
+    "solutionImageAlt": "해설 그림: 두 패널에 파란색 원함수, 주황색 역함수, 초록색 y=x가 표시되어 있다. 교점 좌표는 쓰지 않았다.",
+    "solutionImageCaption": "원함수와 역함수의 그래프는 y=x에 대칭이다. 두 그래프의 교점 좌표는 숨겼다. 정답은 −1이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -451,7 +454,11 @@ window.questionBank = [
     "sourceOrdinal": 11,
     "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
     "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
-    "difficultyReason": "합집합 크기와 A만 신청 인원 변수로 최댓값을 찾는 복합 문항."
+    "difficultyReason": "합집합 크기와 A만 신청 인원 변수로 최댓값을 찾는 복합 문항.",
+    "solutionImage": "assets/images/20_효천고_2학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: U는 조사 대상 200명 전체이다. 원 A만 신청한 x명, 두 활동을 모두 신청한 z명, 원 B만 신청한 x−40명, 두 활동을 신청하지 않은 40명이 표시되어 있다.",
+    "solutionImageCaption": "U는 조사 대상 200명 전체이다. A만 신청한 수를 x로, 두 활동을 모두 신청한 수를 z로 두면 B만 신청한 수는 x−40이다. 두 원 밖의 신청하지 않은 학생은 40명이다. x의 최댓값은 그림에 표시하지 않았다. 정답은 100명이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -531,7 +538,11 @@ window.questionBank = [
     "sourceOrdinal": 13,
     "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
     "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":13,"sourceQid":13,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
-    "difficultyReason": "필요조건 방향과 열린 구간 끝점을 함께 판단하는 문항."
+    "difficultyReason": "필요조건 방향과 열린 구간 끝점을 함께 판단하는 문항.",
+    "solutionImage": "assets/images/20_효천고_2학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: p의 해인 x<2의 왼쪽 반직선과 예시 q 구간 [−11,−1]이 두 수직선에 표시되어 있다.",
+    "solutionImageCaption": "예: k=−6일 때 q의 양 끝을 포함한 구간이 p의 해 안에 든다. 일반 조건에서는 오른쪽 끝이 2보다 작아야 한다. 정답은 −4이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -813,7 +824,11 @@ window.questionBank = [
     "sourceOrdinal": 20,
     "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
     "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
-    "difficultyReason": "양화사 부정과 이차식 전 구간 비음수 조건을 결합한 문항."
+    "difficultyReason": "양화사 부정과 이차식 전 구간 비음수 조건을 결합한 문항.",
+    "solutionImage": "assets/images/20_효천고_2학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 k=70인 위로 열린 포물선이 x축 위에 있고, 꼭짓점 좌표는 표시하지 않았다.",
+    "solutionImageCaption": "예: k=70일 때 꼭짓점이 x축 위에 있어 식이 모든 실수에서 양수이다. 최솟값 조건의 경계와 구하는 k는 숨겼다. 정답은 64이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -848,13 +863,16 @@ window.questionBank = [
     "tags": ["서술형", "집합", "방정식"],
     "answer": "144/13<k<16",
     "solution": "$|3x|+|2y|=12$의 그래프는 꼭짓점 $(4,0),(0,6),(-4,0),(0,-6)$을 갖는 마름모이다. 원 $x^2+y^2=k$는 중심이 원점이고 반지름이 $r=\\sqrt{k}$인 원이다.\n\n마름모의 한 변은 제1사분면에서 $3x+2y=12$이다. 원점에서 이 직선까지의 거리는\n$\\dfrac{12}{\\sqrt{3^2+2^2}}=\\dfrac{12}{\\sqrt{13}}$이다.\n\n원과 한 변이 두 점에서 만나려면 원의 반지름이 변의 두 끝점까지 거리보다 모두 작고, 직선까지 거리보다 커야 한다. 가장 가까운 꼭짓점은 $(4,0)$이므로 각 변에서 두 교점을 만들 조건은\n$\\dfrac{12}{\\sqrt{13}}<r<4$이다.\n\n마름모의 네 변에서 각각 두 교점이 생기므로 전체 교점은 8개이다. 경계에서는 $r=12/\\sqrt{13}$일 때 각 변에 접해 4개이고, $r=4$일 때 축 위 꼭짓점과 변 내부 점이 겹쳐 모두 6개이므로 끝값은 포함하지 않는다.\n\n$r=\\sqrt{k}$를 대입해 제곱하면\n$\\dfrac{144}{13}<k<16$이다.",
-    "solutionImage": "assets/images/20_효천고_2학기_중간_고1_기출/q21-solution.svg",
+    "solutionImage": "assets/images/20_효천고_2학기_중간_고1_기출/q21-solution-v2.svg",
     "questionUid": "qid_v1_6153e122a5e9b42e16cf1de4a069b8b9374b159f1f431f277477713be6a387a3",
     "sourceQid": 21,
     "sourceOrdinal": 21,
     "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
     "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":21,"sourceQid":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
-    "difficultyReason": "동심원과 마름모의 교점 개수 및 경계 중복을 따지는 고난도 서술형."
+    "difficultyReason": "동심원과 마름모의 교점 개수 및 경계 중복을 따지는 고난도 서술형.",
+    "solutionImageAlt": "해설 그림: 검은 좌표축과 원점 중심의 검은 원, 파란 반지름 선분, 주황 마름모가 그려져 있다. 예시 반지름은 3.5이며, 원은 네 변을 각각 두 번 가로지른다.",
+    "solutionImageCaption": "검은 좌표축 위에 주황 마름모와 검은 원을 그리고, 파란 선분으로 반지름을 표시했다. 예시 반지름 3.5에서 원은 마름모의 네 변과 두 번씩 만난다. 끝값에서는 교점 수가 달라져 범위의 끝을 포함하지 않는다. 정답은 144/13 < k < 16이다.",
+    "solutionImageSize": "full"
   
   },
   {

@@ -1,0 +1,267 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "X",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "k",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "expression",
+      "op": "sqrt",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "6"
+       }
+      ]
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "t1",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "b": {
+      "kind": "expression",
+      "op": "sqrt",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "c": {
+      "kind": "expression",
+      "op": "neg",
+      "args": [
+       {
+        "kind": "expression",
+        "op": "mul",
+        "args": [
+         {
+          "kind": "integer",
+          "value": "2"
+         },
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "6"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "t2",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "b": {
+      "kind": "expression",
+      "op": "sqrt",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "c": {
+      "kind": "expression",
+      "op": "mul",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "2"
+       },
+       {
+        "kind": "expression",
+        "op": "sqrt",
+        "args": [
+         {
+          "kind": "integer",
+          "value": "6"
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "g",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "expression",
+      "op": "sqrt",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "b": {
+      "kind": "integer",
+      "value": "-1"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "T1",
+    "op": "PERPENDICULAR_FOOT",
+    "inputs": [
+     "O",
+     "t1"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "T2",
+    "op": "PERPENDICULAR_FOOT",
+    "inputs": [
+     "O",
+     "t2"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "T1",
+  "T2"
+ ],
+ "displaySegments": [
+  {
+   "id": "sOT1",
+   "refs": [
+    "O",
+    "T1"
+   ]
+  },
+  {
+   "id": "sOT2",
+   "refs": [
+    "O",
+    "T2"
+   ]
+  }
+ ],
+ "displayLines": [
+  "t1",
+  "t2",
+  "g"
+ ],
+ "displayCircles": [
+  "k"
+ ],
+ "coordinateLabels": [
+  "T1",
+  "T2"
+ ],
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "coordinateCanvas": {
+  "width": 520,
+  "height": 480
+ },
+ "caption": "원 x²+y²=6의 두 접선(파랑)과 원점을 지나는 직선 y=√3x(주황)의 접점 T1, T2는 직선 y=√3x 위에 있다.",
+ "sourceConditions": [
+  {
+   "id": "source",
+   "condition": "x^2+y^2=6",
+   "mappedTo": [
+    "k"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "접점"
+ ],
+ "planeMarks": {
+  "lineColors": [
+   {
+    "lines": [
+     "t1",
+     "t2"
+    ],
+    "color": "BLUE"
+   },
+   {
+    "lines": [
+     "g"
+    ],
+    "color": "WARM"
+   }
+  ]
+ }
+}

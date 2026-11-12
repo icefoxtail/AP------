@@ -1,0 +1,75 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "2",
+      "2",
+      "0"
+    ],
+    "phasePi": "0",
+    "absolute": true,
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "n1",
+        "slope": "2",
+        "perPi": true,
+        "intercept": "0",
+        "intersectionCount": 4,
+        "color": "BLUE",
+        "endCrossing": true
+      },
+      {
+        "id": "n2",
+        "slope": "1",
+        "perPi": true,
+        "intercept": "0",
+        "intersectionCount": 8,
+        "color": "WARM",
+        "endCrossing": true
+      },
+      {
+        "id": "n3",
+        "slope": "2/3",
+        "perPi": true,
+        "intercept": "0",
+        "intersectionCount": 12,
+        "color": "GREEN",
+        "endCrossing": true
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickPiStep": "1/2",
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "y=2|sin 2x|의 그래프와 직선 y=2x/(nπ)(n=1, 2, 3)을 0≤x≤3π에서 그린 그림이다. 세 직선은 모두 원점을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "y=2|sin2x|, y=2x/(nπ)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 사인 곡선과 세 직선의 교점"
+  ]
+}

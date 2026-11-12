@@ -1,0 +1,58 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "첫 괄호 = B"
+   },
+   "plan": {
+    "capability": "set-diagram-figure-v1",
+    "diagram": {
+     "kind": "VENN",
+     "sets": [
+      {
+       "id": "A"
+      },
+      {
+       "id": "B"
+      }
+     ],
+     "shade": "B",
+     "universe": {}
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "둘째 괄호 = B의 여집합"
+   },
+   "plan": {
+    "capability": "set-diagram-figure-v1",
+    "diagram": {
+     "kind": "VENN",
+     "sets": [
+      {
+       "id": "A"
+      },
+      {
+       "id": "B"
+      }
+     ],
+     "shade": "B^c",
+     "universe": {}
+    }
+   }
+  }
+ ],
+ "caption": "(A∪B)∩(Aᶜ∪B)=B, (Aᶜ∪Bᶜ)∩(A∪Bᶜ)=Bᶜ 이므로 합집합은 B∪Bᶜ=U이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "전체집합 U, 집합 A, B",
+   "mappedTo": "panels"
+  }
+ ],
+ "newVisualInformation": [
+  "두 괄호가 각각 B, B의 여집합으로 정리됨을 색칠로 보인다"
+ ]
+}

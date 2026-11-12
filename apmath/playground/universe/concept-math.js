@@ -70,23 +70,26 @@ export function createCircleState(id) {
   return updateCircleState({ id, points, arcs, phase: 8 }, 0);
 }
 
-export function updateCircleState(state, elapsedSeconds, { detail = false, reducedMotion = false } = {}) {
+export function updateCircleState(state, elapsedSeconds, { detail = false, reducedMotion = false, loop = false } = {}) {
   const elapsed = Number.isFinite(elapsedSeconds) ? Math.max(0, elapsedSeconds) : 0;
-  // Detail settles at six seconds, then holds. Preview drifts within the same valid domain.
-  const phase = reducedMotion ? 8 : detail ? Math.min(elapsed, 8) : 8;
-  const time = reducedMotion ? 6 : detail ? Math.min(elapsed, 6) : elapsed;
+  // The universe shows complete, continuously moving relationships. Its loop is
+  // periodic in both position and velocity, so wrapping at eight seconds is smooth.
+  // The original finite construction remains available for explicit non-loop use.
+  const phase = reducedMotion || loop ? 8 : detail ? Math.min(elapsed, 8) : 8;
+  const time = reducedMotion ? 6 : detail && !loop ? Math.min(elapsed, 6) : elapsed;
   const detailMotion = detail || reducedMotion;
+  const cycling = loop && !reducedMotion, turn = time * Math.PI / 4;
   const p = state.points;
   state.phase = phase;
   if (state.id === 'two-tangents') {
-    const d = 1.8 + (detailMotion ? 0.16 : 0.045) * Math.sin(time * (detailMotion ? 0.4 : 0.2));
+    const d = cycling ? 1.68 + 0.28 * Math.sin(turn) : 1.8 + (detailMotion ? 0.16 : 0.045) * Math.sin(time * (detailMotion ? 0.4 : 0.2));
     const x = 1 / d, y = Math.sqrt(d * d - 1) / d;
     setPoint(p.P, d, 0); setPoint(p.A, x, y); setPoint(p.B, x, -y);
   } else if (state.id === 'chord-bisector') {
-    const d = 0.42, half = Math.sqrt(1 - d * d);
+    const d = 0.42 + (cycling ? 0.24 * Math.sin(turn) : 0), half = Math.sqrt(1 - d * d);
     setPoint(p.A, -half, d); setPoint(p.B, half, d); setPoint(p.M, 0, d);
   } else if (state.id === 'radius-tangent') {
-    const angle = Math.PI / 4 + (detailMotion ? 0.12 : 0.035) * Math.sin(time * (detailMotion ? 0.5 : 0.14));
+    const angle = Math.PI / 4 + (cycling ? 0.42 * Math.sin(turn) : (detailMotion ? 0.12 : 0.035) * Math.sin(time * (detailMotion ? 0.5 : 0.14)));
     const x = Math.cos(angle), y = Math.sin(angle);
     setPoint(p.T, x, y);
     setPoint(p.L, x + 0.85 * y, y - 0.85 * x);
@@ -94,11 +97,11 @@ export function updateCircleState(state, elapsedSeconds, { detail = false, reduc
   } else if (state.id === 'same-arc' || state.id === 'central-inscribed') {
     onCircle(p.A, -Math.PI / 3); onCircle(p.B, Math.PI / 3);
     // Both vertices remain on the major arc, away from A/B and the highlighted minor arc.
-    onCircle(p.P, Math.PI + (detailMotion ? 0.35 : 0.08) * Math.sin(time * (detailMotion ? 0.65 : 0.16)));
+    onCircle(p.P, Math.PI + (cycling ? 0.55 * Math.sin(turn) : (detailMotion ? 0.35 : 0.08) * Math.sin(time * (detailMotion ? 0.65 : 0.16))));
     angleArc(state.arcs.P, p.P, p.A, p.B);
-    if (p.Q) { onCircle(p.Q, 4.2); angleArc(state.arcs.Q, p.Q, p.A, p.B); }
+    if (p.Q) { onCircle(p.Q, 4.2 + (cycling ? 0.15 * Math.cos(turn) : 0)); angleArc(state.arcs.Q, p.Q, p.A, p.B); }
   } else if (state.id === 'chord-arc') {
-    const rotation = 4 * Math.PI / 3 + (detailMotion ? 0.16 : 0.035) * Math.sin(time * (detailMotion ? 0.65 : 0.16));
+    const rotation = 4 * Math.PI / 3 + (cycling ? 0.48 * Math.sin(turn) : (detailMotion ? 0.16 : 0.035) * Math.sin(time * (detailMotion ? 0.65 : 0.16)));
     onCircle(p.A, -Math.PI / 6); onCircle(p.B, Math.PI / 6);
     onCircle(p.C, rotation - Math.PI / 6); onCircle(p.D, rotation + Math.PI / 6);
     state.arcs.CD.start = rotation - Math.PI / 6;

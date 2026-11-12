@@ -207,9 +207,9 @@ window.questionBank = [
       "$a\\ge-3$",
       "$a>-3$"
     ],
-    "solutionImage": "assets/images/19_매산고_1학기_중간_고1_기출/q5-solution.svg",
-    "solutionImageAlt": "a=-3이면 직선이 포물선에 접하고, a가 더 크면 두 점에서 만난다.",
-    "solutionImageCaption": "a=-3이면 직선이 포물선에 접하고, a가 더 크면 두 점에서 만난다.",
+    "solutionImage": "assets/images/19_매산고_1학기_중간_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 파란 포물선 y=f(x)와 주황 직선 y=g(x)가 두 점에서 만나고, 아래 패널에서는 만나지 않는 예다.",
+    "solutionImageCaption": "파란 포물선은 f(x)=x²+x−a, 주황 직선은 g(x)=5x−1이다. a=−2인 예에서는 두 그래프가 두 점에서 만나고, a=−4인 예에서는 만나지 않는다. 판별식이 0 이상인 조건으로 만나는 a의 범위를 정한다. 정답은 a≥−3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -255,7 +255,11 @@ window.questionBank = [
       "$12$",
       "$14$",
       "$16$"
-    ]
+    ],
+    "solutionImage": "assets/images/19_매산고_1학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선이 x=−3부터 x=3까지 그려져 있고, 구간 안의 꼭짓점과 양 끝이 표시되어 있다.",
+    "solutionImageCaption": "f(x)=−(x−1)²+12이므로 구간 안의 꼭짓점에서 최댓값은 12이다. 양 끝의 함수값을 비교하면 최솟값은 −4이다. 두 값을 더해 요구한 합을 구한다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -300,7 +304,11 @@ window.questionBank = [
       "$3$",
       "$4$",
       "$5$"
-    ]
+    ],
+    "solutionImage": "assets/images/19_매산고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 파란 판별식 직선과 주황 점선을, 아래 패널은 x축과 만나지 않는 위로 열린 파란 포물선 예를 보여 준다.",
+    "solutionImageCaption": "첫 패널의 파란 직선은 D(k)=4(k−4)이고 D는 판별식이다. 주황 점선은 D=0이다. D<0이면 실근이 없다. k=2인 예의 아래 패널은 q(x)=x²−4x+6을 나타내며, 파란 포물선은 x축과 만나지 않는다. 자연수 조건으로 가능한 k의 개수를 센다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -652,7 +660,11 @@ window.questionBank = [
       "$240$",
       "$300$"
     ],
-    "image": "assets/images/19_매산고_1학기_중간_고1_기출/q15.png"
+    "image": "assets/images/19_매산고_1학기_중간_고1_기출/q15.png",
+    "solutionImage": "assets/images/19_매산고_1학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 파란 직선과 주황 포물선의 두 교점을, 아래 패널은 구간 −1≤x≤2에서 파란 포물선의 꼭짓점과 양 끝을 보여 준다.",
+    "solutionImageCaption": "위 패널의 파란 직선은 f(x)=2x, 주황 포물선은 g(x)=−(3/2)x²+2x+3/2이다. 아래 패널은 같은 g(x)를 파란색으로, y=0을 주황 점선으로 그렸다. 구간에서 최댓값은 13/6이고, 양 끝 함수값 −2와 −1/2 중 최솟값은 −2이다. 극값을 이용해 주어진 배수를 계산한다. 정답은 120이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -767,7 +779,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/19_매산고_1학기_중간_고1_기출/q18.png"
+    "image": "assets/images/19_매산고_1학기_중간_고1_기출/q18.png",
+    "solutionImage": "assets/images/19_매산고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널의 파란 후보 포물선은 x축에 닿고, 아래 패널의 파란 후보 포물선은 x축보다 위에 있다. 주황 점선은 x축이다.",
+    "solutionImageCaption": "파란 곡선은 후보 함수 f, 주황 점선은 y=0이다. 계수 비교로 f(x)=(x−1)² 또는 f(x)=x²+x+1을 얻는다. 첫 후보의 최솟값은 0이라 제외하고 두 번째 후보만 남긴다. 남은 함수를 구하는 식에 대입한다. 정답은 91이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

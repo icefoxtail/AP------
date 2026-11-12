@@ -53,7 +53,7 @@ test('actual catalog, first packets, lesson modules and validators are completel
     }
   }
   t.diagnostic(`${ids.length} scenes / ${count} lessons (${sourceGoals} original goals, ${count - sourceGoals} source inquiry concepts)`);
-  assert.match(fs.readFileSync(new URL('../kit/apl-player.js', import.meta.url), 'utf8'), /const DEFAULT_PLAYBACK_RATE = 1\.5;/);
+  assert.match(fs.readFileSync(new URL('../kit/apl-player.js', import.meta.url), 'utf8'), /const DEFAULT_PLAYBACK_RATE = 2;/);
 });
 
 test('all cues paint finite native geometry, retain original functions and move in the first second', t => {

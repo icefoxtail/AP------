@@ -299,7 +299,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 포물선의 축과 꼭짓점, 같은 절댓값 높이에서 y축부터 곡선까지의 폭을 비교한 그림.",
+    "solutionImageCaption": "y=6x²과 y=−6x²은 x축 대칭이고, y=−13/2x²의 폭은 y=6x²보다 좁다. 정답: ④",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -331,7 +335,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 위로 열린 포물선과 같은 높이의 수평 안내선이 만나며, 가운데 곡선의 폭이 두 기준 곡선 사이에 있다.",
+    "solutionImageCaption": "같은 양의 높이에서 y=ax²의 폭은 두 기준 포물선의 폭 사이에 있다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -361,7 +369,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선과 점 (2,8), 높이 18의 수평선 및 좌우 대칭인 두 교점.",
+    "solutionImageCaption": "높이 18에서 두 x값은 서로 반대수이므로 곱은 −9이다. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -393,7 +405,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 위로 열린 포물선과 아래로 이동한 같은 폭의 포물선, 두 꼭짓점을 나타낸 그림.",
+    "solutionImageCaption": "포물선은 아래로 3만큼 평행이동하였다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -423,7 +439,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중3_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점과 축이 다른 두 포물선에서 꼭짓점으로부터 같은 높이 차에 놓인 가로 현 두 개.",
+    "solutionImageCaption": "두 포물선의 폭은 같다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -453,7 +473,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중3_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 포물선과 이동한 포물선의 꼭짓점, 이동을 나눈 가로·세로 선분을 나타낸 그림.",
+    "solutionImageCaption": "가로로 3, 위로 2만큼 이동하였다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -517,7 +541,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중3_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선의 꼭짓점이 y축 왼쪽에 있고 y절편은 양수인 예시 그래프.",
+    "solutionImageCaption": "아래로 열린 그래프에서 a<0, 축의 x좌표가 음수이면 b<0이며, y절편이 양수이면 c>0이다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -547,7 +575,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=x+1과 제3사분면 영역, 직선 위의 꼭짓점 후보 (a,a+1).",
+    "solutionImageCaption": "a<0이고 a+1<0이어야 하므로 a<−1이다. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -577,7 +609,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선 위의 점 (1,6)과 직선 y=−2x 위에 놓인 꼭짓점.",
+    "solutionImageCaption": "p>0이므로 꼭짓점은 (3,−6)이고 p+q=−3이다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -609,7 +645,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선과 x절편 A, B, 꼭짓점 C로 만든 삼각형. 밑변과 C에서 내린 수직 높이를 구분한다.",
+    "solutionImageCaption": "삼각형의 밑변은 5, 높이는 25/4이다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -681,7 +721,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통 꼭짓점을 가진 기준 포물선과 점 (−4,−3)을 지나는 새 포물선. y축 교점 수치는 표시하지 않는다.",
+    "solutionImageCaption": "두 번째 함수는 −3(x+3)²이고 y절편은 −27이다. 정답: −27",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

@@ -138,7 +138,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_1학기_기말_고2_수학I/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C에서 변 BC 길이 8, 각 B 150°와 변 AB의 이름 c를 나타낸 그림.",
+    "solutionImageCaption": "BC=8과 ∠B=150°가 끼인각을 이룬다. 넓이 18을 넓이 공식에 대입한다. 정답은 c=9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -282,7 +286,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_1학기_기말_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C에 변 이름 a, b, c와 각 B 표식을 둔 그림.",
+    "solutionImageCaption": "사인법칙으로 sin A와 sin C를 변으로 바꾸고 코사인법칙으로 cos B를 나타낸다. 정답은 AC=BC인 이등변삼각형이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -310,7 +318,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_1학기_기말_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 변 길이 4, 5, 6인 삼각형 A, B, C와 외접원, 중심 O, 반지름 OA를 나타낸 그림.",
+    "solutionImageCaption": "코사인법칙으로 cos A는 4분의 3, sin A는 4분의 √7임을 얻는다. 사인법칙의 2R로 외접반지름을 구한다. 정답은 7분의 8√7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -394,7 +406,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_1학기_기말_고2_수학I/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 A, B, C, D와 대각선 AC, 파란색·주황색 삼각형 변, 변 길이 2, 3, 5, 6, 두 보각 θ와 180−θ를 나타낸 그림.",
+    "solutionImageCaption": "파란 선분 AB·BC가 삼각형 ABC를, 주황 선분 CD·DA가 삼각형 ACD를 구분한다. ∠B=θ, ∠D=180°−θ이고 공통 대각선 AC로 cos θ=−3분의 2를 구해 두 넓이를 합한다. 정답은 6√5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -425,7 +441,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_1학기_기말_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 삼각형 A, B, C와 중심 O, 접선 CP, 일직선 B, O, P, 각 θ와 C의 직각 표식을 나타낸 그림.",
+    "solutionImageCaption": "접선 CP와 반지름 OC는 수직이고 B, O, P는 일직선이다. 중심각과 원주각의 관계를 이용한다. 정답은 3분의 √6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -509,7 +529,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_1학기_기말_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원 중심 O와 점선 양의 x축 방향, 좌우 대칭인 두 교점에 이르는 파란 반지름, 두 점을 잇는 주황색 현을 나타낸 그림.",
+    "solutionImageCaption": "주황색 현은 sin t=3분의 1인 두 교점을 잇고, 파란색 반지름은 각 교점과 중심 O를 잇는다. 한 주기의 두 t값 합은 π이다. 다음 주기에서는 두 점이 각각 2π만큼 옮겨져 합이 4π씩 증가한다. 정답은 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -541,7 +565,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_1학기_기말_고2_수학I/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표축에서 O, A, B, C와 AB=BC 표식, OA 파란색 선분, OB 주황색 선분을 나타낸 그림.",
+    "solutionImageCaption": "A, B, C는 코사인 그래프에서 얻은 교점이고 AB=BC이다. 파란 선분 OA와 주황 선분 OB의 기울기를 더한다. 정답은 9분의 2√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -565,7 +593,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_1학기_기말_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C에서 변 AB 길이 2, 변 AC 길이 √3+1, 꼭짓점 A의 30°를 나타낸 그림.",
+    "solutionImageCaption": "코사인법칙으로 BC=√2를 얻고 사인법칙으로 sin C를 계산한다. 정답은 2분의 √2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -589,7 +621,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
     "subUnit": "삼각부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_1학기_기말_고2_수학I/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원 중심 O와 점선 양의 x축 방향, cos x=2분의 1인 두 경계점에 이르는 파란 반지름과 두 점을 잇는 주황색 현을 나타낸 그림.",
+    "solutionImageCaption": "부등식을 cos x≥2분의 1로 바꾸어 단위원의 두 경계점을 찾는다. 파란 반지름은 두 경계점 방향을, 주황색 현은 두 점을 잇고, 점선은 양의 x축 방향을 나타낸다. 정답은 0≤x≤3분의 π 또는 3분의 5π≤x<2π이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -615,6 +651,10 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_1학기_기말_고2_수학I/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 A, B, C에서 C에서 빗변 AB에 내린 높이 CD, 두 직각 표식, 파란 AD=a, 주황 DB=b, 초록 CD=h를 나타낸 그림.",
+    "solutionImageCaption": "파란 선분 AD=a, 주황 선분 DB=b, 초록 높이 CD=h로 세 삼각형의 넓이를 나타내어 등차 조건을 이용한다. 닮음으로 AC와 AB의 길이 비를 구한다. 정답은 3분의 √3이다.",
+    "solutionImageSize": "full"
   }
 ];

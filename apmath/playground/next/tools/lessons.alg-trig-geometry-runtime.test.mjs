@@ -55,7 +55,7 @@ test('catalog, first source questions, all lesson modules and validators are com
     }
   }
   t.diagnostic(`${ids.length} scenes / ${count} lessons (${sourceGoals} original goals, ${count - sourceGoals} source inquiry concepts)`);
-  assert.match(fs.readFileSync(new URL('../kit/apl-player.js', import.meta.url), 'utf8'), /const DEFAULT_PLAYBACK_RATE = 1\.5;/);
+  assert.match(fs.readFileSync(new URL('../kit/apl-player.js', import.meta.url), 'utf8'), /const DEFAULT_PLAYBACK_RATE = 2;/);
 });
 
 test('every cue paints finite native geometry and traces the actual figure in the first second', t => {

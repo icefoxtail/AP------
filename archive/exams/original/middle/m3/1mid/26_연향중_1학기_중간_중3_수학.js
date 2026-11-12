@@ -140,7 +140,11 @@ window.examData = {
         "$2\\sqrt{6}$"
       ],
       "answer": "②",
-      "solution": "삼각형의 밑변은 $\\sqrt{35}\\,\\mathrm{cm}$, 높이는 $\\sqrt{24}\\,\\mathrm{cm}$이므로 넓이는 $\\frac12\\sqrt{35}\\sqrt{24}=\\frac12\\sqrt{840}=\\sqrt{210}\\,\\mathrm{cm}^2$이다.\n직사각형의 가로가 $x\\,\\mathrm{cm}$, 세로가 $\\sqrt{10}\\,\\mathrm{cm}$이므로 넓이는 $x\\sqrt{10}\\,\\mathrm{cm}^2$이다. 두 넓이가 같으므로 $x\\sqrt{10}=\\sqrt{210}$이고, $x>0$이어서 $x=\\sqrt{21}$이다.\n따라서 정답은 ②이다."
+      "solution": "삼각형의 밑변은 $\\sqrt{35}\\,\\mathrm{cm}$, 높이는 $\\sqrt{24}\\,\\mathrm{cm}$이므로 넓이는 $\\frac12\\sqrt{35}\\sqrt{24}=\\frac12\\sqrt{840}=\\sqrt{210}\\,\\mathrm{cm}^2$이다.\n직사각형의 가로가 $x\\,\\mathrm{cm}$, 세로가 $\\sqrt{10}\\,\\mathrm{cm}$이므로 넓이는 $x\\sqrt{10}\\,\\mathrm{cm}^2$이다. 두 넓이가 같으므로 $x\\sqrt{10}=\\sqrt{210}$이고, $x>0$이어서 $x=\\sqrt{21}$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "assets/images/26_연향중_1학기_중간_중3_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 밑변과 수직 높이가 표시된 삼각형, 높이 √10 cm인 직사각형을 같은 색으로 나타낸 그림.",
+      "solutionImageCaption": "삼각형의 밑변은 √35 cm, 수직 높이는 √24 cm이며 직사각형의 세로는 √10 cm이다. 넓이를 같게 두면 x=√21 cm이다. 정답: ②",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
@@ -167,8 +171,8 @@ window.examData = {
         "$1$",
         "$2$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "두 분모를 각각 유리화한다.\n$$\\frac{6+\\sqrt3}{\\sqrt6}=\\sqrt6+\\frac{\\sqrt2}{2},\\qquad \\frac{\\sqrt3+4}{\\sqrt2}=\\frac{\\sqrt6}{2}+2\\sqrt2$$\n두 식의 차는 $\\dfrac12\\sqrt6-\\dfrac32\\sqrt2$이다. 따라서 $a=\\dfrac12$, $b=-\\dfrac32$이므로 $a+b=-1$이다.\n정답은 ②이다."
     },
     {
       "id": 13,
@@ -238,7 +242,11 @@ window.examData = {
         "$16-8\\sqrt{6}$"
       ],
       "answer": "①",
-      "solution": "모눈에서 왼쪽 선분은 가로 4, 세로 2인 직각삼각형의 빗변이므로 피타고라스 정리를 적용하면 $\\overline{AB}=\\sqrt{4^2+2^2}=2\\sqrt5$이다. $A$의 수가 $4$이고 $P$가 $A$의 왼쪽에 있으므로 $a=4-2\\sqrt5$이다.\n오른쪽 선분은 모눈에서 가로 1, 세로 2인 직각삼각형의 빗변이므로 $\\overline{CD}=\\sqrt{1^2+2^2}=\\sqrt5$이다. $Q$가 $C$의 오른쪽에 있으므로 $b=6+\\sqrt5$이다.\n따라서 $ab=(4-2\\sqrt5)(6+\\sqrt5)=24+4\\sqrt5-12\\sqrt5-10=14-8\\sqrt5$이고 정답은 ①이다."
+      "solution": "모눈에서 왼쪽 선분은 가로 4, 세로 2인 직각삼각형의 빗변이므로 피타고라스 정리를 적용하면 $\\overline{AB}=\\sqrt{4^2+2^2}=2\\sqrt5$이다. $A$의 수가 $4$이고 $P$가 $A$의 왼쪽에 있으므로 $a=4-2\\sqrt5$이다.\n오른쪽 선분은 모눈에서 가로 1, 세로 2인 직각삼각형의 빗변이므로 $\\overline{CD}=\\sqrt{1^2+2^2}=\\sqrt5$이다. $Q$가 $C$의 오른쪽에 있으므로 $b=6+\\sqrt5$이다.\n따라서 $ab=(4-2\\sqrt5)(6+\\sqrt5)=24+4\\sqrt5-12\\sqrt5-10=14-8\\sqrt5$이고 정답은 ①이다.",
+      "solutionImage": "assets/images/26_연향중_1학기_중간_중3_수학/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 모눈 위 선분 AB, CD와 각각 같은 길이를 중심 A, C에서 옮긴 수직선 호 및 점 P, Q.",
+      "solutionImageCaption": "a=4−2√5, b=6+√5이므로 ab=14−8√5이다. 정답: ①",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,
@@ -266,7 +274,11 @@ window.examData = {
         "$2x^2+5x+2$"
       ],
       "answer": "③",
-      "solution": "조각은 넓이가 $x^2$인 정사각형 2개, 넓이가 $x$인 $x\\times1$ 직사각형 5개, 넓이가 $1$인 정사각형 2개이다. 큰 정사각형 두 개를 나란히 두면 가로가 $2x$, 세로가 $x$이다. 여기에 $x\\times1$ 직사각형 하나를 세워 붙이면 밑부분의 크기가 $(2x+1)\\times x$가 된다.\n남은 높이 $2$의 띠는 $x\\times1$ 직사각형 네 개를 두 줄로 놓고, 각 줄 끝에 $1\\times1$ 정사각형 하나씩을 놓아 채울 수 있다. 따라서 새 직사각형의 가로와 세로는 각각 $2x+1$, $x+2$이다.\n둘레는 $2\\{(2x+1)+(x+2)\\}=6x+6$이므로 정답은 ③이다."
+      "solution": "조각은 넓이가 $x^2$인 정사각형 2개, 넓이가 $x$인 $x\\times1$ 직사각형 5개, 넓이가 $1$인 정사각형 2개이다. 큰 정사각형 두 개를 나란히 두면 가로가 $2x$, 세로가 $x$이다. 여기에 $x\\times1$ 직사각형 하나를 세워 붙이면 밑부분의 크기가 $(2x+1)\\times x$가 된다.\n남은 높이 $2$의 띠는 $x\\times1$ 직사각형 네 개를 두 줄로 놓고, 각 줄 끝에 $1\\times1$ 정사각형 하나씩을 놓아 채울 수 있다. 따라서 새 직사각형의 가로와 세로는 각각 $2x+1$, $x+2$이다.\n둘레는 $2\\{(2x+1)+(x+2)\\}=6x+6$이므로 정답은 ③이다.",
+      "solutionImage": "assets/images/26_연향중_1학기_중간_중3_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 x² 정사각형, 다섯 x×1 직사각형, 두 단위 정사각형을 재배치해 만든 큰 직사각형.",
+      "solutionImageCaption": "큰 직사각형의 둘레는 2((2x+1)+(x+2))=6x+6이다. 정답: ③",
+      "solutionImageSize": "full"
     },
     {
       "id": 20,

@@ -228,6 +228,16 @@ jobs:
             echo "Footprint baseline commit is unavailable in this checkout; refusing an incomplete audit." >&2
             exit 2
           fi
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            # HEAD is GitHub's test-merge commit: parent 1 is the base branch tip it was merged onto,
+            # parent 2 the PR head. PR_BASE_SHA can be older than that tip (main moved after the PR
+            # opened), and base..HEAD would then charge the PR for other people's commits. Audit only
+            # what the merge adds on top of that tip. A non-merge HEAD keeps the event base.
+            read -r -a commit_parents < <(git rev-list --parents -n 1 HEAD)
+            if [[ "${#commit_parents[@]}" -eq 3 ]] && git cat-file -e "${commit_parents[1]}^{commit}" 2>/dev/null; then
+              base_ref="${commit_parents[1]}"
+            fi
+          fi
           test -f tools/git-history-rewrite-policy.v1.json || { echo "Active Git history rewrite policy receipt is missing; refusing to skip ancestry protection." >&2; exit 2; }
           node tools/check-git-growth.mjs --base "$base_ref" --head HEAD
 

@@ -299,15 +299,37 @@ function createDualObject(id, parent, resources, isMobile, segmentGeometry, sphe
   primal.edges.forEach(([a, b], index) => edges.set(index, primal.vertices[a], primal.vertices[b], 0.01)); edges.finish();
   dual.edges.forEach(([a, b], index) => dualBase.set(index, dual.vertices[a], dual.vertices[b], 0.009)); dualBase.finish();
   primal.vertices.forEach((vertex, index) => outerPoints.set(index, vertex, 0.025)); outerPoints.finish();
-  return (elapsedSeconds, { detail = false, reducedMotion = false } = {}) => {
-    const phase = reducedMotion || !detail ? 8 : clamp(Number.isFinite(elapsedSeconds) ? elapsedSeconds : 0, 0, 8);
+  return (elapsedSeconds, { detail = false, reducedMotion = false, loop = false } = {}) => {
+    const elapsed = Number.isFinite(elapsedSeconds) ? Math.max(0, elapsedSeconds) : 0;
+    const cycling = loop && !reducedMotion;
+    const cycle = (elapsed % 8) / 8, turn = cycle * Math.PI * 2;
+    const phase = reducedMotion || loop || !detail ? 8 : clamp(elapsed, 0, 8);
+    // Both solids, their centroid points and their corresponding face share this
+    // rigid transform. No independent spin can break the dual construction.
+    parent.rotation.set(cycling ? 0.18 * Math.sin(turn) : 0, cycling ? 0.55 * Math.sin(turn) : 0, cycling ? 0.12 * (Math.cos(turn) - 1) : 0);
     const centerReveal = smoothstep((phase - 0.8) / 1.6), progress = smoothstep((phase - 2.8) / 2.3) * dual.edges.length;
     dual.vertices.forEach((vertex, index) => centers.set(index, vertex, 0.019 + 0.016 * centerReveal)); centers.finish();
     dual.edges.forEach(([a, b], index) => dualEdges.set(index, dual.vertices[a], dual.vertices[b], 0.012, clamp(progress - index, 0, 1))); dualEdges.finish();
     edges.mesh.material.opacity = phase > 5.4 && detail ? 0.6 : 0.9;
     inner.material.opacity = 0.04 + 0.07 * smoothstep((phase - 3) / 2.5);
+    highlight.mesh.material.opacity = 0.26; selectedPoint.material.opacity = 0.95;
     // Both solids stay in the same parent transform throughout the correspondence.
-    if (detail && phase > 0.8 && phase < 3.2) {
+    if (cycling) {
+      const reverse = cycle >= 0.5, source = reverse ? dual : primal;
+      const facePosition = (cycle * 2 % 1) * source.faces.length, faceIndex = Math.floor(facePosition);
+      highlight.show(source, faceIndex);
+      // Fade at each face boundary rather than flashing between unrelated faces.
+      highlight.mesh.material.opacity = 0.26 * Math.sin(Math.PI * (facePosition - faceIndex)) ** 2;
+      selectedPoint.visible = true; selectedPoint.position.fromArray((reverse ? primal : dual).vertices[faceIndex]);
+      selectedPoint.material.opacity = highlight.mesh.material.opacity / 0.26;
+      if (reverse) {
+        selectedPoint.userData.primalVertexIndex = faceIndex;
+        delete selectedPoint.userData.primalFaceIndex;
+      } else {
+        selectedPoint.userData.primalFaceIndex = faceIndex;
+        delete selectedPoint.userData.primalVertexIndex;
+      }
+    } else if (detail && phase > 0.8 && phase < 3.2) {
       const faceIndex = Math.min(primal.faces.length - 1, Math.floor((phase - 0.8) / 2.4 * primal.faces.length));
       highlight.show(primal, faceIndex);
       selectedPoint.visible = true; selectedPoint.position.fromArray(dual.vertices[faceIndex]);

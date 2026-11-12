@@ -1615,10 +1615,10 @@ window.questionBank = [
       "intakeEvidencePath": "archive/analysis/h1-fast-lane-b-20261013/2021-palma-1final/21_팔마고_1학기_기말_고1_기출.evidence.json",
       "intakeEvidenceSha256": "99d24dc7d599d567f87a8e9b07a0c9f5b315337d8be204d446e8831ea46a7235"
     },
-    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "대칭 중심 K를 기준으로 대응하는 두 원의 중심",
-    "solutionImageCaption": "세 대응 꼭짓점의 중점이 같아 원의 중심도 같은 점대칭으로 이동한다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 대응하는 두 삼각형과 공통 중점 K, 중심 E와 반지름이 3인 원.",
+    "solutionImageCaption": "대응 꼭짓점 쌍의 중점이 같으므로 중심 K에 대한 점대칭이다. 원래 원의 중심 E도 같은 규칙으로 옮긴다. 정답은 (x−2)²+(y−3)²=9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

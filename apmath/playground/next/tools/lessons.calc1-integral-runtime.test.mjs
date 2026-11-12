@@ -51,7 +51,7 @@ test('all eight source scenes, original goals, module registration, captions and
   }
   assert.equal(count, 27); assert.equal(sourceGoals, 14);
   t.diagnostic(`${ids.length} scenes / ${count} lessons (${sourceGoals} original goals, ${count - sourceGoals} existing inquiry concepts)`);
-  assert.match(fs.readFileSync(new URL('../kit/apl-player.js', import.meta.url), 'utf8'), /const DEFAULT_PLAYBACK_RATE = 1\.5;/);
+  assert.match(fs.readFileSync(new URL('../kit/apl-player.js', import.meta.url), 'utf8'), /const DEFAULT_PLAYBACK_RATE = 2;/);
 });
 
 test('every cue and transition paints finite native curves with real first-second motion', t => {

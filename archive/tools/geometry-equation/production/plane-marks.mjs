@@ -65,8 +65,8 @@ export function segmentLabelSite(row,p,q){
   const others=(at==='START'?[0.06,0.15,0.3]:at==='END'?[0.94,0.85,0.7]:[0.3,0.7]).map(lerp);
   return {at:mid,others,band:at==='START'?[0,.25]:at==='END'?[.75,1]:null};
 }
-const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides','quadrants','callouts','vectors','vectorOps','equalAreas','equalAngles','segmentColors'],
-  equalAngles:['angles','color','fillColor'],segmentColors:['segments','color'],
+const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides','quadrants','callouts','vectors','vectorOps','equalAreas','equalAngles','segmentColors','lineColors'],
+  equalAngles:['angles','color','fillColor'],segmentColors:['segments','color'],lineColors:['lines','color'],
   quadrants:['id','quadrant','label','fill','factRole'],textLabels:['id','at','text','labelKind','labelWeight','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelWeight','labelAt','factRole'],
   dimensions:['id','from','to','label','labelKind','labelWeight','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
   pathLabels:['id','points','label','labelKind','labelWeight','unit','value','factRole','closed','anchor','side','leader'],
@@ -300,6 +300,33 @@ export function collectSegmentColors(plan,segmentIds){
   return out;
 }
 
+/** Colours of the displayed LINES of a plane/coordinate figure (K): Map lineId -> palette colour, from planeMarks.lineColors ([{lines:[ids],color}]), so that two
+ *  common tangents, a tangent and a secant, ... can be told apart. The ids are displayLines entries; one colour belongs to one row (LINE_COLOR_GROUP_MISMATCH), a
+ *  line sits in one row (LINE_COLOR_DUPLICATE), an unknown or undisplayed line is refused (LINE_COLOR_UNKNOWN_LINE) and the caption has to name every colour used
+ *  (LINE_COLOR_CAPTION_MISSING), because colour alone must not carry the meaning. */
+const COLOR_WORDS={BLUE:/파랑|파란|청색/,WARM:/주황/,GREEN:/초록|녹색/,ROSE:/분홍/,VIOLET:/보라/};
+export function collectLineColors(plan){
+  const out=new Map(),marks=plan?.planeMarks;
+  if(!marks||typeof marks!=='object'||Array.isArray(marks)||marks.lineColors===undefined)return out;
+  const rows=marks.lineColors,lineIds=new Set(plan.displayLines||[]),owner=new Map();
+  if(!Array.isArray(rows)||!rows.length||rows.length>5)bad('LINE_COLOR_INVALID:lineColors');
+  rows.forEach((row,index)=>{
+    if(!row||typeof row!=='object'||Array.isArray(row))bad('LINE_COLOR_INVALID:lineColors.'+index);
+    keysOk(row,KEYS.lineColors,'lineColors');
+    if(!Array.isArray(row.lines)||!row.lines.length)bad('LINE_COLOR_INVALID:lineColors.'+index+'.lines');
+    if(!isPaletteName(row.color))bad('LINE_COLOR_INVALID:lineColors.'+index+'.color');
+    if(owner.has(row.color))bad('LINE_COLOR_GROUP_MISMATCH:'+row.color+':lineColors.'+owner.get(row.color)+'&lineColors.'+index);
+    owner.set(row.color,index);
+    for(const id of row.lines){
+      if(typeof id!=='string'||!lineIds.has(id))bad('LINE_COLOR_UNKNOWN_LINE:'+id);
+      if(out.has(id))bad('LINE_COLOR_DUPLICATE:'+id);
+      out.set(id,row.color);
+    }
+    if(!COLOR_WORDS[row.color].test(String(plan.caption??'')))bad('LINE_COLOR_CAPTION_MISSING:'+row.color);
+  });
+  return out;
+}
+
 export function planeMarkSpec(plan,model,points,segmentIds){
   const marks=plan.planeMarks;
   if(marks===undefined)return {objects:[],factRolesByLabel:{}};
@@ -495,6 +522,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     }
   }
 
+  collectLineColors(plan);   // lineColors: unknown/undisplayed/repeated lines, a repeated colour or a caption that does not name the colour are refused here
   collectSegmentColors(plan,segmentIds);   // segmentColors / coloured equalLengths and parallels: unknown, repeated or conflicting segments are refused here
 
   // --- segment expression labels

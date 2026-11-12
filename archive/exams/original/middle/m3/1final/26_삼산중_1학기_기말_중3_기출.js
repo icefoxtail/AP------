@@ -223,7 +223,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: y=2x², y=x², y=−2x²의 포물선과 같은 높이의 폭, (1,2)와 (1,−2)의 x축 대칭을 나타낸 그래프.",
+    "solutionImageCaption": "같은 y=2에서 y=2x²과 y=x²의 전체 폭, 그리고 P(1,2)와 R(1,−2)의 x축 대칭을 나타낸 그래프. 옳지 않은 설명은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -251,7 +255,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: x축 대칭된 포물선과 (3,1), x=3에서 함수값 부호가 바뀌는 관계를 나타낸 그래프.",
+    "solutionImageCaption": "x축 대칭된 y=−ax²이 P(3,1)을 지나므로 a=−1/9이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -281,7 +289,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: y=5x², y=2x², y=−2x²와 y=2 높이의 두 전체 폭을 색 구간으로 비교한 그래프.",
+    "solutionImageCaption": "같은 y=2에서 y=5x²의 전체 폭(−√(2/5)부터 √(2/5))은 y=2x²의 전체 폭(−1부터 1)보다 좁다. y=−2x²은 y=2x²을 x축 대칭한 곡선이다. m+n=6, 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -309,7 +321,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점과 평행이동된 꼭짓점, 이동한 포물선 위의 점 및 이동의 가로·세로 성분을 나타낸 그래프.",
+    "solutionImageCaption": "O(0,0)에서 V(2,−1)로의 이동은 오른쪽 2, 아래쪽 1이며, 이동한 그래프는 P(3,3)을 지난다. a=4, 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -337,7 +353,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선 f와 g의 꼭짓점 A, B 및 가로 1, 세로 5의 평행이동 성분을 나타낸 그래프.",
+    "solutionImageCaption": "f(x)=(x+1)²+2의 꼭짓점 A(−1,2)에서 g(x)=(x+2)²−3의 꼭짓점 B(−2,−3)로 왼쪽 1, 아래쪽 5만큼 이동하므로 p+q=−6이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -365,7 +385,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 대칭축 x=−3과 x축 위 꼭짓점 V를 나타낸 포물선.",
+    "solutionImageCaption": "꼭짓점 V(−3,0)이 x축 위에 놓이므로 k=18이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -393,7 +417,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기 1인 직선 위의 두 꼭짓점 U, V와 수평·수직 변화량을 나타낸 예시 그림.",
+    "solutionImageCaption": "예시 위치에서 기울기 1인 직선의 가로 변화량과 세로 변화량은 같다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -424,7 +452,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 위의 A, B, C와 밑변 AC, B에서 내린 수직 높이를 나타낸 삼각형.",
+    "solutionImageCaption": "밑변 AC와 수직 높이를 각각 표시한 삼각형 ABC. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -546,7 +578,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 공유하는 위쪽·아래쪽 포물선과 점 A, B, C, D 및 BD, CD 길이를 색으로 구분한 그림.",
+    "solutionImageCaption": "대칭으로 A와 B의 높이를 잇고, B에서 x축을 지나 C까지의 길이를 비교한다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -577,7 +613,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선의 대칭축과 축 양쪽에 놓인 두 x절편, 같은 길이의 수평 거리를 나타낸 그림.",
+    "solutionImageCaption": "y=ax²+bx+c의 그래프에서 대칭축 양쪽 절편까지의 거리가 같아 다른 x절편을 결정한다. 정답: ④",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -627,7 +667,11 @@ window.questionBank = [
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 종이의 네 귀퉁이에서 같은 크기의 정사각형을 잘라내는 전개도. 안쪽 밑면과 네 접는 선을 구분하고 가로·세로와 밑면 변을 기호로 표시한다.",
+    "solutionImageCaption": "가로 x, 세로 x+5인 종이에서 네 귀퉁이를 잘라 접으면 높이 2, 밑면 변 x−4와 x+1인 상자가 된다. 정답: 20",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -677,6 +721,10 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점을 공유하는 두 포물선의 비교. 한 곡선은 y축에서 경계에 닿고, 다른 곡선은 더 아래로 내려가 제3사분면을 지난다.",
+    "solutionImageCaption": "y축 교점의 위치가 제3사분면 통과 여부를 가르는 경계임을 비교한다. 정답: (1) b=−4a, c=4a−3; (2) a≥3/4",
+    "solutionImageSize": "full"
   }
 ];

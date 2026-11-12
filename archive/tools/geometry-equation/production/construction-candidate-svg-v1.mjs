@@ -115,7 +115,7 @@ async function call(worker,stage,payload,options){
  * One build has no repair budget: its repairs are bounded by its labels.
  * `worker` carries only prepare and build; the static observer always runs on the real pythonWorker.
  */
-export async function composeConstructionCandidate({plan,model,identity,typographyPolicy,repairContext=null,worker=pythonWorker,browser,compositePanel=false}={}){
+export async function composeConstructionCandidate({plan,model,identity,typographyPolicy,repairContext=null,worker=pythonWorker,browser,compositePanel=false,lastResort=false}={}){
   const lineage=Object.fromEntries(LINEAGE_KEYS.map(key=>[key,null]));
   const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'},layoutRepairs:[]};
   // Opt-in failure evidence only. These bytes never enter an acceptance decision or replace a final asset.
@@ -186,7 +186,7 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     lineage.measurementsSha256=digest(measurements,'measurements','OUTPUT_NOT_CANONICAL');
     if(diagnostic)Object.assign(diagnostic,{measurements,fragments});
 
-    const built=await call(worker,'build',{action:'build',spec:bridged.spec,measurements,fragments});
+    const built=await call(worker,'build',{action:'build',spec:bridged.spec,measurements,fragments,...(lastResort?{lastResort:true}:{})});
     // Freeze the raw worker return before branch restoration/text-free decoration mutates built.svg.
     if(diagnostic){diagnostic.built=structuredClone(built);diagnostic.builtSvgStage='RAW_WORKER_BUILD';}
     if(typeof built.svg!=='string'||!built.svg.includes('<svg')||!built.witness?.layout)throw new Stop('WORKER_ERROR',{stage:'build',code:'BUILD_RESULT_INVALID'});

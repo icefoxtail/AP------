@@ -120,7 +120,11 @@ window.questionBank = [
     "sourceQid": 2,
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 패널의 파란 이차함수 f, 주황 x축과 부호 확인용 점 P를 보인다.",
+    "solutionImageCaption": "파란 포물선과 주황 x축으로 근을 본다. P는 x=0에서 부호를 살피는 예시점이고, f는 파란 곡선이다. 정답은 −16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -244,9 +248,9 @@ window.questionBank = [
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q4-solution.svg",
-    "solutionImageAlt": "원점에 대하여 대칭이동하면 중심이 P(-1,3)과 대칭인 Q(1,-3)로 옮겨지고 반지름 √5는 그대로이다. 원래 원의 중심이 Q이다.",
-    "solutionImageCaption": "원점에 대하여 대칭이동하면 중심이 P(-1,3)과 대칭인 Q(1,-3)로 옮겨지고 반지름 √5는 그대로이다. 원래 원의 중심이 Q이다.",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: C를 중심으로 한 파란 원과 D를 중심으로 한 주황 원이 원점의 반대편에 있다.",
+    "solutionImageCaption": "C 중심 파란 원과 D 중심 주황 원은 원점 대칭이고 반지름이 같다. 정답은 9이다.",
     "solutionImageSize": "full"
   },
   {
@@ -310,9 +314,9 @@ window.questionBank = [
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q5-solution.svg",
-    "solutionImageAlt": "점 (-2,-3)을 지나고 꼭짓점 V(-3,-5)에서 최솟값 -5",
-    "solutionImageCaption": "점 (-2,-3)을 지나고 꼭짓점 V(-3,-5)에서 최솟값 -5",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 파란 포물선 f와 주황 x축, 점 P를 보인다. 아래 패널은 파란 f와 주황 완전제곱식 g의 그래프다.",
+    "solutionImageCaption": "위 패널에서 파란 f는 점 P를 지나고 주황 선은 x축이다. 아래 패널은 파란 f와 주황 g를 함께 그려 완전제곱식의 형태를 보인다. 정답은 −5이다.",
     "solutionImageSize": "full"
   },
   {
@@ -376,10 +380,10 @@ window.questionBank = [
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q06-solution.svg",
-    "solutionImageAlt": "두 경우 a=3과 a=−3에서 직각을 이루는 두 변의 기울기",
-    "solutionImageCaption": "기울기 곱 조건에서 a=3 또는 a=−3이 나온다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: A, B, C를 이은 직각삼각형의 한 사례이다.",
+    "solutionImageCaption": "예로 a=3인 직각삼각형을 나타낸다. 정답은 0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -442,9 +446,9 @@ window.questionBank = [
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q7-solution.svg",
-    "solutionImageAlt": "직선 2x-y-4=0과의 거리가 √5인 점 (2, 5), (2, -5)이다.",
-    "solutionImageCaption": "직선 2x-y-4=0과의 거리가 √5인 점 (2, 5), (2, -5)이다.",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선 AB의 절편 A, B와 점 P에서 내린 수선 PH=√5, 발 H를 보인다.",
+    "solutionImageCaption": "예로 점 P에서 직선 AB까지의 거리 PH=√5와 수선의 발 H를 보인다. 정답은 −25이다.",
     "solutionImageSize": "full"
   },
   {
@@ -508,10 +512,10 @@ window.questionBank = [
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q08-solution.svg",
-    "solutionImageAlt": "외부점 A, 접점 T, 원점 O를 이은 직각삼각형",
-    "solutionImageCaption": "OA²=9+1, OT²=5이므로 접선 길이는 √5이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 밖의 점 A와 접점 T₁, T₂, 두 접선과 반지름을 보인다.",
+    "solutionImageCaption": "T₁, T₂는 접점이다. 한 눈금의 반지름 두 개와 두 눈금의 접선 두 개는 각각 같은 길이이고, 각 접선은 반지름과 수직이다. 정답은 √5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -698,9 +702,9 @@ window.questionBank = [
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "삼각형 ABC의 세 변을 2:1로 외분하는 점 D, E, F를 꼭짓점으로 하는 삼각형 DEF의 무게중심이 G(1,1)이다.",
-    "solutionImageCaption": "삼각형 ABC의 세 변을 2:1로 외분하는 점 D, E, F를 꼭짓점으로 하는 삼각형 DEF의 무게중심이 G(1,1)이다.",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 점 D, E, F를 이은 삼각형과 내부의 무게중심 G를 보인다.",
+    "solutionImageCaption": "외분점으로 만든 삼각형과 무게중심을 나타낸다. 구하는 좌표의 합은 그림에 적지 않았다. 정답은 2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -889,7 +893,11 @@ window.questionBank = [
     "sourceQid": 14,
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 파란 포물선 f와 주황 직선 g의 교점 P, Q를 보인다. 아래 패널은 초록 h와 주황 x축 y=0을 보인다.",
+    "solutionImageCaption": "위 패널에서 파란 f와 주황 g는 P, Q에서 만난다. 아래 패널은 두 함수값 차인 초록 h와 주황 x축 y=0을 나타낸다. 정답은 −4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -953,10 +961,10 @@ window.questionBank = [
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "삼각형의 두 수직이등분선이 만나는 외심 K와 꼭짓점까지의 같은 반지름을 표시한 그림",
-    "solutionImageCaption": "수직이등분선의 교점 K에서 세 꼭짓점까지의 거리는 모두 √65이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC와 외접원, 외심 K 및 AB의 중점 M을 보인다. AB는 오른쪽에 펼쳐 두 조각이 같은 길이임을 표시했다.",
+    "solutionImageCaption": "M은 AB의 중점이며 MK는 AB의 수직이등분선이다. 오른쪽 펼친 선분은 AM=MB, 두 눈금은 KA=KC를 나타낸다. 반지름의 값은 표시하지 않았다. 정답은 √65이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1009,10 +1017,10 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "조건에 따라 이동한 점 P의 네 단계 좌표와 대칭축 y=x를 나타낸 좌표 그림",
-    "solutionImageCaption": "x와 y의 대소를 매 이동 뒤 다시 확인하여 정지점까지 추적한다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 P, P₁, P₂의 첫 두 y방향 이동이다. 아래 패널은 P₂의 대칭점 R(8,10), P₃로의 이동과 y=x 위 P₄의 정지를 보인다.",
+    "solutionImageCaption": "R(8,10)은 P₂=(10,8)의 대칭점이고, 이어서 x, y방향으로 이동해 y=x에서 멈춘다. 정답은 18이다.",
+    "solutionImageSize": "full",
     "sourceEvidence": {
       "sourceIdentity": "2019|강남여고|h1|1final",
       "sourcePdfSha256": "131b25e81fcf3ce3128b736e82b91e51f63024bef5305885df216c93ce0ce938",
@@ -1078,10 +1086,10 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "접점 T₁, T₂의 반지름과 접선이 직각인 두 삼각형을 표시한 원 그림",
-    "solutionImageCaption": "두 직각삼각형의 합동으로 CP가 접선 사이 각을 이등분한다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 중심 C, 외부점 P, 접점 T₁·T₂, 반지름과 두 접선의 직각을 보인다.",
+    "solutionImageCaption": "한 눈금의 두 반지름과 두 눈금의 두 접선은 각각 같은 길이를 나타낸다. 각 접선은 반지름과 직각이고, P에서 만나는 두 접선도 서로 직각이다. 정답은 √10이다.",
+    "solutionImageSize": "full",
     "sourceEvidence": {
       "sourceIdentity": "2019|강남여고|h1|1final",
       "sourcePdfSha256": "131b25e81fcf3ce3128b736e82b91e51f63024bef5305885df216c93ce0ce938",
@@ -1144,10 +1152,10 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "a=1인 세로 선분의 두 끝 b=−1, b=3/4를 표시한 매개변수 평면 그림",
-    "solutionImageCaption": "허용되는 (a,b)의 점은 a=1 위의 닫힌 선분이다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 파란 f와 주황 g의 아래 조건 예다. 아래 패널은 파란 g와 주황 h의 위 조건 경계다.",
+    "solutionImageCaption": "위 패널은 파란 f(x)=x와 주황 g(x)=−1의 예다. 아래 패널은 파란 g(x)=x²+x+1과 주황 h(x)=3/4를 비교해 위쪽 경계를 보인다. 정답은 7/4이다.",
+    "solutionImageSize": "full",
     "sourceEvidence": {
       "sourceIdentity": "2019|강남여고|h1|1final",
       "sourcePdfSha256": "131b25e81fcf3ce3128b736e82b91e51f63024bef5305885df216c93ce0ce938",
@@ -1212,10 +1220,10 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "좌표로 구한 정사각형의 꼭짓점 A, B, C, D와 CD의 x절편",
-    "solutionImageCaption": "AB의 좌표 변화와 수직·같은 길이 조건으로 C, D를 구해 CD를 나타낸다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표 A(0,3), B(4,0)이 주어진 정사각형에서 같은 변 길이와 직각을 표시한다.",
+    "solutionImageCaption": "네 변의 한 눈금 표시는 같은 길이, 네모 표시는 직각을 뜻한다. CD를 x축 쪽으로 연장해 절편을 찾는 구성을 보인다. 절편 좌표는 그림에서 숨겼다. 정답은 37/3이다.",
+    "solutionImageSize": "full",
     "sourceEvidence": {
       "sourceIdentity": "2019|강남여고|h1|1final",
       "sourcePdfSha256": "131b25e81fcf3ce3128b736e82b91e51f63024bef5305885df216c93ce0ce938",
@@ -1280,10 +1288,10 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "넓이비 조건으로 결정한 점 P, Q와 직선 PQ의 좌표 그림",
-    "solutionImageCaption": "P와 Q를 각 반직선 위에 놓아 PQ의 거리 계산에 연결한다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: O, A, B와 OA, OB 위의 점 P, Q 및 직선 PQ를 보인다.",
+    "solutionImageCaption": "삼각형 넓이 비로 정한 점 P, Q와 이를 잇는 직선을 나타낸다. 거리 계산값은 적지 않았다. 정답은 21이다.",
+    "solutionImageSize": "full",
     "sourceEvidence": {
       "sourceIdentity": "2019|강남여고|h1|1final",
       "sourcePdfSha256": "131b25e81fcf3ce3128b736e82b91e51f63024bef5305885df216c93ce0ce938",
@@ -1360,7 +1368,11 @@ window.questionBank = [
     "sourceQid": 21,
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 파란 f(t), 주황 g(t)의 곤충 위치다. 아래 패널은 파란 f(t)=d², 주황 u=40 기준선과 t=2의 예시점 S를 보인다.",
+    "solutionImageCaption": "위 패널의 파란 f(t)=−10+4t, 주황 g(t)=−6+2t는 두 곤충의 위치다. 아래의 파란 f(t)는 d²이고 주황 u=40은 기준선이며 S는 t=2 예시점이다. 정답은 6/5≤t≤4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1415,10 +1427,10 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "좌표로 구한 B(6,−8)와 직선 AB를 표시한 좌표 그림",
-    "solutionImageCaption": "수직인 OA, OB의 길이비로 B좌표를 정하고 AB의 기울기를 확인한다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: O, A, B를 이은 직각삼각형을 보인다.",
+    "solutionImageCaption": "OA와 OB가 수직이고 길이 비가 1:2인 삼각형을 나타낸다. 정답은 y=2분의 (−11)x+25이다.",
+    "solutionImageSize": "full",
     "sourceEvidence": {
       "sourceIdentity": "2019|강남여고|h1|1final",
       "sourcePdfSha256": "131b25e81fcf3ce3128b736e82b91e51f63024bef5305885df216c93ce0ce938",
@@ -1486,9 +1498,9 @@ window.questionBank = [
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q23-solution.svg",
-    "solutionImageAlt": "선분 AB를 2:3으로 내분하는 점 D(3,-1)과 외분하는 점 E(-9,23)을 이은 선분 DE의 중점이 M(-3,11)이다.",
-    "solutionImageCaption": "선분 AB를 2:3으로 내분하는 점 D(3,-1)과 외분하는 점 E(-9,23)을 이은 선분 DE의 중점이 M(-3,11)이다.",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: A, B와 내분점 D, 외분점 E, 선분 DE의 중점 M을 보인다.",
+    "solutionImageCaption": "내분점과 외분점을 이은 선분의 중점을 나타낸다. 중점 좌표는 표시하지 않았다. 정답은 (−3,11)이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1535,10 +1547,10 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q24-solution.svg",
-    "solutionImageAlt": "수직선에서 열린 끝점 8과 오른쪽의 허용되는 a의 범위",
-    "solutionImageCaption": "a=8은 제외되고 그보다 큰 모든 a가 허용된다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 패널의 예를 비교한다. a=7일 때 파란 포물선은 주황 x축과 두 점에서 만나고, a=10일 때는 만나지 않는다.",
+    "solutionImageCaption": "파란 f와 g는 각각 a=7, a=10인 예시 포물선이고 주황 선은 x축이다. 정답은 a>8이다.",
+    "solutionImageSize": "full",
     "sourceEvidence": {
       "sourceIdentity": "2019|강남여고|h1|1final",
       "sourcePdfSha256": "131b25e81fcf3ce3128b736e82b91e51f63024bef5305885df216c93ce0ce938",
@@ -1598,10 +1610,10 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q25-solution.svg",
-    "solutionImageAlt": "직선 AB에 내린 중심 수선과 원 위에서 최소·최대 거리를 만드는 P 위치",
-    "solutionImageCaption": "중심 거리 2와 반지름 1에서 P의 높이는 1부터 3까지 변한다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q25-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 중심 C에서 직선 AB에 내린 수선의 발 H와 가까운 점 P₁, 먼 점 P₂를 보인다.",
+    "solutionImageCaption": "H는 C에서 AB에 내린 수선의 발이고 P₁, P₂는 각각 직선에 가장 가까운 점과 먼 점이다. 한 눈금은 두 반지름이 같음을 나타낸다. 넓이 차는 그림에서 숨겼다. 정답은 5이다.",
+    "solutionImageSize": "full",
     "sourceEvidence": {
       "sourceIdentity": "2019|강남여고|h1|1final",
       "sourcePdfSha256": "131b25e81fcf3ce3128b736e82b91e51f63024bef5305885df216c93ce0ce938",
