@@ -1,0 +1,38 @@
+{
+  "checks": [
+    {
+      "surface": "problem",
+      "glyphReadback": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D",
+        "E": "E",
+        "F": "F",
+        "P": "P"
+      },
+      "problemNoConclusionMarks": "PASS"
+    },
+    {
+      "surface": "solution",
+      "glyphReadback": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D",
+        "E": "E",
+        "F": "F",
+        "P": "P"
+      },
+      "problemNoConclusionMarks": "NOT_APPLICABLE"
+    }
+  ],
+  "generalProof": "Square side s>0, BE=CF=t with 0<t<s. AE=(t,-s), BF=(s,t); dot=ts-st=0. ABE congruent BCF by SAS. APB=90.",
+  "exactIntersection": [
+    "12/5",
+    "6/5"
+  ],
+  "sourceLeakFix": "latest source content excludes answer and solution",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN"
+}
