@@ -1,0 +1,40 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "prism",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            2,
+            4
+          ]
+        ]
+      },
+      "height": 5,
+      "names": "ABCDEF"
+    }
+  ],
+  "caption": "삼각기둥 ABC-DEF",
+  "sourceQuote": "삼각기둥에서 AC와 꼬인 위치의 모서리 개수",
+  "sourceConditions": [
+    {
+      "id": "prism",
+      "condition": "삼각기둥 ABC-DEF, 옆모서리 AD/BE/CF",
+      "mappedTo": [
+        "prism"
+      ]
+    }
+  ],
+  "newVisualInformation": []
+}

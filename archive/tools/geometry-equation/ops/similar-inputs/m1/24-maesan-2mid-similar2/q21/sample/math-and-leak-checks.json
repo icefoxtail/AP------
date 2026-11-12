@@ -1,0 +1,64 @@
+{
+  "checks": [
+    {
+      "surface": "problem",
+      "visibleLabels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "accentEdges": [],
+      "staticAudit": "PASS",
+      "renderedLayout": "PASS"
+    },
+    {
+      "surface": "solution",
+      "visibleLabels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "accentEdges": [
+        "BE",
+        "CF"
+      ],
+      "staticAudit": "PASS",
+      "renderedLayout": "PASS"
+    }
+  ],
+  "independentMath": {
+    "method": "exact integer-coordinate cross products and scalar triple products; independent of rendering model",
+    "ACRelations": {
+      "AB": "INTERSECT",
+      "AC": "SAME",
+      "AD": "INTERSECT",
+      "BC": "INTERSECT",
+      "BE": "SKEW",
+      "CF": "INTERSECT",
+      "DE": "SKEW",
+      "DF": "PARALLEL",
+      "EF": "SKEW"
+    },
+    "skewEdges": [
+      "BE",
+      "DE",
+      "EF"
+    ],
+    "BCIntersectAndADParallel": [
+      "BE",
+      "CF"
+    ]
+  },
+  "sourceGitBlob": "4f300aeae1bae07e956a266c76a78a0c3e59b6b0",
+  "answerLeakCheck": "Problem has only original prism vertex names; no computed counts, highlighted answer edges, numerical dimensions or added marks.",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+}

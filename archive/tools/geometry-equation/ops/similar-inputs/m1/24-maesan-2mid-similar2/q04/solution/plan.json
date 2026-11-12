@@ -1,0 +1,68 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "prism",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            2,
+            4
+          ]
+        ]
+      },
+      "height": 5,
+      "names": "ABCDEF"
+    }
+  ],
+  "caption": "AC와 꼬인 위치: BE, DE, EF",
+  "sourceQuote": "삼각기둥에서 AC와 꼬인 위치의 모서리 개수",
+  "sourceConditions": [
+    {
+      "id": "prism",
+      "condition": "삼각기둥 ABC-DEF, 옆모서리 AD/BE/CF",
+      "mappedTo": [
+        "prism"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "조건의 기준 모서리는 REF, 해설에서 선택한 모서리만 ACCENT. 숨은 모서리는 AUTO 깊이 판정으로 점선 유지."
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "E",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "D",
+      "to": "E",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "F",
+      "style": "AUTO",
+      "role": "ACCENT"
+    }
+  ]
+}
