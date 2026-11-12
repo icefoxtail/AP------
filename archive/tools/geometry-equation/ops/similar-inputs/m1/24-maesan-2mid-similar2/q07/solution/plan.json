@@ -1,0 +1,220 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sDH",
+      "refs": [
+        "D",
+        "H"
+      ],
+      "dashed": true,
+      "emphasis": "ACCENT"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 400
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rH",
+      "refs": [
+        "D",
+        "H",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallel",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "caption": "사다리꼴의 평행한 변과 주어진 수선의 발",
+  "sourceQuote": "AD ∥ BC, ∠B=90°, D에서 BC에 내린 수선의 발 H",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD ∥ BC, ∠B=90°",
+      "mappedTo": [
+        "parallel",
+        "rB"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "D에서 변 BC에 내린 수선의 발 H",
+      "mappedTo": [
+        "sDH",
+        "rH"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점 A와 D에서 밑변에 이르는 수선 AB와 DH를 강조한다. C에서 AB로 내리는 수선은 기존 BC 위에 놓이며 그 발은 B이다."
+  ]
+}
