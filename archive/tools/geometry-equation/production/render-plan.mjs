@@ -318,8 +318,8 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       // A multi-curve figure (several curves at one scale, often tall and narrow) is requested at full like the other coordinate figures; the display profile it would
       // otherwise get at medium only shrinks the base font of a tall canvas. When full cannot be measured the figure keeps the earlier medium request.
       const multiCurve=candidatePlan.graphPlan?.family==='multi-curve';
-      const fullTrigonometric=candidatePlan.graphPlan?.family==='trigonometric'&&candidatePlan.graphPlan.displaySize==='full';
-      let size=forceSizeClass??(model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)||multiCurve||fullTrigonometric?'full':'medium');   // forceSizeClass: a test/diagnostic seam only (the CLI never sets it)
+      const fullRequested=['trigonometric','sqrt-affine'].includes(candidatePlan.graphPlan?.family)&&candidatePlan.graphPlan.displaySize==='full';
+      let size=forceSizeClass??(model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)||multiCurve||fullRequested?'full':'medium');   // forceSizeClass: a test/diagnostic seam only (the CLI never sets it)
       stage='measure';
       const measure=(sizeClass,runSuffix='')=>cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:sizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},runId:`pilot-measure-${tag}${suffix}${runSuffix}`});
       let measured=await measure(size);

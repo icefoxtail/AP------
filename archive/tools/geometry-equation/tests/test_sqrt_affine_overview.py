@@ -63,6 +63,17 @@ class SqrtAffineOverview(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'SQRT_DRAW_INTERVAL_MUST_PRESERVE_SOURCE_INTERVAL'):
             fit_overview(graph(radicand=('-2','6'),source_domain={'kind':'CLOSED_INTERVAL','range':['1','10/3']},domain=(1.1,10/3)))
 
+    def test_full_display_size_does_not_reframe_the_curve(self):
+        for plan in (graph(),graph(radicand=("1","-1"),domain=(-8,1),viewport=(-8,2,-7,-2),sign=-1,offset="-3")):
+            with self.subTest(plan=plan):
+                fitted=fit_overview({**plan,'displaySize':'full'})['graphPlan']
+                self.assertEqual(fitted.pop('displaySize'),'full')
+                self.assertEqual(fitted,fit_overview(plan)['graphPlan'])
+        for invalid in ('large',None,True,[]):
+            with self.subTest(displaySize=invalid),self.assertRaisesRegex(ValueError,
+                    'SQRT_DISPLAY_SIZE_INVALID'):
+                fit_overview(graph(displaySize=invalid))
+
     def test_missing_moved_or_open_endpoint_marker_fails(self):
         plan,model=fitted_model(graph())
         root=ET.fromstring(model['svg']);marker=next(node for node in root.iter() if node.get('data-role')=='domain-endpoint');root.remove(marker)

@@ -298,7 +298,9 @@ def _fit_overview_family(plan):
     if 'displayWindow' in plan and plan.get('family')!='rational':raise ValueError('DISPLAY_WINDOW_UNSUPPORTED_FAMILY')
     if 'formulaAt' in plan and plan.get('family')!='rational':raise ValueError('FORMULA_AT_UNSUPPORTED_FAMILY')
     if plan.get('family')=='rational':return _with_label_options(plan,_fit_rational_overview(plan))
-    if plan.get('family')=='sqrt-affine':return _with_label_options(plan,_fit_sqrt_affine_general_overview(plan) if _sqrt_affine_general_plan(plan) else _fit_sqrt_affine_overview(plan))
+    if plan.get('family')=='sqrt-affine':
+        if 'displaySize' in plan and plan['displaySize']!='full':raise ValueError('SQRT_DISPLAY_SIZE_INVALID')
+        return _with_label_options(plan,_fit_sqrt_affine_general_overview(plan) if _sqrt_affine_general_plan(plan) else _fit_sqrt_affine_overview(plan))
     if plan.get('family')=='absolute-value':return _fit_absolute_value_overview(plan)
     if plan.get('family')=='piecewise-affine':return _fit_piecewise_affine_overview(plan)
     if plan.get('family')=='exponential-affine':return _fit_exponential_base_overview(plan) if plan.get('base') is not None or plan.get('shiftX') is not None else _fit_exponential_affine_overview(plan)
