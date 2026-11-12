@@ -1,0 +1,320 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "80"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "H",
+          "J"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "t",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "L",
+    "R",
+    "H",
+    "J",
+    "U",
+    "V",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "top",
+      "refs": [
+        "H",
+        "J"
+      ]
+    },
+    {
+      "id": "bottom",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "transversal",
+      "refs": [
+        "V",
+        "U"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "givenTop",
+        "refs": [
+          "H",
+          "A",
+          "B"
+        ],
+        "value": 80,
+        "label": "(3x-10)",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "color": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "labelPlacement": "LEADER"
+      },
+      {
+        "id": "alternate",
+        "refs": [
+          "R",
+          "B",
+          "A"
+        ],
+        "value": 80,
+        "label": "(3x-10)",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "color": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "labelPlacement": "LEADER"
+      },
+      {
+        "id": "givenBottom",
+        "refs": [
+          "L",
+          "B",
+          "A"
+        ],
+        "value": 100,
+        "label": "(2x+40)",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "color": "WARM",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "labelPlacement": "LEADER"
+      }
+    ],
+    "parallels": [
+      {
+        "count": 1,
+        "segments": [
+          "top",
+          "bottom"
+        ],
+        "id": "parallel"
+      }
+    ]
+  },
+  "caption": "파란 두 각은 엇각. 아래 두 각의 합은 180°.",
+  "sourceQuote": "두 직선 l,m은 평행. 해설: (3x-10)+(2x+40)=180",
+  "sourceConditions": [
+    {
+      "id": "parallel",
+      "condition": "l∥m",
+      "mappedTo": [
+        "top",
+        "bottom"
+      ]
+    },
+    {
+      "id": "solution",
+      "condition": "엇각 (3x-10)°와 (2x+40)°는 이웃하여 평각",
+      "mappedTo": [
+        "givenTop",
+        "alternate",
+        "givenBottom"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설의 엇각 이동과 평각 관계를 새 해설 도식으로 표시. 원래 문제 그림 배치를 복원했다고 주장하지 않음."
+  ],
+  "hiddenPointNames": [
+    "B",
+    "L",
+    "R",
+    "H",
+    "J",
+    "U",
+    "V",
+    "A"
+  ],
+  "hiddenPointStyle": "NONE"
+}
