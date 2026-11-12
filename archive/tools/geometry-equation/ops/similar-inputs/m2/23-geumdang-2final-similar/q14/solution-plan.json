@@ -1,0 +1,34 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "5",
+        "title": "3만"
+      },
+      {
+        "count": "1",
+        "title": "공통"
+      },
+      {
+        "count": "4",
+        "title": "4만"
+      }
+    ],
+    "join": "PLUS"
+  },
+  "caption": "3의 배수만 {3,6,9,15,18}, 공통 {12}, 4의 배수만 {4,8,16,20} · 겹침 없이 5+1+4=10",
+  "sourceConditions": [
+    {
+      "id": "dice",
+      "condition": "실제 유사판 선택/배열 조건과 일치하는 경우의 수",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설 전용: 선택 과정과 경우의 수 표시. 문제에 정답 집합 노출 금지."
+  ]
+}
