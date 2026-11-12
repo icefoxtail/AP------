@@ -1,0 +1,131 @@
+{
+  "status": "SAMPLE_ONLY",
+  "sourceRef": {
+    "path": "archive/exams/similar/middle/m1/2mid/24_왕운중_2학기_중간_중1_유사.js",
+    "bytes": 49281,
+    "sha256": "sha256:aec4dd28a0eb3bbe9ad6b63ecbc54df12e34d27f3f86c50cf5833b18b6da66b2"
+  },
+  "gitBlob": "1e014e198c132943ece261312bb271d579cda227",
+  "sourceRefBranch": "work/similar-m1-accumulate",
+  "questionUid": "24_왕운중_2학기_중간_중1_유사|10",
+  "questionSha256": "sha256:b5815c5ddc91f7c0a60a07e1cb9e563d54106b73010034145c4ffd903de9e079",
+  "typographyPolicy": {
+    "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+    "requestedSizeClass": "full",
+    "baseFontPx": 24,
+    "displayScale": 1,
+    "fontFloorCssPx": 11
+  },
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "engineMainRef": "1206d96c524b4fc50afc83311d2a6131c7e5ab46",
+  "engineChanges": [],
+  "browserPackage": "@sparticuz/chromium@143.0.4",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false,
+  "surfaces": [
+    {
+      "surface": "solution",
+      "identity": {
+        "questionUid": "24_왕운중_2학기_중간_중1_유사|10",
+        "surface": "SOLUTION_VISUAL",
+        "visualRole": "decisive-relation",
+        "visualAssetKey": "sha256:3f618831153907788f12d1697f2c5d7bb97c88bd7545989e20bf718d3dd6db75",
+        "assetId": "va-eea88e049ea74019011f19ce0e38cfe0ef9dcbd846a115db8814d4dd8e258ce2"
+      },
+      "status": "SAMPLE_ONLY",
+      "compositionStatus": "COMPOSED",
+      "planRef": {
+        "path": "wang24-q10-inputs/solution-plan.json",
+        "bytes": 5160,
+        "sha256": "sha256:86e2a780e8372b7d56dd19b2597268a6c29d85a02f0e51c35b9dfe8827265753"
+      },
+      "svgRef": {
+        "path": "wang24-q10-outputs/solution.svg",
+        "bytes": 9466,
+        "sha256": "sha256:2f2289a98d64240d8916351f95da4c3e8cefbab95d36320305838ed3607e32b8"
+      },
+      "pngRef": {
+        "path": "wang24-q10-outputs/solution.png",
+        "bytes": 6367,
+        "sha256": "sha256:16ef940f2b5305fe7c6af2aaadb37094ffd28385e4e5862fd27cc6eeee6ca3ec"
+      },
+      "staticAudit": {
+        "status": "PASS",
+        "errors": [],
+        "planeMarks": {
+          "status": "PASS",
+          "errors": [],
+          "observations": [
+            {
+              "id": "lower",
+              "type": "ANGLE",
+              "drawnDegrees": 53.13010235374236,
+              "pointsDegrees": 53.13010235415599,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "upper",
+              "type": "ANGLE",
+              "drawnDegrees": 53.13010235492962,
+              "pointsDegrees": 53.13010235415599,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "parallel",
+              "type": "PARALLEL",
+              "segments": [
+                "AB",
+                "CD"
+              ]
+            },
+            {
+              "id": "AB",
+              "type": "SEGMENT_COLOR",
+              "color": "WARM",
+              "strokeWidth": 2.4,
+              "stroke": "#b85c00"
+            },
+            {
+              "id": "CD",
+              "type": "SEGMENT_COLOR",
+              "color": "WARM",
+              "strokeWidth": 2.4,
+              "stroke": "#b85c00"
+            }
+          ]
+        }
+      },
+      "renderedLayout": {
+        "status": "PASS",
+        "display": {
+          "width": 720,
+          "height": 500
+        },
+        "errors": []
+      },
+      "lineage": {
+        "planSha256": "sha256:04f922c4bbd2ab26473d90cab6538dbf67cd619ba4c97a3ea3c766ce494f0e04",
+        "modelSha256": "sha256:827b79f553d6651c439dc9e4351d6174bc77e46573e5ea05bf528adf6ee5b715",
+        "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
+        "specSha256": "sha256:160f814970cc45903e40f0214a7203186c5872ad4d242555e74eb86982b1fb58",
+        "fragmentSha256s": {
+          "Q-name": "sha256:824434b69316fc089e02eccaf466e4a6fbabfdfa48e40efda14ca56d96df185b",
+          "P-name": "sha256:b9b42af0ebf2e410b0912f21af062fde7aec39cf8ffca2a7d021d6c4386c60c1",
+          "lower-label": "sha256:a7c73f2430bad8969eb1f53d92af08f63a3911e5d8a36dfbf9c723eca97b9702",
+          "upper-label": "sha256:6048ba0691ba498610399b131fcf8b8518c53a7a6504a7d8e3dd8dfb5f9c53b3"
+        },
+        "measurementsSha256": "sha256:eff5521490991a7cafee2ccf99bfc0a05e9a844560ef3a5d7894eff1354500d8",
+        "svgSha256": "sha256:2f2289a98d64240d8916351f95da4c3e8cefbab95d36320305838ed3607e32b8",
+        "witnessSha256": "sha256:bfbc8a21af70e82f3128685fa4148fbbff0e3e2551a7aa136049c35fd5a36cd2",
+        "staticAuditSha256": "sha256:0d0b82c5f2b4fd0fb3542f90ce61d4a1cdcaf1da0d59b3ca89db1c744e4c20f1",
+        "renderedLayoutSha256": "sha256:fed0eb6041ddeae2bc870af66ec70e3b356ad719e141ac28004a8e8428da17fb"
+      }
+    }
+  ],
+  "browserVersion": "143.0.7499.0",
+  "browserContext": "ONE_TRANSIENT_SHARED_CONTEXT"
+}
