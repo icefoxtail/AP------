@@ -1,0 +1,366 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4",
+              "denominator": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "20",
+              "denominator": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "20",
+              "denominator": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "14",
+              "denominator": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "O",
+    "H",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "AO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "BO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "HB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "OH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "QR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "ST",
+      "refs": [
+        "S",
+        "T"
+      ]
+    },
+    {
+      "id": "SP",
+      "refs": [
+        "S",
+        "P"
+      ]
+    },
+    {
+      "id": "TR",
+      "refs": [
+        "T",
+        "R"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "segmentColors": [
+      {
+        "segments": [
+          "AH",
+          "HB",
+          "ST",
+          "TR"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "rad4",
+        "ownerSegment": "HB",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "height9",
+        "ownerSegment": "OH",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rad6",
+        "ownerSegment": "TR",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "waterh",
+        "ownerSegment": "QR",
+        "text": "h",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "회전축을 지나는 단면 · 왼쪽 원뿔의 물, 오른쪽 옮긴 물 부분 · 단위 cm",
+  "sourceQuote": "현 유사 Q18 원뿔반지름4 높이9, 원기둥반지름6; 물 부피보존",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "현 유사 Q18 원뿔반지름4 높이9, 원기둥반지름6; 물 부피보존",
+      "mappedTo": [
+        "A",
+        "B",
+        "O",
+        "H",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "O",
+    "H",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T"
+  ],
+  "hiddenPointStyle": "NONE"
+}
