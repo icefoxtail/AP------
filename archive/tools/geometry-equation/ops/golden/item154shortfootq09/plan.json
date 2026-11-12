@@ -1,0 +1,181 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "U",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "2"
+      },
+      {
+       "kind": "integer",
+       "value": "1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-4"
+      },
+      {
+       "kind": "expression",
+       "op": "div",
+       "args": [
+        {
+         "kind": "integer",
+         "value": "1"
+        },
+        {
+         "kind": "integer",
+         "value": "4"
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "L",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "A",
+     "B"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "H",
+    "op": "PERPENDICULAR_FOOT",
+    "inputs": [
+     "P",
+     "L"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayLines": [
+  "L"
+ ],
+ "displaySegments": [
+  {
+   "id": "sPH",
+   "refs": [
+    "P",
+    "H"
+   ],
+   "dashed": true
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "P",
+  "H"
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aH",
+    "refs": [
+     "P",
+     "H",
+     "A"
+    ],
+    "value": 90,
+    "arcs": 1,
+    "style": "ARC"
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 480,
+  "height": 400
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "caption": "점 P에서 직선 l에 내린 수선의 발 H를 나타낸다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "l은 두 점 A(2,1), B(-4,1/4)를 지나고 PH는 l에 수직이다.",
+   "mappedTo": [
+    "A",
+    "B",
+    "P",
+    "H"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "수선의 발 H와 PH가 l에 수직임을 나타낸다."
+ ]
+}
