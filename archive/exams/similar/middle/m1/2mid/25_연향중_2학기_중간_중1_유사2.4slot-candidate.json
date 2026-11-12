@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사2.js",
-  "sourceGitBlobSha": "ed0df4fe584e4a9b932d31cdcf648203a2531ba5",
+  "sourceGitBlobSha": "0432622d32906d2d153af7f9f34e35b49744754f",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "Codex",
@@ -767,7 +767,7 @@
           {
             "term": "합동",
             "src": "solution",
-            "quote": "삼각형의 유일 결정 조건을 검토한다. $$\\begin{aligned} \\text{ㄱ: } &\\text{한 변 } AB\\text{와 그 양 끝 각 } \\angle A, \\angle B\\text{가 주어졌으므로 ASA 결정 (참)} \\ \\text{ㄴ: } &\\text{두 변 } AC, BC\\text{와 그 끼인각 } \\angle C\\text{가 주어졌으므로 SAS 결정 (참)} \\ \\text{ㄷ: } &\\text{두 변 } AB, BC\\text{에 대해 끼인각은 } \\angle B\\text{이어야 하는데 } \\angle A\\text{가 주어져 유일하지 않음 (거짓)} \\ \\text{ㄹ: } &\\text{세 각만 주어지면 크기가 다른 닮은 삼각형이 무수히 많음 (거짓)} \\end{aligned}$$ 따라서 하나로 정해지는 것은 ㄱ, ㄴ이므로 정답은 ③이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"삼각형 결정 조건(ASA, SAS) 충족 여부 판별 문항\"\n}\n\n{\n  \"sourceQid\": \"19\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"양 끝각 조건(ㄱ)과 끼인각 조건(ㄴ)을 선별하고 끼인각이 아닌 각(ㄷ)과 각만 주어진 경우(ㄹ)를 배제한다.\",\n  \"decisiveStep\": \"ㄱ(ASA), ㄴ(SAS) 선별 및 ㄷ의 비끼인각, ㄹ의 크기 미결정 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 작도\",\n    \"l4\": \"한 변과 양 끝각 조건\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_UNIQUENESS\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA\",\n    \"why\": \"삼각형의 유일 결정 조건(SSS, SAS, ASA)을 보기별로 대조하는 템플릿\"\n  },\n  \"crossConceptKeys\": [\n    \"CC_TRIANGLE_DETERMINATION\"\n  ],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"삼각형 결정 조건을 보기별로 직접 확인하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"삼각형\",\n      \"작도\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"합동\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+            "quote": "삼각형이 오직 하나로 정해지는지 각 조건을 살펴본다.\nㄱ. 한 변 $AB$와 그 양 끝각 $\\angle A,\\angle B$가 주어졌으므로 ASA에 의해 하나로 정해진다.\nㄴ. 두 변 $AC,BC$와 그 끼인각 $\\angle C$가 주어졌으므로 SAS에 의해 하나로 정해진다.\nㄷ. $AB=6$, $BC=8$, $\\angle A=40^\\circ$이다. $AB$를 먼저 그린 뒤, 점 $A$에서 $AB$와 $40^\\circ$를 이루는 반직선을 그린다. 점 $C$는 이 반직선 위에 있고 $BC=8$이므로, 점 $B$를 중심으로 반지름 $8$인 원과 반직선의 교점이어야 한다. $AB=6<8$이므로 점 $A$는 원 안에 있다. 원 안에서 시작하는 반직선은 원과 한 번만 만나므로 점 $C$가 하나로 정해진다. 따라서 ㄷ도 참이다.\nㄹ. 세 각만으로는 모양만 정해지고 크기는 정해지지 않으므로 하나로 정해지지 않는다.\n따라서 하나로 정해지는 것은 ㄱ, ㄴ, ㄷ이며 정답은 ④이다.",
             "evidenceType": "IMPLIED",
             "justification": "Drive MD 4-slot draft; independent review pending"
           }
