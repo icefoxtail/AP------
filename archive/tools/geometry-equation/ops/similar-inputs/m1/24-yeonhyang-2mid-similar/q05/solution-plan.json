@@ -1,0 +1,54 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "cube",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "caption": "공간 관계를 점검하는 직육면체 예시 (특정 길이는 조건 아님)",
+  "sourceQuote": "직육면체 모서리와 면으로 평행·수직 명제를 검토",
+  "sourceConditions": [
+    {
+      "id": "illustration",
+      "condition": "해설용 직육면체 예시. 특정 길이를 조건으로 추가하지 않음",
+      "mappedTo": [
+        "cube"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "segments": [
+    {
+      "from": "A",
+      "to": "E",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "B",
+      "to": "F",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ]
+}
