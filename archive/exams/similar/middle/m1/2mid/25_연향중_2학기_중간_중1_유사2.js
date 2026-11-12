@@ -35,7 +35,11 @@ window.questionBank = [
     "solution": "좌표평면 위의 점의 좌표는 $(x\\text{좌표}, y\\text{좌표})$의 순서로 나타낸다. $$\\begin{aligned} A &: (-2, 3) \\text{ (참)} \\ B &: \\text{오른쪽으로 } 2\\text{칸, 위로 } 3\\text{칸이므로 } (2, 3) \\ne (3, 2) \\text{ (거짓)} \\ C &: (-3, -1) \\text{ (참)} \\ D &: (2, -3) \\text{ (참)} \\ E &: y\\text{축 위의 점이므로 } (0, -2) \\text{ (참)} \\end{aligned}$$ 따라서 옳지 않은 것은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q01-solution.svg",
+    "solutionImageAlt": "좌표는 가로,세로 순서 · B는 오른쪽2, 위로3 → (2,3) · (3,2)가 아님",
+    "solutionImageCaption": "좌표는 가로,세로 순서 · B는 오른쪽2, 위로3 → (2,3) · (3,2)가 아님",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -71,7 +75,11 @@ window.questionBank = [
     "solution": "점 $(a, b)$가 제2사분면 위의 점이므로 $x$좌표는 음수이고 $y$좌표는 양수이다. $$\\begin{aligned} a &< 0, \\quad b > 0 \\end{aligned}$$ 이제 점 $(b, ab)$의 각 좌표의 부호를 판단한다. $$\\begin{aligned} x\\text{좌표}: &\\ b > 0 \\text{ (양수)} \\ y\\text{좌표}: &\\ ab < 0 \\text{ (음수)} \\end{aligned}$$ $x$좌표가 양수이고 $y$좌표가 음수인 점은 제4사분면 위의 점이다. 따라서 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q02-solution.svg",
+    "solutionImageAlt": "예: a=−2,b=3 · 파랑 P=(a,b)는 제2사분면 · 주황 Q=(b,ab)는 제4사분면 · 일반적으로 b>0,ab<0",
+    "solutionImageCaption": "예: a=−2,b=3 · 파랑 P=(a,b)는 제2사분면 · 주황 Q=(b,ab)는 제4사분면 · 일반적으로 b>0,ab<0",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -107,7 +115,11 @@ window.questionBank = [
     "solution": "온실 온도 그래프의 변화를 보기별로 검토한다. $$\\begin{aligned} \\text{ㄱ: } &\\text{그래프에서 가장 높은 온도는 } 25^\\circ\\text{C}\\text{이므로 참이다.} \\ \\text{ㄴ: } &\\text{온도의 오르내림이 } 20\\text{분 간격으로 반복되므로 참이다.} \\ \\text{ㄷ: } &\\text{최저 온도가 } 15^\\circ\\text{C}\\text{이므로 온도가 } 10^\\circ\\text{C}\\text{가 되는 순간은 없다. (거짓)} \\end{aligned}$$ 따라서 옳은 것은 ㄱ, ㄴ이며 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q03-solution.svg",
+    "solutionImageAlt": "조건을 만족하는 예시 모양(원 그래프 복원 아님) · 15~25℃, 반복 간격20분 · 10℃에는 도달하지 않음",
+    "solutionImageCaption": "조건을 만족하는 예시 모양(원 그래프 복원 아님) · 15~25℃, 반복 간격20분 · 10℃에는 도달하지 않음",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -143,7 +155,11 @@ window.questionBank = [
     "solution": "매초 일정한 양의 물을 채울 때 그릇의 단면적이 넓을수록 물의 높이는 천천히 올라간다. $$\\begin{aligned} A &: \\text{위로 갈수록 폭이 넓어지므로 처음엔 빠르게, 점점 느리게 증가한다. } \\implies \\text{(가)} \\ B &: \\text{단면적이 일정하므로 일정한 속도로 증가하는 직선이다. } \\implies \\text{(나)} \\ C &: \\text{위로 갈수록 폭이 좁아지므로 처음엔 느리게, 점점 빠르게 증가한다. } \\implies \\text{(다)} \\end{aligned}$$ 따라서 (가)-A, (나)-B, (다)-C이므로 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q04-solution.svg",
+    "solutionImageAlt": "일정한 유입량 · 넓어지면 높이 증가가 느려지고, 좁아지면 빨라짐 · 용기 형태의 대표 예",
+    "solutionImageCaption": "일정한 유입량 · 넓어지면 높이 증가가 느려지고, 좁아지면 빨라짐 · 용기 형태의 대표 예",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -179,7 +195,11 @@ window.questionBank = [
     "solution": "각 그래프가 지나는 점의 좌표를 관계식에 대입하여 상수 $a$와 $b$를 구한다. $$\\begin{aligned} y = ax \\text{에 } (-3, 6) \\text{ 대입}: &\\quad 6 = a \\times (-3) \\implies a = -2 \\ y = \\dfrac{b}{x} \\text{에 } (2, 4) \\text{ 대입}: &\\quad 4 = \\dfrac{b}{2} \\implies b = 8 \\end{aligned}$$ 따라서 $a + b$의 값을 구하면 $$\\begin{aligned} a + b &= -2 + 8 = 6 \\end{aligned}$$ 이므로 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q05-solution.svg",
+    "solutionImageAlt": "P(−3,6): a=6÷(−3)=−2 · Q(2,4): b=2×4=8 · a+b=6",
+    "solutionImageCaption": "P(−3,6): a=6÷(−3)=−2 · Q(2,4): b=2×4=8 · a+b=6",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -215,7 +235,11 @@ window.questionBank = [
     "solution": "$y = -2x$의 그래프 성질을 보기별로 검토한다. $$\\begin{aligned} \\text{ㄱ: } &y=ax\\text{ 꼴이므로 원점을 지나는 직선이다. (참)} \\ \\text{ㄴ: } &a = -2 < 0\\text{이므로 제2사분면과 제4사분면을 지난다. (참)} \\ \\text{ㄷ: } &x = 2\\text{를 대입하면 } y = -2 \\times 2 = -4\\text{이므로 점 }(2, 4)\\text{를 지나지 않는다. (거짓)} \\ \\text{ㄹ: } &a < 0\\text{이므로 } x\\text{의 값이 증가하면 } y\\text{의 값은 감소한다. (거짓)} \\end{aligned}$$ 따라서 옳은 것은 ㄱ, ㄴ이며 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q06-solution.svg",
+    "solutionImageAlt": "파랑 y=−2x: 원점, 제2·4사분면 · A(2,−4)는 위, B(2,4)는 밖 · 오른쪽으로 갈수록 감소",
+    "solutionImageCaption": "파랑 y=−2x: 원점, 제2·4사분면 · A(2,−4)는 위, B(2,4)는 밖 · 오른쪽으로 갈수록 감소",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -251,7 +275,11 @@ window.questionBank = [
     "solution": "각 상황을 $x$와 $y$ 사이의 관계식으로 나타낸다. $$\\begin{aligned} \\text{ㄱ: } &xy = 60 \\implies y = \\dfrac{60}{x} \\quad (\\text{반비례}) \\ \\text{ㄴ: } &xy = 30 \\implies y = \\dfrac{30}{x} \\quad (\\text{반비례}) \\ \\text{ㄷ: } &y = 500x \\quad (\\text{정비례}) \\end{aligned}$$ 따라서 반비례하는 것은 ㄱ, ㄴ이므로 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q07-solution.svg",
+    "solutionImageAlt": "ㄴ의 예: 6×5=10×3=30 · 가로가 늘면 같은 넓이를 유지하도록 세로가 줄어듦 · y=30/x",
+    "solutionImageCaption": "ㄴ의 예: 6×5=10×3=30 · 가로가 늘면 같은 넓이를 유지하도록 세로가 줄어듦 · y=30/x",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -287,7 +315,11 @@ window.questionBank = [
     "solution": "반비례 관계식 $y = \\dfrac{a}{x}$에 지나는 점 $(3, 4)$를 대입한다. $$\\begin{aligned} 4 &= \\dfrac{a}{3} \\implies a = 12 \\end{aligned}$$ 따라서 반비례 관계식은 $y = \\dfrac{12}{x}$이다. $x = -2$일 때 $y$좌표를 구하면 $$\\begin{aligned} y &= \\dfrac{12}{-2} = -6 \\end{aligned}$$ 이므로 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q08-solution.svg",
+    "solutionImageAlt": "P(3,4)에서 a=3×4=12 · x=−2일 때 Q(−2,−6) · 주황은 해당 음수쪽 구간",
+    "solutionImageCaption": "P(3,4)에서 a=3×4=12 · x=−2일 때 Q(−2,−6) · 주황은 해당 음수쪽 구간",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -323,7 +355,14 @@ window.questionBank = [
     "solution": "중점 조건을 차례대로 적용하여 선분의 길이를 구한다. 점 $P$는 $\\overline{AB}$의 중점이므로 $$\\begin{aligned} \\overline{AP} = \\overline{PB} &= \\dfrac{48}{2} = 24\\text{ cm} \\end{aligned}$$ 이다. 점 $Q$는 $\\overline{AP}$의 중점이므로 $$\\begin{aligned} \\overline{AQ} = \\overline{QP} &= \\dfrac{24}{2} = 12\\text{ cm} \\end{aligned}$$ 이다. 선분 $QB$의 길이는 $$\\begin{aligned} \\overline{QB} &= \\overline{QP} + \\overline{PB} \\ &= 12 + 24 = 36\\text{ cm} \\end{aligned}$$ 이다. 점 $R$은 $\\overline{QB}$의 중점이므로 $$\\begin{aligned} \\overline{QR} &= \\dfrac{36}{2} = 18\\text{ cm} \\end{aligned}$$ 이다. 따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사2/q09.svg",
+    "imageAlt": "P는 AB, Q는 AP, R은 QB의 중점 · AB=48cm",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q09-solution.svg",
+    "solutionImageAlt": "AP=24, AQ=12, QB=36 · 파란 QR=QB÷2=18cm",
+    "solutionImageCaption": "AP=24, AQ=12, QB=36 · 파란 QR=QB÷2=18cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -359,7 +398,14 @@ window.questionBank = [
     "solution": "맞꼭지각의 크기는 서로 같으므로 $$\\begin{aligned} x &= 32^\\circ \\end{aligned}$$ 이다. 두 직선이 직교하므로 이루는 각의 크기는 $90^\\circ$이다. $$\\begin{aligned} y + 32^\\circ &= 90^\\circ \\ y &= 90^\\circ - 32^\\circ = 58^\\circ \\end{aligned}$$ 이다. 따라서 두 각의 차를 구하면 $$\\begin{aligned} y - x &= 58^\\circ - 32^\\circ \\ &= 26^\\circ \\end{aligned}$$ 이므로 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사2/q10.svg",
+    "imageAlt": "세 직선은 O에서 만남 · AB⊥EF · 표시한 각32°, x, y",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q10-solution.svg",
+    "solutionImageAlt": "파랑 맞꼭지각 x=32° · 주황 y=90−32=58° · y−x=26°",
+    "solutionImageCaption": "파랑 맞꼭지각 x=32° · 주황 y=90−32=58° · y−x=26°",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -395,7 +441,14 @@ window.questionBank = [
     "solution": "주어진 순서에 따라 다섯 각은 서로 이웃하여 평각 $\\angle AOF$를 이룬다. $\\angle COD=x^\\circ$, $\\angle DOE=y^\\circ$라 하면 비례 조건에 따라 $\\angle BOC=2x^\\circ$, $\\angle EOF=2y^\\circ$이다. 따라서 $30^\\circ+2x+x+y+2y=180^\\circ$이므로 $3(x+y)=150^\\circ$, $x+y=50^\\circ$이다. 점 D가 C와 E 사이에 있으므로 $\\angle COE=x+y=50^\\circ$. 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사2/q11.svg",
+    "imageAlt": "∠AOF=180°, ∠AOB=30° · BOC:COD=2:1, DOE:EOF=1:2",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q11-solution.svg",
+    "solutionImageAlt": "30°+3x+3y=180° · ∠COE=x+y=50°",
+    "solutionImageCaption": "30°+3x+3y=180° · ∠COE=x+y=50°",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -431,7 +484,14 @@ window.questionBank = [
     "solution": "사다리꼴 $ABCD$에서 점과 직선 사이의 거리 및 수선의 발을 검토한다. $$\\begin{aligned} \\text{ㄱ: } &\\overline{AD} \\parallel \\overline{BC}\\text{이고 } \\overline{AB} \\perp \\overline{BC}\\text{이므로 평행선 사이 거리는 } \\overline{AB} = 4\\text{ cm} \\text{ (참)} \\ \\text{ㄴ: } &\\overline{AD} \\perp \\overline{AB}\\text{이므로 점 } D\\text{에서 직선 } AB\\text{에 내린 수선의 발은 점 } A\\text{이다. (참)} \\ \\text{ㄷ: } &\\overline{BC} \\perp \\overline{AB}\\text{이므로 점 } C\\text{에서 직선 } AB\\text{에 내린 수선의 발은 점 } B\\text{이다. (참)} \\ \\text{ㄹ: } &\\overline{AD}\\text{는 } \\overline{CD}\\text{에 수직이 아니므로 거리가 } \\overline{AD}\\text{가 아니다. (거짓)} \\end{aligned}$$ 따라서 옳은 것은 ㄱ, ㄴ, ㄷ이며 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사2/q12.svg",
+    "imageAlt": "AD∥BC · AB=4cm, AD=3cm, BC=6cm · A,B는 직각",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q12-solution.svg",
+    "solutionImageAlt": "파란 높이 AB=DH=4 · 주황 밑변은 AB에 수직 · AD는 CD의 수선이 아님",
+    "solutionImageCaption": "파란 높이 AB=DH=4 · 주황 밑변은 AB에 수직 · AD는 CD의 수선이 아님",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -467,7 +527,14 @@ window.questionBank = [
     "solution": "삼각기둥의 총 모서리의 개수는 윗밑면 $3$개, 아랫밑면 $3$개, 옆모서리 $3$개로 모두 $9$개이다. 특정한 한 옆모서리를 기준으로 위치 관계를 분류한다. $$\\begin{aligned} \\text{1) 기준 옆모서리}: &\\quad 1\\text{개} \\ \\text{2) 만나는 모서리}: &\\quad \\text{양 끝 꼭짓점에서 각각 2개씩 만나므로 } 4\\text{개} \\ \\text{3) 평행한 모서리}: &\\quad \\text{다른 옆모서리 } 2\\text{개} \\end{aligned}$$ 만나거나 평행한 모서리를 전체에서 제외하면 꼬인 위치에 있는 모서리 수가 된다. $$\\begin{aligned} 9 - (1 + 4 + 2) &= 9 - 7 = 2\\text{개} \\end{aligned}$$ 이다. 따라서 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사2/q13.svg",
+    "imageAlt": "삼각기둥 ABC-DEF · 굵은 옆모서리 AD를 기준으로 생각",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q13-solution.svg",
+    "solutionImageAlt": "주황 기준 AD · 파랑 BC,EF는 만나지도 평행하지도 않음 · 꼬인 모서리2개",
+    "solutionImageCaption": "주황 기준 AD · 파랑 BC,EF는 만나지도 평행하지도 않음 · 꼬인 모서리2개",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -503,7 +570,14 @@ window.questionBank = [
     "solution": "엇각은 두 평행선의 안쪽에 있고, 횡단선의 서로 반대쪽에 있는 두 각이다. $\\angle c$는 $A$에서 두 평행선 사이의 아래쪽 오른편 부채꼴에 있다. $B$에서 두 평행선 사이에 있는 각은 $\\angle e,\\angle f$이며, 이 중 $\\angle c$와 직선 $p$의 서로 반대쪽에 있는 각은 $\\angle e$이다. $\\angle k$는 다른 횡단선 $q$와 $m$의 교점 $D$에서 생기므로 $p$를 기준으로 한 $\\angle c$의 엇각이 아니다. 따라서 엇각은 $\\angle e$ 하나이며 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사2/q14.svg",
+    "imageAlt": "위 l · 아래 m · 왼쪽 횡단선 p, 오른쪽 횡단선 q · 각 이름은 발문의 배치",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q14-solution.svg",
+    "solutionImageAlt": "같은 횡단선 p의 안쪽·반대쪽: c와 e · k는 다른 횡단선 q의 각",
+    "solutionImageCaption": "같은 횡단선 p의 안쪽·반대쪽: c와 e · k는 다른 횡단선 q의 각",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -539,7 +613,14 @@ window.questionBank = [
     "solution": "직선 $p$가 만드는 엇각은 크기가 같으므로 $\\angle a=45^\\circ$이다. 직선 $q$가 만드는 같은 쪽 내각의 합은 $180^\\circ$이므로 $\\angle b=180^\\circ-100^\\circ=80^\\circ$이다. 따라서 $\\angle a+\\angle b=45^\\circ+80^\\circ=125^\\circ$이고 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사2/q15.svg",
+    "imageAlt": "평행한 두 직선 · 왼쪽 횡단선 p의 엇각45°와 a · 오른쪽 횡단선 q의 같은 쪽 내각100°와 b",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q15-solution.svg",
+    "solutionImageAlt": "엇각 a=45° · 같은 쪽 내각 b=180−100=80° · a+b=125°",
+    "solutionImageCaption": "엇각 a=45° · 같은 쪽 내각 b=180−100=80° · a+b=125°",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -575,7 +656,14 @@ window.questionBank = [
     "solution": "반직선 $Br$가 $\\angle ABC$의 내부에 있으므로 $\\angle rBC=\\angle ABC-\\angle ABr=75^\\circ-35^\\circ=40^\\circ$이다. $D$가 $Br$ 위에 있고 $E$가 $BC$ 위에 있으므로 $\\angle DBE=40^\\circ$이다. 삼각형 $BDE$에서 $\\angle BDE=70^\\circ$이므로 $\\angle BED=180^\\circ-40^\\circ-70^\\circ=70^\\circ$이다. 따라서 이에 이웃한 외각은 $x=180^\\circ-70^\\circ=110^\\circ$이고, 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사2/q16.svg",
+    "imageAlt": "l∥m∥Br · ∠ABr=35°, ∠ABC=75°, ∠BDE=70° · E의 외각 x",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q16-solution.svg",
+    "solutionImageAlt": "∠DBE=75−35=40° · ∠BED=70° · 이웃한 외각 x=110°",
+    "solutionImageCaption": "∠DBE=75−35=40° · ∠BED=70° · 이웃한 외각 x=110°",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -611,7 +699,11 @@ window.questionBank = [
     "solution": "크기가 같은 각의 작도 원리와 도구 성질을 검토한다. $$\\begin{aligned} \\text{ㄱ: } &\\text{컴퍼스로 원래 호의 두 교점 사이 거리를 재어 옮기므로 참이다.} \\ \\text{ㄴ: } &\\text{두 꼭짓점 } O, P\\text{에서 같은 반지름의 호를 그리므로 참이다.} \\ \\text{ㄷ: } &\\text{작도 결과 얻은 각은 원래 각과 크기가 같으므로 참이다.} \\ \\text{ㄹ: } &\\text{작도에 사용하는 자는 눈금이 없으므로 눈금을 읽어 옮길 수 없다. (거짓)} \\end{aligned}$$ 따라서 옳은 것은 ㄱ, ㄴ, ㄷ이며 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q17-solution.svg",
+    "solutionImageAlt": "파랑: 같은 반지름 · 주황: 옮긴 현의 길이 · 두 삼각형은 SSS로 합동",
+    "solutionImageCaption": "파랑: 같은 반지름 · 주황: 옮긴 현의 길이 · 두 삼각형은 SSS로 합동",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -647,7 +739,11 @@ window.questionBank = [
     "solution": "다섯 개 중 세 개를 고르는 조합의 수는 $\\dfrac{5 \\times 4 \\times 3}{3 \\times 2 \\times 1} = 10$가지이다. 세 변의 길이를 $a < b < c$라 할 때, 가장 긴 변 $c$에 대해 $c < a + b$이어야 삼각형이 만들어진다. $$\\begin{aligned} c = 7 &: \\ (3, 4, 7) \\implies 3 + 4 = 7 \\text{ (불가)} \\ & \\ (3, 5, 7), (3, 6, 7), (4, 5, 7), (4, 6, 7), (5, 6, 7) \\text{ (5가지)} \\ c = 6 &: \\ (3, 4, 6), (3, 5, 6), (4, 5, 6) \\text{ (3가지)} \\ c = 5 &: \\ (3, 4, 5) \\text{ (1가지)} \\end{aligned}$$ 삼각형이 만들어지지 않는 경우는 $(3, 4, 7)$의 $1$가지뿐이므로 $$\\begin{aligned} 10 - 1 &= 9\\text{가지} \\end{aligned}$$ 이다. 따라서 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q18-solution.svg",
+    "solutionImageAlt": "위: 3+4=7이면 일직선 · 아래: 3+4>5이면 삼각형 · 전체10가지 중 (3,4,7)만 제외",
+    "solutionImageCaption": "위: 3+4=7이면 일직선 · 아래: 3+4>5이면 삼각형 · 전체10가지 중 (3,4,7)만 제외",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -683,7 +779,11 @@ window.questionBank = [
     "solution": "삼각형이 오직 하나로 정해지는지 각 조건을 살펴본다.\nㄱ. 한 변 $AB$와 그 양 끝각 $\\angle A,\\angle B$가 주어졌으므로 ASA에 의해 하나로 정해진다.\nㄴ. 두 변 $AC,BC$와 그 끼인각 $\\angle C$가 주어졌으므로 SAS에 의해 하나로 정해진다.\nㄷ. $AB=6$, $BC=8$, $\\angle A=40^\\circ$이다. $AB$를 먼저 그린 뒤, 점 $A$에서 $AB$와 $40^\\circ$를 이루는 반직선을 그린다. 점 $C$는 이 반직선 위에 있고 $BC=8$이므로, 점 $B$를 중심으로 반지름 $8$인 원과 반직선의 교점이어야 한다. $AB=6<8$이므로 점 $A$는 원 안에 있다. 원 안에서 시작하는 반직선은 원과 한 번만 만나므로 점 $C$가 하나로 정해진다. 따라서 ㄷ도 참이다.\nㄹ. 세 각만으로는 모양만 정해지고 크기는 정해지지 않으므로 하나로 정해지지 않는다.\n따라서 하나로 정해지는 것은 ㄱ, ㄴ, ㄷ이며 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q19-solution.svg",
+    "solutionImageAlt": "ㄷ: A는 B 중심 반지름8인 원 안 · A에서 40° 방향으로 나가면 원과 한 번 만남",
+    "solutionImageCaption": "ㄷ: A는 B 중심 반지름8인 원 안 · A에서 40° 방향으로 나가면 원과 한 번 만남",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -719,7 +819,14 @@ window.questionBank = [
     "solution": "$\\triangle BDM$과 $\\triangle CEM$에서 $$\\begin{aligned} \\overline{BM} &= \\overline{CM} \\quad (M\\text{은 } BC\\text{의 중점}) \\ \\angle BDM &= \\angle CEM = 90^\\circ \\ \\angle BMD &= \\angle CME \\quad (\\text{맞꼭지각}) \\end{aligned}$$ 이므로 한 변과 양 끝 각이 각각 같아 $\\triangle BDM \\equiv \\triangle CEM$ (ASA 합동)이다. 따라서 대응변의 길이가 같으므로 $$\\begin{aligned} \\overline{CE} &= \\overline{BD} = 8\\text{ cm} \\ \\overline{EM} &= \\overline{DM} = 3\\text{ cm} \\end{aligned}$$ 이다. 선분 $AM$과 $AE$의 길이를 구하면 $$\\begin{aligned} \\overline{AM} &= \\overline{AD} - \\overline{DM} = 15 - 3 = 12\\text{ cm} \\ \\overline{AE} &= \\overline{AM} - \\overline{EM} = 12 - 3 = 9\\text{ cm} \\end{aligned}$$ 이다. 따라서 직각삼각형 $\\triangle ACE$의 넓이는 $$\\begin{aligned} [\\triangle ACE] &= \\dfrac{1}{2} \\times \\overline{AE} \\times \\overline{CE} \\ &= \\dfrac{1}{2} \\times 9 \\times 8 \\ &= 36\\text{ cm}^2 \\end{aligned}$$ 이므로 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사2/q20.svg",
+    "imageAlt": "M은 BC의 중점 · BD⊥AD, CE⊥AM · BD=8, DM=3, AD=15",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q20-solution.svg",
+    "solutionImageAlt": "파랑 BM=CM · 주황 BD=CE=8 · AE=15−3−3=9 → 넓이36cm²",
+    "solutionImageCaption": "파랑 BM=CM · 주황 BD=CE=8 · AE=15−3−3=9 → 넓이36cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -749,7 +856,14 @@ window.questionBank = [
     "solution": "(1) 점 $A$의 좌표 구하기: 점 $B(6, 0)$은 점 $A$에서 $x$축에 내린 수선의 발이므로 점 $A$의 $x$좌표는 $6$이다. 점 $A$는 정비례 관계 $y = \\dfrac{4}{3}x$의 그래프 위의 점이므로 $x = 6$을 대입하면 $$\\begin{aligned} y &= \\dfrac{4}{3} \\times 6 = 8 \\end{aligned}$$ 이다. 따라서 점 $A$의 좌표는 $(6, 8)$이다.\n\n(2) 삼각형 $AOB$의 넓이 구하기: 삼각형 $AOB$는 밑변이 선분 $OB$이고 높이가 선분 $AB$인 직각삼각형이다. $$\\begin{aligned} \\overline{OB} &= 6 \\ \\overline{AB} &= 8 \\end{aligned}$$ 따라서 삼각형 $AOB$의 넓이는 $$\\begin{aligned} [\\triangle AOB] &= \\dfrac{1}{2} \\times \\overline{OB} \\times \\overline{AB} \\ &= \\dfrac{1}{2} \\times 6 \\times 8 \\ &= 24 \\end{aligned}$$ 이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사2/q21.svg",
+    "imageAlt": "y=4x/3의 그래프 · B=(6,0), AB⊥x축",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q21-solution.svg",
+    "solutionImageAlt": "A=(6,8) · 주황 밑변6, 파랑 높이8 · 넓이=6×8÷2=24",
+    "solutionImageCaption": "A=(6,8) · 주황 밑변6, 파랑 높이8 · 넓이=6×8÷2=24",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -779,7 +893,14 @@ window.questionBank = [
     "solution": "네 점 $A, B, C, P$ 중 세 점 $A, B, C$는 한 직선 $l$ 위에 있고 $P$는 직선 밖에 있다.\n\n직선의 개수 $a$: 직선 $l$ 위에 있는 세 점 $A, B, C$로 만들어지는 직선은 오직 직선 $l$ $1$개뿐이다. 점 $P$와 세 점 $A, B, C$를 각각 잇는 직선은 $\\overleftrightarrow{PA}, \\overleftrightarrow{PB}, \\overleftrightarrow{PC}$의 $3$개이다. $$\\begin{aligned} a &= 1 + 3 = 4 \\end{aligned}$$\n\n반직선의 개수 $b$: 직선 $l$ 위에서 $A, B, C$ 순서로 생기는 반직선은 $\\overrightarrow{AB}, \\overrightarrow{BA}, \\overrightarrow{BC}, \\overrightarrow{CB}$의 $4$개이다. 점 $P$에서 시작하여 세 점으로 향하는 반직선 $3$개와 세 점에서 시작하여 $P$로 향하는 반직선 $3$개로 총 $6$개이다. $$\\begin{aligned} b &= 4 + 6 = 10 \\end{aligned}$$\n\n선분의 개수 $c$: 서로 다른 네 점 중 두 점을 골라 잇는 선분의 개수는 두 점의 조합과 같으므로 $$\\begin{aligned} c &= \\dfrac{4 \\times 3}{2} = 6 \\end{aligned}$$\n\n따라서 $a+b+c$의 값을 구하면 $$\\begin{aligned} a + b + c &= 4 + 10 + 6 = 20 \\end{aligned}$$ 이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사2/q22.svg",
+    "imageAlt": "A,B,C는 한 직선 위 · P는 그 직선 밖",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q22-solution.svg",
+    "solutionImageAlt": "파랑: P와 각각 연결 · 직선4개, 반직선10개, 선분6개 → 합20",
+    "solutionImageCaption": "파랑: P와 각각 연결 · 직선4개, 반직선10개, 선분6개 → 합20",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -809,7 +930,14 @@ window.questionBank = [
     "solution": "반직선 $DE$가 $\\angle BDF$의 내부에 있으므로 $\\angle EDF=\\angle BDF-\\angle BDE=120^\\circ-50^\\circ=70^\\circ$이다. 삼각형 $DEF$의 내각의 합은 $180^\\circ$이므로 $\\angle DEF+\\angle DFE=180^\\circ-70^\\circ=110^\\circ$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사2/q23.svg",
+    "imageAlt": "DE는 ∠BDF 내부 · ∠BDF=120°, ∠BDE=50°",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q23-solution.svg",
+    "solutionImageAlt": "∠EDF=120−50=70° · ∠DEF+∠DFE=180−70=110°",
+    "solutionImageCaption": "∠EDF=120−50=70° · ∠DEF+∠DFE=180−70=110°",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -839,6 +967,13 @@ window.questionBank = [
     "solution": "(1) 정사각형의 대각선은 서로 수직으로 이등분하므로 $OC=OD$이고 $\\angle PCO=\\angle QDO=45^\\circ$이다. $P$는 $BC$ 위, $Q$는 $CD$ 위에 있으므로 $\\angle POC+\\angle COQ=\\angle POQ=90^\\circ$이고, $\\angle COQ+\\angle QOD=\\angle COD=90^\\circ$이다. 따라서 $\\angle POC=\\angle QOD$이다. 그러므로 한 변과 그 양 끝 각이 각각 같아 $\\triangle OPC\\equiv\\triangle OQD$ (ASA 합동)이다.\n\n(2) 합동인 두 삼각형의 넓이는 같으므로 $[OPCQ]=[\\triangle OPC]+[\\triangle OCQ]=[\\triangle OQD]+[\\triangle OCQ]=[\\triangle OCD]$. 정사각형 $ABCD$의 넓이는 $100\\text{ cm}^2$이고 대각선은 이를 네 개의 같은 넓이로 나누므로 $[OPCQ]=100\\div4=25\\text{ cm}^2$이다.\n\n(3) 점 $O$에 대한 대칭이동은 넓이를 보존하므로 두 번째 색칠한 사각형도 $25\\text{ cm}^2$이다. 따라서 두 넓이의 합은 $25+25=50\\text{ cm}^2$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사2/q24.svg",
+    "imageAlt": "정사각형 한 변10cm · P,Q는 각 변의 내부점 · OP⊥OQ · 두 영역은 O에 대한 대칭",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_유사2/q24-solution.svg",
+    "solutionImageAlt": "△OPC≡△OQD · [OPCQ]=[OCD]=25cm² · 두 색칠 영역 합50cm²",
+    "solutionImageCaption": "△OPC≡△OQD · [OPCQ]=[OCD]=25cm² · 두 색칠 영역 합50cm²",
+    "solutionImageSize": "full"
   }
 ];
