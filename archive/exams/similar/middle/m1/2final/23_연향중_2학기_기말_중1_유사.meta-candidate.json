@@ -3,7 +3,7 @@
   "requestId": "similar-23-yeonhyang-m1-2final-candidate-v1",
   "examUid": "23_연향중_2학기_기말_중1_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m1/2final/23_연향중_2학기_기말_중1_유사.js",
-  "expectedSourceBlobSha1": "f227a1c982683d0ff8df9f9b278f04e68f212289",
+  "expectedSourceBlobSha1": "3c1edb9d7fe32bd4de112b123828965b22528cf6",
   "expectedQuestionCount": 24,
   "expectedTotalPoints": 100,
   "sourceProvenance": {
@@ -55,6 +55,16 @@
       {
         "scope": "Q4–Q10, Q11, Q14, Q18, Q22 notation",
         "change": "Cleaned extracted LaTeX unit spacing and incomplete math delimiters in the final JS; corrected the 8π-vs-4π internal quarter-arc statement in Q21 while retaining its 24π perimeter and final answer.",
+        "formalReview": "PENDING"
+      },
+      {
+        "scope": "Q2,Q9,Q21",
+        "change": "Removed addition of unlike physical quantities. Q2 and Q9 now ask for ordered pairs with explicit units; Q21 asks for (x,y) separately and keeps perimeter and area units distinct. Numeric values and existing choice labels retained where applicable.",
+        "formalReview": "PENDING"
+      },
+      {
+        "scope": "Q2,Q9,Q21",
+        "change": "Removed addition of unlike physical quantities. Q2 and Q9 now ask for ordered pairs with explicit units; Q21 asks for (x,y) separately and keeps perimeter and area units distinct. Numeric values and existing choice labels retained where applicable.",
         "formalReview": "PENDING"
       }
     ],
@@ -1157,10 +1167,11 @@
       "sourceOrdinal": 2,
       "sourceQid": "2",
       "answer": "④",
-      "questionReview": "UNREVIEWED",
+      "questionReview": "AUTHOR_CHECKED; units and requested output aligned.",
       "solutionReview": "UNREVIEWED",
       "visualStatus": "SVG_NOT_CREATED",
-      "hold": "Independent mathematical review pending."
+      "hold": "Formal independent mathematical review pending.",
+      "authorNote": "Length x and area y are reported as an ordered pair with distinct cm/cm² units; answer ④ is (6π cm, 24π cm²). Formal independent review pending."
     },
     {
       "sourceOrdinal": 3,
@@ -1220,10 +1231,11 @@
       "sourceOrdinal": 9,
       "sourceQid": "9",
       "answer": "②",
-      "questionReview": "UNREVIEWED",
+      "questionReview": "AUTHOR_CHECKED; units and requested output aligned.",
       "solutionReview": "UNREVIEWED",
       "visualStatus": "SVG_NOT_CREATED",
-      "hold": "Independent mathematical review pending."
+      "hold": "Formal independent mathematical review pending.",
+      "authorNote": "Surface area x and volume y are reported as an ordered pair with distinct cm²/cm³ units; answer ② is (64π cm², 64π cm³). Formal independent review pending."
     },
     {
       "sourceOrdinal": 10,
@@ -1327,11 +1339,12 @@
     {
       "sourceOrdinal": 21,
       "sourceQid": "21",
-      "answer": "$88\\pi-128$",
-      "questionReview": "UNREVIEWED",
+      "answer": "$(24\\pi\\,\\mathrm{cm},(64\\pi-128)\\,\\mathrm{cm}^2)$",
+      "questionReview": "AUTHOR_CHECKED; units and requested output aligned.",
       "solutionReview": "UNREVIEWED",
       "visualStatus": "SVG_NOT_CREATED",
-      "hold": "Independent mathematical review pending."
+      "hold": "Formal independent mathematical review pending.",
+      "authorNote": "Perimeter and area are reported separately with cm/cm² units; no unlike-unit sum is requested. Author-side check; formal independent review pending."
     },
     {
       "sourceOrdinal": 22,
@@ -1361,5 +1374,5 @@
       "hold": "Independent mathematical review pending."
     }
   ],
-  "mathReview": "UNREVIEWED. Author-side spot checks and explicit repairs are recorded in correctionLog. Formal independent review remains pending for all 24 questions; figures have not been created or visually reviewed."
+  "mathReview": "UNREVIEWED. Author-side unit audit repaired Q2, Q9, and Q21 by asking for ordered pairs/separate values; formal independent review remains pending for all questions. Figures have not been created or visually reviewed."
 }

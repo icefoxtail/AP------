@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "archive/exams/similar/middle/m1/2final/23_연향중_2학기_기말_중1_유사.js",
-  "sourceGitBlobSha": "f227a1c982683d0ff8df9f9b278f04e68f212289",
+  "sourceGitBlobSha": "3c1edb9d7fe32bd4de112b123828965b22528cf6",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "Codex",
@@ -79,22 +79,22 @@
         ],
         "goal": [
           {
-            "term": "값",
+            "term": "순서쌍",
             "src": "stem",
-            "quote": "$x+y$의 값을 구하면?"
+            "quote": "$(x,y)$를 구하면?"
           }
         ],
         "method": [
           {
             "term": "호",
             "src": "solution",
-            "quote": "호의 길이는 $x=2\\pi\\times 8\\times\\dfrac{135}{360}=6\\pi$",
+            "quote": "호의 길이 $x=6\\pi\\,\\mathrm{cm}$, 넓이 $y=24\\pi\\,\\mathrm{cm}^2$이므로 $(x,y)=(6\\pi\\,\\mathrm{cm},24\\pi\\,\\mathrm{cm}^2)$이다.",
             "evidenceType": "NAMED"
           },
           {
             "term": "넓이",
             "src": "solution",
-            "quote": "넓이는 $y=\\pi\\times 8^2\\times\\dfrac{135}{360}=24\\pi$",
+            "quote": "호의 길이 $x=6\\pi\\,\\mathrm{cm}$, 넓이 $y=24\\pi\\,\\mathrm{cm}^2$이므로 $(x,y)=(6\\pi\\,\\mathrm{cm},24\\pi\\,\\mathrm{cm}^2)$이다.",
             "evidenceType": "NAMED"
           }
         ],
@@ -105,7 +105,7 @@
       "reasons": {},
       "review": {
         "status": "UNREVIEWED",
-        "reason": "Independent 4-slot review pending"
+        "reason": "Unit-safe requested output added; formal independent review pending."
       }
     },
     {
@@ -415,22 +415,22 @@
         ],
         "goal": [
           {
-            "term": "값",
+            "term": "순서쌍",
             "src": "stem",
-            "quote": "$x+y$의 값을 구하면?"
+            "quote": "$(x,y)$를 구하면?"
           }
         ],
         "method": [
           {
             "term": "겉넓이",
             "src": "solution",
-            "quote": "남은 입체의 곡면 넓이는 구 전체 겉넓이 $4\\pi\\times4^2=64\\pi\\,\\mathrm{cm}^2$의 $\\dfrac34$인 $48\\pi\\,\\mathrm{cm}^2$이다. 두 절단면은 각각 반지름 $4\\,\\mathrm{cm}$인 반원이므로 넓이의 합은 $\\pi\\times4^2=16\\pi\\,\\mathrm{cm}^2$이다. 따라서 겉넓이 $x=64\\pi\\,\\mathrm{cm}^2$이다. 남은 부피는 전체 부피 $\\dfrac43\\pi\\times4^3=\\dfrac{256}{3}\\pi\\,\\mathrm{cm}^3$의 $\\dfrac34$이므로 $y=64\\pi\\,\\mathrm{cm}^3$이다. 따라서 수치의 합은 $x+y=128\\pi$이다.",
+            "quote": "겉넓이 $x=64\\pi\\,\\mathrm{cm}^2$, 부피 $y=64\\pi\\,\\mathrm{cm}^3$이므로 $(x,y)=(64\\pi\\,\\mathrm{cm}^2,64\\pi\\,\\mathrm{cm}^3)$이다.",
             "evidenceType": "NAMED"
           },
           {
             "term": "부피",
             "src": "solution",
-            "quote": "남은 입체의 곡면 넓이는 구 전체 겉넓이 $4\\pi\\times4^2=64\\pi\\,\\mathrm{cm}^2$의 $\\dfrac34$인 $48\\pi\\,\\mathrm{cm}^2$이다. 두 절단면은 각각 반지름 $4\\,\\mathrm{cm}$인 반원이므로 넓이의 합은 $\\pi\\times4^2=16\\pi\\,\\mathrm{cm}^2$이다. 따라서 겉넓이 $x=64\\pi\\,\\mathrm{cm}^2$이다. 남은 부피는 전체 부피 $\\dfrac43\\pi\\times4^3=\\dfrac{256}{3}\\pi\\,\\mathrm{cm}^3$의 $\\dfrac34$이므로 $y=64\\pi\\,\\mathrm{cm}^3$이다. 따라서 수치의 합은 $x+y=128\\pi$이다.",
+            "quote": "겉넓이 $x=64\\pi\\,\\mathrm{cm}^2$, 부피 $y=64\\pi\\,\\mathrm{cm}^3$이므로 $(x,y)=(64\\pi\\,\\mathrm{cm}^2,64\\pi\\,\\mathrm{cm}^3)$이다.",
             "evidenceType": "NAMED"
           }
         ],
@@ -441,7 +441,7 @@
       "reasons": {},
       "review": {
         "status": "UNREVIEWED",
-        "reason": "Independent 4-slot review pending"
+        "reason": "Unit-safe requested output added; formal independent review pending."
       }
     },
     {
@@ -965,28 +965,28 @@
         ],
         "goal": [
           {
-            "term": "값",
+            "term": "순서쌍",
             "src": "stem",
-            "quote": "한 변의 길이가 $16\\,\\mathrm{cm}$인 정사각형 안에, 한 꼭짓점을 중심으로 반지름 $16\\,\\mathrm{cm}$인 사분원과 정사각형의 서로 이웃한 두 변을 각각 지름으로 하는 반지름 $8\\,\\mathrm{cm}$인 반원 두 개가 있다. 색칠한 부분은 두 반원의 공통 부분과 사분원 안에서 두 반원의 합집합 바깥 부분이다. 색칠한 두 부분의 둘레의 합을 $x$, 넓이의 합을 $y$라 할 때, $x+y$를 구하고 풀이 과정을 서술하시오. [5점]"
+            "quote": "$(x,y)$를 구하면?"
           }
         ],
         "method": [
           {
             "term": "호",
             "src": "solution",
-            "quote": "사분원 반지름은 $16\\,\\mathrm{cm}$이고 반원 반지름은 $8\\,\\mathrm{cm}$이다. 두 색칠 영역의 바깥 둘레에는 사분원의 호 1개와 반원의 사분원 호 4개가 포함된다. 사분원의 호 길이는 $2\\pi\\times16\\times\\dfrac14=8\\pi$, 각 반원의 사분원 호는 $2\\pi\\times8\\times\\dfrac14=4\\pi$이므로 $$x=8\\pi+4\\times4\\pi=24\\pi\\,\\mathrm{cm}.$$ 아래쪽 렌즈 부분은 반지름 $8$인 $90^\\circ$ 부채꼴 두 개에서 직각이등변삼각형 두 개를 뺀 넓이이므로 $2(16\\pi-32)=32\\pi-64$이다. 위쪽 영역은 큰 사분원에서 두 반원의 합집합을 뺀 부분이며 넓이는 아래쪽 렌즈와 같으므로 전체 색칠 넓이는 $$y=2(32\\pi-64)=64\\pi-128\\,\\mathrm{cm}^2.$$ 따라서 수치식으로 $x+y=88\\pi-128$이다.",
+            "quote": "둘레 $x=24\\pi\\,\\mathrm{cm}$, 넓이 $y=(64\\pi-128)\\,\\mathrm{cm}^2$이므로 $(x,y)=(24\\pi\\,\\mathrm{cm},(64\\pi-128)\\,\\mathrm{cm}^2)$이다.",
             "evidenceType": "NAMED"
           },
           {
             "term": "넓이",
             "src": "solution",
-            "quote": "사분원 반지름은 $16\\,\\mathrm{cm}$이고 반원 반지름은 $8\\,\\mathrm{cm}$이다. 두 색칠 영역의 바깥 둘레에는 사분원의 호 1개와 반원의 사분원 호 4개가 포함된다. 사분원의 호 길이는 $2\\pi\\times16\\times\\dfrac14=8\\pi$, 각 반원의 사분원 호는 $2\\pi\\times8\\times\\dfrac14=4\\pi$이므로 $$x=8\\pi+4\\times4\\pi=24\\pi\\,\\mathrm{cm}.$$ 아래쪽 렌즈 부분은 반지름 $8$인 $90^\\circ$ 부채꼴 두 개에서 직각이등변삼각형 두 개를 뺀 넓이이므로 $2(16\\pi-32)=32\\pi-64$이다. 위쪽 영역은 큰 사분원에서 두 반원의 합집합을 뺀 부분이며 넓이는 아래쪽 렌즈와 같으므로 전체 색칠 넓이는 $$y=2(32\\pi-64)=64\\pi-128\\,\\mathrm{cm}^2.$$ 따라서 수치식으로 $x+y=88\\pi-128$이다.",
+            "quote": "둘레 $x=24\\pi\\,\\mathrm{cm}$, 넓이 $y=(64\\pi-128)\\,\\mathrm{cm}^2$이므로 $(x,y)=(24\\pi\\,\\mathrm{cm},(64\\pi-128)\\,\\mathrm{cm}^2)$이다.",
             "evidenceType": "NAMED"
           },
           {
             "term": "부채꼴",
             "src": "solution",
-            "quote": "사분원 반지름은 $16\\,\\mathrm{cm}$이고 반원 반지름은 $8\\,\\mathrm{cm}$이다. 두 색칠 영역의 바깥 둘레에는 사분원의 호 1개와 반원의 사분원 호 4개가 포함된다. 사분원의 호 길이는 $2\\pi\\times16\\times\\dfrac14=8\\pi$, 각 반원의 사분원 호는 $2\\pi\\times8\\times\\dfrac14=4\\pi$이므로 $$x=8\\pi+4\\times4\\pi=24\\pi\\,\\mathrm{cm}.$$ 아래쪽 렌즈 부분은 반지름 $8$인 $90^\\circ$ 부채꼴 두 개에서 직각이등변삼각형 두 개를 뺀 넓이이므로 $2(16\\pi-32)=32\\pi-64$이다. 위쪽 영역은 큰 사분원에서 두 반원의 합집합을 뺀 부분이며 넓이는 아래쪽 렌즈와 같으므로 전체 색칠 넓이는 $$y=2(32\\pi-64)=64\\pi-128\\,\\mathrm{cm}^2.$$ 따라서 수치식으로 $x+y=88\\pi-128$이다.",
+            "quote": "둘레 $x=24\\pi\\,\\mathrm{cm}$, 넓이 $y=(64\\pi-128)\\,\\mathrm{cm}^2$이므로 $(x,y)=(24\\pi\\,\\mathrm{cm},(64\\pi-128)\\,\\mathrm{cm}^2)$이다.",
             "evidenceType": "NAMED"
           }
         ],
@@ -997,7 +997,7 @@
       "reasons": {},
       "review": {
         "status": "UNREVIEWED",
-        "reason": "Independent 4-slot review pending"
+        "reason": "Unit-safe requested output added; formal independent review pending."
       }
     },
     {
