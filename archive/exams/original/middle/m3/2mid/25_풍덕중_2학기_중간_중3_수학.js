@@ -179,7 +179,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 1의 사분원에서 각 53°의 수평 투영, 수직 투영과 접선 높이를 비교한다.",
+    "solutionImageCaption": "cos37°=sin53°≈0.80, tan53°≈1.33이므로 cos37°+tan53°≈2.13이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -223,7 +227,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: x축 위 H30·H60 위치로 cos 감소, 주황 수직 투영으로 sin 증가, 초록 x=1 접선 높이로 tan 증가를 비교한다.",
+    "solutionImageCaption": "예각에서 각이 커질수록 sin A와 tan A는 커지고 cos A는 작아진다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -511,7 +519,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 30° 기울기와 y절편 2인 직선의 한 예, 수평 변화 3과 수직 변화 √3.",
+    "solutionImageCaption": "기울기는 tan30°=√3/3이고 y절편은 2이므로 직선은 y=(√3/3)x+2이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -556,7 +568,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원의 대표 예각 A=30°에서 cos A, sin A와 x=1 접선 높이 tan A를 나타낸다.",
+    "solutionImageCaption": "대표 예각 A=30°에서 수평 투영 cos A=√3/2, 수직 투영 sin A=1/2, 접선 높이 tan A=√3/3이다. 따라서 cos A>sin A, tan A>sin A이고 식은 cos A−tan A이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -593,9 +609,9 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q13-solution.svg",
-    "solutionImageAlt": "산 정상 A에서 터널 바닥 BC에 내린 H와 양쪽 직각삼각형",
-    "solutionImageCaption": "BH와 HC를 삼각비로 구해 터널 길이 BC를 더한다.",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 A에서 밑변 BC에 내린 수선 AH와 분리된 수평 구간 BH, HC를 나타낸 삼각형.",
+    "solutionImageCaption": "BH=4√3 km, HC=4 km이므로 터널 길이는 BC=4√3+4 km이다. 정답은 ④이다.",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
@@ -605,8 +621,7 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
-    "solutionImageLayout": "fullwidth"
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -888,7 +903,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "한 점에서 원에 그은 두 접선의 길이는 서로 같다.\n\n따라서\n$AD=DE=x$,\n$BC=CE=5$이다.\n\n그러므로\n$DC=DE+EC$\n$=x+5$이다.\n\n또 $AB=6$이고 $AD\\perp AB$, $BC\\perp AB$이므로\n$D$, $C$의 세로 길이 차는 $|5-x|$이다.\n\n따라서\n$DC^2=6^2+(5-x)^2$이다.\n\n즉\n$(x+5)^2=36+(5-x)^2$이다.\n양변을 전개하면\n$x^2+10x+25=36+x^2-10x+25$\n$20x=36$\n$x=\\dfrac95$이다.\n\n정답은 ②이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q19.png",
-    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q19-solution-v2.svg",
     "solutionImageSize": "full",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -905,7 +920,8 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageAlt": "해설 그림: 위쪽 반원 O, 접점 A·B·E와 D·C에서 그은 두 접선 쌍의 길이 대응.",
+    "solutionImageCaption": "AD=DE=x, BC=CE=5이고 DC=x+5이다. 피타고라스로 x=9/5이므로 정답은 ②이다."
   },
   {
     "id": 20,
@@ -1026,9 +1042,9 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q22-solution.svg",
-    "solutionImageAlt": "눈높이 B에서 D까지 수평거리 BD=4.5 m이고, 눈높이 AB=DE=1.5 m이다. 시선각 54°와 수직선 CE를 이용해 고양이의 높이 CE=7.71 m를 나타낸다.",
-    "solutionImageCaption": "BD=AE=4.5 m에서 tan54°=CD/BD=1.38이므로 CD=6.21 m이다. 눈높이 DE=1.5 m를 더해 CE=7.71 m를 구한다.",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 나무 꼭대기 C를 보는 시선각 54°, 수평 거리 4.5 m, 눈높이 1.5 m와 눈높이 위 증가분을 분리한 그림.",
+    "solutionImageCaption": "tan54°≈1.38이므로 눈높이 위 증가는 4.5×1.38=6.21 m이고, 이를 눈높이 1.5 m에 더한다. 정답은 7.71 m이다.",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
@@ -1038,8 +1054,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
-    "solutionImageLayout": "fullwidth"
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -1079,7 +1094,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 대각선 AC가 나누는 두 삼각형, 직각 B와 높이 DH=4√3.",
+    "solutionImageCaption": "[ABC]=18√3, [ACD]=24√3이므로 [ABCD]=42√3 cm²이다. 정답은 42√3 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

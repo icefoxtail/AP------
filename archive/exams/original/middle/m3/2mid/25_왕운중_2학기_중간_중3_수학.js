@@ -70,9 +70,9 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q2-solution.svg",
-    "solutionImageAlt": "5k-12k-13k 직각삼각형 ABC",
-    "solutionImageCaption": "tan A가 정하는 두 직각변을 빗변과 함께 비교한다.",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 각 B가 직각인 5–12–13 삼각형. 각 A의 인접변 AB=5와 빗변 AC=13이 구분된다.",
+    "solutionImageCaption": "각 A에 대해 cos A=AB/AC=5/13이다. 정답은 ⑤이다.",
     "solutionImageSize": "full",
     "problemTypeKey": null,
     "templateKey": null,
@@ -288,7 +288,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 47° 사분원의 단위원 투영과 표에서 읽은 cos47≈0.68, sin47≈0.73, tan47≈1.07.",
+    "solutionImageCaption": "sin43°=cos47°≈0.68, cos43°=sin47°≈0.73, tan47°≈1.07이므로 옳지 않은 것은 ②이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -792,7 +796,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "직각삼각형 $ABC$에서\n$AC=\\sqrt{5^2+12^2}=13$이다.\n빗변의 중점 $M$은 세 꼭짓점에서 같은 거리에 있으므로 $BM=\\dfrac{13}{2}$이다.\n$MH\\perp BC$이고 $AB\\perp BC$이므로 $MH\\parallel AB$이다.\n따라서 $\\triangle MHB\\sim\\triangle ABC$이고 닮음비는 $MH:AB=1:2$이다.\n$BH=\\dfrac{BC}{2}=6$이므로\n$\\sin x=\\dfrac{BH}{BM}=\\dfrac6{\\frac{13}{2}}=\\dfrac{12}{13}$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q19.png",
-    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q19-solution-v2.svg",
     "solutionImageSize": "full",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -806,7 +810,9 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: AB=5, BC=12인 직각삼각형의 빗변 중점 M, 수선 MH, ∠BMH=x와 BH=6·BM=13/2.",
+    "solutionImageCaption": "BH/BM=6/(13/2)=12/13이므로 sin x=12/13이다. 정답은 ②이다."
   },
   {
     "id": 20,
@@ -876,9 +882,9 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q21-solution.svg",
-    "solutionImageAlt": "AB=9, BC=12인 삼각형에서 A의 수선 AH와 sin B 비",
-    "solutionImageCaption": "sin B가 밑변 BC에 대한 높이 AH를 정하고 삼각형 넓이를 만든다.",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 밑변 BC=12와 수직 높이 AH=6√2를 구분한 도식.",
+    "solutionImageCaption": "넓이는 1/2×12×6√2=36√2이다. 정답은 36√2이다.",
     "solutionImageSize": "full",
     "problemTypeKey": null,
     "templateKey": null,
