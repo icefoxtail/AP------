@@ -1528,19 +1528,20 @@ def trig_abs_cusps(spec,lo,hi):
         if lo<x<hi:rows.append({'id':'cusp-'+str(len(rows)+1),'x':str(x)})
     return sorted(rows,key=lambda row:Fraction(row['x']))
 
-def trig_interval_poles(spec,lo,hi):
-    """Every pole of tan strictly inside the interval, with its exact axis coordinate (phase must be a pi multiple)."""
-    if spec['function']!='TAN':return []
+def trig_interval_poles(spec,lo,hi,states):
+    # Exact tangent poles in the interval closure, including excluded source endpoints.
     if not spec['phaseHasPi']:raise ValueError('TRIG_TAN_REQUIRES_PI_PHASE')
-    rate=spec['rate'];phase=spec['phase']
-    first=math.ceil(float(rate*lo+phase-Fraction(1,2))-1e-12);last=math.floor(float(rate*hi+phase-Fraction(1,2))+1e-12)
-    rows=[]
-    for n in range(first,last+1):
-        x=(Fraction(1,2)+n-phase)/rate
-        if x==lo or x==hi:raise ValueError('TRIG_TAN_POLE_AT_INTERVAL_END')
-        if lo<x<hi:rows.append({'id':'pole-'+str(len(rows)+1),'x':str(x),'side':'LEFT' if rate>0 else 'RIGHT'})
-    if not rows:raise ValueError('TRIG_TAN_INTERVAL_NO_POLE')
-    return rows
+    rate=spec['rate'];phase=spec['phase'];half=Fraction(1,2)
+    lower,upper=sorted((rate*lo+phase,rate*hi+phase))
+    poles=sorted((n+half-phase)/rate for n in range(math.ceil(lower-half),math.floor(upper-half)+1))
+    for x,state in zip((lo,hi),states):
+        if x in poles and state=='CLOSED':raise ValueError('TRIG_TAN_POLE_AT_INTERVAL_END')
+    if not any(lo<x<hi for x in poles):raise ValueError('TRIG_TAN_INTERVAL_NO_POLE')
+    return [
+        {'id':'pole-'+str(index),'x':str(x),'side':'LEFT' if rate>0 else 'RIGHT',
+         **({'boundary':'START'} if x==lo else {'boundary':'END'} if x==hi else {})}
+        for index,x in enumerate(poles,1)
+    ]
 
 TRIG_PLOT_WIDTH_PX=546         # the drawn plot width of the graph canvas (610 px minus the 32 px margins)
 TRIG_PI_TICK_MIN_GAP_PX=58     # least spacing between two pi tick labels (a stacked 5pi/6 is about 30 px wide at the tick font)
@@ -1607,7 +1608,7 @@ def _fit_trigonometric_interval_v2(plan,spec):
     if plan.get('keyPoints') is True and function not in {'SIN','COS'}:raise ValueError('TRIG_KEY_POINTS_REQUIRE_SIN_COS')
     if function=='TAN':
         if plan.get('referenceLines'):raise ValueError('TRIG_TAN_REFERENCE_LINES_UNSUPPORTED')
-        pole_rows=trig_interval_poles(spec,lo,hi)
+        pole_rows=trig_interval_poles(spec,lo,hi,states)
     else:
         for line in trig_line_specs(plan):
             line['axisUnit']=axis_unit
@@ -1630,7 +1631,12 @@ def _fit_trigonometric_interval_v2(plan,spec):
     tick_multiples=trig_pi_ticks(plan,kind,x0,x1,(x1-x0)+2*xpad)
     evaluator=math.sin if function=='SIN' else math.cos if function=='COS' else math.tan
     if absolute:evaluator=(lambda f:lambda v:abs(f(v)))(evaluator)
-    end_y=[float(a)*evaluator(rate_eff*x+phase_eff)+float(c) for x in (x0,x1)]
+    pole_boundaries={row['boundary'] for row in pole_rows if 'boundary' in row}
+    endpoints=[]
+    for side,x,state in zip(('START','END'),(x0,x1),states):
+        if side not in pole_boundaries:
+            y=float(a)*evaluator(rate_eff*x+phase_eff)+float(c)
+            endpoints.append({'side':side,'x':repr(x),'y':repr(y),'state':state})
     if function=='TAN':
         half=max(1.0,2.2*abs(float(a)));low=min(0.0,float(c)-half);high=max(0.0,float(c)+half);ypad=.05*max(1.0,high-low)
     else:
@@ -1639,15 +1645,25 @@ def _fit_trigonometric_interval_v2(plan,spec):
     features={'schemaVersion':'TRIGONOMETRIC_INTERVAL_FEATURES_v2','function':function,'rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'axisUnit':axis_unit,'amplitude':str(a),'midline':str(c),'sourceInterval':{'kind':kind,'lo':str(lo),'hi':str(hi),'states':states},'lines':rows,'keyPoints':key_rows,'poles':pole_rows}
     if absolute:features['absolute']=True;features['cusps']=cusp_rows
     policy={'schemaVersion':'TRIGONOMETRIC_INTERVAL_POLICY_v2','markerRadiusIntrinsicPx':3.2,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':40,'minimumAmplitudeCssPx':20,'minimumPoleApproachGapCssPx':2}
-    interval={'schemaVersion':'POLYNOMIAL_INTERVAL_FEATURES_v1','endpoints':[{'side':'START','x':repr(x0),'y':repr(end_y[0]),'state':states[0]},{'side':'END','x':repr(x1),'y':repr(end_y[1]),'state':states[1]}]}
+    interval={'schemaVersion':'POLYNOMIAL_INTERVAL_FEATURES_v1','endpoints':endpoints}
     interval_policy={'schemaVersion':'POLYNOMIAL_INTERVAL_POLICY_v1','markerRadiusIntrinsicPx':4,'minimumMarkerDiameterCssPx':3}
     if not all(math.isfinite(value) and abs(value)<=1e6 for value in [x0,x1,*viewport]):raise ValueError('UNSUPPORTED_TRIGONOMETRIC_NUMERIC_SCOPE')
     # A plan that uses an additive field names its interval ends beside the end dots, on the side the curve does not run into (the older place, on the axis, can sit on the curve)
     additive=absolute or plan.get('axisTickPiStep') is not None or plan.get('displaySize') is not None or any(row.get('color') or row.get('perPi') or row['kind']=='VERTICAL' or 'sqrt' in str(row.get('intercept','')) for row in rows)
     end_sides=None
     if additive:
-        delta=1e-3*(x1-x0);inward=[float(a)*evaluator(rate_eff*(x0+delta)+phase_eff)+float(c)-end_y[0],float(a)*evaluator(rate_eff*(x1-delta)+phase_eff)+float(c)-end_y[1]]
-        end_sides=['BELOW' if value>0 else 'ABOVE' for value in inward]
+        delta=1e-3*(x1-x0)
+        end_sides=[None,None]
+        for endpoint in endpoints:
+            index=0 if endpoint['side']=='START' else 1
+            step=delta
+            if pole_boundaries:
+                # Evaluate only between the finite end and its nearest pole.
+                pole_x=float(Fraction(pole_rows[0 if index==0 else -1]['x']))*(math.pi if axis_unit=='PI' else 1.0)
+                step=min(step,abs(float(endpoint['x'])-pole_x)/2)
+            inward=float(endpoint['x'])+(step if index==0 else -step)
+            y=float(a)*evaluator(rate_eff*inward+phase_eff)+float(c)
+            end_sides[index]='BELOW' if y>float(endpoint['y']) else 'ABOVE'
     fitted={**plan,'domain':[x0,x1],'viewport':viewport,**({'endLabelSides':end_sides} if end_sides else {}),**({'axisTickPiRequired':list(plan['axisTickValues']['x']),'axisTickValues':{'x':[str(value) for value in tick_multiples],'y':plan['axisTickValues']['y']}} if plan.get('axisTickPiStep') is not None else {}),'shapeIntent':'OVERVIEW','overviewPolicy':'TRIGONOMETRIC_INTERVAL_OVERVIEW_v2','trigIntervalFeatures':features,'trigIntervalPolicy':policy,'intervalFeatures':interval,'intervalFeaturePolicy':interval_policy}
     return {'graphPlan':fitted,'policy':'TRIGONOMETRIC_INTERVAL_OVERVIEW_v2','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 
