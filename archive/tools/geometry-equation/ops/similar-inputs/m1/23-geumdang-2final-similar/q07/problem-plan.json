@@ -1,0 +1,184 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": []
+    },
+    "curves": [
+      {
+        "coefficients": [
+          "0",
+          "-3"
+        ],
+        "color": "BLUE",
+        "id": "f",
+        "kind": "LINE",
+        "label": "y=-3x",
+        "domain": [
+          "-6",
+          "6"
+        ]
+      },
+      {
+        "color": "WARM",
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "id": "g",
+        "kind": "RATIONAL",
+        "label": "y=a/x",
+        "numerator": [
+          "-12",
+          "0"
+        ],
+        "domain": [
+          "-6",
+          "6"
+        ]
+      }
+    ],
+    "family": "multi-curve",
+    "overlays": {
+      "guides": [
+        {
+          "axis": "x",
+          "from": "P",
+          "id": "g1"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "-6"
+        }
+      ]
+    },
+    "domain": [
+      -14.4,
+      14.4
+    ],
+    "viewport": [
+      -14.4,
+      14.4,
+      -20.571428571428573,
+      20.571428571428573
+    ],
+    "shapeIntent": "OVERVIEW",
+    "overviewPolicy": "MULTI_CURVE_OVERVIEW_v1",
+    "equalUnits": true,
+    "axisRatio": 1,
+    "plotCanvas": {
+      "width": 448,
+      "height": 640
+    },
+    "multiCurveFeatures": {
+      "schemaVersion": "MULTI_CURVE_FEATURES_v1",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "LINE",
+          "interval": [
+            "-6",
+            "6"
+          ],
+          "coefficients": [
+            "0",
+            "-3"
+          ],
+          "color": "BLUE",
+          "label": "y=-3x",
+          "branches": [
+            {
+              "side": "FUNCTION",
+              "xInterval": [
+                "-6",
+                "6"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g",
+          "kind": "RATIONAL",
+          "interval": [
+            "-6",
+            "6"
+          ],
+          "numerator": [
+            "-12",
+            "0"
+          ],
+          "denominator": [
+            "0",
+            "1"
+          ],
+          "asymptotes": {
+            "vertical": {
+              "x": "0",
+              "drawn": false
+            },
+            "horizontal": {
+              "y": "0",
+              "drawn": false
+            }
+          },
+          "color": "WARM",
+          "label": "y=a/x",
+          "branches": [
+            {
+              "side": "LEFT",
+              "xInterval": [
+                "-6",
+                "0"
+              ]
+            },
+            {
+              "side": "RIGHT",
+              "xInterval": [
+                "0",
+                "6"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "overlaysFeatures": {
+      "schemaVersion": "GRAPH_OVERLAYS_FEATURES_v1",
+      "points": [
+        {
+          "id": "P",
+          "x": 2,
+          "y": -6,
+          "xExact": "2",
+          "yExact": "-6"
+        }
+      ],
+      "lines": [],
+      "segments": [],
+      "guides": [
+        {
+          "id": "g1",
+          "from": "P",
+          "axis": "x",
+          "dashed": true
+        }
+      ],
+      "polygons": []
+    }
+  },
+  "caption": "y=-3x와 y=a/x의 그래프가 x=2에서 만나는 그림",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "보존계획의교점x좌표2및y=-3x",
+      "mappedTo": []
+    }
+  ],
+  "newVisualInformation": []
+}
