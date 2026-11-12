@@ -182,8 +182,7 @@
     // Preserve the student navigation contract independently of exploration URLs.
     try { sessionStorage.setItem('apl:viaUniverse', '1'); } catch (_) {}
     function getHubHref() {
-      const gradeHash = /^#[a-z0-9]+$/.test(location.hash) ? location.hash : '';
-      const hubPath = './next/index.html' + gradeHash;
+      const hubPath = './next/index.html' + (/^#[a-z0-9]+$/.test(location.hash) ? location.hash : '');
       return window.StudentPortalNavigation?.withContext(hubPath) || hubPath;
     }
     function readRoute() {

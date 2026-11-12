@@ -32,7 +32,8 @@ class TickGapByInkTests(unittest.TestCase):
         ink=tick_ink_box(placed,self.INK)
         self.assertAlmostEqual(item['at'][0]-ink.right,17.46,places=2)
         with_ink=self.run_layout({**item,'tickInk':self.INK},obstacles)
-        self.assertEqual(with_ink['unresolved'],['tick-y-1-label'],with_ink)         # no gap fits at ink: not placed at gap 16
+        self.assertEqual(with_ink['unresolved'],[],with_ink)                         # no gap fits at ink: not placed at gap 16 beside the axis; the number is never dropped (2026-11-11), it stands on its tick leader
+        self.assertEqual(with_ink['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
     def test_ink_gap_fallback_is_the_tick_leader(self):
         item,obstacles=self.fixtures(fallback=True)
         result=self.run_layout({**item,'tickInk':self.INK},obstacles)

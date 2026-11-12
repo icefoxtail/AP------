@@ -16,6 +16,7 @@ export const CONCEPT_GALAXIES = Object.freeze({
   polyhedra: {
     title: '정다면체의 은하', subtitle: '작은 결정을 선택하면 면과 꼭짓점의 관계가 드러납니다.',
     hostRadius: 4.05, hostWide: [0, 0, 0], hostPortrait: [0, 9.5, 0],
+    detailRotation: [0.35, 0.45, 0],
     concepts: [
       { id: 'cube-octahedron', label: '정육면체 ↔ 정팔면체', wide: [-9.5, 1, 2.5], portrait: [-3.2, 0, 2], compact: [-5.8, 2.9, 1.8], radius: 3.1 },
       { id: 'dodecahedron-icosahedron', label: '정십이면체 ↔ 정이십면체', wide: [9.5, -1, -2.5], portrait: [3.2, -8.5, -2], compact: [5.7, -2.6, -1.7], radius: 3.1 },

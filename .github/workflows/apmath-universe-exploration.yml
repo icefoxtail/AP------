@@ -32,7 +32,7 @@ jobs:
   browser:
     name: Universe Chromium WebGL2
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 25
     env:
       CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
       BASELINE_SHA: ${{ inputs.baseline_sha || github.event.pull_request.base.sha || github.sha }}
@@ -71,6 +71,7 @@ jobs:
           npm install --prefix "$RUNNER_TEMP/universe-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1 pngjs@7.0.0
           "$RUNNER_TEMP/universe-browser/node_modules/.bin/playwright" install chromium
       - name: Verify source syntax and browser journeys
+        timeout-minutes: 22
         env:
           NODE_PATH: ${{ runner.temp }}/universe-browser/node_modules
         run: |
@@ -99,7 +100,10 @@ jobs:
             printf '### AP Math Universe browser verification\n'
             printf 'Candidate: `%s`\n\nBaseline: `%s`\n\n' "$CANDIDATE_SHA" "$BASELINE_SHA"
             printf 'Chromium uses software WebGL2 (ANGLE/SwiftShader), not a physical GPU.\n'
-            printf 'The checker targets PC/mobile interactions, errors, label bounds and 20 resource round trips, plus PC blank-space, HUD-restoration and reduced-motion checks; inspect report.json for executed checks and failures.\n'
+            printf 'Normal PC/mobile journeys retain circle, both duality scenes, history, resize and return observations.\n'
+            printf 'Resource verification repeats real DOM routes 20 times after warm-up: PC uses a separately reported reduced-motion phase; mobile retains normal animation. Each sample waits for detailedObjects=0.\n'
+            printf 'PC math progress allows 90 wall seconds with frame/time samples; this is a software-runner allowance, not a physical-device speed target.\n'
+            printf 'Blank-space, HUD-restoration and reduced-motion checks are reported separately. Inspect report.json and timestamped console stages for execution and failures.\n'
             printf 'Baseline/after PNGs require visual review; no pixel-equivalence or physical-device FPS claim is made.\n'
             printf '[Download screenshots, report and gallery](%s)\n' "$ARTIFACT_URL"
             printf 'Deployment and production account operations: NONE.\n'

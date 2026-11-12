@@ -99,6 +99,9 @@ const base = pathToFileURL(path.join(__dirname, '../apmath/playground/universe/'
     }
     e.selectConcept('two-tangents'); h.tick(2);
     assert.equal(e.getState().conceptId, 'two-tangents');
+    assert.ok(h.registry.every(c => !c.anchor.visible), 'Large hosts do not intrude into close observation');
+    assert.equal(h.scene.getObjectByName('two-tangents').visible, true);
+    assert.equal(h.scene.getObjectByName('chord-bisector').visible, false);
     assert.ok(e.getState().mathTime > 0 && e.getState().mathTime < 2);
     e.toggleConceptPlayback(); const paused = e.getState().mathTime; h.tick(0.2); near(e.getState().mathTime, paused);
     e.seekConcept(7); h.tick(0.05); near(e.getState().mathTime, 7);
@@ -108,6 +111,8 @@ const base = pathToFileURL(path.join(__dirname, '../apmath/playground/universe/'
     assert.notEqual(geometryState(h.scene.getObjectByName('math-concept-two-tangents')), completedSibling, 'Previous detail returns to completed preview');
     e.replayConcept(); h.tick(0.25); assert.ok(e.getState().mathPlaying && e.getState().mathTime < 0.3);
     e.back(); h.tick();
+    assert.equal(h.registry[0].anchor.visible, true);
+    assert.equal(h.scene.getObjectByName('chord-bisector').visible, true, 'Family companions return at their existing positions');
     vectorNear(h.camera.position.toArray(), galaxyPose.position);
     vectorNear(h.controls.target.toArray(), galaxyPose.target);
 
@@ -118,7 +123,9 @@ const base = pathToFileURL(path.join(__dirname, '../apmath/playground/universe/'
     h.registry[0].anchor.position.add(translation); h.tick(0.05);
     vectorNear(h.camera.position.clone().sub(before).toArray(), translation.toArray());
     vectorNear(h.controls.target.clone().sub(beforeTarget).toArray(), translation.toArray());
-    e.focusOnCelestial('polyhedra'); e.selectConcept('cube-octahedron'); e.focusOnCelestial('circle-sector'); h.tick();
+    e.focusOnCelestial('polyhedra'); e.selectConcept('cube-octahedron'); h.tick();
+    assert.ok(h.scene.getObjectByName('cube-octahedron').quaternion.angleTo(new THREE.Quaternion()) > 0.4, 'Duals start at an oblique common orientation, separating front and back vertices');
+    e.selectConcept('dodecahedron-icosahedron'); e.focusOnCelestial('circle-sector'); h.tick();
     assert.equal(e.getState().mode, 'galaxy'); assert.equal(e.getState().celestialId, 'circle-sector');
     assert.equal(e.getState().transitioning, false, 'Old flight completion cannot restore an obsolete route');
     e.resetFocus(); h.tick();
@@ -142,6 +149,8 @@ const base = pathToFileURL(path.join(__dirname, '../apmath/playground/universe/'
   e.replayConcept(); reduced.tick(0.5);
   assert.ok(e.getState().mathPlaying); assert.notEqual(geometryState(object), held, 'Explicit reduced-motion replay changes actual geometry');
   e.seekConcept(8); reduced.tick(0.05); assert.equal(geometryState(object), held);
+  e.resetFocus(); reduced.tick(1 / 60);
+  assert.ok(e.debug().families.every(f => f.open === 0 && f.detailedObjects === 0), 'Reduced-motion return releases detailed resources on its first frame');
   reduced.dispose();
 
   const core = createCircleSectorObject({ radius: 3.8 });

@@ -45,7 +45,7 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
       const marker = new THREE.Mesh(id === 'polyhedra' ? crystalGeometry : ringGeometry, i % 2 ? gold : material);
       marker.userData.conceptId = def.id; marker.userData.celestialId = id;
       slot.add(marker); root.add(slot); slot.position.fromArray(def.compact);
-      return { def, slot, marker, object: null, orientation: new THREE.Quaternion().setFromEuler(new THREE.Euler(0.16 * Math.sin(i + 1), 0.25 * Math.cos(i), 0.08 * (i - 2))), world: new THREE.Vector3() };
+      return { def, slot, marker, object: null, orientation: new THREE.Quaternion().setFromEuler(new THREE.Euler(0.16 * Math.sin(i + 1), 0.25 * Math.cos(i), 0.08 * (i - 2))), detailOrientation: new THREE.Quaternion().setFromEuler(new THREE.Euler(...(definition.detailRotation || [0, 0, 0]))), world: new THREE.Vector3() };
     });
     families.set(id, { id, definition, host, root, nodes, open: 0, basis: new THREE.Quaternion(), ringGeometry, crystalGeometry, material, gold });
   }
@@ -212,6 +212,9 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
 
   function visibleBody(id) {
     if (!id || route.mode === 'universe') return true;
+    // Close observation isolates the relationship. Nearby large bodies would
+    // otherwise expand across the viewport edges and the navigation controls.
+    if (route.mode === 'concept') return false;
     // Keep the sky; unrelated mathematics must not sit between camera and the
     // selected relationship. Original visibility is restored on return.
     return id === route.celestialId;
@@ -230,8 +233,10 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
     const selectedFamily = activeFamily();
     for (const family of families.values()) {
       const active = family === selectedFamily && route.mode !== 'universe';
-      family.open = clamp(family.open + (active ? dt / 0.95 : -dt / 0.7), 0, 1);
-      const opening = reducedMotion ? (active ? 1 : 0) : smooth(family.open);
+      // Reduced motion has no hidden closing animation: the visual state and
+      // resource lifetime reach their endpoint together on this frame.
+      family.open = reducedMotion ? (active ? 1 : 0) : clamp(family.open + (active ? dt / 0.95 : -dt / 0.7), 0, 1);
+      const opening = smooth(family.open);
       family.root.position.copy(family.host.anchor.position);
       family.root.quaternion.copy(family.basis);
       family.root.visible = route.mode === 'universe' || active;
@@ -241,14 +246,15 @@ export function createExploration({ scene, camera, controls, canvas, celestialRe
       if (active) family.host.group.quaternion.slerp(family.basis, reducedMotion ? 1 : 1 - Math.exp(-dt * 4));
       for (let i = 0; i < family.nodes.length; i++) {
         const node = family.nodes[i], selected = active && route.conceptId === node.def.id;
+        node.slot.visible = !active || route.mode !== 'concept' || selected;
         node.slot.position.fromArray(node.def.compact).lerp(vec(layout.bodies[i].position), opening);
         if (!active && !motionEngine.paused && !reducedMotion) {
           node.slot.position.z += Math.sin(time * 0.16 + i * 1.7) * 0.45;
           node.slot.rotation.set(0.18 * Math.sin(time * 0.1 + i), 0.25 * Math.cos(time * 0.08 + i), time * 0.025 + i * 0.2);
-        } else node.slot.quaternion.slerp(selected ? new THREE.Quaternion() : node.orientation, reducedMotion ? 1 : 1 - Math.exp(-dt * 5));
+        } else node.slot.quaternion.slerp(selected ? node.detailOrientation : node.orientation, reducedMotion ? 1 : 1 - Math.exp(-dt * 5));
         node.marker.visible = !node.object || opening < 0.12;
         if (node.object) {
-          node.object.group.visible = opening >= 0.12;
+          node.object.group.visible = opening >= 0.12 && node.slot.visible;
           const scale = node.def.radius / node.object.radius * (0.32 + opening * 0.68);
           node.object.group.scale.setScalar(scale);
           // Non-selected previews are complete, static, and need no frame updater.

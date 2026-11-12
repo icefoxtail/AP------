@@ -1,0 +1,67 @@
+{
+ "capability": "stat-chart-figure-v1",
+ "chart": {
+  "kind": "STEM_LEAF",
+  "title": "스마트폰 사용 시간",
+  "unitText": "시간",
+  "key": {
+   "stem": 1,
+   "leaf": 0
+  },
+  "values": [
+   1,
+   1,
+   3,
+   3,
+   7,
+   8,
+   9,
+   10,
+   14,
+   {
+    "symbol": "a",
+    "stem": 1,
+    "order": 3
+   },
+   {
+    "symbol": "b",
+    "stem": 1,
+    "order": 4
+   },
+   18,
+   23,
+   27,
+   27,
+   30,
+   30,
+   31,
+   31,
+   31
+  ],
+  "classGroups": [
+   {
+    "from": "0",
+    "to": "5",
+    "label": "4",
+    "color": "BLUE"
+   },
+   {
+    "from": "30",
+    "to": "35",
+    "label": "5",
+    "color": "WARM"
+   }
+  ]
+ },
+ "caption": "스마트폰 사용 시간 20명의 줄기와 잎 그림. 줄기 0의 0~5시간 잎을 파란 괄호로, 줄기 3의 30~35시간 잎을 주황 괄호로 묶고 각 괄호 아래에 같은 색으로 도수를 적은 그림.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "줄기와 잎 그림: 0 | 1 1 3 3 7 8 9, 1 | 0 4 a b 8, 2 | 3 7 7, 3 | 0 0 1 1 1 (1|0은 10시간), 잎은 크기 순, 학생 20명",
+   "mappedTo": "chart"
+  }
+ ],
+ "newVisualInformation": [
+  "0~5시간 계급과 30~35시간 계급에 속한 잎의 수"
+ ]
+}

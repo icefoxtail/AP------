@@ -17,6 +17,10 @@ the explicit link to the existing laboratory hub.
 - A concept plays one eight-second mathematical sequence and holds. Replay,
   pause and scrubbing are independent of ambient motion. Reduced-motion users
   start at the completed relationship and can explicitly replay it.
+- Close observation shows the selected relationship against the sky; the host
+  and other companions return in place when going back to the galaxy. Dual
+  polyhedra use one shared oblique orientation so front and back vertices are
+  distinct without changing the face/vertex correspondence.
 - Parent/back and Universe controls restore viewing poses. Browser history and
   the existing grade hash/student context remain supported. `?celestial=circle`
   is accepted as the old circle identifier.
@@ -34,7 +38,7 @@ the explicit link to the existing laboratory hub.
 | `../index.html`, `universe.css` | Accessible controls, captions, URL/history and laboratory navigation |
 
 Full concept geometry is created only for an explored family and disposed after
-it closes. Preview geometry is complete and static; only the selected concept is
+it closes (on the first return frame under reduced motion). Preview geometry is complete and static; only the selected concept is
 updated each frame. Translation anchors preserve orbital motion without passing
 the host's self-rotation to the satellites. The existing central sector reuses a
 single dynamic vertex buffer instead of allocating geometry on every frame.
