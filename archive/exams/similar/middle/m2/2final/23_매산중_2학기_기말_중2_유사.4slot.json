@@ -13,7 +13,7 @@
   "review": {
     "status": "UNREVIEWED",
     "independentReview": "NOT_RUN",
-    "scope": "4-slot semantics not independently reviewed."
+    "scope": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
   },
   "selfCheck": {
     "status": "LOCAL_SELF_CHECK",
@@ -443,35 +443,42 @@
         "given": [
           {
             "term": "평행",
-            "termId": 180,
             "src": "stem",
-            "quote": "세 평행선 $l \\parallel m \\pa"
+            "quote": "세 평행선 $l \\parallel m \\pa",
+            "termId": 180
           },
           {
             "term": "선분",
-            "termId": 144,
             "src": "stem",
-            "quote": "l$과 $m$ 사이의 선분의 길이가 $3$, $l$과 $n$ "
+            "quote": "l$과 $m$ 사이의 선분의 길이가 $3$, $l$과 $n$ ",
+            "termId": 144
           }
         ],
         "goal": [
           {
             "term": "선분",
-            "termId": 144,
             "src": "stem",
-            "quote": "l$과 $m$ 사이의 선분의 길이가 $3$, $l$과 $n$ "
+            "quote": "l$과 $m$ 사이의 선분의 길이가 $3$, $l$과 $n$ ",
+            "termId": 144
           }
         ],
         "method": [],
         "condition": [
           {
             "term": "직선",
-            "termId": 143,
             "src": "stem",
-            "quote": "allel n$이 두 직선과 만난다. 한 직선 위에서 $l$과"
+            "quote": "allel n$이 두 직선과 만난다. 한 직선 위에서 $l$과",
+            "termId": 143
           }
         ]
       },
+      "evidenceDebt": [
+        {
+          "slot": "method",
+          "term": "비례식",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "세 평행선 사이의 대응하는 선분의 길이의 비 3:5 = 6:x를 세워 x를 구한다."
       },
@@ -507,7 +514,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -523,42 +530,43 @@
         "given": [
           {
             "term": "중점",
-            "termId": 188,
             "src": "stem",
-            "quote": "B, BC, CA$의 중점을 각각 $D, E, F$라 하자. "
+            "quote": "B, BC, CA$의 중점을 각각 $D, E, F$라 하자. ",
+            "termId": 188
           },
           {
             "term": "삼각형",
-            "termId": 158,
             "src": "stem",
-            "quote": "삼각형 $ABC$에서 세 변 $AB, BC"
+            "quote": "삼각형 $ABC$에서 세 변 $AB, BC",
+            "termId": 158
           }
         ],
         "goal": [
           {
             "term": "넓이",
-            "termId": 213,
             "src": "choices",
-            "quote": "angle ABC$의 넓이는 $\\triangle DEF$의 넓"
+            "quote": "angle ABC$의 넓이는 $\\triangle DEF$의 넓",
+            "termId": 213
           },
           {
             "term": "둘레",
-            "termId": 214,
             "src": "choices",
-            "quote": "angle DEF$의 둘레의 길이는 $18\\text{ cm}$"
+            "quote": "angle DEF$의 둘레의 길이는 $18\\text{ cm}$",
+            "termId": 214
           }
         ],
         "method": [
           {
             "term": "닮음",
-            "termId": 192,
             "src": "solution",
             "quote": "ABC$는 $SSS$ 닮음이고 닮음비가 $1 : 2$이다.\n닮",
+            "termId": 192,
             "evidenceType": "NAMED"
           }
         ],
         "condition": []
       },
+      "evidenceDebt": [],
       "reasons": {
         "method": "삼각형의 중점연결정리로 변의 길이와 평행을 확인하고 닮음비의 제곱으로 넓이 비를 검증한다."
       },
@@ -594,7 +602,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -610,28 +618,35 @@
         "given": [
           {
             "term": "무게중심",
-            "termId": 186,
             "src": "stem",
-            "quote": "BC$, $GBC$의 무게중심이다. 선분 $\\overline{AM"
+            "quote": "BC$, $GBC$의 무게중심이다. 선분 $\\overline{AM",
+            "termId": 186
           },
           {
             "term": "중선",
-            "termId": 191,
             "src": "solution",
-            "quote": "각형의 무게중심은 각 중선을 꼭짓점으로부터 $2 : 1$로 내"
+            "quote": "각형의 무게중심은 각 중선을 꼭짓점으로부터 $2 : 1$로 내",
+            "termId": 191
           }
         ],
         "goal": [
           {
             "term": "선분",
-            "termId": 144,
             "src": "stem",
-            "quote": "C$의 무게중심이다. 선분 $\\overline{AM} = 27"
+            "quote": "C$의 무게중심이다. 선분 $\\overline{AM} = 27",
+            "termId": 144
           }
         ],
         "method": [],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "method",
+          "term": "비례식",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "무게중심의 2:1 내분 성질을 큰 삼각형과 작은 삼각형에 연속 적용하여 길이를 구한다."
       },
@@ -667,7 +682,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -683,28 +698,35 @@
         "given": [
           {
             "term": "부피",
-            "termId": 219,
             "src": "stem",
-            "quote": "체도형 $A, B$의 부피가 각각 $16\\text{ cm}^3"
+            "quote": "체도형 $A, B$의 부피가 각각 $16\\text{ cm}^3",
+            "termId": 219
           },
           {
             "term": "닮음",
-            "termId": 192,
             "src": "solution",
-            "quote": "$\n2. 부피의 비는 닮음비의 세제곱의 비와 같으므로 두 입체"
+            "quote": "$\n2. 부피의 비는 닮음비의 세제곱의 비와 같으므로 두 입체",
+            "termId": 192
           }
         ],
         "goal": [
           {
             "term": "겉넓이",
-            "termId": 220,
             "src": "stem",
-            "quote": "체도형 $A, B$의 겉넓이의 비는? [4점]"
+            "quote": "체도형 $A, B$의 겉넓이의 비는? [4점]",
+            "termId": 220
           }
         ],
         "method": [],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "method",
+          "term": "비례식",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "부피의 비 8:27로부터 닮음비 2:3을 구하고, 겉넓이의 비 4:9를 산출한다."
       },
@@ -740,7 +762,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -756,37 +778,38 @@
         "given": [
           {
             "term": "중점",
-            "termId": 188,
             "src": "stem",
-            "quote": "이고, 변 $BC$의 중점을 $D$라 하자. 점 $E, D$를"
+            "quote": "이고, 변 $BC$의 중점을 $D$라 하자. 점 $E, D$를",
+            "termId": 188
           },
           {
             "term": "선분",
-            "termId": 144,
             "src": "stem",
-            "quote": ", 점 $G$를 지나 선분 $EF$에 평행한 직선이 변 $AC"
+            "quote": ", 점 $G$를 지나 선분 $EF$에 평행한 직선이 변 $AC",
+            "termId": 144
           }
         ],
         "goal": [
           {
             "term": "선분",
-            "termId": 144,
             "src": "stem",
-            "quote": ", 점 $G$를 지나 선분 $EF$에 평행한 직선이 변 $AC"
+            "quote": ", 점 $G$를 지나 선분 $EF$에 평행한 직선이 변 $AC",
+            "termId": 144
           }
         ],
         "method": [
           {
             "term": "평행",
-            "termId": 180,
             "src": "stem",
             "quote": "지나 선분 $EF$에 평행한 직선이 변 $AC$와 만나는 점을",
+            "termId": 180,
             "evidenceType": "IMPLIED",
             "justification": "삼각형의 두 변의 중점을 연결한 선분의 성질"
           }
         ],
         "condition": []
       },
+      "evidenceDebt": [],
       "reasons": {
         "method": "두 서로 다른 삼각형에서 중점연결정리를 연이어 적용하여 x와 y를 구하고 비를 계산한다."
       },
@@ -822,7 +845,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -838,36 +861,37 @@
         "given": [
           {
             "term": "중점",
-            "termId": 188,
             "src": "stem",
-            "quote": "$에서 변 $BC$의 중점을 $D$라 하고, 변 $AC$를 삼"
+            "quote": "$에서 변 $BC$의 중점을 $D$라 하고, 변 $AC$를 삼",
+            "termId": 188
           },
           {
             "term": "삼각형",
-            "termId": 158,
             "src": "stem",
-            "quote": "삼각형 $ABC$에서 변 $BC$의 중점을"
+            "quote": "삼각형 $ABC$에서 변 $BC$의 중점을",
+            "termId": 158
           }
         ],
         "goal": [
           {
             "term": "넓이",
-            "termId": 213,
             "src": "stem",
-            "quote": " 삼각형 $ABC$의 넓이가 $72\\text{ cm}^2$이면"
+            "quote": " 삼각형 $ABC$의 넓이가 $72\\text{ cm}^2$이면",
+            "termId": 213
           }
         ],
         "method": [
           {
             "term": "닮음",
-            "termId": 192,
             "src": "solution",
             "quote": "교점이므로 모래시계형 닮음에 의해\n$$\n\\triangle PD",
+            "termId": 192,
             "evidenceType": "NAMED"
           }
         ],
         "condition": []
       },
+      "evidenceDebt": [],
       "reasons": {
         "method": "중점연결정리로 모래시계 닮음비를 도출하여 선분 내분비를 구하고 넓이를 합산한다."
       },
@@ -903,7 +927,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -919,28 +943,35 @@
         "given": [
           {
             "term": "원뿔",
-            "termId": 712,
             "src": "stem",
-            "quote": "원뿔 모양의 그릇에 일정한 속도로 물을 "
+            "quote": "원뿔 모양의 그릇에 일정한 속도로 물을 ",
+            "termId": 712
           },
           {
             "term": "닮음",
-            "termId": 192,
             "src": "solution",
-            "quote": "체도형의 부피의 비는 닮음비의 세제곱의 비와 같으므로\n$$\n1"
+            "quote": "체도형의 부피의 비는 닮음비의 세제곱의 비와 같으므로\n$$\n1",
+            "termId": 192
           }
         ],
         "goal": [
           {
             "term": "부피",
-            "termId": 219,
             "src": "solution",
-            "quote": "원뿔의 부피와 높이의 비 사이의 관계를 이용한다"
+            "quote": "원뿔의 부피와 높이의 비 사이의 관계를 이용한다",
+            "termId": 219
           }
         ],
         "method": [],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "method",
+          "term": "비례식",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "높이의 비 1:2의 세제곱으로 부피의 비 1:8을 구하고 잔여 시간 35초를 계산한다."
       },
@@ -976,7 +1007,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -992,22 +1023,29 @@
         "given": [
           {
             "term": "직각삼각형",
-            "termId": 161,
             "src": "stem",
-            "quote": " 같이 주어졌을 때, 직각삼각형이 아닌 것은? [3점]"
+            "quote": " 같이 주어졌을 때, 직각삼각형이 아닌 것은? [3점]",
+            "termId": 161
           }
         ],
         "goal": [
           {
             "term": "직각삼각형",
-            "termId": 161,
             "src": "stem",
-            "quote": " 같이 주어졌을 때, 직각삼각형이 아닌 것은? [3점]"
+            "quote": " 같이 주어졌을 때, 직각삼각형이 아닌 것은? [3점]",
+            "termId": 161
           }
         ],
         "method": [],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "method",
+          "term": "피타고라스정리",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "가장 긴 변의 제곱과 나머지 두 변의 제곱의 합이 같은지 대조하여 판별한다."
       },
@@ -1043,7 +1081,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -1059,30 +1097,42 @@
         "given": [
           {
             "term": "이등변삼각형",
-            "termId": 159,
             "src": "stem",
-            "quote": "text{ cm}$인 이등변삼각형 $ABC$의 넓이는? [4점]"
+            "quote": "text{ cm}$인 이등변삼각형 $ABC$의 넓이는? [4점]",
+            "termId": 159
           }
         ],
         "goal": [
           {
             "term": "넓이",
-            "termId": 213,
             "src": "stem",
-            "quote": "변삼각형 $ABC$의 넓이는? [4점]"
+            "quote": "변삼각형 $ABC$의 넓이는? [4점]",
+            "termId": 213
           }
         ],
         "method": [
           {
             "term": "수선",
-            "termId": 179,
             "src": "solution",
             "quote": "짓점에서 밑변에 내린 수선은 밑변을 수직이등분한다.\n1. 꼭짓",
+            "termId": 179,
             "evidenceType": "NAMED"
           }
         ],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "given",
+          "term": "선분",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        },
+        {
+          "slot": "method",
+          "term": "피타고라스정리",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "꼭지각의 수선이 밑변을 이등분함을 이용하여 높이를 피타고라스 정리로 구하고 넓이를 계산한다."
       },
@@ -1118,7 +1168,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -1134,28 +1184,35 @@
         "given": [
           {
             "term": "직각삼각형",
-            "termId": 161,
             "src": "stem",
-            "quote": "text{ cm}$인 직각삼각형 $ABC$의 세 변을 각각 지름으로"
+            "quote": "text{ cm}$인 직각삼각형 $ABC$의 세 변을 각각 지름으로",
+            "termId": 161
           },
           {
             "term": "반원",
-            "termId": 620,
             "src": "stem",
-            "quote": "각 지름으로 하는 세 반원의 넓이의 합은? [4점]"
+            "quote": "각 지름으로 하는 세 반원의 넓이의 합은? [4점]",
+            "termId": 620
           }
         ],
         "goal": [
           {
             "term": "넓이",
-            "termId": 213,
             "src": "stem",
-            "quote": "으로 하는 세 반원의 넓이의 합은? [4점]"
+            "quote": "으로 하는 세 반원의 넓이의 합은? [4점]",
+            "termId": 213
           }
         ],
         "method": [],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "method",
+          "term": "피타고라스정리",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "b^2 + c^2 = a^2을 이용하여 세 반원 넓이의 합이 pi*a^2/4가 됨을 도출한다."
       },
@@ -1191,7 +1248,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -1207,34 +1264,41 @@
         "given": [
           {
             "term": "정사각형",
-            "termId": 166,
             "src": "stem",
-            "quote": "의 길이가 $15$인 정사각형 $ABCD$의 내부에 네 개의 합동"
+            "quote": "의 길이가 $15$인 정사각형 $ABCD$의 내부에 네 개의 합동",
+            "termId": 166
           },
           {
             "term": "직각삼각형",
-            "termId": 161,
             "src": "stem",
-            "quote": "부에 네 개의 합동인 직각삼각형 $ABE, BCF, CDG, DAH"
+            "quote": "부에 네 개의 합동인 직각삼각형 $ABE, BCF, CDG, DAH",
+            "termId": 161
           },
           {
             "term": "합동",
-            "termId": 193,
             "src": "stem",
-            "quote": "$의 내부에 네 개의 합동인 직각삼각형 $ABE, BCF, C"
+            "quote": "$의 내부에 네 개의 합동인 직각삼각형 $ABE, BCF, C",
+            "termId": 193
           }
         ],
         "goal": [
           {
             "term": "둘레",
-            "termId": 214,
             "src": "stem",
-            "quote": "사각형 $EFGH$의 둘레의 길이는? [4점]"
+            "quote": "사각형 $EFGH$의 둘레의 길이는? [4점]",
+            "termId": 214
           }
         ],
         "method": [],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "method",
+          "term": "피타고라스정리",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "직각삼각형의 한 변을 피타고라스 정리로 구하고 두 변의 차로 안쪽 정사각형의 한 변과 둘레를 구한다."
       },
@@ -1270,7 +1334,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -1286,28 +1350,35 @@
         "given": [
           {
             "term": "직각삼각형",
-            "termId": 161,
             "src": "stem",
-            "quote": "e{AC} = 6$인 직각삼각형 $ABC$ ($\\angle A = "
+            "quote": "e{AC} = 6$인 직각삼각형 $ABC$ ($\\angle A = ",
+            "termId": 161
           },
           {
             "term": "정사각형",
-            "termId": 166,
             "src": "stem",
-            "quote": "위에 세워진 첫 번째 정사각형, 그 위의 두 정사각형, 그리고 그"
+            "quote": "위에 세워진 첫 번째 정사각형, 그 위의 두 정사각형, 그리고 그",
+            "termId": 166
           }
         ],
         "goal": [
           {
             "term": "넓이",
-            "termId": 213,
             "src": "stem",
-            "quote": "세워진 네 정사각형의 넓이의 총합은? (단, 각 단계에서 만들"
+            "quote": "세워진 네 정사각형의 넓이의 총합은? (단, 각 단계에서 만들",
+            "termId": 213
           }
         ],
         "method": [],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "method",
+          "term": "피타고라스정리",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "피타고라스 정리에 의해 각 단계의 정사각형 넓이 합이 빗변의 정사각형 넓이 100과 같음을 이용한다."
       },
@@ -1343,7 +1414,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -1359,36 +1430,43 @@
         "given": [
           {
             "term": "정사각형",
-            "termId": 166,
             "src": "stem",
-            "quote": "{ cm}^2$인 두 정사각형 $ABCD$와 $GCEF$를 세 점"
+            "quote": "{ cm}^2$인 두 정사각형 $ABCD$와 $GCEF$를 세 점",
+            "termId": 166
           },
           {
             "term": "직각삼각형",
-            "termId": 161,
             "src": "solution",
-            "quote": " 90^\\circ$인 직각삼각형이므로 피타고라스 정리에 의해\n$$\n"
+            "quote": " 90^\\circ$인 직각삼각형이므로 피타고라스 정리에 의해\n$$\n",
+            "termId": 161
           }
         ],
         "goal": [
           {
             "term": "선분",
-            "termId": 144,
             "src": "stem",
-            "quote": "오도록 이어 붙였다. 선분 $AE$와 선분 $CD$의 교점을 "
+            "quote": "오도록 이어 붙였다. 선분 $AE$와 선분 $CD$의 교점을 ",
+            "termId": 144
           }
         ],
         "method": [
           {
             "term": "닮음",
-            "termId": 192,
             "src": "solution",
             "quote": "라스 정리와 삼각형의 닮음을 적용한다.\n1. 두 정사각형의 넓",
+            "termId": 192,
             "evidenceType": "NAMED"
           }
         ],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "method",
+          "term": "피타고라스정리",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "정사각형 변으로부터 직각삼각형 빗변을 피타고라스로 구하고 닮음비 1:4로 선분 AH를 계산한다."
       },
@@ -1424,7 +1502,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -1440,36 +1518,43 @@
         "given": [
           {
             "term": "직사각형",
-            "termId": 165,
             "src": "stem",
-            "quote": "text{ cm}$인 직사각형 모양의 종이 $ABCD$를 꼭짓점 "
+            "quote": "text{ cm}$인 직사각형 모양의 종이 $ABCD$를 꼭짓점 ",
+            "termId": 165
           },
           {
             "term": "접기",
-            "termId": 208,
             "src": "solution",
-            "quote": "직사각형 종이접기에서 피타고라스 정리를 두 번 적용한"
+            "quote": "직사각형 종이접기에서 피타고라스 정리를 두 번 적용한",
+            "termId": 208
           }
         ],
         "goal": [
           {
             "term": "넓이",
-            "termId": 213,
             "src": "stem",
-            "quote": " 삼각형 $PCQ$의 넓이는? [4점]"
+            "quote": " 삼각형 $PCQ$의 넓이는? [4점]",
+            "termId": 213
           }
         ],
         "method": [
           {
             "term": "직각삼각형",
-            "termId": 161,
             "src": "solution",
             "quote": "{ cm}\n$$\n2. 직각삼각형 $ABP$에서 $\\overline{",
+            "termId": 161,
             "evidenceType": "NAMED"
           }
         ],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "method",
+          "term": "피타고라스정리",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "접은 변의 길이 보존을 이용하여 직각삼각형 ABP와 PCQ에 피타고라스 정리를 적용한다."
       },
@@ -1505,7 +1590,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -1521,15 +1606,27 @@
         "given": [
           {
             "term": "주사위",
-            "termId": 370,
             "src": "stem",
-            "quote": "서로 다른 두 개의 주사위를 동시에 던질 때, 나오는 두 눈의"
+            "quote": "서로 다른 두 개의 주사위를 동시에 던질 때, 나오는 두 눈의",
+            "termId": 370
           }
         ],
         "goal": [],
         "method": [],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "goal",
+          "term": "경우분류",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        },
+        {
+          "slot": "method",
+          "term": "합의법칙",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "합이 3인 경우와 8인 경우의 순서쌍을 각각 구하여 합의 법칙으로 더한다."
       },
@@ -1565,7 +1662,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -1581,15 +1678,27 @@
         "given": [
           {
             "term": "자연수",
-            "termId": 1,
             "src": "stem",
-            "quote": "들 수 있는 세 자리 자연수의 개수는? [4점]"
+            "quote": "들 수 있는 세 자리 자연수의 개수는? [4점]",
+            "termId": 1
           }
         ],
         "goal": [],
         "method": [],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "goal",
+          "term": "순열",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        },
+        {
+          "slot": "method",
+          "term": "곱의법칙",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "0이 백의 자리에 올 수 없는 제약을 적용하여 자릿수별 카드 선택의 수를 곱한다."
       },
@@ -1625,7 +1734,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -1642,22 +1751,23 @@
         "goal": [
           {
             "term": "확률",
-            "termId": 130,
             "src": "stem",
-            "quote": "사건 $A$가 일어날 확률을 $p$라고 할 때, 다음 설명 중"
+            "quote": "사건 $A$가 일어날 확률을 $p$라고 할 때, 다음 설명 중",
+            "termId": 130
           }
         ],
         "method": [
           {
             "term": "여사건",
-            "termId": 253,
             "src": "solution",
             "quote": "확률의 기본 성질과 여사건의 정의를 점검한다.\n1. 어떤 사건",
+            "termId": 253,
             "evidenceType": "NAMED"
           }
         ],
         "condition": []
       },
+      "evidenceDebt": [],
       "reasons": {
         "method": "확률의 기본 성질과 여사건의 정의 1 - p를 확인하여 선지의 진위를 판정한다."
       },
@@ -1693,7 +1803,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -1709,30 +1819,31 @@
         "given": [
           {
             "term": "주사위",
-            "termId": 370,
             "src": "stem",
-            "quote": "서로 다른 두 개의 주사위를 동시에 던질 때, 적어도 하나는 "
+            "quote": "서로 다른 두 개의 주사위를 동시에 던질 때, 적어도 하나는 ",
+            "termId": 370
           }
         ],
         "goal": [
           {
             "term": "확률",
-            "termId": 130,
             "src": "stem",
-            "quote": "$ 이상의 눈이 나올 확률은? [4점]"
+            "quote": "$ 이상의 눈이 나올 확률은? [4점]",
+            "termId": 130
           }
         ],
         "method": [
           {
             "term": "여사건",
-            "termId": 253,
             "src": "solution",
             "quote": "포함된 사건의 확률은 여사건의 확률을 이용한다.\n1. 두 개의 ",
+            "termId": 253,
             "evidenceType": "NAMED"
           }
         ],
         "condition": []
       },
+      "evidenceDebt": [],
       "reasons": {
         "method": "적어도 하나 2 이상 사건의 여사건인 두 눈 모두 1인 확률을 1에서 뺀다."
       },
@@ -1768,7 +1879,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -1784,30 +1895,31 @@
         "given": [
           {
             "term": "주사위",
-            "termId": 370,
             "src": "stem",
-            "quote": "서로 다른 두 개의 주사위 $A, B$를 동시에 던져서 나오는"
+            "quote": "서로 다른 두 개의 주사위 $A, B$를 동시에 던져서 나오는",
+            "termId": 370
           }
         ],
         "goal": [
           {
             "term": "확률",
-            "termId": 130,
             "src": "stem",
-            "quote": "또는 $x = 3$일 확률은? [5점]"
+            "quote": "또는 $x = 3$일 확률은? [5점]",
+            "termId": 130
           }
         ],
         "method": [
           {
             "term": "일차방정식",
-            "termId": 64,
             "src": "stem",
             "quote": " 때, $x$에 대한 일차방정식 $ax - b = 0$의 해가 $x",
+            "termId": 64,
             "evidenceType": "NAMED"
           }
         ],
         "condition": []
       },
+      "evidenceDebt": [],
       "reasons": {
         "method": "x = b/a의 해가 2 또는 3이 되는 순서쌍 3가지와 2가지를 분류하여 확률을 구한다."
       },
@@ -1843,7 +1955,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -1859,22 +1971,34 @@
         "given": [
           {
             "term": "확률",
-            "termId": 130,
             "src": "stem",
-            "quote": "공의 색이 서로 다를 확률은? [5점]"
+            "quote": "공의 색이 서로 다를 확률은? [5점]",
+            "termId": 130
           }
         ],
         "goal": [
           {
             "term": "확률",
-            "termId": 130,
             "src": "stem",
-            "quote": "공의 색이 서로 다를 확률은? [5점]"
+            "quote": "공의 색이 서로 다를 확률은? [5점]",
+            "termId": 130
           }
         ],
         "method": [],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "method",
+          "term": "곱의법칙",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        },
+        {
+          "slot": "method",
+          "term": "확률의덧셈정리",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "(흰, 검)과 (검, 흰)의 두 독립 사건의 확률을 각각 구한 후 합한다."
       },
@@ -1910,7 +2034,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -1926,36 +2050,37 @@
         "given": [
           {
             "term": "무게중심",
-            "termId": 186,
             "src": "stem",
-            "quote": " 삼각형 $ABC$의 무게중심이고 점 $D$는 변 $BC$의 중점"
+            "quote": " 삼각형 $ABC$의 무게중심이고 점 $D$는 변 $BC$의 중점",
+            "termId": 186
           },
           {
             "term": "삼각형",
-            "termId": 158,
             "src": "stem",
-            "quote": "\n(1) 점 $G$는 삼각형 $ABC$의 무게중심이고 점 $D$"
+            "quote": "\n(1) 점 $G$는 삼각형 $ABC$의 무게중심이고 점 $D$",
+            "termId": 158
           }
         ],
         "goal": [
           {
             "term": "넓이",
-            "termId": 213,
             "src": "stem",
-            "quote": " 삼각형 $GDC$의 넓이가 $4\\text{ cm}^2$일 때"
+            "quote": " 삼각형 $GDC$의 넓이가 $4\\text{ cm}^2$일 때",
+            "termId": 213
           }
         ],
         "method": [
           {
             "term": "닮음",
-            "termId": 192,
             "src": "solution",
             "quote": "ngle AMN$이고 닮음비는 $2 : 3$이다.\n닮은 두 삼",
+            "termId": 192,
             "evidenceType": "NAMED"
           }
         ],
         "condition": []
       },
+      "evidenceDebt": [],
       "reasons": {
         "method": "무게중심의 6분할 넓이와 두 부분삼각형 무게중심이 이루는 닮음비를 이용하여 넓이를 구한다."
       },
@@ -1991,7 +2116,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -2007,27 +2132,39 @@
         "given": [
           {
             "term": "직각삼각형",
-            "termId": 161,
             "src": "stem",
-            "quote": "text{ cm}$인 직각삼각형의 나머지 한 변의 길이 $x\\tex"
+            "quote": "text{ cm}$인 직각삼각형의 나머지 한 변의 길이 $x\\tex",
+            "termId": 161
           },
           {
             "term": "원뿔",
-            "termId": 712,
             "src": "stem",
-            "quote": "xt{ cm}^3$인 원뿔이 있다. 이 원뿔의 옆넓이를 구하시"
+            "quote": "xt{ cm}^3$인 원뿔이 있다. 이 원뿔의 옆넓이를 구하시",
+            "termId": 712
           },
           {
             "term": "부피",
-            "termId": 219,
             "src": "stem",
-            "quote": "ext{ cm}$이고 부피가 $12\\pi\\text{ cm}^3"
+            "quote": "ext{ cm}$이고 부피가 $12\\pi\\text{ cm}^3",
+            "termId": 219
           }
         ],
         "goal": [],
         "method": [],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "goal",
+          "term": "겉넓이",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        },
+        {
+          "slot": "method",
+          "term": "피타고라스정리",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "피타고라스 정리로 직각삼각형 변을 구하고, 원뿔 부피로부터 높이와 모선을 역산해 옆넓이를 구한다."
       },
@@ -2063,7 +2200,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -2081,6 +2218,18 @@
         "method": [],
         "condition": []
       },
+      "evidenceDebt": [
+        {
+          "slot": "goal",
+          "term": "순열",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        },
+        {
+          "slot": "method",
+          "term": "곱의법칙",
+          "evidenceDebt": "MD candidate term has no exact supporting quote in prompt/solution; preserve as unresolved candidate."
+        }
+      ],
       "reasons": {
         "method": "자격이 다른 대표 선출 순열과 양 끝 조건 순열을 곱의 법칙으로 계산한다."
       },
@@ -2116,7 +2265,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
@@ -2132,30 +2281,31 @@
         "given": [
           {
             "term": "원",
-            "termId": 152,
             "src": "stem",
-            "quote": "{ cm}$인 세 동심원으로 이루어진 원형 표적이 있다. 가"
+            "quote": "{ cm}$인 세 동심원으로 이루어진 원형 표적이 있다. 가",
+            "termId": 152
           }
         ],
         "goal": [
           {
             "term": "확률",
-            "termId": 130,
             "src": "stem",
-            "quote": "학생이 가을을 좋아할 확률을 구하시오. [2점]\n| 계절 | "
+            "quote": "학생이 가을을 좋아할 확률을 구하시오. [2점]\n| 계절 | ",
+            "termId": 130
           }
         ],
         "method": [
           {
             "term": "넓이",
-            "termId": 213,
             "src": "solution",
             "quote": "\n(2) 표적 전체의 넓이와 색칠한 영역의 넓이의 비를 이용하",
+            "termId": 213,
             "evidenceType": "NAMED"
           }
         ],
         "condition": []
       },
+      "evidenceDebt": [],
       "reasons": {
         "method": "도수분포표로부터 단순 수학적 확률을 구하고, 동심원 고리 넓이 비로 기하학적 확률을 구한다."
       },
@@ -2191,7 +2341,7 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "4-slot semantics not independently reviewed."
+        "note": "4-slot semantics not independently reviewed; unsupported source terms and uncited terms are listed as evidenceDebt."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
