@@ -1,0 +1,54 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "cube",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "caption": "AB와 CD는 평행, AB와 AE는 만남, AB와 CG는 꼬인 위치",
+  "sourceQuote": "공간의 두 직선: 평행·한점에서만남·꼬인위치",
+  "sourceConditions": [
+    {
+      "id": "illustration",
+      "condition": "해설용 직육면체 예시. 특정 길이를 조건으로 추가하지 않음",
+      "mappedTo": [
+        "cube"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "segments": [
+    {
+      "from": "A",
+      "to": "B",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "D",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "C",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT"
+    }
+  ]
+}
