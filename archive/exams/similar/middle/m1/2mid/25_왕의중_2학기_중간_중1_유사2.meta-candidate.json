@@ -23,6 +23,12 @@
         "change": "Rebuilt conditions to avoid Pythagorean calculations: Q20 uses SSS for ㄱ/ㄹ (5,7,8), different SSS lengths for ㄴ, and different angle sets for ㄷ/ㅁ.",
         "answerPreserved": "②",
         "formalReview": "PENDING"
+      },
+      {
+        "scope": "Q12 angle-line count",
+        "change": "Specified three concurrent lines: the single horizontal line and two additional lines divide its upper half into the stated three adjacent angles; y and z are the vertical opposites of 36° and 48°.",
+        "answerPreserved": "① (84°)",
+        "formalReview": "PENDING"
       }
     ]
   },
@@ -451,8 +457,9 @@
     "sha256": "e666b1fbfc509bb99e5afa168be85bb528b89575c071fb8f92c7aef19049ebcb",
     "status": "UNREVIEWED"
   },
-  "mathReview": "UNREVIEWED\nQ19: Replaced trigonometric ratios with reflection/equilateral construction. Author-side geometric check; formal independent review pending.\nQ20: Rebuilt conditions to remove Pythagorean arithmetic; the only congruent pair is ㄱ/ㄹ by SSS (5,7,8), answer ②. Author-side check; formal independent review pending.",
+  "mathReview": "UNREVIEWED\nQ19: Replaced trigonometric ratios with reflection/equilateral construction. Author-side geometric check; formal independent review pending.\nQ20: Rebuilt conditions to remove Pythagorean arithmetic; unique congruent pair ㄱ/ㄹ by SSS, answer ②. Author-side check; formal independent review pending.\nQ12: The original candidate said two lines while describing three adjacent upper angles, an impossible configuration. The similar item now explicitly has three concurrent lines; x=96°, y=36°, z=48°, answer ①. Author-side angle check; formal review pending.",
   "questionReview": {
-    "Q20": "AUTHOR_CHECKED; conditions revised to remove Pythagorean arithmetic; unique congruent pair ㄱ/ㄹ by SSS, answer ②. Formal independent review pending."
+    "Q20": "AUTHOR_CHECKED; conditions revised to remove Pythagorean arithmetic; unique congruent pair ㄱ/ㄹ by SSS, answer ②. Formal independent review pending.",
+    "Q12": "AUTHOR_CHECKED; corrected impossible two-line/three-angle statement to three concurrent lines, retaining answer ① (84°). Formal independent review pending."
   }
 }
