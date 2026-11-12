@@ -3,7 +3,7 @@
   "requestId": "similar-25-pungdeok-m1-2mid-v2-candidate-v1",
   "examUid": "25_풍덕중_2학기_중간_중1_유사2",
   "sourceArchiveFile": "archive/exams/similar/middle/m1/2mid/25_풍덕중_2학기_중간_중1_유사2.js",
-  "expectedSourceBlobSha1": "d0c149ea801ddc986c84c26c0b8023cc16aa4d34",
+  "expectedSourceBlobSha1": "21e24890dbb74f32c1508575c65051f5323bec6c",
   "expectedQuestionCount": 25,
   "sourceProvenance": {
     "driveDocumentId": "16AfZUB0ueQWBeaogHWMGw_a9x5kvI7LyCcpUAF_qXcA",
@@ -41,7 +41,7 @@
     "newIdentity": "25_풍덕중_2학기_중간_중1_유사2",
     "reason": "The Drive document is a distinct 25-question variant; Q1 conditions differ from the main release. Existing JavaScript and its qNN SVG assets remain unchanged; this candidate uses a separate _유사2 identity and no images from the older version."
   },
-  "visualAssetAudit": "Each problem and solution was read separately for student-helpfulness. Q22 needs a figure (P1); Q1–Q20 except Q21 plus Q23–Q25 benefit from figures (P2); Q21 needs no separate figure. The prior release has problem figures on 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25; they remain untouched and are not referenced by this variant. No SVG was created.",
+  "visualAssetAudit": "SVG input branch work/similar-svg-inputs의 Q13 solution-only, Q15 problem, Q15 solution 샘플을 source-bound로 추가·연결함. Q13 문제 그림은 두 가능성을 노출하므로 의도적으로 미연결. XML·수학·정적 검사 및 렌더러 검증은 통과; visualQA는 NOT_RUN이며 시각 검수 완료로 표시하지 않음.",
   "currentMainReleaseAudit": {
     "mainCommit": "c07df518f76927602fa8cb789b9ecd8e5e0d08f2",
     "existingSimilarJs": "archive/exams/similar/middle/m1/2mid/25_풍덕중_2학기_중간_중1_유사.js",
@@ -280,16 +280,16 @@
     {
       "sourceOrdinal": 13,
       "problem": {
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "status": "INTENTIONALLY_OMITTED_ANSWER_LEAK",
         "need": "HELPFUL",
         "currentCandidateAsset": null,
-        "reason": "두 변과 끼인각이 아닌 30° 조건에서 반지름 4cm 원과 AC 반직선의 교점 두 개를 보이면 SSA의 두 가능한 삼각형을 이해하기 쉽다. AC=3cm의 퇴화와 AC=5cm의 유효 SSS 대비도 시각화에 도움."
+        "reason": "문제 그림에서 두 가능한 C 위치를 보여 주면 ㄱ이 유일 결정 조건이 아니라는 정답 근거가 노출되므로 연결하지 않는다."
       },
       "solution": {
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "status": "CONNECTED_PENDING_VISUAL_QA",
         "need": "HELPFUL",
-        "currentCandidateAsset": null,
-        "reason": "두 변과 끼인각이 아닌 30° 조건에서 반지름 4cm 원과 AC 반직선의 교점 두 개를 보이면 SSA의 두 가능한 삼각형을 이해하기 쉽다. AC=3cm의 퇴화와 AC=5cm의 유효 SSS 대비도 시각화에 도움."
+        "currentCandidateAsset": "assets/images/25_풍덕중_2학기_중간_중1_유사2/q13-solution.svg",
+        "reason": "해설 전용 그림으로 ㄱ의 두 가능한 C 위치를 보인다. 정답 번호는 표시하지 않는다. XML·수학·정적 검사는 통과했고 시각 QA는 미실행."
       },
       "reason": "두 변과 끼인각이 아닌 30° 조건에서 반지름 4cm 원과 AC 반직선의 교점 두 개를 보이면 SSA의 두 가능한 삼각형을 이해하기 쉽다. AC=3cm의 퇴화와 AC=5cm의 유효 SSS 대비도 시각화에 도움."
     },
@@ -312,16 +312,16 @@
     {
       "sourceOrdinal": 15,
       "problem": {
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "status": "CONNECTED_PENDING_VISUAL_QA",
         "need": "HELPFUL",
-        "currentCandidateAsset": null,
-        "reason": "평행선 엇각·맞꼭지각과 BM=CM에서 ASA 합동을 확인하고, AAA만으로는 합동을 보일 수 없음을 구분하는 위치·관계 및 풀이 단계 시각화가 도움."
+        "currentCandidateAsset": "assets/images/25_풍덕중_2학기_중간_중1_유사2/q15.svg",
+        "reason": "문제 그림은 주어진 BM=CM와 AB∥CD만 표시한다. XML·수학·정적 검사와 실제 Archive 렌더 호출은 통과했고, 시각 QA는 미실행."
       },
       "solution": {
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "status": "CONNECTED_PENDING_VISUAL_QA",
         "need": "HELPFUL",
-        "currentCandidateAsset": null,
-        "reason": "평행선 엇각·맞꼭지각과 BM=CM에서 ASA 합동을 확인하고, AAA만으로는 합동을 보일 수 없음을 구분하는 위치·관계 및 풀이 단계 시각화가 도움."
+        "currentCandidateAsset": "assets/images/25_풍덕중_2학기_중간_중1_유사2/q15-solution.svg",
+        "reason": "해설 그림은 ASA 관계와 AAA의 한계를 표시한다. XML·수학·정적 검사와 실제 Archive 렌더 호출은 통과했고, 시각 QA는 미실행."
       },
       "reason": "평행선 엇각·맞꼭지각과 BM=CM에서 ASA 합동을 확인하고, AAA만으로는 합동을 보일 수 없음을 구분하는 위치·관계 및 풀이 단계 시각화가 도움."
     },
