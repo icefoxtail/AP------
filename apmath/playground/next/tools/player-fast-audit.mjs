@@ -1,6 +1,6 @@
 // Selective one-click player audit. This file is never loaded by student pages.
 // --manifest FILE: {targets:[{lab,scene?,gi?,lessonIndices?,views?,capture?,
-//                            playback?,normalPlayback?,captureQuestionScroll?,captureAllSamples?,diagnosticLimit?,reason?}]}
+//                            playback?,normalPlayback?,captureQuestionScroll?,captureAllSamples?,captureStableRestore?,diagnosticLimit?,reason?}]}
 // Explicit seeks sample every caption, chapter and animated-track midpoint/end.
 // They are NOT continuous playback evidence. Marked playback units additionally
 // run the unchanged native requestAnimationFrame player at defaultRate * 10;
@@ -222,7 +222,7 @@ try {
       for(const unit of units) {
         const matches=labTargets.filter(t=>(explicitViews.length||!t.views||t.views.includes(view))&&(t.scene==null||String(t.scene)===unit.id)&&(t.gi==null||t.gi===unit.gi)&&(!t.lessonIndices||t.lessonIndices.includes(unit.k)));
         if(!matches.length)continue;
-        const config={capture:matches.some(t=>t.capture),playback:matches.some(t=>t.playback),normalPlayback:matches.some(t=>t.normalPlayback),captureQuestionScroll:matches.some(t=>t.captureQuestionScroll),captureAllSamples:matches.some(t=>t.captureAllSamples),diagnosticLimit:Math.min(32,Math.max(2,...matches.map(t=>Number(t.diagnosticLimit)||2))),qaMultiplier,view};
+        const config={capture:matches.some(t=>t.capture),playback:matches.some(t=>t.playback),normalPlayback:matches.some(t=>t.normalPlayback),captureQuestionScroll:matches.some(t=>t.captureQuestionScroll),captureAllSamples:matches.some(t=>t.captureAllSamples),captureStableRestore:matches.some(t=>t.captureStableRestore),diagnosticLimit:Math.min(32,Math.max(2,...matches.map(t=>Number(t.diagnosticLimit)||2))),qaMultiplier,view};
         const key=`${labId}:${unit.id}@${unit.gi}:${unit.k}:${view}`, sourceConfig=hash(JSON.stringify({source:source.sha256,config}));
         if(shard&&parseInt(hash(key).slice(0,8),16)%+shard[2]!==+shard[1])continue;
         const previous=prior.get(key);
@@ -400,6 +400,13 @@ try {
           if(restore.lessonReview.length)review('inactive lesson parameter changes need semantic review',restore.lessonReview);
           await captureFailed('restored',restoreCheckStart);
           if(config.capture)await shot('restored');
+          if(config.captureStableRestore){
+            await page.locator('.apl-stage').evaluate(e=>Promise.all(e.getAnimations({subtree:true}).filter(a=>Number.isFinite(a.effect?.getComputedTiming().endTime)).map(a=>a.finished.catch(()=>{}))));
+            await settle();
+            row.stableRestore=await page.evaluate(()=>{const c=document.querySelector('canvas'),r=c.getBoundingClientRect();return {width:c.width,height:c.height,cssWidth:r.width,cssHeight:r.height,ratioX:c.width/r.width,ratioY:c.height/r.height};});
+            check('stable restored canvas bitmap aspect matches displayed canvas',Math.abs(row.stableRestore.ratioX/row.stableRestore.ratioY-1)<.02,row.stableRestore);
+            await shot('restored-stable');
+          }
           // Actual playback is kept separate from seek/finish coverage.
           for(const multiplier of [...(config.playback?[qaMultiplier]:[]),...(config.normalPlayback?[1]:[])]){
             await page.evaluate(({i,rate})=>{lab.video.close();lab.video._setExplored(false);lab.goScene(i);lab.video.rate=rate;}, {i:unit.i,rate:row.defaultRate*multiplier});

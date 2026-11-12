@@ -74,3 +74,9 @@ Raw images and JSONL stay outside Git. Tools, compact receipts and checkpoint do
 5. Preserve meaningful phase 2 and phase 3 completion commits separately. **Do not claim overall completion while either phase remains pending. Do not merge main or deploy.**
 
 Local Chromium socket creation is blocked; automatic escalation review rejected the earlier permission request. Native browser execution uses the authorized repository CI environment.
+
+## Latest delta and recovery checkpoint
+
+Run `43177457283` at `87b942df23c8a1ecfa979bcf27b0948702eff77f` completed all **672** selected viewport units: **636 PASS / 4 FAIL / 32 REVIEW_REQUIRED**, with zero unexecuted units and verified artifact integrity. The four automatic failures are three label-rendering defects (normal-distance label at two mobile widths, one motion axis label, one vector tangent label). Independent review additionally found a cropped cubic region annotation and a midpoint label crossing geometry. A compact counting exploration layout also overlapped its lower grid and counts. These six narrow fixes await the exact native delta described in the selection receipt. The 32 semantic reviews remain explicitly pending independent exact-image adjudication.
+
+The execution workspace disappeared during review. The exact Git checkpoint, eight original run artifacts and the 67-file metadata checkpoint were restored with their recorded SHA hashes; no completed browser run was repeated. Stages 2 and 3 remain **IN_PROGRESS**.

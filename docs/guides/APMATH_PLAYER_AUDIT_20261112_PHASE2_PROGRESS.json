@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "taskId": "fb948d9b-a2eb-5e22-b140-638e44ec7da1",
-  "parentCommit": "5691d6f4f340b94313ced7e3ad7f55d9d86830c3",
+  "parentCommit": "87b942df23c8a1ecfa979bcf27b0948702eff77f",
   "stage1": "COMPLETE",
   "stage2": "IN_PROGRESS",
   "stage3": "IN_PROGRESS",
@@ -39,27 +39,20 @@
     "totalLabs": 58,
     "totalScenes": 1067,
     "totalLessons": 2989,
-    "priorViewportUniverse": 3063,
-    "verifiedReuseEligible": 2429,
-    "requiredChangedOrUnresolved": 634,
-    "explicitRechecksOfEligible": 2,
-    "newAdditionalViewportUnits": 36,
-    "unchangedVerifiedExcluded": 2427,
-    "selectedUniqueLabs": 18,
-    "selectedUniqueScenes": 244,
-    "selectedUniqueLessons": 600,
-    "selectedViewportUnits": 672,
-    "selectedPrimaryMobileUnits": 600,
-    "capturedViewportUnits": 152,
-    "nativeContinuousViewportUnits": 95,
+    "priorViewportUniverse": 3099,
+    "affectedExistingViewportUnits": 211,
+    "retainedPriorPairsForEvidenceResolution": 2888,
+    "newAdditionalViewportUnits": 4,
+    "selectedUniqueLabs": 6,
+    "selectedUniqueScenes": 40,
+    "selectedUniqueLessons": 187,
+    "selectedViewportUnits": 215,
+    "selectedPrimaryMobileUnits": 187,
+    "capturedViewportUnits": 47,
+    "nativeContinuousViewportUnits": 37,
     "normalSpeedViewportUnits": 0,
     "status": "NOT_RUN",
-    "manifestSha256": "a82035e105e7c59d080e13949adce3c8c5af383e8a60bf477d0e14af650df1a5",
-    "selectionReceipt": {
-      "path": "/workspace/scratch/99f030406492/evidence/stage2/delta-second-selection.json",
-      "sha256": "7922b231b6ef3cc493bd7d8806e242db1138770f19cf784909bbdbcd1c23be51"
-    },
-    "baselineSha256": "972580c8f662b4029db9c3bef914357fa70ee84c3a5d38c1311cfebbea82433c"
+    "manifestSha256": "7121cc5479c3b832d7a1276050f9f46c2fbb61e82cac8f62825059b1fa9b043f"
   },
   "harnessChanges": [
     "Preserve startup errors and continue to other labs",
@@ -121,7 +114,7 @@
     "Seek samples and native clock caption indices do not prove every rendered frame, physical devices, audio synchronization, reading pace or learning effectiveness.",
     "Independent228-image review is risk-selected and not an all-lesson visual PASS."
   ],
-  "nextAction": "Commit the frozen second-fix source and exact672-unit delta manifest. Run isolated GitHub Actions shards, verify raw hashes/coverage with the aggregator, and independently inspect remaining failures plus new after-scroll/full-sample risk captures. Reuse2427 excluded units only within verified contracts. Preserve phase2 andphase3 completion commits separately; no main merge or deployment.",
+  "nextAction": "Execute only the six changed rendering closures and finish independent exact-image reviews; preserve phase2 and phase3 completion commits separately.",
   "completedSharedRegressionSelection": {
     "totalLabs": 58,
     "totalScenes": 1067,
@@ -183,8 +176,8 @@
     }
   ],
   "checkpointAt": "2026-11-12T07:43:34.200654+00:00",
-  "checkpointKind": "INTERMEDIATE_BEFORE_SECOND_FIX_NATIVE_RUN",
-  "latestTestedSourceSha": "5691d6f4f340b94313ced7e3ad7f55d9d86830c3",
+  "checkpointKind": "THIRD_LABEL_FIX_AWAITING_NATIVE_RECHECK",
+  "latestTestedSourceSha": "87b942df23c8a1ecfa979bcf27b0948702eff77f",
   "overallStatus": "IN_PROGRESS",
   "latestRawQualityStatus": "FAIL",
   "latestFull": {
@@ -354,5 +347,38 @@
         "internalManifestVerified": true
       }
     ]
-  }
+  },
+  "latestDelta": {
+    "run": 43177457283,
+    "sourceSha": "87b942df23c8a1ecfa979bcf27b0948702eff77f",
+    "status": "EXECUTION_COMPLETE_WITH_FINDINGS",
+    "viewportUnits": 672,
+    "unitStatuses": {
+      "PASS": 636,
+      "FAIL": 4,
+      "REVIEW_REQUIRED": 32
+    },
+    "notRun": 0,
+    "assertionStatuses": {
+      "PASS": 139743,
+      "FAIL": 35,
+      "REVIEW_REQUIRED": 134
+    },
+    "integrity": "PASS"
+  },
+  "environmentRecovery": {
+    "status": "RESTORED_FROM_REMOTE_VERIFIED_BYTES",
+    "sourceSha": "87b942df23c8a1ecfa979bcf27b0948702eff77f",
+    "metadataPackSha256": "ed31052419e3ca0e18b77532caa2cc89d2e271823c51375fa8e02f6bdd8c32a7",
+    "repeatedCompletedBrowserRuns": 0
+  },
+  "pendingVisualReview": [
+    "cubic region annotation",
+    "tangent distance annotation",
+    "motion axis label",
+    "vector tangent label",
+    "vector midpoint label",
+    "compact counting restored layout",
+    "counting restored canvas aspect after layout settles"
+  ]
 }
