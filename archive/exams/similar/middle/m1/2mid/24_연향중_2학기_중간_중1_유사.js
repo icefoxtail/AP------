@@ -272,7 +272,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "다음 그림에서 두 직선 $l, m$이 서로 평행할 때, $\\angle a + \\angle b + \\angle c + \\angle d$의 크기는? [5점]",
+    "content": "두 직선 $l,m$은 서로 평행하고, 점 $A$는 $l$ 위에, 점 $B$는 $m$ 위에 있으며 $A$는 $B$보다 왼쪽·위쪽에 있다. 점 $A$에서 선분 $AB$와 직선 $l$의 오른쪽 방향 반직선이 이루는 내부각은 차례로 $a,b,35^\\circ$의 세 각으로 나뉘고, 점 $B$에서 선분 $BA$와 직선 $m$의 오른쪽 방향 반직선이 이루는 내부각은 차례로 $c,d$의 두 각으로 나뉜다. $\\angle a+\\angle b+\\angle c+\\angle d$의 크기는? [5점]",
     "choices": [
       "$115^\\circ$",
       "$125^\\circ$",
@@ -284,7 +284,7 @@ window.questionBank = [
     "points": 5,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
-    "solution": "꺾인 점마다 직선 $l, m$과 평행한 보조선을 차례대로 작도한다.\n평행선에서의 엇각과 동위각의 성질을 이용해 각들을 하나의 평각 위에 연속하여 모으면 다음과 같은 관계식이 성립한다. $\\begin{aligned} \\angle a + \\angle b + \\angle c + \\angle d + 35^\\circ &= 180^\\circ \\ \\angle a + \\angle b + \\angle c + \\angle d &= 180^\\circ - 35^\\circ \\ &= 145^\\circ \\end{aligned}$\n따라서 정답은 ⑤이다.\n",
+    "solution": "직선 $AB$와 평행선 $l,m$이 이루는 같은 쪽 내각의 합은 $180^\\circ$이다. 발문에서 점 $A$의 그 내각은 $a+b+35^\\circ$, 점 $B$의 그 내각은 $c+d$이므로\\n$\\begin{aligned} (\\angle a+\\angle b+35^\\circ)+(\\angle c+\\angle d)&=180^\\circ \\\\ \\angle a+\\angle b+\\angle c+\\angle d&=180^\\circ-35^\\circ \\\\ &=145^\\circ \\end{aligned}$\\n따라서 정답은 ⑤이다.\\n",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"

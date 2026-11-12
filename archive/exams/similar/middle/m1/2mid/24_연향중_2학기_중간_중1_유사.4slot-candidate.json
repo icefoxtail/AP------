@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "similar/middle/m1/2mid/24_연향중_2학기_중간_중1_유사.js",
-  "sourceGitBlobSha": "d26abf87518b1cb28b8a85b55e04855d999983e3",
+  "sourceGitBlobSha": "cab18f3c0bc2cf1ccf47451920c268ebbea1b6e9",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "Codex",
@@ -321,28 +321,28 @@
           {
             "term": "평행선",
             "src": "stem",
-            "quote": "다음 그림에서 두 직선 $l, m$이 서로 평행할 때, $\\angle a + \\angle b + \\angle c + \\angle d$의 크기는? [5점]"
+            "quote": "두 직선 $l,m$은 서로 평행하고, 점 $A$는 $l$ 위에, 점 $B$는 $m$ 위에 있으며 $A$는 $B$보다 왼쪽·위쪽에 있다. 점 $A$에서 선분 $AB$와 직선 $l$의 오른쪽 방향 반직선이 이루는 내부각은 차례로 $a,b,35^\\circ$의 세 각으로 나뉘고, 점 $B$에서 선분 $BA$와 직선 $m$의 오른쪽 방향 반직선이 이루는 내부각은 차례로 $c,d$의 두 각으로 나뉜다. $\\angle a+\\angle b+\\angle c+\\angle d$의 크기는? [5점]"
           }
         ],
         "goal": [
           {
             "term": "평각",
             "src": "stem",
-            "quote": "다음 그림에서 두 직선 $l, m$이 서로 평행할 때, $\\angle a + \\angle b + \\angle c + \\angle d$의 크기는? [5점]"
+            "quote": "두 직선 $l,m$은 서로 평행하고, 점 $A$는 $l$ 위에, 점 $B$는 $m$ 위에 있으며 $A$는 $B$보다 왼쪽·위쪽에 있다. 점 $A$에서 선분 $AB$와 직선 $l$의 오른쪽 방향 반직선이 이루는 내부각은 차례로 $a,b,35^\\circ$의 세 각으로 나뉘고, 점 $B$에서 선분 $BA$와 직선 $m$의 오른쪽 방향 반직선이 이루는 내부각은 차례로 $c,d$의 두 각으로 나뉜다. $\\angle a+\\angle b+\\angle c+\\angle d$의 크기는? [5점]"
           }
         ],
         "method": [
           {
             "term": "엇각",
             "src": "solution",
-            "quote": "꺾인 점마다 직선 $l, m$과 평행한 보조선을 차례대로 작도한다.\n평행선에서의 엇각과 동위각의 성질을 이용해 각들을 하나의 평각 위에 연속하여 모으면 다음과 같은 관계식이 성립한다. $\\begin{aligned} \\angle a + \\angle b + \\angle c + \\angle d + 35^\\circ &= 180^\\circ \\ \\angle a + \\angle b + \\angle c + \\angle d &= 180^\\circ - 35^\\circ \\ &= 145^\\circ \\end{aligned}$\n따라서 정답은 ⑤이다.\n{\n  \"status\": \"UNSUPPORTED\",\n  \"reason\": \"평행선 l, m 사이에 지그재그로 꺾인 선분들과 각 a, b, c, d 및 35도가 표시된 기하 다이어그램\"\n}\n\n{\n  \"sourceQid\": \"8\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"모든 꺾인 점에 평행선을 그어 각 a, b, c, d와 35도를 평각 180도 위에 모아 145도를 구한다.\",\n  \"decisiveStep\": \"180도 - 35도 = 145도 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"동위각과 엇각\",\n    \"l4\": \"평행선에서 꺾인 선의 각\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLEL_ANGLE_TRANSFER\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE\",\n    \"why\": \"다중 꺾인 선에서 평행 보조선을 활용해 각의 합을 평각으로 귀착시키는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"여러 개의 평행 보조선을 도입하여 각들을 한 점에서의 평각으로 누적 이송하는 응용 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"평행선\"\n    ],\n    \"goal\": [\n      \"평각\"\n    ],\n    \"method\": [\n      \"엇각\",\n      \"사칙연산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+            "quote": "직선 $AB$와 평행선 $l,m$이 이루는 같은 쪽 내각의 합은 $180^\\circ$이다. 발문에서 점 $A$의 그 내각은 $a+b+35^\\circ$, 점 $B$의 그 내각은 $c+d$이므로\\n$\\begin{aligned} (\\angle a+\\angle b+35^\\circ)+(\\angle c+\\angle d)&=180^\\circ \\\\ \\angle a+\\angle b+\\angle c+\\angle d&=180^\\circ-35^\\circ \\\\ &=145^\\circ \\end{aligned}$\\n따라서 정답은 ⑤이다.\\n",
             "evidenceType": "IMPLIED",
             "justification": "Drive MD 4-slot draft; independent review pending"
           },
           {
             "term": "사칙연산",
             "src": "solution",
-            "quote": "꺾인 점마다 직선 $l, m$과 평행한 보조선을 차례대로 작도한다.\n평행선에서의 엇각과 동위각의 성질을 이용해 각들을 하나의 평각 위에 연속하여 모으면 다음과 같은 관계식이 성립한다. $\\begin{aligned} \\angle a + \\angle b + \\angle c + \\angle d + 35^\\circ &= 180^\\circ \\ \\angle a + \\angle b + \\angle c + \\angle d &= 180^\\circ - 35^\\circ \\ &= 145^\\circ \\end{aligned}$\n따라서 정답은 ⑤이다.\n{\n  \"status\": \"UNSUPPORTED\",\n  \"reason\": \"평행선 l, m 사이에 지그재그로 꺾인 선분들과 각 a, b, c, d 및 35도가 표시된 기하 다이어그램\"\n}\n\n{\n  \"sourceQid\": \"8\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2015\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"모든 꺾인 점에 평행선을 그어 각 a, b, c, d와 35도를 평각 180도 위에 모아 145도를 구한다.\",\n  \"decisiveStep\": \"180도 - 35도 = 145도 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본 도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"동위각과 엇각\",\n    \"l4\": \"평행선에서 꺾인 선의 각\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLEL_ANGLE_TRANSFER\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE\",\n    \"why\": \"다중 꺾인 선에서 평행 보조선을 활용해 각의 합을 평각으로 귀착시키는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"여러 개의 평행 보조선을 도입하여 각들을 한 점에서의 평각으로 누적 이송하는 응용 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"평행선\"\n    ],\n    \"goal\": [\n      \"평각\"\n    ],\n    \"method\": [\n      \"엇각\",\n      \"사칙연산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+            "quote": "직선 $AB$와 평행선 $l,m$이 이루는 같은 쪽 내각의 합은 $180^\\circ$이다. 발문에서 점 $A$의 그 내각은 $a+b+35^\\circ$, 점 $B$의 그 내각은 $c+d$이므로\\n$\\begin{aligned} (\\angle a+\\angle b+35^\\circ)+(\\angle c+\\angle d)&=180^\\circ \\\\ \\angle a+\\angle b+\\angle c+\\angle d&=180^\\circ-35^\\circ \\\\ &=145^\\circ \\end{aligned}$\\n따라서 정답은 ⑤이다.\\n",
             "evidenceType": "IMPLIED",
             "justification": "Drive MD 4-slot draft; independent review pending"
           }

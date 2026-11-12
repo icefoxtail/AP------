@@ -1348,15 +1348,15 @@
         "status": "DEFERRED_TO_LATER_SVG_BATCH",
         "need": "NEEDED",
         "currentCandidateAsset": null,
-        "reason": "평행선 사이 꺾은 선의 각 a,b,c,d와 35도 배치가 발문 자료로 필요."
+        "reason": "도식은 l∥m, A∈l, B∈m, A가 B의 왼쪽·위쪽, A에서 AB와 l의 오른쪽 반직선 사이 및 B에서 BA와 m의 오른쪽 반직선 사이의 각 분할(a,b,35° 및 c,d)을 표시해야 발문이 해석된다. 정답·계산값은 표시하지 않는다."
       },
       "solution": {
         "status": "DEFERRED_TO_LATER_SVG_BATCH",
         "need": "HELPFUL",
         "currentCandidateAsset": null,
-        "reason": "풀이에서 위치·관계·결정 단계의 도식을 따라가면 학생 이해에 도움."
+        "reason": "같은 쪽 내각 두 개를 a+b+35°와 c+d로 묶는 풀이 관계를 시각화하면 도움이 된다."
       },
-      "reason": "다음 그림에서 두 직선 $l, m$이 서로 평행할 때, $\\angle a + \\angle b + \\angle c + \\angle d$의 크기는? [5점]"
+      "reason": "두 직선 $l,m$은 서로 평행하고, 점 $A$는 $l$ 위에, 점 $B$는 $m$ 위에 있으며 $A$는 $B$보다 왼쪽·위쪽에 있다. 점 $A$에서 선분 $AB$와 직선 $l$의 오른쪽 방향 반직선이 이루는 내부각은 차례로 $a,b,35^\\circ$의 세 각으로 나뉘고, 점 $B$에서 선분 $BA$와 직선 $m$의 오른쪽 방향 반직선이 이루는 내부각은 차례로 $c,d$의 두 각으로 나뉜다. $\\angle a+\\angle b+\\angle c+\\angle d$의 크기는? [5점]"
     },
     {
       "sourceOrdinal": 9,
@@ -1585,7 +1585,7 @@
   ],
   "validation": {
     "jsSyntax": "PASS",
-    "mathReview": "Q10 order ambiguity and Q12 correspondence-data item independently checked; other items remain at their recorded review status.",
+    "mathReview": "Q6 proposed angle decomposition independently checked and found inconsistent with the stated layout; Q8 revised using same-side interior angles (180°−35°=145°), answer ⑤. Other items remain at their recorded review status.",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "NOT_RUN",
     "sourceTextSha256": "NOT_RUN",
@@ -1621,10 +1621,10 @@
     }
   },
   "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "d26abf87518b1cb28b8a85b55e04855d999983e3",
+  "expectedSourceBlobSha1": "cab18f3c0bc2cf1ccf47451920c268ebbea1b6e9",
   "fourSlotCandidate": {
     "path": "archive/exams/similar/middle/m1/2mid/24_연향중_2학기_중간_중1_유사.4slot-candidate.json",
-    "sha256": "d6156aab579f20e689b30d63a62ea819a71d532936ec02007be12b0acc11090d",
+    "sha256": "74494124657d2df3ecdc86806a131037b7a462c4d8ef86fbeb6da6ec8c291f8a",
     "status": "UNREVIEWED"
   }
 }
