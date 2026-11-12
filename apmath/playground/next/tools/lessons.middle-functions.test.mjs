@@ -122,6 +122,19 @@ test('partial point-label offsets remain finite in the unchanged native Board', 
   assert.deepEqual(rendered, [{ x: 80, y: 90 }, { x: 110, y: 120 }, { x: 100, y: 100 }, { x: 118, y: 100 }]);
 });
 
+test('quadratic moving-area playback ends at the first target-area configuration', () => {
+  const spec = M.labs['g9-quadratic-functions'].scenes.find(s => s.id === 'moving-area');
+  const lesson = V.compileLesson(M.lessonFor(spec)), initial = M.defaults(spec), seed = {};
+  for (const [key, value] of Object.entries(initial)) seed[M.prefix(spec, key)] = value;
+  const end = V.stateAt(lesson, lesson.length, { nums: seed, sets: seed, step: 0, part: null });
+  const values = M.values(spec, { ...seed, ...end.nums, ...end.sets });
+  const model = spec.model(values);
+  assert.equal(end.step, 4);
+  assert.ok(Math.abs(values.time - model.early) < 1e-9);
+  assert.ok(Math.abs(model.area - values.target) < 1e-9);
+  assert.ok(Math.abs(model.P.y * model.Q.x / 2 - values.target) < 1e-9);
+});
+
 for (const def of defs) for (const spec of def.scenes) {
   const tag = `${def.id}:${spec.id}`;
   test(`${tag}: source, current values, mathematical domains and initial geometry`, () => {

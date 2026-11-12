@@ -96,6 +96,7 @@ try {
           const answer = document.querySelector('.apl-vans'), r = answer.getBoundingClientRect();
           const sc = lab.scene, spec = sc._mf, values = APL_MF.values(spec, lab.s), model = spec.model(values);
           return { state: lab.video.state, time: lab.video.t, step: lab.s.step,
+            values,
             answer: answer.textContent.trim(), answerVisible: answer.checkVisibility(),
             answerBox: { top: r.top, bottom: r.bottom, left: r.left, right: r.right },
             errors: spec.verify ? spec.verify(values, model) : [],

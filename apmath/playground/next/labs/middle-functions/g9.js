@@ -59,6 +59,13 @@
       ];
       else chapters = voice.map((say, i) => ({ title: ['조건 살펴보기', '그림과 식 연결', '계산과 이유', '결론 확인'][i], length: 8,
         cues: [{ at: 0, step: i + 1, say }, { at: 4, say: c[i] }] }));
+      if (spec.lessonFinish) {
+        const last = chapters[chapters.length - 1];
+        const { confirm, ...motion } = spec.lessonFinish(v, m);
+        const { step: previousStep, ...firstCue } = last.cues[0];
+        last.cues[0] = { ...firstCue, ...motion };
+        last.cues[1] = { ...last.cues[1], step: 4, ...(confirm ? { say: confirm } : {}) };
+      }
       return { title: spec.title.slice(0, 20), tab: 'review', answer: spec.answer(v, m), answerText: spec.answer(v, m),
         summary: '조건을 그림에 표시하고 현재 식으로 확인해요.', task: '막대나 점을 움직여 같은 원리가 유지되는지 확인하세요.', chapters };
     };
@@ -328,6 +335,8 @@
       else { M.curve(b, t => t * (12 - t), { from: 0, to: 10 }); b.hline(v.target, { color: 'rose', dash: [5, 4] }); onCurve(b, ctx, 'T', P(v.time, m.area), q => ({ time: q.x })); if (ctx.step >= 3) { M.point(b, P(m.early, v.target), 'E', { color: 'green', dx: -15 }); M.point(b, P(m.late, v.target), 'L', { color: 'green', dx: 15 }); } if (ctx.solved) M.label(b, P(m.early, v.target), `${Number.isInteger(m.early) ? '' : '≈'}${N(m.early)}초`, { color: 'green', dy: 28 }); }
     },
     readouts: (v, m) => [{ label: '지금의 시간', value: T`$${F(v.time)}\text{초}$`, color: 'amber' }, { label: '지금의 삼각형 넓이', value: T`$${F(m.area)}\mathrm{cm}^2$`, color: 'green' }],
+    lessonFinish: (v, m) => ({ to: { time: m.early }, dur: 2, say: '첫 시각의 도형으로 이동해요.',
+      confirm: T`$t=${Number.isInteger(m.early) ? F(m.early) : `6-${radical(m.radicand)}`}\text{초}$, $S=${F(v.target)}\mathrm{cm}^2$입니다.` }),
     voice: ['움직이는 동안의 두 길이를 나타내요.', '직각삼각형의 넓이를 식으로 써요.', '목표 넓이를 대입해 제곱식으로 바꿔요.', '이동 범위 안에서 먼저 만나는 때예요.'],
     verify: (v, m) => [Math.abs(m.P.y * m.Q.x / 2 - m.area) > 1e-8 && '도형 넓이 불일치', ...[m.early, m.late].map(t => (Math.abs(t * (12 - t) - v.target) > 1e-8 || t < 0 || t > 10) && '넓이 조건 해 불일치')].filter(Boolean)
   });
