@@ -671,7 +671,7 @@ window.questionBank = [
     "content": "다음 중 $\\triangle ABC$의 모양과 크기가 오직 하나로 정해지는 것은? [4점]",
     "choices": [
       "$\\overline{AB} = 8,\\mathrm{cm}$, $\\angle A = 45^\\circ$, $\\angle B = 65^\\circ$",
-      "$\\overline{AB} = 4,\\mathrm{cm}$, $\\overline{AC} = 6,\\mathrm{cm}$, $\\angle B = 40^\\circ$",
+      "$\\overline{AB} = 4,\\mathrm{cm}$, $\\overline{AC} = 3,\\mathrm{cm}$, $\\angle B = 30^\\circ$",
       "$\\overline{AB} = 12,\\mathrm{cm}$, $\\overline{BC} = 5,\\mathrm{cm}$, $\\overline{CA} = 6,\\mathrm{cm}$",
       "$\\angle A = 50^\\circ$, $\\angle B = 60^\\circ$, $\\angle C = 70^\\circ$",
       "$\\overline{AB} = 7,\\mathrm{cm}$, $\\overline{BC} = 3,\\mathrm{cm}$, $\\angle A = 30^\\circ$"
@@ -680,7 +680,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_DETERMINATION_CRITERIA",
-    "solution": "삼각형이 하나로 결정되는 세 가지 조건(SSS, SAS, ASA)을 점검한다. $$\\begin{aligned} &\\text{① 한 변의 길이 } \\overline{AB} = 8,\\mathrm{cm}\\text{와 그 양 끝 각 } \\angle A, \\angle B\\text{가 주어졌으므로 삼각형이 오직 하나로 정해진다. (참)} \\ &\\text{② 두 변 } \\overline{AB}, \\overline{AC}\\text{가 주어졌을 때 그 끼인각은 } \\angle A\\text{이어야 하므로 } \\angle B\\text{가 주어지면 모양이 하나로 정해지지 않는다.} \\ &\\text{③ 가장 긴 변 } 12\\text{가 나머지 두 변의 합 } 5 + 6 = 11\\text{보다 크므로 삼각형 자체가 만들어지지 않는다.} \\ &\\text{④ 세 각의 크기만 주어지면 모양은 같지만 크기가 다른 삼각형이 무수히 많이 존재한다.} \\ &\\text{⑤ 두 변 } \\overline{AB}, \\overline{BC}\\text{의 끼인각은 } \\angle B\\text{이어야 하므로 하나로 결정되지 않는다.} \\end{aligned}$$ 따라서 오직 하나로 정해지는 것은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"삼각형의 결정 조건(한 변과 양 끝 각) 판별 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"19\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"한 변과 그 양 끝 각이 주어진 조건 ①이 ASA 결정 조건을 만족함을 확인한다.\",\n  \"decisiveStep\": \"선분 AB와 양 끝각 A, B가 온전히 주어진 조건 ① 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 작도\",\n    \"l4\": \"삼각형이 하나로 정해지는 조건\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_UNIQUENESS\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_UNIQUENESS_DETERMINATION_CRITERIA\",\n    \"why\": \"주어진 변과 각의 구성요소로부터 삼각형의 유일 결정성을 평가하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"삼각형의 작도 가능 및 유일 결정 조건을 보기별로 판별하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"삼각형\",\n      \"길이\",\n      \"각\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"판정\"\n    ],\n    \"condition\": [\n      \"삼각형\"\n    ]\n  }\n}",
+    "solution": "삼각형이 한 가지로 결정되는 조건과 실제 작도 가능성을 점검한다. ①은 한 변과 그 양 끝 각이 주어져 ASA로 하나로 정해진다. ②에서는 $AB=4$, $AC=3$, $\\angle B=30^\\circ$이다. 점 $C$는 $B$에서 $BA$와 $30^\\circ$를 이루는 반직선 위에 있고, 동시에 중심 $A$, 반지름 $3$인 원 위에 있어야 한다. $A$에서 그 반직선까지의 거리는 $4\\sin30^\\circ=2$이고, 수선의 발은 $B$에서 $2\\sqrt3$만큼 떨어져 있어 원의 교점 두 개가 모두 반직선 위에 놓인다. 따라서 서로 다른 두 삼각형이 만들어진다. ③은 가장 긴 변 12가 나머지 두 변의 합 11보다 커 삼각형이 되지 않는다. ④는 각만 주어져 크기가 정해지지 않는다. ⑤에서는 점 $B$에서 직선 $AC$까지의 거리가 $7\\sin30^\\circ=3.5$로 $BC=3$보다 커 삼각형이 만들어지지 않는다. 따라서 하나로 정해지는 것은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -704,7 +704,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "다음 보기 중 서로 합동인 삼각형끼리 올바르게 짝지은 것은? [4점]\nㄱ. 세 변의 길이가 각각 $5\\,\\mathrm{cm}, 7\\,\\mathrm{cm}, 8\\,\\mathrm{cm}$인 삼각형\nㄴ. 두 변의 길이가 $5\\,\\mathrm{cm}, 7\\,\\mathrm{cm}$이고 그 끼인각의 크기가 $60^\\circ$인 삼각형\nㄷ. 한 변의 길이가 $8\\,\\mathrm{cm}$이고 그 양 끝 각의 크기가 $50^\\circ, 70^\\circ$인 삼각형\nㄹ. 두 변의 길이가 $5\\,\\mathrm{cm}, 8\\,\\mathrm{cm}$이고 그 끼인각의 크기가 $60^\\circ$인 삼각형\nㅁ. 한 변의 길이가 $8\\,\\mathrm{cm}$이고 두 각의 크기가 $50^\\circ, 60^\\circ$인 삼각형",
+    "content": "다음 보기 중 서로 합동인 삼각형끼리 올바르게 짝지은 것은? [4점]\nㄱ. 세 변의 길이가 각각 $5\\,\\mathrm{cm}, 7\\,\\mathrm{cm}, 8\\,\\mathrm{cm}$인 삼각형\nㄴ. 두 변의 길이가 $5\\,\\mathrm{cm}, 7\\,\\mathrm{cm}$이고 그 끼인각의 크기가 $60^\\circ$인 삼각형\nㄷ. 한 변의 길이가 $8\\,\\mathrm{cm}$이고 그 양 끝 각의 크기가 $50^\\circ, 70^\\circ$인 삼각형\nㄹ. 두 변의 길이가 $5\\,\\mathrm{cm}, 8\\,\\mathrm{cm}$이고 그 끼인각의 크기가 $60^\\circ$인 삼각형\nㅁ. 한 변의 길이가 $8\\,\\mathrm{cm}$이고 그 변의 양 끝 각의 크기가 $50^\\circ, 60^\\circ$인 삼각형",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㄹ",
@@ -712,11 +712,11 @@ window.questionBank = [
       "ㄴ, ㅁ",
       "ㄷ, ㅁ"
     ],
-    "answer": "⑤",
+    "answer": "②",
     "points": 0,
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_PAIR_MATCHING",
-    "solution": "삼각형의 세 내각의 합이 $180^\\circ$임을 이용하여 숨겨진 각을 구한 뒤 합동 조건을 대조한다. $$\\begin{aligned} &\\text{ㅁ의 삼각형에서 두 각이 } 50^\\circ, 60^\\circ\\text{이므로 나머지 한 각의 크기는} \\ &180^\\circ - (50^\\circ + 60^\\circ) = 70^\\circ\\text{이다.} \\ &\\text{따라서 ㅁ은 길이가 } 8,\\mathrm{cm}\\text{인 변의 양 끝 각이 } 50^\\circ\\text{와 } 70^\\circ\\text{인 삼각형이다.} \\ &\\text{ㄷ의 삼각형도 길이가 } 8,\\mathrm{cm}\\text{인 변과 그 양 끝 각이 } 50^\\circ, 70^\\circ\\text{로 주어져 있다.} \\ &\\text{따라서 ㄷ과 ㅁ은 한 변의 길이와 그 양 끝 각의 크기가 각각 같으므로 } \\mathrm{ASA}\\text{ 합동이다.} \\end{aligned}$$ 따라서 서로 합동인 삼각형끼리 짝지은 것은 ㄷ, ㅁ이므로 정답은 ⑤이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"내각의 합을 이용해 양 끝 각을 산출하여 ASA 합동 관계를 식별하는 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"20\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"ㅁ의 나머지 각 70도를 계산하여 8cm 양 끝각 50도, 70도로 ㄷ과의 ASA 합동을 입증한다.\",\n  \"decisiveStep\": \"삼각형 내각의 합 180도에서 ㅁ의 70도 각을 도출하여 ㄷ과의 ASA 합동 조건 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"도형의 합동\",\n    \"l4\": \"삼각형의 합동 조건\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_UNIQUENESS\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_UNIQUENESS_PAIR_MATCHING\",\n    \"why\": \"조건이 제시된 복수 삼각형 중 ASA 합동 쌍을 내각 계산을 통해 매칭하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"삼각형의 내각의 합 성질과 합동 조건을 복합 적용하여 짝을 찾는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"삼각형\",\n      \"합동\",\n      \"각\",\n      \"대응변\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"대응각\",\n      \"판정\"\n    ],\n    \"condition\": [\n      \"합동\"\n    ]\n  }\n}",
+    "solution": "ㄱ은 세 변의 길이가 $5,7,8$이다. ㄹ의 두 변 $5,8$의 끼인각은 $60^\\circ$이다. 길이 5인 변의 끝에서 길이 8인 변에 수선을 내리면 밑변 쪽 길이는 $5/2$, 높이는 $5\\sqrt3/2$이다. 따라서 ㄹ의 제3변의 제곱은 $(8-5/2)^2+(5\\sqrt3/2)^2=49$이므로 제3변은 7이다. ㄱ과 ㄹ은 세 변의 길이가 각각 $5,7,8$로 같아 SSS 합동이다. ㄴ의 제3변의 제곱은 같은 방법으로 $(7-5/2)^2+(5\\sqrt3/2)^2=39$이므로 8이 아니다. ㄴ은 8인 변이 있는 다른 보기의 삼각형과 합동일 수 없다. ㄷ의 8인 변은 양 끝 각이 $50^\\circ,70^\\circ$여서 $60^\\circ$의 맞은편이고, ㅁ의 8인 변은 양 끝 각이 $50^\\circ,60^\\circ$여서 $70^\\circ$의 맞은편이다. 따라서 ㄷ과 ㅁ은 합동이 아니다. 서로 합동인 것은 ㄱ, ㄹ이므로 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
