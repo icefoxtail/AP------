@@ -42,7 +42,7 @@ test("one writer retries the complete native transaction while Pages and compati
     assert.doesNotMatch(text, /archive-pages-registration-derive\.sh|reviewed-meta-register-pass\.sh|archive\/build_db\.py/);
   }
   assert.deepEqual(nativeLanes(repo).find(lane => lane.id === "reviewed").commands,
-    [{ program: "bash", args: ["tools/ci/reviewed-meta-register-pass.sh"] }]);
+    [{ program: "bash", args: ["tools/ci/reviewed-meta-register-pass.sh"], timeoutMs: 55 * 60000 }]);
 });
 
 test("the writer reuses preserved request copies for its final Consumer check before the atomic commit", t => {
