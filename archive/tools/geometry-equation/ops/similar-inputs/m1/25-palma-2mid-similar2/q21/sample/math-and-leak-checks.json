@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "independentAngleChecks": {
+    "BAO": {
+      "expected": 72,
+      "actual": 72.0
+    },
+    "ABO": {
+      "expected": 46,
+      "actual": 45.99999999999999
+    },
+    "ODC": {
+      "expected": 52,
+      "actual": 52.0
+    },
+    "OCD": {
+      "expected": 66,
+      "actual": 66.0
+    },
+    "AOB": {
+      "expected": 62,
+      "actual": 62.0
+    },
+    "COD": {
+      "expected": 62,
+      "actual": 62.0
+    }
+  },
+  "intersectionOrder": "A-O-D and B-O-C collinear, O between endpoints PASS",
+  "labelGlyphReadback": {
+    "problem": {
+      "givenA": "72∘",
+      "givenB": "46∘",
+      "givenD": "52∘",
+      "unknownC": "x∘",
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "O": "O"
+    },
+    "solution": {
+      "givenA": "72∘",
+      "givenB": "46∘",
+      "givenD": "52∘",
+      "leftO": "62∘",
+      "rightO": "62∘",
+      "unknownC": "66∘",
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "O": "O"
+    }
+  },
+  "problemAnswerLeak": "PASS: only 72,46,52,x; no computed62 or66",
+  "sourceBlob": "286cef80d9ddfc0776a04e9f34aad2f6745727f4",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN"
+}
