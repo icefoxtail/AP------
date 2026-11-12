@@ -136,11 +136,11 @@ window.questionBank = [
       "두 점 $(2, -3)$과 $(-2, 3)$은 같은 사분면 위의 점이다.",
       "$x$좌표가 양수인 점은 제1사분면 또는 제2사분면 위의 점이다."
     ],
-    "answer": "⑤",
+    "answer": "③",
     "points": 0,
     "problemTypeKey": "PT_COORDINATE_POINT_READING",
     "templateKey": "TPL_COORDINATE_POINT_READING_PROPERTIES",
-    "solution": "각 사분면의 부호와 좌표축 위 점의 위치를 확인한다. $$\\begin{aligned} &\\text{① } y\\text{축 위의 점은 }x\\text{좌표가 }0\\text{이다. (거짓)} \\ &\\text{② }(4,-3)\\text{은 제4사분면 위에 있다. (거짓)} \\ &\\text{③ }(-2,0)\\text{은 }x\\text{축 위에 있어 어느 사분면에도 속하지 않는다. (거짓)} \\ &\\text{④ }(2,-3)\\text{은 제4사분면, }(-2,3)\\text{은 제2사분면 위에 있다. (거짓)} \\ &\\text{⑤ }x>0, y\\ne0\\text{이면 }(x,y)\\text{는 제1사분면 또는 제4사분면 위에 있다. (참)} \\end{aligned}$$ 따라서 옳은 것은 ⑤이다.",
+    "solution": "각 사분면의 부호와 좌표축 위 점의 위치를 확인한다. $$\\begin{aligned} &\\text{① } y\\text{축 위의 점은 }x\\text{좌표가 }0\\text{이다. (거짓)} \\ &\\text{② }(4,-3)\\text{은 제4사분면 위에 있다. (거짓)} \\ &\\text{③ }(-2,0)\\text{은 }x\\text{축 위에 있어 어느 사분면에도 속하지 않는다. (참)} \\ &\\text{④ }(2,-3)\\text{은 제4사분면, }(-2,3)\\text{은 제2사분면 위에 있다. (거짓)} \\ &\\text{⑤ }x>0\\text{인 점은 }y\\text{좌표가 양수인지 음수인지에 따라 제1사분면 또는 제4사분면에 있을 수 있고, }y=0\\text{이면 어느 사분면에도 속하지 않는다. 따라서 제1사분면 또는 제2사분면에만 있다고 할 수 없다. (거짓)} \\end{aligned}$$ 따라서 옳은 것은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
