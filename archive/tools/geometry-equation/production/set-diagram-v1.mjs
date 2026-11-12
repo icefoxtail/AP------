@@ -53,6 +53,9 @@ const elementText=(raw,max,code)=>{
 // (EXT-20261109-c) one font: a name or element without Korean letters (A, 10, AB, g(0), f(x)) is math like every other letter and number of the figure
 // (EXT-20261109-g) up to 8 characters, the length cleanText allows a name: f(f(x)) (7) used to fall back to the thin plain-text face
 const labelMath=text=>!HANGUL.test(text)&&/^[A-Za-z0-9()]{1,8}$/.test(text);
+// (EXT-20261112) a Unicode superscript/subscript (4k², x₁, 10⁻²) is typeset as the TeX it stands for. MathJax would draw it as a font-fallback <text> glyph that is neither an outline nor a labelled box: the rendered check then read it as a nameless label at under 11 px (LABEL_OVERLAP::element-N + PUBLICATION_FONT_BELOW_11_CSS_PX:). Only the typeset copy changes: data-tex and the observer keep the author's text.
+const SCRIPT_DIGITS={'⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9','⁺':'+','⁻':'-','₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9','₊':'+','₋':'-'};
+export const setDiagramTypesetTex=tex=>tex.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻]+/gu,run=>'^{'+[...run].map(ch=>SCRIPT_DIGITS[ch]).join('')+'}').replace(/[₀-₉₊₋]+/gu,run=>'_{'+[...run].map(ch=>SCRIPT_DIGITS[ch]).join('')+'}');
 
 // --- set expressions: ∪ ∩ - and a postfix complement (ᶜ, ^c, ^C), with U the universal set --------------------------------
 function parseShade(raw,setIds){
@@ -1057,8 +1060,10 @@ export async function composeSetDiagramFigure({plan,model,identity,typographyPol
     const typeset=typesetter(),font=typographyPolicy.baseFontPx,placed=[];
     for(const label of spec.labels){
       let fragment;
-      try{fragment=typeset({id:label.id,owner:label.owner,factRole:label.role==='element'?'GIVEN':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'set-diagram',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text})},identity);}
+      try{fragment=typeset({id:label.id,owner:label.owner,factRole:label.role==='element'?'GIVEN':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'set-diagram',...(label.kind==='MATH'?{kind:'MATH',tex:setDiagramTypesetTex(label.tex)}:{kind:'TEXT',text:label.text})},identity);}
       catch(error){if(!isDomainCode(error))throw error;throw new Stop('SET_TYPESET_ERROR',{labelId:label.id,code:error.message});}
+      // a math label MathJax could not outline (a symbol outside its math fonts) leaves a <text> glyph: say which label it is instead of letting the rendered check report a nameless overlap
+      if(label.kind==='MATH'&&/<text[\s>]/.test(fragment.svg))throw new Stop('SET_TYPESET_ERROR',{labelId:label.id,code:'MATH_GLYPH_NOT_OUTLINED',tex:label.tex});
       const {width,height}=fragment.intrinsic,{x,y,ax,ay}=label.anchor;
       placed.push({label,fragment,box:{x:r6(ax==='end'?x-width:ax==='center'?x-width/2:x),y:r6(ay==='bottom'?y-height:ay==='middle'?y-height/2:y),width,height}});
     }
