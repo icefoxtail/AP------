@@ -14,9 +14,19 @@ the explicit link to the existing laboratory hub.
   polygon-face centroids and edge adjacency.
 - Drag/orbit and wheel/pinch retain OrbitControls. A short tap selects; a drag,
   multi-pointer gesture or blank tap does not reset the route.
-- A concept plays one eight-second mathematical sequence and holds. Replay,
-  pause and scrubbing are independent of ambient motion. Reduced-motion users
-  start at the completed relationship and can explicitly replay it.
+- Body captions and the lower explanatory copy are omitted. The shapes remain
+  directly tappable, with named transparent targets for keyboard access.
+- All six circle relationships and both dual pairs animate from the opening
+  universe, throughout their galleries and in close observation. Circle
+  parameters repeat smoothly on an eight-second cycle with the complete
+  relationship visible; dual pairs move together and alternate the two
+  face/vertex correspondences. Selecting changes the view, not playback.
+- Global pause freezes automatic celestial and concept motion. Detail pause,
+  replay and scrubbing remain available; an explicit detail replay may run while
+  the universe is paused, and a subsequent global pause stops it again.
+  Reduced-motion users start at a completed static relationship. Explicit replay
+  or global play opts into the corresponding motion, while changing the system
+  preference back to normal restores automatic playback unless explicitly paused.
 - Close observation shows the selected relationship against the sky; the host
   and other companions return in place when going back to the galaxy. Dual
   polyhedra use one shared oblique orientation so front and back vertices are
@@ -34,13 +44,14 @@ the explicit link to the existing laboratory hub.
 | `concept-registry.js` | Stable concept IDs, bounds, compact/wide/portrait positions |
 | `concept-math.js` | Exact circle constraints and polygon dual topology |
 | `concept-objects.js` | Real Three.js geometry, local mathematical timelines, resource disposal |
-| `exploration.js` | Route, camera ownership/following, lazy family objects, picking and projected labels |
-| `../index.html`, `universe.css` | Accessible controls, captions, URL/history and laboratory navigation |
+| `exploration.js` | Route, camera ownership/following, companion clocks, picking and projected accessible targets |
+| `../index.html`, `universe.css` | Accessible controls, URL/history and laboratory navigation |
 
-Full concept geometry is created only for an explored family and disposed after
-it closes (on the first return frame under reduced motion). Preview geometry is complete and static; only the selected concept is
-updated each frame. Translation anchors preserve orbital motion without passing
-the host's self-rotation to the satellites. The existing central sector reuses a
+The eight concept objects are created once and retained across navigation. Only
+visible geometry is updated, using existing buffers; hidden companions retain
+their clock phase. All resources are disposed when the universe is destroyed.
+Translation anchors preserve orbital motion without passing the host's
+self-rotation to the satellites. The existing central sector also reuses a
 single dynamic vertex buffer instead of allocating geometry on every frame.
 
 ## Verification

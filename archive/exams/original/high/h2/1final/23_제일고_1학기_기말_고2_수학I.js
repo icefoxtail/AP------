@@ -54,7 +54,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_제일고_1학기_기말_고2_수학I/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C에서 변 BC=5와 각 A=60°, B=45°를 표시한다.",
+    "solutionImageCaption": "사인법칙에서 BC=5는 ∠A의 대변, AC는 ∠B의 대변이다. 따라서 정답은 5√6/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -166,7 +170,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_제일고_1학기_기말_고2_수학I/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C에서 변 AB=1, BC=2√2, CA=2를 표시한다.",
+    "solutionImageCaption": "사인법칙에서 변의 비는 a:b:c=2√2:2:1이다. 코사인법칙으로 각 A의 코사인을 구한다. 따라서 정답은 −3/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -225,7 +233,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_제일고_1학기_기말_고2_수학I/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 원뿔 옆면을 펼친 부채꼴에서 B′는 한 바퀴 뒤 만나는 B의 사본이다. 주황색 호는 부채꼴 경계이고 파란색 BC는 최단 경로다.",
+    "solutionImageCaption": "파란색 최단 경로 BC=21과 부채꼴의 120°를 코사인법칙에 적용해 C의 모선 위치를 구한다. B′는 한 바퀴 뒤 만나는 B의 사본이다. 따라서 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -253,7 +265,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_제일고_1학기_기말_고2_수학I/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: π 단위의 한 주기에서 원점 O, 주황 점근선 P·Q, 초록 영점 Z, 보라 입력 T를 표시한다.",
+    "solutionImageCaption": "파란 구간은 π 단위의 한 주기이며, 주황 점근선 P, Q는 x=−π/4, π/12이다. 초록 영점 Z는 x=−π/12이고 원점은 O, 보라 입력 T는 x=−π/36이다. f(−π/36)=tan(π/6)을 계산한다. 따라서 정답은 √3/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -284,7 +300,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_제일고_1학기_기말_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 사각형 A, B, C, D에서 연회색 삼각형 BCD와 초록 공통 현 BC, 파란 BD, 주황 DC를 표시한다.",
+    "solutionImageCaption": "원주각과 공통 현 BC로 ∠BDC를 정하고, 파란 BD와 주황 DC를 코사인법칙에 대입해 연회색 삼각형의 넓이를 구한다. 따라서 정답은 125이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -566,7 +586,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_제일고_1학기_기말_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 V가 한 최솟점에 표시된 절댓값 사인곡선의 반복 그래프.",
+    "solutionImageCaption": "점 V는 x=0에서의 최솟점 하나를 표시한다. sin2x의 음수 부분을 x축 위로 접고 세 배 한 뒤 1만큼 아래로 평행이동한다. 따라서 정답은 주기 2분의 π, 최댓값 2, 최솟값 −1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
