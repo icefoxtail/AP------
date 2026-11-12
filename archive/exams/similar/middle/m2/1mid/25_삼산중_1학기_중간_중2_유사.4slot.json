@@ -18,8 +18,8 @@
   "selfCheck": {
     "status": "SOURCE_TRANSFER_ONLY",
     "itemsChecked": 24,
-    "sourceRead": "Drive MD 1jyjfquwhGO13JjRg0zplGMj4eivwreHn2YgilREVQf1c; full text hydrated by search; direct revision API returned 404. Terms transferred and bound to final JS fingerprints.",
-    "visualReview": "NOT_RUN",
+    "sourceRead": "Directly read Google Doc 1jyjfquwhGO13jRg0zplGMj4eivwreHn2YgilREVQf1c at revision AHj4eMTI791FWL1M6MVxPlFGaMoOlx5UFYEheTtRx1IJoMsqZ70KuuoKdnlnkf8VX9GRXE2QlzyXWMNMToFztkDQB5qbw3u2WSquqWhhfyw; its content matches the previously search-hydrated source text (SHA-256 9dce15893b9bd380dc483961a066988589c04253c4f4a056d995acbf1fcd978e). Earlier lookup ID typo corrected; no source content changes.",
+    "visualReview": "NOT_RUN: each prompt and solution visual benefit and priority assessed from text; no image rendering or SVG creation.",
     "identityBinding": "Official UID formula used; identity-map registration NOT_RUN.",
     "registration": "NOT_RUN"
   },
@@ -58,14 +58,316 @@
   },
   "visualQueue": [
     {
+      "sourceOrdinal": 1,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "기호로 주어진 네 부등식과 대입값이 완결되어 발문용 별도 그림 이득이 낮음."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P3",
+        "note": "x=-3 대입 결과를 선지별 참/거짓 표로 보여 주면 판정 근거를 비교하기 쉬움."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "주어진 등식과 빈칸만으로 발문이 충분히 특정됨."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "등식의 양변에서 항을 옮기고 동류항을 모으는 순서를 단계 화살표로 표시."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "계수 추출 대상이 식에 직접 표시되어 발문 도식 이득이 낮음."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "분배법칙의 곱 항을 칸별로 나누어 x² 항이 생기는 경로를 표시."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "순환점 표기 자체가 발문에 기호로 제시됨."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "비순환 앞자리와 최소 순환마디를 색/괄호로 나누어 점 표기 규칙과 연결."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "분수 비교 문항으로 공간 관계 그림이 따로 필요하지 않음."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "각 분수의 약분 과정과 기약분모 소인수를 표나 인수 나무로 나란히 정리."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P3",
+        "note": "㉠·㉡의 변환 절차를 상자로 나누면 세 빈칸 변수 관계가 쉽게 보임."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "10² 곱하기와 변끼리 빼기를 소수 자릿수에 맞춰 배치해 순환마디가 소거되는 흐름을 표시."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "두 지수식이 발문에 이미 분리되어 제시됨."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P3",
+        "note": "거듭제곱의 거듭제곱과 같은 밑 나눗셈의 지수 변화 규칙을 비교표로 표시."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "a,b의 대소를 비교하는 문항에 수직선 틀을 제공하면 관계 파악을 돕는다."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "선지별 부호/크기를 수직선이나 비교표로 표시해 다른 하나를 빠르게 식별."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "두 분수와 미지수 A가 명시되어 그림보다 인수 조건이 핵심임."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "각 분모의 소인수와 필요한 A 인수를 표로 대조해 최소값 도출을 보임."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "세 조건이 문장·식으로 직접 주어져 공간 도식은 필요하지 않음."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "x,y 후보를 조건별로 거르는 표를 만들어 유한소수/자연수 검토 순서를 보임."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "식 계산 선지로 별도 발문 도형이 필요하지 않음."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "선지별 좌변 계산과 참/거짓 판정을 나란히 두는 검산 표."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "단항식 등식의 계수가 식 안에 모두 주어짐."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "계수·x 지수·y 지수의 부호와 계산을 세 행의 대응표로 분리."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "두 거듭제곱 식이 그대로 주어져 그림으로 보완할 공간 관계가 없음."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P3",
+        "note": "각 수를 소인수 거듭제곱으로 분해하고 지수 차를 계산하는 분해도."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "괄호식 자체가 입력이며 도형 맥락은 없음."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "바깥 괄호부터 제거할 때 부호가 바뀌는 항을 단계별로 표시."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "분수식 선지 비교로 별도 발문 그림 이득이 낮음."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "각 선지를 통분/역수 곱셈으로 계산한 값과 판정을 대응시키는 표."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P3",
+        "note": "가격 구성(개당 비용+고정비)을 카드/모델로 구분하면 상황을 정리하기 쉽다."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "비용 부등식과 정수 개수 수직선으로 최대 구매량 및 잔돈을 연결."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "problem": {
+        "status": "필요·미제작",
+        "priority": "P1",
+        "note": "발문이 수직선의 경계·열린 점·왼쪽 화살표를 조건으로 삼으므로 해당 수직선 그림을 제시해야 함."
+      },
+      "solution": {
+        "status": "필요·미제작",
+        "priority": "P1",
+        "note": "해를 구한 뒤 경계 -1, 열린 점, x<-1 영역을 같은 수직선에서 대조."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "KB·MB의 연속 배율을 단위 사다리로 그리면 단위 관계를 즉시 파악."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "B→KB→MB의 10³배와 최종 지수 계산을 단위 계단/표로 연결."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P3",
+        "note": "A,B,C,D를 식에 대응시키는 작은 카드형 표가 주어진 정의를 추적하는 데 도움."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "대입값·전개 결과·최종 뺄셈을 대응표로 정렬해 항의 부호 흐름을 보임."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "problem": {
+        "status": "미확인",
+        "priority": null,
+        "note": "문제는 여섯 다항식이 있는 판을 언급하지만 MD에는 실제 칸 배치가 없음. 원본 이미지의 배치·값 적합성 확인 전까지 발문 그림은 미확인."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "원본 배치가 확인된 후 같은 판에서 가능한 두 항목을 강조하면 두 뺄셈 방향의 결과 비교가 쉬움."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "순환마디 315를 묶고 자릿수 위치를 표시하면 100번째 숫자 질문을 더 잘 파악."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "순환마디 주기와 100=3×33+1의 나머지를 순환 띠/위치 표로 연결."
+      }
+    },
+    {
       "sourceOrdinal": 22,
-      "problemRequirement": "EXEMPT: dimensions and equal-area condition are fully specified in text; no problem image linked in variant.",
-      "solutionRequirement": "Diagram beneficial to show rectangle/trapezoid bases and height. Similar-specific visual is not made; source original image q22.png and solution q22-solution.svg exist, but dimensions differ and are not treated as reusable.",
-      "status": "NOT_CREATED",
-      "originalRefs": [
-        "archive/assets/images/25_삼산중_1학기_중간_중2_수학/q22.png",
-        "archive/assets/images/25_삼산중_1학기_중간_중2_수학/q22-solution.svg"
-      ]
+      "problem": {
+        "status": "필요·미제작",
+        "priority": "P1",
+        "note": "직사각형과 사다리꼴의 변 위치를 분명히 보여 주는 문제 도형이 필요. 원본 q22.png가 있으나 유사본 조건 적합성 확인 전 재사용 보류."
+      },
+      "solution": {
+        "status": "필요·미제작",
+        "priority": "P1",
+        "note": "두 넓이 식과 사다리꼴 높이 h를 도형에 연결해 등식 풀이를 따라가도록 함. 원본 q22-solution.svg는 존재하나 값 적합성 미검수."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "기기값과 월요금의 두 비용 구조를 비교표/간단 그래프로 보이면 질문 상황을 쉽게 잡음."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "두 비용 직선의 24개월 교점과 25개월부터 자급제 비용이 낮아짐을 표시."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "네 학생의 풀이를 개별 영역으로 정리하면 서로 다른 오류를 구분하기 쉬움."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "오개념과 바른 풀이를 학생별 행으로 맞춘 교정표로 네 오류를 비교."
+      }
     }
   ],
   "candidates": [],
@@ -2380,5 +2682,6 @@
         "nextOwner": "authorized identity-map / registration owner"
       }
     }
-  ]
+  ],
+  "visualReview": "NOT_RUN: per-item problem/solution benefit and priority assessed from text only; no image rendering or SVG creation."
 }
