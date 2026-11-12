@@ -10,11 +10,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="calc1-integral/lesson-core.js"></script>
+<script defer src="calc1-integral/lesson-a.js"></script>
+<script defer src="calc1-integral/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -34,6 +41,9 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
   const { tex, fmt, clamp } = APLab;
+  const litActive = s => !!(s && (s.lessonOn || s.lessonEntry));
+  let litRead = false;
+  const litNative = {};
   const num = (v, d = 2) => fmt(v, d).replace('−', '-'); // 수식(TeX) 문자열용
   const round05 = (v) => Math.round(v * 20) / 20;
   const R = (v) => Math.round(v * 100) / 100;
@@ -742,7 +752,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   const resetFocus = (s, lab) => { if (lab) lab.__fk = null; };
   // 변형 생성기: gen(이전 변형|null) → 새 변형. 처음에는 기출 유형 그대로(gen(null)).
-  function varier(gen) { let cur = gen(null); return { cur: () => cur, next: () => (cur = gen(cur)) }; }
+  function varier(gen, pool) { let cur = gen(null); const first = cur; return { cur: () => litRead || litActive(window.lab && window.lab.s) ? pool?.[window.lab?.s.litPacket || 0] || first : cur, first: (index = 0) => pool?.[index] || first, next: () => (cur = gen(cur)) }; }
   const pickIdx = (n, prev) => { let i = Math.floor(Math.random() * n); if (prev != null && n > 1 && i === prev) i = (i + 1 + Math.floor(Math.random() * (n - 1))) % n; return i; };
   const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-ci-new>새 문제</button></div>`;
   document.addEventListener('click', (ev) => {
@@ -854,7 +864,7 @@ window.addEventListener('DOMContentLoaded', function () {
     { a: 1 / 9, b: 0, c: 2, w: 3, d: 0, ftex: '\\dfrac{1}{9}x^{3}' }
   ];
   P6.forEach((p, i) => { p.i = i; p.m = (If6(p, p.w) - p.c * p.w - p.d) / ((p.w * p.w) / 2); p.mtex = frac(p.m); p.dtex = frac(Math.abs(p.d)); });
-  const var6 = varier((prev) => P6[prev ? pickIdx(P6.length, prev.i) : 0]);
+  const var6 = varier((prev) => P6[prev ? pickIdx(P6.length, prev.i) : 0], P6);
   const cond6 = (p) => (p.d === 0 ? `${tex('A = B')}` : p.d > 0 ? `${tex('B - A = ' + p.dtex)}` : `${tex('A - B = ' + p.dtex)}`);
   const text6 = (p) => `곡선 ${tex('y = ' + p.ftex)} 와 직선 ${tex('y = mx + ' + p.c)} 및 ${tex('y')}축으로 둘러싸인 부분의 넓이를 ${tex('A')}, 이 곡선과 두 직선 ${tex('y = mx + ' + p.c)}, ${tex('x = ' + p.w)} 로 둘러싸인 부분의 넓이를 ${tex('B')} 라 하자. ${cond6(p)} 일 때, 상수 ${tex('m')} 의 값을 구하시오. (단, 직선과 곡선은 ${tex('0 < x < ' + p.w)} 에서 한 점에서 만난다.)`;
   const modes6 = [['line', '① 직선 돌리기 · A와 B 비교'], ['wall', '② 벽 x = t 움직이기 · G(t)']];
@@ -1014,7 +1024,7 @@ window.addEventListener('DOMContentLoaded', function () {
   T3.forEach((v) => { v.g = gper(v.c); v.unit = (2 * v.c) / 3; v.n = v.b - v.a; v.ans = v.n * v.unit; });
   const P7 = [{ t: 1, v: T1[0] }, { t: 2, v: T2[0] }, { t: 3, v: T3[0] }, { t: 1, v: T1[1] }, { t: 2, v: T2[1] }, { t: 3, v: T3[1] }, { t: 1, v: T1[2] }, { t: 2, v: T2[2] }, { t: 3, v: T3[2] }, { t: 2, v: T2[3] }, { t: 3, v: T3[3] }];
   P7.forEach((p, i) => { p.i = i; });
-  const var7 = varier((prev) => P7[prev ? pickIdx(P7.length, prev.i) : 0]);
+  const var7 = varier((prev) => P7[prev ? pickIdx(P7.length, prev.i) : 0], P7);
   const ansTex7 = (p) => frac(p.v.ans);
   function text7(p) {
     const v = p.v;
@@ -1234,7 +1244,7 @@ window.addEventListener('DOMContentLoaded', function () {
     p.i = i; p.x0 = p.type === 's' ? p.a : 0; p.x1 = p.type === 's' ? p.b : p.c;
     p.ans = p.type === 'c' ? p.I / p.c : p.I;
   });
-  const var8 = varier((prev) => P8[prev ? pickIdx(P8.length, prev.i) : 0]);
+  const var8 = varier((prev) => P8[prev ? pickIdx(P8.length, prev.i) : 0], P8);
   function text8(p) {
     const lim = '\\displaystyle\\lim_{n\\to\\infty}\\sum_{k=1}^{n}';
     if (p.type === 's') return `함수 ${tex('f(x) = ' + p.ftex)} 에 대하여 ${tex(lim + '\\dfrac{2}{n}\\,f\\!\\left(1 + \\dfrac{2k}{n}\\right)')} 의 값을 구하시오. <small style="color:var(--text-3)">(이전 교육과정)</small>`;
@@ -1524,6 +1534,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 
+  const litExplore = Object.fromEntries(scenes.map(sc => [sc.id, { ...sc }]));
+
   /* OU-BEGIN */
   (function () {
   const { tex, fmt, clamp } = APLab;
@@ -1714,10 +1726,11 @@ window.addEventListener('DOMContentLoaded', function () {
   function ouVarier(gen) {
     let cur = gen(null);
     cur.first = true; cur.sid = ++ouSerial;
-    const firstKey = cur.key;
+    const firstKey = cur.key, first = cur;
     return {
       ou: true,
-      cur: () => cur,
+      cur: () => litRead || litActive(window.lab && window.lab.s) ? first : cur,
+      first: () => first,
       next: () => {
         for (let i = 0; i < 600; i++) {
           const v = gen(cur);
@@ -2058,8 +2071,30 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  Object.assign(litNative, { hook: ouHook, primitive: ouPrimitive, poly: ouPoly, eval: ouEv, derivative: ouDer });
   })();
   /* OU-END */
+
+  const source = window.APL_INTEGRAL_SOURCE = {
+    scenes, explore: litExplore, native: litNative,
+    first: (id, index = 0) => scenes.find(sc => sc.id === id).vary.first(index),
+    initial(id) {
+      const s = { a1: 0, b1: 3, m2: MBISECT, beta3: 1, m4: -.5, a5: 1, b5: 2,
+        m6: .1, t6: 2, a7: .4, b7: .15, kk7: 2, h7: 1.8, q7: 1.5, s7: .5, u7: 0, n8: 6,
+        dual: false, grid: true, mode6: 'line', mode7: 'eo', lens7: 'all', mode8: 'both' };
+      litExplore[id].enter?.(s); return s;
+    },
+    question(id, index = 0) {
+      const i = scenes.findIndex(sc => sc.id === id), p = this.first(id, index);
+      return i < 5 ? examData[i + 1].question() : id === 'areaab' ? text6(p) : id === 'symint' ? text7(p) : text8(p);
+    },
+    readFirst(fn) { const held = litRead; litRead = true; try { return fn(); } finally { litRead = held; } },
+    inquiry: (id, s) => integralExploreSteps(scenes.findIndex(sc => sc.id === id) + 1, s),
+    F1, P1, F2, G2, F3, P3, F4, G4, F5, P5, polynomialStats, diffStats, MBISECT,
+    V6, P6, f6, l6, If6, G6, alpha6, zeroG6, areas6, P7, T1, T2, T3, gper, primitivePeriod,
+    F8, sums8, P8
+  };
+  const lessons = window.APL_INTEGRAL_LESSONS ? window.APL_INTEGRAL_LESSONS.install(scenes, source) : {};
 
   APLab.createLab({
     id: 'calc1-integral',
@@ -2095,7 +2130,8 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     state: { dual: false, animDir: -1, mode6: 'line', mode7: 'eo', lens7: 'all', mode8: 'both' },
     persist: ['dual'],
-    scenes
+    scenes,
+    lessons
   });
 });
 </script>
