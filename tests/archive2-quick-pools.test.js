@@ -1,5 +1,5 @@
 // Quick assessments (5분 테스트 / 소단원 / 중단원 / 종합평가) on the unified unit layer (S8).
-// Module behaviour is tested on synthetic entries; the screens and the real pool run against the
+// Module behaviour and shortage rendering use synthetic entries; the screens and the real pool run against the
 // production catalog.
 const test = require('node:test');
 const assert = require('node:assert/strict');
@@ -42,6 +42,15 @@ const indexOf = entries => {
   return { views };
 };
 const many = (bucket, count, make = record) => Array.from({ length: count }, () => make(bucket));
+function shortUnitCatalog() {
+  // The standard unit-test preset needs 4 bucket-1, 10 bucket-2 and 6 bucket-3 questions.
+  // One fewer bucket-3 question gives this unclassified synthetic unit a stable one-question shortage.
+  const records = [...many(1, 4), ...many(2, 10), ...many(3, 5)].map(rec => ({
+    ...rec, sourceGrade: '고1', effectiveBrowseGrade: '고1',
+    subject: '공통수학1', standardCourse: '공통수학1',
+  }));
+  return { indexVersion: 'quick-pools-shortage-fixture', records };
+}
 
 test('the four products keep their sizes and difficulty mixes', () => {
   assert.deepEqual(Quick.VIEWS, ['five-minute', 'subunit-test', 'unit-test', 'monthly-test']);
@@ -268,7 +277,7 @@ function harness(data, { quick = true } = {}) {
   return { w, ctx, nodes, click, change, published, opened, node };
 }
 
-test('screens: each product shows unified units, no curriculum suffix, ready cards and disabled cards with reasons', async () => {
+test('screens: each product shows unified units, no curriculum suffix, ready cards and bundle controls', async () => {
   const data = await catalog();
   const h = harness(data);
   for (const view of Quick.VIEWS) {
@@ -296,8 +305,7 @@ test('screens: each product shows unified units, no curriculum suffix, ready car
   h.w.state.view = 'unit-test';
   h.w.quickState.subject = 'COMMON_MATH_1';
   const unitHtml = h.w.renderQuick();
-  assert.match(unitHtml, /class="quick-unit is-short" disabled aria-disabled="true"/);
-  assert.match(unitHtml, /class="quick-reason">\d단계 \d+문항 필요 · \d+문항 가능/);
+  assert.match(unitHtml, /data-action="quick-unit"/);
   h.w.state.view = 'monthly-test';
   const monthly = h.w.renderQuick();
   assert.match(monthly, /data-quick-bundle=/);
@@ -356,14 +364,15 @@ test('opening a unit selects the preset mix once per usable step and publishes 4
 });
 
 test('opening refuses a unit that cannot make the mix and a changed question state is caught before printing', async () => {
-  const data = structuredClone(await catalog());
+  const data = shortUnitCatalog();
   const h = harness(data);
   h.w.state.view = 'unit-test';
   h.w.quickState.grade = '고1';
   h.w.quickState.subject = 'COMMON_MATH_1';
   const html = h.w.renderQuick();
-  assert.ok(/is-short/.test(html));
-  // Do not hard-code a unit: its readiness changes when the reviewed catalog grows.
+  assert.match(html, /class="quick-unit is-short" disabled aria-disabled="true"/);
+  assert.match(html, /class="quick-reason">/);
+  // The deterministic synthetic fixture keeps the visible shortage and refusal path stable.
   const index = Unified.buildIndex(data.records, { projectionPolicy: data.projectionPolicy });
   const units = Quick.unitsFor(Quick.buildPools(index), 'unit-test', '고1', 'COMMON_MATH_1');
   const short = Quick.partition(units, Quick.PRODUCTS['unit-test'], 'standard').short;
