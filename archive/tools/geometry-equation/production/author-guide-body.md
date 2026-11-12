@@ -708,7 +708,7 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - `graphPlan.keyPoints: true`: 구간 안의 **모든 극값과 중심선 교점**(사인·코사인)을 정확한 좌표로 계산해 작은 점으로 찍는다. phase가 π의 배수일 때만 된다. 점이 너무 많으면(60개 초과) 거절하니 구간을 줄인다.
 - `graphPlan.axisTickPi: true`: π 단위 x축의 눈금 숫자를 `axisTickValues.x`에 적은 **π의 유리수 배수**로 쓴다(`"1/2"`→π/2, `"2"`→2π). 값은 0이 아니고 화면 안에 있어야 한다. 보통 수 축이면 이 필드를 쓰지 않고 `axisTickValues`에 그냥 수를 쓴다.
 - `graphPlan.referenceLines`: 사인·코사인에서만 되고 수평선·기울어진 직선과의 교점 개수를 주장한다(3-7절과 같은 규칙). **탄젠트에는 쓸 수 없다.**
-- 탄젠트를 구간에 그리면 **여러 가지**가 나오고, 구간 안의 모든 극(pole)을 x좌표 정확값으로 찾아 점선으로 긋는다. 극이 구간 끝과 겹치거나 구간 안에 하나도 없으면 거절된다.
+- 탄젠트를 구간에 그리면 내부와 열린 끝의 모든 극(pole)을 정확한 x좌표에서 점선으로 그린다. 극이 끝과 겹치면 그 끝의 상태를 `OPEN`으로 지정한다. 곡선은 구간 안쪽에서 점근선에 접근하며 극에는 유한한 끝점 표시를 그리지 않는다. 닫힌 끝에 극이 있거나 구간 내부에 극이 하나도 없으면 거절된다.
 
 ```json
 {"capability":"trigonometric-spike-v1","graphPlan":{"family":"trigonometric","function":"COS","ratePi":"1/2","coefficients":["1","0"],"phasePi":"0",

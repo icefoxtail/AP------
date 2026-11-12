@@ -38,3 +38,24 @@ test('wrong canonical ID, number, or duplicate string ID fails closed',t=>{
   assert.throws(projection(t,[{id:'q01',number:2}],['q01']),/source question id mismatch #1/);
   assert.throws(projection(t,[{id:'q01',number:1},{id:'q01',number:2}],['q01','q01']),/source question id mismatch #1/);
 });
+
+// Additional exact-identity cases. Copy this whole test into tests/ with the candidate registrar.
+function exactFixture(t, questions, sourceNos) {
+  const f=fixture(t,questions,sourceNos);
+  const hash=q=>crypto.createHash('sha256').update(JSON.stringify({content:q.content??null,choices:Array.isArray(q.choices)?q.choices:null,answer:q.answer??null,solution:q.solution??null,image:q.image??null})).digest('hex');
+  for (const name of ['question_identity_map.json','question_metadata.json']) {
+    const file=path.join(f.root,'archive/data',name), doc=JSON.parse(fs.readFileSync(file,'utf8'));
+    doc.records.forEach((r,i)=>r.sourceFingerprint=hash(questions[i]));fs.writeFileSync(file,JSON.stringify(doc));
+  }
+  registerDifficulty5({...f,write:true});
+  return {verify:()=>registerDifficulty5({...f,verifyProjection:true}),...f};
+}
+test('unique numeric or string source IDs with exact identity fingerprints pass',t=>{
+  assert.equal(exactFixture(t,[{id:81,content:'a'},{id:'qid_x',content:'b'}],[81,'qid_x']).verify().summary.VERIFIED,2);
+});
+test('exact identity exception rejects duplicate ID, wrong identity, shifted number, and stale fingerprint',t=>{
+  assert.throws(exactFixture(t,[{id:81},{id:81}],[81,81]).verify,/source question id mismatch/);
+  assert.throws(exactFixture(t,[{id:81}],[82]).verify,/source question id mismatch/);
+  assert.throws(exactFixture(t,[{id:81,number:2}],[81]).verify,/source question id mismatch/);
+  const f=exactFixture(t,[{id:81}],[81]),p=path.join(f.root,'archive/data/question_identity_map.json'),d=JSON.parse(fs.readFileSync(p,'utf8'));d.records[0].sourceFingerprint='stale';fs.writeFileSync(p,JSON.stringify(d));assert.throws(f.verify,/source question id mismatch/);
+});

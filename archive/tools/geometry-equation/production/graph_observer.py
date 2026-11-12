@@ -3933,18 +3933,23 @@ def _trig_v2_key_rows(spec,lo,hi,states):
         rows.append({'id':'key-'+str(m),'kind':kind,'x':str(x),'y':str(y)})
     return rows
 
-def _trig_v2_pole_rows(spec,lo,hi):
-    if spec['function']!='TAN':return []
+def _trig_v2_pole_rows(spec,lo,hi,states):
     if not spec['phaseHasPi']:raise ValueError('TRIG_TAN_REQUIRES_PI_PHASE')
     rate=spec['rate'];phase=spec['phase']
-    first=math.ceil(float(rate*lo+phase-Fraction(1,2))-1e-12);last=math.floor(float(rate*hi+phase-Fraction(1,2))+1e-12)
+    # In the doubled phase coordinate a pole is exactly an odd integer.
+    limits=[2*(rate*x+phase) for x in (lo,hi)]
+    first=math.ceil(min(limits))
     rows=[]
-    for n in range(first,last+1):
-        x=(Fraction(1,2)+n-phase)/rate
-        if x==lo or x==hi:raise ValueError('TRIG_TAN_POLE_AT_INTERVAL_END')
-        if lo<x<hi:rows.append({'id':'pole-'+str(len(rows)+1),'x':str(x),'side':'LEFT' if rate>0 else 'RIGHT'})
-    if not rows:raise ValueError('TRIG_TAN_INTERVAL_NO_POLE')
-    return rows
+    for odd in range(first if first%2 else first+1,math.floor(max(limits))+1,2):
+        point=(Fraction(odd,2)-phase)/rate
+        boundary='START' if point==lo else 'END' if point==hi else None
+        if boundary and states[0 if boundary=='START' else 1]=='CLOSED':
+            raise ValueError('TRIG_TAN_POLE_AT_INTERVAL_END')
+        row={'x':str(point),'side':'LEFT' if rate>0 else 'RIGHT'}
+        if boundary:row['boundary']=boundary
+        rows.append((point,row))
+    if not any(lo<point<hi for point,_ in rows):raise ValueError('TRIG_TAN_INTERVAL_NO_POLE')
+    return [{'id':'pole-'+str(index),**row} for index,(_,row) in enumerate(sorted(rows),1)]
 
 TRIG_V2_PLOT_WIDTH_PX=546       # this observer's own copy of the framing's plot width and label gaps (tests tie the pair)
 TRIG_V2_PI_TICK_MIN_GAP_PX=58
@@ -4046,13 +4051,15 @@ def _trig_v2_interval_expected(plan):
     if plan.get('keyPoints') is not None and not isinstance(plan.get('keyPoints'),bool):raise ValueError('INVALID_TRIG_KEY_POINTS')
     if plan.get('keyPoints') is True and function not in {'SIN','COS'}:raise ValueError('TRIG_KEY_POINTS_REQUIRE_SIN_COS')
     key_rows=_trig_v2_key_rows(spec,lo,hi,states) if plan.get('keyPoints') is True else []
-    pole_rows=_trig_v2_pole_rows(spec,lo,hi) if function=='TAN' else []
+    pole_rows=_trig_v2_pole_rows(spec,lo,hi,states) if function=='TAN' else []
     ticks=_trig_v2_tick_multiples(plan,kind,x0,x1)
     f=S.lambdify(x,expression,'mpmath')
     features={'schemaVersion':'TRIGONOMETRIC_INTERVAL_FEATURES_v2','function':function,'rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'axisUnit':axis_unit,'amplitude':str(a),'midline':str(c),'sourceInterval':{'kind':kind,'lo':str(lo),'hi':str(hi),'states':states},'lines':[({'id':row['id'],'kind':row['kind'],'x':str(row['at']),'intersections':[{'x':point,'y':float(f(mpmath.mpf(point)))} for point in row['x']]} if row['kind']=='VERTICAL' else {'id':row['id'],'kind':row['kind'],'slope':str(row['slope']),'intercept':str(row['intercept']),'intersections':[{'x':point,'y':float(row['slope'])/(math.pi if row['perPi'] else 1)*point+float(row['intercept'])} for point in row['x']]}) for row in lines],'keyPoints':key_rows,'poles':pole_rows}
     if spec['absolute']:features['absolute']=True;features['cusps']=_trig_v2_cusp_rows(spec,lo,hi)
     policy={'schemaVersion':'TRIGONOMETRIC_INTERVAL_POLICY_v2','markerRadiusIntrinsicPx':3.2,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':40,'minimumAmplitudeCssPx':20,'minimumPoleApproachGapCssPx':2}
-    return {'spec':spec,'function':function,'a':a,'rate':rate,'c':c,'kind':kind,'lo':lo,'hi':hi,'states':states,'axisUnit':axis_unit,'period':period,'x0':x0,'x1':x1,'rateEff':rate_eff,'phaseEff':phase_eff,'f':f,'lines':lines,'keyPoints':key_rows,'poles':pole_rows,'cusps':features.get('cusps',[]),'ticks':ticks,'features':features,'policy':policy,'endY':[float(f(mpmath.mpf(repr(x0)))),float(f(mpmath.mpf(repr(x1))))]}
+    pole_boundaries={pole['boundary'] for pole in pole_rows if 'boundary' in pole}
+    end_y=[None if side in pole_boundaries else float(f(mpmath.mpf(repr(value)))) for side,value in zip(('START','END'),(x0,x1))]
+    return {'spec':spec,'function':function,'a':a,'rate':rate,'c':c,'kind':kind,'lo':lo,'hi':hi,'states':states,'axisUnit':axis_unit,'period':period,'x0':x0,'x1':x1,'rateEff':rate_eff,'phaseEff':phase_eff,'f':f,'lines':lines,'keyPoints':key_rows,'poles':pole_rows,'cusps':features.get('cusps',[]),'ticks':ticks,'features':features,'policy':policy,'endY':end_y}
 
 def _trig_v2_level(value,code):
     # a horizontal level: a rational string, or p+q*sqrt(r) read by this observer's own exact-value parser
@@ -4123,18 +4130,44 @@ def trigonometric_interval_v2_audit(plan,svg,transform):
         if not points:return {'status':'FAIL','errors':sorted(set(errors+['TRIG_FINAL_CURVE_MISSING']))}
         xscale=transform['sx']*transform['displayScale'];yscale=transform['sy']*transform['displayScale'];x_tol=.35/max(1e-12,xscale)
         points=sorted(points,key=lambda point:point[0])
-        if abs(points[0][0]-want['x0'])>x_tol or abs(points[-1][0]-want['x1'])>x_tol:errors.append('TRIG_DRAW_DOMAIN_COVERAGE_FAIL')
+        factor=math.pi if want['axisUnit']=='PI' else 1.0
+        poles=[float(Fraction(pole['x']))*factor for pole in want['poles']]
+        has_boundary_pole=None in want['endY']
+        for point,end_x,end_y in zip((points[0],points[-1]),(want['x0'],want['x1']),want['endY']):
+            if end_y is not None and abs(point[0]-end_x)>x_tol:errors.append('TRIG_DRAW_DOMAIN_COVERAGE_FAIL')
+        if has_boundary_pole:
+            # Each interior pole partitions the source. Check every drawn branch is on its own side.
+            interior=[value for value,pole in zip(poles,want['poles']) if 'boundary' not in pole]
+            cuts=[want['x0'],*interior,want['x1']]
+            ordered=sorted(branches,key=lambda branch:branch[0][0])
+            if len(ordered)!=len(cuts)-1 or any(
+                not left-x_tol<=branch[0][0]<=branch[-1][0]<=right+x_tol
+                or any(branch[0][0]<=pole<=branch[-1][0] for pole in poles)
+                for branch,left,right in zip(ordered,cuts,cuts[1:])
+            ):errors.append('TRIG_TAN_BRANCH_COVERAGE_FAIL')
+            # At each pole, the adjacent branches meet the viewport edge fixed by
+            # their one-sided limits, including the single approach at a source boundary.
+            pole_ids={value:pole for value,pole in zip(poles,want['poles'])}
+            for branch,left,right in zip(ordered,cuts,cuts[1:]):
+                for is_right,point,cut in ((False,branch[0],left),(True,branch[-1],right)):
+                    pole=pole_ids.get(cut)
+                    if pole is None:continue
+                    toward_positive=want['a']>0 if want['spec']['absolute'] else (want['a']*want['rate']>0)==is_right
+                    edge=plan['viewport'][3 if toward_positive else 2]
+                    if abs(point[1]-edge)*yscale>.35:
+                        code='TRIG_TAN_BOUNDARY_APPROACH_FAIL:'+pole['boundary'].lower() if 'boundary' in pole else 'TRIG_TAN_POLE_APPROACH_FAIL:'+pole['id']
+                        errors.append(code)
         in_view=plan['viewport'][2]-1e-9<=0<=plan['viewport'][3]+1e-9
         for branch in branches:
             if any(right[0]<left[0]-1e-12 for left,right in zip(branch,branch[1:])):errors.append('TRIG_CURVE_NOT_MONOTONE_IN_X');break
         for px,py in points:
             if not want['x0']-x_tol<=px<=want['x1']+x_tol:errors.append('TRIG_CURVE_OUTSIDE_INTERVAL');break
+            if any(abs(px-pole)<1e-7 for pole in poles):
+                errors.append('TRIG_TAN_CURVE_AT_POLE');break
             expected=float(want['f'](mpmath.mpf(px)))
             if want['function']=='TAN':
-                for pole in want['poles']:
-                    if abs(px-float(Fraction(pole['x']))*(math.pi if want['axisUnit']=='PI' else 1.0))<1e-7:errors.append('TRIG_TAN_CURVE_AT_POLE');break
                 span_y=(plan['viewport'][3]-plan['viewport'][2])*2
-                if expected<plan['viewport'][2]-span_y or expected>plan['viewport'][3]+span_y:continue
+                if not has_boundary_pole and (expected<plan['viewport'][2]-span_y or expected>plan['viewport'][3]+span_y):continue
             if not math.isfinite(expected) or abs(py-expected)*yscale>.35:errors.append('TRIG_WRONG_FUNCTION_CURVE');break
         span=(want['x1']-want['x0'])*xscale
         if span<want['policy']['minimumPeriodSpanCssPx']:unsupported.append('TRIG_PERIOD_BELOW_PROFILE_FLOOR')
@@ -4149,7 +4182,13 @@ def trigonometric_interval_v2_audit(plan,svg,transform):
             except (TypeError,ValueError):return None
         for side,(wx,wy),state in zip(('start','end'),((want['x0'],want['endY'][0]),(want['x1'],want['endY'][1])),want['states']):
             got=read_circle('interval-endpoint-'+side)
-            if got is None or abs(got[0]-wx)*xscale>.35 or abs(got[1]-wy)*yscale>.35 or got[2].get('fill') not in INTERVAL_STATE_FILLS[state]:errors.append('TRIG_INTERVAL_END_MARKER_MISMATCH:'+side)
+            if wy is None:
+                if 'interval-endpoint-'+side in circles:errors.append('TRIG_TAN_BOUNDARY_MARKER_PRESENT:'+side)
+            elif got is None or abs(got[0]-wx)*xscale>.35 or abs(got[1]-wy)*yscale>.35 or got[2].get('fill') not in INTERVAL_STATE_FILLS[state]:errors.append('TRIG_INTERVAL_END_MARKER_MISMATCH:'+side)
+        if has_boundary_pole:
+            marker_ids=[node.get('id') for node in root.iter() if node.get('data-role')=='interval-endpoint']
+            expected_ids=['interval-endpoint-'+side for side,y in zip(('start','end'),want['endY']) if y is not None]
+            if sorted(marker_ids,key=str)!=sorted(expected_ids):errors.append('TRIG_TAN_INTERVAL_MARKER_INVENTORY_MISMATCH')
         frozen=features.get('lines');frozen_ids=[row.get('id') for row in frozen] if isinstance(frozen,list) else None
         if frozen_ids!=[row['id'] for row in want['lines']]:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
         detail=[];all_marks=[]
@@ -4202,6 +4241,13 @@ def trigonometric_interval_v2_audit(plan,svg,transform):
             if got is None or abs(got[0]-sx)*xscale>.35 or abs(got[1]-sy)*yscale>.35:errors.append('TRIG_KEY_POINT_MISMATCH:'+row['id'])
             elif got[2].get('data-feature-kind')!=row['kind']:errors.append('TRIG_KEY_POINT_KIND_MISMATCH:'+row['id'])
             all_marks.append((sx,sy))
+        if has_boundary_pole:
+            pole_ids=[node.get('id') for node in root.iter() if node.get('data-role')=='trig-pole']
+            if sorted(pole_ids,key=str)!=sorted('trig-'+pole['id'] for pole in want['poles']):
+                errors.append('TRIG_POLE_CUE_INVENTORY_MISMATCH')
+            axis=line_nodes.get('y-axis')
+            if axis is not None and any(pole.get('boundary') and pole['x']=='0' for pole in want['poles']) and axis.get('stroke-dasharray') not in {'5 4','5,4'}:
+                errors.append('TRIG_TAN_BOUNDARY_POLE_HIDDEN_BY_AXIS')
         for pole in want['poles']:
             node=line_nodes.get('trig-'+pole['id'])
             if node is None:errors.append('TRIG_POLE_CUE_MISSING_OR_DUPLICATED:'+pole['id']);continue
@@ -4210,6 +4256,8 @@ def trigonometric_interval_v2_audit(plan,svg,transform):
                 x1=(float(node.get('x1'))-transform['originX'])/transform['sx'];x2=(float(node.get('x2'))-transform['originX'])/transform['sx'];y1=(transform['originY']-float(node.get('y1')))/transform['sy'];y2=(transform['originY']-float(node.get('y2')))/transform['sy']
             except (TypeError,ValueError):errors.append('TRIG_POLE_CUE_INVALID:'+pole['id']);continue
             if abs(x1-pole_x)*xscale>.35 or abs(x2-pole_x)*xscale>.35 or node.get('stroke-dasharray') not in {'5 4','5,4'}:errors.append('TRIG_POLE_CUE_POSITION_OR_STYLE_FAIL:'+pole['id'])
+            if has_boundary_pole and (abs(min(y1,y2)-plan['viewport'][2])*yscale>.35 or abs(max(y1,y2)-plan['viewport'][3])*yscale>.35):
+                errors.append('TRIG_POLE_CUE_SPAN_FAIL:'+pole['id'])
         errors.extend(_trig_v2_tick_audit(plan,root,transform,want['ticks']))
         if any(0.05<=math.hypot((p[0]-q[0])*xscale,(p[1]-q[1])*yscale)<want['policy']['minimumFeatureSeparationCssPx'] for i,p in enumerate(all_marks) for q in all_marks[i+1:]):unsupported.append('TRIG_INTERSECTIONS_BELOW_PROFILE_FLOOR')   # two lines through one point (the origin) share that dot
         status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'

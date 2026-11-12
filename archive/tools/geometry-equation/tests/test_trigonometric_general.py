@@ -84,6 +84,45 @@ class TrigonometricGeneral(unittest.TestCase):
         for pole in plan['trigIntervalFeatures']['poles']:
             self.assertIn('id="trig-'+pole['id']+'"',model['svg'])
 
+    def test_open_tan_poles_render_two_separate_branches_without_endpoint_dots(self):
+        plan,model,observed=build_figure({
+            **interval_pi('TAN',('3','1','0'),phase_pi='-1/2',rng=('0','2')),
+            'displaySize':'full',
+        })
+        self.assertEqual(observed['status'],'PASS',observed['errors'])
+        poles=plan['trigIntervalFeatures']['poles']
+        self.assertEqual([(row['x'],row.get('boundary')) for row in poles],[('0','START'),('1',None),('2','END')])
+        self.assertEqual(plan['intervalFeatures']['endpoints'],[])
+        self.assertEqual(model['sampling']['domainCuts'],[0,math.pi,2*math.pi])
+        self.assertEqual(model['sampling']['branchCount'],2)
+        for (left,right),branch in zip(((0,math.pi),(math.pi,2*math.pi)),model['sampling']['branches']):
+            self.assertTrue(left<branch[0][0]<branch[-1][0]<right)
+            self.assertAlmostEqual(branch[0][1],plan['viewport'][2])
+            self.assertAlmostEqual(branch[-1][1],plan['viewport'][3])
+        svg=model['svg'];transform=model['transform']
+        self.assertNotIn('data-role="interval-endpoint"',svg)
+        self.assertIn('TRIG_TAN_BOUNDARY_MARKER_PRESENT:start',audit(
+            plan,svg.replace('</svg>','<circle id="interval-endpoint-start" cx="0" cy="0" fill="#fff"/></svg>'),transform)['errors'])
+        missing_pole=svg.replace('id="trig-pole-3"','id="missing-pole"')
+        self.assertIn('TRIG_POLE_CUE_INVENTORY_MISMATCH',audit(plan,missing_pole,transform)['errors'])
+        shortened=re.sub(r'(id="curve-0"[^>]*points=")(?:[^ ]+ ){20}',r'\g<1>',svg,count=1)
+        self.assertIn('TRIG_TAN_BOUNDARY_APPROACH_FAIL:start',audit(plan,shortened,transform)['errors'])
+        bridged=re.sub(r'" fill="none" stroke="black"/><polyline id="curve-1" data-role="curve" points="',' ',svg,count=1)
+        self.assertIn('TRIG_TAN_BRANCH_COVERAGE_FAIL',audit(plan,bridged,transform)['errors'])
+        closed=copy.deepcopy(plan);closed['sourceDomain']['states'][1]='CLOSED'
+        self.assertIn('TRIG_TAN_POLE_AT_INTERVAL_END',audit(closed,svg,transform)['errors'])
+
+    def test_a_finite_tan_endpoint_keeps_its_marker_beside_an_open_pole(self):
+        plan,model,observed=build_figure({
+            **interval('TAN',('2','1'),rate_pi='1/2',rng=('0','3'),states=('CLOSED','OPEN')),
+            'displaySize':'full',
+        })
+        self.assertEqual(observed['status'],'PASS',observed['errors'])
+        self.assertEqual([(row['x'],row.get('boundary')) for row in plan['trigIntervalFeatures']['poles']],[('1',None),('3','END')])
+        self.assertEqual([row['side'] for row in plan['intervalFeatures']['endpoints']],['START'])
+        self.assertIn('id="interval-endpoint-start"',model['svg'])
+        self.assertNotIn('id="interval-endpoint-end"',model['svg'])
+
     def test_one_period_with_a_pi_rate_has_an_exact_period_and_phase_points(self):
         plan,_,observed=build_figure(period('SIN',('1','0'),'1/6','0'))
         self.assertEqual(observed['status'],'PASS',observed['errors'])
