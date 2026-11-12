@@ -171,7 +171,7 @@ window.questionBank = [
       "연산",
       "반직선 OB가 ∠AOC 내부에 놓임"
     ],
-    "content": "두 직선 $AD$와 $BE$가 점 $O$에서 만나고, 선분 $OC$는 직선 $AD$와 수직($OC \\perp AD$)이다. 점 $B, C$가 직선 $AD$의 위쪽에 있고 반직선 $OB$가 $\\angle AOC$의 내부에 놓일 때, $\\angle DOE = 4\\angle BOC$가 성립한다. 이때 $\\angle AOE$의 크기는? [4점]",
+    "content": "두 직선 $AD$와 $BE$가 점 $O$에서 만나며, 점 $O$는 선분 $AD$와 선분 $BE$의 내부에 있다. 선분 $OC$는 직선 $AD$와 수직($OC \\perp AD$)이다. 점 $B, C$가 직선 $AD$의 위쪽에 있고 반직선 $OB$가 $\\angle AOC$의 내부에 놓일 때, $\\angle DOE = 4\\angle BOC$가 성립한다. 이때 $\\angle AOE$의 크기는? [4점]",
     "choices": [
       "$100^\\circ$",
       "$104^\\circ$",
@@ -183,7 +183,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
     "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_LINEAR_SYSTEM",
-    "solution": "반직선 $OB$가 $\\angle AOC$의 내부에 놓인다는 조건과 수직, 맞꼭지각, 평각의 성질로 각을 구한다. $$\\begin{aligned} &\\angle BOC = x^\\circ\\text{라 하면, } OC \\perp AD\\text{이므로 } \\angle AOC = 90^\\circ\\text{이다.} \\ &\\angle AOB = \\angle AOC - \\angle BOC = 90^\\circ - x^\\circ \\ &\\angle DOE\\text{와 } \\angle AOB\\text{는 맞꼭지각이므로 크기가 같다.} \\ &\\angle DOE = \\angle AOB = 90^\\circ - x^\\circ \\ &\\angle DOE = 4\\angle BOC\\text{이므로 } 90 - x = 4x \\implies 5x = 90 \\implies x = 18 \\ &\\angle AOB = 90^\\circ - 18^\\circ = 72^\\circ \\ &\\text{점 } O\\text{에서 직선 } BE\\text{는 평각(}180^\\circ\\text{)을 이루므로} \\ &\\angle AOE = 180^\\circ - \\angle AOB = 180^\\circ - 72^\\circ = 108^\\circ \\end{aligned}$$ 따라서 $\\angle AOE$의 크기는 $108^\\circ$이므로 정답은 ③이다.",
+    "solution": "점 $O$가 선분 $AD$, $BE$의 내부에 있고 반직선 $OB$가 $\\angle AOC$의 내부에 놓인다는 조건과 수직, 맞꼭지각, 평각의 성질로 각을 구한다. $$\\begin{aligned} &\\angle BOC = x^\\circ\\text{라 하면, } OC \\perp AD\\text{이므로 } \\angle AOC = 90^\\circ\\text{이다.} \\ &\\angle AOB = \\angle AOC - \\angle BOC = 90^\\circ - x^\\circ \\ &\\angle DOE\\text{와 } \\angle AOB\\text{는 맞꼭지각이므로 크기가 같다.} \\ &\\angle DOE = \\angle AOB = 90^\\circ - x^\\circ \\ &\\angle DOE = 4\\angle BOC\\text{이므로 } 90 - x = 4x \\implies 5x = 90 \\implies x = 18 \\ &\\angle AOB = 90^\\circ - 18^\\circ = 72^\\circ \\ &\\text{점 } O\\text{에서 직선 } BE\\text{는 평각(}180^\\circ\\text{)을 이루므로} \\ &\\angle AOE = 180^\\circ - \\angle AOB = 180^\\circ - 72^\\circ = 108^\\circ \\end{aligned}$$ 따라서 $\\angle AOE$의 크기는 $108^\\circ$이므로 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"

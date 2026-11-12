@@ -3,7 +3,7 @@
   "requestId": "similar-25-palma-m1-2mid-v2-candidate-v1",
   "examUid": "25_팔마중_2학기_중간_중1_유사2",
   "sourceArchiveFile": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사2.js",
-  "expectedSourceBlobSha1": "01e64647453e37650d7fca455632bbcc85ff94bd",
+  "expectedSourceBlobSha1": "188dc2cac1b88fda90c14b7d67d75714fce8fc0d",
   "expectedQuestionCount": 24,
   "sourceProvenance": {
     "driveDocumentId": "1Wlrc5c5_K3xWD4HH4Gj1Wv5w-cdwiKxjk82KBsLxG20",
@@ -18,8 +18,8 @@
       },
       {
         "scope": "Q5 stem, solution, and condition metadata",
-        "change": "Added that ray OB lies inside ∠AOC; the former text only said B and C were on the same side of AD, which did not determine whether ∠AOB=90°−∠BOC.",
-        "independentCheck": "With the added position, ∠AOB+∠BOC=90°. Vertical angles give ∠DOE=∠AOB=4∠BOC, so x=18°, ∠AOB=72°, and ∠AOE=108° (choice ③)."
+        "change": "Added that O lies inside both segments AD and BE, and ray OB lies inside ∠AOC; the earlier text did not guarantee opposite rays or the 90° subtraction.",
+        "independentCheck": "Independent verifier confirmed the original text lacked betweenness. With O interior to both segments, ∠DOE and ∠AOB are vertical; with OB inside ∠AOC, ∠AOB=90°−x. Thus 90−x=4x, x=18°, ∠AOB=72°, and ∠AOE=108° (choice ③)."
       }
     ],
     "variantDecision": {
@@ -28,7 +28,7 @@
       "newIdentity": "25_팔마중_2학기_중간_중1_유사2",
       "reason": "The new source document supplies a distinct 24-question version, including changed Q2 and Q3. The current main JS and its SVGs are retained; this candidate points to no assets from the older version."
     },
-    "visualAssetAudit": "The supplied MD marks all 24 items EXEMPT for separate problem figures. Each item received an explicit EXEMPT problem and solution plan. The candidate JS has no image or solutionImage refs; existing main-version SVGs remain untouched and are not reused.",
+    "visualAssetAudit": "The supplied MD marks all 24 items EXEMPT for separate problem figures. Each item received an explicit EXEMPT problem and solution plan. Q5 wording was made determinate by stating O is interior to AD and BE and ray OB is inside ∠AOC. The candidate JS has no image or solutionImage refs; existing main-version SVGs remain untouched and are not reused.",
     "currentMainReleaseAudit": {
       "mainCommit": "f3d9320f6ec1db150c6bbc38787799591b16fbd8",
       "existingSimilarJs": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사.js",
@@ -136,7 +136,7 @@
         "need": "NO_SEPARATE_SOLUTION_FIGURE",
         "currentCandidateAsset": null
       },
-      "reason": "문제에서 반직선 OB의 위치를 명시한 뒤에는 90° 직각 관계와 선형식만으로 풀 수 있어 별도 그림 불필요"
+      "reason": "점 O의 선분 내부 위치와 반직선 OB의 각 내부 위치를 발문에 명시한 후에는 수직 및 각 관계를 텍스트로 풀 수 있어 별도 그림 불필요"
     },
     {
       "sourceOrdinal": 6,
@@ -694,12 +694,13 @@
           "연산"
         ],
         "condition": [
+          "점 O가 선분 AD와 선분 BE의 내부에 있음",
           "수직",
           "반직선 OB가 ∠AOC 내부에 놓임"
         ]
       },
       "visualPlanStatus": "EXEMPT",
-      "visualPlanReason": "문제에서 반직선 OB의 위치를 명시한 뒤에는 90° 직각 관계와 선형식만으로 풀 수 있어 별도 그림 불필요"
+      "visualPlanReason": "점 O의 선분 내부 위치와 반직선 OB의 각 내부 위치를 발문에 명시한 후에는 수직 및 각 관계를 텍스트로 풀 수 있어 별도 그림 불필요"
     },
     {
       "sourceOrdinal": 6,
