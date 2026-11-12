@@ -3,7 +3,7 @@
   "requestId": "similar-25-palma-m1-2mid-v2-candidate-v1",
   "examUid": "25_팔마중_2학기_중간_중1_유사2",
   "sourceArchiveFile": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사2.js",
-  "expectedSourceBlobSha1": "7f4533ce4731ef63799198747c1687dfa47f01e5",
+  "expectedSourceBlobSha1": "f4c96c884a7f2481998c53836b659697a554b987",
   "expectedQuestionCount": 24,
   "sourceProvenance": {
     "driveDocumentId": "1Wlrc5c5_K3xWD4HH4Gj1Wv5w-cdwiKxjk82KBsLxG20",
@@ -36,6 +36,12 @@
         "before": "DE∥AC and DA=DE did not determine which ray on the parallel through D was E; ∠AED could be 35° or 55°.",
         "after": "Added that C and E lie on opposite sides of line BD.",
         "independentCheck": "Triangle ABC gives ∠BAC=180°−30°−40°=110°. Since B,A,D are collinear in that order, ∠DAC=70°. With C and E on opposite sides of BD and DE∥AC, the rays DA and DE make ∠ADE=70°. DA=DE makes △ADE isosceles, so ∠AED=(180°−70°)/2=55°, uniquely choice ②. The added condition does not state the answer."
+      },
+      {
+        "scope": "Q4 stem",
+        "before": "The stem excluded A and B even though they do not lie on the perpendicular bisector, and allowed P=M; truth was also not explicitly scoped as an invariant property for an arbitrary P.",
+        "after": "Specified P as an arbitrary point on l distinct from M and asked which statements are always true from the conditions.",
+        "independentCheck": "Set A=(-a,0), B=(a,0), M=(0,0), l as the y-axis, and P=(0,t), t≠0. Then l⊥AB, the perpendicular foot from P to AB is M, and dist(P,AB)=PM=|t|. AM=a is not always equal to |t|, so only ㄱ, ㄷ, ㄹ are guaranteed; choice ④. The stem does not reveal the answer."
       }
     ],
     "variantDecision": {
@@ -131,14 +137,16 @@
       "problem": {
         "status": "EXEMPT",
         "need": "NO_SEPARATE_PROBLEM_FIGURE",
-        "currentCandidateAsset": null
+        "currentCandidateAsset": null,
+        "reason": "The explicit arbitrary-point condition makes the item textually determinate; a diagram remains helpful to see l, AB, M, and P. No variant asset."
       },
       "solution": {
         "status": "EXEMPT",
         "need": "NO_SEPARATE_SOLUTION_FIGURE",
-        "currentCandidateAsset": null
+        "currentCandidateAsset": null,
+        "reason": "A diagram can highlight the perpendicular foot and point-to-line distance, though the proof is textually sufficient. No variant solution asset."
       },
-      "reason": "수직이등분선의 정의, 수선의 발, 점과 직선 사이의 거리 관계 판별 문항"
+      "reason": "The stem now states P is arbitrary on l and distinct from M; a diagram can still help locate the midpoint, perpendicular, and foot relations. Existing main q04.svg is preserved and not reused for this variant."
     },
     {
       "sourceOrdinal": 5,
