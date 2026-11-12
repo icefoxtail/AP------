@@ -1,8 +1,8 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/2final/23_금당중_2학기_기말_중2_유사.js",
-  "sourceGitBlobSha": "e7ce626565ab093fbffa078b8c92ed3686a6a482",
-  "sourceSha256": "04625ac53639b2b2070ed0b3dc15268476ce93a27067166898cb2c456cb95aa5",
+  "sourceGitBlobSha": "45afd6212f69f6340cf67c39db8efe26bbb2d3b1",
+  "sourceSha256": "6e8ef16654aa8c61a5953e0022d35d638ac35fc9dcf2fdcdf9e854a572cc3bd1",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "Codex stage-local MD migration",
@@ -18,10 +18,10 @@
   "selfCheck": {
     "status": "LOCAL_SELF_CHECK",
     "itemsChecked": 25,
-    "sourceRead": "Direct Google Docs normal document 1hZzOns93jriuaCE95pv2ZiNUDN_KiaKhZzoR3nPmaw8, revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
+    "sourceRead": "Direct Google Docs normal document 1hZzOns93jriuaCE95pv2ZiNUDN_KiaKhZzoR3nPmaw8, revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c. Prepared SVGs were bound to the exact pre-link candidate JS blob e7ce626565ab093fbffa078b8c92ed3686a6a482.",
     "sectionIsolation": "Prompt, choices, answer, solution and item metadata parsed by question headings/fences.",
     "scoreCheck": "25 item scores sum to 100.",
-    "visualReview": "Problem and solution triage recorded; no SVG creation/render QA. Source images exist for some original items; not linked to the similar exam pending fit review.",
+    "visualReview": "Linked 28 source-bound candidate SVGs. Manifest math/static/leak checks and copied byte hashes verified; visual QA and actual Archive NOT_RUN. Q22 uses y−330 as the vertical coordinate and is solution-only.",
     "identityBinding": "Candidate UID formula used; official identity-map NOT_RUN.",
     "registration": "NOT_RUN"
   },
@@ -56,7 +56,7 @@
     ],
     "operation": "CREATE",
     "before": null,
-    "after": "Normal MD to JS and candidate metadata; Q20 independence clarified",
+    "after": "28 source-bound SVG candidate references added; Q1 no additional SVG; Q2/Q4 problem figures withheld for answer-leak prevention.",
     "reason": "User-requested exam migration."
   },
   "visualQueue": [
@@ -69,25 +69,25 @@
         "note": "함수 꼴을 식 정리로 판별."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
-        "priority": "P2",
-        "note": "보기별 정리 결과를 일차/이차/상수 함수 표로 비교."
+        "status": "NOT_NEEDED",
+        "display": "불필요",
+        "priority": "—",
+        "note": "SVG owner classified no additional figure; algebraic simplification is already side-by-side in the options."
       }
     },
     {
       "sourceOrdinal": 2,
       "problem": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "WITHHELD_ANSWER_LEAK_RISK",
+        "display": "미연결·정답 노출 우려",
         "priority": "P2",
-        "note": "x절편이 주어진 직선에서 y절편을 읽는 그래프 해석에 도움."
+        "note": "Solved graph would expose the requested intercept/coefficient; only the solution-side figure is linked."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P2",
-        "note": "(-1,0)과 y절편 (-2)을 지나는 직선 표시."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q02-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -99,25 +99,25 @@
         "note": "평행이동 후 두 점을 지나는 직선의 기울기·절편 관계가 좌표 그림에서 분명."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P1",
-        "note": "원래 y=ax+1, 이동 뒤의 직선, 두 점 (1,2),(3,-4)을 구분."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q03-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
       "sourceOrdinal": 4,
       "problem": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "WITHHELD_ANSWER_LEAK_RISK",
+        "display": "미연결·정답 노출 우려",
         "priority": "P1",
-        "note": "두 점으로 기울기와 y절편을 구하는 좌표 도식이 유익."
+        "note": "Solved graph would expose the requested intercept/coefficient; only the solution-side figure is linked."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P1",
-        "note": "(-1,-4),(2,2)를 표시하고 기울기 삼각형을 연결."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q04-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -129,25 +129,25 @@
         "note": "세 사분면만 지나는 조건으로 기울기와 절편 부호를 판단."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P1",
-        "note": "음의 기울기와 음의 y절편을 가진 직선의 사분면 표시."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q05-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
       "sourceOrdinal": 6,
       "problem": {
-        "status": "REQUIRED_NOT_CREATED",
-        "display": "필요·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P1",
-        "note": "직사각형 영역과 원점을 지나는 직선이 만나는 기울기 범위를 시각적으로 찾는 문항. 원본 Q6 문제 그림은 존재하나 수치 적합성 미확인."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q06-problem.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       },
       "solution": {
-        "status": "REQUIRED_NOT_CREATED",
-        "display": "필요·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P1",
-        "note": "직사각형 꼭짓점과 회전하는 y=ax−2 직선, 경계 접점 C·A를 설명하되 답 범위는 문제에 쓰지 않음."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q06-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -159,25 +159,25 @@
         "note": "y축에 평행/수평선의 차이를 좌표평면에서 확인하면 혼동 감소."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P2",
-        "note": "y=−4와 점 (5,−3)을 지나는 수평선 y=−3을 별도 표시."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q07-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
       "sourceOrdinal": 8,
       "problem": {
-        "status": "REQUIRED_NOT_CREATED",
-        "display": "필요·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P1",
-        "note": "직사각형 넓이를 이등분하는 직선이 중심을 지나는 조건과 원점 연결이 핵심. 원본 Q8 문제 그림 참조가 있으나 유사판 적합성 미확인."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q08-problem.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       },
       "solution": {
-        "status": "REQUIRED_NOT_CREATED",
-        "display": "필요·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P1",
-        "note": "직사각형 중심 (3,4), 원점, 두 점을 잇는 직선의 기울기 관계."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q08-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -189,10 +189,10 @@
         "note": "교점이 두 식의 공통 해임을 좌표평면에서 보이면 계수 대입이 직관적."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P1",
-        "note": "(1,−2)를 두 직선 위에 놓고 a,b 대입."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q09-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -204,10 +204,10 @@
         "note": "교점을 지나고 y축에 평행한 직선은 x좌표가 고정됨을 보이면 분명."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P2",
-        "note": "교점 (−1,5)에서 수직선 x=−1을 그림."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q10-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -219,10 +219,10 @@
         "note": "평행·한 점에서 만남 등 세 직선의 위치 관계를 분류하면 삼각형 불성립 경우가 선명."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P1",
-        "note": "두 기본 직선과 세 번째 직선의 평행·동시교점 세 경우를 별도 도식."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q11-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -234,10 +234,10 @@
         "note": "간식 4종과 음료 2종 선택 조합을 표로 보여 주면 곱의 법칙이 보임. 원본 Q12 문제 그림 참조 존재·유사판 적합성 미확인."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P2",
-        "note": "4×2 선택표 또는 나뭇가지도."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q12-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -249,10 +249,10 @@
         "note": "가위바위보의 승리 경우를 목록으로 셀 수 있음."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P2",
-        "note": "A의 세 선택에 대응하는 B의 승리 대응을 표로 열거."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q13-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -264,10 +264,10 @@
         "note": "3의 배수와 4의 배수 겹침을 나타내면 중복 차감 이유가 명확. 원본 Q14 그림 참조는 있으나 적합성 미확인."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P2",
-        "note": "1~20 중 3의 배수/4의 배수 집합과 공통 12를 벤 다이어그램으로 표시."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q14-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -279,25 +279,25 @@
         "note": "AB를 한 묶음으로 보는 순열 구조가 그림·블록으로 이해하기 쉬움."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P2",
-        "note": "[AB]와 C,D,E 네 덩어리 순서, 묶음 내부 2배."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q15-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
       "sourceOrdinal": 16,
       "problem": {
-        "status": "REQUIRED_NOT_CREATED",
-        "display": "필요·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P1",
-        "note": "A→P→B 최단 경로의 가로·세로 칸 배치가 경우의 수를 결정. 원본 Q16 그림과 해설 참조가 있으나 유사판 적합성 미확인."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q16-problem.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       },
       "solution": {
-        "status": "REQUIRED_NOT_CREATED",
-        "display": "필요·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P1",
-        "note": "AP 2×1 격자와 PB 2×2 격자를 이어 그리고 경로수를 구간별 곱함."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q16-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -309,10 +309,10 @@
         "note": "대표 2명 선택에서 성별 경우를 나누면 각 보기의 참거짓 확인에 도움."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P2",
-        "note": "남/여 조합 유형별 경우 수와 전체 10을 표로 정리."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q17-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -324,10 +324,10 @@
         "note": "서로 다른 두 주사위의 순서쌍으로 합 4,8,12를 세면 분모·분자가 명확."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P2",
-        "note": "6×6 표에 합이 4의 배수인 칸 강조."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q18-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -339,10 +339,10 @@
         "note": "비복원 추출의 두 단계가 달라지는 점을 나뭇가지도로 나타내면 조건 이해에 도움."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P2",
-        "note": "첫 번째 파랑 후 빨강 확률 6/10→4/9."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q19-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -354,10 +354,10 @@
         "note": "두 수의 parity가 독립이라는 표본 설정과 합 홀수의 두 경우가 핵심."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P1",
-        "note": "a짝·b홀, a홀·b짝 두 칸만 남기는 2×2 경우 표."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q20-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -369,10 +369,10 @@
         "note": "적어도 하나 성공의 여사건 계산을 세 문항 트리로 시각화할 수 있음."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P2",
-        "note": "각 문제 정답/오답 가지와 세 번 모두 오답인 경로 강조."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q21-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -384,25 +384,25 @@
         "note": "온도와 소리 속력의 일정 변화율·초깃값을 그래프에 두면 관계식 이해에 도움."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P2",
-        "note": "(0,330),(30,348)을 표시하고 기울기 3/5."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q22-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
       "sourceOrdinal": 23,
       "problem": {
-        "status": "REQUIRED_NOT_CREATED",
-        "display": "필요·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P1",
-        "note": "두 물체의 위치-시간 관계가 교차하는 순간이 만남 시간."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q23-problem.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       },
       "solution": {
-        "status": "REQUIRED_NOT_CREATED",
-        "display": "필요·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P1",
-        "note": "y=1/2x+5와 y=x+1을 같은 축에 표시하고 교점을 해설에 연결."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q23-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -414,10 +414,10 @@
         "note": "두 자리 수 구성에서 일의 자리 홀수별 가능한 십의 자리를 표로 세면 누락 방지."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P2",
-        "note": "끝자리 1,3,5별로 허용 십의 자리 4개."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q24-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     },
     {
@@ -429,10 +429,10 @@
         "note": "주사위 순서쌍에서 (b+2)가 a로 나누어지는 경우를 표로 세면 계산 확인에 유익."
       },
       "solution": {
-        "status": "RECOMMENDED_NOT_CREATED",
-        "display": "권장·미제작",
+        "status": "CANDIDATE_ATTACHED_UNREVIEWED",
+        "display": "후보 SVG 연결·시각검수 미완",
         "priority": "P2",
-        "note": "b=1..6 행, a=1..6 열 표에서 자연수 근 조건인 15쌍 표시."
+        "note": "assets/images/23_금당중_2학기_기말_중2_유사/q25-solution.svg · sample/static audit PASS; visual QA and actual Archive NOT_RUN."
       }
     }
   ],
@@ -477,7 +477,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "336ab90bf4ad80d20b0f108c7069d984855286b50b366356848f2ae3b130f725"
+          "value": "878282a089a902ae04ce6dbf7d4fd22e51ebdc80d274450d8a0d9fe90eba915f"
         }
       ],
       "judgedBy": {
@@ -494,7 +494,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -559,7 +560,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "7adfd73e5761236e85cc3e55290df1955c92445802e0cc7a5b75989e0e6cbe0e"
+          "value": "f8310d176903fe7bf32f9ec133ee87e40cd764cbaea48104ef39f3c379b82db6"
         }
       ],
       "judgedBy": {
@@ -576,7 +577,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -648,7 +650,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "d9303cbb0760e88b0542c38454dbc5e85128d8dc9eac04b2e7796364440c7339"
+          "value": "ed8fd1792d627ef15af2dc41347d430d2f215871c2eb0798ba6685cb814b8755"
         }
       ],
       "judgedBy": {
@@ -665,7 +667,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -736,7 +739,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "b68ad252f2ba69c7615c09782d776ec2eddb7993d00ea7bbc5d476d660beb528"
+          "value": "09a02c0880be4f13145f7067b856258c56081bc29988f07d2069a247904385ff"
         }
       ],
       "judgedBy": {
@@ -753,7 +756,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -826,7 +830,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "a8d94b0cea27e8708f91ded81ff8a2a1049caa046f44557c58a4dab2b1648f09"
+          "value": "42a21e6e4e67f7d144c79edb84fcf0105e5f3cdf39444cb1caad4317ef5e0b2a"
         }
       ],
       "judgedBy": {
@@ -843,7 +847,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -904,12 +909,12 @@
         {
           "scope": "QBODY",
           "algo": "sha256-canonical-json-v1",
-          "value": "a4f01cef30da704c51788d7188fb97d97c2be8d78b4a2589bd8a2fd17bfce94b"
+          "value": "4a136ea978ae2e0c6986e86ac2be167421d38691bf10488b4c19562f501a1b26"
         },
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "557f9fd03dfb2623ed4a6ab1b8fd4364c2d48ff9f4ba501021582947e3597800"
+          "value": "27b9e073fbc6cfab1ca0705b240ef0ae789a01b504fd7d19ddd08846aafad550"
         }
       ],
       "judgedBy": {
@@ -926,7 +931,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -991,7 +997,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "a512dc78f51a3153e88c26137462a3423f86e8defe00d862883326e4b953170e"
+          "value": "74068ef4f475dcf7529924423005d557e7bbfcbe44248fd33fd598c312f41094"
         }
       ],
       "judgedBy": {
@@ -1008,7 +1014,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -1061,12 +1068,12 @@
         {
           "scope": "QBODY",
           "algo": "sha256-canonical-json-v1",
-          "value": "399f9c0c46af29e7a2482639348ff9428923baf831fb27f99731f74918597366"
+          "value": "034a9a6a07e68ef4f90615e4cec2697cf5b88a7ee142f5a4dd79728108079725"
         },
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "f3f474fa1fe1543e6a960bcd10419a36aac53db411ef9756f6e7bccac3daa7bf"
+          "value": "52fa8194194228496877541f8c9ecdc42e4242f447ec00051cde8448b567ca4e"
         }
       ],
       "judgedBy": {
@@ -1083,7 +1090,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -1155,7 +1163,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "d8ead0ea264d3e788e886c3add9a3fbc1900973b491f2224d57629a5f134aead"
+          "value": "940140a7404a2ae94ef4ff801a97365d6b048fe8b9217d87fc52589e0c1d67e4"
         }
       ],
       "judgedBy": {
@@ -1172,7 +1180,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -1244,7 +1253,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "12f37ec88c2432e28e15f1700d224efedc992768380b0ab1c8f8cb17fef2ee79"
+          "value": "d952ca1e72146b570e83afe5d3f0ee52b8acc6c645f6793890ee567563c44247"
         }
       ],
       "judgedBy": {
@@ -1261,7 +1270,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -1333,7 +1343,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "4b93582cdc4f30f949efe3c78ea877d4467dea7079fab1536572528fb128efa1"
+          "value": "019c167d445b56308661689f426f0842fd0e50b4c0c1f8ea636f248eda09e025"
         }
       ],
       "judgedBy": {
@@ -1350,7 +1360,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -1409,7 +1420,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "e6c57e344fc6d6356e77eac12daa49bb6b0c994f3cf490d0e1734dbee70413b3"
+          "value": "b8d84044da5f134644c4c0627e9dacf0bce2d455c2ccbb7cf915f56dbbbfce8f"
         }
       ],
       "judgedBy": {
@@ -1426,7 +1437,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -1485,7 +1497,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "0439e45f5a21aca9f5d5e0e3268f4b0b85d859efc055de4fc2495306fb01080a"
+          "value": "3b428c8289badc922b8cd6acb4eb4b3727c9e57fd19c0f813f6330127ee1f7d9"
         }
       ],
       "judgedBy": {
@@ -1502,7 +1514,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -1561,7 +1574,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "9394d2fde8e081eb30269914769a1e0e1d04d4cc459817806dc39d80b86470a5"
+          "value": "4fb1d0a803a2c9f189271914cd157d471cae840d848d61a277efd8ffd7f57d46"
         }
       ],
       "judgedBy": {
@@ -1578,7 +1591,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -1636,7 +1650,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "1a89b43a1db18d21b83d1308e356c6b99aa1e7e5f335f6d9730eb8306267a85e"
+          "value": "636e58941b622d67489a014bfd20e5ad610e1a52e918f543e6e246e9c0dcca36"
         }
       ],
       "judgedBy": {
@@ -1653,7 +1667,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -1707,12 +1722,12 @@
         {
           "scope": "QBODY",
           "algo": "sha256-canonical-json-v1",
-          "value": "1d1720a02b5edf5c80b73bd6052d96c9a9c073cc1c15378e71312e8bc69c7666"
+          "value": "df64514e067a41588de4313ad3b3d3e238df1da26957aaa1ae3bfa5b90d7952c"
         },
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "4d5d46a3078d7b5300224db6f7e71906253e698c3363a7ce628480d385cde101"
+          "value": "b7d978de112ec9575f3b2a686f1f2eaf6535a177605750adb155c0c700f9cfe8"
         }
       ],
       "judgedBy": {
@@ -1729,7 +1744,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -1788,7 +1804,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "cb088a5f72cb159bcfd1bd3b7935b113d99fa3bbac92d44c00cd121cc01a0134"
+          "value": "76137d18cc0f034a143ecb8d0430d482b25268a91a489fcb392c5bde85fc2ace"
         }
       ],
       "judgedBy": {
@@ -1805,7 +1821,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -1870,7 +1887,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "9b89b83f0cb4ec0cc6a8aecc2f12475489a42821ba35dd4a82102eff6ebf4a01"
+          "value": "ab0936dfba89fd6f396dec566d5fc90d6242f9b531640d438925e5267b4808dd"
         }
       ],
       "judgedBy": {
@@ -1887,7 +1904,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -1946,7 +1964,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "d655be59ca45605787cfdf4793e29e00ee117edfcd973231c5104849ac56497d"
+          "value": "fc85db1c98783f095a798e6f0e4633f0f6f888c474bc4bc633ab1deaa0ca89b1"
         }
       ],
       "judgedBy": {
@@ -1963,7 +1981,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -2035,7 +2054,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "a2d2717595bc94f813194790608d5a2ea256368b6ea18daa7052510d3a021068"
+          "value": "f606f3af0bdc4a2f83985b30698653f7c21b1c44a3b0d4a567554087357ca728"
         }
       ],
       "judgedBy": {
@@ -2052,7 +2071,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -2110,7 +2130,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "5360fb1207c8591fc8f75e3b228410a25b4f6bf630f11243b1c17ee956b1156e"
+          "value": "c6a8da672619bac35382924c7adacb1593458e9c17a4491b6c3b21f4d0c8ac3e"
         }
       ],
       "judgedBy": {
@@ -2127,7 +2147,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -2192,7 +2213,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "213830d7d3fdbba07d433686e503697033adc3907bb74a8755016445ced02983"
+          "value": "ae4f4c398fbbf224454072283928f669befa1d598916505d588991364569b469"
         }
       ],
       "judgedBy": {
@@ -2209,7 +2230,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -2270,12 +2292,12 @@
         {
           "scope": "QBODY",
           "algo": "sha256-canonical-json-v1",
-          "value": "377416c6f1aca6ceafa798ac0b36c866fb08eb757161a8255416ce3ad3819f3c"
+          "value": "cd1be8a3368daf44b480adf0fd6d1234ef04a438acbebda2502393595b44f771"
         },
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "3bae13d3fe571f7936c8b380a8a8eef966fad5c4398b8438439a5bdbdbb33daf"
+          "value": "37f68a84c8d4b785986614ccf5181cdc7cd8acd495d96ae4bb1ac7fc41536287"
         }
       ],
       "judgedBy": {
@@ -2292,7 +2314,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -2358,7 +2381,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "6fdb9d58932f4d555eca0302f6f19414844c0427173112268f41b39b3662be89"
+          "value": "a74117439badcb218059e3d7d39c4240956e7f27a00bd068d6955b7b54ffbf8d"
         }
       ],
       "judgedBy": {
@@ -2375,7 +2398,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -2447,7 +2471,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "35392e05dacc994fa0dec343e808d7997599d2f98c02da3e359847fa4e1772b7"
+          "value": "62b04fc60333d2bd5f39f1f390bcf20b6a545f33de2db8e03e922c1ff8c97690"
         }
       ],
       "judgedBy": {
@@ -2464,7 +2488,8 @@
         "status": "LOCAL_SELF_CHECK",
         "sourceRead": "Direct Google Docs revision AHj4eMSazn9IA4GMKzBhJ6w1L640LgCKLZqyqXpBbVtr_FLbh5aj2LLgsp729oExy6Vtn2jUWt9YOeGJMN-gvdrqKirWxol00QT8TPT9E8c.",
         "visualReview": "Text-based triage only; no SVG creation or render QA.",
-        "registration": "NOT_RUN"
+        "registration": "NOT_RUN",
+        "visualReferenceAudit": "Static sample/manifest SHA-256 and byte counts verified; candidate JS source blob and question UID matched. Visual QA and actual Archive NOT_RUN."
       },
       "identity": {
         "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
@@ -2475,6 +2500,19 @@
         "nextOwner": "authorized identity-map / registration owner",
         "reason": "Candidate UID used for stage-local binding; official registration NOT_RUN."
       }
+    }
+  ],
+  "integrationNotes": [
+    "28 SVG candidates copied from preparation commit e5f54c5f2690a4fd1f083cf33038baf96639546d; source-bound to pre-link JS blob e7ce626565ab093fbffa078b8c92ed3686a6a482. Q2/Q4 problem images withheld because solved graphs expose answers. Visual QA and actual Archive NOT_RUN."
+  ],
+  "sourceBindingHistory": [
+    {
+      "sourceArchiveFile": "archive/exams/similar/middle/m2/2final/23_금당중_2학기_기말_중2_유사.js",
+      "sourceGitBlobSha": "45afd6212f69f6340cf67c39db8efe26bbb2d3b1",
+      "sourceSha256": "6e8ef16654aa8c61a5953e0022d35d638ac35fc9dcf2fdcdf9e854a572cc3bd1",
+      "visualSourceCommit": "e5f54c5f2690a4fd1f083cf33038baf96639546d",
+      "preparedFromPriorJsBlob": "e7ce626565ab093fbffa078b8c92ed3686a6a482",
+      "operation": "ADD_USER_AUTHORIZED_CANDIDATE_SVG_REFERENCES"
     }
   ]
 }

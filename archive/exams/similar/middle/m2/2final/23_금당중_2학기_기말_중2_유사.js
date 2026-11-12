@@ -69,7 +69,11 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q02-solution.svg",
+    "solutionImageAlt": "A(-1,0) 대입 → a=-8 · y=-2x-2 · B(0,-2)가 y절편",
+    "solutionImageCaption": "A(-1,0) 대입 → a=-8 · y=-2x-2 · B(0,-2)가 y절편",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -103,7 +107,11 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q03-solution.svg",
+    "solutionImageAlt": "파랑: y=−3x+1 · 주황: y=−3x+5 · A(1,2), B(3,−4) · 위로 4만큼 이동, a−b=−7",
+    "solutionImageCaption": "파랑: y=−3x+1 · 주황: y=−3x+5 · A(1,2), B(3,−4) · 위로 4만큼 이동, a−b=−7",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -139,7 +147,11 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q04-solution.svg",
+    "solutionImageAlt": "A(-1,-4), B(2,2) · 가로 3, 세로 6 → a=2 · b=-2, b/a=-1",
+    "solutionImageCaption": "A(-1,-4), B(2,2) · 가로 3, 세로 6 → a=2 · b=-2, b/a=-1",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -175,7 +187,11 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q05-solution.svg",
+    "solutionImageAlt": "형태 예시 y=−x−1 (수치는 예시) · 오른쪽 아래 방향 a<0 · 절편 −b<0이므로 b>0",
+    "solutionImageCaption": "형태 예시 y=−x−1 (수치는 예시) · 오른쪽 아래 방향 a<0 · 절편 −b<0이므로 b>0",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -212,7 +228,15 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "image": "assets/images/23_금당중_2학기_기말_중2_유사/q06-problem.svg",
+    "imageAlt": "A(1,4), B(1,2), C(4,2), D(4,4) · 직선 y=ax−2와 만나는 범위",
+    "imageCaption": "A(1,4), B(1,2), C(4,2), D(4,4) · 직선 y=ax−2와 만나는 범위",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q06-solution.svg",
+    "solutionImageAlt": "P(0,−2)를 지나는 직선 · PC 기울기 1, PA 기울기 6 · 1≤a≤6, 합 7",
+    "solutionImageCaption": "P(0,−2)를 지나는 직선 · PC 기울기 1, PA 기울기 6 · 1≤a≤6, 합 7",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -248,7 +272,11 @@ window.questionBank = [
     "points": 3,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q07-solution.svg",
+    "solutionImageAlt": "파랑: y=−4 · 주황: A(5,−3)를 지나는 평행선 y=−3 · 두 직선 모두 수평",
+    "solutionImageCaption": "파랑: y=−4 · 주황: A(5,−3)를 지나는 평행선 y=−3 · 두 직선 모두 수평",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -285,7 +313,15 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "image": "assets/images/23_금당중_2학기_기말_중2_유사/q08-problem.svg",
+    "imageAlt": "A(1,2), B(5,2), C(5,6), D(1,6) · 원점을 지나는 넓이 이등분선",
+    "imageCaption": "A(1,2), B(5,2), C(5,6), D(1,6) · 원점을 지나는 넓이 이등분선",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q08-solution.svg",
+    "solutionImageAlt": "직사각형 중심 M(3,4)를 지나는 직선은 넓이를 이등분 · OM 기울기 4/3",
+    "solutionImageCaption": "직사각형 중심 M(3,4)를 지나는 직선은 넓이를 이등분 · OM 기울기 4/3",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -321,7 +357,11 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q09-solution.svg",
+    "solutionImageAlt": "공통점 P(1,−2) · 파랑 x−2y=5, 주황 3x+y=1 · a=2, b=3, a−b=−1",
+    "solutionImageCaption": "공통점 P(1,−2) · 파랑 x−2y=5, 주황 3x+y=1 · a=2, b=3, a−b=−1",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -355,7 +395,11 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q10-solution.svg",
+    "solutionImageAlt": "파랑 2x−y+7=0, 주황 3x+2y−7=0 · P(−1,5)를 지나는 수직선 x=−1",
+    "solutionImageCaption": "파랑 2x−y+7=0, 주황 3x+2y−7=0 · P(−1,5)를 지나는 수직선 x=−1",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -389,7 +433,11 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q11-solution.svg",
+    "solutionImageAlt": "공통점 P(2,3): 파랑 y=x/2+2, 주황 y=−2x+7, 검정 y=x+1 · 이 경우 a=1",
+    "solutionImageCaption": "공통점 P(2,3): 파랑 y=x/2+2, 주황 y=−2x+7, 검정 y=x+1 · 이 경우 a=1",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -423,7 +471,11 @@ window.questionBank = [
     "points": 3,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q12-solution.svg",
+    "solutionImageAlt": "간식 4가지에서 각각 음료 2가지로 연결 · 서로 다른 주문 4×2=8가지",
+    "solutionImageCaption": "간식 4가지에서 각각 음료 2가지로 연결 · 서로 다른 주문 4×2=8가지",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -457,7 +509,11 @@ window.questionBank = [
     "points": 3,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q13-solution.svg",
+    "solutionImageAlt": "첫째 가지 A, 둘째 가지 B · 파란 경로는 A 승리: 가위→보, 바위→가위, 보→바위 3가지",
+    "solutionImageCaption": "첫째 가지 A, 둘째 가지 B · 파란 경로는 A 승리: 가위→보, 바위→가위, 보→바위 3가지",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -491,7 +547,11 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q14-solution.svg",
+    "solutionImageAlt": "3의 배수만 {3,6,9,15,18}, 공통 {12}, 4의 배수만 {4,8,16,20} · 겹침 없이 5+1+4=10",
+    "solutionImageCaption": "3의 배수만 {3,6,9,15,18}, 공통 {12}, 4의 배수만 {4,8,16,20} · 겹침 없이 5+1+4=10",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -525,7 +585,11 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q15-solution.svg",
+    "solutionImageAlt": "AB를 한 묶음으로: 묶음·C·D·E의 순서 4×3×2×1, 묶음 내부 AB/BA 2가지 → 48",
+    "solutionImageCaption": "AB를 한 묶음으로: 묶음·C·D·E의 순서 4×3×2×1, 묶음 내부 AB/BA 2가지 → 48",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -559,7 +623,15 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "image": "assets/images/23_금당중_2학기_기말_중2_유사/q16-problem.svg",
+    "imageAlt": "A→P: 가로2칸·세로1칸 · P→B: 가로2칸·세로2칸 (이동 방향을 오른쪽·위로 배치한 도식)",
+    "imageCaption": "A→P: 가로2칸·세로1칸 · P→B: 가로2칸·세로2칸 (이동 방향을 오른쪽·위로 배치한 도식)",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q16-solution.svg",
+    "solutionImageAlt": "파랑 A→P: 가로2·세로1, 3가지 · 주황 P→B: 가로2·세로2, 6가지 · 3×6=18",
+    "solutionImageCaption": "파랑 A→P: 가로2·세로1, 3가지 · 주황 P→B: 가로2·세로2, 6가지 · 3×6=18",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -595,7 +667,11 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q17-solution.svg",
+    "solutionImageAlt": "순서 없는 대표쌍: 남남3, 남여6, 여여1 · 전체10 · 남남 확률3/10, 여학생 포함7/10",
+    "solutionImageCaption": "순서 없는 대표쌍: 남남3, 남여6, 여여1 · 전체10 · 남남 확률3/10, 여학생 포함7/10",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -629,7 +705,11 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q18-solution.svg",
+    "solutionImageAlt": "열 a, 행 b · 두 눈의 합 4,8,12인 9칸 · 9/36=1/4",
+    "solutionImageCaption": "열 a, 행 b · 두 눈의 합 4,8,12인 9칸 · 9/36=1/4",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -663,7 +743,11 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q19-solution.svg",
+    "solutionImageAlt": "첫째 준우, 둘째 유진 · 비복원 추출: 파랑→빨강 경로 3/5×4/9=4/15",
+    "solutionImageCaption": "첫째 준우, 둘째 유진 · 비복원 추출: 파랑→빨강 경로 3/5×4/9=4/15",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -697,7 +781,11 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q20-solution.svg",
+    "solutionImageAlt": "a∈{1,2,3,4,6}, b∈{1,2,3} 독립 선택 · 합 홀수: 짝+홀 6/15, 홀+짝 2/15 → 8/15",
+    "solutionImageCaption": "a∈{1,2,3,4,6}, b∈{1,2,3} 독립 선택 · 합 홀수: 짝+홀 6/15, 홀+짝 2/15 → 8/15",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -731,7 +819,11 @@ window.questionBank = [
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q21-solution.svg",
+    "solutionImageAlt": "강조한 모두 오답 경로: (3/4)^3=27/64 · 적어도 한 정답은 1−27/64=37/64",
+    "solutionImageCaption": "강조한 모두 오답 경로: (3/4)^3=27/64 · 적어도 한 정답은 1−27/64=37/64",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -761,7 +853,11 @@ window.questionBank = [
     "points": 5,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q22-solution.svg",
+    "solutionImageAlt": "가로 기온 x(℃), 세로 속력 증가량 y−330(m/s) · A(5,3), B(30,18) · y=3x/5+330, 348m/s일 때30℃",
+    "solutionImageCaption": "가로 기온 x(℃), 세로 속력 증가량 y−330(m/s) · A(5,3), B(30,18) · y=3x/5+330, 348m/s일 때30℃",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -792,7 +888,15 @@ window.questionBank = [
     "points": 5,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "image": "assets/images/23_금당중_2학기_기말_중2_유사/q23-problem.svg",
+    "imageAlt": "x: 시간(분), y: 위치 · 파랑 물체A: M(0,5), N(4,7) · 주황 물체B: R(0,1), S(2,3)",
+    "imageCaption": "x: 시간(분), y: 위치 · 파랑 물체A: M(0,5), N(4,7) · 주황 물체B: R(0,1), S(2,3)",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q23-solution.svg",
+    "solutionImageAlt": "파랑 물체A: y=x/2+5 · 주황 물체B: y=x+1 · 교점 P(8,9): 8분 뒤 만남",
+    "solutionImageCaption": "파랑 물체A: y=x/2+5 · 주황 물체B: y=x+1 · 교점 P(8,9): 8분 뒤 만남",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -822,7 +926,11 @@ window.questionBank = [
     "points": 5,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q24-solution.svg",
+    "solutionImageAlt": "일의 자리 1·3·5별로 십의 자리 0과 같은 숫자를 제외 · 4+4+4=12개",
+    "solutionImageCaption": "일의 자리 1·3·5별로 십의 자리 0과 같은 숫자를 제외 · 4+4+4=12개",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -852,6 +960,10 @@ window.questionBank = [
     "points": 5,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M2"
+    "courseKey": "M2",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_유사/q25-solution.svg",
+    "solutionImageAlt": "열 a: 첫째 눈, 행 b: 둘째 눈 · (b+2)가 a로 나누어지는 15쌍 · 15/36=5/12",
+    "solutionImageCaption": "열 a: 첫째 눈, 행 b: 둘째 눈 · (b+2)가 a로 나누어지는 15쌍 · 15/36=5/12",
+    "solutionImageSize": "full"
   }
 ];
