@@ -927,6 +927,19 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 점근선 값 `x=p`·`y=q`는 자기 점선의 끝(12px 이내, 다른 점선이 더 가깝지 않게), `y=x` 같은 직선 라벨은 오른쪽 위 끝에 선다. 점근선 값이 어긋나면 `ASYMPTOTE_LABEL_DETACHED`로 거절한다. 직선·유리·무리함수 식의 큰 라벨이 자기 곡선 옆이나 지시선 자리를 찾지 못하면 `data-near-room="NONE"`을 표시하고 자기 곡선이 가장 가까운지 검사한다(64px 이내, 점근선 값은 40px 이내). 선언한 점(`overlays.points`, 직선과 곡선의 교점)이 창 밖이면 multi-curve 틀이 그 점까지 넓어진다.
 
+**곡선 식 라벨이 답을 찍어 줄 때: 숨기고 중립 이름으로 (`label:{hidden,reason,name}`, 20261112).** 곡선·직선의 식이나 값이 구하는 답을 그대로 보여 주면(예: 19 순천여고 고1 1학기 중간 q10의 `y=(k+3)x-k+4`와 `P(1,7)`) 식 라벨을 쓰지 않고 `f`, `g`, `h` 같은 중립 이름을 그린다. multi-curve 곡선의 `label`에 문자열 대신 `{"hidden":true,"reason":"ANSWER","name":"f"}`를 쓴다. 엔진은 이 객체를 렌더 맨 앞에서 문자열 라벨 `label:"f"`로 바꿔 그리므로 그림은 손으로 `label:"f"`를 쓴 것과 바이트까지 같고, 결과 `figure-result.json`에 `hiddenFormulaLabels:[{curve,reason,name}]`로 무엇을 왜 숨겼는지 남는다. **게이트는 완화되지 않는다**: 이름이 그 그림의 읽을 수 있는 글자라서 `PUBLICATION_TEXT_NOT_READY`를 통과하고, 모든 글자를 `hideLabel:true`로 지우면 그대로 거절된다. 그래서 `hideLabel:true`만 걸고 이름 없이 색으로만 구별하던 방식은 쓰지 않는다.
+```json
+{"capability":"multi-curve-figure-v1","graphPlan":{"family":"multi-curve","viewport":[-1,3,-1,11],"curves":[
+  {"id":"l1","kind":"LINE","coefficients":["7","0"],"domain":["-1","3"],"color":"BLUE","label":{"hidden":true,"reason":"ANSWER","name":"f"}},
+  {"id":"l2","kind":"LINE","coefficients":["4","3"],"domain":["-1","3"],"color":"WARM","label":{"hidden":true,"reason":"ANSWER","name":"g"}},
+  {"id":"l3","kind":"LINE","coefficients":["1","6"],"domain":["-1","3/2"],"color":"GREEN","label":{"hidden":true,"reason":"ANSWER","name":"h"}}],
+  "axisTickValues":{"x":[],"y":[]},"overlays":{"points":[{"id":"P","x":"1","y":"7"}]}},
+ "caption":"k=-3, 0, 3일 때의 세 직선 f, g, h는 모두 한 점 P를 지난다."}
+```
+- `name`은 중립 이름이다: 글자 하나(`x`·`y` 제외)에 숫자 하나나 `(x)`가 붙을 수 있다(`f`, `g(x)`, `f1`). `=`가 든 식은 이름이 아니다(`HIDDEN_CURVE_LABEL_NAME_INVALID:<id>`). 객체는 정확히 `hidden:true`, `reason:"ANSWER"`, `name` 셋이다(`HIDDEN_CURVE_LABEL_INVALID:<id>`; 이유는 지금 `ANSWER`만 있다). 같은 곡선에 `hideLabel`·`hideLabels`를 함께 쓰면 `HIDDEN_CURVE_LABEL_CONFLICT:<id>`, 한 그림에서 이름이 겹치면 `HIDDEN_CURVE_NAME_DUPLICATE:<name>`이다.
+- **모든 곡선이 구별되어야 한다**: 이 객체를 하나라도 쓴 그림에서는 모든 곡선이 이름(또는 숨기지 않은 식 라벨)을 가져야 한다. 이름 없는 곡선이 있으면 렌더 전에 `CURVE_NOT_IDENTIFIABLE:<id>`(단계 `read-plan`)로 거절한다. 점 `P`처럼 답이 아닌 이름은 그대로 두고 좌표(`coordinates:true`)만 쓰지 않는다. composite 패널 안의 multi-curve도 패널마다 같다. 이 객체를 쓰지 않은 plan은 같은 객체로 그대로 통과해 그림이 달라지지 않는다. 골든 `item154hiddencurvelabelq10`.
+- **한계**: multi-curve의 `curves[].label`에만 있다. 단일 곡선 family(`piecewise-polynomial` 등)는 이미 `functionName`·`referenceCurves[].name`으로 중립 이름 `f(x)`·`p(x)`를 그리므로(식 `formula`를 주지 않는다) 같은 효과를 그 방법으로 낸다. 이름은 `ℓ`·아래첨자(`l_1`)를 못 쓴다(multi-curve 라벨 글자 집합). 이름 글자는 곡선 끝 가까이에 놓이는 자동 배치라 교점 이름 `P`와 붙어 보일 수 있다(그림을 보고 `viewport`로 조정).
+
 **영역 색칠 `graphPlan.regions` (multi-curve, G18c).** 풀이가 "두 곡선 사이 넓이", "x<2, y<3인 영역"처럼 **어느 영역인지**를 보여 줘야 하면 multi-curve plan에 `regions`(최대 4개)를 쓴다. 영역은 곡선 한 개만 있어도 그림이 된다. 세 가지 꼴이다.
 - 두 곡선 사이: `{"id":"S","between":["f","g"],"from":"3","to":"5"}` (곡선 id 두 개, `"axis"`도 된다. 어느 쪽이 위인지는 엔진이 계산한다), 곡선과 x축 사이는 `{"id":"A","under":"f","from":"-1","to":"1"}`, 곡선과 직선(현) 사이 활꼴은 직선을 `LINE` 곡선으로 두고 `between`으로 쓴다. 두 경계는 `from`~`to` 전체에서 정의되고(유리함수의 극점·무리함수의 시작 앞은 `GRAPH_REGION_BOUNDARY_UNDEFINED`) 서로 엇갈리지 않아야 한다(`GRAPH_REGION_BOUNDARIES_CROSS`: 교점에서 나눠 영역을 둘로 쓴다. 끝점에서 닿는 것은 된다).
 - 창 끝까지 가는 영역: `{"id":"R","halfPlane":{"x":"<","value":"2"},"and":{"y":"<","value":"3"}}`(x<2 그리고 y<3). `x`나 `y` 중 하나만 써도 되고(띠), `and`에는 다른 축을 쓴다. 영역은 그림 틀 가장자리까지 열려 있고 바깥 변은 그리지 않는다. 경계선 `x=2`, `y=3`은 `overlays.lines`(`style:"DASHED"`)로 따로 그린다. 값은 창(`viewport`) 안에 있어야 한다(`GRAPH_REGION_EMPTY`).
