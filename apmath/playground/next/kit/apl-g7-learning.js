@@ -44,7 +44,12 @@
       const explicit = new URLSearchParams(location.hash.slice(1));
       // A new shared seed/condition wins over a previous visit; a scene-only link can resume.
       const conditionKeys = [...explicit.keys()].filter(k => !['s', 'n', 'step', 'play', 'manual', 'teach'].includes(k));
-      const compatible = existing && conditionKeys.every(k => String(existing.explore.s[k]) === explicit.get(k));
+      const compatible = existing && conditionKeys.every(k => {
+        let value = existing.explore.s[k];
+        const p = lab.params[k];
+        if (p && typeof value === 'number') value = +value.toFixed(p.step && p.step < .01 ? 3 : 2);
+        return String(value) === explicit.get(k);
+      });
       if (compatible) this.restoreRecord(existing);
       else { this.mode = 'ready'; this.current = this.makeRecord(); }
       lab._buildPanel(); lab.invalidate(true); this.refresh();
@@ -78,6 +83,16 @@
       Object.assign(this.current, { mode: this.mode === 'playing' ? 'paused' : this.mode, choice: this.choice, elapsed: this.elapsed, visited: this.current.visited || this.mode !== 'ready', touched: Date.now() });
       this.records.set(sceneKey(this.lab.scene), clone(this.current));
       this.writeRecords();
+      // Commit the exploration instance before reload/navigation. The native
+      // 250 ms debounce can otherwise leave an older seed in the URL.
+      const state = this.current.explore.s, q = new URLSearchParams();
+      q.set('s', this.lab.scene.id + (this.lab.groups.length > 1 ? '@' + this.lab.scene.gi : ''));
+      if (state.step) q.set('step', String(state.step));
+      for (const [key, p] of Object.entries(this.lab.params)) if (typeof state[key] === 'number') q.set(key, String(+state[key].toFixed(p.step && p.step < .01 ? 3 : 2)));
+      for (const key of this.lab.def.persist || []) if (state[key] != null) q.set(key, String(state[key]));
+      if (this.lab.teach) q.set('teach', '1');
+      clearTimeout(this.lab._hashT);
+      try { history.replaceState(history.state, '', '#' + q); } catch (_) { /* Embedded/offline context. */ }
     }
     readRecords() {
       try {
@@ -142,6 +157,8 @@
         return result;
       };
       p.play = (i, k = 0) => {
+        // An explicit solution click may leave a question tab; automatic entry never does.
+        if (lab.tab === 'problem') lab.setTab('review');
         if (i !== lab.index) this.go(i);
         const legacy = p.lessonInfo(i)[k];
         const choices = this.plans();
@@ -189,7 +206,18 @@
       const rm = matchMedia('(prefers-reduced-motion: reduce)');
       rm.addEventListener?.('change', () => { if (rm.matches) this.pause(); this.refresh(); });
       this.lab.ui.canvasWrap.addEventListener('pointerdown', e => { if (!this.active) return; this.pause(); e.stopImmediatePropagation(); }, true);
-      this.lab.ui.panelInner.addEventListener('input', () => { if (!this.active && this.player.state === 'idle') { this.mode = 'explore'; this.current.explore = this.snapshot(); this.store(); this.refresh(); } });
+      const edited = event => {
+        if (event.target?.closest('.g7-learning') || this.active || this.player.state !== 'idle') return;
+        if (!event.target?.closest('.apl-panel,.apl-dock,.apl-stage-tools,.apl-stage-tr,.apl-float,.apl-presets')) return;
+        queueMicrotask(() => {
+          if (this.active || this.player.state !== 'idle') return;
+          this.cancelPending(); this.mode = 'explore'; this.choice = 0;
+          this.current.explore = this.snapshot(); this.store(); this.refresh();
+        });
+      };
+      document.addEventListener('input', edited);
+      document.addEventListener('change', edited);
+      document.addEventListener('click', edited);
       document.addEventListener('keydown', e => {
         if (!this.active || e.ctrlKey || e.metaKey || e.altKey || e.target?.closest('input,textarea,select,button,[contenteditable=true]') || this.lab.toc?.isOpen || document.querySelector('.apl-dialog')) return;
         if (e.key === ' ') this.toggle(); else if (e.key === 'ArrowRight') this.step(1); else if (e.key === 'ArrowLeft') this.step(-1); else if (e.key === 'Escape') this.explore(); else return;
@@ -260,6 +288,9 @@
       this.seek(direction > 0 ? cuts.find(t => t > this.elapsed + .02) ?? this.active.duration : [...cuts].reverse().find(t => t < this.elapsed - .02) ?? 0);
     }
     explore() {
+      // The student can edit any native slider/preset before opening a lesson.
+      // Capture live exploration before restoring, not the earlier entry value.
+      if (!this.active && this.player.state === 'idle' && this.current) this.current.explore = this.snapshot();
       this.cancelPending(); this.cancelFrame();
       if (this.player.state !== 'idle') this.player._leave(false);
       const snapshot = this.current?.explore;
@@ -286,13 +317,14 @@
     refresh() {
       if (!this.ui) return;
       const plans = this.plans(), selected = this.active || plans[this.choice], ui = this.ui;
+      document.body.classList.toggle('apl-g7-learning', this.allowed());
       ui.root.hidden = !this.allowed();
       ui.goal.innerHTML = selected ? `<b>${A.esc(selected.title)}</b><span>${A.renderMath(selected.given)}</span>` : `<b>${A.esc(A.stripEmoji(this.lab.scene.title))}</b>`;
       ui.targets.replaceChildren(...plans.map((p, i) => { const b = button(p.label, () => { this.explore(); this.choice = i; this.mode = 'ready'; this.refresh(); this.play(); }); b.setAttribute('aria-pressed', String(i === this.choice)); return b; }));
       ui.targets.hidden = plans.length < 2;
       ui.play.textContent = this.mode === 'playing' ? '일시 정지' : this.mode === 'paused' ? (reduced() ? '다음 단계' : '이어 보기') : this.mode === 'ended' ? '다시 보기' : plans.length ? '짧은 풀이 보기' : '예제 해설 보기';
       if (this.mode === 'legacy') ui.play.textContent = this.player.state === 'playing' ? '일시 정지' : this.player.state === 'paused' ? '이어 보기' : '예제 다시 보기';
-      ui.replay.hidden = !this.active;
+      ui.replay.hidden = !this.active || this.mode === 'ended';
       ui.prev.hidden = ui.next.hidden = !this.active;
       const entries = this.player.lessonInfo(this.lab.index);
       ui.legacy.replaceChildren(...entries.map(x => button(`${x.label || '해설'} · 예제 조건`, () => this.playLegacy(x.k))));

@@ -51,7 +51,7 @@ try {
  }
  // Live, normal-speed proofs: capture actual animation frames, never report a
  // seek-only capture as measured playback. Representative PC and phone.
- const references=[['g7-circle-sector','f1-star',0],['g7-circle-sector','f1-star',1],['g7-circle-sector','f3-leaf-area',0]];
+ const references=[['g7-circle-sector','f1-star',0],['g7-circle-sector','f1-star',1],['g7-circle-sector','f3-leaf-area',0],['g7-surface-volume','sv2-4',0],['g7-surface-volume','sv2-4',1],['g7-surface-volume','sv3-4',0],['g7-surface-volume','sv3-4',1]];
  for(const viewport of [viewports[0],viewports[3]]){
   const {page,context}=await pageFor(viewport,'no-preference');
   for(const [id,scene,choice] of references){
@@ -94,14 +94,22 @@ try {
  assert.deepEqual(state.returned,{a:12,elapsed:3.3,mode:'paused'});
  assert.deepEqual(state.legacy,{a:12,seed:17,pick:3});assert.deepEqual(state.explicit,{a:14,seed:19});
  report.interactions.push({name:'explore-navigation-legacy-explicit-instance',result:state});
+ report.interactions.push({name:'before-reload-instance',result:await page.evaluate(()=>({hash:location.hash,record:lab.learning.records.get(lab.scene.id+'@'+lab.scene.gi)}))});save();
  await page.reload();await page.waitForFunction(()=>window.lab?.learning);
  const resumed=await page.evaluate(()=>({mode:lab.learning.mode,elapsed:lab.learning.elapsed,a:lab.s.f1_star_a}));
+ report.interactions.push({name:'after-reload-instance',result:resumed});save();
  assert.equal(resumed.mode,'paused');assert.equal(resumed.elapsed,3.3);assert.equal(resumed.a,14);
  report.interactions.push({name:'session-reload',result:resumed});
  await page.evaluate(()=>{lab.learning.explore();lab.setTab('problem')});await page.waitForTimeout(900);
  assert.equal(await page.evaluate(()=>lab.learning.mode),'explore');
  assert.equal(await page.evaluate(()=>lab.learning.ui.root.hidden),true);
  report.boundaries.push({name:'problem-tab-no-autoplay',status:'PASS'});
+ const explicitReview=await page.evaluate(()=>{lab.video.play(lab.index,0);return{tab:lab.tab,active:!!lab.learning.active}});
+ assert.deepEqual(explicitReview,{tab:'review',active:true});
+ const dirty=await page.evaluate(()=>{lab.learning.explore();lab.s.f1_star_a=16;lab.s.f1_star_seed=23;lab.learning.playLegacy(0);lab.video.close();return{a:lab.s.f1_star_a,seed:lab.s.f1_star_seed}});
+ assert.deepEqual(dirty,{a:16,seed:23});
+ report.interactions.push({name:'explicit-answer-and-unsaved-exploration',result:{explicitReview,dirty}});
+
  for(const query of ['?manual=1','?teach=1','?mode=assessment']){
   await page.goto(base+'g7-circle-sector.html'+query+'#s=f1-star');await page.waitForFunction(()=>window.lab?.video);await page.waitForTimeout(350);
   assert.equal(await page.evaluate(()=>!!lab.learning),false);report.boundaries.push({name:query,status:'PASS'});

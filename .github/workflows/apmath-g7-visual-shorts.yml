@@ -56,7 +56,7 @@ jobs:
           node-version: '22'
       - name: Mathematics and existing player contracts
         run: |
-          node --test apmath/playground/next/tools/g7-short-geometry.test.mjs apmath/playground/next/tools/video.test.mjs apmath/playground/next/tools/lessons.g7-*.test.mjs
+          node --test apmath/playground/next/tools/g7-short-*.test.mjs apmath/playground/next/tools/video.test.mjs apmath/playground/next/tools/lessons.g7-*.test.mjs
       - name: Install actual Chromium and Korean fonts
         run: |
           npm install --prefix "$RUNNER_TEMP/g7-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
