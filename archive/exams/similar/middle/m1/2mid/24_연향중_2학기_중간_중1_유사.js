@@ -200,7 +200,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "다음 그림에서 두 직선 $l, m$이 서로 평행할 때, $\\angle x + \\angle y$의 크기는? [5점]",
+    "content": "두 평행한 직선 $l,m$에서 $l$은 위쪽, $m$은 아래쪽에 있다. 점 $A,D$는 각각 $l,m$ 위에 있고, 점 $B$는 $l$ 위쪽, 점 $C$는 $l,m$ 사이에 있다. 점 $A$는 $B$의 왼쪽에, 점 $B$와 점 $D$는 각각 $C$의 왼쪽에 있다. 직선 $l$의 왼쪽 방향 반직선과 선분 $AB$가 이루는 각은 $145^\\circ$이고, 직선 $m$의 오른쪽 방향 반직선과 선분 $DC$가 이루는 각은 $45^\\circ$이다. $x=\\angle ABC$, $y=\\angle BCD$일 때, $x+y$의 크기는? [5점]",
     "choices": [
       "$150^\\circ$",
       "$160^\\circ$",
@@ -212,7 +212,7 @@ window.questionBank = [
     "points": 5,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
-    "solution": "두 꺾인 점을 지나며 두 직선 $l, m$에 평행한 보조선을 각각 긋는다.\n가운데 선분이 보조선과 이루는 예각의 크기를 $\\alpha$라 하자. 평행선의 엇각과 동위각의 성질에 의하여 $\\begin{aligned} \\angle x &= 145^\\circ - \\alpha \\ \\angle y &= \\alpha + 45^\\circ \\end{aligned}$\n두 각의 합을 구하면 $\\begin{aligned} \\angle x + \\angle y &= (145^\\circ - \\alpha) + (\\alpha + 45^\\circ) \\ &= 145^\\circ + 45^\\circ \\ &= 190^\\circ \\end{aligned}$\n따라서 정답은 ⑤이다.\n",
+    "solution": "직선 $l,m$에 평행한 수평선을 보조선으로 생각하고, 선분 $BC$가 수평선과 이루는 예각을 $\\alpha$라 하자. $A$에서 $AB$와 오른쪽 방향이 이루는 각은 $180^\\circ-145^\\circ=35^\\circ$이다. 평행선의 엇각·동위각에 따라 $x=145^\\circ-\\alpha$, $y=\\alpha+45^\\circ$이므로 $\\alpha$가 소거된다.\\n$\\begin{aligned} x+y&=(145^\\circ-\\alpha)+(\\alpha+45^\\circ) \\\\ &=190^\\circ \\end{aligned}$\\n따라서 정답은 ⑤이다.\\n",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
