@@ -42,13 +42,7 @@
             "evidenceType": "NAMED"
           }
         ],
-        "condition": [
-          {
-            "src": "solution",
-            "quote": "주어진 식 $a(b+1)(c-2)$는 $a$, $b+1$, $c-2$를 인수로 가지며",
-            "term": "등식"
-          }
-        ]
+        "condition": []
       },
       "reasons": {
         "method": "곱의 형태로 인수분해된 다항식에서 곱해진 각 식을 인수로 판별함"
@@ -99,18 +93,7 @@
             "evidenceType": "NAMED"
           }
         ],
-        "condition": [
-          {
-            "src": "solution",
-            "quote": "곱해서 $-24$가 되고",
-            "term": "음수"
-          },
-          {
-            "src": "solution",
-            "quote": "더해서 $5$가 되는 두 실수는",
-            "term": "계수"
-          }
-        ]
+        "condition": []
       },
       "reasons": {
         "method": "합과 곱의 관계를 이용하여 이차다항식을 두 일차식의 곱으로 인수분해함"
@@ -136,9 +119,9 @@
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "$A = 3$이다.",
-            "term": "식의값"
+            "src": "stem",
+            "quote": "상수 $A$, $B$에 대하여",
+            "term": "매개변수"
           },
           {
             "src": "solution",
@@ -1678,6 +1661,6 @@
     "quotesChecked": 214,
     "quotesNotFound": 0,
     "warningsRechecked": [],
-    "notes": ""
+    "notes": "검수 Q1·Q2: 발문에 없는 조건 항목 삭제. Q3: 구할 대상은 상수 매개변수."
   }
 }
