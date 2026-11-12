@@ -1,0 +1,55 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "boundaries": [
+      "130",
+      "140",
+      "150",
+      "160",
+      "170",
+      "180"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          5,
+          14,
+          13,
+          5,
+          3
+        ]
+      }
+    ],
+    "yKind": "FREQUENCY",
+    "xTitle": "키(cm)",
+    "yTitle": "도수(명)",
+    "grid": true,
+    "showValues": true,
+    "total": 40,
+    "highlightClasses": [
+      0,
+      1
+    ]
+  },
+  "caption": "150cm 미만은 5명+14명=19명",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "Q18공통표: 총40명,160이상20%,알려진도수5,13,3",
+      "mappedTo": [
+        "chart"
+      ]
+    },
+    {
+      "id": "derived",
+      "condition": "해설에서 B=40×0.2−3=5,A=40−5−13−5−3=14를 계산",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "계산된 A14,B5는 해설에만 표시; 문제용그림 생성하지 않음."
+  ]
+}
