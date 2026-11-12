@@ -1,0 +1,103 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "시작",
+      "children": [
+        {
+          "label": "정답",
+          "p": "1/4",
+          "children": [
+            {
+              "label": "정답",
+              "p": "1/4",
+              "children": [
+                {
+                  "label": "정답",
+                  "p": "1/4"
+                },
+                {
+                  "label": "오답",
+                  "p": "3/4"
+                }
+              ]
+            },
+            {
+              "label": "오답",
+              "p": "3/4",
+              "children": [
+                {
+                  "label": "정답",
+                  "p": "1/4"
+                },
+                {
+                  "label": "오답",
+                  "p": "3/4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "오답",
+          "p": "3/4",
+          "children": [
+            {
+              "label": "정답",
+              "p": "1/4",
+              "children": [
+                {
+                  "label": "정답",
+                  "p": "1/4"
+                },
+                {
+                  "label": "오답",
+                  "p": "3/4"
+                }
+              ]
+            },
+            {
+              "label": "오답",
+              "p": "3/4",
+              "children": [
+                {
+                  "label": "정답",
+                  "p": "1/4"
+                },
+                {
+                  "label": "오답",
+                  "p": "3/4"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "highlightPaths": [
+      {
+        "path": [
+          "오답",
+          "오답",
+          "오답"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "강조한 모두 오답 경로: (3/4)^3=27/64 · 적어도 한 정답은 1−27/64=37/64",
+  "sourceConditions": [
+    {
+      "id": "dice",
+      "condition": "실제 유사판 선택/배열 조건과 일치하는 경우의 수",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설 전용: 선택 과정과 경우의 수 표시. 문제에 정답 집합 노출 금지."
+  ]
+}
