@@ -1,0 +1,56 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "cube",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "caption": "강조한 꼬인 모서리4개. AB와 수직으로 만나는 AD,AE,BC,BF도4개.",
+  "sourceQuote": "정육면체에서 AB와 꼬인 모서리x, AB와 수직으로 만나는 모서리y의 합",
+  "sourceConditions": [
+    {
+      "id": "cube",
+      "condition": "정육면체 ABCD-EFGH",
+      "mappedTo": [
+        "cube"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설에만 AB와 꼬인 모서리4개를 강조, 나머지 접속은 원래 입체 구조로 확인한다."
+  ],
+  "segments": [
+    {
+      "from": "C",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "D",
+      "to": "H",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "F",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "H",
+      "style": "AUTO",
+      "role": "ACCENT"
+    }
+  ]
+}
