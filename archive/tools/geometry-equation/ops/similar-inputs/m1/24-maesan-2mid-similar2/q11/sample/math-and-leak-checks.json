@@ -1,36 +1,106 @@
 {
-  "surface": "solution",
-  "svgGlyphReadback": {
-    "a": "a∘",
-    "c": "c∘",
-    "e": "e∘",
-    "f": "f∘",
-    "g": "g∘"
-  },
-  "staticAudit": "PASS",
-  "renderedLayout": "PASS",
-  "math": {
-    "a": 80,
-    "c": 80,
-    "e": 80,
-    "g": 80,
-    "f": 100,
-    "a_equals_c_equals_e_equals_g": true,
-    "f_plus_e": 180,
-    "note": "Internal nonright schematic values, not shown to students. General relation f=180-e differs except e=90."
-  },
-  "problemStatus": "OPEN_SOURCE_LAYOUT",
-  "problemSVGGenerated": false,
-  "answerLeakPolicy": "Only solution asset generated; it must never be assigned to the problem surface.",
+  "status": "PASS",
+  "independentAngles": [
+    {
+      "surface": "problem",
+      "id": "a",
+      "actual": 100.0,
+      "expected": 100
+    },
+    {
+      "surface": "problem",
+      "id": "b",
+      "actual": 80.0,
+      "expected": 80
+    },
+    {
+      "surface": "problem",
+      "id": "c",
+      "actual": 100.0,
+      "expected": 100
+    },
+    {
+      "surface": "problem",
+      "id": "d",
+      "actual": 80.0,
+      "expected": 80
+    },
+    {
+      "surface": "problem",
+      "id": "e",
+      "actual": 100.0,
+      "expected": 100
+    },
+    {
+      "surface": "problem",
+      "id": "f",
+      "actual": 80.0,
+      "expected": 80
+    },
+    {
+      "surface": "problem",
+      "id": "g",
+      "actual": 100.0,
+      "expected": 100
+    },
+    {
+      "surface": "problem",
+      "id": "h",
+      "actual": 80.0,
+      "expected": 80
+    },
+    {
+      "surface": "solution",
+      "id": "a",
+      "actual": 100.0,
+      "expected": 100
+    },
+    {
+      "surface": "solution",
+      "id": "b",
+      "actual": 80.0,
+      "expected": 80
+    },
+    {
+      "surface": "solution",
+      "id": "c",
+      "actual": 100.0,
+      "expected": 100
+    },
+    {
+      "surface": "solution",
+      "id": "d",
+      "actual": 80.0,
+      "expected": 80
+    },
+    {
+      "surface": "solution",
+      "id": "e",
+      "actual": 100.0,
+      "expected": 100
+    },
+    {
+      "surface": "solution",
+      "id": "f",
+      "actual": 80.0,
+      "expected": 80
+    },
+    {
+      "surface": "solution",
+      "id": "g",
+      "actual": 100.0,
+      "expected": 100
+    },
+    {
+      "surface": "solution",
+      "id": "h",
+      "actual": 80.0,
+      "expected": 80
+    }
+  ],
+  "reason": "Matches latest source LEFT-TOP clockwise a,b,c,d and e,f,g,h; a=c=e=g100 internal, f80 internal. Problem has all8 monochrome labels and no derived color grouping.",
+  "problemGlyphs": "𝑎∘𝑏∘𝑐∘𝑑∘𝑒∘𝑓∘𝑔∘ℎ∘",
+  "answerLeak": "PASS",
   "visualQA": "NOT_RUN",
-  "actualArchive": "NOT_RUN",
-  "publication": "NOT_RUN",
-  "productionAuthorized": false,
-  "independentAtan2Angles": {
-    "a": 80.0,
-    "c": 80.0,
-    "e": 80.0,
-    "g": 80.0,
-    "f": 100.0
-  }
+  "actualArchive": "NOT_RUN"
 }

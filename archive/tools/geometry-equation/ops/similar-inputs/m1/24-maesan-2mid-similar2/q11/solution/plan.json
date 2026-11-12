@@ -228,71 +228,110 @@
       {
         "id": "a",
         "refs": [
+          "H",
+          "A",
+          "U"
+        ],
+        "value": 100,
+        "label": "a",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "color": "BLUE"
+      },
+      {
+        "id": "b",
+        "refs": [
           "J",
           "A",
           "U"
         ],
         "value": 80,
-        "label": "a",
+        "label": "b",
         "labelKind": "DEGREE",
         "style": "ARC",
-        "color": "BLUE",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "c",
+        "refs": [
+          "J",
+          "A",
+          "B"
+        ],
+        "value": 100,
+        "label": "c",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "color": "BLUE"
+      },
+      {
+        "id": "d",
         "refs": [
           "H",
           "A",
           "B"
         ],
         "value": 80,
-        "label": "c",
+        "label": "d",
         "labelKind": "DEGREE",
         "style": "ARC",
-        "color": "BLUE",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "e",
-        "refs": [
-          "R",
-          "B",
-          "A"
-        ],
-        "value": 80,
-        "label": "e",
-        "labelKind": "DEGREE",
-        "style": "ARC",
-        "color": "BLUE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "g",
-        "refs": [
-          "L",
-          "B",
-          "V"
-        ],
-        "value": 80,
-        "label": "g",
-        "labelKind": "DEGREE",
-        "style": "ARC",
-        "color": "BLUE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "f",
         "refs": [
           "L",
           "B",
           "A"
         ],
         "value": 100,
+        "label": "e",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "color": "BLUE"
+      },
+      {
+        "id": "f",
+        "refs": [
+          "R",
+          "B",
+          "A"
+        ],
+        "value": 80,
         "label": "f",
         "labelKind": "DEGREE",
         "style": "ARC",
-        "color": "WARM",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "color": "WARM"
+      },
+      {
+        "id": "g",
+        "refs": [
+          "R",
+          "B",
+          "V"
+        ],
+        "value": 100,
+        "label": "g",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "color": "BLUE"
+      },
+      {
+        "id": "h",
+        "refs": [
+          "L",
+          "B",
+          "V"
+        ],
+        "value": 80,
+        "label": "h",
+        "labelKind": "DEGREE",
+        "style": "ARC",
         "factRole": "DERIVED_INTERMEDIATE"
       }
     ],
@@ -307,32 +346,20 @@
       }
     ]
   },
-  "caption": "파란 a,c,e,g는 같은 크기. f는 e와 합이 180°.",
-  "sourceQuote": "l∥m. 해설에서 a=c=e=g, f+e=180°",
+  "caption": "a=c=e=g이고 e+f=180°. 횡단선이 수직이 아니므로 f만 다르다.",
+  "sourceQuote": "위 교점 왼쪽 위부터 시계방향 a,b,c,d, 아래 동일 위치 e,f,g,h",
   "sourceConditions": [
     {
-      "id": "parallel",
-      "condition": "l∥m",
+      "id": "given",
+      "condition": "l∥m, transversal t nonperpendicular; 위 교점 왼쪽 위부터 시계방향 a,b,c,d, 아래 동일 위치 e,f,g,h",
       "mappedTo": [
         "top",
-        "bottom"
-      ]
-    },
-    {
-      "id": "angle-relations",
-      "condition": "a/c와 e/g는 맞꼭지각; a/e는 동위각; f/e는 이웃각",
-      "mappedTo": [
-        "a",
-        "c",
-        "e",
-        "g",
-        "f"
+        "bottom",
+        "transversal"
       ]
     }
   ],
-  "newVisualInformation": [
-    "해설의 각 관계를 도식화. 80/100은 비직각 관계를 구현한 내부 예시값으로 학생에게 표시하지 않음. 원래 문제 배치 복원 아님."
-  ],
+  "newVisualInformation": [],
   "hiddenPointNames": [
     "B",
     "L",

@@ -1,41 +1,46 @@
 {
-  "checks": [
+  "status": "PASS",
+  "independentAngles": [
     {
       "surface": "problem",
-      "glyphReadback": {
-        "a": "55°",
-        "b": "65°",
-        "A": "A",
-        "B": "B",
-        "C": "C",
-        "D": "D",
-        "E": "E",
-        "F": "F",
-        "sDE": "7"
-      },
-      "computedFactsHiddenInProblem": "PASS"
+      "id": "a",
+      "actual": 55.0,
+      "expected": 55
+    },
+    {
+      "surface": "problem",
+      "id": "b",
+      "actual": 65.0,
+      "expected": 65
     },
     {
       "surface": "solution",
-      "glyphReadback": {
-        "a": "55°",
-        "b": "65°",
-        "c": "60°",
-        "d": "55°",
-        "A": "A",
-        "B": "B",
-        "C": "C",
-        "D": "D",
-        "E": "E",
-        "F": "F",
-        "sAB": "7",
-        "sDE": "7"
-      },
-      "computedFactsHiddenInProblem": "NOT_APPLICABLE"
+      "id": "a",
+      "actual": 55.0,
+      "expected": 55
+    },
+    {
+      "surface": "solution",
+      "id": "b",
+      "actual": 65.0,
+      "expected": 65
+    },
+    {
+      "surface": "solution",
+      "id": "c",
+      "actual": 59.99999999999999,
+      "expected": 60
+    },
+    {
+      "surface": "solution",
+      "id": "d",
+      "actual": 55.0,
+      "expected": 55
     }
   ],
-  "math": "C=180-55-65=60; A-D,B-E,C-F correspondence; AB=DE7; incorrect choice B-F is 5. Translation preserves all angles and sides.",
-  "initialError": "Unequal derived angles shared BLUE; corrected D55 to WARM, retained original error.",
+  "reason": "Corrected source explicitly supplies55,65,7. Congruence preserves corresponding lengths and angles. No reconstructed-source assumption.",
+  "problemGlyphs": "55∘65∘𝐴𝐵𝐶𝐷𝐸𝐹7",
+  "answerLeak": "PASS",
   "visualQA": "NOT_RUN",
   "actualArchive": "NOT_RUN"
 }
