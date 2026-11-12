@@ -9,105 +9,6 @@
     },
     "nodes": [
       {
-        "id": "O",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "-10"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "U",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "-5"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "V",
-        "op": "POLAR_POINT",
-        "inputs": [
-          "O",
-          "U"
-        ],
-        "args": {
-          "length": {
-            "kind": "integer",
-            "value": "5"
-          },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "35"
-          },
-          "turn": "CCW"
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "W",
-        "op": "POLAR_POINT",
-        "inputs": [
-          "O",
-          "U"
-        ],
-        "args": {
-          "length": {
-            "kind": "integer",
-            "value": "5"
-          },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "75"
-          },
-          "turn": "CCW"
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "A",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
         "id": "B",
         "op": "SOURCE_POINT",
         "inputs": [],
@@ -115,7 +16,7 @@
           "coordinates": [
             {
               "kind": "integer",
-              "value": "8"
+              "value": "0"
             },
             {
               "kind": "integer",
@@ -134,7 +35,7 @@
           "coordinates": [
             {
               "kind": "integer",
-              "value": "12"
+              "value": "6"
             },
             {
               "kind": "integer",
@@ -146,16 +47,56 @@
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "J",
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
         "op": "POLAR_POINT",
         "inputs": [
-          "A",
-          "B"
+          "B",
+          "D"
         ],
         "args": {
           "length": {
             "kind": "integer",
             "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "325"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
           },
           "angleDeg": {
             "kind": "integer",
@@ -167,11 +108,108 @@
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "K",
+        "id": "F",
         "op": "POLAR_POINT",
         "inputs": [
           "B",
           "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-7"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "D",
+          "R"
         ],
         "args": {
           "length": {
@@ -188,33 +226,33 @@
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "line1",
-        "op": "LINE_THROUGH",
-        "inputs": [
-          "A",
-          "J"
-        ],
-        "args": {},
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "line2",
+        "id": "lineBC",
         "op": "LINE_THROUGH",
         "inputs": [
           "B",
-          "K"
+          "C"
         ],
         "args": {},
         "outputType": "LINE",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "C",
+        "id": "lineDT",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
         "op": "LINE_INTERSECTION",
         "inputs": [
-          "line1",
-          "line2"
+          "lineBC",
+          "lineDT"
         ],
         "args": {},
         "outputType": "POINT",
@@ -229,39 +267,20 @@
   "displayLines": [],
   "displayCircles": [],
   "displayPoints": [
-    "O",
-    "U",
-    "V",
-    "W",
-    "A",
     "B",
-    "C",
     "D",
+    "A",
+    "C",
+    "F",
+    "R",
+    "H",
+    "I",
     "J",
-    "K"
+    "K",
+    "T",
+    "E"
   ],
   "displaySegments": [
-    {
-      "id": "OU",
-      "refs": [
-        "O",
-        "U"
-      ]
-    },
-    {
-      "id": "OV",
-      "refs": [
-        "O",
-        "V"
-      ]
-    },
-    {
-      "id": "OW",
-      "refs": [
-        "O",
-        "W"
-      ]
-    },
     {
       "id": "AB",
       "refs": [
@@ -270,52 +289,67 @@
       ]
     },
     {
-      "id": "AC",
+      "id": "BE",
       "refs": [
-        "A",
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
         "C"
       ]
     },
     {
-      "id": "BC",
+      "id": "CF",
       "refs": [
-        "B",
-        "C"
+        "C",
+        "F"
       ]
     },
     {
-      "id": "BD",
+      "id": "BR",
       "refs": [
         "B",
-        "D"
+        "R"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "HI",
+      "refs": [
+        "H",
+        "I"
+      ]
+    },
+    {
+      "id": "JK",
+      "refs": [
+        "J",
+        "K"
       ]
     }
   ],
   "coordinateCanvas": {
     "width": 720,
-    "height": 440
+    "height": 560
   },
   "planeMarks": {
     "angles": [
       {
-        "id": "lower35",
+        "id": "atB",
         "refs": [
-          "U",
-          "O",
-          "V"
-        ],
-        "value": 35,
-        "label": "35",
-        "labelKind": "DEGREE",
-        "style": "ARC",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "remain40",
-        "refs": [
-          "V",
-          "O",
-          "W"
+          "D",
+          "B",
+          "E"
         ],
         "value": 40,
         "label": "40",
@@ -325,25 +359,11 @@
         "color": "BLUE"
       },
       {
-        "id": "tri40",
+        "id": "atD",
         "refs": [
           "B",
-          "A",
-          "C"
-        ],
-        "value": 40,
-        "label": "40",
-        "labelKind": "DEGREE",
-        "style": "ARC",
-        "factRole": "DERIVED_INTERMEDIATE",
-        "color": "BLUE"
-      },
-      {
-        "id": "tri70",
-        "refs": [
-          "A",
-          "C",
-          "B"
+          "D",
+          "E"
         ],
         "value": 70,
         "label": "70",
@@ -352,45 +372,76 @@
         "factRole": "GIVEN"
       },
       {
-        "id": "external110",
+        "id": "atE",
         "refs": [
-          "C",
           "B",
+          "E",
           "D"
+        ],
+        "value": 70,
+        "label": "70",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "color": "WARM"
+      },
+      {
+        "id": "external",
+        "refs": [
+          "D",
+          "E",
+          "F"
         ],
         "value": 110,
         "label": "110",
         "labelKind": "DEGREE",
         "style": "ARC",
-        "factRole": "DERIVED_INTERMEDIATE",
-        "color": "WARM"
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "parallel",
+        "segments": [
+          "HI",
+          "JK",
+          "BR"
+        ],
+        "count": 1
       }
     ]
   },
-  "caption": "해설 관계 추출: 75−35=40° · 삼각형 외각 x=40+70=110° · 전체 꺾은선 복원 아님",
-  "sourceQuote": "해설 꺾인각75에서35제거후40, 삼각형40/70/180-x로 외각110",
+  "caption": "∠DBE=75−35=40° · ∠BED=70° · 이웃한 외각 x=110°",
+  "sourceQuote": "현 Q16: B가 평행선 사이, Br는 ABC 내부, D∈Br/E∈BC, E의 둔각 외각",
   "sourceConditions": [
     {
       "id": "givens",
-      "condition": "해설 꺾인각75에서35제거후40, 삼각형40/70/180-x로 외각110",
+      "condition": "현 Q16: B가 평행선 사이, Br는 ABC 내부, D∈Br/E∈BC, E의 둔각 외각",
       "mappedTo": [
-        "O",
-        "U",
-        "V",
-        "W",
-        "A",
         "B",
-        "C",
         "D",
+        "A",
+        "C",
+        "F",
+        "R",
+        "H",
+        "I",
         "J",
-        "K"
+        "K",
+        "T",
+        "E"
       ]
     }
   ],
   "newVisualInformation": [],
   "hiddenPointNames": [
+    "H",
+    "I",
     "J",
-    "K"
+    "K",
+    "T",
+    "R",
+    "F"
   ],
   "hiddenPointStyle": "NONE"
 }
