@@ -1,0 +1,38 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "boundaries": [
+      "12",
+      "14",
+      "16"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          5,
+          1
+        ]
+      }
+    ],
+    "yKind": "FREQUENCY",
+    "xTitle": "턱걸이 횟수(회)",
+    "yTitle": "도수(명)",
+    "grid": true,
+    "showValues": true,
+    "total": 6
+  },
+  "caption": "히스토그램의 일부 · 나머지 학생은 모두 12회 미만",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "Q15 upper2bins5,1; othersbelow12. total6 displayedsubset only.",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Only given upper bins; lower frequencies not fabricated. Highlight/rank solution only."
+  ]
+}

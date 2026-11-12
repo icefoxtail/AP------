@@ -1,0 +1,41 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "boundaries": [
+      "12",
+      "14",
+      "16"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          5,
+          1
+        ]
+      }
+    ],
+    "yKind": "FREQUENCY",
+    "xTitle": "턱걸이 횟수(회)",
+    "yTitle": "도수(명)",
+    "grid": true,
+    "showValues": true,
+    "total": 6,
+    "highlightClasses": [
+      0
+    ]
+  },
+  "caption": "14~16회 1명: 첫째 · 12~14회 5명: 둘째~여섯째 (강조 계급)",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "Q15 upper2bins5,1; othersbelow12. total6 displayedsubset only.",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Only given upper bins; lower frequencies not fabricated. Highlight/rank solution only."
+  ]
+}
