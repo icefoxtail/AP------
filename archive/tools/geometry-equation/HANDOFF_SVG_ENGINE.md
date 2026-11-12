@@ -21,6 +21,10 @@
 
 ## 00. 최신 현황과 다음 할 일 (2026-11-03, 먼저 읽기)
 
+### 2026-11-12 원+포물선+공통 접선·직선 경우 나누기 (브랜치 svg-engine/plane-graph-mix-20261112, 26 복성고 2mid q12 · 21 제일고 1final q13)
+- **원인:** 트리아지 F(평면 작도+그래프 혼합 불가)는 새 기능이 아니라 plan 선택 문제였다. q12는 `multi-curve`(원 거절 `MULTI_CURVE_KIND_INVALID:circle`)가 아니라 `ellipse-figure-v1`의 `conics`(원 + 포물선, 곡선마다 접선 주장)로 그려진다. q13은 좌표축 작도 패널(`PANEL_PLANE_MIXED`/`FRAME_HELPERS`)이 아니라 직선을 `PLANE_FIGURE_v1` 선분 + `expressionLabels`로 쓴 `columns:1` 두 패널로 그려진다(3패널 2열은 식 라벨이 칸에 안 들어간다). 사용법은 AUTHOR_GUIDE 3-16 "직선이 여럿인 경우 나누기"와 3-45 "원과 포물선과 공통 접선", 정답지 `item154circleparabolatangent`·`item155linecasespanels`.
+- **엔진 변경 하나:** 포물선 이름 지시선이 곡선 안쪽에서 오면 브라우저가 곡선 표본의 꼭짓점 모서리를 가로지른 것으로 읽어 `LEADER_CROSSING:leader-curve-c2:curve-c2`로 거절하던 것을, `composeEllipseFigure`가 그 경우에만 곡선 지시선을 0.4px 짧게 해 한 번 더 구성한다(`stopCurveLeaderShort`). 처음에 통과한 그림은 바이트가 같다(정답지 14개 `cmp` 14/14).
+
 ### 2026-11-10 엔진 확장 회차 h(브랜치 engine/ext-20261110-h)
 - **문자열 문항 id(21 왕의중·21 연향중 2학기 기말 중3):** 은행 id가 `"q01"`·`"s01"`인 시험지는 id를 그대로 쓴다. UID는 `<시험지>|q01`(`question-uid.mjs`: 정수 id 또는 `^[A-Za-z][A-Za-z0-9_-]{0,31}$`; 정수 UID는 그대로). `render-plan` item의 `ordinal`에 `"s01"`을 쓰면 되고(`construction-archive-capture-v1.mjs`·`record-visual-browser-evidence.mjs`가 같은 id로 은행 문항을 찾는다, 정수 id 시험지의 바이트 불변), 게시 도구(`ops/svg-m1`의 `make-packet`·`publish.mjs`·`publish-exam.py`·`pubflow.py`·`ledger-upsert.py`·`verify-published.mjs`·`verify-publication-fonts.mjs`, 공용 `portable_root.py`)도 `ord`에 문자열 id를 받아 해설 그림 파일을 `<id>-solution.svg`(예 `s01-solution.svg`; 정수 id는 기존 `q<N>-solution.svg`)로 이름 짓는다. 원본 시험지 JS의 id는 바꾸지 않는다(숫자 id 사본 `_tmp_wangui_numeric`은 정식 해법이 아니다). 검증: `tests/string-question-id.test.mjs`(UID·캡처의 은행 조회·publish 도구 apply), 실제 렌더 `ordinal:"s01"` -> ARCHIVE_BOUND(`questionUid ...|s01`). 남은 것: `exam-status.py` 등 보조 도구와 시험지 마감 원장(`exam-figure-ledger.json`) 항목의 `ord`가 문자열인 경우의 소비자(원장 소비 테스트는 없다)는 첫 시험지를 닫을 때 확인.
 - **렌더 캡처 대기시간(PR #1595):** `GEOMETRY_CAPTURE_TIMEOUT_MS`(0 초과 600000 이하)가 Archive 캡처·화면 사전검사의 goto·waitForFunction·스크린샷 대기를 정한다. 없으면 예전 값 그대로.

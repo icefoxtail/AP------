@@ -254,9 +254,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q06-solution.svg",
-    "solutionImageAlt": "역함수를 두 번 적용해 e에서 d, d에서 c로 가는 대응표",
-    "solutionImageCaption": "그림에서 f(d)=e와 f(c)=d를 차례로 읽는다.",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: X는 입력, Y는 출력이며 파란 화살표는 d가 f를 거쳐 e에 대응함을 나타낸다.",
+    "solutionImageCaption": "X는 입력, Y는 출력 열이다. 파란 화살표는 f(d)=e를 나타내며 역함수의 다음 적용은 해설에서 이어서 확인한다. 정답은 c이다.",
     "solutionImageSize": "full"
   },
   {
@@ -342,9 +342,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q08-solution.svg",
-    "solutionImageAlt": "전체 30명에서 두 영화 집합의 교집합 최솟값 7과 최댓값 14를 영역별 인원으로 비교한 벤 다이어그램",
-    "solutionImageCaption": "영역 숫자가 인원수이며 원의 크기는 집합의 크기를 나타내지 않는다.",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: A는 공상과학영화 관람 집합, B는 공포영화 관람 집합이고 U는 전체 30명이다. 영역의 13, 10, 4, 3은 가능한 한 배치의 인원수다.",
+    "solutionImageCaption": "A는 공상과학영화 관람, B는 공포영화 관람, U는 전체 30명이다. 숫자는 가능한 한 겹침 배치의 인원수이며 교집합의 양 끝은 집합 크기와 전체 인원으로 따로 구한다. 정답은 21이다.",
     "solutionImageSize": "full"
   },
   {
@@ -433,9 +433,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "이차식이 모든 실수에서 음이 아닌 조건으로 얻은 k의 닫힌구간 −1≤k≤3",
-    "solutionImageCaption": "가능한 k의 양 끝값이 최솟값 −1과 최댓값 3이다.",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선의 A, B는 각각 m, M의 위치이며 두 닫힌 끝점 사이가 k의 허용 범위다.",
+    "solutionImageCaption": "완전제곱식의 나머지 항은 0 이상이어야 한다. 수직선의 A, B는 각각 m, M의 위치이며 둘 사이가 허용 범위다. 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -481,9 +481,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "합성 조건과 일대일대응에서 확정되는 f(1), f(2), g(1)의 표",
-    "solutionImageCaption": "확정되지 않은 g(2), g(3)의 순서는 f(2)+g(1)에 영향을 주지 않는다.",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: X, Y, Z는 차례로 입력, f의 출력이자 g의 입력, g의 출력 열이다. 파란 f 화살표는 1, 2, 3, 4를 4, 1, 2, 3에 보내고 주황 g 화살표는 4를 2에 보낸다.",
+    "solutionImageCaption": "왼쪽 X에서 가운데 Y로 가는 파란 화살표가 f의 일대일대응이며, 주황 화살표는 g(4)=2를 나타낸다. 합성 조건으로 남은 g의 값을 정한다. 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -529,9 +529,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "−4에서 f, g, f⁻¹를 차례로 적용한 함수값 흐름표",
-    "solutionImageCaption": "합성함수는 오른쪽 함수부터 차례대로 계산한다.",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: X는 입력, Y는 중간값, Z는 출력 열이다. 파란 f 화살표는 −4에서 u로, 주황 g 화살표는 u에서 4로 간다.",
+    "solutionImageCaption": "X, Y, Z는 입력·중간값·출력 열이다. 파란 f와 주황 g가 −4에서 4까지의 중간 흐름을 나타내며 마지막 역함수 값은 그림에 적지 않는다. 정답은 1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -674,9 +674,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "u+v=6과 u=2v의 교점 (4,2)에서 최솟값 등호가 성립함을 나타낸 좌표 그림",
-    "solutionImageCaption": "u=4a, v=3b일 때 등호점은 (u,v)=(4,2)이다.",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 그림은 파란 u+v=6 직선 위의 점 (2,4), 아래 그림은 같은 파란 직선과 주황 점선 u=2v의 교차를 보여 준다.",
+    "solutionImageCaption": "치환 u=4a, v=3b로 얻은 파란 제약 직선과 표본점 (2,4), 주황 점선의 등호 조건을 차례로 본다. 정답은 3/2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -813,9 +813,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "증가함수의 양 끝 함수값이 모두 4라서 구간 전체가 4가 되는 그래프",
-    "solutionImageCaption": "f(0)≤f(x)≤f(1)에서 f(x)=4가 도출된다.",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: X는 입력, Y는 함수값 열이다. 파란 화살표는 0과 1이 모두 4에 대응함을 나타낸다.",
+    "solutionImageCaption": "입력 열 X의 양 끝 0, 1이 파란 화살표로 값 4에 대응한다. 단조 조건으로 중간 함수값도 정해진다. 정답은 16이다.",
     "solutionImageSize": "full"
   },
   {
@@ -863,9 +863,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "x≤−4, −4<x≤12, x>12의 f(f(x))식을 비교한 구간별 표",
-    "solutionImageCaption": "f(f(x))=x의 해는 경계 −4와 겹치는 구간 −4<x≤12를 합친 [−4,12]이다.",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: X는 입력, Y는 f∘f의 값 열이고 그림의 F는 f∘f를 뜻한다. 파란 화살표는 −5→−9, 0→0, 13→17의 세 표본이다.",
+    "solutionImageCaption": "파란 화살표 머리글 F는 f∘f를 뜻한다. a=3일 때 세 구간의 표본을 대입해 가운데 표본이 고정되는 모습을 확인한다. 정답은 48이다.",
     "solutionImageSize": "full"
   },
   {
@@ -905,9 +905,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "u+v=8과 u=v가 만나는 등호점 (4,4)를 나타낸 좌표 그림",
-    "solutionImageCaption": "u=5x, v=2y로 바꾼 뒤 등호는 u=v=4에서 성립한다.",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 그림은 파란 u+v=8 직선 위의 점 (2,6), 아래 그림은 점 (6,2) 표본을 보여 준다. 주황 점선은 각 표본의 v값이다.",
+    "solutionImageCaption": "u=5x, v=2y로 치환하면 파란 직선 u+v=8을 얻고, 주황 점선은 각 표본의 v값을 나타낸다. 두 좌표를 비교해 합 조건을 확인한다. 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -946,9 +946,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "교환쌍 수가 0, 1, 2인 네 원소 자기역함수의 개수를 나눈 표",
-    "solutionImageCaption": "f∘f가 항등함수이면 각 원소는 고정되거나 서로 바꾸는 쌍을 이룬다.",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: X는 입력, Y는 출력 열이다. 파란 화살표는 1과 3이 서로 바뀌고 5와 7이 각각 자기 자신에 대응하는 한 예를 나타낸다.",
+    "solutionImageCaption": "파란 화살표가 f의 한 예를 보인다. f(f(x))=x이면 원소는 고정되거나 서로 바꾸는 쌍을 이룬다. 그림은 교환쌍 하나가 있는 경우다. 정답은 10이다.",
     "solutionImageSize": "full"
   },
   {
@@ -991,9 +991,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "ab=12이고 1≤a,b≤10인 순서쌍과 a=2 제외를 정리한 표",
-    "solutionImageCaption": "(2,6)은 상수항이 같아 해가 생기므로 제외하고 세 쌍이 남는다.",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: X에는 a, Y에는 b를 적었다. 파란 화살표는 순서쌍 (2,6), (3,4)를 나타내며 두 곱은 12이다.",
+    "solutionImageCaption": "X에는 a, Y에는 b를 적었다. 파란 화살표가 (2,6), (3,4)를 나타내며 두 곱은 12이다. a=2인 순서쌍을 제외하고 남는 후보를 센다. 정답은 3이다.",
     "solutionImageSize": "full"
   }
 ];

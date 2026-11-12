@@ -67,8 +67,9 @@ export function calloutEntries(plan,points,bounds,hidden=new Set(),model=undefin
   const taken=new Set([...(plan.displaySegments||[]).map(s=>s.id),...(plan.rightAngles||[]).map(s=>s.id),...plan.mathPlan.nodes.map(n=>n.id)]);
   for(const key of MARK_ID_KEYS)for(const row of Array.isArray(plan.planeMarks[key])?plan.planeMarks[key]:[])if(row&&typeof row.id==='string')taken.add(row.id);
   const seen=new Set();
-  return rows.map(row=>{
-    if(!isObject(row)||typeof row.id!=='string'||!CALLOUT_ID.test(row.id))bad('CALLOUT_ID_INVALID');
+  return rows.map((row,rowIndex)=>{
+    // the code names the JSON path of the bad row so the plan author does not have to guess which callout it is
+    if(!isObject(row)||typeof row.id!=='string'||!CALLOUT_ID.test(row.id))bad('CALLOUT_ID_INVALID:planeMarks.callouts['+rowIndex+'].id');
     const cid=row.id,prefix=cid+CALLOUT_SEP;
     if(seen.has(cid)||[...taken].some(id=>id===cid||id.startsWith(prefix)))bad('CALLOUT_ID_DUPLICATE:'+cid);
     seen.add(cid);
