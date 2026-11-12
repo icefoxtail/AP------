@@ -98,6 +98,8 @@ export async function inventory({ previous = null } = {}) {
     const lab = { id: pageId, catalogId: item.id, title: item.title, course: item.course, scenes: list.length, lessons: 0, source, sceneSource, literalLessonRegistries: literalRegistryFiles.map(relative), helper: helper && relative(helper) };
     if (list.length !== item.sceneTotal) errors.push({ lab: item.id, code: 'CATALOG_SCENE_COUNT', actual: list.length, catalog: item.sceneTotal });
     const ids = new Set();
+    // Match Lab's native def.groups enumeration; a flat sceneIndex is not a group index.
+    const groupIndex = new Map((def.groups || [{ scenes: def.scenes || [] }]).flatMap((group, gi) => group.scenes.map(scene => [String(scene.id), gi])));
     for (const [sceneIndex, scene] of list.entries()) {
       if (ids.has(scene.id)) errors.push({ lab: item.id, scene: scene.id, code: 'DUPLICATE_SCENE' });
       ids.add(scene.id);
@@ -117,7 +119,7 @@ export async function inventory({ previous = null } = {}) {
             ? { status: 'NOT_RUN', fingerprint, selection: 'REUSE_CANDIDATE', evidenceRefs: evidence.evidenceRefs, verificationRequired: 'Verify raw artifact hashes, executed contract and complete input closure before accepting the prior PASS.' }
             : { status: 'NOT_RUN', fingerprint, selection: old ? 'CHANGED_OR_EVIDENCE_DEBT' : 'NEW_OR_EVIDENCE_DEBT', evidenceRefs: [] }];
         }));
-        units.push({ key, lab: pageId, catalogId: item.id, scene: String(scene.id), sceneIndex, lessonIndex, label: lesson.label || '', title: lesson.title || '', duration: lesson.chapters.reduce((sum, ch) => sum + ch.length, 0), chapters: lesson.chapters.length, lessonSha256, sceneSha256, dimensions });
+        units.push({ key, lab: pageId, catalogId: item.id, scene: String(scene.id), gi: groupIndex.get(String(scene.id)), sceneIndex, lessonIndex, label: lesson.label || '', title: lesson.title || '', duration: lesson.chapters.reduce((sum, ch) => sum + ch.length, 0), chapters: lesson.chapters.length, lessonSha256, sceneSha256, dimensions });
       }
       lab.lessons += lessons.length;
     }

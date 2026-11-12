@@ -135,6 +135,36 @@ test('actual Player start/apply/settle/release keep native controls and historie
   }
 });
 
+test('native scene navigation cannot apply the previous lesson packet to the destination problem panel',async t=>{
+  const rt=await load(),call=(v,...args)=>typeof v==='function'?v(...args):v;
+  let rendered,transitions=0;
+  Object.assign(rt,{
+    _tabAvailable:()=>true,_timerStop(){},_buildRail(){},_announce(){},_saveHashSoon(){},
+    _measureFocus:rt.measureFocus,
+    _buildPanel(){const sc=this.scene;rendered={question:call(sc.question,this.s,this),tag:call(sc.problem.tag,this.s),text:call(sc.problem.text,this.s),answer:call(sc.problem.answer,this.s)};}
+  });
+  for(const from of rt.list)for(const lesson of video.lessonList(rt.def.lessons[from.id]).toSorted((a,b)=>Number(first(a).lppPacket==='first')-Number(first(b).lppPacket==='first')))for(const to of rt.list.filter(sc=>sc.id!==from.id)){
+    rt.go(to.id);rt.tab='problem';rt.newProblem();
+    const selected=to.vary.cur(),saved=packetSignature(selected),question=call(to.question,rt.s,rt),text=call(to.problem.text,rt.s),answer=call(to.problem.answer,rt.s);
+    rt.go(from.id);
+    const cs=video.compileLesson(lesson),base={nums:{...rt.s},sets:{...rt.s},step:0,part:null},at=video.stateAt(cs,cs.length,base);
+    Object.assign(rt.s,at.nums,at.sets,{lessonOn:false,lessonEntry:true,step:0,part:null});
+    // Player navigation releases playback, then the native shell builds the new
+    // panel before _syncEntry(true) installs the destination's first cue.
+    const held=plain(manual(rt.s));
+    rt.context.APLab.Lab.prototype.goScene.call(rt,rt.list.indexOf(to));
+    assert.equal(to.vary.cur(),selected,`${from.id}/${lesson.label} → ${to.id}: manual destination packet`);
+    assert.equal(packetSignature(selected),saved,'navigation cannot mutate problem conditions or count maps');
+    assert.equal(rendered.question,question);assert.equal(rendered.text,text);assert.equal(rendered.answer,answer);
+    assert.deepEqual(plain(manual(rt.s)),held,'navigation retains the manual controls and arrays');
+    const next=video.compileLesson(video.lessonList(rt.def.lessons[to.id])[0]);
+    rt.context.APLab.Player.prototype._applyStart.call({lab:rt},next);
+    assert.equal(to.vary.cur(),rt.api.first(to.id,first(video.lessonList(rt.def.lessons[to.id])[0]).lppPacket),'destination entry selects its own authored packet');
+    assert.doesNotThrow(()=>rt.draw());transitions++;
+  }
+  assert.equal(transitions,108);t.diagnostic(`${transitions} actual shell navigation calls, original manual packets preserved`);
+});
+
 test('source-only loading retains original dragging, presets, new problems and zero-condition handling',async()=>{
   const source=await load({sourceOnly:true});assert.deepEqual(plain(source.def.lessons),{});
   for(const sc of source.list){source.go(sc.id);source.draw();source.tab='problem';const first=sc.vary.first(),saved=packetSignature(first);for(let i=0;i<3;i++){const prev=sc.vary.cur();source.newProblem();assert.notEqual(sc.vary.cur(),prev);source.draw();source.tab='review';source.s.step=4;source.draw();source.tab='problem';}assert.equal(packetSignature(first),saved);}

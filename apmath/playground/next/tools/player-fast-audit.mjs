@@ -1,6 +1,6 @@
 // Selective one-click player audit. This file is never loaded by student pages.
 // --manifest FILE: {targets:[{lab,scene?,gi?,lessonIndices?,views?,capture?,
-//                            playback?,normalPlayback?,reason?}]}
+//                            playback?,normalPlayback?,captureQuestionScroll?,captureAllSamples?,diagnosticLimit?,reason?}]}
 // Explicit seeks sample every caption, chapter and animated-track midpoint/end.
 // They are NOT continuous playback evidence. Marked playback units additionally
 // run the unchanged native requestAnimationFrame player at defaultRate * 10;
@@ -222,7 +222,7 @@ try {
       for(const unit of units) {
         const matches=labTargets.filter(t=>(explicitViews.length||!t.views||t.views.includes(view))&&(t.scene==null||String(t.scene)===unit.id)&&(t.gi==null||t.gi===unit.gi)&&(!t.lessonIndices||t.lessonIndices.includes(unit.k)));
         if(!matches.length)continue;
-        const config={capture:matches.some(t=>t.capture),playback:matches.some(t=>t.playback),normalPlayback:matches.some(t=>t.normalPlayback),qaMultiplier,view};
+        const config={capture:matches.some(t=>t.capture),playback:matches.some(t=>t.playback),normalPlayback:matches.some(t=>t.normalPlayback),captureQuestionScroll:matches.some(t=>t.captureQuestionScroll),captureAllSamples:matches.some(t=>t.captureAllSamples),diagnosticLimit:Math.min(32,Math.max(2,...matches.map(t=>Number(t.diagnosticLimit)||2))),qaMultiplier,view};
         const key=`${labId}:${unit.id}@${unit.gi}:${unit.k}:${view}`, sourceConfig=hash(JSON.stringify({source:source.sha256,config}));
         if(shard&&parseInt(hash(key).slice(0,8),16)%+shard[2]!==+shard[1])continue;
         const previous=prior.get(key);
@@ -240,7 +240,7 @@ try {
           row.firstFailureCaptures??=[];
           const prior=row.firstFailureCaptures.find(c=>c.label===label);
           if(prior){prior.checks.push(...failed);return;}
-          if(row.firstFailureCaptures.length>=2)return;
+          if(row.firstFailureCaptures.length>=config.diagnosticLimit)return;
           await shot(`diagnostic-${label}`);
           row.firstFailureCaptures.push({label,checks:failed,file:row.screenshots.at(-1)});
         };
@@ -285,7 +285,8 @@ try {
               }))};
           },unit.k);
           if(config.capture)await shot('initial');
-          row.questionAccess=await page.evaluate(async()=>{
+          row.questionAccess=await page.evaluate(async keepScroll=>{
+            delete window.__playerAuditQuestionScroll;
             const q=[...document.querySelectorAll('.apl-question .q')].find(e=>e.checkVisibility()),footer=[...document.querySelectorAll('.apl-lentry')].find(e=>e.checkVisibility());
             if(!q||!footer||getComputedStyle(footer).position!=='fixed')return {applicable:false};
             const lines=()=>{const a=[];const walker=document.createTreeWalker(q,NodeFilter.SHOW_TEXT);let n;while(n=walker.nextNode()){
@@ -304,13 +305,18 @@ try {
             let clipTop=0;for(let e=q.parentElement;e&&e!==document.body;e=e.parentElement)if(['auto','scroll','hidden','clip'].includes(getComputedStyle(e).overflowY))clipTop=Math.max(clipTop,e.getBoundingClientRect().top);
             const result={applicable:true,pass:!!after&&after.bottom<=bar.top+2&&after.top>=clipTop-2,reason:'scrolled-last-question-line',before,after,footerTop:bar.top,clipTop,
               scrollers:saved.map(({e,top})=>({tag:e.tagName,cls:e.className,before:top,after:e.scrollTop,max:e.scrollHeight-e.clientHeight}))};
-            for(const {e,top}of saved)e.scrollTop=top;
+            if(keepScroll)window.__playerAuditQuestionScroll=saved;
+            else for(const {e,top}of saved)e.scrollTop=top;
             await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
             return result;
-          });
+          },config.captureQuestionScroll);
           const questionCheckStart=row.checks.length;
           if(row.questionAccess.applicable)check('full question can be read above the fixed lesson buttons',row.questionAccess.pass,row.questionAccess);
           await captureFailed('question-access',questionCheckStart);
+          if(config.captureQuestionScroll&&row.questionAccess.applicable){
+            try{await shot('question-scrolled');row.questionAccess.screenshot=row.screenshots.at(-1);}
+            finally{await page.evaluate(()=>{for(const {e,top}of window.__playerAuditQuestionScroll||[])e.scrollTop=top;delete window.__playerAuditQuestionScroll;});await settle();}
+          }
 
           // A frozen QA clock leaves the actual playing layout intact. Every
           // value is set by the native seek/apply API, never by editing lab.s.
@@ -350,7 +356,7 @@ try {
             check(`t=${p.time}: rendered state remains bound to native timeline`,!stateMatch.bad.length,stateMatch.bad);
             await captureFailed(`t=${p.time}`,stateCheckStart);
             row.samples.push({...p,method:'NATIVE_SEEK_FROZEN_QA_CLOCK',frame:f,...(stateMatch.derived.length?{derivedRenderState:stateMatch.derived}:{})});
-            if(config.capture&&p.reasons.some(r=>/^chapter-\d+-middle$/.test(r)))await shot(`sample-${p.time}`);
+            if(config.capture&&(config.captureAllSamples||p.reasons.some(r=>/^chapter-\d+-middle$/.test(r))))await shot(`sample-${p.time}`);
           }
           await page.evaluate(()=>lab.video.finish());await settle();
           await page.locator('.apl-vend:visible').evaluate(e=>Promise.all(e.getAnimations({subtree:true}).filter(a=>Number.isFinite(a.effect.getComputedTiming().endTime)).map(a=>a.finished.catch(()=>{}))));

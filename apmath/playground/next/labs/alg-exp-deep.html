@@ -1709,7 +1709,7 @@ ST[K('lineT')] = Math.max(0, Math.min(5.5, Math.round(mPos.y * 10) / 10));
     if (!lab || lab.tab === 'explore') {
       if(m===5){
         const p=pv(s,m),key='E'+m+j+':'+JSON.stringify(p);
-        if(!s.dragging || !String(b.__ovKey||'').startsWith('E'+m+j+':')){
+        if(ledActive(s) || !s.dragging || !String(b.__ovKey||'').startsWith('E'+m+j+':')){
           const x1=p.xMid-p.stepD,x3=p.xMid+p.stepD,y3=2**x3;
           OV.autoFocus(b,key,{x:[Math.min(-.4,x1-.8),x3+1.4],y:[-.26*y3,1.12*y3]});
         }

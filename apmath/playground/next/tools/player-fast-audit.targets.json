@@ -1,2429 +1,386 @@
 {
   "schemaVersion": 1,
-  "phase": "SHARED_ENTRY_FIX_REQUIRED_REGRESSION",
-  "baseSha": "5d49cb23cdc895aaedaf232d9438ce83e2845713",
+  "phase": "second-fix-delta",
+  "baseSha": "5691d6f4f340b94313ced7e3ad7f55d9d86830c3",
   "shards": 8,
   "selection": {
     "totalLabs": 58,
     "totalScenes": 1067,
     "totalLessons": 2989,
-    "priorProofUsedBeforeFix": 102,
-    "originalUnchangedFunctionExclusion": 87,
-    "newProductionSharedFixInvalidatesPriorBrowserFingerprint": true,
-    "unchangedMathEvidenceStillReused": true,
-    "primaryMobileUnits": 2989,
-    "selectedUniqueLessons": 2989,
-    "selectedUniqueScenes": 1067,
-    "selectedViewportUnits": 3063,
-    "additionalViewportUnits": 74,
-    "capturedViewportUnits": 212,
-    "nativeContinuousViewportUnits": 138,
-    "normalSpeedViewportUnits": 2
+    "priorViewportUniverse": 3063,
+    "verifiedReuseEligible": 2429,
+    "requiredChangedOrUnresolved": 634,
+    "explicitRechecksOfEligible": 2,
+    "newAdditionalViewportUnits": 36,
+    "unchangedVerifiedExcluded": 2427,
+    "selectedUniqueLabs": 18,
+    "selectedUniqueScenes": 244,
+    "selectedUniqueLessons": 600,
+    "selectedViewportUnits": 672,
+    "selectedPrimaryMobileUnits": 600,
+    "capturedViewportUnits": 152,
+    "nativeContinuousViewportUnits": 95,
+    "normalSpeedViewportUnits": 0
   },
   "reuseEvidence": {
-    "run": 43158662069,
-    "actualSourceSha": "3fd4977ebafb9b7650fc03392624a02441b2c6cc",
-    "binding": "Exact apmath/playground, apmath/css, apmath/js tree equality; see phase1 receipt.",
-    "native102Checks": 1218,
-    "initialViewportRows": 510,
-    "currentBrowserReuse": "Historical native proof was consumed for the first selection; changed shared entry source now requires browser regression. Mathematics remains separately reusable."
-  },
+    "baselineSha256": "972580c8f662b4029db9c3bef914357fa70ee84c3a5d38c1311cfebbea82433c",
+    "inventorySha256": "a80de9c118f0bca5379522fec2ce116a3a3e298483787f208aa03854a2197743",
+    "sourceRun": 43172360702,
+    "sourceSha": "5691d6f4f340b94313ced7e3ad7f55d9d86830c3",
+    "rawStatusImmutable": true,
+    "scopedReviewRows": 3,
+    "unresolvedGeneralForm": "All uncertain sample captures requested; no semantic PASS assumed."
+  }
+,
   "targets": [
-    {
-      "lab": "g7-points-lines",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g7-points-lines",
-      "scene": "b1-1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g7-parallel",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g7-parallel",
-      "scene": "p1-1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g7-spatial",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g7-spatial",
-      "scene": "s1-1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g7-construction",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g7-construction",
-      "scene": "c1-1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g7-area",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g7-area",
-      "scene": "a1-rect",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g7-polygons",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g7-polygons",
-      "scene": "p1-one",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "scene": "z0-center",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g7-polyhedra",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g7-polyhedra",
-      "scene": "p1-0",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "scene": "sv1-1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g7-solids",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g7-solids",
-      "scene": "s1-1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g8-triangles",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g8-triangles",
-      "scene": "t1-1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g8-quadrilaterals",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g8-quadrilaterals",
-      "scene": "q1-1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g8-similarity",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g8-similarity",
-      "scene": "sm1-corr",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g8-pythagoras",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g8-pythagoras",
-      "scene": "py1-sq",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g9-trig-ratio",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g9-trig-ratio",
-      "scene": "r1-1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g9-circle",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "g9-circle",
-      "scene": "c1-1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "common-poly-solid",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "common-poly-solid",
-      "scene": "sq",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "common-quadratic",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "common-quadratic",
-      "scene": "diffFuncFlatten",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "common-lines",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "common-lines",
-      "scene": "divInternalExternal",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "common-coord",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "common-coord",
-      "scene": "dist",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "common-transform",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "common-transform",
-      "scene": "shift",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "common-circle-eq",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "common-circle-eq",
-      "scene": "stdDef",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "common-functions",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "common-functions",
-      "scene": "bas-1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "common-rational",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "common-rational",
-      "scene": "r1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "common-irrational",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "common-irrational",
-      "scene": "i1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "common-counting",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "common-counting",
-      "scene": "rule",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "alg-explog",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "alg-explog",
-      "scene": "t1a",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "alg-exp-deep",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "alg-exp-deep",
-      "scene": "t1a",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "alg-log",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "alg-log",
-      "scene": "log1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "alg-log-deep",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "alg-log-deep",
-      "scene": "type1-0",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "alg-unit-circle",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "alg-unit-circle",
-      "scene": "coords",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "alg-trig-geometry",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "alg-trig-geometry",
-      "scene": "bas-1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "alg-sine-cosine-law",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "alg-sine-cosine-law",
-      "scene": "bas-1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "alg-sequence",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "alg-sequence",
-      "scene": "type1-0",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "calc1-limits",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "calc1-limits",
-      "scene": "continuity",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "calc1-tangent",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "calc1-tangent",
-      "scene": "secant",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "calc1-derivative-shape",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "calc1-derivative-shape",
-      "scene": "cubic",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "calc1-cubic",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "calc1-cubic",
-      "scene": "box",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "calc1-quartic",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "calc1-quartic",
-      "scene": "triple",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "calc1-composite",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "calc1-composite",
-      "scene": "abs",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "calc1-integral",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "calc1-integral",
-      "scene": "signed",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "calc1-motion",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "calc1-motion",
-      "scene": "disp",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "geom-parabola",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "geom-parabola",
-      "scene": "m1s1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "geom-ellipse",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "geom-ellipse",
-      "scene": "1-A",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "geom-hyperbola",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "geom-hyperbola",
-      "scene": "m1s1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "geom-space-3d",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "geom-space-3d",
-      "scene": "mode1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "geom-projection",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "geom-projection",
-      "scene": "mode1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "geom-space-coord",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "geom-space-coord",
-      "scene": "mode1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "geom-vector-ops",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "geom-vector-ops",
-      "scene": "1-A",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "geom-vector-dot",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "geom-vector-dot",
-      "scene": "m1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "geom-vector-figure",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "geom-vector-figure",
-      "scene": "m1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "prob-counting",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "prob-counting",
-      "scene": "combo",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "prob-probability",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "prob-probability",
-      "scene": "grid",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "prob-stats",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
-    },
-    {
-      "lab": "prob-stats",
-      "scene": "dist",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "scene": "f4-swirl",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "scene": "rot",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "scene": "rl-rect",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "scene": "z3-sectorProof",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "scene": "f3-leaf-len",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "scene": "sv1-1",
-      "lessonIndices": [
-        0,
-        1
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "calc1-integral",
-      "scene": "signed",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": true,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "calc1-integral",
-      "scene": "inverse",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "calc1-integral",
-      "scene": "symint",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "geom-hyperbola",
-      "scene": "q7",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "prob-counting",
-      "scene": "func",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "prob-counting",
-      "scene": "circ",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "geom-space-coord",
-      "scene": "mode3",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g7-coordinate-graphs",
-      "scene": "water-vessels",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g7-coordinate-graphs",
-      "scene": "coordinate-area",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g7-coordinate-graphs",
-      "scene": "journey-compare",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g7-proportion",
-      "scene": "lattice-below",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g7-proportion",
-      "scene": "square-graphs",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g7-proportion",
-      "scene": "horizontal-division",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g8-linear-functions",
-      "scene": "triangle-degeneracy",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": true,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g8-linear-functions",
-      "scene": "slope-range",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g8-linear-functions",
-      "scene": "graph-rotation",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g8-linear-functions",
-      "scene": "graph-probability",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g8-linear-functions",
-      "scene": "area-integer-condition",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g9-quadratic-functions",
-      "scene": "moving-area",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g9-quadratic-functions",
-      "scene": "vertex-conditions",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g9-quadratic-functions",
-      "scene": "intersections",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g9-quadratic-functions",
-      "scene": "translation-area",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": true,
-      "normalPlayback": false,
-      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "scene": "z3-sectorProof",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "360x640",
-        "844x390",
-        "1024x768",
-        "820x1180",
-        "1440x900"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "scene": "sv1-1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "360x640",
-        "844x390",
-        "1024x768",
-        "820x1180",
-        "1440x900"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
-    },
-    {
-      "lab": "common-quadratic",
-      "scene": "diffFuncFlatten",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "360x640",
-        "844x390",
-        "1024x768",
-        "820x1180",
-        "1440x900"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
-    },
-    {
-      "lab": "geom-space-3d",
-      "scene": "mode1",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "360x640",
-        "844x390",
-        "1024x768",
-        "820x1180",
-        "1440x900"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
-    },
-    {
-      "lab": "prob-counting",
-      "scene": "func",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "360x640",
-        "844x390",
-        "1024x768",
-        "820x1180",
-        "1440x900"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
-    },
-    {
-      "lab": "geom-space-coord",
-      "scene": "mode3",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "360x640",
-        "844x390",
-        "1024x768",
-        "820x1180",
-        "1440x900"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
-    },
-    {
-      "lab": "g8-linear-functions",
-      "scene": "triangle-degeneracy",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "360x640",
-        "844x390",
-        "1024x768",
-        "820x1180",
-        "1440x900"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
-    },
-    {
-      "lab": "g9-quadratic-functions",
-      "scene": "moving-area",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "360x640",
-        "844x390",
-        "1024x768",
-        "820x1180",
-        "1440x900"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
-    },
-    {
-      "lab": "g7-coordinate-graphs",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Required regression after confirmed shared entry/footer production fix; previous native math and playback proof stays historical."
-    },
-    {
-      "lab": "g8-linear-functions",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Required regression after confirmed shared entry/footer production fix; previous native math and playback proof stays historical."
-    },
-    {
-      "lab": "g9-quadratic-functions",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Required regression after confirmed shared entry/footer production fix; previous native math and playback proof stays historical."
-    },
-    {
-      "lab": "common-lines",
-      "scene": "compositeStepByStep",
-      "gi": 3,
-      "lessonIndices": [
-        1
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "common-lines",
-      "scene": "diffMaxLine",
-      "gi": 4,
-      "lessonIndices": [
-        2
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "scene": "ns",
-      "gi": 5,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "scene": "sw-center",
-      "gi": 10,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "scene": "sw-rect",
-      "gi": 10,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "scene": "sw-square",
-      "gi": 10,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "scene": "sw-tri",
-      "gi": 10,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-construction",
-      "scene": "c1-3",
-      "gi": 0,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-construction",
-      "scene": "c1-3",
-      "gi": 0,
-      "lessonIndices": [
-        1
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-construction",
-      "scene": "c1-4",
-      "gi": 0,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-construction",
-      "scene": "c1-4",
-      "gi": 0,
-      "lessonIndices": [
-        1
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-construction",
-      "scene": "c1-4",
-      "gi": 0,
-      "lessonIndices": [
-        2
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-construction",
-      "scene": "c1-5",
-      "gi": 0,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-construction",
-      "scene": "c1-5",
-      "gi": 0,
-      "lessonIndices": [
-        1
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-construction",
-      "scene": "c4-3",
-      "gi": 3,
-      "lessonIndices": [
-        1
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-points-lines",
-      "scene": "ck1",
-      "gi": 3,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-points-lines",
-      "scene": "ck1",
-      "gi": 3,
-      "lessonIndices": [
-        1
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-points-lines",
-      "scene": "ck1",
-      "gi": 3,
-      "lessonIndices": [
-        2
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-points-lines",
-      "scene": "ck2",
-      "gi": 3,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-points-lines",
-      "scene": "ck2",
-      "gi": 3,
-      "lessonIndices": [
-        1
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "scene": "sv1-5",
-      "gi": 3,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "scene": "sv4-1",
-      "gi": 1,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "scene": "sv4-3",
-      "gi": 3,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "scene": "sv4-3",
-      "gi": 3,
-      "lessonIndices": [
-        1
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "scene": "sv4-4",
-      "gi": 3,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "scene": "sv4-4",
-      "gi": 3,
-      "lessonIndices": [
-        1
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "scene": "sv5-2",
-      "gi": 3,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "scene": "sv5-2",
-      "gi": 3,
-      "lessonIndices": [
-        1
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "scene": "sv5-2",
-      "gi": 3,
-      "lessonIndices": [
-        2
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "scene": "sv5-4",
-      "gi": 3,
-      "lessonIndices": [
-        1
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g7-surface-volume",
-      "scene": "sv6-1",
-      "gi": 3,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g8-pythagoras",
-      "scene": "py8-quad",
-      "gi": 7,
-      "lessonIndices": [
-        1
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g8-quadrilaterals",
-      "scene": "q4-2",
-      "gi": 3,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g8-quadrilaterals",
-      "scene": "q4-2",
-      "gi": 3,
-      "lessonIndices": [
-        1
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g8-quadrilaterals",
-      "scene": "q4-2",
-      "gi": 3,
-      "lessonIndices": [
-        2
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g8-quadrilaterals",
-      "scene": "q4-2",
-      "gi": 3,
-      "lessonIndices": [
-        3
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g8-quadrilaterals",
-      "scene": "q4-2",
-      "gi": 3,
-      "lessonIndices": [
-        4
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g8-quadrilaterals",
-      "scene": "q4-2",
-      "gi": 3,
-      "lessonIndices": [
-        5
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g8-quadrilaterals",
-      "scene": "q4-2",
-      "gi": 3,
-      "lessonIndices": [
-        6
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g8-quadrilaterals",
-      "scene": "q4-2",
-      "gi": 3,
-      "lessonIndices": [
-        7
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g8-similarity",
-      "scene": "sm7-river",
-      "gi": 6,
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": false,
-      "reason": "Recheck observed glyph boundary or low-ink risk and preserve real frames for independent visual review."
-    },
-    {
-      "lab": "g8-triangles",
-      "scene": "t3-3",
-      "lessonIndices": [
-        0,
-        7
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Eight-lesson selector layout and final lesson next routing; stronger UI control contract only."
-    },
-    {
-      "lab": "prob-stats",
-      "scene": "ci",
-      "lessonIndices": [
-        4
-      ],
-      "views": [
-        "390x844",
-        "1440x900"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Final catalog lesson next button must return to contents; stronger UI control contract only."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "scene": "z3-circleProof",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "844x390"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Independent visual finding: verify short-landscape restored formula, height label and handle separation."
-    },
-    {
-      "lab": "g7-circle-sector",
-      "scene": "z3-sectorProof",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "844x390"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Independent visual finding: verify short-landscape restored formula, height label and handle separation."
-    },
-    {
-      "lab": "common-quadratic",
-      "scene": "trapIrrationalCoeffs",
-      "lessonIndices": [
-        0
-      ],
-      "views": [
-        "390x844",
-        "360x640"
-      ],
-      "capture": true,
-      "playback": true,
-      "reason": "Long answer prose formerly forced into a single KaTeX text box; verify readable natural wrapping."
-    },
-    {
-      "lab": "g7-construction",
-      "scene": "c4-3",
-      "lessonIndices": [
-        0,
-        1
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "reason": "Numeric choices were literally undefined; preserve fixed native initial and ending question captures."
-    },
-    {
-      "lab": "g7-construction",
-      "scene": "c6-1",
-      "lessonIndices": [
-        1,
-        2,
-        3
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "reason": "Numeric choices were literally undefined; preserve fixed native initial and ending question captures."
-    },
-    {
-      "lab": "g7-construction",
-      "scene": "c6-2",
-      "lessonIndices": [
-        1,
-        2,
-        3
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "reason": "Numeric choices were literally undefined; preserve fixed native initial and ending question captures."
-    },
-    {
-      "lab": "g7-construction",
-      "scene": "c6-3",
-      "lessonIndices": [
-        1,
-        2
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "reason": "Numeric choices were literally undefined; preserve fixed native initial and ending question captures."
-    },
-    {
-      "lab": "g7-construction",
-      "scene": "c6-4",
-      "lessonIndices": [
-        1,
-        2,
-        3
-      ],
-      "views": [
-        "390x844"
-      ],
-      "capture": true,
-      "reason": "Numeric choices were literally undefined; preserve fixed native initial and ending question captures."
-    },
-    {
-      "lab": "g7-proportion",
-      "views": [
-        "390x844"
-      ],
-      "reason": "Required regression after confirmed shared entry/footer production fix; previous native math and playback proof stays historical."
-    }
-  ],
-  "selectionHistory": [
-    {
-      "totalLabs": 58,
-      "totalScenes": 1067,
-      "totalLessons": 2989,
-      "priorNativeFunctionLessonsReused": 102,
-      "priorNativeFunctionScenesWithTargetedAdditionalRegression": 15,
-      "unchangedFunctionScenesExcludedFromNewBrowserRun": 87,
-      "previouslyUnverifiedLessonUnits": 2887,
-      "primaryMobileRegressionFunctionUnits": 15,
-      "additionalViewportUnits": 40,
-      "selectedUniqueLessons": 2902,
-      "selectedUniqueScenes": 980,
-      "selectedViewportUnits": 2942,
-      "capturedViewportUnits": 121,
-      "nativeContinuousViewportUnits": 121,
-      "normalSpeedViewportUnits": 2
-    }
+    {"lab":"g7-construction","scene":"c1-1","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c1-1","gi":0,"lessonIndices":[1],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":true,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c1-1","gi":0,"lessonIndices":[2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c1-2","gi":0,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c1-3","gi":0,"lessonIndices":[0,1],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c1-4","gi":0,"lessonIndices":[0,1,2],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c1-5","gi":0,"lessonIndices":[0,1],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c2-1","gi":1,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c2-2","gi":1,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c2-3","gi":1,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c3-1","gi":2,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c3-2","gi":2,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c3-3","gi":2,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c3-4","gi":2,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c3-5","gi":2,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c4-1","gi":3,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c4-2","gi":3,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c4-3","gi":3,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-construction","scene":"c4-3","gi":3,"lessonIndices":[1],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-construction","scene":"c4-3","gi":3,"lessonIndices":[1],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-construction","scene":"c5-1","gi":4,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c5-2","gi":4,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c5-3","gi":4,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c6-1","gi":5,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c6-1","gi":5,"lessonIndices":[1,2,3],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c6-2","gi":5,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c6-2","gi":5,"lessonIndices":[1,2,3],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c6-3","gi":5,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c6-3","gi":5,"lessonIndices":[1,2],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c6-4","gi":5,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c6-4","gi":5,"lessonIndices":[1,2,3],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"z0-center","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"z0-diameter","gi":0,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"z0-arc","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"z0-sector","gi":0,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"z0-segment","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1101","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1207","gi":1,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1102","gi":1,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1103","gi":1,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1106","gi":1,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1210","gi":1,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1607","gi":1,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1609","gi":1,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1610","gi":1,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1808","gi":1,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1209","gi":1,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"z2-semi","gi":2,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"z2-quarter","gi":2,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"z2-sector","gi":2,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"z2-segment","gi":2,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"z3-circleProof","gi":3,"lessonIndices":[0],"views":["844x390"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-circle-sector","scene":"z3-circleProof","gi":3,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-circle-sector","scene":"z3-sectorProof","gi":3,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-circle-sector","scene":"z3-sectorProof","gi":3,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-circle-sector","scene":"z3-sectorProof","gi":3,"lessonIndices":[0],"views":["1024x768"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-circle-sector","scene":"z3-sectorProof","gi":3,"lessonIndices":[0],"views":["820x1180"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-circle-sector","scene":"z3-sectorProof","gi":3,"lessonIndices":[0],"views":["844x390"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-circle-sector","scene":"z3-sectorProof","gi":3,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-circle-sector","scene":"f1-star","gi":4,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f1-ss2","gi":4,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f1-lens","gi":4,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f1-ex22","gi":4,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f1-ring","gi":4,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"rot","gi":5,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"sj1","gi":5,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"y12","gi":5,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"cc08","gi":5,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"lune13","gi":5,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"petal15","gi":5,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"nc","gi":5,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"ns","gi":5,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"ns","gi":5,"lessonIndices":[1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f3-leaf-len","gi":6,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f3-rect-sector","gi":6,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f3-two-arcs","gi":6,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f3-crescent","gi":6,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f3-four-leaf","gi":6,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f3-two-circles","gi":6,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f3-half-sector","gi":6,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f3-leaf-area","gi":6,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f3-two-rects","gi":6,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f4-sq12","gi":7,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f4-circ2","gi":7,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f4-turn","gi":7,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f4-slide","gi":7,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f4-slideq","gi":7,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f4-swirl","gi":7,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f4-inscr","gi":7,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f4-ringmv","gi":7,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f5-sn","gi":8,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f5-ring","gi":8,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f5-ring240","gi":8,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f5-star","gi":8,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f5-lens","gi":8,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f5-cut","gi":8,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f5-track","gi":8,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f5-sq4","gi":8,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f5-rect","gi":8,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f5-tri3","gi":8,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"f5-line","gi":8,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"rl-rect","gi":9,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"rl-tri","gi":9,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"rl-rtri","gi":9,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"rl-turn60","gi":9,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"rl-turn45","gi":9,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"rl-semi","gi":9,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"rl-square","gi":9,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"sw-square","gi":10,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"sw-square","gi":10,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"sw-rect","gi":10,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"sw-rect","gi":10,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"sw-tri","gi":10,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-circle-sector","scene":"sw-tri","gi":10,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-circle-sector","scene":"sw-center","gi":10,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"sw-center","gi":10,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"sw-inside","gi":10,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"gt-kennel","gi":11,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"gt-warehouse","gi":11,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"gt-tri","gi":11,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"gt-hex","gi":11,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"gt-spiral","gi":11,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1719","gi":12,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1807","gi":12,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1104","gi":12,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1105","gi":12,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"1809","gi":12,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-circle-sector","scene":"x01","gi":12,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv1-1","gi":0,"lessonIndices":[0,1],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv1-1","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv1-1","gi":0,"lessonIndices":[0],"views":["1024x768"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv1-1","gi":0,"lessonIndices":[0],"views":["820x1180"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv1-1","gi":0,"lessonIndices":[0],"views":["844x390"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv1-1","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv1-2","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv1-3","gi":0,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv1-4","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv2-1","gi":1,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv2-2","gi":1,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv2-3","gi":1,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv2-4","gi":1,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv2-5","gi":1,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv2-6","gi":1,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv2-7","gi":1,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv4-1","gi":1,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv4-1","gi":1,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv4-1","gi":1,"lessonIndices":[1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv3-1","gi":2,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv3-2","gi":2,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv3-3","gi":2,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv3-4","gi":2,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv3-5","gi":2,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv3-6","gi":2,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv3-7","gi":2,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv1-5","gi":3,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-surface-volume","scene":"sv1-5","gi":3,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-surface-volume","scene":"sv1-5","gi":3,"lessonIndices":[1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv4-2","gi":3,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv4-3","gi":3,"lessonIndices":[0,1],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv4-3","gi":3,"lessonIndices":[1],"views":["360x640"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv4-4","gi":3,"lessonIndices":[0,1],"views":["360x640"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv4-4","gi":3,"lessonIndices":[0,1],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv5-1","gi":3,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv5-2","gi":3,"lessonIndices":[0,1,2],"views":["360x640"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv5-2","gi":3,"lessonIndices":[0,1,2],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv5-3","gi":3,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv5-4","gi":3,"lessonIndices":[0,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv5-4","gi":3,"lessonIndices":[1],"views":["360x640"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv5-4","gi":3,"lessonIndices":[1],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv5-5","gi":3,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv5-6","gi":3,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv6-1","gi":3,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-surface-volume","scene":"sv6-1","gi":3,"lessonIndices":[1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"common-circle-eq","scene":"generalForm","gi":0,"lessonIndices":[2],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t1a","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t1a","gi":0,"lessonIndices":[1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t1b","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t2a","gi":1,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t2b","gi":1,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t3a","gi":2,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t3b","gi":2,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t4a","gi":3,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t4b","gi":3,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t5a","gi":4,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t5b","gi":4,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t6a","gi":5,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"alg-exp-deep","scene":"t6a","gi":5,"lessonIndices":[1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t6b","gi":5,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t7a","gi":6,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t7b","gi":6,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t8a","gi":7,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-exp-deep","scene":"t8b","gi":7,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type1-0","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type1-0","gi":0,"lessonIndices":[1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type1-1","gi":0,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type2-0","gi":1,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type2-1","gi":1,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type3-0","gi":2,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type3-1","gi":2,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type4-0","gi":3,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type4-1","gi":3,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type5-0","gi":4,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type5-1","gi":4,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type6-0","gi":5,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type6-1","gi":5,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type7-0","gi":6,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type7-1","gi":6,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type8-0","gi":7,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"type8-1","gi":7,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"br-tree","gi":8,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"cyc-table","gi":9,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"pt-tri-diff","gi":10,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"pt-tri-sum","gi":10,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"fig-repeat","gi":11,"lessonIndices":[0],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"fig-repeat","gi":11,"lessonIndices":[1],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-tangent","scene":"secant","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-tangent","scene":"secant","gi":0,"lessonIndices":[1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-tangent","scene":"mvt","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-tangent","scene":"mvt","gi":0,"lessonIndices":[1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-tangent","scene":"cusp","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-tangent","scene":"normal","gi":0,"lessonIndices":[0,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-tangent","scene":"normal","gi":0,"lessonIndices":[1],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"calc1-tangent","scene":"common","gi":0,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-tangent","scene":"tanint","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-tangent","scene":"mvtband","gi":0,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-cubic","scene":"box","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-cubic","scene":"box","gi":0,"lessonIndices":[1,2,3,4,5],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-cubic","scene":"oblique","gi":0,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-cubic","scene":"area","gi":0,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-cubic","scene":"sync","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-cubic","scene":"external","gi":0,"lessonIndices":[0,1],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-cubic","scene":"external","gi":0,"lessonIndices":[2,3,4],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"calc1-quartic","scene":"triple","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-quartic","scene":"triple","gi":0,"lessonIndices":[1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-quartic","scene":"sym","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-quartic","scene":"area","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-quartic","scene":"sync","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-quartic","scene":"fold","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-quartic","scene":"fold","gi":0,"lessonIndices":[4],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-motion","scene":"disp","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-motion","scene":"disp","gi":0,"lessonIndices":[1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-motion","scene":"turn","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-motion","scene":"origin","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-motion","scene":"chase","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-motion","scene":"trap","gi":0,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-motion","scene":"trap","gi":0,"lessonIndices":[3],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode1","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode1","gi":0,"lessonIndices":[1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode2","gi":0,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode3","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode3","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode3","gi":0,"lessonIndices":[0],"views":["1024x768"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode3","gi":0,"lessonIndices":[0],"views":["820x1180"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode3","gi":0,"lessonIndices":[0],"views":["844x390"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode3","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode3","gi":0,"lessonIndices":[1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode4","gi":0,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode5","gi":0,"lessonIndices":[0,1,2,3,4,5],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode6","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode7","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode8","gi":0,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode8","gi":0,"lessonIndices":[3],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"1-A","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"1-A","gi":0,"lessonIndices":[1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"1-B","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"2-A","gi":1,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"2-B","gi":1,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"2-C","gi":1,"lessonIndices":[0,1,2,3,4,5,6,7],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"3-A","gi":2,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"3-B","gi":2,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"3-C","gi":2,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"4-A","gi":3,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"4-B","gi":3,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"hex5","gi":4,"lessonIndices":[0,1,2],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"rng6","gi":5,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"rng6","gi":5,"lessonIndices":[4],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-figure","scene":"m1","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-figure","scene":"m1","gi":0,"lessonIndices":[1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-figure","scene":"m2","gi":0,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-figure","scene":"m3","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-figure","scene":"m4","gi":0,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-figure","scene":"cnd5","gi":0,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-figure","scene":"ang6","gi":0,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-figure","scene":"ang6","gi":0,"lessonIndices":[4],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"combo","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"combo","gi":0,"lessonIndices":[1,2,3,4,5,6],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"func","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"func","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"func","gi":0,"lessonIndices":[0],"views":["1024x768"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"func","gi":0,"lessonIndices":[0],"views":["820x1180"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"func","gi":0,"lessonIndices":[0],"views":["844x390"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"func","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"func","gi":0,"lessonIndices":[1,2,3,4,5,6],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"perm","gi":0,"lessonIndices":[0,1,2,3,4,5,6],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"gap","gi":0,"lessonIndices":[0,1,2,3,4,5],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"circ","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"circ","gi":0,"lessonIndices":[1,2,3,4,5],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"circ","gi":0,"lessonIndices":[6],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-probability","scene":"grid","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-probability","scene":"grid","gi":0,"lessonIndices":[1,2,3,4,5,6],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-probability","scene":"cond","gi":1,"lessonIndices":[0,2,3,4,5,6],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-probability","scene":"cond","gi":1,"lessonIndices":[1],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-probability","scene":"rep-walk","gi":2,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-probability","scene":"rep-ball","gi":2,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-probability","scene":"rep-coin","gi":2,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-stats","scene":"dist","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-stats","scene":"dist","gi":0,"lessonIndices":[1,2,3,4,5],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-stats","scene":"binom","gi":1,"lessonIndices":[0,1,2,3,4],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-stats","scene":"std","gi":2,"lessonIndices":[0,1,2,3,4,5],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-stats","scene":"sym","gi":2,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-stats","scene":"pdf","gi":2,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-stats","scene":"mean","gi":3,"lessonIndices":[0,1,2,3,4,5,6],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-stats","scene":"ci","gi":4,"lessonIndices":[0,1,2,3],"views":["390x844"],"capture":false,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-stats","scene":"ci","gi":4,"lessonIndices":[4],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-stats","scene":"ci","gi":4,"lessonIndices":[4],"views":["390x844"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-quartic","scene":"triple","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-quartic","scene":"triple","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-motion","scene":"disp","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-motion","scene":"disp","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode1","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode1","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"1-A","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-ops","scene":"1-A","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-figure","scene":"m1","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-figure","scene":"m1","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"combo","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-counting","scene":"combo","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-stats","scene":"dist","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-stats","scene":"dist","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-quartic","scene":"triple","gi":0,"lessonIndices":[0],"views":["844x390"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-stats","scene":"dist","gi":0,"lessonIndices":[0],"views":["844x390"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-vector-figure","scene":"m1","gi":0,"lessonIndices":[0],"views":["820x1180"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"geom-space-coord","scene":"mode1","gi":0,"lessonIndices":[0],"views":["820x1180"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-probability","scene":"cond","gi":1,"lessonIndices":[1],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"prob-probability","scene":"cond","gi":1,"lessonIndices":[1],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"fig-repeat","gi":11,"lessonIndices":[1],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"alg-sequence","scene":"fig-repeat","gi":11,"lessonIndices":[1],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-tangent","scene":"mvt","gi":0,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-tangent","scene":"mvt","gi":0,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"calc1-tangent","scene":"normal","gi":0,"lessonIndices":[1],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"calc1-tangent","scene":"normal","gi":0,"lessonIndices":[1],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"alg-exp-deep","scene":"t6a","gi":5,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"alg-exp-deep","scene":"t6a","gi":5,"lessonIndices":[0],"views":["1440x900"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"calc1-cubic","scene":"external","gi":0,"lessonIndices":[2,3,4],"views":["360x640"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"calc1-cubic","scene":"external","gi":0,"lessonIndices":[2,3,4],"views":["1440x900"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"g7-circle-sector","scene":"z3-circleProof","gi":3,"lessonIndices":[0],"views":["360x640"],"capture":true,"playback":true,"normalPlayback":false,"captureQuestionScroll":false,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded.","captureAllSamples":true},
+    {"lab":"common-coord","scene":"tri","gi":0,"lessonIndices":[0],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":true,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g9-trig-ratio","scene":"sasAcuteLen","gi":3,"lessonIndices":[1],"views":["390x844"],"capture":true,"playback":false,"normalPlayback":false,"captureQuestionScroll":true,"diagnosticLimit":32,"reason":"Delta selection: source changes, unresolved checks or explicit missing visual contract; unchanged proven pairs excluded."},
+    {"lab":"g7-construction","scene":"c4-3","gi":3,"lessonIndices":[1],"views":["1440x900"],"capture":true,"captureAllSamples":true,"playback":true,"normalPlayback":false,"diagnosticLimit":32,"reason":"Independent visual control for the mobile angle-label fix."}
   ]
 }

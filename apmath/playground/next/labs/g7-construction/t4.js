@@ -364,9 +364,10 @@
       sideTag(b, Tr[0], Tr[1], cA, `${pk.c}`, { size: 16, color: 'sky' }); sideTag(b, Tr[2], Tr[0], cA, `${pk.b}`, { size: 16, color: 'sky' });
     } else {
       const ex = `${pk.p}x${pk.q > 0 ? '+' : '−'}${Math.abs(pk.q)}`;
-      ang(b, Tr[1], Tr[2], Tr[0], { color: 'rose', rings: 2, label: `(${ex})°`, r: 26, labelDist: 62 });
+      // Keep the original conditions outside the triangle when the copy overlaps it.
+      ang(b, Tr[1], Tr[2], Tr[0], { color: 'rose', rings: 2, label: `(${ex})°`, r: 26, labelOffset: { dx: 0, dy: 58 } });
       ang(b, img[1], img[2], img[0], { color: 'rose', rings: 2, label: `${pk.r}°`, r: 26, labelDist: 56 });
-      ang(b, Tr[0], Tr[1], Tr[2], { color: 'sky', rings: 1, label: `${pk.A}°`, r: 26, labelDist: 56 });
+      ang(b, Tr[0], Tr[1], Tr[2], { color: 'sky', rings: 1, label: `${pk.A}°`, r: 26, labelOffset: { dx: 0, dy: 34 } });
     }
   }
 

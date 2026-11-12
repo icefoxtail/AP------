@@ -106,6 +106,35 @@ test('actual correspondence labels and drawn side/angle conditions agree with th
   }
 });
 
+test('c4-3 angle conditions stay distinct and inside the canvas throughout mobile and desktop playback', () => {
+  const separate = (a, b) => a.r + 3 <= b.l || b.r + 3 <= a.l || a.b + 3 <= b.t || b.b + 3 <= a.t;
+  const box = item => {
+    const w = [...item.text].reduce((sum, ch) => sum + item.size * (/\s/.test(ch) ? .32 : ch.charCodeAt(0) >= 0x1100 ? 1 : .7), 0) + 4;
+    return { text: item.text, l: item.x - w / 2, r: item.x + w / 2, t: item.y - item.size / 2 - 2, b: item.y + item.size / 2 + 2 };
+  };
+  const value = state('c4-3', 1, 0), times = new Set([0, 18, value.compiled.length]);
+  for (let time = 0; time < value.compiled.length; time += .25) times.add(time);
+  for (const cue of value.compiled.cues) times.add(Math.min(cue.at + .001, value.compiled.length));
+  try {
+    for (const [width, height] of [[360, 326], [390, 529], [390, 629], [1024, 650]]) {
+      lab.setViewportWidth(width); lab.board.resize(width, height);
+      for (const time of times) {
+        const { frame } = draw('c4-3', 1, time), labels = frame.textItems.map(box);
+        const conditions = ['60°', '(3x+5)°', '50°'].map(text => {
+          const label = labels.find(item => item.text === text); assert.ok(label, `${width}/${time}: ${text} remains visible`); return label;
+        });
+        const names = labels.filter(item => /^[A-F]$/.test(item.text));
+        for (const label of [...conditions, ...names]) assert.ok(label.l >= 2 && label.r <= width - 2 && label.t >= 2 && label.b <= height - 2, `${width}/${time}: ${label.text} remains inside canvas`);
+        for (const label of conditions) for (const other of [...conditions, ...names]) if (label !== other) assert.ok(separate(label, other), `${width}/${time}: ${label.text} overlaps ${other.text}`);
+        const [original, image] = triangles(frame);
+        close(angle(original[0], original[1], original[2]), 60, 'original angle A');
+        close(angle(original[1], original[0], original[2]), 50, 'original angle B');
+        close(angle(image[1], image[0], image[2]), 50, 'corresponding angle E');
+      }
+    }
+  } finally { lab.setViewportWidth(1440); lab.board.resize(1000, 650); }
+});
+
 test('equal-area counterexamples use actual unequal triangles and correspondence order matches measured sides', () => {
   const { model } = state('c4-2', 0), { g } = model;
   assert.deepEqual(Array.from(g.sg), [1, 2, 0]);

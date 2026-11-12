@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
-const CONTRACT = 'native-seek-restore-v1', NATIVE = 'native-single-pass-v1';
+const CONTRACT = 'native-seek-restore-v1', NATIVE = 'native-single-pass-v1', REVIEWED = 'native-seek-restore-reviewed-v1';
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const HELP = `Usage: node player-audit-select.mjs --inventory CURRENT.json --baseline BASELINE.json --out TARGETS.json
   [--view 390x844] [--risk MANUAL_TARGETS.json] [--require-seek] | --self-test | --help
@@ -45,21 +45,59 @@ never promoted to seek/visual PASS. Its stronger-contract debt is optional; only
 --require-seek selects it for upgrading. This preserves the 87 earlier native-only
 function scenes instead of gratuitously rerunning their accepted overall scope.
 This selector does not certify independent visual quality, reading pace, or current external CDN bytes.
+For REVIEWED proof, browser.status is SCOPED_MANUAL_RESOLVED and the artifact also
+has a SHA-bound adjudications JSON. baseline.reviewAuthority names auditOwnerId
+and independentReviewerIds. Only original REVIEW_REQUIRED rows with every exact
+non-PASS check independently resolved can use this contract. Raw FAIL is forbidden.
+See player-audit-baseline.mjs --help for the adjudication schema. The decision is
+REUSED_VERIFIED_SCOPED_MANUAL_REVIEW, never an overall visual-quality PASS.
 `;
 const requiredChecks = ['initial player idle and answer unrevealed', 'one entry button per valid lesson',
   'native finish shows end card', 'close restores idle/explore, releases lesson state and pins',
   'restored parameters and sliders valid', 'no page runtime/resource/invalid-script errors'];
-function contractValid(r) {
+function contractValid(r, reviewedChecks = new Set()) {
   const checks = new Map((r.checks || []).map(c => [c.name, c.status]));
-  return r.status === 'PASS' && Number.isFinite(Date.parse(r.finishedAt)) && r.initial?.state?.player === 'idle' && r.final?.state?.player === 'ended' && r.restore?.state === 'idle'
+  const reviewed = reviewedChecks.size > 0 && r.status === 'REVIEW_REQUIRED';
+  return (r.status === 'PASS' || reviewed) && Number.isFinite(Date.parse(r.finishedAt)) && r.initial?.state?.player === 'idle' && r.final?.state?.player === 'ended' && r.restore?.state === 'idle'
     && r.restore.tab === 'explore' && r.restore.raf === 0 && r.restore.pins === 0 && !r.restore.bad?.length && !r.restore.mismatch?.length
     && !r.restore.dragging && r.restore.lessonOn === undefined && !r.restore.videoClass
-    && r.checks?.length > 0 && r.checks.every(c => c.status === 'PASS') && requiredChecks.every(c => checks.get(c) === 'PASS')
+    && r.checks?.length > 0 && r.checks.every(c => c.status === 'PASS' || reviewed && c.status === 'REVIEW_REQUIRED' && reviewedChecks.has(c.name)) && requiredChecks.every(c => checks.get(c) === 'PASS')
     && r.samplePlan?.length >= 2 && r.samples?.length === r.samplePlan.length
     && ['initial', 'last-frame-before-finish'].every(reason => r.samplePlan.some(p => p.reasons?.includes(reason)))
     && r.samplePlan.every((p, i) => Number.isFinite(p.time) && r.samples[i].time === p.time
       && r.samples[i].method === 'NATIVE_SEEK_FROZEN_QA_CLOCK' && r.samples[i].frame
       && checks.get(`t=${p.time}: rendered state remains bound to native timeline`) === 'PASS');
+}
+
+async function reviewedProof({ baseline, artifact, row, bound, dir }) {
+  if (!row.review?.baseValid) throw Error('RAW_REVIEW_CONTRACT_NOT_ELIGIBLE');
+  const authority = baseline.reviewAuthority;
+  if (!authority?.auditOwnerId || !Array.isArray(authority.independentReviewerIds) || authority.independentReviewerIds.includes(authority.auditOwnerId)) throw Error('MISSING_INDEPENDENT_REVIEW_AUTHORITY');
+  const doc = await bound(artifact?.adjudications), summary = await bound(artifact?.summary);
+  if (doc.schemaVersion !== 1 || doc.contract !== REVIEWED || !Array.isArray(doc.reviews)) throw Error('INVALID_ADJUDICATION_DOCUMENT');
+  const matches = doc.reviews.filter(a => a.rowKey === row.key && a.view === row.view && a.rowFileSha256 === artifact.rows.sha256 && a.rowJsonSha256 === row.jsonSha256);
+  if (matches.length !== 1) throw Error('MISSING_OR_AMBIGUOUS_ADJUDICATION');
+  const a = matches[0], names = row.review.checkNames;
+  if (a.sourceSha !== summary.sourceSha || a.rowLine !== row.line || a.auditOwnerId !== authority.auditOwnerId || a.reviewerId === authority.auditOwnerId || !authority.independentReviewerIds.includes(a.reviewerId)) throw Error('ADJUDICATION_SOURCE_ROW_OR_REVIEWER_MISMATCH');
+  if (a.verdict !== 'RESOLVED_AS_EXPECTED' || !a.reason?.trim() || !Number.isFinite(Date.parse(a.reviewedAt)) || Date.parse(a.reviewedAt) < Date.parse(row.finishedAt) || !Array.isArray(a.checks)
+    || new Set(a.checks.map(c => c.name)).size !== names.length || a.checks.length !== names.length || a.checks.some(c => !names.includes(c.name))) throw Error('ADJUDICATION_CHECK_COVERAGE_INCOMPLETE');
+  const rawDir = path.dirname(path.resolve(dir, artifact.rows.file)), images = [];
+  const safe = s => String(s).replace(/[^a-zA-Z0-9@_-]/g, '_');
+  for (const c of a.checks) {
+    if (!c.reason?.trim() || !Array.isArray(c.images) || !c.images.length) throw Error('ADJUDICATION_IMAGE_MISSING');
+    for (const p of c.images) {
+      if (typeof p.file !== 'string' || p.file !== path.basename(p.file) || !/^[a-f0-9]{64}$/i.test(p.sha256 || '') || !row.review.screenshots.includes(p.file)) throw Error('ADJUDICATION_IMAGE_NOT_IN_RAW_ROW');
+      const label = c.name.slice(0, c.name.indexOf(': '));
+      const capture = row.review.captures.some(f => f.file === p.file && f.checks?.includes(c.name));
+      const standard = label === 'initial' ? 'initial' : label === 'seek-ended' ? 'ended' : /^t=\d+(?:\.\d+)?$/.test(label) ? `sample-${label.slice(2)}` : null;
+      if (!capture && !(standard && row.review.frameLabels.includes(label) && p.file === `${safe(row.key)}--${safe(standard)}.png`)) throw Error('ADJUDICATION_IMAGE_CHECK_MISMATCH');
+      const bytes = fs.readFileSync(path.join(rawDir, p.file)), [width, height] = row.view.split('x').map(Number);
+      if (hash(bytes) !== p.sha256.toLowerCase()) throw Error('ADJUDICATION_IMAGE_HASH_MISMATCH');
+      if (bytes.length < 24 || bytes.subarray(0, 8).toString('hex') !== '89504e470d0a1a0a' || bytes.readUInt32BE(16) !== width || bytes.readUInt32BE(20) !== height) throw Error('ADJUDICATION_PNG_VIEWPORT_MISMATCH');
+      images.push({ file: p.file, sha256: p.sha256 });
+    }
+  }
+  return { reviewerId: a.reviewerId, reviewedAt: a.reviewedAt, checkNames: names, images, adjudicationsSha256: artifact.adjudications.sha256, rowJsonSha256: row.jsonSha256 };
 }
 function nativeValid(report, r) {
   const check = name => r.checks?.find(c => c.name === name), entry = check('idle entry with one native lesson and concealed answer')?.evidence;
@@ -89,8 +127,10 @@ export async function selectAudit({ inventory, baselineFile, view = '390x844', r
       const rows = new Map(); let line = 0;
       for await (const text of readline.createInterface({ input: fs.createReadStream(file), crlfDelay: Infinity })) {
         line++; if (!text.trim()) continue;
-        const r = JSON.parse(text), item = { line, key: r.key, lab: r.lab, scene: String(r.scene), gi: r.gi,
-          lessonIndex: r.lessonIndex, view: r.view, sourceFingerprint: r.sourceFingerprint, valid: !!contractValid(r) };
+        const r = JSON.parse(text), nonPass = (r.checks || []).filter(c => c.status !== 'PASS'), item = { line, key: r.key, lab: r.lab, scene: String(r.scene), gi: r.gi,
+          lessonIndex: r.lessonIndex, view: r.view, sourceFingerprint: r.sourceFingerprint, finishedAt: r.finishedAt, jsonSha256: hash(text), valid: !!contractValid(r),
+          ...(r.status === 'REVIEW_REQUIRED' ? { review: { baseValid: nonPass.length > 0 && nonPass.every(c => c.status === 'REVIEW_REQUIRED') && contractValid(r, new Set(nonPass.map(c => c.name))), checkNames: nonPass.map(c => c.name),
+            screenshots: r.screenshots || [], captures: r.firstFailureCaptures || [], frameLabels: [r.initial?.label, ...(r.samples || []).map(s => s.frame?.label), r.final?.label].filter(Boolean) } } : {}) };
         if (!rows.has(r.key)) rows.set(r.key, []); rows.get(r.key).push(item);
       }
       return rows;
@@ -111,11 +151,11 @@ export async function selectAudit({ inventory, baselineFile, view = '390x844', r
       const matching = entries.get(`${unit.key}@${view}`) || [];
       if (matching.length !== 1) throw Error(matching.length ? 'AMBIGUOUS_BASELINE_UNIT' : reason);
       const b = matching[0].dimensions?.browser;
-      if (b?.status !== 'PASS' || ![CONTRACT, NATIVE].includes(b.contract)) throw Error('UNVERIFIED_OR_DIFFERENT_CONTRACT');
+      if (![CONTRACT, NATIVE, REVIEWED].includes(b?.contract) || b.status !== (b.contract === REVIEWED ? 'SCOPED_MANUAL_RESOLVED' : 'PASS')) throw Error('UNVERIFIED_OR_DIFFERENT_CONTRACT');
       if (!unit.dimensions?.browser?.fingerprint || unit.dimensions.browser.fingerprint !== b.fingerprint) throw Error('CHANGED_BROWSER_INPUT');
       if (oldUnits.get(unit.key)?.dimensions?.browser?.fingerprint !== b.fingerprint) throw Error('BASELINE_INVENTORY_BINDING_MISMATCH');
       const artifact = baseline.artifacts?.[b.artifact];
-      let rows, nativeReport;
+      let rows, nativeReport, scopedManualResolved;
       if (b.contract === NATIVE) {
         nativeReport = await bound(artifact?.nativeReport);
         if (view !== '390x844' || unit.lessonIndex !== 0 || b.rowKey !== unit.key) throw Error('NATIVE_SCOPE_MISMATCH');
@@ -127,9 +167,10 @@ export async function selectAudit({ inventory, baselineFile, view = '390x844', r
       }
       if (rows.length !== 1) throw Error('MISSING_OR_AMBIGUOUS_RAW_ROW');
       const r = rows[0];
-      if (!r.valid) throw Error('RAW_CONTRACT_NOT_PASS');
+      if (b.contract === REVIEWED) scopedManualResolved = await reviewedProof({ baseline, artifact, row: r, bound, dir });
+      else if (!r.valid) throw Error('RAW_CONTRACT_NOT_PASS');
       if (r.lab !== unit.lab || r.scene !== String(unit.scene) || r.lessonIndex !== unit.lessonIndex || r.view !== view
-        || b.contract === CONTRACT && (!Number.isInteger(r.gi) || r.gi < 0 || r.key !== `${r.lab}:${r.scene}@${r.gi}:${r.lessonIndex}:${r.view}`)
+        || b.contract !== NATIVE && (!Number.isInteger(r.gi) || r.gi < 0 || r.key !== `${r.lab}:${r.scene}@${r.gi}:${r.lessonIndex}:${r.view}`)
         || unit.key !== `${r.lab}/${r.scene}/${r.lessonIndex}`) throw Error('RAW_IDENTITY_OR_VIEWPORT_MISMATCH');
       const bindingKey = `${b.artifact}/${r.lab}/${r.sourceFingerprint || nativeReport.source}`;
       if (!sourceChecks.has(bindingKey)) {
@@ -141,18 +182,19 @@ export async function selectAudit({ inventory, baselineFile, view = '390x844', r
         if (!lab || !inputs.length || inputs.filter(f => /\.(?:html|js|css|woff2?|ttf)$/i.test(f.path)).some(f => files.get(f.path) !== f.sha256)) throw Error('RAW_SOURCE_CLOSURE_INCOMPLETE');
         sourceChecks.set(bindingKey, true);
       }
-      proof = { contract: b.contract, artifact: b.artifact, rowKey: r.key, ...(b.contract === CONTRACT ? { rowLine: r.line } : {}) };
-      reason = b.contract === NATIVE ? 'VERIFIED_UNCHANGED_PRIOR_NATIVE_SCOPE' : 'VERIFIED_UNCHANGED';
+      proof = { contract: b.contract, artifact: b.artifact, rowKey: r.key, ...(b.contract !== NATIVE ? { rowLine: r.line } : {}), ...(scopedManualResolved ? { scopedManualResolved } : {}) };
+      reason = b.contract === NATIVE ? 'VERIFIED_UNCHANGED_PRIOR_NATIVE_SCOPE' : b.contract === REVIEWED ? 'VERIFIED_UNCHANGED_WITH_SCOPED_REVIEW' : 'VERIFIED_UNCHANGED';
       if (b.contract === NATIVE && requireSeek) { priorProof = proof; proof = null; reason = 'STRONGER_SEEK_CONTRACT_REQUESTED'; }
     } catch (e) { reason = String(e.message); }
-    decisions.push({ key: unit.key, view, status: proof ? (proof.contract === NATIVE ? 'REUSED_VERIFIED_PRIOR_NATIVE_SCOPE' : 'REUSED_VERIFIED_PASS') : 'NOT_RUN', reason,
+    decisions.push({ key: unit.key, view, status: proof ? (proof.contract === NATIVE ? 'REUSED_VERIFIED_PRIOR_NATIVE_SCOPE' : proof.contract === REVIEWED ? 'REUSED_VERIFIED_SCOPED_MANUAL_REVIEW' : 'REUSED_VERIFIED_PASS') : 'NOT_RUN', reason,
       ...(proof ? { proof, ...(proof.contract === NATIVE ? { optionalStrongerContractDebt: CONTRACT } : {}) } : {}), ...(priorProof ? { priorProof } : {}) });
     if (!proof) targets.push({ lab: unit.lab, scene: String(unit.scene), lessonIndices: [unit.lessonIndex], views: [view], reason });
   }
   return { schemaVersion: 1, phase: 'DELTA_STAGE2', contract: CONTRACT, requireSeek, view, visualEducationalQuality: 'NOT_ASSERTED',
     selection: { totalPrimaryUnits: inventory.units.length, automaticallySelected: targets.length,
       excludedFromAutomaticPrimaryTargets: decisions.filter(d => d.status.startsWith('REUSED_VERIFIED')).length,
-      retainedPriorNativeScope: decisions.filter(d => d.status === 'REUSED_VERIFIED_PRIOR_NATIVE_SCOPE').length, explicitRiskTargets: riskTargets.length },
+      retainedPriorNativeScope: decisions.filter(d => d.status === 'REUSED_VERIFIED_PRIOR_NATIVE_SCOPE').length,
+      retainedScopedManualReview: decisions.filter(d => d.status === 'REUSED_VERIFIED_SCOPED_MANUAL_REVIEW').length, explicitRiskTargets: riskTargets.length },
     targets: [...targets, ...riskTargets], decisions };
 }
 
