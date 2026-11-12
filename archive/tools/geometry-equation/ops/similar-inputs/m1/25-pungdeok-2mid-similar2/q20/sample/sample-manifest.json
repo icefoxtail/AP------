@@ -1,0 +1,247 @@
+{
+  "status": "SAMPLE_ONLY",
+  "sourceRef": {
+    "path": "archive/exams/similar/middle/m1/2mid/25_풍덕중_2학기_중간_중1_유사2.js",
+    "bytes": 55337,
+    "sha256": "sha256:e1a2dfa6d30eae00286aeb6bd76ab22d154ea649ccf795c9e43db34f5678ba3b"
+  },
+  "gitBlob": "af9a64b0b3aeab4c26c4d39fc0e2e2dab12a23ea",
+  "sourceRefBranch": "work/similar-m1-accumulate",
+  "questionUid": "25_풍덕중_2학기_중간_중1_유사2|20",
+  "questionSha256": "sha256:d4d806d57f8a94edf2afdf140ed400cd12e0f4a668b6e8339314aa1ce2f652ee",
+  "typographyPolicy": {
+    "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+    "requestedSizeClass": "full",
+    "baseFontPx": 24,
+    "displayScale": 1,
+    "fontFloorCssPx": 11
+  },
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "engineMainRef": "1206d96c524b4fc50afc83311d2a6131c7e5ab46",
+  "engineChanges": [],
+  "browserPackage": "@sparticuz/chromium@143.0.4",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false,
+  "surfaces": [
+    {
+      "surface": "problem",
+      "identity": {
+        "questionUid": "25_풍덕중_2학기_중간_중1_유사2|20",
+        "surface": "PROBLEM_VISUAL",
+        "visualRole": "decisive-relation",
+        "visualAssetKey": "sha256:ad7be7da52b8c42c93143e42107d173f4c31b10a39bab6bb2fb770180cb7a1b3",
+        "assetId": "va-4c5a57d54f488c4255921332beedf5b9a9ea9cc1839cbeab4d27f50785347f4f"
+      },
+      "status": "SAMPLE_ONLY",
+      "compositionStatus": "COMPOSED",
+      "planRef": {
+        "path": "pung25-q20-inputs/problem-plan.json",
+        "bytes": 5969,
+        "sha256": "sha256:776fb2a1b91efcd81794cc286eb45e1df7090bafa0f68bf3183b571ccf2044ac"
+      },
+      "svgRef": {
+        "path": "pung25-q20-outputs/problem.svg",
+        "bytes": 17448,
+        "sha256": "sha256:d937dfce301dc0577584b9bf984c42c34530b1296a1a7c1dd3b6872de652a419"
+      },
+      "pngRef": {
+        "path": "pung25-q20-outputs/problem.png",
+        "bytes": 10649,
+        "sha256": "sha256:b7d555cc6b6693d0dd9116a586b041b31a1fa4f7a7aa6258c79b549ddc0c0406"
+      },
+      "staticAudit": {
+        "status": "PASS",
+        "errors": [],
+        "planeMarks": {
+          "status": "PASS",
+          "errors": [],
+          "observations": [
+            {
+              "id": "given60",
+              "type": "ANGLE",
+              "drawnDegrees": 59.999999999749576,
+              "pointsDegrees": 59.99999999999999,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "radiusOuter",
+              "type": "DIMENSION",
+              "style": "BAR",
+              "side": "BELOW",
+              "offset": 1,
+              "lengthPx": 434.1279009744137,
+              "distancePx": 75
+            },
+            {
+              "id": "radiusInner",
+              "type": "DIMENSION",
+              "style": "BAR",
+              "side": "BELOW",
+              "offset": 1,
+              "lengthPx": 217.06395048720685,
+              "distancePx": 30
+            },
+            {
+              "id": "arcOuter",
+              "type": "ARC",
+              "drawnDegrees": 60.000000000040984,
+              "radius": 12
+            },
+            {
+              "id": "arcInner",
+              "type": "ARC",
+              "drawnDegrees": 60.00000000013671,
+              "radius": 6
+            },
+            {
+              "id": "band",
+              "type": "REGION",
+              "loops": 1,
+              "pattern": null,
+              "labelKind": "MATH",
+              "areaPx2": 73996.75618902117
+            }
+          ]
+        }
+      },
+      "renderedLayout": {
+        "status": "PASS",
+        "display": {
+          "width": 720,
+          "height": 560
+        },
+        "errors": []
+      },
+      "lineage": {
+        "planSha256": "sha256:82a011e217a2a2c3008dc529d4c933632eeca27a4ed9ffc423230a9e2f665257",
+        "modelSha256": "sha256:b6f81f37b3a7573cf102466c68cecbd8e82cd2c6fff599439f1c416c38d0877c",
+        "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
+        "specSha256": "sha256:362365b65488f949682da32542a3e3b715772c6534f81fa0bc245d252727d9a7",
+        "fragmentSha256s": {
+          "O-name": "sha256:7f68bd91a92ae5412546333373481b5aef8899919deb1a8167270910732d96e7",
+          "given60-label": "sha256:8fcf5401def69b1da3f8f4fe66cffea797d01bc32ae0f5464ca24a465b03a2ed",
+          "radiusOuter-label": "sha256:9e3b33166c266fcadad001dc52c176d4f3d5ad925e2c729554c6e6c9e50a9979",
+          "radiusInner-label": "sha256:50fb7b70036261196afe5c5a6c53f0df52aaec0bba20749c14e03e55f124b00c"
+        },
+        "measurementsSha256": "sha256:c1f33e54c58bf5844825e85679d0a528a4d07ef9438c5f5a68bf25bfe4b60adc",
+        "svgSha256": "sha256:d937dfce301dc0577584b9bf984c42c34530b1296a1a7c1dd3b6872de652a419",
+        "witnessSha256": "sha256:b7dd2cbb3ff91453a5e744f32d96b276a1f120064a6d0a192eb74aa65c070895",
+        "staticAuditSha256": "sha256:cc16914cb9a25f0a8ad1d1654cb7687de340424e36ab0ead21b9cc0d7875e223",
+        "renderedLayoutSha256": "sha256:f100678f40d01f87c7536471a9d85d3eedf22a5c69698ff0a7341cd32c159dce"
+      }
+    },
+    {
+      "surface": "solution",
+      "identity": {
+        "questionUid": "25_풍덕중_2학기_중간_중1_유사2|20",
+        "surface": "SOLUTION_VISUAL",
+        "visualRole": "decisive-relation",
+        "visualAssetKey": "sha256:ed72c52bcee42cd766dc3c50932396564dd379e10f0ca13c6c04e694a17f1041",
+        "assetId": "va-ce0b7ef32f36724789256bd739e90dc5d02c26741db89fc7b67bed150a1d0a56"
+      },
+      "status": "SAMPLE_ONLY",
+      "compositionStatus": "COMPOSED",
+      "planRef": {
+        "path": "pung25-q20-inputs/solution-plan.json",
+        "bytes": 5969,
+        "sha256": "sha256:0fa034745a016daba212f391e8fe4aa90691ffe6b5e46cbb8b8d01ecda98e685"
+      },
+      "svgRef": {
+        "path": "pung25-q20-outputs/solution.svg",
+        "bytes": 17448,
+        "sha256": "sha256:a88c04e27d21f123b025a56adcfb26e731d920bc5aff0ea552eb7875682e1c8f"
+      },
+      "pngRef": {
+        "path": "pung25-q20-outputs/solution.png",
+        "bytes": 10649,
+        "sha256": "sha256:b7d555cc6b6693d0dd9116a586b041b31a1fa4f7a7aa6258c79b549ddc0c0406"
+      },
+      "staticAudit": {
+        "status": "PASS",
+        "errors": [],
+        "planeMarks": {
+          "status": "PASS",
+          "errors": [],
+          "observations": [
+            {
+              "id": "given60",
+              "type": "ANGLE",
+              "drawnDegrees": 59.999999999749576,
+              "pointsDegrees": 59.99999999999999,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "radiusOuter",
+              "type": "DIMENSION",
+              "style": "BAR",
+              "side": "BELOW",
+              "offset": 1,
+              "lengthPx": 434.1279009744137,
+              "distancePx": 75
+            },
+            {
+              "id": "radiusInner",
+              "type": "DIMENSION",
+              "style": "BAR",
+              "side": "BELOW",
+              "offset": 1,
+              "lengthPx": 217.06395048720685,
+              "distancePx": 30
+            },
+            {
+              "id": "arcOuter",
+              "type": "ARC",
+              "drawnDegrees": 60.000000000040984,
+              "radius": 12
+            },
+            {
+              "id": "arcInner",
+              "type": "ARC",
+              "drawnDegrees": 60.00000000013671,
+              "radius": 6
+            },
+            {
+              "id": "band",
+              "type": "REGION",
+              "loops": 1,
+              "pattern": null,
+              "labelKind": "MATH",
+              "areaPx2": 73996.75618902117
+            }
+          ]
+        }
+      },
+      "renderedLayout": {
+        "status": "PASS",
+        "display": {
+          "width": 720,
+          "height": 560
+        },
+        "errors": []
+      },
+      "lineage": {
+        "planSha256": "sha256:ef7f8dddab0b0ea5b6d038b5dc01625a1398f45017ae50ccb44420940b384497",
+        "modelSha256": "sha256:b6f81f37b3a7573cf102466c68cecbd8e82cd2c6fff599439f1c416c38d0877c",
+        "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
+        "specSha256": "sha256:544d5aee79a27abeb1620e492d6c9bf097c1a72916899271d599155f46db5355",
+        "fragmentSha256s": {
+          "O-name": "sha256:4a08e41772be8eaf39dee4e23eac6f50216ae9eb1e6713b378d1c1e816aaaf22",
+          "given60-label": "sha256:2e727adfb4a8f7f0e1cf1216d1a6d08981137e88fb7e0928e8bfc45b2c062c5a",
+          "radiusOuter-label": "sha256:89e47ffb5b9c20a5bb7a09a6943be9f8aeb6c7860566d79c55eb142d38605fb9",
+          "radiusInner-label": "sha256:4f59b683f904ac45dbe88d004d85dfe1d4841e57b091e472f98f9d1bb28d2b15"
+        },
+        "measurementsSha256": "sha256:c1f33e54c58bf5844825e85679d0a528a4d07ef9438c5f5a68bf25bfe4b60adc",
+        "svgSha256": "sha256:a88c04e27d21f123b025a56adcfb26e731d920bc5aff0ea552eb7875682e1c8f",
+        "witnessSha256": "sha256:9ac22c3141b60b082d0bb2cc734d1452ac0390086e8b80592ff25f9d41ffaec8",
+        "staticAuditSha256": "sha256:53fccfe3914d9898084eed1988758ce3561211bf70213644676ffeb8bea5c38a",
+        "renderedLayoutSha256": "sha256:5f500c06744d1818f045b3eb00b5e7bf7d31b6741efce421c659b2c0927ab722"
+      }
+    }
+  ],
+  "browserVersion": "143.0.7499.0",
+  "browserContext": "ONE_TRANSIENT_SHARED_CONTEXT"
+}

@@ -1,0 +1,308 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inner",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given60",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 60,
+        "label": "60",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcOuter",
+        "circle": "outer",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CCW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcInner",
+        "circle": "inner",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "CCW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "band",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "B",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "D"
+                },
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "A"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "radiusOuter",
+        "from": "O",
+        "to": "A",
+        "label": "12",
+        "unit": "cm",
+        "style": "BAR",
+        "side": "BELOW",
+        "offsetPx": 75,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "radiusInner",
+        "from": "O",
+        "to": "C",
+        "label": "6",
+        "unit": "cm",
+        "style": "BAR",
+        "side": "BELOW",
+        "offsetPx": 30,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "큰 부채꼴24π − 작은 부채꼴6π = 색칠한 띠18π cm²",
+  "sourceQuote": "중심각60°, 안쪽 반지름6cm, 바깥쪽 반지름12cm인 띠",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "중심각60°, 안쪽 반지름6cm, 바깥쪽 반지름12cm인 띠",
+      "mappedTo": [
+        "O",
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE"
+}
