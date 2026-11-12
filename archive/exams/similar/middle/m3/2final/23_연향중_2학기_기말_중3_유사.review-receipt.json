@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "similar-exam-candidate-review-receipt-v1",
+  "examUid": "23_연향중_2학기_기말_중3_유사",
+  "source": {
+    "documentId": "1qy7U8ggo_pY5Cuy7jux3OQU43dhuNE1e4ygawT4w29E",
+    "revisionId": "AHj4eMTCHjBS03zEFxqLgt-SNSB7PDEW1zIBuwLXH93sCa3fvEMCdAR6oPzsJtVYKq1WcXrAnQAVeXsHi9G3fkVogT5wakO9qj-DygCp2qc",
+    "title": "23_연향중_2학기_기말_중3_유사_일체형.md",
+    "questionCount": 24,
+    "totalScore": 100,
+    "declaredSourceArchiveFile": "original/middle/m3/2final/23_연향중_2학기_기말_중3_기출.js",
+    "resolvedSourceArchiveFile": null,
+    "resolvedSourceGitBlobSha1": null,
+    "sourcePathStatus": "DECLARED SOURCE FILE NOT FOUND on current main or accumulator branch"
+  },
+  "candidateJs": "archive/exams/similar/middle/m3/2final/23_연향중_2학기_기말_중3_유사.js",
+  "candidateBlobSha1": "1bb5ec7f831a4d91b61e7718f97daf8260de6f3c",
+  "authoringStatus": "CANDIDATE_DRAFT_WITH_CONTENT_REPAIRS_AND_VISUAL_DEBT",
+  "sourceAudit": {
+    "mainAndAccumulatorDuplicate": "NO_SAME_CANDIDATE_PATH_FOUND",
+    "relatedBranches": "NO_EXACT_MATCH_FOUND",
+    "relatedPullRequests": "NO_EXACT_MATCH_FOUND",
+    "localOwnership": "NO_OTHER_WORKTREE_FOR_THIS_TARGET; /workspace worktree owns separate 24 Pungdeok task",
+    "declaredSourcePathFound": false,
+    "docTables": 0,
+    "docInlineOrPositionedObjects": 0,
+    "2024And2025Variants": "Distinct named exams were not treated as aliases or modified",
+    "mainHeadSha": "5d94eac054d4ed15f4c4902c7522e590d5f01417",
+    "accumulatorHeadShaBeforeCandidate": "9095531ec49eb0c75950bd28d129387f64a791e8"
+  },
+  "contentRepairs": [
+    {
+      "question": 9,
+      "issue": "Given data 7,5,x,4,14 did not yield stated answer 15: its median was 7 and mean 9.",
+      "repair": "Changed one datum 14 to 12, answer to 7, updated options and case-checked uniqueness."
+    },
+    {
+      "question": 10,
+      "issue": "Stray $12$: token at start of solution.",
+      "repair": "Removed stray token."
+    },
+    {
+      "question": 13,
+      "issue": "Stem listed values but omitted what to find; solution and 4-slot goal identify deviation of 9.",
+      "repair": "Restored explicit question: deviation of value 9."
+    },
+    {
+      "question": 23,
+      "issue": "Stem omitted A-group count/mean/SD although solution uses 12 students, mean 6, SD 2; total 30 and B count18 imply A count12.",
+      "repair": "Made A group data explicit, grounded in the given solution."
+    },
+    {
+      "question": 24,
+      "issue": "Stem requests 3 evidence-backed facts; answer/solution only contained one sample fact.",
+      "repair": "Added three distinct facts from the supplied chart point list and verified count 8/20 for y≤6."
+    },
+    {
+      "question": "4,8",
+      "issue": "Malformed centimeter tokens (\rm,cm / m,cm).",
+      "repair": "Normalized to \\,\\mathrm{cm}."
+    },
+    {
+      "question": 13,
+      "issue": "Answer position distribution had five ① and three ② answers; item answer remains 0.",
+      "repair": "Swapped the first two choices only so the already verified 0 answer is ② and all answer slots distribute four each."
+    },
+    {
+      "question": 10,
+      "issue": "Stem only contained the data series despite the solution finding the mode.",
+      "repair": "Restored the explicit ask “find the mode”."
+    },
+    {
+      "question": 14,
+      "issue": "Stem only contained the data series despite the choices/solution asking which statement is correct.",
+      "repair": "Restored the explicit ask for the correct statement."
+    }
+  ],
+  "mathReview": {
+    "status": "MANUAL_REVIEW_CANDIDATE_WITH_UNVERIFIED_DIAGRAM_LAYOUTS",
+    "summary": "Checked all 24 stems/options/answers/solutions and numerical plans. Q5/Q6 geometry answer depends on exact diagram ray/angle placement; source embeds no figure object, so preserved the MD key and left layout verification pending. Q17 plan points lack explicit A-E point-label mapping; candidate keeps MD answer A and records this for figure verification. No original question JS path was found on main/accumulator; 2024/2025 exams were not used as substitutes.",
+    "openIssues": [
+      "Q5 tangent ray direction / parallel-chord point order needs figure verification before final visual pass.",
+      "Q6 x-angle orientation at intersection depends on the original diagram; MD plan only supplies caption.",
+      "Q17 stat chart plan lists 5 coordinates but not explicit label-to-point mapping; confirm A is upper-left in the produced figure.",
+      "Declared sourceArchiveFile is not present on main or accumulator branch; source binding remains unresolved."
+    ]
+  },
+  "metadataReview": {
+    "status": "EVIDENCE_DEBT; UNREGISTERED PT/TPL PROPOSALS KEPT IN UNCLASSIFIED FILE",
+    "candidateRows": 24,
+    "resolverStatus": "NOT_RUN",
+    "4slotStatus": "PREPARED_UNREVIEWED_24; validate-4slot FAIL0 WARN25",
+    "registrationStatus": "NOT_SUBMITTED",
+    "unregisteredPttProposals": [
+      "PT_CIRCLE_LINE_RELATION",
+      "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "PT_M3_LINEAR_TRANSFORMATION_STATISTICS"
+    ]
+  },
+  "visualReview": {
+    "status": "NEEDS_FOLLOWUP",
+    "problemNeed": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      17,
+      18,
+      20,
+      21,
+      22,
+      24
+    ],
+    "solutionNeed": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      17,
+      18,
+      20,
+      21,
+      22,
+      24
+    ],
+    "createdAssets": [],
+    "renderedItems": [],
+    "notes": [
+      "No SVG/PNG figures were created or viewed.",
+      "Question-specific capability/data plans and P/S rationale are preserved; 13 problem figures remain blockers.",
+      "Q17 plan point labels remain unconfirmed."
+    ],
+    "productionStatus": "BLOCKED_13_UNSUPPORTED_PROBLEM_FIGURES; Q5/Q6/Q17_LAYOUT_REVIEW_PENDING"
+  },
+  "checks": {
+    "nodeCheck": "PASS",
+    "tableCheck": "PASS_1_FILE_0_FAIL",
+    "similarExamHarness": "DRAFT_GATE_FAIL_13_UNSUPPORTED_PROBLEM_FIGURES; content/balance/meta gates pass",
+    "questionCount": "24",
+    "totalPoints": 100,
+    "candidateBlobSha1": "1bb5ec7f831a4d91b61e7718f97daf8260de6f3c",
+    "4slotCheck": "PASS_FAIL0_WARN25 (review still UNREVIEWED)"
+  },
+  "userScope": "Read the supplied 23 Yeonhyang M3 2final MD, repair clear candidate mistakes, keep P/S image checklist, commit and push to work/similar-m3-accumulate; no screen, no new PR or main merge; do not touch 24/25 variants."
+}
