@@ -1,0 +1,39 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "can",
+      "kind": "CYLINDER",
+      "radius": 2,
+      "height": 12,
+      "stack": {
+        "count": 3,
+        "radius": 2
+      },
+      "baseFill": {
+        "face": "TOP",
+        "fill": "LIGHT"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "solid": "can",
+      "diameter": "bottom",
+      "side": "BOTTOM",
+      "label": "4"
+    }
+  ],
+  "caption": "지름 4 cm인 원기둥에 공 3개가 꼭 맞게 들어 있음",
+  "sourceQuote": "현 유사 Q19 원기둥 지름4와 꼭 맞게 들어 있는 공3개",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "원기둥 지름4, 공3개가 벽과 서로 접하며 높이방향으로 꼭맞음",
+      "mappedTo": [
+        "can"
+      ]
+    }
+  ]
+}
