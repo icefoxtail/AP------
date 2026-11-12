@@ -1369,7 +1369,16 @@
           ]
         }
       ]
-    }
+    },
+    "correctionLog": [
+      {
+        "scope": "Q11 ray order/solution",
+        "before": "The stem gave ∠AOF=180° and angle ratios but did not state that rays OB,OC,OD,OE subdivide that straight angle in order; the solution assumed the adjacent-angle order and ∠COE=x+y.",
+        "after": "Specified OB,OC,OD,OE on one side of AF and the OA-to-OF ray order; clarified that the five named angles are consecutive adjacent parts of the straight angle.",
+        "independentCheck": "Set ∠COD=x and ∠DOE=y. Then ∠BOC=2x and ∠EOF=2y, and the explicit order gives 30+2x+x+y+2y=180, so x+y=50. Since D is between C and E, ∠COE=x+y=50°, uniquely answer ②. Author-side independent check; formal independent review pending.",
+        "sourceImageAudit": "The current Drive MD Q11 has only text paragraphs and no inline image; the candidate JS has no image fields. Order condition was therefore made explicit in the wording."
+      }
+    ]
   },
   "variantDecision": {
     "existingMainIdentity": "25_연향중_2학기_중간_중1_유사",
@@ -1774,7 +1783,7 @@
   ],
   "validation": {
     "jsSyntax": "PASS (node --check)",
-    "mathReview": "Q19 author-side independent SSA check: with AB=6 and angle A=40°, C lies on a fixed ray from A; BC=8 places C on a circle centered at B with radius 8. Since A is inside that circle (AB=6<8), the ray from A meets the circle exactly once. Thus ㄷ has exactly one triangle; ㄱ,ㄴ,ㄷ are true and answer ④. Formal independent review remains UNREVIEWED.",
+    "mathReview": "Q19 author-side independent SSA check: with AB=6 and angle A=40°, C lies on a fixed ray from A; BC=8 places C on a circle centered at B with radius 8. Since A is inside that circle (AB=6<8), the ray from A meets the circle exactly once. Thus ㄷ has exactly one triangle; ㄱ,ㄴ,ㄷ are true and answer ④. Formal independent review remains UNREVIEWED. Q11 ray order added; adjacent-angle equation gives COE=50° and answer ②, author-checked; formal independent review pending.",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "NOT_RUN",
     "metadataMarkerAudit": {
@@ -1786,7 +1795,7 @@
     }
   },
   "pipelineState": "PARTIALLY_BLOCKED_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "0432622d32906d2d153af7f9f34e35b49744754f",
+  "expectedSourceBlobSha1": "0f74a80d46688d941ee538bb1b7eea78fcf10c11",
   "currentMainReleaseAudit": {
     "mainCommit": "c07df518f76927602fa8cb789b9ecd8e5e0d08f2",
     "existingSimilarJs": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사.js",

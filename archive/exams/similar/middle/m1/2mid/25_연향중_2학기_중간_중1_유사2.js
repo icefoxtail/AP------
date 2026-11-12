@@ -380,7 +380,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "직선 위의 한 점 $O$에 대하여 $\\angle AOF = 180^\\circ$이다. $\\angle AOB = 30^\\circ$이고, $\\angle BOC : \\angle COD = 2 : 1$, $\\angle DOE : \\angle EOF = 1 : 2$일 때, $\\angle COE$의 크기는?",
+    "content": "반직선 $OB, OC, OD, OE$는 직선 $AF$의 한쪽에 있고, 반직선 $OA$에서 $OF$까지의 순서는 $OA, OB, OC, OD, OE, OF$이다. 따라서 다섯 각 $\\angle AOB, \\angle BOC, \\angle COD, \\angle DOE, \\angle EOF$는 차례로 이어진다. 직선 위의 한 점 $O$에 대하여 $\\angle AOF = 180^\\circ$이다. $\\angle AOB = 30^\\circ$이고, $\\angle BOC : \\angle COD = 2 : 1$, $\\angle DOE : \\angle EOF = 1 : 2$일 때, $\\angle COE$의 크기는?",
     "choices": [
       "$45^\\circ$",
       "$50^\\circ$",
@@ -392,7 +392,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
     "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
-    "solution": "$\\angle COD = x^\\circ, \\angle DOE = y^\\circ$라 하면 주어진 비례 조건에 의해 $$\\begin{aligned} \\angle BOC &= 2x^\\circ \\ \\angle EOF &= 2y^\\circ \\end{aligned}$$ 이다. $\\angle AOF$는 평각($180^\\circ$)이므로 $$\\begin{aligned} 30^\\circ + 2x + x + y + 2y &= 180^\\circ \\ 3x + 3y &= 150^\\circ \\ 3(x + y) &= 150^\\circ \\ x + y &= 50^\\circ \\end{aligned}$$ 이다. 따라서 $\\angle COE$의 크기는 $$\\begin{aligned} \\angle COE &= x + y = 50^\\circ \\end{aligned}$$ 이므로 정답은 ②이다.",
+    "solution": "주어진 순서에 따라 다섯 각은 서로 이웃하여 평각 $\\angle AOF$를 이룬다. $\\angle COD=x^\\circ$, $\\angle DOE=y^\\circ$라 하면 비례 조건에 따라 $\\angle BOC=2x^\\circ$, $\\angle EOF=2y^\\circ$이다. 따라서 $30^\\circ+2x+x+y+2y=180^\\circ$이므로 $3(x+y)=150^\\circ$, $x+y=50^\\circ$이다. 점 D가 C와 E 사이에 있으므로 $\\angle COE=x+y=50^\\circ$. 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
