@@ -228,7 +228,7 @@
     guide:'노란 점 P를 움직여 두 좌표와 축까지의 보조선을 비교하세요.',
     steps:(v,m)=>['원점에서 가로 방향을 먼저 읽어요.',T`가로 좌표는 $x=${F(v.x)}$예요.`,T`세로 좌표는 $y=${F(v.y)}$예요.`,T`순서쌍은 $P${xy(m.P)}$예요.`],
     answer:(v,m)=>T`$P${xy(m.P)}$: 가로 좌표 다음에 세로 좌표`,
-    draw:(b,v,m,c)=>{M.drag(b,c,'P',m.P,{x:'x',y:'y',label:'P'});if(c.step>=1)M.projection(b,m.P);if(c.step>=2)M.riseRun(b,O,m.P,{dxLabel:N(v.x),dyLabel:N(v.y)});},
+    draw:(b,v,m,c)=>{M.projection(b,m.P);M.drag(b,c,'P',m.P,{x:'x',y:'y',label:'P'});if(c.step>=2)M.riseRun(b,O,m.P,{dxLabel:N(v.x),dyLabel:N(v.y)});},
     verify:(v,m)=>[!close(m.P.x,v.x)&&'가로 좌표 불일치',!close(m.P.y,v.y)&&'세로 좌표 불일치'].filter(Boolean)
   }));
   coord.push(make({
@@ -249,7 +249,7 @@
     question:(v,m)=>T`점 $A${xy(m.A)}$를 가로로 $${F(v.dx)}$, 세로로 $${F(v.dy)}$만큼 옮깁니다. 도착점 B를 확인하세요.`,
     guide:'이동량의 부호를 바꾸어 오른쪽·왼쪽, 위·아래 움직임을 비교하세요.',
     steps:(v,m)=>[T`출발점은 $A${xy(m.A)}$예요.`,T`가로 좌표에 $${F(v.dx)}$를 더해요.`,T`세로 좌표에 $${F(v.dy)}$를 더해요.`,T`도착점은 $B${xy(m.B)}$예요.`],
-    answer:(v,m)=>T`$B${xy(m.B)}$`,draw:(b,v,m,c)=>{M.point(b,m.A,'A');M.point(b,m.B,'B',{color:'amber'});if(c.step>=1)M.riseRun(b,m.A,m.B,{dxLabel:N(v.dx),dyLabel:N(v.dy)});},
+    answer:(v,m)=>T`$B${xy(m.B)}$`,draw:(b,v,m,c)=>{M.riseRun(b,m.A,m.B,{color:'muted',width:1.5,dash:[5,4]});M.point(b,m.A,'A');M.point(b,m.B,'B',{color:'amber'});if(c.step>=1)M.riseRun(b,m.A,m.B,{dxLabel:N(v.dx),dyLabel:N(v.dy)});},
     verify:(v,m)=>[!close(m.B.x-m.A.x,v.dx)&&'가로 이동 불일치',!close(m.B.y-m.A.y,v.dy)&&'세로 이동 불일치'].filter(Boolean)
   }));
   coord.push(make({
@@ -298,13 +298,13 @@
     question:v=>v.mode?T`$(3a,2b+2)=(${F(4*v.a)}-a,-2b+${F(4*v.b+2)})$일 때 $a,b$를 구하세요.`:T`$A(2a,a-${F(v.a)})$는 x축, $B(b-${F(v.b)},-2b)$는 y축 위에 있습니다. $a,b$를 구하세요.`,
     guide:'조건 프리셋을 바꾸어 축의 0인 좌표와 순서쌍의 같은 성분을 비교하세요.',
     steps:v=>v.mode?['같은 순서쌍은 같은 위치의 수가 같아요.',T`첫째 성분에서 $3a=${F(4*v.a)}-a$예요.`,T`둘째 성분에서 $2b+2=-2b+${F(4*v.b+2)}$예요.`,T`$a=${F(v.a)},\ b=${F(v.b)}$예요.`]:['x축 위의 점은 세로 좌표가 0이에요.',T`$a-${F(v.a)}=0$을 세워요.`,T`y축 위에서는 $b-${F(v.b)}=0$이에요.`,T`$a=${F(v.a)},\ b=${F(v.b)}$예요.`],
-    answer:v=>T`$a=${F(v.a)},\ b=${F(v.b)}$`,draw:(b,v,m,c)=>{if(v.mode){M.point(b,m.Q,'두 순서쌍');if(c.step)M.projection(b,m.Q);}else{M.point(b,m.A,'A');M.point(b,m.B,'B',{color:'rose'});if(c.step>=1){M.label(b,P(m.A.x,0),'y=0',{dy:23});M.label(b,P(0,m.B.y),'x=0',{dx:25});}}}
+    answer:v=>T`$a=${F(v.a)},\ b=${F(v.b)}$`,draw:(b,v,m,c)=>{if(v.mode){M.point(b,m.Q,'두 순서쌍');if(c.step)M.projection(b,m.Q);}else{b.seg(O,m.A,{color:'sky',width:3});b.seg(O,m.B,rose);M.point(b,m.A,'A');M.point(b,m.B,'B',{color:'rose'});if(c.step>=1){M.label(b,P(m.A.x,0),'y=0',{dy:23});M.label(b,P(0,m.B.y),'x=0',{dx:32,dy:14});}}}
   }));
   coord.push(make({
     id:'axis-distance',tier:'basic',title:'점과 좌표축 사이의 거리',types:['A06'],vars:{x:V('점의 가로 좌표',5,-5,5),y:V('점의 세로 좌표',4,-5,5)},model:v=>({P:P(v.x,v.y),dx:Math.abs(v.x),dy:Math.abs(v.y)}),
     question:(v,m)=>T`$P${xy(m.P)}$에서 x축까지, y축까지의 거리를 각각 구하세요.`,guide:'점을 다른 사분면으로 옮겨도 거리가 음수가 되지 않는 이유를 보세요.',
     steps:(v,m)=>['축과 수직인 가장 짧은 선분을 그어요.',T`x축까지의 거리는 $|${F(v.y)}|=${F(m.dy)}$예요.`,T`y축까지의 거리는 $|${F(v.x)}|=${F(m.dx)}$예요.`,'거리는 0 이상이므로 좌표의 절댓값을 써요.'],answer:(v,m)=>T`x축까지 $${F(m.dy)}$, y축까지 $${F(m.dx)}$`,
-    draw:(b,v,m,c)=>{M.drag(b,c,'P',m.P,{x:'x',y:'y',label:'P'});if(c.step>=1)b.seg(m.P,P(v.x,0),{color:'amber',width:3});if(c.step>=2)b.seg(m.P,P(0,v.y),rose);if(c.solved){M.label(b,P(v.x,v.y/2),N(m.dy),{dx:15,color:'amber'});M.label(b,P(v.x/2,v.y),N(m.dx),{dy:-15,color:'rose'});}},
+    draw:(b,v,m,c)=>{M.projection(b,m.P);M.drag(b,c,'P',m.P,{x:'x',y:'y',label:'P'});if(c.step>=1)b.seg(m.P,P(v.x,0),{color:'amber',width:3});if(c.step>=2)b.seg(m.P,P(0,v.y),rose);if(c.solved){M.label(b,P(v.x,v.y/2),N(m.dy),{dx:15,color:'amber'});M.label(b,P(v.x/2,v.y),N(m.dx),{dy:-15,color:'rose'});}},
     verify:(v,m)=>[m.dx<0||m.dy<0?'음의 거리':false,!close(m.dx*m.dx,v.x*v.x)&&'x축성분 거리 오류'].filter(Boolean)
   }));
   coord.push(make({
