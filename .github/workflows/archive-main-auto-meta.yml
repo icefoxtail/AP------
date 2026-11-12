@@ -70,7 +70,7 @@ jobs:
   register:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 150
     permissions:
       contents: write
       actions: write
@@ -94,12 +94,12 @@ jobs:
           python-version: '3.12'
       - name: Prepare only changed native registration lanes in one transaction
         id: prepare
-        timeout-minutes: 35
+        timeout-minutes: 70
         run: node tools/ci/archive-registration-writer.mjs --work-dir "$WRITER_WORK_DIR"
       - name: Persist verified lanes, native cursors and receipts once with race-safe regeneration
         id: persist
         if: steps.prepare.outputs.safe_to_persist == 'true'
-        timeout-minutes: 45
+        timeout-minutes: 90
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
