@@ -368,7 +368,7 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
       return out+'</g>';
     };
     const {width,height:stackHeight,cellWidth,cellHeight}=compositeStackSize(parts.map(part=>part.size),sharedRows.length,panelLayout,captionRow);
-    if(stackHeight*typographyPolicy.displayScale>COMPOSITE_MAX_DISPLAY_HEIGHT_PX)throw new Stop('COMPOSITE_TOO_TALL',{displayHeightPx:stackHeight*typographyPolicy.displayScale,limitPx:COMPOSITE_MAX_DISPLAY_HEIGHT_PX});
+    if(stackHeight*typographyPolicy.displayScale>COMPOSITE_MAX_DISPLAY_HEIGHT_PX)throw new Stop('COMPOSITE_TOO_TALL',{displayHeightPx:stackHeight*typographyPolicy.displayScale,limitPx:COMPOSITE_MAX_DISPLAY_HEIGHT_PX,panels:parts.length,layout:panelLayout.kind});
     let y=COMPOSITE_TOP_MARGIN,body='';
     if(sharedRows.length)body+=`<g id="shared-rows" data-role="shared-rows" data-font-px="${typographyPolicy.baseFontPx}">`;
     sharedRows.forEach((fragment,i)=>{

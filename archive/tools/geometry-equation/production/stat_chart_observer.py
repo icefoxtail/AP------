@@ -822,6 +822,11 @@ def audit_stem(chart, doc):
     # class groups: a bracket under exactly the leaves of the class, its count (counted here from the plan) centred below it
     wanted = class_plan(chart, groups)
     brackets = doc.role('polyline', 'class-bracket')
+    # the optional colour of each class (classGroups[].color, a palette name): its bracket line and its count glyphs must carry exactly that colour, a bracket without one stays #111
+    class_colour = {}
+    for cl in chart.get('classGroups') or []:
+        if cl.get('color') is not None and cl['color'] not in DOT_PALETTE_LINE: fail('STAT_STEM_CLASS_COLOR_INVALID')
+        class_colour[(int(cl.get('group', 0)), int(cl['from']), int(cl['to']))] = cl.get('color')
     if sorted((int(b.get('data-group')), int(b.get('data-from')), int(b.get('data-to'))) for b in brackets) != sorted((w[0], w[1], w[2]) for w in wanted): doc.err('SC_CLASS_SET_MISMATCH')
     for b in brackets:
         key3 = (int(b.get('data-group')), int(b.get('data-from')), int(b.get('data-to')))
@@ -829,6 +834,10 @@ def audit_stem(chart, doc):
         if len(found) != 1: continue
         gi, frm, to, stem, inside, count, has_label = found[0]
         tag = '%d-%d-%d' % key3
+        colour = class_colour.get(key3)
+        want_line = DOT_PALETTE_LINE[colour] if colour else '#111'
+        drawn_line = (b.get('stroke') or '').lower()
+        if (drawn_line != want_line if colour else drawn_line in DOT_PALETTE_LINE.values()) or b.get('data-color') != colour: doc.err('SC_CLASS_BRACKET_COLOR:' + tag)
         try: pts = [tuple(float(v) for v in pair.split(',')) for pair in b.get('points').split()]
         except Exception: doc.err('SC_CLASS_BRACKET_POINTS:' + tag); continue
         if len(pts) != 4 or abs(pts[0][0] - pts[1][0]) > TOL or abs(pts[2][0] - pts[3][0]) > TOL or abs(pts[1][1] - pts[2][1]) > TOL or abs(pts[0][1] - pts[3][1]) > TOL or not pts[1][1] > pts[0][1]:
@@ -852,6 +861,7 @@ def audit_stem(chart, doc):
             try: shown = tex_number(counts[0].get('data-tex'))
             except ValueError as e: doc.err(str(e) + ':' + tag); continue
             if shown != count: doc.err('SC_CLASS_COUNT_VALUE:' + tag)
+            if (counts[0].get('color') or '').lower() != (want_line if colour else '') or counts[0].get('data-color') != colour: doc.err('SC_CLASS_COUNT_COLOR:' + tag)
             cx, _ = centre(counts[0])
             if abs(cx - (xl + xr) / 2) > LABEL_TOL: doc.err('SC_CLASS_COUNT_NOT_CENTRED:' + tag)
             if box_of(counts[0])[1] < yb: doc.err('SC_CLASS_COUNT_NOT_BELOW:' + tag)
