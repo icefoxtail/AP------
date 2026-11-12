@@ -1,0 +1,75 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "FREQUENCY_POLYGON",
+    "boundaries": [
+      "0",
+      "2",
+      "4",
+      "6",
+      "8",
+      "10",
+      "12"
+    ],
+    "series": [
+      {
+        "name": "남학생 200명",
+        "relativeFrequencies": [
+          "0.05",
+          "0.10",
+          "0.20",
+          "0.25",
+          "0.30",
+          "0.10"
+        ]
+      },
+      {
+        "name": "여학생 160명",
+        "relativeFrequencies": [
+          "0.10",
+          "0.20",
+          "0.25",
+          "0.30",
+          "0.10",
+          "0.05"
+        ]
+      }
+    ],
+    "yKind": "RELATIVE",
+    "xTitle": "운동 시간(시간)",
+    "yTitle": "상대도수",
+    "grid": true,
+    "highlightClasses": [
+      3,
+      4,
+      5
+    ],
+    "classSums": [
+      {
+        "series": 0,
+        "from": 3,
+        "to": 5,
+        "label": "0.65"
+      },
+      {
+        "series": 1,
+        "from": 3,
+        "to": 5,
+        "label": "0.45"
+      }
+    ]
+  },
+  "caption": "6~8시간 남50명·여48명 / 6시간 이상 비율 남0.65·여0.45",
+  "sourceConditions": [
+    {
+      "id": "table",
+      "condition": "최신유사판Q18전체표 남200명 여160명",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제의 표를 그래프로 바꿔 나타냄. 원문에 없는 자료나 계산 결과는 문제에 추가하지 않음."
+  ]
+}
