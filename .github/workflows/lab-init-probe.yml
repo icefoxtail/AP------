@@ -1,0 +1,40 @@
+name: Lab startup diagnostic probe
+on:
+  push:
+    branches: ['audit/apmath-player-fast-*']
+    paths:
+      - '.github/workflows/lab-init-probe.yml'
+      - 'apmath/playground/next/tools/lab-init-probe.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            apmath/playground
+            apmath/css
+            apmath/js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install the existing browser test runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/player-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/player-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Preserve startup failures before a player exists
+        timeout-minutes: 5
+        env:
+          NODE_PATH: ${{ runner.temp }}/player-browser/node_modules
+        run: node apmath/playground/next/tools/lab-init-probe.mjs --out "$RUNNER_TEMP/lab-init-probe"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lab-init-probe-${{ github.sha }}
+          path: ${{ runner.temp }}/lab-init-probe
+          if-no-files-found: error
+          retention-days: 90
