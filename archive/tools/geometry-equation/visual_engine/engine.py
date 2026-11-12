@@ -489,8 +489,11 @@ def prepare(spec):
         axes=[]
         if show_x:axes.append(('x-axis',(xmin,0),(xmax,0)))
         if show_y:axes.append(('y-axis',(0,ymin),(0,ymax)))
+        zero_pole=any(pole.get('boundary') and pole['x']=='0' for pole in (trig_interval_features or {}).get('poles',[]))
         for oid,a,b in axes:
-            primitive({'id':oid,'kind':'line','from':vp.screen(a),'to':vp.screen(b),'token':'axis','layer':30,'role':'axis','axis':oid[0]},'axis')
+            # An excluded tangent pole on x=0 shares the y-axis; the axis must leave its dashes visible.
+            dash={'dash':'5 4'} if oid=='y-axis' and zero_pole else {}
+            primitive({'id':oid,'kind':'line','from':vp.screen(a),'to':vp.screen(b),'token':'axis','layer':30,'role':'axis','axis':oid[0],**dash},'axis')
         axis_tick_values=spec['displayFacts'].get('axisTickValues')
         if axis_tick_values is not None:
             if not isinstance(axis_tick_values,dict):raise ValueError('INVALID_AXIS_TICK_VALUES')
