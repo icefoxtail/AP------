@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "26_순천여고_1학기_기말_고1_유사",
+  "sourceExam": "archive/exams/original/high/h1/1final/26_순천여고_1학기_기말_고1_기출.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "reusedGeneratedKeys": [
+    {
+      "key": "EXT-L4-ABS-SUM-INEQUALITY-INTERVAL-SPLIT",
+      "definedIn": "archive/data/meta-foundation/extensions/similar-high/26_금당고_1학기_기말_고1_유사.registry.json",
+      "usedInQids": [
+        8
+      ]
+    },
+    {
+      "key": "EXT-L4-CUBE-ROOT-OF-UNITY-CONJUGATE-POWER-SUM",
+      "definedIn": "archive/data/meta-foundation/extensions/similar-high/26_순천고_1학기_기말_고1_유사.registry.json",
+      "usedInQids": [
+        15
+      ]
+    },
+    {
+      "key": "EXT-L4-CUBIC-ROOT-FACTORED-QUADRATIC-DISTINCT-REAL-ROOTS-PARAMETER",
+      "definedIn": "archive/data/meta-foundation/extensions/similar-high/26_매산고_1학기_기말_고1_유사.registry.json",
+      "usedInQids": [
+        20,
+        21
+      ]
+    }
+  ],
+  "generatedL4": [],
+  "generatedCrossConcepts": [],
+  "generatedConditions": [
+    {
+      "key": "EXT-COND-THREE-DISTINCT-REAL-ROOTS",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "방정식이 서로 다른 세 실근을 가진다는 조건",
+      "definition": "삼차방정식의 세 근이 모두 실수이고 서로 달라야 한다는 조건. 인수분해한 일차식의 근이 이차식의 근과 겹치는 경우를 제외하게 한다.",
+      "parentKey": "COND_RANGE",
+      "parentLabelKo": "범위 조건",
+      "standardUnitKey": "H22-C-06",
+      "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "기존 Condition 중 방정식의 근이 서로 다른 실근이어야 한다는 조건을 가리키는 키가 없다.",
+      "firstUsed": {
+        "stem": "26_순천여고_1학기_기말_고1_유사",
+        "qid": 21
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1final/26_순천여고_1학기_기말_고1_기출.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-12",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "aliasProposals": [],
+  "noStudentRelease": true
+}
