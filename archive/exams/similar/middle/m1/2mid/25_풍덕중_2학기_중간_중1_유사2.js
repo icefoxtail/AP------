@@ -512,7 +512,7 @@ window.questionBank = [
       "삼각형이 하나로 정해지는 조건"
     ],
     "wide": false,
-    "content": "$\\triangle ABC$에서 $\\overline{AB} = 7\\,\\mathrm{cm}, \\overline{BC} = 4\\,\\mathrm{cm}$일 때, $\\triangle ABC$가 오직 하나의 삼각형으로 결정되기 위해 필요한 추가 조건을 보기에서 모두 고른 것은? [4점]\nㄱ. $\\angle A = 50^\\circ$\nㄴ. $\\angle B = 70^\\circ$\nㄷ. $\\overline{AC} = 3\\\\,\\mathrm{cm}$\nㄹ. $\\overline{AC} = 5\\\\,\\mathrm{cm}$",
+    "content": "$\\triangle ABC$에서 $\\overline{AB} = 7\\,\\mathrm{cm}, \\overline{BC} = 4\\,\\mathrm{cm}$일 때, $\\triangle ABC$가 오직 하나의 삼각형으로 결정되기 위해 필요한 추가 조건을 보기에서 모두 고른 것은? [4점]\nㄱ. $\\angle A = 30^\\circ$\nㄴ. $\\angle B = 70^\\circ$\nㄷ. $\\overline{AC} = 3\\,\\mathrm{cm}$\nㄹ. $\\overline{AC} = 5\\,\\mathrm{cm}$",
     "choices": [
       "ㄱ, ㄴ",
       "ㄴ, ㄹ",
@@ -524,7 +524,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_TRIANGLE_MISSING_CONDITION_MULTI_CHOICE",
-    "solution": "삼각형의 유일 결정 조건(SAS, SSS)과 삼각형의 형성 부등식을 함께 확인한다. $$\\begin{aligned} &\\text{두 변 } \\overline{AB} = 7\\,\\mathrm{cm}, ; \\overline{BC} = 4\\,\\mathrm{cm}\\text{의 끼인각은 } \\angle B\\text{이다.} \\ &\\text{ㄴ. 끼인각 } \\angle B = 70^\\circ\\text{가 주어지면 } \\mathrm{SAS}\\text{ 조건에 의해 오직 하나의 삼각형으로 결정된다. (참)} \\ &\\text{ㄷ. } \\overline{AC} = 3\\,\\mathrm{cm}\\text{이면 } 3 + 4 = 7\\text{이므로 가장 긴 변과 두 변의 합이 같아 삼각형이 만들어지지 않는다.} \\ &\\text{ㄹ. } \\overline{AC} = 5\\,\\mathrm{cm}\\text{이면 } 4 + 5 = 9 > 7\\text{이므로 삼각형이 정상적으로 만들어지고 } \\mathrm{SSS}\\text{ 조건에 의해 하나로 결정된다. (참)} \\ &\\text{ㄱ. } \\angle A\\text{는 끼인각이 아니므로 삼각형이 하나로 정해지지 않는다.} \\end{aligned}$$ 따라서 필요한 조건은 ㄴ, ㄹ이므로 정답은 ②이다.",
+    "solution": "ㄱ. $\\angle A=30^\\circ$인 경우, $AB=7\\, \\mathrm{cm}$인 점 $B$를 잡고 $B$를 중심으로 반지름 $4\\, \\mathrm{cm}$인 원을 그리면, $AC$가 놓일 반직선과 두 점에서 만난다. 따라서 $C$를 두 위치에 잡을 수 있으므로 하나로 정해지지 않는다. (두 점 모두 $A$에서 양의 방향에 있어 삼각형이 성립한다.)\nㄴ. $\\angle B=70^\\circ$는 두 변 $AB,BC$의 끼인각이므로 SAS에 의해 하나로 결정된다.\nㄷ. $AC=3\\, \\mathrm{cm}$이면 $3+4=7$이 되어 삼각형 부등식이 등호가 되므로 삼각형이 만들어지지 않는다.\nㄹ. $AC=5\\, \\mathrm{cm}$이면 $4+5>7$, $4+7>5$, $5+7>4$이므로 삼각형이 만들어지고, 세 변의 길이가 주어져 SSS에 의해 하나로 결정된다.\n따라서 추가 조건으로 삼각형을 하나로 결정하는 것은 ㄴ, ㄹ이다. 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
