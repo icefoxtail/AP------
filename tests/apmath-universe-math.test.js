@@ -76,6 +76,12 @@ const angleAt = (p, a, b) => {
     const held = JSON.stringify(state);
     math.updateCircleState(state, 1000, { detail: true }); assert.equal(JSON.stringify(state), held, 'Completed detail must hold');
     for (let step = 0; step <= 24; step++) checkCircle(math.updateCircleState(state, step * 7, { detail: false }));
+    math.updateCircleState(state, 0, { loop: true });
+    const loopStart = JSON.parse(JSON.stringify(state));
+    for (let step = 0; step <= 80; step++) checkCircle(math.updateCircleState(state, step / 10, { loop: true }));
+    for (const [key, point] of Object.entries(state.points)) point.forEach((value, axis) => near(value, loopStart.points[key][axis], 1e-10));
+    math.updateCircleState(state, 2, { loop: true });
+    assert.notDeepEqual(state.points, loopStart.points, `Autoplay ${id} must change its actual mathematical parameters`);
     checkCircle(math.updateCircleState(state, 0, { detail: true, reducedMotion: true }));
     const reduced = JSON.stringify(state);
     checkCircle(math.updateCircleState(state, 1000, { detail: true, reducedMotion: true }));
@@ -156,6 +162,7 @@ const angleAt = (p, a, b) => {
       if (node.geometry?.attributes.position) state.push([...node.geometry.attributes.position.array]);
       if (node.instanceMatrix) state.push([...node.instanceMatrix.array]);
       if (node.isMesh) state.push(node.visible, node.position.toArray(), node.scale.toArray(), node.material.opacity);
+      state.push(node.quaternion.toArray());
     });
     return JSON.stringify(state);
   }
@@ -230,6 +237,24 @@ const angleAt = (p, a, b) => {
     }
     const held = snapshotGeometry(object.group); object.update(1000, { detail: true });
     assert.equal(snapshotGeometry(object.group), held, 'Completed physical glyph must hold');
+    object.update(0.35, { loop: true });
+    const moving = snapshotGeometry(object.group);
+    object.update(1.35, { loop: true });
+    assert.notEqual(snapshotGeometry(object.group), moving, `Looping physical glyph ${id} must visibly change without detail selection`);
+    maxGlyphRadius = Math.max(maxGlyphRadius, maxRenderedRadius(object.group));
+    for (const key of ['geometries', 'materials', 'instances']) assert.deepEqual(resourcesOf(object.group)[key], initialResources[key], 'Autoplay also reuses all owned resources');
+    if (dualIds.includes(id)) {
+      for (const [time, reverse] of [[1.35, false], [5.35, true]]) {
+        object.update(time, { loop: true });
+        const pair = math.createDualPair(id), point = object.group.getObjectByName('corresponding-point');
+        const index = point.userData[reverse ? 'primalVertexIndex' : 'primalFaceIndex'];
+        assert.ok(Number.isInteger(index));
+        near(distance(point.position.toArray(), (reverse ? pair.primal : pair.dual).vertices[index]), 0);
+        const face = (reverse ? pair.dual : pair.primal).faces[index];
+        if (!reverse) near(distance(centroid(face.map(vertex => pair.primal.vertices[vertex])), point.position.toArray()), 0);
+        else assert.deepEqual([...face].sort((a, b) => a - b), pair.primal.faces.flatMap((f, i) => f.includes(index) ? [i] : []));
+      }
+    }
     object.group.position.set(2, 3, 4); object.group.rotation.set(0.3, -0.6, 0.2);
     const parentPosition = object.group.position.toArray(), parentRotation = object.group.quaternion.toArray();
     object.update(1, { detail: false });

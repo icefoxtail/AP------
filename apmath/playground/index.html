@@ -49,7 +49,7 @@
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
           <span id="hudBtnText">우주 감상</span>
         </button>
-        <button class="glass-btn" id="btnToggleMotion" type="button" aria-label="천체 움직임 일시정지·재생" title="천체의 공전 및 유영 모션을 일시정지합니다">
+        <button class="glass-btn" id="btnToggleMotion" type="button" aria-label="천체와 도형 움직임 일시정지·재생" title="천체와 도형의 움직임을 일시정지합니다">
           <svg id="motionIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
           <span id="motionBtnText">모션 정지</span>
         </button>
@@ -69,7 +69,6 @@
         <div class="explore-navigation">
           <div class="explore-heading">
             <p class="explore-breadcrumb" id="exploreBreadcrumb">전체 우주</p>
-            <p class="explore-subtitle" id="exploreSubtitle"></p>
           </div>
           <div class="explore-actions">
             <button class="glass-btn" id="btnExploreBack" data-universe-action="back" type="button">
@@ -97,11 +96,6 @@
       </section>
 
       <div class="universe-navigation">
-        <div class="bottom-hint">
-          <span class="hint-dot"></span>
-          <span id="exploreHint">도형을 선택해 가까이 탐험해 보세요</span>
-        </div>
-
       <nav class="celestial-selector-pills" aria-label="수학 천체 바로가기">
         <button class="celestial-pill" type="button" data-celestial="polyhedra">💎 정다면체</button>
         <button class="celestial-pill" type="button" data-celestial="ellipse">🪐 타원</button>
@@ -118,7 +112,7 @@
       </nav>
       </div>
     </footer>
-    <p class="sr-only" id="spaceInstructions">드래그하여 둘러보고 휠이나 두 손가락으로 확대합니다. 도형 또는 이름을 선택하면 가까이 탐험합니다. 키보드로는 아래 천체 버튼과 공간의 이름 버튼을 이용하세요. Escape 키로 한 단계 돌아옵니다.</p>
+    <p class="sr-only" id="spaceInstructions">도형들은 자동으로 움직입니다. 드래그하여 둘러보고 휠이나 두 손가락으로 확대합니다. 도형을 선택하면 가까이 탐험합니다. 키보드로는 아래 천체 버튼과 각 도형의 탐험 버튼을 이용하세요. Escape 키로 한 단계 돌아옵니다.</p>
     <p class="sr-only" id="exploreStatus" role="status" aria-live="polite" aria-atomic="true"></p>
   </div>
 
@@ -151,9 +145,7 @@
     const motionIcon = document.getElementById('motionIcon');
     const explorePanel = document.getElementById('explorePanel');
     const exploreBreadcrumb = document.getElementById('exploreBreadcrumb');
-    const exploreSubtitle = document.getElementById('exploreSubtitle');
     const exploreStatus = document.getElementById('exploreStatus');
-    const exploreHint = document.getElementById('exploreHint');
     const btnExploreBack = document.getElementById('btnExploreBack');
     const btnUniverseHome = document.getElementById('btnUniverseHome');
     const exploreBackText = document.getElementById('exploreBackText');
@@ -289,7 +281,7 @@
           button.className = 'projected-label';
           button.hidden = true;
           const caption = document.createElement('span');
-          caption.className = 'projected-label-caption';
+          caption.className = 'projected-label-caption sr-only';
           button.appendChild(caption);
           button.addEventListener('click', () => {
             if (!universe) return;
@@ -343,18 +335,15 @@
       explorePanel.hidden = !exploring;
       conceptControls.hidden = !inConcept;
       exploreBreadcrumb.textContent = ['전체 우주', ...(exploring ? [family] : []), ...(inConcept ? [value.title] : [])].filter(Boolean).join('  /  ');
-      exploreSubtitle.textContent = value.subtitle || '';
-      exploreSubtitle.hidden = !value.subtitle;
       exploreBackText.textContent = inConcept ? '은하로' : '뒤로';
       btnExploreBack.setAttribute('aria-label', inConcept ? `${family} 은하로 돌아가기` : '이전 전체 우주 시점으로 돌아가기');
-      exploreHint.textContent = value.mode === 'galaxy' ? '작은 도형이나 이름을 선택해 보세요' : inConcept ? '돌려 보며 수학적 관계를 살펴보세요' : '도형을 선택해 가까이 탐험해 보세요';
       for (const pill of celestialPills) {
         const selected = value.celestialId === pill.dataset.celestial && exploring;
         pill.classList.toggle('active', selected);
         pill.setAttribute('aria-pressed', String(selected));
       }
       motionBtnText.textContent = value.motionPlaying ? '모션 정지' : '모션 재생';
-      btnToggleMotion.setAttribute('aria-label', value.motionPlaying ? '천체 움직임 일시정지' : '천체 움직임 재생');
+      btnToggleMotion.setAttribute('aria-label', value.motionPlaying ? '천체와 도형 움직임 일시정지' : '천체와 도형 움직임 재생');
       btnToggleMotion.setAttribute('aria-pressed', String(!value.motionPlaying));
       motionIcon.innerHTML = value.motionPlaying
         ? '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>'
@@ -380,7 +369,6 @@
       const acceptedBoxes = [];
       const focusedButton = projectedLabels.contains(document.activeElement) ? document.activeElement : null;
       const candidates = [];
-      let decluttered = false;
       for (const [index, label] of (frame.labels || []).entries()) {
         const button = labelButtons.get(label.id);
         const size = labelSizes.get(label.id);
@@ -388,10 +376,9 @@
         const halfW = size.width / 2, halfH = size.height / 2;
         const x = Math.max(halfW + 4, Math.min(window.innerWidth - halfW - 4, label.x));
         const box = { left: x - halfW, right: x + halfW, top: label.y - halfH, bottom: label.y + halfH };
-        // At most one caption-sized nudge horizontally; never move a caption
-        // away from its physical object to manufacture a menu-like arrangement.
+        // Keep keyboard focus targets on their physical diagrams. Pointer
+        // gestures pass through these captionless targets to the canvas.
         if (Math.abs(x - label.x) > 12 || box.left < 0 || box.right > window.innerWidth || box.top < 0 || box.bottom > window.innerHeight) {
-          decluttered = true;
           continue;
         }
         candidates.push({ label, button, box, x, index, focused: button === focusedButton, depth: Number.isFinite(label.depth) ? label.depth : 0 });
@@ -400,7 +387,6 @@
       for (const item of candidates) {
         const box = item.box;
         if (acceptedBoxes.some(other => box.left < other.right && box.right > other.left && box.top < other.bottom && box.bottom > other.top)) {
-          decluttered = true;
           continue;
         }
         acceptedBoxes.push(box);
@@ -409,10 +395,6 @@
       }
       for (const [id, button] of labelButtons) button.hidden = !visibleIds.has(id);
       if (focusedButton?.hidden && hudVisible && state.mode === 'galaxy') btnExploreBack.focus({ preventScroll: true });
-      if (state.mode === 'galaxy') {
-        const hint = decluttered ? '돌려서 다른 도형도 찾아보세요' : '작은 도형이나 이름을 선택해 보세요';
-        if (exploreHint.textContent !== hint) exploreHint.textContent = hint;
-      }
       if (state.mode === 'concept') renderPlayback(frame);
     }
 

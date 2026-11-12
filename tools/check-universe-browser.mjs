@@ -33,7 +33,7 @@ const report = {
   visualEquivalence: 'REVIEW_REQUIRED', baselineTiming: 'Same seed and viewport; ambient wall-clock phases may differ. No automatic pixel equivalence verdict.',
   execution: { runId: process.env.GITHUB_RUN_ID || null, runAttempt: process.env.GITHUB_RUN_ATTEMPT || null },
   mathWaitPolicy: 'PC duality progress: 90 seconds wall time; mobile: 20 seconds. Thresholds and normal animated scenes are unchanged.',
-  resourcePolicy: '20 real DOM round trips after warm-up: PC reduced-motion resource phase; mobile normal-animation phase. Sample only after every family has detailedObjects=0.',
+  resourcePolicy: '20 real pointer/keyboard round trips after warm-up: PC reduced-motion resource phase; mobile normal-animation phase. All eight real companions remain allocated; their identities and resource counts must stay stable.',
   profiles: [], screenshots: [], failures: [],
 };
 fs.mkdirSync(path.join(output, 'screenshots'), { recursive: true });
@@ -137,6 +137,16 @@ async function press(page, selector, touch) {
   const target=page.locator(selector);
   await target.waitFor({state:'visible',timeout:20000});
   await target.scrollIntoViewIfNeeded();
+  if(selector.includes('[data-concept=')) {
+    // Captionless keyboard targets do not intercept the canvas. Exercise the
+    // actual diagram's picking/proxy with a physical pointer instead.
+    const box=await target.boundingBox();
+    assert(box,'Concept has no projected target',{selector});
+    const x=box.x+box.width/2,y=box.y+box.height/2;
+    assert(await page.evaluate(({x,y})=>document.elementFromPoint(x,y)?.id==='space',{x,y}),'Concept pointer target is covered',{selector,x,y});
+    if(touch)await page.touchscreen.tap(x,y);else await page.mouse.click(x,y);
+    return;
+  }
   if(touch) await target.tap({timeout:20000}); else await target.click({timeout:20000});
 }
 async function webgl(page) {
@@ -195,7 +205,10 @@ async function checkLabels(page, expectedCount, record, label) {
     const c=getComputedStyle(e),r=e.getBoundingClientRect();return c.visibility!=='hidden'&&c.display!=='none'&&Number(c.opacity)>0&&r.width>0&&r.height>0;
   }).map(e=>{const r=e.getBoundingClientRect();return{id:e.dataset.concept,x:r.x,y:r.y,width:r.width,height:r.height};}));
   const viewport=page.viewportSize();
-  assert(new Set(boxes.map(b=>b.id)).size===expectedCount, 'Missing or duplicate visible concept labels',{label,boxes});
+  assert(new Set(boxes.map(b=>b.id)).size===expectedCount, 'Missing or duplicate concept keyboard targets',{label,boxes});
+  assert(await page.locator('#exploreSubtitle, #exploreHint, .bottom-hint').count()===0,'Explanatory footer copy remains');
+  const captions=await page.locator('button[data-concept] .projected-label-caption').evaluateAll(elements=>elements.map(e=>({clip:getComputedStyle(e).clipPath,width:e.getBoundingClientRect().width,height:e.getBoundingClientRect().height})));
+  assert(captions.length===expectedCount&&captions.every(c=>c.clip==='inset(50%)'&&c.width<=1&&c.height<=1),'Under-diagram captions remain visually exposed',{label,captions});
   for(const b of boxes){
     assert(b.x>=-1&&b.y>=-1&&b.x+b.width<=viewport.width+1&&b.y+b.height<=viewport.height+1,'Concept label clipped by viewport',{label,...b,viewport});
     assert(b.width>=24&&b.height>=24,'Concept hit label is smaller than the minimum test bound',{label,...b});
@@ -205,6 +218,56 @@ async function checkLabels(page, expectedCount, record, label) {
     assert(!(overlapX>1&&overlapY>1),'Concept label hit regions overlap',{label,a,b,overlapX,overlapY});
   }
   record.labelChecks.push({label,viewport,boxes});
+}
+async function conceptSnapshot(page, ids) {
+  return page.evaluate(ids=>{
+    const api=window.__APMathUniverse;
+    return ids.map(id=>{
+      const object=api.scene.getObjectByName(`math-concept-${id}`);
+      if(!object)return {id,missing:true};
+      let visible=true;
+      for(let parent=object;parent;parent=parent.parent)visible=visible&&parent.visible;
+      let hash=2166136261;
+      const add=values=>{for(const value of values)hash=Math.imul(hash^Math.round(value*100000),16777619);};
+      // Hash the local mathematical construction, excluding the host's orbit.
+      // A moving camera/planet cannot make a static companion pass this check.
+      object.traverse(node=>{
+        add(node.position.toArray());add(node.quaternion.toArray());add(node.scale.toArray());
+        if(node.instanceMatrix)add(node.instanceMatrix.array);
+        if(node.geometry?.attributes.position)add(node.geometry.attributes.position.array);
+        const materials=Array.isArray(node.material)?node.material:[node.material];
+        for(const material of materials)if(material)add([material.opacity]);
+      });
+      return {id,uuid:object.uuid,visible,signature:hash>>>0,world:object.matrixWorld.toArray()};
+    });
+  },ids);
+}
+async function checkAutomaticConceptMotion(page, record, ids, label) {
+  const initial=await conceptSnapshot(page,ids),started=Date.now();
+  assert(initial.every(s=>!s.missing&&s.visible),'Automatic view is missing real companion geometry',{label,initial});
+  let final;
+  while(true) {
+    await page.waitForTimeout(400);
+    final=await conceptSnapshot(page,ids);
+    assert(final.every((s,i)=>!s.missing&&s.visible&&s.uuid===initial[i].uuid),'Automatic motion recreated or hid a companion',{label,initial,final});
+    if(final.every((s,i)=>s.signature!==initial[i].signature))break;
+    assert(Date.now()-started<45000,'A companion remained mathematically static without a click',{label,initial,final});
+  }
+  record.automaticMotion??=[];
+  record.automaticMotion.push({label,wallMs:Date.now()-started,initial,final});
+  progress(record,'automatic-motion:complete',{label,concepts:ids.length,wallMs:Date.now()-started});
+}
+async function checkAutomaticPause(page, record, ids) {
+  await press(page,'#btnToggleMotion',false);
+  await page.waitForFunction(()=>!window.__APMathUniverse.getState().motionPlaying);
+  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  const before=await conceptSnapshot(page,ids);
+  await page.waitForTimeout(600);
+  const after=await conceptSnapshot(page,ids);
+  assert(after.every((s,i)=>s.signature===before[i].signature&&s.world.every((x,j)=>Math.abs(x-before[i].world[j])<1e-6)),'Global pause did not hold automatic companions',{before,after});
+  await press(page,'#btnToggleMotion',false);
+  await checkAutomaticConceptMotion(page,record,ids,'main-resumed');
+  record.checks.push('global motion pause freezes real companions and resumes automatic motion');
 }
 async function checkBlankAndHudRestore(page, record) {
   const before=await state(page), identity=routeIdentity(before), url=page.url();
@@ -270,26 +333,33 @@ function resources(data) {
   return {geometries:r.geometries,textures:r.textures,programs:r.programs};
 }
 async function roundTrip(page, touch, family) {
+  const identities=()=>page.evaluate(()=>{
+    const result={};
+    window.__APMathUniverse.scene.traverse(object=>{if(object.name.startsWith('math-concept-'))result[object.name]=object.uuid;});
+    return result;
+  });
+  const beforeObjects=await identities();
   await press(page,selectors[family],touch);await settled(page,'galaxy');
   const entered=await debug(page),galaxyId=family==='circle'?'circle-sector':'polyhedra';
   const expected=entered.concepts.length,active=entered.families?.find(f=>f.id===galaxyId);
-  assert(expected>0&&active?.detailedObjects===expected,'Resource round trip did not create the selected family',{family,expected,active});
+  assert(expected>0&&active?.detailedObjects===expected,'Resource round trip lost the selected family',{family,expected,active});
   await press(page,family==='circle'?selectors.tangent:selectors.cube,touch);await settled(page,'concept');
   await press(page,selectors.back,touch);await settled(page,'galaxy');
   await press(page,selectors.home,touch);await settled(page,'universe');
-  const disposalStarted=Date.now();
+  const returnStarted=Date.now();
   await page.waitForFunction(()=>{
     const d=window.__APMathUniverse.getDebugState();
-    return d.mode==='universe'&&Array.isArray(d.families)&&d.families.length>0&&d.families.every(f=>f.detailedObjects===0);
+    return d.mode==='universe'&&Array.isArray(d.families)&&d.families.length>0&&d.families.every(f=>f.open===0&&f.detailedObjects>0);
   },null,{timeout:30000});
-  const disposed=await debug(page),remaining=disposed.families.reduce((sum,f)=>sum+f.detailedObjects,0);
-  assert(remaining===0,'Detailed objects reappeared before the resource sample',disposed.families);
-  return {...resources(disposed),createdDetailedObjects:expected,remainingDetailedObjects:remaining,disposalWaitMs:Date.now()-disposalStarted,rendererFrame:disposed.renderer.frame};
+  const returned=await debug(page),remaining=returned.families.reduce((sum,f)=>sum+f.detailedObjects,0);
+  assert(remaining===8,'Real companions disappeared or accumulated across navigation',returned.families);
+  assert(JSON.stringify(await identities())===JSON.stringify(beforeObjects),'Navigation recreated persistent companion objects',{family});
+  return {...resources(returned),familyDetailedObjects:expected,remainingDetailedObjects:remaining,returnWaitMs:Date.now()-returnStarted,rendererFrame:returned.renderer.frame};
 }
 async function checkResourceRoundTrips(page,profile,record) {
   const reduced=profile.name==='pc',motionMode=reduced?'reduced-motion':'normal-animation';
   assert((await state(page)).reducedMotion===reduced,'Resource phase has the wrong motion preference',{expected:motionMode});
-  record.resourceProbe={mode:motionMode,input:'real DOM buttons',requiredRoundTrips:20,disposalCondition:'every family detailedObjects === 0',status:'RUNNING'};
+  record.resourceProbe={mode:motionMode,input:'real canvas pointers and DOM buttons',requiredRoundTrips:20,retentionCondition:'same eight detailed companions; no resource-count growth',status:'RUNNING'};
   progress(record,'resources:start',{mode:motionMode,roundTrips:20});
   try {
     record.resourceWarmup=[];
@@ -306,7 +376,7 @@ async function checkResourceRoundTrips(page,profile,record) {
       progress(record,'resources:round-trip',{mode:motionMode,round:i+1,family,...sample});
     }
     record.resourceProbe.status='PASS';record.resourceProbe.completedAt=new Date().toISOString();
-    record.checks.push(`twenty post-warm-up ${motionMode} DOM round trips without resource-count growth; detailed objects disposed before every sample`);
+    record.checks.push(`twenty post-warm-up ${motionMode} pointer round trips without resource-count growth; all eight real companions retained`);
     progress(record,'resources:complete',{mode:motionMode,roundTrips:record.resourceRoundTrips.length,ceiling});
   } catch(error) {
     record.resourceProbe.status='FAIL';record.resourceProbe.error=errorText(error);
@@ -368,13 +438,23 @@ async function candidateJourney(browser,profile,server,createScreenshotGuard){
     guard=await createScreenshotGuard(page,{expectedTouch:profile.hasTouch,onObservation:o=>record.touchObservations.push(o)});
     await capture(page,guard,`${profile.name}-after-universe`,report.candidate.revision,record);
     record.checks.push('initial stable WebGL2 render and twelve representative selectors');
+    const circleIds=['two-tangents','chord-bisector','radius-tangent','same-arc','central-inscribed','chord-arc'];
+    const dualIds=['cube-octahedron','dodecahedron-icosahedron'];
+    await checkAutomaticConceptMotion(page,record,[...circleIds,...dualIds],'initial-universe-no-click');
+    if(profile.name==='pc')await checkAutomaticPause(page,record,[...circleIds,...dualIds]);
 
     progress(record,'normal:circle-entry');
     await press(page,selectors.circle,profile.hasTouch);await settled(page,'galaxy');
     await checkLabels(page,6,record,'circle-galaxy');
+    await checkAutomaticConceptMotion(page,record,circleIds,'circle-galaxy');
     await capture(page,guard,`${profile.name}-circle-galaxy`,report.candidate.revision,record);
     if(profile.name==='pc')await checkBlankAndHudRestore(page,record);
-    await press(page,selectors.tangent,profile.hasTouch);await settled(page,'concept','two-tangents');
+    if(profile.name==='pc') {
+      await page.locator(selectors.tangent).focus();
+      await page.locator(selectors.tangent).press('Enter');
+      record.checks.push('captionless concept target remains reachable by keyboard');
+    } else await press(page,selectors.tangent,profile.hasTouch);
+    await settled(page,'concept','two-tangents');
     await waitForMathTime(page,.3,profile.name==='pc'?30000:15000,record,'two-tangents');
     await press(page,selectors.pause,profile.hasTouch);
     assert((await state(page)).mathPlaying===false,'Pause did not stop the mathematical timeline');
@@ -401,6 +481,7 @@ async function candidateJourney(browser,profile,server,createScreenshotGuard){
     progress(record,'normal:polyhedra-entry');
     await press(page,selectors.polyhedra,profile.hasTouch);await settled(page,'galaxy');
     await checkLabels(page,2,record,'polyhedra-galaxy');
+    await checkAutomaticConceptMotion(page,record,dualIds,'polyhedra-galaxy');
     await capture(page,guard,`${profile.name}-polyhedra-galaxy`,report.candidate.revision,record);
     for(const [key,id] of [['cube','cube-octahedron'],['dodeca','dodecahedron-icosahedron']]){
       progress(record,'normal:duality-entry',{conceptId:id});

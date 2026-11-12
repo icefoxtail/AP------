@@ -319,7 +319,7 @@ html, body {
   transform: translateX(4px);
 }
 
-/* Bottom Bar: Instructions & Quick Celestial Navigation */
+/* Bottom Bar: Exploration Controls & Quick Celestial Navigation */
 .bottom-bar {
   position: relative;
   z-index: 2;
@@ -338,28 +338,11 @@ html, body {
   width: 100%;
 }
 
-.bottom-hint {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 12px;
-  color: var(--text-silver);
-  user-select: none;
-}
-
-.hint-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent-gold);
-  opacity: 0.7;
-}
-
 .celestial-selector-pills {
   display: flex;
   gap: 8px;
   overflow-x: auto;
-  max-width: 65vw;
+  max-width: 100%;
   padding: 4px;
   pointer-events: auto;
   scrollbar-width: thin;
@@ -390,7 +373,8 @@ html, body {
   box-shadow: 0 0 12px rgba(85, 203, 163, 0.25);
 }
 
-/* Small, anchored captions are keyboard alternatives to picking the actual 3D geometry. */
+/* Captionless keyboard targets follow the diagrams. Pointer gestures reach the
+   real canvas so dragging, pinching and tapping the shapes still work. */
 .projected-labels {
   position: fixed;
   inset: 0;
@@ -404,45 +388,20 @@ html, body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  max-width: calc(100vw - 32px);
-  padding: 4px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
   border: 0;
   background: transparent;
-  color: var(--text-silver);
-  cursor: pointer;
-  pointer-events: auto;
-  font-size: 12px;
-  line-height: 1.35;
-  white-space: nowrap;
+  border-radius: 50%;
+  pointer-events: none;
 }
 .projected-label.measuring {
   display: inline-flex !important;
   visibility: hidden !important;
   pointer-events: none !important;
 }
-.projected-label-caption {
-  display: block;
-  max-width: min(240px, 70vw);
-  padding: 5px 9px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border: 1px solid rgba(216, 183, 126, .24);
-  border-radius: 999px;
-  background: rgba(18, 14, 24, .78);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: color .2s, border-color .2s, background .2s;
-}
-.projected-label:hover .projected-label-caption,
-.projected-label.selected .projected-label-caption {
-  color: var(--text-ivory);
-  border-color: var(--accent-emerald);
-  background: rgba(24, 29, 31, .9);
-}
-.projected-label:focus-visible { outline: none; }
-.projected-label:focus-visible .projected-label-caption {
+.projected-label:focus-visible {
   outline: 2px solid var(--accent-gold);
   outline-offset: 3px;
 }
@@ -451,7 +410,6 @@ html, body {
 .explore-navigation { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .explore-heading { min-width: 0; text-shadow: 0 1px 8px var(--bg-obsidian), 0 1px 24px var(--bg-obsidian); }
 .explore-breadcrumb { color: var(--text-ivory); font-size: 13px; line-height: 1.5; font-weight: 650; }
-.explore-subtitle { margin-top: 2px; color: var(--text-silver); font-size: 12px; line-height: 1.5; max-width: 62ch; }
 .explore-actions { display: flex; flex: 0 0 auto; gap: 6px; pointer-events: auto; }
 .explore-actions .glass-btn { white-space: nowrap; }
 .concept-controls { display: flex; align-items: center; gap: 8px; width: min(100%, 580px); pointer-events: auto; }
@@ -541,12 +499,10 @@ html, body {
   }
   .nav-enter-spark { width: 13px; height: 13px; }
   .nav-enter-arrow { width: 13px; height: 13px; }
-  .bottom-hint { display: none; }
   .celestial-selector-pills { max-width: 100%; }
   .universe-navigation { gap: 0; }
   .explore-navigation { gap: 8px; }
   .explore-breadcrumb { font-size: 12px; max-height: 3em; overflow: hidden; }
-  .explore-subtitle { display: none; }
   .explore-actions .glass-btn { padding: 6px 10px; font-size: 12px; }
   .concept-controls { gap: 6px; }
   .concept-controls .glass-btn { padding: 6px 10px; font-size: 12px; }
@@ -559,13 +515,12 @@ html, body {
 }
 @media (max-height: 480px) and (orientation: landscape) {
   .top-nav { display: flex; }
-  .brand-sub, .explore-subtitle, .concept-time, .top-controls .glass-btn:not(.nav-enter) > span { display: none; }
+  .brand-sub, .concept-time, .top-controls .glass-btn:not(.nav-enter) > span { display: none; }
   .bottom-bar, .explore-panel { gap: 4px; }
   .celestial-selector-pills { max-width: 100%; }
-  .bottom-hint { display: none; }
   .universe-ui[data-mode="concept"] .universe-navigation { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .universe-ui, .glass-btn, .celestial-pill, .projected-label-caption, .warp-curtain { transition: none; }
+  .universe-ui, .glass-btn, .celestial-pill, .warp-curtain { transition: none; }
   .glass-btn:hover, .glass-btn:active { transform: none; }
 }
