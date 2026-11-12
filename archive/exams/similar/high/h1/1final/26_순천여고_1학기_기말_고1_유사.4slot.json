@@ -1,0 +1,1483 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사.js",
+  "sourceGitBlobSha": "8789c8c549cb0ad2d9a9a743503acd1560e66c13",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "claude-similar-high-gen",
+    "at": "2026-11-12"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "빵",
+            "src": "stem",
+            "quote": "빵 6종류"
+          },
+          {
+            "term": "음료",
+            "src": "stem",
+            "quote": "음료 4종류"
+          },
+          {
+            "term": "과일",
+            "src": "stem",
+            "quote": "과일 3종류"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "세 종류에서 하나씩 고르는 세 단계를 곱의 법칙으로 이어 곱한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "${}_{8}C_{3}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "값"
+          }
+        ],
+        "method": [
+          {
+            "term": "팩토리얼",
+            "src": "solution",
+            "quote": "$_{8}C_{3}=\\dfrac{8!}{(8-3)!3!}$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "조합의 정의식에 대입해 약분하여 값을 계산한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수"
+          },
+          {
+            "term": "순서쌍",
+            "src": "stem",
+            "quote": "순서쌍"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$x=1$이면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "$4+3+2+1=10$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$x+y\\le5$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$x$의 값에 따라 가능한 $y$를 나누어 세고 합의 법칙으로 더한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "네 행렬"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "행",
+            "src": "solution",
+            "quote": "행의 수",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "열",
+            "src": "solution",
+            "quote": "열의 수",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$AD$: $A$의 열의 수는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "같을 때에만 정의된다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "각 행렬의 크기를 구하고 앞 행렬의 열의 수와 뒤 행렬의 행의 수가 같은 곱만 센다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "|x+1|\\lt6"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값부등식",
+            "src": "solution",
+            "quote": "절댓값 부등식",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정수해",
+            "src": "solution",
+            "quote": "이 범위에 있는 정수",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "|x+1|\\lt6"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$|x+1|\\lt6$을 $-6\\lt x+1\\lt6$으로 풀어 구간을 얻고 그 안의 정수를 센다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "두 근의 곱을 이용하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$4+(-3)=-a$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "$a$는 실수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$x$축과의 교점의 $x$좌표를 이차방정식의 두 근으로 보고 근과 계수의 관계로 $a,b$를 정한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "이차 정사각행렬"
+          },
+          {
+            "term": "성분",
+            "src": "stem",
+            "quote": "모든 성분"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "성분의 곱"
+          }
+        ],
+        "method": [
+          {
+            "term": "행렬곱",
+            "src": "solution",
+            "quote": "행렬을 곱하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "열",
+            "src": "solution",
+            "quote": "첫째 열",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$A=\\begin{pmatrix}3&1",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "기본 열벡터에 곱한 결과가 $A$의 첫째·둘째 열임을 이용해 $A$를 정하고 주어진 열벡터와 곱한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "연립부등식"
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "|x-1|+|x+2|\\le7"
+          },
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "-2x^2+5x+3\\le0"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "정수 $x$값의 합"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "구간을 나누어",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$(2x+1)(x-3)\\ge0$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "두 부등식의 공통 범위",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "절댓값 두 개의 합 부등식을 영점 $-2,1$ 기준 세 구간으로 나누어 풀고, 이차부등식의 해와 겹치는 정수"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "행렬 $A="
+          },
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$(A+B)^n$"
+          },
+          {
+            "term": "성분",
+            "src": "stem",
+            "quote": "모든 성분"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 성분의 합"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수"
+          }
+        ],
+        "method": [
+          {
+            "term": "수학적귀납법",
+            "src": "solution",
+            "quote": "수학적 귀납법",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "행렬곱",
+            "src": "solution",
+            "quote": "$T^{n+1}=T^nT$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$3n+2=32$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$A+B$를 먼저 구하고 거듭제곱의 규칙 $T^n$을 찾아 귀납법으로 확인한 뒤 성분의 합 식을 풀어 $n$"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$0\\le x\\le3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$M-m$"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=x^2-2x",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "(t-2)^2-7",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "양끝에서 비교한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$0\\le x\\le3$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$t=x^2-2x$로 치환해 $t$의 범위 $-1\\le t\\le3$을 구하고, $t$에 대한 이차함수의 꼭짓"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "이차부등식"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$(0\\le x\\le2)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "꼭짓점의 위치",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "(x-a)^2-a^2+2a+4",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합집합",
+            "src": "solution",
+            "quote": "세 경우를 합치면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "항상성립",
+            "src": "stem",
+            "quote": "항상 성립"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "꼭짓점 $x=a$의 위치에 따라 $a<0$, $0\\le a\\le2$, $a>2$로 나누어 구간의 최솟값이 $"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수"
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "|x|"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$-4\\le x\\le2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$M+m$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=|x|$로 두면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "3(t-1)^2-3",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "양끝 중 하나",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$-4\\le x\\le2$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$t=|x|$로 치환해 $0\\le t\\le4$를 구하고 $t$에 대한 이차함수의 꼭짓점과 양끝값으로 최대·최"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "알파벳 순으로"
+          },
+          {
+            "term": "배치",
+            "src": "stem",
+            "quote": "일렬로 나열"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "방법의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$\\binom{7}{5}=21$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "$2!=2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$21\\times2=42$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상대순서고정",
+            "src": "stem",
+            "quote": "자음은 알파벳 순으로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "순서가 정해진 자음이 들어갈 자리를 조합으로 고르면 자음의 배열이 하나로 정해지므로, 남은 자리에 모음을 순"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식"
+          },
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "두 실근"
+          },
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "행렬 $A$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $k$의 값"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 성분의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "행렬곱",
+            "src": "solution",
+            "quote": "행렬을 곱하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$(k+5)(k-2)=0$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $k$"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식은"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "행렬의 제곱을 직접 곱해 성분의 합을 $\\alpha,\\beta,k$로 나타낸 뒤 근과 계수의 관계로 $k$에"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식"
+          },
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "한 허근"
+          },
+          {
+            "term": "켤레복소수",
+            "src": "stem",
+            "quote": "켤레복소수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만을 있는 대로 고른"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$(-1)^nw^{2n}=w^{2n}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "ㄱ.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수"
+          },
+          {
+            "term": "짝수",
+            "src": "solution",
+            "quote": "$n$이 짝수일 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$w^3=1$, $w^2+w+1=0$, $\\overline{w}=w^2$을 먼저 정리하고 세 보기에 하나씩 "
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "다섯 자리 자연수"
+          },
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "작은 것부터 순서대로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "88번째 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "$4!=24$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사전식배열",
+            "src": "solution",
+            "quote": "작은 순서로 나열하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$24\\times3=72$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중복불허",
+            "src": "stem",
+            "quote": "한 번씩만 사용"
+          },
+          {
+            "term": "자릿수",
+            "src": "solution",
+            "quote": "첫째 자리에는 $0$이 올 수 없다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "첫째 자리, 둘째 자리 순으로 자리마다 만들 수 있는 수의 개수를 누적해 88번째가 속한 묶음을 찾는다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순서쌍",
+            "src": "stem",
+            "quote": "순서쌍 $(a,b)$"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식이 0보다 작아야",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$|a-b|=3$인",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "$36-6-4-2=24$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "$x$축과 만나지 않도록"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "그래프가 $x$축과 만나지 않을 조건을 판별식 $\\Delta<0$으로 바꿔 $|a-b|\\le2$를 얻고, 두"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $f(x)"
+          },
+          {
+            "term": "항등식",
+            "src": "stem",
+            "quote": "항상 성립"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a,b$"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "각 항을 전개하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "$x^2$의 계수를 비교하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "동류항을 모으면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$f(x+a)$를 전개해 $x$에 대해 정리하고 항등식이므로 $x^2$, $x$의 계수를 비교해 $a,b$를"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식"
+          },
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "두 실근"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "$m$은 실수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "제곱합",
+            "src": "stem",
+            "quote": "$\\alpha^2+\\beta^2$"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식이 0 이상",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭식",
+            "src": "solution",
+            "quote": "(\\alpha+\\beta)^2-2\\alpha\\beta",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "$m\\ge0$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "판별식으로 $m\\ge0$을 구하고, 근과 계수의 관계로 $\\alpha^2+\\beta^2$를 $m$의 이차식으"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식"
+          },
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "서로 다른 두 실근"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $k$"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "인수분해된다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식: $k^2-6>0$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "근의분리",
+            "src": "solution",
+            "quote": "축: $1<k<6$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "1과 6 사이"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "삼차식을 $(x+1)(x^2-2kx+6)$로 인수분해하고, 이차식의 두 근이 $(1,6)$에 놓일 조건(판별"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "방정식"
+          },
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "서로 다른 세 실근"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "값의 범위"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "인수분해된다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 조건은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=a$를 이차식에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "서로 다른 세 실근"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "삼차식을 $(x-a)(x^2+10x+a^2)$로 인수분해하고, 이차식의 판별식 조건과 일차식의 근이 이차식의"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "연립 이차부등식"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수 $x$의 개수"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $n$"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$(x-2)(x-7)\\le0$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "(확인: $n=3$이면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "공통 범위의 정수",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $x$의 개수가 4"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "첫째 부등식의 정수 $2\\sim7$을 구하고, 둘째 부등식을 $(x-n)(x-n+3)\\ge0$으로 인수분해해"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 모양의 조형물"
+          },
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "높이가"
+          },
+          {
+            "term": "직선",
+            "src": "solution",
+            "quote": "빛의 직선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $BDE$의 넓이"
+          },
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "접하는 점을 $E$"
+          }
+        ],
+        "method": [
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "지면을 $x$축으로 두고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "접선과 포물선의 교점은 중근이므로 판별식은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "접선이 아니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "$0\\le x\\le8$"
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "접하는 점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "좌표를 잡아 포물선의 식을 세우고, 점 $C$를 지나는 직선이 포물선과 접할 조건(판별식 $=0$)으로 기울"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "빵",
+      "en": [
+        "BREAD"
+      ],
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "",
+      "note": "종류 가운데 하나를 고르는 선택 대상.",
+      "usedIn": [
+        "26_순천여고_1학기_기말_고1_유사 Q1"
+      ]
+    },
+    {
+      "term": "음료",
+      "en": [
+        "DRINK"
+      ],
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "",
+      "note": "종류 가운데 하나를 고르는 선택 대상.",
+      "usedIn": [
+        "26_순천여고_1학기_기말_고1_유사 Q1"
+      ]
+    },
+    {
+      "term": "과일",
+      "en": [
+        "FRUIT"
+      ],
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "",
+      "note": "종류 가운데 하나를 고르는 선택 대상.",
+      "usedIn": [
+        "26_순천여고_1학기_기말_고1_유사 Q1"
+      ]
+    }
+  ],
+  "selfCheck": {
+    "note": "작성자 자체 점검(validate-4slot 실행). 독립 검토 전(UNREVIEWED)."
+  }
+}

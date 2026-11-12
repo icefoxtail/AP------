@@ -1,0 +1,140 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "지면을 $x$축으로 두고 $A=(0,0)$",
+  "caption": "포물선 y=-x²/2+4x와 C(0,25/2)에서 그은 접선 y=-x+25/2이다. 접점은 E(5,15/2), 접선이 지면과 만나는 점은 D(25/2,0)이고 삼각형 BDE의 밑변 BD=9/2, 높이는 15/2이다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "8"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      8
+    ],
+    "viewport": [
+      -1,
+      14,
+      -1,
+      14
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 4,
+        "y": 8
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "axis": "x",
+          "value": "0"
+        },
+        {
+          "id": "B",
+          "axis": "x",
+          "value": "8",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "axis": "y",
+          "value": "25/2"
+        },
+        {
+          "id": "D",
+          "axis": "x",
+          "value": "25/2",
+          "coordinates": true
+        },
+        {
+          "id": "E",
+          "curveX": "5",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "CA",
+          "from": "C",
+          "to": "A"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "B",
+            "D",
+            "E"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "E": "E"
+  },
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "포물선 y=-x²/2+4x와 접점 E, 그림자 끝 D, 삼각형 BDE",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접점 E와 D의 좌표, 삼각형 BDE의 밑변과 높이를 한 그림에서 보여 준다."
+  ],
+  "assetPath": "assets/images/26_순천여고_1학기_기말_고1_유사/q23-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/engine_evidence/q23-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/engine_evidence/q23-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/engine_evidence/q23-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h1/1final/26_순천여고_1학기_기말_고1_기출.js",
+      "ordinal": 23,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 graphPlan에서만 결정된다."
+    }
+  }
+}
