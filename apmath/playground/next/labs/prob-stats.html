@@ -23,7 +23,13 @@
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="prob-stats/lesson-core.js"></script>
+<script defer src="prob-stats/lesson-a.js"></script>
+<script defer src="prob-stats/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -72,7 +78,14 @@ const PS = (() => {
     return Math.exp(LF[n] - LF[k] - LF[n - k] + k * Math.log(p) + (n - k) * Math.log(1 - p));
   };
   const C = (n, k) => { let r = 1; for (let i = 1; i <= k; i++) r = r * (n - k + i) / i; return Math.round(r); };
-  const rint = (n) => Math.floor(Math.random() * n);
+  // Local streams retain the original uniform/category and Box–Muller models.
+  // A state snapshot now reproduces subsequent samples without touching Math.random.
+  const nextSeed = seed => (Math.imul(seed >>> 0, 1664525) + 1013904223) >>> 0;
+  const seeded = seed => { let state=seed>>>0; return () => ((state=nextSeed(state))+.5)/4294967296; };
+  let random = Math.random;
+  const withSeed = (seed, fn) => { const previous=random;random=seeded(seed);try{return fn();}finally{random=previous;} };
+  const sampleUniform = (state,key) => { state[key]=nextSeed(state[key]);return (state[key]+.5)/4294967296; };
+  const rint = (n) => Math.floor(random() * n);
   const pickOf = (arr, key, prevKey) => {
     if (arr.length < 2 || prevKey == null) return arr[rint(arr.length)];
     let x, i = 0;
@@ -274,12 +287,14 @@ const PS = (() => {
     return { kind: 'P1', conf: 99, z: 2.58, n: 36, sig: 5, lo: 1.2, hi: 5.5, r: 5 / 6, w: 4.3, key: 'default', ans: 5.5 };
   }
 
-  return { gcd, F, fadd, fsub, fmul, fdiv, fval, ftex, phi, Phi, erfc, ZT, ZK, ZC, T, r3, binomPmf, C, rint, pickOf, dec, pdfInfo, genK, genL, genM1, genM2, genM3, genO, genP, KPOOL, LPOOL };
+  return { nextSeed, seeded, withSeed, sampleUniform, gcd, F, fadd, fsub, fmul, fdiv, fval, ftex, phi, Phi, erfc, ZT, ZK, ZC, T, r3, binomPmf, C, rint, pickOf, dec, pdfInfo, genK, genL, genM1, genM2, genM3, genO, genP, KPOOL, LPOOL };
 })();
 /*PURE-END*/
 window.addEventListener('DOMContentLoaded', function () {
   const { tex, fmt, clamp } = APLab;
   const { F, ftex, fval, phi, Phi, binomPmf, rint, pickOf, ZT, ZK, T: TZ } = PS;
+  const lpsActive=s=>!!(s&&(s.lessonOn||s.lessonEntry));
+  let lpsContext=null,lpsTraceShape=null;
   const NARROW = window.matchMedia('(max-width: 859px)');
   const M = (n) => String(n).replace('-', '−');
   const num = (v, d = 2) => M(String(Math.round(v * Math.pow(10, d)) / Math.pow(10, d)));
@@ -372,6 +387,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function curve(b, c, f, o = {}) {
     const from = Math.max(c.dx0, o.from == null ? c.dx0 : o.from), to = Math.min(c.dx1, o.to == null ? c.dx1 : o.to);
     if (!(to > from)) return;
+    if(lpsContext&&!lpsTraceShape)lpsTraceShape={kind:'curve',c,f,from,to};
     b.plot(curveOf(c, f), { from: c.X(from), to: c.X(to), color: o.color || 'sky', width: o.width || 2.8, glow: o.glow, dash: o.dash, alpha: o.alpha, res: 2, ref: o.ref });
   }
   function areaUnder(b, c, f, lo, hi, o = {}) {
@@ -390,7 +406,7 @@ window.addEventListener('DOMContentLoaded', function () {
     for (let i = 0; i <= n; i++) { const x = lo + ((hi - lo) * i) / n; up.push([c.X(x), c.Y(top(x))]); dn.push([c.X(x), c.Y(bottom(x))]); }
     b.path(up.concat(dn.reverse()), { close: true, fill: o.fill || 'rose', fillAlpha: o.alpha == null ? 0.34 : o.alpha, color: o.edge || null, alpha: o.edgeAlpha, width: o.width || 1.2 });
   }
-  const bar = (b, c, x0, x1, h, o = {}) => b.poly(rectP(c, x0, x1, 0, h), { fill: o.fill, fillAlpha: o.alpha == null ? 0.34 : o.alpha, color: o.color === undefined ? o.fill : o.color, width: o.width || 1.5, dash: o.dash, alpha: o.edgeAlpha });
+  const bar = (b, c, x0, x1, h, o = {}) => { if(lpsContext&&!lpsTraceShape)lpsTraceShape={kind:'bar',c,x0,x1,h}; return b.poly(rectP(c, x0, x1, 0, h), { fill: o.fill, fillAlpha: o.alpha == null ? 0.34 : o.alpha, color: o.color === undefined ? o.fill : o.color, width: o.width || 1.5, dash: o.dash, alpha: o.edgeAlpha }); };
   function vmark(b, c, v, y1, o = {}) {
     sline(b, [c.X(v), c.Y(o.y0 == null ? 0 : o.y0)], [c.X(v), c.Y(y1)], { color: o.color || 'amber', alpha: o.alpha == null ? 0.8 : o.alpha, width: o.width || 1.8, dash: o.solid ? null : [6, 4] });
   }
@@ -435,7 +451,11 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ---------- 3. 문제 틀: 새 문제 버튼, 표, 표준정규분포표 ---------- */
-  function varier(gen) { let cur = gen(null); return { cur: () => cur, next: () => (cur = gen(cur)) }; }
+  function varier(gen,seed) {
+    const at=(index,previous)=>PS.withSeed((seed+Math.imul(index,0x9e3779b9))>>>0,()=>gen(previous));
+    let index=0,cur=at(0,null);const first=cur;
+    return { cur:()=>cur, first:()=>first, next:()=>cur=at(++index,cur), at, get index(){return index;} };
+  }
   const probHTML = (body) => `${body}<div class="ps-newrow"><button type="button" class="apl-btn sm" data-ps-new>새 문제</button></div>`;
   document.addEventListener('click', (ev) => {
     const hit = ev.target && ev.target.closest && ev.target.closest('[data-ps-new]');
@@ -477,7 +497,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const E = p.reduce((s, x, i) => s + x * KX[i], 0), E2 = p.reduce((s, x, i) => s + x * KX[i] * KX[i], 0), V = Math.max(0, E2 - E * E);
     return { E, V, sd: Math.sqrt(V), EY: a * E + b, VY: a * a * V, sdY: Math.abs(a) * Math.sqrt(V) };
   };
-  const varK = varier(PS.genK);
+  const varK = varier(PS.genK, 0x50530000+1);
   // 막대 i의 확률을 v로 바꾸면 나머지 막대는 비율을 지키며 합이 1이 되도록 줄거나 늘어납니다
   function setKP(s, i, v) {
     const p = s.kp.slice();
@@ -618,7 +638,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ======================= 장면 2 · 이항분포가 종 모양으로 (정규 근사) ======================= */
   // 근거 기출: 2026 수능 29 · 2026 9월 모평 29 · 2025 9월 모평 29 (이항분포의 정규 근사, 표준정규분포표)
-  const varL = varier(PS.genL);
+  const varL = varier(PS.genL, 0x50530000+2);
   function lInfo(s) {
     const n = Math.round(s.ln), p = s.lp, q = 1 - p, mu = n * p, sd = Math.sqrt(n * p * q);
     const a = clamp(Math.round(mu + s.lz1 * sd), 0, n), bb = clamp(Math.round(mu + s.lz2 * sd), a, n);
@@ -758,7 +778,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ======================= 장면 3-1 · 정규분포의 표준화 ======================= */
   // 근거 기출: 2027 9월 모평 27 · 2027 7월 학평 26 · 2024 9월 모평 26 · 2024 수능 30 (표준화, 표준정규분포표)
-  const varM1 = varier(PS.genM1);
+  const varM1 = varier(PS.genM1, 0x50530000+3);
   const M1_PCT = (z) => (z < 0 ? -1 : 1) * ZT[Math.abs(z)];
   function drawM1Explore(b, s) {
     const m = s.sm, sd = s.ss, A = Math.min(s.sa, s.sb), B = Math.max(s.sa, s.sb);
@@ -908,7 +928,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ======================= 장면 3-2 · 두 정규곡선의 대칭 · 교점 · 평행이동 ======================= */
   // 근거 기출: 2025 수능 29 · 2022 10월 학평 27 · 2023 10월 학평 28 · 2025 10월 학평 28 · 2024 10월 학평 28
-  const varM2 = varier(PS.genM2);
+  const varM2 = varier(PS.genM2, 0x50530000+4);
   // 두 정규곡선 N(m1,s1²), N(m2,s2²)의 교점 x좌표
   function intersections(m1, s1, m2, s2) {
     const A = 1 / (2 * s1 * s1) - 1 / (2 * s2 * s2), B = -m1 / (s1 * s1) + m2 / (s2 * s2), C = (m1 * m1) / (2 * s1 * s1) - (m2 * m2) / (2 * s2 * s2) + Math.log(s1 / s2);
@@ -930,7 +950,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (s.tmove && same && m1 !== m2) {
       const d = m1 - m2;
       areaUnder(b, c, f, a + d, e + d, { fill: 'sky', alpha: 0.16, edge: 'sky', dash: [5, 4], edgeAlpha: 0.9 });
-      areaUnder(b, c, f, 2 * m1 - e - d, 2 * m1 - a - d, { fill: 'violet', alpha: 0.22, edge: 'violet', dash: [5, 4], edgeAlpha: 0.9 });
+      if (!lpsActive(s) || s.lpsReflect !== false) areaUnder(b, c, f, 2 * m1 - e - d, 2 * m1 - a - d, { fill: 'violet', alpha: 0.22, edge: 'violet', dash: [5, 4], edgeAlpha: 0.9 });
     }
     curve(b, c, f, { color: 'amber', width: 3, glow: true });
     curve(b, c, g, { color: 'sky', width: 3, glow: true });
@@ -985,7 +1005,7 @@ window.addEventListener('DOMContentLoaded', function () {
       areaUnder(b, c, g, V.a, V.b, { fill: 'sky', alpha: 0.38 });
       if (st >= 3) {
         areaUnder(b, c, f, V.a + d, V.b + d, { fill: 'sky', alpha: 0.18, edge: 'sky', dash: [5, 4], edgeAlpha: 0.9 });
-        areaUnder(b, c, f, 2 * m1 - V.b - d, 2 * m1 - V.a - d, { fill: 'violet', alpha: 0.3, edge: 'violet', dash: [5, 4], edgeAlpha: 0.9 });
+        if (!lpsActive(s) || s.lpsReflect !== false) areaUnder(b, c, f, 2 * m1 - V.b - d, 2 * m1 - V.a - d, { fill: 'violet', alpha: 0.3, edge: 'violet', dash: [5, 4], edgeAlpha: 0.9 });
       }
       curve(b, c, f, { color: 'amber', width: 3, glow: true });
       curve(b, c, g, { color: 'sky', width: 3, glow: true });
@@ -1083,7 +1103,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ======================= 장면 3-3 · 꺾은선 확률밀도함수 (넓이 1 · f+g=k) ======================= */
   // 근거 기출: 2022 수능 29 · 2023 수능 28 · 2024 7월 학평 29 · 2023 7월 학평 29 (연속확률변수의 확률밀도함수 그래프)
-  const varM3 = varier(PS.genM3);
+  const varM3 = varier(PS.genM3, 0x50530000+5);
   const fPoly = (L, x1, x2, h) => (x) => (x < 0 || x > L ? 0 : x <= x1 ? (h * x) / x1 : x <= x2 ? h : (h * (L - x)) / (L - x2));
   function fInt(u, v, L, x1, x2, h) {
     let s = 0;
@@ -1262,7 +1282,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ======================= 장면 4 · 표본평균의 분포 시뮬레이션 ======================= */
   // 근거 기출: 2025 수능 27 · 2027 9월 모평 30 · 2025 9월 모평 26 · 2022 9월 모평 27 (표본평균의 평균·분산·분포)
-  const varO = varier(PS.genO);
+  const varO = varier(PS.genO, 0x50530000+6);
   const OVALS = [1, 3, 5, 7, 9];
   const OPOP = {
     uni: { name: '고르게', p: [0.2, 0.2, 0.2, 0.2, 0.2] },
@@ -1270,18 +1290,18 @@ window.addEventListener('DOMContentLoaded', function () {
     skew: { name: '한쪽 치우침', p: [0.4, 0.3, 0.15, 0.1, 0.05] }
   };
   const popStat = (p) => { const mu = p.reduce((a, x, i) => a + x * OVALS[i], 0), v = p.reduce((a, x, i) => a + x * OVALS[i] * OVALS[i], 0) - mu * mu; return { mu, v, sd: Math.sqrt(v) }; };
-  const sampleOne = (p) => { let r = Math.random(); for (let i = 0; i < p.length; i++) { r -= p[i]; if (r < 0) return OVALS[i]; } return OVALS[p.length - 1]; };
+  const sampleOne = (p,random) => { let r = random(); for (let i = 0; i < p.length; i++) { r -= p[i]; if (r < 0) return OVALS[i]; } return OVALS[p.length - 1]; };
   function oDraw(s, times) {
     const pop = OPOP[s.opop].p, n = Math.round(s.on);
     for (let t = 0; t < times; t++) {
       let sum = 0; const vals = [];
-      for (let i = 0; i < n; i++) { const v = sampleOne(pop); sum += v; if (t === times - 1 && i < 14) vals.push(v); }
+      for (let i = 0; i < n; i++) { const v = sampleOne(pop,()=>PS.sampleUniform(s,'oseed')); sum += v; if (t === times - 1 && i < 14) vals.push(v); }
       s.omeans.push(sum / n);
       if (t === times - 1) s.olast = { vals, n, mean: sum / n };
     }
     if (s.omeans.length > 6000) s.omeans.splice(0, s.omeans.length - 6000);
   }
-  const oReset = (s) => { s.omeans = []; s.olast = null; };
+  const oReset = (s) => { s.omeans = []; s.olast = null; if(!Number.isFinite(s.oseed))s.oseed=0x50534f01; };
   const BOX_POP = [11, 97, 72, 93], BOX_MEAN = [11, 97, 20, 58];
   function drawOExplore(b, s) {
     const pop = OPOP[s.opop].p, ps = popStat(pop), n = Math.round(s.on), sdm = ps.sd / Math.sqrt(n), means = s.omeans, N = means.length;
@@ -1485,15 +1505,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ======================= 장면 5 · 신뢰구간 ======================= */
   // 근거 기출: 2026 수능 26 · 2023 수능 27 · 2022 수능 27 (모평균의 신뢰구간, 신뢰도·표본 크기와 폭)
-  const varP = varier(PS.genP);
+  const varP = varier(PS.genP, 0x50530000+7);
   const PM = 50, PSIG = 10; // 시뮬레이션의 모집단: N(50, 10²)
   const PZ = { 90: 1.645, 95: 1.96, 99: 2.58 };
-  const gauss = () => { let u = 0, v = 0; while (u === 0) u = Math.random(); while (v === 0) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
-  const pReset = (s) => { s.prows = []; s.ptot = 0; s.phit = 0; };
+  const gauss = (random) => { let u = 0, v = 0; while (u === 0) u = random(); while (v === 0) v = random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
+  const pReset = (s) => { s.prows = []; s.ptot = 0; s.phit = 0; if(!Number.isFinite(s.pseed))s.pseed=0x50535001; };
   function pSample(s, rows, keep) {
     const n = Math.round(s.pn), sdm = PSIG / Math.sqrt(n), hw = PZ[s.pc] * sdm;
     for (let i = 0; i < rows; i++) {
-      const x = PM + sdm * gauss(), hit = Math.abs(x - PM) <= hw;
+      const x = PM + sdm * gauss(()=>PS.sampleUniform(s,'pseed')), hit = Math.abs(x - PM) <= hw;
       s.ptot++; if (hit) s.phit++;
       if (keep) { s.prows.push({ x, lo: x - hw, hi: x + hw, hit }); if (s.prows.length > 100) s.prows.shift(); }
     }
@@ -1570,7 +1590,7 @@ window.addEventListener('DOMContentLoaded', function () {
     sline(b, [cc.X(0), cc.Y(V.len)], [cc.X(nmax), cc.Y(V.len)], { color: 'amber', width: 2, dash: [6, 4], alpha: 0.95 });
     b.text([cc.X(nmax), cc.Y(V.len)], `${V.len}`, { size: 13, weight: 800, color: 'amber', align: 'right', baseline: 'bottom', dy: -4 });
     curve(b, cc, f, { color: 'sky', width: 3, glow: true, from: Math.pow(c / ymax, 2) });
-    b.text([cc.X(nmax * 0.55), cc.Y(f(nmax * 0.55))], `길이 = ${num(c, 3)} / √n`, { size: 12.5, weight: 800, color: 'sky', baseline: 'bottom', dy: -9 });
+    if (!lpsActive(s) || st >= 1) b.text([cc.X(nmax * 0.55), cc.Y(f(nmax * 0.55))], `길이 = ${num(c, 3)} / √n`, { size: 12.5, weight: 800, color: 'sky', baseline: 'bottom', dy: -9 });
     if (st >= 2) {
       const nk = V.k * V.k;
       sline(b, [cc.X(nk), cc.Y(0)], [cc.X(nk), cc.Y(V.len)], { color: 'green', width: 1.8, dash: [5, 4] });
@@ -1647,7 +1667,7 @@ window.addEventListener('DOMContentLoaded', function () {
     };
   }
 
-  APLab.createLab({
+  const labDefinition={
     id: 'prob-stats',
     stagedReveal: true,
     title: '통계 실험실',
@@ -1700,7 +1720,103 @@ window.addEventListener('DOMContentLoaded', function () {
       { title: '표본평균의 분포', short: '표본평균', scenes: [withDoc(sceneO())] },
       { title: '신뢰구간', short: '신뢰구간', scenes: [withDoc(sceneP())] }
     ]
-  });
+  };
+
+  // First packets and representative source branches are independent of sampling
+  // streams. The chosen manual problem stays in the original varier closure.
+  const copy=value=>JSON.parse(JSON.stringify(value));
+  const lessonScenes=labDefinition.groups.flatMap(g=>g.scenes);
+  const classify=(id,v)=>id==='binom'?v.form:id==='std'?(v.kind==='B'?'B':v.z1<0?(v.z2<0?'A-left':'A-cross'):'A-right'):id==='mean'?(v.kind==='O1'?'O1':'O2-'+v.form):v.kind||'pdf';
+  const desired={dist:['scale','aff'],binom:['le','ge','btw'],std:['A-left','A-cross','A-right','B'],sym:['T1','T2'],pdf:['pdf'],mean:['O1','O2-ge','O2-le','O2-btw'],ci:['P1','P2']};
+  const questionOf={dist:kQuestion,binom:lQuestion,std:m1Question,sym:m2Question,pdf:m3Question,mean:oQuestion,ci:pQuestion};
+  const stepsOf={dist:kSteps,binom:lSteps,std:m1Steps,sym:m2Steps,pdf:m3Steps,mean:oSteps,ci:pSteps};
+  const info=Object.fromEntries(lessonScenes.map(sc=>{
+    const initial=Object.fromEntries(Object.entries(labDefinition.params).map(([k,v])=>[k,v.value]));sc.enter(initial);
+    const first=sc.vary.first(),models={[classify(sc.id,first)]:first};
+    let packet=first;
+    for(let i=1;i<=512&&desired[sc.id].some(key=>!models[key]);i++){
+      packet=sc.vary.at(i,packet);const key=classify(sc.id,packet);if(!models[key])models[key]=packet;
+    }
+    if(desired[sc.id].some(key=>!models[key]))throw new Error('Missing statistics source branch: '+sc.id);
+    const manual=sc.vary.cur;
+    sc.vary.cur=()=>{
+      const s=lpsContext||window.lab?.s;
+      return lpsActive(s)&&s.lpsScene===sc.id?(models[s.lpsKind]||first):manual();
+    };
+    return [sc.id,{initial,first,models,inquiry:sc.question}];
+  }));
+  const sampleCache=new Map();
+  function sampleSnapshot(id,s,count){
+    count=Math.max(0,Math.min(1000,Math.round(count)));
+    const key=id==='mean'?['mean',s.opop,Math.round(s.on),s.oseed,count].join('|'):['ci',Math.round(s.pn),s.pc,s.pseed,count].join('|');
+    if(!sampleCache.has(key)){
+      const result=copy(s);
+      if(id==='mean'){oReset(result);oDraw(result,count);}
+      else {pReset(result);pSample(result,count,true);}
+      if(sampleCache.size>64)sampleCache.delete(sampleCache.keys().next().value);
+      sampleCache.set(key,result);
+    }
+    const model=sampleCache.get(key);
+    return id==='mean'?{omeans:model.omeans,olast:model.olast}:{prows:model.prows,ptot:model.ptot,phit:model.phit};
+  }
+  const lessonSource=window.APL_PS_SOURCE={
+    scenes:lessonScenes,initial:id=>copy(info[id].initial),first:id=>copy(info[id].first),
+    kind:id=>classify(id,info[id].first),kinds:id=>desired[id].slice(),
+    packet:(id,kind)=>copy(info[id].models[kind||classify(id,info[id].first)]),
+    question:(id,kind)=>questionOf[id](info[id].models[kind||classify(id,info[id].first)]),
+    steps:(id,kind)=>stepsOf[id](info[id].models[kind||classify(id,info[id].first)]),
+    inquiry:id=>info[id].inquiry,nativeKeys:id=>Object.keys(info[id].initial),
+    math:{PS,KX,KSHAPES,kStat,kVals,setKP,lInfo,lForm,lP,normPdf,intersections,m2Pieces,m3Shape,fPoly,fInt,OVALS,OPOP,popStat,cardMeanDistribution,PM,PSIG,PZ,mkChart,BOX1,BOX_TOP,BOX_BOT,BOX_POP,BOX_MEAN,BOX_DIST,BOX_CI},
+    samples:{mean:oDraw,confidence:pSample,resetMean:oReset,resetConfidence:pReset,snapshot:sampleSnapshot}
+  };
+  const shownState=s=>{
+    const data={...s,...(s.lessonEntry?s.lpsInitial:{})},shown={...data};
+    for(const [key,value] of Object.entries(data))if(/^lps[NS]_/.test(key))shown[key.slice(5)]=value;
+    shown.step=s.lessonEntry?(s.lpsInitial?.step||0):Math.max(0,Math.min(s.step||0,4));
+    shown.part=null;shown.playing=false;shown.dragging=false;
+    if(s.lessonEntry){shown.lpsTrace=0;shown.lpsShowAnswer=false;}
+    if(shown.lpsExplore&&['mean','ci'].includes(shown.lpsScene))Object.assign(shown,sampleSnapshot(shown.lpsScene,shown,shown.lpsSamples));
+    return shown;
+  };
+  for(const sc of lessonScenes){
+    const original={question:sc.question,steps:sc.steps,reviewTop:sc.reviewTop,view:sc.view,draw:sc.draw,tick:sc.tick};
+    sc.question=(s,lab)=>lpsActive(s)?s.lpsQuestion||lessonSource.question(sc.id):typeof original.question==='function'?original.question(s,lab):original.question;
+    sc.steps=(s,lab)=>lpsActive(s)?['조건 확인','분포와 전략','계산','구간 비교','결론']:original.steps(s,lab);
+    sc.reviewTop=(s,lab)=>lpsActive(s)?'':original.reviewTop(s,lab);
+    sc.view=(s,lab)=>lpsActive(s)?{}:original.view(s,lab);
+    sc.tick=(s,dt,lab)=>lpsActive(s)?false:original.tick?.(s,dt,lab);
+    sc.draw=(b,s,v,lab)=>{
+      if(!lpsActive(s)){
+        if(b._psLessonView){if(b.focus===b._psLessonView.appliedFocus)Object.assign(b,b._psLessonView.before);delete b._psLessonView;}
+        return original.draw(b,s,v,lab);
+      }
+      if(!b._psLessonView)b._psLessonView={before:{focus:b.focus,zoom:b.zoom,panX:b.panX,panY:b.panY}};
+      const shown=shownState(s),drawLab=Object.create(lab);drawLab.s=shown;drawLab.tab=shown.lpsExplore?'explore':'review';
+      const key=sc.id+'|'+shown.lpsKind+'|'+shown.lpsExplore;
+      if(b._psLessonView.key!==key){b._psLessonView.key=key;b.setFocus(labDefinition.board.focus,true);}
+      const previous=lpsContext,previousTrace=lpsTraceShape,path=b.path;
+      lpsContext=shown;lpsTraceShape=null;
+      b.path=function(points,options){
+        if(!lpsTraceShape&&points.length>1)lpsTraceShape={kind:'path',a:b._P(points[0]),z:b._P(points[1])};
+        return path.call(this,points,options);
+      };
+      try{
+        original.draw(b,shown,{},drawLab);
+        if(!s.lessonEntry&&shown.lpsTrace>0&&!b._bbox&&lpsTraceShape){
+          const q=lpsTraceShape,t=shown.lpsTrace;
+          let point;
+          if(q.kind==='curve'){const x=q.from+(q.to-q.from)*t;point=[q.c.X(x),q.c.Y(q.f(x))];}
+          else if(q.kind==='bar')point=[q.c.X(q.x0+(q.x1-q.x0)*t),q.c.Y(q.h)];
+          else point={x:q.a.x+(q.z.x-q.a.x)*t,y:q.a.y+(q.z.y-q.a.y)*t};
+          b.point(point,{color:'violet',r:4.5});
+        }
+      }finally{lpsContext=previous;lpsTraceShape=previousTrace;b.path=path;}
+      b._psLessonView.appliedFocus=b.focus;
+    };
+  }
+  labDefinition.lessons=window.APL_PS_LESSONS?window.APL_PS_LESSONS.install(lessonScenes,lessonSource):{};
+
+  APLab.createLab(labDefinition);
 });
 </script>
 </body>
