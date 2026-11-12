@@ -1,0 +1,167 @@
+{
+  "status": "SAMPLE_ONLY",
+  "sourceRef": {
+    "path": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사2.js",
+    "bytes": 88345,
+    "sha256": "sha256:5ba68fa5e6ecf41b75f2bcdfaed47c25f49a8be5e311b5f16710e70889ad27e2"
+  },
+  "gitBlob": "ed0df4fe584e4a9b932d31cdcf648203a2531ba5",
+  "sourceRefBranch": "work/similar-m1-accumulate",
+  "questionUid": "25_연향중_2학기_중간_중1_유사2|17",
+  "questionSha256": "sha256:dd44519ab73cb41f54842e9fd4355cc2c91e84e98f4c483491f67e3a6cee8ddd",
+  "typographyPolicy": {
+    "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+    "requestedSizeClass": "full",
+    "baseFontPx": 24,
+    "displayScale": 1,
+    "fontFloorCssPx": 11
+  },
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "engineMainRef": "1206d96c524b4fc50afc83311d2a6131c7e5ab46",
+  "engineChanges": [],
+  "browserPackage": "@sparticuz/chromium@143.0.4",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false,
+  "surfaces": [
+    {
+      "surface": "solution",
+      "identity": {
+        "questionUid": "25_연향중_2학기_중간_중1_유사2|17",
+        "surface": "SOLUTION_VISUAL",
+        "visualRole": "decisive-relation",
+        "visualAssetKey": "sha256:bf5a2a87782f5501e1ef4421a994d1f98a72061991abc2dbad96be290b9eb476",
+        "assetId": "va-95593b02b85ff6fbfc82e9d00a503370702945a2fef46ea62a98b72287767988"
+      },
+      "status": "SAMPLE_ONLY",
+      "compositionStatus": "COMPOSED",
+      "planRef": {
+        "path": "yeon25-q17-inputs/solution-plan.json",
+        "bytes": 5307,
+        "sha256": "sha256:4795e7826983dd69db9b93823885713a211330a0a0d85c536c8e212a240f870f"
+      },
+      "svgRef": {
+        "path": "yeon25-q17-outputs/solution.svg",
+        "bytes": 16127,
+        "sha256": "sha256:da4a6f7c3ad48df9b6ee8736a7ed9c112667a2a309b0e1858833d40244848416"
+      },
+      "pngRef": {
+        "path": "yeon25-q17-outputs/solution.png",
+        "bytes": 9414,
+        "sha256": "sha256:fab4e2609b16a25687d0892ae2cdcbe3a049759b64a46c136621582939fa1631"
+      },
+      "staticAudit": {
+        "status": "PASS",
+        "errors": [],
+        "planeMarks": {
+          "status": "PASS",
+          "errors": [],
+          "observations": [
+            {
+              "id": "radius",
+              "type": "EQUAL",
+              "lengths": [
+                4.000000000004878,
+                4.000000000012931,
+                4.000000000004878,
+                4.00000000001293
+              ]
+            },
+            {
+              "id": "chord",
+              "type": "EQUAL",
+              "lengths": [
+                3.380946093935235,
+                3.3809460939352354
+              ]
+            },
+            {
+              "id": "arc1",
+              "type": "ARC",
+              "drawnDegrees": 50.000000000027796,
+              "radius": 4
+            },
+            {
+              "id": "arc2",
+              "type": "ARC",
+              "drawnDegrees": 50.000000000150976,
+              "radius": 4
+            },
+            {
+              "id": "OA",
+              "type": "SEGMENT_COLOR",
+              "color": "BLUE",
+              "strokeWidth": 2.4,
+              "stroke": "#1f5fa8"
+            },
+            {
+              "id": "OB",
+              "type": "SEGMENT_COLOR",
+              "color": "BLUE",
+              "strokeWidth": 2.4,
+              "stroke": "#1f5fa8"
+            },
+            {
+              "id": "AB",
+              "type": "SEGMENT_COLOR",
+              "color": "WARM",
+              "strokeWidth": 2.4,
+              "stroke": "#b85c00"
+            },
+            {
+              "id": "PQ",
+              "type": "SEGMENT_COLOR",
+              "color": "BLUE",
+              "strokeWidth": 2.4,
+              "stroke": "#1f5fa8"
+            },
+            {
+              "id": "PR",
+              "type": "SEGMENT_COLOR",
+              "color": "BLUE",
+              "strokeWidth": 2.4,
+              "stroke": "#1f5fa8"
+            },
+            {
+              "id": "QR",
+              "type": "SEGMENT_COLOR",
+              "color": "WARM",
+              "strokeWidth": 2.4,
+              "stroke": "#b85c00"
+            }
+          ]
+        }
+      },
+      "renderedLayout": {
+        "status": "PASS",
+        "display": {
+          "width": 720,
+          "height": 480
+        },
+        "errors": []
+      },
+      "lineage": {
+        "planSha256": "sha256:2dd2698816b108fd72198c6b02feabc520dbf6d6b6d503a0c00eb595f3f8652e",
+        "modelSha256": "sha256:f215a926755135d8b86d53c487e6a771d3a8d613b720ed51ddbd2f4d969c60a6",
+        "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
+        "specSha256": "sha256:74875bcf907e3aa0363274e174fcef4200de40ecd64a224c23560aa0b537eedc",
+        "fragmentSha256s": {
+          "O-name": "sha256:d4d395d7fe927b30bbdccc800c169fd5be8d5ebfa7552de7526392c5111e1af5",
+          "A-name": "sha256:a24c314a8e973242c53551134f90c239eadf6bc3a894df96dc80596e63039b3f",
+          "B-name": "sha256:a087e889209ede3ab12247ee312b77bfacd4dba6908f05904a9c1313cae58fbb",
+          "P-name": "sha256:a7a2fd37d800e1f1f9bada315a591369697d62d4ad31e87d28346d231749cd09",
+          "Q-name": "sha256:2c5a359d5b4437c3de32e5f744623629bf86772b972273333094565c616a6c92",
+          "R-name": "sha256:746427230111ae043bb2f7516a3e46212967aa763d5587e220b366b8eb93894b"
+        },
+        "measurementsSha256": "sha256:91890687f3ff4fc591891528678da83c42a8feabad306942b19e80bf08da2f38",
+        "svgSha256": "sha256:da4a6f7c3ad48df9b6ee8736a7ed9c112667a2a309b0e1858833d40244848416",
+        "witnessSha256": "sha256:127c3890a13c45e64ec779e592794e0c075a37301825ac84325ea924c7a4e388",
+        "staticAuditSha256": "sha256:8ae73d7db28b7f4b1a13375ccfa03fc202faf8a5ce87f298861415ea495bcbd8",
+        "renderedLayoutSha256": "sha256:3729ed209ce818dc5833d9982f447478b0b44f6854cbbec830a8789876180d90"
+      }
+    }
+  ],
+  "browserVersion": "143.0.7499.0",
+  "browserContext": "ONE_TRANSIENT_SHARED_CONTEXT"
+}
