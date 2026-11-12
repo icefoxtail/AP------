@@ -5440,16 +5440,44 @@ OV_MC_ASYMPTOTE_LABEL_MAX_PX=12.5
 OV_MC_NO_ROOM_CURVE_MAX_PX=64.0   # a label the engine marked data-near-room=NONE (no free spot beside its stroke: a tall fraction in a small window) is judged by ownership and this wider reach
 OV_MC_NO_ROOM_ASYMPTOTE_MAX_PX=40.0 # an asymptote value stands within this many px of its own dashed line, which is the nearest dashed line
 
+def _mc_leader_crosses_stroke(start,end,segments):
+    """Test the part of the leader beyond its attachment against the actual stroke, including vertex hits and collinear overlap."""
+    length=math.dist(start,end)
+    ux,uy=(end[0]-start[0])/length,(end[1]-start[1])/length
+    def along_leader(point):
+        dx,dy=point[0]-start[0],point[1]-start[1]
+        return (dx*ux+dy*uy,dy*ux-dx*uy)
+    corridor=(OV_LEADER_TOLERANCE_PX,-1e-6,length-OV_LEADER_TOLERANCE_PX,2e-6)
+    return any(_ov_segment_hits_box(along_leader(a),along_leader(b),corridor) for a,b in segments)
+
 def multi_curve_label_audit(plan,svg,transform):
-    """(G18b) Which stroke a multi-curve label belongs to, read from the final SVG: a curve's formula (curve-<id>-equation) is nearest to its own curve (within 20 px, no other curve as
-    close), an asymptote's value (curve-<id>-asymptote-x / -y) is within 12 px of its own dashed line and no other dashed line is as close. Hidden labels are not there to read."""
+    """Read curve and asymptote label ownership from the final SVG, including any leader's attachment and clearance."""
     if plan.get('family')!='multi-curve' or not isinstance(plan.get('curves'),list):return None
     errors=[]
     try:root=ET.fromstring(svg)
     except ET.ParseError:return None
     groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')}
-    ids=[entry.get('id') for entry in plan['curves'] if isinstance(entry,dict) and isinstance(entry.get('id'),str)]
-    strokes={ident:[] for ident in ids};dashed={}
+    source={entry['id']:entry for entry in plan['curves'] if isinstance(entry,dict) and isinstance(entry.get('id'),str)}
+    ids=list(source)
+    inventory=plan.get('multiCurveFeatures')
+    rows=[row for row in (inventory.get('curves') if isinstance(inventory,dict) else None) or []
+          if isinstance(row,dict) and isinstance(row.get('id'),str)]
+    all_vertical_parabolas=len(rows)>1 and all(row.get('kind')=='Y_OF_X' for row in rows)
+    owned={row.get('id') for row in rows if all_vertical_parabolas or row.get('kind') in ('LINE','RATIONAL','SQRT')}
+    suffixes={'FUNCTION':('',''),'LEFT':('_L','-left'),'RIGHT':('_R','-right'),
+              'POSITIVE':('_POS','-positive'),'NEGATIVE':('_NEG','-negative')}
+    branch_owners={}
+    for row in rows:
+        ident=row.get('id')
+        if ident not in source:continue
+        branches=row.get('branches',[{'side':'FUNCTION'}])
+        if not isinstance(branches,list):continue
+        for branch in branches:
+            side=branch.get('side') if isinstance(branch,dict) else None
+            if not isinstance(side,str) or side not in suffixes:continue
+            branch_suffix,object_suffix=suffixes[side]
+            branch_owners.setdefault('CURVE_'+ident+branch_suffix,[]).append((ident,'f-'+ident+object_suffix))
+    strokes={ident:[] for ident in ids};dashed={};leaders={}
     def points_of(node):
         try:values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
         except ValueError:return []
@@ -5457,33 +5485,51 @@ def multi_curve_label_audit(plan,svg,transform):
     for node in root.iter():
         tag=node.tag.split('}')[-1];branch=node.get('data-branch') or ''
         if tag=='polyline' and node.get('data-role')=='curve':
-            for ident in ids:
-                if branch==f'CURVE_{ident}' or branch.startswith(f'CURVE_{ident}_') or branch.startswith(f'EMPH_{ident}_'):strokes[ident].append(points_of(node))
+            if branch.startswith('CURVE_'):
+                candidates=branch_owners.get(branch,[])
+                if len(candidates)>1:
+                    # CURVE_f_L can be the LEFT branch of f or the entire curve f_L.
+                    primitive=re.sub(r'-branch-\d+$','',node.get('id') or '')
+                    candidates=[(ident,object_id) for ident,object_id in candidates if object_id==primitive]
+                ident=candidates[0][0] if len(candidates)==1 else None
+            elif branch.startswith('EMPH_'):ident=branch[5:].rsplit('_',1)[0]
+            else:continue
+            if ident in strokes:
+                points=points_of(node)
+                strokes[ident].extend(zip(points,points[1:]))
         elif tag=='line' and node.get('data-role')=='asymptote' and branch.startswith('ASYM_'):
             try:dashed[branch]=((float(node.get('x1')),float(node.get('y1'))),(float(node.get('x2')),float(node.get('y2'))))
             except (TypeError,ValueError):pass
-    def polyline_distance(box,points):
-        return min((_ov_box_segment_distance(box,a,b) for a,b in zip(points,points[1:])),default=math.inf)
-    # (G18c) a formula with no room beside its curve stands in free space on a leader that starts on a vertex of its own curve and ends on the label box
-    leaders={node.get('data-owner-label'):node for node in root.iter() if node.tag.split('}')[-1]=='line' and node.get('data-role')=='leader' and node.get('data-owner-label')}
-    def leader_ok(label_id,box,ident):
-        node=leaders.get(label_id)
-        if node is None:return False
+        elif tag=='line' and node.get('data-role')=='leader' and node.get('data-owner-label'):
+            leaders.setdefault(node.get('data-owner-label'),[]).append(node)
+    def label_distance(box,segments):
+        return min((_ov_box_segment_distance(box,a,b) for a,b in segments),default=math.inf)
+    def leader_ok(nodes,box,ident):
+        if len(nodes)!=1:return False
+        node=nodes[0]
         try:start=(float(node.get('x1')),float(node.get('y1')));end=(float(node.get('x2')),float(node.get('y2')))
         except (TypeError,ValueError):return False
-        on_own=any(_ov_point_segment_distance(start,a,b)<=OV_LEADER_TOLERANCE_PX for points in strokes[ident] for a,b in zip(points,points[1:]))
+        if not all(math.isfinite(value) for value in (*start,*end)) or math.dist(start,end)<=OV_LEADER_TOLERANCE_PX:return False
+        if node.get('data-owner')!=ident or not any(_ov_point_segment_distance(start,a,b)<=OV_LEADER_TOLERANCE_PX for a,b in strokes[ident]):return False
+        if any(_ov_point_segment_distance(start,a,b)<OV_MC_LABEL_OTHER_MARGIN_PX for other in ids if other!=ident for a,b in strokes[other]):return False
         edges=[((box[0],box[1]),(box[0]+box[2],box[1])),((box[0]+box[2],box[1]),(box[0]+box[2],box[1]+box[3])),((box[0]+box[2],box[1]+box[3]),(box[0],box[1]+box[3])),((box[0],box[1]+box[3]),(box[0],box[1]))]
         on_label=min(_ov_point_segment_distance(end,a,b) for a,b in edges)<=OV_LEADER_TOLERANCE_PX
-        return on_own and on_label and node.get('data-owner')==ident
-    # the curve formulas of the kinds G18a added (LINE, RATIONAL, SQRT) are placed beside their own stroke; the older quadratic arcs keep their old placement and are not judged here
-    inventory=plan.get('multiCurveFeatures');free_kinds={row.get('id') for row in (inventory.get('curves') if isinstance(inventory,dict) else None) or [] if isinstance(row,dict) and row.get('kind') in ('LINE','RATIONAL','SQRT')}
+        return on_label and not any(_mc_leader_crosses_stroke(start,end,segments) for segments in strokes.values())
     for ident in ids:
-        label_id='curve-'+ident+'-equation';box=_region_label_box(groups,label_id) if label_id in groups and ident in free_kinds else None
-        if box is not None and strokes[ident]:
-            own=min(polyline_distance(box,points) for points in strokes[ident])
-            closer=[other for other in ids if other!=ident and strokes[other] and min(polyline_distance(box,points) for points in strokes[other])<own+OV_MC_LABEL_OTHER_MARGIN_PX]
-            reach=OV_MC_NO_ROOM_CURVE_MAX_PX if groups[label_id].get('data-near-room')=='NONE' else OV_MC_LABEL_OWN_MAX_PX
-            if (own>reach or closer) and not leader_ok(label_id,box,ident):errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+        label_id='curve-'+ident+'-equation'
+        if ident in owned:
+            box=_region_label_box(groups,label_id)
+            attached=leaders.get(label_id)
+            required=all_vertical_parabolas and 'label' in source[ident] and root.get('data-publication-profile') is not None
+            if box is None:
+                if required or label_id in groups or attached:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+            elif attached:
+                if not leader_ok(attached,box,ident):errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+            else:
+                own=label_distance(box,strokes[ident])
+                closer=any(label_distance(box,strokes[other])<own+OV_MC_LABEL_OTHER_MARGIN_PX for other in ids if other!=ident)
+                reach=OV_MC_NO_ROOM_CURVE_MAX_PX if not all_vertical_parabolas and groups[label_id].get('data-near-room')=='NONE' else OV_MC_LABEL_OWN_MAX_PX
+                if own>reach or closer:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
         for suffix,axis in (('x','V'),('y','H')):
             label_id='curve-'+ident+'-asymptote-'+suffix;box=_region_label_box(groups,label_id) if label_id in groups else None
             if box is None:continue

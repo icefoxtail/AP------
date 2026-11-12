@@ -1374,6 +1374,7 @@ function multiCurveSpec(plan,id){
     return terms.length?terms.map(({c,i},index)=>{const surd=c.includes('sqrt'),negative=!surd&&c.startsWith('-'),magnitude=negative?c.slice(1):c,coefficient=surd||magnitude.includes('/')?'('+magnitude+')':magnitude;return (negative?'-':index?'+':'')+(i?(magnitude==='1'?'':coefficient+'*')+'x'+(i>1?'^'+i:''):coefficient);}).join(''):'0';
   };
   const sourceLabels=new Map((p.curves??[]).map(curve=>[curve?.id,curve?.label]));
+  const allVerticalParabolas=features.curves.length>1&&features.curves.every(curve=>curve?.kind==='Y_OF_X');
   const objects=[],marks=[];
   // G18a: the look a curve wears (palette colour, dashed, bold) is carried by its drawn objects; the engine and the observer read the same three fields.
   const lookOf=curve=>({...(curve.color?{color:curve.color}:{}),...(curve.style==='DASHED'?{curveStyle:'DASHED'}:{}),...(curve.weight==='BOLD'?{curveWeight:'BOLD'}:{})});
@@ -1476,7 +1477,7 @@ function multiCurveSpec(plan,id){
       if(label!==undefined){
         if(typeof label!=='string'||!/^[0-9A-Za-z=+\-*/().\^ ]{1,40}$/.test(label))throw Error('MULTI_CURVE_LABEL_INVALID:'+curve.id);
         const x=domain[0]+(domain[1]-domain[0])*.62,outward=exactValue(curve.coefficients[2])<0?1:-1;
-        objects.push({id:'curve-'+curve.id+'-equation',kind:'EQUATION_LABEL',text:label,at:[x,clampY(emphasisValue(curve,x)+outward*spanY*.06)],priority:0});
+        objects.push({id:'curve-'+curve.id+'-equation',kind:'EQUATION_LABEL',text:label,at:[x,clampY(emphasisValue(curve,x)+outward*spanY*.06)],priority:0,...(allVerticalParabolas?{nearCurve:curve.id}:{})});
       }
       continue;
     }

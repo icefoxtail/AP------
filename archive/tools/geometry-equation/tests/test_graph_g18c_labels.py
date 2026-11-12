@@ -65,5 +65,30 @@ class Observer(unittest.TestCase):
     def test_a_leader_owned_by_another_curve_is_refused(self):
         self.assertIn('LABEL_NEAREST_CURVE_MISMATCH:curve-g-equation',multi_curve_label_audit(self.PLAN,self.figure('f'),{})['errors'])
 
+    def test_a_leader_from_the_intersection_is_refused(self):
+        ambiguous=self.figure('g').replace('points="0,100 300,100"','points="0,100 130,100 150,200"')
+        self.assertIn('LABEL_NEAREST_CURVE_MISMATCH:curve-g-equation',multi_curve_label_audit(self.PLAN,ambiguous,{})['errors'])
+
+    def test_a_leader_crossing_another_curve_vertex_is_refused(self):
+        crossed=self.figure('g').replace('points="0,100 300,100"','points="0,100 130,100 150,245 200,250"')
+        self.assertIn('LABEL_NEAREST_CURVE_MISMATCH:curve-g-equation',multi_curve_label_audit(self.PLAN,crossed,{})['errors'])
+
+    def test_a_leader_overlapping_its_owner_is_refused(self):
+        overlapping=self.figure('g').replace('points="0,200 300,200"','points="0,200 150,200 150,240 300,200"')
+        self.assertIn('LABEL_NEAREST_CURVE_MISMATCH:curve-g-equation',multi_curve_label_audit(self.PLAN,overlapping,{})['errors'])
+
+    def test_a_present_leader_is_checked_even_if_the_label_is_already_near(self):
+        close=self.figure('f').replace('translate(120 290)','translate(120 215)').replace('y2="290"','y2="215"')
+        self.assertIn('LABEL_NEAREST_CURVE_MISMATCH:curve-g-equation',multi_curve_label_audit(self.PLAN,close,{})['errors'])
+
+    def test_a_branch_tag_shared_by_two_curves_uses_the_primitive_id(self):
+        plan={'family':'multi-curve','curves':[{'id':'f'},{'id':'f_L'}],
+              'multiCurveFeatures':{'curves':[{'id':'f','kind':'RATIONAL','branches':[{'side':'LEFT'}]},
+                                               {'id':'f_L','kind':'LINE','branches':[{'side':'FUNCTION'}]}]}}
+        svg=(self.figure('g').replace('data-branch="CURVE_f"','id="f-f-left-branch-0" data-branch="CURVE_f_L"')
+             .replace('data-branch="CURVE_g"','id="f-f_L-branch-0" data-branch="CURVE_f_L"')
+             .replace('curve-g-equation','curve-f_L-equation').replace('data-owner="g"','data-owner="f_L"'))
+        self.assertEqual(multi_curve_label_audit(plan,svg,{})['errors'],[])
+
 if __name__=='__main__':
     unittest.main()
