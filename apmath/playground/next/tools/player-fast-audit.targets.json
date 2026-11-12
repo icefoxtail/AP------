@@ -1,16 +1,1641 @@
 {
   "schemaVersion": 1,
-  "phase": "HARNESS_PILOT",
+  "phase": "SELECTIVE_STAGE2",
   "baseSha": "5d49cb23cdc895aaedaf232d9438ce83e2845713",
-  "shards": 1,
+  "shards": 8,
+  "selection": {
+    "totalLabs": 58,
+    "totalScenes": 1067,
+    "totalLessons": 2989,
+    "priorNativeFunctionLessonsReused": 102,
+    "priorNativeFunctionScenesWithTargetedAdditionalRegression": 15,
+    "unchangedFunctionScenesExcludedFromNewBrowserRun": 87,
+    "previouslyUnverifiedLessonUnits": 2887,
+    "primaryMobileRegressionFunctionUnits": 15,
+    "additionalViewportUnits": 40,
+    "selectedUniqueLessons": 2902,
+    "selectedUniqueScenes": 980,
+    "selectedViewportUnits": 2942,
+    "capturedViewportUnits": 121,
+    "nativeContinuousViewportUnits": 121,
+    "normalSpeedViewportUnits": 2
+  },
+  "reuseEvidence": {
+    "run": 43158662069,
+    "actualSourceSha": "3fd4977ebafb9b7650fc03392624a02441b2c6cc",
+    "binding": "Exact apmath/playground, apmath/css, apmath/js tree equality; see phase1 receipt.",
+    "native102Checks": 1218,
+    "initialViewportRows": 510
+  },
   "targets": [
-    {"lab":"g7-coordinate-graphs","scene":"graph-story","capture":true,"playback":true,"normalPlayback":true,"reason":"New situation graph; measure normal versus QA playback on the same lesson"},
-    {"lab":"g7-proportion","scene":"inverse-change","capture":true,"playback":true,"reason":"Two inverse-proportion branches and domain exclusion"},
-    {"lab":"g8-linear-functions","scene":"triangle-degeneracy","capture":true,"playback":true,"reason":"Degenerate geometry and answer disclosure"},
-    {"lab":"g9-quadratic-functions","scene":"moving-area","capture":true,"playback":true,"reason":"Dynamic area and final algebraic conclusion"},
-    {"lab":"g7-circle-sector","scene":"z3-sectorProof","lessonIndices":[0],"capture":true,"playback":true,"reason":"Complex area rearrangement and first-frame regression"},
-    {"lab":"g7-surface-volume","scene":"sv1-1","lessonIndices":[0,1],"capture":true,"playback":true,"reason":"Two lessons share one scene; surface and volume restore"},
-    {"lab":"common-quadratic","scene":"diffFuncFlatten","lessonIndices":[0],"capture":true,"playback":true,"reason":"High school pinned formula layout"},
-    {"lab":"geom-space-3d","scene":"mode1","lessonIndices":[0],"capture":true,"playback":true,"reason":"3D canvas and multi-lesson entry"}
+    {
+      "lab": "g7-points-lines",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g7-points-lines",
+      "scene": "b1-1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g7-parallel",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g7-parallel",
+      "scene": "p1-1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g7-spatial",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g7-spatial",
+      "scene": "s1-1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g7-construction",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g7-construction",
+      "scene": "c1-1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g7-area",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g7-area",
+      "scene": "a1-rect",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g7-polygons",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g7-polygons",
+      "scene": "p1-one",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "scene": "z0-center",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g7-polyhedra",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g7-polyhedra",
+      "scene": "p1-0",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "scene": "sv1-1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g7-solids",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g7-solids",
+      "scene": "s1-1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g8-triangles",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g8-triangles",
+      "scene": "t1-1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g8-quadrilaterals",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g8-quadrilaterals",
+      "scene": "q1-1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g8-similarity",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g8-similarity",
+      "scene": "sm1-corr",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g8-pythagoras",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g8-pythagoras",
+      "scene": "py1-sq",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g9-trig-ratio",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g9-trig-ratio",
+      "scene": "r1-1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g9-circle",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "g9-circle",
+      "scene": "c1-1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "common-poly-solid",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "common-poly-solid",
+      "scene": "sq",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "common-quadratic",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "common-quadratic",
+      "scene": "diffFuncFlatten",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "common-lines",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "common-lines",
+      "scene": "divInternalExternal",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "common-coord",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "common-coord",
+      "scene": "dist",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "common-transform",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "common-transform",
+      "scene": "shift",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "common-circle-eq",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "common-circle-eq",
+      "scene": "stdDef",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "common-functions",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "common-functions",
+      "scene": "bas-1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "common-rational",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "common-rational",
+      "scene": "r1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "common-irrational",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "common-irrational",
+      "scene": "i1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "common-counting",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "common-counting",
+      "scene": "rule",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "alg-explog",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "alg-explog",
+      "scene": "t1a",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "alg-exp-deep",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "alg-exp-deep",
+      "scene": "t1a",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "alg-log",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "alg-log",
+      "scene": "log1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "alg-log-deep",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "alg-log-deep",
+      "scene": "type1-0",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "alg-unit-circle",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "alg-unit-circle",
+      "scene": "coords",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "alg-trig-geometry",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "alg-trig-geometry",
+      "scene": "bas-1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "alg-sine-cosine-law",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "alg-sine-cosine-law",
+      "scene": "bas-1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "alg-sequence",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "alg-sequence",
+      "scene": "type1-0",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "calc1-limits",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "calc1-limits",
+      "scene": "continuity",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "calc1-tangent",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "calc1-tangent",
+      "scene": "secant",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "calc1-derivative-shape",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "calc1-derivative-shape",
+      "scene": "cubic",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "calc1-cubic",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "calc1-cubic",
+      "scene": "box",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "calc1-quartic",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "calc1-quartic",
+      "scene": "triple",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "calc1-composite",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "calc1-composite",
+      "scene": "abs",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "calc1-integral",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "calc1-integral",
+      "scene": "signed",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "calc1-motion",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "calc1-motion",
+      "scene": "disp",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "geom-parabola",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "geom-parabola",
+      "scene": "m1s1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "geom-ellipse",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "geom-ellipse",
+      "scene": "1-A",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "geom-hyperbola",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "geom-hyperbola",
+      "scene": "m1s1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "geom-space-3d",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "geom-space-3d",
+      "scene": "mode1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "geom-projection",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "geom-projection",
+      "scene": "mode1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "geom-space-coord",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "geom-space-coord",
+      "scene": "mode1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "geom-vector-ops",
+      "scene": "1-A",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "geom-vector-dot",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "geom-vector-dot",
+      "scene": "m1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "geom-vector-figure",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "geom-vector-figure",
+      "scene": "m1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "prob-counting",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "prob-counting",
+      "scene": "combo",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "prob-probability",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "prob-probability",
+      "scene": "grid",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "prob-stats",
+      "views": [
+        "390x844"
+      ],
+      "reason": "Native browser proof missing in current lesson handoff QA_PENDING; preserve verified mathematics and inspect added/updated lesson timeline."
+    },
+    {
+      "lab": "prob-stats",
+      "scene": "dist",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Representative native continuous playback and pause/rewind/replay/restore in this renderer."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "scene": "f4-swirl",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "scene": "rot",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "scene": "rl-rect",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "scene": "z3-sectorProof",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "scene": "f3-leaf-len",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "scene": "sv1-1",
+      "lessonIndices": [
+        0,
+        1
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "calc1-integral",
+      "scene": "signed",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": true,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "calc1-integral",
+      "scene": "inverse",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "calc1-integral",
+      "scene": "symint",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "geom-hyperbola",
+      "scene": "q7",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "prob-counting",
+      "scene": "func",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "prob-counting",
+      "scene": "circ",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "geom-space-coord",
+      "scene": "mode3",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g7-coordinate-graphs",
+      "scene": "water-vessels",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g7-coordinate-graphs",
+      "scene": "coordinate-area",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g7-coordinate-graphs",
+      "scene": "journey-compare",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g7-proportion",
+      "scene": "lattice-below",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g7-proportion",
+      "scene": "square-graphs",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g7-proportion",
+      "scene": "horizontal-division",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g8-linear-functions",
+      "scene": "triangle-degeneracy",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": true,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g8-linear-functions",
+      "scene": "slope-range",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g8-linear-functions",
+      "scene": "graph-rotation",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g8-linear-functions",
+      "scene": "graph-probability",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g8-linear-functions",
+      "scene": "area-integer-condition",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g9-quadratic-functions",
+      "scene": "moving-area",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g9-quadratic-functions",
+      "scene": "vertex-conditions",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g9-quadratic-functions",
+      "scene": "intersections",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g9-quadratic-functions",
+      "scene": "translation-area",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "390x844"
+      ],
+      "capture": true,
+      "playback": true,
+      "normalPlayback": false,
+      "reason": "Risk-based independent visual review: domain/degeneracy, complex geometry, clipping, or restored state."
+    },
+    {
+      "lab": "g7-circle-sector",
+      "scene": "z3-sectorProof",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "360x640",
+        "844x390",
+        "1024x768",
+        "820x1180",
+        "1440x900"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
+    },
+    {
+      "lab": "g7-surface-volume",
+      "scene": "sv1-1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "360x640",
+        "844x390",
+        "1024x768",
+        "820x1180",
+        "1440x900"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
+    },
+    {
+      "lab": "common-quadratic",
+      "scene": "diffFuncFlatten",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "360x640",
+        "844x390",
+        "1024x768",
+        "820x1180",
+        "1440x900"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
+    },
+    {
+      "lab": "geom-space-3d",
+      "scene": "mode1",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "360x640",
+        "844x390",
+        "1024x768",
+        "820x1180",
+        "1440x900"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
+    },
+    {
+      "lab": "prob-counting",
+      "scene": "func",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "360x640",
+        "844x390",
+        "1024x768",
+        "820x1180",
+        "1440x900"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
+    },
+    {
+      "lab": "geom-space-coord",
+      "scene": "mode3",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "360x640",
+        "844x390",
+        "1024x768",
+        "820x1180",
+        "1440x900"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
+    },
+    {
+      "lab": "g8-linear-functions",
+      "scene": "triangle-degeneracy",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "360x640",
+        "844x390",
+        "1024x768",
+        "820x1180",
+        "1440x900"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
+    },
+    {
+      "lab": "g9-quadratic-functions",
+      "scene": "moving-area",
+      "lessonIndices": [
+        0
+      ],
+      "views": [
+        "360x640",
+        "844x390",
+        "1024x768",
+        "820x1180",
+        "1440x900"
+      ],
+      "capture": true,
+      "playback": true,
+      "reason": "Shared player, DOM mathematics, and geometry at small phone/landscape/tablet/desktop viewports."
+    }
   ]
 }

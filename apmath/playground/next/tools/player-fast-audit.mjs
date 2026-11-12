@@ -76,8 +76,10 @@ const views = {
   '390x844': { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 },
   '360x640': { viewport: { width: 360, height: 640 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 },
   '844x390': { viewport: { width: 844, height: 390 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 },
+  '820x1180': { viewport: { width: 820, height: 1180 }, hasTouch: true, deviceScaleFactor: 1 },
   '1024x768': { viewport: { width: 1024, height: 768 }, hasTouch: true, deviceScaleFactor: 1 },
-  '1280x820': { viewport: { width: 1280, height: 820 }, hasTouch: false, deviceScaleFactor: 1 }
+  '1280x820': { viewport: { width: 1280, height: 820 }, hasTouch: false, deviceScaleFactor: 1 },
+  '1440x900': { viewport: { width: 1440, height: 900 }, hasTouch: false, deviceScaleFactor: 1 }
 };
 const targets = manifest.targets.filter(t => !onlyLabs.length || onlyLabs.includes(t.lab));
 if (!targets.length) throw Error('No manifest targets match --only.');
@@ -135,10 +137,14 @@ const observeFrame = new Function(`return function observeFrame() {
       dom.push({selector,text:e.textContent.slice(0,240),rect:r,inViewport:inViewport(r),clippedX,scrollable,mathOverflow:math.filter(k=>k.rect.left<r.left-2||k.rect.right>r.right+2)});
     }
   }
+  const overlayLabels=[...document.querySelectorAll('.apl-mlabel')].filter(e=>e.checkVisibility()).map(e=>{
+    const r=rect(e),layer=e.closest('.apl-labels'),bounds=layer&&rect(layer);
+    return {text:e.textContent.slice(0,240),rect:r,layer:bounds,clipped:!bounds||r.left<bounds.left-2||r.right>bounds.right+2||r.top<bounds.top-2||r.bottom>bounds.bottom+2};
+  });
   let pixelHash=2166136261;
   for(let i=0;i<f.rgba.length;i+=Math.max(4,Math.round(f.rgba.length/4096/4)*4)){pixelHash^=f.rgba[i];pixelHash=Math.imul(pixelHash,16777619);pixelHash^=f.rgba[i+3];pixelHash=Math.imul(pixelHash,16777619);}
   return {canvas:f.canvas,ink:f.legacy.ink,pixelHash:(pixelHash>>>0).toString(16),glyphs:f.glyphs.length,fractionBars:f.fractionBars.length,
-    clipped,rawClipped,axisDecorations:rawClipped.filter(g=>isObservedAxisDecoration(f,g)),dom,
+    clipped,rawClipped,axisDecorations:rawClipped.filter(g=>isObservedAxisDecoration(f,g)),dom,overlayLabels,
     katexErrors:[...document.querySelectorAll('.katex-error')].filter(e=>e.checkVisibility()).map(e=>e.textContent),
     documentOverflow:document.documentElement.scrollWidth>innerWidth+2,viewport:{width:innerWidth,height:innerHeight},
     state:{player:lab.video.state,time:lab.video.t,step:lab.s.step,part:lab.s.part,tab:lab.tab,lessonOn:lab.s.lessonOn,dragging:lab.s.dragging},
@@ -200,6 +206,7 @@ try {
           const f=await page.evaluate(observeFrame); f.label=label;
           check(`${label}: finite usable canvas`,f.canvas.cssWidth>=100&&f.canvas.cssHeight>=80,f.canvas);
           check(`${label}: emitted scene glyphs stay within canvas`,!f.clipped.length,f.clipped);
+          check(`${label}: HTML math labels stay inside their clipping layer`,!f.overlayLabels.some(x=>x.clipped),f.overlayLabels.filter(x=>x.clipped));
           check(`${label}: no KaTeX error`,!f.katexErrors.length,f.katexErrors);
           check(`${label}: no page horizontal overflow`,!f.documentOverflow,{});
           if(f.ink<200)review(`${label}: low canvas ink needs semantic review`,{ink:f.ink,threshold:200,pixelHash:f.pixelHash});
@@ -222,6 +229,31 @@ try {
           const buttons=await page.locator('.apl-lgo:visible').count();
           check('one entry button per valid lesson',buttons===units.filter(u=>u.i===unit.i).length,{buttons});
           if(config.capture)await shot('initial');
+          row.questionAccess=await page.evaluate(async()=>{
+            const q=[...document.querySelectorAll('.apl-question .q')].find(e=>e.checkVisibility()),footer=[...document.querySelectorAll('.apl-lentry')].find(e=>e.checkVisibility());
+            if(!q||!footer||getComputedStyle(footer).position!=='fixed')return {applicable:false};
+            const lines=()=>{const a=[];const walker=document.createTreeWalker(q,NodeFilter.SHOW_TEXT);let n;while(n=walker.nextNode()){
+              if(!n.textContent.trim()||n.parentElement.closest('.katex-mathml'))continue;
+              const range=document.createRange();range.selectNodeContents(n);for(const r of range.getClientRects())if(r.width>0&&r.height>2)a.push({left:r.left,right:r.right,top:r.top,bottom:r.bottom});}
+              return a.sort((a,b)=>a.bottom-b.bottom).at(-1);};
+            const before=lines(),barBefore=footer.getBoundingClientRect();
+            if(!before)return {applicable:true,pass:false,reason:'visible-question-text-ranges-missing'};
+            if(before.bottom<=barBefore.top+2)return {applicable:true,pass:true,reason:'last-line-already-above-fixed-entry',before,footerTop:barBefore.top};
+            const scrollers=[];for(let e=q.parentElement;e;e=e.parentElement){const style=getComputedStyle(e);if(['auto','scroll'].includes(style.overflowY)&&e.scrollHeight>e.clientHeight+1)scrollers.push(e);}
+            const doc=document.scrollingElement;if(doc&&!scrollers.includes(doc))scrollers.push(doc);
+            const saved=scrollers.map(e=>({e,top:e.scrollTop}));
+            for(const {e} of saved)e.scrollTop=e.scrollHeight;
+            await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+            const after=lines(),bar=footer.getBoundingClientRect();
+            let clipTop=0;for(let e=q.parentElement;e&&e!==document.body;e=e.parentElement)if(['auto','scroll','hidden','clip'].includes(getComputedStyle(e).overflowY))clipTop=Math.max(clipTop,e.getBoundingClientRect().top);
+            const result={applicable:true,pass:!!after&&after.bottom<=bar.top+2&&after.top>=clipTop-2,reason:'scrolled-last-question-line',before,after,footerTop:bar.top,clipTop,
+              scrollers:saved.map(({e,top})=>({tag:e.tagName,cls:e.className,before:top,after:e.scrollTop,max:e.scrollHeight-e.clientHeight}))};
+            for(const {e,top}of saved)e.scrollTop=top;
+            await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+            return result;
+          });
+          if(row.questionAccess.applicable)check('full question can be read above the fixed lesson buttons',row.questionAccess.pass,row.questionAccess);
+          if(row.questionAccess.applicable&&!row.questionAccess.pass)await shot('question-access-failure');
 
           // A frozen QA clock leaves the actual playing layout intact. Every
           // value is set by the native seek/apply API, never by editing lab.s.
@@ -243,8 +275,9 @@ try {
             const f=await inspect(`t=${p.time}`,{caption:true});
             const stateMatch=await page.evaluate(()=>{
               const v=lab.video,expected=APLab.videoCore.stateAt(v.cs,v.t,v.base),bad=[];
-              for(const [k,x]of Object.entries(expected.nums))if(!Number.isFinite(lab.s[k])||Math.abs(lab.s[k]-x)>1e-6)bad.push({key:k,expected:x,actual:lab.s[k]});
-              for(const [k,x]of Object.entries(expected.sets))if(lab.s[k]!==x)bad.push({key:k,expected:x,actual:lab.s[k]});
+              // Native apply intentionally gives set cues precedence over the
+              // numeric track/start defaults (e.g. trial slope presets).
+              for(const [k,x]of Object.entries({...expected.nums,...expected.sets}))if(typeof x==='number'?(!Number.isFinite(lab.s[k])||Math.abs(lab.s[k]-x)>1e-6):lab.s[k]!==x)bad.push({key:k,expected:x,actual:lab.s[k]});
               if(v.cs.usesStep&&lab.s.step!==expected.step)bad.push({key:'step',expected:expected.step,actual:lab.s.step});
               if(v.cs.usesPart&&lab.s.part!==expected.part)bad.push({key:'part',expected:expected.part,actual:lab.s.part});
               return bad;
@@ -308,11 +341,15 @@ try {
             check('trusted forward scrub reaches final timeline while paused',forward.state==='paused'&&Math.abs(forward.time-forward.length)<1e-6,forward);
             await page.locator('.apl-vrange:visible').press('Home');await settle();
             const rewind=await page.evaluate(()=>({time:lab.video.t,state:lab.video.state,pins:lab.video.ui.pins.childElementCount,expectedPins:APLab.videoCore.pinnedAt(lab.video.cs,0).length,
-              controlled:JSON.stringify({...Object.fromEntries(Object.keys(lab.video.cs.tracks).map(k=>[k,lab.s[k]])),...Object.fromEntries(lab.video.cs.setKeys.map(k=>[k,lab.s[k]])),step:lab.s.step,part:lab.s.part})}));
+              controlled:JSON.stringify({...Object.fromEntries(Object.keys(lab.video.cs.tracks).map(k=>[k,lab.s[k]])),...Object.fromEntries(lab.video.cs.setKeys.map(k=>[k,lab.s[k]])),...(lab.video.cs.usesStep?{step:lab.s.step}:{}),...(lab.video.cs.usesPart?{part:lab.s.part}:{})})}));
             check('trusted rewind removes future captions/pins',rewind.time===0&&rewind.state==='paused'&&rewind.pins===rewind.expectedPins,rewind);
             await page.locator('.apl-vctl [aria-label="다시 보기"]:visible').click();
+            // Let the real replay initialize/render before testing rewind. A
+            // synchronous pause before its first RAF tests an artificial event
+            // ordering, not the student's replay button path.
+            await page.waitForFunction(()=>lab.video.state==='playing'&&lab.video.t>.12,null,{timeout:5000});
             await page.evaluate(()=>{lab.video.pause();lab.video.seek(0);});await settle();
-            const replay=await page.evaluate(()=>JSON.stringify({...Object.fromEntries(Object.keys(lab.video.cs.tracks).map(k=>[k,lab.s[k]])),...Object.fromEntries(lab.video.cs.setKeys.map(k=>[k,lab.s[k]])),step:lab.s.step,part:lab.s.part}));
+            const replay=await page.evaluate(()=>JSON.stringify({...Object.fromEntries(Object.keys(lab.video.cs.tracks).map(k=>[k,lab.s[k]])),...Object.fromEntries(lab.video.cs.setKeys.map(k=>[k,lab.s[k]])),...(lab.video.cs.usesStep?{step:lab.s.step}:{}),...(lab.video.cs.usesPart?{part:lab.s.part}:{})}));
             check('replay starts with same controlled values as rewind',replay===rewind.controlled,{rewind:rewind.controlled,replay});
             await page.waitForFunction(()=>performance.now()-lab.video._startedAt>500);
             await page.locator('.apl-vctl .primary:visible').click();
