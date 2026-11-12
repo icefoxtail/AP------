@@ -4183,16 +4183,24 @@ def _mc_obs_pair(entry,key,code):
     if not isinstance(raw,list) or len(raw)!=2:raise ValueError(code)
     return [_mc_obs_fraction(value,code) for value in raw]
 
+def _mc_obs_numerator(entry,code):
+    """A rational's numerator: linear [c0,c1] or quadratic [c0,c1,c2] (c2 != 0; an oblique asymptote)."""
+    raw=entry.get('numerator')
+    if not isinstance(raw,list) or len(raw) not in (2,3):raise ValueError(code)
+    values=[_mc_obs_fraction(value,code) for value in raw]
+    if len(values)==3 and (values[2]==0 or entry.get('abs') is True):raise ValueError(code)
+    return values
+
 def _mc_obs_free(entry,ident):
     """The exact definition of a LINE / RATIONAL / SQRT entry, read again from the plan (never from the frozen rows)."""
     kind=entry.get('kind');curve={'id':ident,'kind':kind,'inverseOf':entry.get('inverseOf')}
     code='MULTI_CURVE_COEFFICIENT_INVALID:'+ident
     if kind=='LINE':curve['c']=_mc_obs_pair(entry,'coefficients',code)
     elif kind=='RATIONAL':
-        curve['n']=_mc_obs_pair(entry,'numerator',code);curve['d']=_mc_obs_pair(entry,'denominator',code)
+        curve['n']=_mc_obs_numerator(entry,code);curve['d']=_mc_obs_pair(entry,'denominator',code)
         if curve['d'][1]==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
         pole=-curve['d'][0]/curve['d'][1]
-        if curve['n'][0]+curve['n'][1]*pole==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
+        if sum(coefficient*pole**power for power,coefficient in enumerate(curve['n']))==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
     else:
         curve['r']=_mc_obs_pair(entry,'radicand',code)
         if curve['r'][1]==0:raise ValueError(code)
@@ -4232,7 +4240,7 @@ def _mc_obs_y_plain(curve,x_value):
     if kind=='LINE':return float(curve['c'][0]+curve['c'][1]*x_value)
     if kind=='RATIONAL':
         den=curve['d'][0]+curve['d'][1]*x_value
-        return None if den==0 else float((curve['n'][0]+curve['n'][1]*x_value)/den)
+        return None if den==0 else float(sum(coefficient*x_value**power for power,coefficient in enumerate(curve['n']))/den)
     if kind=='SQRT':
         radicand=curve['r'][0]+curve['r'][1]*x_value
         return None if radicand<0 else float(curve['o'])+float(curve['a'])*math.sqrt(float(radicand))
@@ -4249,6 +4257,7 @@ def _mc_obs_inverse_definition(source,ident):
     """What the inverse of `source` is, as a free-kind definition (own derivation; compared with the frozen row and with the drawn points)."""
     kind=source['kind']
     if kind=='RATIONAL':
+        if len(source['n'])!=2:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)   # the inverse of an oblique rational is not a rational
         a0,a1=source['n'];d0,d1=source['d']
         return {'kind':'RATIONAL','n':[a0,-d0],'d':[-a1,d1]}
     if kind=='LINE':
@@ -4806,7 +4815,7 @@ def multi_curve_audit(plan,svg,transform):
         px_tol=.5/(sx*display);py_tol=.5/(sy*display)
         for curve in curves:
             if curve['kind']!='RATIONAL':continue
-            lo,hi=curve['interval'];pole=-curve['d'][0]/curve['d'][1];horizontal=curve['n'][1]/curve['d'][1]
+            lo,hi=curve['interval'];pole=-curve['d'][0]/curve['d'][1];horizontal=Fraction(0) if len(curve['n'])==3 else curve['n'][1]/curve['d'][1]   # an oblique rational has no horizontal asymptote
             if curve.get('abs'):horizontal=abs(horizontal)
             if lo<=pole<=hi and pole!=0:wanted_lines['ASYM_'+curve['id']+'_V']=('V',float(pole))
             if horizontal!=0:wanted_lines['ASYM_'+curve['id']+'_H']=('H',float(horizontal))
