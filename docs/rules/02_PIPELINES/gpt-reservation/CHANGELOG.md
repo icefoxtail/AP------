@@ -1,5 +1,8 @@
 # JS Archive GPT 예약라인 공용 프롬프트 정본 — 변경 이력
 
+## v2.2.0 — 2026-11-12: 고등 유사 현황 보고 도구
+- `tools/high_similar_status.py` 추가(읽기 전용): origin/main 기준 구간별 원본·main 병합·진행 중(브랜치만 있음)·미생성 수, 병합 목록, 새로 병합한 유사의 메타 등록 여부(`question_metadata.json`에 stem 있음 = main 등록 writer 처리됨). 보고 담당 세션이 정기적으로 실행해 사용자에게 보고한다.
+
 ## v2.1.2 — 2026-11-11: 고등 유사 라인 메타는 비우지 않고 채운다
 - 사용자 결정: 맞는 키가 없어도 비우지 않는다. `registryChanges`로 새 키, 크로스워크 행 추가, 4칸 문항별 판정으로 채운다(`docs/agents/metadata.md` 확장 원칙, Meta OS 0장). 첫 생성(PR #1807)이 15문항을 hold로 비워 둔 것이 계기다. 검수 라인도 빈 칸을 직접 채운다.
 
