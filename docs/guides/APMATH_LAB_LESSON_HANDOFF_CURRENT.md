@@ -1,18 +1,18 @@
 # AP Math 실험실 「원클릭 해설(lesson)」 인계 계획서 CURRENT
 
-> **기준일:** 2026-11-11 (KST) · **긴급 운영 정책 변경:** 구현·운영 병합 우선, 전수 검수 후행 · **범위:** 중1 → 중2·중3 → 고등
+> **기준일:** 2026-11-12 (KST) · **긴급 운영 정책 변경:** 구현·운영 병합 우선, 전수 검수 후행 · **범위:** 중1 → 중2·중3 → 고등
 > **저장소:** https://github.com/icefoxtail/AP------ · **학생 화면:** https://icefoxtail.github.io/AP------/apmath/playground/next/
 > 이 문서는 진행 상태를 담는다. 실험실 하나를 끝낼 때마다 §3 표와 §9 기록을 같은 PR에서 갱신한다. 형식과 대본 규칙의 원문은 `docs/guides/APMATH_LAB_VIDEO_SCRIPT_GUIDE_CURRENT.md` §7이다.
 
-## 0. 최신 사용자 결정 — 2026-11-11 시험 대비 구현·운영 우선 (최상위)
+## 0. 최신 사용자 결정 — 2026-11-12 고등 연속 구현·운영 우선 (최상위)
 
-> **이 절은 2026-11-11 사용자의 직접 지시이며, 이 문서 아래에 남은 이전 「CI 전부 녹색 → PR → 390×844 전수 화면 검수 → main 병합」 선행 조건보다 우선한다.** 검수를 없애는 것이 아니라 **운영 뒤로 옮기는 것**이다. 시험 대비 중1 원클릭 해설을 학생이 바로 쓸 수 있게 하는 것이 첫 목표다.
+> **2026-11-12 사용자의 복구·고등 연속 구현 지시가 현재 최상위다.** 기존 완료 25개 실험실을 보존하고 `common-functions` WIP부터 고등 잔여를 구현·최소 검사·PR·main 병합했다. 장시간 모바일 전수·독립 시각검수는 운영 반영 이후로 미룬다. 이전 문서의 전수검수 선행 조건은 적용하지 않는다. 확인된 수학 오답·기동/재생 불능·핵심 도형 누락은 병합 전에 수정한다.
 
-- **긴급 RELEASE 순서:** ① 이미 제작한 [g7-circle-sector PR #1736](https://github.com/icefoxtail/AP------/pull/1736)부터 main에 운영 병합 → Pages 배포 확인 → ② g7-surface-volume 잔여 구현·보완 → 별도 PR·main 병합·Pages 확인 → ③ §5-3의 중1 나머지 8개 실험실을 하나씩 **구현 → 최소 안전 확인 → PR → main 병합 → Pages 확인** → ④ 중2·중3 → ⑤ 고등.
-- **브랜치 적체 금지:** 실험실 하나를 구현했다면 검수 대기 Draft 상태로 방치하지 말고 그 실험실의 운영 병합과 배포 확인을 먼저 마친 뒤 다음 실험실로 간다. 이전 브랜치·PR·코드를 재제작하지 않는다. 해당 운영 병합은 이번 사용자 지시로 승인됐다.
+- **긴급 RELEASE 순서:** 기존 작업 복구 → 실험실별 구현·최소 검사 → PR·main 병합 → 다음 실험실. Pages 등록·배포 복구는 별도 담당이 병렬로 진행한다. 현재 고등38개 구현·병합이 모두 끝났으므로 다음 실행은 기존 Pages 경로의 최신 배포 영수증 및 학생 파일 확인이다.
+- **브랜치 적체 금지:** 실험실 하나를 구현하면 전수검수 대기 Draft로 방치하지 않고 최소 검사 후 main에 병합한다. Pages 대기가 다음 실험실 제작을 막지 않는다. 기존 브랜치·HEAD를 보존하고 강제 push하지 않는다. 코드 수정·브랜치·PR·main 병합·운영 배포는 이미 승인되어 실험실마다 반복 승인받지 않는다.
 - **운영 전 최소 안전 확인(가벼운 출고 조건):** 실제 질문·답·사용 상태 결속 확인, 새 코드 구문 검사, 해설 데이터 유효성/최소 수학 검산, 재생 버튼/로드 경로의 명백한 오류 확인, 변경 파일과 Git diff 확인. 기존 테스트가 이미 같은 코드 SHA에서 통과했다면 재활용하고 매 실험실의 전체 장면마다 장시간 중복 검사하지 않는다.
 - **즉시 막아야 할 P0:** 기동 불가, 핵심 도형 완전 누락, 재생 버튼 무반응, 수학적으로 틀린 정답, 화면 기능을 파괴하는 확정 오류. 확인된 P0는 최소 수정 후 병합한다. 불확실한 시각·자막 정밀 품질은 이 단계의 출고 차단 조건이 아니다.
-- **후속 QUALITY 단계(사용 중 개선):** 390×844 모든 장면의 진입·각 장·마지막 정답·다시 보기·직접 해 보기·전후 캡처, 라벨/자막 동기화, 터치·잘림·회귀 비교, 독립 검수는 전체 신규 구현·중1 운영 반영 후 수행한다. 학생/교사 실사용 제보를 받아 이슈·별도 패치 PR로 수정한다. 검수 미실행은 `QA_PENDING / NOT_RUN`으로 명시하며 `QA_PASS`로 쓰지 않는다.
+- **후속 QUALITY 단계(사용 중 개선):** 390×844 모든 장면의 진입·각 장·마지막 정답·다시 보기·직접 해 보기·전후 캡처, 라벨/자막 동기화, 터치·잘림·회귀 비교, 독립 검수는 전체 신규 구현·운영 반영 후 수행한다. 학생/교사 실사용 제보를 받아 이슈·별도 패치 PR로 수정한다. 검수 미실행은 `QA_PENDING / NOT_RUN`으로 명시하며 `QA_PASS`로 쓰지 않는다.
 - **CI 및 Git 보호:** 실행된 CI를 끄거나 무효화하지 않는다. 무관한 기존 CI 실패는 로그로 분리하고 운영 반영을 진행하되, GitHub에서 실제 요구하는 병합 보호/검증 게이트는 강제로 우회하지 않는다. 신규 변경의 명백한 오류·P0 실패는 수정한다. CI는 병합 후에도 계속 관찰해 대응한다.
 - **상태 명칭:** `IMPLEMENTED`(구현 및 최소 확인), `MAIN_MERGED`(Git main 반영 확인, Pages 별도), `RELEASED_QA_PENDING`(main·Pages 반영 확인, 전수검수 대기), `QA_VERIFIED`(실제 후속 검수 완료), `BLOCKED_P0`(운영 차단 오류)로 구분한다. `RELEASED_QA_PENDING`은 품질 PASS를 뜻하지 않는다.
 - 공통 재생 키트의 구조 변경(K1~K4)은 실제 구현이 막힐 때만 별도 브랜치·PR로 진행한다. 사용자에게 반복 승인 질문 없이 순차 진행한다.
@@ -36,6 +36,21 @@
 | 7 | 직관 설명을 증명처럼 쓰지 않는다(뿔의 ⅓, 구의 공식, 조각 재배열) | 과장된 증명 금지 |
 
 ## 3. 현재 상태
+
+**2026-11-12 구현 마감 기준:** 마지막 실험실 [통계 PR #1854](https://github.com/icefoxtail/AP------/pull/1854), main `bf3d53464fc1bfbbdfee11422f5e2c61a62cc363`. 최신 원격 main은 작업을 재개할 때 다시 조회한다.
+
+| 범위 | main 병합 실험실 | 장면 | 원클릭 해설 |
+| --- | ---: | ---: | ---: |
+| 중등 기존 완료 | 16 | 529 | 1,532 |
+| 고등 전체 | 38 | 436 | 1,355 |
+| **합계** | **54** | **965** | **2,887** |
+| 이번 WIP 복구 이후 추가분 | 29 | 294 | 892 |
+
+기존 스냅샷 25개·671장면·1,995해설은 재제작하지 않았다. 고등 카탈로그의 신규 구현 잔여는 0개다. 실제 실행한 최소 검사의 세부 수치와 PR·SHA는 아래 표/§9에 남겼다. **이번 추가 29개는 `MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING`이며, main 병합을 학생 운영 배포 성공으로 보지 않는다.** 이전에 별도로 배포가 검증된 기존 실험실의 역사적 영수증은 보존한다.
+
+**현재 운영 후속 위치:** Archive writer 복구 [PR #1819](https://github.com/icefoxtail/AP------/pull/1819)는 병합됐고, writer [43060888403](https://github.com/icefoxtail/AP------/actions/runs/43060888403)가 등록 main `20bfae6fd839962a20df50295d772f4ff2125d23` 및 `publishable=true`를 만들었다. 이 SHA는 이후 추가된 실험실 전체를 포함하지 않는다. Pages [43077681642](https://github.com/icefoxtail/AP------/actions/runs/43077681642)의 Build는 마지막 확인에서 queued·runner 미배정·step 없음, Deploy 영수증은 없었다. 후속 writer [43077318288](https://github.com/icefoxtail/AP------/actions/runs/43077318288)는 queued이며, 통계 병합 SHA의 push로 최신 writer [43084085990](https://github.com/icefoxtail/AP------/actions/runs/43084085990)이 2026-11-11 19:06:36 UTC에 pending으로 실제 생성됐다. main push·매시간43분 복구·checkout main·publishable일 때 정확한 registered_sha로 기존 Pages dispatch하는 자동 경로를 유지한다. 등록된 source SHA와 실제 배포 receipt·HTML·새 모듈·Player 기본1.5를 확인한 범위만 `RELEASED_QA_PENDING`으로 바꾼다.
+
+**AWCR 복구 위치:** task `df4ac906-152a-4010-ae2b-f5cf740a5179`, owner `CHATGPT_ROOT_B385BAE0D42B`. 이 문서 작성 시 검증본 r81 raw SHA256 `0ffd94bf5226756e59f5b79e5b1e6d1f0aefd77c8d37827a44035b7fb34e1b13`. 문서 병합 후에도 immutable 다음 revision을 기록하므로 bootstrap에서 같은 taskId의 최신본을 다시 읽는다. 수학 답·원문·upstream 출력은 AWCR에 기록하지 않는다.
 
 장치(키트)는 main에 있다: `kit/apl-video-core.js`(형식·검사·타임라인), `kit/apl-player.js`(재생기·진입 화면), `kit/apl-video.css`, `kit/apl-toc.js`, `tools/lesson-browser-audit.mjs`(수동 브라우저 감사, 현재 CI에서 실행하지 않음), `tools/video.test.mjs`. 알려진 보완은 §5-4를 따른다.
 
@@ -87,9 +102,15 @@
 | `geom-ellipse` 타원 | 12 | 12 / 35 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1843](https://github.com/icefoxtail/AP------/pull/1843), merge `3177ffe49e6df0880e8ca6a9b828cfb9c91882d7`. 원문 목표15·탐구개념20. 실제 셸 복제 대응 수정 후 최소75/75,544개 실제 Board/canvas 상태·validator 오류/경고0 |
 | `geom-hyperbola` 쌍곡선 | 15 | 15 / 32 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1844](https://github.com/icefoxtail/AP------/pull/1844), merge `74c020a6d909cf69fd940742f9b0af62700039b0`. 원문 목표21·탐구개념11. 실제 셸 복제 조건 포함 최소73/73,510개 실제 Board/canvas 상태·validator 오류/경고0 |
 | `geom-space` 공간도형 3D | 9 | 9 / 35 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1845](https://github.com/icefoxtail/AP------/pull/1845), merge `c1a4cd3645a03d99da1cf001866c3e1ae83adfb2`. 원문 목표13·탐구개념22. 최소73/73(수학24·runtime8·공통video41),606개 실제 3D/canvas cue 상태·validator 오류/경고0 |
-| `geom-projection` | 7장면·23해설(원문/등록 유형13·개념10) | MAIN_MERGED / QA_PENDING · PR #1846 · `3f2ef62f80974513d6ba9eb9608dae2cd28a71b6` · 최소70/70·native362상태·validator0/0·구문8단위·47입력SHA 동일 · PAGES_NOT_VERIFIED |
-| `geom-space-coord` | 8장면·32해설(원문14·개념18) | IMPLEMENTED / QA_PENDING · `feat/lessons-geom-space-coord` · 최소74/74(수학26·native7·공통41)·native547상태·validator0/0·구문8단위·42입력SHA+1부재 동일 · PAGES_NOT_VERIFIED |
-| 고등 잔여 6개 | `geom-vector-ops`(12), `geom-vector-dot`(7), `geom-vector-figure`(6), `prob-counting`(5), `prob-probability`(5), `prob-stats`(7) | 위 공간좌표 main 병합 후 차례로 구현·최소 검사·PR·main 병합. 전수 모바일·독립 시각검수 후행. |
+| `geom-projection` 정사영 | 7 | 7 / 23 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1846](https://github.com/icefoxtail/AP------/pull/1846), merge `3f2ef62f80974513d6ba9eb9608dae2cd28a71b6`. 원문13·개념10. 최소70/70·native362상태·validator0/0·구문8단위 |
+| `geom-space-coord` 공간좌표 | 8 | 8 / 32 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1847](https://github.com/icefoxtail/AP------/pull/1847), merge `11ae10ffd34aaec8f8bd7d5fab8f5439bcad0f36`. 원문14·개념18. 최소74/74·native547상태·validator0/0·구문8단위 |
+| `geom-vector-ops` 벡터의 덧셈과 뺄셈 | 12 | 12 / 54 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1848](https://github.com/icefoxtail/AP------/pull/1848), merge `0739b7dad9d823fe858549d7c71d0d687c3cd0d9`. 원문28·개념26. 최소64/64·native849상태·validator0/0·구문8단위 |
+| `geom-vector-dot` 벡터의 성분과 내적 | 7 | 7 / 36 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1849](https://github.com/icefoxtail/AP------/pull/1849), merge `dccd250ba102d997af5f4bd8796bdc1c36311fad`. 원문15·개념21. 최소71/71·native566상태·validator0/0·구문8단위 |
+| `geom-vector-figure` 벡터와 도형 | 6 | 6 / 28 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1850](https://github.com/icefoxtail/AP------/pull/1850), merge `768069c3d3599641ec2616bb824070dbcba3ecb6`. 원문9·개념19. 최소74/74·native491상태·validator0/0·구문8단위 |
+| `prob-counting` 경우의 수 | 5 | 5 / 34 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1852](https://github.com/icefoxtail/AP------/pull/1852), merge `4516ef3e469b514c12ff1ff6e74ea295b8f59106`. 원문19유형·개념15. 최소68/68·native544상태·validator0/0·구문8단위 |
+| `prob-probability` 확률 | 5 | 5 / 27 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1853](https://github.com/icefoxtail/AP------/pull/1853), merge `1ea507f04f756deb276f61af5f3e2958d63d4c4d`. 원문10목표·개념17. 최소95/95·native499상태·validator0/0·구문8단위 |
+| `prob-stats` 통계 | 7 | 7 / 37 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1854](https://github.com/icefoxtail/AP------/pull/1854), merge `bf3d53464fc1bfbbdfee11422f5e2c61a62cc363`. 원문18유형·개념19. 최소77/77·native612상태·validator0/0·구문8단위 |
+| 고등 잔여 0개 | 0 | 0 / 0 | **신규 구현·main 병합 완료.** 다음 단계는 최신 Pages 배포 확인, 이후 QUALITY. |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -238,6 +259,8 @@
 
 ## 7. 고등
 
+**현재 상태: 38개 실험실·436장면·1,355해설 모두 main 병합. 신규 구현 잔여 0개.** 아래 구조·시범 설명은 구현 근거와 이력이다. 새 창에서 다시 시범이나 완료 실험실을 만들지 않고 §3의 운영 후속 위치와 최신 AWCR부터 확인한다.
+
 대상(카탈로그 `course`): 공통수학 10, 대수 8, 미적분Ⅰ 8, 기하 9, 확률과 통계 3.
 
 **구조 (실측):** 실험실 하나가 28~312KB 단일 HTML이다. 전부 `stagedReveal: true`라 장면에 들어오면 0단계로 시작한다. 단계 표시는 `stepOf` 같은 도우미가 `lab.tab`으로 가른다(탐구 탭은 전부 표시, 풀이 탭은 `s.step`). `varier`의 「새 문제」는 난수이고 첫 문제가 원 기출이다. `examData`를 가진 실험실(미적분Ⅰ 8개 전부, 기하 다수)은 문항·단계·풀이를 문자열로 갖고 있다.
@@ -248,7 +271,7 @@
 | --- | --- | --- |
 | 그래프 움직임 중심 | calc1-tangent·limits·integral·motion·derivative-shape, alg-unit-circle·explog, common-rational·transform·quadratic, 기하 이차곡선·벡터·공간 | 중1과 같다: 상태값 `to` + 자막. 할선→접선처럼 이미 `tick` 애니메이션이 있는 장면은 자막만 얹으면 된다 |
 | 수식 전개 중심 | alg-sine-cosine-law·trig-geometry·sequence·exp-deep·log-deep, common-coord·counting, prob-counting·probability | **K4(고정 수식 줄)가 먼저 필요하다.** 논리 단계를 줄이려고 중간 식을 생략하지 않는다. 원 해설의 단계 수 ≤ 해설의 자막 수 |
-| 제외 | prob-stats의 표본 누적 장면 등 난수 장면 | 재생마다 결과가 달라진다. 시드 고정 전에는 만들지 않는다 |
+| 시드 고정 완료 | prob-stats의 표본평균·신뢰구간 누적 장면 | PR #1854에서 원래 분포·공식을 유지한 별도 seed stream과 재생 snapshot으로 구현·최소 검사 완료. 시뮬레이션은 탐구 예시이며 답의 증명으로 사용하지 않는다 |
 
 **고등 규칙:**
 
@@ -259,11 +282,11 @@
 - 모듈 변수가 `lab.s`를 가리키는 이식 구조(`alg-unit-circle`, `geom-vector-ops`)는 외부에서 상태를 바꿔도 그림이 따라오는지 먼저 확인한다.
 - `high-lab-browser-audit`는 풀이 단계의 조기 공개(`early-staged-solution-disclosure`)를 검사한다. URL에는 이미 `manual=1`이 들어 있다.
 
-**선행 작업:** 유형이 다른 3개로 시범을 만든다 — 그래프형 `calc1-tangent`, 수식 전개형 `alg-sine-cosine-law`(K4 필요성 판단), 격자점형 `common-rational`의 r4. 시범에서 형식이나 키트가 바뀌어야 하면 키트 PR을 먼저 올린다. 그 뒤 과목 순서: 공통수학 → 대수 → 미적분Ⅰ → 기하 → 확률과 통계.
+**착수 당시 선행 작업(완료 이력):** 유형이 다른 3개로 시범을 만든다 — 그래프형 `calc1-tangent`, 수식 전개형 `alg-sine-cosine-law`(K4 필요성 판단), 격자점형 `common-rational`의 r4. 시범에서 형식이나 키트가 바뀌어야 하면 키트 PR을 먼저 올린다. 그 뒤 과목 순서: 공통수학 → 대수 → 미적분Ⅰ → 기하 → 확률과 통계.
 
 **2026-11-11 고등 진입 재확인:** 최신 중등 완료 main `41a2cc430ee7f2c297d771587dee61e065b72df4`에서 세 시범의 실제 구조를 확인했다. `calc1-tangent`는 7장면, `alg-sine-cosine-law`는 18장면, `common-rational`은 4장면이다. K4는 별도 [PR #1781](https://github.com/icefoxtail/AP------/pull/1781)에서 main `680a4ba47ff54646a46dd0b56f3f2ca2e86cf4bc`로 병합했다. 키트 3개 운영 파일은 이전 내용이어서 PAGES_NOT_VERIFIED이며, 이 main에서 `feat/lessons-calc1-tangent`를 시작했다. 동일 해설 브랜치·PR은 없었고 기존 구조 개선 PR #1494는 이미 병합되어 재작성하지 않는다. 앞 두 실험실의 실제 문항 화면은 기존 `ouUpgrade` / `SPEC`을 읽으며, `varier` 클로저의 첫 패킷을 해설 전용으로 선택해 수동 새 문제를 보존한다. `common-rational/r4`의 첫 원문은 최솟값으로 계수를 구하는 문제이며 격자점 문제가 아니다. 첫 원문 해설을 유지하고, 격자점 시범은 원본 탐구의 고정 초기 상태를 별도 개념 버튼으로 만든다. 난수 격자점 변형을 첫 원문으로 표시하지 않는다.
 
-**알려진 장면 오류(해설을 얹기 전에 처리):** `calc1-integral`의 `signed` 장면 해설 식(F = x²/3 − x로 적혀 있으나 x³/3 − x²이어야 함), 분수 조판 미완(alg-trig-geometry 12, geom-parabola 8, common-functions 1). 근거: `docs/guides/APMATH_G7_EXAM_VIDEO_HANDOFF_CURRENT.md`.
+**착수 당시 오류 기록(현재 잔여 목록 아님 — §9 수정 기록과 최신 소스를 대조):** `calc1-integral`의 `signed` 장면 해설 식(F = x²/3 − x로 적혀 있으나 x³/3 − x²이어야 함), 분수 조판 미완(alg-trig-geometry 12, geom-parabola 8, common-functions 1). 근거: `docs/guides/APMATH_G7_EXAM_VIDEO_HANDOFF_CURRENT.md`.
 
 **이번 범위 밖:** Archive 기출 문항에 해설을 붙이는 연동. 별도 지시가 있을 때 한다. 원칙만 적는다: 실제 학교 기출만 쓰고, 원본 기출 JS에 필드를 추가하지 않으며(해시 고정값), 인쇄·쪽 나눔 레이아웃에 영향을 주지 않는다.
 
@@ -279,6 +302,42 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 04:09 KST 학생 사이트 GET 재조회: 공개 `_archive-release.json`의 registeredMainSHA는 여전히 `fb27d05ee921da9534d9fff332ac774d732b91cf`, common-functions HTML200에 신규 lesson import 없음·lesson-a404, 공개 Player `this.rate=1`. 최신 main의1.5배속 및 신규 해설이 운영에 반영됐다고 볼 수 없다. bf3d 기준 신규29실험실 HTML29+lesson모듈86+index/Player2=117파일 기대해시는 향후 배포대조용으로만 확보했으며 live PASS가 아니다. PAGES_NOT_VERIFIED를 유지한다.
+
+- 2026-11-12 **고등 전체 main 병합 완료.** 마지막 통계 PR #1854 merge `bf3d53464fc1bfbbdfee11422f5e2c61a62cc363`, feature `9d0f75773fdbcf24179fed798775b03d87ce13e3` exact remote/main readback. 7장면37해설, 최소77/77, native612, validator0/0, 구문8단위. 중간 원격 `c409a904d6d8be1922c2ae57bc3dca83048e83ba`를 parent로 유지해 강제 push 없이 보존했다. 카탈로그 고등38개436장면과 §3 구현 분모 일치, 총54개965장면2,887해설. 이번 복구 이후29개294장면892해설을 각각 PR/main으로 반영했고, 원래 완료25개는 재제작하지 않았다. AWCR r81 raw SHA `0ffd94bf5226756e59f5b79e5b1e6d1f0aefd77c8d37827a44035b7fb34e1b13` readback VERIFIED. 남은 구현 없음; 운영 배포·후속 QUALITY는 완료되지 않았다.
+
+- 2026-11-12 **Pages 복구와 남은 운영 병목.** PR #1819 merge `9c09507edec9f4e28c43d363e2595118b776e045`에서 writer의 CRLF/LF 비교와 단일 consumer로 명확히 귀속되는 부적합 요청의 preflight를 최소 수정했다. 기존 REJECTED/reset/rebuild 경로를 사용하며 ambiguous/global/incomplete/재실패는 계속 차단한다. writer43060888403은 필수 final consumer27요청354/354, errors0/sourceMutation0, 부적합14요청55행의 기존 rejected 보존을 실제 커밋하고 등록main20bfae6을 만들었다. artifact13881718500 SHA256 `6665ec34b822ba1fa83bc6e15eb4a0e434bdad3b8c3a353d85ee85fde1e1fa0d`. `REGISTRATION_PARTIAL`은 선택적 후속 등록의 남은 상태이고 필수 등록은 registrationReady/publishable=true. 이 기록은 Deploy 성공을 뜻하지 않는다.
+
+- 2026-11-12 **실행 대기 판별.** Pages43077681642 Build queued/runner0/steps[], pending deployments=[]; 직접 지연 원인은 확인되지 않았다. 실행 중인 중등5viewport run43032816742는 시작 스냅샷 이전에 병합한 common-lines PR #1797의 실행이다. 현재 branch protection/rulesets에 required QA context는 없으며 코드상 Pages deploy는 자체 build와13개 내부 gate step만 의존한다. 중등 QA와 Pages의 직접 dependency는 없지만 runner 배정 인과는 확정하지 않았다. 취소 도구 및 연결 브라우저 접근이 없어 이 실행을 취소하지 않았고, 워크플로/보호/필수 검증 설정을 바꾸지 않았다. 자동 실행된 오래된 QA를 이번 수동 전수검수 PASS로 계산하지 않는다.
+
+- 2026-11-12 마지막 고등 통계 `prob-stats` 실제7장면·37해설 구현(원문18유형+개념19, 장면별6/5/6/4/4/7/5). 원본 확률 막대·정규곡선·꺾은선 밀도 영역·표본평균 히스토그램·신뢰구간 선분을 사용. 문제 및 표본 stream별 seed를 분리하고 원래 생성식·범주분포·Box–Muller 공식을 보존했다. 시뮬레이션 빈도로 정답을 증명하지 않는다. lpsN_/lpsS_ snapshot으로 수동 표본/seed/조작/선택문항 및 실제 Player 중단·완료 보존 확인. 독립수학28+native8+공통video41=77/77, 실제 Board/canvas612개 상태, validator0/0, JS6+inline2 구문·diff·clean. 최신 main1ea507f 반영 뒤41입력 SHA와1부재 동일. 전수브라우저/모바일/독립시각 NOT_RUN, PAGES_NOT_VERIFIED.
+
+- 2026-11-12 확률 PR #1853 main `1ea507f04f756deb276f61af5f3e2958d63d4c4d`, feature `8d56e7e4749a393955bdf087bc23d727853e509e` exact readback 완료. 누적53실험실/958장면/2,850해설. AWCR r80 raw SHA `4d013d4afd2f70ba1ec56d8ca2fea435285e240430a1d3f90e1b4a2393f57b40`, readback VERIFIED.
+
+- 2026-11-12 Pages43077681642는 Build queued·runner 미배정·step 없음, pending deployments 빈 목록으로 환경 승인 대기가 확인되지 않았다. repo에 다른 workflow 실행 및 다수 대기 작업이 있지만 Pages 지연의 직접 원인을 확정할 근거는 없다. 기존 등록 필수 게이트·워크플로 설정과 다른 작업자의 실행을 보존한다.
+
+- 2026-11-12 확률 `prob-probability` 실제5장면·27해설 구현(원문10목표+탐구17개념, 장면별7/7/5/4/4). 원래 격자·넓이 사각형·조건부확률·반복시행 상태도를 사용하며 모의실험을 답의 증명으로 사용하지 않음. 독립31+native9+공통video/pins55=95/95, actual Board/canvas499개 cue/중간 프레임, validator0/0, JS6+inline2 구문·diff·clean. actual shell 복제 및 Player start/apply/settle/release에서 수동값·tb배열·runs/sims 이력·변형·배율 보존. 최신main4516ef3 반영 후 선택입력46개 SHA 동일. 전체브라우저/전수모바일/독립시각 NOT_RUN; PAGES_NOT_VERIFIED.
+
+- 2026-11-12 경우의 수 PR #1852 main `4516ef3e469b514c12ff1ff6e74ea295b8f59106`, 원격 feature `6bf2b539c8f78f86005f7dc7b35ada01f7264c16` exact readback 완료. 누적52실험실/953장면/2,823해설. AWCR r78 raw SHA `843c77fafc23884d5d6c3c37d4abfdb750ef86662e4788b5e36092dd946ebd4a` VERIFIED.
+
+- 2026-11-12 통계 구현7장면37해설·최소77/77·native612상태를 원격 `feat/lessons-prob-stats` HEAD `c409a904d6d8be1922c2ae57bc3dca83048e83ba`에 중간 보존하고 exact tree readback 완료. 아직 main 병합 아님. AWCR r79 raw SHA `4b3336a7c2a9d85a2089163d1951b54e3c4379f9136224cc6c85ae0afdd53134` VERIFIED. 확률 다음 순서로 병합한다.
+
+- 2026-11-12 경우의 수 `prob-counting` 실제5장면·34해설 구현(원문 생성기19유형+개념15). 동일 공 배분·함수·같은 카드·경유/금지점 경로·이웃 금지·원순열의 원래 그림과 질문을 사용. 유형별 source packet은 원래 생성기를 전용 seed로 호출하여 고정하고 수동 새 문제 RNG/선택은 보존. 재생 전용 lpc 트랙으로 원래 조작값·배열·Set을 보존, 실제 셸 복제 및 Player 중단/완료/entry/replay 검사. 독립 열거 수학19+native8+공통video41=68/68, 실제 Board/canvas544개 cue 상태, validator 오류0/경고0, JS6+inline2 구문·diff 확인. 최신 main647b332 반영으로 들어온 다른 실험실 및 Archive 변경 보존, 관련 검사 입력 동일. 전체 브라우저/모바일/독립 시각검수 NOT_RUN, PAGES_NOT_VERIFIED.
+
+- 2026-11-12 벡터와 도형 PR #1850 main `768069c3d3599641ec2616bb824070dbcba3ecb6`, 원격 feature `eaa9f1399488f677697485742f3f11d2429eb85c` exact readback 완료. 누적51실험실/948장면/2,789해설. AWCR r77 원격 raw SHA `33eb52059516486d08d571dd1bfc9f890de45fa7e5b2a4f7c77892bc2e63accf`, readback VERIFIED. Pages43077681642 Build queued, 후속 writer43077318288 queued 관찰. Deploy 영수증·학생 최신 파일 미확인.
+
+- 2026-11-12 벡터와 도형 `geom-vector-figure` 실제6장면·28해설 구현(원문9+개념19). 장면별4/5/4/5/5/5. 내분·계수영역·방향/법선·내적조건원·직선/원 최소거리·두 직선 각의 실제 원문과 탐구를 연결. 모든 원래 수치/선택값을 lvfN_/lvfS_ 재생값으로 분리하고 실제 Player 중단·완료 후 원래값·변형 보존 확인. 설명용 교차 예시를 실제 교점과 일치하게 수정해 원 위 두 점 일치·영벡터 각 제외·지름 끝점의 각 미정 검사. 최소74/74(독립수학26+native7+공통41), actual Board/canvas491상태, validator0/0, 구문JS6+inline2, diff/clean, 최신main dccd250 반영 뒤41입력SHA+1부재 동일. 브라우저/전수 모바일/독립 시각검수 NOT_RUN; PAGES_NOT_VERIFIED.
+
+- 2026-11-12 벡터 내적 PR #1849 main `dccd250ba102d997af5f4bd8796bdc1c36311fad`, feature `1692bca8b0ee0fd309f9e0b070d85997e80896aa` exact readback 완료. 누적50실험실/942장면/2,761해설. AWCR r76 원격 raw SHA `92ab5967c681967c4c93f6896ca3fd6873b232b03671f30471674c489d77334f`, readback VERIFIED.
+
+- 2026-11-12 벡터의 성분·내적 `geom-vector-dot` 실제7장면·36해설 구현(원문15+개념21, 장면별4/4/4/4/7/8/5). 성분 평행/수직/최소, 내적 자취, 원점 최대/최소, 부채꼴 두 극값의 합/차를 실제 등록 패킷으로 연결. 영벡터가 θ=90°로 표시되던 기존 m2 native 각 호·수치·하단띠를 각 미정으로 국소 수정. 해설 전용 prefix 및 native fit 초기화로 원래 조작·변형·배율과 반복 재생 보존. 최소71/71(독립수학8+native8+공통55), 566실제 Board/canvas 상태, validator0/0, JS6+inline2 구문, diff/clean 확인. 원문 변형6+5+6+5·성분17·자취48·부채꼴192 조합 검산. 최신main0739b7 반영 뒤46입력 SHA 동일. 전체 브라우저/모바일/독립 시각검수 NOT_RUN, PAGES_NOT_VERIFIED.
+
+- 2026-11-12 벡터 연산 PR #1848 main `0739b7dad9d823fe858549d7c71d0d687c3cd0d9`, 원격 feature `e9d4bec78aab91182e2aa3cdc7d68913e45084cc` exact readback 완료. 누적49실험실/935장면/2,725해설. AWCR r75 원격 raw SHA `cf98f3171e8572a31093080fffc1233b865fca1be98b2330981774122db754b2`, readback VERIFIED.
+
+- 2026-11-12 벡터의 덧셈과 뺄셈 `geom-vector-ops` 12장면·54해설 구현(실제 원문/등록유형28+개념26). 중점·외심/무게중심/수심·차벡터·자취·계수영역·두 원 극값·가중넓이·정육각형·이동하는 원의 원래 도형을 사용. 서로 다른 목표별 버튼, 정답 마지막 단계 공개, 기본1.5배속 공통 Player 유지. native state는 lvoN_/lvoS_ 트랙에서 그리기 snapshot으로만 적용하고 모듈 state/BD/VM 및 vary 객체를 복원. 최소64/64(수학15+native8+공통41), actual shell stackScene 복제/실제 Player 중단·완료·외부state·원래 드래그/변형 보존, 849개 cue/중간 native 상태, validator0/0, 구문8단위, diff 확인. 16개 선택 입력 SHA manifest 보존(전체 전이 입력 목록을 주장하지 않음). 브라우저/전수 모바일/독립 시각검수 NOT_RUN; PAGES_NOT_VERIFIED.
+
+- 2026-11-12 공간좌표 PR #1847 main 병합 `11ae10ffd34aaec8f8bd7d5fab8f5439bcad0f36`, 원격 feature `52b0f0d12940e6c8df49612ae2996fa81eb1cc90` 및 main 동일 파일 재조회 완료. 누적48실험실/923장면/2,671해설. AWCR r74 원격 raw SHA `2a348f15f470e0bde16affcd43df4a076f0d76de979be8cfe5f339d32016f6ec`, readback VERIFIED. Pages43077681642 Build queued, 후속 writer43077318288 queued 관찰(2026-11-11 18:42UTC); Deploy 미확인.
 
 - 2026-11-12 공간좌표 `geom-space-coord` 구현: 카탈로그·HTML 8장면 일치, 원문 목표14+개념18=32해설. 실제 Space/Board·stackScene 복제 경로 547개 cue/중간 상태, 수학26+native7+공통41=74/74, validator 오류0/경고0, JS6+inline2 구문 확인. 원본 변형 선택 seed를 해설 트랙에서 제외하고 첫 원문 조건·native 입체·기존 조작을 보존. 병합 전 원래 yaw가 51에서35로 덮이는 회귀를 재현한 뒤 모든 native 값을 lscN_/lscS_ 전용 재생 트랙으로 분리하고 실제 draw snapshot에만 적용해 원래 조작값 보존 검사를 추가. 구면 단면·내외분·접선·최단거리·퇴화 경계 검산. 최신 main `3f2ef62f80974513d6ba9eb9608dae2cd28a71b6` 반영 뒤42입력 SHA 및1부재 동일. 전수 모바일/독립 시각검수 NOT_RUN, PAGES_NOT_VERIFIED.
 
