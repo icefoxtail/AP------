@@ -277,6 +277,26 @@ async function run() {
       // control; the lesson-first entry intentionally gives its figure more room.
       await page.getByRole('button', { name: '직접 해 보기', exact: true }).click();
       await page.waitForFunction(() => !document.body.classList.contains('apl-lessonfirst'));
+      // Leaving lesson-first resizes the native canvas. Observe its completed
+      // paint before capturing; do not force render or inject application state.
+      report.labExplorationPaint = await page.evaluate(() => new Promise((resolve, reject) => {
+        const started = performance.now(); let previous = '', stable = 0, frames = 0;
+        const inspect = () => {
+          const canvas = window.lab?.ui?.canvas, rect = canvas?.getBoundingClientRect();
+          let ink = 0;
+          if (canvas?.width && canvas.height) {
+            const pixels = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
+            for (let i = 3; i < pixels.length; i += 16) if (pixels[i] > 30) ink++;
+          }
+          const size = canvas && rect ? [canvas.width, canvas.height, rect.width, rect.height, rect.top].join(',') : '';
+          stable = size && size === previous && ink > 200 ? stable + 1 : 0; previous = size; frames++;
+          if (stable >= 3) return resolve({ milliseconds: performance.now() - started, frames, ink,
+            canvas: { width: rect.width, height: rect.height, top: rect.top, backingWidth: canvas.width, backingHeight: canvas.height } });
+          if (performance.now() - started > 3000) return reject(Error(`Native exploration paint did not settle: stable=${stable}, ink=${ink}`));
+          requestAnimationFrame(inspect);
+        };
+        requestAnimationFrame(inspect);
+      }));
       await capture(page, 'student-lab-explore-800'); await assertNav(page, 'labs');
       const stage = await page.locator('.apl-stage').boundingBox();
       assert.ok(stage && stage.height <= 561, 'portrait tablet keeps the existing bounded stage so experiment controls remain close');
