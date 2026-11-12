@@ -558,7 +558,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림은 한 모서리의 길이가 $8\\text{ cm}$인 정육면체를 평면으로 비스듬히 잘라내고 남은 입체도형이다. 앞면의 단면이 평행한 두 변의 길이가 각각 $4\\text{ cm}, 8\\text{ cm}$인 사다리꼴일 때, 이 입체도형의 부피는? [4점]",
+    "content": "한 모서리의 길이가 $8\\text{ cm}$인 정육면체를 평면으로 잘라 남긴 입체도형이다. 절단하는 평면은 정육면체의 깊이 방향과 평행하고, 앞면과 뒷면의 단면은 합동이다. 앞면의 단면은 높이가 $8\\text{ cm}$이고 평행한 두 변의 길이가 각각 $4\\text{ cm}, 8\\text{ cm}$인 사다리꼴이다. 남은 입체도형의 부피는? [4점]",
     "choices": [
       "$320\\text{ cm}^3$",
       "$336\\text{ cm}^3$",
@@ -568,7 +568,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "points": 4,
-    "solution": "남은 입체도형은 앞면의 사다리꼴을 밑면으로 하고 깊이가 $8\\text{ cm}$인 사각기둥으로 볼 수 있다. 앞면 사다리꼴의 넓이는 $$\\begin{aligned} \\text{밑넓이} &= \\dfrac{4 + 8}{2} \\times 8 \\ &= 6 \\times 8 \\ &= 48\\text{ cm}^2 \\end{aligned}$$ 기둥의 높이(깊이)는 정육면체의 한 모서리의 길이인 $8\\text{ cm}$이므로 부피는 $$\\begin{aligned} V &= 48 \\times 8 \\ &= 384\\text{ cm}^3 \\end{aligned}$$ 따라서 정답은 ⑤이다.",
+    "solution": "앞면과 뒷면의 단면이 합동이고 절단면이 깊이 방향으로 이어지므로, 남은 입체도형은 앞면 사다리꼴을 밑면으로 하고 깊이가 $8\\text{ cm}$인 사각기둥이다. 사다리꼴의 넓이는\n$$\\begin{aligned}\nS &= \\dfrac{4+8}{2} \\times 8 \\\\\n&= 48\\text{ cm}^2\\end{aligned}$$\n따라서 부피는\n$$\\begin{aligned}\nV &= 48 \\times 8 \\\\\n&= 384\\text{ cm}^3\\end{aligned}$$\n이므로 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
@@ -576,8 +576,8 @@ window.questionBank = [
     "candidateMetadata": {
       "curriculum": "2015",
       "conceptClusterKey": "SOLID_FIGURE",
-      "primaryMethod": "사다리꼴 단면 넓이 48cm²에 깊이 8cm를 곱해 잘린 정육면체 부피 384cm³를 도출한다.",
-      "decisiveStep": "사다리꼴 밑넓이 48cm² 산출 및 깊이 8cm와의 곱셈",
+      "primaryMethod": "앞면과 뒷면이 합동인 사다리꼴 단면의 넓이 48cm²에 깊이 8cm를 곱한다.",
+      "decisiveStep": "절단면이 깊이 방향으로 일정하게 이어지는 사각기둥임을 확인하고 부피 384cm³를 계산",
       "rpm": {
         "majorUnit": "입체도형",
         "midUnit": "입체도형의 겉넓이와 부피",
@@ -678,7 +678,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "가로의 길이가 $6\\text{ cm}$, 세로의 길이가 $10\\text{ cm}$, 높이가 $4\\text{ cm}$인 직육면체 모양의 그릇에 물을 가득 채운 후, 그릇을 기울여 물을 흘려보냈더니 그릇의 한 꼭짓점을 포함하는 삼각뿔 모양으로 물이 남았다. 흘려보낸 물의 양은? [4점]",
+    "content": "가로의 길이가 $6\\text{ cm}$, 세로의 길이가 $10\\text{ cm}$, 높이가 $4\\text{ cm}$인 직육면체 모양의 그릇에 물을 가득 채운 후 기울였다. 남은 물은 그릇의 한 꼭짓점에서 만나는 서로 수직인 세 모서리의 길이가 각각 $6\\text{ cm}, 10\\text{ cm}, 4\\text{ cm}$인 삼각뿔 모양이다. 흘려보낸 물의 양은? [4점]",
     "choices": [
       "$180\\text{ cm}^3$",
       "$200\\text{ cm}^3$",
@@ -688,7 +688,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "points": 4,
-    "solution": "그릇을 가득 채웠을 때 물의 전체 부피는 직육면체의 부피와 같으므로 $$\\begin{aligned} V_{\\text{전체}} &= 6 \\times 10 \\times 4 \\ &= 240\\text{ cm}^3 \\end{aligned}$$ 그릇에 남은 물은 밑면이 직각을 낀 두 변의 길이가 $6\\text{ cm}, 10\\text{ cm}$인 직각삼각형이고 높이가 $4\\text{ cm}$인 삼각뿔이다. $$\\begin{aligned} \\text{남은 물의 밑넓이} &= \\dfrac{1}{2} \\times 6 \\times 10 = 30\\text{ cm}^2 \\ V_{\\text{남은 물}} &= \\dfrac{1}{3} \\times 30 \\times 4 \\ &= 40\\text{ cm}^3 \\end{aligned}$$ 따라서 흘려보낸 물의 양은 전체 부피에서 남은 물의 부피를 뺀 값이므로 $$\\begin{aligned} 240 - 40 &= 200\\text{ cm}^3 \\end{aligned}$$ 따라서 정답은 ②이다.",
+    "solution": "가득 채운 물의 부피는 직육면체의 부피와 같으므로\n$$\\begin{aligned}\nV_{\\text{전체}} &= 6 \\times 10 \\times 4 \\\\\n&= 240\\text{ cm}^3\\end{aligned}$$\n남은 물은 서로 수직인 세 모서리의 길이가 $6\\text{ cm},10\\text{ cm},4\\text{ cm}$인 삼각뿔이다. 밑면을 밑변의 길이가 $6\\text{ cm},10\\text{ cm}$인 직각삼각형으로 보면 밑넓이는 $\\dfrac12 \\times 6 \\times 10=30\\text{ cm}^2$이고 높이는 $4\\text{ cm}$이다. 따라서 남은 물의 부피는\n$$\\begin{aligned}\nV_{\\text{남은 물}} &= \\dfrac13 \\times 30 \\times 4 \\\\\n&= 40\\text{ cm}^3\\end{aligned}$$\n흘려보낸 물의 양은 $240-40=200\\text{ cm}^3$이므로 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
@@ -696,8 +696,8 @@ window.questionBank = [
     "candidateMetadata": {
       "curriculum": "2015",
       "conceptClusterKey": "SOLID_FIGURE",
-      "primaryMethod": "직육면체 전체 부피 240cm³에서 남은 삼각뿔 부피 40cm³를 빼 흘려보낸 물 200cm³를 계산한다.",
-      "decisiveStep": "남은 물(삼각뿔) 부피 40cm³ 산출 및 전체 부피와의 차 계산",
+      "primaryMethod": "직육면체 부피 240cm³에서 서로 수직인 세 모서리 6,10,4를 갖는 삼각뿔 부피 40cm³를 뺀다.",
+      "decisiveStep": "세 수직 모서리로 남은 물의 삼각뿔이 유일하게 정해짐을 명시하고 부피 차 200cm³를 계산",
       "rpm": {
         "majorUnit": "입체도형",
         "midUnit": "입체도형의 겉넓이와 부피",
@@ -980,7 +980,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 반지름의 길이가 $4\\text{ cm}$인 반구 위에 반지름의 길이가 $2\\text{ cm}$인 반구를 중심이 일치하도록 포개어 놓았을 때, 바깥으로 드러난 입체도형의 겉넓이는? [5점] (단, 큰 반구의 평평한 바닥면은 바닥에 닿아 있어 겉넓이에서 제외한다.)",
+    "content": "반지름의 길이가 $4\\text{ cm}$인 반구를 평평한 원형 면이 위를 향하도록 놓았다. 그 원형 면 위에 반지름의 길이가 $2\\text{ cm}$인 반구를 평평한 면이 아래를 향하도록 올려놓았으며, 두 원형 면의 중심은 일치한다. 서로 맞닿아 가려진 면을 제외한 입체도형의 겉넓이는? [5점]",
     "choices": [
       "$48\\pi\\text{ cm}^2$",
       "$52\\pi\\text{ cm}^2$",
@@ -990,7 +990,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "points": 5,
-    "solution": "겉넓이는 큰 반구의 곡면, 작은 반구의 곡면, 그리고 위쪽으로 드러난 고리 모양 평면의 넓이의 합이다. 큰 반구의 곡면 넓이는 $$\\begin{aligned} 2\\pi \\times 4^2 &= 32\\pi\\text{ cm}^2 \\end{aligned}$$ 작은 반구의 곡면 넓이는 $$\\begin{aligned} 2\\pi \\times 2^2 &= 8\\pi\\text{ cm}^2 \\end{aligned}$$ 드러난 고리 모양 평면의 넓이는 큰 원의 넓이에서 작은 원의 넓이를 뺀 값이므로 $$\\begin{aligned} \\pi \\times 4^2 - \\pi \\times 2^2 &= 16\\pi - 4\\pi \\ &= 12\\pi\\text{ cm}^2 \\end{aligned}$$ 따라서 구하는 입체도형의 겉넓이는 $$\\begin{aligned} \\text{겉넓이} &= 32\\pi + 8\\pi + 12\\pi \\ &= 52\\pi\\text{ cm}^2 \\end{aligned}$$ 따라서 정답은 ②이다.",
+    "solution": "겉넓이는 큰 반구의 곡면, 작은 반구의 곡면, 큰 원형 면에서 작은 원형 면을 뺀 고리 모양 평면의 합이다. 큰 반구의 곡면 넓이는 $2\\pi \\times 4^2=32\\pi\\text{ cm}^2$이고, 작은 반구의 곡면 넓이는 $2\\pi \\times 2^2=8\\pi\\text{ cm}^2$이다. 드러난 고리 모양 평면의 넓이는 $\\pi \\times 4^2-\\pi \\times 2^2=12\\pi\\text{ cm}^2$이다. 따라서 겉넓이는\n$$\\begin{aligned}\n32\\pi+8\\pi+12\\pi &= 52\\pi\\text{ cm}^2\\end{aligned}$$\n이므로 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
@@ -998,8 +998,8 @@ window.questionBank = [
     "candidateMetadata": {
       "curriculum": "2015",
       "conceptClusterKey": "SOLID_FIGURE",
-      "primaryMethod": "큰 반구 곡면 32pi, 작은 반구 곡면 8pi, 노출된 고리 평면 12pi를 각각 분할하여 총 52pi를 합산한다.",
-      "decisiveStep": "노출된 고리 평면(16pi-4pi=12pi) 산출 및 세 표면 합산",
+      "primaryMethod": "큰 반구 곡면, 작은 반구 곡면, 노출된 동심 고리 면을 각각 구해 합산한다.",
+      "decisiveStep": "두 밑면이 같은 평면에 놓인 배치를 명시하고 노출된 고리 넓이 12π를 포함해 총 52π를 계산",
       "rpm": {
         "majorUnit": "입체도형",
         "midUnit": "입체도형의 겉넓이와 부피",
