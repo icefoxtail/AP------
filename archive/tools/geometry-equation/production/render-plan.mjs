@@ -312,7 +312,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       try{
       stage='spec';
       const spec=specFor(candidatePlan,model,identity.assetId);watch.lap('spec');// A plane figure carries angle arcs, ticks and expression labels: it is measured at the full profile like a coordinate figure.
-      let size=forceSizeClass??(model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)?'full':'medium');   // forceSizeClass: a test/diagnostic seam only (the CLI never sets it)
+      let size=forceSizeClass??(model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)||(candidatePlan.graphPlan?.family==='trigonometric'&&candidatePlan.graphPlan.displaySize==='full')?'full':'medium');   // forceSizeClass: a test/diagnostic seam only (the CLI never sets it)
       stage='measure';
       const measure=(sizeClass,runSuffix='')=>cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:sizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},runId:`pilot-measure-${tag}${suffix}${runSuffix}`});
       let measured=await measure(size);

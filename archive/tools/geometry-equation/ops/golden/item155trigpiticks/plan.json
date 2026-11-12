@@ -1,0 +1,56 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "-sqrt(3)/2",
+        "intersectionCount": 2,
+        "color": "WARM"
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickPiStep": "1/6",
+    "axisTickValues": {
+      "x": [
+        "5/6",
+        "7/6"
+      ],
+      "y": [
+        "-1",
+        "1"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "0≤x<2π에서 y=cos x의 그래프와 직선 y=−√3/2가 만나는 두 점을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "cos x < -√3/2 (0≤x<2π)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "코사인 곡선과 수평선의 교점"
+  ]
+}

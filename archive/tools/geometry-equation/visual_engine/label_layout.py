@@ -23,7 +23,7 @@ NARROW_WEDGE_MAX_DEGREES=30.0
 TICK_LABEL_ALIGNMENT_TOLERANCE=4.0
 TICK_LABEL_MAX_EDGE_GAP=16.0
 TICK_LABEL_GAPS=(8,12,16)
-TICK_CALLOUT_OFFSETS=([28,-22],[-28,-22],[28,22],[-28,22])   # the label-centre offsets a tick-label leader callout may use (the first is the authored x=-6 callout)
+TICK_CALLOUT_OFFSETS=([28,-22],[-28,-22],[28,22],[-28,22],[40,-26],[-40,-26],[40,26],[-40,26],[24,-40],[-24,-40],[24,40],[-24,40],[52,-18],[-52,-18],[52,18],[-52,18])   # the label-centre offsets a tick-label leader callout may use (the first is the authored x=-6 callout)
 TICK_LABEL_SLIDES=(-2.0,2.0,-3.5,3.5)   # px along its axis a tick label may move when no centred box is clear (inside TICK_LABEL_ALIGNMENT_TOLERANCE)
 # Gaps tried from each alternate anchor of a lineFallback label (nearest first; from NEAR_RELOCATION_LEADER_MIN_GAP on, a visible leader is needed).
 LINE_FALLBACK_GAPS=(8,6,10,20,32,48)
@@ -789,7 +789,8 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         # A tick number beside a point name (the O of the origin and the tick 3 right next to it) found no room because the name took its place first
         # (equal priority, ordered by id): the second pass places the tick numbers first, so the point name moves to the free side instead.
         retry=layout_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,tick_labels_first_order)
-        if len(retry['unresolved'])<len(result['unresolved']):return retry
+        if len(retry['unresolved'])<len(result['unresolved']):
+            result=retry   # (trig) the tick numbers that are still unresolved go on to the leader fallback below instead of ending here
     # tickCalloutFallback (set only by figures that opt in, e.g. discontinuous functions with dashed approach guides): a tick number whose two
     # axis-normal sides are all blocked keeps its tick and moves to a small offset with a leader to that tick, never dropped. The first offset
     # (of TICK_CALLOUT_OFFSETS) that resolves the label wins; a layout that already resolved is never changed.
@@ -914,7 +915,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 # A dot drawn exactly on its own tick (a declared function value on an axis) is part of that tick, not an obstacle to its leader.
                 owner_ids|={o.get('id') for o in occupied if o.get('kind') in {'circle','point'} and math.dist((o['geometry'][0],o['geometry'][1]),label['at'])<=1e-3}
                 # Likewise a dashed approach guide, or an overlay line/guide (a vertical line x=a through the tick, G5b), that passes exactly through this tick belongs to it (the leader may touch it only at its start).
-                owner_ids|={o.get('id') for o in occupied if (o.get('kind')=='line' and ('-guide-' in str(o.get('id')) or str(o.get('id','')).startswith(('overlay-line-','overlay-guide-'))) or o.get('kind')=='curve' and str(o.get('id','')).split('-piece-')[0] in ('f','g')) and isinstance(o.get('geometry'),(list,tuple)) and any(point_segment_distance(label['at'],c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
+                owner_ids|={o.get('id') for o in occupied if (o.get('kind')=='line' and ('-guide-' in str(o.get('id')) or str(o.get('id','')).startswith(('overlay-line-','overlay-guide-','trig-pole-','line-'))) or o.get('kind')=='curve' and str(o.get('id','')).split('-piece-')[0] in ('f','g')) and isinstance(o.get('geometry'),(list,tuple)) and any(point_segment_distance(label['at'],c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
                 if not leader_clear(label['at'],end,occupied,owner_ids):
                     chosen=None;method=None
                     trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['OWNER_LEADER_CLEARANCE']})

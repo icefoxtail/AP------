@@ -5,7 +5,7 @@ import re
 import xml.etree.ElementTree as ET
 from .style_tokens import load
 
-TICK_CALLOUT_OFFSETS=([28,-22],[-28,-22],[28,22],[-28,22])   # same set as label_layout.TICK_CALLOUT_OFFSETS (label centre relative to its tick)
+TICK_CALLOUT_OFFSETS=([28,-22],[-28,-22],[28,22],[-28,22],[40,-26],[-40,-26],[40,26],[-40,26],[24,-40],[-24,-40],[24,40],[-24,40],[52,-18],[-52,-18],[52,18],[-52,18])   # same set as label_layout.TICK_CALLOUT_OFFSETS (label centre relative to its tick)
 
 def esc(value):return html.escape(str(value),quote=True)
 def num(value):return f'{value:.9f}'.rstrip('0').rstrip('.') or '0'
