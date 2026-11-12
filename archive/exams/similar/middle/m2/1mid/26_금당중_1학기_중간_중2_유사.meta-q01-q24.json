@@ -2,30 +2,23 @@
   "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
   "requestId": "similar-26-geumdang-m2-1mid-candidate-v1",
   "examUid": "26_금당중_1학기_중간_중2_유사",
-  "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/26_금당중_1학기_중간_중2_유사.js",
-  "expectedSourceBlobSha1": "44cd3299f7a106f3f5d405ac3b507658219c7504",
-  "expectedSourceSha256": "246aa8160c179761c9a1363a5e5aeedd11d816e367b3dbd18a474f6d3b5993c8",
+  "sourceArchiveFile": "similar/middle/m2/1mid/26_금당중_1학기_중간_중2_유사.js",
+  "expectedSourceBlobSha1": "b102a3a8082405edb3d0316a52d6df3f2f4e535e",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
     "metadataReviewed": false,
+    "approvedBy": "Codex-Luna-high",
     "reviewStatus": "review_required",
     "reviewPassCount": 0,
-    "approvedBy": null,
     "evidenceRefs": []
   },
   "registryChanges": [],
-  "sourceEvidence": {
-    "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/26_금당중_1학기_중간_중2_기출.js",
-    "sourceBlobSha1": null,
-    "sourceMDFileId": "1xgUOHsDyB9qRTeLLNt3oit-pUC44hYSo",
-    "sourceRevision": "NOT_READ",
-    "note": "Raw Drive Markdown read; MD-referenced original exam JS is absent from current main, so original-source blob binding and official resolver identity remain pending."
-  },
   "items": [
     {
       "questionUid": "qid_v1_c8ace719a394dbd0aefdb4a2161b35706c2f810e945c49553bbdd82c7769a0fd",
       "sourceOrdinal": 1,
+      "sourceQid": 1,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -36,68 +29,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "REPEATING_DECIMAL_NOTATION",
-        "level": null,
-        "difficultyBucket": 1,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "유리수와 순환소수 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 옳지 않은 것은 ③이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-1",
-        "rpmL2Label": "L2-1.2",
-        "rpmL3Label": "순환소수의 표현",
-        "rpmL4Label": "순환마디에 점 찍기",
-        "rpmPath": {
-          "l1SourceCode": "L1-1",
-          "l2SourceCode": "L2-1.2",
-          "l3": "순환소수의 표현",
-          "l4": "순환마디에 점 찍기"
-        },
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "순환마디의 반복 구간 끝자리 두 곳에 점을 찍는 규칙으로 보기의 표기를 비교한다.",
+        "decisiveStep": "점이 찍힌 순환마디가 183인 후보와 실제 183 반복 표기를 대조해 ③을 고른다.",
+        "contentFingerprint": "bc703ae32b9769b3baba89610f082814889655c0c44bdcecb0b319f072f3778f",
+        "sourceFingerprint": "7ccecc6af3541f35527b217b3c7e2ebfe133ffcbd0e356e60ed2a853b0e0a2f3"
       },
-      "sourceQid": 1,
-      "sourceUid": "qid_v1_4de7e6eeb1fde6005b8573a6b50e50b85266bb7acb9900fd7a53f98134d69984",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-02",
-        "templateKey": "TPL-M2-01-02-01",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 3,
-        "distractorSlots": [
-          1,
-          2,
-          4,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [
-          "순환소수"
-        ],
-        "goal": [
-          "순환소수"
-        ],
-        "method": [
-          "소인수분해"
-        ],
-        "condition": []
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "순환마디의 반복 구간 끝자리 두 곳에 점을 찍는 규칙으로 보기의 표기를 비교한다.",
+      "decisiveStep": "점이 찍힌 순환마디가 183인 후보와 실제 183 반복 표기를 대조해 ③을 고른다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 유리수와 순환소수 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_23e89cc9bbd3e577a42ca032f795a801889408e6110056757e7744774f54eb4a",
       "sourceOrdinal": 2,
+      "sourceQid": 2,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -108,69 +71,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "REPEATING_DECIMAL_DIGIT",
-        "level": null,
-        "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "유리수와 순환소수 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ⑤이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-1",
-        "rpmL2Label": "L2-1.3",
-        "rpmL3Label": "순환소수의 자릿수",
-        "rpmL4Label": "소수점 아래 n번째 자리의 숫자",
-        "rpmPath": {
-          "l1SourceCode": "L1-1",
-          "l2SourceCode": "L2-1.3",
-          "l3": "순환소수의 자릿수",
-          "l4": "소수점 아래 n번째 자리의 숫자"
-        },
-        "crossConceptKeys": [
-          "나눗셈의 나머지",
-          "주기성"
-        ],
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "45/7의 순환마디 길이 6과 105번째 자리의 주기를 이용한다.",
+        "decisiveStep": "105를 6으로 나눈 나머지 3에 해당하는 순환마디의 세 번째 숫자 8을 선택한다.",
+        "contentFingerprint": "85a2a601a7eb707c2888ea4814468134c832fbe6350a9f43d7038192379a6c94",
+        "sourceFingerprint": "4e98cc2d137469f2c65c981fb53c98b49d7723e7dc3847b1b553b4cc72772a81"
       },
-      "sourceQid": 2,
-      "sourceUid": "qid_v1_732ea2b555f1b98d6ce524316a1de1da517984e50b883a061dd18f32017aaa83",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-03",
-        "templateKey": "TPL-M2-01-03-01",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 5,
-        "distractorSlots": [
-          1,
-          2,
-          3,
-          4
-        ]
-      },
-      "item4slot": {
-        "given": [],
-        "goal": [
-          "순환소수"
-        ],
-        "method": [
-          "소인수분해"
-        ],
-        "condition": []
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "45/7의 순환마디 길이 6과 105번째 자리의 주기를 이용한다.",
+      "decisiveStep": "105를 6으로 나눈 나머지 3에 해당하는 순환마디의 세 번째 숫자 8을 선택한다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 유리수와 순환소수 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_a388478de50aa577a1edcfb31254f3706c53ff0178b46275c9ac751b5c0fe632",
       "sourceOrdinal": 3,
+      "sourceQid": 3,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -181,77 +113,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "FINITE_DECIMAL_CONDITIONS",
-        "level": null,
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
         "difficultyBucket": 3,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "유리수와 순환소수 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ②이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-1",
-        "rpmL2Label": "L2-1.1",
-        "rpmL3Label": "유한소수가 될 조건",
-        "rpmL4Label": "기약분수와 소인수분해 응용",
-        "rpmPath": {
-          "l1SourceCode": "L1-1",
-          "l2SourceCode": "L2-1.1",
-          "l3": "유한소수가 될 조건",
-          "l4": "기약분수와 소인수분해 응용"
-        },
-        "crossConceptKeys": [
-          "배수 조건",
-          "기약분수"
-        ],
-        "conditionKeys": [
-          "RANGE_BOUND",
-          "FINITE_DECIMAL",
-          "IRREDUCIBLE_NUMERATOR"
-        ],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "primaryMethod": "유한소수의 분모 조건과 기약분수 분자 조건을 각각 배수 조건으로 바꾸어 범위에 결합한다.",
+        "decisiveStep": "x가 13과 11의 배수임을 이용해 250<x<300인 x=286을 찾고 y=10으로 복원한다.",
+        "contentFingerprint": "8d05cb9761093ef60605334eec56fec1f0a6e49c5376bee545d566c88385d2b7",
+        "sourceFingerprint": "162db095678b8e575c05edf37c67fb1edc450669448646efd6390ecfbcf9a3bd"
       },
-      "sourceQid": 3,
-      "sourceUid": "qid_v1_cd8fc3f0e76d7bef184e357f3907e9c105a3ddfa5c7a157f770bcf428402a443",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-01",
-        "templateKey": "TPL-M2-01-01-03",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 2,
-        "distractorSlots": [
-          1,
-          3,
-          4,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [
-          "기약분수"
-        ],
-        "goal": [
-          "기약분수"
-        ],
-        "method": [
-          "소인수분해"
-        ],
-        "condition": [
-          "자연수"
-        ]
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "유한소수의 분모 조건과 기약분수 분자 조건을 각각 배수 조건으로 바꾸어 범위에 결합한다.",
+      "decisiveStep": "x가 13과 11의 배수임을 이용해 250<x<300인 x=286을 찾고 y=10으로 복원한다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 유리수와 순환소수 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_a18fd91d7f9ce479af4e140e60d3b472c323f0998e9e4fccbf012f35fe507073",
       "sourceOrdinal": 4,
+      "sourceQid": 4,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -262,75 +155,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "REPEATING_DECIMAL_CONDITIONS",
-        "level": null,
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
         "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "유리수와 순환소수 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ①이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-1",
-        "rpmL2Label": "L2-1.1",
-        "rpmL3Label": "순환소수가 될 조건",
-        "rpmL4Label": "미지수 n의 최소 두 자리 자연수",
-        "rpmPath": {
-          "l1SourceCode": "L1-1",
-          "l2SourceCode": "L2-1.1",
-          "l3": "순환소수가 될 조건",
-          "l4": "미지수 n의 최소 두 자리 자연수"
-        },
-        "crossConceptKeys": [
-          "약분",
-          "소인수 판정"
-        ],
-        "conditionKeys": [
-          "TWO_DIGIT_MINIMUM"
-        ],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "분자 169와 분모의 공약수 13을 약분한 뒤 분모의 소인수 조건으로 가장 작은 두 자리 n을 찾는다.",
+        "decisiveStep": "n=10이면 유한소수이고 n=11이면 약분 후 11이 남아 순환소수가 되므로 n=11이다.",
+        "contentFingerprint": "3085d2b71f0936089c3ac5179e8f181fac5275d2126e0ccd5af2147f99567b9f",
+        "sourceFingerprint": "61f9b0aebe1dcc5ae6e3a871604b263fc7e7a65b5b29bec8cdaa81242b1035c3"
       },
-      "sourceQid": 4,
-      "sourceUid": "qid_v1_8a6b1cf8396562336d3f5656b1f0acb1e646e3c7b0edebf20578d42f3d080dc0",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-01",
-        "templateKey": "TPL-M2-01-01-02",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 1,
-        "distractorSlots": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [
-          "순환소수"
-        ],
-        "goal": [
-          "순환소수"
-        ],
-        "method": [
-          "약분"
-        ],
-        "condition": [
-          "자연수"
-        ]
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "분자 169와 분모의 공약수 13을 약분한 뒤 분모의 소인수 조건으로 가장 작은 두 자리 n을 찾는다.",
+      "decisiveStep": "n=10이면 유한소수이고 n=11이면 약분 후 11이 남아 순환소수가 되므로 n=11이다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 유리수와 순환소수 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_1712c1f847d3e4907dcb01aef295ffd9f66518249f321e2d89f94d866492b77f",
       "sourceOrdinal": 5,
+      "sourceQid": 5,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -341,68 +197,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "REPEATING_DECIMAL_TO_FRACTION",
-        "level": null,
-        "difficultyBucket": 1,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "유리수와 순환소수 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ④이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-1",
-        "rpmL2Label": "L2-1.4",
-        "rpmL3Label": "순환소수를 분수로 나타내기",
-        "rpmL4Label": "10의 거듭제곱 식 선택",
-        "rpmPath": {
-          "l1SourceCode": "L1-1",
-          "l2SourceCode": "L2-1.4",
-          "l3": "순환소수를 분수로 나타내기",
-          "l4": "10의 거듭제곱 식 선택"
-        },
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "순환마디 길이 3에 맞춰 1000x와 x를 만든 뒤 빼서 반복 부분을 없앤다.",
+        "decisiveStep": "1000x−x에서 소수 부분이 소거되므로 제시된 선택 식을 고른다.",
+        "contentFingerprint": "272d2e35eec88b7ce66e959d7dcf62ee60849766b35241aeba95771fd618104c",
+        "sourceFingerprint": "7a826d9a944440393587e57e827f07f6c854538faaa1365479ae21b158836bf3"
       },
-      "sourceQid": 5,
-      "sourceUid": "qid_v1_0346713cff2f149d9d7ca0e3e93fd088ca13f476de3bbe65ef296004b79f0405",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-04",
-        "templateKey": "TPL-M2-01-04-01",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 4,
-        "distractorSlots": [
-          1,
-          2,
-          3,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [
-          "순환소수"
-        ],
-        "goal": [
-          "순환소수"
-        ],
-        "method": [
-          "소인수분해"
-        ],
-        "condition": []
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "순환마디 길이 3에 맞춰 1000x와 x를 만든 뒤 빼서 반복 부분을 없앤다.",
+      "decisiveStep": "1000x−x에서 소수 부분이 소거되므로 제시된 선택 식을 고른다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 유리수와 순환소수 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_f58aeaaf2f37e3c7e303a87935692ff3b9a35b1452598448d3fb5f5f1e2e1a04",
       "sourceOrdinal": 6,
+      "sourceQid": 6,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -413,72 +239,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "REPEATING_DECIMAL_CONVERSION",
-        "level": null,
-        "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "유리수와 순환소수 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ②이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-1",
-        "rpmL2Label": "L2-1.4",
-        "rpmL3Label": "순환소수를 분수로 나타내기",
-        "rpmL4Label": "기약분수 역산",
-        "rpmPath": {
-          "l1SourceCode": "L1-1",
-          "l2SourceCode": "L2-1.4",
-          "l3": "순환소수를 분수로 나타내기",
-          "l4": "기약분수 역산"
-        },
-        "crossConceptKeys": [
-          "기약분수 약분"
-        ],
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "순환소수를 t로 두고 10t와 1000t를 빼 순환 부분을 제거한 뒤 분수와 기약성을 확인한다.",
+        "decisiveStep": "990t=1602를 풀어 t=89/55를 얻고 x/55와 비교해 x=89로 결정한다.",
+        "contentFingerprint": "14d541295efbfeb1302419f09389651301e8085bdf4866345a521524f4746274",
+        "sourceFingerprint": "c0fe224a1945032ccb9a4713283c8a1157d7159ccd3a9081de70513049979106"
       },
-      "sourceQid": 6,
-      "sourceUid": "qid_v1_b0aedb13ab38c8e3934bba430ea7de3535301352acc6a7429dbf5f71be1befe8",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-04",
-        "templateKey": "TPL-M2-01-04-02",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 2,
-        "distractorSlots": [
-          1,
-          3,
-          4,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [
-          "기약분수"
-        ],
-        "goal": [
-          "기약분수"
-        ],
-        "method": [
-          "약분"
-        ],
-        "condition": [
-          "자연수"
-        ]
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "순환소수를 t로 두고 10t와 1000t를 빼 순환 부분을 제거한 뒤 분수와 기약성을 확인한다.",
+      "decisiveStep": "990t=1602를 풀어 t=89/55를 얻고 x/55와 비교해 x=89로 결정한다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 유리수와 순환소수 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_eeaffdec5b7f59bae8ce2c91feb6d1b7fa3eea33cfa3407e778fb65ecc84ef3d",
       "sourceOrdinal": 7,
+      "sourceQid": 7,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -489,70 +281,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "EXPONENT_PRODUCT_LAW",
-        "level": null,
-        "difficultyBucket": 1,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "지수법칙 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ⑤이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-2",
-        "rpmL2Label": "L2-2.1",
-        "rpmL3Label": "지수법칙",
-        "rpmL4Label": "지수의 합",
-        "rpmPath": {
-          "l1SourceCode": "L1-2",
-          "l2SourceCode": "L2-2.1",
-          "l3": "지수법칙",
-          "l4": "지수의 합"
-        },
-        "crossConceptKeys": [
-          "소인수분해"
-        ],
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "각 수를 소인수분해하고 곱에서 소수별 지수를 합산한다.",
+        "decisiveStep": "곱의 소인수 꼴 2^6·3^2·5와 조건의 지수 m,n을 비교해 m+n을 정한다.",
+        "contentFingerprint": "c15f82aff6bb41b0818f2a18d047ae5c1563ea35ec8deb0719823f1157e2dce5",
+        "sourceFingerprint": "e2c25dc448cb2831827d63dc22f8e9508396358235ab2f6e9637b7e79dbaccab"
       },
-      "sourceQid": 7,
-      "sourceUid": "qid_v1_f1131ebe3a9644f964e466bffde73778668b3155f37672dddd116ca416d0e47a",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-05",
-        "templateKey": "TPL-M2-01-05-01",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 5,
-        "distractorSlots": [
-          1,
-          2,
-          3,
-          4
-        ]
-      },
-      "item4slot": {
-        "given": [],
-        "goal": [
-          "값"
-        ],
-        "method": [
-          "정리"
-        ],
-        "condition": [
-          "자연수"
-        ]
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "각 수를 소인수분해하고 곱에서 소수별 지수를 합산한다.",
+      "decisiveStep": "곱의 소인수 꼴 2^6·3^2·5와 조건의 지수 m,n을 비교해 m+n을 정한다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 지수법칙 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_a499c1f4a96de352fd1719bfa122471b4708b4785d91335ccfbcbe25fe18c414",
       "sourceOrdinal": 8,
+      "sourceQid": 8,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -563,69 +323,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "EXPONENT_SUBSTITUTION",
-        "level": null,
-        "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "지수법칙 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ④이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-2",
-        "rpmL2Label": "L2-2.1",
-        "rpmL3Label": "지수법칙의 응용",
-        "rpmL4Label": "문자로 식 나타내기",
-        "rpmPath": {
-          "l1SourceCode": "L1-2",
-          "l2SourceCode": "L2-2.1",
-          "l3": "지수법칙의 응용",
-          "l4": "문자로 식 나타내기"
-        },
-        "crossConceptKeys": [
-          "소인수분해",
-          "거듭제곱의 거듭제곱"
-        ],
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "18=2·3²로 고쳐 거듭제곱한 뒤 A=3²를 대입한다.",
+        "decisiveStep": "18⁶=2⁶·3¹²=64A⁶으로 나타낸다.",
+        "contentFingerprint": "b7d557a997363e766481e856a52396d6f81f03044aaacf989d72052db2c24523",
+        "sourceFingerprint": "2df90a9dea89d75f11f82d616dcc488aea86410b77185e655a19db01a18c3517"
       },
-      "sourceQid": 8,
-      "sourceUid": "qid_v1_000d116c58a8e1c9ff8e802d0cae70f3aa95d46276e18526405bf73662fba812",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-06",
-        "templateKey": "TPL-M2-01-06-01",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 4,
-        "distractorSlots": [
-          1,
-          2,
-          3,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [],
-        "goal": [
-          "지수"
-        ],
-        "method": [
-          "지수법칙"
-        ],
-        "condition": []
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "18=2·3²로 고쳐 거듭제곱한 뒤 A=3²를 대입한다.",
+      "decisiveStep": "18⁶=2⁶·3¹²=64A⁶으로 나타낸다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 지수법칙 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_dcf998de22aaef831da77599e537bab7ef8910fd7e8f329f535486416f0de130",
       "sourceOrdinal": 9,
+      "sourceQid": 9,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -636,70 +365,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "NUMBER_OF_DIGITS",
-        "level": null,
-        "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "지수법칙 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ③이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-2",
-        "rpmL2Label": "L2-2.1",
-        "rpmL3Label": "지수법칙의 응용",
-        "rpmL4Label": "자릿수 구하기",
-        "rpmPath": {
-          "l1SourceCode": "L1-2",
-          "l2SourceCode": "L2-2.1",
-          "l3": "지수법칙의 응용",
-          "l4": "자릿수 구하기"
-        },
-        "crossConceptKeys": [
-          "10의 거듭제곱"
-        ],
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "2와 5의 같은 지수를 10의 거듭제곱으로 묶어 전체 자릿수를 센다.",
+        "decisiveStep": "2⁷·5⁷=10⁷로 정리해 N=225·10⁷의 자릿수 10을 얻는다.",
+        "contentFingerprint": "fff509d27823caf19488cf687a5bb90c98ed2a973e956ed28e7302ea81be13e5",
+        "sourceFingerprint": "39bcfd08223a104d1336f5963dce343d79eb5811d6c420877de6ed26a87b9a68"
       },
-      "sourceQid": 9,
-      "sourceUid": "qid_v1_2069a02e0458b175b2f6e7ab0f74d4724dc8f97eca27ae773ac64cc51b0fffb5",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-06",
-        "templateKey": "TPL-M2-01-06-02",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 3,
-        "distractorSlots": [
-          1,
-          2,
-          4,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [],
-        "goal": [
-          "거듭제곱"
-        ],
-        "method": [
-          "지수법칙"
-        ],
-        "condition": [
-          "자연수"
-        ]
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "2와 5의 같은 지수를 10의 거듭제곱으로 묶어 전체 자릿수를 센다.",
+      "decisiveStep": "2⁷·5⁷=10⁷로 정리해 N=225·10⁷의 자릿수 10을 얻는다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 지수법칙 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_0f5bc8344f8f519e50445819db9b1d548443a738878a0a8e2f91de91888beaae",
       "sourceOrdinal": 10,
+      "sourceQid": 10,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -710,68 +407,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "MONOMIAL_OPERATIONS",
-        "level": null,
-        "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "다항식의 계산 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ①이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-2",
-        "rpmL2Label": "L2-2.2",
-        "rpmL3Label": "단항식의 곱셈과 나눗셈",
-        "rpmL4Label": "네모 안에 알맞은 식 구하기",
-        "rpmPath": {
-          "l1SourceCode": "L1-2",
-          "l2SourceCode": "L2-2.2",
-          "l3": "단항식의 곱셈과 나눗셈",
-          "l4": "네모 안에 알맞은 식 구하기"
-        },
-        "crossConceptKeys": [
-          "역수 곱셈"
-        ],
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "주어진 거듭제곱을 전개하고 나눗셈을 역수의 곱으로 바꾸어 등식을 정리한다.",
+        "decisiveStep": "정리된 단항식 계수를 비교해 빈칸을 6a³b⁵로 결정한다.",
+        "contentFingerprint": "5f50838fab88ec0a144a33cfbd6861a644737024ba5e96eb0925411c106f88f4",
+        "sourceFingerprint": "ae4c57a2585a5b69559e3d9def7f48fbb9fb137babc0d72432ffdae090b95bd4"
       },
-      "sourceQid": 10,
-      "sourceUid": "qid_v1_de182f51bf925b6c169d4b58bae3ca6f8bb0596c68ddccc06035d53768350e2e",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-07",
-        "templateKey": "TPL-M2-01-07-01",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 1,
-        "distractorSlots": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [],
-        "goal": [
-          "단항식"
-        ],
-        "method": [
-          "정리"
-        ],
-        "condition": []
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "주어진 거듭제곱을 전개하고 나눗셈을 역수의 곱으로 바꾸어 등식을 정리한다.",
+      "decisiveStep": "정리된 단항식 계수를 비교해 빈칸을 6a³b⁵로 결정한다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 다항식의 계산 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_dc3d9ffa587c7a2c4578759b1cabf980644772439890469bf0e054f89f0efae3",
       "sourceOrdinal": 11,
+      "sourceQid": 11,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -782,71 +449,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "EXPONENT_SUM_SIMPLIFICATION",
-        "level": null,
-        "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "지수법칙 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ④이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-2",
-        "rpmL2Label": "L2-2.1",
-        "rpmL3Label": "지수법칙",
-        "rpmL4Label": "거듭제곱의 덧셈",
-        "rpmPath": {
-          "l1SourceCode": "L1-2",
-          "l2SourceCode": "L2-2.1",
-          "l3": "지수법칙",
-          "l4": "거듭제곱의 덧셈"
-        },
-        "crossConceptKeys": [
-          "동류항의 묶기",
-          "소인수분해"
-        ],
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "분모의 같은 항 세 개를 3·18⁴로 묶고 18의 소인수 꼴을 대입해 약분한다.",
+        "decisiveStep": "3¹⁴/(3·18⁴)=243/16으로 만들고 기약분수인지 확인한다.",
+        "contentFingerprint": "8faf80b4c56dab226ea1e0f18dfa5b6fac7d5cedc73c889e1264a8c175559e0d",
+        "sourceFingerprint": "f1977a657616071c81c83de2b6d82a10cf3590f2aa6ecd9baba70e621b4e3757"
       },
-      "sourceQid": 11,
-      "sourceUid": "qid_v1_c8536675652e54820143e03d9f06e79c340912b8a69de6ac78bef78b64514484",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-05",
-        "templateKey": "TPL-M2-01-05-02",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 4,
-        "distractorSlots": [
-          1,
-          2,
-          3,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [],
-        "goal": [
-          "지수"
-        ],
-        "method": [
-          "지수법칙"
-        ],
-        "condition": [
-          "기약분수"
-        ]
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "분모의 같은 항 세 개를 3·18⁴로 묶고 18의 소인수 꼴을 대입해 약분한다.",
+      "decisiveStep": "3¹⁴/(3·18⁴)=243/16으로 만들고 기약분수인지 확인한다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 지수법칙 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_0c748f96412cd35ea7d42fbe70b6068fea939b3fbd6a8563b3c36c99de5842c4",
       "sourceOrdinal": 12,
+      "sourceQid": 12,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -857,68 +491,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "POLYNOMIAL_DEGREE",
-        "level": null,
-        "difficultyBucket": 1,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "다항식의 계산 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ①이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-2",
-        "rpmL2Label": "L2-2.3",
-        "rpmL3Label": "다항식의 덧셈과 뺄셈",
-        "rpmL4Label": "이차식의 판별",
-        "rpmPath": {
-          "l1SourceCode": "L1-2",
-          "l2SourceCode": "L2-2.3",
-          "l3": "다항식의 덧셈과 뺄셈",
-          "l4": "이차식의 판별"
-        },
-        "crossConceptKeys": [
-          "동류항 소거"
-        ],
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "각 다항식을 전개해 동류항을 정리한 뒤 최고차항으로 차수를 판정한다.",
+        "decisiveStep": "전개 후 남는 최고차항이 이차항인 식만 골라 낸다.",
+        "contentFingerprint": "1509bddf3c1aa0808ccc42e91d2d8c401177b5e347e70eac97a7399c84233d03",
+        "sourceFingerprint": "547eb462ff71093a627dfdd6bda2b1b07d95e2b329562d619f0525c8d1860b1a"
       },
-      "sourceQid": 12,
-      "sourceUid": "qid_v1_23918308f5f9904a1792b3d2499dbf50028fc5eba5e8ff6127b0164338fd92c4",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-08",
-        "templateKey": "TPL-M2-01-08-01",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 1,
-        "distractorSlots": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [],
-        "goal": [
-          "다항식"
-        ],
-        "method": [
-          "정리"
-        ],
-        "condition": []
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "각 다항식을 전개해 동류항을 정리한 뒤 최고차항으로 차수를 판정한다.",
+      "decisiveStep": "전개 후 남는 최고차항이 이차항인 식만 골라 낸다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 다항식의 계산 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_6944d9bbd60b469871c2a10681932feacbd7a82b6eabf8c303f775ef6f5cba92",
       "sourceOrdinal": 13,
+      "sourceQid": 13,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -929,70 +533,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "POLYNOMIAL_CORRECT_CALCULATION",
-        "level": null,
-        "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "다항식의 계산 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ②이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-2",
-        "rpmL2Label": "L2-2.3",
-        "rpmL3Label": "다항식의 덧셈과 뺄셈",
-        "rpmL4Label": "어떤 식 구하기",
-        "rpmPath": {
-          "l1SourceCode": "L1-2",
-          "l2SourceCode": "L2-2.3",
-          "l3": "다항식의 덧셈과 뺄셈",
-          "l4": "어떤 식 구하기"
-        },
-        "crossConceptKeys": [
-          "동류항 연산"
-        ],
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "잘못 뺀 계산을 식으로 역산해 원래 다항식을 복원한 뒤 요구된 덧셈을 수행한다.",
+        "decisiveStep": "A−(−x²+4x−6)=2x²−5x+3을 풀어 A를 찾고 주어진 다항식과 더한다.",
+        "contentFingerprint": "4be3b3774ab948c469ea4a871f035ba5dd6d6a9bf624f34eaf494f76337f3581",
+        "sourceFingerprint": "9990f3311ca1aceaeaa839cbfd4bef971f2d9f0598fa8bd7a546911d8ae0d51b"
       },
-      "sourceQid": 13,
-      "sourceUid": "qid_v1_a4b02af026efbcb1dda76f29ead1ebbd391f51e61d1f8dbb9262c6b3c9f9b034",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-08",
-        "templateKey": "TPL-M2-01-08-02",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 2,
-        "distractorSlots": [
-          1,
-          3,
-          4,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [
-          "다항식"
-        ],
-        "goal": [
-          "다항식"
-        ],
-        "method": [
-          "이항"
-        ],
-        "condition": []
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "잘못 뺀 계산을 식으로 역산해 원래 다항식을 복원한 뒤 요구된 덧셈을 수행한다.",
+      "decisiveStep": "A−(−x²+4x−6)=2x²−5x+3을 풀어 A를 찾고 주어진 다항식과 더한다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 다항식의 계산 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_0fe82f1a477abe48eb6e70310b2aa85bae05bc9a13856d54125bb9ef92b82049",
       "sourceOrdinal": 14,
+      "sourceQid": 14,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -1003,70 +575,38 @@
         "standardUnit": "일차부등식",
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "INEQUALITY_DEFINITION",
-        "level": null,
-        "difficultyBucket": 1,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "일차부등식 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ③이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-3",
-        "rpmL2Label": "L2-3.1",
-        "rpmL3Label": "부등식의 해와 성질",
-        "rpmL4Label": "부등식의 정의",
-        "rpmPath": {
-          "l1SourceCode": "L1-3",
-          "l2SourceCode": "L2-3.1",
-          "l3": "부등식의 해와 성질",
-          "l4": "부등식의 정의"
-        },
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "각 보기의 관계 기호가 등호인지 부등호인지 보고 부등식 여부를 판별한다.",
+        "decisiveStep": "대소 관계 기호 < 또는 >가 있는 식만 골라 ㉡,㉢을 선택한다.",
+        "contentFingerprint": "921fccfb450ddac05b706a53fbbd7866446f57089d0298153d26740a0e94dbd5",
+        "sourceFingerprint": "d9e5b94150a2631ab34cb23854b707c640d0805f9f4b3540b49613ab79b3cf83"
       },
-      "sourceQid": 14,
-      "sourceUid": "qid_v1_66c678fd2c0e1f381200f40dd82859f213a8ed4a1de4a759da2576ff3c2300ac",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-02-01",
-        "templateKey": "TPL-M2-02-01-01",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 3,
-        "distractorSlots": [
-          1,
-          2,
-          4,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [
-          "부등식"
-        ],
-        "goal": [
-          "부등식"
-        ],
-        "method": [
-          "부등식의성질"
-        ],
-        "condition": [
-          "등식"
-        ]
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "각 보기의 관계 기호가 등호인지 부등호인지 보고 부등식 여부를 판별한다.",
+      "decisiveStep": "대소 관계 기호 < 또는 >가 있는 식만 골라 ㉡,㉢을 선택한다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 일차부등식 / 일차부등식 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_048acdee6045ab108bf7a9bee15804e622333ce92d666368a4efbd2981ebd063",
       "sourceOrdinal": 15,
+      "sourceQid": 15,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -1077,75 +617,38 @@
         "standardUnit": "일차부등식",
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "LINEAR_INEQUALITY_SOLVING",
-        "level": null,
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
         "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "일차부등식 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ⑤이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-3",
-        "rpmL2Label": "L2-3.2",
-        "rpmL3Label": "일차부등식의 풀이",
-        "rpmL4Label": "계수가 분수인 일차부등식",
-        "rpmPath": {
-          "l1SourceCode": "L1-3",
-          "l2SourceCode": "L2-3.2",
-          "l3": "일차부등식의 풀이",
-          "l4": "계수가 분수인 일차부등식"
-        },
-        "crossConceptKeys": [
-          "소수의 정의",
-          "범위 제한 조건"
-        ],
-        "conditionKeys": [
-          "PRIME_NUMBER_UNDER_N"
-        ],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "부등식의 분모를 없애고 x의 범위를 구한 뒤 25 이하 소수만 열거한다.",
+        "decisiveStep": "x>16/5를 만족하는 25 이하 소수 5,7,11,13,17,19,23을 센다.",
+        "contentFingerprint": "873c64f36127f3be33da0abf0eaca89ff656e5a6f16b6e61110a77253dc4e6bf",
+        "sourceFingerprint": "fc89ef4ec4a680f5907c586d2302e904d4f731096b93ba3fa1bbbdb504c297aa"
       },
-      "sourceQid": 15,
-      "sourceUid": "qid_v1_6e7655293b3f38d6fe8bb3ab68325768d584b8bda2b856977ccfcd27b50cb744",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-02-02",
-        "templateKey": "TPL-M2-02-02-02",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 5,
-        "distractorSlots": [
-          1,
-          2,
-          3,
-          4
-        ]
-      },
-      "item4slot": {
-        "given": [
-          "일차부등식"
-        ],
-        "goal": [
-          "일차부등식"
-        ],
-        "method": [
-          "이항"
-        ],
-        "condition": [
-          "등식"
-        ]
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "부등식의 분모를 없애고 x의 범위를 구한 뒤 25 이하 소수만 열거한다.",
+      "decisiveStep": "x>16/5를 만족하는 25 이하 소수 5,7,11,13,17,19,23을 센다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 일차부등식 / 일차부등식 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_64f4950bccf894ffd89af4e72c3ccfed3c250f3c5dc8c95523d1a3ba8c89f652",
       "sourceOrdinal": 16,
+      "sourceQid": 16,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -1156,68 +659,38 @@
         "standardUnit": "일차부등식",
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "INEQUALITY_PROPERTIES",
-        "level": null,
-        "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "일차부등식 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 옳지 않은 것은 ④이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-3",
-        "rpmL2Label": "L2-3.1",
-        "rpmL3Label": "부등식의 해와 성질",
-        "rpmL4Label": "부등식의 성질 판별",
-        "rpmPath": {
-          "l1SourceCode": "L1-3",
-          "l2SourceCode": "L2-3.1",
-          "l3": "부등식의 해와 성질",
-          "l4": "부등식의 성질 판별"
-        },
-        "crossConceptKeys": [
-          "음수를 곱할 때 부등호 방향"
-        ],
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "주어진 부등식을 음수 −2로 나누어 a≥−2b를 얻고 각 보기의 동치 변형을 점검한다.",
+        "decisiveStep": "④의 방향이 보장되지 않음을 a=0,b=1 반례(전제 5≤9, 보기 2≥3 거짓)로 확인한다.",
+        "contentFingerprint": "28b36a6b9e078f0770a62ff179adaaef038d0669cc53f2027920573f79c096b9",
+        "sourceFingerprint": "f71c7611c791d832ace612418be0e2b1b064a4360cfdce765a53fe2aae5fa8be"
       },
-      "sourceQid": 16,
-      "sourceUid": "qid_v1_62fc81639fbeddf49fe43e6408318f07a2a7fd057674884a991b071ffdd4c570",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-02-01",
-        "templateKey": "TPL-M2-02-01-02",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 4,
-        "distractorSlots": [
-          1,
-          2,
-          3,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [],
-        "goal": [
-          "부등식"
-        ],
-        "method": [
-          "부등식의성질"
-        ],
-        "condition": []
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "주어진 부등식을 음수 −2로 나누어 a≥−2b를 얻고 각 보기의 동치 변형을 점검한다.",
+      "decisiveStep": "④의 방향이 보장되지 않음을 a=0,b=1 반례(전제 5≤9, 보기 2≥3 거짓)로 확인한다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 일차부등식 / 일차부등식 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_9aeadbd90ab834e569731ea4249aeebcb00be2347310a4b9e32ef8e45d5e1e6c",
       "sourceOrdinal": 17,
+      "sourceQid": 17,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -1228,72 +701,38 @@
         "standardUnit": "일차부등식",
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "NUMBER_LINE_INEQUALITY_RELATION",
-        "level": null,
-        "difficultyBucket": 3,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "일차부등식 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ⑤이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-3",
-        "rpmL2Label": "L2-3.1",
-        "rpmL3Label": "부등식의 해와 성질",
-        "rpmL4Label": "수직선과 부등식의 성질",
-        "rpmPath": {
-          "l1SourceCode": "L1-3",
-          "l2SourceCode": "L2-3.1",
-          "l3": "부등식의 해와 성질",
-          "l4": "수직선과 부등식의 성질"
-        },
-        "crossConceptKeys": [
-          "수직선 대소 관계",
-          "음수 나눗셈"
-        ],
-        "conditionKeys": [
-          "NEGATIVE_A_B",
-          "POSITIVE_C"
-        ],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "a,b,c의 부호와 순서를 정리한 뒤 부등식 성질 및 음수로 나눌 때의 방향 반전을 적용한다.",
+        "decisiveStep": "a<0이므로 b<c를 a로 나눌 때 방향이 뒤집혀 ㉣이 거짓임을 판정한다.",
+        "contentFingerprint": "70a8f251cb7025c5df46fc1b04cb7048a5d1474667886d20a334f81d9ebdabdf",
+        "sourceFingerprint": "7ca47ccab5305910b195fda48f2921c633515d566d77ae1f36e31bbdb16d05a0"
       },
-      "sourceQid": 17,
-      "sourceUid": "qid_v1_26038231f11f4c5b28acba3db519c45d8e0e123b8d67b88c9f1f34f9d2cb7555",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-02-01",
-        "templateKey": "TPL-M2-02-01-03",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 5,
-        "distractorSlots": [
-          1,
-          2,
-          3,
-          4
-        ]
-      },
-      "item4slot": {
-        "given": [],
-        "goal": [
-          "정수해"
-        ],
-        "method": [
-          "부등식의성질"
-        ],
-        "condition": []
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "a,b,c의 부호와 순서를 정리한 뒤 부등식 성질 및 음수로 나눌 때의 방향 반전을 적용한다.",
+      "decisiveStep": "a<0이므로 b<c를 a로 나눌 때 방향이 뒤집혀 ㉣이 거짓임을 판정한다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 일차부등식 / 일차부등식 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_85f4b38f1231de2c52d2459657f041b6ba9814dd3e7e7445edcc9eff2cd451e2",
       "sourceOrdinal": 18,
+      "sourceQid": 18,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -1302,73 +741,40 @@
         "courseKey": "M2",
         "standardUnitKey": "M2-02",
         "standardUnit": "일차부등식",
-        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
-        "subUnit": "일차부등식",
-        "conceptClusterKey": "SPEED_DISTANCE_TIME_APPLICATION",
-        "level": null,
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "conceptClusterKey": "LINEAR_INEQUALITY_WORD_PROBLEM",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
         "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "일차부등식 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ③이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-3",
-        "rpmL2Label": "L2-3.3",
-        "rpmL3Label": "일차부등식의 활용",
-        "rpmL4Label": "거리·속력·시간에 대한 문제",
-        "rpmPath": {
-          "l1SourceCode": "L1-3",
-          "l2SourceCode": "L2-3.3",
-          "l3": "일차부등식의 활용",
-          "l4": "거리·속력·시간에 대한 문제"
-        },
-        "crossConceptKeys": [
-          "시간 단위 환산"
-        ],
-        "conditionKeys": [
-          "REST_TIME_INCLUDED",
-          "TOTAL_TIME_BOUND"
-        ],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "왕복 이동시간 x/4+x/6과 휴식 40분을 더해 4시간 이내라는 부등식을 세운다.",
+        "decisiveStep": "x/4+x/6+2/3≤4를 풀어 최대 편도거리 8km를 얻는다.",
+        "contentFingerprint": "f55c6fe0f3faaace7552ab461f17ae5935f8b12a398c1c6fca0f9f81996e542a",
+        "sourceFingerprint": "1b089d7975dd6a28071244dafb0f150a485aabc750f233a16ab1d921a08fd381"
       },
-      "sourceQid": 18,
-      "sourceUid": "qid_v1_b09fec6b6822b315e87c78a714dceca6d4ca3d49bafac14c1491ff1a03e1b825",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-02-03",
-        "templateKey": "TPL-M2-02-03-01",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 3,
-        "distractorSlots": [
-          1,
-          2,
-          4,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [],
-        "goal": [
-          "부등식"
-        ],
-        "method": [
-          "부등식의성질"
-        ],
-        "condition": []
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "왕복 이동시간 x/4+x/6과 휴식 40분을 더해 4시간 이내라는 부등식을 세운다.",
+      "decisiveStep": "x/4+x/6+2/3≤4를 풀어 최대 편도거리 8km를 얻는다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 일차부등식 / 일차부등식의 활용 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_d0dc03d6a5b62e6ab7190f6260200d8a375b63cf84479b01aea56adfda958393",
       "sourceOrdinal": 19,
+      "sourceQid": 19,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -1377,73 +783,40 @@
         "courseKey": "M2",
         "standardUnitKey": "M2-02",
         "standardUnit": "일차부등식",
-        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
-        "subUnit": "일차부등식",
-        "conceptClusterKey": "PROFIT_BREAKEVEN_APPLICATION",
-        "level": null,
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "conceptClusterKey": "LINEAR_INEQUALITY_WORD_PROBLEM",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
         "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "일차부등식 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ②이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-3",
-        "rpmL2Label": "L2-3.3",
-        "rpmL3Label": "일차부등식의 활용",
-        "rpmL4Label": "원가와 정가, 이익에 대한 문제",
-        "rpmPath": {
-          "l1SourceCode": "L1-3",
-          "l2SourceCode": "L2-3.3",
-          "l3": "일차부등식의 활용",
-          "l4": "원가와 정가, 이익에 대한 문제"
-        },
-        "crossConceptKeys": [
-          "단위당 이익",
-          "고정비 회수"
-        ],
-        "conditionKeys": [
-          "FIXED_RENT_COVERAGE"
-        ],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "한 그릇당 원가 2200원을 구하고 판매이익 500그릇이 월세 250만원 이상이라는 식을 세운다.",
+        "decisiveStep": "500(p−2200)≥2500000을 풀어 최저 판매가격 7200원을 구한다.",
+        "contentFingerprint": "80e8bfe9a0b4993eb8ddfc32b4a3a0c99a9543c138ffa0ebc4870593eb9190cc",
+        "sourceFingerprint": "837ee4395d49187247b3b4daa0daf3e74ecb7cd6fffa4c4bbb24ea7bfb06537f"
       },
-      "sourceQid": 19,
-      "sourceUid": "qid_v1_4c2b429c8ca2b794560982f8da546fa915a0f8cc6036763ca1a11c0bd57e8ff3",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-02-03",
-        "templateKey": "TPL-M2-02-03-02",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 2,
-        "distractorSlots": [
-          1,
-          3,
-          4,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [],
-        "goal": [
-          "정수해"
-        ],
-        "method": [
-          "부등식의성질"
-        ],
-        "condition": []
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "한 그릇당 원가 2200원을 구하고 판매이익 500그릇이 월세 250만원 이상이라는 식을 세운다.",
+      "decisiveStep": "500(p−2200)≥2500000을 풀어 최저 판매가격 7200원을 구한다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 일차부등식 / 일차부등식의 활용 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_27afae83ac9cc1d9308ebbe288d014ec7b06a9ca50219a8313d03da9f1b1fc37",
       "sourceOrdinal": 20,
+      "sourceQid": 20,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -1452,72 +825,40 @@
         "courseKey": "M2",
         "standardUnitKey": "M2-02",
         "standardUnit": "일차부등식",
-        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
-        "subUnit": "일차부등식",
-        "conceptClusterKey": "COST_COMPARISON_APPLICATION",
-        "level": null,
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "conceptClusterKey": "LINEAR_INEQUALITY_WORD_PROBLEM",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
         "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "일차부등식 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 ①이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-3",
-        "rpmL2Label": "L2-3.3",
-        "rpmL3Label": "일차부등식의 활용",
-        "rpmL4Label": "유리한 방법을 선택하는 문제",
-        "rpmPath": {
-          "l1SourceCode": "L1-3",
-          "l2SourceCode": "L2-3.3",
-          "l3": "일차부등식의 활용",
-          "l4": "유리한 방법을 선택하는 문제"
-        },
-        "crossConceptKeys": [
-          "자연수 조건"
-        ],
-        "conditionKeys": [
-          "DISCOUNT_VS_SHIPPING"
-        ],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "가게와 온라인 총구매비를 비교하는 엄격한 부등식을 세우고 자연수 조건을 적용한다.",
+        "decisiveStep": "1100x+3000<1500x를 풀어 x>7.5를 얻고 최소 자연수 8을 고른다.",
+        "contentFingerprint": "4410041bf3640cdd3722e65cfffafd22139c376224513a94a65bbbb46fe10e9c",
+        "sourceFingerprint": "795663168c65bdd992d59b6ee736eec8c408aa14ce0326175dd88fdb352855d5"
       },
-      "sourceQid": 20,
-      "sourceUid": "qid_v1_13a4fce8511521a32afc3f9c887317852c9d518c34962804e8f10ffe5a7ca530",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-02-03",
-        "templateKey": "TPL-M2-02-03-03",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": {
-        "targetSlot": 1,
-        "distractorSlots": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "item4slot": {
-        "given": [],
-        "goal": [
-          "자연수"
-        ],
-        "method": [
-          "이항"
-        ],
-        "condition": []
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run. Source item4slot is answer-position metadata and is retained separately from cognitive four-slot terms."
+      "primaryMethod": "가게와 온라인 총구매비를 비교하는 엄격한 부등식을 세우고 자연수 조건을 적용한다.",
+      "decisiveStep": "1100x+3000<1500x를 풀어 x>7.5를 얻고 최소 자연수 8을 고른다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 일차부등식 / 일차부등식의 활용 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_53a75b2a832825f7df12d59d2c8dec769ef810524a64c977edbdd3770b271ac4",
       "sourceOrdinal": 21,
+      "sourceQid": 21,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -1528,68 +869,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "REPEATING_DECIMAL_MISREAD",
-        "level": null,
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
         "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "유리수와 순환소수 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 구하는 처음 기약분수는 $\\frac{7}{15}$이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-1",
-        "rpmL2Label": "L2-1.4",
-        "rpmL3Label": "순환소수를 분수로 나타내기",
-        "rpmL4Label": "잘못 보고 푼 문제",
-        "rpmPath": {
-          "l1SourceCode": "L1-1",
-          "l2SourceCode": "L2-1.4",
-          "l3": "순환소수를 분수로 나타내기",
-          "l4": "잘못 보고 푼 문제"
-        },
-        "crossConceptKeys": [
-          "기약분수",
-          "서로소"
-        ],
-        "conditionKeys": [
-          "MISREAD_DENOMINATOR",
-          "MISREAD_NUMERATOR"
-        ],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "두 사람이 잘못 읽어 얻은 순환소수를 각각 기약분수로 바꾸어 실제 분자와 분모를 복원한다.",
+        "decisiveStep": "7/11과 4/15에서 실제 분자 7과 분모 15를 정하고 서로소임을 확인해 7/15를 구한다.",
+        "contentFingerprint": "2faec521337b65ab6e4cb76a2c0a17b915142072627598d64b281ba4ab220960",
+        "sourceFingerprint": "782d2f04b8efd9b13b8031fa07d1a42d0ad9535e98786ae837c0b50c69253085"
       },
-      "sourceQid": 21,
-      "sourceUid": "qid_v1_7c26ee9a0057606e60fcd9cdfccb9d05f90f3ccc4b277385e027559298c3b7f2",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-04",
-        "templateKey": "TPL-M2-01-04-03",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": null,
-      "item4slot": {
-        "given": [
-          "순환소수"
-        ],
-        "goal": [
-          "기약분수"
-        ],
-        "method": [
-          "약분"
-        ],
-        "condition": [
-          "기약분수"
-        ]
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run."
+      "primaryMethod": "두 사람이 잘못 읽어 얻은 순환소수를 각각 기약분수로 바꾸어 실제 분자와 분모를 복원한다.",
+      "decisiveStep": "7/11과 4/15에서 실제 분자 7과 분모 15를 정하고 서로소임을 확인해 7/15를 구한다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 유리수와 순환소수 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_920c193ed231b9718bc9adb5338008001d6a9db3c057029e8898f9230a5ff0de",
       "sourceOrdinal": 22,
+      "sourceQid": 22,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -1600,61 +911,38 @@
         "standardUnit": "수와 식",
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "GEOMETRIC_AREA_ALGEBRA",
-        "level": null,
-        "difficultyBucket": 2,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "다항식의 계산 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 사다리꼴의 넓이는 직사각형 넓이의 3배이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-2",
-        "rpmL2Label": "L2-2.2",
-        "rpmL3Label": "단항식의 계산의 활용",
-        "rpmL4Label": "도형의 넓이와 부피",
-        "rpmPath": {
-          "l1SourceCode": "L1-2",
-          "l2SourceCode": "L2-2.2",
-          "l3": "단항식의 계산의 활용",
-          "l4": "도형의 넓이와 부피"
-        },
-        "crossConceptKeys": [
-          "사다리꼴 넓이",
-          "직사각형 넓이"
-        ],
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "사다리꼴과 직사각형의 넓이를 각각 계산해 그 비를 단순화한다.",
+        "decisiveStep": "18ab/(6ab)=3으로 정리해 사다리꼴 넓이가 직사각형의 3배임을 보인다.",
+        "contentFingerprint": "ab323913035c9c0c9d61bcf57f9990a609b53a1e5217d04edb56763378f6055b",
+        "sourceFingerprint": "a2973be453d9c31347f50f2359a5d42e3fb6ad1f7090bb44cc917de3f5b341ed"
       },
-      "sourceQid": 22,
-      "sourceUid": "qid_v1_915e24e1f3f1eb51acaef26ca9e7f2cab629b418e60e0e9c364766bf4e94f251",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-01-07",
-        "templateKey": "TPL-M2-01-07-02",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": null,
-      "item4slot": {
-        "given": [],
-        "goal": [
-          "단항식"
-        ],
-        "method": [
-          "사칙연산"
-        ],
-        "condition": []
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run."
+      "primaryMethod": "사다리꼴과 직사각형의 넓이를 각각 계산해 그 비를 단순화한다.",
+      "decisiveStep": "18ab/(6ab)=3으로 정리해 사다리꼴 넓이가 직사각형의 3배임을 보인다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 수와 식 / 다항식의 계산 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_1481461eb45445d2996cfd2d32cdd20bd5621440f7edbe3159067cca9178447f",
       "sourceOrdinal": 23,
+      "sourceQid": 23,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -1665,67 +953,38 @@
         "standardUnit": "일차부등식",
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "LINEAR_INEQUALITY_NEGATIVE_PARAM",
-        "level": null,
-        "difficultyBucket": 3,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "일차부등식 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 정답은 $x > 2$이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-3",
-        "rpmL2Label": "L2-3.2",
-        "rpmL3Label": "일차부등식의 풀이",
-        "rpmL4Label": "복잡한 일차부등식과 음수 계수",
-        "rpmPath": {
-          "l1SourceCode": "L1-3",
-          "l2SourceCode": "L2-3.2",
-          "l3": "일차부등식의 풀이",
-          "l4": "복잡한 일차부등식과 음수 계수"
-        },
-        "crossConceptKeys": [
-          "음수 계수 판별",
-          "수직선 도시"
-        ],
-        "conditionKeys": [
-          "PARAMETER_A_NEGATIVE"
-        ],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "부등식을 전개·정리하고 a<0에서 −4a>0임을 확인해 양변을 나눈다.",
+        "decisiveStep": "−4ax>−8a를 양수 −4a로 나누어 x>2를 얻고 열린 경계와 오른쪽 해를 표시한다.",
+        "contentFingerprint": "3a7c3a0d09ab17c3da2f35f5025af7c678addbf9dbd983d996d4cdc75e149c4d",
+        "sourceFingerprint": "52d70c18f686e59262fd5ea615705d5b18d16f46403deaaf452d2dafc4ccb0ea"
       },
-      "sourceQid": 23,
-      "sourceUid": "qid_v1_d4d63860be5f65f6f696b5a3b98ab4a1d0dd9fcd0a5923b52fdb77b1834b58fd",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-02-02",
-        "templateKey": "TPL-M2-02-02-03",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": null,
-      "item4slot": {
-        "given": [
-          "부등식"
-        ],
-        "goal": [
-          "부등식"
-        ],
-        "method": [
-          "이항"
-        ],
-        "condition": [
-          "등식"
-        ]
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run."
+      "primaryMethod": "부등식을 전개·정리하고 a<0에서 −4a>0임을 확인해 양변을 나눈다.",
+      "decisiveStep": "−4ax>−8a를 양수 −4a로 나누어 x>2를 얻고 열린 경계와 오른쪽 해를 표시한다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 일차부등식 / 일차부등식 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     },
     {
       "questionUid": "qid_v1_7249d6223272c383ece8eff9e895b3078b58ba0af8e25dc72a1c649558d4c96b",
       "sourceOrdinal": 24,
+      "sourceQid": 24,
       "before": null,
       "after": {
         "standardCourse": "중2 수학",
@@ -1736,63 +995,33 @@
         "standardUnit": "일차부등식",
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "INTEGER_SOLUTION_CONDITION",
-        "level": null,
-        "difficultyBucket": 3,
-        "difficultyConfidence": "NOT_PROVIDED",
-        "difficultyBoundaryFlag": "NOT_PROVIDED",
-        "difficultyReason": "Source MD provides difficulty bucket only.",
-        "primaryMethod": "일차부등식 관련 조건을 이용해 풀이한다.",
-        "decisiveStep": "따라서 상수 $a$의 값의 범위는 $a < -\\frac{19}{4}$이다.",
-        "rpmPrimaryRecordId": null,
-        "rpmL1Label": "L1-3",
-        "rpmL2Label": "L2-3.3",
-        "rpmL3Label": "일차부등식의 활용",
-        "rpmL4Label": "특정한 해를 갖는 부등식",
-        "rpmPath": {
-          "l1SourceCode": "L1-3",
-          "l2SourceCode": "L2-3.3",
-          "l3": "일차부등식의 활용",
-          "l4": "특정한 해를 갖는 부등식"
-        },
-        "crossConceptKeys": [
-          "정수해 조건",
-          "경계값 포함 여부 판정"
-        ],
-        "conditionKeys": [
-          "NEGATIVE_INTEGER_COUNT_MINIMUM"
-        ],
-        "integrationPattern": "NOT_PROVIDED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "NOT_RUN",
-        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "부등식을 x에 대해 풀고 음의 정수 해가 최소 8개 포함될 경계조건을 세운다.",
+        "decisiveStep": "x>(4a−5)/3에서 −1부터 −8까지 포함되려면 경계가 −8보다 작아야 하므로 a<−19/4이다.",
+        "contentFingerprint": "1cc661f1a9a443c6f9afe5ca1e68d4ae2b5d8a73c8b792dfadae91f065b4a7d1",
+        "sourceFingerprint": "59646eb845787093f97526de06ca9d6ba85c50b72b9ca5f64078d4f601f5f829"
       },
-      "sourceQid": 24,
-      "sourceUid": "qid_v1_09968b709347617a9486d8336ad19d817d2d8d1f286f0e53d92d577431a4103c",
-      "sourceFileBlobSha1": null,
-      "ptTplCandidate": {
-        "problemTypeKey": "PT-M2-02-03",
-        "templateKey": "TPL-M2-02-03-04",
-        "why": "Source MD identifier candidate; official resolver not run."
-      },
-      "sourceItem4slot": null,
-      "item4slot": {
-        "given": [
-          "일차부등식"
-        ],
-        "goal": [
-          "일차부등식"
-        ],
-        "method": [
-          "이항"
-        ],
-        "condition": [
-          "정수"
-        ]
-      },
-      "hold": "Original exam JS absent from current main; original-source binding, official resolver, and metadata identity remain pending.",
-      "reason": "Source MD candidate data carried forward; official resolver and registration not run."
+      "primaryMethod": "부등식을 x에 대해 풀고 음의 정수 해가 최소 8개 포함될 경계조건을 세운다.",
+      "decisiveStep": "x>(4a−5)/3에서 −1부터 −8까지 포함되려면 경계가 −8보다 작아야 하므로 a<−19/4이다.",
+      "reason": "SOURCE CANDIDATE: final solution checked; problemTypeKey/templateKey/RPM Primary remain EVIDENCE_DEBT because no exact ACTIVE curriculum+unit+subUnit binding candidate exists; do not invent or reuse keys.",
+      "evidenceRefs": [],
+      "metaRationale": {
+        "problemType": "EVIDENCE_DEBT: no exact ACTIVE binding candidate in current registry snapshot; PT/TPL left blank.",
+        "curriculum": "2022 중2 일차부등식 / 일차부등식 derived from canonical master mapping.",
+        "crossConcept": "No separate cross-concept key assigned; preserve empty array pending formal registration.",
+        "condition": "No separate condition key assigned; preserve empty array pending formal registration.",
+        "integration": "Source declares NONE; registry structural validation result VALIDATED."
+      }
     }
   ]
 }
