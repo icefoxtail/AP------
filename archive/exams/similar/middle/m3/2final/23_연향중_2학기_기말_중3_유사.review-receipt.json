@@ -8,24 +8,26 @@
     "questionCount": 24,
     "totalScore": 100,
     "declaredSourceArchiveFile": "original/middle/m3/2final/23_연향중_2학기_기말_중3_기출.js",
-    "resolvedSourceArchiveFile": null,
-    "resolvedSourceGitBlobSha1": null,
-    "sourcePathStatus": "DECLARED SOURCE FILE NOT FOUND on current main or accumulator branch"
+    "resolvedSourceArchiveFile": "archive/exams/original/middle/m3/2final/23_연향중_2학기_기말_중3_기출.js",
+    "resolvedSourceGitBlobSha1": "d64c3c3285826c4df89d9044f5e1e87d5a80708b",
+    "sourcePathStatus": "RESOLVED: MD path plus archive/exams/ prefix on main"
   },
   "candidateJs": "archive/exams/similar/middle/m3/2final/23_연향중_2학기_기말_중3_유사.js",
-  "candidateBlobSha1": "1bb5ec7f831a4d91b61e7718f97daf8260de6f3c",
+  "candidateBlobSha1": "6cd8354623679380e8cdff62938f6c2ef094f459",
   "authoringStatus": "CANDIDATE_DRAFT_WITH_CONTENT_REPAIRS_AND_VISUAL_DEBT",
   "sourceAudit": {
     "mainAndAccumulatorDuplicate": "NO_SAME_CANDIDATE_PATH_FOUND",
     "relatedBranches": "NO_EXACT_MATCH_FOUND",
     "relatedPullRequests": "NO_EXACT_MATCH_FOUND",
     "localOwnership": "NO_OTHER_WORKTREE_FOR_THIS_TARGET; /workspace worktree owns separate 24 Pungdeok task",
-    "declaredSourcePathFound": false,
+    "declaredSourcePathFound": true,
     "docTables": 0,
     "docInlineOrPositionedObjects": 0,
     "2024And2025Variants": "Distinct named exams were not treated as aliases or modified",
-    "mainHeadSha": "5d94eac054d4ed15f4c4902c7522e590d5f01417",
-    "accumulatorHeadShaBeforeCandidate": "9095531ec49eb0c75950bd28d129387f64a791e8"
+    "mainHeadSha": "922fb01dcc7268de03bccb797e0b330e26a6f34f",
+    "accumulatorHeadShaBeforeCandidate": "9095531ec49eb0c75950bd28d129387f64a791e8",
+    "resolvedSourcePath": "archive/exams/original/middle/m3/2final/23_연향중_2학기_기말_중3_기출.js",
+    "resolvedSourceBlobSha1": "d64c3c3285826c4df89d9044f5e1e87d5a80708b"
   },
   "contentRepairs": [
     {
@@ -72,16 +74,19 @@
       "question": 14,
       "issue": "Stem only contained the data series despite the choices/solution asking which statement is correct.",
       "repair": "Restored the explicit ask for the correct statement."
+    },
+    {
+      "question": 6,
+      "issue": "The phrase “angle formed by the two chords” did not determine which of the two vertical angle pairs x denoted.",
+      "repair": "Specified cyclic point order A-B-C-D and defined x as the exterior angle APB of triangle PBC; independently checked the two remote interior angles as 30° and 45°, hence x=75°."
     }
   ],
   "mathReview": {
-    "status": "MANUAL_REVIEW_CANDIDATE_WITH_UNVERIFIED_DIAGRAM_LAYOUTS",
-    "summary": "Checked all 24 stems/options/answers/solutions and numerical plans. Q5/Q6 geometry answer depends on exact diagram ray/angle placement; source embeds no figure object, so preserved the MD key and left layout verification pending. Q17 plan points lack explicit A-E point-label mapping; candidate keeps MD answer A and records this for figure verification. No original question JS path was found on main/accumulator; 2024/2025 exams were not used as substitutes.",
+    "status": "MANUAL_REVIEW_CANDIDATE_WITH_Q17_LABEL_MAPPING_UNCONFIRMED",
+    "summary": "Checked all 24 stems/options/answers/solutions and numerical plans. Source path resolves by adding archive/exams/ to the MD path. Q5 same-exam source figure/code confirms tangent/parallel-chord incidence and the candidate’s stated equal-angle argument; source has 40° while candidate has 50°, so source asset is not reused. Q6 candidate stem now fixes cyclic order and identifies x as the exterior angle APB; independently recomputed 30°+45°=75°. Q17 ordered MD data gives unique upper-left first point consistent with solution A, but no explicit label-to-coordinate schema or mapping; this remains unconfirmed.",
     "openIssues": [
-      "Q5 tangent ray direction / parallel-chord point order needs figure verification before final visual pass.",
-      "Q6 x-angle orientation at intersection depends on the original diagram; MD plan only supplies caption.",
-      "Q17 stat chart plan lists 5 coordinates but not explicit label-to-point mapping; confirm A is upper-left in the produced figure.",
-      "Declared sourceArchiveFile is not present on main or accumulator branch; source binding remains unresolved."
+      "Q17 stat chart plan lists 5 coordinates but MD does not explicitly bind each label A–E to a coordinate; mapping remains unconfirmed.",
+      "Candidate problem figures Q2–8, Q17–18, Q20–22, Q24 remain uncreated; no visual rendering or review."
     ]
   },
   "metadataReview": {
@@ -133,11 +138,13 @@
     "createdAssets": [],
     "renderedItems": [],
     "notes": [
-      "No SVG/PNG figures were created or viewed.",
-      "Question-specific capability/data plans and P/S rationale are preserved; 13 problem figures remain blockers.",
-      "Q17 plan point labels remain unconfirmed."
+      "No candidate SVG/PNG figures were created or viewed.",
+      "Q5/Q6 geometry proof was rechecked in text/source code; source assets have different values and are not reused.",
+      "Q6 stem now states cyclic order A-B-C-D and defines x as exterior angle APB.",
+      "Q17 A–E point-to-coordinate mapping remains unconfirmed.",
+      "13 problem figures remain blockers."
     ],
-    "productionStatus": "BLOCKED_13_UNSUPPORTED_PROBLEM_FIGURES; Q5/Q6/Q17_LAYOUT_REVIEW_PENDING"
+    "productionStatus": "BLOCKED_13_UNSUPPORTED_PROBLEM_FIGURES; Q17_LABEL_MAPPING_UNCONFIRMED"
   },
   "checks": {
     "nodeCheck": "PASS",
@@ -145,7 +152,7 @@
     "similarExamHarness": "DRAFT_GATE_FAIL_13_UNSUPPORTED_PROBLEM_FIGURES; content/balance/meta gates pass",
     "questionCount": "24",
     "totalPoints": 100,
-    "candidateBlobSha1": "1bb5ec7f831a4d91b61e7718f97daf8260de6f3c",
+    "candidateBlobSha1": "6cd8354623679380e8cdff62938f6c2ef094f459",
     "4slotCheck": "PASS_FAIL0_WARN25 (review still UNREVIEWED)"
   },
   "userScope": "Read the supplied 23 Yeonhyang M3 2final MD, repair clear candidate mistakes, keep P/S image checklist, commit and push to work/similar-m3-accumulate; no screen, no new PR or main merge; do not touch 24/25 variants."

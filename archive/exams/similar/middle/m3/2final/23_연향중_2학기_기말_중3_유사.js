@@ -158,7 +158,7 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "content": "아래 그림에서 두 현 $AC$와 $BD$가 원 내부의 점 $P$에서 만난다. 호 $\\wideparen{AB}$와 $\\wideparen{CD}$의 길이가 각각 원 $O$의 둘레의 길이의 $\\dfrac{1}{6}$과 $\\dfrac{1}{4}$일 때, 두 현이 이루는 각 $\\angle x$의 크기는?",
+    "content": "원 위의 점이 차례로 $A,B,C,D$이고, 두 현 $AC$와 $BD$가 원 내부의 점 $P$에서 만난다. 호 $\\wideparen{AB}$와 $\\wideparen{CD}$의 길이가 각각 원 $O$의 둘레의 길이의 $\\dfrac{1}{6}$과 $\\dfrac{1}{4}$일 때, 삼각형 $PBC$에서 $P$의 외각 $\\angle APB=\\angle x$의 크기는?",
     "choices": [
       "① $75^\\circ$",
       "② $65^\\circ$",
@@ -167,7 +167,7 @@ window.questionBank = [
       "⑤ $85^\\circ$"
     ],
     "answer": "①",
-    "solution": "호 $\\wideparen{AB}$의 길이는 원 둘레의 $\\dfrac{1}{6}$이므로 그에 대한 원주각은 $$180^\\circ \\times \\dfrac{1}{6} = 30^\\circ$$ 호 $\\wideparen{CD}$의 길이는 원 둘레의 $\\dfrac{1}{4}$이므로 그에 대한 원주각은 $$180^\\circ \\times \\dfrac{1}{4} = 45^\\circ$$ $\\triangle PBC$에서 외각 $\\angle x$는 두 내대각의 합과 같으므로 $$\\angle x = 30^\\circ + 45^\\circ = 75^\\circ$$",
+    "solution": "호 $\\wideparen{AB}$의 길이는 원 둘레의 $\\dfrac{1}{6}$이므로 그에 대한 원주각은 $$180^\\circ \\times \\dfrac{1}{6} = 30^\\circ$$ 호 $\\wideparen{CD}$의 길이는 원 둘레의 $\\dfrac{1}{4}$이므로 그에 대한 원주각은 $$180^\\circ \\times \\dfrac{1}{4} = 45^\\circ$$ 삼각형 $PBC$에서 $\\angle APB$는 $P$의 외각이고, 그 두 내대각은 각각 $30^\\circ$, $45^\\circ$이다. 따라서 $$\\angle x=\\angle APB=30^\\circ+45^\\circ=75^\\circ$$",
     "points": 4,
     "questionType": "객관식",
     "level": "중",
