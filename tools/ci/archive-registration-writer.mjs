@@ -114,7 +114,7 @@ export function nativeLanes(root) {
       'tests/archive-reviewed-exam-registration-v2.test.mjs','tests/archive-basic-scope-rebind.test.mjs',
       'tests/archive-difficulty5-register.test.mjs','tests/archive-finalqa-nonpt-register.test.mjs',
       'tests/archive-finalqa-nonpt-real-geumdang.test.mjs'],outputs:reviewed,scopedInputs:reviewedScoped,
-      commands:[cmd('bash','tools/ci/reviewed-meta-register-pass.sh')],alwaysFinal:true,
+      commands:[{...cmd('bash','tools/ci/reviewed-meta-register-pass.sh'),timeoutMs:55*60000}],alwaysFinal:true,
       finalCommands:({env})=>fs.existsSync(path.join(env.RUNNER_TEMP,'archive-meta-register-pass/requests'))
         // Reuse its real checks before commit; its old post-push summary names HEAD as registered,
         // so use this writer's accurate PREPARED summary and the push helper's exact SHA instead.
