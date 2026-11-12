@@ -102,7 +102,7 @@ test('E37 segment callout: marks on the pieces (equal ticks, a piece label) and 
   assert.ok(tagOf(composed.svg,'k1__tCG'),'the piece label stands on the copy');
   const err=(row,extra)=>specError(trianglePlan(row,extra),model);
   assert.equal(err(calloutRow({kind:'POLYLINE'})),'CALLOUT_KIND_INVALID:k1');
-  assert.equal(err(calloutRow({id:'k_1'})),'CALLOUT_ID_INVALID');
+  assert.equal(err(calloutRow({id:'k_1'})),'CALLOUT_ID_INVALID:planeMarks.callouts[0].id');
   assert.equal(err(calloutRow({path:['D']})),'CALLOUT_PATH_INVALID:k1');
   assert.equal(err(calloutRow({path:['D','D']})),'CALLOUT_PATH_INVALID:k1');
   assert.equal(err(calloutRow({path:['D','Z']})),'DISPLAY_ANNOTATION_POINT_NOT_VISIBLE:Z');

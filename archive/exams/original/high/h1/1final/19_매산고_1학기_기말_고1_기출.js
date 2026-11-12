@@ -41,7 +41,11 @@ window.questionBank = [
       "$(-6, 10)$"
     ],
     "answer": "④",
-    "solution": "점 $P$가 선분 $AB$를 $1:2$로 외분하므로\n$AP:PB=1:2$이다.\n$1<2$이므로 $P$는 $A$ 쪽의 선분 밖에 있다.\n외분점의 좌표는\n$P=\\left(\\dfrac{1x_B-2x_A}{1-2},\\dfrac{1y_B-2y_A}{1-2}\\right)$이다.\n$A(2,2)$, $B(-4,8)$을 대입하면\n$P=\\left(\\dfrac{1\\cdot(-4)-2\\cdot2}{-1},\\dfrac{1\\cdot8-2\\cdot2}{-1}\\right)$\n$=\\left(\\dfrac{-4-4}{-1},\\dfrac{8-4}{-1}\\right)$\n$=(8,-4)$이다.\n\n그러므로 정답은 ④이다."
+    "solution": "점 $P$가 선분 $AB$를 $1:2$로 외분하므로\n$AP:PB=1:2$이다.\n$1<2$이므로 $P$는 $A$ 쪽의 선분 밖에 있다.\n외분점의 좌표는\n$P=\\left(\\dfrac{1x_B-2x_A}{1-2},\\dfrac{1y_B-2y_A}{1-2}\\right)$이다.\n$A(2,2)$, $B(-4,8)$을 대입하면\n$P=\\left(\\dfrac{1\\cdot(-4)-2\\cdot2}{-1},\\dfrac{1\\cdot8-2\\cdot2}{-1}\\right)$\n$=\\left(\\dfrac{-4-4}{-1},\\dfrac{8-4}{-1}\\right)$\n$=(8,-4)$이다.\n\n그러므로 정답은 ④이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 A(2, 2), B(−4, 8)와 선분 AB 및 A 바깥쪽의 외분점 P를 표시한다.",
+    "solutionImageCaption": "A(2, 2)와 B(−4, 8)을 잇고 A 바깥쪽에 외분점 P를 표시한다. 선분 AB를 1:2로 외분하는 위치 관계를 나타낸다. 정답은 (8, −4)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -56,9 +60,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "삼각형의 무게중심은 세 꼭짓점의 $x$좌표의 평균과\n세 꼭짓점의 $y$좌표의 평균을 좌표로 갖는다.\n따라서 무게중심의 $x$좌표는\n$\\dfrac{1+3+5}{3}=\\dfrac93=3$이고,\n$y$좌표는\n$\\dfrac{2+0+4}{3}=\\dfrac63=2$이다.\n그러므로 무게중심은 $(3,2)$이다.\n\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q4-solution.svg",
-    "solutionImageAlt": "세 중선이 만나는 점이 삼각형 ABC의 무게중심 G(3,2)이다.",
-    "solutionImageCaption": "세 중선이 만나는 점이 삼각형 ABC의 무게중심 G(3,2)이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표가 표시된 삼각형 ABC에 세 중선을 그었고, 세 중선이 G에서 만난다.",
+    "solutionImageCaption": "삼각형 ABC의 세 꼭짓점 좌표와 각 꼭짓점에서 반대편 변의 중점으로 향하는 중선을 표시한다. 세 중선의 교점이 무게중심이다. 정답은 (3, 2)이다.",
     "solutionImageSize": "full"
   },
   {
@@ -73,7 +77,11 @@ window.questionBank = [
       "$5\\sqrt{5}$"
     ],
     "answer": "②",
-    "solution": "점 $(x_1,y_1)$과 직선 $ax+by+c=0$ 사이의 거리는\n$\\dfrac{|ax_1+by_1+c|}{\\sqrt{a^2+b^2}}$이다.\n점 $(0,0)$과 직선 $3x+4y+5=0$을 대입하면\n$d=\\dfrac{|3\\cdot0+4\\cdot0+5|}{\\sqrt{3^2+4^2}}$\n$=\\dfrac5{\\sqrt{9+16}}$\n$=\\dfrac55=1$이다.\n\n그러므로 정답은 ②이다."
+    "solution": "점 $(x_1,y_1)$과 직선 $ax+by+c=0$ 사이의 거리는\n$\\dfrac{|ax_1+by_1+c|}{\\sqrt{a^2+b^2}}$이다.\n점 $(0,0)$과 직선 $3x+4y+5=0$을 대입하면\n$d=\\dfrac{|3\\cdot0+4\\cdot0+5|}{\\sqrt{3^2+4^2}}$\n$=\\dfrac5{\\sqrt{9+16}}$\n$=\\dfrac55=1$이다.\n\n그러므로 정답은 ②이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 P에서 직선까지 내린 점선 수선과 직선 위의 발 H를 표시한다.",
+    "solutionImageCaption": "점 P에서 직선에 내린 수선의 발을 H로 두어 거리를 선분 PH로 나타낸다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -143,7 +151,11 @@ window.questionBank = [
       "15"
     ],
     "answer": "④",
-    "solution": "두 직선이 점 $(-1,3)$을 지나므로 그 좌표를 각 직선의 식에 대입한다.\n첫째 직선에서는\n$a(-1)+3\\cdot3-2=0$\n$-a+7=0$\n$a=7$이다.\n\n둘째 직선에서도\n$-3(-1)+3b+c=0$\n$3+3b+c=0$\n$c=-3-3b$이다.\n\n첫째 직선을 $y$에 대하여 정리하면\n$ax+3y-2=0$\n$3y=-ax+2$\n$y=-\\dfrac a3x+\\dfrac23$이므로 기울기는 $-\\dfrac a3=-\\dfrac73$이다.\n만약 $b=0$이면 둘째 직선은 수직선이 된다.\n수직선과 수직으로 만나는 직선은 수평선이어야 하지만 첫째 직선의 기울기는 $-\\dfrac73$이므로 수평선이 아니다.\n따라서 $b\\ne0$이다.\n이제 둘째 직선은\n$-3x+by+c=0$\n$by=3x-c$\n$y=\\dfrac3b x-\\dfrac cb$이므로 기울기는 $\\dfrac3b$이다.\n수직인 두 직선의 기울기의 곱은 $-1$이므로\n$-\\dfrac73\\cdot\\dfrac3b=-1$\n$-\\dfrac7b=-1$\n$b=7$이다.\n따라서 $c=-3-3\\cdot7=-24$이다.\n\n구하는 값은\n$3a+2b+c-2=3\\cdot7+2\\cdot7-24-2$\n$=21+14-24-2=9$이다.\n\n그러므로 정답은 ④이다."
+    "solution": "두 직선이 점 $(-1,3)$을 지나므로 그 좌표를 각 직선의 식에 대입한다.\n첫째 직선에서는\n$a(-1)+3\\cdot3-2=0$\n$-a+7=0$\n$a=7$이다.\n\n둘째 직선에서도\n$-3(-1)+3b+c=0$\n$3+3b+c=0$\n$c=-3-3b$이다.\n\n첫째 직선을 $y$에 대하여 정리하면\n$ax+3y-2=0$\n$3y=-ax+2$\n$y=-\\dfrac a3x+\\dfrac23$이므로 기울기는 $-\\dfrac a3=-\\dfrac73$이다.\n만약 $b=0$이면 둘째 직선은 수직선이 된다.\n수직선과 수직으로 만나는 직선은 수평선이어야 하지만 첫째 직선의 기울기는 $-\\dfrac73$이므로 수평선이 아니다.\n따라서 $b\\ne0$이다.\n이제 둘째 직선은\n$-3x+by+c=0$\n$by=3x-c$\n$y=\\dfrac3b x-\\dfrac cb$이므로 기울기는 $\\dfrac3b$이다.\n수직인 두 직선의 기울기의 곱은 $-1$이므로\n$-\\dfrac73\\cdot\\dfrac3b=-1$\n$-\\dfrac7b=-1$\n$b=7$이다.\n따라서 $c=-3-3\\cdot7=-24$이다.\n\n구하는 값은\n$3a+2b+c-2=3\\cdot7+2\\cdot7-24-2$\n$=21+14-24-2=9$이다.\n\n그러므로 정답은 ④이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 두 직선이 P에서 만나며, 교점에 직각 표시가 있다.",
+    "solutionImageCaption": "두 직선이 점 P에서 직각으로 만나도록 표시해 교점과 수직 관계를 나타낸다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -158,9 +170,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "원의 중심은 지름의 양 끝 점을 잇는 선분의 중점이다.\n따라서 중심 $(a,b)$는\n$(a,b)=\\left(\\dfrac{2+4}{2},\\dfrac{-1+5}{2}\\right)=(3,2)$이다.\n원의 반지름은 지름 $AB$의 길이의 절반이다.\n$AB=\\sqrt{(4-2)^2+(5-(-1))^2}$\n$=\\sqrt{2^2+6^2}$\n$=\\sqrt{40}=2\\sqrt{10}$이므로 반지름은 $\\sqrt{10}$이다.\n원의 넓이는\n$\\pi(\\sqrt{10})^2=10\\pi$이므로 $c=10$이다.\n따라서\n$a+b+c=3+2+10=15$이다.\n\n그러므로 정답은 ②이다.",
-    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "지름 AB의 중점 M(3,2)가 원의 중심이고, 반지름 r=√10이므로 넓이는 10π이다.",
-    "solutionImageCaption": "지름 AB의 중점 M(3,2)가 원의 중심이고, 반지름 r=√10이므로 넓이는 10π이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 위에 지름 AB와 그 중점 M을 표시한다. A와 B의 좌표가 보인다.",
+    "solutionImageCaption": "지름의 양 끝점 A, B와 그 중점 M을 원 위에 표시한다. 반지름은 지름의 절반으로 정리해 넓이 계수와 연결한다. 정답은 15이다.",
     "solutionImageSize": "full"
   },
   {
@@ -175,7 +187,11 @@ window.questionBank = [
       "$0 < k < 2\\sqrt{2}$"
     ],
     "answer": "①",
-    "solution": "직선 $y=x+k$를 일반형으로 고치면\n$x-y+k=0$이다.\n원의 중심은 $(0,0)$이고 반지름은 $2$이다.\n원이 직선과 서로 다른 두 점에서 만나려면\n중심에서 직선까지의 거리가 반지름보다 작아야 한다.\n중심에서 직선까지의 거리는\n$\\dfrac{|k|}{\\sqrt{1^2+(-1)^2}}=\\dfrac{|k|}{\\sqrt2}$이다.\n따라서\n$\\dfrac{|k|}{\\sqrt2}<2$\n$|k|<2\\sqrt2$이다.\n이를 범위로 쓰면\n$-2\\sqrt2<k<2\\sqrt2$이다.\n양 끝값에서는 직선이 원에 접하므로 등호를 포함하지 않는다.\n\n그러므로 정답은 ①이다."
+    "solution": "직선 $y=x+k$를 일반형으로 고치면\n$x-y+k=0$이다.\n원의 중심은 $(0,0)$이고 반지름은 $2$이다.\n원이 직선과 서로 다른 두 점에서 만나려면\n중심에서 직선까지의 거리가 반지름보다 작아야 한다.\n중심에서 직선까지의 거리는\n$\\dfrac{|k|}{\\sqrt{1^2+(-1)^2}}=\\dfrac{|k|}{\\sqrt2}$이다.\n따라서\n$\\dfrac{|k|}{\\sqrt2}<2$\n$|k|<2\\sqrt2$이다.\n이를 범위로 쓰면\n$-2\\sqrt2<k<2\\sqrt2$이다.\n양 끝값에서는 직선이 원에 접하므로 등호를 포함하지 않는다.\n\n그러므로 정답은 ①이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O, 반지름 2인 원과 원을 가로지르는 직선을 좌표평면에 그린다.",
+    "solutionImageCaption": "원과 직선 y=x+k의 교점 수를 비교한다. 예: k=0일 때 직선은 원과 서로 다른 두 점에서 만난다. 정답은 −2√2<k<2√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -190,9 +206,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "선분 $AB$를 밑변으로 보면 삼각형의 넓이는\n$\\dfrac12\\times AB\\times$(점 $P$에서 직선 $AB$까지의 거리)이다.\n먼저\n$AB=\\sqrt{(6-0)^2+(0-(-6))^2}=\\sqrt{36+36}=6\\sqrt2$이다.\n직선 $AB$의 기울기는 $1$이므로 방정식은\n$y=x-6$, 즉 $x-y-6=0$이다.\n원의 중심 $(0,0)$에서 이 직선까지의 거리는\n$\\dfrac{|-6|}{\\sqrt{1^2+(-1)^2}}=3\\sqrt2$이다.\n점 $P$는 중심 $(0,0)$에서 거리 $\\sqrt2$인 원 위를 움직인다.\n중심에서 직선 $AB$에 내린 수선 위에서 원과 만나는, 직선 쪽 점이 $AB$에 가장 가깝다. 중심에서 직선까지의 거리는 반지름보다 크므로 이 점까지의 거리는\n$3\\sqrt2-\\sqrt2=2\\sqrt2$이다. 이때 삼각형 넓이가 가장 작다.\n\n최솟값은\n$\\dfrac12\\cdot6\\sqrt2\\cdot2\\sqrt2=12$이다.\n\n그러므로 정답은 ②이다.",
-    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "중심 O에서 직선 AB에 내린 수선의 발을 H라 하면, OH가 원과 만나는 점 P가 직선 AB에 가장 가까운 점이고 PH=2√2이다.",
-    "solutionImageCaption": "중심 O에서 직선 AB에 내린 수선의 발을 H라 하면, OH가 원과 만나는 점 P가 직선 AB에 가장 가까운 점이고 PH=2√2이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원과 직선 AB, 중심 O에서 직선에 내린 수선의 발 H를 표시한다. A(0, −6), B(6, 0), H(3, −3)의 좌표가 보인다.",
+    "solutionImageCaption": "중심 O에서 밑변 AB에 내린 수선의 발 H와 A(0, −6), B(6, 0), H(3, −3)을 표시한다. 원 위에서 밑변에 가장 가까운 점을 생각한다. 정답은 12이다.",
     "solutionImageSize": "full"
   },
   {
@@ -207,7 +223,11 @@ window.questionBank = [
       "4개"
     ],
     "answer": "③",
-    "solution": "절댓값 안의 식의 부호가 바뀌는 $x=-1,1$을 기준으로 나눈다.\n\n$x<-1$이면 $|x-1|=1-x$, $|x+1|=-x-1$이므로\n$2|x-1|+3|x+1|<6$\n$2(1-x)+3(-x-1)<6$\n$-5x-1<6$\n$x>-\\dfrac75$이다.\n따라서 이 구간에서는 $-\\dfrac75<x<-1$이다.\n\n$-1\\le x<1$이면 $|x-1|=1-x$, $|x+1|=x+1$이므로\n$2(1-x)+3(x+1)<6$\n$x+5<6$\n$x<1$이다.\n이는 이 구간의 모든 $x$가 만족한다는 뜻이다.\n\n$x\\ge1$이면 $|x-1|=x-1$, $|x+1|=x+1$이므로\n$2(x-1)+3(x+1)<6$\n$5x+1<6$\n$x<1$이다.\n$x\\ge1$과 동시에 성립할 수 없어 해가 없다.\n\n전체 해는 $-\\dfrac75<x<1$이다.\n이 구간의 정수는 $-1,0$ 두 개이므로 개수는 $2$이다.\n\n그러므로 정답은 ③이다."
+    "solution": "절댓값 안의 식의 부호가 바뀌는 $x=-1,1$을 기준으로 나눈다.\n\n$x<-1$이면 $|x-1|=1-x$, $|x+1|=-x-1$이므로\n$2|x-1|+3|x+1|<6$\n$2(1-x)+3(-x-1)<6$\n$-5x-1<6$\n$x>-\\dfrac75$이다.\n따라서 이 구간에서는 $-\\dfrac75<x<-1$이다.\n\n$-1\\le x<1$이면 $|x-1|=1-x$, $|x+1|=x+1$이므로\n$2(1-x)+3(x+1)<6$\n$x+5<6$\n$x<1$이다.\n이는 이 구간의 모든 $x$가 만족한다는 뜻이다.\n\n$x\\ge1$이면 $|x-1|=x-1$, $|x+1|=x+1$이므로\n$2(x-1)+3(x+1)<6$\n$5x+1<6$\n$x<1$이다.\n$x\\ge1$과 동시에 성립할 수 없어 해가 없다.\n\n전체 해는 $-\\dfrac75<x<1$이다.\n이 구간의 정수는 $-1,0$ 두 개이므로 개수는 $2$이다.\n\n그러므로 정답은 ③이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 L(−1), O(0), R(1)을 표시해 절댓값의 분기점을 나타낸다.",
+    "solutionImageCaption": "수직선에 L(−1), O(0), R(1)을 두고 절댓값 식의 분기 기준 −1과 1을 표시한다. 각 구간에서 부등식을 확인한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -222,9 +242,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "직선 $y=-x$ 위의 점을 $P(t,-t)$라고 놓는다.\n세 변의 길이의 제곱을 비교한다.\n$PA^2=(t+2)^2+(-t-6)^2=2t^2+16t+40$,\n$PB^2=(t-4)^2+(-t-4)^2=2t^2+32$,\n$AB^2=(4-(-2))^2+(4-6)^2=40$이다.\n이등변삼각형이 되려면 세 쌍 중 한 쌍의 변의 길이가 같아야 하므로 제곱끼리 비교해도 된다.\n\n$PA=PB$이면\n$2t^2+16t+40=2t^2+32$\n$16t=-8$\n$t=-\\dfrac12$이다. 이때 $P$는 제2사분면이므로 제외한다.\n\n$PA=AB$이면\n$2t^2+16t+40=40$\n$2t(t+8)=0$\n$t=0$ 또는 $t=-8$이다. 두 점은 제4사분면에 있지 않다.\n\n$PB=AB$이면\n$2t^2+32=40$\n$t^2=4$\n$t=2$ 또는 $t=-2$이다.\n제4사분면에 놓이려면 $t>0$이므로 $t=2$만 가능하다.\n따라서 $P=(2,-2)$이다.\n\n그러므로 정답은 ①이다.",
-    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "B를 중심으로 반지름 BA인 원이 직선 y=-x와 만나는 두 점 중 점 P(2,-2), Q(-2,2) 중 제4사분면의 점이 P이고, 이때 BP=BA이다.",
-    "solutionImageCaption": "B를 중심으로 반지름 BA인 원이 직선 y=-x와 만나는 두 점 중 점 P(2,-2), Q(-2,2) 중 제4사분면의 점이 P이고, 이때 BP=BA이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 A(−2, 6), B(4, 4), 직선 y=−x와 제2사분면의 다른 후보 Q(−2, 2)를 표시한다.",
+    "solutionImageCaption": "A(−2, 6), B(4, 4), 직선 y=−x와 제2사분면의 다른 이등변삼각형 후보 Q(−2, 2)를 표시한다. Q는 제4사분면의 답 후보가 아니다. 정답은 (2, −2)이다.",
     "solutionImageSize": "full"
   },
   {
@@ -233,7 +253,11 @@ window.questionBank = [
     "content": "[단답형 1] 세 꼭짓점의 좌표가 $A(0, 3)$, $B(-12, -6)$, $C(4, 0)$인 삼각형 $ABC$가 있다. 오른쪽 그림과 같이 $\\overline{AC}=\\overline{AD}$가 되도록 점 $D$를 선분 $AB$ 위에 잡는다. 점 $A$를 지나면서 선분 $DC$와 평행한 직선이 선분 $BC$의 연장선과 만나는 점을 $P$라 하자. 그리고 삼각형 $ABP$의 넓이를 $S_1$, 삼각형 $ADC$의 넓이를 $S_2$라 할 때, $\\dfrac{q}{p}S_1=S_2$를 만족하는 두 자연수 $p, q$의 합 $p+q$을 구하면? (단, $p, q$는 서로소이다.) [5점]<br><br><img src=\"assets/images/19_매산고_1학기_기말_고1_기출/q16.png\" class=\"question-img\">",
     "choices": [],
     "answer": "$11$",
-    "solution": "먼저 두 점 사이의 거리를 구한다.\n$AC=\\sqrt{(4-0)^2+(0-3)^2}=\\sqrt{16+9}=5$이다.\n또\n$AB=\\sqrt{(-12-0)^2+(-6-3)^2}=\\sqrt{144+81}=15$이다.\n$AD=AC=5$이므로\n$DB=AB-AD=15-5=10$이다.\n\n$B,D,A$는 한 직선 위에 있고 $B,C,P$도 한 직선 위에 있으며, 그림에서 $DC\\parallel AP$이다. 따라서 $\\angle BDC=\\angle BAP$, $\\angle BCD=\\angle BPA$이므로 $\\triangle BDC$와 $\\triangle BAP$는 서로 닮음이다.\n닮은 삼각형의 대응변 비를 쓰면\n$\\dfrac{BP}{BC}=\\dfrac{BA}{BD}=\\dfrac{15}{10}=\\dfrac32$이다.\n두 삼각형 $ABP$, $ABC$는 밑변을 각각 $BP$, $BC$로 보면 높이가 같으므로\n$\\dfrac{S_1}{[ABC]}=\\dfrac{BP}{BC}=\\dfrac32$이다.\n또 $\\triangle ADC$와 $\\triangle ABC$는 꼭짓점 $C$에서 직선 $AB$에 내린 높이가 같으므로\n$\\dfrac{S_2}{[ABC]}=\\dfrac{AD}{AB}=\\dfrac5{15}=\\dfrac13$이다.\n따라서\n$\\dfrac{S_2}{S_1}=\\dfrac{\\frac{1}{3}}{\\frac{3}{2}}=\\dfrac29$이다.\n즉 $S_2=\\dfrac29S_1$이므로\n$\\dfrac qp=\\dfrac29$이다.\n$p,q$는 서로소 자연수이므로 $p=9$, $q=2$이다.\n\n따라서 $p+q=9+2=11$이다."
+    "solution": "먼저 두 점 사이의 거리를 구한다.\n$AC=\\sqrt{(4-0)^2+(0-3)^2}=\\sqrt{16+9}=5$이다.\n또\n$AB=\\sqrt{(-12-0)^2+(-6-3)^2}=\\sqrt{144+81}=15$이다.\n$AD=AC=5$이므로\n$DB=AB-AD=15-5=10$이다.\n\n$B,D,A$는 한 직선 위에 있고 $B,C,P$도 한 직선 위에 있으며, 그림에서 $DC\\parallel AP$이다. 따라서 $\\angle BDC=\\angle BAP$, $\\angle BCD=\\angle BPA$이므로 $\\triangle BDC$와 $\\triangle BAP$는 서로 닮음이다.\n닮은 삼각형의 대응변 비를 쓰면\n$\\dfrac{BP}{BC}=\\dfrac{BA}{BD}=\\dfrac{15}{10}=\\dfrac32$이다.\n두 삼각형 $ABP$, $ABC$는 밑변을 각각 $BP$, $BC$로 보면 높이가 같으므로\n$\\dfrac{S_1}{[ABC]}=\\dfrac{BP}{BC}=\\dfrac32$이다.\n또 $\\triangle ADC$와 $\\triangle ABC$는 꼭짓점 $C$에서 직선 $AB$에 내린 높이가 같으므로\n$\\dfrac{S_2}{[ABC]}=\\dfrac{AD}{AB}=\\dfrac5{15}=\\dfrac13$이다.\n따라서\n$\\dfrac{S_2}{S_1}=\\dfrac{\\frac{1}{3}}{\\frac{3}{2}}=\\dfrac29$이다.\n즉 $S_2=\\dfrac29S_1$이므로\n$\\dfrac qp=\\dfrac29$이다.\n$p,q$는 서로소 자연수이므로 $p=9$, $q=2$이다.\n\n따라서 $p+q=9+2=11$이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 위에는 문제 배치에서 AC=AD를 한 눈금, DC∥AP를 같은 화살표로 표시한다. 아래에는 같은 방향으로 분리한 2:3 비율의 △BDC와 △B₁AP를 둔다. 파랑·주황·초록 선은 각각 BD와 B₁A, DC와 AP, BC와 B₁P의 대응변이고 같은 호 개수는 대응각이다.",
+    "solutionImageCaption": "위쪽은 문제 배치이고 아래쪽은 2:3 변 길이 비로 분리한 닮은 △BDC와 △B₁AP다. 파랑·주황·초록은 각각 BD와 B₁A, DC와 AP, BC와 B₁P의 대응변을 나타내며 같은 호 개수는 대응각이고 위쪽 한 눈금과 같은 화살표는 각각 AC=AD와 DC∥AP를 뜻한다. 정답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -257,7 +281,11 @@ window.questionBank = [
     "content": "[서술형 1] 점 $P(x_1, y_1)$과 직선 $ax+by+c=0$ 사이의 거리 $d$에 대하여 $$d=\\dfrac{|ax_1+by_1+c|}{\\sqrt{a^2+b^2}}$$임을 보이시오. [10점]",
     "choices": [],
     "answer": "$d=\\dfrac{|ax_1+by_1+c|}{\\sqrt{a^2+b^2}}$",
-    "solution": "직선 $ax+by+c=0$이 되려면 $a,b$가 동시에 $0$일 수 없으므로 $a^2+b^2>0$이다. 따라서 주어진 식의 분모는 양수이다.\n\n먼저 $P$가 직선 위에 있는 경우, 수선의 발은 $H=P$이므로 $d=PH=0$이다. 이때 $ax_1+by_1+c=0$이어서 주어진 식의 오른쪽도 $0$이다. 따라서 공식이 성립한다.\n\n이제 $P$가 직선 위에 있지 않은 경우를 보자. $H(x_2,y_2)$를 $P(x_1,y_1)$에서 직선에 내린 수선의 발이라 하면 $H\\ne P$이고 구하는 거리는 $d=PH$이다. 먼저 $a\\ne0$, $b\\ne0$인 경우를 본다.\n직선 $ax+by+c=0$을 $y$에 대하여 정리하면\n$y=-\\dfrac abx-\\dfrac cb$이므로 기울기는 $-\\dfrac ab$이다.\n$PH$는 이 직선에 수직이므로 기울기는 $\\dfrac ba$이다. 따라서\n$\\dfrac{y_1-y_2}{x_1-x_2}=\\dfrac ba$이다.\n어떤 실수 $t$에 대하여\n$x_1-x_2=at$, $y_1-y_2=bt$로 쓸 수 있다.\n또 $H$가 직선 위에 있으므로\n$ax_2+by_2+c=0$이다.\n따라서\n$ax_1+by_1+c$\n$=a(x_1-x_2)+b(y_1-y_2)+(ax_2+by_2+c)$\n$=a(at)+b(bt)+0$\n$=t(a^2+b^2)$이다.\n\n두 점 사이의 거리 공식으로\n$d=PH=\\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$\n$=\\sqrt{(at)^2+(bt)^2}$\n$=|t|\\sqrt{a^2+b^2}$이다.\n그러므로\n$|ax_1+by_1+c|=|t|(a^2+b^2)=d\\sqrt{a^2+b^2}$이고,\n$a^2+b^2>0$이므로 양변을 $\\sqrt{a^2+b^2}$로 나누면\n$d=\\dfrac{|ax_1+by_1+c|}{\\sqrt{a^2+b^2}}$를 얻는다.\n\n한편 $a=0$이면 직선은 수평선 $by+c=0$이고, 이때 $b\\ne0$이다. 점에서 이 직선까지의 거리는\n$|y_1+\\frac{c}{b}|=|by_1+c|/|b|$이다. 이는 $|ax_1+by_1+c|/\\sqrt{a^2+b^2}$와 같다.\n$b=0$이면 $a\\ne0$이고 직선은 수직선 $ax+c=0$이다. 점에서 이 직선까지의 거리는\n$|x_1+\\frac{c}{a}|=|ax_1+c|/|a|$로 주어진 식과 일치한다.\n따라서 모든 직선에 대하여 거리 공식이 성립한다."
+    "solution": "직선 $ax+by+c=0$이 되려면 $a,b$가 동시에 $0$일 수 없으므로 $a^2+b^2>0$이다. 따라서 주어진 식의 분모는 양수이다.\n\n먼저 $P$가 직선 위에 있는 경우, 수선의 발은 $H=P$이므로 $d=PH=0$이다. 이때 $ax_1+by_1+c=0$이어서 주어진 식의 오른쪽도 $0$이다. 따라서 공식이 성립한다.\n\n이제 $P$가 직선 위에 있지 않은 경우를 보자. $H(x_2,y_2)$를 $P(x_1,y_1)$에서 직선에 내린 수선의 발이라 하면 $H\\ne P$이고 구하는 거리는 $d=PH$이다. 먼저 $a\\ne0$, $b\\ne0$인 경우를 본다.\n직선 $ax+by+c=0$을 $y$에 대하여 정리하면\n$y=-\\dfrac abx-\\dfrac cb$이므로 기울기는 $-\\dfrac ab$이다.\n$PH$는 이 직선에 수직이므로 기울기는 $\\dfrac ba$이다. 따라서\n$\\dfrac{y_1-y_2}{x_1-x_2}=\\dfrac ba$이다.\n어떤 실수 $t$에 대하여\n$x_1-x_2=at$, $y_1-y_2=bt$로 쓸 수 있다.\n또 $H$가 직선 위에 있으므로\n$ax_2+by_2+c=0$이다.\n따라서\n$ax_1+by_1+c$\n$=a(x_1-x_2)+b(y_1-y_2)+(ax_2+by_2+c)$\n$=a(at)+b(bt)+0$\n$=t(a^2+b^2)$이다.\n\n두 점 사이의 거리 공식으로\n$d=PH=\\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$\n$=\\sqrt{(at)^2+(bt)^2}$\n$=|t|\\sqrt{a^2+b^2}$이다.\n그러므로\n$|ax_1+by_1+c|=|t|(a^2+b^2)=d\\sqrt{a^2+b^2}$이고,\n$a^2+b^2>0$이므로 양변을 $\\sqrt{a^2+b^2}$로 나누면\n$d=\\dfrac{|ax_1+by_1+c|}{\\sqrt{a^2+b^2}}$를 얻는다.\n\n한편 $a=0$이면 직선은 수평선 $by+c=0$이고, 이때 $b\\ne0$이다. 점에서 이 직선까지의 거리는\n$|y_1+\\frac{c}{b}|=|by_1+c|/|b|$이다. 이는 $|ax_1+by_1+c|/\\sqrt{a^2+b^2}$와 같다.\n$b=0$이면 $a\\ne0$이고 직선은 수직선 $ax+c=0$이다. 점에서 이 직선까지의 거리는\n$|x_1+\\frac{c}{a}|=|ax_1+c|/|a|$로 주어진 식과 일치한다.\n따라서 모든 직선에 대하여 거리 공식이 성립한다.",
+    "solutionImage": "assets/images/19_매산고_1학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 밖의 점 P에서 수선의 발 H를 두고 PH를 점선으로 표시한다.",
+    "solutionImageCaption": "점 P가 직선 위에 있지 않을 때 수선의 발 H를 두고 PH를 거리로 나타낸다. 나머지 수평선·수직선 경우도 해설에서 확인한다. 증명 과정은 해설과 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

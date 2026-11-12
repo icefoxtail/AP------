@@ -1,0 +1,511 @@
+{
+ "capability": "composite-panels-v1",
+ "columns": 1,
+ "panels": [
+  {
+   "caption": {
+    "text": "k=6, k=-1: 평행"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "s1a",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-6"
+         },
+         {
+          "kind": "integer",
+          "value": "-3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "s1b",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "s2a",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-4"
+         },
+         {
+          "kind": "integer",
+          "value": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "s2b",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "-7"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "s3a",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-4"
+         },
+         {
+          "kind": "integer",
+          "value": "-4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "s3b",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "8"
+         },
+         {
+          "kind": "integer",
+          "value": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "s4a",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "2"
+         },
+         {
+          "kind": "integer",
+          "value": "6"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "s4b",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "5"
+         },
+         {
+          "kind": "integer",
+          "value": "-3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "s1a",
+     "s1b",
+     "s2a",
+     "s2b",
+     "s3a",
+     "s3b",
+     "s4a",
+     "s4b"
+    ],
+    "hiddenPointNames": [
+     "s1a",
+     "s1b",
+     "s2a",
+     "s2b",
+     "s3a",
+     "s3b",
+     "s4a",
+     "s4b"
+    ],
+    "hiddenPointStyle": "NONE",
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "s1",
+      "refs": [
+       "s1a",
+       "s1b"
+      ]
+     },
+     {
+      "id": "s2",
+      "refs": [
+       "s2a",
+       "s2b"
+      ]
+     },
+     {
+      "id": "s3",
+      "refs": [
+       "s3a",
+       "s3b"
+      ]
+     },
+     {
+      "id": "s4",
+      "refs": [
+       "s4a",
+       "s4b"
+      ]
+     }
+    ],
+    "coordinateLabels": [],
+    "coordinateCanvas": {
+     "width": 480,
+     "height": 340
+    },
+    "planeMarks": {
+     "expressionLabels": [
+      {
+       "id": "ts1",
+       "ownerSegment": "s1",
+       "text": "x-2y=0",
+       "ownership": "NEAREST"
+      },
+      {
+       "id": "ts2",
+       "ownerSegment": "s2",
+       "text": "3x+y+7=0",
+       "ownership": "NEAREST"
+      },
+      {
+       "id": "ts3",
+       "ownerSegment": "s3",
+       "text": "3x-6y-12=0",
+       "ownership": "NEAREST"
+      },
+      {
+       "id": "ts4",
+       "ownerSegment": "s4",
+       "text": "3x+y-12=0",
+       "ownership": "NEAREST"
+      }
+     ],
+     "parallels": [
+      {
+       "id": "pa",
+       "count": 1,
+       "segments": [
+        "s1",
+        "s3"
+       ]
+      },
+      {
+       "id": "pb",
+       "count": 2,
+       "segments": [
+        "s2",
+        "s4"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "k=18: 한 점에서 만남"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "s1a",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-6"
+         },
+         {
+          "kind": "integer",
+          "value": "-3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "s1b",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "s2a",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-4"
+         },
+         {
+          "kind": "integer",
+          "value": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "s2b",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "-7"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "s3a",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-8"
+         },
+         {
+          "kind": "integer",
+          "value": "-2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "s3b",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "10"
+         },
+         {
+          "kind": "integer",
+          "value": "1"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-2"
+         },
+         {
+          "kind": "integer",
+          "value": "-1"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "s1a",
+     "s1b",
+     "s2a",
+     "s2b",
+     "s3a",
+     "s3b",
+     "P"
+    ],
+    "hiddenPointNames": [
+     "s1a",
+     "s1b",
+     "s2a",
+     "s2b",
+     "s3a",
+     "s3b"
+    ],
+    "hiddenPointStyle": "NONE",
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "s1",
+      "refs": [
+       "s1a",
+       "s1b"
+      ]
+     },
+     {
+      "id": "s2",
+      "refs": [
+       "s2a",
+       "s2b"
+      ]
+     },
+     {
+      "id": "s3",
+      "refs": [
+       "s3a",
+       "s3b"
+      ]
+     }
+    ],
+    "coordinateLabels": [],
+    "coordinateCanvas": {
+     "width": 480,
+     "height": 340
+    },
+    "planeMarks": {
+     "expressionLabels": [
+      {
+       "id": "ts1",
+       "ownerSegment": "s1",
+       "text": "x-2y=0"
+      },
+      {
+       "id": "ts2",
+       "ownerSegment": "s2",
+       "text": "3x+y+7=0"
+      },
+      {
+       "id": "ts3",
+       "ownerSegment": "s3",
+       "text": "3x-18y-12=0"
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "caption": "세 직선이 삼각형을 이루지 않는 경우: 평행한 두 경우와 한 점에서 만나는 경우",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "세 직선 x-2y=0, 3x+y+7=0, 3x-ky-12=0",
+   "mappedTo": [
+    "panels"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "평행한 두 경우와 한 점에서 만나는 경우"
+ ]
+}

@@ -395,7 +395,8 @@ function solveStem(c){
     const wholeNumber=v=>typeof v==='string'&&/^\d{1,3}$/.test(v)?Number(v):v;
     if(!Array.isArray(c.classGroups)||c.classGroups.length<1||c.classGroups.length>8)bad('STAT_STEM_CLASS_INVALID');
     for(const cl of c.classGroups){
-      onlyKeys(cl,['group','from','to','label'],'STAT_STEM_CLASS_INVALID');
+      onlyKeys(cl,['group','from','to','label','color'],'STAT_STEM_CLASS_INVALID');
+      if(cl.color!==undefined&&!isPaletteName(cl.color))bad('STAT_STEM_CLASS_COLOR_INVALID');   // optional palette colour (BLUE WARM GREEN ROSE VIOLET): the bracket and its count are drawn in it, so a reader can tell which bracket belongs to which class
       const group=cl.group===undefined?0:intIn(cl.group,0,groups.length-1,'STAT_STEM_CLASS_INVALID'),from=intIn(wholeNumber(cl.from),0,999,'STAT_STEM_CLASS_INVALID'),to=intIn(wholeNumber(cl.to),1,1000,'STAT_STEM_CLASS_INVALID');
       const stem=Math.floor(from/10);
       if(to<=from||Math.floor((to-1)/10)!==stem)bad('STAT_STEM_CLASS_UNSUPPORTED');
@@ -417,7 +418,7 @@ function solveStem(c){
         label=typeof cl.label==='number'?String(cl.label):cl.label;
         if(typeof label!=='string'||!/^\d{1,3}$/.test(label)||Number(label)!==inside.length)bad('STAT_STEM_CLASS_COUNT_MISMATCH');
       }
-      classGroups.push({group,from,to,stem,first:inside[0],last:inside.at(-1),count:inside.length,label});
+      classGroups.push({group,from,to,stem,first:inside[0],last:inside.at(-1),count:inside.length,label,...(cl.color!==undefined?{color:cl.color}:{})});
     }
     classGroups.sort((x,y)=>x.group-y.group||x.from-y.from);
   }
@@ -1085,6 +1086,7 @@ const STYLE={
   meanLine:'stroke="#333" stroke-width="1.6" fill="none" stroke-dasharray="6 4"',medianLine:'stroke="#333" stroke-width="1.6" fill="none" stroke-dasharray="2 3"',
   ...Object.fromEntries(PALETTE_NAMES.map(name=>['dot'+name,`fill="${PALETTE[name].line}" stroke="none"`])),
   ...Object.fromEntries(PALETTE_NAMES.map(name=>['shade'+name,`fill="${PALETTE[name].fill}" fill-opacity="${PALETTE[name].opacity}" stroke="none"`])),   // a normal-curve area in a palette colour (G20)
+  ...Object.fromEntries(PALETTE_NAMES.map(name=>['classBracket'+name,`stroke="${PALETTE[name].line}" stroke-width="2" fill="none"`])),   // a stem-leaf class bracket in a palette colour
   ...Object.fromEntries(PALETTE_NAMES.flatMap(name=>[['branchHi'+name,`stroke="${PALETTE[name].line}" stroke-width="3" fill="none"`],['markRing'+name,`fill="none" stroke="${PALETTE[name].line}" stroke-width="1.8"`]]))
 };
 const L=(id,role,cls,x1,y1,x2,y2,data={},layer=30)=>({t:'line',id,role,cls,x1:r6(x1),y1:r6(y1),x2:r6(x2),y2:r6(y2),data,layer});
@@ -1261,8 +1263,8 @@ function stemSpec(m){
   }
   for(const cl of classes){ // a bracket under the leaves of the class, its frequency centred below it
     const ri=m.stems.indexOf(cl.stem),xa=leafX(cl.group,cl.first),xb=leafX(cl.group,cl.last),xl=Math.min(xa,xb)-10,xr=Math.max(xa,xb)+10,yb=rowCy(ri)+17,id=`class-g${cl.group}-${cl.from}-${cl.to}`;
-    prims.push({t:'polyline',id,role:'class-bracket',cls:'rule',points:[[xl,yb-5],[xl,yb],[xr,yb],[xr,yb-5]],data:{group:cl.group,from:cl.from,to:cl.to},layer:50});
-    if(cl.label!==null)labels.push(math(`${id}-count`,'class-count',id,cl.label,cl.label,'center','top',(xl+xr)/2,yb+3,{group:cl.group,from:cl.from,to:cl.to,value:cl.label}));
+    prims.push({t:'polyline',id,role:'class-bracket',cls:cl.color?'classBracket'+cl.color:'rule',points:[[xl,yb-5],[xl,yb],[xr,yb],[xr,yb-5]],data:{group:cl.group,from:cl.from,to:cl.to,...(cl.color?{color:cl.color}:{})},layer:50});
+    if(cl.label!==null)labels.push(math(`${id}-count`,'class-count',id,cl.label,cl.label,'center','top',(xl+xr)/2,yb+3,{group:cl.group,from:cl.from,to:cl.to,value:cl.label,...(cl.color?{color:cl.color}:{})}));
   }
   if(m.title)labels.push(textLabel('title','title','table-frame',m.title,'center','top',width/2,SAFE));
   labels.push(textLabel('key','key','table-frame',m.key.text,'end','top',x0+tableW,bottom+8,{}));
@@ -1894,7 +1896,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
     for(const prim of [...spec.prims].sort((a,b)=>a.layer-b.layer))body+=printPrim(prim);
     for(const {label,fragment,box} of placed){
       const extra=Object.entries(label.extra??{}).map(([k,v])=>` data-${k}="${esc(v)}"`).join('');
-      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra}${label.kind==='MATH'?` data-tex="${esc(label.tex)}"`:` data-text="${esc(label.text)}"`} data-fragment-sha="${fragment.fragmentSha256}" data-box="${box.x},${box.y},${box.width},${box.height}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
+      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra}${label.kind==='MATH'?` data-tex="${esc(label.tex)}"`:` data-text="${esc(label.text)}"`} data-fragment-sha="${fragment.fragmentSha256}" data-box="${box.x},${box.y},${box.width},${box.height}"${isPaletteName(label.extra?.color)?` color="${PALETTE[label.extra.color].line}"`:''} transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
     const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="visual-title visual-desc" data-stat-chart="${FIGURE_CAPABILITY}" data-kind="${model.kind}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNames(model.kind)}${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));

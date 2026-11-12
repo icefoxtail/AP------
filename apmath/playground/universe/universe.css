@@ -31,6 +31,25 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+[hidden] { display: none !important; }
+button, input { font: inherit; }
+button { touch-action: manipulation; }
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 3px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -53,6 +72,7 @@ html, body {
   display: block;
   touch-action: none;
 }
+#space:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: -5px; }
 
 /* Cosmic Ambient Vignette & Gradient Overlays */
 .cosmic-vignette {
@@ -95,9 +115,12 @@ html, body {
   opacity: 0;
   pointer-events: none;
 }
+.universe-ui.hud-hidden * { pointer-events: none !important; }
 
 /* Header: Minimal Brand Sigil & Auxiliary Controls */
 .top-nav {
+  position: relative;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -131,6 +154,7 @@ html, body {
   text-decoration: none;
   color: var(--text-ivory);
   cursor: pointer;
+  min-height: 44px;
 }
 
 .sigil-glyph {
@@ -162,7 +186,7 @@ html, body {
 }
 
 .brand-sub {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--accent-gold);
@@ -178,6 +202,8 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 7px;
+  min-width: 44px;
+  min-height: 44px;
   padding: 8px 14px;
   font-size: 12.5px;
   font-weight: 700;
@@ -203,6 +229,7 @@ html, body {
 .glass-btn:active {
   transform: translateY(0) scale(0.98);
 }
+.glass-btn:disabled { cursor: wait; opacity: .7; }
 
 /* The public showcase has no central copy: navigation happens in the header. */
 .nav-enter {
@@ -294,11 +321,21 @@ html, body {
 
 /* Bottom Bar: Instructions & Quick Celestial Navigation */
 .bottom-bar {
+  position: relative;
+  z-index: 2;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  gap: 8px;
   width: 100%;
-  pointer-events: auto;
+  pointer-events: none;
+}
+
+.universe-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
 }
 
 .bottom-hint {
@@ -306,7 +343,7 @@ html, body {
   align-items: center;
   gap: 9px;
   font-size: 12px;
-  color: var(--text-muted);
+  color: var(--text-silver);
   user-select: none;
 }
 
@@ -324,11 +361,15 @@ html, body {
   overflow-x: auto;
   max-width: 65vw;
   padding: 4px;
+  pointer-events: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-glass) transparent;
 }
 
 .celestial-pill {
   padding: 7px 13px;
-  font-size: 11.5px;
+  min-height: 44px;
+  font-size: 12px;
   font-weight: 750;
   border-radius: 999px;
   border: 1px solid var(--border-glass);
@@ -347,6 +388,82 @@ html, body {
   color: var(--text-ivory);
   background: rgba(36, 23, 39, 0.9);
   box-shadow: 0 0 12px rgba(85, 203, 163, 0.25);
+}
+
+/* Small, anchored captions are keyboard alternatives to picking the actual 3D geometry. */
+.projected-labels {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.projected-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  max-width: calc(100vw - 32px);
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  color: var(--text-silver);
+  cursor: pointer;
+  pointer-events: auto;
+  font-size: 12px;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+.projected-label.measuring {
+  display: inline-flex !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+.projected-label-caption {
+  display: block;
+  max-width: min(240px, 70vw);
+  padding: 5px 9px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px solid rgba(216, 183, 126, .24);
+  border-radius: 999px;
+  background: rgba(18, 14, 24, .78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: color .2s, border-color .2s, background .2s;
+}
+.projected-label:hover .projected-label-caption,
+.projected-label.selected .projected-label-caption {
+  color: var(--text-ivory);
+  border-color: var(--accent-emerald);
+  background: rgba(24, 29, 31, .9);
+}
+.projected-label:focus-visible { outline: none; }
+.projected-label:focus-visible .projected-label-caption {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 3px;
+}
+
+.explore-panel { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.explore-navigation { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.explore-heading { min-width: 0; text-shadow: 0 1px 8px var(--bg-obsidian), 0 1px 24px var(--bg-obsidian); }
+.explore-breadcrumb { color: var(--text-ivory); font-size: 13px; line-height: 1.5; font-weight: 650; }
+.explore-subtitle { margin-top: 2px; color: var(--text-silver); font-size: 12px; line-height: 1.5; max-width: 62ch; }
+.explore-actions { display: flex; flex: 0 0 auto; gap: 6px; pointer-events: auto; }
+.explore-actions .glass-btn { white-space: nowrap; }
+.concept-controls { display: flex; align-items: center; gap: 8px; width: min(100%, 580px); pointer-events: auto; }
+.concept-controls .glass-btn { flex: 0 0 auto; white-space: nowrap; }
+.concept-scrubber { display: flex; align-items: center; flex: 1 1 auto; min-width: 48px; height: 44px; }
+.concept-scrubber input { width: 100%; height: 44px; margin: 0; accent-color: var(--accent-emerald); cursor: pointer; }
+.concept-time { flex: 0 0 auto; font-size: 12px; color: var(--text-silver); font-variant-numeric: tabular-nums; }
+.restore-hud {
+  position: fixed;
+  z-index: 20;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: calc(16px + var(--student-navigation-space, 0px) + env(safe-area-inset-bottom));
 }
 
 /* Warp Blackout Curtain during Camera Travel */
@@ -400,17 +517,17 @@ html, body {
   .top-controls { grid-column: 1 / -1; justify-self: end; }
 }
 @media (max-width: 768px) {
-  .universe-ui { padding: 16px; }
+  .universe-ui { padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); }
   .top-nav { gap: 8px; }
   .brand-sigil { gap: 6px; flex: 0 1 auto; min-width: 0; }
   .sigil-glyph { width: 30px; height: 34px; flex: 0 0 30px; }
-  .brand-name { font-size: 11px; letter-spacing: .035em; white-space: nowrap; }
+  .brand-name { font-size: 12px; letter-spacing: .035em; white-space: nowrap; }
   .brand-universe, .brand-sub { display: none; }
   .top-controls { gap: 6px; flex: 0 0 auto; }
   .top-controls .glass-btn:not(.nav-enter) {
-    width: 40px;
+    width: 44px;
     height: 44px;
-    min-width: 40px;
+    min-width: 44px;
     padding: 0;
     justify-content: center;
   }
@@ -426,8 +543,29 @@ html, body {
   .nav-enter-arrow { width: 13px; height: 13px; }
   .bottom-hint { display: none; }
   .celestial-selector-pills { max-width: 100%; }
+  .universe-navigation { gap: 0; }
+  .explore-navigation { gap: 8px; }
+  .explore-breadcrumb { font-size: 12px; max-height: 3em; overflow: hidden; }
+  .explore-subtitle { display: none; }
+  .explore-actions .glass-btn { padding: 6px 10px; font-size: 12px; }
+  .concept-controls { gap: 6px; }
+  .concept-controls .glass-btn { padding: 6px 10px; font-size: 12px; }
+  .concept-time { min-width: 54px; text-align: right; }
 }
 @media (max-width: 360px) {
-  .universe-ui { padding: 12px; }
   .nav-enter { padding: 0 8px; }
+  .concept-controls .glass-btn { gap: 4px; padding: 6px 8px; }
+  .concept-time { display: none; }
+}
+@media (max-height: 480px) and (orientation: landscape) {
+  .top-nav { display: flex; }
+  .brand-sub, .explore-subtitle, .concept-time, .top-controls .glass-btn:not(.nav-enter) > span { display: none; }
+  .bottom-bar, .explore-panel { gap: 4px; }
+  .celestial-selector-pills { max-width: 100%; }
+  .bottom-hint { display: none; }
+  .universe-ui[data-mode="concept"] .universe-navigation { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .universe-ui, .glass-btn, .celestial-pill, .projected-label-caption, .warp-curtain { transition: none; }
+  .glass-btn:hover, .glass-btn:active { transform: none; }
 }

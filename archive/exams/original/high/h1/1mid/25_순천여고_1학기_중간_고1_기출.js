@@ -328,7 +328,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 행렬의 성분 정의 $a_{ij}$에서 $i$는 행 번호, $j$는 열 번호를 의미하며 조건에 맞게 각 성분을 계산한다.\n조건 정리: $i=j$인 대각성분은 $ij+1$로, $i \\neq j$인 성분은 $i^2-j$로 계산한다.\n풀이 방향: $2 \\times 2$ 행렬의 모든 성분을 구한 뒤 보기의 조건을 하나씩 검증한다.\n정석 풀이:\n1) 행렬 $A$의 성분 계산:\n- $a_{11} = 1 \\cdot 1+1 = 2$\n- $a_{12} = 1^2-2 = -1$\n- $a_{21} = 2^2-1 = 3$\n- $a_{22} = 2 \\cdot 2+1 = 5$\n따라서 $A = \\begin{pmatrix} 2 & -1 \\\\ 3 & 5 \\end{pmatrix}$이다.\n2) 보기 검증:\nㄱ. 제 2열 성분은 $a_{12}, a_{22}$이므로 합은 $-1+5=4$이다. (참)\nㄴ. 제 1행 성분은 $(a_{11}, a_{12}) = (2, -1)$이다. (참)\nㄷ. $a_{12}-2a_{11} = -1-2(2) = -5$이고 $a_{21}=3$이므로 서로 같지 않다. (거짓)\n결론: 따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -626,7 +626,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "xy−p=x+y−1에서 (x−1)(y−1)=p이고, x−y=p−1이다. u=x−1, v=y−1로 두면 uv=p, u−v=p−1이므로 uv−u+v−1=0, 즉 (u+1)(v−1)=0이다. x는 자연수라 u+1>0이므로 v=1, y=2이고 p=u=x−1이다. x≤50이므로 p≤49, 따라서 가장 큰 가능 소수는 47이다. x=48, y=2, p=47은 두 행렬 성분을 모두 같게 하므로 최댓값은 47, 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

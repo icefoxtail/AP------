@@ -184,7 +184,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "두 행렬이 서로 같을 조건은 크기가 같고 대응하는 각 성분이 모두 같은 것이다.\n\n$A = B$이므로 두 행렬의 $(1, 1)$ 성분과 $(2, 2)$ 성분이 일치해야 한다.\n\n성분을 비교하여 $x$와 $y$의 값을 각각 구한 후 더한다.\n\n행렬 $A$와 $B$가 서로 같으므로 대응하는 성분이 모두 같아야 한다.\n$(1, 1)$ 성분을 비교하면 $x = -2$이다.\n$(2, 2)$ 성분을 비교하면 $y = 2$이다.\n따라서 구하는 값은 $x + y = (-2) + 2 = 0$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -218,7 +218,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "행렬의 실수배는 행렬의 모든 성분에 그 실수를 곱하여 구한다.\n\n행렬 $A$의 모든 성분에 실수 $-2$를 곱한다.\n\n$A$의 각 성분에 $-2$를 곱한 새로운 행렬을 구한다.\n\n$-2A = -2 \\begin{pmatrix} -1 & 4 \\\\ 3 & -2 \\\\ 1 & 0 \\end{pmatrix} = \\begin{pmatrix} (-2)\\times(-1) & (-2)\\times 4 \\\\ (-2)\\times 3 & (-2)\\times(-2) \\\\ (-2)\\times 1 & (-2)\\times 0 \\end{pmatrix} = \\begin{pmatrix} 2 & -8 \\\\ -6 & 4 \\\\ -2 & 0 \\end{pmatrix}$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -518,7 +518,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "행렬의 곱셈을 이용하여 두 행렬의 곱 $PQ$의 각 성분이 무엇을 의미하는지 해석한다.\n\n행렬 $P$의 $1$행은 제품 A, B의 제조 원가, $2$행은 판매가를 나타내고, 행렬 $Q$의 $1$열은 상반기 판매량, $2$열은 하반기 판매량을 나타낸다.\n\n행렬 $P$와 $Q$의 곱 $PQ$를 계산하여 성분 $a, b, c, d$가 각각 무엇을 의미하는지 파악하고, 하반기 판매 이익금을 $a, b, c, d$로 나타낸다.\n\n행렬 $P = \\begin{pmatrix} 3 & 1 \\\\ 4 & 2 \\end{pmatrix}$, $Q = \\begin{pmatrix} 5 & 9 \\\\ 7 & 10 \\end{pmatrix}$라 할 때, 행렬 $PQ$의 각 성분을 분석해보자.\n$PQ$의 $(1, 2)$ 성분인 $b$는 (제품 A의 제조 원가)$\\times$(A의 하반기 판매량) + (제품 B의 제조 원가)$\\times$(B의 하반기 판매량)이므로 '올해 하반기에 판매된 두 제품의 제조 원가의 총합'을 의미한다.\n$PQ$의 $(2, 2)$ 성분인 $d$는 (제품 A의 판매가)$\\times$(A의 하반기 판매량) + (제품 B의 판매가)$\\times$(B의 하반기 판매량)이므로 '올해 하반기에 판매된 두 제품의 판매액의 총합'을 의미한다.\n제품의 판매 이익금은 (판매액) - (제조 원가)로 계산된다.\n따라서 올해 하반기에 판매된 두 제품의 판매 이익금의 합은 (하반기 판매액 총합) - (하반기 제조 원가 총합)이므로 $d - b$로 나타낼 수 있다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -555,7 +555,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "행렬의 덧셈과 곱셈 연산을 수행한 후, 두 행렬이 같을 조건을 이용하여 연립방정식을 세우고 푼다.\n\n주어진 행렬 등식의 좌변과 우변을 각각 계산하여 성분끼리 비교한다.\n\n행렬 연산을 통해 얻은 식 $x+y=-5$와 $x^2+y^2=17$을 연립하여 $x, y$를 구한 후 $-2x+3y$를 계산한다.\n\n좌변을 전개하면 $\\begin{pmatrix} 1 & 1 \\\\ x & y \\end{pmatrix} \\begin{pmatrix} x & -2 \\\\ y & 3 \\end{pmatrix} = \\begin{pmatrix} x+y & 1 \\\\ x^2+y^2 & -2x+3y \\end{pmatrix}$이다.\n우변을 계산하면 $\\begin{pmatrix} -1 & 0 \\\\ 9 & -2x \\end{pmatrix} + \\begin{pmatrix} -4 & 1 \\\\ 8 & 3y \\end{pmatrix} = \\begin{pmatrix} -5 & 1 \\\\ 17 & -2x+3y \\end{pmatrix}$이다.\n두 행렬이 같으므로 대응하는 성분을 비교하면 다음과 같은 식을 얻는다.\n1) $x + y = -5$\n2) $x^2 + y^2 = 17$\n곱셈 공식의 변형 $(x+y)^2 = x^2+y^2+2xy$에 대입하면,\n$(-5)^2 = 17 + 2xy \\implies 25 = 17 + 2xy \\implies 2xy = 8 \\implies xy = 4$이다.\n$x$와 $y$는 $t$에 대한 이차방정식 $t^2 - (x+y)t + xy = 0$, 즉 $t^2 + 5t + 4 = 0$의 두 근이다.\n인수분해하면 $(t+1)(t+4) = 0$이므로 $t = -1$ 또는 $t = -4$이다.\n조건에서 $x \\lt y$라고 하였으므로 $x = -4, y = -1$이다.\n구하고자 하는 값은 $-2x + 3y$이므로 대입하면,\n$-2(-4) + 3(-1) = 8 - 3 = 5$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -701,7 +701,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "보기의 행렬은 모두 $\\begin{pmatrix} a & -b \\\\ b & a \\end{pmatrix}$ 꼴이므로 복소수 $a+bi$와 곱셈 방식이 같게 대응된다. 이 대응으로 바꾼 뒤, 고1 과정의 복소수 거듭제곱(주기성)만으로 계산한다.\n\n$X \\leftrightarrow -\\frac{\\sqrt{3}}{2}+\\frac{1}{2}i$, $Y \\leftrightarrow \\frac{\\sqrt{3}}{2}+\\frac{1}{2}i$, $J \\leftrightarrow i$이다.\n\n구하는 식 $(X-J)^{100}Y^{200}$을 복소수로 바꾸면 $w^{100}v^{200}$이다.\n여기서 $w = \\left(-\\frac{\\sqrt{3}}{2}+\\frac{1}{2}i\\right)-i = -\\frac{\\sqrt{3}}{2}-\\frac{1}{2}i$, $v = \\frac{\\sqrt{3}}{2}+\\frac{1}{2}i$이다.\n먼저 각 복소수의 세제곱을 직접 계산한다.\n$w^2 = \\left(-\\frac{\\sqrt{3}}{2}-\\frac{1}{2}i\\right)^2 = \\frac{3}{4}+\\frac{\\sqrt{3}}{2}i+\\frac{1}{4}i^2 = \\frac{1}{2}+\\frac{\\sqrt{3}}{2}i$\n$w^3 = w^2 \\cdot w = \\left(\\frac{1}{2}+\\frac{\\sqrt{3}}{2}i\\right)\\left(-\\frac{\\sqrt{3}}{2}-\\frac{1}{2}i\\right) = -i$\n$v^2 = \\left(\\frac{\\sqrt{3}}{2}+\\frac{1}{2}i\\right)^2 = \\frac{1}{2}+\\frac{\\sqrt{3}}{2}i$\n$v^3 = v^2 \\cdot v = \\left(\\frac{1}{2}+\\frac{\\sqrt{3}}{2}i\\right)\\left(\\frac{\\sqrt{3}}{2}+\\frac{1}{2}i\\right) = i$\n따라서 $w^{100} = (w^3)^{33} \\cdot w = (-i)^{33} \\cdot w$이고 $v^{200} = (v^3)^{66} \\cdot v^2 = i^{66} \\cdot v^2$이다.\n$i$의 거듭제곱은 $i, -1, -i, 1$이 주기 $4$로 반복되므로 $(-i)^{33} = -i$, $i^{66} = i^2 = -1$이다.\n그러므로 $w^{100}v^{200} = (-i) \\cdot w \\cdot (-1) \\cdot v^2 = i\\,(w v^2)$이다.\n$w v^2 = \\left(-\\frac{\\sqrt{3}}{2}-\\frac{1}{2}i\\right)\\left(\\frac{1}{2}+\\frac{\\sqrt{3}}{2}i\\right) = -i$이므로 $w^{100}v^{200} = i \\cdot (-i) = 1$이다.\n복소수 $1 = 1+0i$에 대응하는 행렬은 단위행렬 $\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$이므로 모든 성분의 합은 $1+0+0+1=2$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -805,7 +805,7 @@ window.questionBank = [
     "answer": "(1) $\\begin{pmatrix} 3 & 40 \\\\ 0 & 43 \\end{pmatrix}$ (2) $43$",
     "solution": "행렬의 거듭제곱을 차례로 계산하고, 행렬의 덧셈과 뺄셈은 대응하는 성분끼리 계산한다.\n\n행렬 $A = \\begin{pmatrix} 1 & 2 \\\\ 0 & 3 \\end{pmatrix}$가 주어졌고, 행렬 $B = A^3 + 2A^2 - A + E$를 계산해야 한다.\n\n$A^2$과 $A^3$을 차례로 구하여 주어진 다항식에 대입하여 최종 행렬 $B$를 구한다.\n\n(1) 행렬 $A$의 거듭제곱을 차례로 계산한다.\n$A^2 = \\begin{pmatrix} 1 & 2 \\\\ 0 & 3 \\end{pmatrix}\\begin{pmatrix} 1 & 2 \\\\ 0 & 3 \\end{pmatrix} = \\begin{pmatrix} 1\\cdot1+2\\cdot0 & 1\\cdot2+2\\cdot3 \\\\ 0\\cdot1+3\\cdot0 & 0\\cdot2+3\\cdot3 \\end{pmatrix} = \\begin{pmatrix} 1 & 8 \\\\ 0 & 9 \\end{pmatrix}$이다.\n$A^3 = A^2 A = \\begin{pmatrix} 1 & 8 \\\\ 0 & 9 \\end{pmatrix}\\begin{pmatrix} 1 & 2 \\\\ 0 & 3 \\end{pmatrix} = \\begin{pmatrix} 1\\cdot1+8\\cdot0 & 1\\cdot2+8\\cdot3 \\\\ 0\\cdot1+9\\cdot0 & 0\\cdot2+9\\cdot3 \\end{pmatrix} = \\begin{pmatrix} 1 & 26 \\\\ 0 & 27 \\end{pmatrix}$이다.\n주어진 행렬 $B$의 식에 대입하면,\n$B = A^3 + 2A^2 - A + E$\n$= \\begin{pmatrix} 1 & 26 \\\\ 0 & 27 \\end{pmatrix} + 2\\begin{pmatrix} 1 & 8 \\\\ 0 & 9 \\end{pmatrix} - \\begin{pmatrix} 1 & 2 \\\\ 0 & 3 \\end{pmatrix} + \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$\n$= \\begin{pmatrix} 1 & 26 \\\\ 0 & 27 \\end{pmatrix} + \\begin{pmatrix} 2 & 16 \\\\ 0 & 18 \\end{pmatrix} + \\begin{pmatrix} -1 & -2 \\\\ 0 & -3 \\end{pmatrix} + \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$\n각 성분끼리 더하면,\n$(1, 1)$ 성분: $1 + 2 - 1 + 1 = 3$\n$(1, 2)$ 성분: $26 + 16 - 2 + 0 = 40$\n$(2, 1)$ 성분: $0 + 0 + 0 + 0 = 0$\n$(2, 2)$ 성분: $27 + 18 - 3 + 1 = 43$\n따라서 $B = \\begin{pmatrix} 3 & 40 \\\\ 0 & 43 \\end{pmatrix}$이다.\n(2) 행렬 $B$의 성분 $(2, 2)$는 위에서 구한 바와 같이 $43$이다.\n따라서 구하는 값은 (1) $\\begin{pmatrix} 3 & 40 \\\\ 0 & 43 \\end{pmatrix}$, (2) $43$이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }
