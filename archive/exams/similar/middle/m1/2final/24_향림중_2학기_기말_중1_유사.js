@@ -1335,11 +1335,11 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "[서·논술형 3] 오른쪽 그림의 색칠한 부분을 직선 $l$을 회전축으로 하여 $1$회전 시킬 때 생기는 회전체의 부피를 구하려고 한다. 아래 빈칸에 들어갈 두 입체도형의 이름을 차례대로 쓰고, 회전체의 부피를 구하는 과정을 자세히 서술하시오. (단, 부피는 단위를 포함하여 쓰시오.) [5점]\n\n\n[위 회전체의 부피] = [  ]의 부피 - [  ]의 부피\n\n\n(단, 색칠한 부분은 밑변이 $6\\text{ cm}$, 높이가 $9\\text{ cm}$인 직각삼각형에서 가로가 $3\\text{ cm}$, 세로가 $4\\text{ cm}$인 직사각형을 제외한 부분이다.)",
+    "content": "[서·논술형 3] 밑변의 길이가 $6\\text{ cm}$, 높이가 $9\\text{ cm}$인 직각삼각형이 있다. 직각 꼭짓점을 $O$라 하고, 높이 $9\\text{ cm}$인 변을 포함하는 직선을 $l$이라 하자. 삼각형 안에서 $O$를 꼭짓점으로 공유하고 두 변이 삼각형의 두 직각변 위에 놓이는, 가로 $3\\text{ cm}$이고 $l$ 방향 세로가 $4\\text{ cm}$인 직사각형을 제외한 부분을 직선 $l$을 축으로 하여 $1$회전 시킨다.\n\n[위 회전체의 부피] = [  ]의 부피 - [  ]의 부피\n\n빈칸에 들어갈 두 입체도형의 이름을 차례대로 쓰고 회전체의 부피를 구하는 과정을 서술하시오. (부피는 단위를 포함하여 쓰시오.) [5점]",
     "choices": [],
     "answer": "원뿔, 원기둥, $72\\pi\\text{ cm}^3$",
     "points": 5,
-    "solution": "직선 $l$을 회전축으로 하여 $1$회전 시킬 때 생기는 회전체는 큰 직각삼각형이 회전하여 생기는 원뿔에서 직사각형이 회전하여 생기는 원기둥을 파낸 모양이다. 따라서 빈칸에 들어갈 두 입체도형의 이름은 순서대로 원뿔, 원기둥이다.\n\n\n큰 원뿔은 밑면의 반지름이 $6\\text{ cm}$, 높이가 $9\\text{ cm}$이므로 부피는 $$\\begin{aligned} V_{\\text{원뿔}} &= \\dfrac{1}{3}\\pi \\times 6^2 \\times 9 \\ &= \\dfrac{1}{3}\\pi \\times 36 \\times 9 \\ &= 108\\pi\\text{ cm}^3 \\end{aligned}$$ 안쪽의 원기둥은 밑면의 반지름이 $3\\text{ cm}$, 높이가 $4\\text{ cm}$이므로 부피는 $$\\begin{aligned} V_{\\text{원기둥}} &= \\pi \\times 3^2 \\times 4 \\ &= 36\\pi\\text{ cm}^3 \\end{aligned}$$ 따라서 구하는 회전체의 부피는 $$\\begin{aligned} V &= 108\\pi - 36\\pi \\ &= 72\\pi\\text{ cm}^3 \\end{aligned}$$ 따라서 구하는 답은 원뿔, 원기둥, $72\\pi\\text{ cm}^3$이다.",
+    "solution": "직사각형이 삼각형 안에 놓이는지 확인하자. 직각 꼭짓점에서 높이 변을 따라 $4\\text{ cm}$ 올라간 곳에서 빗변까지의 가로 길이는 닮은 직각삼각형에서\n$$\\begin{aligned}\n6 \\times \\dfrac{9-4}{9} &= \\dfrac{10}{3}\\text{ cm}\\end{aligned}$$\n이고, $\\dfrac{10}{3}>3$이므로 가로 $3\\text{ cm}$인 직사각형은 삼각형 안에 들어간다. 큰 직각삼각형을 직선 $l$을 축으로 회전시키면 밑면의 반지름이 $6\\text{ cm}$, 높이가 $9\\text{ cm}$인 원뿔이 생긴다. 직사각형을 같은 축으로 회전시키면 반지름이 $3\\text{ cm}$, 높이가 $4\\text{ cm}$인 원기둥이 생긴다. 따라서 빈칸에는 차례대로 원뿔, 원기둥이 들어간다.\n\n원뿔의 부피는\n$$\\begin{aligned}\nV_{\\text{원뿔}} &= \\dfrac{1}{3}\\pi \\times 6^2 \\times 9 \\\\\n&= 108\\pi\\text{ cm}^3\\end{aligned}$$\n원기둥의 부피는\n$$\\begin{aligned}\nV_{\\text{원기둥}} &= \\pi \\times 3^2 \\times 4 \\\\\n&= 36\\pi\\text{ cm}^3\\end{aligned}$$\n그러므로 구하는 회전체의 부피는 $108\\pi-36\\pi=72\\pi\\text{ cm}^3$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
@@ -1347,8 +1347,8 @@ window.questionBank = [
     "candidateMetadata": {
       "curriculum": "2015",
       "conceptClusterKey": "SOLID_FIGURE",
-      "primaryMethod": "큰 원뿔 부피 108pi에서 원기둥 부피 36pi를 빼 회전체의 부피 72pi를 서술하고 빈칸에 원뿔, 원기둥을 적는다.",
-      "decisiveStep": "회전체 분할(원뿔-원기둥) 식별 및 부피 차 72pi 산출",
+      "primaryMethod": "높이 9cm인 변을 축으로 한 큰 원뿔에서 꼭짓점에 붙은 3×4 직사각형의 회전으로 생긴 원기둥을 빼며, 직사각형의 삼각형 내 포함을 확인한다.",
+      "decisiveStep": "높이 4cm에서 삼각형의 가로 폭 10/3cm가 직사각형 너비 3cm보다 큼을 확인하고 108π−36π=72π를 계산",
       "rpm": {
         "majorUnit": "입체도형",
         "midUnit": "입체도형의 겉넓이와 부피",
