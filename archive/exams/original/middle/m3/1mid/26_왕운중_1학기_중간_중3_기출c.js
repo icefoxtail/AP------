@@ -247,7 +247,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_중간_중3_기출c/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 눈금의 위 수직선에는 원호와 A, B, D의 위치, 아래 수직선에는 글자와 보조선이 겹치지 않도록 C와 E의 위치를 따로 표시했다.",
+    "solutionImageCaption": "두 줄은 같은 눈금이며, 점 C와 E는 보조선과 글자가 겹치지 않도록 아래에 따로 나타냈다. 한 변이 1인 정사각형의 대각선은 √2이다. −1을 중심으로 오른쪽에 그은 반지름 √2의 원호는 점 D에서 수직선과 만난다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -321,7 +325,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_중간_중3_기출c/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 양의 제곱근 구간과 제곱한 자연수 구간을 열린 끝점으로 나타낸 두 수직선.",
+    "solutionImageCaption": "양수인 200과 202를 제곱하면 경계는 40000과 40804가 된다. 열린 양 끝을 제외하면 자연수는 40001부터 40803까지이다. 40803−40001+1=803이므로 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -358,7 +366,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_중간_중3_기출c/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 25 이상 36 미만인 구간과 30.25보다 큰 구간의 교집합을 나타낸 수직선.",
+    "solutionImageCaption": "교집합에서 자연수 x는 31, 32, 33, 34, 35이다. 정답: ④",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -418,7 +430,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_중간_중3_기출c/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 방향의 A3와 B4 용지를 나란히 나타내고 넓이와 대응하는 변의 비를 비교한 그림.",
+    "solutionImageCaption": "넓이비 4:3에서 대응변의 비는 2:√3이므로 축소비율은 √3/2=86.6%이다. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -452,11 +468,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 삼각형 내부에서 정수 $x$를 하나씩 정해 가능한 정수 $y$를 센다.\n두 사선의 교점의 $x$좌표는 $\\frac8{\\sqrt3}$이고 $4<\\frac8{\\sqrt3}<5$이므로 정수 $x$는 $1,2,3,4$이다.\n내부 조건은 $\\sqrt3x-8<y<-\\sqrt3x+8$이다.\n$x=1$이면 $y=-6,-5,\\ldots,6$으로 13개,\n$x=2$이면 $3<2\\sqrt3<4$이므로 $y=-4,-3,\\ldots,4$로 9개,\n$x=3$이면 $5<3\\sqrt3<6$이므로 $y=-2,-1,0,1,2$로 5개,\n$x=4$이면 $6<4\\sqrt3<7$이므로 $y=-1,0,1$로 3개이다.\n따라서 $13+9+5+3=30$개이고 정답은 ⑤이다.",
-    "solutionImage": "assets/images/26_왕운중_1학기_중간_중3_기출/q13-solution.svg",
+    "solutionImage": "assets/images/26_왕운중_1학기_중간_중3_기출c/q13-solution-v2.svg",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 두 사선과 y축으로 둘러싸인 삼각형의 네 세로줄에 내부 정수 좌표점을 표시한 그림.",
+    "solutionImageCaption": "위쪽 직선 f(x)는 8−√3x, 아래쪽 직선 g(x)는 √3x−8이다. x=1, 2, 3, 4인 열에는 각각 13개, 9개, 5개, 3개가 있다. 합은 30개이므로 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -706,7 +725,11 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/26_왕운중_1학기_중간_중3_기출c/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 큰 정사각형에서 안쪽 정사각형을 뺀 네 띠와, 같은 색 부분을 두 직사각형으로 재배치한 모양.",
+    "solutionImageCaption": "남은 넓이는 직사각형 두 개의 넓이 합이므로 20x이다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -756,7 +779,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_중간_중3_기출c/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: A, C, D, E 사다리꼴과 A, B, D, E 사다리꼴의 밑변 조각 및 같은 수직 높이.",
+    "solutionImageCaption": "파란 공통 높이 AC=FD=√2, 주황 밑변은 AE=√3+√2, CD=√3, BD=2√3이다. 두 사다리꼴의 넓이는 각각 √6+1과 (3√6+2)/2이며, 배수는 (16+√6)/25이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
