@@ -2067,6 +2067,37 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
+      "file": "similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2026,
+      "semester": "1",
+      "examType": "final",
+      "subject": "공통수학1",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-C-02",
+      "rangeStartUnit": "항등식과 나머지 정리",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-C-09",
+      "rangeEndUnit": "행렬과 그 연산",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-02",
+          "rangeStartUnit": "항등식과 나머지 정리",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-C-09",
+          "rangeEndUnit": "행렬과 그 연산",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
       "file": "similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사.js",
       "school": "팔마고",
       "topic": "",
@@ -2996,7 +3027,69 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "similar/middle/m1/2mid/26_왕운중_2학기_중간_중1_유사2.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "M1-04",
+      "rangeStartUnit": "좌표평면과 그래프",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "M1-08",
+      "rangeEndUnit": "자료의 정리와 해석",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-04",
+          "rangeStartUnit": "좌표평면과 그래프",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "M1-08",
+          "rangeEndUnit": "자료의 정리와 해석",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사.js",
+      "school": "팔마중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M1-05",
+      "rangeStartUnit": "기본도형",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M1-07",
+      "rangeEndUnit": "입체도형의 성질",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-05",
+          "rangeStartUnit": "기본도형",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사2.js",
       "school": "팔마중",
       "topic": "",
       "grade": "중1",
