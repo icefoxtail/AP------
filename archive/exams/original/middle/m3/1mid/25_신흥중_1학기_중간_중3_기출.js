@@ -389,7 +389,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_1학기_중간_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 정육각형의 세 대각선 절단과 네 조각으로 만든 새 육각형; 파랑은 b 변, 주황은 a 변.",
+    "solutionImageCaption": "새 둘레는 2a+4b=2(2√3)+4·2=8+4√3 cm이다. 정답: ④",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

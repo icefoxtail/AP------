@@ -392,7 +392,11 @@ window.questionBank = [
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_1학기_기말_중3_기출c/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 변의 길이가 2x, 2x+1, 2x+3인 직각삼각형과 빗변 표시.",
+    "solutionImageCaption": "x=1+√3이다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -532,7 +536,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_풍덕중_1학기_기말_중3_기출c/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 이동 포물선의 꼭짓점 V와 그래프 위 P(3,−5), x축까지의 수선.",
+    "solutionImageCaption": "a=−1/5이다. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -599,7 +607,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_풍덕중_1학기_기말_중3_기출c/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 아래로 열린 포물선과 꼭짓점, y절편, 꼭짓점 아래 한 단위 높이에서의 폭 비교.",
+    "solutionImageCaption": "옳지 않은 설명은 ④이다. 정답: ④",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -635,7 +647,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_풍덕중_1학기_기말_중3_기출c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점을 맞춘 다섯 포물선과 y=1, y=−1 수평 비교선.",
+    "solutionImageCaption": "두 번째로 좁은 그래프는 ③이다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -667,7 +683,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_1학기_기말_중3_기출c/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선 위의 A/B와 D/C로 둘러싸인 사다리꼴과 평행한 밑변.",
+    "solutionImageCaption": "AB=8, CD=2, 높이 9이므로 넓이식에서 a=3/8이다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -703,7 +723,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_풍덕중_1학기_기말_중3_기출c/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선의 꼭짓점 후보와 y=−3x+1 직선, 제4사분면의 곡선 가지.",
+    "solutionImageCaption": "제4사분면을 지나는 경우는 a=3/2이다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -727,7 +751,11 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/25_풍덕중_1학기_기말_중3_기출c/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: −2와 −1 사이의 열린 구간에서 x+2는 양수, x+1은 음수인 수직선.",
+    "solutionImageCaption": "두 절댓값을 풀면 합은 1이다. 정답: 서술형 답 1",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -825,6 +853,10 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_풍덕중_1학기_기말_중3_기출c/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²−3x+3 위의 점 A와 y절편 B, 삼각형 OAB 및 수평 높이.",
+    "solutionImageCaption": "a=4, b=7이므로 a+b=11이다. 정답: 서술형 답 11",
+    "solutionImageSize": "full"
   }
 ];

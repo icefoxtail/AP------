@@ -468,7 +468,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중3_기출c/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 절댓값 높이 y=3과 y=−3에서 위·아래로 열린 네 포물선의 폭을 비교한다.",
+    "solutionImageCaption": "|a|가 큰 포물선일수록 좁으므로 ㄷ, ㄱ, ㄴ, ㄹ 순이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -504,7 +508,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중3_기출c/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 1만큼 이동한 아래로 열린 포물선과 y=−8의 두 대칭 교점.",
+    "solutionImageCaption": "−8=−3k²+1에서 k=±√3이므로 두 k값의 곱은 −3이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -539,7 +547,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중3_기출c/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 폭이 같은 위로 열린 포물선 두 개의 꼭짓점 (0,3)과 (2,3)을 비교한다.",
+    "solutionImageCaption": "오른쪽으로 2만큼 옮기려면 a=5, b=−2이므로 a+b=3이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -571,7 +583,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중3_기출c/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선의 양의 꼭짓점 높이와 음의 기울기·양의 y절편을 가진 직선의 대표 예.",
+    "solutionImageCaption": "a<0, b>0이므로 y=ax+b는 음의 기울기와 양의 y절편을 갖는다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -639,7 +655,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중3_기출c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 폭이 서로 다른 포물선 두 개가 하나의 공통 꼭짓점 V에서 만난다.",
+    "solutionImageCaption": "공통 꼭짓점 조건에서 a=1/5, b=4/5이므로 a/b=1/4이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -675,7 +695,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중3_기출c/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 폭의 아래로 열린 포물선 두 개와 이동 후 꼭짓점 (3,7).",
+    "solutionImageCaption": "평행이동해도 a=−2이고 꼭짓점에서 p=3, r=7이므로 a+p−r=−6이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -707,7 +731,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중3_기출c/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 공통 밑변 AB를 공유하는 두 삼각형, 수직 높이 9와 8.",
+    "solutionImageCaption": "공통 밑변이므로 넓이의 비는 높이의 비 9:8과 같다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -782,7 +810,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중3_기출c/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선의 꼭짓점 (3,−2)와 주어진 점 (1,6), 가로 차 2와 세로 차 8.",
+    "solutionImageCaption": "6=a(1−3)²−2에서 a=2이므로 f(x)=2(x−3)²−2=2x²−12x+16.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -806,6 +838,10 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중3_기출c/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통 y절편을 가진 두 포물선과 x=4에 대칭인 (1,f(1)), (7,f(7)) 점.",
+    "solutionImageCaption": "y절편 11, 대칭축 x=4에서 범위 안의 자연수 a=2이므로 f(x)=2x²−16x+11.",
+    "solutionImageSize": "full"
   }
 ];

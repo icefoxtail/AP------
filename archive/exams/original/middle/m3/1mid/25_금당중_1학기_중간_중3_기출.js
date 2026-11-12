@@ -167,7 +167,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "fresh_v2",
-    "subUnitClassificationDepth": "complete_canonical"
+    "subUnitClassificationDepth": "complete_canonical",
+    "solutionImage": "assets/images/25_금당중_1학기_중간_중3_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: A=2를 중심으로 빗변 AC 길이만큼 양쪽에 원호를 그려 수직선과 만나는 P, Q.",
+    "solutionImageCaption": "P−Q=2(2√2)=4√2이다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -333,7 +337,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "fresh_v2",
-    "subUnitClassificationDepth": "complete_canonical"
+    "subUnitClassificationDepth": "complete_canonical",
+    "solutionImage": "assets/images/25_금당중_1학기_중간_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 제곱수 경계에 따라 자연수 x 구간을 나누고 각 구간의 f(x)를 표시한 수직선.",
+    "solutionImageCaption": "3×1+5×2+7×3+2×4=42이다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -635,7 +643,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "fresh_v2",
-    "subUnitClassificationDepth": "complete_canonical"
+    "subUnitClassificationDepth": "complete_canonical",
+    "solutionImage": "assets/images/25_금당중_1학기_중간_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: −2와 1/3을 열린 경계로 두고 부호 조건의 공통 구간을 강조한 수직선.",
+    "solutionImageCaption": "절댓값을 풀면 −2x+3이다. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -723,7 +735,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "fresh_v2",
-    "subUnitClassificationDepth": "complete_canonical"
+    "subUnitClassificationDepth": "complete_canonical",
+    "solutionImage": "assets/images/25_금당중_1학기_중간_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 3과 4 사이의 6−√5와, 3에서 그 점까지의 소수부분 x.",
+    "solutionImageCaption": "(3+x)/(3−x)=−1+6√5/5이므로 A+B=1/5이다. 정답: 서술형 답 1/5",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -751,7 +767,11 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "fresh_v2",
-    "subUnitClassificationDepth": "complete_canonical"
+    "subUnitClassificationDepth": "complete_canonical",
+    "solutionImage": "assets/images/25_금당중_1학기_중간_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 변 x, 넓이 x²인 파란 정사각형과 변 y, 넓이 y²인 주황 정사각형; 둘레합44와 넓이합65.",
+    "solutionImageCaption": "두 둘레의 곱은 16xy=448이다. 정답: 서술형 답 448",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
