@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
+import {specFor} from '../production/phase2.mjs';
 
 const OBSERVER=fileURLToPath(new URL('../production/graph-observer-worker.py',import.meta.url));
 const TIMEOUT_MS=120000;
@@ -37,6 +38,21 @@ test('a tangent over several branches draws a dashed pole at every asymptote',as
   assert.equal(audit.status,'PASS',JSON.stringify(audit.errors));
 });
 
+test('the composed tangent interval samples around open poles and keeps a dashed pole on the y-axis',async()=>{
+  const {fitted,model}=await observe({family:'trigonometric',function:'TAN',coefficients:['3','1','0'],phasePi:'-1/2',
+    sourceDomain:{kind:'INTERVAL_PI',rangePi:['0','2'],states:['OPEN','OPEN']},displaySize:'full',axisTickValues:{x:[],y:[]}});
+  const spec=specFor({capability:'trigonometric-spike-v1',graphPlan:fitted,caption:'Tangent branches'},model,'trig-open-poles');
+  const curve=spec.objects.find(object=>object.kind==='FUNCTION_GRAPH');
+  assert.deepEqual(curve.breaks,[0,Math.PI,2*Math.PI]);
+  const result=await worker({action:'prepare',spec});
+  assert.equal(result.status,'OK',JSON.stringify(result.result));
+  const {primitives}=result.result.prepared;
+  assert.equal(primitives.find(row=>row.id==='y-axis').dash,'5 4');
+  assert.deepEqual(primitives.filter(row=>row.role==='trig-pole').map(row=>row.dash),['5 4','5 4','5 4']);
+  assert.equal(primitives.filter(row=>row.role==='interval-endpoint').length,0);
+  assert.equal(primitives.filter(row=>row.role==='curve').length,2);
+});
+
 test('a pi rate keeps the single-period form exact',async()=>{
   const {fitted,audit}=await observe({family:'trigonometric',function:'SIN',coefficients:['1','0'],ratePi:'1/6',phasePi:'0',sourceDomain:{kind:'ALL_REALS'},domain:[-6,6],viewport:[-7,7,-4,4],axisTickValues:{x:[],y:[]}});
   assert.equal(fitted.overviewPolicy,'TRIGONOMETRIC_PERIODIC_OVERVIEW_v2');
@@ -67,7 +83,9 @@ test('bad grammar and unsupported units are refused with codes',async()=>{
   const rationalPhase=plainPlan({phase:'1/3'});delete rationalPhase.phasePi;
   assert.match(await refused(rationalPhase),/TRIG_KEY_POINTS_REQUIRE_RATIONAL_PHASE/);
   assert.match(await refused(plainPlan({referenceLines:[{id:'k',y:'1/2',intersectionCount:9}]})),/TRIG_LINE_INTERSECTION_COUNT_MISMATCH:k:engine finds 2 intersection/);
-  assert.match(await refused(plainPlan({function:'TAN',coefficients:['1','0'],ratePi:'1/2',sourceDomain:{kind:'INTERVAL',range:['0','1'],states:['OPEN','OPEN']},referenceLines:[],keyPoints:false})),/TRIG_TAN_POLE_AT_INTERVAL_END/);
+  const tan=states=>plainPlan({function:'TAN',coefficients:['1','0'],ratePi:'1/2',sourceDomain:{kind:'INTERVAL',range:['0','1'],states},referenceLines:[],keyPoints:false});
+  assert.match(await refused(tan(['OPEN','CLOSED'])),/TRIG_TAN_POLE_AT_INTERVAL_END/);
+  assert.match(await refused(tan(['OPEN','OPEN'])),/TRIG_TAN_INTERVAL_NO_POLE/);
   assert.match(await refused(plainPlan({ratePi:'1/2',sourceDomain:{kind:'INTERVAL',range:['0','50'],states:['CLOSED','CLOSED']},domain:[0,50],referenceLines:[],keyPoints:false})),/TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED/);
 });
 

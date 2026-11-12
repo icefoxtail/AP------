@@ -106,13 +106,17 @@ def _produce(plan):
         features=plan.get('trigFeatures',{})
         if plan.get('function') in {'SIN','COS'}:critical.extend(float(Fraction(row['x'])) for row in features.get('phasePoints',[]))
         elif features.get('referencePoint'):critical.append(float(Fraction(features['referencePoint']['x'])))
+    breaks=[]
     if plan['family']=='trigonometric' and plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v2':
         features=plan.get('trigIntervalFeatures',{});factor=math.pi if features.get('axisUnit')=='PI' else 1.0
         critical.extend(point['x'] for row in features.get('lines',[]) for point in row['intersections'])
         critical.extend(float(Fraction(row['x']))*factor for row in features.get('keyPoints',[]))
-        critical.extend(float(Fraction(row['x']))*factor for row in features.get('poles',[]))
+        poles=features.get('poles',[])
+        pole_xs=[float(Fraction(row['x']))*factor for row in poles]
+        if any('boundary' in row for row in poles):breaks=pole_xs
+        else:critical.extend(pole_xs)
         critical.extend(float(Fraction(row['x']))*factor for row in features.get('cusps',[]))
-    result=sample(expression(plan),plan['domain'],vp,critical_x=critical,clip_refine=plan.get('clipRefine') is True)
+    result=sample(expression(plan),plan['domain'],vp,critical_x=critical,breaks=breaks,clip_refine=bool(breaks) or plan.get('clipRefine') is True)
     # A tangent branch near a pole can exceed the finite wire range in its refinement-cap report; the code is the evidence, not the huge px.
     for warning in result.get('warnings',[]):
         if isinstance(warning,dict) and 'errorPx' in warning and not (math.isfinite(warning['errorPx']) and abs(warning['errorPx'])<=9007199254740991):warning['errorPx']=None

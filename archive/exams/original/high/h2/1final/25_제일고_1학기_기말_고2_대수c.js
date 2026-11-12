@@ -60,9 +60,9 @@ window.questionBank = [
       "식세우기"
     ],
     "wide": false,
-    "solutionImage": "assets/images/25_제일고_1학기_기말_고2_수학I/q2-solution.svg",
-    "solutionImageAlt": "y=tan(3x/2)의 그래프를 주기 2π/3로 세 개의 가지로 나누어 그리고, 각 가지 사이의 점근선 x=(2n+1)π/3을 수직 점선으로 표시한 그래프.",
-    "solutionImageCaption": "branch-separated tangent graph",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고2_대수c/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 탄젠트 곡선의 가운데 가지와 양옆 점근선을 표시한다.",
+    "solutionImageCaption": "그림의 T=2π/3은 주기이며 가운데 가지 양쪽의 점근선 간격이다. 따라서 점근선의 방정식은 x=(2n+1)π/3이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "함수 $y = \\tan\\dfrac{3}{2}x$의 점근선의 방정식은? (단, $n$은 정수)",
@@ -567,7 +567,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고2_대수c/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규화한 한 주기 t=2x/T (T=4π/k)에서 사인곡선과 파란 y=1/2, 주황 y=−1/2 기준선의 교점 쌍을 표시한다.",
+    "solutionImageCaption": "예: t=2x/T (T=4π/k)로 한 주기를 나타낸다. 파란 y=1/2와 주황 y=−1/2의 두 교점 쌍은 각각 마루와 골을 중심으로 대칭이다. 이 대칭으로 네 x좌표 합을 주기로 나타낸다. 정답은 24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

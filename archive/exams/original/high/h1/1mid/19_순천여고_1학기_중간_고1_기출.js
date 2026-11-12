@@ -684,7 +684,11 @@ window.questionBank = [
       "sourcePdfFile": "2019_순여고1_1중간.pdf",
       "sourcePdfSha256": "417CB9B02CD9D94EF32F999032BE6D156F74555FF36166CAC685111D9436145E",
       "sourcePage": 3
-    }
+    },
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 6×6 주사위 순서쌍 표에서 열은 첫 번째 눈 a, 행은 두 번째 눈 b이고 머리글은 아주 옅은 회색이다. 두 눈의 차의 절댓값 |a−b|가 0 또는 1인 대표 칸은 연한 회색, 2인 대표 칸은 진한 회색으로 표시했다.",
+    "solutionImageCaption": "열은 첫 번째 눈 a, 행은 두 번째 눈 b이다. 머리글은 아주 옅은 회색이고, 두 눈의 차의 절댓값 |a−b|가 0 또는 1인 대표 칸은 연한 회색, 2인 대표 칸은 진한 회색으로 표시했다. 모든 가능한 경우를 색칠한 표는 아니다. 정답은 24가지이다.",
+    "solutionImageSize": "full"
   },
   {
     "questionType": "객관식",
@@ -1048,7 +1052,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_순천여고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고1_기출/q20-solution-v2.svg",
     "questionUid": "qid_v1_59d25faf898e94764fc2cddb56f9b6ea670a184800e55482a9fa1695a660b78b",
     "sourceQid": 20,
     "sourceOrdinal": 20,
@@ -1060,7 +1064,10 @@ window.questionBank = [
       "sourcePdfFile": "2019_순여고1_1중간.pdf",
       "sourcePdfSha256": "417CB9B02CD9D94EF32F999032BE6D156F74555FF36166CAC685111D9436145E",
       "sourcePage": 4
-    }
+    },
+    "solutionImageAlt": "해설 그림: 수형도에서 빈 의자를 놓을 수 있는 왼쪽 끝, 세 학생 사이의 틈, 오른쪽 끝을 갈래로 나타냈다.",
+    "solutionImageCaption": "네 학생 사이를 비우고 남은 빈 의자를 둘 자리를 먼저 고르면 다섯 가지 자리 틀이 생긴다. 네 학생의 순서는 별도로 세어 곱한다. 정답은 120가지이다.",
+    "solutionImageSize": "full"
   },
   {
     "image": "assets/images/19_순천여고_1학기_중간_고1_기출/q21.png",

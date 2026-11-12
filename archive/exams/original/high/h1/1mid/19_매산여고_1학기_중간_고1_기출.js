@@ -592,7 +592,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: x가 −1부터 2까지인 구간에 그린 아래로 열린 포물선과 꼭짓점 V를 표시한다.",
+    "solutionImageCaption": "V는 꼭짓점이다. 꼭짓점에서 최댓값을 정한 뒤, 구간 양 끝의 함수값을 비교한다. 정답은 −2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -770,9 +774,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "stack",
     "wide": false,
-    "solutionImage": "assets/images/19_매산여고_1학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "축 x=4, 꼭짓점 (4,12), 접점 (2,0), 구간 [2,5]에서의 f(5)=9를 실제 좌표와 포물선·직선으로 표현한 도형",
-    "solutionImageCaption": "f(x)=-3(x-4)^2+12 와 y=12x-24, 접점 (2,0)",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 패널의 파란 곡선은 위로 열린 포물선 후보, 아래 패널의 파란 곡선은 아래로 열린 후보이며, 두 패널의 주황 점선은 같은 직선을 나타낸다.",
+    "solutionImageCaption": "파란 곡선은 두 후보를, 주황 점선은 y=12x−24를 나타낸다. 위·아래 패널의 후보는 축 x=4, 구간 2≤x≤5에서 최댓값 12와 최솟값 0을 만족하도록 잡아 직선과의 접촉을 비교한다. 정답은 9이다.",
     "solutionImageSize": "full"
   },
   {
@@ -960,9 +964,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "stack",
     "wide": false,
-    "solutionImage": "assets/images/19_매산여고_1학기_중간_고1_기출/q23-solution.svg",
-    "solutionImageAlt": "점 (0, 8)을 지나는 두 접선과 접점",
-    "solutionImageCaption": "점 (0, 8)을 지나는 두 접선과 접점",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선과 좌표평면 위의 점 P를 표시한다.",
+    "solutionImageCaption": "P는 주어진 점 (0,8)이고, 포물선과 기울기 t인 직선의 연립식이 중근이 되도록 판별식을 0으로 둔다. 정답은 y=−2x+8 또는 y=6x+8이다.",
     "solutionImageSize": "full"
   }
 ];
