@@ -349,14 +349,14 @@ window.questionBank = [
       "㉠ $\\rightarrow$ ㉡ $\\rightarrow$ ㉢ $\\rightarrow$ ㉣ $\\rightarrow$ ㉤ $\\rightarrow$ ㉥",
       "㉠ $\\rightarrow$ ㉢ $\\rightarrow$ ㉡ $\\rightarrow$ ㉤ $\\rightarrow$ ㉣ $\\rightarrow$ ㉥",
       "㉢ $\\rightarrow$ ㉠ $\\rightarrow$ ㉡ $\\rightarrow$ ㉣ $\\rightarrow$ ㉤ $\\rightarrow$ ㉥",
-      "㉠ $\\rightarrow$ ㉡ $\\rightarrow$ ㉣ $\\rightarrow$ ㉢ $\\rightarrow$ ㉤ $\\rightarrow$ ㉥",
+      "㉠ $\\rightarrow$ ㉡ $\\rightarrow$ ㉣ $\\rightarrow$ ㉤ $\\rightarrow$ ㉢ $\\rightarrow$ ㉥",
       "㉡ $\\rightarrow$ ㉠ $\\rightarrow$ ㉢ $\\rightarrow$ ㉣ $\\rightarrow$ ㉤ $\\rightarrow$ ㉥"
     ],
     "answer": "①",
     "points": 4,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
-    "solution": "동위각의 크기가 같음을 이용한 평행선 작도의 순서는 다음과 같다.\n$\\begin{aligned} \\text{1단계 (㉠): } & \\text{점 } P\\text{를 지나 직선 } l\\text{과 만나는 보조선을 긋는다.} \\ \\text{2단계 (㉡): } & \\text{교점을 중심으로 적당한 반지름의 호를 그려 교점들을 잡는다.} \\ \\text{3단계 (㉢): } & \\text{같은 반지름으로 점 } P\\text{를 중심으로 호를 그린다.} \\ \\text{4단계 (㉣): } & \\text{아래쪽 호에서 두 교점 사이의 거리를 컴퍼스로 잰다.} \\ \\text{5단계 (㉤): } & \\text{위쪽 호 위에 그 거리를 옮겨 교점을 표시한다.} \\ \\text{6단계 (㉥): } & \\text{점 } P\\text{와 그 교점을 잇는 직선을 그어 평행선을 완성한다.} \\end{aligned}$\n따라서 올바른 순서는 ㉠ $\\rightarrow$ ㉡ $\\rightarrow$ ㉢ $\\rightarrow$ ㉣ $\\rightarrow$ ㉤ $\\rightarrow$ ㉥이다.\n따라서 정답은 ①이다.\n",
+    "solution": "동위각의 크기가 같음을 이용한 평행선 작도의 순서는 다음과 같다.\n$\\begin{aligned} \\text{1단계 (㉠): } & \\text{점 } P\\text{를 지나 직선 } l\\text{과 만나는 보조선을 긋는다.} \\ \\text{2단계 (㉡): } & \\text{교점을 중심으로 적당한 반지름의 호를 그려 교점들을 잡는다.} \\ \\text{3단계 (㉢): } & \\text{같은 반지름으로 점 } P\\text{를 중심으로 호를 그린다.} \\ \\text{4단계 (㉣): } & \\text{아래쪽 호에서 두 교점 사이의 거리를 컴퍼스로 잰다.} \\ \\text{5단계 (㉤): } & \\text{위쪽 호 위에 그 거리를 옮겨 교점을 표시한다.} \\ \\text{6단계 (㉥): } & \\text{점 } P\\text{와 그 교점을 잇는 직선을 그어 평행선을 완성한다.} \\end{aligned}$\n㉡ 뒤에는 ㉢과 ㉣의 순서를 바꾸어도 되지만, ㉤은 ㉢과 ㉣이 모두 끝난 뒤에 해야 한다. ㉥은 ㉤ 뒤에 한다.\n보기에서 이 조건에 맞는 순서는 ㉠ $\\rightarrow$ ㉡ $\\rightarrow$ ㉢ $\\rightarrow$ ㉣ $\\rightarrow$ ㉤ $\\rightarrow$ ㉥인 ①이다.\n",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"

@@ -20,6 +20,12 @@
         "scope": "Q1–Q22 solution tails, including reported Q2/Q3/Q4/Q14/Q20/Q21",
         "change": "Removed only the appended U+E907 visual-status and source-question-metadata JSON blocks from solution strings. Preserved parsed visual status, parsed source metadata, and each exact raw source metadata block in sourceProvenance.embeddedMetaTailRecords.",
         "independentCheck": "Detected and parsed the same two-block tail pattern in Q1–Q22. The six reported items are included. Pre/post object comparison confirms question count, ids, content, choices, answers, points, and all normal solution text are unchanged; only metadata suffixes were removed."
+      },
+      {
+        "scope": "Q10 construction-order choices and solution",
+        "before": "Choice ① is the conventional order, but choice ④ (㉠→㉡→㉣→㉢→㉤→㉥) is also feasible because measuring the chord from the O-centered arc can occur before drawing the equal-radius arc at P.",
+        "after": "Changed choice ④ to ㉠→㉡→㉣→㉤→㉢→㉥, which attempts to transfer a measured distance onto the P-centered arc before that arc exists. Clarified that ㉢ and ㉣ may swap, while ㉤ depends on both.",
+        "independentCheck": "After ㉡, both drawing the same-radius arc at P (㉢) and measuring the original chord (㉣) are possible. Transfer (㉤) requires the P-centered arc from ㉢ and the measured chord from ㉣; connecting (㉥) follows ㉤. ① is valid; revised ④ is invalid because ㉤ precedes ㉢. ②/③ attempt ㉢ before the reference radius from ㉡; ⑤ uses O before ㉠ defines it. Only ① remains valid."
       }
     ],
     "embeddedMetaTailRecords": [
@@ -1573,7 +1579,7 @@
   ],
   "validation": {
     "jsSyntax": "PASS",
-    "mathReview": "UNREVIEWED except Q16/Q18 calculations rechecked",
+    "mathReview": "Q10 construction-order ambiguity independently checked; other items remain at their recorded review status.",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "NOT_RUN",
     "sourceTextSha256": "NOT_RUN",
@@ -1609,10 +1615,10 @@
     }
   },
   "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "638c5c263b441bbd3b757e459f8e55f58907dac4",
+  "expectedSourceBlobSha1": "b5c0bdc04616b0c91b83f5b923a458ba2f557a97",
   "fourSlotCandidate": {
     "path": "archive/exams/similar/middle/m1/2mid/24_연향중_2학기_중간_중1_유사.4slot-candidate.json",
-    "sha256": "f2d7c8d6f16943f658d740029d76d154945c08d2a0da7dd21e7f6d35f63758a9",
+    "sha256": "1fc6f6d69be63a4fcac965455ce3d5a5dbb60348e64b3b33fb24b42aacbfcd2f",
     "status": "UNREVIEWED"
   }
 }
