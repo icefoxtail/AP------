@@ -472,36 +472,36 @@
 
 ## 23_금당중_2학기_기말_중1_유사 — Drive 판본, 변환 초안
 
-출처: Drive 문서 1AFN_NV12u1tcVI_AHFZAIFmpqpDgDCZAD7RM-Z4Xovc (24문항·100점). SVG는 이번 이식에서 만들지 않았습니다. NONE은 원 MD에 시각 계획이 없다는 뜻이며 그림 불필요 판정으로 간주하지 않았습니다. 새 판본 자산은 미존재·미완입니다.
+출처: Drive 문서 1AFN_NV12u1tcVI_AHFZAIFmpqpDgDCZAD7RM-Z4Xovc (24문항·100점). 문제 그림 16개·해설 그림 22개를 연결했습니다. SVG source는 9017f4b6b6b9이며 input manifest source blob 8ec64a28e6d23dd0883e09f2f4a61742a43836a1가 현재 JS와 일치했습니다. 모든 그림은 SAMPLE_ONLY입니다; 시각 QA·실제 Archive 검증은 미실행.
 
 | 문항 | 문제 그림 | 해설 그림 | 이유 / 상태 |
 |---|---|---|---|
-| Q01 | 불필요 | 불필요 | 보기별 정의 판정 |
+| Q01 | 불필요 | 연결·SAMPLE_ONLY·QA 대기 | 보기별 정의 판정 해설 그림만 준비·연결; source binding 및 정적 math checks PASS. |
 | Q02 | 불필요 | 불필요 | 다면체 면 수 식 |
-| Q03 | 필요·P1·미완 | 도움·P2·미완 | 정비례 그래프와 (-3,4)가 자료 |
+| Q03 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 정비례 그래프와 (-3,4)가 자료 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
 | Q04 | 불필요 | 불필요 | 반비례식 대입 |
-| Q05 | 필요·P1·미완 | 도움·P2·미완 | 반비례 그래프/꼭짓점 C; 계획의 (3,6)은 주어진 자료처럼 표시 금지 |
-| Q06 | 필요·P1·미완 | 도움·P2·미완 | 그래프에서 상수·가지 위치 확인 |
-| Q07 | 필요·P1·미완 | 도움·P2·미완 | 두 그래프 교점 x좌표가 자료 |
-| Q08 | 필요·P1·미완 | 도움·P2·미완 | 교차 직선과 각 위치 |
-| Q09 | 필요·P1·미완 | 도움·P2·미완 | 육각형 내각·외각 위치 |
-| Q10 | 불필요 | 불필요 | 정십이각형 성질 |
-| Q11 | 필요·P1·미완 | 도움·P2·미완 | 평행 현과 중심각 위치 |
-| Q12 | 필요·P1·미완 | 도움·P2·미완 | 중심각·지름·호 배치 |
-| Q13 | 필요·P1·미완 | 도움·P2·미완 | 담장과 끈의 꺾이는 영역 |
-| Q14 | 불필요 | 불필요 | 다면체 옆면 대응 |
-| Q15 | 불필요 | 불필요 | 정다면체 사실 |
-| Q16 | 불필요 | 불필요 | 회전체 성질 판정 |
-| Q17 | 도움·P2·미완 | 도움·P2·미완 | 원문 옆면 높이 6과 plan의 수직 높이 5 불일치; SVG 전 정합 필요 |
-| Q18 | 도움·P2·미완 | 도움·P2·미완 | 원뿔에서 원기둥으로 부피 이동 |
-| Q19 | 도움·P2·미완 | 도움·P2·미완 | 원기둥 안 세 구 |
-| Q20 | 필요·P1·미완 | 도움·P2·미완 | 사분원·사다리꼴·회전축 |
-| Q21 | 필요·P1·미완 | 도움·P2·미완 | 거리-시간 그래프 |
-| Q22 | 필요·P1·미완 | 도움·P2·미완 | 외각과 원격 내각 위치; t 표기 |
-| Q23 | 불필요 | 불필요 | 내외각 비와 대각선 수 |
-| Q24 | 도움·P2·미완 | 도움·P2·미완 | 원기둥·정사각뿔 치수; text sufficient |
+| Q05 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 반비례 그래프/꼭짓점 C; 계획의 (3,6)은 주어진 자료처럼 표시 금지 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
+| Q06 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 그래프에서 상수·가지 위치 확인 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
+| Q07 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 두 그래프 교점 x좌표가 자료 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
+| Q08 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 교차 직선과 각 위치 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
+| Q09 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 육각형 내각·외각 위치 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
+| Q10 | 불필요 | 연결·SAMPLE_ONLY·QA 대기 | 정십이각형 성질 해설 그림만 준비·연결; source binding 및 정적 math checks PASS. |
+| Q11 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 평행 현과 중심각 위치 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
+| Q12 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 중심각·지름·호 배치 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
+| Q13 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 담장과 끈의 꺾이는 영역 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
+| Q14 | 불필요 | 연결·SAMPLE_ONLY·QA 대기 | 다면체 옆면 대응 해설 그림만 준비·연결; source binding 및 정적 math checks PASS. |
+| Q15 | 불필요 | 연결·SAMPLE_ONLY·QA 대기 | 정다면체 사실 해설 그림만 준비·연결; source binding 및 정적 math checks PASS. |
+| Q16 | 불필요 | 연결·SAMPLE_ONLY·QA 대기 | 회전체 성질 판정 해설 그림만 준비·연결; source binding 및 정적 math checks PASS. |
+| Q17 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 밑면 4·8, 옆면 사다리꼴 높이 6과 답 224를 대조. SVG 내부 수직높이는 √32로 정합(기존 plan의 수직높이 5는 불일치); 문제 그림에는 수직높이·계산 결과를 노출하지 않음. 시각 QA 미실행. 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
+| Q18 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 원뿔에서 원기둥으로 부피 이동 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
+| Q19 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 원기둥 안 세 구 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
+| Q20 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 회전 전 사분원·사다리꼴 그림과 해설의 회전체를 분리. 수정 plan은 반구 r=5와 원뿔대 아래 r=2·위 r=5·높이 4로 답 89π 검산; 기존 뒤집힌 plan 미사용. 해설 색상은 밑면만 적용됨. 시각 QA 미실행. 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
+| Q21 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 거리-시간 그래프 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
+| Q22 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 외각과 원격 내각 위치; t 표기 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
+| Q23 | 불필요 | 연결·SAMPLE_ONLY·QA 대기 | 내외각 비와 대각선 수 해설 그림만 준비·연결; source binding 및 정적 math checks PASS. |
+| Q24 | 연결·SAMPLE_ONLY·QA 대기 | 연결·SAMPLE_ONLY·QA 대기 | 원기둥·정사각뿔 치수; text sufficient 문항 발문·보기·해설 및 source binding 대조, 정적 math/leak checks PASS. |
 
-MD의 문항별 계획 구획은 분리해 읽었고 비-NONE 계획은 별도 _plans에 보존합니다. 시각 검수와 Archive 렌더 확인은 미실행입니다. Q22 변수명 및 Q24 그림 참조만 명료화했습니다.
+Q17의 잘못된 수직높이 5 plan은 재사용하지 않고 전용 SVG plan의 √32를 확인했습니다. Q20도 전용 회전도형 plan을 사용했습니다. JS 문법·24문항·100점·정답 보존 및 파일/해시/경로 검사는 수행합니다. 렌더 실행·시각 검수·운영 Archive 화면 확인은 미실행이며 SVG는 SAMPLE_ONLY입니다.
 
 
 ### 23_연향중_2학기_기말_중1_유사 — 신규 Drive 판본

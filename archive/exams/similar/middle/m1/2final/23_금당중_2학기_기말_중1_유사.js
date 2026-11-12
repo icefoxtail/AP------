@@ -114,7 +114,11 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q01-solution.svg",
+    "solutionImageAlt": "y=−3x · O(0,0), P(−2,6)을 지나는 직선 · 제2·4사분면",
+    "solutionImageCaption": "y=−3x · O(0,0), P(−2,6)을 지나는 직선 · 제2·4사분면",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -335,7 +339,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q03.svg",
+    "imageAlt": "y=ax의 그래프 · P(-3,4)",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q03-solution.svg",
+    "solutionImageAlt": "P(-3,4)를 y=ax에 대입 · 4=−3a → a=−4/3",
+    "solutionImageCaption": "P(-3,4)를 y=ax에 대입 · 4=−3a → a=−4/3",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -559,7 +570,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q05.svg",
+    "imageAlt": "C는 y=18/x 위의 점 · 직사각형 AOBC · 좌표값을 지정하지 않은 도식",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q05-solution.svg",
+    "solutionImageAlt": "C=(x,y)라 하면 가로x, 세로y · y=18/x이므로 넓이xy=18",
+    "solutionImageCaption": "C=(x,y)라 하면 가로x, 세로y · y=18/x이므로 넓이xy=18",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -669,7 +687,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q06.svg",
+    "imageAlt": "점 (-3, 4)를 지나는 반비례 관계의 그래프",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q06-solution.svg",
+    "solutionImageAlt": "P(-3,4) → xy=−12 · 보기② Q(-4,2)는 xy=−8이므로 곡선 밖",
+    "solutionImageCaption": "P(-3,4) → xy=−12 · 보기② Q(-4,2)는 xy=−8이므로 곡선 밖",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -778,7 +803,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q07.svg",
+    "imageAlt": "y=-3x와 y=a/x의 그래프가 x=2에서 만나는 그림",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q07-solution.svg",
+    "solutionImageAlt": "교점 P의 x=2 → y=−6 · 반비례 상수 a=2×(−6)=−12",
+    "solutionImageCaption": "교점 P의 x=2 → y=−6 · 반비례 상수 a=2×(−6)=−12",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -887,7 +919,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q08.svg",
+    "imageAlt": "AD와 BC가 O에서 만남 · 주어진45°,55°,32°와 미지각x",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q08-solution.svg",
+    "solutionImageAlt": "위 삼각형의 O각80° = 맞꼭지각80° · x=180°−80°−32°=68°",
+    "solutionImageCaption": "위 삼각형의 O각80° = 맞꼭지각80° · x=180°−80°−32°=68°",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -997,7 +1036,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q09.svg",
+    "imageAlt": "육각형의 네 내각과 외각45° · 나머지 내각 x",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q09-solution.svg",
+    "solutionImageAlt": "외각45°의 이웃 내각135° · 육각형 내각합720° → x=120°",
+    "solutionImageCaption": "외각45°의 이웃 내각135° · 육각형 내각합720° → x=120°",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -1113,7 +1159,11 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q10-solution.svg",
+    "solutionImageAlt": "정십이각형 · 한 꼭짓점 대각선9개로 삼각형10개 · 내각합1800°",
+    "solutionImageCaption": "정십이각형 · 한 꼭짓점 대각선9개로 삼각형10개 · 내각합1800°",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -1234,7 +1284,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q11.svg",
+    "imageAlt": "원 O · AB∥OC · ∠AOB=108° · 부채꼴 AOB의 넓이 45 cm²",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q11-solution.svg",
+    "solutionImageAlt": "OA=OB → 밑각 36° · AB∥OC의 엇각 · 넓이 45×36/108=15 cm²",
+    "solutionImageCaption": "OA=OB → 밑각 36° · AB∥OC의 엇각 · 넓이 45×36/108=15 cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1355,7 +1412,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q12.svg",
+    "imageAlt": "원 O · ∠AOB=40°, ∠BOC=80° · B,O,D는 한 직선 위",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q12-solution.svg",
+    "solutionImageAlt": "호 AB:BC:AC=40:80:120=1:2:3 · AC 중심각은120° · BD는 지름",
+    "solutionImageCaption": "호 AB:BC:AC=40:80:120=1:2:3 · AC 중심각은120° · BD는 지름",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1465,7 +1529,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q13.svg",
+    "imageAlt": "정삼각형 담장 한 변5m · A에 길이7m 끈을 묶음 · 담장 안 출입 불가",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q13-solution.svg",
+    "solutionImageAlt": "파랑: 반지름7·300° · 주황 두 곳: 남은 끈2·각120° · 합87π/2 m²",
+    "solutionImageCaption": "파랑: 반지름7·300° · 주황 두 곳: 남은 끈2·각120° · 합87π/2 m²",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1563,7 +1634,11 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q14-solution.svg",
+    "solutionImageAlt": "육각뿔: 밑면은 육각형, 파랑 옆면은 삼각형 · 보기⑤가 잘못된 짝",
+    "solutionImageCaption": "육각뿔: 밑면은 육각형, 파랑 옆면은 삼각형 · 보기⑤가 잘못된 짝",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1667,7 +1742,11 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q15-solution.svg",
+    "solutionImageAlt": "정팔면체 P에 면4개 · 정십이면체 Q에 면3개 · 보기④가 틀림",
+    "solutionImageCaption": "정팔면체 P에 면4개 · 정십이면체 Q에 면3개 · 보기④가 틀림",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1771,7 +1850,11 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q16-solution.svg",
+    "solutionImageAlt": "구의 내부를 자른 단면을 정면에서 보면 원 · 중심에서 경계까지 거리가 같음",
+    "solutionImageCaption": "구의 내부를 자른 단면을 정면에서 보면 원 · 중심에서 경계까지 거리가 같음",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1892,7 +1975,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q17.svg",
+    "imageAlt": "밑면의 한 변 8 cm, 4 cm · 옆면 사다리꼴의 높이 6 cm",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q17-solution.svg",
+    "solutionImageAlt": "옆면 하나 (4+8)×6÷2=36 · 옆넓이144 + 두 밑면80 =224 cm²",
+    "solutionImageCaption": "옆면 하나 (4+8)×6÷2=36 · 옆넓이144 + 두 밑면80 =224 cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -2002,7 +2092,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q18.svg",
+    "imageAlt": "회전축을 지나는 단면 · 왼쪽 원뿔의 물, 오른쪽 옮긴 물 부분 · 단위 cm",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q18-solution.svg",
+    "solutionImageAlt": "축 단면으로 본 같은 물 · 원뿔48π = 원기둥36πh → h=4/3 cm",
+    "solutionImageCaption": "축 단면으로 본 같은 물 · 원뿔48π = 원기둥36πh → h=4/3 cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -2111,7 +2208,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q19.svg",
+    "imageAlt": "지름 4 cm인 원기둥에 공 3개가 꼭 맞게 들어 있음",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q19-solution.svg",
+    "solutionImageAlt": "반지름2 · 높이4×3=12 · 원기둥48π−공3개32π=16π cm³",
+    "solutionImageCaption": "반지름2 · 높이4×3=12 · 원기둥48π−공3개32π=16π cm³",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -2227,7 +2331,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q20.svg",
+    "imageAlt": "직선 l 둘레로 한 바퀴 회전 · 사분원과 사다리꼴 · 단위 cm",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q20-solution.svg",
+    "solutionImageAlt": "반구 곡면50π + 원뿔대 옆면35π + 아래 밑면4π =89π cm²",
+    "solutionImageCaption": "반구 곡면50π + 원뿔대 옆면35π + 아래 밑면4π =89π cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -2330,7 +2441,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q21.svg",
+    "imageAlt": "민수: 파랑 f, 지수: 주황 g · 2분 동안 각각1000m, 200m 이동",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q21-solution.svg",
+    "solutionImageAlt": "민수 y=500x:10분 · 지수 y=100x:50분 · 도착 차이40분",
+    "solutionImageCaption": "민수 y=500x:10분 · 지수 y=100x:50분 · 도착 차이40분",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -2434,7 +2552,14 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q22.svg",
+    "imageAlt": "삼각형의 한 외각 (2t+10)° · 두 내각 (t−15)°, 80°",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q22-solution.svg",
+    "solutionImageAlt": "한 외각=이웃하지 않는 두 내각의 합 · 2t+10=(t−15)+80 → t=55",
+    "solutionImageCaption": "한 외각=이웃하지 않는 두 내각의 합 · 2t+10=(t−15)+80 → t=55",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -2544,7 +2669,11 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q23-solution.svg",
+    "solutionImageAlt": "내각:외각=3:1 → 외각45°, 정팔각형 · 대각선8×5÷2=20개",
+    "solutionImageCaption": "내각:외각=3:1 → 외각45°, 정팔각형 · 대각선8×5÷2=20개",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -2664,6 +2793,13 @@ window.questionBank = [
         "scenarioNote": ""
       },
       "hold": ""
-    }
+    },
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q24.svg",
+    "imageAlt": "(1) 원기둥: 반지름3, 높이6 · (2) 정사각뿔: 밑변5, 높이12",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_유사/q24-solution.svg",
+    "solutionImageAlt": "(1) 18π+36π=54π cm² · (2) 5²×12÷3=100 cm³",
+    "solutionImageCaption": "(1) 18π+36π=54π cm² · (2) 5²×12÷3=100 cm³",
+    "solutionImageSize": "full"
   }
-];
+]
