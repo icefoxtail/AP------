@@ -32,3 +32,7 @@ AUTHOR_GUIDE PLANE_FIGURE_v1 / TRANSLATE_POINT / displaySegments arrow / planeMa
 
 ## 별도 발견 (JS 수정하지 않음)
 Q3 solution 끝에 사설문자 U+E907로 구분된 plan/meta JSON이 포함돼 있다. 부모에게 보고했으며 중1 MD 변환 담당이 분리할 대상이다. 순수 수학 해설과 입력 계획만 위 내용에 사용했다. 해당 JS 표시 잔재를 수정한 뒤에는 최신 blob 및 Q3 조건이 그대로인지 다시 확인한다.
+
+## 2026-11-12 최신 원문 재결속 및 실제 실행 결과
+중1 담당 수정 후 source blob은 b928c4c8fa415aaabd65a5a05ebd9cd4de20e852 (보고된 commit 4535b2c4e)이다. Q1/Q3의 발문·선지·정답·순수 수학 해설은 동일하며 U+E907 plan/meta 잔재가 제거됨을 직접 읽어 확인했다. 앞선 sourceRef/blob은 최초 작성 당시 이력으로 보존한다.
+매산 Q3 문제 입력을 기존 저장소 엔진 snapshot 6e27b1da22fa96f585419b20be1718c7ce0d1c06의 격리 사본에서 실행했다. 잠금 의존성 설치 후 model 단계를 지나 measure에서 ARCHIVE_INPUT_INVALID / SOURCE_SCOPE로 실패했다. 현 main construction-archive-capture-v1.mjs blob 9690c4942a6b48a9229c753e3e192beee89e81d2에서도 requireOriginal:true 제한을 확인했다. similar 경로를 original로 위장하거나 검사를 끄지 않았다. SVG/PNG는 미생성, 시각 검수 NOT_RUN, 인계/게시 미완료. Q1은 렌더 시도하지 않았다.

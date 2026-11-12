@@ -23,3 +23,7 @@ JSON 및 참조 의존성, 점 순서와 반직선 동등성/선택지 구분을
 기존 게시기는 original 탐색/solution 중심이므로 similar/problem 게시 계약 미확인, 지정 구현 담당 미확인, 인계 미전송.
 입력 브랜치에 원문 JS를 복사하지 않았다. 위 sourceRef와 blob을 따로 가져와야 한다. 같은 경로의 구판으로 대체하지 말 것.
 Q1 solution의 U+E907 plan/meta 잔재는 중1 담당 수정 예정. 수정 후 최신 blob의 발문·선지·정답 및 순수 해설이 그대로인지 확인해 다시 결속할 것.
+
+## 2026-11-12 최신 원문 재결속 및 실제 실행 결과
+중1 담당 수정 후 source blob은 b928c4c8fa415aaabd65a5a05ebd9cd4de20e852 (보고된 commit 4535b2c4e)이다. Q1/Q3의 발문·선지·정답·순수 수학 해설은 동일하며 U+E907 plan/meta 잔재가 제거됨을 직접 읽어 확인했다. 앞선 sourceRef/blob은 최초 작성 당시 이력으로 보존한다.
+매산 Q3 문제 입력을 기존 저장소 엔진 snapshot 6e27b1da22fa96f585419b20be1718c7ce0d1c06의 격리 사본에서 실행했다. 잠금 의존성 설치 후 model 단계를 지나 measure에서 ARCHIVE_INPUT_INVALID / SOURCE_SCOPE로 실패했다. 현 main construction-archive-capture-v1.mjs blob 9690c4942a6b48a9229c753e3e192beee89e81d2에서도 requireOriginal:true 제한을 확인했다. similar 경로를 original로 위장하거나 검사를 끄지 않았다. SVG/PNG는 미생성, 시각 검수 NOT_RUN, 인계/게시 미완료. Q1은 렌더 시도하지 않았다.
