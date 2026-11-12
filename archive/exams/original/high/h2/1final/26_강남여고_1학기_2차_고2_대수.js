@@ -93,7 +93,11 @@ window.questionBank = [
     "problemVisualReason": "Question is fully specified by text and symbols; no spatial/graphical condition is needed.",
     "solutionVisualDisposition": "EXEMPT",
     "solutionVisualNecessity": "VISUAL_EXEMPT",
-    "solutionVisualReason": "A solution SVG would repeat the source condition or add no decisive visual relation; algebraic small-board steps are sufficient."
+    "solutionVisualReason": "A solution SVG would repeat the source condition or add no decisive visual relation; algebraic small-board steps are sufficient.",
+    "solutionImage": "assets/images/26_강남여고_1학기_2차_고2_대수/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 안에 삼각형 ABC, 중심 O, 반지름 4와 세 각 40°, 60°, 80°가 표시되어 있다.",
+    "solutionImageCaption": "회색 부채꼴은 세 각을 표시한다. 반지름과 삼각형의 각으로 사인법칙을 적용한다. 정답은 4√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 2,
@@ -187,7 +191,11 @@ window.questionBank = [
     "problemVisualReason": "Question is fully specified by text and symbols; no spatial/graphical condition is needed.",
     "solutionVisualDisposition": "EXEMPT",
     "solutionVisualNecessity": "VISUAL_EXEMPT",
-    "solutionVisualReason": "A solution SVG would repeat the source condition or add no decisive visual relation; algebraic small-board steps are sufficient."
+    "solutionVisualReason": "A solution SVG would repeat the source condition or add no decisive visual relation; algebraic small-board steps are sufficient.",
+    "solutionImage": "assets/images/26_강남여고_1학기_2차_고2_대수/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O와 반지름 4인 원 안에 삼각형 ABC가 있고, 현 BC의 길이는 4이다.",
+    "solutionImageCaption": "외접원의 반지름과 현 BC가 모두 4임을 이용해 사인법칙을 적용한다. 정답은 2분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 3,
@@ -283,7 +291,11 @@ window.questionBank = [
     "solutionVisualDisposition": "EXEMPT",
     "solutionVisualNecessity": "VISUAL_EXEMPT",
     "solutionVisualReason": "A solution SVG would repeat the source condition or add no decisive visual relation; algebraic small-board steps are sufficient.",
-    "problemImageSha256": "cb06a5089a66c9ec4227369ce10ab1df3c183aa63d7b5a44688b4bdbd83b41e4"
+    "problemImageSha256": "cb06a5089a66c9ec4227369ce10ab1df3c183aa63d7b5a44688b4bdbd83b41e4",
+    "solutionImage": "assets/images/26_강남여고_1학기_2차_고2_대수/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AB의 길이는 7, BC의 길이는 4√2, 각 B는 135°이다.",
+    "solutionImageCaption": "회색 부채꼴은 끼인각을 표시한다. 두 변과 끼인각으로 삼각형의 넓이를 계산한다. 정답은 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 4,
@@ -968,7 +980,11 @@ window.questionBank = [
     "solutionVisualDisposition": "EXEMPT",
     "solutionVisualNecessity": "VISUAL_EXEMPT",
     "solutionVisualReason": "A solution SVG would repeat the source condition or add no decisive visual relation; algebraic small-board steps are sufficient.",
-    "sourcePageNo": 2
+    "sourcePageNo": 2,
+    "solutionImage": "assets/images/26_강남여고_1학기_2차_고2_대수/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽 사인법칙 패널에는 AB=2√6, 각 A=45°, B=75°가 표시되어 있다. 아래쪽 코사인법칙 패널에는 DF=2√2, EF=√13, 각 D=45°가 표시되어 있다.",
+    "solutionImageCaption": "위쪽 회색 부채꼴은 사인법칙에 필요한 각, 아래쪽 회색 부채꼴은 코사인법칙에 필요한 각을 나타낸다. 첫 삼각형에서 BC=4를 얻고, 둘째에서 DE=5를 얻는다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 11,
@@ -1062,7 +1078,11 @@ window.questionBank = [
     "problemVisualReason": "Question is fully specified by text and symbols; no spatial/graphical condition is needed.",
     "solutionVisualDisposition": "EXEMPT",
     "solutionVisualNecessity": "VISUAL_EXEMPT",
-    "solutionVisualReason": "A solution SVG would repeat the source condition or add no decisive visual relation; algebraic small-board steps are sufficient."
+    "solutionVisualReason": "A solution SVG would repeat the source condition or add no decisive visual relation; algebraic small-board steps are sufficient.",
+    "solutionImage": "assets/images/26_강남여고_1학기_2차_고2_대수/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 2인 원에서 파란색 두 150° 중심 부채꼴과 주황색 60° 부채꼴을 표시한다.",
+    "solutionImageCaption": "호의 비에 대응하는 중심각은 파란색 150°, 150°와 주황색 60°이다. 중심삼각형 세 개의 넓이를 합한 뒤 p/q를 비교한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 12,
@@ -1159,10 +1179,10 @@ window.questionBank = [
     "solutionVisualNecessity": "VISUAL_OPTIONAL",
     "solutionVisualReason": "A new decisive diagonal AC is introduced to split the cyclic quadrilateral into a Heron triangle and an equilateral triangle; solution SVG makes this new relation visible.",
     "problemImageSha256": "f9f63a4920da5a84cb34566d603b09d836e855e6eaedb5c1f22f6bece23bdb69",
-    "solutionImage": "assets/images/26_강남여고_1학기_2차_고2_대수/q12-solution.svg",
-    "solutionImageAlt": "원에 내접하는 사각형 ABCD에 대각선 AC를 그어 △ABC와 △ACD로 나눈 풀이 도형",
-    "solutionImageCaption": "AC=7을 이용해 △ABC와 정삼각형 △ACD의 넓이를 더한다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/26_강남여고_1학기_2차_고2_대수/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 사각형 A, B, C, D와 대각선 AC가 있다. 삼각형 ABC의 변은 5와 3, 삼각형 ACD의 세 변은 7이다.",
+    "solutionImageCaption": "대각선 AC=7을 얻어 ACD가 정삼각형임을 이용한다. 두 삼각형 넓이를 더한다. 정답은 16√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 13,

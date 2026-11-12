@@ -261,7 +261,11 @@ window.questionBank = [
       ],
       "crosswalkStatus": "DIRECT_ACTIVE",
       "bindingOwner": "ALGEBRA_2022"
-    }
+    },
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고2_대수/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 변 AB와 BC가 이루는 각 B가 60도인 삼각형 ABC",
+    "solutionImageCaption": "변 AB와 BC의 길이는 각각 4와 6이고 끼인각은 60도이다. 두 변과 끼인각으로 삼각형 넓이를 계산한다. 정답은 6√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -588,7 +592,11 @@ window.questionBank = [
       ],
       "crosswalkStatus": "DIRECT_ACTIVE",
       "bindingOwner": "ALGEBRA_2022"
-    }
+    },
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고2_대수/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 등변사다리꼴 A, B, C, D에서 파란색 AC와 주황색 BD의 길이가 같고, 교점 E에서 120도를 이룬다.",
+    "solutionImageCaption": "파란색과 주황색 대각선은 길이가 같고 교점에서 120도를 이룬다. 네 삼각형의 넓이를 대각선 길이로 묶어 계산한다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -850,7 +858,11 @@ window.questionBank = [
       ],
       "crosswalkStatus": "DIRECT_ACTIVE",
       "bindingOwner": "ALGEBRA_2022"
-    }
+    },
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고2_대수/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로부터 차례로 x−d, x, x+d로 표시한 직육면체",
+    "solutionImageCaption": "가로, 세로, 높이를 차례로 x−d, x, x+d로 나타낸다. x는 가운데 길이이고 d는 공차다. A, B, C, D, E, F, G, H는 꼭짓점 구분용 이름이다. 정답은 105이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -988,7 +1000,11 @@ window.questionBank = [
       ],
       "crosswalkStatus": "DIRECT_ACTIVE",
       "bindingOwner": "ALGEBRA_2022"
-    }
+    },
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고2_대수/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 끼인각 60도이고 변의 길이가 4와 9인 예시 삼각형",
+    "solutionImageCaption": "예: a=4, b=9이면 곱은 36이고 주어진 넓이가 된다. 이 사례로 산술·기하평균의 적용을 살핀다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1321,7 +1337,11 @@ window.questionBank = [
       ],
       "crosswalkStatus": "DIRECT_ACTIVE",
       "bindingOwner": "ALGEBRA_2022"
-    }
+    },
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고2_대수/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 위에는 k=2일 때 f(x), 아래에는 x+1의 역수 u(x)가 파란색으로 그려져 있다. 각 그래프의 열린 끝점과 점근선을 나타낸다.",
+    "solutionImageCaption": "위의 파란 곡선은 k=2일 때 f(x), 아래의 파란 곡선은 x+1의 역수 u(x)이다. 검은 점선은 열린 경계 y=14, y=1과 점근선 y=2를 나타내고, x축은 아래 곡선의 점근선이다. 일반적인 k에서는 치역에 속한 정수들을 센다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
