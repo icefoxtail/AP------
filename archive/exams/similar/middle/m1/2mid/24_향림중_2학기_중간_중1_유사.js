@@ -272,14 +272,7 @@ window.questionBank = [
     "solution": "선분의 중점 성질과 주어진 비례식을 이용하여 각 선분의 길이를 구한다.\n점 $M$이 선분 $AB$의 중점이고 $\\overline{AM} = 12,\\mathrm{cm}$이므로 $\\begin{aligned} \\overline{AB} &= 2 \\times \\overline{AM} \\ &= 2 \\times 12 \\ &= 24,\\mathrm{cm} \\ \\overline{MB} &= 12,\\mathrm{cm} \\end{aligned}$\n조건 $3\\overline{AB} = 4\\overline{BC}$에 대입하면 $\\begin{aligned} 3 \\times 24 &= 4\\overline{BC} \\ 72 &= 4\\overline{BC} \\ \\overline{BC} &= 18,\\mathrm{cm} \\end{aligned}$\n점 $N$이 선분 $BC$의 중점이므로 $\\begin{aligned} \\overline{BN} &= \\dfrac{1}{2}\\overline{BC} \\ &= \\dfrac{1}{2} \\times 18 \\ &= 9,\\mathrm{cm} \\end{aligned}$\n따라서 선분 $MN$의 길이는 $\\begin{aligned} \\overline{MN} &= \\overline{MB} + \\overline{BN} \\ &= 12 + 9 \\ &= 21,\\mathrm{cm} \\end{aligned}$\n따라서 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
-    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q07.svg",
-    "imageAlt": "M,N은 각각 AB,BC의 중점 · AM=12cm, 3AB=4BC",
-    "imageSize": "full",
-    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q07-solution.svg",
-    "solutionImageAlt": "AB=24, BC=18 · MN=MB+BN=12+9=21cm",
-    "solutionImageCaption": "AB=24, BC=18 · MN=MB+BN=12+9=21cm",
-    "solutionImageSize": "full"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 8,
