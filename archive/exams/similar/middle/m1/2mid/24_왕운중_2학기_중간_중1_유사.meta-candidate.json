@@ -1,0 +1,1655 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "similar-24-wangun-m1-2mid-candidate-v1",
+  "examUid": "24_왕운중_2학기_중간_중1_유사",
+  "sourceArchiveFile": "archive/exams/similar/middle/m1/2mid/24_왕운중_2학기_중간_중1_유사.js",
+  "expectedQuestionCount": 23,
+  "sourceProvenance": {
+    "driveDocumentId": "1O4c3FwLtnMs7c8_Nu9E0g8liB-IjNKlXrYBQPYj6Kq4",
+    "driveRevisionId": "AHj4eMSKFvM4hPiY8Kcd65XinZUo2OeZurlboyb5apUxU4dz0mzIl8Ebxk913jf4RGjAZsi8QPNpbxYY9ijZFIwFi3K3l0gi1kiS-M8Fa5w",
+    "sourceOriginalJs": "archive/exams/original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
+    "sourceOriginalJsBlobSha1": null,
+    "sourceTextHashMethod": "Drive Docs API flattened paragraph JSON canonical SHA256; includes revisionId and paragraph text/index metadata.",
+    "sourceTextSha256": "77958422f23bdfca3e984d32b8969ab172e62188a43f565ab2a9fec79eb49433",
+    "correctionLog": [
+      {
+        "scope": "Q12 choices",
+        "before": "All five choice values were blank (`$개`); source solution derives a count of 3 and marks ③.",
+        "after": "Restored the ordered count choices 1개 through 5개, preserving answer ③.",
+        "independentCheck": "Recomputed 2a+b=36; b even and two-digit with b<18 gives 10,12,14,16; a≠b removes 12, leaving three."
+      },
+      {
+        "scope": "Q13 answer/solution",
+        "before": "Key ① asserted ASA congruence although the second triangle did not state which side of length 5 is between the 55° and 60° angles.",
+        "after": "Changed answer to ⑤ and clarified the supplied side-location data is insufficient to conclude congruence.",
+        "independentCheck": "The first 5 cm side is opposite 60°; in the second triangle the 5 cm side has no specified endpoint-angle pair, so ASA correspondence is unproved."
+      },
+      {
+        "scope": "Q20 choices",
+        "status": "HELD",
+        "reason": "Several numerical values are missing from all five source choices. Kept source choice text and answer in the draft; did not invent distractors. The item is marked BLOCKED_SOURCE_DEFECT."
+      },
+      {
+        "scope": "Units",
+        "change": "Replaced malformed number-comma-unit TeX (for example `4,\\mathrm{cm}`) with thin-space unit notation `4\\,\\mathrm{cm}` across prompt/choice/answer/solution strings."
+      }
+    ],
+    "embeddedMetaTailRecords": [
+      {
+        "sourceOrdinal": 1,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "두 직선 l, m과 수직 사선, 각 65도, x, y가 표시된 각 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "1",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "평각 성질 x=180-65=115도와 직각 성질 y=90-65=25도를 각각 구하여 합 140도를 계산한다.",
+          "decisiveStep": "x=115도, y=25도 산출 및 덧셈",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "각",
+            "l4": "평각과 직각"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+            "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER",
+            "why": "평각과 직각의 관계로부터 미지각을 분할하여 합을 구하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "평각 180도와 직각 90도의 감산 과정을 연결하여 미지각 합을 구하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "직선",
+              "각"
+            ],
+            "goal": [
+              "평각",
+              "각"
+            ],
+            "method": [
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 2,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "반원의 호와 지름 위에 6개의 점 A~F가 놓인 기하 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "2",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "서로 다른 6개의 점에서 두 점을 택하는 조합 공식 6*5/2=15로 선분의 개수를 구한다.",
+          "decisiveStep": "6 × 5 / 2 = 15 계산",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "점·선·면",
+            "l4": "직선·반직선·선분의 개수"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
+            "templateKey": "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_SEGMENT_COUNT",
+            "why": "주어진 점들로부터 만들어지는 서로 다른 선분의 개수를 세는 기본 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "선분의 결정 조건을 조합 연산으로 직접 적용하는 1단계 기본 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "점"
+            ],
+            "goal": [
+              "선분",
+              "개수"
+            ],
+            "method": [
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 3,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "사다리꼴 ABCD와 윗변 4, 아랫변 8, 수선의 발 높이가 표시된 기하 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "3",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+          "conceptClusterKey": "PLANE_FIGURE_MEASURE",
+          "primaryMethod": "점과 직선 사이의 거리가 사다리꼴의 높이임을 파악하고 넓이 공식 (4+8)*h/2=30에서 h=5를 구한다.",
+          "decisiveStep": "6h = 30에서 h = 5 산출",
+          "rpm": {
+            "majorUnit": "평면도형",
+            "midUnit": "평면도형의 성질",
+            "l3": "다각형",
+            "l4": "사다리꼴의 넓이와 거리"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_TRAPEZOID_AREA",
+            "templateKey": "TPL_M1_TRAPEZOID_AREA_CORE",
+            "why": "사다리꼴의 넓이와 점-직선 거리 개념을 결합하여 높이를 역산하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "점과 직선 사이의 거리 정의를 사다리꼴 넓이 공식에 대입하여 일차방정식으로 해결하는 1단계 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "사다리꼴",
+              "길이"
+            ],
+            "goal": [
+              "거리"
+            ],
+            "method": [
+              "일차방정식"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 4,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "선분 AB 위의 점 C, D, E와 중점 관계가 표시된 1차원 선분 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "4",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "전체 길이를 L로 두고 각 중점 분할을 분수로 표현하여 AD=3/4*AB임을 도출하고 보기 ④를 기각한다.",
+          "decisiveStep": "AD = 3/4 L 판별 및 3/5 L 기각",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "점·선·면",
+            "l4": "선분의 내분과 중점"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+            "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_CHAINED_MIDPOINT",
+            "why": "선분의 다중 연쇄 중점 분할 관계에서 각 부분의 비율과 길이를 검토하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "3개의 중점 관계를 단계별 분수로 정밀하게 환산하여 비율 진위를 판별하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "선분",
+              "중점"
+            ],
+            "goal": [
+              "비율",
+              "길이"
+            ],
+            "method": [
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 5,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "삼각기둥 ABC-DEF의 꼭짓점과 모서리가 표시된 입체도형 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "5",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-07",
+          "subUnitKey": "M1-07-SOLID_FIGURE",
+          "conceptClusterKey": "SOLID_FIGURE",
+          "primaryMethod": "삼각기둥에서 꼭짓점을 공유하는 만나는 모서리와 평면을 공유하지 않는 꼬인 위치 모서리를 분류한다.",
+          "decisiveStep": "DF와 만나는 DE, AB와 꼬인 위치인 EF 짝 식별",
+          "rpm": {
+            "majorUnit": "입체도형",
+            "midUnit": "입체도형의 성질",
+            "l3": "다면체",
+            "l4": "입체도형에서 모서리의 위치 관계"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+            "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_RELATION",
+            "why": "각기둥 입체도형에서 교차 모서리와 꼬인 위치 모서리를 판별하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "입체도형의 겨냥도를 바탕으로 공간 위치 관계의 정의를 적용하는 기본 판별 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "각기둥"
+            ],
+            "goal": [
+              "꼬인위치"
+            ],
+            "method": [
+              "성질"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 6,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "공간에서 직선과 평면의 위치 관계 명제에 대한 진위 판정 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "6",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-07",
+          "subUnitKey": "M1-07-SOLID_FIGURE",
+          "conceptClusterKey": "SOLID_FIGURE",
+          "primaryMethod": "공간에서 직선 평행의 추이성(ㄱ)과 평행면의 수직선 성질(ㄷ)을 검증하고 직육면체 모델로 ㄴ의 반례를 제시한다.",
+          "decisiveStep": "ㄱ 참, ㄴ 거짓(직육면체 모퉁이면), ㄷ 참 판정",
+          "rpm": {
+            "majorUnit": "입체도형",
+            "midUnit": "입체도형의 성질",
+            "l3": "공간에서의 위치 관계",
+            "l4": "직선과 평면의 위치 관계"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+            "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT",
+            "why": "공간에서 직선과 평면의 위치 관계 명제들의 참/거짓을 종합 판별하는 표준 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "직육면체 모델을 활용하여 다중 명제의 반례와 공리를 정확히 대조해야 하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "직선",
+              "평면"
+            ],
+            "goal": [
+              "위치관계"
+            ],
+            "method": [
+              "성질"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 7,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "PO // AB인 직사각형 종이를 QR로 접어 각 120도, a, b가 표시된 기하 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "7",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "conceptClusterKey": "POSITION_RELATION",
+          "primaryMethod": "평행선의 평각 성질 b=180-120=60도를 구하고 접힘의 선대칭 성질 a=180-2b=60도를 산출한다.",
+          "decisiveStep": "b=60도 도출 후 a=180-2*60=60도 계산",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "위치 관계",
+            "l3": "동위각과 엇각",
+            "l4": "종이접기와 각"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+            "templateKey": "TPL_MOVE_FOLDING_REFLECTION_CORE",
+            "why": "직사각형 종이접기에서 평행선의 각과 대칭 각을 연계하여 미지각을 구하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "종이접기의 대칭성과 평행선의 엇각을 입체적으로 재해석하여 두 각을 동시에 해결하는 고난도 문항",
+          "level": "상",
+          "item4slot": {
+            "given": [
+              "평행선"
+            ],
+            "goal": [
+              "각"
+            ],
+            "method": [
+              "엇각",
+              "성질"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 8,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "두 직선 l, m과 한 직선이 만나 생기는 각들의 수치가 제시된 5개의 판정 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "8",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "동측내각의 크기의 합이 180도일 때 두 직선이 평행하다는 판정 조건을 적용한다.",
+          "decisiveStep": "110도 + 70도 = 180도 성립 확인",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "동위각과 엇각",
+            "l4": "두 직선이 평행할 조건"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+            "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_CONVERSE_ANGLE_CHECK",
+            "why": "각의 관계로부터 평행선 여부를 판정하는 표준 역추론 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "평행선의 역 성질(동측내각의 합=180도)을 5개 보기에서 대조하여 식별하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "직선",
+              "각"
+            ],
+            "goal": [
+              "평행선"
+            ],
+            "method": [
+              "성립조건"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 9,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "삼각형 결정 조건 및 성립 조건 종합 판정 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "9",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "대변 대각의 명칭을 변환하여 한 변과 양 끝 각(ASA)이 주어진 ⑤번을 유일 결정으로 판정한다.",
+          "decisiveStep": "B의 대변 AC=6cm 및 양 끝각 A, C 확인",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "삼각형의 작도",
+            "l4": "삼각형이 하나로 정해지는 조건"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+            "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+            "why": "다양한 변과 각의 조건에서 삼각형의 유일 결정을 판별하는 대표 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "대변-대각의 용어 변환과 삼각부등식 성립 여부를 동시에 검증해야 하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "삼각형",
+              "길이"
+            ],
+            "goal": [
+              "삼각형이하나로결정"
+            ],
+            "method": [
+              "성립조건"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 10,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "평행선 작도의 논리적 인과관계 및 작도 원리에 대한 진위 판별 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "10",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "conceptClusterKey": "POSITION_RELATION",
+          "primaryMethod": "평행선 작도의 선행 필수 단계인 보조선 작도가 각 복사보다 앞서야 함을 지적한다.",
+          "decisiveStep": "보조선 선행 원칙 위배 식별",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "기본 도형의 작도",
+            "l4": "평행선의 작도"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+            "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_CONVERSE_ANGLE_CHECK",
+            "why": "평행선 작도의 원리와 단계별 필수 요건을 점검하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "작도 절차의 기하학적 인과관계를 바르게 이해하고 있는지 묻는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "작도",
+              "평행선"
+            ],
+            "goal": [
+              "엇각"
+            ],
+            "method": [
+              "정의"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 11,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "작도 도구인 컴퍼스의 용도를 묻는 개념 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "11",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "컴퍼스의 본질적 용도인 선분의 길이 이동과 원 작도 기능을 대조한다.",
+          "decisiveStep": "선분 길이 재어 옮기기 역할 식별",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "기본 도형의 작도",
+            "l4": "작도의 뜻과 도구"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+            "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
+            "why": "작도 도구(컴퍼스)의 표준 용도를 평가하는 기본 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "작도 도구의 정의를 직접 대조하는 1단계 기본 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "작도"
+            ],
+            "goal": [
+              "선분"
+            ],
+            "method": [
+              "정의"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 12,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "정수 조건과 삼각부등식을 결합한 경우의 수 계산 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "12",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "2a+b=36과 b<18 부등식을 세우고 b=10, 14, 16 (b=12 정삼각형 제외) 3개를 구한다.",
+          "decisiveStep": "b<18에서 짝수 후보 추출 및 a=b=12 제외",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "삼각형의 작도",
+            "l4": "삼각형의 세 변의 길이 사이의 관계"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+            "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_PERIMETER_CASES",
+            "why": "고정 둘레 조건에서 삼각부등식과 정수 제한조건을 연계하여 삼각형의 개수를 세는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_NATURAL_NUMBER",
+            "COND_RANGE"
+          ],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "부등식 범위 유도, 정수 짝수성 분석, 정삼각형 제외 예외 처리를 종합 수행하는 고난도 문항",
+          "level": "상",
+          "item4slot": {
+            "given": [
+              "이등변삼각형",
+              "길이"
+            ],
+            "goal": [
+              "개수"
+            ],
+            "method": [
+              "부등식"
+            ],
+            "condition": [
+              "자연수"
+            ]
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 13,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "내각합 180도로 숨은 양 끝 각을 계산하여 ASA 합동을 판정하는 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "13",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "내각합 180도에서 나머지 각 65도를 찾아 길이가 5cm인 변의 양 끝각 55도, 65도 일치(ASA)를 증명한다.",
+          "decisiveStep": "180 - (55+60) = 65도 도출 및 ASA 판정",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "삼각형의 합동",
+            "l4": "삼각형의 합동 조건"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+            "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+            "why": "삼각형의 내각합과 한 변-양 끝각 정보를 연계하여 ASA 합동을 선별하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "세 각의 합 180도를 통해 제시되지 않은 각을 복원하고 양 끝각 조건을 검증하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "삼각형",
+              "각"
+            ],
+            "goal": [
+              "합동"
+            ],
+            "method": [
+              "내각"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 14,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "대각선이 수직이등분하는 사각형의 성질 및 합동 대응점 순서 판별 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "14",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-POLYGON_CIRCLE",
+          "conceptClusterKey": "POLYGON_CIRCLE",
+          "primaryMethod": "대각선 수직이등분 성질에서 마름모를 식별하고 합동 기호의 알파벳 대응 순서 오류를 적발한다.",
+          "decisiveStep": "대응점 순서 △OBC ≡ △ODA 확인",
+          "rpm": {
+            "majorUnit": "평면도형",
+            "midUnit": "다각형",
+            "l3": "다각형의 성질",
+            "l4": "마름모의 대각선 성질"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+            "why": "마름모 대각선의 수직이등분 조건에서 기하적 진위를 판정하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "마름모의 기하학적 성질과 합동 기호 작성 규칙(대응점 일치)을 정밀하게 대조하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "대각선",
+              "합동"
+            ],
+            "goal": [
+              "대응변",
+              "대응각"
+            ],
+            "method": [
+              "성질"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 15,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "턱걸이 횟수 계급과 학생 수가 막대로 표현된 히스토그램 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "15",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-08",
+          "subUnitKey": "M1-08-DATA_INTERPRETATION",
+          "conceptClusterKey": "DATA_INTERPRETATION",
+          "primaryMethod": "히스토그램의 최고 계급부터 도수를 누적하여 5번째 학생이 포함되는 계급을 식별한다.",
+          "decisiveStep": "상위 1명+5명=6명 누적 구간 파악",
+          "rpm": {
+            "majorUnit": "통계",
+            "midUnit": "자료의 정리와 해석",
+            "l3": "도수분포",
+            "l4": "히스토그램·도수분포다각형"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
+            "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
+            "why": "히스토그램에서 순위 조건에 해당하는 계급을 누적 도수로 찾는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "히스토그램의 도수를 역방향으로 누적하여 특정 순위의 계급을 찾는 기본 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "히스토그램"
+            ],
+            "goal": [
+              "계급",
+              "도수"
+            ],
+            "method": [
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 16,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "줄기와 잎 그림에서 순위에 해당하는 변량 값을 찾는 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "16",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-08",
+          "subUnitKey": "M1-08-DATA_INTERPRETATION",
+          "conceptClusterKey": "DATA_INTERPRETATION",
+          "primaryMethod": "큰 변량부터 250(1), 245(3), 240(1), 235(2)로 7명을 확인하고 8번째 값 230mm를 도출한다.",
+          "decisiveStep": "상위 7명 카운트 후 8번째 230mm 지정",
+          "rpm": {
+            "majorUnit": "통계",
+            "midUnit": "자료의 정리와 해석",
+            "l3": "자료 해석",
+            "l4": "자료에서 정보 추론"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
+            "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
+            "why": "줄기와 잎 그림에서 특정 순위의 변량 값을 정확히 읽는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "줄기와 잎 그림에서 잎을 큰 순서대로 계수하여 8번째 값을 읽는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "자료"
+            ],
+            "goal": [
+              "변량"
+            ],
+            "method": [
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 17,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "줄기와 잎 그림에서 구간 도수의 백분율을 계산하는 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "17",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-08",
+          "subUnitKey": "M1-08-DATA_INTERPRETATION",
+          "conceptClusterKey": "DATA_INTERPRETATION",
+          "primaryMethod": "220~240 구간의 잎 10개를 세고 전체 25명에 대해 10/25*100=40%를 계산한다.",
+          "decisiveStep": "10 / 25 * 100 = 40% 산출",
+          "rpm": {
+            "majorUnit": "통계",
+            "midUnit": "자료의 정리와 해석",
+            "l3": "자료 해석",
+            "l4": "자료에서 정보 추론"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+            "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
+            "why": "특정 구간에 속하는 자료의 비율을 백분율로 산출하는 표준 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "자료에서 구간 도수를 세고 백분율 공식을 적용하는 1단계 계산 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "자료"
+            ],
+            "goal": [
+              "백분율",
+              "비율"
+            ],
+            "method": [
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 18,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "도수분포표의 계급 크기, 개수, 도수, 백분율, 순위 계급 진위 판정 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "18",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-08",
+          "subUnitKey": "M1-08-DATA_INTERPRETATION",
+          "conceptClusterKey": "DATA_INTERPRETATION",
+          "primaryMethod": "상위 6명이 90~100점 계급이므로 9번째 학생이 속하는 계급은 80~90점(도수 8명)임을 밝혀 ⑤를 기각한다.",
+          "decisiveStep": "상위 9번째 학생의 계급 도수가 8명임을 확인",
+          "rpm": {
+            "majorUnit": "통계",
+            "midUnit": "자료의 정리와 해석",
+            "l3": "도수분포",
+            "l4": "도수분포표"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+            "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+            "why": "도수분포표의 계급 요소와 누적 순위 계급 도수를 검토하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "도수분포표의 기본 용어와 상위 순위 누적 도수를 대조하여 오류를 찾는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "도수분포표"
+            ],
+            "goal": [
+              "계급",
+              "도수"
+            ],
+            "method": [
+              "성질"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 19,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "영어 성적 계급과 점들이 선분으로 연결된 도수분포다각형 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "19",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-08",
+          "subUnitKey": "M1-08-DATA_INTERPRETATION",
+          "conceptClusterKey": "DATA_INTERPRETATION",
+          "primaryMethod": "하위 25%인 10명이 70~80점 계급에 걸치므로 확실한 제외를 위한 최소 점수를 계급 상한인 80점으로 도출한다.",
+          "decisiveStep": "하위 10번째가 속한 70~80점 계급 상한인 80점 판정",
+          "rpm": {
+            "majorUnit": "통계",
+            "midUnit": "자료의 정리와 해석",
+            "l3": "도수분포",
+            "l4": "히스토그램·도수분포다각형"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+            "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+            "why": "도수분포에서 특정 누적 비율 기준을 벗어나기 위한 경계값을 판별하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "누적 비율 계산과 계급 내 불확실성을 고려하여 확실한 안전 점수를 도출하는 응용 문항",
+          "level": "상",
+          "item4slot": {
+            "given": [
+              "도수분포다각형"
+            ],
+            "goal": [
+              "계급값",
+              "도수"
+            ],
+            "method": [
+              "백분율",
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 20,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "저축 금액 도수분포다각형의 한 계급 부분이 찢겨진 손상 그래프 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "20",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-08",
+          "subUnitKey": "M1-08-DATA_INTERPRETATION",
+          "conceptClusterKey": "DATA_INTERPRETATION",
+          "primaryMethod": "3만원 미만의 온전한 두 계급 도수 2명+3명=5명을 합산하고 5/50*100=10%임을 입증한다.",
+          "decisiveStep": "5 / 50 * 100 = 10% 확인",
+          "rpm": {
+            "majorUnit": "통계",
+            "midUnit": "자료의 정리와 해석",
+            "l3": "자료 해석",
+            "l4": "자료에서 정보 추론"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+            "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "why": "일부가 훼손된 도수분포다각형에서 온전한 구간의 비율을 바르게 추론하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "그래프의 훼손 부위에 구애받지 않고 온전한 구간의 데이터를 선별하여 백분율을 도출하는 문항",
+          "level": "상",
+          "item4slot": {
+            "given": [
+              "도수분포다각형"
+            ],
+            "goal": [
+              "백분율",
+              "도수"
+            ],
+            "method": [
+              "사칙연산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 21,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "평각 AOB 위에 직각 AOC와 반직선 OD, OE가 분할된 각 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "21",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "x=1/3(90+x)에서 COD=45도를 구하고 y=4/5(45-y)에서 DOE=20도를 구해 COE=65도를 산출한다.",
+          "decisiveStep": "방정식으로 x=45도, y=20도 도출 후 합산",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "각",
+            "l4": "평각과 각의 비례 관계"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+            "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
+            "why": "평각 내 분할된 각의 비율 관계를 일차방정식으로 풀어 각을 구하는 서술형 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "2개의 독립된 일차방정식을 세워 미지각을 각각 구한 후 합성하는 정통 서술형 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "직선",
+              "각"
+            ],
+            "goal": [
+              "평각"
+            ],
+            "method": [
+              "일차방정식"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 22,
+        "sourceVisualMarker": {
+          "status": "EXEMPT",
+          "reason": "도수분포표의 누적 백분율 조건으로부터 미지수 A, B 및 구간 백분율을 도출하는 서술형 문항"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "22",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-08",
+          "subUnitKey": "M1-08-DATA_ORGANIZATION",
+          "conceptClusterKey": "DATA_ORGANIZATION",
+          "primaryMethod": "25*0.32=8에서 B=6을 구하고 합계 25에서 A=10을 구한 후 14/25*100=56%를 산출한다.",
+          "decisiveStep": "B=6, A=10 도출 및 14명 백분율 56% 계산",
+          "rpm": {
+            "majorUnit": "통계",
+            "midUnit": "자료의 정리와 해석",
+            "l3": "도수분포",
+            "l4": "도수분포표"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+            "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "why": "도수분포표의 비율 조건에서 복수의 미지 도수를 복원하고 백분율을 구하는 서술형 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "상위 비율로 B를 결정하고 총합으로 A를 결정한 후 구간 백분율을 단계별로 서술하는 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "도수분포표"
+            ],
+            "goal": [
+              "도수",
+              "백분율"
+            ],
+            "method": [
+              "사칙연산",
+              "비율"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      },
+      {
+        "sourceOrdinal": 23,
+        "sourceVisualMarker": {
+          "status": "UNSUPPORTED",
+          "reason": "직각삼각형 ABC와 BDE가 선분 BCD 위에 놓여 합동 관계를 이루는 기하 다이어그램"
+        },
+        "sourceQuestionMetadata": {
+          "sourceQid": "23",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2015",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "conceptClusterKey": "BASIC_FIGURE",
+          "primaryMethod": "직각삼각형 내각합으로 56도, 34도를 유도하여 ASA 합동을 밝히고 BD(7)-BC(4)=3cm를 산출한다.",
+          "decisiveStep": "△ACB ≡ △BED (ASA) 증명 및 CD = 7 - 4 = 3cm 계산",
+          "rpm": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "삼각형의 합동",
+            "l4": "삼각형의 합동 조건의 활용"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+            "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+            "why": "직각삼각형의 여각 관계를 통해 ASA 합동을 보이고 대응변의 차로 선분 길이를 구하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "직각삼각형의 여각 성질로 양 끝각 일치를 증명하고 대응변의 차를 구하는 종합 서술형 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "삼각형",
+              "합동"
+            ],
+            "goal": [
+              "길이"
+            ],
+            "method": [
+              "내각",
+              "성질"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        }
+      }
+    ]
+  },
+  "variantDecision": {
+    "existingMainIdentity": null,
+    "newIdentity": "24_왕운중_2학기_중간_중1_유사",
+    "reason": "No same-exam similar JS, branch, or open PR found. This 23-question Drive document is a new similar-exam identity; original exam and 24 2nd-term-final variant remain untouched."
+  },
+  "visualAssetAudit": "Problem and solution image need assessed separately for all 23 questions. Required/helpful visuals are recorded per qid in visualWorkRegister and SVG_CHECKLIST.md. No SVG generated; no old-variant image references added. Q20 source choices are incomplete and block that question.",
+  "currentMainReleaseAudit": {
+    "existingSimilarJs": null,
+    "relationship": "No same exam-period similar JS found in tracked candidate path or current main snapshot."
+  },
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "reviewPassCount": 0,
+    "metadataReviewed": false,
+    "reviewStatus": "review_required",
+    "approvedBy": null,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "visualWorkRegister": [
+    {
+      "sourceOrdinal": 1,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "교차하는 직선과 두 사선, x·y의 각 위치가 발문 해석에 필요."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "각 분할 관계를 표시하면 풀이를 따라가기 쉬움."
+      },
+      "reason": "다음 그림에서 두 직선 $l, m$이 한 점에서 만난다. 직선 $m$과 직선 $l$이 이루는 각이 $65^\\circ$이고, 표시된 두 직선이 서로 수직일 때, $\\angle x + \\angle y$의 크기는? [3점]"
+    },
+    {
+      "sourceOrdinal": 2,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "반원 위 점의 배치가 선분 조합 대상을 정함."
+      },
+      "solution": {
+        "status": "NOT_REQUIRED",
+        "need": "NOT_NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "조합 계산은 식으로 충분히 이해 가능."
+      },
+      "reason": "다음 그림과 같이 반원 위에 놓여 있는 서로 다른 $6$개의 점 $A, B, C, D, E, F$ 중에서 두 점을 이어서 만들 수 있는 서로 다른 선분의 개수는? [4점]"
+    },
+    {
+      "sourceOrdinal": 3,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "사다리꼴 평행변과 높이 배치가 거리의 의미를 설명함."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "높이와 평행변을 표시하면 넓이 식 이해에 도움."
+      },
+      "reason": "다음 그림과 같이 $\\overline{AD} \\parallel \\overline{BC}$이고 넓이가 $30\\,\\mathrm{cm}^2$인 사다리꼴 $ABCD$가 있다. $\\overline{AD}=4\\,\\mathrm{cm}$, $\\overline{BC}=8\\,\\mathrm{cm}$일 때, 꼭짓점 $D$와 변 $BC$ 사이의 거리는? [4점]"
+    },
+    {
+      "sourceOrdinal": 4,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "중점 C,D,E의 선분상 배치가 보기 판단에 필요."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "연쇄 중점 길이를 시각화하면 비율 추적에 도움."
+      },
+      "reason": "다음 그림에서 점 $C, D, E$는 각각 선분 $AB, CB, AD$의 중점이다. 다음 설명 중 옳지 않은 것은? [5점]"
+    },
+    {
+      "sourceOrdinal": 5,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "삼각기둥의 꼭짓점·모서리와 꼬인 위치 판별에 입체 배치가 필요."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "만남·평행·꼬인 위치 모서리를 보여주면 판별 풀이에 도움."
+      },
+      "reason": "다음 삼각기둥 $ABC-DEF$에서 모서리 $DF$와 한 점에서 만나는 모서리와 모서리 $AB$와 꼬인 위치에 있는 모서리를 순서대로 바르게 짝지은 것은? [3점]"
+    },
+    {
+      "sourceOrdinal": 6,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "공간에서 직선·평면 관계를 예시 그림으로 보면 명제 이해에 도움."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "ㄴ의 반례 직육면체 모형이 반례 이해에 도움."
+      },
+      "reason": "서로 다른 세 직선 $l, m, n$과 서로 다른 세 평면 $P, Q, R$에 대한 다음 보기의 설명 중 옳은 것만을 모두 고른 것은? [5점]\nㄱ. $l \\parallel m$이고 $l \\parallel n$이면 $m \\parallel n$이다.\nㄴ. $P \\perp Q$이고 $Q \\perp R$이면 $P \\parallel R$이다.\nㄷ. $P \\parallel Q$이고 $l \\perp P$이면 $l \\perp Q$이다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "접기 전후 직사각형과 QR, PO/AB 및 각 표기가 발문에 필요."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "접는 선 대칭과 각 관계를 시각화하면 풀이에 도움."
+      },
+      "reason": "선분 $PO$와 평행한 선분 $AB$가 그려진 직사각형 모양의 종이를 선분 $QR$를 접는 선으로 하여 다음 그림과 같이 접었다. $\\angle PQR = 120^\\circ$일 때, $\\angle a$와 $\\angle b$의 크기를 바르게 짝지은 것은? [5점]"
+    },
+    {
+      "sourceOrdinal": 8,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "다섯 보기 각각의 횡단선·각 위치가 있어야 평행선 판정 가능."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "평행선 판정 조건의 위치를 보기별로 비교하면 도움."
+      },
+      "reason": "다음 그림 중 두 직선 $l, m$에 대하여 $l \\parallel m$이 되는 것은? [4점]"
+    },
+    {
+      "sourceOrdinal": 9,
+      "problem": {
+        "status": "NOT_REQUIRED",
+        "need": "NOT_NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "주어진 변·각 조건이 글로 완결되며 별도 도식이 없어도 유일결정 판정 가능."
+      },
+      "solution": {
+        "status": "NOT_REQUIRED",
+        "need": "NOT_NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "조건별 작도 가능성은 문장과 논리로 충분."
+      },
+      "reason": "다음 중 삼각형 $ABC$가 오직 하나로만 결정되는 조건은? [4점]"
+    },
+    {
+      "sourceOrdinal": 10,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "보조선·각 복사 순서를 도식화하면 작도 단계 이해에 도움."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "보조선 생성 후 각 복사 과정을 그림으로 보이면 도움."
+      },
+      "reason": "직선 $m$에 평행하면서 한 점 $P$를 지나는 직선을 작도하는 과정에서 사용되는 성질과 단계에 대한 설명 중 옳지 않은 것은? [4점]"
+    },
+    {
+      "sourceOrdinal": 11,
+      "problem": {
+        "status": "NOT_REQUIRED",
+        "need": "NOT_NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "컴퍼스의 정의·역할을 묻는 개념 문항."
+      },
+      "solution": {
+        "status": "NOT_REQUIRED",
+        "need": "NOT_NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "도구의 역할은 문장 설명으로 충분."
+      },
+      "reason": "다음 중 작도에서 컴퍼스만을 사용하여 수행하는 역할로 가장 알맞은 것은? [3점]"
+    },
+    {
+      "sourceOrdinal": 12,
+      "problem": {
+        "status": "NOT_REQUIRED",
+        "need": "NOT_NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "정수 조건과 삼각부등식 계산 문항."
+      },
+      "solution": {
+        "status": "NOT_REQUIRED",
+        "need": "NOT_NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "경우의 수 식 풀이로 충분."
+      },
+      "reason": "둘레의 길이가 $36\\,\\mathrm{cm}$이고, 세 변의 길이가 각각 $a,\\mathrm{cm}, a,\\mathrm{cm}, b,\\mathrm{cm}$인 이등변삼각형이 있다. $b$의 값이 두 자리 자연수일 때, 만들 수 있는 서로 다른 삼각형의 개수는? (단, $a, b$는 서로 다른 자연수이다.) [5점]"
+    },
+    {
+      "sourceOrdinal": 13,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "삼각형의 각과 길이 변 대응을 표기하면 합동 조건 오해를 줄이는 데 도움."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "각 대응과 주어진 변 위치를 표시하면 조건 불충분 설명에 도움."
+      },
+      "reason": "서로 다른 여섯 개의 삼각형 중에서 한 변의 길이가 $5\\,\\mathrm{cm}$이고 그 양 끝 각이 각각 $55^\\circ, 65^\\circ$인 삼각형과 한 변의 길이가 $5\\,\\mathrm{cm}$이고 두 각이 $55^\\circ, 60^\\circ$인 삼각형이 있다. 이 두 삼각형이 서로 합동임을 바르게 나타낸 것은? [4점]"
+    },
+    {
+      "sourceOrdinal": 14,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "수직이등분 대각선이 있는 사각형과 대응 순서를 도식화하면 도움."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "△OBC와 대응 △ODA의 꼭짓점 순서를 그림으로 확인하면 도움."
+      },
+      "reason": "사각형 $ABCD$의 두 대각선 $AC$와 $BD$가 점 $O$에서 서로를 수직이등분하고 있다. $\\overline{AO}=3\\,\\mathrm{cm}, \\overline{BO}=4\\,\\mathrm{cm}$일 때, 다음 설명 중 옳지 않은 것은? [4점]"
+    },
+    {
+      "sourceOrdinal": 15,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "히스토그램 막대 높이와 상위 순위 계급을 읽으려면 자료 그림이 핵심."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "누적 인원 순서를 막대 위에서 표시하면 도움."
+      },
+      "reason": "다음은 어느 중학교 학생들의 턱걸이 횟수를 조사하여 나타낸 히스토그램이다. 턱걸이를 $5$번째로 많이 한 학생이 속하는 계급은? [4점]"
+    },
+    {
+      "sourceOrdinal": 16,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "줄기와 잎 원자료가 발문에 포함되어 별도 그림은 필수 아니나 자료 구조 표시가 도움."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "상위 8개 위치를 원자료에서 강조하면 도움."
+      },
+      "reason": "※ (16~17) 다음은 어느 학급 학생 $25$명의 신발 크기를 조사하여 나타낸 줄기와 잎 그림이다. 물음에 답하시오.\n줄기: $20, 21, 22, 23, 24, 25$ ($20|0$은 $200\\,\\mathrm{mm}$)\n$20 \\mid 0 \\quad 0 \\quad 5 \\quad 5$\n$21 \\mid 0 \\quad 0 \\quad 0 \\quad 5 \\quad 5 \\quad 5$\n$22 \\mid 0 \\quad 0 \\quad 5 \\quad 5 \\quad 5$\n$23 \\mid 0 \\quad 0 \\quad 0 \\quad 5 \\quad 5$\n$24 \\mid 0 \\quad 5 \\quad 5 \\quad 5$\n$25 \\mid 0$\n신발 크기가 큰 쪽에서부터 $8$번째인 학생의 신발 크기는? [3점]"
+    },
+    {
+      "sourceOrdinal": 17,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "Q16의 줄기·잎 표를 포함하며 구간을 시각화하면 도움."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "해당 줄기 잎을 표시해 분율 풀이를 설명하면 도움."
+      },
+      "reason": "위 16번의 자료에서 신발 크기가 $220,\\mathrm{mm}$ 이상 $240,\\mathrm{mm}$ 미만인 학생은 전체의 몇 $%$인가? [3점]"
+    },
+    {
+      "sourceOrdinal": 18,
+      "problem": {
+        "status": "NOT_REQUIRED",
+        "need": "NOT_NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "도수분포표 자체가 발문에 포함되어 별도 그림 불필요."
+      },
+      "solution": {
+        "status": "NOT_REQUIRED",
+        "need": "NOT_NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "표와 누적순위 계산으로 충분."
+      },
+      "reason": "다음은 어느 학급 학생 $30$명의 수학 성적을 조사하여 나타낸 도수분포표이다. 다음 설명 중 옳지 않은 것은? [4점]\n$\\begin{array}{|c|c|} \\hline \\text{성적}(\\text{점}) & \\text{학생 수}(\\text{명}) \\\\ \\hline 50^{\\text{이상}} \\sim 60^{\\text{미만}} & 4 \\\\ 60 \\sim 70 & 5 \\\\ 70 \\sim 80 & 7 \\\\ 80 \\sim 90 & 8 \\\\ 90 \\sim 100 & 6 \\\\ \\hline \\text{합계} & 30 \\\\ \\hline \\end{array}$"
+    },
+    {
+      "sourceOrdinal": 19,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "도수분포다각형이 언급되나 전체 계급·도수가 글로 주어져 해결 가능; 그래프는 분포 이해에 도움."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "누적 인원과 경계 계급을 그래프에서 보이면 도움."
+      },
+      "reason": "다음은 학생 $40$명의 영어 성적을 조사하여 나타낸 도수분포다각형이다. 각 계급별 도수가 $50\\sim60$점: $2$명, $60\\sim70$점: $7$명, $70\\sim80$점: $15$명, $80\\sim90$점: $9$명, $90\\sim100$점: $7$명일 때, 하위 $25%$에 속하는 학생들에게 보충 수업을 실시하려고 한다. 보충 수업 대상에서 확실히 제외되기 위해 적어도 몇 점 이상을 받아야 하는가? [5점]"
+    },
+    {
+      "sourceOrdinal": 20,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "찢긴 도수분포다각형에서 가려진 구간과 남은 수치를 확인할 그림이 필요."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "누락 구간과 보이는 계급을 시각적으로 대조해야 하나 보기 수치 원문 보완 대기."
+      },
+      "reason": "다음은 학생 $50$명이 지난 $1$년 동안 저축한 금액을 조사하여 나타낸 도수분포다각형인데, $4$만 원 이상 $5$만 원 미만인 부분이 찢어져서 보이지 않는다. 다음 설명 중 옳은 것은? [4점]"
+    },
+    {
+      "sourceOrdinal": 21,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "평각·직각 및 C,D,E 반직선 순서 배치가 각 관계 해석에 필요."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "두 비례식에 쓰는 각 영역을 분할 그림으로 확인해야 함."
+      },
+      "reason": "다음 그림에서 $\\angle AOB$가 평각이고 $\\angle AOC = 90^\\circ$이다. $\\angle COD = \\dfrac{1}{3}\\angle AOD$이고, $\\angle DOE = \\dfrac{4}{5}\\angle EOB$일 때, $\\angle COE$의 크기를 구하고 그 풀이 과정을 서술하시오. [6점]"
+    },
+    {
+      "sourceOrdinal": 22,
+      "problem": {
+        "status": "NOT_REQUIRED",
+        "need": "NOT_NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "도수분포표가 문제 본문에 포함되어 별도 그림 불필요."
+      },
+      "solution": {
+        "status": "NOT_REQUIRED",
+        "need": "NOT_NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "표의 도수 합과 백분율 계산으로 충분."
+      },
+      "reason": "다음은 어느 학급 학생 $25$명이 지난 $1$년 동안 관람한 영화 편수를 조사하여 나타낸 도수분포표이다. $6$편 이상의 영화를 관람한 학생이 전체의 $32%$일 때, $A, B$의 값과 $4$편 미만의 영화를 관람한 학생은 전체의 몇 $%$인지 구하고, 그 과정을 서술하시오. [7점]\n$\\begin{array}{|c|c|} \\hline \\text{영화 편수}(\\text{편}) & \\text{학생 수}(\\text{명}) \\\\ \\hline 0^{\\text{이상}} \\sim 2^{\\text{미만}} & 4 \\\\ 2 \\sim 4 & A \\\\ 4 \\sim 6 & 3 \\\\ 6 \\sim 8 & B \\\\ 8 \\sim 10 & 2 \\\\ \\hline \\text{합계} & 25 \\\\ \\hline \\end{array}$"
+    },
+    {
+      "sourceOrdinal": 23,
+      "problem": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "NEEDED",
+        "currentCandidateAsset": null,
+        "reason": "두 직각삼각형과 B,C,D의 배치, 대응변이 발문에 필요."
+      },
+      "solution": {
+        "status": "DEFERRED_TO_LATER_SVG_BATCH",
+        "need": "HELPFUL",
+        "currentCandidateAsset": null,
+        "reason": "ASA 대응 및 CD 차 관계를 그림으로 따라가면 도움."
+      },
+      "reason": "다음 그림에서 직각삼각형 $ABC$와 직각삼각형 $BDE$에 대하여 $\\overline{AC}=\\overline{BE}$이고 $\\overline{AB}=7\\,\\mathrm{cm}, \\overline{ED}=4\\,\\mathrm{cm}$이다. $\\angle BED=56^\\circ, \\angle BAC=34^\\circ$일 때, 삼각형의 합동을 이용하여 선분 $CD$의 길이를 구하고 그 풀이 과정을 서술하시오. [7점]"
+    }
+  ],
+  "validation": {
+    "jsSyntax": "PASS (node --check)",
+    "mathReview": "UNREVIEWED except self-checks logged for Q12/Q13; Q20 blocked by source defect",
+    "fourSlotReview": "UNREVIEWED",
+    "imageReferenceCheck": "SVG intentionally deferred; no candidate images referenced",
+    "contentResidueAudit": {
+      "questionCountScanned": 23,
+      "contaminatedContentQids": [],
+      "answerOrSolutionInContent": false,
+      "metadataMarkerInContent": false,
+      "status": "CLEAN"
+    },
+    "totalPoints": 100,
+    "objectiveChoiceCountAudit": "PASS (all 19 objective items have five choices; Q20 remains source-blocked due missing option values)"
+  },
+  "pipelineState": "PARTIALLY_BLOCKED_SOURCE_DEFECT_Q20",
+  "expectedSourceBlobSha1": "60d960584916be0f367d036cb3119fcea5319c80",
+  "fourSlotCandidate": {
+    "path": "archive/exams/similar/middle/m1/2mid/24_왕운중_2학기_중간_중1_유사.4slot-candidate.json",
+    "sha256": "654219db69bf9b6baaac3b34e702ce657c240993de62936cdd6cd6284280f471",
+    "status": "UNREVIEWED"
+  }
+}
