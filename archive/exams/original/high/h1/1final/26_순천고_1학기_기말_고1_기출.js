@@ -58,7 +58,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "$B=\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}$로 두면 행렬 곱은 $AB=\\begin{pmatrix}-a+c&-b+d\\\\-a+3c&-b+3d\\end{pmatrix}$이다.\n첫째 열을 비교하면 $-a+c=-1$, $-a+3c=1$이다.\n두 식을 빼면 $2c=2$이다.\n따라서 $c=1$이다.\n첫째 식에 대입하면 $-a+1=-1$이므로 $a=2$이다.\n둘째 열을 비교하면 $-b+d=-2$, $-b+3d=-8$이다.\n두 식을 빼면 $2d=-6$이다.\n따라서 $d=-3$이다.\n첫째 식에 대입하면 $-b-3=-2$이므로 $b=-1$이다.\n따라서 성분의 합은 $a+b+c+d=2-1+1-3=-1$이고 정답은 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -120,7 +120,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "네 성분에 각각 해당하는 조건을 적용한다.\n$(1,1)$, $(1,2)$, $(2,1)$, $(2,2)$의 네 위치를 차례로 계산한다.\n$i\\lt j$인지 $i\\ge j$인지 먼저 확인한 뒤 주어진 식에 대입한다.\n$a_{11}=(1+1)^1=2$, $a_{12}=1(2+1)=3$, $a_{21}=(2+1)^1=3$, $a_{22}=(2+1)^2=9$이다. 따라서 모든 성분의 합은 $2+3+3+9=17$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -183,7 +183,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "구입 개수를 1×2 행렬로 두고 가격표의 열과 곱한다.\n돈가스 3개와 우동 2개의 개수는 $\\begin{pmatrix}3&2\\end{pmatrix}$이고, B 식당의 가격은 가격 행렬의 두 번째 열이다.\n1×2 행렬과 가격표 행렬을 곱했을 때 두 번째 열과의 곱이 B 식당의 합계가 된다.\n$\\begin{pmatrix}3&2\\end{pmatrix}\\begin{pmatrix}13&9\\\\12&8\\end{pmatrix}=\\begin{pmatrix}3\\times13+2\\times12&3\\times9+2\\times8\\end{pmatrix}=\\begin{pmatrix}63&43\\end{pmatrix}$이다. B 식당의 합계 $43$은 이 행렬의 $(1,2)$ 성분이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

@@ -199,3 +199,27 @@ test('panel captions keep the composite schema (one row per panel, inner width l
   assert.throws(()=>compositePanels(withCaption({math:'a=1 2'})),error=>reasonOf(error)==='PANEL_CAPTION_0');
   assert.equal(compositePanels(withCaption({math:'a=1',text:'일 때'})).length,2);
 });
+
+// 21 제일고 1final q13 (golden item155linecasespanels): three lines that make no triangle, each line a segment with its equation, the cases split into two stacked panels.
+test('line cases (parallel / concurrent) are two stacked plane panels; each line keeps its own equation and the parallel marks keep their counts',async()=>{
+  const {compositePanels,compositePanelLayout,isPlanePanel}=await load();
+  const plan=JSON.parse(fs.readFileSync('archive/tools/geometry-equation/ops/golden/item155linecasespanels/plan.json','utf8'));
+  const panels=compositePanels(plan);
+  assert.equal(panels.length,2);assert.equal(plan.columns,1);
+  assert.deepEqual([compositePanelLayout(panels,plan).columns,compositePanelLayout(panels,plan).rows],[1,2]);
+  assert.ok(panels.every(item=>isPlanePanel(item.plan)&&item.plan.hiddenPointStyle==='NONE'));
+  const [parallel,concurrent]=panels.map(item=>item.plan);
+  assert.deepEqual(parallel.planeMarks.expressionLabels.map(label=>label.text),['x-2y=0','3x+y+7=0','3x-6y-12=0','3x+y-12=0']);
+  assert.deepEqual(parallel.planeMarks.parallels.map(mark=>[mark.count,mark.segments]),[[1,['s1','s3']],[2,['s2','s4']]]);
+  // The slopes are the lines': y=x/2 and its parallel, y=-3x-7 and its parallel (SOURCE_POINT pairs on the lines).
+  const at=(plan,id)=>plan.mathPlan.nodes.find(node=>node.id===id).args.coordinates.map(value=>Number(value.value));
+  const slope=(plan,id)=>{const [a,b]=[at(plan,id+'a'),at(plan,id+'b')];return (b[1]-a[1])/(b[0]-a[0]);};
+  assert.deepEqual(['s1','s2','s3','s4'].map(id=>slope(parallel,id)),[0.5,-3,0.5,-3]);
+  // The concurrent panel: the three segments' lines pass through the one named point P=(-2,-1), and no parallel mark is written.
+  assert.deepEqual(concurrent.displayPoints.filter(id=>!concurrent.hiddenPointNames.includes(id)),['P']);
+  assert.equal(concurrent.planeMarks.parallels,undefined);
+  const [px,py]=at(concurrent,'P');
+  for(const id of ['s1','s2','s3']){const [x,y]=at(concurrent,id+'a'),m=slope(concurrent,id);assert.ok(Math.abs(y+m*(px-x)-py)<1e-9,id+' passes through P');}
+  // The answer (23, the sum of the three k) is not written anywhere in the plan.
+  assert.doesNotMatch(JSON.stringify(plan),/23|④/);
+});

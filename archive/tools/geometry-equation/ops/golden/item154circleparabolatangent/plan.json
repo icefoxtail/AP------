@@ -1,0 +1,88 @@
+{
+ "capability": "ellipse-figure-v1",
+ "sourceQuote": "제4사분면에서 원 x^2+y^2=20에 접하고 직선 2x-y+7=0에 평행한 직선이 곡선 y=x^2-2ax+10a에 접할 때, 양수 a의 값은?",
+ "conics": [
+  {
+   "id": "c1",
+   "kind": "CIRCLE",
+   "center": [
+    "0",
+    "0"
+   ],
+   "rSquared": "20",
+   "label": "x^2+y^2=20"
+  },
+  {
+   "id": "c2",
+   "kind": "PARABOLA",
+   "vertex": [
+    "9",
+    "9"
+   ],
+   "p": "1/4",
+   "axis": "Y",
+   "label": "y=x^2-2ax+10a"
+  }
+ ],
+ "points": [
+  {
+   "id": "O",
+   "kind": "ORIGIN"
+  },
+  {
+   "id": "T",
+   "kind": "ON_CONIC",
+   "curve": "c1",
+   "x": "4",
+   "branch": "NEG",
+   "coordinates": true
+  },
+  {
+   "id": "S",
+   "kind": "ON_CONIC",
+   "curve": "c2",
+   "x": "10"
+  }
+ ],
+ "lines": [
+  {
+   "id": "t",
+   "slope": "2",
+   "intercept": "-10",
+   "tangent": true,
+   "curve": "c1",
+   "label": "y=2x-10"
+  },
+  {
+   "id": "t2",
+   "slope": "2",
+   "intercept": "-10",
+   "tangent": true,
+   "curve": "c2",
+   "hidden": true
+  }
+ ],
+ "segments": [
+  {
+   "id": "sOT",
+   "from": "O",
+   "to": "T"
+  }
+ ],
+ "caption": "제4사분면의 접점 T(4,-2)에서 원에 접하는 직선 y=2x-10이 포물선에도 접한다. 반지름 OT는 접선에 수직이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "제4사분면에서 원 x^2+y^2=20에 접하고 직선 2x-y+7=0에 평행한 직선이 곡선 y=x^2-2ax+10a에 접한다.",
+   "mappedTo": [
+    "conics",
+    "points",
+    "lines",
+    "segments"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "원의 접점 T와 반지름 OT, 접선 y=2x-10, 이 접선이 닿는 포물선"
+ ]
+}

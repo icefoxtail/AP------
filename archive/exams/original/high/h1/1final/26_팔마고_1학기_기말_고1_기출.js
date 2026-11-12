@@ -58,7 +58,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "행렬의 덧셈은 같은 위치의 성분끼리 더한다.\n$A+B=\\begin{pmatrix}1+0&2-1\\\\3+1&4-2\\end{pmatrix}$\n$=\\begin{pmatrix}1&1\\\\4&2\\end{pmatrix}$이다.\n따라서 $a=1$, $b=1$, $c=4$, $d=2$이므로\n$a+b+c+d=1+1+4+2=8$이다.\n정답은 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -225,7 +225,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "$4X-3A=3X+2B$\n$X-3A=2B$ (양변에서 $3X$를 뺌)\n$X=3A+2B$ (양변에 $3A$를 더함)\n$3A=\\begin{pmatrix}3&6\\\\6&9\\end{pmatrix}$, $2B=\\begin{pmatrix}4&-4\\\\12&-2\\end{pmatrix}$\n$X=\\begin{pmatrix}3+4&6-4\\\\6+12&9-2\\end{pmatrix}=\\begin{pmatrix}7&2\\\\18&7\\end{pmatrix}$\n$a+b+c+d=7+2+18+7=34$\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

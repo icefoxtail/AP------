@@ -546,7 +546,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] $X=A+B$를 구하여 성분들의 합을 계산한다.\n\n$X = \\begin{pmatrix} 2 & 2 \\\\ -6 & 0 \\end{pmatrix}$이므로 성분합은 $2+2-6+0 = -2$이다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -582,7 +582,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] $A^2+A+E=O$와 $A^3=E$를 이용해 세 항씩 묶어 합이 $O$가 되는 경우를 찾는다.\n\n$A^2=\\begin{pmatrix}-2&-3\\\\1&1\\end{pmatrix}$이므로\n$A^2+A+E=\\begin{pmatrix}-2&-3\\\\1&1\\end{pmatrix}+\\begin{pmatrix}1&3\\\\-1&-2\\end{pmatrix}+\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}=O$이다.\n따라서 $A^2=-A-E$이고\n$A^3=A(-A-E)=-A^2-A=E$이다. 그러므로 $E,A,A^2$가 세 항씩 반복되고 각 세 항의 합은 $O$이다.\n\n$n+1$이 $3$의 배수이면 $E+A+\\cdots+A^n$을 $E+A+A^2=O$인 묶음들로 나누어 합이 $O$가 된다. 반대로 $n+1$이 $3$의 배수가 아니면 완전한 세 항 묶음 뒤에 $E$ 또는 $E+A=-A^2$가 남으므로 합은 $O$가 아니다. ($A^3=E$이므로 $A^2\\ne O$.)\n따라서 $n+1=3k$, 즉 $n=3k-1$이다.\n$1\\le n\\le100$에서 $3k-1\\le100$, 따라서 $1\\le k\\le33$이고 가능한 $n$은 $2,5,8,\\ldots,98$로 $33$개이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -616,7 +616,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] $A+B=E$, $AB=O$에서 $A^2=A$, $B^2=B$, $BA=O$를 얻어 각 보기를 판정한다.\n\n$B=E-A$이므로\n$AB=A(E-A)=O$에서 $A-A^2=O$, 즉 $A^2=A$이다. 또\n$B^2=(E-A)^2=E-2A+A^2=E-A=B$이다.\n\nㄱ. $BA=(E-A)A=A-A^2=O$이므로 참이다.\nㄴ. $(A+B)^2=A^2+AB+BA+B^2=A^2+B^2$이고, $AB=O$이므로 $A^2+2AB+B^2=A^2+B^2$이다. 따라서 참이다.\nㄷ. $A^3=A^2=A$, $B^3=B^2=B$이므로 $A^3+B^3=A+B=E=(A+B)^3$이다. 따라서 참이다.\n\nㄱ, ㄴ, ㄷ이 모두 옳으므로 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -646,7 +646,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 각 구매 수량과 편의점별 가격을 곱해 갑과 을의 총액을 비교하고, 행렬 곱의 성분도 같은 계산인지 확인한다.\n\n갑이 A에서 쓰는 금액은\n$2\\times2000+3\\times1600+4\\times1000$\n$=4000+4800+4000$\n$=12800$원이다.\n갑이 B에서 쓰는 금액은\n$2\\times1800+3\\times1500+4\\times1200$\n$=3600+4500+4800$\n$=12900$원이다.\n을이 A에서 쓰는 금액은\n$3\\times2000+4\\times1600+3\\times1000$\n$=6000+6400+3000$\n$=15400$원이다.\n을이 B에서 쓰는 금액은\n$3\\times1800+4\\times1500+3\\times1200$\n$=5400+6000+3600$\n$=15000$원이다.\n\nㄱ. A에서는 $12800<15400$, B에서는 $12900<15000$이므로 참이다.\nㄴ. 갑의 B와 A 지출 차는 $12900-12800=100$원이므로 참이다.\nㄷ. 주어진 행렬 곱의 $(1,1)$ 성분은 첫째 행과 첫째 열의 곱의 합인 $2\\times2000+3\\times1600+4\\times1000=12800$이므로 갑이 A에 내는 금액과 같다. 참이다.\n\n따라서 ㄱ, ㄴ, ㄷ이 모두 옳아 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -694,7 +694,7 @@ window.questionBank = [
     "answer": "$p=0, q=-17$",
     "solution": "[키포인트] 조건 (가)로 $A$의 꼴을 정하고, (나), (다)로 $x$를 결정한 뒤 주어진 행렬의 곱을 계산한다.\n\n(가)에서 $2a_{11}=2a_{22}=0$이므로 대각성분은 $0$이고 $a_{12}+a_{21}=0$이다. $a_{12}=x$라 두면\n$A=\\begin{pmatrix}0&x\\\\-x&0\\end{pmatrix}$, $A^2=-x^2E$이다. 따라서\n$A^2+2A+E=\\begin{pmatrix}1-x^2&2x\\\\-2x&1-x^2\\end{pmatrix}$.\n성분의 합은 $2(1-x^2)=-30$이므로 $x^2=16$이다. 1행의 합은 $x$이고 양수이므로 $x=4$이다.\n\n$(A+E)(A-E)=A^2-E=-16E-E=-17E$이다.\n$A=\\begin{pmatrix}0&4\\\\-4&0\\end{pmatrix}$이므로\n$pA+qE=\\begin{pmatrix}q&4p\\\\-4p&q\\end{pmatrix}$.\n주어진 식과 비교하면\n$\\begin{pmatrix}q&4p\\\\-4p&q\\end{pmatrix}=-17E=\\begin{pmatrix}-17&0\\\\0&-17\\end{pmatrix}$.\n성분을 비교하여 $q=-17$, $4p=0$이므로 $p=0$이다.\n\n따라서 $p=0$, $q=-17$이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
