@@ -143,6 +143,21 @@
     wrap() {
       const lab = this.lab, p = this.player;
       if (lab.toc) { const open = lab.toc.open.bind(lab.toc); lab.toc.open = () => { this.pause(); return open(); }; }
+      if (lab.toc) {
+        const render = lab.toc.render.bind(lab.toc);
+        lab.toc.render = () => {
+          if (!this.allowed()) return render();
+          const nativeInfo = p.lessonInfo;
+          p.lessonInfo = i => {
+            const rows = nativeInfo.call(p, i), sc = lab.list[i];
+            const recipe = A.G7ShortCoordinates?.recipes[sc.id] || A.G7ShortProportion?.recipes[sc.id];
+            const durations = { 'f1-star': { '넓이': 8.8, '둘레': 8.4 }, 'f3-leaf-area': { '넓이': 8.8 }, 'sv2-4': { '겉넓이': 9, '부피': 9 }, 'sv3-4': { '남은 물': 9 } }[sc.id];
+            return rows.map(row => ({ ...row, length: recipe && sc._mf ? recipe.duration || 9 : durations?.[row.label] || row.length }));
+          };
+          try { return render(); } finally { p.lessonInfo = nativeInfo; }
+        };
+      }
+
       this.originalGo = lab.goScene.bind(lab);
       lab.goScene = (i, options) => this.go(i, options);
       const setTab = lab.setTab.bind(lab);
@@ -157,12 +172,13 @@
         return result;
       };
       p.play = (i, k = 0) => {
+        if (lab.teach) return this.originalPlay(i, k);
         // An explicit solution click may leave a question tab; automatic entry never does.
         if (lab.tab === 'problem') lab.setTab('review');
         if (i !== lab.index) this.go(i);
         const legacy = p.lessonInfo(i)[k];
         const choices = this.plans();
-        const found = choices.findIndex(c => c.legacyLabel === legacy?.label);
+        const found = choices.findIndex(c => c.legacyLabel === (legacy?.label || ''));
         if (found >= 0) { this.choice = found; return this.play(); }
         return this.playLegacy(k);
       };
@@ -309,7 +325,7 @@
       if (plan?.frame) {
         const frame = plan.frame(this.elapsed, plan.model), signature = JSON.stringify(frame);
         if (signature !== this.frameSignature) {
-          this.frameSignature = signature; this.ui.caption.textContent = frame.label;
+          this.frameSignature = signature; this.ui.caption.innerHTML = A.renderMath(frame.label);
           this.ui.formula.innerHTML = A.renderMath(frame.formula || '');
         }
       }

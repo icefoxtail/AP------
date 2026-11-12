@@ -56,6 +56,11 @@
     const target = pt(destination.x + a / 2, destination.y + a / 2);
     const out = seg(t, .8, 3.2), back = perimeter ? 0 : seg(t, 4.3, 6.3), progress = out * (1 - back);
     const remove = perimeter ? 0 : seg(t, 6.3, 7.4);
+    // Once the four pieces are removed, focus on the remaining original shape.
+    if (!perimeter && t > 7.4) {
+      const z=seg(t,7.4,8.6), f=b.focus;
+      b.setFocus({x:[f.x[0],f.x[1]+(1.3*a-f.x[1])*z],y:[f.y[0],f.y[1]+(1.5*a-f.y[1])*z]});
+    }
     b.path(m.square, { close: true, color: 'ink', width: 2 });
     shape(b, m.star, 'green', .25, 'green', 2.5);
     m.pieces.forEach(p => {
@@ -82,7 +87,6 @@
     if (remove > .9) {
       // The four curved edges are the actual boundary of the remaining star.
       m.pieces.forEach(p => b.path(arc(p.center, r, p.a0, p.a1), { color: 'green', width: 4 }));
-      label(b, pt(destination.x + a / 2, destination.y + a / 2), '남은 넓이', 'green', { size: 21 });
     }
   }
   function starFrame(t, m, perimeter) {
@@ -131,7 +135,8 @@
       const K = lab.scene.csKeys?.K;
       if (!K || !positive(s[K('a')])) return [];
       const model = starModel(s[K('a')]);
-      return ['넓이', '둘레'].map((name, i) => ({ id: `star-${i ? 'perimeter' : 'area'}`, title: `별 모양의 ${name}`, label: name, legacyLabel: name, duration: i ? 8.4 : 8.8, stops: [.8, 3.2, 4.3, 6.3], model, given: `정사각형 한 변 $${pretty(model.a)}$ cm · 사분원 반지름 $${pretty(model.r)}$ cm`, draw: (b, t, m) => drawStar(b, t, m, !!i), frame: (t, m) => starFrame(t, m, !!i) }));
+      const plans = ['넓이', '둘레'].map((name, i) => ({ id: `star-${i ? 'perimeter' : 'area'}`, title: `별 모양의 ${name}`, label: name, legacyLabel: name, duration: i ? 8.4 : 8.8, stops: [.8, 3.2, 4.3, 6.3], model, given: `정사각형 한 변 $${pretty(model.a)}$ cm · 사분원 반지름 $${pretty(model.r)}$ cm`, draw: (b, t, m) => drawStar(b, t, m, !!i), frame: (t, m) => starFrame(t, m, !!i) }));
+      return Number(s[K('mode')]) === 1 ? [plans[1], plans[0]] : plans;
     },
     'g7-circle-sector/f3-leaf-area': (lab, s) => {
       if (!positive(s.f3a) || !Number.isInteger(s.f3a)) return [];

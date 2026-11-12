@@ -44,7 +44,7 @@ jobs:
           if-no-files-found: error
   learning:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
@@ -70,6 +70,7 @@ jobs:
           python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/g7-http.log" 2>&1 &
           for i in {1..20}; do curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js >/dev/null && break; sleep 1; done
           node apmath/playground/next/tools/g7-learning-browser.mjs
+          node apmath/playground/next/tools/g7-function-shorts-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -239,7 +239,7 @@
     el.onload = resolve; el.onerror = () => reject(new Error('Grade 7 learning module unavailable: ' + name));
     document.head.append(el);
   });
-  const ready = load('apl-g7-short-scenes.js').then(() => load('apl-g7-short-solids.js')).then(() => load('apl-g7-learning.js'));
+  const ready = load('apl-g7-short-scenes.js').then(() => load('apl-g7-short-solids.js')).then(() => load('apl-g7-short-coordinates.js')).then(() => load('apl-g7-short-proportion.js')).then(() => load('apl-g7-learning.js'));
   // This hook runs before the legacy player can substitute its fixed example.
   A.labHooks.unshift(lab => {
     if (!lab.id?.startsWith('g7-') || lab.teach) return;
