@@ -1401,6 +1401,12 @@
           "sumPoints": 100
         },
         "engineContractFinding": "archive/engine.html loads window.questionBank entries into AppState.data without summing question.points; no per-question rendering of points was found. The numeric points field is retained as exam data metadata; the print-header score line is independently fixed to /100. No score was inferred."
+      },
+      {
+        "scope": "Q15 incompatible parallel-angle givens",
+        "before": "Stem put a 45° alternate-angle pair and a 100° same-side interior pair on a single implied transversal; for the same transversal, parallel lines force all interior angles to be 45° or 135°, so 100° is impossible.",
+        "after": "Made the pairs belong to two distinct transversals p and q of the same parallel lines, preserving 45°, 100°, choices, answer and point value.",
+        "independentCheck": "For transversal p, alternate angles give a=45°. For distinct transversal q, same-side interior angles give b=180−100=80°. Thus a+b=125°, unique choice ⑤; the two conditions are independently realizable. Author-side check; formal independent review pending."
       }
     ]
   },
@@ -1807,7 +1813,7 @@
   ],
   "validation": {
     "jsSyntax": "PASS (node --check)",
-    "mathReview": "Q19 author-side independent SSA check: with AB=6 and angle A=40°, C lies on a fixed ray from A; BC=8 places C on a circle centered at B with radius 8. Since A is inside that circle (AB=6<8), the ray from A meets the circle exactly once. Thus ㄷ has exactly one triangle; ㄱ,ㄴ,ㄷ are true and answer ④. Formal independent review remains UNREVIEWED. Q11 ray order added; adjacent-angle equation gives COE=50° and answer ②, author-checked; formal independent review pending. Q15 stem disclosure removed; 45° and 100° givens imply a=45°, b=80°, sum 125°, answer ⑤, author-checked.",
+    "mathReview": "Q19 author-side independent SSA check: with AB=6 and angle A=40°, C lies on a fixed ray from A; BC=8 places C on a circle centered at B with radius 8. Since A is inside that circle (AB=6<8), the ray from A meets the circle exactly once. Thus ㄷ has exactly one triangle; ㄱ,ㄴ,ㄷ are true and answer ④. Formal independent review remains UNREVIEWED. Q11 ray order added; adjacent-angle equation gives COE=50° and answer ②, author-checked; formal independent review pending. Q15 stem disclosure removed; 45° and 100° givens imply a=45°, b=80°, sum 125°, answer ⑤, author-checked. Q15 corrected: alternate and same-side interior angle pairs are on distinct transversals; one-transversal version was inconsistent. New values a=45°, b=80°, sum125°, answer⑤, author-checked.",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "NOT_RUN",
     "metadataMarkerAudit": {
@@ -1828,7 +1834,7 @@
     }
   },
   "pipelineState": "PARTIALLY_BLOCKED_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "368ffbb5d857f94132af7da6b8cfffca263157bd",
+  "expectedSourceBlobSha1": "02d1777c809037e2344e07fee1d712e53d76fecc",
   "currentMainReleaseAudit": {
     "mainCommit": "c07df518f76927602fa8cb789b9ecd8e5e0d08f2",
     "existingSimilarJs": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사.js",

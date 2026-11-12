@@ -524,7 +524,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "두 평행한 직선 $l,m$을 한 직선이 만난다. 두 직선 사이의 한 쌍의 엇각에서 한 각의 크기는 $45^\\circ$이고 다른 각을 $a$라 한다. 두 직선 사이의 한 쌍의 같은 쪽 내각에서 한 각의 크기는 $100^\\circ$이고 다른 각을 $b$라 한다. $\\angle a+\\angle b$의 크기는?",
+    "content": "서로 평행한 두 직선 $l,m$을 서로 다른 두 횡단선 $p,q$가 만난다. 직선 $p$가 만드는 한 쌍의 엇각 중 한 각의 크기는 $45^\\circ$이고 다른 각을 $a$라 한다. 직선 $q$가 만드는 한 쌍의 같은 쪽 내각 중 한 각의 크기는 $100^\\circ$이고 다른 각을 $b$라 한다. $\\angle a+\\angle b$의 크기는?",
     "choices": [
       "$105^\\circ$",
       "$110^\\circ$",
@@ -536,7 +536,7 @@ window.questionBank = [
     "points": 3,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
-    "solution": "엇각은 크기가 같으므로 $\\angle a=45^\\circ$이다. 같은 쪽 내각의 합은 $180^\\circ$이므로 $\\angle b=180^\\circ-100^\\circ=80^\\circ$이다. 따라서 $\\angle a+\\angle b=45^\\circ+80^\\circ=125^\\circ$이고 정답은 ⑤이다.",
+    "solution": "직선 $p$가 만드는 엇각은 크기가 같으므로 $\\angle a=45^\\circ$이다. 직선 $q$가 만드는 같은 쪽 내각의 합은 $180^\\circ$이므로 $\\angle b=180^\\circ-100^\\circ=80^\\circ$이다. 따라서 $\\angle a+\\angle b=45^\\circ+80^\\circ=125^\\circ$이고 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
