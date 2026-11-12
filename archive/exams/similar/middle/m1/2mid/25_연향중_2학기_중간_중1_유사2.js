@@ -524,7 +524,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "두 직선 $l$과 $m$이 서로 평행하다. 엇각의 위치에 있는 한 각이 $45^\\circ$이어서 $\\angle a = 45^\\circ$이고, 한쪽 동측내각의 크기가 $100^\\circ$이어서 $\\angle b = 180^\\circ - 100^\\circ = 80^\\circ$이다. 이때 $\\angle a + \\angle b$의 크기는?",
+    "content": "두 평행한 직선 $l,m$을 한 직선이 만난다. 두 직선 사이의 한 쌍의 엇각에서 한 각의 크기는 $45^\\circ$이고 다른 각을 $a$라 한다. 두 직선 사이의 한 쌍의 같은 쪽 내각에서 한 각의 크기는 $100^\\circ$이고 다른 각을 $b$라 한다. $\\angle a+\\angle b$의 크기는?",
     "choices": [
       "$105^\\circ$",
       "$110^\\circ$",
@@ -533,10 +533,10 @@ window.questionBank = [
       "$125^\\circ$"
     ],
     "answer": "⑤",
-    "points": 0,
+    "points": 3,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
-    "solution": "평행선에서 엇각의 크기는 서로 같으므로 $$\\begin{aligned} a &= 45^\\circ \\end{aligned}$$ 이다. 동측내각의 합은 $180^\\circ$이므로 $$\\begin{aligned} b &= 180^\\circ - 100^\\circ = 80^\\circ \\end{aligned}$$ 이다. 따라서 두 각의 합을 구하면 $$\\begin{aligned} a + b &= 45^\\circ + 80^\\circ \\ &= 125^\\circ \\end{aligned}$$ 이므로 정답은 ⑤이다.",
+    "solution": "엇각은 크기가 같으므로 $\\angle a=45^\\circ$이다. 같은 쪽 내각의 합은 $180^\\circ$이므로 $\\angle b=180^\\circ-100^\\circ=80^\\circ$이다. 따라서 $\\angle a+\\angle b=45^\\circ+80^\\circ=125^\\circ$이고 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"

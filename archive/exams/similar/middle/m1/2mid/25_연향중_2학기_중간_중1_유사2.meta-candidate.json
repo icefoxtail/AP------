@@ -1377,6 +1377,18 @@
         "after": "Specified OB,OC,OD,OE on one side of AF and the OA-to-OF ray order; clarified that the five named angles are consecutive adjacent parts of the straight angle.",
         "independentCheck": "Set ∠COD=x and ∠DOE=y. Then ∠BOC=2x and ∠EOF=2y, and the explicit order gives 30+2x+x+y+2y=180, so x+y=50. Since D is between C and E, ∠COE=x+y=50°, uniquely answer ②. Author-side independent check; formal independent review pending.",
         "sourceImageAudit": "The current Drive MD Q11 has only text paragraphs and no inline image; the candidate JS has no image fields. Order condition was therefore made explicit in the wording."
+      },
+      {
+        "scope": "Q15 answer disclosure",
+        "before": "The stem included derived values a=45° and b=180°−100°=80°, revealing the answer before solving.",
+        "after": "The stem states only that one alternate-angle pair contains 45° and one same-side interior-angle pair contains 100°, then asks for a+b.",
+        "independentCheck": "For parallel lines, the alternate angle is 45° and the same-side interior angle is 180°−100°=80°; sum=125°, unique option ⑤. The original MD confirms these givens, choices, and key. Author-side check; formal independent review pending."
+      },
+      {
+        "scope": "Q15 points",
+        "before": "Candidate JS points was 0.",
+        "after": "Set points to 3 to match the Q15 source MD heading “배점: 3”.",
+        "evidence": "Drive document 1n78zw5jQbaC-z7HKvv8bruFYl_ZKsq3g_3EybyNEln4 at recorded revision AHj4eMQVqgfiEFtUGRTqsVs6avizwXOIP4L06k9xQd_DBjQ9u_W6VRbzmmAgtECFlTFJVtJ9uR3XIE3uEBhkjHAfuqYKyFePAcQVDXRzCxI; question paragraphs identify Q15 and 3 points."
       }
     ]
   },
@@ -1783,7 +1795,7 @@
   ],
   "validation": {
     "jsSyntax": "PASS (node --check)",
-    "mathReview": "Q19 author-side independent SSA check: with AB=6 and angle A=40°, C lies on a fixed ray from A; BC=8 places C on a circle centered at B with radius 8. Since A is inside that circle (AB=6<8), the ray from A meets the circle exactly once. Thus ㄷ has exactly one triangle; ㄱ,ㄴ,ㄷ are true and answer ④. Formal independent review remains UNREVIEWED. Q11 ray order added; adjacent-angle equation gives COE=50° and answer ②, author-checked; formal independent review pending.",
+    "mathReview": "Q19 author-side independent SSA check: with AB=6 and angle A=40°, C lies on a fixed ray from A; BC=8 places C on a circle centered at B with radius 8. Since A is inside that circle (AB=6<8), the ray from A meets the circle exactly once. Thus ㄷ has exactly one triangle; ㄱ,ㄴ,ㄷ are true and answer ④. Formal independent review remains UNREVIEWED. Q11 ray order added; adjacent-angle equation gives COE=50° and answer ②, author-checked; formal independent review pending. Q15 stem disclosure removed; 45° and 100° givens imply a=45°, b=80°, sum 125°, answer ⑤, author-checked.",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "NOT_RUN",
     "metadataMarkerAudit": {
@@ -1795,7 +1807,7 @@
     }
   },
   "pipelineState": "PARTIALLY_BLOCKED_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "0f74a80d46688d941ee538bb1b7eea78fcf10c11",
+  "expectedSourceBlobSha1": "9fab1a780cd3afebee1285db308e70ccbcc9ecb3",
   "currentMainReleaseAudit": {
     "mainCommit": "c07df518f76927602fa8cb789b9ecd8e5e0d08f2",
     "existingSimilarJs": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사.js",
