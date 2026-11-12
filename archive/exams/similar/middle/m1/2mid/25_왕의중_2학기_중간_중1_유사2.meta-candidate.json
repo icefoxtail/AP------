@@ -47,6 +47,12 @@
         "change": "Added an HTML table using x/y entries explicitly recoverable from the candidate solution: (3,-9), (-2,a), (b,12), (6,c). The Drive source could not be fetched in this session, so this is reconstructed from the existing solution, not claimed as verified source restoration.",
         "answerPreserved": "③ (-6)",
         "formalReview": "PENDING"
+      },
+      {
+        "scope": "Q4 quadrant axis exception",
+        "change": "Revised option ⑤ to require y≠0 and corrected option ③ to be false, so the first/fourth-quadrant classification is accurate and the item keeps one correct answer.",
+        "answerChanged": "③ → ⑤",
+        "formalReview": "PENDING"
       }
     ]
   },
@@ -475,12 +481,13 @@
     "sha256": "e666b1fbfc509bb99e5afa168be85bb528b89575c071fb8f92c7aef19049ebcb",
     "status": "UNREVIEWED"
   },
-  "mathReview": "UNREVIEWED\nQ19: Replaced trigonometric ratios with reflection/equilateral construction. Author-side geometric check; formal independent review pending.\nQ20: Rebuilt conditions to remove Pythagorean arithmetic; unique congruent pair ㄱ/ㄹ by SSS, answer ②. Author-side check; formal independent review pending.\nQ12: The original candidate said two lines while describing three adjacent upper angles, an impossible configuration. The similar item now explicitly has three concurrent lines; x=96°, y=36°, z=48°, answer ①. Author-side angle check; formal review pending.\nQ16: Rebuilt the folding-angle variant with explicit fold image, ray order, opposite rays and given angles. The fold bisects 72°; EDF=58°; sum 94°, answer ②. Author-side check; formal review pending.\nQ21: Added explicit OA/OB/OC/OD/OE ray order; 90°/5=18°, COE=72°, COD=18°, BOD=36°. Author-side check; formal review pending.\nQ7: Added the missing table from the candidate solution’s stated cell correspondences (3,-9), (-2,a), (b,12), (6,c). It gives k=-3, a=6, b=-4, c=-18, ab-c=-6, answer ③. Drive source fetch unavailable; not asserted as source restoration. Formal review pending.",
+  "mathReview": "UNREVIEWED\nQ19: Replaced trigonometric ratios with reflection/equilateral construction. Author-side geometric check; formal independent review pending.\nQ20: Rebuilt conditions to remove Pythagorean arithmetic; unique congruent pair ㄱ/ㄹ by SSS, answer ②. Author-side check; formal independent review pending.\nQ12: The original candidate said two lines while describing three adjacent upper angles, an impossible configuration. The similar item now explicitly has three concurrent lines; x=96°, y=36°, z=48°, answer ①. Author-side angle check; formal review pending.\nQ16: Rebuilt the folding-angle variant with explicit fold image, ray order, opposite rays and given angles. The fold bisects 72°; EDF=58°; sum 94°, answer ②. Author-side check; formal review pending.\nQ21: Added explicit OA/OB/OC/OD/OE ray order; 90°/5=18°, COE=72°, COD=18°, BOD=36°. Author-side check; formal review pending.\nQ7: Added the missing table from the candidate solution’s stated cell correspondences (3,-9), (-2,a), (b,12), (6,c). It gives k=-3, a=6, b=-4, c=-18, ab-c=-6, answer ③. Drive source fetch unavailable; not asserted as source restoration. Formal review pending.\nQ4: Added the missing y≠0 condition to the positive-x quadrant claim; changed option ③ so it is false for (-2,0), which lies on the x-axis. Only option ⑤ is true. Author-side sign check; formal review pending.",
   "questionReview": {
     "Q20": "AUTHOR_CHECKED; conditions revised to remove Pythagorean arithmetic; unique congruent pair ㄱ/ㄹ by SSS, answer ②. Formal independent review pending.",
     "Q12": "AUTHOR_CHECKED; corrected impossible two-line/three-angle statement to three concurrent lines, retaining answer ① (84°). Formal independent review pending.",
     "Q16": "AUTHOR_CHECKED; reconstructed the similar variant with explicit point/ray/fold relationships, not an original-layout restoration. Answer ② (94°). Formal independent review pending.",
     "Q21": "AUTHOR_CHECKED; explicit ray order removes arrangement ambiguity; answer 36°. Formal independent review pending.",
-    "Q7": "AUTHOR_CHECKED; table reconstructed from existing solution values because Drive fetch was unavailable; source fidelity not independently confirmed. Answer ③ (-6). Formal review pending."
+    "Q7": "AUTHOR_CHECKED; table reconstructed from existing solution values because Drive fetch was unavailable; source fidelity not independently confirmed. Answer ③ (-6). Formal review pending.",
+    "Q4": "AUTHOR_CHECKED; x-axis exception explicitly excluded by y≠0; sole correct choice changed to ⑤. Formal independent review pending."
   }
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "similar/middle/m1/2mid/25_왕의중_2학기_중간_중1_유사2.js",
-  "sourceGitBlobSha": "669c8495f382a94ec5208f85a3fec6c3dbcc06c8",
+  "sourceGitBlobSha": "c1bbd149f951ba1e142f00c24106720d080bd25f",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "Codex",
@@ -182,7 +182,7 @@
           {
             "term": "판정",
             "src": "solution",
-            "quote": "좌표축 위의 점은 어느 사분면에도 속하지 않으며 각 사분면의 부호 규칙을 대조한다. $$\\begin{aligned} &\\text{① } y\\text{축 위의 점은 } x\\text{좌표가 } 0\\text{이다. (거짓)} \\ &\\text{② 점 } (4, -3)\\text{은 } (\\text{양수}, \\text{음수})\\text{이므로 제4사분면 위의 점이다. (거짓)} \\ &\\text{③ 점 } (-2, 0)\\text{은 } x\\text{축 위의 점이므로 어느 사분면에도 속하지 않는다. (참)} \\ &\\text{④ } (2, -3)\\text{은 제4사분면, } (-2, 3)\\text{은 제2사분면이므로 서로 다른 사분면이다. (거짓)} \\ &\\text{⑤ } x\\text{좌표가 양수인 점은 제1사분면 또는 제4사분면 위의 점이다. (거짓)} \\end{aligned}$$ 따라서 옳은 것은 ③이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"좌표축 및 사분면의 기본 정의와 점의 소속 판별 문항\"\n}\n\n{\n  \"sourceQid\": \"4\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-04\",\n  \"subUnitKey\": \"M1-04-COORDINATE_PLANE\",\n  \"conceptClusterKey\": \"COORDINATE_PLANE\",\n  \"primaryMethod\": \"좌표축 위의 점은 사분면에 속하지 않는다는 성질과 각 사분면의 부호를 검토하여 선별한다.\",\n  \"decisiveStep\": \"점 (-2, 0)이 x축 위의 점이므로 어느 사분면에도 속하지 않음을 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"좌표평면과 그래프\",\n    \"midUnit\": \"좌표와 그래프\",\n    \"l3\": \"좌표평면\",\n    \"l4\": \"사분면의 이해\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_COORDINATE_POINT_READING\",\n    \"templateKey\": \"TPL_COORDINATE_POINT_READING_PROPERTIES\",\n    \"why\": \"좌표축 및 사분면의 성질에 대한 참·거짓을 판별하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"좌표축의 정의와 사분면 제외 규칙을 직관적으로 확인하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"사분면\",\n      \"부호\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"판정\"\n    ],\n    \"condition\": [\n      \"상수\"\n    ]\n  }\n}",
+            "quote": "각 사분면의 부호와 좌표축 위 점의 위치를 확인한다. $$\\begin{aligned} &\\text{① } y\\text{축 위의 점은 }x\\text{좌표가 }0\\text{이다. (거짓)} \\ &\\text{② }(4,-3)\\text{은 제4사분면 위에 있다. (거짓)} \\ &\\text{③ }(-2,0)\\text{은 }x\\text{축 위에 있어 어느 사분면에도 속하지 않는다. (거짓)} \\ &\\text{④ }(2,-3)\\text{은 제4사분면, }(-2,3)\\text{은 제2사분면 위에 있다. (거짓)} \\ &\\text{⑤ }x>0, y\\ne0\\text{이면 }(x,y)\\text{는 제1사분면 또는 제4사분면 위에 있다. (참)} \\end{aligned}$$ 따라서 옳은 것은 ⑤이다.",
             "evidenceType": "IMPLIED",
             "justification": "Drive MD 4-slot draft; independent review pending"
           }
