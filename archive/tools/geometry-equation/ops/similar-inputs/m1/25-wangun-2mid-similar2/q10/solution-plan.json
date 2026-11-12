@@ -1,0 +1,212 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  },
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "widthx",
+        "from": "A",
+        "to": "B",
+        "label": "x",
+        "style": "BAR",
+        "side": "BELOW",
+        "offsetPx": 30,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "heighty",
+        "from": "B",
+        "to": "C",
+        "label": "y",
+        "style": "BAR",
+        "side": "RIGHT",
+        "offsetPx": 30,
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "area48",
+        "at": "T",
+        "text": "넓이48",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "넓이가 일정하면 xy=48 · y=48/x는 반비례",
+  "sourceQuote": "choice4 rectangle area48 widthx heighty",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "choice4 rectangle area48 widthx heighty",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "T"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "T"
+  ],
+  "hiddenPointStyle": "NONE"
+}

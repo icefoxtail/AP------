@@ -1,0 +1,456 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "P",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "170"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "P",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "QH",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "Q",
+          "QH"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "195"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "PL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "PR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "QL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "QR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "P",
+    "R",
+    "A",
+    "Q",
+    "QH",
+    "B",
+    "AL",
+    "AR",
+    "BL",
+    "BR",
+    "PL",
+    "PR",
+    "QL",
+    "QR"
+  ],
+  "displaySegments": [
+    {
+      "id": "AP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "QB",
+      "refs": [
+        "Q",
+        "B"
+      ]
+    },
+    {
+      "id": "ALAR",
+      "refs": [
+        "AL",
+        "AR"
+      ]
+    },
+    {
+      "id": "BLBR",
+      "refs": [
+        "BL",
+        "BR"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "first",
+        "refs": [
+          "A",
+          "P",
+          "Q"
+        ],
+        "value": 130,
+        "label": "130",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "second",
+        "refs": [
+          "P",
+          "Q",
+          "B"
+        ],
+        "value": 75,
+        "label": "75",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "a",
+        "refs": [
+          "AR",
+          "A",
+          "P"
+        ],
+        "value": 10,
+        "label": "a",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "b",
+        "refs": [
+          "BR",
+          "B",
+          "Q"
+        ],
+        "value": 15,
+        "label": "b",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "givenparallel",
+        "segments": [
+          "ALAR",
+          "BLBR"
+        ],
+        "count": 1
+      }
+    ]
+  },
+  "caption": "두 평행선 사이의 꺾인 선 · 꼭짓점의 각130°,75°",
+  "sourceQuote": "parallel zigzag first130 second75 endpointa b",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "parallel zigzag first130 second75 endpointa b",
+      "mappedTo": [
+        "P",
+        "R",
+        "A",
+        "Q",
+        "QH",
+        "B",
+        "AL",
+        "AR",
+        "BL",
+        "BR",
+        "PL",
+        "PR",
+        "QL",
+        "QR"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "hiddenPointNames": [
+    "P",
+    "R",
+    "A",
+    "Q",
+    "QH",
+    "B",
+    "AL",
+    "AR",
+    "BL",
+    "BR",
+    "PL",
+    "PR",
+    "QL",
+    "QR"
+  ],
+  "hiddenPointStyle": "NONE"
+}

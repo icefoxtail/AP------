@@ -1,0 +1,88 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "displayWindow": [
+      -0.5,
+      6,
+      -0.5,
+      6
+    ],
+    "domain": [
+      -0.5,
+      6
+    ],
+    "family": "rational",
+    "formulaLabel": "y=k/x",
+    "numerator": [
+      "1",
+      "0"
+    ],
+    "requiredPoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -0.5,
+      6,
+      -0.5,
+      6
+    ],
+    "shapeIntent": "OVERVIEW",
+    "overviewPolicy": "RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_v1",
+    "rationalFeatures": {
+      "schemaVersion": "RATIONAL_CONSTANT_OVER_LINEAR_FEATURES_v1",
+      "constant": "1",
+      "singularity": {
+        "kind": "VERTICAL_POLE",
+        "x": "0"
+      },
+      "horizontalAsymptoteY": "0",
+      "xIntercept": null,
+      "poleDirection": {
+        "left": "DOWN",
+        "right": "UP"
+      },
+      "asymptotes": {
+        "horizontal": {
+          "y": "0",
+          "drawn": false,
+          "reason": "ON_X_AXIS"
+        },
+        "vertical": {
+          "x": "0",
+          "drawn": false,
+          "reason": "ON_Y_AXIS"
+        }
+      }
+    },
+    "rationalFeaturePolicy": {
+      "schemaVersion": "RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_POLICY_v1",
+      "sourceDomain": "ALL_REALS_WITH_DENOMINATOR_EXCLUSION",
+      "degreeGrammar": "CONSTANT_OVER_LINEAR",
+      "singularityPolicy": "ONE_SIMPLE_REAL_POLE",
+      "horizontalAsymptotePolicy": "Y_EQUALS_ZERO_IS_THE_X_AXIS_NOT_DRAWN",
+      "asymptoteOnAxisPolicy": "AXIS_IS_THE_ASYMPTOTE_NO_DASHED_LINE",
+      "minimumFeatureSeparationCssPx": 1,
+      "windowPolicy": "AUTHOR_DISPLAY_WINDOW_EQUAL_UNITS_v1"
+    },
+    "equalUnits": true,
+    "axisRatio": 1,
+    "plotCanvas": {
+      "width": 448,
+      "height": 448
+    }
+  },
+  "caption": "압력 x>0, 부피 y>0 · xy=k>0의 제1사분면 부분 · k=1 형태 예시",
+  "sourceQuote": "pressure volume positive constantproduct",
+  "sourceConditions": [
+    {
+      "id": "positive",
+      "condition": "derived positive constant",
+      "mappedTo": []
+    }
+  ]
+}
