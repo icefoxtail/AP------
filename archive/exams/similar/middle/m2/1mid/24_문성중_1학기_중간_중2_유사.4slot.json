@@ -1,0 +1,2598 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+  "sourceGitBlobSha": "f65c4e3ebfcaa93c304ff3b824fc202fb39f804b",
+  "sourceSha256": "1256396e06b16a435af714a1b1d96258dbbbc5c5dddc1b698133a96a2142d366",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex stage-local MD migration",
+    "at": "2026-11-12",
+    "role": "strict Markdown section transfer and visual benefit assessment; independent review not claimed"
+  },
+  "stage": "CREATE_4SLOT_STAGE_LOCAL",
+  "review": {
+    "status": "UNREVIEWED",
+    "independentReview": "NOT_RUN",
+    "scope": "4-slot semantics; independent review not claimed."
+  },
+  "selfCheck": {
+    "status": "SOURCE_TRANSFER_ONLY",
+    "itemsChecked": 23,
+    "sourceRead": "Direct Drive doc 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+    "sectionIsolation": "Prompt, choices, answer, solution, plan and metadata parsed only from their fenced/heading-bounded sections.",
+    "visualReview": "NOT_RUN: no rendering QA and no SVG creation.",
+    "identityBinding": "Official UID formula used; identity-map registration NOT_RUN.",
+    "registration": "NOT_RUN"
+  },
+  "scope": {
+    "items": 23,
+    "sourceOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "operation": "CREATE",
+    "before": null,
+    "after": "MD transfer into JS + cited 4-slot candidate",
+    "reason": "User-requested migration of existing Markdown exam."
+  },
+  "visualQueue": [
+    {
+      "sourceOrdinal": 1,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "분수 변환 빈칸과 계산식이 발문에 제시됨."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "분모 보완과 A,B,C 값의 대응을 표로 연결."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "분수 다섯 개가 직접 비교 대상."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "약분 후 분모 소인수와 유한/순환 여부를 표로 분류."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "순환소수와 유한소수의 대소관계에 수직선 표기가 비교를 도울 수 있음."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "각 소수 전개를 자릿수별로 나란히 두고 처음 달라지는 자리 표시."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "45·46번째 자리를 순환마디 위에 표시하면 주기 반복과 위치 파악에 도움."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "순환마디 63의 2자리 주기와 나머지에 따른 자리 대응."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "a,b의 대칭 순환소수 관계를 표로 두면 합과 차의 구조가 드러남."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "분수 변환에서 a+b=7, 소수쌍 (5,2), 차 계산을 단계표로."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "두 학생의 관측 결과가 발문에 직접 주어짐."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "각 순환소수→분수→원래 분자/분모 복원을 두 열로 비교."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "네 명제가 텍스트로 제시되어 발문용 그림의 이득이 낮음."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "명제별 참/거짓과 반례 또는 정의 근거를 표로 대조."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "거듭제곱 식의 빈칸 계산."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "지수법칙 적용과 지수 방정식 변환 흐름."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "A와 8^x의 관계를 식으로 직접 묻는 문항."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "2^x=2A에서 8^x=(2^x)^3로 이어지는 지수 트리."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "세 거듭제곱의 합이 식으로 주어짐."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "공통인수 묶기와 n 결정 과정을 지수식 흐름으로."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "지수법칙 식이 기호로 충분히 제시됨."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "x,y 지수 계산을 거듭제곱 전개/곱셈 단계별 표로."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "지수 등식과 최솟값 질문이 완결됨."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "d의 공약수 후보와 a+b+c 결과를 비교하는 표."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "단항식 연산식이 발문에 명확히 주어짐."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "거듭제곱, 곱셈, 나눗셈에서 계수와 각 문자 지수를 열로 정리."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "problem": {
+        "status": "필요·미제작",
+        "priority": "P1",
+        "note": "직육면체의 밑면 가로·세로, 높이, 부피 관계를 공간적으로 보여 주는 도형 필요."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "밑면 넓이와 높이를 V=Sh에 연결한 직육면체 도식."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "큰 거듭제곱의 자리수는 10의 거듭제곱으로 묶는 과정을 표시하면 이해에 도움."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "2^17×5^14를 8×10^14로 묶고 자리수 연결."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "잘못 계산한 결과와 원래 식이 발문에 모두 명시됨."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "잘못된 뺄셈에서 A 복원 후 올바른 덧셈으로 이어지는 흐름."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "두 다항식 나눗셈과 계수 질문이 식으로 제시됨."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "각 나눗셈 결과와 x²,x 계수를 항별 계산표로."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "x=2 대입으로 선지를 판정하는 문항."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "선지별 대입 결과의 참/거짓 표."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "부등호 방향을 선지별로 비교하므로 양변 연산을 시각화하면 도움이 됨."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "양수 연산은 유지, 음수 연산은 반전하는 선지별 표."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "닫힌 구간과 음수 기울기에서 극값이 반대 끝점에 대응함을 구간 도식으로 보여주면 이해가 쉬움."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "구간 끝점 -7,3에서 함수값과 최댓값·최솟값 대응."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "problem": {
+        "status": "권장·미제작",
+        "priority": "P2",
+        "note": "순환소수 곱셈 구조는 문제에서 드러나나 소수점 반복 위치를 시각화하면 유용."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "100x, 10x를 세로로 정렬해 순환 부분을 소거하는 도식."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "problem": {
+        "status": "불필요",
+        "priority": null,
+        "note": "거듭제곱 항등식이 식으로 제시됨."
+      },
+      "solution": {
+        "status": "권장·미제작",
+        "priority": "P1",
+        "note": "계수 비교와 x,y 지수 비교를 단계별 표로 분리."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "problem": {
+        "status": "필요·미제작",
+        "priority": "P1",
+        "note": "x의 구간이 affine식의 범위로 변하는 핵심이므로 수직선/끝점 대응을 문제 옆에 표시하면 유용."
+      },
+      "solution": {
+        "status": "필요·미제작",
+        "priority": "P1",
+        "note": "음수배로 방향이 바뀌는 구간과 4를 더한 부등식 사슬을 도식화."
+      }
+    }
+  ],
+  "candidates": [],
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{9}{2^{3}\\",
+            "termId": 27
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{9}{2^{3}\\times5}$을 유한소수로 나타내는",
+            "termId": 1,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "분모를 $10$의 거듭제곱인 $10^3=1000$으로 만들기 위해 분모와",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "분모를 $10$의 거듭제곱인 $10^3=1000$으로 만들기 위해 분모와",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "분모를 $10$의 거듭제곱인 $10^3=1000$으로 만들",
+            "termId": 20
+          }
+        ]
+      },
+      "reasons": {
+        "method": "분모를 2^3*5^3=1000으로 만들기 위해 5^2=25를 곱해 A=225, B=1000, C=0.225를 구하고 225+225=450을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_5ac0b70d99dd792d19ab647725a8c24b350ab7000940a57f65a0bec3ed9000c7",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "41db003538367d983b7c5d6918fefc2fe6001ef9e265549c1de558e855d88b15"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dd966928c1bca4f610a77f72acb6ebbeecc4cf15e8a30c999949e6726617094b"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 1
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "기약분수",
+            "src": "solution",
+            "quote": "기약분수로 나타내었을 때 분모의 소인수에",
+            "termId": 558
+          },
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "다음 분수 중에서 순환소수로만 나타낼 수 ",
+            "termId": 27
+          }
+        ],
+        "goal": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "다음 분수 중에서 순환소수로만 나타낼 수 있는 것은? [3",
+            "termId": 428
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "기약분수로 나타내었을 때 분모의 소인수에 $2$ 또는 $5$ 이외의 소인",
+            "termId": 14,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "기약분수로 나타내었을 때 분모의 소인수에 $2$ 또는 $5$ 이외의 소인",
+            "termId": 11,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "소인수",
+            "src": "solution",
+            "quote": "나타내었을 때 분모의 소인수에 $2$ 또는 $5$ 이외의 소",
+            "termId": 13
+          }
+        ]
+      },
+      "reasons": {
+        "method": "기약분수로 약분 후 분모에 2, 5 이외의 소인수 3이 남는 분수를 선별한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_ec999cea53980e23c4c033ba29d2e934bebb135f42eff55a02b98c2eb65ef21e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0cd67dc884b2760f488681865e9c566cfba8c6ef2ec539cf30a0144290de42cb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "de5e91cec069435f698585d4ddc07d304ba1276549e4a58bf96bcbeb4a17a3b6"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 2
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "solution",
+            "quote": "순환소수를 소수 전개 꼴로 펼쳐서 소수점",
+            "termId": 428
+          },
+          {
+            "term": "소수",
+            "src": "solution",
+            "quote": "순환소수를 소수 전개 꼴로 펼쳐서 소수점",
+            "termId": 9
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "두 수의 대소관계를 바르게 나타낸 것은? [3점]",
+            "termId": 28,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "자릿수",
+            "src": "solution",
+            "quote": " 펼쳐서 소수점 아래 자릿수를 순서대로 비교한다.\n$$\n\\b",
+            "termId": 559,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "소수",
+            "src": "solution",
+            "quote": "순환소수를 소수 전개 꼴로 펼쳐서 소수점",
+            "termId": 9
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 선지의 수를 소수점 아래 여러 자리까지 전개하여 자릿수별로 대소를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_dbe1f71abd4971aad29a194f5f2ee332c6fe7780f5722c21d62f8b6684960c25",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c386dc358f1553c348a0bf2a96f16e5e0948b28b25ab898bb72e6a83c9aea65a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d2f8d10857cda56e836a8655b3b9fdba4adf47a10a52f872390f6f4be43fdeb9"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 3
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{29}{11}$를",
+            "termId": 27
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{29}{11}$를 소수로 나타내었을 때, 소수점 아래",
+            "termId": 1,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "분수 $\\dfrac{29}{11}$를 나눗셈하여 소수로 나타낸다.\n$$\n",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "분수 $\\dfrac{29}{11}$를 나눗셈하여 소수로 나타낸다.\n$$\n",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "자릿수",
+            "src": "solution",
+            "quote": "분수 $\\dfrac{29}{11}$를 나눗셈하여 소수로 나타낸다.\n$$\n",
+            "termId": 559,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{29}{11}$를 소수로 나타내었을 때, 소수점 아래",
+            "termId": 428,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "29/11 = 2.(6)(3)의 순환마디 63에서 45번째 자리 6과 46번째 자리 3의 곱 18을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_08219d68ceddbc88c71d169ff6d09f56fabe4e85e7515aa7407b054d2a451391",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1a988370abe751598e6f677de4bd4ae1221413f3924c2b16957551b7f9b4743a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9021c985ade4628d9393302f6c02b857381ec94da269bcef67a7ecc39920fed8"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 4
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "두 순환소수 $0.\\dot{a}\\dot{b}",
+            "termId": 428
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "두 순환소수 $0.\\dot{a}\\dot{b}",
+            "termId": 9
+          }
+        ],
+        "goal": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "두 순환소수 $0.\\dot{a}\\dot{b}",
+            "termId": 428
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "두 순환소수를 분수로 나타내어 합을 구한다.\n$$\n\\begin{align",
+            "termId": 62,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "두 순환소수를 분수로 나타내어 합을 구한다.\n$$\n\\begin{align",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "두 순환소수를 분수로 나타내어 합을 구한다.\n$$\n\\begin{align",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": ", b$는 한 자리의 자연수이고 $a$와 $b$는 소수(pr",
+            "termId": 1
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "두 순환소수 $0.\\dot{a}\\dot{b}",
+            "termId": 9
+          }
+        ]
+      },
+      "reasons": {
+        "method": "(a+b)/9=7/9에서 a+b=7을 얻고, 소수 조건 a=5, b=2를 결정하여 0.(5)-0.(2)=0.(3)을 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_610a14bd707c90163bccb2e8fc700ae0e6b3c2eb7fc5c7cdb62b2bc485ffec6b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "16c5fe1ffd3a24186887b8f8447dd01700108ba85735482b20eed3a007d81671"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2fc9f2f6e132733fe1b961ea1ae32e2b15eb6741eb0fb988b33e185c93ca4cb6"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 5
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "solution",
+            "quote": "1단계: 민우가 얻은 순환소수를 기약분수로 변환한다.\n$$\n0",
+            "termId": 428
+          },
+          {
+            "term": "기약분수",
+            "src": "stem",
+            "quote": "어떤 기약분수를 소수로 나타내는데, 민우는 분",
+            "termId": 558
+          }
+        ],
+        "goal": [
+          {
+            "term": "순환소수",
+            "src": "solution",
+            "quote": "1단계: 민우가 얻은 순환소수를 기약분수로 변환한다.\n$$\n0",
+            "termId": 428
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "두 학생이 잘못 본 분수를 기약분수로 나타내어 바른 분자와 분모를 찾는다",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "두 학생이 잘못 본 분수를 기약분수로 나타내어 바른 분자와 분모를 찾는다",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "기약분수",
+            "src": "stem",
+            "quote": "어떤 기약분수를 소수로 나타내는데, 민우는 분",
+            "termId": 558
+          }
+        ]
+      },
+      "reasons": {
+        "method": "0.41(6)=5/12에서 분자 5, 0.(72)=8/11에서 분모 11을 추출하여 5/11 = 0.(45)를 도출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_2155b3f8c4b3309e8c28967acdc1d265c5b6833398f9dea829d13dfcf09ba753",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7152d766bcb9e69930e0c9c97f3be375748597c875749b9f6daca3dcc8431d15"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "990e2fb2172aa3aa77900a115aab35c7fc8f16996956913fd146f2781eb9cc83"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 6
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "ㄱ. 순환소수 중에는 유리수가 아닌 것도 있다.\nㄴ. 모든 ",
+            "termId": 3
+          },
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "것은? [4점]\nㄱ. 순환소수 중에는 유리수가 아닌 것도 있다",
+            "termId": 428
+          },
+          {
+            "term": "유한소수",
+            "src": "stem",
+            "quote": "도 있다.\nㄴ. 모든 유한소수는 분수로 나타낼 수 있다.\nㄷ.",
+            "termId": 426
+          }
+        ],
+        "goal": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "ㄱ. 순환소수 중에는 유리수가 아닌 것도 있다.\nㄴ. 모든 ",
+            "termId": 3
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": ". 기약분수의 분모를 소인수분해했을 때 2 또는 5 이외의 소인",
+            "termId": 14,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "기약분수",
+            "src": "stem",
+            "quote": "타낼 수 있다.\nㄷ. 기약분수의 분모를 소인수분해했을 때 2 ",
+            "termId": 558
+          }
+        ]
+      },
+      "reasons": {
+        "method": "소수 분류 체계에서 순환소수의 유리수성 및 기약분수의 소인수 성질을 대조하여 ㄴ, ㄷ을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_9f3d186b174525d958587f0fc2121508fc7fac1695ef7dc29a00f8736e5bbb28",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f54d19f109cf11dd778ecf2b6f831bcd92ecfb078f78839fd16360c134de497a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "431e4b331158551ea71b57c4058ec7648015a6f06221013f0a18666bbe61620e"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 7
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$(2^{6})^{3} \\div (2^{\\Box})^{2} = 2^{10",
+            "termId": 20,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$(2^{6})^{3} \\div (2^{\\Box})^{2} = 2^{10",
+            "termId": 1,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "지수법칙을 이용하여 좌변의 식을 정리한다",
+            "termId": 277,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "지수법칙을 이용하여 좌변의 식을 정리한다.\n$$\n\\begin{aligne",
+            "termId": 62,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$(2^{6})^{3} \\div (2^{\\Box})^{2} = 2^{10",
+            "termId": 1,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "2^(18-2x) = 2^10에서 18-2x=10, x=4를 푼다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_bbebaffc1f44c7169627a13b7987911856247b676e024d02b9e8420b8dad84e5",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7c613527e1d2595ab2e197f027525d529478a70d76e36013f3d08b4ddc829d52"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7618dc2e2ad4228b308f5a714bffd4547bf76835a2ada4e2c6c1d6ae42f504b0"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 8
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "x$을 밑이 $2$인 거듭제곱으로 변형한다.\n$$\n\\begin",
+            "termId": 20
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$A = 2^{x-1}$일 때, $8^{x}$을 $A$에 관한 식으로 나",
+            "termId": 61,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$A$와 $2^x$의 관계를 먼저 구한다.\n$$\n\\begin{aligne",
+            "termId": 277,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$2^x = 2A$를 대입한다.\n$$\n\\begin{alig",
+            "termId": 53,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$A = 2^{x-1}$일 때, $8^{x}$을 $A$에 관한 식으로 나",
+            "termId": 1,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "2^x = 2A를 도출하고 8^x = (2^x)^3 = (2A)^3 = 8A^3을 전개한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_755713dcb5a02769ac652c450c13568052e2c6922fd94f62952fa5dfe5fd0d58",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "873d263b6d32dc800031743190df1b62f562e64e649a16514a9bb3fa7eac7d8a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ff0ae5b7b0fccd7dd2adac49b611c9b4815de31b2605d73890369fc5b0c62bdf"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 9
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$2^{n+3} + 2^{n+2} + 2^{n+1} = 224$일 때, ",
+            "termId": 20,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": " = 224$일 때, 자연수 $n$의 값은? [5점]",
+            "termId": 1
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "좌변의 공통인수 $2^n$을 묶어 식을 정리한다.\n$$\n\\begin{al",
+            "termId": 277,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "좌변의 공통인수 $2^n$을 묶어 식을 정리한다.\n$$\n\\begin{al",
+            "termId": 42,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": " = 224$일 때, 자연수 $n$의 값은? [5점]",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "2^n*(8+4+2) = 14*2^n = 224로부터 2^n = 16, n=4를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_38d1d1ec2df9fab40d148c1f61b3bdc84398966f7de483d33ede47f0df091a59",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1cc0a547cb27f146863c1a19166feee7618c61760f821dea342782777e5d10a6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e82a1dc12c66fa5facae4d5d4463d7accf085fd323673e824cefb214d3dd1a68"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 10
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "단항식",
+            "src": "stem",
+            "quote": "$(x^{3}y^{2})^{4} \\times (x^{5}y^{3})^{2",
+            "termId": 430,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$(x^{3}y^{2})^{4} \\times (x^{5}y^{3})^{2",
+            "termId": 1,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "지수법칙을 적용하여 거듭제곱을 먼저 전개",
+            "termId": 277,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "지수법칙을 적용하여 거듭제곱을 먼저 전개한다.\n$$\n\\begin{alig",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "지수법칙을 적용하여 거듭제곱을 먼저 전개한다.\n$$\n\\begin{alig",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "지수법칙을 적용하여 거듭제곱을 먼저 전개한다.\n$$\n\\beg",
+            "termId": 20
+          }
+        ]
+      },
+      "reasons": {
+        "method": "(x^3 y^2)^4 = x^12 y^8과 (x^5 y^3)^2 = x^10 y^6의 곱 x^22 y^14에서 a+b=36을 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_418aedcd65c1732dfe001af97557bd5ec253a558489eb4853046746b2d3c6f4d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "863fe2b8d5e1c653e22f6a76132c887376cdd13799ebcea688ac13866b4560bc"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b553dffb3e9d465c1c500b4db1cf723ac80f3447974ffa4ca6ba5b8cb4b2dce5"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 11
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "네 자연수 $a, b, c, d$에 대하여 $(x^{a}y^{b}z^{c",
+            "termId": 20,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "때, $a+b+c$의 최솟값은? [5점]",
+            "termId": 128
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "네 자연수 $a, b, c, d$에 대하여",
+            "termId": 1
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "좌변을 지수법칙으로 전개하여 우변과 비교한다.\n",
+            "termId": 277,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최대공약수",
+            "src": "solution",
+            "quote": "6, 48, 60$의 최대공약수이다.\n$$\n\\begin{alig",
+            "termId": 15,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": ", 48, 60$의 공약수이다.\n$a+b+c$의 값을 나타",
+            "termId": 11,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "네 자연수 $a, b, c, d$에 대하여",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "ad=36, bd=48, cd=60에서 d=gcd(36,48,60)=12일 때 a+b+c가 최소가 되므로 3+4+5=12를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_28e32ac705d20770a96bec786683929ceebc28118de58b9c9d426fa5012223e1",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3a6cd3dc53e5aa905f82f868a3652e32656bd64be9a4d3048e3081460168b9de"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0f51acadbbe1f6097ab8930ceb470f14ba2986295dc3b5893ff57ab8bdaeb54d"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 12
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "단항식",
+            "src": "solution",
+            "quote": "단항식의 거듭제곱을 먼저 계산한다.\n$",
+            "termId": 430
+          }
+        ],
+        "goal": [
+          {
+            "term": "단항식",
+            "src": "solution",
+            "quote": "단항식의 거듭제곱을 먼저 계산한다.\n$",
+            "termId": 430
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "단항식의 거듭제곱을 먼저 계산한다.\n$$\n\\begin{aligned}\n(",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "단항식의 거듭제곱을 먼저 계산한다.\n$$\n\\begin{aligned}\n(",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "단항식의 거듭제곱을 먼저 계산한다.\n$$\n\\begin{aligned}\n(",
+            "termId": 277,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "단항식",
+            "src": "solution",
+            "quote": "단항식의 거듭제곱을 먼저 계산한다.\n$",
+            "termId": 430
+          }
+        ]
+      },
+      "reasons": {
+        "method": "거듭제곱 전개 후 역수 곱셈으로 전환하여 계수 12와 문자 x^3 y^5를 정확히 정리한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_03f176d06ad19bf5160a9c02667cd110a1045dd167c7f363bcd410bec97682bd",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "112447251cc9bcd4f703887b34fa1851972417749df1805581311b180bc41f89"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f598888fb5ed7c363547617d6c59ae0d649eb72885394db4c6bf3650ade28183"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 13
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직육면체",
+            "src": "stem",
+            "quote": "^{5}b^{5}$인 직육면체의 높이는? [4점]",
+            "termId": 603
+          },
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "$2ab^{2}$이고 부피가 $24a^{5}b^{5}$인 ",
+            "termId": 219
+          },
+          {
+            "term": "단항식",
+            "src": "stem",
+            "quote": "밑면의 가로의 길이가 $3a^{2}b$, 세로의 길이가 $2ab^{2}$",
+            "termId": 430,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "단항식",
+            "src": "stem",
+            "quote": "밑면의 가로의 길이가 $3a^{2}b$, 세로의 길이가 $2ab^{2}$",
+            "termId": 430,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "직육면체의 부피 공식은 다음과 같다.\n$$\n\\text{부피} = \\tex",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "직육면체의 부피 공식은 다음과 같다.\n$$\n\\text{부피} = \\tex",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "단항식",
+            "src": "stem",
+            "quote": "밑면의 가로의 길이가 $3a^{2}b$, 세로의 길이가 $2ab^{2}$",
+            "termId": 430,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "밑넓이 6a^3 b^3을 구하고 부피 24a^5 b^5를 나누어 높이 4a^2 b^2를 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_ffe606031f22bd6bc680dbb36cf818ee9ffd6fc888035f7327b21ca5aa253e9e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5bd7ebe3ed7a0419ce3c238e662a4f45ebcbf2a603394ff0aaa2d45e72979408"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a584e67eabdf767b57baf2ed4deedb53fa5aa46cfc1653e331f197ecae8ea147"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 14
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$10$의 거듭제곱인 $10 = 2 \\times 5",
+            "termId": 20
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "14}$이 $n$자리 자연수일 때, $n$의 값은? [4점]",
+            "termId": 1
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$10$의 거듭제곱인 $10 = 2 \\times 5$의 성질을 이용하기 ",
+            "termId": 277,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "자릿수",
+            "src": "solution",
+            "quote": "붙는 수이다.\n따라서 자릿수 $n$은\n$$\nn = 1 + 1",
+            "termId": 559,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "14}$이 $n$자리 자연수일 때, $n$의 값은? [4점]",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "2^17 * 5^14 = 8 * 10^14로 변형하여 8 뒤에 0이 14개 붙는 15자리 수임을 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_835e973dfdde21ab159b9dab628e15c9b9912c2a41a8614992c6de315116a75c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5507cb2899f4ea58966bc7a304eabfc975cc51061c12038f3d9fc5e01de55e48"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cdd4d8d3f4c0462978a9eef2eeca7621ab845b0bd2e4cc34737abf23f2ad07ab"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 15
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$3x-2y+4$에 어떤 식 $A$를 더해야 할 것을 잘못하여 빼었더니 ",
+            "termId": 35,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$3x-2y+4$에 어떤 식 $A$를 더해야 할 것을 잘못하여 빼었더니 ",
+            "termId": 35,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "잘못 계산한 식으로부터 어떤 식 $A$를 구한다.\n$$\n(3x-2y+4)",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "잘못 계산한 식으로부터 어떤 식 $A$를 구한다.\n$$\n(3x-2y+4)",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$3x-2y+4$에 어떤 식 $A$를 더해야 할 것을 잘못하여 빼었더니 ",
+            "termId": 35,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "(3x-2y+4)-A = 7x-5y-1에서 A=-4x+3y+5를 구하고, (3x-2y+4)+A = -x+y+9를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_befd553baca4338fe22ac6c5753d0901dde480a945b85f3e7c52ba750fed424f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "91183efc8406a67767b499c9b939ac460b1c4eec7fa90cd694aefbbed9fd0ce0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fa54a9d3901d76b68e1ab3c9c372bb1881231ec0a3618780af93a48202894314"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 16
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$(6x^{2}-3x^{3}) \\div \\dfrac{1}{3}x + \\l",
+            "termId": 35,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "단항식",
+            "src": "stem",
+            "quote": "$(6x^{2}-3x^{3}) \\div \\dfrac{1}{3}x + \\l",
+            "termId": 430,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$(6x^{2}-3x^{3}) \\div \\dfrac{1}{3}x + \\l",
+            "termId": 61,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "두 나눗셈 식을 각각 전개하여 계산한다.\n1단계: 첫 번째 식을 계산한다",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "두 나눗셈 식을 각각 전개하여 계산한다.\n1단계: 첫 번째 식을 계산한다",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "을 때, $x^2$의 계수를 $a$, $x$의 계수를 $b",
+            "termId": 50
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 괄호를 역수 곱셈으로 전개하여 -6x^2 + 17x를 얻고, b-a = 17-(-6)=23을 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_dd708d378806c5ed1da359ed5e24656fafca9828f1182b7a2cc4980f5fc4c7dc",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fe35b5eb10becf9a37d02367fba1078d6d1aecc0cd21899aeff5987e3d09ccbf"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "06bc79e5e525365526acfe37200510d89c324b5ba081b1cea3c8c1c6fe080404"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 17
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "다음 부등식 중에서 $x=2$를 해로 갖는 ",
+            "termId": 63
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": " 중에서 $x=2$를 해로 갖는 것은? [3점]",
+            "termId": 78
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "다음 부등식 중에서 $x=2$를 해로 갖는 것은? [3점]",
+            "termId": 355,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "=2$를 각 부등식에 대입하여 부등식이 참이 되는지 확인한",
+            "termId": 53,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "$x=2$를 각 부등식에 대입하여 부등식이 참이 되는지 확인한다.\n$$\n",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "다음 부등식 중에서 $x=2$를 해로 갖는 ",
+            "termId": 63
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x=2를 선지 ④에 대입하여 6 < 9가 참임을 확인하고 오답 선지를 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_6c7530681a00cc77caa4c7da0dc7c0a2dedd96de202a2c47d5b6b388a77e1133",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b9a198faf7cf8858e8535c0ec6f39a81dbfb8ea5f9409ed11203b7ec9d246311"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "03528ccc649525a68d595248eef61e6717362e34ccfa525059b2d2e274f3d5b5"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 18
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "\na \\le b\n$$\n부등식의 양변에 같은 수를 더하거나 빼",
+            "termId": 63
+          }
+        ],
+        "goal": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "\na \\le b\n$$\n부등식의 양변에 같은 수를 더하거나 빼",
+            "termId": 63
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "$a+2 \\le b+2$의 양변에서 $2$를 빼면\n$$\na \\le b\n$",
+            "termId": 654,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "\na \\le b\n$$\n부등식의 양변에 같은 수를 더하거나 빼",
+            "termId": 63
+          }
+        ]
+      },
+      "reasons": {
+        "method": "음수 -2를 곱하여 부등호 방향이 반대로 바뀌는 선지 ⑤를 선별한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_bdbf1bee50801bdeb770704a6c3af9192b2871ecb5d46c68b0ce9212c9998a5a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2478377e3048d32ea7c703d1e97d0ca9ba3dc1411f4717b03b4ab4f6f5b3661b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2b21e431aaeb286fc19cdb79ec6dd2b6e3f7213aa38fdb08e5d84474745043e1"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 19
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "$a < 0$이므로 부등식 $-7 \\le x \\le 3$의",
+            "termId": 63
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "}{2} + ax$의 최댓값이 $4$, 최솟값이 $b$이다.",
+            "termId": 127
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "의 최댓값이 $4$, 최솟값이 $b$이다. $a < 0$일 ",
+            "termId": 128
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$-7 \\le x \\le 3$일 때, $\\dfrac{1}{2} + ax$",
+            "termId": 61,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "$a < 0$이므로 부등식 $-7 \\le x \\le 3$의 각 변에 음수",
+            "termId": 654,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "$a < 0$이므로 부등식 $-7 \\le x \\le 3$의 각 변에 음수",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "$a < 0$이므로 부등식 $-7 \\le x \\le 3$의 각 변에 음수",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "solution",
+            "quote": "le 3$의 각 변에 음수 $a$를 곱하면 부등호의 방향이",
+            "termId": 397
+          }
+        ]
+      },
+      "reasons": {
+        "method": "a<0일 때 x=-7에서 최댓값 4를 적용해 a=-1/2를 얻고, x=3에서 최솟값 b=-1을 구해 a-b=1/2를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_27e2e52d0c72a7ca957fbb2e66f47ffec7b6cf2cf93329ef0c5c9c50ce1ed9d6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6b6ee817087588af20014a45cb0979307073496812a8e783781528f9bdb5b6f0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a620ddc12be39514599211b8fe718e1b93ef133dae01269b05aa46ef644e333e"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 20
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "[서술형 1번] 순환소수 $1.8\\dot{6}$에 자연수",
+            "termId": 428
+          },
+          {
+            "term": "기약분수",
+            "src": "stem",
+            "quote": "소수를 $x$로 놓고 기약분수로 나타내는 과정을 서술하시오. ",
+            "termId": 558
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": ".8\\dot{6}$에 자연수 $A$를 곱하면 자연수가 된다.",
+            "termId": 1
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "(1) 순환소수 $1.8\\dot{6}$을 $x$라 하면\n$$\nx = 1.",
+            "termId": 62,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": " $A$는 $15$의 배수이어야 한다.\n$15$의 배수를 ",
+            "termId": 12,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": ".8\\dot{6}$에 자연수 $A$를 곱하면 자연수가 된다.",
+            "termId": 1
+          },
+          {
+            "term": "기약분수",
+            "src": "stem",
+            "quote": "소수를 $x$로 놓고 기약분수로 나타내는 과정을 서술하시오. ",
+            "termId": 558
+          }
+        ]
+      },
+      "reasons": {
+        "method": "100x-10x=168로부터 x=28/15를 도출하고, 15의 배수 중 최소 세 자리 자연수 105를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_807ed8f0aa3bc2be8405e5e88d257720e6e56fe8ad158cd24c6b100b2a83e55e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "68373ac063def7f4db06d81cf1274c47d9c2631a15de36c59f28db36a1959f64"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "efbfba9acf2578da06366e9a5661e8d819611432b329e114a41ca1e197366053"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 21
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "단항식",
+            "src": "stem",
+            "quote": "[서술형 2번] $\\left(\\dfrac{2x^{3}}{y^{a}}\\ri",
+            "termId": 430,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "[서술형 2번] $\\left(\\dfrac{2x^{3}}{y^{a}}\\ri",
+            "termId": 20,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "[서술형 2번] $\\left(\\dfrac{2x^{3}}{y^{a}}\\ri",
+            "termId": 2,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "좌변을 지수법칙을 이용하여 전개한다.\n$$\n\\l",
+            "termId": 277,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "좌변을 지수법칙을 이용하여 전개한다.\n$$\n\\left(\\frac{2x^3",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "좌변을 지수법칙을 이용하여 전개한다.\n$$\n\\left(\\frac{2x^3",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "[서술형 2번] $\\left(\\dfrac{2x^{3}}{y^{a}}\\ri",
+            "termId": 1,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "2^b=8에서 b=3, 3b=c에서 c=9, ab=12에서 a=4를 구하여 a+b-c = 4+3-9 = -2를 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_991ce8649bac8914ae561bfde9913ab589db1e7ab7b6411478f8b48ad966eb1a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d117981e02e70d9e9e69941045a9753deb416fac180f40bbb5943fb67dcc1014"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4c493c84e2477243d9b0d73e1c0834718359ff67fd702cf92a5f07d76949b31a"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 22
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "주어진 부등식 $-3 \\le x \\le 5$로",
+            "termId": 63
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "[서술형 3번] $-3 \\le x \\le 5$일 때, $a \\le 4 -",
+            "termId": 1,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "주어진 부등식 $-3 \\le x \\le 5$로부터 $4 - \\dfrac{",
+            "termId": 654,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "주어진 부등식 $-3 \\le x \\le 5$로부터 $4 - \\dfrac{",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "주어진 부등식 $-3 \\le x \\le 5$로부터 $4 - \\dfrac{",
+            "termId": 33,
+            "evidenceType": "IMPLIED",
+            "justification": "Concept supported contextually by cited text; exact label is not verbatim."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "주어진 부등식 $-3 \\le x \\le 5$로",
+            "termId": 63
+          }
+        ]
+      },
+      "reasons": {
+        "method": "-3 <= x <= 5에 -1/2를 곱하고 4를 더해 3/2 <= 4-x/2 <= 11/2를 얻고, 4ab = 4*(3/2)*(11/2) = 33을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_18794b8e597d0e36898b405e6e59b6162809623adda846c50bc25335bd66173c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3e32defaa7c3caf57a64d8d9567e7ccb41a0aabce29897cce5859cec43ae02fb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fc45ff5598e28a9b0345f45fded6260b764cb3fa9761594ae5c5b9bc58957b77"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "4-slot semantic review not independently performed."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs read: 12YkH0qnZkWofpLjMnr8FPfiuR0pUZOE6xOPf1w2rFng, revision AHj4eMSO2QAggdWtJbx37MqG53itPj7tK7hty-_u2ugWAX2whIaXS3HOWGRn1VWS_Yb-A1_YABL132zbYdM9r0Eac_GQ2x_c7R8vS29e664.",
+        "visualReview": "NOT_RUN: text-based visual assessment only; no SVG creation or rendering QA.",
+        "registration": "NOT_RUN"
+      },
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 23
+        },
+        "nextOwner": "authorized identity-map / registration owner"
+      }
+    }
+  ]
+}
