@@ -416,7 +416,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "두 삼각형이 $\\triangle ABC \\equiv \\triangle DEF$일 때, 그림에 주어진 조건과 합동 기호의 대응 관계만으로 추가 계산 없이 바로 알 수 없는 것은? [3점]",
+    "content": "두 삼각형 $ABC$, $DEF$가 $\\triangle ABC \\equiv \\triangle DEF$이고, $\\overline{AB}=a$, $\\overline{AC}=b$, $\\angle A=\\alpha$, $\\angle C=\\beta$라고 하자. ($a,b$는 주어진 변의 길이이고, $\\alpha,\\beta$는 주어진 각의 크기이다.) 합동 기호가 나타내는 대응 관계만으로, 추가 계산 없이 바로 알 수 없는 것은? [3점]",
     "choices": [
       "$\\overline{DE}$의 길이",
       "$\\overline{EF}$의 길이",
@@ -428,7 +428,7 @@ window.questionBank = [
     "points": 3,
     "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
-    "solution": "합동인 두 삼각형에서 서로 대응하는 변의 길이와 대응하는 각의 크기는 서로 같다.\n$\\triangle ABC \\equiv \\triangle DEF$이므로 꼭짓점의 대응 관계는 $\\begin{aligned} A &\\leftrightarrow D \\ B &\\leftrightarrow E \\ C &\\leftrightarrow F \\end{aligned}$\n따라서 $\\begin{aligned} \\overline{DE} &= \\overline{AB} \\ \\overline{DF} &= \\overline{AC} \\ \\angle D &= \\angle A \\ \\angle F &= \\angle C \\end{aligned}$ 는 직접 대응으로 바로 알 수 있다. 반면 $\\overline{EF}$는 $\\overline{BC}$에 대응하는데, 그림에 $\\overline{BC}$의 길이가 주어지지 않았으므로 추가 계산 없이 알 수 없다.\n따라서 정답은 ②이다.\n",
+    "solution": "합동 기호 $\\triangle ABC \\equiv \\triangle DEF$에서 꼭짓점은 $A\\leftrightarrow D$, $B\\leftrightarrow E$, $C\\leftrightarrow F$로 대응한다.\n주어진 값과 대응 관계를 적용하면 $\\begin{aligned} \\overline{DE} &= \\overline{AB}=a \\\\ \\overline{DF} &= \\overline{AC}=b \\\\ \\angle D &= \\angle A=\\alpha \\\\ \\angle F &= \\angle C=\\beta \\end{aligned}$이다.\n반면 $\\overline{EF}$는 $\\overline{BC}$에 대응하지만, $\\overline{BC}$의 값은 주어진 대응 자료에 없다. 따라서 대응 관계만으로 추가 계산 없이 바로 알 수 없는 것은 $\\overline{EF}$이다.\n따라서 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"

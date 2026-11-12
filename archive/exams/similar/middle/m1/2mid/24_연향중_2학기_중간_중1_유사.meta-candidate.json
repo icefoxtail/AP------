@@ -26,6 +26,12 @@
         "before": "Choice ① is the conventional order, but choice ④ (㉠→㉡→㉣→㉢→㉤→㉥) is also feasible because measuring the chord from the O-centered arc can occur before drawing the equal-radius arc at P.",
         "after": "Changed choice ④ to ㉠→㉡→㉣→㉤→㉢→㉥, which attempts to transfer a measured distance onto the P-centered arc before that arc exists. Clarified that ㉢ and ㉣ may swap, while ㉤ depends on both.",
         "independentCheck": "After ㉡, both drawing the same-radius arc at P (㉢) and measuring the original chord (㉣) are possible. Transfer (㉤) requires the P-centered arc from ㉢ and the measured chord from ㉣; connecting (㉥) follows ㉤. ① is valid; revised ④ is invalid because ㉤ precedes ㉢. ②/③ attempt ㉢ before the reference radius from ㉡; ⑤ uses O before ㉠ defines it. Only ① remains valid."
+      },
+      {
+        "scope": "Q12 stem and solution",
+        "before": "The question referred to values shown in an unavailable figure, so the direct correspondence data were not self-contained in text.",
+        "after": "Stated symbolically that AB=a, AC=b, ∠A=α, ∠C=β and limited the question to values directly transferred by congruence correspondence without additional calculation.",
+        "independentCheck": "From △ABC≡△DEF, A↔D, B↔E, C↔F. Thus DE=AB=a, DF=AC=b, ∠D=∠A=α and ∠F=∠C=β. EF corresponds to BC, whose value is not one of the directly given correspondence data, so ② is uniquely not directly readable. The wording does not claim EF is mathematically unknowable after further calculation."
       }
     ],
     "embeddedMetaTailRecords": [
@@ -1404,17 +1410,17 @@
       "sourceOrdinal": 12,
       "problem": {
         "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "need": "NEEDED",
+        "need": "HELPFUL",
         "currentCandidateAsset": null,
-        "reason": "합동 기호와 그림의 표시 조건을 함께 읽어야 하므로 도형 그림이 필요."
+        "reason": "The symbolic side and angle conditions make the question textually determinate; a paired-triangle diagram still helps visualize correspondence."
       },
       "solution": {
         "status": "DEFERRED_TO_LATER_SVG_BATCH",
         "need": "HELPFUL",
         "currentCandidateAsset": null,
-        "reason": "풀이에서 위치·관계·결정 단계의 도식을 따라가면 학생 이해에 도움."
+        "reason": "A diagram may help students read corresponding vertices and sides; no figure is needed for a unique answer."
       },
-      "reason": "두 삼각형이 $\\triangle ABC \\equiv \\triangle DEF$일 때, 그림에 주어진 조건과 합동 기호의 대응 관계만으로 추가 계산 없이 바로 알 수 없는 것은? [3점]"
+      "reason": "두 삼각형 $ABC$, $DEF$가 $\\triangle ABC \\equiv \\triangle DEF$이고, $\\overline{AB}=a$, $\\overline{AC}=b$, $\\angle A=\\alpha$, $\\angle C=\\beta$라고 하자. ($a,b$는 주어진 변의 길이이고, $\\alpha,\\beta$는 주어진 각의 크기이다.) 합동 기호가 나타내는 대응 관계만으로, 추가 계산 없이 바로 알 수 없는 것은? [3점]"
     },
     {
       "sourceOrdinal": 13,
@@ -1579,7 +1585,7 @@
   ],
   "validation": {
     "jsSyntax": "PASS",
-    "mathReview": "Q10 construction-order ambiguity independently checked; other items remain at their recorded review status.",
+    "mathReview": "Q10 order ambiguity and Q12 correspondence-data item independently checked; other items remain at their recorded review status.",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "NOT_RUN",
     "sourceTextSha256": "NOT_RUN",
@@ -1615,10 +1621,10 @@
     }
   },
   "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "b5c0bdc04616b0c91b83f5b923a458ba2f557a97",
+  "expectedSourceBlobSha1": "d26abf87518b1cb28b8a85b55e04855d999983e3",
   "fourSlotCandidate": {
     "path": "archive/exams/similar/middle/m1/2mid/24_연향중_2학기_중간_중1_유사.4slot-candidate.json",
-    "sha256": "1fc6f6d69be63a4fcac965455ce3d5a5dbb60348e64b3b33fb24b42aacbfcd2f",
+    "sha256": "d6156aab579f20e689b30d63a62ea819a71d532936ec02007be12b0acc11090d",
     "status": "UNREVIEWED"
   }
 }
