@@ -332,7 +332,11 @@ window.questionBank = [
       ],
       "crosswalkStatus": "DIRECT_ACTIVE",
       "bindingOwner": "ALGEBRA_2022"
-    }
+    },
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고2_대수/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 0≤x<2π에서 코사인 곡선과 y=−√3/2 기준선이 보인다.",
+    "solutionImageCaption": "두 그래프의 상대 위치로 부등식의 경계를 살핀다. 정답은 5π/6<x<7π/6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,

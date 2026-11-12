@@ -189,7 +189,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 0, π, 2π의 수직 점근선 사이에 y=3tan(x−π/2)의 두 가지와 주황색 수평선 y=√3이 보인다.",
+    "solutionImageCaption": "주황색 y=√3 기준선과 탄젠트 두 가지를 비교한다. 각 가지에서 그래프가 증가하므로 교점을 기준으로 부등식의 해를 읽는다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -385,7 +389,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
     "subUnit": "trigonometric function",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 코사인 곡선과 파란색 y=1, 주황색 y=−1 기준선이 보인다.",
+    "solutionImageCaption": "파란색 y=1, 주황색 y=−1 기준선에서 절댓값 코사인의 교점을 한 주기에 두 개씩 세고, 0≤x≤10의 다섯 주기에 적용한다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
