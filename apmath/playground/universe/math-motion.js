@@ -4,6 +4,24 @@
 
 import * as THREE from './vendor/three.module.js';
 
+// Throttling and elapsed simulation time must have separate timestamps. Using
+// the throttle remainder twice makes an eight-second explanation run too fast.
+export function createFrameClock(maxFps, now = 0) {
+  const interval = 1000 / maxFps;
+  let throttleTime = now, simulationTime = now;
+  return {
+    sample(timestamp) {
+      const elapsed = timestamp - throttleTime;
+      if (elapsed + 1e-7 < interval) return null;
+      throttleTime += Math.floor((elapsed + 1e-7) / interval) * interval;
+      const delta = Math.min(Math.max(0, timestamp - simulationTime) / 1000, 0.1);
+      simulationTime = timestamp;
+      return delta;
+    },
+    reset(timestamp) { throttleTime = timestamp; simulationTime = timestamp; },
+  };
+}
+
 export class MathGalaxyMotionEngine {
   constructor({ scene, camera, isMobile = false } = {}) {
     this.scene = scene;
@@ -18,7 +36,7 @@ export class MathGalaxyMotionEngine {
     this.parallaxOffset = new THREE.Vector3();
   }
 
-  registerCelestialNode({ id, group, updater, basePosition, orbitRadius = 0, orbitSpeed = 0, orbitPlane = 'xz', selfRotationSpeed }) {
+  registerCelestialNode({ id, group, rotationGroup = group, updater, basePosition, orbitRadius = 0, orbitSpeed = 0, orbitPlane = 'xz', selfRotationSpeed }) {
     const bPos = (basePosition && typeof basePosition.clone === 'function')
       ? basePosition.clone()
       : new THREE.Vector3(basePosition?.x || 0, basePosition?.y || 0, basePosition?.z || 0);
@@ -29,6 +47,7 @@ export class MathGalaxyMotionEngine {
     const node = {
       id,
       group,
+      rotationGroup,
       updater,
       basePosition: bPos,
       currentPosition: bPos.clone(),
@@ -85,9 +104,9 @@ export class MathGalaxyMotionEngine {
       node.group.position.z = node.currentPosition.z;
 
       // 3. Self-rotation on distinct axes
-      node.group.rotation.x += node.selfRotationSpeed.x * effectiveDelta;
-      node.group.rotation.y += node.selfRotationSpeed.y * effectiveDelta;
-      node.group.rotation.z += node.selfRotationSpeed.z * effectiveDelta;
+      node.rotationGroup.rotation.x += node.selfRotationSpeed.x * effectiveDelta;
+      node.rotationGroup.rotation.y += node.selfRotationSpeed.y * effectiveDelta;
+      node.rotationGroup.rotation.z += node.selfRotationSpeed.z * effectiveDelta;
 
       // 4. Internal mathematical geometry/tracer updates
       if (typeof node.updater === 'function') {
