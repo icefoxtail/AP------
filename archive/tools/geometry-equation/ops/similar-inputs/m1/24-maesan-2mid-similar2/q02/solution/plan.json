@@ -1,0 +1,37 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "prism",
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 5,
+        "side": 3
+      },
+      "height": 5,
+      "names": "..........",
+      "count": {
+        "vertices": true,
+        "edges": true
+      }
+    }
+  ],
+  "solidCaption": {
+    "text": "교점은 꼭짓점, 교선은 모서리"
+  },
+  "caption": "꼭짓점: 숫자 1~10, 모서리: 원숫자 ①~⑮",
+  "sourceQuote": "오각기둥에서 교점 a개, 교선 b개일 때 b-a",
+  "sourceConditions": [
+    {
+      "id": "pentagonal-prism",
+      "condition": "오각기둥",
+      "mappedTo": [
+        "prism"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점과 모서리에 따로 번호를 붙여 구성 요소를 센다. 문제에는 번호를 표시하지 않는다."
+  ]
+}
