@@ -1,0 +1,1473 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m1/2mid/25_왕운중_2학기_중간_중1_유사2.js",
+  "sourceGitBlobSha": "15e0438499f24b22c090063487db131b2b9dbb5a",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex",
+    "at": "2026-11-12",
+    "role": "CREATE draft"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "status": "NOT_RUN",
+    "reason": "Independent 4-slot review pending"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행선",
+            "src": "stem",
+            "quote": "다음 그림에서 두 직선 $l, m$이 서로 평행($l \\parallel m$)하고, $l, m$과 만나는 세로 직선과 $m$이 이루는 왼쪽 각이 $110^\\circ$, 비스듬한 직선과 $m$이 이루는 오른쪽 각이 $155^\\circ$이다. 세로 직선과 $l$이 이루는 오른쪽 각을 $\\angle y$, 세로 직선과 비스듬한 직선이 이루는 각을 $\\angle x$라 할 때, $\\angle x - \\angle y$의 크기는? [3점]"
+          },
+          {
+            "term": "동위각",
+            "src": "stem",
+            "quote": "다음 그림에서 두 직선 $l, m$이 서로 평행($l \\parallel m$)하고, $l, m$과 만나는 세로 직선과 $m$이 이루는 왼쪽 각이 $110^\\circ$, 비스듬한 직선과 $m$이 이루는 오른쪽 각이 $155^\\circ$이다. 세로 직선과 $l$이 이루는 오른쪽 각을 $\\angle y$, 세로 직선과 비스듬한 직선이 이루는 각을 $\\angle x$라 할 때, $\\angle x - \\angle y$의 크기는? [3점]"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 두 직선 $l, m$이 서로 평행($l \\parallel m$)하고, $l, m$과 만나는 세로 직선과 $m$이 이루는 왼쪽 각이 $110^\\circ$, 비스듬한 직선과 $m$이 이루는 오른쪽 각이 $155^\\circ$이다. 세로 직선과 $l$이 이루는 오른쪽 각을 $\\angle y$, 세로 직선과 비스듬한 직선이 이루는 각을 $\\angle x$라 할 때, $\\angle x - \\angle y$의 크기는? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "다음 그림에서 두 직선 $l, m$이 서로 평행($l \\parallel m$)하고, $l, m$과 만나는 세로 직선과 $m$이 이루는 왼쪽 각이 $110^\\circ$, 비스듬한 직선과 $m$이 이루는 오른쪽 각이 $155^\\circ$이다. 세로 직선과 $l$이 이루는 오른쪽 각을 $\\angle y$, 세로 직선과 비스듬한 직선이 이루는 각을 $\\angle x$라 할 때, $\\angle x - \\angle y$의 크기는? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "동위각",
+            "src": "solution",
+            "quote": "평행한 두 직선이 다른 한 직선과 만날 때 동위각의 크기는 서로 같다. $$\\begin{aligned} &l \\parallel m\\text{이므로 세로 직선과 } m\\text{이 왼쪽에서 이루는 } 110^\\circ\\text{의 동위각은 세로 직선과 } l\\text{이 왼쪽에서 이루는 각 } 110^\\circ\\text{이다.} \\ &\\text{한 직선 위에서 이웃한 두 각의 합은 } 180^\\circ\\text{이므로 } \\angle y = 180^\\circ - 110^\\circ = 70^\\circ\\text{이다.} \\ &\\text{비스듬한 직선과 } m\\text{이 오른쪽에서 이루는 } 155^\\circ\\text{의 동위각은 비스듬한 직선과 } l\\text{이 오른쪽에서 이루는 각 } 155^\\circ\\text{이다.} \\ &\\text{이 각은 } \\angle x\\text{와 } \\angle y\\text{의 합이므로 } \\angle x + \\angle y = 155^\\circ \\ &\\angle x = 155^\\circ - 70^\\circ = 85^\\circ \\ &\\angle x - \\angle y = 85^\\circ - 70^\\circ = 15^\\circ \\end{aligned}$$ 따라서 $\\angle x - \\angle y = 15^\\circ$이므로 정답은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"평행선에서 동위각의 성질을 이용하여 각의 크기를 계산하는 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"1\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"동위각의 크기가 같음을 이용하여 각 y를 구한 뒤 두 각의 합에서 각 x를 산출한다.\",\n  \"decisiveStep\": \"세로 직선의 동위각 110도로부터 각 y=70도를 얻고 x+y=155도에서 x=85도를 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"평행선의 성질\",\n    \"l4\": \"동위각과 엇각의 크기 계산\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLEL_ANGLE_TRANSFER\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER\",\n    \"why\": \"평행선 상에서 동위각을 다른 교점으로 옮겨 각의 합과 차를 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"평행선의 동위각 성질과 평각의 성질을 단계적으로 적용하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"평행선\",\n      \"동위각\",\n      \"각\"\n    ],\n    \"goal\": [\n      \"차\"\n    ],\n    \"method\": [\n      \"동위각\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"평행선\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "평행한 두 직선이 다른 한 직선과 만날 때 동위각의 크기는 서로 같다. $$\\begin{aligned} &l \\parallel m\\text{이므로 세로 직선과 } m\\text{이 왼쪽에서 이루는 } 110^\\circ\\text{의 동위각은 세로 직선과 } l\\text{이 왼쪽에서 이루는 각 } 110^\\circ\\text{이다.} \\ &\\text{한 직선 위에서 이웃한 두 각의 합은 } 180^\\circ\\text{이므로 } \\angle y = 180^\\circ - 110^\\circ = 70^\\circ\\text{이다.} \\ &\\text{비스듬한 직선과 } m\\text{이 오른쪽에서 이루는 } 155^\\circ\\text{의 동위각은 비스듬한 직선과 } l\\text{이 오른쪽에서 이루는 각 } 155^\\circ\\text{이다.} \\ &\\text{이 각은 } \\angle x\\text{와 } \\angle y\\text{의 합이므로 } \\angle x + \\angle y = 155^\\circ \\ &\\angle x = 155^\\circ - 70^\\circ = 85^\\circ \\ &\\angle x - \\angle y = 85^\\circ - 70^\\circ = 15^\\circ \\end{aligned}$$ 따라서 $\\angle x - \\angle y = 15^\\circ$이므로 정답은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"평행선에서 동위각의 성질을 이용하여 각의 크기를 계산하는 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"1\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"동위각의 크기가 같음을 이용하여 각 y를 구한 뒤 두 각의 합에서 각 x를 산출한다.\",\n  \"decisiveStep\": \"세로 직선의 동위각 110도로부터 각 y=70도를 얻고 x+y=155도에서 x=85도를 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"평행선의 성질\",\n    \"l4\": \"동위각과 엇각의 크기 계산\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLEL_ANGLE_TRANSFER\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER\",\n    \"why\": \"평행선 상에서 동위각을 다른 교점으로 옮겨 각의 합과 차를 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"평행선의 동위각 성질과 평각의 성질을 단계적으로 적용하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"평행선\",\n      \"동위각\",\n      \"각\"\n    ],\n    \"goal\": [\n      \"차\"\n    ],\n    \"method\": [\n      \"동위각\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"평행선\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행선",
+            "src": "stem",
+            "quote": "다음 그림에서 두 직선 $l, m$이 서로 평행($l \\parallel m$)하고, $l, m$과 만나는 세로 직선과 $m$이 이루는 왼쪽 각이 $110^\\circ$, 비스듬한 직선과 $m$이 이루는 오른쪽 각이 $155^\\circ$이다. 세로 직선과 $l$이 이루는 오른쪽 각을 $\\angle y$, 세로 직선과 비스듬한 직선이 이루는 각을 $\\angle x$라 할 때, $\\angle x - \\angle y$의 크기는? [3점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "다음 그림과 같이 가로선과 두 비스듬한 직선이 서로 만날 때 생긴 각 중에서, 두 비스듬한 직선의 교점에서의 각 $\\angle a$의 동위각의 크기를 각각 구하여 모두 더한 값은? (단, 왼쪽 아래 교점에서 가로선 위쪽 둔각은 $110^\\circ$이고, 오른쪽 아래 교점에서 가로선 아래쪽 맞은편 예각은 $60^\\circ$이다.) [3점]"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림과 같이 가로선과 두 비스듬한 직선이 서로 만날 때 생긴 각 중에서, 두 비스듬한 직선의 교점에서의 각 $\\angle a$의 동위각의 크기를 각각 구하여 모두 더한 값은? (단, 왼쪽 아래 교점에서 가로선 위쪽 둔각은 $110^\\circ$이고, 오른쪽 아래 교점에서 가로선 아래쪽 맞은편 예각은 $60^\\circ$이다.) [3점]"
+          },
+          {
+            "term": "맞꼭지각",
+            "src": "stem",
+            "quote": "다음 그림과 같이 가로선과 두 비스듬한 직선이 서로 만날 때 생긴 각 중에서, 두 비스듬한 직선의 교점에서의 각 $\\angle a$의 동위각의 크기를 각각 구하여 모두 더한 값은? (단, 왼쪽 아래 교점에서 가로선 위쪽 둔각은 $110^\\circ$이고, 오른쪽 아래 교점에서 가로선 아래쪽 맞은편 예각은 $60^\\circ$이다.) [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "다음 그림과 같이 가로선과 두 비스듬한 직선이 서로 만날 때 생긴 각 중에서, 두 비스듬한 직선의 교점에서의 각 $\\angle a$의 동위각의 크기를 각각 구하여 모두 더한 값은? (단, 왼쪽 아래 교점에서 가로선 위쪽 둔각은 $110^\\circ$이고, 오른쪽 아래 교점에서 가로선 아래쪽 맞은편 예각은 $60^\\circ$이다.) [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "동위각",
+            "src": "solution",
+            "quote": "동위각은 한 직선이 두 직선과 만날 때 서로 같은 위치에 놓인 각이다. $$\\begin{aligned} &\\text{왼쪽 교점에서 } 110^\\circ\\text{인 각과 이웃한 보각은 } 180^\\circ - 110^\\circ = 70^\\circ\\text{이다.} \\ &\\text{오른쪽 교점에서 } 60^\\circ\\text{인 각과 맞꼭지각의 크기는 } 60^\\circ\\text{이다.} \\ &\\angle a\\text{는 두 비스듬한 직선이 만나서 생긴 각이므로, 두 직선 각각을 자르는 직선으로 볼 때} \\ &\\text{첫째, 오른쪽 아래로 향하는 직선을 자르는 선으로 보면 동위각은 가로선과 만나는 점의 } 60^\\circ\\text{이다.} \\ &\\text{둘째, 왼쪽 아래로 향하는 직선을 자르는 선으로 보면 동위각은 가로선과 만나는 점의 } 70^\\circ\\text{이다.} \\ &\\text{따라서 두 동위각의 크기의 합은 } 60^\\circ + 70^\\circ = 130^\\circ\\text{이다.} \\end{aligned}$$ 따라서 구하는 합은 $130^\\circ$이므로 정답은 ②이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"세 직선의 교차에 따른 동위각의 위치 식별 및 각도 합산 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"2\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"각 직선을 자르는 직선으로 설정하여 두 비스듬한 직선 사이 각의 동위각을 찾아 합산한다.\",\n  \"decisiveStep\": \"두 자르는 직선 기준 동위각이 각각 60도, 70도임을 파악하고 합 130도 계산\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"동위각과 엇각\",\n    \"l4\": \"동위각 찾기\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLEL_ANGLE_POSITION\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_POSITION_FIND_CORRESPONDING\",\n    \"why\": \"주어진 직선들의 교각 배치에서 특정 각의 동위각들을 찾아 그 합을 계산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"동위각의 위치 정의를 정확히 이해하고 보각/맞꼭지각을 계산하여 합하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"직선\",\n      \"각\",\n      \"맞꼭지각\"\n    ],\n    \"goal\": [\n      \"합\"\n    ],\n    \"method\": [\n      \"동위각\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"직선\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "동위각은 한 직선이 두 직선과 만날 때 서로 같은 위치에 놓인 각이다. $$\\begin{aligned} &\\text{왼쪽 교점에서 } 110^\\circ\\text{인 각과 이웃한 보각은 } 180^\\circ - 110^\\circ = 70^\\circ\\text{이다.} \\ &\\text{오른쪽 교점에서 } 60^\\circ\\text{인 각과 맞꼭지각의 크기는 } 60^\\circ\\text{이다.} \\ &\\angle a\\text{는 두 비스듬한 직선이 만나서 생긴 각이므로, 두 직선 각각을 자르는 직선으로 볼 때} \\ &\\text{첫째, 오른쪽 아래로 향하는 직선을 자르는 선으로 보면 동위각은 가로선과 만나는 점의 } 60^\\circ\\text{이다.} \\ &\\text{둘째, 왼쪽 아래로 향하는 직선을 자르는 선으로 보면 동위각은 가로선과 만나는 점의 } 70^\\circ\\text{이다.} \\ &\\text{따라서 두 동위각의 크기의 합은 } 60^\\circ + 70^\\circ = 130^\\circ\\text{이다.} \\end{aligned}$$ 따라서 구하는 합은 $130^\\circ$이므로 정답은 ②이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"세 직선의 교차에 따른 동위각의 위치 식별 및 각도 합산 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"2\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"각 직선을 자르는 직선으로 설정하여 두 비스듬한 직선 사이 각의 동위각을 찾아 합산한다.\",\n  \"decisiveStep\": \"두 자르는 직선 기준 동위각이 각각 60도, 70도임을 파악하고 합 130도 계산\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"동위각과 엇각\",\n    \"l4\": \"동위각 찾기\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLEL_ANGLE_POSITION\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_POSITION_FIND_CORRESPONDING\",\n    \"why\": \"주어진 직선들의 교각 배치에서 특정 각의 동위각들을 찾아 그 합을 계산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"동위각의 위치 정의를 정확히 이해하고 보각/맞꼭지각을 계산하여 합하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"직선\",\n      \"각\",\n      \"맞꼭지각\"\n    ],\n    \"goal\": [\n      \"합\"\n    ],\n    \"method\": [\n      \"동위각\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"직선\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "다음 그림과 같이 가로선과 두 비스듬한 직선이 서로 만날 때 생긴 각 중에서, 두 비스듬한 직선의 교점에서의 각 $\\angle a$의 동위각의 크기를 각각 구하여 모두 더한 값은? (단, 왼쪽 아래 교점에서 가로선 위쪽 둔각은 $110^\\circ$이고, 오른쪽 아래 교점에서 가로선 아래쪽 맞은편 예각은 $60^\\circ$이다.) [3점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "세 직선 $l, m, n$과 이를 가로지르는 두 직선 $p, q$가 만날 때 생긴 교각에 대하여 다음과 같은 관계가 성립한다. 직선 $p$와 직선 $l$이 만나는 점의 왼쪽 아래 각이 $88^\\circ$이고, 직선 $p$와 직선 $n$이 만나는 점의 오른쪽 위 맞꼭지각이 $88^\\circ$이다. 한편 직선 $p$와 직선 $m$의 교각은 $85^\\circ$이며, 직선 $q$와 직선들의 교각은 평행 조건을 만족하지 않는다. 다음 중 서로 평행한 두 직선을 기호로 바르게 나타낸 것은? [5점]"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "세 직선 $l, m, n$과 이를 가로지르는 두 직선 $p, q$가 만날 때 생긴 교각에 대하여 다음과 같은 관계가 성립한다. 직선 $p$와 직선 $l$이 만나는 점의 왼쪽 아래 각이 $88^\\circ$이고, 직선 $p$와 직선 $n$이 만나는 점의 오른쪽 위 맞꼭지각이 $88^\\circ$이다. 한편 직선 $p$와 직선 $m$의 교각은 $85^\\circ$이며, 직선 $q$와 직선들의 교각은 평행 조건을 만족하지 않는다. 다음 중 서로 평행한 두 직선을 기호로 바르게 나타낸 것은? [5점]"
+          },
+          {
+            "term": "동위각",
+            "src": "stem",
+            "quote": "세 직선 $l, m, n$과 이를 가로지르는 두 직선 $p, q$가 만날 때 생긴 교각에 대하여 다음과 같은 관계가 성립한다. 직선 $p$와 직선 $l$이 만나는 점의 왼쪽 아래 각이 $88^\\circ$이고, 직선 $p$와 직선 $n$이 만나는 점의 오른쪽 위 맞꼭지각이 $88^\\circ$이다. 한편 직선 $p$와 직선 $m$의 교각은 $85^\\circ$이며, 직선 $q$와 직선들의 교각은 평행 조건을 만족하지 않는다. 다음 중 서로 평행한 두 직선을 기호로 바르게 나타낸 것은? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평행선",
+            "src": "stem",
+            "quote": "세 직선 $l, m, n$과 이를 가로지르는 두 직선 $p, q$가 만날 때 생긴 교각에 대하여 다음과 같은 관계가 성립한다. 직선 $p$와 직선 $l$이 만나는 점의 왼쪽 아래 각이 $88^\\circ$이고, 직선 $p$와 직선 $n$이 만나는 점의 오른쪽 위 맞꼭지각이 $88^\\circ$이다. 한편 직선 $p$와 직선 $m$의 교각은 $85^\\circ$이며, 직선 $q$와 직선들의 교각은 평행 조건을 만족하지 않는다. 다음 중 서로 평행한 두 직선을 기호로 바르게 나타낸 것은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "두 직선이 다른 한 직선과 만날 때 동위각 또는 엇각의 크기가 같으면 두 직선은 서로 평행하다. $$\\begin{aligned} &\\text{직선 } p\\text{를 자르는 직선으로 볼 때, } p\\text{와 } l\\text{의 교점의 왼쪽 아래 각은 } 88^\\circ\\text{이다.} \\ &p\\text{와 } n\\text{의 교점에서 오른쪽 위 각이 } 88^\\circ\\text{이므로 맞꼭지각인 왼쪽 아래 각도 } 88^\\circ\\text{이다.} \\ &\\text{두 각은 서로 동위각이고 그 크기가 } 88^\\circ\\text{로 같으므로 } l \\parallel n\\text{이다.} \\ &\\text{직선 } m\\text{과의 교각은 } 85^\\circ \\ne 88^\\circ\\text{이므로 } m\\text{은 } l, n\\text{과 평행하지 않다.} \\end{aligned}$$ 따라서 서로 평행한 두 직선은 $l \\parallel n$이므로 정답은 ③이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"동위각의 크기가 같음을 이용하여 두 직선의 평행성을 판정하는 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"3\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"자르는 직선과 만나는 동위각의 크기를 비교하여 일치하는 두 직선 l과 n의 평행성을 확인한다.\",\n  \"decisiveStep\": \"직선 p와의 교각에서 l과 n의 왼쪽 아래 동위각이 모두 88도로 일치함을 규명\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"평행선의 판정\",\n    \"l4\": \"동위각의 크기를 이용한 평행선 판정\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLELISM_CONVERSE\",\n    \"templateKey\": \"TPL_M1_PARALLELISM_CONVERSE_ANGLE_COMPARISON\",\n    \"why\": \"교각들의 크기를 대조하여 평행 조건을 충족하는 직선 쌍을 식별하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"맞꼭지각과 동위각의 일치 여부를 통해 평행한 직선 쌍을 정확히 도출하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"직선\",\n      \"각\",\n      \"동위각\"\n    ],\n    \"goal\": [\n      \"평행선\"\n    ],\n    \"method\": [\n      \"판정\",\n      \"맞꼭지각\"\n    ],\n    \"condition\": [\n      \"직선\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "맞꼭지각",
+            "src": "solution",
+            "quote": "두 직선이 다른 한 직선과 만날 때 동위각 또는 엇각의 크기가 같으면 두 직선은 서로 평행하다. $$\\begin{aligned} &\\text{직선 } p\\text{를 자르는 직선으로 볼 때, } p\\text{와 } l\\text{의 교점의 왼쪽 아래 각은 } 88^\\circ\\text{이다.} \\ &p\\text{와 } n\\text{의 교점에서 오른쪽 위 각이 } 88^\\circ\\text{이므로 맞꼭지각인 왼쪽 아래 각도 } 88^\\circ\\text{이다.} \\ &\\text{두 각은 서로 동위각이고 그 크기가 } 88^\\circ\\text{로 같으므로 } l \\parallel n\\text{이다.} \\ &\\text{직선 } m\\text{과의 교각은 } 85^\\circ \\ne 88^\\circ\\text{이므로 } m\\text{은 } l, n\\text{과 평행하지 않다.} \\end{aligned}$$ 따라서 서로 평행한 두 직선은 $l \\parallel n$이므로 정답은 ③이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"동위각의 크기가 같음을 이용하여 두 직선의 평행성을 판정하는 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"3\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"자르는 직선과 만나는 동위각의 크기를 비교하여 일치하는 두 직선 l과 n의 평행성을 확인한다.\",\n  \"decisiveStep\": \"직선 p와의 교각에서 l과 n의 왼쪽 아래 동위각이 모두 88도로 일치함을 규명\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"평행선의 판정\",\n    \"l4\": \"동위각의 크기를 이용한 평행선 판정\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLELISM_CONVERSE\",\n    \"templateKey\": \"TPL_M1_PARALLELISM_CONVERSE_ANGLE_COMPARISON\",\n    \"why\": \"교각들의 크기를 대조하여 평행 조건을 충족하는 직선 쌍을 식별하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"맞꼭지각과 동위각의 일치 여부를 통해 평행한 직선 쌍을 정확히 도출하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"직선\",\n      \"각\",\n      \"동위각\"\n    ],\n    \"goal\": [\n      \"평행선\"\n    ],\n    \"method\": [\n      \"판정\",\n      \"맞꼭지각\"\n    ],\n    \"condition\": [\n      \"직선\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "세 직선 $l, m, n$과 이를 가로지르는 두 직선 $p, q$가 만날 때 생긴 교각에 대하여 다음과 같은 관계가 성립한다. 직선 $p$와 직선 $l$이 만나는 점의 왼쪽 아래 각이 $88^\\circ$이고, 직선 $p$와 직선 $n$이 만나는 점의 오른쪽 위 맞꼭지각이 $88^\\circ$이다. 한편 직선 $p$와 직선 $m$의 교각은 $85^\\circ$이며, 직선 $q$와 직선들의 교각은 평행 조건을 만족하지 않는다. 다음 중 서로 평행한 두 직선을 기호로 바르게 나타낸 것은? [5점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle XOY$와 크기가 같은 각을 반직선 $PQ$를 한 변으로 하여 작도하고자 한다. 점 $O$를 중심으로 호를 그려 반직선 $OX, OY$와의 교점을 각각 $A, B$라 하고, 점 $P$를 중심으로 같은 반지름의 호를 그려 반직선 $PQ$와의 교점을 $D$라 한다. 점 $B$에서 컴퍼스로 선분 $AB$의 길이를 재어 점 $D$를 중심으로 호를 그려 만나는 점을 $C$라 할 때, 다음 설명 중 옳은 것은? [4점]"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\angle XOY$와 크기가 같은 각을 반직선 $PQ$를 한 변으로 하여 작도하고자 한다. 점 $O$를 중심으로 호를 그려 반직선 $OX, OY$와의 교점을 각각 $A, B$라 하고, 점 $P$를 중심으로 같은 반지름의 호를 그려 반직선 $PQ$와의 교점을 $D$라 한다. 점 $B$에서 컴퍼스로 선분 $AB$의 길이를 재어 점 $D$를 중심으로 호를 그려 만나는 점을 $C$라 할 때, 다음 설명 중 옳은 것은? [4점]"
+          },
+          {
+            "term": "반직선",
+            "src": "stem",
+            "quote": "$\\angle XOY$와 크기가 같은 각을 반직선 $PQ$를 한 변으로 하여 작도하고자 한다. 점 $O$를 중심으로 호를 그려 반직선 $OX, OY$와의 교점을 각각 $A, B$라 하고, 점 $P$를 중심으로 같은 반지름의 호를 그려 반직선 $PQ$와의 교점을 $D$라 한다. 점 $B$에서 컴퍼스로 선분 $AB$의 길이를 재어 점 $D$를 중심으로 호를 그려 만나는 점을 $C$라 할 때, 다음 설명 중 옳은 것은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "$\\angle XOY$와 크기가 같은 각을 반직선 $PQ$를 한 변으로 하여 작도하고자 한다. 점 $O$를 중심으로 호를 그려 반직선 $OX, OY$와의 교점을 각각 $A, B$라 하고, 점 $P$를 중심으로 같은 반지름의 호를 그려 반직선 $PQ$와의 교점을 $D$라 한다. 점 $B$에서 컴퍼스로 선분 $AB$의 길이를 재어 점 $D$를 중심으로 호를 그려 만나는 점을 $C$라 할 때, 다음 설명 중 옳은 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "크기가 같은 각의 작도는 컴퍼스로 원의 반지름과 두 교점 사이의 거리를 그대로 옮기는 과정이다. $$\\begin{aligned} &\\text{점 } O\\text{와 점 } P\\text{를 중심으로 같은 반지름의 호를 그리므로 } \\overline{OA} = \\overline{OB} = \\overline{PD} = \\overline{PC}\\text{이다.} \\ &\\text{컴퍼스로 두 점 } A, B \\text{ 사이의 거리를 재어 점 } D\\text{를 중심으로 호를 그리므로 } \\overline{AB} = \\overline{CD}\\text{이다.} \\ &\\text{점 } X, Y, Q\\text{는 반직선 위의 임의의 점이므로 } \\overline{OX}=\\overline{OY}, \\overline{OY}=\\overline{PQ}\\text{는 항상 성립하지 않는다.} \\ &\\text{따라서 옳은 것은 } \\overline{AB} = \\overline{CD}\\text{이다.} \\end{aligned}$$ 따라서 옳은 것은 ④이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"크기가 같은 각의 작도 원리와 선분의 길이 보존 성질을 확인하는 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"4\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"BASIC_CONSTRUCTION\",\n  \"primaryMethod\": \"컴퍼스를 사용하여 두 점 사이의 거리를 옮기는 작도 단계로부터 선분의 길이가 같음을 판정한다.\",\n  \"decisiveStep\": \"각의 폭을 측정하여 옮기는 단계에서 선분 AB = 선분 CD가 성립함을 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"간단한 도형의 작도\",\n    \"l4\": \"크기가 같은 각의 작도 성질\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_BASIC_CONSTRUCTION\",\n    \"templateKey\": \"TPL_M1_BASIC_CONSTRUCTION_ANGLE_COPY_PROPERTIES\",\n    \"why\": \"크기가 같은 각의 작도 과정에서 길이가 같은 선분과 순서의 타당성을 평가하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"NONE\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"작도 도구(컴퍼스)의 용도와 변의 길이 보존 관계를 직관적으로 파악하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"각\",\n      \"선분\",\n      \"반직선\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"판정\",\n      \"길이\"\n    ],\n    \"condition\": [\n      \"선분\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "크기가 같은 각의 작도는 컴퍼스로 원의 반지름과 두 교점 사이의 거리를 그대로 옮기는 과정이다. $$\\begin{aligned} &\\text{점 } O\\text{와 점 } P\\text{를 중심으로 같은 반지름의 호를 그리므로 } \\overline{OA} = \\overline{OB} = \\overline{PD} = \\overline{PC}\\text{이다.} \\ &\\text{컴퍼스로 두 점 } A, B \\text{ 사이의 거리를 재어 점 } D\\text{를 중심으로 호를 그리므로 } \\overline{AB} = \\overline{CD}\\text{이다.} \\ &\\text{점 } X, Y, Q\\text{는 반직선 위의 임의의 점이므로 } \\overline{OX}=\\overline{OY}, \\overline{OY}=\\overline{PQ}\\text{는 항상 성립하지 않는다.} \\ &\\text{따라서 옳은 것은 } \\overline{AB} = \\overline{CD}\\text{이다.} \\end{aligned}$$ 따라서 옳은 것은 ④이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"크기가 같은 각의 작도 원리와 선분의 길이 보존 성질을 확인하는 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"4\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"BASIC_CONSTRUCTION\",\n  \"primaryMethod\": \"컴퍼스를 사용하여 두 점 사이의 거리를 옮기는 작도 단계로부터 선분의 길이가 같음을 판정한다.\",\n  \"decisiveStep\": \"각의 폭을 측정하여 옮기는 단계에서 선분 AB = 선분 CD가 성립함을 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"간단한 도형의 작도\",\n    \"l4\": \"크기가 같은 각의 작도 성질\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_BASIC_CONSTRUCTION\",\n    \"templateKey\": \"TPL_M1_BASIC_CONSTRUCTION_ANGLE_COPY_PROPERTIES\",\n    \"why\": \"크기가 같은 각의 작도 과정에서 길이가 같은 선분과 순서의 타당성을 평가하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"NONE\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"작도 도구(컴퍼스)의 용도와 변의 길이 보존 관계를 직관적으로 파악하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"각\",\n      \"선분\",\n      \"반직선\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"판정\",\n      \"길이\"\n    ],\n    \"condition\": [\n      \"선분\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\angle XOY$와 크기가 같은 각을 반직선 $PQ$를 한 변으로 하여 작도하고자 한다. 점 $O$를 중심으로 호를 그려 반직선 $OX, OY$와의 교점을 각각 $A, B$라 하고, 점 $P$를 중심으로 같은 반지름의 호를 그려 반직선 $PQ$와의 교점을 $D$라 한다. 점 $B$에서 컴퍼스로 선분 $AB$의 길이를 재어 점 $D$를 중심으로 호를 그려 만나는 점을 $C$라 할 때, 다음 설명 중 옳은 것은? [4점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "길이가 $18,\\mathrm{cm}$인 철사를 구부려 세 변의 길이가 모두 $2,\\mathrm{cm}$보다 큰 자연수인 삼각형을 만들려고 한다. 만들 수 있는 서로 다른 모양의 삼각형은 모두 몇 개인가? (단, 철사의 굵기는 생각하지 않는다.) [5점]"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이가 $18,\\mathrm{cm}$인 철사를 구부려 세 변의 길이가 모두 $2,\\mathrm{cm}$보다 큰 자연수인 삼각형을 만들려고 한다. 만들 수 있는 서로 다른 모양의 삼각형은 모두 몇 개인가? (단, 철사의 굵기는 생각하지 않는다.) [5점]"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "길이가 $18,\\mathrm{cm}$인 철사를 구부려 세 변의 길이가 모두 $2,\\mathrm{cm}$보다 큰 자연수인 삼각형을 만들려고 한다. 만들 수 있는 서로 다른 모양의 삼각형은 모두 몇 개인가? (단, 철사의 굵기는 생각하지 않는다.) [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "길이가 $18,\\mathrm{cm}$인 철사를 구부려 세 변의 길이가 모두 $2,\\mathrm{cm}$보다 큰 자연수인 삼각형을 만들려고 한다. 만들 수 있는 서로 다른 모양의 삼각형은 모두 몇 개인가? (단, 철사의 굵기는 생각하지 않는다.) [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "삼각형의 세 변의 길이를 $a \\le b \\le c$라 하면, 가장 긴 변의 길이는 나머지 두 변의 길이의 합보다 작아야 한다. $$\\begin{aligned} &a + b + c = 18\\text{이고 각 변의 길이가 } 2,\\mathrm{cm}\\text{보다 큰 자연수이므로 } a \\ge 3\\text{이다.} \\ &c < a + b\\text{이고 } a + b = 18 - c\\text{이므로 } c < 18 - c \\implies 2c < 18 \\implies c < 9 \\ &\\text{또한 } c\\text{가 가장 긴 변이므로 } 3c \\ge a + b + c = 18 \\implies c \\ge 6 \\ &\\text{따라서 } c\\text{가 될 수 있는 자연수는 } 6, 7, 8\\text{이다.} \\ &1); c = 6\\text{일 때: } a + b = 12, ; 3 \\le a \\le b \\le 6 \\implies (a, b) = (6, 6) ; (1\\text{개}) \\ &2); c = 7\\text{일 때: } a + b = 11, ; 3 \\le a \\le b \\le 7 \\implies (a, b) = (4, 7), (5, 6) ; (2\\text{개}) \\ &3); c = 8\\text{일 때: } a + b = 10, ; 3 \\le a \\le b \\le 8 \\implies (a, b) = (3, 7), (4, 6), (5, 5) ; (3\\text{개}) \\ &\\text{총 개수} = 1 + 2 + 3 = 6\\text{ (개)} \\end{aligned}$$ 따라서 만들 수 있는 서로 다른 삼각형은 모두 $6$개이므로 정답은 ⑤이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"삼각형의 가장 긴 변과 나머지 두 변의 대소 관계 및 자연수 분할 카운팅 문항\"\n}\n\n{\n  \"sourceQid\": \"5\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"가장 긴 변 c의 범위(6 <= c < 9)를 설정하고 각 경우별 (a, b) 자연수 순서쌍을 조사한다.\",\n  \"decisiveStep\": \"c=6(1개), c=7(2개), c=8(3개)로 분류하여 총 6개의 삼각형 형성 가능성 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 작도\",\n    \"l4\": \"삼각형의 세 변의 길이 조건\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_TRIANGLE_SIDE_FEASIBILITY\",\n    \"templateKey\": \"TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_COUNT\",\n    \"why\": \"둘레의 길이가 주어진 삼각형에서 세 변의 길이 조건과 자연수 제약을 만족하는 개수를 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"삼각형 부등식과 세 변의 합 조건을 연립하여 가능한 변의 순서쌍을 빠짐없이 계수하는 3단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"삼각형\",\n      \"길이\",\n      \"자연수\"\n    ],\n    \"goal\": [\n      \"개수\"\n    ],\n    \"method\": [\n      \"판정\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"삼각형\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "삼각형의 세 변의 길이를 $a \\le b \\le c$라 하면, 가장 긴 변의 길이는 나머지 두 변의 길이의 합보다 작아야 한다. $$\\begin{aligned} &a + b + c = 18\\text{이고 각 변의 길이가 } 2,\\mathrm{cm}\\text{보다 큰 자연수이므로 } a \\ge 3\\text{이다.} \\ &c < a + b\\text{이고 } a + b = 18 - c\\text{이므로 } c < 18 - c \\implies 2c < 18 \\implies c < 9 \\ &\\text{또한 } c\\text{가 가장 긴 변이므로 } 3c \\ge a + b + c = 18 \\implies c \\ge 6 \\ &\\text{따라서 } c\\text{가 될 수 있는 자연수는 } 6, 7, 8\\text{이다.} \\ &1); c = 6\\text{일 때: } a + b = 12, ; 3 \\le a \\le b \\le 6 \\implies (a, b) = (6, 6) ; (1\\text{개}) \\ &2); c = 7\\text{일 때: } a + b = 11, ; 3 \\le a \\le b \\le 7 \\implies (a, b) = (4, 7), (5, 6) ; (2\\text{개}) \\ &3); c = 8\\text{일 때: } a + b = 10, ; 3 \\le a \\le b \\le 8 \\implies (a, b) = (3, 7), (4, 6), (5, 5) ; (3\\text{개}) \\ &\\text{총 개수} = 1 + 2 + 3 = 6\\text{ (개)} \\end{aligned}$$ 따라서 만들 수 있는 서로 다른 삼각형은 모두 $6$개이므로 정답은 ⑤이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"삼각형의 가장 긴 변과 나머지 두 변의 대소 관계 및 자연수 분할 카운팅 문항\"\n}\n\n{\n  \"sourceQid\": \"5\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"가장 긴 변 c의 범위(6 <= c < 9)를 설정하고 각 경우별 (a, b) 자연수 순서쌍을 조사한다.\",\n  \"decisiveStep\": \"c=6(1개), c=7(2개), c=8(3개)로 분류하여 총 6개의 삼각형 형성 가능성 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 작도\",\n    \"l4\": \"삼각형의 세 변의 길이 조건\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_TRIANGLE_SIDE_FEASIBILITY\",\n    \"templateKey\": \"TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_COUNT\",\n    \"why\": \"둘레의 길이가 주어진 삼각형에서 세 변의 길이 조건과 자연수 제약을 만족하는 개수를 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"삼각형 부등식과 세 변의 합 조건을 연립하여 가능한 변의 순서쌍을 빠짐없이 계수하는 3단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"삼각형\",\n      \"길이\",\n      \"자연수\"\n    ],\n    \"goal\": [\n      \"개수\"\n    ],\n    \"method\": [\n      \"판정\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"삼각형\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "길이가 $18,\\mathrm{cm}$인 철사를 구부려 세 변의 길이가 모두 $2,\\mathrm{cm}$보다 큰 자연수인 삼각형을 만들려고 한다. 만들 수 있는 서로 다른 모양의 삼각형은 모두 몇 개인가? (단, 철사의 굵기는 생각하지 않는다.) [5점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행선",
+            "src": "stem",
+            "quote": "두 직선 $l, m$이 서로 평행($l \\parallel m$)할 때, 두 평행선 사이에서 두 번 꺾인 선이 이루는 두 꼭짓점의 각의 크기가 각각 $130^\\circ$, $75^\\circ$이다. 직선 $l$과 꺾인 선의 시작 부분이 이루는 각을 $\\angle a$, 직선 $m$과 꺾인 선의 끝 부분이 이루는 각을 $\\angle b$라 할 때, $\\angle a + \\angle b$의 크기는? [4점]"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "두 직선 $l, m$이 서로 평행($l \\parallel m$)할 때, 두 평행선 사이에서 두 번 꺾인 선이 이루는 두 꼭짓점의 각의 크기가 각각 $130^\\circ$, $75^\\circ$이다. 직선 $l$과 꺾인 선의 시작 부분이 이루는 각을 $\\angle a$, 직선 $m$과 꺾인 선의 끝 부분이 이루는 각을 $\\angle b$라 할 때, $\\angle a + \\angle b$의 크기는? [4점]"
+          },
+          {
+            "term": "엇각",
+            "src": "stem",
+            "quote": "두 직선 $l, m$이 서로 평행($l \\parallel m$)할 때, 두 평행선 사이에서 두 번 꺾인 선이 이루는 두 꼭짓점의 각의 크기가 각각 $130^\\circ$, $75^\\circ$이다. 직선 $l$과 꺾인 선의 시작 부분이 이루는 각을 $\\angle a$, 직선 $m$과 꺾인 선의 끝 부분이 이루는 각을 $\\angle b$라 할 때, $\\angle a + \\angle b$의 크기는? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "두 직선 $l, m$이 서로 평행($l \\parallel m$)할 때, 두 평행선 사이에서 두 번 꺾인 선이 이루는 두 꼭짓점의 각의 크기가 각각 $130^\\circ$, $75^\\circ$이다. 직선 $l$과 꺾인 선의 시작 부분이 이루는 각을 $\\angle a$, 직선 $m$과 꺾인 선의 끝 부분이 이루는 각을 $\\angle b$라 할 때, $\\angle a + \\angle b$의 크기는? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "꺾인 점을 지나면서 두 평행선과 평행한 보조선을 그어 엇각의 성질을 이용한다. $$\\begin{aligned} &130^\\circ\\text{인 꼭짓점을 } P, ; 75^\\circ\\text{인 꼭짓점을 } Q\\text{라 하고 } P, Q\\text{를 지나며 } l, m\\text{에 평행한 보조선을 긋는다.} \\ &l\\text{과 } P\\text{를 지나는 보조선이 평행하므로 엇각에 의해 } P\\text{에서 보조선 위쪽 각은 } \\angle a\\text{이다.} \\ &\\text{따라서 } P\\text{에서 보조선 아래쪽 각은 } 130^\\circ - \\angle a\\text{이다.} \\ &P\\text{를 지나는 보조선과 } Q\\text{를 지나는 보조선이 평행하므로 엇각에 의해 } Q\\text{의 왼쪽 위 각은 } 130^\\circ - \\angle a\\text{이고,} \\ &Q\\text{의 오른쪽 위 각은 } 180^\\circ - (130^\\circ - \\angle a) = 50^\\circ + \\angle a\\text{이다.} \\ &\\text{따라서 } Q\\text{의 아래쪽 각은 } 75^\\circ - (50^\\circ + \\angle a) = 25^\\circ - \\angle a\\text{이다.} \\ &Q\\text{를 지나는 보조선과 } m\\text{이 평행하므로 엇각에 의해 } \\angle b = 25^\\circ - \\angle a \\ &\\angle a + \\angle b = 25^\\circ \\end{aligned}$$ 따라서 $\\angle a + \\angle b = 25^\\circ$이므로 정답은 ③이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"평행선 사이의 꺾인 선에 보조선을 그어 엇각 관계를 연속적으로 추적하는 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"6\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"각 꺾인 점에 평행선을 그어 엇각으로 각의 표현식을 전달하여 a + b의 값을 구한다.\",\n  \"decisiveStep\": \"두 꼭짓점에서 보조선 위아래 각도를 a로 표현하여 b = 25도 - a 관계식을 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"평행선의 성질\",\n    \"l4\": \"꺾인 선에서의 평행선 보조선 활용\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLEL_ANGLE_TRANSFER\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_TRANSFER_ZIGZAG_AUXILIARY\",\n    \"why\": \"복수 개의 꺾인 점을 갖는 평행선 구조에서 평행 보조선을 도입하여 각의 합을 계산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"보조선 2개를 도입하여 엇각과 보각을 다단계로 연계하는 3단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"평행선\",\n      \"각\",\n      \"엇각\"\n    ],\n    \"goal\": [\n      \"합\"\n    ],\n    \"method\": [\n      \"엇각\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"평행선\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "꺾인 점을 지나면서 두 평행선과 평행한 보조선을 그어 엇각의 성질을 이용한다. $$\\begin{aligned} &130^\\circ\\text{인 꼭짓점을 } P, ; 75^\\circ\\text{인 꼭짓점을 } Q\\text{라 하고 } P, Q\\text{를 지나며 } l, m\\text{에 평행한 보조선을 긋는다.} \\ &l\\text{과 } P\\text{를 지나는 보조선이 평행하므로 엇각에 의해 } P\\text{에서 보조선 위쪽 각은 } \\angle a\\text{이다.} \\ &\\text{따라서 } P\\text{에서 보조선 아래쪽 각은 } 130^\\circ - \\angle a\\text{이다.} \\ &P\\text{를 지나는 보조선과 } Q\\text{를 지나는 보조선이 평행하므로 엇각에 의해 } Q\\text{의 왼쪽 위 각은 } 130^\\circ - \\angle a\\text{이고,} \\ &Q\\text{의 오른쪽 위 각은 } 180^\\circ - (130^\\circ - \\angle a) = 50^\\circ + \\angle a\\text{이다.} \\ &\\text{따라서 } Q\\text{의 아래쪽 각은 } 75^\\circ - (50^\\circ + \\angle a) = 25^\\circ - \\angle a\\text{이다.} \\ &Q\\text{를 지나는 보조선과 } m\\text{이 평행하므로 엇각에 의해 } \\angle b = 25^\\circ - \\angle a \\ &\\angle a + \\angle b = 25^\\circ \\end{aligned}$$ 따라서 $\\angle a + \\angle b = 25^\\circ$이므로 정답은 ③이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"평행선 사이의 꺾인 선에 보조선을 그어 엇각 관계를 연속적으로 추적하는 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"6\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"각 꺾인 점에 평행선을 그어 엇각으로 각의 표현식을 전달하여 a + b의 값을 구한다.\",\n  \"decisiveStep\": \"두 꼭짓점에서 보조선 위아래 각도를 a로 표현하여 b = 25도 - a 관계식을 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"평행선의 성질\",\n    \"l4\": \"꺾인 선에서의 평행선 보조선 활용\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PARALLEL_ANGLE_TRANSFER\",\n    \"templateKey\": \"TPL_M1_PARALLEL_ANGLE_TRANSFER_ZIGZAG_AUXILIARY\",\n    \"why\": \"복수 개의 꺾인 점을 갖는 평행선 구조에서 평행 보조선을 도입하여 각의 합을 계산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"보조선 2개를 도입하여 엇각과 보각을 다단계로 연계하는 3단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"평행선\",\n      \"각\",\n      \"엇각\"\n    ],\n    \"goal\": [\n      \"합\"\n    ],\n    \"method\": [\n      \"엇각\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"평행선\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행선",
+            "src": "stem",
+            "quote": "두 직선 $l, m$이 서로 평행($l \\parallel m$)할 때, 두 평행선 사이에서 두 번 꺾인 선이 이루는 두 꼭짓점의 각의 크기가 각각 $130^\\circ$, $75^\\circ$이다. 직선 $l$과 꺾인 선의 시작 부분이 이루는 각을 $\\angle a$, 직선 $m$과 꺾인 선의 끝 부분이 이루는 각을 $\\angle b$라 할 때, $\\angle a + \\angle b$의 크기는? [4점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "두 삼각형 $ABC$와 $FED$가 서로 합동($\\triangle ABC \\equiv \\triangle FED$)이다. $\\overline{AB} = x$, $\\overline{FE} = 12$이고, $\\angle E = 105^\\circ$, $\\angle C = 45^\\circ$, $\\angle F = y^\\circ$일 때, $x + y$의 값은? [3점]"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "두 삼각형 $ABC$와 $FED$가 서로 합동($\\triangle ABC \\equiv \\triangle FED$)이다. $\\overline{AB} = x$, $\\overline{FE} = 12$이고, $\\angle E = 105^\\circ$, $\\angle C = 45^\\circ$, $\\angle F = y^\\circ$일 때, $x + y$의 값은? [3점]"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "두 삼각형 $ABC$와 $FED$가 서로 합동($\\triangle ABC \\equiv \\triangle FED$)이다. $\\overline{AB} = x$, $\\overline{FE} = 12$이고, $\\angle E = 105^\\circ$, $\\angle C = 45^\\circ$, $\\angle F = y^\\circ$일 때, $x + y$의 값은? [3점]"
+          },
+          {
+            "term": "대응변",
+            "src": "stem",
+            "quote": "두 삼각형 $ABC$와 $FED$가 서로 합동($\\triangle ABC \\equiv \\triangle FED$)이다. $\\overline{AB} = x$, $\\overline{FE} = 12$이고, $\\angle E = 105^\\circ$, $\\angle C = 45^\\circ$, $\\angle F = y^\\circ$일 때, $x + y$의 값은? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "두 삼각형 $ABC$와 $FED$가 서로 합동($\\triangle ABC \\equiv \\triangle FED$)이다. $\\overline{AB} = x$, $\\overline{FE} = 12$이고, $\\angle E = 105^\\circ$, $\\angle C = 45^\\circ$, $\\angle F = y^\\circ$일 때, $x + y$의 값은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "대응각",
+            "src": "solution",
+            "quote": "합동인 두 삼각형에서 대응변의 길이와 대응각의 크기는 각각 서로 같다. $$\\begin{aligned} &\\triangle ABC \\equiv \\triangle FED\\text{이므로 대응점은 } A\\text{와 } F, ; B\\text{와 } E, ; C\\text{와 } D\\text{이다.} \\ &\\overline{AB}\\text{의 대응변은 } \\overline{FE}\\text{이므로 } x = \\overline{FE} = 12\\text{이다.} \\ &\\angle C\\text{의 대응각은 } \\angle D\\text{이므로 } \\angle D = \\angle C = 45^\\circ\\text{이다.} \\ &\\triangle FED\\text{에서 세 내각의 크기의 합은 } 180^\\circ\\text{이므로 } \\ &\\angle F = 180^\\circ - (\\angle E + \\angle D) = 180^\\circ - (105^\\circ + 45^\\circ) = 30^\\circ \\implies y = 30 \\ &x + y = 12 + 30 = 42 \\end{aligned}$$ 따라서 $x + y = 42$이므로 정답은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"삼각형의 합동 기호 순서에 따른 대응변 및 대응각 일치 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"7\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"합동인 두 삼각형의 꼭짓점 대응 관계를 대조하여 미지수 변의 길이와 각의 크기를 결정한다.\",\n  \"decisiveStep\": \"AB 대응변 FE로부터 x=12를 구하고 각 D=45도로부터 각 F=30도(y=30) 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"도형의 합동\",\n    \"l4\": \"합동인 도형의 성질\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_DATA_TRANSFER\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_DATA_TRANSFER_CORRESPONDENCE\",\n    \"why\": \"합동 기호 표기법에서 대응점 순서를 추적하여 대응변과 대응각의 수치를 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"삼각형 합동 기호의 알파벳 대응 규칙을 확인하여 값을 구하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"합동\",\n      \"삼각형\",\n      \"길이\",\n      \"대응변\"\n    ],\n    \"goal\": [\n      \"합\"\n    ],\n    \"method\": [\n      \"대응각\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"합동\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "합동인 두 삼각형에서 대응변의 길이와 대응각의 크기는 각각 서로 같다. $$\\begin{aligned} &\\triangle ABC \\equiv \\triangle FED\\text{이므로 대응점은 } A\\text{와 } F, ; B\\text{와 } E, ; C\\text{와 } D\\text{이다.} \\ &\\overline{AB}\\text{의 대응변은 } \\overline{FE}\\text{이므로 } x = \\overline{FE} = 12\\text{이다.} \\ &\\angle C\\text{의 대응각은 } \\angle D\\text{이므로 } \\angle D = \\angle C = 45^\\circ\\text{이다.} \\ &\\triangle FED\\text{에서 세 내각의 크기의 합은 } 180^\\circ\\text{이므로 } \\ &\\angle F = 180^\\circ - (\\angle E + \\angle D) = 180^\\circ - (105^\\circ + 45^\\circ) = 30^\\circ \\implies y = 30 \\ &x + y = 12 + 30 = 42 \\end{aligned}$$ 따라서 $x + y = 42$이므로 정답은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"삼각형의 합동 기호 순서에 따른 대응변 및 대응각 일치 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"7\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"합동인 두 삼각형의 꼭짓점 대응 관계를 대조하여 미지수 변의 길이와 각의 크기를 결정한다.\",\n  \"decisiveStep\": \"AB 대응변 FE로부터 x=12를 구하고 각 D=45도로부터 각 F=30도(y=30) 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"도형의 합동\",\n    \"l4\": \"합동인 도형의 성질\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_DATA_TRANSFER\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_DATA_TRANSFER_CORRESPONDENCE\",\n    \"why\": \"합동 기호 표기법에서 대응점 순서를 추적하여 대응변과 대응각의 수치를 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"삼각형 합동 기호의 알파벳 대응 규칙을 확인하여 값을 구하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"합동\",\n      \"삼각형\",\n      \"길이\",\n      \"대응변\"\n    ],\n    \"goal\": [\n      \"합\"\n    ],\n    \"method\": [\n      \"대응각\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"합동\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "두 삼각형 $ABC$와 $FED$가 서로 합동($\\triangle ABC \\equiv \\triangle FED$)이다. $\\overline{AB} = x$, $\\overline{FE} = 12$이고, $\\angle E = 105^\\circ$, $\\angle C = 45^\\circ$, $\\angle F = y^\\circ$일 때, $x + y$의 값은? [3점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "두 삼각형 $ABC$와 $DEF$에서 $\\overline{AB} = \\overline{DE}$, $\\overline{BC} = \\overline{EF}$일 때, $\\triangle ABC \\equiv \\triangle DEF$가 되기 위해 필요한 추가 조건과 그때 성립하는 합동 조건의 짝으로 올바른 것은? [3점]"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "두 삼각형 $ABC$와 $DEF$에서 $\\overline{AB} = \\overline{DE}$, $\\overline{BC} = \\overline{EF}$일 때, $\\triangle ABC \\equiv \\triangle DEF$가 되기 위해 필요한 추가 조건과 그때 성립하는 합동 조건의 짝으로 올바른 것은? [3점]"
+          },
+          {
+            "term": "대응변",
+            "src": "stem",
+            "quote": "두 삼각형 $ABC$와 $DEF$에서 $\\overline{AB} = \\overline{DE}$, $\\overline{BC} = \\overline{EF}$일 때, $\\triangle ABC \\equiv \\triangle DEF$가 되기 위해 필요한 추가 조건과 그때 성립하는 합동 조건의 짝으로 올바른 것은? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "두 삼각형 $ABC$와 $DEF$에서 $\\overline{AB} = \\overline{DE}$, $\\overline{BC} = \\overline{EF}$일 때, $\\triangle ABC \\equiv \\triangle DEF$가 되기 위해 필요한 추가 조건과 그때 성립하는 합동 조건의 짝으로 올바른 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "두 쌍의 대응변의 길이가 같을 때, 그 끼인각의 크기가 같으면 $\\mathrm{SAS}$ 합동이다. $$\\begin{aligned} &\\text{주어진 조건에서 } \\overline{AB} = \\overline{DE}, ; \\overline{BC} = \\overline{EF}\\text{이므로 두 쌍의 대응변의 길이가 같다.} \\ &\\overline{AB}\\text{와 } \\overline{BC}\\text{의 끼인각은 } \\angle B\\text{이고, } \\overline{DE}\\text{와 } \\overline{EF}\\text{의 끼인각은 } \\angle E\\text{이다.} \\ &\\text{따라서 끼인각의 크기가 } \\angle B = \\angle E\\text{로 같으면 } \\mathrm{SAS}\\text{ 합동이 성립한다.} \\ &\\text{참고로 } \\overline{AC}=\\overline{DF}\\text{이면 } \\mathrm{SSS}\\text{ 합동이 된다.} \\end{aligned}$$ 따라서 올바른 것은 $\\angle B = \\angle E$, $\\mathrm{SAS}$합동이므로 정답은 ③이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"삼각형의 합동 조건(SAS)과 두 변 사이의 끼인각 판별 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"8\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"주어진 두 변의 끼인각을 찾아 각의 일치 조건과 SAS 합동 명칭의 일치성을 판정한다.\",\n  \"decisiveStep\": \"AB와 BC의 끼인각이 각 B, DE와 EF의 끼인각이 각 E임을 확인하여 SAS 합동 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 합동 조건\",\n    \"l4\": \"SAS 합동 조건 식별\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_UNIQUENESS\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_UNIQUENESS_MISSING_CONDITION\",\n    \"why\": \"합동을 완성하기 위해 필요한 변이나 각의 조건 및 대응 합동 명칭을 선별하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"NONE\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"두 변 사이의 끼인각 개념과 SAS 합동 정의를 곧바로 대조하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"합동\",\n      \"삼각형\",\n      \"대응변\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"판정\",\n      \"대응각\"\n    ],\n    \"condition\": [\n      \"합동\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "대응각",
+            "src": "solution",
+            "quote": "두 쌍의 대응변의 길이가 같을 때, 그 끼인각의 크기가 같으면 $\\mathrm{SAS}$ 합동이다. $$\\begin{aligned} &\\text{주어진 조건에서 } \\overline{AB} = \\overline{DE}, ; \\overline{BC} = \\overline{EF}\\text{이므로 두 쌍의 대응변의 길이가 같다.} \\ &\\overline{AB}\\text{와 } \\overline{BC}\\text{의 끼인각은 } \\angle B\\text{이고, } \\overline{DE}\\text{와 } \\overline{EF}\\text{의 끼인각은 } \\angle E\\text{이다.} \\ &\\text{따라서 끼인각의 크기가 } \\angle B = \\angle E\\text{로 같으면 } \\mathrm{SAS}\\text{ 합동이 성립한다.} \\ &\\text{참고로 } \\overline{AC}=\\overline{DF}\\text{이면 } \\mathrm{SSS}\\text{ 합동이 된다.} \\end{aligned}$$ 따라서 올바른 것은 $\\angle B = \\angle E$, $\\mathrm{SAS}$합동이므로 정답은 ③이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"삼각형의 합동 조건(SAS)과 두 변 사이의 끼인각 판별 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"8\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"주어진 두 변의 끼인각을 찾아 각의 일치 조건과 SAS 합동 명칭의 일치성을 판정한다.\",\n  \"decisiveStep\": \"AB와 BC의 끼인각이 각 B, DE와 EF의 끼인각이 각 E임을 확인하여 SAS 합동 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"삼각형의 합동 조건\",\n    \"l4\": \"SAS 합동 조건 식별\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_UNIQUENESS\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_UNIQUENESS_MISSING_CONDITION\",\n    \"why\": \"합동을 완성하기 위해 필요한 변이나 각의 조건 및 대응 합동 명칭을 선별하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"NONE\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"두 변 사이의 끼인각 개념과 SAS 합동 정의를 곧바로 대조하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"합동\",\n      \"삼각형\",\n      \"대응변\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"판정\",\n      \"대응각\"\n    ],\n    \"condition\": [\n      \"합동\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "두 삼각형 $ABC$와 $DEF$에서 $\\overline{AB} = \\overline{DE}$, $\\overline{BC} = \\overline{EF}$일 때, $\\triangle ABC \\equiv \\triangle DEF$가 되기 위해 필요한 추가 조건과 그때 성립하는 합동 조건의 짝으로 올바른 것은? [3점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정삼각형",
+            "src": "stem",
+            "quote": "선분 $AB$ 위의 한 점 $C$에 대하여 $\\overline{AC}, \\overline{BC}$를 각각 한 변으로 하는 두 정삼각형 $ACD$와 $CBE$를 같은 쪽에 만들었다. $\\angle DAE = 25^\\circ$일 때, 다음 중 옳지 않은 것은? [5점]"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $AB$ 위의 한 점 $C$에 대하여 $\\overline{AC}, \\overline{BC}$를 각각 한 변으로 하는 두 정삼각형 $ACD$와 $CBE$를 같은 쪽에 만들었다. $\\angle DAE = 25^\\circ$일 때, 다음 중 옳지 않은 것은? [5점]"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "선분 $AB$ 위의 한 점 $C$에 대하여 $\\overline{AC}, \\overline{BC}$를 각각 한 변으로 하는 두 정삼각형 $ACD$와 $CBE$를 같은 쪽에 만들었다. $\\angle DAE = 25^\\circ$일 때, 다음 중 옳지 않은 것은? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "선분 $AB$ 위의 한 점 $C$에 대하여 $\\overline{AC}, \\overline{BC}$를 각각 한 변으로 하는 두 정삼각형 $ACD$와 $CBE$를 같은 쪽에 만들었다. $\\angle DAE = 25^\\circ$일 때, 다음 중 옳지 않은 것은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "두 정삼각형의 변과 각의 성질을 이용하여 삼각형의 합동을 증명한다. $$\\begin{aligned} &\\triangle ACD\\text{와 } \\triangle CBE\\text{는 정삼각형이므로 } \\overline{CA}=\\overline{CD}, ; \\overline{CE}=\\overline{CB}, ; \\angle ACD=\\angle BCE=60^\\circ\\text{이다.} \\ &\\text{점 } C\\text{가 선분 } AB\\text{ 위에 있으므로 평각에서 } \\angle DCE = 180^\\circ - 60^\\circ - 60^\\circ = 60^\\circ\\text{이다. (③ 참)} \\ &\\angle ACE = \\angle ACD + \\angle DCE = 60^\\circ + 60^\\circ = 120^\\circ\\text{이므로 } \\angle ACE = 100^\\circ\\text{는 거짓이다. (② 거짓)} \\ &\\angle DCB = \\angle DCE + \\angle ECB = 60^\\circ + 60^\\circ = 120^\\circ \\ &\\triangle ACE\\text{와 } \\triangle DCB\\text{에서 } \\overline{CA}=\\overline{CD}, ; \\overline{CE}=\\overline{CB}, ; \\angle ACE=\\angle DCB=120^\\circ\\text{이므로} \\ &\\triangle ACE \\equiv \\triangle DCB ; (\\mathrm{SAS}\\text{ 합동})\\text{이다. (④ 참)} \\ &\\text{합동인 두 삼각형의 대응변의 길이는 같으므로 } \\overline{AE} = \\overline{BD}\\text{이다. (① 참)} \\ &\\text{대응각에서 } \\angle BDC = \\angle EAC\\text{이고, } \\angle DAC = 60^\\circ, ; \\angle DAE = 25^\\circ\\text{이므로} \\ &\\angle EAC = 60^\\circ - 25^\\circ = 35^\\circ \\implies \\angle BDC = 35^\\circ\\text{이다. (⑤ 참)} \\end{aligned}$$ 따라서 옳지 않은 것은 ②이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정삼각형의 성질을 활용한 삼각형의 SAS 합동 판정 및 각도 계산 심화 문항\"\n}\n\n{\n  \"sourceQid\": \"9\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"정삼각형 각과 변의 성질로 삼각형 ACE와 삼각형 DCB의 합동을 확인하고 각 ACE=120도임을 밝힌다.\",\n  \"decisiveStep\": \"각 ACE = 60도 + 60도 = 120도임을 계산하여 선지 ②(100도)의 오류 판정\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"도형의 합동\",\n    \"l4\": \"정삼각형에서의 삼각형의 합동 응용\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_DATA_TRANSFER\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_ROTATION\",\n    \"why\": \"공유된 꼭짓점을 갖는 정삼각형 쌍에서 회전 합동 구조를 파악하여 변과 각의 성질을 검증하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 4,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"정삼각형의 60도 각 관계를 종합하여 두 삼각형의 합동을 입증하고 대응각을 계산하는 4단계 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"정삼각형\",\n      \"선분\",\n      \"각\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"합동\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"합동\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "두 정삼각형의 변과 각의 성질을 이용하여 삼각형의 합동을 증명한다. $$\\begin{aligned} &\\triangle ACD\\text{와 } \\triangle CBE\\text{는 정삼각형이므로 } \\overline{CA}=\\overline{CD}, ; \\overline{CE}=\\overline{CB}, ; \\angle ACD=\\angle BCE=60^\\circ\\text{이다.} \\ &\\text{점 } C\\text{가 선분 } AB\\text{ 위에 있으므로 평각에서 } \\angle DCE = 180^\\circ - 60^\\circ - 60^\\circ = 60^\\circ\\text{이다. (③ 참)} \\ &\\angle ACE = \\angle ACD + \\angle DCE = 60^\\circ + 60^\\circ = 120^\\circ\\text{이므로 } \\angle ACE = 100^\\circ\\text{는 거짓이다. (② 거짓)} \\ &\\angle DCB = \\angle DCE + \\angle ECB = 60^\\circ + 60^\\circ = 120^\\circ \\ &\\triangle ACE\\text{와 } \\triangle DCB\\text{에서 } \\overline{CA}=\\overline{CD}, ; \\overline{CE}=\\overline{CB}, ; \\angle ACE=\\angle DCB=120^\\circ\\text{이므로} \\ &\\triangle ACE \\equiv \\triangle DCB ; (\\mathrm{SAS}\\text{ 합동})\\text{이다. (④ 참)} \\ &\\text{합동인 두 삼각형의 대응변의 길이는 같으므로 } \\overline{AE} = \\overline{BD}\\text{이다. (① 참)} \\ &\\text{대응각에서 } \\angle BDC = \\angle EAC\\text{이고, } \\angle DAC = 60^\\circ, ; \\angle DAE = 25^\\circ\\text{이므로} \\ &\\angle EAC = 60^\\circ - 25^\\circ = 35^\\circ \\implies \\angle BDC = 35^\\circ\\text{이다. (⑤ 참)} \\end{aligned}$$ 따라서 옳지 않은 것은 ②이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정삼각형의 성질을 활용한 삼각형의 SAS 합동 판정 및 각도 계산 심화 문항\"\n}\n\n{\n  \"sourceQid\": \"9\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"정삼각형 각과 변의 성질로 삼각형 ACE와 삼각형 DCB의 합동을 확인하고 각 ACE=120도임을 밝힌다.\",\n  \"decisiveStep\": \"각 ACE = 60도 + 60도 = 120도임을 계산하여 선지 ②(100도)의 오류 판정\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"도형의 합동\",\n    \"l4\": \"정삼각형에서의 삼각형의 합동 응용\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_DATA_TRANSFER\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_ROTATION\",\n    \"why\": \"공유된 꼭짓점을 갖는 정삼각형 쌍에서 회전 합동 구조를 파악하여 변과 각의 성질을 검증하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 4,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"정삼각형의 60도 각 관계를 종합하여 두 삼각형의 합동을 입증하고 대응각을 계산하는 4단계 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"정삼각형\",\n      \"선분\",\n      \"각\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"합동\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"합동\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "선분 $AB$ 위의 한 점 $C$에 대하여 $\\overline{AC}, \\overline{BC}$를 각각 한 변으로 하는 두 정삼각형 $ACD$와 $CBE$를 같은 쪽에 만들었다. $\\angle DAE = 25^\\circ$일 때, 다음 중 옳지 않은 것은? [5점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정비례",
+            "src": "stem",
+            "quote": "다음 중 $x$와 $y$ 사이의 관계가 정비례 관계가 아닌 것은? [4점]"
+          },
+          {
+            "term": "반비례",
+            "src": "stem",
+            "quote": "다음 중 $x$와 $y$ 사이의 관계가 정비례 관계가 아닌 것은? [4점]"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "다음 중 $x$와 $y$ 사이의 관계가 정비례 관계가 아닌 것은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 $x$와 $y$ 사이의 관계가 정비례 관계가 아닌 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "$y$가 $x$에 정비례하면 $y = ax$ ($a \\ne 0$) 꼴의 관계식이 성립하고, 두 양의 곱이 일정하여 $xy = k$ ($k \\ne 0$)이면 반비례 관계이다. $$\\begin{aligned} &\\text{① } y = 4x \\implies \\text{정비례 관계} \\ &\\text{② } y = \\dfrac{1}{2} \\times 14 \\times x = 7x \\implies \\text{정비례 관계} \\ &\\text{③ 정육면체의 모서리는 } 12\\text{개이므로 } y = 12x \\implies \\text{정비례 관계} \\ &\\text{④ } x \\times y = 48 \\implies y = \\dfrac{48}{x} \\implies \\text{반비례 관계 (정비례 아님)} \\ &\\text{⑤ } y = 80x \\implies \\text{정비례 관계} \\end{aligned}$$ 따라서 정비례 관계가 아닌 것은 ④이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정비례 관계식 y=ax와 반비례 관계식 xy=k의 구분 판별 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"10\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-04\",\n  \"subUnitKey\": \"M1-04-GRAPH_RELATION\",\n  \"conceptClusterKey\": \"GRAPH_RELATION\",\n  \"primaryMethod\": \"각 보기의 실생활 관계를 수식으로 표현하여 y=ax 꼴이 아닌 반비례 식을 선별한다.\",\n  \"decisiveStep\": \"직사각형의 넓이 관계식 xy=48(y=48/x)이 반비례 관계임을 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"좌표평면과 그래프\",\n    \"midUnit\": \"정비례와 반비례\",\n    \"l3\": \"정비례\",\n    \"l4\": \"정비례 관계식의 식별\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION\",\n    \"templateKey\": \"TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CONTEXT\",\n    \"why\": \"문장제 상황을 관계식으로 모델링하여 정비례와 반비례를 분류하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"정비례와 반비례의 표준 형태를 비교하여 비례 관계를 직관적으로 판별하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"정비례\",\n      \"반비례\",\n      \"넓이\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"판정\"\n    ],\n    \"condition\": [\n      \"상수\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "다음 중 $x$와 $y$ 사이의 관계가 정비례 관계가 아닌 것은? [4점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "정비례 관계 $y=ax$와 반비례 관계 $y=\\dfrac{b}{x}$의 그래프가 모두 제2사분면과 제4사분면을 지난다. 이때 반비례 관계 $y=-\\dfrac{a+b}{x}$의 그래프와 같은 사분면을 지나는 그래프만을 보기에서 있는 대로 고른 것은? (단, $a, b$는 $0$이 아닌 상수)\nㄱ. $y=-\\dfrac{a}{x}$\nㄴ. $y=bx$\nㄷ. $y=\\dfrac{ab}{x}$\nㄹ. $y=-\\dfrac{3b}{2x}$\nㅁ. $y=2ax$\n\n [4점]"
+          },
+          {
+            "term": "정비례",
+            "src": "stem",
+            "quote": "정비례 관계 $y=ax$와 반비례 관계 $y=\\dfrac{b}{x}$의 그래프가 모두 제2사분면과 제4사분면을 지난다. 이때 반비례 관계 $y=-\\dfrac{a+b}{x}$의 그래프와 같은 사분면을 지나는 그래프만을 보기에서 있는 대로 고른 것은? (단, $a, b$는 $0$이 아닌 상수)\nㄱ. $y=-\\dfrac{a}{x}$\nㄴ. $y=bx$\nㄷ. $y=\\dfrac{ab}{x}$\nㄹ. $y=-\\dfrac{3b}{2x}$\nㅁ. $y=2ax$\n\n [4점]"
+          },
+          {
+            "term": "반비례",
+            "src": "stem",
+            "quote": "정비례 관계 $y=ax$와 반비례 관계 $y=\\dfrac{b}{x}$의 그래프가 모두 제2사분면과 제4사분면을 지난다. 이때 반비례 관계 $y=-\\dfrac{a+b}{x}$의 그래프와 같은 사분면을 지나는 그래프만을 보기에서 있는 대로 고른 것은? (단, $a, b$는 $0$이 아닌 상수)\nㄱ. $y=-\\dfrac{a}{x}$\nㄴ. $y=bx$\nㄷ. $y=\\dfrac{ab}{x}$\nㄹ. $y=-\\dfrac{3b}{2x}$\nㅁ. $y=2ax$\n\n [4점]"
+          },
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "정비례 관계 $y=ax$와 반비례 관계 $y=\\dfrac{b}{x}$의 그래프가 모두 제2사분면과 제4사분면을 지난다. 이때 반비례 관계 $y=-\\dfrac{a+b}{x}$의 그래프와 같은 사분면을 지나는 그래프만을 보기에서 있는 대로 고른 것은? (단, $a, b$는 $0$이 아닌 상수)\nㄱ. $y=-\\dfrac{a}{x}$\nㄴ. $y=bx$\nㄷ. $y=\\dfrac{ab}{x}$\nㄹ. $y=-\\dfrac{3b}{2x}$\nㅁ. $y=2ax$\n\n [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "정비례 관계 $y=ax$와 반비례 관계 $y=\\dfrac{b}{x}$의 그래프가 모두 제2사분면과 제4사분면을 지난다. 이때 반비례 관계 $y=-\\dfrac{a+b}{x}$의 그래프와 같은 사분면을 지나는 그래프만을 보기에서 있는 대로 고른 것은? (단, $a, b$는 $0$이 아닌 상수)\nㄱ. $y=-\\dfrac{a}{x}$\nㄴ. $y=bx$\nㄷ. $y=\\dfrac{ab}{x}$\nㄹ. $y=-\\dfrac{3b}{2x}$\nㅁ. $y=2ax$\n\n [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "정비례와 반비례 그래프는 비례상수가 양수이면 제1, 3사분면을, 음수이면 제2, 4사분면을 지난다. $$\\begin{aligned} &y=ax\\text{의 그래프가 제2, 4사분면을 지나므로 } a < 0\\text{이다.} \\ &y=\\dfrac{b}{x}\\text{의 그래프가 제2, 4사분면을 지나므로 } b < 0\\text{이다.} \\ &a < 0, ; b < 0\\text{이므로 } a + b < 0 \\implies -(a + b) > 0 \\ &\\text{따라서 } y = -\\dfrac{a+b}{x}\\text{의 그래프는 비례상수가 양수이므로 제1, 3사분면을 지난다.} \\ &\\text{보기의 각 그래프의 사분면을 조사하면 다음과 같다.} \\ &\\text{ㄱ. } a < 0 \\implies -a > 0 \\implies y = -\\dfrac{a}{x}\\text{는 제1, 3사분면을 지난다. (참)} \\ &\\text{ㄴ. } b < 0 \\implies y = bx\\text{는 제2, 4사분면을 지난다. (거짓)} \\ &\\text{ㄷ. } a < 0, ; b < 0 \\implies ab > 0 \\implies y = \\dfrac{ab}{x}\\text{는 제1, 3사분면을 지난다. (참)} \\ &\\text{ㄹ. } b < 0 \\implies -\\dfrac{3b}{2} > 0 \\implies y = -\\dfrac{3b}{2x}\\text{는 제1, 3사분면을 지난다. (참)} \\ &\\text{ㅁ. } a < 0 \\implies 2a < 0 \\implies y = 2ax\\text{는 제2, 4사분면을 지난다. (거짓)} \\end{aligned}$$ 따라서 제1, 3사분면을 지나는 것은 ㄱ, ㄷ, ㄹ이므로 정답은 ⑤이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"사분면에 따른 비례상수의 부호 판정 및 연산 부호 추론 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"11\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-04\",\n  \"subUnitKey\": \"M1-04-COORDINATE_PLANE\",\n  \"conceptClusterKey\": \"COORDINATE_PLANE\",\n  \"primaryMethod\": \"주어진 두 식으로부터 a<0, b<0을 유도하고 각 보기의 비례상수 부호를 분석한다.\",\n  \"decisiveStep\": \"-(a+b)>0임을 파악하여 제1, 3사분면을 지나는 ㄱ, ㄷ, ㄹ을 정확히 선별\",\n  \"rpm\": {\n    \"majorUnit\": \"좌표평면과 그래프\",\n    \"midUnit\": \"정비례와 반비례\",\n    \"l3\": \"정비례와 반비례의 그래프\",\n    \"l4\": \"비례상수의 부호와 지나는 사분면 판정\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_QUADRANT_SIGN_DEDUCTION\",\n    \"templateKey\": \"TPL_M1_QUADRANT_SIGN_DEDUCTION_COMPOSITE_PARAMETERS\",\n    \"why\": \"계수들의 부호 관계로부터 복합 파라미터가 부여된 그래프의 사분면 통과 여부를 판단하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호의 곱과 합 성질을 이용하여 그래프의 지나는 사분면을 종합 판단하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"사분면\",\n      \"정비례\",\n      \"반비례\",\n      \"부호\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"부호\",\n      \"판정\"\n    ],\n    \"condition\": [\n      \"상수\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "정비례와 반비례 그래프는 비례상수가 양수이면 제1, 3사분면을, 음수이면 제2, 4사분면을 지난다. $$\\begin{aligned} &y=ax\\text{의 그래프가 제2, 4사분면을 지나므로 } a < 0\\text{이다.} \\ &y=\\dfrac{b}{x}\\text{의 그래프가 제2, 4사분면을 지나므로 } b < 0\\text{이다.} \\ &a < 0, ; b < 0\\text{이므로 } a + b < 0 \\implies -(a + b) > 0 \\ &\\text{따라서 } y = -\\dfrac{a+b}{x}\\text{의 그래프는 비례상수가 양수이므로 제1, 3사분면을 지난다.} \\ &\\text{보기의 각 그래프의 사분면을 조사하면 다음과 같다.} \\ &\\text{ㄱ. } a < 0 \\implies -a > 0 \\implies y = -\\dfrac{a}{x}\\text{는 제1, 3사분면을 지난다. (참)} \\ &\\text{ㄴ. } b < 0 \\implies y = bx\\text{는 제2, 4사분면을 지난다. (거짓)} \\ &\\text{ㄷ. } a < 0, ; b < 0 \\implies ab > 0 \\implies y = \\dfrac{ab}{x}\\text{는 제1, 3사분면을 지난다. (참)} \\ &\\text{ㄹ. } b < 0 \\implies -\\dfrac{3b}{2} > 0 \\implies y = -\\dfrac{3b}{2x}\\text{는 제1, 3사분면을 지난다. (참)} \\ &\\text{ㅁ. } a < 0 \\implies 2a < 0 \\implies y = 2ax\\text{는 제2, 4사분면을 지난다. (거짓)} \\end{aligned}$$ 따라서 제1, 3사분면을 지나는 것은 ㄱ, ㄷ, ㄹ이므로 정답은 ⑤이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"사분면에 따른 비례상수의 부호 판정 및 연산 부호 추론 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"11\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-04\",\n  \"subUnitKey\": \"M1-04-COORDINATE_PLANE\",\n  \"conceptClusterKey\": \"COORDINATE_PLANE\",\n  \"primaryMethod\": \"주어진 두 식으로부터 a<0, b<0을 유도하고 각 보기의 비례상수 부호를 분석한다.\",\n  \"decisiveStep\": \"-(a+b)>0임을 파악하여 제1, 3사분면을 지나는 ㄱ, ㄷ, ㄹ을 정확히 선별\",\n  \"rpm\": {\n    \"majorUnit\": \"좌표평면과 그래프\",\n    \"midUnit\": \"정비례와 반비례\",\n    \"l3\": \"정비례와 반비례의 그래프\",\n    \"l4\": \"비례상수의 부호와 지나는 사분면 판정\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_QUADRANT_SIGN_DEDUCTION\",\n    \"templateKey\": \"TPL_M1_QUADRANT_SIGN_DEDUCTION_COMPOSITE_PARAMETERS\",\n    \"why\": \"계수들의 부호 관계로부터 복합 파라미터가 부여된 그래프의 사분면 통과 여부를 판단하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호의 곱과 합 성질을 이용하여 그래프의 지나는 사분면을 종합 판단하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"사분면\",\n      \"정비례\",\n      \"반비례\",\n      \"부호\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"부호\",\n      \"판정\"\n    ],\n    \"condition\": [\n      \"상수\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "정비례 관계 $y=ax$와 반비례 관계 $y=\\dfrac{b}{x}$의 그래프가 모두 제2사분면과 제4사분면을 지난다. 이때 반비례 관계 $y=-\\dfrac{a+b}{x}$의 그래프와 같은 사분면을 지나는 그래프만을 보기에서 있는 대로 고른 것은? (단, $a, b$는 $0$이 아닌 상수)\nㄱ. $y=-\\dfrac{a}{x}$\nㄴ. $y=bx$\nㄷ. $y=\\dfrac{ab}{x}$\nㄹ. $y=-\\dfrac{3b}{2x}$\nㅁ. $y=2ax$\n\n [4점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "반비례",
+            "src": "stem",
+            "quote": "어느 닫힌 용기 안에서 온도가 일정할 때, 기체의 압력 $x$와 부피 $y$의 곱은 항상 일정하다는 관계(보일의 법칙)가 성립한다. 기체의 압력 $x$와 부피 $y$ 사이의 관계를 좌표평면 위에 그래프로 나타낼 때, 이 그래프의 모양과 특징으로 옳은 것은? (단, $x > 0, y > 0$) [3점]"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "어느 닫힌 용기 안에서 온도가 일정할 때, 기체의 압력 $x$와 부피 $y$의 곱은 항상 일정하다는 관계(보일의 법칙)가 성립한다. 기체의 압력 $x$와 부피 $y$ 사이의 관계를 좌표평면 위에 그래프로 나타낼 때, 이 그래프의 모양과 특징으로 옳은 것은? (단, $x > 0, y > 0$) [3점]"
+          },
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "어느 닫힌 용기 안에서 온도가 일정할 때, 기체의 압력 $x$와 부피 $y$의 곱은 항상 일정하다는 관계(보일의 법칙)가 성립한다. 기체의 압력 $x$와 부피 $y$ 사이의 관계를 좌표평면 위에 그래프로 나타낼 때, 이 그래프의 모양과 특징으로 옳은 것은? (단, $x > 0, y > 0$) [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "어느 닫힌 용기 안에서 온도가 일정할 때, 기체의 압력 $x$와 부피 $y$의 곱은 항상 일정하다는 관계(보일의 법칙)가 성립한다. 기체의 압력 $x$와 부피 $y$ 사이의 관계를 좌표평면 위에 그래프로 나타낼 때, 이 그래프의 모양과 특징으로 옳은 것은? (단, $x > 0, y > 0$) [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "두 변수의 곱이 일정한 관계는 반비례 관계이다. $$\\begin{aligned} &\\text{압력 } x\\text{와 부피 } y\\text{의 곱이 일정하므로 } xy = k ; (k > 0) \\implies y = \\dfrac{k}{x} \\ &\\text{이는 반비례 관계이며, } x > 0, ; y > 0\\text{이므로 제1사분면에 나타난다.} \\ &y = \\dfrac{k}{x}\\text{에서 } k > 0\\text{이므로 제1사분면에서 } x\\text{의 값이 증가할 때 } y\\text{의 값은 감소하는 매끄러운 곡선이다.} \\end{aligned}$$ 따라서 옳은 설명은 ④이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"실생활 반비례 관계(보일의 법칙)의 함수 모델링 및 제1사분면 곡선 개형 판별 문항\"\n}\n\n{\n  \"sourceQid\": \"12\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-04\",\n  \"subUnitKey\": \"M1-04-GRAPH_RELATION\",\n  \"conceptClusterKey\": \"GRAPH_RELATION\",\n  \"primaryMethod\": \"곱이 일정함을 통해 반비례 관계식을 세우고 제1사분면에서의 감소 곡선 형태를 도출한다.\",\n  \"decisiveStep\": \"xy=k(k>0)로부터 제1사분면에서 x 증가 시 y 감소 곡선 형태 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"좌표평면과 그래프\",\n    \"midUnit\": \"정비례와 반비례\",\n    \"l3\": \"반비례 관계의 그래프\",\n    \"l4\": \"실생활 반비례 상황의 그래프 해석\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONTEXT_GRAPH_INTERPRETATION\",\n    \"templateKey\": \"TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_RECIPROCAL_GRAPH\",\n    \"why\": \"물리적 맥락에서 반비례 관계를 식별하고 해당 그래프의 기하학적 거동을 선택하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"NONE\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"반비례 관계의 정의와 그래프의 볼록 곡선 거동을 연결하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"반비례\",\n      \"곱\",\n      \"사분면\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"판정\"\n    ],\n    \"condition\": [\n      \"상수\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "어느 닫힌 용기 안에서 온도가 일정할 때, 기체의 압력 $x$와 부피 $y$의 곱은 항상 일정하다는 관계(보일의 법칙)가 성립한다. 기체의 압력 $x$와 부피 $y$ 사이의 관계를 좌표평면 위에 그래프로 나타낼 때, 이 그래프의 모양과 특징으로 옳은 것은? (단, $x > 0, y > 0$) [3점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정비례",
+            "src": "stem",
+            "quote": "다음 표에서 $y$가 $x$에 정비례할 때, 상수 $p, q, r$에 대하여 $p \\times q \\times r$의 값은? [4점]"
+          },
+          {
+            "term": "대입",
+            "src": "stem",
+            "quote": "다음 표에서 $y$가 $x$에 정비례할 때, 상수 $p, q, r$에 대하여 $p \\times q \\times r$의 값은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "다음 표에서 $y$가 $x$에 정비례할 때, 상수 $p, q, r$에 대하여 $p \\times q \\times r$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$y$가 $x$에 정비례하므로 $y = ax$ ($a \\ne 0$) 꼴의 관계식이 성립한다. $$\\begin{aligned} &x = -3\\text{일 때 } y = \\dfrac{1}{2}\\text{이므로 } \\dfrac{1}{2} = a \\times (-3) \\implies a = -\\dfrac{1}{6} \\ &\\text{따라서 정비례 관계식은 } y = -\\dfrac{1}{6}x\\text{이다.} \\ &x = p\\text{일 때 } y = 1\\text{이므로 } 1 = -\\dfrac{1}{6}p \\implies p = -6 \\ &x = 2\\text{일 때 } y = q\\text{이므로 } q = -\\dfrac{1}{6} \\times 2 = -\\dfrac{1}{3} \\ &x = r\\text{일 때 } y = -2\\text{이므로 } -2 = -\\dfrac{1}{6}r \\implies r = 12 \\ &p \\times q \\times r = (-6) \\times \\left(-\\dfrac{1}{3}\\right) \\times 12 = 2 \\times 12 = 24 \\end{aligned}$$ 따라서 $p \\times q \\times r = 24$이므로 정답은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정비례 표에서 비례상수를 결정하고 각 열의 미지수를 대입하여 곱을 구하는 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"13\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-04\",\n  \"subUnitKey\": \"M1-04-COORDINATE_PLANE\",\n  \"conceptClusterKey\": \"COORDINATE_PLANE\",\n  \"primaryMethod\": \"x=-3, y=1/2로부터 a=-1/6을 구하고 표의 각 값을 대입하여 p, q, r을 계산한다.\",\n  \"decisiveStep\": \"p=-6, q=-1/3, r=12를 구한 뒤 세 값의 곱 24 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"좌표평면과 그래프\",\n    \"midUnit\": \"정비례와 반비례\",\n    \"l3\": \"정비례 관계\",\n    \"l4\": \"정비례 표에서의 미지수 계산\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PROPORTION_PARAMETER_EVALUATION\",\n    \"templateKey\": \"TPL_M1_PROPORTION_PARAMETER_EVALUATION_TABLE_EVAL\",\n    \"why\": \"표로 주어진 정비례 대응에서 비례상수를 찾아 빈칸의 미지수들을 곱하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"정비례 관계식을 유도하고 각 열의 미지수를 차례로 구하여 곱하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"정비례\",\n      \"대입\"\n    ],\n    \"goal\": [\n      \"곱\"\n    ],\n    \"method\": [\n      \"방정식\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"상수\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "$y$가 $x$에 정비례하므로 $y = ax$ ($a \\ne 0$) 꼴의 관계식이 성립한다. $$\\begin{aligned} &x = -3\\text{일 때 } y = \\dfrac{1}{2}\\text{이므로 } \\dfrac{1}{2} = a \\times (-3) \\implies a = -\\dfrac{1}{6} \\ &\\text{따라서 정비례 관계식은 } y = -\\dfrac{1}{6}x\\text{이다.} \\ &x = p\\text{일 때 } y = 1\\text{이므로 } 1 = -\\dfrac{1}{6}p \\implies p = -6 \\ &x = 2\\text{일 때 } y = q\\text{이므로 } q = -\\dfrac{1}{6} \\times 2 = -\\dfrac{1}{3} \\ &x = r\\text{일 때 } y = -2\\text{이므로 } -2 = -\\dfrac{1}{6}r \\implies r = 12 \\ &p \\times q \\times r = (-6) \\times \\left(-\\dfrac{1}{3}\\right) \\times 12 = 2 \\times 12 = 24 \\end{aligned}$$ 따라서 $p \\times q \\times r = 24$이므로 정답은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정비례 표에서 비례상수를 결정하고 각 열의 미지수를 대입하여 곱을 구하는 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"13\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-04\",\n  \"subUnitKey\": \"M1-04-COORDINATE_PLANE\",\n  \"conceptClusterKey\": \"COORDINATE_PLANE\",\n  \"primaryMethod\": \"x=-3, y=1/2로부터 a=-1/6을 구하고 표의 각 값을 대입하여 p, q, r을 계산한다.\",\n  \"decisiveStep\": \"p=-6, q=-1/3, r=12를 구한 뒤 세 값의 곱 24 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"좌표평면과 그래프\",\n    \"midUnit\": \"정비례와 반비례\",\n    \"l3\": \"정비례 관계\",\n    \"l4\": \"정비례 표에서의 미지수 계산\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PROPORTION_PARAMETER_EVALUATION\",\n    \"templateKey\": \"TPL_M1_PROPORTION_PARAMETER_EVALUATION_TABLE_EVAL\",\n    \"why\": \"표로 주어진 정비례 대응에서 비례상수를 찾아 빈칸의 미지수들을 곱하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"정비례 관계식을 유도하고 각 열의 미지수를 차례로 구하여 곱하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"정비례\",\n      \"대입\"\n    ],\n    \"goal\": [\n      \"곱\"\n    ],\n    \"method\": [\n      \"방정식\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"상수\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "다음 표에서 $y$가 $x$에 정비례할 때, 상수 $p, q, r$에 대하여 $p \\times q \\times r$의 값은? [4점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "두 대각선 $AC$와 $BD$가 점 $O$에서 서로 수직으로 만나고 $\\overline{AO} = \\overline{OC}$, $\\overline{BO} = \\overline{OD}$인 평행사변형 $ABCD$에 대한 설명으로 옳지 않은 것은? [4점]"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "두 대각선 $AC$와 $BD$가 점 $O$에서 서로 수직으로 만나고 $\\overline{AO} = \\overline{OC}$, $\\overline{BO} = \\overline{OD}$인 평행사변형 $ABCD$에 대한 설명으로 옳지 않은 것은? [4점]"
+          },
+          {
+            "term": "수직이등분선",
+            "src": "stem",
+            "quote": "두 대각선 $AC$와 $BD$가 점 $O$에서 서로 수직으로 만나고 $\\overline{AO} = \\overline{OC}$, $\\overline{BO} = \\overline{OD}$인 평행사변형 $ABCD$에 대한 설명으로 옳지 않은 것은? [4점]"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "두 대각선 $AC$와 $BD$가 점 $O$에서 서로 수직으로 만나고 $\\overline{AO} = \\overline{OC}$, $\\overline{BO} = \\overline{OD}$인 평행사변형 $ABCD$에 대한 설명으로 옳지 않은 것은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "두 대각선 $AC$와 $BD$가 점 $O$에서 서로 수직으로 만나고 $\\overline{AO} = \\overline{OC}$, $\\overline{BO} = \\overline{OD}$인 평행사변형 $ABCD$에 대한 설명으로 옳지 않은 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "수직이등분선은 어떤 선분의 중점을 지나면서 그 선분에 수직인 직선이다. $$\\begin{aligned} &\\text{① } \\overline{AO} = \\overline{OC}\\text{이므로 점 } O\\text{는 선분 } AC\\text{의 중점이다. (참)} \\ &\\text{② 직선 } BD\\text{는 선분 } AC\\text{의 중점 } O\\text{를 지나고 } \\overline{AC} \\perp \\overline{BD}\\text{이므로 선분 } AC\\text{의 수직이등분선이다. (참)} \\ &\\text{③ } \\overline{AC} \\perp \\overline{BD}\\text{이므로 점 } C\\text{에서 직선 } BD\\text{에 내린 수선의 발은 점 } O\\text{이다. (참)} \\ &\\text{④ } \\overline{BD} \\perp \\overline{AC}\\text{이므로 점 } B\\text{에서 직선 } AC\\text{에 내린 수선의 길이는 선분 } BO\\text{의 길이와 같다. (참)} \\ &\\text{⑤ 직선 } BD\\text{는 선분 } AO\\text{의 한 끝점인 } O\\text{를 지날 뿐, 선분 } AO\\text{의 중점을 지나지 않으므로 수직이등분선이 아니다. (거짓)} \\end{aligned}$$ 따라서 옳지 않은 것은 ⑤이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"수직이등분선, 수선의 발, 점과 직선 사이의 거리의 정의 판별 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"14\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-06\",\n  \"subUnitKey\": \"M1-06-POLYGON_CIRCLE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"수직이등분선의 정의(선분의 중점을 지나고 수직)를 선분 AO와 대조하여 판정한다.\",\n  \"decisiveStep\": \"직선 BD가 선분 AO의 중점을 지나지 않음을 지적하여 선지 ⑤의 오류 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"기본도형\",\n    \"l3\": \"점, 선, 면\",\n    \"l4\": \"수직이등분선과 거리의 정의\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_QUADRILATERAL_PROPERTIES\",\n    \"templateKey\": \"TPL_QUADRILATERAL_PROPERTIES_DIAGONAL_ORTHOGONAL\",\n    \"why\": \"대각선이 직교하는 평행사변형 구조에서 기하학적 용어 정의의 정합성을 검증하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"수직이등분선과 점과 직선 사이의 거리 정의를 정확히 판별하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"선분\",\n      \"직선\",\n      \"수직이등분선\",\n      \"중점\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"판정\"\n    ],\n    \"condition\": [\n      \"수직\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수직",
+            "src": "stem",
+            "quote": "두 대각선 $AC$와 $BD$가 점 $O$에서 서로 수직으로 만나고 $\\overline{AO} = \\overline{OC}$, $\\overline{BO} = \\overline{OD}$인 평행사변형 $ABCD$에 대한 설명으로 옳지 않은 것은? [4점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $l$ 위에 서로 다른 네 점 $A, B, C, D$가 순서대로 놓여 있고, 직선 $l$ 위에 있지 않은 한 점 $P$가 있다. 이 다섯 개의 점 중 두 점을 이용하여 만들 수 있는 서로 다른 직선의 개수를 $a$, 반직선의 개수를 $b$, 선분의 개수를 $c$라 할 때, $a + b + c$의 값은? [4점]"
+          },
+          {
+            "term": "반직선",
+            "src": "stem",
+            "quote": "직선 $l$ 위에 서로 다른 네 점 $A, B, C, D$가 순서대로 놓여 있고, 직선 $l$ 위에 있지 않은 한 점 $P$가 있다. 이 다섯 개의 점 중 두 점을 이용하여 만들 수 있는 서로 다른 직선의 개수를 $a$, 반직선의 개수를 $b$, 선분의 개수를 $c$라 할 때, $a + b + c$의 값은? [4점]"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "직선 $l$ 위에 서로 다른 네 점 $A, B, C, D$가 순서대로 놓여 있고, 직선 $l$ 위에 있지 않은 한 점 $P$가 있다. 이 다섯 개의 점 중 두 점을 이용하여 만들 수 있는 서로 다른 직선의 개수를 $a$, 반직선의 개수를 $b$, 선분의 개수를 $c$라 할 때, $a + b + c$의 값은? [4점]"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "직선 $l$ 위에 서로 다른 네 점 $A, B, C, D$가 순서대로 놓여 있고, 직선 $l$ 위에 있지 않은 한 점 $P$가 있다. 이 다섯 개의 점 중 두 점을 이용하여 만들 수 있는 서로 다른 직선의 개수를 $a$, 반직선의 개수를 $b$, 선분의 개수를 $c$라 할 때, $a + b + c$의 값은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "직선 $l$ 위에 서로 다른 네 점 $A, B, C, D$가 순서대로 놓여 있고, 직선 $l$ 위에 있지 않은 한 점 $P$가 있다. 이 다섯 개의 점 중 두 점을 이용하여 만들 수 있는 서로 다른 직선의 개수를 $a$, 반직선의 개수를 $b$, 선분의 개수를 $c$라 할 때, $a + b + c$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "직선, 반직선, 선분의 정의에 따라 개수를 각각 구한다. $$\\begin{aligned} &1); \\text{직선의 개수 } a: \\ &\\text{네 점 } A, B, C, D\\text{는 한 직선 위에 있으므로 직선은 } l \\text{ 하나뿐이다. (}1\\text{개)} \\ &\\text{점 } P\\text{와 네 점 } A, B, C, D\\text{를 각각 잇는 직선은 } 4\\text{개이다.} \\ &\\implies a = 1 + 4 = 5 \\ &2); \\text{반직선의 개수 } b: \\ &\\text{직선 } l \\text{ 위에서 생기는 반직선은 오른쪽 방향 } \\overrightarrow{AB}, \\overrightarrow{BC}, \\overrightarrow{CD}\\text{의 } 3\\text{개와} \\ &\\text{왼쪽 방향 } \\overrightarrow{DC}, \\overrightarrow{CB}, \\overrightarrow{BA}\\text{의 } 3\\text{개로 총 } 6\\text{개이다.} \\ &\\text{점 } P\\text{가 관련된 반직선은 } P\\text{에서 출발하는 } 4\\text{개와 } P\\text{로 향하는 } 4\\text{개로 총 } 8\\text{개이다.} \\ &\\implies b = 6 + 8 = 14 \\ &3); \\text{선분의 개수 } c: \\ &5\\text{개의 점 중 서로 다른 두 점을 택하는 방법의 수와 같으므로 } \\ &\\implies c = \\dfrac{5 \\times 4}{2} = 10 \\ &a + b + c = 5 + 14 + 10 = 29 \\end{aligned}$$ 따라서 $a + b + c = 29$이므로 정답은 ②이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"한 직선 위의 네 점과 외부 한 점으로 구성되는 직선, 반직선, 선분의 개수 계수 문항\"\n}\n\n{\n  \"sourceQid\": \"15\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"직선(5개), 반직선(14개), 선분(10개)의 성질을 나누어 계산한 뒤 총합 29를 도출한다.\",\n  \"decisiveStep\": \"직선 l 위의 반직선이 6개이고 P 관련 반직선이 8개임을 구분하여 b=14 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"기본도형\",\n    \"l3\": \"점, 선, 면\",\n    \"l4\": \"직선, 반직선, 선분의 개수 세기\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT\",\n    \"templateKey\": \"TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_COLLINEAR_EXTERNAL\",\n    \"why\": \"공선점들과 외부점의 조합으로 형성되는 직선, 반직선, 선분의 개수를 각각 계수하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"반직선의 시작점과 방향 조건을 정확히 구별하여 빠짐없이 계수하는 3단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"직선\",\n      \"반직선\",\n      \"선분\",\n      \"개수\"\n    ],\n    \"goal\": [\n      \"합\"\n    ],\n    \"method\": [\n      \"판정\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"직선\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "직선, 반직선, 선분의 정의에 따라 개수를 각각 구한다. $$\\begin{aligned} &1); \\text{직선의 개수 } a: \\ &\\text{네 점 } A, B, C, D\\text{는 한 직선 위에 있으므로 직선은 } l \\text{ 하나뿐이다. (}1\\text{개)} \\ &\\text{점 } P\\text{와 네 점 } A, B, C, D\\text{를 각각 잇는 직선은 } 4\\text{개이다.} \\ &\\implies a = 1 + 4 = 5 \\ &2); \\text{반직선의 개수 } b: \\ &\\text{직선 } l \\text{ 위에서 생기는 반직선은 오른쪽 방향 } \\overrightarrow{AB}, \\overrightarrow{BC}, \\overrightarrow{CD}\\text{의 } 3\\text{개와} \\ &\\text{왼쪽 방향 } \\overrightarrow{DC}, \\overrightarrow{CB}, \\overrightarrow{BA}\\text{의 } 3\\text{개로 총 } 6\\text{개이다.} \\ &\\text{점 } P\\text{가 관련된 반직선은 } P\\text{에서 출발하는 } 4\\text{개와 } P\\text{로 향하는 } 4\\text{개로 총 } 8\\text{개이다.} \\ &\\implies b = 6 + 8 = 14 \\ &3); \\text{선분의 개수 } c: \\ &5\\text{개의 점 중 서로 다른 두 점을 택하는 방법의 수와 같으므로 } \\ &\\implies c = \\dfrac{5 \\times 4}{2} = 10 \\ &a + b + c = 5 + 14 + 10 = 29 \\end{aligned}$$ 따라서 $a + b + c = 29$이므로 정답은 ②이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"한 직선 위의 네 점과 외부 한 점으로 구성되는 직선, 반직선, 선분의 개수 계수 문항\"\n}\n\n{\n  \"sourceQid\": \"15\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"직선(5개), 반직선(14개), 선분(10개)의 성질을 나누어 계산한 뒤 총합 29를 도출한다.\",\n  \"decisiveStep\": \"직선 l 위의 반직선이 6개이고 P 관련 반직선이 8개임을 구분하여 b=14 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"기본도형\",\n    \"l3\": \"점, 선, 면\",\n    \"l4\": \"직선, 반직선, 선분의 개수 세기\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT\",\n    \"templateKey\": \"TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_COLLINEAR_EXTERNAL\",\n    \"why\": \"공선점들과 외부점의 조합으로 형성되는 직선, 반직선, 선분의 개수를 각각 계수하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"반직선의 시작점과 방향 조건을 정확히 구별하여 빠짐없이 계수하는 3단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"직선\",\n      \"반직선\",\n      \"선분\",\n      \"개수\"\n    ],\n    \"goal\": [\n      \"합\"\n    ],\n    \"method\": [\n      \"판정\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"직선\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $l$ 위에 서로 다른 네 점 $A, B, C, D$가 순서대로 놓여 있고, 직선 $l$ 위에 있지 않은 한 점 $P$가 있다. 이 다섯 개의 점 중 두 점을 이용하여 만들 수 있는 서로 다른 직선의 개수를 $a$, 반직선의 개수를 $b$, 선분의 개수를 $c$라 할 때, $a + b + c$의 값은? [4점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "교선",
+            "src": "stem",
+            "quote": "직육면체 $ABCD-EFGH$에서 면 $ABCD$와 면 $ABFE$의 교선과 한 점에서 만나는 모서리는? [3점]"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "직육면체 $ABCD-EFGH$에서 면 $ABCD$와 면 $ABFE$의 교선과 한 점에서 만나는 모서리는? [3점]"
+          },
+          {
+            "term": "입체도형",
+            "src": "stem",
+            "quote": "직육면체 $ABCD-EFGH$에서 면 $ABCD$와 면 $ABFE$의 교선과 한 점에서 만나는 모서리는? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "직육면체 $ABCD-EFGH$에서 면 $ABCD$와 면 $ABFE$의 교선과 한 점에서 만나는 모서리는? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "두 면의 교선은 두 면이 공유하는 모서리이다. $$\\begin{aligned} &\\text{면 } ABCD\\text{와 면 } ABFE\\text{가 공유하는 모서리는 } \\overline{AB}\\text{이므로 두 면의 교선은 모서리 } AB\\text{이다.} \\ &\\text{모서리 } AB\\text{와 한 점에서 만나는 모서리는} \\ &\\text{점 } A\\text{를 지나는 모서리 } AD, ; AE\\text{와 점 } B\\text{를 지나는 모서리 } BC, ; BF\\text{의 } 4\\text{개이다.} \\ &\\text{보기 중 이에 해당하는 모서리는 모서리 } AE\\text{이다.} \\ &\\text{모서리 } CD\\text{는 } AB\\text{와 평행하고, 모서리 } CG, DH, GH\\text{는 } AB\\text{와 만나지 않는다.} \\end{aligned}$$ 따라서 정답은 ④이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"다면체에서 두 면의 교선(모서리)을 식별하고 그 교선과 만나는 모서리를 판정하는 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"16\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"두 면의 공통 모서리 AB를 교선으로 찾고 점 A에서 만나는 모서리 AE를 식별한다.\",\n  \"decisiveStep\": \"교선 AB의 양 끝점 A, B에 접속된 모서리 중 선지에 존재하는 모서리 AE 선택\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"공간에서의 위치 관계\",\n    \"l4\": \"다면체에서의 교선과 모서리의 만남\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS\",\n    \"templateKey\": \"TPL_M1_POLYHEDRON_EDGE_FACE_INTERSECTING_EDGES\",\n    \"why\": \"입체도형에서 두 면의 교선을 구하고 해당 모서리와 만나는 모서리를 선별하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"NONE\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"직육면체 모서리의 교선 식별과 꼭짓점 공유 모서리를 가려내는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"교선\",\n      \"선분\",\n      \"입체도형\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"판정\"\n    ],\n    \"condition\": [\n      \"직선\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직육면체 $ABCD-EFGH$에서 면 $ABCD$와 면 $ABFE$의 교선과 한 점에서 만나는 모서리는? [3점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "직선 위의 네 점 $A, B, C$에 대하여 점 $M$은 선분 $AC$의 중점이고, 점 $M'$은 선분 $AB$의 중점이다. 점들이 $A, M', M, B, C$의 순서로 놓여 있고 $\\overline{M'M} : \\overline{MB} = 4 : 3$, $\\overline{M'M} = 12,\\mathrm{cm}$일 때, 선분 $BC$의 길이는? [5점]"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "직선 위의 네 점 $A, B, C$에 대하여 점 $M$은 선분 $AC$의 중점이고, 점 $M'$은 선분 $AB$의 중점이다. 점들이 $A, M', M, B, C$의 순서로 놓여 있고 $\\overline{M'M} : \\overline{MB} = 4 : 3$, $\\overline{M'M} = 12,\\mathrm{cm}$일 때, 선분 $BC$의 길이는? [5점]"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "직선 위의 네 점 $A, B, C$에 대하여 점 $M$은 선분 $AC$의 중점이고, 점 $M'$은 선분 $AB$의 중점이다. 점들이 $A, M', M, B, C$의 순서로 놓여 있고 $\\overline{M'M} : \\overline{MB} = 4 : 3$, $\\overline{M'M} = 12,\\mathrm{cm}$일 때, 선분 $BC$의 길이는? [5점]"
+          },
+          {
+            "term": "비례식",
+            "src": "stem",
+            "quote": "직선 위의 네 점 $A, B, C$에 대하여 점 $M$은 선분 $AC$의 중점이고, 점 $M'$은 선분 $AB$의 중점이다. 점들이 $A, M', M, B, C$의 순서로 놓여 있고 $\\overline{M'M} : \\overline{MB} = 4 : 3$, $\\overline{M'M} = 12,\\mathrm{cm}$일 때, 선분 $BC$의 길이는? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "직선 위의 네 점 $A, B, C$에 대하여 점 $M$은 선분 $AC$의 중점이고, 점 $M'$은 선분 $AB$의 중점이다. 점들이 $A, M', M, B, C$의 순서로 놓여 있고 $\\overline{M'M} : \\overline{MB} = 4 : 3$, $\\overline{M'M} = 12,\\mathrm{cm}$일 때, 선분 $BC$의 길이는? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "비례배분",
+            "src": "solution",
+            "quote": "선분의 중점 성질과 주어진 길이의 비를 이용하여 각 선분의 길이를 단계별로 구한다. $$\\begin{aligned} &\\overline{M'M} = 12,\\mathrm{cm}\\text{이고 } \\overline{M'M} : \\overline{MB} = 4 : 3\\text{이므로} \\ &\\overline{MB} = 12 \\times \\dfrac{3}{4} = 9,\\mathrm{cm} \\ &\\overline{M'B} = \\overline{M'M} + \\overline{MB} = 12 + 9 = 21,\\mathrm{cm} \\ &\\text{점 } M'\\text{은 선분 } AB\\text{의 중점이므로 } \\overline{AM'} = \\overline{M'B} = 21,\\mathrm{cm} \\ &\\overline{AB} = \\overline{AM'} + \\overline{M'B} = 21 + 21 = 42,\\mathrm{cm} \\ &\\text{점 } M\\text{은 선분 } AC\\text{의 중점이고, } \\overline{AM} = \\overline{AM'} + \\overline{M'M} = 21 + 12 = 33,\\mathrm{cm}\\text{이므로} \\ &\\overline{AC} = 2 \\times \\overline{AM} = 2 \\times 33 = 66,\\mathrm{cm} \\ &\\overline{BC} = \\overline{AC} - \\overline{AB} = 66 - 42 = 24,\\mathrm{cm} \\end{aligned}$$ 따라서 선분 $BC$의 길이는 $24,\\mathrm{cm}$이므로 정답은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"선분의 내분 비율과 복수 중점 성질을 연립하여 부분 선분의 길이를 구하는 심화 문항\"\n}\n\n{\n  \"sourceQid\": \"17\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"M'M과 MB의 비로 M'B=21을 얻어 AB=42, AM=33, AC=66을 유도하여 BC=24를 산출한다.\",\n  \"decisiveStep\": \"AM=33으로부터 AC=66을 유도하고 AB=42를 차감하여 BC=24cm 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"기본도형\",\n    \"l3\": \"점, 선, 면\",\n    \"l4\": \"선분의 중점과 길이의 계산\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_SEGMENT_LENGTH_RELATIONS\",\n    \"templateKey\": \"TPL_M1_SEGMENT_LENGTH_RELATIONS_NESTED_MIDPOINTS\",\n    \"why\": \"선분 위의 중점들이 중첩된 구조에서 비례 배분을 통해 최종 선분 길이를 계산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"중점의 2배 관계와 선분의 덧셈 및 비례식을 체계적으로 연립하는 3단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"선분\",\n      \"중점\",\n      \"길이\",\n      \"비례식\"\n    ],\n    \"goal\": [\n      \"길이\"\n    ],\n    \"method\": [\n      \"비례배분\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"중점\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "선분의 중점 성질과 주어진 길이의 비를 이용하여 각 선분의 길이를 단계별로 구한다. $$\\begin{aligned} &\\overline{M'M} = 12,\\mathrm{cm}\\text{이고 } \\overline{M'M} : \\overline{MB} = 4 : 3\\text{이므로} \\ &\\overline{MB} = 12 \\times \\dfrac{3}{4} = 9,\\mathrm{cm} \\ &\\overline{M'B} = \\overline{M'M} + \\overline{MB} = 12 + 9 = 21,\\mathrm{cm} \\ &\\text{점 } M'\\text{은 선분 } AB\\text{의 중점이므로 } \\overline{AM'} = \\overline{M'B} = 21,\\mathrm{cm} \\ &\\overline{AB} = \\overline{AM'} + \\overline{M'B} = 21 + 21 = 42,\\mathrm{cm} \\ &\\text{점 } M\\text{은 선분 } AC\\text{의 중점이고, } \\overline{AM} = \\overline{AM'} + \\overline{M'M} = 21 + 12 = 33,\\mathrm{cm}\\text{이므로} \\ &\\overline{AC} = 2 \\times \\overline{AM} = 2 \\times 33 = 66,\\mathrm{cm} \\ &\\overline{BC} = \\overline{AC} - \\overline{AB} = 66 - 42 = 24,\\mathrm{cm} \\end{aligned}$$ 따라서 선분 $BC$의 길이는 $24,\\mathrm{cm}$이므로 정답은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"선분의 내분 비율과 복수 중점 성질을 연립하여 부분 선분의 길이를 구하는 심화 문항\"\n}\n\n{\n  \"sourceQid\": \"17\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"M'M과 MB의 비로 M'B=21을 얻어 AB=42, AM=33, AC=66을 유도하여 BC=24를 산출한다.\",\n  \"decisiveStep\": \"AM=33으로부터 AC=66을 유도하고 AB=42를 차감하여 BC=24cm 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"기본도형\",\n    \"l3\": \"점, 선, 면\",\n    \"l4\": \"선분의 중점과 길이의 계산\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_SEGMENT_LENGTH_RELATIONS\",\n    \"templateKey\": \"TPL_M1_SEGMENT_LENGTH_RELATIONS_NESTED_MIDPOINTS\",\n    \"why\": \"선분 위의 중점들이 중첩된 구조에서 비례 배분을 통해 최종 선분 길이를 계산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"중점의 2배 관계와 선분의 덧셈 및 비례식을 체계적으로 연립하는 3단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"선분\",\n      \"중점\",\n      \"길이\",\n      \"비례식\"\n    ],\n    \"goal\": [\n      \"길이\"\n    ],\n    \"method\": [\n      \"비례배분\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"중점\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "직선 위의 네 점 $A, B, C$에 대하여 점 $M$은 선분 $AC$의 중점이고, 점 $M'$은 선분 $AB$의 중점이다. 점들이 $A, M', M, B, C$의 순서로 놓여 있고 $\\overline{M'M} : \\overline{MB} = 4 : 3$, $\\overline{M'M} = 12,\\mathrm{cm}$일 때, 선분 $BC$의 길이는? [5점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "공간에서 서로 다른 두 직선 $l, m$과 서로 다른 두 평면 $\\mathrm{P}, \\mathrm{Q}$에 대하여, '㉠이면 항상 $l \\perp \\mathrm{P}$이다.'가 참이 되도록 하는 조건 ㉠으로 올바른 것은? [5점]"
+          },
+          {
+            "term": "평면",
+            "src": "stem",
+            "quote": "공간에서 서로 다른 두 직선 $l, m$과 서로 다른 두 평면 $\\mathrm{P}, \\mathrm{Q}$에 대하여, '㉠이면 항상 $l \\perp \\mathrm{P}$이다.'가 참이 되도록 하는 조건 ㉠으로 올바른 것은? [5점]"
+          },
+          {
+            "term": "수직",
+            "src": "stem",
+            "quote": "공간에서 서로 다른 두 직선 $l, m$과 서로 다른 두 평면 $\\mathrm{P}, \\mathrm{Q}$에 대하여, '㉠이면 항상 $l \\perp \\mathrm{P}$이다.'가 참이 되도록 하는 조건 ㉠으로 올바른 것은? [5점]"
+          },
+          {
+            "term": "평행선",
+            "src": "stem",
+            "quote": "공간에서 서로 다른 두 직선 $l, m$과 서로 다른 두 평면 $\\mathrm{P}, \\mathrm{Q}$에 대하여, '㉠이면 항상 $l \\perp \\mathrm{P}$이다.'가 참이 되도록 하는 조건 ㉠으로 올바른 것은? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "공간에서 서로 다른 두 직선 $l, m$과 서로 다른 두 평면 $\\mathrm{P}, \\mathrm{Q}$에 대하여, '㉠이면 항상 $l \\perp \\mathrm{P}$이다.'가 참이 되도록 하는 조건 ㉠으로 올바른 것은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "공간에서 직선과 평면의 위치 관계의 참·거짓은 직육면체를 모델로 하여 반례를 찾아 검증한다. $$\\begin{aligned} &\\text{① } m \\perp \\mathrm{P}\\text{이고 } l \\perp m\\text{이면 직선 } l\\text{은 평면 } \\mathrm{P}\\text{에 평행하거나 포함될 수 있으므로 } l \\perp \\mathrm{P}\\text{가 아니다.} \\ &\\text{② } m \\parallel \\mathrm{P}\\text{이고 } l \\perp m\\text{이면 직선 } l\\text{은 평면 } \\mathrm{P}\\text{와 수직일 수도 있지만 평행할 수도 있다.} \\ &\\text{③ } m \\parallel \\mathrm{P}\\text{이고 } l \\parallel m\\text{이면 직선 } l\\text{은 평면 } \\mathrm{P}\\text{에 평행하거나 포함된다.} \\ &\\text{④ } \\mathrm{P} \\perp \\mathrm{Q}\\text{이고 } l \\parallel \\mathrm{Q}\\text{이면 } l\\text{은 } \\mathrm{P}\\text{와 평행하거나 비스듬히 만날 수 있다.} \\ &\\text{⑤ 서로 평행한 두 평면 } \\mathrm{P}, \\mathrm{Q}\\text{ 중 한 평면 } \\mathrm{Q}\\text{에 수직인 직선 } l\\text{은 다른 평면 } \\mathrm{P}\\text{와도 항상 수직이다. (참)} \\end{aligned}$$ 따라서 항상 참인 것은 ⑤이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"공간에서 직선과 평면의 수직 및 평행 위치 관계 논리 판별 문항\"\n}\n\n{\n  \"sourceQid\": \"18\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"평행한 두 평면에 대하여 한 평면에 수직인 직선은 다른 평면과도 수직임을 판정한다.\",\n  \"decisiveStep\": \"P || Q 조건에서 l ⊥ Q이면 l ⊥ P가 필연적으로 성립함을 확인\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"공간에서의 위치 관계\",\n    \"l4\": \"공간에서 직선과 평면의 위치 관계의 참·거짓\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_SPATIAL_LINE_PLANE_RELATIONS\",\n    \"templateKey\": \"TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LOGICAL_DEDUCTION\",\n    \"why\": \"공간에서 두 직선과 두 평면 사이의 수직/평행 조건의 참·거짓을 판별하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"공간도형의 기본 공리와 직육면체 모델을 활용하여 반례를 가려내는 3단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"직선\",\n      \"평면\",\n      \"수직\",\n      \"평행선\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"판정\"\n    ],\n    \"condition\": [\n      \"평면\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평면",
+            "src": "stem",
+            "quote": "공간에서 서로 다른 두 직선 $l, m$과 서로 다른 두 평면 $\\mathrm{P}, \\mathrm{Q}$에 대하여, '㉠이면 항상 $l \\perp \\mathrm{P}$이다.'가 참이 되도록 하는 조건 ㉠으로 올바른 것은? [5점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "꼬인위치",
+            "src": "stem",
+            "quote": "직육면체 $ABCD-EFGH$에서 모서리 $AB$와 꼬인 위치에 있는 모서리의 개수를 $x$, 삼각기둥 $ABC-DEF$에서 밑면 $DEF$와 평행한 모서리의 개수를 $y$라 할 때, $x, y$의 값을 순서대로 올바르게 나타낸 것은? [4점]"
+          },
+          {
+            "term": "평행선",
+            "src": "stem",
+            "quote": "직육면체 $ABCD-EFGH$에서 모서리 $AB$와 꼬인 위치에 있는 모서리의 개수를 $x$, 삼각기둥 $ABC-DEF$에서 밑면 $DEF$와 평행한 모서리의 개수를 $y$라 할 때, $x, y$의 값을 순서대로 올바르게 나타낸 것은? [4점]"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "직육면체 $ABCD-EFGH$에서 모서리 $AB$와 꼬인 위치에 있는 모서리의 개수를 $x$, 삼각기둥 $ABC-DEF$에서 밑면 $DEF$와 평행한 모서리의 개수를 $y$라 할 때, $x, y$의 값을 순서대로 올바르게 나타낸 것은? [4점]"
+          },
+          {
+            "term": "입체도형",
+            "src": "stem",
+            "quote": "직육면체 $ABCD-EFGH$에서 모서리 $AB$와 꼬인 위치에 있는 모서리의 개수를 $x$, 삼각기둥 $ABC-DEF$에서 밑면 $DEF$와 평행한 모서리의 개수를 $y$라 할 때, $x, y$의 값을 순서대로 올바르게 나타낸 것은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "직육면체 $ABCD-EFGH$에서 모서리 $AB$와 꼬인 위치에 있는 모서리의 개수를 $x$, 삼각기둥 $ABC-DEF$에서 밑면 $DEF$와 평행한 모서리의 개수를 $y$라 할 때, $x, y$의 값을 순서대로 올바르게 나타낸 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "꼬인 위치는 공간에서 만나지도 않고 평행하지도 않은 두 직선의 위치 관계이다. $$\\begin{aligned} &1); \\text{직육면체 } ABCD-EFGH\\text{에서 모서리 } AB\\text{와} \\ &\\text{한 점에서 만나는 모서리: } AD, ; AE, ; BC, ; BF ; (4\\text{개}) \\ &\\text{평행한 모서리: } CD, ; EF, ; GH ; (3\\text{개}) \\ &\\text{따라서 모서리 } AB\\text{와 꼬인 위치에 있는 모서리는 } CG, ; DH, ; EH, ; FG\\text{의 } 4\\text{개이다.} \\implies x = 4 \\ &2); \\text{삼각기둥 } ABC-DEF\\text{에서 밑면 } DEF\\text{와} \\ &\\text{평행한 모서리는 마주 보는 밑면 } ABC\\text{의 세 변인 } AB, ; BC, ; CA\\text{뿐이다.} \\ &\\text{옆모서리 } AD, ; BE, ; CF\\text{는 면 } DEF\\text{와 한 점에서 만나고, 밑면의 세 모서리는 면에 포함된다.} \\ &\\implies y = 3 \\end{aligned}$$ 따라서 순서대로 $4$개, $3$개이므로 정답은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"다면체에서 모서리와의 꼬인 위치 및 면과 평행한 모서리의 개수 계수 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"19\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"직육면체에서 만나는/평행한 모서리를 제외하여 꼬인 위치 4개를 구하고, 삼각기둥에서 평행한 모서리 3개를 센다.\",\n  \"decisiveStep\": \"직육면체 모서리 AB의 꼬인 위치 4개와 삼각기둥 밑면 평행 모서리 3개를 정확히 계수\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"공간에서의 위치 관계\",\n    \"l4\": \"꼬인 위치와 직선과 평면의 평행\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS\",\n    \"templateKey\": \"TPL_M1_POLYHEDRON_EDGE_FACE_SKEW_PARALLEL_COUNT\",\n    \"why\": \"기둥 입체도형에서 꼬인 위치 모서리 수와 면-모서리 평행 관계를 복합 계수하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"입체도형에서 꼬인 위치 정의와 면과의 평행 조건을 각각 분류하여 세는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"꼬인위치\",\n      \"평행선\",\n      \"개수\",\n      \"입체도형\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"판정\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"평면\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "꼬인 위치는 공간에서 만나지도 않고 평행하지도 않은 두 직선의 위치 관계이다. $$\\begin{aligned} &1); \\text{직육면체 } ABCD-EFGH\\text{에서 모서리 } AB\\text{와} \\ &\\text{한 점에서 만나는 모서리: } AD, ; AE, ; BC, ; BF ; (4\\text{개}) \\ &\\text{평행한 모서리: } CD, ; EF, ; GH ; (3\\text{개}) \\ &\\text{따라서 모서리 } AB\\text{와 꼬인 위치에 있는 모서리는 } CG, ; DH, ; EH, ; FG\\text{의 } 4\\text{개이다.} \\implies x = 4 \\ &2); \\text{삼각기둥 } ABC-DEF\\text{에서 밑면 } DEF\\text{와} \\ &\\text{평행한 모서리는 마주 보는 밑면 } ABC\\text{의 세 변인 } AB, ; BC, ; CA\\text{뿐이다.} \\ &\\text{옆모서리 } AD, ; BE, ; CF\\text{는 면 } DEF\\text{와 한 점에서 만나고, 밑면의 세 모서리는 면에 포함된다.} \\ &\\implies y = 3 \\end{aligned}$$ 따라서 순서대로 $4$개, $3$개이므로 정답은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"다면체에서 모서리와의 꼬인 위치 및 면과 평행한 모서리의 개수 계수 기본 문항\"\n}\n\n{\n  \"sourceQid\": \"19\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"직육면체에서 만나는/평행한 모서리를 제외하여 꼬인 위치 4개를 구하고, 삼각기둥에서 평행한 모서리 3개를 센다.\",\n  \"decisiveStep\": \"직육면체 모서리 AB의 꼬인 위치 4개와 삼각기둥 밑면 평행 모서리 3개를 정확히 계수\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"공간에서의 위치 관계\",\n    \"l4\": \"꼬인 위치와 직선과 평면의 평행\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS\",\n    \"templateKey\": \"TPL_M1_POLYHEDRON_EDGE_FACE_SKEW_PARALLEL_COUNT\",\n    \"why\": \"기둥 입체도형에서 꼬인 위치 모서리 수와 면-모서리 평행 관계를 복합 계수하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"입체도형에서 꼬인 위치 정의와 면과의 평행 조건을 각각 분류하여 세는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"꼬인위치\",\n      \"평행선\",\n      \"개수\",\n      \"입체도형\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"판정\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"평면\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평면",
+            "src": "stem",
+            "quote": "직육면체 $ABCD-EFGH$에서 모서리 $AB$와 꼬인 위치에 있는 모서리의 개수를 $x$, 삼각기둥 $ABC-DEF$에서 밑면 $DEF$와 평행한 모서리의 개수를 $y$라 할 때, $x, y$의 값을 순서대로 올바르게 나타낸 것은? [4점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정비례",
+            "src": "stem",
+            "quote": "반비례 관계 $y=\\dfrac{18}{x}$의 그래프와 정비례 관계 $y=ax$의 그래프가 만나는 교점의 좌표는 $A(3, k)$이다. 점 $B, C$는 각각 정비례 관계 $y=-x$, $y=cx$의 그래프 위의 점이면서 세 점 $A, B, C$의 $x$좌표가 모두 $3$으로 한 직선 위에 놓여 있다. $\\triangle AOB$의 넓이가 $\\triangle AOC$의 넓이의 $\\dfrac{1}{2}$배이고 점 $C$가 점 $B$보다 아래쪽에 위치할 때, 상수 $c$의 값은? (단, 점 $O$는 원점이다.) [5점]"
+          },
+          {
+            "term": "반비례",
+            "src": "stem",
+            "quote": "반비례 관계 $y=\\dfrac{18}{x}$의 그래프와 정비례 관계 $y=ax$의 그래프가 만나는 교점의 좌표는 $A(3, k)$이다. 점 $B, C$는 각각 정비례 관계 $y=-x$, $y=cx$의 그래프 위의 점이면서 세 점 $A, B, C$의 $x$좌표가 모두 $3$으로 한 직선 위에 놓여 있다. $\\triangle AOB$의 넓이가 $\\triangle AOC$의 넓이의 $\\dfrac{1}{2}$배이고 점 $C$가 점 $B$보다 아래쪽에 위치할 때, 상수 $c$의 값은? (단, 점 $O$는 원점이다.) [5점]"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "반비례 관계 $y=\\dfrac{18}{x}$의 그래프와 정비례 관계 $y=ax$의 그래프가 만나는 교점의 좌표는 $A(3, k)$이다. 점 $B, C$는 각각 정비례 관계 $y=-x$, $y=cx$의 그래프 위의 점이면서 세 점 $A, B, C$의 $x$좌표가 모두 $3$으로 한 직선 위에 놓여 있다. $\\triangle AOB$의 넓이가 $\\triangle AOC$의 넓이의 $\\dfrac{1}{2}$배이고 점 $C$가 점 $B$보다 아래쪽에 위치할 때, 상수 $c$의 값은? (단, 점 $O$는 원점이다.) [5점]"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "반비례 관계 $y=\\dfrac{18}{x}$의 그래프와 정비례 관계 $y=ax$의 그래프가 만나는 교점의 좌표는 $A(3, k)$이다. 점 $B, C$는 각각 정비례 관계 $y=-x$, $y=cx$의 그래프 위의 점이면서 세 점 $A, B, C$의 $x$좌표가 모두 $3$으로 한 직선 위에 놓여 있다. $\\triangle AOB$의 넓이가 $\\triangle AOC$의 넓이의 $\\dfrac{1}{2}$배이고 점 $C$가 점 $B$보다 아래쪽에 위치할 때, 상수 $c$의 값은? (단, 점 $O$는 원점이다.) [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "반비례 관계 $y=\\dfrac{18}{x}$의 그래프와 정비례 관계 $y=ax$의 그래프가 만나는 교점의 좌표는 $A(3, k)$이다. 점 $B, C$는 각각 정비례 관계 $y=-x$, $y=cx$의 그래프 위의 점이면서 세 점 $A, B, C$의 $x$좌표가 모두 $3$으로 한 직선 위에 놓여 있다. $\\triangle AOB$의 넓이가 $\\triangle AOC$의 넓이의 $\\dfrac{1}{2}$배이고 점 $C$가 점 $B$보다 아래쪽에 위치할 때, 상수 $c$의 값은? (단, 점 $O$는 원점이다.) [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "좌표평면 위의 점의 좌표를 구하고, 공통 높이를 갖는 두 삼각형의 넓이 비를 이용한다. $$\\begin{aligned} &\\text{점 } A(3, k)\\text{가 } y=\\dfrac{18}{x}\\text{ 위의 점이므로 } k = \\dfrac{18}{3} = 6 \\implies A(3, 6) \\ &\\text{세 점 } A, B, C\\text{의 } x\\text{좌표가 모두 } 3\\text{이므로} \\ &\\text{점 } B\\text{는 } y=-x\\text{ 위의 점이므로 } B(3, -3) \\ &\\text{점 } C\\text{는 } y=cx\\text{ 위의 점이므로 } C(3, 3c) \\ &\\triangle AOB\\text{와 } \\triangle AOC\\text{는 직선 } x=3\\text{ 위의 선분을 밑변으로 볼 때 높이가 모두 원점에서 직선까지의 거리인 } 3\\text{이다.} \\ &\\overline{AB} = 6 - (-3) = 9 \\implies \\triangle AOB = \\dfrac{1}{2} \\times 9 \\times 3 = \\dfrac{27}{2} \\ &\\triangle AOB = \\dfrac{1}{2}\\triangle AOC \\implies \\triangle AOC = 2 \\times \\dfrac{27}{2} = 27 \\ &\\dfrac{1}{2} \\times \\overline{AC} \\times 3 = 27 \\implies \\overline{AC} = 18 \\ &\\text{점 } C\\text{가 점 } B\\text{보다 아래쪽에 있으므로 } C\\text{의 } y\\text{좌표는 } 6 - 18 = -12 \\ &3c = -12 \\implies c = -4 \\end{aligned}$$ 따라서 상수 $c$의 값은 $-4$이므로 정답은 ②이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정비례 및 반비례 그래프 위의 점의 좌표 결정과 삼각형의 넓이 비를 연계한 심화 문항\"\n}\n\n{\n  \"sourceQid\": \"20\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-04\",\n  \"subUnitKey\": \"M1-04-COORDINATE_PLANE\",\n  \"conceptClusterKey\": \"COORDINATE_PLANE\",\n  \"primaryMethod\": \"점 A(3,6), B(3,-3)을 구하고 삼각형 넓이 관계로부터 AC=18을 유도하여 3c=-12를 푼다.\",\n  \"decisiveStep\": \"밑변 AC의 길이가 18임을 구하고 점 C의 y좌표가 6-18=-12임을 찾아 c=-4 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"좌표평면과 그래프\",\n    \"midUnit\": \"정비례와 반비례\",\n    \"l3\": \"정비례와 반비례의 활용\",\n    \"l4\": \"그래프와 도형의 넓이\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_COORDINATE_COMPOSITE_AREA\",\n    \"templateKey\": \"TPL_M1_COORDINATE_COMPOSITE_AREA_VERTICAL_SEGMENT\",\n    \"why\": \"동일 수직선 상의 교점들로 이루어진 삼각형의 넓이 비로부터 비례상수를 역산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 4,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"반비례 함수값, 수직선 상의 거리, 삼각형 넓이 공식을 종합적으로 결합하는 4단계 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"정비례\",\n      \"반비례\",\n      \"넓이\",\n      \"삼각형\"\n    ],\n    \"goal\": [\n      \"상수\"\n    ],\n    \"method\": [\n      \"방정식\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"원점\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "좌표평면 위의 점의 좌표를 구하고, 공통 높이를 갖는 두 삼각형의 넓이 비를 이용한다. $$\\begin{aligned} &\\text{점 } A(3, k)\\text{가 } y=\\dfrac{18}{x}\\text{ 위의 점이므로 } k = \\dfrac{18}{3} = 6 \\implies A(3, 6) \\ &\\text{세 점 } A, B, C\\text{의 } x\\text{좌표가 모두 } 3\\text{이므로} \\ &\\text{점 } B\\text{는 } y=-x\\text{ 위의 점이므로 } B(3, -3) \\ &\\text{점 } C\\text{는 } y=cx\\text{ 위의 점이므로 } C(3, 3c) \\ &\\triangle AOB\\text{와 } \\triangle AOC\\text{는 직선 } x=3\\text{ 위의 선분을 밑변으로 볼 때 높이가 모두 원점에서 직선까지의 거리인 } 3\\text{이다.} \\ &\\overline{AB} = 6 - (-3) = 9 \\implies \\triangle AOB = \\dfrac{1}{2} \\times 9 \\times 3 = \\dfrac{27}{2} \\ &\\triangle AOB = \\dfrac{1}{2}\\triangle AOC \\implies \\triangle AOC = 2 \\times \\dfrac{27}{2} = 27 \\ &\\dfrac{1}{2} \\times \\overline{AC} \\times 3 = 27 \\implies \\overline{AC} = 18 \\ &\\text{점 } C\\text{가 점 } B\\text{보다 아래쪽에 있으므로 } C\\text{의 } y\\text{좌표는 } 6 - 18 = -12 \\ &3c = -12 \\implies c = -4 \\end{aligned}$$ 따라서 상수 $c$의 값은 $-4$이므로 정답은 ②이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정비례 및 반비례 그래프 위의 점의 좌표 결정과 삼각형의 넓이 비를 연계한 심화 문항\"\n}\n\n{\n  \"sourceQid\": \"20\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-04\",\n  \"subUnitKey\": \"M1-04-COORDINATE_PLANE\",\n  \"conceptClusterKey\": \"COORDINATE_PLANE\",\n  \"primaryMethod\": \"점 A(3,6), B(3,-3)을 구하고 삼각형 넓이 관계로부터 AC=18을 유도하여 3c=-12를 푼다.\",\n  \"decisiveStep\": \"밑변 AC의 길이가 18임을 구하고 점 C의 y좌표가 6-18=-12임을 찾아 c=-4 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"좌표평면과 그래프\",\n    \"midUnit\": \"정비례와 반비례\",\n    \"l3\": \"정비례와 반비례의 활용\",\n    \"l4\": \"그래프와 도형의 넓이\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_COORDINATE_COMPOSITE_AREA\",\n    \"templateKey\": \"TPL_M1_COORDINATE_COMPOSITE_AREA_VERTICAL_SEGMENT\",\n    \"why\": \"동일 수직선 상의 교점들로 이루어진 삼각형의 넓이 비로부터 비례상수를 역산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 4,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"반비례 함수값, 수직선 상의 거리, 삼각형 넓이 공식을 종합적으로 결합하는 4단계 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"정비례\",\n      \"반비례\",\n      \"넓이\",\n      \"삼각형\"\n    ],\n    \"goal\": [\n      \"상수\"\n    ],\n    \"method\": [\n      \"방정식\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"원점\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "원점",
+            "src": "stem",
+            "quote": "반비례 관계 $y=\\dfrac{18}{x}$의 그래프와 정비례 관계 $y=ax$의 그래프가 만나는 교점의 좌표는 $A(3, k)$이다. 점 $B, C$는 각각 정비례 관계 $y=-x$, $y=cx$의 그래프 위의 점이면서 세 점 $A, B, C$의 $x$좌표가 모두 $3$으로 한 직선 위에 놓여 있다. $\\triangle AOB$의 넓이가 $\\triangle AOC$의 넓이의 $\\dfrac{1}{2}$배이고 점 $C$가 점 $B$보다 아래쪽에 위치할 때, 상수 $c$의 값은? (단, 점 $O$는 원점이다.) [5점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "맞꼭지각",
+            "src": "stem",
+            "quote": "두 직선이 한 점에서 만날 때 생기는 맞꼭지각의 크기가 각각 $(2x + 15)^\\circ$, $(4x - 17)^\\circ$이고, 이 중 한 각과 한 직선 위에서 이웃한 각의 크기가 $(3y + 13)^\\circ$이다. 이때 $x$의 값과 $y$의 값을 각각 구하고, 그 과정을 서술하시오. [4점]"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "두 직선이 한 점에서 만날 때 생기는 맞꼭지각의 크기가 각각 $(2x + 15)^\\circ$, $(4x - 17)^\\circ$이고, 이 중 한 각과 한 직선 위에서 이웃한 각의 크기가 $(3y + 13)^\\circ$이다. 이때 $x$의 값과 $y$의 값을 각각 구하고, 그 과정을 서술하시오. [4점]"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "두 직선이 한 점에서 만날 때 생기는 맞꼭지각의 크기가 각각 $(2x + 15)^\\circ$, $(4x - 17)^\\circ$이고, 이 중 한 각과 한 직선 위에서 이웃한 각의 크기가 $(3y + 13)^\\circ$이다. 이때 $x$의 값과 $y$의 값을 각각 구하고, 그 과정을 서술하시오. [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "두 직선이 한 점에서 만날 때 생기는 맞꼭지각의 크기가 각각 $(2x + 15)^\\circ$, $(4x - 17)^\\circ$이고, 이 중 한 각과 한 직선 위에서 이웃한 각의 크기가 $(3y + 13)^\\circ$이다. 이때 $x$의 값과 $y$의 값을 각각 구하고, 그 과정을 서술하시오. [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "맞꼭지각의 크기는 서로 같고, 한 직선 위에서 이웃한 두 각의 크기의 합은 $180^\\circ$이다. $$\\begin{aligned} &\\text{[1단계: } x\\text{의 값 구하기]} \\ &\\text{맞꼭지각의 크기는 서로 같으므로} \\ &2x + 15 = 4x - 17 \\ &2x = 32 \\implies x = 16 \\ &\\text{이때 이 각의 크기는 } 2 \\times 16 + 15 = 47^\\circ\\text{이다.} \\ &\\text{[2단계: } y\\text{의 값 구하기]} \\ &\\text{한 직선 위에서 이웃한 두 각의 크기의 합은 } 180^\\circ\\text{이므로} \\ &(3y + 13) + 47 = 180 \\ &3y + 60 = 180 \\ &3y = 120 \\implies y = 40 \\end{aligned}$$ 따라서 $x = 16$, $y = 40$이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"맞꼭지각의 성질과 평각의 보각 관계를 이용한 일차방정식 풀이 서술형 문항\"\n}\n\n{\n  \"sourceQid\": \"21\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"맞꼭지각의 크기가 같다는 식으로 x=16을 구하고 평각의 합 180도로 y=40을 도출한다.\",\n  \"decisiveStep\": \"2x+15=4x-17에서 x=16(47도) 도출 후 3y+13+47=180에서 y=40 계산\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"기본도형\",\n    \"l3\": \"점, 선, 면\",\n    \"l4\": \"맞꼭지각과 평각을 이용한 각의 계산\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_INTERSECTING_ANGLE_RELATIONS\",\n    \"templateKey\": \"TPL_M1_INTERSECTING_ANGLE_RELATIONS_LINEAR_SYSTEM\",\n    \"why\": \"교차하는 두 직선에서 맞꼭지각과 평각의 관계를 연립방정식으로 풀어내는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"맞꼭지각과 평각의 기초 정의를 방정식으로 전환하여 단계별로 해결하는 2단계 서술형 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"맞꼭지각\",\n      \"직선\",\n      \"각\"\n    ],\n    \"goal\": [\n      \"방정식\"\n    ],\n    \"method\": [\n      \"연산\",\n      \"대입\"\n    ],\n    \"condition\": [\n      \"직선\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "맞꼭지각의 크기는 서로 같고, 한 직선 위에서 이웃한 두 각의 크기의 합은 $180^\\circ$이다. $$\\begin{aligned} &\\text{[1단계: } x\\text{의 값 구하기]} \\ &\\text{맞꼭지각의 크기는 서로 같으므로} \\ &2x + 15 = 4x - 17 \\ &2x = 32 \\implies x = 16 \\ &\\text{이때 이 각의 크기는 } 2 \\times 16 + 15 = 47^\\circ\\text{이다.} \\ &\\text{[2단계: } y\\text{의 값 구하기]} \\ &\\text{한 직선 위에서 이웃한 두 각의 크기의 합은 } 180^\\circ\\text{이므로} \\ &(3y + 13) + 47 = 180 \\ &3y + 60 = 180 \\ &3y = 120 \\implies y = 40 \\end{aligned}$$ 따라서 $x = 16$, $y = 40$이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"맞꼭지각의 성질과 평각의 보각 관계를 이용한 일차방정식 풀이 서술형 문항\"\n}\n\n{\n  \"sourceQid\": \"21\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-BASIC_FIGURE\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"맞꼭지각의 크기가 같다는 식으로 x=16을 구하고 평각의 합 180도로 y=40을 도출한다.\",\n  \"decisiveStep\": \"2x+15=4x-17에서 x=16(47도) 도출 후 3y+13+47=180에서 y=40 계산\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"기본도형\",\n    \"l3\": \"점, 선, 면\",\n    \"l4\": \"맞꼭지각과 평각을 이용한 각의 계산\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_INTERSECTING_ANGLE_RELATIONS\",\n    \"templateKey\": \"TPL_M1_INTERSECTING_ANGLE_RELATIONS_LINEAR_SYSTEM\",\n    \"why\": \"교차하는 두 직선에서 맞꼭지각과 평각의 관계를 연립방정식으로 풀어내는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"맞꼭지각과 평각의 기초 정의를 방정식으로 전환하여 단계별로 해결하는 2단계 서술형 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"맞꼭지각\",\n      \"직선\",\n      \"각\"\n    ],\n    \"goal\": [\n      \"방정식\"\n    ],\n    \"method\": [\n      \"연산\",\n      \"대입\"\n    ],\n    \"condition\": [\n      \"직선\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "두 직선이 한 점에서 만날 때 생기는 맞꼭지각의 크기가 각각 $(2x + 15)^\\circ$, $(4x - 17)^\\circ$이고, 이 중 한 각과 한 직선 위에서 이웃한 각의 크기가 $(3y + 13)^\\circ$이다. 이때 $x$의 값과 $y$의 값을 각각 구하고, 그 과정을 서술하시오. [4점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "넓이가 $25$인 정사각형 $ABCD$의 꼭짓점 $A$는 정비례 관계 $y=ax$의 그래프 위에 있고, 꼭짓점 $B$는 반비례 관계 $y=\\dfrac{b}{x}$의 그래프 위에 있다. 점 $D$의 좌표가 $(-1, -2)$이고 점 $A$와 점 $D$의 $y$좌표가 같으며 점 $A$가 점 $D$의 왼쪽에 있을 때, 상수 $a, b$에 대하여 $ab$의 값을 구하고 그 과정을 서술하시오. (단, 정사각형의 모든 변은 좌표축과 평행하다.) [5점]"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이가 $25$인 정사각형 $ABCD$의 꼭짓점 $A$는 정비례 관계 $y=ax$의 그래프 위에 있고, 꼭짓점 $B$는 반비례 관계 $y=\\dfrac{b}{x}$의 그래프 위에 있다. 점 $D$의 좌표가 $(-1, -2)$이고 점 $A$와 점 $D$의 $y$좌표가 같으며 점 $A$가 점 $D$의 왼쪽에 있을 때, 상수 $a, b$에 대하여 $ab$의 값을 구하고 그 과정을 서술하시오. (단, 정사각형의 모든 변은 좌표축과 평행하다.) [5점]"
+          },
+          {
+            "term": "정비례",
+            "src": "stem",
+            "quote": "넓이가 $25$인 정사각형 $ABCD$의 꼭짓점 $A$는 정비례 관계 $y=ax$의 그래프 위에 있고, 꼭짓점 $B$는 반비례 관계 $y=\\dfrac{b}{x}$의 그래프 위에 있다. 점 $D$의 좌표가 $(-1, -2)$이고 점 $A$와 점 $D$의 $y$좌표가 같으며 점 $A$가 점 $D$의 왼쪽에 있을 때, 상수 $a, b$에 대하여 $ab$의 값을 구하고 그 과정을 서술하시오. (단, 정사각형의 모든 변은 좌표축과 평행하다.) [5점]"
+          },
+          {
+            "term": "반비례",
+            "src": "stem",
+            "quote": "넓이가 $25$인 정사각형 $ABCD$의 꼭짓점 $A$는 정비례 관계 $y=ax$의 그래프 위에 있고, 꼭짓점 $B$는 반비례 관계 $y=\\dfrac{b}{x}$의 그래프 위에 있다. 점 $D$의 좌표가 $(-1, -2)$이고 점 $A$와 점 $D$의 $y$좌표가 같으며 점 $A$가 점 $D$의 왼쪽에 있을 때, 상수 $a, b$에 대하여 $ab$의 값을 구하고 그 과정을 서술하시오. (단, 정사각형의 모든 변은 좌표축과 평행하다.) [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "넓이가 $25$인 정사각형 $ABCD$의 꼭짓점 $A$는 정비례 관계 $y=ax$의 그래프 위에 있고, 꼭짓점 $B$는 반비례 관계 $y=\\dfrac{b}{x}$의 그래프 위에 있다. 점 $D$의 좌표가 $(-1, -2)$이고 점 $A$와 점 $D$의 $y$좌표가 같으며 점 $A$가 점 $D$의 왼쪽에 있을 때, 상수 $a, b$에 대하여 $ab$의 값을 구하고 그 과정을 서술하시오. (단, 정사각형의 모든 변은 좌표축과 평행하다.) [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "정사각형의 한 변의 길이를 구하여 꼭짓점의 좌표를 결정한 뒤 각 함수식에 대입한다. $$\\begin{aligned} &\\text{[1단계: 정사각형의 한 변의 길이와 점 } A, B\\text{의 좌표 구하기]} \\ &\\text{정사각형 } ABCD\\text{의 넓이가 } 25\\text{이므로 한 변의 길이는 } 5\\text{이다.} \\ &\\text{점 } A\\text{와 점 } D\\text{의 } y\\text{좌표가 같고 점 } A\\text{가 점 } D(-1, -2)\\text{의 왼쪽에 있으므로} \\ &A(-1 - 5, -2) \\implies A(-6, -2) \\ &\\text{점 } B\\text{는 점 } A\\text{에서 아래로 } 5\\text{만큼 떨어진 위치이므로} \\ &B(-6, -2 - 5) \\implies B(-6, -7) \\ &\\text{[2단계: 상수 } a, b\\text{의 값 구하기]} \\ &\\text{점 } A(-6, -2)\\text{가 } y=ax\\text{ 위의 점이므로} \\ &-2 = a \\times (-6) \\implies a = \\dfrac{1}{3} \\ &\\text{점 } B(-6, -7)\\text{가 } y=\\dfrac{b}{x}\\text{ 위의 점이므로} \\ &-7 = \\dfrac{b}{-6} \\implies b = 42 \\ &\\text{[3단계: } ab\\text{의 값 계산]} \\ &ab = \\dfrac{1}{3} \\times 42 = 14 \\end{aligned}$$ 따라서 $ab = 14$이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정사각형 넓이로부터 변의 길이와 꼭짓점 좌표를 설정하고 정비례/반비례 계수를 구하는 서술형 문항\"\n}\n\n{\n  \"sourceQid\": \"22\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-04\",\n  \"subUnitKey\": \"M1-04-COORDINATE_PLANE\",\n  \"conceptClusterKey\": \"COORDINATE_PLANE\",\n  \"primaryMethod\": \"정사각형 한 변 5를 이용해 A(-6,-2), B(-6,-7)을 구하고 a=1/3, b=42를 대입하여 ab=14를 도출한다.\",\n  \"decisiveStep\": \"점 A(-6,-2)와 점 B(-6,-7)의 좌표를 정확히 특정하여 a=1/3, b=42를 계산\",\n  \"rpm\": {\n    \"majorUnit\": \"좌표평면과 그래프\",\n    \"midUnit\": \"정비례와 반비례\",\n    \"l3\": \"정비례와 반비례의 활용\",\n    \"l4\": \"도형과 그래프 위의 점의 좌표\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS\",\n    \"templateKey\": \"TPL_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS_STANDARD\",\n    \"why\": \"정사각형의 기하학적 좌표 전개와 정비례·반비례 함수의 관계식을 결합하는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"정사각형의 넓이와 좌표 이동, 두 비례 함수의 식 대입을 체계적으로 서술하는 3단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"정사각형\",\n      \"넓이\",\n      \"정비례\",\n      \"반비례\"\n    ],\n    \"goal\": [\n      \"곱\"\n    ],\n    \"method\": [\n      \"대입\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"상수\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "정사각형의 한 변의 길이를 구하여 꼭짓점의 좌표를 결정한 뒤 각 함수식에 대입한다. $$\\begin{aligned} &\\text{[1단계: 정사각형의 한 변의 길이와 점 } A, B\\text{의 좌표 구하기]} \\ &\\text{정사각형 } ABCD\\text{의 넓이가 } 25\\text{이므로 한 변의 길이는 } 5\\text{이다.} \\ &\\text{점 } A\\text{와 점 } D\\text{의 } y\\text{좌표가 같고 점 } A\\text{가 점 } D(-1, -2)\\text{의 왼쪽에 있으므로} \\ &A(-1 - 5, -2) \\implies A(-6, -2) \\ &\\text{점 } B\\text{는 점 } A\\text{에서 아래로 } 5\\text{만큼 떨어진 위치이므로} \\ &B(-6, -2 - 5) \\implies B(-6, -7) \\ &\\text{[2단계: 상수 } a, b\\text{의 값 구하기]} \\ &\\text{점 } A(-6, -2)\\text{가 } y=ax\\text{ 위의 점이므로} \\ &-2 = a \\times (-6) \\implies a = \\dfrac{1}{3} \\ &\\text{점 } B(-6, -7)\\text{가 } y=\\dfrac{b}{x}\\text{ 위의 점이므로} \\ &-7 = \\dfrac{b}{-6} \\implies b = 42 \\ &\\text{[3단계: } ab\\text{의 값 계산]} \\ &ab = \\dfrac{1}{3} \\times 42 = 14 \\end{aligned}$$ 따라서 $ab = 14$이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정사각형 넓이로부터 변의 길이와 꼭짓점 좌표를 설정하고 정비례/반비례 계수를 구하는 서술형 문항\"\n}\n\n{\n  \"sourceQid\": \"22\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-04\",\n  \"subUnitKey\": \"M1-04-COORDINATE_PLANE\",\n  \"conceptClusterKey\": \"COORDINATE_PLANE\",\n  \"primaryMethod\": \"정사각형 한 변 5를 이용해 A(-6,-2), B(-6,-7)을 구하고 a=1/3, b=42를 대입하여 ab=14를 도출한다.\",\n  \"decisiveStep\": \"점 A(-6,-2)와 점 B(-6,-7)의 좌표를 정확히 특정하여 a=1/3, b=42를 계산\",\n  \"rpm\": {\n    \"majorUnit\": \"좌표평면과 그래프\",\n    \"midUnit\": \"정비례와 반비례\",\n    \"l3\": \"정비례와 반비례의 활용\",\n    \"l4\": \"도형과 그래프 위의 점의 좌표\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS\",\n    \"templateKey\": \"TPL_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS_STANDARD\",\n    \"why\": \"정사각형의 기하학적 좌표 전개와 정비례·반비례 함수의 관계식을 결합하는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"정사각형의 넓이와 좌표 이동, 두 비례 함수의 식 대입을 체계적으로 서술하는 3단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"정사각형\",\n      \"넓이\",\n      \"정비례\",\n      \"반비례\"\n    ],\n    \"goal\": [\n      \"곱\"\n    ],\n    \"method\": [\n      \"대입\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"상수\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "넓이가 $25$인 정사각형 $ABCD$의 꼭짓점 $A$는 정비례 관계 $y=ax$의 그래프 위에 있고, 꼭짓점 $B$는 반비례 관계 $y=\\dfrac{b}{x}$의 그래프 위에 있다. 점 $D$의 좌표가 $(-1, -2)$이고 점 $A$와 점 $D$의 $y$좌표가 같으며 점 $A$가 점 $D$의 왼쪽에 있을 때, 상수 $a, b$에 대하여 $ab$의 값을 구하고 그 과정을 서술하시오. (단, 정사각형의 모든 변은 좌표축과 평행하다.) [5점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "지점 $A$에서 강 건너에 있는 지점 $B$까지의 거리를 알아보기 위해 측량을 진행하였다. 선분 $AD$와 선분 $BC$의 교점을 $O$라 할 때, $\\overline{AO} = \\overline{DO}$, $\\overline{BO} = \\overline{CO}$가 되도록 평지 위에 두 지점 $C, D$를 정하였다. 지점 $C$와 지점 $D$ 사이의 거리를 측정한 값이 $15,\\mathrm{km}$일 때, 지점 $A$에서 지점 $B$까지의 거리를 구하고 이용된 삼각형의 합동 조건을 포함하여 서술하시오. [6점]"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "지점 $A$에서 강 건너에 있는 지점 $B$까지의 거리를 알아보기 위해 측량을 진행하였다. 선분 $AD$와 선분 $BC$의 교점을 $O$라 할 때, $\\overline{AO} = \\overline{DO}$, $\\overline{BO} = \\overline{CO}$가 되도록 평지 위에 두 지점 $C, D$를 정하였다. 지점 $C$와 지점 $D$ 사이의 거리를 측정한 값이 $15,\\mathrm{km}$일 때, 지점 $A$에서 지점 $B$까지의 거리를 구하고 이용된 삼각형의 합동 조건을 포함하여 서술하시오. [6점]"
+          },
+          {
+            "term": "대응변",
+            "src": "stem",
+            "quote": "지점 $A$에서 강 건너에 있는 지점 $B$까지의 거리를 알아보기 위해 측량을 진행하였다. 선분 $AD$와 선분 $BC$의 교점을 $O$라 할 때, $\\overline{AO} = \\overline{DO}$, $\\overline{BO} = \\overline{CO}$가 되도록 평지 위에 두 지점 $C, D$를 정하였다. 지점 $C$와 지점 $D$ 사이의 거리를 측정한 값이 $15,\\mathrm{km}$일 때, 지점 $A$에서 지점 $B$까지의 거리를 구하고 이용된 삼각형의 합동 조건을 포함하여 서술하시오. [6점]"
+          },
+          {
+            "term": "맞꼭지각",
+            "src": "stem",
+            "quote": "지점 $A$에서 강 건너에 있는 지점 $B$까지의 거리를 알아보기 위해 측량을 진행하였다. 선분 $AD$와 선분 $BC$의 교점을 $O$라 할 때, $\\overline{AO} = \\overline{DO}$, $\\overline{BO} = \\overline{CO}$가 되도록 평지 위에 두 지점 $C, D$를 정하였다. 지점 $C$와 지점 $D$ 사이의 거리를 측정한 값이 $15,\\mathrm{km}$일 때, 지점 $A$에서 지점 $B$까지의 거리를 구하고 이용된 삼각형의 합동 조건을 포함하여 서술하시오. [6점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "지점 $A$에서 강 건너에 있는 지점 $B$까지의 거리를 알아보기 위해 측량을 진행하였다. 선분 $AD$와 선분 $BC$의 교점을 $O$라 할 때, $\\overline{AO} = \\overline{DO}$, $\\overline{BO} = \\overline{CO}$가 되도록 평지 위에 두 지점 $C, D$를 정하였다. 지점 $C$와 지점 $D$ 사이의 거리를 측정한 값이 $15,\\mathrm{km}$일 때, 지점 $A$에서 지점 $B$까지의 거리를 구하고 이용된 삼각형의 합동 조건을 포함하여 서술하시오. [6점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "두 삼각형의 합동 조건을 밝혀 대응변의 길이가 같음을 보인다. $$\\begin{aligned} &\\text{[1단계: 삼각형의 합동 증명]} \\ &\\triangle OAB\\text{와 } \\triangle ODC\\text{에서} \\ &\\overline{AO} = \\overline{DO} ; (\\text{조건}) \\ &\\overline{BO} = \\overline{CO} ; (\\text{조건}) \\ &\\angle AOB = \\angle DOC ; (\\text{맞꼭지각}) \\ &\\text{따라서 두 쌍의 대응변의 길이가 각각 같고 그 끼인각의 크기가 같으므로} \\ &\\triangle OAB \\equiv \\triangle ODC ; (\\mathrm{SAS}\\text{ 합동}) \\ &\\text{[2단계: 거리 계산]} \\ &\\text{합동인 두 삼각형에서 대응변의 길이는 서로 같으므로} \\ &\\overline{AB} = \\overline{DC} = 15,\\mathrm{km} \\end{aligned}$$ 따라서 지점 $A$에서 지점 $B$까지의 거리는 $15,\\mathrm{km}$이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"맞꼭지각과 SAS 합동 조건을 활용하여 측정 불가 거리를 간접 측정하는 서술형 문항\"\n}\n\n{\n  \"sourceQid\": \"23\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"AO=DO, BO=CO 및 맞꼭지각을 근거로 SAS 합동을 명시하고 대응변 AB=15km를 제시한다.\",\n  \"decisiveStep\": \"각 AOB와 각 DOC가 맞꼭지각임을 서술하여 SAS 합동 조건을 완성\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"도형의 합동\",\n    \"l4\": \"삼각형의 합동의 실생활 활용\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_DATA_TRANSFER\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_DATA_TRANSFER_DISTANCE_MEASUREMENT\",\n    \"why\": \"맞꼭지각을 끼인각으로 하는 두 변의 등가성으로부터 SAS 합동을 보이고 거리를 구하는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"삼각형의 합동 조건 3요소를 빠짐없이 기재하고 대응변의 길이를 결론짓는 2단계 서술형 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"합동\",\n      \"삼각형\",\n      \"대응변\",\n      \"맞꼭지각\"\n    ],\n    \"goal\": [\n      \"거리\"\n    ],\n    \"method\": [\n      \"합동\",\n      \"판정\"\n    ],\n    \"condition\": [\n      \"합동\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "두 삼각형의 합동 조건을 밝혀 대응변의 길이가 같음을 보인다. $$\\begin{aligned} &\\text{[1단계: 삼각형의 합동 증명]} \\ &\\triangle OAB\\text{와 } \\triangle ODC\\text{에서} \\ &\\overline{AO} = \\overline{DO} ; (\\text{조건}) \\ &\\overline{BO} = \\overline{CO} ; (\\text{조건}) \\ &\\angle AOB = \\angle DOC ; (\\text{맞꼭지각}) \\ &\\text{따라서 두 쌍의 대응변의 길이가 각각 같고 그 끼인각의 크기가 같으므로} \\ &\\triangle OAB \\equiv \\triangle ODC ; (\\mathrm{SAS}\\text{ 합동}) \\ &\\text{[2단계: 거리 계산]} \\ &\\text{합동인 두 삼각형에서 대응변의 길이는 서로 같으므로} \\ &\\overline{AB} = \\overline{DC} = 15,\\mathrm{km} \\end{aligned}$$ 따라서 지점 $A$에서 지점 $B$까지의 거리는 $15,\\mathrm{km}$이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"맞꼭지각과 SAS 합동 조건을 활용하여 측정 불가 거리를 간접 측정하는 서술형 문항\"\n}\n\n{\n  \"sourceQid\": \"23\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"BASIC_FIGURE\",\n  \"primaryMethod\": \"AO=DO, BO=CO 및 맞꼭지각을 근거로 SAS 합동을 명시하고 대응변 AB=15km를 제시한다.\",\n  \"decisiveStep\": \"각 AOB와 각 DOC가 맞꼭지각임을 서술하여 SAS 합동 조건을 완성\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"작도와 합동\",\n    \"l3\": \"도형의 합동\",\n    \"l4\": \"삼각형의 합동의 실생활 활용\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_CONGRUENCE_DATA_TRANSFER\",\n    \"templateKey\": \"TPL_M1_CONGRUENCE_DATA_TRANSFER_DISTANCE_MEASUREMENT\",\n    \"why\": \"맞꼭지각을 끼인각으로 하는 두 변의 등가성으로부터 SAS 합동을 보이고 거리를 구하는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"삼각형의 합동 조건 3요소를 빠짐없이 기재하고 대응변의 길이를 결론짓는 2단계 서술형 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"합동\",\n      \"삼각형\",\n      \"대응변\",\n      \"맞꼭지각\"\n    ],\n    \"goal\": [\n      \"거리\"\n    ],\n    \"method\": [\n      \"합동\",\n      \"판정\"\n    ],\n    \"condition\": [\n      \"합동\"\n    ]\n  }\n}",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "지점 $A$에서 강 건너에 있는 지점 $B$까지의 거리를 알아보기 위해 측량을 진행하였다. 선분 $AD$와 선분 $BC$의 교점을 $O$라 할 때, $\\overline{AO} = \\overline{DO}$, $\\overline{BO} = \\overline{CO}$가 되도록 평지 위에 두 지점 $C, D$를 정하였다. 지점 $C$와 지점 $D$ 사이의 거리를 측정한 값이 $15,\\mathrm{km}$일 때, 지점 $A$에서 지점 $B$까지의 거리를 구하고 이용된 삼각형의 합동 조건을 포함하여 서술하시오. [6점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행선",
+            "src": "stem",
+            "quote": "직사각형 모양의 종이를 선분 $EF$를 접는 선으로 하여 접었을 때, 점 $E$는 변 $AD$ 위에 있고 점 $F$는 변 $BC$ 위에 있다. $\\angle AEF = 124^\\circ$일 때, 접혀서 겹쳐진 삼각형에서 생기는 각 $\\angle x$의 크기를 구하고 그 과정을 서술하시오. (단, $\\angle x$는 접힌 선분 $FG$와 변 $AD$의 교점 $I$에서의 각 $\\angle EIF$이다.) [5점]"
+          },
+          {
+            "term": "접기",
+            "src": "stem",
+            "quote": "직사각형 모양의 종이를 선분 $EF$를 접는 선으로 하여 접었을 때, 점 $E$는 변 $AD$ 위에 있고 점 $F$는 변 $BC$ 위에 있다. $\\angle AEF = 124^\\circ$일 때, 접혀서 겹쳐진 삼각형에서 생기는 각 $\\angle x$의 크기를 구하고 그 과정을 서술하시오. (단, $\\angle x$는 접힌 선분 $FG$와 변 $AD$의 교점 $I$에서의 각 $\\angle EIF$이다.) [5점]"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "직사각형 모양의 종이를 선분 $EF$를 접는 선으로 하여 접었을 때, 점 $E$는 변 $AD$ 위에 있고 점 $F$는 변 $BC$ 위에 있다. $\\angle AEF = 124^\\circ$일 때, 접혀서 겹쳐진 삼각형에서 생기는 각 $\\angle x$의 크기를 구하고 그 과정을 서술하시오. (단, $\\angle x$는 접힌 선분 $FG$와 변 $AD$의 교점 $I$에서의 각 $\\angle EIF$이다.) [5점]"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "직사각형 모양의 종이를 선분 $EF$를 접는 선으로 하여 접었을 때, 점 $E$는 변 $AD$ 위에 있고 점 $F$는 변 $BC$ 위에 있다. $\\angle AEF = 124^\\circ$일 때, 접혀서 겹쳐진 삼각형에서 생기는 각 $\\angle x$의 크기를 구하고 그 과정을 서술하시오. (단, $\\angle x$는 접힌 선분 $FG$와 변 $AD$의 교점 $I$에서의 각 $\\angle EIF$이다.) [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "직사각형 모양의 종이를 선분 $EF$를 접는 선으로 하여 접었을 때, 점 $E$는 변 $AD$ 위에 있고 점 $F$는 변 $BC$ 위에 있다. $\\angle AEF = 124^\\circ$일 때, 접혀서 겹쳐진 삼각형에서 생기는 각 $\\angle x$의 크기를 구하고 그 과정을 서술하시오. (단, $\\angle x$는 접힌 선분 $FG$와 변 $AD$의 교점 $I$에서의 각 $\\angle EIF$이다.) [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "접은 각의 크기는 접기 전의 각의 크기와 같고, 직사각형의 마주 보는 두 변은 서로 평행하다. $$\\begin{aligned} &\\text{[1단계: } \\angle FED\\text{와 } \\angle EFB\\text{의 크기 구하기]} \\ &\\text{점 } E\\text{는 선분 } AD\\text{ 위의 점이므로} \\ &\\angle FED = 180^\\circ - 124^\\circ = 56^\\circ \\ &\\overline{AD} \\parallel \\overline{BC}\\text{이므로 엇각의 크기가 같아} \\ &\\angle EFB = \\angle FED = 56^\\circ \\ &\\text{[2단계: 접은 각의 성질과 } \\triangle EFI\\text{의 내각 계산]} \\ &\\text{종이를 접었으므로 접은 각의 크기는 같아} \\ &\\angle EFI = \\angle EFB = 56^\\circ, \\quad \\angle FEI = \\angle FED = 56^\\circ \\ &\\triangle EFI\\text{에서 세 내각의 크기의 합은 } 180^\\circ\\text{이므로} \\ &\\angle x = 180^\\circ - (\\angle FEI + \\angle EFI) = 180^\\circ - (56^\\circ + 56^\\circ) = 180^\\circ - 112^\\circ = 68^\\circ \\end{aligned}$$ 따라서 $\\angle x = 68^\\circ$이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"직사각형 종이접기에서의 평행선 엇각과 접은 각의 성질을 이용한 각도 계산 서술형 문항\"\n}\n\n{\n  \"sourceQid\": \"24\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"평행선의 엇각과 접은 각의 등가성으로 삼각형 EFI의 밑각이 모두 56도임을 밝혀 꼭지각 68도를 구한다.\",\n  \"decisiveStep\": \"각 FEI=56도, 각 EFI=56도를 서술하고 삼각형 내각의 합 180도에서 68도 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"평행선의 성질\",\n    \"l4\": \"직사각형 종이접기에서의 각의 크기\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_MOVE_FOLDING_REFLECTION\",\n    \"templateKey\": \"TPL_MOVE_FOLDING_REFLECTION_RECTANGLE_TAPE\",\n    \"why\": \"직사각형 종이를 접었을 때 발생하는 이등변삼각형 구조와 엇각의 합동성을 이용하는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"종이접기의 각 보존 법칙과 평행선 엇각을 체계적으로 기술하여 삼각형 내각을 구하는 3단계 서술형 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"평행선\",\n      \"접기\",\n      \"각\",\n      \"삼각형\"\n    ],\n    \"goal\": [\n      \"각\"\n    ],\n    \"method\": [\n      \"엇각\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"평행선\"\n    ]\n  }\n}\n",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          },
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "접은 각의 크기는 접기 전의 각의 크기와 같고, 직사각형의 마주 보는 두 변은 서로 평행하다. $$\\begin{aligned} &\\text{[1단계: } \\angle FED\\text{와 } \\angle EFB\\text{의 크기 구하기]} \\ &\\text{점 } E\\text{는 선분 } AD\\text{ 위의 점이므로} \\ &\\angle FED = 180^\\circ - 124^\\circ = 56^\\circ \\ &\\overline{AD} \\parallel \\overline{BC}\\text{이므로 엇각의 크기가 같아} \\ &\\angle EFB = \\angle FED = 56^\\circ \\ &\\text{[2단계: 접은 각의 성질과 } \\triangle EFI\\text{의 내각 계산]} \\ &\\text{종이를 접었으므로 접은 각의 크기는 같아} \\ &\\angle EFI = \\angle EFB = 56^\\circ, \\quad \\angle FEI = \\angle FED = 56^\\circ \\ &\\triangle EFI\\text{에서 세 내각의 크기의 합은 } 180^\\circ\\text{이므로} \\ &\\angle x = 180^\\circ - (\\angle FEI + \\angle EFI) = 180^\\circ - (56^\\circ + 56^\\circ) = 180^\\circ - 112^\\circ = 68^\\circ \\end{aligned}$$ 따라서 $\\angle x = 68^\\circ$이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"직사각형 종이접기에서의 평행선 엇각과 접은 각의 성질을 이용한 각도 계산 서술형 문항\"\n}\n\n{\n  \"sourceQid\": \"24\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-05\",\n  \"subUnitKey\": \"M1-05-POSITION_RELATION\",\n  \"conceptClusterKey\": \"POSITION_RELATION\",\n  \"primaryMethod\": \"평행선의 엇각과 접은 각의 등가성으로 삼각형 EFI의 밑각이 모두 56도임을 밝혀 꼭지각 68도를 구한다.\",\n  \"decisiveStep\": \"각 FEI=56도, 각 EFI=56도를 서술하고 삼각형 내각의 합 180도에서 68도 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"기본도형\",\n    \"midUnit\": \"위치 관계\",\n    \"l3\": \"평행선의 성질\",\n    \"l4\": \"직사각형 종이접기에서의 각의 크기\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_MOVE_FOLDING_REFLECTION\",\n    \"templateKey\": \"TPL_MOVE_FOLDING_REFLECTION_RECTANGLE_TAPE\",\n    \"why\": \"직사각형 종이를 접었을 때 발생하는 이등변삼각형 구조와 엇각의 합동성을 이용하는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"종이접기의 각 보존 법칙과 평행선 엇각을 체계적으로 기술하여 삼각형 내각을 구하는 3단계 서술형 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"평행선\",\n      \"접기\",\n      \"각\",\n      \"삼각형\"\n    ],\n    \"goal\": [\n      \"각\"\n    ],\n    \"method\": [\n      \"엇각\",\n      \"연산\"\n    ],\n    \"condition\": [\n      \"평행선\"\n    ]\n  }\n}\n",
+            "evidenceType": "IMPLIED",
+            "justification": "Drive MD 4-slot draft; independent review pending"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행선",
+            "src": "stem",
+            "quote": "직사각형 모양의 종이를 선분 $EF$를 접는 선으로 하여 접었을 때, 점 $E$는 변 $AD$ 위에 있고 점 $F$는 변 $BC$ 위에 있다. $\\angle AEF = 124^\\circ$일 때, 접혀서 겹쳐진 삼각형에서 생기는 각 $\\angle x$의 크기를 구하고 그 과정을 서술하시오. (단, $\\angle x$는 접힌 선분 $FG$와 변 $AD$의 교점 $I$에서의 각 $\\angle EIF$이다.) [5점]"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Drive MD candidate 4-slot; independent review pending"
+      }
+    }
+  ]
+}
