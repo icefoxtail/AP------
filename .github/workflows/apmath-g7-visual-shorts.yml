@@ -1,0 +1,44 @@
+name: AP Math G7 visual short verification
+
+on:
+  push:
+    branches: ['feat/g7-visual-shorts-20261113']
+    paths:
+      - 'apmath/playground/**'
+      - '.github/workflows/apmath-g7-visual-shorts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: g7-visual-short-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            apmath/playground
+            docs/agents
+            docs/guides
+          persist-credentials: false
+      - name: Record exact public source for reproducible review
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/g7-review"
+          git rev-parse HEAD > "$RUNNER_TEMP/g7-review/commit.txt"
+          git archive --format=tar HEAD AGENTS.md apmath/playground docs/agents docs/guides > "$RUNNER_TEMP/g7-review/source.tar"
+          (cd "$RUNNER_TEMP/g7-review" && sha256sum source.tar > source.sha256)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g7-review-source-${{ github.sha }}
+          path: ${{ runner.temp }}/g7-review/
+          retention-days: 14
+          if-no-files-found: error
