@@ -26,7 +26,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
     "subUnit": "삼각부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_수학I/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원에서 각 π에 해당하는 점 P의 가로좌표를 표시한다.",
+    "solutionImageCaption": "코사인값은 단위원 위 점의 가로좌표이다. 예를 들어 각이 π일 때 P의 가로좌표는 −1이다. 정답은 2π/3≤x≤4π/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -110,7 +114,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_수학I/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 외접원 중심 O, 파란색 반지름, 주황색 현 BC와 오른쪽의 확대각을 표시한다.",
+    "solutionImageCaption": "O는 외접원 중심이고 파란색 반지름은 6이다. 각 A는 120°이며 가장 긴 변은 마주 보는 주황색 현 BC이다. 사인법칙으로 구한다. 정답은 6√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -166,7 +174,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_수학I/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 변 AB, AC와 끼인각 B를 표시한다.",
+    "solutionImageCaption": "코사인법칙에서 양수인 해는 a=1이다. 넓이 공식에 대입한다. 정답은 1/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -477,7 +489,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 점선 반지름이 실제 중심각을 만든다. 파란 현 PQ와 θ₁, 주황색 현 RS와 θ₂, 초록색 현 TU와 θ₃를 색으로 대응했다. 점 이름은 임시로 붙였다.",
+    "solutionImageCaption": "현의 끝점을 P, Q, R, S, T, U로 임시 표시했다. 점선 반지름이 중심각을 이루며, 파란색은 현 PQ와 θ₁, 주황색은 현 RS와 θ₂, 초록색은 현 TU와 θ₃를 대응시킨다. 조건 θ₃=θ₁+θ₂와 현의 길이로 계산한다. 정답은 −7/128이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -499,7 +515,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직각변이 x와 2x인 삼각형에서 빗변이 외접원의 지름임을 표시한다.",
+    "solutionImageCaption": "조건에서 C=90°이고 tan A=1/2이므로 직각변을 x, 2x로 둘 수 있다. 넓이 6으로 빗변의 제곱은 30, 외접원 반지름의 제곱은 15/2이다. 정답은 15π/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -547,7 +567,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 D가 BC를 6과 2로 나누고 AD를 그은 모습이다.",
+    "solutionImageCaption": "BD:DC=3:1이므로 BD=6, DC=2이다. 스튜어트 정리를 적용하면 AD²=19이다. 따라서 AD=√19이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -571,7 +595,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
     "subUnit": "삼각부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고2_수학I/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선의 예시와 −1, 1의 가로축 눈금을 표시한다.",
+    "solutionImageCaption": "예: θ=π이면 f(x)=−x²이고 두 근은 모두 −1과 1 사이에 놓인다. 일반 조건은 f(−1)<0, f(1)<0으로 바꾸어 두 삼각부등식의 공통 범위를 구한다. 따라서 2β−α=7π/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

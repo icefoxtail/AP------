@@ -1527,6 +1527,16 @@ def audit(p):
         elif emphasis is not None:errors.append('SEGMENT_EMPHASIS_INVALID:'+s['id'])
         elif stroke!=DEFAULT_STROKE or (width>=EMPHASIS_WIDTH and not lies_on_drawn_line(node)):errors.append(('SEGMENT_COLOR_UNDECLARED:' if stroke in PALETTE_LINES.values() else 'SEGMENT_EMPHASIS_UNDECLARED:')+s['id'])
 
+    # colours of displayed lines (K): each line of a lineColors row is drawn in its palette line colour (read from the SVG, resolved from the plan alone)
+    for index,row in enumerate(marks.get('lineColors') or []):
+        if not isinstance(row,dict) or row.get('color') not in PALETTE_LINES or not isinstance(row.get('lines'),list):errors.append('LINE_COLOR_INVALID:lineColors.'+str(index));continue
+        for lid in row['lines']:
+            node=elements.get(lid)
+            if node is None:errors.append('LINE_COLOR_MISSING:'+str(lid));continue
+            stroke=str(node.get('stroke') or '').lower()
+            if stroke!=PALETTE_LINES[row['color']]:errors.append('LINE_COLOR_MISMATCH:'+str(lid))
+            observations.append({'id':lid,'type':'LINE_COLOR','color':row['color'],'stroke':stroke})
+
     vector_rows=[r for r in (marks.get('vectors') or []) if isinstance(r,dict)];op_rows=[r for r in (marks.get('vectorOps') or []) if isinstance(r,dict)]
     by_vector={};arrows=[]
     if vector_rows or op_rows:

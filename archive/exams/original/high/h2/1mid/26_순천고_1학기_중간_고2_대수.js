@@ -974,6 +974,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/26_순천고_1학기_중간_고2_대수/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 절댓값 그래프는 주황 점선 y=3과 두 점, 초록 점선 y=7과 한 점에서 만난다. 가로축 u는 양수이며 그림은 예시 구간이다.",
+    "solutionImageCaption": "예: a=4, b=2일 때 0<u≤12에서 파란 곡선은 f(u)=|u−4|+2이다. 주황 점선 y=3과는 두 번, 초록 점선 y=7과는 한 번 만난다. 정답은 14이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -1,0 +1,452 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "X",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-2"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "k1",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "2"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "k2",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "C"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "l1",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "b": {
+      "kind": "expression",
+      "op": "neg",
+      "args": [
+       {
+        "kind": "expression",
+        "op": "sqrt",
+        "args": [
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       }
+      ]
+     },
+     "c": {
+      "kind": "integer",
+      "value": "4"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "l2",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "b": {
+      "kind": "expression",
+      "op": "sqrt",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "c": {
+      "kind": "integer",
+      "value": "4"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "T1",
+    "op": "PERPENDICULAR_FOOT",
+    "inputs": [
+     "O",
+     "l1"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "U1",
+    "op": "PERPENDICULAR_FOOT",
+    "inputs": [
+     "C",
+     "l1"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Z1",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "T1"
+    ],
+    "args": {
+     "dx": {
+      "kind": "expression",
+      "op": "sqrt",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Z2",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "U1"
+    ],
+    "args": {
+     "dx": {
+      "kind": "expression",
+      "op": "sqrt",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Or",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "0"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "2"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Ol",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "0"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "-2"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Cr",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "C"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Cl",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "C"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "-1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayCircles": [
+  "k1",
+  "k2"
+ ],
+ "displayPoints": [
+  "O",
+  "C",
+  "T1",
+  "U1",
+  "Z1",
+  "Z2",
+  "Or",
+  "Ol",
+  "Cr",
+  "Cl"
+ ],
+ "displaySegments": [
+  {
+   "id": "sOT",
+   "refs": [
+    "O",
+    "T1"
+   ]
+  },
+  {
+   "id": "sCU",
+   "refs": [
+    "C",
+    "U1"
+   ]
+  }
+ ],
+ "displayLines": [
+  "l1",
+  "l2"
+ ],
+ "coordinateLabels": [],
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 440
+ },
+ "hiddenPointNames": [
+  "T1",
+  "U1",
+  "Z1",
+  "Z2",
+  "Or",
+  "Ol",
+  "Cr",
+  "Cl"
+ ],
+ "unmarkedPointNames": [
+  "T1",
+  "U1",
+  "Z1",
+  "Z2",
+  "Or",
+  "Ol",
+  "Cr",
+  "Cl"
+ ],
+ "lineLabels": [
+  {
+   "nodeId": "l1",
+   "text": "y=ax+b",
+   "labelAt": "END"
+  },
+  {
+   "nodeId": "l2",
+   "text": "y=ax+b",
+   "labelAt": "END"
+  }
+ ],
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "O",
+    "T1",
+    "Z1"
+   ]
+  },
+  {
+   "id": "r2",
+   "refs": [
+    "C",
+    "U1",
+    "Z2"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "expressionLabels": [
+   {
+    "id": "r2l",
+    "ownerSegment": "sOT",
+    "text": "2"
+   }
+  ],
+  "arcs": [
+   {
+    "id": "Ot",
+    "circle": "k1",
+    "center": "O",
+    "from": "Or",
+    "to": "Ol",
+    "side": "CCW",
+    "highlight": true,
+    "color": "BLUE"
+   },
+   {
+    "id": "Ob",
+    "circle": "k1",
+    "center": "O",
+    "from": "Ol",
+    "to": "Or",
+    "side": "CCW",
+    "highlight": true,
+    "color": "BLUE"
+   },
+   {
+    "id": "Ct",
+    "circle": "k2",
+    "center": "C",
+    "from": "Cr",
+    "to": "Cl",
+    "side": "CCW",
+    "highlight": true,
+    "color": "WARM"
+   },
+   {
+    "id": "Cb",
+    "circle": "k2",
+    "center": "C",
+    "from": "Cl",
+    "to": "Cr",
+    "side": "CCW",
+    "highlight": true,
+    "color": "WARM"
+   }
+  ],
+  "lineColors": [
+   {
+    "lines": [
+     "l1"
+    ],
+    "color": "GREEN"
+   },
+   {
+    "lines": [
+     "l2"
+    ],
+    "color": "ROSE"
+   }
+  ]
+ },
+ "caption": "반지름이 2인 원(파랑)과 반지름이 1인 원(주황)에 동시에 접하는 두 공통접선(초록, 분홍)과, 위쪽 접선의 접점까지의 반지름을 나타낸 그림."
+}

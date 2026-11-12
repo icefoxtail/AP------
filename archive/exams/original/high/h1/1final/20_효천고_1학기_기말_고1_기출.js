@@ -283,9 +283,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q4-solution.svg",
-    "solutionImageAlt": "선분 AB를 2:3으로 내분하는 점은 P(0, 22/5)이다.",
-    "solutionImageCaption": "선분 AB를 2:3으로 내분하는 점은 P(0, 22/5)이다.",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB 위에서 점 P가 A와 B를 2:3으로 나누는 도식이다.",
+    "solutionImageCaption": "숫자 2와 3은 선분 길이 단위가 아니라 내분비의 부분 수이다. 좌표값은 그림에서 읽을 수 없게 했다. 정답은 (0, 22/5)이다.",
     "solutionImageSize": "full"
   },
   {
@@ -359,9 +359,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q5-solution.svg",
-    "solutionImageAlt": "점 (-2,1)을 지나고 기울기가 -3인 직선은 y절편이 -5인 y=-3x-5이다.",
-    "solutionImageCaption": "점 (-2,1)을 지나고 기울기가 -3인 직선은 y절편이 -5인 y=-3x-5이다.",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 P(−2,1)에서 오른쪽 1, 아래쪽 3으로 향하는 화살표가 보인다.",
+    "solutionImageCaption": "기울기 −3은 오른쪽으로 1, 아래로 3 이동하는 방향이다. 직선의 절편과 방정식은 그림에 쓰지 않았다. 정답은 y=−3x−5이다.",
     "solutionImageSize": "full"
   },
   {
@@ -435,9 +435,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q6-solution.svg",
-    "solutionImageAlt": "점 (-3, 1)을 지나고 주어진 직선과 기울기가 같은 직선이다.",
-    "solutionImageCaption": "점 (-3, 1)을 지나고 주어진 직선과 기울기가 같은 직선이다.",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 P(−3,1)과 6x−2y+1=0인 직선이 보인다.",
+    "solutionImageCaption": "주어진 직선의 기울기는 3이다. 평행이동한 뒤 구하는 직선은 그림에 그리지 않았다. 정답은 y=3x+10이다.",
     "solutionImageSize": "full"
   },
   {
@@ -483,7 +483,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "level": "하",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q07-solution.svg",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q7-solution-v2.svg",
     "metaEvidence": {
       "curriculum": "2015",
       "curriculumKey": "2015",
@@ -511,7 +511,10 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 점 P(2,−4), 직선 3x−4y+2=0, 수선의 발 N과 직각 표시가 보인다.",
+    "solutionImageCaption": "N은 수선의 발을 나타내는 보조 이름이다. 수선의 발 좌표와 길이는 그림에서 숨겼다. 정답은 24/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -555,7 +558,7 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "level": "하",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q08-solution.svg",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q8-solution-v2.svg",
     "metaEvidence": {
       "curriculum": "2015",
       "curriculumKey": "2015",
@@ -583,7 +586,10 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 좌표평면에 중심 C(3,1), 반지름 3인 원이 보인다.",
+    "solutionImageCaption": "중심과 반지름을 원의 표준형에 대입한다. 원의 방정식은 그림에 쓰지 않았다. 정답은 (x−3)²+(y−1)²=9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -628,7 +634,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "level": "하",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q09-solution.svg",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q9-solution-v2.svg",
     "metaEvidence": {
       "curriculum": "2015",
       "curriculumKey": "2015",
@@ -656,7 +662,10 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 원점 O 중심의 반지름 √5인 원과 예시 직선 y=2x+6이 서로 만나지 않는다.",
+    "solutionImageCaption": "예시 k=6은 답의 경계값이 아닌 안쪽의 사례다. 중심에서 직선까지의 거리와 반지름을 비교하며, 답 범위는 그림에 나타내지 않았다. 정답은 k<−5 또는 k>5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -701,7 +710,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "level": "하",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q10-solution.svg",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q10-solution-v2.svg",
     "metaEvidence": {
       "curriculum": "2015",
       "curriculumKey": "2015",
@@ -729,7 +738,10 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 직선 x−3y+2=0 위의 예시점 P(1,1)가 화살표를 따라 P′(4,0)으로 이동한다.",
+    "solutionImageCaption": "평행이동 벡터 (3,−1)을 원래 점에 더해 이동을 확인한다. 옮긴 직선은 그림에 그리지 않았다. 정답은 x−3y−4=0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -1062,7 +1074,7 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "level": "상",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q15.png",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q15-solution-v2.svg",
     "metaEvidence": {
       "curriculum": "2015",
       "curriculumKey": "2015",
@@ -1090,7 +1102,10 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C에서 D와 E는 각 변의 중점이고, CE와 PR은 각의 이등분선이다. P, R, Q가 놓인 선분 관계도 보인다.",
+    "solutionImageCaption": "AB=2√3, BC=2, AD=√7이다. 같은 선분 눈금과 각 호는 각각 같은 길이와 같은 각을 뜻한다. 넓이비의 값은 그림에서 숨겼다. 정답은 8−2√7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1135,7 +1150,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "level": "하",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q16-solution.svg",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q16-solution-v2.svg",
     "metaEvidence": {
       "curriculum": "2015",
       "curriculumKey": "2015",
@@ -1163,7 +1178,10 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 좌표평면에 P(3,4), Q(12,5), 선분 PQ와 O에서 나온 각의 이등분선이 보인다.",
+    "solutionImageCaption": "OP=5, OQ=13이고 두 호 표시는 같은 각을 뜻한다. 교점 R의 좌표는 그림에 표시하지 않았다. 정답은 (11/2, 77/18)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1212,7 +1230,7 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "level": "상",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q17-solution.svg",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q17-solution-v2.svg",
     "metaEvidence": {
       "curriculum": "2015",
       "curriculumKey": "2015",
@@ -1240,7 +1258,10 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: A, B, C와 중점 M, 각 변을 1:3으로 나누는 P와 Q, CM의 중점 G가 보인다. AB와 CM은 수직이다.",
+    "solutionImageCaption": "A(0,6), B(18,0)이고 AC=BC이다. 같은 눈금은 같은 길이, 각 변의 1:3 표시는 P와 Q의 내분비, CG=√10 표시는 주어진 길이를 뜻한다. C의 좌표는 그림에서 숨겼다. 정답은 (11, 9)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1287,7 +1308,7 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "level": "상",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q18-solution.svg",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q18-solution-v2.svg",
     "metaEvidence": {
       "curriculum": "2015",
       "curriculumKey": "2015",
@@ -1315,7 +1336,10 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 A(−2,4), O, B(3,−6)이 한 직선 위에 있고 O가 A와 B 사이에 있다.",
+    "solutionImageCaption": "AO:OB=2:3이다. 자취의 원과 제외점은 답을 드러내므로 그리지 않았다. 정답은 (x+6)²+(y−12)²=180이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1363,7 +1387,7 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "level": "상",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q19-solution.svg",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q19-solution-v2.svg",
     "metaEvidence": {
       "curriculum": "2015",
       "curriculumKey": "2015",
@@ -1391,7 +1415,10 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 좌표평면의 A(2,2)와 반지름 2인 예시 원, 두 접점 P₁, P₂, 대향점 Q₁, Q₂, 두 접선과 직각 표시가 보인다.",
+    "solutionImageCaption": "0<r<2√2 범위에서 반지름 2인 예를 들어 두 접선과 지름 끝점의 관계를 보였다. 실제 등변 조건을 만족하는 점은 표시하지 않았다. 정답은 4/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1431,7 +1458,7 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "level": "중",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q20.png",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q20-solution-v2.svg",
     "metaEvidence": {
       "curriculum": "2015",
       "curriculumKey": "2015",
@@ -1459,7 +1486,10 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 f의 삼각형과 주황 g의 대응 삼각형이 함께 나타나 있다.",
+    "solutionImageCaption": "파란색은 f, 주황색은 g이다. A′, B′, C′는 각각 A, B, C에 대응하며, 같은 눈금은 대응하는 변의 길이가 같음을 뜻한다. 꼭짓점 좌표값은 글 해설에 남기고 그림에는 쓰지 않았다. 정답은 −6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1501,7 +1531,7 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "level": "상",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q21-solution.svg",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q21-solution-v2.svg",
     "image": "assets/images/20_효천고_1학기_기말_고1_기출/q21.png",
     "provenance": {
       "kind": "ALIVE_REPLACEMENT",
@@ -1543,7 +1573,10 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 예시 t=1에서 A(0,1), B(4,0), 중점 M과 두 후보 C, D가 좌표평면에 보인다.",
+    "solutionImageCaption": "문제의 범위는 −1≤t≤2이다. t=1은 내부 예이며, M은 AB의 중점이고 CM=DM=AB/2이다. 최대 길이는 그림에 나타내지 않았다. 정답은 3√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1583,7 +1616,7 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "level": "상",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q22-solution-v2.svg",
     "metaEvidence": {
       "curriculum": "2015",
       "curriculumKey": "2015",
@@ -1612,7 +1645,10 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 위쪽은 a=1일 때 원래 파란 직선 y=x+3과 이동 뒤 주황 직선 y=x+7이다. 아래쪽은 파란 대칭축 y=x와 대칭 후 주황 직선 y=x−7이다.",
+    "solutionImageCaption": "예시 a=1에서 파란색은 원래 직선 또는 대칭축, 주황색은 변환 뒤 직선을 나타낸다. 두 패널은 위·아래 순서로 놓였다. 공통점 조건에서 구한 a는 그림에 쓰지 않았다. 정답은 −1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1657,7 +1693,7 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "level": "상",
-    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q23-solution.svg",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q23-solution-v2.svg",
     "metaEvidence": {
       "curriculum": "2015",
       "curriculumKey": "2015",
@@ -1685,6 +1721,9 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 좌표축 위에 원의 중심 M(3,−4), 접선, 원 위의 O, A, B, 점 P와 수선의 발 Q가 보인다.",
+    "solutionImageCaption": "O(0,0), A(6,−8), B(7,−1)로 정해지는 원의 중심은 M(3,−4), 반지름은 5이다. 같은 넓이의 삼각형 OAB, OPB와 P에서 가로축에 내린 수선을 보인다. QO의 값은 그림에 쓰지 않았다. 정답은 8이다.",
+    "solutionImageSize": "full"
   }
 ];

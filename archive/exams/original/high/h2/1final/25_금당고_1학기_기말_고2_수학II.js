@@ -54,7 +54,11 @@ window.questionBank = [
     "primaryL4": "극대·극소",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 증가와 감소를 거쳐 다시 증가하는 삼차함수 그래프가 보인다.",
+    "solutionImageCaption": "도함수의 부호 변화로 극대와 극소를 확인하고, 양끝에서는 함수값이 한쪽으로 계속 뻗는다. 따라서 최댓값과 최솟값은 없다. 정답은 최댓값과 최솟값이 없다는 설명이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -276,7 +280,11 @@ window.questionBank = [
       "CC_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선이 x축과 두 점에서 만나고 그 사이에서 x축 위에 있다. 교점 A와 B가 표시되어 있다.",
+    "solutionImageCaption": "두 교점 A, B 사이에서 곡선이 x축보다 위에 놓인다. 해당 구간의 넓이를 적분으로 나타낸다. 정답은 6분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -329,12 +337,15 @@ window.questionBank = [
     "rpmL4": "두 곡선 사이",
     "primaryL3": "넓이",
     "primaryL4": "두 곡선 사이",
-    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학II/q6-solution-v2.svg",
     "crossConceptKeys": [
       "CC_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "solutionImageAlt": "해설 그림: 위와 아래 패널의 파란색 포물선은 y=x², 주황색 포물선은 y=−x²+2x이며 분홍색 y=0은 x축이다. 아래 패널의 옅은 회색 음영이 두 구간의 포물선 사이 넓이를 나타내고, 교점 A, B에서 위아래가 바뀐다.",
+    "solutionImageCaption": "위 패널에서 파란색 y=x²과 주황색 y=−x²+2x가 교점 A, B에서 만나고, 아래 패널의 옅은 회색 음영은 두 교점에서 위아래가 바뀌는 두 구간의 넓이를 나타낸다. 분홍색 y=0은 x축이다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -500,7 +511,11 @@ window.questionBank = [
     "primaryL4": "근의 개수",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 도함수 예시 포물선이 x축과 만나지 않는다.",
+    "solutionImageCaption": "예: a=2이면 도함수의 판별식이 음수여서 부호가 바뀌지 않는다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -556,7 +571,11 @@ window.questionBank = [
     "primaryL4": "극대·극소",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수가 왼쪽의 극대점에서 오른쪽 극소점까지 내려간 뒤 다시 증가한다. 극소점 (1,1)이 표시되어 있다.",
+    "solutionImageCaption": "왼쪽 극대점과 조건에 주어진 오른쪽 극소점 (1,1) 사이에서 함수가 감소한다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -829,10 +848,13 @@ window.questionBank = [
     "rpmL4": "위치·속도·가속도",
     "primaryL3": "속도와 가속도",
     "primaryL4": "위치·속도·가속도",
-    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학II/q15-solution-v2.svg",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImageAlt": "해설 그림: 위와 아래 패널에 속도 그래프와 경계 좌표 (0,0), (2,6), (10,6), (13,0)이 표시되어 있다. 파란색은 가속, 주황색은 등속, 초록색은 감속, 분홍색은 t축이며 옅은 회색 영역은 각 패널에서 설명하는 이동거리 구간이다.",
+    "solutionImageCaption": "위 패널의 옅은 회색 넓이는 0~10분 동안의 가속·등속 이동거리이고, 아래 패널의 옅은 회색 넓이는 10~13분 동안의 감속 이동거리다. 파란색은 가속, 주황색은 등속, 초록색은 감속, 분홍색은 t축이다. 정답은 63 m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
