@@ -1,0 +1,469 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "main",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "A",
+          "R"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "wrapb",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "B",
+          "R"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "wrapc",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "C",
+          "X"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "R",
+    "S",
+    "V",
+    "W",
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "BR",
+      "refs": [
+        "B",
+        "R"
+      ]
+    },
+    {
+      "id": "CX",
+      "refs": [
+        "C",
+        "X"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "wall",
+        "segments": [
+          "AB",
+          "BC",
+          "CA"
+        ],
+        "count": 1,
+        "color": "BLUE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "side",
+        "ownerSegment": "AB",
+        "text": "5m",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r7",
+        "ownerSegment": "AP",
+        "text": "7m",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r2",
+        "ownerSegment": "CX",
+        "text": "2m",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "a",
+        "circle": "main",
+        "center": "A",
+        "from": "R",
+        "to": "S",
+        "side": "CW",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "b",
+        "circle": "wrapb",
+        "center": "B",
+        "from": "R",
+        "to": "V",
+        "side": "CCW",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "circle": "wrapc",
+        "center": "C",
+        "from": "W",
+        "to": "X",
+        "side": "CCW",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "mainzone",
+        "fill": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "R"
+                },
+                {
+                  "to": "S",
+                  "arc": {
+                    "center": "A",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "A"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "bzone",
+        "fill": "WARM",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "loop": {
+              "start": "B",
+              "steps": [
+                {
+                  "to": "R"
+                },
+                {
+                  "to": "V",
+                  "arc": {
+                    "center": "B",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "B"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "czone",
+        "fill": "WARM",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "loop": {
+              "start": "C",
+              "steps": [
+                {
+                  "to": "W"
+                },
+                {
+                  "to": "X",
+                  "arc": {
+                    "center": "C",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "C"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "파랑: 반지름7·300° · 주황 두 곳: 남은 끈2·각120° · 합87π/2 m²",
+  "sourceQuote": "현Q13 정삼각형한변5, 꼭짓점에끈7, 담장내부불가, 최대영역넓이",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "현Q13 정삼각형한변5, 꼭짓점에끈7, 담장내부불가, 최대영역넓이",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "P",
+        "R",
+        "S",
+        "V",
+        "W",
+        "X"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "hiddenPointNames": [
+    "P",
+    "R",
+    "S",
+    "V",
+    "W",
+    "X"
+  ],
+  "hiddenPointStyle": "NONE"
+}
