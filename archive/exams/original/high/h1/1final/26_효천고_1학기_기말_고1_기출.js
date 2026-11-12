@@ -25,7 +25,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "행렬의 크기는 행의 수와 열의 수로 나타낸다.\n주어진 행렬은 행이 3개, 열이 2개이므로 $3\\times2$행렬이다.\n따라서 $m=3$, $n=2$이다.\n$$m-n=3-2=1$$\n정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -81,7 +81,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "두 행렬이 같으면 같은 위치의 성분이 각각 같다.\n$A$의 모든 성분에 $2$를 곱하면\n$$2A=\\begin{pmatrix}2&2a\\\\0&-2\\end{pmatrix}$$\n이고, 이것은 $B=\\begin{pmatrix}2&2\\\\b&-2\\end{pmatrix}$와 같다.\n$(1,2)$성분을 비교하면\n$$2a=2\\quad\\Rightarrow\\quad a=1$$\n$(2,1)$성분을 비교하면\n$$0=b$$\n따라서\n$$a+b=1+0=1$$\n정답은 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -487,7 +487,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution":"각 명제는 행렬의 기본 법칙과 반례로 판정한다.\nㄱ은 행렬곱의 결합법칙이고 ㄴ은 분배법칙이므로 참이다.\nㄷ도 스칼라배를 곱으로 묶는 법칙에 의해 참이다.\nㄹ은 일반적으로 거짓이다. 예를 들어\n$A=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix},\\quad B=\\begin{pmatrix}1&0\\\\1&1\\end{pmatrix}$\n이면\n$AB=\\begin{pmatrix}2&1\\\\1&1\\end{pmatrix},\\quad BA=\\begin{pmatrix}1&1\\\\1&2\\end{pmatrix}$\n이므로 $AB\\ne BA$이다.\n$n$은 자연수이므로\n$E^n=E\\cdot E\\cdots E=E$\n이고 ㅁ은 참이다.\nㅂ은 거짓이다. 다음 행렬은 모두 영행렬이 아니지만 곱은 영행렬이다.\n$A=\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix},\\quad B=\\begin{pmatrix}0&0\\\\0&1\\end{pmatrix},\\quad AB=O$\n이다.\nㅅ에서 주어진 첫 식은\n$A(A+E)=E$\n$A^2+A=E$\n이다.\n또한\n$(A+E)A=A^2+A$\n$=E$\n이므로 $(A+E)A=E$이다.\n$AB=-E$의 양변 왼쪽에 $A+E$를 곱하면\n$(A+E)AB=-(A+E)$\n이다.\n결합법칙으로 곱의 순서를 묶으면\n$((A+E)A)B=-(A+E)$\n이다.\n$(A+E)A=E$를 대입하면\n$EB=-(A+E)$\n이다.\n단위행렬 성질 $EB=B$를 쓰면\n$B=-(A+E)$\n이다.\n따라서\n$B^2=(A+E)^2$\n$=A^2+2A+E$\n$=(E-A)+2A+E$\n$=A+2E$\n이므로 ㅅ도 참이다.\n참인 명제는 ㄱ, ㄴ, ㄷ, ㅁ, ㅅ의 5개이고 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -571,7 +571,7 @@ window.questionBank = [
     "answer": "$\\begin{pmatrix}3\\\\3\\end{pmatrix}$",
     "solution": "두 행렬은 모두 $2\\times1$행렬이므로 같은 위치의 성분끼리 더한다.\n첫째 행의 성분은\n$$-1+4=3$$\n이고, 둘째 행의 성분은\n$$5+(-2)=3$$\n이다.\n따라서\n$$\\begin{pmatrix}-1\\\\5\\end{pmatrix}+\\begin{pmatrix}4\\\\-2\\end{pmatrix}=\\begin{pmatrix}3\\\\3\\end{pmatrix}$$\n이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -723,7 +723,7 @@ window.questionBank = [
     "answer": "$10$",
     "solution": "$n$이 짝수이므로 $(-1)^n=1$이다.\n먼저 $B_nX$를 계산한다.\n$B_nX=\\begin{pmatrix}1&0\\\\0&(n-1)!\\end{pmatrix}\\begin{pmatrix}-x^2\\\\y\\end{pmatrix}$\n$=\\begin{pmatrix}-x^2\\\\(n-1)!y\\end{pmatrix}$\n이다.\n여기에 $A_n$을 곱하면\n$A_nB_nX=\\begin{pmatrix}1&n\\\\0&1\\end{pmatrix}\\begin{pmatrix}-x^2\\\\(n-1)!y\\end{pmatrix}$\n$=\\begin{pmatrix}-x^2+n(n-1)!y\\\\(n-1)!y\\end{pmatrix}$\n이다.\n이 벡터가 $\\begin{pmatrix}1\\\\1\\end{pmatrix}$과 같으므로 성분별로\n$(n-1)!y=1$\n$-x^2+n(n-1)!y=1$\n이다.\n첫 식을 둘째 식에 대입하면\n$-x^2+n=1$\n$x^2=n-1$\n이다.\n$n$은 $2$보다 큰 짝수이므로 $n-1$은 $1$보다 큰 홀수이다.\n$x$가 자연수이려면 $n-1=x^2$이어야 하고, 가장 작은 홀수 제곱은\n$3^2=9$\n이다.\n따라서\n$n-1=9$\n$n=10$\n이다.\n$x^2=n-1=9$이고 $x$가 자연수이므로\n$x=3$\n이다.\n$y=\\dfrac{1}{9!}$로 놓으면 둘째 성분은\n$9!\\cdot\\dfrac1{9!}$\n$=1$\n이다.\n첫째 성분은\n$-3^2+10\\cdot1$\n$=-9+10$\n$=1$\n이다.\n따라서 실제로 $x=3$인 해가 존재하고 정답은 $10$이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

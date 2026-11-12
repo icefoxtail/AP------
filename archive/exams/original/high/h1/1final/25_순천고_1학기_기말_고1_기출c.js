@@ -135,7 +135,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 두 행렬이 같으면 대응하는 성분이 각각 같다.\n1단계: $(1,1)$성분을 비교하면 $a-1=b+1$이므로 $a-b=2$이다.\n2단계: $(2,2)$성분을 비교하면 $b=4-a$이므로 $a+b=4$이다.\n∴ 정답: ①",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -274,7 +274,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 행렬 방정식을 $X$에 대하여 정리한다.\n1단계: $2X=2A-B$이다.\n2단계: $2A-B=\\begin{pmatrix}2&4&-6\\\\-4&2&6\\end{pmatrix}$이다.\n3단계: 양변을 $2$로 나누면 $X=\\begin{pmatrix}1&2&-3\\\\-2&1&3\\end{pmatrix}$이다.\n∴ 정답: ③",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -381,7 +381,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 행렬을 단위행렬과 제곱하면 $O$인 행렬의 합으로 나타낸다.\n1단계: $A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}=I+N$, $N=\\begin{pmatrix}0&2\\\\0&0\\end{pmatrix}$이고 $N^2=O$이다.\n2단계: 따라서 $A^7=(I+N)^7=I+7N=\\begin{pmatrix}1&14\\\\0&1\\end{pmatrix}$이다.\n3단계: 성분의 합은 $1+14+0+1=16$이다.\n∴ 정답: ①",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -453,7 +453,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 행렬의 곱 조건을 구체적인 반례와 결합법칙으로 판단한다.\n\nㄱ은 거짓이다. 예를 들어 $A=\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix},\\ B=\\begin{pmatrix}0&0\\\\0&1\\end{pmatrix}$이면 $A$와 $B$는 모두 $O$가 아니지만 $AB=O$이다.\n\nㄴ도 거짓이다. $A=2I,\\ B=3I$이면 $AB=BA$이지만 $A\\ne I$이고 $B\\ne I$이다.\n\nㄷ은 결합법칙으로\n\n$A=AB=A(BA)=(AB)A=A^2$\n\n가 되어 참이다. 따라서 항상 옳은 것은 ㄷ 하나이고 정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -605,7 +605,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 판매 가격이 같으면 생산 비용의 증가액만큼 이익금이 감소한다.\n1단계: $P$지역의 사과와 배의 이익금은 각각 $700-2800\\times0.1=420$, $900-4000\\times0.1=500$이다.\n2단계: $Q$지역의 사과와 배의 이익금은 각각 $600-3000\\times0.1=300$, $800-4100\\times0.1=390$이다.\n3단계: 행을 사과와 배, 열을 $P$지역과 $Q$지역의 순서로 나타내면 $\\begin{pmatrix}420&300\\\\500&390\\end{pmatrix}$이다.\n∴ 정답: ⑤",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -699,7 +699,7 @@ window.questionBank = [
     "answer": "$\\dfrac{5}{2}$",
     "solution": "[키포인트] $A^3$을 구해 두 조건을 각각 적용하고, 두 번째 조건은 모든 성분에서 확인한다.\n1단계: $A^3=\\begin{pmatrix}x^3&-x^2+x-1\\\\0&-1\\end{pmatrix}$이므로 성분의 합이 $4$이면 $x^3-x^2+x-2=4$, 즉 $x^3-x^2+x-6=0$이다. $(x-2)(x^2+x+3)=0$이고 $x^2+x+3$의 판별식은 $-11<0$이므로 $a=2$이다.\n2단계: 등식의 $(1,2)$성분에서 $-x^2+x-1=-\\frac34$이므로 $(2x-1)^2=0$, $x=\\frac12$이다. 대입하면 양변이 모두 $\\begin{pmatrix}\\frac18&-\\frac34\\\\0&-1\\end{pmatrix}$이므로 $b=\\frac12$이다.\n3단계: $a+b=\\frac52$이다.\n∴ 정답: $\\frac52$",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

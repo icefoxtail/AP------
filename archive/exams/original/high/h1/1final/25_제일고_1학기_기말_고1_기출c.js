@@ -382,7 +382,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "행렬의 곱셈 $XY$가 정의되려면 $X$의 열의 개수와 $Y$의 행의 개수가 같아야 하며, 그 결과 행렬의 크기는 ($X$의 행) $\\times$ ($Y$의 열)이 된다.\n\n행렬의 크기는 $A(3 \\times 2)$, $B(2 \\times 3)$, $C(2 \\times 2)$이다.\n\n보기의 각 행렬 곱셈 가능 여부와 결과 행렬의 크기를 규칙에 따라 확인한다.\n\n① $AB$: $(3 \\times 2)$행렬과 $(2 \\times 3)$행렬의 곱이므로 계산이 가능하며, 결과는 $3 \\times 3$행렬이다.\n② $BA$: $(2 \\times 3)$행렬과 $(3 \\times 2)$행렬의 곱이므로 계산이 가능하며, 결과는 $2 \\times 2$행렬이다.\n③ $BC$: $(2 \\times 3)$행렬과 $(2 \\times 2)$행렬의 곱이므로 앞 행렬의 열(3)과 뒤 행렬의 행(2)이 일치하지 않아 곱셈이 불가능하다.\n④ $CB$: $(2 \\times 2)$행렬과 $(2 \\times 3)$행렬의 곱이므로 계산이 가능하며, 결과는 $2 \\times 3$행렬이다.\n⑤ $CA$: $(2 \\times 2)$행렬과 $(3 \\times 2)$행렬의 곱이므로 앞 행렬의 열(2)과 뒤 행렬의 행(3)이 일치하지 않아 곱셈이 불가능하다.\n따라서 결과가 $3 \\times 3$행렬이 되는 것은 $AB$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -457,7 +457,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "두 행렬이 서로 같을 조건은 크기가 같고 대응하는 각 성분이 서로 같아야 함을 이용한다.\n\n등식의 좌변 행렬과 우변 행렬의 성분을 비교하여 연립방정식을 세운다.\n\n$a, b$로 이루어진 연립방정식과 $c, d$로 이루어진 연립방정식을 각각 풀어서 해를 구한다.\n\n두 행렬이 같으므로 대응하는 각 성분이 같아야 한다.\n$a+b = 1$ $\\cdots$ (ㄱ)\n$3a+2b = 0$ $\\cdots$ (ㄴ)\n$c-2d = 3$ $\\cdots$ (ㄷ)\n$c+d = 0$ $\\cdots$ (ㄹ)\n(ㄱ)의 양변에 2를 곱하면 $2a+2b = 2$\n(ㄴ)에서 위 식을 빼면 $a = -2$\n$a=-2$를 (ㄱ)에 대입하면 $-2+b = 1$이므로 $b = 3$\n(ㄹ)에서 $c = -d$이므로 이를 (ㄷ)에 대입하면\n$-d-2d = 3, -3d = 3$이므로 $d = -1$\n$d=-1$을 $c=-d$에 대입하면 $c = 1$\n따라서 $a+b+c+d = (-2)+3+1+(-1) = 1$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -492,7 +492,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "행렬의 덧셈, 뺄셈, 실수배의 성질을 이용하여 미지행렬 $X$에 대한 방정식을 푼다.\n\n등식 $3X-2A = X+4B$를 $X$에 대하여 식을 간단히 정리한다.\n\n$X$를 행렬 $A, B$로 나타낸 후 주어진 행렬 $A, B$의 각 성분을 대입하여 계산한다.\n\n$3X-2A = X+4B$에서 $X$가 있는 항을 좌변으로, 없는 항을 우변으로 이항하면\n$3X-X = 2A+4B$\n$2X = 2A+4B$\n양변을 2로 나누면 $X = A+2B$이다.\n주어진 행렬 $A, B$를 대입하여 계산하면\n$X = \\begin{pmatrix} 2 & 1 \\\\ 3 & 2 \\end{pmatrix} + 2\\begin{pmatrix} 1 & 3 \\\\ 1 & 2 \\end{pmatrix}$\n$= \\begin{pmatrix} 2 & 1 \\\\ 3 & 2 \\end{pmatrix} + \\begin{pmatrix} 2 & 6 \\\\ 2 & 4 \\end{pmatrix}$\n$= \\begin{pmatrix} 4 & 7 \\\\ 5 & 6 \\end{pmatrix}$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -526,7 +526,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "행렬의 곱셈에 대한 교환법칙이 일반적으로 성립하지 않음을 유의하여 행렬 연산의 성질을 파악한다.\n\n단위행렬 $E$와 영행렬 $O$의 성질을 적용하여 각 보기의 참, 거짓을 판별한다.\n\n행렬의 곱셈 공식을 전개할 때 $AB=BA$가 성립한다는 보장이 없음을 고려하여 각 식을 확인하고 반례를 생각한다.\n\n① 행렬의 곱셈에서 교환법칙은 일반적으로 성립하지 않으므로 $AB \\neq BA$인 경우가 존재한다. (거짓)\n② $A=O$이고 $B \\neq C$인 경우, $AB=O, AC=O$이므로 $AB=AC$이지만 $B=C$가 아니다. (거짓)\n③ $(A+E)^2 = (A+E)(A+E) = A^2+AE+EA+E^2$이다.\n이때 어떤 행렬과 단위행렬 $E$의 곱셈은 교환법칙이 성립하여 $AE=EA=A$이고, $E^2=E$이므로 $(A+E)^2 = A^2+2A+E$가 성립한다. (참)\n④ $A=\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}, B=O$이면 $A^2=O, B^2=O$이고 $AB=O$이므로 $A^2-2AB+B^2=O$이다.\n하지만 $A \\neq B$이다. (거짓)\n⑤ $A^2-2A+E=O$는 $(A-E)^2=O$를 의미한다.\n$A=\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$이면 $A-E=\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$이고 $(A-E)^2=O$이므로 $A^2-2A+E=O$를 만족하지만 $A \\neq E$이다. (거짓)\n따라서 항상 옳은 것은 ③이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -748,7 +748,7 @@ window.questionBank = [
     "answer": "-4",
     "solution": "$A+B=O$를 이용하여 한 행렬을 다른 행렬로 나타낸 후 대입하여 행렬의 거듭제곱의 규칙성을 파악한다.\n\n$A+B=O$에서 $B=-A$이다. 이를 두 번째 조건 $AB=E$에 대입하여 $A$의 거듭제곱 성질을 찾는다. 이후 $A^n+B^n$의 형태를 파악한다.\n\n$A^2=-E$임을 유도한 후, $n$이 홀수일 때와 짝수일 때로 경우를 나누어 $A^n+B^n$의 값을 구한다. 그 결과 나타나는 $f(n)$의 주기성을 찾아 1부터 30까지의 합을 계산한다.\n\n주어진 조건 $A+B=O$에서 $B=-A$이다.\n이 식을 $AB=E$에 대입하면 $A(-A)=E$, 즉 $-A^2=E$이므로 $A^2=-E$이다.\n구하고자 하는 행렬을 정리하면\n$A^n+B^n = A^n+(-A)^n = A^n + (-1)^n A^n$이다.\n$n$이 홀수인지 짝수인지에 따라 결과가 달라지므로 경우를 나눈다.\n(i) $n$이 홀수일 때, 즉 $n=2k-1$ (단, $k$는 자연수)일 때\n$(-1)^n = -1$이므로 $A^n+B^n = A^n - A^n = O$이다.\n따라서 모든 성분의 합은 $0$이므로 $f(n) = 0$이다.\n(ii) $n$이 짝수일 때, 즉 $n=2k$ (단, $k$는 자연수)일 때\n$(-1)^n = 1$이므로 $A^n+B^n = A^n + A^n = 2A^n$이다.\n이때 $n=2k$를 대입하면 $2A^{2k} = 2(A^2)^k$가 된다.\n앞서 $A^2=-E$임을 구했으므로 $2(-E)^k = 2(-1)^k E$이다.\n여기서 $k$가 홀수인지 짝수인지에 따라 다시 경우가 나뉜다.\n$k$가 홀수이면 (즉, $n=2, 6, 10, \\cdots$), $A^n+B^n = -2E = \\begin{pmatrix} -2 & 0 \\\\ 0 & -2 \\end{pmatrix}$이므로 모든 성분의 합은 $-4$이다. 즉 $f(n) = -4$이다.\n$k$가 짝수이면 (즉, $n=4, 8, 12, \\cdots$), $A^n+B^n = 2E = \\begin{pmatrix} 2 & 0 \\\\ 0 & 2 \\end{pmatrix}$이므로 모든 성분의 합은 $4$이다. 즉 $f(n) = 4$이다.\n\n$f(1), f(2), f(3), f(4), f(5), f(6), \\cdots$의 값을 차례대로 나열하면\n$0, -4, 0, 4, 0, -4, \\cdots$ 가 되어 4개의 숫자가 주기적으로 반복된다.\n이때 한 주기인 $n=1$부터 $4$까지의 합은 $f(1)+f(2)+f(3)+f(4) = 0 + (-4) + 0 + 4 = 0$이다.\n우리가 구해야 하는 값은 $n=1$부터 $30$까지의 합인 $f(1)+f(2)+\\cdots+f(30)$이다.\n$30 = 4 \\times 7 + 2$이므로, 4개씩 묶은 7주기의 합은 $0$이고, 남은 2개의 항은 $f(29)$와 $f(30)$과 동일한 값을 갖는다.\n주기성에 의해 $f(29) = f(1) = 0$, $f(30) = f(2) = -4$이다.\n따라서 $f(1)+f(2)+\\cdots+f(30) = 0 \\times 7 + 0 + (-4) = -4$이다.\n따라서 구하는 값은 $-4$이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
