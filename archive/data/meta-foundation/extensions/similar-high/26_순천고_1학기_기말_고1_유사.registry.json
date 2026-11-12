@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "26_순천고_1학기_기말_고1_유사",
+  "sourceExam": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "generatedL4": [
+    {
+      "key": "EXT-L4-PERMUTATION-SYMBOL-UNKNOWN-N-EQUATION",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "순열 기호가 든 등식을 곱으로 풀어 쓴 방정식에서 n 구하기",
+      "definition": "${}_nP_r$ 꼴 순열 기호가 든 등식을 $n(n-1)\\cdots$ 곱으로 풀어 쓰고 공통인수로 묶어 $n$에 대한 식으로 정리한 뒤, 대입과 증가성으로 $n$을 정하는 유형.",
+      "parentRpmRecordId": "H1-RPM-188",
+      "parentRpmL1": "경우의 수",
+      "parentRpmL2": "경우의 수와 순열",
+      "parentRpmL3": "순열",
+      "parentRpmL4": "일렬 배열",
+      "parentProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "parentTemplateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "standardUnitKey": "H22-C-08",
+      "subUnitKey": "H22-C-08-PERMUTATION",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "마스터 RPM 순열 L4에는 배열 유형(일렬·조건·같은 것·원형)만 있고 순열 기호의 정의로 방정식을 푸는 리프가 없다.",
+      "firstUsed": {
+        "stem": "26_순천고_1학기_기말_고1_유사",
+        "qid": 5
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-11",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-CUBIC-VIETA-SYMMETRIC-EXPRESSION-VALUE",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "삼차방정식의 근과 계수의 관계로 근의 합 꼴 곱·대칭식 값 구하기",
+      "definition": "삼차방정식의 세 근의 합·두 근끼리의 곱의 합·세 근의 곱을 구하고, $(\\alpha+\\beta)(\\beta+\\gamma)(\\gamma+\\alpha)$처럼 근의 대칭식을 $S_1,S_2,P$로 바꾸어 값을 구하는 유형.",
+      "parentRpmRecordId": "H1-RPM-300",
+      "parentRpmL1": "방정식과 부등식",
+      "parentRpmL2": "이차방정식",
+      "parentRpmL3": "근과 계수의 관계",
+      "parentRpmL4": "근의 합·곱",
+      "parentProblemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "parentTemplateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "standardUnitKey": "H22-C-06",
+      "subUnitKey": "H22-C-06-EQUATION",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "리프 '근의 합·곱'은 이차방정식 근과 계수의 관계이고 삼차방정식 세 근의 대칭식을 다루는 리프가 마스터에 없다.",
+      "firstUsed": {
+        "stem": "26_순천고_1학기_기말_고1_유사",
+        "qid": 7
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-11",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-CUBE-ROOT-OF-UNITY-CONJUGATE-POWER-SUM",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "x³=1의 허근 ω의 켤레·거듭제곱·합 성질 판정",
+      "definition": "$x^3=1$의 한 허근 $\\omega$가 $\\omega^2+\\omega+1=0$, $\\omega^3=1$, $\\overline{\\omega}=\\omega^2$를 만족함을 이용해 식의 값이나 거듭제곱의 합(지수 3주기)을 계산·판정하는 유형.",
+      "parentRpmRecordId": "H1-RPM-301",
+      "parentRpmL1": "방정식과 부등식",
+      "parentRpmL2": "복소수",
+      "parentRpmL3": "i의 거듭제곱",
+      "parentRpmL4": "주기성",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "parentTemplateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+      "standardUnitKey": "H22-C-04",
+      "subUnitKey": "H22-C-04-COMPLEX_ROOT",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "리프 '주기성'은 허수단위 $i$의 거듭제곱이며 $x^3=1$의 허근을 다루는 리프가 마스터에 없다.",
+      "firstUsed": {
+        "stem": "26_순천고_1학기_기말_고1_유사",
+        "qid": 8
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-11",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-SYSTEM-GEOMETRY-RATIO-PYTHAGOREAN-MODEL",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "도형의 길이 비와 피타고라스 관계를 이차 연립식으로 세워 풀기",
+      "definition": "도형의 변의 비와 대각선(지름) 조건을 비례 상수와 피타고라스 정리로 이차식을 포함한 방정식으로 세우고 풀어 길이와 넓이를 구하는 유형.",
+      "parentRpmRecordId": "H1-RPM-174",
+      "parentRpmL1": "방정식과 부등식",
+      "parentRpmL2": "여러 가지 방정식",
+      "parentRpmL3": "연립방정식",
+      "parentRpmL4": "이차식이 포함된 연립방정식",
+      "parentProblemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "parentTemplateKey": "TPL_H1_SYSTEM_DIRECT",
+      "standardUnitKey": "H22-C-06",
+      "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "리프 '이차식이 포함된 연립방정식'은 식이 주어진 연립이고, 도형 조건을 식으로 세우는 문장제 리프가 없다.",
+      "firstUsed": {
+        "stem": "26_순천고_1학기_기말_고1_유사",
+        "qid": 18
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-11",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedCrossConcepts": [
+    {
+      "key": "EXT-CROSS-COMPLEMENT-COUNTING",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "여사건을 이용한 경우의 수 세기",
+      "definition": "구하는 경우를 직접 세기 어려울 때 전체 경우의 수에서 조건에 반대되는 경우(여사건)의 수를 빼서 세는 개념. '적어도 하나', '이웃하지 않는' 같은 조건에서 쓴다.",
+      "parentKey": "CC_COMBINATORICS_COUNTING",
+      "parentLabelKo": "순열과 조합을 이용한 경우의 수",
+      "standardUnitKey": "H22-C-08",
+      "subUnitKey": "H22-C-08-PERMUTATION",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "기존 CrossConcept 중 전체에서 여사건을 빼서 경우의 수를 세는 개념을 따로 가리키는 키가 없다(확률 쪽 '여사건의 확률'은 확률 계산 개념이다).",
+      "firstUsed": {
+        "stem": "26_순천고_1학기_기말_고1_유사",
+        "qid": 3
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-11",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedConditions": [],
+  "reusedGeneratedKeys": [
+    {
+      "key": "EXT-L4-ABS-SUM-INEQUALITY-INTERVAL-SPLIT",
+      "definedIn": "archive/data/meta-foundation/extensions/similar-high/26_금당고_1학기_기말_고1_유사.registry.json",
+      "usedInQids": [
+        17
+      ]
+    }
+  ],
+  "aliasProposals": [],
+  "noStudentRelease": true
+}
