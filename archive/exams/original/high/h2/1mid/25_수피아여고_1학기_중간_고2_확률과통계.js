@@ -494,7 +494,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_수피아여고_1학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 1부터 9까지의 점도표에서 파란 점은 예시로 고른 수 2, 5, 8을 나타내며, 선택된 수끼리 이웃하지 않는다.",
+    "solutionImageCaption": "점은 1부터 9까지의 공을 나타내고, 파란 점은 서로 이웃하지 않는 세 수를 고른 예이다. 정답은 12분의 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -801,6 +805,10 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_수피아여고_1학기_중간_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 장이 6 또는 12인 경우와 첫 장이 2, 4, 8, 10일 때 두 장의 합이 6의 배수로 멈추는 모든 경로를 나타낸 수형도.",
+    "solutionImageCaption": "첫 장 6, 12는 바로 멈추며, 첫 장 2, 4, 8, 10 뒤에 멈추는 카드 순서를 모두 보인다. 정답은 5분의 2이다.",
+    "solutionImageSize": "full"
   }
 ];
