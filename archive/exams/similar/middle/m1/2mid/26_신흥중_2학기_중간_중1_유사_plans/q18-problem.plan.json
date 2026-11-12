@@ -1,35 +1,17 @@
 {
-  "capability": "construction-spike-v1",
-  "sourceQuote": "다음 그림과 같이 평면 위에 한 점 $C$를",
-  "caption": "Q18 기하학적 다이어그램 및 시각자료 관계도",
-  "mathPlan": {
-    "schemaVersion": "construction-spike-v1",
-    "nodes": [
-      {
-        "id": "O",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      }
-    ]
+  "source": {
+    "qid": "18",
+    "points": 5
   },
-  "assetPath": "assets/images/26_신흥중_2학기_중간_중1_유사/q18.svg",
-  "engineEvidence": {
-    "resultPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q18-problem-result.json",
-    "statePath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q18-problem-state.json",
-    "svgPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q18-problem.svg"
-  }
+  "strategy": "정삼각형 쌍의 SAS 회전 합동 및 꼭짓점 둘레 각의 합 360도 적용",
+  "visualWork": {
+    "status": "DEFERRED_TO_LATER_SVG_BATCH",
+    "requirement": "Two equilateral triangles ABC and CDE sharing C in the source arrangement; mark angle DBE=70° and target angle ADB.",
+    "sourceImageRef": "assets/images/26_신흥중_2학기_중간_중1_기출/q18.png",
+    "sourceImageFileFoundInOriginMain": false,
+    "reuseStatus": "NOT_VERIFIED"
+  },
+  "sourceSimilarityPlanStatus": "PROPOSED",
+  "status": "UNSUPPORTED",
+  "reason": "필요 그림: C를 공유하는 정삼각형 ABC·CDE의 배치, ∠DBE=70° 및 ∠ADB."
 }

@@ -1,35 +1,17 @@
 {
-  "capability": "construction-spike-v1",
-  "sourceQuote": "다음 그림에서 두 점 $M, N$은 각각 선",
-  "caption": "Q07 기하학적 다이어그램 및 시각자료 관계도",
-  "mathPlan": {
-    "schemaVersion": "construction-spike-v1",
-    "nodes": [
-      {
-        "id": "O",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      }
-    ]
+  "source": {
+    "qid": "7",
+    "points": 4
   },
-  "assetPath": "assets/images/26_신흥중_2학기_중간_중1_유사/q07.svg",
-  "engineEvidence": {
-    "resultPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q07-problem-result.json",
-    "statePath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q07-problem-state.json",
-    "svgPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q07-problem.svg"
-  }
+  "strategy": "선분 비례 미지수 설정 및 중점 합산 방정식 풀이",
+  "visualWork": {
+    "status": "NO_NEW_DIAGRAM_REQUIRED",
+    "requirement": "Text is sufficient after A-B-C order clarification; source image ref is provenance only.",
+    "sourceImageRef": "assets/images/26_신흥중_2학기_중간_중1_기출/q07.png",
+    "sourceImageFileFoundInOriginMain": false,
+    "reuseStatus": "NOT_APPLICABLE_FOR_CANDIDATE"
+  },
+  "sourceSimilarityPlanStatus": "PROPOSED",
+  "status": "EXEMPT",
+  "reason": "The corrected text gives point order, midpoint definitions, ratio, and MN length; no separate figure is required to determine the answer. The original JS image ref is provenance only."
 }

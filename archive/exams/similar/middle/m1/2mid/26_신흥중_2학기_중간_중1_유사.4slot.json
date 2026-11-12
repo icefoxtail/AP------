@@ -1,0 +1,1133 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사.js",
+  "sourceGitBlobSha": "5350422be44e8ec31d901a3372e0963627fab5ff",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex",
+    "at": "2026-11-12",
+    "role": "CREATE draft"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "status": "NOT_RUN",
+    "reason": "Independent 4-slot review pending"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "직선 $l$ 위에 네 점 $A, B, C, D$가 이 순서대로 놓여 있다. 다음 중 반직선 $\\overrightarrow{CA}$와 서로 같은 반직선은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "직선 $l$ 위에 네 점 $A, B, C, D$가 이 순서대로 놓여 있다. 다음 중 반직선 $\\overrightarrow{CA}$와 서로 같은 반직선은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "위치관계",
+            "src": "solution",
+            "quote": "반직선은 시작점과 뻗어나가는 방향이 모두 같아야 서로 같은 반직선이다. 직선 $l$ 위의 점의 배열 순서는 $A - B - C - D$이다. $$\\begin{aligned} \\text{반직선 } \\overrightarrow{CA} &: \\text{시작점 } C, \\text{ 방향: 왼쪽}(A \\text{ 방향}) \\ \\text{반직선 } \\overrightarrow{CB} &: \\text{시작점 } C, \\text{ 방향: 왼쪽}(B \\text{ 방향}) \\end{aligned}$$ 점 $B$는 점 $A$와 $C$ 사이에 있으므로 $\\overrightarrow{CB}$는 시작점이 $C$이고 왼쪽 방향으로 뻗어나간다. 따라서 시작점과 방향이 모두 일치하므로 $\\overrightarrow{CA} = \\overrightarrow{CB}$이다. ① $\\overrightarrow{AC}$는 시작점이 $A$이므로 다르다. ③ $\\overrightarrow{BA}$는 시작점이 $B$이므로 다르다. ④ $\\overrightarrow{CD}$는 시작점은 같으나 오른쪽 방향이므로 다르다. ⑤ $\\overrightarrow{DA}$는 시작점이 $D$이므로 다르다. 따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행선",
+            "src": "stem",
+            "quote": "두 직선 $l$과 $m$이 서로 평행하다. 횡단선들이 이루는 각에서 $\\angle x$는 위쪽 직선 $l$과의 교각 $70^\\circ$와 $40^\\circ$의 합의 동위각이고, $\\angle y$는 다른 횡단선에서 $40^\\circ$의 이웃각이다. 이때 $\\angle y - \\angle x$의 크기는?"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "두 직선 $l$과 $m$이 서로 평행하다. 횡단선들이 이루는 각에서 $\\angle x$는 위쪽 직선 $l$과의 교각 $70^\\circ$와 $40^\\circ$의 합의 동위각이고, $\\angle y$는 다른 횡단선에서 $40^\\circ$의 이웃각이다. 이때 $\\angle y - \\angle x$의 크기는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "두 직선 $l$과 $m$이 서로 평행하다. 횡단선들이 이루는 각에서 $\\angle x$는 위쪽 직선 $l$과의 교각 $70^\\circ$와 $40^\\circ$의 합의 동위각이고, $\\angle y$는 다른 횡단선에서 $40^\\circ$의 이웃각이다. 이때 $\\angle y - \\angle x$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "동위각",
+            "src": "solution",
+            "quote": "두 직선 $l$과 $m$이 평행하므로 동위각의 크기는 서로 같다. $$\\begin{aligned} \\angle x &= 70^\\circ + 40^\\circ = 110^\\circ \\ \\angle y &= 180^\\circ - 40^\\circ = 140^\\circ \\end{aligned}$$ 이다. 따라서 두 각의 차를 구하면 $$\\begin{aligned} \\angle y - \\angle x &= 140^\\circ - 110^\\circ \\ &= 30^\\circ \\end{aligned}$$ 이므로 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "다음 보기 중에서 $\\overline{AD} \\parallel \\overline{BC}$이고 $\\angle B = 90^\\circ$인 직각사다리꼴 $ABCD$에 대한 설명으로 옳은 것만을 있는 대로 고른 것은?\n\n\nㄱ. $\\overleftrightarrow{AD} \\parallel \\overleftrightarrow{BC}$ ㄴ. 점 $A$에서 $\\overleftrightarrow{BC}$에 내린 수선의 발은 점 $B$이다. ㄷ. $\\overleftrightarrow{AB}$와 $\\overleftrightarrow{CD}$는 꼬인 위치에 있다. ㄹ. $\\overleftrightarrow{AC} \\perp \\overleftrightarrow{BD}$"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "다음 보기 중에서 $\\overline{AD} \\parallel \\overline{BC}$이고 $\\angle B = 90^\\circ$인 직각사다리꼴 $ABCD$에 대한 설명으로 옳은 것만을 있는 대로 고른 것은?\n\n\nㄱ. $\\overleftrightarrow{AD} \\parallel \\overleftrightarrow{BC}$ ㄴ. 점 $A$에서 $\\overleftrightarrow{BC}$에 내린 수선의 발은 점 $B$이다. ㄷ. $\\overleftrightarrow{AB}$와 $\\overleftrightarrow{CD}$는 꼬인 위치에 있다. ㄹ. $\\overleftrightarrow{AC} \\perp \\overleftrightarrow{BD}$"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 보기 중에서 $\\overline{AD} \\parallel \\overline{BC}$이고 $\\angle B = 90^\\circ$인 직각사다리꼴 $ABCD$에 대한 설명으로 옳은 것만을 있는 대로 고른 것은?\n\n\nㄱ. $\\overleftrightarrow{AD} \\parallel \\overleftrightarrow{BC}$ ㄴ. 점 $A$에서 $\\overleftrightarrow{BC}$에 내린 수선의 발은 점 $B$이다. ㄷ. $\\overleftrightarrow{AB}$와 $\\overleftrightarrow{CD}$는 꼬인 위치에 있다. ㄹ. $\\overleftrightarrow{AC} \\perp \\overleftrightarrow{BD}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 보기 중에서 $\\overline{AD} \\parallel \\overline{BC}$이고 $\\angle B = 90^\\circ$인 직각사다리꼴 $ABCD$에 대한 설명으로 옳은 것만을 있는 대로 고른 것은?\n\n\nㄱ. $\\overleftrightarrow{AD} \\parallel \\overleftrightarrow{BC}$ ㄴ. 점 $A$에서 $\\overleftrightarrow{BC}$에 내린 수선의 발은 점 $B$이다. ㄷ. $\\overleftrightarrow{AB}$와 $\\overleftrightarrow{CD}$는 꼬인 위치에 있다. ㄹ. $\\overleftrightarrow{AC} \\perp \\overleftrightarrow{BD}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "사다리꼴 $ABCD$의 변과 직선의 위치 관계를 검토한다. $$\\begin{aligned} \\text{ㄱ: } \\overleftrightarrow{AD} \\parallel \\overleftrightarrow{BC} &\\implies \\text{사다리꼴 밑변의 평행 정의에 의해 참} \\ \\text{ㄴ: } \\angle B = 90^\\circ &\\implies \\overline{AB} \\perp \\overline{BC}\\text{이므로 수선의 발은 점 } B \\text{ (참)} \\ \\text{ㄷ: } \\overleftrightarrow{AB}, \\overleftrightarrow{CD} &\\implies \\text{한 평면 위에서 만나므로 꼬인 위치 아님 (거짓)} \\ \\text{ㄹ: } \\overleftrightarrow{AC}, \\overleftrightarrow{BD} &\\implies \\text{직교 조건 없음 (거짓)} \\end{aligned}$$ 따라서 옳은 것은 ㄱ, ㄴ이며 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          },
+          {
+            "term": "위치관계",
+            "src": "solution",
+            "quote": "사다리꼴 $ABCD$의 변과 직선의 위치 관계를 검토한다. $$\\begin{aligned} \\text{ㄱ: } \\overleftrightarrow{AD} \\parallel \\overleftrightarrow{BC} &\\implies \\text{사다리꼴 밑변의 평행 정의에 의해 참} \\ \\text{ㄴ: } \\angle B = 90^\\circ &\\implies \\overline{AB} \\perp \\overline{BC}\\text{이므로 수선의 발은 점 } B \\text{ (참)} \\ \\text{ㄷ: } \\overleftrightarrow{AB}, \\overleftrightarrow{CD} &\\implies \\text{한 평면 위에서 만나므로 꼬인 위치 아님 (거짓)} \\ \\text{ㄹ: } \\overleftrightarrow{AC}, \\overleftrightarrow{BD} &\\implies \\text{직교 조건 없음 (거짓)} \\end{aligned}$$ 따라서 옳은 것은 ㄱ, ㄴ이며 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "평행선",
+            "src": "stem",
+            "quote": "직선 $l$ 위에 있지 않은 한 점 $P$를 지나고 직선 $l$과 평행한 직선을 작도하는 과정에 대한 설명 중 옳은 것만을 보기에서 모두 고른 것은?\n\n\nㄱ. 동위각의 크기가 같으면 두 직선이 평행하다는 성질을 이용한다. ㄴ. 점 $Q$를 중심으로 하는 원호와 점 $P$를 중심으로 하는 원호는 반지름의 길이가 같다. ㄷ. 눈금 없는 자만 사용하여 선분의 길이를 그대로 복사한다."
+          },
+          {
+            "term": "작도",
+            "src": "stem",
+            "quote": "직선 $l$ 위에 있지 않은 한 점 $P$를 지나고 직선 $l$과 평행한 직선을 작도하는 과정에 대한 설명 중 옳은 것만을 보기에서 모두 고른 것은?\n\n\nㄱ. 동위각의 크기가 같으면 두 직선이 평행하다는 성질을 이용한다. ㄴ. 점 $Q$를 중심으로 하는 원호와 점 $P$를 중심으로 하는 원호는 반지름의 길이가 같다. ㄷ. 눈금 없는 자만 사용하여 선분의 길이를 그대로 복사한다."
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "직선 $l$ 위에 있지 않은 한 점 $P$를 지나고 직선 $l$과 평행한 직선을 작도하는 과정에 대한 설명 중 옳은 것만을 보기에서 모두 고른 것은?\n\n\nㄱ. 동위각의 크기가 같으면 두 직선이 평행하다는 성질을 이용한다. ㄴ. 점 $Q$를 중심으로 하는 원호와 점 $P$를 중심으로 하는 원호는 반지름의 길이가 같다. ㄷ. 눈금 없는 자만 사용하여 선분의 길이를 그대로 복사한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "직선 $l$ 위에 있지 않은 한 점 $P$를 지나고 직선 $l$과 평행한 직선을 작도하는 과정에 대한 설명 중 옳은 것만을 보기에서 모두 고른 것은?\n\n\nㄱ. 동위각의 크기가 같으면 두 직선이 평행하다는 성질을 이용한다. ㄴ. 점 $Q$를 중심으로 하는 원호와 점 $P$를 중심으로 하는 원호는 반지름의 길이가 같다. ㄷ. 눈금 없는 자만 사용하여 선분의 길이를 그대로 복사한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "작도",
+            "src": "solution",
+            "quote": "평행선의 작도 원리와 도구의 성질을 검토한다. $$\\begin{aligned} \\text{ㄱ: } &\\text{동위각의 크기가 같으면 두 직선이 평행하다는 기하학적 성질을 이용하므로 참이다.} \\ \\text{ㄴ: } &\\text{크기가 같은 각을 작도할 때 두 점 } Q, P\\text{에서 같은 반지름의 호를 그리므로 참이다.} \\ \\text{ㄷ: } &\\text{선분의 길이를 재어 옮길 때는 컴퍼스를 사용해야 하므로 거짓이다.} \\end{aligned}$$ 따라서 옳은 것은 ㄱ, ㄴ이며 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          },
+          {
+            "term": "동위각",
+            "src": "solution",
+            "quote": "평행선의 작도 원리와 도구의 성질을 검토한다. $$\\begin{aligned} \\text{ㄱ: } &\\text{동위각의 크기가 같으면 두 직선이 평행하다는 기하학적 성질을 이용하므로 참이다.} \\ \\text{ㄴ: } &\\text{크기가 같은 각을 작도할 때 두 점 } Q, P\\text{에서 같은 반지름의 호를 그리므로 참이다.} \\ \\text{ㄷ: } &\\text{선분의 길이를 재어 옮길 때는 컴퍼스를 사용해야 하므로 거짓이다.} \\end{aligned}$$ 따라서 옳은 것은 ㄱ, ㄴ이며 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "한 꼭짓점에서 그을 수 있는 대각선의 개수가 $9$개인 다각형의 모든 대각선의 총 개수는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "한 꼭짓점에서 그을 수 있는 대각선의 개수가 $9$개인 다각형의 모든 대각선의 총 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "$n$각형의 한 꼭짓점에서 그을 수 있는 대각선의 개수는 $n - 3$개이다. $$\\begin{aligned} n - 3 &= 9 \\ n &= 12 \\end{aligned}$$ 이다. 즉 이 다각형은 십이각형이다. $n$각형의 모든 대각선의 총 개수는 $\\dfrac{n(n-3)}{2}$개이므로 $$\\begin{aligned} \\dfrac{12 \\times (12 - 3)}{2} &= \\dfrac{12 \\times 9}{2} \\ &= 6 \\times 9 \\ &= 54\\text{개} \\end{aligned}$$ 이다. 따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "한 원에서 부채꼴의 호의 길이는 중심각의 크기에 정비례한다. 중심각의 크기가 $40^\\circ$인 부채꼴의 호의 길이가 $4\\text{ cm}$일 때, 중심각의 크기가 $120^\\circ$인 부채꼴의 호의 길이는?"
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "한 원에서 부채꼴의 호의 길이는 중심각의 크기에 정비례한다. 중심각의 크기가 $40^\\circ$인 부채꼴의 호의 길이가 $4\\text{ cm}$일 때, 중심각의 크기가 $120^\\circ$인 부채꼴의 호의 길이는?"
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "한 원에서 부채꼴의 호의 길이는 중심각의 크기에 정비례한다. 중심각의 크기가 $40^\\circ$인 부채꼴의 호의 길이가 $4\\text{ cm}$일 때, 중심각의 크기가 $120^\\circ$인 부채꼴의 호의 길이는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "한 원에서 부채꼴의 호의 길이는 중심각의 크기에 정비례한다. 중심각의 크기가 $40^\\circ$인 부채꼴의 호의 길이가 $4\\text{ cm}$일 때, 중심각의 크기가 $120^\\circ$인 부채꼴의 호의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "같은 원에서 부채꼴의 호의 길이는 중심각의 크기에 정비례한다. 구하는 호의 길이를 $x\\text{ cm}$라 하면 $$\\begin{aligned} x : 4 &= 120^\\circ : 40^\\circ \\ x : 4 &= 3 : 1 \\ x &= 4 \\times 3 = 12\\text{ cm} \\end{aligned}$$ 이다. 따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "직선 위에 세 점 $A, B, C$가 이 순서대로 놓여 있다. 점 $M$은 $\\overline{AB}$의 중점이고, 점 $N$은 $\\overline{BC}$의 중점이다. $\\overline{AB} = 3\\overline{BC}$이고 $\\overline{MN} = 10\\text{ cm}$일 때, 선분 $\\overline{AB}$의 길이는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "직선 위에 세 점 $A, B, C$가 이 순서대로 놓여 있다. 점 $M$은 $\\overline{AB}$의 중점이고, 점 $N$은 $\\overline{BC}$의 중점이다. $\\overline{AB} = 3\\overline{BC}$이고 $\\overline{MN} = 10\\text{ cm}$일 때, 선분 $\\overline{AB}$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "선분",
+            "src": "solution",
+            "quote": "$\\overline{BC} = x\\text{ cm}$라 하면 조건에서 $\\overline{AB} = 3x\\text{ cm}$이다. 점 $M$은 $\\overline{AB}$의 중점이므로 $$\\begin{aligned} \\overline{MB} &= \\dfrac{3x}{2}\\text{ cm} \\end{aligned}$$ 이다. 점 $N$은 $\\overline{BC}$의 중점이므로 $$\\begin{aligned} \\overline{BN} &= \\dfrac{x}{2}\\text{ cm} \\end{aligned}$$ 이다. 점의 순서가 $A - M - B - N - C$이므로 선분 $MN$의 길이는 $$\\begin{aligned} \\overline{MN} &= \\overline{MB} + \\overline{BN} \\ &= \\dfrac{3x}{2} + \\dfrac{x}{2} \\ &= 2x = 10\\text{ cm} \\end{aligned}$$ 이다. 따라서 $x = 5\\text{ cm}$이다. 그러므로 구하는 선분 $\\overline{AB}$의 길이는 $$\\begin{aligned} \\overline{AB} &= 3x = 3 \\times 5 = 15\\text{ cm} \\end{aligned}$$ 이다. 따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "정육면체에서 한 모서리와 수직으로 만나는 모서리의 개수를 $a$, 꼬인 위치에 있는 모서리의 개수를 $b$라 할 때, $a+b$의 값은?"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "정육면체에서 한 모서리와 수직으로 만나는 모서리의 개수를 $a$, 꼬인 위치에 있는 모서리의 개수를 $b$라 할 때, $a+b$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "꼬인위치",
+            "src": "stem",
+            "quote": "정육면체에서 한 모서리와 수직으로 만나는 모서리의 개수를 $a$, 꼬인 위치에 있는 모서리의 개수를 $b$라 할 때, $a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "위치관계",
+            "src": "solution",
+            "quote": "정육면체의 총 모서리의 개수는 $12$개이다. 특정한 한 모서리를 기준으로 다른 모서리들과의 위치 관계를 분류한다. $$\\begin{aligned} \\text{1) 수직으로 만나는 모서리}: &\\text{ 양 끝 꼭짓점에서 각각 2개씩 만나므로 } a = 4 \\ \\text{2) 평행한 모서리}: &\\text{ 마주 보는 방향으로 3개} \\ \\text{3) 자기 자신}: &\\text{ 1개} \\end{aligned}$$ 공간에서 두 직선이 만나지도 않고 평행하지도 않은 위치가 꼬인 위치이므로 $$\\begin{aligned} b &= 12 - (1 + 4 + 3) \\ &= 12 - 8 = 4 \\end{aligned}$$ 이다. 따라서 $a+b$의 값은 $$\\begin{aligned} a + b &= 4 + 4 = 8 \\end{aligned}$$ 이므로 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행선",
+            "src": "stem",
+            "quote": "두 직선 $l$과 $m$이 서로 평행하다. 꺾인 두 점을 지나는 꺾은선에서 위쪽 직선 $l$과 이루는 각이 $35^\\circ$이고, 오른쪽 꺾인 점의 각이 $80^\\circ$일 때, 그림의 두 각 $\\angle x, \\angle y$에 대하여 $\\angle x + \\angle y$의 크기는?"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "두 직선 $l$과 $m$이 서로 평행하다. 꺾인 두 점을 지나는 꺾은선에서 위쪽 직선 $l$과 이루는 각이 $35^\\circ$이고, 오른쪽 꺾인 점의 각이 $80^\\circ$일 때, 그림의 두 각 $\\angle x, \\angle y$에 대하여 $\\angle x + \\angle y$의 크기는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "두 직선 $l$과 $m$이 서로 평행하다. 꺾인 두 점을 지나는 꺾은선에서 위쪽 직선 $l$과 이루는 각이 $35^\\circ$이고, 오른쪽 꺾인 점의 각이 $80^\\circ$일 때, 그림의 두 각 $\\angle x, \\angle y$에 대하여 $\\angle x + \\angle y$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "꺾인 점들을 지나고 두 직선 $l, m$에 평행한 보조선을 각각 긋는다. 엇각의 크기가 같으므로 왼쪽 꺾인 점의 각 $x$는 $$\\begin{aligned} x &= 35^\\circ + t^\\circ \\end{aligned}$$ 로 나뉜다 (단, $t^\\circ$는 오른쪽으로 내려가는 선분이 수평 보조선과 이루는 엇각). 오른쪽 꺾인 점에서도 평행선에 의한 엇각에 의해 $$\\begin{aligned} t^\\circ + y &= 80^\\circ \\end{aligned}$$ 이다. 따라서 두 각의 합은 $$\\begin{aligned} x + y &= (35^\\circ + t^\\circ) + y \\ &= 35^\\circ + (t^\\circ + y) \\ &= 35^\\circ + 80^\\circ = 115^\\circ \\end{aligned}$$ 이므로 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 보기 중 $\\triangle ABC$가 오직 하나로 정해지는 것만을 있는 대로 고른 것은?\n\n\nㄱ. $\\overline{AB} = 4\\text{ cm}, \\overline{BC} = 5\\text{ cm}, \\overline{CA} = 10\\text{ cm}$ ㄴ. $\\overline{AB} = 6\\text{ cm}, \\overline{BC} = 8\\text{ cm}, \\angle B = 45^\\circ$ ㄷ. $\\angle A = 40^\\circ, \\angle B = 60^\\circ, \\angle C = 80^\\circ$ ㄹ. $\\overline{BC} = 7\\text{ cm}, \\angle B = 50^\\circ, \\angle C = 65^\\circ$"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "다음 보기 중 $\\triangle ABC$가 오직 하나로 정해지는 것만을 있는 대로 고른 것은?\n\n\nㄱ. $\\overline{AB} = 4\\text{ cm}, \\overline{BC} = 5\\text{ cm}, \\overline{CA} = 10\\text{ cm}$ ㄴ. $\\overline{AB} = 6\\text{ cm}, \\overline{BC} = 8\\text{ cm}, \\angle B = 45^\\circ$ ㄷ. $\\angle A = 40^\\circ, \\angle B = 60^\\circ, \\angle C = 80^\\circ$ ㄹ. $\\overline{BC} = 7\\text{ cm}, \\angle B = 50^\\circ, \\angle C = 65^\\circ$"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 보기 중 $\\triangle ABC$가 오직 하나로 정해지는 것만을 있는 대로 고른 것은?\n\n\nㄱ. $\\overline{AB} = 4\\text{ cm}, \\overline{BC} = 5\\text{ cm}, \\overline{CA} = 10\\text{ cm}$ ㄴ. $\\overline{AB} = 6\\text{ cm}, \\overline{BC} = 8\\text{ cm}, \\angle B = 45^\\circ$ ㄷ. $\\angle A = 40^\\circ, \\angle B = 60^\\circ, \\angle C = 80^\\circ$ ㄹ. $\\overline{BC} = 7\\text{ cm}, \\angle B = 50^\\circ, \\angle C = 65^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 보기 중 $\\triangle ABC$가 오직 하나로 정해지는 것만을 있는 대로 고른 것은?\n\n\nㄱ. $\\overline{AB} = 4\\text{ cm}, \\overline{BC} = 5\\text{ cm}, \\overline{CA} = 10\\text{ cm}$ ㄴ. $\\overline{AB} = 6\\text{ cm}, \\overline{BC} = 8\\text{ cm}, \\angle B = 45^\\circ$ ㄷ. $\\angle A = 40^\\circ, \\angle B = 60^\\circ, \\angle C = 80^\\circ$ ㄹ. $\\overline{BC} = 7\\text{ cm}, \\angle B = 50^\\circ, \\angle C = 65^\\circ$"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "삼각형의 유일 결정 조건을 검토한다. $$\\begin{aligned} \\text{ㄱ: } 10 &\\ge 4 + 5 = 9 \\implies \\text{삼각부등식 위배로 삼각형 불성립} \\ \\text{ㄴ: } \\overline{AB}=6, \\overline{BC}=8, \\angle B=45^\\circ &\\implies \\text{두 변과 끼인각이므로 SAS 유일 결정 (참)} \\ \\text{ㄷ: } \\text{세 각만 주어짐} &\\implies \\text{크기가 무수히 많음 (거짓)} \\ \\text{ㄹ: } \\overline{BC}=7, \\angle B=50^\\circ, \\angle C=65^\\circ &\\implies \\text{한 변과 양 끝 각이므로 ASA 유일 결정 (참)} \\end{aligned}$$ 따라서 $\\triangle ABC$가 하나로 정해지는 것은 ㄴ, ㄹ이며 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "길이가 $14\\text{ cm}$인 철사를 남김없이 구부려 세 변의 길이가 모두 자연수인 삼각형을 만들려고 한다. 만들 수 있는 서로 다른 삼각형은 모두 몇 가지인가? (단, 합동인 삼각형은 하나로 센다.)"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "길이가 $14\\text{ cm}$인 철사를 남김없이 구부려 세 변의 길이가 모두 자연수인 삼각형을 만들려고 한다. 만들 수 있는 서로 다른 삼각형은 모두 몇 가지인가? (단, 합동인 삼각형은 하나로 센다.)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "길이가 $14\\text{ cm}$인 철사를 남김없이 구부려 세 변의 길이가 모두 자연수인 삼각형을 만들려고 한다. 만들 수 있는 서로 다른 삼각형은 모두 몇 가지인가? (단, 합동인 삼각형은 하나로 센다.)"
+          }
+        ],
+        "method": [
+          {
+            "term": "선분",
+            "src": "solution",
+            "quote": "삼각형의 세 변의 길이를 $a, b, c$ ($a \\le b \\le c$)라 하자. 세 변의 길이의 합이 $14$이므로 $a + b + c = 14$이다. 삼각부등식에 의해 가장 긴 변 $c$는 나머지 두 변의 합보다 작아야 하므로 $$\\begin{aligned} c &< a + b = 14 - c \\ 2c &< 14 \\ c &\\le 6 \\end{aligned}$$ 이다. 또한 $3c \\ge a + b + c = 14$이므로 $c \\ge 5$이다. 따라서 가능한 $c$의 값은 $5$ 또는 $6$이다. $$\\begin{aligned}\n\n\n1. \\ c = 6: &\\ a + b = 8, \\ a \\le b \\le 6 \\implies (2, 6, 6), (3, 5, 6), (4, 4, 6) \\text{ (3가지)} \\\n2. \\ c = 5: &\\ a + b = 9, \\ a \\le b \\le 5 \\implies (4, 5, 5) \\text{ (1가지)} \\end{aligned}$$ 따라서 만들 수 있는 서로 다른 삼각형은 총 $3 + 1 = 4$가지이다. 그러므로 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "정삼각형",
+            "src": "stem",
+            "quote": "선분 $AB$ 위에 한 점 $C$를 잡고, 선분 $AC, BC$를 각각 한 변으로 하는 정삼각형 $ACD$와 $CBE$를 직선 $AB$의 위쪽에 만들었다. 선분 $AE$와 $BD$의 교점을 $P$라 할 때, 다음 설명 중 옳지 않은 것은?"
+          },
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "선분 $AB$ 위에 한 점 $C$를 잡고, 선분 $AC, BC$를 각각 한 변으로 하는 정삼각형 $ACD$와 $CBE$를 직선 $AB$의 위쪽에 만들었다. 선분 $AE$와 $BD$의 교점을 $P$라 할 때, 다음 설명 중 옳지 않은 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "선분 $AB$ 위에 한 점 $C$를 잡고, 선분 $AC, BC$를 각각 한 변으로 하는 정삼각형 $ACD$와 $CBE$를 직선 $AB$의 위쪽에 만들었다. 선분 $AE$와 $BD$의 교점을 $P$라 할 때, 다음 설명 중 옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "두 정삼각형 $ACD, CBE$에서 $$\\begin{aligned} \\overline{AC} &= \\overline{DC} \\ \\overline{CE} &= \\overline{CB} \\ \\angle ACE &= 60^\\circ + 60^\\circ = 120^\\circ = \\angle DCB \\end{aligned}$$ 이므로 두 변의 길이와 그 끼인각이 각각 같다. 따라서 $\\triangle ACE \\equiv \\triangle DCB$ (SAS 합동)이다. 합동에 의해 대응변 $\\overline{AE} = \\overline{BD}$이므로 ①과 ②는 참이다. 대응각 $\\angle CAE = \\angle CDB$이므로 ③도 참이다. $\\angle AEC$에 대응하는 각은 $\\angle DBC$이지 $\\angle BDC$가 아니다. 따라서 ④는 옳지 않다. $\\angle APD$는 삼각형 내각과 외각 관계에 의해 $60^\\circ$이므로 ⑤도 참이다. 따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "정다각형",
+            "src": "stem",
+            "quote": "정육각형의 한 내각의 크기를 $\\angle a$, 정팔각형의 한 내각의 크기를 $\\angle b$, 정육각형의 한 외각의 크기를 $\\angle c$, 정팔각형의 한 외각의 크기를 $\\angle d$라 할 때, 다음 중 옳지 않은 것은?"
+          },
+          {
+            "term": "내각",
+            "src": "stem",
+            "quote": "정육각형의 한 내각의 크기를 $\\angle a$, 정팔각형의 한 내각의 크기를 $\\angle b$, 정육각형의 한 외각의 크기를 $\\angle c$, 정팔각형의 한 외각의 크기를 $\\angle d$라 할 때, 다음 중 옳지 않은 것은?"
+          },
+          {
+            "term": "외각",
+            "src": "stem",
+            "quote": "정육각형의 한 내각의 크기를 $\\angle a$, 정팔각형의 한 내각의 크기를 $\\angle b$, 정육각형의 한 외각의 크기를 $\\angle c$, 정팔각형의 한 외각의 크기를 $\\angle d$라 할 때, 다음 중 옳지 않은 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "정육각형의 한 내각의 크기를 $\\angle a$, 정팔각형의 한 내각의 크기를 $\\angle b$, 정육각형의 한 외각의 크기를 $\\angle c$, 정팔각형의 한 외각의 크기를 $\\angle d$라 할 때, 다음 중 옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "정다각형의 내각과 외각의 크기를 각각 계산한다. $$\\begin{aligned} \\angle a &= \\dfrac{(6 - 2) \\times 180^\\circ}{6} = \\dfrac{720^\\circ}{6} = 120^\\circ \\ \\angle b &= \\dfrac{(8 - 2) \\times 180^\\circ}{8} = \\dfrac{1080^\\circ}{8} = 135^\\circ \\ \\angle c &= \\dfrac{360^\\circ}{6} = 60^\\circ \\ \\angle d &= \\dfrac{360^\\circ}{8} = 45^\\circ \\end{aligned}$$ 정육각형의 한 내각은 $120^\\circ$이므로 $\\angle a = 108^\\circ$라는 설명은 옳지 않다 ($108^\\circ$는 정오각형의 한 내각). ⑤ $\\angle a + \\angle b = 120^\\circ + 135^\\circ = 255^\\circ$는 참이다. 따라서 옳지 않은 것은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "정다각형의 내각과 외각의 크기를 각각 계산한다. $$\\begin{aligned} \\angle a &= \\dfrac{(6 - 2) \\times 180^\\circ}{6} = \\dfrac{720^\\circ}{6} = 120^\\circ \\ \\angle b &= \\dfrac{(8 - 2) \\times 180^\\circ}{8} = \\dfrac{1080^\\circ}{8} = 135^\\circ \\ \\angle c &= \\dfrac{360^\\circ}{6} = 60^\\circ \\ \\angle d &= \\dfrac{360^\\circ}{8} = 45^\\circ \\end{aligned}$$ 정육각형의 한 내각은 $120^\\circ$이므로 $\\angle a = 108^\\circ$라는 설명은 옳지 않다 ($108^\\circ$는 정오각형의 한 내각). ⑤ $\\angle a + \\angle b = 120^\\circ + 135^\\circ = 255^\\circ$는 참이다. 따라서 옳지 않은 것은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정다각형",
+            "src": "stem",
+            "quote": "한 외각의 크기가 $36^\\circ$인 정다각형의 내각의 크기의 합은?"
+          },
+          {
+            "term": "외각",
+            "src": "stem",
+            "quote": "한 외각의 크기가 $36^\\circ$인 정다각형의 내각의 크기의 합은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "내각",
+            "src": "stem",
+            "quote": "한 외각의 크기가 $36^\\circ$인 정다각형의 내각의 크기의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "정다각형의 외각의 크기의 합은 $360^\\circ$이므로 이 정다각형의 변의 개수 $n$은 $$\\begin{aligned} n &= \\dfrac{360^\\circ}{36^\\circ} = 10 \\end{aligned}$$ 이다. 즉 이 정다각형은 정십각형이다. $n$각형의 내각의 크기의 합 공식은 $(n - 2) \\times 180^\\circ$이므로 $$\\begin{aligned} (10 - 2) \\times 180^\\circ &= 8 \\times 180^\\circ \\ &= 1440^\\circ \\end{aligned}$$ 이다. 따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "정다각형의 외각의 크기의 합은 $360^\\circ$이므로 이 정다각형의 변의 개수 $n$은 $$\\begin{aligned} n &= \\dfrac{360^\\circ}{36^\\circ} = 10 \\end{aligned}$$ 이다. 즉 이 정다각형은 정십각형이다. $n$각형의 내각의 크기의 합 공식은 $(n - 2) \\times 180^\\circ$이므로 $$\\begin{aligned} (10 - 2) \\times 180^\\circ &= 8 \\times 180^\\circ \\ &= 1440^\\circ \\end{aligned}$$ 이다. 따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "선분 $AB$를 지름으로 하는 반원 $O$ 위에 두 점 $C, D$가 있다. $\\overline{OC} \\parallel \\overline{BD}$이고 호 $AC$의 길이가 $6\\text{ cm}$, 호 $BD$의 길이가 $12\\text{ cm}$일 때, $\\angle AOC$의 크기는?"
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "선분 $AB$를 지름으로 하는 반원 $O$ 위에 두 점 $C, D$가 있다. $\\overline{OC} \\parallel \\overline{BD}$이고 호 $AC$의 길이가 $6\\text{ cm}$, 호 $BD$의 길이가 $12\\text{ cm}$일 때, $\\angle AOC$의 크기는?"
+          },
+          {
+            "term": "평행선",
+            "src": "stem",
+            "quote": "선분 $AB$를 지름으로 하는 반원 $O$ 위에 두 점 $C, D$가 있다. $\\overline{OC} \\parallel \\overline{BD}$이고 호 $AC$의 길이가 $6\\text{ cm}$, 호 $BD$의 길이가 $12\\text{ cm}$일 때, $\\angle AOC$의 크기는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "선분 $AB$를 지름으로 하는 반원 $O$ 위에 두 점 $C, D$가 있다. $\\overline{OC} \\parallel \\overline{BD}$이고 호 $AC$의 길이가 $6\\text{ cm}$, 호 $BD$의 길이가 $12\\text{ cm}$일 때, $\\angle AOC$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "$\\angle AOC = x^\\circ$라 하자. $\\overline{OC} \\parallel \\overline{BD}$이므로 동위각에 의해 $\\angle OBD = x^\\circ$이다. $\\triangle OBD$는 반지름 $\\overline{OB} = \\overline{OD}$인 이등변삼각형이므로 $$\\begin{aligned} \\angle ODB &= \\angle OBD = x^\\circ \\ \\angle BOD &= 180^\\circ - 2x^\\circ \\end{aligned}$$ 이다. 호의 길이는 중심각의 크기에 정비례하므로 $$\\begin{aligned} \\dfrac{x}{180 - 2x} &= \\dfrac{\\overset{\\frown}{AC}}{\\overset{\\frown}{BD}} = \\dfrac{6}{12} = \\dfrac{1}{2} \\ 2x &= 180 - 2x \\ 4x &= 180 \\ x &= 45 \\end{aligned}$$ 이다. 따라서 $\\angle AOC = 45^\\circ$이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          },
+          {
+            "term": "동위각",
+            "src": "solution",
+            "quote": "$\\angle AOC = x^\\circ$라 하자. $\\overline{OC} \\parallel \\overline{BD}$이므로 동위각에 의해 $\\angle OBD = x^\\circ$이다. $\\triangle OBD$는 반지름 $\\overline{OB} = \\overline{OD}$인 이등변삼각형이므로 $$\\begin{aligned} \\angle ODB &= \\angle OBD = x^\\circ \\ \\angle BOD &= 180^\\circ - 2x^\\circ \\end{aligned}$$ 이다. 호의 길이는 중심각의 크기에 정비례하므로 $$\\begin{aligned} \\dfrac{x}{180 - 2x} &= \\dfrac{\\overset{\\frown}{AC}}{\\overset{\\frown}{BD}} = \\dfrac{6}{12} = \\dfrac{1}{2} \\ 2x &= 180 - 2x \\ 4x &= 180 \\ x &= 45 \\end{aligned}$$ 이다. 따라서 $\\angle AOC = 45^\\circ$이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "지름의 길이가 $12\\text{ cm}$인 반원에서 지름 $BC$를 밑변으로 하는 이등변삼각형 $ABC$를 그렸을 때, 반원과 변 $AB, AC$가 만나는 점을 각각 $D, E$라 하자. 꼭지각 $\\angle A = 60^\\circ$일 때, 부채꼴 $DOE$의 넓이는?"
+          },
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "지름의 길이가 $12\\text{ cm}$인 반원에서 지름 $BC$를 밑변으로 하는 이등변삼각형 $ABC$를 그렸을 때, 반원과 변 $AB, AC$가 만나는 점을 각각 $D, E$라 하자. 꼭지각 $\\angle A = 60^\\circ$일 때, 부채꼴 $DOE$의 넓이는?"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "지름의 길이가 $12\\text{ cm}$인 반원에서 지름 $BC$를 밑변으로 하는 이등변삼각형 $ABC$를 그렸을 때, 반원과 변 $AB, AC$가 만나는 점을 각각 $D, E$라 하자. 꼭지각 $\\angle A = 60^\\circ$일 때, 부채꼴 $DOE$의 넓이는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "지름의 길이가 $12\\text{ cm}$인 반원에서 지름 $BC$를 밑변으로 하는 이등변삼각형 $ABC$를 그렸을 때, 반원과 변 $AB, AC$가 만나는 점을 각각 $D, E$라 하자. 꼭지각 $\\angle A = 60^\\circ$일 때, 부채꼴 $DOE$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "반원의 반지름은 $r = \\dfrac{12}{2} = 6\\text{ cm}$이다. $\\triangle ABC$는 $\\overline{AB} = \\overline{AC}$인 이등변삼각형이고 $\\angle A = 60^\\circ$이므로 밑각은 $$\\begin{aligned} \\angle B = \\angle C &= \\dfrac{180^\\circ - 60^\\circ}{2} = 60^\\circ \\end{aligned}$$ 이다 (즉 정삼각형이다). $\\overline{OB} = \\overline{OD} = 6\\text{ cm}$이므로 $\\triangle OBD$는 밑각이 $60^\\circ$인 정삼각형이다. 따라서 $\\angle BOD = 60^\\circ$이다. 마찬가지로 $\\overline{OC} = \\overline{OE} = 6\\text{ cm}$이므로 $\\angle EOC = 60^\\circ$이다. 반원의 중심각 $180^\\circ$에서 양쪽 각을 빼면 부채꼴 $DOE$의 중심각은 $$\\begin{aligned} \\angle DOE &= 180^\\circ - (60^\\circ + 60^\\circ) = 60^\\circ \\end{aligned}$$ 이다. 따라서 부채꼴 $DOE$의 넓이는 $$\\begin{aligned} \\pi \\times 6^2 \\times \\dfrac{60^\\circ}{360^\\circ} &= 36\\pi \\times \\dfrac{1}{6} \\ &= 6\\pi\\text{ cm}^2 \\end{aligned}$$ 이다. 따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "반원의 반지름은 $r = \\dfrac{12}{2} = 6\\text{ cm}$이다. $\\triangle ABC$는 $\\overline{AB} = \\overline{AC}$인 이등변삼각형이고 $\\angle A = 60^\\circ$이므로 밑각은 $$\\begin{aligned} \\angle B = \\angle C &= \\dfrac{180^\\circ - 60^\\circ}{2} = 60^\\circ \\end{aligned}$$ 이다 (즉 정삼각형이다). $\\overline{OB} = \\overline{OD} = 6\\text{ cm}$이므로 $\\triangle OBD$는 밑각이 $60^\\circ$인 정삼각형이다. 따라서 $\\angle BOD = 60^\\circ$이다. 마찬가지로 $\\overline{OC} = \\overline{OE} = 6\\text{ cm}$이므로 $\\angle EOC = 60^\\circ$이다. 반원의 중심각 $180^\\circ$에서 양쪽 각을 빼면 부채꼴 $DOE$의 중심각은 $$\\begin{aligned} \\angle DOE &= 180^\\circ - (60^\\circ + 60^\\circ) = 60^\\circ \\end{aligned}$$ 이다. 따라서 부채꼴 $DOE$의 넓이는 $$\\begin{aligned} \\pi \\times 6^2 \\times \\dfrac{60^\\circ}{360^\\circ} &= 36\\pi \\times \\dfrac{1}{6} \\ &= 6\\pi\\text{ cm}^2 \\end{aligned}$$ 이다. 따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "공간에서 서로 다른 세 직선 $l, m, n$과 서로 다른 두 평면 $P, Q$에 대한 설명 중 옳은 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "공간에서 서로 다른 세 직선 $l, m, n$과 서로 다른 두 평면 $P, Q$에 대한 설명 중 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "위치관계",
+            "src": "solution",
+            "quote": "공간에서 직선과 평면의 위치 관계를 검토한다. $$\\begin{aligned} \\text{①: } l \\parallel P, m \\parallel P &\\implies \\text{공간에서 } l, m\\text{은 평행하거나 만나거나 꼬인 위치일 수 있음 (거짓)} \\ \\text{②: } l \\perp m, l \\perp n &\\implies \\text{공간에서 } m, n\\text{은 만날 수도 있고 꼬인 위치일 수도 있음 (거짓)} \\ \\text{③: } \\text{평면에 수직인 두 평면} &\\implies \\text{교선을 가지며 직교하거나 만날 수 있음 (거짓)} \\ \\text{④: } l \\perp P, m \\perp P &\\implies \\text{한 평면에 수직인 서로 다른 두 직선은 항상 평행하다 (참)} \\ \\text{⑤: } &\\text{반례가 존재하므로 거짓} \\end{aligned}$$ 따라서 옳은 설명은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정삼각형",
+            "src": "stem",
+            "quote": "평면 위에 꼭짓점 $C$를 공유하는 두 정삼각형 $ABC$와 $CDE$가 놓여 있다. $\\angle DBE = 70^\\circ$일 때, $\\angle ADB$의 크기는?"
+          },
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "평면 위에 꼭짓점 $C$를 공유하는 두 정삼각형 $ABC$와 $CDE$가 놓여 있다. $\\angle DBE = 70^\\circ$일 때, $\\angle ADB$의 크기는?"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "평면 위에 꼭짓점 $C$를 공유하는 두 정삼각형 $ABC$와 $CDE$가 놓여 있다. $\\angle DBE = 70^\\circ$일 때, $\\angle ADB$의 크기는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "평면 위에 꼭짓점 $C$를 공유하는 두 정삼각형 $ABC$와 $CDE$가 놓여 있다. $\\angle DBE = 70^\\circ$일 때, $\\angle ADB$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "두 정삼각형 $ABC, CDE$에서 $CA = CB$, $CD = CE$이고 $\\angle ACD = \\angle BCE$이므로 $$\\begin{aligned} \\triangle ACD &\\equiv \\triangle BCE \\quad (\\text{SAS}\\text{ 합동}) \\end{aligned}$$ 이다. 따라서 $\\angle ADC = \\angle BEC$이다. $\\triangle BCD$와 $\\triangle BCE$의 내각의 합을 합산하면 $$\\begin{aligned} \\angle BDC + \\angle BEC &= 360^\\circ - \\angle DBE - \\angle DCE \\ &= 360^\\circ - 70^\\circ - 60^\\circ = 230^\\circ \\end{aligned}$$ 이다. $\\angle BEC = \\angle ADC$이므로 $$\\begin{aligned} \\angle BDC + \\angle ADC &= 230^\\circ \\end{aligned}$$ 이다. 점 $D$ 둘레의 각의 합은 $360^\\circ$이므로 $$\\begin{aligned} \\angle ADB &= 360^\\circ - (\\angle BDC + \\angle ADC) \\ &= 360^\\circ - 230^\\circ = 130^\\circ \\end{aligned}$$ 이다. 따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "두 정삼각형 $ABC, CDE$에서 $CA = CB$, $CD = CE$이고 $\\angle ACD = \\angle BCE$이므로 $$\\begin{aligned} \\triangle ACD &\\equiv \\triangle BCE \\quad (\\text{SAS}\\text{ 합동}) \\end{aligned}$$ 이다. 따라서 $\\angle ADC = \\angle BEC$이다. $\\triangle BCD$와 $\\triangle BCE$의 내각의 합을 합산하면 $$\\begin{aligned} \\angle BDC + \\angle BEC &= 360^\\circ - \\angle DBE - \\angle DCE \\ &= 360^\\circ - 70^\\circ - 60^\\circ = 230^\\circ \\end{aligned}$$ 이다. $\\angle BEC = \\angle ADC$이므로 $$\\begin{aligned} \\angle BDC + \\angle ADC &= 230^\\circ \\end{aligned}$$ 이다. 점 $D$ 둘레의 각의 합은 $360^\\circ$이므로 $$\\begin{aligned} \\angle ADB &= 360^\\circ - (\\angle BDC + \\angle ADC) \\ &= 360^\\circ - 230^\\circ = 130^\\circ \\end{aligned}$$ 이다. 따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "별 모양 교차 다각형에서 $\\angle AFE = 30^\\circ$일 때, $\\angle A + \\angle B + \\angle C + \\angle D + \\angle E$의 크기는?"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "별 모양 교차 다각형에서 $\\angle AFE = 30^\\circ$일 때, $\\angle A + \\angle B + \\angle C + \\angle D + \\angle E$의 크기는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "별 모양 교차 다각형에서 $\\angle AFE = 30^\\circ$일 때, $\\angle A + \\angle B + \\angle C + \\angle D + \\angle E$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "교차점 $X$에 대하여 사각형과 삼각형의 내각합 관계를 설정한다. $$\\begin{aligned} \\angle B + \\angle C + \\angle D &= 360^\\circ - t^\\circ \\quad (\\text{단, } t^\\circ = \\angle BXD = \\angle AXE) \\end{aligned}$$ 이다. 삼각형 $AXF$와 $EXF$의 내각의 합에서 점 $F$의 각의 합은 $\\angle AFE = 30^\\circ$이고, 점 $X$에서의 각의 합은 $360^\\circ - t^\\circ$이므로 $$\\begin{aligned} \\angle A + \\angle E + 30^\\circ + (360^\\circ - t^\\circ) &= 360^\\circ \\ \\angle A + \\angle E &= t^\\circ - 30^\\circ \\end{aligned}$$ 이다. 따라서 다섯 각의 합을 구하면 $$\\begin{aligned} \\angle A + \\angle B + \\angle C + \\angle D + \\angle E &= (t^\\circ - 30^\\circ) + (360^\\circ - t^\\circ) \\ &= 360^\\circ - 30^\\circ \\ &= 330^\\circ \\end{aligned}$$ 이므로 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          },
+          {
+            "term": "맞꼭지각",
+            "src": "solution",
+            "quote": "교차점 $X$에 대하여 사각형과 삼각형의 내각합 관계를 설정한다. $$\\begin{aligned} \\angle B + \\angle C + \\angle D &= 360^\\circ - t^\\circ \\quad (\\text{단, } t^\\circ = \\angle BXD = \\angle AXE) \\end{aligned}$$ 이다. 삼각형 $AXF$와 $EXF$의 내각의 합에서 점 $F$의 각의 합은 $\\angle AFE = 30^\\circ$이고, 점 $X$에서의 각의 합은 $360^\\circ - t^\\circ$이므로 $$\\begin{aligned} \\angle A + \\angle E + 30^\\circ + (360^\\circ - t^\\circ) &= 360^\\circ \\ \\angle A + \\angle E &= t^\\circ - 30^\\circ \\end{aligned}$$ 이다. 따라서 다섯 각의 합을 구하면 $$\\begin{aligned} \\angle A + \\angle B + \\angle C + \\angle D + \\angle E &= (t^\\circ - 30^\\circ) + (360^\\circ - t^\\circ) \\ &= 360^\\circ - 30^\\circ \\ &= 330^\\circ \\end{aligned}$$ 이므로 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "가로의 길이가 $5\\text{ m}$, 세로의 길이가 $4\\text{ m}$인 직사각형 모양의 울타리의 한 꼭짓점 $A$에 길이가 $7\\text{ m}$인 끈으로 염소를 묶어 놓았다. 염소가 울타리 밖에서 최대한 움직일 수 있는 영역의 넓이는?"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "가로의 길이가 $5\\text{ m}$, 세로의 길이가 $4\\text{ m}$인 직사각형 모양의 울타리의 한 꼭짓점 $A$에 길이가 $7\\text{ m}$인 끈으로 염소를 묶어 놓았다. 염소가 울타리 밖에서 최대한 움직일 수 있는 영역의 넓이는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "가로의 길이가 $5\\text{ m}$, 세로의 길이가 $4\\text{ m}$인 직사각형 모양의 울타리의 한 꼭짓점 $A$에 길이가 $7\\text{ m}$인 끈으로 염소를 묶어 놓았다. 염소가 울타리 밖에서 최대한 움직일 수 있는 영역의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "염소가 움직일 수 있는 영역은 직사각형 울타리 바깥에서 세 개의 부채꼴 영역으로 나뉜다. $$\\begin{aligned} \\text{1) } A \\text{ 중심 중심각 } 270^\\circ(3/4\\text{ 원}), \\text{ 반지름 } 7\\text{ m}: &\\quad \\dfrac{3}{4} \\times \\pi \\times 7^2 = \\dfrac{147}{4}\\pi\\text{ m}^2 \\ \\text{2) 가로 } 5\\text{ m 벽을 돌았을 때 남은 끈 } 7-5=2\\text{ m}, \\text{ 중심각 } 90^\\circ: &\\quad \\dfrac{1}{4} \\times \\pi \\times 2^2 = \\pi\\text{ m}^2 \\ \\text{3) 세로 } 4\\text{ m 벽을 돌았을 때 남은 끈 } 7-4=3\\text{ m}, \\text{ 중심각 } 90^\\circ: &\\quad \\dfrac{1}{4} \\times \\pi \\times 3^2 = \\dfrac{9}{4}\\pi\\text{ m}^2 \\end{aligned}$$ 세 영역은 서로 겹치지 않으므로 전체 넓이는 $$\\begin{aligned} \\text{전체 넓이} &= \\dfrac{147}{4}\\pi + \\pi + \\dfrac{9}{4}\\pi \\ &= \\dfrac{147 + 4 + 9}{4}\\pi \\ &= \\dfrac{160}{4}\\pi = 40\\pi\\text{ m}^2 \\end{aligned}$$ 이다. 따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "염소가 움직일 수 있는 영역은 직사각형 울타리 바깥에서 세 개의 부채꼴 영역으로 나뉜다. $$\\begin{aligned} \\text{1) } A \\text{ 중심 중심각 } 270^\\circ(3/4\\text{ 원}), \\text{ 반지름 } 7\\text{ m}: &\\quad \\dfrac{3}{4} \\times \\pi \\times 7^2 = \\dfrac{147}{4}\\pi\\text{ m}^2 \\ \\text{2) 가로 } 5\\text{ m 벽을 돌았을 때 남은 끈 } 7-5=2\\text{ m}, \\text{ 중심각 } 90^\\circ: &\\quad \\dfrac{1}{4} \\times \\pi \\times 2^2 = \\pi\\text{ m}^2 \\ \\text{3) 세로 } 4\\text{ m 벽을 돌았을 때 남은 끈 } 7-4=3\\text{ m}, \\text{ 중심각 } 90^\\circ: &\\quad \\dfrac{1}{4} \\times \\pi \\times 3^2 = \\dfrac{9}{4}\\pi\\text{ m}^2 \\end{aligned}$$ 세 영역은 서로 겹치지 않으므로 전체 넓이는 $$\\begin{aligned} \\text{전체 넓이} &= \\dfrac{147}{4}\\pi + \\pi + \\dfrac{9}{4}\\pi \\ &= \\dfrac{147 + 4 + 9}{4}\\pi \\ &= \\dfrac{160}{4}\\pi = 40\\pi\\text{ m}^2 \\end{aligned}$$ 이다. 따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "[서술형 1] 한 직선 위에 세 점 $A, B, C$가 이 순서대로 놓여 있다. $\\overline{AB} : \\overline{BC} = 3 : 4$이고, 선분 $\\overline{AB}$의 중점을 $M$, 선분 $\\overline{BC}$의 중점을 $N$이라 할 때, 선분의 길이의 비 $\\overline{MN} : \\overline{BC}$를 가장 간단한 자연수의 비로 나타내고 그 풀이과정을 서술하시오."
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "[서술형 1] 한 직선 위에 세 점 $A, B, C$가 이 순서대로 놓여 있다. $\\overline{AB} : \\overline{BC} = 3 : 4$이고, 선분 $\\overline{AB}$의 중점을 $M$, 선분 $\\overline{BC}$의 중점을 $N$이라 할 때, 선분의 길이의 비 $\\overline{MN} : \\overline{BC}$를 가장 간단한 자연수의 비로 나타내고 그 풀이과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "선분",
+            "src": "solution",
+            "quote": "$\\overline{AB} : \\overline{BC} = 3 : 4$이므로 양의 상수 $k$에 대하여 $$\\begin{aligned} \\overline{AB} = 3k, \\quad \\overline{BC} = 4k \\end{aligned}$$ 라 놓을 수 있다. 점 $M$은 $\\overline{AB}$의 중점이므로 $$\\begin{aligned} \\overline{MB} &= \\dfrac{3k}{2} \\end{aligned}$$ 이다. 점 $N$은 $\\overline{BC}$의 중점이므로 $$\\begin{aligned} \\overline{BN} &= \\dfrac{4k}{2} = 2k \\end{aligned}$$ 이다. 세 점 $A, B, C$가 한 직선 위에 순서대로 놓여 있으므로 점들의 위치는 $A - M - B - N - C$ 순서이다. 따라서 선분 $\\overline{MN}$의 길이는 $$\\begin{aligned} \\overline{MN} &= \\overline{MB} + \\overline{BN} \\ &= \\dfrac{3k}{2} + 2k = \\dfrac{7k}{2} \\end{aligned}$$ 이다. 그러므로 $\\overline{MN} : \\overline{BC}$의 비를 구하면 $$\\begin{aligned} \\overline{MN} : \\overline{BC} &= \\dfrac{7k}{2} : 4k \\ &= \\dfrac{7}{2} : 4 \\ &= 7 : 8 \\end{aligned}$$ 이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "[서술형 2] 평각 $\\angle AOB = 180^\\circ$ 위의 한 점 $O$에 대하여 두 반직선 $OC, OE$가 있다. $\\dfrac{1}{4}\\angle AOD = \\angle COD$이고, $\\dfrac{1}{4}\\angle BOD = \\angle DOE$일 때, $\\angle COE$의 크기를 구하고 그 풀이과정을 서술하시오."
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "[서술형 2] 평각 $\\angle AOB = 180^\\circ$ 위의 한 점 $O$에 대하여 두 반직선 $OC, OE$가 있다. $\\dfrac{1}{4}\\angle AOD = \\angle COD$이고, $\\dfrac{1}{4}\\angle BOD = \\angle DOE$일 때, $\\angle COE$의 크기를 구하고 그 풀이과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "$\\angle COD = x$, $\\angle DOE = y$라 하자. 조건 $\\dfrac{1}{4}\\angle AOD = \\angle COD = x$에서 $$\\begin{aligned} \\angle AOD &= 4x \\ \\angle AOC &= \\angle AOD - \\angle COD = 4x - x = 3x \\end{aligned}$$ 이다. 마찬가지로 조건 $\\dfrac{1}{4}\\angle BOD = \\angle DOE = y$에서 $$\\begin{aligned} \\angle BOD &= 4y \\ \\angle EOB &= \\angle BOD - \\angle DOE = 4y - y = 3y \\end{aligned}$$ 이다. 세 점 $A, O, B$는 한 직선 위에 있으므로 평각의 크기는 $180^\\circ$이다. $$\\begin{aligned} \\angle AOC + \\angle COD + \\angle DOE + \\angle EOB &= 180^\\circ \\ 3x + x + y + 3y &= 180^\\circ \\ 4(x + y) &= 180^\\circ \\ x + y &= 45^\\circ \\end{aligned}$$ 이다. $\\angle COE = \\angle COD + \\angle DOE = x + y$이므로 $$\\begin{aligned} \\angle COE &= 45^\\circ \\end{aligned}$$ 이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "[서술형 3] 한 변의 길이가 $6\\text{ cm}$인 정사각형 $ABCD$에서 두 꼭짓점 $A, B$를 중심으로 하고 변의 길이를 반지름으로 하는 두 원호를 정사각형 내부에 각각 그렸다. 두 원호의 교점을 $E$라 할 때, 선분 $AB$와 두 호 $AE, BE$로 둘러싸인 색칠한 부분의 둘레의 길이와 넓이를 구하고 그 풀이과정을 서술하시오."
+          },
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "[서술형 3] 한 변의 길이가 $6\\text{ cm}$인 정사각형 $ABCD$에서 두 꼭짓점 $A, B$를 중심으로 하고 변의 길이를 반지름으로 하는 두 원호를 정사각형 내부에 각각 그렸다. 두 원호의 교점을 $E$라 할 때, 선분 $AB$와 두 호 $AE, BE$로 둘러싸인 색칠한 부분의 둘레의 길이와 넓이를 구하고 그 풀이과정을 서술하시오."
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "[서술형 3] 한 변의 길이가 $6\\text{ cm}$인 정사각형 $ABCD$에서 두 꼭짓점 $A, B$를 중심으로 하고 변의 길이를 반지름으로 하는 두 원호를 정사각형 내부에 각각 그렸다. 두 원호의 교점을 $E$라 할 때, 선분 $AB$와 두 호 $AE, BE$로 둘러싸인 색칠한 부분의 둘레의 길이와 넓이를 구하고 그 풀이과정을 서술하시오."
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "[서술형 3] 한 변의 길이가 $6\\text{ cm}$인 정사각형 $ABCD$에서 두 꼭짓점 $A, B$를 중심으로 하고 변의 길이를 반지름으로 하는 두 원호를 정사각형 내부에 각각 그렸다. 두 원호의 교점을 $E$라 할 때, 선분 $AB$와 두 호 $AE, BE$로 둘러싸인 색칠한 부분의 둘레의 길이와 넓이를 구하고 그 풀이과정을 서술하시오."
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "[서술형 3] 한 변의 길이가 $6\\text{ cm}$인 정사각형 $ABCD$에서 두 꼭짓점 $A, B$를 중심으로 하고 변의 길이를 반지름으로 하는 두 원호를 정사각형 내부에 각각 그렸다. 두 원호의 교점을 $E$라 할 때, 선분 $AB$와 두 호 $AE, BE$로 둘러싸인 색칠한 부분의 둘레의 길이와 넓이를 구하고 그 풀이과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "부채꼴",
+            "src": "solution",
+            "quote": "점 $E$는 점 $A$와 $B$를 중심으로 하는 반지름 $6\\text{ cm}$인 두 원호의 교점이므로 $$\\begin{aligned} \\overline{AB} = \\overline{AE} = \\overline{BE} &= 6\\text{ cm} \\end{aligned}$$ 이다. 따라서 $\\triangle ABE$는 세 변의 길이가 모두 $6\\text{ cm}$인 정삼각형이다. 그러므로 $\\angle BAE = \\angle ABE = 60^\\circ$이다.\n\n\n(1) 둘레의 길이: 색칠한 부분의 경계는 선분 $\\overline{AB}$와 두 호 $AE, BE$로 이루어진다. 중심각 $60^\\circ$, 반지름 $6\\text{ cm}$인 원호 하나의 길이는 $$\\begin{aligned} 2\\pi \\times 6 \\times \\dfrac{60^\\circ}{360^\\circ} &= 12\\pi \\times \\dfrac{1}{6} = 2\\pi\\text{ cm} \\end{aligned}$$ 이다. 따라서 둘레의 길이는 $$\\begin{aligned} \\text{둘레} &= \\overline{AB} + \\overset{\\frown}{AE} + \\overset{\\frown}{BE} \\ &= 6 + 2\\pi + 2\\pi = (6 + 4\\pi)\\text{ cm} \\end{aligned}$$ 이다.\n\n\n(2) 넓이: 색칠한 부분의 넓이는 반지름 $6\\text{ cm}$, 중심각 $60^\\circ$인 두 부채꼴의 넓이의 합에서 정삼각형 $ABE$의 넓이를 뺀 값이다. 부채꼴 하나의 넓이는 $$\\begin{aligned} \\pi \\times 6^2 \\times \\dfrac{60^\\circ}{360^\\circ} &= 36\\pi \\times \\dfrac{1}{6} = 6\\pi\\text{ cm}^2 \\end{aligned}$$ 이다. 정삼각형 $ABE$의 넓이는 $$\\begin{aligned} \\dfrac{\\sqrt{3}}{4} \\times 6^2 &= \\dfrac{\\sqrt{3}}{4} \\times 36 = 9\\sqrt{3}\\text{ cm}^2 \\end{aligned}$$ 이다. 따라서 색칠한 부분의 넓이는 $$\\begin{aligned} \\text{넓이} &= (6\\pi + 6\\pi) - 9\\sqrt{3} \\ &= (12\\pi - 9\\sqrt{3})\\text{ cm}^2 \\end{aligned}$$ 이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "점 $E$는 점 $A$와 $B$를 중심으로 하는 반지름 $6\\text{ cm}$인 두 원호의 교점이므로 $$\\begin{aligned} \\overline{AB} = \\overline{AE} = \\overline{BE} &= 6\\text{ cm} \\end{aligned}$$ 이다. 따라서 $\\triangle ABE$는 세 변의 길이가 모두 $6\\text{ cm}$인 정삼각형이다. 그러므로 $\\angle BAE = \\angle ABE = 60^\\circ$이다.\n\n\n(1) 둘레의 길이: 색칠한 부분의 경계는 선분 $\\overline{AB}$와 두 호 $AE, BE$로 이루어진다. 중심각 $60^\\circ$, 반지름 $6\\text{ cm}$인 원호 하나의 길이는 $$\\begin{aligned} 2\\pi \\times 6 \\times \\dfrac{60^\\circ}{360^\\circ} &= 12\\pi \\times \\dfrac{1}{6} = 2\\pi\\text{ cm} \\end{aligned}$$ 이다. 따라서 둘레의 길이는 $$\\begin{aligned} \\text{둘레} &= \\overline{AB} + \\overset{\\frown}{AE} + \\overset{\\frown}{BE} \\ &= 6 + 2\\pi + 2\\pi = (6 + 4\\pi)\\text{ cm} \\end{aligned}$$ 이다.\n\n\n(2) 넓이: 색칠한 부분의 넓이는 반지름 $6\\text{ cm}$, 중심각 $60^\\circ$인 두 부채꼴의 넓이의 합에서 정삼각형 $ABE$의 넓이를 뺀 값이다. 부채꼴 하나의 넓이는 $$\\begin{aligned} \\pi \\times 6^2 \\times \\dfrac{60^\\circ}{360^\\circ} &= 36\\pi \\times \\dfrac{1}{6} = 6\\pi\\text{ cm}^2 \\end{aligned}$$ 이다. 정삼각형 $ABE$의 넓이는 $$\\begin{aligned} \\dfrac{\\sqrt{3}}{4} \\times 6^2 &= \\dfrac{\\sqrt{3}}{4} \\times 36 = 9\\sqrt{3}\\text{ cm}^2 \\end{aligned}$$ 이다. 따라서 색칠한 부분의 넓이는 $$\\begin{aligned} \\text{넓이} &= (6\\pi + 6\\pi) - 9\\sqrt{3} \\ &= (12\\pi - 9\\sqrt{3})\\text{ cm}^2 \\end{aligned}$$ 이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "정삼각형",
+            "src": "stem",
+            "quote": "[서술형 4] 정삼각형 $ABC$의 변 $BC$ 위의 점 $D$와 변 $CA$ 위의 점 $E$에 대하여 $\\overline{BD} = \\overline{CE}$이고, 선분 $AD$와 선분 $BE$의 교점을 $P$라 할 때, 다음 물음에 답하시오. (6점)\n\n\n(1) $\\triangle ABD$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (3점) (2) $\\angle PBD + \\angle PDB$의 크기를 구하고 그 풀이과정을 서술하시오. (3점)"
+          },
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "[서술형 4] 정삼각형 $ABC$의 변 $BC$ 위의 점 $D$와 변 $CA$ 위의 점 $E$에 대하여 $\\overline{BD} = \\overline{CE}$이고, 선분 $AD$와 선분 $BE$의 교점을 $P$라 할 때, 다음 물음에 답하시오. (6점)\n\n\n(1) $\\triangle ABD$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (3점) (2) $\\angle PBD + \\angle PDB$의 크기를 구하고 그 풀이과정을 서술하시오. (3점)"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "[서술형 4] 정삼각형 $ABC$의 변 $BC$ 위의 점 $D$와 변 $CA$ 위의 점 $E$에 대하여 $\\overline{BD} = \\overline{CE}$이고, 선분 $AD$와 선분 $BE$의 교점을 $P$라 할 때, 다음 물음에 답하시오. (6점)\n\n\n(1) $\\triangle ABD$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (3점) (2) $\\angle PBD + \\angle PDB$의 크기를 구하고 그 풀이과정을 서술하시오. (3점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "[서술형 4] 정삼각형 $ABC$의 변 $BC$ 위의 점 $D$와 변 $CA$ 위의 점 $E$에 대하여 $\\overline{BD} = \\overline{CE}$이고, 선분 $AD$와 선분 $BE$의 교점을 $P$라 할 때, 다음 물음에 답하시오. (6점)\n\n\n(1) $\\triangle ABD$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (3점) (2) $\\angle PBD + \\angle PDB$의 크기를 구하고 그 풀이과정을 서술하시오. (3점)"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "[서술형 4] 정삼각형 $ABC$의 변 $BC$ 위의 점 $D$와 변 $CA$ 위의 점 $E$에 대하여 $\\overline{BD} = \\overline{CE}$이고, 선분 $AD$와 선분 $BE$의 교점을 $P$라 할 때, 다음 물음에 답하시오. (6점)\n\n\n(1) $\\triangle ABD$와 합동인 삼각형을 찾고, 그 합동 조건을 서술하시오. (3점) (2) $\\angle PBD + \\angle PDB$의 크기를 구하고 그 풀이과정을 서술하시오. (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "(1) 합동인 삼각형과 그 이유: $\\triangle ABC$는 정삼각형이므로 $$\\begin{aligned} \\overline{AB} &= \\overline{BC} \\ \\angle ABD &= \\angle BCE = 60^\\circ \\end{aligned}$$ 이다. 조건에서 $\\overline{BD} = \\overline{CE}$이므로 두 변의 길이와 그 끼인각의 크기가 각각 같다. 따라서 두 삼각형은 대응점에 맞추어 $$\\begin{aligned} \\triangle ABD &\\equiv \\triangle BCE \\quad (\\text{SAS}\\text{ 합동}) \\end{aligned}$$ 이다.\n\n\n(2) $\\angle PBD + \\angle PDB$의 크기와 풀이과정: $\\triangle ABD \\equiv \\triangle BCE$이므로 대응각의 크기가 같다. $$\\begin{aligned} \\angle ADB &= \\angle BEC \\end{aligned}$$ 점 $P$는 선분 $AD$와 $BE$ 위에 있으므로 $$\\begin{aligned} \\angle PDB &= \\angle ADB = \\angle BEC \\ \\angle PBD &= \\angle EBC \\end{aligned}$$ 이다. $\\triangle BCE$에서 세 내각의 크기의 합은 $180^\\circ$이므로 $$\\begin{aligned} \\angle EBC + \\angle BEC + \\angle BCE &= 180^\\circ \\ \\angle EBC + \\angle BEC + 60^\\circ &= 180^\\circ \\ \\angle EBC + \\angle BEC &= 120^\\circ \\end{aligned}$$ 이다. 따라서 구하는 각의 합은 $$\\begin{aligned} \\angle PBD + \\angle PDB &= \\angle EBC + \\angle BEC \\ &= 120^\\circ \\end{aligned}$$ 이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "(1) 합동인 삼각형과 그 이유: $\\triangle ABC$는 정삼각형이므로 $$\\begin{aligned} \\overline{AB} &= \\overline{BC} \\ \\angle ABD &= \\angle BCE = 60^\\circ \\end{aligned}$$ 이다. 조건에서 $\\overline{BD} = \\overline{CE}$이므로 두 변의 길이와 그 끼인각의 크기가 각각 같다. 따라서 두 삼각형은 대응점에 맞추어 $$\\begin{aligned} \\triangle ABD &\\equiv \\triangle BCE \\quad (\\text{SAS}\\text{ 합동}) \\end{aligned}$$ 이다.\n\n\n(2) $\\angle PBD + \\angle PDB$의 크기와 풀이과정: $\\triangle ABD \\equiv \\triangle BCE$이므로 대응각의 크기가 같다. $$\\begin{aligned} \\angle ADB &= \\angle BEC \\end{aligned}$$ 점 $P$는 선분 $AD$와 $BE$ 위에 있으므로 $$\\begin{aligned} \\angle PDB &= \\angle ADB = \\angle BEC \\ \\angle PBD &= \\angle EBC \\end{aligned}$$ 이다. $\\triangle BCE$에서 세 내각의 크기의 합은 $180^\\circ$이므로 $$\\begin{aligned} \\angle EBC + \\angle BEC + \\angle BCE &= 180^\\circ \\ \\angle EBC + \\angle BEC + 60^\\circ &= 180^\\circ \\ \\angle EBC + \\angle BEC &= 120^\\circ \\end{aligned}$$ 이다. 따라서 구하는 각의 합은 $$\\begin{aligned} \\angle PBD + \\angle PDB &= \\angle EBC + \\angle BEC \\ &= 120^\\circ \\end{aligned}$$ 이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "MD candidate mapping; independent 4-slot review pending"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED",
+        "reason": "Independent 4-slot review pending"
+      }
+    }
+  ]
+}

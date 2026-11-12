@@ -1,35 +1,17 @@
 {
-  "capability": "construction-spike-v1",
-  "sourceQuote": "다음 그림은 직선 $l$ 위에 있지 않은",
-  "caption": "Q04 기하학적 다이어그램 및 시각자료 관계도",
-  "mathPlan": {
-    "schemaVersion": "construction-spike-v1",
-    "nodes": [
-      {
-        "id": "O",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      }
-    ]
+  "source": {
+    "qid": "4",
+    "points": 4
   },
-  "assetPath": "assets/images/26_신흥중_2학기_중간_중1_유사/q04.svg",
-  "engineEvidence": {
-    "resultPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q04-problem-result.json",
-    "statePath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q04-problem-state.json",
-    "svgPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q04-problem.svg"
-  }
+  "strategy": "동위각을 이용한 평행선 작도 원리 및 도구 역할 검증",
+  "visualWork": {
+    "status": "DEFERRED_TO_LATER_SVG_BATCH",
+    "requirement": "Construction of a parallel through external point P to line l; show Q/P arc centers, equal radii, copied angle and resulting parallel.",
+    "sourceImageRef": "assets/images/26_신흥중_2학기_중간_중1_기출/q04.png",
+    "sourceImageFileFoundInOriginMain": false,
+    "reuseStatus": "NOT_VERIFIED"
+  },
+  "sourceSimilarityPlanStatus": "PROPOSED",
+  "status": "UNSUPPORTED",
+  "reason": "필요 그림: 직선 l 밖의 P를 지나는 평행선 작도; Q/P 중심 같은 반지름 원호와 각 복사 단계."
 }

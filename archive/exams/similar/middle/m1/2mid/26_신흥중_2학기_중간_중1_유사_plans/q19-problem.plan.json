@@ -1,35 +1,17 @@
 {
-  "capability": "construction-spike-v1",
-  "sourceQuote": "다음 그림의 별 모양 오각형에서 다섯 꼭짓점",
-  "caption": "Q19 기하학적 다이어그램 및 시각자료 관계도",
-  "mathPlan": {
-    "schemaVersion": "construction-spike-v1",
-    "nodes": [
-      {
-        "id": "O",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      }
-    ]
+  "source": {
+    "qid": "19",
+    "points": 4
   },
-  "assetPath": "assets/images/26_신흥중_2학기_중간_중1_유사/q19.svg",
-  "engineEvidence": {
-    "resultPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q19-problem-result.json",
-    "statePath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q19-problem-state.json",
-    "svgPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q19-problem.svg"
-  }
+  "strategy": "교차점 맞꼭지각 매개 변수화를 통한 사각형 및 삼각형 내각합 소거법",
+  "visualWork": {
+    "status": "DEFERRED_TO_LATER_SVG_BATCH",
+    "requirement": "Star-shaped intersecting polygon with labeled vertices A–F; mark angle AFE=30° and target angles A through E.",
+    "sourceImageRef": "assets/images/26_신흥중_2학기_중간_중1_기출/q19.png",
+    "sourceImageFileFoundInOriginMain": false,
+    "reuseStatus": "NOT_VERIFIED"
+  },
+  "sourceSimilarityPlanStatus": "PROPOSED",
+  "status": "UNSUPPORTED",
+  "reason": "필요 그림: 별 모양 교차 다각형의 A–F 라벨, ∠AFE=30°와 A–E 각."
 }

@@ -1,35 +1,17 @@
 {
-  "capability": "construction-spike-v1",
-  "sourceQuote": "다음 그림과 같이 선분 $AB$ 위의",
-  "caption": "Q12 기하학적 다이어그램 및 시각자료 관계도",
-  "mathPlan": {
-    "schemaVersion": "construction-spike-v1",
-    "nodes": [
-      {
-        "id": "O",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      }
-    ]
+  "source": {
+    "qid": "12",
+    "points": 4
   },
-  "assetPath": "assets/images/26_신흥중_2학기_중간_중1_유사/q12.svg",
-  "engineEvidence": {
-    "resultPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q12-problem-result.json",
-    "statePath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q12-problem-state.json",
-    "svgPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q12-problem.svg"
-  }
+  "strategy": "정삼각형 배치의 SAS 합동 증명 및 대응변, 대응각 정확성 대조",
+  "visualWork": {
+    "status": "DEFERRED_TO_LATER_SVG_BATCH",
+    "requirement": "A-B line with C between; equilateral triangles ACD and CBE above AB; show intersection P of AE and BD.",
+    "sourceImageRef": "assets/images/26_신흥중_2학기_중간_중1_기출/q12.png",
+    "sourceImageFileFoundInOriginMain": false,
+    "reuseStatus": "NOT_VERIFIED"
+  },
+  "sourceSimilarityPlanStatus": "PROPOSED",
+  "status": "UNSUPPORTED",
+  "reason": "필요 그림: AB 위 C와 위쪽 정삼각형 ACD·CBE, AE와 BD의 교점 P."
 }

@@ -1,35 +1,17 @@
 {
-  "capability": "construction-spike-v1",
-  "sourceQuote": "다음 그림과 같이 선분 $AB$를 지름으로 ",
-  "caption": "Q15 기하학적 다이어그램 및 시각자료 관계도",
-  "mathPlan": {
-    "schemaVersion": "construction-spike-v1",
-    "nodes": [
-      {
-        "id": "O",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      }
-    ]
+  "source": {
+    "qid": "15",
+    "points": 4
   },
-  "assetPath": "assets/images/26_신흥중_2학기_중간_중1_유사/q15.svg",
-  "engineEvidence": {
-    "resultPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q15-problem-result.json",
-    "statePath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q15-problem-state.json",
-    "svgPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q15-problem.svg"
-  }
+  "strategy": "반원 반지름 이등변삼각형과 평행선 동위각 및 호 길이 비례식 연립",
+  "visualWork": {
+    "status": "DEFERRED_TO_LATER_SVG_BATCH",
+    "requirement": "Semicircle with diameter AB and center O; C,D on arc; OC parallel BD; mark arc AC=6 cm and arc BD=12 cm.",
+    "sourceImageRef": "assets/images/26_신흥중_2학기_중간_중1_기출/q15.png",
+    "sourceImageFileFoundInOriginMain": false,
+    "reuseStatus": "NOT_VERIFIED"
+  },
+  "sourceSimilarityPlanStatus": "PROPOSED",
+  "status": "UNSUPPORTED",
+  "reason": "필요 그림: 지름 AB·중심 O인 반원, C·D, OC∥BD, 호 AC=6cm·BD=12cm."
 }

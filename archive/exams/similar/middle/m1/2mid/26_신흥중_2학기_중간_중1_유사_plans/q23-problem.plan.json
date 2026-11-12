@@ -1,35 +1,17 @@
 {
-  "capability": "construction-spike-v1",
-  "sourceQuote": "다음 그림은 한 변의 길이가 $6\\mathrm{cm}$인",
-  "caption": "Q23 기하학적 다이어그램 및 시각자료 관계도",
-  "mathPlan": {
-    "schemaVersion": "construction-spike-v1",
-    "nodes": [
-      {
-        "id": "O",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      }
-    ]
+  "source": {
+    "qid": "23",
+    "points": 5
   },
-  "assetPath": "assets/images/26_신흥중_2학기_중간_중1_유사/q23.svg",
-  "engineEvidence": {
-    "resultPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q23-problem-result.json",
-    "statePath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q23-problem-state.json",
-    "svgPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q23-problem.svg"
-  }
+  "strategy": "정삼각형 식별을 통한 중심각 60도 도출 및 부채꼴 둘레와 포괄-배제 넓이 계산 서술",
+  "visualWork": {
+    "status": "DEFERRED_TO_LATER_SVG_BATCH",
+    "requirement": "Square ABCD of side 6 cm; arcs centered at A and B with radius 6 cm meet at E inside; shade region bounded by AB, arc AE, arc BE.",
+    "sourceImageRef": "assets/images/26_신흥중_2학기_중간_중1_기출/q23.png",
+    "sourceImageFileFoundInOriginMain": false,
+    "reuseStatus": "NOT_VERIFIED"
+  },
+  "sourceSimilarityPlanStatus": "PROPOSED",
+  "status": "UNSUPPORTED",
+  "reason": "필요 그림: 한 변 6cm 정사각형, A·B 중심 반지름 6cm 원호 교점 E, AB·AE호·BE호로 둘러싸인 색칠 영역."
 }
