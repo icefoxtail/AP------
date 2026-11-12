@@ -1,0 +1,138 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "그래프가 다음 그림과 같을 때",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "4",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -10.5,
+      3.5
+    ],
+    "viewport": [
+      -11,
+      4,
+      -12,
+      24
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "-5",
+              "-10",
+              "-1"
+            ]
+          }
+        ],
+        "intersectionX": [
+          "-7",
+          "0"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -2,
+        "y": -9
+      },
+      {
+        "id": "W",
+        "x": -5,
+        "y": 20
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "W"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        -7,
+        -5,
+        1
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-7",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "curveX": "0",
+          "unnamed": true
+        },
+        {
+          "id": "C",
+          "curveX": "-5",
+          "unnamed": true
+        },
+        {
+          "id": "D",
+          "curveX": "1",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "GA",
+          "from": "A",
+          "axis": "x"
+        },
+        {
+          "id": "GB",
+          "from": "B",
+          "axis": "x"
+        }
+      ]
+    }
+  },
+  "hiddenPointNames": [
+    "V",
+    "W"
+  ],
+  "coordinatePlacement": "PANEL",
+  "caption": "이차함수 y=f(x)는 x축과 x=-5, x=1에서 만나고, y=f(x)와 y=g(x)의 그래프는 x=-7, x=0인 두 점에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "q19-S1",
+      "condition": "y=f(x)의 x절편은 -5, 1이다",
+      "mappedTo": "graphPlan.pieces, graphPlan.axisTickValues"
+    },
+    {
+      "id": "q19-S2",
+      "condition": "y=f(x)와 y=g(x)의 교점의 x좌표는 -7, 0이다",
+      "mappedTo": "graphPlan.referenceCurves"
+    }
+  ],
+  "newVisualInformation": [
+    "f와 g의 그래프 모양, f의 x절편 -5와 1, 두 그래프의 교점의 x좌표 -7과 0의 위치를 보여 준다."
+  ],
+  "assetPath": "assets/images/26_순천고_1학기_기말_고1_유사/q19.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/engine_evidence/q19-problem-result.json",
+    "statePath": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/engine_evidence/q19-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/engine_evidence/q19-problem.svg"
+  }
+}
