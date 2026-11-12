@@ -42,7 +42,7 @@ test('all twelve scenes, source goals, captions and common validators are bound'
     }
   }
   assert.equal(count, 35); assert.equal(originals, 15);
-  assert.match(fs.readFileSync(new URL('../kit/apl-player.js', import.meta.url), 'utf8'), /const DEFAULT_PLAYBACK_RATE = 1\.5;/);
+  assert.match(fs.readFileSync(new URL('../kit/apl-player.js', import.meta.url), 'utf8'), /const DEFAULT_PLAYBACK_RATE = 2;/);
   t.diagnostic('12 scenes / 35 lessons: 15 original goals and 20 existing inquiry topics');
 });
 

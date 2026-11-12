@@ -46,7 +46,7 @@ test('catalog scenes, actual source packets and automatic lessons are completely
   }
   t.diagnostic(`${ids.length} scenes / ${total} lessons; source problems and exploration concepts are separately labelled`);
   const player = fs.readFileSync(new URL('../kit/apl-player.js', import.meta.url), 'utf8');
-  assert.match(player, /const DEFAULT_PLAYBACK_RATE = 1\.5;/, 'the existing shared Player retains its default 1.5× speed');
+  assert.match(player, /const DEFAULT_PLAYBACK_RATE = 2;/, 'the existing shared Player retains its default 2× speed');
 });
 
 test('every authored cue paints finite native geometry and first-second motion', t => {

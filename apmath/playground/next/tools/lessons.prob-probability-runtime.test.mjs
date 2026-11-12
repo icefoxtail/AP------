@@ -42,7 +42,7 @@ test('five catalog scenes bind 10 registered source goals and 17 actual inquiry 
     }
   }
   for(const src of ['../kit/apl-video-core.js','../kit/apl-player.js','../kit/apl-toc.js','prob-probability/lesson-core.js','prob-probability/lesson-a.js','prob-probability/lesson-b.js'])assert.ok(lab.loaded.includes(src));
-  assert.equal(total,27);assert.equal(originals,10);assert.match(fs.readFileSync(new URL('../kit/apl-player.js',import.meta.url),'utf8'),/const DEFAULT_PLAYBACK_RATE = 1\.5;/);
+  assert.equal(total,27);assert.equal(originals,10);assert.match(fs.readFileSync(new URL('../kit/apl-player.js',import.meta.url),'utf8'),/const DEFAULT_PLAYBACK_RATE = 2;/);
   t.diagnostic('5 scenes / 27 lessons = 10 source goals + 17 original inquiry concepts; validator errors/warnings 0');
 });
 
