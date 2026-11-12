@@ -71,7 +71,14 @@ window.questionBank = [
     "solution": "두 직선이 한 점에서 만날 때 생기는 마주 보는 두 각인 맞꼭지각의 크기는 서로 같다.\n그림에서 $\\angle a$와 마주 보는 각의 크기가 $125^\\circ$이므로 $\\begin{aligned} \\angle a &= 125^\\circ \\end{aligned}$\n따라서 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q02.svg",
+    "imageAlt": "두 직선이 한 점에서 만나는 그림",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q02-solution.svg",
+    "solutionImageAlt": "마주 보는 맞꼭지각의 크기는 같음 · a=125°",
+    "solutionImageCaption": "마주 보는 맞꼭지각의 크기는 같음 · a=125°",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -107,7 +114,14 @@ window.questionBank = [
     "solution": "평행한 두 직선이 한 직선과 만날 때 생기는 엇각의 크기는 서로 같다.\n$l \\parallel m$이므로 그림에서 표시된 $55^\\circ$인 각과 $\\angle a$는 서로 엇각의 위치에 있다. $\\begin{aligned} \\angle a &= 55^\\circ \\end{aligned}$\n따라서 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q03.svg",
+    "imageAlt": "l∥m · 표시된55°와 a",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q03-solution.svg",
+    "solutionImageAlt": "평행선 l∥m의 엇각은 같음 · a=55°",
+    "solutionImageCaption": "평행선 l∥m의 엇각은 같음 · a=55°",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -179,7 +193,14 @@ window.questionBank = [
     "solution": "삼각형의 내각의 합과 평각의 성질을 이용한다.\n오른쪽 아래 꼭짓점의 외각이 $115^\\circ$이므로 그 이웃하는 내각의 크기는 $\\begin{aligned} 180^\\circ - 115^\\circ &= 65^\\circ \\end{aligned}$\n오른쪽 작은 삼각형에서 밑변 위의 내각을 $\\angle y$라 하면 세 내각의 합은 $180^\\circ$이므로 $\\begin{aligned} 45^\\circ + 65^\\circ + \\angle y &= 180^\\circ \\ 110^\\circ + \\angle y &= 180^\\circ \\ \\angle y &= 70^\\circ \\end{aligned}$\n$\\angle x$와 $\\angle y$는 직선 위에서 이웃한 평각을 이루므로 $\\begin{aligned} \\angle x &= 180^\\circ - \\angle y \\ &= 180^\\circ - 70^\\circ \\ &= 110^\\circ \\end{aligned}$\n따라서 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q05.svg",
+    "imageAlt": "꼭짓점45°와 오른쪽 외각115° · 밑변 왼쪽의 외각x",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q05-solution.svg",
+    "solutionImageAlt": "오른쪽 아래 내각65°, 밑변 내각70° · x=180−70=110°",
+    "solutionImageCaption": "오른쪽 아래 내각65°, 밑변 내각70° · x=180−70=110°",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -251,7 +272,14 @@ window.questionBank = [
     "solution": "선분의 중점 성질과 주어진 비례식을 이용하여 각 선분의 길이를 구한다.\n점 $M$이 선분 $AB$의 중점이고 $\\overline{AM} = 12,\\mathrm{cm}$이므로 $\\begin{aligned} \\overline{AB} &= 2 \\times \\overline{AM} \\ &= 2 \\times 12 \\ &= 24,\\mathrm{cm} \\ \\overline{MB} &= 12,\\mathrm{cm} \\end{aligned}$\n조건 $3\\overline{AB} = 4\\overline{BC}$에 대입하면 $\\begin{aligned} 3 \\times 24 &= 4\\overline{BC} \\ 72 &= 4\\overline{BC} \\ \\overline{BC} &= 18,\\mathrm{cm} \\end{aligned}$\n점 $N$이 선분 $BC$의 중점이므로 $\\begin{aligned} \\overline{BN} &= \\dfrac{1}{2}\\overline{BC} \\ &= \\dfrac{1}{2} \\times 18 \\ &= 9,\\mathrm{cm} \\end{aligned}$\n따라서 선분 $MN$의 길이는 $\\begin{aligned} \\overline{MN} &= \\overline{MB} + \\overline{BN} \\ &= 12 + 9 \\ &= 21,\\mathrm{cm} \\end{aligned}$\n따라서 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q07.svg",
+    "imageAlt": "M,N은 각각 AB,BC의 중점 · AM=12cm, 3AB=4BC",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q07-solution.svg",
+    "solutionImageAlt": "AB=24, BC=18 · MN=MB+BN=12+9=21cm",
+    "solutionImageCaption": "AB=24, BC=18 · MN=MB+BN=12+9=21cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -287,7 +315,14 @@ window.questionBank = [
     "solution": "직각과 평각의 성질을 이용하여 각을 차례대로 추적한다.\n$\\overline{OE} \\perp \\overline{AB}$이므로 $\\angle EOB = 90^\\circ$이다. $\\angle EOD = 40^\\circ$이므로 $\\begin{aligned} \\angle DOB &= \\angle EOB - \\angle EOD \\ &= 90^\\circ - 40^\\circ \\ &= 50^\\circ \\end{aligned}$\n$\\overline{OF} \\perp \\overline{CD}$이므로 $\\angle DOF = 90^\\circ$이다. 따라서 $\\angle BOF$의 크기는 $\\begin{aligned} \\angle BOF &= \\angle DOF - \\angle DOB \\ &= 90^\\circ - 50^\\circ \\ &= 40^\\circ \\end{aligned}$\n세 점 $A, O, B$가 한 직선 위에 있으므로 $\\angle AOB = 180^\\circ$이다. 따라서 구하는 $\\angle AOF$의 크기는 $\\begin{aligned} \\angle AOF &= 180^\\circ - \\angle BOF \\ &= 180^\\circ - 40^\\circ \\ &= 140^\\circ \\end{aligned}$\n따라서 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q08.svg",
+    "imageAlt": "OE⊥AB, OF⊥CD · ∠EOD=40°, ∠AOF=x",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q08-solution.svg",
+    "solutionImageAlt": "∠DOB=50°, ∠BOF=40° · ∠AOF=180−40=140°",
+    "solutionImageCaption": "∠DOB=50°, ∠BOF=40° · ∠AOF=180−40=140°",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -323,7 +358,14 @@ window.questionBank = [
     "solution": "삼각기둥의 총 모서리 $9$개 중에서 모서리 $AC$와의 위치 관계를 분류한다.\n$\\begin{aligned} \\text{1. } \\overline{AC}\\text{와 한 점에서 만나는 모서리: } & \\overline{AB}, \\overline{BC}, \\overline{AD}, \\overline{CF}\\text{ (}4\\text{개)} \\ \\text{2. } \\overline{AC}\\text{와 평행한 모서리: } & \\overline{DF}\\text{ (}1\\text{개)} \\ \\text{3. } \\overline{AC}\\text{ 자기 자신: } & 1\\text{개} \\end{aligned}$\n따라서 만나지도 않고 평행하지도 않은 꼬인 위치에 있는 모서리는 $\\begin{aligned} \\overline{BE}, \\overline{DE}, \\overline{EF} \\end{aligned}$ 의 $3$개이다.\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q09.svg",
+    "imageAlt": "삼각기둥 ABC-DEF · 점선은 가려진 모서리",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q09-solution.svg",
+    "solutionImageAlt": "AC와 꼬인 위치: BE, DE, EF · 만나지도 평행하지도 않는 모서리3개",
+    "solutionImageCaption": "AC와 꼬인 위치: BE, DE, EF · 만나지도 평행하지도 않는 모서리3개",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -359,7 +401,14 @@ window.questionBank = [
     "solution": "점과 선분 사이의 거리는 선분 위의 점에서 그 선분에 내린 수선의 길이이다. $E$는 선분 $AC$ 위에 있고 $DE\\perp AC$이므로 점 D와 선분 $AC$ 사이의 거리는 $\\overline{DE}=3,\\mathrm{cm}$이다. 따라서 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q10.svg",
+    "imageAlt": "E는 선분 AC 위의 수선의 발 · DE=3cm",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q10-solution.svg",
+    "solutionImageAlt": "수선의 길이가 점과 선분 사이 거리 · DE=3cm",
+    "solutionImageCaption": "수선의 길이가 점과 선분 사이 거리 · DE=3cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -395,7 +444,14 @@ window.questionBank = [
     "solution": "점 $M$이 두 대각선의 중점이므로 $\\overline{AM} = \\overline{CM}, \\overline{BM} = \\overline{DM}$이다.\n$\\begin{aligned} \\text{1. } & \\triangle AMB\\text{와 } \\triangle CMD\\text{에서 } \\overline{AM} = \\overline{CM}, \\overline{BM} = \\overline{DM}\\text{이고 맞꼭지각 } \\angle AMB = \\angle CMD\\text{이므로} \\ & \\triangle AMB \\equiv \\triangle CMD \\quad (\\text{SAS 합동}) \\ & \\therefore \\overline{AB} = \\overline{CD}, \\angle MBA = \\angle MDC\\text{ (참)} \\ \\text{2. } & \\triangle AMD\\text{와 } \\triangle CMB\\text{에서 } \\overline{AM} = \\overline{CM}, \\overline{DM} = \\overline{BM}\\text{이고 맞꼭지각 } \\angle AMD = \\angle CMB\\text{이므로} \\ & \\triangle AMD \\equiv \\triangle CMB \\quad (\\text{SAS 합동}) \\ & \\therefore \\overline{AD} = \\overline{BC}\\text{ (참)} \\ \\text{3. } & \\triangle MAB\\text{와 } \\triangle MDA\\text{는 이웃한 삼각형으로, 일반적으로 } \\overline{AB} = \\overline{AD}\\text{가 아니므로 합동이 아니다. (거짓)} \\end{aligned}$\n따라서 옳지 않은 것은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q11.svg",
+    "imageAlt": "M은 두 대각선 AC,BD의 공통 중점",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q11-solution.svg",
+    "solutionImageAlt": "AM=CM, BM=DM, 맞꼭지각 같음 · △AMB≡△CMD (SAS)",
+    "solutionImageCaption": "AM=CM, BM=DM, 맞꼭지각 같음 · △AMB≡△CMD (SAS)",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -467,7 +523,11 @@ window.questionBank = [
     "solution": "한 점 둘레에 모인 다각형들의 내각의 크기의 총합은 $360^\\circ$이어야 한다.\n$\\begin{aligned} \\text{정사각형의 한 내각의 크기: } & 90^\\circ \\ \\text{정육각형의 한 내각의 크기: } & \\dfrac{(6 - 2) \\times 180^\\circ}{6} = 120^\\circ \\end{aligned}$\n따라서 함께 모여 있는 정$n$각형의 한 내각의 크기는 $\\begin{aligned} 360^\\circ - (90^\\circ + 120^\\circ) &= 360^\\circ - 210^\\circ \\ &= 150^\\circ \\end{aligned}$\n정$n$각형의 한 내각의 크기 공식으로부터 $\\begin{aligned} \\dfrac{(n - 2) \\times 180^\\circ}{n} &= 150^\\circ \\ 180(n - 2) &= 150n \\ 180n - 360 &= 150n \\ 30n &= 360 \\ n &= 12 \\end{aligned}$\n따라서 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q13-solution.svg",
+    "solutionImageAlt": "한 꼭짓점 주변: 정사각형90° + 정육각형120° + 정n각형150° · n=12",
+    "solutionImageCaption": "한 꼭짓점 주변: 정사각형90° + 정육각형120° + 정n각형150° · n=12",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -503,7 +563,14 @@ window.questionBank = [
     "solution": "정십각형의 한 외각의 크기를 구하여 연장선이 이루는 삼각형의 내각에 적용한다.\n정십각형의 한 외각의 크기는 $\\begin{aligned} \\dfrac{360^\\circ}{10} &= 36^\\circ \\end{aligned}$\n두 변의 연장선이 만나는 점을 $K$라 할 때 생기는 $\\triangle KBC$에서 $\\begin{aligned} \\angle KBC &= 36^\\circ \\quad (\\text{정십각형의 한 외각}) \\ \\angle KCB &= 36^\\circ \\quad (\\text{정십각형의 한 외각}) \\end{aligned}$\n삼각형의 세 내각의 크기의 합은 $180^\\circ$이므로 구하는 $\\angle x$는 $\\begin{aligned} \\angle x &= 180^\\circ - (\\angle KBC + \\angle KCB) \\ &= 180^\\circ - (36^\\circ + 36^\\circ) \\ &= 180^\\circ - 72^\\circ \\ &= 108^\\circ \\end{aligned}$\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q14.svg",
+    "imageAlt": "정십각형 ABCDEFGHIJ · AB와 DC의 연장선 교점 K",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q14-solution.svg",
+    "solutionImageAlt": "정십각형 외각36° · 삼각형KBC에서 x=180−36−36=108°",
+    "solutionImageCaption": "정십각형 외각36° · 삼각형KBC에서 x=180−36−36=108°",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -749,7 +816,14 @@ window.questionBank = [
     "solution": "선분의 개수 $x$를 구한다. 선분은 점들의 일직선 여부와 관계없이 서로 다른 두 점을 택하면 유일하게 하나씩 결정되므로 $\\begin{aligned} x &= \\dfrac{5 \\times 4}{2} = 10\\text{개} \\end{aligned}$\n직선의 개수 $y$를 구한다. $5$개의 점에서 만들 수 있는 두 점의 쌍은 $10$개이지만, 세 점 $A, B, C$ 이외에는 어떠한 세 점도 한 직선 위에 놓이지 않으므로 세 직선 $\\overleftrightarrow{AB}, \\overleftrightarrow{BC}, \\overleftrightarrow{CA}$는 모두 같은 직선 $1$개이다. $\\begin{aligned} y &= 10 - 3 + 1 = 8\\text{개} \\end{aligned}$\n반직선의 개수 $z$를 구한다. $5$개의 점에서 시작점과 방향점을 정하는 순서쌍의 수는 $5 \\times 4 = 20$개이다. 세 점이 $A-B-C$ 순서로 놓여 있고 $A, B, C$ 이외에는 어떠한 세 점도 한 직선 위에 놓이지 않으므로 $\\begin{aligned} \\overrightarrow{AB} = \\overrightarrow{AC} \\quad (\\text{중복 } 1\\text{개 감산}) \\ \\overrightarrow{CB} = \\overrightarrow{CA} \\quad (\\text{중복 } 1\\text{개 감산}) \\end{aligned}$ 반면 점 $B$에서 시작하는 $\\overrightarrow{BA}$와 $\\overrightarrow{BC}$는 방향이 반대이므로 서로 다른 반직선이다. 따라서 중복되는 $2$개를 제외하면 $\\begin{aligned} z &= 20 - 2 = 18\\text{개} \\end{aligned}$\n$x+y+z$의 값을 계산한다. $\\begin{aligned} x + y + z &= 10 + 8 + 18 \\ &= 36 \\end{aligned}$\n답: $36$",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q21.svg",
+    "imageAlt": "A,B,C만 한 직선 위에 놓인 다섯 점",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q21-solution.svg",
+    "solutionImageAlt": "AB와 AC는 같은 반직선 · 선분10, 직선8, 반직선18 → 합36",
+    "solutionImageCaption": "AB와 AC는 같은 반직선 · 선분10, 직선8, 반직선18 → 합36",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -809,6 +883,13 @@ window.questionBank = [
     "solution": "(1) 꼭짓점의 대응 관계를 일치시켜 합동 기호로 표현한다. 점 $A$는 점 $C$에, 점 $B$는 점 $D$에, 점 $D$는 점 $B$에 각각 대응하므로 $\\begin{aligned} \\triangle ABD \\equiv \\triangle CDB \\end{aligned}$\n(2) $\\triangle ABD$와 $\\triangle CDB$에서 합동 조건을 서술한다. $\\begin{aligned} \\text{1. } & \\text{문제의 조건에서 한 변의 길이가 같다.} \\ & \\overline{AD} = \\overline{CB} = 4 \\quad \\cdots\\cdots \\text{ (1)} \\ \\text{2. } & \\text{선분 } BD\\text{는 두 삼각형이 공유하는 공통인 변이다.} \\ & \\overline{BD} = \\overline{DB} \\quad (\\text{공통}) \\quad \\cdots\\cdots \\text{ (2)} \\ \\text{3. } & \\overline{AD} \\parallel \\overline{BC}\\text{이고 대각선 } BD\\text{와 만나므로 엇각의 크기가 서로 같다.} \\ & \\angle ADB = \\angle CBD \\quad (\\text{엇각}) \\quad \\cdots\\cdots \\text{ (3)} \\end{aligned}$\n(1), (2), (3)에 의하여 두 변의 길이가 각각 같고 그 끼인각의 크기가 서로 같다. $\\begin{aligned} \\therefore \\triangle ABD \\equiv \\triangle CDB \\quad (\\text{SAS 합동}) \\end{aligned}$\n답: (1) $\\triangle ABD \\equiv \\triangle CDB$ (2) 조건: $\\overline{AD}=\\overline{CB}=4$, $\\overline{BD}$는 공통, $\\angle ADB=\\angle CBD$ (엇각) / 합동조건: SAS 합동",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q23.svg",
+    "imageAlt": "AD∥BC · AD=BC=4 · 대각선 BD",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q23-solution.svg",
+    "solutionImageAlt": "AD=CB, BD는 공통, ∠ADB=∠CBD · △ABD≡△CDB (SAS)",
+    "solutionImageCaption": "AD=CB, BD는 공통, ∠ADB=∠CBD · △ABD≡△CDB (SAS)",
+    "solutionImageSize": "full"
   }
 ];
