@@ -1,0 +1,68 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "cyl",
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 6,
+      "baseFill": {
+        "face": "TOP",
+        "fill": "LIGHT"
+      }
+    },
+    {
+      "id": "pyr",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 5,
+        "depth": 5
+      },
+      "height": 12,
+      "names": "ABCDE"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "cyl",
+      "radius": "bottom",
+      "label": "3"
+    },
+    {
+      "solid": "cyl",
+      "height": true,
+      "label": "6",
+      "side": "LEFT"
+    },
+    {
+      "edge": "AB",
+      "label": "5"
+    },
+    {
+      "solid": "pyr",
+      "height": true,
+      "label": "12"
+    }
+  ],
+  "highlights": [
+    {
+      "solid": "pyr",
+      "face": "bottom",
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "(1) 원기둥: 반지름3, 높이6 · (2) 정사각뿔: 밑변5, 높이12",
+  "sourceQuote": "현 Q24 원기둥 겉넓이와 정사각뿔 부피의 두 독립 물음",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "원기둥 r3 h6, 정사각뿔 밑변5 h12",
+      "mappedTo": [
+        "cyl",
+        "pyr"
+      ]
+    }
+  ]
+}
