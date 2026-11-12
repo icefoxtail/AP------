@@ -82,7 +82,9 @@ async function initArchiveScreenRuntime() {
                     frozenSource: envelope.sourceKind === 'assignment' || Boolean(envelope.assignmentId),
                     questionUids: envelope.questionUids,
                     sourceArchiveFile,
-                    questionBank: envelope.questions,
+                    questionBank: params.get('studentReview') === '1' && window.ArchiveStudentSvgRefresh
+                        ? await window.ArchiveStudentSvgRefresh.refresh(envelope.questions, envelope)
+                        : envelope.questions,
                     examTitle: meta.identityTitle || meta.title || sourceArchiveFile.split('/').pop().replace(/\.js$/, ''),
                     examDisplayTitle: meta.printHeaderOptions?.title,
                     printHeaderOptions: meta.printHeaderOptions,

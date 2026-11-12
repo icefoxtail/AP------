@@ -151,7 +151,10 @@ export async function computeReleaseIdentity({ sourceRoot = process.cwd(), regis
   const inventory = [];
   for (const entry of plan.entries) {
     const item = { path: entry.path, bytes: entry.bytes, sha256: entry.content ? sha256(entry.content) : await fileDigest(entry.absolute) };
-    if (!registeredPaths.has(entry.path)) {
+    if (/^archive\/data\/student-svg-refresh-v1\/[a-z0-9-]+\.json$/.test(entry.path) && packageManifest.studentSvgRefresh === true) {
+      if (!entry.studentSvgInputs?.every(input => registeredPaths.has(input)))
+        throw new Error("student SVG projection has an input outside the registered snapshot");
+    } else if (!registeredPaths.has(entry.path)) {
       const reference = temporary.get(entry.path);
       if (!reference || reference.bytes !== item.bytes || reference.sha256 !== item.sha256 || !entry.reasons.includes(reference.reason))
         throw new Error(`packaged file is not in the registered snapshot or a verified temporary shard: ${entry.path}`);

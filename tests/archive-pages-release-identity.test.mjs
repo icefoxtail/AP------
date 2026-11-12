@@ -83,6 +83,25 @@ test("new exam and solution SVG bytes change the package, and missing required f
   await assert.rejects(f.identity(), /included file does not exist/);
 });
 
+test("student SVG projection is bound to registered source and image bytes", async t => {
+  const f = fixture(t);
+  f.manifest.studentSvgRefresh = true;
+  f.put("tools/archive-pages-release-manifest.json", JSON.stringify(f.manifest));
+  f.put("archive/exams/a.js", 'window.questionBank = [{id: 1, content: "Question", answer: "1", solutionImage: "assets/images/current.svg"}];');
+  f.commit();
+  f.put("archive/assets/images/current.svg", '<svg xmlns="http://www.w3.org/2000/svg"/>');
+  await assert.rejects(f.identity(), /student SVG projection has an input outside the registered snapshot/);
+  f.commit();
+  const initial = await f.identity();
+  const report = await buildPagesSite({ sourceRoot: f.root, manifest: f.manifest });
+  assert.ok(report.inventory.some(entry => entry.path === 'archive/data/student-svg-refresh-v1/other.json' &&
+    entry.transform === 'student-svg-refresh'));
+  assert.equal(report.minifiedFileCount, 1);
+  f.put("archive/assets/images/current.svg", '<svg xmlns="http://www.w3.org/2000/svg"><title>Revised</title></svg>');
+  f.commit();
+  assert.notEqual((await f.identity()).packageDigest, initial.packageDigest);
+});
+
 test("same-path R2 image replacement and Worker changes invalidate external dependency proof", async t => {
   const f = fixture(t), before = await f.identity();
   f.put("archive/assets/images/a.png", "image-after!"); f.commit();
