@@ -1415,7 +1415,7 @@ function multiCurveSpec(plan,id){
   })());
   const plainValueOf=(curve,x)=>{
     if(curve.kind==='LINE')return exactValue(curve.coefficients[0])+exactValue(curve.coefficients[1])*x;
-    if(curve.kind==='RATIONAL')return (exactValue(curve.numerator[0])+exactValue(curve.numerator[1])*x)/(exactValue(curve.denominator[0])+exactValue(curve.denominator[1])*x);
+    if(curve.kind==='RATIONAL')return (exactValue(curve.numerator[0])+exactValue(curve.numerator[1])*x+(curve.numerator.length===3?exactValue(curve.numerator[2])*x*x:0))/(exactValue(curve.denominator[0])+exactValue(curve.denominator[1])*x);
     return exactValue(curve.offset)+exactValue(curve.amplitude)*Math.sqrt(Math.max(0,exactValue(curve.radicand[0])+exactValue(curve.radicand[1])*x));
   };
   // G18c: abs:true draws y=|f(x)|; the kink (where f is 0) is a sampled position, so the folded corner is exact.
@@ -1468,8 +1468,13 @@ function multiCurveSpec(plan,id){
         if(typeof text!=='string'||!/^[0-9A-Za-z=+\-*/().\^ ]{1,40}$/.test(text))throw Error('MULTI_CURVE_LABEL_INVALID:'+curve.id);
         let x,y;
         if(curve.kind==='RATIONAL'){
-          const pole=-exactValue(curve.denominator[0])/exactValue(curve.denominator[1]),horizontal=exactValue(curve.numerator[1])/exactValue(curve.denominator[1]);
-          const farRight=hi-pole>=pole-lo;x=farRight?pole+(hi-pole)*.8:pole-(pole-lo)*.8;y=valueOf(curve,x);y+=(y>=horizontal?1:-1)*spanY*.06;
+          const pole=-exactValue(curve.denominator[0])/exactValue(curve.denominator[1]);
+          // an oblique rational (quadratic numerator) has no horizontal asymptote: the label stands on the side of its oblique asymptote y=qx+r
+          const farRight=hi-pole>=pole-lo;x=farRight?pole+(hi-pole)*.8:pole-(pole-lo)*.8;y=valueOf(curve,x);
+          let horizontal;
+          if(curve.numerator.length===3){const d0=exactValue(curve.denominator[0]),d1=exactValue(curve.denominator[1]),q=exactValue(curve.numerator[2])/d1;horizontal=q*x+(exactValue(curve.numerator[1])-q*d0)/d1;}
+          else horizontal=exactValue(curve.numerator[1])/exactValue(curve.denominator[1]);
+          y+=(y>=horizontal?1:-1)*spanY*.06;
         }else{x=lo+(hi-lo)*(curve.kind==='SQRT'?.7:.62);y=valueOf(curve,x)+(curve.kind==='SQRT'&&exactValue(curve.amplitude)<0?-1:1)*spanY*.06;}
         objects.push({id:'curve-'+curve.id+'-equation',kind:'EQUATION_LABEL',text,at:[clampX(x),clampY(y)],priority:0,nearCurve:curve.id,...(curve.kind==='LINE'?{nearEnd:'END'}:{})});
       }
@@ -1778,6 +1783,7 @@ const CONTAINER_FILL_CONTRACT=` CONTAINER FILL FIGURES (container-fill-figure-v1
     extendedContract+=SOLID_FIGURE_CONTRACT;
     extendedContract+=SET_DIAGRAM_CONTRACT;
     extendedContract+=MULTI_CURVE_CONTRACT;
+    extendedContract+=' OBLIQUE RATIONAL (multi-curve-figure-v1): a RATIONAL curve may carry a quadratic numerator [a0,a1,a2] with a2 nonzero, y=(a0+a1x+a2x^2)/(d0+d1x). It has the vertical asymptote x=p (dashed, with its text) but no horizontal one; the oblique asymptote y=qx+r, q=a2/d1, is not drawn by the curve: draw it as a dashed LINE curve of the same figure. a2=0 is MULTI_CURVE_COEFFICIENT_INVALID (use the linear numerator), a numerator that vanishes at the pole is MULTI_CURVE_RATIONAL_DEGENERATE, abs:true is MULTI_CURVE_COEFFICIENT_INVALID and a curve with inverseOf pointing at it is MULTI_CURVE_INVERSE_UNSUPPORTED. Use it only when the problem itself is that function (it is outside the high-school graph syllabus), never as a detour of a solution.';
     extendedContract+=CONTAINER_FILL_CONTRACT;
     extendedContract+=LATTICE_PATH_CONTRACT;
     let planner=recoveredPlanner??await provider('PLAN_VISUAL',{instruction:extendedContract,source:sourceOnly,verifiedSolution:question.solution,verification:verified.payload},images,folder);

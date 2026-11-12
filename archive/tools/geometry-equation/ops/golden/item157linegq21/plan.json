@@ -1,0 +1,114 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "functionName": "f",
+  "pieces": [
+   {
+    "coefficients": [
+     "0",
+     "-2",
+     "1"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "formula": "x^2-2x",
+  "sampleNote": "a=1/2",
+  "requiredPoints": [
+   {
+    "id": "V",
+    "x": "1",
+    "y": "-1",
+    "marker": "NONE"
+   }
+  ],
+  "overlays": {
+   "lines": [
+    {
+     "id": "g",
+     "slope": "2",
+     "intercept": "0",
+     "label": "g(x)=2x",
+     "labelAt": "END"
+    }
+   ],
+   "points": [
+    {
+     "id": "O",
+     "x": "0",
+     "y": "0"
+    },
+    {
+     "id": "A",
+     "curveX": "4"
+    },
+    {
+     "id": "B",
+     "curveX": "1"
+    },
+    {
+     "id": "C",
+     "x": "5/2",
+     "y": "7/2"
+    },
+    {
+     "id": "H",
+     "x": "0",
+     "y": "7/2"
+    }
+   ],
+   "segments": [
+    {
+     "id": "sAB",
+     "from": "A",
+     "to": "B",
+     "color": "BLUE"
+    },
+    {
+     "id": "sCH",
+     "from": "C",
+     "to": "H",
+     "color": "WARM"
+    }
+   ],
+   "rightAngles": [
+    {
+     "at": "H",
+     "from": [
+      "C",
+      "O"
+     ]
+    }
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "pointNames": {
+  "O": "O",
+  "A": "A",
+  "B": "B",
+  "C": "C",
+  "H": "H"
+ },
+ "caption": "예: a=1/2일 때 f(x)=x²−2x와 g(x)=2x가 O, A에서 만나고, 꼭짓점 B와 A를 이은 선분 AB의 중점이 C이다. C에서 y축에 내린 수선의 발이 H이므로 CH는 점 C의 x좌표이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "a=1/2 example: f=x^2-2x, g=2x, A=(4,8), B=(1,-1), C=(5/2,7/2), H=(0,7/2)",
+   "mappedTo": [
+    "graphPlan.pieces",
+    "graphPlan.overlays"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "예시 a=1/2에서 두 교점 O,A, 꼭짓점 B, 중점 C와 수선의 발 H"
+ ]
+}

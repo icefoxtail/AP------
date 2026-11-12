@@ -515,7 +515,7 @@ def _mc_row_y(row,x_value):
     if kind in ('LINE','Y_OF_X'):value=sum(pp_exact_float(value)*x_value**index for index,value in enumerate(row['coefficients']))
     if kind=='RATIONAL':
         n=[pp_exact_float(value) for value in row['numerator']];d=[pp_exact_float(value) for value in row['denominator']]
-        value=(n[0]+n[1]*x_value)/(d[0]+d[1]*x_value)
+        value=sum(coefficient*x_value**power for power,coefficient in enumerate(n))/(d[0]+d[1]*x_value)
     elif kind=='SQRT':
         r=[pp_exact_float(value) for value in row['radicand']]
         value=pp_exact_float(row.get('offset','0'))+pp_exact_float(row.get('amplitude','1'))*math.sqrt(max(0.0,r[0]+r[1]*x_value))
