@@ -350,10 +350,10 @@ window.questionBank = [
       "intakeEvidencePath": "archive/analysis/h1-fast-lane-b-20261013/2021-palma-1final/21_팔마고_1학기_기말_고1_기출.evidence.json",
       "intakeEvidenceSha256": "99d24dc7d599d567f87a8e9b07a0c9f5b315337d8be204d446e8831ea46a7235"
     },
-    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "좌표로 표시한 삼각형 ABC와 각의 이등분선 AD",
-    "solutionImageCaption": "변 AB와 AC의 길이에서 정한 내분비에 따라 점 D가 놓인다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 삼각형 A, B, C와 A에서 변 BC로 그은 각의 이등분선, 교점 D.",
+    "solutionImageCaption": "A에서 변 BC로 그은 각의 이등분선이 D에서 만난다. 이등분선 정리와 내분점 공식을 적용한다. 정답은 2분의 √130이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -622,9 +622,9 @@ window.questionBank = [
       "intakeEvidencePath": "archive/analysis/h1-fast-lane-b-20261013/2021-palma-1final/21_팔마고_1학기_기말_고1_기출.evidence.json",
       "intakeEvidenceSha256": "99d24dc7d599d567f87a8e9b07a0c9f5b315337d8be204d446e8831ea46a7235"
     },
-    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q7-solution.svg",
-    "solutionImageAlt": "두 직선의 교점 (1, 3)과 점 (2, -1)을 지나는 직선이 y축과 만나는 점이 (0, 7)이다.",
-    "solutionImageCaption": "두 직선의 교점 (1, 3)과 점 (2, -1)을 지나는 직선이 y축과 만나는 점이 (0, 7)이다.",
+    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 두 직선의 교점 P와 주어진 점 Q, 두 점 사이의 선분.",
+    "solutionImageCaption": "두 직선의 교점 P를 구한 뒤 주어진 점 Q와 연결한다. 기울기와 y절편을 구하는 방법을 적용한다. 정답은 7이다.",
     "solutionImageSize": "full"
   },
   {
@@ -795,10 +795,10 @@ window.questionBank = [
       "intakeEvidencePath": "archive/analysis/h1-fast-lane-b-20261013/2021-palma-1final/21_팔마고_1학기_기말_고1_기출.evidence.json",
       "intakeEvidenceSha256": "99d24dc7d599d567f87a8e9b07a0c9f5b315337d8be204d446e8831ea46a7235"
     },
-    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q09-solution.svg",
-    "solutionImageAlt": "삼각형 ABC의 세 높이와 수심 H",
-    "solutionImageCaption": "세 꼭짓점에서 대변에 내린 높이가 점 H에서 만난다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C에서 대변에 내린 세 수선과 교점 H.",
+    "solutionImageCaption": "세 높이의 공통 교점을 H로 표시했다. 각 대변에 수직인 높이를 그려 수심을 찾는다. 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -886,10 +886,10 @@ window.questionBank = [
       "intakeEvidencePath": "archive/analysis/h1-fast-lane-b-20261013/2021-palma-1final/21_팔마고_1학기_기말_고1_기출.evidence.json",
       "intakeEvidenceSha256": "99d24dc7d599d567f87a8e9b07a0c9f5b315337d8be204d446e8831ea46a7235"
     },
-    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "원과 평행한 두 경계 직선 및 중심에서의 수선",
-    "solutionImageCaption": "서로 다른 두 교점이 생기는 범위의 두 경계에서 직선은 원에 접한다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 지름 양 끝점 A, B와 중심 M, 중심을 지나는 예시 직선.",
+    "solutionImageCaption": "지름 끝점 A, B의 중점을 M으로 표시해 원의 중심을 찾는다. 반지름과 직선 사이 거리를 비교한다. 정답은 11개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -975,10 +975,10 @@ window.questionBank = [
       "intakeEvidencePath": "archive/analysis/h1-fast-lane-b-20261013/2021-palma-1final/21_팔마고_1학기_기말_고1_기출.evidence.json",
       "intakeEvidenceSha256": "99d24dc7d599d567f87a8e9b07a0c9f5b315337d8be204d446e8831ea46a7235"
     },
-    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "원 위의 O, P와 두 후보점 Q₁, Q₂ 및 대응하는 현",
-    "solutionImageCaption": "두 작은 원분의 넓이를 비교할 때 각 후보점에서 생기는 현을 함께 본다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 C와 반지름 1인 원 위의 점 O, P 및 중심에서 P로 그은 반지름.",
+    "solutionImageCaption": "같은 원에서 작은 원분의 넓이가 같으면 대응하는 현의 길이가 같다. 이 관계를 이용해 점 Q의 위치를 정한다. 정답은 −1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1160,10 +1160,10 @@ window.questionBank = [
       "intakeEvidencePath": "archive/analysis/h1-fast-lane-b-20261013/2021-palma-1final/21_팔마고_1학기_기말_고1_기출.evidence.json",
       "intakeEvidenceSha256": "99d24dc7d599d567f87a8e9b07a0c9f5b315337d8be204d446e8831ea46a7235"
     },
-    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "점 A의 대칭점 A′와 최단거리 경로 및 삼각형 ABP",
-    "solutionImageCaption": "대칭점 A′, P, B가 한 직선 위에 놓일 때 거리의 합이 최소가 된다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=x와 수평선 위의 점 A′, B 및 반사 전 점 A.",
+    "solutionImageCaption": "A를 직선 y=x에 대하여 대칭이동하면 A′P=AP이다. A′에서 B까지의 선분으로 최단 경로를 찾는다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1245,7 +1245,11 @@ window.questionBank = [
       "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_팔마고1_1기말.pdf",
       "intakeEvidencePath": "archive/analysis/h1-fast-lane-b-20261013/2021-palma-1final/21_팔마고_1학기_기말_고1_기출.evidence.json",
       "intakeEvidenceSha256": "99d24dc7d599d567f87a8e9b07a0c9f5b315337d8be204d446e8831ea46a7235"
-    }
+    },
+    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 A, B, C, D의 세 등분점 P₁, P₂, Q₁, Q₂와 색칠한 영역. 파란색 삼각형은 S₁, 주황색 사각형은 S₂.",
+    "solutionImageCaption": "직사각형에서 AB의 길이는 x, AD의 길이는 x+6이다. 파란색 삼각형은 S₁, 주황색 사각형은 S₂를 나타낸다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1325,7 +1329,11 @@ window.questionBank = [
       "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_팔마고1_1기말.pdf",
       "intakeEvidencePath": "archive/analysis/h1-fast-lane-b-20261013/2021-palma-1final/21_팔마고_1학기_기말_고1_기출.evidence.json",
       "intakeEvidenceSha256": "99d24dc7d599d567f87a8e9b07a0c9f5b315337d8be204d446e8831ea46a7235"
-    }
+    },
+    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫째 부등식의 두 해 구간, 예시 a=0일 때 둘째 부등식의 해, 그리고 공통 구간.",
+    "solutionImageCaption": "예: a=0일 때 공통 구간은 주어진 해와 일치한다. 경계 순서에 따라 가능한 a의 범위를 정한다. 정답은 −1≤a<2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1416,10 +1424,10 @@ window.questionBank = [
       "intakeEvidencePath": "archive/analysis/h1-fast-lane-b-20261013/2021-palma-1final/21_팔마고_1학기_기말_고1_기출.evidence.json",
       "intakeEvidenceSha256": "99d24dc7d599d567f87a8e9b07a0c9f5b315337d8be204d446e8831ea46a7235"
     },
-    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "한 직선 위의 점 A, P, B, Q의 순서",
-    "solutionImageCaption": "내부 분점 P와 B 너머의 점 Q가 놓이는 순서를 확인한다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위의 점 A, B, P, Q와 선분 PQ의 중점 M.",
+    "solutionImageCaption": "AB의 좌표 변화를 연장 비율에 맞게 적용해 Q를 구한다. P와 Q의 중점이 M이다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1510,10 +1518,10 @@ window.questionBank = [
       "intakeEvidencePath": "archive/analysis/h1-fast-lane-b-20261013/2021-palma-1final/21_팔마고_1학기_기말_고1_기출.evidence.json",
       "intakeEvidenceSha256": "99d24dc7d599d567f87a8e9b07a0c9f5b315337d8be204d446e8831ea46a7235"
     },
-    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "원 밖의 점 P에서 그은 두 접선과 접점 T₁, T₂",
-    "solutionImageCaption": "반지름은 각 접점에서 접선과 수직이다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점 O 중심의 단위원과 원 밖의 점 T.",
+    "solutionImageCaption": "접선의 기울기를 두고 원의 중심에서 직선까지의 거리를 반지름과 비교한다. 기울기가 정의되지 않는 경우도 확인한다. 정답은 x=1, 3x−4y+5=0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1783,10 +1791,10 @@ window.questionBank = [
       "intakeEvidencePath": "archive/analysis/h1-fast-lane-b-20261013/2021-palma-1final/21_팔마고_1학기_기말_고1_기출.evidence.json",
       "intakeEvidenceSha256": "99d24dc7d599d567f87a8e9b07a0c9f5b315337d8be204d446e8831ea46a7235"
     },
-    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "절댓값 부등식의 경계와 실수해 구간",
-    "solutionImageCaption": "실수해 구간의 열린 끝과 절댓값이 바뀌는 경계를 표시한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 절댓값 안의 두 식이 0이 되는 값 −2와 3을 표시했다.",
+    "solutionImageCaption": "절댓값 안의 식이 0이 되는 x=−2와 x=3을 기준으로 세 구간을 나누어 각각 푼다. 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1804,10 +1812,10 @@ window.questionBank = [
     "image": "assets/images/21_팔마고_1학기_기말_고1_기출/q21-alive-replacement-problem.svg",
     "answer": "$24+\\dfrac{12}{\\sqrt{13}}\\text{ m}$",
     "solution": "도로는 $R(0,12)$, $S(18,0)$을 지나는 직선이다.\n기울기는\n$\\dfrac{0-12}{18-0}$\n$=-\\dfrac{12}{18}$\n$=-\\dfrac23$이다.\n점 $R$을 지나는 점-기울기식은\n$y-12=-\\dfrac23(x-0)$,\n$y=-\\dfrac23x+12$이다.\n양변에 3을 곱하면\n$3y=-2x+36$이고,\n따라서 도로의 방정식은\n$2x+3y-36=0$이다.\n\n우체국 $P(24,0)$에서 도로까지의 최단거리는 수선의 길이이다.\n점과 직선 사이의 거리 공식에 대입하면\n$d=\\dfrac{|2\\cdot24+3\\cdot0-36|}{\\sqrt{2^2+3^2}}$\n$=\\dfrac{|12|}{\\sqrt{13}}$\n$=\\dfrac{12}{\\sqrt{13}}\\text{ m}$이다.\n집 $H(0,0)$에서 우체국까지는 $24$ m이고, 우체국을 지난 뒤에는 $P$에서 도로에 내린 수선의 발까지가 가장 짧다.\n따라서 집에서 우체국에 들렀다가 도로에 도착하기까지의 최단거리는\n$24+\\dfrac{12}{\\sqrt{13}}\\text{ m}$이다.",
-    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q21-alive-replacement-solution.svg",
-    "solutionImageAlt": "짱아네 집, 우체국, 도로와 우체국에서 도로에 내린 수선의 발",
-    "solutionImageCaption": "우체국에서 도로까지 가장 짧은 구간은 도로에 수직으로 내린 선분 PF이다.",
-    "solutionImageSize": "large",
+    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 집 H, 우체국 P, 도로 위의 점 R, S와 우체국에서 도로에 내린 수선 PF.",
+    "solutionImageCaption": "도로는 R과 S를 지나는 직선이다. 우체국 P에서 도로에 내린 수선 PF가 P와 도로 사이의 최단거리이다. 정답은 24+√13분의 12 m이다.",
+    "solutionImageSize": "full",
     "uid": "ALITE-PALMA21-1FINAL-Q21-A1",
     "sourceKind": "generated",
     "sourceType": "generated",

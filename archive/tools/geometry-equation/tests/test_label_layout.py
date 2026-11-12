@@ -189,8 +189,11 @@ class LayoutTests(unittest.TestCase):
         result=layout([item],[point]+rays,Box(0,0,300,200),measurements={'O-name':(15,14)},require_measurements=True)
         self.assertEqual(result['status'],'PASS',result['unresolved'])
         placed=result['labels'][0];box=Box(**placed['box'])
-        self.assertEqual(placed['placement'],'POINT_NAME_RING')
-        self.assertEqual(result['leaders'],[])
+        # (CL) the name stands touching its point, or else on a leader to it: never floating leaderless farther than POINT_NAME_RING_NEAR_PX
+        if placed['placement']=='POINT_NAME_RING':
+            self.assertEqual(result['leaders'],[]);self.assertLessEqual(math.hypot(max(box.x-100,0,100-box.right),max(box.y-100,0,100-box.bottom)),18.0)
+        else:
+            self.assertTrue(placed['placement'].startswith('OWNER_LEADER_'));self.assertEqual(len(result['leaders']),1)
         self.assertFalse(any(collision(box,ray) for ray in rays))
         self.assertLess(math.hypot(box.x+box.width/2-100,box.y+box.height/2-100),70)
 

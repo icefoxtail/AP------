@@ -7,7 +7,11 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 export const FOOTPRINT_LIMITS = Object.freeze({
   analysisBlobBytes: 2 * 1024 * 1024,
   transientBlobBytes: 8 * 1024 * 1024,
-  changedBlobBytes: 64 * 1024 * 1024
+  // Per-file cap for ordinary changed blobs (analysis/transient have their own caps above).
+  changedBlobBytes: 64 * 1024 * 1024,
+  // Cap on the new object bytes one change set may introduce. Separate from the per-file
+  // cap: image assets are leaving this repo and data PRs are legitimately large.
+  changesetBytes: 512 * 1024 * 1024
 });
 
 // Canonical catalog projections are production inputs consumed by the live
@@ -236,7 +240,7 @@ function classify(repoPath) {
  * Check only changed files and index/worktree additions. The base tree is a
  * grandfathered size baseline; unchanged legacy blobs never enter the audit.
  */
-export function auditGitGrowth({ root, base = 'HEAD^', head = 'HEAD', metrics = null } = {}) {
+export function auditGitGrowth({ root, base = 'HEAD^', head = 'HEAD', metrics = null, changesetBytes = FOOTPRINT_LIMITS.changesetBytes } = {}) {
   if (metrics) metrics.gitCommands = 0;
   const normalizedBase = normalizeRef(base);
   const untrackedPaths = splitNul(tryGit(root, ['ls-files', '--others', '--exclude-standard', '-z'], metrics));
@@ -317,14 +321,14 @@ export function auditGitGrowth({ root, base = 'HEAD^', head = 'HEAD', metrics = 
   }
 
   const countedBytes = [...introducedObjects.values()].reduce((sum, size) => sum + size, 0);
-  if (countedBytes > FOOTPRINT_LIMITS.changedBlobBytes) {
-    errors.push(`GIT_GROWTH_CHANGESET_LIMIT:${countedBytes}:${FOOTPRINT_LIMITS.changedBlobBytes}`);
+  if (countedBytes > changesetBytes) {
+    errors.push(`GIT_GROWTH_CHANGESET_LIMIT:${countedBytes}:${changesetBytes}`);
   }
   return {
     ok: errors.length === 0,
     base: normalizedBase,
     head,
-    limits: { ...FOOTPRINT_LIMITS },
+    limits: { ...FOOTPRINT_LIMITS, changesetBytes },
     countedChangedBytes: countedBytes,
     rewriteHistory,
     files,

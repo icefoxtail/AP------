@@ -99,3 +99,36 @@ test('long plain solutions still page and the strict unrendered-math detector re
  assert.equal(renderLoop.unrenderedMathCount({textContent:'unrendered $x+1$'}),1);
  assert.equal(renderLoop.unrenderedMathCount({textContent:'rendered plain text'}),0);
 });
+
+
+const original = fs.readFileSync(path.join(root, 'archive/engine.html'), 'utf8');
+const originalBegin = original.indexOf('function makeSolutionHtmlChunks(html) {');
+const originalEnd = original.indexOf('\n}\n\nfunction makeLongSolutionShell', originalBegin);
+assert.ok(originalBegin >= 0 && originalEnd > originalBegin, 'original engine chunker source exists');
+const originalChunker = vm.runInContext(`(${original.slice(originalBegin, originalEnd + 2)})`, chunkContext, {timeout: 2000});
+
+for (const [open, close] of [['$', '$'], ['$$', '$$'], ['\\(', '\\)'], ['\\[', '\\]']]) {
+ test(`original engine keeps long ${open} math atomic across pagination chunks`, () => {
+  const formula = open + String.raw`\overline{\text{AB}} \cdot \overline{\text{AC}} + `.repeat(8) + 'x' + close;
+  const prefix = 'before '.repeat(50), suffix = ' after'.repeat(50);
+  const chunks = Array.from(originalChunker(prefix + formula + suffix));
+  assert.ok(formula.length > 260);
+  assert.equal(chunks.filter(chunk => chunk.includes(formula)).length, 1);
+  assert.equal(chunks.join('').replace(/<\/?span>/g, ''), prefix + formula + suffix);
+  assert.ok(chunks.length > 2, 'surrounding prose still supplies pagination boundaries');
+ });
+}
+
+test('original engine preserves short text, whitespace chunks, BRs and markup', () => {
+ assert.deepEqual(Array.from(originalChunker('short text $a + b$')), ['<span>short text $a + b$</span>']);
+ assert.deepEqual(Array.from(originalChunker('a '.repeat(131))), ['<span>' + 'a '.repeat(130) + '</span>', '<span>a </span>']);
+ assert.deepEqual(Array.from(originalChunker('first<br><strong>second</strong>')), ['<span>first</span>', '<br>', '<strong>second</strong>']);
+ assert.deepEqual(Array.from(originalChunker('')), ['']);
+});
+
+test('original engine handles escaped dollars and encodes math inequalities safely', () => {
+ const formula = '$' + String.raw`x + \text{cost \$5} + `.repeat(20) + 'y$';
+ const chunks = Array.from(originalChunker(String.raw`cost \$5 ` + formula + ' $a&lt;b$'));
+ assert.equal(chunks.filter(chunk => chunk.includes(formula)).length, 1);
+ assert.equal(chunks.join('').replace(/<\/?span>/g, ''), String.raw`cost \$5 ` + formula + ' $a&lt;b$');
+});

@@ -92,7 +92,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 AB와 BC가 끼인각 B를 이루고, 두 변의 길이가 각각 6과 4이다.",
+    "solutionImageCaption": "넓이는 두 변과 끼인각의 사인값을 이용해 구한다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -278,7 +282,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 지나는 두 수직선이 원과 만나는 제4사분면의 점 P를 표시했다.",
+    "solutionImageCaption": "기울기 1/3인 직선과 수직인 직선이 원과 만나는 점을 본다. 좌표를 이용해 삼각함수 값을 나타낸다. 정답은 −3/10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -342,7 +350,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
     "subUnit": "수열의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 처음의 원래 항 번호 1부터 8까지, 한 번 지운 뒤 1·3·5·7, 두 번 지운 뒤 1·5가 남는 예이다.",
+    "solutionImageCaption": "짝수 번째 항을 차례로 지우면 남은 번호의 간격이 매회 두 배가 된다. 이 예에서 보이는 번호를 일반적인 항 번호로 확장한다. 정답은 514이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -437,7 +449,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 A, B, C, D의 대각선 AC와 두 같은 각, 같은 길이의 현을 나타낸다.",
+    "solutionImageCaption": "원에 내접한 사각형에서 같은 원주각이 같은 길이의 현을 만든다. 주어진 길이를 이용해 공통 현과 반지름을 차례로 구한다. 정답은 8√7/7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -468,7 +484,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC의 꼭짓점 A에서 밑변 BC의 중점 D로 내린 선분과 직각을 표시했다.",
+    "solutionImageCaption": "이등변삼각형에서 꼭짓점과 밑변의 중점을 이은 선분은 밑변에 수직이다. 이 직각삼각형을 이용해 필요한 길이를 구한다. 정답은 16/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -532,7 +552,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
     "subUnit": "수열의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형의 꼭지점 A, B, C, D와 접은 뒤의 A′, E를 나타낸다. 아래 선분은 대각선 BD를 옮겨 길이를 표시한다.",
+    "solutionImageCaption": "접기 전후의 관계를 보이고, 아래에 옮긴 BD의 길이를 이용해 필요한 변을 구한다. 정답은 2√46이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -659,7 +683,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 A, B, C, D와 교점 O, 파란색 눈금으로 표시한 CD와 OD, 아래로 옮겨 그린 대각선 BD를 나타낸다.",
+    "solutionImageCaption": "파란색 눈금으로 CD와 OD를 같은 길이로 표시하고, 대각선 BD를 그림 아래에 옮겨 그렸다. 삼각형 BCD와 OCD에 코사인법칙과 사인법칙을 적용한다. 따라서 정답은 14분의 (9√7)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
