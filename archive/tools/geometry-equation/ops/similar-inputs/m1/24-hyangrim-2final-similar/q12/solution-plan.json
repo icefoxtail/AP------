@@ -1,0 +1,57 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "water",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            0,
+            10
+          ]
+        ]
+      },
+      "height": 4,
+      "apex": [
+        0,
+        0
+      ],
+      "names": "ABCD"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "6"
+    },
+    {
+      "edge": "CA",
+      "label": "10"
+    },
+    {
+      "edge": "AD",
+      "label": "4"
+    }
+  ],
+  "caption": "남은 물 (6×10÷2)×4÷3=40 · 흘린 물240−40=200 cm³",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수정된 유사판 Q12의 명시된 조건",
+      "mappedTo": [
+        "solid"
+      ]
+    }
+  ]
+}
