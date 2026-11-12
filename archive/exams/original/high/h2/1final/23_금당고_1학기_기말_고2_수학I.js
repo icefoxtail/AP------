@@ -324,7 +324,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "problemTypeKey": null,
-    "templateKey": null
+    "templateKey": null,
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고2_수학I/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 검은 y=√x 곡선 위의 점 A(1,1), B(2,√2)와 x축의 점 L, R을 꼭짓점으로 한 파란 사다리꼴이 보인다. 윗변은 A와 B를 잇는 선분이다.",
+    "solutionImageCaption": "검은 곡선은 y=√x이고, 파란 사다리꼴은 x축과 x=k, x=k+1의 수직변 및 곡선 위 두 점을 잇는 현으로 둘러싸인다. 두 수직변의 길이는 √k와 √(k+1)이고, 두 변 사이 거리는 1이다. 정답은 20이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
