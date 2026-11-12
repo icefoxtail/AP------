@@ -313,14 +313,14 @@ window.questionBank = [
       "$\\angle A = 50^\\circ, \\angle B = 60^\\circ, \\angle C = 70^\\circ$",
       "$\\overline{AB} = 3\\,\\mathrm{cm}, \\overline{BC} = 4\\,\\mathrm{cm}, \\overline{CA} = 8\\,\\mathrm{cm}$",
       "$\\overline{AC}$의 대각의 크기가 $100^\\circ$이고 $\\angle A = 40^\\circ$",
-      "$\\overline{AB} = 5\\,\\mathrm{cm}, \\overline{BC} = 6\\,\\mathrm{cm}, \\angle A = 45^\\circ$",
+      "$\\overline{AB}=7\\,\\mathrm{cm}, \\overline{BC}=6\\,\\mathrm{cm}, \\angle A=45^\\circ$",
       "$\\angle B$의 대변의 길이가 $6\\,\\mathrm{cm}$이고 $\\angle A = 40^\\circ, \\angle C = 60^\\circ$"
     ],
     "answer": "⑤",
     "points": 4,
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
-    "solution": "삼각형의 유일 결정 조건을 각 보기별로 검토한다.\n$\\begin{aligned} \\text{① } & \\text{세 각의 크기만 주어지면 모양은 같으나 크기가 다른 삼각형이 무수히 많이 작도된다. (결정 안 됨)} \\ \\text{② } & 3 + 4 = 7 < 8\\text{이므로 가장 긴 변이 나머지 두 변의 합보다 커서 삼각형 자체가 만들어지지 않는다. (불가능)} \\ \\text{③ } & \\overline{AC}\\text{의 대각은 } \\angle B\\text{이므로 두 각만 주어진 상태이고 변의 길이가 없어 크기가 정해지지 않는다. (결정 안 됨)} \\ \\text{④ } & \\overline{AB}, \\overline{BC}\\text{의 끼인각은 } \\angle B\\text{인데 끼인각이 아닌 } \\angle A\\text{가 주어졌으므로 하나로 결정되지 않는다. (결정 안 됨)} \\ \\text{⑤ } & \\angle B\\text{의 대변은 } \\overline{AC} = 6\\,\\mathrm{cm}\\text{이고, 양 끝 각 } \\angle A = 40^\\circ, \\angle C = 60^\\circ\\text{가 주어졌으므로 ASA 조건에 의해 오직 하나로 결정된다. (결정됨)} \\end{aligned}$\n따라서 오직 하나로 결정되는 조건은 ⑤이다.",
+    "solution": "각 조건이 삼각형을 하나로 정하는지 살펴본다. ① 세 각만으로는 크기가 정해지지 않는다. ② $3+4<8$이므로 삼각형을 만들 수 없다. ③ 두 각만 주어지고 변의 길이가 없어 크기가 정해지지 않는다. ④에서 $AB=7$ cm와 $\\angle A=45^\\circ$를 고정하면 점 $C$는 $A$에서 뻗는 $45^\\circ$ 반직선 위에 있다. 또 $BC=6$ cm이므로 점 $C$는 중심이 $B$, 반지름이 $6$ cm인 원 위에 있어야 한다. 이 원과 반직선은 두 점에서 만나므로 조건을 만족하는 삼각형은 두 개일 수 있다. ⑤에서는 $AC=6$ cm와 그 양 끝각 $\\angle A=40^\\circ$, $\\angle C=60^\\circ$가 주어져 ASA 합동 조건으로 삼각형이 하나로 정해진다. 따라서 유일하게 결정되는 조건은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -524,7 +524,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "다음은 어느 중학교 학생들의 턱걸이 횟수를 조사하여 나타낸 히스토그램이다. 턱걸이를 $5$번째로 많이 한 학생이 속하는 계급은? [4점]",
+    "content": "다음은 어느 중학교 학생들의 턱걸이 횟수를 조사한 히스토그램의 일부이다. $14$회 이상 $16$회 미만인 학생은 $1$명이고, $12$회 이상 $14$회 미만인 학생은 $5$명이다. 나머지 학생은 모두 $12$회 미만이다. 턱걸이를 $5$번째로 많이 한 학생이 속하는 계급은? [4점]",
     "choices": [
       "$14$회 이상 $16$회 미만",
       "$12$회 이상 $14$회 미만",
@@ -536,7 +536,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
     "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
-    "solution": "변량의 값이 큰 계급부터 도수를 차례대로 누적한다.\n$\\begin{aligned} 14\\text{회 이상 } 16\\text{회 미만: } & 1\\text{명 (누적 } 1\\text{명)} \\ 12\\text{회 이상 } 14\\text{회 미만: } & 5\\text{명 (누적 } 1 + 5 = 6\\text{명)} \\end{aligned}$\n따라서 $2$번째부터 $6$번째로 턱걸이를 많이 한 학생은 모두 $12\\text{회 이상 } 14\\text{회 미만}$ 계급에 속한다. 그러므로 $5$번째로 많이 한 학생이 속하는 계급은 $12\\text{회 이상 } 14\\text{회 미만}$이다.\n따라서 정답은 ②이다.",
+    "solution": "횟수가 큰 계급부터 학생 수를 누적한다. $14$회 이상 $16$회 미만인 학생이 $1$명이므로 첫 번째이고, 그 다음 $12$회 이상 $14$회 미만인 학생이 $5$명이므로 두 번째부터 여섯 번째까지이다. 따라서 다섯 번째로 많이 한 학생이 속하는 계급은 $12$회 이상 $14$회 미만이다. 따라서 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -704,23 +704,22 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "다음은 학생 $50$명이 지난 $1$년 동안 저축한 금액을 조사하여 나타낸 도수분포다각형인데, $4$만 원 이상 $5$만 원 미만인 부분이 찢어져서 보이지 않는다. 다음 설명 중 옳은 것은? [4점]",
+    "content": "학생 $50$명이 지난 $1$년 동안 저축한 금액을 조사하였다. $1$만 원 이상 $2$만 원 미만인 학생은 $2$명, $2$만 원 이상 $3$만 원 미만인 학생은 $3$명, $3$만 원 이상 $4$만 원 미만인 학생은 $14$명이다. 다음 설명 중 옳은 것은? [4점]",
     "choices": [
-      "계급의 개수는 $8$이다.",
-      "1년간 저축한 금액이 $4$만 원 이상 $5$만 원 미만인 계급의 도수는 $9$명이다.",
-      "1년간 저축한 금액이 $4$만 원 이상인 학생 수는 $31$명이다.",
-      "1년간 저축한 금액이 $3$만 원 미만인 학생은 전체의 $10\\%$이다.",
-      "1년간 저축한 금액이 $3$만 원 미만인 학생 수는 $3$만 원 이상인 학생 수의 $9$배이다."
+      "$1$만 원 이상 $2$만 원 미만인 계급의 도수는 $3$명이다.",
+      "$2$만 원 이상 $3$만 원 미만인 계급의 도수는 $2$명이다.",
+      "$3$만 원 이상 $4$만 원 미만인 계급의 도수는 $15$명이다.",
+      "$3$만 원 미만인 학생은 전체의 $10\\%$이다.",
+      "$3$만 원 미만인 학생 수는 $3$만 원 이상인 학생 수의 $9$배이다."
     ],
-    "answer": "미확인",
+    "answer": "④",
     "points": 4,
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
-    "solution": "원문 PDF의 도수분포다각형에서 $1$만~$2$만 원은 $2$명, $2$만~$3$만 원은 $3$명, $3$만~$4$만 원은 $14$명으로 읽힌다. 따라서 $4$만 원 미만은 $19$명이고 전체 $50$명에서 $4$만 원 이상은 $50-19=31$명이므로 보기 ③도 참이다. 또한 $3$만 원 미만은 $2+3=5$명이고 $\\dfrac{5}{50}\\times100=10\\%$이므로 보기 ④도 참이다. 단일 정답을 요구하지만 ③과 ④가 모두 자료와 일치한다. MD 초안의 정답 ⑤는 PDF 보기와 일치하지 않아 정답을 확정하지 않고 보류한다.",
+    "solution": "주어진 세 계급의 도수는 차례로 $2$명, $3$명, $14$명이다. 따라서 ①, ②, ③은 각각 도수가 주어진 값과 달라 옳지 않다. $3$만 원 미만인 학생 수는 $2+3=5$명이므로 전체에서 차지하는 비율은 $\\dfrac{5}{50}\\times100=10\\%$이다. 따라서 ④가 옳다. 또한 $3$만 원 이상인 학생은 $50-5=45$명이므로 ⑤도 옳지 않다. 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "BLOCKED_SOURCE_DEFECT",
-    "hold": "원문 PDF에서 선지 수치는 복원했으나 보기 ③과 ④가 모두 참이고 MD 정답 ⑤도 원문 보기와 불일치함. 원문 정정 또는 공식 정답 확인 전까지 보류."
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 21,
@@ -801,13 +800,13 @@ window.questionBank = [
       "서답형"
     ],
     "wide": false,
-    "content": "다음 그림에서 직각삼각형 $ABC$와 직각삼각형 $BDE$에 대하여 $\\overline{AC}=\\overline{BE}$이고 $\\overline{AB}=7\\,\\mathrm{cm}, \\overline{ED}=4\\,\\mathrm{cm}$이다. $\\angle BED=56^\\circ, \\angle BAC=34^\\circ$일 때, 삼각형의 합동을 이용하여 선분 $CD$의 길이를 구하고 그 풀이 과정을 서술하시오. [7점]",
+    "content": "직각삼각형 $ABC$와 직각삼각형 $BDE$에서 $\\angle ABC=\\angle BDE=90^\\circ$이고, 점 $B,C,D$는 이 순서로 한 직선 위에 있다. $\\overline{AC}=\\overline{BE}$, $\\overline{AB}=7\\,\\mathrm{cm}$, $\\overline{ED}=4\\,\\mathrm{cm}$이며 $\\angle BAC=\\angle DBE$일 때, 삼각형의 합동을 이용하여 선분 $CD$의 길이를 구하고 그 풀이 과정을 서술하시오. [7점]",
     "choices": [],
     "answer": "$3\\,\\mathrm{cm}$",
     "points": 7,
     "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
     "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
-    "solution": "$\\triangle ABC$와 $\\triangle BDE$에서 각의 크기를 계산한다.\n$\\triangle ABC$에서 $\\angle ABC = 90^\\circ, \\angle BAC = 34^\\circ$이므로 $\\begin{aligned} \\angle ACB &= 180^\\circ - 90^\\circ - 34^\\circ \\ &= 56^\\circ \\end{aligned}$\n$\\triangle BDE$에서 $\\angle BDE = 90^\\circ, \\angle BED = 56^\\circ$이므로 $\\begin{aligned} \\angle DBE &= 180^\\circ - 90^\\circ - 56^\\circ \\ &= 34^\\circ \\end{aligned}$\n따라서 $\\triangle ACB$와 $\\triangle BED$에서 $\\begin{aligned} \\angle BAC &= \\angle DBE = 34^\\circ \\ \\angle ACB &= \\angle BED = 56^\\circ \\ \\overline{AC} &= \\overline{BE} \\quad (\\text{주어진 조건}) \\end{aligned}$ 이므로 한 변의 길이가 같고 그 양 끝 각의 크기가 각각 같다. $\\begin{aligned} \\therefore \\triangle ACB \\equiv \\triangle BED \\quad (\\text{ASA 합동}) \\end{aligned}$\n합동인 두 삼각형에서 대응변의 길이는 서로 같으므로 $\\begin{aligned} \\overline{BD} &= \\overline{AB} = 7\\,\\mathrm{cm} \\ \\overline{BC} &= \\overline{DE} = 4\\,\\mathrm{cm} \\end{aligned}$\n따라서 선분 $CD$의 길이는 $\\begin{aligned} \\overline{CD} &= \\overline{BD} - \\overline{BC} \\ &= 7 - 4 \\ &= 3\\,\\mathrm{cm} \\end{aligned}$\n답: $3\\,\\mathrm{cm}$",
+    "solution": "$\\triangle ACB$와 $\\triangle BED$에서 $\\angle BAC=\\angle DBE$이고 $\\angle ACB=\\angle BED$이다. 두 삼각형의 내각의 합이 $180^\\circ$이고 각각 한 각이 직각이므로, 주어진 한 쌍의 예각이 같으면 나머지 예각도 같다. 또한 $\\overline{AC}=\\overline{BE}$이므로 두 삼각형은 ASA 합동이다. 대응은 $A\\leftrightarrow B$, $C\\leftrightarrow E$, $B\\leftrightarrow D$이므로 $\\overline{BD}=\\overline{AB}=7\\,\\mathrm{cm}$, $\\overline{BC}=\\overline{DE}=4\\,\\mathrm{cm}$이다. 점 $B,C,D$가 이 순서로 한 직선 위에 있으므로 $\\overline{CD}=\\overline{BD}-\\overline{BC}=7-4=3\\,\\mathrm{cm}$. 답: $3\\,\\mathrm{cm}$",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
