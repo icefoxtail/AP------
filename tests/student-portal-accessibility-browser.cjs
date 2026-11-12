@@ -255,7 +255,7 @@ async function run() {
       await capture(page, 'student-homework-390');
       await page.locator(selectors.navItem('exams')).click(); await page.locator('#omr-panel-all').waitFor(); await assertNav(page, 'exams');
     }));
-    await check('lab enters the actual grade hub directly and an experiment retains shared navigation', () => withPage({ name: 'student-labs' }, async page => {
+    await check('lab hub keeps shared navigation, while mobile experiments hide it', () => withPage({ name: 'student-labs' }, async page => {
       await page.locator(selectors.feature('labs')).click();
       await page.waitForURL(url => /\/playground\/next\/(?:index\.html)?$/.test(url.pathname));
       await assertNav(page, 'labs');
@@ -269,7 +269,9 @@ async function run() {
       // The recommended first lab can change as the grade catalog grows.
       // Exercise the same triangle destination through its explicit course link.
       await page.getByRole('link', { name: '삼각형의 성질', exact: true }).click();
-      await page.waitForURL(/g8-triangles\.html/); await assertNav(page, 'labs');
+      await page.waitForURL(/g8-triangles\.html/);
+      await page.locator('.student-global-nav').waitFor({ state: 'hidden' });
+      assert.equal(await page.locator('body').evaluate(el => getComputedStyle(el).getPropertyValue('--student-navigation-space').trim()), '0px');
       await capture(page, 'student-lab-scene-390');
       await page.setViewportSize({ width: 800, height: 1280 });
       await capture(page, 'student-lab-scene-800'); await assertNav(page, 'labs');
@@ -314,6 +316,9 @@ async function run() {
       assert.ok(await firstSlider.isEnabled(), 'first exploration slider is usable after choosing direct exploration');
       await capture(page, 'student-lab-manual-800'); await assertNav(page, 'labs');
       await page.setViewportSize({ width: 390, height: 844 });
+      await page.locator('.apl-back').click();
+      await page.waitForURL(url => /\/playground\/next\/(?:index\.html)?$/.test(url.pathname));
+      await assertNav(page, 'labs');
       await page.locator(selectors.navItem('home')).click(); await assertHome(page);
     }));
     for (const [width, height] of [[360, 640], [360, 800], [390, 844]]) {
