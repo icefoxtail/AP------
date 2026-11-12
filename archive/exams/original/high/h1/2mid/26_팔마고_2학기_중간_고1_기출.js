@@ -307,9 +307,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 기준 직선 3x−2y+1=0과 평행한 직선 −9x+6y−5=0, 기준 직선에 수직인 직선 4x+6y−5=0을 함께 나타낸 그림이다. 평행한 두 직선에는 평행 표식이 있고, 수직인 두 직선에는 직각 표식이 있다.",
-    "solutionImageCaption": "기울기가 같을 때 p=−9이고, 기울기의 곱이 −1일 때 q=4이다. 두 경우의 상수 값을 더한다. 정답은 −5이다.",
+    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 선분과 평행 표식은 p가 평행 조건을 만족하는 경우를, 검은 직선과 직각 표식은 q가 수직 조건을 만족하는 경우를 나타낸다.",
+    "solutionImageCaption": "파란 선분과 평행 표식은 p가 정해지는 평행 경우를, 검은 직선과 직각 표식은 q가 정해지는 수직 경우를 구분한다. 정답은 −5이다.",
     "solutionImageSize": "full"
   },
   {

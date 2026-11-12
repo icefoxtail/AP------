@@ -135,7 +135,46 @@ def expected_end_directions(poly):
     left=sign if degree%2==0 else -sign
     return {'left':'UP' if left>0 else 'DOWN','right':'UP' if sign>0 else 'DOWN'}
 
-def cubic_quartic_overview_audit(plan,poly,points,transform):
+def _hidden_overview_point_errors(plan,poly,point,index,root,transform):
+    """Bind the marker to the exact curve point, then look for its suppressed coordinate label or leader."""
+    ident=point['id']
+    marker_id=f'required-point-{index}'
+    try:
+        exact=(plan.get('exactCoordinates') or {}).get(ident)
+        if exact is None:
+            px,py=(S.Rational(str(point[key])) for key in ('x','y'))
+        else:
+            px,py=(_pp_exact(value.replace(' ','')) for value in exact)
+        if any(abs(float(value)-point[key])>1e-9*max(1,abs(point[key])) for key,value in (('x',px),('y',py))):
+            return ['EXACT_COORDINATES_MISMATCH:'+ident]
+        if S.simplify(poly.eval(px)-py)!=0:
+            return ['OVERVIEW_REQUIRED_FEATURE_NOT_ON_CURVE:'+ident]
+    except (ValueError,TypeError,AttributeError):
+        return ['EXACT_COORDINATES_MISMATCH:'+ident]
+
+    errors=[]
+    markers=[node for node in root.iter() if node.get('id')==marker_id]
+    marker=markers[0] if len(markers)==1 else None
+    if marker is None or marker.tag.split('}')[-1]!='circle' or marker.get('data-role')!='point':
+        errors.append('OVERVIEW_REQUIRED_FEATURE_DOT_MISSING:'+ident)
+    else:
+        try:
+            cx,cy,radius=(float(marker.get(key)) for key in ('cx','cy','r'))
+            expected_x=transform['originX']+float(px)*transform['sx']
+            expected_y=transform['originY']-float(py)*transform['sy']
+            if (not all(math.isfinite(value) for value in (cx,cy,radius)) or radius<=0 or
+                marker.get('fill') not in ('#111','#000','black') or
+                max(abs(cx-expected_x),abs(cy-expected_y))*transform['displayScale']>.35):
+                errors.append('OVERVIEW_REQUIRED_FEATURE_DOT_MISMATCH:'+ident)
+        except (TypeError,ValueError):
+            errors.append('OVERVIEW_REQUIRED_FEATURE_DOT_MISMATCH:'+ident)
+    prefix=marker_id+'-coordinate'
+    if any((node.get('id') or '').startswith(prefix) or (node.get('data-owner-label') or '').startswith(prefix) or
+           (node.get('data-owner')==marker_id and node.get('data-label-kind')=='COORDINATE_LABEL') for node in root.iter()):
+        errors.append('COORDINATE_BAND_HIDDEN_POINT_SHOWN:'+ident)
+    return errors
+
+def cubic_quartic_overview_audit(plan,poly,points,transform,root):
     if poly.degree() not in (3,4):return {'status':'UNSUPPORTED','errors':['UNSUPPORTED_CUBIC_QUARTIC_OVERVIEW_DEGREE']}
     if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:return {'status':'UNSUPPORTED','errors':['CUBIC_QUARTIC_SOURCE_DOMAIN_UNSUPPORTED']}
     if plan.get('overviewPolicy')!='POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1':return {'status':'UNSUPPORTED','errors':['CUBIC_QUARTIC_OVERVIEW_POLICY_REQUIRED']}
@@ -169,13 +208,16 @@ def cubic_quartic_overview_audit(plan,poly,points,transform):
         if not xmin+.05*(xmax-xmin)<fx<xmax-.05*(xmax-xmin) or not ymin+.05*(ymax-ymin)<fy<ymax-.05*(ymax-ymin):errors.append('OVERVIEW_FEATURE_OUTSIDE_INTERIOR:'+feature['id'])
         if not any(abs(point[0]-fx)<=px_tol and abs(point[1]-fy)<=py_tol for point in points):errors.append('OVERVIEW_FEATURE_NOT_OBSERVED:'+feature['id'])
     required=plan.get('requiredPoints',[])
-    for point in required:
+    band=plan.get('coordinateBand')
+    hidden=band['hide'] if isinstance(band,dict) and isinstance(band.get('hide'),list) else []
+    for index,point in enumerate(required,1):
         if not isinstance(point,dict) or set(point)!={'id','x','y'}:errors.append('INVALID_REQUIRED_GRAPH_POINT');continue
         px,py=float(point['x']),float(point['y'])
         if not xmin+.05*(xmax-xmin)<=px<=xmax-.05*(xmax-xmin) or not ymin+.05*(ymax-ymin)<=py<=ymax-.05*(ymax-ymin):errors.append('OVERVIEW_REQUIRED_FEATURE_CLIPPED:'+point['id'])
         if not any(abs(q[0]-px)<=px_tol and abs(q[1]-py)<=py_tol for q in points):errors.append('OVERVIEW_REQUIRED_FEATURE_NOT_OBSERVED:'+point['id'])
         exact_y=float(poly.eval(S.Rational(str(px))))
         if abs(exact_y-py)>1e-8:errors.append('OVERVIEW_REQUIRED_FEATURE_NOT_ON_CURVE:'+point['id'])
+        if point['id'] in hidden:errors.extend(_hidden_overview_point_errors(plan,poly,point,index,root,transform))
     critical=[row for row in math_features if any(role.startswith('STATIONARY_') for role in row['roles'])]
     if not critical:critical=[row for row in math_features if 'INFLECTION' in row['roles']]
     sorted_points=sorted(points,key=lambda point:point[0]);tails={row['side']:row for row in expected if row['kind']=='TAIL_DIRECTION'};arms=[]
@@ -474,10 +516,10 @@ def equal_unit_overview_audit(plan,poly,points,transform):
         if max((abs(p[0]-h) for p in arm),default=0)<natural*(1-1e-6):errors.append('OVERVIEW_'+name+'_ARM_TOO_NARROW')
     return {'status':'FAIL' if errors else 'PASS','errors':errors,'vertex':[h,k],'opening':'UP' if a>0 else 'DOWN','plotCssSize':[(xmax-xmin)*sx,(ymax-ymin)*sy],'naturalWindowCssPx':2*natural*sx,'policy':'QUADRATIC_EQUAL_UNIT_OVERVIEW_v1'}
 
-def overview_audit(plan,poly,points,transform):
+def overview_audit(plan,poly,points,transform,root):
     """Independent shape adequacy from source coefficients and observed curves."""
     if poly.degree()==2 and plan.get('overviewPolicy')=='QUADRATIC_EQUAL_UNIT_OVERVIEW_v1':return equal_unit_overview_audit(plan,poly,points,transform)
-    if poly.degree() in (3,4):return cubic_quartic_overview_audit(plan,poly,points,transform)
+    if poly.degree() in (3,4):return cubic_quartic_overview_audit(plan,poly,points,transform,root)
     if poly.degree()!=2:return {'status':'UNSUPPORTED','errors':['UNSUPPORTED_OVERVIEW_DEGREE']}
     a=poly.nth(2);h=-poly.nth(1)/(2*a);k=poly.eval(h);h,k,a=map(float,(h,k,a))
     xmin,xmax,ymin,ymax=plan['viewport'];lo,hi=plan['domain'];errors=[]
@@ -3841,10 +3883,24 @@ def _trig_v2_spec(plan):
     if phase_pi is not None:phase=_piecewise_rational(phase_pi,'INVALID_TRIGONOMETRIC_PHASE');phase_has_pi=True
     else:phase=_piecewise_rational(phase_plain,'INVALID_TRIGONOMETRIC_PHASE');phase_has_pi=False
     if a==0 or rate==0:raise ValueError('TRIGONOMETRIC_NONZERO_SCALE_AND_RATE_REQUIRED')
-    return {'function':function,'a':a,'c':c,'rate':rate,'rateHasPi':rate_has_pi,'phase':phase,'phaseHasPi':phase_has_pi}
+    absolute=plan.get('absolute')
+    if absolute is not None and not isinstance(absolute,bool):raise ValueError('INVALID_TRIG_ABSOLUTE_FLAG')
+    return {'function':function,'a':a,'c':c,'rate':rate,'rateHasPi':rate_has_pi,'phase':phase,'phaseHasPi':phase_has_pi,'absolute':absolute is True}
 
 def _trig_v2_period(spec):
-    return Fraction(2,1)/abs(spec['rate']) if spec['function'] in {'SIN','COS'} else Fraction(1,1)/abs(spec['rate'])
+    if spec['function'] in {'SIN','COS'} and not spec.get('absolute'):return Fraction(2,1)/abs(spec['rate'])
+    return Fraction(1,1)/abs(spec['rate'])   # tan, and the folded |sin| / |cos|
+
+def _trig_v2_cusp_rows(spec,lo,hi):
+    # a*|F|+c is cornered where F=0: sin and tan at integer t=rate*x+phase (pi units), cos at half-integers
+    if not spec.get('absolute'):return []
+    if not spec['phaseHasPi']:raise ValueError('TRIG_ABSOLUTE_REQUIRES_PI_PHASE')
+    rate=spec['rate'];phase=spec['phase'];shift=Fraction(1,2) if spec['function']=='COS' else Fraction(0)
+    zeros=[]
+    for n in range(math.floor(float(min(rate*lo,rate*hi)+phase-shift))-1,math.ceil(float(max(rate*lo,rate*hi)+phase-shift))+2):
+        x=(Fraction(n)+shift-phase)/rate
+        if lo<x<hi:zeros.append(x)
+    return [{'id':'cusp-'+str(index+1),'x':str(x)} for index,x in enumerate(sorted(zeros))]
 
 def _trig_v2_interval_source(plan):
     source=plan.get('sourceDomain')
@@ -3867,9 +3923,13 @@ def _trig_v2_key_rows(spec,lo,hi,states):
         if not lo<x<hi:continue
         if function=='SIN':factor=Fraction(0) if m%2==0 else (Fraction(1) if m%4==1 else Fraction(-1))
         else:factor=(Fraction(1) if m%4==0 else Fraction(-1)) if m%2==0 else Fraction(0)
-        y=a*factor+c
-        if factor==0:kind='X_INTERCEPT' if y==0 else 'MIDLINE_CROSSING'
-        else:kind='MAXIMUM' if y>c else 'MINIMUM'
+        if spec.get('absolute'):
+            if factor==0:kind='CUSP';y=c
+            else:y=a+c;kind='MAXIMUM' if a>0 else 'MINIMUM'
+        else:
+            y=a*factor+c
+            if factor==0:kind='X_INTERCEPT' if y==0 else 'MIDLINE_CROSSING'
+            else:kind='MAXIMUM' if y>c else 'MINIMUM'
         rows.append({'id':'key-'+str(m),'kind':kind,'x':str(x),'y':str(y)})
     return rows
 
@@ -3886,20 +3946,43 @@ def _trig_v2_pole_rows(spec,lo,hi):
     if not rows:raise ValueError('TRIG_TAN_INTERVAL_NO_POLE')
     return rows
 
+TRIG_V2_PLOT_WIDTH_PX=546       # this observer's own copy of the framing's plot width and label gaps (tests tie the pair)
+TRIG_V2_PI_TICK_MIN_GAP_PX=58
+TRIG_V2_PI_TICK_END_CLEAR=1.0
+
 def _trig_v2_tick_multiples(plan,kind,x0,x1):
-    flag=plan.get('axisTickPi')
-    if flag is None or flag is False:return []
+    flag=plan.get('axisTickPi');step_text=plan.get('axisTickPiStep')
+    if flag is None or flag is False:
+        if step_text is not None:raise ValueError('TRIG_TICK_PI_REQUIRES_PI_AXIS')
+        return []
     if flag is not True:raise ValueError('INVALID_TRIG_TICK_PI_FLAG')
     if kind!='INTERVAL_PI':raise ValueError('TRIG_TICK_PI_REQUIRES_PI_AXIS')
     values=plan.get('axisTickValues')
     if not isinstance(values,dict) or set(values)!={'x','y'} or not isinstance(values.get('x'),list) or not isinstance(values.get('y'),list):raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
+    listed=plan.get('axisTickPiRequired') if step_text is not None else values['x']
+    if not isinstance(listed,list):raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
     multiples=[]
-    for value in values['x']:
+    for value in listed:
         multiple=_piecewise_rational(value,'TRIG_PI_TICK_VALUE_INVALID')
         if multiple==0:raise ValueError('TRIG_PI_TICK_VALUE_INVALID')
         if not x0<float(multiple)*math.pi<x1:raise ValueError('TRIG_PI_TICK_OUTSIDE_VIEW')
         multiples.append(multiple)
-    return multiples
+    if step_text is None:return multiples
+    step=_piecewise_rational(step_text,'TRIG_PI_TICK_STEP_INVALID')
+    if step<=0:raise ValueError('TRIG_PI_TICK_STEP_INVALID')
+    span=(x1-x0)+2*max(.04*(x1-x0),.3);gap=TRIG_V2_PI_TICK_MIN_GAP_PX*span/TRIG_V2_PLOT_WIDTH_PX
+    m=1
+    while float(step*m)*math.pi<gap-1e-12:m+=1
+    source=plan['sourceDomain']['rangePi'];ends=[end for end,text in ((x0,source[0]),(x1,source[1])) if text!='0']
+    regular=[]
+    k=math.floor(x0/(math.pi*float(step)))+1
+    while k*float(step)*math.pi<x1:
+        value=k*step;position=float(value)*math.pi
+        if k!=0 and k%m==0 and x0<position<x1 and not any(abs(position-float(req)*math.pi)<gap for req in multiples) and not any(abs(position-end)<gap*TRIG_V2_PI_TICK_END_CLEAR for end in ends):regular.append(value)
+        k+=1
+    expected=sorted(set(multiples)|set(regular))
+    if sorted(_piecewise_rational(value,'TRIG_PI_TICK_VALUE_INVALID') for value in values['x'])!=expected:raise ValueError('TRIG_PI_TICK_INVENTORY_MISMATCH')
+    return expected
 
 def _trig_pi_tick_text(value):
     multiple=Fraction(value);sign='−' if multiple<0 else '';multiple=abs(multiple)
@@ -3920,8 +4003,9 @@ def _trig_v2_interval_expected(plan):
     x0=float(lo)*(math.pi if axis_unit=='PI' else 1.0);x1=float(hi)*(math.pi if axis_unit=='PI' else 1.0)
     import mpmath
     trig={'SIN':S.sin,'COS':S.cos,'TAN':S.tan}[function]
-    rat=lambda value:S.Rational(value.numerator,value.denominator)
-    expression=rat(a)*trig(rat(rate)*(S.pi if spec['rateHasPi'] else 1)*x+rat(spec['phase'])*(S.pi if spec['phaseHasPi'] else 1))+rat(c)
+    rat=lambda value:S.Rational(value.numerator,value.denominator) if isinstance(value,Fraction) else S.sympify(value)
+    core=trig(rat(rate)*(S.pi if spec['rateHasPi'] else 1)*x+rat(spec['phase'])*(S.pi if spec['phaseHasPi'] else 1))
+    expression=rat(a)*(S.Abs(core) if spec['absolute'] else core)+rat(c)
     mpmath.mp.dps=40
     lines=[]
     if function!='TAN':
@@ -3930,9 +4014,17 @@ def _trig_v2_interval_expected(plan):
         steps=max(4000,int(1600*max(1e-9,(x1-x0)/period_radians)))
         for row in plan.get('referenceLines') or []:
             if not isinstance(row,dict) or not isinstance(row.get('id'),str):raise ValueError('TRIG_REFERENCE_LINES_INVALID')
-            if 'y' in row:slope=Fraction(0);intercept=_piecewise_rational(row['y'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id'])
+            color=row.get('color')
+            if color is not None and color not in GRAPH_COLOR_LINES:raise ValueError('TRIG_LINE_COLOR_INVALID:'+row['id'])
+            if 'x' in row:   # x=c: the one place the curve meets it, when c is inside the interval
+                at=_piecewise_rational(row['x'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']);xr=float(at)*(math.pi if axis_unit=='PI' else 1.0)
+                inside=(xr>x0+1e-12 if states[0]=='OPEN' else xr>=x0-1e-12) and (xr<x1-1e-12 if states[1]=='OPEN' else xr<=x1+1e-12)
+                lines.append({'id':row['id'],'kind':'VERTICAL','at':at,'slope':None,'intercept':None,'claim':row.get('intersectionCount'),'x':[xr] if inside else [],'color':color,'endCrossing':row.get('endCrossing') is True})
+                continue
+            if 'y' in row:slope=Fraction(0);intercept=_trig_v2_level(row['y'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id'])
             else:slope=_piecewise_rational(row.get('slope'),'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']);intercept=_piecewise_rational(row.get('intercept'),'TRIG_LINE_COEFFICIENT_INVALID:'+row['id'])
-            gap=expression-(rat(slope)*x+rat(intercept))
+            per_pi=row.get('perPi') is True
+            gap=expression-(rat(slope)/(S.pi if per_pi else 1)*x+rat(intercept))
             g=S.lambdify(x,gap,'mpmath');dg=S.lambdify(x,S.diff(gap,x),'mpmath')
             grid=[lo_f+(hi_f-lo_f)*i/steps for i in range(steps+1)]
             values=[g(t) for t in grid];slopes=[dg(t) for t in grid];roots=[]
@@ -3949,16 +4041,28 @@ def _trig_v2_interval_expected(plan):
                 if not unique or abs(r-unique[-1])>mpmath.mpf(10)**-12:unique.append(r)
             eps=mpmath.mpf(10)**-12
             kept=[r for r in unique if (r>lo_f+eps if states[0]=='OPEN' else r>=lo_f-eps) and (r<hi_f-eps if states[1]=='OPEN' else r<=hi_f+eps)]
-            lines.append({'id':row['id'],'kind':'HORIZONTAL' if 'y' in row else 'SLANTED','slope':slope,'intercept':intercept,'claim':row.get('intersectionCount'),'x':[float(r) for r in kept]})
+            if row.get('endCrossing') is not True and any((states[0]=='CLOSED' and abs(r-lo_f)<=eps) or (states[1]=='CLOSED' and abs(r-hi_f)<=eps) for r in kept):raise ValueError('TRIG_LINE_THROUGH_INTERVAL_END:'+row['id'])
+            lines.append({'id':row['id'],'kind':'HORIZONTAL' if 'y' in row else 'SLANTED','at':None,'slope':slope,'perPi':per_pi,'intercept':intercept,'claim':row.get('intersectionCount'),'x':[float(r) for r in kept],'color':color,'endCrossing':row.get('endCrossing') is True})
     if plan.get('keyPoints') is not None and not isinstance(plan.get('keyPoints'),bool):raise ValueError('INVALID_TRIG_KEY_POINTS')
     if plan.get('keyPoints') is True and function not in {'SIN','COS'}:raise ValueError('TRIG_KEY_POINTS_REQUIRE_SIN_COS')
     key_rows=_trig_v2_key_rows(spec,lo,hi,states) if plan.get('keyPoints') is True else []
     pole_rows=_trig_v2_pole_rows(spec,lo,hi) if function=='TAN' else []
     ticks=_trig_v2_tick_multiples(plan,kind,x0,x1)
     f=S.lambdify(x,expression,'mpmath')
-    features={'schemaVersion':'TRIGONOMETRIC_INTERVAL_FEATURES_v2','function':function,'rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'axisUnit':axis_unit,'amplitude':str(a),'midline':str(c),'sourceInterval':{'kind':kind,'lo':str(lo),'hi':str(hi),'states':states},'lines':[{'id':row['id'],'kind':row['kind'],'slope':str(row['slope']),'intercept':str(row['intercept']),'intersections':[{'x':point,'y':float(row['slope'])*point+float(row['intercept'])} for point in row['x']]} for row in lines],'keyPoints':key_rows,'poles':pole_rows}
+    features={'schemaVersion':'TRIGONOMETRIC_INTERVAL_FEATURES_v2','function':function,'rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'axisUnit':axis_unit,'amplitude':str(a),'midline':str(c),'sourceInterval':{'kind':kind,'lo':str(lo),'hi':str(hi),'states':states},'lines':[({'id':row['id'],'kind':row['kind'],'x':str(row['at']),'intersections':[{'x':point,'y':float(f(mpmath.mpf(point)))} for point in row['x']]} if row['kind']=='VERTICAL' else {'id':row['id'],'kind':row['kind'],'slope':str(row['slope']),'intercept':str(row['intercept']),'intersections':[{'x':point,'y':float(row['slope'])/(math.pi if row['perPi'] else 1)*point+float(row['intercept'])} for point in row['x']]}) for row in lines],'keyPoints':key_rows,'poles':pole_rows}
+    if spec['absolute']:features['absolute']=True;features['cusps']=_trig_v2_cusp_rows(spec,lo,hi)
     policy={'schemaVersion':'TRIGONOMETRIC_INTERVAL_POLICY_v2','markerRadiusIntrinsicPx':3.2,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':40,'minimumAmplitudeCssPx':20,'minimumPoleApproachGapCssPx':2}
-    return {'spec':spec,'function':function,'a':a,'rate':rate,'c':c,'kind':kind,'lo':lo,'hi':hi,'states':states,'axisUnit':axis_unit,'period':period,'x0':x0,'x1':x1,'rateEff':rate_eff,'phaseEff':phase_eff,'f':f,'lines':lines,'keyPoints':key_rows,'poles':pole_rows,'ticks':ticks,'features':features,'policy':policy,'endY':[float(f(mpmath.mpf(repr(x0)))),float(f(mpmath.mpf(repr(x1))))]}
+    return {'spec':spec,'function':function,'a':a,'rate':rate,'c':c,'kind':kind,'lo':lo,'hi':hi,'states':states,'axisUnit':axis_unit,'period':period,'x0':x0,'x1':x1,'rateEff':rate_eff,'phaseEff':phase_eff,'f':f,'lines':lines,'keyPoints':key_rows,'poles':pole_rows,'cusps':features.get('cusps',[]),'ticks':ticks,'features':features,'policy':policy,'endY':[float(f(mpmath.mpf(repr(x0)))),float(f(mpmath.mpf(repr(x1))))]}
+
+def _trig_v2_level(value,code):
+    # a horizontal level: a rational string, or p+q*sqrt(r) read by this observer's own exact-value parser
+    if isinstance(value,str) and re.fullmatch(r'(?:0|-?[1-9]\d*)(?:/[1-9]\d*)?',value):return _piecewise_rational(value,code)
+    if isinstance(value,str) and 'sqrt' in value:
+        try:number=_pp_exact(value)
+        except (ValueError,TypeError):raise ValueError(code) from None
+        if number.is_Rational:raise ValueError(code)
+        return number
+    raise ValueError(code)
 
 def _trig_v2_refine(fn,left,right):
     fl=fn(left)
@@ -3982,7 +4086,7 @@ def _trig_v2_tick_audit(plan,root,transform,expected):
     errors=[]
     axes=[node for node in root.iter() if node.tag.split('}')[-1]=='line' and node.get('data-role')=='axis' and node.get('data-axis')=='x']
     if not axes:return errors
-    labels=[node for node in root.iter() if node.tag.split('}')[-1]=='text' and node.get('data-label-kind')=='TICK_LABEL' and node.get('data-tick-axis')=='x']
+    labels=[node for node in root.iter() if node.tag.split('}')[-1] in {'text','g'} and node.get('data-label-kind')=='TICK_LABEL' and node.get('data-tick-axis')=='x']   # a stacked fraction is a group of paths
     pi_labels=[node for node in labels if node.get('data-tick-pi-value') is not None]
     got=[]
     for node in pi_labels:
@@ -3992,7 +4096,7 @@ def _trig_v2_tick_audit(plan,root,transform,expected):
     for multiple in expected:
         node=next((item for item in pi_labels if Fraction(item.get('data-tick-pi-value'))==multiple),None)
         if node is None:errors.append('TRIG_PI_TICK_LABEL_MISSING:'+str(multiple));continue
-        text=''.join(node.itertext()).strip()
+        text=(node.get('data-tick-display-value') or ''.join(node.itertext())).strip()   # a stacked fraction is drawn from paths: its plain text rides on the group
         if text!=_trig_pi_tick_text(multiple):errors.append('TRIG_PI_TICK_LABEL_TEXT_MISMATCH:'+str(multiple))
         try:source_x=float(node.get('data-tick-source-x'))
         except (TypeError,ValueError):errors.append('TRIG_PI_TICK_SOURCE_INVALID:'+str(multiple));continue
@@ -4052,25 +4156,47 @@ def trigonometric_interval_v2_audit(plan,svg,transform):
         for index,row in enumerate(want['lines']):
             xs=row['x'];count=len(xs)
             if row['claim']!=count:errors.append('TRIG_LINE_INTERSECTION_COUNT_MISMATCH:'+row['id']+':observer finds '+str(count)+' intersection(s)')
-            slope,intercept=float(row['slope']),float(row['intercept']);ys=[slope*t+intercept for t in xs]
+            vertical=row['kind']=='VERTICAL'
+            slope,intercept=(None,None) if vertical else (float(row['slope'])/(math.pi if row['perPi'] else 1),float(row['intercept']))
+            ys=[float(want['f'](mpmath.mpf(t))) for t in xs] if vertical else [slope*t+intercept for t in xs]
+            line_x=float(row['at'])*(math.pi if want['axisUnit']=='PI' else 1.0) if vertical else None
             if isinstance(frozen,list) and index<len(frozen) and frozen[index].get('id')==row['id']:
                 got=frozen[index].get('intersections')
                 if not isinstance(got,list) or len(got)!=count or any(abs(g['x']-t)>1e-6*max(1.0,abs(t)) or abs(g['y']-v)>1e-6*max(1.0,abs(v)) for g,t,v in zip(got,xs,ys)):errors.append('TRIG_LINE_INTERSECTION_INVENTORY_MISMATCH:'+row['id'])
-                if frozen[index].get('slope')!=str(row['slope']) or frozen[index].get('intercept')!=str(row['intercept']) or frozen[index].get('kind')!=row['kind']:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
+                if vertical:
+                    if frozen[index].get('x')!=str(row['at']) or frozen[index].get('kind')!=row['kind']:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
+                else:
+                    try:level_same=str(row['intercept'])==frozen[index].get('intercept') or abs(float(_pp_exact(frozen[index].get('intercept')))-intercept)<1e-12
+                    except (ValueError,TypeError):level_same=False
+                    if frozen[index].get('slope')!=str(row['slope']) or not level_same or frozen[index].get('kind')!=row['kind'] or (frozen[index].get('perPi') is True)!=row['perPi']:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
+                if frozen[index].get('color')!=row['color']:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
             node=line_nodes.get('line-'+row['id'])
             if node is None:errors.append('TRIG_LINE_MISSING:'+row['id'])
             else:
                 try:
                     p1=((float(node.get('x1'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('y1')))/transform['sy']);p2=((float(node.get('x2'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('y2')))/transform['sy'])
-                    if any(abs(p[1]-(slope*p[0]+intercept))*yscale>.35 for p in (p1,p2)):errors.append('TRIG_LINE_POSITION_MISMATCH:'+row['id'])
-                    if xs and not (min(p1[0],p2[0])<=min(xs)+x_tol and max(p1[0],p2[0])>=max(xs)-x_tol):errors.append('TRIG_LINE_DOES_NOT_SPAN_CROSSINGS:'+row['id'])
+                    if vertical:
+                        if any(abs(p[0]-line_x)*xscale>.35 for p in (p1,p2)):errors.append('TRIG_LINE_POSITION_MISMATCH:'+row['id'])
+                        if ys and not (min(p1[1],p2[1])<=min(ys)+.35/yscale and max(p1[1],p2[1])>=max(ys)-.35/yscale):errors.append('TRIG_LINE_DOES_NOT_SPAN_CROSSINGS:'+row['id'])
+                    else:
+                        if any(abs(p[1]-(slope*p[0]+intercept))*yscale>.35 for p in (p1,p2)):errors.append('TRIG_LINE_POSITION_MISMATCH:'+row['id'])
+                        if xs and not (min(p1[0],p2[0])<=min(xs)+x_tol and max(p1[0],p2[0])>=max(xs)-x_tol):errors.append('TRIG_LINE_DOES_NOT_SPAN_CROSSINGS:'+row['id'])
+                    errors.extend(_ov_color_errors(node,row['color'],'TRIG_LINE_COLOR_MISMATCH:'+row['id']))
                 except (TypeError,ValueError):errors.append('TRIG_LINE_INVALID:'+row['id'])
             dots=[node_id for node_id in circles if node_id and node_id.startswith('intersection-'+row['id']+'-')]
             if len(dots)!=count:errors.append('TRIG_INTERSECTION_DOT_COUNT_MISMATCH:'+row['id'])
             for k,(tx,ty) in enumerate(zip(xs,ys),1):
                 got=read_circle('intersection-'+row['id']+'-'+str(k))
                 if got is None or abs(got[0]-tx)*xscale>.35 or abs(got[1]-ty)*yscale>.35:errors.append('TRIG_INTERSECTION_DOT_MISSING:'+row['id']+'-'+str(k))
+                elif row['color'] is not None:errors.extend(_ov_dot_look_errors(got[2],False,row['color'],'TRIG_INTERSECTION_DOT_COLOR_MISMATCH:'+row['id']+'-'+str(k)))
             all_marks.extend(zip(xs,ys));detail.append({'id':row['id'],'kind':row['kind'],'crossings':count,'x':xs})
+        for row in want['cusps']:
+            xc=float(Fraction(row['x']))*(math.pi if want['axisUnit']=='PI' else 1.0)
+            near=[point for point in points if abs(point[0]-xc)<=x_tol*1.5]
+            if not near:errors.append('TRIG_CUSP_NOT_SAMPLED:'+row['id'])
+            else:
+                corner=min(near,key=lambda point:abs(point[0]-xc))
+                if abs(corner[1]-float(want['f'](mpmath.mpf(xc))))*yscale>.35:errors.append('TRIG_CUSP_NOT_AT_CORNER:'+row['id'])
         for row in want['keyPoints']:
             node_id='trig-'+row['id'];got=read_circle(node_id);sx=float(Fraction(row['x']))*(math.pi if want['axisUnit']=='PI' else 1.0);sy=float(Fraction(row['y']))
             if got is None or abs(got[0]-sx)*xscale>.35 or abs(got[1]-sy)*yscale>.35:errors.append('TRIG_KEY_POINT_MISMATCH:'+row['id'])
@@ -4085,7 +4211,7 @@ def trigonometric_interval_v2_audit(plan,svg,transform):
             except (TypeError,ValueError):errors.append('TRIG_POLE_CUE_INVALID:'+pole['id']);continue
             if abs(x1-pole_x)*xscale>.35 or abs(x2-pole_x)*xscale>.35 or node.get('stroke-dasharray') not in {'5 4','5,4'}:errors.append('TRIG_POLE_CUE_POSITION_OR_STYLE_FAIL:'+pole['id'])
         errors.extend(_trig_v2_tick_audit(plan,root,transform,want['ticks']))
-        if any(math.hypot((p[0]-q[0])*xscale,(p[1]-q[1])*yscale)<want['policy']['minimumFeatureSeparationCssPx'] for i,p in enumerate(all_marks) for q in all_marks[i+1:]):unsupported.append('TRIG_INTERSECTIONS_BELOW_PROFILE_FLOOR')
+        if any(0.05<=math.hypot((p[0]-q[0])*xscale,(p[1]-q[1])*yscale)<want['policy']['minimumFeatureSeparationCssPx'] for i,p in enumerate(all_marks) for q in all_marks[i+1:]):unsupported.append('TRIG_INTERSECTIONS_BELOW_PROFILE_FLOOR')   # two lines through one point (the origin) share that dot
         status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':want['features'],'lines':detail,'keyPoints':want['keyPoints'],'poles':want['poles'],'curveBranches':len(branches),'curvePoints':len(points),'mathMethod':'EXACT_RATIONAL_PARAMETERS_AND_MPMATH_40_DIGIT_ROOT_SCAN'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError,ET.ParseError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
@@ -5088,7 +5214,7 @@ def _audit_family(plan,svg,transform):
     elif plan.get('family')=='sqrt-affine' and plan.get('shapeIntent')=='OVERVIEW':overview=sqrt_affine_general_overview_audit(plan,actual_points,transform,topology,root) if plan.get('overviewPolicy')==SQRT_AFFINE_GENERAL_POLICY else sqrt_affine_overview_audit(plan,poly,actual_points,transform,topology,root)
     elif plan.get('family')=='absolute-value' and plan.get('shapeIntent')=='OVERVIEW':overview=absolute_value_overview_audit(plan,poly,actual_points,transform,topology,root)
     elif plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL':overview=polynomial_interval_audit(plan,poly,actual_points,transform,root)
-    else:overview=overview_audit(plan,poly,actual_points,transform) if plan.get('shapeIntent')=='OVERVIEW' else {'status':'NOT_REQUESTED'}
+    else:overview=overview_audit(plan,poly,actual_points,transform,root) if plan.get('shapeIntent')=='OVERVIEW' else {'status':'NOT_REQUESTED'}
     if overview['status'] in ('FAIL','UNSUPPORTED'):errors.extend(overview['errors'])
     region_observations=[]
     if plan.get('family')=='polynomial':
@@ -5449,16 +5575,44 @@ OV_MC_ASYMPTOTE_LABEL_MAX_PX=12.5
 OV_MC_NO_ROOM_CURVE_MAX_PX=64.0   # a label the engine marked data-near-room=NONE (no free spot beside its stroke: a tall fraction in a small window) is judged by ownership and this wider reach
 OV_MC_NO_ROOM_ASYMPTOTE_MAX_PX=40.0 # an asymptote value stands within this many px of its own dashed line, which is the nearest dashed line
 
+def _mc_leader_crosses_stroke(start,end,segments):
+    """Test the part of the leader beyond its attachment against the actual stroke, including vertex hits and collinear overlap."""
+    length=math.dist(start,end)
+    ux,uy=(end[0]-start[0])/length,(end[1]-start[1])/length
+    def along_leader(point):
+        dx,dy=point[0]-start[0],point[1]-start[1]
+        return (dx*ux+dy*uy,dy*ux-dx*uy)
+    corridor=(OV_LEADER_TOLERANCE_PX,-1e-6,length-OV_LEADER_TOLERANCE_PX,2e-6)
+    return any(_ov_segment_hits_box(along_leader(a),along_leader(b),corridor) for a,b in segments)
+
 def multi_curve_label_audit(plan,svg,transform):
-    """(G18b) Which stroke a multi-curve label belongs to, read from the final SVG: a curve's formula (curve-<id>-equation) is nearest to its own curve (within 20 px, no other curve as
-    close), an asymptote's value (curve-<id>-asymptote-x / -y) is within 12 px of its own dashed line and no other dashed line is as close. Hidden labels are not there to read."""
+    """Read curve and asymptote label ownership from the final SVG, including any leader's attachment and clearance."""
     if plan.get('family')!='multi-curve' or not isinstance(plan.get('curves'),list):return None
     errors=[]
     try:root=ET.fromstring(svg)
     except ET.ParseError:return None
     groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')}
-    ids=[entry.get('id') for entry in plan['curves'] if isinstance(entry,dict) and isinstance(entry.get('id'),str)]
-    strokes={ident:[] for ident in ids};dashed={}
+    source={entry['id']:entry for entry in plan['curves'] if isinstance(entry,dict) and isinstance(entry.get('id'),str)}
+    ids=list(source)
+    inventory=plan.get('multiCurveFeatures')
+    rows=[row for row in (inventory.get('curves') if isinstance(inventory,dict) else None) or []
+          if isinstance(row,dict) and isinstance(row.get('id'),str)]
+    all_vertical_parabolas=len(rows)>1 and all(row.get('kind')=='Y_OF_X' for row in rows)
+    owned={row.get('id') for row in rows if all_vertical_parabolas or row.get('kind') in ('LINE','RATIONAL','SQRT')}
+    suffixes={'FUNCTION':('',''),'LEFT':('_L','-left'),'RIGHT':('_R','-right'),
+              'POSITIVE':('_POS','-positive'),'NEGATIVE':('_NEG','-negative')}
+    branch_owners={}
+    for row in rows:
+        ident=row.get('id')
+        if ident not in source:continue
+        branches=row.get('branches',[{'side':'FUNCTION'}])
+        if not isinstance(branches,list):continue
+        for branch in branches:
+            side=branch.get('side') if isinstance(branch,dict) else None
+            if not isinstance(side,str) or side not in suffixes:continue
+            branch_suffix,object_suffix=suffixes[side]
+            branch_owners.setdefault('CURVE_'+ident+branch_suffix,[]).append((ident,'f-'+ident+object_suffix))
+    strokes={ident:[] for ident in ids};dashed={};leaders={}
     def points_of(node):
         try:values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
         except ValueError:return []
@@ -5466,33 +5620,51 @@ def multi_curve_label_audit(plan,svg,transform):
     for node in root.iter():
         tag=node.tag.split('}')[-1];branch=node.get('data-branch') or ''
         if tag=='polyline' and node.get('data-role')=='curve':
-            for ident in ids:
-                if branch==f'CURVE_{ident}' or branch.startswith(f'CURVE_{ident}_') or branch.startswith(f'EMPH_{ident}_'):strokes[ident].append(points_of(node))
+            if branch.startswith('CURVE_'):
+                candidates=branch_owners.get(branch,[])
+                if len(candidates)>1:
+                    # CURVE_f_L can be the LEFT branch of f or the entire curve f_L.
+                    primitive=re.sub(r'-branch-\d+$','',node.get('id') or '')
+                    candidates=[(ident,object_id) for ident,object_id in candidates if object_id==primitive]
+                ident=candidates[0][0] if len(candidates)==1 else None
+            elif branch.startswith('EMPH_'):ident=branch[5:].rsplit('_',1)[0]
+            else:continue
+            if ident in strokes:
+                points=points_of(node)
+                strokes[ident].extend(zip(points,points[1:]))
         elif tag=='line' and node.get('data-role')=='asymptote' and branch.startswith('ASYM_'):
             try:dashed[branch]=((float(node.get('x1')),float(node.get('y1'))),(float(node.get('x2')),float(node.get('y2'))))
             except (TypeError,ValueError):pass
-    def polyline_distance(box,points):
-        return min((_ov_box_segment_distance(box,a,b) for a,b in zip(points,points[1:])),default=math.inf)
-    # (G18c) a formula with no room beside its curve stands in free space on a leader that starts on a vertex of its own curve and ends on the label box
-    leaders={node.get('data-owner-label'):node for node in root.iter() if node.tag.split('}')[-1]=='line' and node.get('data-role')=='leader' and node.get('data-owner-label')}
-    def leader_ok(label_id,box,ident):
-        node=leaders.get(label_id)
-        if node is None:return False
+        elif tag=='line' and node.get('data-role')=='leader' and node.get('data-owner-label'):
+            leaders.setdefault(node.get('data-owner-label'),[]).append(node)
+    def label_distance(box,segments):
+        return min((_ov_box_segment_distance(box,a,b) for a,b in segments),default=math.inf)
+    def leader_ok(nodes,box,ident):
+        if len(nodes)!=1:return False
+        node=nodes[0]
         try:start=(float(node.get('x1')),float(node.get('y1')));end=(float(node.get('x2')),float(node.get('y2')))
         except (TypeError,ValueError):return False
-        on_own=any(_ov_point_segment_distance(start,a,b)<=OV_LEADER_TOLERANCE_PX for points in strokes[ident] for a,b in zip(points,points[1:]))
+        if not all(math.isfinite(value) for value in (*start,*end)) or math.dist(start,end)<=OV_LEADER_TOLERANCE_PX:return False
+        if node.get('data-owner')!=ident or not any(_ov_point_segment_distance(start,a,b)<=OV_LEADER_TOLERANCE_PX for a,b in strokes[ident]):return False
+        if any(_ov_point_segment_distance(start,a,b)<OV_MC_LABEL_OTHER_MARGIN_PX for other in ids if other!=ident for a,b in strokes[other]):return False
         edges=[((box[0],box[1]),(box[0]+box[2],box[1])),((box[0]+box[2],box[1]),(box[0]+box[2],box[1]+box[3])),((box[0]+box[2],box[1]+box[3]),(box[0],box[1]+box[3])),((box[0],box[1]+box[3]),(box[0],box[1]))]
         on_label=min(_ov_point_segment_distance(end,a,b) for a,b in edges)<=OV_LEADER_TOLERANCE_PX
-        return on_own and on_label and node.get('data-owner')==ident
-    # the curve formulas of the kinds G18a added (LINE, RATIONAL, SQRT) are placed beside their own stroke; the older quadratic arcs keep their old placement and are not judged here
-    inventory=plan.get('multiCurveFeatures');free_kinds={row.get('id') for row in (inventory.get('curves') if isinstance(inventory,dict) else None) or [] if isinstance(row,dict) and row.get('kind') in ('LINE','RATIONAL','SQRT')}
+        return on_label and not any(_mc_leader_crosses_stroke(start,end,segments) for segments in strokes.values())
     for ident in ids:
-        label_id='curve-'+ident+'-equation';box=_region_label_box(groups,label_id) if label_id in groups and ident in free_kinds else None
-        if box is not None and strokes[ident]:
-            own=min(polyline_distance(box,points) for points in strokes[ident])
-            closer=[other for other in ids if other!=ident and strokes[other] and min(polyline_distance(box,points) for points in strokes[other])<own+OV_MC_LABEL_OTHER_MARGIN_PX]
-            reach=OV_MC_NO_ROOM_CURVE_MAX_PX if groups[label_id].get('data-near-room')=='NONE' else OV_MC_LABEL_OWN_MAX_PX
-            if (own>reach or closer) and not leader_ok(label_id,box,ident):errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+        label_id='curve-'+ident+'-equation'
+        if ident in owned:
+            box=_region_label_box(groups,label_id)
+            attached=leaders.get(label_id)
+            required=all_vertical_parabolas and 'label' in source[ident] and root.get('data-publication-profile') is not None
+            if box is None:
+                if required or label_id in groups or attached:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+            elif attached:
+                if not leader_ok(attached,box,ident):errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+            else:
+                own=label_distance(box,strokes[ident])
+                closer=any(label_distance(box,strokes[other])<own+OV_MC_LABEL_OTHER_MARGIN_PX for other in ids if other!=ident)
+                reach=OV_MC_NO_ROOM_CURVE_MAX_PX if not all_vertical_parabolas and groups[label_id].get('data-near-room')=='NONE' else OV_MC_LABEL_OWN_MAX_PX
+                if own>reach or closer:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
         for suffix,axis in (('x','V'),('y','H')):
             label_id='curve-'+ident+'-asymptote-'+suffix;box=_region_label_box(groups,label_id) if label_id in groups else None
             if box is None:continue
