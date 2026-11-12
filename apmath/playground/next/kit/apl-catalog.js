@@ -6,8 +6,50 @@
    ========================================================================== */
 window.APLab = window.APLab || {};
 window.APLab.catalog = {
- "version": "2026-10-30",
+ "version": "2026-11-12",
  "labs": [
+  {
+   "id": "g7-coordinate-graphs",
+   "course": "g7",
+   "unit": "좌표평면과 그래프",
+   "strand": "coord",
+   "order": 0.1,
+   "title": "좌표평면과 그래프",
+   "short": "좌표와 그래프",
+   "summary": "순서쌍·사분면·점의 이동을 직접 조작하고, 좌표 넓이와 거리·시간·물높이 그래프를 개념·기본·심화로 탐구합니다. Archive 기출 유형을 재구성한 장면에 원클릭 해설을 제공합니다.",
+   "keywords": "좌표평면 그래프 순서쌍 사분면 좌표 점 이동 거리 시간 속력 넓이 물높이 개념 기본 심화 중1",
+   "badge": "함수 입문",
+   "scenes": [
+    "개념: 좌표와 사분면·이동",
+    "기본: 조건·그래프 읽기",
+    "심화: 넓이·이동·물높이"
+   ],
+   "sceneTotal": 15,
+   "glyph": "<path d=\"M10 42 H70 M38 8 V70\"/><path d=\"M38 22 H58 V42\" stroke-dasharray=\"4 4\"/><circle cx=\"58\" cy=\"22\" r=\"5\" fill=\"currentColor\"/>",
+   "legacy": "next/labs/g7-coordinate-graphs.html",
+   "next": "next/labs/g7-coordinate-graphs.html"
+  },
+  {
+   "id": "g7-proportion",
+   "course": "g7",
+   "unit": "정비례와 반비례",
+   "strand": "func",
+   "order": 0.2,
+   "title": "정비례와 반비례",
+   "short": "정비례·반비례",
+   "summary": "비례상수와 그래프의 변화를 조작하고, 그래프 위 점·교점·넓이·선분의 비를 기출 유형과 연결합니다. 두 갈래 반비례 그래프와 원클릭 해설로 조건을 확인합니다.",
+   "keywords": "정비례 반비례 비례상수 그래프 점 좌표 넓이 교점 선분비 개념 기본 심화 중1",
+   "badge": "함수",
+   "scenes": [
+    "개념: 비와 곱의 일정함",
+    "기본: 상수와 좌표",
+    "심화: 넓이·교점·선분비"
+   ],
+   "sceneTotal": 21,
+   "glyph": "<path d=\"M10 40 H70 M40 8 V72 M12 66 L66 12\"/><path d=\"M44 10 Q44 34 68 34 M12 46 Q34 46 34 70\"/>",
+   "legacy": "next/labs/g7-proportion.html",
+   "next": "next/labs/g7-proportion.html"
+  },
   {
    "id": "g7-points-lines",
    "course": "g7",
@@ -254,6 +296,27 @@ window.APLab.catalog = {
    "sceneTotal": 22
   },
   {
+   "id": "g8-linear-functions",
+   "course": "g8",
+   "unit": "일차함수와 일차방정식",
+   "strand": "func",
+   "order": 0.1,
+   "title": "일차함수와 그래프",
+   "short": "일차함수",
+   "summary": "함수의 대응·기울기·절편·평행이동에서 출발하여 식 구하기, 연립방정식의 교점, 넓이 조건과 실생활 모델까지 탐구합니다. 개념·기본·심화의 모든 장면에 원클릭 해설을 제공합니다.",
+   "keywords": "함수 일차함수 그래프 기울기 절편 평행이동 두점 식 교점 연립방정식 넓이 속력 요금 개념 기본 심화 중2",
+   "badge": "함수",
+   "scenes": [
+    "개념: 대응·기울기·절편",
+    "기본: 식·점·직선의 관계",
+    "심화: 교점·넓이·조건·활용"
+   ],
+   "sceneTotal": 43,
+   "glyph": "<path d=\"M10 48 H72 M30 8 V72\"/><path d=\"M10 62 L66 10 M10 20 L70 60\"/><path d=\"M30 44 H48 V26\" stroke-dasharray=\"4 4\"/>",
+   "legacy": "next/labs/g8-linear-functions.html",
+   "next": "next/labs/g8-linear-functions.html"
+  },
+  {
    "id": "g8-triangles",
    "course": "g8",
    "unit": "삼각형의 성질",
@@ -353,6 +416,28 @@ window.APLab.catalog = {
    "next": "next/labs/g8-pythagoras.html",
    "glyph": "<path d=\"M12 64 L12 16 L60 64 Z\"/><path d=\"M12 16 L12 16 M12 16 L22 16 L22 26 L12 26\"/> <path d=\"M12 64 L12 54 L22 54\" stroke-dasharray=\"3 3\"/>",
    "sceneTotal": 37
+  },
+  {
+   "id": "g9-quadratic-functions",
+   "course": "g9",
+   "unit": "이차함수와 그래프",
+   "strand": "func",
+   "order": 0.1,
+   "title": "이차함수 탐구",
+   "short": "이차함수",
+   "summary": "계수·축·꼭짓점·평행이동을 조작하고 조건에서 식을 찾거나 좌표와 넓이를 해석합니다. 중등 풀이를 사용하며, 2027 중3 개정 교육과정의 최댓값·최솟값은 보충 장면으로 표시합니다.",
+   "keywords": "이차함수 포물선 그래프 계수 축 꼭짓점 평행이동 식 좌표 넓이 대칭 개념 기본 심화 중3 2027 보충",
+   "badge": "함수",
+   "scenes": [
+    "개념: 계수·축·꼭짓점·이동",
+    "기본: 식과 그래프 연결",
+    "심화: 조건·좌표·넓이",
+    "2027 보충: 전실수 최댓값·최솟값"
+   ],
+   "sceneTotal": 23,
+   "glyph": "<path d=\"M8 50 H72 M40 8 V72\"/><path d=\"M12 12 Q40 88 68 12\"/><path d=\"M40 12 V60\" stroke-dasharray=\"4 4\"/><circle cx=\"40\" cy=\"50\" r=\"4\" fill=\"currentColor\"/>",
+   "legacy": "next/labs/g9-quadratic-functions.html",
+   "next": "next/labs/g9-quadratic-functions.html"
   },
   {
    "id": "g9-trig-ratio",
@@ -1353,21 +1438,21 @@ window.APLab.catalog = {
    "id": "g7",
    "name": "중1",
    "level": "중학교 1학년",
-   "title": "기본 도형 · 평면도형 · 입체도형",
+   "title": "좌표와 그래프 · 정비례와 반비례 · 평면·입체도형",
    "hue": "teal"
   },
   {
    "id": "g8",
    "name": "중2",
    "level": "중학교 2학년",
-   "title": "삼각형 · 사각형 · 닮음 · 피타고라스",
+   "title": "일차함수 · 삼각형 · 사각형 · 닮음 · 피타고라스",
    "hue": "blue"
   },
   {
    "id": "g9",
    "name": "중3",
    "level": "중학교 3학년",
-   "title": "삼각비 · 원의 성질",
+   "title": "이차함수 · 삼각비 · 원의 성질",
    "hue": "indigo"
   },
   {
@@ -1468,6 +1553,8 @@ window.APLab.catalog = {
    "name": "좌표·벡터 노선",
    "hue": "blue",
    "stations": [
+    "g7-coordinate-graphs",
+    "g8-linear-functions",
     "common-lines",
     "common-coord",
     "common-transform",
@@ -1483,6 +1570,10 @@ window.APLab.catalog = {
    "name": "함수 노선",
    "hue": "violet",
    "stations": [
+    "g7-coordinate-graphs",
+    "g7-proportion",
+    "g8-linear-functions",
+    "g9-quadratic-functions",
     "common-quadratic",
     "common-functions",
     "common-rational",
