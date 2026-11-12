@@ -26,6 +26,103 @@
   "productionAuthorized": false,
   "surfaces": [
     {
+      "surface": "problem",
+      "identity": {
+        "questionUid": "24_연향중_2학기_기말_중1_유사|23",
+        "surface": "PROBLEM_VISUAL",
+        "visualRole": "decisive-relation",
+        "visualAssetKey": "sha256:bca7e62e6c863388d4318a67931eea5b03a29307bdbf4956e3f6e614d2b2d5be",
+        "assetId": "va-cecfaa677e8212871d395f63afbe3141b56b7bf5d8fc75c2e4fc76261344081b"
+      },
+      "status": "SAMPLE_ONLY",
+      "compositionStatus": "COMPOSED",
+      "planRef": {
+        "path": "yeonfinal24-q23-inputs/problem-plan.json",
+        "bytes": 5239,
+        "sha256": "sha256:2bbfa9898e641f5d4b5c81345065882df3bd8567b5460bcef4b7b45f2a844526"
+      },
+      "svgRef": {
+        "path": "yeonfinal24-q23-outputs/problem.svg",
+        "bytes": 20713,
+        "sha256": "sha256:c4f8585650a9385344335034b1e3cdab44a784227e6728a1a2e08e4bad77907e"
+      },
+      "pngRef": {
+        "path": "yeonfinal24-q23-outputs/problem.png",
+        "bytes": 9001,
+        "sha256": "sha256:dbe4f0ce4855d842bd92612978de82aa3bc2bb78bd810b17320e579e6d413808"
+      },
+      "staticAudit": {
+        "status": "PASS",
+        "errors": [],
+        "planeMarks": {
+          "status": "PASS",
+          "errors": [],
+          "observations": [
+            {
+              "id": "slant",
+              "type": "EXPRESSION_LABEL",
+              "ownerSegment": "BC",
+              "distancePx": 30.174212384388937
+            },
+            {
+              "id": "axis",
+              "type": "TEXT_LABEL",
+              "labelKind": "MATH",
+              "anchor": null,
+              "distancePx": 16.460000000428558
+            },
+            {
+              "id": "bottom",
+              "type": "DIMENSION",
+              "style": "BAR",
+              "side": "BELOW",
+              "offset": 1,
+              "lengthPx": 393.6507936507936,
+              "distancePx": 32
+            },
+            {
+              "id": "top",
+              "type": "DIMENSION",
+              "style": "BAR",
+              "side": "ABOVE",
+              "offset": 1,
+              "lengthPx": 196.82539682539684,
+              "distancePx": 32
+            }
+          ]
+        }
+      },
+      "renderedLayout": {
+        "status": "PASS",
+        "display": {
+          "width": 720,
+          "height": 560
+        },
+        "errors": []
+      },
+      "lineage": {
+        "planSha256": "sha256:6d879e36df5112a08bd81e66e9fee7a3f2f233c750bda7ed3340c5847848c459",
+        "modelSha256": "sha256:7c4ca392dec3073f7f8c724c86aa718cd86ac292d210d64b4abce76d1e5b7fa3",
+        "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
+        "specSha256": "sha256:217abb43d678211dca2c0383bfc9458e1b6bd5a7f2985d1fd69f1a568d3fb5dd",
+        "fragmentSha256s": {
+          "A-name": "sha256:91bb617bd4ce115171e49717a167785e509c8246ed7e60c66de33ff76f4ec3b6",
+          "B-name": "sha256:9c135979d36ce3229d4aa89621aae9d9cf97071393443a5760afe5cab98daf07",
+          "C-name": "sha256:9f9eaabb586036add0919be23ae48156b43590c5a52367de482126026e64ca85",
+          "D-name": "sha256:ead75b97d0b7d8ef25c4862ce033567379bb49bfe172e7b415c89847fbf7817f",
+          "slant": "sha256:23493957c85990aabaa463818b03dde9a9b608d8081269fc7cee1f18f1940da3",
+          "axis": "sha256:82d9870531121a1f8a9b768d61529734edccd18c74b9b576a633ee0f336983c3",
+          "bottom-label": "sha256:2edade7ec5f4ce0ac6115c63dd202bb2038169961e4c9952f9faec9ba918716c",
+          "top-label": "sha256:8ce0617b51a1325ba4a50f247b9f4ae64c983979f19309a915a892b879ea5f20"
+        },
+        "measurementsSha256": "sha256:57333e04ad7073dabde58586257927af7974dadce489a469864073e4ec63191a",
+        "svgSha256": "sha256:c4f8585650a9385344335034b1e3cdab44a784227e6728a1a2e08e4bad77907e",
+        "witnessSha256": "sha256:376bda5228723462c8cef57f8331f149b109a4556ad983e672ab362a240ec49a",
+        "staticAuditSha256": "sha256:e510702a6518880b40f77a3ee831b8db36c30f6af8419aefd42422a86a961316",
+        "renderedLayoutSha256": "sha256:2f3bd078dab5ab860e43b99cc15794d5403ae0864611f357fab56145224328ba"
+      }
+    },
+    {
       "surface": "solution",
       "identity": {
         "questionUid": "24_연향중_2학기_기말_중1_유사|23",

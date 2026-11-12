@@ -1,15 +1,14 @@
 {
   "status": "PASS",
   "independentMath": {
-    "sectorAngle": 240,
-    "outerArcPi": 16,
-    "innerArcPi": 8,
-    "lateralAreaPi": 72.0,
-    "basesAreaPi": 80,
-    "totalAreaPi": 152
+    "bottomRadius": 8,
+    "topRadius": 4,
+    "slant": 6,
+    "internalHeight": "sqrt20 (not a printed given)",
+    "net": "inner6 outer12 angle240; area152π"
   },
-  "state": "PARTIAL: solution net complete; problem trapezoid rotation-axis diagram not yet generated",
-  "problemLeak": "Q16 problem only givens; Q23 derived net solution-only.",
+  "state": "Problem rotation-axis figure added; previous solution net preserved.",
+  "problemLeak": "Problem only source placement and source dimensions where supplied; section shapes/net values only solution.",
   "staticAudit": "PASS",
   "headlessLayout": "PASS",
   "visualQA": "NOT_RUN",
