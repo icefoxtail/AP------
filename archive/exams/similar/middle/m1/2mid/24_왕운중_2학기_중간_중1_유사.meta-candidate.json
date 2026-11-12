@@ -77,6 +77,13 @@
         "after": "Changed AB to 7 cm, keeping BC=6 cm and ∠A=45°. The ray from A at 45° and the circle centered at B of radius 6 cm intersect at two points, so ④ is not unique; ⑤ remains the only uniquely determined triangle.",
         "independentCheck": "For coordinates A=(0,0), B=(7,0), the 45° ray is C=(t/√2,t/√2). BC=6 gives t²−7√2t+13=0, discriminant 98−52=46>0, with both roots positive; hence two distinct triangles satisfy ④. Choice ⑤ is ASA with side AC=6 cm between endpoint angles 40° and 60° and is unique.",
         "reviewStatus": "Author-side independent recalculation completed; formal independent review remains UNREVIEWED."
+      },
+      {
+        "scope": "Q20 lower-bound condition",
+        "before": "The repaired item gave frequencies for [1,2), [2,3), [3,4) and a total of 50, but did not specify whether students below 1만원 existed.",
+        "after": "Added the explicit condition that zero students had savings below 1만원. This makes the count below 3만원 exactly 2+3=5 and the count at least 3만원 exactly 45.",
+        "independentCheck": "The lower bound is now exhaustive: below 3만원 = 0+2+3=5, so option ④ is 5/50=10%. At least 3만원 = 45, so option ⑤ is false; options ①–③ contradict the stated frequencies. Thus ④ remains unique.",
+        "reviewStatus": "Author-side independent recalculation completed; formal independent review remains UNREVIEWED."
       }
     ],
     "embeddedMetaTailRecords": [
@@ -1677,7 +1684,7 @@
   ],
   "validation": {
     "jsSyntax": "PASS (node --check)",
-    "mathReview": "Q12/Q13 independently verified by /root/wangwoon_independent_review. Q9, Q15, Q20, Q23 calculations and repairs author-checked; formal independent math review pending. Q20 uses only source-verified counts; no unspecified class counts were invented.",
+    "mathReview": "Q12/Q13 independently verified by /root/wangwoon_independent_review. Q9, Q15, Q20 (including lower-bound repair), Q23 calculations author-checked; formal independent math review pending. Q20 uses only source-verified counts except the explicit no-below-1 condition added to close the source gap; no unspecified class count was invented.",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "SVG intentionally deferred; no candidate images referenced",
     "contentResidueAudit": {
@@ -1691,7 +1698,7 @@
     "objectiveChoiceCountAudit": "20 objective items have five options; Q9 and Q20 repairs are author-checked, formal independent review pending."
   },
   "pipelineState": "PARTIALLY_BLOCKED_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "1e014e198c132943ece261312bb271d579cda227",
+  "expectedSourceBlobSha1": "a8be0667f6bea440a73ff154bf2ca32c46301ae6",
   "fourSlotCandidate": {
     "path": "archive/exams/similar/middle/m1/2mid/24_왕운중_2학기_중간_중1_유사.4slot-candidate.json",
     "sha256": "d49a228469abfbe782db990aa188691786e00536f64fd72a7595e92007031ebb",
