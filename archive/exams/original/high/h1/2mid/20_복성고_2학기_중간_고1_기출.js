@@ -52,7 +52,11 @@ window.questionBank = [
     "sourceOrdinal": 1,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_d52e43d82f4abd289fab6b21178408a2a11ae7018e95cecaa93a3f99245fe481",
-    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbe6bb31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":1}
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbe6bb31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":1},
+    "solutionImage": "assets/images/20_복성고_2학기_중간_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시로 A만의 영역에 3, 교집합에 6, B만의 영역에 1을 놓았다.",
+    "solutionImageCaption": "예: B의 원소는 B−A 부분과 A∩B 부분에서 모은다. 일부 원소를 사용해 두 부분을 합치는 방법을 보인다. 정답은 21이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -484,9 +488,9 @@ window.questionBank = [
     "imageSize": "full",
     "imageAlt": "양의 절편을 가진 직선이 점 P(3,4)를 지나는 개형도(축척 없음)",
     "imageCaption": "양의 x절편 a와 양의 y절편 b를 잇는 직선 위에 점 P(3,4)가 놓인다.",
-    "solutionImage": "assets/images/20_복성고_2학기_중간_고1_기출/q9-solution.svg",
-    "solutionImageAlt": "a=6, b=8에서 점 P(3,4)가 두 절편을 잇는 선분의 중점인 그림",
-    "solutionImageCaption": "등호 조건 3/a=4/b=1/2가 a=6, b=8에 대응한다.",
+    "solutionImage": "assets/images/20_복성고_2학기_중간_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 절편을 잇는 직선 위에 주어진 점 P(3,4)가 놓여 있다.",
+    "solutionImageCaption": "예: 한 직선에서 점 P(3,4)와 두 절편의 관계를 본다. 점 좌표를 식에 대입한 뒤, 양수 두 항에 산술·기하평균을 적용한다. 정답은 48이다.",
     "solutionImageSize": "full"
   },
   {
@@ -545,9 +549,9 @@ window.questionBank = [
     "imageSize": "full",
     "imageAlt": "직선 x/2+y/3=13/3의 좌표평면 그림",
     "imageCaption": "주어진 조건을 직선으로 나타냈다.",
-    "solutionImage": "assets/images/20_복성고_2학기_중간_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "원점 O에서 직선까지의 수선 OH와 수선의 발 H(6,4)",
-    "solutionImageCaption": "OH=2√13이므로 x²+y²의 최솟값은 거리의 제곱 52이다.",
+    "solutionImage": "assets/images/20_복성고_2학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선 3x+2y=26에 원점에서 수선을 내려 점 H에서 만난다.",
+    "solutionImageCaption": "원점과 직선 사이의 최단 거리는 수선 OH이다. 이를 제곱하면 조건을 만족하는 x²+y²의 최솟값을 얻는다. 정답은 52이다.",
     "solutionImageSize": "full"
   },
   {
@@ -567,7 +571,7 @@ window.questionBank = [
       "그래프에서 합성함수의 값 읽기"
     ],
     "image": "assets/images/20_복성고_2학기_중간_고1_기출/q11.png",
-    "solutionImage": "assets/images/20_복성고_2학기_중간_고1_기출/q11.png",
+    "solutionImage": "assets/images/20_복성고_2학기_중간_고1_기출/q11-solution-v2.svg",
     "answer": "③",
     "solution": "합성함수 $f(f(1))$는 먼저 안쪽의 $f(1)$을 구한 뒤, 그 결과를 다시 f에 넣는다.\n그림에서 곡선 $y=f(x)$의 x좌표가 1인 점의 y좌표는 2이다.\n따라서\n$f(1)=2$이다.\n이제 바깥 함수에는 1이 아니라 방금 얻은 2를 넣는다.\n같은 곡선에서 x좌표가 2일 때 y좌표는 3이므로\n$f(2)=3$이다.\n따라서\n$f(f(1))=f(2)=3$이다.\n그러므로 정답은 ③이다.",
     "layoutTag": "grid",
@@ -603,7 +607,10 @@ window.questionBank = [
     "sourceOrdinal": 11,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_80f5fb13a15482c59e4653848a36fea9513e6f541c7f331f17ea8e75696164be",
-    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":2}
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":2},
+    "solutionImageAlt": "해설 그림: 위 그래프에는 파란색 y=f(x), 주황색 y=x와 점 (1,2)가 있다. 아래 그래프는 다음 입력 x=2를 표시하며, 파란 곡선은 x=1과 x=3 사이에서 생략했다.",
+    "solutionImageCaption": "파란색 곡선은 y=f(x), 주황색 직선은 y=x다. 위 그래프에서 f(1)=2를 읽고 아래 그래프에서 그 값을 다음 입력 x=2로 표시한다. x=1과 x=3 사이의 함수 곡선은 출력값을 드러내지 않도록 생략했다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -656,7 +663,11 @@ window.questionBank = [
     "sourceOrdinal": 12,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_bb0497aba20cdf44d0455ad7eca5bd15642a23542b5f0b4c50840596a082c58a",
-    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":2}
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":2},
+    "solutionImage": "assets/images/20_복성고_2학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시에서 x=1을 경계로 두 직선 조각이 이어져 증가하고, 점 (1,−1)이 표시되어 있다.",
+    "solutionImageCaption": "예: a=1일 때 두 구간에서 기울기가 양수인 모습이다. 일반적으로 각 기울기의 부호가 같고 0이 아닌 조건을 확인한다. 정답은 −3<a<3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -873,9 +884,9 @@ window.questionBank = [
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_293940bb33859501467c8ad6ba0c38341e26327044f8704bbc32cc80a5255a94",
     "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":3},
-    "solutionImage": "assets/images/20_복성고_2학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "y=(x−2)²와 그 역함수 그래프가 y=x 위의 점 (4,4)에서 만나는 그림",
-    "solutionImageCaption": "f(x)=f⁻¹(x)의 해는 두 그래프가 만나는 x좌표이다.",
+    "solutionImage": "assets/images/20_복성고_2학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 그래프에는 파란색 y=f(x)와 주황색 역함수 y=f⁻¹(x)가, 아래 그래프에는 파란색 y=f(x)와 초록색 y=x가 그려져 있다.",
+    "solutionImageCaption": "파란색은 y=f(x), 주황색은 y=f⁻¹(x), 초록색은 y=x이다. 위 그림에서 함수와 역함수의 대응을 보고 아래 그림에서 대칭축을 확인한다. 교점의 입력은 식으로 구한다. 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {

@@ -38,7 +38,7 @@ test('all seven real scenes bind 13 source goals and 10 inquiry topics through t
     }
   }
   assert.equal(total,23);assert.equal(originals,13);
-  assert.match(fs.readFileSync(new URL('../kit/apl-player.js',import.meta.url),'utf8'),/const DEFAULT_PLAYBACK_RATE = 1\.5;/);
+  assert.match(fs.readFileSync(new URL('../kit/apl-player.js',import.meta.url),'utf8'),/const DEFAULT_PLAYBACK_RATE = 2;/);
   t.diagnostic('7 scenes / 23 lessons: 13 source goals + 10 existing inquiry topics; actual shell scene copies');
 });
 

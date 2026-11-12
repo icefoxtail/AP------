@@ -22,7 +22,7 @@
   const REDUCED = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
   const NARROW = window.matchMedia ? window.matchMedia('(max-width: 859px)') : { matches: false };
   const TITLE_BIG_MS = 2000; // 제목이 크게 보이는 시간
-  const DEFAULT_PLAYBACK_RATE = 1.5; // 사용자 기본 재생 속도: 기존 대비 1.5배
+  const DEFAULT_PLAYBACK_RATE = 2; // 사용자 기본 재생 속도: 2배
   const SLOW_PLAYBACK_RATE = 0.5; // 기존 '느리게' 동작 보존
   const mmss = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
 

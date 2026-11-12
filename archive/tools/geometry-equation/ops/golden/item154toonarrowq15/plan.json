@@ -1,0 +1,95 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "6",
+          "-5",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "f2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "6",
+          "-8",
+          "2"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "bd",
+          "x": "2",
+          "style": "DASHED"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "x": "4",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "4",
+          "y": "6",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "c1",
+          "point": "P",
+          "text": "y=x^2-5x+6",
+          "direction": "E"
+        },
+        {
+          "id": "c2",
+          "point": "Q",
+          "text": "y=2x^2-8x+6",
+          "direction": "W"
+        }
+      ]
+    }
+  },
+  "caption": "ab=2를 만족하는 두 경우의 이차함수와 x>2의 경계 x=2를 함께 그렸다. 두 곡선의 꼭짓점이 경계 x=2에 대해 어디에 있는지 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 자연수 $a,b$에 대하여 $f(x)=a(x-3)(x-b)$가 $f(0)=6$이고 $x>2$일 때 일대일대응이다. $f(5)$의 값은? [3.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "ab=2에서 가능한 두 경우의 축 위치를 x=2 경계와 비교한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 경우의 꼭짓점 위치와 x>2 경계의 관계"
+  ]
+}

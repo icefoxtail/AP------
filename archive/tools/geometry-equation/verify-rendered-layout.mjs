@@ -114,7 +114,7 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       if(tag==='line')points=[project(e,e.x1.baseVal.value,e.y1.baseVal.value),project(e,e.x2.baseVal.value,e.y2.baseVal.value)];
       else if(tag==='polyline'||tag==='polygon'){for(let i=0;i<e.points.numberOfItems;i++){const p=e.points.getItem(i);points.push(project(e,p.x,p.y));}if(tag==='polygon'&&points.length)points.push(points[0]);}
       else{const length=e.getTotalLength(),count=Math.min(4096,Math.max(2,Math.ceil(length)));for(let i=0;i<=count;i++){const p=e.getPointAtLength(length*i/count);points.push(project(e,p.x,p.y));}}
-      return{id:e.id,kind:e.getAttribute('data-role')||'line',role:e.getAttribute('data-role'),points,client,paintOrder:paintOrder.get(e)??null,strokeWidthPx,strokeColor:style.stroke,markerStart:e.getAttribute('marker-start')||'',markerEnd:e.getAttribute('marker-end')||'',axis:e.getAttribute('data-axis'),value:e.getAttribute('data-value'),requiredLabelId:e.getAttribute('data-required-label-id'),owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean),ownerLabelId:e.getAttribute('data-owner-label'),tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
+      return{id:e.id,kind:e.getAttribute('data-role')||'line',role:e.getAttribute('data-role'),points,client,paintOrder:paintOrder.get(e)??null,strokeWidthPx,strokeColor:style.stroke,markerStart:e.getAttribute('marker-start')||'',markerEnd:e.getAttribute('marker-end')||'',axis:e.getAttribute('data-axis'),value:e.getAttribute('data-value'),requiredLabelId:e.getAttribute('data-required-label-id'),owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean),ownerLabelId:e.getAttribute('data-owner-label'),leaderCrossing:e.getAttribute('data-leader-crossing')==='1',tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
     });
     const safeMargin=svg.getAttribute('data-publication-profile')==='fragment-publication-spike-v1'?12:32;
     const rootMatrix=svg.getScreenCTM();
@@ -226,7 +226,7 @@ function ownerLeaderClearance(label,leader,geometry,tickIntersection,scale) {
     }
     // A dot drawn exactly on this tick, and a dashed approach guide that ends on it, belong to the tick the leader names (the leader may touch the guide only at its start). A drawn line or segment running over this tick (the segment y=-5 over the tick -5) is the tick's own ground, touched only at the start too.
     const nearTick=point=>Array.isArray(point)&&Math.hypot(point[0]-tickIntersection[0],point[1]-tickIntersection[1])<=1*scale+.25;
-    const owner=allowedOwnerIds.has(other.id)||((other.kind==='point'||other.kind==='circle')&&nearTick(other.at))||(/-guide-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.some(nearTick))||(/^overlay-(line|guide)-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(other.kind==='line'&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(/^[fg]-piece-\d+/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25));
+    const owner=allowedOwnerIds.has(other.id)||((other.kind==='point'||other.kind==='circle')&&nearTick(other.at))||(/-guide-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.some(nearTick))||(/^(overlay-(line|guide)|trig-pole|line)-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(other.kind==='line'&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(/^[fg]-piece-\d+/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25));
     if(owner){
       if(intersections.some(point=>Math.hypot(point[0]-tickIntersection[0],point[1]-tickIntersection[1])>1*scale+.25))errors.push('LEADER_OWNER_ENDPOINT_CROSSING:'+other.id);
     }else if(minimum<=clearance)errors.push('LEADER_NEAR_GEOMETRY:'+leader.id+':'+other.id);
@@ -285,8 +285,8 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
   }
   const ownedCounts=new Map(tickLabels.map(v=>[v.tickOwner,(tickLabels.filter(x=>x.tickOwner===v.tickOwner).length)]));
   const normalized=v=>String(v??'').replace(/−/g,'-').trim();
-  const parsePiMultiple=value=>{const match=/^(\d+)(?:\/(\d+))?$/.exec(String(value??''));if(!match)return null;const denominator=match[2]?Number(match[2]):1;return denominator>0?Number(match[1])/denominator:null;};
-  const piLabelText=value=>{const match=/^(\d+)(?:\/(\d+))?$/.exec(String(value??''));const numerator=Number(match[1]),denominator=match[2]?Number(match[2]):1;const head=numerator===1?'π':numerator+'π';return head+(denominator===1?'':'/'+denominator);};
+  const parsePiMultiple=value=>{const match=/^(-?\d+)(?:\/(\d+))?$/.exec(String(value??''));if(!match)return null;const denominator=match[2]?Number(match[2]):1;return denominator>0?Number(match[1])/denominator:null;};
+  const piLabelText=value=>{const match=/^(-?)(\d+)(?:\/(\d+))?$/.exec(String(value??''));const numerator=Number(match[2]),denominator=match[3]?Number(match[3]):1;const head=numerator===1?'π':numerator+'π';return (match[1]?'-':'')+head+(denominator===1?'':'/'+denominator);};
   for(const label of tickLabels) {
     const labelErrors=[],ownerId=label.tickOwner,ownerMatches=capture.geometry.filter(v=>v.id===ownerId&&v.kind==='tick'),owner=ownerMatches.length===1?ownerMatches[0]:null;
     const axisMatches=capture.geometry.filter(v=>v.id===`${label.tickAxis}-axis`&&v.kind==='axis'),axis=axisMatches.length===1?axisMatches[0]:null;
@@ -307,7 +307,7 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
       const multiple=parsePiMultiple(piValue);
       if(multiple===null)fail('TICK_LABEL_PI_VALUE_INVALID');
       else if(tickValue===null||Math.abs(tickValue-multiple*Math.PI)>1e-9)fail('TICK_LABEL_PI_VALUE_MISMATCH');
-      if(normalized(label.value)!==normalized(piLabelText(piValue)))fail('TICK_LABEL_PI_TEXT_MISMATCH');
+      if(normalized(label.font==='FROZEN_OUTLINE'?label.tickDisplayValue:label.value)!==normalized(piLabelText(piValue)))fail('TICK_LABEL_PI_TEXT_MISMATCH');   // a stacked fraction is outlines: its plain text rides on data-tick-display-value
     }
     if(label.font!=='FROZEN_OUTLINE'&&normalized(label.value)!==normalized(label.tickDisplayValue))fail('TICK_LABEL_RENDERED_TEXT_PARITY');
     if(!labelVisibility.ok)fail(labelVisibility.code);
@@ -410,6 +410,8 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
     if(publication&&isOwnRegionExit(leader,other,capture.geometry))continue;
     // G7c: a curve-name leader (leaderOnly label, id *-curve-name-owner-leader) is a thin guide that may cross the axes, ticks and dashed guides, never a curve or a line. (G18c) So may a point callout's leader (overlay-callout-*): the layout looks for a place that crosses nothing first and falls back to the axes only when the figure leaves none.
     if((/-curve-name-owner-leader$/.test(leader.id)||/^overlay-callout-.+-owner-leader$/.test(leader.id))&&(/^(x|y)-axis$|^tick-[xy]-|-guide(-[xy])?$|^overlay-guide-|^asymptote-|^rational-asymptote-/.test(String(other.id))))continue;
+    // (CL) a point name's last-resort leader (data-leader-crossing) may cross thin strokes (a segment, a dashed line, a circle, an axis, a tick), never a point or another leader
+    if(leader.leaderCrossing&&['line','curve','auxiliary','circle','axis','tick'].includes(other.kind))continue;
     if(leader.points.some((p,i)=>i>0&&other.points.some((q,j)=>j>0&&properCross(leader.points[i-1],p,other.points[j-1],q)))){criticalCollisionCount++;errors.push('LEADER_CROSSING:'+leader.id+':'+other.id);}
   }
   for(const g of capture.geometry){if(!contains(capture.svg,expand(g.client,(g.strokeWidthPx??0)/2))){overflowCount++;errors.push('GEOMETRY_VIEWPORT_CLIPPING:'+g.id);}}

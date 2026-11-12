@@ -6,6 +6,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from visual_engine.function_sampling import sample
 from visual_engine.palette import PALETTE
+from visual_engine.math_expression import parse as _parse_expression,evaluate as _evaluate_expression
 from visual_engine.viewport import Viewport
 
 def _exp_log_base_expression(row):
@@ -50,6 +51,7 @@ def expression(plan):
         if rate_pi is not None:a,c=plan['coefficients'];rate=f'({rate_pi})*pi'
         else:a,k,c=plan['coefficients'];rate=f'({k})'
         phase=f'({plan["phasePi"]})*pi' if plan.get('phasePi') is not None else f'({plan["phase"]})'
+        if plan.get('absolute') is True:return f'({a})*abs({fn}(({rate})*x+({phase})))+({c})'
         return f'({a})*{fn}(({rate})*x+({phase}))+({c})'
     raise ValueError('UNSUPPORTED_GRAPH_FAMILY')
 
@@ -109,6 +111,7 @@ def _produce(plan):
         critical.extend(point['x'] for row in features.get('lines',[]) for point in row['intersections'])
         critical.extend(float(Fraction(row['x']))*factor for row in features.get('keyPoints',[]))
         critical.extend(float(Fraction(row['x']))*factor for row in features.get('poles',[]))
+        critical.extend(float(Fraction(row['x']))*factor for row in features.get('cusps',[]))
     result=sample(expression(plan),plan['domain'],vp,critical_x=critical,clip_refine=plan.get('clipRefine') is True)
     # A tangent branch near a pole can exceed the finite wire range in its refinement-cap report; the code is the evidence, not the huge px.
     for warning in result.get('warnings',[]):
@@ -141,6 +144,8 @@ def _produce(plan):
         if vertical['drawn']:
             singular_x=float(Fraction(vertical['x']));a,b=vp.screen((singular_x,ymin)),vp.screen((singular_x,ymax))
             curves.append(f'<line id="rational-asymptote-vertical" data-role="asymptote" data-axis="vertical" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
+    # The observer checks the required-point markers in both the model and the composed SVG.
+    if (plan['family']=='rational' and plan.get('overviewPolicy')=='RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_v1') or (overview and 'coordinateBand' in plan):
         for index,point in enumerate(plan.get('requiredPoints',[]),1):
             cx,cy=vp.screen((point['x'],point['y']))
             curves.append(f'<circle id="required-point-{index}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
@@ -250,16 +255,29 @@ def _produce(plan):
         factor=math.pi if features.get('axisUnit')=='PI' else 1.0;radius=float(policy['markerRadiusIntrinsicPx'])
         xmin,xmax,ymin,ymax=plan['viewport']
         for row in features['lines']:
-            slope,intercept=float(Fraction(row['slope'])),float(Fraction(row['intercept']))
+            tone=PALETTE[row['color']]['line'] if row.get('color') else None
+            stroke_look=f'stroke="{tone}" stroke-width="2.4"' if tone else 'stroke="black"'
+            dot_look=f'fill="{tone}" stroke="{tone}"' if tone else 'fill="#111" stroke="black"'
+            if row['kind']=='VERTICAL':
+                vx=float(Fraction(row['x']))*factor
+                a,b=vp.screen((vx,ymin)),vp.screen((vx,ymax))
+                curves.append(f'<line id="line-{row["id"]}" data-role="line" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" {stroke_look}/>')
+                for k,point in enumerate(row['intersections'],1):
+                    cx,cy=vp.screen((point['x'],point['y']))
+                    curves.append(f'<circle id="intersection-{row["id"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" {dot_look}/>')
+                continue
+            slope=float(Fraction(row['slope']))/(math.pi if row.get('perPi') else 1.0)
+            try:intercept=float(Fraction(row['intercept']))
+            except ValueError:intercept=float(_evaluate_expression(_parse_expression(row['intercept']),{}))   # a surd level such as -sqrt(3)/2
             if row['kind']=='HORIZONTAL':a,b=vp.screen((xmin,intercept)),vp.screen((xmax,intercept))
             else:
                 ends=sorted([(ymin-intercept)/slope,(ymax-intercept)/slope]);left,right=max(xmin,ends[0]),min(xmax,ends[1])
                 if not left<right:raise ValueError('TRIG_LINE_OUTSIDE_VIEW:'+row['id'])
                 a,b=vp.screen((left,slope*left+intercept)),vp.screen((right,slope*right+intercept))
-            curves.append(f'<line id="line-{row["id"]}" data-role="line" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black"/>')
+            curves.append(f'<line id="line-{row["id"]}" data-role="line" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" {stroke_look}/>')
             for k,point in enumerate(row['intersections'],1):
                 cx,cy=vp.screen((point['x'],point['y']))
-                curves.append(f'<circle id="intersection-{row["id"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
+                curves.append(f'<circle id="intersection-{row["id"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" {dot_look}/>')
         for row in features.get('keyPoints',[]):
             at=vp.screen((float(Fraction(row['x']))*factor,float(Fraction(row['y']))))
             curves.append(f'<circle id="trig-{row["id"]}" data-role="trig-key-point" data-feature-kind="{row["kind"]}" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
@@ -497,7 +515,7 @@ def _mc_row_y(row,x_value):
     if kind in ('LINE','Y_OF_X'):value=sum(pp_exact_float(value)*x_value**index for index,value in enumerate(row['coefficients']))
     if kind=='RATIONAL':
         n=[pp_exact_float(value) for value in row['numerator']];d=[pp_exact_float(value) for value in row['denominator']]
-        value=(n[0]+n[1]*x_value)/(d[0]+d[1]*x_value)
+        value=sum(coefficient*x_value**power for power,coefficient in enumerate(n))/(d[0]+d[1]*x_value)
     elif kind=='SQRT':
         r=[pp_exact_float(value) for value in row['radicand']]
         value=pp_exact_float(row.get('offset','0'))+pp_exact_float(row.get('amplitude','1'))*math.sqrt(max(0.0,r[0]+r[1]*x_value))

@@ -465,7 +465,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학I/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 검정 원 위에 A, B, D, C가 놓이고 현으로 삼각형 ABC와 BCD를 이었다. 회색 부채꼴은 ∠BAC=60°와 ∠BCD를 표시하며, 오른쪽 확대 각도는 ∠BDC=120°이다. 선분 BC에는 2√21, BD에는 8이 적혀 있다.",
+    "solutionImageCaption": "검정 원은 네 점이 한 원 위에 있음을, 회색 부채꼴은 세 각을 나타내고 오른쪽 확대 각은 ∠BDC=120°를 보인다. BC=2√21, BD=8이며 sin(∠BCD)=2√7/7이다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -482,9 +486,9 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학I/q17-solution.svg",
-    "solutionImageAlt": "8→2→5→8로 되돌아오는 3주기를 세 점과 화살표로 나타낸 순환 그림이다. 이 순환이 a₃부터 시작되어 p의 최솟값이 3이 됨을 적어 놓았다.",
-    "solutionImageCaption": "cycle",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학I/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 점을 잇는 방향 화살표에 8, 2, 5가 적혀 있고, 화살표를 따라 세 값이 되풀이된다.",
+    "solutionImageCaption": "수열의 규칙을 적용하면 8, 2, 5가 세 단계마다 되돌아오는 순환을 이룬다. 가능한 시작 항은 앞 단계 역산으로 따져 합산한다. 정답은 254이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "모든 항이 자연수이고 다음 조건을 만족하는 수열 $\\{a_n\\}$에 대하여, 가능한 모든 $a_1$의 값의 합은?\n(가) 모든 자연수 $n$에 대하여 <div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td rowspan=\"2\">$a_{n+1}=$</td><td>$\\dfrac{a_n}{4}$</td><td>($a_n$이 4의 배수인 경우)</td></tr><tr><td>$a_n+3$</td><td>($a_n$이 4의 배수가 아닌 경우)</td></tr></tbody></table></div>이다.\n(나) $n \\ge p$인 모든 자연수 $n$에 대하여 $a_{n+3}=a_n$이 성립하는 자연수 $p$의 최솟값은 3이다.",
@@ -532,7 +536,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 검정 실선으로 그린 지름 AB인 반원 위에 C와 D가 있고, AD와 CO는 E에서 만난다. 회색 부채꼴은 ∠CEA=135°를 나타내며, 바깥 길이 표시는 CE=4, ED=3√2이다.",
+    "solutionImageCaption": "검정 실선은 반원과 선분의 위치를 나타내고, 회색 부채꼴은 ∠CEA를 표시한다. 길이는 CE=4, ED=3√2로 나타냈다. 정답은 70이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

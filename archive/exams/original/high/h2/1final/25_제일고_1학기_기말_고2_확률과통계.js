@@ -344,7 +344,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 4행 4열 격자점에서 검은색 나머지 점과 파란색 가로 이웃쌍, 주황색 세로 이웃쌍의 예를 표시한 산점도.",
+    "solutionImageCaption": "검은 점은 나머지 격자점이다. 파란색과 주황색은 각각 가로와 세로에서 간격 1인 이웃쌍의 예다. 네 행과 네 열에서 이웃쌍을 세어 전체에서 제외한다. 정답은 5분의 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -482,7 +486,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체 제품에서 해외와 국내 생산으로 갈라지고, 각 공장에서 불량과 정상으로 나뉘는 수형도. 각 경로에는 결합확률이 표시된다.",
+    "solutionImageCaption": "해외 불량 경로의 확률은 0.018, 국내 불량 경로의 확률은 0.008이다. 두 불량 경로의 합을 조건부확률의 분모로 사용한다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -657,7 +665,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: A와 B의 닫힌 구간 두 쌍을 수직선에 나타내며, 위쪽 쌍은 겹치고 아래쪽 쌍은 떨어져 있다.",
+    "solutionImageCaption": "끝점은 닫힌 구간에 포함되므로 끝점 하나를 공유해도 두 집합은 만난다. 네 끝점이 모두 다르면 작은 두 수와 큰 두 수를 한 쌍씩 묶어 서로 떨어진 구간을 만들 수 있다. 정답은 28분의 23이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

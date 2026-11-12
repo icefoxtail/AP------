@@ -1,0 +1,78 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -4,
+   10,
+   -2,
+   12
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "16",
+     "2",
+     "1"
+    ],
+    "denominator": [
+     "2",
+     "1"
+    ],
+    "domain": [
+     "-2",
+     "9"
+    ],
+    "domainStates": [
+     "OPEN",
+     "NONE"
+    ],
+    "label": "y=x+16/(x+2)",
+    "color": "BLUE"
+   },
+   {
+    "id": "g",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "-4",
+     "10"
+    ],
+    "label": "y=x",
+    "style": "DASHED"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "M",
+     "x": "2",
+     "y": "6",
+     "unnamed": true
+    }
+   ]
+  }
+ },
+ "caption": "x>-2에서 y=x+16/(x+2)의 그래프이다. 세로 점선 x=-2와 비스듬한 점선 y=x가 점근선이고, 검은 점은 그래프에서 가장 낮은 점이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "x>-2일 때 y=x+16/(x+2)=(x^2+2x+16)/(x+2): 분자가 이차인 유리곡선, 점근선 x=-2와 y=x",
+   "mappedTo": [
+    "graphPlan.curves"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "x>-2에서 곡선이 점근선 x=-2에 붙어 내려오다 가장 낮은 점을 지나 y=x에 가까워지는 모양"
+ ]
+}

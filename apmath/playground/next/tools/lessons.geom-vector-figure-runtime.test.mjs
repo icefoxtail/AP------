@@ -55,7 +55,7 @@ test('six shell-cloned source scenes bind to 28 valid lessons and nine distinct 
  }
  assert.equal(count,28);assert.equal(original,9);assert.equal(concepts,19);
  const player=fs.readFileSync(new URL('../kit/apl-player.js',import.meta.url),'utf8');
- assert.match(player,/const DEFAULT_PLAYBACK_RATE = 1\.5/);
+ assert.match(player,/const DEFAULT_PLAYBACK_RATE = 2/);
  t.diagnostic('6 scenes / 28 lessons = 9 first-source goals + 19 concepts; validator 0 errors / 0 warnings');
 });
 

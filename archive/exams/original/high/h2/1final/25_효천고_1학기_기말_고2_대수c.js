@@ -170,7 +170,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고2_대수c/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C의 변 AB 길이 4, 변 AC 길이 5와 꼭짓점 A의 45° 각을 나타낸 그림.",
+    "solutionImageCaption": "넓이 공식에 쓰이는 두 변과 끼인각을 표시한다. 정답은 5√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -309,7 +313,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고2_대수c/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB가 10인 원에 내접한 삼각형 APB, 꼭짓점 A의 θ와 P의 직각을 나타낸다. 오른쪽에는 AP를 펼쳐 길이 8을 표시하고 점선으로 원래 선분에 연결한다.",
+    "solutionImageCaption": "원 안의 삼각형과 오른쪽에 펼쳐 둔 AP 선분을 점선 안내로 연결했다. AP=8, AB=10이므로 cosθ=4/5이며 이중각 공식으로 cos2θ를 계산한다. 정답은 7/25이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -493,7 +501,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고2_대수c/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란색 변 AB, BC와 주황색 변 CD, DA, 대각선 AC=7/2, 원에 내접한 사각형과 보각 θ, 180°−θ를 나타낸다.",
+    "solutionImageCaption": "파란색 AB=BC=2와 주황색 CD=3, DA=4, 대각선 AC=7/2를 표시했다. 원에 내접하므로 ∠B=θ, ∠D=180°−θ이고 두 삼각형 넓이를 합한다. 정답은 7√15/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -561,7 +573,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
     "subUnit": "수열의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고2_대수c/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 위 E, A, O, C와 세로축 위 B, D가 놓이고 AB, BC, CD, DE에 직각 표식이 있는 그림.",
+    "solutionImageCaption": "좌표축 위 점들의 배열과 세 번 이어지는 수직 조건을 보인다. 정답은 −(6분의 √6)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -629,7 +645,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고2_대수c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란색은 원에 내접한 삼각형 ABC의 변과 호 BD, DC, 주황색은 삼각형 BDE, 회색 표식은 각을 나타낸다. BD는 반지름 √3과 같고 E는 AD와 BC의 교점이다.",
+    "solutionImageCaption": "파란색 변으로 그린 삼각형 ABC와 같은 크기인 파란 호 BD, DC, 주황색 삼각형 BDE를 구분한다. BD=R=√3, ∠DBE=30°이고 회색 표식은 ∠BAE=∠EAC를 나타낸다. 정답은 3/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -715,7 +735,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고2_대수c/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란색은 삼각형 ABC, 주황색은 내부 삼각형 APQ이다. BC 위 P, Q와 아래쪽에 펼친 BC의 구간 3, 1, 2, 오른쪽에 펼친 AQ=√11, AB=5, AC=4가 표시되어 있다.",
+    "solutionImageCaption": "파란색 삼각형 ABC와 주황색 삼각형 APQ를 구분했다. 아래쪽에는 BC를 펼쳐 BP=3, PQ=1, QC=2를, 오른쪽에는 AQ를 펼쳐 √11을 표시한다. AB=5, AC=4를 이용해 외접반지름을 구한다. 정답은 8√7/7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -757,9 +781,9 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "solutionImage": "assets/images/25_효천고_1학기_기말_고2_대수/q23-solution.svg",
-    "solutionImageAlt": "중심 O₁, O₂이고 반지름이 3인 두 원 C₁, C₂에서 A·O₁·O₂와 C·O₂·D가 각각 한 직선 위에 있고, AB=2, O₁D=4√2, CO₂·O₂D=14를 표시한 그림이다.",
-    "solutionImageCaption": "two_circles",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고2_대수c/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 파란 원과 오른쪽 주황 원, 중심 O₁, O₂, 일직선 위의 A, O₁, O₂와 C, O₂, D, 선분 AB=2와 O₁D=4√2, 세 회색 중심각 표시를 나타낸다.",
+    "solutionImageCaption": "파란 원과 주황 원의 반지름은 서로 같고 중심거리 O₁O₂=3이다. AB=2, O₁D=4√2이고, 회색 각 표시는 θ₁=∠BO₁A, θ₂=∠O₂O₁C, θ₃=∠O₁O₂D와 조건 θ₃=θ₁+θ₂를 나타낸다. 정답은 14이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "그림과 같이 두 점 $\\text{O}_1$, $\\text{O}_2$를 각각 중심으로 하고 반지름의 길이가 $\\overline{\\text{O}_1\\text{O}_2}$인 두 원 $C_1$, $C_2$가 있다. 원 $C_1$ 위의 서로 다른 세 점 A, B, C와 원 $C_2$ 위의 점 D가 주어져 있고, 세 점 A, $\\text{O}_1$, $\\text{O}_2$와 세 점 C, $\\text{O}_2$, D가 각각 한 직선 위에 있다.\n\n$\\angle \\text{BO}_1\\text{A} = \\theta_1$, $\\angle \\text{O}_2\\text{O}_1\\text{C} = \\theta_2$, $\\angle \\text{O}_1\\text{O}_2\\text{D} = \\theta_3$이라 할 때 $\\theta_3 = \\theta_1 + \\theta_2$를 만족한다.\n\n$\\overline{\\text{AB}} = 2$, $\\overline{\\text{O}_1\\text{D}} = 4\\sqrt{2}$일 때 $\\overline{\\text{CO}_2} \\times \\overline{\\text{O}_2\\text{D}}$의 길이를 구하는 과정을 서술하시오.",
