@@ -270,7 +270,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "decisiveStep": "삼각형의 넓이는 두 변과 그 끼인각으로 $K=\\frac12 ac\\sin B$이다. $A+B+C=\\pi$이므로 $\\sin(A+C)=\\sin(\\pi-B)=\\sin B=\\frac16$. 따라서 $K=\\frac12\\cdot9\\cdot12\\cdot\\frac16=9$이고 정답은 ④이다."
+    "decisiveStep": "삼각형의 넓이는 두 변과 그 끼인각으로 $K=\\frac12 ac\\sin B$이다. $A+B+C=\\pi$이므로 $\\sin(A+C)=\\sin(\\pi-B)=\\sin B=\\frac16$. 따라서 $K=\\frac12\\cdot9\\cdot12\\cdot\\frac16=9$이고 정답은 ④이다.",
+    "solutionImage": "assets/images/23_강남여고_1학기_기말_고2_수학I/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: 예각 B인 삼각형 A, B, C에서 변 BC 길이 9, 변 AB 길이 12와 끼인각 B를 나타낸 그림.",
+    "solutionImageCaption": "예: sin B=6분의 1인 두 경우 중 예각 B를 그렸다. 두 변과 끼인각을 넓이 공식에 대입한다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -499,7 +503,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "decisiveStep": "$C=180^\\circ-100^\\circ-35^\\circ=45^\\circ$이다. 외접반지름은 $R=\\frac{c}{2\\sin C}$이고 $c=AB=4$이므로 $R=\\frac4{2\\sin45^\\circ}=\\frac4{\\sqrt2}=2\\sqrt2$. 정답은 ①이다."
+    "decisiveStep": "$C=180^\\circ-100^\\circ-35^\\circ=45^\\circ$이다. 외접반지름은 $R=\\frac{c}{2\\sin C}$이고 $c=AB=4$이므로 $R=\\frac4{2\\sin45^\\circ}=\\frac4{\\sqrt2}=2\\sqrt2$. 정답은 ①이다.",
+    "solutionImage": "assets/images/23_강남여고_1학기_기말_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 삼각형 A, B, C, 외접원 중심 O와 반지름 OA, 변 AB 길이 4, 각 A 100°, B 35°, C 45°를 나타낸 그림.",
+    "solutionImageCaption": "각의 합으로 C=45°를 구하고 코사인법칙에 이어 사인법칙을 적용한다. 정답은 2√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -915,9 +923,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "decisiveStep": "격자 삼각형의 밑변 길이 n과 높이 1로 S_n=n/2를 얻고, n=1,2 대입으로 a,b를 정한다.",
-    "solutionImage": "assets/images/23_강남여고_1학기_기말_고2_수학I/q20-replacement-solution.svg",
-    "solutionImageAlt": "n=4인 격자 삼각형에서 밑변 n, 높이 1과 넓이 S_n=n/2를 나타낸 그림",
-    "solutionImageCaption": "격자 삼각형의 밑변은 n, 높이는 1이므로 S_n=n/2이다.",
+    "solutionImage": "assets/images/23_강남여고_1학기_기말_고2_수학I/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 격자 삼각형에서 시작점 O, 점 A₁, A₂, A₃, A₄, 꼭짓점 C와 단위 밑변 구간, 높이 1을 나타낸 그림.",
+    "solutionImageCaption": "O는 원문의 시작점을 대신한다. 밑변은 n개의 단위 구간이고 높이는 1이므로 S_n은 2분의 n이다. 정답은 2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -964,9 +972,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "decisiveStep": "중심 O에서 현 BC에 내린 수선의 발 M을 두어 OM=R cos A=1로 외접반지름을 결정한다.",
-    "solutionImage": "assets/images/23_강남여고_1학기_기말_고2_수학I/q21-solution.svg",
-    "solutionImageAlt": "삼각형 ABC의 외접원, 중심 O, 반지름 OA, 현 BC에 내린 수선 OM과 직각 표시",
-    "solutionImageCaption": "OM=1과 cos A=1/4에서 R=4를 얻는 결정 구성을 보인다.",
+    "solutionImage": "assets/images/23_강남여고_1학기_기말_고2_수학I/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 외접원 중심 O, 현 BC와 수선의 발 M, R=4, OM=1, 파란색 AC=2t와 주황색 AB=3t를 나타낸 삼각형.",
+    "solutionImageCaption": "회색 부채꼴은 각 A를 표시한다. 파란색 AC=2t, 주황색 AB=3t이며 t는 공통 양수이므로 두 변의 비는 2:3이다. cos A는 4분의 1이고 OM=1이므로 외접원의 반지름 R=4이다. 이 관계로 넓이를 구한다. 정답은 11이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1127,6 +1135,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "decisiveStep": "사인법칙에서 변의 비는 $a:b:c=7:5:3$이다. 코사인법칙으로 $\\cos A=(b^2+c^2-a^2)/(2bc)=(25+9-49)/(30)=-1/2$이다. $B+C=\\pi-A$이므로 $\\sin((B+C-A)/2)=\\sin(\\pi/2-A)=\\cos A=-1/2=p/6$. 따라서 $p=-3$이다."
+    "decisiveStep": "사인법칙에서 변의 비는 $a:b:c=7:5:3$이다. 코사인법칙으로 $\\cos A=(b^2+c^2-a^2)/(2bc)=(25+9-49)/(30)=-1/2$이다. $B+C=\\pi-A$이므로 $\\sin((B+C-A)/2)=\\sin(\\pi/2-A)=\\cos A=-1/2=p/6$. 따라서 $p=-3$이다.",
+    "solutionImage": "assets/images/23_강남여고_1학기_기말_고2_수학I/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C의 변 AB 길이 3, AC 길이 5, BC 길이 7과 둔각 A를 나타낸 그림.",
+    "solutionImageCaption": "사인법칙으로 a:b:c=7:5:3을 얻고 코사인법칙으로 cos A를 구한다. sin(2분의 π−A)=cos A를 이용한다. 정답은 −3이다.",
+    "solutionImageSize": "full"
   }
 ];
