@@ -1,0 +1,240 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "emphasis": "ACCENT"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  },
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "AB",
+          "CD"
+        ]
+      },
+      {
+        "id": "p2",
+        "count": 2,
+        "segments": [
+          "AD",
+          "BC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "alpha1",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 26.56505117707799,
+        "label": "",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "noLabel": true,
+        "color": "BLUE"
+      },
+      {
+        "id": "alpha2",
+        "refs": [
+          "D",
+          "C",
+          "A"
+        ],
+        "value": 26.56505117707799,
+        "label": "",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "noLabel": true,
+        "color": "BLUE"
+      },
+      {
+        "id": "beta1",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 36.86989764584401,
+        "label": "",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "noLabel": true,
+        "color": "WARM"
+      },
+      {
+        "id": "beta2",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 36.86989764584401,
+        "label": "",
+        "labelKind": "DEGREE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "noLabel": true,
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "엇각 두 쌍과 공통변 AC로 △ABC≡△CDA (ASA). 대변 길이 성질은 사용하지 않는다.",
+  "sourceQuote": "AB∥DC,AD∥BC; 대변 길이 성질 사용 금지",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "AB∥DC,AD∥BC; 대변 길이 성질 사용 금지",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "newVisualInformation": []
+}

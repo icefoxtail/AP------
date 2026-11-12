@@ -1,0 +1,175 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "mid",
+        "count": 1,
+        "segments": [
+          "AC",
+          "CD"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "given",
+        "from": "B",
+        "to": "C",
+        "label": "9",
+        "unit": "cm",
+        "side": "ABOVE",
+        "style": "BAR",
+        "offsetPx": 32,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "A-B-C-D 순서, BD=4AB, C는 AD의 중점",
+  "sourceQuote": "BD=4AB,C는AD중점,BC9cm",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "BD=4AB,C는AD중점,BC9cm",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "newVisualInformation": []
+}
