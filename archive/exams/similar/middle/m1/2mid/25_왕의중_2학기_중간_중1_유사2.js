@@ -236,7 +236,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "$y$가 $x$에 정비례할 때, 두 변수 $x, y$ 사이의 관계를 나타낸 다음 표에서 $ab - c$의 값은? (단, $a, b, c$는 상수) [4점]",
+    "content": "$y$가 $x$에 정비례할 때, 두 변수 $x, y$ 사이의 관계를 나타낸 다음 표에서 $ab - c$의 값은? (단, $a, b, c$는 상수) <div class=\"question-table-wrap\"><table><thead><tr><th>$x$</th><th>$3$</th><th>$-2$</th><th>$b$</th><th>$6$</th></tr></thead><tbody><tr><th>$y$</th><td>$-9$</td><td>$a$</td><td>$12$</td><td>$c$</td></tr></tbody></table></div> [4점]",
     "choices": [
       "$-10$",
       "$-8$",
