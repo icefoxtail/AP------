@@ -1,0 +1,234 @@
+{
+  "status": "SAMPLE_ONLY",
+  "sourceRef": {
+    "path": "archive/exams/similar/middle/m1/2mid/25_풍덕중_2학기_중간_중1_유사2.js",
+    "bytes": 55337,
+    "sha256": "sha256:e1a2dfa6d30eae00286aeb6bd76ab22d154ea649ccf795c9e43db34f5678ba3b"
+  },
+  "gitBlob": "af9a64b0b3aeab4c26c4d39fc0e2e2dab12a23ea",
+  "sourceRefBranch": "work/similar-m1-accumulate",
+  "questionUid": "25_풍덕중_2학기_중간_중1_유사2|24",
+  "questionSha256": "sha256:586c3dc9ec338ff083d6308fded5e8c7c0c565c9789636c4e5d10ca4b347d37d",
+  "typographyPolicy": {
+    "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+    "requestedSizeClass": "full",
+    "baseFontPx": 24,
+    "displayScale": 1,
+    "fontFloorCssPx": 11
+  },
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "engineMainRef": "1206d96c524b4fc50afc83311d2a6131c7e5ab46",
+  "engineChanges": [],
+  "browserPackage": "@sparticuz/chromium@143.0.4",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false,
+  "surfaces": [
+    {
+      "surface": "problem",
+      "identity": {
+        "questionUid": "25_풍덕중_2학기_중간_중1_유사2|24",
+        "surface": "PROBLEM_VISUAL",
+        "visualRole": "decisive-relation",
+        "visualAssetKey": "sha256:1c63e041185fbb36a7dd738c9c428553e80c8ed59f2b1832edf997b37e635a58",
+        "assetId": "va-4b7aa8ab0f4fff02638d4dc4115a5df2b500923a5c14a6871ddce91c7f43da43"
+      },
+      "status": "SAMPLE_ONLY",
+      "compositionStatus": "COMPOSED",
+      "planRef": {
+        "path": "pung25-q24-inputs/problem-plan.json",
+        "bytes": 6023,
+        "sha256": "sha256:d1b2e5e1beeea182e8678e2d3894e00128e57fce43c6f2a6c67dd1546796545c"
+      },
+      "svgRef": {
+        "path": "pung25-q24-outputs/problem.svg",
+        "bytes": 19151,
+        "sha256": "sha256:df8461811eca9e19946ed0ebfc118d94536bab8b75c8a3ee33699366202f52c1"
+      },
+      "pngRef": {
+        "path": "pung25-q24-outputs/problem.png",
+        "bytes": 8933,
+        "sha256": "sha256:163f426de5f3f7833f551c5d82d7ba1c44483ffd5928c8a659bbd08ea09abbb0"
+      },
+      "staticAudit": {
+        "status": "PASS",
+        "errors": [],
+        "planeMarks": {
+          "status": "PASS",
+          "errors": [],
+          "observations": [
+            {
+              "id": "givenB",
+              "type": "ANGLE",
+              "drawnDegrees": 129.99999999939575,
+              "pointsDegrees": 130,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "givenA",
+              "type": "ANGLE",
+              "drawnDegrees": 25.000000001270223,
+              "pointsDegrees": 24.99999999999999,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "exterior",
+              "type": "ANGLE",
+              "drawnDegrees": 155.00000000003308,
+              "pointsDegrees": 155,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "parallel",
+              "type": "PARALLEL",
+              "segments": [
+                "BC",
+                "LR"
+              ]
+            }
+          ]
+        }
+      },
+      "renderedLayout": {
+        "status": "PASS",
+        "display": {
+          "width": 720,
+          "height": 560
+        },
+        "errors": []
+      },
+      "lineage": {
+        "planSha256": "sha256:b214cac27c73ac46f37f817a0a5f8ad6833653dd416ad8322db144aaa5054ce4",
+        "modelSha256": "sha256:8f0f00982bcb3314ed338298790069b231fc1f386e86d4741ff9e56de647eda2",
+        "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
+        "specSha256": "sha256:954899fcd59047b2bbae5714a9452bcca687fe7c0264363055dc29ffdfa2abe5",
+        "fragmentSha256s": {
+          "B-name": "sha256:c6a2915cc7c79c9136f9426c19474f577077ad4dcb5556c3028732dcacf2c9c6",
+          "C-name": "sha256:8e850988f6ca4b1001768653d0e599f9b6ce05d7a13c8f716f3151cdbc7df4ed",
+          "A-name": "sha256:3cc928729cddabd1f4fa52f7590b3e935a7a4f8595faf93b4695c16de032d467",
+          "E-name": "sha256:5203f7a2fe5808e7c1ec9226197ebd720cd933f4c6ccf25e3a5f57487234f5e2",
+          "givenB-label": "sha256:d4b6ec4c37046ee823a8d9dca106ac5bb02abefc9a6bb560a7760b1a9303171d",
+          "givenA-label": "sha256:144ee99afb078a766dd1dc94c04c31cdf827b9c914cd4d142acbbfab71c11293",
+          "exterior-label": "sha256:1513c41ad1a502a15e039faf215e1d0e84bd2e965a0610c7c61863b717570bdf"
+        },
+        "measurementsSha256": "sha256:89c5a84cf7efa1df3a78ede19b00e772bfbfede065d7d97c8daabe15627d70c6",
+        "svgSha256": "sha256:df8461811eca9e19946ed0ebfc118d94536bab8b75c8a3ee33699366202f52c1",
+        "witnessSha256": "sha256:1852bdfd77ba102fccf1967b6048f3fd21ca2071732003dbf9a83bed52032590",
+        "staticAuditSha256": "sha256:bdcf5151fc2f396236c095d267ddb946a688b21fca59eb22a3d2e582e188aa42",
+        "renderedLayoutSha256": "sha256:6357a3a566825e3a765e78b1840cd6612000a8d4c3accfb2af45108017d6fea7"
+      }
+    },
+    {
+      "surface": "solution",
+      "identity": {
+        "questionUid": "25_풍덕중_2학기_중간_중1_유사2|24",
+        "surface": "SOLUTION_VISUAL",
+        "visualRole": "decisive-relation",
+        "visualAssetKey": "sha256:71176ef8eed016af3079bc6e930283b53959f9f95e20d4e6aa16d7ce9bd763b5",
+        "assetId": "va-c29f14db87ed75f3f4d2ebf97ae236301a5c5888c46bb9d33a4fd48111bd1ad3"
+      },
+      "status": "SAMPLE_ONLY",
+      "compositionStatus": "COMPOSED",
+      "planRef": {
+        "path": "pung25-q24-inputs/solution-plan.json",
+        "bytes": 6278,
+        "sha256": "sha256:ef3d38bfe91408b7f35bc77b239a3a9c6a23d7bcf177bd88f42134d13c3ee4be"
+      },
+      "svgRef": {
+        "path": "pung25-q24-outputs/solution.svg",
+        "bytes": 22875,
+        "sha256": "sha256:a6b1b4523344f67a3d61084d3aa07ba84dc22ae1dbbb81c976f5cbe3aa70fc0d"
+      },
+      "pngRef": {
+        "path": "pung25-q24-outputs/solution.png",
+        "bytes": 9615,
+        "sha256": "sha256:323b93ff634e5cc57fdac53bf9ff33bc96ef841fb14d438d0ac8b24a1297d483"
+      },
+      "staticAudit": {
+        "status": "PASS",
+        "errors": [],
+        "planeMarks": {
+          "status": "PASS",
+          "errors": [],
+          "observations": [
+            {
+              "id": "givenB",
+              "type": "ANGLE",
+              "drawnDegrees": 129.99999999939575,
+              "pointsDegrees": 130,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "givenA",
+              "type": "ANGLE",
+              "drawnDegrees": 25.000000001270223,
+              "pointsDegrees": 24.99999999999999,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "exterior",
+              "type": "ANGLE",
+              "drawnDegrees": 155.00000000003308,
+              "pointsDegrees": 155,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "innerC",
+              "type": "ANGLE",
+              "drawnDegrees": 24.99999999882087,
+              "pointsDegrees": 25.000000000000004,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "parallel",
+              "type": "PARALLEL",
+              "segments": [
+                "BC",
+                "LR"
+              ]
+            }
+          ]
+        }
+      },
+      "renderedLayout": {
+        "status": "PASS",
+        "display": {
+          "width": 720,
+          "height": 560
+        },
+        "errors": []
+      },
+      "lineage": {
+        "planSha256": "sha256:c21275ad92404ec2f5ee23b246857b3541b484479ad792160ac4871e0b80297c",
+        "modelSha256": "sha256:8f0f00982bcb3314ed338298790069b231fc1f386e86d4741ff9e56de647eda2",
+        "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
+        "specSha256": "sha256:e0eff7351e4ea582a916aee8027127b546b74c25e9a048e132ea7c4cfa9f646e",
+        "fragmentSha256s": {
+          "B-name": "sha256:72f2c4859dd2b50dce37a7d42d6a661487e2257c676ce0b318d688a1d8514d0c",
+          "C-name": "sha256:a3a843592fe6fc5529fd26dacdc18255b148fc35a497b7b46c30c162a1fe3e1e",
+          "A-name": "sha256:f2f5cf75e954af29db66a46997305e7b82727b1d0d58a199e38083ee3043fb84",
+          "E-name": "sha256:85702268b6bdc6ce4db08e0b3c5fc87f9f5dc293ae8a63a9c5d5d881e591a860",
+          "givenB-label": "sha256:807846f64ef4a8768249ad725f885a27f7a83e0bfc7ee807fc7d95daca62967d",
+          "givenA-label": "sha256:4b37f19a5f31a7580df3b0008101a26f9e57bca82b97b9c2b3fd2b90eeffae3e",
+          "exterior-label": "sha256:5507aef7deded51d298b15fd6d9ebd60f275870294009b721c691a9adcb4550e",
+          "innerC-label": "sha256:baaca15b180ada71004425660e2700b39985617c142e1933fa1febfde697f4b6"
+        },
+        "measurementsSha256": "sha256:91b462b0ed41ee4e477dd30db6741a7681bd8e43158447884a5240f6a2b005be",
+        "svgSha256": "sha256:a6b1b4523344f67a3d61084d3aa07ba84dc22ae1dbbb81c976f5cbe3aa70fc0d",
+        "witnessSha256": "sha256:fd5801187717ae8f6c05f00aa40a9076006bdfbfd2290bdfddc2815c739e740f",
+        "staticAuditSha256": "sha256:382f9ce6bc1bbed963d3dd2ae84013caf6c30bd6f13f7d299879e375b8e5de20",
+        "renderedLayoutSha256": "sha256:1762c5ddb018da8e2c19f4967a39734a1ab442d6b28bc54987971f61ddd68f37"
+      }
+    }
+  ],
+  "browserVersion": "143.0.7499.0",
+  "browserContext": "ONE_TRANSIENT_SHARED_CONTEXT"
+}
