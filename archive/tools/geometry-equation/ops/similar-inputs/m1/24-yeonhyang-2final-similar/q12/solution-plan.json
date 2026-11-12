@@ -1,0 +1,65 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "prism",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            0,
+            5
+          ]
+        ]
+      },
+      "height": 10,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "8"
+    },
+    {
+      "edge": "CD",
+      "label": "4"
+    },
+    {
+      "edge": "AD",
+      "label": "5"
+    },
+    {
+      "edge": "AE",
+      "label": "10"
+    }
+  ],
+  "caption": "밑넓이 (4+8)×5÷2=30cm², 부피 30×10=300cm³",
+  "sourceQuote": "사다리꼴 윗변4cm 아랫변8cm 높이5cm 사각기둥높이10cm",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "밑면 사다리꼴4,8,높이5 및 기둥높이10",
+      "mappedTo": [
+        "prism"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "조건을 만족하는 직각사다리꼴 예시. 직각 여부는 부피 계산의 추가 조건이 아니며 높이5의 의미를 명료하게 보여 준다."
+  ]
+}
