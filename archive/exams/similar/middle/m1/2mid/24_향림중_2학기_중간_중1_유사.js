@@ -236,7 +236,14 @@ window.questionBank = [
     "solution": "오각형의 내각의 크기의 총합과 한 꼭짓점에서의 평각 성질을 이용한다.\n오각형의 내각의 크기의 총합은 $\\begin{aligned} (5 - 2) \\times 180^\\circ &= 3 \\times 180^\\circ \\ &= 540^\\circ \\end{aligned}$\n나머지 한 꼭짓점의 안쪽 내각을 $\\angle y$라 하면 $\\begin{aligned} 105^\\circ + 115^\\circ + 125^\\circ + 75^\\circ + \\angle y &= 540^\\circ \\ 420^\\circ + \\angle y &= 540^\\circ \\ \\angle y &= 120^\\circ \\end{aligned}$\n외각 $\\angle x$와 내각 $\\angle y$의 합은 $180^\\circ$이므로 $\\begin{aligned} \\angle x &= 180^\\circ - \\angle y \\ &= 180^\\circ - 120^\\circ \\ &= 60^\\circ \\end{aligned}$\n따라서 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q06.svg",
+    "imageAlt": "오각형의 네 내각 105°, 115°, 125°, 75°와 구하는 외각 x",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q06-solution.svg",
+    "solutionImageAlt": "내각의 합 540°에서 남은 내각 120°를 구하고 외각 x=60°를 계산",
+    "solutionImageCaption": "오각형 내각합과 외각 계산",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -487,7 +494,11 @@ window.questionBank = [
     "solution": "대각선 분할로 생기는 내부 다각형들의 변의 관계로부터 원래 다각형의 꼭짓점 개수 $n$을 역산한다.\n한 꼭짓점에서 $2$개의 대각선을 그으면 원래 다각형은 $3$개의 영역으로 분할된다. 분할된 $3$개의 영역이 삼각형 $2$개와 사각형 $1$개이므로 $\\begin{aligned} \\text{분할된 다각형들의 내각의 합의 총합} &= 180^\\circ \\times 2 + 360^\\circ \\times 1 \\ &= 360^\\circ + 360^\\circ \\ &= 720^\\circ \\end{aligned}$\n한 꼭짓점에서 그은 대각선에 의한 분할이므로, 모든 내각의 합은 원래 다각형의 내각의 합과 같다. $\\begin{aligned} (n - 2) \\times 180^\\circ &= 720^\\circ \\ n - 2 &= 4 \\ n &= 6 \\end{aligned}$ 따라서 주어진 다각형은 육각형이다.\n육각형의 대각선의 총 개수는 $\\begin{aligned} \\dfrac{6 \\times (6 - 3)}{2} &= \\dfrac{6 \\times 3}{2} \\ &= 9 \\end{aligned}$\n따라서 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q12-solution.svg",
+    "solutionImageAlt": "삼각형 두 개와 사각형 하나로 나뉜 다각형을 이용해 꼭짓점 6개와 대각선 9개를 구함",
+    "solutionImageCaption": "다각형을 삼각형 둘과 사각형 하나로 나누어 대각선 수를 계산",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -606,7 +617,14 @@ window.questionBank = [
     "solution": "평행선의 엇각 성질과 종이접기의 각의 이등분 성질을 이용한다.\n$\\overline{AD} \\parallel \\overline{BC}$이고 선분 $PR$과 만나므로 엇각의 크기는 서로 같다. $\\begin{aligned} \\angle DPR &= \\angle PRB \\ &= 60^\\circ \\end{aligned}$\n꼭짓점 $D$가 점 $R$에 겹쳐지도록 접었으므로 접는 선 $PQ$는 $\\angle DPR$을 정확히 이등분한다. $\\begin{aligned} \\angle DPQ &= \\dfrac{1}{2}\\angle DPR \\ &= \\dfrac{1}{2} \\times 60^\\circ \\ &= 30^\\circ \\end{aligned}$\n직사각형의 한 내각은 $\\angle PDQ = 90^\\circ$이므로 직각삼각형 $PDQ$에서 $\\begin{aligned} \\angle DQP &= 180^\\circ - (90^\\circ + 30^\\circ) \\ &= 60^\\circ \\end{aligned}$\n종이를 접었을 때 접힌 각의 크기는 원래 각과 같으므로 $\\begin{aligned} \\angle PQR &= \\angle DQP \\ &= 60^\\circ \\end{aligned}$\n따라서 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q15.svg",
+    "imageAlt": "직사각형 종이에서 D가 변 BC 위의 R로 접히고 ∠PRB=60°",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q15-solution.svg",
+    "solutionImageAlt": "접기 전후의 길이와 각 관계를 이용해 ∠PQR을 계산",
+    "solutionImageCaption": "접기에서 보존되는 길이와 각으로 ∠PQR을 구함",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -642,7 +660,14 @@ window.questionBank = [
     "solution": "절단된 입체도형의 모서리와 면의 위치 관계를 하나씩 계수한다.\n$\\begin{aligned} \\text{1. } & \\text{모서리 } CG\\text{와 만나지도 않고 평행하지도 않은 꼬인 위치의 모서리: } \\ & \\overline{AD}, \\overline{AF}, \\overline{EF}, \\overline{EH} \\implies a = 4 \\ \\text{2. } & \\text{면 } CGHD\\text{와 만나지 않고 평행한 모서리: } \\ & \\overline{AE}, \\overline{EF}, \\overline{AF} \\implies b = 3 \\ \\text{3. } & \\text{면 } ACD\\text{는 직육면체의 윗면과 일치하므로, 이 면과 수직인 모서리: } \\ & \\overline{AE}, \\overline{CG}, \\overline{DH} \\implies c = 3 \\end{aligned}$\n따라서 구하는 식의 값은 $\\begin{aligned} a + b + c &= 4 + 3 + 3 \\ &= 10 \\end{aligned}$\n따라서 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q16.svg",
+    "imageAlt": "평면 A, C, F를 지나는 절단면이 있는 직육면체",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q16-solution.svg",
+    "solutionImageAlt": "꼬인 위치 4개, 평행한 모서리 3개, 수직인 모서리 3개를 분류",
+    "solutionImageCaption": "직육면체 모서리를 꼬임·평행·수직으로 분류해 합산",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -678,7 +703,14 @@ window.questionBank = [
     "solution": "꺾인 두 점을 각각 지나고 두 직선 $l, m$에 평행한 보조선 두 개를 긋는다.\n가운데 선분이 보조선과 이루는 예각의 크기를 $\\alpha^\\circ$라 하자. 평행선에서의 엇각의 성질에 의하여 $\\begin{aligned} \\text{위쪽 꺾인 점: } & x - 10^\\circ = 30^\\circ + \\alpha \\ & \\alpha = x - 40^\\circ \\ \\text{아래쪽 꺾인 점: } & x + 20^\\circ = \\alpha + x \\end{aligned}$\n$\\alpha$의 식을 아래 관계식에 대입하면 $\\begin{aligned} x + 20 &= (x - 40) + x \\ x + 20 &= 2x - 40 \\ x &= 60^\\circ \\end{aligned}$\n따라서 $\\angle x$의 크기는 $60^\\circ$이다.\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q17.svg",
+    "imageAlt": "평행선 사이에서 주어진 각으로 꺾이는 선과 미지수 x",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q17-solution.svg",
+    "solutionImageAlt": "평행 보조선을 그어 각을 옮기고 x=60°를 계산",
+    "solutionImageCaption": "평행선의 각 관계를 옮겨 x를 계산",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -714,7 +746,11 @@ window.questionBank = [
     "solution": "$8$명의 참가자 중 시합을 함께 치를 $2$명을 선택하는 조합의 경우의 수를 구한다.\n$8$명 중에서 서로 다른 $2$명을 고르는 방법의 수는 $\\begin{aligned} \\dfrac{8 \\times 7}{2} &= 28\\text{회} \\end{aligned}$\n따라서 총 시합의 횟수는 $28$회이다.\n따라서 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q18-solution.svg",
+    "solutionImageAlt": "8명의 대표가 서로 한 번씩 경기하는 대진 관계, 총 28경기",
+    "solutionImageCaption": "8명 중 두 명씩 짝짓는 경기 수를 세어 28경기",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -750,7 +786,14 @@ window.questionBank = [
     "solution": "오목한 꼭짓점에서 도형 바깥 홈 쪽의 작은 각이 $120^\\circ$이므로, 사각형 안쪽의 오목한 내각은 $360^\\circ-120^\\circ=240^\\circ$이다. 사각형의 내각의 합은 $360^\\circ$이므로\n$\\begin{aligned} x+55^\\circ+30^\\circ+240^\\circ&=360^\\circ \\\\ x+325^\\circ&=360^\\circ \\\\ x&=35^\\circ \\end{aligned}$\n따라서 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q19.svg",
+    "imageAlt": "오목사각형의 볼록한 세 각 55°, 30°, x와 오목한 홈의 작은 각 120°",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q19-solution.svg",
+    "solutionImageAlt": "홈의 작은 각 120°에 대응하는 오목 내각 240°를 써서 x=35°",
+    "solutionImageCaption": "오목 내각 240°와 세 볼록각의 합으로 x를 계산",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -786,7 +829,14 @@ window.questionBank = [
     "solution": "별의 다섯 끝 꼭짓점에 있는 $5$개의 삼각형을 관찰한다.\n$\\begin{aligned} \\text{다섯 삼각형의 내각의 총합} &= 5 \\times 180^\\circ \\ &= 900^\\circ \\end{aligned}$\n별의 다섯 뾰족한 끝각의 크기의 합은 삼각형의 외각 성질에 의해 항상 $180^\\circ$이다. 구하는 $10$개의 각은 다섯 삼각형의 내각의 총합에서 다섯 끝각의 합을 뺀 것과 같으므로 $\\begin{aligned} \\angle a + \\angle b + \\cdots + \\angle j &= 900^\\circ - 180^\\circ \\ &= 720^\\circ \\end{aligned}$\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_향림중_2학기_중간_중1_유사/q20.svg",
+    "imageAlt": "오각별의 다섯 꼭짓점과 밑각 a부터 j까지",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_유사/q20-solution.svg",
+    "solutionImageAlt": "다섯 삼각형의 각의 합에서 꼭짓점 각의 합을 빼 밑각의 합 720°를 구함",
+    "solutionImageCaption": "삼각형 각의 합과 오각별 꼭짓점 각의 합으로 밑각 합을 계산",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

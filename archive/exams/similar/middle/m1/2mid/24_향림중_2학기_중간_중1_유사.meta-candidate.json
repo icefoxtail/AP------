@@ -1268,7 +1268,7 @@
     "questionCount": "23",
     "totalPoints": 100,
     "mathReview": "Q10, Q19, and Q21 independently checked; other items remain UNREVIEWED. Q5 solution wording and 110° result checked against source-matched single-triangle SVG plan; Q10 point-to-segment distance wording checked against E∈AC and DE⊥AC. Formal independent review pending. Q5 solution wording and 110° result checked against source-matched single-triangle SVG plan; Q10 point-to-segment distance wording checked against E∈AC and DE⊥AC. Formal independent review pending.",
-    "imageReferenceCheck": "STATIC_PASS: 23 SAMPLE_ONLY SVG references connected; Q07 exact source UID and midpoint/length conditions match the prepared sample. XML/static/math/leak checks passed. Visual QA and actual Archive screen not run. Q19 latest JS differs from prepared source and has no sample asset; not connected."
+    "imageReferenceCheck": "STATIC_PASS: 37 SAMPLE_ONLY SVG surfaces connected where supplied (problem/solution per manifest); Q13 remains solution-only to avoid answer leakage. All linked asset hashes, SVG XML, source question identity, math/leak and rendered-layout sample checks passed. Visual QA and actual Archive screen not run."
   },
   "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
   "visualAudit": [
@@ -1359,13 +1359,19 @@
       "questionId": 6,
       "problem": {
         "need": "NEEDED",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "reason": "도형 배치·각 표시·입체 구조가 발문 조건의 위치/관계를 정하므로 필요"
+        "status": "CONNECTED_VISUAL_QA_PENDING",
+        "reason": "각의 배치와 오각형의 외각 관계를 보여 줍니다.",
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q06.svg",
+        "sourceSha256": "sha256:453c22370676e958b352457060ce7454a1275ae2a2bed384336396d973c95081",
+        "statusDetail": "SAMPLE_ONLY connected; sample math/static/problem-leak/rendered-layout checks passed; visual QA and actual Archive not run."
       },
       "solution": {
         "need": "HELPFUL",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "reason": "풀이의 관계·위치·단계를 시각화하면 이해에 도움"
+        "status": "CONNECTED_VISUAL_QA_PENDING",
+        "reason": "각의 배치와 오각형의 외각 관계를 보여 줍니다.",
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q06-solution.svg",
+        "sourceSha256": "sha256:4627512b3ed18f27b2a9b15894fafe4485075a71020a58abb84783587d7e3cab",
+        "statusDetail": "SAMPLE_ONLY connected; sample math/static/problem-leak/rendered-layout checks passed; visual QA and actual Archive not run."
       }
     },
     {
@@ -1472,8 +1478,11 @@
       },
       "solution": {
         "need": "HELPFUL",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "reason": "풀이의 관계·위치·단계를 시각화하면 이해에 도움"
+        "status": "CONNECTED_VISUAL_QA_PENDING",
+        "reason": "풀이에서 삼각형 둘과 사각형 하나로 나누는 관계를 시각화합니다.",
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q12-solution.svg",
+        "sourceSha256": "sha256:e23b5bc8df7325ce7245719bb3004fad3bf90dcd6ec6a3360f72816ebf4e1994",
+        "statusDetail": "SAMPLE_ONLY connected; sample math/static/problem-leak/rendered-layout checks passed; visual QA and actual Archive not run."
       }
     },
     {
@@ -1515,78 +1524,111 @@
       "questionId": 15,
       "problem": {
         "need": "NEEDED",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "reason": "도형 배치·각 표시·입체 구조가 발문 조건의 위치/관계를 정하므로 필요"
+        "status": "CONNECTED_VISUAL_QA_PENDING",
+        "reason": "접기 전후 도형과 각의 배치를 보여 줍니다.",
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q15.svg",
+        "sourceSha256": "sha256:e45b14ddf2f8d8e0c2430c8ac6bb031f3b2537f774f1d2b07cd9d74357f52d64",
+        "statusDetail": "SAMPLE_ONLY connected; sample math/static/problem-leak/rendered-layout checks passed; visual QA and actual Archive not run."
       },
       "solution": {
         "need": "HELPFUL",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "reason": "풀이의 관계·위치·단계를 시각화하면 이해에 도움"
+        "status": "CONNECTED_VISUAL_QA_PENDING",
+        "reason": "접기 전후 도형과 각의 배치를 보여 줍니다.",
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q15-solution.svg",
+        "sourceSha256": "sha256:e208bb2c74bf53f6d9318b2530b6b7ff83bf952617af15bcbcef77d372874f1c",
+        "statusDetail": "SAMPLE_ONLY connected; sample math/static/problem-leak/rendered-layout checks passed; visual QA and actual Archive not run."
       }
     },
     {
       "questionId": 16,
       "problem": {
         "need": "NEEDED",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "reason": "도형 배치·각 표시·입체 구조가 발문 조건의 위치/관계를 정하므로 필요"
+        "status": "CONNECTED_VISUAL_QA_PENDING",
+        "reason": "직육면체 면·모서리의 공간 관계를 보여 줍니다.",
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q16.svg",
+        "sourceSha256": "sha256:5c69dee92edab195dd2151db291fc45828d15e2a08e638f28a59c627101e551d",
+        "statusDetail": "SAMPLE_ONLY connected; sample math/static/problem-leak/rendered-layout checks passed; visual QA and actual Archive not run."
       },
       "solution": {
         "need": "HELPFUL",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "reason": "풀이의 관계·위치·단계를 시각화하면 이해에 도움"
+        "status": "CONNECTED_VISUAL_QA_PENDING",
+        "reason": "직육면체 면·모서리의 공간 관계를 보여 줍니다.",
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q16-solution.svg",
+        "sourceSha256": "sha256:21e235d6efebb1e491b2d9c02a517cd6d31e9608fff98affd1b274ef5f67a082",
+        "statusDetail": "SAMPLE_ONLY connected; sample math/static/problem-leak/rendered-layout checks passed; visual QA and actual Archive not run."
       }
     },
     {
       "questionId": 17,
       "problem": {
         "need": "NEEDED",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "reason": "도형 배치·각 표시·입체 구조가 발문 조건의 위치/관계를 정하므로 필요"
+        "status": "CONNECTED_VISUAL_QA_PENDING",
+        "reason": "평행선 사이 꺾인 선의 각 배치를 제시합니다.",
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q17.svg",
+        "sourceSha256": "sha256:3ffd9fc0094a4977574856ebc56e7538d3df473df2c28c0a2eb12c7cdf1127d1",
+        "statusDetail": "SAMPLE_ONLY connected; sample math/static/problem-leak/rendered-layout checks passed; visual QA and actual Archive not run."
       },
       "solution": {
         "need": "HELPFUL",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "reason": "풀이의 관계·위치·단계를 시각화하면 이해에 도움"
+        "status": "CONNECTED_VISUAL_QA_PENDING",
+        "reason": "평행선 사이 꺾인 선의 각 배치를 제시합니다.",
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q17-solution.svg",
+        "sourceSha256": "sha256:e85cecc85dddd58b685d5a0e6aa09fa8f9331afef096e4e1e16941654aab4c2a",
+        "statusDetail": "SAMPLE_ONLY connected; sample math/static/problem-leak/rendered-layout checks passed; visual QA and actual Archive not run."
       }
     },
     {
       "questionId": 18,
       "problem": {
         "need": "NOT_NEEDED",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "reason": "텍스트 조건과 계산만으로 충분"
+        "status": "NOT_REQUIRED",
+        "reason": "발문에 8명의 경기 조건이 텍스트로 명확히 주어져 별도 문제 그림이 필요하지 않음."
       },
       "solution": {
-        "need": "NOT_NEEDED",
-        "status": "NOT_REQUIRED",
-        "reason": "텍스트 풀이만으로 충분"
+        "need": "HELPFUL",
+        "status": "CONNECTED_VISUAL_QA_PENDING",
+        "reason": "8명의 대표를 두 명씩 짝짓는 조합을 시각화합니다.",
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q18-solution.svg",
+        "sourceSha256": "sha256:94002c15c4e8332be8229e525c07b008dc1e0b0d9ca15aeaa801ebe3b598d6b2",
+        "statusDetail": "SAMPLE_ONLY connected; sample math/static/problem-leak/rendered-layout checks passed; visual QA and actual Archive not run."
       }
     },
     {
       "questionId": 19,
       "problem": {
         "need": "HELPFUL",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "reason": "문제에서 120°가 오목한 홈 쪽 작은 각임을 표시하고, 그에 대응하는 사각형의 오목한 내각 240°와 세 볼록 내각을 구분하면 이해에 도움."
+        "status": "CONNECTED_VISUAL_QA_PENDING",
+        "reason": "오목 홈의 작은 각과 미지수의 위치를 표시합니다.",
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q19.svg",
+        "sourceSha256": "sha256:265444f5c3355efd2d2797d849101dcf530a27c05141c43f990d9bb714f3d555",
+        "statusDetail": "SAMPLE_ONLY connected; sample math/static/problem-leak/rendered-layout checks passed; visual QA and actual Archive not run."
       },
       "solution": {
         "need": "HELPFUL",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "reason": "문제에서 120°가 오목한 홈 쪽 작은 각임을 표시하고, 그에 대응하는 사각형의 오목한 내각 240°와 세 볼록 내각을 구분하면 이해에 도움."
+        "status": "CONNECTED_VISUAL_QA_PENDING",
+        "reason": "오목 홈의 작은 각과 미지수의 위치를 표시합니다.",
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q19-solution.svg",
+        "sourceSha256": "sha256:4f12d7cae6ae6f6c14eec0becd92226ed51bc6ac6b396b78e8b886816de69350",
+        "statusDetail": "SAMPLE_ONLY connected; sample math/static/problem-leak/rendered-layout checks passed; visual QA and actual Archive not run."
       }
     },
     {
       "questionId": 20,
       "problem": {
         "need": "NEEDED",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "reason": "도형 배치·각 표시·입체 구조가 발문 조건의 위치/관계를 정하므로 필요"
+        "status": "CONNECTED_VISUAL_QA_PENDING",
+        "reason": "오각별의 다섯 삼각형과 밑각 위치를 보여 줍니다.",
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q20.svg",
+        "sourceSha256": "sha256:d9116e77c8d01728639bd1a283ac4a76b1a7dc70ffe457ecc870275322f6e5a8",
+        "statusDetail": "SAMPLE_ONLY connected; sample math/static/problem-leak/rendered-layout checks passed; visual QA and actual Archive not run."
       },
       "solution": {
         "need": "HELPFUL",
-        "status": "DEFERRED_TO_LATER_SVG_BATCH",
-        "reason": "풀이의 관계·위치·단계를 시각화하면 이해에 도움"
+        "status": "CONNECTED_VISUAL_QA_PENDING",
+        "reason": "오각별의 다섯 삼각형과 밑각 위치를 보여 줍니다.",
+        "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q20-solution.svg",
+        "sourceSha256": "sha256:06af75d5b2f5b827a226839db8c9956e49985e79af5129d06be04211fdd1f2b5",
+        "statusDetail": "SAMPLE_ONLY connected; sample math/static/problem-leak/rendered-layout checks passed; visual QA and actual Archive not run."
       }
     },
     {
@@ -1641,10 +1683,10 @@
       }
     }
   ],
-  "expectedSourceBlobSha1": "a1a8b9db439abd4ac252ab590276ddd24505315f",
+  "expectedSourceBlobSha1": "9ed30c3cdd126ffbcc71913abc0f954e32c7bcdf",
   "fourSlotCandidate": {
     "path": "archive/exams/similar/middle/m1/2mid/24_향림중_2학기_중간_중1_유사.4slot-candidate.json",
-    "sha256": "a0b7b8bb2d1a7d2e8801a78dfd576811a235c0d9f539f3b831a6a6c0b581b010",
+    "sha256": "2c6b3b7286a4cb62ef18f418c25cec44adbf911c037968df48715b51866e8977",
     "status": "UNREVIEWED"
   }
 }
