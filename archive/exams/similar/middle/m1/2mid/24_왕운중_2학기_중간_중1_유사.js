@@ -1,5 +1,5 @@
-/* 2024 왕운중학교 중1 2학기 중간 유사. Drive MD 판본 이식 후보; Q20 원문 보기 수치 누락으로 부분 보류. */
 window.examTitle = "24_왕운중_2학기_중간_중1_유사";
+window.archiveStatus = "candidate";
 window.questionBank = [
   {
     "id": 1,
@@ -35,7 +35,14 @@ window.questionBank = [
     "solution": "평각과 직각의 성질을 이용하여 $\\angle x$와 $\\angle y$를 구한다.\n직선 $l$ 위에서 $65^\\circ$와 $\\angle x$는 한 직선을 이루는 평각이므로 $\\begin{aligned} \\angle x &= 180^\\circ - 65^\\circ \\ &= 115^\\circ \\end{aligned}$\n표시된 두 사선이 서로 수직($90^\\circ$)이므로 $\\begin{aligned} \\angle y &= 90^\\circ - 65^\\circ \\ &= 25^\\circ \\end{aligned}$\n따라서 구하는 두 각의 합은 $\\begin{aligned} \\angle x + \\angle y &= 115^\\circ + 25^\\circ \\ &= 140^\\circ \\end{aligned}$\n따라서 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_왕운중_2학기_중간_중1_유사/q01.svg",
+    "imageAlt": "직선 AB와 CD의 각65° · CD⊥EF · 파란 x, 주황 y",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q01-solution.svg",
+    "solutionImageAlt": "파란 x=180−65=115° · 주황 y=90−65=25° → 합140°",
+    "solutionImageCaption": "파란 x=180−65=115° · 주황 y=90−65=25° → 합140°",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -71,7 +78,14 @@ window.questionBank = [
     "solution": "선분은 서로 다른 두 점을 양 끝점으로 하여 유일하게 결정되며, 점들의 일직선 배치 여부와 무관하게 두 점을 선택하는 경우의 수와 같다.\n$6$개의 점 중에서 서로 다른 두 점을 택하는 방법의 수는 $\\begin{aligned} \\dfrac{6 \\times 5}{2} &= 15\\text{개} \\end{aligned}$\n따라서 만들 수 있는 서로 다른 선분의 개수는 $15$이다.\n따라서 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_왕운중_2학기_중간_중1_유사/q02.svg",
+    "imageAlt": "반원 위의 서로 다른 여섯 점 A,B,C,D,E,F",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q02-solution.svg",
+    "solutionImageAlt": "한 점에서 다른5점으로 · 6×5는 각 선분을2번 셈 · 15개",
+    "solutionImageCaption": "한 점에서 다른5점으로 · 6×5는 각 선분을2번 셈 · 15개",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -107,7 +121,14 @@ window.questionBank = [
     "solution": "점과 직선 사이의 거리는 그 점에서 직선에 내린 수선의 길이이므로, 점 $D$와 변 $BC$ 사이의 거리는 사다리꼴의 높이 $h,\\mathrm{cm}$와 같다.\n사다리꼴의 넓이 공식에 의하여 $\\begin{aligned} \\dfrac{(\\overline{AD} + \\overline{BC}) \\times h}{2} &= 30 \\ \\dfrac{(4 + 8) \\times h}{2} &= 30 \\ 6h &= 30 \\ h &= 5\\,\\mathrm{cm} \\end{aligned}$\n따라서 점 $D$와 변 $BC$ 사이의 거리는 $5\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_왕운중_2학기_중간_중1_유사/q03.svg",
+    "imageAlt": "AD∥BC · AD=4cm, BC=8cm · 넓이30cm²",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q03-solution.svg",
+    "solutionImageAlt": "D에서 BC에 내린 수선 · (4+8)h÷2=30 → h=5cm",
+    "solutionImageCaption": "D에서 BC에 내린 수선 · (4+8)h÷2=30 → h=5cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -143,7 +164,14 @@ window.questionBank = [
     "solution": "선분 $AB$의 전체 길이를 $L$이라 하고 각 부분 선분의 길이를 $L$로 나타낸다.\n$\\begin{aligned} \\text{점 } C\\text{는 } \\overline{AB}\\text{의 중점이므로: } & \\overline{AC} = \\overline{CB} = \\dfrac{1}{2}L \\ \\text{점 } D\\text{는 } \\overline{CB}\\text{의 중점이므로: } & \\overline{CD} = \\overline{DB} = \\dfrac{1}{4}L \\ \\text{선분 } AD\\text{의 길이는: } & \\overline{AD} = \\overline{AC} + \\overline{CD} = \\dfrac{1}{2}L + \\dfrac{1}{4}L = \\dfrac{3}{4}L \\ \\text{점 } E\\text{는 } \\overline{AD}\\text{의 중점이므로: } & \\overline{AE} = \\overline{ED} = \\dfrac{3}{8}L \\ \\text{선분 } EC\\text{의 길이는: } & \\overline{EC} = \\overline{AC} - \\overline{AE} = \\dfrac{1}{2}L - \\dfrac{3}{8}L = \\dfrac{1}{8}L \\end{aligned}$\n보기를 판정하면 다음과 같다. $\\begin{aligned} \\text{① } & \\overline{AE} = \\overline{ED} = \\dfrac{3}{8}L\\text{ (참)} \\ \\text{② } & \\overline{CD} = \\dfrac{1}{4}L = \\dfrac{1}{4}\\overline{AB}\\text{ (참)} \\ \\text{③ } & \\overline{EC} : \\overline{CD} = \\dfrac{1}{8}L : \\dfrac{1}{4}L = 1 : 2\\text{ (참)} \\ \\text{④ } & \\overline{AD} = \\dfrac{3}{4}\\overline{AB}\\text{이므로 } \\dfrac{3}{5}\\overline{AB}\\text{는 옳지 않다. (거짓)} \\ \\text{⑤ } & \\overline{AB} = 16\\,\\mathrm{cm}\\text{이면 } \\overline{EC} = \\dfrac{1}{8} \\times 16 = 2\\,\\mathrm{cm}\\text{ (참)} \\end{aligned}$\n따라서 옳지 않은 것은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_왕운중_2학기_중간_중1_유사/q04.svg",
+    "imageAlt": "C는 AB의 중점, D는 CB의 중점, E는 AD의 중점",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q04-solution.svg",
+    "solutionImageAlt": "AB=L · AD=3L/4이므로 3L/5는 성립하지 않음",
+    "solutionImageCaption": "AB=L · AD=3L/4이므로 3L/5는 성립하지 않음",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -179,7 +207,14 @@ window.questionBank = [
     "solution": "삼각기둥의 꼭짓점과 모서리의 연결 관계를 분석한다.\n$\\begin{aligned} \\text{1. } & \\text{모서리 } DF\\text{와 한 점에서 만나는 모서리: 꼭짓점 } D\\text{ 또는 } F\\text{를 공유하는 모서리이다.} \\ & \\text{점 } D\\text{에서 만남: } \\overline{AD}, \\overline{DE} \\ & \\text{점 } F\\text{에서 만남: } \\overline{CF}, \\overline{EF} \\ & \\text{따라서 } \\overline{DE}\\text{는 } \\overline{DF}\\text{와 한 점 } D\\text{에서 만난다.} \\ \\text{2. } & \\text{모서리 } AB\\text{와 꼬인 위치에 있는 모서리: 만나지도 않고 평행하지도 않은 모서리이다.} \\ & \\overline{AB}\\text{와 만나는 모서리: } \\overline{AC}, \\overline{BC}, \\overline{AD}, \\overline{BE} \\ & \\overline{AB}\\text{와 평행한 모서리: } \\overline{DE} \\ & \\text{남은 모서리(꼬인 위치): } \\overline{CF}, \\overline{DF}, \\overline{EF} \\ & \\text{따라서 } \\overline{EF}\\text{는 } \\overline{AB}\\text{와 꼬인 위치에 있다.} \\end{aligned}$\n따라서 바르게 짝지은 것은 모서리 $DE$, 모서리 $EF$이다.\n따라서 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_왕운중_2학기_중간_중1_유사/q05.svg",
+    "imageAlt": "삼각기둥 ABC-DEF · 점선은 가려진 모서리",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q05-solution.svg",
+    "solutionImageAlt": "DE는 DF와 D에서 만남 · EF는 AB와 만나지도 평행하지도 않음",
+    "solutionImageCaption": "DE는 DF와 D에서 만남 · EF는 AB와 만나지도 평행하지도 않음",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -215,7 +250,11 @@ window.questionBank = [
     "solution": "공간에서의 직선과 평면의 위치 관계를 직육면체 모델로 판정한다.\n$\\begin{aligned} \\text{ㄱ. } & \\text{한 직선에 평행한 서로 다른 두 직선은 같은 방향을 가지므로 항상 서로 평행하다. } (m \\parallel n)\\text{ (참)} \\ \\text{ㄴ. } & \\text{한 평면에 수직인 두 평면은 평행할 수도 있지만 직육면체의 한 모퉁이처럼 서로 수직으로 만날 수도 있다. (거짓)} \\ \\text{ㄷ. } & \\text{평행한 두 평면 중 한 평면에 수직인 직선은 다른 평면과도 반드시 수직으로 만난다. } (l \\perp Q)\\text{ (참)} \\end{aligned}$\n따라서 옳은 것은 ㄱ, ㄷ이다.\n따라서 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q06-solution.svg",
+    "solutionImageAlt": "직육면체의 세 면 · 파랑 P와 주황 R은 모두 Q에 수직이지만 서로 평행하지 않음",
+    "solutionImageCaption": "직육면체의 세 면 · 파랑 P와 주황 R은 모두 Q에 수직이지만 서로 평행하지 않음",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -251,7 +290,14 @@ window.questionBank = [
     "solution": "접는 선 $QR$과 직선 $PO$가 이루는 작은 각은 $180^\\circ-120^\\circ=60^\\circ$이다. $PO\\parallel AB$이므로 $QR$과 $AB$가 이루는 예각도 $\\angle b=60^\\circ$이다. 접으면 직선 $PO$는 접는 선 $QR$에 대하여 대칭인 직선 $P'O'$로 옮겨진다. 접는 선과 원래 직선 사이의 작은 각이 $60^\\circ$이므로, 두 직선 $PO$와 $P'O'$ 사이의 작은 각은 $\\min(2\\times60^\\circ,180^\\circ-2\\times60^\\circ)=60^\\circ$이다. 따라서 $\\angle a=60^\\circ, \\angle b=60^\\circ$이고 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_왕운중_2학기_중간_중1_유사/q07.svg",
+    "imageAlt": "PO∥AB · 점선 QR로 접기 · P′,O′는 접은 뒤의 점 · ∠PQR=120°",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q07-solution.svg",
+    "solutionImageAlt": "접는 선과 원래 선의 예각60° · 반사 뒤 두 직선의 예각 a=60° · 평행선의 b=60°",
+    "solutionImageCaption": "접는 선과 원래 선의 예각60° · 반사 뒤 두 직선의 예각 a=60° · 평행선의 b=60°",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -287,7 +333,11 @@ window.questionBank = [
     "solution": "두 직선이 평행하면 엇각은 서로 같고, 동위각은 서로 같으며, 같은 쪽 내각의 합은 $180^\\circ$이다. 반대로 이 조건들 가운데 하나가 성립하면 두 직선은 평행하다.\n① 엇각 $65^\\circ$와 $70^\\circ$는 같지 않으므로 평행을 보장하지 않는다.\n② 동위각 $115^\\circ$와 $120^\\circ$는 같지 않으므로 평행을 보장하지 않는다.\n③ 같은 쪽 내각의 합이 $110^\\circ+70^\\circ=180^\\circ$이므로 두 직선은 평행하다.\n④ 엇각 $70^\\circ$와 $105^\\circ$가 같지 않으므로 평행하지 않다.\n⑤ 동위각 $80^\\circ$와 $85^\\circ$가 같지 않으므로 평행을 보장하지 않는다.\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q08-solution.svg",
+    "solutionImageAlt": "③ 같은 쪽 내각 110°+70°=180° → 두 직선은 평행",
+    "solutionImageCaption": "③ 같은 쪽 내각 110°+70°=180° → 두 직선은 평행",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -323,7 +373,11 @@ window.questionBank = [
     "solution": "각 조건이 삼각형을 하나로 정하는지 살펴본다. ① 세 각만으로는 크기가 정해지지 않는다. ② $3+4<8$이므로 삼각형을 만들 수 없다. ③ 두 각만 주어지고 변의 길이가 없어 크기가 정해지지 않는다. ④에서 $AB=7$ cm와 $\\angle A=45^\\circ$를 고정하면 점 $C$는 $A$에서 뻗는 $45^\\circ$ 반직선 위에 있다. 또 $BC=6$ cm이므로 점 $C$는 중심이 $B$, 반지름이 $6$ cm인 원 위에 있어야 한다. 이 원과 반직선은 두 점에서 만나므로 조건을 만족하는 삼각형은 두 개일 수 있다. ⑤에서는 $AC=6$ cm와 그 양 끝각 $\\angle A=40^\\circ$, $\\angle C=60^\\circ$가 주어져 ASA 합동 조건으로 삼각형이 하나로 정해진다. 따라서 유일하게 결정되는 조건은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q09-solution.svg",
+    "solutionImageAlt": "④의 두 가능 위치 C,D · 파랑 두 변은 6cm, 주황 공통 변은 7cm",
+    "solutionImageCaption": "④의 두 가능 위치 C,D · 파랑 두 변은 6cm, 주황 공통 변은 7cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -359,7 +413,11 @@ window.questionBank = [
     "solution": "평행선 작도의 올바른 절차와 사용 원리를 검토한다.\n$\\begin{aligned} \\text{1. } & \\text{평행선 작도는 점 } P\\text{를 지나 직선 } m\\text{과 만나는 보조선을 '먼저' 그어야 교점이 생기므로, 보조선을 긋기 전에 각의 크기를 먼저 잴 수 없다.} \\ \\text{2. } & \\text{따라서 작도 순서가 '각의 크기를 잰 후 보조선을 긋는다'고 설명한 ④는 명백히 옳지 않다.} \\ \\text{3. } & \\text{나머지 보기는 컴퍼스의 길이 복사 기능, 엇각/동위각의 평행 판정 성질, 자의 용도를 바르게 기술하고 있다.} \\end{aligned}$\n따라서 옳지 않은 것은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q10-solution.svg",
+    "solutionImageAlt": "보조선 QP를 먼저 · 파란 동위각을 같게 복사하면 주황 두 직선이 평행",
+    "solutionImageCaption": "보조선 QP를 먼저 · 파란 동위각을 같게 복사하면 주황 두 직선이 평행",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -395,7 +453,11 @@ window.questionBank = [
     "solution": "작도 도구의 정의와 역할을 판정한다.\n작도에서는 눈금 없는 자와 컴퍼스만을 사용한다. $\\begin{aligned} \\text{눈금 없는 자의 역할: } & \\text{두 점을 연결하는 선분을 긋거나 선분을 연장할 때 사용한다.} \\ \\text{컴퍼스의 역할: } & \\text{원을 그리거나, 주어진 선분의 길이를 재어서 다른 선분이나 직선 위로 옮길 때 사용한다.} \\end{aligned}$\n따라서 컴퍼스의 올바른 용도는 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q11-solution.svg",
+    "solutionImageAlt": "파란 선분의 길이를 컴퍼스로 옮김 · 주황 호의 중심 C, 반지름 AB=CD",
+    "solutionImageCaption": "파란 선분의 길이를 컴퍼스로 옮김 · 주황 호의 중심 C, 반지름 AB=CD",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -431,7 +493,14 @@ window.questionBank = [
     "solution": "둘레의 길이와 삼각부등식 성질을 만족하는 자연수 순서쌍 $(a, b)$를 구한다.\n둘레의 길이가 $36\\,\\mathrm{cm}$이므로 $\\begin{aligned} 2a + b &= 36 \\ 2a &= 36 - b \\end{aligned}$\n삼각형이 성립하기 위해서는 가장 긴 변이 나머지 두 변의 합보다 작아야 하므로 $\\begin{aligned} b &< a + a \\ b &< 2a \\ b &< 36 - b \\ 2b &< 36 \\ b &< 18 \\end{aligned}$\n$a = \\dfrac{36 - b}{2}$가 자연수이어야 하므로 $b$는 짝수이어야 하고, $b$는 두 자리 자연수이므로 가능한 값은 $\\begin{aligned} b \\in {10, 12, 14, 16} \\end{aligned}$\n각 경우의 $a$를 구하고 $a \\ne b$ 조건을 검증한다. $\\begin{aligned} b = 10 \\implies a = 13 \\quad (a \\ne b, \\text{가능}) \\ b = 12 \\implies a = 12 \\quad (a = b\\text{이므로 제외}) \\ b = 14 \\implies a = 11 \\quad (a \\ne b, \\text{가능}) \\ b = 16 \\implies a = 10 \\quad (a \\ne b, \\text{가능}) \\end{aligned}$\n따라서 가능한 삼각형의 개수는 $3$개이다.\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_왕운중_2학기_중간_중1_유사/q12.svg",
+    "imageAlt": "두 같은 변 a, 밑변 b · 모양은 예시이며 길이는 축척이 아님",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q12-solution.svg",
+    "solutionImageAlt": "2a+b=36, b<2a · b=10,14,16 가능 (b=12는 a=b라 제외)",
+    "solutionImageCaption": "2a+b=36, b<2a · b=10,14,16 가능 (b=12는 a=b라 제외)",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -467,7 +536,11 @@ window.questionBank = [
     "solution": "첫 번째 삼각형은 길이가 $5\\,\\mathrm{cm}$인 변의 양 끝 각이 $55^\\circ,65^\\circ$이다. 두 번째 삼각형은 두 각의 크기가 $55^\\circ,60^\\circ$라고만 주어졌고 길이가 $5\\,\\mathrm{cm}$인 변이 어느 두 각 사이인지 지정되지 않았다. 따라서 두 삼각형이 합동이라고 결론 내릴 수 없으므로 합동 여부를 알 수 없다는 ⑤가 맞다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q13-solution.svg",
+    "solutionImageAlt": "비합동도 가능한 예시 · 길이5인 변이 어느 두 각 사이인지에 따라 크기가 달라짐",
+    "solutionImageCaption": "비합동도 가능한 예시 · 길이5인 변이 어느 두 각 사이인지에 따라 크기가 달라짐",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -503,7 +576,14 @@ window.questionBank = [
     "solution": "두 대각선이 서로를 수직이등분하므로 사각형 $ABCD$는 마름모이다.\n$\\begin{aligned} \\text{1. } & \\overline{AO} = \\overline{OC} = 3\\,\\mathrm{cm}, \\overline{BO} = \\overline{OD} = 4\\,\\mathrm{cm}, \\angle AOB = 90^\\circ \\ & \\text{직각삼각형 } OAB\\text{에서 } \\overline{AB} = \\sqrt{3^2 + 4^2} = 5\\,\\mathrm{cm}\\text{ (참)} \\ \\text{2. } & \\triangle BCD\\text{의 밑변 } \\overline{BD} = 8\\,\\mathrm{cm}, \\text{높이 } \\overline{OC} = 3\\,\\mathrm{cm}\\text{이므로} \\ & \\text{넓이} = \\dfrac{1}{2} \\times 8 \\times 3 = 12\\,\\mathrm{cm}^2\\text{ (참)} \\ \\text{3. } & \\text{마름모는 평행사변형이므로 마주 보는 두 변은 평행하다. } (\\overline{AB} \\parallel \\overline{CD})\\text{ (참)} \\ \\text{4. } & \\text{마름모의 네 변의 길이는 } 5\\,\\mathrm{cm}\\text{로 모두 같다. (참)} \\ \\text{5. } & \\triangle OBC\\text{와 합동인 삼각형은 대응점 순서대로 } \\triangle ODA\\text{이어야 한다. } (\\triangle OBC \\equiv \\triangle ODA) \\ & \\triangle OBC \\equiv \\triangle OAD\\text{로 표기하면 } \\overline{OB} = \\overline{OA}\\text{가 되어 거짓이다. (거짓)} \\end{aligned}$\n따라서 옳지 않은 것은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_왕운중_2학기_중간_중1_유사/q14.svg",
+    "imageAlt": "두 대각선이 서로 수직이등분 · AO=3cm, BO=4cm",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q14-solution.svg",
+    "solutionImageAlt": "OBC의 대응은 ODA · OBC≡OAD라면 OB=OA가 되어4=3 모순",
+    "solutionImageCaption": "OBC의 대응은 ODA · OBC≡OAD라면 OB=OA가 되어4=3 모순",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -539,7 +619,14 @@ window.questionBank = [
     "solution": "횟수가 큰 계급부터 학생 수를 누적한다. $14$회 이상 $16$회 미만인 학생이 $1$명이므로 첫 번째이고, 그 다음 $12$회 이상 $14$회 미만인 학생이 $5$명이므로 두 번째부터 여섯 번째까지이다. 따라서 다섯 번째로 많이 한 학생이 속하는 계급은 $12$회 이상 $14$회 미만이다. 따라서 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_왕운중_2학기_중간_중1_유사/q15.svg",
+    "imageAlt": "히스토그램의 일부 · 나머지 학생은 모두 12회 미만",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q15-solution.svg",
+    "solutionImageAlt": "14~16회 1명: 첫째 · 12~14회 5명: 둘째~여섯째 (강조 계급)",
+    "solutionImageCaption": "14~16회 1명: 첫째 · 12~14회 5명: 둘째~여섯째 (강조 계급)",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -575,7 +662,14 @@ window.questionBank = [
     "solution": "줄기와 잎 그림에서 가장 큰 값부터 역순으로 세어 $8$번째 변량을 찾는다.\n$\\begin{aligned} 250,\\mathrm{mm}: & \\quad 1\\text{명 (누적 } 1\\text{명)} \\ 245,\\mathrm{mm}: & \\quad 3\\text{명 (누적 } 4\\text{명)} \\ 240,\\mathrm{mm}: & \\quad 1\\text{명 (누적 } 5\\text{명)} \\ 235,\\mathrm{mm}: & \\quad 2\\text{명 (누적 } 7\\text{명)} \\ 230,\\mathrm{mm}: & \\quad 3\\text{명 (누적 } 10\\text{명)} \\end{aligned}$\n상위 $7$명 다음의 $8$번째 학생은 $230,\\mathrm{mm}$의 첫 번째 잎에 해당한다. 따라서 신발 크기가 $8$번째로 큰 학생의 신발 크기는 $230,\\mathrm{mm}$이다.\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_왕운중_2학기_중간_중1_유사/q16.svg",
+    "imageAlt": "20 | 0 은 200mm · 잎 하나는 학생 한 명",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q16-solution.svg",
+    "solutionImageAlt": "큰 쪽 8번째 = 작은 쪽 18번째 → 230mm",
+    "solutionImageCaption": "큰 쪽 8번째 = 작은 쪽 18번째 → 230mm",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -611,7 +705,11 @@ window.questionBank = [
     "solution": "주어진 구간에 속하는 학생 수를 세어 전체에 대한 백분율을 계산한다.\n$220,\\mathrm{mm}$ 이상 $240,\\mathrm{mm}$ 미만에 속하는 잎의 개수를 세면 $\\begin{aligned} \\text{줄기 } 22: & \\quad 0, 0, 5, 5, 5 \\implies 5\\text{명} \\ \\text{줄기 } 23: & \\quad 0, 0, 0, 5, 5 \\implies 5\\text{명} \\ \\text{해당 구간의 총 학생 수} &= 5 + 5 = 10\\text{명} \\end{aligned}$\n전체 학생 수가 $25$명이므로 백분율을 구하면 $\\begin{aligned} \\dfrac{10}{25} \\times 100 &= 40% \\end{aligned}$\n따라서 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q17-solution.svg",
+    "solutionImageAlt": "220mm 이상 240mm 미만: 두 줄의 잎 10개 → 10/25×100=40%",
+    "solutionImageCaption": "220mm 이상 240mm 미만: 두 줄의 잎 10개 → 10/25×100=40%",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -647,7 +745,11 @@ window.questionBank = [
     "solution": "도수분포표의 각 항목과 보기를 검토한다.\n$\\begin{aligned} \\text{① } & \\text{계급의 크기는 구간의 너비이므로 } 60 - 50 = 10\\text{점이다. (참)} \\ \\text{② } & \\text{계급은 } 5\\text{개이다. (참)} \\ \\text{③ } & 70 \\sim 80\\text{점 계급의 도수는 } 7\\text{명이다. (참)} \\ \\text{④ } & 70\\text{점 미만인 학생 수는 } 4 + 5 = 9\\text{명이고, } \\dfrac{9}{30} \\times 100 = 30%\\text{이다. (참)} \\ \\text{⑤ } & \\text{성적이 가장 높은 계급 } (90 \\sim 100\\text{점})에 } 6\\text{명이 속하므로, 상위 } 9\\text{번째 학생은 그다음 계급인 } 80 \\sim 90\\text{점 계급에 속한다.} \\ & \\text{이 계급의 도수는 } 8\\text{명이므로, } 7\\text{명이라고 기술한 것은 옳지 않다. (거짓)} \\end{aligned}$\n따라서 옳지 않은 것은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q18-solution.svg",
+    "solutionImageAlt": "상위 9번째는 80~90점 계급 · 이 계급의 도수는 8명",
+    "solutionImageCaption": "상위 9번째는 80~90점 계급 · 이 계급의 도수는 8명",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -683,7 +785,14 @@ window.questionBank = [
     "solution": "하위 인원수를 누적하여 커트라인이 속하는 계급을 파악한다.\n전체 $40$명의 하위 $25%$에 해당하는 인원수는 $\\begin{aligned} 40 \\times 0.25 &= 10\\text{명} \\end{aligned}$\n낮은 점수부터 도수를 누적하면 $\\begin{aligned} 50 \\sim 60\\text{점: } & 2\\text{명} \\ 60 \\sim 70\\text{점: } & 7\\text{명} \\implies 70\\text{점 미만 누적 } 2 + 7 = 9\\text{명} \\ 70 \\sim 80\\text{점: } & 15\\text{명} \\implies 80\\text{점 미만 누적 } 9 + 15 = 24\\text{명} \\end{aligned}$\n하위 $10$번째 학생은 $70 \\sim 80$점 계급에 포함된다. 따라서 $70$점 이상 $80$점 미만을 받으면 점수에 따라 하위 $10$명(보충 수업 대상)에 포함될 수 있으므로, 보충 수업 대상에서 확실히 벗어나기 위해서는 적어도 $80$점 이상을 받아야 한다.\n따라서 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_왕운중_2학기_중간_중1_유사/q19.svg",
+    "imageAlt": "영어 성적의 도수분포다각형 · 각 계급은 이상~미만",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q19-solution.svg",
+    "solutionImageAlt": "하위 10명: 70점 미만 누적9명, 80점 미만 누적24명 → 확실한 제외는 80점 이상",
+    "solutionImageCaption": "하위 10명: 70점 미만 누적9명, 80점 미만 누적24명 → 확실한 제외는 80점 이상",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -719,7 +828,11 @@ window.questionBank = [
     "solution": "주어진 세 계급의 도수는 차례로 $2$명, $3$명, $14$명이다. 따라서 ①, ②, ③은 각각 도수가 주어진 값과 달라 옳지 않다. $3$만 원 미만인 학생 수는 $2+3=5$명이므로 전체에서 차지하는 비율은 $\\dfrac{5}{50}\\times100=10\\%$이다. 따라서 ④가 옳다. 또한 $3$만 원 이상인 학생은 $50-5=45$명이므로 ⑤도 옳지 않다. 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q20-solution.svg",
+    "solutionImageAlt": "전체50명 · 파랑: 3만원 미만 2+3=5명(10%) · 주황: 3만원 이상45명",
+    "solutionImageCaption": "전체50명 · 파랑: 3만원 미만 2+3=5명(10%) · 주황: 3만원 이상45명",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -749,7 +862,14 @@ window.questionBank = [
     "solution": "$\\angle AOB = 180^\\circ$이고 $\\angle AOC = 90^\\circ$이다.\n$\\angle COD = x^\\circ$라 하면 $\\angle AOD = 90^\\circ + x$이다. 문제의 조건 $\\angle COD = \\dfrac{1}{3}\\angle AOD$에 의하여 $\\begin{aligned} x &= \\dfrac{1}{3}(90 + x) \\ 3x &= 90 + x \\ 2x &= 90 \\ x &= 45^\\circ \\end{aligned}$\n따라서 $\\angle COD = 45^\\circ$이므로 $\\angle DOB$의 크기는 $\\begin{aligned} \\angle DOB &= 180^\\circ - \\angle AOD \\ &= 180^\\circ - (90^\\circ + 45^\\circ) \\ &= 45^\\circ \\end{aligned}$\n다음으로 $\\angle DOE = y^\\circ$라 하면 $\\angle EOB = 45^\\circ - y$이다. 조건 $\\angle DOE = \\dfrac{4}{5}\\angle EOB$에 의하여 $\\begin{aligned} y &= \\dfrac{4}{5}(45 - y) \\ 5y &= 180 - 4y \\ 9y &= 180 \\ y &= 20^\\circ \\end{aligned}$\n따라서 $\\angle DOE = 20^\\circ$이다. 구하는 $\\angle COE$의 크기는 $\\begin{aligned} \\angle COE &= \\angle COD + \\angle DOE \\ &= 45^\\circ + 20^\\circ \\ &= 65^\\circ \\end{aligned}$\n답: $65^\\circ$",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_왕운중_2학기_중간_중1_유사/q21.svg",
+    "imageAlt": "A,O,B는 한 직선 · AOC는 직각 · 위쪽 반평면에서 A,C,D,E,B 순서",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q21-solution.svg",
+    "solutionImageAlt": "COD=45°, DOE=20° · COE=45°+20°=65°",
+    "solutionImageCaption": "COD=45°, DOE=20° · COE=45°+20°=65°",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -779,7 +899,11 @@ window.questionBank = [
     "solution": "전체 $25$명의 $32%$에 해당하는 학생 수를 구한다. $\\begin{aligned} 25 \\times 0.32 &= 8\\text{명} \\end{aligned}$\n$6$편 이상 관람한 학생은 $6 \\sim 8$편 계급과 $8 \\sim 10$편 계급의 도수의 합이므로 $\\begin{aligned} B + 2 &= 8 \\ B &= 6 \\end{aligned}$\n전체 도수의 합이 $25$명이므로 $\\begin{aligned} 4 + A + 3 + B + 2 &= 25 \\ 4 + A + 3 + 6 + 2 &= 25 \\ A + 15 &= 25 \\ A &= 10 \\end{aligned}$\n$4$편 미만의 영화를 관람한 학생 수는 $0 \\sim 2$편 계급과 $2 \\sim 4$편 계급의 합이므로 $\\begin{aligned} 4 + A &= 4 + 10 \\ &= 14\\text{명} \\end{aligned}$\n따라서 $4$편 미만인 학생의 백분율은 $\\begin{aligned} \\dfrac{14}{25} \\times 100 &= 56% \\end{aligned}$\n답: $A = 10, B = 6, 56%$",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q22-solution.svg",
+    "solutionImageAlt": "B=25×0.32−2=6, A=10 · 4편 미만 14/25=56%",
+    "solutionImageCaption": "B=25×0.32−2=6, A=10 · 4편 미만 14/25=56%",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -809,6 +933,13 @@ window.questionBank = [
     "solution": "$\\triangle ACB$와 $\\triangle BED$에서 $\\angle BAC=\\angle DBE$이고 $\\angle ACB=\\angle BED$이다. 두 삼각형의 내각의 합이 $180^\\circ$이고 각각 한 각이 직각이므로, 주어진 한 쌍의 예각이 같으면 나머지 예각도 같다. 또한 $\\overline{AC}=\\overline{BE}$이므로 두 삼각형은 ASA 합동이다. 대응은 $A\\leftrightarrow B$, $C\\leftrightarrow E$, $B\\leftrightarrow D$이므로 $\\overline{BD}=\\overline{AB}=7\\,\\mathrm{cm}$, $\\overline{BC}=\\overline{DE}=4\\,\\mathrm{cm}$이다. 점 $B,C,D$가 이 순서로 한 직선 위에 있으므로 $\\overline{CD}=\\overline{BD}-\\overline{BC}=7-4=3\\,\\mathrm{cm}$. 답: $3\\,\\mathrm{cm}$",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "image": "assets/images/24_왕운중_2학기_중간_중1_유사/q23.svg",
+    "imageAlt": "B,C,D는 이 순서 · AC=BE, ∠BAC=∠DBE · 직각 두 개",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_유사/q23-solution.svg",
+    "solutionImageAlt": "△ACB≡△BED · BD=7, BC=4 → CD=3cm (강조 구간)",
+    "solutionImageCaption": "△ACB≡△BED · BD=7, BC=4 → CD=3cm (강조 구간)",
+    "solutionImageSize": "full"
   }
 ];
