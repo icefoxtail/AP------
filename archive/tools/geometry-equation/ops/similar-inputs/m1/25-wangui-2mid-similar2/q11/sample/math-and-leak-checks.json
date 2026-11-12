@@ -1,0 +1,12 @@
+{
+  "math": "PASS",
+  "sourceSemanticCheck": "Q11 ordered distinct collinear A B C D; five actual statements and answer4 compared.",
+  "independentCheck": "All common lines equal; unordered endpoint segments equal; AB/AC rays same start+positive direction. BC startsB positive; CB startsC negative, not equal. Two translated rows represent same coordinates/order.",
+  "problemLeakCheck": "PASS problem displays only given ordered points on line; no truth labels or highlighted options.",
+  "color": "PASS upperBCBLUE #1f5fa8, lowerCBWARM #b85c00; black arrow continuations indicate directions. Existing engine forbids colored arrow segments, so core color plus separate blackarrow used without engine change.",
+  "initialAttempt": "SPEC_ERROR colored arrow segments; corrected caller plan only; final auditsPASS",
+  "staticAudit": "PASS",
+  "renderedLayout": "PASS",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN"
+}
