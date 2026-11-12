@@ -46,7 +46,10 @@ window.questionBank = [
     "difficultyReason": "주어진 거리를 절댓값 방정식으로 바꾸고 수직선에서 가능한 두 위치를 나눈다.",
     "sourceOrdinal": 1,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q1-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 A(−3)와 한쪽으로 7만큼 떨어진 예시 위치를 점으로 나타낸다.",
+    "solutionImageCaption": "절댓값 방정식을 기준점에서 떨어진 거리로 해석한다. 그림은 한 방향의 예만 보여 주며, 다른 해와 두 값의 합은 나타내지 않는다. 두 값의 합은 −6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -291,7 +294,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "완전제곱식의 최솟값과 엄격한 양수 조건을 함께 사용한다.",
     "sourceOrdinal": 6,
-    "sourceMode": "SOURCE_ONLY"
+    "sourceMode": "SOURCE_ONLY",
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점이 x축 위에 놓인 위로 열린 포물선과 좌표축을 나타낸다.",
+    "solutionImageCaption": "a=−3인 경우를 예로 들어 완전제곱식의 꼭짓점이 x축 위에 있음을 확인한다. 범위의 경계값은 그림에 표시하지 않는다. a는 −2.25보다 작다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -727,7 +734,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "두 대칭식에서 합과 곱으로 바꾸어 매개변수 후보를 찾고 실수 해의 존재를 확인한다.",
     "sourceOrdinal": 15,
-    "sourceMode": "SOURCE_ONLY"
+    "sourceMode": "SOURCE_ONLY",
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 위에는 파란 b=f(a)와 주황 b=g(a)의 교점을, 아래에는 파란 D(a)와 주황 D=0을 나타낸다.",
+    "solutionImageCaption": "a=x+y, b=xy로 두면 첫 패널의 파란 곡선은 b=f(a), f(a)=(a²+a−2)/2이고 주황 곡선은 b=g(a), g(a)=a²−1이다. 둘째 패널에서 파란 곡선은 D(a)=f(a)−g(a), 주황 가로축은 D=0이다. 가능한 쌍에서 a+b의 최댓값은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -821,7 +832,10 @@ window.questionBank = [
     "difficultyReason": "절댓값 부등식의 구간별 해를 구한 뒤 동일한 이차부등식의 근과 계수 부호를 추론한다.",
     "sourceOrdinal": 17,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q17-solution.svg"
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 해에 속하는 예 −1, 0과 해에 속하지 않는 예 2, 3을 서로 다른 줄에 표시한다.",
+    "solutionImageCaption": "절댓값 부등식의 해를 구간별로 살펴보는 예를 표시한다. 경계와 이차식 두 근의 합은 그림에 나타내지 않는다. 옳은 말은 ㄴ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

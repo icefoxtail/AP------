@@ -166,7 +166,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "metadataEvidenceRef": "H2-M1-RPM-109"
+    "metadataEvidenceRef": "H2-M1-RPM-109",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고2_대수/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 세 점 A, B, C를 이은 삼각형과 현 BC가 보인다.",
+    "solutionImageCaption": "원에 내접한 삼각형과 각 A의 대변을 나타낸다. 원둘레에서 반지름을 구한 뒤 확장된 사인법칙으로 현의 길이를 찾는다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -250,7 +254,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "metadataEvidenceRef": "H2-M1-RPM-113"
+    "metadataEvidenceRef": "H2-M1-RPM-113",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고2_대수/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AB에 3, BC에 5가 표시되어 있다.",
+    "solutionImageCaption": "주어진 두 변의 길이를 표시한 삼각형이다. 끼인각의 코사인으로 사인을 구해 넓이 공식에 대입한다. 정답은 3√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -460,7 +468,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "metadataEvidenceRef": "H2-M1-RPM-113"
+    "metadataEvidenceRef": "H2-M1-RPM-113",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고2_대수/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 외접원에 삼각형 ABC가 내접하고, 각 A는 60도이며 AB와 AC에 각각 5와 8이 표시되어 있다.",
+    "solutionImageCaption": "외접원과 삼각형의 주어진 각, 변의 비에서 얻은 변의 길이를 나타낸다. 끼인각 넓이 공식을 적용한다. 정답은 10√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -768,7 +780,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "metadataEvidenceRef": "H1-RPM-170"
+    "metadataEvidenceRef": "H1-RPM-170",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고2_대수/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AB=5, BC=8, ∠ABC=60°를 표시했다. 파란 수선 PQ, PR과 주황 QR, 두 직각 표식이 보인다.",
+    "solutionImageCaption": "예: P를 AC의 중점에 두고 ∠B=60°인 삼각형에서 파란색 PQ, PR과 주황색 QR을 구별한다. 이 예시는 수선의 구성을 보인다. 정답은 30/7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

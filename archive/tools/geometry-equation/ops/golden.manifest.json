@@ -1949,6 +1949,28 @@
    "note": "overlays.points[].marker:\"OPEN\" + color and overlays.latticePoints.color: the lattice points of y=8/x (26 왕운중 2학기 중간 중1 q14) counted in BLUE, the four points on the curve (excluded, strict) hollow ROSE circles beside their 제외 callouts, so exclusion shows by shape and colour; no answer value beyond the published figure."
   },
   {
+   "dir": "item152tickundersegment",
+   "sourcePath": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+   "ordinal": 22,
+   "bucket": "GOLDEN",
+   "fam": "COORD_GEOM",
+   "files": [
+    "plan.json"
+   ],
+   "note": "A drawn segment over an axis tick no longer drops the tick number: y=-5 segment AB runs over the tick -5 of the y axis (26 왕운중 2학기 중간 중1 q22); axisTickValues y:[-5] with no hidden point/textLabels workaround, the number moves beside the tick on a short leader. No value beyond the published figure."
+  },
+  {
+   "dir": "item153stemleafclasscolor",
+   "sourcePath": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+   "ordinal": 20,
+   "bucket": "GOLDEN",
+   "fam": "STAT_CHART",
+   "files": [
+    "plan.json"
+   ],
+   "note": "stem-leaf classGroups[].color: the 0~5 class bracket and its count 4 in BLUE, the 30~35 class bracket and its count 5 in WARM (26 왕운중 2학기 중간 중1 q20 solution); the caption names the colours. Counts and values are those of the published figure."
+  },
+  {
    "dir": "item152setrowsq14",
    "sourcePath": "archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js",
    "ordinal": 14,
@@ -1969,6 +1991,61 @@
     "plan.json"
    ],
    "note": "Venn element rows in a lens: the points of the ellipse a²+4b²=4 (A) and of the line 2a=3b (B), with 최대점·최소점 stacked in A∩B (21 매산고 2학기 중간 고1 q19); the one-by-one placement left the second lens label no room (SET_ELEMENT_NO_ROOM). Neither the maximum 10 nor a=6/5, b=4/5 is printed."
+  },
+  {
+   "dir": "item154circleparabolatangent",
+   "sourcePath": "archive/exams/original/high/h1/2mid/26_복성고_2학기_중간_고1_기출.js",
+   "ordinal": 12,
+   "bucket": "GOLDEN",
+   "fam": "COORD_GEOM",
+   "files": [
+    "plan.json"
+   ],
+   "note": "A circle, a parabola and their common tangent in one coordinate plane (ellipse-figure-v1 conics CIRCLE+PARABOLA; the tangency to the parabola is verified by a hidden tangent line on c2): the tangent point T(4,-2) with its radius OT, the tangent y=2x-10, the parabola named y=x^2-2ax+10a and its tangent point S named without its value (26 복성고 2학기 중간 고1 q12). The parabola name leader can graze a corner of the sampled curve in the browser, so composeEllipseFigure retries once with the leader ended 0.4 px short of the stroke. a=9 and the answer are not printed."
+  },
+  {
+   "dir": "item155linecasespanels",
+   "sourcePath": "archive/exams/original/high/h1/1final/21_제일고_1학기_기말_고1_기출.js",
+   "ordinal": 13,
+   "bucket": "GOLDEN",
+   "fam": "COORD_GEOM",
+   "files": [
+    "plan.json"
+   ],
+   "note": "Three lines that make no triangle, as a two-panel columns:1 plane composite whose panels draw each line as a PLANE_FIGURE_v1 segment with its equation (expressionLabels): the parallel cases k=6 (3x-6y-12=0 with x-2y=0, mark count 1) and k=-1 (3x+y-12=0 with 3x+y+7=0, mark count 2) in one panel, the concurrent case k=18 with the common point P in the other (21 제일고 1학기 기말 고1 q13). Labels use the default placement; ownership NEAREST or labelAt made the concurrent panel fail SEGMENT_LABEL_AMBIGUOUS_OWNER. The answer 23 is not printed."
+  },
+  {
+   "dir": "item154shortfootq09",
+   "sourcePath": "archive/exams/original/high/h1/1final/19_매산여고_1학기_기말_고1_기출.js",
+   "ordinal": 9,
+   "bucket": "GOLDEN",
+   "fam": "PLANE_MARKS",
+   "files": [
+    "plan.json"
+   ],
+   "note": "Angle mark on a short ray (2026-11-12): the foot H of the perpendicular from P(0,1) to the line through (2,1) and (-4,1/4) lies 0.25 unit from P, a 13 px ray, so the 90 degree arc is drawn pulled out (first arc 16 px, the short ray prolonged by a thin dashed line) instead of MARK_SEGMENT_TOO_SHORT:aH (19 매산여고 1학기 기말 고1 q09). The distance 2√65/65 is not printed."
+  },
+  {
+   "dir": "item154crowdnames18",
+   "sourcePath": "archive/exams/original/high/h1/1final/21_팔마고_1학기_기말_고1_기출.js",
+   "ordinal": 18,
+   "bucket": "GOLDEN",
+   "fam": "COORD_GEOM",
+   "files": [
+    "plan.json"
+   ],
+   "note": "CL (2026-11-12): the name A′ of a point that is also the centre of a small circle with three lines through it found no place and no leader that crosses nothing (LAYOUT_INVENTORY_INCOMPLETE:A1-name); the last resort puts it on a leader across the circle and one segment (data-leader-crossing). 21 팔마고 1학기 기말 고1 q18. The moved circle (x-2)²+(y-3)²=9 and K are not drawn."
+  },
+  {
+   "dir": "item155collinearlabel23",
+   "sourcePath": "archive/exams/original/high/h1/1final/20_효천고_1학기_기말_고1_기출.js",
+   "ordinal": 23,
+   "bucket": "GOLDEN",
+   "fam": "PLANE_MARKS",
+   "files": [
+    "plan.json"
+   ],
+   "note": "CL (2026-11-12): the radius label 5 on MO, the half of the diameter OA, found no room because OA lay over its own segment (LAYOUT_INVENTORY_INCOMPLETE:radiusMO); the last resort stops counting the longer segment as a competitor and the label stands on a leader from MO. 20 효천고 1학기 기말 고1 q23. QO=8 is not drawn."
   },
   {
    "dir": "item154mapcompq01",
@@ -2026,59 +2103,70 @@
    "note": "a four-column MAPPING X→Y→Z→W with three arrow groups f, g, h and a highlighted path (the three-function chain); an example figure on the 22 효천고 q19 slot, not that question's own figure."
   },
   {
-   "dir": "item152tickundersegment",
-   "sourcePath": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
-   "ordinal": 22,
+   "dir": "item154toonarrowq15",
+   "sourcePath": "archive/exams/original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+   "ordinal": 15,
    "bucket": "GOLDEN",
-   "fam": "COORD_GEOM",
+   "fam": "FUNCTION_GRAPH",
    "files": [
     "plan.json"
    ],
-   "note": "A drawn segment over an axis tick no longer drops the tick number: y=-5 segment AB runs over the tick -5 of the y axis (26 왕운중 2학기 중간 중1 q22); axisTickValues y:[-5] with no hidden point/textLabels workaround, the number moves beside the tick on a short leader. No value beyond the published figure."
+   "note": "TOO_NARROW: 20 효천고 2학기 중간 고1 q15, the two cases of f(x)=a(x-3)(x-b) with ab=2 (a=1,b=2 and a=2,b=1) as two multi-curve parabolas with leader labels, and the dashed boundary x=2 of the condition x>2. The tall narrow window (curves only a few units wide, plot 640 high) is requested at size class full. f(5) and the chosen case are not printed; the earlier solution image showed a=2, b=1."
   },
   {
-   "dir": "item153stemleafclasscolor",
-   "sourcePath": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
-   "ordinal": 20,
+   "dir": "item155toonarrowq14",
+   "sourcePath": "archive/exams/original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
+   "ordinal": 14,
    "bucket": "GOLDEN",
-   "fam": "STAT_CHART",
+   "fam": "FUNCTION_GRAPH",
    "files": [
     "plan.json"
    ],
-   "note": "stem-leaf classGroups[].color: the 0~5 class bracket and its count 4 in BLUE, the 30~35 class bracket and its count 5 in WARM (26 왕운중 2학기 중간 중1 q20 solution); the caption names the colours. Counts and values are those of the published figure."
+   "note": "TOO_NARROW: 20 복성고 2학기 중간 고1 q14, the parabola y=f(x) on x<=-3 (an example a=-3) with the line y=4 and the end point, in a window 6 wide and 54 high. The figure was ARCHIVE_BOUND only at size class medium; a multi-curve figure is now requested at full. Neither the maximum of ab nor b is printed."
   },
   {
-   "dir": "item154circleparabolatangent",
-   "sourcePath": "archive/exams/original/high/h1/2mid/26_복성고_2학기_중간_고1_기출.js",
-   "ordinal": 12,
+   "dir": "item154trigabslines",
+   "sourcePath": "archive/exams/original/high/h2/1final/26_순천고_1학기_기말_고2_대수.js",
+   "ordinal": 17,
    "bucket": "GOLDEN",
-   "fam": "COORD_GEOM",
+   "fam": "ALG_GRAPH",
    "files": [
     "plan.json"
    ],
-   "note": "A circle, a parabola and their common tangent in one coordinate plane (ellipse-figure-v1 conics CIRCLE+PARABOLA; the tangency to the parabola is verified by a hidden tangent line on c2): the tangent point T(4,-2) with its radius OT, the tangent y=2x-10, the parabola named y=x^2-2ax+10a and its tangent point S named without its value (26 복성고 2학기 중간 고1 q12). The parabola name leader can graze a corner of the sampled curve in the browser, so composeEllipseFigure retries once with the leader ended 0.4 px short of the stroke. a=9 and the answer are not printed."
+   "note": "absolute-value sine (graphPlan.absolute) with three slanted lines through the origin (slope per pi, perPi) in BLUE/WARM/GREEN, end crossings at the closed start, stepped pi ticks and displaySize full: y=2|sin2x| against y=2x/(n*pi), n=1,2,3 (26 순천고 1학기 기말 고2 대수 q17); the crossing counts 4, 8, 12 and the sum asked for are not printed."
   },
   {
-   "dir": "item155linecasespanels",
-   "sourcePath": "archive/exams/original/high/h1/1final/21_제일고_1학기_기말_고1_기출.js",
-   "ordinal": 13,
+   "dir": "item155trigpiticks",
+   "sourcePath": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+   "ordinal": 5,
    "bucket": "GOLDEN",
-   "fam": "COORD_GEOM",
+   "fam": "ALG_GRAPH",
    "files": [
     "plan.json"
    ],
-   "note": "Three lines that make no triangle, as a two-panel columns:1 plane composite whose panels draw each line as a PLANE_FIGURE_v1 segment with its equation (expressionLabels): the parallel cases k=6 (3x-6y-12=0 with x-2y=0, mark count 1) and k=-1 (3x+y-12=0 with 3x+y+7=0, mark count 2) in one panel, the concurrent case k=18 with the common point P in the other (21 제일고 1학기 기말 고1 q13). Labels use the default placement; ownership NEAREST or labelAt made the concurrent panel fail SEGMENT_LABEL_AMBIGUOUS_OWNER. The answer 23 is not printed."
+   "note": "half-open pi interval [0, 2pi) with a surd horizontal level y=-sqrt(3)/2 (WARM), stacked-fraction pi ticks thinned from a 1/6 step (the required 5/6 and 7/6 kept, 1/3 and 5/3 added), y ticks beside them and displaySize full (26 금당고 1학기 기말 고2 대수 q5: cos x < -sqrt(3)/2); the solution interval is not printed."
   },
   {
-   "dir": "item154shortfootq09",
-   "sourcePath": "archive/exams/original/high/h1/1final/19_매산여고_1학기_기말_고1_기출.js",
-   "ordinal": 9,
+   "dir": "item156trigq15color",
+   "sourcePath": "archive/exams/original/high/h2/1final/26_순천고_1학기_기말_고2_대수.js",
+   "ordinal": 15,
    "bucket": "GOLDEN",
-   "fam": "PLANE_MARKS",
+   "fam": "ALG_GRAPH",
    "files": [
     "plan.json"
    ],
-   "note": "Angle mark on a short ray (2026-11-12): the foot H of the perpendicular from P(0,1) to the line through (2,1) and (-4,1/4) lies 0.25 unit from P, a 13 px ray, so the 90 degree arc is drawn pulled out (first arc 16 px, the short ray prolonged by a thin dashed line) instead of MARK_SEGMENT_TOO_SHORT:aH (19 매산여고 1학기 기말 고1 q09). The distance 2√65/65 is not printed."
+   "note": "coloured reference line (WARM) on sin over [0, 9) with its crossing dots in the same colour and displaySize full (26 순천고 1학기 기말 고2 대수 q15: y=3 sin(pi x/3) against y=3/2); the asked sum S+l is not printed."
+  },
+  {
+   "dir": "item154hiddencurvelabelq10",
+   "sourcePath": "archive/exams/original/high/h1/1mid/19_순천여고_1학기_중간_고1_기출.js",
+   "ordinal": 10,
+   "bucket": "GOLDEN",
+   "fam": "FUNCTION_GRAPH",
+   "files": [
+    "plan.json"
+   ],
+   "note": "curves[].label {hidden:true,reason:\"ANSWER\",name:\"f\"} (hidden-curve-label.mjs): the three lines y=(k+3)x-k+4 for k=-3,0,3 through one point P (19 순천여고 1학기 중간 고1 q10); the formulas and P's coordinates would give a+b, so each line is drawn with a neutral name f, g, h and P keeps only its name. The publication gate is unchanged: the names are the figure's readable text."
   }
  ]
 }

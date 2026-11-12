@@ -1304,6 +1304,21 @@ def _fit_logarithmic_affine_overview(plan):
 TRIG_INTERVAL_MAX_PERIODS=12
 TRIG_INTERVAL_MAX_CROSSINGS=40
 
+TRIG_LINE_ROW_KEYS={'id','y','x','slope','intercept','intersectionCount','color','endCrossing','perPi'}
+TRIG_LINE_COLORS=('BLUE','WARM','GREEN','ROSE','VIOLET')   # the colour-group palette of the function curves and overlay lines (visual_engine/palette.py)
+
+def trig_level(value,code):
+    """An exact horizontal level: a rational string, or p+q*sqrt(r) in the exact-value grammar (y=-sqrt(3)/2). Rational -> Fraction, surd -> SymPy number."""
+    if isinstance(value,str) and re.fullmatch(r'(?:0|-?[1-9]\d*)(?:/[1-9]\d*)?',value):return _piecewise_fraction(value,code)
+    if isinstance(value,str) and 'sqrt' in value:
+        number=pp_surd(value,code)
+        if number.is_Rational:raise ValueError(code)
+        return number
+    raise ValueError(code)
+
+def trig_level_text(value):
+    return str(value) if isinstance(value,Fraction) else pp_surd_text(value)
+
 def trig_line_specs(plan,code='TRIG_LINE'):
     rows=plan.get('referenceLines')
     if rows is None:return []
@@ -1314,15 +1329,26 @@ def trig_line_specs(plan,code='TRIG_LINE'):
         seen.add(row['id'])
         count=row.get('intersectionCount')
         if isinstance(count,bool) or not isinstance(count,int) or not 0<=count<=TRIG_INTERVAL_MAX_CROSSINGS:raise ValueError('TRIG_LINE_INTERSECTION_COUNT_INVALID:'+row['id'])
-        if set(row)-{'id','y','slope','intercept','intersectionCount'}:raise ValueError('TRIG_REFERENCE_LINES_INVALID')
-        if 'y' in row:
+        if set(row)-TRIG_LINE_ROW_KEYS:raise ValueError('TRIG_REFERENCE_LINES_INVALID')
+        color=row.get('color')
+        if color is not None and color not in TRIG_LINE_COLORS:raise ValueError('TRIG_LINE_COLOR_INVALID:'+row['id'])
+        end_crossing=row.get('endCrossing')
+        if end_crossing is not None and not isinstance(end_crossing,bool):raise ValueError('TRIG_LINE_END_CROSSING_INVALID:'+row['id'])
+        per_pi=row.get('perPi')
+        if per_pi is not None and (not isinstance(per_pi,bool) or 'slope' not in row):raise ValueError('TRIG_LINE_FORM_INVALID:'+row['id'])   # perPi: the slope is measured per pi of x (y=2x/(n*pi) is slope 2/n per pi)
+        common={'id':row['id'],'claim':count,'color':color,'endCrossing':end_crossing is True,'vertical':False,'perPi':per_pi is True}
+        if 'x' in row:
+            if 'y' in row or 'slope' in row or 'intercept' in row:raise ValueError('TRIG_LINE_FORM_INVALID:'+row['id'])
+            if count>1:raise ValueError('TRIG_LINE_INTERSECTION_COUNT_INVALID:'+row['id'])
+            out.append({**common,'slope':None,'intercept':None,'x':_piecewise_fraction(row['x'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']),'horizontal':False,'vertical':True})
+        elif 'y' in row:
             if 'slope' in row or 'intercept' in row:raise ValueError('TRIG_LINE_FORM_INVALID:'+row['id'])
-            out.append({'id':row['id'],'slope':Fraction(0),'intercept':_piecewise_fraction(row['y'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']),'claim':count,'horizontal':True})
+            out.append({**common,'slope':Fraction(0),'intercept':trig_level(row['y'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']),'horizontal':True})
         else:
             if 'slope' not in row or 'intercept' not in row:raise ValueError('TRIG_LINE_FORM_INVALID:'+row['id'])
             slope=_piecewise_fraction(row['slope'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']);intercept=_piecewise_fraction(row['intercept'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id'])
             if slope==0:raise ValueError('TRIG_LINE_SLOPE_ZERO:'+row['id'])
-            out.append({'id':row['id'],'slope':slope,'intercept':intercept,'claim':count,'horizontal':False})
+            out.append({**common,'slope':slope,'intercept':intercept,'horizontal':False})
     return out
 
 def trig_interval_source(plan):
@@ -1333,26 +1359,34 @@ def trig_interval_source(plan):
     if not lo<hi or not isinstance(states,list) or len(states)!=2 or any(state not in {'OPEN','CLOSED'} for state in states):raise ValueError('INVALID_TRIG_INTERVAL')
     return lo,hi,list(states)
 
-def trig_line_crossings(function,a,rate,phase,c,x0,x1,states,line):
+def trig_line_crossings(function,a,rate,phase,c,x0,x1,states,line,absolute=False):
     """Every x (radians, x0<x<x1) where a*F(rate*x+phase)+c meets the line, with its y. Closed form for a horizontal line, sign changes for a
     slanted one. rate and phase are already the effective radian rate and phase (pi already folded in)."""
-    slope,intercept=float(line['slope']),float(line['intercept'])
     def inside(x):
         eps=1e-9*max(1.0,abs(x))
         return (x>x0+eps if states[0]=='OPEN' else x>=x0-eps) and (x<x1-eps if states[1]=='OPEN' else x<=x1+eps)
     found=[]
+    if line.get('vertical'):
+        # x=c: one crossing, the curve's value at c, when c lies inside the interval (an open end is not in it)
+        rate_f=float(rate);shift=float(phase);fn=math.sin if function=='SIN' else math.cos
+        xc=float(line['x'])*(math.pi if line['axisUnit']=='PI' else 1.0)
+        value=float(a)*fn(rate_f*xc+shift);value=abs(value) if absolute else value
+        return [(xc,value+float(c))] if inside(xc) else []
+    slope,intercept=float(line['slope']),float(line['intercept'])
+    if line.get('perPi'):slope=slope/math.pi   # the slope was written per pi of x
     if line['horizontal']:
         t=(intercept-float(c))/float(a)
-        if abs(t)<=1:
+        if (0<=t+1e-12 if absolute else True) and abs(t)<=1:
+            t=max(t,0.0) if absolute else t
             base=math.asin(t) if function=='SIN' else math.acos(t)
             thetas=[base,math.pi-base] if function=='SIN' else [base,-base]
-            rate_f=float(rate);shift=float(phase)
+            rate_f=float(rate);shift=float(phase);period=math.pi if absolute else 2*math.pi   # |F|=t repeats every pi (F=t and F=-t interleave)
             reach=sorted([rate_f*x0+shift,rate_f*x1+shift])
             for theta in thetas:
-                first=math.floor((reach[0]-theta)/(2*math.pi))-1;last=math.ceil((reach[1]-theta)/(2*math.pi))+1
-                for j in range(first,last+1):found.append((theta+2*math.pi*j-shift)/rate_f)
+                first=math.floor((reach[0]-theta)/period)-1;last=math.ceil((reach[1]-theta)/period)+1
+                for j in range(first,last+1):found.append((theta+period*j-shift)/rate_f)
     else:
-        rate_f=float(rate);shift=float(phase);af=float(a);cf=float(c);fn=math.sin if function=='SIN' else math.cos
+        rate_f=float(rate);shift=float(phase);af=float(a);cf=float(c);fn=(lambda v:abs(math.sin(v))) if (absolute and function=='SIN') else (lambda v:abs(math.cos(v))) if absolute else math.sin if function=='SIN' else math.cos
         gap=lambda x:af*fn(rate_f*x+shift)+cf-(slope*x+intercept)
         steps=max(2000,int(400*(x1-x0)/math.pi));previous=x0;value=gap(previous)
         for index in range(1,steps+1):
@@ -1433,7 +1467,9 @@ def trig_spec(plan):
     else:
         phase=_piecewise_fraction(phase_plain,'INVALID_TRIGONOMETRIC_PHASE');phase_has_pi=False
     if a==0 or rate==0:raise ValueError('TRIGONOMETRIC_NONZERO_SCALE_AND_RATE_REQUIRED')
-    return {'function':function,'a':a,'c':c,'rate':rate,'rateHasPi':rate_has_pi,'phase':phase,'phaseHasPi':phase_has_pi}
+    absolute=plan.get('absolute')
+    if absolute is not None and not isinstance(absolute,bool):raise ValueError('INVALID_TRIG_ABSOLUTE_FLAG')
+    return {'function':function,'a':a,'c':c,'rate':rate,'rateHasPi':rate_has_pi,'phase':phase,'phaseHasPi':phase_has_pi,'absolute':absolute is True}
 
 def trig_effective(spec):
     """The radian rate and phase (the pi factors folded in) used by display and evaluation."""
@@ -1443,7 +1479,8 @@ def trig_effective(spec):
 
 def trig_axis_period(spec):
     """One period measured in axis units: 2/|rate| (SIN/COS) or 1/|rate| (TAN) whichever unit the pi factor and the interval use."""
-    return Fraction(2,1)/abs(spec['rate']) if spec['function'] in {'SIN','COS'} else Fraction(1,1)/abs(spec['rate'])
+    if spec['function'] in {'SIN','COS'} and not spec.get('absolute'):return Fraction(2,1)/abs(spec['rate'])
+    return Fraction(1,1)/abs(spec['rate'])   # tan, and |sin| / |cos| (folded: half the plain period)
 
 def trig_interval_v2_source(plan):
     source=plan.get('sourceDomain')
@@ -1467,12 +1504,29 @@ def trig_key_points(spec,lo,hi,states):
         if not lo<x<hi:continue
         if function=='SIN':factor=Fraction(0) if m%2==0 else (Fraction(1) if m%4==1 else Fraction(-1))
         else:factor=(Fraction(1) if m%4==0 else Fraction(-1)) if m%2==0 else Fraction(0)
-        y=a*factor+c
-        if factor==0:kind='X_INTERCEPT' if y==0 else 'MIDLINE_CROSSING'
-        else:kind='MAXIMUM' if y>c else 'MINIMUM'
+        if spec.get('absolute'):
+            # a*|F|+c: a cusp where F=0 (y=c), the folded peak (or trough, a<0) where |F|=1 (y=a+c)
+            if factor==0:kind='CUSP';y=c
+            else:y=a+c;kind='MAXIMUM' if a>0 else 'MINIMUM'
+        else:
+            y=a*factor+c
+            if factor==0:kind='X_INTERCEPT' if y==0 else 'MIDLINE_CROSSING'
+            else:kind='MAXIMUM' if y>c else 'MINIMUM'
         rows.append({'id':'key-'+str(m),'kind':kind,'x':str(x),'y':str(y)})
     if len(rows)>TRIG_KEY_POINT_MAX:raise ValueError('TRIG_KEY_POINTS_TOO_MANY')
     return rows
+
+def trig_abs_cusps(spec,lo,hi):
+    """Every zero of F inside the interval for a*|F|+c (SIN/COS/TAN): the corner of the folded curve, with its exact axis coordinate. The sampler is told to put a vertex on each."""
+    if not spec.get('absolute'):return []
+    if not spec['phaseHasPi']:raise ValueError('TRIG_ABSOLUTE_REQUIRES_PI_PHASE')
+    rate=spec['rate'];phase=spec['phase'];rows=[];shift=Fraction(1,2) if spec['function']=='COS' else Fraction(0)   # zeros of cos sit at half-integers (in pi units), of sin and tan at integers
+    first=math.ceil(float(rate*lo+phase-shift)-1e-12) if rate>0 else math.ceil(float(rate*hi+phase-shift)-1e-12)
+    last=math.floor(float(rate*hi+phase-shift)+1e-12) if rate>0 else math.floor(float(rate*lo+phase-shift)+1e-12)
+    for n in range(first,last+1):
+        x=(Fraction(n)+shift-phase)/rate
+        if lo<x<hi:rows.append({'id':'cusp-'+str(len(rows)+1),'x':str(x)})
+    return sorted(rows,key=lambda row:Fraction(row['x']))
 
 def trig_interval_poles(spec,lo,hi):
     """Every pole of tan strictly inside the interval, with its exact axis coordinate (phase must be a pi multiple)."""
@@ -1488,10 +1542,19 @@ def trig_interval_poles(spec,lo,hi):
     if not rows:raise ValueError('TRIG_TAN_INTERVAL_NO_POLE')
     return rows
 
-def trig_pi_ticks(plan,kind,x0,x1):
-    """Validate pi-unit x tick multiples. Returns the exact multiples (axis units) when axisTickPi is on."""
+TRIG_PLOT_WIDTH_PX=546         # the drawn plot width of the graph canvas (610 px minus the 32 px margins)
+TRIG_PI_TICK_MIN_GAP_PX=58     # least spacing between two pi tick labels (a stacked 5pi/6 is about 30 px wide at the tick font)
+TRIG_PI_TICK_END_CLEAR=1.0     # a stepped tick keeps one label gap away from a labelled interval end (the end label needs the room)
+
+def trig_pi_ticks(plan,kind,x0,x1,span=None):
+    """Validate pi-unit x tick multiples. Returns the exact multiples (axis units) when axisTickPi is on.
+    axisTickValues.x always lists ticks the author needs; axisTickPiStep (an exact positive multiple of pi, e.g. 1/6) adds every multiple of the step inside the interval,
+    thinned to every m-th multiple (the smallest m whose spacing fits a stacked fraction label) and never within one label gap of a required tick or a labelled end.
+    span is the viewport width in radians (the thinning measures spacing on the plot)."""
     flag=plan.get('axisTickPi')
-    if flag is None or flag is False:return []
+    if flag is None or flag is False:
+        if plan.get('axisTickPiStep') is not None:raise ValueError('TRIG_TICK_PI_REQUIRES_PI_AXIS')
+        return []
     if flag is not True:raise ValueError('INVALID_TRIG_TICK_PI_FLAG')
     if kind!='INTERVAL_PI':raise ValueError('TRIG_TICK_PI_REQUIRES_PI_AXIS')
     values=plan.get('axisTickValues')
@@ -1503,7 +1566,24 @@ def trig_pi_ticks(plan,kind,x0,x1):
         position=float(multiple)*math.pi
         if not x0<position<x1:raise ValueError('TRIG_PI_TICK_OUTSIDE_VIEW')
         multiples.append(multiple)
-    return multiples
+    step_text=plan.get('axisTickPiStep')
+    if step_text is None:return multiples
+    step=_piecewise_fraction(step_text,'TRIG_PI_TICK_STEP_INVALID')
+    if step<=0 or span is None:raise ValueError('TRIG_PI_TICK_STEP_INVALID')
+    gap=TRIG_PI_TICK_MIN_GAP_PX*span/TRIG_PLOT_WIDTH_PX   # label gap in radians
+    m=1
+    while float(step*m)*math.pi<gap-1e-12:m+=1
+    lo_k=math.floor(x0/(math.pi*float(step)))+1;hi_k=math.ceil(x1/(math.pi*float(step)))-1
+    labelled_ends=[end for end,text in ((x0,plan['sourceDomain']['rangePi'][0]),(x1,plan['sourceDomain']['rangePi'][1])) if text!='0']
+    regular=[]
+    for k in range(lo_k,hi_k+1):
+        if k==0 or k%m:continue
+        value=k*step;position=float(value)*math.pi
+        if not x0<position<x1:continue
+        if any(abs(position-float(req)*math.pi)<gap for req in multiples):continue
+        if any(abs(position-end)<gap*TRIG_PI_TICK_END_CLEAR for end in labelled_ends):continue
+        regular.append(value)
+    return sorted(set(multiples)|set(regular))
 
 def _fit_trigonometric_interval_v2(plan,spec):
     function=spec['function'];a=spec['a'];rate=spec['rate'];c=spec['c']
@@ -1517,8 +1597,12 @@ def _fit_trigonometric_interval_v2(plan,spec):
     if periods<Fraction(1,4) or periods>TRIG_INTERVAL_MAX_PERIODS:raise ValueError('TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED')
     x0=float(lo)*(math.pi if axis_unit=='PI' else 1.0);x1=float(hi)*(math.pi if axis_unit=='PI' else 1.0)
     rate_eff,phase_eff=trig_effective(spec)
-    rows=[];ys=[float(c-abs(a)),float(c+abs(a)),0.0]
-    key_rows=[];pole_rows=[]
+    absolute=spec['absolute']
+    if plan.get('displaySize') not in {None,'medium','full'}:raise ValueError('TRIG_DISPLAY_SIZE_INVALID')
+    rows=[];ys=[float(c),float(c+a),0.0] if absolute else [float(c-abs(a)),float(c+abs(a)),0.0]
+    if absolute and function=='TAN':ys=[0.0]
+    key_rows=[];pole_rows=[];cusp_rows=trig_abs_cusps(spec,lo,hi)
+    xpad=max(.04*(x1-x0),.3)
     if plan.get('keyPoints') is not None and not isinstance(plan.get('keyPoints'),bool):raise ValueError('INVALID_TRIG_KEY_POINTS')
     if plan.get('keyPoints') is True and function not in {'SIN','COS'}:raise ValueError('TRIG_KEY_POINTS_REQUIRE_SIN_COS')
     if function=='TAN':
@@ -1526,29 +1610,45 @@ def _fit_trigonometric_interval_v2(plan,spec):
         pole_rows=trig_interval_poles(spec,lo,hi)
     else:
         for line in trig_line_specs(plan):
-            crossings=trig_line_crossings(function,float(a),rate_eff,phase_eff,float(c),x0,x1,states,line)
+            line['axisUnit']=axis_unit
+            crossings=trig_line_crossings(function,float(a),rate_eff,phase_eff,float(c),x0,x1,states,line,absolute)
             if len(crossings)!=line['claim']:raise ValueError('TRIG_LINE_INTERSECTION_COUNT_MISMATCH:'+line['id']+':engine finds '+str(len(crossings))+' intersection(s)')
             for x,_ in crossings:
-                if (states[0]=='CLOSED' and abs(x-x0)<1e-9) or (states[1]=='CLOSED' and abs(x-x1)<1e-9):raise ValueError('TRIG_LINE_THROUGH_INTERVAL_END:'+line['id'])
-            ys.append(float(line['intercept']) if line['horizontal'] else 0.0);ys.extend(y for _,y in crossings)
-            rows.append({'id':line['id'],'kind':'HORIZONTAL' if line['horizontal'] else 'SLANTED','slope':str(line['slope']),'intercept':str(line['intercept']),'intersections':[{'x':x,'y':y} for x,y in crossings]})
+                if not line['endCrossing'] and ((states[0]=='CLOSED' and abs(x-x0)<1e-9) or (states[1]=='CLOSED' and abs(x-x1)<1e-9)):raise ValueError('TRIG_LINE_THROUGH_INTERVAL_END:'+line['id'])
+            if line['vertical']:
+                ys.extend(y for _,y in crossings)
+                row={'id':line['id'],'kind':'VERTICAL','x':str(line['x']),'intersections':[{'x':x,'y':y} for x,y in crossings]}
+            else:
+                ys.append(float(line['intercept']) if line['horizontal'] else 0.0);ys.extend(y for _,y in crossings)
+                row={'id':line['id'],'kind':'HORIZONTAL' if line['horizontal'] else 'SLANTED','slope':str(line['slope']),'intercept':trig_level_text(line['intercept']),'intersections':[{'x':x,'y':y} for x,y in crossings]}
+            if line['perPi']:row['perPi']=True
+            if line['color'] is not None:row['color']=line['color']
+            if line['endCrossing']:row['endCrossing']=True
+            rows.append(row)
         if plan.get('keyPoints') is True:
             key_rows=trig_key_points(spec,lo,hi,states);ys.extend(float(Fraction(row['y'])) for row in key_rows)
-    trig_pi_ticks(plan,kind,x0,x1)
+    tick_multiples=trig_pi_ticks(plan,kind,x0,x1,(x1-x0)+2*xpad)
     evaluator=math.sin if function=='SIN' else math.cos if function=='COS' else math.tan
+    if absolute:evaluator=(lambda f:lambda v:abs(f(v)))(evaluator)
     end_y=[float(a)*evaluator(rate_eff*x+phase_eff)+float(c) for x in (x0,x1)]
-    xpad=max(.04*(x1-x0),.3)
     if function=='TAN':
         half=max(1.0,2.2*abs(float(a)));low=min(0.0,float(c)-half);high=max(0.0,float(c)+half);ypad=.05*max(1.0,high-low)
     else:
         low=min(ys);high=max(ys);ypad=.18*max(1.0,high-low)
     viewport=[x0-xpad,x1+xpad,low-ypad,high+ypad]
     features={'schemaVersion':'TRIGONOMETRIC_INTERVAL_FEATURES_v2','function':function,'rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'axisUnit':axis_unit,'amplitude':str(a),'midline':str(c),'sourceInterval':{'kind':kind,'lo':str(lo),'hi':str(hi),'states':states},'lines':rows,'keyPoints':key_rows,'poles':pole_rows}
+    if absolute:features['absolute']=True;features['cusps']=cusp_rows
     policy={'schemaVersion':'TRIGONOMETRIC_INTERVAL_POLICY_v2','markerRadiusIntrinsicPx':3.2,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':40,'minimumAmplitudeCssPx':20,'minimumPoleApproachGapCssPx':2}
     interval={'schemaVersion':'POLYNOMIAL_INTERVAL_FEATURES_v1','endpoints':[{'side':'START','x':repr(x0),'y':repr(end_y[0]),'state':states[0]},{'side':'END','x':repr(x1),'y':repr(end_y[1]),'state':states[1]}]}
     interval_policy={'schemaVersion':'POLYNOMIAL_INTERVAL_POLICY_v1','markerRadiusIntrinsicPx':4,'minimumMarkerDiameterCssPx':3}
     if not all(math.isfinite(value) and abs(value)<=1e6 for value in [x0,x1,*viewport]):raise ValueError('UNSUPPORTED_TRIGONOMETRIC_NUMERIC_SCOPE')
-    fitted={**plan,'domain':[x0,x1],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'TRIGONOMETRIC_INTERVAL_OVERVIEW_v2','trigIntervalFeatures':features,'trigIntervalPolicy':policy,'intervalFeatures':interval,'intervalFeaturePolicy':interval_policy}
+    # A plan that uses an additive field names its interval ends beside the end dots, on the side the curve does not run into (the older place, on the axis, can sit on the curve)
+    additive=absolute or plan.get('axisTickPiStep') is not None or plan.get('displaySize') is not None or any(row.get('color') or row.get('perPi') or row['kind']=='VERTICAL' or 'sqrt' in str(row.get('intercept','')) for row in rows)
+    end_sides=None
+    if additive:
+        delta=1e-3*(x1-x0);inward=[float(a)*evaluator(rate_eff*(x0+delta)+phase_eff)+float(c)-end_y[0],float(a)*evaluator(rate_eff*(x1-delta)+phase_eff)+float(c)-end_y[1]]
+        end_sides=['BELOW' if value>0 else 'ABOVE' for value in inward]
+    fitted={**plan,'domain':[x0,x1],'viewport':viewport,**({'endLabelSides':end_sides} if end_sides else {}),**({'axisTickPiRequired':list(plan['axisTickValues']['x']),'axisTickValues':{'x':[str(value) for value in tick_multiples],'y':plan['axisTickValues']['y']}} if plan.get('axisTickPiStep') is not None else {}),'shapeIntent':'OVERVIEW','overviewPolicy':'TRIGONOMETRIC_INTERVAL_OVERVIEW_v2','trigIntervalFeatures':features,'trigIntervalPolicy':policy,'intervalFeatures':interval,'intervalFeaturePolicy':interval_policy}
     return {'graphPlan':fitted,'policy':'TRIGONOMETRIC_INTERVAL_OVERVIEW_v2','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 
 def _fit_trigonometric_period_v2(plan,spec):
@@ -1602,9 +1702,13 @@ def _fit_trigonometric_overview(plan):
     source=plan.get('sourceDomain')
     if isinstance(source,dict) and source.get('kind') in {'INTERVAL_PI','INTERVAL'}:
         legacy=source.get('kind')=='INTERVAL_PI' and plan.get('ratePi') is None and plan.get('phase') is None and plan.get('axisTickPi') is None and plan.get('keyPoints') is not True and function in {'SIN','COS'}
+        # the additive fields (absolute value, stepped pi ticks, display size, line colour / vertical / surd level / end crossing) live on the general interval form only
+        legacy=legacy and plan.get('absolute') is None and plan.get('axisTickPiStep') is None and plan.get('displaySize') is None and not any(isinstance(row,dict) and (set(row)-{'id','y','slope','intercept','intersectionCount'} or (isinstance(row.get('y'),str) and 'sqrt' in row['y'])) for row in (plan.get('referenceLines') if isinstance(plan.get('referenceLines'),list) else []))
         if legacy:return _fit_trigonometric_interval(plan,function)
         return _fit_trigonometric_interval_v2(plan,trig_spec(plan))
     if plan.get('referenceLines') is not None:raise ValueError('TRIG_REFERENCE_LINES_REQUIRE_INTERVAL_PI')
+    if plan.get('absolute') is not None:raise ValueError('TRIG_ABSOLUTE_REQUIRES_INTERVAL')
+    if plan.get('axisTickPiStep') is not None:raise ValueError('TRIG_TICK_PI_REQUIRES_PI_AXIS')
     if plan.get('ratePi') is None and plan.get('phase') is None:
         expected_domain={'kind':'ALL_REALS'} if function in {'SIN','COS'} else {'kind':'ALL_REALS_WITH_TAN_POLES'}
         if plan.get('sourceDomain')!=expected_domain:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
@@ -4537,6 +4641,8 @@ def _mc_regions(plan,curves,viewport):
         rows.append(row)
     return rows
 
+MULTI_CURVE_TALL_PLOT_HEIGHT=1000   # plot height (canvas 1064) reached only when the usual 640 would refuse the figure as too narrow
+
 def fit_multi_curve(plan):
     curves=multi_curve_source(plan)
     window=_mc_window(plan) if any(curve['kind'] in MULTI_CURVE_FREE_KINDS or curve.get('inverseOf') is not None for curve in curves) else None
@@ -4549,10 +4655,17 @@ def fit_multi_curve(plan):
     xs=[point[0] for point in points];ys=[point[1] for point in points]
     xspan,yspan=max(xs)-min(xs),max(ys)-min(ys)
     if not math.isfinite(xspan) or not math.isfinite(yspan) or xspan<=0 or yspan<=0:raise ValueError('MULTI_CURVE_FRAME_DEGENERATE')
-    limit=plot_height_limit(plan)
-    for ratio in axis_ratios(plan,points,limit):
-        viewport,height,scale=equal_unit_frame(points,limit,ratio)
-        if xspan*scale>=EQUAL_UNIT_MIN_CURVE_PX and yspan*scale*ratio>=EQUAL_UNIT_MIN_CURVE_PX:break
+    limits=[plot_height_limit(plan)]
+    # (TOO_NARROW) A tall, narrow figure at one scale: the usual plot (at most 640 high) leaves the curves under 48 px wide. Before refusing, the plot grows
+    # up to MULTI_CURVE_TALL_PLOT_HEIGHT (a figure that still fits the 1099 px display height); the scale stays equal on both axes, only the canvas is taller.
+    # A panel of a stack (plotHeightLimit set by the composite) keeps its own limit.
+    if 'plotHeightLimit' not in plan:limits.append(MULTI_CURVE_TALL_PLOT_HEIGHT)
+    for limit in limits:
+        for ratio in axis_ratios(plan,points,limit):
+            viewport,height,scale=equal_unit_frame(points,limit,ratio)
+            if xspan*scale>=EQUAL_UNIT_MIN_CURVE_PX and yspan*scale*ratio>=EQUAL_UNIT_MIN_CURVE_PX:break
+        else:continue
+        break
     else:raise ValueError('MULTI_CURVE_TOO_NARROW')
     rows=[_mc_row(curve) for curve in curves]
     features={'schemaVersion':'MULTI_CURVE_FEATURES_v1','curves':rows}
@@ -4589,11 +4702,36 @@ def _equalize_exp_log_for_circles(plan,framed,anchors):
     if (graph['domain'][1]-graph['domain'][0])*scale<EQUAL_UNIT_MIN_CURVE_PX:_overlay_fail('OVERLAY_EQUAL_UNITS_CURVE_TOO_NARROW',plan.get('family'))
     return {**framed,'graphPlan':{**graph,'viewport':viewport,'equalUnits':True,'axisRatio':1,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height}}}
 
+def _overlay_line_frame_anchor(plan,ident):
+    """(CL) One point on the declared overlay line `ident`, inside the span of the plan's own required points, so the framer's window reaches the line."""
+    entry=next((row for row in (plan.get('overlays') or {}).get('lines') or [] if isinstance(row,dict) and row.get('id')==ident),None)
+    if entry is None:return None
+    try:
+        xs=[float(row['x']) for row in plan.get('requiredPoints') or [] if isinstance(row,dict) and isinstance(row.get('x'),(int,float))]
+        ys=[float(row['y']) for row in plan.get('requiredPoints') or [] if isinstance(row,dict) and isinstance(row.get('y'),(int,float))]
+        if 'x' in entry:
+            x=float(S.N(_overlay_exact(entry['x'],ident),30));return (x,sum(ys)/len(ys) if ys else 0.0)
+        slope=float(S.N(_overlay_exact(entry['slope'],ident),30));intercept=float(S.N(_overlay_exact(entry['intercept'],ident),30))
+        x=sum(xs)/len(xs) if xs else 0.0
+        return (x,slope*x+intercept)
+    except (ValueError,KeyError,TypeError,ZeroDivisionError):return None
+
 def fit_overview(plan):
+    """The family framer with the declared overlays. A line that the automatically framed window misses (the points that framed it were hidden or not asked for)
+    widens the window once to reach that line (CL); an author-stated viewport is never widened. A plan whose lines the first window already reaches is framed as before."""
+    try:return _fit_overview_framed(plan,[])
+    except ValueError as error:
+        found=re.match(r'^OVERLAY_LINE_OUTSIDE_VIEWPORT:(.+)$',str(error))
+        if not found or plan.get('viewport') is not None:raise
+        extra=_overlay_line_frame_anchor(plan,found.group(1))
+        if extra is None:raise
+        return _fit_overview_framed(plan,[extra])
+
+def _fit_overview_framed(plan,extra_anchors):
     """The family framer, then the optional graph overlays: every overlay coordinate is recomputed exactly and must stay inside the
     framed viewport. The fitted plan carries overlaysFeatures for the model/spec; the independent observer recomputes them from the raw
     overlays field. Unsupported or out-of-view overlays are refused, never silently dropped."""
-    anchors=_overlay_anchor_points(plan)
+    anchors=_overlay_anchor_points(plan)+extra_anchors
     framed=_fit_overview_family({**plan,'overlayAnchors':anchors} if anchors else plan)
     framed['graphPlan'].pop('overlayAnchors',None)
     framed=_equalize_exp_log_for_circles(plan,framed,anchors)
