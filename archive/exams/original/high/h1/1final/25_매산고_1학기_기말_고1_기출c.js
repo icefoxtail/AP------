@@ -65,7 +65,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n행렬의 크기는 행의 개수와 열의 개수로 나타낸다.\n조건 정리\n주어진 행렬은 $\\begin{pmatrix}a\\\\b\\end{pmatrix}$이다.\n풀이 과정\n성분 $a,b$가 세로로 2개 나열되어 있으므로 행은 2개이다.\n가로로는 한 줄만 있으므로 열은 1개이다.\n따라서 주어진 행렬은 $2\\times1$ 행렬이다.\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -99,7 +99,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트]\n행렬의 뺄셈은 같은 위치에 있는 성분끼리 계산한다.\n조건 정리\n$A=\\begin{pmatrix}2&0\\\\2&5\\end{pmatrix}$, $B=\\begin{pmatrix}1&9\\\\1&0\\end{pmatrix}$이다.\n풀이 과정\n$A-B=\\begin{pmatrix}2-1&0-9\\\\2-1&5-0\\end{pmatrix}=\\begin{pmatrix}1&-9\\\\1&5\\end{pmatrix}$이다.\n모든 성분의 합을 구하면\n$1+(-9)+1+5=-2$이다.\n결론\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -402,7 +402,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n행렬에서는 일반적으로 곱셈의 교환법칙이 성립하지 않으므로, 주어진 조건을 이용해 $AB=BA$를 먼저 얻는다.\n조건 정리\n$A=\\begin{pmatrix}1&x\\\\-2&0\\end{pmatrix}$, $B=\\begin{pmatrix}-2&y\\\\0&x\\end{pmatrix}$이고,\n$A^2-B^2=(A-B)(A+B)$이다.\n풀이 과정\n오른쪽을 전개하면\n$(A-B)(A+B)=A^2+AB-BA-B^2$이다.\n따라서\n$A^2-B^2=A^2+AB-BA-B^2$이므로\n$AB-BA=O$, 즉 $AB=BA$이다.\n이제 $AB$와 $BA$를 계산한다.\n$AB=\\begin{pmatrix}1&x\\\\-2&0\\end{pmatrix}\\begin{pmatrix}-2&y\\\\0&x\\end{pmatrix}=\\begin{pmatrix}-2&y+x^2\\\\4&-2y\\end{pmatrix}$\n$BA=\\begin{pmatrix}-2&y\\\\0&x\\end{pmatrix}\\begin{pmatrix}1&x\\\\-2&0\\end{pmatrix}=\\begin{pmatrix}-2-2y&-2x\\\\-2x&0\\end{pmatrix}$\n$AB=BA$이므로 성분을 비교하면\n$4=-2x$에서 $x=-2$이고,\n$-2=-2-2y$에서 $y=0$이다.\n따라서\n$A=\\begin{pmatrix}1&-2\\\\-2&0\\end{pmatrix}$,\n$B=\\begin{pmatrix}-2&0\\\\0&-2\\end{pmatrix}$이다.\n이제 구하는 식을 계산한다.\n$A^2=\\begin{pmatrix}5&-2\\\\-2&4\\end{pmatrix}$,\n$AB=\\begin{pmatrix}-2&4\\\\4&0\\end{pmatrix}$,\n$B^2=\\begin{pmatrix}4&0\\\\0&4\\end{pmatrix}$이므로\n$A^2+AB+B^2=\\begin{pmatrix}7&2\\\\2&8\\end{pmatrix}$이다.\n또한\n$A-B=\\begin{pmatrix}3&-2\\\\-2&2\\end{pmatrix}$이다.\n따라서\n$(A-B)(A^2+AB+B^2)=\\begin{pmatrix}3&-2\\\\-2&2\\end{pmatrix}\\begin{pmatrix}7&2\\\\2&8\\end{pmatrix}$\n$=\\begin{pmatrix}17&-10\\\\-10&12\\end{pmatrix}$이다.\n모든 성분의 합은\n$17+(-10)+(-10)+12=9$이다.\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -438,7 +438,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n행렬의 곱을 전개하여 $x,y$에 대한 두 관계식을 얻고, 가능한 경우를 나누어 $x^2+y^2$의 최댓값을 구한다.\n조건 정리\n$\\begin{pmatrix}x&y\\end{pmatrix}\\begin{pmatrix}1&-2\\\\1&-6\\end{pmatrix}\\begin{pmatrix}x\\\\y\\end{pmatrix}=0$,\n$\\begin{pmatrix}x&y\\end{pmatrix}\\begin{pmatrix}1&-5\\\\2&4\\end{pmatrix}\\begin{pmatrix}x\\\\y\\end{pmatrix}=84$이다.\n풀이 과정\n첫 번째 식을 전개하면\n$\\begin{pmatrix}x&y\\end{pmatrix}\\begin{pmatrix}x-2y\\\\x-6y\\end{pmatrix}=0$이므로\n$x(x-2y)+y(x-6y)=0$이다.\n따라서\n$x^2-xy-6y^2=0$이고,\n$(x-3y)(x+2y)=0$이다.\n그러므로\n$x=3y$ 또는 $x=-2y$이다.\n두 번째 식을 전개하면\n$\\begin{pmatrix}x&y\\end{pmatrix}\\begin{pmatrix}x-5y\\\\2x+4y\\end{pmatrix}=84$이므로\n$x(x-5y)+y(2x+4y)=84$이다.\n따라서\n$x^2-3xy+4y^2=84$이다.\n이제 경우를 나눈다.\n1) $x=3y$일 때\n$x^2-3xy+4y^2=9y^2-9y^2+4y^2=4y^2=84$이므로\n$y^2=21$이다.\n따라서\n$x^2+y^2=9y^2+y^2=10y^2=210$이다.\n2) $x=-2y$일 때\n$x^2-3xy+4y^2=4y^2+6y^2+4y^2=14y^2=84$이므로\n$y^2=6$이다.\n따라서\n$x^2+y^2=4y^2+y^2=5y^2=30$이다.\n두 값 중 최댓값은 $210$이다.\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -502,7 +502,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트]\n$A=\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}$로 두고 주어진 행렬 등식을 이용하여 $A$를 구한다.\n조건 정리\n$A\\begin{pmatrix}1\\\\1\\end{pmatrix}=\\begin{pmatrix}2\\\\7\\end{pmatrix}$,\n$A^2\\begin{pmatrix}1\\\\1\\end{pmatrix}=\\begin{pmatrix}4\\\\39\\end{pmatrix}$이다.\n풀이 과정\n$A=\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}$라 하면\n$A\\begin{pmatrix}1\\\\1\\end{pmatrix}=\\begin{pmatrix}a+b\\\\c+d\\end{pmatrix}=\\begin{pmatrix}2\\\\7\\end{pmatrix}$이므로\n$a+b=2$, $c+d=7$이다.\n또한\n$A^2\\begin{pmatrix}1\\\\1\\end{pmatrix}=A\\begin{pmatrix}2\\\\7\\end{pmatrix}=\\begin{pmatrix}4\\\\39\\end{pmatrix}$이므로\n$2a+7b=4$, $2c+7d=39$이다.\n$a+b=2$에서 $b=2-a$이므로\n$2a+7(2-a)=4$\n$-5a=-10$\n$a=2$, $b=0$이다.\n$c+d=7$에서 $d=7-c$이므로\n$2c+7(7-c)=39$\n$-5c=-10$\n$c=2$, $d=5$이다.\n따라서\n$A=\\begin{pmatrix}2&0\\\\2&5\\end{pmatrix}$이다.\n계산하면\n$A^2=\\begin{pmatrix}4&0\\\\14&25\\end{pmatrix}$,\n$A^3=\\begin{pmatrix}8&0\\\\78&125\\end{pmatrix}$이다.\n모든 성분의 합은\n$8+0+78+125=211$이다.\n결론\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -602,7 +602,7 @@ window.questionBank = [
     "answer": "0",
     "solution": "[키포인트]\n주어진 규칙으로 행렬 $A$를 구하고 거듭제곱의 주기를 확인한다.\n조건 정리\n$a_{ij}=i-j$이고 $i=1,2$, $j=1,2$이다.\n풀이 과정\n각 성분을 구하면\n$a_{11}=1-1=0$,\n$a_{12}=1-2=-1$,\n$a_{21}=2-1=1$,\n$a_{22}=2-2=0$이다.\n따라서\n$A=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$이다.\n이때\n$A^2=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}=\\begin{pmatrix}-1&0\\\\0&-1\\end{pmatrix}=-E$이다.\n따라서\n$A^3=-A$, $A^4=E$이다.\n그러므로\n$A+A^2+A^3+A^4=A-E-A+E=O$이다.\n4개의 항마다 합이 영행렬이고,\n$2020=4\\times505$이므로\n$A+A^2+\\cdots+A^{2020}=O$이다.\n따라서 모든 성분의 합은 0이다.\n결론\n구하는 값은 0이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

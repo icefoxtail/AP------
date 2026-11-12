@@ -81,6 +81,13 @@ test('accessibilityDescription is opt-in, XML escaped, and leaves default SVG by
     assert.equal(rejected.status,'SPEC_ERROR');
     assert.equal(rejected.detail.code,'INVALID_ACCESSIBILITY_DESCRIPTION');
   }
+  // A plan without the top-level caption used to fail as OUTPUT_NOT_CANONICAL/NON_JSON_VALUE on spec (title undefined); it now names the cause.
+  for(const missing of [undefined]){
+    const {caption:_drop,...rest}=plan;
+    const rejected=await compose({plan:missing===undefined?rest:{...rest,caption:missing},model});
+    assert.equal(rejected.status,'SPEC_ERROR');
+    assert.equal(rejected.detail.code,'PLAN_CAPTION_REQUIRED');assert.equal(rejected.detail.path,'caption');
+  }
 });
 function assertNotRun(result){
   assert.equal(result.schemaVersion,'construction-candidate-svg-v1');

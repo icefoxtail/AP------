@@ -255,7 +255,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "미지의 행렬을 한쪽으로 모아 정리하면 된다.\n\n$2(X-A)=X+B$이다.\n\n$2X-2A=X+B \\implies X=2A+B$\n$2A=\\begin{pmatrix}4&6\\\\2&8\\end{pmatrix}$\n따라서\n$X=\\begin{pmatrix}4&6\\\\2&8\\end{pmatrix}+\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}=\\begin{pmatrix}5&8\\\\4&9\\end{pmatrix}$\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -445,7 +445,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "문제에서 정의한 $b_{ij}=a_{ji}$를 네 성분에 직접 적용한다.\n\n$a_{11}=(-1)^1+4\\times1+1=4$\n$a_{12}=(-1)^1+4\\times2+1=8$\n$a_{21}=(-1)^2+4\\times1+1=6$\n$a_{22}=(-1)^2+4\\times2+1=10$\n\n따라서 $A=\\begin{pmatrix}4&8\\\\6&10\\end{pmatrix}$이다.\n\n정의 $b_{ij}=a_{ji}$에 따라\n$b_{11}=a_{11}=4$\n$b_{12}=a_{21}=6$\n$b_{21}=a_{12}=8$\n$b_{22}=a_{22}=10$\n\n그러므로 $B=\\begin{pmatrix}4&6\\\\8&10\\end{pmatrix}$이고 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -591,7 +591,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "먼저 조건으로부터 $a$를 구하고, 행렬의 거듭제곱 주기를 찾는다.\n\n$A=\\begin{pmatrix}0&1\\\\-1&a\\end{pmatrix}$이고 $A^2=A-E$이다.\n\n$A^2$를 직접 계산하여 $a$를 정한 뒤, $A^3$을 계산해 거듭제곱을 간단하게 처리한다.\n\n$A^2=\\begin{pmatrix}-1&a\\\\-a&a^2-1\\end{pmatrix}$\n또한\n$A-E=\\begin{pmatrix}-1&1\\\\-1&a-1\\end{pmatrix}$\n두 행렬이 같으므로 $a=1$이다.\n따라서\n$A=\\begin{pmatrix}0&1\\\\-1&1\\end{pmatrix}$\n이때\n$A^2=\\begin{pmatrix}-1&1\\\\-1&0\\end{pmatrix}$,\n$A^3=A\\cdot A^2=\\begin{pmatrix}-1&0\\\\0&-1\\end{pmatrix}=-E$\n그러므로 $A^6=E$이다.\n$2026=6\\times337+4$이므로\n$A^{2026}=A^4=A\\cdot A^3=-A=\\begin{pmatrix}0&-1\\\\1&-1\\end{pmatrix}$\n따라서 $p+q+r+s=0+(-1)+1+(-1)=-1$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -882,7 +882,7 @@ window.questionBank = [
     "answer": "6",
     "solution": "주어진 $2\\times1$ 행렬의 곱과 $A^2-A+E=O$를 이용해 목표 행렬의 성분 합을 구한다.\n\n$V=\\begin{pmatrix}1\\\\2\\end{pmatrix},\\quad W=AV=\\begin{pmatrix}3\\\\-2\\end{pmatrix}$라 하자.\n조건 (가) $A^2-A+E=O$에서\n$A^2=A-E$이다.\n$A^2V=(A-E)V$\n$=AV-V$\n$=W-V$\n$=\\begin{pmatrix}2\\\\-4\\end{pmatrix}$\n\n$\\begin{pmatrix}-9\\\\6\\end{pmatrix}=-3\\begin{pmatrix}3\\\\-2\\end{pmatrix}=-3W$이다.\n$A\\begin{pmatrix}-9\\\\6\\end{pmatrix}=-3AW$\n$=-3A^2V$\n$=-3\\begin{pmatrix}2\\\\-4\\end{pmatrix}$\n$=\\begin{pmatrix}-6\\\\12\\end{pmatrix}$\n$-6+12=6$\n따라서 모든 성분의 합은 6이고 정답은 6이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

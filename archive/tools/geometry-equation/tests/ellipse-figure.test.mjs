@@ -3,7 +3,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {assetIdentity} from '../production/contracts.mjs';
-import {solveEllipseFigure,composeEllipseFigure,renderEllipseSvg,auditEllipseSvg,ellipseFigureSize,ellipseFigureSpec,ellipseLabelObstacles,placeLabels,validateEllipseFigurePlan,FIGURE_CAPABILITY} from '../production/ellipse-figure-v1.mjs';
+import fs from 'node:fs';
+import {solveEllipseFigure,composeEllipseFigure,renderEllipseSvg,auditEllipseSvg,stopCurveLeaderShort,CURVE_LEADER_STOP,ellipseFigureSize,ellipseFigureSpec,ellipseLabelObstacles,placeLabels,validateEllipseFigurePlan,FIGURE_CAPABILITY} from '../production/ellipse-figure-v1.mjs';
 
 const identity=assetIdentity('22_매산고_1학기_중간_고2_기하와벡터_기출|18','SOLUTION_VISUAL','decisive-relation');
 const policy={baseFontPx:15,displayScale:1,profile:'TEST'};
@@ -510,4 +511,55 @@ test('a curve name gets a leader that ends on its own curve; a changed name or a
   await failsWith(svg.replace(/(id="leader-curve-c2"[^>]*?)x2="([0-9.]+)"/,(all,head,x2)=>`${head}x2="${Number(x2)+8}"`),'CONIC_CURVE_LABEL_MISMATCH:c2:leader-not-on-curve');
   await failsWith(svg.replace(/<g data-layer="50"><line id="leader-curve-c1"[^>]*\/><\/g>/,''),'CONIC_CURVE_LABEL_MISMATCH:c1:leader-missing');
   refused({...plan,conics:[{...plan.conics[0],label:''},plan.conics[1]]},'CONIC_LINE_LABEL_INVALID');
+});
+
+// 26 복성고 2mid q12 (golden item154circleparabolatangent): a circle and a parabola with one common tangent.  multi-curve-figure-v1 refuses the circle
+// (MULTI_CURVE_KIND_INVALID:circle); conics takes it, the hidden tangent line on c2 proves the tangency to the parabola, and the parabola's name keeps its leader.
+const circleParabolaPlan=()=>JSON.parse(fs.readFileSync('archive/tools/geometry-equation/ops/golden/item154circleparabolatangent/plan.json','utf8'));
+// The policy the Archive measurement gives this figure (about 24.2 px type shown at 0.466): at that scale the parabola name's leader, which comes from the opening of the curve,
+// grazed a corner of the sampled curve in the browser (LEADER_CROSSING:leader-curve-c2:curve-c2).
+const archivePolicy={baseFontPx:24.2,displayScale:0.4658368644067797,profile:'TEST'};
+
+test('a circle, a parabola and their common tangent compose and pass the independent observer (q12)',async()=>{
+  const plan=circleParabolaPlan();
+  const model=await solveEllipseFigure(plan);
+  const composed=await composeEllipseFigure({plan,model,identity,typographyPolicy:archivePolicy});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.match(composed.svg,/data-conic="CIRCLE\+PARABOLA"/);
+  assert.match(composed.svg,/id="leader-curve-c2" data-role="leader"[^>]*data-owner-curve="c2"/);
+  assert.equal((await auditEllipseSvg({plan,svg:composed.svg})).status,'PASS');
+  // The answer is not printed: no vertex (9,9), no a=9 form of the parabola, no coordinates of the parabola's tangent point.
+  assert.doesNotMatch(composed.svg,/data-tex="[^"]*(9,9|10,10|-18x|90)[^"]*"/);
+  // The tangent point on the circle and the tangent's equation are the solution's own steps and are drawn.
+  assert.match(composed.svg,/data-tex="T\(4,-2\)"/);
+  assert.match(composed.svg,/data-tex="y=2x-10"/);
+});
+
+test('the tangent claim is checked for each curve: a line that touches only the circle is refused for the parabola',async()=>{
+  const plan=circleParabolaPlan();
+  const wrong={...plan,lines:plan.lines.map(line=>line.id==='t2'?{...line,intercept:'-11'}:line)};
+  await solverRefused(wrong,'CONIC_TANGENT_CLAIM_FALSE');
+});
+
+test('a curve-name leader retried short of the stroke still ends within the observer tolerance of its curve',async()=>{
+  const plan=circleParabolaPlan();
+  const model=await solveEllipseFigure(plan);
+  const normal=await renderEllipseSvg({plan,model,identity,typographyPolicy:archivePolicy});
+  const stopped=await renderEllipseSvg({plan,model,identity,typographyPolicy:archivePolicy,stopCurveLeaders:true});
+  const leader=svg=>{const m=/id="leader-curve-c2"[^>]*x1="([0-9.]+)" y1="([0-9.]+)" x2="([0-9.]+)" y2="([0-9.]+)"/.exec(svg);return m.slice(1).map(Number);};
+  const [ax,ay,bx,by]=leader(normal.svg),[sx,sy,tx,ty]=leader(stopped.svg);
+  assert.deepEqual([sx,sy],[ax,ay],'the label end of the leader does not move');
+  assert.ok(Math.abs(Math.hypot(bx-sx,by-sy)-Math.hypot(tx-sx,ty-sy)-CURVE_LEADER_STOP)<1e-3,'the curve end is CURVE_LEADER_STOP nearer the label');
+  assert.equal((await auditEllipseSvg({plan,svg:stopped.svg})).status,'PASS');
+  // Only the curve-name leaders differ: every other byte of the figure is the same.
+  const withoutCurveLeaders=svg=>svg.replace(/<line id="leader-curve-c\d"[^>]*\/>/g,'');
+  assert.equal(withoutCurveLeaders(normal.svg),withoutCurveLeaders(stopped.svg));
+});
+
+test('stopCurveLeaderShort leaves a short leader alone and shortens a long one along its own line',()=>{
+  const short={a:[0,0],b:[0,8.2]};
+  assert.deepEqual(stopCurveLeaderShort(short),short);
+  const moved=stopCurveLeaderShort({a:[0,0],b:[30,40]});
+  assert.ok(Math.abs(Math.hypot(...moved.b)-(50-CURVE_LEADER_STOP))<1e-9);
+  assert.ok(Math.abs(moved.b[0]*40-moved.b[1]*30)<1e-9,'still on the same line');
 });
