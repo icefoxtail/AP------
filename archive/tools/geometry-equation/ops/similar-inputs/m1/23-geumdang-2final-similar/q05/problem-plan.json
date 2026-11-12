@@ -1,0 +1,167 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "domain": [
+      -15.49486163991391,
+      15.49486163991391
+    ],
+    "family": "rational",
+    "formulaLabel": "y=18/x",
+    "numerator": [
+      "18",
+      "0"
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "0",
+          "y": "6"
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "0"
+        },
+        {
+          "curveX": "3",
+          "id": "C"
+        }
+      ],
+      "polygons": [
+        {
+          "fill": "BLUE",
+          "id": "rect",
+          "points": [
+            "A",
+            "O",
+            "B",
+            "C"
+          ]
+        }
+      ]
+    },
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -15.49486163991391,
+      15.49486163991391,
+      -15.49486163991391,
+      15.49486163991391
+    ],
+    "shapeIntent": "OVERVIEW",
+    "overviewPolicy": "RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_v1",
+    "rationalFeatures": {
+      "schemaVersion": "RATIONAL_CONSTANT_OVER_LINEAR_FEATURES_v1",
+      "constant": "18",
+      "singularity": {
+        "kind": "VERTICAL_POLE",
+        "x": "0"
+      },
+      "horizontalAsymptoteY": "0",
+      "xIntercept": null,
+      "poleDirection": {
+        "left": "DOWN",
+        "right": "UP"
+      },
+      "asymptotes": {
+        "horizontal": {
+          "y": "0",
+          "drawn": false,
+          "reason": "ON_X_AXIS"
+        },
+        "vertical": {
+          "x": "0",
+          "drawn": false,
+          "reason": "ON_Y_AXIS"
+        }
+      }
+    },
+    "rationalFeaturePolicy": {
+      "schemaVersion": "RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_POLICY_v1",
+      "sourceDomain": "ALL_REALS_WITH_DENOMINATOR_EXCLUSION",
+      "degreeGrammar": "CONSTANT_OVER_LINEAR",
+      "singularityPolicy": "ONE_SIMPLE_REAL_POLE",
+      "horizontalAsymptotePolicy": "Y_EQUALS_ZERO_IS_THE_X_AXIS_NOT_DRAWN",
+      "asymptoteOnAxisPolicy": "AXIS_IS_THE_ASYMPTOTE_NO_DASHED_LINE",
+      "minimumFeatureSeparationCssPx": 1
+    },
+    "equalUnits": true,
+    "axisRatio": 1,
+    "plotCanvas": {
+      "width": 448,
+      "height": 448
+    },
+    "overlaysFeatures": {
+      "schemaVersion": "GRAPH_OVERLAYS_FEATURES_v1",
+      "points": [
+        {
+          "id": "O",
+          "x": 0,
+          "y": 0,
+          "xExact": "0",
+          "yExact": "0"
+        },
+        {
+          "id": "A",
+          "x": 0,
+          "y": 6,
+          "xExact": "0",
+          "yExact": "6"
+        },
+        {
+          "id": "B",
+          "x": 3,
+          "y": 0,
+          "xExact": "3",
+          "yExact": "0"
+        },
+        {
+          "id": "C",
+          "x": 3,
+          "y": 6,
+          "xExact": "3",
+          "yExact": "6"
+        }
+      ],
+      "lines": [],
+      "segments": [],
+      "guides": [],
+      "polygons": [
+        {
+          "id": "rect",
+          "points": [
+            "A",
+            "O",
+            "B",
+            "C"
+          ],
+          "fill": "BLUE"
+        }
+      ]
+    }
+  },
+  "caption": "C는 y=18/x 위의 점 · 직사각형 AOBC · 좌표값을 지정하지 않은 도식",
+  "sourceQuote": "현 Q5 반비례18/x 위의C와 직사각형AOBC",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "C는제1사분면 반비례곡선위; O원점, A/B는축위 직사각형",
+      "mappedTo": []
+    }
+  ]
+}
