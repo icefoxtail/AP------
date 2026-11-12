@@ -66,6 +66,234 @@
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "23"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "26"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "26"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "23"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
         "id": "outer",
         "op": "CIRCLE_THROUGH_POINT",
         "inputs": [
@@ -101,7 +329,19 @@
   "displayPoints": [
     "O",
     "A",
-    "B"
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N"
   ],
   "displaySegments": [
     {
@@ -117,6 +357,70 @@
         "B",
         "O"
       ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "GH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "HI",
+      "refs": [
+        "H",
+        "I"
+      ]
+    },
+    {
+      "id": "IJ",
+      "refs": [
+        "I",
+        "J"
+      ]
+    },
+    {
+      "id": "JG",
+      "refs": [
+        "J",
+        "G"
+      ]
+    },
+    {
+      "id": "KL",
+      "refs": [
+        "K",
+        "L"
+      ],
+      "dashed": true
     }
   ],
   "coordinateCanvas": {
@@ -128,7 +432,7 @@
       {
         "id": "annulus",
         "fill": "LIGHT",
-        "factRole": "DERIVED_INTERMEDIATE",
+        "factRole": "GIVEN",
         "shapes": [
           {
             "loop": {
@@ -161,40 +465,138 @@
             }
           }
         ]
+      },
+      {
+        "id": "section",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "C",
+              "steps": [
+                {
+                  "to": "D"
+                },
+                {
+                  "to": "E"
+                },
+                {
+                  "to": "F"
+                },
+                {
+                  "to": "C"
+                }
+              ]
+            }
+          },
+          {
+            "loop": {
+              "start": "G",
+              "steps": [
+                {
+                  "to": "H"
+                },
+                {
+                  "to": "I"
+                },
+                {
+                  "to": "J"
+                },
+                {
+                  "to": "G"
+                }
+              ]
+            }
+          }
+        ]
       }
     ],
     "expressionLabels": [
       {
-        "id": "r6",
+        "id": "radius6",
         "ownerSegment": "OA",
-        "text": "6cm",
+        "text": "6",
         "factRole": "GIVEN"
       },
       {
-        "id": "r3",
+        "id": "radius3",
         "ownerSegment": "BO",
-        "text": "3cm",
+        "text": "3",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "height",
+        "from": "H",
+        "to": "I",
+        "label": "8",
+        "unit": "cm",
+        "style": "BAR",
+        "side": "RIGHT",
+        "offsetPx": 30,
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "topLabel",
+        "at": "M",
+        "text": "위에서 본 모습",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sectionLabel",
+        "at": "N",
+        "text": "중심축을 포함한 단면",
+        "labelKind": "TEXT",
         "factRole": "GIVEN"
       }
     ]
   },
-  "caption": "밑면 한 개는 고리: π(6²−3²)=27πcm², 두 밑면54πcm²",
-  "sourceQuote": "구멍 뚫린 원기둥 안쪽반지름3,바깥6,높이8의 해설 밑면 분석",
+  "caption": "바깥 옆면96π + 안쪽 옆면48π + 두 고리 밑면54π = 198π cm²",
+  "sourceQuote": "안쪽 반지름3cm, 바깥6cm, 높이8cm인 관통 구멍 원기둥",
   "sourceConditions": [
     {
       "id": "givens",
-      "condition": "구멍 뚫린 원기둥 안쪽반지름3,바깥6,높이8의 해설 밑면 분석",
+      "condition": "안쪽 반지름3cm, 바깥6cm, 높이8cm인 관통 구멍 원기둥",
       "mappedTo": [
         "O",
         "A",
-        "B"
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N"
       ]
     }
   ],
   "newVisualInformation": [],
   "hiddenPointNames": [
     "A",
-    "B"
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N"
   ],
   "hiddenPointStyle": "NONE"
 }

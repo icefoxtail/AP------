@@ -2,10 +2,10 @@
   "status": "SAMPLE_ONLY",
   "sourceRef": {
     "path": "archive/exams/similar/middle/m1/2final/24_연향중_2학기_기말_중1_유사.js",
-    "bytes": 72828,
-    "sha256": "sha256:7dc0c3a3fc2a0362109ae7ce55967b785505a7395468e758d5eb1b024a804fbc"
+    "bytes": 72576,
+    "sha256": "sha256:08fc646628efe25961404ed8eea3b5ca1cc97361ca7237fd70ef282bebb3d8b9"
   },
-  "gitBlob": "b9292b9add37aab04daff62dacd16674f3f2a517",
+  "gitBlob": "3a3cbf501c79cc920e9130c98d3ea212aadfac61",
   "sourceRefBranch": "work/similar-m1-accumulate",
   "questionUid": "24_연향중_2학기_기말_중1_유사|13",
   "questionSha256": "sha256:6114787ac7c51da79a1688952380f3e09eb35c736eabc65ae196b7ba2e776841",
@@ -26,30 +26,30 @@
   "productionAuthorized": false,
   "surfaces": [
     {
-      "surface": "solution",
+      "surface": "problem",
       "identity": {
         "questionUid": "24_연향중_2학기_기말_중1_유사|13",
-        "surface": "SOLUTION_VISUAL",
+        "surface": "PROBLEM_VISUAL",
         "visualRole": "decisive-relation",
-        "visualAssetKey": "sha256:0ee1bdffae6356c143f02785fc2873f708bedb7df80580aadca4d8f88f243537",
-        "assetId": "va-4b7f85c87eda851c329c1d5ba2af562cbf46bda977d0c42599e0d7b781c5907f"
+        "visualAssetKey": "sha256:bebb25e337a5875e8a05011f3b68f65bb3c28ebe7d96af4eca27ba3630f159bc",
+        "assetId": "va-bd69b4944e22444df262677e146ac2977632a11dd8b12c4fb2c12f7f43361454"
       },
       "status": "SAMPLE_ONLY",
       "compositionStatus": "COMPOSED",
       "planRef": {
-        "path": "yeonfinal24-q13-inputs/solution-plan.json",
-        "bytes": 4011,
-        "sha256": "sha256:c477683ac5a12830c50930006dabd7e3807c9b96caf47b2d7468d6a9739c54c5"
+        "path": "yeonfinal24-q13-inputs/problem-plan.json",
+        "bytes": 11511,
+        "sha256": "sha256:12f27ce7d41fc8fcf2ea032ba89a663571070237ae2f34b5e4effdcce337b548"
       },
       "svgRef": {
-        "path": "yeonfinal24-q13-outputs/solution.svg",
-        "bytes": 8711,
-        "sha256": "sha256:f16ca47955542546f76845603c6d74ba2931c5ee42c8f85ee59c8b6548e0d31e"
+        "path": "yeonfinal24-q13-outputs/problem.svg",
+        "bytes": 31204,
+        "sha256": "sha256:44e946be3671cfc720dd56f89b864a7113423fdf9ad6d36d1c2fb6bb0441320b"
       },
       "pngRef": {
-        "path": "yeonfinal24-q13-outputs/solution.png",
-        "bytes": 25565,
-        "sha256": "sha256:a7649bfe98598ca6c5d07daf7a9a3584ed5c5b9bdd3890782062c0cb3cc37172"
+        "path": "yeonfinal24-q13-outputs/problem.png",
+        "bytes": 18743,
+        "sha256": "sha256:794d245f1b4a441f3703c7a50e156cf296c9280c4c1fdab4fbcb5151d6f20fd3"
       },
       "staticAudit": {
         "status": "PASS",
@@ -59,16 +59,39 @@
           "errors": [],
           "observations": [
             {
-              "id": "r6",
+              "id": "radius6",
               "type": "EXPRESSION_LABEL",
               "ownerSegment": "OA",
-              "distancePx": 16.255999999999972
+              "distancePx": 16.25600000000003
             },
             {
-              "id": "r3",
+              "id": "radius3",
               "type": "EXPRESSION_LABEL",
               "ownerSegment": "BO",
-              "distancePx": 16.244000000000028
+              "distancePx": 28.24399999999997
+            },
+            {
+              "id": "topLabel",
+              "type": "TEXT_LABEL",
+              "labelKind": "TEXT",
+              "anchor": null,
+              "distancePx": 79.51999999956169
+            },
+            {
+              "id": "sectionLabel",
+              "type": "TEXT_LABEL",
+              "labelKind": "TEXT",
+              "anchor": null,
+              "distancePx": 25.376000000170222
+            },
+            {
+              "id": "height",
+              "type": "DIMENSION",
+              "style": "BAR",
+              "side": "RIGHT",
+              "offset": 1,
+              "lengthPx": 138.687420332766,
+              "distancePx": 30
             },
             {
               "id": "annulus",
@@ -76,7 +99,15 @@
               "loops": 2,
               "pattern": null,
               "labelKind": "MATH",
-              "areaPx2": 192503.6651661696
+              "areaPx2": 42478.23830033128
+            },
+            {
+              "id": "section",
+              "type": "REGION",
+              "loops": 2,
+              "pattern": null,
+              "labelKind": "MATH",
+              "areaPx2": 14425.650419001322
             }
           ]
         }
@@ -90,20 +121,138 @@
         "errors": []
       },
       "lineage": {
-        "planSha256": "sha256:5dc6fd6e222fe090390c685161f886ea3b61e6f760f94e98616c14763aa61fff",
-        "modelSha256": "sha256:3f929ca1069b7ad0825e057f4c3d5f39c6818a07cac15d5fedcfab2547a76d40",
+        "planSha256": "sha256:79cc3de848cc782fbdd72764e7d3105abd2be19ee7471ca4a6f80f065ff03b1e",
+        "modelSha256": "sha256:736518a3fee60cd832ac8ef9d921c072a61ce61159c44bff4db564463164a465",
         "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
-        "specSha256": "sha256:20ecc07c8d67d668db2b2a458517a9314a00d629856ac362337cd237a31f0907",
+        "specSha256": "sha256:325cafd368fe5a52b7a6dba4613967d00e0f8be7b4eab2153422e48fccf3c593",
+        "fragmentSha256s": {
+          "O-name": "sha256:5b4b629613c235e978cfd5ce8178c7fea9335c010f7b4111423c838f26e0f028",
+          "radius6": "sha256:5bd6b64ab1983fb1123bf2c5aa1f8c1ef5bfde913583af3538e19bda3bb36d3d",
+          "radius3": "sha256:aa2ff18c4ec7732007f3e0d16f443949cd2c15da11a725c63886a562b245e99b",
+          "topLabel": "sha256:01f32b65b206a5ee50afab27fc99e68a86ca7ada89c9f870871a239e3a1aa636",
+          "sectionLabel": "sha256:a0a35ea0e0aa9a7c09711e1a81b28505d75143e45002eb9eac2767e5bd2de86f",
+          "height-label": "sha256:45e0410dd06165defa06ec9dfc224e0c82411686fe0d0230839cde88cf60060e"
+        },
+        "measurementsSha256": "sha256:ce0ba419b37e5f3c63fe935cab0ef572185858675ea44b5c1733ac8963703dfc",
+        "svgSha256": "sha256:44e946be3671cfc720dd56f89b864a7113423fdf9ad6d36d1c2fb6bb0441320b",
+        "witnessSha256": "sha256:b2bc8af306430b87784e164539983e2c35f3cb815f78eef7446a95be406d6c89",
+        "staticAuditSha256": "sha256:edec91180f5ac65def82654db64f1727cef90a396a171e7d8a76f86d7d31c419",
+        "renderedLayoutSha256": "sha256:2d683bb0ac5d621f51ef992ef96ad1767d0d2ca2bd8a1fe85eaf690403aed7d5"
+      }
+    },
+    {
+      "surface": "solution",
+      "identity": {
+        "questionUid": "24_연향중_2학기_기말_중1_유사|13",
+        "surface": "SOLUTION_VISUAL",
+        "visualRole": "decisive-relation",
+        "visualAssetKey": "sha256:0ee1bdffae6356c143f02785fc2873f708bedb7df80580aadca4d8f88f243537",
+        "assetId": "va-4b7f85c87eda851c329c1d5ba2af562cbf46bda977d0c42599e0d7b781c5907f"
+      },
+      "status": "SAMPLE_ONLY",
+      "compositionStatus": "COMPOSED",
+      "planRef": {
+        "path": "yeonfinal24-q13-inputs/solution-plan.json",
+        "bytes": 11512,
+        "sha256": "sha256:32a429eddccd434ef722d5168c7268cd28bd67ef7351f57ba6889eccb6d01126"
+      },
+      "svgRef": {
+        "path": "yeonfinal24-q13-outputs/solution.svg",
+        "bytes": 31205,
+        "sha256": "sha256:43d1850e8d3539eaebeb50d03f3848cacf5b5380e01611ea50eace88673a04ca"
+      },
+      "pngRef": {
+        "path": "yeonfinal24-q13-outputs/solution.png",
+        "bytes": 18743,
+        "sha256": "sha256:794d245f1b4a441f3703c7a50e156cf296c9280c4c1fdab4fbcb5151d6f20fd3"
+      },
+      "staticAudit": {
+        "status": "PASS",
+        "errors": [],
+        "planeMarks": {
+          "status": "PASS",
+          "errors": [],
+          "observations": [
+            {
+              "id": "radius6",
+              "type": "EXPRESSION_LABEL",
+              "ownerSegment": "OA",
+              "distancePx": 16.25600000000003
+            },
+            {
+              "id": "radius3",
+              "type": "EXPRESSION_LABEL",
+              "ownerSegment": "BO",
+              "distancePx": 28.24399999999997
+            },
+            {
+              "id": "topLabel",
+              "type": "TEXT_LABEL",
+              "labelKind": "TEXT",
+              "anchor": null,
+              "distancePx": 79.51999999956169
+            },
+            {
+              "id": "sectionLabel",
+              "type": "TEXT_LABEL",
+              "labelKind": "TEXT",
+              "anchor": null,
+              "distancePx": 25.376000000170222
+            },
+            {
+              "id": "height",
+              "type": "DIMENSION",
+              "style": "BAR",
+              "side": "RIGHT",
+              "offset": 1,
+              "lengthPx": 138.687420332766,
+              "distancePx": 30
+            },
+            {
+              "id": "annulus",
+              "type": "REGION",
+              "loops": 2,
+              "pattern": null,
+              "labelKind": "MATH",
+              "areaPx2": 42478.23830033128
+            },
+            {
+              "id": "section",
+              "type": "REGION",
+              "loops": 2,
+              "pattern": null,
+              "labelKind": "MATH",
+              "areaPx2": 14425.650419001322
+            }
+          ]
+        }
+      },
+      "renderedLayout": {
+        "status": "PASS",
+        "display": {
+          "width": 720,
+          "height": 560
+        },
+        "errors": []
+      },
+      "lineage": {
+        "planSha256": "sha256:5e206226a56037087109b8a176f75f9742ae0f38546fdea3641da468ebff558c",
+        "modelSha256": "sha256:736518a3fee60cd832ac8ef9d921c072a61ce61159c44bff4db564463164a465",
+        "typographyPolicySha256": "sha256:092b2771d41f35e913507f9f2e7e7a2a960475863e942e5f2193d21b8a4140f9",
+        "specSha256": "sha256:fcead5df3b9cd7f1cfa9899358f6ba73676f765fea657aba200cef801a6572f1",
         "fragmentSha256s": {
           "O-name": "sha256:1bec4f4394fe44020f11e65efee6c6c7ed660b45a5f5b3b75a0405f8b51d0bfc",
-          "r6": "sha256:d4116c83a533e2e39f612df8b7d3014cd95baff879695365f5439331ddd5b8f7",
-          "r3": "sha256:ceac7cdc54fdebb98510310e7bc6702318448e5c087c8e01781fe86e17b2d5e6"
+          "radius6": "sha256:ce40067ba754fbee683eadc951378deef89d80415252466a22772c0195d0abbf",
+          "radius3": "sha256:37712097c6651103a557f78611a1c073d510a427c2baa1a025ec3f2beff50afe",
+          "topLabel": "sha256:8d7a416e88308d8418b8d6ebaa6d49cea87f5a64c72fb22a421b326cf7f03742",
+          "sectionLabel": "sha256:50f423b48dff913ceb2bbe6703eeaf6bcb9ed6bef826492373ca556ba130e9d8",
+          "height-label": "sha256:1bfad0af6098d4997e4468906ce5c73e4ab961524accead0a8522a56b21d6520"
         },
-        "measurementsSha256": "sha256:4cefca5909f924cd0e548fe679b9ca3dbcbc57a43b6f842d9e1a8aefafdeeb16",
-        "svgSha256": "sha256:f16ca47955542546f76845603c6d74ba2931c5ee42c8f85ee59c8b6548e0d31e",
-        "witnessSha256": "sha256:5fd048ea33b0fb75bdd2af33a2c1d61cc0f5601c4ba4475cc2ac81795edc09a0",
-        "staticAuditSha256": "sha256:056c38f68f99dde98794db8d1f6f3223b8d843aa001bb177b7fe087fcde3c2ef",
-        "renderedLayoutSha256": "sha256:7a5e45a7a8bec3798214c6131295439c6a0b6e2555e679f70fc03ec9cbe49634"
+        "measurementsSha256": "sha256:ce0ba419b37e5f3c63fe935cab0ef572185858675ea44b5c1733ac8963703dfc",
+        "svgSha256": "sha256:43d1850e8d3539eaebeb50d03f3848cacf5b5380e01611ea50eace88673a04ca",
+        "witnessSha256": "sha256:501eeaf65c8811410b097324908c3d06e3c0036c7764462dc22ddf6e708ea652",
+        "staticAuditSha256": "sha256:f41f0292afc39d6f890d538d33f5a968918cc0e8f96f7a01bf55fc2a842f6fdc",
+        "renderedLayoutSha256": "sha256:388725800eb07aadc325380505a5507b117715f1690c380ca9ff990810c98a27"
       }
     }
   ],
