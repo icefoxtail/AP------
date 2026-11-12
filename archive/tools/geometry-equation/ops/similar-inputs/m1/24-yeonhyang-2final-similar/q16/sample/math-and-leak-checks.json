@@ -1,0 +1,16 @@
+{
+  "geometryStatus": "PASS",
+  "independentMath": {
+    "axisLvolumePi": 84,
+    "axisMvolumePi": 64,
+    "axisNvolumePi": 80,
+    "independentIntegration": "m: integral 0..3 16 dx + integral3..6 [4(6-x)/3]^2 dx =64; n: 16*6 - integral3..6 [4(x-3)/3]^2 dx=80",
+    "correctOrder": "a>c>b"
+  },
+  "state": "OPEN_SOURCE_REPAIR: existing solution b/c swapped. Parent notified for single-writer fix. Only given problem geometry preserved; solution excluded.",
+  "problemLeak": "Only supplied dimensions/axes in Q16 problem. Q13 derived annulus calculation solution-only.",
+  "staticAudit": "PASS",
+  "headlessLayout": "PASS",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN"
+}
