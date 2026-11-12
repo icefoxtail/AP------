@@ -1,0 +1,68 @@
+/* Only the Grade 7 learning route opts into this layer. The existing problem,
+   manual and teacher routes retain their original controls and layout. */
+.apl-g7-learning .apl-stage { display:flex; flex-direction:column; }
+.apl-g7-learning .apl-canvas-wrap { flex:1 1 auto; min-height:320px; }
+.g7-learning { flex:0 0 auto; margin:10px 14px 0; padding:13px 16px 10px; border:1px solid var(--line, #d5e3db); border-radius:16px; background:var(--surface, #fffefa); color:var(--ink, #17382a); position:relative; z-index:8; }
+[data-theme="board"] .g7-learning { background:#12241c; color:#e1eee7; border-color:#365343; }
+.g7-learning[hidden], .g7-learning [hidden], .g7-short-caption[hidden], .g7-short-formula[hidden] { display:none!important; }
+.g7-learning-goal { display:flex; flex-direction:column; gap:4px; font-size:14px; line-height:1.45; }
+.g7-learning-goal b { font-size:18px; font-weight:850; letter-spacing:-.03em; }
+.g7-learning-goal span { opacity:.83; }
+.g7-learning-controls { display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin-top:10px; }
+.g7-learning button { min-height:40px; padding:8px 12px; border-radius:10px; font-size:13px; }
+.g7-learning-targets { display:flex; gap:6px; margin-top:9px; }
+.g7-learning-targets button[aria-pressed="true"] { background:#176f4e; color:white; }
+.g7-learning-time { font-variant-numeric:tabular-nums; font-size:12px; opacity:.75; margin-left:auto; }
+.g7-learning input[type="range"] { width:100%; height:18px; margin-top:5px; }
+.g7-learning-extra { margin-top:7px; font-size:12px; opacity:.9; }
+.g7-learning-extra summary { cursor:pointer; width:max-content; padding:4px 0; }
+.g7-learning-legacy { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+.g7-short-caption,.g7-short-formula { position:absolute; left:14px; right:14px; z-index:5; text-align:center; pointer-events:none; color:var(--ink, #17382a); background:var(--surface, #fffefa); padding:8px 10px; border-radius:10px; line-height:1.45; }
+[data-theme="board"] .g7-short-caption,[data-theme="board"] .g7-short-formula { background:#11251d; color:#e1eee7; }
+.g7-short-caption { top:8px; font-size:14px; font-weight:650; }
+.g7-short-formula { bottom:12px; font-size:18px; font-weight:750; }
+.g7-short-active .apl-stage-chips,.g7-short-active .apl-stage-status,.g7-short-active .apl-stage-readouts,.g7-short-active .apl-float-card,.g7-short-active .apl-scene-guide,.g7-short-active .apl-stage-tools,.g7-short-active .apl-stage-tr { visibility:hidden; }
+.g7-short-active .apl-ink { pointer-events:none!important; visibility:hidden; }
+.g7-short-active .apl-panel { visibility:hidden; }
+.g7-short-active .apl-main { grid-template-columns:minmax(0,1fr); }
+.g7-short-active .apl-panel { display:none; }
+@media(max-width:859px) {
+  .g7-learning { margin:8px 8px 0; padding:10px 11px 8px; border-radius:13px; }
+  .g7-learning-goal b { font-size:16px; }
+  .g7-learning-goal span { font-size:12px; }
+  .g7-learning-controls { gap:5px; }
+  .g7-learning button { min-height:38px; padding:7px 9px; font-size:12px; }
+  .g7-short-active .apl-stage { height:auto!important; min-height:560px; }
+  .g7-short-active .apl-canvas-wrap { height:430px!important; min-height:430px; flex:none; }
+  .g7-short-caption { font-size:12px; left:8px; right:8px; }
+  .g7-short-formula { font-size:16px; left:8px; right:8px; }
+}
+@media(prefers-reduced-motion:reduce) { .g7-learning * { scroll-behavior:auto; transition:none; } }
+/* Focused playback keeps the hierarchy in the table of contents, without
+   spending the drawing viewport on three repeated selection bars. */
+.g7-short-active .apl-railwrap,.g7-short-active .apl-stage-top,.g7-short-active .apl-dock,.g7-short-active .apl-tape { display:none!important; }
+.g7-short-active .apl-float,.g7-short-active .sv-student-tip,.g7-short-active .apl-presenter,.g7-short-active .apl-pen-tools { visibility:hidden; }
+.g7-short-active .apl-bar { grid-template-areas:"back title actions"; }
+.g7-short-active .apl-stage { position:relative; top:0!important; height:calc(100svh - 57px)!important; min-height:620px; }
+.g7-short-active .apl-canvas-wrap { height:auto!important; min-height:360px; flex:1 1 auto; }
+.g7-learning-progress { display:flex; align-items:center; gap:8px; margin-top:7px; }
+.g7-learning-progress .g7-learning-range { flex:1; min-width:40px; height:16px; width:auto; margin:0; accent-color:#176f4e; }
+.g7-learning-progress button { min-height:28px; padding:3px 7px; font-size:11px; }
+.g7-learning-progress .g7-learning-time { margin:0; white-space:nowrap; }
+.g7-short-active .g7-learning { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; column-gap:20px; padding:10px 15px; }
+.g7-short-active .g7-learning-goal { grid-column:1; grid-row:1; }
+.g7-short-active .g7-learning-targets { grid-column:2; grid-row:1; margin:0; }
+.g7-short-active .g7-learning-controls { grid-column:1; grid-row:2; margin-top:8px; }
+.g7-short-active .g7-learning-progress { grid-column:2; grid-row:2; min-width:270px; }
+@media(max-width:859px) {
+  .g7-short-active .apl-stage { min-height:680px; }
+  .g7-short-active .g7-learning { grid-template-columns:minmax(0,1fr) auto; padding:9px 10px; column-gap:6px; }
+  .g7-short-active .g7-learning-goal { grid-column:1/-1; }
+  .g7-short-active .g7-learning-targets { grid-column:2; grid-row:2; }
+  .g7-short-active .g7-learning-targets button { padding:5px 7px; min-height:34px; font-size:11px; }
+  .g7-short-active .g7-learning-controls { grid-column:1; grid-row:2; flex-wrap:nowrap; gap:4px; }
+  .g7-short-active .g7-learning-controls button { padding:6px 7px; font-size:11px; min-height:34px; white-space:nowrap; }
+  .g7-short-active .g7-learning-progress { grid-column:1/-1; grid-row:3; min-width:0; margin-top:5px; }
+  .g7-short-active .apl-canvas-wrap { min-height:450px; }
+}
+@media(max-width:859px) { .apl-g7-learning:not(.g7-short-active) .apl-stage { min-height:560px; height:auto; position:relative; top:0; } }

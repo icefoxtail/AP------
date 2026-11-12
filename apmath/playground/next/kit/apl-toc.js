@@ -220,3 +220,44 @@
   APLab.Toc = Toc;
   (APLab.labHooks = APLab.labHooks || []).push((lab) => { lab.toc = new Toc(lab); });
 })();
+
+/* Grade 7 learning upgrade. Additive, fail-safe and isolated from assessment,
+ * manual audits, teacher mode and every other grade. */
+(function () {
+  'use strict';
+  const A = window.APLab, script = document.currentScript;
+  const query = new URLSearchParams(location.search), hash = new URLSearchParams(location.hash.slice(1));
+  const param = key => query.get(key) || hash.get(key);
+  if (!A || !script?.src || !/\/g7-[^/]+\.html$/.test(location.pathname) || param('manual') === '1' || param('teach') === '1' || ['exam', 'assessment', 'test'].includes(param('mode')) || param('assessment') === '1') return;
+  const base = new URL('.', script.src);
+  const json = value => JSON.parse(JSON.stringify(value));
+  const css = document.createElement('link');
+  css.rel = 'stylesheet'; css.href = new URL('apl-g7-learning.css?v=20261113-1', base).href;
+  document.head.append(css);
+  const load = name => new Promise((resolve, reject) => {
+    const el = document.createElement('script'); el.src = new URL(name + '?v=20261113-1', base).href;
+    el.onload = resolve; el.onerror = () => reject(new Error('Grade 7 learning module unavailable: ' + name));
+    document.head.append(el);
+  });
+  const ready = load('apl-g7-short-scenes.js').then(() => load('apl-g7-learning.js'));
+  // This hook runs before the legacy player can substitute its fixed example.
+  A.labHooks.unshift(lab => {
+    if (!lab.id?.startsWith('g7-') || lab.teach) return;
+    const b = lab.board;
+    lab._g7LearningEntry = { s: json(lab.s), tab: lab.tab, view: json({ focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY, kind: b.kind, aspect: b.aspect, panes: b.panes, insets: b.insets }) };
+  });
+  A.labHooks.push(lab => {
+    if (!lab.id?.startsWith('g7-') || lab.teach) return;
+    ready.then(() => {
+      if (lab.video?.state !== 'idle') {
+        // A click or explicit play link arrived while modules were loading:
+        // let it finish. Install when the student explicitly exits that lesson.
+        const leave = lab.video._leave.bind(lab.video);
+        lab.video._leave = rebuild => {
+          lab.video._leave = leave; const result = leave(rebuild);
+          queueMicrotask(() => A.G7Learning.install(lab)); return result;
+        };
+      } else A.G7Learning.install(lab, lab._g7LearningEntry);
+    }).catch(error => console.warn(error.message));
+  });
+})();
