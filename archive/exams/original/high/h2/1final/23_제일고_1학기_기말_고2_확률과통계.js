@@ -29,7 +29,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_1학기_기말_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: A와 B의 벤다이어그램에 전체집합의 원소 1부터 9까지를 놓고, 두 집합 바깥의 5, 7, 8이 있는 영역을 색칠한 그림.",
+    "solutionImageCaption": "A와 B에 모두 배반인 C의 원소는 색칠한 바깥 영역에서 고른다. C는 공집합이 아니므로 바깥 원소들 중 하나 이상을 택한다. 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -424,7 +428,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_1학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 옮긴 흰 공 수가 0개, 1개, 2개인 세 갈래 수형도와 각 경우 B 상자의 흰 공 수 및 두 개를 모두 흰 공으로 뽑을 확률.",
+    "solutionImageCaption": "A 상자에서 옮긴 흰 공 수 k에 따라 경우를 나누고, B 상자의 흰 공 수 4+k와 두 흰 공 추출의 조건부확률을 나타냈다. 세 경우를 처음 분기 확률로 가중해 합한다. 정답은 51/140이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -681,6 +689,10 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_1학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축에 일어난 사람 수 0명, 1명, 2명, 3명을 놓고 각 경우의 수를 점으로 쌓아 나타낸 점도표.",
+    "solutionImageCaption": "세 사람이 각각 일어나거나 앉는 여덟 가지 상태를 일어난 사람 수에 따라 묶었다. 각 수의 빈도는 1, 3, 3, 1로 대칭이다. 정답은 (1) 3/4, (2) A조이다.",
+    "solutionImageSize": "full"
   }
 ];

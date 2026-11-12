@@ -744,7 +744,11 @@ window.questionBank = [
     "sourceQuestionTextExact": "다항함수 $f(x)=-3x^2+6x+9$과 $x$축으로 둘러싸인 도형의 넓이는? [4.2점]",
     "category": "곡선과 x축 사이의 넓이",
     "originalCategory": "곡선과 x축 사이의 넓이",
-    "decisiveStep": "곡선과 x축 사이의 넓이"
+    "decisiveStep": "곡선과 x축 사이의 넓이",
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선이 x축과 만나는 두 점 사이의 영역이 파란색으로 채워져 있다.",
+    "solutionImageCaption": "파란 영역은 포물선과 x축 사이에서 넓이를 구하는 부분이다. 두 교점 사이에서 함수가 양수임을 나타낸다. 정답은 4번이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -1655,7 +1659,11 @@ window.questionBank = [
     "sourceQuestionTextExact": "&lt;단답형 2&gt;<br>최고차항의 계수가 1인 삼차함수 $f(x)$에 대하여 함수<br>$$g(x) = \\begin{cases} f(x) & (x \\ge 0) \\\\ -f(-x) & (x < 0) \\end{cases}$$<br>가 다음 조건을 만족한다.<br>(가) 함수 $g(x)$는 실수 전체의 집합에서 연속이다.<br>(나) 임의의 실수 $t$에 대하여 방정식 $|g(x)|=t$의 서로 다른 실근의 개수의 최댓값과 함수 $|g(x)|$의 미분가능하지 않은 점의 개수의 합은 8이다.<br>$\\int_{0}^{1} g(x)dx = -\\frac{3}{4}$일 때, $f(4)$의 값을 구하시오. [5점]",
     "category": "절댓값 함수의 교점 수와 미분 불가능점",
     "originalCategory": "절댓값 함수의 교점 수와 미분 불가능점",
-    "decisiveStep": "절댓값 함수의 교점 수와 미분 불가능점"
+    "decisiveStep": "절댓값 함수의 교점 수와 미분 불가능점",
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌우 대칭인 H 그래프가 원점과 양쪽 영점에서 x축에 닿고, 바깥으로 높아지며 양쪽에서 봉우리를 만든다.",
+    "solutionImageCaption": "절댓값 함수 H의 수평선 교점 수와 미분 불가능한 점을 그래프에서 확인한다. 대칭인 양쪽 가지가 교점 수를 짝으로 만든다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1732,7 +1740,11 @@ window.questionBank = [
     "sourceQuestionTextExact": "&lt;서술형 1&gt;<br>두 양수 $a, k$에 대하여 함수<br>$$f(x) = \\begin{cases} x^3-x^2 & (x < a) \\\\ x^2+k & (x \\ge a) \\end{cases}$$<br>는 $x=a$에서 연속이다. 함수 $y=f(x)$의 그래프와 $x$축 및 두 직선 $x=a, x=a+1$로 둘러싸인 부분의 넓이를 $S_1$, 함수 $y=f(x)$의 그래프와 $x$축으로 둘러싸인 부분의 넓이를 $S_2$라 하자. $S_1 = 256 S_2$일 때, $a+k$의 값을 풀이과정과 함께 상세하게 서술하시오. [10점]",
     "category": "매개변수와 넓이 조건",
     "originalCategory": "매개변수와 넓이 조건",
-    "decisiveStep": "매개변수와 넓이 조건"
+    "decisiveStep": "매개변수와 넓이 조건",
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란색은 x=0부터 1까지 x축 아래쪽의 S₂이고, 주황색은 x=3부터 4까지 x축 위쪽의 S₁이다.",
+    "solutionImageCaption": "파란 영역은 S₂, 주황 영역은 S₁이며 각각 곡선과 x축 사이의 넓이를 나타낸다. 연속 조건과 넓이의 비를 이용한다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1809,6 +1821,10 @@ window.questionBank = [
     "sourceQuestionTextExact": "&lt;서술형 2&gt;<br>최고차항의 계수가 1인 사차함수 $f(x)$와 실수 $t$에 대하여 구간 $(-\\infty, t]$에서 함수 $f(x)$의 최솟값을 $f_1(t)$라 하고, 구간 $[t, \\infty)$에서 함수 $f(x)$의 최솟값을 $f_2(t)$라 할 때, 함수<br>$$g(t) = \\begin{cases} f_1(t) & (t < 0) \\\\ f_2(t) & (t \\ge 0) \\end{cases}$$<br>가 다음 조건을 만족시킨다.<br>(가) 함수 $g(t)$는 실수 전체의 집합에서 연속이고, $t=1$에서만 미분가능하지 않다.<br>(나) 함수 $g(t)$가 $t=\\alpha$에서 극솟값을 가질 때, $\\alpha$의 최댓값이 3이다.<br>$f(1)=0$일 때, $f(4)$의 값을 풀이과정과 함께 상세하게 서술하시오. [10점]",
     "category": "최솟값 함수의 가지와 극값",
     "originalCategory": "최솟값 함수의 가지와 극값",
-    "decisiveStep": "최솟값 함수의 가지와 극값"
+    "decisiveStep": "최솟값 함수의 가지와 극값",
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 사차함수 곡선이 왼쪽에서 내려와 x축을 지나 봉우리를 만든 뒤 다시 내려와 x=3에서 x축에 닿고 오른쪽으로 상승한다.",
+    "solutionImageCaption": "도함수의 세 임계점으로 사차함수의 증감 구간을 나누고 f(1)=f(3)을 이용해 계수를 정한다. 그래프는 두 함수값이 같은 지점을 보여 준다. 정답은 5분의 69이다.",
+    "solutionImageSize": "full"
   }
 ];

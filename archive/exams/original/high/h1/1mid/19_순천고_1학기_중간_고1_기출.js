@@ -202,7 +202,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "첫째 식에서\n$x-y=-1$\n$y=x+1$이다.\n이를 둘째 식에 대입하면\n$x^2+(x+1)^2=a+2$,\n$2x^2+2x-a-1=0$이다.\n$x$가 정해지면 $y=x+1$도 하나로 정해지므로, 해가 한 쌍이라는 것은 이 이차방정식이 실근을 하나만 갖는다는 뜻이다.\n판별식이 $0$이어야 하므로\n$D=2^2-4\\cdot2\\cdot(-a-1)$,\n$D=4+8a+8=8a+12$,\n$8a+12=0$,\n$a=-\\dfrac32$이다.\n이때 이차방정식의 중근은\n$x=-\\dfrac{2}{2\\cdot2}=-\\dfrac12$이고,\n$y=x+1=\\dfrac12$이다.\n원래 둘째 식의 좌변은\n$x^2+y^2=\\dfrac14+\\dfrac14=\\dfrac12=a+2$이다.\n따라서 해는 실제로 한 쌍이며, 구하는 값은 $-\\dfrac32$이고 정답은 ①이다.",
-    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q5-solution.svg",
+    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q5-solution-v2.svg",
     "category": "원의 방정식",
     "originalCategory": "원의 방정식",
     "standardCourse": "수학(상)",
@@ -226,7 +226,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 좌표평면에서 원과 한 직선이 한 점에서 접하고, 중심과 접점을 잇는 선분이 직선에 수직이다.",
+    "solutionImageCaption": "x−y=−1에서 원점까지의 거리는 √(2분의 1)이고, 접점은 (−2분의 1, 2분의 1)이다. 따라서 원의 반지름은 √(2분의 1)이고 a+2=2분의 1을 얻는다. 정답은 −2분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,

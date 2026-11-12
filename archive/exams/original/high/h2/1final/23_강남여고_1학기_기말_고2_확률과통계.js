@@ -850,7 +850,11 @@ window.questionBank = [
     "image": "assets/images/23_강남여고_1학기_기말_고2_확률과통계/q10.png",
     "problemTypeTemplateMappingStatus": "DIRECT_ACTIVE",
     "imageAlt": "같은 간격으로 놓인 원 위의 8개 점",
-    "imageSize": "large"
+    "imageSize": "large",
+    "solutionImage": "assets/images/23_강남여고_1학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위 여덟 등분점과 네 지름을 보인다. 파란 지름에 주황색 두 변을 더한 한 직각삼각형 예가 있다.",
+    "solutionImageCaption": "원에 내접한 삼각형이 직각이 되는 조건을 지름으로 확인한다. 파란 지름과 주황색 두 변은 한 예이며, 나머지 점도 세 번째 꼭짓점으로 고를 수 있다. 정답은 7분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -1021,7 +1025,11 @@ window.questionBank = [
     "image": "assets/images/23_강남여고_1학기_기말_고2_확률과통계/q12.png",
     "problemTypeTemplateMappingStatus": "DIRECT_ACTIVE",
     "imageAlt": "8명이 탈 수 있는 2행 4열 놀이기구 자리",
-    "imageSize": "large"
+    "imageSize": "large",
+    "solutionImage": "assets/images/23_강남여고_1학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 주황색 여학생 자리와 파란색 남학생 자리가 2행 4열에서 번갈아 놓인 예를 보인다.",
+    "solutionImageCaption": "주황색은 여학생, 파란색은 남학생 자리의 예다. 여학생이 이웃하지 않는 배치는 두 행에서 자리를 번갈아 선택하는 모양이다. 정답은 36이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1448,7 +1456,11 @@ window.questionBank = [
     "image": "assets/images/23_강남여고_1학기_기말_고2_확률과통계/q17.png",
     "problemTypeTemplateMappingStatus": "DIRECT_ACTIVE",
     "imageAlt": "동심원 C1, C2와 원 C2 위의 6개 등분점",
-    "imageSize": "large"
+    "imageSize": "large",
+    "solutionImage": "assets/images/23_강남여고_1학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 1인 안쪽 원과 반지름 2인 바깥 원에 여섯 점이 표시되어 있다. 파란 두 변과 주황색 접선 현이 한 삼각형 예를 만들고, 현은 안쪽 원에 한 점에서 접한다.",
+    "solutionImageCaption": "바깥 원의 여섯 등분점에서 한 삼각형 예를 그렸다. 주황색 현은 안쪽 원에 한 점에서 접하고, 파란색 두 변은 같은 삼각형의 나머지 변이다. 정답은 10분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1789,7 +1801,11 @@ window.questionBank = [
     "image": "assets/images/23_강남여고_1학기_기말_고2_확률과통계/q21.png",
     "problemTypeTemplateMappingStatus": "DIRECT_ACTIVE",
     "imageAlt": "3행 3열 상자의 행과 열 및 검은 공 배치 예",
-    "imageSize": "large"
+    "imageSize": "large",
+    "solutionImage": "assets/images/23_강남여고_1학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 3행 3열에서 한 행은 파랑, 한 열은 주황, 교차 칸은 보라로 칠한 검은 공 배치의 예를 보인다.",
+    "solutionImageCaption": "한 줄이 모두 검은 경우를 각 행과 열에서 센다. 파랑과 주황이 만나는 보라색 칸은 두 경우에 함께 포함되므로 한 번 빼어 중복을 없앤다. 정답은 14분의 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -2077,6 +2093,10 @@ window.questionBank = [
     "sourceOrdinal": 25,
     "sourceChoices": [],
     "sourceChoiceEncoding": "Source option order and option text retained; runtime choices omit circled labels because engine supplies them.",
-    "problemTypeTemplateMappingStatus": "DIRECT_ACTIVE"
+    "problemTypeTemplateMappingStatus": "DIRECT_ACTIVE",
+    "solutionImage": "assets/images/23_강남여고_1학기_기말_고2_확률과통계/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체 결과 공간 U 안에서 서로 떨어진 사건 A와 B의 원 영역을 함께 음영 처리해 합집합을 나타낸다.",
+    "solutionImageCaption": "바깥 사각형 U는 전체 결과 공간을, 서로 떨어진 회색 원 A와 B는 서로 배반인 사건을 나타낸다. 음영 영역 A∪B의 확률은 P(A)+P(B)이므로 주어진 두 식을 비교해 구한다. 정답은 4분의 1이다.",
+    "solutionImageSize": "full"
   }
 ];

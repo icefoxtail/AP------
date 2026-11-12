@@ -89,7 +89,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 끝 카드의 홀짝을 먼저 나누고 오른쪽 끝 카드의 홀짝으로 갈라지는 수형도이며, 두 끝이 짝수인 경로를 파란색으로 표시한다.",
+    "solutionImageCaption": "왼쪽 끝 카드의 홀짝을 먼저 나누고 오른쪽 끝 카드의 홀짝을 이어 나타낸다. 두 끝이 짝수인 경로를 파란색으로 강조한다. 정답은 7분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -363,7 +367,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 번째에 정상품 또는 불량품을 꺼낸 뒤 두 번째 결과로 이어지는 네 경로 중 정상품 다음 불량품 경로를 파란색으로 표시한다.",
+    "solutionImageCaption": "첫 번째에 정상품을 꺼내면 전체 제품 수만 하나 줄고 불량품 수는 그대로다. 조건부확률을 이어 곱하는 경로를 파란색으로 나타낸다. 정답은 5분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -423,7 +431,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체 집합 U 안의 20대 사건 A와 여성 사건 B를 나타낸 벤다이어그램에서 교집합을 회색으로 칠한다.",
+    "solutionImageCaption": "전체 집합 U 안에서 A는 20대, B는 여성인 사건이며, 교집합을 회색 음영으로 나타낸다. 합사건과 두 사건의 확률로 공통 부분을 구한다. 정답은 35분의 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -513,7 +525,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 사건 A와 여사건 A의 분기에서 B와 여사건 B로 갈라지는 수형도이며, 각 끝 경로의 결합확률을 표시한다.",
+    "solutionImageCaption": "먼저 A와 여사건 A로 나누고 각 경우에서 B가 일어날 확률을 이어 붙인다. B에 도달하는 두 경로의 결합확률을 합해 전체확률을 구한다. 정답은 15분의 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -543,7 +559,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 비가 오는 경우와 오지 않는 경우에서 승리와 패배 결과로 갈라지는 수형도.",
+    "solutionImageCaption": "비가 오는 경우와 오지 않는 경우를 나누어 각 경우의 승리 확률을 곱한다. 두 경우의 승리 경로를 더해 전체 승리 확률을 구한다. 정답은 10분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -618,7 +638,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체 집합 U에서 사건 A와 B의 합집합을 회색 음영으로 나타내고 교집합과 바깥 영역도 구분한다.",
+    "solutionImageCaption": "전체 집합 U 안에서 A와 B의 합집합을 회색 음영으로 나타내고, 교집합과 바깥 여집합을 구분한다. 조건부확률 풀이의 기준 영역을 보여 준다. 정답은 (1) 6분의 1, (2) 6분의 5, (3) 15분의 8, (4) 8분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -643,6 +667,10 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫째 공의 흰색·검은색 결과에 따라 파란 주머니 또는 남은 빨간 주머니에서 둘째 흰색·검은색 공을 고르는 수형도.",
+    "solutionImageCaption": "첫째 공의 색에 따라 둘째 공을 꺼내는 주머니와 색의 갈림을 나타낸다. 첫째가 흰색이면 파란 주머니에서, 검은색이면 검은 공을 빼고 빨간 주머니에서 다시 꺼낸다. 정답은 (1) 9분의 1, (2) 9분의 4, (3) 4분의 1이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -54,7 +54,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 각 A는 45도, 각 B는 30도이며 변 BC의 길이는 4이다.",
+    "solutionImageCaption": "각 A와 각 B의 대변을 구별해 사인법칙에 대입한다. BC에서 외접원의 지름을 구하고 AC의 길이를 계산한다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -428,7 +432,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
     "subUnit": "삼각함수의 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원에서 파란 직선 AP와 주황 지름 PQ를 보인다. 파란 직선과 수평 기준선이 이루는 예각은 α이고, 양의 x축에서 동경 OQ까지의 각은 θ이다.",
+    "solutionImageCaption": "파란 직선 AP와 단위원의 교점 P를 확인하고, P를 원점 대칭해 주황 지름 PQ의 끝점 Q를 얻는다. 각 α는 수평 기준선과 파란 직선 사이의 예각이며, θ는 양의 x축에서 동경 OQ까지 반시계방향으로 잰다. 정답은 4/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -483,7 +491,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 반원의 지름 BC와 직각삼각형 ABC, 변 AB의 길이 6과 변 AC의 길이 8을 나타낸다.",
+    "solutionImageCaption": "반원에 내접한 삼각형에서 지름을 빗변으로 하는 직각삼각형을 확인한다. 주어진 두 변으로 빗변과 각의 삼각비를 구한다. 정답은 −3/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -534,7 +546,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 원의 반지름 OA=4와 주황 원의 반지름 O′A=3, 공통 현 AB, 중심 삼각형 OAO′의 각 β−α를 나타낸다.",
+    "solutionImageCaption": "파란 원의 OA=4와 주황 원의 O′A=3을 비교한다. 공통 현 AB로 두 반지름의 비를 정하고, 중심 삼각형 OAO′의 끼인각 β−α에 코사인법칙을 쓴다. 정답은 √5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -582,7 +598,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
     "subUnit": "삼각부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원과 파란 수직선 x=1/2로 코사인 조건의 경계를 보인다.",
+    "solutionImageCaption": "두 근이 음수이려면 사인과 코사인이 모두 양수이고 코사인은 1/2 이하이어야 한다. 파란 경계선 x=1/2와 단위원의 제1사분면을 함께 살펴 조건을 교차한다. 정답은 π/3≤θ<π/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -606,6 +626,10 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 A, B, C, D를 대각선 AC로 두 삼각형으로 나눈다. AB와 DA는 파랑, BC와 CD는 주황, 대각선 AC는 초록이다.",
+    "solutionImageCaption": "파란 변 AB, DA와 주황 변 BC, CD를 구별하고 초록 대각선 AC로 나눈다. 마주 보는 각은 θ와 π−θ이고, 두 삼각형 넓이를 더한다. 정답은 6√2이다.",
+    "solutionImageSize": "full"
   }
 ];

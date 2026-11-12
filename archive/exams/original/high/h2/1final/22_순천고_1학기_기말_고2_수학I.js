@@ -97,7 +97,11 @@ window.questionBank = [
       "$\\dfrac{1}{6}$"
     ],
     "answer": "②",
-    "solution": "$-\\dfrac{\\pi}{2}<x<\\dfrac{\\pi}{2}$에서 $\\tan x$는 증가한다.\n$-\\sqrt3\\le\\tan x\\le1$의 양끝을 각각 만족하는 각은\n$\\tan x=-\\sqrt3$일 때 $x=-\\dfrac{\\pi}{3}$,\n$\\tan x=1$일 때 $x=\\dfrac{\\pi}{4}$이다.\n따라서 $a=-\\dfrac13$, $b=\\dfrac14$이고\n$a+b=-\\dfrac13+\\dfrac14=-\\dfrac1{12}$이다.\n따라서 정답은 ②이다."
+    "solution": "$-\\dfrac{\\pi}{2}<x<\\dfrac{\\pi}{2}$에서 $\\tan x$는 증가한다.\n$-\\sqrt3\\le\\tan x\\le1$의 양끝을 각각 만족하는 각은\n$\\tan x=-\\sqrt3$일 때 $x=-\\dfrac{\\pi}{3}$,\n$\\tan x=1$일 때 $x=\\dfrac{\\pi}{4}$이다.\n따라서 $a=-\\dfrac13$, $b=\\dfrac14$이고\n$a+b=-\\dfrac13+\\dfrac14=-\\dfrac1{12}$이다.\n따라서 정답은 ②이다.",
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_수학I/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 수직 점근선 사이에서 증가하는 탄젠트 그래프이며, 한 주기는 T=π로 표시되어 있다.",
+    "solutionImageCaption": "−π/2<x<π/2에서 탄젠트는 증가하고 주기는 T=π이다. −√3과 1의 경계에 대응하는 각을 각각 구해 구간을 정한다. 정답은 −1/12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -111,7 +115,11 @@ window.questionBank = [
       "5개"
     ],
     "answer": "①",
-    "solution": "$f(x)=\\tan\\dfrac{x}{2}$라 하자.\nㄱ: $x=(2n+1)\\pi$에서 정의되지 않으므로 거짓이다.\nㄴ: 탄젠트함수의 치역은 실수 전체이므로 참이다.\nㄷ: $f(-x)=-f(x)$이므로 원점 대칭이고, y축 대칭은 아니어서 거짓이다.\nㄹ: 주기는 $2\\pi$이므로 $f(x+\\pi)=f(x)$는 거짓이다.\nㅁ: 점근선은 $x=(2n+1)\\pi$인 수직선이므로 제시된 식은 거짓이다.\n참인 것은 ㄴ 하나이므로 정답은 ①이다."
+    "solution": "$f(x)=\\tan\\dfrac{x}{2}$라 하자.\nㄱ: $x=(2n+1)\\pi$에서 정의되지 않으므로 거짓이다.\nㄴ: 탄젠트함수의 치역은 실수 전체이므로 참이다.\nㄷ: $f(-x)=-f(x)$이므로 원점 대칭이고, y축 대칭은 아니어서 거짓이다.\nㄹ: 주기는 $2\\pi$이므로 $f(x+\\pi)=f(x)$는 거짓이다.\nㅁ: 점근선은 $x=(2n+1)\\pi$인 수직선이므로 제시된 식은 거짓이다.\n참인 것은 ㄴ 하나이므로 정답은 ①이다.",
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_수학I/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 지나는 탄젠트 그래프의 가운데 가지가 증가하고, 양쪽에 점선 수직 점근선이 보인다. 그래프에는 주기 2π가 표시되어 있다.",
+    "solutionImageCaption": "그래프에서 정의역의 빠진 값과 전체 치역을 확인하고, 원점 대칭과 주기 2π를 비교한다. 점근선은 x=(2n+1)π이며 주어진 식과 일치한다. 정답은 1개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -139,7 +147,11 @@ window.questionBank = [
       "$\\dfrac{3}{5}$"
     ],
     "answer": "③",
-    "solution": "네 점 A, B, C, D가 한 원 위에 있으므로 그 원의 반지름을 R이라 하면 현 BD에 대하여\n$BD=2R\\sin\\angle DAB$이다.\n$5=2R\\cdot\\dfrac34$에서\n$R=\\dfrac{10}{3}$이다.\n현 CD는 원주각 $\\angle DAC$에 대응하므로\n$CD=2R\\sin\\angle DAC$이다.\n따라서\n$\\sin\\angle DAC=\\dfrac{CD}{2R}=\\dfrac{2}{\\frac{20}{3}}=\\dfrac{3}{10}$이다.\n따라서 정답은 ③이다."
+    "solution": "네 점 A, B, C, D가 한 원 위에 있으므로 그 원의 반지름을 R이라 하면 현 BD에 대하여\n$BD=2R\\sin\\angle DAB$이다.\n$5=2R\\cdot\\dfrac34$에서\n$R=\\dfrac{10}{3}$이다.\n현 CD는 원주각 $\\angle DAC$에 대응하므로\n$CD=2R\\sin\\angle DAC$이다.\n따라서\n$\\sin\\angle DAC=\\dfrac{CD}{2R}=\\dfrac{2}{\\frac{20}{3}}=\\dfrac{3}{10}$이다.\n따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 점 A, B, C, D와 현 BD, CD를 나타냈다. 빨간 호는 ∠DAB, 파란 호는 ∠DAC이다.",
+    "solutionImageCaption": "빨간 호는 ∠DAB, 파란 호는 ∠DAC를 나타낸다. BD=5와 sin∠DAB=3/4로 반지름을 구하고, 같은 반지름과 CD=2로 sin∠DAC를 계산한다. 정답은 3/10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -153,7 +165,11 @@ window.questionBank = [
       "96"
     ],
     "answer": "④",
-    "solution": "외접원의 반지름이 $5$이므로 사인법칙에서 $a=2R\\sin A=10\\sin A$이다. $a=8$을 대입하면 $\\sin A=\\dfrac45$이다. 따라서 $A$는 예각 또는 둔각일 수 있고, 이에 따라 $\\cos A=\\dfrac35$ 또는 $-\\dfrac35$이다.\n\n코사인법칙과 $b^2+c^2\\ge2bc$를 이용하면\n$64=b^2+c^2-2bc\\cos A\\ge2bc(1-\\cos A)$이다.\n$\\cos A=\\dfrac35$이면 $bc\\le\\dfrac{64}{2(1-\\frac{3}{5})}=80$이고, $\\cos A=-\\dfrac35$이면 $bc\\le\\dfrac{64}{2(1+\\frac{3}{5})}=20$이다. 따라서 항상 $bc\\le80$이다.\n\n이 상한은 실제로 이룰 수 있다. 원 위에서 $BC=8$인 현의 큰 호의 중점에 $A$를 잡으면 $AB=AC$이고 $A$는 예각이다. 따라서 $b=c$이고 $\\cos A=\\dfrac35$인 경우에 등호가 성립한다. 이때 코사인법칙으로\n$64=2b^2-2b^2\\cdot\\dfrac35=\\dfrac45b^2$\n이므로 $b^2=c^2=80$, 따라서 $bc=80$이다. 그러므로 최댓값은 $80$이고 정답은 ④이다."
+    "solution": "외접원의 반지름이 $5$이므로 사인법칙에서 $a=2R\\sin A=10\\sin A$이다. $a=8$을 대입하면 $\\sin A=\\dfrac45$이다. 따라서 $A$는 예각 또는 둔각일 수 있고, 이에 따라 $\\cos A=\\dfrac35$ 또는 $-\\dfrac35$이다.\n\n코사인법칙과 $b^2+c^2\\ge2bc$를 이용하면\n$64=b^2+c^2-2bc\\cos A\\ge2bc(1-\\cos A)$이다.\n$\\cos A=\\dfrac35$이면 $bc\\le\\dfrac{64}{2(1-\\frac{3}{5})}=80$이고, $\\cos A=-\\dfrac35$이면 $bc\\le\\dfrac{64}{2(1+\\frac{3}{5})}=20$이다. 따라서 항상 $bc\\le80$이다.\n\n이 상한은 실제로 이룰 수 있다. 원 위에서 $BC=8$인 현의 큰 호의 중점에 $A$를 잡으면 $AB=AC$이고 $A$는 예각이다. 따라서 $b=c$이고 $\\cos A=\\dfrac35$인 경우에 등호가 성립한다. 이때 코사인법칙으로\n$64=2b^2-2b^2\\cdot\\dfrac35=\\dfrac45b^2$\n이므로 $b^2=c^2=80$, 따라서 $bc=80$이다. 그러므로 최댓값은 $80$이고 정답은 ④이다.",
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O와 반지름 5인 원에 내접한 삼각형 A, B, C이며, 현 BC의 길이는 8이고 변 AB와 AC는 같은 길이로 표시되어 있다.",
+    "solutionImageCaption": "사인법칙으로 각 A의 두 경우를 나누고 코사인법칙으로 bc의 상한을 구한다. 그림의 이등변 예에서 그 상한이 실제로 가능함을 확인한다. 정답은 80이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -223,7 +239,11 @@ window.questionBank = [
       "$28.6\\,\\text{km}$"
     ],
     "answer": "④",
-    "solution": "자전거가 1시간 동안 간 거리는\n$PQ=20\\cdot1=20\\,\\text{km}$이다.\n삼각형 APQ에서 $\\angle APQ=15^\\circ$이고, Q에서 전진 방향과 QA가 이루는 각이 60°이므로\n$\\angle AQP=180^\\circ-60^\\circ=120^\\circ$이다.\n따라서 $\\angle PAQ=45^\\circ$이고, 사인법칙으로\n$PA=20\\cdot\\dfrac{\\sin120^\\circ}{\\sin45^\\circ}=10\\sqrt6$이다.\n삼각형 PBQ는 Q에서 직각이고 P의 각이 45°이므로\n$PB=\\dfrac{PQ}{\\sin45^\\circ}=20\\sqrt2$이다.\n또 $\\angle APB=15^\\circ+45^\\circ=60^\\circ$이다.\n코사인법칙으로\n$AB^2=(10\\sqrt6)^2+(20\\sqrt2)^2-2(10\\sqrt6)(20\\sqrt2)\\cos60^\\circ$\n$=1400-400\\sqrt3$이다.\n주어진 근삿값을 차례로 쓰면\n$AB\\approx\\sqrt{1400-400\\cdot1.7}=\\sqrt{720}=12\\sqrt5\\approx12\\cdot2.2=26.4\\,\\text{km}$이다.\n따라서 정답은 ④이다."
+    "solution": "자전거가 1시간 동안 간 거리는\n$PQ=20\\cdot1=20\\,\\text{km}$이다.\n삼각형 APQ에서 $\\angle APQ=15^\\circ$이고, Q에서 전진 방향과 QA가 이루는 각이 60°이므로\n$\\angle AQP=180^\\circ-60^\\circ=120^\\circ$이다.\n따라서 $\\angle PAQ=45^\\circ$이고, 사인법칙으로\n$PA=20\\cdot\\dfrac{\\sin120^\\circ}{\\sin45^\\circ}=10\\sqrt6$이다.\n삼각형 PBQ는 Q에서 직각이고 P의 각이 45°이므로\n$PB=\\dfrac{PQ}{\\sin45^\\circ}=20\\sqrt2$이다.\n또 $\\angle APB=15^\\circ+45^\\circ=60^\\circ$이다.\n코사인법칙으로\n$AB^2=(10\\sqrt6)^2+(20\\sqrt2)^2-2(10\\sqrt6)(20\\sqrt2)\\cos60^\\circ$\n$=1400-400\\sqrt3$이다.\n주어진 근삿값을 차례로 쓰면\n$AB\\approx\\sqrt{1400-400\\cdot1.7}=\\sqrt{720}=12\\sqrt5\\approx12\\cdot2.2=26.4\\,\\text{km}$이다.\n따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_수학I/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 관측점 P와 Q에서 본 두 건물 A, B의 방향을 나타냈다. Q에서 위로 향하는 점선 화살표는 진행 방향이다. PA와 AQ는 파란색, PB와 QB는 주황색으로 그려 두 삼각형을 구분한다. 빨간 호는 15°와 60°, 파란 호는 45°를 표시한다. P의 각은 15°와 45°, Q의 바깥 각은 60°이며 QB와 QP는 직각이다.",
+    "solutionImageCaption": "점선 화살표는 진행 방향이다. 빨간 호는 15°와 60°의 관측각, 파란 호는 45°를 나타낸다. 파란 선분 PA·AQ와 주황 선분 PB·QB는 두 삼각형을 구분한다. 1시간 동안 이동한 거리는 PQ=20 km이다. 두 삼각형에서 PA=10√6, PB=20√2를 구하고 끼인각 60°로 코사인법칙을 적용한다. 정답은 26.4 km이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -237,7 +257,11 @@ window.questionBank = [
       "$2\\sqrt{3}$"
     ],
     "answer": "⑤",
-    "solution": "삼각형 ACD는 C에서 직각이고 A의 각이 30°이므로\n$AD=\\dfrac{AC}{\\cos30^\\circ}=\\dfrac8{\\sqrt3}$, $CD=AC\\tan30^\\circ=\\dfrac4{\\sqrt3}$이다.\n$x=BD=EC$, $y=BC$라 하자. 그림에서 E, C, B가 한 직선 위에 있고 E는 C 바깥쪽에 있으므로\n$AB=\\dfrac8{\\sqrt3}+x$, $EB=x+y$이다.\n삼각형 AEC와 AEB는 E에서 직각이므로\n$AE^2=16-x^2$,\n$\\left(\\dfrac8{\\sqrt3}+x\\right)^2=(16-x^2)+(x+y)^2$이다.\n또 $DB$는 $DA$의 연장선이고 $\\angle CDA=60^\\circ$이므로 $\\angle CDB=120^\\circ$이다.\n삼각형 BCD에 코사인법칙을 적용하면\n$y^2=x^2+\\left(\\dfrac4{\\sqrt3}\\right)^2-2x\\cdot\\dfrac4{\\sqrt3}\\cos120^\\circ$\n$=x^2+\\dfrac{16}{3}+\\dfrac{4x}{\\sqrt3}$이다.\n이를 앞 식에 대입하여 정리하면\n$\\dfrac{64}{3}+\\dfrac{16x}{\\sqrt3}+x^2=\\dfrac{64}{3}+x^2+2xy+\\dfrac{4x}{\\sqrt3}$\n$\\dfrac{12x}{\\sqrt3}=2xy$이다.\n$x=BD>0$이므로 $y=\\dfrac6{\\sqrt3}=2\\sqrt3$이다. 따라서 정답은 ⑤이다."
+    "solution": "삼각형 ACD는 C에서 직각이고 A의 각이 30°이므로\n$AD=\\dfrac{AC}{\\cos30^\\circ}=\\dfrac8{\\sqrt3}$, $CD=AC\\tan30^\\circ=\\dfrac4{\\sqrt3}$이다.\n$x=BD=EC$, $y=BC$라 하자. 그림에서 E, C, B가 한 직선 위에 있고 E는 C 바깥쪽에 있으므로\n$AB=\\dfrac8{\\sqrt3}+x$, $EB=x+y$이다.\n삼각형 AEC와 AEB는 E에서 직각이므로\n$AE^2=16-x^2$,\n$\\left(\\dfrac8{\\sqrt3}+x\\right)^2=(16-x^2)+(x+y)^2$이다.\n또 $DB$는 $DA$의 연장선이고 $\\angle CDA=60^\\circ$이므로 $\\angle CDB=120^\\circ$이다.\n삼각형 BCD에 코사인법칙을 적용하면\n$y^2=x^2+\\left(\\dfrac4{\\sqrt3}\\right)^2-2x\\cdot\\dfrac4{\\sqrt3}\\cos120^\\circ$\n$=x^2+\\dfrac{16}{3}+\\dfrac{4x}{\\sqrt3}$이다.\n이를 앞 식에 대입하여 정리하면\n$\\dfrac{64}{3}+\\dfrac{16x}{\\sqrt3}+x^2=\\dfrac{64}{3}+x^2+2xy+\\dfrac{4x}{\\sqrt3}$\n$\\dfrac{12x}{\\sqrt3}=2xy$이다.\n$x=BD>0$이므로 $y=\\dfrac6{\\sqrt3}=2\\sqrt3$이다. 따라서 정답은 ⑤이다.",
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: A, D, B는 한 직선 위에 있고 E, C, B도 한 직선 위에 있다. AC의 길이는 4, ∠DAC는 30도이며 C와 E의 각은 직각이다. 선분 BD와 EC에 같은 눈금이 있다.",
+    "solutionImageCaption": "AC=4와 ∠DAC=30°에서 AD와 CD를 구한다. BD와 EC가 같고 두 직각삼각형이 같은 선을 공유하는 관계를 이용해 BC를 계산한다. 정답은 2√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -281,7 +305,11 @@ window.questionBank = [
     "content": "&lt;서술형 2&gt;<br>다음 그림과 같이 점 $P(4, 0)$에서 출발하여 원 $x^2+y^2=16$ 위를 시계 반대 방향으로 움직이는 점 $Q$가 있다. 점 $Q$가 움직인 거리 $t$에 대하여 $f(t)=-2\\overline{PQ}+5$이라 하자. 함수 $f(t)$의 주기가 $a\\pi$이고 최댓값이 $b$, 최솟값이 $c$일 때, $a+b+c$의 값을 구하는 풀이 과정과 답을 서술하시오. (단, $a>0$) [7.0점, 부분점수 있음]<br><img src=\"assets/images/22_순천고_1학기_기말_고2_수학I/q21.png\" class=\"exam-img\">",
     "choices": [],
     "answer": "2",
-    "solution": "원의 반지름은 $4$이므로 원의 둘레는 $2\\pi\\cdot4=8\\pi$이다. 점 $Q$가 거리 $8\\pi$만큼 움직이면 한 바퀴 돌아 다시 $P$에 도달하고, 그 뒤에는 같은 운동을 반복한다. 따라서 $8\\pi$는 $f(t)$의 주기이다.\n\n이 주기보다 작은 양의 주기가 없음을 확인하자. $f(0)=5$이고, 양의 주기 $T$라면 $f(T)=f(0)=5$이어야 한다. 그런데 $f(T)=-2\\overline{PQ}+5$이므로 이 등식은 $\\overline{PQ}=0$, 즉 $Q=P$일 때만 성립한다. 점 $Q$가 처음으로 $P$로 돌아오는 거리는 원의 한 바퀴인 $8\\pi$이므로, 최소 양의 주기는 $8\\pi$이고 $a=8$이다.\n\n또 두 점 사이의 거리는 $0\\le\\overline{PQ}\\le8$이므로 $f(t)=-2\\overline{PQ}+5$의 최댓값은 $5$, 최솟값은 $-11$이다. 따라서 $b=5$, $c=-11$이고\n$a+b+c=8+5-11=2$이다."
+    "solution": "원의 반지름은 $4$이므로 원의 둘레는 $2\\pi\\cdot4=8\\pi$이다. 점 $Q$가 거리 $8\\pi$만큼 움직이면 한 바퀴 돌아 다시 $P$에 도달하고, 그 뒤에는 같은 운동을 반복한다. 따라서 $8\\pi$는 $f(t)$의 주기이다.\n\n이 주기보다 작은 양의 주기가 없음을 확인하자. $f(0)=5$이고, 양의 주기 $T$라면 $f(T)=f(0)=5$이어야 한다. 그런데 $f(T)=-2\\overline{PQ}+5$이므로 이 등식은 $\\overline{PQ}=0$, 즉 $Q=P$일 때만 성립한다. 점 $Q$가 처음으로 $P$로 돌아오는 거리는 원의 한 바퀴인 $8\\pi$이므로, 최소 양의 주기는 $8\\pi$이고 $a=8$이다.\n\n또 두 점 사이의 거리는 $0\\le\\overline{PQ}\\le8$이므로 $f(t)=-2\\overline{PQ}+5$의 최댓값은 $5$, 최솟값은 $-11$이다. 따라서 $b=5$, $c=-11$이고\n$a+b+c=8+5-11=2$이다.",
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_수학I/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 4인 원에서 O와 P, 원 위의 한 위치 Q를 잇는다. 검은 굵은 호는 P에서 Q까지의 반시계 이동 구간이다. 반지름 OP와 OQ는 파란색, 현 PQ는 주황색이다.",
+    "solutionImageCaption": "검은 굵은 호는 P에서 Q까지의 반시계 이동 구간을 나타낸다. 원주는 8π이고 점 사이 현의 길이는 0부터 8까지 변한다. 파란색 반지름과 주황색 현을 구분해 f(t)=−2PQ+5의 최댓값과 최솟값을 찾는다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

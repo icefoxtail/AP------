@@ -761,7 +761,10 @@ window.questionBank = [
     "answer": "④",
     "solution": "직선 $y=ax+b$와 각 원의 중심 사이의 거리는 각각 원의 반지름과 같다.\n$d=\\sqrt{a^2+1}$이라 두면\n$|b|=2d$,\n$|b-2a|=d$이다.\n\n부호를 포함해\n$b=2\\varepsilon d$,\n$b-2a=\\eta d$\n($\\varepsilon,\\eta\\in\\{1,-1\\}$)로 둔다.\n두 식을 빼면\n$a=\\dfrac{2\\varepsilon-\\eta}{2}d$이다.\n\n$|2\\varepsilon-\\eta|=3$인 경우는 $a^2>d^2$가 되어 $d^2=a^2+1$과 모순이다.\n따라서 $\\eta=\\varepsilon$이고\n$a=\\dfrac{\\varepsilon d}{2}$이다.\n\n$d^2=a^2+1$에 대입하면\n$d^2=\\dfrac{d^2}{4}+1$\n$\\dfrac34d^2=1$\n$d=\\dfrac2{\\sqrt3}$이다.\n따라서 $a=\\dfrac{\\varepsilon}{\\sqrt3}$,\n$b=\\dfrac{4\\varepsilon}{\\sqrt3}$이고\n$ab=\\dfrac43$이다.\n\n그러므로 $12ab=16$이다.\n따라서 정답은 ④이다.",
     "decisiveStep": "두 원의 중심에서 같은 직선까지의 거리 조건을 각각 세우고 부호 경우를 걸러 $ab$를 정한다.",
-    "solutionImage": "assets/images/21_고흥고_1학기_기말_고1_기출/q17-solution.svg"
+    "solutionImage": "assets/images/21_고흥고_1학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점 O를 중심으로 반지름 2인 파란 원과 C를 중심으로 반지름 1인 주황 원, 그리고 두 원에 동시에 접하는 초록 직선과 분홍 직선을 나타낸다. 위쪽 접점으로 가는 반지름에는 직각 표시가 있다.",
+    "solutionImageCaption": "파란 원의 중심은 O(0, 0), 반지름은 2이고 주황 원의 중심은 C(−2, 0), 반지름은 1이다. 두 공통접선은 초록과 분홍으로 구분했다. 위쪽 접선에서 중심까지의 거리가 각각 반지름과 같다는 조건으로 a와 b를 구한다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

@@ -119,7 +119,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체 75개 안에서 3의 배수 25개와 5의 배수 15개를 나타내고, 두 집합의 공통 부분에 15의 배수 다섯 수를 적은 벤 다이어그램.",
+    "solutionImageCaption": "3의 배수 25개와 5의 배수 15개를 더한 뒤, 공통인 15의 배수 5개를 한 번 뺀다. 해당하는 수를 전체 75개와 비교한다. 정답은 15분의 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,

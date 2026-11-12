@@ -210,7 +210,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_복성고_1학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위에 같은 간격으로 놓인 여덟 점과 파란 지름 네 개, 그중 한 지름을 빗변으로 하는 직각삼각형 예가 보인다.",
+    "solutionImageCaption": "여덟 점 중 세 점을 고르는 전체 경우는 56가지다. 직각삼각형은 빗변이 지름인 경우이며, 네 지름마다 나머지 여섯 점을 고른다. 정답은 7분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -595,7 +599,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_복성고_1학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: A에서 P까지 오른쪽 두 번, 위쪽 두 번 이동하는 격자 경로와 교점별 최단 경로 수가 보이며, P의 경로 수는 숨겨져 있다.",
+    "solutionImageCaption": "오른쪽 두 번과 위쪽 두 번의 순서를 격자에 나타낸다. 오른쪽 이동의 확률은 3분의 1, 위쪽 이동의 확률은 3분의 2이다. 도달 확률은 27분의 8이며, 정답은 35이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

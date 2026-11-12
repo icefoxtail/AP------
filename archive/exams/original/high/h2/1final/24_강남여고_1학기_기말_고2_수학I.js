@@ -138,7 +138,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_강남여고_1학기_기말_고2_수학I/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 두 변 AB, AC와 끼인각 A를 표시한다.",
+    "solutionImageCaption": "넓이는 두 변과 끼인각을 이용한 삼각형 넓이 공식으로 계산한다. 따라서 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -169,7 +173,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_강남여고_1학기_기말_고2_수학I/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 외접원에 내접한 삼각형 ABC에서 현 AB와 각 C를 표시한다.",
+    "solutionImageCaption": "사인법칙에서 현의 길이와 마주 보는 원주각의 사인 비는 외접원의 지름이다. 주어진 관계로 지름을 구한 뒤 반지름으로 바꾼다. 따라서 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -200,7 +208,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_강남여고_1학기_기말_고2_수학I/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AB, BC와 끼인각 A를 표시한다.",
+    "solutionImageCaption": "코사인법칙으로 x=AC의 방정식을 세우고 양수인 해를 택한다. 따라서 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -483,7 +495,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_강남여고_1학기_기말_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 변 길이와 BC를 1과 2로 나누는 점 D를 표시한다.",
+    "solutionImageCaption": "좌표를 두어 A의 가로좌표와 세로좌표의 제곱을 구하고, D가 B에서 1만큼 떨어져 있음을 이용한다. 따라서 정답은 √6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -601,7 +617,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_강남여고_1학기_기말_고2_수학I/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 점 D가 BC 위에 있고, A를 중심으로 한 원이 AB, AD, AC와 P, Q, R에서 만난다. BD=6, DC=3, PB=3, QD=1, RC=2이며 세 반지름의 길이는 같다.",
+    "solutionImageCaption": "세 반지름의 길이가 같아 AB=r+3, AD=r+1, AC=r+2이다. 좌표를 두고 거리식의 차를 비교한다. 따라서 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

@@ -256,7 +256,11 @@ window.questionBank = [
     },
     "metaStatus": "RPM_SEMANTIC_FINAL_H15_UNIT_BINDING_PENDING",
     "metaNullReason": "2015 수학I RPM crosswalk RPM_ONLY; GLOBAL ACTIVE 11 packs total 756 binding rows, exact standardCourse 수학I count=0; no invented key.",
-    "metaLookupStatus": "SEMANTIC_LOOKUP_DONE_ACTIVE_BINDING_GAP"
+    "metaLookupStatus": "SEMANTIC_LOOKUP_DONE_ACTIVE_BINDING_GAP",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_수학I/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: A가 60°, B가 45°, C가 75°인 삼각형 ABC에서 BC의 길이가 4√3으로 표시되어 있다.",
+    "solutionImageCaption": "삼각형의 각은 A=60°, B=45°, C=75°이고, BC=4√3이다. 사인법칙으로 2R=8과 AC=4√2를 얻는다. 정답은 16√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -966,7 +970,11 @@ window.questionBank = [
     },
     "metaStatus": "RPM_SEMANTIC_FINAL_H15_UNIT_BINDING_PENDING",
     "metaNullReason": "2015 수학I RPM crosswalk RPM_ONLY; GLOBAL ACTIVE 11 packs total 756 binding rows, exact standardCourse 수학I count=0; no invented key.",
-    "metaLookupStatus": "SEMANTIC_LOOKUP_DONE_ACTIVE_BINDING_GAP"
+    "metaLookupStatus": "SEMANTIC_LOOKUP_DONE_ACTIVE_BINDING_GAP",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 y=2x와 2y=x가 원점 O에서 만나고, 각각의 직선 위에 P(1,2)와 Q(2,1)이 표시되어 있다. 두 반직선 사이에는 θ가 표시되어 있다.",
+    "solutionImageCaption": "두 직선 위에 P(1,2), Q(2,1)을 잡으면 OP=OQ=√5, PQ=√2이다. 이 길이를 코사인법칙에 대입한다. 정답은 5분의 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1336,6 +1344,10 @@ window.questionBank = [
     },
     "metaStatus": "RPM_SEMANTIC_FINAL_H15_UNIT_BINDING_PENDING",
     "metaNullReason": "2015 수학I RPM crosswalk RPM_ONLY; GLOBAL ACTIVE 11 packs total 756 binding rows, exact standardCourse 수학I count=0; no invented key.",
-    "metaLookupStatus": "SEMANTIC_LOOKUP_DONE_ACTIVE_BINDING_GAP"
+    "metaLookupStatus": "SEMANTIC_LOOKUP_DONE_ACTIVE_BINDING_GAP",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_수학I/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD에 AE와 BD가 그려져 F에서 만나고, E에서 BC와 AE가 수직이다. 각 60°, 45°, 75°, 105°와 AD=1이 표시되어 있다.",
+    "solutionImageCaption": "△ABD에서 AB=√3이고, 수선과 교점으로 ∠AFB=105°, ∠AFD=75°를 얻는다. 사인법칙으로 두 삼각형의 외접원 반지름을 각각 계산한다. 정답은 첫째가 (3√2−√6)/2, 둘째가 (√6−√2)/2이다.",
+    "solutionImageSize": "full"
   }
 ];

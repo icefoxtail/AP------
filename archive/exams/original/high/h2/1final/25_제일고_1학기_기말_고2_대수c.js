@@ -110,7 +110,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고2_대수c/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C에 각 A는 60도, 각 B는 45도, 변 AC의 길이는 6√2로 표시되어 있다.",
+    "solutionImageCaption": "각과 마주 보는 변을 대응시켜 사인법칙으로 외접반지름과 변 a를 차례로 구한다. 이 두 값을 더한다. 정답은 6+6√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -293,7 +297,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고2_대수c/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 A, B, C의 변에 3k, 4k, 5k가 표시되고 넓이는 54로 적혀 있다.",
+    "solutionImageCaption": "사인법칙으로 변의 비를 3:4:5로 바꾼 뒤 직각삼각형의 넓이로 k를 정한다. 변의 길이를 합산한다. 정답은 36이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -324,7 +332,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고2_대수c/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 P, A, B에서 변 PA는 4, 변 PB는 6, 끼인각 APB는 60도이고 변 AB는 표시만 되어 있다.",
+    "solutionImageCaption": "두 변과 끼인각을 코사인법칙에 대입해 AB의 제곱을 구하고 양의 제곱근을 취한다. 정답은 2√7 m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -518,9 +530,9 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "solutionImage": "assets/images/25_제일고_1학기_기말_고2_수학I/q15-solution.svg",
-    "solutionImageAlt": "sin x>√2/2의 해 π/4<x<3π/4, cos x<1/2의 해 π/3<x<5π/3, 두 구간의 공통부분 π/3<x<3π/4를 세 개의 수평선 위에 굵은 선으로 표시한 그림.",
-    "solutionImageCaption": "trig_interval",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고2_대수c/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 사인 부등식과 코사인 부등식의 해 구간을 각각 나타낸 두 줄 수직선.",
+    "solutionImageCaption": "사인 부등식의 해와 코사인 부등식의 해를 따로 표시한다. 두 줄의 공통 부분에서 x의 범위를 정한 뒤 계수를 곱한다. 정답은 ¼이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "$0 \\le x < 2\\pi$일 때, 두 부등식\n$$\\sin x > \\frac{\\sqrt{2}}{2}, \\quad \\cos x < \\frac{1}{2}$$\n을 동시에 만족시키는 $x$의 값의 범위는 $a\\pi < x < b\\pi$이다. $ab$의 값은?",
@@ -603,7 +615,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고2_대수c/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 반원의 지름 AB와 점 C, D, E, 현 CD와 CE를 표시했다. 파란 호는 BD이고 주황 호 DE와 EC는 서로 같다.",
+    "solutionImageCaption": "파란 호 BD는 호 BC의 4등분 가운데 B 쪽 한 조각이고, 주황 호 DE와 EC는 서로 같다. 중심각과 현의 길이 관계를 사용한다. 정답은 27이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

@@ -452,7 +452,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "nullableFieldReason": "현재 고2 2022 개정 대수의 question_metadata.json H22-A-01..04/대수 행에는 problemTypeKey/templateKey가 비어 있고 현재 runtime taxonomy에도 이 범위의 active exact PT/TPL row가 없다. nearest-match를 만들지 않고 두 nullable projection debt를 기록한다."
+    "nullableFieldReason": "현재 고2 2022 개정 대수의 question_metadata.json H22-A-01..04/대수 행에는 problemTypeKey/templateKey가 비어 있고 현재 runtime taxonomy에도 이 범위의 active exact PT/TPL row가 없다. nearest-match를 만들지 않고 두 nullable projection debt를 기록한다.",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고2_대수/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점 O에서 제3사분면 방향으로 뻗는 한 동경을 보인다.",
+    "solutionImageCaption": "O는 좌표축의 교점이며, 음의 사인과 코사인은 제3사분면 방향을 나타낸다. 정답은 5분의 6π이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -780,7 +784,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "nullableFieldReason": "현재 고2 2022 개정 대수의 question_metadata.json H22-A-01..04/대수 행에는 problemTypeKey/templateKey가 비어 있고 현재 runtime taxonomy에도 이 범위의 active exact PT/TPL row가 없다. nearest-match를 만들지 않고 두 nullable projection debt를 기록한다."
+    "nullableFieldReason": "현재 고2 2022 개정 대수의 question_metadata.json H22-A-01..04/대수 행에는 problemTypeKey/templateKey가 비어 있고 현재 runtime taxonomy에도 이 범위의 active exact PT/TPL row가 없다. nearest-match를 만들지 않고 두 nullable projection debt를 기록한다.",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고2_대수/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 u, 세로축 y인 좌표평면에서 W자 그래프와 y=4가 세 점에서 만난다. 중심 꼭짓점은 (0,4)이고 양쪽 아래 꼭짓점은 (−4,0), (4,0)이다.",
+    "solutionImageCaption": "u=x−k로 놓으면 |f(x)|=||u|−4|의 모양이 된다. 높이 4의 직선이 그래프와 세 곳에서 만나 교점 수 조건을 나타낸다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

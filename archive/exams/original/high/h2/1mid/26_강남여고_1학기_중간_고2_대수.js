@@ -220,7 +220,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고2_대수/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 제3사분면의 점 P, 원점 O, x축 위의 X를 이은 직각삼각형과 좌표 눈금.",
+    "solutionImageCaption": "점 P의 좌표에서 사인, 코사인, 탄젠트에 해당하는 값을 읽는다. 직각삼각형의 세 변의 길이를 이용해 주어진 곱을 계산한다. 정답은 −15분의 28이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -749,7 +753,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고2_대수/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 사다리꼴 A, C, B, D에서 밑변 AC와 DB가 평행하다. CB에는 높이 2를 표시했고, 두 밑변과 직각을 이룬다.",
+    "solutionImageCaption": "평행한 두 밑변과 높이 2가 있는 사다리꼴을 보인다. 넓이 조건으로 밑변을 정하고 네 변의 길이로 둘레를 계산한다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -838,7 +846,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고2_대수/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O의 부채꼴 띠를 연한 회색으로 채웠다. 같은 표시의 두 눈금은 OP와 OQ가 서로 같음을, 한 눈금은 PA와 BQ가 서로 같음을 뜻한다. 안쪽 반지름은 바깥 반지름의 3분의 2이다.",
+    "solutionImageCaption": "연한 회색 부채꼴 띠와 반지름 분할을 나타낸다. 같은 눈금끼리 길이가 같고, 안쪽 반지름은 바깥 반지름의 3분의 2이다. 이 관계와 두 조건으로 둘레와 넓이를 계산한다. 정답은 30이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
