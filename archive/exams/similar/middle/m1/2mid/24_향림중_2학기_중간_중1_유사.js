@@ -668,7 +668,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 오목사각형에서 안쪽으로 오목하게 들어간 꼭짓점의 안쪽 각의 크기가 $120^\\circ$이고, 위쪽 각이 $55^\\circ$, 오른쪽 아래 각이 $30^\\circ$일 때, 왼쪽 아래 각 $\\angle x$의 크기는? [5점]",
+    "content": "오목사각형에서 세 볼록 꼭짓점의 내각의 크기는 각각 $55^\\circ$, $30^\\circ$, $x$이다. 오목한 꼭짓점에서 도형 바깥의 홈 쪽에 있는 작은 각의 크기가 $120^\\circ$일 때, $x$의 크기는? [5점]",
     "choices": [
       "$30^\\circ$",
       "$35^\\circ$",
@@ -680,7 +680,7 @@ window.questionBank = [
     "points": 5,
     "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
     "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
-    "solution": "오목사각형(부메랑 모양)의 성질을 이용하여 미지각을 구한다.\n오목사각형에서 세 뾰족한 각의 크기의 합은 오목하게 꺾인 안쪽 각의 크기와 같다. 보조선을 그어 두 삼각형의 외각으로 증명할 수도 있고, 안쪽 반대각 $360^\\circ - 120^\\circ = 240^\\circ$를 이용한 사각형의 내각합 공식으로도 계산할 수 있다. $\\begin{aligned} \\angle x + 55^\\circ + 30^\\circ + (360^\\circ - 120^\\circ) &= 360^\\circ \\ \\angle x + 85^\\circ + 240^\\circ &= 360^\\circ \\ \\angle x + 325^\\circ &= 360^\\circ \\ \\angle x &= 35^\\circ \\end{aligned}$\n또는 세 각의 합 공식에 의하여 $\\begin{aligned} \\angle x + 55^\\circ + 30^\\circ &= 120^\\circ \\ \\angle x + 85^\\circ &= 120^\\circ \\ \\angle x &= 35^\\circ \\end{aligned}$\n따라서 정답은 ②이다.",
+    "solution": "오목한 꼭짓점에서 도형 바깥 홈 쪽의 작은 각이 $120^\\circ$이므로, 사각형 안쪽의 오목한 내각은 $360^\\circ-120^\\circ=240^\\circ$이다. 사각형의 내각의 합은 $360^\\circ$이므로\n$\\begin{aligned} x+55^\\circ+30^\\circ+240^\\circ&=360^\\circ \\\\ x+325^\\circ&=360^\\circ \\\\ x&=35^\\circ \\end{aligned}$\n따라서 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
