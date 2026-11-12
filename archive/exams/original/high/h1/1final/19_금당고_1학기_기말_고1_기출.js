@@ -1,4 +1,4 @@
-﻿window.examTitle = "19_금당고_1학기_기말_고1_기출";
+window.examTitle = "19_금당고_1학기_기말_고1_기출";
 
 window.questionBank = 
 [
