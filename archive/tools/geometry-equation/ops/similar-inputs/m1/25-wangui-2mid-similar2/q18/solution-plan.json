@@ -1,0 +1,163 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 520
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equal",
+        "segments": [
+          "CA",
+          "BC"
+        ],
+        "count": 1,
+        "color": "BLUE"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "AB"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "a1",
+        "ownerSegment": "CA",
+        "text": "a",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "a2",
+        "ownerSegment": "BC",
+        "text": "a",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "b",
+        "ownerSegment": "AB",
+        "text": "b",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "같은 두 변 a와 밑변 b · 2a+b=19 · 0<b<2a",
+  "sourceQuote": "세 변이 자연수, 둘레19cm, 같은 두 변과 다른 한 변인 삼각형 개수",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "세 변이 자연수, 둘레19cm, 같은 두 변과 다른 한 변인 삼각형 개수",
+      "mappedTo": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "newVisualInformation": []
+}

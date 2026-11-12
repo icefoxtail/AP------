@@ -1,0 +1,42 @@
+{
+  "math": "PASS",
+  "sourceSemanticCheck": "Q18 natural-number side lengths, perimeter19, exactlytwo equal, answer4=five. Actual content, choices, solution read.",
+  "independentCheck": {
+    "exhaustiveSortedTriples": [
+      [
+        1,
+        9,
+        9
+      ],
+      [
+        3,
+        8,
+        8
+      ],
+      [
+        5,
+        5,
+        9
+      ],
+      [
+        5,
+        7,
+        7
+      ],
+      [
+        6,
+        6,
+        7
+      ]
+    ],
+    "count": 5,
+    "symbolic": "2a+b=19; b>0 and b<2a imply5<=a<=9. 19not divisible3."
+  },
+  "diagramMeaning": "Symbolic isosceles schematic a,a,b; coordinates are layout only, not numeric lengths or a specific19cm case. Equal marks verified from actual model.",
+  "problemLeakCheck": "PASS no problem SVG; enumeration diagram would give solution strategy.",
+  "color": "PASS equal sides BLUE #1f5fa8 with equal ticks; baseWARM #b85c00; blacklabels",
+  "staticAudit": "PASS",
+  "renderedLayout": "PASS",
+  "visualQA": "NOT_RUN",
+  "actualArchive": "NOT_RUN"
+}
