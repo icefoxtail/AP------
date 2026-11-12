@@ -1,46 +1,12 @@
 {
   "math": "PASS",
-  "sourceSemanticCheck": "LatestQ20 revised ㅁ side8 endpoints50/60 and answer2 ㄱㄹ, all5 descriptions/choices/solution read.",
-  "independentCheck": {
-    "exactThirdSideSquared": 49,
-    "otherSASThirdSideSquared": 39,
-    "fiveSignatures": {
-      "g": [
-        5,
-        7,
-        8
-      ],
-      "n": [
-        5,
-        7,
-        6.244997998398398
-      ],
-      "d": [
-        8,
-        7.076415447135343,
-        8.680508601059985
-      ],
-      "r": [
-        5,
-        8,
-        7
-      ],
-      "m": [
-        8,
-        6.5216597527672375,
-        7.37283988085501
-      ]
-    },
-    "onlyMatchingChoice": [
-      2
-    ]
-  },
-  "diagramMeaning": "Only ㄹ triangle, given sides5/8 BLUE, given60angle black, derived7 WARM; no falseequal mark on unequalblue sides.",
-  "problemLeakCheck": "PASS solutionOnly; computed7 and pairing not in problem",
-  "color": "PASS #1f5fa8 GIVEN sides, #b85c00 derivedside, blacklabels",
+  "sourceBlob": "c1bbd149f951ba1e142f00c24106720d080bd25f",
+  "sourceSemanticCheck": "Actual revised ㄱ/ㄹ are both SSS5/7/8. ㄴ is5/6/7, so neitherㄱ norㄹ matches; ㄴlargest7 cannot matchㅁgiven8; ㄷangle50/70/60 differsfromㅁ50/65/65. Onlychoice2. Exactmodel sides8/5/7 checked. No60degree label or derivedside claim remains.",
+  "problemLeakCheck": "PASS solutionOnly; no question illustration added",
+  "color": "PASS actualBLUE#1f5fa8 andWARM#b85c00, blacklabels; Q20all3side labels GIVEN, no60label",
   "staticAudit": "PASS",
   "renderedLayout": "PASS",
   "visualQA": "NOT_RUN",
   "actualArchive": "NOT_RUN",
-  "curriculumNote": "Mathcorrect but source uses square-root/Pythagorean relation beyond usual M1; curriculum fit separate from SVG accuracy, JSunchanged."
+  "productionAuthorized": false
 }

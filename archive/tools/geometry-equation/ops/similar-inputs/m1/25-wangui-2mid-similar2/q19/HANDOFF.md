@@ -1,2 +1,5 @@
-# 25 왕의중 유사2 Q19 해설
-Sourcebd7b9a1213075347ee145b7d88feb50bd142fb0e. 수정된보기② AB4 AC3 B30 직접검산, 반직선거리2√3±√5가모두양수라 두삼각형. ①만유일,③⑤불성립,④크기미정. C1/C2는원문C의두후보,파랑반지름3+표식,주황AB4. 문제에는미추가. 시각검수/운영 NOT_RUN. 원문해설 삼각비 표현의 중1적합성은 별도이며 JS미수정.
+# 25 왕의중 유사2 Q19 최신 source 대조
+Source c1bbd149f951ba1e142f00c24106720d080bd25f.
+Latest solution uses M1 reflection/equilateral construction, no trig teaching. Existing diagram correctlyshows choice2 ray30, AB4, two circleA radius3 intersections. Independently checked positive intersections2sqrt3±sqrt5; footdistance2<3<4, choice5distance3.5>3; choice1ASAunique, choice3impossible12>11, choice4AAA scale free. Symbolic roots are validation only, notshown.
+문제 추가 없음. 화면용 파랑·주황 실제 적용. 시각 검수 및 운영 연결 NOT_RUN.
+기존 두 교점 기하 의미는 유지하고 최신 중1 작도 해설과 결속 갱신.
