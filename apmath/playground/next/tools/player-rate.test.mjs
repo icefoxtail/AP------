@@ -23,7 +23,7 @@ function makePlayer() {
   return new Player({ teach: true });
 }
 
-test('원클릭 영상/해설 기본 2배, 느리게 0.5배 후 다시 2배로 복귀', () => {
+test('원클릭 영상/해설 기본 2배, 느리게 1배 후 다시 2배로 복귀', () => {
   const player = makePlayer();
   assert.equal(player.rate, 2, 'every new player defaults to 2x');
   const attrs = {}, classes = {};
@@ -32,21 +32,23 @@ test('원클릭 영상/해설 기본 2배, 느리게 0.5배 후 다시 2배로 �
     classList: { toggle: (name, on) => { classes[name] = on; } },
     innerHTML: ''
   } };
-  player.setRate(0.5);
-  assert.equal(player.rate, 0.5);
+  player.setRate(1);
+  assert.equal(player.rate, 1);
   assert.equal(attrs['aria-pressed'], 'true');
   assert.equal(classes.on, true);
-  assert.match(player.ui.slow.innerHTML, /0\.5배/);
+  assert.match(player.ui.slow.innerHTML, /1배/);
+  assert.equal(player.ui.slow.title, '기본 속도로 보기 (2배)');
   player.setRate(2);
   assert.equal(player.rate, 2);
   assert.equal(attrs['aria-pressed'], 'false');
   assert.equal(classes.on, false);
   assert.match(player.ui.slow.innerHTML, /느리게/);
+  assert.equal(player.ui.slow.title, '천천히 보기 (1배)');
   assert.match(playerSource, /this\.setRate\(this\.rate === DEFAULT_PLAYBACK_RATE \? SLOW_PLAYBACK_RATE : DEFAULT_PLAYBACK_RATE\)/,
     'slow toggle returns to the true 2x default');
 });
 
-test('시간 진행 0.1초 → 기본 0.2초, 느리게 0.05초; 화면 공개 타임라인 동기화', () => {
+test('시간 진행 0.1초 → 기본 0.2초, 느리게 0.1초; 화면 공개 타임라인 동기화', () => {
   const player = makePlayer();
   let applied = 0;
   player.ui = { slow: {
@@ -59,8 +61,8 @@ test('시간 진행 0.1초 → 기본 0.2초, 느리게 0.05초; 화면 공개 �
   player.apply = () => { applied += 1; };
   player._frame(1100);
   assert.ok(Math.abs(player.t - 0.2) < 1e-9, `default timeline advance ${player.t}`);
-  player.setRate(0.5);
+  player.setRate(1);
   player._frame(1200);
-  assert.ok(Math.abs(player.t - 0.25) < 1e-9, `slow timeline advance ${player.t}`);
+  assert.ok(Math.abs(player.t - 0.3) < 1e-9, `slow timeline advance ${player.t}`);
   assert.equal(applied, 2, 'every timeline advance redraws current figure and caption');
 });
