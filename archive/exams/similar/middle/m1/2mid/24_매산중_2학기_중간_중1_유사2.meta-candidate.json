@@ -39,6 +39,11 @@
         "scope": "Q1–Q24 embedded solution tails; affected qids: 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24",
         "change": "Removed non-student-facing visual-status and structured question-metadata blocks that had been appended after the final solution text. The actual mathematics solution text was retained unchanged; extracted source blocks are preserved under sourceProvenance.embeddedMetaTailRecords.",
         "independentCheck": "Source question metadata and visual markers are preserved in the sidecar; all changed solution strings now end at their original final answer sentence."
+      },
+      {
+        "scope": "Q21–Q24 content prompt fields",
+        "change": "Removed the appended answer, solution, U+E907 visual-status marker, and embedded source metadata tail from content; retained each original student-facing prompt through its final point value. The answer and solution fields are unchanged, and source metadata remains preserved in sourceProvenance.embeddedMetaTailRecords.",
+        "independentCheck": "Compared parsed question objects before/after: only content changed for Q21–Q24; question count, qid sequence, choices, answers, solutions, and all other question fields are unchanged."
       }
     ],
     "embeddedMetaTailRecords": [
@@ -1577,7 +1582,7 @@
     }
   },
   "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "b928c4c8fa415aaabd65a5a05ebd9cd4de20e852",
+  "expectedSourceBlobSha1": "77041d7ee38df5e6b158bca3cf36798fe258d8bb",
   "fourSlotCandidate": {
     "path": "archive/exams/similar/middle/m1/2mid/24_매산중_2학기_중간_중1_유사2.4slot-candidate.json",
     "sha256": "ff9928865fbc96116c12fbf41f604c94e649f5b5ec232564f5e2b680a510b13b",
