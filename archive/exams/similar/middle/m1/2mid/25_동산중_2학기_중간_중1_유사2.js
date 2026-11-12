@@ -32,10 +32,55 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
     "templateKey": "TPL_M1_PRIME_COMPOSITE_JUDGMENT_DIRECT_PRIME_TEST",
-    "solution": "소수는 $1$보다 큰 자연수 중 $1$과 자기 자신만을 약수로 갖는 수이다. $$\\begin{aligned} 9 &= 3^2 \\implies \\text{약수: } 1, 3, 9 \\text{ (합성수)} \\ 7 &\\implies \\text{약수: } 1, 7 \\text{ (소수)} \\ 21 &= 3 \\times 7 \\implies \\text{약수: } 1, 3, 7, 21 \\text{ (합성수)} \\ 27 &= 3^3 \\implies \\text{약수: } 1, 3, 9, 27 \\text{ (합성수)} \\ 35 &= 5 \\times 7 \\implies \\text{약수: } 1, 5, 7, 35 \\text{ (합성수)} \\end{aligned}$$ 따라서 소수는 $7$이므로 정답은 ②이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"소수와 합성수의 정의에 따른 수의 분류 판정 문항\"\n}\n\n{\n  \"sourceQid\": \"1\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"각 수의 약수를 구하여 1과 자기 자신만을 약수로 갖는 소수 7을 판별한다.\",\n  \"decisiveStep\": \"7의 약수가 1과 7뿐임을 확인하고 나머지 수들의 합성수 분해 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소수와 합성수\",\n    \"l4\": \"소수·합성수 판별\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PRIME_COMPOSITE_JUDGMENT\",\n    \"templateKey\": \"TPL_M1_PRIME_COMPOSITE_JUDGMENT_DIRECT_PRIME_TEST\",\n    \"why\": \"자연수 목록에서 직접 소수 판별법을 적용하는 기본 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"NONE\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"소수의 정의를 직접 적용하여 선지 중 소수를 가려내는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"소수\",\n      \"합성수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"약수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "소수는 $1$보다 큰 자연수 중 $1$과 자기 자신만을 약수로 갖는 수이다. $$\\begin{aligned} 9 &= 3^2 \\implies \\text{약수: } 1, 3, 9 \\text{ (합성수)} \\ 7 &\\implies \\text{약수: } 1, 7 \\text{ (소수)} \\ 21 &= 3 \\times 7 \\implies \\text{약수: } 1, 3, 7, 21 \\text{ (합성수)} \\ 27 &= 3^3 \\implies \\text{약수: } 1, 3, 9, 27 \\text{ (합성수)} \\ 35 &= 5 \\times 7 \\implies \\text{약수: } 1, 5, 7, 35 \\text{ (합성수)} \\end{aligned}$$ 따라서 소수는 $7$이므로 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "1",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-01",
+      "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+      "conceptClusterKey": "PRIME_FACTORIZATION",
+      "primaryMethod": "각 수의 약수를 구하여 1과 자기 자신만을 약수로 갖는 소수 7을 판별한다.",
+      "decisiveStep": "7의 약수가 1과 7뿐임을 확인하고 나머지 수들의 합성수 분해 식별",
+      "rpm": {
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소수와 합성수",
+        "l4": "소수·합성수 판별"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+        "templateKey": "TPL_M1_PRIME_COMPOSITE_JUDGMENT_DIRECT_PRIME_TEST",
+        "why": "자연수 목록에서 직접 소수 판별법을 적용하는 기본 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "소수의 정의를 직접 적용하여 선지 중 소수를 가려내는 1단계 기본 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          "소수",
+          "합성수"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "약수"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 2,
@@ -68,10 +113,56 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
     "templateKey": "TPL_M1_PRIME_COMPOSITE_JUDGMENT_PRIME_COMPOSITE_CLAIM_AUDIT",
-    "solution": "소수와 합성수의 성질을 보기별로 검토한다. $$\\begin{aligned} \\text{①: } &1\\text{은 소수도 합성수도 아니며 가장 작은 소수는 } 2\\text{이다. (거짓)} \\ \\text{②: } &2\\text{는 짝수인 유일한 소수이다. (거짓)} \\ \\text{③: } &8\\text{의 약수는 } 1, 2, 4, 8\\text{의 } 4\\text{개이므로 항상 } 3\\text{개인 것은 아니다. (거짓)} \\ \\text{④: } &11\\text{의 배수는 } 11, 22, 33, \\dots\\text{인데 } 11\\text{만 소수이고 나머지는 합성수이다. (참)} \\ \\text{⑤: } &2 + 3 = 5\\text{는 홀수이므로 항상 짝수는 아니다. (거짓)} \\end{aligned}$$ 따라서 옳은 것은 ④이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"소수와 합성수의 정의 및 예외적 성질(짝수 소수 2 등) 종합 판정\"\n}\n\n{\n  \"sourceQid\": \"2\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"소수와 합성수의 정의 및 11의 배수 중 소수는 11뿐이라는 배수 성질을 대조한다.\",\n  \"decisiveStep\": \"11의 배수 중 11 이외의 수는 모두 합성수임을 파악하여 ④의 참 판정\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소수와 합성수\",\n    \"l4\": \"소수의 성질 활용\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PRIME_COMPOSITE_JUDGMENT\",\n    \"templateKey\": \"TPL_M1_PRIME_COMPOSITE_JUDGMENT_PRIME_COMPOSITE_CLAIM_AUDIT\",\n    \"why\": \"소수와 합성수에 대한 여러 일반 명제의 진위를 검토하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"소수와 합성수의 개념 및 반례(짝수 소수 2 등)를 점검하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"소수\",\n      \"합성수\",\n      \"배수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"약수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "소수와 합성수의 성질을 보기별로 검토한다. $$\\begin{aligned} \\text{①: } &1\\text{은 소수도 합성수도 아니며 가장 작은 소수는 } 2\\text{이다. (거짓)} \\ \\text{②: } &2\\text{는 짝수인 유일한 소수이다. (거짓)} \\ \\text{③: } &8\\text{의 약수는 } 1, 2, 4, 8\\text{의 } 4\\text{개이므로 항상 } 3\\text{개인 것은 아니다. (거짓)} \\ \\text{④: } &11\\text{의 배수는 } 11, 22, 33, \\dots\\text{인데 } 11\\text{만 소수이고 나머지는 합성수이다. (참)} \\ \\text{⑤: } &2 + 3 = 5\\text{는 홀수이므로 항상 짝수는 아니다. (거짓)} \\end{aligned}$$ 따라서 옳은 것은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "2",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-01",
+      "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+      "conceptClusterKey": "PRIME_FACTORIZATION",
+      "primaryMethod": "소수와 합성수의 정의 및 11의 배수 중 소수는 11뿐이라는 배수 성질을 대조한다.",
+      "decisiveStep": "11의 배수 중 11 이외의 수는 모두 합성수임을 파악하여 ④의 참 판정",
+      "rpm": {
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소수와 합성수",
+        "l4": "소수의 성질 활용"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+        "templateKey": "TPL_M1_PRIME_COMPOSITE_JUDGMENT_PRIME_COMPOSITE_CLAIM_AUDIT",
+        "why": "소수와 합성수에 대한 여러 일반 명제의 진위를 검토하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "소수와 합성수의 개념 및 반례(짝수 소수 2 등)를 점검하는 2단계 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          "소수",
+          "합성수",
+          "배수"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "약수"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 3,
@@ -104,10 +195,54 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_POWER_BASE_EXPONENT_EVALUATION",
     "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
-    "solution": "거듭제곱 $a^b$에서 $a$는 밑, $b$는 지수이고 $a$를 $b$번 거듭하여 곱한 값이다. $$\\begin{aligned} a &= 3 \\ b &= 3 \\ c &= 3^3 = 3 \\times 3 \\times 3 = 27 \\end{aligned}$$ 이다. 따라서 세 값의 합을 구하면 $$\\begin{aligned} a + b + c &= 3 + 3 + 27 \\ &= 33 \\end{aligned}$$ 이므로 정답은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"거듭제곱의 밑, 지수, 거듭제곱 계산값의 합 산출 문항\"\n}\n\n{\n  \"sourceQid\": \"3\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"거듭제곱 3^3에서 밑 a=3, 지수 b=3, 계산값 c=27을 구하여 합산한다.\",\n  \"decisiveStep\": \"밑과 지수를 식별하고 3^3=27 산출 후 3+3+27=33 계산\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소인수분해\",\n    \"l4\": \"자연수의 소인수분해\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_POWER_BASE_EXPONENT_EVALUATION\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"거듭제곱의 밑, 지수, 결과값을 각각 읽어 결합하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"거듭제곱의 기본 용어와 단순 곱셈 값을 합하는 1단계 계산 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"거듭제곱\"\n    ],\n    \"goal\": [\n      \"합\"\n    ],\n    \"method\": [\n      \"곱셈\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "거듭제곱 $a^b$에서 $a$는 밑, $b$는 지수이고 $a$를 $b$번 거듭하여 곱한 값이다. $$\\begin{aligned} a &= 3 \\ b &= 3 \\ c &= 3^3 = 3 \\times 3 \\times 3 = 27 \\end{aligned}$$ 이다. 따라서 세 값의 합을 구하면 $$\\begin{aligned} a + b + c &= 3 + 3 + 27 \\ &= 33 \\end{aligned}$$ 이므로 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "3",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-01",
+      "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+      "conceptClusterKey": "PRIME_FACTORIZATION",
+      "primaryMethod": "거듭제곱 3^3에서 밑 a=3, 지수 b=3, 계산값 c=27을 구하여 합산한다.",
+      "decisiveStep": "밑과 지수를 식별하고 3^3=27 산출 후 3+3+27=33 계산",
+      "rpm": {
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소인수분해",
+        "l4": "자연수의 소인수분해"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_POWER_BASE_EXPONENT_EVALUATION",
+        "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+        "why": "거듭제곱의 밑, 지수, 결과값을 각각 읽어 결합하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "거듭제곱의 기본 용어와 단순 곱셈 값을 합하는 1단계 계산 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          "거듭제곱"
+        ],
+        "goal": [
+          "합"
+        ],
+        "method": [
+          "곱셈"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 4,
@@ -140,10 +275,54 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
     "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
-    "solution": "소인수분해는 $1$보다 큰 자연수를 오직 소수들만의 곱으로 나타내는 것이다. $$\\begin{aligned} 42 &= 2 \\times 21 \\ &= 2 \\times 3 \\times 7 \\end{aligned}$$ 이다. ①의 $6$, ②의 $21$은 합성수이므로 소인수분해가 아니며, ⑤의 $1$은 소수가 아니므로 옳지 않다. 따라서 정답은 ③이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"자연수 42의 정확한 소인수분해 표현 식별 문항\"\n}\n\n{\n  \"sourceQid\": \"4\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"자연수 42를 소수의 거듭제곱 곱 2*3*7로 분해하여 올바른 표현을 찾는다.\",\n  \"decisiveStep\": \"합성수 인수를 배제하고 2*3*7만을 인수로 갖는 표현 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소인수분해\",\n    \"l4\": \"자연수의 소인수분해\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PRIME_FACTORIZATION_JUDGMENT\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"자연수의 올바른 소인수분해 식을 확인하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"NONE\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"자연수의 소인수분해 정의를 직접 확인하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"소인수분해\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"소수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "소인수분해는 $1$보다 큰 자연수를 오직 소수들만의 곱으로 나타내는 것이다. $$\\begin{aligned} 42 &= 2 \\times 21 \\ &= 2 \\times 3 \\times 7 \\end{aligned}$$ 이다. ①의 $6$, ②의 $21$은 합성수이므로 소인수분해가 아니며, ⑤의 $1$은 소수가 아니므로 옳지 않다. 따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "4",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-01",
+      "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+      "conceptClusterKey": "PRIME_FACTORIZATION",
+      "primaryMethod": "자연수 42를 소수의 거듭제곱 곱 2*3*7로 분해하여 올바른 표현을 찾는다.",
+      "decisiveStep": "합성수 인수를 배제하고 2*3*7만을 인수로 갖는 표현 식별",
+      "rpm": {
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소인수분해",
+        "l4": "자연수의 소인수분해"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+        "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+        "why": "자연수의 올바른 소인수분해 식을 확인하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "자연수의 소인수분해 정의를 직접 확인하는 1단계 기본 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          "소인수분해"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "소수"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 5,
@@ -176,10 +355,55 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_PRIME_FACTOR_STRUCTURE",
     "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
-    "solution": "각 수를 소인수분해하여 소인수의 구성을 비교한다. $$\\begin{aligned} 75 &= 3 \\times 5^2 \\implies \\text{소인수: } 3, 5 \\ 24 &= 2^3 \\times 3 \\implies \\text{소인수: } 2, 3 \\ 40 &= 2^3 \\times 5 \\implies \\text{소인수: } 2, 5 \\ 54 &= 2 \\times 3^3 \\implies \\text{소인수: } 2, 3 \\ 60 &= 2^2 \\times 3 \\times 5 \\implies \\text{소인수: } 2, 3, 5 \\ 45 &= 3^2 \\times 5 \\implies \\text{소인수: } 3, 5 \\end{aligned}$$ 따라서 소인수가 $3$과 $5$로 $75$와 모두 같은 수는 $45$이므로 정답은 ⑤이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"소인수의 집합이 동일한 자연수 비교 선별 문항\"\n}\n\n{\n  \"sourceQid\": \"5\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"75=3*5^2의 소인수 {3,5}를 구하고 선지 중 45=3^2*5의 소인수가 일치함을 판정한다.\",\n  \"decisiveStep\": \"각 수의 소인수 집합을 대조하여 45의 소인수 집합 {3, 5} 선별\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소인수분해\",\n    \"l4\": \"소인수분해를 이용한 약수의 구조\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PRIME_FACTOR_STRUCTURE\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"소인수의 종류가 일치하는 수를 분류하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"자연수를 각각 소인수분해하여 소인수의 구성을 비교하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"소인수\",\n      \"소인수분해\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"소인수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "각 수를 소인수분해하여 소인수의 구성을 비교한다. $$\\begin{aligned} 75 &= 3 \\times 5^2 \\implies \\text{소인수: } 3, 5 \\ 24 &= 2^3 \\times 3 \\implies \\text{소인수: } 2, 3 \\ 40 &= 2^3 \\times 5 \\implies \\text{소인수: } 2, 5 \\ 54 &= 2 \\times 3^3 \\implies \\text{소인수: } 2, 3 \\ 60 &= 2^2 \\times 3 \\times 5 \\implies \\text{소인수: } 2, 3, 5 \\ 45 &= 3^2 \\times 5 \\implies \\text{소인수: } 3, 5 \\end{aligned}$$ 따라서 소인수가 $3$과 $5$로 $75$와 모두 같은 수는 $45$이므로 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "5",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-01",
+      "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+      "conceptClusterKey": "PRIME_FACTORIZATION",
+      "primaryMethod": "75=3*5^2의 소인수 {3,5}를 구하고 선지 중 45=3^2*5의 소인수가 일치함을 판정한다.",
+      "decisiveStep": "각 수의 소인수 집합을 대조하여 45의 소인수 집합 {3, 5} 선별",
+      "rpm": {
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소인수분해",
+        "l4": "소인수분해를 이용한 약수의 구조"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_PRIME_FACTOR_STRUCTURE",
+        "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+        "why": "소인수의 종류가 일치하는 수를 분류하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "자연수를 각각 소인수분해하여 소인수의 구성을 비교하는 2단계 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          "소인수",
+          "소인수분해"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "소인수"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 6,
@@ -212,10 +436,56 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
     "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
-    "solution": "$2 \\times 3^2 \\times 5$의 약수와 배수의 소인수 지수 조건을 확인한다. $$\\begin{aligned} \\text{ㄱ: } 3^2 &\\implies 2^0 \\times 3^2 \\times 5^0 \\text{이므로 지수가 이하이므로 약수이다.} \\ \\text{ㄴ: } 2 \\times 5 &\\implies 2^1 \\times 3^0 \\times 5^1 \\text{이므로 약수이다.} \\ \\text{ㄷ: } 3 \\times 7 &\\implies 7\\text{은 원래 수에 없는 소인수이므로 약수가 아니다.} \\ \\text{ㄹ: } 2^2 \\times 3^2 \\times 5 &\\implies 2\\text{의 지수가 } 2 \\ge 1, 3\\text{의 지수가 } 2 \\ge 2, 5\\text{의 지수가 } 1 \\ge 1\\text{이므로 배수이다.} \\ \\text{ㅁ: } 2 \\times 3 \\times 5 &\\implies 3\\text{의 지수가 } 1 < 2\\text{이므로 배수가 아니다 (약수이다).} \\end{aligned}$$ 따라서 약수는 ㄱ, ㄴ이고 배수는 ㄹ이므로 정답은 ②이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"소인수분해 지수 조건을 이용한 약수와 배수 판정 문항\"\n}\n\n{\n  \"sourceQid\": \"6\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"소인수분해 형태의 각 소인수 지수 대소를 비교하여 약수와 배수를 판별한다.\",\n  \"decisiveStep\": \"지수 이하 조건으로 약수(ㄱ, ㄴ), 지수 이상 조건으로 배수(ㄹ) 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소인수분해\",\n    \"l4\": \"소인수분해를 이용한 약수의 구조\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_DIVISOR_MULTIPLE_EXPONENT\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"소인수분해 표기에서 지수 조건을 비교해 약수와 배수를 구별하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"약수와 배수의 지수 조건을 보기별로 나누어 판정하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"소인수분해\",\n      \"약수\",\n      \"배수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"소인수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "$2 \\times 3^2 \\times 5$의 약수와 배수의 소인수 지수 조건을 확인한다. $$\\begin{aligned} \\text{ㄱ: } 3^2 &\\implies 2^0 \\times 3^2 \\times 5^0 \\text{이므로 지수가 이하이므로 약수이다.} \\ \\text{ㄴ: } 2 \\times 5 &\\implies 2^1 \\times 3^0 \\times 5^1 \\text{이므로 약수이다.} \\ \\text{ㄷ: } 3 \\times 7 &\\implies 7\\text{은 원래 수에 없는 소인수이므로 약수가 아니다.} \\ \\text{ㄹ: } 2^2 \\times 3^2 \\times 5 &\\implies 2\\text{의 지수가 } 2 \\ge 1, 3\\text{의 지수가 } 2 \\ge 2, 5\\text{의 지수가 } 1 \\ge 1\\text{이므로 배수이다.} \\ \\text{ㅁ: } 2 \\times 3 \\times 5 &\\implies 3\\text{의 지수가 } 1 < 2\\text{이므로 배수가 아니다 (약수이다).} \\end{aligned}$$ 따라서 약수는 ㄱ, ㄴ이고 배수는 ㄹ이므로 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "6",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-01",
+      "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+      "conceptClusterKey": "PRIME_FACTORIZATION",
+      "primaryMethod": "소인수분해 형태의 각 소인수 지수 대소를 비교하여 약수와 배수를 판별한다.",
+      "decisiveStep": "지수 이하 조건으로 약수(ㄱ, ㄴ), 지수 이상 조건으로 배수(ㄹ) 식별",
+      "rpm": {
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소인수분해",
+        "l4": "소인수분해를 이용한 약수의 구조"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+        "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+        "why": "소인수분해 표기에서 지수 조건을 비교해 약수와 배수를 구별하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "약수와 배수의 지수 조건을 보기별로 나누어 판정하는 2단계 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          "소인수분해",
+          "약수",
+          "배수"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "소인수"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 7,
@@ -248,10 +518,55 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_PRIME_FACTOR_STRUCTURE",
     "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
-    "solution": "서로 다른 세 소수를 소인수로 갖는 자연수를 크기순으로 나열한다. 가장 작은 소수 세 개는 $2, 3, 5$이다. $$\\begin{aligned} \\text{첫 번째로 작은 수: } & 2 \\times 3 \\times 5 = 30 \\ \\text{두 번째로 작은 수: } & 2 \\times 3 \\times 7 = 42 \\end{aligned}$$ 참고로 $30$과 $42$ 사이의 수 중 서로 다른 세 소수를 소인수로 갖는 수는 없으며, 그 다음 수들은 $2 \\times 3 \\times 11 = 66, \\ 2^2 \\times 3 \\times 5 = 60$ 등이다. 따라서 두 번째로 작은 수는 $42$이므로 정답은 ④이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"서로 다른 세 소수의 곱으로 표현되는 자연수의 크기 순서 판정\"\n}\n\n{\n  \"sourceQid\": \"7\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"작은 소수들의 곱 2*3*5=30 다음으로 작은 조합 2*3*7=42를 차례로 구성한다.\",\n  \"decisiveStep\": \"30 다음의 소수 조합 2*3*7=42를 탐색하여 두 번째 수 결정\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소인수분해\",\n    \"l4\": \"소인수분해를 이용한 약수의 구조\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PRIME_FACTOR_STRUCTURE\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"소인수 개수 조건에 맞는 수열에서 k번째 수를 찾는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"세 소수의 곱 조합을 크기순으로 나열하여 두 번째 값을 찾는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"소수\",\n      \"소인수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"소수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "서로 다른 세 소수를 소인수로 갖는 자연수를 크기순으로 나열한다. 가장 작은 소수 세 개는 $2, 3, 5$이다. $$\\begin{aligned} \\text{첫 번째로 작은 수: } & 2 \\times 3 \\times 5 = 30 \\ \\text{두 번째로 작은 수: } & 2 \\times 3 \\times 7 = 42 \\end{aligned}$$ 참고로 $30$과 $42$ 사이의 수 중 서로 다른 세 소수를 소인수로 갖는 수는 없으며, 그 다음 수들은 $2 \\times 3 \\times 11 = 66, \\ 2^2 \\times 3 \\times 5 = 60$ 등이다. 따라서 두 번째로 작은 수는 $42$이므로 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "7",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-01",
+      "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+      "conceptClusterKey": "PRIME_FACTORIZATION",
+      "primaryMethod": "작은 소수들의 곱 2*3*5=30 다음으로 작은 조합 2*3*7=42를 차례로 구성한다.",
+      "decisiveStep": "30 다음의 소수 조합 2*3*7=42를 탐색하여 두 번째 수 결정",
+      "rpm": {
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소인수분해",
+        "l4": "소인수분해를 이용한 약수의 구조"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_PRIME_FACTOR_STRUCTURE",
+        "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+        "why": "소인수 개수 조건에 맞는 수열에서 k번째 수를 찾는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "세 소수의 곱 조합을 크기순으로 나열하여 두 번째 값을 찾는 2단계 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          "소수",
+          "소인수"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "소수"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 8,
@@ -284,10 +599,55 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_COPRIME_TEST_AND_COUNT",
     "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
-    "solution": "$49 = 7^2$이므로 $49$와 서로소인 수는 $7$을 소인수로 갖지 않는 수, 즉 $7$의 배수가 아닌 수이다. $$\\begin{aligned} \\text{두 자리 자연수의 전체 개수: } & 99 - 10 + 1 = 90\\text{개} \\ \\text{두 자리 자연수 중 } 7\\text{의 배수: } & 14, 21, 28, \\dots, 98 \\ & \\dfrac{98 - 14}{7} + 1 = 12 + 1 = 13\\text{개} \\end{aligned}$$ 따라서 $49$와 서로소인 두 자리 자연수의 개수는 $$\\begin{aligned} 90 - 13 &= 77\\text{개} \\end{aligned}$$ 이므로 정답은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"서로소 정의를 여사건(7의 배수 제외)으로 계산하는 개수 산출\"\n}\n\n{\n  \"sourceQid\": \"8\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-GCD_LCM\",\n  \"conceptClusterKey\": \"GCD_LCM\",\n  \"primaryMethod\": \"두 자리 자연수 전체 90개에서 49=7^2의 소인수인 7의 배수 13개를 차감한다.\",\n  \"decisiveStep\": \"전체 개수 90개 및 7의 배수 13개 산출 후 90-13=77개 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"최대공약수와 최소공배수\",\n    \"l3\": \"공약수와 최대공약수\",\n    \"l4\": \"공약수 조건으로 수 찾기\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_COPRIME_TEST_AND_COUNT\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"주어진 범위에서 특정 소수의 거듭제곱과 서로소인 수의 개수를 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"서로소 개념을 배수의 여사건 차감으로 연계하는 2단계 계산 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"서로소\",\n      \"배수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"배수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "$49 = 7^2$이므로 $49$와 서로소인 수는 $7$을 소인수로 갖지 않는 수, 즉 $7$의 배수가 아닌 수이다. $$\\begin{aligned} \\text{두 자리 자연수의 전체 개수: } & 99 - 10 + 1 = 90\\text{개} \\ \\text{두 자리 자연수 중 } 7\\text{의 배수: } & 14, 21, 28, \\dots, 98 \\ & \\dfrac{98 - 14}{7} + 1 = 12 + 1 = 13\\text{개} \\end{aligned}$$ 따라서 $49$와 서로소인 두 자리 자연수의 개수는 $$\\begin{aligned} 90 - 13 &= 77\\text{개} \\end{aligned}$$ 이므로 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "8",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-01",
+      "subUnitKey": "M1-01-GCD_LCM",
+      "conceptClusterKey": "GCD_LCM",
+      "primaryMethod": "두 자리 자연수 전체 90개에서 49=7^2의 소인수인 7의 배수 13개를 차감한다.",
+      "decisiveStep": "전체 개수 90개 및 7의 배수 13개 산출 후 90-13=77개 도출",
+      "rpm": {
+        "majorUnit": "소인수분해",
+        "midUnit": "최대공약수와 최소공배수",
+        "l3": "공약수와 최대공약수",
+        "l4": "공약수 조건으로 수 찾기"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_COPRIME_TEST_AND_COUNT",
+        "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+        "why": "주어진 범위에서 특정 소수의 거듭제곱과 서로소인 수의 개수를 구하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "서로소 개념을 배수의 여사건 차감으로 연계하는 2단계 계산 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          "서로소",
+          "배수"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "배수"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 9,
@@ -320,10 +680,56 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
     "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
-    "solution": "주어진 수들을 소인수분해한다. $$\\begin{aligned} 28 &= 2^2 \\times 7 \\ 70 &= 2 \\times 5 \\times 7 \\ \\text{최대공약수} &= 14 = 2 \\times 7 \\ \\text{최소공배수} &= 420 = 2^2 \\times 3 \\times 5 \\times 7 \\end{aligned}$$ $\\square = 2^x \\times 3^y \\times 5^z \\times 7^w$ 꼴이라 하자.\n\n$3$은 $28$과 $70$에 없으므로 최소공배수의 $3^1$을 맞추기 위해 반드시 $y = 1$이어야 한다.\n최대공약수가 $14$이므로 모든 수에 $7^1$이 있고 최소공배수에도 $7^1$이 있으므로 $w = 1$이다.\n최대공약수에서 $2$의 최소 지수가 $1$, 최소공배수에서 $2$의 최대 지수가 $2$이므로 $x \\in {1, 2}$이다.\n$5$는 $70$에 $5^1$이 있으므로 최대공약수에 $5$가 들어가지 않으려면 $\\square$에서 $z \\in {0, 1}$이다. 따라서 가능한 $\\square$는 $x(2\\text{가지}) \\times z(2\\text{가지}) = 4$가지이다. $$\\begin{aligned} x=1, z=0 &: 2 \\times 3 \\times 7 = 42 \\ x=1, z=1 &: 2 \\times 3 \\times 5 \\times 7 = 210 \\ x=2, z=0 &: 2^2 \\times 3 \\times 7 = 84 \\ x=2, z=1 &: 2^2 \\times 3 \\times 5 \\times 7 = 420 \\end{aligned}$$ 이 네 수는 모두 $28, 70$과 서로 다르므로 세 자연수가 서로 다르다는 조건을 만족한다. 따라서 $\\square$가 될 수 있는 수는 $4$개이므로 정답은 ③이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"최대공약수와 최소공배수의 소인수 지수 조건을 연립하여 미지의 수를 결정\"\n}\n\n{\n  \"sourceQid\": \"9\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-GCD_LCM\",\n  \"conceptClusterKey\": \"GCD_LCM\",\n  \"primaryMethod\": \"gcd(14)와 lcm(420)의 소인수 지수 조건을 분석하여 미지수의 가능한 지수 조합 4개를 산출한다.\",\n  \"decisiveStep\": \"3의 필수 포함(y=1) 및 x in {1,2}, z in {0,1} 조합으로 4개 수 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"최대공약수와 최소공배수\",\n    \"l3\": \"최대공약수·최소공배수의 활용\",\n    \"l4\": \"나누어떨어짐 조건\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_GCD_LCM_EXPONENT_CONSTRAINT\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"소인수 지수의 최댓값과 최솟값 조건으로 미지수의 개수를 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"세 수의 소인수분해에서 최대공약수와 최소공배수 지수 제약을 연립 분석하는 3단계 심화 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"최대공약수\",\n      \"최소공배수\",\n      \"소인수분해\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"소인수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "주어진 수들을 소인수분해한다. $$\\begin{aligned} 28 &= 2^2 \\times 7 \\ 70 &= 2 \\times 5 \\times 7 \\ \\text{최대공약수} &= 14 = 2 \\times 7 \\ \\text{최소공배수} &= 420 = 2^2 \\times 3 \\times 5 \\times 7 \\end{aligned}$$ $\\square = 2^x \\times 3^y \\times 5^z \\times 7^w$ 꼴이라 하자.\n\n$3$은 $28$과 $70$에 없으므로 최소공배수의 $3^1$을 맞추기 위해 반드시 $y = 1$이어야 한다.\n최대공약수가 $14$이므로 모든 수에 $7^1$이 있고 최소공배수에도 $7^1$이 있으므로 $w = 1$이다.\n최대공약수에서 $2$의 최소 지수가 $1$, 최소공배수에서 $2$의 최대 지수가 $2$이므로 $x \\in {1, 2}$이다.\n$5$는 $70$에 $5^1$이 있으므로 최대공약수에 $5$가 들어가지 않으려면 $\\square$에서 $z \\in {0, 1}$이다. 따라서 가능한 $\\square$는 $x(2\\text{가지}) \\times z(2\\text{가지}) = 4$가지이다. $$\\begin{aligned} x=1, z=0 &: 2 \\times 3 \\times 7 = 42 \\ x=1, z=1 &: 2 \\times 3 \\times 5 \\times 7 = 210 \\ x=2, z=0 &: 2^2 \\times 3 \\times 7 = 84 \\ x=2, z=1 &: 2^2 \\times 3 \\times 5 \\times 7 = 420 \\end{aligned}$$ 이 네 수는 모두 $28, 70$과 서로 다르므로 세 자연수가 서로 다르다는 조건을 만족한다. 따라서 $\\square$가 될 수 있는 수는 $4$개이므로 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "9",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-01",
+      "subUnitKey": "M1-01-GCD_LCM",
+      "conceptClusterKey": "GCD_LCM",
+      "primaryMethod": "gcd(14)와 lcm(420)의 소인수 지수 조건을 분석하여 미지수의 가능한 지수 조합 4개를 산출한다.",
+      "decisiveStep": "3의 필수 포함(y=1) 및 x in {1,2}, z in {0,1} 조합으로 4개 수 도출",
+      "rpm": {
+        "majorUnit": "소인수분해",
+        "midUnit": "최대공약수와 최소공배수",
+        "l3": "최대공약수·최소공배수의 활용",
+        "l4": "나누어떨어짐 조건"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+        "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+        "why": "소인수 지수의 최댓값과 최솟값 조건으로 미지수의 개수를 구하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "세 수의 소인수분해에서 최대공약수와 최소공배수 지수 제약을 연립 분석하는 3단계 심화 문항",
+      "level": "상",
+      "item4slot": {
+        "given": [
+          "최대공약수",
+          "최소공배수",
+          "소인수분해"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "소인수"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 10,
@@ -356,10 +762,56 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_SIGNED_CHANGE_MODEL",
     "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
-    "solution": "서로 반대되는 성질을 가진 양은 양의 부호 $+$와 음의 부호 $-$를 사용하여 나타낸다. $$\\begin{aligned} \\text{영상 } 15^\\circ\\text{C} &\\implies +15^\\circ\\text{C} \\ \\text{영하 } 8^\\circ\\text{C} &\\implies -8^\\circ\\text{C} \\end{aligned}$$ 따라서 정답은 ⑤이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"반대 성질의 양에 양/음의 부호를 붙이는 기본 기호화 문항\"\n}\n\n{\n  \"sourceQid\": \"10\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-INTEGER_RATIONAL_NUMBER\",\n  \"conceptClusterKey\": \"INTEGER_RATIONAL\",\n  \"primaryMethod\": \"영상의 양의 부호에 대응하여 영하를 음의 부호 -8도로 바르게 표기한다.\",\n  \"decisiveStep\": \"영하 8도에 음의 부호 -를 적용하여 -8도 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수\",\n    \"l3\": \"수 체계\",\n    \"l4\": \"양수·음수 분류\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_SIGNED_CHANGE_MODEL\",\n    \"templateKey\": \"TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION\",\n    \"why\": \"반대 성질의 수량을 부호 있는 수로 나타내는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"DIRECT\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호의 정의를 실생활 수량에 직접 대응시키는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"부호\",\n      \"양수\",\n      \"음수\"\n    ],\n    \"goal\": [\n      \"부호\"\n    ],\n    \"method\": [\n      \"부호\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "서로 반대되는 성질을 가진 양은 양의 부호 $+$와 음의 부호 $-$를 사용하여 나타낸다. $$\\begin{aligned} \\text{영상 } 15^\\circ\\text{C} &\\implies +15^\\circ\\text{C} \\ \\text{영하 } 8^\\circ\\text{C} &\\implies -8^\\circ\\text{C} \\end{aligned}$$ 따라서 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "10",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-02",
+      "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+      "conceptClusterKey": "INTEGER_RATIONAL",
+      "primaryMethod": "영상의 양의 부호에 대응하여 영하를 음의 부호 -8도로 바르게 표기한다.",
+      "decisiveStep": "영하 8도에 음의 부호 -를 적용하여 -8도 도출",
+      "rpm": {
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수",
+        "l3": "수 체계",
+        "l4": "양수·음수 분류"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_SIGNED_CHANGE_MODEL",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+        "why": "반대 성질의 수량을 부호 있는 수로 나타내는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "DIRECT",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "부호의 정의를 실생활 수량에 직접 대응시키는 1단계 기본 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          "부호",
+          "양수",
+          "음수"
+        ],
+        "goal": [
+          "부호"
+        ],
+        "method": [
+          "부호"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 11,
@@ -392,10 +844,55 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
     "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
-    "solution": "정수와 유리수의 성질을 보기별로 검토한다. $$\\begin{aligned} \\text{①: } &0\\text{은 양의 정수도 음의 정수도 아니다. (거짓)} \\ \\text{②: } &-\\dfrac{8}{5}\\text{는 분수 꼴로 나타낼 수 있으나 정수는 아니므로 정수가 아닌 유리수이다. (참)} \\ \\text{③: } &0\\text{과 음의 정수는 자연수가 아니다. (거짓)} \\ \\text{④: } &|0| = 0\\text{이므로 절댓값이 가장 작은 정수는 } 0\\text{이다. (거짓)} \\ \\text{⑤: } &-2\\text{와 }+3\\text{ 사이의 정수는 } -1, 0, 1, 2\\text{의 } 4\\text{개이다. (거짓)} \\end{aligned}$$ 따라서 옳은 것은 ②이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정수와 유리수의 포함 관계 및 수 체계 분류 판정 문항\"\n}\n\n{\n  \"sourceQid\": \"11\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-INTEGER_RATIONAL_NUMBER\",\n  \"conceptClusterKey\": \"INTEGER_RATIONAL\",\n  \"primaryMethod\": \"유리수의 정의와 정수가 아닌 유리수의 분류 기준을 확인한다.\",\n  \"decisiveStep\": \"-8/5이 정수가 아닌 유리수임을 확인하여 ②의 참 판정\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수\",\n    \"l3\": \"수 체계\",\n    \"l4\": \"정수와 유리수의 포함 관계\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RATIONAL_PROPERTY_JUDGMENT\",\n    \"templateKey\": \"TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION\",\n    \"why\": \"정수와 유리수의 분류 체계 및 정의 진술을 검토하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"수 체계의 기본 분류(정수, 정수가 아닌 유리수)를 점검하는 1단계 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"정수\",\n      \"유리수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"유리수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "정수와 유리수의 성질을 보기별로 검토한다. $$\\begin{aligned} \\text{①: } &0\\text{은 양의 정수도 음의 정수도 아니다. (거짓)} \\ \\text{②: } &-\\dfrac{8}{5}\\text{는 분수 꼴로 나타낼 수 있으나 정수는 아니므로 정수가 아닌 유리수이다. (참)} \\ \\text{③: } &0\\text{과 음의 정수는 자연수가 아니다. (거짓)} \\ \\text{④: } &|0| = 0\\text{이므로 절댓값이 가장 작은 정수는 } 0\\text{이다. (거짓)} \\ \\text{⑤: } &-2\\text{와 }+3\\text{ 사이의 정수는 } -1, 0, 1, 2\\text{의 } 4\\text{개이다. (거짓)} \\end{aligned}$$ 따라서 옳은 것은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "11",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-02",
+      "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+      "conceptClusterKey": "INTEGER_RATIONAL",
+      "primaryMethod": "유리수의 정의와 정수가 아닌 유리수의 분류 기준을 확인한다.",
+      "decisiveStep": "-8/5이 정수가 아닌 유리수임을 확인하여 ②의 참 판정",
+      "rpm": {
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수",
+        "l3": "수 체계",
+        "l4": "정수와 유리수의 포함 관계"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+        "why": "정수와 유리수의 분류 체계 및 정의 진술을 검토하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "수 체계의 기본 분류(정수, 정수가 아닌 유리수)를 점검하는 1단계 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          "정수",
+          "유리수"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "유리수"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 12,
@@ -428,10 +925,55 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_COORDINATE_POINT_READING",
     "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
-    "solution": "수직선 위의 각 점의 좌표를 눈금 등분 비율로 구한다. $$\\begin{aligned} A &: -3 \\text{ (참)} \\ B &: -2 + \\dfrac{1}{3} = -\\dfrac{5}{3} \\text{ (참)} \\ C &: -1 + \\dfrac{1}{2} = -\\dfrac{1}{2} \\text{ (참)} \\ D &: +1 + \\dfrac{3}{4} = +\\dfrac{7}{4} \\ne +\\dfrac{5}{4} \\text{ (거짓)} \\ E &: +3 \\text{ (참)} \\end{aligned}$$ 따라서 옳지 않은 것은 ④이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"수직선 위 등분점에 대응하는 유리수의 좌표 계산 및 검증\"\n}\n\n{\n  \"sourceQid\": \"12\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-INTEGER_RATIONAL_NUMBER\",\n  \"conceptClusterKey\": \"INTEGER_RATIONAL\",\n  \"primaryMethod\": \"수직선 눈금의 등분 길이를 정수 기준점에 더해 각 점의 유리수 값을 산출한다.\",\n  \"decisiveStep\": \"점 D의 좌표가 1 + 3/4 = 7/4임을 계산하여 5/4와의 불일치 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수\",\n    \"l3\": \"수직선과 대소 관계\",\n    \"l4\": \"수직선 위의 수\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_COORDINATE_POINT_READING\",\n    \"templateKey\": \"TPL_COORDINATE_POINT_READING_CORE\",\n    \"why\": \"수직선 위의 점에 대응하는 유리수를 읽고 대조하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"수직선 등분 눈금을 분수로 환산하여 좌표의 참·거짓을 판정하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"수직선\",\n      \"유리수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"수직선\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "수직선 위의 각 점의 좌표를 눈금 등분 비율로 구한다. $$\\begin{aligned} A &: -3 \\text{ (참)} \\ B &: -2 + \\dfrac{1}{3} = -\\dfrac{5}{3} \\text{ (참)} \\ C &: -1 + \\dfrac{1}{2} = -\\dfrac{1}{2} \\text{ (참)} \\ D &: +1 + \\dfrac{3}{4} = +\\dfrac{7}{4} \\ne +\\dfrac{5}{4} \\text{ (거짓)} \\ E &: +3 \\text{ (참)} \\end{aligned}$$ 따라서 옳지 않은 것은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "12",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-02",
+      "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+      "conceptClusterKey": "INTEGER_RATIONAL",
+      "primaryMethod": "수직선 눈금의 등분 길이를 정수 기준점에 더해 각 점의 유리수 값을 산출한다.",
+      "decisiveStep": "점 D의 좌표가 1 + 3/4 = 7/4임을 계산하여 5/4와의 불일치 식별",
+      "rpm": {
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수",
+        "l3": "수직선과 대소 관계",
+        "l4": "수직선 위의 수"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COORDINATE_POINT_READING",
+        "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
+        "why": "수직선 위의 점에 대응하는 유리수를 읽고 대조하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "수직선 등분 눈금을 분수로 환산하여 좌표의 참·거짓을 판정하는 2단계 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          "수직선",
+          "유리수"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "수직선"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 13,
@@ -464,10 +1006,55 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
     "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
-    "solution": "절댓값이 같고 부호가 반대인 두 수는 원점에서 서로 반대 방향으로 같은 거리만큼 떨어져 있다. 두 수의 절댓값을 $k$ ($k > 0$)라 하면 두 수는 $-k$와 $+k$이다. $$\\begin{aligned} \\text{두 점 사이의 거리} &= k + k = 2k = 16 \\ k &= 8 \\end{aligned}$$ 이다. 따라서 두 수는 $-8$과 $8$이므로 정답은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"절댓값의 기하학적 의미(원점으로부터의 거리)를 이용한 수 결정\"\n}\n\n{\n  \"sourceQid\": \"13\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-INTEGER_RATIONAL_NUMBER\",\n  \"conceptClusterKey\": \"INTEGER_RATIONAL\",\n  \"primaryMethod\": \"절댓값이 같은 두 점 사이의 거리 2k=16에서 절댓값 k=8을 구해 -8과 8을 도출한다.\",\n  \"decisiveStep\": \"두 점 사이의 거리 2k=16에서 k=8 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수\",\n    \"l3\": \"절댓값\",\n    \"l4\": \"절댓값의 뜻\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY\",\n    \"templateKey\": \"TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION\",\n    \"why\": \"절댓값이 같은 두 수의 수직선상 거리 조건으로 두 수를 복원하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"DIRECT\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"절댓값의 거리 정의를 수직선상 대칭점에 적용하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"절댓값\",\n      \"수직선\"\n    ],\n    \"goal\": [\n      \"유리수\"\n    ],\n    \"method\": [\n      \"절댓값\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "절댓값이 같고 부호가 반대인 두 수는 원점에서 서로 반대 방향으로 같은 거리만큼 떨어져 있다. 두 수의 절댓값을 $k$ ($k > 0$)라 하면 두 수는 $-k$와 $+k$이다. $$\\begin{aligned} \\text{두 점 사이의 거리} &= k + k = 2k = 16 \\ k &= 8 \\end{aligned}$$ 이다. 따라서 두 수는 $-8$과 $8$이므로 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "13",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-02",
+      "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+      "conceptClusterKey": "INTEGER_RATIONAL",
+      "primaryMethod": "절댓값이 같은 두 점 사이의 거리 2k=16에서 절댓값 k=8을 구해 -8과 8을 도출한다.",
+      "decisiveStep": "두 점 사이의 거리 2k=16에서 k=8 산출",
+      "rpm": {
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수",
+        "l3": "절댓값",
+        "l4": "절댓값의 뜻"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+        "why": "절댓값이 같은 두 수의 수직선상 거리 조건으로 두 수를 복원하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "DIRECT",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "절댓값의 거리 정의를 수직선상 대칭점에 적용하는 1단계 기본 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          "절댓값",
+          "수직선"
+        ],
+        "goal": [
+          "유리수"
+        ],
+        "method": [
+          "절댓값"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 14,
@@ -500,10 +1087,55 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
     "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
-    "solution": "수직선에서 오른쪽에 있는 수가 더 크며, 음수끼리는 절댓값이 작은 수가 더 크다. $$\\begin{aligned} \\text{①: } &-5 < 0 \\text{ (음수는 0보다 작으므로 참)} \\ \\text{②: } &-\\dfrac{1}{2} < \\dfrac{1}{3} \\text{ (음수는 양수보다 작으므로 참)} \\ \\text{③: } &|-3| = 3, |-8| = 8 \\implies 3 < 8 \\text{이므로 } -8 < -3 \\text{이다. (거짓)} \\ \\text{④: } &0 < +4 \\text{ (0은 양수보다 작으므로 참)} \\ \\text{⑤: } &+2 < +5 \\text{ (양수끼리는 절댓값이 큰 수가 크므로 참)} \\end{aligned}$$ 따라서 옳지 않은 것은 ③이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"음수와 양수, 음수끼리의 절댓값 대소 비교 판정 문항\"\n}\n\n{\n  \"sourceQid\": \"14\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-INTEGER_RATIONAL_NUMBER\",\n  \"conceptClusterKey\": \"INTEGER_RATIONAL\",\n  \"primaryMethod\": \"음수끼리는 절댓값이 작은 수가 더 크다는 대소 원리를 적용하여 -8 < -3임을 판별한다.\",\n  \"decisiveStep\": \"-3 < -8이 잘못된 부등호임을 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수\",\n    \"l3\": \"수직선과 대소 관계\",\n    \"l4\": \"유리수의 대소 비교\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RATIONAL_VALUE_COMPARISON\",\n    \"templateKey\": \"TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER\",\n    \"why\": \"유리수의 대소 관계 명제를 비교 검토하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호가 있는 두 수의 대소 비교 규칙을 확인하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"유리수\",\n      \"절댓값\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"절댓값\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "수직선에서 오른쪽에 있는 수가 더 크며, 음수끼리는 절댓값이 작은 수가 더 크다. $$\\begin{aligned} \\text{①: } &-5 < 0 \\text{ (음수는 0보다 작으므로 참)} \\ \\text{②: } &-\\dfrac{1}{2} < \\dfrac{1}{3} \\text{ (음수는 양수보다 작으므로 참)} \\ \\text{③: } &|-3| = 3, |-8| = 8 \\implies 3 < 8 \\text{이므로 } -8 < -3 \\text{이다. (거짓)} \\ \\text{④: } &0 < +4 \\text{ (0은 양수보다 작으므로 참)} \\ \\text{⑤: } &+2 < +5 \\text{ (양수끼리는 절댓값이 큰 수가 크므로 참)} \\end{aligned}$$ 따라서 옳지 않은 것은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "14",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-02",
+      "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+      "conceptClusterKey": "INTEGER_RATIONAL",
+      "primaryMethod": "음수끼리는 절댓값이 작은 수가 더 크다는 대소 원리를 적용하여 -8 < -3임을 판별한다.",
+      "decisiveStep": "-3 < -8이 잘못된 부등호임을 식별",
+      "rpm": {
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수",
+        "l3": "수직선과 대소 관계",
+        "l4": "유리수의 대소 비교"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+        "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
+        "why": "유리수의 대소 관계 명제를 비교 검토하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "부호가 있는 두 수의 대소 비교 규칙을 확인하는 1단계 기본 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          "유리수",
+          "절댓값"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "절댓값"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 15,
@@ -536,10 +1168,55 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
     "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
-    "solution": "정수의 덧셈과 뺄셈 규칙을 적용하여 각 보기를 계산한다. $$\\begin{aligned} \\text{①: } &(-7) + (-3) = -(7 + 3) = -10 \\text{ (참)} \\ \\text{②: } &(-5) + (+9) = +(9 - 5) = +4 \\text{ (참)} \\ \\text{③: } &(6) - (+8) = 6 + (-8) = -2 \\text{ (참)} \\ \\text{④: } &(-3) - (-5) = (-3) + (+5) = +2 \\text{ (참)} \\ \\text{⑤: } &(-5) - (+4) = (-5) + (-4) = -9 \\ne -1 \\text{ (거짓)} \\end{aligned}$$ 따라서 옳지 않은 것은 ⑤이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정수의 덧셈과 뺄셈 사칙계산 규칙 대조 문항\"\n}\n\n{\n  \"sourceQid\": \"15\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-RATIONAL_NUMBER_OPERATIONS\",\n  \"conceptClusterKey\": \"RATIONAL_ARITHMETIC\",\n  \"primaryMethod\": \"뺄셈을 빼는 수의 부호를 바꾸어 더하는 규칙으로 변환하여 계산 결과를 검증한다.\",\n  \"decisiveStep\": \"(-5)-(+4) = (-5)+(-4) = -9임을 확인하여 ⑤의 오류 판정\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"덧셈과 뺄셈\",\n    \"l4\": \"부호가 있는 수의 뺄셈\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RATIONAL_ARITHMETIC\",\n    \"templateKey\": \"TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM\",\n    \"why\": \"부호가 있는 수의 덧셈·뺄셈 계산 진술을 확인하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호가 있는 두 정수의 덧셈과 뺄셈을 단계별로 검증하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"정수\",\n      \"연산\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"사칙계산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "정수의 덧셈과 뺄셈 규칙을 적용하여 각 보기를 계산한다. $$\\begin{aligned} \\text{①: } &(-7) + (-3) = -(7 + 3) = -10 \\text{ (참)} \\ \\text{②: } &(-5) + (+9) = +(9 - 5) = +4 \\text{ (참)} \\ \\text{③: } &(6) - (+8) = 6 + (-8) = -2 \\text{ (참)} \\ \\text{④: } &(-3) - (-5) = (-3) + (+5) = +2 \\text{ (참)} \\ \\text{⑤: } &(-5) - (+4) = (-5) + (-4) = -9 \\ne -1 \\text{ (거짓)} \\end{aligned}$$ 따라서 옳지 않은 것은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "15",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-02",
+      "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "RATIONAL_ARITHMETIC",
+      "primaryMethod": "뺄셈을 빼는 수의 부호를 바꾸어 더하는 규칙으로 변환하여 계산 결과를 검증한다.",
+      "decisiveStep": "(-5)-(+4) = (-5)+(-4) = -9임을 확인하여 ⑤의 오류 판정",
+      "rpm": {
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "덧셈과 뺄셈",
+        "l4": "부호가 있는 수의 뺄셈"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
+        "why": "부호가 있는 수의 덧셈·뺄셈 계산 진술을 확인하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "부호가 있는 두 정수의 덧셈과 뺄셈을 단계별로 검증하는 2단계 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          "정수",
+          "연산"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "사칙계산"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 16,
@@ -572,10 +1249,55 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
     "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
-    "solution": "두 수의 뺄셈을 덧셈으로 바꾸어 계산한다. $$\\begin{aligned} 7 - 25 &= (+7) + (-25) \\ &= -(25 - 7) \\ &= -18 \\end{aligned}$$ 이므로 정답은 ②이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"자연수 간 뺄셈의 음의 정수 결과 계산\"\n}\n\n{\n  \"sourceQid\": \"16\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-RATIONAL_NUMBER_OPERATIONS\",\n  \"conceptClusterKey\": \"RATIONAL_ARITHMETIC\",\n  \"primaryMethod\": \"7-25를 절댓값의 차 25-7=18에 음의 부호를 붙여 -18로 계산한다.\",\n  \"decisiveStep\": \"부호가 다른 두 수의 덧셈 변환으로 -18 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"덧셈과 뺄셈\",\n    \"l4\": \"부호가 있는 수의 뺄셈\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RATIONAL_ARITHMETIC\",\n    \"templateKey\": \"TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM\",\n    \"why\": \"두 정수의 단순 뺄셈 결과를 계산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"DIRECT\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호가 있는 두 수의 뺄셈을 직접 수행하는 1단계 계산 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"정수\",\n      \"차\"\n    ],\n    \"goal\": [\n      \"정수\"\n    ],\n    \"method\": [\n      \"사칙계산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "두 수의 뺄셈을 덧셈으로 바꾸어 계산한다. $$\\begin{aligned} 7 - 25 &= (+7) + (-25) \\ &= -(25 - 7) \\ &= -18 \\end{aligned}$$ 이므로 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "16",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-02",
+      "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "RATIONAL_ARITHMETIC",
+      "primaryMethod": "7-25를 절댓값의 차 25-7=18에 음의 부호를 붙여 -18로 계산한다.",
+      "decisiveStep": "부호가 다른 두 수의 덧셈 변환으로 -18 산출",
+      "rpm": {
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "덧셈과 뺄셈",
+        "l4": "부호가 있는 수의 뺄셈"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
+        "why": "두 정수의 단순 뺄셈 결과를 계산하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "DIRECT",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "부호가 있는 두 수의 뺄셈을 직접 수행하는 1단계 계산 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          "정수",
+          "차"
+        ],
+        "goal": [
+          "정수"
+        ],
+        "method": [
+          "사칙계산"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 17,
@@ -608,10 +1330,56 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
     "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
-    "solution": "문장의 의미를 수식으로 바꾸어 $a$와 $b$를 구한다. $$\\begin{aligned} a &= 15 + (-4) = 11 \\ b &= 3 - (+8) = 3 + (-8) = -5 \\end{aligned}$$ 따라서 $a - b$의 값을 구하면 $$\\begin{aligned} a - b &= 11 - (-5) \\ &= 11 + 5 \\ &= 16 \\end{aligned}$$ 이므로 정답은 ④이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"수량 관계 문장을 덧셈과 뺄셈 식으로 변환 후 차 계산\"\n}\n\n{\n  \"sourceQid\": \"17\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-RATIONAL_NUMBER_OPERATIONS\",\n  \"conceptClusterKey\": \"RATIONAL_ARITHMETIC\",\n  \"primaryMethod\": \"a=15+(-4)=11과 b=3-(+8)=-5를 구하고 a-b=11-(-5)=16을 계산한다.\",\n  \"decisiveStep\": \"a=11, b=-5 산출 후 a-b=11+5=16 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"덧셈과 뺄셈\",\n    \"l4\": \"덧셈·뺄셈 혼합\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RATIONAL_ARITHMETIC\",\n    \"templateKey\": \"TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM\",\n    \"why\": \"문장으로 주어진 수량 관계를 덧셈·뺄셈 식으로 나타내어 차를 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"수량 문장을 덧셈과 뺄셈 식으로 모델링하여 차를 구하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"정수\",\n      \"합\",\n      \"차\"\n    ],\n    \"goal\": [\n      \"정수\"\n    ],\n    \"method\": [\n      \"사칙계산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "문장의 의미를 수식으로 바꾸어 $a$와 $b$를 구한다. $$\\begin{aligned} a &= 15 + (-4) = 11 \\ b &= 3 - (+8) = 3 + (-8) = -5 \\end{aligned}$$ 따라서 $a - b$의 값을 구하면 $$\\begin{aligned} a - b &= 11 - (-5) \\ &= 11 + 5 \\ &= 16 \\end{aligned}$$ 이므로 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "17",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-02",
+      "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "RATIONAL_ARITHMETIC",
+      "primaryMethod": "a=15+(-4)=11과 b=3-(+8)=-5를 구하고 a-b=11-(-5)=16을 계산한다.",
+      "decisiveStep": "a=11, b=-5 산출 후 a-b=11+5=16 도출",
+      "rpm": {
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "덧셈과 뺄셈",
+        "l4": "덧셈·뺄셈 혼합"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
+        "why": "문장으로 주어진 수량 관계를 덧셈·뺄셈 식으로 나타내어 차를 구하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "수량 문장을 덧셈과 뺄셈 식으로 모델링하여 차를 구하는 2단계 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          "정수",
+          "합",
+          "차"
+        ],
+        "goal": [
+          "정수"
+        ],
+        "method": [
+          "사칙계산"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 18,
@@ -644,10 +1412,55 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
     "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
-    "solution": "설명에서 전진은 더하기($+$), 후진은 빼기($-$)에 해당하고, 동쪽은 양수($+$), 서쪽은 음수($-$)에 대응한다. $$\\begin{aligned} \\text{동쪽으로 가던 차의 후진} &: -(+a) = +(-a) \\text{ (서쪽으로 전진)} \\ \\text{서쪽으로 가던 차의 후진} &: -(-a) = +(+a) \\text{ (동쪽으로 전진)} \\end{aligned}$$ 두 관계는 모두 '어떤 수를 빼는 것은 그 수의 부호를 바꾸어 더하는 것과 같다'는 뺄셈의 연산 원리를 나타낸다. 따라서 정답은 ①이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"실생활 운동 모델을 통한 정수 뺄셈의 수학적 원리 해석\"\n}\n\n{\n  \"sourceQid\": \"18\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-RATIONAL_NUMBER_OPERATIONS\",\n  \"conceptClusterKey\": \"RATIONAL_ARITHMETIC\",\n  \"primaryMethod\": \"방향과 전진·후진 모델을 뺄셈과 부호 반전 규칙 -(+a)=+(-a), -(-a)=+(+a)로 해석한다.\",\n  \"decisiveStep\": \"후진 연산의 부호 반전 효과를 뺄셈의 정의(부호 바꾸어 더하기)로 연결\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"덧셈과 뺄셈\",\n    \"l4\": \"부호가 있는 수의 뺄셈\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT\",\n    \"templateKey\": \"TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION\",\n    \"why\": \"실생활 상황 모델이 나타내는 수의 연산 원리를 판정하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"NONE\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"수학적 연산 법칙(뺄셈)의 실생활 직관적 모델을 해석하는 2단계 개념 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"부호\",\n      \"연산\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"사칙계산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "설명에서 전진은 더하기($+$), 후진은 빼기($-$)에 해당하고, 동쪽은 양수($+$), 서쪽은 음수($-$)에 대응한다. $$\\begin{aligned} \\text{동쪽으로 가던 차의 후진} &: -(+a) = +(-a) \\text{ (서쪽으로 전진)} \\ \\text{서쪽으로 가던 차의 후진} &: -(-a) = +(+a) \\text{ (동쪽으로 전진)} \\end{aligned}$$ 두 관계는 모두 '어떤 수를 빼는 것은 그 수의 부호를 바꾸어 더하는 것과 같다'는 뺄셈의 연산 원리를 나타낸다. 따라서 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "18",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-02",
+      "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "RATIONAL_ARITHMETIC",
+      "primaryMethod": "방향과 전진·후진 모델을 뺄셈과 부호 반전 규칙 -(+a)=+(-a), -(-a)=+(+a)로 해석한다.",
+      "decisiveStep": "후진 연산의 부호 반전 효과를 뺄셈의 정의(부호 바꾸어 더하기)로 연결",
+      "rpm": {
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "덧셈과 뺄셈",
+        "l4": "부호가 있는 수의 뺄셈"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+        "why": "실생활 상황 모델이 나타내는 수의 연산 원리를 판정하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "수학적 연산 법칙(뺄셈)의 실생활 직관적 모델을 해석하는 2단계 개념 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          "부호",
+          "연산"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "사칙계산"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 19,
@@ -680,10 +1493,56 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
     "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER",
-    "solution": "유리수의 곱셈과 나눗셈 부호 규칙 및 역수 곱셈을 적용한다. $$\\begin{aligned} \\text{①: } &(-8) \\times (-3) = +(8 \\times 3) = +24 \\text{ (참)} \\ \\text{②: } &(-4) \\times (+7) = -(4 \\times 7) = -28 \\text{ (참)} \\ \\text{③: } &(-8) \\div \\dfrac{4}{3} = (-8) \\times \\dfrac{3}{4} = -6 \\ne -10 \\text{ (거짓)} \\ \\text{④: } &(+18) \\div (-6) = -(18 \\div 6) = -3 \\text{ (참)} \\ \\text{⑤: } &(-12) \\div (-4) = +(12 \\div 4) = +3 \\text{ (참)} \\end{aligned}$$ 따라서 옳지 않은 것은 ③이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정수와 유리수의 곱셈 및 역수를 이용한 나눗셈 결과 검증\"\n}\n\n{\n  \"sourceQid\": \"19\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-RATIONAL_NUMBER_OPERATIONS\",\n  \"conceptClusterKey\": \"RATIONAL_ARITHMETIC\",\n  \"primaryMethod\": \"분수 나눗셈을 역수의 곱셈으로 바꾸어 (-8)*(3/4)=-6임을 확인하고 오류를 선별한다.\",\n  \"decisiveStep\": \"(-8) div (4/3) = (-8)*(3/4) = -6 산출 및 -10과의 불일치 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"곱셈과 나눗셈\",\n    \"l4\": \"부호가 있는 수의 나눗셈\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RATIONAL_ARITHMETIC\",\n    \"templateKey\": \"TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER\",\n    \"why\": \"유리수의 곱셈과 나눗셈 계산 결과의 진위를 검증하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호 규칙과 역수를 이용한 분수 나눗셈을 단계별로 검증하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"유리수\",\n      \"역수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"곱셈\",\n      \"나눗셈\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "유리수의 곱셈과 나눗셈 부호 규칙 및 역수 곱셈을 적용한다. $$\\begin{aligned} \\text{①: } &(-8) \\times (-3) = +(8 \\times 3) = +24 \\text{ (참)} \\ \\text{②: } &(-4) \\times (+7) = -(4 \\times 7) = -28 \\text{ (참)} \\ \\text{③: } &(-8) \\div \\dfrac{4}{3} = (-8) \\times \\dfrac{3}{4} = -6 \\ne -10 \\text{ (거짓)} \\ \\text{④: } &(+18) \\div (-6) = -(18 \\div 6) = -3 \\text{ (참)} \\ \\text{⑤: } &(-12) \\div (-4) = +(12 \\div 4) = +3 \\text{ (참)} \\end{aligned}$$ 따라서 옳지 않은 것은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "19",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-02",
+      "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "RATIONAL_ARITHMETIC",
+      "primaryMethod": "분수 나눗셈을 역수의 곱셈으로 바꾸어 (-8)*(3/4)=-6임을 확인하고 오류를 선별한다.",
+      "decisiveStep": "(-8) div (4/3) = (-8)*(3/4) = -6 산출 및 -10과의 불일치 식별",
+      "rpm": {
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "곱셈과 나눗셈",
+        "l4": "부호가 있는 수의 나눗셈"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER",
+        "why": "유리수의 곱셈과 나눗셈 계산 결과의 진위를 검증하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "부호 규칙과 역수를 이용한 분수 나눗셈을 단계별로 검증하는 2단계 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          "유리수",
+          "역수"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "곱셈",
+          "나눗셈"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 20,
@@ -716,10 +1575,56 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS",
     "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER",
-    "solution": "두 수의 곱이 가장 작으려면 부호가 음수이어야 하고, 음수 중에서는 절댓값이 가장 커야 한다. 곱이 음수가 되려면 양수 하나와 음수 하나를 골라야 한다. $$\\begin{aligned} \\text{양수}: &\\ +\\dfrac{3}{2}, \\ +6 \\implies \\text{절댓값이 가장 큰 양수: } +6 \\ \\text{음수}: &\\ -4, \\ -\\dfrac{1}{3} \\implies \\text{절댓값이 가장 큰 음수: } -4 \\end{aligned}$$ 따라서 절댓값이 가장 큰 양수와 절댓값이 가장 큰 음수를 곱하면 $$\\begin{aligned} (+6) \\times (-4) &= -24 \\end{aligned}$$ 이다. 다른 경우들의 곱: $$\\begin{aligned} 6 \\times \\left(-\\dfrac{1}{3}\\right) &= -2 \\ \\dfrac{3}{2} \\times (-4) &= -6 \\ \\dfrac{3}{2} \\times \\left(-\\dfrac{1}{3}\\right) &= -\\dfrac{1}{2} \\end{aligned}$$ 이므로 모두 $-24$보다 크다. 따라서 가장 작은 수는 $-24$이므로 정답은 ⑤이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"유리수 조합의 곱 중 최솟값(음수이면서 절댓값 최대) 판정\"\n}\n\n{\n  \"sourceQid\": \"20\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-RATIONAL_NUMBER_OPERATIONS\",\n  \"conceptClusterKey\": \"RATIONAL_ARITHMETIC\",\n  \"primaryMethod\": \"곱의 최솟값을 위해 절댓값이 가장 큰 양수 +6과 음수 -4를 곱해 -24를 구한다.\",\n  \"decisiveStep\": \"음수 곱 조건에서 절댓값 최대 쌍 (+6)*(-4) = -24 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"곱셈과 나눗셈\",\n    \"l4\": \"부호가 있는 수의 곱셈\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS\",\n    \"templateKey\": \"TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER\",\n    \"why\": \"유리수 집합에서 조건을 만족하는 극값 곱을 찾는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호와 절댓값의 성질을 결합하여 곱의 최솟값을 탐색하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"유리수\",\n      \"곱\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"절댓값\",\n      \"곱셈\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "두 수의 곱이 가장 작으려면 부호가 음수이어야 하고, 음수 중에서는 절댓값이 가장 커야 한다. 곱이 음수가 되려면 양수 하나와 음수 하나를 골라야 한다. $$\\begin{aligned} \\text{양수}: &\\ +\\dfrac{3}{2}, \\ +6 \\implies \\text{절댓값이 가장 큰 양수: } +6 \\ \\text{음수}: &\\ -4, \\ -\\dfrac{1}{3} \\implies \\text{절댓값이 가장 큰 음수: } -4 \\end{aligned}$$ 따라서 절댓값이 가장 큰 양수와 절댓값이 가장 큰 음수를 곱하면 $$\\begin{aligned} (+6) \\times (-4) &= -24 \\end{aligned}$$ 이다. 다른 경우들의 곱: $$\\begin{aligned} 6 \\times \\left(-\\dfrac{1}{3}\\right) &= -2 \\ \\dfrac{3}{2} \\times (-4) &= -6 \\ \\dfrac{3}{2} \\times \\left(-\\dfrac{1}{3}\\right) &= -\\dfrac{1}{2} \\end{aligned}$$ 이므로 모두 $-24$보다 크다. 따라서 가장 작은 수는 $-24$이므로 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "20",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-02",
+      "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "RATIONAL_ARITHMETIC",
+      "primaryMethod": "곱의 최솟값을 위해 절댓값이 가장 큰 양수 +6과 음수 -4를 곱해 -24를 구한다.",
+      "decisiveStep": "음수 곱 조건에서 절댓값 최대 쌍 (+6)*(-4) = -24 도출",
+      "rpm": {
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "곱셈과 나눗셈",
+        "l4": "부호가 있는 수의 곱셈"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER",
+        "why": "유리수 집합에서 조건을 만족하는 극값 곱을 찾는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "부호와 절댓값의 성질을 결합하여 곱의 최솟값을 탐색하는 2단계 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          "유리수",
+          "곱"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "절댓값",
+          "곱셈"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 21,
@@ -752,10 +1657,56 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
     "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
-    "solution": "곱의 부호와 차의 부호로 세 수 $a, b, c$의 부호를 확정한다. $$\\begin{aligned} b \\times c > 0 &\\implies b\\text{와 } c\\text{는 서로 같은 부호} \\ a \\times b < 0 &\\implies a\\text{와 } b\\text{는 서로 다른 부호} \\end{aligned}$$ 따라서 $a$와 $c$는 서로 다른 부호이다. $$\\begin{aligned} a - c > 0 &\\implies a > c \\end{aligned}$$ 서로 다른 부호인 두 수에서 $a > c$이므로 $$\\begin{aligned} a > 0, \\quad c < 0 \\end{aligned}$$ 이다. $b$는 $c$와 부호가 같으므로 $b < 0$이다. 정리하면 $a > 0, b < 0, c < 0$이다. 보기 검토: $$\\begin{aligned} \\text{①: } &a>0, b<0\\text{에서 절댓값에 따라 부호가 달라지므로 항상 옳지는 않다.} \\ \\text{②: } &b<0, c<0\\text{이므로 } b+c<0\\text{이다. (거짓)} \\ \\text{③: } &a>0, c<0\\text{이므로 } a \\times c < 0\\text{이다. (거짓)} \\ \\text{④: } &a>0, b<0\\text{이므로 } a - b = a + (-b) > 0\\text{이다. (거짓)} \\ \\text{⑤: } &a > c\\text{이므로 } c - a < 0\\text{은 항상 참이다.} \\end{aligned}$$ 따라서 항상 옳은 것은 ⑤이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"곱의 부호와 뺄셈 부등식으로부터 각 수의 부호를 추론하는 논리 판정\"\n}\n\n{\n  \"sourceQid\": \"21\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-INTEGER_RATIONAL_NUMBER\",\n  \"conceptClusterKey\": \"INTEGER_RATIONAL\",\n  \"primaryMethod\": \"곱의 부호로 동부호/이부호를 판정하고 a-c>0 대소로 a>0, b<0, c<0을 유도한다.\",\n  \"decisiveStep\": \"a>0, b<0, c<0 확정 후 c-a<0의 항등적 참 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"곱셈과 나눗셈\",\n    \"l4\": \"부호가 있는 수의 곱셈\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS\",\n    \"templateKey\": \"TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER\",\n    \"why\": \"유리수의 곱과 차 부등식으로부터 부호를 논리적으로 추론하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"세 수의 곱과 차 조건에서 부호를 연립 추론하는 3단계 논리 판정 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"유리수\",\n      \"부호\",\n      \"곱\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"부호\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "곱의 부호와 차의 부호로 세 수 $a, b, c$의 부호를 확정한다. $$\\begin{aligned} b \\times c > 0 &\\implies b\\text{와 } c\\text{는 서로 같은 부호} \\ a \\times b < 0 &\\implies a\\text{와 } b\\text{는 서로 다른 부호} \\end{aligned}$$ 따라서 $a$와 $c$는 서로 다른 부호이다. $$\\begin{aligned} a - c > 0 &\\implies a > c \\end{aligned}$$ 서로 다른 부호인 두 수에서 $a > c$이므로 $$\\begin{aligned} a > 0, \\quad c < 0 \\end{aligned}$$ 이다. $b$는 $c$와 부호가 같으므로 $b < 0$이다. 정리하면 $a > 0, b < 0, c < 0$이다. 보기 검토: $$\\begin{aligned} \\text{①: } &a>0, b<0\\text{에서 절댓값에 따라 부호가 달라지므로 항상 옳지는 않다.} \\ \\text{②: } &b<0, c<0\\text{이므로 } b+c<0\\text{이다. (거짓)} \\ \\text{③: } &a>0, c<0\\text{이므로 } a \\times c < 0\\text{이다. (거짓)} \\ \\text{④: } &a>0, b<0\\text{이므로 } a - b = a + (-b) > 0\\text{이다. (거짓)} \\ \\text{⑤: } &a > c\\text{이므로 } c - a < 0\\text{은 항상 참이다.} \\end{aligned}$$ 따라서 항상 옳은 것은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "21",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-02",
+      "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+      "conceptClusterKey": "INTEGER_RATIONAL",
+      "primaryMethod": "곱의 부호로 동부호/이부호를 판정하고 a-c>0 대소로 a>0, b<0, c<0을 유도한다.",
+      "decisiveStep": "a>0, b<0, c<0 확정 후 c-a<0의 항등적 참 식별",
+      "rpm": {
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "곱셈과 나눗셈",
+        "l4": "부호가 있는 수의 곱셈"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+        "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
+        "why": "유리수의 곱과 차 부등식으로부터 부호를 논리적으로 추론하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "세 수의 곱과 차 조건에서 부호를 연립 추론하는 3단계 논리 판정 문항",
+      "level": "상",
+      "item4slot": {
+        "given": [
+          "유리수",
+          "부호",
+          "곱"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "부호"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 22,
@@ -782,10 +1733,57 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE",
     "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
-    "solution": "자연수를 제곱하여 얻는 수(제곱수)는 소인수분해했을 때 모든 소인수의 지수가 짝수이어야 한다. $28$을 소인수분해하면 $$\\begin{aligned} 28 &= 2^2 \\times 7 \\end{aligned}$$ 이다. 따라서 $28 \\times a = 2^2 \\times 7 \\times a$가 제곱수가 되기 위해서는 $2$의 지수는 이미 짝수이므로, 홀수 지수를 갖는 소인수 $7$의 지수를 짝수로 만들기 위해 $a$는 $7$을 반드시 소인수로 가져야 한다. 즉 $a$는 자연수 $k$에 대하여 $$\\begin{aligned} a &= 7 \\times k^2 \\end{aligned}$$ 꼴이어야 한다.\n\n가장 작은 값 ($k = 1$): $$\\begin{aligned} a &= 7 \\times 1^2 = 7 \\ 28 \\times 7 &= 196 = 14^2 \\implies b = 14 \\end{aligned}$$\n두 번째로 작은 값 ($k = 2$): $$\\begin{aligned} a &= 7 \\times 2^2 = 7 \\times 4 = 28 \\ 28 \\times 28 &= 784 = 28^2 \\implies b = 28 \\end{aligned}$$ 따라서 구하는 두 번째로 작은 값은 $a = 28, b = 28$이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"소인수의 지수가 짝수가 되는 제곱수 완성 조건 서술형 계산\"\n}\n\n{\n  \"sourceQid\": \"22\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"28=2^2*7에서 a=7*k^2 형태를 유도하고 k=2를 대입해 a=28, b=28을 산출한다.\",\n  \"decisiveStep\": \"지수 짝수화 조건 a=7*k^2 유도 후 k=2 대입하여 a=28, b=28 계산\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소인수분해\",\n    \"l4\": \"조건을 만족하는 자연수 찾기\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"제곱수가 되도록 하는 자연수 인수의 k번째 값을 구하는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [\n    \"COND_NATURAL\"\n  ],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"제곱수 소인수 지수 조건을 모델링하여 두 번째 해를 서술하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"소인수분해\",\n      \"거듭제곱\"\n    ],\n    \"goal\": [\n      \"소인수\"\n    ],\n    \"method\": [\n      \"소인수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "자연수를 제곱하여 얻는 수(제곱수)는 소인수분해했을 때 모든 소인수의 지수가 짝수이어야 한다. $28$을 소인수분해하면 $$\\begin{aligned} 28 &= 2^2 \\times 7 \\end{aligned}$$ 이다. 따라서 $28 \\times a = 2^2 \\times 7 \\times a$가 제곱수가 되기 위해서는 $2$의 지수는 이미 짝수이므로, 홀수 지수를 갖는 소인수 $7$의 지수를 짝수로 만들기 위해 $a$는 $7$을 반드시 소인수로 가져야 한다. 즉 $a$는 자연수 $k$에 대하여 $$\\begin{aligned} a &= 7 \\times k^2 \\end{aligned}$$ 꼴이어야 한다.\n\n가장 작은 값 ($k = 1$): $$\\begin{aligned} a &= 7 \\times 1^2 = 7 \\ 28 \\times 7 &= 196 = 14^2 \\implies b = 14 \\end{aligned}$$\n두 번째로 작은 값 ($k = 2$): $$\\begin{aligned} a &= 7 \\times 2^2 = 7 \\times 4 = 28 \\ 28 \\times 28 &= 784 = 28^2 \\implies b = 28 \\end{aligned}$$ 따라서 구하는 두 번째로 작은 값은 $a = 28, b = 28$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "22",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-01",
+      "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+      "conceptClusterKey": "PRIME_FACTORIZATION",
+      "primaryMethod": "28=2^2*7에서 a=7*k^2 형태를 유도하고 k=2를 대입해 a=28, b=28을 산출한다.",
+      "decisiveStep": "지수 짝수화 조건 a=7*k^2 유도 후 k=2 대입하여 a=28, b=28 계산",
+      "rpm": {
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소인수분해",
+        "l4": "조건을 만족하는 자연수 찾기"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE",
+        "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+        "why": "제곱수가 되도록 하는 자연수 인수의 k번째 값을 구하는 서술형 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "제곱수 소인수 지수 조건을 모델링하여 두 번째 해를 서술하는 2단계 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          "소인수분해",
+          "거듭제곱"
+        ],
+        "goal": [
+          "소인수"
+        ],
+        "method": [
+          "소인수"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 23,
@@ -812,10 +1810,56 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
     "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
-    "solution": "(1) 어떤 수 구하기: 어떤 수를 $x$라 하면, 잘못 계산한 식은 다음과 같다. $$\\begin{aligned} x - \\left(-\\dfrac{3}{4}\\right) &= \\dfrac{5}{12} \\ x + \\dfrac{3}{4} &= \\dfrac{5}{12} \\ x &= \\dfrac{5}{12} - \\dfrac{3}{4} \\ &= \\dfrac{5}{12} - \\dfrac{9}{12} \\ &= -\\dfrac{4}{12} = -\\dfrac{1}{3} \\end{aligned}$$ 따라서 어떤 수는 $-\\dfrac{1}{3}$이다.\n\n(2) 바르게 계산한 값 구하기: 어떤 수 $x = -\\dfrac{1}{3}$에 $-\\dfrac{3}{4}$을 더하면 다음과 같다. $$\\begin{aligned} x + \\left(-\\dfrac{3}{4}\\right) &= -\\dfrac{1}{3} + \\left(-\\dfrac{3}{4}\\right) \\ &= -\\dfrac{4}{12} - \\dfrac{9}{12} \\ &= -\\dfrac{13}{12} \\end{aligned}$$ 따라서 바르게 계산한 값은 $-\\dfrac{13}{12}$이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"잘못 계산한 유리수 방정식의 역산 및 올바른 덧셈 계산 서술\"\n}\n\n{\n  \"sourceQid\": \"23\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-RATIONAL_NUMBER_OPERATIONS\",\n  \"conceptClusterKey\": \"RATIONAL_ARITHMETIC\",\n  \"primaryMethod\": \"x-(-3/4)=5/12를 풀어 x=-1/3을 구하고 바른 식 x+(-3/4)=-13/12를 산출한다.\",\n  \"decisiveStep\": \"역산으로 x=-1/3 도출 후 바른 덧셈으로 -13/12 계산\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"덧셈과 뺄셈\",\n    \"l4\": \"덧셈·뺄셈 혼합\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION\",\n    \"templateKey\": \"TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM\",\n    \"why\": \"잘못 적용된 연산에서 역산으로 원래 수를 복원하고 바르게 계산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"유리수의 뺄셈 역산과 덧셈을 연속 전개하는 2단계 서술형 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"유리수\",\n      \"합\",\n      \"차\"\n    ],\n    \"goal\": [\n      \"유리수\"\n    ],\n    \"method\": [\n      \"사칙계산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}",
+    "solution": "(1) 어떤 수 구하기: 어떤 수를 $x$라 하면, 잘못 계산한 식은 다음과 같다. $$\\begin{aligned} x - \\left(-\\dfrac{3}{4}\\right) &= \\dfrac{5}{12} \\ x + \\dfrac{3}{4} &= \\dfrac{5}{12} \\ x &= \\dfrac{5}{12} - \\dfrac{3}{4} \\ &= \\dfrac{5}{12} - \\dfrac{9}{12} \\ &= -\\dfrac{4}{12} = -\\dfrac{1}{3} \\end{aligned}$$ 따라서 어떤 수는 $-\\dfrac{1}{3}$이다.\n\n(2) 바르게 계산한 값 구하기: 어떤 수 $x = -\\dfrac{1}{3}$에 $-\\dfrac{3}{4}$을 더하면 다음과 같다. $$\\begin{aligned} x + \\left(-\\dfrac{3}{4}\\right) &= -\\dfrac{1}{3} + \\left(-\\dfrac{3}{4}\\right) \\ &= -\\dfrac{4}{12} - \\dfrac{9}{12} \\ &= -\\dfrac{13}{12} \\end{aligned}$$ 따라서 바르게 계산한 값은 $-\\dfrac{13}{12}$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "23",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-02",
+      "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "RATIONAL_ARITHMETIC",
+      "primaryMethod": "x-(-3/4)=5/12를 풀어 x=-1/3을 구하고 바른 식 x+(-3/4)=-13/12를 산출한다.",
+      "decisiveStep": "역산으로 x=-1/3 도출 후 바른 덧셈으로 -13/12 계산",
+      "rpm": {
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "덧셈과 뺄셈",
+        "l4": "덧셈·뺄셈 혼합"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
+        "why": "잘못 적용된 연산에서 역산으로 원래 수를 복원하고 바르게 계산하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "유리수의 뺄셈 역산과 덧셈을 연속 전개하는 2단계 서술형 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          "유리수",
+          "합",
+          "차"
+        ],
+        "goal": [
+          "유리수"
+        ],
+        "method": [
+          "사칙계산"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   },
   {
     "id": 24,
@@ -842,9 +1886,55 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
     "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
-    "solution": "세 수의 곱과 차의 조건을 바탕으로 부호를 단계별로 추론한다. $$\\begin{aligned}\n\n\\ y \\times z < 0 : &\\quad y\\text{와 } z\\text{는 서로 다른 부호이다.} \\\n\\ x \\times z > 0 : &\\quad x\\text{와 } z\\text{는 서로 같은 부호이다.} \\end{aligned}$$ $x$는 $z$와 같은 부호이고 $y$는 $z$와 다른 부호이므로, $x$와 $y$는 서로 다른 부호이다. $$\\begin{aligned}\n\\ x - y > 0 : &\\quad x > y\\text{이다.} \\end{aligned}$$ 부호가 서로 다른 두 수 $x, y$에서 큰 쪽인 $x$가 양수이고 작은 쪽인 $y$가 음수이어야 하므로 $$\\begin{aligned} x > 0, \\quad y < 0 \\end{aligned}$$ 이다. 또한 $x$와 $z$의 부호가 같으므로 $$\\begin{aligned} z > 0 \\end{aligned}$$ 이다. 따라서 세 수의 부호는 $x > 0, y < 0, z > 0$이다.\n\n{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"곱의 부호와 차의 부등식을 연계한 세 수의 부호 연역 서술\"\n}\n\n{\n  \"sourceQid\": \"24\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-INTEGER_RATIONAL_NUMBER\",\n  \"conceptClusterKey\": \"INTEGER_RATIONAL\",\n  \"primaryMethod\": \"곱의 부호로 x와 z 동부호, y와 z 이부호를 밝히고 x-y>0으로 x>0, y<0, z>0을 서술한다.\",\n  \"decisiveStep\": \"x와 y의 이부호성 및 x>y 대소로부터 x>0, y<0, z>0 확정\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"곱셈과 나눗셈\",\n    \"l4\": \"부호가 있는 수의 곱셈\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS\",\n    \"templateKey\": \"TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER\",\n    \"why\": \"곱과 차의 부호 조건에서 부호를 연역적으로 서술하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호의 곱셈 성질과 대소 관계를 논리적인 문장으로 증명 서술하는 2단계 서술형 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"유리수\",\n      \"부호\",\n      \"곱\"\n    ],\n    \"goal\": [\n      \"부호\"\n    ],\n    \"method\": [\n      \"부호\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}\n",
+    "solution": "세 수의 곱과 차의 조건을 바탕으로 부호를 단계별로 추론한다. $$\\begin{aligned}\n\n\\ y \\times z < 0 : &\\quad y\\text{와 } z\\text{는 서로 다른 부호이다.} \\\n\\ x \\times z > 0 : &\\quad x\\text{와 } z\\text{는 서로 같은 부호이다.} \\end{aligned}$$ $x$는 $z$와 같은 부호이고 $y$는 $z$와 다른 부호이므로, $x$와 $y$는 서로 다른 부호이다. $$\\begin{aligned}\n\\ x - y > 0 : &\\quad x > y\\text{이다.} \\end{aligned}$$ 부호가 서로 다른 두 수 $x, y$에서 큰 쪽인 $x$가 양수이고 작은 쪽인 $y$가 음수이어야 하므로 $$\\begin{aligned} x > 0, \\quad y < 0 \\end{aligned}$$ 이다. 또한 $x$와 $z$의 부호가 같으므로 $$\\begin{aligned} z > 0 \\end{aligned}$$ 이다. 따라서 세 수의 부호는 $x > 0, y < 0, z > 0$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "candidateMetadata": {
+      "sourceQid": "24",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2022",
+      "standardUnitKey": "M1-02",
+      "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+      "conceptClusterKey": "INTEGER_RATIONAL",
+      "primaryMethod": "곱의 부호로 x와 z 동부호, y와 z 이부호를 밝히고 x-y>0으로 x>0, y<0, z>0을 서술한다.",
+      "decisiveStep": "x와 y의 이부호성 및 x>y 대소로부터 x>0, y<0, z>0 확정",
+      "rpm": {
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "곱셈과 나눗셈",
+        "l4": "부호가 있는 수의 곱셈"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+        "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
+        "why": "곱과 차의 부호 조건에서 부호를 연역적으로 서술하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "부호의 곱셈 성질과 대소 관계를 논리적인 문장으로 증명 서술하는 2단계 서술형 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          "유리수",
+          "부호",
+          "곱"
+        ],
+        "goal": [
+          "부호"
+        ],
+        "method": [
+          "부호"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
   }
 ];

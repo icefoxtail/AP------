@@ -13,11 +13,1301 @@
         "scope": "Q20 stem",
         "change": "Corrected malformed LaTeX set brace from \\\\left{ to \\\\left\\\\{.",
         "independentCheck": "Verified independently: six products are -24, -6, -2, -1/2, 4/3, 9; minimum is -24 (⑤). The set braces were the only LaTeX defect."
+      },
+      {
+        "scope": "Q1-Q24 solution metadata tails",
+        "change": "Removed the appended U+E907 visual-plan/source-metadata blocks from each solution string. Preserved the full parsed source metadata in each question candidateMetadata field; preserved the original parsed visual-plan/source-metadata blocks in sourceProvenance.embeddedMetaTailRecords; updated 4-slot method quotes to the clean solution text.",
+        "identityAndScope": "Drive title and source header declare 25_동산중_2학기_중간_중1_유사, examFolder 2mid, grade 중1, curriculum 2022, 24 questions, 100 points. Source identity and semester label were retained. M1-01/M1-02 assignments and source standardCourse label are preserved as candidate-only and unapproved.",
+        "preservation": "Question count, stems, choices, answers, points, existing top-level unit keys, PT/TPL keys, and student solution text before the appended blocks were preserved."
       }
     ],
     "sourceOriginalJsBlobSha1": "6deb8328fecdeae6008a0611d36f937ad3ec4a67",
-    "evidenceDebt": "Drive source document revision is recorded; flattened source text SHA256 not yet calculated.",
-    "sourceTextHashMethod": "NOT_RUN; Drive content is retained at the recorded document revision."
+    "evidenceDebt": "Drive source revision is recorded; flattened source text SHA256 not yet calculated. Drive title/header and original source path identify 2mid; M1-01/M1-02 content is retained without inferring a semester change. Source candidate standardCourse=중1 differs from the JS top-level label 중1 수학; exact registration alignment remains unreviewed.",
+    "sourceTextHashMethod": "NOT_RUN; Drive content is retained at the recorded document revision.",
+    "embeddedMetaTailRecords": [
+      {
+        "sourceOrdinal": 1,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "소수와 합성수의 정의에 따른 수의 분류 판정 문항"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "1",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+          "conceptClusterKey": "PRIME_FACTORIZATION",
+          "primaryMethod": "각 수의 약수를 구하여 1과 자기 자신만을 약수로 갖는 소수 7을 판별한다.",
+          "decisiveStep": "7의 약수가 1과 7뿐임을 확인하고 나머지 수들의 합성수 분해 식별",
+          "rpm": {
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소수와 합성수",
+            "l4": "소수·합성수 판별"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+            "templateKey": "TPL_M1_PRIME_COMPOSITE_JUDGMENT_DIRECT_PRIME_TEST",
+            "why": "자연수 목록에서 직접 소수 판별법을 적용하는 기본 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "소수의 정의를 직접 적용하여 선지 중 소수를 가려내는 1단계 기본 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "소수",
+              "합성수"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "약수"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"소수와 합성수의 정의에 따른 수의 분류 판정 문항\"\n}\n\n{\n  \"sourceQid\": \"1\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"각 수의 약수를 구하여 1과 자기 자신만을 약수로 갖는 소수 7을 판별한다.\",\n  \"decisiveStep\": \"7의 약수가 1과 7뿐임을 확인하고 나머지 수들의 합성수 분해 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소수와 합성수\",\n    \"l4\": \"소수·합성수 판별\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PRIME_COMPOSITE_JUDGMENT\",\n    \"templateKey\": \"TPL_M1_PRIME_COMPOSITE_JUDGMENT_DIRECT_PRIME_TEST\",\n    \"why\": \"자연수 목록에서 직접 소수 판별법을 적용하는 기본 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"NONE\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"소수의 정의를 직접 적용하여 선지 중 소수를 가려내는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"소수\",\n      \"합성수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"약수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 2,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "소수와 합성수의 정의 및 예외적 성질(짝수 소수 2 등) 종합 판정"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "2",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+          "conceptClusterKey": "PRIME_FACTORIZATION",
+          "primaryMethod": "소수와 합성수의 정의 및 11의 배수 중 소수는 11뿐이라는 배수 성질을 대조한다.",
+          "decisiveStep": "11의 배수 중 11 이외의 수는 모두 합성수임을 파악하여 ④의 참 판정",
+          "rpm": {
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소수와 합성수",
+            "l4": "소수의 성질 활용"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+            "templateKey": "TPL_M1_PRIME_COMPOSITE_JUDGMENT_PRIME_COMPOSITE_CLAIM_AUDIT",
+            "why": "소수와 합성수에 대한 여러 일반 명제의 진위를 검토하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "소수와 합성수의 개념 및 반례(짝수 소수 2 등)를 점검하는 2단계 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "소수",
+              "합성수",
+              "배수"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "약수"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"소수와 합성수의 정의 및 예외적 성질(짝수 소수 2 등) 종합 판정\"\n}\n\n{\n  \"sourceQid\": \"2\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"소수와 합성수의 정의 및 11의 배수 중 소수는 11뿐이라는 배수 성질을 대조한다.\",\n  \"decisiveStep\": \"11의 배수 중 11 이외의 수는 모두 합성수임을 파악하여 ④의 참 판정\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소수와 합성수\",\n    \"l4\": \"소수의 성질 활용\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PRIME_COMPOSITE_JUDGMENT\",\n    \"templateKey\": \"TPL_M1_PRIME_COMPOSITE_JUDGMENT_PRIME_COMPOSITE_CLAIM_AUDIT\",\n    \"why\": \"소수와 합성수에 대한 여러 일반 명제의 진위를 검토하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"소수와 합성수의 개념 및 반례(짝수 소수 2 등)를 점검하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"소수\",\n      \"합성수\",\n      \"배수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"약수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 3,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "거듭제곱의 밑, 지수, 거듭제곱 계산값의 합 산출 문항"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "3",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+          "conceptClusterKey": "PRIME_FACTORIZATION",
+          "primaryMethod": "거듭제곱 3^3에서 밑 a=3, 지수 b=3, 계산값 c=27을 구하여 합산한다.",
+          "decisiveStep": "밑과 지수를 식별하고 3^3=27 산출 후 3+3+27=33 계산",
+          "rpm": {
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소인수분해",
+            "l4": "자연수의 소인수분해"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_POWER_BASE_EXPONENT_EVALUATION",
+            "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+            "why": "거듭제곱의 밑, 지수, 결과값을 각각 읽어 결합하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "거듭제곱의 기본 용어와 단순 곱셈 값을 합하는 1단계 계산 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "거듭제곱"
+            ],
+            "goal": [
+              "합"
+            ],
+            "method": [
+              "곱셈"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"거듭제곱의 밑, 지수, 거듭제곱 계산값의 합 산출 문항\"\n}\n\n{\n  \"sourceQid\": \"3\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"거듭제곱 3^3에서 밑 a=3, 지수 b=3, 계산값 c=27을 구하여 합산한다.\",\n  \"decisiveStep\": \"밑과 지수를 식별하고 3^3=27 산출 후 3+3+27=33 계산\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소인수분해\",\n    \"l4\": \"자연수의 소인수분해\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_POWER_BASE_EXPONENT_EVALUATION\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"거듭제곱의 밑, 지수, 결과값을 각각 읽어 결합하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"거듭제곱의 기본 용어와 단순 곱셈 값을 합하는 1단계 계산 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"거듭제곱\"\n    ],\n    \"goal\": [\n      \"합\"\n    ],\n    \"method\": [\n      \"곱셈\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 4,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "자연수 42의 정확한 소인수분해 표현 식별 문항"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "4",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+          "conceptClusterKey": "PRIME_FACTORIZATION",
+          "primaryMethod": "자연수 42를 소수의 거듭제곱 곱 2*3*7로 분해하여 올바른 표현을 찾는다.",
+          "decisiveStep": "합성수 인수를 배제하고 2*3*7만을 인수로 갖는 표현 식별",
+          "rpm": {
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소인수분해",
+            "l4": "자연수의 소인수분해"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+            "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+            "why": "자연수의 올바른 소인수분해 식을 확인하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "자연수의 소인수분해 정의를 직접 확인하는 1단계 기본 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "소인수분해"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "소수"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"자연수 42의 정확한 소인수분해 표현 식별 문항\"\n}\n\n{\n  \"sourceQid\": \"4\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"자연수 42를 소수의 거듭제곱 곱 2*3*7로 분해하여 올바른 표현을 찾는다.\",\n  \"decisiveStep\": \"합성수 인수를 배제하고 2*3*7만을 인수로 갖는 표현 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소인수분해\",\n    \"l4\": \"자연수의 소인수분해\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PRIME_FACTORIZATION_JUDGMENT\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"자연수의 올바른 소인수분해 식을 확인하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"NONE\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"자연수의 소인수분해 정의를 직접 확인하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"소인수분해\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"소수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 5,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "소인수의 집합이 동일한 자연수 비교 선별 문항"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "5",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+          "conceptClusterKey": "PRIME_FACTORIZATION",
+          "primaryMethod": "75=3*5^2의 소인수 {3,5}를 구하고 선지 중 45=3^2*5의 소인수가 일치함을 판정한다.",
+          "decisiveStep": "각 수의 소인수 집합을 대조하여 45의 소인수 집합 {3, 5} 선별",
+          "rpm": {
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소인수분해",
+            "l4": "소인수분해를 이용한 약수의 구조"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_PRIME_FACTOR_STRUCTURE",
+            "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+            "why": "소인수의 종류가 일치하는 수를 분류하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "자연수를 각각 소인수분해하여 소인수의 구성을 비교하는 2단계 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "소인수",
+              "소인수분해"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "소인수"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"소인수의 집합이 동일한 자연수 비교 선별 문항\"\n}\n\n{\n  \"sourceQid\": \"5\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"75=3*5^2의 소인수 {3,5}를 구하고 선지 중 45=3^2*5의 소인수가 일치함을 판정한다.\",\n  \"decisiveStep\": \"각 수의 소인수 집합을 대조하여 45의 소인수 집합 {3, 5} 선별\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소인수분해\",\n    \"l4\": \"소인수분해를 이용한 약수의 구조\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PRIME_FACTOR_STRUCTURE\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"소인수의 종류가 일치하는 수를 분류하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"자연수를 각각 소인수분해하여 소인수의 구성을 비교하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"소인수\",\n      \"소인수분해\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"소인수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 6,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "소인수분해 지수 조건을 이용한 약수와 배수 판정 문항"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "6",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+          "conceptClusterKey": "PRIME_FACTORIZATION",
+          "primaryMethod": "소인수분해 형태의 각 소인수 지수 대소를 비교하여 약수와 배수를 판별한다.",
+          "decisiveStep": "지수 이하 조건으로 약수(ㄱ, ㄴ), 지수 이상 조건으로 배수(ㄹ) 식별",
+          "rpm": {
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소인수분해",
+            "l4": "소인수분해를 이용한 약수의 구조"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+            "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+            "why": "소인수분해 표기에서 지수 조건을 비교해 약수와 배수를 구별하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "약수와 배수의 지수 조건을 보기별로 나누어 판정하는 2단계 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "소인수분해",
+              "약수",
+              "배수"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "소인수"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"소인수분해 지수 조건을 이용한 약수와 배수 판정 문항\"\n}\n\n{\n  \"sourceQid\": \"6\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"소인수분해 형태의 각 소인수 지수 대소를 비교하여 약수와 배수를 판별한다.\",\n  \"decisiveStep\": \"지수 이하 조건으로 약수(ㄱ, ㄴ), 지수 이상 조건으로 배수(ㄹ) 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소인수분해\",\n    \"l4\": \"소인수분해를 이용한 약수의 구조\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_DIVISOR_MULTIPLE_EXPONENT\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"소인수분해 표기에서 지수 조건을 비교해 약수와 배수를 구별하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"약수와 배수의 지수 조건을 보기별로 나누어 판정하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"소인수분해\",\n      \"약수\",\n      \"배수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"소인수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 7,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "서로 다른 세 소수의 곱으로 표현되는 자연수의 크기 순서 판정"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "7",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+          "conceptClusterKey": "PRIME_FACTORIZATION",
+          "primaryMethod": "작은 소수들의 곱 2*3*5=30 다음으로 작은 조합 2*3*7=42를 차례로 구성한다.",
+          "decisiveStep": "30 다음의 소수 조합 2*3*7=42를 탐색하여 두 번째 수 결정",
+          "rpm": {
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소인수분해",
+            "l4": "소인수분해를 이용한 약수의 구조"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_PRIME_FACTOR_STRUCTURE",
+            "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+            "why": "소인수 개수 조건에 맞는 수열에서 k번째 수를 찾는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "세 소수의 곱 조합을 크기순으로 나열하여 두 번째 값을 찾는 2단계 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "소수",
+              "소인수"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "소수"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"서로 다른 세 소수의 곱으로 표현되는 자연수의 크기 순서 판정\"\n}\n\n{\n  \"sourceQid\": \"7\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"작은 소수들의 곱 2*3*5=30 다음으로 작은 조합 2*3*7=42를 차례로 구성한다.\",\n  \"decisiveStep\": \"30 다음의 소수 조합 2*3*7=42를 탐색하여 두 번째 수 결정\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소인수분해\",\n    \"l4\": \"소인수분해를 이용한 약수의 구조\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_PRIME_FACTOR_STRUCTURE\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"소인수 개수 조건에 맞는 수열에서 k번째 수를 찾는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"세 소수의 곱 조합을 크기순으로 나열하여 두 번째 값을 찾는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"소수\",\n      \"소인수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"소수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 8,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "서로소 정의를 여사건(7의 배수 제외)으로 계산하는 개수 산출"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "8",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-GCD_LCM",
+          "conceptClusterKey": "GCD_LCM",
+          "primaryMethod": "두 자리 자연수 전체 90개에서 49=7^2의 소인수인 7의 배수 13개를 차감한다.",
+          "decisiveStep": "전체 개수 90개 및 7의 배수 13개 산출 후 90-13=77개 도출",
+          "rpm": {
+            "majorUnit": "소인수분해",
+            "midUnit": "최대공약수와 최소공배수",
+            "l3": "공약수와 최대공약수",
+            "l4": "공약수 조건으로 수 찾기"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_COPRIME_TEST_AND_COUNT",
+            "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+            "why": "주어진 범위에서 특정 소수의 거듭제곱과 서로소인 수의 개수를 구하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "서로소 개념을 배수의 여사건 차감으로 연계하는 2단계 계산 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "서로소",
+              "배수"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "배수"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"서로소 정의를 여사건(7의 배수 제외)으로 계산하는 개수 산출\"\n}\n\n{\n  \"sourceQid\": \"8\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-GCD_LCM\",\n  \"conceptClusterKey\": \"GCD_LCM\",\n  \"primaryMethod\": \"두 자리 자연수 전체 90개에서 49=7^2의 소인수인 7의 배수 13개를 차감한다.\",\n  \"decisiveStep\": \"전체 개수 90개 및 7의 배수 13개 산출 후 90-13=77개 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"최대공약수와 최소공배수\",\n    \"l3\": \"공약수와 최대공약수\",\n    \"l4\": \"공약수 조건으로 수 찾기\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_COPRIME_TEST_AND_COUNT\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"주어진 범위에서 특정 소수의 거듭제곱과 서로소인 수의 개수를 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"서로소 개념을 배수의 여사건 차감으로 연계하는 2단계 계산 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"서로소\",\n      \"배수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"배수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 9,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "최대공약수와 최소공배수의 소인수 지수 조건을 연립하여 미지의 수를 결정"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "9",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-GCD_LCM",
+          "conceptClusterKey": "GCD_LCM",
+          "primaryMethod": "gcd(14)와 lcm(420)의 소인수 지수 조건을 분석하여 미지수의 가능한 지수 조합 4개를 산출한다.",
+          "decisiveStep": "3의 필수 포함(y=1) 및 x in {1,2}, z in {0,1} 조합으로 4개 수 도출",
+          "rpm": {
+            "majorUnit": "소인수분해",
+            "midUnit": "최대공약수와 최소공배수",
+            "l3": "최대공약수·최소공배수의 활용",
+            "l4": "나누어떨어짐 조건"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+            "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+            "why": "소인수 지수의 최댓값과 최솟값 조건으로 미지수의 개수를 구하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "세 수의 소인수분해에서 최대공약수와 최소공배수 지수 제약을 연립 분석하는 3단계 심화 문항",
+          "level": "상",
+          "item4slot": {
+            "given": [
+              "최대공약수",
+              "최소공배수",
+              "소인수분해"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "소인수"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"최대공약수와 최소공배수의 소인수 지수 조건을 연립하여 미지의 수를 결정\"\n}\n\n{\n  \"sourceQid\": \"9\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-GCD_LCM\",\n  \"conceptClusterKey\": \"GCD_LCM\",\n  \"primaryMethod\": \"gcd(14)와 lcm(420)의 소인수 지수 조건을 분석하여 미지수의 가능한 지수 조합 4개를 산출한다.\",\n  \"decisiveStep\": \"3의 필수 포함(y=1) 및 x in {1,2}, z in {0,1} 조합으로 4개 수 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"최대공약수와 최소공배수\",\n    \"l3\": \"최대공약수·최소공배수의 활용\",\n    \"l4\": \"나누어떨어짐 조건\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_GCD_LCM_EXPONENT_CONSTRAINT\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"소인수 지수의 최댓값과 최솟값 조건으로 미지수의 개수를 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"세 수의 소인수분해에서 최대공약수와 최소공배수 지수 제약을 연립 분석하는 3단계 심화 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"최대공약수\",\n      \"최소공배수\",\n      \"소인수분해\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"소인수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 10,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "반대 성질의 양에 양/음의 부호를 붙이는 기본 기호화 문항"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "10",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+          "conceptClusterKey": "INTEGER_RATIONAL",
+          "primaryMethod": "영상의 양의 부호에 대응하여 영하를 음의 부호 -8도로 바르게 표기한다.",
+          "decisiveStep": "영하 8도에 음의 부호 -를 적용하여 -8도 도출",
+          "rpm": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "수 체계",
+            "l4": "양수·음수 분류"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_SIGNED_CHANGE_MODEL",
+            "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+            "why": "반대 성질의 수량을 부호 있는 수로 나타내는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "DIRECT",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "부호의 정의를 실생활 수량에 직접 대응시키는 1단계 기본 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "부호",
+              "양수",
+              "음수"
+            ],
+            "goal": [
+              "부호"
+            ],
+            "method": [
+              "부호"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"반대 성질의 양에 양/음의 부호를 붙이는 기본 기호화 문항\"\n}\n\n{\n  \"sourceQid\": \"10\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-INTEGER_RATIONAL_NUMBER\",\n  \"conceptClusterKey\": \"INTEGER_RATIONAL\",\n  \"primaryMethod\": \"영상의 양의 부호에 대응하여 영하를 음의 부호 -8도로 바르게 표기한다.\",\n  \"decisiveStep\": \"영하 8도에 음의 부호 -를 적용하여 -8도 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수\",\n    \"l3\": \"수 체계\",\n    \"l4\": \"양수·음수 분류\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_SIGNED_CHANGE_MODEL\",\n    \"templateKey\": \"TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION\",\n    \"why\": \"반대 성질의 수량을 부호 있는 수로 나타내는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"DIRECT\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호의 정의를 실생활 수량에 직접 대응시키는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"부호\",\n      \"양수\",\n      \"음수\"\n    ],\n    \"goal\": [\n      \"부호\"\n    ],\n    \"method\": [\n      \"부호\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 11,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "정수와 유리수의 포함 관계 및 수 체계 분류 판정 문항"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "11",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+          "conceptClusterKey": "INTEGER_RATIONAL",
+          "primaryMethod": "유리수의 정의와 정수가 아닌 유리수의 분류 기준을 확인한다.",
+          "decisiveStep": "-8/5이 정수가 아닌 유리수임을 확인하여 ②의 참 판정",
+          "rpm": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "수 체계",
+            "l4": "정수와 유리수의 포함 관계"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+            "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+            "why": "정수와 유리수의 분류 체계 및 정의 진술을 검토하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "수 체계의 기본 분류(정수, 정수가 아닌 유리수)를 점검하는 1단계 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "정수",
+              "유리수"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "유리수"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정수와 유리수의 포함 관계 및 수 체계 분류 판정 문항\"\n}\n\n{\n  \"sourceQid\": \"11\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-INTEGER_RATIONAL_NUMBER\",\n  \"conceptClusterKey\": \"INTEGER_RATIONAL\",\n  \"primaryMethod\": \"유리수의 정의와 정수가 아닌 유리수의 분류 기준을 확인한다.\",\n  \"decisiveStep\": \"-8/5이 정수가 아닌 유리수임을 확인하여 ②의 참 판정\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수\",\n    \"l3\": \"수 체계\",\n    \"l4\": \"정수와 유리수의 포함 관계\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RATIONAL_PROPERTY_JUDGMENT\",\n    \"templateKey\": \"TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION\",\n    \"why\": \"정수와 유리수의 분류 체계 및 정의 진술을 검토하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"수 체계의 기본 분류(정수, 정수가 아닌 유리수)를 점검하는 1단계 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"정수\",\n      \"유리수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"유리수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 12,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "수직선 위 등분점에 대응하는 유리수의 좌표 계산 및 검증"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "12",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+          "conceptClusterKey": "INTEGER_RATIONAL",
+          "primaryMethod": "수직선 눈금의 등분 길이를 정수 기준점에 더해 각 점의 유리수 값을 산출한다.",
+          "decisiveStep": "점 D의 좌표가 1 + 3/4 = 7/4임을 계산하여 5/4와의 불일치 식별",
+          "rpm": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "수직선과 대소 관계",
+            "l4": "수직선 위의 수"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_COORDINATE_POINT_READING",
+            "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
+            "why": "수직선 위의 점에 대응하는 유리수를 읽고 대조하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "수직선 등분 눈금을 분수로 환산하여 좌표의 참·거짓을 판정하는 2단계 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "수직선",
+              "유리수"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "수직선"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"수직선 위 등분점에 대응하는 유리수의 좌표 계산 및 검증\"\n}\n\n{\n  \"sourceQid\": \"12\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-INTEGER_RATIONAL_NUMBER\",\n  \"conceptClusterKey\": \"INTEGER_RATIONAL\",\n  \"primaryMethod\": \"수직선 눈금의 등분 길이를 정수 기준점에 더해 각 점의 유리수 값을 산출한다.\",\n  \"decisiveStep\": \"점 D의 좌표가 1 + 3/4 = 7/4임을 계산하여 5/4와의 불일치 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수\",\n    \"l3\": \"수직선과 대소 관계\",\n    \"l4\": \"수직선 위의 수\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_COORDINATE_POINT_READING\",\n    \"templateKey\": \"TPL_COORDINATE_POINT_READING_CORE\",\n    \"why\": \"수직선 위의 점에 대응하는 유리수를 읽고 대조하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"수직선 등분 눈금을 분수로 환산하여 좌표의 참·거짓을 판정하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"수직선\",\n      \"유리수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"수직선\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 13,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "절댓값의 기하학적 의미(원점으로부터의 거리)를 이용한 수 결정"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "13",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+          "conceptClusterKey": "INTEGER_RATIONAL",
+          "primaryMethod": "절댓값이 같은 두 점 사이의 거리 2k=16에서 절댓값 k=8을 구해 -8과 8을 도출한다.",
+          "decisiveStep": "두 점 사이의 거리 2k=16에서 k=8 산출",
+          "rpm": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "절댓값",
+            "l4": "절댓값의 뜻"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+            "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+            "why": "절댓값이 같은 두 수의 수직선상 거리 조건으로 두 수를 복원하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "DIRECT",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "절댓값의 거리 정의를 수직선상 대칭점에 적용하는 1단계 기본 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "절댓값",
+              "수직선"
+            ],
+            "goal": [
+              "유리수"
+            ],
+            "method": [
+              "절댓값"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"절댓값의 기하학적 의미(원점으로부터의 거리)를 이용한 수 결정\"\n}\n\n{\n  \"sourceQid\": \"13\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-INTEGER_RATIONAL_NUMBER\",\n  \"conceptClusterKey\": \"INTEGER_RATIONAL\",\n  \"primaryMethod\": \"절댓값이 같은 두 점 사이의 거리 2k=16에서 절댓값 k=8을 구해 -8과 8을 도출한다.\",\n  \"decisiveStep\": \"두 점 사이의 거리 2k=16에서 k=8 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수\",\n    \"l3\": \"절댓값\",\n    \"l4\": \"절댓값의 뜻\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY\",\n    \"templateKey\": \"TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION\",\n    \"why\": \"절댓값이 같은 두 수의 수직선상 거리 조건으로 두 수를 복원하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"DIRECT\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"절댓값의 거리 정의를 수직선상 대칭점에 적용하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"절댓값\",\n      \"수직선\"\n    ],\n    \"goal\": [\n      \"유리수\"\n    ],\n    \"method\": [\n      \"절댓값\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 14,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "음수와 양수, 음수끼리의 절댓값 대소 비교 판정 문항"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "14",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+          "conceptClusterKey": "INTEGER_RATIONAL",
+          "primaryMethod": "음수끼리는 절댓값이 작은 수가 더 크다는 대소 원리를 적용하여 -8 < -3임을 판별한다.",
+          "decisiveStep": "-3 < -8이 잘못된 부등호임을 식별",
+          "rpm": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "수직선과 대소 관계",
+            "l4": "유리수의 대소 비교"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+            "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
+            "why": "유리수의 대소 관계 명제를 비교 검토하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "부호가 있는 두 수의 대소 비교 규칙을 확인하는 1단계 기본 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "유리수",
+              "절댓값"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "절댓값"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"음수와 양수, 음수끼리의 절댓값 대소 비교 판정 문항\"\n}\n\n{\n  \"sourceQid\": \"14\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-INTEGER_RATIONAL_NUMBER\",\n  \"conceptClusterKey\": \"INTEGER_RATIONAL\",\n  \"primaryMethod\": \"음수끼리는 절댓값이 작은 수가 더 크다는 대소 원리를 적용하여 -8 < -3임을 판별한다.\",\n  \"decisiveStep\": \"-3 < -8이 잘못된 부등호임을 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수\",\n    \"l3\": \"수직선과 대소 관계\",\n    \"l4\": \"유리수의 대소 비교\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RATIONAL_VALUE_COMPARISON\",\n    \"templateKey\": \"TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER\",\n    \"why\": \"유리수의 대소 관계 명제를 비교 검토하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호가 있는 두 수의 대소 비교 규칙을 확인하는 1단계 기본 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"유리수\",\n      \"절댓값\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"절댓값\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 15,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "정수의 덧셈과 뺄셈 사칙계산 규칙 대조 문항"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "15",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+          "conceptClusterKey": "RATIONAL_ARITHMETIC",
+          "primaryMethod": "뺄셈을 빼는 수의 부호를 바꾸어 더하는 규칙으로 변환하여 계산 결과를 검증한다.",
+          "decisiveStep": "(-5)-(+4) = (-5)+(-4) = -9임을 확인하여 ⑤의 오류 판정",
+          "rpm": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "덧셈과 뺄셈",
+            "l4": "부호가 있는 수의 뺄셈"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+            "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
+            "why": "부호가 있는 수의 덧셈·뺄셈 계산 진술을 확인하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "부호가 있는 두 정수의 덧셈과 뺄셈을 단계별로 검증하는 2단계 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "정수",
+              "연산"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "사칙계산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정수의 덧셈과 뺄셈 사칙계산 규칙 대조 문항\"\n}\n\n{\n  \"sourceQid\": \"15\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-RATIONAL_NUMBER_OPERATIONS\",\n  \"conceptClusterKey\": \"RATIONAL_ARITHMETIC\",\n  \"primaryMethod\": \"뺄셈을 빼는 수의 부호를 바꾸어 더하는 규칙으로 변환하여 계산 결과를 검증한다.\",\n  \"decisiveStep\": \"(-5)-(+4) = (-5)+(-4) = -9임을 확인하여 ⑤의 오류 판정\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"덧셈과 뺄셈\",\n    \"l4\": \"부호가 있는 수의 뺄셈\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RATIONAL_ARITHMETIC\",\n    \"templateKey\": \"TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM\",\n    \"why\": \"부호가 있는 수의 덧셈·뺄셈 계산 진술을 확인하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호가 있는 두 정수의 덧셈과 뺄셈을 단계별로 검증하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"정수\",\n      \"연산\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"사칙계산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 16,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "자연수 간 뺄셈의 음의 정수 결과 계산"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "16",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+          "conceptClusterKey": "RATIONAL_ARITHMETIC",
+          "primaryMethod": "7-25를 절댓값의 차 25-7=18에 음의 부호를 붙여 -18로 계산한다.",
+          "decisiveStep": "부호가 다른 두 수의 덧셈 변환으로 -18 산출",
+          "rpm": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "덧셈과 뺄셈",
+            "l4": "부호가 있는 수의 뺄셈"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+            "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
+            "why": "두 정수의 단순 뺄셈 결과를 계산하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "DIRECT",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "부호가 있는 두 수의 뺄셈을 직접 수행하는 1단계 계산 문항",
+          "level": "하",
+          "item4slot": {
+            "given": [
+              "정수",
+              "차"
+            ],
+            "goal": [
+              "정수"
+            ],
+            "method": [
+              "사칙계산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"자연수 간 뺄셈의 음의 정수 결과 계산\"\n}\n\n{\n  \"sourceQid\": \"16\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-RATIONAL_NUMBER_OPERATIONS\",\n  \"conceptClusterKey\": \"RATIONAL_ARITHMETIC\",\n  \"primaryMethod\": \"7-25를 절댓값의 차 25-7=18에 음의 부호를 붙여 -18로 계산한다.\",\n  \"decisiveStep\": \"부호가 다른 두 수의 덧셈 변환으로 -18 산출\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"덧셈과 뺄셈\",\n    \"l4\": \"부호가 있는 수의 뺄셈\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RATIONAL_ARITHMETIC\",\n    \"templateKey\": \"TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM\",\n    \"why\": \"두 정수의 단순 뺄셈 결과를 계산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"DIRECT\",\n  \"difficultyBucket\": 1,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호가 있는 두 수의 뺄셈을 직접 수행하는 1단계 계산 문항\",\n  \"level\": \"하\",\n  \"item4slot\": {\n    \"given\": [\n      \"정수\",\n      \"차\"\n    ],\n    \"goal\": [\n      \"정수\"\n    ],\n    \"method\": [\n      \"사칙계산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 17,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "수량 관계 문장을 덧셈과 뺄셈 식으로 변환 후 차 계산"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "17",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+          "conceptClusterKey": "RATIONAL_ARITHMETIC",
+          "primaryMethod": "a=15+(-4)=11과 b=3-(+8)=-5를 구하고 a-b=11-(-5)=16을 계산한다.",
+          "decisiveStep": "a=11, b=-5 산출 후 a-b=11+5=16 도출",
+          "rpm": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "덧셈과 뺄셈",
+            "l4": "덧셈·뺄셈 혼합"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+            "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
+            "why": "문장으로 주어진 수량 관계를 덧셈·뺄셈 식으로 나타내어 차를 구하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "수량 문장을 덧셈과 뺄셈 식으로 모델링하여 차를 구하는 2단계 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "정수",
+              "합",
+              "차"
+            ],
+            "goal": [
+              "정수"
+            ],
+            "method": [
+              "사칙계산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"수량 관계 문장을 덧셈과 뺄셈 식으로 변환 후 차 계산\"\n}\n\n{\n  \"sourceQid\": \"17\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-RATIONAL_NUMBER_OPERATIONS\",\n  \"conceptClusterKey\": \"RATIONAL_ARITHMETIC\",\n  \"primaryMethod\": \"a=15+(-4)=11과 b=3-(+8)=-5를 구하고 a-b=11-(-5)=16을 계산한다.\",\n  \"decisiveStep\": \"a=11, b=-5 산출 후 a-b=11+5=16 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"덧셈과 뺄셈\",\n    \"l4\": \"덧셈·뺄셈 혼합\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RATIONAL_ARITHMETIC\",\n    \"templateKey\": \"TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM\",\n    \"why\": \"문장으로 주어진 수량 관계를 덧셈·뺄셈 식으로 나타내어 차를 구하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"수량 문장을 덧셈과 뺄셈 식으로 모델링하여 차를 구하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"정수\",\n      \"합\",\n      \"차\"\n    ],\n    \"goal\": [\n      \"정수\"\n    ],\n    \"method\": [\n      \"사칙계산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 18,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "실생활 운동 모델을 통한 정수 뺄셈의 수학적 원리 해석"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "18",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+          "conceptClusterKey": "RATIONAL_ARITHMETIC",
+          "primaryMethod": "방향과 전진·후진 모델을 뺄셈과 부호 반전 규칙 -(+a)=+(-a), -(-a)=+(+a)로 해석한다.",
+          "decisiveStep": "후진 연산의 부호 반전 효과를 뺄셈의 정의(부호 바꾸어 더하기)로 연결",
+          "rpm": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "덧셈과 뺄셈",
+            "l4": "부호가 있는 수의 뺄셈"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+            "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+            "why": "실생활 상황 모델이 나타내는 수의 연산 원리를 판정하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "수학적 연산 법칙(뺄셈)의 실생활 직관적 모델을 해석하는 2단계 개념 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "부호",
+              "연산"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "사칙계산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"실생활 운동 모델을 통한 정수 뺄셈의 수학적 원리 해석\"\n}\n\n{\n  \"sourceQid\": \"18\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-RATIONAL_NUMBER_OPERATIONS\",\n  \"conceptClusterKey\": \"RATIONAL_ARITHMETIC\",\n  \"primaryMethod\": \"방향과 전진·후진 모델을 뺄셈과 부호 반전 규칙 -(+a)=+(-a), -(-a)=+(+a)로 해석한다.\",\n  \"decisiveStep\": \"후진 연산의 부호 반전 효과를 뺄셈의 정의(부호 바꾸어 더하기)로 연결\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"덧셈과 뺄셈\",\n    \"l4\": \"부호가 있는 수의 뺄셈\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT\",\n    \"templateKey\": \"TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION\",\n    \"why\": \"실생활 상황 모델이 나타내는 수의 연산 원리를 판정하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"NONE\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"수학적 연산 법칙(뺄셈)의 실생활 직관적 모델을 해석하는 2단계 개념 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"부호\",\n      \"연산\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"사칙계산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 19,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "정수와 유리수의 곱셈 및 역수를 이용한 나눗셈 결과 검증"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "19",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+          "conceptClusterKey": "RATIONAL_ARITHMETIC",
+          "primaryMethod": "분수 나눗셈을 역수의 곱셈으로 바꾸어 (-8)*(3/4)=-6임을 확인하고 오류를 선별한다.",
+          "decisiveStep": "(-8) div (4/3) = (-8)*(3/4) = -6 산출 및 -10과의 불일치 식별",
+          "rpm": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "곱셈과 나눗셈",
+            "l4": "부호가 있는 수의 나눗셈"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+            "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER",
+            "why": "유리수의 곱셈과 나눗셈 계산 결과의 진위를 검증하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "부호 규칙과 역수를 이용한 분수 나눗셈을 단계별로 검증하는 2단계 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "유리수",
+              "역수"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "곱셈",
+              "나눗셈"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"정수와 유리수의 곱셈 및 역수를 이용한 나눗셈 결과 검증\"\n}\n\n{\n  \"sourceQid\": \"19\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-RATIONAL_NUMBER_OPERATIONS\",\n  \"conceptClusterKey\": \"RATIONAL_ARITHMETIC\",\n  \"primaryMethod\": \"분수 나눗셈을 역수의 곱셈으로 바꾸어 (-8)*(3/4)=-6임을 확인하고 오류를 선별한다.\",\n  \"decisiveStep\": \"(-8) div (4/3) = (-8)*(3/4) = -6 산출 및 -10과의 불일치 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"곱셈과 나눗셈\",\n    \"l4\": \"부호가 있는 수의 나눗셈\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RATIONAL_ARITHMETIC\",\n    \"templateKey\": \"TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER\",\n    \"why\": \"유리수의 곱셈과 나눗셈 계산 결과의 진위를 검증하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호 규칙과 역수를 이용한 분수 나눗셈을 단계별로 검증하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"유리수\",\n      \"역수\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"곱셈\",\n      \"나눗셈\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 20,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "유리수 조합의 곱 중 최솟값(음수이면서 절댓값 최대) 판정"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "20",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+          "conceptClusterKey": "RATIONAL_ARITHMETIC",
+          "primaryMethod": "곱의 최솟값을 위해 절댓값이 가장 큰 양수 +6과 음수 -4를 곱해 -24를 구한다.",
+          "decisiveStep": "음수 곱 조건에서 절댓값 최대 쌍 (+6)*(-4) = -24 도출",
+          "rpm": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "곱셈과 나눗셈",
+            "l4": "부호가 있는 수의 곱셈"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS",
+            "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER",
+            "why": "유리수 집합에서 조건을 만족하는 극값 곱을 찾는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "부호와 절댓값의 성질을 결합하여 곱의 최솟값을 탐색하는 2단계 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "유리수",
+              "곱"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "절댓값",
+              "곱셈"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"유리수 조합의 곱 중 최솟값(음수이면서 절댓값 최대) 판정\"\n}\n\n{\n  \"sourceQid\": \"20\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-RATIONAL_NUMBER_OPERATIONS\",\n  \"conceptClusterKey\": \"RATIONAL_ARITHMETIC\",\n  \"primaryMethod\": \"곱의 최솟값을 위해 절댓값이 가장 큰 양수 +6과 음수 -4를 곱해 -24를 구한다.\",\n  \"decisiveStep\": \"음수 곱 조건에서 절댓값 최대 쌍 (+6)*(-4) = -24 도출\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"곱셈과 나눗셈\",\n    \"l4\": \"부호가 있는 수의 곱셈\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS\",\n    \"templateKey\": \"TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER\",\n    \"why\": \"유리수 집합에서 조건을 만족하는 극값 곱을 찾는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호와 절댓값의 성질을 결합하여 곱의 최솟값을 탐색하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"유리수\",\n      \"곱\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"절댓값\",\n      \"곱셈\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 21,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "곱의 부호와 뺄셈 부등식으로부터 각 수의 부호를 추론하는 논리 판정"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "21",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+          "conceptClusterKey": "INTEGER_RATIONAL",
+          "primaryMethod": "곱의 부호로 동부호/이부호를 판정하고 a-c>0 대소로 a>0, b<0, c<0을 유도한다.",
+          "decisiveStep": "a>0, b<0, c<0 확정 후 c-a<0의 항등적 참 식별",
+          "rpm": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "곱셈과 나눗셈",
+            "l4": "부호가 있는 수의 곱셈"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+            "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
+            "why": "유리수의 곱과 차 부등식으로부터 부호를 논리적으로 추론하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "세 수의 곱과 차 조건에서 부호를 연립 추론하는 3단계 논리 판정 문항",
+          "level": "상",
+          "item4slot": {
+            "given": [
+              "유리수",
+              "부호",
+              "곱"
+            ],
+            "goal": [
+              "판정"
+            ],
+            "method": [
+              "부호"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"곱의 부호와 뺄셈 부등식으로부터 각 수의 부호를 추론하는 논리 판정\"\n}\n\n{\n  \"sourceQid\": \"21\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-INTEGER_RATIONAL_NUMBER\",\n  \"conceptClusterKey\": \"INTEGER_RATIONAL\",\n  \"primaryMethod\": \"곱의 부호로 동부호/이부호를 판정하고 a-c>0 대소로 a>0, b<0, c<0을 유도한다.\",\n  \"decisiveStep\": \"a>0, b<0, c<0 확정 후 c-a<0의 항등적 참 식별\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"곱셈과 나눗셈\",\n    \"l4\": \"부호가 있는 수의 곱셈\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS\",\n    \"templateKey\": \"TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER\",\n    \"why\": \"유리수의 곱과 차 부등식으로부터 부호를 논리적으로 추론하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"CASE_BRANCH\",\n  \"difficultyBucket\": 3,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"세 수의 곱과 차 조건에서 부호를 연립 추론하는 3단계 논리 판정 문항\",\n  \"level\": \"상\",\n  \"item4slot\": {\n    \"given\": [\n      \"유리수\",\n      \"부호\",\n      \"곱\"\n    ],\n    \"goal\": [\n      \"판정\"\n    ],\n    \"method\": [\n      \"부호\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 22,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "소인수의 지수가 짝수가 되는 제곱수 완성 조건 서술형 계산"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "22",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+          "conceptClusterKey": "PRIME_FACTORIZATION",
+          "primaryMethod": "28=2^2*7에서 a=7*k^2 형태를 유도하고 k=2를 대입해 a=28, b=28을 산출한다.",
+          "decisiveStep": "지수 짝수화 조건 a=7*k^2 유도 후 k=2 대입하여 a=28, b=28 계산",
+          "rpm": {
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소인수분해",
+            "l4": "조건을 만족하는 자연수 찾기"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE",
+            "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
+            "why": "제곱수가 되도록 하는 자연수 인수의 k번째 값을 구하는 서술형 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_NATURAL"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "제곱수 소인수 지수 조건을 모델링하여 두 번째 해를 서술하는 2단계 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "소인수분해",
+              "거듭제곱"
+            ],
+            "goal": [
+              "소인수"
+            ],
+            "method": [
+              "소인수"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"소인수의 지수가 짝수가 되는 제곱수 완성 조건 서술형 계산\"\n}\n\n{\n  \"sourceQid\": \"22\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-01\",\n  \"subUnitKey\": \"M1-01-PRIME_FACTORIZATION\",\n  \"conceptClusterKey\": \"PRIME_FACTORIZATION\",\n  \"primaryMethod\": \"28=2^2*7에서 a=7*k^2 형태를 유도하고 k=2를 대입해 a=28, b=28을 산출한다.\",\n  \"decisiveStep\": \"지수 짝수화 조건 a=7*k^2 유도 후 k=2 대입하여 a=28, b=28 계산\",\n  \"rpm\": {\n    \"majorUnit\": \"소인수분해\",\n    \"midUnit\": \"소인수분해\",\n    \"l3\": \"소인수분해\",\n    \"l4\": \"조건을 만족하는 자연수 찾기\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE\",\n    \"templateKey\": \"TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE\",\n    \"why\": \"제곱수가 되도록 하는 자연수 인수의 k번째 값을 구하는 서술형 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [\n    \"COND_NATURAL\"\n  ],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"제곱수 소인수 지수 조건을 모델링하여 두 번째 해를 서술하는 2단계 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"소인수분해\",\n      \"거듭제곱\"\n    ],\n    \"goal\": [\n      \"소인수\"\n    ],\n    \"method\": [\n      \"소인수\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 23,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "잘못 계산한 유리수 방정식의 역산 및 올바른 덧셈 계산 서술"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "23",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+          "conceptClusterKey": "RATIONAL_ARITHMETIC",
+          "primaryMethod": "x-(-3/4)=5/12를 풀어 x=-1/3을 구하고 바른 식 x+(-3/4)=-13/12를 산출한다.",
+          "decisiveStep": "역산으로 x=-1/3 도출 후 바른 덧셈으로 -13/12 계산",
+          "rpm": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "덧셈과 뺄셈",
+            "l4": "덧셈·뺄셈 혼합"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
+            "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
+            "why": "잘못 적용된 연산에서 역산으로 원래 수를 복원하고 바르게 계산하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "유리수의 뺄셈 역산과 덧셈을 연속 전개하는 2단계 서술형 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "유리수",
+              "합",
+              "차"
+            ],
+            "goal": [
+              "유리수"
+            ],
+            "method": [
+              "사칙계산"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"잘못 계산한 유리수 방정식의 역산 및 올바른 덧셈 계산 서술\"\n}\n\n{\n  \"sourceQid\": \"23\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-RATIONAL_NUMBER_OPERATIONS\",\n  \"conceptClusterKey\": \"RATIONAL_ARITHMETIC\",\n  \"primaryMethod\": \"x-(-3/4)=5/12를 풀어 x=-1/3을 구하고 바른 식 x+(-3/4)=-13/12를 산출한다.\",\n  \"decisiveStep\": \"역산으로 x=-1/3 도출 후 바른 덧셈으로 -13/12 계산\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"덧셈과 뺄셈\",\n    \"l4\": \"덧셈·뺄셈 혼합\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION\",\n    \"templateKey\": \"TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM\",\n    \"why\": \"잘못 적용된 연산에서 역산으로 원래 수를 복원하고 바르게 계산하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"유리수의 뺄셈 역산과 덧셈을 연속 전개하는 2단계 서술형 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"유리수\",\n      \"합\",\n      \"차\"\n    ],\n    \"goal\": [\n      \"유리수\"\n    ],\n    \"method\": [\n      \"사칙계산\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}"
+      },
+      {
+        "sourceOrdinal": 24,
+        "visualPlanMetadata": {
+          "status": "EXEMPT",
+          "reason": "곱의 부호와 차의 부등식을 연계한 세 수의 부호 연역 서술"
+        },
+        "questionSourceMetadata": {
+          "sourceQid": "24",
+          "variationType": "STRICT_VARIANT",
+          "standardCourse": "중1",
+          "courseKey": "MID-MATH-1",
+          "curriculum": "2022",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+          "conceptClusterKey": "INTEGER_RATIONAL",
+          "primaryMethod": "곱의 부호로 x와 z 동부호, y와 z 이부호를 밝히고 x-y>0으로 x>0, y<0, z>0을 서술한다.",
+          "decisiveStep": "x와 y의 이부호성 및 x>y 대소로부터 x>0, y<0, z>0 확정",
+          "rpm": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "곱셈과 나눗셈",
+            "l4": "부호가 있는 수의 곱셈"
+          },
+          "ptTplCandidate": {
+            "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+            "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
+            "why": "곱과 차의 부호 조건에서 부호를 연역적으로 서술하는 템플릿"
+          },
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "difficultyReason": "부호의 곱셈 성질과 대소 관계를 논리적인 문장으로 증명 서술하는 2단계 서술형 문항",
+          "level": "중",
+          "item4slot": {
+            "given": [
+              "유리수",
+              "부호",
+              "곱"
+            ],
+            "goal": [
+              "부호"
+            ],
+            "method": [
+              "부호"
+            ],
+            "condition": []
+          },
+          "hold": ""
+        },
+        "rawEmbeddedTail": "{\n  \"status\": \"EXEMPT\",\n  \"reason\": \"곱의 부호와 차의 부등식을 연계한 세 수의 부호 연역 서술\"\n}\n\n{\n  \"sourceQid\": \"24\",\n  \"variationType\": \"STRICT_VARIANT\",\n  \"standardCourse\": \"중1\",\n  \"courseKey\": \"MID-MATH-1\",\n  \"curriculum\": \"2022\",\n  \"standardUnitKey\": \"M1-02\",\n  \"subUnitKey\": \"M1-02-INTEGER_RATIONAL_NUMBER\",\n  \"conceptClusterKey\": \"INTEGER_RATIONAL\",\n  \"primaryMethod\": \"곱의 부호로 x와 z 동부호, y와 z 이부호를 밝히고 x-y>0으로 x>0, y<0, z>0을 서술한다.\",\n  \"decisiveStep\": \"x와 y의 이부호성 및 x>y 대소로부터 x>0, y<0, z>0 확정\",\n  \"rpm\": {\n    \"majorUnit\": \"정수와 유리수\",\n    \"midUnit\": \"정수와 유리수의 계산\",\n    \"l3\": \"곱셈과 나눗셈\",\n    \"l4\": \"부호가 있는 수의 곱셈\"\n  },\n  \"ptTplCandidate\": {\n    \"problemTypeKey\": \"PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS\",\n    \"templateKey\": \"TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER\",\n    \"why\": \"곱과 차의 부호 조건에서 부호를 연역적으로 서술하는 템플릿\"\n  },\n  \"crossConceptKeys\": [],\n  \"conditionKeys\": [],\n  \"integrationPattern\": \"SEQUENTIAL\",\n  \"difficultyBucket\": 2,\n  \"difficultyConfidence\": \"high\",\n  \"difficultyBoundaryFlag\": \"NONE\",\n  \"difficultyReason\": \"부호의 곱셈 성질과 대소 관계를 논리적인 문장으로 증명 서술하는 2단계 서술형 문항\",\n  \"level\": \"중\",\n  \"item4slot\": {\n    \"given\": [\n      \"유리수\",\n      \"부호\",\n      \"곱\"\n    ],\n    \"goal\": [\n      \"부호\"\n    ],\n    \"method\": [\n      \"부호\"\n    ],\n    \"condition\": []\n  },\n  \"hold\": \"\"\n}\n"
+      }
+    ]
   },
   "variantDecision": {
     "existingMainIdentity": "25_동산중_2학기_중간_중1_유사",
@@ -421,14 +1711,14 @@
     }
   ],
   "validation": {
-    "jsSyntax": "NOT_RUN",
+    "jsSyntax": "PASS",
     "answerMathReview": "UNREVIEWED",
     "fourSlotReview": "UNREVIEWED",
     "imageReferenceCheck": "NOT_RUN",
     "q20CorrectionIndependentCheck": "PASS"
   },
   "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
-  "expectedSourceBlobSha1": "bb5d2fa35dc87d550232256d5b25d810b972a67a",
+  "expectedSourceBlobSha1": "405714dd3c17e4577c349882bc048228df9b623c",
   "currentMainReleaseAudit": {
     "mainCommit": "c07df518f76927602fa8cb789b9ecd8e5e0d08f2",
     "existingSimilarJs": "archive/exams/similar/middle/m1/2mid/25_동산중_2학기_중간_중1_유사.js",
@@ -438,7 +1728,7 @@
   },
   "fourSlotCandidate": {
     "path": "archive/exams/similar/middle/m1/2mid/25_동산중_2학기_중간_중1_유사2.4slot-candidate.json",
-    "sha256": "de74975bbcaf8ef2557157a8aac12d0aa9d9aaafb84f4cbe925669fd361fdb22",
+    "sha256": "01199fe79cb619e4e15d4ce737b38da444b78ef0a2330ed2c9b63e1cc5a5b4cd",
     "status": "UNREVIEWED"
   }
 }
