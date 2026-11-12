@@ -312,10 +312,14 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       try{
       stage='spec';
       const spec=specFor(candidatePlan,model,identity.assetId);watch.lap('spec');// A plane figure carries angle arcs, ticks and expression labels: it is measured at the full profile like a coordinate figure.
-      let size=forceSizeClass??(model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)?'full':'medium');   // forceSizeClass: a test/diagnostic seam only (the CLI never sets it)
+      // A multi-curve figure (several curves at one scale, often tall and narrow) is requested at full like the other coordinate figures; the display profile it would
+      // otherwise get at medium only shrinks the base font of a tall canvas. When full cannot be measured the figure keeps the earlier medium request.
+      const multiCurve=candidatePlan.graphPlan?.family==='multi-curve';
+      let size=forceSizeClass??(model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)||multiCurve?'full':'medium');   // forceSizeClass: a test/diagnostic seam only (the CLI never sets it)
       stage='measure';
       const measure=(sizeClass,runSuffix='')=>cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:sizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},runId:`pilot-measure-${tag}${suffix}${runSuffix}`});
       let measured=await measure(size);
+      if(measured.status!=='MEASURED'&&multiCurve&&size==='full'&&forceSizeClass===undefined){size='medium';measured=await measure(size,'-medium');}
       // A wide family graph (520-610 px) cannot reach the requested profile font scale at medium; the same figure is retried once at full.
       if(measured.status!=='MEASURED'&&size==='medium'&&JSON.stringify(measured.detail??'').includes('REQUESTED_PROFILE_FONT_SCALE')){size='full';measured=await measure(size,'-full');}
       watch.lap('measure');

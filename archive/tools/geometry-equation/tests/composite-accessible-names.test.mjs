@@ -20,6 +20,12 @@ test('title is the plan caption, description is accessibilityDescription, else t
   assert.equal(compositeAccessibleNames({caption:'수직선 위의 구간',accessibilityDescription:'두 구간의 공통 범위를 수직선에 나타낸 그림이다.'}),
     '<title id="visual-title">수직선 위의 구간</title><desc id="visual-desc">두 구간의 공통 범위를 수직선에 나타낸 그림이다.</desc>');
   assert.equal(compositeAccessibleNames({}),'<title id="visual-title">해설 도형</title><desc id="visual-desc">점과 도형의 관계를 확인한다.</desc>');
+  const desc=chain=>compositeAccessibleNames({caption:'가나',chain}).match(/<desc id="visual-desc">(.*)<\/desc>/)[1];
+  assert.equal(desc('number-line-figure-v1'),'수직선 위에 범위를 나타낸 그림이다.');
+  assert.equal(desc('solid-figure-v1'),'입체도형과 주어진 길이·위치를 나타낸 그림이다.');
+  assert.equal(desc('quadratic-inequality-chain-v1'),'그래프로 조건을 나타낸 그림이다.');
+  assert.equal(desc(undefined),'점과 도형의 관계를 확인한다.');
+  assert.equal(compositeAccessibleNames({caption:'가나',chain:'number-line-figure-v1',accessibilityDescription:'직접 쓴 설명이다.'}).includes('직접 쓴 설명이다.'),true,'authored text wins');
   assert.match(compositeAccessibleNames({caption:'-3<a<5 & b'}),/<title id="visual-title">-3&lt;a&lt;5 &amp; b<\/title>/);
 });
 
@@ -41,6 +47,14 @@ test('the metadata passes the student SVG language contract for the real golden 
     const plan=dir==='item24'?golden(dir):{caption:golden(dir).caption};
     const result=validateSvgStudentLanguage(wrap(plan),{assetRef:dir});
     assert.deepEqual(result.errors,[],dir);
+  }
+});
+
+test('the per-kind default descriptions pass the student SVG language contract and carry no value, scale note or question mark',()=>{
+  for(const chain of ['number-line-figure-v1','solid-figure-v1','quadratic-inequality-chain-v1',undefined]){
+    const names=compositeAccessibleNames({caption:'가나',chain});
+    assert.doesNotMatch(names.match(/<desc[^>]*>(.*)<\/desc>/)[1],/[?？0-9]|축척|비율|scale/i);
+    assert.deepEqual(validateSvgStudentLanguage(wrap({caption:'가나',chain}),{assetRef:String(chain)}).errors,[]);
   }
 });
 
