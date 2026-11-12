@@ -52,6 +52,56 @@ class CubicQuarticOverview(unittest.TestCase):
                 self.assertEqual(len([row for row in result['overview']['features'] if 'INFLECTION' in row['roles']]),1 if degree==3 else 2)
                 self.assertEqual(result['overview']['endDirections'],tail_directions)
 
+    def test_hidden_required_point_is_still_exact_and_drawn(self):
+        source=plan(['0','-18','-3/2','1'],source_domain={'kind':'ALL_REALS'})
+        source['requiredPoints']=[{'id':'M','x':-2,'y':22},{'id':'N','x':3,'y':-40.5}]
+        source['coordinateBand']={'hide':['M']}
+        graph=fit_overview(source)['graphPlan']
+        model=produce(graph)
+        transform=scale_transform(model['transform'],1.0)
+        svg=model['svg']
+        result=audit(graph,svg,transform)
+        self.assertEqual(result['status'],'PASS',result['errors'])
+        extrema=[row['modelPoint'] for row in result['overview']['features'] if 'STATIONARY_EXTREMUM' in row['roles']]
+        self.assertEqual(extrema,[[-2.0,22.0],[3.0,-40.5]])
+
+        def mutate(change):
+            root=ET.fromstring(svg)
+            dot=next(node for node in root if node.get('id')=='required-point-1')
+            change(root,dot)
+            return audit(graph,ET.tostring(root,encoding='unicode'),transform)['errors']
+
+        self.assertIn('OVERVIEW_REQUIRED_FEATURE_DOT_MISSING:M',mutate(lambda root,dot:root.remove(dot)))
+        self.assertIn('OVERVIEW_REQUIRED_FEATURE_DOT_MISMATCH:M',mutate(lambda root,dot:dot.set('cx',str(float(dot.get('cx'))+1))))
+        for tag,attributes in [
+            ('g',{'id':'required-point-1-coordinates'}),
+            ('g',{'id':'required-point-1-coordinate-panel'}),
+            ('line',{'id':'moved-leader','data-owner-label':'required-point-1-coordinates'}),
+        ]:
+            with self.subTest(tag=tag,attributes=attributes):
+                self.assertIn('COORDINATE_BAND_HIDDEN_POINT_SHOWN:M',mutate(lambda root,dot:ET.SubElement(root,tag,attributes)))
+
+        bad_coordinates={**graph,'exactCoordinates':{'M':['-2','22+1/1000000000000']}}
+        self.assertIn('OVERVIEW_REQUIRED_FEATURE_NOT_ON_CURVE:M',audit(bad_coordinates,svg,transform)['errors'])
+
+        duplicate={**source,'requiredPoints':source['requiredPoints']+[source['requiredPoints'][0]]}
+        with self.assertRaisesRegex(ValueError,'INVALID_REQUIRED_GRAPH_POINT'):
+            fit_overview(duplicate)
+
+    def test_quartic_hidden_radical_coordinate_requires_exact_incidence(self):
+        source=plan(['4','0','-4','0','1'],source_domain={'kind':'ALL_REALS'})
+        source['requiredPoints']=[{'id':'M','x':2**.5,'y':0}]
+        source['coordinateBand']={'hide':['M']}
+        graph=fit_overview(source)['graphPlan']
+        model=produce(graph)
+        transform=scale_transform(model['transform'],1.0)
+        self.assertIn('OVERVIEW_REQUIRED_FEATURE_NOT_ON_CURVE:M',audit(graph,model['svg'],transform)['errors'])
+
+        exact={**graph,'exactCoordinates':{'M':['sqrt(2)','0']}}
+        result=audit(exact,model['svg'],transform)
+        self.assertEqual(result['status'],'PASS',result['errors'])
+        self.assertEqual(result['overview']['degree'],4)
+
     def test_stationary_inflection_and_inflection_are_one_feature_record(self):
         source=polynomial(['0','0','0','1'],4)
         zero_rows=[row for row in polynomial_feature_inventory(source,-1,1) if row.get('kind')=='POLYNOMIAL_FEATURE' and abs(row['x'])<1e-10]

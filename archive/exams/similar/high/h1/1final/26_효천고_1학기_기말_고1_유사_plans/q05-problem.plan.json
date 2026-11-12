@@ -1,0 +1,127 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "그래프가 다음 그림과 같을 때",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -5.5,
+      2.5
+    ],
+    "viewport": [
+      -6,
+      3,
+      -9,
+      21
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "8",
+              "-4",
+              "-1"
+            ]
+          }
+        ],
+        "intersectionX": [
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -4,
+        1
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-4",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "curveX": "1",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "GA",
+          "from": "A",
+          "axis": "x"
+        },
+        {
+          "id": "GB",
+          "from": "B",
+          "axis": "x"
+        }
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -1,
+        "y": -1
+      },
+      {
+        "id": "W",
+        "x": -2,
+        "y": 12
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "W"
+      ]
+    }
+  },
+  "caption": "두 이차함수 y=f(x)와 y=g(x)의 그래프는 x=-4, x=1인 두 점에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "q05-S1",
+      "condition": "y=f(x)와 y=g(x)의 교점의 x좌표는 -4, 1이다",
+      "mappedTo": "graphPlan.referenceCurves"
+    },
+    {
+      "id": "q05-S2",
+      "condition": "-4<x<1에서 g의 그래프가 f의 그래프보다 위에 있다",
+      "mappedTo": "graphPlan.pieces, graphPlan.referenceCurves"
+    }
+  ],
+  "newVisualInformation": [
+    "f와 g의 그래프 모양과 두 그래프의 교점의 x좌표 -4와 1의 위치를 보여 준다."
+  ],
+  "assetPath": "assets/images/26_효천고_1학기_기말_고1_유사/q05.svg",
+  "hiddenPointNames": [
+    "V",
+    "W"
+  ],
+  "coordinatePlacement": "PANEL",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/engine_evidence/q05-problem-result.json",
+    "statePath": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/engine_evidence/q05-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/engine_evidence/q05-problem.svg"
+  }
+}

@@ -18,6 +18,7 @@ import {SOURCE_QUESTION_ID_PATTERN} from '../../pipeline-core/question-uid.mjs';
 import * as comp from './composite-candidate-svg-v1.mjs';
 import {expandDiscontinuousPair} from './discontinuous-pair-v1.mjs';
 import {expandPlaneVectors} from './plane-vectors.mjs';
+import {expandHiddenCurveLabels} from './hidden-curve-label.mjs';
 import * as chain from './quadratic-inequality-chain-v1.mjs';
 import * as nlf from './number-line-v1.mjs';
 import * as sol from './solid-figure-v1.mjs';
@@ -67,7 +68,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
   const write=(file,text)=>fs.writeFileSync(path.join(outDir,file),text);
   const finish=()=>{
     // code, detailFull, errors, hint and fix exist only on a failure (JSON leaves undefined out), so a successful result is byte-for-byte what it was.
-    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix};
+    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix};
     write(`${name}-result.json`,JSON.stringify(result,null,1)+'\n');
     log.final({status:row.status,stage:row.stage??stage,code:row.code,detail:row.detail,fallback:row.fallback?.map(f=>f.to),durationMs:Date.now()-startedAt,hint:row.hint,fix:row.fix});
     return result;
@@ -85,6 +86,8 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     }
     if(!authored||typeof authored!=='object')throw new Error('plan missing or not an object');
     where.authored=where.plan=authored;
+    // A curve label {hidden:true,reason:"ANSWER",name} is the neutral-name label the plan stands for (hidden-curve-label.mjs); plans without it pass through untouched.
+    {const hiddenLabels=expandHiddenCurveLabels(authored);if(hiddenLabels.notes.length){authored=hiddenLabels.plan;row.hiddenFormulaLabels=hiddenLabels.notes;}}
     if(authored.status==='EXEMPT'||authored.status==='UNSUPPORTED'){row.status=authored.status;row.detail=authored.reason;return finish();}
     // Two discontinuous functions (graphPlan.referenceCurves, layout STACKED) are the two-panel composite they stand for.
     if(authored.capability==='piecewise-discontinuous-spike-v1'&&authored.graphPlan?.referenceCurves!==undefined)authored=expandDiscontinuousPair(authored);
@@ -306,22 +309,27 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     const m=await pythonWorker(plan.graphPlan?{action:'graph',graphPlan:plan.graphPlan}:{action:'construction',graph:plan.mathPlan},plan.graphPlan?undefined:{timeoutMs:90000});if(m.status!=='OK')throw {stage,detail:m.result};
     let model=m.result;
     // spec -> Archive policy -> L1, once; a construction plan whose labels found no room is retried once with coordinatePlacement PANEL.
-    const attempt=async(candidatePlan,suffix)=>{
+    const attempt=async(candidatePlan,suffix,lastResort=false)=>{
       const watch=stopwatch();
       where.plan=candidatePlan;
       try{
       stage='spec';
       const spec=specFor(candidatePlan,model,identity.assetId);watch.lap('spec');// A plane figure carries angle arcs, ticks and expression labels: it is measured at the full profile like a coordinate figure.
-      let size=forceSizeClass??(model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)?'full':'medium');   // forceSizeClass: a test/diagnostic seam only (the CLI never sets it)
+      // A multi-curve figure (several curves at one scale, often tall and narrow) is requested at full like the other coordinate figures; the display profile it would
+      // otherwise get at medium only shrinks the base font of a tall canvas. When full cannot be measured the figure keeps the earlier medium request.
+      const multiCurve=candidatePlan.graphPlan?.family==='multi-curve';
+      const fullTrigonometric=candidatePlan.graphPlan?.family==='trigonometric'&&candidatePlan.graphPlan.displaySize==='full';
+      let size=forceSizeClass??(model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)||multiCurve||fullTrigonometric?'full':'medium');   // forceSizeClass: a test/diagnostic seam only (the CLI never sets it)
       stage='measure';
       const measure=(sizeClass,runSuffix='')=>cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:sizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},runId:`pilot-measure-${tag}${suffix}${runSuffix}`});
       let measured=await measure(size);
+      if(measured.status!=='MEASURED'&&multiCurve&&size==='full'&&forceSizeClass===undefined){size='medium';measured=await measure(size,'-medium');}
       // A wide family graph (520-610 px) cannot reach the requested profile font scale at medium; the same figure is retried once at full.
       if(measured.status!=='MEASURED'&&size==='medium'&&JSON.stringify(measured.detail??'').includes('REQUESTED_PROFILE_FONT_SCALE')){size='full';measured=await measure(size,'-full');}
       watch.lap('measure');
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
       stage='compose';
-      const composed=await composeConstructionCandidate({plan:candidatePlan,model,identity,typographyPolicy:measured.policy,repairContext:{measuredPolicy:measured,sourceRef:fileRef(repo,meta.sourcePath)}});
+      const composed=await composeConstructionCandidate({plan:candidatePlan,model,identity,typographyPolicy:measured.policy,repairContext:{measuredPolicy:measured,sourceRef:fileRef(repo,meta.sourcePath)},...(lastResort?{lastResort:true}:{})});
       watch.lap('compose');
       log.attempt({variant:attemptVariant(suffix),stage,ok:composed.status==='COMPOSED',code:errorCode(composed),detail:composed.detail??composed.status,fallback:row.fallback?.map(f=>f.to),watch});
       return {size,measured,composed};
@@ -386,6 +394,13 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
         ({size,measured,composed}=await attempt(plan,'-canvas'+w));
         if(composed.status!=='LAYOUT_INVENTORY_INCOMPLETE')break;
       }
+    }
+    // (CL) Last resort, only after every step above: the labels still without a place get one more composition in which a point name may take a leader across a thin stroke or two and a
+    // segment label stops counting a longer segment lying over its own as a competitor. A figure that composed before is never touched; if this does not compose either, the failure stays as it was.
+    if(composed.status==='LAYOUT_INVENTORY_INCOMPLETE'&&plan.mathPlan&&!plan.graphPlan){
+      let last=null;
+      try{last=await attempt(plan,'-last',true);}catch{last=null;}
+      if(last&&last.composed.status==='COMPOSED'){(row.fallback??=[]).push({from:clip(composed.detail),to:'LAYOUT_LAST_RESORT'});({size,measured,composed}=last);}
     }
     row.layoutRepairs=composed.layoutRepairs?.length??0;
     if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
