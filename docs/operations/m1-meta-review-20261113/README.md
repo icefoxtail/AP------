@@ -4,6 +4,8 @@
 
 사용자 최신 지시로 중1~중3 전6권 RPM L1/L2 정비를 먼저 진행한다. 별도 브랜치 `fix/rpm-middle-l1-l2-20261113`의 운영병합 후 이 작업으로 돌아온다. 시험지 완료는 여전히 0/44다. 첫 신흥중 24문항의 발문·문제 그림·풀이 읽기 기록은 [부분 검토 체크포인트](01-shinheung-semantic-read-checkpoint.json)에 보존했다. 기존 분류 대조·수정·PR은 미완료다. 같은 source blob의 읽기를 처음부터 반복하지 않고 남은 대조부터 재개한다.
 
+Q1~12 후보 대조도 [전반부 후보 기록](01-shinheung-first-half-candidate.json)에 보존했다. 부모 정본 브랜치 `9a29f38c36a3a8531dbd9fe25a7cbe32c1899788`의 authority SHA `6128cf2c8c863f132d6c9d8b51804aff9ba636ce5cdbaf99f41217962aec40ab`에 결속했으며, 아직 main 병합·문항 메타 적용은 하지 않았다. Q2·Q9의 부모 오류만 정본에서 해소됐고 PT/TPL 연결 검토는 남아 있다.
+
 ## 현재 위치
 
 - 작업: 중1 기존 기출 44시험지 · 1,047문항. 기준 main `a6708a849faca7ccfd438937138d7e88bd5ee23c`.
