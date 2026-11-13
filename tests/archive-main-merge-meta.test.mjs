@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {planQuestion,sourceFingerprint,contentFingerprint,loadBank,sourcePath,selectTargets} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
+import {planQuestion,sourceFingerprint,contentFingerprint,loadBank,sourcePath,selectTargets,classifySourceFingerprintDrift} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source='original/middle/m3/1mid/fixture.js',uid='qid_v1_'+'a'.repeat(64);
 function fixture() {
@@ -27,6 +27,73 @@ test('ambiguous binding is refused',()=>{const f=fixture();f.registry.bindingRow
 test('UID mismatch is refused',()=>{const f=fixture();f.identity.questionUid='other';assert.deepEqual(planQuestion(f).reasons,['UID_JOIN_MISMATCH']);});
 test('embedded source UID cannot impersonate identity',()=>{const f=fixture();f.question.questionUid='other';assert.deepEqual(planQuestion(f).reasons,['SOURCE_UID_CONFLICT']);});
 test('identity fingerprint drift is refused',()=>{const f=fixture();f.identity.sourceFingerprint='bad';assert.deepEqual(planQuestion(f).reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);});
+function solutionOnlyFixture(){
+  const f=fixture();
+  f.previous=structuredClone(f.question);
+  f.question.solution='revised explanation, same answer';
+  f.current.sourceFingerprint=sourceFingerprint(f.previous);
+  f.current.contentFingerprint=contentFingerprint(f.previous);
+  f.current.metadataStatus='approved_semantic_review';
+  f.current.reviewStatus='reviewed_pass';
+  f.current.metadataApprovalType='REVIEW2';
+  f.current.approvalEvidence=['real-prior-metadata-review.json'];
+  f.current.independentMathReviewStatus='PASS';
+  f.current.problemTypeKey='PT_ROOT';f.current.templateKey='TPL_ROOT';
+  return f;
+}
+test('S1: reviewed, Git-anchored solution-only change rebinds identity without inheriting solution QA',()=>{
+  const f=solutionOnlyFixture(),input=JSON.stringify(f.question);
+  const r=planQuestion(f);
+  assert.equal(r.status,'APPLY');assert.equal(r.rebindIdentity,true);
+  assert.equal(r.fingerprintCause,'SOLUTION_ONLY_PROVEN');
+  assert.equal(r.rebindProof.before,sourceFingerprint(f.previous));
+  assert.equal(r.rebindProof.after,sourceFingerprint(f.question));
+  assert.equal(r.final.reviewStatus,'reviewed_pass');
+  assert.equal(r.final.metadataApprovalType,'REVIEW2');
+  assert.equal(r.final.independentMathReviewStatus,'NOT_PERFORMED_BY_AUTO_REGISTRAR');
+  assert.equal(JSON.stringify(f.question),input);
+  f.identity.sourceFingerprint=r.rebindProof.after;
+  const replay=planQuestion({...f,current:r.final,priorReceipt:{inputHash:r.inputHash,metadataRegistrationStatus:'REGISTERED'}});
+  assert.equal(replay.status,'ALREADY_REGISTERED');
+});
+test('S1: no approved evidence means fingerprint mismatch remains pending',()=>{
+  const f=solutionOnlyFixture();f.current.approvalEvidence=[];
+  const r=planQuestion(f);
+  assert.deepEqual(r.reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);
+  assert.equal(r.fingerprintCause,'REVIEWED_METADATA_EVIDENCE_MISSING');
+});
+test('S1: old fingerprint must match actual Git baseline before rebinding',()=>{
+  const f=solutionOnlyFixture();f.identity.sourceFingerprint='a'.repeat(64);
+  assert.equal(planQuestion(f).fingerprintCause,'OLD_FINGERPRINT_NOT_ANCHORED');
+});
+test('S1: metadata sidecar must match the same historical fingerprint',()=>{
+  const f=solutionOnlyFixture();f.current.sourceFingerprint='b'.repeat(64);
+  assert.equal(planQuestion(f).fingerprintCause,'METADATA_IDENTITY_DIVERGED');
+});
+test('S1: question text and figure changes cannot be reclassified as a solution-only edit',()=>{
+  for(const field of ['content','image','choices']){
+    const f=solutionOnlyFixture();
+    f.question[field]=field==='choices'?['altered']:'altered';
+    const r=planQuestion(f);
+    assert.deepEqual(r.reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);
+    assert.equal(r.fingerprintCause,'QUESTION_OR_IMAGE_CHANGED');
+  }
+});
+test('S1: changed answer and non-fingerprint student/metadata fields are refused',()=>{
+  for(const [field,value] of [['answer','new-answer'],['questionType','new-type'],['primaryMethod','changed-method']]){
+    const f=solutionOnlyFixture();f.question[field]=value;
+    assert.equal(planQuestion(f).fingerprintCause,'ANSWER_OR_OTHER_FIELDS_CHANGED');
+  }
+});
+test('S1: ordinal shift refuses rebind before inspecting fingerprints',()=>{
+  const f=solutionOnlyFixture();f.question.id=2;
+  assert.deepEqual(planQuestion(f).reasons,['SOURCE_ORDINAL_CHANGED']);
+});
+test('S1: metadata-only edit needs no identity rebind',()=>{
+  const f=fixture();f.question.primaryMethod='updated-meaning';
+  const drift=classifySourceFingerprintDrift({question:f.question,previous:f.previous,current:f.current,identity:f.identity});
+  assert.equal(drift.cause,'CURRENT_MATCH');assert.equal(drift.canRebind,false);
+});
 test('unrelated metadata fingerprint conflict is refused',()=>{const f=fixture();f.current.sourceFingerprint='bad';assert.deepEqual(planQuestion(f).reasons,['METADATA_SOURCE_FINGERPRINT_CONFLICT']);});
 test('runtime owner is not silently moved',()=>{const f=fixture();f.runtimeOwner='OTHER';assert.deepEqual(planQuestion(f).reasons,['EXISTING_RUNTIME_OWNER_CONFLICT']);});
 test('missing semantic rationale is not synthesized',()=>{const f=fixture();delete f.question.decisiveStep;assert.deepEqual(planQuestion(f).reasons,['SOURCE_SEMANTIC_RATIONALE_MISSING']);});
