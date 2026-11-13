@@ -30,8 +30,8 @@ function runtime(unit, url = 'https://archive.test/archive/unit-past-exams.html?
     localStorage: { getItem() { return null; } },
   });
   vm.runInContext(source.replace(entryMarker, `
-    window.urlTest = { state, getDefaultFilterState, syncFilterUrl,
-      getCollectionDefaultState, syncCollectionUrl };
+    window.urlTest = { state, G, getDefaultFilterState, syncFilterUrl,
+      getCollectionDefaultState, syncCollectionUrl, gridApplyStoredSelection };
 ${entryMarker}`), context);
   const api = window.urlTest;
   api.state.profileId = 'm1';
@@ -122,4 +122,40 @@ test('existing comma-separated legacy chapter links still restore both selection
   assert.deepEqual(plain(collection.subUnitKeys), keys);
   assert.equal(core.filterUnitRecords(unit.records, normal).length, 2);
   assert.equal(core.filterUnitRecords(unit.records, collection).length, 2);
+});
+
+test('stored middle grid cells and checked units restore through a one-to-one unit alias', () => {
+  const unit = currentUnit();
+  unit.selectableRecords = unit.records.map(record => ({ ...record, difficultyBucket: 2 }));
+  const page = runtime(unit);
+  page.api.G.profileId = 'm1';
+  page.api.G.counts = core.countGrid([unit]);
+  assert.ok(page.api.G.counts[unit.key]['2'] > 0);
+  const stored = {
+    profileId: 'm1', cells: ['M22-1-05|2'], checked: ['M22-1-05'],
+  };
+  const before = plain(stored);
+
+  page.api.gridApplyStoredSelection(stored);
+
+  assert.deepEqual([...page.api.G.cells], [`${unit.key}|2`]);
+  assert.deepEqual([...page.api.G.checked], [unit.key]);
+  assert.deepEqual(stored, before, 'restoration must not rewrite the saved input');
+});
+
+test('stored combined geometry units remain unresolved when the current unit alias is ambiguous', () => {
+  const units = core.getProfile('m2').units.map(unit => ({
+    ...unit, selectableRecords: [{ difficultyBucket: 2 }],
+  }));
+  const page = runtime(units[0]);
+  page.api.state.profileId = page.api.G.profileId = 'm2';
+  page.api.state.catalog = { units };
+  page.api.G.counts = core.countGrid(units);
+
+  page.api.gridApplyStoredSelection({
+    profileId: 'm2', cells: ['M22-2-06|2'], checked: ['M22-2-06'],
+  });
+
+  assert.deepEqual([...page.api.G.cells], []);
+  assert.deepEqual([...page.api.G.checked], []);
 });

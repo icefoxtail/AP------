@@ -2,11 +2,16 @@
   "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
   "owner": "GPT_ROOT_933015CD0A4F",
   "instructionRevision": 2,
-  "state": "IMPLEMENTED_PENDING_RUNTIME_BROWSER_AND_MERGE",
+  "state": "IMPLEMENTED_PENDING_CI_CHROME_AND_MERGE",
   "branch": "fix/rpm-middle-l1-l2-20261113",
   "baseMainSha": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
   "authority": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
-  "counts": { "books": 6, "L1": 24, "L2": 54, "preservedLeaves": 326 },
+  "counts": {
+    "books": 6,
+    "L1": 24,
+    "L2": 54,
+    "preservedLeaves": 326
+  },
   "questionMetadataModified": false,
   "lockedSnapshotModified": false,
   "validation": {
@@ -14,9 +19,13 @@
     "quickPools": "PASS_20_TESTS",
     "unitIntegration": "PASS_24_TESTS",
     "subunitGroups": "PASS_CHECK_NO_REGENERATION",
-    "runtimeGuard": "IN_PROGRESS_REGISTERED_MODE",
-    "chrome": "PENDING",
-    "merge": "PENDING"
+    "runtimeGuard": "LOCAL_INCOMPLETE_MISSING_INPUTS_PENDING_CI",
+    "chrome": "LOCAL_NOT_RUN_SANDBOX_REJECTED_PENDING_EXISTING_CI",
+    "merge": "PENDING",
+    "resolverAndParentAuthority": "PASS_32_TESTS",
+    "urlAndStoredSelection": "PASS_5_TESTS",
+    "consumerAndCiScope": "PASS_47_TESTS",
+    "independentReview": "COMPLETE_NO_OPEN_DEFECT"
   },
   "examReview": {
     "state": "PAUSED_FOR_RPM_L1_L2_REFINEMENT",
@@ -27,5 +36,13 @@
     "completedExams": 0,
     "next": "2026 신흥중 중1 2학기 중간 24문항"
   },
-  "nextAction": "FINISH_RUNTIME_BROWSER_CHECKS_THEN_PR_MERGE_AND_VERIFY_REMOTE_SHA"
+  "nextAction": "WAIT_FOR_CI_AND_CHROME_EVIDENCE_THEN_MERGE_AND_VERIFY_REMOTE_SHA",
+  "remoteCheckpointSha": "ddea1efca1515d4a148bbdf581d31e161193c7de",
+  "remoteCheckpointTree": "a596ac72bffbfc95227bb0da75014d4b68fe0b5c",
+  "awcr": {
+    "revision": 3,
+    "fileId": "1rYz7I4OSH_NGGLwoxvJuNE7WwLFKOfop",
+    "rawSha256": "9ce38e25cf192db57f0310c07ba109754bca146bad8f7b9a7b285a97b8e77ce8",
+    "readbackVerified": true
+  }
 }

@@ -2223,11 +2223,16 @@
   }
   function gridApplyStoredSelection(stored) {
     const known = new Set((state.catalog?.units || []).map(unit => unit.key));
+    const profileId = state.profileId || G.profileId || 'h1';
     for (const key of Array.isArray(stored.cells) ? stored.cells : []) {
-      const [unitKey, token] = String(key).split('|');
+      const [storedUnitKey, token] = String(key).split('|');
+      const unitKey = core.resolveUnitKeyAlias(profileId, storedUnitKey);
       if (known.has(unitKey) && (G.counts[unitKey]?.[token] || 0) > 0) G.cells.add(gridKey(unitKey, token));
     }
-    for (const unitKey of Array.isArray(stored.checked) ? stored.checked : []) if (known.has(unitKey)) G.checked.add(unitKey);
+    for (const storedUnitKey of Array.isArray(stored.checked) ? stored.checked : []) {
+      const unitKey = core.resolveUnitKeyAlias(profileId, storedUnitKey);
+      if (known.has(unitKey)) G.checked.add(unitKey);
+    }
   }
   function gridCatalogFor(profileId) {
     let entry = G.catalogs.get(profileId);

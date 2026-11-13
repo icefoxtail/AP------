@@ -6,7 +6,9 @@
 - AWCR taskId: `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`, instructionRevision `2`
 - 작업 브랜치: `fix/rpm-middle-l1-l2-20261113`
 - 시작 main: `a6708a849faca7ccfd438937138d7e88bd5ee23c`
-- 상태: 구현 및 집중 회귀 완료, 통합 검사·실제 Chrome 검증·PR/main 병합 대기
+- 상태: 구현 및 집중 회귀 완료, GitHub CI의 통합 검사·실제 Chrome 검증·PR/main 병합 대기
+- 첫 원격 코드 체크포인트: `ddea1efca1515d4a148bbdf581d31e161193c7de`, tree `a596ac72bffbfc95227bb0da75014d4b68fe0b5c` (원격 fetch로 동일 tree 확인)
+- AWCR r3: Drive file `1rYz7I4OSH_NGGLwoxvJuNE7WwLFKOfop`, raw SHA256 `9ce38e25cf192db57f0310c07ba109754bca146bad8f7b9a7b285a97b8e77ce8` (실제 raw 재조회 확인)
 - 최신 상태는 같은 폴더의 `progress.json` 및 이 브랜치 원격 HEAD를 함께 확인한다. 아래 체크 결과만으로 운영 완료를 추정하지 않는다.
 
 ## 현재 우선순위와 산출물
@@ -31,10 +33,14 @@
 - quick pool 회귀 20건 통과.
 - UnitPast 및 새 부모 통합 회귀 24건 통과.
 - 기존 subunit grouping 생성물 변경 없이 `--check` 통과.
-- URL 안의 JSON 부모키를 쉼표로 분리하던 문제 수정. 실제 모듈의 일반/학교별 URL 왕복 독립 확인 완료, 회귀 파일 추가 중.
-- 전체 runtime guard, 실제 Chrome 검증, 최종 독립 검토, 원격 동일 tree 확인, PR/main 병합은 진행 중이다.
+- URL 안의 JSON 부모키를 쉼표로 분리하던 문제와 저장한 칸의 안전한 단원 별칭 복원 수정. 일반/학교별 URL·새 페이지·기존 선택 복원 회귀 5건 통과.
+- 기존 Unified·UnitPast UI·reader controls·CI scope 회귀 47건 통과. 저장 요청의 base 경로 및 Worker 검증 계약 포함.
+- 독립 검토에서 11,590개 중등 카탈로그의 memo 유무 차이 0, 54개 공식 부모 및 326개 leaf 대조 차이 0 확인.
+- 로컬 전체 runtime guard는 부분 checkout과 비추적 mixed-v1 입력 부재로 미완료다. 캐시 버전 literal 실패 1건은 현행 버전으로 수정하고 관련 테스트를 통과했다. 미완료 guard를 PASS로 취급하지 않는다.
+- 로컬 Chrome은 UNIX socket EPERM으로 시작하지 못했고 sandbox 밖 동일 명령도 자동 승인 정책의 `sandbox_approval=false` 때문에 거절됐다. 이 환경의 실제 UI 검증 결과는 NOT_RUN이다.
+- 저장소에 원래 마련된 GitHub CI의 Chrome job에 변경 UI 검사를 추가했다. 기존 runner 권한을 변경하지 않고, 실제 화면 결과·스크린샷을 CI artifact로 남긴 뒤 확인한다. CI·Chrome·PR/main 병합 결과는 아직 대기한다.
 
-R1/R2/R3 전체 시험지 재검증은 실행하지 않는다. 공유 카탈로그와 등록 정본은 기존 main의 검증 결과를 재사용한다. runtime guard는 공식 `--registered` 모드로 등록 스냅샷을 재생성하지 않고 검사한다.
+R1/R2/R3 전체 시험지 재검증은 실행하지 않는다. 로컬의 공유 카탈로그와 등록 정본은 기존 main의 검증 결과를 재사용했다. 로컬 runtime guard는 공식 `--registered` 모드로 등록 스냅샷을 재생성하지 않았으며, CI는 기존 full checkout 및 guard 준비 절차를 그대로 실행한다.
 
 ## 이어서 할 일
 
