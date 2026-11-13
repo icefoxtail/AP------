@@ -1,0 +1,601 @@
+{
+  "schemaVersion": "existing-exam-exact-head-fresh-ci-v1",
+  "observedAt": "2026-11-13 17:34:43 UTC",
+  "status": "ALL_CURRENT_HEAD_WORKFLOWS_AND_JOBS_SUCCESS",
+  "pr": {
+    "number": 1968,
+    "url": "https://github.com/icefoxtail/AP------/pull/1968",
+    "head": "e03094dff7abe80ac6a66223b1f20ffea19a52fe",
+    "headTree": "a318df4d68b9206d3f76eae1b3584ac3ba70ee3e",
+    "eventBase": "440f412bd221e3d62df16130984a2626a3ee6441",
+    "testedMergeCommit": "aaf1d329e82e05ad575606f773d0aeddf412ac51",
+    "finalApiObservation": {
+      "head": "e03094dff7abe80ac6a66223b1f20ffea19a52fe",
+      "base": "440f412bd221e3d62df16130984a2626a3ee6441",
+      "state": "open",
+      "draft": false,
+      "merged": false,
+      "mergeable": false,
+      "merge_commit_sha": "aaf1d329e82e05ad575606f773d0aeddf412ac51"
+    }
+  },
+  "workflowCount": 4,
+  "successfulWorkflowCount": 4,
+  "jobCount": 6,
+  "successfulJobCount": 6,
+  "workflows": [
+    {
+      "id": 43471945232,
+      "name": "Generated Consumer browser smoke",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 132045810922,
+          "name": "browser-smoke",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43471945109,
+      "name": "CI",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 132045810957,
+          "name": "plan",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 132045890852,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43471944931,
+      "name": "Problem Bank Shared Meta",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 132045810274,
+          "name": "shared-meta",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43471944952,
+      "name": "Archive2 Runtime Guard",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 132045810407,
+          "name": "Archive2 runtime contract",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 132045810637,
+          "name": "Archive2 50-question solution Chrome",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "nativePreviewObservedScope": {
+    "requestId": "m1-wangun-2026-mid-meta-review-20261113",
+    "requestSha256": "feb528273a4167b654a50dcd6d825c7db9173b0bf2fee1c47904b20b4bb505c1",
+    "requestDeclaredQuestions": 23,
+    "requestDeclaredRegistryChanges": 16,
+    "preparationStep": {
+      "name": "Prepare and verify PR registration data once",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 11
+    },
+    "requiredFinalTestStep": {
+      "name": "Run tests",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 19
+    },
+    "ciArtifactCount": 0,
+    "exact23ReceiptArtifactReadback": "NOT_AVAILABLE_FROM_EXPORTED_ARTIFACT",
+    "scopeBoundary": "The current head's official PR preparation and final tests succeeded. Declared23 questions/16 registry changes are from the unchanged reviewed request. No per-record CI receipt export or operational main registration is claimed."
+  },
+  "browserEvidence": {
+    "metadataSummary": {
+      "path": ".tmp/m1-meta-review/02-wangun-pr1968-fresh-browser-evidence.json",
+      "sha256": "181302787e2ff20823bea77aaea8d716817171a434eff5236b83751ce4573e26"
+    },
+    "runtimeGuardRunId": 43471944952,
+    "rpmArtifact": {
+      "id": 14060609076,
+      "name": "archive-rpm-middle-browser-43471944952-1",
+      "zipSha256": "cbf6e24aaaf612cdae65452abb1da7a66e3a5e74b9a5cd1555b7febce2916c1d",
+      "jsonSha256": "98e31e94417d9c559d50154a89ddff6e482990954cb53f1a24c7fa65463bdf70",
+      "status": "PASS_WITH_REAL_DATA_GAPS",
+      "authorityCounts": {
+        "L1": 24,
+        "L2": 54,
+        "leaf": 326
+      },
+      "m1RealPoolCounts": {
+        "기본 도형": 11,
+        "작도와 합동": 23
+      },
+      "distinctPoolUidCount": 34,
+      "urlRoundTrip": "PASS",
+      "layoutCount": 34,
+      "widths": [
+        390,
+        1440
+      ],
+      "overflowCount": 0,
+      "pageRuntimeErrorCount": 0,
+      "dataGapCount": 15,
+      "preview": "NOT_EXERCISED_HERE"
+    },
+    "solutionArtifact": {
+      "id": 14060903473,
+      "name": "archive-solution-loading-43471944952-1",
+      "zipSha256": "1f250762405e5c298f511f38a435caa80d923504a3564099a759db63122035b2",
+      "jsonSha256": "082d7f80b0c15d5bc3942a64d20640606db0f9f7712fc4c6569181a5a7e5df69",
+      "pass": true,
+      "currentSha": "aaf1d329e82e05ad575606f773d0aeddf412ac51",
+      "fixedFixtureQuestions": 50,
+      "comparisonPasses": 6,
+      "comparisonCount": 6,
+      "rowPasses": 16,
+      "rowCount": 16,
+      "scopeBoundary": "Fixed50-question2025M1final solution fixture, not the current23-question Wangun2026 metadata receipt."
+    },
+    "generatedBrowserRunId": 43471945232,
+    "generatedBrowserArtifacts": 0,
+    "artifactMetadataInspected": true,
+    "screenshotsReread": false
+  },
+  "relevantCiSteps": [
+    {
+      "name": "Prepare and verify PR registration data once",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 11
+    },
+    {
+      "name": "Record META_V2 completeness diagnostics",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 13
+    },
+    {
+      "name": "Record registration supplementation outcomes",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 17
+    },
+    {
+      "name": "Guard changed Git objects against footprint growth",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 18
+    },
+    {
+      "name": "Run tests",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 19
+    }
+  ],
+  "historicalFailurePreserved": {
+    "path": ".tmp/m1-meta-review/02-wangun-pr1968-initial-ci.json",
+    "sha256": "2d60aa208f1bde9bcc5efb8ff480e2c185bb8a1ff525c9dee31d4acb99e9dbe1",
+    "oldHead": "29707a569189aacd886cf84776ae31ec0640f2b1"
+  },
+  "pollHistory": [
+    {
+      "observedAt": "2026-11-13 17:21:50 UTC",
+      "runs": [
+        {
+          "id": 43471945232,
+          "name": "Generated Consumer browser smoke",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944952,
+          "name": "Archive2 Runtime Guard",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944931,
+          "name": "Problem Bank Shared Meta",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471945109,
+          "name": "CI",
+          "status": "in_progress",
+          "conclusion": null
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 17:22:50 UTC",
+      "runs": [
+        {
+          "id": 43471945232,
+          "name": "Generated Consumer browser smoke",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944952,
+          "name": "Archive2 Runtime Guard",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944931,
+          "name": "Problem Bank Shared Meta",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471945109,
+          "name": "CI",
+          "status": "in_progress",
+          "conclusion": null
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 17:23:50 UTC",
+      "runs": [
+        {
+          "id": 43471945232,
+          "name": "Generated Consumer browser smoke",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944952,
+          "name": "Archive2 Runtime Guard",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471945109,
+          "name": "CI",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944931,
+          "name": "Problem Bank Shared Meta",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 17:24:51 UTC",
+      "runs": [
+        {
+          "id": 43471945232,
+          "name": "Generated Consumer browser smoke",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944952,
+          "name": "Archive2 Runtime Guard",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471945109,
+          "name": "CI",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944931,
+          "name": "Problem Bank Shared Meta",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 17:25:52 UTC",
+      "runs": [
+        {
+          "id": 43471944952,
+          "name": "Archive2 Runtime Guard",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471945109,
+          "name": "CI",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944931,
+          "name": "Problem Bank Shared Meta",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471945232,
+          "name": "Generated Consumer browser smoke",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 17:26:53 UTC",
+      "runs": [
+        {
+          "id": 43471945109,
+          "name": "CI",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944931,
+          "name": "Problem Bank Shared Meta",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471945232,
+          "name": "Generated Consumer browser smoke",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471944952,
+          "name": "Archive2 Runtime Guard",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 17:28:26 UTC",
+      "runs": [
+        {
+          "id": 43471945109,
+          "name": "CI",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944931,
+          "name": "Problem Bank Shared Meta",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471945232,
+          "name": "Generated Consumer browser smoke",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471944952,
+          "name": "Archive2 Runtime Guard",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 17:29:27 UTC",
+      "runs": [
+        {
+          "id": 43471945232,
+          "name": "Generated Consumer browser smoke",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471945109,
+          "name": "CI",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944931,
+          "name": "Problem Bank Shared Meta",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471944952,
+          "name": "Archive2 Runtime Guard",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 17:30:28 UTC",
+      "runs": [
+        {
+          "id": 43471945232,
+          "name": "Generated Consumer browser smoke",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471945109,
+          "name": "CI",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944931,
+          "name": "Problem Bank Shared Meta",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471944952,
+          "name": "Archive2 Runtime Guard",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 17:31:29 UTC",
+      "runs": [
+        {
+          "id": 43471945232,
+          "name": "Generated Consumer browser smoke",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471945109,
+          "name": "CI",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944931,
+          "name": "Problem Bank Shared Meta",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471944952,
+          "name": "Archive2 Runtime Guard",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 17:32:30 UTC",
+      "runs": [
+        {
+          "id": 43471945232,
+          "name": "Generated Consumer browser smoke",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471945109,
+          "name": "CI",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944931,
+          "name": "Problem Bank Shared Meta",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471944952,
+          "name": "Archive2 Runtime Guard",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 17:33:30 UTC",
+      "runs": [
+        {
+          "id": 43471945232,
+          "name": "Generated Consumer browser smoke",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471945109,
+          "name": "CI",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 43471944931,
+          "name": "Problem Bank Shared Meta",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471944952,
+          "name": "Archive2 Runtime Guard",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 17:34:30 UTC",
+      "runs": [
+        {
+          "id": 43471945232,
+          "name": "Generated Consumer browser smoke",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471945109,
+          "name": "CI",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471944931,
+          "name": "Problem Bank Shared Meta",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 43471944952,
+          "name": "Archive2 Runtime Guard",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Final PR API returned mergeable=false despite unchanged head/base and all observed checks succeeding; root owns the fresh mergeability decision.",
+    "This report is CI evidence only. Main merge, single writer request receipt, and actual post-registration23UID Consumer closure remain separate operational gates.",
+    "M2/M3 browser real-data gaps were preserved and are not claimed as data-backed successes."
+  ],
+  "executionBoundary": {
+    "codeOrTestChanges": false,
+    "sourceOrCanonicalChanges": false,
+    "gitIndexOrRefsChanges": false,
+    "workflowRerun": false,
+    "writerInvocation": false,
+    "merge": false,
+    "apiWrites": false,
+    "mathQaOrR1R2R3Repeated": false,
+    "passingJobLogsRead": false
+  }
+}

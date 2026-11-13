@@ -15,7 +15,7 @@
   "completedExams": 1,
   "reviewedQuestions": 47,
   "currentOrder": 2,
-  "nextAction": "Publish current registered-main merge to owned PR1968 branch; require exact fresh-head CI before merge, then actual Wangun receipt/final23 Consumer/remoteSHA.",
+  "nextAction": "Verify actual registered receipt23 and post-AutoMeta final Consumer23, then remote registered main SHA before marking completed2/44 or starting Palma24.",
   "exams": [
     {
       "order": 1,
@@ -594,7 +594,7 @@
       "count": 23,
       "sourceBlob": "76377173ecb0ba989188561bbefac2afb3232479",
       "sourceSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
-      "status": "PR_OPEN_FRESH_MAIN_BOUND_REQUEST_UNCHANGED_CI_PENDING",
+      "status": "MAIN_MERGED_ACTUAL_REGISTRATION_PENDING",
       "checklist": "[ ]",
       "operationallyClosed": false,
       "reviewedQuestionCount": 23,
@@ -603,10 +603,10 @@
       "figureReadEvidence": "02-wangun-figure-read-evidence.json",
       "sourceReviewedBlob": "76377173ecb0ba989188561bbefac2afb3232479",
       "sourceReviewedSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
-      "sourceMetadataEditsApplied": false,
+      "sourceMetadataEditsApplied": true,
       "registrationApplied": false,
       "prNumber": 1968,
-      "unresolvedDependencyPr": 1966,
+      "unresolvedDependencyPr": null,
       "semanticReviewEvidence": "02-wangun-semantic-review-rev3.json",
       "semanticReviewSha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090",
       "semanticOrParentCorrectedCount": 20,
@@ -620,7 +620,7 @@
       "dependencyCodePr1965": "MERGED",
       "semanticRevision": 3,
       "sourceCandidateSha256": "c79551504949aee9ee09f5a8e2bf74898f7b7204d54a035a3e4b2acc7d808129",
-      "sourceCandidateApplied": false,
+      "sourceCandidateApplied": true,
       "exactRpmLeafCount": 19,
       "newExactCrosswalks": 15,
       "nativePlanEvidence": "02-wangun-native-registration-plan-rev2.json",
@@ -632,9 +632,28 @@
       "preflightEvidence": "02-wangun-main51cf-isolated-preflight.json",
       "preflightSha256": "ea5437e08ddd76b96adeecfba1b0c4872c2faf2293abbc5c5277da8a0683d535",
       "prUrl": "https://github.com/icefoxtail/AP------/pull/1968",
-      "prHeadSha": "29707a569189aacd886cf84776ae31ec0640f2b1",
+      "prHeadSha": "e03094dff7abe80ac6a66223b1f20ffea19a52fe",
       "freshMainDryRun": "PASS_23_REGISTRY16_RUNTIME23",
-      "freshMainRecheckEvidence": "02-wangun-main440f-refresh.json"
+      "freshMainRecheckEvidence": "02-wangun-main440f-refresh.json",
+      "mergeCommitSha": "6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2",
+      "mergeTree": "f4eae4a3fced8d6525922e1b67daddfaa434a885",
+      "mainMergeEvidence": "02-wangun-main-merge.json",
+      "mainMergeEvidenceSha256": "fcd929c3705fc3de21eb874bc20bd49c142e3bfa6012eeba929d38b801599334",
+      "ci": {
+        "status": "SUCCESS",
+        "headSha": "e03094dff7abe80ac6a66223b1f20ffea19a52fe",
+        "workflows": 4,
+        "jobs": 6,
+        "evidencePath": "02-wangun-pr1968-fresh-ci.json",
+        "evidenceSha256": "fd5a2c3422eb999dc2b8cdec8a06c7c449f493714119bebf7763c33bc3e97b7b"
+      },
+      "mainWriter": {
+        "runId": 43474884078,
+        "jobId": 132056020809,
+        "statusAtObservation": "IN_PROGRESS",
+        "actualRequestReceipt": "PENDING",
+        "finalPostAutoMetaConsumer": "PENDING"
+      }
     },
     {
       "order": 3,
@@ -1238,7 +1257,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "SECOND_EXAM_FRESH_REGISTERED_MAIN_MERGED_LOCALLY_REQUEST_UNCHANGED_NEXT_EXACT_HEAD_CI",
+  "state": "SECOND_EXAM_MAIN_MERGED_PENDING_ACTUAL_REGISTERED_RECEIPT_AND_FINAL_CONSUMER",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -1257,11 +1276,11 @@
       "supersededBy": "01-shinheung-semantic-review.json"
     }
   },
-  "activeMain": "440f412bd221e3d62df16130984a2626a3ee6441",
+  "activeMain": "6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2",
   "prerequisiteStatus": "RPM_L1_L2_MERGED",
   "prerequisiteMainSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
   "latestRemoteSemanticCheckpoint": "e403ce4b0fff47857e0579335a633a7a7b28dd3a",
-  "latestMergedReviewHead": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
+  "latestMergedReviewHead": "e03094dff7abe80ac6a66223b1f20ffea19a52fe",
   "concurrentWorkCheck": {
     "path": "docs/operations/m1-meta-review-20261113/01-shinheung-concurrent-work-check.json",
     "sha256": "e06a73f3224e7c2eb44aa898a7c14e2ee1c2b21b52340c913b7e7bf1fc2e8891",
@@ -1291,7 +1310,7 @@
     ],
     "noBlanketMetadataConflictWaiver": true
   },
-  "activeMainTree": "c77b8e1c88357ea17ac1b650db2029a1f836ebfc",
+  "activeMainTree": "f4eae4a3fced8d6525922e1b67daddfaa434a885",
   "subsequentMainChanges": [
     {
       "pr": 1962,
@@ -1304,10 +1323,10 @@
       "preserveConcurrentChanges": true
     }
   ],
-  "activeMainTreeStatus": "OTHER_OWNER_SHINHEUNG_SUPPLEMENT_REGISTERED_AND_FINAL24_CONSUMER_VERIFIED",
+  "activeMainTreeStatus": "MERGED_SOURCE_AND_INBOX_NOT_YET_REGISTERED",
   "checkpointPublication": {
-    "lastVerifiedRemoteSha": "29707a569189aacd886cf84776ae31ec0640f2b1",
-    "statusAtWriting": "PR1968_PUBLISHED_FULL_ISOLATED_PREFLIGHT_PASS_MAIN_GATE_PENDING",
+    "lastVerifiedRemoteSha": "e03094dff7abe80ac6a66223b1f20ffea19a52fe",
+    "statusAtWriting": "PR1968_MERGED_FRESH_CI_SUCCESS_ACTUAL_MAIN_REGISTRATION_PENDING",
     "currentSnapshotEvidence": {
       "path": "02-wangun-semantic-review-rev3.json",
       "sha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090"
@@ -1323,11 +1342,11 @@
     "mainRegistrationStillRequired": true
   },
   "awcrCheckpoint": {
-    "latestVerifiedRevision": 19,
-    "fileId": "1Thmo7BeqfbQ9jNN_xo_fC02Jp2pC0HNS",
-    "rawSha256": "a002d90381ce0305adafa9ff974bc78c65de3bd612bdbdba6ee4206a89ca2561",
-    "nextRevision": 20,
-    "nextRevisionPurpose": "Record next verified main writer/PR1968 CI or operational closeout."
+    "latestVerifiedRevision": 21,
+    "fileId": "149rSt5WWAArxdHVfvMv8KVlV7DPWnbEb",
+    "rawSha256": "21d365a950a7dcb9e844e862f235bc1a371506f09d855d166ad8b30add04c356",
+    "nextRevision": 22,
+    "nextRevisionPurpose": "Record verified branch checkpoint and actual Wangun main writer outcome."
   },
   "remainingExams": 43,
   "nextExam": {
@@ -1335,7 +1354,7 @@
     "path": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
     "file": "26_왕운중_2학기_중간_중1_기출.js",
     "questionCount": 23,
-    "status": "PR_OPEN_FRESH_MAIN_BOUND_REQUEST_UNCHANGED_CI_PENDING",
+    "status": "MAIN_MERGED_ACTUAL_REGISTRATION_PENDING",
     "semanticReadEvidence": "02-wangun-semantic-read-checkpoint.json"
   },
   "latestOperationalCloseout": {
@@ -1400,7 +1419,7 @@
     "currentDependencyEvidence": "02-pr1965-head9f828-review.json"
   },
   "operationallyClosedQuestions": 24,
-  "latestVerifiedRemoteCheckpoint": "29707a569189aacd886cf84776ae31ec0640f2b1",
+  "latestVerifiedRemoteCheckpoint": "e03094dff7abe80ac6a66223b1f20ffea19a52fe",
   "courseCorrectionDependency": {
     "pr": 1966,
     "url": "https://github.com/icefoxtail/AP------/pull/1966",
@@ -1498,7 +1517,7 @@
     "outsideScopeConsumersCompared": 17,
     "outsideScopeChanges": 0,
     "ownBranchSourceCandidatePrepared": true,
-    "actualMainRegistration": "NOT_APPLIED",
+    "actualMainRegistration": "PENDING_MAIN_WRITER",
     "evidence": "02-wangun-main51cf-isolated-preflight.json"
   }
 }

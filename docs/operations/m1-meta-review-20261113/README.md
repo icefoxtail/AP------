@@ -2,16 +2,16 @@
 
 ## 현재 진행
 
-**운영 완료 1/44장 · 남은 43장 · 전체 읽기 47/1,047문항.** 현재는 **2026 왕운중 중1 2학기 중간23문항**이다. 발문·선지·제공 풀이23개와 외부 그림33개를 전부 읽었다. 현재 확정 원장은 [semantic revision3](02-wangun-semantic-review-rev3.json)이며, 실제 운영 등록 전이므로 완료로 체크하지 않는다.
+**운영 완료 1/44장 · 남은 43장 · 전체 읽기 47/1,047문항.** 현재는 **2026 왕운중 중1 2학기 중간23문항**이다. 발문·선지·제공 풀이23개와 외부 그림33개를 전부 읽었다. 현재 확정 원장은 [semantic revision3](02-wangun-semantic-review-rev3.json)이며, [PR1968](https://github.com/icefoxtail/AP------/pull/1968)은 main `6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2`에 병합됐다. 실제 운영 등록과 최종 Consumer23 확인 전이므로 완료로 체크하지 않는다.
 
 - 의미·부모 수정 후보20문항, 정확한 RPM leaf19, debt Q2·Q3·Q4·Q16. 정상 문제·정답·해설·그림·난이도·source 검수상태는 보존한다.
 - Q7은 기존 FUNCTIONS_GRAPHS의 그래프 성질 유형을 재사용한다. Q11은 기존 합동 대응 PT 아래 중점 사각형 성질 판정 template를 보완한다. Q20은 기존 줄기·잎→계급별 도수 유형에 연결한다. 새 PT4·TPL5, exact binding5, M1-1 과정 alias2, RPM exact 연결15개가 후보이다.
 - [native 계획](02-wangun-native-registration-plan-rev2.json), [crosswalk 계획](02-wangun-crosswalk-plan-rev2.json), [원본 보존 독립 확인](02-wangun-source-candidate-independent-review-rev3.json). 후보의 분류9필드만 추가 조정한 근거와 정상 데이터23/외부 그림33 해시를 결속했다.
-- [PR1965](https://github.com/icefoxtail/AP------/pull/1965) 코드가 main에 병합됐다. 기존 binding 과정명 오타 정정 요청은 별도 [PR1966](https://github.com/icefoxtail/AP------/pull/1966)이다. 격리 공식 검증에서 기존 runtime613문항과 보호파일104개를 보존했다. [실제 운영 마감](02-binding-course-operational-closeout.json)에서 main `51cfb3f6fdaf3600ad06aa298d109093ad0b6b45`, 최종 Consumer1/1·runtime613 보존까지 확인했다. 왕운중은 [격리 최종 사전 검증](02-wangun-main51cf-isolated-preflight.json)에서 공식 등록23/정본16·Consumer23·RPM exact19/debt4·기존 직접 영향17 보존 PASS다. 별도 담당 브랜치 head `29707a569189aacd886cf84776ae31ec0640f2b1`와 [PR1968](https://github.com/icefoxtail/AP------/pull/1968)에 정확 후보·요청을 보존했다.
+- [PR1965](https://github.com/icefoxtail/AP------/pull/1965) 코드가 main에 병합됐다. 기존 binding 과정명 오타 정정 요청은 별도 [PR1966](https://github.com/icefoxtail/AP------/pull/1966)이다. 격리 공식 검증에서 기존 runtime613문항과 보호파일104개를 보존했다. [실제 운영 마감](02-binding-course-operational-closeout.json)에서 main `51cfb3f6fdaf3600ad06aa298d109093ad0b6b45`, 최종 Consumer1/1·runtime613 보존까지 확인했다. 왕운중은 [격리 최종 사전 검증](02-wangun-main51cf-isolated-preflight.json)에서 공식 등록23/정본16·Consumer23·RPM exact19/debt4·기존 직접 영향17 보존 PASS다. 별도 담당 브랜치 head `e03094dff7abe80ac6a66223b1f20ffea19a52fe`와 [PR1968](https://github.com/icefoxtail/AP------/pull/1968)에 정확 후보·요청을 보존했다.
 - 명시적 sourceOrdinal로23개 UID를 결속했다. [UID 정정 기록](02-wangun-uid-association-correction.json)을 보존하며 이전 원장·추출 배열 순서를 등록 UID로 사용하지 않는다. rev3는 rev2의 UID23개를 그대로 유지한다.
 - 병행 owner의 immutable r12에서 왕운중/과정명 정정 발행 보류를 확인했다. 해당 작업에 합류하거나 그 tree를 수정하지 않는다. 공개 main·현재 원본·요청을 다시 확인하고 단일 요청만 적용한다.
 
-병행 신흥 보완 PR1967이 현재 crosswalk 전체 해시에 결속돼 있어 **해당 실제 main writer 마감 후 왕운중 crosswalk를 main에 병합**한다. [영향 코드 추적](02-crosswalk-append-existing-approval-impact.json)에 기존 승인 재사용과 신규 요청 검증을 구분해 기록했다. 다른 owner의 tree·요청은 수정하지 않는다.
+병행 신흥 보완 PR1967의 실제 main440f·등록24·최종Consumer24를 확인한 뒤 왕운중을 병합했다. [영향 코드 추적](02-crosswalk-append-existing-approval-impact.json)에 기존 승인 재사용과 신규 요청 검증을 구분해 기록했다. 다른 owner의 tree·요청은 수정하지 않는다.
 
 ## 완료 결과
 
@@ -27,14 +27,14 @@
 
 진행 원장은 [progress.json](progress.json), 다음 담당용 절차와 복사 프롬프트는 [HANDOFF.md](HANDOFF.md)다. 시험지 한 장의 의미 검토→최소 수정→exact candidate 전체 Consumer→PR/main→실제 등록 영수증/최종 Consumer→원격 SHA를 마감한 뒤 다음으로 이동한다. 기존 R1/R2/R3는 반복하지 않는다. 수학 FINAL QA나 새 해설 검증을 수행했다고 기록하지 않는다.
 
-마지막 확인 원격 체크포인트는 `29707a569189aacd886cf84776ae31ec0640f2b1`, AWCR revision19이다. 현재 rev3 기록의 실제 게시 SHA는 원격 브랜치와 다음 immutable AWCR에서 확인한다.
+마지막 확인 원격 체크포인트는 `e03094dff7abe80ac6a66223b1f20ffea19a52fe`, AWCR revision21이다. 현재 rev3 기록의 실제 게시 SHA는 원격 브랜치와 다음 immutable AWCR에서 확인한다.
 
 ## 시험지별 완료 체크리스트
 
 완료는 실제 main 등록·전체 Consumer·원격 SHA 확인까지 끝낸 경우다. 나머지43장은 미완료이며 기존 메타의 유무와 무관하게 의미 검토 대상이다.
 
 - [x] 01. 26 신흥중 2학기 중간 중1 기출 / 24문항 — 운영 완료 · RPM debt Q8/Q10 기록
-- [ ] 02. 26 왕운중 2학기 중간 중1 기출 / 23문항 — 의미 검토23·격리 Consumer23 완료 · PR1968 main 등록 대기
+- [ ] 02. 26 왕운중 2학기 중간 중1 기출 / 23문항 — 의미 검토23·격리 Consumer23·CI4/6 완료 · PR1968 병합 · 실제 등록/최종23 대기
 - [ ] 03. 26 팔마중 2학기 중간 중1 기출 / 24문항 — PENDING
 - [ ] 04. 25 동산중 2학기 기말 중1 기출 / 24문항 — PENDING
 - [ ] 05. 25 신흥중 2학기 기말 중1 기출 / 22문항 — PENDING

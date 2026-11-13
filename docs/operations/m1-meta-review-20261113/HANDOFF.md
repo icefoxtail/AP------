@@ -5,11 +5,11 @@
 - 저장소: https://github.com/icefoxtail/AP------
 - taskId: `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`; owner: `GPT_ROOT_933015CD0A4F`.
 - 담당 branch: `review/m1-existing-meta-20261113`.
-- 마지막 확인 원격 head: `29707a569189aacd886cf84776ae31ec0640f2b1`; tree: `2352887a61876a2b65badb2dbd538cda2295996f`. 마지막 commit24개 파일의 raw SHA/Git blob을 원격에서 재확인했다. 전체 PR은65경로(archive11 + request1 + docs53)다.
+- 마지막 확인 원격 review head: `e03094dff7abe80ac6a66223b1f20ffea19a52fe`; tree: `a318df4d68b9206d3f76eae1b3584ac3ba70ee3e`. 해당 head의 4 workflow·6 jobs가 모두 통과했고 PR1968은 실제 main `6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2`에 병합됐다.
 - 큐: `progress.json`의 **중1 44장/1,047문항**, 연도 DESC → 학기 DESC → 기말 먼저 → 학교명 순서.
 - **운영 완료1장, 남은43장. 전체 읽기47문항, 운영 마감24문항.** 현재2번 왕운중23을 마감하기 전에3번 팔마중24를 시작하지 않는다.
-- 현재 [PR1968](https://github.com/icefoxtail/AP------/pull/1968)은 OPEN/non-draft. 후보·공식 요청·사전 검증이 원격 브랜치에 있으며 실제 main 적용 전이다.
-- 최신 검증 AWCR **r19**: file `1Thmo7BeqfbQ9jNN_xo_fC02Jp2pC0HNS`, raw SHA `a002d90381ce0305adafa9ff974bc78c65de3bd612bdbdba6ee4206a89ca2561`. 현재 PR과 검증을 기록한 immutable snapshot이며 작성 이후 상태는 새 revision으로 기록한다.
+- 현재 [PR1968](https://github.com/icefoxtail/AP------/pull/1968)은 MERGED. source와 inbox는 main에 있으며 실제 native 등록 영수증·최종 Consumer23은 대기 중이다.
+- 최신 검증 AWCR **r21**: file `149rSt5WWAArxdHVfvMv8KVlV7DPWnbEb`, raw SHA `21d365a950a7dcb9e844e862f235bc1a371506f09d855d166ad8b30add04c356`. 작성 이후 병합·운영 상태는 다음 immutable revision으로 기록한다.
 
 ## 완료 근거 — 반복하지 않을 일
 
@@ -43,24 +43,23 @@ Q7은 기존 FUNCTIONS_GRAPHS 그래프 성질 유형을 재사용한다. Q11은
 
 Debt Q2·Q3·Q4·Q16은 잘못된 leaf로 대체하지 않는다. Q2/Q3는 작도와 합동 PARENT 수준 EXACT, Q4/Q16은 RPM 하위 부모 LEGACY_PARENT_AMBIGUOUS와 상위 기본 도형을 유지한다. Native 소단원은 위치 관계/기본 도형으로 정확히 등록된다. 수학 FINAL QA 및 solution 기반 실제 RPM resolver를 수행했다고 주장하지 않는다.
 
-## 지금 main 병합을 제한하는 정확한 순서
+## 현재 병합·등록 단계
 
-다른 task `241f49f8-fccb-4880-944e-9814a117b88e`, owner `GPT_ROOT_BF50408FB63B`는 신흥중24 보완을 담당하며 왕운중/별도 과정명 교정 발행을 보류했다. 실제 raw 검증한 최신 발견 AWCR r13은 file `1On2Gpe0EmP9W7IffBCg2qZLr0z0ZV288`, SHA `105d05f2df229857c3ff90f28a28f5b3881b31abf72f7b1c82ab7f1b9e77691f`다. 해당 task에 합류하거나 tree·요청을 수정하지 않는다.
+신흥중 후속 PR1967은 실제 등록 main `440f412bd221e3d62df16130984a2626a3ee6441`, receipt SHA `bd627b6fe34082ed8ca2a90e49955e75ffb7ee2cfc6e3e4411ae4041d4d2d555`, 최종 Consumer24로 마감됐다. [검증 근거](02-wangun-main440f-refresh.json)를 재사용하며 다른 owner의 tree·요청은 수정하지 않는다. 기존 승인과 crosswalk 추가의 영향 경계는 [코드 추적](02-crosswalk-append-existing-approval-impact.json)에 있다.
 
-[PR1967](https://github.com/icefoxtail/AP------/pull/1967)은 head `bab8fc177dc8f841708ac88f1664bc36d60864bd`로 main `2391df9b009b1c1f47ab450ed501fe06dd78f918`에 병합됐다. **Writer43467456637/job132030268013의 실제 등록 main은 `440f412bd221e3d62df16130984a2626a3ee6441`**이다. 새 receipt SHA `bd627b6fe34082ed8ca2a90e49955e75ffb7ee2cfc6e3e4411ae4041d4d2d555`, 등록24/runtime24 및 최종 post-AutoMeta Consumer24/24/24를 root가 actual Git/ZIP에서 확인했다. [최신 main 반영 근거](02-wangun-main440f-refresh.json)를 따른다. 전역 optional semantic pending을 신흥24 미완료로 해석하지 않는다.
+왕운중의 정확한 head `e03094dff7abe80ac6a66223b1f20ffea19a52fe`에서 CI4개·6jobs가 모두 통과했다. [CI 증거](02-wangun-pr1968-fresh-ci.json)와 [브라우저 범위](02-wangun-pr1968-fresh-browser-evidence.json)를 구분한다. CI artifact에는 왕운 개별 receipt가 수출되지 않았으므로 이를 실제 읽었다고 주장하지 않는다. 브라우저 24L1/54L2/326leaf 및34개 실데이터 UID 검사는 통과했고 M2/M3 실데이터 공백15개는 유지했다.
 
-신흥 요청24 items가 현재 crosswalk SHA `f43c66b50f9b7bb188114f6105cc173ad1e5895f0aa403a902e27510738fb8da`에 결속돼 있으므로 **신흥 actual writer 마감 → 등록된 main 갱신 → 왕운 main 병합** 순서를 지킨다. 별도 왕운 branch/PR 게시에는 해당 제한이 없다. 기존 native 승인/Consumer는 immutable approval refs를 사용하여 crosswalk 행 추가만으로 무효화되지 않는다는 코드 근거는 `02-crosswalk-append-existing-approval-impact.json`에 있다.
+Root가 REST에서 mergeable=true/clean을 확인한 뒤 expected head로 병합했다. [실제 병합 기록](02-wangun-main-merge.json): main `6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2`, tree `f4eae4a3fced8d6525922e1b67daddfaa434a885`. 병합 전 main440f→3328은 자동 작업 상태 파일2개만 바뀌었으며 source·요청·정본·metadata·runtime·증거는 동일하다.
 
-PR1967의 새 CI native preview는 base/head 사이 추가·수정된 요청만 적용한다. 따라서 왕운 PR preview가 기존 신흥 pending 요청의 f43 해시를 직접 검사하지는 않는다. 다만 등록 전 main2391의 새 신흥 source/이전 receipt 때문에 기존 승인 테스트가 실패할 수 있다. **등록된 fresh main을 왕운 branch에 합친 정확 head에서 CI를 확정한다.**
+현재 actual main writer는 run43474884078/job132056020809다. **등록 영수증23·최종 post-AutoMeta Consumer23·실제 등록 원격 main SHA 확인 전에는 완료2/44로 체크하지 않는다.** 다음 팔마중도 시작하지 않는다.
 
 ## 다음 실행
 
-1. 신흥 보완 실제 등록 main440f/receipt/finalConsumer24는 확인 완료다. 동일 증거를 다시 실행하지 않는다. root의 충돌 없는 local main merge와 새 원격 head 게시 상태부터 확인한다.
-2. root가 최신 등록 main440f를 충돌 없이 반영했고 기존 왕운 요청 그대로 공식 dry-run23/정본16/runtime23을 통과했다. source 원본과 distinct evidence11개도 확인했다. 새 exact head를 게시하고 CI를 확인한다. 추가 main 변화가 있으면 왕운 source 원본·23개 before 메타·정본 exact before·증거가 그대로인지 확인한다. 영향 없는 기존 증거는 재사용한다. 요청 bytes가 그대로 유효하면 불필요한 재작성·전수 검증을 하지 않는다. 필요해진 변경이 있으면 새 immutable 요청 revision을 만들고 이전 요청을 명시적으로 대체한다.
-3. PR1968의 새 exact-head CI를 확인한다. 필요한 공식 native preview/Consumer 결과를 읽는다. 기존 R1/R2/R3를 재실행하지 않는다.
-4. expected head로 PR1968 병합 → 실제 REGISTERED23 receipt → 최종 post-AutoMeta Consumer23 → remote main SHA를 확인한다. 그때에만 완료2/44·남은42로 체크한다.
-5. 완료·인계·AWCR 다음 immutable revision을 저장하고 원격 raw SHA/revision을 재읽는다. 이후3번 팔마중24로 진행한다.
-6. 향후17·20·24·38·39·40번은 PR1751 현재 요청/등록과 대조한다. 24번 향림2024 그림은 PR1959 최신 source/assets부터 확인한다. 해당 차례가 오기 전에 시험지를 건너뛰거나 다른 담당 파일을 덮어쓰지 않는다. 다음 학년/학기도 같은 큐·해시·완료표·정확 nextAction 구조로 이어간다.
+1. 위 writer의 실제 request `m1-wangun-2026-mid-meta-review-20261113` 결과를 읽는다. receipt REGISTERED23/runtime23/정본16, source c795… 및 canonical request SHA를 결속한다. 전역 workflow success나 optional semantic backlog를 이 시험지 완료·실패로 대신하지 않는다.
+2. 실제 artifact의 최종 post-AutoMeta Consumer changed/checked/passed23, failures/unobserved/assignmentPending0과 PUSHED·persisted inputSha를 확인한다. 원격 main의 source/receipt/native/metadata/runtime와 최소 직접 영향을 대조한다. 기존에 같은 해시로 검증한 그림·풀이·R1/R2/R3는 반복하지 않는다.
+3. 성공하면 완료2/44·남은42·운영47문항으로 체크하고 마감 근거·완료표·인계·AWCR 다음 revision을 저장한다. 각 원격 SHA와 AWCR raw SHA/revision을 실제 재읽는다.
+4. 이후3번 2026 팔마중2학기중간24문항을 최신 main에서 시작한다. 현재 concurrent task 범위를 확인하고, 한 시험지를 끝까지 운영 마감한 뒤 다음으로 이동한다.
+5. 향후17·20·24·38·39·40번은 PR1751 현재 요청/등록과 대조한다. 24번 향림2024 그림은 PR1959 최신 source/assets부터 확인한다. 다른 담당 파일을 덮어쓰지 않는다. 다음 학년/학기도 같은 큐·해시·완료표·정확 nextAction 구조로 이어간다.
 
 ## 실행 환경과 저장
 
@@ -73,4 +72,4 @@ PR1967의 새 CI native preview는 base/head 사이 추가·수정된 요청만 
 
 ## 새 대화 복사용 프롬프트
 
-> icefoxtail/AP------ 중1 기존 시험지 메타 전수 재검토를 이어 주세요. taskId f46ac6a5-f2f7-4ae1-a0af-5806b87de808, owner GPT_ROOT_933015CD0A4F, branch review/m1-existing-meta-20261113입니다. Notion 필독 라우터·시작·생명주기, 이 task 최신 AWCR, Git main/branch 및 docs/operations/m1-meta-review-20261113/HANDOFF.md·progress.json을 확인하세요. RPM6권 정비와 신흥24 첫 운영 마감은 완료했고 현재 왕운23 PR1968, head29707a569189aacd886cf84776ae31ec0640f2b1입니다. 왕운은 semanticrev3·공식 격리Consumer23·RPM19/debt4·기존17보존 모두 PASS, 실제 main 적용 전입니다. 다른owner PR1967는 실제 main440f412bd221e3d62df16130984a2626a3ee6441에 등록24/최종Consumer24 마감됐습니다. root가 이 main을 반영해 왕운 기존요청 freshdry-run23/16/23을 통과했습니다. 새 원격 head 게시 여부부터 확인하고 exact-head CI→PR1968merge→actualREGISTERED23/최종Consumer23/remoteSHA를 마감하세요. 해시가 같은 의미읽기·그림·R1/R2/R3는 반복하지 마세요. 누락 RPM leaf는 임의대체하지 않고, 정상 데이터·다른owner 범위를 보존하세요. 왕운을 끝낸 뒤3번 팔마중으로 넘어가44장 완료까지 추가 승인 없이 진행하며 완료표·인계·AWCR를 갱신하세요.
+> icefoxtail/AP------ 중1 기존 시험지 메타 전수 재검토를 이어 주세요. taskId f46ac6a5-f2f7-4ae1-a0af-5806b87de808, owner GPT_ROOT_933015CD0A4F, branch review/m1-existing-meta-20261113입니다. Notion 필독 라우터·시작·생명주기, 이 task 최신 AWCR, Git main/branch 및 docs/operations/m1-meta-review-20261113/HANDOFF.md·progress.json을 확인하세요. RPM6권 L1/L2 선행 정비와 신흥24 운영 마감은 완료했습니다. 왕운23 semanticrev3·격리Consumer23·RPM19/debt4·기존17보존과 정확 head e03094dff7abe80ac6a66223b1f20ffea19a52fe의 CI4/6은 완료했으며 PR1968은 main6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2에 병합됐습니다. 실제 main writer43474884078/job132056020809의 REGISTERED23·최종postAutoMetaConsumer23·원격등록SHA부터 확인하고 마감하세요. source·증거 해시가 같은 의미읽기·그림·R1/R2/R3는 반복하지 마세요. 누락 RPM leaf는 임의 대체하지 않고 정상 데이터와 다른owner 범위를 보존하세요. 왕운을 마감한 뒤3번 팔마중24로 넘어가44장 완료까지 추가 승인 없이 진행하며 완료표·인계·immutable AWCR를 갱신하세요.
