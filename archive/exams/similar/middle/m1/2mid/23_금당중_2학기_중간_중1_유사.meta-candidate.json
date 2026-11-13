@@ -121,6 +121,18 @@
         "change": "B,C,E 순서를 명시해 E가 C 바깥쪽 연장선 위에 있음을 분명히 함.",
         "mathContentChanged": false,
         "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "solution metadata boundary cleanup",
+        "change": "Removed U+E907 and following plan/meta NONE tokens from parsed student-facing solution fields after confirming they were document metadata separators; retained the MD explanation text.",
+        "mathContentChanged": false,
+        "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "math punctuation normalization",
+        "change": "Normalized duplicated commas in ordered pairs and malformed comma-before-unit TeX spacing without changing values.",
+        "mathContentChanged": false,
+        "independentReview": "NOT_RUN"
       }
     ]
   },
