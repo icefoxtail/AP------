@@ -58,6 +58,7 @@
     const unitByKey = new Map();
     const baseLeaves = new Map();
     const effectiveLeaves = new Map();
+    const baseConcepts = new Map();
     const baseParents = new Map();
     const effectiveParents = new Map();
     const scopesByLabels = new Map();
@@ -91,7 +92,7 @@
         const confirmed = review?.mappings?.some(row => row.baseL1 === basePath.L1 && row.baseL2 === basePath.L2 &&
           row.existingL3 === basePath.L3 && row.existingL4 === basePath.L4 && row.targetL1 === parent.L1 && row.targetL2 === parent.L2 &&
           row.pdfPages1based?.length && row.pdfPages1based.every(page => Number.isInteger(page) && page > 0) &&
-          source.crosswalkRecordIds?.length && source.crosswalkRecordIds.every(id => row.crosswalkRecordIds?.includes(id)));
+          source.crosswalkRecordIds?.some(id => row.crosswalkRecordIds?.includes(id)));
         if (!confirmed) throw new Error("RPM_MIDDLE_CROSS_UNIT_PLACEMENT_EVIDENCE_REQUIRED");
       }
       const effectivePath = { ...basePath, L1: parent.L1, L2: parent.L2 };
@@ -102,6 +103,7 @@
         crosswalkRecordIds: source.crosswalkRecordIds || [] });
       baseLeaves.set(baseLeafKey, row);
       effectiveLeaves.set(pathKey(effectivePath, 6), row);
+      push(baseConcepts, pathKey(basePath, 5), row);
       push(baseParents, pathKey(basePath), row);
       push(effectiveParents, parent.key, row);
       for (const labels of [basePath, effectivePath]) {
@@ -151,6 +153,17 @@
         rows = baseRows.length ? baseRows : (effectiveParents.get(key) || []).filter(row => row.basePath.L3 === value.L3);
       }
       if (!rows.length) return no("NOT_FOUND", value.L3 ? "RPM_CONCEPT_NOT_IN_PARENT" : "RPM_PARENT_NOT_IN_AUTHORITY");
+      if (value.L3) {
+        // The parent displayed today is not a substitute for a missing L4.
+        // Follow the original concept identity even when only one of its leaves
+        // is visible below the supplied effective parent.
+        const concepts = new Set(rows.map(row => pathKey(row.basePath, 5)));
+        const destinations = new Set([...concepts].flatMap(key =>
+          (baseConcepts.get(key) || []).map(row => row.parent.key)));
+        if (destinations.size > 1)
+          return no("LEGACY_PARENT_AMBIGUOUS", "EXCEPTION_L4_REQUIRED", { candidateParentKeys: [...destinations] });
+        if (concepts.size > 1) return no("AMBIGUOUS", "BASE_EFFECTIVE_CONCEPT_COLLISION");
+      }
       const targets = new Set(rows.map(row => row.parent.key));
       if (targets.size !== 1)
         return no("LEGACY_PARENT_AMBIGUOUS", "LEGACY_PARENT_REQUIRES_LEAF_OR_CONCEPT", { candidateParentKeys: [...targets] });
@@ -187,14 +200,47 @@
       add(record.rpmPrimaryPath, "RPM_PRIMARY_PATH");
       add(record.rpmSemantic, "RPM_SEMANTIC_PATH");
       add(boundRpm, "BOUND_RPM_METADATA_PATH");
-      if (record.rpmL1 || record.rpmMetadata?.rpmL1) add(record.rpmMetadata || record, "RPM_METADATA_PATH");
+      if (record.rpmL1 || record.rpmL2 || record.rpmL3 || record.rpmL4) add({
+        curriculumKey: record.rpmCurriculum, courseKey: record.rpmScope,
+        L1: record.rpmL1, L2: record.rpmL2, L3: record.rpmL3, L4: record.rpmL4,
+      }, "RPM_METADATA_PATH");
+      add(record.rpmMetadata, "RPM_METADATA_PATH");
       add(record.basicAssignment, "BASIC_ASSIGNMENT", true);
       if (record.L1 || record.L2) add(record, "METADATA_PARENT", true);
       if (record.unverifiedTaxonomy) add(record.unverifiedTaxonomy, "UNVERIFIED_PARENT", true);
+      // Compare all explicit RPM evidence before choosing a path. Stored legacy
+      // parents are deliberately excluded: a base/effective parent difference is
+      // expected during browsing and does not alter the original classification.
+      const explicit = candidates.filter(candidate => !candidate.parentFallback &&
+        ["L1", "L2", "L3", "L4"].some(field => candidate.path[field]));
+      if (explicit.some(candidate => (curriculum && candidate.path.curriculumKey && candidate.path.curriculumKey !== curriculum) ||
+          (requestedGrade && /^M[123]-[12]$/.test(candidate.path.courseKey) &&
+            !candidate.path.courseKey.startsWith(`${requestedGrade}-`))))
+        return no("AMBIGUOUS", "RPM_EVIDENCE_SCOPE_CONFLICT");
+      const resolved = explicit.map(candidate => ({ ...candidate, found: refinePath(candidate.path) }));
+      const exact = resolved.filter(candidate => candidate.found.status === "EXACT" && (!requestedGrade ||
+          candidate.path.courseKey.startsWith(`${requestedGrade}-`)))
+        .sort((a, b) => ({ LEAF: 3, CONCEPT: 2, PARENT: 1 }[b.found.granularity] -
+          { LEAF: 3, CONCEPT: 2, PARENT: 1 }[a.found.granularity]));
+      if (exact.length) {
+        const selected = exact[0];
+        const matches = (input, resolved) => PATH_FIELDS.every(field => !input[field] || input[field] === resolved[field]);
+        if (selected.found.granularity === "PARENT") {
+          const missingLeaf = resolved.find(candidate => candidate.found.reason === "EXCEPTION_L4_REQUIRED" &&
+            [selected.found.basePath, selected.found.effectivePath].some(parent =>
+              PATH_FIELDS.slice(0, 4).every(field => !candidate.path[field] || candidate.path[field] === parent[field])));
+          if (missingLeaf) return { ...missingLeaf.found, explicitRpmPath: true };
+        }
+        if (explicit.some(candidate => !matches(candidate.path, selected.found.basePath) &&
+            !matches(candidate.path, selected.found.effectivePath)))
+          return no("AMBIGUOUS", "RPM_EVIDENCE_PATH_CONFLICT");
+        return { ...selected.found, basis: selected.basis };
+      }
       let ambiguity = null;
       for (const candidate of candidates) {
         // An invalid or ambiguous explicit RPM path must not be silently repaired
-        // with a weaker legacy parent field. Another exact RPM path may resolve it.
+        // with a weaker legacy parent field. Compatible exact RPM paths were
+        // considered together above, including any available L4 evidence.
         if (ambiguity?.explicitRpmPath && candidate.parentFallback) continue;
         if (requestedGrade && /^M[123]-/.test(candidate.path.courseKey) && !candidate.path.courseKey.startsWith(`${requestedGrade}-`))
           continue;
@@ -204,7 +250,11 @@
         if (found.status === "EXACT") return { ...found, basis: candidate.basis };
         if (found.status === "LEGACY_PARENT_AMBIGUOUS")
           ambiguity = { ...found, explicitRpmPath: !candidate.parentFallback };
+        if (!candidate.parentFallback && found.status === "AMBIGUOUS")
+          ambiguity = { ...found, explicitRpmPath: true };
         if (!candidate.parentFallback && found.status === "NOT_FOUND" && (candidate.path.L3 || candidate.path.L4))
+          ambiguity = { ...found, explicitRpmPath: true };
+        if (!candidate.parentFallback && found.status === "OUT_OF_SCOPE" && (candidate.path.L3 || candidate.path.L4))
           ambiguity = { ...found, explicitRpmPath: true };
       }
       if (ambiguity?.explicitRpmPath) return ambiguity;

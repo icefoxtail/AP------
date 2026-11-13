@@ -592,7 +592,7 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   assert.match(workspace, /archive2-unified-units\.js\?v=20261113-rpm-middle-parents-1/);
   assert.match(workspace, /archive2-canonical\.js\?v=20261104-source-meta-approval-1/);
   // The workspace itself moved on with the final-check fixes (S10).
-  assert.match(workspace, /archive2-workspace\.js\?v=20261113-rpm-middle-parents-1/);
+  assert.match(workspace, /archive2-workspace\.js\?v=20261113-rpm-l3-parent-routing-1/);
   const unitPage = read('unit-past-exams.html');
   assert.match(unitPage, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(unitPage, /unit-past-exams-core\.js\?v=20261113-rpm-middle-parents-1/);

@@ -16,7 +16,7 @@ module.exports = async function checkArchiveRpmMiddleBrowser({ send, run, wait, 
     schemaVersion: 'RPM_MIDDLE_REAL_BROWSER_QA_V1', status: 'RUNNING', startedAt: new Date().toISOString(),
     dataSource: 'Unmodified runtime catalog and actual UnitPastExamsCore.buildCatalog results',
     fixture: 'Existing local-only teacher session; no exercise fixtures',
-    screenshots: [], layouts: [], workspace: [], unitViews: [], chapterViews: [], pageDiagnostics: [], dataGaps: [],
+    screenshots: [], layouts: [], workspace: [], unitViews: [], chapterViews: [], finderCurrentParents: [], pageDiagnostics: [], dataGaps: [],
     preview: { status: 'NOT_EXERCISED_HERE', reason: 'The existing output browser CI separately verifies preview rendering.' },
   };
   const evaluate = (fn, argument) => run(`(${fn.toString()})(${JSON.stringify(argument)})`);
@@ -174,6 +174,44 @@ module.exports = async function checkArchiveRpmMiddleBrowser({ send, run, wait, 
     assert.equal(report.authority.unitCount, 24); assert.equal(report.authority.parentCount, 54);
     assert.equal(report.authority.leafCount, 326); assert.equal(report.authority.selectionCoreSharesHelper, true);
     assert.deepEqual(report.authority.countsByBook, { 'M1-1': 9, 'M1-2': 9, 'M2-1': 10, 'M2-2': 10, 'M3-1': 9, 'M3-2': 7 });
+    // Exercise the real finder with current parent names plus an existing UID.
+    // The UID isolates the exam; it does not replace or inject any catalog row.
+    await navigate('/archive/workspace.html?view=find', 'window.ARCHIVE2_FINAL_CATALOG?.records?.length && document.getElementById("finder-query")');
+    const searchTargets = await evaluate(() => {
+      const C = window.Archive2Core, U = window.UnitPastExamsCore;
+      const catalog = window.ARCHIVE2_FINAL_CATALOG;
+      const targets = new Map();
+      for (const record of catalog.records) {
+        if (!C.normalizeFile(record.sourceFile).startsWith('original/middle/') || !record.questionUid) continue;
+        const resolved = U.resolveRpmParent(record);
+        if (resolved.status !== 'EXACT' || targets.has(resolved.parent.grade)) continue;
+        const examIndex = catalog.exams.findIndex(exam => C.normalizeFile(exam.file) === C.normalizeFile(record.sourceFile));
+        if (examIndex < 0) continue;
+        targets.set(resolved.parent.grade, { grade: resolved.parent.grade, examIndex,
+          file: record.sourceFile, questionUid: record.questionUid, parentKey: resolved.parentKey,
+          query: `${resolved.parent.L2} ${record.questionUid}` });
+      }
+      return [...targets.values()];
+    });
+    for (const target of searchTargets) {
+      await evaluate(query => {
+        document.getElementById('finder-query').value = query;
+        document.querySelector('[data-action="finder-search"]').click();
+      }, target.query);
+      await wait(`!!document.querySelector('[data-action="source-toggle"][data-exam="${target.examIndex}"]')`, `${target.grade} current-parent finder result`);
+      const selected = await evaluate(index => {
+        const control = document.querySelector(`[data-action="source-toggle"][data-exam="${index}"]`);
+        control.closest('details').open = true;
+        control.click();
+        return document.querySelector(`[data-action="source-toggle"][data-exam="${index}"]`)?.getAttribute('aria-pressed');
+      }, target.examIndex);
+      assert.equal(selected, 'true', `${target.grade} matching source can be selected`);
+      report.finderCurrentParents.push({ ...target, status: 'PASS' });
+    }
+    for (const grade of ['중1', '중2', '중3']) if (!searchTargets.some(row => row.grade === grade))
+      report.dataGaps.push({ grade, status: 'NO_CURRENT_PARENT_FINDER_RECORDS' });
+    await snapshot('finder-current-parent-search');
+    await navigate('/archive/workspace.html?view=compose', 'window.ARCHIVE2_FINAL_CATALOG?.records?.length && document.querySelector("[data-action=compose-grade]")');
     report.runtimeCatalogM1 = await evaluate(() => {
       const C = window.Archive2Core, U = window.UnitPastExamsCore, T = window.ArchiveRpmMiddleToc;
       const parents = T.parents('중1').filter(row => row.L1 === '기본 도형' && ['기본 도형', '작도와 합동'].includes(row.L2));
@@ -250,7 +288,7 @@ module.exports = async function checkArchiveRpmMiddleBrowser({ send, run, wait, 
         await snapshot('m1-chapters-restored');
       } else report.urlRoundTrip = { status: 'NOT_RUN_NO_CURRENT_PARENT_RECORDS' };
     }
-    for (const [grade, unitLabels] of [['m2', ['일차함수']], ['m3', ['실수와 그 연산', '원의 성질']]]) {
+    for (const [grade, unitLabels] of [['m2', ['일차함수', '삼각형의 성질', '사각형의 성질']], ['m3', ['실수와 그 연산', '다항식의 곱셈과 인수분해', '원의 성질']]]) {
       for (const label of unitLabels) {
         const view = await openGrade(grade);
         const unit = view.expected.find(row => row.label === label);

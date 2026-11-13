@@ -578,7 +578,7 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-core.js', '20261111-one-lane-difficulty-1'],
     ['meta-foundation-runtime.js', '20261110-first-paint-1'],
     ['archive2-history.js', '20261110-teacher-copy-1'],
-    ['archive2-workspace.js', '20261113-rpm-middle-parents-1'],
+    ['archive2-workspace.js', '20261113-rpm-l3-parent-routing-1'],
     ['archive2-similar.js', '20261110-similar-1'],
     ['archive2-unified-units.js', '20261113-rpm-middle-parents-1'],
   ])
