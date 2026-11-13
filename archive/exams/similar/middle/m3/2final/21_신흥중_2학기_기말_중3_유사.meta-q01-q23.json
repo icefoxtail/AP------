@@ -1,0 +1,1089 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "21_신흥중_2학기_기말_중3_유사-candidate-v1",
+  "examUid": "21_신흥중_2학기_기말_중3_유사",
+  "sourceArchiveFile": "archive/exams/similar/middle/m3/2final/21_신흥중_2학기_기말_중3_유사.js",
+  "expectedSourceBlobSha1": "cc2e6f50f849f80d67ba651e1fc0a08709405f3e",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "sourceQid": "1",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "conceptClusterKey": "원주각과 중심각 호 차감 계산",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "why": "원주각과 중심각의 호 차감 관계로부터 원주각을 산출한다."
+        },
+        "crossConceptKeys": [
+          "CC_CIRCLE_PROPERTIES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "primaryMethod": "원주각 45도로 호 90도를 얻고 중심각 50도를 빼서 호 AB=40도를 구한 뒤 절반인 20도를 계산한다.",
+        "decisiveStep": "호의 차 $90 - 50 = 40^\\circ$의 절반을 취한다.",
+        "rpm": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각과 중심각",
+          "l4": "중심각과 원주각"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "sourceQid": "2",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "conceptClusterKey": "사인비와 외접원 반지름의 기하적 연계",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "why": "현의 수직이등분선과 중심각-원주각 관계로 외접원 반지름을 도출한다."
+        },
+        "crossConceptKeys": [
+          "CC_CIRCLE_PROPERTIES",
+          "CC_TRIG_RATIO_DEFINITION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "primaryMethod": "현의 중점 수선 $BM=3$과 직각삼각형에서 $\\sin A = 3/R = 3/5$를 세워 반지름 $R=5$를 계산한다.",
+        "decisiveStep": "직각삼각형 $OBM$에서 $\\sin A = BM/R$ 식을 세운다.",
+        "rpm": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "sourceQid": "3",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "conceptClusterKey": "원 둘레 비율 호의 내부 교각 계산",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "why": "원 둘레 비율로부터 유도된 두 호의 내부 교각을 구한다."
+        },
+        "crossConceptKeys": [
+          "CC_CIRCLE_PROPERTIES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "primaryMethod": "원 둘레 중심각 배분으로 $72^\\circ, 90^\\circ$를 구하고 내부 교각 공식 $(72+90)/2=81^\\circ$를 적용한다.",
+        "decisiveStep": "내부 교각 공식에 두 중심각 $72^\\circ, 90^\\circ$를 대입한다.",
+        "rpm": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "sourceQid": "4",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "conceptClusterKey": "교차현 교각과 호 길이 합을 통한 반지름 역산",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "why": "교차현 각과 호의 합으로부터 원의 전체 둘레와 반지름을 구한다."
+        },
+        "crossConceptKeys": [
+          "CC_CIRCLE_PROPERTIES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "primaryMethod": "교각 60도의 2배인 120도 중심각에 두 호의 합 10파이를 연계하여 $2\\pi r / 3 = 10\\pi$에서 $r=15$를 계산한다.",
+        "decisiveStep": "비례식 $10\\pi = 2\\pi r / 3$으로부터 $r=15$를 도출한다.",
+        "rpm": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "sourceQid": "5",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "conceptClusterKey": "내접오각형 원주각과 보완호 차감을 통한 중심각",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "why": "다각형의 두 원주각과 원 전체 360도를 연계해 특정 호의 중심각을 구한다."
+        },
+        "crossConceptKeys": [
+          "CC_CIRCLE_PROPERTIES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "primaryMethod": "원주각들로 호 $170^\\circ$와 보완호 $90^\\circ$를 구해 차감함으로써 중심각 $80^\\circ$를 계산한다.",
+        "decisiveStep": "호의 차감 $\\wideparen{BC} = 170^\\circ - 90^\\circ = 80^\\circ$를 도출한다.",
+        "rpm": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "sourceQid": "6",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "conceptClusterKey": "직각 원주각 자취와 정사각 네 변 반원 둘레 합",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "why": "직각 원주각 조건으로부터 원호 자취를 형성하고 둘레를 적산한다."
+        },
+        "crossConceptKeys": [
+          "CC_CIRCLE_PROPERTIES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "primaryMethod": "직각을 바라보는 점의 자취가 지름인 반원임을 파악하고 4개 반원의 둘레 합 $4 \\times \\pi b/2 = 2\\pi b$를 계산한다.",
+        "decisiveStep": "각 변을 지름으로 하는 반원의 호 길이 합 $2\\pi b$를 구한다.",
+        "rpm": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심에서 현에 내린 수선"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "sourceQid": "7",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "conceptClusterKey": "내접사각형 두 외부 교각과 원주각 연립",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "why": "두 외부 할선 교각 공식과 원 둘레 360도를 연립하여 원주각을 역산한다."
+        },
+        "crossConceptKeys": [
+          "CC_CIRCLE_PROPERTIES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 3,
+        "primaryMethod": "두 외부 교각의 차 공식 합산 $156^\\circ$와 원주 $360^\\circ$의 연립으로 호 $ADC=102^\\circ$를 풀고 절반인 $51^\\circ$를 계산한다.",
+        "decisiveStep": "두 식의 차로부터 호 $\\wideparen{ADC} = 102^\\circ$를 구하고 절반을 취한다.",
+        "rpm": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "sourceQid": "8",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "conceptClusterKey": "이등변삼각형 내각과 접선-현 각 정리를 통한 외각 삼각형 풀이",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+          "why": "이등변삼각형 내각 합과 접선-현 각 정리를 연계하여 삼각형의 미지각을 구한다."
+        },
+        "crossConceptKeys": [
+          "CC_CIRCLE_TANGENT_PROPERTY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "primaryMethod": "이등변삼각형으로 $\\angle TAB=120^\\circ$를 구하고 접현각으로 $\\angle PTB=120^\\circ$를 대입해 $\\angle PBT=25^\\circ$를 계산한다.",
+        "decisiveStep": "접선과 현이 이루는 각 $\\angle PTB = \\angle TAB = 120^\\circ$를 적용한다.",
+        "rpm": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선과 현이 이루는 각"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "sourceQid": "9",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "conceptClusterKey": "두 접현각 합의 삼각형 내각 전환 및 우호 원주각",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+          "why": "접선-현 각 정리를 삼각형 내각 합과 우호 중심각-원주각 관계에 연립한다."
+        },
+        "crossConceptKeys": [
+          "CC_CIRCLE_TANGENT_PROPERTY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "primaryMethod": "접현각 합을 삼각형 내각 합 $180-\\angle C$로 치환하고, 중심각 $120^\\circ$의 우호 원주각 $\\angle C=120^\\circ$로 $60^\\circ$를 계산한다.",
+        "decisiveStep": "두 접현각 합이 $180^\\circ - \\angle ACB$임을 유도한다.",
+        "rpm": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선과 현이 이루는 각"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "sourceQid": "10",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "conceptClusterKey": "지름 직각과 평행선 동측내각 및 접현각",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+          "why": "지름 원주각 직각, 평행선 각 성질, 접선-현 각 정리를 종합한다."
+        },
+        "crossConceptKeys": [
+          "CC_CIRCLE_TANGENT_PROPERTY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 2,
+        "primaryMethod": "지름 직각으로 $\\angle ABT=115^\\circ$를 얻고 평행선 동측내각과 접현각으로 $\\angle EBD=115^\\circ$를 도출한다.",
+        "decisiveStep": "평행선 동측내각 $\\angle BAD = 65^\\circ$와 접현각 $\\angle DBT = 65^\\circ$를 연결한다.",
+        "rpm": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선과 현이 이루는 각"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "sourceQid": "11",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "극단값 존재 시 중앙값의 대표성 우위",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+          "templateKey": null,
+          "why": "극단값이 대푯값(평균 대 중앙값)에 미치는 영향을 판별한다."
+        },
+        "crossConceptKeys": [
+          "CC_STATISTICS_CONCEPTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "primaryMethod": "극단값 35가 포함되어 평균(7)이 왜곡되는 ④에서 중앙값(3.5)이 중심 경향을 더 잘 나타냄을 판정한다.",
+        "decisiveStep": "극단값 35의 존재로 인한 평균 왜곡을 식별한다.",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "평균·중앙값·최빈값"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "sourceQid": "12",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "두 자료 세트 중앙값 위치 조건의 부등식 연립",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "templateKey": null,
+          "why": "자료 정렬 위치에 따른 중앙값 부등식 조건을 연립한다."
+        },
+        "crossConceptKeys": [
+          "CC_STATISTICS_CONCEPTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 2,
+        "primaryMethod": "첫 자료에서 $12 \\le a \\le 16$, 둘째 자료에서 $a \\le 13$을 연립하여 $a=12, 13$의 합 25를 계산한다.",
+        "decisiveStep": "두 중앙값 부등식의 교집합 $12 \\le a \\le 13$을 구한다.",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "중앙값"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "sourceQid": "13",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "평균 오차와 총합 오차 변환 역산",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "templateKey": null,
+          "why": "평균 오차량과 표본 크기의 곱으로 총합 차이를 역산한다."
+        },
+        "crossConceptKeys": [
+          "CC_MEAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "primaryMethod": "평균 오차 2kg에 학생 수 10을 곱한 총합 오차 20kg을 실제 58kg에서 차감해 38kg을 계산한다.",
+        "decisiveStep": "총합의 차이 $10 \\times 2 = 20\\rm\\,kg$를 실제 몸무게에서 뺀다.",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "평균"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "sourceQid": "14",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "산포도와 편차 정의 및 특성 판별",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+          "templateKey": null,
+          "why": "편차와 분산, 표준편차의 개념적 정의를 판별한다."
+        },
+        "crossConceptKeys": [
+          "CC_SUM_OF_DEVIATIONS_ZERO",
+          "CC_VARIANCE",
+          "CC_STANDARD_DEVIATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "primaryMethod": "편차합 0(ㄱ 참), 분산 정의(ㄴ 참), 산포도 크기와 밀집도 반비례(ㄷ 거짓)를 종합해 ㄱ, ㄴ을 판정한다.",
+        "decisiveStep": "표준편차가 클수록 흩어짐을 의미함을 식별한다.",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "분산"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "sourceQid": "15",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "편차합 0 방정식과 원점수 복원",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "templateKey": null,
+          "why": "편차의 합 0 성질과 편차의 정의로부터 변량을 산출한다."
+        },
+        "crossConceptKeys": [
+          "CC_SUM_OF_DEVIATIONS_ZERO",
+          "CC_DEVIATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "primaryMethod": "편차합 방정식으로 $x=1$을 구하고 편차 $2$점을 평균 $80$점에 더해 $82$점을 계산한다.",
+        "decisiveStep": "편차 식 $x+1=2$를 구하고 평균 80점에 더한다.",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "편차"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "sourceQid": "16",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "편차 제곱 평균 분산 계산",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "templateKey": null,
+          "why": "편차로부터 분산을 직접 정의에 의해 계산한다."
+        },
+        "crossConceptKeys": [
+          "CC_VARIANCE",
+          "CC_DEVIATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중하",
+        "difficultyBucket": 2,
+        "primaryMethod": "편차 제곱합 226을 구하고 자료의 수 5로 나누어 분산 45.2를 계산한다.",
+        "decisiveStep": "각 편차를 제곱해 합한 뒤 5로 나눈다.",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "분산"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "sourceQid": "17",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "평균 분산 조건 변량 제곱합 연립방정식",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "templateKey": null,
+          "why": "평균과 표준편차 조건을 이용해 대칭 미지수 연립방정식을 푼다."
+        },
+        "crossConceptKeys": [
+          "CC_VARIANCE",
+          "CC_MEAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "primaryMethod": "평균으로 $x+y=8$을 얻고 분산 조건으로 $(x-4)^2+(y-4)^2=18$을 풀어 $x^2+y^2=50$을 계산한다.",
+        "decisiveStep": "$y-4=-(x-4)$ 관계를 대입해 $(x-4)^2=9$를 구한다.",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "분산"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "sourceQid": "18",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+        "conceptClusterKey": "음의 상관관계 산점도 판별",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_SCATTER_CORRELATION_TYPE",
+          "templateKey": null,
+          "why": "두 변량 간의 상관관계 종류를 판별하고 산점도 경향을 확인한다."
+        },
+        "crossConceptKeys": [
+          "CC_SCATTER_PLOT",
+          "CC_CORRELATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "primaryMethod": "주행 거리 증가 시 연료량 감소 관계로부터 오른쪽 아래 방향의 음의 상관관계 산점도를 선택한다.",
+        "decisiveStep": "음의 상관관계는 오른쪽 아래로 향하는 띠 모양임을 적용한다.",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "상관관계",
+          "l3": "산점도와 상관관계",
+          "l4": "상관관계"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "sourceQid": "19",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+        "conceptClusterKey": "산점도 기준선 영역 내 도수 및 비율 산출",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_SCATTER_REGION_COUNT",
+          "templateKey": null,
+          "why": "산점도에서 직선 기준선 경계 영역 내 점의 도수와 비율을 구한다."
+        },
+        "crossConceptKeys": [
+          "CC_SCATTER_PLOT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "primaryMethod": "15개 좌표 중 x>y인 5개를 세어 5/15=1/3로 계산한다.",
+        "decisiveStep": "x>y인 점 5개를 전체 15명으로 나눈다.",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "상관관계",
+          "l3": "산점도와 상관관계",
+          "l4": "산점도"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "sourceQid": "20",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+        "conceptClusterKey": "산점도 조건부 영역 도수 비율 산출",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_SCATTER_REGION_COUNT",
+          "templateKey": null,
+          "why": "제한된 부분 집단 내에서 조건을 만족하는 자료의 비율을 산출한다."
+        },
+        "crossConceptKeys": [
+          "CC_SCATTER_PLOT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "primaryMethod": "수학 점수 80 이상 8명 중 영어 85 이상 6명을 세어 6/8=3/4로 계산한다.",
+        "decisiveStep": "조건을 만족하는 8명 중 추가 조건을 만족하는 6명을 나눈다.",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "상관관계",
+          "l3": "산점도와 상관관계",
+          "l4": "산점도"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "sourceQid": "21",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "conceptClusterKey": "정오각형 내접원 호 원주각 대각선 교각 계산",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": null,
+          "why": "정다각형의 호의 균등 분할과 원주각 성질을 이용해 교각을 구한다."
+        },
+        "crossConceptKeys": [
+          "CC_CIRCLE_PROPERTIES",
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "primaryMethod": "정오각형의 72도 호와 원주각을 이용해 PDE=72도, DPE=72도를 구하고 BPE=108도를 계산한다.",
+        "decisiveStep": "B,P,D가 일직선이므로 BPE=180도-DPE=108도.",
+        "rpm": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 성질",
+          "l4": "원주각의 활용"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "sourceQid": "22",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "conceptClusterKey": "지름 원주각 접현각 닮음 피타고라스 정리",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_TANGENT_CHORD_ANGLE",
+          "templateKey": null,
+          "why": "접현각과 지름 원주각으로부터 직각삼각형 닮음을 증명하고 선분 길이를 계산한다."
+        },
+        "crossConceptKeys": [
+          "CC_SIMILARITY",
+          "CC_PYTHAGOREAN_THEOREM",
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "primaryMethod": "지름 원주각과 접선과 현의 각으로 AA 닮음을 밝히고 비례식과 피타고라스 정리로 CH=4cm를 계산한다.",
+        "decisiveStep": "닮음비 $AC^2 = AB \\times AH = 80$을 구하고 피타고라스 정리 $CH^2 = 80 - 64 = 16$을 적용한다.",
+        "rpm": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "접선과 현이 이루는 각"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "sourceQid": "23",
+      "before": null,
+      "after": {
+        "standardCourse": "중3",
+        "curriculum": "2015",
+        "courseKey": "M3",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "conceptClusterKey": "변량 일차변환 평균 분산 성질",
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "templateKey": null,
+          "why": "변량의 일차식 변환에 따른 평균과 분산의 변화 규칙을 서술한다."
+        },
+        "crossConceptKeys": [
+          "CC_VARIANCE",
+          "CC_MEAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "primaryMethod": "새 평균 $3 \\times 12 + 2 = 38$과 새 분산 $3^2 \\times 3 = 27$을 단계적으로 계산한다.",
+        "decisiveStep": "변량의 선형변환 공식 $E(aX+b)=aE(X)+b$, $V(aX+b)=a^2V(X)$를 적용한다.",
+        "rpm": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "분산"
+        },
+        "rpmSemanticStatus": "EVIDENCE_DEBT"
+      },
+      "reason": "Source JSON classification preserved as a candidate only; canonical resolver and independent semantic review not performed.",
+      "evidenceRefs": [
+        {
+          "kind": "drive_doc",
+          "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+          "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "sourceEvidence": {
+    "kind": "drive_doc",
+    "id": "1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI",
+    "revisionId": "AHj4eMTuhaVXHG4vxS87dM1DHVMVqb5BgI2yunOkTuCen8P4PXEGWC8_oXXn_uasbA9qKCvEWM6MnDCJOxp0s3dD2wFn5LeQ_I1rfSPQkqU",
+    "documentUrl": "https://docs.google.com/document/d/1iJOdSv5W4f3INgoj_8y_Kg7Gg9EbHSGXCP10tnxh8JI"
+  },
+  "authoringRecord": {
+    "author": "PT",
+    "date": "2026-11-13",
+    "sourceOnly": false,
+    "reviewStatus": "UNREVIEWED",
+    "checks": {
+      "nodeCheck": "PASS",
+      "questionBankParse": "PASS",
+      "uniqueSequentialNumericIds": "PASS",
+      "scoreSum100": "PASS",
+      "tableCheck": "PASS (2 tables; 0 FAIL)",
+      "sourceParagraphAssembly": "PASS (non-JSON section paragraphs retained through next label/metadata/Q boundary)",
+      "fourSlotQuoteSubstringCheck": "PASS (23/23 entries)",
+      "questionUidBinding": "NOT_RUN; no issued source UID, no fabricated UID",
+      "visualSvg": "NOT_RUN; deferred",
+      "goldenNegativeSamplePreflight": "NOT_RUN in required order; late correction review captured separately"
+    },
+    "finalSourceBlobSha1": "cc2e6f50f849f80d67ba651e1fc0a08709405f3e"
+  }
+}
