@@ -3,8 +3,8 @@
   "requestId": "similar-19-dongsan-m2-2final-candidate-v1",
   "examUid": "19_동산중_2학기_기말_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/2final/19_동산중_2학기_기말_중2_유사.js",
-  "expectedSourceBlobSha1": "1a6ab4f00d553b9b7bffc90ad1b4fc5c963d49dc",
-  "expectedSourceSha256": "f9cd0d14109193636e17e6cf98b2848985ac867cd88da5f4545ccf4d7850a819",
+  "expectedSourceBlobSha1": "c37984e5294b4cf748367bc24b93a62271977037",
+  "expectedSourceSha256": "325bc2c5e3e284f499f5fcc2ff81237b43272defd5eba9a68c4814825f139773",
   "expectedQuestionCount": 25,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -1770,11 +1770,18 @@
       "before": "Randomness assumptions were implicit.",
       "after": "States fairness and independence where needed.",
       "reason": "Makes equiprobable sample spaces explicit."
+    },
+    {
+      "qid": 6,
+      "field": "solution",
+      "before": "Said the side-ratio equality does not hold, without qualifying the special isosceles-right-triangle case.",
+      "after": "Says the equality is not generally true, explicitly notes both ratios are 1:1 for an isosceles right triangle, and concludes it is not true for every right triangle.",
+      "reason": "Corrects an absolute claim that was false in a special case; preserves stem, options, answer ② and numerical data."
     }
   ],
   "reviewEvidence": {
     "independentMathReview": "NOT_RUN",
-    "localSelfCheck": "PASS_WITH_RECORDED_Q2_Q6_Q7_Q10_Q11_Q13_Q15_Q17_Q19_Q20_Q21_Q22_Q25_CHANGES",
+    "localSelfCheck": "PASS_WITH_RECORDED_Q2_Q4_Q6_Q7_Q10_Q11_Q13_Q17_Q19_Q20_Q22_Q25_CHANGES",
     "reviewScope": "The migration author checked all 25 answer keys and solution steps against the source revision; separate independent review NOT_RUN.",
     "reviewer": "Codex stage-local migration author; no independent reviewer."
   }

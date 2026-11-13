@@ -219,7 +219,7 @@ window.questionBank = [
       "$\\overline{AB} : \\overline{CA} = \\overline{BH} : \\overline{AH}$"
     ],
     "answer": "②",
-    "solution": "직각삼각형 빗변의 수선 닮음 관계를 점검한다.\n1. $\\triangle ABC \\sim \\triangle HBA \\sim \\triangle HAC$ (AA 닮음)이므로 ①, ③, ⑤는 옳고, 넓이 공식에 의해 ④도 옳다.\n2. $\\overline{AB}^2 = \\overline{BH} \\times \\overline{BC}, \\overline{AC}^2 = \\overline{HC} \\times \\overline{BC}$이므로 $\\overline{AB}^2 : \\overline{AC}^2 = \\overline{BH} : \\overline{HC}$이지 $\\overline{AB} : \\overline{AC} = \\overline{BH} : \\overline{HC}$는 성립하지 않는다.\n정답은 ②이다.",
+    "solution": "직각삼각형 빗변의 수선 닮음 관계를 점검한다.\n1. $\\triangle ABC \\sim \\triangle HBA \\sim \\triangle HAC$ (AA 닮음)이므로 ①, ③, ⑤는 옳고, 넓이 공식에 의해 ④도 옳다.\n2. $\\overline{AB}^2 = \\overline{BH} \\times \\overline{BC}, \\overline{AC}^2 = \\overline{HC} \\times \\overline{BC}$이므로 $\\overline{AB}^2 : \\overline{AC}^2 = \\overline{BH} : \\overline{HC}$이다. 그러나 $\\overline{AB} : \\overline{AC} = \\overline{BH} : \\overline{HC}$는 일반적으로 성립하지 않는다. 다만 $\\overline{AB}=\\overline{AC}$인 이등변 직각삼각형에서는 두 비가 모두 $1:1$로 성립한다. 따라서 이 비례식은 모든 직각삼각형에서 항상 성립하는 것은 아니다.\n정답은 ②이다.",
     "points": 4.0,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -908,3 +908,4 @@ window.questionBank = [
     "courseKey": "M2"
   }
 ];
+
