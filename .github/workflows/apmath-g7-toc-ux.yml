@@ -228,7 +228,7 @@ jobs:
             release: { id: release.id, url: release.html_url, eventHeadSha: release.head_sha, conclusion: release.conclusion },
             expectedScenarios: process.env.G7_TOC_SCENARIOS.split(','),
             reusedPlaybackEvidence: process.env.G7_REFERENCE_EVIDENCE,
-            sourceMeaning: 'Browser test source is checked-out main. Release event SHA is metadata, not a deployed-source assertion. The published-byte comparison covers exactly the six listed changed runtime files.'
+            sourceMeaning: 'Browser test source is checked-out main. Release event SHA is metadata, not a deployed-source assertion. The published-byte comparison covers exactly the seven listed changed runtime files.'
           };
           fs.writeFileSync(path.join(sourceDir, 'context.json'), JSON.stringify(source, null, 2) + '\n');
           fs.writeFileSync(path.join(sourceDir, 'git-objects.txt'), execFileSync('git', [
@@ -239,7 +239,7 @@ jobs:
           const files = [
             'kit/apl-g7-learning.css', 'kit/apl-g7-learning.js',
             'kit/apl-g7-short-coordinates.js', 'kit/apl-player.js',
-            'kit/apl-toc.js', 'labs/middle-functions/g7.js'
+            'kit/apl-toc.js', 'labs/middle-functions/g7.js', 'labs/middle-functions/core.js'
           ];
           const nextBase = new URL('../', process.env.G7_BASE_URL);
           const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
@@ -324,7 +324,7 @@ jobs:
           assert.equal(source.sourceSha, execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim());
           assert.equal(bytes.sourceSha, source.sourceSha);
           assert.equal(bytes.status, 'PUBLISHED_BYTES_MATCHED');
-          assert.equal(bytes.files.length, 6);
+          assert.equal(bytes.files.length, 7);
           assert.ok(bytes.files.every(file => file.match));
           assert.equal(browser.commit, source.sourceSha);
           assert.equal(browser.status, 'UX_TECHNICAL_CHECKS_PASSED');
@@ -333,7 +333,7 @@ jobs:
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, [
             `Published student URL: ${source.baseURL}`,
             `Checked-out source: ${source.sourceSha}`,
-            `Six changed runtime files: exact published SHA256 and bytes matched`,
+            `Seven changed runtime files: exact published SHA256 and bytes matched`,
             `Measured student scenarios: ${browser.scenarios.map(row => row.name).join(', ')}`,
             `Current contents inventory: ${JSON.stringify(browser.conversion)}`,
             `Release event: ${source.release.url} (event SHA ${source.release.eventHeadSha}; not assumed to be deployed source)`,

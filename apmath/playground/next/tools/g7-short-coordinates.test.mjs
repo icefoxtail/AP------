@@ -56,9 +56,13 @@ test('all fifteen scenes have explicit distinct motion contracts, no legacy time
 const boardContext=vm.createContext({window:{APLab:{clamp:(v,lo,hi)=>Math.max(lo,Math.min(hi,v))}}});
 vm.runInContext(fs.readFileSync(new URL('../kit/apl-board.js',import.meta.url),'utf8'),boardContext);
 const nativeScenes=M.compile('g7-coordinate-graphs').groups.flatMap(g=>g.scenes);
-function coordinateBoard(width=390,height=510){
+function coordinateBoard(width=390,height=510,{viewportWidth=width,insets={}}={}){
  const b=Object.create(boardContext.window.APLab.Board.prototype),labels=[],gridLines=[];
  let from=null,inGrid=false;
+ // Native shell margins depend on the viewport, not the narrower canvas.
+ // Without chips: wide tools are 42px tall, narrow tools 46px, plus 14px.
+ // Glyph widths below are a deterministic proxy; CI measures real font glyphs.
+ const nativeInsets={top:0,right:viewportWidth>=860?16:0,bottom:viewportWidth>=860?56:60,left:0,...insets};
  const c=new Proxy({font:'11.5px sans-serif',textAlign:'center',textBaseline:'top',
   measureText:t=>({width:String(t).length*6.5}),getTransform:()=>({a:1,b:0,c:0,d:1,e:0,f:0}),
   fillText(text,x,y){labels.push({text:String(text),x,y,align:this.textAlign,baseline:this.textBaseline,width:this.measureText(text).width,fontSize:+(this.font.match(/([\d.]+)px/)?.[1]||11.5)})},
@@ -66,16 +70,16 @@ function coordinateBoard(width=390,height=510){
  },{get:(target,key)=>key in target?target[key]:(()=>{})});
  Object.assign(b,{W:width,H:height,ctx:c,canvas:{width,height,getBoundingClientRect:()=>({left:0,top:0,width,height})},
   kind:'cartesian',aspect:'1:1',focus:{x:[-6,6],y:[-6,6]},pad:.09,zoom:1,panX:0,panY:0,
-  insets:{top:0,right:0,bottom:60,left:0},panes:null,paneId:null,fs:1,lw:1,font:'sans-serif',
+  insets:nativeInsets,panes:null,paneId:null,fs:1,lw:1,font:'sans-serif',
   colors:{grid:'grid',gridMajor:'major',axis:'axis',tick:'tick'}});
  const grid=b.grid;b.grid=function(options){inGrid=true;try{return grid.call(this,options)}finally{inGrid=false}};
  for(const name of ['seg','point','handle','text','path','vline','plot'])b[name]=()=>b;
  return{b,labels,gridLines};
 }
-function drawCoordinates(id,mode,width=390,height=510,values={}){
+function drawCoordinates(id,mode,width=390,height=510,values={},options={}){
  const spec=def.scenes.find(s=>s.id===id),v={...M.defaults(spec),...values};
  const state=Object.fromEntries(Object.entries(v).map(([k,x])=>[M.prefix(spec,k),x]));
- const result=coordinateBoard(width,height);result.b.aspect=spec.aspect||'1:1';
+ const result=coordinateBoard(width,height,options);result.b.aspect=spec.aspect||'1:1';
  if(mode==='native')nativeScenes.find(s=>s.id===id).draw(result.b,state,{},null);
  // The papers-and-pins construction becomes a coordinate plot at 5.8 s.
  // Inspect its first coordinate frame; other proofs start on their axes at 0 s.
@@ -83,7 +87,9 @@ function drawCoordinates(id,mode,width=390,height=510,values={}){
  return{...result,state,spec,v};
 }
 const axisValues=(labels,align)=>labels.filter(l=>l.align===align&&/^−?\d+(?:\.\d+)?$/.test(l.text)).map(l=>Number(l.text.replace('−','-')));
-const coordinateBoardSizes=[[390,363],[320,363],[320,300],[1024,399],[820,460],[1120,468]];
+// Also cover the narrower native canvas at each desktop viewport. The last
+// case stresses a 64px occupied chip area; it is not a claimed CI measurement.
+const coordinateBoardSizes=[[390,363],[320,363],[320,300],[1024,399],[820,460],[1120,468],[683,399,1024],[1039,468,1440],[683,399,1024,64]];
 test('integer-coordinate lessons render consecutive unit ticks and matching unit grid in native and short views',()=>{
  for(const id of ['coord-order','read-coordinates','quadrants-boundary','point-move','axis-pair','axis-distance','coordinate-area','quantity-table']){
   for(const mode of ['native','short']){
@@ -111,8 +117,8 @@ test('the initial P(3,2) and P(4,3) can be read without zoom on narrow boards',(
 });
 test('integer-coordinate tick labels do not overlap on phone and short wide canvases',()=>{
  for(const id of ['coord-order','read-coordinates','quadrants-boundary','point-move','axis-pair','axis-distance','coordinate-area','quantity-table']){
-  for(const mode of ['native','short'])for(const [width,height]of coordinateBoardSizes){
-   const {labels}=drawCoordinates(id,mode,width,height);
+  for(const mode of ['native','short'])for(const [width,height,viewportWidth,top=0]of coordinateBoardSizes){
+   const {labels}=drawCoordinates(id,mode,width,height,{},{viewportWidth,insets:{top}});
    for(const align of ['center','right']){
     const ticks=labels.filter(l=>l.align===align&&/^−?\d+$/.test(l.text));
     const bounds=ticks.map(l=>align==='center'?{lo:l.x-l.width/2,hi:l.x+l.width/2,text:l.text}:{lo:l.y-l.fontSize*.6,hi:l.y+l.fontSize*.6,text:l.text}).sort((a,z)=>a.lo-z.lo);
@@ -122,16 +128,16 @@ test('integer-coordinate tick labels do not overlap on phone and short wide canv
   }
  }
 });
-test('compact coordinate proofs keep positive and negative initial points visible without changing native focus',()=>{
- for(const id of ['coord-order','read-coordinates'])for(const [width,height]of coordinateBoardSizes){
+test('coordinate fits keep positive and negative initial points visible and preserve the authored proof ranges',()=>{
+ for(const id of ['coord-order','read-coordinates'])for(const [width,height,viewportWidth,top=0]of coordinateBoardSizes){
   for(const values of [{},{x:-3,y:2},{x:0,y:-4}]){
    for(const mode of ['native','short']){
-    const {b,labels,spec,v}=drawCoordinates(id,mode,width,height,values),q=spec.model(v).P,pixel=b.toS(q);
+    const {b,labels,spec,v}=drawCoordinates(id,mode,width,height,values,{viewportWidth,insets:{top}}),q=spec.model(v).P,pixel=b.toS(q);
     assert.equal(b.zoom,1);
     assert.ok(q.x===0||axisValues(labels,'center').includes(q.x));
     assert.ok(q.y===0||axisValues(labels,'right').includes(q.y));
     assert.ok(pixel.x>10&&pixel.x<width-10&&pixel.y>10&&pixel.y<height-10,`${id}/${mode}: the chosen point remains in the initial view`);
-    if(mode==='native')assert.equal(JSON.stringify(b.focus),JSON.stringify({x:[-6,6],y:[-6,6]}));
+    if(mode==='native')assert.equal(JSON.stringify(b.focus),JSON.stringify({x:[-5,5],y:[-5,5]}));
    }
   }
  }
@@ -147,11 +153,22 @@ test('compact coordinate proofs keep positive and negative initial points visibl
   assert.deepEqual(b.insets,{top:74,right:36,bottom:100,left:40},`${id}: retain the existing graph layout`);
  }
 });
-test('coordinate exploration retains zoom and pan, while physical graphs retain their own axis scales',()=>{
- const {b,state}=drawCoordinates('read-coordinates','native'),before=JSON.stringify(state);
- b.zoom=1.7;b.panX=17;b.panY=-11;
- nativeScenes.find(s=>s.id==='read-coordinates').draw(b,state,{},null);
- assert.deepEqual([b.zoom,b.panX,b.panY],[1.7,17,-11]);assert.equal(JSON.stringify(state),before);
+test('native coordinate fits preserve model points, zoom and pan while physical graphs retain their own axis scales',()=>{
+ for(const id of ['coord-order','read-coordinates','quadrants-boundary','axis-distance','axis-pair']){
+  const spec=def.scenes.find(s=>s.id===id),scene=nativeScenes.find(s=>s.id===id);
+  for(const values of sample(spec)){
+   const {b,state,v}=drawCoordinates(id,'native',683,399,values,{viewportWidth:1024,insets:{top:64}}),model=spec.model(v),before=JSON.stringify(state);
+   const points=[{x:0,y:0},...(id==='axis-pair'?(v.mode?[model.Q]:[model.A,model.B]):[model.P])];
+   assert.equal(JSON.stringify(scene.focus(state)),JSON.stringify(b.focus),'entry and native drawing use the same fit');
+   for(const point of points){
+    assert.ok(point.x>=b.focus.x[0]&&point.x<=b.focus.x[1]&&point.y>=b.focus.y[0]&&point.y<=b.focus.y[1],`${id}: preserve the origin and every drawn model point`);
+    const pixel=b.toS(point);assert.ok(pixel.x>0&&pixel.x<b.W&&pixel.y>0&&pixel.y<b.H);
+   }
+   b.zoom=1.7;b.panX=17;b.panY=-11;
+   scene.draw(b,state,{},null);
+   assert.deepEqual([b.zoom,b.panX,b.panY],[1.7,17,-11]);assert.equal(JSON.stringify(state),before);
+  }
+ }
  for(const mode of ['native','short']){
   const temperature=drawCoordinates('read-time',mode),change=drawCoordinates('baseline-change',mode,390,880);
   assert.ok(axisValues(temperature.labels,'center').some(x=>x>1)&&!axisValues(temperature.labels,'center').includes(1),'time axis keeps its wider interval');

@@ -651,6 +651,8 @@ try {
 
   await run('coordinate-reading', async () => {
     const checks = [];
+    report.coordinateChecks = checks;
+    save();
     const targets = [
       { scene: 'coord-order', points: { P: { x: 3, y: 2 } } },
       { scene: 'read-coordinates', points: { P: { x: 4, y: 3 } } },
@@ -732,61 +734,78 @@ try {
               const numbers = rows => rows.map(label => Number(label.text.replace('−', '-'))).sort((a, b) => a - b);
               const originGlyphs = labels.filter(label => label.text === 'O' && label.align === 'right' && label.baseline === 'top');
               return { points, zoom: board.zoom, width: board.W, height: board.H, boardKind: board.kind,
+                focus: board.focus, insets: board.insets, pad: board.pad, font: board.font, fontScale: board.fs,
                 elapsed: lab.learning.elapsed, learningMode: lab.learning.mode,
                 rangeStepSeconds: (lab.learning.active?.duration || 0) / 1000,
                 xTicks: numbers(tickGlyphs.x), yTicks: numbers(tickGlyphs.y), tickGlyphs, originGlyphs };
             }, Object.keys(expectedPoints));
             const threshold = mode === 'proof' ? firstCoordinateAt : 0;
             const phase = threshold ? 'first-coordinate-frame' : 'initial';
-            assert.equal(actual.learningMode, mode === 'proof' ? 'paused' : 'explore', `${scene}/${mode}: static inspection remains student-controlled`);
-            assert.equal(actual.boardKind, 'cartesian', `${scene}/${mode}: the measured frame actually shows the coordinate plane`);
-            if (mode === 'proof') {
-              assert.ok(actual.elapsed >= threshold && actual.elapsed <= threshold + actual.rangeStepSeconds + 1e-9,
-                `${scene}/${mode}: render the first available coordinate frame at or above ${threshold}s, got ${actual.elapsed}s`);
-            } else assert.equal(actual.elapsed, proofPosition, `${scene}: exploration preserves the saved proof position`);
-            assert.equal(actual.zoom, 1, `${scene}/${mode}: no zoom is required`);
-            for (const ticks of [actual.xTicks, actual.yTicks]) {
-              assert.ok(ticks.length >= 5 && ticks.every(Number.isInteger), `${scene}/${mode}: integer coordinate labels are visible`);
-              for (let i = 1; i < ticks.length; i++) {
-                assert.equal(ticks[i] - ticks[i - 1], ticks[i - 1] === -1 && ticks[i] === 1 ? 2 : 1, `${scene}/${mode}: consecutive unit ticks (origin is O)`);
-              }
-            }
-            const tickSpacing = {};
-            for (const [axis, glyphs] of Object.entries(actual.tickGlyphs)) {
-              for (const glyph of glyphs) {
-                assert.ok(glyph.bounds && Object.values(glyph.bounds).every(Number.isFinite) &&
-                  glyph.bounds.right > glyph.bounds.left && glyph.bounds.bottom > glyph.bounds.top,
-                `${scene}/${mode}/${viewport.width}: actual glyph metrics are available for ${axis} tick ${glyph.text}`);
-              }
-              const start = axis === 'x' ? 'left' : 'top', end = axis === 'x' ? 'right' : 'bottom';
-              const orderedGlyphs = [...glyphs].sort((a, b) => a.bounds[start] - b.bounds[start]);
-              tickSpacing[axis] = orderedGlyphs.slice(1).map((glyph, i) => ({
-                from: orderedGlyphs[i].text, to: glyph.text,
-                gapCssPixels: glyph.bounds[start] - orderedGlyphs[i].bounds[end]
-              }));
-              for (const pair of tickSpacing[axis]) assert.ok(pair.gapCssPixels >= 0,
-                `${scene}/${mode}/${viewport.width}: actual ${axis} tick glyphs overlap (${pair.from}, ${pair.to}), gap ${pair.gapCssPixels.toFixed(3)} CSS px`);
-            }
-            for (const [name, expected] of Object.entries(expectedPoints)) {
-              const point = actual.points[name];
-              assert.deepEqual(point.model, expected, `${scene}/${mode}: the existing default model point ${name} is preserved`);
-              for (const axis of ['x', 'y']) {
-                const ticks = actual[`${axis}Ticks`];
-                assert.ok(ticks.includes(expected[axis]) || (expected[axis] === 0 && actual.originGlyphs.length > 0),
-                  `${scene}/${mode}: ${name}'s ${axis}=${expected[axis]} is labelled on the axis (O represents zero)`);
-              }
-              assert.ok(point.pixel.x > 0 && point.pixel.x < actual.width && point.pixel.y > 0 && point.pixel.y < actual.height,
-                `${scene}/${mode}: ${name} is inside the actual drawing area`);
-            }
-            const figure = await drawing(page);
+            report.coordinateCurrent = { viewport, scene, mode, phase, threshold, ...actual };
             await page.locator('.apl-canvas-wrap').scrollIntoViewIfNeeded();
             await screenshot(page, `coordinates-${scene}-${viewport.width}-${mode}.png`);
-            checks.push({ viewport, scene, mode, phase, coordinateThresholdSeconds: threshold, ...actual, tickSpacing, figure });
+            save();
+            const tickSpacing = {};
+            let figure, failure = null;
+            try {
+              assert.equal(actual.learningMode, mode === 'proof' ? 'paused' : 'explore', `${scene}/${mode}: static inspection remains student-controlled`);
+              assert.equal(actual.boardKind, 'cartesian', `${scene}/${mode}: the measured frame actually shows the coordinate plane`);
+              if (mode === 'proof') {
+                assert.ok(actual.elapsed >= threshold && actual.elapsed <= threshold + actual.rangeStepSeconds + 1e-9,
+                  `${scene}/${mode}: render the first available coordinate frame at or above ${threshold}s, got ${actual.elapsed}s`);
+              } else assert.equal(actual.elapsed, proofPosition, `${scene}: exploration preserves the saved proof position`);
+              assert.equal(actual.zoom, 1, `${scene}/${mode}: no zoom is required`);
+              for (const ticks of [actual.xTicks, actual.yTicks]) {
+                assert.ok(ticks.length >= 5 && ticks.every(Number.isInteger), `${scene}/${mode}: integer coordinate labels are visible`);
+                for (let i = 1; i < ticks.length; i++) {
+                  assert.equal(ticks[i] - ticks[i - 1], ticks[i - 1] === -1 && ticks[i] === 1 ? 2 : 1, `${scene}/${mode}: consecutive unit ticks (origin is O)`);
+                }
+              }
+              for (const [axis, glyphs] of Object.entries(actual.tickGlyphs)) {
+                for (const glyph of glyphs) {
+                  assert.ok(glyph.bounds && Object.values(glyph.bounds).every(Number.isFinite) &&
+                    glyph.bounds.right > glyph.bounds.left && glyph.bounds.bottom > glyph.bounds.top,
+                  `${scene}/${mode}/${viewport.width}: actual glyph metrics are available for ${axis} tick ${glyph.text}`);
+                }
+                const start = axis === 'x' ? 'left' : 'top', end = axis === 'x' ? 'right' : 'bottom';
+                const orderedGlyphs = [...glyphs].sort((a, b) => a.bounds[start] - b.bounds[start]);
+                tickSpacing[axis] = orderedGlyphs.slice(1).map((glyph, i) => ({
+                  from: orderedGlyphs[i].text, to: glyph.text,
+                  gapCssPixels: glyph.bounds[start] - orderedGlyphs[i].bounds[end]
+                }));
+                for (const pair of tickSpacing[axis]) assert.ok(pair.gapCssPixels >= 0,
+                  `${scene}/${mode}/${viewport.width}: actual ${axis} tick glyphs overlap (${pair.from}, ${pair.to}), gap ${pair.gapCssPixels.toFixed(3)} CSS px`);
+              }
+              for (const [name, expected] of Object.entries(expectedPoints)) {
+                const point = actual.points[name];
+                assert.deepEqual(point.model, expected, `${scene}/${mode}: the existing default model point ${name} is preserved`);
+                for (const axis of ['x', 'y']) {
+                  const ticks = actual[`${axis}Ticks`];
+                  assert.ok(ticks.includes(expected[axis]) || (expected[axis] === 0 && actual.originGlyphs.length > 0),
+                    `${scene}/${mode}: ${name}'s ${axis}=${expected[axis]} is labelled on the axis (O represents zero)`);
+                }
+                assert.ok(point.pixel.x > 0 && point.pixel.x < actual.width && point.pixel.y > 0 && point.pixel.y < actual.height,
+                  `${scene}/${mode}: ${name} is inside the actual drawing area`);
+              }
+              figure = await drawing(page);
+            } catch (error) {
+              // Collect a measured case's assertion failure, not a failed
+              // navigation, renderer or browser operation. The latter aborts.
+              if (!(error instanceof assert.AssertionError)) throw error;
+              failure = { message: error.message, operator: error.operator, actual: error.actual, expected: error.expected };
+            }
+            checks.push({ viewport, scene, mode, phase, status: failure ? 'FAIL' : 'PASS', failure,
+              coordinateThresholdSeconds: threshold, ...actual, tickSpacing, figure });
+            if (!failure) report.coordinateCurrent = null;
+            save();
           }
         }
       } finally { await context.close(); }
     }
     assert.equal(checks.length, targets.length * coordinateViewports.length * 2, 'all selected coordinate scenes, viewports and modes are observed');
+    const failures = checks.filter(check => check.status === 'FAIL');
+    assert.equal(failures.length, 0, `${failures.length}/${checks.length} coordinate states failed; full case evidence is in coordinateChecks`);
+    delete report.coordinateChecks;
     return { checks, staticStates: checks.length, normalPlayback: 'NOT_REPLAYED' };
   });
 

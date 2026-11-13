@@ -222,7 +222,7 @@
   }
   const coord=[];
   coord.push(make({
-    id:'coord-order',tier:'concept',title:'순서쌍과 두 좌표축',types:['A01'],grid:{step:1},axes:{tickStep:1},shortFocus:{x:[-5,5],y:[-5,5]},
+    id:'coord-order',tier:'concept',title:'순서쌍과 두 좌표축',types:['A01'],grid:{step:1},axes:{tickStep:1},nativeFocus:{x:[-5,5],y:[-5,5]},shortFocus:{x:[-5,5],y:[-5,5]},
     vars:{x:V('점의 가로 좌표',3,-5,5),y:V('점의 세로 좌표',2,-5,5)},
     model:v=>({P:P(v.x,v.y)}),question:()=> '점 P를 움직여 보세요. 순서쌍의 첫째 수와 둘째 수는 무엇을 나타낼까요?',
     guide:'노란 점 P를 움직여 두 좌표와 축까지의 보조선을 비교하세요.',
@@ -232,7 +232,7 @@
     verify:(v,m)=>[!close(m.P.x,v.x)&&'가로 좌표 불일치',!close(m.P.y,v.y)&&'세로 좌표 불일치'].filter(Boolean)
   }));
   coord.push(make({
-    id:'quadrants-boundary',tier:'concept',title:'사분면과 축 위의 점',types:['A04'],grid:{step:1},axes:{tickStep:1},shortFocus:{x:[-5,5],y:[-5,5]},
+    id:'quadrants-boundary',tier:'concept',title:'사분면과 축 위의 점',types:['A04'],grid:{step:1},axes:{tickStep:1},nativeFocus:{x:[-5,5],y:[-5,5]},shortFocus:{x:[-5,5],y:[-5,5]},
     vars:{x:V('점의 가로 좌표',-3,-5,5),y:V('점의 세로 좌표',2,-5,5)},
     presets:[{label:'축 위로',values:{x:0,y:3}},{label:'원점으로',values:{x:0,y:0}},{label:'다른 위치',values:{x:4,y:-2}}],
     model:v=>({P:P(v.x,v.y),q:quadrant(P(v.x,v.y))}),
@@ -285,7 +285,7 @@
     verify:(v,m)=>[m.h<-.0001||m.h>4.0001?'물높이 범위 오류':false,!close(m.height(m.total),4)&&'완료높이 불일치'].filter(Boolean)
   }));
   coord.push(make({
-    id:'read-coordinates',tier:'basic',title:'점의 좌표를 읽기',types:['A01'],grid:{step:1},axes:{tickStep:1},shortFocus:{x:[-5,5],y:[-5,5]},
+    id:'read-coordinates',tier:'basic',title:'점의 좌표를 읽기',types:['A01'],grid:{step:1},axes:{tickStep:1},nativeFocus:{x:[-5,5],y:[-5,5]},shortFocus:{x:[-5,5],y:[-5,5]},
     vars:{x:V('점의 가로 위치',4,-5,5,1,true),y:V('점의 세로 위치',3,-5,5,1,true)},presets:[{label:'다른 위치',values:{x:-3,y:2}},{label:'축 위의 점',values:{x:0,y:-4}}],
     model:v=>({P:P(v.x,v.y)}),question:()=> '그림의 점 P의 좌표를 순서쌍으로 나타내세요.',guide:'점을 움직여 새 문제를 만들고 가로·세로 순서대로 좌표를 읽으세요.',
     steps:(v,m)=>['P에서 두 축에 보조선을 내려요.',T`가로축에서 $${F(v.x)}$를 읽어요.`,T`세로축에서 $${F(v.y)}$를 읽어요.`,T`따라서 $P${xy(m.P)}$예요.`],answer:(v,m)=>T`$P${xy(m.P)}$`,
@@ -295,13 +295,14 @@
     id:'axis-pair',tier:'basic',title:'축 위의 점과 같은 순서쌍',types:['A02','A03'],state:{mode:0},grid:{step:1},axes:{tickStep:1},
     vars:{a:V('조건 바꾸기',3,1,5,1,true),b:V('둘째 조건 바꾸기',2,1,5,1,true)},presets:[{label:'좌표축 조건',values:{mode:0,a:3,b:2}},{label:'같은 순서쌍',values:{mode:1,a:2,b:1}},{label:'새로운 조건',values:{a:4,b:3}}],
     model:v=>({A:P(2*v.a,0),B:P(0,-2*v.b),Q:P(3*v.a,2*v.b+2)}),focus:(v,m)=>M.box(v.mode?[m.Q]:[m.A,m.B],{minSpan:12,pad:2}),
+    nativeFocus:(v,m)=>M.box(v.mode?[m.Q]:[m.A,m.B],{minSpan:10,pad:2}),
     question:v=>v.mode?T`$(3a,2b+2)=(${F(4*v.a)}-a,-2b+${F(4*v.b+2)})$일 때 $a,b$를 구하세요.`:T`$A(2a,a-${F(v.a)})$는 x축, $B(b-${F(v.b)},-2b)$는 y축 위에 있습니다. $a,b$를 구하세요.`,
     guide:'조건 프리셋을 바꾸어 축의 0인 좌표와 순서쌍의 같은 성분을 비교하세요.',
     steps:v=>v.mode?['같은 순서쌍은 같은 위치의 수가 같아요.',T`첫째 성분에서 $3a=${F(4*v.a)}-a$예요.`,T`둘째 성분에서 $2b+2=-2b+${F(4*v.b+2)}$예요.`,T`$a=${F(v.a)},\ b=${F(v.b)}$예요.`]:['x축 위의 점은 세로 좌표가 0이에요.',T`$a-${F(v.a)}=0$을 세워요.`,T`y축 위에서는 $b-${F(v.b)}=0$이에요.`,T`$a=${F(v.a)},\ b=${F(v.b)}$예요.`],
     answer:v=>T`$a=${F(v.a)},\ b=${F(v.b)}$`,draw:(b,v,m,c)=>{if(v.mode){M.point(b,m.Q,'두 순서쌍');if(c.step)M.projection(b,m.Q);}else{b.seg(O,m.A,{color:'sky',width:3});b.seg(O,m.B,rose);M.point(b,m.A,'A');M.point(b,m.B,'B',{color:'rose'});if(c.step>=1){M.label(b,P(m.A.x,0),'y=0',{dy:23});M.label(b,P(0,m.B.y),'x=0',{dx:32,dy:14});}}}
   }));
   coord.push(make({
-    id:'axis-distance',tier:'basic',title:'점과 좌표축 사이의 거리',types:['A06'],grid:{step:1},axes:{tickStep:1},shortFocus:{x:[-5,5],y:[-5,5]},vars:{x:V('점의 가로 좌표',5,-5,5),y:V('점의 세로 좌표',4,-5,5)},model:v=>({P:P(v.x,v.y),dx:Math.abs(v.x),dy:Math.abs(v.y)}),
+    id:'axis-distance',tier:'basic',title:'점과 좌표축 사이의 거리',types:['A06'],grid:{step:1},axes:{tickStep:1},nativeFocus:{x:[-5,5],y:[-5,5]},shortFocus:{x:[-5,5],y:[-5,5]},vars:{x:V('점의 가로 좌표',5,-5,5),y:V('점의 세로 좌표',4,-5,5)},model:v=>({P:P(v.x,v.y),dx:Math.abs(v.x),dy:Math.abs(v.y)}),
     question:(v,m)=>T`$P${xy(m.P)}$에서 x축까지, y축까지의 거리를 각각 구하세요.`,guide:'점을 다른 사분면으로 옮겨도 거리가 음수가 되지 않는 이유를 보세요.',
     steps:(v,m)=>['축과 수직인 가장 짧은 선분을 그어요.',T`x축까지의 거리는 $|${F(v.y)}|=${F(m.dy)}$예요.`,T`y축까지의 거리는 $|${F(v.x)}|=${F(m.dx)}$예요.`,'거리는 0 이상이므로 좌표의 절댓값을 써요.'],answer:(v,m)=>T`x축까지 $${F(m.dy)}$, y축까지 $${F(m.dx)}$`,
     draw:(b,v,m,c)=>{b.seg(m.P,P(v.x,0),{color:'amber',width:3});b.seg(m.P,P(0,v.y),{color:'rose',width:3});M.drag(b,c,'P',m.P,{x:'x',y:'y',label:'P'});if(c.solved){M.label(b,P(v.x,v.y/2),N(m.dy),{dx:15,color:'amber'});M.label(b,P(v.x/2,v.y),N(m.dx),{dy:-15,color:'rose'});}},
