@@ -145,6 +145,7 @@ window.questionBank = [
     "answer": "②",
     "points": 3,
     "solution": "모든 다각형의 외각의 크기의 합은 항상 $360^\\circ$이다.\n주어진 네 외각의 크기의 합을 구하면\n$$\\begin{aligned}\n65^\\circ + 75^\\circ + 80^\\circ + 60^\\circ &= 280^\\circ\n\\end{aligned}$$\n따라서 나머지 한 외각 $\\angle x$의 크기는\n$$\\begin{aligned}\n\\angle x &= 360^\\circ - 280^\\circ \\\\\n&= 80^\\circ\n\\end{aligned}$$\n따라서 정답은 ②이다.",
+    "image": "assets/images/24_연향중_2학기_기말_중1_유사/q03.svg",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
