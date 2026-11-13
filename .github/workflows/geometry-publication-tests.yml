@@ -113,6 +113,10 @@ jobs:
           archive/tools/geometry-equation/tests/problem-figure-path.test.mjs
           archive/tools/geometry-equation/tests/render-plan.test.mjs
           archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs
+      - name: Verify Archive2 runtime contract and the bounded tablet placement
+        run: |
+          node --test tests/archive2-exam-tablet-fit.test.cjs
+          node tools/check-archive2-runtime.cjs
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
