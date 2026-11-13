@@ -533,6 +533,9 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
   const problemScopes=[];
   if(capture.problemMeasurement===true){const visit=scope=>{problemScopes.push(scope);for(const panel of scope.nestedPanels||[])visit(panel.capture);};visit(capture);}
   const measuredLabels=problemScopes.length?problemScopes.flatMap(scope=>scope.labels):capture.labels;
+  // Problem figures retain the 11 CSS px floor at every real viewport,
+  // including captionless composites whose outer SVG has no publication marker.
+  if(capture.problemMeasurement===true)for(const label of measuredLabels)if(!Number.isFinite(label.effectiveFontPx)||label.effectiveFontPx<11-1e-7)errors.push('PUBLICATION_FONT_BELOW_11_CSS_PX:'+label.id);
   const publication=['geometry-publication-v1','fragment-publication-spike-v1'].includes(capture.publicationProfile);
   if(!publication&&capture.problemMeasurement===true&&((!measuredLabels.length&&!textFreeFigure)||problemScopes.some(scope=>scope.fontStatus!=='loaded')))errors.push('PUBLICATION_TEXT_NOT_READY');
   if(publication) {
@@ -541,7 +544,7 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
     const labels=capture.problemMeasurement===true?measuredLabels:measuredLabels.filter(v=>kinds.has(v.kind));
     if((!labels.length&&!textFreeFigure)||capture.fontStatus!=='loaded'||problemScopes.some(scope=>scope.fontStatus!=='loaded'))errors.push('PUBLICATION_TEXT_NOT_READY');
     for(const label of measuredLabels) {
-      if(desktopPublication&&(!Number.isFinite(label.effectiveFontPx)||label.effectiveFontPx<11-1e-7))errors.push('PUBLICATION_FONT_BELOW_11_CSS_PX:'+label.id);
+      if(desktopPublication&&capture.problemMeasurement!==true&&(!Number.isFinite(label.effectiveFontPx)||label.effectiveFontPx<11-1e-7))errors.push('PUBLICATION_FONT_BELOW_11_CSS_PX:'+label.id);
       if(![label.client.x,label.client.y,label.client.width,label.client.height].every(Number.isFinite)||label.client.width<=0||label.client.height<=0)errors.push('PUBLICATION_TEXT_BOUNDS_INVALID:'+label.id);
     }
     if(labels.some(v=>!Number.isFinite(v.baseFontPx)||Math.abs(v.baseFontPx-labels[0].baseFontPx)>1e-7))errors.push('PUBLICATION_BASE_FONT_INCONSISTENT');

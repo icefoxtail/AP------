@@ -90,3 +90,15 @@ test('problem text readiness counts actual nested glyphs with zero outer caption
  const loading=structuredClone(capture);loading.nestedPanels[0].capture.fontStatus='loading';assert.ok(analyzeRenderedLayout(loading).errors.includes('PUBLICATION_TEXT_NOT_READY'));
  const omitted=structuredClone(capture);omitted.nestedPanels[0].capture.labels=[];assert.ok(analyzeRenderedLayout(omitted).errors.includes('PUBLICATION_TEXT_NOT_READY'));
 });
+
+test('problem 11 CSS px floor rejects standalone, outer-caption and captionless nested 8px glyphs at desktop, phone and tablet widths',()=>{
+ for(const publicationViewport of [{width:1440,height:1000},{width:390,height:844},{width:768,height:1024}]){
+  const leaf={runtime:'playwright-chromium',synthetic:false,problemMeasurement:true,publicationViewport,publicationProfile:'fragment-publication-spike-v1',fontStatus:'loaded',svg:{x:0,y:0,width:300,height:240},viewBox:{width:300,height:240},safeMargin:12,labels:[{id:'A',kind:'COORDINATE_LABEL',priority:0,baseFontPx:20,effectiveFontPx:8,client:{x:60,y:60,width:10,height:10},bbox:{width:10,height:10},missingGlyphCount:0}],geometry:[]};
+  for(const publicationProfile of ['fragment-publication-spike-v1',null]){
+   const single={...leaf,publicationProfile},nested={...leaf,publicationProfile,labels:[],nestedPanels:[{sourceImageId:'p1-panel',capture:single}]},caption={...single,labels:[{...single.labels[0],id:'caption',kind:'CAPTION'}]};
+   for(const capture of [single,nested,caption]){const result=analyzeRenderedLayout(capture);assert.equal(result.status,'FAIL');assert.ok(result.errors.some(e=>e.includes('PUBLICATION_FONT_BELOW_11_CSS_PX')),JSON.stringify({publicationViewport,publicationProfile,result}));assert.ok(result.labelMeasurements.every(label=>label.finalViewportCssFontPx===8));}
+  }
+  const clear=structuredClone(leaf);clear.labels[0].effectiveFontPx=11;assert.equal(analyzeRenderedLayout(clear).status,'PASS');
+  if(publicationViewport.width<1280){const legacy={...leaf};delete legacy.problemMeasurement;assert.equal(analyzeRenderedLayout(legacy).status,'PASS','The established default/solution mobile font condition stays unchanged');}
+ }
+});

@@ -59,10 +59,17 @@ test('production nested solid glyphs and TEXT caption have exact inventories, ac
     const hiddenCapture=await captureAtDisplaySize(page,hidden.svg,nativeSize,{surface:'PROBLEM_VISUAL'}),hiddenResult=analyzeRenderedLayout(hiddenCapture);
     assert.equal(hiddenResult.status,'PASS',JSON.stringify(hiddenResult.errors));assert.equal(hiddenResult.labelMeasurements.length,count);assert.deepEqual(verifyMeasuredLabelInventory(hidden.svg,hiddenResult),{labelCount:count,panelCount:1});
     fs.writeFileSync(path.join(out,`solid-${count}-caption-omitted.svg`),hidden.svg);fs.writeFileSync(path.join(out,`solid-${count}-caption-omitted.json`),JSON.stringify({fixtureClassification:'CONTROLLED_TECHNICAL_FIXTURE',svgSha256:hash(hidden.svg),capture:hiddenCapture,result:hiddenResult},null,2)+'\n');
-    const smaller=analyzeRenderedLayout(await captureAtDisplaySize(page,composed.svg,{width:dimensions.width*.4,height:dimensions.height*.4},{surface:'PROBLEM_VISUAL'}));
-    assert.equal(smaller.labelMeasurements.length,count+1);assert.equal(smaller.status,'FAIL');assert.ok(smaller.errors.some(e=>e.includes('PUBLICATION_FONT_BELOW_11_CSS_PX')));
+    for(const viewport of [{name:'desktop',width:1440,height:1000},{name:'mobile',width:390,height:844},{name:'tablet',width:768,height:1024}]){
+     await page.setViewportSize({width:viewport.width,height:viewport.height});
+     for(const fixture of [{name:'caption',svg:composed.svg,size:dimensions,labels:count+1},{name:'caption-omitted',svg:hidden.svg,size:nativeSize,labels:count}]){
+      const smallerCapture=await captureAtDisplaySize(page,fixture.svg,{width:fixture.size.width*.4,height:fixture.size.height*.4},{surface:'PROBLEM_VISUAL',publicationViewport:{width:viewport.width,height:viewport.height}}),smaller=analyzeRenderedLayout(smallerCapture);
+      fs.writeFileSync(path.join(out,`solid-${count}-${fixture.name}-${viewport.name}-font-floor-negative.json`),JSON.stringify({fixtureClassification:'CONTROLLED_TECHNICAL_FIXTURE_EXPECTED_FAILURE',viewport,capture:smallerCapture,result:smaller},null,2)+'\n');
+      assert.equal(smaller.labelMeasurements.length,fixture.labels);assert.equal(smaller.status,'FAIL');assert.ok(smaller.errors.some(e=>e.includes('PUBLICATION_FONT_BELOW_11_CSS_PX')));assert.ok(smaller.labelMeasurements.every(label=>Math.abs(label.finalViewportCssFontPx-8)<1e-4));
+     }
+    }
     const missing=composed.svg.replace(/ data-font-px="[^"]*"/g,'');
     const missingCapture=await captureAtDisplaySize(page,missing,dimensions,{surface:'PROBLEM_VISUAL'}),missingResult=analyzeRenderedLayout(missingCapture);
+    fs.writeFileSync(path.join(out,`solid-${count}-missing-font-metadata-negative.json`),JSON.stringify({fixtureClassification:'CONTROLLED_TECHNICAL_FIXTURE_EXPECTED_FAILURE',sourceSvgSha256:hash(missing),capture:missingCapture,result:missingResult},null,2)+'\n');
     assert.equal(missingResult.status,'FAIL');assert.throws(()=>verifyMeasuredLabelInventory(missing,missingResult),/FONT_METADATA_REQUIRED/);
    }finally{await page.close();}
   }
