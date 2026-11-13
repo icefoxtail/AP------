@@ -2044,7 +2044,11 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (current.problemTypeKey || current.templateKey) fail(`typeHold only for unregistered PT/TPL: ${current.questionUid}`);
       for (const k of ["problemTypeKey", "templateKey", "L3", "L4", "rpmL3", "rpmL4"]) if (Object.hasOwn(patch.after, k)) fail(`typeHold must not set ${k}: ${current.questionUid}`);
       const held = resolveUnitOnly(final, tables);
-      const labels = { L1: held.unit.labelKo, L2: held.sub?.labelKo || "" };
+      // With a basicScopeParentRef (same evidence the full path accepts) L1/L2 are the verified basic-scope parent labels the Consumer exposes.
+      const labels = patch.basicScopeParentRef
+        ? (({ L1, L2 }) => ({ L1, L2 }))(labelsFor(root, patch, final, { course: held.course, curriculum: held.curriculum, binding: {}, unit: held.unit, sub: held.sub,
+            pt: { canonicalLabelKo: "" }, tpl: { canonicalLabelKo: "" }, pack: null }, read, blob))
+        : { L1: held.unit.labelKo, L2: held.sub?.labelKo || "" };
       for (const [field, label] of Object.entries(labels)) {
         if (Object.hasOwn(patch.after, field) && patch.after[field] !== label) fail(`canonical label mismatch: ${current.questionUid}.${field}`);
         if (approved(current) && current[field] !== label && !Object.hasOwn(patch.before, field)) fail(`before required for derived label: ${current.questionUid}.${field}`);
@@ -2393,6 +2397,7 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
       // Archive2 omits unknown fields instead of publishing a false NONE. Verify an omitted IntegrationPattern against its exact active runtime value.
       if (f === "integrationPattern" && !Object.hasOwn(c, f)) {
         const runtime = runtimeByUid.get(r.questionUid);
+        if (!runtime && isTypeHoldRecord(r)) continue;   // type-hold rows have no runtime row by design
         if (!runtime) fail("Consumer runtime UID missing: " + r.questionUid);
         if (!eq(runtime[f], r[f])) fail("Consumer runtime metadata mismatch: " + r.questionUid + "." + f);
         continue;

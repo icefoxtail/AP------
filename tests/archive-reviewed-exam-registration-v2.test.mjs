@@ -2572,3 +2572,26 @@ test("typeHold accepts a source that carries empty PT/TPL placeholders; a resolv
   rewriteSource(h, q => { q.problemTypeKey = "PT_NEW"; });
   assert.throws(() => registerReviewedExamV2({ root: h.root, request: h.request }), /metadata parity: uid1.problemTypeKey/);
 });
+
+test("typeHold labels follow a verified basicScopeParentRef; an inconsistent proof is refused", t => {
+  const f = typeHoldFixture(t);
+  const rel = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.parent-labels.json";
+  const proof = { schemaVersion: "archive-meta-pipeline-parent-label-evidence-v1", sourcePath: "archive/data/basic-scope-parent-links.json", sourceSha256: "a".repeat(64),
+    records: [{ curriculumKey: "2022", courseKey: "중1수학", standardUnitKey: "UNIT_NEW", subUnitKey: "SUB_NEW", L1: "부모 대단원", L2: "부모 중단원" }], derivedRecords: [] };
+  f.put(rel, proof);
+  const ref = { path: rel, sha256: hash(fs.readFileSync(path.join(f.root, rel))) };
+  const item = f.request.items[0];
+  item.basicScopeParentRef = ref; item.evidenceRefs = [...item.evidenceRefs, ref];
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.deepEqual([row.L1, row.L2], ["부모 대단원", "부모 중단원"]);
+  const bad = typeHoldFixture(t);
+  bad.put(rel, { ...proof, records: [{ ...proof.records[0], standardUnitKey: "OTHER" }] });
+  const badRef = { path: rel, sha256: hash(fs.readFileSync(path.join(bad.root, rel))) };
+  bad.request.items[0].basicScopeParentRef = badRef; bad.request.items[0].evidenceRefs = [...bad.request.items[0].evidenceRefs, badRef];
+  assert.throws(() => registerReviewedExamV2({ root: bad.root, request: bad.request }), /basic scope parent evidence missing\/ambiguous/);
+  const unbound = typeHoldFixture(t);
+  unbound.put(rel, proof);
+  unbound.request.items[0].basicScopeParentRef = { path: rel, sha256: hash(fs.readFileSync(path.join(unbound.root, rel))) };
+  assert.throws(() => registerReviewedExamV2({ root: unbound.root, request: unbound.request }), /not evidence-bound/);
+});
