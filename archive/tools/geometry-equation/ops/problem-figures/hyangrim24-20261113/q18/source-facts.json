@@ -77,5 +77,44 @@
       "requiredRadiusIncludingExisting6pxClearance": 45.89951877743382
     },
     "actualCandidateRender": "NOT_RUN; requires next approved remote production render and source visual review"
+  },
+  "displayReadabilityAdjustment": {
+    "reason": "Run11 actual desktop/mobile/tablet context PNGs retain all seven correct readable Korean names, but their unweighted Noto outline strokes are visually too thin beside surrounding source text.",
+    "supportedOption": "Existing E32 planeMarks.textLabels labelKind TEXT labelWeight MATH; adds a black outline stroke of 0.06 times the actual font size. No new engine behavior or global typography change.",
+    "appliedTo": [
+      "name1",
+      "name2",
+      "name3",
+      "name4",
+      "name5",
+      "name6",
+      "name7"
+    ],
+    "preserved": [
+      "all seven PDF-confirmed names and clockwise order",
+      "all seven at coordinates and CENTER anchors",
+      "mathPlan, eight circles, source points, display selections and canvas720x600",
+      "no participant lines, center-point marks or answer information"
+    ],
+    "run11ObservedBaseline": {
+      "source": "Actual Run11 q18 candidate.svg and three raw Archive rows; existing unweighted candidate only",
+      "baseFontPx": 29.7,
+      "measuredRootScale": {
+        "desktop": 0.4,
+        "mobile": 0.4,
+        "tablet": 0.378828125
+      }
+    },
+    "structuralPredictionOnly": {
+      "classification": "CURRENT_OUTLINE_AND_MEASURED_BASELINE_CTM_PREDICTION_NOT_NEW_BROWSER_EVIDENCE",
+      "addedStrokeSvgPx": 1.782,
+      "addedStrokeCssPxAtBaselineCTM": {
+        "desktop": 0.7128,
+        "mobile": 0.7128,
+        "tablet": 0.67507171875
+      },
+      "preflightRef": ".tmp/problem-svg/engine-q18-weight-preflight.json"
+    },
+    "actualWeightedCandidateRender": "NOT_RUN; requires fresh approved remote production composition, all three Archive viewports, observer stroke binding and independent source/UI visual review"
   }
 }

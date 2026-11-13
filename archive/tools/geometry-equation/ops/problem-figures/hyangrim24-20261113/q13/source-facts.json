@@ -42,5 +42,53 @@
     ".tmp/problem-svg/source/q13-pdf-400dpi-detail.png (원본 PDF page 2 crop: B 북서쪽 경계는 무라벨/무점, E 남서쪽은 분리된 세 점)",
     "archive/assets/images/24_향림중_2학기_중간_중1_기출/q13.png (기존 표시 대조용; 일부 영역 마스킹)"
   ],
-  "continuationDotPlacement": "세 점은 E에서 D→E와 같은 남서쪽 방향으로 source-length 1/4 간격을 둔 formal hidden anchor에 각각 배치한다. anchor는 좌표 계산만 하고 화면에는 점을 찍지 않으며, 세 개의 텍스트 점만 표시한다."
+  "continuationDotPlacement": "세 점은 기존 E에서 남서쪽 source-length 1/4 간격의 ellipsis1/2/3 좌표에 놓는다. 좌표·displayPoints·hiddenPointNames는 그대로 두고 기존 hiddenPointNames 기본 DOT 옵션으로 세 개의 이름 없는 검은 POINT 마커를 표시한다. ABarmTip만 unmarkedPointNames에 남겨 B로 들어오는 북서쪽 짧은 변의 끝에 점이나 이름을 추가하지 않는다. TEXT 중점 문자 세 개를 대체하며 점 사이의 선/점선은 추가하지 않는다.",
+  "continuationDotReadabilityAdjustment": {
+    "reason": "Run11 actual original middle-dot text outlines occupy approximately 0.91–0.98 by 1.00–1.07 CSS px despite passing the measured font-size floor; original PDF continuation marks are three visible separate black dots.",
+    "supportedOption": "Existing hiddenPointNames default DOT with unmarkedPointNames [ABarmTip]; no engine extension, no new line or geometry.",
+    "removedTextLabels": [
+      "ellipsisDot1",
+      "ellipsisDot2",
+      "ellipsisDot3"
+    ],
+    "enabledExistingPointMarkers": [
+      "ellipsis1",
+      "ellipsis2",
+      "ellipsis3"
+    ],
+    "preserved": [
+      "every mathPlan node and coordinate",
+      "all display segments, circles, point selections and canvas640x480",
+      "all B–J names",
+      "cropped AB arm remains unnamed and has no endpoint dot",
+      "three separate continuation centers; no connecting line"
+    ],
+    "baselineMeasuredRootScale": {
+      "desktop": 0.4939778645833333,
+      "mobile": 0.5,
+      "tablet": 0.46780598958333336
+    },
+    "structuralPredictionOnly": {
+      "classification": "EXISTING_POINT_TOKEN_TIMES_MEASURED_BASELINE_CTM_NOT_NEW_BROWSER_EVIDENCE",
+      "radiusSvgPx": 3.2,
+      "strokeSvgPx": 0.8,
+      "radiusCssPx": {
+        "desktop": 1.5807291666666667,
+        "mobile": 1.6,
+        "tablet": 1.4969791666666667
+      },
+      "filledDiameterCssPx": {
+        "desktop": 3.1614583333333335,
+        "mobile": 3.2,
+        "tablet": 2.9939583333333335
+      },
+      "strokeOuterDiameterCssPx": {
+        "desktop": 3.556640625,
+        "mobile": 3.6,
+        "tablet": 3.368203125
+      },
+      "preflightRef": ".tmp/problem-svg/engine-q13-dot-preflight.json"
+    },
+    "actualCorrectedCandidateRender": "NOT_RUN; requires fresh approved remote production render, primitive observer and all three Archive viewports plus independent source/UI review"
+  }
 }

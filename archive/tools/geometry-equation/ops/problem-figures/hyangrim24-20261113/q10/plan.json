@@ -281,6 +281,15 @@
         "sourceConditionId": "c1"
       },
       {
+        "id": "abPerpBc",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "lAB",
+          "lBC"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
         "id": "adParallelBc",
         "kind": "PARALLEL",
         "refs": [
@@ -378,7 +387,7 @@
   "sourceConditions": [
     {
       "id": "c1",
-      "condition": "사다리꼴 ABCD, AD=3 cm, AC, E는 AC 위의 수선의 발이며 DE⊥AC, DE=2 cm",
+      "condition": "사다리꼴 ABCD, AD=3 cm, AC, E는 AC 위의 수선의 발이며 DE⊥AC, DE=2 cm, B에서 AB⊥BC",
       "mappedTo": [
         "A",
         "B",
@@ -397,6 +406,15 @@
       "refs": [
         "D",
         "E",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
         "C"
       ],
       "factRole": "GIVEN"
