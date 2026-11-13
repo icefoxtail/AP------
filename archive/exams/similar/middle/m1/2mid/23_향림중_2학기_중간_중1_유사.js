@@ -395,7 +395,7 @@ window.questionBank = [
       "객관식",
       "삼각형의 작도"
     ],
-    "content": "선분 $AB$의 길이가 주어져 있다. 다음 조건 조합 중 삼각형 $ABC$가 항상 하나로 결정된다고 보장할 수 없는 것은? [4점]",
+    "content": "선분 $AB$의 길이가 주어져 있다. 삼각형 $ABC$가 존재한다고 할 때, 다음 조건 조합 중 삼각형이 항상 하나로 결정된다고 보장할 수 없는 것은? [4점]",
     "choices": [
       "$\\overline{AC}$, $\\angle A$",
       "$\\overline{BC}$, $\\overline{CA}$",
@@ -405,7 +405,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "points": 4,
-    "solution": "①은 두 변 $AB,AC$와 그 끼인각 $A$가 주어져 SAS로 정해진다. ②는 세 변이 주어져 SSS로 정해진다(삼각형이 존재하는 경우). ③은 두 각과 한 변이 주어져 나머지 각도 정해지므로 삼각형이 정해진다. ④는 두 각과 그 사이 변 $AB$가 주어져 ASA로 정해진다. ⑤는 변 $AB,BC$와 끼인각이 아닌 $C$가 주어진 경우로, SSA 형태이다. 주어진 값에 따라 반직선과 원의 교점이 두 개일 수도 있어 항상 하나로 결정된다고 보장할 수 없다. SSA가 언제나 두 삼각형을 만든다는 뜻은 아니다. 정답은 ⑤이다.",
+    "solution": "삼각형이 존재하는 경우를 전제로 한다. ①은 두 변 $AB,AC$와 그 끼인각 $A$가 주어져 SAS로 정해진다. ②는 세 변이 주어져 SSS로 정해진다. ③은 두 각과 한 변이 주어져 나머지 각도 정해지므로 삼각형이 정해진다. ④는 두 각과 그 사이 변 $AB$가 주어져 ASA로 정해진다. ⑤는 변 $AB,BC$와 끼인각이 아닌 $C$가 주어진 SSA 형태이다. 주어진 값에 따라 반직선과 원의 교점이 두 개일 수도 있으므로 항상 하나로 결정된다고 보장할 수 없다. SSA가 언제나 두 삼각형을 만든다는 뜻은 아니다. 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
@@ -507,7 +507,7 @@ window.questionBank = [
       "객관식",
       "삼각형의 합동"
     ],
-    "content": "정삼각형 $ABC$와 $DCE$에서 $B,D,E$가 이 순서로 한 직선 위에 있다. 반직선 $CD$는 $\\angle BCA$의 내부에 있고, 반직선 $CA$와 $CE$는 반직선 $CD$의 서로 반대쪽에 있다. $\\angle BCD=38^{\\circ}$일 때, $\\angle CAE$의 크기는? [4점]",
+    "content": "정삼각형 $ABC$와 $DCE$에서 $B,D,E$가 이 순서로 한 직선 위에 있다. 반직선 $CD$는 $\\angle BCA$의 내부에 있고, 반직선 $CA$는 $\\angle DCE$의 내부에 있다. $\\angle BCD=38^{\\circ}$일 때, $\\angle CAE$의 크기는? [4점]",
     "choices": [
       "$18^{\\circ}$",
       "$20^{\\circ}$",
@@ -517,7 +517,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "points": 4,
-    "solution": "$B,D,E$가 이 순서로 놓였으므로 $DB$와 $DE$는 반대 방향의 반직선이다. 따라서 삼각형 $BCD$에서 $\\angle BDC=120^{\\circ}$이고 $\\angle CBD=180^{\\circ}-120^{\\circ}-38^{\\circ}=22^{\\circ}$이다. 정삼각형 $ABC$에서 $\\angle ACD=60^{\\circ}-38^{\\circ}=22^{\\circ}$. 또한 $\\angle BCE=22^{\\circ}$이고 $AC=BC$, $CD=CE$이므로 $\\triangle ACD\\equiv\\triangle BCE$ (SAS). 대응하는 각에서 $\\angle CAE=\\angle CBE=\\angle CBD=22^{\\circ}$이다. 정답은 ③이다.",
+    "solution": "$B,D,E$가 이 순서로 놓여 있으므로 $DB$와 $DE$는 반대 방향의 반직선이다. 따라서 삼각형 $BCD$에서 $\\angle BDC=120^{\\circ}$이고 $\\angle CBD=180^{\\circ}-120^{\\circ}-38^{\\circ}=22^{\\circ}$이다. 정삼각형 $ABC$에서 $\\angle ACD=60^{\\circ}-38^{\\circ}=22^{\\circ}$. 반직선 $CA$가 $\\angle DCE$의 내부에 있으므로 $\\angle ACE=60^{\\circ}-22^{\\circ}=38^{\\circ}=\\angle BCD$. 또한 $BC=AC$와 $CD=CE$이므로 $\\triangle BCD\\equiv\\triangle ACE$ (SAS). 대응각에서 $\\angle CAE=\\angle CBD=22^{\\circ}$이다. 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
