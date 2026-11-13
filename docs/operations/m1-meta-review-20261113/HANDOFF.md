@@ -23,26 +23,35 @@
 - 원장 SHA256: `8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0`
 - 의미/빈 유형 연결 수정 15문항, 의미를 유지한 binding 보완 2문항. 의미 유지 9문항에는 binding 보완 2문항이 포함된다.
 - rev2까지의 실제 source 메타 변경 문항은 **24문항**이다. 분류·연결 보완 17문항(의미/연결15 + binding2)과 별개로, 메타 검토 완료 annotation은 24문항 모두 정렬했다. 이 수치는 수학 검증이나 해설 수정 건수를 뜻하지 않는다.
-- 현재 상태는 **`REV2_MERGED_WAITING_MAIN_REGISTRATION`**이다. 최신 확인 main은 `3cc9e93b28d9f97f202c4bfd96a116d9fa42d7fb`, tree는 `c5801f45830f1d2193b3222adc6fe5d92c412816`이다.
+- 현재 상태는 **`REV2_REJECTED_PARENT_LINK_REPAIR_IN_PROGRESS`**이다. 최신 확인 main은 `2dd58ebe1abb9123206782979f4ac23e3b891c49`다. 작업 브랜치에는 이 main을 정상 병합했으며, 운영 등록된 문항은 **0/24**, 운영 마감은 **0/44**다.
 - rev2 repair PR [1961](https://github.com/icefoxtail/AP------/pull/1961)은 head `64650d1c2e34b49a0779769d8df502eb853ff693`의 **CI 3개 workflow / 5개 job 모두 SUCCESS** 후 merge `f2e98717e9c3dc242683d5614376ecfd1e3c2ee6`, tree `25dcd5f8086207e5e630aa3ec51ba8ab6b95f69c`로 병합했다. [rev2 CI 근거](01-shinheung-rev2-ci.json)와 [rev2 병합 근거](01-shinheung-rev2-main-merge.json)를 재사용한다.
-- 그 뒤 PR1962의 별도 L3 부모 검색/helper 변경이 최신 main에 병합됐다. 원본 시험지와 정본은 바뀌지 않았고 rev2 source blob·SHA도 동일하다. 최신 main으로 fast-forward한 상태를 유지하며 별도 작업을 덮어쓰지 않는다.
+- 그 뒤 PR1962의 별도 L3 부모 검색/helper 변경이 main `3cc9e93b28d9f97f202c4bfd96a116d9fa42d7fb`에 병합됐다. 당시 tree는 `c5801f45830f1d2193b3222adc6fe5d92c412816`이다. 이 PR에서 원본 시험지와 정본은 바뀌지 않았고 rev2 source blob·SHA도 동일하다. 현재 작업 브랜치의 최신 main 병합 상태와 별도 작업을 보존한다.
 - 최초 PR [1960](https://github.com/icefoxtail/AP------/pull/1960)은 head `f0a89b11f7c085b08ab406831f0d2bc0681fefed`의 **CI 5개 workflow / 7개 job 모두 SUCCESS** 후 main `81fb1c3a7c861ede3690157234bf0415c2585e45`에 병합했다. 당시 확인한 main tree는 `1f0eeecb4e7fafed89050c300b36aae949873437`이다. [main 병합 근거](01-shinheung-main-merge-checkpoint.json)와 [수정 head CI 근거](01-shinheung-ci-fixed-head.json)는 이 최초 PR의 이력으로 보존한다.
 - [main writer 실행](https://github.com/icefoxtail/AP------/actions/runs/43421975843)과 [register job](https://github.com/icefoxtail/AP------/actions/runs/43421975843/job/131873926621)은 SUCCESS로 끝났지만, **rev1 요청은 `projection-verify`에서 REJECTED**였다. Q1의 source tag annotation과 등록기의 자동 메타 상태가 충돌했으며 정본 변경 17건은 적용되지 않았다. workflow SUCCESS를 요청 등록 PASS로 해석하지 않는다.
-- source의 두 tag annotation을 24문항에 맞춘 rev2는 병합됐다. **rev2 공식 dry-run은 exit 0 / 5.801초 / write:false / 24문항 / 정본 변경17 / fingerprint 보정24 PASS**다. exact merge `f2e98717e9c3dc242683d5614376ecfd1e3c2ee6`의 [rev2 main writer run 43429595931](https://github.com/icefoxtail/AP------/actions/runs/43429595931), [job 131899473141](https://github.com/icefoxtail/AP------/actions/runs/43429595931/job/131899473141)은 **IN_PROGRESS / step 6 preparation / persist pending**으로 관측했다. 실제 요청별 영수증과 24문항 Consumer/Search는 미확인이므로 운영 마감은 **0/44**다.
-- 원장에는 메타 의미 검토와 수학·해설 FINAL QA를 구분하여 기록했다. 실제 풀이 RPM resolver는 `NOT_RUN_UNVERIFIED_SOLUTION`이며 등록 대기나 CI 성공을 독립 수학 검증으로 해석하지 않는다.
+- source의 두 tag annotation을 24문항에 맞춘 rev2는 병합됐다. **rev2 공식 dry-run은 exit 0 / 5.801초 / write:false / 24문항 / 정본 변경17 / fingerprint 보정24 PASS**였으나, 실제 등록은 별도 결과다. exact merge `f2e98717e9c3dc242683d5614376ecfd1e3c2ee6`의 [rev2 main writer run 43429595931](https://github.com/icefoxtail/AP------/actions/runs/43429595931), [job 131899473141](https://github.com/icefoxtail/AP------/actions/runs/43429595931/job/131899473141)은 workflow/register/persist가 SUCCESS로 끝났지만 **rev2 요청은 `projection-verify`에서 Q5 `curriculumKey` 불일치로 REJECTED**였다. 실제 문항 등록은 0건이고 정본 변경17도 적용되지 않았다. [rev2 거부 기록](01-shinheung-registration-rev2-rejected.json)을 기준으로 운영 마감 **0/44**를 유지한다.
+- 원장에는 메타 의미 검토와 수학·해설 FINAL QA를 구분하여 기록했다. 실제 풀이 RPM resolver는 `NOT_RUN_UNVERIFIED_SOLUTION`이며 dry-run·CI·workflow 성공을 독립 수학 검증이나 실제 등록 성공으로 해석하지 않는다.
 
 ### rev1 등록 거부와 rev2의 최소 수정
 
 - rev1은 `qid_v1_d6bbf87bf0397aa29c28dd495d9c84c4bc2b33eac4873c56a7c5aa247eafdc31`(Q1)의 Consumer metadata conflict로 거부됐다. 읽기 전용 대조 결과 Q1–Q24 모두 `tagConfidence`, `tagStatus`만 source와 공식 FINAL_QA 등록값이 달랐다.
 - 24문항의 source `tagConfidence: candidate_manual`을 `approved_final_qa`, `tagStatus: candidate_manual`을 `reviewed_pass`로 맞췄다. 이미 완료한 **메타 의미 검토 상태**를 반영한 변경이다. 그 외 모든 문항 값과 source/content fingerprint는 동일하다.
 - source `reviewStatus`를 추가하지 않았고 R1·수학 검증·독립 검증·RPM FINAL 플래그도 바꾸지 않았다. Consumer 충돌 검사나 광범위한 면제도 변경하지 않았다. 분류 의미와 정본 변경 17건은 rev1과 같다.
-- 현재 rev2 병합 source blob: `a8de75bc9cc2b6a4479866d75b8ebec637404a04`, raw SHA256: `ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef`. 최신 main `3cc9e93b28d9f97f202c4bfd96a116d9fa42d7fb`에서도 동일함을 확인했다.
-- 현재 요청: `.archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev2.json`, SHA256: `267ab2f0a9abcb465030af0d198cd0b676b0ff465f730bdb625e50a8f5782f30`.
+- 현재 rev2 병합 source blob: `a8de75bc9cc2b6a4479866d75b8ebec637404a04`, raw SHA256: `ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef`. rev2 거부 후 main `2dd58ebe1abb9123206782979f4ac23e3b891c49`에서도 source는 동일하다.
+- 마지막 제출 요청 rev2의 최초 inbox 경로는 `.archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev2.json`, SHA256은 `267ab2f0a9abcb465030af0d198cd0b676b0ff465f730bdb625e50a8f5782f30`이다. 거부된 요청의 이력이며 현재 inbox에 남아 있다고 가정하지 않는다. 제출본은 merge `f2e98717e9c3dc242683d5614376ecfd1e3c2ee6`에서 확인할 수 있다. **rev3 요청 파일과 새 PR은 아직 없다.**
 - [rev1 거부 기록](01-shinheung-registration-rev1-rejected.json), SHA256 `d33758236925429be7f323a4bcab4f011d446ca15b36b267a4323251a2b330df`.
 - [tag annotation 수정·보존 근거](01-shinheung-tag-annotation-repair.json), SHA256 `2cab1eb2d69efbc6f0fcbb80f3dc41d2d40fbc5bc1e6a199f7c5e703095a33a0`.
 - [rev2 공식 dry-run](01-shinheung-registration-rev2-dry-run.json), SHA256 `b4859e4a01ba624774ab2dd5faa3c98bad9c57c56f71b0f10a1c4dcceb686740`.
 - [rev2 CI](01-shinheung-rev2-ci.json), SHA256 `6774dbcee746791603c16b4d98ff4c7c55d95099681064faec96a8ccae3b0a71`.
 - [rev2 병합 및 최신 main 확인](01-shinheung-rev2-main-merge.json), SHA256 `8f9c0772bd4dccf301cb70494f501a7a2c7119a64514904e636a41e4a5f8f4db`.
+- [rev2 실제 등록 거부](01-shinheung-registration-rev2-rejected.json), SHA256 `fa22b9789db1da1b6293bf5e04e4c8fc61e7515e248e13a2bc2dad498cba7382`.
+
+### rev2 부모 연결 오류와 격리 재현
+
+- 실제 오류는 Q5 `qid_v1_6a2e9c320796f57d28232cd1f9ebfda5e29f4eb50926e74c0cc339d2eae8e593.curriculumKey`의 Consumer metadata mismatch다. 실패 시점 catalog 값은 artifact에 없어 아직 직접 관측하지 못했다.
+- 정적 분석상 Q5의 2022 ACTIVE binding에는 L1/L2가 없고 요청에 `targetParentRef`도 없다. 등록기는 native master의 **평면도형의 성질 / 다각형과 원**을 적용하지만 공식 RPM 부모는 **평면도형 / 다각형**이다. `labelsFor()`가 만든 부모를 Consumer가 `canonical_parent_missing`으로 판정하면 `curriculumKey`가 비워지며, `assignment_missing` 전용 fallback에 들어가지 않는다. 근거: `reviewed-exam-registration-v2.mjs`의 `labelsFor()` 및 Consumer 검증, `archive2-canonical.js`의 `validateBasicAssignment()` 및 최종 투영.
+- Q8도 부모 참조와 binding L1/L2가 없는 유사 후보이며 **실제 재현은 아직 준비·진행 중**이다. Q10은 요청의 binding에 `기본 도형 / 작도와 합동`을 명시했으므로 이 정적 부모 이름 문제는 없다. 이를 Q8·Q10의 운영 Consumer PASS로 기록하지 않는다.
+- root가 `/workspace/scratch/933015cd0a4f/m1-registration-repro`의 별도 격리 작업트리에서 공식 rev2 등록기로 로컬 재현을 시작했다. **운영 등록·게시가 아니며, 아직 실제 24 Consumer PASS는 없다.** 운영 브랜치에서 대형 canonical/metadata/runtime 파일을 직접 쓰지 않는다.
+- 원인을 재현한 뒤 Q5는 기존 PT/TPL·RPM198 의미를 유지하면서 exact 2022 crosswalk를 add-only로 추가하고 `targetParentRef`를 결속하는 방향이다. Q8은 공식 기본 도형/위치 관계의 parent-only 참조로 보완하고 RPM L3/L4 debt를 유지한다. source·확정 의미·기존 PT/TPL·원래 정본17 변경안은 보존한다. 새 rev3 요청과 PR은 재현 결과를 확인한 뒤 준비한다.
 
 ### 확정한 주요 판단
 
@@ -63,11 +72,12 @@
 ## 재개 순서
 
 1. 연결된 Notion 필독 라우터·Archive 시작·작업 생명주기를 확인하고 최신 원격 main 및 진행 중 PR을 대조한다. 빈 메타 채우기 작업과 같은 시험지를 동시에 수정하지 않는다.
-2. 최신 원격 체크포인트와 `progress.json`, rev1 거부·rev2 수정·dry-run·CI·병합 근거를 읽는다. 첫 시험지의 읽기·분류 판단·정본 추가17 준비·rev2 annotation 정정·dry-run·PR1961 CI와 병합은 완료했다. 동결 근거를 재사용하며 이미 병합한 PR1960·1961을 재생성하지 않는다. 최종 의미 판단은 `01-shinheung-semantic-review.json`이다.
-3. **exact rev2 main writer의 요청별 영수증부터 확인**한다. run `43429595931` / job `131899473141`의 head는 `f2e98717e9c3dc242683d5614376ecfd1e3c2ee6`이다. 요청 `m1-shinheung-2026-mid-meta-review-20261113-rev2`, SHA `267ab2f0a9abcb465030af0d198cd0b676b0ff465f730bdb625e50a8f5782f30`의 24 UID·정본17 적용 결과와 persist 결과를 대조한다. CI 또는 workflow SUCCESS만으로 등록 PASS를 판단하지 않는다. 실패·보류가 있으면 원인과 직접 영향만 처리한다.
-4. 등록 후 **24문항 모두** native 분류·PT/TPL·승인 상태와 Consumer/Search 반영을 확인한다. 22개 exact RPM 경로와 Q8/Q10의 null + `EVIDENCE_DEBT`를 구분한다. Q8의 RPM 부모 모호성과 native 유형 승인 상태도 따로 확인한다. 첫 시험지에는 독립 풀이 `VERIFIED_FINAL` 근거가 없으므로 실제 풀이 resolver를 실행하거나 그 PASS를 주장하지 않는다. 기존 R1/R2/R3를 다시 실행하지 않는다. 이후 시험지에 검증된 기존 근거가 있으면 해당 근거를 재사용한다.
-5. 실제 등록 영수증·24문항 Consumer 결과를 최신 원격 main SHA에 결속한다. PR1962의 별도 L3 부모 검색/helper 변경도 함께 보존한다. 세 가지가 확인된 뒤에만 첫 시험지를 운영 마감하고 `completedExams`를 1로 바꾼다. 시험지별 보고와 체크포인트를 저장한 다음 2026 왕운중 2학기 중간 23문항으로 이동한다. 그전에는 `currentOrder: 1`, 운영 마감 0/44를 유지한다.
-6. 향후 순번 **17·20·24·38·39·40**은 PR1751과 같은 시험지 범위다. 각 시험지 착수 전에 해당 PR의 최신 head·상태·등록 영수증과 실제 적용 메타를 재확인한다. 아래 병행 작업 근거를 따른다.
+2. 최신 원격 체크포인트와 `progress.json`, rev1·rev2 거부 기록, 기존 수정·dry-run·CI·병합 근거를 읽는다. 첫 시험지의 읽기·분류 판단·정본 추가17 준비·rev2 annotation 정정·PR1961 CI와 병합은 완료했다. 최종 의미 판단 `01-shinheung-semantic-review.json`과 동결 읽기를 재사용하며 이미 병합한 PR1960·1961을 재생성하지 않는다.
+3. **새 PR보다 먼저 격리 작업트리의 실제 24문항 Consumer 재현 결과를 확인**한다. root가 시작한 `/workspace/scratch/933015cd0a4f/m1-registration-repro`의 공식 rev2 등록기 재현에서 Q5의 실패 값·부모 사유와 Q8의 직접 영향을 확인한다. 아직 재현 PASS를 기록하지 않는다. 운영 브랜치에서 대형 정본 파일을 직접 쓰거나 같은 실행을 중복 시작하지 않는다.
+4. 재현으로 확인된 부모 연결만 보완한다. Q5 exact crosswalk add-only + `targetParentRef`, Q8 parent-only 참조와 RPM debt 유지 방향으로 **새 rev3 요청**을 준비한다. source·확정 의미·PT/TPL·원래 정본17은 보존한다. 격리 환경에서 **실제 24문항 Consumer 검증**이 통과한 뒤 새 PR→CI→main 병합→main writer 순서로 진행한다. 현재 rev3 파일과 새 PR은 없다.
+5. 새 요청의 실제 등록 영수증과 **24문항 모두**의 native 분류·PT/TPL·승인 상태 및 Consumer/Search 반영을 확인한다. 22개 exact RPM 경로와 Q8/Q10의 null + `EVIDENCE_DEBT`를 구분한다. CI·workflow·persist SUCCESS만으로 요청 등록 PASS를 판단하지 않는다. 첫 시험지에는 독립 풀이 `VERIFIED_FINAL` 근거가 없으므로 실제 풀이 resolver PASS나 새 R1/R2/R3 PASS를 만들지 않는다.
+6. 실제 등록 영수증·24문항 Consumer 결과를 최신 원격 main SHA에 결속한다. PR1962 변경과 최신 병행 작업을 보존한다. 세 가지가 확인된 뒤에만 첫 시험지를 운영 마감하고 `completedExams`를 1로 바꾼다. 시험지별 보고와 체크포인트를 저장한 다음 2026 왕운중 2학기 중간 23문항으로 이동한다. 그전에는 `currentOrder: 1`, 운영 마감 0/44를 유지한다.
+7. 향후 순번 **17·20·24·38·39·40**은 PR1751과 같은 시험지 범위다. 각 시험지 착수 전에 해당 PR의 최신 head·상태·등록 영수증과 실제 적용 메타를 재확인한다. 아래 병행 작업 근거를 따른다.
 
 ## 보존 및 검증 경계
 
@@ -76,12 +86,12 @@
 - fingerprint 진단: `01-shinheung-fingerprint-preflight.json` — 24/24 불일치와 공식 검증 함수의 명시적 repair 수용을 기록했다. 등록 완료 증거는 아니다.
 - 공용 metadata/identity/runtime/compiled 대형 파일을 직접 편집하지 않는다. 서버 writer가 소형 v2 요청을 적용한다.
 - 전체 시험지의 과거 수학 검수 완료를 추정하거나 새 R1/R2/R3 PASS를 만들지 않는다.
-- 로그인 셸 지연은 exec의 login:false로 해소했다. 변경된 resolver 검사는 29개가 통과했다. 부모 helper 검사의 기존 단일 crosswalk ID 기대값을 추가된 두 정확 행에 맞춰 갱신한 뒤 11개 모두 통과했다. 이 기술 회귀와 PR1960의 CI 성공은 보존한다. rev1 실제 등록은 거부됐다. rev2 PR1961은 CI 3 workflow/5 job SUCCESS와 병합까지 완료했고, 요청별 실제 등록·persist·Consumer 확인이 남아 있다.
+- 로그인 셸 지연은 exec의 login:false로 해소했다. 변경된 resolver 검사는 29개가 통과했다. 부모 helper 검사의 기존 단일 crosswalk ID 기대값을 추가된 두 정확 행에 맞춰 갱신한 뒤 11개 모두 통과했다. 이 기술 회귀와 PR1960·1961의 CI·병합 이력은 보존한다. **rev1·rev2 실제 요청 등록은 모두 거부됐다.** rev2 writer의 workflow/register/persist 성공은 요청 등록 성공이 아니다. 부모 연결 오류의 격리 재현과 보완 요청의 실제 Consumer 검증이 남아 있다.
 - scratch 도구·초안은 보조물이다. 이 문서와 Git 원장만으로 확정 의미 판단을 재구성할 수 있어야 한다.
 
 ## 복사용 재개 프롬프트
 
-> `icefoxtail/AP------`의 `review/m1-existing-meta-20261113` 최신 원격 체크포인트에서 중1 기존 시험지 메타 검토를 이어가 주세요. 먼저 Notion 필독 라우터와 최신 main, `docs/operations/m1-meta-review-20261113/HANDOFF.md` 및 `progress.json`을 읽으세요. 첫 신흥중2026 2학기 중간24문항의 읽기·의미 검토는 완료했습니다. 최초 PR1960은 병합됐지만 rev1 등록은 source tag annotation 충돌로 거부됐고 정본17은 적용되지 않았습니다. 이를 두 tag 필드만24문항에 정렬한 rev2 repair PR1961은 head `64650d1c2e34b49a0779769d8df502eb853ff693`의 CI 3 workflow/5 job 전체 SUCCESS 후 merge `f2e98717e9c3dc242683d5614376ecfd1e3c2ee6`로 병합했습니다. 최신 main은 별도 PR1962 L3 부모 검색/helper 변경까지 포함한 `3cc9e93b28d9f97f202c4bfd96a116d9fa42d7fb`이며 source·정본은 이 별도 PR에서 바뀌지 않았습니다. 현재 상태는 `REV2_MERGED_WAITING_MAIN_REGISTRATION`, 운영 마감0/44·읽기24입니다. rev2 source blob `a8de75bc9cc2b6a4479866d75b8ebec637404a04`와 요청 `m1-shinheung-2026-mid-meta-review-20261113-rev2` SHA256 `267ab2f0a9abcb465030af0d198cd0b676b0ff465f730bdb625e50a8f5782f30`은 그대로입니다. 이미 끝낸 읽기·분류·수정·dry-run·PR생성·병합을 반복하지 말고, exacthead f2e의 writer run `43429595931` / job `131899473141`의 rev2 요청별 영수증과 persist 결과→24문항 Consumer→원격SHA 확인부터 진행하세요. Q8/Q10의 RPM EVIDENCE_DEBT와 수학 미검증 경계를 유지하고, 모두 확인한 뒤에만1장 마감 및2026 왕운중2학기 중간23문항으로 이동하세요. PR1962 변경도 함께 보존하고 미래 순번17·20·24·38·39·40은 PR1751 최신 범위를 확인하세요. R1/R2/R3를 새로 실행하거나 첫 시험지의 실제 풀이 resolver PASS를 만들지 마세요. taskId `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`, owner `GPT_ROOT_933015CD0A4F`를 유지하세요.
+> `icefoxtail/AP------`의 `review/m1-existing-meta-20261113` 최신 원격 체크포인트에서 중1 기존 시험지 메타 검토를 이어가 주세요. 먼저 Notion 필독 라우터와 최신 main, `docs/operations/m1-meta-review-20261113/HANDOFF.md` 및 `progress.json`을 읽으세요. 첫 신흥중 2026 중1 2학기 중간 24문항의 읽기·의미 검토와 PR1960·1961 병합은 완료했지만, rev1은 source tag annotation 충돌, rev2는 Q5 curriculumKey 불일치로 실제 등록이 거부됐습니다. rev2 writer 43429595931/job131899473141의 workflow/register/persist SUCCESS를 등록 성공으로 해석하지 마세요. 최신 확인 main은 `2dd58ebe1abb9123206782979f4ac23e3b891c49`, 상태는 `REV2_REJECTED_PARENT_LINK_REPAIR_IN_PROGRESS`, 운영 마감 0/44·읽기24·실제 문항 등록0·정본17 미적용입니다. source blob `a8de75bc9cc2b6a4479866d75b8ebec637404a04`와 raw SHA `ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef`, 동결 의미 판단은 유지합니다. 거부된 rev2 요청 SHA는 `267ab2f0a9abcb465030af0d198cd0b676b0ff465f730bdb625e50a8f5782f30`이고 거부 증거 SHA는 `fa22b9789db1da1b6293bf5e04e4c8fc61e7515e248e13a2bc2dad498cba7382`입니다. root가 `/workspace/scratch/933015cd0a4f/m1-registration-repro`에서 공식 등록기의 로컬 격리 재현을 시작했으므로 중복 실행하지 말고 실제 24 Consumer 결과부터 확인하세요. Q5의 native 부모와 공식 부모 불일치를 재현한 뒤 기존 PT/TPL·RPM198을 유지한 exact crosswalk add-only + targetParentRef, Q8의 parent-only 참조와 RPM debt 유지로 보완하는 방향입니다. Q8은 아직 유사 후보이고 Q10은 binding 부모가 명시돼 있습니다. rev3 파일·새 PR·실제 24 Consumer PASS는 아직 없습니다. 원본·확정 분류·원래 정본17을 보존하며 재현→rev3→격리 실제24 검증→새 PR/CI/main writer→요청별 실제 영수증/24 Consumer→원격 SHA→첫 시험지 마감 순서로 진행하세요. 그 뒤에만 왕운중으로 이동하세요. 이미 완료한 읽기나 R1/R2/R3를 반복하지 말고 수학 VERIFIED_FINAL 또는 실제 풀이 resolver PASS를 만들지 마세요. PR1962 및 병행 작업을 보존하고 미래 순번17·20·24·38·39·40은 PR1751 최신 범위를 확인하세요. taskId `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`, owner `GPT_ROOT_933015CD0A4F`를 유지하세요.
 
 ## 첫 시험지 기존 의미 검토와 rev1 이력
 
@@ -90,9 +100,9 @@
 - 실제 분류 대조: `01-shinheung-classification-check.json` — exact22/RPM debt2. 수학 검수·실제 풀이 resolver PASS 주장이 아니다.
 - 검증 경계: `01-shinheung-verification-boundary.json`.
 - 새 정본 추가17: `01-shinheung-registry-additions.json`. MIDDLE_GEOMETRY의 기존 원·부채꼴 binding을 위한 scope append1건과 그 직접 영향4 binding/UID참조9개는 `01-shinheung-pack-scope-impact.json`에 있다.
-- 최초 제출 당시 immutable 요청 경로: `.archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev1.json`, SHA256 `24ba8de0d00e494b91268a00771d6b7d30cc2a17ac57c76bb7f1bc30a7a10ede`. rev1 거부 이력을 보존하며 현재 처리 대상은 rev2다.
+- 최초 제출 당시 immutable 요청 경로: `.archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev1.json`, SHA256 `24ba8de0d00e494b91268a00771d6b7d30cc2a17ac57c76bb7f1bc30a7a10ede`. rev1·rev2는 모두 거부 이력이며 다음 rev3는 아직 생성하지 않았다.
 - rev1 병합 source: blob `930d4e3ef44e60757180aae6fc15fcc5b7228958`, raw SHA256 `bc4dcf03680da654dec43928f7b1a57942a6f616de9f03ca9ba3976203bd9a18`. 이는 두 annotation을 정정하기 전의 이력이며 현재 rev2 병합본의 hash는 위 rev2 절을 따른다.
-- 정상 학생 데이터와 확정 분류는 보존했다. rev1의 정본17은 등록 거부로 적용되지 않았다. 같은 정본 변경을 담은 rev2의 실제 metadata/identity/native runtime 반영은 새 main writer 영수증으로 확인한다.
+- 정상 학생 데이터와 확정 분류는 보존했다. rev1·rev2의 정본17은 등록 거부로 적용되지 않았다. 보완 요청의 실제 metadata/identity/native runtime 반영은 향후 요청별 main writer 영수증으로 확인한다.
 
 ## PR과 캐시 참조 보완
 

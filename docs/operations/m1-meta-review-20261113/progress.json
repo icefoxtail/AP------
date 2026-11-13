@@ -15,7 +15,7 @@
   "completedExams": 0,
   "reviewedQuestions": 24,
   "currentOrder": 1,
-  "nextAction": "WATCH_EXACT_REV2_MAIN_WRITER_VERIFY_RECEIPT_24_CONSUMER_REMOTE_SHA_CLOSE_FIRST_THEN_WANGUN",
+  "nextAction": "REPRODUCE_REV2_24_CONSUMER_ISOLATED_THEN_PARENT_LINK_REPAIR_REV3_ISOLATED_PASS_PR_CI_MAIN_WRITER_ACTUAL_24_CLOSE_FIRST",
   "exams": [
     {
       "order": 1,
@@ -26,7 +26,7 @@
       "count": 24,
       "sourceBlob": "c36139a90e9bcd378577ece8f891423bee6b0a19",
       "sourceSha256": "1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564",
-      "status": "REV2_MERGED_WAITING_MAIN_REGISTRATION",
+      "status": "REV2_REJECTED_PARENT_LINK_REPAIR_IN_PROGRESS",
       "partialEvidence": "01-shinheung-semantic-read-checkpoint.json",
       "candidateComparisonEvidence": "01-shinheung-candidate-comparison.json",
       "candidateComparisonSha256": "c887310c2501c3d70a010315a7fda02c73a6964ba45b70c3aa106a99c4a62ce9",
@@ -50,10 +50,10 @@
       "prUrl": "https://github.com/icefoxtail/AP------/pull/1961",
       "prHeadSha": "64650d1c2e34b49a0779769d8df502eb853ff693",
       "mergeCommitSha": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
-      "verifiedRemoteMainSha": "3cc9e93b28d9f97f202c4bfd96a116d9fa42d7fb",
-      "verifiedRemoteMainTree": "c5801f45830f1d2193b3222adc6fe5d92c412816",
-      "nativeRegistrationActual": "AWAITING_EXACT_REV2_SERVER_RECEIPT",
-      "consumerVerification": "NOT_RUN",
+      "verifiedRemoteMainSha": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+      "verifiedRemoteMainTree": "d52de79fedc3e134286d57707f78b783130d7d2c",
+      "nativeRegistrationActual": "REJECTED_PROJECTION_VERIFY",
+      "consumerVerification": "FAILED_AT_Q5_CURRICULUM_KEY",
       "operationallyClosed": false,
       "ci": {
         "state": "SUCCESS",
@@ -70,14 +70,21 @@
         "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43429595931",
         "jobId": 131899473141,
         "jobUrl": "https://github.com/icefoxtail/AP------/actions/runs/43429595931/job/131899473141",
-        "observedStatus": "IN_PROGRESS",
-        "observedPhase": "STEP_6_PREPARATION",
-        "persistStatus": "PENDING",
+        "observedStatus": "COMPLETED",
+        "observedPhase": "COMPLETED",
+        "persistStatus": "SUCCESS",
         "headSha": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
         "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev2",
-        "requestOutcome": "PENDING",
-        "registrationReceiptVerification": "NOT_VERIFIED",
-        "observationSource": "root verified writer run at exact rev2 merge head"
+        "requestOutcome": "REJECTED",
+        "registrationReceiptVerification": "REJECTION_CONFIRMED",
+        "observationSource": "root observed completed workflow/register/persist and request-specific rejection; workflow success is not request registration success",
+        "conclusion": "SUCCESS",
+        "registerJobConclusion": "SUCCESS",
+        "registryChangesApplied": 0,
+        "registeredQuestionCount": 0,
+        "rejectionStage": "projection-verify",
+        "rejectionEvidence": "01-shinheung-registration-rev2-rejected.json",
+        "rejectionEvidenceSha256": "fa22b9789db1da1b6293bf5e04e4c8fc61e7515e248e13a2bc2dad498cba7382"
       },
       "mainMergeEvidence": "01-shinheung-rev2-main-merge.json",
       "initialCiEvidence": "01-shinheung-ci-initial.json",
@@ -133,10 +140,83 @@
           },
           "mainMergeEvidence": "01-shinheung-main-merge-checkpoint.json",
           "initialCiEvidence": "01-shinheung-ci-initial.json"
+        },
+        {
+          "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev2",
+          "requestSha256": "267ab2f0a9abcb465030af0d198cd0b676b0ff465f730bdb625e50a8f5782f30",
+          "preparedSourceBlob": "a8de75bc9cc2b6a4479866d75b8ebec637404a04",
+          "preparedSourceSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+          "prNumber": 1961,
+          "prUrl": "https://github.com/icefoxtail/AP------/pull/1961",
+          "prHeadSha": "64650d1c2e34b49a0779769d8df502eb853ff693",
+          "mergeCommitSha": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
+          "mergeTree": "25dcd5f8086207e5e630aa3ec51ba8ab6b95f69c",
+          "ci": {
+            "state": "SUCCESS",
+            "headSha": "64650d1c2e34b49a0779769d8df502eb853ff693",
+            "successfulWorkflowCount": 3,
+            "successfulJobCount": 5,
+            "evidencePath": "01-shinheung-rev2-ci.json",
+            "evidenceRecordedBy": "root",
+            "evidenceSha256": "6774dbcee746791603c16b4d98ff4c7c55d95099681064faec96a8ccae3b0a71"
+          },
+          "mainMergeEvidence": "01-shinheung-rev2-main-merge.json",
+          "mainMergeEvidenceSha256": "8f9c0772bd4dccf301cb70494f501a7a2c7119a64514904e636a41e4a5f8f4db",
+          "nativeRegistrationDryRunDetails": {
+            "requestRevision": "rev2",
+            "exitCode": 0,
+            "durationSeconds": 5.801,
+            "write": false,
+            "questionCount": 24,
+            "registryChanges": 17,
+            "fingerprintRepairs": 24,
+            "evidencePath": "01-shinheung-registration-rev2-dry-run.json",
+            "evidenceSha256": "b4859e4a01ba624774ab2dd5faa3c98bad9c57c56f71b0f10a1c4dcceb686740"
+          },
+          "requestRevision": "rev2",
+          "registrationOutcome": "REJECTED",
+          "rejectionStage": "projection-verify",
+          "reason": "Consumer metadata mismatch: qid_v1_6a2e9c320796f57d28232cd1f9ebfda5e29f4eb50926e74c0cc339d2eae8e593.curriculumKey",
+          "questionUid": "qid_v1_6a2e9c320796f57d28232cd1f9ebfda5e29f4eb50926e74c0cc339d2eae8e593",
+          "sourceOrdinal": 5,
+          "conflictingFields": [
+            "curriculumKey"
+          ],
+          "registryChangesApplied": 0,
+          "registeredQuestionCount": 0,
+          "writerRunId": 43429595931,
+          "writerWorkflowConclusion": "SUCCESS",
+          "registerJobConclusion": "SUCCESS",
+          "persistConclusion": "SUCCESS",
+          "actualMainAfterRejection": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+          "rejectionEvidence": "01-shinheung-registration-rev2-rejected.json",
+          "rejectionEvidenceSha256": "fa22b9789db1da1b6293bf5e04e4c8fc61e7515e248e13a2bc2dad498cba7382",
+          "rejectionEvidenceLocalStatus": "LOCAL_SHA256_VERIFIED",
+          "mainWriter": {
+            "runId": 43429595931,
+            "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43429595931",
+            "jobId": 131899473141,
+            "jobUrl": "https://github.com/icefoxtail/AP------/actions/runs/43429595931/job/131899473141",
+            "observedStatus": "COMPLETED",
+            "observedPhase": "COMPLETED",
+            "persistStatus": "SUCCESS",
+            "headSha": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
+            "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev2",
+            "requestOutcome": "REJECTED",
+            "registrationReceiptVerification": "REJECTION_CONFIRMED",
+            "observationSource": "root observed completed workflow/register/persist and request-specific rejection; workflow success is not request registration success",
+            "conclusion": "SUCCESS",
+            "registerJobConclusion": "SUCCESS",
+            "registryChangesApplied": 0,
+            "registeredQuestionCount": 0,
+            "rejectionStage": "projection-verify",
+            "rejectionEvidence": "01-shinheung-registration-rev2-rejected.json",
+            "rejectionEvidenceSha256": "fa22b9789db1da1b6293bf5e04e4c8fc61e7515e248e13a2bc2dad498cba7382"
+          }
         }
       ],
-      "currentRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev2.json",
-      "prRole": "CURRENT_REV2_REPAIR_MERGED",
+      "currentRequestPath": null,
+      "prRole": "LATEST_MERGED_REV2_REQUEST_REJECTED",
       "repairPrNumber": 1961,
       "repairPrStatus": "MERGED",
       "repairCiStatus": "SUCCESS",
@@ -179,7 +259,66 @@
         1961
       ],
       "mergeTree": "25dcd5f8086207e5e630aa3ec51ba8ab6b95f69c",
-      "mainMergeEvidenceSha256": "8f9c0772bd4dccf301cb70494f501a7a2c7119a64514904e636a41e4a5f8f4db"
+      "mainMergeEvidenceSha256": "8f9c0772bd4dccf301cb70494f501a7a2c7119a64514904e636a41e4a5f8f4db",
+      "verifiedRemoteMainTreeStatus": "VERIFIED_FROM_FETCHED_REMOTE_MAIN",
+      "actualRegisteredQuestionCount": 0,
+      "nativeRegistryChangesApplied": 0,
+      "requestStatus": "REJECTED",
+      "lastSubmittedRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev2.json",
+      "requestSnapshotCommit": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
+      "parentLinkRepair": {
+        "status": "STATIC_DIAGNOSIS_ISOLATED_REPRODUCTION_STARTED",
+        "reproductionWorktree": "/workspace/scratch/933015cd0a4f/m1-registration-repro",
+        "reproductionOwner": "root",
+        "reproductionMode": "LOCAL_ISOLATED_OFFICIAL_V2_REGISTRAR_NOT_PRODUCTION_OR_PUBLICATION",
+        "reproductionResult": "PENDING",
+        "actualConsumer24PassClaimed": false,
+        "q5": {
+          "observedFailureField": "curriculumKey",
+          "diagnosis": "labelsFor uses native unit/subunit labels because the ACTIVE 2022 binding has no L1/L2 and the request has no targetParentRef; canonical parent validation can clear curriculumKey. Failure-time catalog values are not available.",
+          "nativeParent": [
+            "평면도형의 성질",
+            "다각형과 원"
+          ],
+          "canonicalParent": [
+            "평면도형",
+            "다각형"
+          ],
+          "plannedFix": "Preserve existing PT/TPL and RPM198 meaning; add-only exact 2022 crosswalk link and evidence-bound targetParentRef."
+        },
+        "q8": {
+          "status": "SIMILAR_PARENT_GAP_CANDIDATE_NOT_YET_REPRODUCED",
+          "plannedFix": "Bind only the official basic-geometry/position-relation parent; keep RPM L3/L4 EVIDENCE_DEBT."
+        },
+        "q10": {
+          "status": "EXPLICIT_BINDING_PARENT_PRESENT",
+          "parent": [
+            "기본 도형",
+            "작도와 합동"
+          ]
+        },
+        "preserve": [
+          "current source blob and SHA",
+          "frozen semantic decisions",
+          "existing PT/TPL choices",
+          "original 17 registry changes",
+          "student payload",
+          "Q8/Q10 RPM EVIDENCE_DEBT",
+          "math-review and RPM FINAL boundaries"
+        ],
+        "nextRequestRevision": "rev3",
+        "nextRequestStatus": "NOT_CREATED",
+        "nextRequestPath": null,
+        "nextPrNumber": null,
+        "nextPrStatus": "NOT_CREATED",
+        "sequence": [
+          "Reproduce the actual rev2 Consumer failure across the first 24 questions in the isolated worktree",
+          "Apply only supported parent-link repairs and prepare a new rev3 request",
+          "Obtain actual isolated 24-question Consumer validation before a new PR",
+          "PR and CI, merge, main writer, request-specific receipt and all 24 actual Consumers",
+          "Bind remote main SHA, close first exam, then begin Wangun"
+        ]
+      }
     },
     {
       "order": 2,
@@ -710,7 +849,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "REV2_MERGED_WAITING_MAIN_REGISTRATION",
+  "state": "REV2_REJECTED_PARENT_LINK_REPAIR_IN_PROGRESS",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -729,7 +868,7 @@
       "supersededBy": "01-shinheung-semantic-review.json"
     }
   },
-  "activeMain": "3cc9e93b28d9f97f202c4bfd96a116d9fa42d7fb",
+  "activeMain": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
   "prerequisiteStatus": "RPM_L1_L2_MERGED",
   "prerequisiteMainSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
   "latestRemoteSemanticCheckpoint": "ae19795a822db73448c7487aea4036c509720ecb",
@@ -763,7 +902,7 @@
     ],
     "noBlanketMetadataConflictWaiver": true
   },
-  "activeMainTree": "c5801f45830f1d2193b3222adc6fe5d92c412816",
+  "activeMainTree": "d52de79fedc3e134286d57707f78b783130d7d2c",
   "subsequentMainChanges": [
     {
       "pr": 1962,
@@ -775,5 +914,6 @@
       "verifiedBy": "root",
       "preserveConcurrentChanges": true
     }
-  ]
+  ],
+  "activeMainTreeStatus": "VERIFIED_FROM_FETCHED_REMOTE_MAIN"
 }

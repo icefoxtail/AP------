@@ -1,0 +1,144 @@
+{
+  "schemaVersion": "m1-review-registration-observation-v1",
+  "observedAt": "2026-11-13T13:38:28.469Z",
+  "exam": {
+    "school": "신흥중",
+    "year": 2026,
+    "grade": "중1",
+    "semester": 2,
+    "examType": "중간",
+    "totalQuestions": 24
+  },
+  "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev2",
+  "requestSha256": "267ab2f0a9abcb465030af0d198cd0b676b0ff465f730bdb625e50a8f5782f30",
+  "outcome": "REQUEST_REJECTED_PROJECTION_VERIFY",
+  "registered": false,
+  "completedExams": 0,
+  "nativeRegistryDeltaApplied": false,
+  "nativeRegistryDeltaAppliedEvidence": "Authoritative remote rejection receipt explicitly says fail-closed, nothing was applied.",
+  "workflow": {
+    "id": 43429595931,
+    "url": "https://github.com/icefoxtail/AP------/actions/runs/43429595931",
+    "path": ".github/workflows/archive-main-auto-meta.yml",
+    "headSha": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
+    "status": "completed",
+    "conclusion": "success",
+    "startedAt": "2026-11-13T12:58:05Z",
+    "updatedAt": "2026-11-13T13:34:52Z",
+    "jobs": [
+      {
+        "id": 131899473141,
+        "name": "register",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 131899475166,
+        "name": "test",
+        "status": "completed",
+        "conclusion": "skipped"
+      }
+    ],
+    "persistStep": [
+      {
+        "number": 7,
+        "name": "Persist verified lanes, native cursors and receipts once with race-safe regeneration",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "persistenceLog": "[single Archive registration writer] result=PUSHED attempts=2 main_sha=2dd58ebe1abb9123206782979f4ac23e3b891c49 registered_sha=2dd58ebe1abb9123206782979f4ac23e3b891c49",
+    "distinction": "Workflow success and registered snapshot SHA do not approve this rejected request."
+  },
+  "registeredSnapshotSha": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+  "regeneratedPrepareInputSha": "3cc9e93b28d9f97f202c4bfd96a116d9fa42d7fb",
+  "rejectionReceipt": {
+    "path": ".archive-meta-register/rejected/m1-shinheung-2026-mid-meta-review-20261113-rev2.rejection.json",
+    "ref": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+    "content": {
+      "schemaVersion": "archive-reviewed-meta-register-rejection-v1",
+      "request": "m1-shinheung-2026-mid-meta-review-20261113-rev2.json",
+      "requestSha256": "267ab2f0a9abcb465030af0d198cd0b676b0ff465f730bdb625e50a8f5782f30",
+      "stage": "projection-verify",
+      "error": "Error: Consumer metadata mismatch: qid_v1_6a2e9c320796f57d28232cd1f9ebfda5e29f4eb50926e74c0cc339d2eae8e593.curriculumKey",
+      "registrarExitCode": null,
+      "next": "Registration was refused for this request only (fail-closed, nothing was applied). The meta owner must regenerate the request against the current metadata and submit it again as a new .archive-meta-register/inbox/*.json (git mv it back once the cause is fixed)."
+    },
+    "localPath": "01-rev2-main-rejection.receipt.json",
+    "sha256": "0e708ba61d7e77c776c3d09bd2e412791e6352007638944f9b1be06c35646590"
+  },
+  "expectedRegisteredReceiptLookup": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev2.json",
+    "ref": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+    "observedHttpStatus": 404
+  },
+  "conflictDiagnostics": {
+    "questionUid": "qid_v1_6a2e9c320796f57d28232cd1f9ebfda5e29f4eb50926e74c0cc339d2eae8e593",
+    "ordinal": 5,
+    "ordinalEvidence": "Parent independently mapped exact UID to Q5.",
+    "field": "curriculumKey",
+    "actualValue": "NOT_EMITTED_IN_AVAILABLE_LOGS_OR_ARTIFACT",
+    "expectedValue": "NOT_EMITTED_IN_AVAILABLE_LOGS_OR_ARTIFACT",
+    "observedSequence": [
+      "transient APPLIED staging marker",
+      "derived registration paths restored to HEAD",
+      "final REJECTED (projection-verify)",
+      "No request could be applied on this base; nothing to rebuild"
+    ]
+  },
+  "artifact": {
+    "id": 14043241102,
+    "name": "archive-main-registration-43429595931-1",
+    "bytes": 279920,
+    "path": "01-rev2-main-writer-evidence-43429595931.zip",
+    "sha256": "2249d783a5f85daef1d91f8ebef4c449d58385d28854907e8d8cb0e111280faa",
+    "inspectionPath": "01-rev2-main-writer-artifact-inspection.json",
+    "inspectionSha256": "c4b70b9c4d1d5325463bd42fec0ba21c4aca829b18691fa272451d062e16f56e",
+    "reviewedLogSha256": "8d568c75336d6188f95018b60dd0974e8afdd0ecfe7924866118633bf3748dec"
+  },
+  "artifactReplayLimits": {
+    "entryCount": 49,
+    "failedQ5CatalogRowPresent": false,
+    "requestSpecificReplayPresent": false,
+    "compileWrite": {
+      "status": "PASS",
+      "runtimeRecordCount": 400,
+      "runtimeMappingMismatchCount": 0,
+      "interpretation": "Aggregate compile result is not Q5 consumer approval."
+    },
+    "consumerPreflightStatus": "NO_CHANGED_UID_INPUTS",
+    "reviewedFinalLog": "No changed-UID inputs on this base (already consumed by another writer); nothing to verify.",
+    "availableReplayFiles": [
+      "native/archive-main-auto-meta/replay.json",
+      "native/archive-four-slot/replay.json"
+    ],
+    "replayFileScope": "Separate automatic-semantic and four-slot lanes, not a reviewed rev2 request replay.",
+    "possibleReadOnlyEvidenceCollection": "Use this ZIP plus the immutable rejected request and code/input commits for a source-level trace. Reproducing the exact staged consumer row would require a separately authorized isolated replay or new diagnostics; no replay was executed by this observer."
+  },
+  "concurrentWriterObservation": [
+    {
+      "id": 43429956198,
+      "headSha": "3cc9e93b28d9f97f202c4bfd96a116d9fa42d7fb",
+      "status": "in_progress",
+      "conclusion": null,
+      "startedAt": "2026-11-13T13:00:42Z",
+      "updatedAt": "2026-11-13T13:34:54Z"
+    },
+    {
+      "id": 43429595931,
+      "headSha": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-13T12:58:05Z",
+      "updatedAt": "2026-11-13T13:34:52Z"
+    }
+  ],
+  "observationActions": {
+    "writerInvoked": false,
+    "retryDispatched": false,
+    "replayExecuted": false,
+    "trackedFilesEdited": false,
+    "commentsPosted": false
+  },
+  "nextAction": "Metadata owner inspects Q5 native-to-consumer curriculumKey projection at current main and decides a new immutable request revision using existing controls. Do not weaken projection verification or treat unrelated replay logs as approval."
+}
