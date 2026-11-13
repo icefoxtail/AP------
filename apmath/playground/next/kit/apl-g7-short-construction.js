@@ -94,7 +94,7 @@
       return{...d,goal,Q,which:goal==='tools'?d.m.pk.c:goal==='ruler'?0:1,answer:Q?correct(Q)+1:goal==='length'?d.m.L:null};
     },(b,t,d)=>{
       const {m}=d,A=P(-5,0),B=P(-5+m.L,0),C=P(1,0),E=polar(C,m.L,-m.phi),end=polar(C,4.8,-m.phi);
-      setup(b,[A,B,C,end,P(1,-m.L-1),P(-5,1)]);dot(b,A,'A');dot(b,B,'B');line(b,A,B,'sky',3.5);
+      setup(b,[A,B,C,end,P(1,-m.L-1),P(-5,1)]);dot(b,A,'A','ink',d.which===0?{dy:-24}:{});dot(b,B,'B','ink',d.which===0?{dy:-24}:{});line(b,A,B,'sky',3.5);
       if(d.which===0){
         const q=[P(-5.7,.2),P(5.7,.2),P(5.7,.85),P(-5.7,.85)];poly(b,q,'muted',.08);label(b,P(0,.55),'눈금 없는 자','muted',{size:13});
         trace(b,P(-5.7,0),P(5.7,0),phase(t,.8,5.8),'green');

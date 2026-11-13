@@ -93,7 +93,8 @@ jobs:
           # Reuse CI43346417520 for unchanged geometry. Only the final
           # label/initial-fit corrections need new four-size captures/playback.
           - { lab: g7-circle-sector, mode: static, scenes: 'rl-semi', live_scenes: 'rl-semi', exclude_scenes: '' }
-          - { lab: g7-surface-volume, mode: static, scenes: 'sv4-2,sv4-3,sv4-4,sv5-6,sv6-1', live_scenes: 'sv4-2,sv4-3,sv4-4,sv5-6,sv6-1', exclude_scenes: '' }
+          - { lab: g7-surface-volume, mode: static, scenes: 'sv3-7,sv4-2,sv4-3,sv4-4,sv5-6,sv6-1', live_scenes: 'sv3-7,sv4-2,sv4-3,sv4-4,sv5-6,sv6-1', exclude_scenes: '' }
+          - { lab: g7-construction, mode: static, scenes: 'c1-1', live_scenes: 'c1-1', exclude_scenes: '' }
           - { lab: g7-solids, mode: static, scenes: 's3-5,s4-2,s4-4', live_scenes: 's3-5,s4-2,s4-4', exclude_scenes: '' }
     steps:
       - uses: actions/checkout@v4

@@ -414,7 +414,7 @@
     if(t<2.8)D.radius(v(0,0),v((m.kind==='quarter'||m.kind==='eighth'?-1:1)*m.r,0),`반지름 ${m.r}`,{size:12,dash:true});
     if(u>.01)copies.forEach((pts,i)=>{
       D.panel(pts,'rose',.15*u,'rose',2.1);
-      tag(D,center(pts),t>=5.4?plain(m.flats[i]):m.flatFractions[i]===1?'원':m.flatFractions[i]===.5?'반원':'사분원','rose',{dy:18,size:12});
+      tag(D,center(pts),t>=5.4?plain(m.flats[i]):m.flatFractions[i]===1?'원':m.flatFractions[i]===.5?'반원':'사분원','rose',{dy:m.kind==='threequarter'&&t<5.4?(i===0?-22:24):18,size:12});
     });
     if(t>=1.2)tag(D,v(-m.r*.45,(m.kind==='eighth'?-1:1)*m.r*.7,-m.r*.35),t>=5.4?`곡면 ${plain(m.curve)}`:'남은 곡면','sky',{dy:-22,size:12});
   }

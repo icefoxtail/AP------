@@ -34,6 +34,27 @@ function triangleCongruent(A,B){
   const a=metric(A),b=metric(B);return a.every((x,i)=>Math.abs(x-b[i])<1e-7*Math.max(1,x));
 }
 
+test('ruler endpoint names clear its edge on all lesson playback sizes',async()=>{
+  const lab=await load();lab.go('c1-1');
+  for(const width of [390,820,1024,1440]){
+    lab.board.resize(width,598);
+    lab.s.cnPk={...lab.s.cnPk,c:0};
+    for(const name of ['자의쓰임','도구판별']){
+      const p=plan(lab,name);assert.equal(p.model.which,0);
+      for(const t of [0,4.1,7.8,9.6]){
+        const items=capture(lab.board,p,t).textItems;
+        const rulerEdge=lab.board.toS({x:0,y:.2}).y;
+        for(const pointName of ['A','B']){
+          const item=items.find(x=>x.value===pointName);
+          assert.ok(item,`${name}/${width}@${t}: ${pointName} present`);
+          assert.ok(item.bottom+4<rulerEdge,`${name}/${width}@${t}: ${pointName} must clear the ruler border`);
+          onCanvas([item],lab.board,name);
+        }
+      }
+    }
+  }
+});
+
 test('all production construction lessons have current-state shorts, exact labels and duration metadata',async()=>{
   const lab=await load();
   assert.deepEqual(Object.keys(shorts.registry).sort(),Array.from(lab.list,s=>`g7-construction/${s.id}`).sort());

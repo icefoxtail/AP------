@@ -22,6 +22,21 @@ function noLabelCollision(items,scope) {
   }
 }
 
+test('three-quarter sphere moving semicircle labels stay apart at the reported intermediate frame',async()=>{
+  const lab=await load();
+  for(const [viewport,width,height] of [[390,390,598],[820,820,880],[1024,1023,581],[1440,1439,713]]){
+    lab.board.resize(width,height);lab.setViewportWidth(viewport);
+    const p=build(lab,'sv3-7',{remR:3,remKind:'three'})[0],before=JSON.stringify(lab.s);
+    for(const t of [4.1,4.7,5.2]){
+      const labels=textBoxes(lab,p,t).filter(x=>x.text==='반원');
+      assert.equal(labels.length,2,`${viewport}@${t}: two exposed semicircles`);
+      const [a,b]=labels,dx=Math.max(a.x0-b.x1,b.x0-a.x1,0),dy=Math.max(a.y0-b.y1,b.y0-a.y1,0);
+      assert.ok(Math.hypot(dx,dy)>=6,`${viewport}@${t}: semicircle labels must have at least 6px separation`);
+    }
+    assert.equal(JSON.stringify(lab.s),before);
+  }
+});
+
 test('post-capture regression: trapezoid axis comparison fits its initial profile and first sweep',async()=>{
   const lab=await load();
   for(const[viewport,w,h]of[[1440,1439,713],[820,820,880],[1024,1023,581],[390,390,510]]){
