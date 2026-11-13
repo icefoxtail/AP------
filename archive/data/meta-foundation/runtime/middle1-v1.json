@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-runtime-overlay-v1",
   "status": "ACTIVE",
-  "runtimeVersion": "MIDDLE1@1.0.6/reviewed-exam-v2",
+  "runtimeVersion": "MIDDLE1@1.0.7/reviewed-exam-v2",
   "packId": "MIDDLE1",
-  "packVersion": "1.0.6",
+  "packVersion": "1.0.7",
   "generatedFrom": {
     "canonicalPack": "archive/data/meta-foundation/canonical/packs/middle1",
     "compiledTaxonomySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
@@ -16,10 +16,11 @@
     "canonicalIdentityRepair20261025": "docs/operations/META_CANONICAL_KEY_COLLISION_REPAIR_20261025.json",
     "reviewedExam_meta-pipeline-01-yeonhang-m1-2mid-20261026-rev1": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-01-yeonhang-m1-2mid-20261026-rev1.json",
     "reviewedExam_m1-shinheung-2026-mid-meta-review-20261113-rev3": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
-    "reviewedExam_m1-shinheung-meta-closeout-20261113-bf-r1": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
+    "reviewedExam_m1-shinheung-meta-closeout-20261113-bf-r1": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json",
+    "reviewedExam_m1-wangun-2026-mid-meta-review-20261113": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
   },
   "counts": {
-    "records": 613,
+    "records": 635,
     "mapped": 577,
     "semanticHold": 254,
     "routeOut": 2,
@@ -587,6 +588,86 @@
       "runtimeSelectable": false,
       "metadataRevision": "meta-foundation:MIDDLE1@1.0.1:B01-B16",
       "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "questionUid": "qid_v1_04eec2165bbc177b619ab9ca935330f6fd60a9906437f50a36f56aa18de7c95a",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "sourceFingerprint": "12e8ac161ed82be71d2b781f329c534673ddccbf66633bea377fb18518030f56",
+      "contentFingerprint": "4b365e8dbae51c7652bfc2de6572d49fbdcd35c413dbd0318141576f3dfa0aee",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "subUnit": "작도와 합동",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+      "templateKey": "TPL_M1_TRIANGLE_CONSTRUCTION_ORDER_ASA_VERTEX_DEPENDENCY",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 작도",
+        "l4": "한 변과 양 끝각 조건"
+      },
+      "primaryMethod": "삼각형을 구성하는 각 단계에서 이미 확정된 꼭짓점과 변을 추적하여 다음 작도가 가능한지 판정한다.",
+      "decisiveStep": "각을 옮길 꼭짓점이 먼저 정해져야 한다는 선행 조건으로 작도 순서의 성립 여부를 구분한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "순서·선행조건 추적은 제안된 작도 절차 PT/TPL 자체의 풀이이며 독립된 다른 개념을 결합하지 않는다.",
+      "rpmL1": "기본 도형",
+      "rpmL2": "작도와 합동",
+      "rpmL3": "삼각형의 작도",
+      "rpmL4": "한 변과 양 끝각 조건",
+      "L1": "기본 도형",
+      "L2": "작도와 합동",
+      "L3": "삼각형의 작도 순서와 선행조건",
+      "L4": "한 변과 양 끝각 작도의 꼭짓점 선행조건",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#1",
+      "approvedSourceFingerprint": "12e8ac161ed82be71d2b781f329c534673ddccbf66633bea377fb18518030f56",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_04ff9b066524c2ffdad5d559f03de2bff4129b1ab303b756d850608585d0da2b",
@@ -4786,6 +4867,82 @@
       "metaFoundationPackVersion": "1.0.1"
     },
     {
+      "questionUid": "qid_v1_347acf016e50757f50f493be205035c52686071e612c8f9ee44312d8f7e5e785",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": "4",
+      "sourceFingerprint": "a8d2e872945e7a8e7dd2bf7b9ad6561e907a1616e7c428776fb6f6446b66f665",
+      "contentFingerprint": "fbfcede9e2093d3ab71a84c4354e3e57ebc507d55a8ee8a9129a8cc4eb4157a1",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "subUnitKey": "M1-05-POSITION_RELATION",
+      "subUnit": "위치 관계",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2022",
+      "rpmPrimaryPath": null,
+      "rpmSemanticStatus": "HOLD",
+      "primaryMethod": "기준 모서리와 다른 모서리의 만남·평행 관계를 점검하여 꼬인 위치에 해당하는 관계를 남긴다.",
+      "decisiveStep": "같은 꼭짓점을 갖거나 평행한 후보를 제외한 뒤 공간의 두 직선 관계를 판정한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "모서리의 만남·평행·꼬임 분류만으로 끝나며 독립된 부가 개념을 결합하지 않는다.",
+      "rpmL1": null,
+      "rpmL2": null,
+      "rpmL3": null,
+      "rpmL4": null,
+      "L1": "기본 도형",
+      "L2": "위치 관계",
+      "L3": "다면체의 모서리·면 관계",
+      "L4": "다면체의 모서리·면 관계 — 조건별 풀이 골격",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#4",
+      "approvedSourceFingerprint": "a8d2e872945e7a8e7dd2bf7b9ad6561e907a1616e7c428776fb6f6446b66f665",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_347cec11bdd87cdf376940918f809ded960bafd665991cacc446d01933c45fe8",
       "sourceArchiveFile": "original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.js",
       "sourceOrdinal": 3,
@@ -5529,6 +5686,88 @@
       "metaFoundationPackVersion": "1.0.1"
     },
     {
+      "questionUid": "qid_v1_3d56afccf7e200f169c308fe861e597fcba46e5cab6d7c7376be5f7359b3ff26",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": "19",
+      "sourceFingerprint": "02a52838ae945d21d1d28204e7c0f6dadd9d72d8806fe3cd86f361c09439a3f7",
+      "contentFingerprint": "ae6b233059f60890b72cede436c9e32243378d860b569f2f2eb36586538d3874",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-08",
+      "standardUnit": "자료의 정리와 해석",
+      "subUnitKey": "M1-08-DATA_INTERPRETATION",
+      "subUnit": "자료의 해석",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "crossConceptKeys": [
+        "CC_FREQUENCY_DISTRIBUTION_TABLE"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값",
+        "l3": "중앙값과 최빈값",
+        "l4": "중앙값"
+      },
+      "primaryMethod": "정렬된 줄기와 잎에서 중앙 두 관측값을 특정하고 중앙값 조건을 식으로 바꾸어 미지 잎의 합을 복원한다. 별도로 계급별 도수를 읽어 요구값과 결합한다.",
+      "decisiveStep": "정렬된 줄기와 잎에서 중앙 두 관측값을 특정하고 중앙값 조건을 식으로 바꾸어 미지 잎의 합을 복원한다. 별도로 계급별 도수를 읽어 요구값과 결합한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "주요 유형 내부의 직접 판단은 NONE, 서로 다른 해석을 이어 사용하는 문항은 SEQUENTIAL로 기록한다.",
+      "rpmL1": "통계",
+      "rpmL2": "대푯값",
+      "rpmL3": "중앙값과 최빈값",
+      "rpmL4": "중앙값",
+      "L1": "통계",
+      "L2": "대푯값",
+      "L3": "대푯값의 해석과 조건 복원",
+      "L4": "대푯값 조건으로 자료 복원",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#19",
+      "approvedSourceFingerprint": "02a52838ae945d21d1d28204e7c0f6dadd9d72d8806fe3cd86f361c09439a3f7",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_3d7ecd300aa4b5ec09218476f24020e4a20eac55acf786c061e02baa91296ce9",
       "sourceArchiveFile": "original/middle/m1/2mid/23_연향중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 8,
@@ -5714,6 +5953,89 @@
       "rawQuestionHash": "37f8256ac7be776b8e6d30622a38fb618a640908708b538d571917ac7ff4dd83"
     },
     {
+      "questionUid": "qid_v1_3e86de14da10d8992dbc19f6545babb8e7d87c7f9a579cc79ecb29757262426e",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceFingerprint": "5753c941867d548d84f7122ccecd1c01e8403e773637ffe79d61dde23dd492f5",
+      "contentFingerprint": "7fd9e29bb3f0fa2acb43453cf1f8eb36681afb642fd8ca1f74a8a2ee9d2103db",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-08",
+      "standardUnit": "자료의 정리와 해석",
+      "subUnitKey": "M1-08-DATA_ORGANIZATION",
+      "subUnit": "자료의 정리",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE",
+      "crossConceptKeys": [
+        "CC_PERCENTAGE_CALCULATION",
+        "CC_MODE"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "도수분포표와 상대도수",
+        "l3": "도수분포표",
+        "l4": "계급·도수"
+      },
+      "primaryMethod": "같은 줄기와 잎 자료를 계급 경계로 다시 나누어 도수를 비교하고 계급·자료 개수·비율·최빈값 진술을 점검한다.",
+      "decisiveStep": "같은 줄기와 잎 자료를 계급 경계로 다시 나누어 도수를 비교하고 계급·자료 개수·비율·최빈값 진술을 점검한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "줄기와 잎의 원자료를 정해진 계급으로 재분류하여 도수를 구한 뒤 이를 도수 비교와 백분율 진술에 사용하며, 조건부 최빈값 진술도 확인한다.",
+      "rpmL1": "통계",
+      "rpmL2": "도수분포표와 상대도수",
+      "rpmL3": "도수분포표",
+      "rpmL4": "계급·도수",
+      "L1": "통계",
+      "L2": "도수분포표와 상대도수",
+      "L3": "도수분포표·다각형의 누적 해석",
+      "L4": "줄기·잎 자료를 도수분포표로 옮기기",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#20",
+      "approvedSourceFingerprint": "5753c941867d548d84f7122ccecd1c01e8403e773637ffe79d61dde23dd492f5",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_3f786ea3f678d34b1c57c95643f071599c532fb6e51eca405d0cffd64777b46e",
       "sourceArchiveFile": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 3,
@@ -5866,6 +6188,88 @@
       "metaFoundationPackVersion": "1.0.1",
       "catalogIdentityRepairVerified": true,
       "rawQuestionHash": "283b4b1c8913517a3c0adca812589e518a51614ced5c9ed0abe10f9b296d62dc"
+    },
+    {
+      "questionUid": "qid_v1_42849e0c412ae8bf1f70e578c0ccbce121008daaf975b9bcbed49176badc79b4",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": "서답형2",
+      "sourceFingerprint": "dfe3774dbb5b74d2ac7d191b2c66e7dd5e1fe1f1eaa96d62197d52b29494136c",
+      "contentFingerprint": "c7eb128250a62b5ddf3f0e2db030bfef49ef3446cbc906a1f7a9d1302e13bfca",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-04",
+      "standardUnit": "좌표평면과 그래프",
+      "subUnitKey": "M1-04-GRAPH_RELATION",
+      "subUnit": "그래프와 관계",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_PROPORTIONAL_GRAPH_SEGMENT_DIVISION",
+      "templateKey": "TPL_M1_PROPORTIONAL_GRAPH_HORIZONTAL_DIVISION_AXIS_PROJECTION",
+      "crossConceptKeys": [
+        "CC_RATIO_AND_PROPORTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "관계 해석",
+        "l4": "정비례·반비례 활용"
+      },
+      "primaryMethod": "두 정비례식에 공통 세로좌표를 대입해 가로좌표를 구하고, 수평 선분 길이와 비례배분으로 분할점 좌표를 구한 뒤 축으로 투영한다.",
+      "decisiveStep": "두 정비례식에 공통 세로좌표를 대입해 가로좌표를 구하고, 수평 선분 길이와 비례배분으로 분할점 좌표를 구한 뒤 축으로 투영한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-1",
+      "integrationReason": "주요 유형 내부의 직접 판단은 NONE, 서로 다른 해석을 이어 사용하는 문항은 SEQUENTIAL로 기록한다.",
+      "rpmL1": "좌표평면과 그래프",
+      "rpmL2": "정비례와 반비례",
+      "rpmL3": "관계 해석",
+      "rpmL4": "정비례·반비례 활용",
+      "L1": "좌표평면과 그래프",
+      "L2": "정비례와 반비례",
+      "L3": "정비례 그래프의 좌표와 선분 분할",
+      "L4": "공통 세로좌표의 선분 분할과 축 투영",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#22",
+      "approvedSourceFingerprint": "dfe3774dbb5b74d2ac7d191b2c66e7dd5e1fe1f1eaa96d62197d52b29494136c",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_444e22172000b4cde0a859d8e727a75b44096ab6ff000a86410da1c87f9b494d",
@@ -6266,6 +6670,170 @@
       "runtimeSelectable": false,
       "metadataRevision": "meta-foundation:MIDDLE1@1.0.1:B01-B16",
       "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "questionUid": "qid_v1_489c87bbd253da2356fd202dd5103c28eccd0de434e4fd6995a7063d92b55575",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": "5",
+      "sourceFingerprint": "b3c3687324bbae4d81659d415019975d5eec32226653ac56181db28ac5c54f10",
+      "contentFingerprint": "56201fb7e0e7b1fb2dfedb4f9b44da26127a402687d94ecda953419315ae0c41",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "subUnit": "작도와 합동",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+      "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 작도",
+        "l4": "한 변과 양 끝각 조건"
+      },
+      "primaryMethod": "삼각형의 각 조건을 한 변의 양 끝각 조건으로 정리한 뒤 삼각형의 유일 결정 여부를 판단한다.",
+      "decisiveStep": "알려진 두 각에서 나머지 각을 확인하면 고정된 변에 대한 두 끝각이 정해진다는 점을 사용한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "삼각형 내각합으로 누락 각을 확보한 결과를 작도의 유일성 판단에 사용한다. 주어진 각을 그대로 비교하는 경우와 구별한 순차 결합 권고이다.",
+      "rpmL1": "기본 도형",
+      "rpmL2": "작도와 합동",
+      "rpmL3": "삼각형의 작도",
+      "rpmL4": "한 변과 양 끝각 조건",
+      "L1": "기본 도형",
+      "L2": "작도와 합동",
+      "L3": "삼각형 합동·작도 유일조건",
+      "L4": "삼각형 합동·작도 유일조건 — 조건별 풀이 골격",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#5",
+      "approvedSourceFingerprint": "b3c3687324bbae4d81659d415019975d5eec32226653ac56181db28ac5c54f10",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
+      "questionUid": "qid_v1_48d2321fd14aa0bb4e7cca39b2c8699e2dd65c8fd5b21a533f635435552ec03a",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 23,
+      "sourceQuestionNo": "서답형3",
+      "sourceFingerprint": "0e3bbe78c62e60b9003a04f0757976cd2ff84ae7e5fb7ddeaedab633d9a8379f",
+      "contentFingerprint": "98bdcefdfc654e367e9f60f472e8b28c21c42f0202701a590b6f276e41ba34df",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "subUnit": "작도와 합동",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+      "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 합동",
+        "l4": "SAS 합동"
+      },
+      "primaryMethod": "정삼각형의 같은 변·각과 주어진 선분 일치로 보조 삼각형의 SAS 합동을 보인 뒤 대응각을 옮겨 교점의 각을 결정한다.",
+      "decisiveStep": "정삼각형의 같은 변·각과 주어진 선분 일치로 보조 삼각형의 SAS 합동을 보인 뒤 대응각을 옮겨 교점의 각을 결정한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "주요 유형 내부의 직접 판단은 NONE, 서로 다른 해석을 이어 사용하는 문항은 SEQUENTIAL로 기록한다.",
+      "rpmL1": "기본 도형",
+      "rpmL2": "작도와 합동",
+      "rpmL3": "삼각형의 합동",
+      "rpmL4": "SAS 합동",
+      "L1": "기본 도형",
+      "L2": "작도와 합동",
+      "L3": "합동인 삼각형의 대응 관계 적용",
+      "L4": "합동인 삼각형의 대응 관계 적용 — 조건별 풀이 골격",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#23",
+      "approvedSourceFingerprint": "0e3bbe78c62e60b9003a04f0757976cd2ff84ae7e5fb7ddeaedab633d9a8379f",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_4bacb912087f53727c0868a3eae6e92bce43ca3f99631163bbf1c4189518b6e2",
@@ -7756,6 +8324,86 @@
       "metaFoundationPackVersion": "1.0.1"
     },
     {
+      "questionUid": "qid_v1_5fc1c99bd44c3aa0d8a579b57b9dc692129f8f7aafa66734154c979f307196f2",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceFingerprint": "431148258174531b4abdcd2e7d938f17ce7078dbf472b0f38677d9efd7dd8809",
+      "contentFingerprint": "eca2f6d16ba6475ca7e5d3d27cc44c0460b4a23c91281c65a323647ff43e6b36",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-08",
+      "standardUnit": "자료의 정리와 해석",
+      "subUnitKey": "M1-08-DATA_INTERPRETATION",
+      "subUnit": "자료의 해석",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값",
+        "l3": "중앙값과 최빈값",
+        "l4": "최빈값"
+      },
+      "primaryMethod": "유일 최빈값 조건과 정렬 순서로 누락 자료를 복원한 뒤 중앙값을 읽는다. 결정 단계는 최빈값 조건의 복원이다.",
+      "decisiveStep": "유일 최빈값 조건과 정렬 순서로 누락 자료를 복원한 뒤 중앙값을 읽는다. 결정 단계는 최빈값 조건의 복원이다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "주요 유형 내부의 직접 판단은 NONE, 서로 다른 해석을 이어 사용하는 문항은 SEQUENTIAL로 기록한다.",
+      "rpmL1": "통계",
+      "rpmL2": "대푯값",
+      "rpmL3": "중앙값과 최빈값",
+      "rpmL4": "최빈값",
+      "L1": "통계",
+      "L2": "대푯값",
+      "L3": "대푯값의 해석과 조건 복원",
+      "L4": "대푯값 조건으로 자료 복원",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#17",
+      "approvedSourceFingerprint": "431148258174531b4abdcd2e7d938f17ce7078dbf472b0f38677d9efd7dd8809",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f",
       "sourceArchiveFile": "original/middle/m1/2mid/24_연향중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 22,
@@ -8447,6 +9095,86 @@
       "metaFoundationPackVersion": "1.0.1"
     },
     {
+      "questionUid": "qid_v1_66b8bd71d68a153b6a7bdb56ff3536201ca5b0b7ca68e82b7a120b47ba8ce55b",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": "6",
+      "sourceFingerprint": "69a20290654cf8865e91f101d2ff3e06bdd29001875bac7845812ffb50d5f082",
+      "contentFingerprint": "c4d9314bdacddc1ab9f0b1293625326cf43ff6dab6d16e059fdb0da7ac8481f0",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-04",
+      "standardUnit": "좌표평면과 그래프",
+      "subUnitKey": "M1-04-GRAPH_RELATION",
+      "subUnit": "그래프와 관계",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 1,
+      "level": "하",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "정비례",
+        "l4": "정비례 관계식"
+      },
+      "primaryMethod": "정비례 표의 알려진 값에서 일정한 비를 구하고 같은 비로 누락된 값을 완성한다.",
+      "decisiveStep": "관계식의 종류를 고르는 것이 아니라 이미 주어진 정비례의 상수를 복원하여 표의 빈 값을 정한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-1",
+      "integrationReason": "상수 복원과 값 대입은 해당 정비례 표 완성 PT/TPL의 기본 풀이이다.",
+      "rpmL1": "좌표평면과 그래프",
+      "rpmL2": "정비례와 반비례",
+      "rpmL3": "정비례",
+      "rpmL4": "정비례 관계식",
+      "L1": "좌표평면과 그래프",
+      "L2": "정비례와 반비례",
+      "L3": "정비례·반비례 상수와 값 계산",
+      "L4": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#6",
+      "approvedSourceFingerprint": "69a20290654cf8865e91f101d2ff3e06bdd29001875bac7845812ffb50d5f082",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_679c2264cfddf934106cfe3471ff7d436a47e55231b36b4851aac7e55b2d8355",
       "sourceArchiveFile": "original/middle/m1/1mid/19_왕운중_1학기_중간_중1_기출.js",
       "sourceOrdinal": 19,
@@ -8977,6 +9705,86 @@
       "l4Disposition": "ASSIGNED",
       "sourceIdentity": "original/middle/m1/2mid/24_연향중_2학기_중간_중1_기출.js#4",
       "approvedSourceFingerprint": "954ae9554e3330c850d746cd4b5982b564baf85e674e1b86b9bb9943d95dee52",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
+      "questionUid": "qid_v1_6d302cad46fda4208bcacf6d853e9198738cc18e26c98f8e011bdad9672ef9f3",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": "18",
+      "sourceFingerprint": "f6f4f4bb9da3fb4e468bc4192ebba84dee5cedaa64430cfb552b7c4355210649",
+      "contentFingerprint": "1997df348946e739d4c3db05478dd744c29dfcdfb56956d4f3975601c5931f08",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-08",
+      "standardUnit": "자료의 정리와 해석",
+      "subUnitKey": "M1-08-DATA_INTERPRETATION",
+      "subUnit": "자료의 해석",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 1,
+      "level": "하",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값",
+        "l3": "중앙값과 최빈값",
+        "l4": "중앙값"
+      },
+      "primaryMethod": "도수표에서 누적 순위와 최빈 변량을 읽어 중앙값·최빈값의 정의에 관한 진술을 판정한다.",
+      "decisiveStep": "도수표에서 누적 순위와 최빈 변량을 읽어 중앙값·최빈값의 정의에 관한 진술을 판정한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "주요 유형 내부의 직접 판단은 NONE, 서로 다른 해석을 이어 사용하는 문항은 SEQUENTIAL로 기록한다.",
+      "rpmL1": "통계",
+      "rpmL2": "대푯값",
+      "rpmL3": "중앙값과 최빈값",
+      "rpmL4": "중앙값",
+      "L1": "통계",
+      "L2": "대푯값",
+      "L3": "대푯값의 해석과 조건 복원",
+      "L4": "평균·중앙값·최빈값의 정의 진술 검토",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#18",
+      "approvedSourceFingerprint": "f6f4f4bb9da3fb4e468bc4192ebba84dee5cedaa64430cfb552b7c4355210649",
       "legacyLevel": "하",
       "runtimeSelectable": true
     },
@@ -11591,6 +12399,85 @@
       "metaFoundationPackVersion": "1.0.1"
     },
     {
+      "questionUid": "qid_v1_883588b373d439a971a7895ded9819b72d753b886850f4d6b614a70fe1c94dd6",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": "16",
+      "sourceFingerprint": "b23e58296f8b211b8de2d85d61e7d745c2e594416252b233e157fa8032c1e09f",
+      "contentFingerprint": "d08545f77b5fc8bf81540a5c6bc524d31d7310e29bb7b862a28567de30a6c501",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "subUnit": "점·선·면과 각",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+      "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT",
+      "crossConceptKeys": [
+        "CC_SPATIAL_POSITION_RELATION",
+        "CC_PARALLEL_LINE_ANGLES"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2022",
+      "rpmPrimaryPath": null,
+      "rpmSemanticStatus": "HOLD",
+      "primaryMethod": "평각·맞꼭지각·평행 및 꼬인 위치·수직이등분선·동위각 진술의 정의와 전제조건을 대조한다.",
+      "decisiveStep": "빠진 평면·평행·직선 교차 조건을 구분하여 항상 성립하는 진술인지 판단한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "독립된 기본 명제의 정의·전제 확인이며 상호 의존하는 결합 풀이가 아니다.",
+      "rpmL1": null,
+      "rpmL2": null,
+      "rpmL3": null,
+      "rpmL4": null,
+      "L1": "기본 도형",
+      "L2": "기본 도형",
+      "L3": "기본도형의 용어·관계 진술 판단",
+      "L4": "기본도형의 용어·관계 진술 판단 — 조건별 풀이 골격",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#16",
+      "approvedSourceFingerprint": "b23e58296f8b211b8de2d85d61e7d745c2e594416252b233e157fa8032c1e09f",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_88d37f3cdf040283ab68be247bd8157e9a7e540800e70871afdc331a94ca515f",
       "sourceArchiveFile": "original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
       "sourceOrdinal": 7,
@@ -13111,6 +13998,88 @@
       "rawQuestionHash": "77215a1382241f192dce8be2812ae6a4bf71404469e5c97401d3e5475d81b097"
     },
     {
+      "questionUid": "qid_v1_976adc004f55751504e0f92aafd1b6ec3f45c9e42af13b0a2b49c2a9f080ca0c",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceFingerprint": "56cb185f1df67b49b45eacf5888c0110b0b1a717d0b2a596a42eb8919ec62877",
+      "contentFingerprint": "922d4cfb979aea320a9f258fc336ed608419c33931712443d11977d3ab2289bb",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-04",
+      "standardUnit": "좌표평면과 그래프",
+      "subUnitKey": "M1-04-GRAPH_RELATION",
+      "subUnit": "그래프와 관계",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_INVERSE_PROPORTION_REGION_POINT_COUNT",
+      "templateKey": "TPL_M1_INVERSE_PROPORTION_REGION_POINT_COUNT_STRICT_BELOW_NATURAL_POINTS",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "관계 해석",
+        "l4": "정비례·반비례 활용"
+      },
+      "primaryMethod": "제1사분면 그래프 아래이면서 경계는 제외한다는 조건을 두 자연수 좌표의 곱에 대한 엄격한 부등식으로 읽는다.",
+      "decisiveStep": "가로 좌표별 가능한 세로 좌표 수를 합하여 주어진 점 개수와 맞는 매개값을 판별한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-1",
+      "integrationReason": "열린 영역을 좌표 조건으로 읽고 좌표별 개수를 합하는 순차 적용.",
+      "rpmL1": "좌표평면과 그래프",
+      "rpmL2": "정비례와 반비례",
+      "rpmL3": "관계 해석",
+      "rpmL4": "정비례·반비례 활용",
+      "L1": "좌표평면과 그래프",
+      "L2": "정비례와 반비례",
+      "L3": "반비례 그래프 영역의 격자점 개수",
+      "L4": "그래프 아래 열린 영역의 자연수 좌표 점",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#14",
+      "approvedSourceFingerprint": "56cb185f1df67b49b45eacf5888c0110b0b1a717d0b2a596a42eb8919ec62877",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_97912236952da1b46bed89d498a2b0e673dad2c6d656dee9d80852c1a986b0fb",
       "sourceArchiveFile": "original/middle/m1/2mid/24_매산중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 13,
@@ -14093,6 +15062,86 @@
       "metaFoundationPackVersion": "1.0.1"
     },
     {
+      "questionUid": "qid_v1_9fdaf44f2d5156120df8007115c8393404e618be363a73a3c372357ab0a185fa",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "서답형1",
+      "sourceFingerprint": "fcabfc5bc262b65c32e5a23ca0633f6dd59fc02ad87a0a7fb15e17c443070eb2",
+      "contentFingerprint": "ba0f8cc9aa09ec084af53f26e10dc7d6372b77ea9a60df83b97aef1f4c76868a",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "subUnit": "점·선·면과 각",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+      "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "각",
+        "l4": "맞꼭지각"
+      },
+      "primaryMethod": "맞꼭지각을 한 직선의 반대쪽으로 옮겨 인접한 각들의 합을 평각으로 세우고 미지수를 결정한다.",
+      "decisiveStep": "맞꼭지각을 한 직선의 반대쪽으로 옮겨 인접한 각들의 합을 평각으로 세우고 미지수를 결정한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "주요 유형 내부의 직접 판단은 NONE, 서로 다른 해석을 이어 사용하는 문항은 SEQUENTIAL로 기록한다.",
+      "rpmL1": "기본 도형",
+      "rpmL2": "기본 도형",
+      "rpmL3": "각",
+      "rpmL4": "맞꼭지각",
+      "L1": "기본 도형",
+      "L2": "기본 도형",
+      "L3": "교차선·맞꼭지각의 계산",
+      "L4": "교차선·맞꼭지각의 계산 — 각 방정식",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#21",
+      "approvedSourceFingerprint": "fcabfc5bc262b65c32e5a23ca0633f6dd59fc02ad87a0a7fb15e17c443070eb2",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_a043809efba8ac06e04aeddf9e5b9c96c15f3c96871dcc708f81b6630ed5ab4a",
       "sourceArchiveFile": "original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.js",
       "sourceOrdinal": 16,
@@ -14908,6 +15957,86 @@
       "runtimeSelectable": false,
       "metadataRevision": "meta-foundation:MIDDLE1@1.0.1:B01-B16",
       "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "questionUid": "qid_v1_a86218e4f1d4036989c499fc2e0a19036ff858458049473da7a544394ca9bcbb",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "sourceFingerprint": "27b9666a73b05fd55bb007528ff088941d27b7e5a884e6c46cd1ed66036bec7f",
+      "contentFingerprint": "c8d251b15d3ade4d06bfc940c148407d2a66f4f6fe3fec00662adb9514aaca9b",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "subUnitKey": "M1-05-POSITION_RELATION",
+      "subUnit": "위치 관계",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+      "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "평행선과 각",
+        "l4": "동위각·엇각"
+      },
+      "primaryMethod": "두 횡단선에 대해 평행선의 엇각·맞꼭지각을 각각 대응시킨다.",
+      "decisiveStep": "같은 위치 관계의 각을 옮긴 뒤 두 각의 차를 비교한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "기존 실제 순차 각 이동을 유지한다.",
+      "rpmL1": "기본 도형",
+      "rpmL2": "기본 도형",
+      "rpmL3": "평행선과 각",
+      "rpmL4": "동위각·엇각",
+      "L1": "기본 도형",
+      "L2": "기본 도형",
+      "L3": "평행선 각의 이동·계산",
+      "L4": "평행선 각의 이동·계산 — 각의 직접 이동",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#9",
+      "approvedSourceFingerprint": "27b9666a73b05fd55bb007528ff088941d27b7e5a884e6c46cd1ed66036bec7f",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_a963094adf9788f1c9c9a4ccc3db7b332994cf9732ab623da1ece66e0ba10443",
@@ -16677,6 +17806,82 @@
       "metaFoundationPackVersion": "1.0.1"
     },
     {
+      "questionUid": "qid_v1_bab52ee228bcefba5cba3c3e098437496cea2050c01904e3da3ab63c81581df2",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": "3",
+      "sourceFingerprint": "5d5ca9e198d7315dc224526ae00dd6a257c08c4eb6ddc30f30c4cdf2aa1bebfe",
+      "contentFingerprint": "c3ebfd78fbe14b9b64a42d07f2dadcd14a5b045b66b8d7ff0e891f5aa60e481a",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "subUnit": "작도와 합동",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+      "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 1,
+      "level": "하",
+      "curriculum": "2022",
+      "rpmPrimaryPath": null,
+      "rpmSemanticStatus": "HOLD",
+      "primaryMethod": "주어진 합동식의 꼭짓점 순서를 기준으로 대응하는 변과 각을 일치시켜 주어진 정보를 옮긴다.",
+      "decisiveStep": "그림의 좌우 배치와 무관하게 합동식의 순서가 대응 관계를 결정한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "합동식 순서와 대응 요소의 전달이 기존 PT/TPL 내부 기본 풀이 전체이다.",
+      "rpmL1": null,
+      "rpmL2": null,
+      "rpmL3": null,
+      "rpmL4": null,
+      "L1": "기본 도형",
+      "L2": "작도와 합동",
+      "L3": "합동인 삼각형의 대응 관계 적용",
+      "L4": "합동인 삼각형의 대응 관계 적용 — 합동 순서 대응",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#3",
+      "approvedSourceFingerprint": "5d5ca9e198d7315dc224526ae00dd6a257c08c4eb6ddc30f30c4cdf2aa1bebfe",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_bb21cef41c096bf9223df85a0f7b0c1a899f009be5157d573665ebe89c363512",
       "sourceArchiveFile": "original/middle/m1/2mid/24_매산중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 8,
@@ -16893,6 +18098,88 @@
       "runtimeSelectable": false,
       "metadataRevision": "meta-foundation:MIDDLE1@1.0.1:B01-B16",
       "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "questionUid": "qid_v1_be5c74c260f54fd3283324a100fa4c69a1f876580f99076a1caa364716f6b497",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": "8",
+      "sourceFingerprint": "6d7de5d1106e9654475edc0f84bdfbd5fcf11d095738c1d07fc0775ce21f80c3",
+      "contentFingerprint": "d132632e52360c2c8e06ff822ab244de7c5478d3d7369ae18f220ca2eacc14e0",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-04",
+      "standardUnit": "좌표평면과 그래프",
+      "subUnitKey": "M1-04-GRAPH_RELATION",
+      "subUnit": "그래프와 관계",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
+      "crossConceptKeys": [
+        "CC_QUADRANTS"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "반비례",
+        "l4": "반비례 관계식"
+      },
+      "primaryMethod": "주어진 대응값으로 반비례 상수를 복원한 뒤 관계식·값의 변화·그래프의 부호 성질을 대조한다.",
+      "decisiveStep": "일정한 좌표곱에서 관계식을 정하고 그 식의 대입 결과와 계수 부호를 각 진술에 적용한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-1",
+      "integrationReason": "먼저 반비례 상수를 결정한 결과를 사용해 값의 대입과 그래프 사분면 성질을 이어서 판단한다.",
+      "rpmL1": "좌표평면과 그래프",
+      "rpmL2": "정비례와 반비례",
+      "rpmL3": "반비례",
+      "rpmL4": "반비례 관계식",
+      "L1": "좌표평면과 그래프",
+      "L2": "정비례와 반비례",
+      "L3": "정비례·반비례 상수와 값 계산",
+      "L4": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#8",
+      "approvedSourceFingerprint": "6d7de5d1106e9654475edc0f84bdfbd5fcf11d095738c1d07fc0775ce21f80c3",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_bed0ed241c60f7113af6f352452463081394e4163ea43eafccc7857b53f5168b",
@@ -17771,6 +19058,84 @@
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#19",
       "approvedSourceFingerprint": "e5c26d6b2f8e49fb4e5337c188298ce6f55c5574324d4d714edc05756170b85e",
       "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
+      "questionUid": "qid_v1_c57da4ba1098bc858461c9928cef484c1e81bccf587ef91075d59ab2199264b1",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": "2",
+      "sourceFingerprint": "214d2b5dee1ce841fb0088d5c48d4561fe559b67dbb21ebe74cd276f96c95b66",
+      "contentFingerprint": "35827cb126c2a8720d88a6bae974f9a4d8474ab0912a5093a14995b44d867f6c",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "subUnit": "작도와 합동",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+      "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_INEQUALITY"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2022",
+      "rpmPrimaryPath": null,
+      "rpmSemanticStatus": "HOLD",
+      "primaryMethod": "작도 도구가 허용하는 조작을 구별하고 삼각형이 실제로 성립하는지 조건별로 점검한다.",
+      "decisiveStep": "길이를 옮기는 도구의 역할과 퇴화하지 않는 삼각형의 성립조건을 서로 다른 진술에 적용한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "도구 역할과 삼각형 성립 진술을 독립적으로 판단하며 결과 전달 또는 조건별 수학적 경우분기는 없다. 담당 검토자도 CASE_BRANCH 권고를 철회하고 NONE에 동의했다.",
+      "rpmL1": null,
+      "rpmL2": null,
+      "rpmL3": null,
+      "rpmL4": null,
+      "L1": "기본 도형",
+      "L2": "작도와 합동",
+      "L3": "기본 작도 도구와 절차",
+      "L4": "기본 작도 도구와 절차 — 조건별 풀이 골격",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#2",
+      "approvedSourceFingerprint": "214d2b5dee1ce841fb0088d5c48d4561fe559b67dbb21ebe74cd276f96c95b66",
+      "legacyLevel": "하",
       "runtimeSelectable": true
     },
     {
@@ -20276,6 +21641,88 @@
       "rawQuestionHash": "352d7a0bf09b47d5d1a17fe27c33b38214d359f74471b9e12b1f5759aa299c68"
     },
     {
+      "questionUid": "qid_v1_da359e1af270778eaba94a76f15ea85954775c38c2df5aee986dc8ca22deba1f",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": "15",
+      "sourceFingerprint": "ebb795598a2b34678d2c7be4fb30e451047ae0218984bd8140746aed91669e0c",
+      "contentFingerprint": "d1228e02b7d435394b091a0cdbdc21afe5b45e879b47e0dbab67d76578879aa0",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "subUnitKey": "M1-05-POSITION_RELATION",
+      "subUnit": "위치 관계",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
+      "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ALTERNATE_POSITION_IDENTIFICATION",
+      "crossConceptKeys": [
+        "CC_VERTICAL_ANGLES"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 1,
+      "level": "하",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "평행선과 각",
+        "l4": "동위각·엇각"
+      },
+      "primaryMethod": "두 직선의 평행 여부와 무관하게 횡단선에 대한 엇각의 위치를 찾는다.",
+      "decisiveStep": "다른 교점의 맞꼭지각에서 크기를 읽으며 평행선의 각 같음 성질을 임의 적용하지 않는다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "엇각 위치를 찾고 맞꼭지각 값으로 연결하는 순차 적용.",
+      "rpmL1": "기본 도형",
+      "rpmL2": "기본 도형",
+      "rpmL3": "평행선과 각",
+      "rpmL4": "동위각·엇각",
+      "L1": "기본 도형",
+      "L2": "기본 도형",
+      "L3": "동위각·엇각의 위치 판정",
+      "L4": "동위각·엇각의 위치 판정 — 조건별 풀이 골격",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#15",
+      "approvedSourceFingerprint": "ebb795598a2b34678d2c7be4fb30e451047ae0218984bd8140746aed91669e0c",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_da9b83852529e1fdd56738c9ce00053ef53bfed442781281466cdd2a1a97e4fd",
       "sourceArchiveFile": "original/middle/m1/2final/24_율촌중_2학기_기말_중1_기출.js",
       "sourceOrdinal": 10,
@@ -20865,6 +22312,88 @@
       "metaFoundationPackVersion": "1.0.1"
     },
     {
+      "questionUid": "qid_v1_e0bf633136ca14fc3f3192b62eec9bdffa4227f3153aae3edb2e8d4b3a443532",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "sourceFingerprint": "a661b41170e149f3f96c04ce05eceab91a12d15153c1586d0c7367288e566b87",
+      "contentFingerprint": "755591e8750f99bc961dc2107fb9d8769c91534344b37ec98241a556dab588a3",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "subUnit": "작도와 합동",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+      "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+      "crossConceptKeys": [
+        "CC_PARALLEL_LINE_ANGLES"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 합동",
+        "l4": "ASA 합동"
+      },
+      "primaryMethod": "평행선의 엇각으로 두 쌍의 대응각을 확보한다.",
+      "decisiveStep": "그 두 각 사이의 대응 변 조건을 보충하여 ASA 합동을 만드는지를 판단한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "기존 실제 순차 각 이동을 유지한다.",
+      "rpmL1": "기본 도형",
+      "rpmL2": "작도와 합동",
+      "rpmL3": "삼각형의 합동",
+      "rpmL4": "ASA 합동",
+      "L1": "기본 도형",
+      "L2": "작도와 합동",
+      "L3": "삼각형 합동·작도 유일조건",
+      "L4": "삼각형 합동·작도 유일조건 — 조건별 풀이 골격",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#12",
+      "approvedSourceFingerprint": "a661b41170e149f3f96c04ce05eceab91a12d15153c1586d0c7367288e566b87",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_e0d96fd992b45f6ad0aa8ddf38041ad48f4a982c4b5f9a7af3794a8dfedeb66a",
       "sourceArchiveFile": "original/middle/m1/2final/23_연향중_2학기_기말_중1_기출.js",
       "sourceOrdinal": 23,
@@ -21192,6 +22721,90 @@
       "metaFoundationPackVersion": "1.0.1",
       "catalogIdentityRepairVerified": true,
       "rawQuestionHash": "ecbb80c33ae227a2468e11b1e3af0b45f71c293c9d8e57327bb55983c3f36056"
+    },
+    {
+      "questionUid": "qid_v1_e4bb8690f6be4fd6e671583a743a1ecf03d39dd72f79adfbf0f5adc1375bdf1d",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": "11",
+      "sourceFingerprint": "f675de3fad01ebc6a8d070a75a301f7d7f8fa76f110922126def22f5cc5fe914",
+      "contentFingerprint": "cb4cf8c9f092d4fcf5c650fe9d7ccc50795222945936fe44009d1b6a604cc96a",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "subUnit": "작도와 합동",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+      "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_PARALLELOGRAM_MIDPOINT_AUDIT",
+      "crossConceptKeys": [
+        "CC_SEGMENT_MIDPOINT",
+        "CC_PARALLELOGRAMS",
+        "CC_RHOMBUS_PROPERTIES"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 합동",
+        "l4": "SAS 합동"
+      },
+      "primaryMethod": "평행사변형의 대변·각과 변의 중점 조건으로 바깥쪽 삼각형의 SAS 합동을 확인하고, 대응 관계로 보장되는 중점 사각형의 성질을 판정한다.",
+      "decisiveStep": "마주 보는 작은 삼각형의 합동으로 대응변의 같음과 평행 관계를 얻더라도 네 연결변이 모두 같다는 결론은 보장되지 않음을 구분한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "중점과 평행사변형 성질로 SAS 조건을 만든 다음 대응 관계를 옮겨 도형 성질을 판정하고, 마름모의 네 변 같음 조건이 보장되는지 구분한다. 대각선 성질은 사용하지 않는다.",
+      "rpmL1": "기본 도형",
+      "rpmL2": "작도와 합동",
+      "rpmL3": "삼각형의 합동",
+      "rpmL4": "SAS 합동",
+      "L1": "기본 도형",
+      "L2": "작도와 합동",
+      "L3": "합동인 삼각형의 대응 관계 적용",
+      "L4": "평행사변형의 변의 중점과 합동 성질 판정",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#11",
+      "approvedSourceFingerprint": "f675de3fad01ebc6a8d070a75a301f7d7f8fa76f110922126def22f5cc5fe914",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_e4c8588fb36c151d3687ed92d6d4b03c09f86a2cf3c7a379f092ce99df525149",
@@ -23567,6 +25180,86 @@
       "rawQuestionHash": "f884fab9f3f203b915a4423b11b64dfca65bca3b71ca58181713d414df54cf1a"
     },
     {
+      "questionUid": "qid_v1_fac60a43c600971e9c4fab3777b0163a99a3cf70e7435087bf1c115666752dab",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": "10",
+      "sourceFingerprint": "7d8d306886127b51c646b4de554c4d4acd4c8d4636c3f09b41772a548fad1b5c",
+      "contentFingerprint": "9ffdfb64c146f1e89fe21c86d5133e218e8d9e6f52ae7b809cce80108e8938fc",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-04",
+      "standardUnit": "좌표평면과 그래프",
+      "subUnitKey": "M1-04-GRAPH_RELATION",
+      "subUnit": "그래프와 관계",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_INVERSE_PROPORTION_WORK_APPLICATION",
+      "templateKey": "TPL_M1_INVERSE_PROPORTION_WORK_APPLICATION_REMAINING_WORK_RESOURCE_COUNT",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "관계 해석",
+        "l4": "정비례·반비례 활용"
+      },
+      "primaryMethod": "같은 성능의 기계 수와 작업 시간의 곱으로 작업량을 표현한다.",
+      "decisiveStep": "먼저 끝낸 작업량을 제외한 나머지를 정해진 시간으로 나누어 필요한 추가 기계 수를 판단한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-1",
+      "integrationReason": "보존된 작업량을 만든 뒤 남은 시간의 자원 수로 이어지는 순차 적용.",
+      "rpmL1": "좌표평면과 그래프",
+      "rpmL2": "정비례와 반비례",
+      "rpmL3": "관계 해석",
+      "rpmL4": "정비례·반비례 활용",
+      "L1": "좌표평면과 그래프",
+      "L2": "정비례와 반비례",
+      "L3": "반비례 관계의 작업량 활용",
+      "L4": "남은 작업량과 추가 자원 수",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#10",
+      "approvedSourceFingerprint": "7d8d306886127b51c646b4de554c4d4acd4c8d4636c3f09b41772a548fad1b5c",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_fad19424a17a7e6873eb4bda45fd5ff27c185c154696d68bdc00a30ac80c4ca7",
       "sourceArchiveFile": "original/middle/m1/2mid/23_신흥중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 21,
@@ -23888,6 +25581,86 @@
       "metaFoundationPackVersion": "1.0.1",
       "catalogIdentityRepairVerified": true,
       "rawQuestionHash": "2349cda630d8694e2677184a6611748c214b63fd098179ef7848d09688894bc6"
+    },
+    {
+      "questionUid": "qid_v1_ffce93ef42912eb61d142ffaadaf7bf56869adece6a6ed9beade2e717d08600b",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "sourceFingerprint": "41677c03f9bbf47ed99d13408d9dd3154804e190cbf0d40820b6f6264715da28",
+      "contentFingerprint": "722cf48095780f775acd22bcb1c71f4c6df0aed0996db801fa78129d3c2104fb",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "subUnitKey": "M1-05-POSITION_RELATION",
+      "subUnit": "위치 관계",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+      "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.7:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "평행선과 각",
+        "l4": "동위각·엇각"
+      },
+      "primaryMethod": "각 꺾인 점을 지나 주어진 평행선과 평행한 보조선을 놓아 각을 옮긴다.",
+      "decisiveStep": "연속된 선분의 기울어진 각을 같은 기준선에서 비교하고 평각 관계를 연결한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "integrationReason": "기존 실제 순차 각 이동을 유지한다.",
+      "rpmL1": "기본 도형",
+      "rpmL2": "기본 도형",
+      "rpmL3": "평행선과 각",
+      "rpmL4": "동위각·엇각",
+      "L1": "기본 도형",
+      "L2": "기본 도형",
+      "L3": "평행선 각의 이동·계산",
+      "L4": "평행선 각의 이동·계산 — 꺾인 선",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#13",
+      "approvedSourceFingerprint": "41677c03f9bbf47ed99d13408d9dd3154804e190cbf0d40820b6f6264715da28",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     }
   ],
   "reviewedApply": {
@@ -23897,7 +25670,7 @@
   },
   "usage": {
     "schemaVersion": "archive-reviewed-runtime-usage-v1",
-    "records": 613,
+    "records": 635,
     "problemTypes": [
       {
         "key": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
@@ -24050,7 +25823,7 @@
       },
       {
         "key": "PT_M1_BASIC_CONSTRUCTION",
-        "count": 12,
+        "count": 13,
         "questionUids": [
           "qid_v1_26a62a5c2fc811fe37310857f79339211a308a9983b16cec54deb0b0f8f0fb62",
           "qid_v1_327f09771869b52ae0f351b07d2eaa7c00dd1cbdadf759030ed5d8cafd503c5d",
@@ -24062,18 +25835,20 @@
           "qid_v1_aaed4a920ff547b8e0bee08ae3c53e25c5e7bcd98406f4e3f587f82d6d277088",
           "qid_v1_b90ec6186ab7bd94a04da73a32b8a33a967abdbe42f7b739a71c876b2331dd52",
           "qid_v1_bb21cef41c096bf9223df85a0f7b0c1a899f009be5157d573665ebe89c363512",
+          "qid_v1_c57da4ba1098bc858461c9928cef484c1e81bccf587ef91075d59ab2199264b1",
           "qid_v1_dc223f16f32b3b9f34468cae91c0993de71cfda31cbf566222f440213f0e3309",
           "qid_v1_fec346bc8d6987b87de4d2403e3360a7b857623df9b5d07bd71dbac8670137de"
         ]
       },
       {
         "key": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
-        "count": 9,
+        "count": 10,
         "questionUids": [
           "qid_v1_1d2afaddc1d81b7efd7022fb73f60f2052b8ccfea51916fbfa8455f849ceaf31",
           "qid_v1_58e924e1b4efb1a61e4cc1d8ceeef78866499dbdf6185a31d533d4a20b81d55d",
           "qid_v1_6027249b6d962e8571f30d916898fc33a4b5567b75637aca62bce4b655c691e8",
           "qid_v1_8228c2dc39bc673b58087774cbe345c34df54c41d6b2ee58cf7cb79f0f7c35b6",
+          "qid_v1_883588b373d439a971a7895ded9819b72d753b886850f4d6b614a70fe1c94dd6",
           "qid_v1_c974d3715eee24172d2c51fa7004092e4cdaf6901cb0809dc8b1f96df0ab33d5",
           "qid_v1_d6bbf87bf0397aa29c28dd495d9c84c4bc2b33eac4873c56a7c5aa247eafdc31",
           "qid_v1_dc26bd648c95de94950693bb64dbb3ec4ed02f75b1f94607f8e6013d8e6ef704",
@@ -24083,7 +25858,7 @@
       },
       {
         "key": "PT_M1_CENTRAL_TENDENCY",
-        "count": 14,
+        "count": 17,
         "questionUids": [
           "qid_v1_0019b9df13f238ac957eb65f84f1a08c6c070281c8f641b94bc558c0a9c6c325",
           "qid_v1_00dfff2608c2a51eb012e1e6731bb4e01c8b6411ef96c0817bbf1d3aba552ede",
@@ -24093,8 +25868,11 @@
           "qid_v1_1a8159b4dc0fa361db9e4e976d3a3b4009b4bc927f6fae737f7d54aa94dc1dde",
           "qid_v1_1d43773f9f7ec557e5f3adb3f76341b0b74d66a77caec88d748a25e2bbc6deb9",
           "qid_v1_302364d2906da59d5a0560d41215284529203449b2629139b32419bd90ec9988",
+          "qid_v1_3d56afccf7e200f169c308fe861e597fcba46e5cab6d7c7376be5f7359b3ff26",
           "qid_v1_458f376173dfd6cdeb7c629af8174a320c60714058b898a4ad4025338e386c59",
           "qid_v1_5877b6de040fb2ad6562ab96ec6affdeb618c0bdfd7017dbcce572c49e263953",
+          "qid_v1_5fc1c99bd44c3aa0d8a579b57b9dc692129f8f7aafa66734154c979f307196f2",
+          "qid_v1_6d302cad46fda4208bcacf6d853e9198738cc18e26c98f8e011bdad9672ef9f3",
           "qid_v1_7360cee3fca35b3d5cf90b163d1166a92ad3256528aafc796d1aa614a7310c39",
           "qid_v1_a31dd329f2f32b6dd728d785ef783aa23bb39967f34225509c16bee2e85d857a",
           "qid_v1_b027e5b3f5c39973e47737fcd9d8d1f3458dd25e95beb5d80d06e5b5a70ae053",
@@ -24112,13 +25890,14 @@
       },
       {
         "key": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-        "count": 20,
+        "count": 23,
         "questionUids": [
           "qid_v1_04ff9b066524c2ffdad5d559f03de2bff4129b1ab303b756d850608585d0da2b",
           "qid_v1_05be83079494ba6b1850ceab4979d35664fcb1604dce907d16aa7515eeadbcff",
           "qid_v1_17e6c904cd1c44040d705db9c6fd78d0d5a2eb108e2ee609e1ad15d0bc1bcdd0",
           "qid_v1_1e01b00ab530c126aa481fb9bcdddacd84d08ff2fb7bc1239a80662c9fb73337",
           "qid_v1_20cf7db610d665dde2c04cf24f0f2b245236974a3aedeb514d7ddaab05271454",
+          "qid_v1_48d2321fd14aa0bb4e7cca39b2c8699e2dd65c8fd5b21a533f635435552ec03a",
           "qid_v1_56f87fcf14af7ab287a95d89b4c77abbb8d815221cd55bce76e560b88b8cb16f",
           "qid_v1_7b6ffc097c4b1406b5cee2111ebb8986751ffe11d939b413e0f90e0da85945e7",
           "qid_v1_81e5051562bdeb0b10926e8bc782aa13c71aa2ae9dcddf7c62abf2271c09e66d",
@@ -24126,11 +25905,13 @@
           "qid_v1_9186bcceee53efe72b0e13937efe7e4cd4ddf2fa357f9950a327d2385183a3df",
           "qid_v1_aea91ff2aee36e64471b51611b378b47ddc73ffd6688757ed962e5163cc72300",
           "qid_v1_b47f2fc2289348b787e2f71a5ae1d786c327cd82781026dbeeeb03c90304b6ae",
+          "qid_v1_bab52ee228bcefba5cba3c3e098437496cea2050c01904e3da3ab63c81581df2",
           "qid_v1_bf6f71e848237887a135461e9cb5292a204545ac7e196eacc475b1b3025a7394",
           "qid_v1_c191c327afac4b082a2cc09357e670df4d22f116b31191efc94adc6a87cdddc3",
           "qid_v1_c950abe0adcc44eaffba7cfe0c8fcd6a74d340f55a6d66eb17653c8ed07fb86e",
           "qid_v1_c9a477acd78ede0dce4978e6cfeb2363c7bf2674a48bc870b16aa5a2f5123b91",
           "qid_v1_d99d376534558f06fbe56a3f0d545404584a3c027c5d740525544c9a26fb53bb",
+          "qid_v1_e4bb8690f6be4fd6e671583a743a1ecf03d39dd72f79adfbf0f5adc1375bdf1d",
           "qid_v1_ea1c02c0fc4a3a302541009cdbfdb2e8536ee43bdbda2338742b80857a9eb33a",
           "qid_v1_ecb7d226731657d3832253728c31705d65e2b3d3acf4a7d634dbb14965951109",
           "qid_v1_edee8f9e714e1207371a2824c92b071e55a199ca702224e7c10857bf45eb760b"
@@ -24145,12 +25926,13 @@
       },
       {
         "key": "PT_M1_CONGRUENCE_UNIQUENESS",
-        "count": 20,
+        "count": 22,
         "questionUids": [
           "qid_v1_009a623840f3787069338e221321fafe3af2e0e315d9cb5b4d353776d75ebe80",
           "qid_v1_025a73eed68b6fed04fa47743bbbe5544f813f3798212b4eca60f1b98e28c3be",
           "qid_v1_298a0fedf4b99765ce48e1a14852d07cb5fdda9c517e415eaad84ad0d478a0db",
           "qid_v1_46d0970904703919890161fa773121f2ece793c8039f23a6a7457eb0ea0d8069",
+          "qid_v1_489c87bbd253da2356fd202dd5103c28eccd0de434e4fd6995a7063d92b55575",
           "qid_v1_63f6f87ada000980090636747d14c464d02f8b8833e329b72f3df7b18eec46f4",
           "qid_v1_7a345aab19f66cfcf055ca795089dc4a4e01f956c61aa7a52e6e765fc6b16c03",
           "qid_v1_7db83a6ae9c81eaefc97010d65a010bac8d0dfa1add8e1f5abfb43729f58c08d",
@@ -24166,7 +25948,8 @@
           "qid_v1_c106eb02342dafd699290ae4ba21e9b0bbd143a3fa71634891cef3cde072f817",
           "qid_v1_ca9000b38594dad9cc69f42b7d259bee5168ffeee34548c87f187dbf6f58a55a",
           "qid_v1_d47f3ed83f1c4b59063a208d4fa43128aedd4985161b81e7853068df7d0af269",
-          "qid_v1_d79b4a2e071719e796531a0b951bbd1182de08c2d568138bf61456ab6b679e31"
+          "qid_v1_d79b4a2e071719e796531a0b951bbd1182de08c2d568138bf61456ab6b679e31",
+          "qid_v1_e0bf633136ca14fc3f3192b62eec9bdffa4227f3153aae3edb2e8d4b3a443532"
         ]
       },
       {
@@ -24288,7 +26071,7 @@
       },
       {
         "key": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-        "count": 42,
+        "count": 43,
         "questionUids": [
           "qid_v1_15f2e47348bf63423576837a477fe973019ceaa68f5facc7366620b289359948",
           "qid_v1_190a98ce4af486a1ce426c597a99fd6f9e1974a2d72936c8ae8cfbd09821a1a5",
@@ -24300,6 +26083,7 @@
           "qid_v1_36eeeafcfb65805b7903e7c578da232125eafb0c9efb103616d6addcd707fde5",
           "qid_v1_38e73b7fb61838240ac3f54280f124c8432dd18dbdba8e81d76a717d0900122c",
           "qid_v1_3ba438206da3f542e796716cb1f61bb6be502979079dd85368d0bbf4ce2f837f",
+          "qid_v1_3e86de14da10d8992dbc19f6545babb8e7d87c7f9a579cc79ecb29757262426e",
           "qid_v1_4fcdf70b120a3b9e8f0b47a1afb8867e4eff5cec7e9c84cd73182733d5f2b391",
           "qid_v1_53bb43a0e7a8e7f816a2ef7d5fa88bef4e7d3bcbf1ca3f02c547cda2047b7113",
           "qid_v1_549bea534b797d67c3588fd6fe794983dc48e9b11586a18ff8801275e4cc9a33",
@@ -24369,7 +26153,7 @@
       },
       {
         "key": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
-        "count": 21,
+        "count": 22,
         "questionUids": [
           "qid_v1_03b63a5a70843b23ac16c2497f7dbad5e0eba30b5b42058379223b2570539fde",
           "qid_v1_0e7ca2acc2e284db79f22c603bfdd6ff59d05ea407d20d8f882ba630661fd909",
@@ -24382,6 +26166,7 @@
           "qid_v1_82360a7b7c0dcf5598ee99eda28f2d679c48a0d7c5c3aeaad67f48e95c7b1ceb",
           "qid_v1_89c65b94851cec037d19479549e48725a97b4e5c00f8acd93a253463583abbf9",
           "qid_v1_8f7d1738a702ebc65b2633caf38a80a8847f99f27fad2de083091d9b2923cbba",
+          "qid_v1_9fdaf44f2d5156120df8007115c8393404e618be363a73a3c372357ab0a185fa",
           "qid_v1_aa623a01a88a431b94f6a9b886d26d0abd9dfe1595a0cf6161233cc6ecb8c90c",
           "qid_v1_b08700c4c662d1a8c2f833cccc0581b99b5b9b19bd3922802a0474a05dd6ed74",
           "qid_v1_b0e72da851709131c0f398f5a65d94d8617d16cfbd9f859ccf075e2d864832fe",
@@ -24399,6 +26184,20 @@
         "count": 1,
         "questionUids": [
           "qid_v1_f358749b173f238725258b1b48713ac005cbb6dad9fdf52c21aa19c3606803b9"
+        ]
+      },
+      {
+        "key": "PT_M1_INVERSE_PROPORTION_REGION_POINT_COUNT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_976adc004f55751504e0f92aafd1b6ec3f45c9e42af13b0a2b49c2a9f080ca0c"
+        ]
+      },
+      {
+        "key": "PT_M1_INVERSE_PROPORTION_WORK_APPLICATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_fac60a43c600971e9c4fab3777b0163a99a3cf70e7435087bf1c115666752dab"
         ]
       },
       {
@@ -24448,17 +26247,18 @@
       },
       {
         "key": "PT_M1_PARALLEL_ANGLE_POSITION",
-        "count": 4,
+        "count": 5,
         "questionUids": [
           "qid_v1_4c7fca50942ca10775327523c18ccbe2d18160249662d698ea44a96c72f5e774",
           "qid_v1_8e04e9e81b5a049d5794a239b45747becfbf678913389b33fc80be37d941d858",
           "qid_v1_b5eb8305a7eabfec1ca3a8c8ee8c7ef57c763f2bdfe3db97002c040e80a18a2b",
-          "qid_v1_d30666b93574b3715f1ac1e8c34bed5b3cff446548182ce418b892a731ce2b3b"
+          "qid_v1_d30666b93574b3715f1ac1e8c34bed5b3cff446548182ce418b892a731ce2b3b",
+          "qid_v1_da359e1af270778eaba94a76f15ea85954775c38c2df5aee986dc8ca22deba1f"
         ]
       },
       {
         "key": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-        "count": 20,
+        "count": 22,
         "questionUids": [
           "qid_v1_0d1fd103201754357d15a312b546ef0d59c024145e282209df6ce33f378a06d9",
           "qid_v1_11fa49c90c62aa2233f83a694f52816f8bafdba0e580d7635a3d2349670267ae",
@@ -24476,10 +26276,12 @@
           "qid_v1_9721c3ee3c0d0ee0e06c88a448b6f64cced95ed7e1a4f2c677e9e87e0b029979",
           "qid_v1_98cfbc3714e72da3018c6dfd4df8336bd847096e032efc6afced70c7bcab28d3",
           "qid_v1_9b386d78e9467b658acf1c14f7c0e2fdffac3a54b35a942be7e2bb6b477b04bd",
+          "qid_v1_a86218e4f1d4036989c499fc2e0a19036ff858458049473da7a544394ca9bcbb",
           "qid_v1_ad2f2b0c4a250ff7561604af9bf3aa7ac449ce3eaa05e73d0124022dcbd27522",
           "qid_v1_c45b20b2f087a643b82bdbc0405b2b2c1c96194ba953a77af50d9d15c31a1798",
           "qid_v1_d4876c0d4cd0e7dbf508cc8a783b7434fdc26b1f4f658c0378f9285ab5605ee8",
-          "qid_v1_e914cbbda8bdf9cbca6a70473c7e3c9c1e93350d313a97a6da59072b8ccda284"
+          "qid_v1_e914cbbda8bdf9cbca6a70473c7e3c9c1e93350d313a97a6da59072b8ccda284",
+          "qid_v1_ffce93ef42912eb61d142ffaadaf7bf56869adece6a6ed9beade2e717d08600b"
         ]
       },
       {
@@ -24560,7 +26362,7 @@
       },
       {
         "key": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-        "count": 33,
+        "count": 34,
         "questionUids": [
           "qid_v1_033e9f7a2a765b9c0c16ec9a3a7d1407ae2fd1581765f2718a9b3a5229908383",
           "qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6",
@@ -24573,6 +26375,7 @@
           "qid_v1_2c488c986ae8efd70625628ef07fec76e996fa529acf2097790859879838fa13",
           "qid_v1_3096b414386ca69f7d356adbe704b481843bbe095cf4f87b2f899766cb982e97",
           "qid_v1_31d055d81ade79007620d5df4d3deeb0460b58c0cc554378f737dd5ec57bc21b",
+          "qid_v1_347acf016e50757f50f493be205035c52686071e612c8f9ee44312d8f7e5e785",
           "qid_v1_5c4e9cf6e09e83dfc8025ef2bbb0b69d4c3bdcedd72209ed27fbd26b00c723b0",
           "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
           "qid_v1_6372722d084e7143f696f34386ab58dfff9aa865e5d9a25abe4dc4749587288e",
@@ -24638,17 +26441,26 @@
       },
       {
         "key": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
-        "count": 9,
+        "count": 11,
         "questionUids": [
           "qid_v1_226ab00a15cdd83fb024dd1ab239d6cf81d52dd967677ad57467a2a45c95024a",
           "qid_v1_347cec11bdd87cdf376940918f809ded960bafd665991cacc446d01933c45fe8",
+          "qid_v1_66b8bd71d68a153b6a7bdb56ff3536201ca5b0b7ca68e82b7a120b47ba8ce55b",
           "qid_v1_7b89ada83bc949f573a6d8f816e0e3364fd7f1701baa08a525892b26b0c987b2",
           "qid_v1_810f27ebcd030f103259cd1555bcefa6030ea74e731adcca52a207e48aa652c2",
           "qid_v1_9a70f8dfb14b04696845323d046dedded271684fd020f1c73fd3d7f3a800dffc",
           "qid_v1_9b06a2b045d6f5e081a7c64e47110bba18c582071ae27ca0030dc8e3a650796b",
+          "qid_v1_be5c74c260f54fd3283324a100fa4c69a1f876580f99076a1caa364716f6b497",
           "qid_v1_d485821d8e9f62c6ddb2f155dfd0d84a217db84aeeb32b41b9a3ce95629fd54a",
           "qid_v1_e33fa670068a0649ff0431a64e1551ae2694a047277ca6fa2a9633c5274825f2",
           "qid_v1_e5fe0ca82fd475e99ae092948f29d9364ee20bbdb554683320e5d0dec6340685"
+        ]
+      },
+      {
+        "key": "PT_M1_PROPORTIONAL_GRAPH_SEGMENT_DIVISION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_42849e0c412ae8bf1f70e578c0ccbce121008daaf975b9bcbed49176badc79b4"
         ]
       },
       {
@@ -24958,6 +26770,13 @@
           "qid_v1_1a1bf44472f42d87925735c9bcca8fdd109d29dd4bf2b95c8987072cbfd682fd",
           "qid_v1_abb5c81bbac900f33ad5c0017338493eb6f912f7bbf708980da211a2f4a308c5",
           "qid_v1_e9e18ecec0a323f92ed0a2996a4d1977897354e12b8f47bc672a87cf6c086643"
+        ]
+      },
+      {
+        "key": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_04eec2165bbc177b619ab9ca935330f6fd60a9906437f50a36f56aa18de7c95a"
         ]
       },
       {
@@ -25285,22 +27104,24 @@
       },
       {
         "key": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
-        "count": 6,
+        "count": 7,
         "questionUids": [
           "qid_v1_327f09771869b52ae0f351b07d2eaa7c00dd1cbdadf759030ed5d8cafd503c5d",
           "qid_v1_7de5c026452afe4b06cd702a3689dd9e46e028c57e61ef880d46a458c3b49ac1",
           "qid_v1_aaed4a920ff547b8e0bee08ae3c53e25c5e7bcd98406f4e3f587f82d6d277088",
           "qid_v1_bb21cef41c096bf9223df85a0f7b0c1a899f009be5157d573665ebe89c363512",
+          "qid_v1_c57da4ba1098bc858461c9928cef484c1e81bccf587ef91075d59ab2199264b1",
           "qid_v1_dc223f16f32b3b9f34468cae91c0993de71cfda31cbf566222f440213f0e3309",
           "qid_v1_fec346bc8d6987b87de4d2403e3360a7b857623df9b5d07bd71dbac8670137de"
         ]
       },
       {
         "key": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT",
-        "count": 4,
+        "count": 5,
         "questionUids": [
           "qid_v1_58e924e1b4efb1a61e4cc1d8ceeef78866499dbdf6185a31d533d4a20b81d55d",
           "qid_v1_8228c2dc39bc673b58087774cbe345c34df54c41d6b2ee58cf7cb79f0f7c35b6",
+          "qid_v1_883588b373d439a971a7895ded9819b72d753b886850f4d6b614a70fe1c94dd6",
           "qid_v1_dc26bd648c95de94950693bb64dbb3ec4ed02f75b1f94607f8e6013d8e6ef704",
           "qid_v1_e0749b87e3a770a0f5e83582b65e478c605c99b9cf09f9c55c1b49c24a18fc2c"
         ]
@@ -25325,12 +27146,14 @@
       },
       {
         "key": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
-        "count": 6,
+        "count": 8,
         "questionUids": [
           "qid_v1_00dfff2608c2a51eb012e1e6731bb4e01c8b6411ef96c0817bbf1d3aba552ede",
           "qid_v1_056cee7f231f924b06d6ac1e8d6acb5289faaa5667daffd7316fb8bf5be5115e",
           "qid_v1_0754392ac299a77344e7c664ec8f902cb8b8fd369ff852e3f41a366179969800",
+          "qid_v1_3d56afccf7e200f169c308fe861e597fcba46e5cab6d7c7376be5f7359b3ff26",
           "qid_v1_5877b6de040fb2ad6562ab96ec6affdeb618c0bdfd7017dbcce572c49e263953",
+          "qid_v1_5fc1c99bd44c3aa0d8a579b57b9dc692129f8f7aafa66734154c979f307196f2",
           "qid_v1_a31dd329f2f32b6dd728d785ef783aa23bb39967f34225509c16bee2e85d857a",
           "qid_v1_f1341a495f5a7ccc18d90ecd875f1fde57543b68890accc9912df177331f2cd6"
         ]
@@ -25344,8 +27167,9 @@
       },
       {
         "key": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
-        "count": 1,
+        "count": 2,
         "questionUids": [
+          "qid_v1_6d302cad46fda4208bcacf6d853e9198738cc18e26c98f8e011bdad9672ef9f3",
           "qid_v1_b027e5b3f5c39973e47737fcd9d8d1f3458dd25e95beb5d80d06e5b5a70ae053"
         ]
       },
@@ -25387,12 +27211,13 @@
       },
       {
         "key": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
-        "count": 9,
+        "count": 10,
         "questionUids": [
           "qid_v1_04ff9b066524c2ffdad5d559f03de2bff4129b1ab303b756d850608585d0da2b",
           "qid_v1_17e6c904cd1c44040d705db9c6fd78d0d5a2eb108e2ee609e1ad15d0bc1bcdd0",
           "qid_v1_1e01b00ab530c126aa481fb9bcdddacd84d08ff2fb7bc1239a80662c9fb73337",
           "qid_v1_20cf7db610d665dde2c04cf24f0f2b245236974a3aedeb514d7ddaab05271454",
+          "qid_v1_48d2321fd14aa0bb4e7cca39b2c8699e2dd65c8fd5b21a533f635435552ec03a",
           "qid_v1_7b6ffc097c4b1406b5cee2111ebb8986751ffe11d939b413e0f90e0da85945e7",
           "qid_v1_b47f2fc2289348b787e2f71a5ae1d786c327cd82781026dbeeeb03c90304b6ae",
           "qid_v1_c950abe0adcc44eaffba7cfe0c8fcd6a74d340f55a6d66eb17653c8ed07fb86e",
@@ -25418,10 +27243,18 @@
       },
       {
         "key": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
-        "count": 2,
+        "count": 3,
         "questionUids": [
           "qid_v1_81e5051562bdeb0b10926e8bc782aa13c71aa2ae9dcddf7c62abf2271c09e66d",
+          "qid_v1_bab52ee228bcefba5cba3c3e098437496cea2050c01904e3da3ab63c81581df2",
           "qid_v1_c191c327afac4b082a2cc09357e670df4d22f116b31191efc94adc6a87cdddc3"
+        ]
+      },
+      {
+        "key": "TPL_M1_CONGRUENCE_DATA_TRANSFER_PARALLELOGRAM_MIDPOINT_AUDIT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_e4bb8690f6be4fd6e671583a743a1ecf03d39dd72f79adfbf0f5adc1375bdf1d"
         ]
       },
       {
@@ -25443,7 +27276,7 @@
       },
       {
         "key": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
-        "count": 9,
+        "count": 10,
         "questionUids": [
           "qid_v1_009a623840f3787069338e221321fafe3af2e0e315d9cb5b4d353776d75ebe80",
           "qid_v1_025a73eed68b6fed04fa47743bbbe5544f813f3798212b4eca60f1b98e28c3be",
@@ -25453,15 +27286,17 @@
           "qid_v1_a6ceeb35b7ba09a5b00052f47c6b595650b768aea85ae5008b3e5899db678bb0",
           "qid_v1_a7d01443ac0a2cdb46267328dd93f01f0b54c93ac012191db7569d44a14050d8",
           "qid_v1_c106eb02342dafd699290ae4ba21e9b0bbd143a3fa71634891cef3cde072f817",
-          "qid_v1_d79b4a2e071719e796531a0b951bbd1182de08c2d568138bf61456ab6b679e31"
+          "qid_v1_d79b4a2e071719e796531a0b951bbd1182de08c2d568138bf61456ab6b679e31",
+          "qid_v1_e0bf633136ca14fc3f3192b62eec9bdffa4227f3153aae3edb2e8d4b3a443532"
         ]
       },
       {
         "key": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
-        "count": 11,
+        "count": 12,
         "questionUids": [
           "qid_v1_298a0fedf4b99765ce48e1a14852d07cb5fdda9c517e415eaad84ad0d478a0db",
           "qid_v1_46d0970904703919890161fa773121f2ece793c8039f23a6a7457eb0ea0d8069",
+          "qid_v1_489c87bbd253da2356fd202dd5103c28eccd0de434e4fd6995a7063d92b55575",
           "qid_v1_63f6f87ada000980090636747d14c464d02f8b8833e329b72f3df7b18eec46f4",
           "qid_v1_7db83a6ae9c81eaefc97010d65a010bac8d0dfa1add8e1f5abfb43729f58c08d",
           "qid_v1_84af768ddb3b17d734bd6f0a01a3c24401cb84f5f93aa707cdf673021f1a7278",
@@ -25746,9 +27581,10 @@
       },
       {
         "key": "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE",
-        "count": 1,
+        "count": 2,
         "questionUids": [
-          "qid_v1_15f2e47348bf63423576837a477fe973019ceaa68f5facc7366620b289359948"
+          "qid_v1_15f2e47348bf63423576837a477fe973019ceaa68f5facc7366620b289359948",
+          "qid_v1_3e86de14da10d8992dbc19f6545babb8e7d87c7f9a579cc79ecb29757262426e"
         ]
       },
       {
@@ -25804,11 +27640,12 @@
       },
       {
         "key": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
-        "count": 7,
+        "count": 8,
         "questionUids": [
           "qid_v1_0e7ca2acc2e284db79f22c603bfdd6ff59d05ea407d20d8f882ba630661fd909",
           "qid_v1_350536c630d010cd125389c9a7394796133c097d4ddd7a54d2a982a8016715ea",
           "qid_v1_8f7d1738a702ebc65b2633caf38a80a8847f99f27fad2de083091d9b2923cbba",
+          "qid_v1_9fdaf44f2d5156120df8007115c8393404e618be363a73a3c372357ab0a185fa",
           "qid_v1_b08700c4c662d1a8c2f833cccc0581b99b5b9b19bd3922802a0474a05dd6ed74",
           "qid_v1_cd50cb80a21017480239a7bc4b0869a81c8ef4b23c78309437ee0d8405bcf363",
           "qid_v1_e0472a1a1821131d7706f37bc8d92cdd1e492f840f70a1304ac8b902e7d7b602",
@@ -25846,6 +27683,20 @@
         "count": 1,
         "questionUids": [
           "qid_v1_f358749b173f238725258b1b48713ac005cbb6dad9fdf52c21aa19c3606803b9"
+        ]
+      },
+      {
+        "key": "TPL_M1_INVERSE_PROPORTION_REGION_POINT_COUNT_STRICT_BELOW_NATURAL_POINTS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_976adc004f55751504e0f92aafd1b6ec3f45c9e42af13b0a2b49c2a9f080ca0c"
+        ]
+      },
+      {
+        "key": "TPL_M1_INVERSE_PROPORTION_WORK_APPLICATION_REMAINING_WORK_RESOURCE_COUNT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_fac60a43c600971e9c4fab3777b0163a99a3cf70e7435087bf1c115666752dab"
         ]
       },
       {
@@ -25937,9 +27788,10 @@
       },
       {
         "key": "TPL_M1_PARALLEL_ANGLE_POSITION_ALTERNATE_POSITION_IDENTIFICATION",
-        "count": 1,
+        "count": 2,
         "questionUids": [
-          "qid_v1_4c7fca50942ca10775327523c18ccbe2d18160249662d698ea44a96c72f5e774"
+          "qid_v1_4c7fca50942ca10775327523c18ccbe2d18160249662d698ea44a96c72f5e774",
+          "qid_v1_da359e1af270778eaba94a76f15ea85954775c38c2df5aee986dc8ca22deba1f"
         ]
       },
       {
@@ -25967,7 +27819,7 @@
       },
       {
         "key": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
-        "count": 10,
+        "count": 11,
         "questionUids": [
           "qid_v1_25cbb2897f352abb6788b1a79c9a30bfe250b83a855c493cc4627dceb58beeca",
           "qid_v1_273c3b790a7a14f7395664b49b8410e832a2f4659ea23cbb55dec00fc1a04fe6",
@@ -25978,7 +27830,8 @@
           "qid_v1_98cfbc3714e72da3018c6dfd4df8336bd847096e032efc6afced70c7bcab28d3",
           "qid_v1_9b386d78e9467b658acf1c14f7c0e2fdffac3a54b35a942be7e2bb6b477b04bd",
           "qid_v1_c45b20b2f087a643b82bdbc0405b2b2c1c96194ba953a77af50d9d15c31a1798",
-          "qid_v1_d4876c0d4cd0e7dbf508cc8a783b7434fdc26b1f4f658c0378f9285ab5605ee8"
+          "qid_v1_d4876c0d4cd0e7dbf508cc8a783b7434fdc26b1f4f658c0378f9285ab5605ee8",
+          "qid_v1_ffce93ef42912eb61d142ffaadaf7bf56869adece6a6ed9beade2e717d08600b"
         ]
       },
       {
@@ -25990,10 +27843,11 @@
       },
       {
         "key": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
-        "count": 4,
+        "count": 5,
         "questionUids": [
           "qid_v1_11fa49c90c62aa2233f83a694f52816f8bafdba0e580d7635a3d2349670267ae",
           "qid_v1_9721c3ee3c0d0ee0e06c88a448b6f64cced95ed7e1a4f2c677e9e87e0b029979",
+          "qid_v1_a86218e4f1d4036989c499fc2e0a19036ff858458049473da7a544394ca9bcbb",
           "qid_v1_ad2f2b0c4a250ff7561604af9bf3aa7ac449ce3eaa05e73d0124022dcbd27522",
           "qid_v1_e914cbbda8bdf9cbca6a70473c7e3c9c1e93350d313a97a6da59072b8ccda284"
         ]
@@ -26172,8 +28026,9 @@
       },
       {
         "key": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT",
-        "count": 1,
+        "count": 2,
         "questionUids": [
+          "qid_v1_347acf016e50757f50f493be205035c52686071e612c8f9ee44312d8f7e5e785",
           "qid_v1_fc2ead11b5e2bb900a94b558e5cda55cc4916a6af95e0b663b630034915e5e93"
         ]
       },
@@ -26265,17 +28120,19 @@
       },
       {
         "key": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
-        "count": 3,
+        "count": 4,
         "questionUids": [
           "qid_v1_347cec11bdd87cdf376940918f809ded960bafd665991cacc446d01933c45fe8",
+          "qid_v1_66b8bd71d68a153b6a7bdb56ff3536201ca5b0b7ca68e82b7a120b47ba8ce55b",
           "qid_v1_7b89ada83bc949f573a6d8f816e0e3364fd7f1701baa08a525892b26b0c987b2",
           "qid_v1_9b06a2b045d6f5e081a7c64e47110bba18c582071ae27ca0030dc8e3a650796b"
         ]
       },
       {
         "key": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
-        "count": 2,
+        "count": 3,
         "questionUids": [
+          "qid_v1_be5c74c260f54fd3283324a100fa4c69a1f876580f99076a1caa364716f6b497",
           "qid_v1_d485821d8e9f62c6ddb2f155dfd0d84a217db84aeeb32b41b9a3ce95629fd54a",
           "qid_v1_e5fe0ca82fd475e99ae092948f29d9364ee20bbdb554683320e5d0dec6340685"
         ]
@@ -26288,6 +28145,13 @@
           "qid_v1_810f27ebcd030f103259cd1555bcefa6030ea74e731adcca52a207e48aa652c2",
           "qid_v1_9a70f8dfb14b04696845323d046dedded271684fd020f1c73fd3d7f3a800dffc",
           "qid_v1_e33fa670068a0649ff0431a64e1551ae2694a047277ca6fa2a9633c5274825f2"
+        ]
+      },
+      {
+        "key": "TPL_M1_PROPORTIONAL_GRAPH_HORIZONTAL_DIVISION_AXIS_PROJECTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_42849e0c412ae8bf1f70e578c0ccbce121008daaf975b9bcbed49176badc79b4"
         ]
       },
       {
@@ -26792,6 +28656,13 @@
         ]
       },
       {
+        "key": "TPL_M1_TRIANGLE_CONSTRUCTION_ORDER_ASA_VERTEX_DEPENDENCY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_04eec2165bbc177b619ab9ca935330f6fd60a9906437f50a36f56aa18de7c95a"
+        ]
+      },
+      {
         "key": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_PERIMETER_CASES",
         "count": 4,
         "questionUids": [
@@ -26966,8 +28837,9 @@
       },
       {
         "key": "CC_FREQUENCY_DISTRIBUTION_TABLE",
-        "count": 2,
+        "count": 3,
         "questionUids": [
+          "qid_v1_3d56afccf7e200f169c308fe861e597fcba46e5cab6d7c7376be5f7359b3ff26",
           "qid_v1_802cde2ac31a51b8ccfd0319c392ef3f3ba9a17998b37729eba08f38dba28259",
           "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905"
         ]
@@ -27002,6 +28874,13 @@
         ]
       },
       {
+        "key": "CC_MODE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_3e86de14da10d8992dbc19f6545babb8e7d87c7f9a579cc79ecb29757262426e"
+        ]
+      },
+      {
         "key": "CC_NUMBER_DIVISOR_MULTIPLE",
         "count": 1,
         "questionUids": [
@@ -27031,13 +28910,15 @@
       },
       {
         "key": "CC_PARALLEL_LINE_ANGLES",
-        "count": 5,
+        "count": 7,
         "questionUids": [
           "qid_v1_11fa49c90c62aa2233f83a694f52816f8bafdba0e580d7635a3d2349670267ae",
           "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f",
           "qid_v1_82e0c79c6f7e1282d2302430461bc75232191b1d0ab3571c01a86471baa0a04a",
+          "qid_v1_883588b373d439a971a7895ded9819b72d753b886850f4d6b614a70fe1c94dd6",
           "qid_v1_9e3fb9c25efc48190feab764a74c2f6862e4224a70f6f4f748c288d6d726a7aa",
-          "qid_v1_d4876c0d4cd0e7dbf508cc8a783b7434fdc26b1f4f658c0378f9285ab5605ee8"
+          "qid_v1_d4876c0d4cd0e7dbf508cc8a783b7434fdc26b1f4f658c0378f9285ab5605ee8",
+          "qid_v1_e0bf633136ca14fc3f3192b62eec9bdffa4227f3153aae3edb2e8d4b3a443532"
         ]
       },
       {
@@ -27048,9 +28929,17 @@
         ]
       },
       {
-        "key": "CC_PERCENTAGE_CALCULATION",
-        "count": 2,
+        "key": "CC_PARALLELOGRAMS",
+        "count": 1,
         "questionUids": [
+          "qid_v1_e4bb8690f6be4fd6e671583a743a1ecf03d39dd72f79adfbf0f5adc1375bdf1d"
+        ]
+      },
+      {
+        "key": "CC_PERCENTAGE_CALCULATION",
+        "count": 3,
+        "questionUids": [
+          "qid_v1_3e86de14da10d8992dbc19f6545babb8e7d87c7f9a579cc79ecb29757262426e",
           "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598",
           "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905"
         ]
@@ -27077,6 +28966,20 @@
         ]
       },
       {
+        "key": "CC_QUADRANTS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_be5c74c260f54fd3283324a100fa4c69a1f876580f99076a1caa364716f6b497"
+        ]
+      },
+      {
+        "key": "CC_RATIO_AND_PROPORTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_42849e0c412ae8bf1f70e578c0ccbce121008daaf975b9bcbed49176badc79b4"
+        ]
+      },
+      {
         "key": "CC_RATIONAL_RECIPROCAL",
         "count": 1,
         "questionUids": [
@@ -27098,12 +29001,20 @@
         ]
       },
       {
+        "key": "CC_RHOMBUS_PROPERTIES",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_e4bb8690f6be4fd6e671583a743a1ecf03d39dd72f79adfbf0f5adc1375bdf1d"
+        ]
+      },
+      {
         "key": "CC_SEGMENT_MIDPOINT",
-        "count": 3,
+        "count": 4,
         "questionUids": [
           "qid_v1_6d0a2353ed2d1be344b29036b16896a6d4c618fbd2c518074dcedcc48599fc78",
           "qid_v1_8228c2dc39bc673b58087774cbe345c34df54c41d6b2ee58cf7cb79f0f7c35b6",
-          "qid_v1_b7eba583a5f8b279a38796bb1eafe7f57b6950dad03a27b29a5494538cfb5720"
+          "qid_v1_b7eba583a5f8b279a38796bb1eafe7f57b6950dad03a27b29a5494538cfb5720",
+          "qid_v1_e4bb8690f6be4fd6e671583a743a1ecf03d39dd72f79adfbf0f5adc1375bdf1d"
         ]
       },
       {
@@ -27122,8 +29033,9 @@
       },
       {
         "key": "CC_SPATIAL_POSITION_RELATION",
-        "count": 1,
+        "count": 2,
         "questionUids": [
+          "qid_v1_883588b373d439a971a7895ded9819b72d753b886850f4d6b614a70fe1c94dd6",
           "qid_v1_b3ccc5bd3cc2e7bc3bec8c7e019c10df316730f5984bea3de02af0d3edcc927b"
         ]
       },
@@ -27155,9 +29067,11 @@
       },
       {
         "key": "CC_TRIANGLE_ANGLE_SUM",
-        "count": 3,
+        "count": 5,
         "questionUids": [
           "qid_v1_20cf7db610d665dde2c04cf24f0f2b245236974a3aedeb514d7ddaab05271454",
+          "qid_v1_489c87bbd253da2356fd202dd5103c28eccd0de434e4fd6995a7063d92b55575",
+          "qid_v1_48d2321fd14aa0bb4e7cca39b2c8699e2dd65c8fd5b21a533f635435552ec03a",
           "qid_v1_7b6ffc097c4b1406b5cee2111ebb8986751ffe11d939b413e0f90e0da85945e7",
           "qid_v1_d47f3ed83f1c4b59063a208d4fa43128aedd4985161b81e7853068df7d0af269"
         ]
@@ -27181,18 +29095,20 @@
       },
       {
         "key": "CC_TRIANGLE_INEQUALITY",
-        "count": 3,
+        "count": 4,
         "questionUids": [
           "qid_v1_298a0fedf4b99765ce48e1a14852d07cb5fdda9c517e415eaad84ad0d478a0db",
+          "qid_v1_c57da4ba1098bc858461c9928cef484c1e81bccf587ef91075d59ab2199264b1",
           "qid_v1_d47f3ed83f1c4b59063a208d4fa43128aedd4985161b81e7853068df7d0af269",
           "qid_v1_d91af73670352d7d8c510ced2a05437d57c6cb47c62c250c3e4b50925244d58c"
         ]
       },
       {
         "key": "CC_VERTICAL_ANGLES",
-        "count": 2,
+        "count": 3,
         "questionUids": [
           "qid_v1_c4734e15ce731560fe8bfd5c52b47434248d820a881b48fc6941d9010096bcf6",
+          "qid_v1_da359e1af270778eaba94a76f15ea85954775c38c2df5aee986dc8ca22deba1f",
           "qid_v1_e8d3e7a91931e0ac34f0c811281f881f4c2e36e6d924e57fe1bc45459cbeb690"
         ]
       }
@@ -27214,7 +29130,7 @@
       },
       {
         "key": "COND_NATURAL_NUMBER",
-        "count": 20,
+        "count": 21,
         "questionUids": [
           "qid_v1_02d7e658bd500b0b67008fed8250bef0e87e8461fe3d30c39d873e84477c3fae",
           "qid_v1_20eb1925e02082e0bc984ef8d4987a2b84d0b33b8bdbdb69653dcea1774ea529",
@@ -27228,6 +29144,7 @@
           "qid_v1_857098e9fa0fa6ef17a0437a5b518c4d6a5be84011c0125738c8a56ef60cc205",
           "qid_v1_8d9cda25fe1e3f201e768645f4f76ac88c91fead674d17cef2decda2845cfc2b",
           "qid_v1_93d23f09e6b4ba421810c56393949ce5910e7d0c7bf416ed78ea055842f93c2e",
+          "qid_v1_976adc004f55751504e0f92aafd1b6ec3f45c9e42af13b0a2b49c2a9f080ca0c",
           "qid_v1_a1a75735b2684fb4a04060caf8402f197a419419d376cffc70aa293b8e15a0b6",
           "qid_v1_b4475d3f516df4ae69b21504a246224731bfdd510be6b7ef1691d9072a0b062f",
           "qid_v1_bccedcb814a339234aed0562db801fe5e9ebb7c5b1ae0832ed5ac55cc32f0360",

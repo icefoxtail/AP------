@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 90,
-  "templateCount": 205,
+  "problemTypeCount": 94,
+  "templateCount": 210,
   "problemTypes": [
     {
       "problemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
@@ -2910,6 +2910,66 @@
       "supportingItemCount": 1,
       "supportingQuestionUids": [
         "qid_v1_df32ee2e668d920b4718216a37e3012094fd902f9fd558a5bdb60c17042c20a3"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+      "canonicalLabelKo": "삼각형의 작도 순서와 선행조건",
+      "definition": "주어진 변과 각으로 삼각형을 작도할 때 각 단계에 필요한 꼭짓점과 선분이 먼저 정해졌는지 확인하여 가능한 구성 순서를 판단한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_04eec2165bbc177b619ab9ca935330f6fd60a9906437f50a36f56aa18de7c95a"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_INVERSE_PROPORTION_WORK_APPLICATION",
+      "canonicalLabelKo": "반비례 관계의 작업량 활용",
+      "definition": "같은 작업 효율에서 자원 수와 시간의 곱으로 전체 작업량을 나타내고 작업 조건의 변화를 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "sourceUnits": [
+        "M1-04"
+      ],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_fac60a43c600971e9c4fab3777b0163a99a3cf70e7435087bf1c115666752dab"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_INVERSE_PROPORTION_REGION_POINT_COUNT",
+      "canonicalLabelKo": "반비례 그래프 영역의 격자점 개수",
+      "definition": "양의 반비례 그래프와 좌표축 사이 영역에 들어가는 자연수 좌표 점을 경계 포함 여부에 맞춰 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "sourceUnits": [
+        "M1-04"
+      ],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_976adc004f55751504e0f92aafd1b6ec3f45c9e42af13b0a2b49c2a9f080ca0c"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_PROPORTIONAL_GRAPH_SEGMENT_DIVISION",
+      "canonicalLabelKo": "정비례 그래프의 좌표와 선분 분할",
+      "definition": "정비례식과 공통 좌표 조건으로 점의 좌표를 결정하고, 같은 좌표축에 평행한 선분의 길이와 비례배분으로 분할점의 위치를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "sourceUnits": [
+        "M1-04"
+      ],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_42849e0c412ae8bf1f70e578c0ccbce121008daaf975b9bcbed49176badc79b4"
       ]
     }
   ],
@@ -8982,6 +9042,98 @@
       "observedConditionKeys": [],
       "observedIntegrationPatterns": [
         "DIRECT"
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_TRIANGLE_CONSTRUCTION_ORDER_ASA_VERTEX_DEPENDENCY",
+      "parentProblemTypeKey": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+      "canonicalLabelKo": "한 변과 양 끝각 작도의 꼭짓점 선행조건",
+      "definition": "한 변과 양 끝각으로 삼각형을 작도할 때 각을 옮길 끝점이 먼저 결정되어야 한다는 조건으로 작도 순서를 판정한다.",
+      "internalSkeleton": "각 단계 직전에 확정된 꼭짓점과 선분을 추적하고, 아직 정해지지 않은 꼭짓점을 요구하는 작도를 배제하여 유효한 순서를 판단한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_04eec2165bbc177b619ab9ca935330f6fd60a9906437f50a36f56aa18de7c95a"
+      ],
+      "observedConditionKeys": [],
+      "observedIntegrationPatterns": [
+        "NONE"
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_INVERSE_PROPORTION_WORK_APPLICATION_REMAINING_WORK_RESOURCE_COUNT",
+      "parentProblemTypeKey": "PT_M1_INVERSE_PROPORTION_WORK_APPLICATION",
+      "canonicalLabelKo": "남은 작업량과 추가 자원 수",
+      "definition": "일부 작업을 마친 뒤 남은 시간 안에 작업을 끝내도록 필요한 자원 수의 증가량을 정한다.",
+      "internalSkeleton": "전체 자원·시간 곱으로 작업량을 정한다 → 완료된 작업량을 뺀다 → 남은 작업량을 남은 시간으로 나눈다 → 기존 자원 수와 비교한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_fac60a43c600971e9c4fab3777b0163a99a3cf70e7435087bf1c115666752dab"
+      ],
+      "observedConditionKeys": [],
+      "observedIntegrationPatterns": [
+        "SEQUENTIAL"
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_PARALLELOGRAM_MIDPOINT_AUDIT",
+      "parentProblemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+      "canonicalLabelKo": "평행사변형의 변의 중점과 합동 성질 판정",
+      "definition": "평행사변형의 대변·각과 변의 중점 조건으로 보조 삼각형의 SAS 합동을 확인하고, 대응변·대응각으로 보장되는 중점 사각형의 성질과 항상 성립하지 않는 성질을 구분한다.",
+      "internalSkeleton": "중점으로 반변의 길이 관계를 확인한다 → 평행사변형의 대변·각과 함께 SAS 합동을 만든다 → 대응 요소를 옮긴다 → 중점 사각형의 성질이 항상 성립하는지 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_e4bb8690f6be4fd6e671583a743a1ecf03d39dd72f79adfbf0f5adc1375bdf1d"
+      ],
+      "observedConditionKeys": [],
+      "observedIntegrationPatterns": [
+        "SEQUENTIAL"
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_INVERSE_PROPORTION_REGION_POINT_COUNT_STRICT_BELOW_NATURAL_POINTS",
+      "parentProblemTypeKey": "PT_M1_INVERSE_PROPORTION_REGION_POINT_COUNT",
+      "canonicalLabelKo": "그래프 아래 열린 영역의 자연수 좌표 점",
+      "definition": "그래프 아래이고 곡선은 제외되는 영역의 자연수 좌표 점 개수로 비례상수 또는 조건을 판별한다.",
+      "internalSkeleton": "좌표의 곱이 비례상수보다 작다는 조건을 정한다 → 자연수 가로 좌표마다 가능한 세로 좌표 수를 센다 → 합계와 제시된 개수 조건을 비교한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_976adc004f55751504e0f92aafd1b6ec3f45c9e42af13b0a2b49c2a9f080ca0c"
+      ],
+      "observedConditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "observedIntegrationPatterns": [
+        "SEQUENTIAL"
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_PROPORTIONAL_GRAPH_HORIZONTAL_DIVISION_AXIS_PROJECTION",
+      "parentProblemTypeKey": "PT_M1_PROPORTIONAL_GRAPH_SEGMENT_DIVISION",
+      "canonicalLabelKo": "공통 세로좌표의 선분 분할과 축 투영",
+      "definition": "두 정비례식에 공통 세로좌표를 대입하여 두 점의 가로좌표를 구한 뒤, 수평 선분의 길이와 분할비로 내분점을 정하고 x축에 내린 수선의 발을 읽는다.",
+      "internalSkeleton": "공통 y값 대입 → 각 x값 결정 → 가로좌표 차이로 선분 길이 → 주어진 비에 따른 가로 이동량 → 분할점 좌표 → 세로좌표를 0으로 바꾼 축 위 점.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_42849e0c412ae8bf1f70e578c0ccbce121008daaf975b9bcbed49176badc79b4"
+      ],
+      "observedConditionKeys": [],
+      "observedIntegrationPatterns": [
+        "SEQUENTIAL"
       ]
     }
   ],
