@@ -53,13 +53,17 @@
       "questionCount": 24,
       "baseSourceGitBlob": "7903fe2ceadcc2fe34f0bbf77aa8fd5e67054af5",
       "baseSourceSha256": "fece6adca630912537ada3da98a3e5215c02c04596afabddb961fb0ecd745e03",
-      "state": "REVIEW_COMPLETE_WITH_EXPLICIT_HOLDS",
+      "state": "REVIEW_COMPLETE_Q14_SOURCE_PUBLICATION_HOLD",
       "completedQuestions": 24,
       "reviewArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/03-wangun-mid-review.json",
-      "nextAction": "REQUIRED_CI_THEN_MAIN_MERGE",
-      "fourSlot": "COMPACT_IMPORTED_24_INDEPENDENT_SAMPLE_3",
-      "sourceBlob": "c831c3a8cb263f2be9f612317704ee12a906d311",
-      "nativeRegistration": "HOLD_24_IDENTITY_SOURCE_FINGERPRINT"
+      "nextAction": "REBIND_4SLOT_THEN_REQUIRED_CI; Q14_OFFICIAL_SHARED_PARENT_REPAIR",
+      "fourSlot": "24_DESCRIPTORS_UNCHANGED_REBIND_PENDING",
+      "sourceBlob": "adb1256f6034ca7a931557b6069c5c94b047d2fd",
+      "nativeRegistration": "HOLD_24_IDENTITY_SOURCE_FINGERPRINT",
+      "sourceMetadataApplied": 23,
+      "sourcePublicationHolds": [
+        14
+      ]
     },
     {
       "sourcePath": "archive/exams/original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
@@ -76,12 +80,12 @@
     }
   ],
   "validation": {
-    "semantic": "IN_PROGRESS",
-    "uidAndOfficialTypeParents": "NOT_RUN",
-    "fourSlotIndependentSamples": "NOT_RUN",
-    "studentContentPreservation": "NOT_RUN",
-    "prCI": "NOT_RUN",
-    "registration": "NOT_RUN",
+    "semantic": "REVIEW_COMPLETE_WITH_EXPLICIT_HOLDS",
+    "uidAndOfficialTypeParents": "96_UIDS_CHECKED_FORMAL80_EXACT_COURSE77_SEMANTIC_EXACT59",
+    "fourSlotIndependentSamples": "12_SAMPLES_ACCEPTED_WITH_PALMA_MID_Q15_TEXT_ONLY_LIMIT",
+    "studentContentPreservation": "PASS_96",
+    "prCI": "FAIL_7D918_UNIFIED_Q14_ISOLATION_RETRY_PENDING",
+    "registration": "NATIVE_HOLD96_IDENTITY_MISMATCH; MAIN_FOURSLOT_NOT_RUN",
     "deployment": "NOT_RUN",
     "wangunSourcePreservation": "PASS_24",
     "wangunNativeRegistration": "HOLD_24_IDENTITY_FINGERPRINT",
@@ -108,13 +112,49 @@
     "difficultyAssigned": 95,
     "difficultyVisualHold": 1,
     "legacyLevelChanged": 0,
-    "scopedProductionConsumer": "96_ROWS_EXACT_BLOB_PENDING0",
+    "scopedProductionConsumer": "PREVIOUS_96_PASS; CURRENT_SOURCE_BLOB_RECHECK_PENDING",
     "termPostingChecks": {
       "positiveOccurrences": 585,
       "postingSetQueries": 230
+    },
+    "sourceMetadataApplied": 95,
+    "sourcePublicationHold": 1,
+    "reviewedDifficultyAssigned": 95,
+    "publishedDifficultyDistribution": {
+      "1": 30,
+      "2": 49,
+      "3": 16,
+      "HOLD": 1
+    },
+    "publishedDifficultyHistoricalUnapprovedOrdinals": {
+      "wangun-mid": [
+        14
+      ]
     }
   },
-  "nextAction": "REQUIRED_CI_THEN_MAIN_MERGE",
+  "nextAction": "REBIND_4SLOT_THEN_REQUIRED_CI_THEN_MAIN_MERGE",
   "batchPr": 1973,
-  "verificationArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/verification.json"
+  "verificationArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/verification.json",
+  "publicationHolds": [
+    {
+      "status": "HOLD_SHARED_PARENT_CONSUMER_CONFLICT",
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_5dc391015ed027a806eaf6697a7f49cbf59c8c1a68b99a62a59c67aeb1be5194",
+      "reviewedCorrectionPreservedAt": "7d91834add635654d6a5c718464ca6678295822d",
+      "retainedBaselineMainSha": "573fa32804480b2d70f7536b211e240e8d64d5ed",
+      "retainedBaselineSourceBlob": "7903fe2ceadcc2fe34f0bbf77aa8fd5e67054af5",
+      "retainedSourceMeaning": "Historical metadata retained without semantic approval",
+      "reviewedMeaning": "수직이등분선·수선의 발·중점의 정의; 기본 도형; reviewed difficulty bucket 1; RPM_LEAF_GAP",
+      "reason": "CI unified-unit parity uses an older approved shared parent while current source parent is corrected. Existing official registration lanes cannot perform this partial parent correction with PT/TPL and RPM leaf HOLD. User-authorized isolation preserves this single question baseline metadata and publishes the other 95 corrections.",
+      "failedCheck": {
+        "runId": 43526525748,
+        "jobId": 132233823873,
+        "test": "archive2-unified-units.test.js",
+        "head": "7d91834add635654d6a5c718464ca6678295822d",
+        "actualUnit": "RPM22-M1-L1-06",
+        "expectedUnit": "RPM22-M1-L1-05"
+      },
+      "nextAction": "Official shared metadata/identity registration owner must resolve the parent conflict and apply the preserved Q14 correction; do not re-review the other 95 items"
+    }
+  ]
 }
