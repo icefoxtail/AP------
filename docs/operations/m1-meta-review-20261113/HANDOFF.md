@@ -8,8 +8,8 @@
 - taskId `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`, owner `GPT_ROOT_933015CD0A4F`, instructionRevision2.
 - 담당 branch `review/m1-existing-meta-20261113`.
 - 최신 확인 main `573fa32804480b2d70f7536b211e240e8d64d5ed`, tree `c2ba60775fc7d1c724d429e0a6eb7545cad96fe7`.
-- 직전 원격 재읽기 완료 branch `9eccf682c8569459466703ca844c504cb1939833`, tree `3c7e6e2b5bbbf8914b9e75f7835f79f3b5f82cc3`. 이 문서의 새 게시 SHA는 실제 branch 재읽기와 후속 AWCR에서 확인한다.
-- 최신 raw 검증 AWCR r30: file `1V4LG5U6NGOG8Nr6GNmcm6TIZ4VRbXzjf`, SHA256 `80b6685af33f466ce6c60115e2b1de80f3cc0d8fd65292cea2bd24d1ceca01e8`. 공유 의존 마감을 기록한 immutable checkpoint다.
+- 직전 원격 재읽기 완료 branch `fad3422ea8b1afeada15ae7db8219b8c7336466d`, tree `6cbaaa90bb6e4a7e2cf9ea224d1d15769c5bfbcf`. 이 문서의 새 게시 SHA는 실제 branch 재읽기와 후속 AWCR에서 확인한다.
+- 최신 raw 검증 AWCR r31: file `1b_chVe8ICsbtvDKSbYcByXV060wT7vLf`, SHA256 `836b2481c98889cc147c6a54c63ce8ba2237ec26da0647a8fcd5a6f903e3ca7b`. 초기 PR1971 OPEN/CI pending 당시의 immutable checkpoint이며, 후속 CI 실패와 아래 수정은 다음 revision에 기록한다.
 
 [README.md](README.md)의 전체44장 체크리스트와 [progress.json](progress.json)을 함께 읽는다. 순서는 연도 내림차순 → 학기 내림차순 → 기말 먼저 → 학교명 순서다. 사용자는 한 시험지씩 PR/main까지 마감하며 연속 진행하도록 승인했다.
 
@@ -32,6 +32,14 @@ r2는 공식 dry-run/write/build를 통과했으나, [최종 projection 실패](
 Q17 native L2 `좌표평면`과 현재 RPM 중단원 `좌표와 그래프`의 표시명 차이가 원인이다. 실제 main573fa의 `archive/data/basic-scope-parent-links.json`에 `2022/M1-1/M1-04/M1-04-COORDINATE_PLANE → 좌표평면과 그래프/좌표와 그래프`의 유일한 기존 행이 있다. [진단 보완 문서](04-dongsan-q17-parent-link-supplement.json)와 공식 parent-label evidence를 통해 기존 **basicScopeParentRef** 경로로 결속한다. 새 leaf, 잘못된 대체 분류, binding 변경, guard 완화가 아니다. 현재 의미 원장 rev2는 Q17 effectiveParent만 보완했으며 나머지 모든 의미 판단은 기존 원장과 같다.
 
 현재 요청은 **`m1-dongsan-2025-final-meta-review-20261113-r3`**, raw **`575dab859b0e5b419a5f2428f19f0835ce11e236ccb9db5184e5a73dcdd9e0e4`**다. [r3 요청 결속](04-dongsan-r3-request-binding.json)과 [재현 준비 도구](checkpoint-tools/prepare-dongsan-parent-bound-r3.py)는 r2와 before/after24개·registry5개·source blob이 같고 요청ID/Q17 부모 근거/evidence refs만 달라졌음을 확인한다. 원래 공식 registrar SHA `997347340a7dbd1ae05c1f70935aa23a125b9bd7aad3a08a463bd2fb85af55f1`를 유지했다.
+
+## PR1971의 브라우저 생성 파일 보완
+
+[PR1971](https://github.com/icefoxtail/AP------/pull/1971)의 초기 head `fad3422e`는 runtime262검사 중260통과·2실패했다. [실패 근거](04-dongsan-pr1971-initial-ci-failure.json)의 원인은 새8개 crosswalk ID가 브라우저용 생성 helper에 반영되지 않은 것이다. 해당 head는 main에 병합하지 않았다.
+
+[생성 파일 보완](04-dongsan-browser-helper-cache-repair.json)에서 공식 generator로 helper의 생성구간만 갱신하고 HTML6개의 해당 query만 `20261113-rpm-middle-dongsan-1`로 바꿨다. 생성구간 밖 JS는 동일하며 native/source/request/정본은 그대로다. 기존 목차 테스트18/18을1회 통과했고, [새 helper의 실제 부모 감사](04-dongsan-r3-browser-synced-rpm-parents.json)에서도24개 resolved row가 앞선 감사와 완전히 같다.
+
+**현재 유효한 사전검사 보완본은 [rev2](04-dongsan-r3-isolated-preflight-rev2.json), 실제 main 비교용 파일 목록은 [34파일 rev2](04-dongsan-r3-isolated-reuse-files-rev2.json)**이다. 격리 canonical manifest142개 항목에는 helper/HTML이 없고 그 입력 바이트는 그대로여서 official Consumer24와 보호 검증을 재사용했다. DB/registrar/Consumer/R1·R2·R3를 다시 실행하지 않았다. 새 head의 실제 CI가 통과해야 병합한다. 이전 head 결과를 새 head PASS로 이월하지 않는다.
 
 ## 공유 binding154 의존 — 이미 운영 마감, 재등록 금지
 
@@ -57,10 +65,10 @@ Q17 native L2 `좌표평면`과 현재 RPM 중단원 `좌표와 그래프`의 �
 
 격리 공간은 `/workspace/scratch/933015cd0a4f/m1-dongsan-register-r3`, 기준9ecc/actual573이며 r2 공간은 실패 근거로 보존한다. 공식 projection·exact-request Consumer24·실제 RPM/native 부모·범위 보존은 [격리 사전검사](04-dongsan-r3-isolated-preflight.json)에서 통과했다. 입력 바이트가 같은 검사를 반복하지 않고 PR/main의 실제 writer 증거를 확인한다. 실패 전 검사와 수정 후 성공을 구분하며 전체 R1/R2/R3 재실행은 금지한다.
 
-검증 통과 후 **소스3파일·정확 r3 inbox 요청·부모 증거·인계/감사 기록**을 담당 branch에 게시한다. Native/compiled/runtime/공통 metadata 생성물은 공식 writer가 만들며 수동 게시하지 않는다. 정확 head CI → PR merge → 실제 등록 영수증 → 최종 post-AutoMeta Consumer → 원격 SHA·보존 확인 → branch/AWCR immutable revision raw 검증 후에만 **05. 2025 신흥중 기말22**로 이동한다. 전체 workflow SUCCESS만으로 해당 요청 REGISTERED를 추정하지 않는다.
+현재 PR1971의 생성 helper/HTML 보완과 위 rev2 근거를 담당 branch에 게시하고 새 head CI를 확인한다. 정확 r3 요청과 native 등록 계획은 그대로다. Native/compiled/runtime/공통 metadata 생성물은 공식 writer가 만들며 수동 게시하지 않는다. 정확 head CI → PR merge → 실제 등록 영수증 → 최종 post-AutoMeta Consumer → 원격 SHA·보존 확인 → branch/AWCR immutable revision raw 검증 후에만 **05. 2025 신흥중 기말22**로 이동한다. 전체 workflow SUCCESS만으로 해당 요청 REGISTERED를 추정하지 않는다.
 
 AWCR에는 안전한 상태·증거 참조·SHA·남은 일·nextAction만 저장한다. 원문 문제·정답/해설·credentials·upstream raw는 저장하지 않는다. 새 게시 SHA는 문서 자신의 미래 SHA로 추정하지 말고 실제 원격 재읽기에서 기록한다.
 
 ## 복사용 인계 프롬프트
 
-> AP------ 중1 전수 메타 검토를 계속하세요. task f46ac6a5-f2f7-4ae1-a0af-5806b87de808, owner GPT_ROOT_933015CD0A4F, branch review/m1-existing-meta-20261113입니다. 연결 Notion·정확 AWCR r30 이후·최신 Git의 HANDOFF.md/progress.json을 확인하세요. RPM6권 L1/L2(PR1958)와 신흥24·왕운23·팔마24는 운영 완료했으니 반복하지 마세요. 현재3/44완료,95읽기/71운영마감,41장남음. 4번2025동산기말24는 실제2022/M1-1이며 텍스트·그림15 의미검토 완료입니다. 공유 binding154는 PR1970→actual main573fa32804480b2d70f7536b211e240e8d64d5ed에서 소비완료·최종Consumer5/5/5·runtime659보존으로 마감했습니다. 공유요청 재등록과 풍덕 의미완료 집계는 금지합니다. 동산 normal r3 요청은 raw575dab859b0e5b419a5f2428f19f0835ce11e236ccb9db5184e5a73dcdd9e0e4이며 Q17 기존 canonical 부모 근거를 basicScopeParentRef로 명시했습니다. native PT 유지/TPL Q22 하나/cluster24/integration23/condition Q17/RPMexact23·Q17leaf debt, registry는TPL1+내부spelling4입니다. r2 부모연결 실패를 보존했고 rev2 의미원장을 사용합니다. 실제 최신 검사·PR/main 상태를 읽고 남은 단계만 수행하세요. 동산 PR→main writer→영수증/최종Consumer/원격SHA→branch/AWCR 마감 후에만 다음 신흥기말22로 이동하세요.
+> AP------ 중1 전수 메타 검토를 계속하세요. task f46ac6a5-f2f7-4ae1-a0af-5806b87de808, owner GPT_ROOT_933015CD0A4F, branch review/m1-existing-meta-20261113입니다. 연결 Notion·정확 AWCR r31 이후·최신 Git의 HANDOFF.md/progress.json을 확인하세요. RPM6권 L1/L2(PR1958)와 신흥24·왕운23·팔마24는 운영 완료했으니 반복하지 마세요. 현재3/44완료,95읽기/71운영마감,41장남음. 4번2025동산기말24는 실제2022/M1-1이며 텍스트·그림15 의미검토 완료입니다. 공유 binding154는 PR1970→actual main573fa32804480b2d70f7536b211e240e8d64d5ed에서 소비완료·최종Consumer5/5/5·runtime659보존으로 마감했습니다. 공유요청 재등록과 풍덕 의미완료 집계는 금지합니다. 동산 normal r3 요청은 raw575dab859b0e5b419a5f2428f19f0835ce11e236ccb9db5184e5a73dcdd9e0e4이며 Q17 기존 canonical 부모 근거를 basicScopeParentRef로 명시했습니다. native PT 유지/TPL Q22 하나/cluster24/integration23/condition Q17/RPMexact23·Q17leaf debt, registry는TPL1+내부spelling4입니다. r2 부모연결 실패를 보존했고 rev2 의미원장을 사용합니다. 실제 최신 검사·PR/main 상태를 읽고 남은 단계만 수행하세요. 동산 PR→main writer→영수증/최종Consumer/원격SHA→branch/AWCR 마감 후에만 다음 신흥기말22로 이동하세요.

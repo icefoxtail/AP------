@@ -1,0 +1,239 @@
+{
+  "schemaVersion": "dongsan-browser-helper-cache-repair-v1",
+  "status": "SCOPED_REPAIR_TESTS_PASS",
+  "scope": "LOCAL_PR1971_FIXED_HEAD_REPAIR_NOT_PUBLISHED",
+  "reportedCiFailure": {
+    "pr": 1971,
+    "headPrefix": "fad3422e",
+    "jobId": 132209710183,
+    "failures": [
+      "RPM_MIDDLE_HELPER_STALE",
+      "supplemental crosswalk IDs absent"
+    ],
+    "aggregatePass": 260,
+    "aggregateTests": 262
+  },
+  "officialBuilder": {
+    "path": "archive/tools/meta-foundation/build-rpm-middle-toc.mjs",
+    "sha256": "84f4026fbbf49cb8ad34e1069beaf18c6ec24cf8e4595360d81628d8c08551b2",
+    "command": "node archive/tools/meta-foundation/build-rpm-middle-toc.mjs",
+    "exitCode": 0,
+    "summary": {
+      "unitCount": 24,
+      "parentCount": 54,
+      "conceptCount": 155,
+      "leafCount": 326,
+      "baseSha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+      "authoritySha256": "6b51807e3abda9475fa4f9fce5c6d1df83cc3006e32f52e5baf8aafd6519e1a1",
+      "helperSha256": "1369c042bb941fa8867cd87039bfb2e2622000c74af733dc125e0e167f0e61b5",
+      "changed": true
+    }
+  },
+  "changedProductFileCount": 7,
+  "htmlChangedOccurrences": 6,
+  "changedFiles": [
+    {
+      "path": "archive/rpm-middle-toc.js",
+      "beforeSha256": "ea3d33592a5d0545cd44e9b08fc5f26dfd660ec163ce2dd4e74404a3717711b7",
+      "afterSha256": "1369c042bb941fa8867cd87039bfb2e2622000c74af733dc125e0e167f0e61b5",
+      "change": "OFFICIAL_GENERATED_AUTHORITY_BLOCK_ONLY"
+    },
+    {
+      "path": "archive/archive2-runtime-check.html",
+      "beforeSha256": "81825c9334582e15b9d7854773de532f005672c19c8146c6dc51c3c2b9ec2497",
+      "afterSha256": "92332a56045827f545475160fc49c1dabd25d247616a58db69d12161ca6133d4",
+      "change": "ONLY_RPM_HELPER_CACHE_QUERY",
+      "changedOccurrences": 1
+    },
+    {
+      "path": "archive/index.html",
+      "beforeSha256": "6373966375610f0e21fdae4bc83a61b09d61b81e4f0a7b38c2ec279bddc04335",
+      "afterSha256": "479df02527456c3d31638297b6e8b93f3164ba572d69ce82965c83ca38f6a914",
+      "change": "ONLY_RPM_HELPER_CACHE_QUERY",
+      "changedOccurrences": 1
+    },
+    {
+      "path": "archive/problem-bank-search.html",
+      "beforeSha256": "93081a019781e12fd5968fe900a7cae6a3cf444bcbf385351fd42cc5b27bcda2",
+      "afterSha256": "c363d73eadeec631f3f40006ae299fee6885e26f2405a2283b3043377b020e15",
+      "change": "ONLY_RPM_HELPER_CACHE_QUERY",
+      "changedOccurrences": 1
+    },
+    {
+      "path": "archive/unit-past-exams.html",
+      "beforeSha256": "83e48ecef485ea981f79d22863d0cc5d051adaf9a345bb36b40a57b9bd29bce3",
+      "afterSha256": "a186d9d376af5c1d15a0e1446d827dbfb730d60852af132663c6370d178739fc",
+      "change": "ONLY_RPM_HELPER_CACHE_QUERY",
+      "changedOccurrences": 1
+    },
+    {
+      "path": "archive/workspace.html",
+      "beforeSha256": "3a50bdf80e92734eeba4c0891921e0462be5a0feed4aa6ebc141f70abfb388be",
+      "afterSha256": "6b8595d574cd71eec2ec5f18e7d7fb15163f186480aa512986c688b19d288fe0",
+      "change": "ONLY_RPM_HELPER_CACHE_QUERY",
+      "changedOccurrences": 1
+    },
+    {
+      "path": "archive/mixer.html",
+      "beforeSha256": "40f1cdf846b800cca0454321815264984592d4ef36e72f7f3f2c6660d5ba6e2b",
+      "afterSha256": "6c225ed230ff23e032c64dc6873da3de7baa82a10f48d9fbfb92ccddf04af34f",
+      "change": "ONLY_RPM_HELPER_CACHE_QUERY",
+      "changedOccurrences": 1
+    }
+  ],
+  "beforeCacheQuery": "rpm-middle-toc.js?v=20261113-rpm-middle-palma-1",
+  "afterCacheQuery": "rpm-middle-toc.js?v=20261113-rpm-middle-dongsan-1",
+  "helperOutsideGeneratedBlock": {
+    "unchanged": true,
+    "beforeSha256": "64e0f8b3da8e61c7ac5aefcde29dad3575150d97a3d2058aa1cdca885f839d23",
+    "afterSha256": "64e0f8b3da8e61c7ac5aefcde29dad3575150d97a3d2058aa1cdca885f839d23"
+  },
+  "generatedAuthority": {
+    "unitCount": 24,
+    "parentCount": 54,
+    "leafCount": 326,
+    "addedCrosswalkRecordIds": [
+      "M1-RPM-140-UNIT-QUANTITY-EVALUATION-20261113",
+      "M1-RPM-147-SIGNED-SUM-20261113",
+      "M1-RPM-147-SCALAR-20261113",
+      "M1-RPM-163-COORDINATE-CORE-20261113",
+      "M1-RPM-163-CLAIM-AUDIT-20261113",
+      "M1-RPM-165-SPEED-CONTEXT-20261113",
+      "M1-RPM-166-PERIODIC-CLAIMS-20261113",
+      "M1-RPM-166-DISTANCE-TIME-20261113"
+    ],
+    "removedCrosswalkRecordIds": [],
+    "leafMappingsReceivingNewReferences": 5,
+    "allOtherAuthorityFieldsUnchanged": true,
+    "exactlyMatchesCurrentParentAuthority": true,
+    "parentAuthoritySha256": "6b51807e3abda9475fa4f9fce5c6d1df83cc3006e32f52e5baf8aafd6519e1a1"
+  },
+  "protectedInputsUnchanged": true,
+  "protectedInputs": [
+    {
+      "path": "archive/exams/original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "beforeSha256": "9a631f2376d09ded4c4ca4a8d924ea7f5ba8c3bf3bb8e29adb33e9e4d6bff35f",
+      "afterSha256": "9a631f2376d09ded4c4ca4a8d924ea7f5ba8c3bf3bb8e29adb33e9e4d6bff35f"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+      "beforeSha256": "6b51807e3abda9475fa4f9fce5c6d1df83cc3006e32f52e5baf8aafd6519e1a1",
+      "afterSha256": "6b51807e3abda9475fa4f9fce5c6d1df83cc3006e32f52e5baf8aafd6519e1a1"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "beforeSha256": "19e3c1f859396afa1b87d5b2dc6bb4ab1edcc72813162940ea347a24a166608d",
+      "afterSha256": "19e3c1f859396afa1b87d5b2dc6bb4ab1edcc72813162940ea347a24a166608d"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "beforeSha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+      "afterSha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+      "beforeSha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3",
+      "afterSha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "beforeSha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+      "afterSha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "beforeSha256": "a139f0d316acdf8ba4a58baa6c4c80862b7fc086d96c973b869476347cc3f980",
+      "afterSha256": "a139f0d316acdf8ba4a58baa6c4c80862b7fc086d96c973b869476347cc3f980"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+      "beforeSha256": "631c1648d79eba63d015531d9e2e59b9c0be27a459dbf4c0f938920d6ef014df",
+      "afterSha256": "631c1648d79eba63d015531d9e2e59b9c0be27a459dbf4c0f938920d6ef014df"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "beforeSha256": "7a9047d97e9ab868a3e5bec246adcbe1645bd80db25a286aa95b1eea92105bc4",
+      "afterSha256": "7a9047d97e9ab868a3e5bec246adcbe1645bd80db25a286aa95b1eea92105bc4"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "beforeSha256": "4842ee51b15b531576395440997eb53ccf5ef499b6680115c6091bd4d60f5d56",
+      "afterSha256": "4842ee51b15b531576395440997eb53ccf5ef499b6680115c6091bd4d60f5d56"
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "beforeSha256": "d38b896a127c4cfd9679b03668a0668c31e5107a54403591dda3145ab20ebffe",
+      "afterSha256": "d38b896a127c4cfd9679b03668a0668c31e5107a54403591dda3145ab20ebffe"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "beforeSha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+      "afterSha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+    },
+    {
+      "path": ".archive-meta-register/inbox/m1-dongsan-2025-final-meta-review-20261113-r3.json",
+      "beforeSha256": "575dab859b0e5b419a5f2428f19f0835ce11e236ccb9db5184e5a73dcdd9e0e4",
+      "afterSha256": "575dab859b0e5b419a5f2428f19f0835ce11e236ccb9db5184e5a73dcdd9e0e4"
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "beforeSha256": "e7f698f7a87432e3cd79b5cc2701ddbf3dca895b20ade4337b73546c09f25ac2",
+      "afterSha256": "e7f698f7a87432e3cd79b5cc2701ddbf3dca895b20ade4337b73546c09f25ac2"
+    },
+    {
+      "path": "archive/tools/meta-foundation/rpm-middle-toc.test.mjs",
+      "beforeSha256": "7a09a85e65ec7e0087f72068f9bc647bd263adbd0a3fce22b4854d605d5fb356",
+      "afterSha256": "7a09a85e65ec7e0087f72068f9bc647bd263adbd0a3fce22b4854d605d5fb356"
+    },
+    {
+      "path": "archive/tools/meta-foundation/build-rpm-middle-toc.mjs",
+      "beforeSha256": "84f4026fbbf49cb8ad34e1069beaf18c6ec24cf8e4595360d81628d8c08551b2",
+      "afterSha256": "84f4026fbbf49cb8ad34e1069beaf18c6ec24cf8e4595360d81628d8c08551b2"
+    }
+  ],
+  "tests": {
+    "command": "node --test archive/tools/meta-foundation/rpm-middle-toc.test.mjs",
+    "runs": 1,
+    "startedAt": "2026-11-13T22:37:11.288826+00:00",
+    "durationSeconds": 0.51,
+    "exitCode": 0,
+    "stdoutPath": ".tmp/m1-meta-review/04-dongsan-browser-helper-tests.log",
+    "stdoutRawSha256": "2847a057214fc8c489feaae4d2e80ac33a396cf8f6ad8c6e92f34552af6c73d0",
+    "stdoutBytes": 2114,
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "testFileUnchanged": true,
+    "outputFormat": "NODE_SPEC",
+    "actualSummary": {
+      "tests": 18,
+      "suites": 0,
+      "pass": 18,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  },
+  "canonicalConsumerManifest": {
+    "path": "archive/data/archive2-canonical-input-manifest.json",
+    "sha256": "e7f698f7a87432e3cd79b5cc2701ddbf3dca895b20ade4337b73546c09f25ac2",
+    "fileCount": 141,
+    "helperListed": false,
+    "sixHtmlListed": false,
+    "manifestBytesUnchanged": true,
+    "officialConsumerRerun": false,
+    "note": "Only absence/unchanged bytes checked here; root owns prior official Consumer evidence and reuse binding."
+  },
+  "executionBoundaries": {
+    "buildDbExecuted": false,
+    "registrationExecuted": false,
+    "officialConsumerExecuted": false,
+    "actualRpmParentAuditExecuted": false,
+    "mathReviewExecuted": false,
+    "fullR1R2R3Rerun": false,
+    "sourceOrCanonicalEdits": false,
+    "testEdits": false,
+    "gitIndexOrRemoteMutation": false
+  },
+  "nextAction": "Root copies these exact seven product files into the existing proof tree, performs the one requested actual parent audit, then publishes a new head for CI."
+}

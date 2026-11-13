@@ -24,7 +24,7 @@
 
 진행 원장은 [progress.json](progress.json), 다음 담당 절차와 복사 프롬프트는 [HANDOFF.md](HANDOFF.md)다. 한 시험지의 의미 검토→최소 수정→정확 후보 검증→PR/main→실제 등록 영수증/최종 Consumer→원격 SHA를 끝낸 뒤 다음으로 이동한다. 기존 R1/R2/R3와 같은 입력의 검증은 반복하지 않는다. 수학 FINAL QA나 solution 기반 RPM FINAL을 수행했다고 기록하지 않는다.
 
-검증된 직전 원격 branch head는 `9eccf682c8569459466703ca844c504cb1939833`, tree `3c7e6e2b5bbbf8914b9e75f7835f79f3b5f82cc3`, AWCR revision30이다. 이번 변경의 실제 게시 head/tree는 원격 branch 재읽기와 후속 immutable AWCR에서 확인한다.
+검증된 직전 원격 branch head는 `fad3422ea8b1afeada15ae7db8219b8c7336466d`, tree `6cbaaa90bb6e4a7e2cf9ea224d1d15769c5bfbcf`, AWCR revision31이다. 이번 변경의 실제 게시 head/tree는 원격 branch 재읽기와 후속 immutable AWCR에서 확인한다.
 
 ## 시험지별 완료 체크리스트
 
@@ -33,7 +33,7 @@
 - [x] 01. 26 신흥중 2학기 중간 중1 기출 / 24문항 — 운영 완료 · RPM debt Q8/Q10 기록
 - [x] 02. 26 왕운중 2학기 중간 중1 기출 / 23문항 — 운영 완료 · 실제 등록23/최종Consumer23 · RPM debt Q2/Q3/Q4/Q16 기록
 - [x] 03. 26 팔마중 2학기 중간 중1 기출 / 24문항 — 운영 완료 · 실제 등록24/최종Consumer24 · RPM debt Q6/Q8/Q12/Q13/Q14 기록
-- [ ] 04. 25 동산중 2학기 기말 중1 기출 / 24문항 — 의미 읽기24·그림15 완료 / 공유 의존 main 마감 / normal r3 격리 검증 PASS24·PR/main 대기
+- [ ] 04. 25 동산중 2학기 기말 중1 기출 / 24문항 — 의미 읽기24·그림15 완료 / 공유 의존 main 마감 / normal r3 격리 PASS24·PR1971 브라우저 생성 파일 보완18/18·새 head CI 대기
 - [ ] 05. 25 신흥중 2학기 기말 중1 기출 / 22문항 — PENDING
 - [ ] 06. 25 연향중 2학기 기말 중1 기출 / 23문항 — PENDING
 - [ ] 07. 25 왕운중 2학기 기말 중1 기출 / 24문항 — PENDING

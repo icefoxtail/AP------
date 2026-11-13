@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "reviewed-exam-isolated-preflight-addendum-v1",
+  "status": "PASS_LOCAL_PREFLIGHT_WITH_BROWSER_GENERATED_AUTHORITY_SYNCHRONIZED",
+  "scope": "LOCAL_ONLY_NEW_PR_HEAD_CI_AND_MAIN_REGISTRATION_PENDING",
+  "priorPreflight": {
+    "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r3-isolated-preflight.json",
+    "sha256": "da580d9434ab3de8d354c24f03bdac2bdc980fd96e616e852300c8fb7674fd96"
+  },
+  "initialCiFailure": {
+    "path": "docs/operations/m1-meta-review-20261113/04-dongsan-pr1971-initial-ci-failure.json",
+    "sha256": "1e7891fd343c528ea5948bfaa472bc13745a065e922d69040d0229ea0950a823"
+  },
+  "repair": {
+    "path": "docs/operations/m1-meta-review-20261113/04-dongsan-browser-helper-cache-repair.json",
+    "sha256": "6372f53571530da7e6591388843502811b17477a716093ce043f2f394ffd7570"
+  },
+  "tests": {
+    "evidence": {
+      "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r3-local-evidence/browser-helper-tests.txt",
+      "sha256": "2847a057214fc8c489feaae4d2e80ac33a396cf8f6ad8c6e92f34552af6c73d0"
+    },
+    "count": 18,
+    "passed": 18,
+    "failed": 0,
+    "runs": 1,
+    "testAssertionsChanged": false
+  },
+  "actualParentAudit": {
+    "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r3-browser-synced-rpm-parents.json",
+    "sha256": "405f4ccd03b6342f64c0860f7fb0aaee4775e1601df1d38ac51dc95f44c509f6"
+  },
+  "all24ResolvedRowsIdenticalToPrior": true,
+  "actualChangedAuditInputHashes": [
+    "rpmMiddleHelper"
+  ],
+  "requestId": "m1-dongsan-2025-final-meta-review-20261113-r3",
+  "requestRawSha256": "575dab859b0e5b419a5f2428f19f0835ce11e236ccb9db5184e5a73dcdd9e0e4",
+  "officialConsumerReused": {
+    "evidence": {
+      "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r3-local-evidence/consumer.json",
+      "sha256": "acab0f3a5516b592889a2e1098a4ed2e0d202f640ca35b1e5dc325c32dfa1239"
+    },
+    "counts": {
+      "changed": 24,
+      "checked": 24,
+      "passed": 24
+    },
+    "canonicalInputManifestSha256": "f891d6af29d18e9148cb1afb5d132aaa6634531ff433c5209f56223d38485ab8",
+    "canonicalInputFileCount": 142,
+    "changedBrowserFilesInManifest": 0,
+    "loadResolvedConsumerCatalogUsesDigestBoundManifestInputs": true,
+    "sourceCanonicalRuntimeAndMetadataWritesSincePriorConsumer": 0,
+    "officialConsumerRerun": false
+  },
+  "nativeScopeProtectionReused": {
+    "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r3-isolated-protection.json",
+    "sha256": "14ef3505e9d1b5c69e5b733f4dcebd1f52f14b62ab440aa42c65f6849b59907c"
+  },
+  "isolatedReuseFilesCurrent": {
+    "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r3-isolated-reuse-files-rev2.json",
+    "sha256": "42f4731355a7e574bbf0d194f6607ad19bb5b106343c9fb102cc48a9f7544ed5"
+  },
+  "sourceMetadataOrRegistryPlanChanged": false,
+  "newRpmLeafAssignments": 0,
+  "rpmLeafCount": 23,
+  "q17DebtParentOnly": true,
+  "javascriptOutsideGeneratedBlockChanged": false,
+  "fullR1R2R3Rerun": false,
+  "mainClosureClaim": false,
+  "nextAction": "Publish generated helper and six cache references with this addendum, verify all CI on the new exact head, then merge and verify actual writer/remote main."
+}

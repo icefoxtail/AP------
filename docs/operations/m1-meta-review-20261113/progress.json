@@ -15,7 +15,7 @@
   "completedExams": 3,
   "reviewedQuestions": 95,
   "currentOrder": 4,
-  "nextAction": "Publish exact prepared branch/source/inbox/evidence, verify exact-head CI, merge, then verify actual writer receipt/final post-AutoMeta Consumer/remote main SHA before closing exam4.",
+  "nextAction": "Publish generated helper and six cache references with this addendum, verify all CI on the new exact head, then merge and verify actual writer/remote main.",
   "exams": [
     {
       "order": 1,
@@ -883,7 +883,7 @@
       "count": 24,
       "sourceBlob": "c75dc3e1ce47c0ec85e51a63b1a1e16ab479385f",
       "sourceSha256": "357bfa1d8b326e228179624bf4943ec151a53362e23b00d2dcaac717a5334029",
-      "status": "ISOLATED_R3_PREFLIGHT_PASS_PR_MAIN_PENDING",
+      "status": "PR_BROWSER_REPAIR_VERIFIED_NEW_HEAD_PUBLICATION_PENDING",
       "checklist": "[ ]",
       "operationallyClosed": false,
       "metadataReviewed": true,
@@ -926,6 +926,37 @@
         "parentOnlyDebtOrdinals": [
           17
         ]
+      },
+      "prNumber": 1971,
+      "prUrl": "https://github.com/icefoxtail/AP------/pull/1971",
+      "prHeadSha": "fad3422ea8b1afeada15ae7db8219b8c7336466d",
+      "ciHistory": [
+        {
+          "head": "fad3422ea8b1afeada15ae7db8219b8c7336466d",
+          "status": "FAILED",
+          "jobId": 132209710183,
+          "runtimeTests": 262,
+          "passed": 260,
+          "failed": 2,
+          "cause": "RPM_MIDDLE_HELPER_STALE_AND_MISSING_GENERATED_SUPPLEMENTAL_IDS",
+          "evidence": {
+            "path": "docs/operations/m1-meta-review-20261113/04-dongsan-pr1971-initial-ci-failure.json",
+            "sha256": "1e7891fd343c528ea5948bfaa472bc13745a065e922d69040d0229ea0950a823"
+          },
+          "mainMerged": false
+        }
+      ],
+      "currentIsolatedPreflight": {
+        "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r3-isolated-preflight-rev2.json",
+        "sha256": "6140bf36992dcdf03cae79718192cc8cda0e1a84de63b3cf7e5a1897043c2a4e"
+      },
+      "currentReuseFiles": {
+        "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r3-isolated-reuse-files-rev2.json",
+        "sha256": "42f4731355a7e574bbf0d194f6607ad19bb5b106343c9fb102cc48a9f7544ed5"
+      },
+      "browserRepair": {
+        "path": "docs/operations/m1-meta-review-20261113/04-dongsan-browser-helper-cache-repair.json",
+        "sha256": "6372f53571530da7e6591388843502811b17477a716093ce043f2f394ffd7570"
       }
     },
     {
@@ -1657,9 +1688,9 @@
   },
   "operationallyClosedQuestions": 71,
   "latestVerifiedRemoteCheckpoint": {
-    "head": "9eccf682c8569459466703ca844c504cb1939833",
-    "tree": "3c7e6e2b5bbbf8914b9e75f7835f79f3b5f82cc3",
-    "status": "SHARED_BINDING_OPERATIONAL_CLOSEOUT_REMOTE_READBACK_VERIFIED"
+    "head": "fad3422ea8b1afeada15ae7db8219b8c7336466d",
+    "tree": "6cbaaa90bb6e4a7e2cf9ea224d1d15769c5bfbcf",
+    "status": "DONGSAN_R3_LOCAL_PREFLIGHT_AND_REQUEST_REMOTE_READBACK_VERIFIED"
   },
   "courseCorrectionDependency": {
     "pr": 1966,
@@ -1842,9 +1873,9 @@
   },
   "latestMergedDependencyHead": "a70a155542016cc47215bced471a07a1f7602695",
   "latestAwcr": {
-    "sharedRevision": 30,
-    "fileId": "1V4LG5U6NGOG8Nr6GNmcm6TIZ4VRbXzjf",
-    "rawSha256": "80b6685af33f466ce6c60115e2b1de80f3cc0d8fd65292cea2bd24d1ceca01e8",
+    "sharedRevision": 31,
+    "fileId": "1b_chVe8ICsbtvDKSbYcByXV060wT7vLf",
+    "rawSha256": "836b2481c98889cc147c6a54c63ce8ba2237ec26da0647a8fcd5a6f903e3ca7b",
     "remoteRawVerified": true
   }
 }
