@@ -2558,3 +2558,17 @@ test("typeHold neighbours stay refused: other approvals, PT/TPL given, registere
   const badUnit = typeHoldFixture(t); badUnit.request.items[0].after.standardUnitKey = "NO_SUCH_UNIT";
   assert.throws(() => registerReviewedExamV2({ root: badUnit.root, request: badUnit.request }), /standard unit missing|source\/approved metadata parity/);
 });
+
+test("typeHold accepts a source that carries empty PT/TPL placeholders; a resolved type still must equal the source value", t => {
+  const f = typeHoldFixture(t);
+  rewriteSource(f, q => { q.problemTypeKey = null; q.templateKey = ""; });
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).status, "PASS");
+  // without typeHold the same null placeholder is still a parity refusal when a type is asserted
+  const g = review2(fixture(t));
+  rewriteSource(g, q => { q.problemTypeKey = null; });
+  assert.throws(() => registerReviewedExamV2({ root: g.root, request: g.request }), /metadata parity: uid1.problemTypeKey/);
+  // and a non-empty source value is never waived
+  const h = typeHoldFixture(t);
+  rewriteSource(h, q => { q.problemTypeKey = "PT_NEW"; });
+  assert.throws(() => registerReviewedExamV2({ root: h.root, request: h.request }), /metadata parity: uid1.problemTypeKey/);
+});

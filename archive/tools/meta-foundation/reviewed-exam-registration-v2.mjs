@@ -1986,7 +1986,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     if (req.approval.type === "META_PIPELINE_AUDIT" && metaPipelineAudit?.inputAuditVariant === "sop_v12_corrective_review" &&
         !eq(final.conditionKeys ?? null, current.conditionKeys ?? null))
       fail(`SOP_v1.2 audit has no Condition evidence; existing conditionKeys must be preserved: ${current.questionUid}`);
-    for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f])) {
+    for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f]) &&
+        // typeHold (REVIEW2): a source that carries an empty PT/TPL placeholder (null/"") is consistent with PT/TPL staying unregistered.
+        !(patch.typeHold === true && req.approval.type === "REVIEW2" && ["problemTypeKey", "templateKey"].includes(f) && (q[f] === null || q[f] === "") && !current[f])) {
       const preservesApprovedAuditValue = req.approval.type === "META_PIPELINE_AUDIT" && approved(current) &&
         eq(current[f] ?? null, final[f] ?? null);
       const sopAuditedRecord = req.approval.type === "META_PIPELINE_AUDIT" && metaPipelineAudit?.inputAuditVariant === "sop_v12_corrective_review"
