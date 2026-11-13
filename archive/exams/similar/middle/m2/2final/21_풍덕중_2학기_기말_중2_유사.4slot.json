@@ -13,7 +13,8 @@
   "review": {
     "status": "UNREVIEWED",
     "independentReview": "NOT_RUN",
-    "scope": "4-slot semantic review remains NOT_RUN; unsupported source metadata terms are preserved as item-level evidenceDebt."
+    "scope": "4-slot semantic review remains NOT_RUN; unsupported source metadata terms are preserved as item-level evidenceDebt.",
+    "note": "Semantic 4-slot review remains NOT_RUN; Q23 slot correction is stage-local. Its missing gender-eligibility dictionary term requires candidate declaration and authorized review, both pending."
   },
   "selfCheck": {
     "status": "LOCAL_SELF_CHECK",
@@ -25,7 +26,7 @@
     "visualReview": "Problem and solution benefit assessed per item. No SVGs created, no rendering QA; source-figure reuse not validated.",
     "identityBinding": "Canonical candidate UID formula applied; identity-map registration NOT_RUN.",
     "registration": "NOT_RUN",
-    "fourSlotValidation": "PASS_WITH_WARNINGS: local citation/format validation passed; semantic 4-slot review and independent reviewer remain NOT_RUN. Unsupported source metadata terms remain item-level evidenceDebt outside the validated slots."
+    "fourSlotValidation": "PASS_WITH_WARNINGS: validator exited 0 with 19 warnings. Q23 source citations and registered terms validate; gender-eligibility condition remains unrepresented pending candidate declaration and authorized review, so this is not a completed semantic 4-slot review."
   },
   "scope": {
     "items": 24,
@@ -2592,7 +2593,14 @@
       "sourceOrdinal": 23,
       "format": "서술",
       "slots": {
-        "given": [],
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "남학생 $5$명, 여학생 $3$명",
+            "termId": 129
+          }
+        ],
         "goal": [
           {
             "term": "개수",
@@ -2603,31 +2611,36 @@
         ],
         "method": [
           {
-            "term": "곱",
+            "term": "배정",
             "src": "solution",
-            "quote": "단계별 선택에 대하여 곱의 법칙과 자격이 같은 대표 뽑기(조",
-            "termId": 287,
+            "quote": "청소 당번을 먼저 뽑고, 이어서 식사 당번과 빨래 당번을 뽑는 전체 경우의 수",
+            "termId": 314,
             "evidenceType": "NAMED",
-            "justification": "The quoted solution/prompt explicitly names or directly applies this method."
-          }
-        ],
-        "condition": [
+            "justification": "The solution counts the successive role assignments as one complete assignment."
+          },
           {
             "term": "조합",
-            "src": "stem",
-            "quote": "청소 당번을 뽑는 경우도 전체 경우의 수에 포함한다",
-            "termId": 248
+            "src": "solution",
+            "quote": "(조합)",
+            "termId": 248,
+            "evidenceType": "NAMED",
+            "justification": "The solution explicitly names combination selection for students within each eligible group."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙",
+            "termId": 371,
+            "evidenceType": "NAMED",
+            "justification": "The solution explicitly applies the product rule to multiply stage counts."
           }
-        ]
+        ],
+        "condition": []
       },
       "evidenceDebt": [
         {
-          "term": "자연수",
-          "evidenceDebt": "MD candidate term has no exact source phrase; review required."
-        },
-        {
-          "term": "사건",
-          "evidenceDebt": "MD candidate term has no exact source phrase; review required."
+          "term": "성별 자격 제한",
+          "evidenceDebt": "No matching ACTIVE dictionary term. Candidate declaration and authorized review are pending; not declared, approved, or added to the dictionary. The condition slot remains empty."
         }
       ],
       "reasons": {
@@ -2665,14 +2678,14 @@
       "review": {
         "status": "UNREVIEWED",
         "independentReview": "NOT_RUN",
-        "note": "Semantic 4-slot review not independently performed."
+        "note": "Q23 slots corrected against the current dictionary and exact source citations. The gender-eligibility condition still needs a candidate declaration and authorized review; no term was invented or approved."
       },
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Direct Google Docs read 1sT4EGC7sajwApUumRZubeB1EIWE1nX90HUU6LuF0u3w, revision AHj4eMQui3lT0RXWxoxgja6Rv6YEGNHPbiEE0YCegl_sZNWaTAnrGwHW72KjRW-UFLJuQpxl5cjel_XB4QmjNun9DPwtgzPqbyPLfpOUQBY.",
         "visualReview": "NOT_RUN: visual benefit assessed in text only; no SVG creation or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "PASS_WITH_WARNINGS: expected citation/format gate to be confirmed after validator run."
+        "fourSlotValidation": "PASS_WITH_WARNINGS: validator exited 0 with 19 warnings. Q23 source citations and registered terms validate; gender-eligibility condition remains unrepresented pending candidate declaration and authorized review, so this is not a completed semantic 4-slot review."
       }
     },
     {
