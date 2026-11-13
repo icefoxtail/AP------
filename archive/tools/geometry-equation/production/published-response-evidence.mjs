@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {randomUUID} from 'node:crypto';
 import {bytesSha,fileRef,readBoundFile} from '../../pipeline-core/canonical.mjs';
+import {verifyPublishedProblemFontObserver} from './problem-browser-font.mjs';
 export const PUBLISHED_RESPONSE_HEADER='x-geometry-published-response-id';
 export const CDP_EVICTED_BODY_ERROR='Error: response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache';
 const ID=/^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/;
@@ -70,5 +71,6 @@ export function verifyPublishedResponseEvidence(row,{root,runRelative}){
   bindings.push({id:e.id,url:r.url,status:e.status,path:decodeURIComponent(url.pathname).replace(/^\//,''),observationKind:kind,bodyRef:e.bodyRef});
  }
  if(observed.size!==proof.entries.length)fail('PUBLISHED_RESPONSE_BROWSER_INVENTORY_MISMATCH');
+ verifyPublishedProblemFontObserver(row);
  return {schemaVersion:'PUBLISHED_RUNTIME_RESPONSE_BINDING_v1',evidenceRef:row.runtimeResponseEvidenceRef,observationKind:'CORRELATED_BROWSER_AND_ACTUAL_SERVER_SEND',bindings};
 }

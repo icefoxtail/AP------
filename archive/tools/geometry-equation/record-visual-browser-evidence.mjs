@@ -10,7 +10,7 @@ import {fileRef,readBoundFile} from '../pipeline-core/canonical.mjs';
 import {SOURCE_QUESTION_ID_PATTERN} from '../pipeline-core/question-uid.mjs';
 import {loadBank,bankAliasSuffix} from './build-visual-render-matrix.mjs';
 import {PROBLEM_ENVELOPE_SEED_PATH,seedProblemOutputEnvelope} from './production/problem-output-envelope.mjs';
-import {observeProblemKoreanFont} from './production/problem-browser-font.mjs';
+import {observeProblemKoreanFont,preparePublishedProblemFontObserver,closePublishedProblemFontObserver} from './production/problem-browser-font.mjs';
 import {assertPublishedResponseOptIn,createPublishedResponseRecorder,observePublishedBrowserResponse,verifyPublishedResponseEvidence} from './production/published-response-evidence.mjs';
 
 export function normalizeArchiveImageUrlPath(url){
@@ -97,9 +97,10 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
       page.on('pageerror',error=>consoleErrors.push(String(error)));
       if(responseRecorder)page.on('response',r=>{responsePromises.push(observePublishedBrowserResponse(r).then(value=>responses.push(value)));});
       else page.on('response',r=>{responsePromises.push((async()=>{try{const bytes=await r.body();responses.push({url:r.url(),status:r.status(),sha256:sha256(bytes),bytes:bytes.length});}catch(error){responses.push({url:r.url(),status:r.status(),error:String(error)});}})());});
-      const prefix=item.id+'-'+item.mode+'-'+item.viewport;const errors=[];let state={};const layouts=[];let actualUrl=base+item.urlPath,outputEnvelopeEvidence=null,koreanFont=null;
+      const prefix=item.id+'-'+item.mode+'-'+item.viewport;const errors=[];let state={};const layouts=[];let actualUrl=base+item.urlPath,outputEnvelopeEvidence=null,koreanFont=null,publishedFontObserver=null,publishedFontObserverEvidence=null;
       if(responseRecorder)responseRecorder.beginRow(prefix);
       try {
+        if(responseRecorder)publishedFontObserver=await preparePublishedProblemFontObserver(page);
         if(item.problemEnvelope){const seeded=await seedProblemOutputEnvelope({page,base,item,folder,prefix});actualUrl=seeded.url;outputEnvelopeEvidence=seeded.evidence;}
         await page.goto(sameOriginExamImageUrl(actualUrl),{waitUntil:'domcontentloaded',timeout:captureTimeoutMs(60000)});checkCancelled();
         const readiness=page.waitForFunction(({mode,count,envelope})=>{
@@ -119,7 +120,7 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
         if(readinessError){if(signal?.aborted)checkCancelled();throw readinessError;}
         checkCancelled();
         await page.evaluate(async()=>{if(window.MathJax?.startup?.promise)await window.MathJax.startup.promise;await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));if(window.APPrintRuntime?.waitUntilReady)await window.APPrintRuntime.waitUntilReady();});checkCancelled();
-        if(item.problemEnvelope){koreanFont=await observeProblemKoreanFont(page);if(koreanFont.status!=='PASS')throw Error(koreanFont.error?.code??'PROBLEM_KOREAN_PLATFORM_FONT_NOT_VERIFIED');}
+        if(item.problemEnvelope){koreanFont=responseRecorder?await observeProblemKoreanFont(page,{publishedObserver:publishedFontObserver}):await observeProblemKoreanFont(page);if(koreanFont.status!=='PASS')throw Error(koreanFont.error?.code??'PROBLEM_KOREAN_PLATFORM_FONT_NOT_VERIFIED');}
         state=await page.evaluate(async({mode,assets,envelopeTargets})=>{
           const root=document.getElementById('print-area');
           const numberNodes=[...root.querySelectorAll(mode==='ans'?'.ans-n':'.q-num')];
@@ -215,7 +216,8 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
           }
         }
         await page.screenshot({path:path.join(folder,prefix+'.png'),fullPage:true});checkCancelled();
-      }catch(error){if(signal?.aborted)throw makeCancellationError();errors.push(String(error.stack||error));await page.screenshot({path:path.join(folder,prefix+'-error.png'),fullPage:true}).catch(()=>{});}
+      }catch(error){if(signal?.aborted)throw makeCancellationError();if(responseRecorder&&error.publishedFontObserverEvidence)publishedFontObserverEvidence=error.publishedFontObserverEvidence;errors.push(String(error.stack||error));await page.screenshot({path:path.join(folder,prefix+'-error.png'),fullPage:true}).catch(()=>{});}
+      finally{if(publishedFontObserver)try{publishedFontObserverEvidence=await closePublishedProblemFontObserver(page,publishedFontObserver);}catch(error){errors.push('PUBLISHED_FONT_OBSERVER_CLEANUP_FAILED:'+String(error));}}
       await Promise.allSettled(responsePromises);
       checkCancelled();
       if(item.problemEnvelope){
@@ -226,7 +228,7 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
         if(item.mode==='sol'||item.mode==='exam'&&item.assets.some(a=>a.surface==='PROBLEM_VISUAL'))for(const target of state.targets||[]){const asset=item.assets.find(v=>v.id===target.id);if(!asset||!responses.some(v=>v.url===target.src&&v.status===200&&v.sha256===archiveAssetSha256(asset.sha256)))errors.push('ACTUAL_LOADED_ASSET_SHA_MISMATCH:'+target.id);}
         if(consoleErrors.length)errors.push(...consoleErrors);
       if(item.mode==='sol'||item.mode==='exam'&&(item.envelopeTargets||[]).some(t=>t.surface==='PROBLEM_VISUAL'))for(const target of item.envelopeTargets||[]){const index=Number(target.displayOrdinal||target.questionId)-1;if(index>=0&&index<item.questionCount){const block=page.locator('#print-area .q-box').nth(index);if(await block.count())await block.screenshot({path:path.join(folder,prefix+'-'+target.id+'-envelope-context.png')});}}
-      const row={id:prefix,status:errors.length?'FAIL':'PASS',mode:item.mode,viewport:item.viewport,runtime:'playwright-chromium',synthetic:false,url:actualUrl,sourceSha256:item.sourceSha256,candidateSha256:item.candidateSha256,engineSha256:matrix.engineSha256,browserVersion:browser.version(),state,layouts,responses,errors,...(item.problemEnvelope?{outputEnvelopeEvidence,koreanFont}:{}),network:{policy:blockExternalRequests?'LOCAL_ONLY':'DEFAULT',localOrigin:base,externalRequests},
+      const row={id:prefix,status:errors.length?'FAIL':'PASS',mode:item.mode,viewport:item.viewport,runtime:'playwright-chromium',synthetic:false,url:actualUrl,sourceSha256:item.sourceSha256,candidateSha256:item.candidateSha256,engineSha256:matrix.engineSha256,browserVersion:browser.version(),state,layouts,responses,errors,...(item.problemEnvelope?{outputEnvelopeEvidence,koreanFont}:{}),...(responseRecorder?{publishedFontObserverEvidence}:{}),network:{policy:blockExternalRequests?'LOCAL_ONLY':'DEFAULT',localOrigin:base,externalRequests},
         capture:Object.keys(state).length?{status:'MEASURED',missingGlyphCount:layouts.reduce((s,v)=>s+v.missingGlyphCount,0),labelCollisionCount:layouts.reduce((s,v)=>s+v.labelCollisionCount,0),criticalCollisionCount:layouts.reduce((s,v)=>s+v.criticalCollisionCount,0),observedLabelCollisionCount:layouts.reduce((s,v)=>s+(v.observedLabelCollisionCount??v.labelCollisionCount),0),observedCriticalCollisionCount:layouts.reduce((s,v)=>s+(v.observedCriticalCollisionCount??v.criticalCollisionCount),0),clippedTextCount:layouts.reduce((s,v)=>s+v.clippedTextCount,0),overflowCount:Number(state.horizontalOverflow||false)+layouts.reduce((s,v)=>s+v.overflowCount,0),loadedSvgCount:(item.mode==='sol'||item.mode==='exam'&&item.assets.some(a=>a.surface==='PROBLEM_VISUAL'))?state.targets?.filter(v=>v.loaded).length||0:0,failedSvgCount:(item.mode==='sol'||item.mode==='exam'&&item.assets.some(a=>a.surface==='PROBLEM_VISUAL'))?state.targets?.filter(v=>!v.loaded).length||0:0}:{status:'NOT_MEASURED',missingGlyphCount:null,labelCollisionCount:null,criticalCollisionCount:null,observedLabelCollisionCount:null,observedCriticalCollisionCount:null,clippedTextCount:null,overflowCount:null,loadedSvgCount:null,failedSvgCount:null}};
       if(responseRecorder){
         await page.close();let count;do{count=responsePromises.length;await Promise.allSettled(responsePromises);await new Promise(resolve=>setImmediate(resolve));}while(count!==responsePromises.length);

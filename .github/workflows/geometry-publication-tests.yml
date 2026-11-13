@@ -123,6 +123,9 @@ jobs:
           archive/tools/geometry-equation/tests/problem-source-edge-styles.test.mjs
           archive/tools/geometry-equation/tests/render-plan.test.mjs
           archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs
+          archive/tools/geometry-equation/tests/published-response-evidence.test.mjs
+          archive/tools/geometry-equation/tests/published-index-reproduction.test.mjs
+          archive/tools/geometry-equation/tests/published-font-observer.test.mjs
       - name: Verify Archive2 runtime contract and the bounded tablet placement
         run: |
           node --test tests/archive2-exam-tablet-fit.test.cjs
