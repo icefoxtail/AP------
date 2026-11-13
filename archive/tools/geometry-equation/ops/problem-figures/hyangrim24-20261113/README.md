@@ -26,10 +26,3 @@
 `manifest.json`은 실제 실행할 문항과 source/plan/image 원시 SHA-256을 결속한다. 정식 `production/problem-figure-runner.mjs`가 기존 엔진의 정확 모델·실제 글자 실측·SVG 합성·primitive 관측·Archive 문제 화면 캡처를 순차 실행한다. desktop/phone/tablet 세 화면의 원시 측정과 PNG를 회수한 뒤 독립 시각 검수와 ROOT 전수 확인을 진행한다.
 
 실행 결과와 원시 로그·캡처는 Git에 넣지 않고 증거 보관 위치에서 관리한다. 검수한 최종 SVG만 별도 운영 자산으로 추가한다. 미실행은 `NOT_RUN`, 실제 실패는 해당 오류 그대로 기록하며, 검사 실패를 건너뛰어 게시하지 않는다.
-
-
-## Accepted author render and final static links
-
-Official Chrome Run 43440159548 rendered all 19 problem figures and bound actual desktop/mobile/tablet evidence. ROOT and independent source-only visual reviews approved all 19 exact SVGs and target captures; see `author-render-acceptance.json` for full evidence digests. Original source PNGs and every existing solution SVG remain unchanged. The static question bank changes only image/imageSize/imageAlt on the 19 target questions.
-
-`published.json` binds the exact checked-in JS and SVG bytes for a fresh full-bank capture. This path does not recompose or retypeset the accepted assets. Final linked-bank and required-check success are separate merge gates. Preparation-time NOT_RUN notes in source-facts describe their historical pre-render stage; current author-render acceptance is the record above.
