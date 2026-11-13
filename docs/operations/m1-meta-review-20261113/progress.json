@@ -12,10 +12,10 @@
     "questionCount": 1047
   },
   "order": "year DESC, semester DESC, final before midterm, school Korean alphabetical",
-  "completedExams": 1,
+  "completedExams": 2,
   "reviewedQuestions": 47,
-  "currentOrder": 2,
-  "nextAction": "Verify actual registered receipt23 and post-AutoMeta final Consumer23, then remote registered main SHA before marking completed2/44 or starting Palma24.",
+  "currentOrder": 3,
+  "nextAction": "Publish closing checkpoint and AWCR; refresh latest main and concurrent scope, then read all24 Palma prompts/figures/provided solutions.",
   "exams": [
     {
       "order": 1,
@@ -594,9 +594,9 @@
       "count": 23,
       "sourceBlob": "76377173ecb0ba989188561bbefac2afb3232479",
       "sourceSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
-      "status": "MAIN_MERGED_ACTUAL_REGISTRATION_PENDING",
-      "checklist": "[ ]",
-      "operationallyClosed": false,
+      "status": "OPERATIONALLY_CLOSED_WITH_DOCUMENTED_RPM_DEBT",
+      "checklist": "[x]",
+      "operationallyClosed": true,
       "reviewedQuestionCount": 23,
       "semanticReadEvidence": "02-wangun-semantic-read-checkpoint.json",
       "semanticReadEvidenceSha256": "a299d9d82d150681cfbd7fc4aa8b7b5bb029300abe8bc60e1789670be86ed235",
@@ -604,7 +604,7 @@
       "sourceReviewedBlob": "76377173ecb0ba989188561bbefac2afb3232479",
       "sourceReviewedSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
       "sourceMetadataEditsApplied": true,
-      "registrationApplied": false,
+      "registrationApplied": true,
       "prNumber": 1968,
       "unresolvedDependencyPr": null,
       "semanticReviewEvidence": "02-wangun-semantic-review-rev3.json",
@@ -650,9 +650,130 @@
       "mainWriter": {
         "runId": 43474884078,
         "jobId": 132056020809,
-        "statusAtObservation": "IN_PROGRESS",
-        "actualRequestReceipt": "PENDING",
-        "finalPostAutoMetaConsumer": "PENDING"
+        "eventHead": "6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2",
+        "status": "SUCCESS",
+        "persistence": "PUSHED",
+        "attempts": 1,
+        "registeredSha": "738af248bd62813a572ac81725892b3f12ee2beb",
+        "persistedInputSha": "738af248bd62813a572ac81725892b3f12ee2beb",
+        "appliedRequests": 1,
+        "rejectedRequests": 0,
+        "pendingRequests": 0,
+        "finalPostAutoMetaConsumer": {
+          "entry": "reviewedFinal-1.log",
+          "sha256": "eb97e3826d01f2a25b9d7caa9a737a8762ba5dee0c2ec6b8ac7d912f1373da60",
+          "status": "PASS",
+          "counts": {
+            "changed": 23,
+            "checked": 23,
+            "passed": 23,
+            "skippedUnchanged": 0
+          },
+          "failures": 0,
+          "unobservedFields": 0,
+          "solverOnlyRevisions": 0,
+          "assignmentPending": 0,
+          "exam": "26_왕운중_2학기_중간_중1_기출",
+          "sourceFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+          "workingTreeHeadAtVerification": "6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2",
+          "bindingExplanation": "Final verification ran on registered staged data before persist. The prepare report places reviewedFinal after semantic/AutoMeta. PUSHED and persisted inputSha bind that snapshot to actual main 738af248bd62813a572ac81725892b3f12ee2beb.",
+          "initialPreflight": {
+            "entry": "native/archive-meta-register-pass/consumer-preflight-1.json",
+            "sha256": "963e6b0cb6f8e1fe99f6d50b0eddc0406e1e919bf8eae48c8d44336d5cae712d",
+            "status": "PASS",
+            "counts": {
+              "changed": 23,
+              "checked": 23,
+              "passed": 23,
+              "skippedUnchanged": 0
+            },
+            "scope": "Intermediate preflight; distinct from final post-AutoMeta proof."
+          },
+          "prepareReport": {
+            "entry": "report.json",
+            "sha256": "6bde8a90b7f1c5761d28216deb55677e7bf39bc62ad0b48e081bc6260245d7e1",
+            "inputSha": "6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2",
+            "status": "PREPARED_WITH_PENDING",
+            "safeToPersist": true,
+            "registrationReady": true,
+            "publishable": true,
+            "sourceMutation": 0,
+            "independentReviewClaim": false,
+            "lanes": [
+              {
+                "id": "reviewed",
+                "status": "VERIFIED",
+                "finalChecked": true,
+                "needsContinuation": false
+              },
+              {
+                "id": "semantic",
+                "status": "VERIFIED",
+                "needsContinuation": true
+              },
+              {
+                "id": "shared",
+                "status": "VERIFIED",
+                "needsContinuation": false
+              },
+              {
+                "id": "generated",
+                "status": "VERIFIED",
+                "needsContinuation": false
+              },
+              {
+                "id": "reviewedFinal",
+                "status": "VERIFIED",
+                "reason": "FINAL_CONSUMER"
+              },
+              {
+                "id": "studentIndexes",
+                "status": "VERIFIED",
+                "needsContinuation": false
+              },
+              {
+                "id": "fourSlot",
+                "status": "VERIFIED",
+                "needsContinuation": false
+              }
+            ]
+          }
+        },
+        "globalStatus": "REGISTRATION_PARTIAL_OPTIONAL_SEMANTIC_BACKLOG",
+        "publicationBoundary": "Exact snapshot handoff succeeded; deployed-site verification is not claimed."
+      },
+      "sourceMetadataChangedQuestionCount": 23,
+      "substantiveMetadataChangedQuestionCount": 20,
+      "verifiedRemoteMainSha": "738af248bd62813a572ac81725892b3f12ee2beb",
+      "verifiedRemoteMainTree": "40d92cfea35ea1108d4709aa7d7b87338e54aa17",
+      "nativeRegistrationActual": "REGISTERED_23_VERIFIED_ON_REMOTE_MAIN",
+      "consumerVerification": "PASS_FINAL_POST_AUTOMETA_23_OF_23",
+      "actualRegisteredQuestionCount": 23,
+      "nativeRegistryChangesApplied": 16,
+      "requestStatus": "REGISTERED",
+      "operationalCloseoutEvidence": "02-wangun-operational-closeout.json",
+      "operationalCloseoutSha256": "730f8de9a38a12b283f45e99ba35dd904c87ff339610087fdae101fd2bd1d130",
+      "actualMainMinimalAudit": {
+        "evidencePath": "02-wangun-main738-closeout-minimal-audit.json",
+        "sha256": "facf6db626219f8fb5eaf24aa2529da0ff043d809cdbdb40444f897acc9ee5af",
+        "nativeMetadataIdentityRuntimeMatches": 23,
+        "rpmExactLeafCount": 19,
+        "rpmDebtOrdinals": [
+          2,
+          3,
+          4,
+          16
+        ],
+        "debtParents": {
+          "2": "EXACT_CONSTRUCTION_CONGRUENCE_PARENT_WITHOUT_LEAF",
+          "3": "EXACT_CONSTRUCTION_CONGRUENCE_PARENT_WITHOUT_LEAF",
+          "4": "LEGACY_PARENT_AMBIGUOUS_NO_LEAF",
+          "16": "LEGACY_PARENT_AMBIGUOUS_NO_LEAF"
+        },
+        "registryChanges": 16,
+        "protectedOutsideScope17Changed": 0,
+        "currentShinheung24Changed": 0,
+        "protectedMeaningApprovalAndSelectionEvidenceReused": true
       }
     },
     {
@@ -1257,7 +1378,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "SECOND_EXAM_MAIN_MERGED_PENDING_ACTUAL_REGISTERED_RECEIPT_AND_FINAL_CONSUMER",
+  "state": "SECOND_EXAM_OPERATIONALLY_CLOSED_NEXT_PALMA24_NOT_STARTED",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -1276,7 +1397,7 @@
       "supersededBy": "01-shinheung-semantic-review.json"
     }
   },
-  "activeMain": "6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2",
+  "activeMain": "738af248bd62813a572ac81725892b3f12ee2beb",
   "prerequisiteStatus": "RPM_L1_L2_MERGED",
   "prerequisiteMainSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
   "latestRemoteSemanticCheckpoint": "e403ce4b0fff47857e0579335a633a7a7b28dd3a",
@@ -1310,7 +1431,7 @@
     ],
     "noBlanketMetadataConflictWaiver": true
   },
-  "activeMainTree": "f4eae4a3fced8d6525922e1b67daddfaa434a885",
+  "activeMainTree": "40d92cfea35ea1108d4709aa7d7b87338e54aa17",
   "subsequentMainChanges": [
     {
       "pr": 1962,
@@ -1323,10 +1444,10 @@
       "preserveConcurrentChanges": true
     }
   ],
-  "activeMainTreeStatus": "MERGED_SOURCE_AND_INBOX_NOT_YET_REGISTERED",
+  "activeMainTreeStatus": "ACTUAL_REGISTERED_WANGUN23_FINAL_CONSUMER23_VERIFIED",
   "checkpointPublication": {
-    "lastVerifiedRemoteSha": "e03094dff7abe80ac6a66223b1f20ffea19a52fe",
-    "statusAtWriting": "PR1968_MERGED_FRESH_CI_SUCCESS_ACTUAL_MAIN_REGISTRATION_PENDING",
+    "lastVerifiedRemoteSha": "55a92fd7da1df7f53d18e15d3f28d5d9d2a4bc94",
+    "statusAtWriting": "WANGUN_OPERATIONALLY_CLOSED_LOCAL_CLOSING_DOCUMENTS_AWAIT_REMOTE_PUBLICATION",
     "currentSnapshotEvidence": {
       "path": "02-wangun-semantic-review-rev3.json",
       "sha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090"
@@ -1346,23 +1467,22 @@
     "fileId": "149rSt5WWAArxdHVfvMv8KVlV7DPWnbEb",
     "rawSha256": "21d365a950a7dcb9e844e862f235bc1a371506f09d855d166ad8b30add04c356",
     "nextRevision": 22,
-    "nextRevisionPurpose": "Record verified branch checkpoint and actual Wangun main writer outcome."
+    "nextRevisionPurpose": "Record actual Wangun23 operational closeout, verified closing branch checkpoint and next Palma24."
   },
-  "remainingExams": 43,
+  "remainingExams": 42,
   "nextExam": {
-    "order": 2,
-    "path": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
-    "file": "26_왕운중_2학기_중간_중1_기출.js",
-    "questionCount": 23,
-    "status": "MAIN_MERGED_ACTUAL_REGISTRATION_PENDING",
-    "semanticReadEvidence": "02-wangun-semantic-read-checkpoint.json"
+    "order": 3,
+    "path": "archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+    "file": "26_팔마중_2학기_중간_중1_기출.js",
+    "questionCount": 24,
+    "status": "PENDING_REFRESH_CURRENT_MAIN_AND_CONCURRENT_SCOPE"
   },
   "latestOperationalCloseout": {
-    "order": 1,
-    "evidencePath": "01-shinheung-operational-closeout.json",
-    "evidenceSha256": "4e09f45f79d5dcfb8be9ecb89db2dcc6d2ae27e5b188f4e6cf4ab83ee392dfb0",
-    "mainSha": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
-    "mainTree": "844c8b82fa19b4dcd7630313e67600e194a69ebd"
+    "order": 2,
+    "evidencePath": "02-wangun-operational-closeout.json",
+    "evidenceSha256": "730f8de9a38a12b283f45e99ba35dd904c87ff339610087fdae101fd2bd1d130",
+    "mainSha": "738af248bd62813a572ac81725892b3f12ee2beb",
+    "mainTree": "40d92cfea35ea1108d4709aa7d7b87338e54aa17"
   },
   "concurrentWriterAtObservation": {
     "runId": 43444692701,
@@ -1418,8 +1538,8 @@
     "recheckOnHeadChange": true,
     "currentDependencyEvidence": "02-pr1965-head9f828-review.json"
   },
-  "operationallyClosedQuestions": 24,
-  "latestVerifiedRemoteCheckpoint": "e03094dff7abe80ac6a66223b1f20ffea19a52fe",
+  "operationallyClosedQuestions": 47,
+  "latestVerifiedRemoteCheckpoint": "55a92fd7da1df7f53d18e15d3f28d5d9d2a4bc94",
   "courseCorrectionDependency": {
     "pr": 1966,
     "url": "https://github.com/icefoxtail/AP------/pull/1966",
@@ -1517,7 +1637,7 @@
     "outsideScopeConsumersCompared": 17,
     "outsideScopeChanges": 0,
     "ownBranchSourceCandidatePrepared": true,
-    "actualMainRegistration": "PENDING_MAIN_WRITER",
+    "actualMainRegistration": "SUBSEQUENTLY_REGISTERED_738AF_SEE_OPERATIONAL_CLOSEOUT",
     "evidence": "02-wangun-main51cf-isolated-preflight.json"
   }
 }

@@ -2,39 +2,35 @@
 
 ## 현재 진행
 
-**운영 완료 1/44장 · 남은 43장 · 전체 읽기 47/1,047문항.** 현재는 **2026 왕운중 중1 2학기 중간23문항**이다. 발문·선지·제공 풀이23개와 외부 그림33개를 전부 읽었다. 현재 확정 원장은 [semantic revision3](02-wangun-semantic-review-rev3.json)이며, [PR1968](https://github.com/icefoxtail/AP------/pull/1968)은 main `6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2`에 병합됐다. 실제 운영 등록과 최종 Consumer23 확인 전이므로 완료로 체크하지 않는다.
+**운영 완료 2/44장 · 남은 42장 · 전체 읽기 및 운영 마감 47/1,047문항.** 다음은 **2026 팔마중 중1 2학기 중간24문항**이며 아직 시작하지 않았다. 최신 main과 병행 작업의 범위를 확인한 뒤 모든 발문·선지·그림·제공 풀이를 읽는다.
 
-- 의미·부모 수정 후보20문항, 정확한 RPM leaf19, debt Q2·Q3·Q4·Q16. 정상 문제·정답·해설·그림·난이도·source 검수상태는 보존한다.
-- Q7은 기존 FUNCTIONS_GRAPHS의 그래프 성질 유형을 재사용한다. Q11은 기존 합동 대응 PT 아래 중점 사각형 성질 판정 template를 보완한다. Q20은 기존 줄기·잎→계급별 도수 유형에 연결한다. 새 PT4·TPL5, exact binding5, M1-1 과정 alias2, RPM exact 연결15개가 후보이다.
-- [native 계획](02-wangun-native-registration-plan-rev2.json), [crosswalk 계획](02-wangun-crosswalk-plan-rev2.json), [원본 보존 독립 확인](02-wangun-source-candidate-independent-review-rev3.json). 후보의 분류9필드만 추가 조정한 근거와 정상 데이터23/외부 그림33 해시를 결속했다.
-- [PR1965](https://github.com/icefoxtail/AP------/pull/1965) 코드가 main에 병합됐다. 기존 binding 과정명 오타 정정 요청은 별도 [PR1966](https://github.com/icefoxtail/AP------/pull/1966)이다. 격리 공식 검증에서 기존 runtime613문항과 보호파일104개를 보존했다. [실제 운영 마감](02-binding-course-operational-closeout.json)에서 main `51cfb3f6fdaf3600ad06aa298d109093ad0b6b45`, 최종 Consumer1/1·runtime613 보존까지 확인했다. 왕운중은 [격리 최종 사전 검증](02-wangun-main51cf-isolated-preflight.json)에서 공식 등록23/정본16·Consumer23·RPM exact19/debt4·기존 직접 영향17 보존 PASS다. 별도 담당 브랜치 head `e03094dff7abe80ac6a66223b1f20ffea19a52fe`와 [PR1968](https://github.com/icefoxtail/AP------/pull/1968)에 정확 후보·요청을 보존했다.
-- 명시적 sourceOrdinal로23개 UID를 결속했다. [UID 정정 기록](02-wangun-uid-association-correction.json)을 보존하며 이전 원장·추출 배열 순서를 등록 UID로 사용하지 않는다. rev3는 rev2의 UID23개를 그대로 유지한다.
-- 병행 owner의 immutable r12에서 왕운중/과정명 정정 발행 보류를 확인했다. 해당 작업에 합류하거나 그 tree를 수정하지 않는다. 공개 main·현재 원본·요청을 다시 확인하고 단일 요청만 적용한다.
+왕운중23은 [PR1968](https://github.com/icefoxtail/AP------/pull/1968), 실제 등록 main `738af248bd62813a572ac81725892b3f12ee2beb`에서 운영 마감했다. [마감 근거](02-wangun-operational-closeout.json), [실제 writer](02-wangun-pr1968-main-writer-final.json), [실제 분류·직접 영향 확인](02-wangun-main738-closeout-minimal-audit.json)을 재사용한다. 등록23·identity23·runtime23·정본16 및 최종 post-AutoMeta Consumer23/23/23 PASS, 실패·미관측·대기0이다. 기존 보호17·현재 신흥24의 관련 데이터 변경은0이다.
 
-병행 신흥 보완 PR1967의 실제 main440f·등록24·최종Consumer24를 확인한 뒤 왕운중을 병합했다. [영향 코드 추적](02-crosswalk-append-existing-approval-impact.json)에 기존 승인 재사용과 신규 요청 검증을 구분해 기록했다. 다른 owner의 tree·요청은 수정하지 않는다.
+왕운중은 메타23문항 중 분류·부모 연결20문항을 수정했다. 정확한 RPM leaf19개, 누락 근거4개(Q2·Q3·Q4·Q16)를 남겼다. Q2/Q3는 작도와 합동 부모만 정확하며 leaf가 없다. Q4/Q16은 RPM 하위 부모 모호성을 그대로 기록한다. 정상 문제·정답·해설·그림33개·UID·배점·난이도·source reviewStatus를 보존했다. 의미 정본은 [semantic revision3](02-wangun-semantic-review-rev3.json)이며, 명시적인 sourceOrdinal로 UID를 결속했다.
 
 ## 완료 결과
 
 | 시험지 | 총 문항 | 수정 문항 | 주요 오류 | PR | 실제 등록 main | 남은 시험지 |
 |---|---:|---:|---|---|---|---:|
-| 신흥중·2026·중1 2학기 중간 | 24 | 메타24, 그중 분류·연결18 | 작도·합동·위치·다각형 혼동, RPM debt2 유지 | [1960](https://github.com/icefoxtail/AP------/pull/1960)·[1961](https://github.com/icefoxtail/AP------/pull/1961)·[1964](https://github.com/icefoxtail/AP------/pull/1964) | `cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4` | 43 |
+| 신흥중·2026·중1 2학기 중간 | 24 | 메타24, 그중 분류·연결18 | 작도·합동·위치·다각형 혼동, RPM debt2 유지 | [1964](https://github.com/icefoxtail/AP------/pull/1964) | `cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4` | 43 |
+| 왕운중·2026·중1 2학기 중간 | 23 | 메타23, 그중 분류·연결20 | 작도·합동·위치·비례·통계 정정, RPM debt4 유지 | [1968](https://github.com/icefoxtail/AP------/pull/1968) | `738af248bd62813a572ac81725892b3f12ee2beb` | 42 |
 
-신흥중의 [운영 마감 근거](01-shinheung-operational-closeout.json)와 정본17/등록24/최종Consumer24 PASS를 재사용한다. RPM exact leaf22, debt Q8·Q10 및 Q8 부모 모호성은 보존된다. 후속 main `33f26c795e7a86fc3b63737996c6885cff4c7bba`는 writer 상태2파일만 달라 [입력 동일성 근거](01-shinheung-main-cursor-only-advance.json)로 기존 검증을 재사용했다. 신흥중을 다시 시작하지 않는다.
+신흥중의 첫 [운영 마감](01-shinheung-operational-closeout.json)은 역사적 결과로 보존한다. 다른 owner의 후속 [PR1967](https://github.com/icefoxtail/AP------/pull/1967)은 main `440f412bd221e3d62df16130984a2626a3ee6441`에서 새 영수증·최종Consumer24로 마감됐으며, 현재 source는 raw `2f1ab79eba940498b5c575ad1509a038b3f2dabd390823177635d83937fe4b56`이다. 왕운 등록 후에도 현재 신흥24의 관련 데이터는 바뀌지 않았다. 이미 완료한 전수 읽기를 다시 시작하지 않는다.
 
-선행 RPM 6권 L1/L2 정리는 [PR1958](https://github.com/icefoxtail/AP------/pull/1958)로 완료했다. 대단원24·중단원54, 기존326 세부 경로 보존 및 부모9개 수정. 해당 별도 브랜치 `fix/rpm-middle-l1-l2-20261113`의 `3292dc0b5457d8f6f1a491f7f4866fe5be4082b7`에 인계와 검증이 있다.
+선행 RPM6권 L1/L2 정리는 [PR1958](https://github.com/icefoxtail/AP------/pull/1958)로 완료했다. 대단원24·중단원54, 기존326leaf 보존 및 부모9개 수정. 별도 branch `fix/rpm-middle-l1-l2-20261113`의 head `3292dc0b5457d8f6f1a491f7f4866fe5be4082b7`에 인계와 검증이 있다. 과정명 한 필드 교정 [PR1966](https://github.com/icefoxtail/AP------/pull/1966)도 실제 main51cf·Consumer1/1·기존runtime613 보존으로 마감했다.
 
 ## 재개와 기록
 
-진행 원장은 [progress.json](progress.json), 다음 담당용 절차와 복사 프롬프트는 [HANDOFF.md](HANDOFF.md)다. 시험지 한 장의 의미 검토→최소 수정→exact candidate 전체 Consumer→PR/main→실제 등록 영수증/최종 Consumer→원격 SHA를 마감한 뒤 다음으로 이동한다. 기존 R1/R2/R3는 반복하지 않는다. 수학 FINAL QA나 새 해설 검증을 수행했다고 기록하지 않는다.
+진행 원장은 [progress.json](progress.json), 다음 담당 절차와 복사 프롬프트는 [HANDOFF.md](HANDOFF.md)다. 한 시험지의 의미 검토→최소 수정→정확 후보 검증→PR/main→실제 등록 영수증/최종 Consumer→원격 SHA를 끝낸 뒤 다음으로 이동한다. 기존 R1/R2/R3와 같은 입력의 검증은 반복하지 않는다. 수학 FINAL QA나 solution 기반 RPM FINAL을 수행했다고 기록하지 않는다.
 
-마지막 확인 원격 체크포인트는 `e03094dff7abe80ac6a66223b1f20ffea19a52fe`, AWCR revision21이다. 현재 rev3 기록의 실제 게시 SHA는 원격 브랜치와 다음 immutable AWCR에서 확인한다.
+이 문서 작성 직전 검증된 원격 branch head는 `55a92fd7da1df7f53d18e15d3f28d5d9d2a4bc94`, AWCR revision21이다. 현재 마감 문서의 게시 head/tree는 원격 branch와 다음 immutable AWCR revision22에서 확인한다. 이 문서는 자신의 최종 commit SHA를 미리 생성해 기록하지 않는다.
 
 ## 시험지별 완료 체크리스트
 
-완료는 실제 main 등록·전체 Consumer·원격 SHA 확인까지 끝낸 경우다. 나머지43장은 미완료이며 기존 메타의 유무와 무관하게 의미 검토 대상이다.
+완료는 실제 main 등록·전체 Consumer·원격 SHA 확인까지 끝낸 경우다. 나머지42장은 미완료이며 기존 메타의 유무와 무관하게 의미 검토 대상이다.
 
 - [x] 01. 26 신흥중 2학기 중간 중1 기출 / 24문항 — 운영 완료 · RPM debt Q8/Q10 기록
-- [ ] 02. 26 왕운중 2학기 중간 중1 기출 / 23문항 — 의미 검토23·격리 Consumer23·CI4/6 완료 · PR1968 병합 · 실제 등록/최종23 대기
+- [x] 02. 26 왕운중 2학기 중간 중1 기출 / 23문항 — 운영 완료 · 실제 등록23/최종Consumer23 · RPM debt Q2/Q3/Q4/Q16 기록
 - [ ] 03. 26 팔마중 2학기 중간 중1 기출 / 24문항 — PENDING
 - [ ] 04. 25 동산중 2학기 기말 중1 기출 / 24문항 — PENDING
 - [ ] 05. 25 신흥중 2학기 기말 중1 기출 / 22문항 — PENDING
