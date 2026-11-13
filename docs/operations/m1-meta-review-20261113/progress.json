@@ -15,7 +15,7 @@
   "completedExams": 2,
   "reviewedQuestions": 71,
   "currentOrder": 3,
-  "nextAction": "Publish Palma24 exact candidate and open PR; required CI, main merge, actual registration receipt/final post-AutoMeta Consumer24 and remote SHA closeout.",
+  "nextAction": "Finish Palma24 exact main writer registration receipt, final post-AutoMeta Consumer24, persisted remote SHA and scoped preservation; then close paper3 and move to paper4.",
   "exams": [
     {
       "order": 1,
@@ -785,7 +785,7 @@
       "count": 24,
       "sourceBlob": "a366f180ffe4b8495bb79fcc362ef1e0ff4618ca",
       "sourceSha256": "9a5e79c37b15d4e19054166b3eed5541df76992f39166518ac147aed18360861",
-      "status": "CANDIDATE_PREFLIGHT_PASS_PR_MAIN_PENDING",
+      "status": "PR_MERGED_MAIN_WRITER_IN_PROGRESS",
       "checklist": "[ ]",
       "operationallyClosed": false,
       "reviewedQuestionCount": 24,
@@ -814,7 +814,44 @@
       "scopeProtectionEvidence": "03-palma-isolated-minimal-protection.json",
       "scopeProtectionSha256": "661ca6380531220b14e5abffe51f86e7cbe887fd3d8d9113d50069f43ba3c875",
       "sourceCandidateAppliedScope": "OWN_WORKING_BRANCH_ONLY_NOT_MAIN",
-      "mainRegistration": "NOT_RUN_PENDING_PR"
+      "mainRegistration": "PENDING_OFFICIAL_MAIN_WRITER",
+      "prNumber": 1969,
+      "prUrl": "https://github.com/icefoxtail/AP------/pull/1969",
+      "prHeadSha": "e5860a968cc65f4e8817dc8492c14959f8d9b7d1",
+      "mergeCommitSha": "e25ceabf2c977b667d2b7a3740ab8ef50670f781",
+      "mergeTree": "5a7d4f9a36431454bcefbb2d59ab0d8691f9c268",
+      "prStatus": "MERGED",
+      "mainMergeEvidence": "03-palma-main-merge.json",
+      "mainMergeEvidenceSha256": "0914ba928f1154f091e7b47e4f535cbd7b270265033b3cc7c3c0ce4ea4a73d39",
+      "mainWriter": {
+        "runId": 43493276504,
+        "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43493276504",
+        "jobId": 132119704696,
+        "eventHead": "e25ceabf2c977b667d2b7a3740ab8ef50670f781",
+        "startedAt": "2026-11-13T19:33:07Z",
+        "observedPhase": "CHECKOUT",
+        "requestOutcome": "NOT_YET_OBSERVED",
+        "registrationReceiptVerification": "PENDING",
+        "finalPostAutoMetaConsumer": "NOT_YET_OBSERVED",
+        "persistStatus": "NOT_YET_OBSERVED"
+      },
+      "ci": {
+        "state": "SUCCESS",
+        "headSha": "e5860a968cc65f4e8817dc8492c14959f8d9b7d1",
+        "successfulWorkflowCount": 4,
+        "successfulJobCount": 6,
+        "independentlyRecheckedByRoot": true,
+        "evidencePath": "03-palma-pr1969-ci.json",
+        "evidenceSha256": "f35430da360dd5ef597bc52d513d4611ec43a9fc8e9ab7571135abb1694a40a5",
+        "nonblockingDiagnostics": "Pre-existing high1 Generated diagnostics; identical UID/failure signatures and hashes to Wangun CI, relevant high1 files unchanged.",
+        "browserRpm": {
+          "L1": 24,
+          "L2": 54,
+          "leaf": 326,
+          "status": "PASS_WITH_REAL_DATA_GAPS",
+          "knownM2M3Gaps": 15
+        }
+      }
     },
     {
       "order": 4,
@@ -1405,7 +1442,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "PALMA24_CANDIDATE_PREFLIGHT_PASSED_PR_AND_MAIN_PENDING",
+  "state": "PALMA24_MERGED_MAIN_REGISTRATION_PENDING",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -1424,11 +1461,11 @@
       "supersededBy": "01-shinheung-semantic-review.json"
     }
   },
-  "activeMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+  "activeMain": "e25ceabf2c977b667d2b7a3740ab8ef50670f781",
   "prerequisiteStatus": "RPM_L1_L2_MERGED",
   "prerequisiteMainSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
   "latestRemoteSemanticCheckpoint": "e403ce4b0fff47857e0579335a633a7a7b28dd3a",
-  "latestMergedReviewHead": "e03094dff7abe80ac6a66223b1f20ffea19a52fe",
+  "latestMergedReviewHead": "e5860a968cc65f4e8817dc8492c14959f8d9b7d1",
   "concurrentWorkCheck": {
     "path": "docs/operations/m1-meta-review-20261113/01-shinheung-concurrent-work-check.json",
     "sha256": "e06a73f3224e7c2eb44aa898a7c14e2ee1c2b21b52340c913b7e7bf1fc2e8891",
@@ -1458,7 +1495,7 @@
     ],
     "noBlanketMetadataConflictWaiver": true
   },
-  "activeMainTree": "40d92cfea35ea1108d4709aa7d7b87338e54aa17",
+  "activeMainTree": "5a7d4f9a36431454bcefbb2d59ab0d8691f9c268",
   "subsequentMainChanges": [
     {
       "pr": 1962,
@@ -1471,10 +1508,10 @@
       "preserveConcurrentChanges": true
     }
   ],
-  "activeMainTreeStatus": "ACTUAL_REGISTERED_WANGUN23_FINAL_CONSUMER23_VERIFIED",
+  "activeMainTreeStatus": "MERGE_TREE_EQUALS_VERIFIED_CANDIDATE; MAIN_REGISTRATION_PENDING",
   "checkpointPublication": {
-    "lastVerifiedRemoteSha": "ecf811789b4ba3a78fc6aeaec4a74ac6a2edebc7",
-    "statusAtWriting": "PALMA_CANDIDATE_AWAIT_REMOTE_PUBLICATION",
+    "lastVerifiedRemoteSha": "e5860a968cc65f4e8817dc8492c14959f8d9b7d1",
+    "statusAtWriting": "PALMA_MERGE_PENDING_CHECKPOINT_AWAIT_REMOTE_PUBLICATION",
     "selfCommitLookup": "Remote own branch and next immutable AWCR hold exact published head/tree."
   },
   "candidateConsumerPreflightPolicy": {
@@ -1486,11 +1523,11 @@
     "mainRegistrationStillRequired": true
   },
   "awcrCheckpoint": {
-    "latestVerifiedRevision": 23,
-    "fileId": "1ezgKsEwE1I7O2EsHRsswyLciB8Mk0MZi",
-    "rawSha256": "4e970f943307c8f2470316cc757600ba08d54a6398d6e985bfc3857a65a08429",
-    "nextRevision": 24,
-    "nextRevisionPurpose": "Record exact published Palma candidate head/PR and local preflight proof; operational closure remains pending."
+    "latestVerifiedRevision": 24,
+    "fileId": "1QPr5b3te3ZYNzsUYJI7W711OsM1ohV6w",
+    "rawSha256": "b1d073a2d990b6c91a307d7a50d55b3989855a46bda32224b988d66c3eefa11a",
+    "nextRevision": 25,
+    "nextRevisionPurpose": "Record PR1969 merge, exact CI pass, merge-pending branch checkpoint and main writer43493276504; keep closure pending."
   },
   "remainingExams": 42,
   "nextExam": {
@@ -1498,7 +1535,7 @@
     "path": "archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
     "file": "26_팔마중_2학기_중간_중1_기출.js",
     "questionCount": 24,
-    "status": "CURRENT_PALMA24_PR_AND_MAIN_PENDING"
+    "status": "CURRENT_PALMA24_MERGED_MAIN_REGISTRATION_PENDING"
   },
   "latestOperationalCloseout": {
     "order": 2,
@@ -1558,7 +1595,7 @@
     "scopeBoundary": "Exact Palma source/request no overlap in checked scopes; old generated metadata patch omissions recorded, no blanket all-PR no-conflict assertion."
   },
   "operationallyClosedQuestions": 47,
-  "latestVerifiedRemoteCheckpoint": "ecf811789b4ba3a78fc6aeaec4a74ac6a2edebc7",
+  "latestVerifiedRemoteCheckpoint": "e5860a968cc65f4e8817dc8492c14959f8d9b7d1",
   "courseCorrectionDependency": {
     "pr": 1966,
     "url": "https://github.com/icefoxtail/AP------/pull/1966",

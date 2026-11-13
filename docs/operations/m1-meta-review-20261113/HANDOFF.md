@@ -1,23 +1,23 @@
 # 중1 기존 시험지 메타 전수 검토 인계
 
-## 팔마중24 — 후보 검증 완료, PR/main 마감 대기
+## 팔마중24 — PR1969 병합, 실제 main 등록 마감 대기
 
-- 완료표는 **운영2/44장·47문항, 읽기71/1,047문항, 남은42장**이다. 팔마24는 다음 시험지로 넘기기 전에 PR/main 실제 등록까지 끝내야 한다.
-- 실제 main `738af248bd62813a572ac81725892b3f12ee2beb`, 마지막 원격 의미 체크포인트 `ecf811789b4ba3a78fc6aeaec4a74ac6a2edebc7`, tree `f67ac35810767f161626fc8da2ce1dc26a4c19b8`.
-- 최신 실제 raw 검증 AWCR **r23**, file `1ezgKsEwE1I7O2EsHRsswyLciB8Mk0MZi`, SHA `4e970f943307c8f2470316cc757600ba08d54a6398d6e985bfc3857a65a08429`. 게시 후 r24에 후보 head/PR을 기록한다.
-- [확정 의미 원장](03-palma-semantic-review.json) SHA `0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18`: 24 발문·선지·제공 풀이와37 그림을 모두 읽었다. native 분류14 수정, RPM exact19/debt Q6·Q8·Q12·Q13·Q14.
-- 후보 source SHA `1fa5adbc46ef6180400a4666c4328bb2d2b6655d059e660291ccf550803332c7`, blob `2b8411c03707eaa39fdf0159e3de448d459da181`. 정상 데이터·배점·난이도·source reviewStatus·그림37 보존. Q19 source before는 null, metadata before는 빈 문자열이며 공식 요청은 빈 문자열을 정확히 사용한다.
-- 공식 요청 `.archive-meta-register/inbox/m1-palma-2026-mid-meta-review-20261113.json`, raw `c59a32637f1fc578152a94297844500f4b4ca65b891757830aaf3264b2feb5f5`, canonical `7eabd34d965a39395f9121a14f037c70deb4f69ec9910d14fd647c73695cb0d4`. PT1/TPL3/binding3의 정본7개는 공식 writer가 적용하며 native/compiled/metadata/runtime을 직접 복사하지 않는다.
-- [격리 검증](03-palma-isolated-preflight.json): 공식 등록24/정본7/runtime24, 검색 projection24, Consumer changed/checked/passed24/24/24, 실패·미관측·assignmentPending0. [실제 부모 대조](03-palma-actual-rpm-parents.json): native24/leaf19, 작도·합동 parent-only3, Q6/Q8 LEGACY_PARENT_AMBIGUOUS를 명시했다. 공간 두 직선 RPM leaf를 허위로 채우지 않는다.
-- 기존 crosswalk260행을 보존하며 정확13행만 추가했고,24L1/54L2/326leaf는 그대로다. helper cache6곳과 직접 영향인177/184의 exact test fixture만 보완했고 기존18테스트는 모두 통과했다. 새 격리 tree의 공식 인덱스 빌드에는 `/archive/exams/` 전체 기존 JS를 materialize해야 한다. 처음의723 로컬 누락은 sparse checkout 문제였으며 gate를 수정하지 않았다.
-- 원격 게시 후보는 source·crosswalk·parents·생성 helper·테스트 기대값·cache6곳·공식 요청·인계 문서다. **이 로컬 PASS는 운영 main 완료가 아니다.** 정확 PR head의 필수CI 후 merge하고, 실제 main writer 영수증24와 최종 post-AutoMeta Consumer24 및 원격 SHA를 확인한다.
-- [대상 밖 보존 비교](03-palma-isolated-minimal-protection.json) raw `661ca6380531220b14e5abffe51f86e7cbe887fd3d8d9113d50069f43ba3c875`: 팔마 밖 metadata28,866/identity28,866 및 runtime17파일의 변경·추가·누락0, 기존crosswalk260·영수증723·완료47문항 보존. 격리 PASS이며 운영 완료 주장은 하지 않는다.
-- 현재 Notion 포인터는 [라우터 기록](notion-current-metadata-route-refresh-20261113.json)에 있다. 라우터 `3e10e68b-d69f-81f1-9397-e7cd1c8d3cfd`, 시작 `3e10e68b-d69f-8189-8cc8-fb85cb4b1398`, 생명주기 `3e10e68b-d69f-81fd-b161-ffc3f6227b6e`, 메타02-06 `4010e68b-d69f-8158-8ea0-cc325bbe51cb`.
-- [병행 범위](03-palma-concurrent-work-check.json): 다른 owner의 정확 task r16는 신흥 범위 완료 선언/NO_NEXT_ACTION이며 팔마 인수는 없다. PR1959는 향림2024 source와19그림을 변경하므로 그 차례에서 재확인한다.
+- **운영 완료2/44장·47문항, 읽기71/1,047문항, 남은42장.** 팔마24는 실제 main 등록·최종Consumer·원격SHA 확인 전까지 완료 체크하지 않는다. 그 뒤4번2025동산중2학기기말24문항으로 이동한다.
+- [PR1969](https://github.com/icefoxtail/AP------/pull/1969) 병합: head `e5860a968cc65f4e8817dc8492c14959f8d9b7d1`, merge `e25ceabf2c977b667d2b7a3740ab8ef50670f781`, 실제 remote main tree `5a7d4f9a36431454bcefbb2d59ab0d8691f9c268`. 병합 tree는 검증한 후보 tree와 동일하다. root가 같은 head의6check-runs SUCCESS와 최신main738 불변·mergeable clean을 직접 확인하고 병합했다.
+- [정확한head의CI증거](03-palma-pr1969-ci.json) raw `f35430da360dd5ef597bc52d513d4611ec43a9fc8e9ab7571135abb1694a40a5`: 4workflow/6jobs SUCCESS, 실제RPM Chrome24/54/326. M2/M3 자료부족15와 scope SKIP을 구분했다. 공유고1 진단오류는 이전왕운과 UID/실패명/expected·actual해시/이미지오류가 동일하고 해당파일불변인 기존부채이며 팔마24등록검증으로 대체하지 않는다.
+- 공식 writer [43493276504](https://github.com/icefoxtail/AP------/actions/runs/43493276504), register job132119704696, event head는 위merge다. 2026-11-13T19:33:07Z 시작. 이 체크포인트의 관측은 초기실행이며 **요청등록/최종post-AutoMetaConsumer/PUSHED는 아직 미관측**이다. [병합 증거](03-palma-main-merge.json)를 현재 실제run 결과로 이어 갱신한다.
+- 최신 실제raw 검증 AWCR **r24**, file `1QPr5b3te3ZYNzsUYJI7W711OsM1ohV6w`, SHA `b1d073a2d990b6c91a307d7a50d55b3989855a46bda32224b988d66c3eefa11a`. 이 문서 게시 후 r25에 정확한게시head·병합·writer대기를 기록한다. 자신의최종commitSHA를미리기록하지않는다.
+- [확정 의미 원장](03-palma-semantic-review.json) SHA `0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18`: 발문·선지·제공풀이24 및 그림37을 읽었다. native분류14 수정, RPM exact19/debt Q6·Q8·Q12·Q13·Q14. 정상source·37그림·UID·배점·난이도·source reviewStatus 보존.
+- source SHA `1fa5adbc46ef6180400a4666c4328bb2d2b6655d059e660291ccf550803332c7`, blob `2b8411c03707eaa39fdf0159e3de448d459da181`. 공식요청 `m1-palma-2026-mid-meta-review-20261113`, raw `c59a32637f1fc578152a94297844500f4b4ca65b891757830aaf3264b2feb5f5`, canonical `7eabd34d965a39395f9121a14f037c70deb4f69ec9910d14fd647c73695cb0d4`. Q19 source before=null, metadata before=빈문자열을 구분했다.
+- PT1/TPL3/binding3, 정본총7개는 공식writer가적용한다. native/compiled/metadata/runtime생성물을직접복사하지않았다. 기존crosswalk260 보존+DIRECT13, 24L1/54L2/326leaf 유지. 연결된 exactleaf19, 작도·합동parent-only3, Q6/Q8 LEGACY_PARENT_AMBIGUOUS를명시했다.
+- [격리검증](03-palma-isolated-preflight.json) SHA `069fec837983caf5ee3c8104a8d0c9b10bcf8b0a8672c544ef9d928daf20f531`: 공식등록24/정본7/runtime24, projection24 및 최종로컬Consumer24/24/24 PASS, 실패·미관측·assignmentPending0. 직접영향기존RPM tests18/18 PASS. 같은입력은반복검사하지않는다. 이는운영완료증거가아니다.
+- [대상밖보존비교](03-palma-isolated-minimal-protection.json) SHA `661ca6380531220b14e5abffe51f86e7cbe887fd3d8d9113d50069f43ba3c875`: 대상밖metadata/identity/runtime 변경·추가·누락0, 기존native정의·crosswalk260·등록영수증723파일·완료47문항보존. 실제등록SHA가나오면격리와같은파일은hash로재사용하고달라진실제파일만대조한다.
+- [후보게시](03-palma-candidate-publication.json), [원격30파일재읽기](03-palma-candidate-remote-readback.json) SHA `1c81d104ad36c13dd06a38595ecc8f80132cc3e46a43827232f3e0a75daa17d7`에 실제raw/blob/tree 일치를 보존했다.
+- 현재 [Notion라우터기록](notion-current-metadata-route-refresh-20261113.json), [병행범위](03-palma-concurrent-work-check.json)를 재사용하되 다음시험지선택전 최신포인터/main/담당범위를확인한다. 다른owner의 신흥작업인수없음. PR1959의향림2024는그차례에서재확인한다.
 
 ### 복사용 현재 인계
 
-> AP------ 중1 전수 메타 검토 task f46ac6a5-f2f7-4ae1-a0af-5806b87de808, owner GPT_ROOT_933015CD0A4F, branch review/m1-existing-meta-20261113을 이어 주세요. RPM6권 L1/L2·신흥24·왕운23 운영 완료는 재실행하지 마세요. 최신 Notion 라우터, AWCR r23 이후, remote main/own branch와 docs/operations/m1-meta-review-20261113/HANDOFF.md·progress.json을 확인하세요. 현재3번2026팔마중2학기중간24문항/37그림 의미 검토와 공식격리Consumer24를 마쳤습니다. source후보1fa5adbc…, 요청rawc59a3263…, 정본7개·exactRPM19/debt5입니다. 같은 입력의 검토/검사는 재사용하고, 후보 원격 게시/PR→필수CI→main 실제등록 영수증24→최종post-AutoMetaConsumer24→원격SHA를 마감하세요. 그 뒤4번으로 이동하며44장 끝까지 계속합니다. 전체R1/R2/R3와 정상 데이터는 건드리지 않습니다.
+> AP------ 중1 전수 메타 검토 task f46ac6a5-f2f7-4ae1-a0af-5806b87de808, owner GPT_ROOT_933015CD0A4F, branch review/m1-existing-meta-20261113을 이어 주세요. RPM6권 L1/L2·신흥24·왕운23 운영 완료를 반복하지 마세요. 최신 Notion라우터, AWCR r24 이후, remote main/own branch, docs/operations/m1-meta-review-20261113/HANDOFF.md·progress.json을 확인하세요. 현재3번2026팔마중2학기중간24문항/37그림 의미읽기 및 격리Consumer24 완료, PR1969는 head e5860a9…에서6필수CI통과 후 main e25ceab…에병합됐습니다. writer43493276504/job132119704696의 실제등록영수증24·최종post-AutoMetaConsumer24·PUSHED/원격SHA와대상밖보존을마감하세요. 요청rawc59a3263…/canonical7eabd34d…/source1fa5adbc…를결속하세요. 현재운영2/44·47문항·읽기71·남은42를유지하며, 실제마감후4번2025동산중2학기기말24문항으로진행합니다. 전체R1/R2/R3와같은입력의검사는반복하지않습니다.
 
 ## 왕운 마감 시점의 기록 — 팔마 현재 상태는 위 절 우선
 

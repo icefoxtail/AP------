@@ -2,7 +2,7 @@
 
 ## 현재 진행
 
-**운영 완료 2/44장 · 남은 42장 · 읽기 71/1,047문항 · 운영 마감 47문항.** 현재 **2026 팔마중 중1 2학기 중간24문항**의 발문·선지·제공 풀이24개와 그림37개를 모두 읽고, 후보의 공식 격리 등록·projection·Consumer24/24와 대상 밖 보존을 확인했다. 팔마 PR 생성→필수CI→main 병합→실제 등록 영수증·최종 post-AutoMeta Consumer24·원격 SHA를 마감한 뒤 다음 시험지로 이동한다.
+**운영 완료 2/44장 · 남은 42장 · 읽기 71/1,047문항 · 운영 마감 47문항.** 현재 **2026 팔마중 중1 2학기 중간24문항**의 발문·선지·제공 풀이24개와 그림37개를 모두 읽고, 후보의 공식 격리 등록·projection·Consumer24/24와 대상 밖 보존을 확인했다. 팔마 [PR1969](https://github.com/icefoxtail/AP------/pull/1969)는 필수CI6개를 통과하고 main `e25ceabf2c977b667d2b7a3740ab8ef50670f781`에 병합됐다. 공식 writer43493276504의 실제 등록 영수증·최종 post-AutoMeta Consumer24·원격 SHA를 마감한 뒤 다음 시험지로 이동한다.
 
 팔마의 native 분류14문항과 메타 연결을 수정했고, 정확한 RPM leaf19개를 연결했다. Q6·Q8·Q12·Q13·Q14는 정확한 leaf가 없어 근거 누락 상태를 명시했다. [의미 원장](03-palma-semantic-review.json), [격리 검증](03-palma-isolated-preflight.json), [보존 비교](03-palma-isolated-minimal-protection.json)에 근거를 저장했다. 정상 source·37그림과 팔마 밖 metadata/identity/runtime·완료47문항·기존 영수증723파일을 보존했다. **팔마는 아직 운영 완료로 체크하지 않는다.**
 
@@ -25,7 +25,7 @@
 
 진행 원장은 [progress.json](progress.json), 다음 담당 절차와 복사 프롬프트는 [HANDOFF.md](HANDOFF.md)다. 한 시험지의 의미 검토→최소 수정→정확 후보 검증→PR/main→실제 등록 영수증/최종 Consumer→원격 SHA를 끝낸 뒤 다음으로 이동한다. 기존 R1/R2/R3와 같은 입력의 검증은 반복하지 않는다. 수학 FINAL QA나 solution 기반 RPM FINAL을 수행했다고 기록하지 않는다.
 
-이 후보 문서 작성 직전 검증된 원격 branch head는 `ecf811789b4ba3a78fc6aeaec4a74ac6a2edebc7`, AWCR revision23이다. 후보 게시 head/tree와 PR은 원격 branch 및 다음 immutable AWCR revision24에서 확인한다. 이 문서는 자신의 최종 commit SHA를 미리 생성해 기록하지 않는다.
+이 병합 대기 문서 작성 직전 검증된 원격 branch head는 `e5860a968cc65f4e8817dc8492c14959f8d9b7d1`, AWCR revision24이다. 이번 체크포인트 게시 head/tree와 main writer 대기는 원격 branch 및 다음 immutable AWCR revision25에서 확인한다. 이 문서는 자신의 최종 commit SHA를 미리 생성해 기록하지 않는다.
 
 ## 시험지별 완료 체크리스트
 
@@ -33,7 +33,7 @@
 
 - [x] 01. 26 신흥중 2학기 중간 중1 기출 / 24문항 — 운영 완료 · RPM debt Q8/Q10 기록
 - [x] 02. 26 왕운중 2학기 중간 중1 기출 / 23문항 — 운영 완료 · 실제 등록23/최종Consumer23 · RPM debt Q2/Q3/Q4/Q16 기록
-- [ ] 03. 26 팔마중 2학기 중간 중1 기출 / 24문항 — 의미24·그림37·격리Consumer24 PASS; PR/main 마감 대기
+- [ ] 03. 26 팔마중 2학기 중간 중1 기출 / 24문항 — 의미24·그림37·격리Consumer24 PASS; PR1969 병합, 실제main등록 마감 대기
 - [ ] 04. 25 동산중 2학기 기말 중1 기출 / 24문항 — PENDING
 - [ ] 05. 25 신흥중 2학기 기말 중1 기출 / 22문항 — PENDING
 - [ ] 06. 25 연향중 2학기 기말 중1 기출 / 23문항 — PENDING
