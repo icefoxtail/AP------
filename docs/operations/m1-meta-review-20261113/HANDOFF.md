@@ -1,6 +1,21 @@
 # 중1 기존 시험지 메타 전수 검토 인계
 
-## 현재 위치
+## 팔마중24 — 현재 재개 지점 (2026-11-13T18:38:16.929097+00:00)
+
+- 앞의 신흥24·왕운23은 운영 완료 **2/44장,47문항**이며 반복하지 않는다. 팔마24까지 읽은 문항은 **71/1,047**, 운영 미마감 시험지는 **42장**이다.
+- 현재 main은 `738af248bd62813a572ac81725892b3f12ee2beb`, 현재 문서 작성 전 원격 branch는 `c024dd5a0bd123ac7286affb13313494de0f63d2`이다.
+- 최신 실제 검증 AWCR는 **r22**, file `1qFz_kSWw-E1rRHtNKo5FzyL_0ZyCtXMJ`, raw SHA `b4c191862fc20c3ebdf3cf9af62f0b60623a8037aba7849398e89a920f16d766`이다. 게시 후 r23에 현재 branch와 nextAction을 저장한다.
+- [팔마 의미 원장](03-palma-semantic-review.json)의24개 UID는 metadata/identity의 명시적 sourceOrdinal로 결속했다. 원본 SHA `9a5e79c37b15d4e19054166b3eed5541df76992f39166518ac147aed18360861`, blob `a366f180ffe4b8495bb79fcc362ef1e0ff4618ca`이다. 발문·선지·제공 풀이24개와 실제 그림37개를 읽었다.
+- native 분류 수정 14문항, 정확 RPM leaf19·debt Q6/Q8/Q12/Q13/Q14. 후보는 새 PT1/TPL3와 exact crosswalk13개이며, 나머지 native 키는 재사용한다. Q3은 수선의 발을 기반으로 거리 판단하는 RPM184로 연결하고 effective L2 기본 도형을 유지한다. Q4는 기존 ANGLE_RATIO와 RPM175를 연결한다. Q24는 RPM ASA 밖의 정사각형·넓이 CC와 SEQUENTIAL이다.
+- **아직 source·정본·등록 요청은 수정하지 않았으며, 공식 등록/Consumer/PR/main 운영 완료를 주장하지 않는다.** 다음은 원장의 최소 source 메타 수정과 add-only registry/crosswalk/parent 연결 작성, 공식24 사전 검증, PR→main 실제 등록→최종 post-AutoMeta Consumer24→원격 SHA 마감이다.
+- Notion 최신 라우터의 현재 이름은 `00 작업별 문서 라우터 — INDEX CURRENT`다. [현재 포인터](notion-current-metadata-route-refresh-20261113.json)를 재사용한다. 라우터 `3e10e68b-d69f-81f1-9397-e7cd1c8d3cfd`, 시작 `3e10e68b-d69f-8189-8cc8-fb85cb4b1398`, 생명주기 `3e10e68b-d69f-81fd-b161-ffc3f6227b6e`, 메타02-06 `4010e68b-d69f-8158-8ea0-cc325bbe51cb`.
+- [병행 범위](03-palma-concurrent-work-check.json): 다른 owner의 정확 task 최신r16는 신흥 범위 완료 선언/NO_NEXT_ACTION이며 팔마 인수는 없다. PR1959는 이제 실제 향림2024 source와19그림 변경이 있으므로 그 차례에서 최신 확인한다. 생성 metadata의 일부 오래된 PR patch는 생략되어 전체 무겹침을 과장하지 않는다.
+
+### 복사용 현재 인계
+
+> AP------ 중1 전수 메타 검토 task f46ac6a5-f2f7-4ae1-a0af-5806b87de808, owner GPT_ROOT_933015CD0A4F, branch review/m1-existing-meta-20261113을 이어 주세요. RPM6권 L1/L2, 신흥24, 왕운23 운영 완료는 재실행하지 마세요. 최신 main738af와 AWCR r22 이후·원격 branch를 확인하고 docs/operations/m1-meta-review-20261113/progress.json 및 03-palma-semantic-review.json을 읽으세요. 현재3번2026팔마중2학기중간24문항/37그림 의미 검토가 완료됐고 source/등록은 아직입니다. exact RPM19와 debt5, 새 PT1/TPL3·exact crosswalk13의 최소 계획을 현재정본에 맞춰 만들고 공식24 사전 검증 후 PR/main 실제 등록·최종Consumer·원격SHA까지 마감하세요. 정상 데이터와 다른owner 범위를 보존하고 전체R1/R2/R3는 반복하지 마세요. 이후 순서대로44장 끝까지 계속합니다.
+
+## 왕운 마감 시점의 기록 — 팔마 현재 상태는 위 절 우선
 
 - 저장소: https://github.com/icefoxtail/AP------
 - taskId: `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`; owner: `GPT_ROOT_933015CD0A4F`.

@@ -13,9 +13,9 @@
   },
   "order": "year DESC, semester DESC, final before midterm, school Korean alphabetical",
   "completedExams": 2,
-  "reviewedQuestions": 47,
+  "reviewedQuestions": 71,
   "currentOrder": 3,
-  "nextAction": "Publish closing checkpoint and AWCR; refresh latest main and concurrent scope, then read all24 Palma prompts/figures/provided solutions.",
+  "nextAction": "Publish semantic checkpoint; prepare Palma24 metadata-only source and exact registry/crosswalk references; official24 preflight, PR/main closeout.",
   "exams": [
     {
       "order": 1,
@@ -785,9 +785,18 @@
       "count": 24,
       "sourceBlob": "a366f180ffe4b8495bb79fcc362ef1e0ff4618ca",
       "sourceSha256": "9a5e79c37b15d4e19054166b3eed5541df76992f39166518ac147aed18360861",
-      "status": "PENDING",
+      "status": "SEMANTIC_REVIEW_COMPLETE_NOT_REGISTERED",
       "checklist": "[ ]",
-      "operationallyClosed": false
+      "operationallyClosed": false,
+      "reviewedQuestionCount": 24,
+      "semanticReviewEvidence": "03-palma-semantic-review.json",
+      "semanticReviewSha256": "0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18",
+      "figureReadEvidence": "03-palma-figure-read-evidence.json",
+      "sourceMetadataEditsApplied": false,
+      "registrationApplied": false,
+      "exactRpmLeafCount": 19,
+      "rpmEvidenceDebtCount": 5,
+      "nativeClassificationCorrectedCount": 14
     },
     {
       "order": 4,
@@ -1378,7 +1387,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "SECOND_EXAM_OPERATIONALLY_CLOSED_NEXT_PALMA24_NOT_STARTED",
+  "state": "PALMA24_SEMANTICS_CONFIRMED_SOURCE_AND_REGISTRATION_NOT_APPLIED",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -1446,13 +1455,9 @@
   ],
   "activeMainTreeStatus": "ACTUAL_REGISTERED_WANGUN23_FINAL_CONSUMER23_VERIFIED",
   "checkpointPublication": {
-    "lastVerifiedRemoteSha": "55a92fd7da1df7f53d18e15d3f28d5d9d2a4bc94",
-    "statusAtWriting": "WANGUN_OPERATIONALLY_CLOSED_LOCAL_CLOSING_DOCUMENTS_AWAIT_REMOTE_PUBLICATION",
-    "currentSnapshotEvidence": {
-      "path": "02-wangun-semantic-review-rev3.json",
-      "sha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090"
-    },
-    "selfCommitLookup": "Fetch current remote branch; subsequent immutable AWCR records the post-publication head/tree."
+    "lastVerifiedRemoteSha": "c024dd5a0bd123ac7286affb13313494de0f63d2",
+    "statusAtWriting": "PALMA24_SEMANTIC_CHECKPOINT_AWAIT_REMOTE_PUBLICATION",
+    "selfCommitLookup": "Read remote own branch; next immutable AWCR records exact new head/tree and raw readback."
   },
   "candidateConsumerPreflightPolicy": {
     "scope": "EACH_REVIEWED_EXAM_EXACT_CANDIDATE",
@@ -1463,11 +1468,11 @@
     "mainRegistrationStillRequired": true
   },
   "awcrCheckpoint": {
-    "latestVerifiedRevision": 21,
-    "fileId": "149rSt5WWAArxdHVfvMv8KVlV7DPWnbEb",
-    "rawSha256": "21d365a950a7dcb9e844e862f235bc1a371506f09d855d166ad8b30add04c356",
-    "nextRevision": 22,
-    "nextRevisionPurpose": "Record actual Wangun23 operational closeout, verified closing branch checkpoint and next Palma24."
+    "latestVerifiedRevision": 22,
+    "fileId": "1qFz_kSWw-E1rRHtNKo5FzyL_0ZyCtXMJ",
+    "rawSha256": "b4c191862fc20c3ebdf3cf9af62f0b60623a8037aba7849398e89a920f16d766",
+    "nextRevision": 23,
+    "nextRevisionPurpose": "Palma24 semantic checkpoint and exact next action after remote branch publication."
   },
   "remainingExams": 42,
   "nextExam": {
@@ -1475,7 +1480,7 @@
     "path": "archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
     "file": "26_팔마중_2학기_중간_중1_기출.js",
     "questionCount": 24,
-    "status": "PENDING_REFRESH_CURRENT_MAIN_AND_CONCURRENT_SCOPE"
+    "status": "CURRENT_SEMANTICS_REVIEWED_PENDING_SOURCE_AND_REGISTRATION"
   },
   "latestOperationalCloseout": {
     "order": 2,
@@ -1526,20 +1531,16 @@
     "newSemanticReviewOrConsumerTestsRun": false
   },
   "nextExamConcurrency": {
-    "evidencePath": "02-wangun-concurrent-work-check.json",
-    "sha256": "ca94465e0105c3ae2fe071a8316f1c687d9cb04b17bf68dc69bef0dd82c0fba9",
+    "evidencePath": "03-palma-concurrent-work-check.json",
+    "sha256": "01bf273eff7f96a47ad3ad93a150927236482fb1e2ec9e1cc214e416880ac349",
     "sourceRequestOverlap": 0,
+    "knownOtherTaskLatestRevision": 16,
     "pr1751Head": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
-    "pr1952Head": "3e299cd72c248e7b74c2e3e409850e747cf1e6c7",
-    "pr1965Head": "9f82851d9807ffd04952a43874622e9d331e038b",
-    "pr1959Head": "84c2eaeea1fc24167bff3cfdbbcf151a42d02ae2",
-    "futureOrder24AdditionalFigureOverlapPr": 1959,
-    "futureOrder24Pr1751ExpectedSourceBlobStale": true,
-    "recheckOnHeadChange": true,
-    "currentDependencyEvidence": "02-pr1965-head9f828-review.json"
+    "pr1959Head": "818de5b8c06280ecde648fd051ffa53b5021a7c5",
+    "scopeBoundary": "Exact Palma source/request no overlap in checked scopes; old generated metadata patch omissions recorded, no blanket all-PR no-conflict assertion."
   },
   "operationallyClosedQuestions": 47,
-  "latestVerifiedRemoteCheckpoint": "55a92fd7da1df7f53d18e15d3f28d5d9d2a4bc94",
+  "latestVerifiedRemoteCheckpoint": "c024dd5a0bd123ac7286affb13313494de0f63d2",
   "courseCorrectionDependency": {
     "pr": 1966,
     "url": "https://github.com/icefoxtail/AP------/pull/1966",
@@ -1575,11 +1576,12 @@
   "knownConcurrentOwnerBoundary": {
     "taskId": "241f49f8-fccb-4880-944e-9814a117b88e",
     "owner": "GPT_ROOT_BF50408FB63B",
-    "observedAwcrRevision": 13,
-    "fileId": "1On2Gpe0EmP9W7IffBCg2qZLr0z0ZV288",
-    "rawSha256": "105d05f2df229857c3ff90f28a28f5b3881b31abf72f7b1c82ab7f1b9e77691f",
-    "scope": "Other owner remains Shinheung24 IN_PROGRESS/RUN_REQUIRED_CHECKS; no current CI-fix or handoff declaration observed. Wangun/course publication withheld. No other-task mutation or joining.",
-    "candidateComparisonEvidence": "02-wangun-concurrent-candidate-conflicts.json"
+    "sharedRevision": 16,
+    "fileId": "1vx4hTrZLFDcfPk4i8UyzMNsvqCh6SlSu",
+    "actualRemoteRawSha256": "8d487ad6e4c4c5408bd4587278d58cfb06894dfbc082c9fcec08f27d6a1d4ffd",
+    "state": "COMPLETE_DECLARED",
+    "nextAction": "NO_NEXT_ACTION",
+    "scopeObservation": "Latest checkpoint declares its Shinheung24 scope closed and no remaining action; it references parity at main738 and says its overlapping candidate was not published. No Palma source or task takeover is declared. Previous explicit Wangun/course separation is preserved."
   },
   "concurrentShinheungSupplement": {
     "pr": 1967,
