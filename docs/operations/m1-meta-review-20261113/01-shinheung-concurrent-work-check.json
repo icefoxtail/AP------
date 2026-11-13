@@ -1,0 +1,507 @@
+{
+  "schemaVersion": "m1-concurrent-work-check-v1",
+  "observedAtUtc": "2026-11-13T11:53:58.351Z",
+  "repository": "icefoxtail/AP------",
+  "scope": "Read-only PR metadata, complete changed-filename lists, PR1751 request source headers, six M1 requests' top-level registryChanges, and existing progress order. No next-exam question review.",
+  "baseObservation": {
+    "mainSha": "ceeafbee1cc000f5308e040ba252729f0982c827",
+    "basis": "Root supplied current main; independently matches the base SHA reported by get_pr_info for PR1960.",
+    "ourPr": 1960,
+    "ourHeadSha": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
+    "ourHeadMatchesApi": true
+  },
+  "targetSources": {
+    "first": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+    "queuedNext": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+    "queueOrderBasis": "Only docs/operations/m1-meta-review-20261113/progress.json was read for next-source identity; the Wangun question file was not opened."
+  },
+  "pullRequests": [
+    {
+      "pr": 1751,
+      "url": "https://github.com/icefoxtail/AP------/pull/1751",
+      "title": "Register META_PIPELINE reviewed batch",
+      "state": "open",
+      "draft": false,
+      "merged": false,
+      "headRef": "codex/meta-pipeline-batch-20261111",
+      "headSha": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
+      "baseSha": "51337fecfad02283d410df24b6d2e92df32b594c",
+      "mergeableReportedByApi": true,
+      "updatedAt": "2026-11-11T06:55:54Z",
+      "changedFileCount": 324,
+      "exactChangedPathOverlapWith1960": [],
+      "targetExamSourceFilesChanged": [],
+      "targetRequestFilesChanged": []
+    },
+    {
+      "pr": 1952,
+      "url": "https://github.com/icefoxtail/AP------/pull/1952",
+      "title": "feat(meta): REVIEW2 등록 완화 — 원본 미보유 칸, reviewStatus, 유형 미결합(typeHold)",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "headRef": "fix/review2-classify-relax-20261113",
+      "headSha": "3e299cd72c248e7b74c2e3e409850e747cf1e6c7",
+      "baseSha": "9cb02201fb93d92f0e8263cf96c6ab6e981d1f53",
+      "mergeableReportedByApi": true,
+      "updatedAt": "2026-11-13T04:42:57Z",
+      "changedFileCount": 4,
+      "exactChangedPathOverlapWith1960": [],
+      "targetExamSourceFilesChanged": [],
+      "targetRequestFilesChanged": []
+    },
+    {
+      "pr": 1960,
+      "url": "https://github.com/icefoxtail/AP------/pull/1960",
+      "title": "fix(archive): 신흥중 2026 중1 2학기 중간 메타 24문항 재검토",
+      "state": "open",
+      "draft": false,
+      "merged": false,
+      "headRef": "review/m1-existing-meta-20261113",
+      "headSha": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
+      "baseSha": "ceeafbee1cc000f5308e040ba252729f0982c827",
+      "mergeableReportedByApi": true,
+      "updatedAt": "2026-11-13T11:48:26Z",
+      "changedFileCount": 37,
+      "exactChangedPathOverlapWith1960": [],
+      "targetExamSourceFilesChanged": [
+        "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js"
+      ],
+      "targetRequestFilesChanged": [
+        ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev1.json"
+      ]
+    },
+    {
+      "pr": 1785,
+      "url": "https://github.com/icefoxtail/AP------/pull/1785",
+      "title": "fix(archive): preserve reviewed legacy similar metadata",
+      "state": "open",
+      "draft": false,
+      "merged": false,
+      "headRef": "fix/legacy-similar-writer-preservation-20261111",
+      "headSha": "80fc80463d8bcf45f0724a0f7bfce3e2324439e1",
+      "baseSha": "c274ae5fad15c6fd15826e351fa2bc6f12bede13",
+      "mergeableReportedByApi": true,
+      "updatedAt": "2026-11-11T12:45:29Z",
+      "changedFileCount": 2,
+      "exactChangedPathOverlapWith1960": [],
+      "targetExamSourceFilesChanged": [],
+      "targetRequestFilesChanged": []
+    },
+    {
+      "pr": 1571,
+      "url": "https://github.com/icefoxtail/AP------/pull/1571",
+      "title": "feat(meta): classify 432 textbook questions",
+      "state": "open",
+      "draft": false,
+      "merged": false,
+      "headRef": "codex/textbook-calculus-crosswalk-identity-rebind",
+      "headSha": "9afa52e9a075565cb317454535736fccaa8acaa0",
+      "baseSha": "b5e97017e27e4176ce957fb664effe6054e8b4c0",
+      "mergeableReportedByApi": false,
+      "updatedAt": "2026-11-09T22:20:26Z",
+      "changedFileCount": 93,
+      "exactChangedPathOverlapWith1960": [
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs"
+      ],
+      "targetExamSourceFilesChanged": [],
+      "targetRequestFilesChanged": []
+    },
+    {
+      "pr": 1455,
+      "url": "https://github.com/icefoxtail/AP------/pull/1455",
+      "title": "feat(archive): S1 evidence-bound solution-only fingerprint rebind (#1453)",
+      "state": "open",
+      "draft": false,
+      "merged": false,
+      "headRef": "feat/archive-simpleflow-s1-fingerprint-rebind-20261107",
+      "headSha": "d75c76d9bfa4963f8b695d929bd933e690a066ed",
+      "baseSha": "0cddfb8d0f189dbdd0b987d0a92b782b6150196f",
+      "mergeableReportedByApi": false,
+      "updatedAt": "2026-11-06T15:31:17Z",
+      "changedFileCount": 2,
+      "exactChangedPathOverlapWith1960": [],
+      "targetExamSourceFilesChanged": [],
+      "targetRequestFilesChanged": []
+    },
+    {
+      "pr": 1941,
+      "url": "https://github.com/icefoxtail/AP------/pull/1941",
+      "title": "4칸 검수 반영: 23 매산중 중3 1기말 (ORDER 552)",
+      "state": "open",
+      "draft": false,
+      "merged": false,
+      "headRef": "data/4slot-552-20261112",
+      "headSha": "3a8ccfe0eb44941109156c3381b31f00c9f2ce78",
+      "baseSha": "8f8fb0b178b02503b43162bcbcea55d63251b196",
+      "mergeableReportedByApi": true,
+      "updatedAt": "2026-11-12T15:15:00Z",
+      "changedFileCount": 1,
+      "exactChangedPathOverlapWith1960": [],
+      "targetExamSourceFilesChanged": [],
+      "targetRequestFilesChanged": []
+    },
+    {
+      "pr": 981,
+      "url": "https://github.com/icefoxtail/AP------/pull/981",
+      "title": "meta: seed 2022 미적분I L1-L4/CC/PT/TPL from 2015 수학II",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "headRef": "work/h22-mi1-reuse-2015-foundation-seed-20261029",
+      "headSha": "eb4791e5894a541aa08204ae6ef1c22ec65688ef",
+      "baseSha": "98f41917ad8d90e017e88259ea3fd11e08877f05",
+      "mergeableReportedByApi": false,
+      "updatedAt": "2026-10-29T14:00:25Z",
+      "changedFileCount": 2,
+      "exactChangedPathOverlapWith1960": [],
+      "targetExamSourceFilesChanged": [],
+      "targetRequestFilesChanged": []
+    },
+    {
+      "pr": 711,
+      "url": "https://github.com/icefoxtail/AP------/pull/711",
+      "title": "feat(meta): connect canonical maintenance to shared exam registration",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "headRef": "codex/calculus1-meta-registration-20261021",
+      "headSha": "6e4590a27f21fa2775fc078c4557c851f6e2aa0c",
+      "baseSha": "5ed7010a91b4c9f1a04a6b71fcd0eed3cf35fb3f",
+      "mergeableReportedByApi": false,
+      "updatedAt": "2026-10-23T00:49:35Z",
+      "changedFileCount": 25,
+      "exactChangedPathOverlapWith1960": [
+        "archive/problem-bank-search.html",
+        "archive/unit-past-exams.html",
+        "archive/workspace.html"
+      ],
+      "targetExamSourceFilesChanged": [],
+      "targetRequestFilesChanged": []
+    }
+  ],
+  "pr1751RequestScope": {
+    "headSha": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
+    "changedFiles": 324,
+    "inboxRequests": 61,
+    "headersRead": 61,
+    "unparsedHeaders": 0,
+    "failedReads": 0,
+    "extraction": "github_fetch_file at exact head ref, lines 1-8 only; extracted request/source identity fields.",
+    "firstExamSourceMatches": 0,
+    "nextExamSourceMatches": 0,
+    "exactTargetSourceMatches": [],
+    "gradeScopeCounts": {
+      "m2": 12,
+      "m3": 22,
+      "m1": 6,
+      "h1": 11,
+      "h2": 10
+    },
+    "allMiddle1SourceHeaders": [
+      {
+        "path": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-071.json",
+        "blob": "9d1abc563ec68316485f7bbf0ae262efd3b57cae",
+        "sourceArchiveFile": "original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+        "examUid": "24_향림중_2학기_중간_중1_기출",
+        "expectedSourceBlobSha1": "7992871989d4dcfd6afab8850d6f817f5d11efb7",
+        "expectedQuestionCount": 23,
+        "ourProgressOrder": 24,
+        "ourProgressStatus": "PENDING"
+      },
+      {
+        "path": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-087.json",
+        "blob": "5d9d25e607070d5b03740c6c467ae746195ccbda",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_왕운중_1학기_중간_중1_기출.js",
+        "examUid": "19_왕운중_1학기_중간_중1_기출",
+        "expectedSourceBlobSha1": "990684b2efb3bd1126418dcf5ef5d754751af687",
+        "expectedQuestionCount": 24,
+        "ourProgressOrder": 39,
+        "ourProgressStatus": "PENDING"
+      },
+      {
+        "path": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-098.json",
+        "blob": "858f1badfc5909e9befd3facc2d50c5503312702",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "examUid": "19_팔마중_1학기_중간_중1_기출",
+        "expectedSourceBlobSha1": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "expectedQuestionCount": 23,
+        "ourProgressOrder": 40,
+        "ourProgressStatus": "PENDING"
+      },
+      {
+        "path": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-101.json",
+        "blob": "87355ff9afa9121c9b710256fed5fbd1e625643b",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js",
+        "examUid": "19_연향중_1학기_중간_중1_기출",
+        "expectedSourceBlobSha1": "ca8b8eb414827d3402caa19333604a9004660f3e",
+        "expectedQuestionCount": 23,
+        "ourProgressOrder": 38,
+        "ourProgressStatus": "PENDING"
+      },
+      {
+        "path": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-105.json",
+        "blob": "0654242b7605a13e598408d9e9e88206c15c65f6",
+        "sourceArchiveFile": "original/middle/m1/2final/24_연향중_2학기_기말_중1_기출.js",
+        "examUid": "24_연향중_2학기_기말_중1_기출",
+        "expectedSourceBlobSha1": "a4c58a191317fe28ceee62858a0681f86397c1b8",
+        "expectedQuestionCount": 23,
+        "ourProgressOrder": 17,
+        "ourProgressStatus": "PENDING"
+      },
+      {
+        "path": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-106.json",
+        "blob": "76c6bc5df4bf31eb81457a2086ddc38db0fa6c93",
+        "sourceArchiveFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+        "examUid": "24_향림중_2학기_기말_중1_기출",
+        "expectedSourceBlobSha1": "09af4de044d1d2c1dac7b2ae3a48b10223aff144",
+        "expectedQuestionCount": 24,
+        "ourProgressOrder": 20,
+        "ourProgressStatus": "PENDING"
+      }
+    ],
+    "nonEvidenceNonRequestChangedFiles": [
+      "archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs",
+      "tests/convert-meta-pipeline.test.mjs",
+      "tests/meta-student-access-first.test.mjs",
+      "tools/convert-meta-pipeline.md",
+      "tools/convert-meta-pipeline.mjs"
+    ],
+    "nativeKeyBoundary": "All six M1 request packets were checked only for top-level registryChanges; each has an explicit empty array. Their native registry mutation overlap with our 17 proposed changes is zero. Question item classifications and the other 55 requests' registryChanges were not inspected.",
+    "futureExamOverlap": {
+      "basis": "Exact sourceArchiveFile equality against the existing 44-exam progress list.",
+      "count": 6,
+      "exams": [
+        {
+          "progressOrder": 17,
+          "progressStatus": "PENDING",
+          "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-105.json",
+          "requestBlob": "0654242b7605a13e598408d9e9e88206c15c65f6",
+          "sourceArchiveFile": "original/middle/m1/2final/24_연향중_2학기_기말_중1_기출.js"
+        },
+        {
+          "progressOrder": 20,
+          "progressStatus": "PENDING",
+          "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-106.json",
+          "requestBlob": "76c6bc5df4bf31eb81457a2086ddc38db0fa6c93",
+          "sourceArchiveFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js"
+        },
+        {
+          "progressOrder": 24,
+          "progressStatus": "PENDING",
+          "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-071.json",
+          "requestBlob": "9d1abc563ec68316485f7bbf0ae262efd3b57cae",
+          "sourceArchiveFile": "original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js"
+        },
+        {
+          "progressOrder": 38,
+          "progressStatus": "PENDING",
+          "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-101.json",
+          "requestBlob": "87355ff9afa9121c9b710256fed5fbd1e625643b",
+          "sourceArchiveFile": "original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js"
+        },
+        {
+          "progressOrder": 39,
+          "progressStatus": "PENDING",
+          "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-087.json",
+          "requestBlob": "5d9d25e607070d5b03740c6c467ae746195ccbda",
+          "sourceArchiveFile": "original/middle/m1/1mid/19_왕운중_1학기_중간_중1_기출.js"
+        },
+        {
+          "progressOrder": 40,
+          "progressStatus": "PENDING",
+          "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-098.json",
+          "requestBlob": "858f1badfc5909e9befd3facc2d50c5503312702",
+          "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js"
+        }
+      ],
+      "nextAction": "Before starting each listed exam, recheck PR1751 head, main registration/application receipts, and that exam's metadata assignment state. Keep one-exam-at-a-time review and preserve independently pending source work."
+    },
+    "nativeRegistryChangeAudit": {
+      "headSha": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
+      "scope": "Exactly the six future M1 exam requests; API packet text was parsed in tool orchestration and only registryChanges metadata was extracted.",
+      "requestsChecked": 6,
+      "headerBlobMatches": 6,
+      "registryChangesPresentAsArray": 6,
+      "totalRegistryChanges": 0,
+      "comparedAgainstOurRequest": "m1-shinheung-2026-mid-meta-review-20261113-rev1",
+      "comparedAgainstOurRegistryChangeCount": 17,
+      "exactRegistryPathLogicalKeyCollisions": [],
+      "exactRegistryPathLogicalKeyCollisionCount": 0,
+      "packScopeMutationCollisionCount": 0,
+      "rows": [
+        {
+          "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-071.json",
+          "requestBlob": "9d1abc563ec68316485f7bbf0ae262efd3b57cae",
+          "sourceArchiveFile": "original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+          "headerBlobMatches": true,
+          "registryChangesPresent": true,
+          "registryChangeCount": 0,
+          "registryChanges": [],
+          "questionItemsInspected": false
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-087.json",
+          "requestBlob": "5d9d25e607070d5b03740c6c467ae746195ccbda",
+          "sourceArchiveFile": "original/middle/m1/1mid/19_왕운중_1학기_중간_중1_기출.js",
+          "headerBlobMatches": true,
+          "registryChangesPresent": true,
+          "registryChangeCount": 0,
+          "registryChanges": [],
+          "questionItemsInspected": false
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-098.json",
+          "requestBlob": "858f1badfc5909e9befd3facc2d50c5503312702",
+          "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+          "headerBlobMatches": true,
+          "registryChangesPresent": true,
+          "registryChangeCount": 0,
+          "registryChanges": [],
+          "questionItemsInspected": false
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-101.json",
+          "requestBlob": "87355ff9afa9121c9b710256fed5fbd1e625643b",
+          "sourceArchiveFile": "original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js",
+          "headerBlobMatches": true,
+          "registryChangesPresent": true,
+          "registryChangeCount": 0,
+          "registryChanges": [],
+          "questionItemsInspected": false
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-105.json",
+          "requestBlob": "0654242b7605a13e598408d9e9e88206c15c65f6",
+          "sourceArchiveFile": "original/middle/m1/2final/24_연향중_2학기_기말_중1_기출.js",
+          "headerBlobMatches": true,
+          "registryChangesPresent": true,
+          "registryChangeCount": 0,
+          "registryChanges": [],
+          "questionItemsInspected": false
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-106.json",
+          "requestBlob": "76c6bc5df4bf31eb81457a2086ddc38db0fa6c93",
+          "sourceArchiveFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+          "headerBlobMatches": true,
+          "registryChangesPresent": true,
+          "registryChangeCount": 0,
+          "registryChanges": [],
+          "questionItemsInspected": false
+        }
+      ],
+      "notInspected": [
+        "Question items, including before/after classifications",
+        "registryChanges of the other 55 PR1751 requests"
+      ],
+      "conclusion": "No native registry addition or pack-scope mutation collision for these six requests. The six same-exam future work overlaps still require sequencing and current registration checks."
+    }
+  },
+  "pr1952Scope": {
+    "changedFiles": [
+      "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "docs/agents/metadata.md",
+      "tests/archive-reviewed-exam-registration-v2.test.mjs"
+    ],
+    "sourceFilesChanged": 0,
+    "requestFilesChanged": 0,
+    "canonicalDataFilesChanged": 0,
+    "firstExamSourceOverlap": false,
+    "nextExamSourceOverlap": false,
+    "declaredScope": "REVIEW2 registrar/source-absent fields, reviewStatus exception, and explicit typeHold; PR describes FINAL_QA and META_PIPELINE_AUDIT as unchanged.",
+    "ourApprovalType": "FINAL_QA",
+    "boundary": "Path and declared-scope observation only; no claim that all behavioral interactions are reviewed or conflict-resolved."
+  },
+  "sharedPathFindings": [
+    {
+      "pr": 1571,
+      "headSha": "9afa52e9a075565cb317454535736fccaa8acaa0",
+      "state": "open",
+      "mergeableReportedByApi": false,
+      "paths": [
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs"
+      ],
+      "classification": "SHARED_PRODUCTION_CODE_PATH",
+      "targetExamSourceOverlap": false,
+      "note": "High-school textbook classification work changes the same resolver file. Filename overlap is confirmed; line-level merge conflict or semantic resolution was not assessed."
+    },
+    {
+      "pr": 711,
+      "headSha": "6e4590a27f21fa2775fc078c4557c851f6e2aa0c",
+      "state": "open",
+      "draft": true,
+      "mergeableReportedByApi": false,
+      "paths": [
+        "archive/problem-bank-search.html",
+        "archive/unit-past-exams.html",
+        "archive/workspace.html"
+      ],
+      "classification": "OLDER_DRAFT_SHARED_UI_PATHS",
+      "targetExamSourceOverlap": false,
+      "note": "The older canonical-registration draft overlaps three HTML paths. No claim that those branches are conflict-resolved."
+    }
+  ],
+  "nativeRegistryScopeObservation": {
+    "pr1960RequestRegistryTargets": [
+      "archive/data/master_tables/js_archive_tag_master.json",
+      "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json"
+    ],
+    "pr1571DirectCanonicalTargets": [
+      "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+      "archive/data/meta-foundation/canonical/packs/geometry/bindings.json",
+      "archive/data/meta-foundation/canonical/packs/geometry/pack.json",
+      "archive/data/meta-foundation/canonical/packs/geometry/taxonomy.json",
+      "archive/data/meta-foundation/canonical/packs/integral-calculus/bindings.json",
+      "archive/data/meta-foundation/canonical/packs/integral-calculus/pack.json",
+      "archive/data/meta-foundation/canonical/packs/probability-statistics/bindings.json",
+      "archive/data/meta-foundation/canonical/packs/probability-statistics/pack.json",
+      "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json"
+    ],
+    "pr1952DirectCanonicalTargets": [],
+    "note": "PR1571 direct canonical edits are functions-graphs, geometry, integral-calculus, and probability-statistics packs, distinct from the first-exam middle1/middle-geometry additions. Six PR1751 M1 request registryChanges arrays were verified empty. Other requests' item classifications and registryChanges were not audited."
+  },
+  "observedNoDirectChangedPathOverlapWith1960": [
+    1751,
+    1952,
+    1785,
+    1455,
+    1941,
+    981
+  ],
+  "searchCoverage": {
+    "recentOpenQuery": {
+      "query": "is:open",
+      "sort": "updated",
+      "topn": 35,
+      "results": 35
+    },
+    "openMetaTitleQuery": {
+      "query": "is:open meta in:title",
+      "topn": 20,
+      "results": 5
+    },
+    "prMetadataAndChangedFilenameLists": [
+      1751,
+      1952,
+      1960,
+      1785,
+      1571,
+      1455,
+      1941,
+      981,
+      711
+    ],
+    "notClaimed": "No claim of exhaustive inspection of all historical branches, question item metadata keys, other 55 PR1751 requests' registryChanges, or current CI check conclusions."
+  },
+  "conclusion": "No same first/queued-next exam source or request overlap was found for PR1751 or PR1952. Six later M1 exams overlap PR1751 at progress orders 17, 20, 24, 38, 39 and 40. All six requests have empty registryChanges, so they do not collide with our 17 native registry changes or pack-scope append. Shared resolver path in PR1571 and three HTML paths in older draft PR711 remain coordination risks; neither branch was changed or declared conflict-resolved.",
+  "noQuestionContentsRead": true,
+  "noWangunQuestionReview": true,
+  "noTestsRun": true,
+  "noOtherBranchOrFileChanges": true,
+  "reportWriteOnly": ".tmp/m1-meta-review/01-concurrent-work-check.json",
+  "extendedAtUtc": "2026-11-13T11:56:23.101Z"
+}

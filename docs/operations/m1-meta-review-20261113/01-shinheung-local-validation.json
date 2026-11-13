@@ -45,7 +45,7 @@
   "fullR1R2R3Rerun": false,
   "consumerSearch": "NOT_RUN_UNTIL_SERVER_REGISTRATION",
   "mainRegistration": "PENDING",
-  "CI": "CACHE_VERSION_FIX_PREPARED_PENDING_NEW_HEAD_CI",
+  "CI": "PASS",
   "initialCi": {
     "head": "8bab8a18877415b0d63ea79f01bf46d9a434be33",
     "pr": 1960,
@@ -55,7 +55,10 @@
     "pass": 335,
     "fail": 1,
     "failure": "tests/archive-cache-version-consistency.test.js:36: four HTML pages still referenced the previous rpm-middle-toc.js cache version",
-    "runtimeTests": { "pass": 252, "fail": 0 },
+    "runtimeTests": {
+      "pass": 252,
+      "fail": 0
+    },
     "runtimeRun": 43418115774,
     "chromeStatus": "PASS_WITH_REAL_DATA_GAPS"
   },
@@ -67,5 +70,17 @@
     "exitCode": 0,
     "stdout": "archive cache version consistency checks passed",
     "scope": "Shared helper cache references only; source, request, metadata evidence, and helper contents unchanged."
+  },
+  "finalCi": {
+    "head": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
+    "workflows": 5,
+    "jobs": 7,
+    "allSuccess": true,
+    "evidence": "01-shinheung-ci-fixed-head.json",
+    "sha256": "9f959349121e1ea86f899fa1c85fdfce5829ee313c60c9b49157c71a425dbba7"
+  },
+  "mainMerge": {
+    "sha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
+    "state": "MERGED_PENDING_REGISTRATION"
   }
 }

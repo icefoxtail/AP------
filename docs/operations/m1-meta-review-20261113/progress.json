@@ -15,7 +15,7 @@
   "completedExams": 0,
   "reviewedQuestions": 24,
   "currentOrder": 1,
-  "nextAction": "CREATE_FIRST_EXAM_PR_AND_VERIFY_MAIN_REGISTRATION",
+  "nextAction": "WATCH_MAIN_WRITER_VERIFY_24_CONSUMER_CLOSE_FIRST_THEN_WANGUN",
   "exams": [
     {
       "order": 1,
@@ -26,7 +26,7 @@
       "count": 24,
       "sourceBlob": "c36139a90e9bcd378577ece8f891423bee6b0a19",
       "sourceSha256": "1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564",
-      "status": "PREPARED_NATIVE_DRY_RUN_PASS_PENDING_PR_AND_REGISTRATION",
+      "status": "PR_MERGED_PENDING_REGISTRATION",
       "partialEvidence": "01-shinheung-semantic-read-checkpoint.json",
       "candidateComparisonEvidence": "01-shinheung-candidate-comparison.json",
       "candidateComparisonSha256": "c887310c2501c3d70a010315a7fda02c73a6964ba45b70c3aa106a99c4a62ce9",
@@ -45,7 +45,39 @@
       "classificationCheck": {
         "exact": 22,
         "rpmOnlyDebt": 2
-      }
+      },
+      "prNumber": 1960,
+      "prUrl": "https://github.com/icefoxtail/AP------/pull/1960",
+      "prHeadSha": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
+      "mergeCommitSha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
+      "verifiedRemoteMainSha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
+      "verifiedRemoteMainTree": "1f0eeecb4e7fafed89050c300b36aae949873437",
+      "nativeRegistrationActual": "AWAITING_SERVER_RECEIPT",
+      "consumerVerification": "NOT_RUN",
+      "operationallyClosed": false,
+      "ci": {
+        "state": "SUCCESS",
+        "fixedHeadSha": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
+        "successfulWorkflowCount": 5,
+        "successfulJobCount": 7,
+        "initialFailure": "HTML_CACHE_VERSION_REFERENCE_MISMATCH_FIXED",
+        "fixedCacheVersion": "20261113-rpm-middle-shinheung-1",
+        "evidencePath": "01-shinheung-ci-fixed-head.json",
+        "evidenceRecordedBy": "root"
+      },
+      "concurrentWorkEvidence": "01-shinheung-concurrent-work-check.json",
+      "mainWriter": {
+        "runId": 43421975843,
+        "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43421975843",
+        "jobId": 131873926621,
+        "jobUrl": "https://github.com/icefoxtail/AP------/actions/runs/43421975843/job/131873926621",
+        "observedStatus": "IN_PROGRESS",
+        "headSha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
+        "observationSource": "root verified exact-merge writer run",
+        "registrationReceiptVerification": "NOT_RUN"
+      },
+      "mainMergeEvidence": "01-shinheung-main-merge-checkpoint.json",
+      "initialCiEvidence": "01-shinheung-ci-initial.json"
     },
     {
       "order": 2,
@@ -221,7 +253,16 @@
       "count": 23,
       "sourceBlob": "a4c58a191317fe28ceee62858a0681f86397c1b8",
       "sourceSha256": "2f4c28dbea94ef9058379cb56e02fad6482e8c3db55bc0212983aca069da97f6",
-      "status": "PENDING"
+      "status": "PENDING",
+      "concurrentWork": {
+        "pr": 1751,
+        "observedHead": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
+        "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-105.json",
+        "requestBlob": "0654242b7605a13e598408d9e9e88206c15c65f6",
+        "latestScopeCheckRequiredBeforeReview": true,
+        "observedRegistryChanges": 0,
+        "evidencePath": "01-shinheung-concurrent-work-check.json"
+      }
     },
     {
       "order": 18,
@@ -254,7 +295,16 @@
       "count": 24,
       "sourceBlob": "09af4de044d1d2c1dac7b2ae3a48b10223aff144",
       "sourceSha256": "d662414e9d0c338b15e583bf262d2afaf1e0d322ca5c7375f0a423c16f94d22e",
-      "status": "PENDING"
+      "status": "PENDING",
+      "concurrentWork": {
+        "pr": 1751,
+        "observedHead": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
+        "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-106.json",
+        "requestBlob": "76c6bc5df4bf31eb81457a2086ddc38db0fa6c93",
+        "latestScopeCheckRequiredBeforeReview": true,
+        "observedRegistryChanges": 0,
+        "evidencePath": "01-shinheung-concurrent-work-check.json"
+      }
     },
     {
       "order": 21,
@@ -298,7 +348,16 @@
       "count": 23,
       "sourceBlob": "9bd66c89633797ff41672dd849ffae996d17a96d",
       "sourceSha256": "d529ffa8403b62f353ac9b0e8ea0ab3f5869b0cb720888f0b804591951b8b3d1",
-      "status": "PENDING"
+      "status": "PENDING",
+      "concurrentWork": {
+        "pr": 1751,
+        "observedHead": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
+        "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-071.json",
+        "requestBlob": "9d1abc563ec68316485f7bbf0ae262efd3b57cae",
+        "latestScopeCheckRequiredBeforeReview": true,
+        "observedRegistryChanges": 0,
+        "evidencePath": "01-shinheung-concurrent-work-check.json"
+      }
     },
     {
       "order": 25,
@@ -452,7 +511,16 @@
       "count": 23,
       "sourceBlob": "ca8b8eb414827d3402caa19333604a9004660f3e",
       "sourceSha256": "6fb9bc5278ab8715ea217f5b181db6d21eefeac75ab458c2eab58b6729bcc99b",
-      "status": "PENDING"
+      "status": "PENDING",
+      "concurrentWork": {
+        "pr": 1751,
+        "observedHead": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
+        "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-101.json",
+        "requestBlob": "87355ff9afa9121c9b710256fed5fbd1e625643b",
+        "latestScopeCheckRequiredBeforeReview": true,
+        "observedRegistryChanges": 0,
+        "evidencePath": "01-shinheung-concurrent-work-check.json"
+      }
     },
     {
       "order": 39,
@@ -463,7 +531,16 @@
       "count": 24,
       "sourceBlob": "990684b2efb3bd1126418dcf5ef5d754751af687",
       "sourceSha256": "905f240f4182368a94ec033316a638f0815e51553f4fc1064c4008a558d5334b",
-      "status": "PENDING"
+      "status": "PENDING",
+      "concurrentWork": {
+        "pr": 1751,
+        "observedHead": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
+        "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-087.json",
+        "requestBlob": "5d9d25e607070d5b03740c6c467ae746195ccbda",
+        "latestScopeCheckRequiredBeforeReview": true,
+        "observedRegistryChanges": 0,
+        "evidencePath": "01-shinheung-concurrent-work-check.json"
+      }
     },
     {
       "order": 40,
@@ -474,7 +551,16 @@
       "count": 23,
       "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
       "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
-      "status": "PENDING"
+      "status": "PENDING",
+      "concurrentWork": {
+        "pr": 1751,
+        "observedHead": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
+        "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-098.json",
+        "requestBlob": "858f1badfc5909e9befd3facc2d50c5503312702",
+        "latestScopeCheckRequiredBeforeReview": true,
+        "observedRegistryChanges": 0,
+        "evidencePath": "01-shinheung-concurrent-work-check.json"
+      }
     },
     {
       "order": 41,
@@ -522,7 +608,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "FIRST_EXAM_PREPARED_PENDING_PR_REGISTRATION",
+  "state": "PR_MERGED_PENDING_REGISTRATION",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -541,8 +627,28 @@
       "supersededBy": "01-shinheung-semantic-review.json"
     }
   },
-  "activeMain": "ceeafbee1cc000f5308e040ba252729f0982c827",
+  "activeMain": "81fb1c3a7c861ede3690157234bf0415c2585e45",
   "prerequisiteStatus": "RPM_L1_L2_MERGED",
   "prerequisiteMainSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
-  "latestRemoteSemanticCheckpoint": "ae19795a822db73448c7487aea4036c509720ecb"
+  "latestRemoteSemanticCheckpoint": "ae19795a822db73448c7487aea4036c509720ecb",
+  "activeMainTree": "1f0eeecb4e7fafed89050c300b36aae949873437",
+  "latestMergedReviewHead": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
+  "concurrentWorkCheck": {
+    "path": "docs/operations/m1-meta-review-20261113/01-shinheung-concurrent-work-check.json",
+    "sha256": "e06a73f3224e7c2eb44aa898a7c14e2ee1c2b21b52340c913b7e7bf1fc2e8891",
+    "observedAtUtc": "2026-11-13T11:53:58.351Z",
+    "extendedAtUtc": "2026-11-13T11:56:23.101Z",
+    "pr1751ObservedHead": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
+    "futureOrdersRequiringLatestScopeCheck": [
+      17,
+      20,
+      24,
+      38,
+      39,
+      40
+    ],
+    "firstAndQueuedNextSourceOverlap": false,
+    "sixFutureM1RegistryChanges": 0,
+    "scopeBoundary": "Recheck current PR1751 scope and applied registration before each overlapping exam; existing question metadata is not assumed correct."
+  }
 }

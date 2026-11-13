@@ -5,7 +5,7 @@
 - taskId: `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`
 - owner: `GPT_ROOT_933015CD0A4F`
 - 작업 브랜치: `review/m1-existing-meta-20261113`
-- 중1 전체 대상: **44장 / 1,047문항**. main 병합까지 완료한 시험지는 **0장**이다.
+- 중1 전체 대상: **44장 / 1,047문항**. PR 병합은 **1장**, 읽기·의미 검토는 **24문항**, 실제 등록·Consumer 확인까지 끝낸 **운영 마감은 0장**이다.
 - 순서: 연도 내림차순, 같은 연도는 2학기 → 1학기, 기말 → 중간, 학교 이름 순서. 실제 목록은 `progress.json`을 따른다.
 - 사용자 선행 요청인 RPM 6권 L1/L2 정리는 PR [1958](https://github.com/icefoxtail/AP------/pull/1958)로 main에 병합했다. 확인한 main SHA는 `8c1b6694c35e76399a6ad36a4b6683e2cb6726b7`이다.
 - 해당 목차 결과: 대단원 24개, 중단원 54개, 기존 326개 세부 경로의 부모 대조 및 9개 수정. L3/L4와 locked master는 보존했다.
@@ -22,7 +22,10 @@
 - 의미 확정 원장: `01-shinheung-semantic-review.json`
 - 원장 SHA256: `8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0`
 - 의미/빈 유형 연결 수정 15문항, 의미를 유지한 binding 보완 2문항. 의미 유지 9문항에는 binding 보완 2문항이 포함된다.
-- **등록·원격 main 병합은 아직 완료되지 않았다. 24문항/17개 정본 변경의 공식 native v2 dry-run은 PASS다.** 원장에는 메타 의미 검토와 수학·해설 FINAL QA를 구분하여 기록했다.
+- 현재 상태는 **`PR_MERGED_PENDING_REGISTRATION`**이다. PR [1960](https://github.com/icefoxtail/AP------/pull/1960)은 main `81fb1c3a7c861ede3690157234bf0415c2585e45`에 병합했다. 확인한 원격 main tree는 `1f0eeecb4e7fafed89050c300b36aae949873437`이다.
+- 병합한 수정 head는 `f0a89b11f7c085b08ab406831f0d2bc0681fefed`이며 **CI 5개 workflow / 7개 job 모두 SUCCESS**다. [main 병합 근거](01-shinheung-main-merge-checkpoint.json)와 [수정 head CI 근거](01-shinheung-ci-fixed-head.json)를 재사용한다.
+- 24문항/17개 정본 변경의 공식 native v2 dry-run은 PASS다. **실제 등록 영수증과 24문항 Consumer/Search 확인은 아직 미완료**이므로 운영 마감은 0/44로 유지한다. [main writer 실행](https://github.com/icefoxtail/AP------/actions/runs/43421975843)의 [register job](https://github.com/icefoxtail/AP------/actions/runs/43421975843/job/131873926621)은 해당 merge SHA에서 `IN_PROGRESS`로 관측했다.
+- 원장에는 메타 의미 검토와 수학·해설 FINAL QA를 구분하여 기록했다. 실제 풀이 RPM resolver는 `NOT_RUN_UNVERIFIED_SOLUTION`이며 등록 대기나 CI 성공을 독립 수학 검증으로 해석하지 않는다.
 
 ### 확정한 주요 판단
 
@@ -43,14 +46,11 @@
 ## 재개 순서
 
 1. 연결된 Notion 필독 라우터·Archive 시작·작업 생명주기를 확인하고 최신 원격 main 및 진행 중 PR을 대조한다. 빈 메타 채우기 작업과 같은 시험지를 동시에 수정하지 않는다.
-2. 이 브랜치의 최신 원격 체크포인트와 `progress.json`을 읽는다. 과거 후보 파일은 근거 이력이며 최종 판단은 `01-shinheung-semantic-review.json`이다.
-3. native 정본 추가는 v2 `registryChanges`의 add-only 요청으로 준비한다. 새 작도·합동 native key는 `M1-05-CONSTRUCTION_CONGRUENCE`이다.
-4. crosswalk는 기존 행을 보존하고 정확한 DIRECT 행을 추가한다. Q1/3은 동일 PT/TPL binding gap 승격, Q7/21·Q17은 RPM_ONLY 승격, Q19/22는 명시적인 활성 행 선택이 필요하다.
-5. crosswalk를 추가하면 `rpm-middle-2022-parents.json`의 `leafMappings[].crosswalkRecordIds`와 `legacySubUnitMappings`를 재계산하고 기존 helper generator를 실행한다. 기존 부모 배치와 326개 leaf는 바꾸지 않는다.
-6. source의 메타만 최소 수정한다. 지문·보기·정답·해설·그림·UID·배점·난이도는 보존한다. `primaryMethod`와 `decisiveStep`은 의미 검토 요약으로 추가한다.
-7. 24 UID 전체의 공식 v2 dry-run을 수행한다. 기존 metadata/identity fingerprint 24개가 현 source 계산과 달라, `01-shinheung-fingerprint-preflight.json`의 정확한 before/after 및 `identityBefore`를 결속한다. 이 수선으로 학생용 내용을 바꾸지 않는다.
-8. 22개 exact RPM 경로는 정본 경로·crosswalk의 실제 listed PT/TPL·ACTIVE binding·pack 범위 대조를 완료했다. 현재 독립 풀이 VERIFIED_FINAL 근거가 없으므로 실제 RPM resolver를 실행하거나 그 플래그를 만들지 않는다. 2개 RPM debt는 구별하고, 등록 후 native/Consumer 값을 확인한다.
-9. 첫 시험지 PR → main 병합 → 원격 SHA·등록 영수증 확인 → progress와 인계 갱신. 그 다음에만 2026 왕운중 2학기 중간 23문항으로 이동한다.
+2. 최신 원격 체크포인트와 `progress.json`, 병합·CI 근거를 읽는다. 첫 시험지의 읽기, source 메타 수정, crosswalk/helper 준비, 공식 dry-run, PR 생성·병합은 완료했다. 동결 근거를 재사용하고 같은 작업을 반복하지 않는다. 최종 의미 판단은 `01-shinheung-semantic-review.json`이다.
+3. merge `81fb1c3a7c861ede3690157234bf0415c2585e45`에서 시작한 [main writer 실행](https://github.com/icefoxtail/AP------/actions/runs/43421975843)을 확인한다. immutable 요청 `m1-shinheung-2026-mid-meta-review-20261113-rev1`의 실제 등록 영수증·적용 결과를 찾고 24 UID 및 정본 변경 17건의 결과를 대조한다. 실패나 보류는 해당 원인과 직접 영향만 처리한다. 현재 실제 등록 결과는 미확인이다.
+4. 등록 후 **24문항 모두** native 분류·PT/TPL·승인 상태와 Consumer/Search 반영을 확인한다. 22개 exact RPM 경로와 Q8/Q10의 null + `EVIDENCE_DEBT`를 구분한다. Q8의 RPM 부모 모호성과 native 유형 승인 상태도 따로 확인한다. 첫 시험지에는 독립 풀이 `VERIFIED_FINAL` 근거가 없으므로 실제 풀이 resolver를 실행하거나 그 PASS를 주장하지 않는다. 기존 R1/R2/R3를 다시 실행하지 않는다. 이후 시험지에 검증된 기존 근거가 있으면 해당 근거를 재사용한다.
+5. 실제 등록 영수증, 24문항 Consumer 확인 및 최신 원격 main SHA가 모두 확인된 뒤에만 첫 시험지를 운영 마감하고 `completedExams`를 1로 바꾼다. 시험지별 보고와 체크포인트를 저장한 다음 2026 왕운중 2학기 중간 23문항으로 이동한다. 그전에는 `currentOrder: 1`, 운영 마감 0/44를 유지한다.
+6. 향후 순번 **17·20·24·38·39·40**은 PR1751과 같은 시험지 범위다. 각 시험지 착수 전에 해당 PR의 최신 head·상태·등록 영수증과 실제 적용 메타를 재확인한다. 아래 병행 작업 근거를 따른다.
 
 ## 보존 및 검증 경계
 
@@ -59,29 +59,48 @@
 - fingerprint 진단: `01-shinheung-fingerprint-preflight.json` — 24/24 불일치와 공식 검증 함수의 명시적 repair 수용을 기록했다. 등록 완료 증거는 아니다.
 - 공용 metadata/identity/runtime/compiled 대형 파일을 직접 편집하지 않는다. 서버 writer가 소형 v2 요청을 적용한다.
 - 전체 시험지의 과거 수학 검수 완료를 추정하거나 새 R1/R2/R3 PASS를 만들지 않는다.
-- 로그인 셸 지연은 exec의 login:false로 해소했다. 변경된 resolver 검사는 29개가 통과했다. 부모 helper 검사의 기존 단일 crosswalk ID 기대값을 추가된 두 정확 행에 맞춰 갱신한 뒤 11개 모두 통과했다. 실제 CI 및 운영 반영 확인은 남아 있다.
+- 로그인 셸 지연은 exec의 login:false로 해소했다. 변경된 resolver 검사는 29개가 통과했다. 부모 helper 검사의 기존 단일 crosswalk ID 기대값을 추가된 두 정확 행에 맞춰 갱신한 뒤 11개 모두 통과했다. 수정 head의 CI도 전체 성공했고, 실제 main 등록·Consumer 반영 확인이 남아 있다.
 - scratch 도구·초안은 보조물이다. 이 문서와 Git 원장만으로 확정 의미 판단을 재구성할 수 있어야 한다.
 
 ## 복사용 재개 프롬프트
 
-> `icefoxtail/AP------`의 `review/m1-existing-meta-20261113` 최신 원격 브랜치에서 중1 기존 시험지 메타 검토를 이어가 주세요. 먼저 Notion 필독 라우터와 최신 main, 이 브랜치의 `docs/operations/m1-meta-review-20261113/HANDOFF.md` 및 `progress.json`을 읽으세요. RPM L1/L2 선행 작업 PR1958은 main `8c1b6694c35e76399a6ad36a4b6683e2cb6726b7`로 병합했습니다. 첫 신흥중2026 2학기 중간24문항의 읽기와 의미 판단은 저장되어 있고, 등록/main 병합은 이 체크포인트에서 아직 미완료입니다. 기존 읽기를 반복하지 말고 확정 원장의 15개 의미/연결 수정과 2개 binding 보완을 적용하세요. Q8/Q10의 RPM-only EVIDENCE_DEBT는 숨기지 마세요. 한 시험지씩 PR→main→원격SHA 확인 후 다음 시험지로 이동하고, 전체 R1/R2/R3는 다시 실행하지 마세요. taskId는 `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`, owner는 `GPT_ROOT_933015CD0A4F`입니다.
+> `icefoxtail/AP------`의 `review/m1-existing-meta-20261113` 최신 원격 체크포인트에서 중1 기존 시험지 메타 검토를 이어가 주세요. 먼저 Notion 필독 라우터와 최신 main, `docs/operations/m1-meta-review-20261113/HANDOFF.md` 및 `progress.json`을 읽으세요. RPM 선행 PR1958은 완료됐고, 첫 신흥중2026 2학기 중간24문항 PR1960도 수정 head `f0a89b11f7c085b08ab406831f0d2bc0681fefed`의 CI 5 workflow/7 job 전체 SUCCESS 후 main `81fb1c3a7c861ede3690157234bf0415c2585e45`에 병합했습니다. 현재 상태는 `PR_MERGED_PENDING_REGISTRATION`, 운영 마감 0/44·읽기24입니다. 기존 읽기·source 수정·dry-run·PR를 반복하지 말고 main writer run `43421975843`의 요청 `m1-shinheung-2026-mid-meta-review-20261113-rev1` 등록 영수증부터 확인하세요. 요청 SHA256은 `24ba8de0d00e494b91268a00771d6b7d30cc2a17ac57c76bb7f1bc30a7a10ede`로 불변입니다. 등록 후 24문항 native/Consumer/Search와 Q8/Q10의 RPM EVIDENCE_DEBT를 확인하고 원격 SHA까지 결속한 뒤에만 1장 마감으로 기록하고 2026 왕운중 2학기 중간23문항으로 이동하세요. 미래 순번17·20·24·38·39·40은 PR1751 최신 범위·등록 상태를 먼저 대조하세요. 전체 R1/R2/R3는 다시 실행하지 마세요. 첫 시험지의 실제 풀이 resolver는 독립 검증 근거가 없어 NOT_RUN 상태를 유지하세요. taskId `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`, owner `GPT_ROOT_933015CD0A4F`를 유지하세요.
 
-## 이번 준비본의 추가 증거
+## 첫 시험지 병합본의 증거
 
 - 공식 v2 dry-run: `01-shinheung-registration-dry-run.json` — write:false, 24문항, 정본 변경17, fingerprint 보정24, Consumer/Search NOT_RUN.
 - 학생용 데이터 보존: `01-shinheung-source-metadata-delta.json` — 24/24 전체 비메타 값 동일.
 - 실제 분류 대조: `01-shinheung-classification-check.json` — exact22/RPM debt2. 수학 검수·실제 풀이 resolver PASS 주장이 아니다.
 - 검증 경계: `01-shinheung-verification-boundary.json`.
 - 새 정본 추가17: `01-shinheung-registry-additions.json`. MIDDLE_GEOMETRY의 기존 원·부채꼴 binding을 위한 scope append1건과 그 직접 영향4 binding/UID참조9개는 `01-shinheung-pack-scope-impact.json`에 있다.
-- 제출할 immutable 요청: `.archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev1.json`, SHA256 `24ba8de0d00e494b91268a00771d6b7d30cc2a17ac57c76bb7f1bc30a7a10ede`.
-- 현재 source 준비본: blob `930d4e3ef44e60757180aae6fc15fcc5b7228958`, raw SHA256 `bc4dcf03680da654dec43928f7b1a57942a6f616de9f03ca9ba3976203bd9a18`.
-- 정상 학생 데이터는 같은 원본에서 그대로 보존했다. 정본 추가는 요청으로만 준비했으며 공용 metadata/identity/native runtime을 직접 쓰지 않았다.
+- main에 병합된 immutable 요청: `.archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev1.json`, SHA256 `24ba8de0d00e494b91268a00771d6b7d30cc2a17ac57c76bb7f1bc30a7a10ede`.
+- 병합된 source: blob `930d4e3ef44e60757180aae6fc15fcc5b7228958`, raw SHA256 `bc4dcf03680da654dec43928f7b1a57942a6f616de9f03ca9ba3976203bd9a18`.
+- 정상 학생 데이터는 같은 원본에서 그대로 보존했다. 정본 추가는 소형 요청으로 main에 전달했으며 공용 metadata/identity/native runtime의 실제 반영은 main writer 영수증으로 확인한다.
 
 ## PR과 캐시 참조 보완
 
 - 첫 시험지 PR은 [1960](https://github.com/icefoxtail/AP------/pull/1960)이다. 최초 제출 head는 `8bab8a18877415b0d63ea79f01bf46d9a434be33`이다.
 - 최초 CI의 336개 검사 중 335개가 통과했으며, 유일 실패는 공통 `rpm-middle-toc.js`의 HTML별 캐시 버전 불일치였다. 나머지 4개 HTML의 버전값을 `20261113-rpm-middle-shinheung-1`로 맞춰 총 6개 참조를 통일했다.
-- 직접 영향 검사 `node tests/archive-cache-version-consistency.test.js`는 PASS다. source·요청·hash 결속 증거 및 helper 파일 내용은 이 보완에서 바뀌지 않았다. 새 head의 CI와 실제 등록 확인을 마친 후 운영 마감한다.
+- 직접 영향 검사 `node tests/archive-cache-version-consistency.test.js`는 PASS다. source·요청·hash 결속 증거 및 helper 파일 내용은 이 보완에서 바뀌지 않았다.
+- 수정 head `f0a89b11f7c085b08ab406831f0d2bc0681fefed`의 **5개 workflow / 7개 job 전체 SUCCESS**를 확인한 뒤 PR1960을 main `81fb1c3a7c861ede3690157234bf0415c2585e45`에 병합했다. [최초 CI 기록](01-shinheung-ci-initial.json), [수정 head CI 기록](01-shinheung-ci-fixed-head.json), [main 병합 체크포인트](01-shinheung-main-merge-checkpoint.json)를 참고한다. 실제 등록·Consumer 확인 전에는 운영 완료로 세지 않는다.
+
+## 병행 작업과 향후 중복 범위
+
+- 근거: [01-shinheung-concurrent-work-check.json](01-shinheung-concurrent-work-check.json), SHA256 `e06a73f3224e7c2eb44aa898a7c14e2ee1c2b21b52340c913b7e7bf1fc2e8891`.
+- PR1751 head `ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0`의 61개 요청 source header를 확인했다. 첫 신흥중2026 중1 2mid와 바로 다음 왕운중2026 중1 2mid는 각각 0건이다. PR1952는 REVIEW2 지원 코드 변경이며 두 시험지 source/request 변경은 없다.
+- 아래 6개 미래 시험지는 PR1751과 source가 같다. 6개 요청 모두 `registryChanges: []`이므로 이번 17개 정본 추가·scope 변경과 정본 변경 키 충돌은 없었다. 문항별 적용 메타가 이미 정확하거나 완료됐다는 뜻은 아니며, **모두 PENDING을 유지한다.**
+
+| 순번 | 시험지 | PR1751 요청 번호 |
+|---:|---|---:|
+| 17 | 2024 연향중 중1 2학기 기말 | 105 |
+| 20 | 2024 향림중 중1 2학기 기말 | 106 |
+| 24 | 2024 향림중 중1 2학기 중간 | 071 |
+| 38 | 2019 연향중 중1 1학기 중간 | 101 |
+| 39 | 2019 왕운중 중1 1학기 중간 | 087 |
+| 40 | 2019 팔마중 중1 1학기 중간 | 098 |
+
+- 각 순번 착수 전 PR1751 최신 head·상태·등록 영수증·현재 적용 상태를 다시 확인하여 중복 수정과 오래된 source 결속을 피한다. 정확한 source 경로와 요청 blob은 JSON 근거에 있다.
+- PR1571은 공용 `rpm-active-resolver.mjs`, 오래된 draft PR711은 검색·단원별 기출·workspace HTML 3경로를 함께 변경한다. 이 보고서는 경로 중첩을 기록했으며 해당 브랜치의 충돌 해결을 주장하지 않는다.
 
 ## 다음 시험지 요청 생성
 
