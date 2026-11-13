@@ -66,10 +66,13 @@
       "questionCount": 24,
       "baseSourceGitBlob": "5308c75e6d0dbdb878bdfb87155414573168171e",
       "baseSourceSha256": "5252fecfbd6922b872fb9739ad01ffbbe27ca7204653a7d773e27e894e6fbf5f",
-      "state": "SOURCE_REVIEWED_PENDING_INDEPENDENT_SAMPLE",
+      "state": "REVIEW_COMPLETE_WITH_EXPLICIT_HOLDS",
       "completedQuestions": 24,
       "reviewArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/04-palma-mid-review.json",
-      "nextAction": "INDEPENDENT_SAMPLE_AND_4SLOT_IMPORT"
+      "nextAction": "IMPORT_COMPACT_THEN_CI_AND_MAIN_MERGE",
+      "fourSlot": "VALIDATED_24_READY_FOR_COMPACT_IMPORT",
+      "sourceBlob": "b527fb0d483650f384b89395b32804755e5fc002",
+      "nativeRegistration": "HOLD_24_IDENTITY_SOURCE_FINGERPRINT"
     }
   ],
   "validation": {
@@ -94,7 +97,9 @@
     "palma-finalFinalStudentPreservation": "PASS_24",
     "palma-finalFourSlotQuoteValidation": "FAIL_0",
     "wangun-midFinalStudentPreservation": "PASS_24",
-    "wangun-midFourSlotQuoteValidation": "FAIL_0"
+    "wangun-midFourSlotQuoteValidation": "FAIL_0",
+    "palma-midFinalStudentPreservation": "PASS_24",
+    "palma-midFourSlotQuoteValidation": "FAIL_0"
   },
   "nextAction": "IMPORT_FINAL_COMPACT_AND_WAIT_FOR_REQUIRED_CI",
   "batchPr": 1973
