@@ -3,8 +3,8 @@
   "requestId": "similar-21-isu-m2-2final-candidate-v1",
   "examUid": "21_이수중_2학기_기말_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/2final/21_이수중_2학기_기말_중2_유사.js",
-  "expectedSourceBlobSha1": "4a5bb21cf2d3770b03f3733b61614f2dbfcbf624",
-  "expectedSourceSha256": "c0b190aa6e0b68a7fbecaad77a6c9f5f84d205ff223ce396ff3c6ead4cee2247",
+  "expectedSourceBlobSha1": "2e198bea8f6d22d16412798d70af97d7c818f08c",
+  "expectedSourceSha256": "8d50d7d3282afa0a68fac54a2783babf4b6715e64ae69c0822c80fb197094fec",
   "expectedQuestionCount": 26,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -27,7 +27,7 @@
     "declaredQuestionCount": 26,
     "declaredTotalScore": 100,
     "verifiedItemScoreTotal": 100,
-    "note": "Read native Docs text and complete text/plain export for this revision, retaining math blocks. Isolated all Q01-Q26 prompts, choices, answers, solutions, plans and metadata by headings/fences. Local answer/key-step audit completed; corrected conditions and selection/score labels are recorded in changeLog. The MD marks items EXEMPT, but problem/solution visual needs were separately assessed by item. Repaired LaTeX macros lost to tab characters and restored aligned row breaks; corrected Q10 configuration, Q20 independence, and Q23 correspondence/ratio/answer. Original archive untouched; original figures were not linked because similar values/layout are not source-bound. Second-pass review found and repaired Q09 wording (`사각선분` to `선분`) and Q24 LaTeX `\\night` to `\\right`; all 26 item keys and solutions were checked against independent calculations. The source MD Q23 key/ratio were incorrect and the candidate correction was revalidated. Source Q24 display itself ends after \\overline{BC}; the candidate equation was completed as \\right)=1/3\\overline{BC}, following the prior proven ratios, and its malformed delimiter was corrected."
+    "note": "Read native Docs text and complete text/plain export for this revision, retaining math blocks. Isolated all Q01-Q26 prompts, choices, answers, solutions, plans and metadata by headings/fences. Local answer/key-step audit completed; corrected conditions and selection/score labels are recorded in changeLog. The MD marks items EXEMPT, but problem/solution visual needs were separately assessed by item. Repaired LaTeX macros lost to tab characters and restored aligned row breaks; corrected Q10 configuration, Q20 independence, and Q23 correspondence/ratio/answer. Original archive untouched; original figures were not linked because similar values/layout are not source-bound. Second-pass review found and repaired Q09 wording (`사각선분` to `선분`) and Q24 LaTeX `\\night` to `\\right`; all 26 item keys and solutions were checked against independent calculations. The source MD Q23 key/ratio were incorrect and the candidate correction was revalidated. Source Q24 display itself ends after \\overline{BC}; the candidate equation was completed as \\right)=1/3\\overline{BC}, following the prior proven ratios, and its malformed delimiter was corrected. Runtime string audit then found JS source had only one raw backslash before `right)`, which JavaScript interpreted as CR; escaped it as `\\\\right)` in JS so runtime retains literal `\\right)`. Entire questionBank was evaluated to check for non-LF controls."
   },
   "items": [
     {
@@ -1768,6 +1768,13 @@
       "before": "Source line ends at \\\\overline{BC} without closing the \\\\left( or finishing the derived equality; candidate contained malformed \\\\night).",
       "after": "Completes with \\\\right)=\\\\dfrac{1}{3}\\\\overline{BC}.",
       "reason": "Finishes the source-truncated display using GG′=(2/3)DE and DE=(1/2)BC; derived identity is mathematically valid."
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "runtime-string-escape",
+      "before": "JS source `\\right)` interpreted by JavaScript as CR + `ight)`.",
+      "after": "JS source `\\\\right)` evaluates to literal TeX `\\right)`.",
+      "reason": "A JS string escape was consuming the TeX backslash and inserting character 13; double escaping preserves the intended runtime TeX token."
     }
   ],
   "reviewEvidence": {
@@ -1940,7 +1947,11 @@
           "note": "ABC~AED, ratio 3:1, AC=9, EC=5."
         }
       ],
-      "separatePeerReview": "NOT_RUN"
+      "separatePeerReview": "NOT_RUN",
+      "runtimeStringAudit": {
+        "status": "PASS",
+        "scope": "All string values in all 26 runtime question objects were recursively checked after JavaScript evaluation. No control characters other than intended LF line breaks remain; Q24 runtime contains literal \\right)."
+      }
     }
   }
 }

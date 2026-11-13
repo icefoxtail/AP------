@@ -1,8 +1,8 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "similar/middle/m2/2final/21_이수중_2학기_기말_중2_유사.js",
-  "sourceGitBlobSha": "4a5bb21cf2d3770b03f3733b61614f2dbfcbf624",
-  "sourceSha256": "c0b190aa6e0b68a7fbecaad77a6c9f5f84d205ff223ce396ff3c6ead4cee2247",
+  "sourceGitBlobSha": "2e198bea8f6d22d16412798d70af97d7c818f08c",
+  "sourceSha256": "8d50d7d3282afa0a68fac54a2783babf4b6715e64ae69c0822c80fb197094fec",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "Codex stage-local MD migration",
@@ -26,7 +26,8 @@
     "identityBinding": "Canonical candidate UID formula applied; identity-map registration NOT_RUN.",
     "registration": "NOT_RUN",
     "fourSlotValidation": "PASS_WITH_WARNINGS: `node tools/4slot/validate-4slot.cjs` found 0 failures and 32 advisory warnings. Warnings (goal method terms, low slot diversity, one-term methods) remain visible; semantic review is NOT_RUN.",
-    "sourceBinding": "Updated after Q09 wording and Q24 LaTeX repairs; JS hash/blob and all QBODY/QFULL fingerprints recomputed."
+    "sourceBinding": "Rebound after doubling the Q24 TeX backslash in JS source; sourceSha256, git blob, and all QBODY/QFULL fingerprints recomputed.",
+    "runtimeStringAudit": "PASS: all string fields in 26 runtime questions evaluated in Node; no non-LF control characters; Q24 retains literal \\right)."
   },
   "scope": {
     "items": 26,
@@ -2791,7 +2792,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "ab696ba84fe4bf666292df38bef389afb1230ca41ec8db8fd4d464104af7cb55"
+          "value": "af91091578f2ad5b7015ba17511967d045e0e3c1714eb5f79e30f192792f5040"
         }
       ],
       "judgedBy": {
@@ -3011,8 +3012,8 @@
   "sourceBindingHistory": [
     {
       "sourceArchiveFile": "archive/exams/similar/middle/m2/2final/21_이수중_2학기_기말_중2_유사.js",
-      "sourceGitBlobSha": "4a5bb21cf2d3770b03f3733b61614f2dbfcbf624",
-      "sourceSha256": "c0b190aa6e0b68a7fbecaad77a6c9f5f84d205ff223ce396ff3c6ead4cee2247",
+      "sourceGitBlobSha": "2e198bea8f6d22d16412798d70af97d7c818f08c",
+      "sourceSha256": "8d50d7d3282afa0a68fac54a2783babf4b6715e64ae69c0822c80fb197094fec",
       "basedOnDriveFileId": "1ZRKCM7phBT2rbAW-GAkWtV6AcFiZ-QDk9h_lOct1ql0",
       "basedOnDriveRevision": "AHj4eMTu_3o4D3ipGOPdtT6ubMZxfEksx_ERooYsgwyqsyUOPn0HQAdq_QzxdWtC2pY6mkXGD5Q4jxD-ysMuApHcgcXuUcu3GeEaaX8yYUc"
     }
