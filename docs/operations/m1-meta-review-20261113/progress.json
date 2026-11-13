@@ -15,7 +15,7 @@
   "completedExams": 0,
   "reviewedQuestions": 24,
   "currentOrder": 1,
-  "nextAction": "REPRODUCE_REV2_24_CONSUMER_ISOLATED_THEN_PARENT_LINK_REPAIR_REV3_ISOLATED_PASS_PR_CI_MAIN_WRITER_ACTUAL_24_CLOSE_FIRST",
+  "nextAction": "CHECK_LATEST_AWCR_AND_OPEN_BRANCH_PR_THEN_SUBMIT_REV3_PR_VERIFY_CI_REQUEST_RECEIPT_MERGE_MAIN_WRITER_ACTUAL_24_MAIN_SHA_CLOSE_FIRST",
   "exams": [
     {
       "order": 1,
@@ -26,7 +26,7 @@
       "count": 24,
       "sourceBlob": "c36139a90e9bcd378577ece8f891423bee6b0a19",
       "sourceSha256": "1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564",
-      "status": "REV2_REJECTED_PARENT_LINK_REPAIR_IN_PROGRESS",
+      "status": "REV3_READY_WITH_ISOLATED_24_PASS",
       "partialEvidence": "01-shinheung-semantic-read-checkpoint.json",
       "candidateComparisonEvidence": "01-shinheung-candidate-comparison.json",
       "candidateComparisonSha256": "c887310c2501c3d70a010315a7fda02c73a6964ba45b70c3aa106a99c4a62ce9",
@@ -38,55 +38,37 @@
       "rpmEvidenceDebtCount": 2,
       "preparedSourceBlob": "a8de75bc9cc2b6a4479866d75b8ebec637404a04",
       "preparedSourceSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
-      "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev2",
-      "requestSha256": "267ab2f0a9abcb465030af0d198cd0b676b0ff465f730bdb625e50a8f5782f30",
+      "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "requestSha256": "bd2b3223b3e45a920f2f57707fd9ea37621b13a550f6125edc66edfd3057826f",
       "nativeRegistrationDryRun": "PASS",
       "actualRpmResolver": "NOT_RUN_UNVERIFIED_SOLUTION",
       "classificationCheck": {
         "exact": 22,
         "rpmOnlyDebt": 2
       },
-      "prNumber": 1961,
-      "prUrl": "https://github.com/icefoxtail/AP------/pull/1961",
-      "prHeadSha": "64650d1c2e34b49a0779769d8df502eb853ff693",
-      "mergeCommitSha": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
+      "prNumber": null,
+      "prUrl": null,
+      "prHeadSha": null,
+      "mergeCommitSha": null,
       "verifiedRemoteMainSha": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
       "verifiedRemoteMainTree": "d52de79fedc3e134286d57707f78b783130d7d2c",
-      "nativeRegistrationActual": "REJECTED_PROJECTION_VERIFY",
-      "consumerVerification": "FAILED_AT_Q5_CURRICULUM_KEY",
+      "nativeRegistrationActual": "REV3_NOT_SUBMITTED",
+      "consumerVerification": "REV3_ISOLATED_24_PASS_REMOTE_MAIN_NOT_VERIFIED",
       "operationallyClosed": false,
       "ci": {
-        "state": "SUCCESS",
-        "headSha": "64650d1c2e34b49a0779769d8df502eb853ff693",
-        "successfulWorkflowCount": 3,
-        "successfulJobCount": 5,
-        "evidencePath": "01-shinheung-rev2-ci.json",
-        "evidenceRecordedBy": "root",
-        "evidenceSha256": "6774dbcee746791603c16b4d98ff4c7c55d95099681064faec96a8ccae3b0a71"
+        "state": "NOT_RUN",
+        "scope": "REV3_PR_NOT_CREATED_AT_SNAPSHOT"
       },
       "concurrentWorkEvidence": "01-shinheung-concurrent-work-check.json",
       "mainWriter": {
-        "runId": 43429595931,
-        "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43429595931",
-        "jobId": 131899473141,
-        "jobUrl": "https://github.com/icefoxtail/AP------/actions/runs/43429595931/job/131899473141",
-        "observedStatus": "COMPLETED",
-        "observedPhase": "COMPLETED",
-        "persistStatus": "SUCCESS",
-        "headSha": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
-        "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev2",
-        "requestOutcome": "REJECTED",
-        "registrationReceiptVerification": "REJECTION_CONFIRMED",
-        "observationSource": "root observed completed workflow/register/persist and request-specific rejection; workflow success is not request registration success",
-        "conclusion": "SUCCESS",
-        "registerJobConclusion": "SUCCESS",
-        "registryChangesApplied": 0,
-        "registeredQuestionCount": 0,
-        "rejectionStage": "projection-verify",
-        "rejectionEvidence": "01-shinheung-registration-rev2-rejected.json",
-        "rejectionEvidenceSha256": "fa22b9789db1da1b6293bf5e04e4c8fc61e7515e248e13a2bc2dad498cba7382"
+        "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev3",
+        "runId": null,
+        "jobId": null,
+        "observedStatus": "NOT_STARTED",
+        "requestOutcome": "NOT_SUBMITTED",
+        "registrationReceiptVerification": "NOT_VERIFIED"
       },
-      "mainMergeEvidence": "01-shinheung-rev2-main-merge.json",
+      "mainMergeEvidence": null,
       "initialCiEvidence": "01-shinheung-ci-initial.json",
       "requestHistory": [
         {
@@ -215,21 +197,21 @@
           }
         }
       ],
-      "currentRequestPath": null,
-      "prRole": "LATEST_MERGED_REV2_REQUEST_REJECTED",
-      "repairPrNumber": 1961,
-      "repairPrStatus": "MERGED",
-      "repairCiStatus": "SUCCESS",
+      "currentRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+      "prRole": "CURRENT_REV3_PRE_PR_SNAPSHOT",
+      "repairPrNumber": null,
+      "repairPrStatus": "NOT_CREATED_AT_SNAPSHOT",
+      "repairCiStatus": "NOT_RUN",
       "nativeRegistrationDryRunDetails": {
-        "requestRevision": "rev2",
-        "exitCode": 0,
-        "durationSeconds": 5.801,
+        "requestRevision": "rev3",
+        "status": "PASS",
         "write": false,
         "questionCount": 24,
         "registryChanges": 17,
         "fingerprintRepairs": 24,
-        "evidencePath": "01-shinheung-registration-rev2-dry-run.json",
-        "evidenceSha256": "b4859e4a01ba624774ab2dd5faa3c98bad9c57c56f71b0f10a1c4dcceb686740"
+        "consumerSearchStatus": "NOT_RUN",
+        "evidencePath": "01-shinheung-registration-rev3-dry-run.json",
+        "evidenceSha256": "9079648268a4539ba4d2928042d6329a6d359f5a7b93a9279f7d51d0229efd6f"
       },
       "tagAnnotationRepair": {
         "questionCount": 24,
@@ -258,24 +240,23 @@
         1960,
         1961
       ],
-      "mergeTree": "25dcd5f8086207e5e630aa3ec51ba8ab6b95f69c",
-      "mainMergeEvidenceSha256": "8f9c0772bd4dccf301cb70494f501a7a2c7119a64514904e636a41e4a5f8f4db",
+      "mergeTree": null,
+      "mainMergeEvidenceSha256": null,
       "verifiedRemoteMainTreeStatus": "VERIFIED_FROM_FETCHED_REMOTE_MAIN",
       "actualRegisteredQuestionCount": 0,
       "nativeRegistryChangesApplied": 0,
-      "requestStatus": "REJECTED",
+      "requestStatus": "READY_NOT_SUBMITTED",
       "lastSubmittedRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev2.json",
-      "requestSnapshotCommit": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
+      "requestSnapshotCommit": null,
       "parentLinkRepair": {
-        "status": "STATIC_DIAGNOSIS_ISOLATED_REPRODUCTION_STARTED",
+        "status": "REV3_PREPARED_AND_ISOLATED_24_PASS",
         "reproductionWorktree": "/workspace/scratch/933015cd0a4f/m1-registration-repro",
         "reproductionOwner": "root",
         "reproductionMode": "LOCAL_ISOLATED_OFFICIAL_V2_REGISTRAR_NOT_PRODUCTION_OR_PUBLICATION",
-        "reproductionResult": "PENDING",
-        "actualConsumer24PassClaimed": false,
+        "reproductionResult": "REV2_REPRODUCED_22_PASS_Q5_Q8_CANONICAL_PARENT_MISSING",
         "q5": {
           "observedFailureField": "curriculumKey",
-          "diagnosis": "labelsFor uses native unit/subunit labels because the ACTIVE 2022 binding has no L1/L2 and the request has no targetParentRef; canonical parent validation can clear curriculumKey. Failure-time catalog values are not available.",
+          "diagnosis": "Official isolated rev2 reproduction confirmed canonical_parent_missing for Q5 and Q8; the rev3 candidate repaired only the parent references.",
           "nativeParent": [
             "평면도형의 성질",
             "다각형과 원"
@@ -284,11 +265,16 @@
             "평면도형",
             "다각형"
           ],
-          "plannedFix": "Preserve existing PT/TPL and RPM198 meaning; add-only exact 2022 crosswalk link and evidence-bound targetParentRef."
+          "status": "PARENT_LINK_REPAIRED_IN_REV3_CANDIDATE",
+          "appliedCandidateFix": "Preserve existing PT/TPL and RPM198 meaning; add-only exact 2022 crosswalk link and evidence-bound targetParentRef.",
+          "exactCrosswalkId": "M1-RPM-198-DIAGONAL-FORMULA-20261113",
+          "sourceFamilyIdPreserved": "M1-RPM-198"
         },
         "q8": {
-          "status": "SIMILAR_PARENT_GAP_CANDIDATE_NOT_YET_REPRODUCED",
-          "plannedFix": "Bind only the official basic-geometry/position-relation parent; keep RPM L3/L4 EVIDENCE_DEBT."
+          "status": "REPRODUCED_AND_PARENT_ONLY_REF_REPAIRED_IN_REV3_CANDIDATE",
+          "appliedCandidateFix": "Bind only the official basic-geometry/position-relation parent; keep RPM L3/L4 EVIDENCE_DEBT.",
+          "rpmLeafAdded": false,
+          "rpmCoarseParentStatus": "LEGACY_PARENT_AMBIGUOUS"
         },
         "q10": {
           "status": "EXPLICIT_BINDING_PARENT_PRESENT",
@@ -307,17 +293,80 @@
           "math-review and RPM FINAL boundaries"
         ],
         "nextRequestRevision": "rev3",
-        "nextRequestStatus": "NOT_CREATED",
-        "nextRequestPath": null,
+        "nextRequestStatus": "READY_NOT_SUBMITTED",
+        "nextRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
         "nextPrNumber": null,
-        "nextPrStatus": "NOT_CREATED",
+        "nextPrStatus": "NOT_CREATED_AT_SNAPSHOT",
         "sequence": [
-          "Reproduce the actual rev2 Consumer failure across the first 24 questions in the isolated worktree",
-          "Apply only supported parent-link repairs and prepare a new rev3 request",
-          "Obtain actual isolated 24-question Consumer validation before a new PR",
-          "PR and CI, merge, main writer, request-specific receipt and all 24 actual Consumers",
+          "Read latest AWCR safe checkpoint and query this branch open PRs before creating a new PR",
+          "Submit prepared rev3 PR if absent; verify CI and request-specific registration receipts",
+          "Merge, then verify main writer exact request receipt and all 24 actual remote Consumers and native queries",
           "Bind remote main SHA, close first exam, then begin Wangun"
-        ]
+        ],
+        "isolatedConsumer24Pass": true,
+        "productionConsumer24Pass": false,
+        "evidencePath": "01-shinheung-canonical-parent-repair.json",
+        "evidenceSha256": "025b76456d75f84c5f4f1c2aa73041eba1c96954232e7e6a2bffacf68877f8cb"
+      },
+      "lastSubmittedRequestSnapshotCommit": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
+      "parentRefRepairOrdinals": [
+        5,
+        8
+      ],
+      "substantiveMetadataChangedQuestionCount": 18,
+      "substantiveMetadataCountBasis": "Existing 17 semantic/binding repairs plus Q5 parent repair; Q8 was already included in the existing 17. Source tag annotation changes remain 24.",
+      "isolatedCandidateVerification": {
+        "status": "PASS",
+        "scope": "ISOLATED_CANDIDATE_NOT_OPERATIONAL_MAIN",
+        "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev3",
+        "requestSha256": "bd2b3223b3e45a920f2f57707fd9ea37621b13a550f6125edc66edfd3057826f",
+        "evidencePath": "01-shinheung-rev3-isolated-verification.json",
+        "evidenceSha256": "f9da902fa20493e3780a02657ab8504edddf9c11eb224e1d11eecacafb70b0c0",
+        "projection": {
+          "totalQuestions": 24,
+          "canonical": 24,
+          "usableMetaLane": 0
+        },
+        "consumer": {
+          "changed": 24,
+          "checked": 24,
+          "passed": 24,
+          "failures": 0,
+          "unobservedFields": 0
+        },
+        "nativeCanonicalAssignmentApprovedQuestionCount": 24,
+        "targetedRegressions": {
+          "parentHelperTests": 18,
+          "parentHelperPassed": 18,
+          "cacheReferenceConsistency": "PASS",
+          "fullR1R2R3Rerun": false
+        },
+        "browserStatus": "NOT_RUN",
+        "remoteMainConsumerVerification": "NOT_YET_VERIFIED_REV3",
+        "mathFinalQaPerformed": false
+      },
+      "isolatedRpmParentAudit": {
+        "status": "PASS",
+        "scope": "ISOLATED_REPRODUCTION_NOT_OPERATIONAL",
+        "evidencePath": "01-shinheung-rev3-isolated-rpm-parents.json",
+        "evidenceSha256": "9926d56aacd13a3c4769e27d5ce869757d73bf5f7bd694c5050eabbd1f568f6c",
+        "exactLeafCount": 22,
+        "rpmOnlyDebtOrdinals": [
+          8,
+          10
+        ],
+        "parentCounts": {
+          "기본 도형 / 기본 도형": 4,
+          "기본 도형 / 위치 관계": 4,
+          "기본 도형 / 작도와 합동": 6,
+          "평면도형 / 다각형": 4,
+          "평면도형 / 원과 부채꼴": 5,
+          "unresolved: LEGACY_PARENT_AMBIGUOUS": 1
+        },
+        "q8RpmParentStatus": "LEGACY_PARENT_AMBIGUOUS",
+        "q8NativeCanonicalAssignment": "APPROVED_IN_ISOLATED_CANDIDATE",
+        "q10RpmGranularity": "PARENT",
+        "actualRpmSolutionResolver": "NOT_RUN_UNVERIFIED_SOLUTION"
       }
     },
     {
@@ -849,7 +898,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "REV2_REJECTED_PARENT_LINK_REPAIR_IN_PROGRESS",
+  "state": "REV3_READY_WITH_ISOLATED_24_PASS",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -915,5 +964,20 @@
       "preserveConcurrentChanges": true
     }
   ],
-  "activeMainTreeStatus": "VERIFIED_FROM_FETCHED_REMOTE_MAIN"
+  "activeMainTreeStatus": "VERIFIED_FROM_FETCHED_REMOTE_MAIN",
+  "checkpointPublication": {
+    "scope": "PRE_PR_SNAPSHOT",
+    "status": "LOCAL_REV3_CHANGES_NOT_YET_PUBLISHED_AT_SNAPSHOT",
+    "previousRemoteCheckpointShaPrefix": "dfb",
+    "previousRemoteCheckpointState": "REV2_REJECTED_PARENT_LINK_REPAIR_IN_PROGRESS",
+    "resumeRequirement": "Read the latest AWCR safe checkpoint and query open PRs for this branch before creating a PR; a later publication may already exist."
+  },
+  "candidateConsumerPreflightPolicy": {
+    "scope": "EACH_REVIEWED_EXAM_EXACT_CANDIDATE",
+    "required": "Reuse the official registrar and exact changed-UID Consumer preflight over every question in the current exam, bound to the exact candidate request/source. Key validity or dry-run alone is insufficient.",
+    "denominators": "changed/checked/passed must each equal the exam question count; failures and unobserved fields must be zero.",
+    "reuseExistingEvidence": true,
+    "fullR1R2R3Rerun": false,
+    "mainRegistrationStillRequired": true
+  }
 }

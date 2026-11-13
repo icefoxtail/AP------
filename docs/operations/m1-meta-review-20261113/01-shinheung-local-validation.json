@@ -43,9 +43,9 @@
   },
   "studentImagesChanged": 0,
   "fullR1R2R3Rerun": false,
-  "consumerSearch": "REV2_REJECTED_PROJECTION_VERIFY",
-  "mainRegistration": "REV2_REJECTED_PARENT_LINK_REPAIR_IN_PROGRESS",
-  "CI": "REV2_REPAIR_PR_SUCCESS",
+  "consumerSearch": "REV3_ISOLATED_CANDIDATE_24_PASS_NOT_OPERATIONAL",
+  "mainRegistration": "REV3_READY_WITH_ISOLATED_24_PASS",
+  "CI": "REV3_PR_NOT_YET_CREATED",
   "initialCi": {
     "head": "8bab8a18877415b0d63ea79f01bf46d9a434be33",
     "pr": 1960,
@@ -148,5 +148,50 @@
     "rejectionEvidence": "01-shinheung-registration-rev2-rejected.json",
     "rejectionEvidenceSha256": "fa22b9789db1da1b6293bf5e04e4c8fc61e7515e248e13a2bc2dad498cba7382",
     "mainSnapshot": "2dd58ebe1abb9123206782979f4ac23e3b891c49"
+  },
+  "rev3Repair": {
+    "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev3",
+    "requestSha256": "bd2b3223b3e45a920f2f57707fd9ea37621b13a550f6125edc66edfd3057826f",
+    "sourceBytesChanged": false,
+    "parentRefRepairOrdinals": [
+      5,
+      8
+    ],
+    "exactCrosswalkRowsAdded": 1,
+    "nativeRegistryChangeDefinitions": 17,
+    "metadataBeforeAfterUnchangedQuestions": 24,
+    "officialDryRun": "PASS",
+    "isolatedVerification": {
+      "status": "PASS",
+      "checked": 24,
+      "passed": 24,
+      "canonicalLane": 24,
+      "usableMetaLane": 0,
+      "evidence": "01-shinheung-rev3-isolated-verification.json",
+      "sha256": "f9da902fa20493e3780a02657ab8504edddf9c11eb224e1d11eecacafb70b0c0"
+    },
+    "rpmExactLeaves": 22,
+    "rpmOnlyDebtOrdinals": [
+      8,
+      10
+    ],
+    "q8RpmParentAmbiguityPreserved": true,
+    "operationalRegistration": "NOT_YET_RUN",
+    "prStatus": "NOT_YET_CREATED",
+    "implementationPreservation": {
+      "helperLogicOutsideGeneratedAuthorityUnchanged": true,
+      "htmlChangesOnlySixHelperCacheVersions": true,
+      "requestBoundEvidenceFilesVerified": 11,
+      "concurrentPr1962LogicPreserved": true
+    },
+    "concurrentWorkRecheck": {
+      "observedAt": "2026-11-13T13:59:20Z",
+      "pr1751Head": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
+      "pr1952Head": "3e299cd72c248e7b74c2e3e409850e747cf1e6c7",
+      "headsUnchanged": true,
+      "firstAndNextSourceOverlap": 0,
+      "previousEvidenceReused": "01-shinheung-concurrent-work-check.json",
+      "mainSha": "2dd58ebe1abb9123206782979f4ac23e3b891c49"
+    }
   }
 }

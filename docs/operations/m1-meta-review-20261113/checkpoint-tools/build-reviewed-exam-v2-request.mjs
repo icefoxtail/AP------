@@ -25,6 +25,7 @@ const VALUE_FIELDS = new Set([...SOURCE_FIELDS,'sourceFingerprint','contentFinge
 const STUDENT_FIELDS = ['id','questionType','content','choices','answer','solution','image','images','figureSvg',
   'solutionImage','solutionFigureSvg','layoutTag','wide'];
 const RPM_MASTER = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json';
+const NATIVE_MASTER = 'archive/data/master_tables/js_archive_tag_master.json';
 const SOURCE_ONLY_META = new Set(['category','originalCategory','standardUnitOrder','subUnitConfidence','subUnitClassificationDepth',
   'tagStatus','tagConfidence','reviewStatus','canonicalBindingStatus','runtimeMaterializationStatus',
   'rpmPrimaryRecordId','rpmScope','rpmCrosswalkStatus','rpmCurriculum','metaStatus','metaNullReason','projectionStatus']);
@@ -170,7 +171,7 @@ for (let ordinal=1; ordinal<=count; ordinal++) {
   after.contentFingerprint = contentFingerprint;
   if (decision.rpmEvidenceDebt) {
     need(decision.rpmEvidenceDebt,'RPM evidence debt reason');
-    if (decision.crosswalkRecordId || decision.targetParentRef || decision.semanticBinding) fail('RPM debt cannot name an exact RPM mapping');
+    if (decision.crosswalkRecordId || decision.semanticBinding) fail('RPM debt cannot name an exact RPM mapping');
     for (const field of ['rpmPrimaryPath','rpmL1','rpmL2','rpmL3','rpmL4']) after[field] = null;
     after.rpmSemanticStatus = 'HOLD';
     if (question.rpmPrimaryPath != null || question.rpmPrimaryRecordId != null) fail('source must explicitly clear wrong RPM path/id before registration');
@@ -213,6 +214,35 @@ for (let ordinal=1; ordinal<=count; ordinal++) {
       basePath:refined.basePath,effectivePath:refined.effectivePath,parentKey:refined.parentKey,
       nativeLabelAuthority:listedFamily?'DEFAULT_NATIVE_BINDING_AND_MASTER':'LOCKED_BASE_TARGET_PARENT_REF',
       mappingStatus:cross.mappingStatus,selectedTemplateKey:final.templateKey});
+  }
+  if (Object.hasOwn(decision,'targetParentRef')) {
+    // This binds only an existing official parent; it cannot supply an RPM leaf or clear debt.
+    if (patch.targetParentRef) fail('direct and generated targetParentRef cannot be combined: ordinal ' + ordinal);
+    const ref = decision.targetParentRef;
+    const fields = ['path','curriculum','scope','majorUnit','midUnit'];
+    if (!ref || typeof ref !== 'object' || Array.isArray(ref) || Object.keys(ref).length !== fields.length ||
+      fields.some(field=>!Object.hasOwn(ref,field))) fail('parent-only targetParentRef requires exactly five parent fields');
+    for (const field of fields) need(ref[field],'parent-only targetParentRef.' + field);
+    if (ref.path !== RPM_MASTER || ref.curriculum !== (final.curriculum || final.curriculumKey) ||
+      ref.scope !== need(final.courseKey,'parent-only courseKey')) fail('parent-only curriculum/course/master mismatch: ordinal ' + ordinal);
+    const masterRows = read(RPM_MASTER).records || [];
+    if (!masterRows.some(record=>record.curriculum===ref.curriculum && record.scope===ref.scope &&
+      record.majorUnit===ref.majorUnit && record.midUnit===ref.midUnit)) fail('parent-only target is not in locked base master: ordinal ' + ordinal);
+    const nativeRows = read(NATIVE_MASTER);
+    if (!Array.isArray(nativeRows)) fail('native unit master must be an array');
+    const activeRows = (key,keyType) => nativeRows.filter(record=>record.key===key && record.keyType===keyType &&
+      ['active','ACTIVE'].includes(record.status));
+    const units = activeRows(final.standardUnitKey,'standardUnitKey');
+    const subs = final.subUnitKey ? activeRows(final.subUnitKey,'subUnitKey') : [];
+    if (units.length !== 1 || final.subUnitKey && subs.length !== 1 ||
+      ![...units,...subs].some(record=>record.labelKo===ref.midUnit))
+      fail('parent-only midUnit must exactly match an ACTIVE native unit/subunit label: ordinal ' + ordinal);
+    patch.targetParentRef = Object.fromEntries(fields.map(field=>[field,ref[field]]));
+    patch.evidenceRefs = references([...patch.evidenceRefs,reference(RPM_MASTER)]);
+    parentEvidence.push({sourceOrdinal:ordinal,questionUid:row.questionUid,parentOnly:true,
+      targetParentRef:patch.targetParentRef,leafMapping:null,crosswalkRecordId:null,
+      nativeLabelAuthority:'ACTIVE_NATIVE_UNIT_OR_SUBUNIT_LABEL',
+      rpmEvidenceDebt:decision.rpmEvidenceDebt || null,rpmEvidenceDebtPreserved:Boolean(decision.rpmEvidenceDebt)});
   }
   items.push(patch);
 }
