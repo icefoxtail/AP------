@@ -3,8 +3,8 @@
   "requestId": "similar-21-wangun-m2-2final-candidate-v1",
   "examUid": "21_왕운중_2학기_기말_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/2final/21_왕운중_2학기_기말_중2_유사.js",
-  "expectedSourceBlobSha1": "19e566e97f6e56ee3bdb04974ed43939ffbf921d",
-  "expectedSourceSha256": "3c6c2239a301616911557b6639e9e7e9aa90fe89d7ec9ec3f8c1bcaef3f41fb9",
+  "expectedSourceBlobSha1": "f5cd4428ecbf1a6cc26770f387f1738246096284",
+  "expectedSourceSha256": "a5b2a168338974d9929a3e7aefb621429d0dda55a2dca24ec14f13c289927363",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -1630,6 +1630,13 @@
       "before": "Point collinearity/order was unstated and x was defined as BD although the keyed value uses BC.",
       "after": "Defines A-C-F, B-C-E, B-D-F order; keeps x=BD and AB∥CD∥EF.",
       "reason": "Makes both similarity relations valid and uniquely derives x=6 and y=24/5."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "solution",
+      "before": "\\triangle BCD\\sim\\triangle BFE",
+      "after": "\\triangle BCD\\sim\\triangle BEF",
+      "reason": "Matches the vertex correspondence B↔B, C↔E, D↔F for B,D,F and B,C,E collinear with CD∥EF."
     }
   ],
   "reviewEvidence": {
