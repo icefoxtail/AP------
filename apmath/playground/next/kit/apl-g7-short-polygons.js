@@ -285,7 +285,7 @@
         const stages = [[.8, [A, B, C], C, A, B, 'x'], [2.2, [B, C, D], B, C, D, '2x'], [3.7, [B, C, D], D, B, C, '2x'], [4.8, [C, D, E], C, D, E, '3x'], [5.8, [C, D, E], E, C, D, '3x'], [6.6, [D, E, Q], D, E, Q, '4x']];
         for (const [a, tri, v, r, z, s] of stages) if (t >= a) {
           if (t < a + 1.2) poly(b, tri, 'green', .13 * phase(t, a, a + .5), 2);
-          sector(b, angle(v, r, z), 'green', s, (s === '3x' ? 24 : 32) / b.k);
+          sector(b, angle(v, r, z), 'green', goal === 'solve' && s === '4x' ? '' : s, (s === '3x' ? 24 : 32) / b.k);
         }
       },
       frame(t, { m }) {
@@ -353,7 +353,8 @@
         fanDraw(b, V, 0, phase(t, .8, 4.5));
         if (t >= 4.6) {
           const interior = angle(V[0], V[m.n - 1], V[1], m.g.concave);
-          sector(b, interior, 'rose', goal === 'angle' && t >= 5.8 ? dg(m.iv[0]) : '', 26 / b.k);
+          sector(b, interior, 'rose', goal === 'angle' && t >= 5.8 && !m.g.concave ? dg(m.iv[0]) : '', 26 / b.k);
+          if (goal === 'angle' && t >= 5.8 && m.g.concave) label(b, polar(interior.c, 43 / b.k, interior.start + interior.sweep / 2), dg(m.iv[0]), 'rose', { dy: -20, size: b.W < 560 ? 12 : 15 });
           if (goal === 'angle' && m.g.concave) sector(b, angle(V[0], V[m.n - 1], V[1]), 'amber', t >= 7.2 ? dg(m.x) : 'x', 43 / b.k);
           if (goal === 'angle' && !m.g.concave && t >= 7.2) sector(b, interior, 'amber', dg(m.x), 32 / b.k);
         }
@@ -521,8 +522,11 @@
         [[A, 'A'], [B, 'B'], [C, 'C'], ...(goal === 'combined' ? [[m.at(m.k + 1), LETTERS[m.k + 1]]] : [])].forEach(([p, s]) => { const u = unit(p); label(b, p, s, 'ink', { dx: u.x * 16, dy: u.y * 18 }); });
         // Every ray is part of the question figure; the proof traces them again.
         for (let j = 2; j <= m.n - 2; j++) line(b, A, m.at(j), 'muted', 1.3);
-        if (t >= .8) { poly(b, [A, B, C], 'sky', .12, 2); mark(b, A, B); mark(b, B, C); sector(b, angle(B, A, C), 'sky', dg(m.I), 23 / b.k); }
-        if (t >= 2.6) { sector(b, angle(A, B, C), 'rose', t >= 4.3 && goal === 'combined' ? dg(m.h) : 'h', 34 / b.k); sector(b, angle(C, A, B), 'rose', 'h', 24 / b.k); }
+        if (t >= .8) { poly(b, [A, B, C], 'sky', .12, 2); mark(b, A, B); mark(b, B, C); sector(b, angle(B, A, C), 'sky', 'I', 23 / b.k); }
+        if (t >= 2.6) {
+          if (t < 6.4) sector(b, angle(A, B, C), 'rose', 'h', 34 / b.k);
+          sector(b, angle(C, A, B), 'rose', 'h', 24 / b.k);
+        }
         if (t >= 4.4) {
           const first = angle(A, B, C), u = phase(t, 4.4, 6.3);
           for (let j = 2; j <= m.n - 2; j++) {
@@ -533,7 +537,7 @@
         if (t >= 6.4) {
           const k = goal === 'unit' ? 1 : m.k;
           for (let j = 1; j <= k; j++) poly(b, [A, m.at(j), m.at(j + 1)], 'amber', .11, 1);
-          sector(b, angle(A, B, m.at(k + 1)), 'amber', t >= 7.3 ? dg(k * m.h) : 'x', 49 / b.k, .06);
+          sector(b, angle(A, B, m.at(k + 1)), 'amber', goal === 'unit' ? 'h' : 'x', 49 / b.k, .06);
         }
       },
       frame(t, { m }) {

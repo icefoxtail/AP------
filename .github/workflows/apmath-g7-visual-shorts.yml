@@ -83,6 +83,20 @@ jobs:
   geometry:
     runs-on: ubuntu-24.04
     timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # These three units already completed 90 normal-clock plays on
+          # 289bf8748a (artifact 13996711854). Recheck the changed layout and
+          # immediate-reload fix; replay only the three changed polygon scenes.
+          - { lab: g7-area, mode: static, live_scenes: '' }
+          - { lab: g7-polygons, mode: static, live_scenes: 'p2-chain,p3-concave,p4-fan' }
+          - { lab: g7-parallel, mode: static, live_scenes: '' }
+          - { lab: g7-points-lines, mode: full, live_scenes: '' }
+          - { lab: g7-construction, mode: full, live_scenes: '' }
+          - { lab: g7-spatial, mode: full, live_scenes: '' }
+          - { lab: g7-polyhedra, mode: full, live_scenes: '' }
     steps:
       - uses: actions/checkout@v4
         with:
@@ -101,6 +115,9 @@ jobs:
         env:
           NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
           G7_EVIDENCE: ${{ runner.temp }}/g7-geometry-evidence
+          G7_SHORT_LABS: ${{ matrix.lab }}
+          G7_SHORT_MODE: ${{ matrix.mode }}
+          G7_LIVE_SCENES: ${{ matrix.live_scenes }}
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/g7-geometry-http.log" 2>&1 &
           for i in {1..20}; do curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js >/dev/null && break; sleep 1; done
@@ -108,7 +125,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: g7-geometry-browser-${{ github.sha }}
+          name: g7-geometry-${{ matrix.lab }}-browser-${{ github.sha }}
           path: |
             ${{ runner.temp }}/g7-geometry-evidence/
             ${{ runner.temp }}/g7-geometry-http.log

@@ -139,6 +139,9 @@
       this.choice = 0; this.elapsed = 0; this.mode = 'ready';
       this.current = this.makeRecord();
       if (old) this.restoreRecord(old);
+      // Native navigation writes its URL after 250 ms. Commit this restored
+      // scene now so an immediate reload cannot reopen the scene just left.
+      this.store();
       this.refresh(); this.schedule();
     }
     wrap() {
@@ -154,7 +157,7 @@
             const info = A.G7ShortInfo?.[`${lab.id}/${sc.id}`];
             const recipe = A.G7ShortCoordinates?.recipes[sc.id] || A.G7ShortProportion?.recipes[sc.id];
             const durations = { 'f1-star': { '넓이': 8.8, '둘레': 8.4 }, 'f3-leaf-area': { '넓이': 8.8 }, 'sv2-4': { '겉넓이': 9, '부피': 9 }, 'sv3-4': { '남은 물': 9 } }[sc.id];
-            return rows.map(row => ({ ...row, length: info?.find(item => item.legacyLabel === row.label)?.duration
+            return rows.map(row => ({ ...row, length: info?.find(item => item.legacyLabel === (row.label || ''))?.duration
               || (recipe && sc._mf ? recipe.duration || 9 : durations?.[row.label] || row.length) }));
           };
           try { return render(); } finally { p.lessonInfo = nativeInfo; }

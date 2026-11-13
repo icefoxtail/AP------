@@ -8,12 +8,16 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 const targets = (process.env.G7_SHORT_LABS || 'g7-area,g7-polygons,g7-parallel').split(',');
+const mode = process.env.G7_SHORT_MODE || 'full';
+assert.ok(['full', 'static'].includes(mode), 'unknown browser verification mode');
+const liveScenes = new Set((process.env.G7_LIVE_SCENES || '').split(',').filter(Boolean));
+const excludeScenes = new Set((process.env.G7_SHORT_EXCLUDE_SCENES || '').split(',').filter(Boolean));
 const out = path.resolve(process.env.G7_EVIDENCE || '.tmp/g7-geometry-browser');
 const base = process.env.G7_BASE_URL || 'http://127.0.0.1:8765/apmath/playground/next/labs/';
 fs.mkdirSync(out, { recursive: true });
 const report = {
   kind: 'G7_NEW_GEOMETRY_SHORT_HTTP_CHROMIUM', commit: process.env.GITHUB_SHA || null,
-  targets, inventory: [], static: [], screenshots: [], live: [], interactions: [], errors: [],
+  targets, mode, liveScenes: [...liveScenes], excludeScenes: [...excludeScenes], inventory: [], static: [], screenshots: [], live: [], interactions: [], errors: [],
   visualReview: 'PENDING_SCREENSHOT_REVIEW', studentObservation: 'NOT_RUN'
 };
 const save = () => fs.writeFileSync(path.join(out, 'geometry-report.json'), JSON.stringify(report, null, 2) + '\n');
@@ -33,11 +37,12 @@ async function load(page, id, hash = '') {
   await page.evaluate(() => document.fonts.ready);
 }
 async function inventory(page) {
-  return page.evaluate(() => lab.list.map((scene, i) => ({
+  const entries = await page.evaluate(() => lab.list.map((scene, i) => ({
     i, scene: scene.id, title: scene.title,
-    labels: lab.video.lessonInfo(i).map(x => x.label),
+    labels: lab.video.lessonInfo(i).map(x => x.label || ''),
     shortInfo: APLab.G7ShortInfo?.[`${lab.id}/${scene.id}`] || []
   })));
+  return entries.filter(x => !excludeScenes.has(x.scene));
 }
 
 try {
@@ -79,6 +84,10 @@ try {
                 overflow: document.documentElement.scrollWidth > innerWidth + 2,
                 katexErrors: document.querySelectorAll('.katex-error').length,
                 finiteText: text.every(x => Number.isFinite(x.x) && Number.isFinite(x.y)),
+                clippedControls: [...lab.learning.ui.root.querySelectorAll('button')].filter(x => {
+                  const r = x.getBoundingClientRect();
+                  return r.width > 0 && r.height > 0 && (r.left < -1 || r.right > innerWidth + 1 || x.scrollWidth > x.clientWidth + 2);
+                }).map(x => x.textContent),
                 offCanvasText: text.filter(x => x.x < -1 || x.x > b.W + 1 || x.y < -1 || x.y > b.H + 1),
                 caption: lab.learning.ui.caption.textContent, formula: lab.learning.ui.formula.textContent
               });
@@ -97,6 +106,7 @@ try {
             assert.ok(f.finiteText, `${row.id}: nonfinite label`);
             assert.equal(f.katexErrors, 0, `${row.id}: invalid formula`);
             assert.ok(!f.overflow, `${row.id}: horizontal overflow at ${viewport.width}`);
+            assert.deepEqual(f.clippedControls, [], `${row.id}: clipped learning buttons at ${viewport.width}`);
           }
         }
         report.static.push({ id, scene: entry.scene, viewport, ...checks });
@@ -118,7 +128,7 @@ try {
         const row = lab.list.findIndex(sc => (APLab.G7ShortInfo?.[`${lab.id}/${sc.id}`] || []).length > 1);
         const i = row < 0 ? 0 : row, k = row < 0 ? 0 : 1;
         lab.toc.go(i, k);
-        return { times, label: lab.learning.active?.legacyLabel, expected: lab.video.lessonInfo(i)[k].label, mode: lab.learning.mode };
+        return { times, label: lab.learning.active?.legacyLabel, expected: lab.video.lessonInfo(i)[k].label || '', mode: lab.learning.mode };
       });
       assert.ok(toc.times.length > 0 && toc.times.every(x => parseFloat(x) <= 10), `${id}: stale TOC durations`);
       assert.equal(toc.label, toc.expected); assert.equal(toc.mode, 'paused');
@@ -132,9 +142,11 @@ try {
   // No seeking, acceleration, mocked clock or shortened legacy lesson is used.
   const { page, context } = await pageFor(viewports[3], 'no-preference');
   for (const id of targets) {
+    if (mode === 'static' && !liveScenes.size) continue;
     await load(page, id);
     const entries = await inventory(page);
     for (const entry of entries) {
+      if (mode === 'static' && !liveScenes.has(entry.scene)) continue;
       for (let choice = 0; choice < entry.labels.length; choice++) {
         await page.evaluate(({ i, choice }) => {
           lab.goScene(i); lab.learning.explore(); lab.learning.choice = choice;
@@ -164,6 +176,7 @@ try {
   await context.close();
 
   // A native edit, replay, navigation, reload and an explicit question choice.
+  if (targets.includes('g7-area')) {
   const reduced = await pageFor(viewports[3]);
   await load(reduced.page, 'g7-area', '#s=a1-rect');
   const native = await reduced.page.evaluate(() => {
@@ -182,14 +195,17 @@ try {
     return { w: lab.s.a1W, h: lab.s.a1H, t: lab.learning.elapsed, mode: lab.learning.mode, model: { w: model.W, h: model.H, area: model.A } };
   });
   assert.deepEqual(navigated, { w: 9, h: 5, t: 3.8, mode: 'paused', model: { w: 9, h: 5, area: 45 } });
+  report.interactions.push({ name: 'area-before-reload', hash: await reduced.page.evaluate(() => location.hash), navigated }); save();
   await reduced.page.reload(); await reduced.page.waitForFunction(() => window.lab?.learning);
   const resumed = await reduced.page.evaluate(() => {
-    const model = lab.learning.active.model;
+    const model = lab.learning.active?.model || {};
     return { w: lab.s.a1W, h: lab.s.a1H, t: lab.learning.elapsed, mode: lab.learning.mode, model: { w: model.W, h: model.H, area: model.A } };
   });
+  report.interactions.push({ name: 'area-after-reload', resumed }); save();
   assert.deepEqual(resumed, { w: 9, h: 5, t: 3.8, mode: 'paused', model: { w: 9, h: 5, area: 45 } });
   report.interactions.push({ name: 'area-current-conditions-replay-navigation-reload', restored: native.restored, model: native.model, navigated, resumed });
   await reduced.context.close();
+  }
   assert.equal(report.errors.length, 0, JSON.stringify(report.errors));
   report.status = 'TECHNICAL_CHECKS_PASSED';
 } catch (error) {
