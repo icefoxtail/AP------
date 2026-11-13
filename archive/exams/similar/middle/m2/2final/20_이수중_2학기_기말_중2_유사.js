@@ -405,7 +405,7 @@ window.questionBank = [
       "$\\overline{BD} = \\overline{CD}$"
     ],
     "answer": "②",
-    "solution": "무게중심의 내분비 $2:1$과 넓이 분할을 확인한다. 이 문항의 등식에서 $\\triangle$ 기호는 삼각형의 넓이를 뜻한다.\n$$\\begin{aligned}\n\\text{① } & BD=CD\\text{이고 높이가 같으므로 \\\\text{넓이}(\\triangle GBD)=\\text{넓이}(\\triangle GCD)\\text{이다. (참)} \\\\\n\\text{② } & AG\\text{와 }BG\\text{는 길이가 항상 같지 않다. (거짓)} \\\\\n\\text{③ } & \\text{무게중심과 세 꼭짓점을 연결한 삼각형의 넓이는 같으므로 \\\\text{넓이}(\\triangle ABG)=\\text{넓이}(\\triangle ACG)\\text{이다. (참)} \\\\\n\\text{④ } & AG:GD=2:1\\text{이므로 }AG=2GD\\text{이다. (참)} \\\\\n\\text{⑤ } & D\\text{는 }BC\\text{의 중점이므로 }BD=CD\\text{이다. (참)}\n\\end{aligned}$$\n항상 옳은 관계가 아닌 것은 ②이다.\n정답은 ②이다.",
+    "solution": "무게중심의 내분비 $2:1$과 넓이 분할을 확인한다. 이 문항의 등식에서 $\\triangle$ 기호는 삼각형의 넓이를 뜻한다.\n$$\\begin{aligned}\n\\text{① } & BD=CD\\text{이고 높이가 같으므로} \\text{넓이}(\\triangle GBD)=\\text{넓이}(\\triangle GCD)\\text{이다. (참)} \\\\\n\\text{② } & AG\\text{와 }BG\\text{는 길이가 항상 같지 않다. (거짓)} \\\\\n\\text{③ } & \\text{무게중심과 세 꼭짓점을 연결한 삼각형의 넓이는 같으므로} \\text{넓이}(\\triangle ABG)=\\text{넓이}(\\triangle ACG)\\text{이다. (참)} \\\\\n\\text{④ } & AG:GD=2:1\\text{이므로 }AG=2GD\\text{이다. (참)} \\\\\n\\text{⑤ } & D\\text{는 }BC\\text{의 중점이므로 }BD=CD\\text{이다. (참)}\n\\end{aligned}$$\n항상 옳은 관계가 아닌 것은 ②이다.\n정답은 ②이다.",
     "points": 4.0,
     "curriculum": "2015",
     "curriculumKey": "2015",
