@@ -3,8 +3,8 @@
   "requestId": "similar-19-yeonhyang-m2-2final-candidate-v1",
   "examUid": "19_연향중_2학기_기말_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/2final/19_연향중_2학기_기말_중2_유사.js",
-  "expectedSourceBlobSha1": "38078d963d30f59fa7642948239cfd39bcaa89d4",
-  "expectedSourceSha256": "70b9e762490fe4c8a9abd433dd0914a307be0f39403bd54c63b9dac851be671a",
+  "expectedSourceBlobSha1": "01eeb80b27f6884b1f60e1ac174ba5181347c027",
+  "expectedSourceSha256": "f907d5d3d5d6c1b931bdcdc22021d49474c1d78566d344ea89673a2c8db7b8fe",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -1700,10 +1700,10 @@
     },
     {
       "qid": 24,
-      "field": "content/questionType/choices",
-      "before": "Did not require the preselected pair to match the drawn pair; used 서답형 marker.",
-      "after": "States that the distinct unordered preselected gold pair must match the drawn pair; both 21-outcome spaces are equiprobable and independent, silver has 19 equiprobable outcomes, and the item uses 서술형 with choices=[].",
-      "reason": "Makes the gold win probability 1/21 and comparable with silver 1/19; preserves the answer and 5 points."
+      "field": "content/solution/questionType/choices",
+      "before": "Did not require the preselected gold pair to match the draw; the silver wording also omitted a preselected number and match condition.",
+      "after": "Requires the preselected gold pair and the drawn unordered pair to match; likewise requires the preselected silver number and drawn number to match. Both spaces are equiprobable and independent, and the item uses 서술형 with choices=[].",
+      "reason": "Makes the win probabilities 1/21 and 1/19, preserving the silver-answer comparison and 5 points."
     }
   ],
   "reviewEvidence": {
