@@ -74,14 +74,15 @@
       "state": "REVIEW_COMPLETE_SOURCE_PUBLICATION_HOLDS",
       "completedQuestions": 24,
       "reviewArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/04-palma-mid-review.json",
-      "nextAction": "REMOTE_SOURCE_CHECKPOINT_THEN_COMPACT_REBIND_AND_REQUIRED_CI",
-      "fourSlot": "SOURCE_REBIND_PENDING; DESCRIPTORS_UNCHANGED",
+      "nextAction": "REQUIRED_CI_THEN_MAIN_MERGE; Q7_OFFICIAL_SHARED_PARENT_REPAIR",
+      "fourSlot": "COMPACT_IMPORTED_24_INDEPENDENT_SAMPLE_3",
       "sourceBlob": "d68a1987bcf0d6ee3f5fc1a70eef5a1f644e5e9e",
       "nativeRegistration": "HOLD_24_IDENTITY_SOURCE_FINGERPRINT",
       "sourceMetadataApplied": 23,
       "sourcePublicationHolds": [
         7
-      ]
+      ],
+      "sourceCheckpointSha": "d6576ac7f686c8ed6eb187f14a7b4eac3554f016"
     }
   ],
   "validation": {
@@ -89,7 +90,7 @@
     "uidAndOfficialTypeParents": "96_UIDS_CHECKED_FORMAL80_EXACT_COURSE77_SEMANTIC_EXACT59",
     "fourSlotIndependentSamples": "12_SAMPLES_ACCEPTED_WITH_PALMA_MID_Q15_TEXT_ONLY_LIMIT",
     "studentContentPreservation": "PASS_96",
-    "prCI": "ACTUAL_PALMA_MID_Q7_PARENT_CONFLICT; NEW_HEAD_REQUIRED",
+    "prCI": "RETRY_PENDING_AFTER_TWO_CONFIRMED_PARENT_PUBLICATION_HOLDS",
     "registration": "NATIVE_HOLD96_IDENTITY_MISMATCH; MAIN_FOURSLOT_NOT_RUN",
     "deployment": "NOT_RUN",
     "wangunSourcePreservation": "PASS_24",
@@ -117,7 +118,7 @@
     "difficultyAssigned": 95,
     "difficultyVisualHold": 1,
     "legacyLevelChanged": 0,
-    "scopedProductionConsumer": "NEW_SOURCE_REBIND_PENDING",
+    "scopedProductionConsumer": "96_ROWS_EXACT_BLOB_PENDING0_TWO_PUBLICATION_HOLDS_REBIND",
     "termPostingChecks": {
       "positiveOccurrences": 585,
       "postingSetQueries": 230
@@ -141,9 +142,10 @@
     },
     "publishedDifficultyAssigned": 94,
     "publishedDifficultyUnset": 2,
-    "difficultyAssignedBasis": "REVIEWED_PROPOSALS; publication holds and visual HOLD separately recorded"
+    "difficultyAssignedBasis": "REVIEWED_PROPOSALS; publication holds and visual HOLD separately recorded",
+    "scopedParentParity": "96_MATCHES_MISMATCHES0_ACTUAL_PRODUCTION_CODE"
   },
-  "nextAction": "REMOTE_SOURCE_CHECKPOINT_THEN_COMPACT_REBIND_AND_REQUIRED_CI",
+  "nextAction": "REQUIRED_CI_THEN_MAIN_MERGE",
   "batchPr": 1973,
   "verificationArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/verification.json",
   "publicationHolds": [

@@ -4381,9 +4381,9 @@
     "UNASSIGNED": 2
   },
   "difficultyAdjudicationStatus": "95_ASSIGNED_ITEMS_RESOLVED_Q15_VISUAL_HOLD_ONLY",
-  "finalSourceCheckpointStatus": "PENDING_REMOTE_PUBLICATION",
+  "finalSourceCheckpointStatus": "REMOTE_VERIFIED",
   "nativeRegistrationPlan": "SUPPLEMENT_PENDING_IDENTITY_SOURCE_FINGERPRINT_MISMATCH",
-  "sourceCheckpointSha": null,
+  "sourceCheckpointSha": "d6576ac7f686c8ed6eb187f14a7b4eac3554f016",
   "reviewedDifficultyDistribution": {
     "1": 8,
     "2": 13,
@@ -4464,5 +4464,49 @@
     "archiveSha256": "50d8514f48aa8ce533067674eeba1debe4d4332eb3c2d22a2c44f73f5b9a303e",
     "archiveByteLength": 84708,
     "verificationScope": "DOWNLOADED_ARCHIVE_AND_EXACT_MEMBER_BYTES"
+  },
+  "compactImport": {
+    "schemaVersion": "m1s2-exported-four-slot-import-v1",
+    "method": "Official validateData, compactItem and serialize exported functions; immutable Drive evidence referenced through committed small pointer",
+    "sourceArchiveFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+    "sourceGitBlobSha": "d68a1987bcf0d6ee3f5fc1a70eef5a1f644e5e9e",
+    "fullRawSha256": "995040be8fff752a254b525086f8acf421c6798d8ff4ac639e7fccead3d66bfc",
+    "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+    "validation": {
+      "fail": [],
+      "warn": [
+        "#9 only 4 distinct terms",
+        "#11 only 4 distinct terms",
+        "#15 only 3 distinct terms",
+        "#15 method has 1 term",
+        "#18 only 4 distinct terms",
+        "#21 only 4 distinct terms"
+      ]
+    },
+    "sampled": [
+      10,
+      15,
+      23
+    ],
+    "target": "archive/data/item-4slot/original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.4slot.json",
+    "compactSha256": "126538fd11d5dd2337fa534308d6e437ee464a65584f2a396fb1c70a9e34e361",
+    "independentReviewClaim": "THREE_SAMPLES_ONLY",
+    "authoredSourceMutation": 0
+  },
+  "fourSlotFullValidation": {
+    "fail": [],
+    "warn": [
+      "#9 only 4 distinct terms",
+      "#11 only 4 distinct terms",
+      "#15 only 3 distinct terms",
+      "#15 method has 1 term",
+      "#18 only 4 distinct terms",
+      "#21 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 24,
+      "examItems": 24,
+      "quotes": 160
+    }
   }
 }

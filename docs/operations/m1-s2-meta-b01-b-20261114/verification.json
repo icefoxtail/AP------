@@ -1,8 +1,8 @@
 {
   "schemaVersion": "m1s2-four-slot-selected-production-consumer-preflight-v1",
   "assignmentId": "M1S2-20261114-B01-B",
-  "reviewer": "GPT_ROOT_3362DD3EDC06_B_PUBLICATION_HOLD_REBIND",
-  "completedAt": "2026-11-13T23:40:03.553Z",
+  "reviewer": "GPT_ROOT_3362DD3EDC06_B_TWO_PUBLICATION_HOLDS_REBIND",
+  "completedAt": "2026-11-13T23:58:05.852Z",
   "status": "PASS_SCOPED_PREMERGE_CONSUMER",
   "scope": {
     "sourceFiles": 4,
@@ -14,7 +14,7 @@
     "semanticApprovalGranted": false,
     "fullExamMathematicalQaPerformed": false
   },
-  "repositoryHeadObserved": "bb5db20c75fbe0c04a4c3a1ea13ec1cee57b1d2c",
+  "repositoryHeadObserved": "d6576ac7f686c8ed6eb187f14a7b4eac3554f016",
   "officialApis": {
     "build": "tools/4slot/build-4slot-runtime.cjs#build",
     "verify": "tools/4slot/build-4slot-runtime.cjs#verify",
@@ -34,7 +34,7 @@
     "status": "PASS",
     "verified": 96,
     "pending": 0,
-    "indexSha256": "3b60f84400b558304ddc1310c8cd51f734997ceee309db860a8dc42c7d27b647",
+    "indexSha256": "a830244be9145d5ca41b52ac5a8d93f84bcc526a76ff357603b0550d81c12d0d",
     "sourceMutation": 0,
     "semanticApprovalMutation": 0
   },
@@ -68,21 +68,21 @@
     "canonicalOrCommonFilesWritten": false
   },
   "preservedLimitations": [
-    "Wangun mid Q14 source metadata remains historical under explicit publication HOLD; its reviewed correction is preserved at 7d91834. Four-slot descriptor verification does not approve its retained classification or difficulty.",
+    "Wangun mid Q14 and Palma mid Q7 source metadata remain historical under explicit publication HOLD; reviewed corrections remain at 7d91834 and 7e9d718e. Four-slot descriptor verification does not approve retained classifications, missing fields or difficulty.",
     "The 96 historical identity fingerprints are preserved; runtime acceptance does not repair or approve semantic registration.",
     "Palma mid Q15 remains text-descriptor-only; visual condition completeness, mathematical correctness, and native metadata HOLD remain in the evidence.",
     "Asset hashing checks actual local byte identity only, not visual correctness.",
     "Main CI, main registration, and deployment must be separately verified by the coordinator."
   ],
   "rawProof": {
-    "fileId": "1mLPsmV-hMrpIWAYscbcnuFUdqbCJAOPQ",
-    "url": "https://drive.google.com/file/d/1mLPsmV-hMrpIWAYscbcnuFUdqbCJAOPQ/view?usp=drivesdk",
+    "fileId": "1jQb1KV4JchITqf4y9nG5kxfHrxb2JyBm",
+    "url": "https://drive.google.com/file/d/1jQb1KV4JchITqf4y9nG5kxfHrxb2JyBm/view?usp=drivesdk",
     "parentId": "10RO6BaU2xS3l6WexNvHfyQGc04iQhdV8",
-    "sha256": "c504404d1976d1bdd5bd759518eb12a811d05cd17f6f699ef60b6727d552acd0",
-    "byteLength": 91130,
+    "sha256": "db74a1486ee93a4131a9a7b3c2fee5ad8ab0df636c51a5793bf49f281790dff5",
+    "byteLength": 91168,
     "mimeType": "application/json",
     "rawReadback": "VERIFIED",
-    "revision": "PUBLICATION_HOLD_REBIND_V2"
+    "revision": "TWO_PUBLICATION_HOLDS_REBIND_V3"
   },
   "examInputs": [
     {
@@ -211,11 +211,11 @@
     {
       "slug": "palma-mid",
       "sourceArchiveFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
-      "sourceBlob": "b527fb0d483650f384b89395b32804755e5fc002",
-      "sourceSha256": "5ee2b60489b261969a3ad5bfe1e15ca4fc61ece09dfb3fe47db37a183e9ce192",
-      "compactSha256": "35f0491f657f6b76364518c419f2f3b03536a9b6729fe03635bad40f815a1965",
-      "fullEvidenceSha256": "7f7c17aa01e5db5f97fb0a11bcf34760793a8e45a1b8424fcb72bb8c671f029e",
-      "fullEvidenceDeclaredSourceBlob": "b527fb0d483650f384b89395b32804755e5fc002",
+      "sourceBlob": "d68a1987bcf0d6ee3f5fc1a70eef5a1f644e5e9e",
+      "sourceSha256": "03af36a17284daa65955d5bafd133861cfa88265fe2e424fc365dcc2771fcaac",
+      "compactSha256": "126538fd11d5dd2337fa534308d6e437ee464a65584f2a396fb1c70a9e34e361",
+      "fullEvidenceSha256": "995040be8fff752a254b525086f8acf421c6798d8ff4ac639e7fccead3d66bfc",
+      "fullEvidenceDeclaredSourceBlob": "d68a1987bcf0d6ee3f5fc1a70eef5a1f644e5e9e",
       "fullEvidenceDeclaredBlobMatchesCurrent": true,
       "dictionaryVersion": "term-dict-v1.5-2026-11-04",
       "items": 24,
@@ -230,7 +230,7 @@
       },
       "provenance": {
         "branch": "review/m1-s2-meta-b01-b-20261114",
-        "commit": "f690c8b757e21a62a0c1ef1d91048ee6ad4952cf",
+        "commit": "d6576ac7f686c8ed6eb187f14a7b4eac3554f016",
         "path": "docs/operations/m1-s2-meta-b01-b-20261114/04-palma-mid-review.json"
       },
       "fullValidation": {
@@ -312,16 +312,16 @@
       {
         "key": "palma-mid",
         "sourcePath": "archive/exams/original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
-        "sourceBlob": "b527fb0d483650f384b89395b32804755e5fc002",
-        "sourceSha256": "5ee2b60489b261969a3ad5bfe1e15ca4fc61ece09dfb3fe47db37a183e9ce192",
+        "sourceBlob": "d68a1987bcf0d6ee3f5fc1a70eef5a1f644e5e9e",
+        "sourceSha256": "03af36a17284daa65955d5bafd133861cfa88265fe2e424fc365dcc2771fcaac",
         "counts": {
           "questions": 24,
-          "changedQuestions": 24,
+          "changedQuestions": 23,
           "studentPayloadPreserved": 24,
           "uidJoinValid": 24,
           "formalTypesPresent": 17,
           "exactCourseBindings": 16,
-          "sourceFieldValidationValid": 17,
+          "sourceFieldValidationValid": 16,
           "identityFingerprintMismatch": 24,
           "registrationApply": 0,
           "registrationHold": 24
@@ -339,11 +339,14 @@
     "palmaMid15": "EXPLICIT_TEXT_ONLY_VISUAL_CONDITION_COMPLETENESS_UNVERIFIED"
   },
   "previousRawProof": {
-    "fileId": "1PRC8pXic1xCUvx0MW67z8wknuvkXRoEl",
-    "url": "https://drive.google.com/file/d/1PRC8pXic1xCUvx0MW67z8wknuvkXRoEl/view?usp=drivesdk",
-    "sha256": "218676251bdd073248f90f7ec6b19f3bc8f70e6b6a89b542b0793f54b9b2c17f",
-    "byteLength": 90879,
-    "rawReadback": "VERIFIED"
+    "fileId": "1mLPsmV-hMrpIWAYscbcnuFUdqbCJAOPQ",
+    "url": "https://drive.google.com/file/d/1mLPsmV-hMrpIWAYscbcnuFUdqbCJAOPQ/view?usp=drivesdk",
+    "parentId": "10RO6BaU2xS3l6WexNvHfyQGc04iQhdV8",
+    "sha256": "c504404d1976d1bdd5bd759518eb12a811d05cd17f6f699ef60b6727d552acd0",
+    "byteLength": 91130,
+    "mimeType": "application/json",
+    "rawReadback": "VERIFIED",
+    "revision": "PUBLICATION_HOLD_REBIND_V2"
   },
   "sourcePublicationHolds": [
     {
@@ -365,6 +368,36 @@
         "expectedUnit": "RPM22-M1-L1-05"
       },
       "nextAction": "Official shared metadata/identity registration owner must resolve the parent conflict and apply the preserved Q14 correction; do not re-review the other 95 items"
+    },
+    {
+      "sourceOrdinal": 7,
+      "status": "HOLD_SHARED_PARENT_CONSUMER_CONFLICT",
+      "reviewedMeaning": "공간의 두 직선·모서리의 위치 관계; 기본 도형; reviewed difficulty bucket 2; RPM_LEAF_GAP",
+      "reason": "Actual required CI and actual scoped production-code execution both resolve an older approved solid-geometry parent while corrected source classifies basic geometry. Existing scoped registration cannot rewrite the shared parent through the unresolved identity and RPM leaf. Only this UID is isolated; Palma Q19 is measured equal and remains corrected.",
+      "failedCheck": {
+        "runId": 43528750346,
+        "jobId": 132240956658,
+        "test": "archive2-unified-units.test.js",
+        "head": "bb5db20c75fbe0c04a4c3a1ea13ec1cee57b1d2c",
+        "sameTargetSourceAt": "7e9d718e1be8d1f0271e7d243014b21f7616ece7",
+        "actualUnit": "RPM22-M1-L1-07",
+        "expectedUnit": "RPM22-M1-L1-05"
+      },
+      "actualScopedComparison": {
+        "head": "7e9d718e1be8d1f0271e7d243014b21f7616ece7",
+        "rawSha256": "da51af2cab6bfbc296d7071edd968f194310f8384db3accfe21ef0c61fe85c13",
+        "actualRecords": 96,
+        "mismatches": 1,
+        "artifactMember": "actual-runtime-parent-comparison.json",
+        "palmaQ19": "MATCH_RPM22-M1-L1-05"
+      },
+      "questionUid": "qid_v1_cd96dcd0b7b1450dd2db46caf9242c4ed05987a83196f962012ba3365ed302b8",
+      "sourceArchiveFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+      "reviewedCorrectionPreservedAt": "7e9d718e1be8d1f0271e7d243014b21f7616ece7",
+      "retainedBaselineMainSha": "573fa32804480b2d70f7536b211e240e8d64d5ed",
+      "retainedBaselineSourceBlob": "5308c75e6d0dbdb878bdfb87155414573168171e",
+      "retainedSourceMeaning": "Historical metadata retained without semantic approval",
+      "nextAction": "Official shared metadata/identity registration owner must resolve the recorded parent conflict and apply the preserved correction; reuse completed reviews"
     }
   ],
   "reviewedSemanticCounts": {
@@ -375,9 +408,36 @@
     "difficultyVisualHold": 1
   },
   "sourcePublicationCounts": {
-    "metadataChanged": 95,
-    "metadataRetainedOnPublicationHold": 1,
+    "metadataChanged": 94,
+    "metadataRetainedOnPublicationHold": 2,
     "studentPayloadPreserved": 96,
     "legacyLevelChanged": 0
+  },
+  "scopedParentParity": {
+    "status": "PASS_ACTUAL_96_SCOPED_PARENT_PARITY",
+    "inputHead": "d6576ac7f686c8ed6eb187f14a7b4eac3554f016",
+    "summary": {
+      "compared": 96,
+      "matches": 96,
+      "mismatches": []
+    },
+    "globalCiClaim": false,
+    "methods": {
+      "catalogProducer": "Exact official build-archive2-catalog.mjs body through construction of catalog; complete actual shared metadata/identity/authority reads; db.exams is the unmodified four selected real records",
+      "questionIndexProducer": "Exact official build-question-index.mjs parser/record generation/dedupe/serialization mapping; only collection scope selects four actual files; all parser and classification rules unchanged",
+      "canonicalMerge": "Official Archive2Canonical.resolveCatalog data-level API with actual produced 96-row catalog and unchanged digest-verified production runtime resources",
+      "unified": "Official Archive2UnifiedUnits.buildIndex",
+      "expected": "Official UnitPastExamsCore.classifyRecord",
+      "manifest": "Official loadInputBundle validates the existing committed manifest and all requested actual hot input hashes. No published manifest was modified or invented. The in-memory scoped API inputs have their own computed digest identity and are not described as a published full projection."
+    },
+    "rawProof": {
+      "fileId": "13BZFz-Idsr8bkAg0_FhdzhJMNYTwBko0",
+      "url": "https://drive.google.com/file/d/13BZFz-Idsr8bkAg0_FhdzhJMNYTwBko0/view?usp=drivesdk",
+      "archiveSha256": "410236bf23679aa1a832072235a3366064aa220be135881acf58a56380b67a87",
+      "archiveByteLength": 46106,
+      "member": "actual-scoped-production-parity-final.json",
+      "sha256": "abe598661b6d67a4318bf0fe0d1d9d30a3800814705bb495ed2b2e850a898e26",
+      "rawReadback": "DOWNLOADED_ARCHIVE_AND_EXACT_MEMBER_BYTES_VERIFIED"
+    }
   }
 }
