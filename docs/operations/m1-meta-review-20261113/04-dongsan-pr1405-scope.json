@@ -1,0 +1,634 @@
+{
+  "schemaVersion": "existing-exam-concurrent-pr-scope-v1",
+  "observedAt": "2026-11-13T20:18:27.281Z",
+  "repository": "icefoxtail/AP------",
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "owner": "GPT_ROOT_933015CD0A4F",
+  "scope": "Read-only concurrency and field ownership check for the fourth exam; no mathematical meaning review.",
+  "baseline": {
+    "mainSha": "bf35b7e13417b033ee167117d567a9f0262712d6",
+    "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+    "sourcePath": "archive/exams/original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+    "questionCount": 24,
+    "projectionEvidencePath": ".tmp/m1-meta-review/04-dongsan-baseline-projections.json",
+    "projectionEvidenceSha256": "fe99cd30ebb7fce04820ef391c300749990d9e1219bf5ab95fe5a0d54278aa41",
+    "canonicalIdentity": {
+      "path": "archive/data/question_identity_map.json",
+      "blobSha1": "89ccc6a71aaf23fd0ace1c8033574740c23d0a6a",
+      "sha256": "d38b896a127c4cfd9679b03668a0668c31e5107a54403591dda3145ab20ebffe",
+      "actualWorkingFileHashMatches": true,
+      "actualGitBlobMatches": true,
+      "recordsRead": 28890
+    }
+  },
+  "pullRequest": {
+    "observedAt": "2026-11-13T20:18:27.281Z",
+    "number": 1405,
+    "head": "889ca5c4904be137d7404ed459316ce8bfa80496",
+    "base": "5a5fc87f21a78d014956d1f959f9d60ab08d7763",
+    "state": "open",
+    "draft": false,
+    "merged": false,
+    "mergeable": false,
+    "mergeableState": "dirty",
+    "updatedAt": "2026-11-05T12:47:37Z",
+    "url": "https://github.com/icefoxtail/AP------/pull/1405",
+    "title": "feat(4slot): 작성 브랜치 전수 358시험지·8129문항 main 출고",
+    "changedFiles": 359,
+    "dataFiles": 353,
+    "middle1Sidecars": 14,
+    "sharedCodeFiles": [
+      "tests/item-4slot-data.test.cjs",
+      "tests/item-4slot-import-compat.test.cjs",
+      "tests/item-4slot-runtime.test.cjs",
+      "tools/4slot/build-4slot-runtime.cjs",
+      "tools/4slot/exam-items.cjs",
+      "tools/4slot/import-4slot.cjs"
+    ],
+    "role": "Standing full 4slot compact delivery plus importer/runtime compatibility changes, not the blank unit/PT/TPL/RPM metadata-fill task.",
+    "roleBasis": "Actual changed-path list, compact schema and field inspection, current PR body and state. No completion or quality inference from title or old CI."
+  },
+  "changedPathEvidence": {
+    "tool": "github_list_pr_changed_filenames",
+    "pagination": "All pages returned by the dedicated tool",
+    "count": 359,
+    "manifestSha256": "4c3a1ce3056be15b9b687be3c3917d7c8a4404d5af2c43fd05544b6cd2a83810",
+    "manifestEncoding": "UTF-8 filenames in returned order, joined with newline and final newline",
+    "targetSourceJsChanged": false,
+    "targetSidecarChanged": true,
+    "directSourceJsChanges": [],
+    "directNativeCanonicalMetadataIdentityChanges": [],
+    "targetPatchFirstHunk": "@@ -0,0 +1,34 @@",
+    "patchMeaning": "The sidecar was added against this PR base; current main already has its own sidecar, so current-main comparison is separately recorded."
+  },
+  "uidAssociation": {
+    "compactHasEmbeddedQuestionUid": false,
+    "method": "Use each compact sourceArchiveFile and display ordinal, verify the current source ID/number position with the existing sourceNumber helper, then join the actual main canonical identity by sourceArchiveFile + sourceOrdinal. Source values beyond IDs/numbers were neither output nor semantically reviewed.",
+    "sidecarsRead": 14,
+    "currentSourceIdentityPositionReads": 14,
+    "compactItems": 329,
+    "currentSourceQuestions": 329,
+    "uniquePerSourceCanonicalResolutions": 329,
+    "unresolved": 0,
+    "ambiguous": 0,
+    "allDisplayNumbersMatchSourceOrdinals": true,
+    "targetUidCount": 24,
+    "targetUidOverlap": 24,
+    "overlappingSidecarCount": 1,
+    "other13SidecarTargetUidOverlap": 0,
+    "targetUidRows": [
+      {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_d7b96738e9d6598b1b4905d6ccffd342efa81007ff672f4edddc440021608072"
+      },
+      {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_06868fd215d11b2d3508f0a0921c36298710ad1e73484bccbd627df856d12be3"
+      },
+      {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_cc10b4d08c3aa07a1eac39b56c2e9be5ec804ad7ee63be7aae8de63b7b707595"
+      },
+      {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_bff9adbdf8d75282f6a616ec39c2a5b771cc5f3abe3c7d4618067384f92b4cad"
+      },
+      {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_ed1de40de7e0c8d94aaad317c2a528e2cd235a8712070d20e776d66db7225525"
+      },
+      {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_30d4bbedcab88624031547aecaab21f9eb7d53f0a1fd19dbd3bf4d4b6b167897"
+      },
+      {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_a1f47262e984cf2360d5267f3236c4e4437206454a81fa2588c2832ea90e22ec"
+      },
+      {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_82b306a8e72f0b42f9a235f304a85cbea85ccdd4d522b0ba8f34872e5e3c82f4"
+      },
+      {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_e503bc22c72fb8e6da81af140c795b91d65306212c2cbbc797a1f0c1ff4ccf70"
+      },
+      {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_51128c898d31ea8c392a5381789d670bc0a1a7c452182bfb24a4adda563d3449"
+      },
+      {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_13e2eac8fb571a990e58082dd8da83a4e8e903655c974e591bcd17cc6a822522"
+      },
+      {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_d94fa7d473fa39559b5a1313bb6169d669806c4ff8226d1adff023029cbc88eb"
+      },
+      {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_63b7882e55688be203b1ad8541fae9d3c18e60e6678a855ea676afdeab51497b"
+      },
+      {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_9670b98fc8cec71dd9d7d31514c4870c73ca1584b14b331ee75fb5560eebf8ac"
+      },
+      {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_f30518505fe44d01d57555fd9096bb0f742b25b9bceb13f6666031e8bbdf06fe"
+      },
+      {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_9bb9b64b29ed2301706ca6e221d28002de41dbb6616cf151ac5065ba9e969d77"
+      },
+      {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_a522a6981ee48b611c9394519acfe249450312545fcf0669ba4928e79b88ccc1"
+      },
+      {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_530b6b53eff5428ff17f5f160cf18275bd5f245b9dcb80cdd46b610f0e48ad2b"
+      },
+      {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_1a11efeba9bb9038e1dd00cd7761912209c47e790038b4c373ecbee99a46297f"
+      },
+      {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_105e1a9e66ef8eb61ae37b8ad256d82b117ebeb6d50230a04f353cbc3d27af3e"
+      },
+      {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_9a70f8dfb14b04696845323d046dedded271684fd020f1c73fd3d7f3a800dffc"
+      },
+      {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e"
+      },
+      {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_a5aa7c134853c9e34bce34ee1690a96d8c74b4f6967d52bc5c87a674ab0f89df"
+      },
+      {
+        "sourceOrdinal": 24,
+        "questionUid": "qid_v1_0a7d7b3d981e3dfcb89aed3e22c4c0ef5440509f4657dc4a15ffdd0776751a93"
+      }
+    ]
+  },
+  "middle1Sidecars": [
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.4slot.json",
+      "prBlobSha1": "a2284e51d82e387c555a6a21ac789e89291b0a84",
+      "prRawSha256": "fd4fcddb94233c73b24f8c73adb5020bcb8eea379c22c4262917e4f8a395a99e",
+      "sourceArchiveFile": "original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.js",
+      "prSourceBlobSha1": "74127e930253a5f29b69e05acbe3cc0c70dbe59b",
+      "currentSourceBlobSha1": "74127e930253a5f29b69e05acbe3cc0c70dbe59b",
+      "historicalSourceBlobMatchesCurrent": true,
+      "compactItemCount": 24,
+      "currentSourceQuestionCount": 24,
+      "canonicalUidResolvedCount": 24,
+      "canonicalUidSetSha256": "7e24368c76803258ca36bc7ef55b814bae6489cbe59f983e4dbfa8fd0d419630",
+      "unresolvedOrdinals": [],
+      "ambiguousOrdinals": [],
+      "targetUidOverlapCount": 0,
+      "currentSidecarPresent": true,
+      "currentSidecarBlobSha1": "4654d1ed2a42aba85198ece4883709bda378238c",
+      "currentSidecarRawSha256": "60ec3924a629865499b7507e0d2014ace59b569e076b49bf316f92b0d175abec",
+      "itemValueChangesAgainstCurrentMain": 0,
+      "changedTopLevelFieldsAgainstCurrentMain": [
+        "evidence",
+        "reviewedBy"
+      ]
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/23_연향중_2학기_기말_중1_기출.4slot.json",
+      "prBlobSha1": "723d54175c7ae802fb02a5cee6050ecbabdcd890",
+      "prRawSha256": "5cb62e665a2f1a9b1bff4e0fb16aad3ee11849db5710c24a3b214d2afac32c89",
+      "sourceArchiveFile": "original/middle/m1/2final/23_연향중_2학기_기말_중1_기출.js",
+      "prSourceBlobSha1": "8bcd8d8e82ca76c61cca011030f9679b26c5e17e",
+      "currentSourceBlobSha1": "8bcd8d8e82ca76c61cca011030f9679b26c5e17e",
+      "historicalSourceBlobMatchesCurrent": true,
+      "compactItemCount": 24,
+      "currentSourceQuestionCount": 24,
+      "canonicalUidResolvedCount": 24,
+      "canonicalUidSetSha256": "e9a0a0e833f3148ff68a0bc6cc6b1480c90100116a1df1dfa6ab4c831a586738",
+      "unresolvedOrdinals": [],
+      "ambiguousOrdinals": [],
+      "targetUidOverlapCount": 0,
+      "currentSidecarPresent": true,
+      "currentSidecarBlobSha1": "808bfbe30b7b8dd3588f5737ef73a88f546a4511",
+      "currentSidecarRawSha256": "eb9fe47e74cd8eb582de20215742e53ddd293a690567e972002b8424e56c5ca7",
+      "itemValueChangesAgainstCurrentMain": 0,
+      "changedTopLevelFieldsAgainstCurrentMain": [
+        "evidence",
+        "reviewedBy"
+      ]
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/23_왕운중_2학기_기말_중1_기출.4slot.json",
+      "prBlobSha1": "3f1127a672dba338d729e2565b4b75d6ad401790",
+      "prRawSha256": "fabda5189ab1c47045d48d47839f406d9111ae5305be9a3cb29e3cf73efb612a",
+      "sourceArchiveFile": "original/middle/m1/2final/23_왕운중_2학기_기말_중1_기출.js",
+      "prSourceBlobSha1": "777901b280a7c2943450a10cf02f0c00db18f1bc",
+      "currentSourceBlobSha1": "777901b280a7c2943450a10cf02f0c00db18f1bc",
+      "historicalSourceBlobMatchesCurrent": true,
+      "compactItemCount": 24,
+      "currentSourceQuestionCount": 24,
+      "canonicalUidResolvedCount": 24,
+      "canonicalUidSetSha256": "d6d289a3c7886e640f39c4399c0c5c6a89399068a3620700e33f224655916686",
+      "unresolvedOrdinals": [],
+      "ambiguousOrdinals": [],
+      "targetUidOverlapCount": 0,
+      "currentSidecarPresent": true,
+      "currentSidecarBlobSha1": "a8aa21de3ef87d256cbc6073f4a5eb3f79a65ff2",
+      "currentSidecarRawSha256": "7d2310c5395370d64a571c158a6f3a966f59e13da87d209946f968068ff2d6ac",
+      "itemValueChangesAgainstCurrentMain": 0,
+      "changedTopLevelFieldsAgainstCurrentMain": [
+        "evidence",
+        "reviewedBy"
+      ]
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/24_연향중_2학기_기말_중1_기출.4slot.json",
+      "prBlobSha1": "278076812895885adc89b26bc1df39c4331ec4ea",
+      "prRawSha256": "e3458ea99b3dc965d2dfa30f83a2053c3d2ce3b618650bfb7e708615b1a6c4a9",
+      "sourceArchiveFile": "original/middle/m1/2final/24_연향중_2학기_기말_중1_기출.js",
+      "prSourceBlobSha1": "a4c58a191317fe28ceee62858a0681f86397c1b8",
+      "currentSourceBlobSha1": "a4c58a191317fe28ceee62858a0681f86397c1b8",
+      "historicalSourceBlobMatchesCurrent": true,
+      "compactItemCount": 23,
+      "currentSourceQuestionCount": 23,
+      "canonicalUidResolvedCount": 23,
+      "canonicalUidSetSha256": "d3a279544dd248d67dba2595a6d35cc01a49c73fafe623fcf80ea19d2e280e85",
+      "unresolvedOrdinals": [],
+      "ambiguousOrdinals": [],
+      "targetUidOverlapCount": 0,
+      "currentSidecarPresent": true,
+      "currentSidecarBlobSha1": "b3cd72ba14ea1d734e177d9dfcaf29f501e7c394",
+      "currentSidecarRawSha256": "daa844bd004d953428061c8be9d3fbe43fcb9047a0b2014f06d4c5e626791743",
+      "itemValueChangesAgainstCurrentMain": 0,
+      "changedTopLevelFieldsAgainstCurrentMain": [
+        "evidence",
+        "reviewedBy"
+      ]
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.4slot.json",
+      "prBlobSha1": "c4d6ffa0a7dd5ea061b59bbba45f740c8731864e",
+      "prRawSha256": "06dd14ae304e9e63742d86bcc502911c14caf7ab657e4b18d855c69afc6a8439",
+      "sourceArchiveFile": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+      "prSourceBlobSha1": "bfd63aefaa43be41f8665b59d0ca4c9d63d6d61b",
+      "currentSourceBlobSha1": "4c672d14973ebf4a5364ebbe33fdce6ce6fbf82f",
+      "historicalSourceBlobMatchesCurrent": false,
+      "compactItemCount": 24,
+      "currentSourceQuestionCount": 24,
+      "canonicalUidResolvedCount": 24,
+      "canonicalUidSetSha256": "851517a2a1327aca9c9eb89ccdac363af239191eb74813bedadd98cd8902467e",
+      "unresolvedOrdinals": [],
+      "ambiguousOrdinals": [],
+      "targetUidOverlapCount": 0,
+      "currentSidecarPresent": true,
+      "currentSidecarBlobSha1": "03087b8baab661b969b5ee88626ec8306f3b8d01",
+      "currentSidecarRawSha256": "f37c39b8ee39687eb3220d62fb4bad5dfca25633b134630b6e46c0067123f738",
+      "itemValueChangesAgainstCurrentMain": 0,
+      "changedTopLevelFieldsAgainstCurrentMain": [
+        "evidence",
+        "reviewedBy"
+      ]
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/24_율촌중_2학기_기말_중1_기출.4slot.json",
+      "prBlobSha1": "ad7fd120553b948e381d1c764731bf26f574c712",
+      "prRawSha256": "f75df1f6b156878e7b9d28f04a1e4d491dc7fd77ada6a886b387cd9ad75c6b9a",
+      "sourceArchiveFile": "original/middle/m1/2final/24_율촌중_2학기_기말_중1_기출.js",
+      "prSourceBlobSha1": "9682679788ceae3afb0549785bec3b85ee98f09e",
+      "currentSourceBlobSha1": "9682679788ceae3afb0549785bec3b85ee98f09e",
+      "historicalSourceBlobMatchesCurrent": true,
+      "compactItemCount": 22,
+      "currentSourceQuestionCount": 22,
+      "canonicalUidResolvedCount": 22,
+      "canonicalUidSetSha256": "eaf5ce7b3fcf4984c60863951dbd4d31c1547f30170118946de190fb4c4e5481",
+      "unresolvedOrdinals": [],
+      "ambiguousOrdinals": [],
+      "targetUidOverlapCount": 0,
+      "currentSidecarPresent": true,
+      "currentSidecarBlobSha1": "219ed8aaa3ff81554799696c5a25a341c5b502d7",
+      "currentSidecarRawSha256": "261e79be9df3a15a921d76763586809d5ce75bc9c96e4aa1073d6a8df297fd85",
+      "itemValueChangesAgainstCurrentMain": 0,
+      "changedTopLevelFieldsAgainstCurrentMain": [
+        "evidence",
+        "reviewedBy"
+      ]
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.4slot.json",
+      "prBlobSha1": "e926439447d8c95496e7189be59fae059b9ecf09",
+      "prRawSha256": "f00fece5c4625e7bf831f188b96eb20fd24bb9727f60802e4cbd5139eeadda84",
+      "sourceArchiveFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+      "prSourceBlobSha1": "09af4de044d1d2c1dac7b2ae3a48b10223aff144",
+      "currentSourceBlobSha1": "09af4de044d1d2c1dac7b2ae3a48b10223aff144",
+      "historicalSourceBlobMatchesCurrent": true,
+      "compactItemCount": 24,
+      "currentSourceQuestionCount": 24,
+      "canonicalUidResolvedCount": 24,
+      "canonicalUidSetSha256": "39bcbddb96b84199f750883185195187e397b27cb7f4b19c9cebb8b43658f051",
+      "unresolvedOrdinals": [],
+      "ambiguousOrdinals": [],
+      "targetUidOverlapCount": 0,
+      "currentSidecarPresent": true,
+      "currentSidecarBlobSha1": "c15abcb83fdb3af052eb029406f2b2270d8f63b5",
+      "currentSidecarRawSha256": "b9a40250e294aacfdc7352e824b3ec63ed84bb20b8fc5890ed03c03b58bad93a",
+      "itemValueChangesAgainstCurrentMain": 0,
+      "changedTopLevelFieldsAgainstCurrentMain": [
+        "evidence",
+        "reviewedBy"
+      ]
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.4slot.json",
+      "prBlobSha1": "2454cb360a2a7a3eaca5cc77cb659ca6ffdf02d4",
+      "prRawSha256": "5829bbd82870753dfef465c2a582ece640ab6c2dbdcbc65ab1b4940b53924660",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "prSourceBlobSha1": "c75dc3e1ce47c0ec85e51a63b1a1e16ab479385f",
+      "currentSourceBlobSha1": "c75dc3e1ce47c0ec85e51a63b1a1e16ab479385f",
+      "historicalSourceBlobMatchesCurrent": true,
+      "compactItemCount": 24,
+      "currentSourceQuestionCount": 24,
+      "canonicalUidResolvedCount": 24,
+      "canonicalUidSetSha256": "615cd15be8e91409b01d108a1c59bec3feb5f5b4240ad9df0cedd5023997e15f",
+      "unresolvedOrdinals": [],
+      "ambiguousOrdinals": [],
+      "targetUidOverlapCount": 24,
+      "currentSidecarPresent": true,
+      "currentSidecarBlobSha1": "feac4e023f2b8b3d3840c38eb3ddd8d8acd23e41",
+      "currentSidecarRawSha256": "bb3c4f319aa2a6cb44b71824d52bee748e895bd5689edc8e9950dd8e3d6008ce",
+      "itemValueChangesAgainstCurrentMain": 0,
+      "changedTopLevelFieldsAgainstCurrentMain": [
+        "evidence",
+        "reviewedBy"
+      ]
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.4slot.json",
+      "prBlobSha1": "7e807d3cfe3b2e1f607ed39b6876cf03d2a6f0b0",
+      "prRawSha256": "642a8c9542b55eecd0718b663760f4708cd212b53f39d3c6e11fc7087609c513",
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "prSourceBlobSha1": "501dc6bb8cfea232480911c9489da9587365b6f2",
+      "currentSourceBlobSha1": "393788084a0b7a5efcea86d9da70fab014e9709d",
+      "historicalSourceBlobMatchesCurrent": false,
+      "compactItemCount": 22,
+      "currentSourceQuestionCount": 22,
+      "canonicalUidResolvedCount": 22,
+      "canonicalUidSetSha256": "47d07b6b5e959d5f34a0e15d5df71e960658c4e986e38eaec31f032b61c3e72d",
+      "unresolvedOrdinals": [],
+      "ambiguousOrdinals": [],
+      "targetUidOverlapCount": 0,
+      "currentSidecarPresent": true,
+      "currentSidecarBlobSha1": "5b09e7280c6002a21fe24ae8a9bbfb3facc1396b",
+      "currentSidecarRawSha256": "1429e6f4b2d150c0810026793b6b9c2f750db41d562dd5eabc68ba1c8768b0dd",
+      "itemValueChangesAgainstCurrentMain": 0,
+      "changedTopLevelFieldsAgainstCurrentMain": [
+        "evidence",
+        "reviewedBy"
+      ]
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.4slot.json",
+      "prBlobSha1": "75e32eecca06d2dcd9d003db8f905ea43f305c6d",
+      "prRawSha256": "cdd52c6234a528f0031e7305162ee451902a617c73b9fc01c1d5ad56e92c545b",
+      "sourceArchiveFile": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js",
+      "prSourceBlobSha1": "a1fc47ab7a44753049c7df13031f0ccdcbdb5110",
+      "currentSourceBlobSha1": "04758a6084ca3c561e3f0463ff2e93a75eac5b30",
+      "historicalSourceBlobMatchesCurrent": false,
+      "compactItemCount": 23,
+      "currentSourceQuestionCount": 23,
+      "canonicalUidResolvedCount": 23,
+      "canonicalUidSetSha256": "899e8a58be75e381befc28c9e9216d3b6a3f4a455f3a3d49ea8f452070497ee6",
+      "unresolvedOrdinals": [],
+      "ambiguousOrdinals": [],
+      "targetUidOverlapCount": 0,
+      "currentSidecarPresent": true,
+      "currentSidecarBlobSha1": "fb0627df9c5ec9a937ba56246d467f0eac270d2f",
+      "currentSidecarRawSha256": "becf035dd5eb00e6ddf1c80c817085c8eeeb7e0ac5898bccb4fa6d25b9974af9",
+      "itemValueChangesAgainstCurrentMain": 0,
+      "changedTopLevelFieldsAgainstCurrentMain": [
+        "evidence",
+        "reviewedBy"
+      ]
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.4slot.json",
+      "prBlobSha1": "0af1dc8b6407cfec75901c67816fb03557d0477f",
+      "prRawSha256": "f194e69c22193cb16f09fc6a1770bd8d46c8451aca8e736a4b8056d64ef483b3",
+      "sourceArchiveFile": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js",
+      "prSourceBlobSha1": "a053171ed56b07af3795ff5097983e84bd441ccb",
+      "currentSourceBlobSha1": "a053171ed56b07af3795ff5097983e84bd441ccb",
+      "historicalSourceBlobMatchesCurrent": true,
+      "compactItemCount": 24,
+      "currentSourceQuestionCount": 24,
+      "canonicalUidResolvedCount": 24,
+      "canonicalUidSetSha256": "7b80b82c6841bb3ba7e922483db601cff5fe2d50157a977336e6afc3aceccd15",
+      "unresolvedOrdinals": [],
+      "ambiguousOrdinals": [],
+      "targetUidOverlapCount": 0,
+      "currentSidecarPresent": true,
+      "currentSidecarBlobSha1": "293884d67548869da700baf39f47ab17c68a752d",
+      "currentSidecarRawSha256": "02a72ab12af609f1b8c6fdc1d818f4e8df855efea4eb35ef882285f0f869ab6d",
+      "itemValueChangesAgainstCurrentMain": 0,
+      "changedTopLevelFieldsAgainstCurrentMain": [
+        "evidence",
+        "reviewedBy"
+      ]
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.4slot.json",
+      "prBlobSha1": "f2388612ecd14f5117b83caf682ff417fb918cf1",
+      "prRawSha256": "12888aff02c5cba06d94aa8a4b7217e0265bbb19a8a24f965f57897e989079a6",
+      "sourceArchiveFile": "original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.js",
+      "prSourceBlobSha1": "5be76d727319b1f0f2f68872822f5fb8ee253b52",
+      "currentSourceBlobSha1": "5be76d727319b1f0f2f68872822f5fb8ee253b52",
+      "historicalSourceBlobMatchesCurrent": true,
+      "compactItemCount": 24,
+      "currentSourceQuestionCount": 24,
+      "canonicalUidResolvedCount": 24,
+      "canonicalUidSetSha256": "692dea26f7a7a684afae4f992c230b48b3ee81fffc19c6dfe5cd2f9eb14164a7",
+      "unresolvedOrdinals": [],
+      "ambiguousOrdinals": [],
+      "targetUidOverlapCount": 0,
+      "currentSidecarPresent": true,
+      "currentSidecarBlobSha1": "873875e24bf56fa0efa3c963bd3b3a1ee47261d8",
+      "currentSidecarRawSha256": "1d81f7f6bd655da270fd0f71b064b1b94adf231875a11f91b330257bcb6e7043",
+      "itemValueChangesAgainstCurrentMain": 0,
+      "changedTopLevelFieldsAgainstCurrentMain": [
+        "evidence",
+        "reviewedBy"
+      ]
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.4slot.json",
+      "prBlobSha1": "998fc0b02e707eb7c63375a5ff7f8dd4526e115a",
+      "prRawSha256": "47822d1573194de7a8c61b2a871254104beac799bdefc6864c3ca6997a4ce4c5",
+      "sourceArchiveFile": "original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js",
+      "prSourceBlobSha1": "43abfd284dbe939daa5c6da2d21fcd209f14140b",
+      "currentSourceBlobSha1": "8def92c8ed887507da4fa027dbde2681dc643f93",
+      "historicalSourceBlobMatchesCurrent": false,
+      "compactItemCount": 24,
+      "currentSourceQuestionCount": 24,
+      "canonicalUidResolvedCount": 24,
+      "canonicalUidSetSha256": "0dd6413c2956954ef625e00ab35d8eafe60dbf418801f0c2a567cf68012a27b0",
+      "unresolvedOrdinals": [],
+      "ambiguousOrdinals": [],
+      "targetUidOverlapCount": 0,
+      "currentSidecarPresent": true,
+      "currentSidecarBlobSha1": "e0bce4db08898ff3059e3a147be57863b40cbdf0",
+      "currentSidecarRawSha256": "008eb6ac99550e2951a24d7147ed00959df0fbc3769cdce7bd28d0f63e113bd0",
+      "itemValueChangesAgainstCurrentMain": 0,
+      "changedTopLevelFieldsAgainstCurrentMain": [
+        "evidence",
+        "reviewedBy"
+      ]
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.4slot.json",
+      "prBlobSha1": "e3aa249f34b7333672aec4796cc91d5e73ae965f",
+      "prRawSha256": "61ecca904ddc72c1b418719ac85251d849a79afccda8f9c911ac3956d37b0cd4",
+      "sourceArchiveFile": "original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+      "prSourceBlobSha1": "33bf3967f7f94fc2dd638602cf93e302c61744e5",
+      "currentSourceBlobSha1": "33bf3967f7f94fc2dd638602cf93e302c61744e5",
+      "historicalSourceBlobMatchesCurrent": true,
+      "compactItemCount": 23,
+      "currentSourceQuestionCount": 23,
+      "canonicalUidResolvedCount": 23,
+      "canonicalUidSetSha256": "3b7749ac71dc09e4347dbb8c6a778f4190600020df4687f1e658d14921816cb7",
+      "unresolvedOrdinals": [],
+      "ambiguousOrdinals": [],
+      "targetUidOverlapCount": 0,
+      "currentSidecarPresent": true,
+      "currentSidecarBlobSha1": "c6c024804eeae4fab501420d7c4b71541452006e",
+      "currentSidecarRawSha256": "d3d63b3651c14f4f0e39876251e14cad62040cd7018fac22f14fa65d1e0dd583",
+      "itemValueChangesAgainstCurrentMain": 0,
+      "changedTopLevelFieldsAgainstCurrentMain": [
+        "evidence",
+        "reviewedBy"
+      ]
+    }
+  ],
+  "targetFields": {
+    "sidecarPath": "archive/data/item-4slot/original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.4slot.json",
+    "prAddedHeaderFields": [
+      "schemaVersion",
+      "sourceArchiveFile",
+      "sourceGitBlobSha",
+      "dictionaryVersion",
+      "evidence",
+      "reviewedBy",
+      "items"
+    ],
+    "prAddedItemFields": [
+      "ordinal",
+      "format",
+      "given",
+      "goal",
+      "method",
+      "condition",
+      "candidates"
+    ],
+    "directOverlapWithNativeClassificationFields": [],
+    "currentMainSidecar": {
+      "blobSha1": "feac4e023f2b8b3d3840c38eb3ddd8d8acd23e41",
+      "rawSha256": "bb3c4f319aa2a6cb44b71824d52bee748e895bd5689edc8e9950dd8e3d6008ce",
+      "sourceGitBlobSha": "c75dc3e1ce47c0ec85e51a63b1a1e16ab479385f",
+      "sourceHeaderMatchesCurrent": true,
+      "items": 24
+    },
+    "prHeadSidecar": {
+      "blobSha1": "2454cb360a2a7a3eaca5cc77cb659ca6ffdf02d4",
+      "rawSha256": "5829bbd82870753dfef465c2a582ece640ab6c2dbdcbc65ab1b4940b53924660",
+      "sourceGitBlobSha": "c75dc3e1ce47c0ec85e51a63b1a1e16ab479385f"
+    },
+    "currentMainVersusPrItemValuesEqual": true,
+    "currentMainVersusPrChangedTopLevelFields": [
+      "evidence",
+      "reviewedBy"
+    ],
+    "currentMainVersusPrChangedFieldPaths": [
+      "evidence.authorSnapshot",
+      "evidence.commit",
+      "evidence.importDelta",
+      "evidence.originalSha256",
+      "evidence.reconciliationRef",
+      "evidence.reconciliationSha256",
+      "reviewedBy.independentFullExamReview",
+      "reviewedBy.independentFullReviewClaim",
+      "reviewedBy.originalAuthor",
+      "reviewedBy.sampled.length",
+      "reviewedBy.scope"
+    ],
+    "currentMainVersusPrItemValueChangedQuestions": 0
+  },
+  "currentMainRelationship": {
+    "all14SidecarsAlreadyPresent": true,
+    "all329ItemValuesMatchPrHead": true,
+    "all14OnlyEvidenceOrReviewedByObjectDifferences": true,
+    "olderPrSourceBlobsDifferFromCurrentForOtherExams": [
+      "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+      "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js",
+      "original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js"
+    ],
+    "olderPrSourceBlobDifferenceForDongsan": false,
+    "interpretation": "The same 24 questions are represented in a separate 4slot layer already present on main. Preserve that layer and its current provenance; do not replay the old proposal or treat it as an active blank-classification fill."
+  },
+  "currentBuilderBoundary": {
+    "path": "tools/4slot/build-4slot-runtime.cjs",
+    "mainBlobSha1": "8625b4ad29c9d9697d97e5cba0615935755252f8",
+    "rawSha256": "15424d571e28f86a9f741e10f8ed64341a22b0ed965a39c590a4ebb2379190cc",
+    "observedBehavior": "The current builder records sourceGitBlobSha/currentSourceBlobSha separately. When the blob changes, it compares protected student payload against the historical source or prior baseline; if unchanged, it can retain registration using UNCHANGED_STUDENT_PAYLOAD. A metadata-only source edit does not by itself authorize rewriting compact slots or provenance.",
+    "implicationForThisReview": "Keep existing 4slot sidecar values unchanged. After source metadata changes, include only the affected source/identity/payload and its 24 4slot consumer rows in the direct-impact check when the official pipeline regenerates them.",
+    "scope": "Read-only current-code inspection; no 4slot validation, registration or tests executed."
+  },
+  "reusedEvidence": [
+    {
+      "path": "docs/operations/m1-meta-review-20261113/03-palma-concurrent-work-check.json",
+      "sha256": "01bf273eff7f96a47ad3ad93a150927236482fb1e2ec9e1cc214e416880ac349",
+      "reuse": "Same exact PR head and all 14 header blobs verified; the previous Palma no-overlap conclusion is not reused for Dongsan."
+    }
+  ],
+  "evidenceReferences": [
+    {
+      "path": ".tmp/m1-meta-review/04-dongsan-pr1405-uid-join.json",
+      "sha256": "df215156bd22edc3288183c9a64d6ac323a40001a5d5945211fc8d7109b99a06"
+    },
+    {
+      "path": ".tmp/m1-meta-review/04-dongsan-pr1405-source-identity-positions.json",
+      "sha256": "be8f916b99ee2932053587987d3f15ee99d0694998d738cb1f7c1c69c0b8f5c9"
+    },
+    {
+      "path": ".tmp/m1-meta-review/04-dongsan-pr1405-current-delta.json",
+      "sha256": "e02640eb04d905a172724e32ad4a987b6fa20a19b8fbc5136c423820bd35d2f7"
+    },
+    {
+      "path": ".tmp/m1-meta-review/04-dongsan-pr1405-final-observation.json",
+      "sha256": "351b5386977d120fb067ef84853dca73a062f9952a5c621826720a7804d9208e"
+    }
+  ],
+  "conclusion": {
+    "targetQuestionOverlap": 24,
+    "directNativeMetadataFieldOverlap": 0,
+    "currentFourSlotItemValueDelta": 0,
+    "scopeDisposition": "CONTINUE_SCOPED_NATIVE_METADATA_REVIEW_PRESERVE_CURRENT_FOUR_SLOT_DATA",
+    "notBlankMetadataFillWork": true,
+    "otherPrWriteOrJoin": false,
+    "nextAction": "Root may start the Dongsan24 meaning review within native/RPM metadata scope; retain current 4slot sidecar and verify affected consumers after the authorized candidate changes."
+  },
+  "boundaries": {
+    "noGitIndexMutation": true,
+    "noProductionOrTrackedWrites": true,
+    "noRemoteWritesMergeReviewOrDispatch": true,
+    "noTestsOrR1R2R3Run": true,
+    "noMathematicalMeaningReview": true,
+    "containsQuestionAnswerOrSolutionText": false,
+    "noOtherTaskJoin": true,
+    "noGlobalPrCompatibilityPassClaim": true
+  }
+}

@@ -13,9 +13,9 @@
   },
   "order": "year DESC, semester DESC, final before midterm, school Korean alphabetical",
   "completedExams": 3,
-  "reviewedQuestions": 71,
+  "reviewedQuestions": 95,
   "currentOrder": 4,
-  "nextAction": "Refresh Notion route, latest Git main and ongoing owner/PR UID scopes, then read every question and figure of exam4 before any metadata edit.",
+  "nextAction": "Implement and verify narrow multi-source preservation-only binding-course v2 for shared binding154; close its actual main receipt first. Then DongSan candidate/registration/PR/main; do not advance to exam5.",
   "exams": [
     {
       "order": 1,
@@ -883,9 +883,19 @@
       "count": 24,
       "sourceBlob": "c75dc3e1ce47c0ec85e51a63b1a1e16ab479385f",
       "sourceSha256": "357bfa1d8b326e228179624bf4943ec151a53362e23b00d2dcaac717a5334029",
-      "status": "PENDING",
+      "status": "SEMANTIC_READ_COMPLETE_NOT_OPERATIONALLY_CLOSED",
       "checklist": "[ ]",
-      "operationallyClosed": false
+      "operationallyClosed": false,
+      "metadataReviewed": true,
+      "reviewedQuestions": 24,
+      "viewedFigures": 15,
+      "semanticEvidence": {
+        "path": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json",
+        "sha256": "60526e5edf2ab259fbed1a911ed065bb0fcef0840178757eb694ca6dc0d0995c"
+      },
+      "rpmDebtOrdinals": [
+        17
+      ]
     },
     {
       "order": 5,
@@ -1463,7 +1473,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "PALMA24_OPERATIONALLY_CLOSED_NEXT_EXAM4_PENDING",
+  "state": "DONGSAN24_SEMANTIC_READ_COMPLETE_SHARED_BINDING_DEPENDENCY",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -1531,9 +1541,9 @@
   ],
   "activeMainTreeStatus": "ACTUAL_REGISTERED_REMOTE_MAIN_VERIFIED",
   "checkpointPublication": {
-    "lastVerifiedRemoteSha": "9cb4da0e188c6d86df57f7d481792de256bf5e6f",
-    "statusAtWriting": "PALMA_OPERATIONAL_CLOSEOUT_AWAIT_REMOTE_PUBLICATION",
-    "selfCommitLookup": "Exact published head/tree is verified from the own remote branch and next immutable AWCR revision."
+    "lastVerifiedRemoteSha": "7a00f23bf95c64f43993c57ce13d7f74c709b288",
+    "statusAtWriting": "DONGSAN_SEMANTIC_CHECKPOINT_AWAIT_REMOTE_PUBLICATION",
+    "selfCommitLookup": "Exact published head/tree is verified from own branch and next immutable AWCR revision."
   },
   "candidateConsumerPreflightPolicy": {
     "scope": "EACH_REVIEWED_EXAM_EXACT_CANDIDATE",
@@ -1544,11 +1554,11 @@
     "mainRegistrationStillRequired": true
   },
   "awcrCheckpoint": {
-    "latestVerifiedRevision": 25,
-    "fileId": "1TkwXt4gNdT8OOoZkkm_0Xkjnh7Clhl_V",
-    "rawSha256": "2ee49e31a74b94a0a59009e92decba963902950f879a2faa09fcef58cef47d2d",
-    "nextRevision": 26,
-    "nextRevisionPurpose": "Record verified Palma main closeout, published branch checkpoint and next paper4; 3/44 closed,71 read/closed,41 remain."
+    "latestVerifiedRevision": 26,
+    "fileId": "1UDD7sfKRucwIKjI4TFDGcyEMmwwXcBtF",
+    "rawSha256": "cd43260a5dfc37e5eef6f5b4e6597b4e459d05f4311c938a5060dc2ee84dadb2",
+    "nextRevision": 27,
+    "nextRevisionPurpose": "Record verified DongSan all24 meaning read/15figures, semantic checkpoint head; still3/44 closed,95read/71closed,41remaining; candidate/registration pending."
   },
   "remainingExams": 41,
   "nextExam": {
@@ -1556,7 +1566,7 @@
     "path": "archive/exams/original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
     "file": "25_동산중_2학기_기말_중1_기출.js",
     "questionCount": 24,
-    "status": "PENDING_NOT_STARTED"
+    "status": "IN_PROGRESS_SEMANTIC_READ_COMPLETE"
   },
   "latestOperationalCloseout": {
     "order": 3,
@@ -1615,7 +1625,11 @@
     "scopeBoundary": "Exact Palma source/request no overlap in checked scopes; old generated metadata patch omissions recorded, no blanket all-PR no-conflict assertion."
   },
   "operationallyClosedQuestions": 71,
-  "latestVerifiedRemoteCheckpoint": "9cb4da0e188c6d86df57f7d481792de256bf5e6f",
+  "latestVerifiedRemoteCheckpoint": {
+    "head": "7a00f23bf95c64f43993c57ce13d7f74c709b288",
+    "tree": "f4fe7f30ac81ede9fbbc915a76bbbfc30e261d04",
+    "status": "PALMA_CLOSEOUT_REMOTE_READBACK_VERIFIED"
+  },
   "courseCorrectionDependency": {
     "pr": 1966,
     "url": "https://github.com/icefoxtail/AP------/pull/1966",
@@ -1716,5 +1730,29 @@
     "ownBranchSourceCandidatePrepared": true,
     "actualMainRegistration": "SUBSEQUENTLY_REGISTERED_738AF_SEE_OPERATIONAL_CLOSEOUT",
     "evidence": "02-wangun-main51cf-isolated-preflight.json"
+  },
+  "dongsanSemanticCheckpoint": {
+    "evidencePath": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json",
+    "rawSha256": "60526e5edf2ab259fbed1a911ed065bb0fcef0840178757eb694ca6dc0d0995c",
+    "allQuestionsRead": 24,
+    "allReferencedFiguresViewed": 15,
+    "candidateApplied": false,
+    "nativeSpellingCorrectionScope": "EXACT_17_CONSUMERS_DONGSAN16_PLUS_PUNGDEOK1_SHARED154_REQUIRES_SEPARATE_PRESERVATION_DEPENDENCY",
+    "plannedExactLeaves": 23,
+    "debtOrdinals": [
+      17
+    ]
+  },
+  "dongsanSharedBindingDependency": {
+    "status": "IMPLEMENTATION_PENDING_NOT_APPLIED",
+    "bindingIndex": 154,
+    "affectedUids": 5,
+    "affectedSources": 2,
+    "outsideExamMeaningReviewed": false,
+    "ordinaryV2GuardPreserved": true,
+    "scopeEvidence": {
+      "path": "docs/operations/m1-meta-review-20261113/04-dongsan-binding-course-scope.json",
+      "sha256": "b52bff377b492e4aa9ae4ea9812102513751b9ff73e01c0742b1086c70c661a8"
+    }
   }
 }

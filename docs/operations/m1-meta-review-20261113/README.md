@@ -2,7 +2,7 @@
 
 ## 현재 진행
 
-**운영 완료 3/44장 · 남은 41장 · 읽기 및 운영 마감 71/1,047문항.** 다음은 **2025 동산중 중1 2학기 기말24문항**이며 아직 시작하지 않았다. 최신 Notion 라우터·Git main·병행 작업의 실제 범위를 확인한 뒤 전체 발문·선지·그림·제공 풀이를 읽는다.
+**운영 완료 3/44장 · 남은 41장 · 읽기 95/1,047문항 · 운영 마감 71문항.** 현재 **2025 동산중 중1 2학기 기말24문항**의 발문·선지·제공 풀이와 실제 그림15개 읽기를 마쳤다. [의미 원장](04-dongsan-semantic-review.json)에 기존 PT 유지, TPL1 보완, 군집키24·결합방식23 정정, exact RPM23 및 Q17 debt를 기록했다. 아직 후보 적용·공식 등록·PR/main 마감은 수행하지 않았다. 공유 binding154가 동산4문항과 풍덕1문항에 걸려 있어, 기존 승인·데이터를 보존하는 한 필드 교정의 선행 절차를 먼저 처리한다.
 
 팔마중24는 [PR1969](https://github.com/icefoxtail/AP------/pull/1969), 실제 등록 main `bf35b7e13417b033ee167117d567a9f0262712d6`에서 운영 마감했다. [마감 근거](03-palma-operational-closeout.json), [실제 writer](03-palma-pr1969-main-writer-final.json), [실제 부모 연결의 동일 입력 확인](03-palma-main-bf35-rpm-parent-reuse.json), [보존 비교](03-palma-main-bf35-minimal-protection.json)를 재사용한다. 등록24·identity24·runtime24·정본7, 최종 post-AutoMeta Consumer24/24/24 PASS 및 실패·미관측·대기0을 확인했다.
 
@@ -24,7 +24,7 @@
 
 진행 원장은 [progress.json](progress.json), 다음 담당 절차와 복사 프롬프트는 [HANDOFF.md](HANDOFF.md)다. 한 시험지의 의미 검토→최소 수정→정확 후보 검증→PR/main→실제 등록 영수증/최종 Consumer→원격 SHA를 끝낸 뒤 다음으로 이동한다. 기존 R1/R2/R3와 같은 입력의 검증은 반복하지 않는다. 수학 FINAL QA나 solution 기반 RPM FINAL을 수행했다고 기록하지 않는다.
 
-이 마감 문서 작성 직전 검증된 원격 branch head는 `9cb4da0e188c6d86df57f7d481792de256bf5e6f`, AWCR revision25이다. 현재 마감 게시 head/tree는 원격 branch와 다음 immutable AWCR revision26에서 확인한다. 이 문서는 자신의 최종 commit SHA를 미리 생성해 기록하지 않는다.
+검증된 직전 원격 branch head는 `7a00f23bf95c64f43993c57ce13d7f74c709b288`, AWCR revision26이다. 동산 의미 체크포인트의 실제 게시 head/tree는 원격 branch와 다음 immutable AWCR revision27에서 확인한다. 자신의 commit SHA를 미리 기록하지 않는다.
 
 ## 시험지별 완료 체크리스트
 
@@ -33,7 +33,7 @@
 - [x] 01. 26 신흥중 2학기 중간 중1 기출 / 24문항 — 운영 완료 · RPM debt Q8/Q10 기록
 - [x] 02. 26 왕운중 2학기 중간 중1 기출 / 23문항 — 운영 완료 · 실제 등록23/최종Consumer23 · RPM debt Q2/Q3/Q4/Q16 기록
 - [x] 03. 26 팔마중 2학기 중간 중1 기출 / 24문항 — 운영 완료 · 실제 등록24/최종Consumer24 · RPM debt Q6/Q8/Q12/Q13/Q14 기록
-- [ ] 04. 25 동산중 2학기 기말 중1 기출 / 24문항 — PENDING
+- [ ] 04. 25 동산중 2학기 기말 중1 기출 / 24문항 — 전체 의미 읽기24·그림15 완료 / 후보·등록·운영 마감 대기
 - [ ] 05. 25 신흥중 2학기 기말 중1 기출 / 22문항 — PENDING
 - [ ] 06. 25 연향중 2학기 기말 중1 기출 / 23문항 — PENDING
 - [ ] 07. 25 왕운중 2학기 기말 중1 기출 / 24문항 — PENDING

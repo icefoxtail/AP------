@@ -1,0 +1,208 @@
+{
+  "bindingIntegrationIssue": {
+    "activeChineseCourseTypoBindingCount": 1,
+    "activeExactCanonicalCourseBindingCount": 0,
+    "canonicalRequestedCourse": "중1 수학",
+    "crosswalkActiveFlagNotSufficientForFullBindingTuple": true,
+    "currentBindingCourse": "中1 수학",
+    "curriculum": "2022",
+    "existingBindingStatus": "ACTIVE",
+    "existingBindingSupportingItemCount": 5,
+    "impactBoundary": "The row lists five supporting UIDs; an actual outside-consumer impact audit was not performed in this bounded semantic task and remains for the correction owner.",
+    "kind": "EXACT_STANDARD_COURSE_SPELLING_MISMATCH",
+    "packStandardCourses": [
+      "중1 수학",
+      "M1-2",
+      "M1-1"
+    ],
+    "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+    "recommendation": "Use the authorized binding-correction/registration route to repair this exact row's standardCourse spelling while preserving all other native definition and evidence fields. Keep the source course as 중1 수학 and do not weaken exact binding checks.",
+    "standardUnitKey": "M1-03",
+    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
+  },
+  "containsRawPromptChoicesOrSolution": false,
+  "decision": {
+    "mappingKind": "FAMILY_ACTIVE_WITH_EXPLICIT_SCALAR_TEMPLATE_SELECTION",
+    "newCrosswalkRowRequired": false,
+    "newLockedRpmLeafRequired": false,
+    "newProblemTypeRequired": false,
+    "newTemplateRequired": false,
+    "noResolverFinalOrMathematicalQaClaim": true,
+    "reason": "The current canonical FAMILY selectionRule explicitly includes scalar multiplication/division and lists the existing scalar-operation template. The source-to-solution decisive method matches that stated branch, independently of the mere presence of parentheses.",
+    "reuseExistingCrosswalkRecordId": "M1-RPM-147",
+    "reuseExistingNativeProblemType": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+    "reuseExistingNativeTemplate": "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION",
+    "rpmLeafDebtRequiredForThisMethod": false
+  },
+  "evidence": {
+    "cachedOfficialM1_1Pdf": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/.tmp/rpm-official-research/M1-1.pdf",
+      "sha256": "43394ba96b0a2266e264a85716f7dfa7711a1b350e8c70522fcb0420799414ce"
+    },
+    "crosswalk": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "sha256": "314bd3dd8b0b65fe004e2cd4cfa42f251124d6499250e9cd8a5c155524404adc"
+    },
+    "effectiveParents": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+      "sha256": "53668c1203032e1b87c05eca8ae2303ad0c8cc011f0cd949284cf5394b00e7de"
+    },
+    "high1Comparison": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+      "sha256": "f86de5514f0412339a7ecd4c726263cf84db28d961fcfe24d95644802c5cf4ef"
+    },
+    "input": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/.tmp/m1-meta-review/04-dongsan-review-input.json",
+      "sha256": "9d6eb39ea87f04051f28ba028f611cc2f537e102f2c2555cbdac535eacf50c82"
+    },
+    "lockedMaster": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+    },
+    "middle2Comparison": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/archive/data/meta-foundation/canonical/packs/middle2/taxonomy.json",
+      "sha256": "234121a8177fe104ef9c3decce046395ee4069a28b81624efdb39984d2a6eff4"
+    },
+    "nativeBindings": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "sha256": "53cd70317cb28b8ea06099505a799da62994a9de25caadaa343dce3d9a012fa4"
+    },
+    "nativePack": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+      "sha256": "17769652596a06ad5e40ff3de77733754c87c00b5977c542892edc074343dd20"
+    },
+    "nativeTagMaster": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/archive/data/master_tables/js_archive_tag_master.json",
+      "sha256": "e8db23593ff878de968ced04c011bd1f4de79279d7bab5c733c9ed98899d8551"
+    },
+    "nativeTaxonomy": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e"
+    },
+    "normalizedLockedM1_1Leaves": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/.tmp/m1-meta-review/04-dongsan-rpm-m1-1-canonical-leaves.json",
+      "sha256": "a8bafef2d7815fd8410d5aead3eb24f9195b5c378044b61f4bc1f669d5cc2649"
+    }
+  },
+  "excludedAlternatives": [
+    {
+      "candidate": "M1-RPM-146 / TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+      "why": "The displayed decisive operation is division by a scalar; it is not the addition/subtraction of separate linear expressions or a sign-distribution-only method."
+    },
+    {
+      "candidate": "M1-RPM-145 / TPL_M1_LINEAR_EXPRESSION_LIKE_TERMS",
+      "why": "Collecting like terms is not the decisive step in the displayed procedure."
+    },
+    {
+      "candidate": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+      "why": "Its definition concerns monomial coefficient and exponent-law validity; it does not replace the existing matching M1 scalar-expression template."
+    },
+    {
+      "candidate": "PT_H1_POLY_DIVISION",
+      "why": "Its definition concerns polynomial quotient/remainder structure and degree restrictions, which the displayed scalar calculation does not use."
+    }
+  ],
+  "gitOrIndexMutation": false,
+  "limitations": [
+    "This is classification reading, not independent verification of the numerical answer.",
+    "No resolver, Consumer, test, registry writer or workflow was run.",
+    "Exact native binding is currently absent under the canonical course spelling; this report does not claim present runtime acceptance.",
+    "Current canonical family intent is explicit; a future requirement for a separately named narrower RPM L4 would require its own authoritative taxonomy work, not an invented substitute in this paper."
+  ],
+  "minimalRecommendation": [
+    "Keep the current native PT and scalar-operation TPL.",
+    "Reuse existing FAMILY_ACTIVE M1-RPM-147 with an explicit scalar-template selection and the unchanged locked basePath.",
+    "Use the canonical/effective RPM L2 문자의 사용과 식의 계산 and L3 일차식의 계산; do not substitute addition/subtraction or a higher-grade division type.",
+    "Repair the exact standardCourse binding spelling through the authorized writer before claiming operative classification validity.",
+    "Preserve normal question, choices, answer, explanation, difficulty and unrelated tags; perform no math verification flag promotion."
+  ],
+  "nativeAuthority": {
+    "problemType": {
+      "key": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "meaning": "Linear-expression structure, like terms and fractional coefficient handling; broad native family.",
+      "ownerPack": "MIDDLE1",
+      "status": "ACTIVE"
+    },
+    "provenanceBoundary": "The native template and FAMILY selectionRule originate in prior R2E work and the template cites this same UID. Their ACTIVE labels were not accepted alone: the present prompt/choices/provided solution were independently read and matched to the explicit canonical method.",
+    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+    "subUnitLabelBoundary": "The existing native tag-master label is 문자의 사용과 식의 값. It is a legacy native grouping, while the RPM147 base and effective L2 are 문자의 사용과 식의 계산. Do not invent a new native key or alter the master label in this one-question review.",
+    "supportingUidAlreadyInTemplate": true,
+    "template": {
+      "key": "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION",
+      "matchesProvidedDecisiveMethod": true,
+      "meaning": "Multiply or divide a whole linear expression by a scalar and calculate coefficients.",
+      "ownerPack": "MIDDLE1",
+      "parentProblemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "status": "ACTIVE"
+    }
+  },
+  "newAwcrRevision": false,
+  "owner": "GPT_ROOT_933015CD0A4F",
+  "providedMethodSummary": "The displayed solution converts division of the entire linear expression by a negative fractional constant into multiplication by its reciprocal, then applies the scalar to each term. The decisive method is scalar multiplication/division of a linear expression.",
+  "readCoverage": {
+    "choicesRead": 5,
+    "independentRecalculationPerformed": false,
+    "promptRead": true,
+    "providedSolutionRead": true,
+    "sourceFigures": "No Q8 source figure fields or embedded figure were needed."
+  },
+  "recordedAt": "2026-11-13T20:33:20.939523+00:00",
+  "remoteAccessOrMutation": false,
+  "rpmAuthority": {
+    "crosswalkMappingStatus": "FAMILY_ACTIVE",
+    "crosswalkRecordId": "M1-RPM-147",
+    "dedicatedScalarOperationNamedLeafPresent": false,
+    "effectiveParent": {
+      "L1": "문자와 식",
+      "L2": "문자의 사용과 식의 계산",
+      "courseKey": "M1-1",
+      "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]"
+    },
+    "lockedM1_1LeafCount": 59,
+    "rationale": "A separately named scalar L4 is absent, but canonical147 explicitly represents a family with a scalar branch. Selecting its scalar template preserves that intended finer native distinction; no approximate substitute is needed.",
+    "selectedLockedLeaf": {
+      "L1": "문자와 식",
+      "L2": "문자의 사용과 식의 계산",
+      "L3": "일차식의 계산",
+      "L4": "괄호가 있는 일차식 계산",
+      "curriculum": "2022",
+      "scope": "M1-1"
+    },
+    "selectedTemplateKey": "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION",
+    "selectionRule": "Select signed-expression difference after removing parentheses or scalar multiplication/division from the source-to-solution decisive step.",
+    "templateCandidateKeys": [
+      "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+      "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION"
+    ]
+  },
+  "schemaVersion": "dongsan-q08-semantic-rpm-boundary-v1",
+  "scope": "Independent reading of Q8 prompt, choices and provided solution for classification only; no independent recalculation, mathematical QA, resolver execution or registration.",
+  "sourceOrCanonicalModified": false,
+  "sourceSnapshot": {
+    "explicitSourceMetadataIdentityOrdinalUidJoin": true,
+    "mainSha": "bf35b7e13417b033ee167117d567a9f0262712d6",
+    "questionUid": "qid_v1_82b306a8e72f0b42f9a235f304a85cbea85ccdd4d522b0ba8f34872e5e3c82f4",
+    "source": "archive/exams/original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+    "sourceBlobSha1": "c75dc3e1ce47c0ec85e51a63b1a1e16ab479385f",
+    "sourceOrdinal": 8,
+    "sourceRawSha256": "357bfa1d8b326e228179624bf4943ec151a53362e23b00d2dcaac717a5334029"
+  },
+  "status": "SEMANTIC_CLASSIFICATION_CHECKED_BINDING_CORRECTION_REQUIRED",
+  "supplementaryCachedBookEvidence": {
+    "boundary": "This corroborates the mathematical method. It does not independently establish that publisher item numbers equal repository crosswalk147 or create a separate scalar L4.",
+    "observation": "The cached M1-1 book material explicitly describes linear-expression division by a number through reciprocal multiplication and linear-expression multiplication/division procedures.",
+    "path": "/workspace/scratch/933015cd0a4f/m1-review/.tmp/rpm-official-research/M1-1.pdf",
+    "pdfPages": [
+      52,
+      53
+    ],
+    "readMethod": "Local pdftotext search only; no remote request or independent solution calculation.",
+    "relevantItemIdentifiers": [
+      "0676",
+      "0677",
+      "0687"
+    ],
+    "sha256": "43394ba96b0a2266e264a85716f7dfa7711a1b350e8c70522fcb0420799414ce"
+  },
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808"
+}
