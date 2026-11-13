@@ -1,0 +1,90 @@
+# M1S2-20261114-B01-A — 중1 2학기 통합 메타 재정비
+
+## 범위와 보존
+
+- 담당: 정확히 4시험지 95문항. A1은 시험지 1·2, A2는 시험지 3·4를 검토했다.
+- Task ID: `6aa566e9-68d9-4735-a152-5db0e40e56d2`; owner: `GPT_ROOT_54CB21AF3005_A`.
+- 전용 브랜치: `review/m1-s2-meta-b01-a-20261114`.
+- 시작 main: `573fa32804480b2d70f7536b211e240e8d64d5ed`; PR 직전 확인 main: `0603b4c0c32fa8667ba493d0449fdfbb1ba52dea`. 추가 main 커밋은 자동등록 cursor 2파일이며 담당 소스·정본 변경은 없다.
+- 최종 소스/compact 원격 체크포인트: `6bd5770cf6059acc08b80b3a3c001077abb18346`.
+- 문항 내용·선지·정답·해설·그림 참조·UID를 보존했다. 95개 canonical UID, 보호 payload, 숫자 difficultyBucket 1–5, compact 형식·공식 용어 ID를 기계 검증했다.
+- 새 PT/TPL·공통 binding·RPM crosswalk·용어사전 정의는 만들거나 수정하지 않았다. 공통 등록 요청은 `coordinator-requests.json`에 UID와 근거를 기록했다.
+
+## 집계
+
+GAP이 우선인 상호배타적 의미 판정이다. 정상 의미값을 보존하면서 누락 필드만 채운 경우는 KEEP이며, rationale·routing·신규 4칸 추가만으로 CORRECT를 늘리지 않았다. GAP 문항에서도 확정 가능한 교정은 적용했다. 정확한 전후값과 문항별 집계는 `final-counts.json`을 사용한다.
+
+| 시험지 | 문항 | KEEP | CORRECT | GAP | level 교정 | source bucket 값 교정/누락 보완 | PT/TPL 문항(필드) | 4칸 기존 교정/신규 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 연향중 기말 | 23 | 4 | 13 | 6 | 2 | 1/6 | 6(12) | 7/0 |
+| 왕운중 기말 | 24 | 11 | 11 | 2 | 0 | 5/0 | 2(2) | 12/0 |
+| 연향중 중간 | 24 | 2 | 13 | 9 | 0 | 1/0 | 2(3) | 0/24 |
+| 왕의중 중간 | 24 | 8 | 7 | 9 | 0 | 0/24 | 3(5) | 0/24 |
+| 합계 | 95 | 25 | 44 | 26 | 2 | 7/30 | 13(22) | 19/48 |
+
+기존 question_metadata 기준 bucket 차이는 숫자값 교정 11문항, 문자열→숫자 정규화 3문항, UNKNOWN 보완 1문항이다. source bucket 30개 누락 보완과 중복되는 별도 비교이므로 합산하지 않는다. 왕운중 기말 Q23은 그림 근거가 불명확하여 기존 4/상을 유지했다. Q14는 공식 TPL 배정에 맞춰 `l4Disposition=ASSIGNED`를 정합화했다.
+
+## 실제 출제 주제
+
+주개념을 기준으로 각 시험지 번호를 한 번씩 분류했다. 도형이 등장한다는 이유만으로 입체 측정 유형으로 배정하지 않았다.
+
+| 시험지 | 실제 주제 | 문항 번호 | 개수 |
+|---|---|---|---:|
+| 연향중 기말 | 평각과 이웃한 각 | 2 | 1 |
+| 연향중 기말 | 다각형·정다각형의 성질과 각 | 1, 3, 21 | 3 |
+| 연향중 기말 | 원·부채꼴의 성질과 측정 | 4, 5, 6, 7, 8, 22 | 6 |
+| 연향중 기말 | 다면체·정다면체·회전체의 성질 | 9, 10, 11 | 3 |
+| 연향중 기말 | 원뿔 굴리기로 생기는 평면영역 넓이 | 12 | 1 |
+| 연향중 기말 | 입체도형의 겉넓이·부피 | 13, 14, 15, 16, 23 | 5 |
+| 연향중 기말 | 자료의 정리와 도수 해석 | 17, 19, 20 | 3 |
+| 연향중 기말 | 중앙값 | 18 | 1 |
+| 왕운중 기말 | 다각형·정다각형과 삼각형 각 | 1, 2, 3, 21 | 4 |
+| 왕운중 기말 | 원·부채꼴의 성질과 측정 | 4, 5, 6, 22 | 4 |
+| 왕운중 기말 | 다면체·정다면체·회전체의 성질 | 7, 8, 9 | 3 |
+| 왕운중 기말 | 입체도형의 겉넓이·부피 | 11, 12, 13, 23 | 4 |
+| 왕운중 기말 | 평균·중앙값·최빈값 | 10, 14, 15 | 3 |
+| 왕운중 기말 | 줄기·잎/도수분포표/그래프 해석 | 16, 17, 18 | 3 |
+| 왕운중 기말 | 상대도수와 집단 인원 비교 | 19, 20, 24 | 3 |
+| 연향중 중간 | 좌표와 그래프 | 1, 2, 3, 4 | 4 |
+| 연향중 중간 | 정비례와 반비례 | 5, 6, 7, 8, 21 | 5 |
+| 연향중 중간 | 기본 도형 | 9, 10, 11, 12, 22 | 5 |
+| 연향중 중간 | 위치 관계 | 13, 14, 15, 16, 23 | 5 |
+| 연향중 중간 | 작도와 합동 | 17, 18, 19, 20, 24 | 5 |
+| 왕의중 중간 | 좌표와 그래프 | 1, 2, 3, 4, 5 | 5 |
+| 왕의중 중간 | 정비례와 반비례 | 6, 7, 8, 9, 10, 22 | 6 |
+| 왕의중 중간 | 기본 도형 | 11, 12, 13, 21 | 4 |
+| 왕의중 중간 | 위치 관계 | 14, 15, 16 | 3 |
+| 왕의중 중간 | 작도와 합동 | 17, 18, 19, 20, 23, 24 | 6 |
+
+## 검증 및 등록 경로
+
+- `final-verification.json`: 95문항 보호 payload 불변, UID join 95개 고유, source/compact blob 일치, raw 인용 검사 FAIL 0, 4칸 필수 형식·공식 term ID 검사 통과.
+- 다른 작업자의 표본: 시험지1 Q2·7·15, 시험지2 Q6·21·23, 시험지3 Q13·18·22, 시험지4 Q8·18·23. 변경·충돌·난이도 경계는 각 review와 root override 및 integration audit에 별도로 기록했다.
+- source validator는 88 VALIDATED/7 FAIL이다. 7 FAIL은 이미 분리한 공식 binding/필수 PT·TPL 공백이며 이를 전체 PASS로 표시하지 않았다. 더 엄격한 exact-course 검사에서는 완전한 ACTIVE PT/TPL pair 90개, exact binding 82개다. HOLD로 표시한 유형 공백도 인계한다.
+- 왕운중 기말: `m1s2-b01-a-exam2-native-20261114-r2`, native v2 24문항 공식 dry-run PASS, runtime materialization 24, fingerprint repair 24. r1은 같은 브랜치의 이전 커밋에만 보존한다.
+- 연향중 기말·연향중 중간·왕의중 중간: 각각 difficulty reviewedCorrection 9·2·6 UID 공식 dry-run PASS. 이 17 UID 요청은 난이도 계열 필드만 반영하며 full semantic 등록 완료를 뜻하지 않는다.
+- 전체 기존 identity source fingerprint가 현재 보호 payload fingerprint보다 오래되었다. 이 배치가 문제를 바꾼 것이 아니며 native v2가 24개를 공식 경로로 갱신한다. 나머지 71개 full meta 등록은 canonical 공백과 기존 fingerprint 재결속을 해결한 뒤 official registrar로 수행한다. 기존 contentFingerprint 차이는 연향중 기말 Q10, 왕의중 중간 Q14에 별도 표시했다.
+- compact 95문항의 runtime은 main의 공식 4slot writer가 생성한다. 공용 metadata/identity/runtime 파일을 수동 편집하지 않았다.
+- 최종 판단은 PR 필수 CI 및 main 자동등록 영수증을 확인한 뒤 구분해서 보고한다. 이 문서는 PR 전 검증 기록이며 main 병합·자동등록·Consumer·배포 성공을 미리 주장하지 않는다.
+- sparse checkout에 없는 다른 학년 시험지를 요구하는 전역 로컬 검사는 반복하지 않았다. full checkout 필수 CI를 사용한다. 추가 Chrome·Pages 전수검사는 시작하지 않았다.
+
+## 공통 정의 인계
+
+`coordinator-requests.json`은 32개 UID를 분류별 중복 포함하여 연결 공백 16문항(고유 target 14), exact binding 8문항(고유 tuple 7), native 유형 공백 4문항, RPM 세부 leaf 공백 5문항, 용어 후보 7문항/8건, 근거 확인 대기 4문항으로 구분한다. 26 GAP 의미판정에 용어 후보만 있는 문항을 더한 요청 범위이므로 두 숫자는 다른 집계이다.
+
+핵심 인계: 연향중 기말 Q2·12는 기존 다른 유형으로 억지 연결하지 않는다. Q10·11의 `中1 수학`/`중1 수학` exact tuple 불일치와 Q17의 binding/leaf 공백을 분리한다. Q19는 후보 PT binding이 있으나 TPL 적용범위 확인이 필요하다. 왕운중 기말 Q21은 native binding PASS이고 crosswalk만 보완 대상이다. 왕의중 중간 Q8은 유효 PT에 대응하는 TPL 공백, Q23은 주어진 합동의 대응변 활용에 맞는 유형/leaf 공백이다.
+
+## 원격 근거와 다음 작업
+
+원본 인용을 포함한 raw 4칸은 전용 브랜치의 불변 커밋에 보존하고 최종 main tree에는 compact만 남긴다. author review의 로컬 raw 경로는 아래 검증된 historical commit에서 읽는다. 기존 review는 당시 판단의 스냅샷이며 최종 판단/참조는 root applied, cross review, audits 및 final-verification을 우선한다.
+
+| 시험지 | 최종 source blob | raw 근거 commit |
+|---|---|---|
+| 연향중 기말 | `58499a15b018c4bc13d4e90c9dd630f6a458fe2b` | `27a263a24bb36ea0153e981cadc401a52cf55f6e` |
+| 왕운중 기말 | `3b592f8f9c5e04fdf152dc47fed7b5d916937829` | `8837bbab7db868a9552eb372dbcea7a06a56b5ee` |
+| 연향중 중간 | `99cd522479988a1a968228e3d86cd26bfd1d5f3e` | `63284976c941c9c3bebd56b7f5d2abc8b6b617d7` |
+| 왕의중 중간 | `654aa51206cc7eed297cf3c75acc221f1209b25d` | `36d18b5e2ad45381854d38a1061e500a76dd9193` |
+
+정확한 raw path·SHA, 당시 docs raw path, compact hash는 `final-verification.json`에 있다. 전용 원격 브랜치는 squash 병합 후에도 삭제하지 않는다.
+
+다음 실행: 이 배치의 PR 필수 CI → main squash 병합 → 원격 SHA 확인 → 해당 native/difficulty/4slot 등록 영수증 확인 → Consumer·Pages 상태를 별도 확인 → AWCR immutable revision 저장 및 raw SHA 재조회. 네 시험지 밖의 작업은 총괄의 새 배정 전 시작하지 않는다.
