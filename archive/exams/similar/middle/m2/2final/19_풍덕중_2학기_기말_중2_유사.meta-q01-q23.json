@@ -3,8 +3,8 @@
   "requestId": "similar-19-fengdeok-m2-2final-candidate-v1",
   "examUid": "19_풍덕중_2학기_기말_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/2final/19_풍덕중_2학기_기말_중2_유사.js",
-  "expectedSourceBlobSha1": "907b57e6ad338a33373178807361ece41f3d9369",
-  "expectedSourceSha256": "8427ea11b5971d926e89664d03434af1c9c72c42134cf16a185ca99e0986133b",
+  "expectedSourceBlobSha1": "fc917e2b3a9bd5206f707a904ff99732e1b48e44",
+  "expectedSourceSha256": "609643f5575801dfc912abb21cd496a40c1f24ef01b17cf1b41b30cbe32ad388",
   "expectedQuestionCount": 23,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -27,7 +27,7 @@
     "declaredQuestionCount": 23,
     "declaredTotalScore": 100,
     "verifiedItemScoreTotal": 100,
-    "note": "Drive modified time and header generatedAt differ and are retained separately. Extracted text length differs from supplied joined length; discrepancy retained. Source has no inline image objects or tables. No original image was linked. Independent review, semantic 4-slot review, official resolver, registration, plans and visual QA NOT_RUN. 4-slot mechanical validator ran: 23 items, 73 quotes, 21 FAIL, 32 WARN, unresolved; not PASS. Draft harness also ran and was blocked because the plans directory is absent; no plans were fabricated."
+    "note": "Drive modified time and header generatedAt differ and are retained separately. Extracted text length differs from supplied joined length; discrepancy retained. Source has no inline image objects or tables. No original image was linked. Independent review, semantic 4-slot review, official resolver, registration, plans and visual QA NOT_RUN. 4-slot mechanical validator ran: 23 items, 73 quotes, 21 FAIL, 32 WARN, unresolved; not PASS. Draft harness also ran and was blocked because the plans directory is absent; no plans were fabricated. Follow-up correction: Q17 stem now explicitly states fair independent tetrahedral dice; Q20 uniformly selects one remaining slip per draw without replacement, and solution qualifies the 11 slips/4 winners as conditional on the first draw being a winner. Follow-up: Q17 fairness and independence were added to the item itself (the prior checklist summary overstated this). Q20 now states every draw is uniform among remaining slips; solution conditions the 11-total/4-winning count on the first draw being a winner. Follow-up 4-slot diagnosis: the pre-push draft initially lacked top-level judgedBy and candidates; these required fields were added before the first remote commit. The first validator run against the published 4-slot file had 19 item FAILs: empty/citation-invalid goals or methods, plus RETIRED dictionary term 주사위 in Q17/Q23. Those are corrected below. Q17 fair/independent and Q20 conditional wording are corrected in JS; answer, choices, points, and all other question bodies are unchanged."
   },
   "items": [
     {
@@ -561,8 +561,8 @@
     {
       "qid": 17,
       "field": "content",
-      "after": "Specified fair independent tetrahedral dice.",
-      "reason": "Defines 16 equally likely ordered results."
+      "after": "Explicitly states that each person rolls a fair tetrahedral die independently; all other wording and answer retained.",
+      "reason": "The prior stem lacked fairness and independence needed for 16 equiprobable ordered outcomes."
     },
     {
       "qid": 18,
@@ -579,8 +579,8 @@
     {
       "qid": 20,
       "field": "solution",
-      "after": "Identified 4/11 as the conditional probability given the first draw won.",
-      "reason": "Clarifies sequential sampling without replacement."
+      "after": "Says each step draws uniformly from slips remaining without replacement. Solution now states 11 slips/4 winners remain only after a first winning draw, and calls 4/11 conditional probability.",
+      "reason": "Clarifies the sample space and conditional count in the sequential calculation."
     },
     {
       "qid": 21,
@@ -604,6 +604,94 @@
   "reviewEvidence": {
     "independentMathReview": "NOT_RUN",
     "localSelfCheck": "AUTHOR_SOURCE_CHECK_WITH_RECORDED_CHANGES",
-    "reviewScope": "Author checked transfer and documented modifications; separate reviewer NOT_RUN."
-  }
+    "reviewScope": "Author checked transfer and documented modifications; separate reviewer NOT_RUN.",
+    "fourSlotValidation": "RAN_AFTER_FOLLOWUP: 23 items, 89 quotes, 0 FAIL, 38 WARN. Mechanical validator passes; warnings and semantic review NOT_RUN remain."
+  },
+  "followUpValidatorFixes": [
+    {
+      "qid": 1,
+      "cause": "method 대입 had no literal support in solution.",
+      "fix": "Changed 4-slot method to 정리 and cited the exact y=2(x+3)-1=2x+5 transformation."
+    },
+    {
+      "qid": 2,
+      "cause": "goal 자연수 was not quoted and misdescribed the requested result.",
+      "fix": "Changed goal to 값 with the exact stem phrase a의 값은?."
+    },
+    {
+      "qid": 3,
+      "cause": "goal 일차함수 had no supporting stem quote.",
+      "fix": "Changed goal to 그래프, cited 그래프의 식은?."
+    },
+    {
+      "qid": 7,
+      "cause": "goal 정수 was not directly quoted.",
+      "fix": "Changed goal to 값 and cited 수 a의 값은?."
+    },
+    {
+      "qid": 9,
+      "cause": "goal 정수 was not directly quoted.",
+      "fix": "Changed goal to 값 and cited 수 k의 값은?."
+    },
+    {
+      "qid": 10,
+      "cause": "goal 정수 was not directly quoted.",
+      "fix": "Changed goal to 값 and cited a+b의 값은?."
+    },
+    {
+      "qid": 11,
+      "cause": "method 합 had no literal quote.",
+      "fix": "Changed method evidence to 사칙연산 and cited the exact 4+3=7 calculation."
+    },
+    {
+      "qid": 12,
+      "cause": "goal natural-number count and two methods lacked valid citations.",
+      "fix": "Added exact count wording and exact complement-subtraction and 2×3 path-count citations."
+    },
+    {
+      "qid": 13,
+      "cause": "goal count lacked exact evidence; method 순서쌍 misclassified unordered handshakes.",
+      "fix": "Cited the total-handshake question and changed method to 조합 with the unordered-pair explanation."
+    },
+    {
+      "qid": 14,
+      "cause": "method citations wrapped display math in dollar signs absent from multiline math source.",
+      "fix": "Removed wrapper dollars and cited exact formula; method is 조합/비율."
+    },
+    {
+      "qid": 15,
+      "cause": "method citation wrapped display math in dollar signs absent from source.",
+      "fix": "Cited exact displayed probability fraction without added wrapper dollars."
+    },
+    {
+      "qid": 16,
+      "cause": "method citation wrapped display math in dollar signs absent from source.",
+      "fix": "Cited exact sum formula without added wrapper dollars."
+    },
+    {
+      "qid": 17,
+      "cause": "주사위 is RETIRED in dictionary v1.5.",
+      "fix": "Removed it from active slots, retained as evidence debt, and kept active 정사면체 term. Added fair independent-die condition to stem."
+    },
+    {
+      "qid": 18,
+      "cause": "goal 자연수 did not describe requested sum value and had no exact quote.",
+      "fix": "Changed goal to 값 with the exact a+b value phrase."
+    },
+    {
+      "qid": 20,
+      "cause": "method quote wrapped display math in dollar signs absent from source.",
+      "fix": "Cited exact product formula without wrapper dollars. JS states uniform draws from remaining tickets and that 11/4 count is conditional on first win."
+    },
+    {
+      "qid": 22,
+      "cause": "method 평행 did not describe coincident-line coefficient comparison and was absent from solution.",
+      "fix": "Changed method to active dictionary term 계수비교 and cited the exact coefficient/constant comparison sentence."
+    },
+    {
+      "qid": 23,
+      "cause": "주사위 is RETIRED in dictionary v1.5.",
+      "fix": "Removed it from active slots, retained as evidence debt; kept other live terms."
+    }
+  ]
 }

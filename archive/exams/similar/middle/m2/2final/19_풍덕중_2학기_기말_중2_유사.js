@@ -33,7 +33,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "일차함수는 $y=ax+b$ ($a\\ne0$) 꼴이다. 각 식을 확인한다.\nㄱ. $y=\\dfrac{2}{3}x-4$는 일차함수이다.\nㄴ. $y=7$은 $x$의 계수가 $0$이므로 일차함수가 아니다.\nㄷ. $xy=5$는 $y=\\dfrac{5}{x}$이므로 일차함수가 아니다.\nㄹ. $y=x(x-2)=x^2-2x$는 이차함수이므로 일차함수가 아니다.\nㅁ. $y=2(x+3)-1=2x+5$는 일차함수이다.\n따라서 해당하는 것은 ㄱ과 ㅁ이고 정답은 ⑤이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -69,7 +69,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$f(x) = 3x - 5$에 $x = a$를 대입하여 일차방정식을 푼다.\n$$\\begin{aligned}\nf(a) = 3a - 5 &= 7 \\\\\n3a &= 12 \\\\\na &= 4\n\\end{aligned}$$\n정답은 ③이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -106,7 +106,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$y = ax$의 그래프를 $y$축의 방향으로 $b$만큼 평행이동한 그래프의 식은 $y = ax + b$이므로\n$$\ny = -2x + 5\n$$\n정답은 ②이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -143,7 +143,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "그래프의 $x$절편과 $y$절편을 구하여 직각삼각형의 넓이를 계산한다.\n1. $x = 0$일 때 $y = -3$이므로 $y$축과의 교점은 $(0, -3)$이다.\n2. $y = 0$일 때 $0 = \\dfrac{3}{4}x - 3 \\implies x = 4$이므로 $x$축과의 교점은 $(4, 0)$이다.\n3. 따라서 두 축으로 둘러싸인 직각삼각형의 넓이는\n$$\n\\dfrac{1}{2} \\times 4 \\times 3 = 6\n$$\n정답은 ④이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -180,7 +180,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "주어진 일차함수의 절편, 지나는 점, 기울기의 성질을 확인한다.\n1. $y = 0$일 때 $-\\dfrac{3}{2}x + 3 = 0 \\implies x = 2$이므로 $x$절편은 $2$, $y$절편은 $3$이다. (① 참)\n2. $x = 4$를 대입하면 $y = -\\dfrac{3}{2} \\times 4 + 3 = -6 + 3 = -3$이므로 점 $(4, -3)$을 지난다. (② 참)\n3. 기울기가 $-\\dfrac{3}{2} < 0$이므로 오른쪽 아래로 향하고, 기울기가 같은 직선 $y = -\\dfrac{3}{2}x - 2$와 평행하다. (③, ④ 참)\n4. 기울기가 $-\\dfrac{3}{2}$이므로 $x$의 값이 $2$만큼 증가할 때 $y$의 값은 $3$만큼 감소한다. 따라서 ⑤는 옳지 않다.\n정답은 ⑤이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -217,7 +217,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "주어진 그래프 조건에서 $a, b$의 부호를 정한 뒤 새 직선의 기울기와 $y$절편의 부호를 판별한다.\n1. $y = ax + b$의 그래프가 오른쪽 위로 향하므로 $a > 0$이고, $y$축과 음의 부분에서 만나므로 $b < 0$이다.\n2. 일차함수 $y = -bx + a$에서 기울기는 $-b > 0$이고, $y$절편은 $a > 0$이다.\n3. 기울기가 양수이고 $y$절편이 양수인 직선은 제$1, 2, 3$사분면을 지나고 제$4$사분면은 지나지 않는다.\n정답은 ①이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -254,7 +254,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "점 $(2, -3)$을 일차방정식 $2x + ay - 10 = 0$에 대입한다.\n$$\\begin{aligned}\n2 \\times 2 + a \\times (-3) - 10 &= 0 \\\\\n4 - 3a - 10 &= 0 \\\\\n-3a &= 6 \\implies a = -2\n\\end{aligned}$$\n정답은 ③이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -291,7 +291,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$x$절편과 평행한 직선의 기울기를 구해 직선의 방정식을 세운다.\n1. $3x - 2y - 9 = 0$에 $y = 0$을 대입하면 $3x - 9 = 0 \\implies x = 3$이므로 교점은 $(3, 0)$이다.\n2. 직선 $y = -3x$와 평행하므로 기울기는 $-3$이다.\n3. 기울기가 $-3$이고 점 $(3, 0)$을 지나는 직선의 식은\n$$\ny = -3(x - 3) = -3x + 9 \\implies 3x + y - 9 = 0\n$$\n정답은 ④이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -328,7 +328,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "점 $(4, -1)$을 지나고 $y$축에 평행한 직선의 방정식은 $x = 4$이다.\n따라서 $3x + 2 = k$에 $x = 4$를 대입하면\n$$\nk = 3 \\times 4 + 2 = 12 + 2 = 14\n$$\n정답은 ②이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -365,7 +365,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "두 그래프의 교점의 좌표 $(2, 3)$은 연립방정식의 해이므로 각 식에 $x = 2, y = 3$을 대입한다.\n$$\\begin{aligned}\n2a - 3 \\times 3 &= 1 \\implies 2a = 10 \\implies a = 5 \\\\\n2 \\times 2 + 3b &= -8 \\implies 3b = -12 \\implies b = -4\n\\end{aligned}$$\n따라서 $a + b = 5 + (-4) = 1$이다.\n정답은 ⑤이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -401,7 +401,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$1$부터 $18$까지 $4$의 배수와 $5$의 배수를 각각 구하여 센다.\n1. $4$의 배수: $4, 8, 12, 16$ ($4$가지)\n2. $5$의 배수: $5, 10, 15$ ($3$가지)\n3. 공통인 수($20$의 배수)는 없으므로 구하는 경우의 수는 $4 + 3 = 7$가지이다.\n정답은 ①이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -439,7 +439,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "전체 최단경로의 수에서 공사 중인 점 $P$를 지나는 경로의 수를 빼어 구한다.\n1. $A(0, 0)$에서 $B(3, 2)$까지 전체 최단경로의 수는 가로 $3$번, 세로 $2$번을 배열하는 경우이므로 $\\dfrac{5 \\times 4}{2} = 10$가지이다.\n2. $A(0, 0)$에서 $P(1, 1)$까지 가는 경로는 $2$가지이고, $P(1, 1)$에서 $B(3, 2)$까지 가는 경로는 $3$가지이므로 $P$를 지나는 경로는 $2 \\times 3 = 6$가지이다.\n3. 따라서 구하는 방법의 수는\n$$\n10 - 6 = 4\\text{가지}\n$$\n정답은 ③이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -475,7 +475,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$16$명 중에서 순서 없이 악수할 $2$명을 고르는 경우의 수와 같다.\n$$\n\\dfrac{16 \\times 15}{2} = 8 \\times 15 = 120\n$$\n정답은 ④이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -511,7 +511,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "동전 $4$개를 던질 때의 전체 경우의 수와 뒷면이 $2$개 나오는 경우의 수를 구한다.\n1. 전체 경우의 수는 $2 \\times 2 \\times 2 \\times 2 = 16$가지이다.\n2. $4$개 중 뒷면이 나올 $2$개의 동전을 고르는 경우의 수는 $\\dfrac{4 \\times 3}{2} = 6$가지이다.\n$$\n\\dfrac{6}{16} = \\dfrac{3}{8}\n$$\n정답은 ②이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -547,7 +547,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "전체 대표 $2$명을 뽑는 경우의 수와 같은 성별 $2$명을 뽑는 경우의 수를 구한다.\n1. 전체 $9$명 중 대표 $2$명을 뽑는 경우의 수는 $\\dfrac{9 \\times 8}{2} = 36$가지이다.\n2. 모두 남학생인 경우: $\\dfrac{5 \\times 4}{2} = 10$가지, 모두 여학생인 경우: $\\dfrac{4 \\times 3}{2} = 6$가지이다.\n3. 구하는 확률은\n$$\n\\dfrac{10 + 6}{36} = \\dfrac{16}{36} = \\dfrac{4}{9}\n$$\n정답은 ①이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -583,7 +583,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "$a + b$가 홀수이려면 두 수 중 하나는 짝수, 다른 하나는 홀수여야 한다.\n1. $a$가 짝수이고 $b$가 홀수일 확률: $\\dfrac{1}{3} \\times \\left(1 - \\dfrac{3}{4}\\right) = \\dfrac{1}{3} \\times \\dfrac{1}{4} = \\dfrac{1}{12}$\n2. $a$가 홀수이고 $b$가 짝수일 확률: $\\left(1 - \\dfrac{1}{3}\\right) \\times \\dfrac{3}{4} = \\dfrac{2}{3} \\times \\dfrac{3}{4} = \\dfrac{6}{12}$\n3. 구하는 확률은\n$$\n\\dfrac{1}{12} + \\dfrac{6}{12} = \\dfrac{7}{12}\n$$\n정답은 ⑤이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -609,7 +609,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "content": "$A, B$ 두 사람이 $1$부터 $4$까지의 자연수가 각각 하나씩 적힌 정사면체 주사위를 한 번씩 던져서 더 큰 수의 눈이 나오면 이기는 놀이를 할 때, 승부가 결정될 확률은? [4점]",
+    "content": "$A, B$ 두 사람이 각각 $1$부터 $4$까지의 자연수가 하나씩 적힌 공정한 정사면체 주사위를 서로 독립적으로 한 번씩 던져서 더 큰 수의 눈이 나오면 이기는 놀이를 할 때, 승부가 결정될 확률은? [4점]",
     "choices": [
       "$\\dfrac{1}{4}$",
       "$\\dfrac{1}{2}$",
@@ -619,7 +619,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "전체 경우의 수에서 두 사람의 눈이 같아 비기는 여사건의 확률을 뺀다.\n1. 전체 경우의 수는 $4 \\times 4 = 16$가지이다.\n2. 비기는 경우는 $(1, 1), (2, 2), (3, 3), (4, 4)$의 $4$가지이므로 비길 확률은 $\\dfrac{4}{16} = \\dfrac{1}{4}$이다.\n3. 따라서 승부가 결정될 확률은\n$$\n1 - \\dfrac{1}{4} = \\dfrac{3}{4}\n$$\n정답은 ③이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -655,7 +655,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "두 사건은 서로 여사건 관계이므로 두 확률의 합은 $1$이다.\n1. 모두 뒷면이 나올 확률은 $a = \\dfrac{1}{16}$이다.\n2. 적어도 하나가 앞면이 나올 확률은 $b = 1 - \\dfrac{1}{16} = \\dfrac{15}{16}$이다.\n$$\na + b = \\dfrac{1}{16} + \\dfrac{15}{16} = 1\n$$\n정답은 ②이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -691,7 +691,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "세 문제를 모두 틀리는 여사건의 확률을 이용한다.\n1. 한 문제를 틀릴 확률은 $1 - \\dfrac{1}{4} = \\dfrac{3}{4}$이다.\n2. 세 문제를 모두 틀릴 확률은 $\\dfrac{3}{4} \\times \\dfrac{3}{4} \\times \\dfrac{3}{4} = \\dfrac{27}{64}$이다.\n3. 따라서 적어도 한 문제를 맞힐 확률은\n$$\n1 - \\dfrac{27}{64} = \\dfrac{37}{64}\n$$\n정답은 ④이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -717,7 +717,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "content": "$5$개의 당첨 제비를 포함한 $12$개의 제비가 들어 있는 상자에서 차례로 $2$개의 제비를 뽑으며 각 제비가 같은 확률로 선택될 때, $2$개 모두 당첨 제비일 확률은? (단, 뽑은 제비는 다시 넣지 않는다.) [4점]",
+    "content": "$5$개의 당첨 제비를 포함한 $12$개의 제비가 들어 있는 상자에서 차례로 $2$개의 제비를 뽑되, 매 단계에서 상자 안의 제비 각각이 같은 확률로 뽑히고 뽑은 제비는 되넣지 않을 때, $2$개 모두 당첨 제비일 확률은? [4점]",
     "choices": [
       "$\\dfrac{5}{33}$",
       "$\\dfrac{25}{144}$",
@@ -726,8 +726,8 @@ window.questionBank = [
       "$\\dfrac{10}{33}$"
     ],
     "answer": "①",
-    "solution": "비복원 추출이므로 두 번째 뽑기에서 전체 수와 당첨 제비 수가 각각 $1$씩 줄어든다.\n1. 첫 번째에 당첨 제비를 뽑을 확률은 $\\dfrac{5}{12}$이다.\n2. 첫 번째가 당첨이었다는 조건 아래 두 번째도 당첨일 조건부 확률은 $\\dfrac{4}{11}$이다.\n3. 구하는 확률은\n$$\n\\dfrac{5}{12} \\times \\dfrac{4}{11} = \\dfrac{5}{33}\n$$\n정답은 ①이다.",
-    "points": 4.0,
+    "solution": "첫 번째 추첨에서 당첨 제비가 나온 경우에는 비복원 추출이므로 두 번째 추첨 때 제비는 $11$개 남고 그중 당첨 제비는 $4$개이다.\n1. 첫 번째에 당첨 제비를 뽑을 확률은 $\\dfrac{5}{12}$이다.\n2. 첫 번째가 당첨이었다는 조건 아래 두 번째도 당첨일 조건부 확률은 $\\dfrac{4}{11}$이다.\n3. 구하는 확률은\n$$\n\\dfrac{5}{12} \\times \\dfrac{4}{11} = \\dfrac{5}{33}\n$$\n정답은 ①이다.",
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -760,7 +760,7 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $12\\text{ cm}$, (2) $y = 12x + 6$, (3) $126\\text{ cm}$",
     "solution": "(1) 정육각형 $1$개를 이어 붙일 때마다 새 정육각형의 $6$개의 변 중 겹치는 $1$개의 변과 기존 도형의 $1$개의 변이 내부로 들어가므로 둘레에 남는 변은 $6 - 2 = 4$개씩 늘어난다.\n한 변의 길이가 $3\\text{ cm}$이므로 둘레의 길이는 $4 \\times 3 = 12\\text{ cm}$씩 늘어난다.\n(2) 정육각형 $1$개의 둘레의 길이는 $6 \\times 3 = 18\\text{ cm}$이고, $x$개를 이어 붙이면 $12\\text{ cm}$씩 $(x - 1)$번 늘어나므로\n$$\ny = 18 + 12(x - 1) = 12x + 6\n$$\n(3) $x = 10$을 대입하면\n$$\ny = 12 \\times 10 + 6 = 126\\text{ cm}\n$$\n정답은 (1) $12\\text{ cm}$, (2) $y = 12x + 6$, (3) $126\\text{ cm}$이다.",
-    "points": 8.0,
+    "points": 8,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -791,7 +791,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$3$",
     "solution": "두 직선의 교점이 무수히 많으려면 두 직선이 서로 일치해야 한다.\n둘째 식 $3x - y = 2$의 양변에 $3$을 곱하면\n$$\n9x - 3y = 6\n$$\n첫째 식 $ax - 3y = b$와 계수 및 상수항을 비교하면 $a = 9, b = 6$이다.\n따라서 $a - b = 9 - 6 = 3$이다.\n정답은 $3$이다.",
-    "points": 4.0,
+    "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
@@ -824,7 +824,7 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $12, 24, 36$, (2) 곱이 $12$: $(2, 6), (3, 4), (4, 3), (6, 2)$ / 곱이 $24$: $(4, 6), (6, 4)$ / 곱이 $36$: $(6, 6)$, (3) $\\dfrac{7}{36}$",
     "solution": "(1) 시계 방향으로 $12$칸 이동할 때마다 처음 위치인 $12$로 돌아오므로 두 주사위 눈의 곱은 $12$의 배수여야 한다. 두 눈의 곱은 $1$ 이상 $36$ 이하이므로 가능한 수는 $12, 24, 36$이다.\n(2) 각 수에 해당하는 두 주사위 눈의 순서쌍은 다음과 같다.\n$$\\begin{aligned}\n\\text{곱이 } 12 &: (2, 6), (3, 4), (4, 3), (6, 2) \\quad (4\\text{가지}) \\\\\n\\text{곱이 } 24 &: (4, 6), (6, 4) \\quad (2\\text{가지}) \\\\\n\\text{곱이 } 36 &: (6, 6) \\quad (1\\text{가지})\n\\end{aligned}$$\n(3) 전체 경우의 수는 $6 \\times 6 = 36$가지이고, 조건을 만족하는 경우는 $4 + 2 + 1 = 7$가지이므로 구하는 확률은\n$$\n\\dfrac{7}{36}\n$$\n정답은 (1) $12, 24, 36$, (2) $(2, 6), (3, 4), (4, 3), (6, 2), (4, 6), (6, 4), (6, 6)$, (3) $\\dfrac{7}{36}$이다.",
-    "points": 8.0,
+    "points": 8,
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2"
