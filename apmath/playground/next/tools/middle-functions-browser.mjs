@@ -135,6 +135,28 @@ try {
           await Promise.all(element.getAnimations({ subtree: true }).filter(animation => Number.isFinite(animation.effect.getComputedTiming().endTime)).map(animation => animation.finished.catch(() => {})));
           await new Promise(requestAnimationFrame);
         });
+        if (g7) {
+          // G7 keeps its heading, canvas and controls in normal document flow.
+          // The optional native end card follows them; record its real layout
+          // before scrolling, then retain the same visible-answer assertions.
+          const before = await page.locator('.apl-vans').evaluate(answer => {
+            const r = answer.getBoundingClientRect(), scroller = document.scrollingElement;
+            const geometry = element => ({ overflowY: getComputedStyle(element).overflowY,
+              scrollHeight: element.scrollHeight, clientHeight: element.clientHeight, scrollTop: element.scrollTop });
+            return { answer: { top: r.top, bottom: r.bottom, left: r.left, right: r.right, documentBottom: r.bottom + scrollY },
+              body: geometry(document.body), document: geometry(document.documentElement),
+              scrollingElement: { tag: scroller.tagName, ...geometry(scroller) }, scrollY, viewportHeight: innerHeight };
+          });
+          row.nativeEndAccess = { method: 'DOCUMENT_SCROLL', before };
+          const needsScroll = before.answer.top < 0 || before.answer.bottom > before.viewportHeight + 1;
+          const scrollable = ![before.body.overflowY, before.document.overflowY].some(value => ['hidden', 'clip'].includes(value)) &&
+            before.scrollingElement.scrollHeight > before.scrollingElement.clientHeight &&
+            before.answer.documentBottom <= before.scrollingElement.scrollHeight + 1;
+          check('G7 native answer is reachable in normal document flow', !needsScroll || scrollable, row.nativeEndAccess);
+          await page.locator('.apl-vans').scrollIntoViewIfNeeded();
+          row.nativeEndAccess.after = await page.evaluate(() => ({ scrollY, scrollTop: document.scrollingElement.scrollTop }));
+          check('G7 document scroll reaches the native answer', !needsScroll || row.nativeEndAccess.after.scrollY !== before.scrollY, row.nativeEndAccess);
+        }
         const end = await page.evaluate(() => {
           const answer = document.querySelector('.apl-vans'), r = answer.getBoundingClientRect();
           const sc = lab.scene, spec = sc._mf, values = APL_MF.values(spec, lab.s), model = spec.model(values);
