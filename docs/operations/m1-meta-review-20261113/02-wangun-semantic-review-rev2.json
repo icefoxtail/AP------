@@ -1,0 +1,2220 @@
+{
+  "schemaVersion": "existing-exam-semantic-meta-review-v1",
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "owner": "GPT_ROOT_933015CD0A4F",
+  "baselineMain": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
+  "recordedAt": "2026-11-13T15:44:32.955326+00:00",
+  "status": "ROOT_CONFIRMED_METADATA_SEMANTICS_PREPARATION_PENDING_DEPENDENCY",
+  "reviewScope": "METADATA_ONLY_CURRENT_SOURCE",
+  "metadataReviewed": true,
+  "examMathFinalQaPerformed": false,
+  "fullR1R2R3Rerun": false,
+  "source": {
+    "path": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+    "blobSha1": "76377173ecb0ba989188561bbefac2afb3232479",
+    "rawSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
+    "questionCount": 23
+  },
+  "counts": {
+    "allPromptChoicesSolutionsRead": 23,
+    "uniqueQuestionAndSolutionFiguresViewed": 33,
+    "semanticOrParentCorrected": 20,
+    "exactRpmLeaves": 19,
+    "rpmDebt": 4,
+    "newProblemTypes": 5,
+    "newTemplates": 5,
+    "newExactCrosswalkSupplements": 15
+  },
+  "rootConfirmation": {
+    "all23TextAndSolutionsRead": true,
+    "all33UniqueImagesViewedByAssignedReviewers": true,
+    "sourceOnlyReadingBeforeComparison": true,
+    "crossReviewOrdinals": [
+      2,
+      4,
+      11,
+      19,
+      20,
+      22
+    ],
+    "notes": "Q2 NONE and CC_TRIANGLE_INEQUALITY confirmed; Q22 new numeric-independent graph-segment template independently confirmed. Proposed PT_* crossConcept entries from part A are corrected here to registered atomic CC keys. Candidate snapshots remain immutable history."
+  },
+  "rpmEvidenceDebtOrdinals": [
+    2,
+    3,
+    4,
+    16
+  ],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_04eec2165bbc177b619ab9ca935330f6fd60a9906437f50a36f56aa18de7c95a",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-190",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 작도",
+          "l4": "한 변과 양 끝각 조건"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "problemTypeKey": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+        "templateKey": "TPL_M1_TRIANGLE_CONSTRUCTION_ORDER_ASA_VERTEX_DEPENDENCY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-190-CONSTRUCTION-ORDER-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 작도",
+          "l4": "한 변과 양 끝각 조건"
+        }
+      },
+      "primaryMethod": "삼각형을 구성하는 각 단계에서 이미 확정된 꼭짓점과 변을 추적하여 다음 작도가 가능한지 판정한다.",
+      "decisiveStep": "각을 옮길 꼭짓점이 먼저 정해져야 한다는 선행 조건으로 작도 순서의 성립 여부를 구분한다.",
+      "reason": "점·선·면의 성질이 아니라 삼각형 작도 절차가 핵심이다. 현재 UNIQUE_TRIANGLE_DATA는 주어진 조건의 존재·유일성을 분류한다. 이 문항은 고정된 한 변과 두 끝각 조건에서 실행 가능한 단계 순서를 판단하므로 필요한 논리 전환이 다르다. 한 변과 양 끝각 조건의 삼각형 작도라는 RPM leaf는 정확하다. 현재190의 UNIQUENESS 투영은 새 순서 PT/TPL에 맞지 않으므로 새 exact branch가 필요하다.",
+      "integrationReason": "순서·선행조건 추적은 제안된 작도 절차 PT/TPL 자체의 풀이이며 독립된 다른 개념을 결합하지 않는다.",
+      "candidateRef": "02-wangun-q01-q08-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-190",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "작도와 합동"
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_CONGRUENCE_UNIQUENESS",
+          "after": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER"
+        },
+        "templateKey": {
+          "before": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+          "after": "TPL_M1_TRIANGLE_CONSTRUCTION_ORDER_ASA_VERTEX_DEPENDENCY"
+        },
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-190",
+          "after": "M1-RPM-190-CONSTRUCTION-ORDER-20261113"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      }
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_c57da4ba1098bc858461c9928cef484c1e81bccf587ef91075d59ab2199264b1",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
+        "crossConceptKeys": [
+          "PT_M1_CONGRUENCE_UNIQUENESS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CLAIM_AUDIT",
+        "rpmPrimaryRecordId": "M1-RPM-185",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "기본 작도",
+          "l4": "선분·각의 이동"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_INEQUALITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null
+      },
+      "primaryMethod": "작도 도구가 허용하는 조작을 구별하고 삼각형이 실제로 성립하는지 조건별로 점검한다.",
+      "decisiveStep": "길이를 옮기는 도구의 역할과 퇴화하지 않는 삼각형의 성립조건을 서로 다른 진술에 적용한다.",
+      "reason": "작도 도구·가능성의 내용이므로 BASIC_FIGURE의 점·선·면 분류를 유지할 근거가 없다. 컴퍼스와 눈금 없는 자의 기능을 판정하는 기존 도구 역할 skeleton을 실제로 사용한다. 삼각형의 성립조건은 보조 진술의 별도 개념이다. locked 기본 작도의 L4는 선분·각의 이동/수직이등분선 작도/각의 이등분선 작도이다. 이 문항의 도구 역할·작도 가능성 진술을 정확히 나타내는 leaf는 확인하지 못했다. 185가 도구 역할까지 포함하는 의도라는 별도 근거 없이 ARC_CHORD_ANGLE_COPY로 투영하면 실제 풀이가 달라진다. 보수적 제안은 RPM만 EVIDENCE_DEBT이며, root가185의 범위를 확정하면 TOOL_USAGE 전용 exact crosswalk로 연결 가능하다.",
+      "integrationReason": "도구 역할과 삼각형 성립 진술을 독립적으로 판단하며 결과 전달 또는 조건별 수학적 경우분기는 없다. 담당 검토자도 CASE_BRANCH 권고를 철회하고 NONE에 동의했다.",
+      "candidateRef": "02-wangun-q01-q08-review.json",
+      "rpmEvidenceDebt": "locked 기본 작도의 L4는 선분·각의 이동/수직이등분선 작도/각의 이등분선 작도이다. 이 문항의 도구 역할·작도 가능성 진술을 정확히 나타내는 leaf는 확인하지 못했다. 185가 도구 역할까지 포함하는 의도라는 별도 근거 없이 ARC_CHORD_ANGLE_COPY로 투영하면 실제 풀이가 달라진다. 보수적 제안은 RPM만 EVIDENCE_DEBT이며, root가185의 범위를 확정하면 TOOL_USAGE 전용 exact crosswalk로 연결 가능하다.",
+      "rpmBaseLeafRecordId": null,
+      "exactBridgeAction": "PARENT_ONLY_LEAF_DEBT",
+      "sourceMetadataChanges": {
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "작도와 합동"
+        },
+        "crossConceptKeys": {
+          "before": [
+            "PT_M1_CONGRUENCE_UNIQUENESS"
+          ],
+          "after": [
+            "CC_TRIANGLE_INEQUALITY"
+          ]
+        },
+        "integrationPattern": {
+          "before": "CLAIM_AUDIT",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-185",
+          "after": null
+        },
+        "rpmPrimaryPath": {
+          "before": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "기본 작도",
+            "l4": "선분·각의 이동"
+          },
+          "after": null
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      }
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_bab52ee228bcefba5cba3c3e098437496cea2050c01904e3da3ab63c81581df2",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "DIRECT_TRANSFER",
+        "rpmPrimaryRecordId": "",
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null
+      },
+      "primaryMethod": "주어진 합동식의 꼭짓점 순서를 기준으로 대응하는 변과 각을 일치시켜 주어진 정보를 옮긴다.",
+      "decisiveStep": "그림의 좌우 배치와 무관하게 합동식의 순서가 대응 관계를 결정한다.",
+      "reason": "주어진 합동도형의 대응 관계를 적용하는 문제이다. 정본의 순서 대응→표시된 정보 전달 skeleton과 일치한다. 알려진 요소를 고르는지 미지 요소를 고르는지의 응답 차이는 새 유형 사유가 아니다. 이 문제는 합동을 증명하거나 합동조건을 선택하지 않는다. locked 삼각형의 합동 L4는 SSS/SAS/ASA뿐이고 주어진 합동식의 단순 대응 전용 leaf가 없으므로 현재 공백이 정당하다.",
+      "integrationReason": "합동식 순서와 대응 요소의 전달이 기존 PT/TPL 내부 기본 풀이 전체이다.",
+      "candidateRef": "02-wangun-q01-q08-review.json",
+      "rpmEvidenceDebt": "이 문제는 합동을 증명하거나 합동조건을 선택하지 않는다. locked 삼각형의 합동 L4는 SSS/SAS/ASA뿐이고 주어진 합동식의 단순 대응 전용 leaf가 없으므로 현재 공백이 정당하다.",
+      "rpmBaseLeafRecordId": null,
+      "exactBridgeAction": "PARENT_ONLY_LEAF_DEBT",
+      "sourceMetadataChanges": {
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "작도와 합동"
+        },
+        "integrationPattern": {
+          "before": "DIRECT_TRANSFER",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "",
+          "after": null
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      }
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_347acf016e50757f50f493be205035c52686071e612c8f9ee44312d8f7e5e785",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+        "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_SPATIAL_LINE_CLASSIFICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "RELATION_CLASSIFICATION",
+        "rpmPrimaryRecordId": "",
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null
+      },
+      "primaryMethod": "기준 모서리와 다른 모서리의 만남·평행 관계를 점검하여 꼬인 위치에 해당하는 관계를 남긴다.",
+      "decisiveStep": "같은 꼭짓점을 갖거나 평행한 후보를 제외한 뒤 공간의 두 직선 관계를 판정한다.",
+      "reason": "입체도형의 겉모양이 아니라 공간에서 두 직선의 위치 관계가 실제 개념이다. 현재 SPATIAL_LINE_CLASSIFICATION은 위치 관계 용어와 일반 집합 용어를 구별하는 skeleton이다. 기존 SKEW_EDGE_COUNT는 만나는 모서리·평행 모서리를 제외해 꼬인 관계를 남기는 동일 핵심 풀이이다. 선택형/개수형 응답 차이를 이유로 신설하지 않는다. 공간에서 두 직선의 꼬인 관계에 맞는 locked leaf가 없다.179/180은 평면에서의 위치 관계이고181/182는 직선-평면/평면-평면이다. 첫 시험지와 같은 exact-leaf debt를 유지한다.",
+      "integrationReason": "모서리의 만남·평행·꼬임 분류만으로 끝나며 독립된 부가 개념을 결합하지 않는다.",
+      "candidateRef": "02-wangun-q01-q08-review.json",
+      "rpmEvidenceDebt": "공간에서 두 직선의 꼬인 관계에 맞는 locked leaf가 없다.179/180은 평면에서의 위치 관계이고181/182는 직선-평면/평면-평면이다. 첫 시험지와 같은 exact-leaf debt를 유지한다.",
+      "rpmBaseLeafRecordId": null,
+      "exactBridgeAction": "PARENT_ONLY_LEAF_DEBT",
+      "sourceMetadataChanges": {
+        "problemTypeKey": {
+          "before": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+          "after": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS"
+        },
+        "templateKey": {
+          "before": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_SPATIAL_LINE_CLASSIFICATION",
+          "after": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT"
+        },
+        "integrationPattern": {
+          "before": "RELATION_CLASSIFICATION",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "",
+          "after": null
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계"
+      }
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_489c87bbd253da2356fd202dd5103c28eccd0de434e4fd6995a7063d92b55575",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "DIRECT",
+        "rpmPrimaryRecordId": "M1-RPM-190",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 작도",
+          "l4": "한 변과 양 끝각 조건"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-190-UNIQUENESS-CONSTRUCTION-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 작도",
+          "l4": "한 변과 양 끝각 조건"
+        }
+      },
+      "primaryMethod": "삼각형의 각 조건을 한 변의 양 끝각 조건으로 정리한 뒤 삼각형의 유일 결정 여부를 판단한다.",
+      "decisiveStep": "알려진 두 각에서 나머지 각을 확인하면 고정된 변에 대한 두 끝각이 정해진다는 점을 사용한다.",
+      "reason": "삼각형을 하나로 정하는 작도 조건이 주된 판단이다. SIDE_AND_TWO_ANGLE_UNIQUENESS 등 기존 alias와 존재·유일성 판단 skeleton이 정확히 적용된다. 나머지 각을 확인하여 실제로 한 변과 양 끝각 조건을 사용하므로190이 맞다. construction native key에 대한 UNIQUE_TRIANGLE_DATA exact branch가 필요하다.",
+      "integrationReason": "삼각형 내각합으로 누락 각을 확보한 결과를 작도의 유일성 판단에 사용한다. 주어진 각을 그대로 비교하는 경우와 구별한 순차 결합 권고이다.",
+      "candidateRef": "02-wangun-q01-q08-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-190",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "작도와 합동"
+        },
+        "crossConceptKeys": {
+          "before": [],
+          "after": [
+            "CC_TRIANGLE_ANGLE_SUM"
+          ]
+        },
+        "integrationPattern": {
+          "before": "DIRECT",
+          "after": "SEQUENTIAL"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-190",
+          "after": "M1-RPM-190-UNIQUENESS-CONSTRUCTION-20261113"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      }
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_66b8bd71d68a153b6a7bdb56ff3536201ca5b0b7ca68e82b7a120b47ba8ce55b",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+        "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "DIRECT",
+        "rpmPrimaryRecordId": "M1-RPM-167",
+        "rpmPrimaryPath": {
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "정비례와 반비례",
+          "l3": "정비례",
+          "l4": "정비례 관계식"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-167-DIRECT-TABLE-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "정비례와 반비례",
+          "l3": "정비례",
+          "l4": "정비례 관계식"
+        }
+      },
+      "primaryMethod": "정비례 표의 알려진 값에서 일정한 비를 구하고 같은 비로 누락된 값을 완성한다.",
+      "decisiveStep": "관계식의 종류를 고르는 것이 아니라 이미 주어진 정비례의 상수를 복원하여 표의 빈 값을 정한다.",
+      "reason": "실제 내용은 정비례이며 위치 좌표 읽기가 아니므로 COORDINATE_PLANE으로 옮겨 binding 문제를 우회하면 안 된다. 현재 CLASSIFICATION_CORE는 여러 식의 정비례/반비례 판별이다. DIRECT_TABLE_COMPLETION의 일정비 복원→표 채우기 skeleton 및 RECOVER_RATIO_THEN_COMPLETE_TABLE alias가 실제 풀이와 같다. 칸 수·마지막 요구값의 차이는 새 유형 사유가 아니다. 정비례 관계식 leaf는 정확하지만 기존167의 CLASSIFICATION PT/TPL projection은 이 문항에 틀리므로 기존 parameter/table template 전용 branch가 필요하다.",
+      "integrationReason": "상수 복원과 값 대입은 해당 정비례 표 완성 PT/TPL의 기본 풀이이다.",
+      "candidateRef": "02-wangun-q01-q08-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-167",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "problemTypeKey": {
+          "before": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+          "after": "PT_M1_PROPORTION_PARAMETER_EVALUATION"
+        },
+        "templateKey": {
+          "before": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
+          "after": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION"
+        },
+        "integrationPattern": {
+          "before": "DIRECT",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-167",
+          "after": "M1-RPM-167-DIRECT-TABLE-20261113"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-1",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례"
+      }
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_13c5c93007955b679fe9896938511efccef68cb26e5450a54e1a98a5ac61b59e",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CLAIM_AUDIT",
+        "rpmPrimaryRecordId": "M1-RPM-170",
+        "rpmPrimaryPath": {
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "정비례와 반비례",
+          "l3": "반비례",
+          "l4": "반비례 그래프"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_M1_PROPORTION_GRAPH_PROPERTY_JUDGMENT",
+        "templateKey": "TPL_M1_PROPORTION_GRAPH_PROPERTY_JUDGMENT_COMPARISON_WITH_RECTANGLE_AREA",
+        "crossConceptKeys": [
+          "CC_RECTANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "rpmPrimaryRecordId": "M1-RPM-170-GRAPH-PROPERTY-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "정비례와 반비례",
+          "l3": "반비례",
+          "l4": "반비례 그래프"
+        }
+      },
+      "primaryMethod": "정비례와 반비례 그래프의 기본 성질을 대조하고 반비례의 좌표곱 불변을 좌표축에 붙은 직사각형 넓이로 해석한다.",
+      "decisiveStep": "좌표축까지의 두 길이의 곱이 반비례 상수와 연결된다는 의미 전환으로 넓이 변화 진술을 판정한다.",
+      "reason": "2022 M1-1 정비례와 반비례 영역이다. 시험지가2학기라는 이유로 M1-2 course를 강제하면 안 된다. 그래프의 원점 통과·변화·사분면과 반비례 직사각형 넓이의 성질을 함께 대조하는 기본 구조가 기존 정비례/반비례 관계식 분류, 현실 상황 그래프 읽기, 좌표 사다리꼴 넓이·삼각형 넓이비 template와 다르다. 반비례 그래프의 성질 판단이 primary이며 기존170은 RPM_ONLY이다. graph-property exact native key/binding/crosswalk를 등록할 때 같은 leaf를 유지할 수 있다.",
+      "integrationReason": "반비례의 좌표곱이라는 함수 관계를 직사각형 넓이라는 도형 언어로 해석하는 단계가 결정적이다.",
+      "candidateRef": "02-wangun-q01-q08-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-170",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "problemTypeKey": {
+          "before": "",
+          "after": "PT_M1_PROPORTION_GRAPH_PROPERTY_JUDGMENT"
+        },
+        "templateKey": {
+          "before": "",
+          "after": "TPL_M1_PROPORTION_GRAPH_PROPERTY_JUDGMENT_COMPARISON_WITH_RECTANGLE_AREA"
+        },
+        "crossConceptKeys": {
+          "before": [
+            "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION"
+          ],
+          "after": [
+            "CC_RECTANGLE_AREA"
+          ]
+        },
+        "conditionKeys": {
+          "before": [],
+          "after": [
+            "COND_POSITIVE"
+          ]
+        },
+        "integrationPattern": {
+          "before": "CLAIM_AUDIT",
+          "after": "REINTERPRETATION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-170",
+          "after": "M1-RPM-170-GRAPH-PROPERTY-20261113"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-1",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례"
+      }
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_be5c74c260f54fd3283324a100fa4c69a1f876580f99076a1caa364716f6b497",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CLAIM_AUDIT",
+        "rpmPrimaryRecordId": "M1-RPM-169",
+        "rpmPrimaryPath": {
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "정비례와 반비례",
+          "l3": "반비례",
+          "l4": "반비례 관계식"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
+        "crossConceptKeys": [
+          "CC_QUADRANTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-169-INVERSE-SUBSTITUTION-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "정비례와 반비례",
+          "l3": "반비례",
+          "l4": "반비례 관계식"
+        }
+      },
+      "primaryMethod": "주어진 대응값으로 반비례 상수를 복원한 뒤 관계식·값의 변화·그래프의 부호 성질을 대조한다.",
+      "decisiveStep": "일정한 좌표곱에서 관계식을 정하고 그 식의 대입 결과와 계수 부호를 각 진술에 적용한다.",
+      "reason": "반비례 관계식과 그래프 성질을 다루므로 native GRAPH_RELATION 및 M1-1 부모가 맞다. 주어진 대응쌍에서 상수를 복원한 뒤 값을 대입하는 기존 skeleton을 사용한다. 점의 정보가 문장에 주어졌는지 그래프에 주어졌는지, 숫자와 응답형식이 다른지는 수학적 전환의 차이가 아니다. 새 TPL은 제안하지 않는다. 반비례 관계식이 주요 경로이며 기존169는 RPM_ONLY이다. 기존 parameter/inverse substitution 쌍의 exact branch가 필요하다.",
+      "integrationReason": "먼저 반비례 상수를 결정한 결과를 사용해 값의 대입과 그래프 사분면 성질을 이어서 판단한다.",
+      "candidateRef": "02-wangun-q01-q08-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-169",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "problemTypeKey": {
+          "before": "",
+          "after": "PT_M1_PROPORTION_PARAMETER_EVALUATION"
+        },
+        "templateKey": {
+          "before": "",
+          "after": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION"
+        },
+        "crossConceptKeys": {
+          "before": [],
+          "after": [
+            "CC_QUADRANTS"
+          ]
+        },
+        "integrationPattern": {
+          "before": "CLAIM_AUDIT",
+          "after": "SEQUENTIAL"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-169",
+          "after": "M1-RPM-169-INVERSE-SUBSTITUTION-20261113"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-1",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례"
+      }
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_a86218e4f1d4036989c499fc2e0a19036ff858458049473da7a544394ca9bcbb",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_POSITIONAL_ANGLE_SUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-177",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-177-TRANSFER-DIRECT-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각"
+        }
+      },
+      "primaryMethod": "두 횡단선에 대해 평행선의 엇각·맞꼭지각을 각각 대응시킨다.",
+      "decisiveStep": "같은 위치 관계의 각을 옮긴 뒤 두 각의 차를 비교한다.",
+      "reason": "평행한 직선 사이에서 각을 옮긴 뒤 차를 구하는 풀이이며, 위치만 찾거나 정해진 위치의 각을 합하는 기존 template과 다르다. DIRECT_TRANSFER의 반복 이동 및 두 각의 차 alias가 같은 핵심을 포함한다.",
+      "integrationReason": "기존 실제 순차 각 이동을 유지한다.",
+      "candidateRef": "02-wangun-q09-q16-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-177",
+      "exactBridgeAction": "REUSE_EXISTING_EXACT",
+      "sourceMetadataChanges": {
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-POSITION_RELATION"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "위치 관계"
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_PARALLEL_ANGLE_POSITION",
+          "after": "PT_M1_PARALLEL_ANGLE_TRANSFER"
+        },
+        "templateKey": {
+          "before": "TPL_M1_PARALLEL_ANGLE_POSITION_POSITIONAL_ANGLE_SUM",
+          "after": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-177",
+          "after": "M1-RPM-177-TRANSFER-DIRECT-20261113"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계"
+      }
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_fac60a43c600971e9c4fab3777b0163a99a3cf70e7435087bf1c115666752dab",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "MODELING",
+        "rpmPrimaryRecordId": "M1-RPM-172",
+        "rpmPrimaryPath": {
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "정비례와 반비례",
+          "l3": "관계 해석",
+          "l4": "정비례·반비례 활용"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_M1_INVERSE_PROPORTION_WORK_APPLICATION",
+        "templateKey": "TPL_M1_INVERSE_PROPORTION_WORK_APPLICATION_REMAINING_WORK_RESOURCE_COUNT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-172-REMAINING-WORK-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "정비례와 반비례",
+          "l3": "관계 해석",
+          "l4": "정비례·반비례 활용"
+        }
+      },
+      "primaryMethod": "같은 성능의 기계 수와 작업 시간의 곱으로 작업량을 표현한다.",
+      "decisiveStep": "먼저 끝낸 작업량을 제외한 나머지를 정해진 시간으로 나누어 필요한 추가 기계 수를 판단한다.",
+      "reason": "작업량 보존과 자원 수·시간의 곱을 이용한다. 그래프의 점에서 비례상수를 읽거나 관계 종류를 판별하는 기존 template으로 치환하면 결정적 풀이가 달라진다. RPM 활용 leaf는 이미 존재하므로 leaf 부재가 아니라 native 및 연결 부채이다.",
+      "integrationReason": "보존된 작업량을 만든 뒤 남은 시간의 자원 수로 이어지는 순차 적용.",
+      "candidateRef": "02-wangun-q09-q16-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-172",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "problemTypeKey": {
+          "before": "",
+          "after": "PT_M1_INVERSE_PROPORTION_WORK_APPLICATION"
+        },
+        "templateKey": {
+          "before": "",
+          "after": "TPL_M1_INVERSE_PROPORTION_WORK_APPLICATION_REMAINING_WORK_RESOURCE_COUNT"
+        },
+        "integrationPattern": {
+          "before": "MODELING",
+          "after": "SEQUENTIAL"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-172",
+          "after": "M1-RPM-172-REMAINING-WORK-20261113"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-1",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례"
+      }
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_e4bb8690f6be4fd6e671583a743a1ecf03d39dd72f79adfbf0f5adc1375bdf1d",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CLAIM_AUDIT",
+        "rpmPrimaryRecordId": "M1-RPM-192",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER",
+        "crossConceptKeys": [
+          "CC_SEGMENT_MIDPOINT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-192-GENERAL-SIDE-TRANSFER-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동"
+        }
+      },
+      "primaryMethod": "평행사변형의 대변·대각과 각 변의 중점을 이용해 마주 보는 귀퉁이 삼각형 두 쌍의 SAS 합동을 확인한다.",
+      "decisiveStep": "대응 변과 각에서 얻는 결론과 추가 조건이 필요한 내부 사각형의 성질을 구분한다.",
+      "reason": "중점과 평행사변형의 대변·마주 보는 각에서 대응변 및 끼인각을 확보해 SAS를 만든 뒤 대응 성질을 검토한다. 합동 성립에 필요한 추가 조건을 고르는 기존 criterion-selection과 다르다. GENERAL_SIDE_TRANSFER의 선분 관계→SAS→대응 관계 핵심을 최소 재사용 후보로 택하되 현 definition이 공선 선분합에 한정돼 보이는 범위는 root 확인이 필요하다. Root가 실제 두 그림과 GENERAL_SIDE_TRANSFER의 alias PERPENDICULAR_BISECTOR_SAS_PROOF_CHECK를 확인하여, 선분 관계로 대응변을 확보한 뒤 SAS와 대응성질로 잇는 기존 skeleton 재사용을 확정했다. 별도 midpoint template는 만들지 않는다.",
+      "integrationReason": "중점·대변 조건에서 SAS를 만든 뒤 대응 성질로 이어지는 순차 적용.",
+      "candidateRef": "02-wangun-q09-q16-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-192",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "작도와 합동"
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_CONGRUENCE_UNIQUENESS",
+          "after": "PT_M1_CONGRUENCE_DATA_TRANSFER"
+        },
+        "templateKey": {
+          "before": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+          "after": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER"
+        },
+        "crossConceptKeys": {
+          "before": [],
+          "after": [
+            "CC_SEGMENT_MIDPOINT"
+          ]
+        },
+        "integrationPattern": {
+          "before": "CLAIM_AUDIT",
+          "after": "SEQUENTIAL"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-192",
+          "after": "M1-RPM-192-GENERAL-SIDE-TRANSFER-20261113"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      }
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_e0bf633136ca14fc3f3192b62eec9bdffa4227f3153aae3edb2e8d4b3a443532",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+        "crossConceptKeys": [
+          "PT_M1_PARALLEL_ANGLE_POSITION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-193",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "ASA 합동"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+        "crossConceptKeys": [
+          "CC_PARALLEL_LINE_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-193-CONSTRUCTION-CRITERION-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "ASA 합동"
+        }
+      },
+      "primaryMethod": "평행선의 엇각으로 두 쌍의 대응각을 확보한다.",
+      "decisiveStep": "그 두 각 사이의 대응 변 조건을 보충하여 ASA 합동을 만드는지를 판단한다.",
+      "reason": "엇각 두 쌍을 확보한 뒤 대응하는 끼인 변 조건을 보충해 ASA를 성립시키는 추가 조건 선택이다. 기존 template의 예시에서 먼저 주어진 요소와 순서가 다를 뿐 조건 완성 핵심은 같아 PT/TPL을 유지한다. source CC의 PT 키는 실제 atomic 평행선 각 개념으로 교체한다.",
+      "integrationReason": "기존 실제 순차 각 이동을 유지한다.",
+      "candidateRef": "02-wangun-q09-q16-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-193",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "작도와 합동"
+        },
+        "crossConceptKeys": {
+          "before": [
+            "PT_M1_PARALLEL_ANGLE_POSITION"
+          ],
+          "after": [
+            "CC_PARALLEL_LINE_ANGLES"
+          ]
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-193",
+          "after": "M1-RPM-193-CONSTRUCTION-CRITERION-20261113"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      }
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_ffce93ef42912eb61d142ffaadaf7bf56869adece6a6ed9beade2e717d08600b",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_POSITIONAL_ANGLE_SUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-177",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-177-TRANSFER-BENT-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각"
+        }
+      },
+      "primaryMethod": "각 꺾인 점을 지나 주어진 평행선과 평행한 보조선을 놓아 각을 옮긴다.",
+      "decisiveStep": "연속된 선분의 기울어진 각을 같은 기준선에서 비교하고 평각 관계를 연결한다.",
+      "reason": "꺾인 점을 지나는 평행 보조선으로 여러 각을 같은 기준에서 옮기는 실제 풀이가 BENT_LINE 정의와 일치한다. 위치 판정 및 위치별 각 합 template은 다른 유형이다. 보조평행선은 선택한 primary 자체의 핵심이므로 중복 CC를 덧붙이지 않는다.",
+      "integrationReason": "기존 실제 순차 각 이동을 유지한다.",
+      "candidateRef": "02-wangun-q09-q16-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-177",
+      "exactBridgeAction": "REUSE_EXISTING_EXACT",
+      "sourceMetadataChanges": {
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-POSITION_RELATION"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "위치 관계"
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_PARALLEL_ANGLE_POSITION",
+          "after": "PT_M1_PARALLEL_ANGLE_TRANSFER"
+        },
+        "templateKey": {
+          "before": "TPL_M1_PARALLEL_ANGLE_POSITION_POSITIONAL_ANGLE_SUM",
+          "after": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-177",
+          "after": "M1-RPM-177-TRANSFER-BENT-20261113"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계"
+      }
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_976adc004f55751504e0f92aafd1b6ec3f45c9e42af13b0a2b49c2a9f080ca0c",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "COUNTING",
+        "rpmPrimaryRecordId": "M1-RPM-172",
+        "rpmPrimaryPath": {
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "정비례와 반비례",
+          "l3": "관계 해석",
+          "l4": "정비례·반비례 활용"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_M1_INVERSE_PROPORTION_REGION_POINT_COUNT",
+        "templateKey": "TPL_M1_INVERSE_PROPORTION_REGION_POINT_COUNT_STRICT_BELOW_NATURAL_POINTS",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-172-REGION-NATURAL-POINTS-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "정비례와 반비례",
+          "l3": "관계 해석",
+          "l4": "정비례·반비례 활용"
+        }
+      },
+      "primaryMethod": "제1사분면 그래프 아래이면서 경계는 제외한다는 조건을 두 자연수 좌표의 곱에 대한 엄격한 부등식으로 읽는다.",
+      "decisiveStep": "가로 좌표별 가능한 세로 좌표 수를 합하여 주어진 점 개수와 맞는 매개값을 판별한다.",
+      "reason": "경계 곡선 위의 약수쌍을 세는 유형이 아니라 곡선 아래 열린 영역의 자연수 좌표를 가로 좌표별로 합한다. 기존 M1 정수점 template의 곱의 등식과 이번 엄격한 부등식은 실제 방법이 다르다. 고등 공통수학2 그래프·격자점 generic template도 해당 M1 binding이 없어 우회하지 않는다.",
+      "integrationReason": "열린 영역을 좌표 조건으로 읽고 좌표별 개수를 합하는 순차 적용.",
+      "candidateRef": "02-wangun-q09-q16-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-172",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "problemTypeKey": {
+          "before": "",
+          "after": "PT_M1_INVERSE_PROPORTION_REGION_POINT_COUNT"
+        },
+        "templateKey": {
+          "before": "",
+          "after": "TPL_M1_INVERSE_PROPORTION_REGION_POINT_COUNT_STRICT_BELOW_NATURAL_POINTS"
+        },
+        "conditionKeys": {
+          "before": [],
+          "after": [
+            "COND_NATURAL_NUMBER"
+          ]
+        },
+        "integrationPattern": {
+          "before": "COUNTING",
+          "after": "SEQUENTIAL"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-172",
+          "after": "M1-RPM-172-REGION-NATURAL-POINTS-20261113"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-1",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례"
+      }
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_da359e1af270778eaba94a76f15ea85954775c38c2df5aee986dc8ca22deba1f",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ALTERNATE_POSITION_IDENTIFICATION",
+        "crossConceptKeys": [
+          "PT_M1_INTERSECTING_ANGLE_RELATIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "DIRECT",
+        "rpmPrimaryRecordId": "M1-RPM-177",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ALTERNATE_POSITION_IDENTIFICATION",
+        "crossConceptKeys": [
+          "CC_VERTICAL_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-177-ALTERNATE-POSITION-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각"
+        }
+      },
+      "primaryMethod": "두 직선의 평행 여부와 무관하게 횡단선에 대한 엇각의 위치를 찾는다.",
+      "decisiveStep": "다른 교점의 맞꼭지각에서 크기를 읽으며 평행선의 각 같음 성질을 임의 적용하지 않는다.",
+      "reason": "평행 가정 없이 엇각 위치를 찾는 기존 template 의미는 맞다. 그 위치의 크기는 다른 교점의 맞꼭지각으로 읽으므로 atomic CC_VERTICAL_ANGLES가 보조개념이다. 평행선의 엇각이 같다는 성질을 대신 적용하면 안 된다.",
+      "integrationReason": "엇각 위치를 찾고 맞꼭지각 값으로 연결하는 순차 적용.",
+      "candidateRef": "02-wangun-q09-q16-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-177",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-POSITION_RELATION"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "위치 관계"
+        },
+        "crossConceptKeys": {
+          "before": [
+            "PT_M1_INTERSECTING_ANGLE_RELATIONS"
+          ],
+          "after": [
+            "CC_VERTICAL_ANGLES"
+          ]
+        },
+        "integrationPattern": {
+          "before": "DIRECT",
+          "after": "SEQUENTIAL"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-177",
+          "after": "M1-RPM-177-ALTERNATE-POSITION-20261113"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계"
+      }
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_883588b373d439a971a7895ded9819b72d753b886850f4d6b614a70fe1c94dd6",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+        "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT",
+        "crossConceptKeys": [
+          "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+          "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+          "PT_M1_PARALLEL_ANGLE_POSITION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CLAIM_AUDIT",
+        "rpmPrimaryRecordId": "",
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+        "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT",
+        "crossConceptKeys": [
+          "CC_SPATIAL_POSITION_RELATION",
+          "CC_PARALLEL_LINE_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null
+      },
+      "primaryMethod": "평각·맞꼭지각·평행 및 꼬인 위치·수직이등분선·동위각 진술의 정의와 전제조건을 대조한다.",
+      "decisiveStep": "빠진 평면·평행·직선 교차 조건을 구분하여 항상 성립하는 진술인지 판단한다.",
+      "reason": "기본 용어와 진술의 전제를 점검하는 기존 mixed-basic-facts audit와 정합한다. 여러 명제의 개별 판단을 묶은 문제이므로 한 세부 RPM leaf를 임의 대표로 지정하지 않는다. 잘못된 PT 형태 CC는 실제 보조인 공간 위치 및 평행선 각의 성립 조건으로 교체하고, 맞꼭지각은 primary audit의 직접 범위여서 중복 CC에서 제외한다.",
+      "integrationReason": "독립된 기본 명제의 정의·전제 확인이며 상호 의존하는 결합 풀이가 아니다.",
+      "candidateRef": "02-wangun-q09-q16-review.json",
+      "rpmEvidenceDebt": "기본 용어와 진술의 전제를 점검하는 기존 mixed-basic-facts audit와 정합한다. 여러 명제의 개별 판단을 묶은 문제이므로 한 세부 RPM leaf를 임의 대표로 지정하지 않는다. 잘못된 PT 형태 CC는 실제 보조인 공간 위치 및 평행선 각의 성립 조건으로 교체하고, 맞꼭지각은 primary audit의 직접 범위여서 중복 CC에서 제외한다.",
+      "rpmBaseLeafRecordId": null,
+      "exactBridgeAction": "PARENT_ONLY_LEAF_DEBT",
+      "sourceMetadataChanges": {
+        "crossConceptKeys": {
+          "before": [
+            "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+            "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+            "PT_M1_PARALLEL_ANGLE_POSITION"
+          ],
+          "after": [
+            "CC_SPATIAL_POSITION_RELATION",
+            "CC_PARALLEL_LINE_ANGLES"
+          ]
+        },
+        "integrationPattern": {
+          "before": "CLAIM_AUDIT",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "",
+          "after": null
+        }
+      },
+      "semanticOrParentCorrection": false,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형"
+      }
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_5fc1c99bd44c3aa0d8a579b57b9dc692129f8f7aafa66734154c979f307196f2",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CONSTRAINT_RECONSTRUCTION",
+        "rpmPrimaryRecordId": "M1-RPM-223",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값",
+          "l3": "중앙값과 최빈값",
+          "l4": "중앙값"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "rpmPrimaryRecordId": "M1-RPM-224",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값",
+          "l3": "중앙값과 최빈값",
+          "l4": "최빈값"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "primaryMethod": "유일 최빈값 조건과 정렬 순서로 누락 자료를 복원한 뒤 중앙값을 읽는다. 결정 단계는 최빈값 조건의 복원이다.",
+      "decisiveStep": "유일 최빈값 조건과 정렬 순서로 누락 자료를 복원한 뒤 중앙값을 읽는다. 결정 단계는 최빈값 조건의 복원이다.",
+      "reason": "기존 CONSTRAINT_RECONSTRUCTION은 유지한다. 출력이 중앙값이라는 이유로 최빈값을 이용한 핵심 복원을 중앙값 계산 leaf에만 두지 않는다. 기존 224 DIRECT가 정확한 native pair를 연결한다.",
+      "integrationReason": "주요 유형 내부의 직접 판단은 NONE, 서로 다른 해석을 이어 사용하는 문항은 SEQUENTIAL로 기록한다.",
+      "candidateRef": "02-wangun-q17-q23-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-224",
+      "exactBridgeAction": "REUSE_EXISTING_EXACT",
+      "sourceMetadataChanges": {
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-223",
+          "after": "M1-RPM-224"
+        },
+        "rpmPrimaryPath": {
+          "before": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "중앙값"
+          },
+          "after": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "최빈값"
+          }
+        },
+        "integrationPattern": {
+          "before": "CONSTRAINT_RECONSTRUCTION",
+          "after": "NONE"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "통계",
+        "midUnit": "대푯값"
+      }
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_6d302cad46fda4208bcacf6d853e9198738cc18e26c98f8e011bdad9672ef9f3",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CLAIM_AUDIT",
+        "rpmPrimaryRecordId": "M1-RPM-223",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값",
+          "l3": "중앙값과 최빈값",
+          "l4": "중앙값"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+        "rpmPrimaryRecordId": "M1-RPM-223-DEFINITION-AUDIT-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값",
+          "l3": "중앙값과 최빈값",
+          "l4": "중앙값"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "primaryMethod": "도수표에서 누적 순위와 최빈 변량을 읽어 중앙값·최빈값의 정의에 관한 진술을 판정한다.",
+      "decisiveStep": "도수표에서 누적 순위와 최빈 변량을 읽어 중앙값·최빈값의 정의에 관한 진술을 판정한다.",
+      "reason": "정의 진술 검토 템플릿은 표의 구체 자료에 정의를 적용하는 구조를 포함하므로 유지한다. 실제 해설의 결정 단계는 가운데 두 순위가 속한 자료값 확인이며 RPM223 유지, 정확 TPL bridge만 추가한다.",
+      "integrationReason": "주요 유형 내부의 직접 판단은 NONE, 서로 다른 해석을 이어 사용하는 문항은 SEQUENTIAL로 기록한다.",
+      "candidateRef": "02-wangun-q17-q23-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-223",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-223",
+          "after": "M1-RPM-223-DEFINITION-AUDIT-20261113"
+        },
+        "integrationPattern": {
+          "before": "CLAIM_AUDIT",
+          "after": "NONE"
+        }
+      },
+      "semanticOrParentCorrection": false,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "통계",
+        "midUnit": "대푯값"
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_3d56afccf7e200f169c308fe861e597fcba46e5cab6d7c7376be5f7359b3ff26",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE",
+        "crossConceptKeys": [
+          "PT_M1_CENTRAL_TENDENCY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "rpmPrimaryRecordId": "M1-RPM-231",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "분포 해석",
+          "l4": "히스토그램·그래프 해석"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "rpmPrimaryRecordId": "M1-RPM-223-MEDIAN-RECONSTRUCTION-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값",
+          "l3": "중앙값과 최빈값",
+          "l4": "중앙값"
+        },
+        "crossConceptKeys": [
+          "CC_FREQUENCY_DISTRIBUTION_TABLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "primaryMethod": "정렬된 줄기와 잎에서 중앙 두 관측값을 특정하고 중앙값 조건을 식으로 바꾸어 미지 잎의 합을 복원한다. 별도로 계급별 도수를 읽어 요구값과 결합한다.",
+      "decisiveStep": "정렬된 줄기와 잎에서 중앙 두 관측값을 특정하고 중앙값 조건을 식으로 바꾸어 미지 잎의 합을 복원한다. 별도로 계급별 도수를 읽어 요구값과 결합한다.",
+      "reason": "줄기와 잎이라는 외형으로 히스토그램 leaf231에 두지 않는다. 단순 도수표 옮기기는 미지잎 합을 결정하는 중앙값 제약을 담지 못한다. native 자료복원 재사용 + 중앙값223 exact bridge가 필요하다. exam_reviewer가 원문과 해당그림을 독립 재확인하여 primary 및 leaf 선택에 동의했다.",
+      "integrationReason": "주요 유형 내부의 직접 판단은 NONE, 서로 다른 해석을 이어 사용하는 문항은 SEQUENTIAL로 기록한다.",
+      "candidateRef": "02-wangun-q17-q23-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-223",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "subUnitKey": {
+          "before": "M1-08-DATA_ORGANIZATION",
+          "after": "M1-08-DATA_INTERPRETATION"
+        },
+        "subUnit": {
+          "before": "자료의 정리",
+          "after": "자료의 해석"
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "after": "PT_M1_CENTRAL_TENDENCY"
+        },
+        "templateKey": {
+          "before": "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE",
+          "after": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-231",
+          "after": "M1-RPM-223-MEDIAN-RECONSTRUCTION-20261113"
+        },
+        "rpmPrimaryPath": {
+          "before": {
+            "majorUnit": "통계",
+            "midUnit": "도수분포표와 상대도수",
+            "l3": "분포 해석",
+            "l4": "히스토그램·그래프 해석"
+          },
+          "after": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "중앙값"
+          }
+        },
+        "crossConceptKeys": {
+          "before": [
+            "PT_M1_CENTRAL_TENDENCY"
+          ],
+          "after": [
+            "CC_FREQUENCY_DISTRIBUTION_TABLE"
+          ]
+        },
+        "integrationPattern": {
+          "before": "INTERDEPENDENT",
+          "after": "SEQUENTIAL"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "통계",
+        "midUnit": "대푯값"
+      }
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_3e86de14da10d8992dbc19f6545babb8e7d87c7f9a579cc79ecb29757262426e",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+        "crossConceptKeys": [
+          "PT_M1_DATA_CATEGORY_PERCENTAGE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CLAIM_AUDIT",
+        "rpmPrimaryRecordId": "M1-RPM-231",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "분포 해석",
+          "l4": "히스토그램·그래프 해석"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+        "rpmPrimaryRecordId": "M1-RPM-227-STEM-LEAF-CLASS-AUDIT-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "도수분포표",
+          "l4": "계급·도수"
+        },
+        "crossConceptKeys": [
+          "CC_PERCENTAGE_CALCULATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "primaryMethod": "같은 줄기와 잎 자료를 계급 경계로 다시 나누어 도수를 비교하고 계급·자료 개수·비율·최빈값 진술을 점검한다.",
+      "decisiveStep": "같은 줄기와 잎 자료를 계급 경계로 다시 나누어 도수를 비교하고 계급·자료 개수·비율·최빈값 진술을 점검한다.",
+      "reason": "native STEM_LEAF_AUDIT는 유지한다. 결정 단계인 계급별 도수 비교에 맞춰231 그래프해석에서227 계급·도수로 연결한다. shared Q19 question figure까지 실제 읽었다. exam_reviewer가 원문과 해당그림을 독립 재확인하여 primary 및 leaf 선택에 동의했다.",
+      "integrationReason": "주요 유형 내부의 직접 판단은 NONE, 서로 다른 해석을 이어 사용하는 문항은 SEQUENTIAL로 기록한다.",
+      "candidateRef": "02-wangun-q17-q23-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-227",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-231",
+          "after": "M1-RPM-227-STEM-LEAF-CLASS-AUDIT-20261113"
+        },
+        "rpmPrimaryPath": {
+          "before": {
+            "majorUnit": "통계",
+            "midUnit": "도수분포표와 상대도수",
+            "l3": "분포 해석",
+            "l4": "히스토그램·그래프 해석"
+          },
+          "after": {
+            "majorUnit": "통계",
+            "midUnit": "도수분포표와 상대도수",
+            "l3": "도수분포표",
+            "l4": "계급·도수"
+          }
+        },
+        "crossConceptKeys": {
+          "before": [
+            "PT_M1_DATA_CATEGORY_PERCENTAGE"
+          ],
+          "after": [
+            "CC_PERCENTAGE_CALCULATION"
+          ]
+        },
+        "integrationPattern": {
+          "before": "CLAIM_AUDIT",
+          "after": "SEQUENTIAL"
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "통계",
+        "midUnit": "도수분포표와 상대도수"
+      }
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_9fdaf44f2d5156120df8007115c8393404e618be363a73a3c372357ab0a185fa",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "EQUATION",
+        "rpmPrimaryRecordId": "M1-RPM-176",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "각",
+          "l4": "맞꼭지각"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+        "rpmPrimaryRecordId": "M1-RPM-176-VERTICAL-ANGLE-EQUATION-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "각",
+          "l4": "맞꼭지각"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "primaryMethod": "맞꼭지각을 한 직선의 반대쪽으로 옮겨 인접한 각들의 합을 평각으로 세우고 미지수를 결정한다.",
+      "decisiveStep": "맞꼭지각을 한 직선의 반대쪽으로 옮겨 인접한 각들의 합을 평각으로 세우고 미지수를 결정한다.",
+      "reason": "현재 PT/TPL의 핵심인 맞꼭지각 이동과 평각 방정식이 실제 사용되므로 유지한다. 예시의 별도 수직 기준각은 이 문항의 필수 조건이 아니며 새 템플릿을 만들지 않는다.176 exact bridge만 추가한다.",
+      "integrationReason": "주요 유형 내부의 직접 판단은 NONE, 서로 다른 해석을 이어 사용하는 문항은 SEQUENTIAL로 기록한다.",
+      "candidateRef": "02-wangun-q17-q23-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-176",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-176",
+          "after": "M1-RPM-176-VERTICAL-ANGLE-EQUATION-20261113"
+        },
+        "integrationPattern": {
+          "before": "EQUATION",
+          "after": "NONE"
+        }
+      },
+      "semanticOrParentCorrection": false,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형"
+      }
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_42849e0c412ae8bf1f70e578c0ccbce121008daaf975b9bcbed49176badc79b4",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-172",
+        "rpmPrimaryPath": {
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "정비례와 반비례",
+          "l3": "관계 해석",
+          "l4": "정비례·반비례 활용"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_M1_PROPORTIONAL_GRAPH_SEGMENT_DIVISION",
+        "templateKey": "TPL_M1_PROPORTIONAL_GRAPH_HORIZONTAL_DIVISION_AXIS_PROJECTION",
+        "rpmPrimaryRecordId": "M1-RPM-172-HORIZONTAL-DIVISION-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "정비례와 반비례",
+          "l3": "관계 해석",
+          "l4": "정비례·반비례 활용"
+        },
+        "crossConceptKeys": [
+          "CC_RATIO_AND_PROPORTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "primaryMethod": "두 정비례식에 공통 세로좌표를 대입해 가로좌표를 구하고, 수평 선분 길이와 비례배분으로 분할점 좌표를 구한 뒤 축으로 투영한다.",
+      "decisiveStep": "두 정비례식에 공통 세로좌표를 대입해 가로좌표를 구하고, 수평 선분 길이와 비례배분으로 분할점 좌표를 구한 뒤 축으로 투영한다.",
+      "reason": "기존 M1 값대입·상수계산/사분면/정사각형 넓이 템플릿은 이 좌표→수평선분 비례배분→축투영 구조를 담지 못한다. 고등 내분점 공식 유형으로 우회하지 않는다. 최소 새 M1 PT/TPL 및 graph-relation binding, 기존RPM172 exact supplement 필요. meta_authority가 문제/해설 그림까지 독립 확인해 끝점 복원→비례배분→좌표 전환→축투영의 새 M1 skeleton 필요성에 동의했다.",
+      "integrationReason": "주요 유형 내부의 직접 판단은 NONE, 서로 다른 해석을 이어 사용하는 문항은 SEQUENTIAL로 기록한다.",
+      "candidateRef": "02-wangun-q17-q23-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-172",
+      "exactBridgeAction": "ADD_EXACT_SUPPLEMENT_PRESERVE_ALL_EXISTING_ROWS",
+      "sourceMetadataChanges": {
+        "problemTypeKey": {
+          "before": "",
+          "after": "PT_M1_PROPORTIONAL_GRAPH_SEGMENT_DIVISION"
+        },
+        "templateKey": {
+          "before": "",
+          "after": "TPL_M1_PROPORTIONAL_GRAPH_HORIZONTAL_DIVISION_AXIS_PROJECTION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-172",
+          "after": "M1-RPM-172-HORIZONTAL-DIVISION-20261113"
+        },
+        "crossConceptKeys": {
+          "before": [],
+          "after": [
+            "CC_RATIO_AND_PROPORTION"
+          ]
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-1",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례"
+      }
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_48d2321fd14aa0bb4e7cca39b2c8699e2dd65c8fd5b21a533f635435552ec03a",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+        "crossConceptKeys": [
+          "PT_M1_TRIANGLE_ANGLE_CHASE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-192",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동"
+        }
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+        "rpmPrimaryRecordId": "M1-RPM-192-CORRESPONDENCE-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동"
+        },
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "primaryMethod": "정삼각형의 같은 변·각과 주어진 선분 일치로 보조 삼각형의 SAS 합동을 보인 뒤 대응각을 옮겨 교점의 각을 결정한다.",
+      "decisiveStep": "정삼각형의 같은 변·각과 주어진 선분 일치로 보조 삼각형의 SAS 합동을 보인 뒤 대응각을 옮겨 교점의 각을 결정한다.",
+      "reason": "합동 조건 이름 선택이 아니라 합동을 이용한 대응각 전달이 목표다. 이미 첫 시험지에서 확인된 정확 PT/TPL/construct binding/192 supplement를 재사용한다. 예시 수치가 다르다는 이유로 신설하지 않는다.",
+      "integrationReason": "주요 유형 내부의 직접 판단은 NONE, 서로 다른 해석을 이어 사용하는 문항은 SEQUENTIAL로 기록한다.",
+      "candidateRef": "02-wangun-q17-q23-review.json",
+      "rpmEvidenceDebt": null,
+      "rpmBaseLeafRecordId": "M1-RPM-192",
+      "exactBridgeAction": "REUSE_EXISTING_EXACT",
+      "sourceMetadataChanges": {
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "작도와 합동"
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_CONGRUENCE_UNIQUENESS",
+          "after": "PT_M1_CONGRUENCE_DATA_TRANSFER"
+        },
+        "templateKey": {
+          "before": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+          "after": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-192",
+          "after": "M1-RPM-192-CORRESPONDENCE-20261113"
+        },
+        "crossConceptKeys": {
+          "before": [
+            "PT_M1_TRIANGLE_ANGLE_CHASE"
+          ],
+          "after": [
+            "CC_TRIANGLE_ANGLE_SUM"
+          ]
+        }
+      },
+      "semanticOrParentCorrection": true,
+      "metadataReviewed": true,
+      "normalDataChanges": false,
+      "registrationState": "PROPOSED_EXACT_NOT_REGISTERED",
+      "courseScope": "M1-2",
+      "effectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      }
+    }
+  ],
+  "newNativeProposals": [
+    {
+      "ordinal": 1,
+      "ownerPack": "MIDDLE1",
+      "problemTypeKey": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+      "problemTypeLabel": "삼각형의 작도 순서와 선행조건",
+      "problemTypeDefinition": "주어진 변과 각으로 삼각형을 작도할 때 각 단계에 필요한 꼭짓점과 선분이 먼저 정해졌는지 확인하여 가능한 구성 순서를 판단한다.",
+      "templateKey": "TPL_M1_TRIANGLE_CONSTRUCTION_ORDER_ASA_VERTEX_DEPENDENCY",
+      "templateLabel": "한 변과 양 끝각 작도의 꼭짓점 선행조건",
+      "templateDefinition": "한 변과 양 끝각으로 삼각형을 작도할 때 각을 옮길 끝점이 먼저 결정되어야 한다는 조건으로 작도 순서를 판정한다.",
+      "internalSkeleton": "각 단계 직전에 확정된 꼭짓점과 선분을 추적하고, 아직 정해지지 않은 꼭짓점을 요구하는 작도를 배제하여 유효한 순서를 판단한다.",
+      "excludedExisting": [
+        {
+          "key": "PT_M1_CONGRUENCE_UNIQUENESS",
+          "reason": "조건 집합의 유일 결정 여부가 목표이며, 이미 고정된 조건의 실행 순서 의존성을 다루지 않는다."
+        },
+        {
+          "key": "PT_M1_BASIC_CONSTRUCTION",
+          "reason": "현재 정의와 TOOL_USAGE·ARC_CHORD_ANGLE_COPY는 도구 역할 또는 한 각의 복사 절차이다. 삼각형 꼭짓점 선행 의존을 별도 PT로 분리하는 최소 후보이다."
+        }
+      ]
+    },
+    {
+      "ordinal": 7,
+      "ownerPack": "MIDDLE1",
+      "problemTypeKey": "PT_M1_PROPORTION_GRAPH_PROPERTY_JUDGMENT",
+      "problemTypeLabel": "정비례·반비례 그래프 성질 판단",
+      "problemTypeDefinition": "정비례와 반비례 관계식 및 비례상수의 조건을 그래프의 원점 통과, 방향, 사분면, 증감과 좌표곱 성질에 연결하여 그래프 관련 진술을 판단한다.",
+      "templateKey": "TPL_M1_PROPORTION_GRAPH_PROPERTY_JUDGMENT_COMPARISON_WITH_RECTANGLE_AREA",
+      "templateLabel": "정비례·반비례 그래프 비교와 직사각형 넓이",
+      "templateDefinition": "정비례 직선과 반비례 곡선의 성질을 대조하면서 반비례 그래프 위의 점에서 좌표축에 내린 수선으로 만든 직사각형의 넓이를 좌표곱 불변량으로 해석한다.",
+      "internalSkeleton": "비례상수의 부호와 식의 형태로 그래프의 기본 성질을 확인하고, 직사각형 두 변의 좌표 길이를 곱해 반비례 상수와 넓이의 관계를 판정한다.",
+      "excludedExisting": [
+        {
+          "key": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+          "reason": "식을 정비례인지 판별하는 유형이며 이미 두 종류의 식이 주어진 그래프 성질 문제와 다르다."
+        },
+        {
+          "key": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+          "reason": "현실 상황이나 주어진 변화 그래프의 값·구간 해석 skeleton이며 비례식의 성질을 연역하는 구조와 다르다."
+        },
+        {
+          "key": "PT_M1_COORDINATE_COMPOSITE_AREA",
+          "reason": "좌표 사각형 넓이 개념은 결정 단계의 보조 개념으로 적합하지만 현재 두 template는 사다리꼴 좌표 넓이 또는 세로 공선점 넓이비이다. 전체 그래프 진술 대조를 기존 template로 강제할 수 없다."
+        }
+      ]
+    },
+    {
+      "ordinal": 10,
+      "status": "PROPOSED_NOT_REGISTERED",
+      "ownerPack": "MIDDLE1",
+      "problemTypeKey": "PT_M1_INVERSE_PROPORTION_WORK_APPLICATION",
+      "problemTypeLabel": "반비례 관계의 작업량 활용",
+      "problemTypeDefinition": "같은 작업 효율에서 자원 수와 시간의 곱으로 전체 작업량을 나타내고 작업 조건의 변화를 계산한다.",
+      "templateKey": "TPL_M1_INVERSE_PROPORTION_WORK_APPLICATION_REMAINING_WORK_RESOURCE_COUNT",
+      "templateLabel": "남은 작업량과 추가 자원 수",
+      "templateDefinition": "일부 작업을 마친 뒤 남은 시간 안에 작업을 끝내도록 필요한 자원 수의 증가량을 정한다.",
+      "internalSkeleton": "전체 자원·시간 곱으로 작업량을 정한다 → 완료된 작업량을 뺀다 → 남은 작업량을 남은 시간으로 나눈다 → 기존 자원 수와 비교한다.",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION"
+      },
+      "rpmBaseLeaf": "M1-RPM-172",
+      "registryActionsRequired": [
+        "add PT",
+        "add TPL",
+        "add exact native binding",
+        "add exact RPM bridge"
+      ]
+    },
+    {
+      "ordinal": 14,
+      "status": "PROPOSED_NOT_REGISTERED",
+      "ownerPack": "MIDDLE1",
+      "problemTypeKey": "PT_M1_INVERSE_PROPORTION_REGION_POINT_COUNT",
+      "problemTypeLabel": "반비례 그래프 영역의 격자점 개수",
+      "problemTypeDefinition": "양의 반비례 그래프와 좌표축 사이 영역에 들어가는 자연수 좌표 점을 경계 포함 여부에 맞춰 센다.",
+      "templateKey": "TPL_M1_INVERSE_PROPORTION_REGION_POINT_COUNT_STRICT_BELOW_NATURAL_POINTS",
+      "templateLabel": "그래프 아래 열린 영역의 자연수 좌표 점",
+      "templateDefinition": "그래프 아래이고 곡선은 제외되는 영역의 자연수 좌표 점 개수로 비례상수 또는 조건을 판별한다.",
+      "internalSkeleton": "좌표의 곱이 비례상수보다 작다는 조건을 정한다 → 자연수 가로 좌표마다 가능한 세로 좌표 수를 센다 → 합계와 제시된 개수 조건을 비교한다.",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION"
+      },
+      "rpmBaseLeaf": "M1-RPM-172",
+      "registryActionsRequired": [
+        "add PT",
+        "add TPL",
+        "add exact native binding",
+        "add exact RPM bridge"
+      ]
+    },
+    {
+      "ordinal": 22,
+      "ownerPack": "MIDDLE1",
+      "problemTypeKey": "PT_M1_PROPORTIONAL_GRAPH_SEGMENT_DIVISION",
+      "problemTypeLabel": "정비례 그래프의 좌표와 선분 분할",
+      "problemTypeDefinition": "정비례식과 공통 좌표 조건으로 점의 좌표를 결정하고, 같은 좌표축에 평행한 선분의 길이와 비례배분으로 분할점의 위치를 구한다.",
+      "templateKey": "TPL_M1_PROPORTIONAL_GRAPH_HORIZONTAL_DIVISION_AXIS_PROJECTION",
+      "templateLabel": "공통 세로좌표의 선분 분할과 축 투영",
+      "templateDefinition": "두 정비례식에 공통 세로좌표를 대입하여 두 점의 가로좌표를 구한 뒤, 수평 선분의 길이와 분할비로 내분점을 정하고 x축에 내린 수선의 발을 읽는다.",
+      "internalSkeleton": "공통 y값 대입 → 각 x값 결정 → 가로좌표 차이로 선분 길이 → 주어진 비에 따른 가로 이동량 → 분할점 좌표 → 세로좌표를 0으로 바꾼 축 위 점.",
+      "excludedExisting": [
+        "M1 proportion parameter evaluation cannot represent endpoint-to-segment-ratio-to-axis projection.",
+        "M1 midpoint length relations do not contain coordinate reconstruction/projection; no midpoint is given.",
+        "High-school geometry-equations section formula is outside the actual M1 method and binding."
+      ]
+    }
+  ],
+  "authorityEvidence": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "sha256": "2f9845932532aa9c01c0a26fbce8a6547ca44e46a10cb1f2a76ef3c710016c44"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "sha256": "1404a9bcb5fe1387a2deafbaaf8fe135bef3613580670a46fd3d3252fd6e12de"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "sha256": "1c2e5c465e9f2efa5a3f77298e7ad9b6424211e90bc2281a5560f4ab01065ba2"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "sha256": "83f10a0787289d40a896f6118015d224b3672ebac059121f59bb7d31a500a83d"
+    },
+    {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "sha256": "e8db23593ff878de968ced04c011bd1f4de79279d7bab5c733c9ed98899d8551"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "sha256": "f43c66b50f9b7bb188114f6105cc173ad1e5895f0aa403a902e27510738fb8da"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+      "sha256": "d9ea3abe0d6760a675f93ddba26707c58abccbbb3c922095234b9dcc2936df65"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+      "sha256": "11889c08f041e0ac9ed3e131c3119369d51fb53d3704eaa637482894190d24cf"
+    }
+  ],
+  "evidenceRefs": [
+    {
+      "path": "docs/operations/m1-meta-review-20261113/02-wangun-semantic-read-checkpoint.json",
+      "sha256": "a299d9d82d150681cfbd7fc4aa8b7b5bb029300abe8bc60e1789670be86ed235"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/02-wangun-figure-read-evidence.json",
+      "sha256": "ae1ba79d988a3eac53dd81053b1956f5fac56b193077455d0e54211b63cc3309"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/02-wangun-q01-q08-review.json",
+      "sha256": "16c6f94dacac7c1e00788af65e776d55a2db73f328311bd8f526183f19a856bf"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/02-wangun-q09-q16-review.json",
+      "sha256": "8b22b538796f99b24195c286495c66e6da1763b3082bccc2c4178a9c40f08d27"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/02-wangun-q17-q23-review.json",
+      "sha256": "96982cc5c33712baeed5c86707dff2e729b0588efd923d1f5907ce3a0514a515"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/02-wangun-uid-association-correction.json",
+      "sha256": "f3392ade46ea82fc2be96c05617652e7e1cf1040335f6a71c7beb147393661fb"
+    }
+  ],
+  "pendingOperationalGates": [
+    "Shared course-typo correction dependency for Q6/Q8 via reviewed PR1965; preserve all existing approved consumers.",
+    "Minimal source metadata changes and protected payload/figure identity proof.",
+    "Official add-only native registration request and exact23 candidate Consumer preflight.",
+    "PR/main merge; actual official receipt and post-AutoMeta Consumer23; remote SHA and closing checkpoint."
+  ],
+  "noNormalDataOrDifficultyChangesAuthorizedByThisReport": true,
+  "revision": 2,
+  "supersedes": {
+    "path": "docs/operations/m1-meta-review-20261113/02-wangun-semantic-review.json",
+    "sha256": "ac9b5daa01d9160d4118049422d1ab4b4ab53b24067e56a8d52f2ef499a082cc",
+    "reason": "Correct only candidate UID associations to explicit sourceOrdinal; semantic judgments unchanged."
+  },
+  "ordinalUidAssociation": {
+    "authority": "current metadata and identity exact unique sourceOrdinal join",
+    "verifiedCount": 23,
+    "evidenceRef": {
+      "path": "docs/operations/m1-meta-review-20261113/02-wangun-uid-association-correction.json",
+      "sha256": "f3392ade46ea82fc2be96c05617652e7e1cf1040335f6a71c7beb147393661fb"
+    }
+  }
+}

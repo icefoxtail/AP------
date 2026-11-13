@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "m1-existing-meta-pr-dependency-review-addendum-v1",
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "reviewer": "GPT_ROOT_933015CD0A4F_CHECKPOINT",
+  "repository": "icefoxtail/AP------",
+  "pr": 1965,
+  "previousReview": {
+    "path": ".tmp/m1-meta-review/02-pr1965-review.json",
+    "sha256": "68148df2a7e2e6b961668722f6f65c728ebbd5646550931dc3627bf53d351cc5",
+    "head": "0f65b93e4d8656c6f8c0710d64bd510e11228a89"
+  },
+  "head": "9f82851d9807ffd04952a43874622e9d331e038b",
+  "additionalCommits": 1,
+  "prTotalChangedFiles": 11,
+  "deltaFiles": [
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "additions": 45,
+      "deletions": 14
+    },
+    {
+      "path": "tests/archive-main-merge-meta.test.mjs",
+      "additions": 148,
+      "deletions": 9
+    },
+    {
+      "path": "tests/meta-foundation-middle-geometry-runtime.test.js",
+      "additions": 129,
+      "deletions": 5
+    }
+  ],
+  "findings": [
+    {
+      "area": "production AutoMeta",
+      "status": "READ_ONLY_REVIEWED",
+      "finding": "This includes a real behavior change, not only a stale runtime test fix. Exact native receipt reuse is tried before strict producer completeness. Successful reuse returns ALREADY_REGISTERED without final metadata output or new approval. Existing missing producer fields remain missing."
+    },
+    {
+      "area": "native reuse guard",
+      "status": "NO_NEW_METADATA_APPROVAL_BYPASS_FOUND",
+      "finding": "Supplied fields still use the official validator. Current ACTIVE PT/TPL, parent relation, unique exact curriculum/course/unit/subunit binding, owner, runtime owner and source rationale remain required. Exact source bytes/Git blob/denominator, hashes of approval evidence and current metadata/runtime equality to registered receipt remain required."
+    },
+    {
+      "area": "new producer guard",
+      "status": "PRESERVED",
+      "finding": "Absent/stale/incompatible native proof falls back to requireFields:true and difficultyComplete. Invalid supplied enums/keys remain rejected; read-only native approval proof does not declare legacy invalid enum values eligible for producer reuse."
+    },
+    {
+      "area": "restarted display numbers",
+      "status": "NARROW_RECONCILIATION",
+      "finding": "Metadata and identity global question number must agree; registered identity number must agree as well. Source display number must equal exact accepted runtime display number and prior source display number. UID/global ordinal/source fingerprints remain guarded. No numbering mutation occurs."
+    },
+    {
+      "area": "runtime test",
+      "status": "EVIDENCE_BASED_REPLACEMENT",
+      "finding": "FINAL_QA/REVIEW2 records use exact native receipt, full current identity equality, source bytes, ACTIVE binding, runtime/fieldStatus and evidence SHA proof. Existing META_PIPELINE_AUDIT/source-parity branch and frozen/HOLD/ROUTE_OUT/UID/join assertions remain. Added negative cases reject flags without evidence and source/identity/runtime/proof drift."
+    },
+    {
+      "area": "synthetic tests",
+      "status": "CODE_READ_ONLY",
+      "finding": "New official-validator fixtures cover missing producer fields, invalid supplied enum/key values, stale/absent proof, inactive/wrong/ambiguous binding/owner, source rationale and restarted display/global number corruption. No test was executed by this reviewer."
+    }
+  ],
+  "testEvidence": {
+    "peerDeclaredLocal": {
+      "autoMeta": "96/96",
+      "actualCb3NativeApprovals": "5/5",
+      "negativeCases": "11/11",
+      "liveRuntimeOverlays": 1017,
+      "isolatedCorrectionChangedUid": "1/1",
+      "preservedMiddle1Consumers": 613,
+      "protectedFiles": 104
+    },
+    "provenance": "PR body declarations; not newly executed or independently certified by this review.",
+    "exactHeadWorkflows": [
+      {
+        "id": 43454773169,
+        "name": "Problem Bank Shared Meta",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 43454773330,
+        "name": "Archive2 Runtime Guard",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 43454773335,
+        "name": "CI",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 43454773170,
+        "name": "Archive Main Auto Metadata",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "integrationStatus": "EXACT_HEAD_CI_PENDING",
+    "actualCorrectionMainRegistration": "NOT_RUN"
+  },
+  "overlap": {
+    "additionalSourceChanges": 0,
+    "additionalRequestChanges": 0,
+    "additionalCanonicalChanges": 0,
+    "priorSourceRequestOverlapFindingPreserved": true,
+    "rootDuplicateTestCandidate": "Saved in .tmp/m1-meta-review/02-middle-geometry-runtime-local-candidate.cjs by root; tracked test restored to main, no duplicate publication.",
+    "sameExamInvestigationIntent": "Still declared in PR body; no published source/request editing changes in this delta."
+  },
+  "recommendation": "Retain prior review and reuse the remote exact-head runtime fix after CI succeeds. Keep standalone binding spelling correction and its actual main receipt/full-pack Consumer proof separate from later Wangun v2 registration.",
+  "actionsNotPerformed": [
+    "tests",
+    "registrar",
+    "Consumer",
+    "merge",
+    "request generation",
+    "Git mutation",
+    "tracked edits"
+  ],
+  "observedAtUtc": "2026-11-13T15:44:05.213192+00:00"
+}

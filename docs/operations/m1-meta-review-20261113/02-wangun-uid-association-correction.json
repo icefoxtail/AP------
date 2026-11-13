@@ -1,0 +1,266 @@
+{
+  "schemaVersion": "semantic-evidence-uid-association-correction-v1",
+  "recordedAt": "2026-11-13T15:44:32.954235+00:00",
+  "status": "CORRECTED_BEFORE_ANY_SOURCE_OR_REGISTRY_WRITE",
+  "priorEvidence": {
+    "path": "docs/operations/m1-meta-review-20261113/02-wangun-semantic-review.json",
+    "sha256": "ac9b5daa01d9160d4118049422d1ab4b4ab53b24067e56a8d52f2ef499a082cc",
+    "remoteCheckpoint": "36ed7902d71bccf3645e40674ab6d8ae7e894646"
+  },
+  "rootCause": "Streamed metadata projection arrays are not sorted by sourceOrdinal. Root combined part-A/C candidates using array position instead of the explicit ordinal; the official request builder uses ordinal and would reject inconsistent UIDs.",
+  "corrections": [
+    {
+      "sourceOrdinal": 2,
+      "priorCandidateQuestionUid": "qid_v1_13c5c93007955b679fe9896938511efccef68cb26e5450a54e1a98a5ac61b59e",
+      "verifiedQuestionUid": "qid_v1_c57da4ba1098bc858461c9928cef484c1e81bccf587ef91075d59ab2199264b1"
+    },
+    {
+      "sourceOrdinal": 3,
+      "priorCandidateQuestionUid": "qid_v1_347acf016e50757f50f493be205035c52686071e612c8f9ee44312d8f7e5e785",
+      "verifiedQuestionUid": "qid_v1_bab52ee228bcefba5cba3c3e098437496cea2050c01904e3da3ab63c81581df2"
+    },
+    {
+      "sourceOrdinal": 4,
+      "priorCandidateQuestionUid": "qid_v1_3d56afccf7e200f169c308fe861e597fcba46e5cab6d7c7376be5f7359b3ff26",
+      "verifiedQuestionUid": "qid_v1_347acf016e50757f50f493be205035c52686071e612c8f9ee44312d8f7e5e785"
+    },
+    {
+      "sourceOrdinal": 5,
+      "priorCandidateQuestionUid": "qid_v1_3e86de14da10d8992dbc19f6545babb8e7d87c7f9a579cc79ecb29757262426e",
+      "verifiedQuestionUid": "qid_v1_489c87bbd253da2356fd202dd5103c28eccd0de434e4fd6995a7063d92b55575"
+    },
+    {
+      "sourceOrdinal": 6,
+      "priorCandidateQuestionUid": "qid_v1_42849e0c412ae8bf1f70e578c0ccbce121008daaf975b9bcbed49176badc79b4",
+      "verifiedQuestionUid": "qid_v1_66b8bd71d68a153b6a7bdb56ff3536201ca5b0b7ca68e82b7a120b47ba8ce55b"
+    },
+    {
+      "sourceOrdinal": 7,
+      "priorCandidateQuestionUid": "qid_v1_489c87bbd253da2356fd202dd5103c28eccd0de434e4fd6995a7063d92b55575",
+      "verifiedQuestionUid": "qid_v1_13c5c93007955b679fe9896938511efccef68cb26e5450a54e1a98a5ac61b59e"
+    },
+    {
+      "sourceOrdinal": 8,
+      "priorCandidateQuestionUid": "qid_v1_48d2321fd14aa0bb4e7cca39b2c8699e2dd65c8fd5b21a533f635435552ec03a",
+      "verifiedQuestionUid": "qid_v1_be5c74c260f54fd3283324a100fa4c69a1f876580f99076a1caa364716f6b497"
+    },
+    {
+      "sourceOrdinal": 17,
+      "priorCandidateQuestionUid": "qid_v1_be5c74c260f54fd3283324a100fa4c69a1f876580f99076a1caa364716f6b497",
+      "verifiedQuestionUid": "qid_v1_5fc1c99bd44c3aa0d8a579b57b9dc692129f8f7aafa66734154c979f307196f2"
+    },
+    {
+      "sourceOrdinal": 18,
+      "priorCandidateQuestionUid": "qid_v1_c57da4ba1098bc858461c9928cef484c1e81bccf587ef91075d59ab2199264b1",
+      "verifiedQuestionUid": "qid_v1_6d302cad46fda4208bcacf6d853e9198738cc18e26c98f8e011bdad9672ef9f3"
+    },
+    {
+      "sourceOrdinal": 19,
+      "priorCandidateQuestionUid": "qid_v1_da359e1af270778eaba94a76f15ea85954775c38c2df5aee986dc8ca22deba1f",
+      "verifiedQuestionUid": "qid_v1_3d56afccf7e200f169c308fe861e597fcba46e5cab6d7c7376be5f7359b3ff26"
+    },
+    {
+      "sourceOrdinal": 20,
+      "priorCandidateQuestionUid": "qid_v1_e0bf633136ca14fc3f3192b62eec9bdffa4227f3153aae3edb2e8d4b3a443532",
+      "verifiedQuestionUid": "qid_v1_3e86de14da10d8992dbc19f6545babb8e7d87c7f9a579cc79ecb29757262426e"
+    },
+    {
+      "sourceOrdinal": 21,
+      "priorCandidateQuestionUid": "qid_v1_e4bb8690f6be4fd6e671583a743a1ecf03d39dd72f79adfbf0f5adc1375bdf1d",
+      "verifiedQuestionUid": "qid_v1_9fdaf44f2d5156120df8007115c8393404e618be363a73a3c372357ab0a185fa"
+    },
+    {
+      "sourceOrdinal": 22,
+      "priorCandidateQuestionUid": "qid_v1_fac60a43c600971e9c4fab3777b0163a99a3cf70e7435087bf1c115666752dab",
+      "verifiedQuestionUid": "qid_v1_42849e0c412ae8bf1f70e578c0ccbce121008daaf975b9bcbed49176badc79b4"
+    },
+    {
+      "sourceOrdinal": 23,
+      "priorCandidateQuestionUid": "qid_v1_ffce93ef42912eb61d142ffaadaf7bf56869adece6a6ed9beade2e717d08600b",
+      "verifiedQuestionUid": "qid_v1_48d2321fd14aa0bb4e7cca39b2c8699e2dd65c8fd5b21a533f635435552ec03a"
+    }
+  ],
+  "canonicalAssociationEvidence": {
+    "metadataSnapshot": {
+      "path": "archive/data/question_metadata.json",
+      "blobSha1": "89b940334d6bfe38bbf4fa5ed1c918cd88fbbc5c",
+      "sha256": "f736b93822412471136634a929a19afa4a350033059856c71780c9c3cf219e00"
+    },
+    "identitySnapshot": {
+      "path": "archive/data/question_identity_map.json",
+      "blobSha1": "f87befc70f81602ab0686abf19b8bc4b33daa819",
+      "sha256": "4cfec82571a6624e670e9c3fa808c0695792d52fadb8f8ecbd094fee74ad3b2a"
+    },
+    "verifiedOneToOneOrdinalUidCount": 23,
+    "uniqueUidCount": 23,
+    "rows": [
+      {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_04eec2165bbc177b619ab9ca935330f6fd60a9906437f50a36f56aa18de7c95a",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "371bb75374ffa26563bfe2b91fc0482a8a2c8284b546fef47642085c212119f5",
+        "identitySourceFingerprint": "371bb75374ffa26563bfe2b91fc0482a8a2c8284b546fef47642085c212119f5"
+      },
+      {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_c57da4ba1098bc858461c9928cef484c1e81bccf587ef91075d59ab2199264b1",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "c97cc5a6703ac4225a327211185fcdb67e34717f6edc9a47874b9b578df66f8d",
+        "identitySourceFingerprint": "c97cc5a6703ac4225a327211185fcdb67e34717f6edc9a47874b9b578df66f8d"
+      },
+      {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_bab52ee228bcefba5cba3c3e098437496cea2050c01904e3da3ab63c81581df2",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "ebc97cdd912f843bf3ab9eb1080597139d05280f46ef53847adc6f2ad4eae52f",
+        "identitySourceFingerprint": "ebc97cdd912f843bf3ab9eb1080597139d05280f46ef53847adc6f2ad4eae52f"
+      },
+      {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_347acf016e50757f50f493be205035c52686071e612c8f9ee44312d8f7e5e785",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "2885fc0075ab5f04ade130769172ece2ca8ac597bc6f11e86a7e03d05273377b",
+        "identitySourceFingerprint": "2885fc0075ab5f04ade130769172ece2ca8ac597bc6f11e86a7e03d05273377b"
+      },
+      {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_489c87bbd253da2356fd202dd5103c28eccd0de434e4fd6995a7063d92b55575",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "f090e84c62ac5345e19a5619786d2d024e2b2263db8539bca7230c754680b98b",
+        "identitySourceFingerprint": "f090e84c62ac5345e19a5619786d2d024e2b2263db8539bca7230c754680b98b"
+      },
+      {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_66b8bd71d68a153b6a7bdb56ff3536201ca5b0b7ca68e82b7a120b47ba8ce55b",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "f5d2be996c6d0367d06c412fcd0771b289ce60ce556c22c5cb9c91b99968d0c7",
+        "identitySourceFingerprint": "f5d2be996c6d0367d06c412fcd0771b289ce60ce556c22c5cb9c91b99968d0c7"
+      },
+      {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_13c5c93007955b679fe9896938511efccef68cb26e5450a54e1a98a5ac61b59e",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "7e78e6e17f13bf1aff509a20370e5a98551a42ccd99122af96ea55746a80bebb",
+        "identitySourceFingerprint": "7e78e6e17f13bf1aff509a20370e5a98551a42ccd99122af96ea55746a80bebb"
+      },
+      {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_be5c74c260f54fd3283324a100fa4c69a1f876580f99076a1caa364716f6b497",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "e99fdf9ad2f5963dd55eca85504ca8e4c60b2a49e6acfcc240028a2adf79f17c",
+        "identitySourceFingerprint": "e99fdf9ad2f5963dd55eca85504ca8e4c60b2a49e6acfcc240028a2adf79f17c"
+      },
+      {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_a86218e4f1d4036989c499fc2e0a19036ff858458049473da7a544394ca9bcbb",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "9b5b391eaec08e075ef5a14ee7d6a886d51c9615fcc37b7e2ee944a8abb15170",
+        "identitySourceFingerprint": "9b5b391eaec08e075ef5a14ee7d6a886d51c9615fcc37b7e2ee944a8abb15170"
+      },
+      {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_fac60a43c600971e9c4fab3777b0163a99a3cf70e7435087bf1c115666752dab",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "d7f4c45c76c5460105ea5fe4f3a636cf88bb7565b541dadfa0d8f70e1dca7643",
+        "identitySourceFingerprint": "d7f4c45c76c5460105ea5fe4f3a636cf88bb7565b541dadfa0d8f70e1dca7643"
+      },
+      {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_e4bb8690f6be4fd6e671583a743a1ecf03d39dd72f79adfbf0f5adc1375bdf1d",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "77060f1755bf8e98878341399248cd46c3ddfa14dd57c544855e2f7127b0bdcc",
+        "identitySourceFingerprint": "77060f1755bf8e98878341399248cd46c3ddfa14dd57c544855e2f7127b0bdcc"
+      },
+      {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_e0bf633136ca14fc3f3192b62eec9bdffa4227f3153aae3edb2e8d4b3a443532",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "57a9eae8cab52de63b422c261d8f9f26ffc4bc929c9750b7d9839443a856dbb6",
+        "identitySourceFingerprint": "57a9eae8cab52de63b422c261d8f9f26ffc4bc929c9750b7d9839443a856dbb6"
+      },
+      {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_ffce93ef42912eb61d142ffaadaf7bf56869adece6a6ed9beade2e717d08600b",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "d788be079eed099c79bedae5706c1b9f27e739ebdaf1c9ce5af22e54e0d29250",
+        "identitySourceFingerprint": "d788be079eed099c79bedae5706c1b9f27e739ebdaf1c9ce5af22e54e0d29250"
+      },
+      {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_976adc004f55751504e0f92aafd1b6ec3f45c9e42af13b0a2b49c2a9f080ca0c",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "f3376a0b1c3a346aba3f7510df270953bf17b826414cd6f52ce8e7a8d0651663",
+        "identitySourceFingerprint": "f3376a0b1c3a346aba3f7510df270953bf17b826414cd6f52ce8e7a8d0651663"
+      },
+      {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_da359e1af270778eaba94a76f15ea85954775c38c2df5aee986dc8ca22deba1f",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "5f5f868350d274f238b568a6754163deb7eedb89cde55177155c76999852cb0b",
+        "identitySourceFingerprint": "5f5f868350d274f238b568a6754163deb7eedb89cde55177155c76999852cb0b"
+      },
+      {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_883588b373d439a971a7895ded9819b72d753b886850f4d6b614a70fe1c94dd6",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "e89a11bbb3f3c407d9c4e66ce9a27c400ed052315413be9a5981378caf2d8a85",
+        "identitySourceFingerprint": "e89a11bbb3f3c407d9c4e66ce9a27c400ed052315413be9a5981378caf2d8a85"
+      },
+      {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_5fc1c99bd44c3aa0d8a579b57b9dc692129f8f7aafa66734154c979f307196f2",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "058c4daede573a82a856cf817119b67f64602de08914bab199b12a02ee157174",
+        "identitySourceFingerprint": "058c4daede573a82a856cf817119b67f64602de08914bab199b12a02ee157174"
+      },
+      {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_6d302cad46fda4208bcacf6d853e9198738cc18e26c98f8e011bdad9672ef9f3",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "0cc25d963293f14b91bae854ea0d3dff7e26ac7666c4d0d96bb3880d4b6ce18c",
+        "identitySourceFingerprint": "0cc25d963293f14b91bae854ea0d3dff7e26ac7666c4d0d96bb3880d4b6ce18c"
+      },
+      {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_3d56afccf7e200f169c308fe861e597fcba46e5cab6d7c7376be5f7359b3ff26",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "689b3b8f138911cab8fc27f0e9d123c22501036a7d3c3279cb4d065b81b95653",
+        "identitySourceFingerprint": "689b3b8f138911cab8fc27f0e9d123c22501036a7d3c3279cb4d065b81b95653"
+      },
+      {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_3e86de14da10d8992dbc19f6545babb8e7d87c7f9a579cc79ecb29757262426e",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "ff238fac1a33eae9ec164d712f3693c828af489c8424f586765f75b3538c704e",
+        "identitySourceFingerprint": "ff238fac1a33eae9ec164d712f3693c828af489c8424f586765f75b3538c704e"
+      },
+      {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_9fdaf44f2d5156120df8007115c8393404e618be363a73a3c372357ab0a185fa",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "77fc062864462fe5ac29e19e725564e2c9f6c14f08815b18a6aa168f645fd9a9",
+        "identitySourceFingerprint": "77fc062864462fe5ac29e19e725564e2c9f6c14f08815b18a6aa168f645fd9a9"
+      },
+      {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_42849e0c412ae8bf1f70e578c0ccbce121008daaf975b9bcbed49176badc79b4",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "5f04eaac1731ea83336eac981836d186f2144475516f4f2de7b14e6ccc84a816",
+        "identitySourceFingerprint": "5f04eaac1731ea83336eac981836d186f2144475516f4f2de7b14e6ccc84a816"
+      },
+      {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_48d2321fd14aa0bb4e7cca39b2c8699e2dd65c8fd5b21a533f635435552ec03a",
+        "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "metadataSourceFingerprint": "334b17e3cc52f9ba0341f72e1994afc277991f5d20cc38d2a05b68166c9f1f62",
+        "identitySourceFingerprint": "334b17e3cc52f9ba0341f72e1994afc277991f5d20cc38d2a05b68166c9f1f62"
+      }
+    ]
+  },
+  "semanticFieldsUnchanged": true,
+  "studentPayloadOrSourceFileChanged": false,
+  "canonicalMetadataOrIdentityChanged": false,
+  "registrationRequestsCreated": 0,
+  "operationalImpact": "NONE_APPLIED",
+  "supersededEvidenceUse": "Prior semantic-review.json and part-C UID fields must not be used to build requests; all text/figure reading and semantic choices remain reusable. Use the corrected revision2 by sourceOrdinal."
+}

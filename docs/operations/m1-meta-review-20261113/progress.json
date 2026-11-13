@@ -15,7 +15,7 @@
   "completedExams": 1,
   "reviewedQuestions": 47,
   "currentOrder": 2,
-  "nextAction": "Resolve the exact native runtime test and PR1965 course-correction dependency; preserve confirmed Wangun23 semantics; prepare minimal source metadata/request, exact23 preflight and operational PR/main closeout.",
+  "nextAction": "Use corrected semantic revision2 with 23 explicit ordinal/UID joins. Resolve PR1965 course correction dependency, prepare minimal source metadata/request and exact23 preflight/main closeout.",
   "exams": [
     {
       "order": 1,
@@ -596,12 +596,14 @@
       "registrationApplied": false,
       "prNumber": null,
       "unresolvedDependencyPr": 1965,
-      "semanticReviewEvidence": "02-wangun-semantic-review.json",
-      "semanticReviewSha256": "ac9b5daa01d9160d4118049422d1ab4b4ab53b24067e56a8d52f2ef499a082cc",
+      "semanticReviewEvidence": "02-wangun-semantic-review-rev2.json",
+      "semanticReviewSha256": "dec35a46e5418c3f2280134d9cdd7ae076e328d74f6fa69a63cebf9f3f5b764e",
       "semanticOrParentCorrectedCount": 20,
       "rpmEvidenceDebtCount": 4,
       "newNativeProblemTypes": 5,
-      "newNativeTemplates": 5
+      "newNativeTemplates": 5,
+      "uidAssociationVerifiedCount": 23,
+      "supersededCandidateEvidence": "02-wangun-semantic-review.json"
     },
     {
       "order": 3,
@@ -1227,7 +1229,7 @@
   "activeMain": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
   "prerequisiteStatus": "RPM_L1_L2_MERGED",
   "prerequisiteMainSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
-  "latestRemoteSemanticCheckpoint": "ae19795a822db73448c7487aea4036c509720ecb",
+  "latestRemoteSemanticCheckpoint": "36ed7902d71bccf3645e40674ab6d8ae7e894646",
   "latestMergedReviewHead": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
   "concurrentWorkCheck": {
     "path": "docs/operations/m1-meta-review-20261113/01-shinheung-concurrent-work-check.json",
@@ -1273,11 +1275,11 @@
   ],
   "activeMainTreeStatus": "REMOTE_MAIN_CURSOR_ONLY_ADVANCE_INPUT_AND_CODE_SUBTREES_VERIFIED_IDENTICAL",
   "checkpointPublication": {
-    "lastVerifiedRemoteSha": "147b475e2e3d7d824492a23e1fa65f94b70676a8",
+    "lastVerifiedRemoteSha": "36ed7902d71bccf3645e40674ab6d8ae7e894646",
     "statusAtWriting": "CURRENT_READING_SNAPSHOT_PREPARED_FOR_REMOTE_PUBLICATION",
     "currentSnapshotEvidence": {
-      "path": "02-wangun-semantic-read-checkpoint.json",
-      "sha256": "a299d9d82d150681cfbd7fc4aa8b7b5bb029300abe8bc60e1789670be86ed235"
+      "path": "02-wangun-semantic-review-rev2.json",
+      "sha256": "dec35a46e5418c3f2280134d9cdd7ae076e328d74f6fa69a63cebf9f3f5b764e"
     },
     "selfCommitLookup": "Use the fetched remote branch commit containing this file; AWCR next immutable revision records the actual post-publication SHA."
   },
@@ -1359,12 +1361,13 @@
     "sourceRequestOverlap": 0,
     "pr1751Head": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
     "pr1952Head": "3e299cd72c248e7b74c2e3e409850e747cf1e6c7",
-    "pr1965Head": "0f65b93e4d8656c6f8c0710d64bd510e11228a89",
+    "pr1965Head": "9f82851d9807ffd04952a43874622e9d331e038b",
     "pr1959Head": "84c2eaeea1fc24167bff3cfdbbcf151a42d02ae2",
     "futureOrder24AdditionalFigureOverlapPr": 1959,
     "futureOrder24Pr1751ExpectedSourceBlobStale": true,
-    "recheckOnHeadChange": true
+    "recheckOnHeadChange": true,
+    "currentDependencyEvidence": "02-pr1965-head9f828-review.json"
   },
   "operationallyClosedQuestions": 24,
-  "latestVerifiedRemoteCheckpoint": "147b475e2e3d7d824492a23e1fa65f94b70676a8"
+  "latestVerifiedRemoteCheckpoint": "36ed7902d71bccf3645e40674ab6d8ae7e894646"
 }

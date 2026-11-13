@@ -9,6 +9,8 @@
 - 실제 유형이 다른 분류만 최소 수정하고, 기존 skeleton과 같은 수치·표현·선택형 변형은 재사용한다. 정확한 RPM leaf가 없으면 null과 debt를 유지한다.
 - 공용 의존 PR1965는 Q6/Q8의 기존 과정명 오타와 부모 표기 정정 경로다. 현재 공개된 source/request 직접 겹침은0이다. 실제 코드 검토와 CI 상태는 [독립 검토](02-pr1965-review.json)에 있다.
 
+**현재 의미 정본은 [revision2](02-wangun-semantic-review-rev2.json)다.** 추출 배열 순서를 문항 번호로 잘못 사용한 후보 UID 연결을 현재 metadata/identity의 명시적 sourceOrdinal로23개 모두 재결속했다. [정정 근거](02-wangun-uid-association-correction.json)를 확인하고 이전 원장의 UID로 등록하지 않는다. 의미 판정·읽기 근거·정상 데이터는 그대로이며 정정 전에 source/정본/등록 적용은0이었다.
+
 ## 완료 결과
 
 | 시험지 | 총 문항 | 수정 문항 | 주요 오류 | PR | 실제 등록 main | 남은 시험지 |
@@ -23,7 +25,7 @@
 
 진행 원장은 [progress.json](progress.json), 다음 담당용 절차와 복사 프롬프트는 [HANDOFF.md](HANDOFF.md)다. 시험지 한 장의 의미 검토→최소 수정→exact candidate 전체 Consumer→PR/main→실제 등록 영수증/최종 Consumer→원격 SHA를 마감한 뒤 다음으로 이동한다. 기존 R1/R2/R3는 반복하지 않는다. 수학 FINAL QA나 새 해설 검증을 수행했다고 기록하지 않는다.
 
-마지막 확인 원격 체크포인트는 `147b475e2e3d7d824492a23e1fa65f94b70676a8`, AWCR revision15다. 이 새 읽기 기록의 실제 게시 SHA는 원격 브랜치와 다음 immutable AWCR에서 확인한다.
+마지막 확인 원격 체크포인트는 `36ed7902d71bccf3645e40674ab6d8ae7e894646`, AWCR revision15다. 이 새 읽기 기록의 실제 게시 SHA는 원격 브랜치와 다음 immutable AWCR에서 확인한다.
 
 ## 시험지별 완료 체크리스트
 
