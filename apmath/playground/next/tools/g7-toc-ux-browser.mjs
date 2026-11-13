@@ -315,6 +315,7 @@ try {
           await ready(page, 'g7-polyhedra');
         } else await load(page, 'g7-polyhedra');
         await contents(page);
+        await screenshot(page, `polyhedra-${viewport.width}-entry.png`);
         await page.evaluate(() => history.replaceState({ ...history.state, unrelatedNavigation: { marker: 'preserve-me' } }, ''));
         const ordered = await items(page);
         const at = Math.floor(ordered.length / 2);
@@ -560,12 +561,19 @@ try {
       }
       await load(page, 'g7-polyhedra', '#n=2');
       await contents(page, 'old group link opens its contents');
+      await page.waitForFunction(() => {
+        const heading = lab.toc.ui.list.querySelectorAll('.apl-toc-gh')[1].getBoundingClientRect();
+        const header = document.querySelector('.apl-bar').getBoundingClientRect();
+        return heading.top >= header.bottom && heading.bottom <= innerHeight;
+      });
       const groupLink = await page.evaluate(() => {
         const group = lab.toc.ui.list.querySelectorAll('.apl-toc-group')[1];
-        const rect = group.getBoundingClientRect();
-        return { title: group.querySelector('.apl-toc-gh')?.textContent, visible: rect.bottom > 0 && rect.top < innerHeight };
+        const heading = group.querySelector('.apl-toc-gh'), rect = heading.getBoundingClientRect();
+        const header = document.querySelector('.apl-bar').getBoundingClientRect();
+        return { title: heading.textContent, top: rect.top, bottom: rect.bottom, headerBottom: header.bottom,
+          visible: rect.top >= header.bottom && rect.bottom <= innerHeight };
       });
-      assert.ok(groupLink.visible, 'the linked group is visible without starting its first proof');
+      assert.ok(groupLink.visible, 'the linked group heading is fully visible below the fixed header without starting its first proof');
       await page.emulateMedia({ reducedMotion: 'reduce' });
       const all = await items(page), item = all.find(row => row.i > 0);
       const sceneTitle = page.locator('.apl-toc-item.multi .apl-toc-title').first();
@@ -587,6 +595,57 @@ try {
       sameItem(stepped, item);
       assert.ok(stepped.elapsed > 0, 'the selected proof remains usable under reduced motion');
       return { links, groupLink, selectedReduced, stepped };
+    } finally { await context.close(); }
+  });
+
+  await run('polyhedra-direct-manipulation', async () => {
+    const { page, context } = await open(phone);
+    const read = () => page.evaluate(() => ({ yaw: lab.s.phYaw, plane: lab.s.phTd, tiltA: lab.s.phTa, tiltB: lab.s.phTb }));
+    try {
+      await load(page, 'g7-polyhedra');
+      await contents(page);
+      const item = (await items(page)).find(item => item.scene === 'p4-1' && item.choice === 0);
+      assert.ok(item, 'the cube-section learning item remains in contents');
+      await leaf(page, item).click();
+      await selected(page, item, { playing: true });
+      await exploreButton(page).click();
+      await page.waitForFunction(() => lab.learning.mode === 'explore' && !lab.learning.active);
+      const before = await read();
+      await page.getByRole('slider', { name: '좌우로 돌려 보기', exact: true }).press('ArrowRight');
+      const rotated = await read();
+      assert.notEqual(rotated.yaw, before.yaw, 'the original rotation slider changes the 3D view');
+      await page.locator('canvas.apl-canvas').scrollIntoViewIfNeeded();
+      await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+      const handle = await page.evaluate(() => {
+        const h = lab.board.handles.find(handle => handle.id === 'plane');
+        if (!h) return null;
+        const rect = lab.ui.canvas.getBoundingClientRect();
+        const x = rect.left + h.x * rect.width / lab.board.W, y = rect.top + h.y * rect.height / lab.board.H;
+        return { x, y, dx: rect.right - x > 60 ? 48 : -48 };
+      });
+      assert.ok(handle, 'the real cube-section drag handle is present after entering exploration');
+      await page.mouse.move(handle.x, handle.y);
+      await page.mouse.down();
+      try {
+        assert.equal(await page.evaluate(() => lab.board.dragging?.id), 'plane', 'the actual pointer acquires the plane handle');
+        await page.mouse.move(handle.x + handle.dx, handle.y, { steps: 8 });
+      } finally { await page.mouse.up(); }
+      const edited = await read();
+      assert.notEqual(edited.plane, before.plane, 'the real drag changes the section position');
+      assert.equal(edited.yaw, rotated.yaw, 'moving the section preserves the chosen 3D rotation');
+      await screenshot(page, 'polyhedra-p4-1-390-edited-exploration.png');
+      await playButton(page).click();
+      await selected(page, item, { playing: true });
+      await pause(page);
+      await exploreButton(page).click();
+      await page.waitForFunction(() => lab.learning.mode === 'explore' && !lab.learning.active);
+      const restored = await read();
+      assert.deepEqual(restored, edited, 'short playback restores the edited rotation and section conditions exactly');
+      await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+      assert.equal(await page.evaluate(() => lab.board.handles.some(handle => handle.id === 'plane')), true, 'the original drag handle returns after the proof');
+      await page.locator('canvas.apl-canvas').scrollIntoViewIfNeeded();
+      await screenshot(page, 'polyhedra-p4-1-390-restored-exploration.png');
+      return { viewport: phone, item, before, rotated, edited, restored, pointer: 'mouse' };
     } finally { await context.close(); }
   });
 

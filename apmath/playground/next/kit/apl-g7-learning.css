@@ -55,7 +55,7 @@ body.apl-g7-contents .apl-toc-list {
   display:grid; grid-template-columns:minmax(0,1fr); align-items:start; gap:24px;
   padding:12px 24px 24px;
 }
-body.apl-g7-contents .apl-toc-group { min-width:0; }
+body.apl-g7-contents .apl-toc-group { min-width:0; scroll-margin-top:calc(var(--bar-h) + 16px); }
 body.apl-g7-contents .apl-toc-gh {
   position:static; margin:0 0 8px; padding:8px 0;
   border-bottom:1px solid var(--line); background:transparent;

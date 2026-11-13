@@ -13,6 +13,10 @@ on:
       - 'apmath/playground/**'
       - 'docs/guides/APMATH_G7_TOC_UX_CONTRACT_CURRENT.md'
       - '.github/workflows/apmath-g7-toc-ux.yml'
+  workflow_run:
+    workflows: [Archive Pages Release]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -24,6 +28,7 @@ concurrency:
 
 jobs:
   verify:
+    if: github.event_name != 'workflow_run'
     name: G7 contents, preserved proofs and player contracts
     runs-on: ubuntu-24.04
     timeout-minutes: 45
@@ -157,5 +162,191 @@ jobs:
         with:
           name: g7-toc-ux-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}
           path: ${{ runner.temp }}/g7-toc-evidence/
+          retention-days: 14
+          if-no-files-found: error
+
+  published-site:
+    if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
+    name: Published G7 contents and exploration
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    env:
+      # Same STUDENT_BASE as g7-student-live-smoke.mjs, without manual=1.
+      G7_BASE_URL: https://icefoxtail.github.io/AP------/apmath/playground/next/labs/
+      G7_TOC_SCENARIOS: contents-inventory,responsive-navigation,exploration-reload-sharing,live-history-restoration,polyhedra-direct-manipulation,coordinate-reading
+      G7_REFERENCE_PLAYBACK: reuse
+      G7_REFERENCE_EVIDENCE: >-
+        Unchanged proof mathematics and playback reuse PR https://github.com/icefoxtail/AP------/pull/1950
+        and CI https://github.com/icefoxtail/AP------/actions/runs/43348371314
+        and https://github.com/icefoxtail/AP------/actions/runs/43346417520.
+        This published-site run checks changed student navigation and exploration;
+        it does not replay all 580 proofs.
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+          sparse-checkout: apmath/playground/next
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Bind the checked-out source and verify published file bytes
+        id: published_source
+        timeout-minutes: 5
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import crypto from 'node:crypto';
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import { execFileSync } from 'node:child_process';
+          const out = path.join(process.env.RUNNER_TEMP, 'g7-toc-live');
+          const sourceDir = path.join(out, 'source');
+          fs.mkdirSync(sourceDir, { recursive: true });
+          const sourceSha = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+          const sourceTree = execFileSync('git', ['rev-parse', 'HEAD^{tree}'], { encoding: 'utf8' }).trim();
+          fs.writeFileSync(path.join(sourceDir, 'commit.txt'), sourceSha + '\n');
+          fs.writeFileSync(path.join(sourceDir, 'tree.txt'), sourceTree + '\n');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `sha=${sourceSha}\n`);
+          const event = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
+          const release = event.workflow_run;
+          assert.equal(process.env.GITHUB_EVENT_NAME, 'workflow_run');
+          assert.equal(release.name, 'Archive Pages Release');
+          assert.equal(release.head_branch, 'main');
+          assert.equal(release.conclusion, 'success');
+          const source = {
+            sourceSha, sourceTree, baseURL: process.env.G7_BASE_URL,
+            workflowContextSha: process.env.GITHUB_SHA,
+            runId: process.env.GITHUB_RUN_ID, runAttempt: process.env.GITHUB_RUN_ATTEMPT,
+            release: { id: release.id, url: release.html_url, eventHeadSha: release.head_sha, conclusion: release.conclusion },
+            expectedScenarios: process.env.G7_TOC_SCENARIOS.split(','),
+            reusedPlaybackEvidence: process.env.G7_REFERENCE_EVIDENCE,
+            sourceMeaning: 'Browser test source is checked-out main. Release event SHA is metadata, not a deployed-source assertion. The published-byte comparison covers exactly the six listed changed runtime files.'
+          };
+          fs.writeFileSync(path.join(sourceDir, 'context.json'), JSON.stringify(source, null, 2) + '\n');
+          fs.writeFileSync(path.join(sourceDir, 'git-objects.txt'), execFileSync('git', [
+            'ls-tree', '-r', 'HEAD', '--', 'apmath/playground/next', '.github/workflows/apmath-g7-toc-ux.yml'
+          ]));
+          // The Pages manifest includes apmath; its builder copies these JS/CSS
+          // bytes unchanged. Its JSON compaction and added SVG projections do not apply.
+          const files = [
+            'kit/apl-g7-learning.css', 'kit/apl-g7-learning.js',
+            'kit/apl-g7-short-coordinates.js', 'kit/apl-player.js',
+            'kit/apl-toc.js', 'labs/middle-functions/g7.js'
+          ];
+          const nextBase = new URL('../', process.env.G7_BASE_URL);
+          const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+          const report = { status: 'RUNNING', sourceSha, baseURL: source.baseURL, files: [], errors: [] };
+          const save = () => fs.writeFileSync(path.join(out, 'published-bytes.json'), JSON.stringify(report, null, 2) + '\n');
+          save();
+          for (const relative of files) {
+            const file = `apmath/playground/next/${relative}`;
+            const url = new URL(relative, nextBase).href;
+            const row = { file, url };
+            report.files.push(row);
+            try {
+              const expected = fs.readFileSync(file);
+              const expectedPath = path.join(out, 'source-files', relative);
+              fs.mkdirSync(path.dirname(expectedPath), { recursive: true });
+              fs.writeFileSync(expectedPath, expected);
+              row.expectedBytes = expected.length;
+              row.expectedSha256 = sha256(expected);
+              const response = await fetch(url, {
+                method: 'GET', redirect: 'error', signal: AbortSignal.timeout(30000),
+                headers: { 'Cache-Control': 'no-cache', 'Accept-Encoding': 'identity' }
+              });
+              const bytes = Buffer.from(await response.arrayBuffer());
+              const servedPath = path.join(out, 'served-files', relative);
+              fs.mkdirSync(path.dirname(servedPath), { recursive: true });
+              fs.writeFileSync(servedPath, bytes);
+              Object.assign(row, {
+                status: response.status, responseURL: response.url, servedBytes: bytes.length,
+                servedSha256: sha256(bytes), etag: response.headers.get('etag'),
+                lastModified: response.headers.get('last-modified'), fetchedAt: new Date().toISOString()
+              });
+              row.match = response.status === 200 && row.servedSha256 === row.expectedSha256 && bytes.equals(expected);
+              if (!row.match) report.errors.push({ file, reason: 'Published response does not match checked-out source bytes' });
+            } catch (error) {
+              row.match = false;
+              row.error = error.message;
+              report.errors.push({ file, reason: error.message });
+            }
+            save();
+          }
+          report.status = report.errors.length ? 'FAIL' : 'PUBLISHED_BYTES_MATCHED';
+          save();
+          assert.equal(report.errors.length, 0, 'Published runtime bytes must match checked-out main before browser verification');
+          NODE
+
+      - name: Install Chromium and Korean fonts
+        timeout-minutes: 10
+        run: |
+          set -euo pipefail
+          npm install --prefix "$RUNNER_TEMP/g7-toc-live-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/g7-toc-live-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+
+      - name: Read the published student contents and exploration routes
+        timeout-minutes: 20
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-toc-live-browser/node_modules
+          G7_PUBLISHED_SOURCE_SHA: ${{ steps.published_source.outputs.sha }}
+          G7_TOC_EVIDENCE: ${{ runner.temp }}/g7-toc-live/browser
+        run: |
+          set -euo pipefail
+          [[ "$(git rev-parse HEAD)" == "$G7_PUBLISHED_SOURCE_SHA" ]]
+          # Only this child process receives the actual checkout SHA for the
+          # existing report.commit field; the original event SHA is saved above.
+          GITHUB_SHA="$G7_PUBLISHED_SOURCE_SHA" \
+            node apmath/playground/next/tools/g7-toc-ux-browser.mjs \
+            2>&1 | tee "$RUNNER_TEMP/g7-toc-live/browser.log"
+
+      - name: Verify published evidence identities and measured scenarios
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import { execFileSync } from 'node:child_process';
+          const out = path.join(process.env.RUNNER_TEMP, 'g7-toc-live');
+          const read = file => JSON.parse(fs.readFileSync(path.join(out, file), 'utf8'));
+          const source = read('source/context.json');
+          const bytes = read('published-bytes.json');
+          const browser = read('browser/toc-ux-report.json');
+          assert.equal(source.sourceSha, execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim());
+          assert.equal(bytes.sourceSha, source.sourceSha);
+          assert.equal(bytes.status, 'PUBLISHED_BYTES_MATCHED');
+          assert.equal(bytes.files.length, 6);
+          assert.ok(bytes.files.every(file => file.match));
+          assert.equal(browser.commit, source.sourceSha);
+          assert.equal(browser.status, 'UX_TECHNICAL_CHECKS_PASSED');
+          assert.deepEqual(browser.scenarios.map(row => row.name).sort(), [...source.expectedScenarios].sort());
+          assert.ok(browser.scenarios.every(row => row.status === 'PASS'));
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, [
+            `Published student URL: ${source.baseURL}`,
+            `Checked-out source: ${source.sourceSha}`,
+            `Six changed runtime files: exact published SHA256 and bytes matched`,
+            `Measured student scenarios: ${browser.scenarios.map(row => row.name).join(', ')}`,
+            `Current contents inventory: ${JSON.stringify(browser.conversion)}`,
+            `Release event: ${source.release.url} (event SHA ${source.release.eventHeadSha}; not assumed to be deployed source)`,
+            'Scope: published navigation and exploration; unchanged proof playback uses the recorded prior evidence.',
+            ''
+          ].join('\n'));
+          NODE
+
+      - name: Preserve published source, response bytes, reports and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g7-toc-live-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/g7-toc-live/
           retention-days: 14
           if-no-files-found: error
