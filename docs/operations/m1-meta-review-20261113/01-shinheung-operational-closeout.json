@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "existing-exam-operational-closeout-v1",
+  "closedAt": "2026-11-13T15:07:14.438644+00:00",
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "owner": "GPT_ROOT_933015CD0A4F",
+  "order": 1,
+  "exam": "2026 신흥중 중1 2학기 중간",
+  "status": "OPERATIONALLY_CLOSED_WITH_DOCUMENTED_RPM_DEBT",
+  "operationallyClosed": true,
+  "reviewedQuestionCount": 24,
+  "questionCount": 24,
+  "sourceMetadataChangedQuestionCount": 24,
+  "substantiveMetadataChangedQuestionCount": 18,
+  "originalSemanticCorrections": 15,
+  "bindingOnlyRepairs": 2,
+  "additionalUniqueParentRepair": 1,
+  "countBasis": "Original semantic15 and binding2, plus Q5 parent connection; Q8 was already in the semantic15. Source annotation changes cover24.",
+  "main": {
+    "sha": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+    "tree": "844c8b82fa19b4dcd7630313e67600e194a69ebd",
+    "scope": "FETCHED_REMOTE_MAIN_READ_ONLY",
+    "worktreeCleanDuringVerification": true
+  },
+  "prs": [
+    1960,
+    1961,
+    1964
+  ],
+  "finalPr": {
+    "number": 1964,
+    "headSha": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
+    "mergeCommitSha": "c9b908a0025c6d32b1add22b47543035e14b8784"
+  },
+  "source": {
+    "path": "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+    "blobSha1": "a8de75bc9cc2b6a4479866d75b8ebec637404a04",
+    "rawSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+    "preservedStudentPayloadEvidence": [
+      "01-shinheung-source-metadata-delta.json",
+      "01-shinheung-tag-annotation-repair.json"
+    ]
+  },
+  "request": {
+    "id": "m1-shinheung-2026-mid-meta-review-20261113-rev3",
+    "rawSha256": "bd2b3223b3e45a920f2f57707fd9ea37621b13a550f6125edc66edfd3057826f",
+    "canonicalSha256": "bd2014fead23196d068ad24de8529364cd81be83b4cd00dab898a2664798df50",
+    "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+    "receiptRawSha256": "aea5a3bb228638586c4a36c3eb4d1e8528d76d5a3787a0f52bcac8ab2f2c9054",
+    "registrationStatus": "REGISTERED",
+    "registeredQuestions": 24,
+    "runtimeRecords": 24,
+    "registryChangesApplied": 17,
+    "fingerprintRepairs": 24,
+    "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR"
+  },
+  "mainWriter": {
+    "runId": 43443059116,
+    "jobId": 131945363207,
+    "eventHead": "c9b908a0025c6d32b1add22b47543035e14b8784",
+    "actualPreparedInputSha": "208ab1649ad0e201e5b05917c259269dc545b0d0",
+    "status": "SUCCESS",
+    "persistence": "PUSHED",
+    "attempts": 2,
+    "registeredSha": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+    "publicationHandoff": "EXACT_REGISTERED_SNAPSHOT_DISPATCH_SUCCESS",
+    "postAutoMetaConsumer": {
+      "changed": 24,
+      "checked": 24,
+      "passed": 24,
+      "failures": 0,
+      "unobservedFields": 0,
+      "assignmentPending": 0
+    },
+    "automaticLaneTargetObservation": "Global report has no target entries. Do not infer target-specific AutoMeta applied/pending state; the final target24 consumer is independently verified."
+  },
+  "rootRemoteMainVerification": {
+    "officialProjection": {
+      "status": "PASS",
+      "totalQuestions": 24,
+      "canonical": 24,
+      "usableMetaLane": 0
+    },
+    "studentConsumer": {
+      "status": "PASS",
+      "changed": 24,
+      "checked": 24,
+      "passed": 24,
+      "failures": 0,
+      "unobservedFields": 0,
+      "assignmentPending": 0
+    },
+    "rpmParents": {
+      "status": "PASS",
+      "questionCount": 24,
+      "exactLeafCount": 22,
+      "debtOrdinals": [
+        8,
+        10
+      ],
+      "parentCounts": {
+        "기본 도형 / 기본 도형": 4,
+        "기본 도형 / 위치 관계": 4,
+        "기본 도형 / 작도와 합동": 6,
+        "평면도형 / 다각형": 4,
+        "평면도형 / 원과 부채꼴": 5,
+        "unresolved: LEGACY_PARENT_AMBIGUOUS": 1
+      },
+      "q8ParentStatus": "LEGACY_PARENT_AMBIGUOUS",
+      "q10Granularity": "PARENT"
+    }
+  },
+  "semanticReview": {
+    "evidencePath": "01-shinheung-semantic-review.json",
+    "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0",
+    "allPromptsFiguresSolutionsRead": true,
+    "sameBytesReReviewRequired": false
+  },
+  "verificationBoundary": {
+    "fullR1R2R3Rerun": false,
+    "mathFinalQaPerformed": false,
+    "actualRpmSolutionResolver": "NOT_RUN_UNVERIFIED_SOLUTION",
+    "rpmDebtInventedAlternative": false,
+    "studentQuestionAnswerSolutionImagesUidScoreDifficultyChanged": false
+  },
+  "evidenceSha256": {
+    "01-shinheung-rev3-main-projection.json": "40029742b4b61502e7cf9563c227809537dfe45afb78ccc4977359ead805aef5",
+    "01-shinheung-rev3-main-consumer.json": "ed5577530c38d7bc5bd90e1e18eadd00fc741b1951f341fd5373a604ee400acb",
+    "01-shinheung-rev3-main-rpm-parents.json": "f032b00bc5d820d46ed373be4e1934af099578f791b60be843c34bd6d23450eb",
+    "01-shinheung-rev3-main-registration.json": "f30499220c5f3e2fdf75807d1a4e3774ba8c25728000316dfc4a57e4715ecf0d",
+    "01-shinheung-rev3-writer-final-consumer.json": "cfe2f070dbb0f588d235f5bf50d989d4ed937723368f3a891ce0143aef6f376e",
+    "01-shinheung-concurrent-pr1963-merge.json": "461c2cc673141f7642d9be4d281110c1c0062be93109fcfafd432ebf01b5d5ef"
+  },
+  "followingWork": {
+    "completedExams": 1,
+    "remainingExams": 43,
+    "reviewedQuestions": 24,
+    "nextOrder": 2,
+    "nextExam": "2026 왕운중 중1 2학기 중간",
+    "nextQuestionCount": 23,
+    "nextSource": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+    "nextStatus": "NOT_STARTED_AT_CLOSEOUT",
+    "nextAction": "Publish closing checkpoint and AWCR, recheck latest main and concurrent source scope, then read every Wangun question."
+  },
+  "concurrentWriterAtObservation": {
+    "runId": 43444692701,
+    "headSha": "208ab1649ad0e201e5b05917c259269dc545b0d0",
+    "jobId": 131950960315,
+    "observedAt": "2026-11-13T15:05:02Z",
+    "status": "IN_PROGRESS",
+    "phase": "prepare",
+    "mainAtObservation": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+    "boundary": "This closeout is bound to the verified main snapshot. Re-fetch main before the next exam; do not repeat completed semantic review if source and relevant target metadata are unchanged."
+  }
+}
