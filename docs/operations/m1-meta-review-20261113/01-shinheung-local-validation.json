@@ -43,9 +43,9 @@
   },
   "studentImagesChanged": 0,
   "fullR1R2R3Rerun": false,
-  "consumerSearch": "NOT_RUN_UNTIL_SERVER_REGISTRATION",
-  "mainRegistration": "PENDING",
-  "CI": "CACHE_VERSION_FIX_PREPARED_PENDING_NEW_HEAD_CI",
+  "consumerSearch": "REV1_REJECTED_REV2_NOT_RUN",
+  "mainRegistration": "REV1_REJECTED_REV2_PREPARED",
+  "CI": "REV2_REPAIR_PR_PENDING",
   "initialCi": {
     "head": "8bab8a18877415b0d63ea79f01bf46d9a434be33",
     "pr": 1960,
@@ -55,7 +55,10 @@
     "pass": 335,
     "fail": 1,
     "failure": "tests/archive-cache-version-consistency.test.js:36: four HTML pages still referenced the previous rpm-middle-toc.js cache version",
-    "runtimeTests": { "pass": 252, "fail": 0 },
+    "runtimeTests": {
+      "pass": 252,
+      "fail": 0
+    },
     "runtimeRun": 43418115774,
     "chromeStatus": "PASS_WITH_REAL_DATA_GAPS"
   },
@@ -67,5 +70,49 @@
     "exitCode": 0,
     "stdout": "archive cache version consistency checks passed",
     "scope": "Shared helper cache references only; source, request, metadata evidence, and helper contents unchanged."
+  },
+  "finalCi": {
+    "head": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
+    "workflows": 5,
+    "jobs": 7,
+    "allSuccess": true,
+    "evidence": "01-shinheung-ci-fixed-head.json",
+    "sha256": "9f959349121e1ea86f899fa1c85fdfce5829ee313c60c9b49157c71a425dbba7"
+  },
+  "mainMerge": {
+    "sha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
+    "state": "MERGED_PENDING_REGISTRATION"
+  },
+  "rev1RegistrationFailure": {
+    "mainSha": "d7c468679b7877bba82e63e3b3f9f5dcb8a1363c",
+    "stage": "projection-verify",
+    "evidence": "01-shinheung-registration-rev1-rejected.json",
+    "nativeChangesApplied": 0
+  },
+  "rev2Repair": {
+    "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev2",
+    "requestSha256": "267ab2f0a9abcb465030af0d198cd0b676b0ff465f730bdb625e50a8f5782f30",
+    "sourceBlob": "a8de75bc9cc2b6a4479866d75b8ebec637404a04",
+    "sourceSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+    "annotationFields": [
+      "tagStatus",
+      "tagConfidence"
+    ],
+    "scalarChanges": 48,
+    "otherSourceValuesIdenticalQuestions": 24,
+    "fingerprintsUnchangedQuestions": 24,
+    "sourceFieldAlignmentConflicts": 0,
+    "nativeV2DryRun": {
+      "status": "PASS",
+      "write": false,
+      "questions": 24,
+      "registryChanges": 17,
+      "fingerprintRepairs": 24,
+      "evidence": "01-shinheung-registration-rev2-dry-run.json"
+    },
+    "inheritedCiForUnchangedCode": "01-shinheung-ci-fixed-head.json",
+    "mathApprovalFlagsAdded": false,
+    "consumerConflictGuardChanged": false,
+    "actualConsumer": "NOT_RUN"
   }
 }

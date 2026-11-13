@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "pr-ci-result-v1",
+  "status": "FAILED_REQUIRED_CI",
+  "repository": "icefoxtail/AP------",
+  "pullRequest": 1960,
+  "pullRequestUrl": "https://github.com/icefoxtail/AP------/pull/1960",
+  "expectedHeadSha": "8bab8a18877415b0d63ea79f01bf46d9a434be33",
+  "observedHeadSha": "8bab8a18877415b0d63ea79f01bf46d9a434be33",
+  "headMatches": true,
+  "observedBaseSha": "ceeafbee1cc000f5308e040ba252729f0982c827",
+  "observedAtUtc": "2026-11-13T11:47:51.531Z",
+  "workflowRuns": [
+    {
+      "id": 43418115774,
+      "name": "Archive2 Runtime Guard",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 131861019785,
+          "name": "Archive2 50-question solution Chrome",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 131861020197,
+          "name": "Archive2 runtime contract",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43418115750,
+      "name": "JS Archive Meta Resolver Bridge",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 131861019832,
+          "name": "resolver-bridge",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43418115874,
+      "name": "Problem Bank Shared Meta",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 131861019981,
+          "name": "shared-meta",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43418115865,
+      "name": "CI",
+      "status": "completed",
+      "conclusion": "failure",
+      "jobs": [
+        {
+          "id": 131861020423,
+          "name": "plan",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 131861090667,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "failure"
+        }
+      ]
+    }
+  ],
+  "failure": {
+    "workflowRunId": 43418115865,
+    "jobId": 131861090667,
+    "stepNumber": 19,
+    "stepName": "Run tests",
+    "stepStartLog": "2026-11-13T11:39:24.8825873Z ##[group]Run node tools/run-tests.js --ci-scope \"$RUNNER_TEMP/archive-ci-scope.json\"",
+    "testFile": "tests/archive-cache-version-consistency.test.js",
+    "assertionLine": 36,
+    "testSummary": {
+      "passed": 335,
+      "failed": 1,
+      "knownFailed": 0,
+      "total": 336
+    },
+    "assertion": "Mixed ?v= cache versions",
+    "asset": "archive/rpm-middle-toc.js",
+    "versions": [
+      {
+        "value": "20261113-rpm-middle-parents-1",
+        "htmlFiles": [
+          "archive2-runtime-check.html",
+          "index.html",
+          "mixer.html",
+          "problem-bank-search.html"
+        ]
+      },
+      {
+        "value": "20261113-rpm-middle-shinheung-1",
+        "htmlFiles": [
+          "unit-past-exams.html",
+          "workspace.html"
+        ]
+      }
+    ],
+    "boundedLogExcerpt": [
+      "2026-11-13T11:39:32.9497864Z AssertionError [ERR_ASSERTION]: Mixed ?v= cache versions:",
+      "2026-11-13T11:39:32.9499409Z archive/rpm-middle-toc.js: ?v=20261113-rpm-middle-parents-1 <- archive2-runtime-check.html,index.html,mixer.html,problem-bank-search.html | ?v=20261113-rpm-middle-shinheung-1 <- unit-past-exams.html,workspace.html",
+      "2026-11-13T11:39:32.9501155Z     at Object.<anonymous> (/home/runner/work/AP------/AP------/tests/archive-cache-version-consistency.test.js:36:8)",
+      "2026-11-13T11:45:05.3105800Z PASS 335 / FAIL 1 / KNOWN-FAIL 0 (total 336)",
+      "2026-11-13T11:45:05.3124347Z   FAIL archive-cache-version-consistency.test.js"
+    ],
+    "decodedLogSnapshot": ".tmp/m1-meta-review/01-ci-failed-job-131861090667.raw-log.json",
+    "decodedLogPath": ".tmp/m1-meta-review/01-ci-failed-job-131861090667.log",
+    "decodedLogSha256": "dcf09970b5ac2e6bbfebc2aeebbfdcff339f4d21bfd75ce43a8f493f59f40c64",
+    "decodedLogBytes": 1218146
+  },
+  "completedRuntimeEvidence": {
+    "runId": 43418115774,
+    "contractJobId": 131861020197,
+    "chromeJobId": 131861019785,
+    "nodeTests": 252,
+    "nodePassed": 252,
+    "nodeFailed": 0,
+    "rpmBrowserStatus": "PASS_WITH_REAL_DATA_GAPS",
+    "rpmUnits": 24,
+    "rpmParents": 54,
+    "missingParentDataCount": 8,
+    "artifactId": 14032762362,
+    "artifactName": "archive-rpm-middle-browser-43418115774-1"
+  },
+  "boundaries": {
+    "readOnlyGitHub": true,
+    "workflowRerun": false,
+    "merged": false,
+    "commentsPosted": false,
+    "trackedFilesEdited": false,
+    "metadataOrMathQaClaimed": false,
+    "remediationOwner": "ROOT"
+  },
+  "nextAction": "ROOT aligns the four stale helper cache queries and pushes a new head; monitor only the new head."
+}
