@@ -8,7 +8,7 @@
   "baseMainSha": "573fa32804480b2d70f7536b211e240e8d64d5ed",
   "questionCount": 23,
   "reviewBasis": "All stems, choices, existing answers and solutions read; all required original images directly inspected. Existing approved answer/solution evidence reused; student fields unchanged.",
-  "reviewState": "SEMANTIC_REVIEW_COMPLETE_RESOLVER_AND_INDEPENDENT_SAMPLE_PENDING",
+  "reviewState": "SEMANTIC_REVIEW_AND_RESOLVER_COMPLETE_INDEPENDENT_SAMPLE_PENDING",
   "fourSlotDictionary": "docs/architecture/4slot/term-dictionary-v1.5.json",
   "existingFourSlotSourceGitBlobSha": "a1fc47ab7a44753049c7df13031f0ccdcbdb5110",
   "fourSlotSourceStatus": "STALE_BLOB_REVIEWED_CURRENT_CONTENT_ALL_23",
@@ -149,7 +149,30 @@
       "gaps": [],
       "difficultyReason": "정팔각형을 식별한 뒤 대각선, 각의 합, 분할 삼각형 수에 관한 진술을 각각 대조한다.",
       "independentRecheckRequired": true,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+        "crosswalkRecordId": "M1-RPM-199",
+        "crosswalkStatus": "FAMILY_ACTIVE",
+        "bindingOwnerPack": "MIDDLE1",
+        "bindingIdentity": "2022|M1-06|M1-06-POLYGON_CIRCLE|PT_M1_POLYGON_ANGLE_AND_COUNT|MIDDLE1",
+        "inputBundleSha": "sha256:11f5b766d849d8f81be3b777379920379bb3b2176a55816bbbd2723a29fd90c8",
+        "sourceFingerprint": "sha256:5e27468fd8db64f191d0c7e91ea2ca08bcb397a2615d09b2f01a58d992449b70",
+        "evidenceSha": "sha256:db2110cb39e1e6df89bf27762594b6bcee8c608db5c43d5085845270acce5925",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "mappedTemplateKeys": [
+          "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT"
+        ],
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "sourceOrdinal": 2,
@@ -273,7 +296,35 @@
       ],
       "difficultyReason": "서로 다른 두 꼭짓점에서 평각으로 표시각을 복원한 뒤 차를 구한다. 맞꼭지각·삼각형 내각합·각의 비는 필요 없다.",
       "independentRecheckRequired": false,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crosswalkRecordId": "",
+        "crosswalkStatus": "",
+        "bindingOwnerPack": "",
+        "bindingIdentity": "",
+        "inputBundleSha": "sha256:ac7b833421fa40d4e78f32e86c0bece66d74a112782c6c7f53477a401ad1ca11",
+        "sourceFingerprint": "sha256:ff18a11f670c0bcb9df811c9338863b39ae69ac92bd2a77b4970d6d1faa37965",
+        "evidenceSha": "sha256:84b592f967dba7953005b4dae319621c9dc3e593f47c70660a29b84ff3345fc2",
+        "advancedMetaEligible": false,
+        "projectionReasonCode": "CROSSWALK_ROW_SELECTION_PENDING",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [
+          "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
+          "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+          "TPL_M1_TRIANGLE_ANGLE_CHASE_CHAINED_ISOSCELES",
+          "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
+          "TPL_M1_STRAIGHT_ANGLE_PARTITION_ADJACENT_RATIO_SUM",
+          "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO"
+        ],
+        "ownerPack": ""
+      }
     },
     {
       "sourceOrdinal": 3,
@@ -397,7 +448,30 @@
       "gaps": [],
       "difficultyReason": "별의 끝각 합으로 한 각을 정한 뒤 교차점의 보각과 삼각형 내각합으로 표시각의 차를 구한다. 기본도형보다 다각형 각 추론에 해당한다.",
       "independentRecheckRequired": true,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+        "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+        "crosswalkRecordId": "M1-RPM-197-TRIANGLE-EXTERIOR-EQUATION-20261113",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "bindingOwnerPack": "MIDDLE1",
+        "bindingIdentity": "2022|M1-06|M1-06-POLYGON_CIRCLE|PT_M1_TRIANGLE_ANGLE_CHASE|MIDDLE1",
+        "inputBundleSha": "sha256:59e4960d4cf6d34467c9e6d35f60af7221137f5f7590313761e45004593c4ef4",
+        "sourceFingerprint": "sha256:1610134a09b15f3e0a7101de88ed2e617f4b5d234534f8a1e712fa24beb5a7ef",
+        "evidenceSha": "sha256:0776f7e103b1dce4e30aea3759e47bea9edc951caacff81cb78f1330ea7c24e8",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+        "mappedTemplateKeys": [
+          "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION"
+        ],
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "sourceOrdinal": 4,
@@ -515,7 +589,30 @@
       "gaps": [],
       "difficultyReason": "현과 직선, 중심각과 두 현의 각, 부채꼴과 활꼴을 정의로 구별한다. 독립 진술 판정이며 수학적 경우 분기가 아니다.",
       "independentRecheckRequired": true,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+        "crosswalkRecordId": "M1-RPM-201",
+        "crosswalkStatus": "FAMILY_ACTIVE",
+        "bindingOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingIdentity": "2022|M1-06|M1-06-POLYGON_CIRCLE|PT_CIRCLE_ANGLE_RELATIONS|MIDDLE_GEOMETRY",
+        "inputBundleSha": "sha256:c855c4d9d1ba79f4418f5bef02360a8a087d4baaa7b30a83a7b3a4a56f8fbead",
+        "sourceFingerprint": "sha256:bf34254454b39d502f14500d8a7b3c909b695d17b14501f64963e0bbecf6c927",
+        "evidenceSha": "sha256:77ff1418afba13e5b7bd2227762c10fc2e18cf2cf7b32da62126c03b65fbf51f",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "mappedTemplateKeys": [
+          "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+        ],
+        "ownerPack": "MIDDLE_GEOMETRY"
+      }
     },
     {
       "sourceOrdinal": 5,
@@ -639,7 +736,30 @@
       "gaps": [],
       "difficultyReason": "주어진 반지름과 넓이를 부채꼴 넓이-호 길이 관계에 대입해 호 길이를 역산한다.",
       "independentRecheckRequired": false,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "crosswalkRecordId": "M1-RPM-204",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "bindingOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingIdentity": "2022|M1-06|M1-06-PLANE_FIGURE_MEASURE|PT_CIRCLE_ANGLE_RELATIONS|MIDDLE_GEOMETRY",
+        "inputBundleSha": "sha256:d123ab60dcd4f4df4acd0f9a5c2f4fb580bc85bb6e2c3cc083855976bb6561a3",
+        "sourceFingerprint": "sha256:1c8266c2a4b5dd570ba7709655ed9fbf6a059c0c71a675c62847646dba9d5ff3",
+        "evidenceSha": "sha256:f7e9615a2b1a6b3ec9cd0411bf89b60fbe720845df6a5c4389c6586c6120956b",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "mappedTemplateKeys": [
+          "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+        ],
+        "ownerPack": "MIDDLE_GEOMETRY"
+      }
     },
     {
       "sourceOrdinal": 6,
@@ -763,7 +883,30 @@
       "gaps": [],
       "difficultyReason": "호의 비를 중심각과 길이에 적용하고 넓이 공식을 대조한다. 현 길이에 호의 비를 잘못 적용한 진술을 배제한다.",
       "independentRecheckRequired": false,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "crosswalkRecordId": "M1-RPM-202",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "bindingOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingIdentity": "2022|M1-06|M1-06-PLANE_FIGURE_MEASURE|PT_CIRCLE_ANGLE_RELATIONS|MIDDLE_GEOMETRY",
+        "inputBundleSha": "sha256:c88dfe7edd8bd8fcf808d59b37d0dac6959679d16d72d5bf4723dec8a389d77f",
+        "sourceFingerprint": "sha256:275a4b437573d5fd7c33162bf3f8b6e02fbc49642cf94c79323a7b22fd876e28",
+        "evidenceSha": "sha256:31f069ebf8553a4b5315a0e128516c2f7e72f2e9999b85d45dfdf584e1712d52",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "mappedTemplateKeys": [
+          "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+        ],
+        "ownerPack": "MIDDLE_GEOMETRY"
+      }
     },
     {
       "sourceOrdinal": 7,
@@ -893,6 +1036,29 @@
         "difficultyBucket": "KEEP 2",
         "independentReviewer": "ROOT_PENDING",
         "reason": "굴리는 순서가 그림에 모두 주어지고 변과 대각선 길이까지 명시되어, 각 단계의 회전반지름을 읽어 사분원 호들을 더하는 익숙한 한 번의 모델 해석이다. 별도 숨은 길이 복원이나 경우 분기는 없어 상 판정의 구조 근거가 부족하다."
+      },
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "crosswalkRecordId": "M1-RPM-202",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "bindingOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingIdentity": "2022|M1-06|M1-06-PLANE_FIGURE_MEASURE|PT_CIRCLE_ANGLE_RELATIONS|MIDDLE_GEOMETRY",
+        "inputBundleSha": "sha256:25fac0e465fdcfae246a122b07468fc82a1d86a64e56b37bd09f15b16ad3d06e",
+        "sourceFingerprint": "sha256:b584a492b6e05431ad382de75badedf44a91102272174a0ac8074995c7556ace",
+        "evidenceSha": "sha256:e1bd000dc4ba512d39683e4c030f796191e0e2f8c522399c741567f41dc31fea",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "mappedTemplateKeys": [
+          "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+        ],
+        "ownerPack": "MIDDLE_GEOMETRY"
       }
     },
     {
@@ -1019,6 +1185,29 @@
         "difficultyBucket": "KEEP 2",
         "independentReviewer": "ROOT_PENDING",
         "reason": "정사각형의 바깥 변과 꽃잎 경계의 같은 반지름 사분원 호들을 구분해 합하는 한 번의 경계 해석이다. 넓이 비교·교점 계산·반복 조건 결합 없이 표준 둘레 계산으로 끝나므로 중이 적절하다."
+      },
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+        "crosswalkRecordId": "M1-RPM-205",
+        "crosswalkStatus": "FAMILY_ACTIVE",
+        "bindingOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingIdentity": "2022|M1-06|M1-06-PLANE_FIGURE_MEASURE|PT_CIRCLE_ANGLE_RELATIONS|MIDDLE_GEOMETRY",
+        "inputBundleSha": "sha256:191940d635f140f4fc0f9d2a33049d132dcdaf776d2e55b5f2f395618bc416fc",
+        "sourceFingerprint": "sha256:496bc96a3d66a0d6eb58e5c9c2e151810b93dd98a90668d306f241c4a6eeb290",
+        "evidenceSha": "sha256:f209fde8c82a4bbea2f0d833136ebe1ed9a800aadfd0a1ba29ff4481c89f40c4",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "mappedTemplateKeys": [
+          "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER"
+        ],
+        "ownerPack": "MIDDLE_GEOMETRY"
       }
     },
     {
@@ -1145,7 +1334,30 @@
       "gaps": [],
       "difficultyReason": "면 수, 정다면체 종류, 구 단면, 밑면 평행성, 정사면체 면 모양을 대조한다. 독립 진술 검토는 경우 분기가 아니다.",
       "independentRecheckRequired": false,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+        "crosswalkRecordId": "M1-RPM-209",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "bindingOwnerPack": "MIDDLE1",
+        "bindingIdentity": "2022|M1-07|M1-07-SOLID_FIGURE|PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS|MIDDLE1",
+        "inputBundleSha": "sha256:e00981ead3554eb31e1c342ca11f0438c9111d5e1810f743e682c535a42a4095",
+        "sourceFingerprint": "sha256:f8aa889f2596c201cfd1025b0d29279b0c940ae4f4658a0ed72d390a6aef6f6e",
+        "evidenceSha": "sha256:2443c6bcad2a8b51a844a3c1deb4d8639a1b1e572f1d3bb04d60dec9b2088676",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "mappedTemplateKeys": [
+          "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
+        ],
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "sourceOrdinal": 10,
@@ -1157,7 +1369,7 @@
       ],
       "primaryMethod": "두 크기가 다른 원과 고리 부채꼴 전개도를 원뿔대로 인식하고 사다리꼴 회전으로 생성하는 보기를 고른다.",
       "decisiveStep": "두 크기가 다른 원과 고리 부채꼴 전개도를 원뿔대로 인식하고 사다리꼴 회전으로 생성하는 보기를 고른다.",
-      "classification": "EXISTING_EXACT",
+      "classification": "BINDING_GAP",
       "before": {
         "standardCourse": "중1 수학",
         "standardUnitKey": "M1-07",
@@ -1198,9 +1410,7 @@
           "l3": "회전체",
           "l4": "회전체의 생성"
         },
-        "rpmParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"다면체와 회전체\"]",
-        "problemTypeKey": "PT_M1_ROTATION_SOLID_GENERATION",
-        "templateKey": "TPL_M1_ROTATION_SOLID_GENERATION_SHAPE"
+        "rpmParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"다면체와 회전체\"]"
       },
       "resolverSelection": {
         "crosswalkRecordId": "M1-RPM-211",
@@ -1262,10 +1472,41 @@
         "disposition": "KEEP",
         "reason": "두 크기가 다른 원과 고리 부채꼴 전개도를 원뿔대로 인식하고 사다리꼴 회전으로 생성하는 보기를 고른다."
       },
-      "gaps": [],
+      "gaps": [
+        {
+          "class": "BINDING_GAP",
+          "existingExactProblemTypeKey": "PT_M1_ROTATION_SOLID_GENERATION",
+          "existingExactTemplateKey": "TPL_M1_ROTATION_SOLID_GENERATION_SHAPE",
+          "finding": "정확한 ACTIVE PT/TPL과 crosswalk DIRECT_ACTIVE는 존재하지만 공식 Resolver 실제 실행은 PROJECTION_BINDING_PENDING / EXACT_ACTIVE_BINDING_PENDING을 반환한다.",
+          "request": "2022 M1-07 / M1-07-SOLID_FIGURE에 exact ACTIVE binding을 공통 정본 담당자가 등록해야 한다. 기존 키 재사용; 신규 유형 요청 아님."
+        }
+      ],
       "difficultyReason": "두 크기가 다른 원과 고리 부채꼴 전개도를 원뿔대로 인식하고 사다리꼴 회전으로 생성하는 보기를 고른다.",
       "independentRecheckRequired": false,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crosswalkRecordId": "M1-RPM-211",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "bindingOwnerPack": "MIDDLE1",
+        "bindingIdentity": "",
+        "inputBundleSha": "sha256:51150cb2f9cd8c84f56d2cd91639b9e757663fedab1ed9551f83a86413aee002",
+        "sourceFingerprint": "sha256:b31de6b8a97b99a8713641138ab10b8688211d4d3a847c9fa0c937821fdc6b12",
+        "evidenceSha": "sha256:44582a9f8b671e67fb73985731e33d6ef3f3da8f67757404b6738632ab27d9e9",
+        "advancedMetaEligible": false,
+        "projectionReasonCode": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_M1_ROTATION_SOLID_GENERATION",
+        "mappedTemplateKeys": [
+          "TPL_M1_ROTATION_SOLID_GENERATION_SHAPE"
+        ],
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "sourceOrdinal": 11,
@@ -1275,7 +1516,7 @@
       "visualsRead": [],
       "primaryMethod": "각뿔대의 두 밑면 꼭짓점과 정다면체의 면-모서리 중복을 고려해 두 개수를 합한다. 직접 계수형에 근거해 문자열 난이도를 1로 교정한다.",
       "decisiveStep": "각뿔대의 두 밑면 꼭짓점과 정다면체의 면-모서리 중복을 고려해 두 개수를 합한다. 직접 계수형에 근거해 문자열 난이도를 1로 교정한다.",
-      "classification": "EXISTING_EXACT",
+      "classification": "BINDING_GAP",
       "before": {
         "standardCourse": "중1 수학",
         "standardUnitKey": "M1-07",
@@ -1316,9 +1557,7 @@
           "l3": "다면체",
           "l4": "면·모서리·꼭짓점"
         },
-        "rpmParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"다면체와 회전체\"]",
-        "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
-        "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+        "rpmParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"다면체와 회전체\"]"
       },
       "resolverSelection": {
         "crosswalkRecordId": "M1-RPM-207",
@@ -1388,10 +1627,41 @@
         "disposition": "CORRECT",
         "reason": "각뿔대의 두 밑면 꼭짓점과 정다면체의 면-모서리 중복을 고려해 두 개수를 합한다. 직접 계수형에 근거해 문자열 난이도를 1로 교정한다."
       },
-      "gaps": [],
+      "gaps": [
+        {
+          "class": "BINDING_GAP",
+          "existingExactProblemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "existingExactTemplateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+          "finding": "정확한 ACTIVE PT/TPL과 crosswalk DIRECT_ACTIVE는 존재하지만 공식 Resolver 실제 실행은 PROJECTION_BINDING_PENDING / EXACT_ACTIVE_BINDING_PENDING을 반환한다.",
+          "request": "2022 M1-07 / M1-07-SOLID_FIGURE에 exact ACTIVE binding을 공통 정본 담당자가 등록해야 한다. 기존 키 재사용; 신규 유형 요청 아님."
+        }
+      ],
       "difficultyReason": "각뿔대의 두 밑면 꼭짓점과 정다면체의 면-모서리 중복을 고려해 두 개수를 합한다. 직접 계수형에 근거해 문자열 난이도를 1로 교정한다.",
       "independentRecheckRequired": false,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crosswalkRecordId": "M1-RPM-207",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "bindingOwnerPack": "MIDDLE1",
+        "bindingIdentity": "",
+        "inputBundleSha": "sha256:959a94aa4612cd0af80c53fe2f8832e6be89f091fbe81931909157a7eac23d6e",
+        "sourceFingerprint": "sha256:366d21fd469748f326a11a2cbb4174be94fddc8ebea3f32ef6f2ebbb740f873c",
+        "evidenceSha": "sha256:621afea2fad539a331dd6efe0e0154a7b5cc24e182c0f411b65850d83ad3964f",
+        "advancedMetaEligible": false,
+        "projectionReasonCode": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+        "mappedTemplateKeys": [
+          "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+        ],
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "sourceOrdinal": 12,
@@ -1524,7 +1794,35 @@
       ],
       "difficultyReason": "밑면 원주와 굴린 횟수로 꼭짓점 주위 궤적 원주를 연결해 모선을 복원한 뒤 모선이 반지름인 평면 원의 넓이를 구한다. 전개도/겉넓이를 묻지 않는다.",
       "independentRecheckRequired": true,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crosswalkRecordId": "M1-RPM-216",
+        "crosswalkStatus": "FAMILY_ACTIVE",
+        "bindingOwnerPack": "MIDDLE1",
+        "bindingIdentity": "",
+        "inputBundleSha": "sha256:f59e8d74ad4aa9403e4044efa244d6af65a8cf33fefe5b653ea32e63d095b6ac",
+        "sourceFingerprint": "sha256:552748fbada35a52f7da90023a53f7dbf77b1ebe97d186b6cdbe660be0a60994",
+        "evidenceSha": "sha256:e245dbd2bc62375f1a5f2f8955296819b5d8dc67d9a9a76c51242fe68350eb6a",
+        "advancedMetaEligible": false,
+        "projectionReasonCode": "FAMILY_TEMPLATE_SELECTION_PENDING",
+        "mappedProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "mappedTemplateKeys": [
+          "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+          "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+          "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+          "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+          "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+          "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+        ],
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "sourceOrdinal": 13,
@@ -1648,7 +1946,30 @@
       "gaps": [],
       "difficultyReason": "수직 단면의 원과 축 포함 단면의 직사각형에서 원기둥 반지름·높이를 읽고 부피에 대입한다.",
       "independentRecheckRequired": false,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "crosswalkRecordId": "M1-RPM-214",
+        "crosswalkStatus": "FAMILY_ACTIVE",
+        "bindingOwnerPack": "MIDDLE1",
+        "bindingIdentity": "2022|M1-07|M1-07-SOLID_FIGURE_MEASURE|PT_M1_SOLID_FIGURE_MEASURE|MIDDLE1",
+        "inputBundleSha": "sha256:cb61215f552166c70410abd11da9dd724701074e257ad8b7940079d6bbb072a3",
+        "sourceFingerprint": "sha256:a33ea05eb17cfcd905175cfe19df4b45de527a3c5dbe9f78be3f3721b3c8431e",
+        "evidenceSha": "sha256:24c5ff531481de734e6bd8f8a05d277158b0e5b6d4a0a6093a5e20978d281514",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "mappedTemplateKeys": [
+          "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+        ],
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "sourceOrdinal": 14,
@@ -1772,7 +2093,30 @@
       "gaps": [],
       "difficultyReason": "남은 구면과 잘라서 드러난 세 사분원 면을 구분해 넓이를 합한다. 노출면 분해이며 DEEP_COMPOSITE가 아니다.",
       "independentRecheckRequired": false,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "crosswalkRecordId": "M1-RPM-219",
+        "crosswalkStatus": "FAMILY_ACTIVE",
+        "bindingOwnerPack": "MIDDLE1",
+        "bindingIdentity": "2022|M1-07|M1-07-SOLID_FIGURE_MEASURE|PT_M1_SOLID_FIGURE_MEASURE|MIDDLE1",
+        "inputBundleSha": "sha256:9cf8a9ab62800674c8f7c14d828211c795c6189be40d59ed3d26c5b561420628",
+        "sourceFingerprint": "sha256:c4a32304159430643fc85142c4f6ad6e1ab57ebec7ac3cb40aab7b320cd07bfc",
+        "evidenceSha": "sha256:8b9d7e72f98907c9cc7c2fd493181408c3a4f829540dffbfce4d453c0e2bc417",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "mappedTemplateKeys": [
+          "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE"
+        ],
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "sourceOrdinal": 15,
@@ -1902,7 +2246,30 @@
       "gaps": [],
       "difficultyReason": "두 방향에서 물이 차지하는 삼각기둥형 부피를 같다고 놓는다. 부피 보존 자체가 Primary 골격으로 별도 INTERDEPENDENT가 아니다.",
       "independentRecheckRequired": true,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "crosswalkRecordId": "M1-RPM-213",
+        "crosswalkStatus": "FAMILY_ACTIVE",
+        "bindingOwnerPack": "MIDDLE1",
+        "bindingIdentity": "2022|M1-07|M1-07-SOLID_FIGURE_MEASURE|PT_M1_SOLID_FIGURE_MEASURE|MIDDLE1",
+        "inputBundleSha": "sha256:093b75d428a417adea85f9acf8bd06cbb780840ae76566f40451532e07b77158",
+        "sourceFingerprint": "sha256:15633e5e99c12ad1d63e5c880aa0fbe2227069cf4d4cee609dafe3d77b51f848",
+        "evidenceSha": "sha256:4c702ab713f1223f800bef1cfa543585b72adc90d6590e6918d8e1579f82346a",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "mappedTemplateKeys": [
+          "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION"
+        ],
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "sourceOrdinal": 16,
@@ -2026,7 +2393,30 @@
       "gaps": [],
       "difficultyReason": "위아래 부채꼴, 남은 곡면, 새 직사각형 두 면을 더한다. 노출면 분해 후 선형 합산이다.",
       "independentRecheckRequired": false,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "crosswalkRecordId": "M1-RPM-219",
+        "crosswalkStatus": "FAMILY_ACTIVE",
+        "bindingOwnerPack": "MIDDLE1",
+        "bindingIdentity": "2022|M1-07|M1-07-SOLID_FIGURE_MEASURE|PT_M1_SOLID_FIGURE_MEASURE|MIDDLE1",
+        "inputBundleSha": "sha256:f9ed85bfa0cf47585ccd7247b6f09842b604f6af229c539f0b77d714d2077318",
+        "sourceFingerprint": "sha256:59e65c9f8f5d35d87d1360d00023e3d80c0525fbbcaf75218ee78d598339cadf",
+        "evidenceSha": "sha256:dc0b8a690e08975a214f7337c61f8b80a897002c29fdd57d9b9ae36356262359",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "mappedTemplateKeys": [
+          "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE"
+        ],
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "sourceOrdinal": 17,
@@ -2146,7 +2536,11 @@
       ],
       "difficultyReason": "원자료를 십의 자리별로 묶고 일의 자리를 정렬해 빈 잎을 복원한다. 계급 도수나 중앙값 산출과 구별한다.",
       "independentRecheckRequired": true,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": false,
+        "reason": "RPM_LEAF_GAP_NO_FABRICATED_PATH"
+      }
     },
     {
       "sourceOrdinal": 18,
@@ -2260,7 +2654,30 @@
       "gaps": [],
       "difficultyReason": "공통 자료를 정렬했을 때 가운데 두 순위 값으로 중앙값을 계산한다. 줄기와 잎은 표현이고 주개념은 중앙값이다.",
       "independentRecheckRequired": false,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+        "crosswalkRecordId": "M1-RPM-223",
+        "crosswalkStatus": "FAMILY_ACTIVE",
+        "bindingOwnerPack": "MIDDLE1",
+        "bindingIdentity": "2022|M1-08|M1-08-DATA_INTERPRETATION|PT_M1_CENTRAL_TENDENCY|MIDDLE1",
+        "inputBundleSha": "sha256:610e1ce573289de2392fb4cc7da96f36abb088452bb25902b02de74545059704",
+        "sourceFingerprint": "sha256:88e5f3a9a8a019dbe90313ea09cea83c5a150efb42c43e801602a06bc5f22bac",
+        "evidenceSha": "sha256:6c533bea3362591fac7e7467622ad9cd8397327dd05607dc9ba85af856eae06b",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "mappedTemplateKeys": [
+          "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC"
+        ],
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "sourceOrdinal": 19,
@@ -2388,7 +2805,30 @@
       ],
       "difficultyReason": "계급·도수와 경계 아래 누적 인원을 읽고 전체 대비 백분율로 바꾸어 진술을 검증한다. 그래프나 줄기·잎 변환 문제가 아니다.",
       "independentRecheckRequired": true,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crosswalkRecordId": "",
+        "crosswalkStatus": "",
+        "bindingOwnerPack": "",
+        "bindingIdentity": "",
+        "inputBundleSha": "sha256:ddd16cd01323407371804f97ece08abc13b1eea5f6b3d7da6f14d6b165019813",
+        "sourceFingerprint": "sha256:46bbe194aa2719440476d16f85ef9281b577c7f91adb9202866fbb08b3fb4029",
+        "evidenceSha": "sha256:3b71f8598d3118fd302f260a112a8bfcc3984a643690b7736eea3a248dc9b560",
+        "advancedMetaEligible": false,
+        "projectionReasonCode": "CROSSWALK_ROW_SELECTION_PENDING",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [
+          "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE"
+        ],
+        "ownerPack": ""
+      }
     },
     {
       "sourceOrdinal": 20,
@@ -2520,7 +2960,30 @@
       "gaps": [],
       "difficultyReason": "한 누락 도수로 전체 인원과 다른 누락 도수를 표현하고 도수 합 조건을 풀어 목표 구간 인원을 합한다.",
       "independentRecheckRequired": true,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+        "crosswalkRecordId": "M1-RPM-231",
+        "crosswalkStatus": "FAMILY_ACTIVE",
+        "bindingOwnerPack": "MIDDLE1",
+        "bindingIdentity": "2022|M1-08|M1-08-DATA_ORGANIZATION|PT_M1_FREQUENCY_DISTRIBUTION_READING|MIDDLE1",
+        "inputBundleSha": "sha256:0dbc547bbfd901c4c04d147af42d48d2c3b5783d14c95b0ff5c8018d622b88db",
+        "sourceFingerprint": "sha256:dd6248c5df6f964787daf50922351c15dc1d661a5e2b6b3dc6c4f253692f127b",
+        "evidenceSha": "sha256:297c6185fdfc5b14ee5c307240b8770a6b741746c924dec0ef6bdf418f3fa9eb",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "mappedTemplateKeys": [
+          "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY"
+        ],
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "sourceOrdinal": 21,
@@ -2646,7 +3109,30 @@
       "gaps": [],
       "difficultyReason": "한 꼭짓점 대각선 수와 분할 삼각형 수를 변의 수로 나타내 일차관계를 풀고 내각의 합을 구한다.",
       "independentRecheckRequired": false,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+        "crosswalkRecordId": "M1-RPM-198-PARTITION-COUNT-20261113",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "bindingOwnerPack": "MIDDLE1",
+        "bindingIdentity": "2022|M1-06|M1-06-POLYGON_CIRCLE|PT_M1_POLYGON_ANGLE_AND_COUNT|MIDDLE1",
+        "inputBundleSha": "sha256:77b403f2274c010619cc576c34b2200dfded40c2238cafefdc055338306e2c86",
+        "sourceFingerprint": "sha256:77c2fcc9a54bd54a6fd697427e98a275725961bbf4bac9ab687489d5a1e8e270",
+        "evidenceSha": "sha256:043c6cf7209364dc22e6612dac45421ddda672debe6c7718445799c6ec5466bd",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "mappedTemplateKeys": [
+          "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS"
+        ],
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "sourceOrdinal": 22,
@@ -2792,7 +3278,30 @@
       "gaps": [],
       "difficultyReason": "두 이등변삼각형의 밑각 관계와 평각을 연결해 중심각들을 정한 뒤 같은 원의 호 길이 비례를 적용한다. 이등변삼각형 성질은 필수 보조개념이다.",
       "independentRecheckRequired": true,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crosswalkRecordId": "M1-RPM-201",
+        "crosswalkStatus": "FAMILY_ACTIVE",
+        "bindingOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingIdentity": "2022|M1-06|M1-06-POLYGON_CIRCLE|PT_CIRCLE_ANGLE_RELATIONS|MIDDLE_GEOMETRY",
+        "inputBundleSha": "sha256:1e5ec70e4c82eea1a47914275bdcf9c8dc9b0c5a7a79acaf5d96ec6d20a63d34",
+        "sourceFingerprint": "sha256:b05804d6eb643ea5e2d30bd98ab245b503f90f337363d861a7a207aaa8ab92dc",
+        "evidenceSha": "sha256:3a5e88228bb12cd10acd6ccae1ca570937426d139054aa4e97153c53ad9be374",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "mappedTemplateKeys": [
+          "TPL_CIRCLE_ANGLE_CENTER_ARC"
+        ],
+        "ownerPack": "MIDDLE_GEOMETRY"
+      }
     },
     {
       "sourceOrdinal": 23,
@@ -2936,7 +3445,30 @@
       "gaps": [],
       "difficultyReason": "꼭 맞는 구에서 공통 높이가 지름임을 읽고 세 부피 공식을 같은 반지름으로 나타내 약분한다. 모두 입체 측정 Primary 안이다.",
       "independentRecheckRequired": false,
-      "sourceProtectedFields": "UNCHANGED"
+      "sourceProtectedFields": "UNCHANGED",
+      "resolver": {
+        "executed": true,
+        "tool": "archive/tools/meta-foundation/rpm-active-resolver.mjs:resolveMetaRoute",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "crosswalkRecordId": "M1-RPM-218",
+        "crosswalkStatus": "FAMILY_ACTIVE",
+        "bindingOwnerPack": "MIDDLE1",
+        "bindingIdentity": "2022|M1-07|M1-07-SOLID_FIGURE_MEASURE|PT_M1_SOLID_FIGURE_MEASURE|MIDDLE1",
+        "inputBundleSha": "sha256:3e4f2daf9d6025c30ce3d6bd0ba66b305526bddbbf7c36116fbf2950417ba84d",
+        "sourceFingerprint": "sha256:1fc01ee8d354119e5190a2f9625deb70a3588eace1bc08ffb81aa17ed5384a06",
+        "evidenceSha": "sha256:b03d5021afa9641fde57f2262b259c9c9d5cad08afbd7b97a99a377f11a7d03e",
+        "advancedMetaEligible": true,
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "mappedTemplateKeys": [
+          "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+        ],
+        "ownerPack": "MIDDLE1"
+      }
     }
   ],
   "summary": {
@@ -2962,6 +3494,8 @@
     ],
     "officialKeyGaps": [
       2,
+      10,
+      11,
       12,
       17,
       19
@@ -2981,7 +3515,8 @@
     ],
     "parentCorrection": [
       3
-    ]
+    ],
+    "resolverProjectionReuseCount": 17
   },
   "handoff": "Root runs resolver exact selected rows, independent boundary/conflict and 4slot sample checks; applies only supported source/small request changes; official 4slot import; commit/push and remote readback before close. No shared definitions edited."
 }
