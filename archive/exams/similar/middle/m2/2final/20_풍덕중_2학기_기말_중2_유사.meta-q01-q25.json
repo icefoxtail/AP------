@@ -1,0 +1,1687 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "similar-20-fengdeok-m2-2final-candidate-v1",
+  "examUid": "20_풍덕중_2학기_기말_중2_유사",
+  "sourceArchiveFile": "similar/middle/m2/2final/20_풍덕중_2학기_기말_중2_유사.js",
+  "expectedSourceBlobSha1": "e963db8eb3f6def81c244294a7ca0d5e9e798f8c",
+  "expectedSourceSha256": "7f06e24874ead4d623572fb3632793c80d899db963908cb65b3ab9fbb1c7da3e",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "approvedBy": null,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "sourceEvidence": {
+    "sourceArchiveFile": "original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+    "sourceBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+    "sourceMDFileId": "1K0zVz4kk4Qp8GB86U__yYsXneuT8Ue8slRMVz9pw4zU",
+    "sourceRevision": "AHj4eMRnPK10_H2tzqJ3t2eL1zp4A2uDfJtd2okQMr7KknSY6-B6_OU_1niSR3TlJp3U5e8YQsEoxf2RyzdfBqoSh2uJn4ZoBdZlztWs0UA",
+    "sourceLastModifiedUtc": "2026-11-13T11:17:00.526Z (user-provided)",
+    "sourceRevisionRead": "Direct native Docs extraction; 25 Q headings, 100 total points and 36 $$-delimited display math blocks confirmed. Docs table API returned no native table object; Q15 data are a Markdown table in the document text.",
+    "declaredQuestionCount": 25,
+    "declaredTotalScore": 100,
+    "verifiedItemScoreTotal": 100,
+    "note": "All question prompts, choices, answers, solutions and candidate metadata were read from the specified revision. No original diagram asset was reused. Local correction history is explicit; independent reviewer, resolver, identity-map registration and consumer parity remain pending.",
+    "corrections": [
+      {
+        "qid": 6,
+        "before": "두 설명 ②·④가 맞아 기존 발문·정답이 단일 선지 검증 형식과 충돌.",
+        "after": "다섯 진술 ㄱ~ㅁ을 모두 보존하고 조합형 5선지를 추가해 ㄴ·ㄹ인 ④ 하나만 정답으로 정리."
+      },
+      {
+        "qid": 11,
+        "before": "② 2가지와 ③ 2가지 이상 3가지 미만은 정수 경우의 수에서 중복.",
+        "after": "③을 5가지로 바꾸어 보기 의미를 구별하고 정답④(3가지) 유지."
+      },
+      {
+        "qid": 15,
+        "before": "발문의 숫자 야구 표가 MD 표로 주어져 있음.",
+        "after": "154→원 볼, 492→투 스트라이크, 428→원 스트라이크·투 볼 세 항목을 HTML 표로 그대로 보존해 학생 발문에서 표로 렌더링되게 변환."
+      },
+      {
+        "qid": "16-21,24-25",
+        "before": "확률 계산을 보장하는 공정성·균등성·독립 조건이 발문에 일부 명시되지 않음.",
+        "after": "Q16 균등 선택, Q17 공정·독립, Q18 구역별 동일 가능성, Q19 공정·독립 동전, Q20 부모 대립유전자 균등·독립 전달, Q21 매 경기 1/2·독립·무승부 없음, Q24 공정·독립 주사위, Q25 무작위 비복원 추출을 발문에 명시."
+      },
+      {
+        "qid": 1,
+        "before": "보기 표지가 <보기> 문자열로 입력됨.",
+        "after": "보기:로 변경하고 ㄱ~ㅂ 여섯 진술 모두 보존."
+      },
+      {
+        "qid": "22-25",
+        "before": "MD response marker is 서답형 while supported JS schema expects 객관식/서술형/단답형.",
+        "after": "각 문항에 하위 풀이·조건 도출/과정 요구가 있어 서술형으로 정규화하고 choices를 빈 배열로 생성."
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_35b56ed5b9296b71caf04bf9e693fc6cae6d783e47f307410a152be6adebf983",
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "LINEAR_FUNCTION_DEFINITION",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "동류항 정리 후 일차함수 정의 직접 판별",
+        "primaryMethod": "각 식을 y에 대하여 정리해 y=ax+b(a!=0) 꼴인 ㄴ, ㄷ, ㄹ, ㅂ의 4개를 판별한다.",
+        "decisiveStep": "ㅂ에서 x^2 소거 후 일차항 2x 남음 확인",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그 그래프",
+        "rpmL3Label": "일차함수의 뜻",
+        "rpmL4Label": "일차함수 판별",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "일차함수 판별"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 1,
+      "sourceUid": "qid_v1_65adbcb0c5bdeac6d01c9215a9b452110b1ea19247b777809841ac0ef8b713d6",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "why": "이차항 소거 및 분수식 구분을 포함해 일차함수 여부를 판별하는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수",
+          "함수"
+        ],
+        "goal": [
+          "일차함수"
+        ],
+        "method": [
+          "방정식"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_238790d36bb3377f1652b1ad7b5f69873bf6a36652de02194fd477d3ea84cdf7",
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "VERTICAL_TRANSLATION_POINT",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "평행이동 식 수립 및 좌표 대입 확인",
+        "primaryMethod": "평행이동 식 y=-3x+4를 세우고 각 좌표를 대입해 성립하는 점 (3,-5)를 찾는다.",
+        "decisiveStep": "y=-3x+4에 x=3 대입 시 y=-5 확인",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그 그래프",
+        "rpmL3Label": "일차함수의 그래프",
+        "rpmL4Label": "기울기·절편",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 2,
+      "sourceUid": "qid_v1_aa31419dee4be5cf1f08bf2c9be87a19ce49d3fc23505f38c13c8ac88daa410a",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+        "why": "y축 평행이동한 일차함수 식을 구해 그래프 위의 점을 찾는 기본 문항"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수",
+          "그래프"
+        ],
+        "goal": [
+          "점",
+          "좌표"
+        ],
+        "method": [
+          "평행이동"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_4c523dc5b96057544a8c297b3d1f9277a3873a7e94428fefe8d71c0634057de3",
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "X_Y_INTERCEPTS_COORDINATES",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "x절편, y절편 정의 직접 적용",
+        "primaryMethod": "y=0 대입으로 x절편 2를, x=0 대입으로 y절편 -8을 구해 좌표 A(2,0), B(0,-8)을 얻는다.",
+        "decisiveStep": "0=4x-8에서 x=2, x=0에서 y=-8 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그 그래프",
+        "rpmL3Label": "일차함수의 그래프",
+        "rpmL4Label": "기울기·절편",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 3,
+      "sourceUid": "qid_v1_ceefff868164d9db3b3d09ba9a72988b9aaaef34bd8f110a1be626c12157c69e",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "why": "일차함수 그래프와 두 좌표축의 교점 좌표를 구하는 기초 문항"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수",
+          "그래프"
+        ],
+        "goal": [
+          "좌표",
+          "점"
+        ],
+        "method": [
+          "x절편",
+          "y절편"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_d3e15df3225b2b2b2a82a60dd09af0d2eb6611cda3bf289a7e572d06bfe0870d",
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "THREE_COLLINEAR_POINTS",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "두 점 직선식 도출 후 미지 좌표 대입 방정식 풀이 2단계",
+        "primaryMethod": "두 점으로 직선 y=-3x-1을 구하고 (a, a+4)를 대입해 4a=-5, a=-5/4를 얻는다.",
+        "decisiveStep": "기울기 -3으로 직선식 수립 후 a+4 = -3a-1 풀이",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그 그래프",
+        "rpmL3Label": "식 구하기",
+        "rpmL4Label": "두 점으로 식 구하기",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 4,
+      "sourceUid": "qid_v1_c53349b5d6caaf89b8a63c1f553e7c97914a31cad980fc9e6f8093945960ee89",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_TWO_POINTS",
+        "why": "세 점이 한 직선 위에 있을 조건으로 미지수 좌표를 구하는 대표 문항"
+      },
+      "item4slot": {
+        "given": [
+          "점",
+          "좌표",
+          "직선"
+        ],
+        "goal": [
+          "함수"
+        ],
+        "method": [
+          "기울기",
+          "방정식"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_2da5624da7c17995d01e717867f8875fd663ee67fc0ac2710bcffd7b27d69cc0",
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "PARALLEL_LINES_SLOPE_MATCH",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "기울기 계산 후 일차방정식 k/3=2 풀이",
+        "primaryMethod": "두 점으로 기울기 2를 구하고 평행 조건 k/3 = 2를 풀어 k=6을 산출한다.",
+        "decisiveStep": "기울기 2와 k/3 등치에서 k=6 도출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그 그래프",
+        "rpmL3Label": "그래프의 성질",
+        "rpmL4Label": "일차함수 그래프의 평행·일치",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "그래프의 성질",
+          "l4": "일차함수 그래프의 평행·일치"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 5,
+      "sourceUid": "qid_v1_f96313b59175ab99118b4dbb4bf054cfabf5e231d8c2a5ea85d56fa4a58977c5",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+        "templateKey": "TPL_LINE_TWO_POINTS",
+        "why": "두 직선의 평행 조건인 기울기 일치를 이용해 미정계수를 구하는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수",
+          "그래프",
+          "점",
+          "평행"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "기울기"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_223595f642a63fcc3aede0f2b2d18d25e8217a948487978eb88bc10820a920b3",
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "LINEAR_GRAPH_COMPREHENSIVE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "절편에서 식을 구한 뒤 5개 성질을 모두 검증",
+        "primaryMethod": "두 점으로 직선식을 구한 뒤 다섯 설명을 판정해 옳은 ㄴ·ㄹ 조합을 고른다.",
+        "decisiveStep": "기울기 -1/2, y절편 3, x절편 6을 사용해 ㄴ·ㄹ만 참임을 확인",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그 그래프",
+        "rpmL3Label": "그래프의 성질",
+        "rpmL4Label": "일차함수 그래프의 평행·일치",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "그래프의 성질",
+          "l4": "일차함수 그래프의 평행·일치"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 6,
+      "sourceUid": "qid_v1_d7122eb981684caf430c54bdcb1d6bd77650f24babcb2a864fa24c4b2d4ff740",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "why": "두 절편으로 일차함수의 식을 세우고 그래프의 성질을 종합 판별하는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수",
+          "그래프",
+          "점"
+        ],
+        "goal": [
+          "기울기",
+          "평행"
+        ],
+        "method": [
+          "x절편",
+          "y절편"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_2024c838218aea50677b104b758a9e729452f94172a9b9398a4fbae3d274816b",
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "LINE_EQUATION_TWO_POINTS",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "기울기 공식 및 한 점 대입 기본 계산",
+        "primaryMethod": "기울기 (17-5)/(4+2)=2를 구하고 (-2,5)를 대입해 y절편 9를 얻어 y=2x+9를 세운다.",
+        "decisiveStep": "기울기 2 도출 후 5=-4+b에서 b=9 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그 그래프",
+        "rpmL3Label": "식 구하기",
+        "rpmL4Label": "두 점으로 식 구하기",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 7,
+      "sourceUid": "qid_v1_4c5e1baa8d1c9a3719e9850e78fb57d0d8df2a76ee5e32cb063499bfbeb782ae",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_TWO_POINTS",
+        "why": "서로 다른 두 점의 좌표로부터 일차함수의 식을 완성하는 기본 문항"
+      },
+      "item4slot": {
+        "given": [
+          "점",
+          "좌표"
+        ],
+        "goal": [
+          "일차함수"
+        ],
+        "method": [
+          "기울기",
+          "y절편"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_ad504f20e4a34624a16f07ab974d22258b8841cb4ee8d02dd90512cb46bb889a",
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "conceptClusterKey": "LINEAR_EQUATION_GRAPH_PROPERTIES",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "일차방정식 표준형 변환 및 절편·기울기 부호 확인",
+        "primaryMethod": "식을 y=-3/4 x + 3으로 정리해 기울기 부호와 x절편 4, y절편 3을 판별한다.",
+        "decisiveStep": "y=-3/4 x + 3에서 x절편 4, y절편 3, 음의 기울기 도출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 일차방정식의 관계",
+        "rpmL3Label": "방정식과 그래프",
+        "rpmL4Label": "일차방정식의 그래프",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "일차방정식의 그래프"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 8,
+      "sourceUid": "qid_v1_4590e2a67002547c3215c175c640a22ae1b95a38d3f2d9dfe78cbfc10ece3729",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+        "why": "일차방정식을 일차함수 꼴로 변형해 그래프의 절편과 방향을 찾는 기본 문항"
+      },
+      "item4slot": {
+        "given": [
+          "일차방정식",
+          "방정식"
+        ],
+        "goal": [
+          "그래프",
+          "x절편",
+          "y절편"
+        ],
+        "method": [
+          "기울기"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_ad323e4a9b7ad83978afaccd0c749bc33e21e22aee819c3e4e2608ea726d00e4",
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "conceptClusterKey": "LINE_PARALLEL_TO_Y_AXIS",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "x절편 계산 및 축에 평행한 직선식 표기 구분",
+        "primaryMethod": "y=0 대입으로 x절편 a=2/3을 구하고 y축에 평행한 직선식 x=2/3을 세운다.",
+        "decisiveStep": "0=-3a+2에서 a=2/3 산출 후 x=a 선택",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 일차방정식의 관계",
+        "rpmL3Label": "방정식과 그래프",
+        "rpmL4Label": "x축·y축에 평행한 직선",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "x축·y축에 평행한 직선"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 9,
+      "sourceUid": "qid_v1_0e97fe2ef575b0afa7abd8f8b860e21db58d16604927fe2a7b7ed52def5eb3b2",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+        "templateKey": "TPL_LINE_MULTI_CONDITION",
+        "why": "직선의 x절편을 구해 y축에 평행한 직선의 방정식을 세우는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "직선",
+          "점",
+          "좌표"
+        ],
+        "goal": [
+          "방정식"
+        ],
+        "method": [
+          "x절편",
+          "평행"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_addcf3cee33b09606716e838bdff87d9b0758221c60ed44e19a28cc0f42aeba6",
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "conceptClusterKey": "SYSTEM_NO_SOLUTION_PARALLEL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "연립방정식 두 식의 표준형 변환 및 평행 조건 부호 판정",
+        "primaryMethod": "두 식을 y=ax-2, y=3x-b로 정리하고 평행 조건(기울기 일치 a=3, y절편 상이 b!=2)을 적용한다.",
+        "decisiveStep": "a=3 및 -2 != -b에서 b != 2 도출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 일차방정식의 관계",
+        "rpmL3Label": "두 직선의 관계",
+        "rpmL4Label": "두 직선의 평행·일치",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "두 직선의 평행·일치"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 10,
+      "sourceUid": "qid_v1_afdc347ed91092a9bb0b9f04b84b6431e8286ae1a330dc9d8143576f52226577",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+        "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+        "why": "연립방정식의 해가 없을 조건을 두 직선의 평행 조건으로 해석해 계수를 정하는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "연립방정식",
+          "일차방정식"
+        ],
+        "goal": [
+          "정수"
+        ],
+        "method": [
+          "기울기",
+          "y절편",
+          "평행"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_31143af87aaebf7a78e275f00d6ba45287e1a7c7e0d31510720fe02bf279a166",
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "conceptClusterKey": "DIE_DIVISOR_COUNTING",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "약수 나열 단순 계수",
+        "primaryMethod": "주사위 눈 1~6 중 4의 약수 1, 2, 4를 나열해 3가지를 구한다.",
+        "decisiveStep": "4의 약수 {1, 2, 4} 개수 3 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "경우의 수",
+        "rpmL3Label": "합의 법칙과 곱의 법칙",
+        "rpmL4Label": "중복 없이 세기",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "중복 없이 세기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 11,
+      "sourceUid": "qid_v1_07a58ebb91ee57882b397c714bb74b9a1b0d19447374ab012ad0ae0c00f13a52",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "why": "주사위 1회 시행에서 약수 조건을 만족하는 경우의 수를 세는 기초 문항"
+      },
+      "item4slot": {
+        "given": [
+          "주사위",
+          "사건"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "약수"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_5d2410e17db1634171b3c224443ef0ea552e3c5c8c91718ba4f240369d25d862",
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "conceptClusterKey": "TWO_PLAYERS_DRAW_COUNTING",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "3가지 경우 직접 나열",
+        "primaryMethod": "두 사람이 같은 손을 내는 3가지(가위, 바위, 보)를 직접 센다.",
+        "decisiveStep": "동일 손 3가지 나열",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "경우의 수",
+        "rpmL3Label": "합의 법칙과 곱의 법칙",
+        "rpmL4Label": "중복 없이 세기",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "중복 없이 세기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_7fbaf6a2b97c68a1f9e3de2b0f458b3c10fc76aaadf19a1dbab074ac2d8c563e",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "why": "두 사람의 가위바위보에서 비기는 경우의 수를 구하는 기초 문항"
+      },
+      "item4slot": {
+        "given": [
+          "사건"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "순서쌍"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_63fd869c07a7334df5e50cb5e88838844640a9722a656c986218d7e8dea6c523",
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "conceptClusterKey": "MULTIPLES_UNION_COUNTING",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "배수 계수 및 공배수 1개 차감 계산",
+        "primaryMethod": "3의 배수 6개와 4의 배수 5개에서 공배수 12(1개)를 빼 10가지를 구한다.",
+        "decisiveStep": "6 + 5 - 1 = 10 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "경우의 수",
+        "rpmL3Label": "합의 법칙과 곱의 법칙",
+        "rpmL4Label": "중복 없이 세기",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "중복 없이 세기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 13,
+      "sourceUid": "qid_v1_34627561d3a30a10f460d14a219ae0f39eb50fa719a06e5af3a41a9a4d27ed33",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "why": "두 배수 사건의 합집합 경우의 수에서 공배수 중복을 제외하는 대표 문항"
+      },
+      "item4slot": {
+        "given": [
+          "자연수",
+          "사건"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "배수"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_6e9515f1bd27b1507cf3e2942ada1aa4e6c402bdc2cbecedbd1a27e197743bdb",
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "conceptClusterKey": "PRODUCT_RULE_BASIC",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "곱의 법칙 단순 계산",
+        "primaryMethod": "곱의 법칙을 적용해 4 * 3 = 12가지를 계산한다.",
+        "decisiveStep": "4 * 3 = 12 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "경우의 수",
+        "rpmL3Label": "합의 법칙과 곱의 법칙",
+        "rpmL4Label": "단계별 선택",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "단계별 선택"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 14,
+      "sourceUid": "qid_v1_e0439e605592af02078e4d0efd85f039f68080b4b36ac41f916fd9417c371d95",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "why": "두 품목에서 각각 하나씩 선택하는 곱의 법칙 기초 문항"
+      },
+      "item4slot": {
+        "given": [
+          "사건"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "곱"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_51504d36cc50f0b44d0abe29469401a22cbfb1d9d997af388590f5f0ae041773",
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "conceptClusterKey": "LOGIC_NUMBER_BASEBALL_DEDUCTION",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "3개 판정 조건을 자리수별로 교차 검증",
+        "primaryMethod": "세 번의 스트라이크·볼 판정 조건을 선지 5개에 대조해 모두 만족하는 482를 추론한다.",
+        "decisiveStep": "492에서 2S, 428에서 1S 2B 조건 동시 충족 판별",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "경우의 수",
+        "rpmL3Label": "배열과 선택",
+        "rpmL4Label": "순서가 있는 경우",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "배열과 선택",
+          "l4": "순서가 있는 경우"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 15,
+      "sourceUid": "qid_v1_4e41cd3ef76427e6a2a82b9edf0c400b1e7c40e6d1f8e18ce8fac377b3d5e8df",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "why": "자릿수 일치·불일치 조건을 추론해 유일한 세 자리 자연수를 찾는 논리 문항"
+      },
+      "item4slot": {
+        "given": [
+          "자연수",
+          "사건"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "순서쌍"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_4a678d7619c3d70ac2219ce02b973f6901483947ae5c944e14ef99647b569043",
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "conceptClusterKey": "BASIC_PROBABILITY_RATIO",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "확률 정의 직접 적용",
+        "primaryMethod": "전체 경우의 수 100과 해당 사건 7의 비율로 확률 7/100을 구한다.",
+        "decisiveStep": "7 / 100 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "확률",
+        "rpmL3Label": "확률의 뜻",
+        "rpmL4Label": "확률 계산",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 뜻",
+          "l4": "확률 계산"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 16,
+      "sourceUid": "qid_v1_173b09a750d57ef9e08392b7d812306c376b2e435bedbebbb337ea15e41c6778",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "why": "전체 표본 중 특정 개수의 비율로 확률을 구하는 기초 문항"
+      },
+      "item4slot": {
+        "given": [
+          "사건"
+        ],
+        "goal": [
+          "확률"
+        ],
+        "method": [
+          "비율"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_295a8b5fc5c94e9cd4a1ef6fbcb8ba440222fa7a4cdddccc0f1a970b554c3205",
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "conceptClusterKey": "INDEPENDENT_EVENTS_PROBABILITY",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "두 독립 사건 확률 곱셈 계산",
+        "primaryMethod": "동전 확률 1/2과 주사위 3의 배수 확률 2/6=1/3을 곱해 1/6을 구한다.",
+        "decisiveStep": "1/2 * 1/3 = 1/6 계산",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "확률",
+        "rpmL3Label": "확률의 활용",
+        "rpmL4Label": "연속 시행",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 활용",
+          "l4": "연속 시행"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 17,
+      "sourceUid": "qid_v1_4c8975e362f7e931799f157b4841f62594ef5e4302ae4a99592214d04c6b157f",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+        "why": "동전과 주사위 동시 시행에서 두 사건이 모두 일어날 확률을 구하는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "주사위",
+          "사건"
+        ],
+        "goal": [
+          "확률"
+        ],
+        "method": [
+          "곱",
+          "배수"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_fc83042483a4038277950504c93617f32d283adecc305c0c3fe88de099277e33",
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "conceptClusterKey": "SPINNER_PRIME_PROBABILITY",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "소수 나열 후 확률 비율 계산",
+        "primaryMethod": "1부터 12까지의 소수 2,3,5,7,11(5개)을 찾아 확률 5/12를 구한다.",
+        "decisiveStep": "소수 5개 확인 후 5/12 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "확률",
+        "rpmL3Label": "확률의 뜻",
+        "rpmL4Label": "확률 계산",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 뜻",
+          "l4": "확률 계산"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 18,
+      "sourceUid": "qid_v1_5500af064a8f7fb30ccd4b1872fc348c41fefb75f91d47d7efb1ad33afe324f6",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "why": "등분된 원판에서 소수가 나올 확률을 구하는 기본 문항"
+      },
+      "item4slot": {
+        "given": [
+          "원",
+          "자연수",
+          "사건"
+        ],
+        "goal": [
+          "확률"
+        ],
+        "method": [
+          "소수"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_8dde6b94416a17381d613f909cd4df9add3c4e2f09533a59d8fd1c8ed8ee465a",
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "conceptClusterKey": "AT_LEAST_ONE_COMPLEMENT_PROBABILITY",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "여사건 확률 1 - 1/8 직접 계산",
+        "primaryMethod": "여사건(모두 뒷면) 확률 1/8을 1에서 빼서 적어도 한 번 앞면이 나올 확률 7/8을 구한다.",
+        "decisiveStep": "1 - 1/8 = 7/8 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "확률",
+        "rpmL3Label": "확률의 성질",
+        "rpmL4Label": "여사건",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 성질",
+          "l4": "여사건"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 19,
+      "sourceUid": "qid_v1_9f7e019f726b8ab23e81652f7e3538d0755cd922eee165459cc1052fa57447e6",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+        "why": "'적어도 한 번' 조건에 대하여 여사건 확률을 적용하는 대표 문항"
+      },
+      "item4slot": {
+        "given": [
+          "사건"
+        ],
+        "goal": [
+          "확률"
+        ],
+        "method": [
+          "여사건"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_cfac7993bcea6c3c13f01bbe42df5682b6261854bc8a4ed88361cd7f6e9f1169",
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "conceptClusterKey": "BLOOD_TYPE_PROBABILITY",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "4가지 조합 나열 후 비율 계산",
+        "primaryMethod": "유전자 조합 4가지(AB, AO, BO, OO) 중 O형(OO) 1가지를 찾아 확률 1/4을 구한다.",
+        "decisiveStep": "4가지 조합 중 OO 1가지 확인",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "확률",
+        "rpmL3Label": "확률의 뜻",
+        "rpmL4Label": "동등가능한 경우",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 뜻",
+          "l4": "동등가능한 경우"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 20,
+      "sourceUid": "qid_v1_bcd29d74ada8f43d7916376dbfeabe7abd32e86859a3414c83b8bfc601a7d85d",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "why": "혈액형 유전자 조합의 모든 경우 중 특정 혈액형이 나올 확률을 구하는 실생활 문항"
+      },
+      "item4slot": {
+        "given": [
+          "사건"
+        ],
+        "goal": [
+          "확률"
+        ],
+        "method": [
+          "순서쌍"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_6896d1bfc1050719f00a16aff618c3b9b83f9bf8c17d2d77b72bdc0337d66517",
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "conceptClusterKey": "PROBLEM_OF_POINTS_PRIZE_DIVISION",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "승리 경로 2가지 확률 계산 및 상금 비례배분",
+        "primaryMethod": "남은 경기에서 A가 승리할 확률 1/2 + 1/4 = 3/4을 구해 80만 원을 60만 원과 20만 원으로 나눈다.",
+        "decisiveStep": "A 우승 확률 3/4 산출 후 상금 80 * 3/4 = 60 계산",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "확률",
+        "rpmL3Label": "확률의 활용",
+        "rpmL4Label": "경우를 나누어 구하는 확률",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 활용",
+          "l4": "경우를 나누어 구하는 확률"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 21,
+      "sourceUid": "qid_v1_844ab6e6aa590ac2f6f986e77d5eecf400cc14d410d2a5f6ef628967b1518169",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+        "why": "중단된 시합의 점수 분배 문제(파스칼의 점수 문제)를 확률 덧셈·곱셈으로 푸는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "사건",
+          "확률"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "합",
+          "곱"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_1291c2f8040b261e72df1c757f71a724e034a3b79d6d6566993217ac6a9d098b",
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "LINEAR_FUNCTION_WORD_DESCENT",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "일차함수 식 작성 및 함숫값 대입 방정식 풀이",
+        "primaryMethod": "초기값 120과 초당 변화율 -4로 식 y=120-4x를 세우고 y=40을 대입해 x=20을 구한다.",
+        "decisiveStep": "40 = 120 - 4x에서 x=20 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 그 그래프",
+        "rpmL3Label": "일차함수의 뜻",
+        "rpmL4Label": "함숫값",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 22,
+      "sourceUid": "qid_v1_b96ae32c80a0ce1003ec00ffedf028fd4290e59a3ff4793f76df73212a4f19e9",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+        "why": "일정 속도로 하강하는 물체의 높이를 일차함수 식으로 모델링해 시각을 구하는 서술형 문항"
+      },
+      "item4slot": {
+        "given": [
+          "일차함수",
+          "높이"
+        ],
+        "goal": [
+          "일차함수",
+          "자연수"
+        ],
+        "method": [
+          "방정식"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_75207a5aacbea6912cfb046fed3bdb3312e55878ee96cb20c54e5ab0d2a63f36",
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "conceptClusterKey": "TWO_LINES_AND_Y_AXIS_AREA",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "절편 계산, 연립방정식 교점, 삼각형 넓이의 3단계 복합 계산",
+        "primaryMethod": "두 직선의 y절편 차 8을 밑변으로, 교점 (2,-3)의 x좌표 2를 높이로 하여 넓이 8을 구한다.",
+        "decisiveStep": "밑변 3-(-5)=8, 높이 2로 넓이 1/2 * 8 * 2 = 8 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차함수",
+        "rpmL2Label": "일차함수와 일차방정식의 관계",
+        "rpmL3Label": "그래프 활용",
+        "rpmL4Label": "넓이",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "넓이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 23,
+      "sourceUid": "qid_v1_e6dd0dc9bd4a656b94076000c4a31ac7e583ed0a7d2b87e59163292f9e3ef8bb",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "why": "두 일차방정식의 절편과 교점을 구하고 y축과 둘러싸인 삼각형 넓이를 계산하는 서술형 문항"
+      },
+      "item4slot": {
+        "given": [
+          "일차방정식",
+          "그래프"
+        ],
+        "goal": [
+          "교점",
+          "좌표",
+          "넓이"
+        ],
+        "method": [
+          "x절편",
+          "y절편",
+          "연립방정식"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_c977edb5caaa95a3760e39ff1a4ba385f8a9ca964be06ff19d2bad4ba572af06",
+      "sourceOrdinal": 24,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "conceptClusterKey": "SYSTEM_INTERSECTION_PROBABILITY",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "직선의 기울기 조건과 주사위 여사건 확률을 융합한 다단계 추론",
+        "primaryMethod": "기울기 불일치 조건 ab!=12의 여사건 4가지를 전체 36에서 빼 확률 32/36=8/9를 구한다.",
+        "decisiveStep": "ab=12인 4가지 제외 후 32/36 = 8/9 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "확률",
+        "rpmL3Label": "확률의 성질",
+        "rpmL4Label": "여사건",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 성질",
+          "l4": "여사건"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 24,
+      "sourceUid": "qid_v1_c27139df2fe68f5e85625598d54346e1a8fa0cd88769dfdc3b1b2700b5079e87",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+        "why": "연립방정식의 두 직선이 한 점에서 만날 조건과 주사위 여사건 확률을 융합한 서술형 문항"
+      },
+      "item4slot": {
+        "given": [
+          "주사위",
+          "연립방정식",
+          "그래프"
+        ],
+        "goal": [
+          "확률"
+        ],
+        "method": [
+          "기울기",
+          "여사건",
+          "순서쌍"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_c139d4d1caed1097a554bd03e2aaff0f7fc5f758790d92182394854947c05ce1",
+      "sourceOrdinal": 25,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "conceptClusterKey": "DRAWING_WITHOUT_REPLACEMENT_SAME_COLOR",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "비복원 조건 반영 후 두 배반사건 확률 합산",
+        "primaryMethod": "비복원 추출로 두 번 모두 흰 공(6/56)과 검은 공(20/56) 확률을 더해 26/56=13/28을 구한다.",
+        "decisiveStep": "6/56 + 20/56 = 26/56 = 13/28 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "확률",
+        "rpmL3Label": "확률의 활용",
+        "rpmL4Label": "연속 시행",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 활용",
+          "l4": "연속 시행"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 25,
+      "sourceUid": "qid_v1_d76e8c97a00513870a460488c9dfd82bbc90f65a3ba7da7e13da61cf1b15cf61",
+      "sourceFileBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+        "why": "다시 넣지 않는 연속 추출에서 같은 색 공을 꺼낼 확률을 구하는 서술형 문항"
+      },
+      "item4slot": {
+        "given": [
+          "사건"
+        ],
+        "goal": [
+          "확률"
+        ],
+        "method": [
+          "곱",
+          "합"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    }
+  ]
+}
