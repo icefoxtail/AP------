@@ -1,0 +1,1323 @@
+{
+  "schemaVersion": "1.0",
+  "status": "SEMANTIC_REVIEW_CANDIDATE_NOT_APPLIED",
+  "owner": "/root/exam_reviewer",
+  "createdAt": "2026-11-13T20:33:01.149959+00:00",
+  "scope": {
+    "examOrder": 4,
+    "school": "동산중",
+    "year": 2025,
+    "exam": "2학기 기말",
+    "assignedOrdinals": [
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "examQuestionCount": 24,
+    "reviewedQuestionCount": 8,
+    "reviewedFigureCount": 4
+  },
+  "baseline": {
+    "source": "archive/exams/original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+    "sourceSha256": "357bfa1d8b326e228179624bf4943ec151a53362e23b00d2dcaac717a5334029",
+    "sourceBlobSha1": "c75dc3e1ce47c0ec85e51a63b1a1e16ab479385f",
+    "mainSha": "bf35b7e13417b033ee167117d567a9f0262712d6"
+  },
+  "evidence": {
+    "intake": {
+      "path": ".tmp/m1-meta-review/04-dongsan-review-input.json",
+      "sha256": "9d6eb39ea87f04051f28ba028f611cc2f537e102f2c2555cbdac535eacf50c82"
+    },
+    "figureManifest": {
+      "path": ".tmp/m1-meta-review/04-dongsan-figure-manifest.json",
+      "sha256": "35cb37c87c5c90f133d323c0806d5fd45a2174a6bb807d29efa82fc63ccba2cc"
+    },
+    "rpmM11Leaves": {
+      "path": ".tmp/m1-meta-review/04-dongsan-rpm-m1-1-canonical-leaves.json",
+      "sha256": "a8bafef2d7815fd8410d5aead3eb24f9195b5c378044b61f4bc1f669d5cc2649"
+    },
+    "authorityFiles": [
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+        "sameBytesAsMain": true
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "sha256": "53cd70317cb28b8ea06099505a799da62994a9de25caadaa343dce3d9a012fa4",
+        "sameBytesAsMain": true
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+        "sha256": "17769652596a06ad5e40ff3de77733754c87c00b5977c542892edc074343dd20",
+        "sameBytesAsMain": true
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "sha256": "314bd3dd8b0b65fe004e2cd4cfa42f251124d6499250e9cd8a5c155524404adc",
+        "sameBytesAsMain": true
+      },
+      {
+        "path": "archive/data/master_tables/js_archive_tag_master.json",
+        "sha256": "e8db23593ff878de968ced04c011bd1f4de79279d7bab5c733c9ed98899d8551",
+        "sameBytesAsMain": true
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+        "sha256": "53668c1203032e1b87c05eca8ae2303ad0c8cc011f0cd949284cf5394b00e7de",
+        "sameBytesAsMain": true
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "sameBytesAsMain": true
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+        "sha256": "11889c08f041e0ac9ed3e131c3119369d51fb53d3704eaa637482894190d24cf",
+        "sameBytesAsMain": true
+      }
+    ],
+    "integrationPolicy": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+      "section": "8. Integration Pattern",
+      "lines": [
+        741,
+        764
+      ]
+    }
+  },
+  "summary": {
+    "nativePTTemplateKept": 8,
+    "newNativeProblemTypes": 0,
+    "newNativeTemplates": 0,
+    "exactRpmLeavesChosen": 8,
+    "rpmLeafDebt": 0,
+    "existingDirectCrosswalkReuse": 5,
+    "existingFamilyWithExplicitTemplateSelection": 3,
+    "courseTypoAffectedQuestions": 6,
+    "courseTypoExistingRows": [
+      153,
+      154,
+      155
+    ],
+    "conceptClusterCorrections": 8,
+    "integrationCorrectionsToNone": 8,
+    "crossConceptChanges": 0,
+    "conditionChanges": 0
+  },
+  "curriculumBasis": "실제 내용과 기존 metadata의 2022/M1-1을 대조했다. 시험 이름의 2학기·기말을 교재 학기 근거로 사용하지 않았다.",
+  "formalCaution": "native legacy labels와 공식 RPM 부모를 구별한다. Crosswalk ACTIVE는 standardCourse 오타가 있는 exact native binding을 대신하지 않는다. 기존 binding 행 정정 방식은 root가 전체 승인 소비자 보호 guard로 확정한다. 별도 PR 또는 별도 정정기 실행을 필수라고 단정하지 않는다.",
+  "preservation": {
+    "normalPayload": "READ_ONLY_UNCHANGED",
+    "identity": "8_METADATA_IDENTITY_ORDINAL_UID_FINGERPRINT_MATCHED",
+    "difficulty": "UNCHANGED",
+    "sourceReviewStatus": "UNCHANGED",
+    "existingApprovalSlots": "PRESERVE_ALL_FOUR",
+    "sourceCanonicalGitMutations": 0,
+    "R1": "NOT_RUN",
+    "R2": "NOT_RUN",
+    "R3": "NOT_RUN",
+    "mathQA": "NOT_PERFORMED",
+    "registration": "NOT_RUN",
+    "actualConsumer": "NOT_RUN"
+  },
+  "items": [
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_e503bc22c72fb8e6da81af140c795b91d65306212c2cbbc797a1f0c1ff4ccf70",
+      "sourceFingerprint": "cc872351ff267308db5b09c99e294ff273fb575bb1ba7b95e55e0fcbf05b3fad",
+      "readCoverage": {
+        "prompt": "READ",
+        "choices": "READ",
+        "providedSolution": "READ",
+        "sourceOnlyMethodRecordedBeforeMetadataComparison": true,
+        "questionAndSolutionFigures": "NONE",
+        "figureCount": 0,
+        "intakePointer": "/questions/8"
+      },
+      "primaryMethod": "분모가 다른 일차식을 통분하고 괄호 앞 부호를 적용한 뒤 동류항을 정리한다.",
+      "decisiveStep": "공통 분모 위에서 빼는 식 전체의 부호를 바꾸어 일차항과 상수항을 각각 합친다.",
+      "before": {
+        "sourceMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-03",
+          "standardUnit": "문자와 식",
+          "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+          "subUnit": "문자의 사용과 식의 값",
+          "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+          "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3
+        },
+        "currentMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-03",
+          "standardUnit": "문자와 식",
+          "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+          "subUnit": "문자의 사용과 식의 값",
+          "conceptClusterKey": "M1-03-ALGEBRAIC_EXPRESSION",
+          "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+          "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+          "curriculum": "2022",
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "reviewStatus": "reviewed_pass",
+          "tagStatus": "approved_semantic_review",
+          "tagConfidence": "r2e_adjudicated",
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 값",
+          "L3": "일차식의 항·계수와 정리",
+          "L4": "일차식의 덧셈·뺄셈",
+          "rpmPathStatus": "DIRECT_ACTIVE",
+          "canonicalState": "CANONICAL_PATH_MATCH",
+          "defaultSelectable": true
+        }
+      },
+      "decisions": {
+        "nativeUnitAndSubUnit": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "conceptCluster": "CORRECT_TO_MASTER",
+        "integration": "CORRECT_TO_NONE",
+        "crossConcepts": "KEEP_EMPTY",
+        "conditions": "KEEP_EMPTY",
+        "rpm": "USE_EXISTING_EXACT_LEAF"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+        "curriculum": "2022",
+        "courseKey": "M1-1",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "nativeEvidence": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "ptPointer": "/problemTypes/83",
+        "templatePointer": "/templates/163",
+        "definitionFit": "실제 발문과 제공 풀이의 핵심 조작이 기존 PT/TPL 정의에 직접 포함된다.",
+        "clusterMasterPath": "archive/data/master_tables/js_archive_tag_master.json",
+        "clusterPointer": "/0"
+      },
+      "binding": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "existingPointer": "/bindings/153",
+        "existingCourse": "中1 수학",
+        "requiredCourse": "중1 수학",
+        "exactActiveBindingIndexes": [],
+        "decision": "EXISTING_COURSE_TYPO_REPAIR_REQUIRED",
+        "newBindingRowRequired": false,
+        "fieldOnlyRepair": {
+          "standardCourse": {
+            "before": "中1 수학",
+            "after": "중1 수학"
+          }
+        },
+        "formalMechanism": "ROOT_PLAN_AND_OFFICIAL_SCOPE_GUARD_PENDING"
+      },
+      "rpm": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "recordId": "M1-RPM-147",
+        "pointer": "/records/146",
+        "existingMappingStatus": "FAMILY_ACTIVE",
+        "basePath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "문자의 사용과 식의 계산",
+          "l3": "일차식의 계산",
+          "l4": "괄호가 있는 일차식 계산"
+        },
+        "selectedExistingTemplateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+        "selectionRule": "Select signed-expression difference after removing parentheses or scalar multiplication/division from the source-to-solution decisive step.",
+        "reason": "147의 기존 selectionRule이 괄호를 제거하는 SIGNED_SUM_DIFFERENCE를 명시한다. 146의 일반 덧셈·뺄셈보다 실제 부호 처리 단계에 직접적이다.",
+        "parentAuthorityPath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+        "parentPointer": "/leafMappings/33",
+        "targetParentRef": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "문자의 사용과 식의 계산"
+        },
+        "officialParentDiffersFromNativeSubUnitLabel": true,
+        "formalParentHandling": "공식 부모를 명시적으로 결속하되 native 단원·소단원 키를 보존한다. 실제 projection은 미실행.",
+        "nativeTypeGap": false,
+        "rpmLeafGap": false,
+        "directSupplementNote": "기존 FAMILY에서 템플릿을 정확히 선택했다. 형식상 DIRECT supplement 필요 여부는 root 공식 계획에서 결정하며 새 의미유형 부재로 보고하지 않는다."
+      },
+      "integrationReason": "통분·부호 적용·동류항 정리는 주유형 내부 계산 단계다.",
+      "crossConceptAndConditionReason": "현재 주유형 안의 기본 계산·대입·정의 적용을 별도 보조 개념으로 중복 추가하지 않는다.",
+      "figures": [],
+      "unresolvedGaps": [
+        "EXACT_ACTIVE_BINDING_STANDARD_COURSE_TYPO"
+      ]
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_51128c898d31ea8c392a5381789d670bc0a1a7c452182bfb24a4adda563d3449",
+      "sourceFingerprint": "8dc1defbd7aa78a602aa60f94ad4c8582d642159b8cebca32ab567e41eb3130b",
+      "readCoverage": {
+        "prompt": "READ",
+        "choices": "READ",
+        "providedSolution": "READ",
+        "sourceOnlyMethodRecordedBeforeMetadataComparison": true,
+        "questionAndSolutionFigures": "NONE",
+        "figureCount": 0,
+        "intakePointer": "/questions/9"
+      },
+      "primaryMethod": "구매 수량과 단가로 지불 금액을 나타내고 거스름돈 관계를 등식으로 번역한다.",
+      "decisiveStep": "낸 돈에서 총 물건값을 뺀 양을 제시된 거스름돈과 같게 놓는다.",
+      "before": {
+        "sourceMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-03",
+          "standardUnit": "문자와 식",
+          "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+          "subUnit": "일차방정식의 활용",
+          "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+          "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "REINTERPRETATION",
+          "difficultyBucket": 2
+        },
+        "currentMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-03",
+          "standardUnit": "문자와 식",
+          "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+          "subUnit": "일차방정식의 활용",
+          "conceptClusterKey": "M1-03-LINEAR_EQUATION",
+          "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+          "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+          "curriculum": "2022",
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "REINTERPRETATION",
+          "difficultyBucket": 2,
+          "reviewStatus": "reviewed_pass",
+          "tagStatus": "approved_semantic_review",
+          "tagConfidence": "r2e_adjudicated",
+          "L1": "문자와 식",
+          "L2": "일차방정식의 활용",
+          "L3": "상황을 일차방정식으로 나타내기",
+          "L4": "수량·가격 관계식",
+          "rpmPathStatus": "DIRECT_ACTIVE",
+          "canonicalState": "CANONICAL_PATH_MATCH",
+          "defaultSelectable": true
+        }
+      },
+      "decisions": {
+        "nativeUnitAndSubUnit": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "conceptCluster": "CORRECT_TO_MASTER",
+        "integration": "CORRECT_TO_NONE",
+        "crossConcepts": "KEEP_EMPTY",
+        "conditions": "KEEP_EMPTY",
+        "rpm": "USE_EXISTING_EXACT_LEAF"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+        "conceptClusterKey": "LINEAR_EQUATION_WORD_PROBLEM",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+        "curriculum": "2022",
+        "courseKey": "M1-1",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "nativeEvidence": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "ptPointer": "/problemTypes/85",
+        "templatePointer": "/templates/169",
+        "definitionFit": "실제 발문과 제공 풀이의 핵심 조작이 기존 PT/TPL 정의에 직접 포함된다.",
+        "clusterMasterPath": "archive/data/master_tables/js_archive_tag_master.json",
+        "clusterPointer": "/403"
+      },
+      "binding": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "existingPointer": "/bindings/155",
+        "existingCourse": "中1 수학",
+        "requiredCourse": "중1 수학",
+        "exactActiveBindingIndexes": [],
+        "decision": "EXISTING_COURSE_TYPO_REPAIR_REQUIRED",
+        "newBindingRowRequired": false,
+        "fieldOnlyRepair": {
+          "standardCourse": {
+            "before": "中1 수학",
+            "after": "중1 수학"
+          }
+        },
+        "formalMechanism": "ROOT_PLAN_AND_OFFICIAL_SCOPE_GUARD_PENDING"
+      },
+      "rpm": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "recordId": "M1-RPM-161",
+        "pointer": "/records/160",
+        "existingMappingStatus": "DIRECT_ACTIVE",
+        "basePath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 활용",
+          "l3": "생활 속 관계식",
+          "l4": "요금·가격"
+        },
+        "selectedExistingTemplateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+        "selectionRule": null,
+        "reason": "해를 계산하지 않아도 기존 MODEL_QUANTITY의 관계식 모델링 정의와 161 생활 속 관계식/요금·가격에 부합한다. 등식 변형이나 단순 문자식 번역으로 바꾸지 않는다.",
+        "parentAuthorityPath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+        "parentPointer": "/leafMappings/47",
+        "targetParentRef": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 활용"
+        },
+        "officialParentDiffersFromNativeSubUnitLabel": false,
+        "formalParentHandling": "공식 부모를 명시적으로 결속하되 native 단원·소단원 키를 보존한다. 실제 projection은 미실행.",
+        "nativeTypeGap": false,
+        "rpmLeafGap": false,
+        "directSupplementNote": null
+      },
+      "integrationReason": "문장 관계를 등식으로 표현하는 것은 주유형의 정의이며 별도 개념 결과의 재해석이 아니다.",
+      "crossConceptAndConditionReason": "현재 주유형 안의 기본 계산·대입·정의 적용을 별도 보조 개념으로 중복 추가하지 않는다.",
+      "figures": [],
+      "unresolvedGaps": [
+        "EXACT_ACTIVE_BINDING_STANDARD_COURSE_TYPO"
+      ]
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_13e2eac8fb571a990e58082dd8da83a4e8e903655c974e591bcd17cc6a822522",
+      "sourceFingerprint": "ecf8cd9eb20faf2724bd6c94afbc417bd6080240c3420c1ec717b592e96b82da",
+      "readCoverage": {
+        "prompt": "READ",
+        "choices": "READ",
+        "providedSolution": "READ",
+        "sourceOnlyMethodRecordedBeforeMetadataComparison": true,
+        "questionAndSolutionFigures": "NONE",
+        "figureCount": 0,
+        "intakePointer": "/questions/10"
+      },
+      "primaryMethod": "주어진 후보 해를 각 방정식에 대입하여 등식의 성립 여부를 판정한다.",
+      "decisiveStep": "미지수 자리에 지정된 값을 넣은 좌변과 우변의 일치를 확인한다.",
+      "before": {
+        "sourceMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-03",
+          "standardUnit": "문자와 식",
+          "subUnitKey": "M1-03-LINEAR_EQUATION",
+          "subUnit": "일차방정식",
+          "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+          "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 1
+        },
+        "currentMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-03",
+          "standardUnit": "문자와 식",
+          "subUnitKey": "M1-03-LINEAR_EQUATION",
+          "subUnit": "일차방정식",
+          "conceptClusterKey": "M1-03-LINEAR_EQUATION",
+          "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+          "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+          "curriculum": "2022",
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 1,
+          "reviewStatus": "reviewed_pass",
+          "tagStatus": "approved_semantic_review",
+          "tagConfidence": "r2e_adjudicated",
+          "L1": "문자와 식",
+          "L2": "일차방정식",
+          "L3": "일차방정식의 성질·풀이",
+          "L4": "방정식의 해 확인",
+          "rpmPathStatus": "DIRECT_ACTIVE",
+          "canonicalState": "CANONICAL_PATH_MATCH",
+          "defaultSelectable": true
+        }
+      },
+      "decisions": {
+        "nativeUnitAndSubUnit": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "conceptCluster": "CORRECT_TO_MASTER",
+        "integration": "CORRECT_TO_NONE",
+        "crossConcepts": "KEEP_EMPTY",
+        "conditions": "KEEP_EMPTY",
+        "rpm": "USE_EXISTING_EXACT_LEAF"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "conceptClusterKey": "LINEAR_EQUATION",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+        "curriculum": "2022",
+        "courseKey": "M1-1",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "nativeEvidence": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "ptPointer": "/problemTypes/84",
+        "templatePointer": "/templates/166",
+        "definitionFit": "실제 발문과 제공 풀이의 핵심 조작이 기존 PT/TPL 정의에 직접 포함된다.",
+        "clusterMasterPath": "archive/data/master_tables/js_archive_tag_master.json",
+        "clusterPointer": "/402"
+      },
+      "binding": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "existingPointer": "/bindings/154",
+        "existingCourse": "中1 수학",
+        "requiredCourse": "중1 수학",
+        "exactActiveBindingIndexes": [],
+        "decision": "EXISTING_COURSE_TYPO_REPAIR_REQUIRED",
+        "newBindingRowRequired": false,
+        "fieldOnlyRepair": {
+          "standardCourse": {
+            "before": "中1 수학",
+            "after": "중1 수학"
+          }
+        },
+        "formalMechanism": "ROOT_PLAN_AND_OFFICIAL_SCOPE_GUARD_PENDING"
+      },
+      "rpm": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "recordId": "M1-RPM-149",
+        "pointer": "/records/148",
+        "existingMappingStatus": "DIRECT_ACTIVE",
+        "basePath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 풀이",
+          "l3": "등식과 방정식",
+          "l4": "방정식의 해"
+        },
+        "selectedExistingTemplateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+        "selectionRule": null,
+        "reason": "149 해 확인이며 알려진 해로 다른 미지 계수를 복원하는 유형이 아니다.",
+        "parentAuthorityPath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+        "parentPointer": "/leafMappings/35",
+        "targetParentRef": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 풀이"
+        },
+        "officialParentDiffersFromNativeSubUnitLabel": true,
+        "formalParentHandling": "공식 부모를 명시적으로 결속하되 native 단원·소단원 키를 보존한다. 실제 projection은 미실행.",
+        "nativeTypeGap": false,
+        "rpmLeafGap": false,
+        "directSupplementNote": null
+      },
+      "integrationReason": "선지마다 같은 대입을 반복할 뿐 경우·범위·조건별 풀이 분기가 아니다.",
+      "crossConceptAndConditionReason": "현재 주유형 안의 기본 계산·대입·정의 적용을 별도 보조 개념으로 중복 추가하지 않는다.",
+      "figures": [],
+      "unresolvedGaps": [
+        "EXACT_ACTIVE_BINDING_STANDARD_COURSE_TYPO"
+      ]
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_d94fa7d473fa39559b5a1313bb6169d669806c4ff8226d1adff023029cbc88eb",
+      "sourceFingerprint": "03f1f3903d247b654edff7d840ffcfd01a8721f7612a29d6e50520521f3cdf49",
+      "readCoverage": {
+        "prompt": "READ",
+        "choices": "READ",
+        "providedSolution": "READ",
+        "sourceOnlyMethodRecordedBeforeMetadataComparison": true,
+        "questionAndSolutionFigures": "NONE",
+        "figureCount": 0,
+        "intakePointer": "/questions/11"
+      },
+      "primaryMethod": "표시된 등식 변형 단계에 대응하는 양변의 동일 연산과 이항의 성질을 판정한다.",
+      "decisiveStep": "항 이동을 양변의 같은 수 빼기와 연결하고 계수 제거를 같은 0이 아닌 수로 나누는 조작으로 구분한다.",
+      "before": {
+        "sourceMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-03",
+          "standardUnit": "문자와 식",
+          "subUnitKey": "M1-03-LINEAR_EQUATION",
+          "subUnit": "일차방정식",
+          "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+          "templateKey": "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2
+        },
+        "currentMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-03",
+          "standardUnit": "문자와 식",
+          "subUnitKey": "M1-03-LINEAR_EQUATION",
+          "subUnit": "일차방정식",
+          "conceptClusterKey": "M1-03-LINEAR_EQUATION",
+          "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+          "templateKey": "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT",
+          "curriculum": "2022",
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2,
+          "reviewStatus": "reviewed_pass",
+          "tagStatus": "approved_semantic_review",
+          "tagConfidence": "r2e_adjudicated",
+          "L1": "문자와 식",
+          "L2": "일차방정식",
+          "L3": "일차방정식의 성질·풀이",
+          "L4": "등식 변형 확인",
+          "rpmPathStatus": "DIRECT_ACTIVE",
+          "canonicalState": "CANONICAL_PATH_MATCH",
+          "defaultSelectable": true
+        }
+      },
+      "decisions": {
+        "nativeUnitAndSubUnit": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "conceptCluster": "CORRECT_TO_MASTER",
+        "integration": "CORRECT_TO_NONE",
+        "crossConcepts": "KEEP_EMPTY",
+        "conditions": "KEEP_EMPTY",
+        "rpm": "USE_EXISTING_EXACT_LEAF"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "conceptClusterKey": "LINEAR_EQUATION",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT",
+        "curriculum": "2022",
+        "courseKey": "M1-1",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "nativeEvidence": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "ptPointer": "/problemTypes/84",
+        "templatePointer": "/templates/165",
+        "definitionFit": "실제 발문과 제공 풀이의 핵심 조작이 기존 PT/TPL 정의에 직접 포함된다.",
+        "clusterMasterPath": "archive/data/master_tables/js_archive_tag_master.json",
+        "clusterPointer": "/402"
+      },
+      "binding": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "existingPointer": "/bindings/154",
+        "existingCourse": "中1 수학",
+        "requiredCourse": "중1 수학",
+        "exactActiveBindingIndexes": [],
+        "decision": "EXISTING_COURSE_TYPO_REPAIR_REQUIRED",
+        "newBindingRowRequired": false,
+        "fieldOnlyRepair": {
+          "standardCourse": {
+            "before": "中1 수학",
+            "after": "중1 수학"
+          }
+        },
+        "formalMechanism": "ROOT_PLAN_AND_OFFICIAL_SCOPE_GUARD_PENDING"
+      },
+      "rpm": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "recordId": "M1-RPM-148",
+        "pointer": "/records/147",
+        "existingMappingStatus": "DIRECT_ACTIVE",
+        "basePath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 풀이",
+          "l3": "등식과 방정식",
+          "l4": "등식의 성질"
+        },
+        "selectedExistingTemplateKey": "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT",
+        "selectionRule": null,
+        "reason": "변형의 정당화가 핵심이므로 148 등식의 성질에 연결한다. 해를 새로 구하는 직접 풀이가 아니다.",
+        "parentAuthorityPath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+        "parentPointer": "/leafMappings/34",
+        "targetParentRef": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 풀이"
+        },
+        "officialParentDiffersFromNativeSubUnitLabel": true,
+        "formalParentHandling": "공식 부모를 명시적으로 결속하되 native 단원·소단원 키를 보존한다. 실제 projection은 미실행.",
+        "nativeTypeGap": false,
+        "rpmLeafGap": false,
+        "directSupplementNote": null
+      },
+      "integrationReason": "각 변형의 성질을 대조할 뿐 조건에 따른 경우 나누기가 아니다.",
+      "crossConceptAndConditionReason": "현재 주유형 안의 기본 계산·대입·정의 적용을 별도 보조 개념으로 중복 추가하지 않는다.",
+      "figures": [],
+      "unresolvedGaps": [
+        "EXACT_ACTIVE_BINDING_STANDARD_COURSE_TYPO"
+      ]
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_63b7882e55688be203b1ad8541fae9d3c18e60e6678a855ea676afdeab51497b",
+      "sourceFingerprint": "c74b82decfab61ad0623d1b4e41d605db2de241b36d26036c579c39df440197f",
+      "readCoverage": {
+        "prompt": "READ",
+        "choices": "READ",
+        "providedSolution": "READ",
+        "sourceOnlyMethodRecordedBeforeMetadataComparison": true,
+        "questionAndSolutionFigures": "NONE",
+        "figureCount": 0,
+        "intakePointer": "/questions/12"
+      },
+      "primaryMethod": "괄호가 있는 일차방정식을 전개하고 이항과 동류항 정리로 미지수의 계수를 분리한다.",
+      "decisiveStep": "분배한 식의 미지수 항을 한쪽으로 모은 뒤 계수로 나눈다.",
+      "before": {
+        "sourceMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-03",
+          "standardUnit": "문자와 식",
+          "subUnitKey": "M1-03-LINEAR_EQUATION",
+          "subUnit": "일차방정식",
+          "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+          "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 1
+        },
+        "currentMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-03",
+          "standardUnit": "문자와 식",
+          "subUnitKey": "M1-03-LINEAR_EQUATION",
+          "subUnit": "일차방정식",
+          "conceptClusterKey": "M1-03-LINEAR_EQUATION",
+          "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+          "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+          "curriculum": "2022",
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 1,
+          "reviewStatus": "reviewed_pass",
+          "tagStatus": "approved_semantic_review",
+          "tagConfidence": "r2e_adjudicated",
+          "L1": "문자와 식",
+          "L2": "일차방정식",
+          "L3": "일차방정식의 성질·풀이",
+          "L4": "일차방정식 풀기",
+          "rpmPathStatus": "DIRECT_ACTIVE",
+          "canonicalState": "CANONICAL_PATH_MATCH",
+          "defaultSelectable": true
+        }
+      },
+      "decisions": {
+        "nativeUnitAndSubUnit": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "conceptCluster": "CORRECT_TO_MASTER",
+        "integration": "CORRECT_TO_NONE",
+        "crossConcepts": "KEEP_EMPTY",
+        "conditions": "KEEP_EMPTY",
+        "rpm": "USE_EXISTING_EXACT_LEAF"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "conceptClusterKey": "LINEAR_EQUATION",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+        "curriculum": "2022",
+        "courseKey": "M1-1",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "nativeEvidence": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "ptPointer": "/problemTypes/84",
+        "templatePointer": "/templates/167",
+        "definitionFit": "실제 발문과 제공 풀이의 핵심 조작이 기존 PT/TPL 정의에 직접 포함된다.",
+        "clusterMasterPath": "archive/data/master_tables/js_archive_tag_master.json",
+        "clusterPointer": "/402"
+      },
+      "binding": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "existingPointer": "/bindings/154",
+        "existingCourse": "中1 수학",
+        "requiredCourse": "중1 수학",
+        "exactActiveBindingIndexes": [],
+        "decision": "EXISTING_COURSE_TYPO_REPAIR_REQUIRED",
+        "newBindingRowRequired": false,
+        "fieldOnlyRepair": {
+          "standardCourse": {
+            "before": "中1 수학",
+            "after": "중1 수학"
+          }
+        },
+        "formalMechanism": "ROOT_PLAN_AND_OFFICIAL_SCOPE_GUARD_PENDING"
+      },
+      "rpm": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "recordId": "M1-RPM-151",
+        "pointer": "/records/150",
+        "existingMappingStatus": "DIRECT_ACTIVE",
+        "basePath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 풀이",
+          "l3": "일차방정식의 풀이",
+          "l4": "괄호·분수·소수가 있는 방정식"
+        },
+        "selectedExistingTemplateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+        "selectionRule": null,
+        "reason": "괄호 전개가 필요한 기존 DIRECT_SOLUTION이 151에 직접 연결되어 있다.",
+        "parentAuthorityPath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+        "parentPointer": "/leafMappings/37",
+        "targetParentRef": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 풀이"
+        },
+        "officialParentDiffersFromNativeSubUnitLabel": true,
+        "formalParentHandling": "공식 부모를 명시적으로 결속하되 native 단원·소단원 키를 보존한다. 실제 projection은 미실행.",
+        "nativeTypeGap": false,
+        "rpmLeafGap": false,
+        "directSupplementNote": null
+      },
+      "integrationReason": "전개·이항·계수 나눗셈은 주유형 자체의 풀이 골격이다.",
+      "crossConceptAndConditionReason": "현재 주유형 안의 기본 계산·대입·정의 적용을 별도 보조 개념으로 중복 추가하지 않는다.",
+      "figures": [],
+      "unresolvedGaps": [
+        "EXACT_ACTIVE_BINDING_STANDARD_COURSE_TYPO"
+      ]
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_9670b98fc8cec71dd9d7d31514c4870c73ca1584b14b331ee75fb5560eebf8ac",
+      "sourceFingerprint": "6c167046269c82a034e35d7e8e47be66f8f66978c8976b97764bc8fbbfc6e285",
+      "readCoverage": {
+        "prompt": "READ",
+        "choices": "READ",
+        "providedSolution": "READ",
+        "sourceOnlyMethodRecordedBeforeMetadataComparison": true,
+        "questionAndSolutionFigures": "NONE",
+        "figureCount": 0,
+        "intakePointer": "/questions/13"
+      },
+      "primaryMethod": "두 일차방정식의 공통 해를 첫 식에서 정한 뒤 두 번째 식에 대입해 매개변수를 정한다.",
+      "decisiveStep": "해가 같다는 조건으로 두 번째 방정식의 미지수 값을 고정하고 매개변수에 관한 일차식으로 바꾼다.",
+      "before": {
+        "sourceMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-03",
+          "standardUnit": "문자와 식",
+          "subUnitKey": "M1-03-LINEAR_EQUATION",
+          "subUnit": "일차방정식",
+          "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+          "templateKey": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "INTERDEPENDENT",
+          "difficultyBucket": 3
+        },
+        "currentMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-03",
+          "standardUnit": "문자와 식",
+          "subUnitKey": "M1-03-LINEAR_EQUATION",
+          "subUnit": "일차방정식",
+          "conceptClusterKey": "M1-03-LINEAR_EQUATION",
+          "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+          "templateKey": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
+          "curriculum": "2022",
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "INTERDEPENDENT",
+          "difficultyBucket": 3,
+          "reviewStatus": "reviewed_pass",
+          "tagStatus": "approved_semantic_review",
+          "tagConfidence": "r2e_adjudicated",
+          "L1": "문자와 식",
+          "L2": "일차방정식",
+          "L3": "일차방정식의 성질·풀이",
+          "L4": "주어진 해로 계수 결정",
+          "rpmPathStatus": "DIRECT_ACTIVE",
+          "canonicalState": "CANONICAL_PATH_MATCH",
+          "defaultSelectable": true
+        }
+      },
+      "decisions": {
+        "nativeUnitAndSubUnit": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "conceptCluster": "CORRECT_TO_MASTER",
+        "integration": "CORRECT_TO_NONE",
+        "crossConcepts": "KEEP_EMPTY",
+        "conditions": "KEEP_EMPTY",
+        "rpm": "USE_EXISTING_EXACT_LEAF"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "conceptClusterKey": "LINEAR_EQUATION",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
+        "curriculum": "2022",
+        "courseKey": "M1-1",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "nativeEvidence": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "ptPointer": "/problemTypes/84",
+        "templatePointer": "/templates/168",
+        "definitionFit": "실제 발문과 제공 풀이의 핵심 조작이 기존 PT/TPL 정의에 직접 포함된다.",
+        "clusterMasterPath": "archive/data/master_tables/js_archive_tag_master.json",
+        "clusterPointer": "/402"
+      },
+      "binding": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "existingPointer": "/bindings/154",
+        "existingCourse": "中1 수학",
+        "requiredCourse": "중1 수학",
+        "exactActiveBindingIndexes": [],
+        "decision": "EXISTING_COURSE_TYPO_REPAIR_REQUIRED",
+        "newBindingRowRequired": false,
+        "fieldOnlyRepair": {
+          "standardCourse": {
+            "before": "中1 수학",
+            "after": "중1 수학"
+          }
+        },
+        "formalMechanism": "ROOT_PLAN_AND_OFFICIAL_SCOPE_GUARD_PENDING"
+      },
+      "rpm": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "recordId": "M1-RPM-153",
+        "pointer": "/records/152",
+        "existingMappingStatus": "DIRECT_ACTIVE",
+        "basePath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 풀이",
+          "l3": "해와 조건",
+          "l4": "계수 조건 결정"
+        },
+        "selectedExistingTemplateKey": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
+        "selectionRule": null,
+        "reason": "공통 해 조건으로 계수를 결정하는 153이다. 소수·분수 계산은 이 구조의 내부 연산이다.",
+        "parentAuthorityPath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+        "parentPointer": "/leafMappings/39",
+        "targetParentRef": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 풀이"
+        },
+        "officialParentDiffersFromNativeSubUnitLabel": true,
+        "formalParentHandling": "공식 부모를 명시적으로 결속하되 native 단원·소단원 키를 보존한다. 실제 projection은 미실행.",
+        "nativeTypeGap": false,
+        "rpmLeafGap": false,
+        "directSupplementNote": null
+      },
+      "integrationReason": "공통 해에서 계수를 정하는 단방향 과정은 COEFFICIENT_RECOVERY에 포함된다. 별도 개념들이 상호 의존하지 않는다.",
+      "crossConceptAndConditionReason": "현재 주유형 안의 기본 계산·대입·정의 적용을 별도 보조 개념으로 중복 추가하지 않는다.",
+      "figures": [],
+      "unresolvedGaps": [
+        "EXACT_ACTIVE_BINDING_STANDARD_COURSE_TYPO"
+      ]
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_f30518505fe44d01d57555fd9096bb0f742b25b9bceb13f6666031e8bbdf06fe",
+      "sourceFingerprint": "402f2996cc50076cae7beba95914701d2ed981e62fc2cedf88634476284a694c",
+      "readCoverage": {
+        "prompt": "READ",
+        "choices": "READ",
+        "providedSolution": "READ",
+        "sourceOnlyMethodRecordedBeforeMetadataComparison": true,
+        "questionAndSolutionFigures": "ACTUALLY_VIEWED",
+        "figureCount": 2,
+        "intakePointer": "/questions/14"
+      },
+      "primaryMethod": "좌표평면에 표시된 점의 가로·세로 좌표를 순서대로 읽어 제시된 순서쌍과 대조한다.",
+      "decisiveStep": "점에서 두 축으로 수직 투영하여 x좌표를 먼저, y좌표를 다음으로 읽는다.",
+      "before": {
+        "sourceMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-04",
+          "standardUnit": "좌표평면과 그래프",
+          "subUnitKey": "M1-04-COORDINATE_PLANE",
+          "subUnit": "좌표평면",
+          "problemTypeKey": "PT_COORDINATE_POINT_READING",
+          "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 1
+        },
+        "currentMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-04",
+          "standardUnit": "좌표평면과 그래프",
+          "subUnitKey": "M1-04-COORDINATE_PLANE",
+          "subUnit": "좌표평면",
+          "conceptClusterKey": "M1-04-COORDINATE_PLANE",
+          "problemTypeKey": "PT_COORDINATE_POINT_READING",
+          "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
+          "curriculum": "2022",
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 1,
+          "reviewStatus": "reviewed_pass",
+          "tagStatus": "approved_semantic_review",
+          "tagConfidence": "r2e_adjudicated",
+          "L1": "좌표평면과 그래프",
+          "L2": "좌표평면",
+          "L3": "좌표평면의 점·관계 해석",
+          "L4": "좌표평면의 점 좌표 읽기 — 기본 풀이 골격",
+          "rpmPathStatus": "FAMILY_ACTIVE",
+          "canonicalState": "CANONICAL_PATH_MATCH",
+          "defaultSelectable": true
+        }
+      },
+      "decisions": {
+        "nativeUnitAndSubUnit": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "conceptCluster": "CORRECT_TO_MASTER",
+        "integration": "CORRECT_TO_NONE",
+        "crossConcepts": "KEEP_EMPTY",
+        "conditions": "KEEP_EMPTY",
+        "rpm": "USE_EXISTING_EXACT_LEAF"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "conceptClusterKey": "COORDINATE_PLANE",
+        "problemTypeKey": "PT_COORDINATE_POINT_READING",
+        "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
+        "curriculum": "2022",
+        "courseKey": "M1-1",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "nativeEvidence": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "ptPointer": "/problemTypes/5",
+        "templatePointer": "/templates/5",
+        "definitionFit": "실제 발문과 제공 풀이의 핵심 조작이 기존 PT/TPL 정의에 직접 포함된다.",
+        "clusterMasterPath": "archive/data/master_tables/js_archive_tag_master.json",
+        "clusterPointer": "/5"
+      },
+      "binding": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "existingPointer": "/bindings/109",
+        "existingCourse": "중1 수학",
+        "requiredCourse": "중1 수학",
+        "exactActiveBindingIndexes": [
+          109
+        ],
+        "decision": "REUSE_EXISTING",
+        "newBindingRowRequired": false,
+        "fieldOnlyRepair": null,
+        "formalMechanism": "EXISTING_EXACT_BINDING"
+      },
+      "rpm": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "recordId": "M1-RPM-163",
+        "pointer": "/records/162",
+        "existingMappingStatus": "FAMILY_ACTIVE",
+        "basePath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "좌표와 그래프",
+          "l3": "좌표평면",
+          "l4": "점의 좌표 읽기"
+        },
+        "selectedExistingTemplateKey": "TPL_COORDINATE_POINT_READING_CORE",
+        "selectionRule": "Select coordinate-reading core for reading plotted points, the claim-audit L4 for origin/order/quadrant/axis statements, and sign-transform L4 for a point described by quadrant inequalities.",
+        "reason": "163 FAMILY selectionRule이 실제 그려진 점 읽기에 CORE를 지정한다.",
+        "parentAuthorityPath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+        "parentPointer": "/leafMappings/49",
+        "targetParentRef": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "좌표와 그래프"
+        },
+        "officialParentDiffersFromNativeSubUnitLabel": true,
+        "formalParentHandling": "공식 부모를 명시적으로 결속하되 native 단원·소단원 키를 보존한다. 실제 projection은 미실행.",
+        "nativeTypeGap": false,
+        "rpmLeafGap": false,
+        "directSupplementNote": "기존 FAMILY에서 템플릿을 정확히 선택했다. 형식상 DIRECT supplement 필요 여부는 root 공식 계획에서 결정하며 새 의미유형 부재로 보고하지 않는다."
+      },
+      "integrationReason": "같은 좌표 읽기로 여러 선지를 대조할 뿐 조건별 경우 분기가 아니다.",
+      "crossConceptAndConditionReason": "현재 주유형 안의 기본 계산·대입·정의 적용을 별도 보조 개념으로 중복 추가하지 않는다.",
+      "figures": [
+        {
+          "repoPath": "archive/assets/images/25_동산중_2학기_기말_중1_기출/q15.png",
+          "references": [
+            {
+              "ordinal": 15,
+              "field": "image"
+            }
+          ],
+          "sha256": "515c774bdd869ee59cd0a765267d067f081153ca0f20e553200bf6a08de74874",
+          "gitBlobSha1": "f5a000ffcb129cfc05a78ed02aebe71898c90658",
+          "actualMainBytesVerified": true,
+          "visualRead": "ACTUALLY_VIEWED",
+          "observation": "격자상의 점과 축 위 점을 확인했다. 가로·세로 위치 읽기이며 대칭 변환 그림이 아니다."
+        },
+        {
+          "repoPath": "archive/assets/images/25_동산중_2학기_기말_중1_기출/q15-solution-v2.svg",
+          "references": [
+            {
+              "ordinal": 15,
+              "field": "solutionImage"
+            }
+          ],
+          "sha256": "38deb1028f4ff2c01710a0ca72fa2259fc6b9cdb5bae655569e622ca55b13ded",
+          "gitBlobSha1": "9e54dfe512234ca922bbd37d7129a61417a58c69",
+          "actualMainBytesVerified": true,
+          "visualRead": "ACTUALLY_VIEWED",
+          "observation": "점에서 축으로 내린 점선과 순서쌍 표기가 좌표 읽기를 보조한다.",
+          "faithfulRender": ".tmp/m1-meta-review/04-dongsan-q09-q16-render/q15-solution-v2.png",
+          "renderSha256": "8f8bb7c3a9df55bc3ef9fe9d0d0645d5983811af82347f6389716fdbbeb0d549",
+          "renderer": "Inkscape"
+        }
+      ],
+      "unresolvedGaps": []
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_9bb9b64b29ed2301706ca6e221d28002de41dbb6616cf151ac5065ba9e969d77",
+      "sourceFingerprint": "9344fa782a20e327875815f926fd81849df150497419517ba5832d1ec6782148",
+      "readCoverage": {
+        "prompt": "READ",
+        "choices": "READ",
+        "providedSolution": "READ",
+        "sourceOnlyMethodRecordedBeforeMetadataComparison": true,
+        "questionAndSolutionFigures": "ACTUALLY_VIEWED",
+        "figureCount": 2,
+        "intakePointer": "/questions/15"
+      },
+      "primaryMethod": "원점·좌표 순서·좌표축 위 점·사분면의 정의를 그림과 대조해 진술을 판정한다.",
+      "decisiveStep": "좌표 순서와 축 위에서 0이 되는 좌표, 좌표 부호에 따른 사분면을 구분한다.",
+      "before": {
+        "sourceMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-04",
+          "standardUnit": "좌표평면과 그래프",
+          "subUnitKey": "M1-04-COORDINATE_PLANE",
+          "subUnit": "좌표평면",
+          "problemTypeKey": "PT_COORDINATE_POINT_READING",
+          "templateKey": "TPL_COORDINATE_POINT_READING_CLAIM_AUDIT",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2
+        },
+        "currentMetadata": {
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-04",
+          "standardUnit": "좌표평면과 그래프",
+          "subUnitKey": "M1-04-COORDINATE_PLANE",
+          "subUnit": "좌표평면",
+          "conceptClusterKey": "M1-04-COORDINATE_PLANE",
+          "problemTypeKey": "PT_COORDINATE_POINT_READING",
+          "templateKey": "TPL_COORDINATE_POINT_READING_CLAIM_AUDIT",
+          "curriculum": "2022",
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 2,
+          "reviewStatus": "reviewed_pass",
+          "tagStatus": "approved_semantic_review",
+          "tagConfidence": "r2e_adjudicated",
+          "L1": "좌표평면과 그래프",
+          "L2": "좌표평면",
+          "L3": "좌표평면의 점·관계 해석",
+          "L4": "좌표평면의 좌표·축 성질 진술 검토",
+          "rpmPathStatus": "FAMILY_ACTIVE",
+          "canonicalState": "CANONICAL_PATH_MATCH",
+          "defaultSelectable": true
+        }
+      },
+      "decisions": {
+        "nativeUnitAndSubUnit": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "conceptCluster": "CORRECT_TO_MASTER",
+        "integration": "CORRECT_TO_NONE",
+        "crossConcepts": "KEEP_EMPTY",
+        "conditions": "KEEP_EMPTY",
+        "rpm": "USE_EXISTING_EXACT_LEAF"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "conceptClusterKey": "COORDINATE_PLANE",
+        "problemTypeKey": "PT_COORDINATE_POINT_READING",
+        "templateKey": "TPL_COORDINATE_POINT_READING_CLAIM_AUDIT",
+        "curriculum": "2022",
+        "courseKey": "M1-1",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "nativeEvidence": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "ptPointer": "/problemTypes/5",
+        "templatePointer": "/templates/183",
+        "definitionFit": "실제 발문과 제공 풀이의 핵심 조작이 기존 PT/TPL 정의에 직접 포함된다.",
+        "clusterMasterPath": "archive/data/master_tables/js_archive_tag_master.json",
+        "clusterPointer": "/5"
+      },
+      "binding": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "existingPointer": "/bindings/109",
+        "existingCourse": "중1 수학",
+        "requiredCourse": "중1 수학",
+        "exactActiveBindingIndexes": [
+          109
+        ],
+        "decision": "REUSE_EXISTING",
+        "newBindingRowRequired": false,
+        "fieldOnlyRepair": null,
+        "formalMechanism": "EXISTING_EXACT_BINDING"
+      },
+      "rpm": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "recordId": "M1-RPM-163",
+        "pointer": "/records/162",
+        "existingMappingStatus": "FAMILY_ACTIVE",
+        "basePath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "좌표와 그래프",
+          "l3": "좌표평면",
+          "l4": "점의 좌표 읽기"
+        },
+        "selectedExistingTemplateKey": "TPL_COORDINATE_POINT_READING_CLAIM_AUDIT",
+        "selectionRule": "Select coordinate-reading core for reading plotted points, the claim-audit L4 for origin/order/quadrant/axis statements, and sign-transform L4 for a point described by quadrant inequalities.",
+        "reason": "163 FAMILY selectionRule이 원점·순서·축·사분면 진술에 CLAIM_AUDIT을 명시한다. 새 좌표식 부호 변환이 아니다.",
+        "parentAuthorityPath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+        "parentPointer": "/leafMappings/49",
+        "targetParentRef": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "좌표와 그래프"
+        },
+        "officialParentDiffersFromNativeSubUnitLabel": true,
+        "formalParentHandling": "공식 부모를 명시적으로 결속하되 native 단원·소단원 키를 보존한다. 실제 projection은 미실행.",
+        "nativeTypeGap": false,
+        "rpmLeafGap": false,
+        "directSupplementNote": "기존 FAMILY에서 템플릿을 정확히 선택했다. 형식상 DIRECT supplement 필요 여부는 root 공식 계획에서 결정하며 새 의미유형 부재로 보고하지 않는다."
+      },
+      "integrationReason": "여러 진술을 기본 정의로 검사할 뿐 조건에 따라 풀이 경로가 나뉘지 않는다.",
+      "crossConceptAndConditionReason": "현재 주유형 안의 기본 계산·대입·정의 적용을 별도 보조 개념으로 중복 추가하지 않는다.",
+      "figures": [
+        {
+          "repoPath": "archive/assets/images/25_동산중_2학기_기말_중1_기출/q16.png",
+          "references": [
+            {
+              "ordinal": 16,
+              "field": "image"
+            }
+          ],
+          "sha256": "0d2588bcf23cba5b4b96849297a84a40a193ad373ada62c3b7395643174ba1de",
+          "gitBlobSha1": "25012a11933ee5901527b50b0c06660befbd8b92",
+          "actualMainBytesVerified": true,
+          "visualRead": "ACTUALLY_VIEWED",
+          "observation": "사분면 그림과 P(a,b)의 축 투영 그림을 확인했다. 좌표 순서·축·사분면 정의 대조가 필요하다."
+        },
+        {
+          "repoPath": "archive/assets/images/25_동산중_2학기_기말_중1_기출/q16-solution.svg",
+          "references": [
+            {
+              "ordinal": 16,
+              "field": "solutionImage"
+            }
+          ],
+          "sha256": "b42e52e320a92b387de37c9c1728d7a936ca19253b246c8ebdefb4a099ee0703",
+          "gitBlobSha1": "4b931868e2b1c212509dff58dd936ec600c9e9ae",
+          "actualMainBytesVerified": true,
+          "visualRead": "ACTUALLY_VIEWED",
+          "observation": "좌표 순서·축 위 좌표·사분면을 표시한 해설 그림이다. 새로운 변환 구조가 없다.",
+          "faithfulRender": ".tmp/m1-meta-review/04-dongsan-q09-q16-render/q16-solution.png",
+          "renderSha256": "bbbcc29ba9df9fc9876e68e71c96d51e2193ed126c17e82786b401046d9212af",
+          "renderer": "Inkscape"
+        }
+      ],
+      "unresolvedGaps": []
+    }
+  ],
+  "newNativeProposals": []
+}

@@ -1,0 +1,41 @@
+✖ bindings: body fingerprint, source blob and unsupported schemas fail; pinpoint rows with before==after are skipped (4580.697157ms)
+✔ assignment marker gates only assignment-governed changes; other rows are reported as assignmentPending (4505.483995ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9813.875041
+
+✖ failing tests:
+
+test at tests/archive-changed-uid-consumer-approval.test.mjs:57:1
+✖ bindings: body fingerprint, source blob and unsupported schemas fail; pinpoint rows with before==after are skipped (4580.697157ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'SOURCE_UNREADABLE',
+  +   'SOURCE_UNREADABLE',
+  +   'SOURCE_UNREADABLE',
+  +   'SOURCE_UNREADABLE',
+  -   'BODY_FINGERPRINT_MISMATCH:1',
+  -   'SOURCE_BLOB_MISMATCH',
+      'UNSUPPORTED_REQUEST_SCHEMA',
+  -   'VALUE_MISMATCH:2'
+    ]
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge/tests/archive-changed-uid-consumer-approval.test.mjs:73:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'SOURCE_UNREADABLE', 'SOURCE_UNREADABLE', 'SOURCE_UNREADABLE', 'SOURCE_UNREADABLE', 'UNSUPPORTED_REQUEST_SCHEMA' ],
+    expected: [ 'BODY_FINGERPRINT_MISMATCH:1', 'SOURCE_BLOB_MISMATCH', 'UNSUPPORTED_REQUEST_SCHEMA', 'VALUE_MISMATCH:2' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

@@ -41,7 +41,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { loadResolvedConsumerCatalog } from "./reviewed-exam-registration-v2.mjs";
 import { bindDifficulty5Source } from "./register-difficulty5.mjs";
-import { BINDING_COURSE_CORRECTION_SCHEMA, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
+import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
 
 const require = createRequire(import.meta.url);
 const SCHEMA = {
@@ -94,6 +94,18 @@ function loadBank(root, source) {
 function deriveUnit(root, doc, file, catalogRowsOf) {
   const fail = (reason, detail) => { throw new UnitError(reason, detail); };
   const schema = doc?.schemaVersion;
+  if (schema === BINDING_COURSE_CORRECTION_SCHEMA_V2) {
+    if (!doc.requestId || !Array.isArray(doc.sourceSnapshots) || !doc.sourceSnapshots.length ||
+        doc.sourceSnapshots.some(s => !/^original\/middle\/m1\/(?:1|2)(?:mid|final)\/[^/\\\0]+\.js$/.test(s.sourceArchiveFile || '') ||
+          !/^[a-f0-9]{40}$/.test(s.expectedSourceBlobSha1 || '')) ||
+        !Array.isArray(doc.preservedConsumers) || !doc.preservedConsumers.length)
+      fail("INVALID_REQUEST", "binding correction v2 needs its derived source snapshots and preserved consumers");
+    // One attributable unit per request. Different exams can share ordinals;
+    // their UIDs and source snapshots remain separate within this unit.
+    return { kind: "binding-course-correction", exam: doc.requestId, sourceFile: null,
+      sourceSnapshots: doc.sourceSnapshots, request: doc,
+      rows: doc.preservedConsumers.map(r => ({ ordinal: r.sourceOrdinal, uid: r.questionUid, sourceFile: r.sourceArchiveFile, unchanged: false })) };
+  }
   if (schema === BINDING_COURSE_CORRECTION_SCHEMA) {
     if (!doc.sourceArchiveFile || !Array.isArray(doc.preservedConsumers) || !doc.preservedConsumers.length)
       fail("INVALID_REQUEST", "binding correction needs its exact preserved consumer set");
@@ -351,18 +363,21 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
     result.counts.changed += rows.length;
     if (!consumer) continue;
     let sourceBound = true;
-    try {
-      const sourcePath = `archive/exams/${normalizeFile(unit.sourceFile)}`;
-      const blob = unit.kind === "difficulty5-ratings"
-        ? bindDifficulty5Source(fs.readFileSync(path.join(root, sourcePath)), unit.expectedBlob).sha
-        : gitBlobSha1(root, sourcePath);
-      if (unit.expectedBlob !== blob) {
+    const sourceBindings = unit.sourceSnapshots || [{ sourceArchiveFile: unit.sourceFile, expectedSourceBlobSha1: unit.expectedBlob }];
+    for (const binding of sourceBindings) {
+      try {
+        const sourcePath = `archive/exams/${normalizeFile(binding.sourceArchiveFile)}`;
+        const blob = unit.kind === "difficulty5-ratings"
+          ? bindDifficulty5Source(fs.readFileSync(path.join(root, sourcePath)), binding.expectedSourceBlobSha1).sha
+          : gitBlobSha1(root, sourcePath);
+        if (binding.expectedSourceBlobSha1 !== blob) {
+          sourceBound = false;
+          result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "SOURCE_BLOB_MISMATCH", detail: `${unit.sourceSnapshots ? binding.sourceArchiveFile + ': ' : ''}request ${binding.expectedSourceBlobSha1 ?? null} != worktree ${blob}` });
+        }
+      } catch (error) {
         sourceBound = false;
-        result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "SOURCE_BLOB_MISMATCH", detail: `request ${unit.expectedBlob ?? null} != worktree ${blob}` });
+        result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "SOURCE_UNREADABLE", detail: error.message });
       }
-    } catch (error) {
-      sourceBound = false;
-      result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "SOURCE_UNREADABLE", detail: error.message });
     }
     if (!sourceBound) continue;
     if (unit.kind === "binding-course-correction") {

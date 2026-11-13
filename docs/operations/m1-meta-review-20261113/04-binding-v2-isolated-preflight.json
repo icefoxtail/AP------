@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "binding-course-v2-isolated-preflight-v1",
+  "status": "PASS_LOCAL_ONLY_PENDING_ACTUAL_MAIN",
+  "createdAt": "2026-11-13T21:07:43.253342+00:00",
+  "baselineMain": "bf35b7e13417b033ee167117d567a9f0262712d6",
+  "request": {
+    "path": ".archive-meta-register/inbox/m1-linear-equation-course-spelling-20261113.json",
+    "rawSha256": "2b4ce237d03dde8b4c70a9da859883f37a6c9d120639c65633ea0d425f917007"
+  },
+  "requestCanonicalSha256": "baecb1d7fe1c54899ae6b4d91500e42b94d010f395549fc18398a49325a0c5f6",
+  "receipt": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-linear-equation-course-spelling-20261113.binding-course-correction.json",
+    "rawSha256": "dde07d5cdc7bc9290dae8bef62d247c1521e47f54658efd44089e6092660a804",
+    "schemaVersion": "archive-binding-course-correction-receipt-v2",
+    "status": "CORRECTED_EXISTING_BINDING",
+    "approvalCreated": false
+  },
+  "scope": {
+    "bindingIndex": 154,
+    "field": "standardCourse",
+    "before": "中1 수학",
+    "after": "중1 수학",
+    "affectedUids": 5,
+    "sourceCount": 2,
+    "preservedRuntimeUids": 659,
+    "protectedFiles": 109,
+    "packVersionBefore": "1.0.8",
+    "packVersionAfter": "1.0.9"
+  },
+  "consumer": {
+    "status": "PASS",
+    "mainSha": "bf35b7e13417b033ee167117d567a9f0262712d6",
+    "counts": {
+      "changed": 5,
+      "checked": 5,
+      "passed": 5,
+      "skippedUnchanged": 0
+    },
+    "exams": [
+      {
+        "file": ".tmp/m1-meta-review/04-binding-v2.request.json",
+        "kind": "binding-course-correction",
+        "exam": "m1-linear-equation-course-spelling-20261113",
+        "sourceFile": null,
+        "changed": 5,
+        "checked": 5,
+        "passed": 5,
+        "skippedUnchanged": 0,
+        "preservedRuntimeUids": 659,
+        "approvalCreated": false
+      }
+    ],
+    "failures": [],
+    "unobservedFields": [],
+    "solverOnlyRevisions": [],
+    "assignmentPending": []
+  },
+  "projection": {
+    "status": "PASS",
+    "verificationKind": "EXISTING_CONSUMERS_PRESERVED",
+    "approvalCreated": false,
+    "bindingRowsCorrected": 1,
+    "affectedBindingUidCount": 5,
+    "checkedRuntimeUids": 659,
+    "sourceArchiveFiles": [
+      "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js"
+    ],
+    "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-linear-equation-course-spelling-20261113.binding-course-correction.json"
+  },
+  "protection": {
+    "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-protection.json",
+    "sha256": "7b373ffd3cee855af473f228b0216635bd4798eab7c1264499cdad2b084c228a"
+  },
+  "independentCodeReview": {
+    "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-independent-review.json",
+    "sha256": "0aba77745feca8b61a4658a66caf3276aa19b507b0bb8f47d4112a8fb76bdc6e"
+  },
+  "implementation": {
+    "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-implementation.json",
+    "sha256": "cfc035fdf750db8cb61842f410b5a59fa0823236395d02673aefd36cbe33eb0b"
+  },
+  "testArtifacts": {
+    "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-test-artifacts.json",
+    "sha256": "86bc91de697775750d0b1e3fdc012f29a61af76a0bd1798554312d9add2d0f81"
+  },
+  "isolatedArtifacts": {
+    "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-artifacts.json",
+    "sha256": "4fcd7167da7713e78067d912f42a3cbaa9c231a6ef6a2c46596dec64a1ce485c"
+  },
+  "limits": {
+    "actualMainRegistered": false,
+    "newApprovalCreated": false,
+    "outsideExamMeaningReviewed": false,
+    "mathFinalQaPerformed": false,
+    "fullR1R2R3Rerun": false,
+    "rawLogWhitespace": "The immutable initial TAP log contains two whitespace-only diagnostic lines; code/docs/non-log diff check passed. Raw log bytes are retained with original hashes.",
+    "productionSourceCanonicalRuntimeManuallyChanged": false
+  },
+  "nextAction": "Publish exact code and preservation request, merge after required CI; verify actual main receipt, final post-AutoMeta Consumer and persisted remote SHA before DongSan ordinary24 candidate."
+}

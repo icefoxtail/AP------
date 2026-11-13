@@ -1,0 +1,412 @@
+============================================================
+ Archive 등록 자동 동기화: DB → UID → META HOLD → INDEX → CATALOG
+============================================================
+✅ db.js 생성 완료: 총 1211개 파일 등록
+✅ DB 변경 요약: 이전 1211개 → 현재 1211개 (추가 0 / 삭제 0 / 메타 변경 0)
+✅ 기존 메타데이터 보존: 1211개; 신규 inventory 등록: 0개
+✅ archive 기준 위치: /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive
+✅ exams 기준 위치: /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/exams
+✅ db.js 출력 위치: /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/db.js
+✅ 출력 구조: window.mainDB.exams
+✅ file 경로: exams/ 제외, exams 내부 상대경로
+✅ 하위 폴더 스캔: original / similar / types 포함
+✅ 유형 폴더 학년 구분 대응: types/high/h1~h3, types/middle/m1~m3
+✅ 금지 구조 검사 통과: "시험", "연도", "학교", 2026년 패턴, file: exams/ 없음
+✅ 교과서 등록: 신규 0개 (매니페스트 data/textbook-source-manifest-v1.json)
+ℹ️ 교과서 중복 폴더 미등록(12개): 매니페스트 unregisteredDuplicateFolders
+⚠️ range 메타 추론 실패(91개):
+  - original/high/h1/1final/19_매산고_1학기_기말_고1_기출.js (unresolved)
+  - original/high/h1/1mid/21_강남여고_1학기_중간_고1_기출.js (unresolved)
+  - original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js (unresolved)
+  - original/high/h2/1final/20_매산고_1학기_기말_고2_수학I.js (unresolved)
+  - original/high/h2/1final/20_매산여고_1학기_기말_고2_수학I.js (unresolved)
+  - original/high/h2/1final/21_강남여고_1학기_기말_고2_수학I.js (unresolved)
+  - original/high/h2/1final/22_금당고_1학기_기말_고2_수학I.js (unresolved)
+  - original/high/h2/1final/22_금당고_1학기_기말_고2_확률과통계.js (unresolved)
+  - original/high/h2/1final/22_순천고_1학기_기말_고2_수학I.js (unresolved)
+  - original/high/h2/1final/23_매산고_1학기_기말_고2_수학I.js (unresolved)
+  - original/high/h2/1final/23_매산고_1학기_기말_고2_확률과통계.js (unresolved)
+  - original/high/h2/1mid/19_금당고_1학기_중간_고2_확률과통계.js (unresolved)
+  - original/high/h2/1mid/19_매산고_1학기_중간_고2_수학I.js (unresolved)
+  - original/high/h2/1mid/19_매산여고_1학기_중간_고2_수학I.js (unresolved)
+  - original/high/h2/1mid/21_금당고_1학기_중간_고2_수학I.js (unresolved)
+  - original/high/h2/1mid/21_매산고_1학기_중간_고2_수학I.js (unresolved)
+  - original/high/h2/1mid/21_매산고_1학기_중간_고2_수학II.js (unresolved)
+  - original/high/h2/1mid/21_제일고_1학기_중간_고2_수학I.js (unresolved)
+  - original/high/h3/1final/20_매산고_1학기_기말_고3_기하.js (unresolved)
+  - original/middle/m1/1final/19_금당중_1학기_기말_중1_수학.js (unresolved)
+  - original/middle/m1/1final/19_동산중_1학기_기말_중1_수학.js (unresolved)
+  - original/middle/m1/1final/19_연향중_1학기_기말_중1_수학.js (unresolved)
+  - original/middle/m1/1final/19_왕운중_1학기_기말_중1_수학.js (unresolved)
+  - original/middle/m1/1mid/16_연향중_1학기_중간_중1_수학.js (unresolved)
+  - original/middle/m1/1mid/17_금당중_1학기_중간_중1_수학.js (unresolved)
+  - original/middle/m1/1mid/17_매산중_1학기_중간_중1_수학.js (unresolved)
+  - original/middle/m1/1mid/17_삼산중_1학기_중간_중1_수학.js (unresolved)
+  - original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js (unresolved)
+  - original/middle/m2/1final/19_왕운중_1학기_기말_중2_수학.js (unresolved)
+  - original/middle/m2/1final/19_이수중_1학기_기말_중2_수학.js (unresolved)
+  - original/middle/m2/1final/21_연향중_1학기_기말_중2_수학.js (unresolved)
+  - original/middle/m2/1final/21_왕운중_1학기_기말_중2_수학.js (unresolved)
+  - original/middle/m2/1final/21_풍덕중_1학기_기말_중2_수학.js (unresolved)
+  - original/middle/m2/1final/22_향림중_1학기_기말_중2_수학.js (unresolved)
+  - original/middle/m2/1final/23_매산중_1학기_기말_중2_수학.js (unresolved)
+  - original/middle/m2/1final/23_순천여중_1학기_기말_중2_수학.js (unresolved)
+  - original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js (unresolved)
+  - original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js (unresolved)
+  - original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js (unresolved)
+  - original/middle/m2/1mid/19_청주금천중_1학기_중간_중2_수학.js (unresolved)
+  - original/middle/m2/1mid/22_동산중_1학기_중간_중2_수학.js (unresolved)
+  - original/middle/m2/1mid/23_금당중_1학기_중간_중2_수학.js (unresolved)
+  - original/middle/m2/1mid/23_신흥중_1학기_중간_중2_수학.js (unresolved)
+  - original/middle/m2/1mid/23_연향중_1학기_중간_중2_수학.js (unresolved)
+  - original/middle/m2/2final/18_연향중_2학기_기말_중2_수학.js (unresolved)
+  - original/middle/m2/2final/20_연향중_2학기_기말_중2_수학.js (unresolved)
+  - original/middle/m2/2final/21_매산중_2학기_기말_중2_수학.js (unresolved)
+  - original/middle/m2/2mid/19_동산중_2학기_중간_중2_수학.js (unresolved)
+  - original/middle/m2/2mid/19_이수중_2학기_중간_중2_수학.js (unresolved)
+  - original/middle/m2/2mid/21_연향중_2학기_중간_중2_수학.js (unresolved)
+  - original/middle/m2/2mid/21_팔마중_2학기_중간_중2_수학.js (unresolved)
+  - original/middle/m3/1final/16_경기은계중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/17_경북대도중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/17_경북영신중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/17_경북창포중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/17_경북환호여중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/17_대구동도중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/17_대구오성중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/17_연향중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/17_풍덕중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/18_동산중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/18_연향중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/19_동산중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/19_서울가산중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/19_신흥중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/19_연향중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/19_왕운중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/19_이수중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/20_연향중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1final/20_이수중_1학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/1mid/17_대구교동중_1학기_중간_중3_수학.js (unresolved)
+  - original/middle/m3/1mid/17_이수중_1학기_중간_중3_수학.js (unresolved)
+  - original/middle/m3/1mid/18_연향중_1학기_중간_중3_수학.js (unresolved)
+  - original/middle/m3/1mid/19_서울시흥중_1학기_중간_중3_수학.js (unresolved)
+  - original/middle/m3/1mid/19_서울안천중_1학기_중간_중3_수학.js (unresolved)
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js (unresolved)
+  - original/middle/m3/1mid/26_연향중_1학기_중간_중3_수학.js (unresolved)
+  - original/middle/m3/2final/15_신흥중_2학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/2final/15_왕의중_2학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/2final/16_신흥중_2학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/2final/16_왕의중_2학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/2final/17_신흥중_2학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/2final/17_팔마중_2학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/2final/18_연향중_2학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/2final/19_연향중_2학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/2final/21_왕의중_2학기_기말_중3_수학.js (unresolved)
+  - original/middle/m3/2mid/18_연향중_2학기_중간_중3_수학.js (unresolved)
+  - original/middle/m3/2mid/21_풍덕중_2학기_중간_중3_수학.js (unresolved)
+  - original/middle/m3/2mid/21_향림중_2학기_중간_중3_수학.js (unresolved)
+
+▶ 문항 UID 증분 동기화
+  $ node /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/tools/intelligence/sync-question-identity-map-v1.mjs
+{
+  "status": "NO_CHANGE",
+  "records": 28890,
+  "newFiles": 0,
+  "newRecords": 0,
+  "renamedFiles": 0,
+  "renamedRecords": 0
+}
+✅ 문항 UID 증분 동기화
+
+▶ 신규 문항 metadata HOLD 동기화
+  $ node /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/tools/intelligence/sync-pending-question-metadata-v1.mjs
+{
+  "status": "NO_CHANGE",
+  "records": 28890,
+  "added": 0,
+  "relocated": 0
+}
+✅ 신규 문항 metadata HOLD 동기화
+
+▶ 문항 UID runtime 갱신
+  $ node /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/tools/intelligence/build-question-identity-runtime.mjs
+{
+  "output": "archive/question-identity.js",
+  "identityDigest": "0de931660a3f0d4c2413bd0b10f2bfb1e1ce821154f2372ca032775aeb72b9df",
+  "runtimeDigest": "67f4ef9ce25b0ee1a55bde04ad5f61d0677900c7bc618d0a1b48b6f82dbce3f6",
+  "fileCount": 1212,
+  "questionCount": 28890,
+  "bytes": 2739032
+}
+✅ 문항 UID runtime 갱신
+
+▶ Question index 갱신
+  $ node /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/tools/build-question-index.mjs
+scope: git-tracked + db-listed production (parity-gated); exam files: 1107
+question-index generated: 27179 questions (source 27179), 11602707 bytes
+duplicate_skipped: 0 records in 0 groups; final duplicate qKey: 0
+key class: official=24220 raw=25 invalid=632 empty=2302 (invalid distinct=28)
+visual: image=4082 img=1118 svg=77 table=388 total=5479
+✅ Question index 갱신
+
+▶ Meta Foundation runtime source rename 동기화
+  $ node /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/tools/meta-foundation/sync-runtime-source-path-renames.mjs
+{
+  "status": "NO_CHANGE",
+  "renameEvidenceCount": 2,
+  "updatedRecords": 0,
+  "updatedRuntimeFiles": []
+}
+✅ Meta Foundation runtime source rename 동기화
+
+▶ Archive 2.0 intermediate catalog/manifest 갱신
+  $ node /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/tools/build-archive2-catalog.mjs
+{
+  "indexVersion": "88891073130939ab3185b361d44eac2637a6e7583420cdbb7021b9cca61c4e95",
+  "projectionVersion": "archive2-canonical-v1:4dd3e155957d50a8abfa773590f635bf81d473598e878870088c4b7dfb716653",
+  "sourceShardCount": 1211,
+  "sourceShardQuestionCount": 28882,
+  "mixedSourceShardCount": 1211,
+  "mixedUidBucketCount": 16,
+  "mixedLookupRecordCount": 28882,
+  "mixedLookupContextBytes": 724474,
+  "metaHint": {
+    "joined": 28882,
+    "exact": 20092,
+    "content": 7712,
+    "changedContent": 1078,
+    "pt": 9254,
+    "tpl": 8953,
+    "l3": 5888,
+    "curriculum": 4614,
+    "ptUnregistered": 1872,
+    "tplUnregistered": 1909,
+    "tplParentMismatch": 17,
+    "holdSkipped": 35
+  },
+  "taxonomy": 25775,
+  "course_namespace_invalid": 25775,
+  "assignment_missing": 25775,
+  "canonical_parent_missing": 25775,
+  "source_release": 8790,
+  "automatic": 1060,
+  "conflict": 103,
+  "review": 447,
+  "semantic": 290,
+  "source_issue": 27,
+  "applicability": 51,
+  "exams": 1211,
+  "questions": 28882,
+  "metadataRecords": 28890
+}
+✅ Archive 2.0 intermediate catalog/manifest 갱신
+
+▶ 기본 L1/L2 부모 연결 갱신
+  $ node /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/tools/build-basic-scope-parent-links.mjs
+549 parent references and 3107 source parent links from 12 references
+✅ 기본 L1/L2 부모 연결 갱신
+
+▶ Archive 2.0 final catalog/manifest 갱신
+  $ node /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/tools/build-archive2-catalog.mjs
+{
+  "indexVersion": "88891073130939ab3185b361d44eac2637a6e7583420cdbb7021b9cca61c4e95",
+  "projectionVersion": "archive2-canonical-v1:724c4dc02b73e73616e027c33cd75aa7324093173321d3e3eab595fea13b8e54",
+  "sourceShardCount": 1211,
+  "sourceShardQuestionCount": 28882,
+  "mixedSourceShardCount": 1211,
+  "mixedUidBucketCount": 16,
+  "mixedLookupRecordCount": 28882,
+  "mixedLookupContextBytes": 724474,
+  "metaHint": {
+    "joined": 28882,
+    "exact": 20092,
+    "content": 7712,
+    "changedContent": 1078,
+    "pt": 9254,
+    "tpl": 8953,
+    "l3": 5888,
+    "curriculum": 4614,
+    "ptUnregistered": 1872,
+    "tplUnregistered": 1909,
+    "tplParentMismatch": 17,
+    "holdSkipped": 35
+  },
+  "taxonomy": 25775,
+  "course_namespace_invalid": 25775,
+  "assignment_missing": 25775,
+  "canonical_parent_missing": 25775,
+  "source_release": 8790,
+  "automatic": 1060,
+  "conflict": 103,
+  "review": 447,
+  "semantic": 290,
+  "source_issue": 27,
+  "applicability": 51,
+  "exams": 1211,
+  "questions": 28882,
+  "metadataRecords": 28890
+}
+✅ Archive 2.0 final catalog/manifest 갱신
+
+▶ 기본 L1/L2 부모 연결 안정성 검증
+  $ node /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/tools/build-basic-scope-parent-links.mjs --check
+549 parent references and 3107 source parent links from 12 references
+✅ 기본 L1/L2 부모 연결 안정성 검증
+
+▶ Archive 2.0 crosswalk inventory 갱신
+  $ node /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/tools/build-archive2-crosswalk-inventory.mjs
+{"total":83,"reviewedExact":0,"sourceDigest":"df3d083f04d2a66288a0e5e606d7e42102a789ed7ec95cca53e780b38a6d4caf"}
+✅ Archive 2.0 crosswalk inventory 갱신
+
+▶ Archive 등록 parity 검증
+  $ node /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/tools/verify-archive-registration.mjs
+{
+  "status": "PASS",
+  "scope": "full-registration",
+  "originalSourceExams": 872,
+  "exams": 1211,
+  "questions": 28882,
+  "identityRecords": 28890,
+  "metadataRecords": 28890,
+  "catalogRecords": 28882,
+  "pendingSemantic": 15472
+}
+✅ Archive 등록 parity 검증
+
+▶ Archive 2.0 catalog stale 검증
+  $ node /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/tools/build-archive2-catalog.mjs --check
+{
+  "indexVersion": "88891073130939ab3185b361d44eac2637a6e7583420cdbb7021b9cca61c4e95",
+  "projectionVersion": "archive2-canonical-v1:724c4dc02b73e73616e027c33cd75aa7324093173321d3e3eab595fea13b8e54",
+  "sourceShardCount": 1211,
+  "sourceShardQuestionCount": 28882,
+  "mixedSourceShardCount": 1211,
+  "mixedUidBucketCount": 16,
+  "mixedLookupRecordCount": 28882,
+  "mixedLookupContextBytes": 724474,
+  "metaHint": {
+    "joined": 28882,
+    "exact": 20092,
+    "content": 7712,
+    "changedContent": 1078,
+    "pt": 9254,
+    "tpl": 8953,
+    "l3": 5888,
+    "curriculum": 4614,
+    "ptUnregistered": 1872,
+    "tplUnregistered": 1909,
+    "tplParentMismatch": 17,
+    "holdSkipped": 35
+  },
+  "taxonomy": 25775,
+  "course_namespace_invalid": 25775,
+  "assignment_missing": 25775,
+  "canonical_parent_missing": 25775,
+  "source_release": 8790,
+  "automatic": 1060,
+  "conflict": 103,
+  "review": 447,
+  "semantic": 290,
+  "source_issue": 27,
+  "applicability": 51,
+  "exams": 1211,
+  "questions": 28882,
+  "metadataRecords": 28890
+}
+✅ Archive 2.0 catalog stale 검증
+
+▶ Meta Foundation runtime readiness 최종 catalog 결속
+  $ node /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/tools/meta-foundation/refresh-runtime-source-readiness.mjs --write
+{
+  "status": "PASS",
+  "mode": "--write",
+  "catalogIndexVersion": "archive2-canonical-v1:724c4dc02b73e73616e027c33cd75aa7324093173321d3e3eab595fea13b8e54",
+  "runtimeRecordCount": 6297,
+  "uniqueUidCount": 6297,
+  "uniqueSourceIdentityCount": 6297,
+  "combinedCatalogDirectJoinCount": 6297,
+  "combinedCatalogSourceIdentityRepairJoinCount": 0,
+  "combinedCatalogJoinMismatchCount": 0,
+  "changedFiles": [
+    "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json"
+  ],
+  "packs": {
+    "DERIVATIVE": {
+      "runtimeRecords": 395,
+      "directUidJoinCount": 395,
+      "sourceIdentityRepairJoinCount": 0,
+      "currentCatalogUidDirectJoinCount": 395,
+      "currentCatalogSourceIdentityRepairJoinCount": 0,
+      "currentCatalogJoinMismatchCount": 0,
+      "currentCatalogSourceHoldDirectCount": 146,
+      "sourceReadyCount": 249,
+      "sourceHoldCount": 146,
+      "supplementaryCount": 0,
+      "automaticEligibleExpected": 249
+    },
+    "INTEGRAL_CALCULUS": {
+      "runtimeRecords": 194,
+      "directUidJoinCount": 194,
+      "sourceIdentityRepairJoinCount": 0,
+      "currentCatalogUidDirectJoinCount": 194,
+      "currentCatalogSourceIdentityRepairJoinCount": 0,
+      "currentCatalogJoinMismatchCount": 0,
+      "currentCatalogSourceHoldDirectCount": 83,
+      "sourceReadyCount": 111,
+      "sourceHoldCount": 83,
+      "supplementaryCount": 0,
+      "automaticEligibleExpected": 111
+    }
+  }
+}
+✅ Meta Foundation runtime readiness 최종 catalog 결속
+
+▶ Meta Foundation runtime readiness 결속 검증
+  $ node /workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/archive/tools/meta-foundation/refresh-runtime-source-readiness.mjs --check
+{
+  "status": "PASS",
+  "mode": "--check",
+  "catalogIndexVersion": "archive2-canonical-v1:724c4dc02b73e73616e027c33cd75aa7324093173321d3e3eab595fea13b8e54",
+  "runtimeRecordCount": 6297,
+  "uniqueUidCount": 6297,
+  "uniqueSourceIdentityCount": 6297,
+  "combinedCatalogDirectJoinCount": 6297,
+  "combinedCatalogSourceIdentityRepairJoinCount": 0,
+  "combinedCatalogJoinMismatchCount": 0,
+  "changedFiles": [],
+  "packs": {
+    "DERIVATIVE": {
+      "runtimeRecords": 395,
+      "directUidJoinCount": 395,
+      "sourceIdentityRepairJoinCount": 0,
+      "currentCatalogUidDirectJoinCount": 395,
+      "currentCatalogSourceIdentityRepairJoinCount": 0,
+      "currentCatalogJoinMismatchCount": 0,
+      "currentCatalogSourceHoldDirectCount": 146,
+      "sourceReadyCount": 249,
+      "sourceHoldCount": 146,
+      "supplementaryCount": 0,
+      "automaticEligibleExpected": 249
+    },
+    "INTEGRAL_CALCULUS": {
+      "runtimeRecords": 194,
+      "directUidJoinCount": 194,
+      "sourceIdentityRepairJoinCount": 0,
+      "currentCatalogUidDirectJoinCount": 194,
+      "currentCatalogSourceIdentityRepairJoinCount": 0,
+      "currentCatalogJoinMismatchCount": 0,
+      "currentCatalogSourceHoldDirectCount": 83,
+      "sourceReadyCount": 111,
+      "sourceHoldCount": 83,
+      "supplementaryCount": 0,
+      "automaticEligibleExpected": 111
+    }
+  }
+}
+✅ Meta Foundation runtime readiness 결속 검증
+
+✅ ARCHIVE REGISTRATION SYNC PASS
+   - 신규 시험지 DB/UID/Archive2 노출은 자동 동기화
+   - 기존 Meta Foundation canonical은 자동 수정하지 않음
+   - 신규 semantic L3/L4/difficulty는 review_required HOLD로 보존
