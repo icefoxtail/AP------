@@ -3012,12 +3012,15 @@
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "level": "상",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B34",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
       },
-      "changedFields": [],
+      "changedFields": [
+        "difficultyBucket",
+        "legacyLevelCompatibility"
+      ],
       "rpmPrior": {
         "curriculum": "2022",
         "scope": "M1-2",
@@ -3041,7 +3044,7 @@
       "gapDetail": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT/TPL_*_MULTI_OBJECT_COUNT 및 정확한 binding 존재. RPM173은 용어 동일성 judgment row만 있어 개수 유형 exact projection을 추가 요청.",
       "applicationPolicy": "확정한 비공유 필드는 적용 가능하되 missing binding/crosswalk/leaf의 PASS 또는 등록완료로 표시 금지. root 공식 resolver/등록 경로로 판정.",
       "difficultyReview": {
-        "judgedBucket": 4,
+        "judgedBucket": 3,
         "levelAction": "KEEP",
         "rationale": "중복 계수의 표준/준고난도 경계 재확인 필요.",
         "suggestion": {
@@ -3049,9 +3052,11 @@
           "difficultyConfidence": "medium",
           "difficultyBoundaryFlag": "B34",
           "legacyLevelCompatibility": "BORDERLINE_REVIEW",
-          "independentRecheckRequired": true,
-          "reason": "세 대상의 중복 계수는 표준 구조의 연쇄 적용이다. 4 유지도 경계이므로 root의 독립 재확인 전에는 자동 변경하지 않는다."
-        }
+          "independentRecheckRequired": false,
+          "reason": "A1 독립 재확인도3에 동의. level 상은 보존하고 registrar 허용값으로 BORDERLINE_REVIEW를 남긴다.",
+          "status": "ACCEPTED_AFTER_A1_RECHECK"
+        },
+        "independentReviewEvidence": "docs/operations/m1-s2-meta-b01-a-20261114/a1-cross-exam3.json"
       },
       "fourSlot": {
         "sourceOrdinal": 22,
@@ -3074,8 +3079,8 @@
           ],
           "goal": [
             {
-              "term": "개수",
-              "termId": 129,
+              "term": "직선",
+              "termId": 143,
               "src": "stem",
               "quote": "직선의 개수"
             },
@@ -3090,24 +3095,36 @@
               "termId": 144,
               "src": "stem",
               "quote": "선분의 개수"
+            },
+            {
+              "term": "개수",
+              "termId": 129,
+              "src": "stem",
+              "quote": "직선의 개수"
+            },
+            {
+              "term": "합",
+              "termId": 286,
+              "src": "stem",
+              "quote": "$a+b+c$의 값"
             }
           ],
           "method": [
+            {
+              "term": "정의",
+              "termId": 369,
+              "src": "solution",
+              "quote": "같은 선분을 두 번씩",
+              "evidenceType": "IMPLIED",
+              "justification": "직선은 같은 지지직선, 반직선은 시작점과 방향, 선분은 같은 두 끝점이라는 대상 동일성 정의로 중복을 구분한다."
+            },
             {
               "term": "열거",
               "termId": 294,
               "src": "solution",
               "quote": "$l,PA,PB,PC,PD$",
               "evidenceType": "IMPLIED",
-              "justification": "현재 문항의 기존 해설에서 이 부분이 열거을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
-            },
-            {
-              "term": "중복불허",
-              "termId": 375,
-              "src": "solution",
-              "quote": "같은 선분을 두 번씩",
-              "evidenceType": "IMPLIED",
-              "justification": "현재 문항의 기존 해설에서 이 부분이 중복불허을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+              "justification": "일직선 위 대상과 외부 점 연결 대상을 나누어 실제 가능한 직선과 반직선을 빠짐없이 열거한다."
             }
           ],
           "condition": [
@@ -3516,21 +3533,15 @@
     }
   ],
   "crossReview": {
-    "status": "PENDING",
-    "suggestedOrdinals": [
-      7,
+    "status": "PASS_WITH_MINOR_CORRECTION_APPLIED",
+    "evidence": "docs/operations/m1-s2-meta-b01-a-20261114/a1-cross-exam3.json",
+    "sampleOrdinals": [
+      13,
       18,
-      24
+      22
     ],
-    "difficultyBoundaryOrdinals": [
-      3,
-      6,
-      10,
-      16,
-      17,
-      19,
-      22,
-      23
+    "correctedOrdinals": [
+      22
     ]
   },
   "counts": {
@@ -3538,8 +3549,8 @@
     "CORRECT": 13,
     "GAP": 9,
     "PT_TPL_changedItems": 2,
-    "difficultyBucketChanged": 0,
-    "difficultyBoundaryPending": 1,
+    "difficultyBucketChanged": 1,
+    "difficultyBoundaryPending": 0,
     "fourSlotNewItems": 24,
     "levelChanged": 0
   },
@@ -3548,11 +3559,12 @@
     "fourSlotValidator": {
       "fail": 0,
       "warn": 10,
-      "quotes": 160,
+      "quotes": 162,
       "items": 24
     },
     "uidCount": 24,
     "uniqueUidCount": 24,
     "sourceContentUnchanged": true
-  }
+  },
+  "rootFinalCompatibilityAdjudication": "root가 register-difficulty5 reviewedCorrection 분기와 auto-register difficultyComplete를 직접 확인함. BORDERLINE_ACCEPTABLE은 해당 공식 분기에서 지원되므로 기존 정상 ACCEPTABLE을 보존하며 source 최종 인접경계 값은 root의 검증된 ACCEPTABLE 적용을 따른다. 최초 REVIEW만 지원한다는 전제는 폐기."
 }

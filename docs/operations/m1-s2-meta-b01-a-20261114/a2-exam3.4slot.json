@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
-  "sourceGitBlobSha": "9d635c26109d3c088e55bd0529884611457d0433",
+  "sourceGitBlobSha": "99cd522479988a1a968228e3d86cd26bfd1d5f3e",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "GPT_A2_54CB21AF3005",
@@ -1305,8 +1305,8 @@
         ],
         "goal": [
           {
-            "term": "개수",
-            "termId": 129,
+            "term": "직선",
+            "termId": 143,
             "src": "stem",
             "quote": "직선의 개수"
           },
@@ -1321,24 +1321,36 @@
             "termId": 144,
             "src": "stem",
             "quote": "선분의 개수"
+          },
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "직선의 개수"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a+b+c$의 값"
           }
         ],
         "method": [
+          {
+            "term": "정의",
+            "termId": 369,
+            "src": "solution",
+            "quote": "같은 선분을 두 번씩",
+            "evidenceType": "IMPLIED",
+            "justification": "직선은 같은 지지직선, 반직선은 시작점과 방향, 선분은 같은 두 끝점이라는 대상 동일성 정의로 중복을 구분한다."
+          },
           {
             "term": "열거",
             "termId": 294,
             "src": "solution",
             "quote": "$l,PA,PB,PC,PD$",
             "evidenceType": "IMPLIED",
-            "justification": "현재 문항의 기존 해설에서 이 부분이 열거을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
-          },
-          {
-            "term": "중복불허",
-            "termId": 375,
-            "src": "solution",
-            "quote": "같은 선분을 두 번씩",
-            "evidenceType": "IMPLIED",
-            "justification": "현재 문항의 기존 해설에서 이 부분이 중복불허을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            "justification": "일직선 위 대상과 외부 점 연결 대상을 나누어 실제 가능한 직선과 반직선을 빠짐없이 열거한다."
           }
         ],
         "condition": [
@@ -1549,7 +1561,18 @@
     ],
     "studentContentUnchanged": true,
     "sourceAnswersSolutionsReused": true,
-    "independentSampleReview": "PENDING_A1_OR_ROOT",
+    "independentSampleReview": "docs/operations/m1-s2-meta-b01-a-20261114/a1-cross-exam3.json",
     "warnPolicy": "단일 개념 문항은 억지 방법어로 채우지 않음"
+  },
+  "review": {
+    "status": "REVIEWED_WITH_INDEPENDENT_SAMPLE",
+    "reviewer": "GPT_ROOT_54CB21AF3005_A/A1",
+    "sampled": [
+      13,
+      18,
+      22
+    ],
+    "evidence": "docs/operations/m1-s2-meta-b01-a-20261114/a1-cross-exam3.json",
+    "sourceProtectedPayloadEqual": true
   }
 }
