@@ -61,12 +61,13 @@ window.questionBank = [
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
     "primaryMethod": "반직선의 시작점과 뻗는 방향을 비교한다.",
-    "decisiveStep": "시작점이 같고 같은 쪽으로 뻗는 반직선을 동일한 대상으로 판정한다."
+    "decisiveStep": "시작점이 같고 같은 쪽으로 뻗는 반직선을 동일한 대상으로 판정한다.",
+    "integrationReason": "반직선의 시작점과 방향 일치만 확인하는 현재 primary의 표준 풀이이므로 DIRECT를 NONE으로 고친다."
   },
   {
     "id": 2,
@@ -127,9 +128,11 @@ window.questionBank = [
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_STRAIGHT_ANGLE"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
@@ -138,7 +141,8 @@ window.questionBank = [
     "solutionImageCaption": "l∥m이므로 ∠x는 60°+40°=100°와 같고 ∠y는 40°의 이웃각 140°이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "평행선의 동위각을 옮기고 이웃각의 보각 관계를 적용한다.",
-    "decisiveStep": "주어진 각을 다른 교점으로 전달한 뒤 요구된 두 각의 차를 비교한다."
+    "decisiveStep": "주어진 각을 다른 교점으로 전달한 뒤 요구된 두 각의 차를 비교한다.",
+    "integrationReason": "평행선으로 각을 옮긴 결과에 평각의 180° 관계를 적용하여 두 각의 차를 구하므로 평각 CC와 SEQUENTIAL을 기록한다."
   },
   {
     "id": 3,
@@ -202,7 +206,7 @@ window.questionBank = [
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
@@ -210,8 +214,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: AD와 BC가 평행하고 점 A, B에서 직각인 사다리꼴 ABCD에 대각선 AC, BD가 점 O에서 만난다. AB⊥BC이므로 점 A에서 BC에 내린 수선의 발이 B임을 보여 준다. 수선 AB는 굵은 빨간 선으로 강조했다.",
     "solutionImageCaption": "AD∥BC이고 ∠B=90°이므로 점 A에서 BC에 내린 수선의 발은 B이다.",
     "solutionImageSize": "medium",
-    "primaryMethod": "같은 평면에서 두 직선의 교점 유무와 일치 여부를 구분한다.",
-    "decisiveStep": "그림에 제시된 직선 쌍을 교차·평행·일치라는 위치 관계로 판정한다."
+    "primaryMethod": "같은 평면에 표시된 직선의 평행·수직·교점과 수선의 발을 구분한다.",
+    "decisiveStep": "그림의 평행·직각 표시와 점의 위치로 직선 관계와 수선의 발 진술을 대조한다.",
+    "integrationReason": "표시된 평행·수직·교점·수선의 발을 판단하는 현재 위치 관계 primary의 정의 적용만 필요하므로 NONE으로 고친다."
   },
   {
     "id": 4,
@@ -274,7 +279,7 @@ window.questionBank = [
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
@@ -283,7 +288,8 @@ window.questionBank = [
     "solutionImageCaption": "같은 반지름의 호로 PC=PD=QA=QB이고 ∠AQB=∠CPD이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "컴퍼스의 같은 반지름과 현의 길이를 사용하여 각을 옮기는 작도 절차를 판단한다.",
-    "decisiveStep": "작도 순서와 각을 복사하기 위해 보존되는 선분 길이를 대조한다. 평행선 판정 결과보다 각 이동 작도가 핵심이다."
+    "decisiveStep": "작도 순서와 각을 복사하기 위해 보존되는 선분 길이를 대조한다. 평행선 판정 결과보다 각 이동 작도가 핵심이다.",
+    "integrationReason": "각 복사 작도로 같은 동위각을 확보한 뒤 평행 조건의 역을 적용하는 순서가 있어 SEQUENTIAL로 고치되 정확한 역정리 CC는 임의 지정하지 않는다."
   },
   {
     "id": 5,
@@ -344,12 +350,13 @@ window.questionBank = [
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
     "primaryMethod": "다각형의 꼭짓점 수와 대각선 수 사이의 관계를 적용한다.",
-    "decisiveStep": "한 꼭짓점에서 그을 수 있는 대각선 수와 전체 대각선 수를 중복 계수 여부로 구분한다."
+    "decisiveStep": "한 꼭짓점에서 그을 수 있는 대각선 수와 전체 대각선 수를 중복 계수 여부로 구분한다.",
+    "integrationReason": "꼭짓점당 대각선 수에서 변 수를 구하고 전체 대각선의 이중 계산을 나누는 과정은 다각형 대각선 primary의 표준 풀이이므로 NONE으로 고친다."
   },
   {
     "id": 6,
@@ -412,7 +419,7 @@ window.questionBank = [
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
@@ -421,7 +428,8 @@ window.questionBank = [
     "solutionImageCaption": "135°는 45°의 3배이므로 호의 길이도 3cm의 3배이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "같은 원에서 중심각과 호의 길이의 비례 관계를 적용한다.",
-    "decisiveStep": "전체 원의 둘레에서 주어진 중심각이 차지하는 비율로 호의 길이를 구한다."
+    "decisiveStep": "같은 원에서 두 호의 길이의 비를 대응하는 두 중심각의 비와 같게 놓는다.",
+    "integrationReason": "같은 원의 호 길이비와 중심각비를 직접 대응시키는 current primary의 비례식이므로 NONE으로 고친다."
   },
   {
     "id": 7,
@@ -483,7 +491,7 @@ window.questionBank = [
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
@@ -492,7 +500,8 @@ window.questionBank = [
     "solutionImageCaption": "BC=x, AB=2x이고 M, N이 중점이므로 MN=MB+BN이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "인접한 두 선분의 비와 중점의 반분 관계를 같은 기준 길이로 나타낸다.",
-    "decisiveStep": "두 중점 사이의 길이를 사이점 양쪽의 반쪽 선분의 합으로 표현한다."
+    "decisiveStep": "두 중점 사이의 길이를 사이점 양쪽의 반쪽 선분의 합으로 표현한다.",
+    "integrationReason": "주어진 선분비와 두 중점의 절반 길이를 합하는 과정은 이미 확정된 중점·비 primary의 표준 풀이이므로 NONE으로 고친다."
   },
   {
     "id": 8,
@@ -551,7 +560,7 @@ window.questionBank = [
     "runtimeMaterializationStatus": "RPM_PRIMARY_MIGRATION_GAP",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
@@ -562,7 +571,8 @@ window.questionBank = [
     "primaryMethod": "공간도형의 기준 모서리와 다른 모서리의 수직 교차 및 꼬인 위치를 구분한다.",
     "decisiveStep": "공통점·평행·같은 평면 여부로 모서리를 분류한 뒤 수직 교차와 꼬인 위치의 개수를 각각 센다.",
     "rpmSemanticStatus": "HOLD",
-    "metaNullReason": "RPM_PRIMARY_EXACT_LEAF_MISSING: 공간의 두 직선 관계를 직선-평면 관계 leaf로 대체하지 않는다."
+    "metaNullReason": "RPM_PRIMARY_EXACT_LEAF_MISSING: 공간의 두 직선 관계를 직선-평면 관계 leaf로 대체하지 않는다.",
+    "integrationReason": "기준 모서리에 대한 수직 교차와 꼬인 위치를 각각 세어 더하는 것은 확정된 모서리 관계 primary의 직접 판정이므로 SEQUENTIAL을 NONE으로 고친다."
   },
   {
     "id": 9,
@@ -625,7 +635,7 @@ window.questionBank = [
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
@@ -634,7 +644,8 @@ window.questionBank = [
     "solutionImageCaption": "보조 평행선으로 x=30°+t이고 t+y=75°이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "평행선 사이 꺾인 선의 각을 평행 보조선과 동위각·엇각으로 전달한다.",
-    "decisiveStep": "꺾인 점에서 각을 나누어 같은 방향의 각으로 옮긴 뒤 각의 합과 차를 연결한다."
+    "decisiveStep": "꺾인 점에서 각을 나누어 같은 방향의 각으로 옮긴 뒤 각의 합과 차를 연결한다.",
+    "integrationReason": "보조 평행선으로 꺾인 선의 방향각을 전달하고 중간 각을 소거하는 것은 확정된 평행선 꺾인 선 primary의 표준 풀이이므로 NONE으로 고친다."
   },
   {
     "id": 10,
@@ -687,9 +698,12 @@ window.questionBank = [
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "RPM_PRIMARY_MIGRATION_GAP",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRIANGLE_INEQUALITY",
+      "CC_TRIANGLE_ANGLE_SUM"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "CASE_BRANCH",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
@@ -700,7 +714,8 @@ window.questionBank = [
     "primaryMethod": "여러 변·각 조건에서 삼각형의 존재와 유일성을 비교한다.",
     "decisiveStep": "세 변의 성립 조건과 SAS·ASA 등 결정 조건을 함께 판정한다. 한 가지 작도 조건만의 leaf로 좁힐 수 없다.",
     "rpmSemanticStatus": "HOLD",
-    "metaNullReason": "RPM_MIXED_CONSTRUCTION_CRITERIA_LEAF_MISSING: 여러 작도 조건을 비교하는 문항을 한 변과 양 끝각 조건에 강제하지 않는다."
+    "metaNullReason": "RPM_MIXED_CONSTRUCTION_CRITERIA_LEAF_MISSING: 여러 작도 조건을 비교하는 문항을 한 변과 양 끝각 조건에 강제하지 않는다.",
+    "integrationReason": "자료의 조합마다 존재·SAS·SSA·ASA·세 각 조건을 나누어 검사하며 삼각부등식과 내각합이 각각 필요한 분기이므로 CASE_BRANCH와 두 CC를 기록한다."
   },
   {
     "id": 11,
@@ -762,13 +777,17 @@ window.questionBank = [
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "CASE_BRANCH",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
     "primaryMethod": "정수 길이의 변을 순서대로 놓고 삼각형 부등식으로 가능한 조합을 분류한다.",
-    "decisiveStep": "짧은 두 변의 합이 가장 긴 변보다 큰 경우를 중복 없이 센다. 유일한 작도 조건의 선택과 구별한다."
+    "decisiveStep": "짧은 두 변의 합이 가장 긴 변보다 큰 경우를 중복 없이 센다. 유일한 작도 조건의 선택과 구별한다.",
+    "integrationReason": "세 변의 순서를 고정하고 최소변에 따라 가능한 정수 조합을 나누므로 CASE_BRANCH이며 자연수·1cm 초과 제한을 두 공식 Condition으로 기록한다."
   },
   {
     "id": 12,
@@ -829,7 +848,9 @@ window.questionBank = [
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
@@ -840,7 +861,8 @@ window.questionBank = [
     "solutionImageCaption": "합동인 두 삼각형 ACE, DCB",
     "solutionImageSize": "medium",
     "primaryMethod": "두 정삼각형의 같은 변과 끼인각으로 보조 삼각형의 SAS 합동을 만든다.",
-    "decisiveStep": "합동 순서에 맞는 대응각·대응변을 적용하여 진술을 판정한다. 추가 합동 조건을 선택하는 유형과 구별한다."
+    "decisiveStep": "합동 순서에 맞는 대응각·대응변을 적용하여 진술을 판정한다. 추가 합동 조건을 선택하는 유형과 구별한다.",
+    "integrationReason": "정삼각형의 변·각 성질로 SAS 조건을 얻은 뒤 합동 대응을 판정하므로 SEQUENTIAL을 유지하고 정삼각형 성질 CC를 추가한다."
   },
   {
     "id": 13,
@@ -901,7 +923,9 @@ window.questionBank = [
     "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_SHARED_SIDE_EXTENSION_AUDIT",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_ANGLE_RELATIONS"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
@@ -912,7 +936,8 @@ window.questionBank = [
     "solutionImageCaption": "내각 a, b와 사각형 CDKL의 각 c, d, e",
     "solutionImageSize": "medium",
     "primaryMethod": "정다각형의 내각·외각과 공유 변 사이 빈 다각형의 내각합을 연결한다.",
-    "decisiveStep": "공유 변 끝점의 각과 연장선상의 보각을 이용해 빈 영역의 각을 정리한다."
+    "decisiveStep": "공유 변 끝점의 각과 연장선상의 보각을 이용해 빈 영역의 각을 정리한다.",
+    "integrationReason": "정다각형의 각을 구한 뒤 별도로 생긴 사각형의 내각합에 전달하므로 SEQUENTIAL을 유지하고 일반 도형의 각 관계 CC를 기록한다."
   },
   {
     "id": 14,
@@ -973,12 +998,13 @@ window.questionBank = [
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
     "primaryMethod": "정다각형의 한 외각에서 변의 개수를 정하고 내각의 합을 계산한다.",
-    "decisiveStep": "한 바퀴의 각을 외각으로 나누어 변 수를 확정한다."
+    "decisiveStep": "한 바퀴의 각을 외각으로 나누어 변 수를 확정한다.",
+    "integrationReason": "한 외각에서 변 수를 구한 뒤 내각합을 계산하는 것은 확정된 정다각형 각·변 수 primary의 표준 연결이므로 NONE으로 고친다."
   },
   {
     "id": 15,
@@ -1040,9 +1066,12 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINE_ANGLES",
+      "CC_ISOSCELES_TRIANGLE"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
@@ -1051,7 +1080,8 @@ window.questionBank = [
     "solutionImageCaption": "평행선과 이등변삼각형으로 구한 중심각의 관계",
     "solutionImageSize": "medium",
     "primaryMethod": "반지름과 평행선의 각 관계로 중심각을 정한 뒤 호의 길이와 중심각의 비례를 사용한다.",
-    "decisiveStep": "같은 원에서 호의 길이 비를 중심각 비로 연결한다."
+    "decisiveStep": "같은 원에서 호의 길이 비를 중심각 비로 연결한다.",
+    "integrationReason": "평행선과 이등변삼각형으로 중심각 관계를 만든 뒤 호 길이비에 대입하므로 두 보조 CC와 SEQUENTIAL을 기록한다."
   },
   {
     "id": 16,
@@ -1112,9 +1142,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
@@ -1123,7 +1155,8 @@ window.questionBank = [
     "solutionImageCaption": "이등변삼각형과 부채꼴 DOE의 중심각",
     "solutionImageSize": "medium",
     "primaryMethod": "같은 반지름과 이등변삼각형의 각 관계로 중심각을 정한 다음 부채꼴 넓이를 계산한다.",
-    "decisiveStep": "확정한 반지름과 중심각을 부채꼴 넓이 관계에 적용한다."
+    "decisiveStep": "확정한 반지름과 중심각을 부채꼴 넓이 관계에 적용한다.",
+    "integrationReason": "이등변삼각형의 각 관계로 중심각을 구한 뒤 부채꼴 넓이에 대입하므로 SEQUENTIAL과 이등변삼각형 CC를 기록한다."
   },
   {
     "id": 17,
@@ -1184,7 +1217,7 @@ window.questionBank = [
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
@@ -1193,7 +1226,8 @@ window.questionBank = [
     "solutionImageCaption": "직육면체의 모서리로 ①, ③, ④가 성립하지 않는 경우를 나타낸 그림이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "공간에서 직선·평면의 평행·수직·꼬인 위치를 구별하며 보편 명제를 판정한다.",
-    "decisiveStep": "방향만으로 수직이나 교점을 보장하지 못하는 반례를 구별한다."
+    "decisiveStep": "방향만으로 수직이나 교점을 보장하지 못하는 반례를 구별한다.",
+    "integrationReason": "공간의 평행·수직 보장 조건과 꼬인 위치 반례를 대조하는 것은 확정된 공간 관계 진술 primary 자체이므로 NONE으로 고친다."
   },
   {
     "id": 18,
@@ -1254,7 +1288,10 @@ window.questionBank = [
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_TRIANGLE_ANGLE_SUM"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
@@ -1265,7 +1302,8 @@ window.questionBank = [
     "solutionImageCaption": "합동인 두 삼각형 ACD, BCE",
     "solutionImageSize": "medium",
     "primaryMethod": "정삼각형의 같은 변과 끼인각으로 보조 삼각형의 SAS 합동을 얻고 대응각을 옮긴다.",
-    "decisiveStep": "합동으로 얻은 대응각을 각의 합 관계에 대입한다."
+    "decisiveStep": "합동으로 얻은 대응각을 각의 합 관계에 대입한다.",
+    "integrationReason": "정삼각형 성질로 SAS를 만들고 대응각을 삼각형 내각합에 적용하므로 SEQUENTIAL을 유지하고 두 실제 보조 CC를 기록한다."
   },
   {
     "id": 19,
@@ -1326,7 +1364,9 @@ window.questionBank = [
     "templateKey": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_VERTICAL_ANGLES"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
@@ -1337,7 +1377,8 @@ window.questionBank = [
     "solutionImageCaption": "교점 X와 보조선 XF로 사각형 BXDC와 두 삼각형 AXF, EXF의 각을 나누어 본다.",
     "solutionImageSize": "medium",
     "primaryMethod": "교차 도형을 삼각형과 다각형으로 나누고 공통 보조각을 이용해 표시각의 합을 정리한다.",
-    "decisiveStep": "맞꼭지각·한 점 둘레각·각 도형의 내각합을 연결한 부분합에서 공통 보조각을 소거한다."
+    "decisiveStep": "맞꼭지각·한 점 둘레각·각 도형의 내각합을 연결한 부분합에서 공통 보조각을 소거한다.",
+    "integrationReason": "맞꼭지각으로 두 부분의 보조각을 일치시킨 뒤 각합 식에서 소거하므로 SEQUENTIAL을 유지하고 맞꼭지각 CC를 기록한다."
   },
   {
     "id": 20,
@@ -1401,7 +1442,7 @@ window.questionBank = [
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
@@ -1410,7 +1451,8 @@ window.questionBank = [
     "solutionImageCaption": "끈이 울타리를 돌아 닿는 영역을 세 부분으로 나눈 그림이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "장애물 모서리를 돌아갈 때 남은 줄 길이를 각 부채꼴의 반지름으로 두어 이동 영역을 합한다.",
-    "decisiveStep": "모서리까지 사용된 길이를 빼서 각 부채꼴의 반지름과 넓이를 정한다."
+    "decisiveStep": "모서리까지 사용된 길이를 빼서 각 부채꼴의 반지름과 넓이를 정한다.",
+    "integrationReason": "모서리를 돌아간 남은 끈 길이를 반지름으로 부채꼴 영역을 더하는 과정은 기존 장애물 부채꼴 primary의 표준 풀이이므로 NONE으로 고친다."
   },
   {
     "id": 21,
@@ -1465,7 +1507,7 @@ window.questionBank = [
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
@@ -1474,7 +1516,8 @@ window.questionBank = [
     "solutionImageCaption": "점의 순서 A, M, B, N, C와 각 선분의 길이를 k로 나타낸 그림이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "한 직선 위 인접 선분의 비와 중점을 이용해 두 중점 사이의 길이를 표현한다.",
-    "decisiveStep": "중점에서 얻은 절반 길이들을 인접 선분의 합으로 연결한다."
+    "decisiveStep": "중점에서 얻은 절반 길이들을 인접 선분의 합으로 연결한다.",
+    "integrationReason": "인접 두 선분의 비와 중점 길이 합으로 목표 비를 구하는 것은 확정된 중점·선분비 primary의 직접 적용이므로 NONE으로 고친다."
   },
   {
     "id": 22,
@@ -1531,7 +1574,7 @@ window.questionBank = [
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DIRECT",
+    "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
@@ -1540,7 +1583,8 @@ window.questionBank = [
     "solutionImageCaption": "직선 AB 위의 네 각을 2x, x, y, 2y로 나타낸 그림이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "평각을 나누는 인접각의 등분 관계를 기준각의 배수로 표현한다.",
-    "decisiveStep": "인접각의 합이 평각이라는 관계로 목표 각들의 합을 정리한다."
+    "decisiveStep": "인접각의 합이 평각이라는 관계로 목표 각들의 합을 정리한다.",
+    "integrationReason": "이웃각의 주어진 비를 평각 180°와 연결하는 과정은 확정된 평각 분할비 primary의 직접 풀이이므로 NONE으로 고친다."
   },
   {
     "id": 23,
@@ -1596,7 +1640,10 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_TRIANGLE_AREA"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
@@ -1607,7 +1654,8 @@ window.questionBank = [
     "solutionImageCaption": "정삼각형 ABE와 두 부채꼴이 겹쳐 만든 색칠한 부분을 나타낸 그림이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "같은 반지름에서 중심각을 정하고 겹친 부채꼴과 삼각형의 넓이 및 호의 길이를 결합한다.",
-    "decisiveStep": "부채꼴의 넓이에서 겹치는 삼각형 부분을 처리하고 경계 호의 길이를 연결한다."
+    "decisiveStep": "부채꼴의 넓이에서 겹치는 삼각형 부분을 처리하고 경계 호의 길이를 연결한다.",
+    "integrationReason": "정삼각형에서 중심각을 정한 뒤 부채꼴 길이·넓이와 삼각형 넓이를 결합하므로 SEQUENTIAL을 유지하고 두 보조 CC를 기록한다."
   },
   {
     "id": 24,
@@ -1663,7 +1711,10 @@ window.questionBank = [
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_TRIANGLE_ANGLE_SUM"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
@@ -1674,6 +1725,7 @@ window.questionBank = [
     "solutionImageCaption": "합동인 삼각형 ABD와 BCE에서 대응하는 변과 각을 같은 표시로 나타낸 그림이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "정삼각형의 변·각과 주어진 같은 선분으로 보조 삼각형의 SAS 합동을 구성한다.",
-    "decisiveStep": "합동의 대응각을 옮겨 삼각형의 각 관계를 정리한다."
+    "decisiveStep": "합동의 대응각을 옮겨 삼각형의 각 관계를 정리한다.",
+    "integrationReason": "정삼각형 성질로 SAS 합동을 만든 뒤 대응각을 내각합에 적용하므로 SEQUENTIAL을 유지하고 정삼각형·삼각형 내각합 CC를 기록한다."
   }
 ];
