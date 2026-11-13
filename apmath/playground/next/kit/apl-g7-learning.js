@@ -629,7 +629,7 @@
       ui.goal.innerHTML = selected ? `<b>${A.esc(selected.title)}</b><span>${A.renderMath(selected.given)}</span>` : `<b>${A.esc(A.stripEmoji(this.lab.scene.title))}</b>`;
       ui.targets.replaceChildren(...plans.map((p, i) => { const b = button(p.label, () => { const row = this.lessonInfo(this.lab.index).find(x => x.legacyLabel === p.legacyLabel); this.select(this.lab.index, row?.choice || 0); }); b.setAttribute('aria-pressed', String(i === this.choice)); return b; }));
       ui.targets.hidden = plans.length < 2;
-      ui.play.textContent = this.mode === 'playing' ? '일시 정지' : this.mode === 'paused' ? (reduced() ? '다음 단계' : '이어 보기') : this.mode === 'ended' ? '다시 보기' : plans.length ? '짧은 풀이 보기' : '예제 해설 보기';
+      ui.play.textContent = this.mode === 'playing' ? '일시 정지' : this.mode === 'paused' ? (reduced() ? '한 단계 보기' : '이어 보기') : this.mode === 'ended' ? '다시 보기' : plans.length ? '짧은 풀이 보기' : '예제 해설 보기';
       if (this.mode === 'explore' && this.current?.proof) ui.play.textContent = '풀이로 돌아가기';
       ui.play.setAttribute('aria-label', ui.play.textContent);
       if (this.mode === 'legacy') ui.play.textContent = this.player.state === 'playing' ? '일시 정지' : this.player.state === 'paused' ? '이어 보기' : '예제 다시 보기';

@@ -331,11 +331,11 @@ try {
         assert.equal(await page.evaluate(() => !!document.fullscreenElement), false, 'selecting a lesson does not force fullscreen');
         await setProgress(page, 350);
         const beforeStep = await state(page);
-        await page.getByRole('button', { name: '다음 단계', exact: true }).click();
+        await page.locator('.g7-learning-progress').getByRole('button', { name: '다음 단계', exact: true }).click();
         const afterStep = await state(page);
         sameItem(afterStep, beforeStep, 'next step stays in the selected learning item');
         assert.ok(afterStep.elapsed > beforeStep.elapsed, 'next step advances the current proof');
-        await page.getByRole('button', { name: '이전 단계', exact: true }).click();
+        await page.locator('.g7-learning-progress').getByRole('button', { name: '이전 단계', exact: true }).click();
         assert.ok((await state(page)).elapsed < afterStep.elapsed, 'previous step rewinds the current proof');
         await page.locator('.g7-learning-range').focus();
         await page.locator('.g7-learning-range').press('End');
@@ -582,7 +582,7 @@ try {
       assert.equal(selectedReduced.elapsed, 0);
       await page.waitForTimeout(850);
       assert.equal((await state(page)).elapsed, 0, 'reduced motion preserves a student-controlled start');
-      await page.getByRole('button', { name: '다음 단계', exact: true }).click();
+      await page.locator('.g7-learning-progress').getByRole('button', { name: '다음 단계', exact: true }).click();
       const stepped = await state(page);
       sameItem(stepped, item);
       assert.ok(stepped.elapsed > 0, 'the selected proof remains usable under reduced motion');
