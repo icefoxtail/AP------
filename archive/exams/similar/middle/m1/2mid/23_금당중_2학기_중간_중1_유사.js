@@ -1242,7 +1242,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "points": 4,
-    "solution": "같은 원의 반지름이므로 $PA=PB$와 $QC=QD$이다. 두 원은 반지름이 같고 중심각도 같으므로 그 중심각에 대응하는 현의 길이도 같아 $AB=CD$이다. 그러나 현의 길이 $AB$가 반지름 $PA$와 같다고 항상 말할 수는 없다. 따라서 반드시 옳다고 할 수 없는 것은 ③이다.",
+    "solution": "같은 반지름이므로 $PA=QC$이고 $PB=QD$이다. 또한 중심각의 크기가 같으므로 $\\angle APB=\\angle CQD$이다. 따라서 두 변의 길이와 그 끼인각이 각각 같은 $\\triangle PAB$와 $\\triangle QCD$는 SAS 합동이고, 대응하는 현의 길이도 같아 $AB=CD$이다. 그러나 현 $AB$와 반지름 $PA$는 항상 같은 길이가 아니다. 따라서 반드시 옳다고 할 수 없는 것은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
@@ -1256,8 +1256,8 @@ window.questionBank = [
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-POSITION_RELATION",
       "conceptClusterKey": "POSITION_RELATION",
-      "primaryMethod": "같은 반지름·같은 중심각이면 현 AB=CD. 현 AB와 반지름 PA는 일반적으로 같지 않아 ③.",
-      "decisiveStep": "MD에 빠진 여섯 작도 단계와 그림 라벨을 복원하지 않았다. 원래 원의 반지름과 현의 길이를 구별하는 학습 목표는 유지하되, 이를 같은 반지름 원과 같은 중심각의 명시 조건으로 구성한 자체 완결형 문항으로 재구성했다.",
+      "primaryMethod": "같은 반지름과 같은 중심각을 끼인각으로 하는 두 삼각형의 SAS 합동으로 현의 길이를 비교한다.",
+      "decisiveStep": "SAS 합동으로 AB=CD를 얻고, 현 AB=반지름 PA는 일반적으로 보장되지 않음을 판별",
       "rpm": {
         "majorUnit": "기본 도형",
         "midUnit": "작도와 합동",
@@ -1930,4 +1930,3 @@ window.questionBank = [
     }
   }
 ];
-
