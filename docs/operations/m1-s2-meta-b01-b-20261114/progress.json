@@ -30,8 +30,8 @@
       "state": "REVIEW_COMPLETE_WITH_EXPLICIT_HOLDS",
       "completedQuestions": 24,
       "reviewArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/01-wangui-final-review.json",
-      "nextAction": "IMPORT_COMPACT_THEN_CI_AND_MAIN_MERGE",
-      "fourSlot": "VALIDATED_24_READY_FOR_COMPACT_IMPORT",
+      "nextAction": "REQUIRED_CI_THEN_MAIN_MERGE",
+      "fourSlot": "COMPACT_IMPORTED_24_INDEPENDENT_SAMPLE_3",
       "sourceBlob": "4d69b7bb178452d58e4daa9b9dd3b1d5340da654",
       "nativeRegistration": "HOLD_24_IDENTITY_SOURCE_FINGERPRINT"
     },
@@ -43,8 +43,8 @@
       "state": "REVIEW_COMPLETE_WITH_EXPLICIT_HOLDS",
       "completedQuestions": 24,
       "reviewArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/02-palma-final-review.json",
-      "nextAction": "IMPORT_COMPACT_THEN_CI_AND_MAIN_MERGE",
-      "fourSlot": "VALIDATED_24_READY_FOR_COMPACT_IMPORT",
+      "nextAction": "REQUIRED_CI_THEN_MAIN_MERGE",
+      "fourSlot": "COMPACT_IMPORTED_24_INDEPENDENT_SAMPLE_3",
       "sourceBlob": "1808ca0a61527e2e9892825ab82062c7f808b4ee",
       "nativeRegistration": "HOLD_24_IDENTITY_SOURCE_FINGERPRINT"
     },
@@ -56,8 +56,8 @@
       "state": "REVIEW_COMPLETE_WITH_EXPLICIT_HOLDS",
       "completedQuestions": 24,
       "reviewArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/03-wangun-mid-review.json",
-      "nextAction": "IMPORT_COMPACT_THEN_CI_AND_MAIN_MERGE",
-      "fourSlot": "VALIDATED_24_READY_FOR_COMPACT_IMPORT",
+      "nextAction": "REQUIRED_CI_THEN_MAIN_MERGE",
+      "fourSlot": "COMPACT_IMPORTED_24_INDEPENDENT_SAMPLE_3",
       "sourceBlob": "c831c3a8cb263f2be9f612317704ee12a906d311",
       "nativeRegistration": "HOLD_24_IDENTITY_SOURCE_FINGERPRINT"
     },
@@ -69,8 +69,8 @@
       "state": "REVIEW_COMPLETE_WITH_EXPLICIT_HOLDS",
       "completedQuestions": 24,
       "reviewArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/04-palma-mid-review.json",
-      "nextAction": "IMPORT_COMPACT_THEN_CI_AND_MAIN_MERGE",
-      "fourSlot": "VALIDATED_24_READY_FOR_COMPACT_IMPORT",
+      "nextAction": "REQUIRED_CI_THEN_MAIN_MERGE",
+      "fourSlot": "COMPACT_IMPORTED_24_INDEPENDENT_SAMPLE_3",
       "sourceBlob": "b527fb0d483650f384b89395b32804755e5fc002",
       "nativeRegistration": "HOLD_24_IDENTITY_SOURCE_FINGERPRINT"
     }
@@ -99,8 +99,22 @@
     "wangun-midFinalStudentPreservation": "PASS_24",
     "wangun-midFourSlotQuoteValidation": "FAIL_0",
     "palma-midFinalStudentPreservation": "PASS_24",
-    "palma-midFourSlotQuoteValidation": "FAIL_0"
+    "palma-midFourSlotQuoteValidation": "FAIL_0",
+    "studentPayloadPreserved": 96,
+    "canonicalUidJoinValid": 96,
+    "fourSlotQuoteFailures": 0,
+    "fourSlotWarnings": 27,
+    "independentFourSlotSamples": 12,
+    "difficultyAssigned": 95,
+    "difficultyVisualHold": 1,
+    "legacyLevelChanged": 0,
+    "scopedProductionConsumer": "96_ROWS_EXACT_BLOB_PENDING0",
+    "termPostingChecks": {
+      "positiveOccurrences": 585,
+      "postingSetQueries": 230
+    }
   },
-  "nextAction": "IMPORT_FINAL_COMPACT_AND_WAIT_FOR_REQUIRED_CI",
-  "batchPr": 1973
+  "nextAction": "REQUIRED_CI_THEN_MAIN_MERGE",
+  "batchPr": 1973,
+  "verificationArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/verification.json"
 }
