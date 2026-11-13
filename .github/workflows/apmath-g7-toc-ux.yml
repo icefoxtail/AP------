@@ -31,7 +31,6 @@ jobs:
       run:
         shell: bash
     env:
-      NODE_PATH: ${{ runner.temp }}/g7-toc-browser/node_modules
       G7_BASE_URL: http://127.0.0.1:8765/apmath/playground/next/labs/
       G7_REFERENCE_PLAYBACK: reuse
       G7_REFERENCE_EVIDENCE: >-
@@ -107,6 +106,8 @@ jobs:
 
       - name: Actual contents flow followed by all G7 mappings at four viewports
         timeout-minutes: 30
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-toc-browser/node_modules
         run: |
           set -euo pipefail
           python3 -m http.server 8765 --bind 127.0.0.1 --directory "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/g7-toc-evidence/http.log" 2>&1 &
