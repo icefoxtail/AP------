@@ -6,10 +6,13 @@
     typeof module === "object" && module.exports
       ? require("./archive2-canonical.js")
       : root.Archive2Canonical,
+    typeof module === "object" && module.exports
+      ? require("./rpm-middle-toc.js")
+      : root.ArchiveRpmMiddleToc,
   );
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.Archive2Core = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function (selector, canonical) {
+})(typeof globalThis !== "undefined" ? globalThis : this, function (selector, canonical, middleToc) {
   "use strict";
   const VERSION = "archive2-v1";
   const TAXONOMY_VERSION = "rpm-primary-v1.0";
@@ -1212,6 +1215,7 @@
   }
   return {
     Canonical: canonical,
+    MiddleToc: middleToc,
     VERSION,
     TAXONOMY_VERSION,
     UID,

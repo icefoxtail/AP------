@@ -15,6 +15,7 @@
   if (!archive2Core || !Array.isArray(archive2Core.HIGH_SEMANTIC_SUBJECTS)) {
     throw new Error('Archive2Core high-semantic subject registry is required.');
   }
+  const middleToc = archive2Core.MiddleToc;
 
   const COMMON_SCOPE = Object.freeze({
     periods: Object.freeze(['1mid', '1final', '2mid', '2final']),
@@ -282,19 +283,22 @@
     m1: Object.freeze({
       id: 'm1', grade: '중1', gradeLabel: '중1', title: '중1 단원별 기출',
       scope: Object.freeze({ ...COMMON_SCOPE, id: 'm1-through-2final-v1', sourcePrefix: 'original/middle/m1/' }),
-      courses: Object.freeze(['중1 수학']), units: MIDDLE1_UNITS,
+      courses: Object.freeze(['중1 수학']), units: middleToc ? Object.freeze(middleToc.units('중1')) : MIDDLE1_UNITS,
+      legacyUnits: MIDDLE1_UNITS,
       directKeyMap: Object.freeze({}), rawKeyMap: Object.freeze({}), overrides: MIDDLE_OVERRIDES
     }),
     m2: Object.freeze({
       id: 'm2', grade: '중2', gradeLabel: '중2', title: '중2 단원별 기출',
       scope: Object.freeze({ ...COMMON_SCOPE, id: 'm2-through-2final-v1', sourcePrefix: 'original/middle/m2/' }),
-      courses: Object.freeze(['중2 수학']), units: MIDDLE2_UNITS,
+      courses: Object.freeze(['중2 수학']), units: middleToc ? Object.freeze(middleToc.units('중2')) : MIDDLE2_UNITS,
+      legacyUnits: MIDDLE2_UNITS,
       directKeyMap: Object.freeze({}), rawKeyMap: Object.freeze({}), overrides: MIDDLE_OVERRIDES
     }),
     m3: Object.freeze({
       id: 'm3', grade: '중3', gradeLabel: '중3', title: '중3 단원별 기출',
       scope: Object.freeze({ ...COMMON_SCOPE, id: 'm3-through-2final-v1', sourcePrefix: 'original/middle/m3/' }),
-      courses: Object.freeze(['중3 수학']), units: MIDDLE3_UNITS,
+      courses: Object.freeze(['중3 수학']), units: middleToc ? Object.freeze(middleToc.units('중3')) : MIDDLE3_UNITS,
+      legacyUnits: MIDDLE3_UNITS,
       directKeyMap: Object.freeze({}), rawKeyMap: Object.freeze({}), overrides: MIDDLE_OVERRIDES
     })
   });
@@ -345,7 +349,29 @@
   function resolveUnitKeyAlias(profileOrId, value) {
     const key = String(value || '').trim();
     if (!key) return '';
+    const profile = getProfile(profileOrId);
+    if (middleToc && profile.id.startsWith('m')) return currentMiddleUnitKey(profile, key) || key;
     return isHighSemanticProfile(profileOrId) ? (LEGACY_HIGH_UNIT_ALIASES[key] || key) : key;
+  }
+  // A former combined unit can have several current children. Never pick the first child
+  // for an old URL, saved scope or question; one-to-one aliases alone are safe.
+  function currentMiddleUnitKey(profile, legacyKey) {
+    if (profile.units.some(unit => unit.key === legacyKey)) return legacyKey;
+    const matches = profile.units.filter(unit => unit.legacyUnitKeys?.includes(legacyKey));
+    return matches.length === 1 ? matches[0].key : '';
+  }
+  function resolveRpmParent(record, profileOrId) {
+    if (!middleToc) return { status: 'OUT_OF_SCOPE', parent: null };
+    const profile = profileOrId ? getProfile(profileOrId) : null;
+    const sourceFile = String(record?.sourceFile || record?.sourceArchiveFile || record?._sourceFile || '');
+    const fileGrade = sourceFile.match(/middle\/m([123])\//)?.[1];
+    const grade = profile?.grade || record?.sourceGrade || (fileGrade ? `중${fileGrade}` : '');
+    if (!/^중[123]$/.test(grade)) return { status: 'OUT_OF_SCOPE', parent: null };
+    const curriculumKey = String(record?.curriculumKey || record?.rpmCurriculum || record?.metaHintCurriculum ||
+      record?.metadataAssignmentEvidence?.rpmMetadata?.rpmCurriculum || record?.rpmPrimaryPath?.curriculum ||
+      archive2Core.middleCurriculumFromYear(grade, getExamYear(record)) || '').trim();
+    // This object is a read-only classification input. Source metadata and saved paths stay intact.
+    return middleToc.resolveRecord({ ...record, curriculumKey }, grade);
   }
   function highSemanticSubjectOptions() {
     return archive2Core.highSemanticSubjectOptions();
@@ -371,6 +397,35 @@
   }
 
   function classifyRecord(record, profileOrId = 'h1') {
+    const profile = getProfile(profileOrId);
+    if (!middleToc || !profile.id.startsWith('m')) return classifyLegacyRecord(record, profile);
+    const sourceFile = normalizePath(record && (record.sourceFile || record._sourceFile));
+    if (!sourceFile || !getQuestionNo(record)) return { status: 'invalid', reason: '원본 파일 또는 문항 번호 없음' };
+    const resolution = record.rpmParentResolution || resolveRpmParent(record, profile);
+    if (resolution.status === 'EXACT' && resolution.parent)
+      return { status: 'classified', unitKey: resolution.parent.unitKey, reason: 'rpm-current-parent', rpmParent: resolution.parent };
+    if (hasIdentityRule(record, profile)) {
+      const legacy = classifyLegacyRecord(record, { ...profile, units: profile.legacyUnits });
+      const unitKey = currentMiddleUnitKey(profile, legacy.unitKey);
+      return unitKey ? { ...legacy, unitKey } : { status: 'review', reason: '통합 단원의 세부 분류 확인 필요' };
+    }
+    const sourceUnit = String(record.standardUnit || '').replace(/\s+/g, '');
+    const exactUnits = profile.units.filter(unit => unit.name.replace(/\s+/g, '') === sourceUnit);
+    if (exactUnits.length === 1) return { status: 'classified', unitKey: exactUnits[0].key, reason: 'rpm-current-unit-label' };
+    const parentUnits = [...new Set(middleToc.parents(profile.grade)
+      .filter(parent => parent.L2.replace(/\s+/g, '') === sourceUnit).map(parent => parent.unitKey))];
+    if (parentUnits.length === 1) return { status: 'classified', unitKey: parentUnits[0], reason: 'rpm-current-chapter-label' };
+    const direct = currentMiddleUnitKey(profile, String(record.standardUnitKey || '').trim());
+    if (direct) return { status: 'classified', unitKey: direct, reason: 'middle-compatible-unit-key' };
+    // "수와 식" was one source unit but spans two current L1s. It needs a narrower path.
+    if (profile.id === 'm2' && sourceUnit === '수와식') return { status: 'review', reason: '통합 단원의 세부 분류 확인 필요' };
+    const legacy = classifyLegacyRecord(record, { ...profile, units: profile.legacyUnits });
+    if (legacy.status !== 'classified') return legacy;
+    const unitKey = currentMiddleUnitKey(profile, legacy.unitKey);
+    return unitKey ? { ...legacy, unitKey } : { status: 'review', reason: '통합 단원의 세부 분류 확인 필요' };
+  }
+
+  function classifyLegacyRecord(record, profileOrId = 'h1') {
     const profile = getProfile(profileOrId);
     const sourceFile = normalizePath(record && (record.sourceFile || record._sourceFile));
     const questionNo = getQuestionNo(record);
@@ -736,6 +791,22 @@
     return String(record && (record.problemTypeKey || record.problem_type_key) || '').trim();
   }
 
+  function selectionSubUnit(record) {
+    const resolution = record?.rpmParentResolution || resolveRpmParent(record);
+    if (resolution.status === 'EXACT' && resolution.parent) return {
+      key: resolution.parent.parentKey, label: resolution.parent.L2,
+      order: resolution.parent.order, parent: resolution.parent,
+    };
+    // Broad 2022 keys cannot stand in for a single official chapter. Historical groups keep
+    // their own key and an explicit label; raw metadata and saved source paths are unchanged.
+    if (resolution.status !== 'OUT_OF_SCOPE') return { key: '', label: '소단원 분류 확인 필요', order: 9999 };
+    const key = getSubUnitKey(record), label = getSubUnitLabel(record);
+    const file = String(record?.sourceFile || record?.sourceArchiveFile || '');
+    return { key, label: /middle\/m[123]\//.test(file) && label ? `이전 분류 · ${label}` : label, order: 9999 };
+  }
+  const getSelectionSubUnitKey = record => selectionSubUnit(record).key;
+  const getSelectionSubUnitLabel = record => selectionSubUnit(record).label;
+
   function getTemplateKey(record) {
     return String(record && (record.templateKey || record.template_key) || '').trim();
   }
@@ -937,14 +1008,15 @@
   function getSubUnitOptions(records) {
     const groups = new Map();
     for (const record of (Array.isArray(records) ? records : []).filter(isAutomaticSelectable)) {
-      const key = getSubUnitKey(record) || '__unclassified__';
-      const label = getSubUnitLabel(record) || '미분류 소단원';
-      const group = groups.get(key) || { key, label, count: 0, difficulty: { 하: 0, 중: 0, 상: 0, 미분류: 0 } };
+      const selectedSubunit = selectionSubUnit(record);
+      const key = selectedSubunit.key || '__unclassified__';
+      const label = selectedSubunit.label || '미분류 소단원';
+      const group = groups.get(key) || { key, label, order: selectedSubunit.order, count: 0, difficulty: { 하: 0, 중: 0, 상: 0, 미분류: 0 } };
       group.count += 1;
       group.difficulty[getDifficultyBucket(record)] += 1;
       groups.set(key, group);
     }
-    return [...groups.values()].sort((a, b) => b.count - a.count || compareText(a.label, b.label));
+    return [...groups.values()].sort((a, b) => a.order - b.order || b.count - a.count || compareText(a.label, b.label));
   }
 
   function filterUnitRecords(records, filters = {}) {
@@ -957,7 +1029,7 @@
     const difficultyBuckets = new Set((filters.difficultyBuckets || []).map(normalizeDifficulty));
     return source.filter(record => {
       if (filters.includeNonSelectable !== true && !isAutomaticSelectable(record)) return false;
-      const subUnitKey = getSubUnitKey(record) || '__unclassified__';
+      const subUnitKey = getSelectionSubUnitKey(record) || '__unclassified__';
       const problemTypeKey = getProblemTypeKey(record);
       const templateKey = getTemplateKey(record);
       const difficulty = getDifficultyBucket(record);
@@ -1839,6 +1911,7 @@
     getProfile,
     isHighSemanticProfile,
     resolveUnitKeyAlias,
+    resolveRpmParent,
     highSemanticSubjectOptions,
     highSemanticSubjectForCourseKey,
     normalizePath,
@@ -1880,6 +1953,8 @@
     getSubUnitKey,
     getSubUnitParentKey,
     getSubUnitLabel,
+    getSelectionSubUnitKey,
+    getSelectionSubUnitLabel,
     getProblemTypeKey,
     getProblemTypeLabel,
     getConceptLabel,

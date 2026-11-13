@@ -39,8 +39,20 @@ function entry(rec, extra = {}) {
 const indexOf = entries => {
   const views = Object.fromEntries(Unified.GRADES.map(grade => [grade, []]));
   for (const row of entries) for (const view of row.views) views[view].push(row);
-  return { views };
+  return { views, byUid: new Map(entries.map(row => [row.uid, row])) };
 };
+const middleSubject = Unified.subjectsForGrade('중1')[0].value;
+function middleParent(L2, order) {
+  const row = { unitKey: 'RPM22-M1-L1-06', grade: '중1', curriculumKey: '2022',
+    courseKey: 'M1-2', L1: '평면도형', L2, label: L2, order, orderInUnit: order };
+  const parentKey = JSON.stringify([row.curriculumKey, row.courseKey, row.L1, row.L2]);
+  return Object.freeze({ ...row, key: parentKey, parentKey });
+}
+function middleEntry(rec, parent, extra = {}) {
+  return entry(rec, { grade: '중1', subject: middleSubject, subjectLabel: '중1 수학',
+    unitKey: 'RPM22-M1-L1-06', unitLabel: '평면도형', unitOrder: 6, views: ['중1'], originalCurriculum: '2022',
+    rpmParent: parent, rpmParentStatus: parent ? 'EXACT' : 'LEGACY_PARENT_AMBIGUOUS', ...extra });
+}
 const many = (bucket, count, make = record) => Array.from({ length: count }, () => make(bucket));
 function shortUnitCatalog() {
   // The standard unit-test preset needs 4 bucket-1, 10 bucket-2 and 6 bucket-3 questions.
@@ -180,6 +192,76 @@ test('소단원 pools use only recorded sub-units, labelled in Korean, under the
   assert.equal(Quick.unitsFor(Quick.buildPools(indexOf(rows)), 'subunit-test', '고1', 'COMMON_MATH_1').length, 0);
 });
 
+test('middle current RPM subunits split one recorded broad group without changing original metadata', () => {
+  const parents = [middleParent('다각형', 1), middleParent('원과 부채꼴', 2)];
+  const rows = parents.flatMap(parent => [1, 2, 3].flatMap(bucket => many(bucket, bucket === 2 ? 6 : 3)
+    .map(rec => middleEntry(rec, parent))));
+  const meta = new Map(rows.map(row => [row.uid, Object.freeze({
+    subUnitKey: 'M1-05-CORE', subUnit: '평면도형 핵심 개념', rpmL3: 'preserved-concept',
+    rpmL4: 'preserved-type', approvalStatus: 'preserved-approval',
+  })]));
+  const before = JSON.stringify([rows, [...meta]]);
+  const pools = Quick.buildPools(indexOf(rows), { metaByUid: meta });
+  const subs = Quick.unitsFor(pools, 'subunit-test', '중1', middleSubject);
+  assert.deepEqual(subs.map(sub => sub.subUnitKey), parents.map(parent => parent.parentKey));
+  assert.deepEqual(subs.map(sub => sub.label), ['다각형', '원과 부채꼴']);
+  assert.ok(subs.every(sub => sub.total === 12 && Quick.evaluate([sub], Quick.PRODUCTS['subunit-test'], 'standard').ok));
+  for (const [i, sub] of subs.entries()) {
+    const expected = rows.filter(row => row.rpmParent === parents[i]).map(row => row.uid).sort();
+    assert.deepEqual(Quick.BUCKETS.flatMap(bucket => sub.buckets[bucket].map(rec => rec.questionUid)).sort(), expected);
+    assert.ok(Quick.BUCKETS.flatMap(bucket => sub.buckets[bucket]).every(rec => rows.some(row => row.record === rec)),
+      'pool records retain their original identity and fields');
+  }
+  assert.equal(Quick.unitsFor(pools, 'unit-test', '중1', middleSubject)[0].total, rows.length);
+  assert.equal(JSON.stringify([rows, [...meta]]), before);
+});
+
+test('middle ambiguous or missing RPM parents never use a broad legacy key as a current child', () => {
+  const parent = middleParent('다각형', 1);
+  const rows = [
+    middleEntry(record(2), null),
+    middleEntry(record(2), null, { rpmParentStatus: 'NOT_FOUND' }),
+    middleEntry(record(2), parent, { rpmParentStatus: 'LEGACY_PARENT_AMBIGUOUS' }),
+    middleEntry(record(2), { ...parent, grade: '중2' }),
+    middleEntry(record(2), { ...parent, L2: '' }),
+    middleEntry(record(2), null, { rpmParentStatus: 'OUT_OF_SCOPE' }),
+  ];
+  const meta = new Map(rows.map(row => [row.uid, { subUnitKey: 'M1-05-CORE', subUnit: '평면도형 핵심 개념' }]));
+  const before = JSON.stringify([rows, [...meta]]);
+  const pools = Quick.buildPools(indexOf(rows), { metaByUid: meta });
+  assert.deepEqual(Quick.unitsFor(pools, 'subunit-test', '중1', middleSubject), []);
+  assert.equal(Quick.unitsFor(pools, 'unit-test', '중1', middleSubject)[0].total, rows.length,
+    'unresolved subunits remain usable in the unchanged general unit pool');
+  assert.equal(JSON.stringify([rows, [...meta]]), before);
+});
+
+test('2015 middle subunits retain distinct legacy pools while high-school recorded pools stay unchanged', () => {
+  const parent = middleParent('다각형', 1);
+  const current = middleEntry(record(2), parent);
+  const legacy = middleEntry(record(2), null, { originalCurriculum: '2015', rpmParentStatus: 'OUT_OF_SCOPE' });
+  const ambiguous2015 = middleEntry(record(2), null, { originalCurriculum: '2015' });
+  const high = entry(record(2), { rpmParent: parent, rpmParentStatus: 'EXACT' });
+  const rows = [current, legacy, ambiguous2015, high];
+  // Matching key text and labels must not merge a legacy pool into the current parent.
+  const meta = new Map(rows.map(row => [row.uid, { subUnitKey: parent.parentKey, subUnit: '다각형' }]));
+  meta.set(high.uid, { subUnitKey: 'H22-C-01-A', subUnit: '다항식의 덧셈과 곱셈' });
+  const before = JSON.stringify([rows, [...meta]]);
+  const pools = Quick.buildPools(indexOf(rows), { metaByUid: meta });
+  const subs = Quick.unitsFor(pools, 'subunit-test', '중1', middleSubject);
+  assert.equal(subs.length, 2);
+  assert.equal(new Set(subs.map(sub => sub.key)).size, 2);
+  const old = subs.find(sub => sub.legacyCurriculum === '2015');
+  assert.equal(old.label, '이전 분류 · 다각형');
+  assert.deepEqual(old.buckets[2], [legacy.record]);
+  assert.deepEqual(subs.find(sub => !sub.legacyCurriculum).buckets[2], [current.record]);
+  assert.equal(Quick.unitsFor(pools, 'unit-test', '중1', middleSubject)[0].total, 3);
+  const highSub = Quick.unitsFor(pools, 'subunit-test', '고1', 'COMMON_MATH_1')[0];
+  assert.equal(highSub.subUnitKey, 'H22-C-01-A');
+  assert.equal(highSub.label, '다항식의 덧셈과 곱셈');
+  assert.deepEqual(highSub.buckets[2], [high.record]);
+  assert.equal(JSON.stringify([rows, [...meta]]), before);
+});
+
 test('real catalog: pools are built once, fast, from recorded difficulty and without curriculum suffixes', async () => {
   const data = await catalog();
   assert.ok(data.records.length >= 10000);
@@ -259,7 +341,8 @@ function harness(data, { quick = true } = {}) {
   const source = read('archive2-workspace.js');
   const startup = source.lastIndexOf('  (async () => {');
   vm.runInContext(source.slice(0, startup) + `
-    globalThis.workspaceTest = {state, render, renderQuick, quickState, routeUrl, readUrl, openQuickAssessment};
+    globalThis.workspaceTest = {state, render, renderQuick, quickState, routeUrl, readUrl, openQuickAssessment,
+      balancedQuickSelection, setQuickPoolCache: cache => { quickPoolCache = cache; }};
   })();`, ctx);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -276,6 +359,41 @@ function harness(data, { quick = true } = {}) {
   const change = async (el) => { for (const callback of events.get('change') || []) await callback({ target: el }); };
   return { w, ctx, nodes, click, change, published, opened, node };
 }
+
+test('middle balanced selection uses exact current L2 even without a recorded subunit row', () => {
+  const polygon = middleParent('다각형', 1), circle = middleParent('원과 부채꼴', 2);
+  const rows = [polygon, polygon, circle].map((parent, i) => middleEntry(record(2, {
+    sourceFile: `original/middle/m1/balance-${i}.js`, sourceGrade: '중1', effectiveBrowseGrade: '중1',
+    year: i < 2 ? 2026 : 2025, L1: '기존 평면도형', L2: '기존 넓은 소단원',
+  }), parent));
+  const meta = new Map(rows.slice(0, 2).map(row => [row.uid, { subUnitKey: 'M1-05-CORE', subUnit: '평면도형 핵심 개념' }]));
+  const index = indexOf(rows), pools = Quick.buildPools(index, { metaByUid: meta });
+  const before = JSON.stringify([rows, [...meta]]), paths = rows.map(row => core.generalPathKey(row.record));
+  const h = harness({ indexVersion: 'middle-rpm-balance', records: rows.map(row => row.record) });
+  h.w.setQuickPoolCache({ index, metaByUid: meta });
+  const selected = h.w.balancedQuickSelection(Quick.unitsFor(pools, 'unit-test', '중1', middleSubject), [[2, 2]]);
+  assert.equal(selected.length, 2);
+  assert.deepEqual(new Set(selected.map(rec => index.byUid.get(rec.questionUid).rpmParent.parentKey)),
+    new Set([polygon.parentKey, circle.parentKey]), 'the second choice covers the other exact L2 before repeating the newest one');
+  assert.equal(JSON.stringify([rows, [...meta]]), before);
+  assert.deepEqual(rows.map(row => core.generalPathKey(row.record)), paths, 'request paths remain the original paths');
+});
+
+test('middle balanced selection keeps a 2015 legacy group distinct from an identically named current parent', () => {
+  const parent = middleParent('다각형', 1);
+  const rows = [0, 1, 2].map(i => middleEntry(record(2, {
+    sourceFile: `original/middle/m1/legacy-balance-${i}.js`, sourceGrade: '중1', effectiveBrowseGrade: '중1',
+    year: i < 2 ? 2026 : 2025, L2: '기존 소단원',
+  }), i < 2 ? parent : null, i < 2 ? {} : { originalCurriculum: '2015', rpmParentStatus: 'OUT_OF_SCOPE' }));
+  const meta = new Map(rows.map(row => [row.uid, { subUnitKey: parent.parentKey, subUnit: '다각형' }]));
+  const index = indexOf(rows), pools = Quick.buildPools(index, { metaByUid: meta });
+  const h = harness({ indexVersion: 'middle-rpm-legacy-balance', records: rows.map(row => row.record) });
+  h.w.setQuickPoolCache({ index, metaByUid: meta });
+  const selected = h.w.balancedQuickSelection(Quick.unitsFor(pools, 'unit-test', '중1', middleSubject), [[2, 2]]);
+  assert.equal(selected.length, 2);
+  assert.ok(selected.includes(rows[2].record), 'the legacy group remains available without merging into the exact current parent');
+  assert.equal(selected.filter(rec => rec === rows[0].record || rec === rows[1].record).length, 1);
+});
 
 test('screens: each product shows unified units, no curriculum suffix, ready cards and bundle controls', async () => {
   const data = await catalog();

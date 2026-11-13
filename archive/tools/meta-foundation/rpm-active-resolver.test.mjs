@@ -275,6 +275,75 @@ test('M1/M2/M3 RPM semantic FINAL is independent of legacy projection gaps', () 
   }
 });
 
+test('effective 2022 middle parents validate through the same locked leaf and preserve its base storage and projection status', () => {
+  const middle3 = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json'), 'utf8'));
+  const cases = [
+    [middle2RowFor('M2-RPM-168'), '일차함수와 그 그래프(2)'],
+    [middle3.records.find(row => row.id === 'M3-RPM-095'), '무리수와 실수'],
+    [middle3.records.find(row => row.id === 'M3-RPM-165'), '원주각의 활용'],
+  ];
+  for (const [row, effectiveL2] of cases) {
+    const input = makeInput(row);
+    const grade = row.scope.slice(0, 2);
+    input.curriculumContext.grade = grade;
+    input.sourceIdentity.sourceArchiveFile = `original/middle/${grade.toLowerCase()}/1mid/fixture.js`;
+    input.sourceIdentity.questionUid = questionUidForSource(input.sourceIdentity.sourceArchiveFile, 1);
+    const base = resolveMetaRoute(input, { repoRoot: root, registry });
+    assert.equal(base.semanticStatus, 'FINAL');
+    assert.equal(base.effectivePath, undefined);
+    assert.equal(base.authorityRefs.some(ref => ref.role === 'RPM_EFFECTIVE_PARENT_REFINEMENT'), false);
+    const originalPath = structuredClone(input.semanticDecision.rpmPath);
+    input.semanticDecision.rpmPath.midUnit = effectiveL2;
+    const refined = resolveMetaRoute(input, { repoRoot: root, registry });
+    assert.equal(refined.semanticStatus, 'FINAL', row.id);
+    assert.deepEqual(refined.rpmPath, originalPath);
+    assert.equal(refined.rpmSemantic.midUnit, originalPath.midUnit);
+    assert.equal(refined.rpmSemantic.rpmRecordSha, base.rpmSemantic.rpmRecordSha);
+    assert.equal(refined.crosswalkRecordId, base.crosswalkRecordId);
+    assert.equal(refined.projectionStatus, base.projectionStatus);
+    assert.equal(refined.advancedMetaEligible, base.advancedMetaEligible);
+    assert.equal(refined.semanticInputBundle.semanticDecision.rpmPath.midUnit, effectiveL2);
+    assert.equal(refined.effectivePath.L2, effectiveL2);
+    assert.equal(refined.effectiveParentKey, JSON.stringify(['2022', row.scope, row.rpmPath.majorUnit, effectiveL2]));
+    assert.equal(refined.authorityRefs.filter(ref => ref.role === 'RPM_EFFECTIVE_PARENT_REFINEMENT').length, 1);
+    assert.equal(validateResolverEvidence(input, refined, { repoRoot: root, registry }).status, 'PASS');
+    const tampered = structuredClone(refined);
+    tampered.effectivePath.L2 = 'unapproved parent';
+    assert.notEqual(validateResolverEvidence(input, tampered, { repoRoot: root, registry }).status, 'PASS');
+  }
+});
+
+test('effective parent membership requires the exact complete leaf and a matching base authority SHA', t => {
+  const row = middle2RowFor('M2-RPM-168');
+  const input = makeInput(row);
+  input.curriculumContext.grade = 'M2';
+  input.sourceIdentity.sourceArchiveFile = 'original/middle/m2/1mid/fixture.js';
+  input.sourceIdentity.questionUid = questionUidForSource(input.sourceIdentity.sourceArchiveFile, 1);
+  input.semanticDecision.rpmPath.midUnit = '일차함수와 그 그래프(1)';
+  assert.equal(resolveMetaRoute(input, { repoRoot: root, registry }).disposition, 'TRUE_META_HOLD');
+  input.semanticDecision.rpmPath.midUnit = '일차함수와 그 그래프(2)';
+  const full = resolveMetaRoute(input, { repoRoot: root, registry });
+  assert.equal(full.semanticStatus, 'FINAL');
+  const missingLeaf = structuredClone(input);
+  missingLeaf.semanticDecision.rpmPath.l4 = '';
+  assert.equal(resolveMetaRoute(missingLeaf, { repoRoot: root, registry }).disposition, 'TRUE_META_HOLD');
+
+  const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'rpm-parent-authority-test-'));
+  t.after(() => fs.rmSync(fixtureRoot, { recursive: true, force: true }));
+  for (const { path: relative } of full.authorityRefs) {
+    const target = path.join(fixtureRoot, relative);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.copyFileSync(path.join(root, relative), target);
+  }
+  const authorityFile = path.join(fixtureRoot, 'archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json');
+  const authority = JSON.parse(fs.readFileSync(authorityFile, 'utf8'));
+  authority.baseAuthority.sha256 = '0'.repeat(64);
+  fs.writeFileSync(authorityFile, JSON.stringify(authority));
+  const refused = resolveMetaRoute(input, { repoRoot: fixtureRoot, registry });
+  assert.equal(refused.disposition, 'TRUE_META_HOLD');
+  assert.equal(refused.reasonCode, 'RPM_PRIMARY_PATH_NOT_FOUND');
+});
+
 test('an appended geometry mapping can promote its exact RPM-only row with an explicit decision', t => {
   const crosswalkFile = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json';
   const doc = JSON.parse(fs.readFileSync(path.join(root, crosswalkFile), 'utf8'));
