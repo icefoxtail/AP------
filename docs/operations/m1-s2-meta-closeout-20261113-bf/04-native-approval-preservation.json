@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "native-registration-provenance-repair-review-v1",
+  "owner": "GPT_ROOT_BF50408FB63B",
+  "baselineMain": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+  "problem": "An older AutoMeta cursor can reinterpret changed source metadata after the reviewed lane registered exactly those bytes, replacing independent approval or ignoring native parent evidence.",
+  "scope": "Reuse only an already materialized native v2 FINAL_QA/REVIEW2 record; no approval or metadata value is created by the reuse branch.",
+  "requiredProof": [
+    "current source raw SHA256 and Git blob and complete exam denominator",
+    "same current metadata row and exact UID/ordinal as the applied native receipt",
+    "same runtime record and ACTIVE runtime document",
+    "same current identity and body/content fingerprints",
+    "same source-declared semantic fields",
+    "real SHA-bound approval evidence",
+    "ACTIVE PT/TPL and exact curriculum/course/unit/subunit binding",
+    "unchanged student payload from the prior AutoMeta source"
+  ],
+  "failureBehavior": "Missing, stale, inactive, ambiguous or altered proof retains the existing AutoMeta behavior.",
+  "tests": {
+    "command": "node --test tests/archive-main-merge-meta.test.mjs",
+    "passed": 45,
+    "failed": 0,
+    "provenance": "Existing suite plus targeted positive/negative receipt fixtures; not a new mathematical QA result."
+  },
+  "independentPeerReview": {
+    "artifactSha256": "99725cb597fc3e5c934ac209950b767355c197d9e22cfc3311bb39bb8384389f",
+    "finding": "Require ACTIVE on the runtime document, not only an identical runtime row.",
+    "disposition": "Fixed and covered by a negative case."
+  },
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "sha256": "467dc2ac10bf4024e882a335ee6f77aafb45f4fd253190ca593e6b162cb89528"
+    },
+    {
+      "path": "tests/archive-main-merge-meta.test.mjs",
+      "sha256": "80d781e7e94539092bf5c7a11639db22e97cad91c0192f179092f32a657eef16"
+    }
+  ],
+  "productionRegistration": "NOT_RUN",
+  "mainIntegration": "NOT_RUN",
+  "actualConsumerValidation": "NOT_RUN"
+}
