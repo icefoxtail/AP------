@@ -35,12 +35,82 @@
         ],
         "args": {
           "dx": {
-            "kind": "integer",
-            "value": "1"
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
           },
           "dy": {
-            "kind": "integer",
-            "value": "0"
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "neg",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "6"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
           }
         },
         "outputType": "POINT",
@@ -48,328 +118,792 @@
       },
       {
         "id": "B",
-        "op": "POLAR_POINT",
+        "op": "TRANSLATE_POINT",
         "inputs": [
-          "C",
-          "G"
+          "C"
         ],
         "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
+          "dx": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "neg",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "6"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
           },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "120"
-          },
-          "turn": "CCW"
+          "dy": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "D",
-        "op": "POLAR_POINT",
+        "op": "TRANSLATE_POINT",
         "inputs": [
-          "C",
-          "G"
+          "C"
         ],
         "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
+          "dx": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "neg",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "6"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
           },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "90"
-          },
-          "turn": "CW"
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "6"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              }
+            ]
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "A",
-        "op": "POLAR_POINT",
+        "op": "TRANSLATE_POINT",
         "inputs": [
-          "B",
           "C"
         ],
         "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "6"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              }
+            ]
           },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "150"
-          },
-          "turn": "CW"
+          "dy": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "H",
-        "op": "POLAR_POINT",
+        "op": "TRANSLATE_POINT",
         "inputs": [
-          "G",
           "C"
         ],
         "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
+          "dx": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
           },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "120"
-          },
-          "turn": "CW"
+          "dy": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "neg",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "6"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "I",
-        "op": "POLAR_POINT",
+        "op": "TRANSLATE_POINT",
         "inputs": [
-          "H",
-          "G"
+          "C"
         ],
         "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
           },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "240"
-          },
-          "turn": "CCW"
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "J",
-        "op": "POLAR_POINT",
+        "op": "TRANSLATE_POINT",
         "inputs": [
-          "I",
-          "H"
+          "C"
         ],
         "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
+          "dx": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "neg",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "6"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
           },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "120"
-          },
-          "turn": "CW"
+          "dy": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "F",
-        "op": "VECTOR_SUM_POINT",
+        "op": "TRANSLATE_POINT",
         "inputs": [
-          "C",
-          "D",
-          "G"
+          "C"
         ],
-        "args": {},
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "E",
-        "op": "POLAR_POINT",
+        "op": "TRANSLATE_POINT",
         "inputs": [
-          "D",
           "C"
         ],
         "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "6"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              }
+            ]
           },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "150"
-          },
-          "turn": "CCW"
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "2"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "6"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              }
+            ]
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "N1",
-        "op": "POLAR_POINT",
+        "op": "TRANSLATE_POINT",
         "inputs": [
-          "E",
-          "D"
+          "C"
         ],
         "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "6"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
           },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "150"
-          },
-          "turn": "CCW"
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "6"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
-      }
-    ],
-    "conditionAudits": [
-      {
-        "id": "len1",
-        "kind": "DISTANCE_EQUALS",
-        "refs": [
-          "A",
-          "B"
-        ],
-        "expected": {
-          "kind": "integer",
-          "value": "1"
-        },
-        "sourceConditionId": "c1"
-      },
-      {
-        "id": "len2",
-        "kind": "DISTANCE_EQUALS",
-        "refs": [
-          "B",
-          "C"
-        ],
-        "expected": {
-          "kind": "integer",
-          "value": "1"
-        },
-        "sourceConditionId": "c1"
-      },
-      {
-        "id": "len3",
-        "kind": "DISTANCE_EQUALS",
-        "refs": [
-          "C",
-          "D"
-        ],
-        "expected": {
-          "kind": "integer",
-          "value": "1"
-        },
-        "sourceConditionId": "c1"
-      },
-      {
-        "id": "len4",
-        "kind": "DISTANCE_EQUALS",
-        "refs": [
-          "D",
-          "E"
-        ],
-        "expected": {
-          "kind": "integer",
-          "value": "1"
-        },
-        "sourceConditionId": "c1"
-      },
-      {
-        "id": "len5",
-        "kind": "DISTANCE_EQUALS",
-        "refs": [
-          "C",
-          "G"
-        ],
-        "expected": {
-          "kind": "integer",
-          "value": "1"
-        },
-        "sourceConditionId": "c1"
-      },
-      {
-        "id": "len6",
-        "kind": "DISTANCE_EQUALS",
-        "refs": [
-          "G",
-          "H"
-        ],
-        "expected": {
-          "kind": "integer",
-          "value": "1"
-        },
-        "sourceConditionId": "c1"
-      },
-      {
-        "id": "len7",
-        "kind": "DISTANCE_EQUALS",
-        "refs": [
-          "H",
-          "I"
-        ],
-        "expected": {
-          "kind": "integer",
-          "value": "1"
-        },
-        "sourceConditionId": "c1"
-      },
-      {
-        "id": "len8",
-        "kind": "DISTANCE_EQUALS",
-        "refs": [
-          "I",
-          "J"
-        ],
-        "expected": {
-          "kind": "integer",
-          "value": "1"
-        },
-        "sourceConditionId": "c1"
-      },
-      {
-        "id": "len9",
-        "kind": "DISTANCE_EQUALS",
-        "refs": [
-          "J",
-          "B"
-        ],
-        "expected": {
-          "kind": "integer",
-          "value": "1"
-        },
-        "sourceConditionId": "c1"
-      },
-      {
-        "id": "len10",
-        "kind": "DISTANCE_EQUALS",
-        "refs": [
-          "D",
-          "F"
-        ],
-        "expected": {
-          "kind": "integer",
-          "value": "1"
-        },
-        "sourceConditionId": "c1"
-      },
-      {
-        "id": "len11",
-        "kind": "DISTANCE_EQUALS",
-        "refs": [
-          "F",
-          "G"
-        ],
-        "expected": {
-          "kind": "integer",
-          "value": "1"
-        },
-        "sourceConditionId": "c1"
       }
     ]
   },

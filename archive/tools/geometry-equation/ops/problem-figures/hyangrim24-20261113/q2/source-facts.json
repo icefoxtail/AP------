@@ -1,11 +1,12 @@
 {
   "ordinal": 2,
   "source_image": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q2.png",
-  "source_review": "Viewed q2 PNG: two diagonal straight lines cross, with 110° above the crossing and a below it.",
+  "source_review": "Viewed the original q2 PNG and PDF page 1: two complete diagonal straight lines cross at O; the upper angle is 110° and the vertically opposite lower angle is labeled a. The run-07 rendered image showed only the two left rays, confirming a display-segment topology defect.",
   "allowed_marks": [
     "two crossing lines",
     "110° at the upper angle",
-    "a at the vertically opposite lower angle"
+    "a at the vertically opposite lower angle",
+    "four connected ray segments meeting at the hidden intersection; no endpoint markers"
   ],
   "forbidden_solution_elements": [
     "a numerical value for a",
@@ -24,17 +25,23 @@
     ],
     "source_condition_residuals": [
       {
-        "condition": "upper marked angle",
+        "condition": "two complete straight lines cross at O",
+        "status": "PASS",
+        "residual": "four exact ray segments meet at shared O"
+      },
+      {
+        "condition": "upper angle",
         "expected": "110°",
         "observed": "110°",
         "residual": "0°"
       },
       {
-        "condition": "opposite marked angle a shares the same vertical-opposite geometry",
-        "expected": "same size as upper angle",
-        "observed": "110° geometric measure, label remains a",
+        "condition": "opposite lower angle labeled a",
+        "expected": "a",
+        "observed": "a (geometric measure is the same 110°; value not shown)",
         "residual": "0°"
       }
-    ]
+    ],
+    "display_topology": "Each straight line is represented by two displayed segments with exact shared endpoint O: UL–O and O–LR; LL–O and O–UR. This uses the documented displaySegments two-point refs contract; no additional mathematical points or angle conditions were added."
   }
 }

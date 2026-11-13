@@ -1,0 +1,245 @@
+{
+  "schemaVersion": "FROZEN_DEFAULT_RENDERED_LAYOUT_BASELINE_v1",
+  "provenance": {
+    "commit": "2180ce315e014ba2bafa6813ced409091acee504",
+    "modulePath": "archive/tools/geometry-equation/verify-rendered-layout.mjs",
+    "moduleSha256": "bf0f61545027b1ab217fb2773407ac45b1e24fd40b101995a707e5477998c52c",
+    "collectorBodySha256": "9076d80dad9324b4b0baf749cf751da59f8590192b932ae1462a02007443207e",
+    "generation": "One-time execution of the immutable baseline; runtime tests use only this frozen fixture."
+  },
+  "cases": [
+    {
+      "name": "clear",
+      "capture": {
+        "runtime": "playwright-chromium",
+        "synthetic": false,
+        "publicationProfile": "geometry-publication-v1",
+        "fontStatus": "loaded",
+        "svg": {
+          "x": 0,
+          "y": 0,
+          "width": 384,
+          "height": 384
+        },
+        "viewBox": {
+          "width": 384,
+          "height": 384
+        },
+        "safeMargin": 32,
+        "labels": [
+          {
+            "id": "A",
+            "kind": "POINT_NAME",
+            "priority": 1,
+            "baseFontPx": 20,
+            "effectiveFontPx": 13,
+            "client": {
+              "x": 70,
+              "y": 70,
+              "width": 12,
+              "height": 16
+            },
+            "bbox": {
+              "width": 12,
+              "height": 16
+            },
+            "missingGlyphCount": 0
+          }
+        ],
+        "geometry": []
+      },
+      "expectedJson": "{\"status\":\"PASS\",\"HARD_RENDERED_COLLISION\":0,\"CLIPPING\":0,\"tickLabelEvidence\":[],\"tickKnockoutEvidence\":[],\"labelCollisionCount\":0,\"criticalCollisionCount\":0,\"observedLabelCollisionCount\":0,\"observedCriticalCollisionCount\":0,\"clippedTextCount\":0,\"overflowCount\":0,\"missingGlyphCount\":0,\"errors\":[],\"labelMeasurements\":[{\"id\":\"A\",\"kind\":\"POINT_NAME\",\"finalViewportCssFontPx\":13,\"baseFontPx\":20,\"client\":{\"x\":70,\"y\":70,\"width\":12,\"height\":16},\"bbox\":{\"width\":12,\"height\":16}}],\"measurements\":{\"A\":[14,18]}}"
+    },
+    {
+      "name": "font-below-floor",
+      "capture": {
+        "runtime": "playwright-chromium",
+        "synthetic": false,
+        "publicationProfile": "geometry-publication-v1",
+        "fontStatus": "loaded",
+        "svg": {
+          "x": 0,
+          "y": 0,
+          "width": 384,
+          "height": 384
+        },
+        "viewBox": {
+          "width": 384,
+          "height": 384
+        },
+        "safeMargin": 32,
+        "labels": [
+          {
+            "id": "A",
+            "kind": "POINT_NAME",
+            "priority": 1,
+            "baseFontPx": 20,
+            "effectiveFontPx": 8,
+            "client": {
+              "x": 70,
+              "y": 70,
+              "width": 12,
+              "height": 16
+            },
+            "bbox": {
+              "width": 12,
+              "height": 16
+            },
+            "missingGlyphCount": 0
+          }
+        ],
+        "geometry": []
+      },
+      "expectedJson": "{\"status\":\"FAIL\",\"HARD_RENDERED_COLLISION\":0,\"CLIPPING\":0,\"tickLabelEvidence\":[],\"tickKnockoutEvidence\":[],\"labelCollisionCount\":0,\"criticalCollisionCount\":0,\"observedLabelCollisionCount\":0,\"observedCriticalCollisionCount\":0,\"clippedTextCount\":0,\"overflowCount\":0,\"missingGlyphCount\":0,\"errors\":[\"PUBLICATION_FONT_BELOW_11_CSS_PX:A\"],\"labelMeasurements\":[{\"id\":\"A\",\"kind\":\"POINT_NAME\",\"finalViewportCssFontPx\":8,\"baseFontPx\":20,\"client\":{\"x\":70,\"y\":70,\"width\":12,\"height\":16},\"bbox\":{\"width\":12,\"height\":16}}],\"measurements\":{\"A\":[14,18]}}"
+    },
+    {
+      "name": "clipped",
+      "capture": {
+        "runtime": "playwright-chromium",
+        "synthetic": false,
+        "publicationProfile": "geometry-publication-v1",
+        "fontStatus": "loaded",
+        "svg": {
+          "x": 0,
+          "y": 0,
+          "width": 384,
+          "height": 384
+        },
+        "viewBox": {
+          "width": 384,
+          "height": 384
+        },
+        "safeMargin": 32,
+        "labels": [
+          {
+            "id": "A",
+            "kind": "POINT_NAME",
+            "priority": 1,
+            "baseFontPx": 20,
+            "effectiveFontPx": 13,
+            "client": {
+              "x": 1,
+              "y": 70,
+              "width": 12,
+              "height": 16
+            },
+            "bbox": {
+              "width": 12,
+              "height": 16
+            },
+            "missingGlyphCount": 0
+          }
+        ],
+        "geometry": []
+      },
+      "expectedJson": "{\"status\":\"FAIL\",\"HARD_RENDERED_COLLISION\":0,\"CLIPPING\":1,\"tickLabelEvidence\":[],\"tickKnockoutEvidence\":[],\"labelCollisionCount\":0,\"criticalCollisionCount\":0,\"observedLabelCollisionCount\":0,\"observedCriticalCollisionCount\":0,\"clippedTextCount\":1,\"overflowCount\":0,\"missingGlyphCount\":0,\"errors\":[\"TEXT_CLIPPED:A\"],\"labelMeasurements\":[{\"id\":\"A\",\"kind\":\"POINT_NAME\",\"finalViewportCssFontPx\":13,\"baseFontPx\":20,\"client\":{\"x\":1,\"y\":70,\"width\":12,\"height\":16},\"bbox\":{\"width\":12,\"height\":16}}],\"measurements\":{\"A\":[14,18]}}"
+    },
+    {
+      "name": "label-collision",
+      "capture": {
+        "runtime": "playwright-chromium",
+        "synthetic": false,
+        "publicationProfile": "geometry-publication-v1",
+        "fontStatus": "loaded",
+        "svg": {
+          "x": 0,
+          "y": 0,
+          "width": 384,
+          "height": 384
+        },
+        "viewBox": {
+          "width": 384,
+          "height": 384
+        },
+        "safeMargin": 32,
+        "labels": [
+          {
+            "id": "A",
+            "kind": "POINT_NAME",
+            "priority": 1,
+            "baseFontPx": 20,
+            "effectiveFontPx": 13,
+            "client": {
+              "x": 70,
+              "y": 70,
+              "width": 12,
+              "height": 16
+            },
+            "bbox": {
+              "width": 12,
+              "height": 16
+            },
+            "missingGlyphCount": 0
+          },
+          {
+            "id": "B",
+            "kind": "POINT_NAME",
+            "priority": 1,
+            "baseFontPx": 20,
+            "effectiveFontPx": 13,
+            "client": {
+              "x": 70,
+              "y": 70,
+              "width": 12,
+              "height": 16
+            },
+            "bbox": {
+              "width": 12,
+              "height": 16
+            },
+            "missingGlyphCount": 0
+          }
+        ],
+        "geometry": []
+      },
+      "expectedJson": "{\"status\":\"FAIL\",\"HARD_RENDERED_COLLISION\":1,\"CLIPPING\":0,\"tickLabelEvidence\":[],\"tickKnockoutEvidence\":[],\"labelCollisionCount\":1,\"criticalCollisionCount\":1,\"observedLabelCollisionCount\":0,\"observedCriticalCollisionCount\":0,\"clippedTextCount\":0,\"overflowCount\":0,\"missingGlyphCount\":0,\"errors\":[\"LABEL_OVERLAP:A:B\"],\"labelMeasurements\":[{\"id\":\"A\",\"kind\":\"POINT_NAME\",\"finalViewportCssFontPx\":13,\"baseFontPx\":20,\"client\":{\"x\":70,\"y\":70,\"width\":12,\"height\":16},\"bbox\":{\"width\":12,\"height\":16}},{\"id\":\"B\",\"kind\":\"POINT_NAME\",\"finalViewportCssFontPx\":13,\"baseFontPx\":20,\"client\":{\"x\":70,\"y\":70,\"width\":12,\"height\":16},\"bbox\":{\"width\":12,\"height\":16}}],\"measurements\":{\"A\":[14,18],\"B\":[14,18]}}"
+    },
+    {
+      "name": "unknown-nested-field-ignored-by-default",
+      "capture": {
+        "runtime": "playwright-chromium",
+        "synthetic": false,
+        "publicationProfile": "geometry-publication-v1",
+        "fontStatus": "loaded",
+        "svg": {
+          "x": 0,
+          "y": 0,
+          "width": 384,
+          "height": 384
+        },
+        "viewBox": {
+          "width": 384,
+          "height": 384
+        },
+        "safeMargin": 32,
+        "labels": [
+          {
+            "id": "A",
+            "kind": "POINT_NAME",
+            "priority": 1,
+            "baseFontPx": 20,
+            "effectiveFontPx": 13,
+            "client": {
+              "x": 70,
+              "y": 70,
+              "width": 12,
+              "height": 16
+            },
+            "bbox": {
+              "width": 12,
+              "height": 16
+            },
+            "missingGlyphCount": 0
+          }
+        ],
+        "geometry": [],
+        "nestedPanels": [
+          {
+            "not": "a default-path contract"
+          }
+        ]
+      },
+      "expectedJson": "{\"status\":\"PASS\",\"HARD_RENDERED_COLLISION\":0,\"CLIPPING\":0,\"tickLabelEvidence\":[],\"tickKnockoutEvidence\":[],\"labelCollisionCount\":0,\"criticalCollisionCount\":0,\"observedLabelCollisionCount\":0,\"observedCriticalCollisionCount\":0,\"clippedTextCount\":0,\"overflowCount\":0,\"missingGlyphCount\":0,\"errors\":[],\"labelMeasurements\":[{\"id\":\"A\",\"kind\":\"POINT_NAME\",\"finalViewportCssFontPx\":13,\"baseFontPx\":20,\"client\":{\"x\":70,\"y\":70,\"width\":12,\"height\":16},\"bbox\":{\"width\":12,\"height\":16}}],\"measurements\":{\"A\":[14,18]}}"
+    }
+  ]
+}

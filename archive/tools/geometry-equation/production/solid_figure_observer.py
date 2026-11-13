@@ -2059,15 +2059,47 @@ def check_face_highlights(highlights, solids, frames, scale, root, errors):
         if (el.get('data-fill') or 'LIGHT') != fill: errors.append('SOLID_HIGHLIGHT_FILL_MISMATCH:' + face)
 
 
+def _problem_cut_reference_wireframe(plan, solid):
+    spec = plan['solids'][0]; base = spec.get('base', {}); points = base.get('points'); names = spec.get('names'); cuts = spec.get('cuts')
+    if base.get('kind') != 'POLYGON' or base.get('plane', 'XY') != 'XY' or not isinstance(points, list) or len(points) != 4 or any(not isinstance(p, list) or len(p) != 2 or any(not isinstance(v, (int, float)) or not math.isfinite(v) for v in p) for p in points) or not isinstance(names, str) or len(names) != 8 or len(set(names)) != 8 or not isinstance(cuts, list) or len(cuts) != 1 or set(cuts[0]) != {'vertices'} or len(cuts[0]['vertices']) != 3 or len(solid['verts']) != 7 or len(poly_edges(solid)) != 12 or len(solid['faces']) != 7:
+        raise ValueError('PROBLEM_SOURCE_STROKE_CUT_SHAPE_UNSUPPORTED')
+    for i in range(4):
+        a, b, c = points[i], points[(i + 1) % 4], points[(i + 2) % 4]; u = (a[0] - b[0], a[1] - b[1]); v = (c[0] - b[0], c[1] - b[1])
+        if math.hypot(*u) <= 0 or math.hypot(*v) <= 0 or abs(u[0] * v[0] + u[1] * v[1]) > 1e-8: raise ValueError('PROBLEM_SOURCE_STROKE_CUT_SHAPE_UNSUPPORTED')
+    original = build_solid({k: v for k, v in spec.items() if k not in ('cuts', 'points')})
+    original_by_name = dict(original['verts']); retained = dict(solid['verts']); removed = set(original_by_name) - set(retained)
+    if len(removed) != 1: raise ValueError('PROBLEM_SOURCE_STROKE_CUT_SHAPE_UNSUPPORTED')
+    for name, p in solid['verts']:
+        if name not in original_by_name or vlen(vsub(p, original_by_name[name])) > 1e-5: raise ValueError('PROBLEM_SOURCE_STROKE_CUT_SHAPE_UNSUPPORTED')
+    aux = spec.get('points', [])
+    if not isinstance(aux, list) or len(aux) > 1: raise ValueError('PROBLEM_SOURCE_STROKE_REFERENCE_POINT_UNSUPPORTED')
+    for point in aux:
+        projection = point.get('at', {}).get('projection', {})
+        if set(point) != {'id', 'at'} or point['id'] not in removed or set(point['at']) != {'projection'} or set(projection) != {'from', 'plane'} or projection['from'] not in retained or not isinstance(projection['plane'], list) or len(projection['plane']) != 3 or any(n not in retained for n in projection['plane']): raise ValueError('PROBLEM_SOURCE_STROKE_REFERENCE_POINT_UNSUPPORTED')
+    if aux:
+        named = {name: (solid['id'], i, p) for i, (name, p) in enumerate(solid['verts'])}
+        for name, p in aux_point_places(aux, solid, named).items():
+            if vlen(vsub(p, original_by_name[name])) > 1e-5: raise ValueError('PROBLEM_SOURCE_STROKE_REFERENCE_POINT_UNSUPPORTED')
+    original_edges = {tuple(sorted((vname(original, a), vname(original, b)))) for a, b in poly_edges(original)}
+    segments = plan.get('segments', []); seen = set()
+    if not isinstance(segments, list) or len(segments) > 3: raise ValueError('PROBLEM_SOURCE_STROKE_REFERENCE_SEGMENT_UNSUPPORTED')
+    for segment in segments:
+        key = tuple(sorted((segment.get('from', ''), segment.get('to', ''))))
+        if set(segment) != {'from', 'to', 'style', 'role'} or segment['style'] != 'DASHED' or segment['role'] != 'REF' or not aux or not set(key) & removed or key not in original_edges or key in seen: raise ValueError('PROBLEM_SOURCE_STROKE_REFERENCE_SEGMENT_UNSUPPORTED')
+        seen.add(key)
+
+
 def problem_source_styles(plan, solids, identity, root):
     raw = plan.get('problemSourceEdgeStyles')
     if 'problemSourceEdgeStyles' not in plan:
         if root.get('data-visual-surface') is not None: raise ValueError('PROBLEM_SOURCE_STROKE_UNDECLARED')
         return {}
     if not isinstance(identity, dict) or identity.get('surface') != 'PROBLEM_VISUAL' or root.get('data-visual-surface') != 'PROBLEM_VISUAL': raise ValueError('PROBLEM_SOURCE_STROKE_IDENTITY_REQUIRED')
-    if not isinstance(raw, dict) or set(raw) != {'scope', 'sourceImageRef', 'edges'} or raw['scope'] != 'PROBLEM_ONLY': raise ValueError('PROBLEM_SOURCE_STROKE_SCHEMA')
+    if not isinstance(raw, dict) or set(raw) not in ({'scope', 'sourceImageRef', 'edges'}, {'scope', 'sourceImageRef', 'edges', 'mode'}) or raw['scope'] != 'PROBLEM_ONLY' or 'mode' in raw and raw['mode'] != 'RETAINED_CUT_EDGES': raise ValueError('PROBLEM_SOURCE_STROKE_SCHEMA')
     specs = plan.get('solids', [])
-    if len(specs) != 1 or specs[0].get('kind') != 'PRISM' or any(k in specs[0] for k in ('cuts', 'points')) or any(k in plan for k in ('net', 'space', 'panelWidth', 'segments')): raise ValueError('PROBLEM_SOURCE_STROKE_SHAPE_UNSUPPORTED')
+    cut = raw.get('mode') == 'RETAINED_CUT_EDGES'
+    if len(specs) != 1 or specs[0].get('kind') != 'PRISM' or any(k in plan for k in ('net', 'space', 'panelWidth')) or not cut and (any(k in specs[0] for k in ('cuts', 'points')) or 'segments' in plan): raise ValueError('PROBLEM_SOURCE_STROKE_SHAPE_UNSUPPORTED')
+    if cut: _problem_cut_reference_wireframe(plan, solids[0])
     exam, ordinal = identity.get('questionUid', '').rsplit('|', 1)
     expected = 'archive/assets/images/' + exam + '/q' + ordinal + '.png'
     ref = raw['sourceImageRef']
@@ -2078,12 +2110,12 @@ def problem_source_styles(plan, solids, identity, root):
     data = file.read_bytes()
     if len(data) != ref['bytes'] or 'sha256:' + hashlib.sha256(data).hexdigest() != ref['sha256'] or data[:8] != b'\x89PNG\r\n\x1a\n': raise ValueError('PROBLEM_SOURCE_STROKE_SOURCE_MISMATCH')
     entries = raw['edges']
-    if not isinstance(entries, list) or not 1 <= len(entries) <= 2: raise ValueError('PROBLEM_SOURCE_STROKE_COUNT')
+    if not isinstance(entries, list) or not 1 <= len(entries) <= (3 if cut else 2): raise ValueError('PROBLEM_SOURCE_STROKE_COUNT')
     solid = solids[0]
     by_name = {vname(solid, i): i for i in range(len(solid['verts']))}
     edges = set(poly_edges(solid)); result = {}
     for entry in entries:
-        if not isinstance(entry, dict) or set(entry) != {'solid', 'from', 'to', 'stroke'} or entry['solid'] != solid['id'] or entry['stroke'] not in ('SOLID', 'DASHED'): raise ValueError('PROBLEM_SOURCE_STROKE_ENTRY')
+        if not isinstance(entry, dict) or set(entry) != {'solid', 'from', 'to', 'stroke'} or entry['solid'] != solid['id'] or entry['stroke'] not in (('SOLID',) if cut else ('SOLID', 'DASHED')): raise ValueError('PROBLEM_SOURCE_STROKE_ENTRY')
         a, b = by_name.get(entry['from']), by_name.get(entry['to'])
         if a is None or b is None or a == b or tuple(sorted((a, b))) not in edges: raise ValueError('PROBLEM_SOURCE_STROKE_NOT_AN_EDGE')
         key = (solid['id'], tuple(sorted((entry['from'], entry['to']))))

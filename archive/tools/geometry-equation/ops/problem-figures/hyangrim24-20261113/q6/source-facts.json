@@ -34,7 +34,7 @@
     "solution-only angle relation or auxiliary construction"
   ],
   "uncertainties": [
-    "Exact side lengths are not specified; the construction uses neutral proportions solely to realize the given angle directions and layout."
+    "Exact side lengths are not specified; revised rational proportions are neutral display choices approximated from the source illustration."
   ],
   "source_alignment_review": {
     "authority": "Original exam PDF page 1 is primary geometry evidence; the existing q6 PNG is preserved for comparison and is not silently treated as authoritative where placement differs.",
@@ -50,9 +50,61 @@
       "path": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q6.png",
       "sha256": "5ce54a02ea1b598639396bed0d9d89b6b4155a7659dbb462d4552970941420dc"
     },
-    "plan_sha256_verified_unchanged": "09d1bdbd3dc6d38138d60e638046629197028d4c0209819d3147b7583a900807",
     "verified_difference": "In the PDF, right side D→E slopes down-left (upper-right D to lower-right E). In the preserved PNG it slopes down-right. The current plan uses the PDF relative placement.",
-    "decision": "Retain q6 plan geometry; record and resolve this source-PNG relative-placement discrepancy in favor of the source PDF.",
-    "answer_or_solution_content_used": false
+    "decision": "Retain PDF-derived vertex order, angles, and right-edge orientation; revise only schematic side proportions and the rightward baseline extension to improve source fidelity.",
+    "answer_or_solution_content_used": false,
+    "plan_sha256_before_proportion_revision": "09d1bdbd3dc6d38138d60e638046629197028d4c0209819d3147b7583a900807",
+    "plan_sha256_after_proportion_revision": "afcb1d985239aefba1fd3b71af883deb7c6fb6d9a1bcfd65577821d850754249"
+  },
+  "source_proportion_adjustment": {
+    "authority": "Direct visual measurement from the original PDF page-1 q6 crop, compared with the remote attempt-06 desktop candidate image.",
+    "pdf_crop": {
+      "path": ".tmp/problem-svg/source/q6-detail.png",
+      "sha256": "0a09055d96f7d770a578f4e0fcfdd204f32512043a99a2d897d79d3c0c5317a6"
+    },
+    "original_pdf_sha256": "a2a4ed5d2e98eb4fbf8f736c6d172b92a376b1fd8dc20de0da2aad0bb7c1340c",
+    "candidate_reviewed": {
+      "path": ".tmp/problem-svg/remote/attempt-06/review-q6/desktop-image.png",
+      "sha256": "63c761a295f0d13e7ba4fbd5397175e3a7e0dd544404a9195d04f8fafe61e64f"
+    },
+    "measured_ratio_definition": "rightward baseline extension E→Ex length divided by pentagon bottom edge A→E length",
+    "pdf_crop_ratio_approx": 0.9,
+    "attempt06_candidate_ratio_approx": 1.7,
+    "revised_constructed_ratio": 0.9005599418921412,
+    "revised_neutral_side_proportions": {
+      "AB": 0.65,
+      "BC": 0.9,
+      "CD": 1.1,
+      "DE": 0.958774506134276,
+      "AE_baseline": 0.9927157076536648,
+      "E_to_Ex_extension": 0.894
+    },
+    "neutral_inputs": {
+      "AB": "13/20",
+      "BC": "9/10",
+      "CD": "11/10",
+      "rightward_extension": "447/500"
+    },
+    "preserved_exact_displayed_angles": [
+      "110°",
+      "110°",
+      "120°",
+      "78°"
+    ],
+    "preserved_unknown_label": "x only at the exterior angle on E",
+    "preserved_order": "A-B-C-D-E-A; horizontal EA baseline with rightward E→Ex extension; D→E slopes down-left as in the PDF.",
+    "answer_or_solution_content_added": false,
+    "plan_sha256": "afcb1d985239aefba1fd3b71af883deb7c6fb6d9a1bcfd65577821d850754249"
+  },
+  "nonbrowser_model_spec_preflight": {
+    "evidence_path": ".tmp/problem-svg/maker-a/q6/preflight/source-proportion-model-spec.json",
+    "evidence_sha256": "83c227040ef304bfd31cd14381f12032bc9cde1e5e610a18d32aa79851d0c66b",
+    "plan_sha256": "afcb1d985239aefba1fd3b71af883deb7c6fb6d9a1bcfd65577821d850754249",
+    "model_sha256": "sha256:a6f8e0829315f618fde5fd5fbe1cbc449d37767b24d283da44aa4cf2f1e0dc2b",
+    "spec_sha256": "sha256:652365df5d5e5bfc142c86891c4bd827ddbf06d129f3d70c83373e12253f9835",
+    "construction_status": "PASS",
+    "spec_status": "PASS",
+    "browser": "NOT_RUN",
+    "actual_candidate_render_for_revised_plan": "NOT_RUN"
   }
 }

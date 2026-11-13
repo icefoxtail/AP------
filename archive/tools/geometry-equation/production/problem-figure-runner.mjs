@@ -9,6 +9,7 @@ import {loadBank} from '../build-visual-render-matrix.mjs';
 import {SOURCE_QUESTION_ID_PATTERN} from '../../pipeline-core/question-uid.mjs';
 import {requestedProfileTypographyPolicy} from './display-envelope.mjs';
 import {validateProblemReaderEvidence} from './problem-output-envelope.mjs';
+import {verifyMeasuredLabelInventory} from '../nested-panel-measurement.mjs';
 
 const repo=fileURLToPath(new URL('../../../../',import.meta.url));
 const PREFIX='archive/tools/geometry-equation/ops/problem-figures/';
@@ -95,6 +96,7 @@ export function verifyProblemEvidence(state,{root=repo}={}){
   const row=JSON.parse(readEvidence(root,capture.paths?.archiveRow,capture.lineage?.archiveRowSha256));
   const target=row.state?.targets?.find(t=>t.id===identity.assetId),layout=row.layouts?.find(l=>l.id===identity.assetId);
   if(row.mode!=='exam'||row.runtime!=='playwright-chromium'||row.synthetic!==false||row.status!=='PASS'||!row.browserVersion||row.state?.solutionVisualCount!==0||target?.surface!=='PROBLEM_VISUAL'||target.problemWrapper!==true||target.loaded!==true||layout?.status!=='PASS')fail('PROBLEM_ACTUAL_EXAM_EVIDENCE_REQUIRED');
+  verifyMeasuredLabelInventory(svg.toString('utf8'),layout);
   if(!Array.isArray(layout.labelMeasurements)||layout.labelMeasurements.some(l=>!Number.isFinite(l.finalViewportCssFontPx)||l.finalViewportCssFontPx<11-1e-7))fail('PROBLEM_ACTUAL_FONT_FLOOR_FAILED');
   for(const name of ['image','context','page']){
     const sha=capture.lineage?.screenshotSha256s?.[name];if(!HASH.test(sha))fail('PROBLEM_PNG_REQUIRED');
@@ -109,6 +111,7 @@ export function verifyProblemEvidence(state,{root=repo}={}){
     const raw=JSON.parse(readEvidence(root,view.archiveRow?.path,view.archiveRow?.sha256)),target=raw.state?.targets?.find(t=>t.id===identity.assetId),layout=raw.layouts?.find(l=>l.id===identity.assetId);
     validateProblemReaderEvidence(raw,{root,sourcePath:sourceRef.path});
     if(raw.status!=='PASS'||raw.synthetic!==false||raw.mode!=='exam'||raw.viewport!==name||raw.runtime!=='playwright-chromium'||raw.state.solutionVisualCount!==0||target?.problemWrapper!==true||target.surface!=='PROBLEM_VISUAL'||layout?.status!=='PASS')fail('PROBLEM_VIEWPORT_RAW_EVIDENCE_INVALID');
+    verifyMeasuredLabelInventory(svg.toString('utf8'),layout);
     if(!Array.isArray(layout.labelMeasurements)||layout.labelMeasurements.some(l=>!Number.isFinite(l.finalViewportCssFontPx)||l.finalViewportCssFontPx<11-1e-7))fail('PROBLEM_ACTUAL_FONT_FLOOR_FAILED');
     for(const shot of ['image','context','page']){
       const ref=view.screenshots?.[shot];if(!HASH.test(ref?.sha256))fail('PROBLEM_PNG_REQUIRED');

@@ -7,28 +7,46 @@
     "다음 꺾임 x+20°",
     "아래쪽 교차부 x"
   ],
-  "layout": "U→상부 l 교점의 방향 150°, U→V 방향 200°, V→U 방향 20°, V→하부 m 교점 방향 300°. l,m은 평행 수평선. 내부 기하에서 x−10=50°, x+20=80°, x=60°가 성립하나 해당 숫자를 문제 그림에는 쓰지 않는다.",
+  "layout": "l,m은 오른쪽 그림의 같은 길이 수평선분으로 표시하고, 이름은 각 선분 오른쪽 끝에 둔다. 두 유한 선분의 x범위는 원문 수치가 아닌 중립 표현 범위 [-4, 11/5]이다. A에서 첫 사선은 l을 가로질러 좌상단으로 이어지고 연장부는 UA의 0.7배이다. 30° 표식은 l의 왼쪽 반직선과 연장선 사이에 있다. 마지막 사선은 m 교점 M을 지나 아래오른쪽으로 짧게 이어진다.",
   "visibleMarks": [
-    "l,m 이름",
-    "30°, x−10°, x+20°, x 각호"
+    "l,m 이름을 각 선의 오른쪽 끝에",
+    "A를 지나 좌상단까지 연장된 첫 사선",
+    "m 교점 M 아래오른쪽의 짧은 마지막 사선 연장",
+    "원문에 표시된 30°, x−10°, x+20°, x 각호"
   ],
   "mustNotAdd": [
     "풀이용 보조 평행선",
-    "x의 수치"
+    "x의 수치",
+    "마지막 x 뒤 도 기호",
+    "평행 화살표",
+    "parallel arrows",
+    "extra helper parallel line",
+    "풀이보조선",
+    "x 값"
   ],
   "unresolvedVisuals": [],
   "normalizationAndResiduals": {
     "normalization": "upper line horizontal; chosen segment lengths are schematic and unlabelled",
     "freeVariables": [
-      "translation, scale, and the segment lengths between line/vertex intersections"
+      "finite horizontal l,m display spans share the same neutral x interval [-4, 11/5] (width 31/5); source gives no endpoint measurements",
+      "first ray overhang beyond l is 0.7 of UA; last ray overhang beyond m is 0.5 of VM"
     ],
     "expectedResiduals": {
       "l_parallel_m": "0",
       "angle_top": "30 degrees",
       "angle_U": "50 degrees (the label remains x-10)",
       "angle_V": "80 degrees (the label remains x+20)",
-      "angle_bottom": "60 degrees (the label remains x)"
+      "angle_bottom": "60 degrees (the label remains x)",
+      "lineSpanEquality": "l and m have equal finite x spans of 31/5 source-length units on [-4, 11/5]; the hidden mathematical carrier lines remain parallel",
+      "lineSeparation": "constructed lines remain parallel, with their separation set only by the given zigzag angles and neutral segment lengths"
     },
-    "tolerance": "exact 22-digit angular construction; marks compared to constructed rays"
-  }
+    "tolerance": "exact 22-digit angular construction; marks compared to constructed rays",
+    "lineSpanEquality": "l and m are displayed as equal finite spans on the same x interval [-4, 11/5]; hidden mathematical carrier lines remain for the parallel audit"
+  },
+  "evidence": [
+    ".tmp/problem-svg/source/q17-pdf-400dpi-detail.png (original PDF page 3 crop; last x has no degree glyph)",
+    ".tmp/problem-svg/source/q17-pdf-400dpi-detail.png (original PDF page 3; no parallel arrows; bottom x has no degree glyph)",
+    ".tmp/problem-svg/source/q17-pdf-400dpi-detail.png (original PDF page 3 crop)",
+    ".tmp/problem-svg/source/q17-pdf-400dpi-detail.png (finite equal-width neutral line interval selected to match source height-to-width proportion; endpoints are unlabelled and not source measurements)"
+  ]
 }

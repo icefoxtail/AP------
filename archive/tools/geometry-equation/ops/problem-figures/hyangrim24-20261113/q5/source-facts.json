@@ -1,7 +1,7 @@
 {
   "ordinal": 5,
   "source_image": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q5.png",
-  "source_review": "Viewed q5 PNG: apex-to-base cevian, 40° at apex on its right, 120° exterior at right base vertex, and x at the cevian foot on the left.",
+  "source_review": "Viewed the original q5 PNG and PDF page-1 crop together with run-07 desktop image. For proportion comparison, the source triangle base is only from left vertex A (about x=75) to right triangle vertex C (about x=224); the rightward baseline extension ending near x=282 is excluded. Source apex/base fraction is about 87/149=0.584 and cevian-foot/base fraction about 71/149=0.477. Run-07 placed the apex and foot too far right, so only neutral left vertex A was shifted right.",
   "allowed_marks": [
     "triangle outline",
     "cevian from apex to base point",
@@ -16,14 +16,16 @@
     "answer value for x",
     "extra angle labels"
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    "Source pixels are schematic; marked 40° and 120° conditions remain exact in the construction. Extension beyond C is not part of the triangle-base proportion."
+  ],
   "constructed_realization": {
-    "normalization": "A=(0,0), C=(8,0), P is placed 4 units from C on the ray at 120° to the rightward baseline. The cevian line leaves P at 260° and meets AC at F.",
+    "normalization": "A=(16/5,0), C=(8,0); P is placed 4 units from C on the ray at 120° to the rightward baseline. The cevian line leaves P at 260° and meets AC at F. Only neutral left vertex A is adjusted; P,C,F and the two given angle geometries are unchanged.",
     "free_parameters": [
       {
-        "symbol": "AC_base_length",
-        "value": "8",
-        "purpose": "schematic only; no base length is printed"
+        "symbol": "left_vertex_Ax",
+        "value": "16/5",
+        "purpose": "schematic left-base placement chosen to match source apex/base and foot/base proportions; not a printed length"
       },
       {
         "symbol": "CP",
@@ -40,21 +42,57 @@
       {
         "condition": "apex right-hand marked angle",
         "expected": "40°",
-        "observed": "40.00000000000001°",
-        "residual": "+7.1e-15°"
+        "observed": "40° from unchanged P-Factual-C directions",
+        "residual": "0° within construction precision"
       },
       {
         "condition": "right-base exterior angle",
         "expected": "120°",
-        "observed": "120.00000000000001°",
-        "residual": "+1.4e-14°"
+        "observed": "120° from unchanged P-C-Cr directions",
+        "residual": "0° within construction precision"
       },
       {
         "condition": "cevian foot lies on baseline AC",
         "status": "PASS",
-        "residual": "0"
+        "residual": "0; Factual remains the intersection with line AC"
+      },
+      {
+        "condition": "x is at the cevian foot on the left",
+        "status": "PASS",
+        "residual": "A < Factual < C; label remains on left wedge"
       }
     ],
+    "comparison": {
+      "sourcePdfCrop": ".tmp/problem-svg/source/q5-page1-crop-maker-a.png",
+      "sourcePdfCropSha256": "d55817cdd18acd0aa893b3265296077fa2403a94249d56e2d53030f7b3bc11d9",
+      "sourcePdfSha256": "a2a4ed5d2e98eb4fbf8f736c6d172b92a376b1fd8dc20de0da2aad0bb7c1340c",
+      "sourceImageSha256": "6bbf37618a5bc3e6c388ee6db6052a989569d0ff3f27919fc1c861ffdcb9c120",
+      "run07Image": ".tmp/problem-svg/remote/attempt-07/review/q5/desktop-image.png",
+      "run07ImageSha256": "224cc54a99eddd8e527ebbea035fb437de15f3aef101a528c8573f4f457ffab3",
+      "sourceTrianglePixels": {
+        "A": [
+          75,
+          132
+        ],
+        "P": [
+          162,
+          22
+        ],
+        "C": [
+          224,
+          132
+        ],
+        "F": [
+          146,
+          132
+        ]
+      },
+      "sourceApexBaseFraction": 0.5838926174496645,
+      "sourceFootBaseFraction": 0.47651006711409394,
+      "updatedModelApexBaseFraction": 0.5833333333333334,
+      "updatedModelFootBaseFraction": 0.4560802961115505,
+      "normalizationNote": "Fractions use A→C triangle base only; exclude baseline extension beyond C."
+    },
     "answer_angle_handling": "x remains an unknown source label and is not given a numeric value in captions or accessibility text."
   }
 }

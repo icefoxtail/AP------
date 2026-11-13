@@ -137,7 +137,7 @@
         "args": {
           "dx": {
             "kind": "integer",
-            "value": "10"
+            "value": "2"
           },
           "dy": {
             "kind": "integer",
@@ -175,7 +175,7 @@
         "args": {
           "dx": {
             "kind": "integer",
-            "value": "8"
+            "value": "2"
           },
           "dy": {
             "kind": "integer",
@@ -206,6 +206,202 @@
         "args": {},
         "outputType": "LINE",
         "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Aext",
+        "op": "VECTOR_SCALE_POINT",
+        "inputs": [
+          "U",
+          "A"
+        ],
+        "args": {
+          "k": {
+            "kind": "rational",
+            "numerator": "17",
+            "denominator": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lLeft",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Mext",
+        "op": "VECTOR_SCALE_POINT",
+        "inputs": [
+          "V",
+          "M"
+        ],
+        "args": {
+          "k": {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xLeftBase",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "U"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xLeftUp",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "xLeftBase"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xLeftLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "xLeftBase",
+          "xLeftUp"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xRightBase",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "U"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "11",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xRightUp",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "xRightBase"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xRightLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "xRightBase",
+          "xRightUp"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lSpanLeft",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineL",
+          "xLeftLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mSpanLeft",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineM",
+          "xLeftLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lSpanRight",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineL",
+          "xRightLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mSpanRight",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineM",
+          "xRightLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
       }
     ],
     "conditionAudits": [
@@ -224,12 +420,30 @@
     "x": [],
     "y": []
   },
-  "displayLines": [
-    "lineL",
-    "lineM"
-  ],
+  "displayLines": [],
   "displayCircles": [],
   "displaySegments": [
+    {
+      "id": "lFinite",
+      "refs": [
+        "lSpanLeft",
+        "lSpanRight"
+      ]
+    },
+    {
+      "id": "mFinite",
+      "refs": [
+        "mSpanLeft",
+        "mSpanRight"
+      ]
+    },
+    {
+      "id": "s0",
+      "refs": [
+        "Aext",
+        "A"
+      ]
+    },
     {
       "id": "s1",
       "refs": [
@@ -250,6 +464,13 @@
         "V",
         "M"
       ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "M",
+        "Mext"
+      ]
     }
   ],
   "displayPoints": [
@@ -259,7 +480,19 @@
     "M",
     "X",
     "lRight",
-    "mLeft"
+    "mRight",
+    "mLeft",
+    "Aext",
+    "lLeft",
+    "Mext",
+    "lSpanLeft",
+    "mSpanLeft",
+    "lSpanRight",
+    "mSpanRight",
+    "xLeftBase",
+    "xRightBase",
+    "xLeftUp",
+    "xRightUp"
   ],
   "caption": "평행한 두 직선 l, m 사이를 지나는 꺾은 선과 각 30°, x−10°, x+20°, x를 나타낸 그림.",
   "sourceConditions": [
@@ -289,27 +522,29 @@
     "M",
     "X",
     "lRight",
-    "mLeft"
+    "mRight",
+    "mLeft",
+    "Aext",
+    "lLeft",
+    "Mext",
+    "xLeftBase",
+    "xLeftUp",
+    "xRightBase",
+    "xRightUp",
+    "lSpanLeft",
+    "mSpanLeft",
+    "lSpanRight",
+    "mSpanRight"
   ],
   "hiddenPointStyle": "NONE",
   "planeMarks": {
-    "parallels": [
-      {
-        "id": "pm",
-        "count": 1,
-        "lines": [
-          "lineL",
-          "lineM"
-        ]
-      }
-    ],
     "angles": [
       {
         "id": "a30",
         "refs": [
-          "lRight",
+          "lSpanLeft",
           "A",
-          "U"
+          "Aext"
         ],
         "value": 30,
         "label": "30",
@@ -338,25 +573,26 @@
       {
         "id": "ax",
         "refs": [
-          "mLeft",
+          "mSpanLeft",
           "M",
           "V"
         ],
         "label": "x",
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
       }
     ],
     "textLabels": [
       {
         "id": "labelL",
-        "at": "lRight",
+        "at": "lSpanRight",
         "text": "l",
         "labelKind": "TEXT",
         "factRole": "GIVEN"
       },
       {
         "id": "labelM",
-        "at": "mLeft",
+        "at": "mSpanRight",
         "text": "m",
         "labelKind": "TEXT",
         "factRole": "GIVEN"

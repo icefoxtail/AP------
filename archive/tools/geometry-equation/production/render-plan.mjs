@@ -33,6 +33,7 @@ import {failureGuidance} from './error-guidance.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
 const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../../').replace(/\\/g,'/')+'/';
+const hasProblemCaption=v=>!!v&&typeof v==='object'&&(Object.hasOwn(v,'problemCaption')||Object.values(v).some(hasProblemCaption));
 const hasProblemSourceStrokes=v=>!!v&&typeof v==='object'&&(Object.hasOwn(v,'problemSourceEdgeStyles')||Object.values(v).some(hasProblemSourceStrokes));
 const clip=v=>JSON.stringify(v??null).slice(0,600);
 // result.detail stays the 600 character clip above; result.detailFull and result.errors keep the whole thing (still capped so one huge detail cannot flood the file).
@@ -54,6 +55,18 @@ const tagPanel=(run,index)=>{try{return run();}catch(error){if(error&&typeof err
 const stdoutView=r=>{const {detailFull,errors,hint,...rest}=r;return {...rest,...(hint?{hint:hint.map(h=>h.length>160?h.slice(0,160)+'...':h)}:{}),...(detailFull!==undefined?{detailFile:true}:{})};};
 
 // plan: a parsed plan object, or a path to plan.json. Returns the result record (also written as <name>-result.json).
+// Fail closed for problem author input before an expander can destructure refs.
+// The established solution path and its output contract remain unchanged.
+export function validateProblemDisplaySegments(plan,surface){
+  if(surface!=='PROBLEM_VISUAL')return;
+  const visit=value=>{
+    if(!value||typeof value!=='object')return;
+    if(Object.hasOwn(value,'displaySegments')&&(!Array.isArray(value.displaySegments)||value.displaySegments.some(segment=>!segment||!Array.isArray(segment.refs)||segment.refs.length!==2)))throw Error('PROBLEM_DISPLAY_SEGMENT_REFS_EXACTLY_TWO_REQUIRED');
+    for(const child of Object.values(value))visit(child);
+  };
+  visit(plan);
+}
+
 export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSizeClass}){
   fs.mkdirSync(outDir,{recursive:true});
   const meta={...item};
@@ -94,10 +107,12 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     // A curve label {hidden:true,reason:"ANSWER",name} is the neutral-name label the plan stands for (hidden-curve-label.mjs); plans without it pass through untouched.
     {const hiddenLabels=expandHiddenCurveLabels(authored);if(hiddenLabels.notes.length){authored=hiddenLabels.plan;row.hiddenFormulaLabels=hiddenLabels.notes;}}
     if(authored.status==='EXEMPT'||authored.status==='UNSUPPORTED'){row.status=authored.status;row.detail=authored.reason;return finish();}
+    validateProblemDisplaySegments(authored,surface);
     // Two discontinuous functions (graphPlan.referenceCurves, layout STACKED) are the two-panel composite they stand for.
     if(authored.capability==='piecewise-discontinuous-spike-v1'&&authored.graphPlan?.referenceCurves!==undefined)authored=expandDiscontinuousPair(authored);
     // planeMarks.vectors / vectorOps (G3) are unfolded into arrows, labels and construction points before the exact model is built.
     if(authored.capability==='construction-spike-v1')authored=expandPlaneVectors(authored);
+    if(hasProblemCaption(authored)&&authored.capability!==sol.SOLID_CAPABILITY)throw Error('PROBLEM_CAPTION_STANDALONE_REQUIRED');
     if(hasProblemSourceStrokes(authored)&&(surface!=='PROBLEM_VISUAL'||authored.capability!==sol.SOLID_CAPABILITY))throw Error('PROBLEM_SOURCE_STROKE_STANDALONE_REQUIRED');
     row.capability=authored.capability;log.setPlan(authored,meta.fam);where.plan=authored;
     // Writes the shared success outputs (state, svg, optional observer packet).
@@ -258,7 +273,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       // first one; when the composed figure came out taller (or shorter) than measured, the policy is measured again for the size it really has and composed again.
       let captionRow=comp.COMPOSITE_CAPTION_ROW;
       for(let pass=0;pass<3;pass++){
-        const {width,height}=comp.compositeStackSize(panelSizes,comp.compositeSharedRowCount(checked),stackLayout,captionRow);
+        const {width,height}=comp.compositeStackSize(panelSizes,comp.compositeSharedRowCount(checked),stackLayout,captionRow,{omitCaption:current.problemCaption?.visible===false});
         stage='measure';
         measured=await captureApi.measure({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:{width,height},runId:`pilot-measure-${tag}${attempt?'-retry'+attempt:''}${pass?'-size'+pass:''}`});
         watch.lap('measure');

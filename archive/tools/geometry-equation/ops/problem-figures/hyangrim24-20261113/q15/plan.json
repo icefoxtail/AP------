@@ -15,8 +15,9 @@
         "args": {
           "coordinates": [
             {
-              "kind": "integer",
-              "value": "0"
+              "kind": "rational",
+              "numerator": "-43",
+              "denominator": "20"
             },
             {
               "kind": "integer",
@@ -35,7 +36,7 @@
           "coordinates": [
             {
               "kind": "integer",
-              "value": "1"
+              "value": "0"
             },
             {
               "kind": "integer",
@@ -56,7 +57,7 @@
         "args": {
           "length": {
             "kind": "integer",
-            "value": "2"
+            "value": "1"
           },
           "angleDeg": {
             "kind": "integer",
@@ -72,25 +73,6 @@
         "op": "TRANSLATE_POINT",
         "inputs": [
           "P"
-        ],
-        "args": {
-          "dx": {
-            "kind": "integer",
-            "value": "2"
-          },
-          "dy": {
-            "kind": "integer",
-            "value": "0"
-          }
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "baseRay",
-        "op": "TRANSLATE_POINT",
-        "inputs": [
-          "B"
         ],
         "args": {
           "dx": {
@@ -170,7 +152,7 @@
         "op": "LINE_THROUGH",
         "inputs": [
           "B",
-          "baseRay"
+          "R"
         ],
         "args": {},
         "outputType": "LINE",
@@ -277,6 +259,13 @@
       ]
     },
     {
+      "id": "sRC",
+      "refs": [
+        "R",
+        "C"
+      ]
+    },
+    {
       "id": "sAP",
       "refs": [
         "A",
@@ -298,6 +287,13 @@
         "Q"
       ],
       "dashed": true
+    },
+    {
+      "id": "sQC",
+      "refs": [
+        "Q",
+        "C"
+      ]
     },
     {
       "id": "sPQ",
@@ -324,11 +320,11 @@
   "displayPoints": [
     "A",
     "B",
-    "C",
     "D",
     "P",
     "Q",
-    "R"
+    "R",
+    "C"
   ],
   "caption": "직사각형 종이에서 D를 R에 오도록 PQ를 접은 모습과 ∠PRB=68°를 나타낸 그림.",
   "sourceConditions": [
@@ -352,10 +348,10 @@
   "pointNames": {
     "A": "A",
     "B": "B",
-    "P": "P",
     "D": "D",
-    "R": "R",
-    "Q": "Q"
+    "P": "P",
+    "Q": "Q",
+    "R": "R"
   },
   "planeMarks": {
     "angles": [
@@ -374,5 +370,18 @@
     ]
   },
   "sourceQuote": "직사각형 모양의 종이를 점 D가 점 R에 오도록 선분 PQ를 접는 선으로 하여 접었다. ∠PRB=68°일 때, ∠PQR의 크기는?",
-  "hiddenPointNames": []
+  "hiddenPointNames": [
+    "C"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "raPRQ",
+      "refs": [
+        "P",
+        "R",
+        "Q"
+      ]
+    }
+  ]
 }

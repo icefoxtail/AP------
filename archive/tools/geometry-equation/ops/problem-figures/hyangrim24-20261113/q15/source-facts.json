@@ -6,27 +6,36 @@
     "접는 선 PQ",
     "∠PRB=68°"
   ],
-  "layout": "Construct R=(1,0), B=(0,0), then P at ∠PRB=68°. D is placed horizontally from P by length PR, making PD=PR. The crease through P is perpendicular to RD; Q is its intersection with the rectangle right side. A and C complete the rectangle. Internal length 2 and coordinates are normalization only, not displayed.",
+  "layout": "직사각형 ABCD에서 P는 AD 위, Q는 CD 위이고 PQ가 접는 선이다. 접힘 D→R은 PR=PD이며 PQ가 DR의 수직이등분선으로 구성된다. PR=1로 정규화하고 ∠PRB=68°를 정확히 유지한다. source-length W/H≈2.993, AP/H≈1.916으로 원문 스케치 비율에 가깝게 선택했다. C는 경계 연결점으로만 두며 글자와 점 표시는 없다.",
   "visibleMarks": [
-    "A,B,P,D,Q,R",
-    "PD,DQ 점선",
-    "직각표시 및 ∠PRB=68°"
+    "A,B,D,P,Q,R 이름",
+    "직사각형 경계 AB, BR, RC, CD, DA",
+    "AD의 PD 부분 및 DQ의 원래 점선",
+    "접는 선 PQ",
+    "접힌 선분 PR,RQ",
+    "∠PRB=68° 및 ∠PRQ 직각"
   ],
   "mustNotAdd": [
-    "∠PQR의 답",
-    "접기에 따른 풀이 각도",
-    "내부 구성에 사용된 길이 1, 2 및 좌표"
+    "C 이름/점 표식",
+    "추가 접힘·각도 수치",
+    "풀이보조선이나 힌트"
   ],
   "normalizationAndResiduals": {
-    "normalization": "B=(0,0), R=(1,0), chosen source-length PR=2 only to size the schematic",
+    "normalization": "PR=PD=1 source-length; B=(-43/20,0), R=(0,0) are schematic placements, not source measurements",
     "freeVariables": [
-      "rectangle size/orientation chosen to accommodate a crease; not printed in labels"
+      "unlabelled rectangle scale and source-schematic horizontal/height ratio"
     ],
     "expectedResiduals": {
-      "angle_PRB_minus_68_degrees": "0 within the construction angle tolerance",
-      "PD_minus_PR": "<1e-24 in the high-precision polar realization",
-      "crease_perpendicular_to_RD": "0"
+      "fold_D_to_R": "PD−PR=0 exactly",
+      "crease_bisects_DR": "PQ is perpendicular to DR and passes through its midpoint P",
+      "angle_PRB": "68 degrees exactly",
+      "rectangle": "AB∥CD, AD∥BC, all corners right",
+      "sourceProportion": "AD/H≈2.993; AP/H≈1.916",
+      "right_angle_PRQ": "90 degrees exactly"
     },
-    "tolerance": "angle marking contract 0.5 degrees; polar coordinates use 22-digit rational approximation. The crease is built perpendicular through P and P,D,R are constructed equidistant to P."
-  }
+    "tolerance": "exact 68-degree POLAR_POINT; line intersections exact; ratios approximate only to source sketch"
+  },
+  "evidence": [
+    ".tmp/problem-svg/source/q15-pdf-400dpi-detail.png (original PDF page 3 crop; source rectangle ratio and unlabelled C)"
+  ]
 }

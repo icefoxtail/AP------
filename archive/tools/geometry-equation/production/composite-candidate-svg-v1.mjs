@@ -4,6 +4,7 @@ import {specFor} from './phase2.mjs';
 import {pythonWorker} from './worker.mjs';
 import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
+import {problemCaptionHidden} from './problem-source-edge-styles.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {NUMBER_LINE_CAPABILITY,composeNumberLinePanel} from './quadratic-inequality-chain-v1.mjs';
 import {captionMathValid} from './number-line-v1.mjs';
@@ -216,7 +217,8 @@ export const compositePanelLayout=(checked,plan)=>checked.length>1&&checked.ever
   ?{kind:'GRID',columns:compositeGridColumns(checked.length),rows:Math.ceil(checked.length/compositeGridColumns(checked.length))}
   :{kind:'STACK',columns:1,rows:checked.length};
 /** The stacked/gridded size for panels of the given sizes (top margin, caption row per panel, gaps between panels): what the Archive policy must be measured for. */
-export const compositeStackSize=(sizes,sharedRows=0,layout={columns:1},captionRow=COMPOSITE_CAPTION_ROW)=>{
+export const compositeStackSize=(sizes,sharedRows=0,layout={columns:1},captionRow=COMPOSITE_CAPTION_ROW,{omitCaption=false}={})=>{
+  if(omitCaption){if(sizes.length!==1||sharedRows!==0||(layout?.columns??1)!==1)throw Error('PROBLEM_CAPTION_STANDALONE_REQUIRED');return {width:sizes[0].width,height:sizes[0].height,columns:1,rows:1};}
   const columns=layout?.columns??1,shared=sharedRows?sharedRows*COMPOSITE_SHARED_ROW+SHARED_ROWS_GAP:0;
   if(columns===1)return {width:Math.max(...sizes.map(size=>size.width)),height:COMPOSITE_TOP_MARGIN+shared+sizes.reduce((sum,size)=>sum+captionRow+size.height,0)+COMPOSITE_PANEL_GAP*(sizes.length-1),columns:1,rows:sizes.length};
   // A grid cell is as big as the largest panel of its row family: two panels share a column width and a row height, so no panel is
@@ -291,6 +293,7 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
   let ownBrowser=null;
   const chrome=async()=>browser??(ownBrowser??=await launchBrowser());
   try{
+    const hideCaption=problemCaptionHidden(plan,identity);
     if(Array.isArray(panels)&&panels.some(p=>p.plan?.problemSourceEdgeStyles)&&(identity?.surface!=='PROBLEM_VISUAL'||plan?.chain!==SOLID_CAPABILITY||panels.length!==1))throw new Stop('PROBLEM_SOURCE_STROKE_STANDALONE_REQUIRED');
     const checked=compositePanels(plan);
     const panelLayout=compositePanelLayout(checked,plan);
@@ -314,10 +317,10 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
     }
     // Captions: the math part as MathJax, the text part in the Korean outline font, side by side at the policy base font. In a three-panel
     // stack the panel's formula follows in the same row, a little apart, and the shared line equations are rows above the first caption.
-    const typeset=typesetter(),captions=[],header=await compositeHeaderLabels(checked,panels.map(panel=>panel.model),identity.assetId);
+    const typeset=typesetter(),captions=[],header=hideCaption?null:await compositeHeaderLabels(checked,panels.map(panel=>panel.model),identity.assetId);
     for(const {panel} of parts){
       const fragments=[];
-      for(const [kind,value] of [['MATH',panel.caption.math],['TEXT',panel.caption.text]]){
+      for(const [kind,value] of hideCaption?[]:[['MATH',panel.caption.math],['TEXT',panel.caption.text]]){
         if(!value)continue;
         try{fragments.push(typeset({id:`p${panel.index+1}-caption-${kind.toLowerCase()}`,owner:`panel-${panel.index+1}`,factRole:'GIVEN',fontPx:typographyPolicy.baseFontPx,panelId:`p${panel.index+1}`,...(kind==='MATH'?{kind,tex:value.includes('\\frac')?'\\displaystyle '+value:value}:{kind,text:value,...(panel.caption.weight==='MATH'?{weight:'MATH'}:{})})},identity));}
         catch(error){if(!isDomainCode(error))throw error;throw new Stop('COMPOSITE_CAPTION_TYPESET_ERROR',{panel:panel.index,code:error.message});}
@@ -338,7 +341,7 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
     if(panelLayout.kind==='GRID'&&sharedRows.length)throw new Stop('COMPOSITE_GRID_HEADER_UNSUPPORTED');
     // Captions that do not fit (E7): a plain-text caption wider than its cell/row breaks into two lines at a space; a caption block taller than the standard row
     // makes the caption rows of this figure taller. The cell width and the available caption width do not depend on the caption row.
-    const sizeAtStandardRow=compositeStackSize(parts.map(part=>part.size),sharedRows.length,panelLayout);
+    const sizeAtStandardRow=compositeStackSize(parts.map(part=>part.size),sharedRows.length,panelLayout,COMPOSITE_CAPTION_ROW,{omitCaption:hideCaption});
     // A grid caption is centred in its cell and the rendered-layout check keeps every caption SIDE_MARGIN inside the figure's edge (the grid's cells are its two
     // outer columns), so the width a grid caption may have is the cell width less two side margins (it used to be less two GRID_CAPTION_PAD, which is looser:
     // a caption between the two widths was only caught later as TEXT_CLIPPED).
@@ -347,6 +350,7 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
     const lineHeight=line=>Math.max(...line.map(fragment=>fragment.intrinsic.height));
     const blockHeight=lines=>lines.length===1?lineHeight(lines[0]):lines.reduce((sum,line)=>sum+lineHeight(line),0)+CAPTION_LINE_GAP*(lines.length-1);
     const captionLines=captions.map((fragments,i)=>{
+      if(hideCaption)return [[]];
       const panel=parts[i].panel;
       if(lineWidth(fragments)<=captionLimit||header||panel.caption.math||!panel.caption.text)return [fragments];
       const text=panel.caption.text,middle=text.length/2;
@@ -359,9 +363,10 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
       }
       return [fragments];
     });
-    const neededRow=Math.max(...captionLines.map(blockHeight)),captionRow=neededRow>COMPOSITE_CAPTION_ROW?Math.ceil(neededRow)+CAPTION_ROW_PAD:COMPOSITE_CAPTION_ROW;
+    const neededRow=hideCaption?0:Math.max(...captionLines.map(blockHeight)),captionRow=hideCaption?0:neededRow>COMPOSITE_CAPTION_ROW?Math.ceil(neededRow)+CAPTION_ROW_PAD:COMPOSITE_CAPTION_ROW;
     // One caption: its lines centred in `span` starting at `left`, in a row starting at `rowTop` (a one-line caption is centred in the row by each fragment's own height).
     const captionMarkup=(i,left,span,rowTop)=>{
+      if(hideCaption)return '';
       const lines=captionLines[i];let top=rowTop+(captionRow-blockHeight(lines))/2;
       let out=`<g id="p${i+1}-caption" data-role="caption" data-panel="${i+1}" data-font-px="${typographyPolicy.baseFontPx}">`;
       for(const line of lines){
@@ -375,9 +380,9 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
       }
       return out+'</g>';
     };
-    const {width,height:stackHeight,cellWidth,cellHeight}=compositeStackSize(parts.map(part=>part.size),sharedRows.length,panelLayout,captionRow);
+    const {width,height:stackHeight,cellWidth,cellHeight}=compositeStackSize(parts.map(part=>part.size),sharedRows.length,panelLayout,captionRow,{omitCaption:hideCaption});
     if(stackHeight*typographyPolicy.displayScale>COMPOSITE_MAX_DISPLAY_HEIGHT_PX)throw new Stop('COMPOSITE_TOO_TALL',{displayHeightPx:stackHeight*typographyPolicy.displayScale,limitPx:COMPOSITE_MAX_DISPLAY_HEIGHT_PX,panels:parts.length,layout:panelLayout.kind});
-    let y=COMPOSITE_TOP_MARGIN,body='';
+    let y=hideCaption?0:COMPOSITE_TOP_MARGIN,body='';
     if(sharedRows.length)body+=`<g id="shared-rows" data-role="shared-rows" data-font-px="${typographyPolicy.baseFontPx}">`;
     sharedRows.forEach((fragment,i)=>{
       if(fragment.intrinsic.width>width-2*SIDE_MARGIN||fragment.intrinsic.height>COMPOSITE_SHARED_ROW)throw new Stop('COMPOSITE_SHARED_ROW_TOO_LARGE',{row:i,width:fragment.intrinsic.width});
@@ -415,7 +420,7 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
     const display={width:width*typographyPolicy.displayScale,height:y*typographyPolicy.displayScale};
     const page=await (await chrome()).newPage({viewport:{width:Math.max(1,Math.ceil(display.width)),height:Math.max(1,Math.ceil(display.height))}});
     let layout;
-    try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}finally{await page.close();}
+    try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT,...(hideCaption?{surface:'PROBLEM_VISUAL'}:{})}));}finally{await page.close();}
     lineage.renderedLayoutSha256=digest({svgSha256:lineage.svgSha256,layout},'renderedLayout');
     state.renderedLayout={status:layout.status,display,errors:layout.errors};
     if(layout.status!=='PASS')throw new Stop('COMPOSITE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});

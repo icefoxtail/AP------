@@ -111,6 +111,7 @@ jobs:
         run: >-
           node --test
           archive/tools/geometry-equation/tests/problem-figure-path.test.mjs
+          archive/tools/geometry-equation/tests/nested-panel-measurement.test.mjs
           archive/tools/geometry-equation/tests/problem-source-edge-styles.test.mjs
           archive/tools/geometry-equation/tests/render-plan.test.mjs
           archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs
@@ -135,7 +136,10 @@ jobs:
       - name: Verify the problem capture at all three real viewports
         env:
           GEOMETRY_BROWSER_EXECUTABLE: ${{ steps.chrome.outputs.chrome-path }}
-        run: node --test archive/tools/geometry-equation/tests/problem-figure.browser.mjs
+        run: >-
+          node --test --test-concurrency=1
+          archive/tools/geometry-equation/tests/problem-figure.browser.mjs
+          archive/tools/geometry-equation/tests/nested-panel-measurement.browser.mjs
       - name: Render the committed problem plans sequentially in actual Archive slots
         shell: bash
         env:

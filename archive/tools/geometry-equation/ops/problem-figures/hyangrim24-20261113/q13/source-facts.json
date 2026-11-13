@@ -5,7 +5,7 @@
     "정육각형의 경계 BC-G-H-I-J-B",
     "정사각형의 경계 C-D-F-G-C"
   ],
-  "layout": "정확 작도: BC=CD=CG=1로 정규화. BC-G-H-I-J는 변 길이 1·방향 60°마다 돌아 닫히는 정육각형, C-D-F-G는 네 변 길이 1인 정사각형. AB,BC,CD,DE도 길이 1이고 방향은 같은 꼭짓점의 내부각 조건을 만족하도록 구성. 내부 방향·회전 계산은 렌더 텍스트가 아니다.",
+  "layout": "정확 작도: BC=CD=CG=1로 정규화. 기저 방향을 수평 기준에서 15° 시계방향으로 회전한 뒤, 해당 기저에 대해 정육각형 BC-G-H-I-J와 정사각형 C-D-F-G를 구성한다. AB,BC,CD,DE는 같은 정다각형 연속변 경계와 일치하도록 놓는다. 전역 15° 회전은 원문 그림 기울기만 반영하며 내각·변 길이 관계를 바꾸지 않는다. 내부 방향·회전 계산은 렌더 텍스트가 아니다.",
   "visibleMarks": [
     "A,B,C,D,E,F,G,H,I,J 점 이름",
     "정육각형·정사각형 및 정n각형의 일부 변",
@@ -15,21 +15,27 @@
     "n 값",
     "정n각형 내각/정육각형 내각/정사각형 내각의 수치",
     "풀이 또는 정답 유도 문구",
-    "내부작도 숫자나 각도 (1, 60°, 90°, 120°, 150°)의 화면 표시"
+    "내부작도 숫자나 각도 (1, 60°, 90°, 120°, 150°)의 화면 표시",
+    "15° 회전값 또는 축 보조점 axisX의 표시"
   ],
   "uncertainties": [
     "현재 PNG에서 A/J 연장부가 가려진 부분은 PDF 인쇄 그림을 참고하되 기출 문제에 없는 추가 점은 생략한다."
   ],
   "normalizationAndResiduals": {
-    "normalization": "source-length=1 for shared edges; coordinate orientation schematic",
+    "normalization": "source-length=1 for shared edges; exact rigid clockwise rotation 15° from horizontal basis",
     "freeVariables": [
-      "global rotation/translation; no displayed metric scale"
+      "global translation and scale; no displayed metric scale",
+      "masked continuation near A/J remains unresolved"
     ],
     "expectedResiduals": {
-      "nGonConsecutiveEdges": "AB=BC=CD=DE=1 by construction",
-      "hexagon": "BC=CG=GH=HI=IJ=JB=1 with 60-degree turn at each vertex",
-      "square": "CD=DF=FG=GC=1"
+      "rigidRotation": "The exact radical coordinates are the original constructed points transformed by the common matrix [[(√6+√2)/4,(√6−√2)/4],[(√2−√6)/4,(√6+√2)/4]]",
+      "nGonConsecutiveEdges": "AB=BC=CD=DE=1 by exact transformed coordinates",
+      "hexagon": "BC=CG=GH=HI=IJ=JB=1 and all six regular-hexagon turns preserved by the same rigid transform",
+      "square": "CD=DF=FG=GC=1 and all four right angles preserved by the same rigid transform"
     },
-    "tolerance": "exact radical/polar operations; internal orientation values are NOT_RENDERED"
-  }
+    "tolerance": "Exact radical scalar expressions; no rounded intermediate values. The operation chain encodes one rigid clockwise 15° rotation."
+  },
+  "evidence": [
+    ".tmp/problem-svg/source/q13-pdf-400dpi-detail.png (original PDF page 2; square CG is right-down and CD down-left)"
+  ]
 }
