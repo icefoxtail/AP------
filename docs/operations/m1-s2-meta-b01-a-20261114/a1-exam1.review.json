@@ -1705,16 +1705,7 @@
         "integrationPattern": "REINTERPRETATION",
         "standardCourse": "중1 수학",
         "standardUnitKey": "M1-07",
-        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
-        "rpmPath": {
-          "curriculum": "2022",
-          "scope": "M1-2",
-          "majorUnit": "입체도형",
-          "midUnit": "입체도형의 겉넓이와 부피",
-          "l3": "뿔의 겉넓이와 부피",
-          "l4": "원뿔"
-        },
-        "rpmParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"입체도형의 겉넓이와 부피\"]"
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE"
       },
       "resolverSelection": {
         "crosswalkRecordId": "M1-RPM-216",
@@ -1790,6 +1781,11 @@
           "existingSourceTemplate": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
           "finding": "NET_MEASURE 정의는 전개도에서 원주-부채꼴 호 및 겉넓이 계산이다. 굴린 횟수로 평면 궤적 반지름을 정하는 출제 구조의 정확한 global ACTIVE 골격을 찾지 못했다.",
           "request": "원뿔 굴리기 유형 등록 여부 검토. NET_MEASURE exact-match 승인 유지 금지."
+        },
+        {
+          "class": "RPM_LEAF_GAP",
+          "finding": "원뿔 굴림으로 생기는 평면 영역 넓이의 정확한 RPM 세부 유형이 확인되지 않았다. 현재 조회한 입체 측정 원뿔 leaf는 목표와 달라 확정에서 제외한다.",
+          "request": "공통 정본 담당의 primary 경로 판정 및 필요한 세부 유형 등록."
         }
       ],
       "difficultyReason": "밑면 원주와 굴린 횟수로 꼭짓점 주위 궤적 원주를 연결해 모선을 복원한 뒤 모선이 반지름인 평면 원의 넓이를 구한다. 전개도/겉넓이를 묻지 않는다.",
@@ -1821,7 +1817,23 @@
           "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
           "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
         ],
-        "ownerPack": "MIDDLE1"
+        "ownerPack": "MIDDLE1",
+        "semanticRouteAcceptedByReviewer": false
+      },
+      "rpmRouteReview": {
+        "verdict": "RPM_LEAF_GAP",
+        "rejectedLookupPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "뿔의 겉넓이와 부피",
+          "l4": "원뿔"
+        },
+        "rejectedLookupParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"입체도형의 겉넓이와 부피\"]",
+        "reason": "공식 resolver는 고른 경로의 존재성만 FINAL로 확인했으며 실제 의미 적합성을 보장하지 않는다. 구하는 대상은 굴린 평면 원의 넓이이고 원뿔의 겉넓이·부피를 계산하지 않으므로 뿔의 겉넓이와 부피/원뿔 leaf 확정은 부적합하다.",
+        "candidatePrimaryParent": "2022/M1-2/평면도형/원과 부채꼴 (굴림 상황의 평면 궤적 넓이)",
+        "fallbackSourceParentPolicy": "기존 단원 필드는 확정경로로 승인하지 말고 primary 경로 정본 결정 대기; 원뿔이 등장했다는 이유로 입체 측정을 자동 확정하지 않는다."
       }
     },
     {

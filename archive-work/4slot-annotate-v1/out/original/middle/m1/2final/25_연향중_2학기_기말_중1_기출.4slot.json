@@ -1,0 +1,1555 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js",
+  "sourceGitBlobSha": "58499a15b018c4bc13d4e90c9dd630f6a458fe2b",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT_ROOT_54CB21AF3005_A/A1",
+    "run": "M1S2-20261114-B01-A",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "정다각형",
+            "src": "stem",
+            "quote": "모든 변의 길이가 같다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "정팔각형의 대각선의 개수는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "한 외각은 $360^\\circ\\div8=45^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "내각의 합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "모든 변의 길이가 같다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정팔각형을 판단하고 대각선 수, 외각과 내각의 합 및 중심에서 분할한 삼각형 수를 확인한다.",
+        "currentReview": "정팔각형을 식별한 뒤 대각선, 각의 합, 분할 삼각형 수에 관한 진술을 각각 대조한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_4645375fc8d91e4a879bc3a19c5d48db2a0f3789bde9dee9d7360d13fb3218d6",
+      "fingerprints": {
+        "QBODY": "e63e68ddeafe519a3bbbce2db29f570fe48635b74c33825a1e103c24d491815a",
+        "QFULL": "83fba475a77fa89aecc6c54cf0bdfbbcf05b6151eb7deb5b6414b2505d4594f8",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q1-solution.svg",
+            "sha256": "508709a57945d5dbb6ea3f1f1af84c4a6c157413335a3146920f9d5e1a35d48c"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x-\\angle y$의 크기는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x-\\angle y$"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$\\angle x-\\angle y$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평각",
+            "src": "solution",
+            "quote": "한 직선 위의 이웃한 각이다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 교점에서 각각 이웃하는 각의 합을 180도로 둔다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 직선 위의 각각의 인접각을 180도에서 빼어 x와 y의 차를 구한다.",
+        "currentReview": "서로 다른 두 꼭짓점에서 평각으로 표시각을 복원한 뒤 차를 구한다. 맞꼭지각·삼각형 내각합·각의 비는 필요 없다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_53311861e37719615dc603db64c1ff8a413a01daec5580b8b0a5a129b9f5afbf",
+      "fingerprints": {
+        "QBODY": "f0dc8e443d8bcb89fc1283223489becd73e747d4ea0992dcd7166f75e851f928",
+        "QFULL": "3623c328638b005c7628cc8b4991d9def8c793e6ec2c3588183b4786ebfc814e",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q2.png",
+            "sha256": "0d783f10576e757e3649205e0ee6aee09a5947dcf223207b8b1a2971f1bcd23d"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q2-solution-v2.svg",
+            "sha256": "90a6b0c1c557296f91a27b0c4b046eb5a70c1e41be4be92cec0cabad2375fc32"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x-\\angle y-\\angle z$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x-\\angle y-\\angle z$"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$\\angle x-\\angle y-\\angle z$"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "오른쪽의 삼각형에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "$(180^\\circ-x)+y+40^\\circ=180^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "$180^\\circ-x$",
+            "evidenceType": "IMPLIED",
+            "justification": "교차점의 바깥쪽 표시각 x를 보각인 삼각형 안쪽 각으로 바꾸어 내각합에 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "별의 다섯 꼭짓점 각의 합으로 z를 정하고 삼각형 내각과 인접각에서 x-y를 구한다.",
+        "currentReview": "별의 끝각 합으로 한 각을 정한 뒤 교차점의 보각과 삼각형 내각합으로 표시각의 차를 구한다. 기본도형보다 다각형 각 추론에 해당한다."
+      },
+      "steps": [],
+      "scenarioNote": "별 모양",
+      "questionUid": "qid_v1_4bb877da6e4bb5441e18c36687a9f0bbc01eab3d19cac457cc3cb7ef799342b8",
+      "fingerprints": {
+        "QBODY": "8e9b37be7b54a8ac8fc7373ac9e9bc3e694662dda2deea8e0aeb018ed71f95ba",
+        "QFULL": "8e8c624abdd0c2e1bc8cb6f25fe48c23e5466af45bda297d8afdaa49b6de477b",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q3.png",
+            "sha256": "0b5dd7ca4da1191aa672459dc0ba2e735cb9f2de576cdcee70cc316f6911c89a"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q3-solution-v2.svg",
+            "sha256": "dd7ed3a8bbea6527fdc5fa39b3f3096a249b10eceda43038c87874adb0c7a48a"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "choices",
+            "quote": "한 원에서 부채꼴이면서 활꼴인 도형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "반원",
+            "src": "solution",
+            "quote": "반원은 두 반지름과 호로 이루어진 부채꼴",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "원의 현 중 가장 긴 현은 지름",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "반원이 부채꼴이자 활꼴인 점과 현 및 중심각의 정의를 대조한다.",
+        "currentReview": "현과 직선, 중심각과 두 현의 각, 부채꼴과 활꼴을 정의로 구별한다. 독립 진술 판정이며 수학적 경우 분기가 아니다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_1df6f3c53c22679b87c4c170c6f368d867b924be560cd69f6baa2cd3468255f5",
+      "fingerprints": {
+        "QBODY": "8278d60c70533a48da56e2bb01bc681d04a7640ff6eaeb441b3f61321fa52aa8",
+        "QFULL": "9bc156627f2f0978740fb01a23a1cf8510b9a0f42218e7d76ed8bc611fef134c",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q4-solution-v2.svg",
+            "sha256": "f01912891ff5ea2d6dbfaa924d279ffdbf5340f8437687ae123f730d34c3ece9"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "부채꼴의 호의 길이를 구하면?"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름의 길이가 $5\\rm\\,cm$"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이가 $20\\pi\\rm\\,cm^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "부채꼴의 호의 길이를 구하면?"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "부채꼴의 호의 길이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$S=\\dfrac12rl$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "부채꼴의 넓이와 반지름·호 길이의 관계식에서 호의 길이를 푼다.",
+        "currentReview": "주어진 반지름과 넓이를 부채꼴 넓이-호 길이 관계에 대입해 호 길이를 역산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_40c01ce6a1b0c59462238a9569acf481e61d32f6dd115b1429906782353e9d2b",
+      "fingerprints": {
+        "QBODY": "c72e5ddcaca69ee1f17c858d90ae64544d0bf6be16339511c428a86c2f1b5f7d",
+        "QFULL": "f725311a72945dfc00138d8841df1f29191569cffb2e42210038c65f34a7cc54",
+        "QASSET": []
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "\\wideparen{AB}:\\wideparen{BC}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만 있는 대로 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "비례배분",
+            "src": "solution",
+            "quote": "전체가 $360^\\circ$이므로 한 비의 크기",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례",
+            "src": "solution",
+            "quote": "길이의 비가 $1:3$이라고 현의 길이도",
+            "evidenceType": "IMPLIED",
+            "justification": "호 길이와 중심각의 비는 같지만 현 길이에는 그 비를 그대로 적용하지 않는다."
+          },
+          {
+            "term": "부채꼴",
+            "src": "solution",
+            "quote": "부채꼴 $AOB$의 넓이는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "호의 비로 중심각을 나누고 현 길이, 호 길이와 부채꼴 넓이의 각 관계를 구별한다.",
+        "currentReview": "호의 비를 중심각과 길이에 적용하고 넓이 공식을 대조한다. 현 길이에 호의 비를 잘못 적용한 진술을 배제한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_71c1c30b662418fb46def41379a06967e78c5e19d7239c004b1a5b0be6a28ad8",
+      "fingerprints": {
+        "QBODY": "de5b7c7934cf97e5c20eda015b24cfe3bb6310561b872cfd9fa71c9c571bf624",
+        "QFULL": "20758d0062eb87aded43bee91310d167704ef519a24cadb048dbd0e6068d0d2f",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q6.png",
+            "sha256": "79100b88f256ff2745d79467ad7435a06def8afa1d29a7d311ac043f177c2b47"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q6-solution.svg",
+            "sha256": "e12d485dcf1b47fe6472184aff3e6596b47e385ec24b243c3f776639f70c6602"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형을 직선 $l$ 위에"
+          },
+          {
+            "term": "회전이동",
+            "src": "stem",
+            "quote": "미끄러지지 않게 한 바퀴 굴릴 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "꼭짓점 $A$가 움직인 거리는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "회전이동",
+            "src": "solution",
+            "quote": "각 꼭짓점을 중심으로 $90^\\circ$짜리 원호",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "회전 중심까지의 거리는",
+            "evidenceType": "IMPLIED",
+            "justification": "각 회전 중심까지 거리를 반지름으로 사분원호 길이들을 더한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 꼭짓점을 중심으로 굴릴 때 A가 그리는 세 사분원호의 길이를 합한다.",
+        "currentReview": "바뀌는 회전 중심에서 꼭짓점의 궤적을 서로 다른 반지름의 사분원 호 세 개로 읽고 합한다. 대각선 길이는 이미 주어져 피타고라스 개념은 없다."
+      },
+      "steps": [],
+      "scenarioNote": "직사각형 굴리기",
+      "questionUid": "qid_v1_60a01803a994f2e64293b2fda6278172505188e40653c8646b7316ca665f7645",
+      "fingerprints": {
+        "QBODY": "c208c217ea2a7a60394c3924254d36e344e8c83af19fe41a5e541ebb18d57496",
+        "QFULL": "1249680df9895a5338f5a7aaa005ca01ffdd0a2c310b3e75a74208796791ac17",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q7.png",
+            "sha256": "626cdf713db47ec07e123572573fa2f76b233d799cf680f6dbd70227268704fe"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q7-solution-v2.svg",
+            "sha256": "b54171fb11718ade7530ee47c55748f6661428441c724e3d06821325146b4e98"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "한 변의 길이가 $4\\rm\\,cm$인 정사각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "색칠한 부분의 둘레는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "원호로 된 경계를 같은 반지름의 원호끼리",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "직선 부분과 원호 부분으로 나누어 더한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "경계의 직선 조각과 사분원호를 각각 모아서 길이를 합한다.",
+        "currentReview": "색칠 영역의 경계를 정사각형 변과 사분원 호들로 분리해 합한다. 한 번의 경계 분해이며 반복 상호의존이 없다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_1fc449531d368e7283a46b223907aa72e6b1a5178930267671e61c65c5d14075",
+      "fingerprints": {
+        "QBODY": "be37e4b03753afd1915d1b80b024aca5e356563aea5e7873fef7baeb41fee85e",
+        "QFULL": "e0e40ec05e32f6fb688783d5c8b1da4cbfd7be50d37a71b2a94f605c41b6aece",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q8.png",
+            "sha256": "7991d9cb79bee722376f98410eb0ebd8f765161b171ead2f84be3f1b013c6883"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q8-solution-v2.svg",
+            "sha256": "8fa745ddc2c5c39871a6d41e2c5ef7fadfd59a2bd946a63152def451869cacc6"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "각뿔대",
+            "src": "choices",
+            "quote": "육각뿔대는 팔면체이다."
+          },
+          {
+            "term": "정다면체",
+            "src": "choices",
+            "quote": "정다면체는 $5$종류뿐이다."
+          },
+          {
+            "term": "구",
+            "src": "choices",
+            "quote": "구는 단면이 항상 원이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정사면체",
+            "src": "solution",
+            "quote": "정사면체의 네 면은 합동인 정삼각형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정다면체",
+            "src": "solution",
+            "quote": "정다면체는 5종류이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "단면",
+            "src": "solution",
+            "quote": "구를 평면으로 자른 단면은 원",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 입체의 면과 단면 및 정다면체의 정의에 따라 보기를 판정한다.",
+        "currentReview": "면 수, 정다면체 종류, 구 단면, 밑면 평행성, 정사면체 면 모양을 대조한다. 독립 진술 검토는 경우 분기가 아니다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_92ad3a05430b30ee63b375de09ae635f950339391df4569f2f87edf7c15b03cb",
+      "fingerprints": {
+        "QBODY": "063c9c45b3664c5c3e305ee8d8f7d954b6e0c7889b6125adcf8f980a61b10fe9",
+        "QFULL": "54b440bc9e56a6f203cd6798742db32068d46b60bef735daae7109ce0842c844",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q9-solution-v2.svg",
+            "sha256": "f1cdaf5ec56ec6141adae57c12a3863158cd9f14421248300be97cfc089ddabc"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "전개도",
+            "src": "stem",
+            "quote": "그 전개도가 보기와 같은 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "보기와 같은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원뿔대",
+            "src": "solution",
+            "quote": "이 전개도는 원뿔대의 전개도이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "회전체",
+            "src": "solution",
+            "quote": "평면도형을 한 번 회전시켰을 때",
+            "evidenceType": "IMPLIED",
+            "justification": "사다리꼴을 회전해 원뿔대가 되는 평면도형을 고른다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "서로 다른 두 원과 고리 부채꼴인 전개도에서 원뿔대를 식별하고 회전시키는 도형을 찾는다.",
+        "currentReview": "두 크기가 다른 원과 고리 부채꼴 전개도를 원뿔대로 인식하고 사다리꼴 회전으로 생성하는 보기를 고른다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_3e6a4452298d733fdd51ed48e9a37c02ab8ead4ce4e30ad48ead8389d146a3dd",
+      "fingerprints": {
+        "QBODY": "5183070ba96bb435431e8ed2eca4e2bc356dbc24fa5430991f92b30aeeed04c2",
+        "QFULL": "b63b2e58cd7e5655d6f1cd3e57aaa97577a959d9eceea71675f638bab6798ee1",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q10.png",
+            "sha256": "cb4c73b75297d959d51faff63038a60ceb65a42331d8400fd9216c752fb08d2b"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q10-solution-v3.svg",
+            "sha256": "d90eb45533965e6ecc303add3c478d24713f88863c8aa65f5d5264bc547d601e"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "각뿔대",
+            "src": "stem",
+            "quote": "육각뿔대의 꼭짓점의 개수"
+          },
+          {
+            "term": "정다면체",
+            "src": "stem",
+            "quote": "정십이면체는 모서리가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "육각뿔대의 꼭짓점의 개수는 $a$개이다."
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "위 밑면에 꼭짓점 6개, 아래 밑면에 꼭짓점 6개",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "모서리",
+            "src": "solution",
+            "quote": "정십이면체의 모서리의 개수는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정다면체",
+            "src": "solution",
+            "quote": "정십이면체의 모서리의 개수는 $30$개",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "육각뿔대의 두 밑면 꼭짓점과 정십이면체의 모서리 수를 구하여 더한다.",
+        "currentReview": "각뿔대의 두 밑면 꼭짓점과 정다면체의 면-모서리 중복을 고려해 두 개수를 합한다. 직접 계수형에 근거해 문자열 난이도를 1로 교정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_a94ccfc2dd22bf72606b84f2284aecfc83018bd9d9dc2d547614576d4f754196",
+      "fingerprints": {
+        "QBODY": "cce71c0adf0457b614a4d59a48fb955eee24688ba3cc362721d4d6ede9d62fb5",
+        "QFULL": "20ba85104b5b2eae19c94c8841835db1dbe90d35324fe4cb9543439fbedc5b15",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q11-solution-v2.svg",
+            "sha256": "ebae4feb01f790281125799a507d9f3b2140def180a5625f2d1505dfd71000f4"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원뿔",
+            "src": "stem",
+            "quote": "원뿔의 옆면에 페인트를"
+          },
+          {
+            "term": "회전이동",
+            "src": "stem",
+            "quote": "꼭짓점 $O$를 중심으로 굴렸더니"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "페인트가 묻은 부분의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주",
+            "src": "solution",
+            "quote": "밑면의 둘레는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "모선",
+            "src": "solution",
+            "quote": "모선의 길이를 반지름으로 하는 원의 둘레",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "페인트가 지나간 부분은 반지름",
+            "evidenceType": "IMPLIED",
+            "justification": "모선을 반지름으로 하는 원의 넓이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 바퀴 굴린 밑면 원주가 모선을 반지름으로 하는 원의 둘레임을 이용해 모선과 칠해진 넓이를 구한다.",
+        "currentReview": "밑면 원주와 굴린 횟수로 꼭짓점 주위 궤적 원주를 연결해 모선을 복원한 뒤 모선이 반지름인 평면 원의 넓이를 구한다. 전개도/겉넓이를 묻지 않는다."
+      },
+      "steps": [],
+      "scenarioNote": "원뿔 굴리기",
+      "questionUid": "qid_v1_dac159f88b041dbfe23bee2a8bb6a54536139a7106304c35721e829d53c1e4dc",
+      "fingerprints": {
+        "QBODY": "2c80143b124ca5a2dfd65e844fb3044052170343cff6503194cbf52a75d8cccb",
+        "QFULL": "4a879c7681f61e6c8ddb031076359fe313e4b2f438368ee7c4b2a43505c1198a",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q12.png",
+            "sha256": "14b5159b71fdb65f71b2fe8e290477162c8458f42d0376d435bcd780989670af"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q12-solution-v2.svg",
+            "sha256": "3a16a07521d2e3415686e31d5515dbc8ac4940c066f8b664517e9b120b0f4560"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "회전체",
+            "src": "stem",
+            "quote": "어떤 회전체를 회전축에 수직인 평면"
+          },
+          {
+            "term": "단면",
+            "src": "stem",
+            "quote": "회전축을 포함하는 평면으로 자른 단면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "이 회전체의 부피는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원기둥",
+            "src": "solution",
+            "quote": "높이가 $8\\rm\\,cm$인 원기둥이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "$\\pi\\times3^2\\times8=72\\pi",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 방향의 원형·직사각형 단면으로 원기둥을 식별하고 반지름과 높이로 부피를 구한다.",
+        "currentReview": "수직 단면의 원과 축 포함 단면의 직사각형에서 원기둥 반지름·높이를 읽고 부피에 대입한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_28c548b3d7d879690980de8f555292c118522ce28c8eb0952b131e8c9dd3c584",
+      "fingerprints": {
+        "QBODY": "21ca4e8865e2552c9b60480a71877b54b0721f1f581e6964bde4d20d8e1c86bc",
+        "QFULL": "0e11da3ce35209e8c3fdadb0815080194ecc0e83dad5f95f99d08a8afd563c6f",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q13.png",
+            "sha256": "b1d5068abaa5a9761a6e709dcc2705d953a9bcd4f29a5c4b67ba1ed12637ebf5"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q13-solution.svg",
+            "sha256": "e62fb579107161668445b7fbf5da1c085b9d6fa1893a169f8cab87af76925581"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "구",
+            "src": "stem",
+            "quote": "반지름이 $6\\rm\\,cm$인 구"
+          }
+        ],
+        "goal": [
+          {
+            "term": "겉넓이",
+            "src": "stem",
+            "quote": "이 입체도형의 겉넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "구",
+            "src": "solution",
+            "quote": "구면은 전체의 $\\dfrac18$을 잘라냈으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사분원",
+            "src": "solution",
+            "quote": "새로 생긴 세 평면은 각각",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 수직인 세 절단면은 반지름 6인 사분원이다."
+          },
+          {
+            "term": "겉넓이",
+            "src": "solution",
+            "quote": "$126\\pi+27\\pi=153\\pi",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "남은 구면의 7/8과 세 사분원 절단면의 넓이를 더한다.",
+        "currentReview": "남은 구면과 잘라서 드러난 세 사분원 면을 구분해 넓이를 합한다. 노출면 분해이며 DEEP_COMPOSITE가 아니다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_93f3c56129d4f5ed10271eeb13a5e4ac319314b53e1fdf529f89f9893afa7ae2",
+      "fingerprints": {
+        "QBODY": "dfdd4d7800609447a0f289207e606d7f9e5536b8f472a9aeb668f4927522c70f",
+        "QFULL": "974d9b491ee242cdfd98240c7a69d871e6df9066938452684d12b20711fd76c4",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q14.png",
+            "sha256": "c21c60dafce2347b33f56b34cb836537bb765f521e8ca4becacf69784518de27"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q14-solution-v2.svg",
+            "sha256": "105652fed6bfeaac959a3365d5471d031df64816096a6344c597ecc0c8c5c87d"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직육면체",
+            "src": "stem",
+            "quote": "다음 그림의 (가), (나)",
+            "justification": "직접 열람한 q15 원그림에서 치수 6, 7, 4인 같은 직육면체 용기의 서로 다른 방향을 제시한다."
+          },
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "같은 양의 물이 들어 있을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$x$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "물이 차지하는 부피가 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "$7=3x$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "같은 양의 물이 들어 있을 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "해설은 두 물의 부피를 같은 단면을 기준으로 비교해 7=3x를 얻는다. 분할과 치수의 연결은 해설에 구체적으로 제시되지 않는다.",
+        "currentReview": "두 방향에서 물이 차지하는 삼각기둥형 부피를 같다고 놓는다. 부피 보존 자체가 Primary 골격으로 별도 INTERDEPENDENT가 아니다."
+      },
+      "steps": [],
+      "scenarioNote": "서로 다른 자세의 용기 속 물",
+      "questionUid": "qid_v1_ffcd4992e7ec7512be232e19f56037887e79e2d8706930dd9561b3857daa473a",
+      "fingerprints": {
+        "QBODY": "27b188793679039d922f7ea6120b168ca3c379b426d724ec090d28fec635cb7f",
+        "QFULL": "837e383d6cbd15d54754fa49d38808dac9cffadf790abf6f555ce324c2fd906f",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q15.png",
+            "sha256": "2865a400141fcfa6be7d2bb8d8c33717ba32607ed88c17c5ccc943421c383811"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q15-solution-v3.svg",
+            "sha256": "0b61af60429a96692c150a729abe08a759580df5f965185c74cad1e8e142595d"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원기둥",
+            "src": "solution",
+            "quote": "중심각 $240^\\circ$인 원기둥의 일부"
+          }
+        ],
+        "goal": [
+          {
+            "term": "겉넓이",
+            "src": "stem",
+            "quote": "입체도형의 겉넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부채꼴",
+            "src": "solution",
+            "quote": "위아래 두 부채꼴의 넓이의 합은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "옆넓이",
+            "src": "solution",
+            "quote": "곡면의 넓이는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "두 직사각형 면의 넓이의 합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "위아래 부채꼴, 원통의 곡면 및 두 절단 직사각형의 넓이를 더한다.",
+        "currentReview": "위아래 부채꼴, 남은 곡면, 새 직사각형 두 면을 더한다. 노출면 분해 후 선형 합산이다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_64d3b95ee51ba9885c4b63cf4ae32b89c5d421ca6be5f1cb58aecbe432228be5",
+      "fingerprints": {
+        "QBODY": "dd5ae726f884059e2058a11e10b01bf4cf753e2ec102ecd8badb84c21bbc6773",
+        "QFULL": "6fdbab32e7a7209212ba187593ceb3c9335375b0287399f5309cb185d42fc1b5",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q16.png",
+            "sha256": "f3b7a2bae5ef42b9bd540a2da12eae6de0cd7b9d9908324b764962cd5b459f65"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q16-solution-v2.svg",
+            "sha256": "32be3ac26682ae2d69619a2d23af104ae724347116bb00db85ccd8f2b6f9a5dc"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "줄기와잎",
+            "src": "stem",
+            "quote": "줄기와 잎 그림으로 나타낼 때"
+          },
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "수영반 수강생의 나이를 조사"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b+c$의 값은?"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b+c$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순서",
+            "src": "solution",
+            "quote": "자료를 작은 수부터 정리하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "줄기와잎",
+            "src": "solution",
+            "quote": "줄기와 잎 그림의 빈칸을 이 순서와 비교하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원자료를 크기순으로 정리해 줄기별 빠진 잎을 복원하고 그 합을 구한다.",
+        "currentReview": "원자료를 십의 자리별로 묶고 일의 자리를 정렬해 빈 잎을 복원한다. 계급 도수나 중앙값 산출과 구별한다."
+      },
+      "steps": [],
+      "scenarioNote": "수영반 나이",
+      "questionUid": "qid_v1_f37124d064bc58716515294d2299d077f71db938c78e70532b833154e5fef9db",
+      "fingerprints": {
+        "QBODY": "e4d4375734d1236ffd511ee9b827ef01d31518f556a1183ec792e20619e67f9b",
+        "QFULL": "466c39351da5bd851d83309e0d4f1378a4997710c89033cf754b17b9d3f4758f",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q17.png",
+            "sha256": "206cb882142cc7c93f2020c99d3bcc4d54b52378149b6b77f96ac7fb5fec9792"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q17-solution.svg",
+            "sha256": "5ced6ee29538322037e3bf54150823e8c7bf2ea82124d709bc040eda2b77ad83"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "이 자료의 중앙값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중앙값",
+            "src": "stem",
+            "quote": "이 자료의 중앙값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "10번째와 11번째 값의 평균이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "20개 자료의 크기순 가운데 두 값의 평균을 구한다.",
+        "currentReview": "공통 자료를 정렬했을 때 가운데 두 순위 값으로 중앙값을 계산한다. 줄기와 잎은 표현이고 주개념은 중앙값이다."
+      },
+      "steps": [],
+      "scenarioNote": "수영반 나이",
+      "questionUid": "qid_v1_107e12507edec26393f63b78e6ce047d05afc5365a3f0284575460f1ad83ed47",
+      "fingerprints": {
+        "QBODY": "3838bea84f7b632a4bdfe6da5afa6b9ddd4c8b0b9aeb1010247f0f5cb430ff8b",
+        "QFULL": "5396937c4be6fd5b6dfa8e9d7a83499cbe5674d6db7a9ffcdf0fdbc65adfbf10",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q18-solution.svg",
+            "sha256": "517a292035a5763558b780e500b5b4668ba15c5a0a23c620f4b9951346bc8083"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "도수분포표",
+            "src": "stem",
+            "quote": "다음 도수분포표는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "계급",
+            "src": "solution",
+            "quote": "계급의 크기는 $10$분이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "도수",
+            "src": "solution",
+            "quote": "가장 큰 도수 $16$명",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "상대도수",
+            "src": "solution",
+            "quote": "$\\dfrac{34}{50}\\times100=68\\%$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "계급과 도수를 읽고 30분 미만 계급 도수 합의 전체 대비 백분율을 확인한다.",
+        "currentReview": "계급·도수와 경계 아래 누적 인원을 읽고 전체 대비 백분율로 바꾸어 진술을 검증한다. 그래프나 줄기·잎 변환 문제가 아니다."
+      },
+      "steps": [],
+      "scenarioNote": "시장 체류 시간",
+      "questionUid": "qid_v1_355e74d9f609e333c2940cdb78799a0b31689ad41d5e1a7ad02c251d863c1d7d",
+      "fingerprints": {
+        "QBODY": "34f82f31e51f3186f070cf15b3eb8703a84e4a81b0ed3e69d4b03248a584c502",
+        "QFULL": "b7728859489712b0006bfd857e7019828e32868b880b4b72d4d8dde6aab9fc60",
+        "QASSET": []
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "도수분포다각형",
+            "src": "stem",
+            "quote": "도수분포다각형의 일부이다"
+          },
+          {
+            "term": "상대도수",
+            "src": "stem",
+            "quote": "도수는 전체의 $\\dfrac1{10}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "도수",
+            "src": "stem",
+            "quote": "$18$초 이상인 학생 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$10a=30+(a+2)+a$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "도수",
+            "src": "solution",
+            "quote": "그래프의 도수를 더하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "기록이 $18$초 이상인 학생 수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "미지 도수를 전체의 1/10이라는 관계와 다른 도수의 합에 연결해 구하고 해당 계급의 도수를 더한다.",
+        "currentReview": "한 누락 도수로 전체 인원과 다른 누락 도수를 표현하고 도수 합 조건을 풀어 목표 구간 인원을 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "100m 기록",
+      "questionUid": "qid_v1_6b1b1ca5a079ec503132ad4834946469bfa7e36bb50dc6b92dd36973d819ebf7",
+      "fingerprints": {
+        "QBODY": "c2ca9ae58e4ef2153fce1fea8e580db59f310edce4fc0ebba565762d4735f377",
+        "QFULL": "8aee9a37a59e99aa6229c3dad4757c6fdbbe25afb765dba921f1972ca99e7dd5",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q20.png",
+            "sha256": "c0b592560455babc31ae40ad67892ed315827b146f12b24344532718585762ab"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q20-solution.svg",
+            "sha256": "46dd2505ffce60c05daa0bef02449b94f50e623fbadc3f91c9c3585474822908"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "다각형",
+            "src": "stem",
+            "quote": "대각선의 개수가 $a$이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "내각",
+            "src": "stem",
+            "quote": "이 다각형의 내각의 크기의 합"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "내각의 크기의 합을 구하고"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "$a=n-3$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$(n-3)+(n-2)=35$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "$(20-2)\\times180^\\circ=3240^\\circ$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "n각형의 한 꼭짓점 대각선 수와 분할 삼각형 수로 n을 결정하고 내각 합을 구한다.",
+        "currentReview": "한 꼭짓점 대각선 수와 분할 삼각형 수를 변의 수로 나타내 일차관계를 풀고 내각의 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_67eb2d2f33f50a13c3ca2f82f8eccb73051fc85492458f4258234c4e0bbd3af9",
+      "fingerprints": {
+        "QBODY": "9dd6a91a19e651ff194fdcbdc9acec52c0af5c766d26c4ec2e030f3f2be7e43d",
+        "QFULL": "6b8bff2555bbe7b1a28fc0a9215686c9470265ba67e79e19f0c2f43545e74d3c",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q21-solution-v2.svg",
+            "sha256": "669d6087ad1f258dd69d1808519bc75d89898650760e5f959061a1262ad9cb12"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "지름 $\\overline{AB}$의 연장선"
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "$\\wideparen{AC}=12\\rm\\,cm$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "$\\wideparen{BD}$와 $\\wideparen{CD}$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 각각 구하고"
+          }
+        ],
+        "method": [
+          {
+            "term": "비례",
+            "src": "solution",
+            "quote": "$12=C\\times\\dfrac{48}{360}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$DO=DP$이므로 $\\triangle ODP$는 이등변삼각형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "$C,D,P$가 한 직선 위에 있으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "이등변삼각형의 외각과 다른 이등변삼각형의 밑각을 연결한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$132^\\circ=(180^\\circ-4\\theta)+\\theta$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\overline{DO}=\\overline{DP}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "알려진 호와 중심각으로 원주를 구하고 두 이등변삼각형과 외각으로 미지 중심각을 정해 호 길이를 계산한다.",
+        "currentReview": "두 이등변삼각형의 밑각 관계와 평각을 연결해 중심각들을 정한 뒤 같은 원의 호 길이 비례를 적용한다. 이등변삼각형 성질은 필수 보조개념이다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_7b83f4c730303f4668dc2d0d44df70d20c35664a10a45b77d11a229ba97eb882",
+      "fingerprints": {
+        "QBODY": "f8eb1ee2ff5cb14e126ee1a938cbf1412b891bde99b6ede98058b14c680b8f24",
+        "QFULL": "862a51235107154422b2b9f51a91c5358d50d28e698e00b0f52a8ca64236d8de",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q22.png",
+            "sha256": "8206d9537019a1322c41079a1279b0d0fbedd582899b62cf21b779a2da68b5b6"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q22-solution-v3.svg",
+            "sha256": "2716cb4406d99c5fa8f990417ed1b87b8a974cf329731ba890ff1570008f098c"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "원기둥",
+            "src": "stem",
+            "quote": "원기둥에 꼭 맞는 구와 원뿔"
+          },
+          {
+            "term": "구",
+            "src": "stem",
+            "quote": "원기둥에 꼭 맞는 구와 원뿔"
+          },
+          {
+            "term": "원뿔",
+            "src": "stem",
+            "quote": "원기둥에 꼭 맞는 구와 원뿔"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "원뿔, 구, 원기둥의 부피를 각각"
+          },
+          {
+            "term": "부피비",
+            "src": "stem",
+            "quote": "부피의 비를 가장 간단한 자연수의 비"
+          }
+        ],
+        "method": [
+          {
+            "term": "지름",
+            "src": "solution",
+            "quote": "원기둥의 높이는 구의 지름과 같은 $2r$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "원뿔의 부피는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "공통인 $\\dfrac23\\pi r^3$을 기준으로 나누면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "원기둥에 꼭 맞는 구와 원뿔"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "꼭 맞는 구의 지름으로 공통 높이를 정하고 각 입체의 부피 공식을 구한 뒤 공통인자로 나누어 비를 만든다.",
+        "currentReview": "꼭 맞는 구에서 공통 높이가 지름임을 읽고 세 부피 공식을 같은 반지름으로 나타내 약분한다. 모두 입체 측정 Primary 안이다."
+      },
+      "steps": [],
+      "scenarioNote": "아르키메데스의 입체 비",
+      "questionUid": "qid_v1_182ccc2b6c2772f8a12f87e0048539e10c4f52e8f341ab35103b859e3d2e46dd",
+      "fingerprints": {
+        "QBODY": "cba030f28a83c9e293a276d01462e64759f76779d9a11c1f9570f37d370471c7",
+        "QFULL": "9b5e6c92abf2e1702ee04077f79c4c72e10184d863893afd4942bb4bd616293b",
+        "QASSET": [
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q23.png",
+            "sha256": "0483f5e52cb797141e0b022bf45a4c6c6923dd88526e02e7ae5a21de19f5cd5a"
+          },
+          {
+            "path": "assets/images/25_연향중_2학기_기말_중1_기출/q23-solution-v2.svg",
+            "sha256": "ddf6878b3bbc2acb71c273cfd755c6a526be945becf06475866fdfe6702db488"
+          }
+        ]
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "별의꼭짓점각의합",
+      "en": "PENTAGRAM_TIP_ANGLE_SUM",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "각",
+      "note": "오각별 다섯 꼭짓점의 각 크기의 합은 180도이다.",
+      "usedIn": [
+        3
+      ]
+    },
+    {
+      "term": "정십이면체",
+      "en": "REGULAR_DODECAHEDRON",
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "정다면체",
+      "note": "정오각형 12개를 면으로 갖는 정다면체.",
+      "usedIn": [
+        11
+      ]
+    },
+    {
+      "term": "삼각기둥",
+      "en": "TRIANGULAR_PRISM",
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "각기둥",
+      "note": "Q15의 부피 분해에 필요한 구체적 대상. 정본 사전에 ID가 없어 승인요청만 기록하며 compact ID에는 강제 편입하지 않는다.",
+      "usedIn": [
+        15
+      ]
+    }
+  ],
+  "selfCheck": {
+    "items": 23,
+    "quotesChecked": 129,
+    "quotesNotFound": 0,
+    "warningsRechecked": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      10,
+      11,
+      13,
+      14,
+      15,
+      17,
+      18
+    ],
+    "notes": "모든 문항의 현재 발문·보기·기존 정답·해설을 재독하고 필요한 원그림 직접 확인. 기존 인용을 재사용하고 수정 7문항의4칸 증거를 보완. 시험지당3문항 independent sample은 root별도 수행.",
+    "validation": {
+      "tool": "tools/4slot/validate-4slot.cjs",
+      "items": 23,
+      "examItems": 23,
+      "quotes": 129,
+      "fail": 0,
+      "warn": 12,
+      "warningsRechecked": true,
+      "interpretation": "짧은 정의·직접공식·중앙값 계산의 실제 필수 방법이 적은 경우 및 좁은 도형범위 경고로, 본문·해설을 다시 확인하고 불필요한 일반연산/중복 용어를 추가하지 않았다."
+    }
+  },
+  "previousJudgedBy": {
+    "agent": "Codex-gpt-6.1-terra",
+    "run": "original-151-160",
+    "at": "2026-11-04"
+  },
+  "evidenceReuse": {
+    "branch": "work/4slot-annotate-v1",
+    "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+    "path": "archive-work/4slot-annotate-v1/out/original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.4slot.json"
+  },
+  "review": {
+    "status": "REVIEWED_WITH_INDEPENDENT_SAMPLE",
+    "reviewer": "GPT_ROOT_54CB21AF3005_A/A2",
+    "sampled": [
+      2,
+      7,
+      15
+    ],
+    "evidence": "docs/operations/m1-s2-meta-b01-a-20261114/a2-cross-exam1.json",
+    "sourceProtectedPayloadEqual": true
+  }
+}
