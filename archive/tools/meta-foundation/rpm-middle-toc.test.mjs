@@ -116,7 +116,7 @@ test('publisher-confirmed cross-L1 placements require exact leaf evidence and do
     assert.equal(exact.effectivePath.L1, '다항식의 곱셈과 인수분해');
     assert.equal(exact.effectivePath.L2, '다항식의 곱셈');
     assert.deepEqual(Toc.refinePath(exact.effectivePath).basePath, Toc.normalizePath(mapping.basePath));
-    assert.equal(Toc.refinePath({ ...exact.effectivePath, L4: '' }).status, 'EXACT');
+    assert.equal(Toc.refinePath({ ...exact.effectivePath, L4: '' }).reason, 'EXCEPTION_L4_REQUIRED');
     const oldConcept = Toc.refinePath({ ...Toc.normalizePath(mapping.basePath), L4: '' });
     assert.equal(oldConcept.status, 'LEGACY_PARENT_AMBIGUOUS', L3);
     assert.equal(oldConcept.candidateParentKeys.length, 2);
@@ -225,4 +225,135 @@ test('source or base authority drift fails validation before rebuilding browser 
   const changedIds = structuredClone(authority);
   changedIds.leafMappings[0].crosswalkRecordIds = ['different record'];
   assert.throws(() => validateParentAuthority(changedIds, root), /CROSSWALK_ID_DRIFT/);
+});
+
+test('the three split concepts require L4 under both stored and current parents', () => {
+  const exceptions = [
+    ['M2-RPM-194', '여러 가지 사각형'], ['M2-RPM-195', '평행사변형'],
+    ['M3-RPM-103', '근호를 포함한 식의 계산'], ['M3-RPM-104', '다항식의 곱셈'],
+    ['M3-RPM-105', '다항식의 곱셈'], ['M3-RPM-106', '근호를 포함한 식의 계산'],
+  ];
+  for (const [id, destination] of exceptions) {
+    const mapping = authority.leafMappings.find(row => row.crosswalkRecordIds.includes(id));
+    const leaf = Toc.refinePath(mapping.basePath);
+    assert.equal(leaf.effectivePath.L2, destination, id);
+    for (const input of [leaf.basePath, leaf.effectivePath]) {
+      const withoutL4 = { ...input, L4: '' };
+      const record = { questionUid: `fixture-${id}`, originalCurriculum: '2022', rpmPrimaryPath: withoutL4,
+        standardUnitKey: 'stored-unit', subUnitKey: 'stored-subunit', approval: { status: 'KEEP' } };
+      const before = JSON.stringify(record);
+      const found = Toc.resolveRecord(record, mapping.basePath[1].slice(0, 2));
+      assert.equal(found.status, 'LEGACY_PARENT_AMBIGUOUS', id);
+      assert.equal(found.reason, 'EXCEPTION_L4_REQUIRED', id);
+      assert.equal(found.parent, null);
+      assert.equal(found.candidateParentKeys.length, 2);
+      assert.equal(JSON.stringify(record), before);
+    }
+  }
+});
+
+test('explicit RPM evidence must agree while matching base/current paths and legacy storage remain compatible', () => {
+  const area = authority.leafMappings.find(row => row.crosswalkRecordIds.includes('M2-RPM-194'));
+  const partition = authority.leafMappings.find(row => row.crosswalkRecordIds.includes('M2-RPM-195'));
+  const areaPath = Toc.normalizePath(area.basePath);
+  const partitionPath = Toc.normalizePath(partition.basePath);
+  for (const conflict of [
+    { rpmSemantic: partitionPath },
+    { metadataAssignmentEvidence: { rpmMetadata: Toc.toRpmPath(partitionPath) } },
+    { rpmMetadata: { rpmCurriculum: '2022', rpmScope: 'M2-2', rpmL1: partitionPath.L1,
+      rpmL2: partitionPath.L2, rpmL3: partitionPath.L3, rpmL4: partitionPath.L4 } },
+  ]) {
+    const record = { questionUid: 'unchanged', originalCurriculum: '2022', rpmPrimaryPath: areaPath, ...conflict };
+    const before = JSON.stringify(record);
+    const found = Toc.resolveRecord(record, '중2');
+    assert.equal(found.status, 'AMBIGUOUS');
+    assert.equal(found.reason, 'RPM_EVIDENCE_PATH_CONFLICT');
+    assert.equal(found.parent, null);
+    assert.equal(JSON.stringify(record), before);
+  }
+  const effective = Toc.refinePath(areaPath).effectivePath;
+  const compatible = { originalCurriculum: '2022', rpmPrimaryPath: effective, rpmSemantic: areaPath,
+    basicAssignment: p('M2-2', '사각형의 성질', '평행사변형'),
+    standardUnitKey: 'M2-05', subUnitKey: 'M2-05-QUADRILATERAL_PROPERTIES' };
+  const before = JSON.stringify(compatible);
+  const found = Toc.resolveRecord(compatible, '중2');
+  assert.equal(found.status, 'EXACT');
+  assert.equal(found.parent.L2, '여러 가지 사각형');
+  assert.equal(JSON.stringify(compatible), before);
+  assert.deepEqual(Toc.resolveRecord(compatible, '중2'), found);
+  const incomplete = { ...compatible, rpmPrimaryPath: { ...areaPath, L4: '' } };
+  assert.equal(Toc.resolveRecord(incomplete, '중2').granularity, 'LEAF');
+});
+
+test('incompatible strong leaf evidence cannot be bypassed by another exact path', () => {
+  const path = Toc.normalizePath(mappingFor('M3-1', '무리수와 실수').basePath);
+  const invalid = { ...path, L4: 'unregistered leaf' };
+  for (const [primary, semantic] of [[path, invalid], [invalid, path]]) {
+    const record = { originalCurriculum: '2022', rpmPrimaryPath: primary, rpmSemantic: semantic };
+    assert.equal(Toc.resolveRecord(record, '중3').reason, 'RPM_EVIDENCE_PATH_CONFLICT');
+  }
+});
+
+test('conflicting explicit curriculum or grade cannot be replaced by a legacy key fallback', () => {
+  const path = Toc.normalizePath(mappingFor('M1-2', '다면체').basePath);
+  for (const input of [{ ...path, curriculumKey: '2015' }, { ...path, courseKey: 'M2-2' }]) {
+    const record = { originalCurriculum: '2022', sourceGrade: '중1', subUnitKey: 'M1-07-SOLID_FIGURE',
+      rpmPrimaryPath: input };
+    const before = JSON.stringify(record);
+    const found = Toc.resolveRecord(record, '중1');
+    assert.equal(found.status, 'AMBIGUOUS');
+    assert.equal(found.reason, 'RPM_EVIDENCE_SCOPE_CONFLICT');
+    assert.equal(found.parent, null);
+    assert.equal(JSON.stringify(record), before);
+  }
+});
+
+test('top-level RPM fields remain separate from unrelated stored L1-L4 labels', () => {
+  const mapping = authority.leafMappings.find(row => row.crosswalkRecordIds.includes('M2-RPM-184'));
+  const rpm = Toc.normalizePath(mapping.basePath);
+  const record = { originalCurriculum: '2022', courseKey: rpm.courseKey, rpmPrimaryPath: rpm,
+    L1: 'stored major unit', L2: 'stored subunit', L3: 'stored concept', L4: 'stored leaf',
+    rpmCurriculum: '2022', rpmScope: rpm.courseKey, rpmL1: rpm.L1, rpmL2: rpm.L2, rpmL3: rpm.L3, rpmL4: rpm.L4 };
+  const before = JSON.stringify(record);
+  const found = Toc.resolveRecord(record, '중2');
+  assert.equal(found.status, 'EXACT');
+  assert.equal(found.parent.L2, '삼각형의 외심과 내심');
+  assert.equal(JSON.stringify(record), before);
+  delete record.rpmPrimaryPath;
+  assert.equal(Toc.resolveRecord(record, '중2').parentKey, found.parentKey);
+});
+
+test('matching current parent-only evidence does not fill the missing L4 of an exceptional concept', () => {
+  for (const id of ['M2-RPM-194', 'M3-RPM-104', 'M3-RPM-105']) {
+    const mapping = authority.leafMappings.find(row => row.crosswalkRecordIds.includes(id));
+    const current = Toc.refinePath(mapping.basePath).effectivePath;
+    const record = { originalCurriculum: '2022', rpmPrimaryPath: { ...current, L4: '' },
+      rpmSemantic: { ...current, L3: '', L4: '' } };
+    const before = JSON.stringify(record);
+    const found = Toc.resolveRecord(record, current.courseKey.slice(0, 2));
+    assert.equal(found.status, 'LEGACY_PARENT_AMBIGUOUS', id);
+    assert.equal(found.reason, 'EXCEPTION_L4_REQUIRED', id);
+    assert.equal(found.parent, null);
+    assert.equal(JSON.stringify(record), before);
+  }
+});
+
+test('cross-unit parent evidence accepts additional IDs of the same exact base leaf, without permitting an unreviewed move', () => {
+  for (const id of ['M3-RPM-104', 'M3-RPM-105']) {
+    const extended = structuredClone(authority);
+    const row = extended.leafMappings.find(mapping => mapping.crosswalkRecordIds.includes(id));
+    row.crosswalkRecordIds.push(`${id}-ADDITIONAL-CONNECTION`);
+    const toc = Toc.createAuthority(extended);
+    const expected = Toc.refinePath(row.basePath);
+    const actual = toc.refinePath(row.basePath);
+    assert.equal(actual.parentKey, expected.parentKey);
+    assert.deepEqual(actual.basePath, expected.basePath);
+    assert.deepEqual(actual.effectivePath, expected.effectivePath);
+    assert.ok(actual.crosswalkRecordIds.includes(`${id}-ADDITIONAL-CONNECTION`));
+    row.crosswalkRecordIds = [`${id}-UNVERIFIED-REFERENCE`];
+    assert.throws(() => Toc.createAuthority(extended), /CROSS_UNIT_PLACEMENT_EVIDENCE_REQUIRED/);
+    row.crosswalkRecordIds = [id];
+    row.effectiveParentKey = Toc.parents('중3').find(parent => parent.L2 === '다항식의 인수분해').key;
+    assert.throws(() => Toc.createAuthority(extended), /CROSS_UNIT_PLACEMENT_EVIDENCE_REQUIRED/);
+  }
 });

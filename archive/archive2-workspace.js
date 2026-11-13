@@ -2004,14 +2004,18 @@
 
 
   // Search text per exam, built once per catalog: the exam's visible values (never JSON keys) plus
-  // the uid and L1-L4 text of its questions. Every search term must occur somewhere in it.
+  // the uid and L1-L4 text of its questions. Exact current middle-school parents are search
+  // aliases from the shared selection index; stored source/request paths remain unchanged.
   let findSearchIndex = null;
   function findSearchText(exam) {
     const catalog = state.catalog;
     if (!findSearchIndex || findSearchIndex.exams !== catalog.exams || findSearchIndex.records !== catalog.records) {
       const questionsByFile = new Map();
+      const index = unifiedIndex();
       for (const r of catalog.records) {
-        const text = C.normalizeSearch([r.questionUid, r.L1, r.L2, r.L3, r.L4].filter(Boolean).join(" "));
+        const entry = index?.byUid.get(r.questionUid);
+        const parent = entry?.rpmParentStatus === "EXACT" ? entry.rpmParent : null;
+        const text = C.normalizeSearch([r.questionUid, r.L1, r.L2, r.L3, r.L4, parent?.L1, parent?.L2].filter(Boolean).join(" "));
         if (!text) continue;
         const list = questionsByFile.get(r.sourceFile);
         if (list) list.push(text);
