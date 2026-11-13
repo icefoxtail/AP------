@@ -3,11 +3,22 @@ on:
   push:
     branches: ['codex/geometry-visual-publication-v2-20261005', 'codex/geometry-coordinate-realization-evidence-20261005']
     paths: ['archive/tools/geometry-equation/**', '.github/workflows/geometry-publication-tests.yml']
+  pull_request:
+    branches: [main]
+    paths: ['archive/tools/geometry-equation/**', '.github/workflows/geometry-publication-tests.yml']
   workflow_dispatch:
+    inputs:
+      problem_manifest:
+        description: 'Optional committed archive/tools/geometry-equation/ops/problem-figures/**/manifest.json; blank preserves legacy qualification only.'
+        required: false
+        default: ''
+        type: string
 permissions:
   contents: read
 jobs:
   qualification:
+    # Preserve every legacy event and check. The new PR path has its own bounded production-render job below.
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
@@ -62,3 +73,86 @@ jobs:
             geometry-source.tar.gz
             archive/_generated/geometry-visual-engine/publication-tests/
           retention-days: 14
+
+  problem-figures:
+    name: Problem SVG production render and evidence
+    if: github.event_name == 'pull_request' || (github.event_name == 'workflow_dispatch' && inputs.problem_manifest != '')
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    concurrency:
+      group: problem-svg-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: false
+    env:
+      PROBLEM_FIGURE_MANIFEST: ${{ inputs.problem_manifest }}
+      PROBLEM_PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # PRs render the immutable merge snapshot; no pull_request_target or write token is used.
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate the bounded committed manifest inputs before installing dependencies
+        shell: bash
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == pull_request ]]; then
+            node archive/tools/geometry-equation/production/problem-figure-runner.mjs --validate-pr
+          else
+            node archive/tools/geometry-equation/production/problem-figure-runner.mjs --validate
+          fi
+      - name: Check problem isolation, manifest safety and unchanged solution defaults
+        run: >-
+          node --test
+          archive/tools/geometry-equation/tests/problem-figure-path.test.mjs
+          archive/tools/geometry-equation/tests/render-plan.test.mjs
+          archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the engine's locked runtime, Python packages and hash-verified font
+        run: node archive/tools/geometry-equation/production/setup-spikes.mjs
+      - name: Verify the original solution capture with real Chrome
+        env:
+          GEOMETRY_BROWSER_EXECUTABLE: ${{ steps.chrome.outputs.chrome-path }}
+        run: >-
+          node --test --test-name-pattern='^(M |C1 |Z )'
+          archive/tools/geometry-equation/tests/construction-archive-capture-v1.test.mjs
+      - name: Verify the problem capture at all three real viewports
+        env:
+          GEOMETRY_BROWSER_EXECUTABLE: ${{ steps.chrome.outputs.chrome-path }}
+        run: node --test archive/tools/geometry-equation/tests/problem-figure.browser.mjs
+      - name: Render the committed problem plans sequentially in actual Archive slots
+        shell: bash
+        env:
+          GEOMETRY_BROWSER_EXECUTABLE: ${{ steps.chrome.outputs.chrome-path }}
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == pull_request ]]; then
+            node archive/tools/geometry-equation/production/problem-figure-runner.mjs --pr
+          else
+            node archive/tools/geometry-equation/production/problem-figure-runner.mjs
+          fi
+      - name: Bind the exact source snapshot for artifact readback
+        if: always()
+        run: |
+          mkdir -p .tmp/svg-problem
+          git rev-parse HEAD > .tmp/svg-problem/source-commit.txt
+          git diff --exit-code -- archive/exams archive/assets
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: problem-svg-production-${{ github.run_id }}-${{ github.run_attempt }}
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            .tmp/svg-problem/
+            .tmp/archive/
+            archive/tools/geometry-equation/ops/problem-figures/
