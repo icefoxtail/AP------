@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {planQuestion,sourceFingerprint,contentFingerprint,loadBank,sourcePath,selectTargets} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
@@ -32,6 +33,74 @@ test('runtime owner is not silently moved',()=>{const f=fixture();f.runtimeOwner
 test('missing semantic rationale is not synthesized',()=>{const f=fixture();delete f.question.decisiveStep;assert.deepEqual(planQuestion(f).reasons,['SOURCE_SEMANTIC_RATIONALE_MISSING']);});
 test('unknown difficulty is retained as debt',()=>{const f=fixture();f.question.difficultyBucket='UNKNOWN';assert.ok(planQuestion(f).reasons.includes('DIFFICULTY_INCOMPLETE'));});
 test('unchanged approved values keep independent review provenance',()=>{const f=fixture();f.previous=structuredClone(f.question);f.current={...f.current,problemTypeKey:'PT_ROOT',templateKey:'TPL_ROOT',metadataStatus:'approved_semantic_review',reviewStatus:'reviewed_pass',metadataApprovalType:'REVIEW2'};const r=planQuestion(f);assert.equal(r.final.reviewStatus,'reviewed_pass');assert.equal(r.final.metadataApprovalType,'REVIEW2');assert.equal(r.preserveReview,true);});
+function nativeReviewFixture(t) {
+  const f=fixture(),dir=fs.mkdtempSync(path.join(os.tmpdir(),'auto-meta-native-review-'));
+  t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const requestId='same-source-finalqa',receiptPath=`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${requestId}.json`;
+  const evidencePath='review/metadata.json',evidence=Buffer.from('{"scope":"metadata review fixture"}\n');
+  const sha=value=>crypto.createHash('sha256').update(value).digest('hex');
+  f.previous={...f.question,primaryMethod:'prior method',decisiveStep:'prior step'};
+  f.current={...f.current,problemTypeKey:f.question.problemTypeKey,templateKey:f.question.templateKey,
+    L1:'Reviewed RPM parent',L2:'Reviewed RPM middle',L3:'Root',L4:'Root test',
+    metadataStatus:'approved_semantic_review',reviewStatus:'reviewed_pass',metadataApprovalType:'FINAL_QA',
+    tagStatus:'reviewed_pass',tagConfidence:'approved_final_qa',metaFoundationStatus:'ACTIVE',
+    metaFoundationPackId:'MIDDLE3',metaFoundationPackVersion:'1.0.0',
+    metadataRevision:`meta-foundation:MIDDLE3@1.0.0:exam-final_qa-v2:${requestId}`,
+    approvalEvidence:[receiptPath],fieldStatus:{problemType:'approved_final_qa'}};
+  const bytes=Buffer.from('window.questionBank='+JSON.stringify([f.question])+';\n');
+  const blobSha1=crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+  const runtime={...structuredClone(f.current),sourceIdentity:source+'#1',approvedSourceFingerprint:f.current.sourceFingerprint};
+  f.nativeSource={root:dir,bytes,blobSha1,bank:[structuredClone(f.question)],runtimeRecord:runtime,runtimeStatus:'ACTIVE'};
+  f.receipt={schemaVersion:'archive-reviewed-exam-meta-registration-v2',requestId,requestSha256:'a'.repeat(64),
+    examUid:'fixture',sourceArchiveFile:source,sourceRawSha256:sha(bytes),sourceBlobSha1:blobSha1,totalQuestions:1,
+    metadataRegistrationStatus:'REGISTERED',approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'fixture-reviewer',
+      evidenceRefs:[{path:evidencePath,sha256:sha(evidence)}]},appliedRecords:[structuredClone(f.current)],
+    appliedIdentityRecords:[structuredClone(f.identity)],runtimeRecords:[structuredClone(runtime)]};
+  for(const [relative,data] of [['archive/exams/'+source,bytes],[evidencePath,evidence]]) {
+    const full=path.join(dir,relative);fs.mkdirSync(path.dirname(full),{recursive:true});fs.writeFileSync(full,data);
+  }
+  f.receiptPath=receiptPath;f.evidenceFile=path.join(dir,evidencePath);
+  f.saveReceipt=()=>{const full=path.join(dir,receiptPath);fs.mkdirSync(path.dirname(full),{recursive:true});fs.writeFileSync(full,JSON.stringify(f.receipt));};
+  f.saveReceipt();return f;
+}
+test('a current byte-bound native approval survives an older AutoMeta cursor without rewriting its parent or provenance',t=>{
+  const f=nativeReviewFixture(t),before=JSON.stringify({question:f.question,current:f.current,runtime:f.nativeSource.runtimeRecord});
+  const r=planQuestion(f);assert.equal(r.status,'ALREADY_REGISTERED');assert.equal(r.nativeReviewReceipt,f.receiptPath);
+  assert.equal(r.final,undefined);assert.equal(JSON.stringify({question:f.question,current:f.current,runtime:f.nativeSource.runtimeRecord}),before);
+  // Native registration can resolve a parent from the master/targetParentRef when an old ACTIVE binding has no display labels.
+  delete f.registry.bindingRows[0].L1;delete f.registry.bindingRows[0].L2;
+  assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');
+  assert.equal(planQuestion({...f,nativeSource:undefined}).reasons[0],'CANONICAL_LABELS_MISSING');
+});
+test('stale or incomplete native evidence cannot preserve review after source metadata changes',async t=>{
+  const cases=[
+    ['old source hash',f=>{f.receipt.sourceRawSha256='0'.repeat(64);}],
+    ['wrong Git blob',f=>{f.receipt.sourceBlobSha1='0'.repeat(40);}],
+    ['wrong UID',f=>{f.receipt.appliedRecords[0].questionUid='other';}],
+    ['wrong ordinal',f=>{f.receipt.appliedRecords[0].sourceOrdinal=2;}],
+    ['different current record',f=>{f.current.fieldStatus.problemType='changed';}],
+    ['missing approval link',f=>{f.current.approvalEvidence=[];}],
+    ['missing approval evidence',f=>{f.receipt.approval.evidenceRefs=[];}],
+    ['changed evidence bytes',f=>{fs.writeFileSync(f.evidenceFile,'changed');}],
+    ['unregistered receipt',f=>{f.receipt.metadataRegistrationStatus='PENDING';}],
+    ['unreviewed receipt',f=>{f.receipt.approval.metadataReviewed=false;}],
+    ['runtime drift',f=>{f.nativeSource.runtimeRecord.tagStatus='review_required';}],
+    ['inactive runtime document',f=>{f.nativeSource.runtimeStatus='INACTIVE';}],
+    ['student payload changed',f=>{f.previous.content='earlier student content';}],
+  ];
+  for(const [name,mutate] of cases)await t.test(name,t=>{const f=nativeReviewFixture(t);mutate(f);f.saveReceipt();
+    const r=planQuestion(f);assert.equal(r.status,'APPLY');assert.equal(r.final.reviewStatus,'review_required');
+    assert.equal(r.final.metadataApprovalType,'MAIN_MERGE');assert.equal(r.nativeReviewReceipt,undefined);
+  });
+});
+test('native approval reuse still requires the ACTIVE registry, exact binding and source rationale',t=>{
+  const f=nativeReviewFixture(t);f.registry.problemTypes.delete('PT_ROOT');
+  assert.equal(planQuestion(f).status,'SUPPLEMENT_PENDING');
+  const noBinding=nativeReviewFixture(t);noBinding.registry.bindingRows=[];
+  assert.deepEqual(planQuestion(noBinding).reasons,['EXACT_COURSE_BINDING_MISSING_OR_AMBIGUOUS']);
+  const noRationale=nativeReviewFixture(t);delete noRationale.question.decisiveStep;
+  assert.deepEqual(planQuestion(noRationale).reasons,['SOURCE_SEMANTIC_RATIONALE_MISSING']);
+});
 test('student content changes invalidate old independent review, not other rows',()=>{const f=fixture();f.previous=structuredClone(f.question);f.question.content='new question';f.identity.sourceFingerprint=sourceFingerprint(f.question);f.current.reviewStatus='reviewed_pass';const r=planQuestion(f);assert.equal(r.status,'APPLY');assert.equal(r.coreChanged,true);assert.equal(r.final.reviewStatus,'review_required');});
 test('a repeated identical input does not create duplicate registration',()=>{const f=fixture(),one=planQuestion(f);const two=planQuestion({...f,current:one.final,priorReceipt:{inputHash:one.inputHash,metadataRegistrationStatus:'REGISTERED'}});assert.equal(two.status,'ALREADY_REGISTERED');});
 test('path traversal, absolute paths and controls are refused',()=>{for(const s of ['../escape.js','/root.js','a/../b.js','a\\b.js','a\0.js'])assert.throws(()=>sourcePath(s));});
