@@ -61,12 +61,12 @@ function coordinateBoard(width=390,height=510){
  let from=null,inGrid=false;
  const c=new Proxy({font:'11.5px sans-serif',textAlign:'center',textBaseline:'top',
   measureText:t=>({width:String(t).length*6.5}),getTransform:()=>({a:1,b:0,c:0,d:1,e:0,f:0}),
-  fillText(text,x,y){labels.push({text:String(text),x,y,align:this.textAlign,baseline:this.textBaseline})},
+  fillText(text,x,y){labels.push({text:String(text),x,y,align:this.textAlign,baseline:this.textBaseline,width:this.measureText(text).width,fontSize:+(this.font.match(/([\d.]+)px/)?.[1]||11.5)})},
   moveTo(x,y){from={x,y}},lineTo(x,y){if(inGrid&&from)gridLines.push({from,to:{x,y}})}
  },{get:(target,key)=>key in target?target[key]:(()=>{})});
  Object.assign(b,{W:width,H:height,ctx:c,canvas:{width,height,getBoundingClientRect:()=>({left:0,top:0,width,height})},
   kind:'cartesian',aspect:'1:1',focus:{x:[-6,6],y:[-6,6]},pad:.09,zoom:1,panX:0,panY:0,
-  insets:{top:74,right:36,bottom:100,left:40},panes:null,paneId:null,fs:1,lw:1,font:'sans-serif',
+  insets:{top:0,right:0,bottom:60,left:0},panes:null,paneId:null,fs:1,lw:1,font:'sans-serif',
   colors:{grid:'grid',gridMajor:'major',axis:'axis',tick:'tick'}});
  const grid=b.grid;b.grid=function(options){inGrid=true;try{return grid.call(this,options)}finally{inGrid=false}};
  for(const name of ['seg','point','handle','text','path','vline','plot'])b[name]=()=>b;
@@ -77,10 +77,13 @@ function drawCoordinates(id,mode,width=390,height=510,values={}){
  const state=Object.fromEntries(Object.entries(v).map(([k,x])=>[M.prefix(spec,k),x]));
  const result=coordinateBoard(width,height);result.b.aspect=spec.aspect||'1:1';
  if(mode==='native')nativeScenes.find(s=>s.id===id).draw(result.b,state,{},null);
- else {const p=api.build({M,scene:{_mf:spec}},state)[0];p.draw(result.b,id==='quantity-table'?6.8:0,p.model)}
+ // The papers-and-pins construction becomes a coordinate plot at 5.8 s.
+ // Inspect its first coordinate frame; other proofs start on their axes at 0 s.
+ else {const p=api.build({M,scene:{_mf:spec}},state)[0];p.draw(result.b,id==='quantity-table'?5.8:0,p.model)}
  return{...result,state,spec,v};
 }
 const axisValues=(labels,align)=>labels.filter(l=>l.align===align&&/^−?\d+(?:\.\d+)?$/.test(l.text)).map(l=>Number(l.text.replace('−','-')));
+const coordinateBoardSizes=[[390,363],[320,363],[320,300],[1024,399],[820,460],[1120,468]];
 test('integer-coordinate lessons render consecutive unit ticks and matching unit grid in native and short views',()=>{
  for(const id of ['coord-order','read-coordinates','quadrants-boundary','point-move','axis-pair','axis-distance','coordinate-area','quantity-table']){
   for(const mode of ['native','short']){
@@ -104,6 +107,44 @@ test('the initial P(3,2) and P(4,3) can be read without zoom on narrow boards',(
   near(q.x,x);near(q.y,y);
   assert.ok(axisValues(labels,'center').includes(x)&&axisValues(labels,'right').includes(y),`${id}/${mode}/${width}: actual point coordinates labelled`);
   assert.ok(pixel.x>10&&pixel.x<width-10&&pixel.y>10&&pixel.y<b.H-10,`${id}/${mode}/${width}: point inside the initial board`);
+ }
+});
+test('integer-coordinate tick labels do not overlap on phone and short wide canvases',()=>{
+ for(const id of ['coord-order','read-coordinates','quadrants-boundary','point-move','axis-pair','axis-distance','coordinate-area','quantity-table']){
+  for(const mode of ['native','short'])for(const [width,height]of coordinateBoardSizes){
+   const {labels}=drawCoordinates(id,mode,width,height);
+   for(const align of ['center','right']){
+    const ticks=labels.filter(l=>l.align===align&&/^−?\d+$/.test(l.text));
+    const bounds=ticks.map(l=>align==='center'?{lo:l.x-l.width/2,hi:l.x+l.width/2,text:l.text}:{lo:l.y-l.fontSize*.6,hi:l.y+l.fontSize*.6,text:l.text}).sort((a,z)=>a.lo-z.lo);
+    assert.ok(bounds.length>=5,`${id}/${mode}/${width}x${height}: enough labelled unit ticks`);
+    for(let i=1;i<bounds.length;i++)assert.ok(bounds[i].lo>=bounds[i-1].hi-1e-7,`${id}/${mode}/${width}x${height}/${align}: ${bounds[i-1].text} overlaps ${bounds[i].text}`);
+   }
+  }
+ }
+});
+test('compact coordinate proofs keep positive and negative initial points visible without changing native focus',()=>{
+ for(const id of ['coord-order','read-coordinates'])for(const [width,height]of coordinateBoardSizes){
+  for(const values of [{},{x:-3,y:2},{x:0,y:-4}]){
+   for(const mode of ['native','short']){
+    const {b,labels,spec,v}=drawCoordinates(id,mode,width,height,values),q=spec.model(v).P,pixel=b.toS(q);
+    assert.equal(b.zoom,1);
+    assert.ok(q.x===0||axisValues(labels,'center').includes(q.x));
+    assert.ok(q.y===0||axisValues(labels,'right').includes(q.y));
+    assert.ok(pixel.x>10&&pixel.x<width-10&&pixel.y>10&&pixel.y<height-10,`${id}/${mode}: the chosen point remains in the initial view`);
+    if(mode==='native')assert.equal(JSON.stringify(b.focus),JSON.stringify({x:[-6,6],y:[-6,6]}));
+   }
+  }
+ }
+ for(const id of ['coord-order','read-coordinates','quadrants-boundary','axis-distance']){
+  const {b}=drawCoordinates(id,'short',1120,560);
+  assert.equal(JSON.stringify(b.focus),JSON.stringify({x:[-6,6],y:[-6,6]}),`${id}: large canvases keep the original focus`);
+  assert.deepEqual(b.insets,{top:74,right:36,bottom:100,left:40},`${id}: large canvases keep the original margins`);
+ }
+ for(const id of ['graph-story','read-time','baseline-change'])for(const [width,height]of [[390,363],[1024,399],[1120,560]]){
+  const {b,spec,v}=drawCoordinates(id,'short',width,height);
+  const focus=typeof spec.focus==='function'?spec.focus(v,spec.model(v)):spec.focus;
+  assert.equal(JSON.stringify(b.focus),JSON.stringify(focus),`${id}: retain its own physical axis range`);
+  assert.deepEqual(b.insets,{top:74,right:36,bottom:100,left:40},`${id}: retain the existing graph layout`);
  }
 });
 test('coordinate exploration retains zoom and pan, while physical graphs retain their own axis scales',()=>{

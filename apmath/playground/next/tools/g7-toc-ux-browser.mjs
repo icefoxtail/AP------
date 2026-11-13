@@ -651,39 +651,99 @@ try {
 
   await run('coordinate-reading', async () => {
     const checks = [];
-    for (const viewport of [viewports[0], phone]) {
-      const { page, context } = await open(viewport);
+    const targets = [
+      { scene: 'coord-order', points: { P: { x: 3, y: 2 } } },
+      { scene: 'read-coordinates', points: { P: { x: 4, y: 3 } } },
+      { scene: 'quadrants-boundary', points: { P: { x: -3, y: 2 } } },
+      // B is already the dotted path endpoint at t=0; its moving point label appears later.
+      { scene: 'point-move', points: { A: { x: -2, y: 1 }, B: { x: 2, y: -2 } } },
+      // The default axis-pair mode displays A/B; its alternate-mode Q is not drawn.
+      { scene: 'axis-pair', points: { A: { x: 6, y: 0 }, B: { x: 0, y: -4 } } },
+      { scene: 'axis-distance', points: { P: { x: 5, y: 4 } } },
+      // This authored proof begins with papers/pins, then first shows axes at 5.8s.
+      { scene: 'quantity-table', points: { P: { x: 3, y: 4 } }, firstCoordinateAt: 5.8 },
+      // The default triangle uses Q as its displayed vertex C; C/D belong to the alternate trapezoid.
+      { scene: 'coordinate-area', points: { A: { x: -1, y: 4 }, B: { x: -1, y: -1 }, Q: { x: 3, y: 0 } } }
+    ];
+    const coordinateViewports = [...viewports, { width: 320, height: 844 }];
+    for (const viewport of coordinateViewports) {
+      // These are static coordinate-frame checks, not additional live-playback audits.
+      const { page, context } = await open(viewport, 'reduce');
       try {
         await load(page, 'g7-coordinate-graphs');
         const ordered = await items(page);
-        for (const [scene, expectedPoint] of [['coord-order', { x: 3, y: 2 }], ['read-coordinates', { x: 4, y: 3 }]]) {
+        for (const { scene, points: expectedPoints, firstCoordinateAt = 0 } of targets) {
           if ((await state(page)).view !== 'contents') await page.locator('.apl-toc-btn').click();
           await contents(page);
           const item = ordered.find(item => item.scene === scene);
           assert.ok(item, `${scene}: the coordinate-reading lesson is reachable from contents`);
           await leaf(page, item).click();
-          await selected(page, item, { playing: true });
-          await pause(page);
-          await setProgress(page, 0);
+          const entry = await selected(page, item);
+          assert.equal(entry.mode, 'paused', `${scene}: coordinate inspection does not replay the proof`);
+          assert.equal(entry.elapsed, 0, `${scene}: explicit selection exposes the initial frame`);
+          if (firstCoordinateAt) {
+            // The real range has 1000 integer steps. Round up: 659/1000 of 8.8s
+            // is 5.7992s and would still be the non-coordinate paper diagram.
+            const value = await page.evaluate(time => Math.ceil(time / lab.learning.active.duration * 1000), firstCoordinateAt);
+            await setProgress(page, value);
+          }
+          const proofPosition = (await state(page)).elapsed;
           for (const mode of ['proof', 'explore']) {
             if (mode === 'explore') await exploreButton(page).click();
-            const actual = await page.evaluate(() => {
+            const actual = await page.evaluate(pointNames => {
               const board = lab.board, ctx = lab.ui.canvas.getContext('2d');
               const original = ctx.fillText, labels = [];
+              const canvas = lab.ui.canvas, rect = canvas.getBoundingClientRect();
+              const cssX = rect.width / canvas.width, cssY = rect.height / canvas.height;
               // Observe the canvas commands that survive the actual axis
               // clipping logic. Keep the real draw call and rendering intact.
               ctx.fillText = function (text, x, y, ...rest) {
-                labels.push({ text: String(text), x, y, align: this.textAlign, baseline: this.textBaseline });
+                const value = String(text), measured = this.measureText(value);
+                const metrics = Object.fromEntries(['width', 'actualBoundingBoxLeft', 'actualBoundingBoxRight', 'actualBoundingBoxAscent', 'actualBoundingBoxDescent']
+                  .map(key => [key, measured[key]]));
+                let bounds = null;
+                if (Object.values(metrics).every(Number.isFinite)) {
+                  // TextMetrics bearings already reflect the current textAlign
+                  // and baseline. Transform the actual glyph corners into the
+                  // displayed canvas's CSS pixels, including device scaling.
+                  const scale = Number.isFinite(rest[0]) && rest[0] > 0 && rest[0] < measured.width ? rest[0] / measured.width : 1;
+                  const xs = [x - measured.actualBoundingBoxLeft * scale, x + measured.actualBoundingBoxRight * scale];
+                  const ys = [y - measured.actualBoundingBoxAscent, y + measured.actualBoundingBoxDescent];
+                  const transform = this.getTransform();
+                  const corners = xs.flatMap(px => ys.map(py => ({
+                    x: (transform.a * px + transform.c * py + transform.e) * cssX,
+                    y: (transform.b * px + transform.d * py + transform.f) * cssY
+                  })));
+                  bounds = { left: Math.min(...corners.map(point => point.x)), right: Math.max(...corners.map(point => point.x)),
+                    top: Math.min(...corners.map(point => point.y)), bottom: Math.max(...corners.map(point => point.y)) };
+                }
+                labels.push({ text: value, x, y, align: this.textAlign, baseline: this.textBaseline, font: this.font, metrics, bounds });
                 return original.call(this, text, x, y, ...rest);
               };
               try { lab.render(); } finally { ctx.fillText = original; }
-              const spec = lab.scene._mf, values = APL_MF.values(spec, lab.s), point = spec.model(values).P;
-              const numbers = (align, baseline) => labels.filter(label => label.align === align && label.baseline === baseline && /^−?\d+(?:\.\d+)?$/.test(label.text))
-                .map(label => Number(label.text.replace('−', '-'))).sort((a, b) => a - b);
-              return { point, pixel: board.toS(point), zoom: board.zoom, width: board.W, height: board.H,
-                xTicks: numbers('center', 'top'), yTicks: numbers('right', 'middle') };
-            });
-            assert.deepEqual(actual.point, expectedPoint, `${scene}/${mode}: the existing initial point is preserved`);
+              const spec = lab.scene._mf, values = APL_MF.values(spec, lab.s);
+              const model = lab.learning.active ? lab.learning.active.model.m : spec.model(values);
+              const points = Object.fromEntries(pointNames.map(name => {
+                const point = model[name] || null;
+                return [name, { model: point, pixel: point && board.toS(point) }];
+              }));
+              const numericLabels = (align, baseline) => labels.filter(label => label.align === align && label.baseline === baseline && /^−?\d+(?:\.\d+)?$/.test(label.text));
+              const tickGlyphs = { x: numericLabels('center', 'top'), y: numericLabels('right', 'middle') };
+              const numbers = rows => rows.map(label => Number(label.text.replace('−', '-'))).sort((a, b) => a - b);
+              const originGlyphs = labels.filter(label => label.text === 'O' && label.align === 'right' && label.baseline === 'top');
+              return { points, zoom: board.zoom, width: board.W, height: board.H, boardKind: board.kind,
+                elapsed: lab.learning.elapsed, learningMode: lab.learning.mode,
+                rangeStepSeconds: (lab.learning.active?.duration || 0) / 1000,
+                xTicks: numbers(tickGlyphs.x), yTicks: numbers(tickGlyphs.y), tickGlyphs, originGlyphs };
+            }, Object.keys(expectedPoints));
+            const threshold = mode === 'proof' ? firstCoordinateAt : 0;
+            const phase = threshold ? 'first-coordinate-frame' : 'initial';
+            assert.equal(actual.learningMode, mode === 'proof' ? 'paused' : 'explore', `${scene}/${mode}: static inspection remains student-controlled`);
+            assert.equal(actual.boardKind, 'cartesian', `${scene}/${mode}: the measured frame actually shows the coordinate plane`);
+            if (mode === 'proof') {
+              assert.ok(actual.elapsed >= threshold && actual.elapsed <= threshold + actual.rangeStepSeconds + 1e-9,
+                `${scene}/${mode}: render the first available coordinate frame at or above ${threshold}s, got ${actual.elapsed}s`);
+            } else assert.equal(actual.elapsed, proofPosition, `${scene}: exploration preserves the saved proof position`);
             assert.equal(actual.zoom, 1, `${scene}/${mode}: no zoom is required`);
             for (const ticks of [actual.xTicks, actual.yTicks]) {
               assert.ok(ticks.length >= 5 && ticks.every(Number.isInteger), `${scene}/${mode}: integer coordinate labels are visible`);
@@ -691,17 +751,43 @@ try {
                 assert.equal(ticks[i] - ticks[i - 1], ticks[i - 1] === -1 && ticks[i] === 1 ? 2 : 1, `${scene}/${mode}: consecutive unit ticks (origin is O)`);
               }
             }
-            assert.ok(actual.xTicks.includes(expectedPoint.x) && actual.yTicks.includes(expectedPoint.y), `${scene}/${mode}: the point's x and y coordinates can be read on the initial axes`);
-            assert.ok(actual.pixel.x > 0 && actual.pixel.x < actual.width && actual.pixel.y > 0 && actual.pixel.y < actual.height, `${scene}/${mode}: P is inside the actual drawing area`);
+            const tickSpacing = {};
+            for (const [axis, glyphs] of Object.entries(actual.tickGlyphs)) {
+              for (const glyph of glyphs) {
+                assert.ok(glyph.bounds && Object.values(glyph.bounds).every(Number.isFinite) &&
+                  glyph.bounds.right > glyph.bounds.left && glyph.bounds.bottom > glyph.bounds.top,
+                `${scene}/${mode}/${viewport.width}: actual glyph metrics are available for ${axis} tick ${glyph.text}`);
+              }
+              const start = axis === 'x' ? 'left' : 'top', end = axis === 'x' ? 'right' : 'bottom';
+              const orderedGlyphs = [...glyphs].sort((a, b) => a.bounds[start] - b.bounds[start]);
+              tickSpacing[axis] = orderedGlyphs.slice(1).map((glyph, i) => ({
+                from: orderedGlyphs[i].text, to: glyph.text,
+                gapCssPixels: glyph.bounds[start] - orderedGlyphs[i].bounds[end]
+              }));
+              for (const pair of tickSpacing[axis]) assert.ok(pair.gapCssPixels >= 0,
+                `${scene}/${mode}/${viewport.width}: actual ${axis} tick glyphs overlap (${pair.from}, ${pair.to}), gap ${pair.gapCssPixels.toFixed(3)} CSS px`);
+            }
+            for (const [name, expected] of Object.entries(expectedPoints)) {
+              const point = actual.points[name];
+              assert.deepEqual(point.model, expected, `${scene}/${mode}: the existing default model point ${name} is preserved`);
+              for (const axis of ['x', 'y']) {
+                const ticks = actual[`${axis}Ticks`];
+                assert.ok(ticks.includes(expected[axis]) || (expected[axis] === 0 && actual.originGlyphs.length > 0),
+                  `${scene}/${mode}: ${name}'s ${axis}=${expected[axis]} is labelled on the axis (O represents zero)`);
+              }
+              assert.ok(point.pixel.x > 0 && point.pixel.x < actual.width && point.pixel.y > 0 && point.pixel.y < actual.height,
+                `${scene}/${mode}: ${name} is inside the actual drawing area`);
+            }
             const figure = await drawing(page);
             await page.locator('.apl-canvas-wrap').scrollIntoViewIfNeeded();
             await screenshot(page, `coordinates-${scene}-${viewport.width}-${mode}.png`);
-            checks.push({ viewport, scene, mode, ...actual, figure });
+            checks.push({ viewport, scene, mode, phase, coordinateThresholdSeconds: threshold, ...actual, tickSpacing, figure });
           }
         }
       } finally { await context.close(); }
     }
-    return { checks };
+    assert.equal(checks.length, targets.length * coordinateViewports.length * 2, 'all selected coordinate scenes, viewports and modes are observed');
+    return { checks, staticStates: checks.length, normalPlayback: 'NOT_REPLAYED' };
   });
 
   await run('delayed-module-entry', async () => {
