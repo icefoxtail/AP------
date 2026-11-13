@@ -260,7 +260,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "content": "다음 사각형 중 두 대각선의 길이가 항상 서로 같은 사각형이 아닌 것은 모두 몇 개인가? [3점]",
+    "content": "등변사다리꼴, 직사각형, 평행사변형, 정사각형, 마름모의 다섯 사각형 중 두 대각선의 길이가 항상 같은 사각형이 아닌 것은 모두 몇 개인가? [3점]",
     "choices": [
       "0개",
       "1개",
