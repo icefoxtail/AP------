@@ -715,7 +715,7 @@ window.questionBank = [
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "l3Disposition": "RPM_PATH_MATERIALIZATION",
-      "l4Disposition": "NO_SEPARATE_L4",
+      "l4Disposition": "ASSIGNED",
       "semanticDisposition": "CONFIRMED",
       "difficultyBucket": 3,
       "difficultyConfidence": "medium",
