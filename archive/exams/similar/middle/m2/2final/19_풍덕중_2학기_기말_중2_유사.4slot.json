@@ -2086,6 +2086,18 @@
   "candidates": [],
   "followUpValidatorFixes": [
     {
+      "scope": "file",
+      "field": "judgedBy",
+      "cause": "Initial 4-slot draft omitted required top-level judgedBy.",
+      "fix": "Added the migration-author identity/role before the first remote commit; present in the remote file."
+    },
+    {
+      "scope": "file",
+      "field": "candidates",
+      "cause": "Initial 4-slot draft omitted required top-level candidates array.",
+      "fix": "Added an explicit empty candidates array before the first remote commit; present in the remote file."
+    },
+    {
       "qid": 1,
       "cause": "method 대입 had no literal support in solution.",
       "fix": "Changed 4-slot method to 정리 and cited the exact y=2(x+3)-1=2x+5 transformation."

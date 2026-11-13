@@ -27,7 +27,7 @@
     "declaredQuestionCount": 23,
     "declaredTotalScore": 100,
     "verifiedItemScoreTotal": 100,
-    "note": "Drive modified time and header generatedAt differ and are retained separately. Extracted text length differs from supplied joined length; discrepancy retained. Source has no inline image objects or tables. No original image was linked. Independent review, semantic 4-slot review, official resolver, registration, plans and visual QA NOT_RUN. 4-slot mechanical validator ran: 23 items, 73 quotes, 21 FAIL, 32 WARN, unresolved; not PASS. Draft harness also ran and was blocked because the plans directory is absent; no plans were fabricated. Follow-up correction: Q17 stem now explicitly states fair independent tetrahedral dice; Q20 uniformly selects one remaining slip per draw without replacement, and solution qualifies the 11 slips/4 winners as conditional on the first draw being a winner. Follow-up: Q17 fairness and independence were added to the item itself (the prior checklist summary overstated this). Q20 now states every draw is uniform among remaining slips; solution conditions the 11-total/4-winning count on the first draw being a winner. Follow-up 4-slot diagnosis: the pre-push draft initially lacked top-level judgedBy and candidates; these required fields were added before the first remote commit. The first validator run against the published 4-slot file had 19 item FAILs: empty/citation-invalid goals or methods, plus RETIRED dictionary term 주사위 in Q17/Q23. Those are corrected below. Q17 fair/independent and Q20 conditional wording are corrected in JS; answer, choices, points, and all other question bodies are unchanged."
+    "note": "Drive modified time and header generatedAt differ and are retained separately. Extracted text length differs from supplied joined length; discrepancy retained. Source has no inline image objects or tables. No original image was linked. Independent review, semantic 4-slot review, official resolver, registration, plans and visual QA NOT_RUN. 4-slot mechanical validator ran: 23 items, 73 quotes, 21 FAIL, 32 WARN, unresolved; not PASS. Draft harness also ran and was blocked because the plans directory is absent; no plans were fabricated. Follow-up correction: Q17 stem now explicitly states fair independent tetrahedral dice; Q20 uniformly selects one remaining slip per draw without replacement, and solution qualifies the 11 slips/4 winners as conditional on the first draw being a winner. Follow-up: Q17 fairness and independence were added to the item itself (the prior checklist summary overstated this). Q20 now states every draw is uniform among remaining slips; solution conditions the 11-total/4-winning count on the first draw being a winner. Follow-up 4-slot diagnosis: the pre-push draft initially lacked top-level judgedBy and candidates; these required fields were added before the first remote commit. The first validator run against the published 4-slot file had 19 item FAILs: empty/citation-invalid goals or methods, plus RETIRED dictionary term 주사위 in Q17/Q23. Those are corrected below. Q17 fair/independent and Q20 conditional wording are corrected in JS; answer, choices, points, and all other question bodies are unchanged. For clarity, the initial local 21 FAIL count comprised these two required top-level fields plus the 19 per-item failures; both top-level fields had already been populated before the first remote push, which is why the published file reproduced 19 per-item failures."
   },
   "items": [
     {
@@ -608,6 +608,18 @@
     "fourSlotValidation": "RAN_AFTER_FOLLOWUP: 23 items, 89 quotes, 0 FAIL, 38 WARN. Mechanical validator passes; warnings and semantic review NOT_RUN remain."
   },
   "followUpValidatorFixes": [
+    {
+      "scope": "file",
+      "field": "judgedBy",
+      "cause": "Initial 4-slot draft omitted required top-level judgedBy.",
+      "fix": "Added the migration-author identity/role before the first remote commit; present in the remote file."
+    },
+    {
+      "scope": "file",
+      "field": "candidates",
+      "cause": "Initial 4-slot draft omitted required top-level candidates array.",
+      "fix": "Added an explicit empty candidates array before the first remote commit; present in the remote file."
+    },
     {
       "qid": 1,
       "cause": "method 대입 had no literal support in solution.",

@@ -1597,6 +1597,6 @@ SVG·화면 열람·시각 검수는 실행하지 않음. 그림 자산은 미�
 
 변경: Q1은 원래 다섯 식을 ㄱ~ㅁ으로 모두 보존해 정답 조합 ㄱ·ㅁ을 ⑤로 묻습니다. Q14~20 및 Q23의 균등성·독립·비복원 조건을 명시했고 Q20 해설에서 4/11은 첫 추첨 당첨을 조건으로 한 확률이라고 밝혔습니다. Q16의 짝수 여부 독립성을 추가했습니다. Q21은 한 방향 사슬, 공유 변 1개 및 추가 변/꼭짓점 접촉이 없는 조건을 명시하고 3+3+2점을 유지했습니다. Q23은 공정·독립 주사위, 7개 순서쌍과 3+3+2점을 보존했습니다.
 
-검사 기록: JS syntax/runtime, 23문항·100점, objective answer-key counts 4 per choice, 서술형 choices=[] 및 런타임 제어문자 0개 확인. JS·메타·4칸 SHA/blob 결속 확인. 초기 4칸 validator는 23 items, 73 quotes, 21 FAIL, 32 WARN을 냈음. 문항별 근거 및 RETIRED 용어 인용을 보완해 재검증한 현재 결과는 23 items, 89 quotes, 0 FAIL, 38 WARN이며 기계 검증만 통과. `verify_similar_exam.mjs --phase=draft` 실행 결과 plans 디렉터리가 없어 차단되었으며 plans/EXEMPT를 만들지 않았습니다. 독립 검수·공식 등록·SVG 제작·화면/시각 검수는 NOT_RUN.
+검사 기록: JS syntax/runtime, 23문항·100점, objective answer-key counts 4 per choice, 서술형 choices=[] 및 런타임 제어문자 0개 확인. JS·메타·4칸 SHA/blob 결속 확인. 초기 4칸 validator는 23 items, 73 quotes, 21 FAIL, 32 WARN을 냈음. 초기 21 FAIL은 필수 top-level judgedBy/candidates 누락 2건과 문항별 19건(인용·goal/method 근거 및 RETIRED 주사위 용어)이었음. top-level 2건은 첫 원격 반영 전에 보완했고, 문항별 오류도 수정해 재검증한 현재 결과는 23 items, 89 quotes, 0 FAIL, 38 WARN이며 기계 검증만 통과. `verify_similar_exam.mjs --phase=draft` 실행 결과 plans 디렉터리가 없어 차단되었으며 plans/EXEMPT를 만들지 않았습니다. 독립 검수·공식 등록·SVG 제작·화면/시각 검수는 NOT_RUN.
 
 검증 오류 내역은 해당 시험지 .meta-q01-q23.json의 followUpValidatorFixes 및 4칸 audit에 문항별 기록했습니다. Q17·Q20은 JS 본문과 조건 요약을 함께 정정했습니다.
