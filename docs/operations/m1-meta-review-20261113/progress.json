@@ -15,7 +15,7 @@
   "completedExams": 0,
   "reviewedQuestions": 24,
   "currentOrder": 1,
-  "nextAction": "WATCH_MAIN_WRITER_VERIFY_24_CONSUMER_CLOSE_FIRST_THEN_WANGUN",
+  "nextAction": "SUBMIT_REV2_REPAIR_PR_THEN_CI_MAIN_WRITER_VERIFY_24_CONSUMER_CLOSE_FIRST_THEN_WANGUN",
   "exams": [
     {
       "order": 1,
@@ -26,7 +26,7 @@
       "count": 24,
       "sourceBlob": "c36139a90e9bcd378577ece8f891423bee6b0a19",
       "sourceSha256": "1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564",
-      "status": "PR_MERGED_PENDING_REGISTRATION",
+      "status": "REV2_PREPARED_AFTER_REGISTRATION_REJECTION",
       "partialEvidence": "01-shinheung-semantic-read-checkpoint.json",
       "candidateComparisonEvidence": "01-shinheung-candidate-comparison.json",
       "candidateComparisonSha256": "c887310c2501c3d70a010315a7fda02c73a6964ba45b70c3aa106a99c4a62ce9",
@@ -36,10 +36,10 @@
       "correctionCount": 15,
       "bindingOnlyRepairCount": 2,
       "rpmEvidenceDebtCount": 2,
-      "preparedSourceBlob": "930d4e3ef44e60757180aae6fc15fcc5b7228958",
-      "preparedSourceSha256": "bc4dcf03680da654dec43928f7b1a57942a6f616de9f03ca9ba3976203bd9a18",
-      "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev1",
-      "requestSha256": "24ba8de0d00e494b91268a00771d6b7d30cc2a17ac57c76bb7f1bc30a7a10ede",
+      "preparedSourceBlob": "a8de75bc9cc2b6a4479866d75b8ebec637404a04",
+      "preparedSourceSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+      "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev2",
+      "requestSha256": "267ab2f0a9abcb465030af0d198cd0b676b0ff465f730bdb625e50a8f5782f30",
       "nativeRegistrationDryRun": "PASS",
       "actualRpmResolver": "NOT_RUN_UNVERIFIED_SOLUTION",
       "classificationCheck": {
@@ -52,7 +52,7 @@
       "mergeCommitSha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
       "verifiedRemoteMainSha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
       "verifiedRemoteMainTree": "1f0eeecb4e7fafed89050c300b36aae949873437",
-      "nativeRegistrationActual": "AWAITING_SERVER_RECEIPT",
+      "nativeRegistrationActual": "NOT_RUN_FOR_REV2",
       "consumerVerification": "NOT_RUN",
       "operationallyClosed": false,
       "ci": {
@@ -71,13 +71,94 @@
         "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43421975843",
         "jobId": 131873926621,
         "jobUrl": "https://github.com/icefoxtail/AP------/actions/runs/43421975843/job/131873926621",
-        "observedStatus": "IN_PROGRESS",
+        "observedStatus": "COMPLETED",
         "headSha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
         "observationSource": "root verified exact-merge writer run",
-        "registrationReceiptVerification": "NOT_RUN"
+        "registrationReceiptVerification": "REJECTION_CONFIRMED",
+        "conclusion": "SUCCESS",
+        "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev1",
+        "requestOutcome": "REJECTED",
+        "registryChangesApplied": 0,
+        "rejectionEvidence": "01-shinheung-registration-rev1-rejected.json"
       },
       "mainMergeEvidence": "01-shinheung-main-merge-checkpoint.json",
-      "initialCiEvidence": "01-shinheung-ci-initial.json"
+      "initialCiEvidence": "01-shinheung-ci-initial.json",
+      "requestHistory": [
+        {
+          "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev1",
+          "requestSha256": "24ba8de0d00e494b91268a00771d6b7d30cc2a17ac57c76bb7f1bc30a7a10ede",
+          "preparedSourceBlob": "930d4e3ef44e60757180aae6fc15fcc5b7228958",
+          "preparedSourceSha256": "bc4dcf03680da654dec43928f7b1a57942a6f616de9f03ca9ba3976203bd9a18",
+          "prNumber": 1960,
+          "prUrl": "https://github.com/icefoxtail/AP------/pull/1960",
+          "prHeadSha": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
+          "mergeCommitSha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
+          "verifiedRemoteMainSha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
+          "verifiedRemoteMainTree": "1f0eeecb4e7fafed89050c300b36aae949873437",
+          "ci": {
+            "state": "SUCCESS",
+            "fixedHeadSha": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
+            "successfulWorkflowCount": 5,
+            "successfulJobCount": 7,
+            "initialFailure": "HTML_CACHE_VERSION_REFERENCE_MISMATCH_FIXED",
+            "fixedCacheVersion": "20261113-rpm-middle-shinheung-1",
+            "evidencePath": "01-shinheung-ci-fixed-head.json",
+            "evidenceRecordedBy": "root"
+          },
+          "requestRevision": "rev1",
+          "registrationOutcome": "REJECTED",
+          "rejectionStage": "projection-verify",
+          "reason": "Consumer metadata conflict: qid_v1_d6bbf87bf0397aa29c28dd495d9c84c4bc2b33eac4873c56a7c5aa247eafdc31",
+          "conflictingFields": [
+            "tagConfidence",
+            "tagStatus"
+          ],
+          "registryChangesApplied": 0,
+          "writerRunId": 43421975843,
+          "writerWorkflowConclusion": "SUCCESS",
+          "rejectionEvidence": "01-shinheung-registration-rev1-rejected.json",
+          "rejectionEvidenceSha256": "d33758236925429be7f323a4bcab4f011d446ca15b36b267a4323251a2b330df"
+        }
+      ],
+      "currentRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev2.json",
+      "prRole": "ORIGINAL_REV1_MERGED_HISTORY",
+      "repairPrNumber": null,
+      "repairPrStatus": "NOT_CREATED",
+      "repairCiStatus": "NOT_RUN",
+      "nativeRegistrationDryRunDetails": {
+        "requestRevision": "rev2",
+        "exitCode": 0,
+        "durationSeconds": 5.801,
+        "write": false,
+        "questionCount": 24,
+        "registryChanges": 17,
+        "fingerprintRepairs": 24,
+        "evidencePath": "01-shinheung-registration-rev2-dry-run.json",
+        "evidenceSha256": "b4859e4a01ba624774ab2dd5faa3c98bad9c57c56f71b0f10a1c4dcceb686740"
+      },
+      "tagAnnotationRepair": {
+        "questionCount": 24,
+        "changedFields": [
+          "tagConfidence",
+          "tagStatus"
+        ],
+        "before": {
+          "tagConfidence": "candidate_manual",
+          "tagStatus": "candidate_manual"
+        },
+        "after": {
+          "tagConfidence": "approved_final_qa",
+          "tagStatus": "reviewed_pass"
+        },
+        "otherQuestionValuesAndFingerprintsUnchanged": true,
+        "sourceReviewStatusAdded": false,
+        "mathReviewOrRpmFinalFlagsChanged": false,
+        "registryChangesUnchangedFromRev1": 17,
+        "evidencePath": "01-shinheung-tag-annotation-repair.json",
+        "evidenceSha256": "2cab1eb2d69efbc6f0fcbb80f3dc41d2d40fbc5bc1e6a199f7c5e703095a33a0"
+      },
+      "annotationChangedQuestionCount": 24,
+      "sourceMetadataChangedQuestionCount": 24
     },
     {
       "order": 2,
@@ -608,7 +689,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "PR_MERGED_PENDING_REGISTRATION",
+  "state": "REV2_PREPARED_AFTER_REGISTRATION_REJECTION",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -627,11 +708,10 @@
       "supersededBy": "01-shinheung-semantic-review.json"
     }
   },
-  "activeMain": "81fb1c3a7c861ede3690157234bf0415c2585e45",
+  "activeMain": "d7c468679b7877bba82e63e3b3f9f5dcb8a1363c",
   "prerequisiteStatus": "RPM_L1_L2_MERGED",
   "prerequisiteMainSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
   "latestRemoteSemanticCheckpoint": "ae19795a822db73448c7487aea4036c509720ecb",
-  "activeMainTree": "1f0eeecb4e7fafed89050c300b36aae949873437",
   "latestMergedReviewHead": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
   "concurrentWorkCheck": {
     "path": "docs/operations/m1-meta-review-20261113/01-shinheung-concurrent-work-check.json",
@@ -650,5 +730,16 @@
     "firstAndQueuedNextSourceOverlap": false,
     "sixFutureM1RegistryChanges": 0,
     "scopeBoundary": "Recheck current PR1751 scope and applied registration before each overlapping exam; existing question metadata is not assumed correct."
+  },
+  "finalQaSourceAnnotationPolicy": {
+    "condition": "Only after the actual metadata semantic review is complete, align source tagStatus/tagConfidence with the official FINAL_QA registrar annotation values before binding a new request source blob.",
+    "preserve": [
+      "source reviewStatus",
+      "student payload",
+      "question fingerprints",
+      "solution and independent math review flags",
+      "RPM FINAL claims"
+    ],
+    "noBlanketMetadataConflictWaiver": true
   }
 }

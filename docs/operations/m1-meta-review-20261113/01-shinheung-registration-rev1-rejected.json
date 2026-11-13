@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "m1-review-registration-observation-v1",
+  "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev1.json",
+  "requestSha256": "24ba8de0d00e494b91268a00771d6b7d30cc2a17ac57c76bb7f1bc30a7a10ede",
+  "exam": {
+    "school": "신흥중",
+    "year": 2026,
+    "grade": "중1",
+    "semester": 2,
+    "examType": "중간",
+    "totalQuestions": 24
+  },
+  "outcome": "REQUEST_REJECTED_PROJECTION_VERIFY",
+  "registered": false,
+  "completedExams": 0,
+  "nativeRegistryDeltaApplied": false,
+  "nativeRegistryDeltaAppliedEvidence": "Authoritative remote rejection receipt: fail-closed, nothing was applied; parent independently inspected post-writer main.",
+  "workflow": {
+    "id": 43421975843,
+    "url": "https://github.com/icefoxtail/AP------/actions/runs/43421975843",
+    "path": ".github/workflows/archive-main-auto-meta.yml",
+    "headSha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
+    "status": "completed",
+    "conclusion": "success",
+    "startedAt": "2026-11-13T12:03:29Z",
+    "updatedAt": "2026-11-13T12:19:51Z",
+    "jobs": [
+      {
+        "id": 131873926621,
+        "name": "register",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 131873982856,
+        "name": "test",
+        "status": "completed",
+        "conclusion": "skipped"
+      }
+    ],
+    "distinction": "Workflow success records successful isolation/persistence, not approval of this rejected request."
+  },
+  "postWriterMainSha": "d7c468679b7877bba82e63e3b3f9f5dcb8a1363c",
+  "rejectionReceipt": {
+    "path": ".archive-meta-register/rejected/m1-shinheung-2026-mid-meta-review-20261113-rev1.rejection.json",
+    "ref": "d7c468679b7877bba82e63e3b3f9f5dcb8a1363c",
+    "content": {
+      "schemaVersion": "archive-reviewed-meta-register-rejection-v1",
+      "request": "m1-shinheung-2026-mid-meta-review-20261113-rev1.json",
+      "requestSha256": "24ba8de0d00e494b91268a00771d6b7d30cc2a17ac57c76bb7f1bc30a7a10ede",
+      "stage": "projection-verify",
+      "error": "Error: Consumer metadata conflict: qid_v1_d6bbf87bf0397aa29c28dd495d9c84c4bc2b33eac4873c56a7c5aa247eafdc31",
+      "registrarExitCode": null,
+      "next": "Registration was refused for this request only (fail-closed, nothing was applied). The meta owner must regenerate the request against the current metadata and submit it again as a new .archive-meta-register/inbox/*.json (git mv it back once the cause is fixed)."
+    }
+  },
+  "conflictDiagnostics": {
+    "questionUid": "qid_v1_d6bbf87bf0397aa29c28dd495d9c84c4bc2b33eac4873c56a7c5aa247eafdc31",
+    "conflictFields": "NOT_EMITTED_IN_AVAILABLE_LOGS_OR_ARTIFACT",
+    "conflictValues": "NOT_EMITTED_IN_AVAILABLE_LOGS_OR_ARTIFACT",
+    "searchedEvidence": [
+      "completed register job log",
+      "all 49 entries in registration artifact ZIP",
+      "remote rejection receipt"
+    ],
+    "observedSequence": [
+      "transient APPLIED staging marker",
+      "derived registration paths restored to HEAD",
+      "final REJECTED (projection-verify)",
+      "No request could be applied on this base; nothing to rebuild"
+    ],
+    "exactLogLines": [
+      "[register] derived registration paths restored to HEAD",
+      "[register] REJECTED (projection-verify) .archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev1.json: Error: Consumer metadata conflict: qid_v1_d6bbf87bf0397aa29c28dd495d9c84c4bc2b33eac4873c56a7c5aa247eafdc31",
+      "No request could be applied on this base; nothing to rebuild (rejections are recorded under .archive-meta-register/rejected/)."
+    ]
+  },
+  "artifact": {
+    "id": 14034719587,
+    "name": "archive-main-registration-43421975843-1",
+    "bytes": 280153,
+    "path": "01-main-writer-evidence-43421975843.zip",
+    "sha256": "4897e063bd5fe070f7746466f5d10bbb9b85cad8dd17e9b5c2e848176405fced",
+    "relevantEntry": "reviewed-1.log",
+    "inspectionPath": "01-main-writer-artifact-inspection.json",
+    "inspectionSha256": "89302c060c3833f4b09b1f940332414c18e3118e454b3f41058baeac59256917",
+    "prepareReport": {
+      "schemaVersion": "archive-registration-writer-v1",
+      "mode": "prepare",
+      "inputSha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
+      "status": "PREPARED_WITH_FAILURES",
+      "safeToPersist": true,
+      "registrationReady": true,
+      "publishable": true
+    },
+    "prepareLanes": [
+      {
+        "id": "reviewed",
+        "status": "VERIFIED",
+        "required": false
+      },
+      {
+        "id": "semantic",
+        "status": "FAILED",
+        "required": false,
+        "error": "NATIVE_COMMAND_FAILED:semantic:1"
+      },
+      {
+        "id": "shared",
+        "status": "VERIFIED",
+        "required": true
+      },
+      {
+        "id": "generated",
+        "status": "VERIFIED",
+        "required": true
+      },
+      {
+        "id": "reviewedFinal",
+        "status": "VERIFIED"
+      },
+      {
+        "id": "studentIndexes",
+        "status": "VERIFIED",
+        "required": true
+      },
+      {
+        "id": "fourSlot",
+        "status": "VERIFIED",
+        "required": false
+      }
+    ],
+    "reviewedLogSha256": "30a6335ebb9a714d82c0a4f55222941dd16bd36802230a5093adb24e9a3bc6b2"
+  },
+  "observationActions": {
+    "writerInvoked": false,
+    "retryDispatched": false,
+    "trackedFilesEdited": false
+  },
+  "nextAction": "Metadata owner inspects actual current consumer conflict fields, fixes the narrow cause, then regenerates an immutable request revision against current metadata using the existing supported protocol. Do not weaken projection verification."
+}
