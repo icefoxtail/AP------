@@ -62,9 +62,14 @@ test('production nested solid glyphs and TEXT caption have exact inventories, ac
     for(const viewport of [{name:'desktop',width:1440,height:1000},{name:'mobile',width:390,height:844},{name:'tablet',width:768,height:1024}]){
      await page.setViewportSize({width:viewport.width,height:viewport.height});
      for(const fixture of [{name:'caption',svg:composed.svg,size:dimensions,labels:count+1},{name:'caption-omitted',svg:hidden.svg,size:nativeSize,labels:count}]){
-      const smallerCapture=await captureAtDisplaySize(page,fixture.svg,{width:fixture.size.width*.4,height:fixture.size.height*.4},{surface:'PROBLEM_VISUAL',publicationViewport:{width:viewport.width,height:viewport.height}}),smaller=analyzeRenderedLayout(smallerCapture);
-      fs.writeFileSync(path.join(out,`solid-${count}-${fixture.name}-${viewport.name}-font-floor-negative.json`),JSON.stringify({fixtureClassification:'CONTROLLED_TECHNICAL_FIXTURE_EXPECTED_FAILURE',viewport,capture:smallerCapture,result:smaller},null,2)+'\n');
-      assert.equal(smaller.labelMeasurements.length,fixture.labels);assert.equal(smaller.status,'FAIL');assert.ok(smaller.errors.some(e=>e.includes('PUBLICATION_FONT_BELOW_11_CSS_PX')));assert.ok(smaller.labelMeasurements.every(label=>Math.abs(label.finalViewportCssFontPx-8)<1e-4));
+      const requested={width:fixture.size.width*.4,height:fixture.size.height*.4},smallerCapture=await captureAtDisplaySize(page,fixture.svg,requested,{surface:'PROBLEM_VISUAL',publicationViewport:{width:viewport.width,height:viewport.height}}),smaller=analyzeRenderedLayout(smallerCapture);
+      // Chromium quantizes the CSS viewport to 1/64 px. Derive the expected
+      // font from the independently observed viewport/viewBox meet fit, then
+      // cross-check the native root CTM; nominal 0.4 is not its measured scale.
+      const observedMeetScale=Math.min(smallerCapture.svg.width/smallerCapture.viewBox.width,smallerCapture.svg.height/smallerCapture.viewBox.height),expectedCssFontPx=20*observedMeetScale;
+      fs.writeFileSync(path.join(out,`solid-${count}-${fixture.name}-${viewport.name}-font-floor-negative.json`),JSON.stringify({fixtureClassification:'CONTROLLED_TECHNICAL_FIXTURE_EXPECTED_FAILURE',viewport,geometryExpectation:{requested,observedMeetScale,expectedCssFontPx,cssQuantizationPx:1/64},capture:smallerCapture,result:smaller},null,2)+'\n');
+      assert.equal(smallerCapture.viewBox.width,fixture.size.width);assert.equal(smallerCapture.viewBox.height,fixture.size.height);assert.ok(['width','height'].every(key=>Math.abs(smallerCapture.svg[key]-requested[key])<=1/64+1e-7));assert.ok(Math.abs(smallerCapture.coordinateScale-observedMeetScale)<1e-7);assert.ok(Number.isFinite(expectedCssFontPx)&&expectedCssFontPx>0&&expectedCssFontPx<11);
+      assert.equal(smaller.labelMeasurements.length,fixture.labels);assert.equal(smaller.status,'FAIL');assert.ok(smaller.errors.some(e=>e.includes('PUBLICATION_FONT_BELOW_11_CSS_PX')));assert.ok(smaller.labelMeasurements.every(label=>label.baseFontPx===20&&label.finalViewportCssFontPx<11&&Math.abs(label.finalViewportCssFontPx-expectedCssFontPx)<1e-4));
      }
     }
     const missing=composed.svg.replace(/ data-font-px="[^"]*"/g,'');
