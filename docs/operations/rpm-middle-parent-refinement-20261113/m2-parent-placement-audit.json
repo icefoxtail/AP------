@@ -1,0 +1,2953 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "rpm2022-m2-official-l2-parent-audit-20261113",
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "reviewer": "checkpoint",
+  "reviewedAtUtc": "2026-11-13T09:54:48.514452+00:00",
+  "scope": "READ_ONLY_SEMANTIC_PARENT_REVIEW",
+  "reviewedGitHead": "71137cfe8d6b0caba3926fce98ad28e53e80bdbf",
+  "baselineAuthorityPath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+  "baselineAuthoritySha256": "5b48107b00a052e5478350ca13e088861894bb32d33da0618f39f81acd7ffe22",
+  "baselineM2LeafMappingsCanonicalSha256": "f4f2ae0c4cd3b1f447f118d01fad9643c2d88fb16affe9be9200202ff8d01957",
+  "denominator": {
+    "books": 2,
+    "officialL2Chapters": 20,
+    "L3Groups": 59,
+    "L4Leaves": 118
+  },
+  "counts": {
+    "KEEP": 113,
+    "AMBIGUOUS_KEEP": 4,
+    "RECOMMEND_PARENT_CHANGE": 1
+  },
+  "countsByBook": {
+    "M2-1": {
+      "KEEP": 57,
+      "AMBIGUOUS_KEEP": 2
+    },
+    "M2-2": {
+      "KEEP": 56,
+      "RECOMMEND_PARENT_CHANGE": 1,
+      "AMBIGUOUS_KEEP": 2
+    }
+  },
+  "method": [
+    "정본의 모든 중2 L3/L4 명칭을 읽고 공식 PDF의 장 도입 및 해당 수학 주제와 대조했다.",
+    "넓은 명칭을 다루는 인접 장이 여럿이면 기존 부모를 정답으로 단정하지 않고 모호성 유지로 표시했다.",
+    "명백한 이동 후보와 겹치는 주제는 해당 페이지를 렌더링해 장 제목·열 경계·유형 맥락을 직접 확인했다.",
+    "각 교재의 모든 문항을 재풀이하거나 기출시험지 메타를 검토한 기록이 아니다.",
+    "코드·정본·검사 assertion·문제 원본은 수정하지 않았다."
+  ],
+  "pageConvention": "PDF 1-based page number. A new chapter can start in the right column while the left column still belongs to the previous chapter. Chapter identity is decided from the heading and exercise placement, not the page number alone.",
+  "sources": [
+    {
+      "book": "M2-1",
+      "officialBoardUrl": "https://www.imath.kr/app/board/detail/keys?boardKey=c2a9f7e7-7a8d-4116-a275-6368eaefe990&itemKey=3f2b30e9-d900-476b-b890-3991ea15909c",
+      "officialPdfUrl": "https://file.airklass.biz/imath/a50500ae-6f7a-4569-a614-e86904bf9af5/%5B%EC%A0%95%EB%8B%B5%5D%2022%EA%B0%9C%EC%A0%95%20RPM%20%EC%A4%91%ED%95%99%20%EC%88%98%ED%95%99%202-1.pdf",
+      "pdfSha256": "7dc7b73c3a2010a97111225b9d97411fda39d2920b1b7e2e4871467a84ca61c2",
+      "pdfSizeBytes": 16393569,
+      "pdfPageCount": 104,
+      "normalizedHeadingTable": [
+        {
+          "chapterOrdinal": 1,
+          "L1": "유리수와 순환소수",
+          "L2": "유리수와 순환소수",
+          "pdfPage1based": 2,
+          "sourceL1Text": "I. 유리수와 순환소수",
+          "sourceL2Text": "유리수와 순환소수"
+        },
+        {
+          "chapterOrdinal": 2,
+          "L1": "식의 계산",
+          "L2": "단항식의 계산",
+          "pdfPage1based": 11,
+          "sourceL1Text": "II. 식의 계산",
+          "sourceL2Text": "단항식의 계산"
+        },
+        {
+          "chapterOrdinal": 3,
+          "L1": "식의 계산",
+          "L2": "다항식의 계산",
+          "pdfPage1based": 20,
+          "sourceL1Text": "II. 식의 계산",
+          "sourceL2Text": "다항식의 계산"
+        },
+        {
+          "chapterOrdinal": 4,
+          "L1": "일차부등식",
+          "L2": "일차부등식",
+          "pdfPage1based": 28,
+          "sourceL1Text": "III. 일차부등식",
+          "sourceL2Text": "일차부등식"
+        },
+        {
+          "chapterOrdinal": 5,
+          "L1": "일차부등식",
+          "L2": "일차부등식의 활용",
+          "pdfPage1based": 36,
+          "sourceL1Text": "III. 일차부등식",
+          "sourceL2Text": "일차부등식의 활용"
+        },
+        {
+          "chapterOrdinal": 6,
+          "L1": "연립일차방정식",
+          "L2": "연립일차방정식",
+          "pdfPage1based": 43,
+          "sourceL1Text": "IV. 연립일차방정식",
+          "sourceL2Text": "연립일차방정식"
+        },
+        {
+          "chapterOrdinal": 7,
+          "L1": "연립일차방정식",
+          "L2": "연립일차방정식의 활용",
+          "pdfPage1based": 56,
+          "sourceL1Text": "IV. 연립일차방정식",
+          "sourceL2Text": "연립일차방정식의 활용"
+        },
+        {
+          "chapterOrdinal": 8,
+          "L1": "일차함수",
+          "L2": "일차함수와 그 그래프 (1)",
+          "pdfPage1based": 67,
+          "sourceL1Text": "V. 일차함수",
+          "sourceL2Text": "일차함수와 그 그래프  ⑴"
+        },
+        {
+          "chapterOrdinal": 9,
+          "L1": "일차함수",
+          "L2": "일차함수와 그 그래프 (2)",
+          "pdfPage1based": 75,
+          "sourceL1Text": "V. 일차함수",
+          "sourceL2Text": "일차함수와 그 그래프 ⑵"
+        },
+        {
+          "chapterOrdinal": 10,
+          "L1": "일차함수",
+          "L2": "일차함수와 일차방정식의 관계",
+          "pdfPage1based": 84,
+          "sourceL1Text": "V. 일차함수",
+          "sourceL2Text": "일차함수와 일차방정식의 관계"
+        }
+      ]
+    },
+    {
+      "book": "M2-2",
+      "officialBoardUrl": "https://www.imath.kr/app/board/detail/keys?boardKey=c2a9f7e7-7a8d-4116-a275-6368eaefe990&itemKey=380189a4-5f13-4f2b-9779-9f5f3d8f2187",
+      "officialPdfUrl": "https://file.airklass.biz/imath/a331eac5-4a31-4429-8f7d-fb1a72601ae6/22%EA%B0%9C%EC%A0%95_RPM%20%EC%A4%91%ED%95%99%20%EC%88%98%ED%95%99%202-2_%EC%A0%95%EB%8B%B5%20%EB%B0%8F%20%ED%92%80%EC%9D%B4_%EC%9B%B9%EC%9A%A9%20%281%ED%8C%901%EC%87%84%29.pdf",
+      "pdfSha256": "a71730860bb80f23053c5caf9d2627acf81eff428952a56a92d6cbedfb7b09c7",
+      "pdfSizeBytes": 17950124,
+      "pdfPageCount": 104,
+      "normalizedHeadingTable": [
+        {
+          "chapterOrdinal": 1,
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 성질",
+          "pdfPage1based": 2,
+          "sourceL1Text": "I. 삼각형의 성질",
+          "sourceL2Text": "삼각형의 성질"
+        },
+        {
+          "chapterOrdinal": 2,
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 외심과 내심",
+          "pdfPage1based": 11,
+          "sourceL1Text": "I. 삼각형의 성질",
+          "sourceL2Text": "삼각형의 외심과 내심"
+        },
+        {
+          "chapterOrdinal": 3,
+          "L1": "사각형의 성질",
+          "L2": "평행사변형",
+          "pdfPage1based": 19,
+          "sourceL1Text": "II. 사각형의 성질",
+          "sourceL2Text": "평행사변형"
+        },
+        {
+          "chapterOrdinal": 4,
+          "L1": "사각형의 성질",
+          "L2": "여러 가지 사각형",
+          "pdfPage1based": 27,
+          "sourceL1Text": "II. 사각형의 성질",
+          "sourceL2Text": "여러 가지 사각형"
+        },
+        {
+          "chapterOrdinal": 5,
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "도형의 닮음",
+          "pdfPage1based": 37,
+          "sourceL1Text": "III. 도형의 닮음과 피타고라스 정리",
+          "sourceL2Text": "도형의 닮음"
+        },
+        {
+          "chapterOrdinal": 6,
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "평행선 사이의 선분의 길이의 비",
+          "pdfPage1based": 47,
+          "sourceL1Text": "III. 도형의 닮음과 피타고라스 정리",
+          "sourceL2Text": "평행선 사이의 선분의 길이의 비"
+        },
+        {
+          "chapterOrdinal": 7,
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "삼각형의 무게중심",
+          "pdfPage1based": 55,
+          "sourceL1Text": "III. 도형의 닮음과 피타고라스 정리",
+          "sourceL2Text": "삼각형의 무게중심"
+        },
+        {
+          "chapterOrdinal": 8,
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "피타고라스 정리",
+          "pdfPage1based": 64,
+          "sourceL1Text": "III. 도형의 닮음과 피타고라스 정리",
+          "sourceL2Text": "피타고라스 정리"
+        },
+        {
+          "chapterOrdinal": 9,
+          "L1": "확률",
+          "L2": "경우의 수",
+          "pdfPage1based": 73,
+          "sourceL1Text": "IV. 확률",
+          "sourceL2Text": "경우의 수"
+        },
+        {
+          "chapterOrdinal": 10,
+          "L1": "확률",
+          "L2": "확률",
+          "pdfPage1based": 82,
+          "sourceL1Text": "IV. 확률",
+          "sourceL2Text": "확률"
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "M2-RPM-194": {
+      "decision": "RECOMMEND_PARENT_CHANGE",
+      "currentL2": "평행사변형",
+      "recommendedL2": "여러 가지 사각형",
+      "directVisualEvidence": [
+        {
+          "pdfPage1based": 28,
+          "exerciseRefs": [
+            "0311",
+            "0312",
+            "0313",
+            "0314",
+            "0315"
+          ],
+          "chapter": 4,
+          "observation": "일반 평행선 사이의 삼각형 넓이와 같은 높이에서 밑변 비에 따른 넓이 관계가 04장에 배열되어 있다."
+        },
+        {
+          "pdfPage1based": 33,
+          "exerciseRefs": [
+            "0369",
+            "0370",
+            "0371",
+            "0372",
+            "0373"
+          ],
+          "chapter": 4,
+          "observation": "평행선에 따른 삼각형의 넓이 분할 유형이 이어진다."
+        },
+        {
+          "pdfPage1based": 35,
+          "exerciseRefs": [
+            "0391",
+            "0392",
+            "0393",
+            "0394"
+          ],
+          "chapter": 4,
+          "observation": "평행선 사이의 동높이·등넓이 관계를 중심으로 삼각형의 넓이를 비교한다."
+        }
+      ],
+      "doNotExtendChangeTo": [
+        "M2-RPM-195"
+      ]
+    },
+    "M2-RPM-195": {
+      "decision": "AMBIGUOUS_KEEP",
+      "currentL2": "평행사변형",
+      "observation": "03장의 평행사변형 대각선·합동을 이용한 넓이 분할도 이름에 맞고 04장의 일반 평행선 넓이 분할도 이름에 맞는다. 현재 부모의 실제 근거가 있어 194와 함께 이동하지 않는다.",
+      "evidence": [
+        {
+          "pdfPages1based": [
+            23,
+            25,
+            26
+          ],
+          "chapter": 3
+        },
+        {
+          "pdfPages1based": [
+            33,
+            35
+          ],
+          "chapter": 4
+        }
+      ]
+    },
+    "M2-RPM-199": {
+      "decision": "AMBIGUOUS_KEEP",
+      "currentL2": "여러 가지 사각형",
+      "observation": "04장에서는 사다리꼴 네 변의 중점을 연결한 도형의 성질을, 07장에서는 사다리꼴의 중점 선분 길이를 다룬다. 두 활동을 구분할 정보가 현재 L3/L4 이름에 없으므로 유지한다. 기존 template binding만으로 다른 장으로 옮기지 않는다.",
+      "directVisualEvidence": [
+        {
+          "pdfPage1based": 28,
+          "exerciseRefs": [
+            "0310"
+          ],
+          "chapter": 4,
+          "observation": "등변사다리꼴 네 변의 중점 연결로 생기는 사각형의 성질."
+        },
+        {
+          "pdfPage1based": 55,
+          "exerciseRefs": [
+            "0595–0613"
+          ],
+          "chapter": 7,
+          "observation": "삼각형 중점 연결 정리 및 무게중심 장 도입."
+        },
+        {
+          "pdfPage1based": 57,
+          "exerciseRefs": [
+            "0628"
+          ],
+          "chapter": 7,
+          "observation": "사다리꼴에서 중점 연결 선분의 길이."
+        }
+      ]
+    },
+    "M2-RPM-176": {
+      "decision": "AMBIGUOUS_KEEP",
+      "currentL2": "일차함수와 일차방정식의 관계",
+      "observation": "현재 10장의 직선 교점과 넓이 문제는 명확히 존재한다. 다만 08장의 함수 그래프 넓이도 이름에 해당하므로 넓이라는 이름만으로 유일한 부모를 입증하거나 다른 장으로 이동할 수 없다.",
+      "directVisualEvidence": [
+        {
+          "pdfPage1based": 75,
+          "exerciseRefs": [
+            "0900"
+          ],
+          "chapter": 8,
+          "column": "left",
+          "observation": "다음 장이 시작하기 전, 함수 그래프와 축이 이루는 넓이."
+        },
+        {
+          "pdfPage1based": 89,
+          "exerciseRefs": [
+            "1067",
+            "1068",
+            "1069",
+            "1070"
+          ],
+          "chapter": 10,
+          "observation": "직선의 교점·연립방정식과 연계하여 도형의 넓이를 구한다."
+        }
+      ]
+    },
+    "M2-RPM-177": {
+      "decision": "AMBIGUOUS_KEEP",
+      "currentL2": "일차함수와 일차방정식의 관계",
+      "observation": "현재 10장에 교점을 지나는 직선 등의 조건식 결정이 있다. 09장에서도 주어진 점·기울기로 식을 정하므로 넓은 이름만으로 다른 장으로 이동할 수 없다.",
+      "directVisualEvidence": [
+        {
+          "pdfPage1based": 75,
+          "exerciseRefs": [
+            "0912",
+            "0913",
+            "0914",
+            "0915"
+          ],
+          "chapter": 9,
+          "column": "right",
+          "observation": "점·기울기 조건으로 함수식을 정한다."
+        },
+        {
+          "pdfPage1based": 88,
+          "exerciseRefs": [
+            "1057",
+            "1058",
+            "1059",
+            "1060",
+            "1061"
+          ],
+          "chapter": 10,
+          "observation": "연립방정식으로 정한 교점 및 추가 조건으로 직선식을 정한다."
+        }
+      ]
+    }
+  },
+  "groups": [
+    {
+      "groupId": "M2-L3-119",
+      "courseKey": "M2-1",
+      "L3": "유한소수와 무한소수",
+      "recordIds": [
+        "M2-RPM-119",
+        "M2-RPM-120"
+      ],
+      "pdfPages1based": [
+        2,
+        3,
+        4
+      ],
+      "observation": "유한소수 여부와 기약분수 분모의 소인수 조건을 다루는 01장에 해당한다."
+    },
+    {
+      "groupId": "M2-L3-121",
+      "courseKey": "M2-1",
+      "L3": "순환소수",
+      "recordIds": [
+        "M2-RPM-121",
+        "M2-RPM-122"
+      ],
+      "pdfPages1based": [
+        2,
+        4,
+        5
+      ],
+      "observation": "순환마디 표기와 순환소수를 분수로 바꾸는 내용이 01장에 있다."
+    },
+    {
+      "groupId": "M2-L3-123",
+      "courseKey": "M2-1",
+      "L3": "유리수와 소수 표현",
+      "recordIds": [
+        "M2-RPM-123",
+        "M2-RPM-124"
+      ],
+      "pdfPages1based": [
+        2,
+        4,
+        8,
+        9
+      ],
+      "observation": "분수의 소수 표현과 소수 조건을 만족하는 수를 찾는 내용이 01장 안에서 다뤄진다."
+    },
+    {
+      "groupId": "M2-L3-125",
+      "courseKey": "M2-1",
+      "L3": "지수법칙",
+      "recordIds": [
+        "M2-RPM-125",
+        "M2-RPM-126"
+      ],
+      "pdfPages1based": [
+        11,
+        13,
+        14
+      ],
+      "observation": "지수의 곱·몫과 거듭제곱의 거듭제곱은 02장 단항식 계산의 앞부분이다."
+    },
+    {
+      "groupId": "M2-L3-127",
+      "courseKey": "M2-1",
+      "L3": "단항식의 곱셈과 나눗셈",
+      "recordIds": [
+        "M2-RPM-127",
+        "M2-RPM-128",
+        "M2-RPM-129"
+      ],
+      "pdfPages1based": [
+        11,
+        16,
+        18
+      ],
+      "observation": "단항식의 곱셈·나눗셈 및 혼합 계산은 02장에 속한다."
+    },
+    {
+      "groupId": "M2-L3-130",
+      "courseKey": "M2-1",
+      "L3": "다항식의 덧셈과 뺄셈",
+      "recordIds": [
+        "M2-RPM-130",
+        "M2-RPM-131"
+      ],
+      "pdfPages1based": [
+        20,
+        21
+      ],
+      "observation": "동류항 정리와 괄호를 풀어 더하고 빼는 계산은 03장에 속한다."
+    },
+    {
+      "groupId": "M2-L3-132",
+      "courseKey": "M2-1",
+      "L3": "단항식과 다항식의 곱셈·나눗셈",
+      "recordIds": [
+        "M2-RPM-132",
+        "M2-RPM-133"
+      ],
+      "pdfPages1based": [
+        20,
+        21,
+        26
+      ],
+      "observation": "분배법칙에 의한 곱셈과 다항식을 단항식으로 나누는 계산은 03장에 속한다."
+    },
+    {
+      "groupId": "M2-L3-134",
+      "courseKey": "M2-1",
+      "L3": "식의 값과 활용",
+      "recordIds": [
+        "M2-RPM-134",
+        "M2-RPM-135"
+      ],
+      "pdfPages1based": [
+        22,
+        23,
+        25,
+        27
+      ],
+      "observation": "다항식 계산 뒤 식의 값과 조건식을 이용하는 내용이 03장에 있다."
+    },
+    {
+      "groupId": "M2-L3-136",
+      "courseKey": "M2-1",
+      "L3": "부등식의 성질",
+      "recordIds": [
+        "M2-RPM-136",
+        "M2-RPM-137"
+      ],
+      "pdfPages1based": [
+        28,
+        29,
+        31
+      ],
+      "observation": "부등식의 성질과 해를 수직선에 표시하는 내용은 04장이다."
+    },
+    {
+      "groupId": "M2-L3-138",
+      "courseKey": "M2-1",
+      "L3": "일차부등식의 풀이",
+      "recordIds": [
+        "M2-RPM-138",
+        "M2-RPM-139"
+      ],
+      "pdfPages1based": [
+        28,
+        31,
+        32
+      ],
+      "observation": "일차부등식의 기본 풀이와 분수·소수 계수의 정리는 04장이다."
+    },
+    {
+      "groupId": "M2-L3-140",
+      "courseKey": "M2-1",
+      "L3": "해의 조건",
+      "recordIds": [
+        "M2-RPM-140",
+        "M2-RPM-141"
+      ],
+      "pdfPages1based": [
+        31,
+        32,
+        34,
+        35
+      ],
+      "observation": "정수해의 개수 및 해의 범위로 계수를 정하는 내용은 04장의 해 조건 문제이다."
+    },
+    {
+      "groupId": "M2-L3-142",
+      "courseKey": "M2-1",
+      "L3": "수량 관계",
+      "recordIds": [
+        "M2-RPM-142",
+        "M2-RPM-143"
+      ],
+      "pdfPages1based": [
+        36,
+        37
+      ],
+      "observation": "일상 수량의 이상·이하 조건을 부등식으로 세우고 정수 최솟값·최댓값을 고르는 05장이다."
+    },
+    {
+      "groupId": "M2-L3-144",
+      "courseKey": "M2-1",
+      "L3": "거리·속력·시간",
+      "recordIds": [
+        "M2-RPM-144",
+        "M2-RPM-145"
+      ],
+      "pdfPages1based": [
+        36,
+        38,
+        40
+      ],
+      "observation": "거리·속력·시간에 제한 조건을 붙여 부등식으로 해결하는 05장이다."
+    },
+    {
+      "groupId": "M2-L3-146",
+      "courseKey": "M2-1",
+      "L3": "비율·가격·도형",
+      "recordIds": [
+        "M2-RPM-146",
+        "M2-RPM-147"
+      ],
+      "pdfPages1based": [
+        38,
+        41,
+        42
+      ],
+      "observation": "가격·이익과 도형의 길이·넓이 조건을 부등식으로 세우는 05장이다."
+    },
+    {
+      "groupId": "M2-L3-148",
+      "courseKey": "M2-1",
+      "L3": "연립방정식의 풀이",
+      "recordIds": [
+        "M2-RPM-148",
+        "M2-RPM-149"
+      ],
+      "pdfPages1based": [
+        43,
+        44,
+        45
+      ],
+      "observation": "두 일차방정식의 가감·대입으로 공통 해를 구하는 06장이다."
+    },
+    {
+      "groupId": "M2-L3-150",
+      "courseKey": "M2-1",
+      "L3": "해와 계수",
+      "recordIds": [
+        "M2-RPM-150",
+        "M2-RPM-151"
+      ],
+      "pdfPages1based": [
+        43,
+        45,
+        48
+      ],
+      "observation": "주어진 해를 대입하거나 해 조건으로 계수를 정하는 06장이다."
+    },
+    {
+      "groupId": "M2-L3-152",
+      "courseKey": "M2-1",
+      "L3": "복잡한 꼴의 연립방정식",
+      "recordIds": [
+        "M2-RPM-152",
+        "M2-RPM-153"
+      ],
+      "pdfPages1based": [
+        44,
+        46,
+        47
+      ],
+      "observation": "괄호·분수·소수 계수를 정리한 뒤 연립하여 푸는 06장이다."
+    },
+    {
+      "groupId": "M2-L3-154",
+      "courseKey": "M2-1",
+      "L3": "해가 특수한 연립방정식",
+      "recordIds": [
+        "M2-RPM-154",
+        "M2-RPM-155"
+      ],
+      "pdfPages1based": [
+        49,
+        50,
+        52,
+        54
+      ],
+      "observation": "해가 없거나 무수히 많은 경우와 그 계수 조건은 06장 안에서 다뤄진다."
+    },
+    {
+      "groupId": "M2-L3-156",
+      "courseKey": "M2-1",
+      "L3": "수와 개수",
+      "recordIds": [
+        "M2-RPM-156",
+        "M2-RPM-157"
+      ],
+      "pdfPages1based": [
+        56,
+        57,
+        58
+      ],
+      "observation": "수·개수·가격을 두 미지수의 연립방정식으로 표현하는 07장이다."
+    },
+    {
+      "groupId": "M2-L3-158",
+      "courseKey": "M2-1",
+      "L3": "속력·시간·거리",
+      "recordIds": [
+        "M2-RPM-158",
+        "M2-RPM-159"
+      ],
+      "pdfPages1based": [
+        60,
+        61,
+        62,
+        63
+      ],
+      "observation": "만남·추월·강물·기차 상황을 연립방정식으로 표현하는 07장이다."
+    },
+    {
+      "groupId": "M2-L3-160",
+      "courseKey": "M2-1",
+      "L3": "농도·비율",
+      "recordIds": [
+        "M2-RPM-160",
+        "M2-RPM-161"
+      ],
+      "pdfPages1based": [
+        57,
+        59,
+        64
+      ],
+      "observation": "농도와 비율 변화에 따른 두 수량 관계를 세우는 07장이다."
+    },
+    {
+      "groupId": "M2-L3-162",
+      "courseKey": "M2-1",
+      "L3": "도형 활용",
+      "recordIds": [
+        "M2-RPM-162"
+      ],
+      "pdfPages1based": [
+        58,
+        65
+      ],
+      "observation": "도형의 수량 조건을 두 식으로 나타내는 07장 활용이다."
+    },
+    {
+      "groupId": "M2-L3-163",
+      "courseKey": "M2-1",
+      "L3": "일의 양",
+      "recordIds": [
+        "M2-RPM-163"
+      ],
+      "pdfPages1based": [
+        60,
+        65
+      ],
+      "observation": "작업률과 일의 양의 관계를 연립하여 구하는 07장이다."
+    },
+    {
+      "groupId": "M2-L3-164",
+      "courseKey": "M2-1",
+      "L3": "일차함수의 뜻",
+      "recordIds": [
+        "M2-RPM-164",
+        "M2-RPM-165"
+      ],
+      "pdfPages1based": [
+        67,
+        68
+      ],
+      "observation": "함수의 뜻·함숫값·일차함수 여부는 08장 도입이다."
+    },
+    {
+      "groupId": "M2-L3-166",
+      "courseKey": "M2-1",
+      "L3": "일차함수의 그래프",
+      "recordIds": [
+        "M2-RPM-166",
+        "M2-RPM-167"
+      ],
+      "pdfPages1based": [
+        67,
+        68,
+        69,
+        70
+      ],
+      "observation": "기울기와 절편을 읽고 좌표평면에 그래프를 그리는 08장이다."
+    },
+    {
+      "groupId": "M2-L3-168",
+      "courseKey": "M2-1",
+      "L3": "그래프의 성질",
+      "recordIds": [
+        "M2-RPM-168",
+        "M2-RPM-169"
+      ],
+      "pdfPages1based": [
+        75,
+        76
+      ],
+      "observation": "09장 도입과 해당 문제군에서 평행·일치 및 증가·감소를 다룬다."
+    },
+    {
+      "groupId": "M2-L3-170",
+      "courseKey": "M2-1",
+      "L3": "식 구하기",
+      "recordIds": [
+        "M2-RPM-170",
+        "M2-RPM-171"
+      ],
+      "pdfPages1based": [
+        75,
+        77,
+        78
+      ],
+      "observation": "09장 도입의 0912–0915 및 후속 문제에서 기울기와 점, 두 점으로 함수식을 정한다."
+    },
+    {
+      "groupId": "M2-L3-172",
+      "courseKey": "M2-1",
+      "L3": "방정식과 그래프",
+      "recordIds": [
+        "M2-RPM-172",
+        "M2-RPM-173"
+      ],
+      "pdfPages1based": [
+        84,
+        85,
+        87
+      ],
+      "observation": "일차방정식의 그래프와 축에 평행한 직선은 10장이다."
+    },
+    {
+      "groupId": "M2-L3-174",
+      "courseKey": "M2-1",
+      "L3": "두 직선의 관계",
+      "recordIds": [
+        "M2-RPM-174",
+        "M2-RPM-175"
+      ],
+      "pdfPages1based": [
+        84,
+        85,
+        88,
+        89
+      ],
+      "observation": "교점과 연립방정식의 해를 연결하고 평행·일치를 판정하는 10장이다."
+    },
+    {
+      "groupId": "M2-L3-176",
+      "courseKey": "M2-1",
+      "L3": "그래프 활용",
+      "recordIds": [
+        "M2-RPM-176",
+        "M2-RPM-177"
+      ],
+      "pdfPages1based": [
+        75,
+        77,
+        88,
+        89,
+        90
+      ],
+      "observation": "넓이 및 조건으로 식을 정하는 활동은 여러 장에 존재한다. 교점·연립 조건이 있을 때에는 현재 10장에 해당하지만 넓은 L3/L4 이름만으로 그 조건을 확정할 수 없다."
+    },
+    {
+      "groupId": "M2-L3-178",
+      "courseKey": "M2-2",
+      "L3": "이등변삼각형",
+      "recordIds": [
+        "M2-RPM-178",
+        "M2-RPM-179"
+      ],
+      "pdfPages1based": [
+        2,
+        3,
+        4
+      ],
+      "observation": "이등변삼각형의 성질과 판정은 01장이다."
+    },
+    {
+      "groupId": "M2-L3-180",
+      "courseKey": "M2-2",
+      "L3": "직각삼각형의 합동",
+      "recordIds": [
+        "M2-RPM-180",
+        "M2-RPM-181"
+      ],
+      "pdfPages1based": [
+        2,
+        5,
+        6
+      ],
+      "observation": "직각삼각형의 RHS·RHA 합동과 이를 이용한 관계는 01장이다."
+    },
+    {
+      "groupId": "M2-L3-182",
+      "courseKey": "M2-2",
+      "L3": "각의 이등분선",
+      "recordIds": [
+        "M2-RPM-182",
+        "M2-RPM-183"
+      ],
+      "pdfPages1based": [
+        7,
+        9,
+        10
+      ],
+      "observation": "각의 이등분선 위의 점과 양변 사이 거리 관계를 직각삼각형 합동으로 다루는 01장이다. 선분비를 이용하는 각의 이등분선 정리와 구분한다."
+    },
+    {
+      "groupId": "M2-L3-184",
+      "courseKey": "M2-2",
+      "L3": "외심",
+      "recordIds": [
+        "M2-RPM-184",
+        "M2-RPM-185"
+      ],
+      "pdfPages1based": [
+        11,
+        12,
+        13
+      ],
+      "observation": "외심을 수직이등분선의 교점으로 이해하고 위치·각을 판단하는 02장이다."
+    },
+    {
+      "groupId": "M2-L3-186",
+      "courseKey": "M2-2",
+      "L3": "내심",
+      "recordIds": [
+        "M2-RPM-186",
+        "M2-RPM-187"
+      ],
+      "pdfPages1based": [
+        11,
+        14,
+        15
+      ],
+      "observation": "내심과 각의 이등분선·변까지의 거리 관계는 02장이다."
+    },
+    {
+      "groupId": "M2-L3-188",
+      "courseKey": "M2-2",
+      "L3": "외접원·내접원 활용",
+      "recordIds": [
+        "M2-RPM-188",
+        "M2-RPM-189"
+      ],
+      "pdfPages1based": [
+        12,
+        14,
+        16,
+        17,
+        18
+      ],
+      "observation": "외접원·내접원의 반지름·각 및 복합도형 적용은 02장이다."
+    },
+    {
+      "groupId": "M2-L3-190",
+      "courseKey": "M2-2",
+      "L3": "평행사변형의 성질",
+      "recordIds": [
+        "M2-RPM-190",
+        "M2-RPM-191"
+      ],
+      "pdfPages1based": [
+        19,
+        20,
+        21
+      ],
+      "observation": "평행사변형의 변·각·대각선 성질은 03장이다."
+    },
+    {
+      "groupId": "M2-L3-192",
+      "courseKey": "M2-2",
+      "L3": "평행사변형의 판정",
+      "recordIds": [
+        "M2-RPM-192",
+        "M2-RPM-193"
+      ],
+      "pdfPages1based": [
+        19,
+        21,
+        22
+      ],
+      "observation": "변·각·대각선 조건으로 평행사변형을 판정하는 03장이다."
+    },
+    {
+      "groupId": "M2-L3-194",
+      "courseKey": "M2-2",
+      "L3": "넓이와 활용",
+      "recordIds": [
+        "M2-RPM-194",
+        "M2-RPM-195"
+      ],
+      "pdfPages1based": [
+        23,
+        25,
+        26,
+        28,
+        33,
+        35
+      ],
+      "observation": "194의 일반 평행선과 삼각형 넓이 주제는 04장이다. 195의 분할도형은 03장 평행사변형 분할과 04장 일반 평행선 넓이에 모두 존재하므로 묶어서 이동하지 않는다."
+    },
+    {
+      "groupId": "M2-L3-196",
+      "courseKey": "M2-2",
+      "L3": "직사각형·마름모·정사각형",
+      "recordIds": [
+        "M2-RPM-196",
+        "M2-RPM-197"
+      ],
+      "pdfPages1based": [
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "observation": "직사각형·마름모·정사각형의 성질과 대각선의 관계는 04장이다."
+    },
+    {
+      "groupId": "M2-L3-198",
+      "courseKey": "M2-2",
+      "L3": "사다리꼴",
+      "recordIds": [
+        "M2-RPM-198",
+        "M2-RPM-199"
+      ],
+      "pdfPages1based": [
+        28,
+        31,
+        34,
+        55,
+        57
+      ],
+      "observation": "등변사다리꼴은 04장이다. 199는 04장의 사다리꼴 네 변 중점 연결 도형과 07장의 중점 선분 길이가 모두 이름에 맞아 일괄 이동 근거가 부족하다."
+    },
+    {
+      "groupId": "M2-L3-200",
+      "courseKey": "M2-2",
+      "L3": "사각형의 포함 관계",
+      "recordIds": [
+        "M2-RPM-200",
+        "M2-RPM-201"
+      ],
+      "pdfPages1based": [
+        31,
+        32
+      ],
+      "observation": "조건에 따른 여러 사각형 판정과 성질 비교는 04장이다."
+    },
+    {
+      "groupId": "M2-L3-202",
+      "courseKey": "M2-2",
+      "L3": "닮은 도형",
+      "recordIds": [
+        "M2-RPM-202",
+        "M2-RPM-203"
+      ],
+      "pdfPages1based": [
+        37,
+        38
+      ],
+      "observation": "닮음비와 대응변·대응각은 05장 도입이다."
+    },
+    {
+      "groupId": "M2-L3-204",
+      "courseKey": "M2-2",
+      "L3": "삼각형의 닮음",
+      "recordIds": [
+        "M2-RPM-204",
+        "M2-RPM-205",
+        "M2-RPM-206"
+      ],
+      "pdfPages1based": [
+        37,
+        38,
+        41,
+        42
+      ],
+      "observation": "삼각형의 AA·SAS·SSS 닮음 조건은 05장이다."
+    },
+    {
+      "groupId": "M2-L3-207",
+      "courseKey": "M2-2",
+      "L3": "닮음의 활용",
+      "recordIds": [
+        "M2-RPM-207",
+        "M2-RPM-208"
+      ],
+      "pdfPages1based": [
+        39,
+        40,
+        44,
+        46
+      ],
+      "observation": "닮음으로 길이를 구하고 넓이·부피 비를 적용하는 내용이 05장 안에 있다."
+    },
+    {
+      "groupId": "M2-L3-209",
+      "courseKey": "M2-2",
+      "L3": "삼각형과 평행선",
+      "recordIds": [
+        "M2-RPM-209",
+        "M2-RPM-210"
+      ],
+      "pdfPages1based": [
+        47,
+        48,
+        49
+      ],
+      "observation": "삼각형에서 평행선에 따른 선분비와 그 역으로 평행을 판정하는 06장이다."
+    },
+    {
+      "groupId": "M2-L3-211",
+      "courseKey": "M2-2",
+      "L3": "평행선 사이 선분비",
+      "recordIds": [
+        "M2-RPM-211",
+        "M2-RPM-212"
+      ],
+      "pdfPages1based": [
+        47,
+        50,
+        53
+      ],
+      "observation": "여러 평행선 또는 사다리꼴에서 일반 선분비를 구하는 06장이다. 중점 정리에 한정된 07장과 구분한다."
+    },
+    {
+      "groupId": "M2-L3-213",
+      "courseKey": "M2-2",
+      "L3": "비례 활용",
+      "recordIds": [
+        "M2-RPM-213",
+        "M2-RPM-214"
+      ],
+      "pdfPages1based": [
+        48,
+        50,
+        53,
+        54
+      ],
+      "observation": "평행선의 선분비를 이용해 미지 길이와 복합도형을 다루는 06장이다."
+    },
+    {
+      "groupId": "M2-L3-215",
+      "courseKey": "M2-2",
+      "L3": "중선과 무게중심",
+      "recordIds": [
+        "M2-RPM-215",
+        "M2-RPM-216"
+      ],
+      "pdfPages1based": [
+        55,
+        56,
+        58
+      ],
+      "observation": "중선과 무게중심의 2:1 내분을 이용한 길이 관계는 07장이다."
+    },
+    {
+      "groupId": "M2-L3-217",
+      "courseKey": "M2-2",
+      "L3": "넓이와 무게중심",
+      "recordIds": [
+        "M2-RPM-217",
+        "M2-RPM-218"
+      ],
+      "pdfPages1based": [
+        58,
+        61,
+        62,
+        63
+      ],
+      "observation": "중선과 무게중심에 따른 넓이 분할 및 복합도형은 07장이다."
+    },
+    {
+      "groupId": "M2-L3-219",
+      "courseKey": "M2-2",
+      "L3": "피타고라스 정리",
+      "recordIds": [
+        "M2-RPM-219",
+        "M2-RPM-220"
+      ],
+      "pdfPages1based": [
+        64,
+        65,
+        66
+      ],
+      "observation": "피타고라스 등식으로 직각삼각형 변 길이와 수 관계를 다루는 08장이다."
+    },
+    {
+      "groupId": "M2-L3-221",
+      "courseKey": "M2-2",
+      "L3": "피타고라스 정리의 역",
+      "recordIds": [
+        "M2-RPM-221",
+        "M2-RPM-222"
+      ],
+      "pdfPages1based": [
+        65,
+        67
+      ],
+      "observation": "피타고라스 정리의 역 및 세 변의 제곱 비교에 의한 직각·예각·둔각 판정이 08장에 있다."
+    },
+    {
+      "groupId": "M2-L3-223",
+      "courseKey": "M2-2",
+      "L3": "도형에의 활용",
+      "recordIds": [
+        "M2-RPM-223",
+        "M2-RPM-224"
+      ],
+      "pdfPages1based": [
+        67,
+        68,
+        69,
+        72,
+        73
+      ],
+      "observation": "피타고라스 정리로 평면의 길이와 입체 전개도의 최단 거리를 구하는 08장이다. 경로의 개수를 세는 09장과 구분한다."
+    },
+    {
+      "groupId": "M2-L3-225",
+      "courseKey": "M2-2",
+      "L3": "합의 법칙과 곱의 법칙",
+      "recordIds": [
+        "M2-RPM-225",
+        "M2-RPM-226"
+      ],
+      "pdfPages1based": [
+        73,
+        74,
+        76
+      ],
+      "observation": "서로 다른 선택의 경우를 합하거나 이어지는 선택의 경우를 곱하는 09장이다."
+    },
+    {
+      "groupId": "M2-L3-227",
+      "courseKey": "M2-2",
+      "L3": "배열과 선택",
+      "recordIds": [
+        "M2-RPM-227",
+        "M2-RPM-228"
+      ],
+      "pdfPages1based": [
+        76,
+        77,
+        78,
+        80,
+        81
+      ],
+      "observation": "순서를 구분하는 배치와 구분하지 않는 선택의 수는 09장이다."
+    },
+    {
+      "groupId": "M2-L3-229",
+      "courseKey": "M2-2",
+      "L3": "도형·경로",
+      "recordIds": [
+        "M2-RPM-229",
+        "M2-RPM-230"
+      ],
+      "pdfPages1based": [
+        75,
+        78,
+        79,
+        82
+      ],
+      "observation": "09장 0878 및 0904는 최단 거리로 가는 경우의 수를 세며, 삼각형·도형의 개수를 세는 문제도 같은 장에 있다. 거리 자체를 구하는 08장과 구분한다."
+    },
+    {
+      "groupId": "M2-L3-231",
+      "courseKey": "M2-2",
+      "L3": "확률의 뜻",
+      "recordIds": [
+        "M2-RPM-231",
+        "M2-RPM-232"
+      ],
+      "pdfPages1based": [
+        82,
+        83,
+        84
+      ],
+      "observation": "모든 경우와 사건의 경우의 비로 확률을 구하는 10장 도입이다."
+    },
+    {
+      "groupId": "M2-L3-233",
+      "courseKey": "M2-2",
+      "L3": "확률의 성질",
+      "recordIds": [
+        "M2-RPM-233",
+        "M2-RPM-234"
+      ],
+      "pdfPages1based": [
+        84,
+        85,
+        86
+      ],
+      "observation": "일어나지 않는 사건과 여러 경우를 합한 확률을 다루는 10장이다."
+    },
+    {
+      "groupId": "M2-L3-235",
+      "courseKey": "M2-2",
+      "L3": "확률의 활용",
+      "recordIds": [
+        "M2-RPM-235",
+        "M2-RPM-236"
+      ],
+      "pdfPages1based": [
+        87,
+        88,
+        89,
+        90
+      ],
+      "observation": "경우를 나누어 계산하고 연속 시행의 확률을 곱하는 10장이다."
+    }
+  ],
+  "leaves": [
+    {
+      "recordId": "M2-RPM-119",
+      "courseKey": "M2-1",
+      "L3": "유한소수와 무한소수",
+      "L4": "유한소수 판별",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "유리수와 순환소수",
+        "유리수와 순환소수"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-119"
+    },
+    {
+      "recordId": "M2-RPM-120",
+      "courseKey": "M2-1",
+      "L3": "유한소수와 무한소수",
+      "L4": "분모의 소인수 조건",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "유리수와 순환소수",
+        "유리수와 순환소수"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-119"
+    },
+    {
+      "recordId": "M2-RPM-121",
+      "courseKey": "M2-1",
+      "L3": "순환소수",
+      "L4": "순환마디와 표현",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "유리수와 순환소수",
+        "유리수와 순환소수"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-121"
+    },
+    {
+      "recordId": "M2-RPM-122",
+      "courseKey": "M2-1",
+      "L3": "순환소수",
+      "L4": "순환소수를 분수로",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "유리수와 순환소수",
+        "유리수와 순환소수"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-121"
+    },
+    {
+      "recordId": "M2-RPM-123",
+      "courseKey": "M2-1",
+      "L3": "유리수와 소수 표현",
+      "L4": "분수를 소수로",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "유리수와 순환소수",
+        "유리수와 순환소수"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-123"
+    },
+    {
+      "recordId": "M2-RPM-124",
+      "courseKey": "M2-1",
+      "L3": "유리수와 소수 표현",
+      "L4": "조건을 만족하는 유리수",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "유리수와 순환소수",
+        "유리수와 순환소수"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-123"
+    },
+    {
+      "recordId": "M2-RPM-125",
+      "courseKey": "M2-1",
+      "L3": "지수법칙",
+      "L4": "거듭제곱의 곱·몫",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "식의 계산",
+        "단항식의 계산"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-125"
+    },
+    {
+      "recordId": "M2-RPM-126",
+      "courseKey": "M2-1",
+      "L3": "지수법칙",
+      "L4": "거듭제곱의 거듭제곱",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "식의 계산",
+        "단항식의 계산"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-125"
+    },
+    {
+      "recordId": "M2-RPM-127",
+      "courseKey": "M2-1",
+      "L3": "단항식의 곱셈과 나눗셈",
+      "L4": "단항식의 곱셈",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "식의 계산",
+        "단항식의 계산"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-127"
+    },
+    {
+      "recordId": "M2-RPM-128",
+      "courseKey": "M2-1",
+      "L3": "단항식의 곱셈과 나눗셈",
+      "L4": "단항식의 나눗셈",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "식의 계산",
+        "단항식의 계산"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-127"
+    },
+    {
+      "recordId": "M2-RPM-129",
+      "courseKey": "M2-1",
+      "L3": "단항식의 곱셈과 나눗셈",
+      "L4": "혼합 계산",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "식의 계산",
+        "단항식의 계산"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-127"
+    },
+    {
+      "recordId": "M2-RPM-130",
+      "courseKey": "M2-1",
+      "L3": "다항식의 덧셈과 뺄셈",
+      "L4": "동류항 정리",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "식의 계산",
+        "다항식의 계산"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-130"
+    },
+    {
+      "recordId": "M2-RPM-131",
+      "courseKey": "M2-1",
+      "L3": "다항식의 덧셈과 뺄셈",
+      "L4": "괄호가 있는 계산",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "식의 계산",
+        "다항식의 계산"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-130"
+    },
+    {
+      "recordId": "M2-RPM-132",
+      "courseKey": "M2-1",
+      "L3": "단항식과 다항식의 곱셈·나눗셈",
+      "L4": "분배법칙",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "식의 계산",
+        "다항식의 계산"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-132"
+    },
+    {
+      "recordId": "M2-RPM-133",
+      "courseKey": "M2-1",
+      "L3": "단항식과 다항식의 곱셈·나눗셈",
+      "L4": "다항식을 단항식으로 나누기",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "식의 계산",
+        "다항식의 계산"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-132"
+    },
+    {
+      "recordId": "M2-RPM-134",
+      "courseKey": "M2-1",
+      "L3": "식의 값과 활용",
+      "L4": "식의 값",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "식의 계산",
+        "다항식의 계산"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-134"
+    },
+    {
+      "recordId": "M2-RPM-135",
+      "courseKey": "M2-1",
+      "L3": "식의 값과 활용",
+      "L4": "조건식 활용",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "식의 계산",
+        "다항식의 계산"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-134"
+    },
+    {
+      "recordId": "M2-RPM-136",
+      "courseKey": "M2-1",
+      "L3": "부등식의 성질",
+      "L4": "부등식의 성질",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차부등식",
+        "일차부등식"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-136"
+    },
+    {
+      "recordId": "M2-RPM-137",
+      "courseKey": "M2-1",
+      "L3": "부등식의 성질",
+      "L4": "수직선으로 해 표현",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차부등식",
+        "일차부등식"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-136"
+    },
+    {
+      "recordId": "M2-RPM-138",
+      "courseKey": "M2-1",
+      "L3": "일차부등식의 풀이",
+      "L4": "기본형",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차부등식",
+        "일차부등식"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-138"
+    },
+    {
+      "recordId": "M2-RPM-139",
+      "courseKey": "M2-1",
+      "L3": "일차부등식의 풀이",
+      "L4": "괄호·분수·소수가 있는 부등식",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차부등식",
+        "일차부등식"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-138"
+    },
+    {
+      "recordId": "M2-RPM-140",
+      "courseKey": "M2-1",
+      "L3": "해의 조건",
+      "L4": "정수해 개수",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차부등식",
+        "일차부등식"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-140"
+    },
+    {
+      "recordId": "M2-RPM-141",
+      "courseKey": "M2-1",
+      "L3": "해의 조건",
+      "L4": "계수 조건",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차부등식",
+        "일차부등식"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-140"
+    },
+    {
+      "recordId": "M2-RPM-142",
+      "courseKey": "M2-1",
+      "L3": "수량 관계",
+      "L4": "이상·이하 조건",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차부등식",
+        "일차부등식의 활용"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-142"
+    },
+    {
+      "recordId": "M2-RPM-143",
+      "courseKey": "M2-1",
+      "L3": "수량 관계",
+      "L4": "최소·최대 정수",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차부등식",
+        "일차부등식의 활용"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-142"
+    },
+    {
+      "recordId": "M2-RPM-144",
+      "courseKey": "M2-1",
+      "L3": "거리·속력·시간",
+      "L4": "시간 제한",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차부등식",
+        "일차부등식의 활용"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-144"
+    },
+    {
+      "recordId": "M2-RPM-145",
+      "courseKey": "M2-1",
+      "L3": "거리·속력·시간",
+      "L4": "거리 조건",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차부등식",
+        "일차부등식의 활용"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-144"
+    },
+    {
+      "recordId": "M2-RPM-146",
+      "courseKey": "M2-1",
+      "L3": "비율·가격·도형",
+      "L4": "할인·이익",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차부등식",
+        "일차부등식의 활용"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-146"
+    },
+    {
+      "recordId": "M2-RPM-147",
+      "courseKey": "M2-1",
+      "L3": "비율·가격·도형",
+      "L4": "도형의 길이·넓이 조건",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차부등식",
+        "일차부등식의 활용"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-146"
+    },
+    {
+      "recordId": "M2-RPM-148",
+      "courseKey": "M2-1",
+      "L3": "연립방정식의 풀이",
+      "L4": "가감법",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-148"
+    },
+    {
+      "recordId": "M2-RPM-149",
+      "courseKey": "M2-1",
+      "L3": "연립방정식의 풀이",
+      "L4": "대입법",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-148"
+    },
+    {
+      "recordId": "M2-RPM-150",
+      "courseKey": "M2-1",
+      "L3": "해와 계수",
+      "L4": "해가 주어진 연립방정식",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-150"
+    },
+    {
+      "recordId": "M2-RPM-151",
+      "courseKey": "M2-1",
+      "L3": "해와 계수",
+      "L4": "계수 결정",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-150"
+    },
+    {
+      "recordId": "M2-RPM-152",
+      "courseKey": "M2-1",
+      "L3": "복잡한 꼴의 연립방정식",
+      "L4": "괄호가 있는 연립방정식",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-152"
+    },
+    {
+      "recordId": "M2-RPM-153",
+      "courseKey": "M2-1",
+      "L3": "복잡한 꼴의 연립방정식",
+      "L4": "분수·소수가 있는 연립방정식",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-152"
+    },
+    {
+      "recordId": "M2-RPM-154",
+      "courseKey": "M2-1",
+      "L3": "해가 특수한 연립방정식",
+      "L4": "해가 없거나 무수히 많은 경우",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-154"
+    },
+    {
+      "recordId": "M2-RPM-155",
+      "courseKey": "M2-1",
+      "L3": "해가 특수한 연립방정식",
+      "L4": "계수 조건으로 해의 상태 판단",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-154"
+    },
+    {
+      "recordId": "M2-RPM-156",
+      "courseKey": "M2-1",
+      "L3": "수와 개수",
+      "L4": "두 수 관계",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식의 활용"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-156"
+    },
+    {
+      "recordId": "M2-RPM-157",
+      "courseKey": "M2-1",
+      "L3": "수와 개수",
+      "L4": "개수·가격",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식의 활용"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-156"
+    },
+    {
+      "recordId": "M2-RPM-158",
+      "courseKey": "M2-1",
+      "L3": "속력·시간·거리",
+      "L4": "마주가기·따라가기",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식의 활용"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-158"
+    },
+    {
+      "recordId": "M2-RPM-159",
+      "courseKey": "M2-1",
+      "L3": "속력·시간·거리",
+      "L4": "강물·기차",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식의 활용"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-158"
+    },
+    {
+      "recordId": "M2-RPM-160",
+      "courseKey": "M2-1",
+      "L3": "농도·비율",
+      "L4": "농도 혼합",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식의 활용"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-160"
+    },
+    {
+      "recordId": "M2-RPM-161",
+      "courseKey": "M2-1",
+      "L3": "농도·비율",
+      "L4": "증감률",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식의 활용"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-160"
+    },
+    {
+      "recordId": "M2-RPM-162",
+      "courseKey": "M2-1",
+      "L3": "도형 활용",
+      "L4": "도형 조건을 이용한 연립방정식",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식의 활용"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-162"
+    },
+    {
+      "recordId": "M2-RPM-163",
+      "courseKey": "M2-1",
+      "L3": "일의 양",
+      "L4": "일의 양과 작업률",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "연립일차방정식",
+        "연립일차방정식의 활용"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-163"
+    },
+    {
+      "recordId": "M2-RPM-164",
+      "courseKey": "M2-1",
+      "L3": "일차함수의 뜻",
+      "L4": "함숫값",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차함수",
+        "일차함수와 그 그래프(1)"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-164"
+    },
+    {
+      "recordId": "M2-RPM-165",
+      "courseKey": "M2-1",
+      "L3": "일차함수의 뜻",
+      "L4": "일차함수 판별",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차함수",
+        "일차함수와 그 그래프(1)"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-164"
+    },
+    {
+      "recordId": "M2-RPM-166",
+      "courseKey": "M2-1",
+      "L3": "일차함수의 그래프",
+      "L4": "기울기·절편",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차함수",
+        "일차함수와 그 그래프(1)"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-166"
+    },
+    {
+      "recordId": "M2-RPM-167",
+      "courseKey": "M2-1",
+      "L3": "일차함수의 그래프",
+      "L4": "그래프 그리기",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차함수",
+        "일차함수와 그 그래프(1)"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-166"
+    },
+    {
+      "recordId": "M2-RPM-168",
+      "courseKey": "M2-1",
+      "L3": "그래프의 성질",
+      "L4": "일차함수 그래프의 평행·일치",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차함수",
+        "일차함수와 그 그래프(2)"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-168"
+    },
+    {
+      "recordId": "M2-RPM-169",
+      "courseKey": "M2-1",
+      "L3": "그래프의 성질",
+      "L4": "증가·감소",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차함수",
+        "일차함수와 그 그래프(2)"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-168"
+    },
+    {
+      "recordId": "M2-RPM-170",
+      "courseKey": "M2-1",
+      "L3": "식 구하기",
+      "L4": "두 점으로 식 구하기",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차함수",
+        "일차함수와 그 그래프(2)"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-170"
+    },
+    {
+      "recordId": "M2-RPM-171",
+      "courseKey": "M2-1",
+      "L3": "식 구하기",
+      "L4": "기울기와 한 점으로 식 구하기",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차함수",
+        "일차함수와 그 그래프(2)"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-170"
+    },
+    {
+      "recordId": "M2-RPM-172",
+      "courseKey": "M2-1",
+      "L3": "방정식과 그래프",
+      "L4": "일차방정식의 그래프",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차함수",
+        "일차함수와 일차방정식의 관계"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-172"
+    },
+    {
+      "recordId": "M2-RPM-173",
+      "courseKey": "M2-1",
+      "L3": "방정식과 그래프",
+      "L4": "x축·y축에 평행한 직선",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차함수",
+        "일차함수와 일차방정식의 관계"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-172"
+    },
+    {
+      "recordId": "M2-RPM-174",
+      "courseKey": "M2-1",
+      "L3": "두 직선의 관계",
+      "L4": "교점과 연립방정식",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차함수",
+        "일차함수와 일차방정식의 관계"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-174"
+    },
+    {
+      "recordId": "M2-RPM-175",
+      "courseKey": "M2-1",
+      "L3": "두 직선의 관계",
+      "L4": "두 직선의 평행·일치",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차함수",
+        "일차함수와 일차방정식의 관계"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-174"
+    },
+    {
+      "recordId": "M2-RPM-176",
+      "courseKey": "M2-1",
+      "L3": "그래프 활용",
+      "L4": "넓이",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차함수",
+        "일차함수와 일차방정식의 관계"
+      ],
+      "status": "AMBIGUOUS_KEEP",
+      "evidenceGroupId": "M2-L3-176"
+    },
+    {
+      "recordId": "M2-RPM-177",
+      "courseKey": "M2-1",
+      "L3": "그래프 활용",
+      "L4": "조건에 따른 식 결정",
+      "baselineParentPath": [
+        "2022",
+        "M2-1",
+        "일차함수",
+        "일차함수와 일차방정식의 관계"
+      ],
+      "status": "AMBIGUOUS_KEEP",
+      "evidenceGroupId": "M2-L3-176"
+    },
+    {
+      "recordId": "M2-RPM-178",
+      "courseKey": "M2-2",
+      "L3": "이등변삼각형",
+      "L4": "밑각과 꼭짓각",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "삼각형의 성질",
+        "삼각형의 성질"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-178"
+    },
+    {
+      "recordId": "M2-RPM-179",
+      "courseKey": "M2-2",
+      "L3": "이등변삼각형",
+      "L4": "이등변삼각형 판정",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "삼각형의 성질",
+        "삼각형의 성질"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-178"
+    },
+    {
+      "recordId": "M2-RPM-180",
+      "courseKey": "M2-2",
+      "L3": "직각삼각형의 합동",
+      "L4": "RHS",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "삼각형의 성질",
+        "삼각형의 성질"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-180"
+    },
+    {
+      "recordId": "M2-RPM-181",
+      "courseKey": "M2-2",
+      "L3": "직각삼각형의 합동",
+      "L4": "RHA",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "삼각형의 성질",
+        "삼각형의 성질"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-180"
+    },
+    {
+      "recordId": "M2-RPM-182",
+      "courseKey": "M2-2",
+      "L3": "각의 이등분선",
+      "L4": "각의 이등분선 성질",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "삼각형의 성질",
+        "삼각형의 성질"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-182"
+    },
+    {
+      "recordId": "M2-RPM-183",
+      "courseKey": "M2-2",
+      "L3": "각의 이등분선",
+      "L4": "거리 관계",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "삼각형의 성질",
+        "삼각형의 성질"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-182"
+    },
+    {
+      "recordId": "M2-RPM-184",
+      "courseKey": "M2-2",
+      "L3": "외심",
+      "L4": "수직이등분선과 외심",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "삼각형의 성질",
+        "삼각형의 외심과 내심"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-184"
+    },
+    {
+      "recordId": "M2-RPM-185",
+      "courseKey": "M2-2",
+      "L3": "외심",
+      "L4": "외심의 위치·각",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "삼각형의 성질",
+        "삼각형의 외심과 내심"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-184"
+    },
+    {
+      "recordId": "M2-RPM-186",
+      "courseKey": "M2-2",
+      "L3": "내심",
+      "L4": "각의 이등분선과 내심",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "삼각형의 성질",
+        "삼각형의 외심과 내심"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-186"
+    },
+    {
+      "recordId": "M2-RPM-187",
+      "courseKey": "M2-2",
+      "L3": "내심",
+      "L4": "내심과 거리",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "삼각형의 성질",
+        "삼각형의 외심과 내심"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-186"
+    },
+    {
+      "recordId": "M2-RPM-188",
+      "courseKey": "M2-2",
+      "L3": "외접원·내접원 활용",
+      "L4": "반지름·각 계산",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "삼각형의 성질",
+        "삼각형의 외심과 내심"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-188"
+    },
+    {
+      "recordId": "M2-RPM-189",
+      "courseKey": "M2-2",
+      "L3": "외접원·내접원 활용",
+      "L4": "외심·내심을 이용한 복합도형",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "삼각형의 성질",
+        "삼각형의 외심과 내심"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-188"
+    },
+    {
+      "recordId": "M2-RPM-190",
+      "courseKey": "M2-2",
+      "L3": "평행사변형의 성질",
+      "L4": "변·각의 성질",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "사각형의 성질",
+        "평행사변형"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-190"
+    },
+    {
+      "recordId": "M2-RPM-191",
+      "courseKey": "M2-2",
+      "L3": "평행사변형의 성질",
+      "L4": "평행사변형의 대각선 성질",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "사각형의 성질",
+        "평행사변형"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-190"
+    },
+    {
+      "recordId": "M2-RPM-192",
+      "courseKey": "M2-2",
+      "L3": "평행사변형의 판정",
+      "L4": "변·각 조건",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "사각형의 성질",
+        "평행사변형"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-192"
+    },
+    {
+      "recordId": "M2-RPM-193",
+      "courseKey": "M2-2",
+      "L3": "평행사변형의 판정",
+      "L4": "대각선 조건",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "사각형의 성질",
+        "평행사변형"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-192"
+    },
+    {
+      "recordId": "M2-RPM-194",
+      "courseKey": "M2-2",
+      "L3": "넓이와 활용",
+      "L4": "평행선과 넓이",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "사각형의 성질",
+        "평행사변형"
+      ],
+      "status": "RECOMMEND_PARENT_CHANGE",
+      "evidenceGroupId": "M2-L3-194",
+      "recommendedParentPath": [
+        "2022",
+        "M2-2",
+        "사각형의 성질",
+        "여러 가지 사각형"
+      ]
+    },
+    {
+      "recordId": "M2-RPM-195",
+      "courseKey": "M2-2",
+      "L3": "넓이와 활용",
+      "L4": "분할도형",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "사각형의 성질",
+        "평행사변형"
+      ],
+      "status": "AMBIGUOUS_KEEP",
+      "evidenceGroupId": "M2-L3-194"
+    },
+    {
+      "recordId": "M2-RPM-196",
+      "courseKey": "M2-2",
+      "L3": "직사각형·마름모·정사각형",
+      "L4": "각 사각형의 성질",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "사각형의 성질",
+        "여러 가지 사각형"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-196"
+    },
+    {
+      "recordId": "M2-RPM-197",
+      "courseKey": "M2-2",
+      "L3": "직사각형·마름모·정사각형",
+      "L4": "특수 사각형의 대각선 성질",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "사각형의 성질",
+        "여러 가지 사각형"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-196"
+    },
+    {
+      "recordId": "M2-RPM-198",
+      "courseKey": "M2-2",
+      "L3": "사다리꼴",
+      "L4": "등변사다리꼴",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "사각형의 성질",
+        "여러 가지 사각형"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-198"
+    },
+    {
+      "recordId": "M2-RPM-199",
+      "courseKey": "M2-2",
+      "L3": "사다리꼴",
+      "L4": "중점 연결",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "사각형의 성질",
+        "여러 가지 사각형"
+      ],
+      "status": "AMBIGUOUS_KEEP",
+      "evidenceGroupId": "M2-L3-198"
+    },
+    {
+      "recordId": "M2-RPM-200",
+      "courseKey": "M2-2",
+      "L3": "사각형의 포함 관계",
+      "L4": "조건으로 사각형 판정",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "사각형의 성질",
+        "여러 가지 사각형"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-200"
+    },
+    {
+      "recordId": "M2-RPM-201",
+      "courseKey": "M2-2",
+      "L3": "사각형의 포함 관계",
+      "L4": "성질 비교",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "사각형의 성질",
+        "여러 가지 사각형"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-200"
+    },
+    {
+      "recordId": "M2-RPM-202",
+      "courseKey": "M2-2",
+      "L3": "닮은 도형",
+      "L4": "닮음비",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "도형의 닮음"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-202"
+    },
+    {
+      "recordId": "M2-RPM-203",
+      "courseKey": "M2-2",
+      "L3": "닮은 도형",
+      "L4": "대응변·대응각",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "도형의 닮음"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-202"
+    },
+    {
+      "recordId": "M2-RPM-204",
+      "courseKey": "M2-2",
+      "L3": "삼각형의 닮음",
+      "L4": "AA",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "도형의 닮음"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-204"
+    },
+    {
+      "recordId": "M2-RPM-205",
+      "courseKey": "M2-2",
+      "L3": "삼각형의 닮음",
+      "L4": "SAS",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "도형의 닮음"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-204"
+    },
+    {
+      "recordId": "M2-RPM-206",
+      "courseKey": "M2-2",
+      "L3": "삼각형의 닮음",
+      "L4": "SSS",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "도형의 닮음"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-204"
+    },
+    {
+      "recordId": "M2-RPM-207",
+      "courseKey": "M2-2",
+      "L3": "닮음의 활용",
+      "L4": "길이",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "도형의 닮음"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-207"
+    },
+    {
+      "recordId": "M2-RPM-208",
+      "courseKey": "M2-2",
+      "L3": "닮음의 활용",
+      "L4": "넓이·부피 비",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "도형의 닮음"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-207"
+    },
+    {
+      "recordId": "M2-RPM-209",
+      "courseKey": "M2-2",
+      "L3": "삼각형과 평행선",
+      "L4": "기본 비례",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "평행선 사이의 선분의 길이의 비"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-209"
+    },
+    {
+      "recordId": "M2-RPM-210",
+      "courseKey": "M2-2",
+      "L3": "삼각형과 평행선",
+      "L4": "평행선 판정",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "평행선 사이의 선분의 길이의 비"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-209"
+    },
+    {
+      "recordId": "M2-RPM-211",
+      "courseKey": "M2-2",
+      "L3": "평행선 사이 선분비",
+      "L4": "여러 평행선",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "평행선 사이의 선분의 길이의 비"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-211"
+    },
+    {
+      "recordId": "M2-RPM-212",
+      "courseKey": "M2-2",
+      "L3": "평행선 사이 선분비",
+      "L4": "사다리꼴",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "평행선 사이의 선분의 길이의 비"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-211"
+    },
+    {
+      "recordId": "M2-RPM-213",
+      "courseKey": "M2-2",
+      "L3": "비례 활용",
+      "L4": "미지 길이",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "평행선 사이의 선분의 길이의 비"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-213"
+    },
+    {
+      "recordId": "M2-RPM-214",
+      "courseKey": "M2-2",
+      "L3": "비례 활용",
+      "L4": "선분비를 이용한 복합도형",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "평행선 사이의 선분의 길이의 비"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-213"
+    },
+    {
+      "recordId": "M2-RPM-215",
+      "courseKey": "M2-2",
+      "L3": "중선과 무게중심",
+      "L4": "2:1 비",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "삼각형의 무게중심"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-215"
+    },
+    {
+      "recordId": "M2-RPM-216",
+      "courseKey": "M2-2",
+      "L3": "중선과 무게중심",
+      "L4": "좌표·길이",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "삼각형의 무게중심"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-215"
+    },
+    {
+      "recordId": "M2-RPM-217",
+      "courseKey": "M2-2",
+      "L3": "넓이와 무게중심",
+      "L4": "넓이 분할",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "삼각형의 무게중심"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-217"
+    },
+    {
+      "recordId": "M2-RPM-218",
+      "courseKey": "M2-2",
+      "L3": "넓이와 무게중심",
+      "L4": "무게중심을 이용한 복합도형",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "삼각형의 무게중심"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-217"
+    },
+    {
+      "recordId": "M2-RPM-219",
+      "courseKey": "M2-2",
+      "L3": "피타고라스 정리",
+      "L4": "직각삼각형의 변 길이",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "피타고라스 정리"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-219"
+    },
+    {
+      "recordId": "M2-RPM-220",
+      "courseKey": "M2-2",
+      "L3": "피타고라스 정리",
+      "L4": "피타고라스 수",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "피타고라스 정리"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-219"
+    },
+    {
+      "recordId": "M2-RPM-221",
+      "courseKey": "M2-2",
+      "L3": "피타고라스 정리의 역",
+      "L4": "직각삼각형 판정",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "피타고라스 정리"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-221"
+    },
+    {
+      "recordId": "M2-RPM-222",
+      "courseKey": "M2-2",
+      "L3": "피타고라스 정리의 역",
+      "L4": "삼각형의 각 판정",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "피타고라스 정리"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-221"
+    },
+    {
+      "recordId": "M2-RPM-223",
+      "courseKey": "M2-2",
+      "L3": "도형에의 활용",
+      "L4": "평면도형 길이",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "피타고라스 정리"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-223"
+    },
+    {
+      "recordId": "M2-RPM-224",
+      "courseKey": "M2-2",
+      "L3": "도형에의 활용",
+      "L4": "입체도형 거리",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "도형의 닮음과 피타고라스 정리",
+        "피타고라스 정리"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-223"
+    },
+    {
+      "recordId": "M2-RPM-225",
+      "courseKey": "M2-2",
+      "L3": "합의 법칙과 곱의 법칙",
+      "L4": "단계별 선택",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "확률",
+        "경우의 수"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-225"
+    },
+    {
+      "recordId": "M2-RPM-226",
+      "courseKey": "M2-2",
+      "L3": "합의 법칙과 곱의 법칙",
+      "L4": "중복 없이 세기",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "확률",
+        "경우의 수"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-225"
+    },
+    {
+      "recordId": "M2-RPM-227",
+      "courseKey": "M2-2",
+      "L3": "배열과 선택",
+      "L4": "순서가 있는 경우",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "확률",
+        "경우의 수"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-227"
+    },
+    {
+      "recordId": "M2-RPM-228",
+      "courseKey": "M2-2",
+      "L3": "배열과 선택",
+      "L4": "순서가 없는 경우",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "확률",
+        "경우의 수"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-227"
+    },
+    {
+      "recordId": "M2-RPM-229",
+      "courseKey": "M2-2",
+      "L3": "도형·경로",
+      "L4": "최단경로",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "확률",
+        "경우의 수"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-229"
+    },
+    {
+      "recordId": "M2-RPM-230",
+      "courseKey": "M2-2",
+      "L3": "도형·경로",
+      "L4": "도형의 개수",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "확률",
+        "경우의 수"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-229"
+    },
+    {
+      "recordId": "M2-RPM-231",
+      "courseKey": "M2-2",
+      "L3": "확률의 뜻",
+      "L4": "동등가능한 경우",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "확률",
+        "확률"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-231"
+    },
+    {
+      "recordId": "M2-RPM-232",
+      "courseKey": "M2-2",
+      "L3": "확률의 뜻",
+      "L4": "확률 계산",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "확률",
+        "확률"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-231"
+    },
+    {
+      "recordId": "M2-RPM-233",
+      "courseKey": "M2-2",
+      "L3": "확률의 성질",
+      "L4": "여사건",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "확률",
+        "확률"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-233"
+    },
+    {
+      "recordId": "M2-RPM-234",
+      "courseKey": "M2-2",
+      "L3": "확률의 성질",
+      "L4": "사건의 합",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "확률",
+        "확률"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-233"
+    },
+    {
+      "recordId": "M2-RPM-235",
+      "courseKey": "M2-2",
+      "L3": "확률의 활용",
+      "L4": "경우를 나누어 구하는 확률",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "확률",
+        "확률"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-235"
+    },
+    {
+      "recordId": "M2-RPM-236",
+      "courseKey": "M2-2",
+      "L3": "확률의 활용",
+      "L4": "연속 시행",
+      "baselineParentPath": [
+        "2022",
+        "M2-2",
+        "확률",
+        "확률"
+      ],
+      "status": "KEEP",
+      "evidenceGroupId": "M2-L3-235"
+    }
+  ],
+  "limitations": [
+    "AMBIGUOUS_KEEP 4건은 유일한 장 소속을 확정하지 않은 상태이다. 현재 부모가 다루는 실제 예가 있으며 명백한 오분류 증거가 없어 보존한다.",
+    "본 결과는 저장된 L3/L4 부모의 의미 검토이며 실제 문항 메타의 완결성이나 제품 전체 품질 PASS를 뜻하지 않는다.",
+    "명백한 변경은 M2-RPM-194의 부모만 권고하며 L3/L4 이름·ID 변경을 권고하지 않는다."
+  ]
+}

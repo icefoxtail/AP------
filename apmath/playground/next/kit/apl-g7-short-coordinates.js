@@ -21,11 +21,15 @@
   const rotate=(q,c,a)=>P(c.x+(q.x-c.x)*Math.cos(a)-(q.y-c.y)*Math.sin(a),c.y+(q.x-c.x)*Math.sin(a)+(q.y-c.y)*Math.cos(a));
   function travel(b,a,z,u,color='amber',name='') {const q=lerp(a,z,u);line(b,a,q,color);point(b,q,name,color);return q;}
   function setup(b,d,focus,plain=false){
+    const grid=call(d.spec.grid,d.v,d.m)||{},axes=call(d.spec.axes,d.v,d.m)||{};
+    // Unit-coordinate proofs need usable tick spacing on narrow or short
+    // canvases. Other graph units retain their existing margins and focus.
+    const compact=(b.W<560||b.H<480)&&grid.step===1&&axes.tickStep===1;
     b.kind='cartesian';b.aspect=d.spec.aspect||'1:1';b.setPanes(null);
-    b.setInsets({top:74,right:36,bottom:100,left:40});
+    b.setInsets(compact?{top:48,right:24,bottom:48,left:24}:{top:74,right:36,bottom:100,left:40});
     b.zoom=1;b.panX=0;b.panY=0;
-    b.setFocus(focus||call(d.spec.focus,d.v,d.m),false);
-    if(!plain){b.grid({});d.M.axes(b,call(d.spec.axes,d.v,d.m)||{});}
+    b.setFocus(focus||call(compact&&d.spec.shortFocus||d.spec.focus,d.v,d.m),false);
+    if(!plain){b.grid(grid);d.M.axes(b,axes);}
   }
   function projections(b,q,t,start=.8){
     if(t>=start)travel(b,q,P(q.x,0),phase(t,start,start+1.5),'sky');

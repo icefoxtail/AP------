@@ -3,19 +3,25 @@
     typeof module === 'object' && module.exports
       ? require('./archive2-core.js')
       : root && root.Archive2Core;
-  const api = factory(archive2Core);
+  const middleToc =
+    typeof module === 'object' && module.exports
+      ? require('./rpm-middle-toc.js')
+      : root && root.ArchiveRpmMiddleToc;
+  const api = factory(archive2Core, middleToc);
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (root) {
     root.UnitPastExamsCore = api;
     root.High1UnitPastExamsCore = api;
   }
-})(typeof globalThis !== 'undefined' ? globalThis : this, function (archive2Core) {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (archive2Core, middleToc) {
   'use strict';
 
   if (!archive2Core || !Array.isArray(archive2Core.HIGH_SEMANTIC_SUBJECTS)) {
     throw new Error('Archive2Core high-semantic subject registry is required.');
   }
-  const middleToc = archive2Core.MiddleToc;
+  if (!middleToc || typeof middleToc.resolveRecord !== 'function') {
+    throw new Error('ArchiveRpmMiddleToc current middle-school parent authority is required.');
+  }
 
   const COMMON_SCOPE = Object.freeze({
     periods: Object.freeze(['1mid', '1final', '2mid', '2final']),
@@ -367,7 +373,7 @@
     const fileGrade = sourceFile.match(/middle\/m([123])\//)?.[1];
     const grade = profile?.grade || record?.sourceGrade || (fileGrade ? `중${fileGrade}` : '');
     if (!/^중[123]$/.test(grade)) return { status: 'OUT_OF_SCOPE', parent: null };
-    const curriculumKey = String(record?.curriculumKey || record?.rpmCurriculum || record?.metaHintCurriculum ||
+    const curriculumKey = String(record?.originalCurriculum || record?.curriculumKey || record?.curriculum || record?.rpmCurriculum || record?.metaHintCurriculum ||
       record?.metadataAssignmentEvidence?.rpmMetadata?.rpmCurriculum || record?.rpmPrimaryPath?.curriculum ||
       archive2Core.middleCurriculumFromYear(grade, getExamYear(record)) || '').trim();
     // This object is a read-only classification input. Source metadata and saved paths stay intact.
@@ -1901,6 +1907,7 @@
   }
 
   return {
+    MiddleToc: middleToc,
     PROFILES,
     SCOPE: PROFILES.h1.scope,
     UNITS: HIGH1_UNITS,

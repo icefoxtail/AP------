@@ -77,3 +77,22 @@ test('a broad current key alone cannot fill 작도와 합동 or erase the origin
   assert.equal(UnitCore.filterUnitRecords([record], { subUnitKeys: [construction.parentKey] }).length, 0);
   assert.equal(JSON.stringify(record), before);
 });
+
+
+test('explicit original and raw source curriculum outrank the middle-school year fallback in both adapters', () => {
+  const mapping = Toc.authority.leafMappings.find(row => Toc.normalizePath(row.basePath).courseKey === 'M1-2');
+  for (const [curriculum, year, status] of [['2015', 2026, 'OUT_OF_SCOPE'], ['2022', 2024, 'EXACT']]) {
+    const record = { ...recordFor(mapping, 0), curriculum, year, sourceFile: `original/middle/m1/2mid/${String(year).slice(-2)}_curriculum_fixture.js` };
+    delete record.curriculumKey;
+    const before = JSON.stringify(record);
+    assert.equal(UnitCore.resolveRpmParent(record, 'm1').status, status);
+    const entry = Unified.classify(record).entry;
+    assert.equal(entry.originalCurriculum, curriculum);
+    assert.equal(entry.rpmParentStatus, status);
+    assert.equal(JSON.stringify(record), before);
+  }
+  const original = { ...recordFor(mapping, 1), curriculumKey: '2022', originalCurriculum: '2015', year: 2026 };
+  assert.equal(UnitCore.resolveRpmParent(original, 'm1').status, 'OUT_OF_SCOPE');
+  assert.equal(Unified.classify(original).entry.originalCurriculum, '2015');
+  assert.equal(Unified.classify(original).entry.rpmParentStatus, 'OUT_OF_SCOPE');
+});

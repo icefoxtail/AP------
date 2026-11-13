@@ -1,7 +1,7 @@
 {
   "schemaVersion": "rpm-middle-2022-parents-v1",
   "authorityStatus": "ACTIVE",
-  "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.1",
+  "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
   "authorizedBy": "USER_DIRECTED_L1_L2_REFINEMENT_2026-11-13",
   "baseAuthority": {
     "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
@@ -15,7 +15,8 @@
     "ambiguousLegacyParent": "REQUIRES_EXACT_LEAF_OR_CONCEPT",
     "newClassification": "EFFECTIVE_INPUT_VALIDATES_AGAINST_UNIQUE_BASE_LEAF",
     "storageCompatibility": "PRESERVE_BASE_PATH_AND_APPROVAL_FIELDS",
-    "headingIdentityNormalization": "Preserve published L1/L2 wording; omit only the whitespace immediately before ASCII (1)/(2). Printed source heading forms remain in sourceEvidence."
+    "headingIdentityNormalization": "Preserve published L1/L2 wording; omit only the whitespace immediately before ASCII (1)/(2). Printed source heading forms remain in sourceEvidence.",
+    "crossL1Placement": "Only exact same-book leaves with matching publisher PDF and leaf-specific placementReviewId evidence may change L1."
   },
   "sourceEvidence": [
     {
@@ -183,6 +184,22 @@
           "pdfPage1based": 76,
           "sourceL1Text": "IV. 통계",
           "sourceL2Text": "도수분포표와 상대도수"
+        }
+      ],
+      "chapterPlacementReviews": [
+        {
+          "reviewId": "M1-2_BASIC_POSITION_2026-11-13",
+          "pdfPages1based": [
+            3,
+            6,
+            9,
+            10
+          ],
+          "existingL3": [
+            "수직과 거리",
+            "평행선과 각"
+          ],
+          "result": "Correct four effective leaf parents against chapter content; preserve all base identities."
         }
       ]
     },
@@ -368,6 +385,19 @@
           "sourceL1Text": "IV. 확률",
           "sourceL2Text": "확률"
         }
+      ],
+      "chapterPlacementReviews": [
+        {
+          "reviewId": "M2-2_PARALLEL_AREA_2026-11-13",
+          "pdfPages1based": [
+            28,
+            35
+          ],
+          "existingL3": [
+            "넓이와 활용"
+          ],
+          "result": "Correct the parallel-line area leaf to chapter 04. The broad trapezoid midpoint leaf M2-RPM-199 remains unchanged because shape and length meanings occur in different chapters."
+        }
       ]
     },
     {
@@ -451,6 +481,29 @@
           "pdfPage1based": 78,
           "sourceL1Text": "IV. 이차함수",
           "sourceL2Text": "이차함수의 그래프 ⑵"
+        }
+      ],
+      "chapterPlacementReviews": [
+        {
+          "reviewId": "M3-1_RADICAL_FORMULA_CHAPTERS_2026-11-13",
+          "pdfPages1based": [
+            17,
+            26,
+            28,
+            32,
+            35,
+            47,
+            48,
+            57,
+            58,
+            61
+          ],
+          "existingL3": [
+            "분모의 유리화",
+            "혼합 계산",
+            "근의 공식"
+          ],
+          "result": "Correct four effective leaf parents against explicit chapter content. Two cross-L1 placements require leaf-specific evidence; base identities remain immutable."
         }
       ]
     },
@@ -2835,7 +2888,7 @@
         "평행선과 각",
         "동위각·엇각"
       ],
-      "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\"]",
+      "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\"]",
       "crosswalkRecordIds": [
         "M1-RPM-177"
       ]
@@ -2849,7 +2902,7 @@
         "평행선과 각",
         "평행선 조건"
       ],
-      "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\"]",
+      "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\"]",
       "crosswalkRecordIds": [
         "M1-RPM-178"
       ]
@@ -2919,7 +2972,7 @@
         "수직과 거리",
         "수선과 수선의 발"
       ],
-      "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\"]",
+      "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\"]",
       "crosswalkRecordIds": [
         "M1-RPM-183"
       ]
@@ -2933,7 +2986,7 @@
         "수직과 거리",
         "점과 직선 사이의 거리"
       ],
-      "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\"]",
+      "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\"]",
       "crosswalkRecordIds": [
         "M1-RPM-184"
       ]
@@ -4669,10 +4722,11 @@
         "넓이와 활용",
         "평행선과 넓이"
       ],
-      "effectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"평행사변형\"]",
+      "effectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"여러 가지 사각형\"]",
       "crosswalkRecordIds": [
         "M2-RPM-194"
-      ]
+      ],
+      "placementReviewId": "M2-2_PARALLEL_AREA_2026-11-13"
     },
     {
       "basePath": [
@@ -5425,10 +5479,11 @@
         "분모의 유리화",
         "합·차 꼴의 유리화"
       ],
-      "effectiveParentKey": "[\"2022\",\"M3-1\",\"실수와 그 연산\",\"근호를 포함한 식의 계산\"]",
+      "effectiveParentKey": "[\"2022\",\"M3-1\",\"다항식의 곱셈과 인수분해\",\"다항식의 곱셈\"]",
       "crosswalkRecordIds": [
         "M3-RPM-104"
-      ]
+      ],
+      "placementReviewId": "M3-1_RADICAL_FORMULA_CHAPTERS_2026-11-13"
     },
     {
       "basePath": [
@@ -5439,10 +5494,11 @@
         "혼합 계산",
         "곱셈공식 활용"
       ],
-      "effectiveParentKey": "[\"2022\",\"M3-1\",\"실수와 그 연산\",\"근호를 포함한 식의 계산\"]",
+      "effectiveParentKey": "[\"2022\",\"M3-1\",\"다항식의 곱셈과 인수분해\",\"다항식의 곱셈\"]",
       "crosswalkRecordIds": [
         "M3-RPM-105"
-      ]
+      ],
+      "placementReviewId": "M3-1_RADICAL_FORMULA_CHAPTERS_2026-11-13"
     },
     {
       "basePath": [
@@ -5747,10 +5803,11 @@
         "근의 공식",
         "근의 공식"
       ],
-      "effectiveParentKey": "[\"2022\",\"M3-1\",\"이차방정식\",\"이차방정식의 풀이\"]",
+      "effectiveParentKey": "[\"2022\",\"M3-1\",\"이차방정식\",\"이차방정식의 활용\"]",
       "crosswalkRecordIds": [
         "M3-RPM-127"
-      ]
+      ],
+      "placementReviewId": "M3-1_RADICAL_FORMULA_CHAPTERS_2026-11-13"
     },
     {
       "basePath": [
@@ -5761,10 +5818,11 @@
         "근의 공식",
         "근의 개수·판별"
       ],
-      "effectiveParentKey": "[\"2022\",\"M3-1\",\"이차방정식\",\"이차방정식의 풀이\"]",
+      "effectiveParentKey": "[\"2022\",\"M3-1\",\"이차방정식\",\"이차방정식의 활용\"]",
       "crosswalkRecordIds": [
         "M3-RPM-128"
-      ]
+      ],
+      "placementReviewId": "M3-1_RADICAL_FORMULA_CHAPTERS_2026-11-13"
     },
     {
       "basePath": [
@@ -6579,6 +6637,7 @@
       "subUnitKey": "M1-05-BASIC_FIGURE",
       "parentKeys": [
         "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\"]",
+        "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\"]",
         "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]"
       ]
     },
@@ -6586,6 +6645,7 @@
       "curriculumKey": "2022",
       "subUnitKey": "M1-05-POSITION_RELATION",
       "parentKeys": [
+        "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\"]",
         "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\"]"
       ]
     },
@@ -6759,6 +6819,7 @@
       "curriculumKey": "2022",
       "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
       "parentKeys": [
+        "[\"2022\",\"M3-1\",\"다항식의 곱셈과 인수분해\",\"다항식의 곱셈\"]",
         "[\"2022\",\"M3-1\",\"실수와 그 연산\",\"근호를 포함한 식의 계산\"]"
       ]
     },
@@ -6788,7 +6849,8 @@
       "curriculumKey": "2022",
       "subUnitKey": "M3-03-QUADRATIC_EQUATION",
       "parentKeys": [
-        "[\"2022\",\"M3-1\",\"이차방정식\",\"이차방정식의 풀이\"]"
+        "[\"2022\",\"M3-1\",\"이차방정식\",\"이차방정식의 풀이\"]",
+        "[\"2022\",\"M3-1\",\"이차방정식\",\"이차방정식의 활용\"]"
       ]
     },
     {
@@ -6856,6 +6918,63 @@
     "checkedAtUtc": "2026-11-13T08:55:44.775340+00:00"
   },
   "splitEvidence": [
+    {
+      "book": "M1-2",
+      "reviewId": "M1-2_BASIC_POSITION_2026-11-13",
+      "officialPdfUrl": "https://file.airklass.biz/imath/881fe4b1-a884-4f93-8348-cfb58542b5ce/22%EA%B0%9C%EC%A0%95_%EC%A4%91%EB%93%B1RPM1-2_%EC%A0%95%EB%8B%B5.pdf",
+      "pdfSha256": "69b5c9638dbb21d12081fd7d4f190cab8d3b546071ffd2cd3ad8eba0014ba898",
+      "evidenceKind": "Semantic review of the official chapter content and visible chapter labels. This corrects existing L3 placement, not the publisher chapter count or the locked leaf identity.",
+      "chapterBoundaries": [
+        {
+          "L2": "기본 도형",
+          "chapterOrdinal": 1,
+          "startsAtPdfPage1based": 2
+        },
+        {
+          "L2": "위치 관계",
+          "chapterOrdinal": 2,
+          "startsAtPdfPage1based": 9
+        }
+      ],
+      "mappings": [
+        {
+          "existingL3": "수직과 거리",
+          "baseL2": "위치 관계",
+          "targetL2": "기본 도형",
+          "crosswalkRecordIds": [
+            "M1-RPM-183",
+            "M1-RPM-184"
+          ],
+          "pdfPages1based": [
+            3,
+            6
+          ],
+          "exerciseReference": [
+            "0042-0047",
+            "0089-0091"
+          ],
+          "observation": "수선, 수선의 발, 점과 직선 사이의 거리를 다루는 내용이 01 기본 도형 장에 있다. 페이지의 장 표기와 해당 내용을 함께 확인했다."
+        },
+        {
+          "existingL3": "평행선과 각",
+          "baseL2": "기본 도형",
+          "targetL2": "위치 관계",
+          "crosswalkRecordIds": [
+            "M1-RPM-177",
+            "M1-RPM-178"
+          ],
+          "pdfPages1based": [
+            9,
+            10
+          ],
+          "exerciseReference": [
+            "0164-0173"
+          ],
+          "observation": "02 위치 관계가 p9에서 시작하며 p10에서 동위각·엇각의 관계와 두 직선의 평행 조건을 다룬다."
+        }
+      ],
+      "scopeExclusion": "No exercise, answer or explanation text copied into this authority."
+    },
     {
       "sourcePacketSha256": "f9535d7559e33b852e5561435fd5e8aeacd91a2eb105e7945866b3f5e5b8dfcc",
       "schema": "rpm-m2-1-linear-graph-split-evidence-v1",
@@ -7016,6 +7135,177 @@
             "0490-0493"
           ],
           "observation": "원에 내접하는 사각형 및 접선과 현이 이루는 각의 관계가 05장에 있다."
+        }
+      ],
+      "scopeExclusion": "No exercise, answer or explanation text copied into this authority."
+    },
+    {
+      "book": "M3-1",
+      "reviewId": "M3-1_RADICAL_FORMULA_CHAPTERS_2026-11-13",
+      "officialPdfUrl": "https://file.airklass.biz/imath/531d42aa-565a-4dc1-b594-9e8e2964e2ef/22%EA%B0%9C%EC%A0%95_RPM%20%EC%A4%91%ED%95%99%20%EC%88%98%ED%95%99%203-1_%EB%B3%B8%EB%AC%B8_%EC%A0%95%EB%8B%B5_%EC%9B%B9%EC%9A%A9%281%ED%8C%901%EC%87%84%29.pdf",
+      "pdfSha256": "2415655cd681ffa60da64c2c6fd114cc9f66ae9cad571cfb5e06de54ad38b8ab",
+      "evidenceKind": "Semantic review of publisher chapter introductions and exercise coverage, including visual confirmation of the printed chapter and mathematical method. Existing Archive L3/L4 wording is preserved, not claimed as a publisher L3/L4 index.",
+      "chapterBoundaries": [
+        {
+          "L1": "실수와 그 연산",
+          "L2": "근호를 포함한 식의 계산",
+          "chapterOrdinal": 3,
+          "startsAtPdfPage1based": 17
+        },
+        {
+          "L1": "다항식의 곱셈과 인수분해",
+          "L2": "다항식의 곱셈",
+          "chapterOrdinal": 4,
+          "startsAtPdfPage1based": 28
+        },
+        {
+          "L1": "이차방정식",
+          "L2": "이차방정식의 풀이",
+          "chapterOrdinal": 6,
+          "startsAtPdfPage1based": 47
+        },
+        {
+          "L1": "이차방정식",
+          "L2": "이차방정식의 활용",
+          "chapterOrdinal": 7,
+          "startsAtPdfPage1based": 57
+        }
+      ],
+      "mappings": [
+        {
+          "existingL3": "분모의 유리화",
+          "existingL4": "합·차 꼴의 유리화",
+          "baseL1": "실수와 그 연산",
+          "baseL2": "근호를 포함한 식의 계산",
+          "targetL1": "다항식의 곱셈과 인수분해",
+          "targetL2": "다항식의 곱셈",
+          "crosswalkRecordIds": [
+            "M3-RPM-104"
+          ],
+          "pdfPages1based": [
+            28,
+            32,
+            35
+          ],
+          "exerciseReference": [
+            "0393-0396",
+            "0446-0449",
+            "0482"
+          ],
+          "observation": "03장에는 한 항 분모의 유리화가 있고, 합·차로 된 분모에 짝을 곱하는 유리화는 04장 도입과 유형에서 합과 차의 곱 공식으로 다룬다. 같은 기존 L3의 한 항 유리화 leaf103은 03장에 유지한다."
+        },
+        {
+          "existingL3": "혼합 계산",
+          "existingL4": "곱셈공식 활용",
+          "baseL1": "실수와 그 연산",
+          "baseL2": "근호를 포함한 식의 계산",
+          "targetL1": "다항식의 곱셈과 인수분해",
+          "targetL2": "다항식의 곱셈",
+          "crosswalkRecordIds": [
+            "M3-RPM-105"
+          ],
+          "pdfPages1based": [
+            28,
+            32,
+            35
+          ],
+          "exerciseReference": [
+            "0379-0388",
+            "0442-0445",
+            "0481"
+          ],
+          "observation": "근호 이항식의 제곱·합차곱 등을 곱셈공식으로 전개하는 유형이 04장에 있다. 03장의 한 항 곱셈·분배법칙과 구별한다. 같은 기존 L3의 일반 식의 값 leaf106은 03장에 유지한다."
+        },
+        {
+          "existingL3": "근의 공식",
+          "existingL4": "근의 공식",
+          "baseL1": "이차방정식",
+          "baseL2": "이차방정식의 풀이",
+          "targetL1": "이차방정식",
+          "targetL2": "이차방정식의 활용",
+          "crosswalkRecordIds": [
+            "M3-RPM-127"
+          ],
+          "pdfPages1based": [
+            57,
+            59
+          ],
+          "exerciseReference": [
+            "0760-0767",
+            "0794-0797"
+          ],
+          "observation": "07 이차방정식의 활용 장 제목 바로 아래에서 근의 공식을 도입한다. 06장 인수분해·제곱근·완전제곱식 풀이와 구별하여 공식 사용 leaf를 07장에 둔다."
+        },
+        {
+          "existingL3": "근의 공식",
+          "existingL4": "근의 개수·판별",
+          "baseL1": "이차방정식",
+          "baseL2": "이차방정식의 풀이",
+          "targetL1": "이차방정식",
+          "targetL2": "이차방정식의 활용",
+          "crosswalkRecordIds": [
+            "M3-RPM-128"
+          ],
+          "pdfPages1based": [
+            58,
+            61
+          ],
+          "exerciseReference": [
+            "0776-0781",
+            "0811-0817"
+          ],
+          "observation": "근의 공식의 근호 안 식으로 근의 개수·중근 조건을 판별하는 내용이 07장에 있다. 06장의 완전제곱식으로 중근을 확인하는 내용과 L3의 핵심 방법을 구별한다."
+        }
+      ],
+      "scopeExclusion": "No exercise, answer or explanation text copied into this authority."
+    },
+    {
+      "book": "M2-2",
+      "reviewId": "M2-2_PARALLEL_AREA_2026-11-13",
+      "officialPdfUrl": "https://file.airklass.biz/imath/a331eac5-4a31-4429-8f7d-fb1a72601ae6/22%EA%B0%9C%EC%A0%95_RPM%20%EC%A4%91%ED%95%99%20%EC%88%98%ED%95%99%202-2_%EC%A0%95%EB%8B%B5%20%EB%B0%8F%20%ED%92%80%EC%9D%B4_%EC%9B%B9%EC%9A%A9%20%281%ED%8C%901%EC%87%84%29.pdf",
+      "pdfSha256": "a71730860bb80f23053c5caf9d2627acf81eff428952a56a92d6cbedfb7b09c7",
+      "evidenceKind": "Independent chapter-ownership review followed by direct rendered-page confirmation of the mathematical method.",
+      "mappings": [
+        {
+          "existingL3": "넓이와 활용",
+          "existingL4": "평행선과 넓이",
+          "baseL1": "사각형의 성질",
+          "baseL2": "평행사변형",
+          "targetL1": "사각형의 성질",
+          "targetL2": "여러 가지 사각형",
+          "crosswalkRecordIds": [
+            "M2-RPM-194"
+          ],
+          "pdfPages1based": [
+            28,
+            35
+          ],
+          "exerciseReference": [
+            "0311-0315",
+            "0391-0394"
+          ],
+          "observation": "평행선 사이 공통 밑변 또는 같은 높이를 이용하는 삼각형의 넓이 관계는 04 여러 가지 사각형의 기초 내용과 유형에 있다."
+        }
+      ],
+      "unchangedAmbiguities": [
+        {
+          "crosswalkRecordIds": [
+            "M2-RPM-199"
+          ],
+          "existingL3": "사다리꼴",
+          "existingL4": "중점 연결",
+          "retainedL2": "여러 가지 사각형",
+          "alternativeL2": "삼각형의 무게중심",
+          "pdfPages1based": [
+            28,
+            55,
+            57
+          ],
+          "exerciseReference": [
+            "0310",
+            "0628"
+          ],
+          "observation": "04장의 각 변 중점 연결 사각형 모양과 07장의 중점선 길이 유형이 모두 존재한다. 현재 leaf label만으로 구분할 수 없으므로 leaf를 자동 이동하지 않는다. 실제 문항의 핵심 풀이를 보고 별도 분류 판단이 필요하다."
         }
       ],
       "scopeExclusion": "No exercise, answer or explanation text copied into this authority."

@@ -41,7 +41,7 @@ module.exports = async function checkArchiveRpmMiddleBrowser({ send, run, wait, 
       await send('Emulation.setDeviceMetricsOverride', { width, height: width === 390 ? 844 : 960, deviceScaleFactor: 1, mobile: width === 390 });
       await run('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
       const value = await evaluate(() => ({
-        viewport: document.documentElement.clientWidth, scrollWidth: document.documentElement.scrollWidth,
+        viewport: innerWidth, clientWidth: document.documentElement.clientWidth, scrollWidth: document.documentElement.scrollWidth,
         overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 2,
         offenders: [...document.querySelectorAll('main,section,button,input,select,.unit-chip-list,.scope-list')]
           .filter(el => { const r = el.getBoundingClientRect(); return r.width && r.right > innerWidth + 2; })
@@ -50,6 +50,7 @@ module.exports = async function checkArchiveRpmMiddleBrowser({ send, run, wait, 
       report.layouts.push({ name, width, ...value });
       await snapshot(`${name}-${width}`);
       assert.equal(value.viewport, width, `${name} CSS viewport at ${width}`);
+      assert.ok(value.clientWidth <= value.viewport && value.viewport - value.clientWidth <= 32, `${name} scrollbar-aware layout width at ${width}`);
       assert.equal(value.overflow, false, `${name} horizontal overflow at ${width}: ${JSON.stringify(value)}`);
     }
     await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 960, deviceScaleFactor: 1, mobile: false });
@@ -164,14 +165,14 @@ module.exports = async function checkArchiveRpmMiddleBrowser({ send, run, wait, 
     await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 960, deviceScaleFactor: 1, mobile: false });
     await navigate('/archive/workspace.html?view=compose', 'window.ARCHIVE2_FINAL_CATALOG?.records?.length && document.querySelector("[data-action=compose-grade]")');
     report.authority = await evaluate(() => {
-      const T = window.ArchiveRpmMiddleToc, C = window.Archive2Core;
+      const T = window.ArchiveRpmMiddleToc, U = window.UnitPastExamsCore;
       return { unitCount: T.units().length, parentCount: T.parents().length, leafCount: T.authority.leafMappings.length,
-        coreSharesHelper: C.MiddleToc === T, catalogCount: window.ARCHIVE2_FINAL_CATALOG.records.length,
+        selectionCoreSharesHelper: U.MiddleToc === T, catalogCount: window.ARCHIVE2_FINAL_CATALOG.records.length,
         countsByBook: Object.fromEntries(['M1-1', 'M1-2', 'M2-1', 'M2-2', 'M3-1', 'M3-2'].map(book => [book, T.parents().filter(row => row.courseKey === book).length])),
         parents: T.parents().map(row => ({ key: row.key, unitKey: row.unitKey, L1: row.L1, L2: row.L2 })) };
     });
     assert.equal(report.authority.unitCount, 24); assert.equal(report.authority.parentCount, 54);
-    assert.equal(report.authority.leafCount, 326); assert.equal(report.authority.coreSharesHelper, true);
+    assert.equal(report.authority.leafCount, 326); assert.equal(report.authority.selectionCoreSharesHelper, true);
     assert.deepEqual(report.authority.countsByBook, { 'M1-1': 9, 'M1-2': 9, 'M2-1': 10, 'M2-2': 10, 'M3-1': 9, 'M3-2': 7 });
     report.runtimeCatalogM1 = await evaluate(() => {
       const C = window.Archive2Core, U = window.UnitPastExamsCore, T = window.ArchiveRpmMiddleToc;

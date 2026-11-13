@@ -586,17 +586,17 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   const coreVersion = '20261111-one-lane-difficulty-1';
   const workspace = read('workspace.html');
   assert.match(workspace, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
-  assert.match(workspace, /unit-past-exams-core\.js\?v=20261110-grid-1/);
+  assert.match(workspace, /unit-past-exams-core\.js\?v=20261113-rpm-middle-parents-1/);
   assert.match(workspace, new RegExp('problem-bank-meta\\.js\\?v=' + version));
   // The shared unit layer and the canonical authority moved on with the registered textbooks (S11).
-  assert.match(workspace, /archive2-unified-units\.js\?v=20261030-s11-1/);
+  assert.match(workspace, /archive2-unified-units\.js\?v=20261113-rpm-middle-parents-1/);
   assert.match(workspace, /archive2-canonical\.js\?v=20261104-source-meta-approval-1/);
   // The workspace itself moved on with the final-check fixes (S10).
-  assert.match(workspace, /archive2-workspace\.js\?v=20261111-remove-1/);
+  assert.match(workspace, /archive2-workspace\.js\?v=20261113-rpm-middle-parents-1/);
   const unitPage = read('unit-past-exams.html');
   assert.match(unitPage, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
-  assert.match(unitPage, /unit-past-exams-core\.js\?v=20261110-grid-1/);
-  assert.match(unitPage, /unit-past-exams\.js\?v=20261111-assign-1/);
+  assert.match(unitPage, /unit-past-exams-core\.js\?v=20261113-rpm-middle-parents-1/);
+  assert.match(unitPage, /unit-past-exams\.js\?v=20261113-rpm-middle-parents-1/);
   assert.match(read('problem-bank-search.html'), new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(read('problem-bank-search.html'), new RegExp('problem-bank-meta\\.js\\?v=' + version));
   const clinic = fs.readFileSync(path.join(root, 'apmath/js/clinic-print.js'), 'utf8');

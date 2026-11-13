@@ -68,5 +68,47 @@
     "jobConclusion": "CANCELLED_AT_5_MINUTE_JOB_LIMIT_BEFORE_CHROME",
     "checkoutSeconds": 159.1,
     "next": "Keep all assertions and increase runtime job budget to 10 minutes"
-  }
+  },
+  "finalAuthoritySha256": "6128cf2c8c863f132d6c9d8b51804aff9ba636ce5cdbaf99f41217962aec40ab",
+  "finalLocalChecks": [
+    {
+      "name": "parent-consumers-final",
+      "source": "rpm-parent-consumers-final.tap",
+      "tests": 69,
+      "pass": 69,
+      "fail": 0,
+      "sha256": "d47e96d39830a6254d99aaa33d236af0c3bc8086cc3a3226ba994d8906ebdc3d"
+    },
+    {
+      "name": "ui-safe-final",
+      "source": "rpm-ui-safe.tap",
+      "tests": 14,
+      "pass": 14,
+      "fail": 0,
+      "sha256": "7eaeb928aed69fe207d639f78091793ed1af23beb9f24c743b07f4805eb5e9d9"
+    },
+    {
+      "name": "adapter-final",
+      "source": "rpm-adapter-final.tap",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "sha256": "b5b950b9c5a626308e887ad73ea7a91ce7f4f27cc6310d4d543091d3891c6d47"
+    }
+  ],
+  "note": "Counts are per invocation, overlap exists. Final GitHub CI is still required. Earlier sparse-checkout runs include missing source fixtures and are not reported as full PASS.",
+  "ciSecondRuntimeAttempt": {
+    "runId": 43401666165,
+    "jobId": 131805757074,
+    "headSha": "71137cfe8d6b0caba3926fce98ad28e53e80bdbf",
+    "contractTests": "PASS_243",
+    "outputChromeJob": 131805756621,
+    "outputChromeConclusion": "SUCCESS",
+    "rpmUiConclusion": "FAIL_AT_VIEWPORT_ASSERTION",
+    "actualDocumentClientWidth": 1425,
+    "requestedWindowWidth": 1440,
+    "horizontalOverflow": false,
+    "correction": "Measure window.innerWidth for emulated viewport; keep document clientWidth horizontal-overflow assertion unchanged; check scrollbar width separately."
+  },
+  "finalArchitecture": "Archive2Core restored byte-exact to base; current helper is required directly by UnitPastExamsCore. Legacy apply bridge and Worker bundle checks pass 38/38 without adding Worker dependency."
 }

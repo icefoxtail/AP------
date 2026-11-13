@@ -45,6 +45,8 @@ function currentUnit() {
   assert.ok(unit);
   const parents = toc.parents('중1').filter(parent => parent.unitKey === unit.key);
   const records = parents.flatMap(parent => {
+    const leaf = toc.authority.leafMappings.find(row => toc.refinePath(row.basePath).parentKey === parent.key);
+    assert.ok(leaf, `${parent.L2} has a full canonical leaf`);
     // Two location questions plus one question in each neighboring chapter make
     // an accidentally cleared filter observably expand the selected pool.
     const count = parent.L2 === '위치 관계' ? 2 : 1;
@@ -52,9 +54,7 @@ function currentUnit() {
       sourceFile: 'original/middle/m1/2mid/26_url_fixture.js',
       sourceGrade: '중1', year: 2026, curriculumKey: '2022', courseKey: 'M1-2',
       mappedUnitKey: unit.key, generalUseEligible: true, level: '중',
-      rpmPrimaryPath: {
-        curriculum: '2022', scope: 'M1-2', majorUnit: parent.L1, midUnit: parent.L2,
-      },
+      rpmPrimaryPath: toc.toRpmPath(toc.normalizePath(leaf.basePath)),
     }));
   }).map((record, index) => ({ ...record, id: index + 1, sourceOrdinal: index + 1,
     questionUid: `url-fixture-${index + 1}` }));

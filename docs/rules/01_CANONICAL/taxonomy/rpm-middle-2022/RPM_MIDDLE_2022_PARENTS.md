@@ -4,7 +4,7 @@
 
 ## 1. 현재 권위와 보존 경계
 
-현재 부모 정본은 [`rpm-middle-2022-parents.json`](../../../../../archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json)이다. 버전은 `RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.1`, 상태는 `ACTIVE`이며, 24개 L1·54개 L2를 등록한다. 이 정본은 현재 화면의 소단원 선택과 공식 메타 Resolver의 새 L1/L2 입력에 모두 사용한다.
+현재 부모 정본은 [`rpm-middle-2022-parents.json`](../../../../../archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json)이다. 버전은 `RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2`, 상태는 `ACTIVE`이며, 24개 L1·54개 L2를 등록한다. 이 정본은 현재 화면의 소단원 선택과 공식 메타 Resolver의 새 L1/L2 입력에 모두 사용한다.
 
 기존 [`CANONICAL_MASTER.json`](../rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json)의 2022 중학 부분은 24개 L1·51개 L2·155개 L3·326개 L4를 가진 잠긴 base snapshot이다. 그 SHA256은 `7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c`이다. base snapshot과 기존 crosswalk의 ID·행·상태, source의 표준단원/세부단원 키, 기존 승인 영수증은 이 부모 정비에서 재작성하지 않는다.
 
@@ -70,6 +70,41 @@ M3-1은 제곱근 정의·성질 장이 p2에서 시작하고 무리수와 실�
 
 이 세 분리로 부모 L2는 51개에서 54개가 된다. 원래 L3/L4 문자열·leaf identity·crosswalk row ID와 기존 바인딩 상태는 유지된다.
 
+### M1-2의 기본 도형과 위치 관계 소속 정정
+
+공식 장 내용까지 대조한 결과, 기존 L3 두 곳은 base에서 서로 다른 장 아래 잘못 놓여 있었다. v1.2는 다음 네 leaf의 **effective parent만** 고친다. base tuple과 L3/L4·crosswalk ID는 보존하며 부모 수 54개와 leaf 수 326개는 변하지 않는다.
+
+| crosswalk ID | 기존 L3 / L4 | base L2 | 현재 effective L2 | 공식 PDF 근거 |
+|---|---|---|---|---|
+| `M1-RPM-177` | 평행선과 각 / 동위각·엇각 | 기본 도형 | 위치 관계 | p9의 02장 시작, p10의 0164–0169 |
+| `M1-RPM-178` | 평행선과 각 / 평행선 조건 | 기본 도형 | 위치 관계 | p10의 0170–0173 |
+| `M1-RPM-183` | 수직과 거리 / 수선과 수선의 발 | 위치 관계 | 기본 도형 | p3의 0042–0046, p6의 0090 |
+| `M1-RPM-184` | 수직과 거리 / 점과 직선 사이의 거리 | 위치 관계 | 기본 도형 | p3의 0044·0047, p6의 0089–0091 |
+
+01 기본 도형의 장 표기와 수선·거리 내용, 02 위치 관계의 장 시작과 동위각·엇각·평행 조건 내용을 함께 확인했다. `sourceEvidence`의 M1-2 항목과 `splitEvidence`의 `M1-2_BASIC_POSITION_2026-11-13`에 같은 PDF SHA와 페이지·문항 번호·배치 관찰을 남겼다. 문제·정답·해설 원문은 복사하지 않는다. 기존 L3가 어느 부모 아래 있었는지만으로 현재 장 소속을 인정하지 않는다.
+
+### M2-2·M3-1의 방법별 장 소속 정정
+
+같은 부모 감사에서 다음 다섯 leaf도 공식 장 내용과 다른 base 소속을 확인했다. v1.2의 추가 정정은 M1 네 leaf와 합해 **아홉 leaf**이며, 세 신규 부모 분리와는 별도의 소속 정정이다.
+
+| crosswalk ID | 기존 L3 / L4 | base L1 / L2 | 현재 effective L1 / L2 | 공식 PDF 근거 |
+|---|---|---|---|---|
+| `M2-RPM-194` | 넓이와 활용 / 평행선과 넓이 | 사각형의 성질 / 평행사변형 | 사각형의 성질 / 여러 가지 사각형 | M2-2 p28의 0311–0315, p35의 0391–0394 |
+| `M3-RPM-104` | 분모의 유리화 / 합·차 꼴의 유리화 | 실수와 그 연산 / 근호를 포함한 식의 계산 | 다항식의 곱셈과 인수분해 / 다항식의 곱셈 | M3-1 p28의 0393–0396, p32의 0446–0449, p35의 0482 |
+| `M3-RPM-105` | 혼합 계산 / 곱셈공식 활용 | 실수와 그 연산 / 근호를 포함한 식의 계산 | 다항식의 곱셈과 인수분해 / 다항식의 곱셈 | M3-1 p28의 공식 도입, p32의 0442–0445, p35의 0481 |
+| `M3-RPM-127` | 근의 공식 / 근의 공식 | 이차방정식 / 이차방정식의 풀이 | 이차방정식 / 이차방정식의 활용 | M3-1 p57의 07장 제목과 0760–0767, p59의 0794–0797 |
+| `M3-RPM-128` | 근의 공식 / 근의 개수·판별 | 이차방정식 / 이차방정식의 풀이 | 이차방정식 / 이차방정식의 활용 | M3-1 p58의 0776–0781, p61의 0811–0817 |
+
+M3-1의 03장은 한 항 분모의 유리화와 분배법칙을 다루고, 04장은 합·차의 곱 공식을 이용한 유리화와 근호 이항식의 곱셈공식 활용을 다룬다. 따라서 같은 기존 L3의 `M3-RPM-103` 한 항 유리화와 `M3-RPM-106` 일반 식의 값은 03장에 유지한다. 기존 `분모의 유리화` 또는 `혼합 계산`만 있고 L4가 없으면 두 현재 부모 중 하나를 추정하지 않는다.
+
+M3-1의 06장은 인수분해·제곱근·완전제곱식으로 푸는 영역이고, 07장은 제목 직후 근의 공식과 그 공식을 이용한 근의 개수 판별을 도입한다. ‘풀이’·‘활용’이라는 일반적인 단어 뜻만으로 소속을 정하지 않고 실제 교재의 방법별 장 경계를 따른다.
+
+`M2-RPM-199` 사다리꼴 / 중점 연결은 **이동하지 않는다**. 04장 p28의 0310은 각 변의 중점을 연결한 사각형의 모양이고, 07장 p55·p57의 0628은 중점선의 길이이다. 두 의미가 실제로 있으므로 넓은 leaf 이름만으로 현재 부모를 바꾸지 않는다. 이 모호성은 `splitEvidence`에 남기며 개별 문항의 핵심 방법을 읽고 판단한다.
+
+`M2-RPM-195` 분할도형도 03장의 평행사변형 분할 넓이라는 실제 근거가 있어 유지한다. 따라서 기존 M2 넓이와 활용 L3는 L4 없이는 현재 부모가 모호하다. M2-176·177 그래프 활용도 여러 장에 해당할 수 있는 넓은 이름이므로 기존 부모의 실제 예를 확인하고 유지한 상태이며, 유일한 장 소속을 확정한 것으로 보고하지 않는다.
+
+두 M3 leaf의 L1 이동은 같은 교육과정·같은 권의 정확한 leaf에 한정한다. `placementReviewId`가 지정하는 공식 PDF URL·SHA, 원래 L1/L2/L3/L4, 현재 L1/L2, 해당 crosswalk ID와 페이지 근거가 일치해야 helper가 이를 수용한다. 근거 없는 L1 이동과 다른 권으로의 이동은 거절한다.
+
 ## 4. 이전부터 넓게 합쳐져 있던 일곱 세부단원 키
 
 기존 source의 다음 세부단원 키는 원래 base RPM에서도 서로 다른 L2를 하나의 키에 묶고 있었다. 현재 선택에서는 정확한 RPM 부모를 사용해 이들을 나눈다. 기존 키의 이름이나 번호를 일괄 바꾸지 않는다.
@@ -77,14 +112,14 @@ M3-1은 제곱근 정의·성질 장이 p2에서 시작하고 무리수와 실�
 | 기존 subUnitKey | 각각 선택할 현재 L2 |
 |---|---|
 | `M1-04-GRAPH_RELATION` | 좌표와 그래프, 정비례와 반비례 |
-| `M1-05-BASIC_FIGURE` | 기본 도형, 작도와 합동 |
+| `M1-05-BASIC_FIGURE` | 기본 도형, 위치 관계, 작도와 합동 |
 | `M1-06-POLYGON_CIRCLE` | 다각형, 원과 부채꼴 |
 | `M1-08-DATA_INTERPRETATION` | 대푯값, 도수분포표와 상대도수 |
 | `M2-05-TRIANGLE_PROPERTIES` | 삼각형의 성질, 삼각형의 외심과 내심 |
 | `M2-05-QUADRILATERAL_PROPERTIES` | 평행사변형, 여러 가지 사각형 |
 | `M3-04-QUADRATIC_FUNCTION_GRAPH` | 이차함수의 그래프(1), 이차함수의 그래프(2) |
 
-여기에 위 세 신규 분리에 대응하는 `M2-04-LINEAR_FUNCTION_BASIC`, `M3-01-SQUARE_ROOT_REAL_NUMBER`, `M3-06-CIRCLE_INSCRIBED_ANGLE`도 한 기존 키만으로 현재 부모를 정할 수 없는 경우가 된다. 총 열 개 broad key의 실제 후보 목록은 정본의 `legacySubUnitMappings`에 있다.
+여기에 위 세 신규 분리에 대응하는 `M2-04-LINEAR_FUNCTION_BASIC`, `M3-01-SQUARE_ROOT_REAL_NUMBER`, `M3-06-CIRCLE_INSCRIBED_ANGLE`도 한 기존 키만으로 현재 부모를 정할 수 없는 경우가 된다. v1.2의 공식 장 소속 정정으로 `M1-05-BASIC_FIGURE`는 위치 관계도 포함하고, `M1-05-POSITION_RELATION`도 기본 도형과 위치 관계의 두 부모를 포함한다. `M3-01-REAL_NUMBER_OPERATIONS`는 근호 계산과 다항식의 곱셈, `M3-03-QUADRATIC_EQUATION`은 이차방정식의 풀이와 활용을 포함한다. 따라서 현재 여러 부모를 가리키는 기존 키는 **열세 개**이다. `legacySubUnitMappings`는 기존 crosswalk 행의 실제 leaf와 현재 effective parent 연결에서 재계산하며, 생성기가 이 계산과 다른 매핑을 거절한다.
 
 특히 중1 `기본 도형`·`위치 관계`·`작도와 합동`, `다각형`·`원과 부채꼴`, `대푯값`·`도수분포표와 상대도수`는 각각 다른 현재 부모이다. 작도나 삼각형 합동 문항을 다각형·원으로 분류하는 대체 규칙은 없다. 실제 문항의 핵심 풀이와 정확한 L3/L4를 읽고 연결해야 한다.
 
@@ -109,15 +144,17 @@ M3-1은 제곱근 정의·성질 장이 p2에서 시작하고 무리수와 실�
 | `normalizePath(path)` / `toRpmPath(path)` | Core-shaped 경로와 공식 Resolver의 RPM-shaped 경로 간 명시적 변환. |
 | `createAuthority(document)` | 공식 서버 Resolver가 파일에서 읽은 동일 정본으로 검증용 인덱스를 구성. |
 
-`refinePath`의 full leaf는 `LEAF`, L3까지만 있는 정확한 경로는 `CONCEPT`, 부모만 유일하면 `PARENT` granularity를 갖는다. 신규 공식 의미 확정에는 **full leaf만** 허용한다. UI가 부모를 인식했다고 문항의 L3/L4 의미 검토나 메타 전체 승인이 완료된 것은 아니다.
+`refinePath`의 full leaf는 `LEAF`, L3까지만 있는 정확한 경로가 하나의 현재 부모를 가리키면 `CONCEPT`, 부모만 유일하면 `PARENT` granularity를 갖는다. 한 기존 L3의 leaf가 여러 현재 부모에 나뉘면 L3만으로는 결정하지 않는다. 신규 공식 의미 확정에는 **full leaf만** 허용한다. UI가 부모를 인식했다고 문항의 L3/L4 의미 검토나 메타 전체 승인이 완료된 것은 아니다.
 
 `resolveRecord`는 `rpmPrimaryPath`, `rpmSemantic`, `metadataAssignmentEvidence.rpmMetadata`의 content-bound RPM 값, 명시적 RPM 필드, 기존 parent 필드 순서로 대조한다. 등록된 RPM 증거의 L1~L4를 읽을 수 있어야 하며 legacy 표시명만으로 연결하지 않는다. 학기 scope가 빠졌으면 학년과 정확한 L1/L2가 하나의 권을 가리킬 때만 scope를 보완한다. 명시된 `originalCurriculum`이 화면용 과정 값보다 우선한다.
 
 ### 모호하거나 충돌하는 기록
 
-- 오래된 `일차함수와 그 그래프`, `제곱근과 그 실수`, `원주각` 부모만 있고 L3/L4가 없으면 `LEGACY_PARENT_AMBIGUOUS`이다.
-- **옛 `원주각` 이름이 현재 두 자식 중 하나에도 남아 있어도** 부모 이름만으로 기본 원주각 장을 선택하지 않는다.
+- 오래된 M1-2의 `기본 도형`·`위치 관계`, M2-1의 `일차함수와 그 그래프`, M2-2의 `평행사변형`, M3-1의 `제곱근과 그 실수`·`근호를 포함한 식의 계산`·`이차방정식의 풀이`, M3-2의 `원주각` 부모만 있고 L3/L4가 없으면 `LEGACY_PARENT_AMBIGUOUS`이다.
+- **옛 이름이 현재 부모 이름에도 남아 있어도** 부모 이름만으로 새 장 소속을 추정하지 않는다. M1 기본 도형·위치 관계와 M3 원주각도 정확한 L3 또는 full leaf 근거가 필요하다.
 - 한 기존 `subUnitKey`가 여러 현재 부모에 연결되면 보류한다. 정확한 L3/leaf나 문항 의미 검토가 필요하다.
+- 기존 M3-1 근호 계산의 `분모의 유리화`·`혼합 계산` L3도 각각 두 현재 부모에 걸쳐 있으므로 정확한 L4가 필요하다.
+- 기존 M2-2 평행사변형의 `넓이와 활용` L3는 평행선과 넓이 leaf와 분할도형 leaf의 현재 부모가 달라 정확한 L4가 필요하다.
 - 강한 RPM 증거가 모순되거나 없는 leaf를 가리키면, 약한 기존 표시명으로 조용히 덮어 분류하지 않는다.
 - 새 L2 아래에 속하지 않는 L3/L4 조합은 `NOT_FOUND`이며, 공식 의미 확정은 기존 경로 검증의 HOLD 처리로 남는다.
 - 2015와 고등은 `OUT_OF_SCOPE`이다. 출처 연도만으로 이 helper가 원래 교육과정을 변경하지 않는다.
@@ -143,7 +180,7 @@ M3-1은 제곱근 정의·성질 장이 p2에서 시작하고 무리수와 실�
 
 ## 7. 공식 6권 근거
 
-출판사 `imath.kr` 공개 게시물에서 제공한 PDF를 기준으로 장 제목과 시작 페이지를 확인했다. 정본의 `sourceEvidence`에는 아래 URL·PDF SHA·크기·페이지 수·54개 장 제목과 시작 페이지가 들어 있다. `splitEvidence`는 기존 L3를 세 분리된 부모에 배치한 의미 근거이다. 문항·정답·해설 원문은 이 정본과 문서에 복사하지 않는다.
+출판사 `imath.kr` 공개 게시물에서 제공한 PDF를 기준으로 장 제목과 시작 페이지를 확인했다. 정본의 `sourceEvidence`에는 아래 URL·PDF SHA·크기·페이지 수·54개 장 제목과 시작 페이지가 들어 있다. `splitEvidence`는 세 부모 분리와 M1/M2/M3의 아홉 leaf 소속 정정에 필요한 의미 근거이다. 문항·정답·해설 원문은 이 정본과 문서에 복사하지 않는다.
 
 | 권 | 공식 게시물 / PDF | L2 수 | PDF SHA256 |
 |---|---|---:|---|
@@ -156,6 +193,18 @@ M3-1은 제곱근 정의·성질 장이 p2에서 시작하고 무리수와 실�
 
 원래 six-book 확인 packet SHA256은 `92f4282174d928b2430679aa6fd2ac1443030428c420532e1bb0961f687c3d5c`이며 `sourceEvidencePacket`에도 기록한다. M2-1 경계 확인 packet SHA256은 `f9535d7559e33b852e5561435fd5e8aeacd91a2eb105e7945866b3f5e5b8dfcc`이다. scratch packet 경로가 없어져도 운영 정본에 필요한 출처와 배치 근거가 남는다.
 
+### 전체 기존 L3의 부모 감사 기록
+
+각 L3와 연결 leaf를 빠짐없이 대조한 감사 기록은 아래 Git 문서에 보존한다. 각 기록에는 기존 ID, 공식 PDF URL·SHA, 페이지·문항 번호, 짧은 의미 관찰과 한계만 있으며 문제·정답·해설 원문은 없다. 전체 **155 L3 / 326 leaf**의 부모 검토 범위이며, 모든 leaf가 출판사의 개별 인쇄 유형과 일대일 대응한다는 주장이나 기출 문항 의미 검수 완료를 뜻하지 않는다.
+
+| 감사 | 기존 L3 / leaf | 이번 추가 정정 | 근거 파일 SHA256 |
+|---|---:|---:|---|
+| [M1 부모 감사](../../../../operations/rpm-middle-parent-refinement-20261113/m1-parent-placement-audit.json) | 57 / 119 | 4 leaf | `45d0f40b181f8372fac77998a6575b56a7b56164d11f638d14634ff2e6747dd8` |
+| [M2 부모 감사](../../../../operations/rpm-middle-parent-refinement-20261113/m2-parent-placement-audit.json) | 59 / 118 | 1 leaf | `e2fcc27861093b70e019164dbc2129642ad76f79c396ab56a19e2715eabc51e5` |
+| [M3 부모 감사](../../../../operations/rpm-middle-parent-refinement-20261113/m3-parent-placement-audit.json) | 39 / 89 | 4 leaf | `cba8eae8713d0e88a4e5571049ec3e1ba171958d3dbe4043a7f9c7cb6f5ed489` |
+
+M1의 186·187 작도 세부 leaf와 M3의 이상치 해석처럼 부모는 부합하나 개별 인쇄 유형 존재까지 확인하지 못한 항목도 각 기록의 한계에 남긴다. M2의 네 모호 유지 항목(176·177·195·199)과 M3의 여러 장에 반복되는 길이·식 결정 등의 범위는 원래 의미를 좁혀 재정의하지 않는다. 장 시작 페이지에 이전 장의 마지막 문제가 함께 실린 경우에는 열과 문항 위치를 구별하여 검토했다.
+
 ## 8. 재생성과 직접 영향 검증
 
 정본 수정 후 공용 helper payload를 재생성하고, 아래 직접 영향 검사를 수행한다.
@@ -166,6 +215,6 @@ node archive/tools/meta-foundation/build-rpm-middle-toc.mjs --check
 node --test archive/tools/meta-foundation/rpm-middle-toc.test.mjs archive/tools/meta-foundation/rpm-active-resolver.test.mjs
 ```
 
-검사는 공식 6권 24/54 구성, locked master SHA, 326 leaf 전체 범위, L3/L4·crosswalk ID 보존, base/effective 왕복, 세 분리의 정확한 경계, broad parent 보류, nested bound RPM 읽기, 2015/고등 제외, 새 부모 입력의 base 저장과 기존 projection 상태 보존, 증거 tampering 및 잘못된 authority SHA의 거절을 확인한다.
+검사는 공식 6권 24/54 구성, locked master SHA, 326 leaf 전체 범위, L3/L4·crosswalk ID 보존, base/effective 왕복, 세 분리와 아홉 leaf 장 소속, 근거 없는 L1 이동 거절, L3 내부 일부 leaf만 이동한 경우의 모호성, 기존 세부단원 키의 실제 leaf 기반 재계산, broad parent 보류, nested bound RPM 읽기, 2015/고등 제외, 새 부모 입력의 base 저장과 기존 projection 상태 보존, 증거 tampering 및 잘못된 authority SHA의 거절을 확인한다.
 
 Archive 2.0 UI·선택 풀·배포 검증은 이 단위 검사와 별개로 연결 소비자의 변경 범위에서 수행한다. 이번 부모 정비를 근거로 기존 시험지 R1/R2/R3 전체를 다시 실행하거나 모든 문항의 의미 검토를 완료했다고 기록하지 않는다. 개별 시험지 검토와 PR/main 마감은 원래의 시험지별 진행 기록에 이어서 남긴다.

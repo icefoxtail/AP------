@@ -44,6 +44,33 @@ export function validateParentAuthority(authority, root = ROOT) {
     throw new Error('RPM_MIDDLE_MAPPING_UNKNOWN_PARENT');
   const used = new Set([...mappings.values()].map(mapping => mapping.effectiveParentKey));
   if ([...parentKeys].some(key => !used.has(key))) throw new Error('RPM_MIDDLE_PARENT_WITHOUT_LEAF');
+  const legacy = new Map();
+  const crosswalkIds = new Map();
+  for (const name of ['middle1', 'middle2', 'middle3']) {
+    const crosswalk = JSON.parse(fs.readFileSync(path.join(root,
+      `archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/${name}.json`), 'utf8'));
+    for (const row of crosswalk.records || []) {
+      if (row.curriculum !== '2022' || !/^M[123]-[12]$/.test(row.scope)) continue;
+      const rpm = row.rpmPath || {};
+      const mapping = mappings.get(JSON.stringify([row.curriculum, row.scope, rpm.majorUnit, rpm.midUnit, rpm.l3, rpm.l4]));
+      if (!mapping) throw new Error('RPM_MIDDLE_CROSSWALK_LEAF_MISSING');
+      const leafKey = JSON.stringify(mapping.basePath);
+      if (!crosswalkIds.has(leafKey)) crosswalkIds.set(leafKey, []);
+      crosswalkIds.get(leafKey).push(row.id);
+      if (!row.subUnitKey) continue;
+      if (!legacy.has(row.subUnitKey)) legacy.set(row.subUnitKey, new Set());
+      legacy.get(row.subUnitKey).add(mapping.effectiveParentKey);
+    }
+  }
+  const expectedLegacy = [...legacy.keys()].sort().map(subUnitKey => ({
+    curriculumKey: '2022', subUnitKey, parentKeys: [...legacy.get(subUnitKey)].sort(),
+  }));
+  if (JSON.stringify(authority.legacySubUnitMappings) !== JSON.stringify(expectedLegacy))
+    throw new Error('RPM_MIDDLE_LEGACY_SUBUNIT_PARENT_DRIFT');
+  for (const [key, mapping] of mappings) {
+    if (JSON.stringify([...(mapping.crosswalkRecordIds || [])].sort()) !== JSON.stringify((crosswalkIds.get(key) || []).sort()))
+      throw new Error('RPM_MIDDLE_CROSSWALK_ID_DRIFT');
+  }
   const expectedBookCounts = { 'M1-1': 9, 'M1-2': 9, 'M2-1': 10, 'M2-2': 10, 'M3-1': 9, 'M3-2': 7 };
   const sources = new Map();
   const sourceParents = new Set();

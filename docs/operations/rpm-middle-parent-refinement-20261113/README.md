@@ -1,69 +1,70 @@
 # RPM 중등 2022 L1/L2 정리 — 운영 체크포인트
 
-## 작업 상태
+## 현재 상태와 권한
 
-- 작업자: `GPT_ROOT_933015CD0A4F`
-- AWCR taskId: `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`, instructionRevision `2`
-- 작업 브랜치: `fix/rpm-middle-l1-l2-20261113`
-- 시작 main: `a6708a849faca7ccfd438937138d7e88bd5ee23c`
-- 상태: 구현 및 집중 회귀 완료, GitHub CI의 통합 검사·실제 Chrome 검증·PR/main 병합 대기
-- 첫 원격 코드 체크포인트: `ddea1efca1515d4a148bbdf581d31e161193c7de`, tree `a596ac72bffbfc95227bb0da75014d4b68fe0b5c` (원격 fetch로 동일 tree 확인)
-- AWCR r3: Drive file `1rYz7I4OSH_NGGLwoxvJuNE7WwLFKOfop`, raw SHA256 `9ce38e25cf192db57f0310c07ba109754bca146bad8f7b9a7b285a97b8e77ce8` (실제 raw 재조회 확인)
-- 최신 상태는 같은 폴더의 `progress.json` 및 이 브랜치 원격 HEAD를 함께 확인한다. 아래 체크 결과만으로 운영 완료를 추정하지 않는다.
+- 사용자 우선순위: 중1 시험지 검토에 앞서 RPM 중학 1-1~3-2의 L1/L2와 실제 선택 연결을 정리한다.
+- 작업자: `GPT_ROOT_933015CD0A4F`; AWCR taskId `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`, instructionRevision `2`.
+- 브랜치: `fix/rpm-middle-l1-l2-20261113`; PR: https://github.com/icefoxtail/AP------/pull/1958
+- 시작 main: `a6708a849faca7ccfd438937138d7e88bd5ee23c`; 최근 확인 main: `2b90b85dd848806ba62f844b85225db8bcae5ee3` (별도 G7 PR #1955 병합, 이 작업과 파일 겹침 없음).
+- 상태: **공식 부모 대조·수정과 집중 회귀 완료. 최종 tree의 CI·실제 Chrome 검사·main 병합 대기.**
+- 직전 원격 체크포인트: `71137cfe8d6b0caba3926fce98ad28e53e80bdbf`, tree `5c092f6731d79fb4af26d6092cf6704de53c2a2c`.
+- AWCR r4: Drive `1OPzyBkhimVFPj_vooQtMzpsDqVLqPib0`, raw SHA256 `c518a83ceb80141ebbce7d7577f458319593221292703db226c76fd40c875d08` (raw 재조회 검증).
 
-## 현재 우선순위와 산출물
+최신 상태는 `progress.json`, 원격 브랜치 HEAD, PR의 실제 검사 결과를 함께 확인한다. 오래된 PASS나 문서의 대기 상태만으로 운영 완료를 추정하지 않는다. 사용자는 이 범위의 PR/main 병합 및 연속 진행을 이미 승인했다.
 
-사용자 최신 지시로 중1 기존 시험지 메타 전수 검토보다 **RPM 중학 1-1~3-2의 L1/L2 정리와 실제 분류 연결**을 먼저 진행한다.
+## 현재 정본과 변경 범위
 
-공식 출판사 6권을 대조한 결과는 L1 **24개**, L2 **54개**다. L2는 학기 순서대로 **9 / 9 / 10 / 10 / 9 / 7개**다. 기존 목차 대비 중2-1 일차함수의 그래프 (1)/(2), 중3-1 제곱근/무리수와 실수, 중3-2 원주각/원주각의 활용이 구분된다.
+공식 출판사 6권 대조 결과는 **24 L1 / 54 L2**다. 학기 순서대로 L2는 **9 / 9 / 10 / 10 / 9 / 7**개다. 기존 목차 대비 중2-1 일차함수의 그래프 (1)/(2), 중3-1 제곱근의 뜻과 성질/무리수와 실수, 중3-2 원주각/원주각의 활용이 분리된다.
 
-- 현재 부모 정본: `archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json`
-- 브라우저/Node 공용 경로 해석: `archive/rpm-middle-toc.js`
-- 생성 및 정합성 검사: `archive/tools/meta-foundation/build-rpm-middle-toc.mjs`
-- 상세 설명: `docs/rules/01_CANONICAL/taxonomy/rpm-middle-2022/RPM_MIDDLE_2022_PARENTS.md`
+- 부모 정본: `archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json`
+- 브라우저/Node 공용 해석: `archive/rpm-middle-toc.js`
+- 생성/검사: `archive/tools/meta-foundation/build-rpm-middle-toc.mjs`
+- 정본 설명: `docs/rules/01_CANONICAL/taxonomy/rpm-middle-2022/RPM_MIDDLE_2022_PARENTS.md`
 
-기존 locked v1 정본·crosswalk·승인 fingerprint·시험지·정답·해설·이미지는 변경하지 않는다. 기존 326개 leaf와 L3/L4를 현재 L1/L2에 연결하는 별도 정본을 둔다. 새 경로 입력은 기존 leaf에 유일하게 역연결해 원래 승인·저장 규약을 적용한다. UI 선택 범위만 현행 부모를 사용하고 request primaryPaths 및 saved snapshot 경로는 기존 표현을 보존한다.
+**155개 기존 L3 / 326개 leaf의 부모를 전부 대조**하고, 명백한 기존 부모 오류 9개를 수정했다. `M1-RPM-177/178`은 위치 관계, `M1-RPM-183/184`는 기본 도형, `M2-RPM-194`는 여러 가지 사각형, `M3-RPM-104/105`는 다항식의 곱셈, `M3-RPM-127/128`은 이차방정식의 활용이다. 공식 장 경계와 실제 유형 페이지 근거는 아래 감사 기록에 보존했다.
 
-기존 넓은 키만으로 새 L2를 결정할 수 없으면 임의 배정하지 않는다. 2015 자료는 원래 교육과정을 보존하며 이전 소단원 분류를 별도로 표시한다. 이번 작업은 M2/M3 전체 PT/TPL 연결이나 개별 시험지의 의미 검토 완료를 뜻하지 않는다.
+| 감사 파일 | 범위 |
+|---|---|
+| `m1-parent-placement-audit.json` | 57 L3 / 119 leaf |
+| `m2-parent-placement-audit.json` | 59 L3 / 118 leaf |
+| `m3-parent-placement-audit.json` | 39 L3 / 89 leaf |
 
-## 현재 검증과 남은 검사
+M2의 176·177·195·199처럼 유형 이름이 여러 장에 걸치는 항목은 현재 부모를 유지하고 한계를 기록했다. L3/L4 이름·식별자를 새로 만들거나 기출 문항 분류의 정확성을 확정한 감사가 아니다. 필요한 leaf 근거 없이 넓은 부모나 개념만 주어진 **13개 모호한 기존 키는 자동 배정하지 않는다**.
 
-- 부모 정본: 24 L1 / 54 L2 및 6권 출처 근거 대조.
-- 326 leaf의 base → effective → base 왕복 및 L3/L4·crosswalk ID 보존 검사 통과.
-- quick pool 회귀 20건 통과.
-- UnitPast 및 새 부모 통합 회귀 24건 통과.
-- 기존 subunit grouping 생성물 변경 없이 `--check` 통과.
-- URL 안의 JSON 부모키를 쉼표로 분리하던 문제와 저장한 칸의 안전한 단원 별칭 복원 수정. 일반/학교별 URL·새 페이지·기존 선택 복원 회귀 5건 통과.
-- 기존 Unified·UnitPast UI·reader controls·CI scope 회귀 47건 통과. 저장 요청의 base 경로 및 Worker 검증 계약 포함.
-- 독립 검토에서 11,590개 중등 카탈로그의 memo 유무 차이 0, 54개 공식 부모 및 326개 leaf 대조 차이 0 확인.
-- 로컬 전체 runtime guard는 부분 checkout과 비추적 mixed-v1 입력 부재로 미완료다. 캐시 버전 literal 실패 1건은 현행 버전으로 수정하고 관련 테스트를 통과했다. 미완료 guard를 PASS로 취급하지 않는다.
-- 로컬 Chrome은 UNIX socket EPERM으로 시작하지 못했고 sandbox 밖 동일 명령도 자동 승인 정책의 `sandbox_approval=false` 때문에 거절됐다. 이 환경의 실제 UI 검증 결과는 NOT_RUN이다.
-- 저장소에 원래 마련된 GitHub CI의 Chrome job에 변경 UI 검사를 추가했다. 기존 runner 권한을 변경하지 않고, 실제 화면 결과·스크린샷을 CI artifact로 남긴 뒤 확인한다. CI·Chrome·PR/main 병합 결과는 아직 대기한다.
+locked v1 정본·crosswalk·승인 fingerprint·시험지·정답·해설·이미지는 보존한다. 새 현재 부모 경로는 기존 leaf에 유일하게 역연결해 원래 승인·저장 규약을 사용한다. UI 선택만 현재 부모를 사용하고 request primaryPaths·저장 snapshot·Archive2Core는 기존 표현을 유지한다. 현재 helper는 UnitPastExamsCore에서 직접 불러오므로 Worker 및 기존 재생 경로에 새 의존성을 추가하지 않는다.
 
-R1/R2/R3 전체 시험지 재검증은 실행하지 않는다. 로컬의 공유 카탈로그와 등록 정본은 기존 main의 검증 결과를 재사용했다. 로컬 runtime guard는 공식 `--registered` 모드로 등록 스냅샷을 재생성하지 않았으며, CI는 기존 full checkout 및 guard 준비 절차를 그대로 실행한다.
+2015 자료는 원래 교육과정을 유지하고 이전 소단원을 별도로 표시한다. 명시된 originalCurriculum/curriculum을 연도 추정보다 우선한다. 고등 분류는 범위 밖이다.
 
-## 이어서 할 일
+## 검증과 남은 확인
 
-1. 최신 main 및 열린 PR을 확인하고 동시 작업의 변경을 덮어쓰지 않는다.
-2. 위 진행 중 검사 결과를 `progress.json`에 반영한다. 필수 실패는 원인 확인 후 수정하거나 명시하고 품질 PASS를 추정하지 않는다.
-3. 해당 브랜치의 정확한 tree를 원격에 저장하고 PR을 생성한다. 사용자 승인 범위에 따라 main 병합 후 원격 SHA를 직접 확인한다.
-4. AWCR 다음 immutable revision을 기록하고 raw 저장본의 SHA와 revision을 재확인한다.
-5. 아래 중1 시험지 전수 검토를 재개한다. 현재 완료 시험지는 0장이므로 완료 건수로 올리지 않는다.
+- 최종 v1.2 helper/공식 resolver 35/35, UnitPast·quick pool·Unified·통합·URL 69/69 통과.
+- Core 의존성 분리 후 기존 apply bridge 23/23 및 실제 Worker bundle/deploy 15/15 통과.
+- UI/producer/reader/URL 집중 검사 14/14 통과. 호출별 수치는 일부 중복이므로 합산하지 않는다.
+- 부모 정본 생성물 `--check` 및 기존 subunit grouping `--check` 통과, 기존 생성물 재생성 없음.
+- 독립 검토: 326 leaf 왕복·L3/L4 보존, 13개 모호 키 보류, 명시 교육과정 우선순위, Node/브라우저 UMD 로드 순서 확인.
+- 로컬 전체 guard는 sparse checkout의 원본/생성 입력 부재로 미완료. 이를 품질 PASS로 보고하지 않는다.
+- 로컬 Chrome은 socket EPERM으로 실행하지 못했고 sandbox 외부 실행은 자동 승인 정책 `sandbox_approval=false`로 거절됐다. 저장소의 기존 GitHub Chrome job을 사용한다.
+- 직전 CI의 runtime 계약 243개와 50문항 실제 Chrome 출력은 통과했다. 새 RPM UI 검사는 세로 스크롤바를 제외한 `clientWidth`를 전체 viewport와 비교해 실패했다. 실제 너비 1440, clientWidth 1425, 가로 넘침 없음. viewport와 문서 폭을 구분하도록 검사 코드를 수정했다.
+- 직전 CI 통합 실패의 캐시 literal·producer fixture는 현재 변경에 맞게 수정했다. Core 의존성은 분리해 기존 bridge/Worker 계약을 그대로 만족시킨다.
 
-## 중1 기존 시험지 검토 재개점
+**최종 게시 tree의 CI와 RPM 실제 화면 검증을 아직 PASS로 선언하지 않는다.** 실제 Chrome 화면·선택 UID 풀·URL 복원·모바일 배치를 확인한 뒤 사용자 승인 범위로 main에 병합하고 원격 SHA를 확인한다. R1/R2/R3 전체 시험지 검증은 재실행하지 않는다.
 
-- 별도 작업 브랜치: `review/m1-existing-meta-20261113`
-- 안전 체크포인트: `adf587b63e860722c9c8ec630509e4d8fe7b0a2a`
+## 다음 실행
+
+1. 최신 main을 병합하고 정확한 tree를 원격 브랜치에 저장한다. 다른 작업의 파일을 수정하지 않는다.
+2. PR #1958의 최종 SHA에서 필요한 CI/Chrome 결과와 스크린샷을 확인하고 근거를 기록한다.
+3. main에 병합 후 원격 SHA/파일 바이트를 직접 확인한다. AWCR 다음 immutable revision을 저장·재조회한다.
+4. 이 브랜치에 병합 영수증과 인계 상태를 남긴 뒤 아래 시험지 작업을 재개한다.
+
+## 중1 시험지 작업 재개점
+
+- 브랜치: `review/m1-existing-meta-20261113`
+- 원격 안전 체크포인트: `f05383131e035ad28b613a238ec072c2c9b265b2`, tree `39597ac187cb60af16eb4cdb7f7a9d28cc024de1`.
 - 진행표: `docs/operations/m1-meta-review-20261113/progress.json`
-- 발문·그림·해설 읽기 기록: 같은 폴더의 `01-shinheung-semantic-read-checkpoint.json`
-- 전체 44시험지 / 1,047문항, 완료 0시험지 / 의미 대조 마감 0문항.
-- 첫 대상: **2026 신흥중 중1 2학기 중간 / 24문항**.
-- source blob: `c36139a90e9bcd378577ece8f891423bee6b0a19`
-- source SHA256: `1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564`
-- 24문항 읽기 기록은 보존되어 있다. 현재 메타 정본·Archive 2.0 세부 유형과의 대조, 필요한 최소 수정, 집중 검증 및 시험지별 PR/main 병합은 아직 남아 있다.
+- 읽기 근거: 같은 폴더 `01-shinheung-semantic-read-checkpoint.json`
+- 13~24번 후보 대조: `01-shinheung-candidate-comparison.json`, SHA256 `c887310c2501c3d70a010315a7fda02c73a6964ba45b70c3aa106a99c4a62ce9`.
+- 1~12번 후보 초안은 해당 worktree `.tmp/m1-meta-review/01-first-half-candidate.json`에 보존. SHA256 `b1858bef96295c38e8be7243aecbbbb91027446a7c4624459f3aa725f418c17b`. 이번 정본 병합 후 바뀐 부모를 대조하고 Git에 저장한다.
+- 전체 **44시험지 / 1,047문항**, 완료 **0시험지**. 첫 대상은 **2026 신흥중 중1 2학기 중간 / 24문항**.
+- 원본 blob `c36139a90e9bcd378577ece8f891423bee6b0a19`, SHA256 `1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564`.
 
-재개 전 이 목차 PR을 최신 main에서 확인하고 그 main을 기준으로 시험지 브랜치를 준비한다. 빈 메타 채우기 병행 작업과 범위를 겹치지 않는다. 사용자 요청대로 최신년도부터 한 장씩 끝까지 마감한다. 완료 목록 및 다음 학년·학기 인계도 기존 진행표에 누적한다.
-
-## 복사용 인계
-
-> AP------의 `fix/rpm-middle-l1-l2-20261113` 원격 HEAD와 이 문서·progress.json을 먼저 읽으세요. Notion 필독 라우터와 최신 main을 확인하고 현재 작업을 이어가세요. RPM 2022 중학 6권 L1 24/L2 54 정본과 기존 326 leaf의 부모 연결을 구현했으며, 본 체크포인트 시점에는 통합 검증과 PR/main 병합이 남아 있습니다. locked v1/기존 원문/승인/저장 경로를 보존하고 effective parent만 별도 관리합니다. 목차 병합 후 `review/m1-existing-meta-20261113`의 2026 신흥중 2학기 중간 24문항부터 의미 대조를 재개하세요. 원본 읽기 기록은 이미 저장했으므로 불필요하게 처음부터 다시 읽지 마세요. 아직 완료 시험지는 0/44입니다. AWCR은 기존 taskId 및 owner를 이어 쓰고 immutable 다음 revision 저장 후 원격 raw SHA·revision을 검증하세요.
+24문항의 발문·그림·해설 읽기를 반복할 필요는 없다. 저장된 근거를 사용하되 새 main의 부모 정본 및 실제 PT/TPL 연결과 다시 결속한다. 빈 메타 채우기 병행 작업과 겹치지 않게 문항별 담당·범위를 확인한다. 최신년도부터 한 시험지씩 최소 수정 → PR → main 병합 → 원격 SHA 확인 순서로 마감한다. 없는 유형에 임의 대체 키를 넣지 않는다. 완료 목록과 다음 학년·학기 인계도 진행표에 누적한다.

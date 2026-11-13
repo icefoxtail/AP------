@@ -62,6 +62,7 @@
       let st = null;
       const width = () => this.ui.panel.getBoundingClientRect().width || 360;
       el.addEventListener('pointerdown', (e) => {
+        if (this.lab.learning?.enabled()) return;
         if (e.pointerType === 'mouse' && e.button !== 0) return;
         if (from === 'close' && !this.isOpen) return;
         st = { x: e.clientX, y: e.clientY, id: e.pointerId, moved: false, dir: false, t: performance.now(), lastX: e.clientX, v: 0 };
@@ -121,6 +122,7 @@
       this.ui.filter.setAttribute('aria-pressed', String(this.onlyVideo));
       this.ui.filter.classList.toggle('on', this.onlyVideo);
       this.ui.list.classList.toggle('only-video', this.onlyVideo);
+      this.lab.learning?.store();
     }
 
     /** 장면 목록을 (다시) 그립니다. 영상이 있는 장면에 ▶ 가 붙습니다. */
@@ -139,26 +141,27 @@
           group = h('section', { class: 'apl-toc-group', role: 'group' });
           list.append(group);
         }
-        const info = p ? p.lessonInfo(i) : [];
+        const info = lab.learning?.enabled() ? lab.learning.lessonInfo(i) : p ? p.lessonInfo(i) : [];
         const has = info.length > 0;
         if (has) nVideo += info.length;
         const sp = APLab.splitFlag(sc.short || sc.title);
-        const cur = i === lab.index;
+        const selected = lab.learning?.contents.focus;
+        const cur = lab.learning?.view === 'contents' && selected ? i === selected.i : i === lab.index && (!lab.learning || lab.learning.hasSelection);
         if (info.length > 1) {
           // 해설이 여럿인 장면: 제목(누르면 탐구 화면) 아래에 해설마다 「▶ 겉넓이 29초」 단추. 단추 하나가 그 해설을 바로 재생합니다.
           const multi = h('div', { class: 'apl-toc-item multi has-video', 'aria-current': cur ? 'true' : null, dataset: { i: String(i) } },
-            h('button', { class: 'apl-toc-title', onclick: () => { this.close(true); lab.goScene(i); } },
+            h('button', { class: 'apl-toc-title', 'aria-label': lab.learning?.enabled() ? `${sp.text} 직접 해 보기` : sp.text, onclick: () => { if (lab.learning?.enabled()) return lab.learning.select(i, 0, { explore: true }); this.close(true); lab.goScene(i); } },
               sp.flag ? h('i', { class: 'flag', text: sp.flag }) : null, h('span', { class: 'tx', text: sp.text })),
             h('div', { class: 'apl-toc-lessons' }, ...info.map((x) => h('button', {
-              class: 'vid', dataset: { k: String(x.k) }, 'aria-label': `${sp.text} ${x.label} 해설 ${Math.round(x.length)}초`,
+              class: 'vid', dataset: { i: String(i), k: String(x.k), choice: String(x.choice ?? x.k) }, 'aria-label': `${sp.text} ${x.label} 해설 ${Math.round(x.length)}초`,
               html: `<span class="tri">▶</span><span class="lb">${APLab.esc(x.label)}</span><span class="sec">${Math.round(x.length)}초</span>`,
-              onclick: () => this.go(i, x.k)
+              onclick: () => this.go(i, lab.learning?.enabled() ? x.choice : x.k)
             }))));
           group.append(multi);
           return;
         }
         const row = h('button', {
-          class: 'apl-toc-item' + (has ? ' has-video' : ''), 'aria-current': cur ? 'true' : null, dataset: { i: String(i) },
+          class: 'apl-toc-item' + (has ? ' has-video' : ''), 'aria-current': cur ? 'true' : null, dataset: { i: String(i), choice: '0' },
           'aria-label': `${sp.text}${has ? `. 영상 ${Math.round(info[0].length)}초` : ''}`,
           onclick: () => this.go(i)
         },
@@ -169,7 +172,8 @@
       // 영상 없는 장면만 있는 묶음은 「영상만」 보기에서 머리글도 숨깁니다
       list.querySelectorAll('.apl-toc-group').forEach((g) => { g.classList.toggle('no-video', !g.querySelector('.has-video')); });
       // 해설(장 여러 개)과 쇼츠를 함께 세고, 모두 보면 얼마나 걸리는지 합계 시간을 보여 줍니다
-      const total = Math.round(lab.list.reduce((n, _, i) => n + (p ? p.lessonInfo(i).reduce((a, x) => a + x.length, 0) : 0), 0));
+      const total = Math.round(lab.list.reduce((n, _, i) => n + (lab.learning?.enabled() ? lab.learning.lessonInfo(i) : p ? p.lessonInfo(i) : []).reduce((a, x) => a + (x.length || 0), 0), 0));
+      this.ui.head.querySelector('h2').textContent = lab.learning?.enabled() ? APLab.stripEmoji(lab.def.title) : '목차';
       this.ui.sub.textContent = nVideo ? `${lab.def.title} · 영상·해설 ${nVideo}개 · 합계 ${Math.floor(total / 60)}분 ${String(total % 60).padStart(2, '0')}초` : lab.def.title;
       this.ui.filter.hidden = !nVideo;
       if (!nVideo) this.setOnlyVideo(false);
@@ -177,13 +181,16 @@
 
     go(i, k) {
       const lab = this.lab, p = this.player;
+      if (lab.learning?.enabled()) return lab.learning.select(i, k || 0);
       this.close(true);
       if (p && p.has(i)) p.play(i, k || 0);
       else lab.goScene(i);
     }
 
     open() {
+      if (this.lab.learning?.enabled()) return this.lab.learning.showContents();
       const ui = this.ui;
+      ui.panel.hidden = false;
       if (this.player && this.player.state === 'playing') this.player.pause();
       this.render();
       this.isOpen = true;
@@ -201,6 +208,7 @@
       ui.close.focus({ preventScroll: true });
     }
     close(quick) {
+      if (this.lab.learning?.enabled()) return; // Contents is a route, not a dismissible overlay.
       const ui = this.ui;
       this.isOpen = false;
       this._setX(null);
@@ -214,7 +222,7 @@
       ui.topBtn.classList.remove('on');
       if (!quick && document.activeElement && ui.panel.contains(document.activeElement)) ui.topBtn.focus({ preventScroll: true });
     }
-    toggle() { if (this.isOpen) this.close(); else this.open(); }
+    toggle() { if (this.lab.learning?.enabled()) return this.lab.learning.showContents(); if (this.isOpen) this.close(); else this.open(); }
   }
 
   APLab.Toc = Toc;
@@ -229,13 +237,17 @@
   const query = new URLSearchParams(location.search), hash = new URLSearchParams(location.hash.slice(1));
   const param = key => query.get(key) || hash.get(key);
   if (!A || !script?.src || !/\/g7-[^/]+\.html$/.test(location.pathname) || param('manual') === '1' || param('teach') === '1' || ['exam', 'assessment', 'test'].includes(param('mode')) || param('assessment') === '1') return;
+  document.body.classList.add('apl-g7-loading');
+  const pendingStyle = document.createElement('style');
+  pendingStyle.textContent = 'body.apl-g7-loading .apl-main,body.apl-g7-loading .apl-lentry,body.apl-g7-loading .apl-railwrap{display:none!important}';
+  document.head.append(pendingStyle);
   const base = new URL('.', script.src);
   const json = value => JSON.parse(JSON.stringify(value));
   const css = document.createElement('link');
-  css.rel = 'stylesheet'; css.href = new URL('apl-g7-learning.css?v=20261113-6', base).href;
+  css.rel = 'stylesheet'; css.href = new URL('apl-g7-learning.css?v=20261113-toc-1', base).href;
   document.head.append(css);
   const load = name => new Promise((resolve, reject) => {
-    const el = document.createElement('script'); el.src = new URL(name + '?v=20261113-6', base).href;
+    const el = document.createElement('script'); el.src = new URL(name + '?v=20261113-toc-1', base).href;
     el.onload = resolve; el.onerror = () => reject(new Error('Grade 7 learning module unavailable: ' + name));
     document.head.append(el);
   });
@@ -262,7 +274,8 @@
   A.labHooks.unshift(lab => {
     if (!lab.id?.startsWith('g7-') || lab.teach) return;
     const b = lab.board;
-    lab._g7LearningEntry = { s: json(lab.s), tab: lab.tab, view: json({ focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY, kind: b.kind, aspect: b.aspect, panes: b.panes, insets: b.insets }) };
+    lab._g7LearningEntry = { navigation: history.state?.aplG7, route: { hash: hash.toString(), search: query.toString() }, s: json(lab.s), tab: lab.tab, view: json({ focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY, kind: b.kind, aspect: b.aspect, panes: b.panes, insets: b.insets }) };
+    clearTimeout(lab._hashT); // Do not let the native initial URL debounce erase restored route state.
   });
   A.labHooks.push(lab => {
     if (!lab.id?.startsWith('g7-') || lab.teach) return;
@@ -276,6 +289,6 @@
           queueMicrotask(() => A.G7Learning.install(lab)); return result;
         };
       } else A.G7Learning.install(lab, lab._g7LearningEntry);
-    }).catch(error => console.warn(error.message));
+    }).catch(error => { document.body.classList.remove('apl-g7-loading'); if (lab.video) { lab.video.manual = param('manual') === '1'; lab.video._syncEntry(); } console.warn(error.message); }).finally(() => { document.body.classList.remove('apl-g7-loading'); pendingStyle.remove(); });
   });
 })();
