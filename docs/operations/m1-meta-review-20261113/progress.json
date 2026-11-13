@@ -13,9 +13,9 @@
   },
   "order": "year DESC, semester DESC, final before midterm, school Korean alphabetical",
   "completedExams": 1,
-  "reviewedQuestions": 24,
+  "reviewedQuestions": 47,
   "currentOrder": 2,
-  "nextAction": "PUBLISH_CLOSING_CHECKPOINT_AND_AWCR15_THEN_READ_LATEST_NOTION_AWCR_MAIN_AND_CONCURRENCY_CONFIRM_FIRST_CLOSURE_BEGIN_WANGUN_ALL_23_SEMANTIC_REVIEW",
+  "nextAction": "Resolve the exact native runtime test and PR1965 course-correction dependency; preserve confirmed Wangun23 semantics; prepare minimal source metadata/request, exact23 preflight and operational PR/main closeout.",
   "exams": [
     {
       "order": 1,
@@ -583,10 +583,25 @@
       "count": 23,
       "sourceBlob": "76377173ecb0ba989188561bbefac2afb3232479",
       "sourceSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
-      "status": "PENDING_NOT_STARTED",
+      "status": "METADATA_SEMANTICS_CONFIRMED_REGISTRATION_PENDING",
       "checklist": "[ ]",
       "operationallyClosed": false,
-      "reviewedQuestionCount": 0
+      "reviewedQuestionCount": 23,
+      "semanticReadEvidence": "02-wangun-semantic-read-checkpoint.json",
+      "semanticReadEvidenceSha256": "a299d9d82d150681cfbd7fc4aa8b7b5bb029300abe8bc60e1789670be86ed235",
+      "figureReadEvidence": "02-wangun-figure-read-evidence.json",
+      "sourceReviewedBlob": "76377173ecb0ba989188561bbefac2afb3232479",
+      "sourceReviewedSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
+      "sourceMetadataEditsApplied": false,
+      "registrationApplied": false,
+      "prNumber": null,
+      "unresolvedDependencyPr": 1965,
+      "semanticReviewEvidence": "02-wangun-semantic-review.json",
+      "semanticReviewSha256": "ac9b5daa01d9160d4118049422d1ab4b4ab53b24067e56a8d52f2ef499a082cc",
+      "semanticOrParentCorrectedCount": 20,
+      "rpmEvidenceDebtCount": 4,
+      "newNativeProblemTypes": 5,
+      "newNativeTemplates": 5
     },
     {
       "order": 3,
@@ -1190,7 +1205,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "FIRST_EXAM_CLOSED_NEXT_EXAM_PENDING",
+  "state": "SECOND_EXAM_METADATA_SEMANTICS_CONFIRMED_DEPENDENCY_PENDING",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -1258,15 +1273,13 @@
   ],
   "activeMainTreeStatus": "REMOTE_MAIN_CURSOR_ONLY_ADVANCE_INPUT_AND_CODE_SUBTREES_VERIFIED_IDENTICAL",
   "checkpointPublication": {
-    "scope": "FIRST_EXAM_OPERATIONAL_CLOSEOUT",
-    "status": "LOCAL_CLOSING_DOC_CHECKPOINT_REMOTE_PUBLICATION_PENDING",
-    "observedRemoteOwnBranchSha": "e5b1797512aa074fc05c3cbedf52fed050c41d3c",
-    "previousRemoteCheckpointState": "REV3_MERGED_WAITING_MAIN_REGISTRATION",
-    "localBranchMergedActualMain": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
-    "newDocumentCheckpointSha": null,
-    "resumeRequirement": "Publish closing checkpoint then AWCR revision15. Re-read latest Notion/AWCR/main/concurrency before Wangun23. Confirm first closeout evidence; do not repeat unchanged completed source review or recreate merged PRs.",
-    "latestMainToMergeBeforePublication": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
-    "latestMainMergeStatus": "ROOT_WILL_MERGE_AFTER_DOCUMENT_UPDATE"
+    "lastVerifiedRemoteSha": "147b475e2e3d7d824492a23e1fa65f94b70676a8",
+    "statusAtWriting": "CURRENT_READING_SNAPSHOT_PREPARED_FOR_REMOTE_PUBLICATION",
+    "currentSnapshotEvidence": {
+      "path": "02-wangun-semantic-read-checkpoint.json",
+      "sha256": "a299d9d82d150681cfbd7fc4aa8b7b5bb029300abe8bc60e1789670be86ed235"
+    },
+    "selfCommitLookup": "Use the fetched remote branch commit containing this file; AWCR next immutable revision records the actual post-publication SHA."
   },
   "candidateConsumerPreflightPolicy": {
     "scope": "EACH_REVIEWED_EXAM_EXACT_CANDIDATE",
@@ -1277,10 +1290,11 @@
     "mainRegistrationStillRequired": true
   },
   "awcrCheckpoint": {
-    "latestVerifiedRevision": 14,
-    "verificationReportedBy": "root",
-    "nextRevision": 15,
-    "nextRevisionStatus": "PENDING_REMOTE_CLOSING_DOCUMENT_CHECKPOINT"
+    "latestVerifiedRevision": 15,
+    "fileId": "1ypZHzLY4zX4LFPBUnQenHeAi2ZVNQ76Z",
+    "rawSha256": "a45d9c1d95d473aee747f61d193c2725076770d7fc22e69e8b75fb72417103b7",
+    "nextRevision": 16,
+    "nextRevisionPurpose": "Publish the current semantic-read checkpoint after remote readback."
   },
   "remainingExams": 43,
   "nextExam": {
@@ -1288,7 +1302,8 @@
     "path": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
     "file": "26_왕운중_2학기_중간_중1_기출.js",
     "questionCount": 23,
-    "status": "PENDING_NOT_STARTED"
+    "status": "CURRENT_SEMANTICS_CONFIRMED_REGISTRATION_PENDING",
+    "semanticReadEvidence": "02-wangun-semantic-read-checkpoint.json"
   },
   "latestOperationalCloseout": {
     "order": 1,
@@ -1349,5 +1364,7 @@
     "futureOrder24AdditionalFigureOverlapPr": 1959,
     "futureOrder24Pr1751ExpectedSourceBlobStale": true,
     "recheckOnHeadChange": true
-  }
+  },
+  "operationallyClosedQuestions": 24,
+  "latestVerifiedRemoteCheckpoint": "147b475e2e3d7d824492a23e1fa65f94b70676a8"
 }
