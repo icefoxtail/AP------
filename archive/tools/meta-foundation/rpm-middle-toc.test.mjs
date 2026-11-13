@@ -96,7 +96,7 @@ test('the four M1 basic/location leaves follow chapter content while retaining t
     const base = Toc.refinePath(row.basePath);
     assert.equal(base.effectivePath.L2, effectiveL2, id);
     const expectedCrosswalkIds = id === 'M1-RPM-177'
-      ? [id, 'M1-RPM-177-TRANSFER-BENT-20261113', 'M1-RPM-177-TRANSFER-DIRECT-20261113']
+      ? [id, 'M1-RPM-177-ALTERNATE-POSITION-20261113', 'M1-RPM-177-TRANSFER-BENT-20261113', 'M1-RPM-177-TRANSFER-DIRECT-20261113']
       : [id];
     assert.deepEqual(base.crosswalkRecordIds, expectedCrosswalkIds);
     assert.deepEqual(Toc.refinePath(base.effectivePath).basePath, Toc.normalizePath(row.basePath));

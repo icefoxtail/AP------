@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "existing-exam-semantic-read-checkpoint-v1",
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "owner": "GPT_ROOT_933015CD0A4F",
+  "recordedAt": "2026-11-13T15:37:29.197727+00:00",
+  "state": "ALL_23_READ_CANDIDATES_FROZEN_ROOT_ADJUDICATION_AND_REGISTRATION_PENDING",
+  "source": {
+    "path": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+    "blobSha1": "76377173ecb0ba989188561bbefac2afb3232479",
+    "rawSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
+    "questionCount": 23
+  },
+  "baselineMain": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
+  "priorVerifiedRemoteBranchCheckpoint": "147b475e2e3d7d824492a23e1fa65f94b70676a8",
+  "readCoverage": {
+    "promptChoicesProvidedSolution": 23,
+    "uniqueExternalFiguresActuallyViewed": 33,
+    "rootReReadAll23TextAndSolutions": true,
+    "rootAdditionalFiguresViewedOrdinals": [
+      4,
+      11,
+      14,
+      19,
+      20,
+      21,
+      22,
+      23
+    ]
+  },
+  "assignedReview": {
+    "Q1_8": "meta_authority",
+    "Q9_16": "exam_reviewer",
+    "Q17_23": "root"
+  },
+  "candidateEvidence": [
+    {
+      "path": "docs/operations/m1-meta-review-20261113/02-wangun-q01-q08-review.json",
+      "sha256": "16c6f94dacac7c1e00788af65e776d55a2db73f328311bd8f526183f19a856bf"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/02-wangun-q09-q16-review.json",
+      "sha256": "8b22b538796f99b24195c286495c66e6da1763b3082bccc2c4178a9c40f08d27"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/02-wangun-q17-q23-review.json",
+      "sha256": "96982cc5c33712baeed5c86707dff2e729b0588efd923d1f5907ce3a0514a515"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/02-pr1965-review.json",
+      "sha256": "68148df2a7e2e6b961668722f6f65c728ebbd5646550931dc3627bf53d351cc5"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/02-wangun-figure-read-evidence.json",
+      "sha256": "ae1ba79d988a3eac53dd81053b1956f5fac56b193077455d0e54211b63cc3309"
+    }
+  ],
+  "rootConfirmations": [
+    {
+      "ordinals": [
+        4,
+        11
+      ],
+      "decision": "Reuse existing skew-edge and general-side-transfer skeletons; response format or numeric variants do not justify new keys."
+    },
+    {
+      "ordinals": [
+        19,
+        20
+      ],
+      "decision": "Q19 median constraint reconstruction / RPM223; Q20 stem-leaf class-frequency audit / RPM227. Independently re-read and confirmed by exam_reviewer."
+    },
+    {
+      "ordinals": [
+        2,
+        5,
+        7,
+        8
+      ],
+      "decision": "Normalize suggested PT_* crossConcept references to actual atomic CC authority; root will record exact CC keys in final semantic report."
+    }
+  ],
+  "remainingSemanticDecisions": [
+    "Q2 independent claims integration NONE vs SEQUENTIAL (not branch merely because multiple choices).",
+    "Q22 independent confirmation of exact missing M1 graph-to-segment-division skeleton."
+  ],
+  "dependencies": [
+    {
+      "pr": 1965,
+      "head": "0f65b93e4d8656c6f8c0710d64bd510e11228a89",
+      "purpose": "Correct existing M1 graph-relation parameter-evaluation binding course typo for Q6/Q8 and normalize parent-only label whitespace.",
+      "sourceRequestOverlap": 0,
+      "status": "OPEN_CI_FAILURE_STALE_MIDDLE_GEOMETRY_APPROVAL_TYPE_ASSERTION",
+      "action": "Root owns dependency sequencing; independent review found no scope or Consumer guard weakening. The failure is actual Shinheung Q20 FINAL_QA vs stale fixed META_PIPELINE_AUDIT expectation."
+    }
+  ],
+  "normalStudentPayloadEdited": false,
+  "sourceOrCanonicalMetadataEdited": false,
+  "officialRegistrationRun": false,
+  "consumerPreflightRun": false,
+  "mathFinalQaPerformed": false,
+  "fullR1R2R3Rerun": false,
+  "completedExams": 1,
+  "remainingExams": 43,
+  "readQuestionsTotal": 47,
+  "nextAction": "Confirm two residual semantic choices, fix only the directly failing native runtime test with real receipt assertions, resolve PR1965 dependency, prepare minimal Wangun source metadata and exact official v2 request, preflight all23, PR merge and verify main registration/Consumer23. Do not begin exam3."
+}

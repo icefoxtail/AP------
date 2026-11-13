@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "m1-concurrent-registration-observation-v1",
+  "createdAt": "2026-11-13T17:18:49.855229+00:00",
+  "status": "SHINHEUNG_ORDERING_GATE_SATISFIED_AT_MAIN_440F",
+  "scope": "Read-only observation of the other owner's PR1967 final main registration; no new review, registration or tests executed.",
+  "pullRequest": {
+    "number": 1967,
+    "url": "https://github.com/icefoxtail/AP------/pull/1967",
+    "state": "MERGED",
+    "initialHead": "a52b2d5d440a9f03eb6a22f8a11cb84df045a6f2",
+    "finalHead": "bab8fc177dc8f841708ac88f1664bc36d60864bd",
+    "mergedAt": "2026-11-13T16:54:41Z",
+    "mergeSha": "2391df9b009b1c1f47ab450ed501fe06dd78f918"
+  },
+  "mainWriter": {
+    "runId": 43467456637,
+    "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43467456637",
+    "jobId": 132030268013,
+    "jobUrl": "https://github.com/icefoxtail/AP------/actions/runs/43467456637/job/132030268013",
+    "eventHead": "2391df9b009b1c1f47ab450ed501fe06dd78f918",
+    "createdAt": "2026-11-13T16:54:43Z",
+    "status": "completed",
+    "conclusion": "success",
+    "observedCompletedAt": "2026-11-13T17:11:58Z",
+    "prepare": "SUCCESS",
+    "persist": "SUCCESS",
+    "bindPersistedSnapshot": "SUCCESS",
+    "pagesExactSnapshotHandoff": "SUCCESS",
+    "artifactUpload": "SUCCESS",
+    "pushEvidence": {
+      "source": "workflow job log",
+      "line": 1704,
+      "timestamp": "2026-11-13T17:10:43.1765502Z",
+      "result": "PUSHED",
+      "attempts": 1,
+      "mainSha": "440f412bd221e3d62df16130984a2626a3ee6441",
+      "registeredSha": "440f412bd221e3d62df16130984a2626a3ee6441"
+    }
+  },
+  "artifact": {
+    "id": 14061030353,
+    "name": "archive-main-registration-43467456637-1",
+    "createdAt": "2026-11-13T17:10:54Z",
+    "localPath": "/workspace/scratch/933015cd0a4f/m1-review/.tmp/m1-meta-review/02-pr1967-main-writer-43467456637.zip",
+    "bytes": 257151,
+    "entryCount": 49,
+    "sha256": "1f18b7be96a23604d5075592a3b24500bf76657c39431c186301f0b1162f9978",
+    "githubDigestMatchesLocal": true,
+    "downloadMethod": "github_download_workflow_artifact"
+  },
+  "reviewedRequestResult": {
+    "requestId": "m1-shinheung-meta-closeout-20261113-bf-r1",
+    "appliedCount": 1,
+    "rejectedCount": 0,
+    "pendingCount": 0,
+    "appliedPath": ".archive-meta-register/inbox/m1-shinheung-meta-closeout-20261113-bf-r1.json",
+    "appliedEvidence": {
+      "entry": "native/archive-meta-register-pass/applied.txt",
+      "sha256": "99d92c37c86779e9363185cfa491ad723c7523f0b7a49110a70dc3bd7786350f"
+    },
+    "emptyEvidence": [
+      {
+        "entry": "native/archive-meta-register-pass/rejected.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "entry": "native/archive-meta-register-pass/pending.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  "finalPostAutoMetaConsumer": {
+    "entry": "reviewedFinal-1.log",
+    "sha256": "bef428c5b94432cf2dc8c3fe0dc7c02afae6714a02b6db6559f9763649236e28",
+    "status": "PASS",
+    "changed": 24,
+    "checked": 24,
+    "passed": 24,
+    "skippedUnchanged": 0,
+    "failures": 0,
+    "unobservedFields": 0,
+    "solverOnlyRevisions": 0,
+    "assignmentPending": 0,
+    "exam": "26_신흥중_2학기_중간_중1_기출",
+    "sourceFile": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+    "workingTreeHeadAtVerification": "2391df9b009b1c1f47ab450ed501fe06dd78f918",
+    "bindingExplanation": "The verification ran on registered staged data before persist. The prepare report orders reviewedFinal after semantic/AutoMeta; the PUSHED log and persisted report bind the resulting registration snapshot to main 440f412bd221e3d62df16130984a2626a3ee6441.",
+    "prepareReport": {
+      "entry": "report.json",
+      "sha256": "3c195f1ca7e01c9bfc1e68e7bdf700328f67db5399b23805317379d077fb7afc",
+      "status": "PREPARED_WITH_PENDING",
+      "registrationReady": true,
+      "publishable": true,
+      "safeToPersist": true,
+      "sourceMutation": 0,
+      "independentReviewClaim": false,
+      "laneOrder": [
+        "reviewed",
+        "semantic",
+        "shared",
+        "generated",
+        "reviewedFinal",
+        "studentIndexes",
+        "fourSlot"
+      ],
+      "reviewedFinalStatus": "VERIFIED",
+      "reviewedFinalReason": "FINAL_CONSUMER"
+    },
+    "initialConsumerEvidence": {
+      "entry": "native/archive-meta-register-pass/consumer-preflight-1.json",
+      "sha256": "18f19f6bc31fbbb6fa37cda1e202d78c775772ddc1e60a9cdb87e4205a5033d1",
+      "status": "PASS",
+      "checked": 24,
+      "passed": 24,
+      "scope": "Intermediate preflight, separate from final post-AutoMeta proof."
+    }
+  },
+  "persistedSnapshot": {
+    "mainSha": "440f412bd221e3d62df16130984a2626a3ee6441",
+    "treeSha": "c77b8e1c88357ea17ac1b650db2029a1f836ebfc",
+    "reportEntry": "persisted/report.json",
+    "reportSha256": "350141de4c653ea2bd0ebbf3cf4fca36b47d8edd6795c447bed466a97d644a4d",
+    "reportMode": "check",
+    "inputSha": "440f412bd221e3d62df16130984a2626a3ee6441",
+    "globalStatus": "REGISTRATION_PARTIAL",
+    "registrationReady": true,
+    "publishable": true,
+    "reviewedLaneStatus": "VERIFIED_REUSED",
+    "semanticLaneStatus": "NEEDS_REGISTRATION",
+    "interpretation": "The global semantic continuation does not reject or defer this successfully registered reviewed-exam request."
+  },
+  "globalAutoMetaObservation": {
+    "entry": "native/archive-main-auto-meta/report.json",
+    "sha256": "9912581fa2c236506acef1bbeb8d09c114806655d30fc945f52a6a63f7d27c9b",
+    "status": "REGISTERED_WITH_SUPPLEMENTS",
+    "applied": 0,
+    "pending": 7143,
+    "reportedResults": 200,
+    "shinheungTargetEntries": 0,
+    "studentFilesChanged": 0,
+    "unrelatedMetadataChanged": 0,
+    "interpretation": "No per-target ALREADY_REGISTERED or pending count is inferred from this global report. Target preservation is supported by the final Consumer24 proof."
+  },
+  "actualGitReceiptAndSource": {
+    "gitSnapshot": "440f412bd221e3d62df16130984a2626a3ee6441",
+    "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json",
+    "receiptRawSha256": "bd627b6fe34082ed8ca2a90e49955e75ffb7ee2cfc6e3e4411ae4041d4d2d555",
+    "receiptSchema": "archive-reviewed-exam-meta-registration-v2",
+    "metadataRegistrationStatus": "REGISTERED",
+    "requestCanonicalSha256": "e8368cd95a8e5820ec4fa312bbeb6adc1f0d10f32564f52f7a84e4816a7671c1",
+    "requestHashSemantics": "Canonical stable-JSON receipt hash, not the raw request file hash.",
+    "totalQuestions": 24,
+    "appliedRecords": 24,
+    "appliedIdentityRecords": 24,
+    "runtimeRecords": 24,
+    "registryChanges": 0,
+    "uniqueUids": 24,
+    "allAppliedRecordsMatchSourceAndOrdinal": true,
+    "approvalType": "FINAL_QA",
+    "approvalScope": "Metadata review; no independent math verification claim.",
+    "sourcePath": "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+    "sourceRawSha256": "2f1ab79eba940498b5c575ad1509a038b3f2dabd390823177635d83937fe4b56",
+    "sourceBlobSha1": "f1a73e96053d17564b42672415ca6bfc5b73cb2c",
+    "receiptSourceHashesMatchGit": true,
+    "inboxConsumed": true,
+    "immutableApprovalEvidenceChecked": 5,
+    "immutableApprovalEvidenceMatched": 5,
+    "immutableApprovalEvidence": [
+      {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/01-shinheung-rationale-review.json",
+        "sha256": "bdf93959515ee2ba63f8c0e681d0cd007a1fcb7d5428868f8e28a1584d47eff2"
+      },
+      {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/02-shinheung-auxiliary-review.json",
+        "sha256": "85524c542fc7ed2e37dcea1a8d8cc4c8ccbe55ff3dbe59c7c22aedb66c44c0ed"
+      },
+      {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sha256": "af9ca64b73bcf0be8e0bb3918ff929ebca1491f3589b401aea1efa20e9d9557d"
+      },
+      {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/10-shinheung-only-source-integration.json",
+        "sha256": "8675933a0318aea34991bd261e2866dd900653575c690900d4b2dd6c4839609d"
+      },
+      {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/11-shinheung-classification-audit-ledger.json",
+        "sha256": "9389a4d7eb83a6652a8939daef265a92d0d98a3041add8f63501e883bccf74fc"
+      }
+    ]
+  },
+  "orderingConclusion": {
+    "shinheungPendingRequestMustFinishBeforeWangunCrosswalkAppend": "SATISFIED",
+    "verifiedSnapshot": "440f412bd221e3d62df16130984a2626a3ee6441",
+    "nextOwnerAction": "Refresh Wangun branch against this registered main and complete Wangun exact-head CI and its own operational registration checks.",
+    "wangunPr1968MergeOrCiApprovalClaim": false,
+    "relatedCodeTrace": "docs/operations/m1-meta-review-20261113/02-crosswalk-append-existing-approval-impact.json"
+  },
+  "boundaries": {
+    "sourceCanonicalGitIndexApiMutations": 0,
+    "testsOrRegistrationsRerun": 0,
+    "newMathQaClaim": false,
+    "studentPromptsAnswersSolutionsCopiedIntoThisReport": false,
+    "actualPagesDeploymentInspected": false,
+    "pagesEvidenceScope": "Exact registered snapshot handoff succeeded; deployment itself was not inspected.",
+    "historicalCloseoutsUnchanged": true,
+    "observationDoesNotGuaranteeFutureMainUnchanged": true
+  }
+}

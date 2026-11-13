@@ -12,10 +12,10 @@
     "questionCount": 1047
   },
   "order": "year DESC, semester DESC, final before midterm, school Korean alphabetical",
-  "completedExams": 0,
-  "reviewedQuestions": 24,
-  "currentOrder": 1,
-  "nextAction": "CHECK_LATEST_AWCR_AND_OPEN_BRANCH_PR_THEN_SUBMIT_REV3_PR_VERIFY_CI_REQUEST_RECEIPT_MERGE_MAIN_WRITER_ACTUAL_24_MAIN_SHA_CLOSE_FIRST",
+  "completedExams": 1,
+  "reviewedQuestions": 47,
+  "currentOrder": 2,
+  "nextAction": "Publish current registered-main merge to owned PR1968 branch; require exact fresh-head CI before merge, then actual Wangun receipt/final23 Consumer/remoteSHA.",
   "exams": [
     {
       "order": 1,
@@ -26,7 +26,7 @@
       "count": 24,
       "sourceBlob": "c36139a90e9bcd378577ece8f891423bee6b0a19",
       "sourceSha256": "1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564",
-      "status": "REV3_READY_WITH_ISOLATED_24_PASS",
+      "status": "OPERATIONALLY_CLOSED_WITH_DOCUMENTED_RPM_DEBT",
       "partialEvidence": "01-shinheung-semantic-read-checkpoint.json",
       "candidateComparisonEvidence": "01-shinheung-candidate-comparison.json",
       "candidateComparisonSha256": "c887310c2501c3d70a010315a7fda02c73a6964ba45b70c3aa106a99c4a62ce9",
@@ -46,29 +46,62 @@
         "exact": 22,
         "rpmOnlyDebt": 2
       },
-      "prNumber": null,
-      "prUrl": null,
-      "prHeadSha": null,
-      "mergeCommitSha": null,
-      "verifiedRemoteMainSha": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
-      "verifiedRemoteMainTree": "d52de79fedc3e134286d57707f78b783130d7d2c",
-      "nativeRegistrationActual": "REV3_NOT_SUBMITTED",
-      "consumerVerification": "REV3_ISOLATED_24_PASS_REMOTE_MAIN_NOT_VERIFIED",
-      "operationallyClosed": false,
+      "prNumber": 1964,
+      "prUrl": "https://github.com/icefoxtail/AP------/pull/1964",
+      "prHeadSha": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
+      "mergeCommitSha": "c9b908a0025c6d32b1add22b47543035e14b8784",
+      "verifiedRemoteMainSha": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+      "verifiedRemoteMainTree": "844c8b82fa19b4dcd7630313e67600e194a69ebd",
+      "nativeRegistrationActual": "REGISTERED_24_VERIFIED_ON_REMOTE_MAIN",
+      "consumerVerification": "PASS_ALL_24_FINAL_REMOTE_MAIN_CONSUMERS",
+      "operationallyClosed": true,
       "ci": {
-        "state": "NOT_RUN",
-        "scope": "REV3_PR_NOT_CREATED_AT_SNAPSHOT"
+        "state": "SUCCESS",
+        "headSha": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
+        "successfulWorkflowCount": 4,
+        "successfulJobCount": 6,
+        "evidencePath": "01-shinheung-rev3-ci.json",
+        "evidenceSha256": "7efc6460fc988f7bc002c70eed21022f0b3dcf6045c334ac9b12ab7d2a12ae31",
+        "evidenceRecordedBy": "root",
+        "reviewedRegistrarExecutedByPrPreparation": false,
+        "semanticAutoMetaExecutedByPrPreparation": false,
+        "scope": "PR data/browser/test scopes passed; no formal reviewed-request application or final target24 post-AutoMeta proof."
       },
       "concurrentWorkEvidence": "01-shinheung-concurrent-work-check.json",
       "mainWriter": {
         "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev3",
-        "runId": null,
-        "jobId": null,
-        "observedStatus": "NOT_STARTED",
-        "requestOutcome": "NOT_SUBMITTED",
-        "registrationReceiptVerification": "NOT_VERIFIED"
+        "runId": 43443059116,
+        "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43443059116",
+        "jobId": 131945363207,
+        "jobUrl": "https://github.com/icefoxtail/AP------/actions/runs/43443059116/job/131945363207",
+        "headSha": "c9b908a0025c6d32b1add22b47543035e14b8784",
+        "startedAt": "2026-11-13T14:28:38Z",
+        "lastObservedAt": "2026-11-13T15:05:02Z",
+        "observedStatus": "COMPLETED",
+        "observedPhase": "COMPLETED",
+        "requestOutcome": "REGISTERED",
+        "registrationReceiptVerification": "REGISTERED_24_EXACT_SOURCE_AND_CANONICAL_REQUEST_SHA_VERIFIED",
+        "persistStatus": "PUSHED",
+        "observationSource": "Completed writer artifact and exact native receipt, independently rechecked on clean fetched remote main",
+        "conclusion": "SUCCESS",
+        "completedAt": "2026-11-13T14:58:45Z",
+        "eventHead": "c9b908a0025c6d32b1add22b47543035e14b8784",
+        "actualPreparedInputSha": "208ab1649ad0e201e5b05917c259269dc545b0d0",
+        "registeredSha": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+        "pushAttempts": 2,
+        "publicationHandoff": "EXACT_REGISTERED_SNAPSHOT_DISPATCH_SUCCESS",
+        "postAutoMetaConsumer": {
+          "changed": 24,
+          "checked": 24,
+          "passed": 24,
+          "failures": 0,
+          "unobservedFields": 0,
+          "assignmentPending": 0
+        },
+        "evidencePath": "01-shinheung-rev3-main-registration.json",
+        "evidenceSha256": "f30499220c5f3e2fdf75807d1a4e3774ba8c25728000316dfc4a57e4715ecf0d"
       },
-      "mainMergeEvidence": null,
+      "mainMergeEvidence": "01-shinheung-rev3-main-merge.json",
       "initialCiEvidence": "01-shinheung-ci-initial.json",
       "requestHistory": [
         {
@@ -198,10 +231,10 @@
         }
       ],
       "currentRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
-      "prRole": "CURRENT_REV3_PRE_PR_SNAPSHOT",
-      "repairPrNumber": null,
-      "repairPrStatus": "NOT_CREATED_AT_SNAPSHOT",
-      "repairCiStatus": "NOT_RUN",
+      "prRole": "CURRENT_REV3_MERGED",
+      "repairPrNumber": 1964,
+      "repairPrStatus": "MERGED",
+      "repairCiStatus": "SUCCESS",
       "nativeRegistrationDryRunDetails": {
         "requestRevision": "rev3",
         "status": "PASS",
@@ -238,18 +271,19 @@
       "sourceMetadataChangedQuestionCount": 24,
       "prNumbers": [
         1960,
-        1961
+        1961,
+        1964
       ],
-      "mergeTree": null,
-      "mainMergeEvidenceSha256": null,
+      "mergeTree": "e8a233eb8d12b9dd514bf4d977fc33e9d209737e",
+      "mainMergeEvidenceSha256": "40ba78ea21225431fb4f95d62c0b5a3f7bd1f3e9b12384f55a43af839d9a7bca",
       "verifiedRemoteMainTreeStatus": "VERIFIED_FROM_FETCHED_REMOTE_MAIN",
-      "actualRegisteredQuestionCount": 0,
-      "nativeRegistryChangesApplied": 0,
-      "requestStatus": "READY_NOT_SUBMITTED",
-      "lastSubmittedRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev2.json",
-      "requestSnapshotCommit": null,
+      "actualRegisteredQuestionCount": 24,
+      "nativeRegistryChangesApplied": 17,
+      "requestStatus": "REGISTERED",
+      "lastSubmittedRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+      "requestSnapshotCommit": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
       "parentLinkRepair": {
-        "status": "REV3_PREPARED_AND_ISOLATED_24_PASS",
+        "status": "COMPLETED_MAIN_24_VERIFIED",
         "reproductionWorktree": "/workspace/scratch/933015cd0a4f/m1-registration-repro",
         "reproductionOwner": "root",
         "reproductionMode": "LOCAL_ISOLATED_OFFICIAL_V2_REGISTRAR_NOT_PRODUCTION_OR_PUBLICATION",
@@ -265,13 +299,13 @@
             "평면도형",
             "다각형"
           ],
-          "status": "PARENT_LINK_REPAIRED_IN_REV3_CANDIDATE",
+          "status": "PARENT_LINK_VERIFIED_ON_OPERATIONAL_MAIN",
           "appliedCandidateFix": "Preserve existing PT/TPL and RPM198 meaning; add-only exact 2022 crosswalk link and evidence-bound targetParentRef.",
           "exactCrosswalkId": "M1-RPM-198-DIAGONAL-FORMULA-20261113",
           "sourceFamilyIdPreserved": "M1-RPM-198"
         },
         "q8": {
-          "status": "REPRODUCED_AND_PARENT_ONLY_REF_REPAIRED_IN_REV3_CANDIDATE",
+          "status": "NATIVE_PARENT_ONLY_REF_VERIFIED_RPM_DEBT_PRESERVED",
           "appliedCandidateFix": "Bind only the official basic-geometry/position-relation parent; keep RPM L3/L4 EVIDENCE_DEBT.",
           "rpmLeafAdded": false,
           "rpmCoarseParentStatus": "LEGACY_PARENT_AMBIGUOUS"
@@ -293,22 +327,24 @@
           "math-review and RPM FINAL boundaries"
         ],
         "nextRequestRevision": "rev3",
-        "nextRequestStatus": "READY_NOT_SUBMITTED",
+        "nextRequestStatus": "REGISTERED",
         "nextRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
-        "nextPrNumber": null,
-        "nextPrStatus": "NOT_CREATED_AT_SNAPSHOT",
+        "nextPrNumber": 1964,
+        "nextPrStatus": "MERGED",
         "sequence": [
-          "Read latest AWCR safe checkpoint and query this branch open PRs before creating a new PR",
-          "Submit prepared rev3 PR if absent; verify CI and request-specific registration receipts",
-          "Merge, then verify main writer exact request receipt and all 24 actual remote Consumers and native queries",
-          "Bind remote main SHA, close first exam, then begin Wangun"
+          "Rev3 PR1964 merged after isolated candidate24 PASS",
+          "Exact native receipt24 and post-AutoMeta final Consumer24 persisted to cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+          "Independent clean remote-main projection24, Consumer24 and RPM parent audit passed",
+          "First exam operationally closed with documented RPM debt; next exam is pending"
         ],
         "isolatedConsumer24Pass": true,
-        "productionConsumer24Pass": false,
+        "productionConsumer24Pass": true,
         "evidencePath": "01-shinheung-canonical-parent-repair.json",
-        "evidenceSha256": "025b76456d75f84c5f4f1c2aa73041eba1c96954232e7e6a2bffacf68877f8cb"
+        "evidenceSha256": "025b76456d75f84c5f4f1c2aa73041eba1c96954232e7e6a2bffacf68877f8cb",
+        "completionMainSha": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+        "completionEvidence": "01-shinheung-operational-closeout.json"
       },
-      "lastSubmittedRequestSnapshotCommit": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
+      "lastSubmittedRequestSnapshotCommit": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
       "parentRefRepairOrdinals": [
         5,
         8
@@ -342,7 +378,7 @@
           "fullR1R2R3Rerun": false
         },
         "browserStatus": "NOT_RUN",
-        "remoteMainConsumerVerification": "NOT_YET_VERIFIED_REV3",
+        "remoteMainConsumerVerification": "SUBSEQUENTLY_VERIFIED_SEE_MAIN_CONSUMER_VERIFICATION",
         "mathFinalQaPerformed": false
       },
       "isolatedRpmParentAudit": {
@@ -367,6 +403,186 @@
         "q8NativeCanonicalAssignment": "APPROVED_IN_ISOLATED_CANDIDATE",
         "q10RpmGranularity": "PARENT",
         "actualRpmSolutionResolver": "NOT_RUN_UNVERIFIED_SOLUTION"
+      },
+      "mergedAt": "2026-11-13T14:28:35Z",
+      "requestRawSha256": "bd2b3223b3e45a920f2f57707fd9ea37621b13a550f6125edc66edfd3057826f",
+      "requestCanonicalSha256": "bd2014fead23196d068ad24de8529364cd81be83b4cd00dab898a2664798df50",
+      "requestSha256Meaning": "RAW_FILE_SHA256; native receipt.requestSha256 uses requestCanonicalSha256",
+      "registrationCountsBasis": "Exact rev3 native receipt, writer post-AutoMeta final Consumer24 and independent clean remote-main Consumer24 verified at cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+      "autoMetaDirectImpact": {
+        "evidencePath": "01-shinheung-rev3-autometa-plan.json",
+        "sha256": "acfb7b89f7f72aabb31bffd38e34e379385920c6a520025ccfd95b88900ecf47",
+        "scope": "ISOLATED_READONLY_PLAN_ON_EXACT_APPLIED_REV3",
+        "baselineMain": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+        "concurrentPr": 1963,
+        "concurrentPrHead": "bf87023732ce9c2df135ed51d374fb8803fa24e7",
+        "bothVersions": {
+          "questions": 24,
+          "supplementPending": 24,
+          "apply": 0,
+          "proposedFinal": 0,
+          "nativeReceiptReuse": 0,
+          "approvalReset": 0,
+          "parentChange": 0,
+          "inputMemoryUnchanged": true,
+          "trackedInputChanges": 0
+        },
+        "callerInputsConfirmed": {
+          "cursor": "afefac26892e29f8930a1deff0c3a655d7e803a9",
+          "targetPriorPending": 0,
+          "targetPilotOverrides": 0,
+          "targetPriorAutoMetaReceipts": 0,
+          "metadataAndRuntimeEqualNativeReceipt": 24
+        },
+        "interpretation": "Existing strict guards reject these exact AutoMeta inputs before mutation. PR1963 is not established as a prerequisite and was not merged by this task. REVIEW_REQUIRED in the probe means the expected native-reuse path was not reached, not a Consumer or native approval failure.",
+        "sourceAndDifficultyFieldsChanged": false,
+        "fullWriterExecuted": false,
+        "reportStatus": "REVIEW_REQUIRED",
+        "nativeReuseExpectationReached": false,
+        "consumerFailureImplied": false,
+        "requiredPrerequisitePr": null,
+        "concurrentPrMergedByThisTask": false
+      },
+      "checklist": "[x]",
+      "closedAt": "2026-11-13T15:07:14.438644+00:00",
+      "operationalCloseoutEvidence": "01-shinheung-operational-closeout.json",
+      "operationalCloseoutSha256": "4e09f45f79d5dcfb8be9ecb89db2dcc6d2ae27e5b188f4e6cf4ab83ee392dfb0",
+      "nativeRegistrationReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "rawSha256": "aea5a3bb228638586c4a36c3eb4d1e8528d76d5a3787a0f52bcac8ab2f2c9054",
+        "canonicalRequestSha256": "bd2014fead23196d068ad24de8529364cd81be83b4cd00dab898a2664798df50",
+        "registrationStatus": "REGISTERED",
+        "registeredQuestions": 24,
+        "runtimeRecords": 24,
+        "registryChangesApplied": 17,
+        "fingerprintRepairs": 24,
+        "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR"
+      },
+      "mainProjectionVerification": {
+        "status": "PASS",
+        "totalQuestions": 24,
+        "canonical": 24,
+        "usableMetaLane": 0,
+        "mainSha": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+        "scope": "CLEAN_DETACHED_FETCHED_REMOTE_MAIN_READ_ONLY",
+        "evidencePath": "01-shinheung-rev3-main-projection.json",
+        "evidenceSha256": "40029742b4b61502e7cf9563c227809537dfe45afb78ccc4977359ead805aef5",
+        "reusedAtLatestMain": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
+        "reuseEvidencePath": "01-shinheung-main-cursor-only-advance.json",
+        "reuseEvidenceSha256": "2cff3e6bca78775fe4703e58708fef979f68284bef218fdd3b18dba839afe1b1",
+        "rerunAtLatestMain": false
+      },
+      "mainConsumerVerification": {
+        "status": "PASS",
+        "changed": 24,
+        "checked": 24,
+        "passed": 24,
+        "failures": 0,
+        "unobservedFields": 0,
+        "assignmentPending": 0,
+        "mainSha": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+        "scope": "CLEAN_DETACHED_FETCHED_REMOTE_MAIN_READ_ONLY",
+        "evidencePath": "01-shinheung-rev3-main-consumer.json",
+        "evidenceSha256": "ed5577530c38d7bc5bd90e1e18eadd00fc741b1951f341fd5373a604ee400acb",
+        "reusedAtLatestMain": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
+        "reuseEvidencePath": "01-shinheung-main-cursor-only-advance.json",
+        "reuseEvidenceSha256": "2cff3e6bca78775fe4703e58708fef979f68284bef218fdd3b18dba839afe1b1",
+        "rerunAtLatestMain": false
+      },
+      "mainRpmParentAudit": {
+        "status": "PASS",
+        "questionCount": 24,
+        "exactLeafCount": 22,
+        "debtOrdinals": [
+          8,
+          10
+        ],
+        "parentCounts": {
+          "기본 도형 / 기본 도형": 4,
+          "기본 도형 / 위치 관계": 4,
+          "기본 도형 / 작도와 합동": 6,
+          "평면도형 / 다각형": 4,
+          "평면도형 / 원과 부채꼴": 5,
+          "unresolved: LEGACY_PARENT_AMBIGUOUS": 1
+        },
+        "q8ParentStatus": "LEGACY_PARENT_AMBIGUOUS",
+        "q10Granularity": "PARENT",
+        "mainSha": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+        "scope": "CLEAN_DETACHED_FETCHED_REMOTE_MAIN_READ_ONLY",
+        "actualRpmSolutionResolver": "NOT_RUN_UNVERIFIED_SOLUTION",
+        "evidencePath": "01-shinheung-rev3-main-rpm-parents.json",
+        "evidenceSha256": "f032b00bc5d820d46ed373be4e1934af099578f791b60be843c34bd6d23450eb",
+        "reusedAtLatestMain": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
+        "reuseEvidencePath": "01-shinheung-main-cursor-only-advance.json",
+        "reuseEvidenceSha256": "2cff3e6bca78775fe4703e58708fef979f68284bef218fdd3b18dba839afe1b1",
+        "rerunAtLatestMain": false
+      },
+      "writerFinalConsumerEvidence": {
+        "path": "01-shinheung-rev3-writer-final-consumer.json",
+        "sha256": "cfe2f070dbb0f588d235f5bf50d989d4ed937723368f3a891ce0143aef6f376e",
+        "status": "PASS",
+        "stage": "AFTER_SEMANTIC_AUTOMETA_BEFORE_PERSIST",
+        "stagedInputSha": "208ab1649ad0e201e5b05917c259269dc545b0d0",
+        "persistedSha": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+        "changed": 24,
+        "checked": 24,
+        "passed": 24,
+        "failures": 0,
+        "unobservedFields": 0,
+        "assignmentPending": 0
+      },
+      "actualMainAutomaticLane": {
+        "artifactReportStatus": "REGISTERED_WITH_SUPPLEMENTS",
+        "globalApplied": 0,
+        "targetEntriesObserved": 0,
+        "scopeNote": "No target source/UID entry is present in this global report; do not infer a target-specific pending or applied status. The separate final consumer gate checks all 24 target rows after the lane.",
+        "targetSpecificAppliedOrPendingConclusion": "NOT_INFERRED_FROM_GLOBAL_REPORT",
+        "targetFinalConsumerStatus": "PASS_24_SEPARATELY_VERIFIED",
+        "isolatedPlanEvidenceIsSeparate": true
+      },
+      "concurrentPr1963": {
+        "headSha": "bf87023732ce9c2df135ed51d374fb8803fa24e7",
+        "mergedAt": "2026-11-13T14:38:41Z",
+        "mergeCommitSha": "208ab1649ad0e201e5b05917c259269dc545b0d0",
+        "mergedByThisTask": false,
+        "preserved": true,
+        "sourceAndRegistryDirectChanges": 0,
+        "evidencePath": "01-shinheung-concurrent-pr1963-merge.json",
+        "evidenceSha256": "461c2cc673141f7642d9be4d281110c1c0062be93109fcfafd432ebf01b5d5ef"
+      },
+      "latestObservedRemoteMainSha": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
+      "latestObservedRemoteMainTree": "44e7715767ee751eb7ef31b0ad9b548be082fea5",
+      "mainCursorOnlyAdvance": {
+        "path": "01-shinheung-main-cursor-only-advance.json",
+        "sha256": "2cff3e6bca78775fe4703e58708fef979f68284bef218fdd3b18dba839afe1b1",
+        "observedAt": "2026-11-13T15:11:30.284734+00:00",
+        "priorVerifiedMain": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+        "latestMain": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
+        "latestTree": "44e7715767ee751eb7ef31b0ad9b548be082fea5",
+        "changedPaths": [
+          ".archive-meta-register/auto/state.json",
+          ".archive-meta-register/auto/writer-state.json"
+        ],
+        "unchangedSubtreeSha1": {
+          "archive": "f35bde8fdbac5544b31b0df816979a8d699d03ea",
+          "docs": "6fd1da1b0733ed2b1fa9ba6f61225507a7a6925c",
+          "tools": "19b76a850ddb1808426d481ff79696da50202e5d",
+          "tests": "16eed22002ba0007cffb2e3c3619078fa09fca2b"
+        },
+        "sourceCanonicalMetadataRuntimeCatalogParentHelperAndEvidenceUnchanged": true,
+        "actual24ConsumerAndRpmParentEvidenceReused": true,
+        "newSemanticReviewOrConsumerTestsRun": false
+      },
+      "supplementalCloseout": {
+        "owner": "GPT_ROOT_BF50408FB63B",
+        "pr": 1967,
+        "registeredMain": "440f412bd221e3d62df16130984a2626a3ee6441",
+        "receiptSha256": "bd627b6fe34082ed8ca2a90e49955e75ffb7ee2cfc6e3e4411ae4041d4d2d555",
+        "finalConsumerPassed": 24,
+        "sourceSha256": "2f1ab79eba940498b5c575ad1509a038b3f2dabd390823177635d83937fe4b56",
+        "sourceBlobSha1": "f1a73e96053d17564b42672415ca6bfc5b73cb2c",
+        "evidence": "02-wangun-main440f-refresh.json",
+        "firstHistoricalCloseoutPreserved": true
       }
     },
     {
@@ -378,7 +594,47 @@
       "count": 23,
       "sourceBlob": "76377173ecb0ba989188561bbefac2afb3232479",
       "sourceSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
-      "status": "PENDING"
+      "status": "PR_OPEN_FRESH_MAIN_BOUND_REQUEST_UNCHANGED_CI_PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false,
+      "reviewedQuestionCount": 23,
+      "semanticReadEvidence": "02-wangun-semantic-read-checkpoint.json",
+      "semanticReadEvidenceSha256": "a299d9d82d150681cfbd7fc4aa8b7b5bb029300abe8bc60e1789670be86ed235",
+      "figureReadEvidence": "02-wangun-figure-read-evidence.json",
+      "sourceReviewedBlob": "76377173ecb0ba989188561bbefac2afb3232479",
+      "sourceReviewedSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
+      "sourceMetadataEditsApplied": false,
+      "registrationApplied": false,
+      "prNumber": 1968,
+      "unresolvedDependencyPr": 1966,
+      "semanticReviewEvidence": "02-wangun-semantic-review-rev3.json",
+      "semanticReviewSha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090",
+      "semanticOrParentCorrectedCount": 20,
+      "rpmEvidenceDebtCount": 4,
+      "newNativeProblemTypes": 4,
+      "newNativeTemplates": 5,
+      "uidAssociationVerifiedCount": 23,
+      "supersededCandidateEvidence": "02-wangun-semantic-review.json",
+      "newNativeBindings": 5,
+      "packCourseAliasAppends": 2,
+      "dependencyCodePr1965": "MERGED",
+      "semanticRevision": 3,
+      "sourceCandidateSha256": "c79551504949aee9ee09f5a8e2bf74898f7b7204d54a035a3e4b2acc7d808129",
+      "sourceCandidateApplied": false,
+      "exactRpmLeafCount": 19,
+      "newExactCrosswalks": 15,
+      "nativePlanEvidence": "02-wangun-native-registration-plan-rev2.json",
+      "crosswalkPlanEvidence": "02-wangun-crosswalk-plan-rev2.json",
+      "independentSourcePreservationEvidence": "02-wangun-source-candidate-independent-review-rev3.json",
+      "requestId": "m1-wangun-2026-mid-meta-review-20261113",
+      "requestRawSha256": "feb528273a4167b654a50dcd6d825c7db9173b0bf2fee1c47904b20b4bb505c1",
+      "preparedSourceSha256": "c79551504949aee9ee09f5a8e2bf74898f7b7204d54a035a3e4b2acc7d808129",
+      "preflightEvidence": "02-wangun-main51cf-isolated-preflight.json",
+      "preflightSha256": "ea5437e08ddd76b96adeecfba1b0c4872c2faf2293abbc5c5277da8a0683d535",
+      "prUrl": "https://github.com/icefoxtail/AP------/pull/1968",
+      "prHeadSha": "29707a569189aacd886cf84776ae31ec0640f2b1",
+      "freshMainDryRun": "PASS_23_REGISTRY16_RUNTIME23",
+      "freshMainRecheckEvidence": "02-wangun-main440f-refresh.json"
     },
     {
       "order": 3,
@@ -389,7 +645,9 @@
       "count": 24,
       "sourceBlob": "a366f180ffe4b8495bb79fcc362ef1e0ff4618ca",
       "sourceSha256": "9a5e79c37b15d4e19054166b3eed5541df76992f39166518ac147aed18360861",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 4,
@@ -400,7 +658,9 @@
       "count": 24,
       "sourceBlob": "c75dc3e1ce47c0ec85e51a63b1a1e16ab479385f",
       "sourceSha256": "357bfa1d8b326e228179624bf4943ec151a53362e23b00d2dcaac717a5334029",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 5,
@@ -411,7 +671,9 @@
       "count": 22,
       "sourceBlob": "393788084a0b7a5efcea86d9da70fab014e9709d",
       "sourceSha256": "039afab9b47a937c63efd3eebf28089d273d4ea673e54fdb36c016e7824bae04",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 6,
@@ -422,7 +684,9 @@
       "count": 23,
       "sourceBlob": "04758a6084ca3c561e3f0463ff2e93a75eac5b30",
       "sourceSha256": "d7973417122a6c46caa8aa4ba65e772d291c335a3ff32b1e0326fefb5f031350",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 7,
@@ -433,7 +697,9 @@
       "count": 24,
       "sourceBlob": "a053171ed56b07af3795ff5097983e84bd441ccb",
       "sourceSha256": "68547f3cf08c82ef4f3261e51ec9aa01b7aba7768bfbb92d7f30370407fc7a44",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 8,
@@ -444,7 +710,9 @@
       "count": 24,
       "sourceBlob": "5be76d727319b1f0f2f68872822f5fb8ee253b52",
       "sourceSha256": "52ecac75fa35ff8f6c5dc94ca48150d933f38b272d01a69ace25d42a09103b42",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 9,
@@ -455,7 +723,9 @@
       "count": 24,
       "sourceBlob": "8def92c8ed887507da4fa027dbde2681dc643f93",
       "sourceSha256": "f35d15d932be75d29e9ee713ff15fb0173f55668056d275e1131c4a2fa5e03e8",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 10,
@@ -466,7 +736,9 @@
       "count": 23,
       "sourceBlob": "33bf3967f7f94fc2dd638602cf93e302c61744e5",
       "sourceSha256": "cd1c72c86ab16ebf0a4d3a3fd74411cfaae9db5410f9893444a217935825f2f1",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 11,
@@ -477,7 +749,9 @@
       "count": 24,
       "sourceBlob": "6deb8328fecdeae6008a0611d36f937ad3ec4a67",
       "sourceSha256": "acecda1d532abcb67b3839035c346f1d107f50098b5bbdd63184ec2ac68372ed",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 12,
@@ -488,7 +762,9 @@
       "count": 24,
       "sourceBlob": "9d635c26109d3c088e55bd0529884611457d0433",
       "sourceSha256": "5fdae1523a0f7fc7e48d28ad3eb7febd6603529179e65a197c1f5e4655f9600c",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 13,
@@ -499,7 +775,9 @@
       "count": 24,
       "sourceBlob": "7903fe2ceadcc2fe34f0bbf77aa8fd5e67054af5",
       "sourceSha256": "fece6adca630912537ada3da98a3e5215c02c04596afabddb961fb0ecd745e03",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 14,
@@ -510,7 +788,9 @@
       "count": 24,
       "sourceBlob": "41a1af8a2c96078e25abb51489fde8857699b926",
       "sourceSha256": "768f2997d6bc8396063b0be86e72683ceccb6862965ce751da47d9d1b4963beb",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 15,
@@ -521,7 +801,9 @@
       "count": 24,
       "sourceBlob": "5308c75e6d0dbdb878bdfb87155414573168171e",
       "sourceSha256": "5252fecfbd6922b872fb9739ad01ffbbe27ca7204653a7d773e27e894e6fbf5f",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 16,
@@ -532,7 +814,9 @@
       "count": 25,
       "sourceBlob": "235aea44d775e6a7c87110bf2fcda57f84f3d162",
       "sourceSha256": "1e2db735fda2ae5363ec2567f5ee26c56f90bb20db32e2565fe2bed7f595a909",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 17,
@@ -552,7 +836,9 @@
         "latestScopeCheckRequiredBeforeReview": true,
         "observedRegistryChanges": 0,
         "evidencePath": "01-shinheung-concurrent-work-check.json"
-      }
+      },
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 18,
@@ -563,7 +849,9 @@
       "count": 24,
       "sourceBlob": "4c672d14973ebf4a5364ebbe33fdce6ce6fbf82f",
       "sourceSha256": "77796215d79ead2436148a3f5cf115b252f3bdc927dee34867fed0e26106442a",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 19,
@@ -574,7 +862,9 @@
       "count": 22,
       "sourceBlob": "9682679788ceae3afb0549785bec3b85ee98f09e",
       "sourceSha256": "083c127055e1f206b9e2f653fea461577f2ede4e1c415ee266a3718d3dc18881",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 20,
@@ -594,7 +884,9 @@
         "latestScopeCheckRequiredBeforeReview": true,
         "observedRegistryChanges": 0,
         "evidencePath": "01-shinheung-concurrent-work-check.json"
-      }
+      },
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 21,
@@ -605,7 +897,9 @@
       "count": 24,
       "sourceBlob": "45ea9a032ee03ef629dace7b01d6b3a4b300ecef",
       "sourceSha256": "b9fc9c216ed56ed81fae14a1690814ecc99840f60cf4db0629ab807259e4338b",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 22,
@@ -616,7 +910,9 @@
       "count": 22,
       "sourceBlob": "a1ff1be42b29d1888a65d173ff4baad30855aa90",
       "sourceSha256": "a6d975310912a0375e64f72a69c1ba6f096252dc75d959b35dda126a27c51164",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 23,
@@ -627,7 +923,9 @@
       "count": 23,
       "sourceBlob": "2f4613aa4ebe15de6314d9b5204d6bab5b897899",
       "sourceSha256": "b3e2b85e313681e3ae48be15e2075a1e727502de48b37cf804e16da44429487f",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 24,
@@ -647,7 +945,9 @@
         "latestScopeCheckRequiredBeforeReview": true,
         "observedRegistryChanges": 0,
         "evidencePath": "01-shinheung-concurrent-work-check.json"
-      }
+      },
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 25,
@@ -658,7 +958,9 @@
       "count": 24,
       "sourceBlob": "74127e930253a5f29b69e05acbe3cc0c70dbe59b",
       "sourceSha256": "415a10df80f80ad0a77ece4c08c273d3f3e82657ad67be4533d140ddbaa463b1",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 26,
@@ -669,7 +971,9 @@
       "count": 24,
       "sourceBlob": "8bcd8d8e82ca76c61cca011030f9679b26c5e17e",
       "sourceSha256": "3c11e0421ccde3160d52224c7a92916c18ba539975af6b7d75d4693aa5d03a64",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 27,
@@ -680,7 +984,9 @@
       "count": 24,
       "sourceBlob": "777901b280a7c2943450a10cf02f0c00db18f1bc",
       "sourceSha256": "7a51cea08fd831f1e75d8d47fde09da72e6dc8e64b25bd82c0c45fb3f2f2ca35",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 28,
@@ -691,7 +997,9 @@
       "count": 24,
       "sourceBlob": "53b2f69f3c571602f900637eceff41d0e66daff2",
       "sourceSha256": "886cc2fbee41260a38953bcbc41ab1bd7ec23718e1e4bad4948186ca814e62b2",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 29,
@@ -702,7 +1010,9 @@
       "count": 26,
       "sourceBlob": "acb2ad80209d57d57b29140b310b2163b3c59b79",
       "sourceSha256": "539069a317817bd868d1f76908495598c98cf4d5d5d2b48bd58a47b867bf61b7",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 30,
@@ -713,7 +1023,9 @@
       "count": 24,
       "sourceBlob": "d040cb5d9fa05b204a672cf749424c54f2d32347",
       "sourceSha256": "ffab3a276b8fcf32fd7e2ba2983f4f4d8581520f821870c5e6298bf815e90e2c",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 31,
@@ -724,7 +1036,9 @@
       "count": 24,
       "sourceBlob": "448acd1d8a0de8bd340fb721f98af016a6cb138f",
       "sourceSha256": "b44f9cd9f4de88b9e638e2b596952cc24bf3e03d9aa44c6d3fbd961c6cfa91a3",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 32,
@@ -735,7 +1049,9 @@
       "count": 26,
       "sourceBlob": "7a77b7f312aa941ef607a2fb8bf637294a3d010f",
       "sourceSha256": "ce6f5676cd83799e4973e41a592f33a4df2994d9fb6694451b351973f9bee721",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 33,
@@ -746,7 +1062,9 @@
       "count": 23,
       "sourceBlob": "dae641deaa4bd41783d3ac639f071f705af26656",
       "sourceSha256": "dad9ad4d5c06e1a4a2491ff5ea7f031565ed9cca97cb59052daf24b8b9492610",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 34,
@@ -757,7 +1075,9 @@
       "count": 24,
       "sourceBlob": "3f280a62cbe273a347f5fec051bfa040feafc1df",
       "sourceSha256": "f04adc72d2f74fcdf1277464823e2661480b96dc88da25bb8f458adfa71311b3",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 35,
@@ -768,7 +1088,9 @@
       "count": 25,
       "sourceBlob": "7713112dd12755cfe79c9cce7bb129eca1b70891",
       "sourceSha256": "16fa4ce4c1ee2312ca707da1064049fdff1508b6da3fa7c6007bcfe5daf8ce4c",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 36,
@@ -779,7 +1101,9 @@
       "count": 23,
       "sourceBlob": "41599518ea6690c26003fb3f211e16ee9bc25fbb",
       "sourceSha256": "cf608ff7be165d0828cbc19f85ed3d83fcbcf8fb3a7baba492cd6b480a4abd97",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 37,
@@ -790,7 +1114,9 @@
       "count": 24,
       "sourceBlob": "da8ce6e86b320e1a147eb5facef971f14db694a9",
       "sourceSha256": "19396c58c1273b3d184d0b9eaf21478bc71d1c7c852ed4b9e0f9ec7f55bd6cca",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 38,
@@ -810,7 +1136,9 @@
         "latestScopeCheckRequiredBeforeReview": true,
         "observedRegistryChanges": 0,
         "evidencePath": "01-shinheung-concurrent-work-check.json"
-      }
+      },
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 39,
@@ -830,7 +1158,9 @@
         "latestScopeCheckRequiredBeforeReview": true,
         "observedRegistryChanges": 0,
         "evidencePath": "01-shinheung-concurrent-work-check.json"
-      }
+      },
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 40,
@@ -850,7 +1180,9 @@
         "latestScopeCheckRequiredBeforeReview": true,
         "observedRegistryChanges": 0,
         "evidencePath": "01-shinheung-concurrent-work-check.json"
-      }
+      },
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 41,
@@ -861,7 +1193,9 @@
       "count": 25,
       "sourceBlob": "76531f23979e1670aedce8b34b88a9e8b17c6537",
       "sourceSha256": "1a878286f1d479a2f3f58f37de40184de9f596dd05f3d90cfafd5b1f060b4a9a",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 42,
@@ -872,7 +1206,9 @@
       "count": 24,
       "sourceBlob": "3cee19be7a4c1c993d299d4138729b8479c1140c",
       "sourceSha256": "b2d2ad1d75315f06d7496d244bb563728f2e03223c007450088b1d17eeb9c343",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 43,
@@ -883,7 +1219,9 @@
       "count": 24,
       "sourceBlob": "559db58665a8773f179d57acd9e1a0226387b11d",
       "sourceSha256": "d0afd2d8727c07a724dfb3bbd628396add756aaac7b52fb1987868f6dd7120a5",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     },
     {
       "order": 44,
@@ -894,11 +1232,13 @@
       "count": 24,
       "sourceBlob": "7e6a0fb42fa48072c0d62627636174abe6b0e22f",
       "sourceSha256": "1029c285ed903c2153621edf56415e21e692cea3f17de5588fc855f6a32c9f34",
-      "status": "PENDING"
+      "status": "PENDING",
+      "checklist": "[ ]",
+      "operationallyClosed": false
     }
   ],
   "instructionRevision": 2,
-  "state": "REV3_READY_WITH_ISOLATED_24_PASS",
+  "state": "SECOND_EXAM_FRESH_REGISTERED_MAIN_MERGED_LOCALLY_REQUEST_UNCHANGED_NEXT_EXACT_HEAD_CI",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -917,11 +1257,11 @@
       "supersededBy": "01-shinheung-semantic-review.json"
     }
   },
-  "activeMain": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+  "activeMain": "440f412bd221e3d62df16130984a2626a3ee6441",
   "prerequisiteStatus": "RPM_L1_L2_MERGED",
   "prerequisiteMainSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
-  "latestRemoteSemanticCheckpoint": "ae19795a822db73448c7487aea4036c509720ecb",
-  "latestMergedReviewHead": "64650d1c2e34b49a0779769d8df502eb853ff693",
+  "latestRemoteSemanticCheckpoint": "e403ce4b0fff47857e0579335a633a7a7b28dd3a",
+  "latestMergedReviewHead": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
   "concurrentWorkCheck": {
     "path": "docs/operations/m1-meta-review-20261113/01-shinheung-concurrent-work-check.json",
     "sha256": "e06a73f3224e7c2eb44aa898a7c14e2ee1c2b21b52340c913b7e7bf1fc2e8891",
@@ -951,7 +1291,7 @@
     ],
     "noBlanketMetadataConflictWaiver": true
   },
-  "activeMainTree": "d52de79fedc3e134286d57707f78b783130d7d2c",
+  "activeMainTree": "c77b8e1c88357ea17ac1b650db2029a1f836ebfc",
   "subsequentMainChanges": [
     {
       "pr": 1962,
@@ -964,13 +1304,15 @@
       "preserveConcurrentChanges": true
     }
   ],
-  "activeMainTreeStatus": "VERIFIED_FROM_FETCHED_REMOTE_MAIN",
+  "activeMainTreeStatus": "OTHER_OWNER_SHINHEUNG_SUPPLEMENT_REGISTERED_AND_FINAL24_CONSUMER_VERIFIED",
   "checkpointPublication": {
-    "scope": "PRE_PR_SNAPSHOT",
-    "status": "LOCAL_REV3_CHANGES_NOT_YET_PUBLISHED_AT_SNAPSHOT",
-    "previousRemoteCheckpointShaPrefix": "dfb",
-    "previousRemoteCheckpointState": "REV2_REJECTED_PARENT_LINK_REPAIR_IN_PROGRESS",
-    "resumeRequirement": "Read the latest AWCR safe checkpoint and query open PRs for this branch before creating a PR; a later publication may already exist."
+    "lastVerifiedRemoteSha": "29707a569189aacd886cf84776ae31ec0640f2b1",
+    "statusAtWriting": "PR1968_PUBLISHED_FULL_ISOLATED_PREFLIGHT_PASS_MAIN_GATE_PENDING",
+    "currentSnapshotEvidence": {
+      "path": "02-wangun-semantic-review-rev3.json",
+      "sha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090"
+    },
+    "selfCommitLookup": "Fetch current remote branch; subsequent immutable AWCR records the post-publication head/tree."
   },
   "candidateConsumerPreflightPolicy": {
     "scope": "EACH_REVIEWED_EXAM_EXACT_CANDIDATE",
@@ -979,5 +1321,184 @@
     "reuseExistingEvidence": true,
     "fullR1R2R3Rerun": false,
     "mainRegistrationStillRequired": true
+  },
+  "awcrCheckpoint": {
+    "latestVerifiedRevision": 19,
+    "fileId": "1Thmo7BeqfbQ9jNN_xo_fC02Jp2pC0HNS",
+    "rawSha256": "a002d90381ce0305adafa9ff974bc78c65de3bd612bdbdba6ee4206a89ca2561",
+    "nextRevision": 20,
+    "nextRevisionPurpose": "Record next verified main writer/PR1968 CI or operational closeout."
+  },
+  "remainingExams": 43,
+  "nextExam": {
+    "order": 2,
+    "path": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+    "file": "26_왕운중_2학기_중간_중1_기출.js",
+    "questionCount": 23,
+    "status": "PR_OPEN_FRESH_MAIN_BOUND_REQUEST_UNCHANGED_CI_PENDING",
+    "semanticReadEvidence": "02-wangun-semantic-read-checkpoint.json"
+  },
+  "latestOperationalCloseout": {
+    "order": 1,
+    "evidencePath": "01-shinheung-operational-closeout.json",
+    "evidenceSha256": "4e09f45f79d5dcfb8be9ecb89db2dcc6d2ae27e5b188f4e6cf4ab83ee392dfb0",
+    "mainSha": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+    "mainTree": "844c8b82fa19b4dcd7630313e67600e194a69ebd"
+  },
+  "concurrentWriterAtObservation": {
+    "runId": 43444692701,
+    "jobId": 131950960315,
+    "headSha": "208ab1649ad0e201e5b05917c259269dc545b0d0",
+    "observedAt": "2026-11-13T15:11:30.284734+00:00",
+    "status": "SUCCESS",
+    "phase": "COMPLETED",
+    "mainAtObservation": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
+    "evidencePath": "01-shinheung-main-cursor-only-advance.json",
+    "evidenceSha256": "2cff3e6bca78775fe4703e58708fef979f68284bef218fdd3b18dba839afe1b1",
+    "boundary": "Only AutoMeta state/writer-state changed. Prior cb3 actual Consumer and RPM parent proof reused by exact subtree equality; refresh main before next exam."
+  },
+  "continuationPolicy": {
+    "unitOfWork": "ONE_EXAM_FULL_SEMANTIC_REVIEW_TO_OPERATIONAL_MAIN_CLOSEOUT",
+    "currentGrade": 1,
+    "currentSemesterOrder": "DESCENDING_WITHIN_YEAR",
+    "pendingSourceFingerprintMustBeRefreshedBeforeReview": true,
+    "reuseCompletedEvidenceWhenSourceAndRelevantMetadataUnchanged": true,
+    "futureGradeSemesterHandoff": "Preserve each grade/semester queue, finished checklist, source/request/main SHA, PR, evidence and exact next action in a separately scoped continuation; never treat existing metadata or previous PASS as semantic review."
+  },
+  "latestMainAdvanceEvidence": {
+    "path": "01-shinheung-main-cursor-only-advance.json",
+    "sha256": "2cff3e6bca78775fe4703e58708fef979f68284bef218fdd3b18dba839afe1b1",
+    "observedAt": "2026-11-13T15:11:30.284734+00:00",
+    "priorVerifiedMain": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+    "latestMain": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
+    "latestTree": "44e7715767ee751eb7ef31b0ad9b548be082fea5",
+    "changedPaths": [
+      ".archive-meta-register/auto/state.json",
+      ".archive-meta-register/auto/writer-state.json"
+    ],
+    "unchangedSubtreeSha1": {
+      "archive": "f35bde8fdbac5544b31b0df816979a8d699d03ea",
+      "docs": "6fd1da1b0733ed2b1fa9ba6f61225507a7a6925c",
+      "tools": "19b76a850ddb1808426d481ff79696da50202e5d",
+      "tests": "16eed22002ba0007cffb2e3c3619078fa09fca2b"
+    },
+    "sourceCanonicalMetadataRuntimeCatalogParentHelperAndEvidenceUnchanged": true,
+    "actual24ConsumerAndRpmParentEvidenceReused": true,
+    "newSemanticReviewOrConsumerTestsRun": false
+  },
+  "nextExamConcurrency": {
+    "evidencePath": "02-wangun-concurrent-work-check.json",
+    "sha256": "ca94465e0105c3ae2fe071a8316f1c687d9cb04b17bf68dc69bef0dd82c0fba9",
+    "sourceRequestOverlap": 0,
+    "pr1751Head": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
+    "pr1952Head": "3e299cd72c248e7b74c2e3e409850e747cf1e6c7",
+    "pr1965Head": "9f82851d9807ffd04952a43874622e9d331e038b",
+    "pr1959Head": "84c2eaeea1fc24167bff3cfdbbcf151a42d02ae2",
+    "futureOrder24AdditionalFigureOverlapPr": 1959,
+    "futureOrder24Pr1751ExpectedSourceBlobStale": true,
+    "recheckOnHeadChange": true,
+    "currentDependencyEvidence": "02-pr1965-head9f828-review.json"
+  },
+  "operationallyClosedQuestions": 24,
+  "latestVerifiedRemoteCheckpoint": "29707a569189aacd886cf84776ae31ec0640f2b1",
+  "courseCorrectionDependency": {
+    "pr": 1966,
+    "url": "https://github.com/icefoxtail/AP------/pull/1966",
+    "head": "48732a97f0291d6f125a3f3f3358a0201941954b",
+    "tree": "d675bf7b430e2e91479ef21903273331a58fa5d8",
+    "requestId": "m1-proportion-course-spelling-20261113",
+    "requestRawSha256": "b5c56ef1dca62d921297b75dc80415392e006a2bed1f9494c94f0e8c58146ba4",
+    "status": "ACTUALLY_REGISTERED_FINAL_CONSUMER_PRESERVED",
+    "isolatedBaseline": "e2aa30e7c95aac4fc1a6a0748d13f078382b6f40",
+    "affectedUidCount": 1,
+    "preservedRuntimeUidCount": 613,
+    "protectedFileCount": 104,
+    "approvalCreated": false,
+    "evidence": "02-binding-course-correction-preflight.json",
+    "cursorAdvanceEvidence": "02-binding-course-main-cursor-advance.json",
+    "ciRun": 43459412070,
+    "mergeCommitSha": "57bd2b9c4a1d028c531a1dee86446fedd895e62d",
+    "registeredMainSha": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+    "registeredMainTree": "52bb30a7efe875985d8f3fa2214236332c062b66",
+    "actualReceiptSha256": "6533efaaeb1684991b992e10153d7db9eb09790f762b906093df72f3bb37beb6",
+    "writerRun": 43461439913,
+    "finalConsumer": {
+      "changed": 1,
+      "checked": 1,
+      "passed": 1,
+      "preservedRuntimeUidCount": 613,
+      "approvalCreated": false
+    },
+    "operationalCloseoutEvidence": "02-binding-course-operational-closeout.json",
+    "operationalCloseoutSha256": "8feaea616bc5e346ba90336aae0c819e6ac01112e0ec4be49a8370b676856a90",
+    "globalWriterStatus": "REGISTRATION_PARTIAL_OPTIONAL_SEMANTIC_NOT_REQUIRED"
+  },
+  "knownConcurrentOwnerBoundary": {
+    "taskId": "241f49f8-fccb-4880-944e-9814a117b88e",
+    "owner": "GPT_ROOT_BF50408FB63B",
+    "observedAwcrRevision": 13,
+    "fileId": "1On2Gpe0EmP9W7IffBCg2qZLr0z0ZV288",
+    "rawSha256": "105d05f2df229857c3ff90f28a28f5b3881b31abf72f7b1c82ab7f1b9e77691f",
+    "scope": "Other owner remains Shinheung24 IN_PROGRESS/RUN_REQUIRED_CHECKS; no current CI-fix or handoff declaration observed. Wangun/course publication withheld. No other-task mutation or joining.",
+    "candidateComparisonEvidence": "02-wangun-concurrent-candidate-conflicts.json"
+  },
+  "concurrentShinheungSupplement": {
+    "pr": 1967,
+    "head": "bab8fc177dc8f841708ac88f1664bc36d60864bd",
+    "owner": "GPT_ROOT_BF50408FB63B",
+    "stateAtObservation": "ACTUALLY_REGISTERED_FINAL_POST_AUTOMETA_CONSUMER_24_PASS",
+    "sourceNormalPayloadChanges": 0,
+    "registryChanges": 0,
+    "metadataFieldsChanged": 56,
+    "rootMutationsToOtherTask": 0,
+    "publicationOrdering": "Separate owned branch and draft may be published. Merge crosswalk to main only after exact PR1967 actual writer closes; its pending request pins current crosswalk bytes.",
+    "evidence": "02-crosswalk-append-existing-approval-impact.json",
+    "firstExamHistoricalCloseoutPreserved": true,
+    "mergeCommitSha": "2391df9b009b1c1f47ab450ed501fe06dd78f918",
+    "writerRun": 43467456637,
+    "writerJob": 132030268013,
+    "actualNewReceiptVerified": true,
+    "registeredMain": "440f412bd221e3d62df16130984a2626a3ee6441",
+    "receiptSha256": "bd627b6fe34082ed8ca2a90e49955e75ffb7ee2cfc6e3e4411ae4041d4d2d555",
+    "finalConsumer": {
+      "changed": 24,
+      "checked": 24,
+      "passed": 24,
+      "failures": 0,
+      "unobservedFields": 0,
+      "assignmentPending": 0
+    }
+  },
+  "wangunIsolatedPreflight": {
+    "baselineMain": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+    "scope": "LOCAL_ONLY_NOT_OPERATIONAL_MAIN",
+    "requestId": "m1-wangun-2026-mid-meta-review-20261113",
+    "requestRawSha256": "feb528273a4167b654a50dcd6d825c7db9173b0bf2fee1c47904b20b4bb505c1",
+    "dryRun": "PASS",
+    "officialIsolatedWrite": "PASS",
+    "questions": 23,
+    "registryChanges": 16,
+    "runtimeMaterialized": 23,
+    "consumerStatus": "PASS_23_OF_23",
+    "productionSourceChanged": false,
+    "productionRegistryChanged": false,
+    "frozenOutsideScopeConsumerCount": 17,
+    "officialProjection": "PASS_STATIC_VALUES_VERIFIED_23",
+    "rpmExactLeaves": 19,
+    "rpmDebtOrdinals": [
+      2,
+      3,
+      4,
+      16
+    ],
+    "legacyParentAmbiguousOrdinals": [
+      4,
+      16
+    ],
+    "outsideScopeConsumersCompared": 17,
+    "outsideScopeChanges": 0,
+    "ownBranchSourceCandidatePrepared": true,
+    "actualMainRegistration": "NOT_APPLIED",
+    "evidence": "02-wangun-main51cf-isolated-preflight.json"
   }
 }

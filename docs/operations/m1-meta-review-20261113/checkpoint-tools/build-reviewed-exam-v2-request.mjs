@@ -115,6 +115,20 @@ const references = values => {
 };
 const rootRefs = references(config.approval.evidenceRefs);
 const registryChanges = (config.registryChanges || []).map(change => {
+  // This reviewed course alias is required for exact M1-1 RPM parent references.
+  // All other pack fields, including version and ownership, remain unchanged.
+  if (!change.collection && [
+    'archive/data/meta-foundation/canonical/packs/middle1/pack.json',
+    'archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json'
+  ].includes(change.path)) {
+    const current = JSON.parse(fs.readFileSync(safe(change.path),'utf8'));
+    const before = change.before, after = change.after;
+    if (!eq(current,before) || !before || !after) fail('whole-pack exact before mismatch');
+    if (!Array.isArray(before.standardCourses) || before.standardCourses.includes('M1-1') ||
+      !eq(after,{...before,standardCourses:[...before.standardCourses,'M1-1']}))
+      fail('reviewed pack scope must only append the M1-1 alias');
+    return {...change,evidenceRefs:references(change.evidenceRefs)};
+  }
   // The one approved integration repair extends this existing pack's scope only.
   // Keep its version/ownership/definitions intact; the official compiler owns bumps.
   if (!change.collection && change.path==='archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json') {
@@ -234,9 +248,10 @@ for (let ordinal=1; ordinal<=count; ordinal++) {
       ['active','ACTIVE'].includes(record.status));
     const units = activeRows(final.standardUnitKey,'standardUnitKey');
     const subs = final.subUnitKey ? activeRows(final.subUnitKey,'subUnitKey') : [];
+    const compact = value => String(value).normalize('NFC').replace(/\s/g,'');
     if (units.length !== 1 || final.subUnitKey && subs.length !== 1 ||
-      ![...units,...subs].some(record=>record.labelKo===ref.midUnit))
-      fail('parent-only midUnit must exactly match an ACTIVE native unit/subunit label: ordinal ' + ordinal);
+      ![...units,...subs].some(record=>compact(record.labelKo)===compact(ref.midUnit)))
+      fail('parent-only midUnit must match an ACTIVE native unit/subunit label after NFC/whitespace normalization: ordinal ' + ordinal);
     patch.targetParentRef = Object.fromEntries(fields.map(field=>[field,ref[field]]));
     patch.evidenceRefs = references([...patch.evidenceRefs,reference(RPM_MASTER)]);
     parentEvidence.push({sourceOrdinal:ordinal,questionUid:row.questionUid,parentOnly:true,

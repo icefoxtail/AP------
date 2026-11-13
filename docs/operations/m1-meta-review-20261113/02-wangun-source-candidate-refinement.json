@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "source-candidate-semantic-refinement-v1",
+  "status": "CANDIDATE_NOT_APPLIED_OR_REGISTERED",
+  "baselineCandidateSha256": "5d862f69ea0cc724cd6cdd07a90f1fb9326bc911a0458c80afd2ec9c0c5f3e8c",
+  "semanticAuthority": {
+    "path": "docs/operations/m1-meta-review-20261113/02-wangun-semantic-review-rev3.json",
+    "sha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090"
+  },
+  "candidatePath": ".tmp/m1-meta-review/02-wangun-source-candidate-rev3.js",
+  "candidateSha256": "c79551504949aee9ee09f5a8e2bf74898f7b7204d54a035a3e4b2acc7d808129",
+  "changedOrdinals": [
+    7,
+    11,
+    20
+  ],
+  "changes": [
+    {
+      "ordinal": 7,
+      "field": "problemTypeKey",
+      "before": "PT_M1_PROPORTION_GRAPH_PROPERTY_JUDGMENT",
+      "after": "PT_FUNCTION_GRAPH_PROPERTIES"
+    },
+    {
+      "ordinal": 7,
+      "field": "templateKey",
+      "before": "TPL_M1_PROPORTION_GRAPH_PROPERTY_JUDGMENT_COMPARISON_WITH_RECTANGLE_AREA",
+      "after": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
+    },
+    {
+      "ordinal": 11,
+      "field": "templateKey",
+      "before": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER",
+      "after": "TPL_M1_CONGRUENCE_DATA_TRANSFER_PARALLELOGRAM_MIDPOINT_AUDIT"
+    },
+    {
+      "ordinal": 11,
+      "field": "crossConceptKeys",
+      "before": [
+        "CC_SEGMENT_MIDPOINT"
+      ],
+      "after": [
+        "CC_SEGMENT_MIDPOINT",
+        "CC_PARALLELOGRAMS",
+        "CC_RHOMBUS_PROPERTIES"
+      ]
+    },
+    {
+      "ordinal": 11,
+      "field": "rpmPrimaryRecordId",
+      "before": "M1-RPM-192-GENERAL-SIDE-TRANSFER-20261113",
+      "after": "M1-RPM-192-MIDPOINT-PARALLELOGRAM-20261113"
+    },
+    {
+      "ordinal": 11,
+      "field": "primaryMethod",
+      "before": "평행사변형의 대변·대각과 각 변의 중점을 이용해 마주 보는 귀퉁이 삼각형 두 쌍의 SAS 합동을 확인한다.",
+      "after": "평행사변형의 대변·각과 변의 중점 조건으로 바깥쪽 삼각형의 SAS 합동을 확인하고, 대응 관계로 보장되는 중점 사각형의 성질을 판정한다."
+    },
+    {
+      "ordinal": 11,
+      "field": "decisiveStep",
+      "before": "대응 변과 각에서 얻는 결론과 추가 조건이 필요한 내부 사각형의 성질을 구분한다.",
+      "after": "마주 보는 작은 삼각형의 합동으로 대응변의 같음과 평행 관계를 얻더라도 네 연결변이 모두 같다는 결론은 보장되지 않음을 구분한다."
+    },
+    {
+      "ordinal": 20,
+      "field": "templateKey",
+      "before": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+      "after": "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE"
+    },
+    {
+      "ordinal": 20,
+      "field": "crossConceptKeys",
+      "before": [
+        "CC_PERCENTAGE_CALCULATION"
+      ],
+      "after": [
+        "CC_PERCENTAGE_CALCULATION",
+        "CC_MODE"
+      ]
+    }
+  ],
+  "otherCandidateBytesUntouched": true,
+  "normalDataChange": false,
+  "requiresVmAndDirectDeltaVerification": true
+}

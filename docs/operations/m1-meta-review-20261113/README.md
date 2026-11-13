@@ -1,35 +1,79 @@
-# 중1 기존 시험지 메타 전수 검토
+# 중1 기존 문항 메타 전수 검토
 
-**2026년부터 내림차순 / 44장·1,047문항 / 첫 시험지 PR1960·1961 병합 / 읽기 24문항 / 운영 마감 0장**
+## 현재 진행
 
-RPM 6권 L1/L2 선행 정리는 PR1958, main `8c1b6694c35e76399a6ad36a4b6683e2cb6726b7`로 완료했다. 첫 대상인 2026 신흥중 2학기 중간24문항은 모두 읽고 의미 판단을 확정했다. 15문항의 분류·빈 유형 연결과 2문항의 binding을 보완하며, Q8/Q10의 RPM-only EVIDENCE_DEBT는 남긴다.
+**운영 완료 1/44장 · 남은 43장 · 전체 읽기 47/1,047문항.** 현재는 **2026 왕운중 중1 2학기 중간23문항**이다. 발문·선지·제공 풀이23개와 외부 그림33개를 전부 읽었다. 현재 확정 원장은 [semantic revision3](02-wangun-semantic-review-rev3.json)이며, 실제 운영 등록 전이므로 완료로 체크하지 않는다.
 
-**source 메타 변경은 24문항**이다. 기존 원장의 의미/연결15 + binding2는 유지한다. rev3 부모 참조 보완은 Q5·Q8이며 Q8은 기존17에 포함되므로 **분류·연결·부모 보완의 중복 없는 문항 수는18(기존17+Q5)**이다. 검토 완료 tag annotation24와 문항·정답·해설 수정 또는 수학 QA 승인을 구분한다.
+- 의미·부모 수정 후보20문항, 정확한 RPM leaf19, debt Q2·Q3·Q4·Q16. 정상 문제·정답·해설·그림·난이도·source 검수상태는 보존한다.
+- Q7은 기존 FUNCTIONS_GRAPHS의 그래프 성질 유형을 재사용한다. Q11은 기존 합동 대응 PT 아래 중점 사각형 성질 판정 template를 보완한다. Q20은 기존 줄기·잎→계급별 도수 유형에 연결한다. 새 PT4·TPL5, exact binding5, M1-1 과정 alias2, RPM exact 연결15개가 후보이다.
+- [native 계획](02-wangun-native-registration-plan-rev2.json), [crosswalk 계획](02-wangun-crosswalk-plan-rev2.json), [원본 보존 독립 확인](02-wangun-source-candidate-independent-review-rev3.json). 후보의 분류9필드만 추가 조정한 근거와 정상 데이터23/외부 그림33 해시를 결속했다.
+- [PR1965](https://github.com/icefoxtail/AP------/pull/1965) 코드가 main에 병합됐다. 기존 binding 과정명 오타 정정 요청은 별도 [PR1966](https://github.com/icefoxtail/AP------/pull/1966)이다. 격리 공식 검증에서 기존 runtime613문항과 보호파일104개를 보존했다. [실제 운영 마감](02-binding-course-operational-closeout.json)에서 main `51cfb3f6fdaf3600ad06aa298d109093ad0b6b45`, 최종 Consumer1/1·runtime613 보존까지 확인했다. 왕운중은 [격리 최종 사전 검증](02-wangun-main51cf-isolated-preflight.json)에서 공식 등록23/정본16·Consumer23·RPM exact19/debt4·기존 직접 영향17 보존 PASS다. 별도 담당 브랜치 head `29707a569189aacd886cf84776ae31ec0640f2b1`와 [PR1968](https://github.com/icefoxtail/AP------/pull/1968)에 정확 후보·요청을 보존했다.
+- 명시적 sourceOrdinal로23개 UID를 결속했다. [UID 정정 기록](02-wangun-uid-association-correction.json)을 보존하며 이전 원장·추출 배열 순서를 등록 UID로 사용하지 않는다. rev3는 rev2의 UID23개를 그대로 유지한다.
+- 병행 owner의 immutable r12에서 왕운중/과정명 정정 발행 보류를 확인했다. 해당 작업에 합류하거나 그 tree를 수정하지 않는다. 공개 main·현재 원본·요청을 다시 확인하고 단일 요청만 적용한다.
 
-현재 상태는 **`REV3_READY_WITH_ISOLATED_24_PASS`**다. rev3 요청 작성, 부모 연결 보완, 공식 격리 Consumer24/24 검증을 마쳤으며 **운영 마감은0/44**다. 이 문서는 **새 PR 생성 직전 스냅샷**이다. 원격 `dfb…` 체크포인트는 rev2 실패까지 보존하므로 재개 시 최신 AWCR safe checkpoint와 이 브랜치의 열린 PR을 먼저 조회해 중복 PR 생성을 피한다.
+병행 신흥 보완 PR1967이 현재 crosswalk 전체 해시에 결속돼 있어 **해당 실제 main writer 마감 후 왕운중 crosswalk를 main에 병합**한다. [영향 코드 추적](02-crosswalk-append-existing-approval-impact.json)에 기존 승인 재사용과 신규 요청 검증을 구분해 기록했다. 다른 owner의 tree·요청은 수정하지 않는다.
 
-rev2 repair PR [1961](https://github.com/icefoxtail/AP------/pull/1961)은 head `64650d1c2e34b49a0779769d8df502eb853ff693`의 **CI 3 workflow / 5 job 전체 SUCCESS** 후 merge `f2e98717e9c3dc242683d5614376ecfd1e3c2ee6`, tree `25dcd5f8086207e5e630aa3ec51ba8ab6b95f69c`로 병합했지만 실제 요청 등록은 거부됐다. [rev2 CI](01-shinheung-rev2-ci.json)와 [rev2 병합 근거](01-shinheung-rev2-main-merge.json)는 이력으로 보존한다.
+## 완료 결과
 
-최신 확인 main은 `2dd58ebe1abb9123206782979f4ac23e3b891c49`이며 작업 브랜치에 정상 병합했다. 앞선 PR1962의 L3 부모 검색/helper 변경(main `3cc9e93b28d9f97f202c4bfd96a116d9fa42d7fb`, tree `c5801f45830f1d2193b3222adc6fe5d92c412816`)도 보존한다. 원본 시험지의 rev2 source blob·SHA는 동일하다.
+| 시험지 | 총 문항 | 수정 문항 | 주요 오류 | PR | 실제 등록 main | 남은 시험지 |
+|---|---:|---:|---|---|---|---:|
+| 신흥중·2026·중1 2학기 중간 | 24 | 메타24, 그중 분류·연결18 | 작도·합동·위치·다각형 혼동, RPM debt2 유지 | [1960](https://github.com/icefoxtail/AP------/pull/1960)·[1961](https://github.com/icefoxtail/AP------/pull/1961)·[1964](https://github.com/icefoxtail/AP------/pull/1964) | `cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4` | 43 |
 
-최초 PR [1960](https://github.com/icefoxtail/AP------/pull/1960)은 head `f0a89b11f7c085b08ab406831f0d2bc0681fefed`의 **CI 5 workflow / 7 job SUCCESS** 후 main `81fb1c3a7c861ede3690157234bf0415c2585e45`에 병합했다. 최초 캐시 참조 오류 수정과 [CI 근거](01-shinheung-ci-fixed-head.json), [병합 근거](01-shinheung-main-merge-checkpoint.json)는 이력으로 보존한다.
+신흥중의 [운영 마감 근거](01-shinheung-operational-closeout.json)와 정본17/등록24/최종Consumer24 PASS를 재사용한다. RPM exact leaf22, debt Q8·Q10 및 Q8 부모 모호성은 보존된다. 후속 main `33f26c795e7a86fc3b63737996c6885cff4c7bba`는 writer 상태2파일만 달라 [입력 동일성 근거](01-shinheung-main-cursor-only-advance.json)로 기존 검증을 재사용했다. 신흥중을 다시 시작하지 않는다.
 
-[main writer run 43421975843](https://github.com/icefoxtail/AP------/actions/runs/43421975843)은 SUCCESS로 종료됐지만 **rev1 요청은 `projection-verify`에서 REJECTED**였다. source의 `tagConfidence`·`tagStatus`가 등록기 자동 값과 달라 Q1에서 거부됐으며 **정본 변경17은 적용되지 않았다**. [요청별 거부 근거](01-shinheung-registration-rev1-rejected.json)를 workflow 결론과 구분한다.
+선행 RPM 6권 L1/L2 정리는 [PR1958](https://github.com/icefoxtail/AP------/pull/1958)로 완료했다. 대단원24·중단원54, 기존326 세부 경로 보존 및 부모9개 수정. 해당 별도 브랜치 `fix/rpm-middle-l1-l2-20261113`의 `3292dc0b5457d8f6f1a491f7f4866fe5be4082b7`에 인계와 검증이 있다.
 
-rev2는 24문항의 source 두 tag 필드만 완료한 메타 검토 상태에 맞췄다. 그 외 모든 문항 값·fingerprint, 확정 분류와 정본 변경17은 동일하다. source `reviewStatus`, 수학 검증·R1·RPM FINAL 플래그 및 충돌 guard는 바꾸지 않았다. [annotation 수정 근거](01-shinheung-tag-annotation-repair.json)와 [rev2 공식 dry-run](01-shinheung-registration-rev2-dry-run.json)을 보존한다. dry-run은 **exit0 / 5.801초 / write:false / 24문항 / 정본17 / fingerprint24 PASS**다.
+## 재개와 기록
 
-현재 source blob은 `a8de75bc9cc2b6a4479866d75b8ebec637404a04`, raw SHA256은 `ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef`로 rev2와 완전히 동일하다. 준비된 요청 **`m1-shinheung-2026-mid-meta-review-20261113-rev3`**의 SHA256은 **`bd2b3223b3e45a920f2f57707fd9ea37621b13a550f6125edc66edfd3057826f`**다. rev2 SHA `267ab2f0a9abcb465030af0d198cd0b676b0ff465f730bdb625e50a8f5782f30` 및 rev1 SHA `24ba8de0d00e494b91268a00771d6b7d30cc2a17ac57c76bb7f1bc30a7a10ede`는 거부 이력으로 유지한다. 새 PR은 이 스냅샷에서 아직 없다.
+진행 원장은 [progress.json](progress.json), 다음 담당용 절차와 복사 프롬프트는 [HANDOFF.md](HANDOFF.md)다. 시험지 한 장의 의미 검토→최소 수정→exact candidate 전체 Consumer→PR/main→실제 등록 영수증/최종 Consumer→원격 SHA를 마감한 뒤 다음으로 이동한다. 기존 R1/R2/R3는 반복하지 않는다. 수학 FINAL QA나 새 해설 검증을 수행했다고 기록하지 않는다.
 
-exact merge `f2e98717e9c3dc242683d5614376ecfd1e3c2ee6`의 [rev2 main writer run 43429595931](https://github.com/icefoxtail/AP------/actions/runs/43429595931), [job 131899473141](https://github.com/icefoxtail/AP------/actions/runs/43429595931/job/131899473141)은 workflow/register/persist가 SUCCESS로 끝났지만 **rev2 요청은 `projection-verify`에서 Q5 `curriculumKey` 불일치로 REJECTED**였다. 실제 문항 등록 **0/24**, 정본17 적용 **0건**, 운영 마감 **0/44**다. [rev2 거부 근거](01-shinheung-registration-rev2-rejected.json)의 SHA256은 `fa22b9789db1da1b6293bf5e04e4c8fc61e7515e248e13a2bc2dad498cba7382`다.
+마지막 확인 원격 체크포인트는 `29707a569189aacd886cf84776ae31ec0640f2b1`, AWCR revision19이다. 현재 rev3 기록의 실제 게시 SHA는 원격 브랜치와 다음 immutable AWCR에서 확인한다.
 
-공식 등록기의 격리 재현에서 rev2는22/24 통과했고 **Q5·Q8만 `canonical_parent_missing`으로 실패**했다. rev3는 Q5의 기존 source FAMILY198·PT/TPL·RPM 경로를 유지하며 exact crosswalk 한 개를 add-only 추가하고 `targetParentRef`로 연결했다. Q8은 공식 부모만 참조하고 RPM null/HOLD·EVIDENCE_DEBT를 유지했다. Q10은 기존의 명시된 부모를 보존했다. source24문항, 요청 before/after·identity24, 원래 native 정본17 정의는 동일하다.
+## 시험지별 완료 체크리스트
 
-rev3 공식 dry-run은24/17 PASS다. 별도 격리 검증에서 **projection total24/canonical24/usable0, 실제 candidate Consumer changed24/checked24/passed24/fail0/unobserved0**을 확인했다. helper18/18·캐시 참조 검사도 PASS이고 6개 HTML은 helper 버전 참조만 정렬했다. **운영 main 등록·게시 결과와 구분하며 운영 완료0/44를 유지한다.** [격리 공식24 검증](01-shinheung-rev3-isolated-verification.json)의 SHA256은 `f9da902fa20493e3780a02657ab8504edddf9c11eb224e1d11eecacafb70b0c0`다.
+완료는 실제 main 등록·전체 Consumer·원격 SHA 확인까지 끝낸 경우다. 나머지43장은 미완료이며 기존 메타의 유무와 무관하게 의미 검토 대상이다.
 
-[실제 RPM 부모 감사](01-shinheung-rev3-isolated-rpm-parents.json)는 exact leaf22/debt Q8·Q10으로 PASS다. 부모 집계는 기본4 / 위치4 / 작도·합동6 / 다각형4 / 원·부채꼴5 / 미해결1이다. Q8의 RPM coarse parent **`LEGACY_PARENT_AMBIGUOUS`**와 Q10의 parent-only 상태를 유지한다. Q8을 포함한 **native canonical 승인24·native query24 통과**는 이 RPM 지표와 별개다. 부모 감사 SHA는 `9926d56aacd13a3c4769e27d5ce869757d73bf5f7bd694c5050eabbd1f568f6c`, [부모 보완 근거](01-shinheung-canonical-parent-repair.json) SHA는 `025b76456d75f84c5f4f1c2aa73041eba1c96954232e7e6a2bffacf68877f8cb`다. 실제 풀이 resolver는 계속 `NOT_RUN_UNVERIFIED_SOLUTION`이다.
-
-진행 목록은 [progress.json](progress.json), 다음 작업자는 [HANDOFF.md](HANDOFF.md), 확정 문항별 판단은 [01-shinheung-semantic-review.json](01-shinheung-semantic-review.json)을 읽는다. 과거 candidate 파일은 변경 이력이며 확정 원장을 대신하지 않는다.
-
-재개할 작업은 **최신 AWCR·열린 PR 확인 → 준비된 rev3 새 PR 또는 기존 PR 계속 → CI와 요청별 영수증 확인 → main 병합/writer → 원격 실제24 Consumer/native query·main SHA → 첫 시험지 마감 → 왕운중**이다. 완료한 읽기·의미 판단·원인 재현·격리24 검증을 반복하지 않는다. 이후 매 시험지도 전체 N문항의 exact candidate Consumer preflight를 재사용하여 changed/checked/passed=N, failures/unobserved=0인지 확인한다. **키 유효성이나 dry-run PASS만으로 운영 반영을 판단하지 않는다.** R1/R2/R3를 새로 수행하거나 독립 풀이 검증 완료를 주장하지 않으며 Consumer 충돌 검사를 일괄 면제하지 않는다.
-
-향후 순번 **17·20·24·38·39·40**은 PR1751과 같은 시험지 범위다. 모두 PENDING을 유지하고 착수 전 최신 PR 범위·등록 적용 상태를 확인한다. [병행 작업 보고서](01-shinheung-concurrent-work-check.json)에 정확한 source·요청·head 및 정본 변경 키 충돌 확인 범위를 기록했다.
+- [x] 01. 26 신흥중 2학기 중간 중1 기출 / 24문항 — 운영 완료 · RPM debt Q8/Q10 기록
+- [ ] 02. 26 왕운중 2학기 중간 중1 기출 / 23문항 — 의미 검토23·격리 Consumer23 완료 · PR1968 main 등록 대기
+- [ ] 03. 26 팔마중 2학기 중간 중1 기출 / 24문항 — PENDING
+- [ ] 04. 25 동산중 2학기 기말 중1 기출 / 24문항 — PENDING
+- [ ] 05. 25 신흥중 2학기 기말 중1 기출 / 22문항 — PENDING
+- [ ] 06. 25 연향중 2학기 기말 중1 기출 / 23문항 — PENDING
+- [ ] 07. 25 왕운중 2학기 기말 중1 기출 / 24문항 — PENDING
+- [ ] 08. 25 왕의중 2학기 기말 중1 기출 / 24문항 — PENDING
+- [ ] 09. 25 팔마중 2학기 기말 중1 기출 / 24문항 — PENDING
+- [ ] 10. 25 풍덕중 2학기 기말 중1 기출 / 23문항 — PENDING
+- [ ] 11. 25 동산중 2학기 중간 중1 수학 / 24문항 — PENDING
+- [ ] 12. 25 연향중 2학기 중간 중1 기출 / 24문항 — PENDING
+- [ ] 13. 25 왕운중 2학기 중간 중1 수학 / 24문항 — PENDING
+- [ ] 14. 25 왕의중 2학기 중간 중1 수학 / 24문항 — PENDING
+- [ ] 15. 25 팔마중 2학기 중간 중1 기출 / 24문항 — PENDING
+- [ ] 16. 25 풍덕중 2학기 중간 중1 기출 / 25문항 — PENDING
+- [ ] 17. 24 연향중 2학기 기말 중1 기출 / 23문항 — PENDING
+- [ ] 18. 24 왕운중 2학기 기말 중1 수학 / 24문항 — PENDING
+- [ ] 19. 24 율촌중 2학기 기말 중1 기출 / 22문항 — PENDING
+- [ ] 20. 24 향림중 2학기 기말 중1 기출 / 24문항 — PENDING
+- [ ] 21. 24 매산중 2학기 중간 중1 기출 / 24문항 — PENDING
+- [ ] 22. 24 연향중 2학기 중간 중1 기출 / 22문항 — PENDING
+- [ ] 23. 24 왕운중 2학기 중간 중1 기출 / 23문항 — PENDING
+- [ ] 24. 24 향림중 2학기 중간 중1 기출 / 23문항 — PENDING
+- [ ] 25. 23 금당중 2학기 기말 중1 기출 / 24문항 — PENDING
+- [ ] 26. 23 연향중 2학기 기말 중1 기출 / 24문항 — PENDING
+- [ ] 27. 23 왕운중 2학기 기말 중1 기출 / 24문항 — PENDING
+- [ ] 28. 23 금당중 2학기 중간 중1 기출 / 24문항 — PENDING
+- [ ] 29. 23 신흥중 2학기 중간 중1 기출 / 26문항 — PENDING
+- [ ] 30. 23 연향중 2학기 중간 중1 기출 / 24문항 — PENDING
+- [ ] 31. 23 왕운중 2학기 중간 중1 기출 / 24문항 — PENDING
+- [ ] 32. 23 향림중 2학기 중간 중1 기출 / 26문항 — PENDING
+- [ ] 33. 23 동산중 1학기 중간 중1 기출 / 23문항 — PENDING
+- [ ] 34. 19 금당중 1학기 기말 중1 수학 / 24문항 — PENDING
+- [ ] 35. 19 동산중 1학기 기말 중1 수학 / 25문항 — PENDING
+- [ ] 36. 19 연향중 1학기 기말 중1 수학 / 23문항 — PENDING
+- [ ] 37. 19 왕운중 1학기 기말 중1 수학 / 24문항 — PENDING
+- [ ] 38. 19 연향중 1학기 중간 중1 기출 / 23문항 — PENDING
+- [ ] 39. 19 왕운중 1학기 중간 중1 기출 / 24문항 — PENDING
+- [ ] 40. 19 팔마중 1학기 중간 중1 기출 / 23문항 — PENDING
+- [ ] 41. 17 금당중 1학기 중간 중1 수학 / 25문항 — PENDING
+- [ ] 42. 17 매산중 1학기 중간 중1 수학 / 24문항 — PENDING
+- [ ] 43. 17 삼산중 1학기 중간 중1 수학 / 24문항 — PENDING
+- [ ] 44. 16 연향중 1학기 중간 중1 수학 / 24문항 — PENDING

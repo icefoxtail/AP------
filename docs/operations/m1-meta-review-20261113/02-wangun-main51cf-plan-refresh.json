@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "wangun-current-main-plan-refresh-v1",
+  "recordedAt": "2026-11-13T16:43:27.807380+00:00",
+  "status": "PREPARED_ON_ACTUAL_COURSE_CORRECTED_MAIN_NOT_REGISTERED",
+  "baselineMain": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+  "registryChanges": 16,
+  "packRefreshes": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+      "priorPackVersion": "1.0.5",
+      "currentPackVersion": "1.0.6",
+      "changedFields": [
+        "packVersion"
+      ],
+      "scopeAppend": [
+        "M1-1"
+      ],
+      "allOtherFieldsPreserved": true
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
+      "priorPackVersion": "1.0.11",
+      "currentPackVersion": "1.0.11",
+      "changedFields": [],
+      "scopeAppend": [
+        "M1-1"
+      ],
+      "allOtherFieldsPreserved": true
+    }
+  ],
+  "addOnlyRowsAbsent": 14,
+  "originalPlan": "02-wangun-native-registration-plan-rev2.json",
+  "publicationGate": "Wait PR1967 actual writer before publishing mutable crosswalk or final request; refresh any changed inputs."
+}
