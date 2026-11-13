@@ -172,6 +172,7 @@
   function coneSpec(d,r,R,inner=0){const h=Math.sqrt(R*R-r*r),r1=inner*r/R;return{...d,r,R,inner,r1,h,x:360*r/R,sol:inner?d.S3.solid('frus',{R:r,r:r1,h1:(R-inner)*h/R}):d.S3.solid('cone',{R:r,h1:h})};}
   function coneDevelopment(b,t,d){
     const u=phase(t,1.2,5.7),D=d.S3.ctx(b,developingCamera(d,u)),angle=d.x*RAD,fn=(s,p)=>conePoint(d.r,d.R,s,p,u),mesh=surfaceMesh(fn,d.inner||0,d.R,-angle/2,angle/2),apex=V(0,d.h),ps=mesh.faces.flat().map(D.P),extra=[];
+    let paintSlant=null;
     const symbolic=d.goal==='ratio',fullCircle=t>=5.7&&['angle','ratio','side','surface'].includes(d.goal),circleAt=V(d.inner?-d.r1-.15*d.R:0,d.h-d.R-2*d.r-.3*d.R),smallCircleAt=V(d.r+.15*d.R,circleAt.y),baseCircle=t>=5.7&&!['slant','path','frustumPath'].includes(d.goal);
     if(fullCircle){for(let i=0;i<72;i++)extra.push(polar2(d.R,TAU*i/72,apex));}if(baseCircle){extra.push(V(circleAt.x-d.r,circleAt.y-d.r),V(circleAt.x+d.r,circleAt.y+d.r));if(d.inner)extra.push(V(smallCircleAt.x-d.r1,smallCircleAt.y-d.r1),V(smallCircleAt.x+d.r1,smallCircleAt.y+d.r1));}
     setup(b,[...ps,D.P(apex),...extra],.1);
@@ -180,12 +181,16 @@
     D.line(topLeft,left,'rose',2.5);D.line(topRight,right,'rose',2.5);
     const radialLabel=`${d.inner?'r₂':'r'}=${cm(d.r)}`,slantLabel=symbolic?'R':d.goal==='slant'&&t<7.6?'R=?':`${d.inner?'R₂':'R'}=${cm(d.R)}`;
     if(t<1.2){dim3(D,O,V(d.r,0),radialLabel,'sky');const q=V(0,0,d.r);if(d.inner){const cut=mix(apex,q,d.inner/d.R);D.line(apex,cut,'muted',1.8,{dash:[5,4]});D.line(cut,q,'amber',2.6);D.lab(mid(apex,q),slantLabel,'amber',{dx:28,dy:0});D.lab(mid(apex,cut),`R₁=${cm(d.inner)}`,'muted',{dx:-28,dy:0});dim3(D,V(0,d.sol.h),V(d.r1,d.sol.h),`r₁=${cm(d.r1)}`,'sky',{dy:-20});}else dim3(D,apex,q,slantLabel,'amber',{dx:28,dy:0});}
-    else if(u>=.99){text(b,mid(apex,left),slantLabel,'amber',{dx:-30,dy:-4});if(d.inner)text(b,mid(apex,topRight),`R₁=${cm(d.inner)}`,'rose',{dx:25,dy:0});}
+    else if(u>=.99){const draw=()=>{text(b,mid(apex,left),slantLabel,'amber',{dx:-30,dy:-4});if(d.inner)text(b,mid(apex,topRight),`R₁=${cm(d.inner)}`,'rose',{dx:25,dy:0});};
+      // These lessons add cut boundaries or path/tick strokes afterwards.
+      // Keep the same labels and coordinates, but paint their halos last.
+      if(['s3-5','s4-2','s4-4'].includes(d.D.id))paintSlant=draw;else draw();}
     if(t>=5.7){if(fullCircle)b.circle(apex,d.R,{color:'muted',dash:[5,4],width:1.3});const arc=Array.from({length:61},(_,i)=>fn(d.R,-angle/2+angle*i/60));b.path(arc.map(D.P),{color:'green',width:4.5});
       const small=Math.min(d.R*.2,30/b.k),wedge=[apex,...Array.from({length:25},(_,i)=>polar2(small,-PI/2-angle/2+angle*i/24,apex))];poly(b,wedge,'rose',.14);
       const known=['slant','ratio','path','frustumPath'].includes(d.goal);text(b,V(0,d.h-small),known||t>=7.6?`${fraction(d.x)}°`:'x°','rose',{dy:19});
       if(baseCircle){b.circle(circleAt,d.r,{color:'sky',fill:'sky',fillAlpha:.06,width:2.5});const p=phase(t,5.7,7.2);b.path(Array.from({length:61},(_,i)=>polar2(d.r,PI/2+TAU*p*i/60,circleAt)),{color:'green',width:4.5});text(b,circleAt,d.goal==='surface'&&t>=7.6?`${pi(d.r*d.r)} cm²`:radialLabel,'sky',{size:13});text(b,V(circleAt.x,circleAt.y-d.r),symbolic?'2πr':`${pi(2*d.r)} cm`,'green',{dy:23,size:13});if(d.inner){b.circle(smallCircleAt,d.r1,{color:'rose',fill:'rose',fillAlpha:.06,width:2.5});b.path(Array.from({length:61},(_,i)=>polar2(d.r1,PI/2+TAU*p*i/60,smallCircleAt)),{color:'rose',width:4});text(b,smallCircleAt,`r₁=${cm(d.r1)}`,'rose',{size:13});text(b,V(smallCircleAt.x,smallCircleAt.y-d.r1),`${pi(2*d.r1)} cm`,'rose',{dy:23,size:13});}}
     }
+    return paintSlant;
   }
   function coneFrame(t,d){if(t<1.2)return F('밑면 반지름 r과 모선 R을 구별하고 옆면의 한 줄을 자릅니다.');if(t<5.7)return F('모선의 길이와 각 높이에서의 둘레 길이를 유지하며 옆면을 펼칩니다.');if(t<7.6)return F(d.goal==='net'?'부채꼴의 호와 밑면의 둘레는 원래 맞붙어 있던 같은 테두리입니다.':d.goal==='surface'?'옆면 부채꼴과 밑면 원 하나를 각각 계산해 더합니다.':'호가 전체 원의 둘레에서 차지하는 비율은 r/R입니다.',d.goal==='side'||d.goal==='surface'?`$S_{\\text{옆}}=\\frac{r}{R}\\pi R^2=\\pi Rr$`:'$\\frac{x}{360^{\\circ}}=\\frac{2\\pi r}{2\\pi R}=\\frac rR$');
     return d.goal==='net'?F('모선은 부채꼴의 반지름, 호는 밑면의 둘레입니다.',`호의 길이 = ${pi(2*d.r)} cm`):d.goal==='angle'?F('전체 360°에서 같은 비율을 취합니다.',`$x=360^{\\circ}\\times\\frac{${tex(d.r)}}{${tex(d.R)}}=${tex(d.x)}^{\\circ}$`):d.goal==='slant'?F('같은 호의 길이 식을 모선에 대해 풉니다.',`$R=\\frac{360\\times${tex(d.r)}}{${tex(d.x)}}=${tex(d.R)}\\text{ cm}$`):d.goal==='ratio'?F('둘레비의 공통인 2π를 약분합니다.',`$r:R=${tex(d.x)}:360=1:${tex(d.R/d.r)}$`):d.goal==='side'?F('부채꼴의 넓이는 밑면 반지름과 모선의 곱에 π를 곱한 값입니다.',`$S=\\pi\\times${tex(d.R)}\\times${tex(d.r)}=${piTex(d.r*d.R)}\\text{ cm}^2$`):F('원뿔의 밑면은 한 개입니다.',`$S=${piTex(d.r*d.R)}+${piTex(d.r*d.r)}=${piTex(d.r*d.R+d.r*d.r)}\\text{ cm}^2$`);}
@@ -193,7 +198,8 @@
   for(const [goal,label] of [['angle','중심각'],['ratio','반지름비']])reg('s3-3',label,'sector-and-whole-circle-arc-fractions-determine-the-radius-ratio',d=>({...coneSpec(d,d.m.qr,d.m.qr*d.m.qk),goal,answer:goal==='ratio'?d.m.qk:360/d.m.qk}),coneDevelopment,coneFrame,d=>d.goal==='ratio'?`현재 문제 · 밑면 반지름 r=${cm(d.r)}, 중심각 ${fraction(d.x)}° · 모선 R과의 비 r:R 구하기`:`현재 문제 치수 r=${cm(d.r)}, R=${cm(d.R)} · 중심각 x°`);
   for(const [goal,label] of [['side','옆넓이'],['surface','겉넓이']])reg('s3-4',label,'sector-fraction-area-plus-the-single-circular-base',d=>{const r=goal==='surface'?d.m.qr:d.m.r,R=goal==='surface'?d.m.qR:d.m.R;return{...coneSpec(d,r,R),goal,answer:r*R+(goal==='surface'?r*r:0)};},coneDevelopment,coneFrame,d=>`${d.goal==='surface'?'현재 문제':'현재 탐구'} 원뿔 · 밑면 반지름 ${cm(d.r)}, 모선 ${cm(d.R)} · ${d.goal==='surface'?'겉넓이':'옆넓이'}`);
   for(const area of [false,true])reg('s3-5',area?'옆넓이':'전개도','annular-conical-sheet-opens-with-both-rim-lengths-preserved',d=>{const k=area?d.m.qk:d.m.k,r1=area?d.m.q1:d.m.r1,r2=area?d.m.q2:d.m.r2,R1=k*r1,R2=k*r2;return{...coneSpec(d,r2,R2,R1),r1,r2,R1,R2,k,goal:area?'frustumArea':'frustumNet',answer:k*(r2*r2-r1*r1)};},(b,t,d)=>{
-    coneDevelopment(b,t,d);if(t>=5.7){const apex=V(0,d.h),a=d.x*RAD,inner=Array.from({length:61},(_,i)=>polar2(d.R1,-PI/2-a/2+a*i/60,apex));b.path(inner,{color:'rose',width:4});if(t>=6.1){const innerSector=[apex,...inner];poly(b,innerSector,'rose',.07,{dash:[5,4]});text(b,apex,'잘라 낸 부분','rose',{dy:-22,size:13});}if(t>=7.6&&area)text(b,polar2((d.R1+d.R2)/2,-PI/2,apex),`${pi(d.answer)} cm²`,'green',{size:14});}
+    const paintSlant=coneDevelopment(b,t,d);if(t>=5.7){const apex=V(0,d.h),a=d.x*RAD,inner=Array.from({length:61},(_,i)=>polar2(d.R1,-PI/2-a/2+a*i/60,apex));b.path(inner,{color:'rose',width:4});if(t>=6.1){const innerSector=[apex,...inner];poly(b,innerSector,'rose',.07,{dash:[5,4]});text(b,apex,'잘라 낸 부분','rose',{dy:-22,size:13});}if(t>=7.6&&area)text(b,polar2((d.R1+d.R2)/2,-PI/2,apex),`${pi(d.answer)} cm²`,'green',{size:14});}
+    paintSlant?.();
   },(t,d)=>t<1.2?F('원뿔대의 두 밑면과 모선 위 두 길이 R₁, R₂를 구별합니다.'):t<5.7?F('같은 비율의 원뿔 옆면을 펴면 부채꼴에서 작은 부채꼴을 뺀 띠가 됩니다.'):t<7.6?F('바깥 호는 큰 밑면 둘레, 안쪽 호는 작은 밑면 둘레와 같습니다.',`$\\frac{${tex(d.r1)}}{${tex(d.R1)}}=\\frac{${tex(d.r2)}}{${tex(d.R2)}}$`):F(area?'큰 부채꼴에서 잘라 낸 작은 부채꼴의 넓이를 뺍니다.':'두 부채꼴은 중심과 중심각이 같습니다.',area?`$S=\\pi(${tex(d.R2)}\\times${tex(d.r2)}-${tex(d.R1)}\\times${tex(d.r1)})=${piTex(d.answer)}\\text{ cm}^2$`:`바깥 호 ${pi(2*d.r2)} cm · 안쪽 호 ${pi(2*d.r1)} cm`),d=>`${area?'현재 문제':'현재 탐구'} 원뿔대 · 밑면 반지름 ${cm(d.r1)}, ${cm(d.r2)} · 펼친 반지름 R₁=${cm(d.R1)}, R₂=${cm(d.R2)}`);
 
   // A point on a developed sector is carried by the same isometry as the sheet.
@@ -204,7 +210,7 @@
   function closestOnSegment(P,A,B){const v=sub(B,A),u=clamp(dot(sub(P,A),v)/dot(v,v));return add(A,mul(v,u));}
   function pathLength(ps){return ps.slice(1).reduce((sum,p,i)=>sum+distance(p,ps[i]),0);}
   function stringDraw(b,t,d){
-    coneDevelopment(b,t,d);const u=phase(t,1.2,5.7),D=d.S3.ctx(b,developingCamera(d,u)),a=d.x*RAD,A=sectorPoint(d.p,-a/2),B=sectorPoint(d.p,a/2),ring=Array.from({length:81},(_,i)=>sectorPoint(d.p,-a/2+a*i/80)),mesh=surfaceMesh((s,phi)=>conePoint(d.r,d.R,s,phi,u),d.inner||0,d.R,-a/2,a/2),faces=mesh.faces.map(f=>f.map(D.P3));
+    const paintSlant=coneDevelopment(b,t,d),u=phase(t,1.2,5.7),D=d.S3.ctx(b,developingCamera(d,u)),a=d.x*RAD,A=sectorPoint(d.p,-a/2),B=sectorPoint(d.p,a/2),ring=Array.from({length:81},(_,i)=>sectorPoint(d.p,-a/2+a*i/80)),mesh=surfaceMesh((s,phi)=>conePoint(d.r,d.R,s,phi,u),d.inner||0,d.R,-a/2,a/2),faces=mesh.faces.map(f=>f.map(D.P3));
     const M=d.compare&&d.mode==='via'?mix(d.M,closestOnSegment(d.M,A,B),phase(t,5.7,7.2)):null,sourcePath=d.compare?(d.mode==='line'?pathSamples(A,B):d.mode==='via'?pathSamples(A,B,M):ring):ring;
     const drawPath=(ps,color,width=4)=>{const points=ps.map(p=>D.P3(pathPoint(d,p,u)));drawRuns(b,points,p=>surfaceVisibility(faces,p),color,width);};
     drawPath(sourcePath,'amber');if(t>=5.7){const progress=phase(t,5.7,7.2),linePts=samples(A,mix(A,B,progress));drawPath(linePts,'green',4.8);}
@@ -217,6 +223,7 @@
       if(t>=7.7)text(b,mid(D.P(pathPoint(d,A,u)),D.P(pathPoint(d,B,u))),cm(d.answer),'green',{dy:25});
     }
     if(t>=7.2&&d.compare){const cur=d.mode==='rim'?TAU*d.r:d.mode==='line'?distance(A,B):distance(A,M)+distance(M,B),best=distance(A,B);text(b,mid(D.P(pathPoint(d,A,u)),D.P(pathPoint(d,B,u))),near(cur,best)?'같은 선분 경로':'두 점 사이의 선분','green',{dy:29,size:13});}
+    paintSlant?.();
   }
   reg('s4-1','최단 경로','same-string-isometrically-developed-then-a-bend-slides-onto-the-chord',d=>{const Q=question(d),m=d.m;return{...coneSpec(d,m.r,m.R),goal:'path',compare:true,p:m.R,mode:m.mode,M:V(m.M.x,m.M.y),Q,answer:correct(Q)+1};},stringDraw,
     (t,d)=>t<1.2?F('현재 끈은 원뿔의 옆면 위에서 한 바퀴 돌아 같은 점으로 옵니다.'):t<5.7?F('옆면과 그 위의 끈을 함께 펴면 같은 점 A가 두 끝 A, A′으로 나뉩니다.'):t<7.2?F(d.mode==='via'?'꺾이는 점 M을 선분 위로 옮기면 두 구간의 합은 선분의 길이에 가까워집니다.':'호와 두 끝을 잇는 선분을 비교합니다.'):t<7.7?F('전개도에서 곧은 선분인 경로는 입체 위에서는 곡선으로 보입니다.'):F('두 점을 잇는 선분에 해당하는 끈이 가장 짧습니다.',`${NUM[d.answer-1]} ${clean(d.Q.choices[d.answer-1].p)}`),d=>`현재 원뿔 r=${cm(d.r)}, R=${cm(d.R)} · 현재 ${d.mode==='rim'?'밑면 둘레를 따르는':d.mode==='via'?'점 M을 거치는':'전개도의 선분에 해당하는'} 끈${d.x===180?' · 꼭짓점 경유도 허용':''}`);

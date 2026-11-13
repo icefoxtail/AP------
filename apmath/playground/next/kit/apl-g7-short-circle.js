@@ -857,7 +857,14 @@
     const rt = pose.turn;
     if (rt.kind === 'pivot') {
       dot(b, up(rt.c), M.names[rt.pivot], 'amber', { dy: 20 });
-      if (rt.r > 1e-8) { line(b, up(rt.c), marked, 'amber', { width: 3 }); text(b, mid(up(rt.c), marked), `${rt.rLabel} cm`, 'amber', { dy: -20 }); }
+      if (rt.r > 1e-8) {
+        const center = up(rt.c), labelAt = mid(center, marked);
+        line(b, center, marked, 'amber', { width: 3 });
+        // The semicircle's small pivot puts the radius and angle at the same
+        // screen position. Keep its measurement below the ground and point name.
+        if (M.kind === 'semi') labelAt.y = center.y;
+        text(b, labelAt, `${rt.rLabel} cm`, 'amber', { dy: M.kind === 'semi' ? 44 : -20 });
+      }
       if (pose.u > .25) angle(b, up(rt.c), -rt.a0, -rt.a0 + rt.deg * D, `${num(rt.deg)}°`, Math.max(rt.r * .22, (M.cfg.a || M.cfg.R || M.cfg.d || M.cfg.w) * .2));
     } else radius(b, up(pose.points[M.T]), M.cfg.R, PI / 2, `r=${M.cfg.R} cm`);
     if (t < 1.2) M.names.forEach((name, i) => { if (name && i !== M.T) dot(b, up(M.states[0][i]), name, 'ink'); });

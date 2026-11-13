@@ -66,15 +66,14 @@ jobs:
         env:
           NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
           G7_EVIDENCE: ${{ runner.temp }}/g7-evidence
-          G7_REFERENCE_PLAYBACK: scoped
-          G7_REFERENCE_SCENES: 'f3-leaf-area,sv3-4'
-          G7_REFERENCE_EVIDENCE: 'CI 43335954065 at bdaf15d2bd80ff8fd8f00c5c38219a5a0cad17db: four correctly identified reference plans and 36 unique function scenes retain their normal-clock evidence. Leaf and two tank plans had stale active-plan IDs in the old reference report; those three are measured again here with scene and plan assertions.'
+          G7_REFERENCE_PLAYBACK: reuse
+          G7_REFERENCE_EVIDENCE: 'CI 43346417520 at b0221b2730340c25c3559cf7f334e60860d4006c verified leaf-area, tank-remain and tank-over at both 1440 and 390 with strict actual scene/plan identities. CI 43335954065 retains four correctly identified reference plans and 36 unique function scenes. No reference implementation changed in this label-only follow-up.'
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/g7-http.log" 2>&1 &
           for i in {1..20}; do curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js >/dev/null && break; sleep 1; done
           node apmath/playground/next/tools/g7-learning-browser.mjs
-          # Repeat only the three reference plans whose old report had stale
-          # scene/plan identity. All 318 routes and question mappings still run.
+          # All 318 routes and question mappings still run. Retain the now
+          # correctly identified reference playback from its exact prior CI.
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -91,13 +90,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # CI43341402870 holds the full circle/polyhedra run. Retain all
-          # unchanged scene evidence and capture the visually corrected ranges.
-          - { lab: g7-polyhedra, mode: static, scenes: 'p3-1,p3-2,p3-3,p3-4,p3-5,p3-6,p3-8', live_scenes: 'p3-1,p3-2,p3-3,p3-4,p3-5,p3-6,p3-8', exclude_scenes: '' }
-          - { lab: g7-circle-sector, mode: static, scenes: '1106,rot,y12,f3-two-arcs,f4-slideq,f5-sn,f5-ring240,rl-turn60,rl-turn45,rl-semi,sw-square,sw-center,sw-rect', live_scenes: '1106,rot,y12,f3-two-arcs,f4-slideq,f5-sn,f5-ring240,rl-turn60,rl-turn45,rl-semi,sw-square,sw-center,sw-rect', exclude_scenes: '' }
-          - { lab: g7-surface-volume, mode: static, scenes: 'sv1-1,sv1-2,sv1-3,sv1-5,sv2-2,sv2-3,sv3-7,sv4-1,sv4-2,sv4-3,sv4-4,sv5-6,sv6-1', live_scenes: 'sv1-3,sv2-2,sv3-7,sv4-1,sv4-2,sv4-3,sv4-4,sv5-6', exclude_scenes: '' }
-          - { lab: g7-solids, mode: static, scenes: 's2-3,s3-5,s4-1,s4-2,s4-4', live_scenes: 's2-3,s3-5,s4-1,s4-2,s4-4', exclude_scenes: '' }
-          - { lab: g7-construction, mode: static, scenes: 'c3-2,c3-4', live_scenes: 'c3-2,c3-4', exclude_scenes: '' }
+          # Reuse CI43346417520 for unchanged geometry. Only the final
+          # label/initial-fit corrections need new four-size captures/playback.
+          - { lab: g7-circle-sector, mode: static, scenes: 'rl-semi', live_scenes: 'rl-semi', exclude_scenes: '' }
+          - { lab: g7-surface-volume, mode: static, scenes: 'sv4-2,sv4-3,sv4-4,sv5-6,sv6-1', live_scenes: 'sv4-2,sv4-3,sv4-4,sv5-6,sv6-1', exclude_scenes: '' }
+          - { lab: g7-solids, mode: static, scenes: 's3-5,s4-2,s4-4', live_scenes: 's3-5,s4-2,s4-4', exclude_scenes: '' }
     steps:
       - uses: actions/checkout@v4
         with:

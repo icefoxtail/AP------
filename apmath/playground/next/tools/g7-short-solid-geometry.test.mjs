@@ -222,3 +222,45 @@ test('visual regression: the frustum top-radius value clears its rotation-axis l
     assert.equal(JSON.stringify(lab.s),saved);
   }
 });
+
+test('visual regression: final slant dimensions remain above all later boundary, tick and path strokes',async()=>{
+  const lab=await load(),b=lab.board,c=b.ctx;
+  const cases={
+    's3-5':[{}, {soFk:5,soF1:1,soF2:4,soQk:2,soQ1:2,soQ2:5}],
+    's4-2':[{}, {soQa:180,soQr:3,soTr:4}],
+    's4-4':[{}, {soQg:5,soQf:3}]
+  };
+  for(const [id,variants] of Object.entries(cases))for(const values of variants){
+    lab.go(id);Object.assign(lab.s,values);const before=JSON.stringify(lab.s);
+    for(const p of plans(lab)){
+      const model=JSON.stringify(p.model.m),given=p.given,result=p.frame(p.duration,p.model);
+      for(const [w,h] of visualSizes)for(const t of [5.6,6.2,7.1,9.6]){
+        b.resize(w,h);const events=[],savedText=b._text,saved={};let currentLabel=null;
+        // Record actual production Canvas paint order. Fraction-bar strokes
+        // belong to the label itself, not to a later geometric boundary.
+        b._text=function(x,y,value,...rest){
+          const previous=currentLabel;currentLabel=String(value);
+          try{return savedText.call(this,x,y,value,...rest);}finally{currentLabel=previous;}
+        };
+        for(const method of ['stroke','fill','strokeRect','fillRect','strokeText','fillText']){
+          saved[method]=c[method];c[method]=function(...args){
+            events.push({kind:method,label:currentLabel});return saved[method].apply(this,args);
+          };
+        }
+        let actual;
+        try{actual=capture(b,p,t);}finally{b._text=savedText;Object.assign(c,saved);}
+        const names=actual.texts.filter(x=>/^R(?:₁|₂)?=/.test(x));
+        assert.equal(names.length,p.model.inner?2:1,`${id}: each given slant is painted once`);
+        assert.equal(new Set(names).size,names.length);
+        const lastGeometry=events.findLastIndex(x=>x.label===null&&['stroke','fill','strokeRect','fillRect'].includes(x.kind));
+        for(const name of names){
+          const halo=events.findIndex(x=>x.kind==='strokeText'&&x.label===name),ink=events.findIndex(x=>x.kind==='fillText'&&x.label===name);
+          assert.ok(halo>lastGeometry&&ink>lastGeometry,`${id}/${p.legacyLabel}/${w}/${t}: ${name} is covered by later geometry`);
+        }
+        onCanvas(actual.textItems.filter(x=>names.includes(x.value)),b,id);
+      }
+      assert.equal(JSON.stringify(p.model.m),model);assert.equal(p.given,given);assert.deepEqual(p.frame(p.duration,p.model),result);
+    }
+    assert.equal(JSON.stringify(lab.s),before,'foreground labels cannot alter the current question, controls, selection or seed');
+  }
+});

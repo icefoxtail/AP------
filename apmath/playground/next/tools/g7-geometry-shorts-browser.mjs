@@ -126,6 +126,7 @@ try {
             assert.ok(!f.unrenderedMath, `${row.id}: inline mathematics was not rendered at ${viewport.width}`);
             assert.ok(!f.overflow, `${row.id}: horizontal overflow at ${viewport.width}`);
             assert.deepEqual(f.clippedControls, [], `${row.id}: clipped learning buttons at ${viewport.width}`);
+            assert.deepEqual(f.offCanvasText, [], `${row.id}: off-canvas diagram labels at ${viewport.width}`);
           }
         }
         // End-state sheets from all four viewports support actual visual review.
@@ -192,6 +193,40 @@ try {
     }
   }
   await context.close();
+
+  // Inspect the exact poses that exposed the last label/layout defects.
+  // These sought frames supplement normal-clock playback; they are not timed
+  // evidence. The second trapezoid axis is an editable native condition.
+  const labelReviewCases = [
+    { id: 'g7-circle-sector', scene: 'rl-semi', choice: 0, t: 2.2, name: 'first-pivot', state: {} },
+    { id: 'g7-circle-sector', scene: 'rl-semi', choice: 0, t: 7.3, name: 'last-pivot', state: {} },
+    { id: 'g7-surface-volume', scene: 'sv4-2', choice: 2, t: 0, name: 'axis-profile', state: {} },
+    { id: 'g7-surface-volume', scene: 'sv4-2', choice: 0, t: 9.8, name: 'native-base-axis', state: { svAxis2: 'base', s42A: 3, s42K: 1 } }
+  ].filter(x => targets.includes(x.id) && (!includeScenes.size || includeScenes.has(x.scene)));
+  if (labelReviewCases.length) {
+    for (const viewport of [viewports[0], viewports[3]]) {
+      const extra = await pageFor(viewport);
+      for (const item of labelReviewCases) {
+        await load(extra.page, item.id);
+        const result = await extra.page.evaluate(async item => {
+          lab.goScene(lab.list.findIndex(sc => sc.id === item.scene)); lab.learning.explore();
+          Object.assign(lab.s, item.state);
+          const state = () => JSON.stringify(Object.fromEntries(Object.entries(lab.s).filter(([key]) => !['lessonOn', 'lessonEntry', 'playing'].includes(key))));
+          const before = state();
+          lab.learning.choice = item.choice; lab.learning.play(); lab.learning.pause(); lab.learning.seek(item.t);
+          await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+          return { scene: lab.scene.id, plan: lab.learning.active.id, choice: lab.learning.choice, elapsed: lab.learning.elapsed, axis: lab.learning.active.model.currentAxis || null, untouched: before === state() };
+        }, item);
+        assert.equal(result.scene, item.scene); assert.equal(result.choice, item.choice); assert.equal(result.elapsed, item.t); assert.ok(result.untouched);
+        if (item.name === 'native-base-axis') assert.equal(result.axis, 'base');
+        const file = `geometry-label-${item.id}-${item.scene}-${item.choice}-${viewport.width}-${item.name}.png`;
+        await extra.page.screenshot({ path: path.join(out, file) });
+        report.interactions.push({ name: item.name, viewport, file, ...result });
+      }
+      await extra.context.close();
+    }
+    save();
+  }
 
   // The native p3-4 default starts fully folded. Its separate editable zero
   // fold condition exposed a real missing-occlusion path between .5 and 2.6s.

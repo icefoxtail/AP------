@@ -9,6 +9,64 @@ const copy=x=>JSON.parse(JSON.stringify(x));
 const near=(a,b,tol=1e-8)=>assert.ok(Math.abs(a-b)<=tol*Math.max(1,Math.abs(a),Math.abs(b)),`${a} != ${b}`);
 function build(lab,id,state={}) {lab.go(id);Object.assign(lab.s,state);const before=JSON.stringify(lab.s),plans=api.registry[`g7-surface-volume/${id}`](lab,lab.s);assert.equal(JSON.stringify(lab.s),before);return plans;}
 function render(lab,p,t) {const b=lab.board,paths=[],texts=[],old=b.path,oldText=b._text;b.path=function(points,o){paths.push({points:copy(points),options:o});return old.call(this,points,o);};b._text=function(x,y,str,o,screen){texts.push(String(str));return oldText.call(this,x,y,str,o,screen);};try{b.begin();p.draw(b,t,p.model);b.end();}finally{b.path=old;b._text=oldText;}return{paths,texts};}
+function textBoxes(lab,p,t) {
+  const drawn=[],ctx=lab.board.ctx,old=ctx.fillText;
+  ctx.fillText=function(text,x,y){const w=this.measureText(String(text)).width,h=Number(/([\d.]+)px/.exec(this.font)?.[1]||12),align=this.textAlign,baseline=this.textBaseline;const x0=x-(align==='center'?w/2:align==='right'||align==='end'?w:0),y0=y-(baseline==='middle'?h/2:baseline==='top'?0:h);drawn.push({text:String(text),x0,x1:x0+w,y0,y1:y0+h});return old.call(this,text,x,y);};
+  try{render(lab,p,t);}finally{ctx.fillText=old;}
+  return drawn;
+}
+function noLabelCollision(items,scope) {
+  for(let i=0;i<items.length;i++)for(let j=i+1;j<items.length;j++){
+    const a=items[i],b=items[j],overlapX=Math.min(a.x1,b.x1)-Math.max(a.x0,b.x0),overlapY=Math.min(a.y1,b.y1)-Math.max(a.y0,b.y0);
+    assert.ok(overlapX<=0||overlapY<=0,`${scope}: ${a.text} overlaps ${b.text}`);
+  }
+}
+
+test('post-capture regression: trapezoid axis comparison fits its initial profile and first sweep',async()=>{
+  const lab=await load();
+  for(const[viewport,w,h]of[[1440,1439,713],[820,820,880],[1024,1023,581],[390,390,510]]){
+    lab.board.resize(w,h);lab.setViewportWidth(viewport);
+    for(const state of[{svAxis2:'leg',s42J:3,s42K:1},{svAxis2:'leg',s42J:9,s42K:2},{svAxis2:'base',s42A:15,s42K:2}]){
+      const p=build(lab,'sv4-2',state)[2],before=JSON.stringify(lab.s);
+      for(const t of[0,.5,.8,1.6,2.8,3.39])for(const path of render(lab,p,t).paths)for(const point of path.points){
+        const q=lab.board.toS(point);assert.ok(q.x>=0&&q.x<=w&&q.y>=0&&q.y<=h,`${viewport}@${t}: clipped axis/profile ${JSON.stringify(q)}`);
+      }
+      assert.equal(JSON.stringify(lab.s),before);
+    }
+  }
+});
+
+test('post-capture regression: unfolded frustum base labels stay distinct from radius annotations',async()=>{
+  const lab=await load();
+  for(const[viewport,w,h]of[[1440,1439,713],[820,820,880],[1024,1023,581],[390,390,510]]){
+    lab.board.resize(w,h);lab.setViewportWidth(viewport);
+    for(const state of[{svAxis2:'leg',s42J:3,s42K:1},{svAxis2:'leg',s42J:1,s42K:2},{svAxis2:'leg',s42J:9,s42K:2}]){
+      const p=build(lab,'sv4-2',state)[0];
+      assert.equal(textBoxes(lab,p,2.21).filter(x=>x.text.startsWith('반지름')).length,2,'both actual base radii remain visible before unfolding');
+      for(const t of[6,7.3,9.8]){
+        const texts=textBoxes(lab,p,t),base=texts.filter(x=>/^반지름|^[윗아랫]+면$|^\d+(?:\/\d+)?π$/.test(x.text));
+        assert.ok(base.some(x=>x.text==='윗면')&&base.some(x=>x.text==='아랫면'));
+        noLabelCollision(base,`${viewport}@${t}`);
+      }
+    }
+  }
+});
+
+test('post-capture regression: separated component names and contact areas never overlap',async()=>{
+  const lab=await load();
+  for(const[viewport,w,h]of[[1440,1439,713],[820,820,880],[1024,1023,581],[390,390,598]]){
+    lab.board.resize(w,h);lab.setViewportWidth(viewport);
+    for(const[id,state]of[['sv4-3',{}],['sv4-4',{}],['sv5-6',{svTop:'cyl'}],['sv5-6',{svTop:'hemi'}],['sv6-1',{jcKind:'hemi'}],['sv6-1',{jcKind:'pyramid'}],['sv4-2',{svAxis2:'base',s42A:3,s42K:1}]]){
+      const p=build(lab,id,state)[0],before=JSON.stringify(lab.s);
+      for(const t of[7.3,9.8]){
+        const labels=textBoxes(lab,p,t).filter(x=>x.text.startsWith('붙은 면')||/^(?:원뿔|원기둥|사각기둥|사각뿔|반구)$/.test(x.text));
+        assert.ok(labels.length>=4,`${id}: actual contact/name labels exercised`);
+        noLabelCollision(labels,`${id}/${viewport}@${t}`);
+      }
+      assert.equal(JSON.stringify(lab.s),before);
+    }
+  }
+});
 test('rational pi arithmetic retains fractional dimensions and units exactly',()=>{
   for(const n of[1/3,2/3,5/6,231/2,7/6,64/3,845/9])near(api.rational(n)[0]/api.rational(n)[1],n);
   assert.equal(api.tex(api.value(0,1/3)),'\\frac{\\pi}{3}');

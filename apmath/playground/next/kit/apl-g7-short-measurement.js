@@ -533,8 +533,12 @@
   function coneFrustumAreaDraw(G,b,t,m) {
     const net=m.geometry||(m.geometry=pyramidGeometry(G,m)),{D,tp,at,u}=netDraw(G,b,t,m,net);
     const bc=center(net.A),tc=center(net.B);
-    D.radius(at(net.bot,bc),at(net.bot,net.A[0]),`반지름 ${m.r2}`,{size:12,dash:u<.2});
-    D.radius(at(net.top,tc),at(net.top,net.B[0]),`반지름 ${m.r1}`,{size:12});
+    // Keep both given radii on the solid and while unfolding; the completed
+    // bases then use their separate name/area labels, as the other nets do.
+    if(u<.9) {
+      D.radius(at(net.bot,bc),at(net.bot,net.A[0]),`반지름 ${m.r2}`,{size:12,dash:u<.2});
+      D.radius(at(net.top,tc),at(net.top,net.B[0]),`반지름 ${m.r1}`,{size:12});
+    }
     if(t>=4) {
       tag(D,tp[net.bot].c,plain(m.area),'sky',{dy:23});tag(D,tp[net.top].c,plain(m.top),'sky',{dy:23});
       const k=net.lat[Math.floor(net.lat.length/2)];tag(D,tp[k].c,`모선 차 ${textNumber(m.l)}`,'green',{dy:18,size:12});
@@ -604,11 +608,20 @@
     if(t>=1.1)m.joins.forEach(j=>[j.lower,j.upper].forEach((i,k)=>{
       const pts=j.kind==='circle'?ring(G,j.r,j.y):rectangle(j.a,j.a).map(p=>v(p[0],j.y,p[1])),moved=pts.map(p=>add3(p,offsets[i]));
       D.panel(moved,m.target==='volume'?'muted':'rose',m.target==='volume'?.035:.16,'rose',1.7,{dash:[4,4]});
-      if(t>=4.3&&m.target!=='volume')tag(D,center(moved),`붙은 면 ${plain(j.area)}`,'rose',{dy:k?-15:18,size:12});
+      if(t>=4.3&&m.target!=='volume') {
+        const c=center(moved),bb=G.bboxOf(pointsOf(meshes[i]).map(D.P));
+        // Move each cap label away from the component's middle, so the two
+        // ends of a short cylinder cannot push their text into one another.
+        tag(D,c,`붙은 면 ${plain(j.area)}`,'rose',{dy:D.P(c).y<(bb.y0+bb.y1)/2?-9:9,size:12});
+      }
     }));
     if(t>=4.3)m.parts.forEach((p,i)=>{
       const middle=(p.kind==='hemisphere'?p.r:p.h)/2,c=add3(v(0,(p.y||0)+(p.down?-middle:middle)),offsets[i]);
-      tag(D,c,m.target==='volume'?`${p.name} ${t>=5.5?plain(p.volume):''}`:p.name,['sky','amber','green'][i],{dy:p.kind==='cone'?(p.down?8:-6):0,size:12});
+      if(m.target==='volume')tag(D,c,`${p.name} ${t>=5.5?plain(p.volume):''}`,['sky','amber','green'][i],{dy:p.kind==='cone'?(p.down?8:-6):0,size:12});
+      else {
+        const bb=G.bboxOf(pointsOf(meshes[i]).map(D.P));
+        label2(b,{x:(bb.x0+bb.x1)/2,y:bb.y1},p.name,['sky','amber','green'][i],{dy:30,size:12});
+      }
     });
   }
   function joinedFrame(t,m) {
@@ -628,7 +641,7 @@
   function axesDraw(G,b,t,m) {
     const D=scene(G,b,m,t,{yaw:24,pitch:20}),a=m.a,wide=m.b,h=m.h,first=phase(t,.8,3.4),second=phase(t,3.7,6.1),off=D.hx((wide+2*h)*phase(t,3.4,4.2));
     const trapezoid=[v(0,0),v(wide,0),v(a,h),v(0,h)],frus=G.revolveMesh([[0,0],[wide,0],[a,h],[0,h]],{N:48,a0:0,a1:Math.max(1e-5,TAU*first)}),other=G.revolveMesh([[0,0],[h,0],[h,a],[0,wide]],{N:48,a0:0,a1:Math.max(1e-5,TAU*second),axis:'x',O:off});
-    fit(D,t<3.4?[v(-wide,0,-wide),v(wide,h,wide)]:pointsOf(frus).concat(pointsOf(other)));
+    fit(D,t<3.4?[-wide,wide].flatMap(x=>[-h*.1,h*1.15].flatMap(y=>[-wide,wide].map(z=>v(x,y,z)))):pointsOf(frus).concat(pointsOf(other)));
     if(t<.8)D.panel(trapezoid,'sky',.1,'ink',2.4);else body(D,frus,'sky');
     if(t<3.4){D.line(v(0,-h*.1),v(0,h*1.15),'rose',2,{dash:[4,4]});D.edgeLab(v(0,0),v(wide,0),`긴 밑변 ${wide}`,{size:12,side:{x:0,y:1}});D.edgeLab(v(0,h),v(a,h),`짧은 밑변 ${a}`,{size:12,side:{x:0,y:-1}});D.height(v(0,0),v(0,h),`높이 ${h}`,{side:{x:-1,y:0},size:12});}
     if(t>=3.4) {

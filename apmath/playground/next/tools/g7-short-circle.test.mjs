@@ -431,6 +431,32 @@ test('condition display: rolling names the actual final target and keeps the sem
   }
 });
 
+test('visual regression: semicircle rolling radius and right-angle labels remain separately readable', async () => {
+  const lab = await load();
+  for (const R of [3, 5, 9, 12]) {
+    const plan = factory(lab, 'rl-semi', { cfg: { R, rolls: 3 }, rlSeed: 11, rlPick: 2 })[0];
+    const stateBefore = JSON.stringify(lab.s), modelBefore = JSON.stringify(plan.model);
+    near(plan.model.native.total, 2 * Math.PI * R);
+    for (const width of [390, 820, 1024, 1440]) {
+      let angleFrames = 0;
+      for (const t of [0, 2.2, 2.4, 2.7, 3.1, 4.1, 5.1, 5.4, 6.1, 7.3, 9.8]) {
+        const capture = conditionCapture(lab, plan, t, width);
+        const radii = capture.labels.filter(x => x.value.endsWith(' cm'));
+        assert.equal(radii.length, 1, `the current radius stays visible at ${R}/${width}/${t}`);
+        const radius = conditionLabel(capture, radii[0].value);
+        for (const label of capture.labels.filter(x => x.value === '90°' || /^[ABO]$/.test(x.value))) {
+          separateConditions(radius, conditionLabel(capture, label.value), `${R}/${width}/${t}: radius overlaps ${label.value}`);
+          if (label.value === '90°') angleFrames++;
+        }
+      }
+      assert.ok(angleFrames >= 4, 'both pivot stages and the final angle are covered');
+    }
+    assert.equal(JSON.stringify(lab.s), stateBefore, 'current radius, seed and selection remain unchanged');
+    assert.equal(JSON.stringify(plan.model), modelBefore, 'label placement cannot change the bound geometry or motion');
+    assert.equal(plan.duration, 9.8);
+  }
+});
+
 test('condition display: swept-circle radius and polygon dimensions stay in separate rows at entry and mid-motion', async () => {
   const lab = await load();
   for (const id of ['sw-square', 'sw-center', 'sw-rect']) for (const value of [{}, id === 'sw-rect' ? { swW: 6, swH: 4, swR: 1 } : { swA: 6, swR: 1 }, id === 'sw-rect' ? { swW: 3, swH: 2, swR: 2 } : { swA: 3, swR: 2 }]) {
