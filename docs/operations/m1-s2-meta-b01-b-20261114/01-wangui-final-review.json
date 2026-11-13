@@ -24,7 +24,20 @@
     "registrationHold": 24
   },
   "registrationStatus": "HOLD_IDENTITY_SOURCE_FINGERPRINT_MISMATCH_24",
-  "independent4SlotSample": "PENDING",
+  "independent4SlotSample": {
+    "status": "ACCEPTED",
+    "ordinals": [
+      2,
+      23,
+      24
+    ],
+    "scope": "THREE_QUESTIONS_ONLY",
+    "fileId": "1tIUqyldyjt8SfTVBjEGiTiW4ttuZRAtM",
+    "url": "https://drive.google.com/file/d/1tIUqyldyjt8SfTVBjEGiTiW4ttuZRAtM/view?usp=drivesdk",
+    "sha256": "a48b93f4edba0ff59c4e256a3510a73e687476089cc20942ac85a824c3845d49",
+    "byteLength": 6394,
+    "rawReadback": "VERIFIED"
+  },
   "independentDifficultyReview": {
     "ordinals": [
       14,
@@ -4149,5 +4162,35 @@
         "reason": "전체 인원 복원의 방법은 개수라는 목표명보다 도수와 전체 수의 비례 관계가 정확함"
       }
     }
-  ]
+  ],
+  "compactImport": {
+    "schemaVersion": "m1s2-exported-four-slot-import-v1",
+    "method": "Official validateData, compactItem and serialize exported functions; immutable Drive evidence referenced through committed small pointer",
+    "sourceArchiveFile": "original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.js",
+    "sourceGitBlobSha": "fb6ec18ab98d89125e73040df7bef9fe79267cc9",
+    "fullRawSha256": "1cf9ec270abbbf4d8d6b0ce274d569db8f11ecdd523667a8626520cabf42838d",
+    "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+    "validation": {
+      "fail": [],
+      "warn": [
+        "#1 only 3 distinct terms",
+        "#2 only 4 distinct terms",
+        "#5 only 4 distinct terms",
+        "#6 only 3 distinct terms",
+        "#7 only 3 distinct terms",
+        "#9 only 4 distinct terms",
+        "#11 only 3 distinct terms",
+        "#17 only 4 distinct terms"
+      ]
+    },
+    "sampled": [
+      2,
+      23,
+      24
+    ],
+    "target": "archive/data/item-4slot/original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.4slot.json",
+    "compactSha256": "26107807fad82e2fa2d1e0baf76dd9689175ecfbb05bb54b548cc8ffbae923fe",
+    "independentReviewClaim": "THREE_SAMPLES_ONLY",
+    "authoredSourceMutation": 0
+  }
 }
