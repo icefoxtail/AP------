@@ -33,6 +33,7 @@ import {failureGuidance} from './error-guidance.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
 const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../../').replace(/\\/g,'/')+'/';
+const hasProblemSourceStrokes=v=>!!v&&typeof v==='object'&&(Object.hasOwn(v,'problemSourceEdgeStyles')||Object.values(v).some(hasProblemSourceStrokes));
 const clip=v=>JSON.stringify(v??null).slice(0,600);
 // result.detail stays the 600 character clip above; result.detailFull and result.errors keep the whole thing (still capped so one huge detail cannot flood the file).
 const FULL_MAX=200000;
@@ -97,6 +98,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     if(authored.capability==='piecewise-discontinuous-spike-v1'&&authored.graphPlan?.referenceCurves!==undefined)authored=expandDiscontinuousPair(authored);
     // planeMarks.vectors / vectorOps (G3) are unfolded into arrows, labels and construction points before the exact model is built.
     if(authored.capability==='construction-spike-v1')authored=expandPlaneVectors(authored);
+    if(hasProblemSourceStrokes(authored)&&(surface!=='PROBLEM_VISUAL'||authored.capability!==sol.SOLID_CAPABILITY))throw Error('PROBLEM_SOURCE_STROKE_STANDALONE_REQUIRED');
     row.capability=authored.capability;log.setPlan(authored,meta.fam);where.plan=authored;
     // Writes the shared success outputs (state, svg, optional observer packet).
     const bind=async({plan,model,composed,capture})=>{
@@ -207,7 +209,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       // A quadratic inequality chain is the composite it stands for: its graph panel over its number-line panel (solved exactly first).
       // A standalone number-line figure (number-line-figure-v1) is the one-panel composite it stands for.
       stage=authored.capability===chain.CHAIN_CAPABILITY||authored.capability===nlf.FIGURE_CAPABILITY||authored.capability===sol.SOLID_CAPABILITY?'chain':stage;
-      let current=authored.capability===chain.CHAIN_CAPABILITY?chain.expandInequalityChain(authored):authored.capability===nlf.FIGURE_CAPABILITY?nlf.expandNumberLineFigure(authored):authored.capability===sol.SOLID_CAPABILITY?sol.expandSolidFigure(authored):authored,checked,framedPanels,panelModels,plan,measured,composed;stage='composite-panels';
+      let current=authored.capability===chain.CHAIN_CAPABILITY?chain.expandInequalityChain(authored):authored.capability===nlf.FIGURE_CAPABILITY?nlf.expandNumberLineFigure(authored):authored.capability===sol.SOLID_CAPABILITY?sol.expandSolidFigure(authored,{identity}):authored,checked,framedPanels,panelModels,plan,measured,composed;stage='composite-panels';
       for(let attempt=0;attempt<3;attempt++){
       const watch=stopwatch();
       where.plan=current;
@@ -235,7 +237,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
           framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(scf.statChartSize(solved));continue;
         }
         if(comp.isSolidPanel(panel.plan)){
-          const solved=sol.solveSolidFigure(panel.plan);
+          const solved=sol.solveSolidFigure(panel.plan,{identity});
           framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(sol.figurePanelSize(solved));continue;
         }
         if(comp.isNumberLinePanel(panel.plan)){

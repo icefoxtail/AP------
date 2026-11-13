@@ -1,5 +1,17 @@
 # Problem figure production path
 
+## Bounded source edge strokes for a problem prism
+
+An uncut, standalone `PRISM` may opt into `problemSourceEdgeStyles: {scope:"PROBLEM_ONLY", sourceImageRef:{path,bytes,sha256}, edges:[{solid:"s1",from:"B",to:"E",stroke:"DASHED"},{solid:"s1",from:"D",to:"F",stroke:"SOLID"}]}`. This preserves a source illustration whose printed stroke convention differs from the fixed orthographic depth test. It does not assert that a source dash was computed as geometric hiding.
+
+The caller must supply a recomputable actual `PROBLEM_VISUAL` identity to `solveSolidFigure`, `solidFigureSpec` and `expandSolidFigure` through their optional `{identity}` argument. Default/solution calls reject this field; the composer checks the same identity before typesetting. Production accepts it only from a standalone solid author plan, not a general composite. The sole internal one-panel solid expansion retains that restriction.
+
+The preserved source must be the exact repository PNG `archive/assets/images/<sourceExamId>/q<ordinal>.png` for that identity. Its path, byte count, SHA and PNG signature are verified in both producer and Python observer. The PNG remains the authority after the student's JS `image` reference is changed to the newly rendered SVG; no dependency on the new SVG path replaces this original byte binding.
+
+At most two existing edges may specify `SOLID` or `DASHED`. Unknown vertices, non-edges, duplicate unordered pairs, mixed visibility runs, overlays (`segments`), helper points, cuts, nets, round solids, multi-solid/grid/space plans, and custom stroke width/colour/dash fields are refused. Original vertices/faces/edges/coordinates and automatically computed depth runs remain unchanged. The original edge primitive is reused at the ordinary engine width. Only opted-in edges carry `data-source-stroke` and `data-computed-vis`; `data-vis` still describes the actual displayed dash.
+
+Python independently re-derives the prism and automatic hiding, checks `data-computed-vis` against that geometry, and separately checks the source declaration and displayed stroke. Edge endpoints, complete coverage, edge inventory, normal width/colour, labels and final rendered layout retain their checks. Default plans preserve their previous model/spec fingerprints and SVG serialization. Real rendering and source-only independent visual review remain required; model/spec tests are not publication evidence. Never copy student's handwritten overdraw weight as a source stroke.
+
 This opt-in path replaces an existing problem `image` using the existing exact geometry engine, typesetter, primitive observers and rendered-layout checks. It does not publish an exam or grant a visual quality verdict. The original PNG, source JS and every solution asset remain unchanged during rendering.
 
 Use the normal author plan from `AUTHOR_GUIDE.md`. In the item, add `surface: "PROBLEM_VISUAL"`:

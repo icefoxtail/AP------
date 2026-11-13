@@ -1,16 +1,58 @@
 {
   "ordinal": 6,
   "source_image": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q6.png",
-  "source_review": "Viewed the actual source PNG. The pentagon runs from its lower-left vertex up the left side, across the top, down the right side, then back along a horizontal baseline. The four printed interior measures are 110°, 110°, 120°, and 78°; x labels the exterior angle at the lower-right vertex on the rightward baseline extension.",
+  "source_review": "Viewed both the preserved q6 PNG and original PDF page 1. Use the source PDF for source geometry when they differ; the PDF right edge from D (upper-right) to E (lower-right) slopes down-left, while the existing PNG edge slopes down-right. The plan follows the PDF orientation.",
   "source_facts": {
-    "vertices": ["lower-left", "left-upper", "top", "upper-right", "lower-right"],
+    "vertices": [
+      "lower-left",
+      "left-upper",
+      "top",
+      "upper-right",
+      "lower-right"
+    ],
     "cyclic_order": "A-B-C-D-E-A",
-    "given_angle_labels": ["A=110°", "B=110°", "C=120°", "D=78°"],
+    "given_angle_labels": [
+      "A=110°",
+      "B=110°",
+      "C=120°",
+      "D=78°"
+    ],
     "unknown_label": "x at E, between side ED and the rightward extension of EA",
     "baseline": "EA is horizontal; the extension continues rightward from E",
     "point_names": "No vertex names are printed in the source diagram. Internal construction reference points are hidden."
   },
-  "allowed_marks": ["the four printed angle values", "the variable label x at the shown exterior angle", "pentagon edges and baseline extension"],
-  "forbidden_solution_elements": ["the 5th interior angle y or its value", "122°", "the answer 58°", "the sum 540°", "solution-only angle relation or auxiliary construction"],
-  "uncertainties": ["Exact side lengths are not specified; the construction uses neutral proportions solely to realize the given angle directions and layout."]
+  "allowed_marks": [
+    "the four printed angle values",
+    "the variable label x at the shown exterior angle",
+    "pentagon edges and baseline extension"
+  ],
+  "forbidden_solution_elements": [
+    "the 5th interior angle y or its value",
+    "122°",
+    "the answer 58°",
+    "the sum 540°",
+    "solution-only angle relation or auxiliary construction"
+  ],
+  "uncertainties": [
+    "Exact side lengths are not specified; the construction uses neutral proportions solely to realize the given angle directions and layout."
+  ],
+  "source_alignment_review": {
+    "authority": "Original exam PDF page 1 is primary geometry evidence; the existing q6 PNG is preserved for comparison and is not silently treated as authoritative where placement differs.",
+    "original_pdf": {
+      "path": ".tmp/problem-svg/source/hyangrim24.pdf",
+      "sha256": "a2a4ed5d2e98eb4fbf8f736c6d172b92a376b1fd8dc20de0da2aad0bb7c1340c"
+    },
+    "pdf_page_render": {
+      "path": ".tmp/problem-svg/source/page-01.png",
+      "sha256": "c0dd686e2be08fe8ea9fc20fac8ee8ab405e55dffe9ff4703e4243f307cc63ed"
+    },
+    "preserved_png": {
+      "path": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q6.png",
+      "sha256": "5ce54a02ea1b598639396bed0d9d89b6b4155a7659dbb462d4552970941420dc"
+    },
+    "plan_sha256_verified_unchanged": "09d1bdbd3dc6d38138d60e638046629197028d4c0209819d3147b7583a900807",
+    "verified_difference": "In the PDF, right side D→E slopes down-left (upper-right D to lower-right E). In the preserved PNG it slopes down-right. The current plan uses the PDF relative placement.",
+    "decision": "Retain q6 plan geometry; record and resolve this source-PNG relative-placement discrepancy in favor of the source PDF.",
+    "answer_or_solution_content_used": false
+  }
 }

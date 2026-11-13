@@ -291,6 +291,7 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
   let ownBrowser=null;
   const chrome=async()=>browser??(ownBrowser??=await launchBrowser());
   try{
+    if(Array.isArray(panels)&&panels.some(p=>p.plan?.problemSourceEdgeStyles)&&(identity?.surface!=='PROBLEM_VISUAL'||plan?.chain!==SOLID_CAPABILITY||panels.length!==1))throw new Stop('PROBLEM_SOURCE_STROKE_STANDALONE_REQUIRED');
     const checked=compositePanels(plan);
     const panelLayout=compositePanelLayout(checked,plan);
     state.layout={kind:panelLayout.kind,columns:panelLayout.columns,rows:panelLayout.rows};
