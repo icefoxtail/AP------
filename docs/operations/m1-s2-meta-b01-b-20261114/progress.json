@@ -27,11 +27,13 @@
       "questionCount": 24,
       "baseSourceGitBlob": "5be76d727319b1f0f2f68872822f5fb8ee253b52",
       "baseSourceSha256": "52ecac75fa35ff8f6c5dc94ca48150d933f38b272d01a69ace25d42a09103b42",
-      "state": "REVIEW_COMPLETE_REGISTRATION_HOLD",
+      "state": "REVIEW_COMPLETE_WITH_EXPLICIT_HOLDS",
       "completedQuestions": 24,
       "reviewArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/01-wangui-final-review.json",
-      "nextAction": "MAIN_MERGE_THEN_REGISTRATION_DEBT_HANDOFF",
-      "fourSlot": "IMPORTED_24_WITH_INDEPENDENT_SAMPLE_3"
+      "nextAction": "IMPORT_COMPACT_THEN_CI_AND_MAIN_MERGE",
+      "fourSlot": "VALIDATED_24_READY_FOR_COMPACT_IMPORT",
+      "sourceBlob": "4d69b7bb178452d58e4daa9b9dd3b1d5340da654",
+      "nativeRegistration": "HOLD_24_IDENTITY_SOURCE_FINGERPRINT"
     },
     {
       "sourcePath": "archive/exams/original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js",
@@ -80,7 +82,10 @@
     "palmaSourcePreservation": "PASS_24",
     "palmaNativeRegistration": "HOLD_24_IDENTITY_FINGERPRINT",
     "palma-finalSourcePreservation": "PASS_24",
-    "palma-finalNativeRegistration": "HOLD_24_IDENTITY_FINGERPRINT"
+    "palma-finalNativeRegistration": "HOLD_24_IDENTITY_FINGERPRINT",
+    "wangui-finalFinalStudentPreservation": "PASS_24",
+    "wangui-finalFourSlotQuoteValidation": "FAIL_0"
   },
-  "nextAction": "PUBLISH_REMAINING_EXAMS_AND_REVIEW_4SLOT"
+  "nextAction": "IMPORT_FINAL_COMPACT_AND_WAIT_FOR_REQUIRED_CI",
+  "batchPr": 1973
 }
