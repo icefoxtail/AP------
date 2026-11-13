@@ -1,0 +1,799 @@
+{
+  "schemaVersion": "exam-meta-candidate-comparison-checkpoint-v1",
+  "state": "CANDIDATE_PENDING_RPM_REFINEMENT_MERGE_AND_ROOT_CONFIRMATION",
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "owner": "GPT_ROOT_933015CD0A4F",
+  "reviewer": "exam_reviewer",
+  "preparedAtUtc": "2026-11-13T09:26:09.136690+00:00",
+  "checkpointBranch": "review/m1-existing-meta-20261113",
+  "checkpointHead": "adf587b63e860722c9c8ec630509e4d8fe7b0a2a",
+  "baselineMain": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+  "purpose": "Preserve the existing q13-24 classification comparison and evidence references while the exam review remains paused. This document is a candidate checkpoint, not an approval, quality PASS, correction receipt or completed exam.",
+  "source": {
+    "path": "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+    "sourceArchiveFile": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+    "questionCount": 24,
+    "sourceBlob": "c36139a90e9bcd378577ece8f891423bee6b0a19",
+    "sourceSha256": "1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564"
+  },
+  "sourceBindingCheck": {
+    "status": "MATCHED_EXISTING_SOURCE_AND_EVIDENCE_ONLY",
+    "baselineAndCheckpointHeadBlobEqual": true,
+    "workingSourceSha256Matches": true,
+    "sourceOrdinalAndRecordedMetadataMatches": 12,
+    "uidSidecarBindingMatches": 12,
+    "sidecarFingerprintMatches": 12,
+    "priorVisualAssetHashesMatched": 20,
+    "sourceUidStorage": "UIDs are bound by the existing question_metadata sidecar to source file/ordinal; source questions contain id rather than an embedded questionUid.",
+    "qualityApprovalProduced": false
+  },
+  "scope": {
+    "comparisonOrdinals": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "candidateComparisonQuestionCount": 12,
+    "examQuestionCount": 24,
+    "completedExams": 0,
+    "totalExams": 44,
+    "remainingExams": 44,
+    "metadataChangesApplied": 0,
+    "examReviewComplete": false
+  },
+  "approvalStatus": "NOT_APPROVED",
+  "qualityStatus": "NOT_A_QUALITY_PASS",
+  "readyForRuntimeApply": false,
+  "candidateSummary": {
+    "KEEP": 5,
+    "CORRECT": 1,
+    "TYPE_GAP": 6,
+    "meaning": "These are preserved reviewer candidates only. KEEP is not a completed review or approval; CORRECT and TYPE_GAP have not been applied."
+  },
+  "evidenceReferences": {
+    "originalCandidateLedger": {
+      "path": ".tmp/m1-meta-review/01-reviewer-decisions.json",
+      "sha256": "74ebbb7ccd65020e4d8619777030fc8f16c920595a96a79042ce8d43d02a8d2a",
+      "savedAtUtc": "2026-11-13T08:44:00.045797+00:00"
+    },
+    "durableSourceReadCheckpoint": {
+      "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+      "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521",
+      "segmentPointer": "/sourceReadSegments/1"
+    },
+    "originalSemanticFreeze": {
+      "path": ".tmp/m1-meta-review/01-reviewer-semantic.json",
+      "sha256": "7523844dc2eb3c3aaa25c7a56e6fc571fd1c576cc3e3c069d34d19763fc6a069",
+      "frozenBeforeExistingMetadataRead": true
+    },
+    "recordedSidecarSnapshot": {
+      "path": ".tmp/m1-meta-review/01-reviewer-existing-sidecar.json",
+      "sha256": "d02e4bb1c9984da7b5b523041ee7d0068efdc4139efa494ce1c7b9d7ac458ab3"
+    },
+    "baselineAuthorityRefs": [
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+        "gitBlob": "c58b07b93900bfa85ef4c1d392bea9405717c984"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+        "gitBlob": "64f5114ca493d8405c5c4ff23e087db680cb4754"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+        "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+        "gitBlob": "fe8a9e23dbcd98b7057035a8bde22bb81893564f"
+      },
+      {
+        "path": "archive/data/master_tables/js_archive_tag_master.json",
+        "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+        "gitBlob": "c12987771542028fbaf76d604ee1d071952a1c89"
+      },
+      {
+        "path": "archive/data/question_metadata.json",
+        "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+        "gitBlob": "cd29a0e64686707cd8d528c33562a48fc9b515e0"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+        "gitBlob": "ba2f9577f4feb148dba342cbec6db8dd3be4d123"
+      }
+    ]
+  },
+  "items": [
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_2cf0069ab9b9afaa64e02a03436d1ca0c60c3188c4314bc3bfd22f1b135e2d95",
+      "candidateDisposition": "CORRECT",
+      "decisionState": "PENDING_ROOT_CONFIRMATION",
+      "classificationReason": "RPM200의 L4 조건으로 정다각형 찾기와 실제 주어진 정오각형·정팔각형 각 계산이 불일치한다. 현재 PT/TPL은 복합 정다각형 각 유형이나 RPM 연결 정합성을 별도 검토해야 한다.",
+      "recordedMetadataAtBaseline": {
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "rpmPrimaryRecordId": "M1-RPM-200",
+        "rpmPrimaryPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "정다각형",
+          "l4": "조건으로 정다각형 찾기"
+        },
+        "rpmScope": "M1-2",
+        "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+        "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
+        "canonicalBindingStatus": "ACTIVE",
+        "runtimeMaterializationStatus": "ACTIVE_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4
+      },
+      "proposedMetadataNotApplied": {
+        "rpmPrimaryRecordId": "M1-RPM-196",
+        "rpmPrimaryPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "다각형의 내각과 외각",
+          "l4": "정다각형의 각"
+        }
+      },
+      "openIssueOrFollowup": "후보 RPM196 또는 RPM199의 정확한 세부 유형 연결을 비교하고, 복합각 PT/TPL을 잘못된 RPM200에 억지 유지하지 않는다. current TPL에는 OCTAGON_PENTAGON_SIDE_EXTENSION_ANGLE 별칭이 있지만 definition은 triangle-square-pentagon 배치라 정의와 별칭 정합성 확인 필요.",
+      "evidenceRefs": {
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": 13,
+        "sourceFingerprint": "041ab5c742e30e9b13b3abd846a847dae52d03e0a369c3c616fbe51437fc4844",
+        "contentFingerprint": "e95dd57ff0253883d55e8cc418a1f1751d2e6d95cc8a8f7fc65efe712e7d6aba",
+        "semanticReadCheckpoint": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+        "semanticReadPointer": "/sourceReadSegments/1/items/0",
+        "sidecarMatchesRecordedSourceMetadataAtBaseline": true,
+        "assetReferences": [
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q13.png",
+            "sha256": "b5c9fe020e076528c3bb4ae40d11829dcc9761eb5fd14212c2bd48f49f44a4ec",
+            "gitBlob": "02483baa591316b53e933500905e666fe9e9bc39",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "image",
+            "viewedInPriorFrozenRead": true
+          },
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q13-solution.svg",
+            "sha256": "e55bc84595f888cb4e67736e94caad9e95c2aeaaa1b7a6a09b818d031ecb6717",
+            "gitBlob": "6d40828444338098cf0f8639f6b5a0f743680369",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "solutionImage",
+            "viewedInPriorFrozenRead": true
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_444e22172000b4cde0a859d8e727a75b44096ab6ff000a86410da1c87f9b494d",
+      "candidateDisposition": "KEEP",
+      "decisionState": "PENDING_ROOT_CONFIRMATION",
+      "classificationReason": "외각으로 변 수를 구하고 내각의 합을 구하는 정다각형 각 유형이 RPM196 및 현재 PT/TPL과 정합한다.",
+      "recordedMetadataAtBaseline": {
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "rpmPrimaryRecordId": "M1-RPM-196",
+        "rpmPrimaryPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "다각형의 내각과 외각",
+          "l4": "정다각형의 각"
+        },
+        "rpmScope": "M1-2",
+        "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+        "canonicalBindingStatus": "ACTIVE",
+        "runtimeMaterializationStatus": "ACTIVE_BOUND",
+        "integrationPattern": "DIRECT",
+        "difficultyBucket": 2
+      },
+      "proposedMetadataNotApplied": {},
+      "openIssueOrFollowup": "",
+      "evidenceRefs": {
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": 14,
+        "sourceFingerprint": "efd009e4b338cc54c7831f34f956d39bda63cddab23fed9fa63278bbe1edbc02",
+        "contentFingerprint": "cfd032bac727f738026c8bebddab53b8ef10d5f45d288f039285bdd41822f0ad",
+        "semanticReadCheckpoint": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+        "semanticReadPointer": "/sourceReadSegments/1/items/1",
+        "sidecarMatchesRecordedSourceMetadataAtBaseline": true,
+        "assetReferences": []
+      }
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_fba10cd79c78e131b33c9b8b44799e6585838df323d81eb4b22f9af5a0a786b1",
+      "candidateDisposition": "KEEP",
+      "decisionState": "PENDING_ROOT_CONFIRMATION",
+      "classificationReason": "같은 원의 호 길이와 중심각 비례가 핵심이며 RPM202와 부채꼴 길이·넓이 template 범위 안이다. 평행선은 보조 수단이다.",
+      "recordedMetadataAtBaseline": {
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
+        "rpmPrimaryRecordId": "M1-RPM-202",
+        "rpmPrimaryPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "원과 부채꼴의 기본",
+          "l4": "부채꼴의 호의 길이"
+        },
+        "rpmScope": "M1-2",
+        "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "canonicalBindingStatus": "ACTIVE",
+        "runtimeMaterializationStatus": "ACTIVE_BOUND",
+        "integrationPattern": "DIRECT",
+        "difficultyBucket": 4
+      },
+      "proposedMetadataNotApplied": {},
+      "openIssueOrFollowup": "",
+      "evidenceRefs": {
+        "sourceOrdinal": 15,
+        "sourceQuestionNo": 15,
+        "sourceFingerprint": "8842e47baf594be21ba255790c07cabcced8b89edef146d6434f91d23db465c2",
+        "contentFingerprint": "c69b3341a06ee0043539c4e9bee7bf192b2208652d58390d189b87ffc5885c37",
+        "semanticReadCheckpoint": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+        "semanticReadPointer": "/sourceReadSegments/1/items/2",
+        "sidecarMatchesRecordedSourceMetadataAtBaseline": true,
+        "assetReferences": [
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q15.png",
+            "sha256": "3a59390a1bac2f8bbff47c1911a8cc9d9d9bc911e3154cae9a6e8c4a66d7ef15",
+            "gitBlob": "6274ddbfb29f3cfe0ff3d75737b470043e01a107",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "image",
+            "viewedInPriorFrozenRead": true
+          },
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q15-solution.svg",
+            "sha256": "5587e0d2805254f1d61c751dc91493473d7209aa5d7e2326602a637df16c9599",
+            "gitBlob": "018d7617511230f593713ca2e4110662859fed94",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "solutionImage",
+            "viewedInPriorFrozenRead": true
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_c7e5d37effec38dafc5a9f4c1cc24fc969d5d04059bb629972e00276e2c7f3a2",
+      "candidateDisposition": "KEEP",
+      "decisionState": "PENDING_ROOT_CONFIRMATION",
+      "classificationReason": "중심각을 정한 다음 부채꼴 넓이를 구하므로 RPM203 및 현재 template과 정합한다.",
+      "recordedMetadataAtBaseline": {
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
+        "rpmPrimaryRecordId": "M1-RPM-203",
+        "rpmPrimaryPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "부채꼴의 넓이",
+          "l4": "중심각을 이용한 넓이"
+        },
+        "rpmScope": "M1-2",
+        "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "canonicalBindingStatus": "ACTIVE",
+        "runtimeMaterializationStatus": "ACTIVE_BOUND",
+        "integrationPattern": "DIRECT",
+        "difficultyBucket": 4
+      },
+      "proposedMetadataNotApplied": {},
+      "openIssueOrFollowup": "",
+      "evidenceRefs": {
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": 16,
+        "sourceFingerprint": "038979c9d25c0beed41d0b1acee79691f3658aafc6690a65af2bf7f2c5ea77fe",
+        "contentFingerprint": "3e0c8d48377a23d2ff1d57f183aefce45349b9898676765cd78ede3de0f2fc8a",
+        "semanticReadCheckpoint": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+        "semanticReadPointer": "/sourceReadSegments/1/items/3",
+        "sidecarMatchesRecordedSourceMetadataAtBaseline": true,
+        "assetReferences": [
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q16.png",
+            "sha256": "3f7867bc13b2af6f36fc0ddf9976b10ef7afd19f6e936154e259400171813e7b",
+            "gitBlob": "fd54e808f9539bddefeeb5a1bcc3f414f827feea",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "image",
+            "viewedInPriorFrozenRead": true
+          },
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q16-solution.svg",
+            "sha256": "83280e05b80198b929c8935824bd9b5a5a42925ae4525de12e2b7812d55e7006",
+            "gitBlob": "fa0f2894768c163fae95fb7b29d7abe58dda9db4",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "solutionImage",
+            "viewedInPriorFrozenRead": true
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_649d55ab303ead8530d7334f7bf0d24194e631e5ac0191d2ba99dddfaf2f2eb4",
+      "candidateDisposition": "TYPE_GAP",
+      "decisionState": "PENDING_ROOT_CONFIRMATION",
+      "classificationReason": "공간의 직선·평면 위치관계로 RPM181과 소단원은 정확하다. 현 crosswalk RPM_ONLY/NO_ACTIVE_MAPPING은 세부 유형 연결 결손을 정직하게 드러낸다.",
+      "recordedMetadataAtBaseline": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "rpmPrimaryRecordId": "M1-RPM-181",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "위치 관계",
+          "l3": "공간에서의 위치 관계",
+          "l4": "직선과 평면의 위치 관계"
+        },
+        "rpmScope": "M1-2",
+        "rpmCrosswalkStatus": "RPM_ONLY",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "canonicalBindingStatus": "NO_ACTIVE_MAPPING",
+        "runtimeMaterializationStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+        "integrationPattern": "DIRECT",
+        "difficultyBucket": 4
+      },
+      "proposedMetadataNotApplied": {},
+      "openIssueOrFollowup": "문항 의미 보존. 빈 PT/TPL 임의 채우기 금지. 정확한 공간 위치관계 PT/TPL 및 binding 존재 여부는 별도 정본 작업에서 마감.",
+      "evidenceRefs": {
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": 17,
+        "sourceFingerprint": "149c459708bc77abdc15c87a9aba66c8abac37565bb9c8f7a3ae87593a1fa3ec",
+        "contentFingerprint": "9fe4722e2a42c1149cf640db648ed2589e2071a5cd741990787e1da0e8cfd7c2",
+        "semanticReadCheckpoint": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+        "semanticReadPointer": "/sourceReadSegments/1/items/4",
+        "sidecarMatchesRecordedSourceMetadataAtBaseline": true,
+        "assetReferences": [
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q17-solution.svg",
+            "sha256": "b3e1350e177b550a4554e56b01c7d0e5b99c04a5274e24402bb73a14ddfb7651",
+            "gitBlob": "966612b8873f9f386453f5ed9bd93aea63e40e62",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "solutionImage",
+            "viewedInPriorFrozenRead": true
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_7b6ffc097c4b1406b5cee2111ebb8986751ffe11d939b413e0f90e0da85945e7",
+      "candidateDisposition": "TYPE_GAP",
+      "decisionState": "PENDING_ROOT_CONFIRMATION",
+      "classificationReason": "RPM192 SAS 합동은 맞지만 현재 CONGRUENCE_UNIQUENESS의 판별·유일조건 template보다 합동 대응각 적용이 실제 핵심이다. BASIC_FIGURE=점·선·면과 각은 작도·합동 소단원 표현을 잃는다.",
+      "recordedMetadataAtBaseline": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "rpmPrimaryRecordId": "M1-RPM-192",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동"
+        },
+        "rpmScope": "M1-2",
+        "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+        "canonicalBindingStatus": "ACTIVE",
+        "runtimeMaterializationStatus": "ACTIVE_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 5
+      },
+      "proposedMetadataNotApplied": {
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER"
+      },
+      "openIssueOrFollowup": "후보는 ACTIVE 정본에 존재하며 정의와 60도 회전 SAS 구조가 일치한다. RPM192 crosswalk 현재 DIRECT는 유일조건으로만 향하므로 resolver와 binding gap 확인 전 임의 치환하지 않는다. 기존 EQUILATERAL_TRIANGLE_SAS 별칭은 기존 UNIQ TPL로 귀결된다.",
+      "evidenceRefs": {
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": 18,
+        "sourceFingerprint": "e7ecc9649a7a2a31dca70178cb2a8984dd1470cb26f9e3ff45f57d6775e3c4e6",
+        "contentFingerprint": "562cfbca667b945746170c3b25641b98b1880de8ff7b722289972e7370355893",
+        "semanticReadCheckpoint": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+        "semanticReadPointer": "/sourceReadSegments/1/items/5",
+        "sidecarMatchesRecordedSourceMetadataAtBaseline": true,
+        "assetReferences": [
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q18.png",
+            "sha256": "e59e42bd252bce1452e8ff04031d4df10cd4e8e3c1dc1aa788d1f8ed0733864a",
+            "gitBlob": "c4a9d1b537e9b25462297e72a3927cfa9825ebec",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "image",
+            "viewedInPriorFrozenRead": true
+          },
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q18-solution.svg",
+            "sha256": "5ff3626edfd11a7fff2ea497f5591ab950599b906c4c7f422cc04edc3cef88b3",
+            "gitBlob": "445f93c4b4079749dbc9eb6d205cbe377ebc4088",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "solutionImage",
+            "viewedInPriorFrozenRead": true
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_c4734e15ce731560fe8bfd5c52b47434248d820a881b48fc6941d9010096bcf6",
+      "candidateDisposition": "TYPE_GAP",
+      "decisionState": "PENDING_ROOT_CONFIRMATION",
+      "classificationReason": "RPM197 각의 크기 계산은 적합하나 기존 EXTERIOR_SUM template 정의는 삼각형 세 외각 합360을 이용한 미지수 계산이다. 실제는 교차다각형을 삼각형·사각형으로 분할한 각합이다.",
+      "recordedMetadataAtBaseline": {
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "rpmPrimaryRecordId": "M1-RPM-197",
+        "rpmPrimaryPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "각의 크기 계산"
+        },
+        "rpmScope": "M1-2",
+        "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
+        "templateKey": "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
+        "canonicalBindingStatus": "ACTIVE",
+        "runtimeMaterializationStatus": "ACTIVE_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4
+      },
+      "proposedMetadataNotApplied": {},
+      "openIssueOrFollowup": "RPM197 FAMILY 후보 3종 EXTERIOR_SUM/RATIO/BISECTOR 중 정확한 복합 교차다각형 각합 후보가 확인되지 않았다. 정확 유형/연결 보완 없이는 잘못된 삼각형 template 강제 금지.",
+      "evidenceRefs": {
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": 19,
+        "sourceFingerprint": "be137063c009744930d5278d5d2099ce9dc138af062e727f19653dd07d8d8abe",
+        "contentFingerprint": "1c9a8c164f795451978e5f0f3b7dac99b09d2a21b3ff8e63e8a87fef0f64e8dc",
+        "semanticReadCheckpoint": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+        "semanticReadPointer": "/sourceReadSegments/1/items/6",
+        "sidecarMatchesRecordedSourceMetadataAtBaseline": true,
+        "assetReferences": [
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q19.png",
+            "sha256": "cdd2fa0c33120040aa147246f65e249c1f257dd6f859b883d00fff1ccda36e93",
+            "gitBlob": "ed1b7835d77723bd3859364e3c71322ca99198bb",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "image",
+            "viewedInPriorFrozenRead": true
+          },
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q19-solution.svg",
+            "sha256": "96f18bb1f8327cbb17f8b0d7c6a3120c2eee2af21fb5ecdc1319259088b5fb7a",
+            "gitBlob": "8093248bc49e7570d0499e9558d350c6c56e280b",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "solutionImage",
+            "viewedInPriorFrozenRead": true
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_73d4da5316f252d9835ecaa3d66a8b1eb09a4d7ed5c6aa07e8d20327466ec136",
+      "candidateDisposition": "KEEP",
+      "decisionState": "PENDING_ROOT_CONFIRMATION",
+      "classificationReason": "줄이 모서리를 돌아가며 남는 길이를 반지름으로 하는 부채꼴 영역들의 합이므로 RPM206 복합 넓이와 template이 정합한다.",
+      "recordedMetadataAtBaseline": {
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
+        "rpmPrimaryRecordId": "M1-RPM-206",
+        "rpmPrimaryPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "복합도형",
+          "l4": "부채꼴을 포함한 넓이"
+        },
+        "rpmScope": "M1-2",
+        "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "canonicalBindingStatus": "ACTIVE",
+        "runtimeMaterializationStatus": "ACTIVE_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 5
+      },
+      "proposedMetadataNotApplied": {},
+      "openIssueOrFollowup": "",
+      "evidenceRefs": {
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": 20,
+        "sourceFingerprint": "72a06cb472da0a0a11d9c5c8a83aeb0cce751a7489a294fece733efb69e24f6d",
+        "contentFingerprint": "1cbe10692c4da46204052d196ca1b67ac1770ad86d4656435c59b2b4fdc8d0d5",
+        "semanticReadCheckpoint": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+        "semanticReadPointer": "/sourceReadSegments/1/items/7",
+        "sidecarMatchesRecordedSourceMetadataAtBaseline": true,
+        "assetReferences": [
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q20.png",
+            "sha256": "b04ba6815c0bd08ad8e77808d648b3c1f936abbbcd2726e11a31d87587e5c071",
+            "gitBlob": "03d27ede3b04c4b8257b4eeb968bc4649cbc8d8b",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "image",
+            "viewedInPriorFrozenRead": true
+          },
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q20-solution.svg",
+            "sha256": "6186baf9a2662b32eb95a796de56638370128363d80198d38e88eae15ad1e815",
+            "gitBlob": "91a5dc4610eea5f217791524a3d6e684a1a254c1",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "solutionImage",
+            "viewedInPriorFrozenRead": true
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_3d9462aa63a14abe817fdd1b002390991d3d1a189b5d056fc38bfc85dabb5c07",
+      "candidateDisposition": "TYPE_GAP",
+      "decisionState": "PENDING_ROOT_CONFIRMATION",
+      "classificationReason": "RPM174 거리·중점은 정확하고 현재 RPM_ONLY를 유지해야 한다. 그러나 정본에 실제 선분비·중점 PT/TPL이 있어 crosswalk 연결 결손 후보가 있다.",
+      "recordedMetadataAtBaseline": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "rpmPrimaryRecordId": "M1-RPM-174",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "점·선·면",
+          "l4": "두 점 사이의 거리와 중점"
+        },
+        "rpmScope": "M1-2",
+        "rpmCrosswalkStatus": "RPM_ONLY",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "canonicalBindingStatus": "NO_ACTIVE_MAPPING",
+        "runtimeMaterializationStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+        "integrationPattern": "DIRECT",
+        "difficultyBucket": 3
+      },
+      "proposedMetadataNotApplied": {
+        "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+        "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT"
+      },
+      "openIssueOrFollowup": "정본 TPL에는 TWO_MIDPOINTS_WITH_SEGMENT_LENGTH_RATIO 별칭 존재. binding/resolver 검증 전 운영 키 수동 치환 금지.",
+      "evidenceRefs": {
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": 21,
+        "sourceFingerprint": "213c5243eca81264de8ee02077830aa5f40bf201135aab4dff819b98e6d19d82",
+        "contentFingerprint": "9fc22edd1c7e02bd002d3f34cd16c6eb49d21cee7dea4ff3a51a6436e047be6b",
+        "semanticReadCheckpoint": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+        "semanticReadPointer": "/sourceReadSegments/1/items/8",
+        "sidecarMatchesRecordedSourceMetadataAtBaseline": true,
+        "assetReferences": [
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q21-solution.svg",
+            "sha256": "e1a4413c01a11c4643084441232cba20d7c5265e24ebc75e40386ec52488144c",
+            "gitBlob": "6b979021d19beedfcb9acc5cf8a01f8f784aa6e6",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "solutionImage",
+            "viewedInPriorFrozenRead": true
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_df32ee2e668d920b4718216a37e3012094fd902f9fd558a5bdb60c17042c20a3",
+      "candidateDisposition": "TYPE_GAP",
+      "decisionState": "PENDING_ROOT_CONFIRMATION",
+      "classificationReason": "RPM175 각의 크기는 적합하다. 현재 VERTICAL_ANGLE_TRANSFER는 두 삼각형과 교차 직선의 맞꼭지각을 쓰는 정의인데 실제 그림에는 삼각형·맞꼭지각 없이 평각과 인접각 삼등분 관계만 있다.",
+      "recordedMetadataAtBaseline": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "rpmPrimaryRecordId": "M1-RPM-175",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "각",
+          "l4": "각의 크기"
+        },
+        "rpmScope": "M1-2",
+        "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+        "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
+        "canonicalBindingStatus": "ACTIVE",
+        "runtimeMaterializationStatus": "ACTIVE_BOUND",
+        "integrationPattern": "DIRECT",
+        "difficultyBucket": 3
+      },
+      "proposedMetadataNotApplied": {},
+      "openIssueOrFollowup": "RPM175 FAMILY 후보 네 종 모두 삼각형 연쇄각 계열이다. 평각 분할 비례 관계용 정확한 키/연결이 필요. 현재 잘못된 ACTIVE 분류는 재개 후 해소 대상.",
+      "evidenceRefs": {
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": 22,
+        "sourceFingerprint": "f682a5a8a889e2b661d63db9759ee648f3b8f443293c19ab72b23521e3d0af62",
+        "contentFingerprint": "3c9d59a061ad0f47cbac8729d358472333184a3dd839479bc9f6c8bddaec173e",
+        "semanticReadCheckpoint": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+        "semanticReadPointer": "/sourceReadSegments/1/items/9",
+        "sidecarMatchesRecordedSourceMetadataAtBaseline": true,
+        "assetReferences": [
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q22.png",
+            "sha256": "b6b4613a0af854d81a7f89f7a7de0c482baad2b9bcd96cd5a389e56b8ef42e34",
+            "gitBlob": "a2a515db6ae3d8832d3f42e32dd092a75ca7b8c9",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "image",
+            "viewedInPriorFrozenRead": true
+          },
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q22-solution.svg",
+            "sha256": "c278ce19644177c0b2f46529a9192c5ae8b5f428f1159734f24dc56f26ce4b8e",
+            "gitBlob": "45d8f8f93744b9790ac9256ab006c38bfc5ad6b7",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "solutionImage",
+            "viewedInPriorFrozenRead": true
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_c50c53350f4116c7e321c140a0aca9b17f0c3fae2696b4be588a002fe3606cb7",
+      "candidateDisposition": "KEEP",
+      "decisionState": "PENDING_ROOT_CONFIRMATION",
+      "classificationReason": "부채꼴 중첩 영역의 둘레와 넓이를 함께 구하고 넓이 계산이 복합성이 크다. RPM206을 primary로 유지하고 현재 길이·넓이 template과 정합한다.",
+      "recordedMetadataAtBaseline": {
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
+        "rpmPrimaryRecordId": "M1-RPM-206",
+        "rpmPrimaryPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "복합도형",
+          "l4": "부채꼴을 포함한 넓이"
+        },
+        "rpmScope": "M1-2",
+        "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "canonicalBindingStatus": "ACTIVE",
+        "runtimeMaterializationStatus": "ACTIVE_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 5
+      },
+      "proposedMetadataNotApplied": {},
+      "openIssueOrFollowup": "RPM205 둘레도 부차적 의미지만 명백 오류가 아니므로 primary 교체나 secondary 임의 추가 안 함.",
+      "evidenceRefs": {
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": 23,
+        "sourceFingerprint": "c4d87f4198c6ba5a2eeb7097be4c496562bcd83050962e7c3d8fb7afa5ab23d7",
+        "contentFingerprint": "f3b319491563b30867c619478fd1318b300f0fb08596f026b22a096f1cda5656",
+        "semanticReadCheckpoint": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+        "semanticReadPointer": "/sourceReadSegments/1/items/10",
+        "sidecarMatchesRecordedSourceMetadataAtBaseline": true,
+        "assetReferences": [
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q23.png",
+            "sha256": "2360b2a5adcf8442a8d4ea9538b113f1a28ad2917541546f0bf7d6b7225b90d5",
+            "gitBlob": "6da236f9ad86e5b32879999dba2a697de5a40897",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "image",
+            "viewedInPriorFrozenRead": true
+          },
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q23-solution.svg",
+            "sha256": "c80c6b3bb11e974b400260341094d42a2ec61a2bade894eb9aeaf1d7c21f6c2d",
+            "gitBlob": "ee7ed35652328cbbddf4c14dd38ed82abdf3107f",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "solutionImage",
+            "viewedInPriorFrozenRead": true
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_20cf7db610d665dde2c04cf24f0f2b245236974a3aedeb514d7ddaab05271454",
+      "candidateDisposition": "TYPE_GAP",
+      "decisionState": "PENDING_ROOT_CONFIRMATION",
+      "classificationReason": "RPM192 SAS 합동은 맞다. 문제는 합동 조건을 실제 도형에서 제시하고 대응각을 옮기는 적용이므로 CONGRUENCE_UNIQUENESS보다 DATA_TRANSFER 후보가 적합하며 소단원 키 부족도 있다.",
+      "recordedMetadataAtBaseline": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "rpmPrimaryRecordId": "M1-RPM-192",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동"
+        },
+        "rpmScope": "M1-2",
+        "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+        "canonicalBindingStatus": "ACTIVE",
+        "runtimeMaterializationStatus": "ACTIVE_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4
+      },
+      "proposedMetadataNotApplied": {
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER"
+      },
+      "openIssueOrFollowup": "작도·합동 소단원 및 RPM192 적합 template 선택 연결을 정본에서 검토해야 한다. 정삼각형 같음 조건으로 SAS 후 대응각 적용이 핵심.",
+      "evidenceRefs": {
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": 24,
+        "sourceFingerprint": "943c9d9aea44ef91385686eac09b05ed68b1ebea308ec8c01ca9f2b1c3930b3d",
+        "contentFingerprint": "68d5e05028fafd28070b87e2201dbab2e47a7a6a7442baced34fcfb5b6780a2a",
+        "semanticReadCheckpoint": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+        "semanticReadPointer": "/sourceReadSegments/1/items/11",
+        "sidecarMatchesRecordedSourceMetadataAtBaseline": true,
+        "assetReferences": [
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q24.png",
+            "sha256": "73a55f4af696d1ffbaf35f57a47694a3d235063a6d322d1fed7fb20aec0f1283",
+            "gitBlob": "997cc8cd6020992f3fa0967794c633afbba59133",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "image",
+            "viewedInPriorFrozenRead": true
+          },
+          {
+            "path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q24-solution.svg",
+            "sha256": "cb0b5f14f30a749d64bbed34f76f6272c08a1d11cbfc7d51ca184b34005b8ad1",
+            "gitBlob": "84032923e95748669d01c3f5e55e75395279bed0",
+            "atCommit": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+            "role": "solutionImage",
+            "viewedInPriorFrozenRead": true
+          }
+        ]
+      }
+    }
+  ],
+  "resumeRequirements": [
+    "Keep progress state PAUSED_FOR_RPM_L1_L2_REFINEMENT and completed exams 0/44 until ROOT closes the first exam.",
+    "After the RPM refinement PR is merged, bind the resume to the verified remote main SHA and read the effective parent authority before confirming these candidates.",
+    "Reuse the preserved source-only reading when this source blob and asset hashes still match; revisit only changed bytes or unresolved classification evidence.",
+    "Compare all 24 questions with current source metadata, sidecar, exact RPM leaf and PT/TPL binding. This candidate document covers only ordinals 13-24.",
+    "Require ROOT confirmation and exact resolver/binding evidence before applying any candidate. Do not use an incorrect substitute key for a missing type or link.",
+    "Check concurrent metadata work for the same UID/fields, then make only authorized metadata corrections and preserve normal question, answer, explanation, image, layout and identity data."
+  ],
+  "dataBoundary": {
+    "includes": "Classification judgments, recorded classification metadata, candidate changes, hashes and source/evidence references only.",
+    "rawQuestionAnswerExplanationCopied": false,
+    "productionDataChanged": false,
+    "commitOrPushPerformedByReviewer": false
+  }
+}
