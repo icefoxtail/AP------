@@ -71,13 +71,17 @@
       "questionCount": 24,
       "baseSourceGitBlob": "5308c75e6d0dbdb878bdfb87155414573168171e",
       "baseSourceSha256": "5252fecfbd6922b872fb9739ad01ffbbe27ca7204653a7d773e27e894e6fbf5f",
-      "state": "REVIEW_COMPLETE_WITH_EXPLICIT_HOLDS",
+      "state": "REVIEW_COMPLETE_SOURCE_PUBLICATION_HOLDS",
       "completedQuestions": 24,
       "reviewArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/04-palma-mid-review.json",
-      "nextAction": "REQUIRED_CI_THEN_MAIN_MERGE",
-      "fourSlot": "COMPACT_IMPORTED_24_INDEPENDENT_SAMPLE_3",
-      "sourceBlob": "b527fb0d483650f384b89395b32804755e5fc002",
-      "nativeRegistration": "HOLD_24_IDENTITY_SOURCE_FINGERPRINT"
+      "nextAction": "REMOTE_SOURCE_CHECKPOINT_THEN_COMPACT_REBIND_AND_REQUIRED_CI",
+      "fourSlot": "SOURCE_REBIND_PENDING; DESCRIPTORS_UNCHANGED",
+      "sourceBlob": "d68a1987bcf0d6ee3f5fc1a70eef5a1f644e5e9e",
+      "nativeRegistration": "HOLD_24_IDENTITY_SOURCE_FINGERPRINT",
+      "sourceMetadataApplied": 23,
+      "sourcePublicationHolds": [
+        7
+      ]
     }
   ],
   "validation": {
@@ -85,7 +89,7 @@
     "uidAndOfficialTypeParents": "96_UIDS_CHECKED_FORMAL80_EXACT_COURSE77_SEMANTIC_EXACT59",
     "fourSlotIndependentSamples": "12_SAMPLES_ACCEPTED_WITH_PALMA_MID_Q15_TEXT_ONLY_LIMIT",
     "studentContentPreservation": "PASS_96",
-    "prCI": "RETRY_PENDING_AFTER_Q14_PUBLICATION_HOLD",
+    "prCI": "ACTUAL_PALMA_MID_Q7_PARENT_CONFLICT; NEW_HEAD_REQUIRED",
     "registration": "NATIVE_HOLD96_IDENTITY_MISMATCH; MAIN_FOURSLOT_NOT_RUN",
     "deployment": "NOT_RUN",
     "wangunSourcePreservation": "PASS_24",
@@ -113,27 +117,33 @@
     "difficultyAssigned": 95,
     "difficultyVisualHold": 1,
     "legacyLevelChanged": 0,
-    "scopedProductionConsumer": "96_ROWS_EXACT_BLOB_PENDING0_PUBLICATION_HOLD_REBIND",
+    "scopedProductionConsumer": "NEW_SOURCE_REBIND_PENDING",
     "termPostingChecks": {
       "positiveOccurrences": 585,
       "postingSetQueries": 230
     },
-    "sourceMetadataApplied": 95,
-    "sourcePublicationHold": 1,
+    "sourceMetadataApplied": 94,
+    "sourcePublicationHold": 2,
     "reviewedDifficultyAssigned": 95,
     "publishedDifficultyDistribution": {
       "1": 30,
-      "2": 49,
+      "2": 48,
       "3": 16,
-      "HOLD": 1
+      "UNASSIGNED": 2
     },
     "publishedDifficultyHistoricalUnapprovedOrdinals": {
       "wangun-mid": [
         14
+      ],
+      "palma-mid": [
+        7
       ]
-    }
+    },
+    "publishedDifficultyAssigned": 94,
+    "publishedDifficultyUnset": 2,
+    "difficultyAssignedBasis": "REVIEWED_PROPOSALS; publication holds and visual HOLD separately recorded"
   },
-  "nextAction": "REQUIRED_CI_THEN_MAIN_MERGE",
+  "nextAction": "REMOTE_SOURCE_CHECKPOINT_THEN_COMPACT_REBIND_AND_REQUIRED_CI",
   "batchPr": 1973,
   "verificationArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/verification.json",
   "publicationHolds": [
@@ -156,6 +166,36 @@
         "expectedUnit": "RPM22-M1-L1-05"
       },
       "nextAction": "Official shared metadata/identity registration owner must resolve the parent conflict and apply the preserved Q14 correction; do not re-review the other 95 items"
+    },
+    {
+      "sourceOrdinal": 7,
+      "status": "HOLD_SHARED_PARENT_CONSUMER_CONFLICT",
+      "reviewedMeaning": "공간의 두 직선·모서리의 위치 관계; 기본 도형; reviewed difficulty bucket 2; RPM_LEAF_GAP",
+      "reason": "Actual required CI and actual scoped production-code execution both resolve an older approved solid-geometry parent while corrected source classifies basic geometry. Existing scoped registration cannot rewrite the shared parent through the unresolved identity and RPM leaf. Only this UID is isolated; Palma Q19 is measured equal and remains corrected.",
+      "failedCheck": {
+        "runId": 43528750346,
+        "jobId": 132240956658,
+        "test": "archive2-unified-units.test.js",
+        "head": "bb5db20c75fbe0c04a4c3a1ea13ec1cee57b1d2c",
+        "sameTargetSourceAt": "7e9d718e1be8d1f0271e7d243014b21f7616ece7",
+        "actualUnit": "RPM22-M1-L1-07",
+        "expectedUnit": "RPM22-M1-L1-05"
+      },
+      "actualScopedComparison": {
+        "head": "7e9d718e1be8d1f0271e7d243014b21f7616ece7",
+        "rawSha256": "da51af2cab6bfbc296d7071edd968f194310f8384db3accfe21ef0c61fe85c13",
+        "actualRecords": 96,
+        "mismatches": 1,
+        "artifactMember": "actual-runtime-parent-comparison.json",
+        "palmaQ19": "MATCH_RPM22-M1-L1-05"
+      },
+      "questionUid": "qid_v1_cd96dcd0b7b1450dd2db46caf9242c4ed05987a83196f962012ba3365ed302b8",
+      "sourceArchiveFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+      "reviewedCorrectionPreservedAt": "7e9d718e1be8d1f0271e7d243014b21f7616ece7",
+      "retainedBaselineMainSha": "573fa32804480b2d70f7536b211e240e8d64d5ed",
+      "retainedBaselineSourceBlob": "5308c75e6d0dbdb878bdfb87155414573168171e",
+      "retainedSourceMeaning": "Historical metadata retained without semantic approval",
+      "nextAction": "Official shared metadata/identity registration owner must resolve the recorded parent conflict and apply the preserved correction; reuse completed reviews"
     }
   ]
 }
