@@ -1701,7 +1701,7 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob, { registeredRep
       exactTypeParent = true;
     }
     if (!matches.length || ref.curriculum !== resolved.curriculum || compact(masterCourse) !== compact(row.courseKey || resolved.course) ||
-        !canonicalMidLabels.includes(ref.midUnit) && !exactTypeParent || resolved.binding.L1 && ref.majorUnit !== resolved.binding.L1) fail("canonical target parent mismatch");
+        !canonicalMidLabels.some(label => compact(label) === compact(ref.midUnit)) && !exactTypeParent || resolved.binding.L1 && ref.majorUnit !== resolved.binding.L1) fail("canonical target parent mismatch");
     return { ...labels, L1: ref.majorUnit, L2: ref.midUnit };
   };
   if (patch.approvedMetadataRef) {
