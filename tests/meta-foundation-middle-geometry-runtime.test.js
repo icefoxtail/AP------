@@ -1,9 +1,14 @@
 const { runtimeRecordCount } = require("./helpers/meta-runtime-gate.cjs");
 const assert = require("assert");
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
+const { execFileSync } = require("child_process");
 const Archive2Core = require("../archive/archive2-core.js");
 
+async function main() {
+const { loadBank, nativeReviewReceipt, activeBindingContext, sourceFingerprint, sourcePath } = await import("../archive/tools/meta-foundation/auto-register-merged-source.mjs");
+const { loadActiveMetaRegistry, validateActiveMetaFields } = await import("../archive/tools/meta-foundation/active-registry.mjs");
 const root = path.resolve(__dirname, "..");
 const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relative), "utf8"));
 const sourceKey = (file, ordinal) => Archive2Core.normalizeFile(file) + "#" + Number(ordinal);
@@ -63,23 +68,140 @@ assert.strictEqual(l4Evidence.filter((row) => row.l4ReviewStatus === "FINAL").le
 assert.strictEqual(l4Evidence.filter((row) => row.l4ReviewStatus === "EXPLICIT_HOLD").length, runtime.counts.explicitL4Hold);
 
 const currentQuestionMetadata = new Map(readJson("archive/data/question_metadata.json").records.map((row) => [row.questionUid, row]));
+const identityByUid = new Map(readJson("archive/data/question_identity_map.json").records.map((row) => [row.questionUid, row]));
+const registry = loadActiveMetaRegistry(root);
+assert.strictEqual(registry.status, "ACTIVE", registry.errors.join("|"));
+const nativeSources = new Map();
+const nativeApprovals = new Map();
+const nativeInputs = [];
+function nativeInput(metadata, row) {
+  const source = sourcePath(metadata.sourceArchiveFile);
+  if (!nativeSources.has(source)) {
+    const relative = "archive/exams/" + source;
+    const bytes = fs.readFileSync(path.join(root, relative));
+    nativeSources.set(source, {
+      root, bytes, bank: loadBank(bytes.toString("utf8"), relative),
+      blobSha1: execFileSync("git", ["hash-object", "--path", relative, "--stdin"],
+        { cwd: root, input: bytes, encoding: "utf8" }).trim()
+    });
+  }
+  const sourceBinding = nativeSources.get(source);
+  const ordinal = Number(metadata.sourceOrdinal);
+  const question = sourceBinding.bank[ordinal - 1];
+  assert(question, metadata.questionUid);
+  return {
+    question, previous: question, current: metadata, identity: identityByUid.get(metadata.questionUid),
+    registry, source, ordinal, runtimeOwner: runtime.packId,
+    nativeSource: { ...sourceBinding, runtimeRecord: row, runtimeStatus: runtime.status }
+  };
+}
+function assertNativeApproval(input, label) {
+  const { question, previous, current, identity, source, ordinal } = input;
+  // The read-only receipt verifier normally follows these planQuestion identity guards.
+  assert(identity && current, label);
+  assert.strictEqual(identity.questionUid, current.questionUid, label);
+  assert.strictEqual(identity.sourceArchiveFile, source, label);
+  assert.strictEqual(current.sourceArchiveFile, source, label);
+  assert.strictEqual(Number(identity.sourceOrdinal), ordinal, label);
+  assert.strictEqual(Number(current.sourceOrdinal), ordinal, label);
+  if (question.questionUid) assert.strictEqual(question.questionUid, identity.questionUid, label);
+  if (identity.status) assert.strictEqual(identity.status, "VERIFIED", label);
+  assert.strictEqual(String(current.sourceQuestionNo), String(identity.sourceQuestionNo), label);
+  // Legacy sources can restart displayed sourceQuestionNo values for an essay section.
+  // Bind that label to the accepted runtime display; metadata/identity use the global number.
+  assert.strictEqual(String(input.nativeSource.runtimeRecord.sourceQuestionNo), String(question.sourceQuestionNo ?? question.id ?? ""), label);
+  if (previous) assert.strictEqual(String(previous.sourceQuestionNo ?? previous.id ?? ""), String(question.sourceQuestionNo ?? question.id ?? ""), label);
+  assert.strictEqual(identity.sourceFingerprint, sourceFingerprint(question), label);
+  assert.strictEqual(current.sourceFingerprint, sourceFingerprint(question), label);
+  assert.notStrictEqual(current.metadataStatus, "SOURCE_HOLD", label);
+
+  // This proves the existing classification/approval, not eligibility to produce new metadata.
+  // Validate only classification fields here; optional enum/difficulty debt remains subject to
+  // planQuestion's unchanged producer checks and is not declared valid by this test.
+  const classification = Object.fromEntries([
+    "problemTypeKey", "templateKey", "curriculum", "curriculumKey", "standardCourse",
+    "standardUnitKey", "subUnitKey", "sourceArchiveFile"
+  ].map(key => [key, current[key]]));
+  const check = validateActiveMetaFields(classification, input.registry, { requireFields: false });
+  assert.strictEqual(check.status, "VALIDATED", label + ": " + check.errors.join("|"));
+  assert.strictEqual(check.activeBinding, true, label);
+  const context = activeBindingContext({ candidate: current, check, registry: input.registry, runtimeOwner: input.runtimeOwner });
+  assert(!context.reason, label + ": " + context.reason);
+  const receiptPath = nativeReviewReceipt({ ...input, pt: context.pt, tpl: context.tpl });
+  assert(receiptPath, label + ": native receipt was not verified");
+  assert(current.approvalEvidence.includes(receiptPath), label);
+  const receipt = JSON.parse(fs.readFileSync(path.join(input.nativeSource.root, receiptPath), "utf8"));
+  const registeredIdentity = receipt.appliedIdentityRecords.filter(row => row.questionUid === identity.questionUid);
+  assert.strictEqual(registeredIdentity.length, 1, label);
+  assert.deepStrictEqual(registeredIdentity[0], identity, label);
+  assert.strictEqual(current.metadataApprovalType, input.nativeSource.runtimeRecord.metadataApprovalType, label);
+  assert.deepStrictEqual(current.fieldStatus, input.nativeSource.runtimeRecord.fieldStatus, label);
+  return receiptPath;
+}
 for (const row of [...currentReviewedRows, ...additionalReviewedRows]) {
   const metadata = currentQuestionMetadata.get(row.questionUid);
   assert(metadata, row.questionUid);
-  assert.strictEqual(metadata.metadataApprovalType, "META_PIPELINE_AUDIT", row.questionUid);
+  if (["FINAL_QA", "REVIEW2"].includes(metadata.metadataApprovalType)) {
+    const input = nativeInput(metadata, row);
+    nativeApprovals.set(row.questionUid, assertNativeApproval(input, row.questionUid));
+    nativeInputs.push(input);
+  } else {
+    assert.strictEqual(metadata.metadataApprovalType, "META_PIPELINE_AUDIT", row.questionUid);
+    assert(metadata.approvalEvidence.some((file) => file.endsWith(".source-parity.json")), row.questionUid);
+  }
   assert.strictEqual(metadata.metadataStatus, "approved_semantic_review", row.questionUid);
   assert.strictEqual(metadata.sourceArchiveFile, row.sourceArchiveFile, row.questionUid);
   assert.strictEqual(Number(metadata.sourceOrdinal), Number(row.sourceOrdinal), row.questionUid);
   assert.strictEqual(metadata.metadataRevision, row.metadataRevision, row.questionUid);
   assert.strictEqual(metadata.sourceFingerprint, row.sourceFingerprint, row.questionUid);
   assert.strictEqual(row.sourceFingerprint, row.approvedSourceFingerprint, row.questionUid);
-  assert(metadata.approvalEvidence.some((file) => file.endsWith(".source-parity.json")), row.questionUid);
   assert.strictEqual(metadata.l3Disposition, row.l3Disposition, row.questionUid);
   assert.strictEqual(metadata.l4Disposition, row.l4Disposition, row.questionUid);
   assert.strictEqual(metadata.problemTypeKey, row.problemTypeKey, row.questionUid);
   assert.strictEqual(metadata.templateKey, row.templateKey, row.questionUid);
   assert.deepStrictEqual(metadata.crossConceptKeys, row.crossConceptKeys);
   assert.deepStrictEqual(metadata.conditionKeys, row.conditionKeys);
+}
+
+if (nativeInputs.length) {
+  const input = nativeInputs[0];
+  const rejects = (candidate, label) => {
+    assert.throws(() => assertNativeApproval(candidate, label), { name: "AssertionError" }, label);
+  };
+  const cases = [
+    ["approval flag without evidence", { current: { ...input.current, approvalEvidence: [] } }],
+    ["metadata differs from receipt", { current: { ...input.current, fieldStatus: { ...input.current.fieldStatus, problemType: "manual_review_pending" } } }],
+    ["different UID", { identity: { ...input.identity, questionUid: "unregistered-native-uid" } }],
+    ["different source ordinal", { identity: { ...input.identity, sourceOrdinal: input.ordinal + 1 } }],
+    ["template belongs to another problem type", { registry: { ...input.registry, templates: new Map(input.registry.templates).set(input.current.templateKey, { ...input.registry.templates.get(input.current.templateKey), parentProblemTypeKey: "PT_NOT_THE_REGISTERED_PARENT" }) } }],
+    ["changed student payload", { question: { ...input.question, content: "changed student payload fixture" } }],
+    ["different source bytes", { nativeSource: { ...input.nativeSource, bytes: Buffer.concat([input.nativeSource.bytes, Buffer.from("\n")]) } }],
+    ["different Git blob", { nativeSource: { ...input.nativeSource, blobSha1: "0".repeat(40) } }],
+    ["runtime differs from receipt", { nativeSource: { ...input.nativeSource, runtimeRecord: { ...input.nativeSource.runtimeRecord, tagStatus: "review_required" } } }],
+    ["inactive runtime", { nativeSource: { ...input.nativeSource, runtimeStatus: "INACTIVE" } }]
+  ];
+  for (const [label, changes] of cases) rejects({ ...input, ...changes }, label);
+
+  // Copy an existing approval, never issue a new one. Prove that a readable proof file with
+  // changed bytes is rejected even when its receipt and all metadata flags remain intact.
+  const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-geometry-native-proof-"));
+  try {
+    const receiptPath = nativeApprovals.get(input.current.questionUid);
+    const receipt = readJson(receiptPath);
+    for (const relative of [receiptPath, ...receipt.approval.evidenceRefs.map(ref => ref.path)]) {
+      const target = path.resolve(fixtureRoot, relative);
+      assert(target.startsWith(fixtureRoot + path.sep), relative);
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.copyFileSync(path.join(root, relative), target);
+    }
+    const fixture = { ...input, nativeSource: { ...input.nativeSource, root: fixtureRoot } };
+    assertNativeApproval(fixture, "unchanged copied native proof");
+    fs.appendFileSync(path.join(fixtureRoot, receipt.approval.evidenceRefs[0].path), "\n");
+    rejects(fixture, "approval proof SHA drift");
+  } finally {
+    fs.rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+  console.log(`PASS ${nativeInputs.length} byte-bound native approvals and ${cases.length + 1} rejection cases`);
 }
 
 const byUid = new Map(catalog.records.map((row) => [row.questionUid, row]));
@@ -114,7 +236,8 @@ for (const row of runtime.records) {
     assert.strictEqual(row.defaultSelectable, false);
   } else {
     assert(["1.0.2", "1.0.3"].includes(row.metaFoundationPackVersion) ||
-      currentQuestionMetadata.get(row.questionUid)?.metadataApprovalType === "META_PIPELINE_AUDIT", row.questionUid);
+      currentQuestionMetadata.get(row.questionUid)?.metadataApprovalType === "META_PIPELINE_AUDIT" ||
+      nativeApprovals.has(row.questionUid), row.questionUid);
     assert.strictEqual(row.l4Disposition, "ASSIGNED", row.questionUid);
     assert(activeTemplates.has(row.templateKey), row.templateKey);
     }
@@ -146,7 +269,6 @@ assert.strictEqual(maesan.length, 23);
 console.log("PASS Middle Geometry production runtime, canonical joins, HOLD/ROUTE_OUT policy, and Archive2 join");
 
 
-(async () => {
   const { productionCatalog } = require('./helpers/archive2-scope-harness.cjs');
   const { data: overlaid, runtime: liveRuntime } = await productionCatalog();
   const runtimeUids = new Set(runtime.records.map(row => row.questionUid));
@@ -165,7 +287,9 @@ console.log("PASS Middle Geometry production runtime, canonical joins, HOLD/ROUT
   }
   assert.strictEqual(overlaid.records.filter((row) => String(row.sourceFile).includes("25_매산여고_2학기_중간_고1_기출.js")).length, 23);
   console.log(`PASS live Meta Foundation bridge preserves ${runtime.records.length} runtime overlays and joins`);
-})().catch((error) => {
+}
+
+main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });

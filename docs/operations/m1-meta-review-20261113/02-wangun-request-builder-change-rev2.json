@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "metadata-request-builder-narrow-change-v1",
+  "revision": 2,
+  "recordedAt": "2026-11-13T16:08:12.173408+00:00",
+  "status": "IMPLEMENTED_SYNTAX_CHECKED_NOT_REQUEST_BUILT",
+  "file": "docs/operations/m1-meta-review-20261113/checkpoint-tools/build-reviewed-exam-v2-request.mjs",
+  "beforeSha256": "13870d8efc334b693ef057e33ffa49ee31eda522da41475067444dc250aa8b9c",
+  "afterSha256": "140104a4351d38343d2380f9c0919721c53ea2e9de6f0c030ec4ca277880a89c",
+  "priorChangeReport": {
+    "path": ".tmp/m1-meta-review/02-wangun-request-builder-change.json",
+    "sha256": "4974f6516a670d4acec1de6fdae3800ba22ef84e14a4aabf5fbbd04473b0eab2"
+  },
+  "semanticAuthority": {
+    "path": "docs/operations/m1-meta-review-20261113/02-wangun-semantic-review-rev3.json",
+    "sha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090"
+  },
+  "reason": "Root confirmed Q7 reuses the existing FUNCTIONS_GRAPHS type/template. Its exact M1-1 RPM parent requires the same narrowly reviewed course alias append for that binding owner.",
+  "allowedExactPackPaths": [
+    "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+    "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json"
+  ],
+  "guardUnchanged": "Only no-collection whole-document changes on those two literal paths enter this branch. Current bytes parsed as JSON must equal before; M1-1 must be absent; after must exactly equal before with only M1-1 appended to standardCourses. All other fields remain identical.",
+  "preserved": [
+    "The existing middle-geometry scope repair path",
+    "Generic registry changes remain add-only before:null",
+    "Durable evidence SHA verification",
+    "Version/count/ownership preservation in explicit pack delta",
+    "The previously aligned official NFC/whitespace parent comparison and all locked master/curriculum/course/native ACTIVE checks",
+    "Explicit per-sourceOrdinal UID agreement with metadata and identity; no new UID values embedded",
+    "Student/non-metadata payload equality and source guards"
+  ],
+  "validation": {
+    "command": "node --check docs/operations/m1-meta-review-20261113/checkpoint-tools/build-reviewed-exam-v2-request.mjs",
+    "exitCode": 0,
+    "stdout": ""
+  },
+  "additionalTestsRun": false,
+  "requestBuilderExecuted": false,
+  "sourceCanonicalInboxChanges": false,
+  "gitIndexOrApiWrites": false,
+  "unifiedDiff": "--- before/docs/operations/m1-meta-review-20261113/checkpoint-tools/build-reviewed-exam-v2-request.mjs\n+++ after/docs/operations/m1-meta-review-20261113/checkpoint-tools/build-reviewed-exam-v2-request.mjs\n@@ -117,13 +117,16 @@\n const registryChanges = (config.registryChanges || []).map(change => {\n   // This reviewed course alias is required for exact M1-1 RPM parent references.\n   // All other pack fields, including version and ownership, remain unchanged.\n-  if (!change.collection && change.path==='archive/data/meta-foundation/canonical/packs/middle1/pack.json') {\n+  if (!change.collection && [\n+    'archive/data/meta-foundation/canonical/packs/middle1/pack.json',\n+    'archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json'\n+  ].includes(change.path)) {\n     const current = JSON.parse(fs.readFileSync(safe(change.path),'utf8'));\n     const before = change.before, after = change.after;\n     if (!eq(current,before) || !before || !after) fail('whole-pack exact before mismatch');\n     if (!Array.isArray(before.standardCourses) || before.standardCourses.includes('M1-1') ||\n       !eq(after,{...before,standardCourses:[...before.standardCourses,'M1-1']}))\n-      fail('MIDDLE1 pack scope must only append the reviewed M1-1 alias');\n+      fail('reviewed pack scope must only append the M1-1 alias');\n     return {...change,evidenceRefs:references(change.evidenceRefs)};\n   }\n   // The one approved integration repair extends this existing pack's scope only.\n"
+}

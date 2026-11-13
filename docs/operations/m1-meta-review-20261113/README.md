@@ -2,14 +2,14 @@
 
 ## 현재 진행
 
-**운영 완료 1/44장 · 남은 43장 · 전체 읽기 47/1,047문항.** 현재는 **2026 왕운중 중1 2학기 중간23문항**이다. 발문·선지·제공 풀이23개와 외부 그림33개를 모두 읽었고 문항별 후보 근거를 동결했다. 최종 의미 판정은 확정했고 공용 연결 정정·등록·PR/main 검증은 진행 중이며 완료로 체크하지 않는다.
+**운영 완료 1/44장 · 남은 43장 · 전체 읽기 47/1,047문항.** 현재는 **2026 왕운중 중1 2학기 중간23문항**이다. 발문·선지·제공 풀이23개와 외부 그림33개를 전부 읽었다. 현재 확정 원장은 [semantic revision3](02-wangun-semantic-review-rev3.json)이며, 실제 운영 등록 전이므로 완료로 체크하지 않는다.
 
-- 현재 읽기 근거: [02-wangun-semantic-read-checkpoint.json](02-wangun-semantic-read-checkpoint.json).
-- 원본/그림 byte 결속: [02-wangun-figure-read-evidence.json](02-wangun-figure-read-evidence.json). JS 해시만 같다고 외부 그림 읽기를 자동 재사용하지 않는다.
-- 실제 유형이 다른 분류만 최소 수정하고, 기존 skeleton과 같은 수치·표현·선택형 변형은 재사용한다. 정확한 RPM leaf가 없으면 null과 debt를 유지한다.
-- 공용 의존 PR1965는 Q6/Q8의 기존 과정명 오타와 부모 표기 정정 경로다. 현재 공개된 source/request 직접 겹침은0이다. 실제 코드 검토와 CI 상태는 [독립 검토](02-pr1965-review.json)에 있다.
-
-**현재 의미 정본은 [revision2](02-wangun-semantic-review-rev2.json)다.** 추출 배열 순서를 문항 번호로 잘못 사용한 후보 UID 연결을 현재 metadata/identity의 명시적 sourceOrdinal로23개 모두 재결속했다. [정정 근거](02-wangun-uid-association-correction.json)를 확인하고 이전 원장의 UID로 등록하지 않는다. 의미 판정·읽기 근거·정상 데이터는 그대로이며 정정 전에 source/정본/등록 적용은0이었다.
+- 의미·부모 수정 후보20문항, 정확한 RPM leaf19, debt Q2·Q3·Q4·Q16. 정상 문제·정답·해설·그림·난이도·source 검수상태는 보존한다.
+- Q7은 기존 FUNCTIONS_GRAPHS의 그래프 성질 유형을 재사용한다. Q11은 기존 합동 대응 PT 아래 중점 사각형 성질 판정 template를 보완한다. Q20은 기존 줄기·잎→계급별 도수 유형에 연결한다. 새 PT4·TPL5, exact binding5, M1-1 과정 alias2, RPM exact 연결15개가 후보이다.
+- [native 계획](02-wangun-native-registration-plan-rev2.json), [crosswalk 계획](02-wangun-crosswalk-plan-rev2.json), [원본 보존 독립 확인](02-wangun-source-candidate-independent-review-rev3.json). 후보의 분류9필드만 추가 조정한 근거와 정상 데이터23/외부 그림33 해시를 결속했다.
+- [PR1965](https://github.com/icefoxtail/AP------/pull/1965) 코드가 main에 병합됐다. 기존 binding 과정명 오타 정정 요청은 별도 [PR1966](https://github.com/icefoxtail/AP------/pull/1966)이다. 격리 공식 검증에서 기존 runtime613문항과 보호파일104개를 보존했다. 실제 main 정정·최종 Consumer 확인 후 왕운중 요청을 만든다.
+- 명시적 sourceOrdinal로23개 UID를 결속했다. [UID 정정 기록](02-wangun-uid-association-correction.json)을 보존하며 이전 원장·추출 배열 순서를 등록 UID로 사용하지 않는다. rev3는 rev2의 UID23개를 그대로 유지한다.
+- 병행 owner의 immutable r12에서 왕운중/과정명 정정 발행 보류를 확인했다. 해당 작업에 합류하거나 그 tree를 수정하지 않는다. 공개 main·현재 원본·요청을 다시 확인하고 단일 요청만 적용한다.
 
 ## 완료 결과
 
@@ -25,7 +25,7 @@
 
 진행 원장은 [progress.json](progress.json), 다음 담당용 절차와 복사 프롬프트는 [HANDOFF.md](HANDOFF.md)다. 시험지 한 장의 의미 검토→최소 수정→exact candidate 전체 Consumer→PR/main→실제 등록 영수증/최종 Consumer→원격 SHA를 마감한 뒤 다음으로 이동한다. 기존 R1/R2/R3는 반복하지 않는다. 수학 FINAL QA나 새 해설 검증을 수행했다고 기록하지 않는다.
 
-마지막 확인 원격 체크포인트는 `36ed7902d71bccf3645e40674ab6d8ae7e894646`, AWCR revision15다. 이 새 읽기 기록의 실제 게시 SHA는 원격 브랜치와 다음 immutable AWCR에서 확인한다.
+마지막 확인 원격 체크포인트는 `68627aab94cd553e09ef0a760e7b1bd59791d485`, AWCR revision16이다. 현재 rev3 기록의 실제 게시 SHA는 원격 브랜치와 다음 immutable AWCR에서 확인한다.
 
 ## 시험지별 완료 체크리스트
 
