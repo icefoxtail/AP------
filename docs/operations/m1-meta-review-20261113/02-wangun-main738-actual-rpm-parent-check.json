@@ -1,0 +1,1135 @@
+{
+  "schemaVersion": "m1-actual-selected-rpm-parent-audit-v1",
+  "observedAt": "2026-11-13T18:02:53.474Z",
+  "status": "FAIL",
+  "actualMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+  "actualTree": "40d92cfea35ea1108d4709aa7d7b87338e54aa17",
+  "selectedMetadataInput": {
+    "path": "/workspace/scratch/933015cd0a4f/m1-review/.tmp/m1-meta-review/02-wangun-main738-selected-metadata.json",
+    "sha256": "11ef9c8c9cc25ce4a57bcead6df1db114aef57875e5b74ecbf865a0653102aa3"
+  },
+  "helper": {
+    "path": "archive/rpm-middle-toc.js",
+    "actualBlobSha1": "d037658272e08129733422ca9bbf805738882b2a",
+    "rawSha256": "a08fb094fa25ed372ba616b576c731cf61711bab66da1f77527cfbcc9af585bd",
+    "unchangedSinceMerge": true,
+    "localMatchesActual": true
+  },
+  "questionCount": 23,
+  "exactLeafCount": 19,
+  "debtOrdinals": [
+    2,
+    3,
+    4,
+    16
+  ],
+  "nativeMetadataRuntimeCorrespondence": "ACTUAL_GIT_ROWS_EQUAL_REGISTERED_RECEIPT",
+  "rows": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_04eec2165bbc177b619ab9ca935330f6fd60a9906437f50a36f56aa18de7c95a",
+      "native": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+        "templateKey": "TPL_M1_TRIANGLE_CONSTRUCTION_ORDER_ASA_VERTEX_DEPENDENCY"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-190",
+      "actualBaseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\",\"삼각형의 작도\",\"한 변과 양 끝각 조건\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "삼각형의 작도",
+        "L4": "한 변과 양 끝각 조건"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "삼각형의 작도",
+        "L4": "한 변과 양 끝각 조건"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_c57da4ba1098bc858461c9928cef484c1e81bccf587ef91075d59ab2199264b1",
+      "native": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "PARENT",
+      "exactLeafExpected": false,
+      "expectedBaseLeafRecordId": null,
+      "actualBaseLeafKey": "",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "",
+        "L4": ""
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "",
+        "L4": ""
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      },
+      "explicitRpmPathCount": 0,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_bab52ee228bcefba5cba3c3e098437496cea2050c01904e3da3ab63c81581df2",
+      "native": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "PARENT",
+      "exactLeafExpected": false,
+      "expectedBaseLeafRecordId": null,
+      "actualBaseLeafKey": "",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "",
+        "L4": ""
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "",
+        "L4": ""
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      },
+      "explicitRpmPathCount": 0,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_347acf016e50757f50f493be205035c52686071e612c8f9ee44312d8f7e5e785",
+      "native": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT"
+      },
+      "rpmStatus": "LEGACY_PARENT_AMBIGUOUS",
+      "rpmReason": "LEGACY_SUBUNIT_HAS_MULTIPLE_PARENTS",
+      "rpmGranularity": null,
+      "exactLeafExpected": false,
+      "expectedBaseLeafRecordId": null,
+      "actualBaseLeafKey": "",
+      "actualBasePath": null,
+      "actualEffectivePath": null,
+      "actualEffectiveParent": null,
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계"
+      },
+      "explicitRpmPathCount": 0,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_489c87bbd253da2356fd202dd5103c28eccd0de434e4fd6995a7063d92b55575",
+      "native": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-190",
+      "actualBaseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\",\"삼각형의 작도\",\"한 변과 양 끝각 조건\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "삼각형의 작도",
+        "L4": "한 변과 양 끝각 조건"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "삼각형의 작도",
+        "L4": "한 변과 양 끝각 조건"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_66b8bd71d68a153b6a7bdb56ff3536201ca5b0b7ca68e82b7a120b47ba8ce55b",
+      "native": {
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-167",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\",\"정비례\",\"정비례 관계식\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "정비례",
+        "L4": "정비례 관계식"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "정비례",
+        "L4": "정비례 관계식"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\"]",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_13c5c93007955b679fe9896938511efccef68cb26e5450a54e1a98a5ac61b59e",
+      "native": {
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-170",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\",\"반비례\",\"반비례 그래프\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "반비례",
+        "L4": "반비례 그래프"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "반비례",
+        "L4": "반비례 그래프"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\"]",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_be5c74c260f54fd3283324a100fa4c69a1f876580f99076a1caa364716f6b497",
+      "native": {
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-169",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\",\"반비례\",\"반비례 관계식\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "반비례",
+        "L4": "반비례 관계식"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "반비례",
+        "L4": "반비례 관계식"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\"]",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_a86218e4f1d4036989c499fc2e0a19036ff858458049473da7a544394ca9bcbb",
+      "native": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-177",
+      "actualBaseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\",\"평행선과 각\",\"동위각·엇각\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "L3": "평행선과 각",
+        "L4": "동위각·엇각"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "위치 관계",
+        "L3": "평행선과 각",
+        "L4": "동위각·엇각"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\"]",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "위치 관계"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_fac60a43c600971e9c4fab3777b0163a99a3cf70e7435087bf1c115666752dab",
+      "native": {
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "problemTypeKey": "PT_M1_INVERSE_PROPORTION_WORK_APPLICATION",
+        "templateKey": "TPL_M1_INVERSE_PROPORTION_WORK_APPLICATION_REMAINING_WORK_RESOURCE_COUNT"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-172",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\",\"관계 해석\",\"정비례·반비례 활용\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "관계 해석",
+        "L4": "정비례·반비례 활용"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "관계 해석",
+        "L4": "정비례·반비례 활용"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\"]",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_e4bb8690f6be4fd6e671583a743a1ecf03d39dd72f79adfbf0f5adc1375bdf1d",
+      "native": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_PARALLELOGRAM_MIDPOINT_AUDIT"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-192",
+      "actualBaseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\",\"삼각형의 합동\",\"SAS 합동\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "삼각형의 합동",
+        "L4": "SAS 합동"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "삼각형의 합동",
+        "L4": "SAS 합동"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_e0bf633136ca14fc3f3192b62eec9bdffa4227f3153aae3edb2e8d4b3a443532",
+      "native": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-193",
+      "actualBaseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\",\"삼각형의 합동\",\"ASA 합동\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "삼각형의 합동",
+        "L4": "ASA 합동"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "삼각형의 합동",
+        "L4": "ASA 합동"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_ffce93ef42912eb61d142ffaadaf7bf56869adece6a6ed9beade2e717d08600b",
+      "native": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-177",
+      "actualBaseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\",\"평행선과 각\",\"동위각·엇각\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "L3": "평행선과 각",
+        "L4": "동위각·엇각"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "위치 관계",
+        "L3": "평행선과 각",
+        "L4": "동위각·엇각"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\"]",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "위치 관계"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_976adc004f55751504e0f92aafd1b6ec3f45c9e42af13b0a2b49c2a9f080ca0c",
+      "native": {
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "problemTypeKey": "PT_M1_INVERSE_PROPORTION_REGION_POINT_COUNT",
+        "templateKey": "TPL_M1_INVERSE_PROPORTION_REGION_POINT_COUNT_STRICT_BELOW_NATURAL_POINTS"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-172",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\",\"관계 해석\",\"정비례·반비례 활용\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "관계 해석",
+        "L4": "정비례·반비례 활용"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "관계 해석",
+        "L4": "정비례·반비례 활용"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\"]",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_da359e1af270778eaba94a76f15ea85954775c38c2df5aee986dc8ca22deba1f",
+      "native": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ALTERNATE_POSITION_IDENTIFICATION"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-177",
+      "actualBaseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\",\"평행선과 각\",\"동위각·엇각\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "L3": "평행선과 각",
+        "L4": "동위각·엇각"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "위치 관계",
+        "L3": "평행선과 각",
+        "L4": "동위각·엇각"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\"]",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "위치 관계"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_883588b373d439a971a7895ded9819b72d753b886850f4d6b614a70fe1c94dd6",
+      "native": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+        "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT"
+      },
+      "rpmStatus": "LEGACY_PARENT_AMBIGUOUS",
+      "rpmReason": "LEGACY_SUBUNIT_HAS_MULTIPLE_PARENTS",
+      "rpmGranularity": null,
+      "exactLeafExpected": false,
+      "expectedBaseLeafRecordId": null,
+      "actualBaseLeafKey": "",
+      "actualBasePath": null,
+      "actualEffectivePath": null,
+      "actualEffectiveParent": null,
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형"
+      },
+      "explicitRpmPathCount": 0,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_5fc1c99bd44c3aa0d8a579b57b9dc692129f8f7aafa66734154c979f307196f2",
+      "native": {
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-224",
+      "actualBaseLeafKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\",\"중앙값과 최빈값\",\"최빈값\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "통계",
+        "L2": "대푯값",
+        "L3": "중앙값과 최빈값",
+        "L4": "최빈값"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "통계",
+        "L2": "대푯값",
+        "L3": "중앙값과 최빈값",
+        "L4": "최빈값"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+        "courseKey": "M1-2",
+        "L1": "통계",
+        "L2": "대푯값"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "통계",
+        "midUnit": "대푯값"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_6d302cad46fda4208bcacf6d853e9198738cc18e26c98f8e011bdad9672ef9f3",
+      "native": {
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-223",
+      "actualBaseLeafKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\",\"중앙값과 최빈값\",\"중앙값\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "통계",
+        "L2": "대푯값",
+        "L3": "중앙값과 최빈값",
+        "L4": "중앙값"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "통계",
+        "L2": "대푯값",
+        "L3": "중앙값과 최빈값",
+        "L4": "중앙값"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+        "courseKey": "M1-2",
+        "L1": "통계",
+        "L2": "대푯값"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "통계",
+        "midUnit": "대푯값"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_3d56afccf7e200f169c308fe861e597fcba46e5cab6d7c7376be5f7359b3ff26",
+      "native": {
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-223",
+      "actualBaseLeafKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\",\"중앙값과 최빈값\",\"중앙값\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "통계",
+        "L2": "대푯값",
+        "L3": "중앙값과 최빈값",
+        "L4": "중앙값"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "통계",
+        "L2": "대푯값",
+        "L3": "중앙값과 최빈값",
+        "L4": "중앙값"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+        "courseKey": "M1-2",
+        "L1": "통계",
+        "L2": "대푯값"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "통계",
+        "midUnit": "대푯값"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_3e86de14da10d8992dbc19f6545babb8e7d87c7f9a579cc79ecb29757262426e",
+      "native": {
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-227",
+      "actualBaseLeafKey": "[\"2022\",\"M1-2\",\"통계\",\"도수분포표와 상대도수\",\"도수분포표\",\"계급·도수\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "통계",
+        "L2": "도수분포표와 상대도수",
+        "L3": "도수분포표",
+        "L4": "계급·도수"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "통계",
+        "L2": "도수분포표와 상대도수",
+        "L3": "도수분포표",
+        "L4": "계급·도수"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"통계\",\"도수분포표와 상대도수\"]",
+        "courseKey": "M1-2",
+        "L1": "통계",
+        "L2": "도수분포표와 상대도수"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "통계",
+        "midUnit": "도수분포표와 상대도수"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_9fdaf44f2d5156120df8007115c8393404e618be363a73a3c372357ab0a185fa",
+      "native": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-176",
+      "actualBaseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\",\"각\",\"맞꼭지각\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "L3": "각",
+        "L4": "맞꼭지각"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "L3": "각",
+        "L4": "맞꼭지각"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\"]",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "기본 도형"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_42849e0c412ae8bf1f70e578c0ccbce121008daaf975b9bcbed49176badc79b4",
+      "native": {
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "problemTypeKey": "PT_M1_PROPORTIONAL_GRAPH_SEGMENT_DIVISION",
+        "templateKey": "TPL_M1_PROPORTIONAL_GRAPH_HORIZONTAL_DIVISION_AXIS_PROJECTION"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-172",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\",\"관계 해석\",\"정비례·반비례 활용\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "관계 해석",
+        "L4": "정비례·반비례 활용"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "관계 해석",
+        "L4": "정비례·반비례 활용"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\"]",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_48d2321fd14aa0bb4e7cca39b2c8699e2dd65c8fd5b21a533f635435552ec03a",
+      "native": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER"
+      },
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmGranularity": "LEAF",
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-192",
+      "actualBaseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\",\"삼각형의 합동\",\"SAS 합동\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "삼각형의 합동",
+        "L4": "SAS 합동"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "삼각형의 합동",
+        "L4": "SAS 합동"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      },
+      "explicitRpmPathCount": 2,
+      "runtimeAgrees": true
+    }
+  ],
+  "failures": [
+    {
+      "ordinal": 1,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 5,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 6,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 7,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 8,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 9,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 10,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 11,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 12,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 13,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 14,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 15,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 17,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 18,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 19,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 20,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 21,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 22,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    },
+    {
+      "ordinal": 23,
+      "reason": "EXACT_RPM_LEAF_MISMATCH"
+    }
+  ],
+  "boundary": {
+    "consumerRepeated": false,
+    "catalogLoaded": false,
+    "mathQaRepeated": false,
+    "actualRpmSolutionResolver": "NOT_RUN_UNVERIFIED_SOLUTION",
+    "sourceCanonicalIndexRefsMutated": false,
+    "method": "Actual published Git metadata/runtime rows -> pinned RPMMiddleToc.resolveRecord; previous actual Consumer UI-parent proof reused with unchanged helper/authority and matching registered native/RPM fields."
+  }
+}

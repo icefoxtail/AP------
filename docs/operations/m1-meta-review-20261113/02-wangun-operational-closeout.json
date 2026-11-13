@@ -1,0 +1,220 @@
+{
+  "schemaVersion": "existing-exam-operational-closeout-v1",
+  "closedAt": "2026-11-13T18:06:43.527528+00:00",
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "owner": "GPT_ROOT_933015CD0A4F",
+  "order": 2,
+  "exam": "2026 왕운중 중1 2학기 중간",
+  "status": "OPERATIONALLY_CLOSED_WITH_DOCUMENTED_RPM_DEBT",
+  "operationallyClosed": true,
+  "questionCount": 23,
+  "reviewedQuestionCount": 23,
+  "sourceMetadataChangedQuestionCount": 23,
+  "substantiveMetadataChangedQuestionCount": 20,
+  "countBasis": "All23 prompt/choices/provided solutions and33 external figures were read;20 semantic or parent connection corrections and23 metadata rationale records. Source reviewStatus, difficulty and normal payload preserved.",
+  "main": {
+    "sha": "738af248bd62813a572ac81725892b3f12ee2beb",
+    "tree": "40d92cfea35ea1108d4709aa7d7b87338e54aa17",
+    "scope": "FETCHED_REMOTE_MAIN_GIT_OBJECTS_AND_ACTUAL_WRITER_ARTIFACT"
+  },
+  "finalPr": {
+    "number": 1968,
+    "url": "https://github.com/icefoxtail/AP------/pull/1968",
+    "headSha": "e03094dff7abe80ac6a66223b1f20ffea19a52fe",
+    "mergeCommitSha": "6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2"
+  },
+  "source": {
+    "path": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+    "rawSha256": "c79551504949aee9ee09f5a8e2bf74898f7b7204d54a035a3e4b2acc7d808129",
+    "blobSha1": "21c4a9cee8baca27a43d20c64c0e69bd5bfe5670",
+    "preservedStudentPayloadEvidence": "02-wangun-source-candidate-independent-review-rev3.json",
+    "mainWriterSourceOrImageChangedPaths": 0
+  },
+  "request": {
+    "id": "m1-wangun-2026-mid-meta-review-20261113",
+    "rawSha256": "feb528273a4167b654a50dcd6d825c7db9173b0bf2fee1c47904b20b4bb505c1",
+    "canonicalSha256": "3f6e0823c735fba24f769c4b2043001c1e1e8e9c2ad03246fb12638e6c4b3648",
+    "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
+    "receiptRawSha256": "0f673be4ab627f7d8d89ee66f2f1983ef3a212b9826f1064bf5e207894e92b88",
+    "registrationStatus": "REGISTERED",
+    "registeredQuestions": 23,
+    "identityRecords": 23,
+    "runtimeRecords": 23,
+    "registryChangesApplied": 16,
+    "fingerprintRepairs": 23,
+    "inboxConsumed": true,
+    "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR"
+  },
+  "mainWriter": {
+    "runId": 43474884078,
+    "jobId": 132056020809,
+    "eventHead": "6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2",
+    "status": "SUCCESS",
+    "persistence": "PUSHED",
+    "attempts": 1,
+    "registeredSha": "738af248bd62813a572ac81725892b3f12ee2beb",
+    "persistedInputSha": "738af248bd62813a572ac81725892b3f12ee2beb",
+    "appliedRequests": 1,
+    "rejectedRequests": 0,
+    "pendingRequests": 0,
+    "finalPostAutoMetaConsumer": {
+      "entry": "reviewedFinal-1.log",
+      "sha256": "eb97e3826d01f2a25b9d7caa9a737a8762ba5dee0c2ec6b8ac7d912f1373da60",
+      "status": "PASS",
+      "counts": {
+        "changed": 23,
+        "checked": 23,
+        "passed": 23,
+        "skippedUnchanged": 0
+      },
+      "failures": 0,
+      "unobservedFields": 0,
+      "solverOnlyRevisions": 0,
+      "assignmentPending": 0,
+      "exam": "26_왕운중_2학기_중간_중1_기출",
+      "sourceFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "workingTreeHeadAtVerification": "6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2",
+      "bindingExplanation": "Final verification ran on registered staged data before persist. The prepare report places reviewedFinal after semantic/AutoMeta. PUSHED and persisted inputSha bind that snapshot to actual main 738af248bd62813a572ac81725892b3f12ee2beb.",
+      "initialPreflight": {
+        "entry": "native/archive-meta-register-pass/consumer-preflight-1.json",
+        "sha256": "963e6b0cb6f8e1fe99f6d50b0eddc0406e1e919bf8eae48c8d44336d5cae712d",
+        "status": "PASS",
+        "counts": {
+          "changed": 23,
+          "checked": 23,
+          "passed": 23,
+          "skippedUnchanged": 0
+        },
+        "scope": "Intermediate preflight; distinct from final post-AutoMeta proof."
+      },
+      "prepareReport": {
+        "entry": "report.json",
+        "sha256": "6bde8a90b7f1c5761d28216deb55677e7bf39bc62ad0b48e081bc6260245d7e1",
+        "inputSha": "6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2",
+        "status": "PREPARED_WITH_PENDING",
+        "safeToPersist": true,
+        "registrationReady": true,
+        "publishable": true,
+        "sourceMutation": 0,
+        "independentReviewClaim": false,
+        "lanes": [
+          {
+            "id": "reviewed",
+            "status": "VERIFIED",
+            "finalChecked": true,
+            "needsContinuation": false
+          },
+          {
+            "id": "semantic",
+            "status": "VERIFIED",
+            "needsContinuation": true
+          },
+          {
+            "id": "shared",
+            "status": "VERIFIED",
+            "needsContinuation": false
+          },
+          {
+            "id": "generated",
+            "status": "VERIFIED",
+            "needsContinuation": false
+          },
+          {
+            "id": "reviewedFinal",
+            "status": "VERIFIED",
+            "reason": "FINAL_CONSUMER"
+          },
+          {
+            "id": "studentIndexes",
+            "status": "VERIFIED",
+            "needsContinuation": false
+          },
+          {
+            "id": "fourSlot",
+            "status": "VERIFIED",
+            "needsContinuation": false
+          }
+        ]
+      }
+    },
+    "globalStatus": "REGISTRATION_PARTIAL_OPTIONAL_SEMANTIC_BACKLOG",
+    "publicationBoundary": "Exact snapshot handoff succeeded; deployed-site verification is not claimed."
+  },
+  "actualMainMinimalAudit": {
+    "evidencePath": "02-wangun-main738-closeout-minimal-audit.json",
+    "sha256": "facf6db626219f8fb5eaf24aa2529da0ff043d809cdbdb40444f897acc9ee5af",
+    "nativeMetadataIdentityRuntimeMatches": 23,
+    "rpmExactLeafCount": 19,
+    "rpmDebtOrdinals": [
+      2,
+      3,
+      4,
+      16
+    ],
+    "debtParents": {
+      "2": "EXACT_CONSTRUCTION_CONGRUENCE_PARENT_WITHOUT_LEAF",
+      "3": "EXACT_CONSTRUCTION_CONGRUENCE_PARENT_WITHOUT_LEAF",
+      "4": "LEGACY_PARENT_AMBIGUOUS_NO_LEAF",
+      "16": "LEGACY_PARENT_AMBIGUOUS_NO_LEAF"
+    },
+    "registryChanges": 16,
+    "protectedOutsideScope17Changed": 0,
+    "currentShinheung24Changed": 0,
+    "protectedMeaningApprovalAndSelectionEvidenceReused": true
+  },
+  "rootIndependentReadback": {
+    "actualSourceRawAndBlobVerified": true,
+    "actualReceiptRawVerified": true,
+    "receiptUidSetsAppliedIdentityRuntime": 23,
+    "writerZipSha256": "a3608f042c1d8bbceb38776f12eafca57b1479dac0eb720192663fae12a8e45c",
+    "finalConsumerEntrySha256": "eb97e3826d01f2a25b9d7caa9a737a8762ba5dee0c2ec6b8ac7d912f1373da60",
+    "persistedReportSha256": "0fb58633c3b640af10edaa1f820d5d6cae92ffe5c2b480ef80eb2420e0bdc8be",
+    "savedActualNativeAndRpmPathsComparedToVerifiedPreflight": 23,
+    "comparisonBoundary": "Exact19 base/effective leaf paths and parent keys match. Debt4 has no leaf in either result; null and empty-string absent keys are equivalent only for these explicit debt rows.",
+    "mainWriterChangedPaths": 27,
+    "mainWriterSourceOrImageChangedPaths": 0
+  },
+  "diagnosticHistory": {
+    "initialAuditReportsPreserved": true,
+    "resolvedBy": "02-wangun-main738-closeout-minimal-audit.json",
+    "reasons": [
+      "Writer-derived taxonomy/binding counters were initially treated as unexpected; actual counts match array lengths.",
+      "A temporary expected-path comparison omitted curriculum context. Actual19 helper paths match the prior verified actual preflight."
+    ],
+    "productionDataCorrectionsNeeded": false,
+    "guardOrTestAssertionsWeakened": false
+  },
+  "verificationBoundary": {
+    "fullR1R2R3Rerun": false,
+    "mathFinalQaPerformed": false,
+    "actualRpmSolutionResolver": "NOT_RUN_UNVERIFIED_SOLUTION",
+    "consumerRerunAfterWriter": false,
+    "actualWriterFinalConsumerEvidenceReused": true,
+    "studentQuestionAnswerSolutionImagesUidScoreDifficultyChanged": false,
+    "rpmDebtInventedAlternative": false
+  },
+  "evidenceSha256": {
+    "02-wangun-semantic-review-rev3.json": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090",
+    "02-wangun-source-candidate-independent-review-rev3.json": "f1b649d04d8751774acf77eaa25c1b6dc7bcaba216a108014bace8b698beed88",
+    "02-wangun-main51cf-isolated-preflight.json": "ea5437e08ddd76b96adeecfba1b0c4872c2faf2293abbc5c5277da8a0683d535",
+    "02-wangun-pr1968-fresh-ci.json": "fd5a2c3422eb999dc2b8cdec8a06c7c449f493714119bebf7763c33bc3e97b7b",
+    "02-wangun-main-merge.json": "fcd929c3705fc3de21eb874bc20bd49c142e3bfa6012eeba929d38b801599334",
+    "02-wangun-pr1968-main-writer-final.json": "f277568d8f76de56e4dc58ce331759268cd53f52fb2cad25f0018a9a69e9cf94",
+    "02-wangun-main738-closeout-minimal-audit.json": "facf6db626219f8fb5eaf24aa2529da0ff043d809cdbdb40444f897acc9ee5af",
+    "02-wangun-main738-minimal-protection-check.json": "44411a2c8922aa871a8a68abd0cc671143acf8eebfedd7ec58812e745a9160a3",
+    "02-wangun-main738-actual-rpm-parent-check.json": "4ed80810333472acecd24421f4ab9ff495f9243a703d1880d29606405b4d08a3",
+    "02-wangun-merged-input-guard-check.json": "72a85deb1190f1294fd89df1884fbced914d306472b7e6154731ba09280b3347"
+  },
+  "followingWork": {
+    "completedExams": 2,
+    "remainingExams": 42,
+    "reviewedQuestions": 47,
+    "operationallyClosedQuestions": 47,
+    "nextOrder": 3,
+    "nextExam": "2026 팔마중 중1 2학기 중간",
+    "nextQuestionCount": 24,
+    "nextSource": "archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+    "nextStatus": "NOT_STARTED_AT_CLOSEOUT",
+    "nextAction": "Publish closing checkpoint and AWCR; refresh latest main and concurrent scope, then read all24 Palma prompts/figures/provided solutions."
+  }
+}
