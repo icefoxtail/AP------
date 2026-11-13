@@ -15,7 +15,8 @@
     "reviewOverrideDigest": "e14dcc132d12ebd053759eb74b96a823e15f8b15e9bce26a0a3eb112634e3d2a",
     "canonicalIdentityRepair20261025": "docs/operations/META_CANONICAL_KEY_COLLISION_REPAIR_20261025.json",
     "reviewedExam_meta-pipeline-01-yeonhang-m1-2mid-20261026-rev1": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-01-yeonhang-m1-2mid-20261026-rev1.json",
-    "reviewedExam_m1-shinheung-2026-mid-meta-review-20261113-rev3": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+    "reviewedExam_m1-shinheung-2026-mid-meta-review-20261113-rev3": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+    "reviewedExam_m1-shinheung-meta-closeout-20261113-bf-r1": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
   },
   "counts": {
     "records": 613,
@@ -602,7 +603,9 @@
       "conceptClusterKey": "",
       "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
       "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_EQUILATERAL_TRIANGLE"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
@@ -621,10 +624,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 4,
       "level": "상",
@@ -653,12 +657,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "정삼각형의 변·각 성질로 SAS 조건을 얻은 뒤 합동 대응을 판정하므로 SEQUENTIAL을 유지하고 정삼각형 성질 CC를 추가한다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#12",
       "approvedSourceFingerprint": "3f947807e596cda15fbfbf9543222e2a744ce5bbb99d95907d723c747108bb74",
       "legacyLevel": "상",
@@ -2914,7 +2920,10 @@
       "conceptClusterKey": "",
       "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
       "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_EQUILATERAL_TRIANGLE",
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
@@ -2933,10 +2942,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 4,
       "level": "상",
@@ -2965,12 +2975,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "정삼각형 성질로 SAS 합동을 만든 뒤 대응각을 내각합에 적용하므로 SEQUENTIAL을 유지하고 정삼각형·삼각형 내각합 CC를 기록한다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#24",
       "approvedSourceFingerprint": "9a932a35058bba7f9378c03412de6adf2b5acdc7844239c2765a14c9c2acd17e",
       "legacyLevel": "상",
@@ -4019,7 +4031,9 @@
       "conceptClusterKey": "",
       "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
       "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_SHARED_SIDE_EXTENSION_AUDIT",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_ANGLE_RELATIONS"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
@@ -4038,10 +4052,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 4,
       "level": "상",
@@ -4070,12 +4085,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "정다각형의 각을 구한 뒤 별도로 생긴 사각형의 내각합에 전달하므로 SEQUENTIAL을 유지하고 일반 도형의 각 관계 CC를 기록한다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#13",
       "approvedSourceFingerprint": "e858bd15ef47dac8f3a81204fbc17015a98a147f2ab3db068db5789d0cebf85f",
       "legacyLevel": "상",
@@ -5557,7 +5574,7 @@
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "NONE",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -5573,10 +5590,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 3,
       "level": "중",
@@ -5605,12 +5623,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "인접 두 선분의 비와 중점 길이 합으로 목표 비를 구하는 것은 확정된 중점·선분비 primary의 직접 적용이므로 NONE으로 고친다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#21",
       "approvedSourceFingerprint": "02e6b90b49d8e83b14654312920b544d0f82feaf5fb95d8169b6e8485c1de0bf",
       "legacyLevel": "중",
@@ -5865,7 +5885,7 @@
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "NONE",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -5881,10 +5901,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 2,
       "level": "하",
@@ -5913,12 +5934,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "한 외각에서 변 수를 구한 뒤 내각합을 계산하는 것은 확정된 정다각형 각·변 수 primary의 표준 연결이므로 NONE으로 고친다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#14",
       "approvedSourceFingerprint": "93f4485f45324210c7bd0ff7e06a5ca7588003b6cced79c530fc5601b53cd12a",
       "legacyLevel": "하",
@@ -8254,7 +8277,7 @@
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "NONE",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -8270,10 +8293,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 4,
       "level": "상",
@@ -8302,12 +8326,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "공간의 평행·수직 보장 조건과 꼬인 위치 반례를 대조하는 것은 확정된 공간 관계 진술 primary 자체이므로 NONE으로 고친다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#17",
       "approvedSourceFingerprint": "cb8abf969b7f50b8df127b2554382780e4595fbe8c8ee10f6650a0da207ed6fe",
       "legacyLevel": "상",
@@ -8575,7 +8601,7 @@
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "NONE",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -8591,10 +8617,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 2,
       "level": "중",
@@ -8623,12 +8650,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "꼭짓점당 대각선 수에서 변 수를 구하고 전체 대각선의 이중 계산을 나누는 과정은 다각형 대각선 primary의 표준 풀이이므로 NONE으로 고친다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#5",
       "approvedSourceFingerprint": "716c7b9168426d8b069afc7dcca82f75af7df46e5cc8c51e587719e90b2dacc9",
       "legacyLevel": "중",
@@ -9407,7 +9436,7 @@
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "NONE",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -9423,10 +9452,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 3,
       "level": "중",
@@ -9455,12 +9485,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "보조 평행선으로 꺾인 선의 방향각을 전달하고 중간 각을 소거하는 것은 확정된 평행선 꺾인 선 primary의 표준 풀이이므로 NONE으로 고친다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#9",
       "approvedSourceFingerprint": "869a61dbf8de55e73e28de1e4629bf380a7d17f43e9de8e264d0030fe9ef942d",
       "legacyLevel": "중",
@@ -10040,7 +10072,10 @@
       "conceptClusterKey": "",
       "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
       "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_EQUILATERAL_TRIANGLE",
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
@@ -10059,10 +10094,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 5,
       "level": "상",
@@ -10091,12 +10127,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "정삼각형 성질로 SAS를 만들고 대응각을 삼각형 내각합에 적용하므로 SEQUENTIAL을 유지하고 두 실제 보조 CC를 기록한다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#18",
       "approvedSourceFingerprint": "57788f95d299b1c15ec1d5f84585234117962d6a9adc1cd89340a22c6ba8b6ff",
       "legacyLevel": "상",
@@ -13118,7 +13156,7 @@
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "SEQUENTIAL",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -13134,10 +13172,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 3,
       "level": "중",
@@ -13166,12 +13205,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "각 복사 작도로 같은 동위각을 확보한 뒤 평행 조건의 역을 적용하는 순서가 있어 SEQUENTIAL로 고치되 정확한 역정리 CC는 임의 지정하지 않는다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#4",
       "approvedSourceFingerprint": "994cb485ef75c63960d38c7e0680c44e97eb4446f90de278c1c34d1d0df0cc1f",
       "legacyLevel": "중",
@@ -16216,7 +16257,7 @@
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "integrationPattern": "NONE",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -16232,10 +16273,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 4,
       "level": "상",
@@ -16260,12 +16302,13 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "기준 모서리에 대한 수직 교차와 꼬인 위치를 각각 세어 더하는 것은 확정된 모서리 관계 primary의 직접 판정이므로 SEQUENTIAL을 NONE으로 고친다.",
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#8",
       "approvedSourceFingerprint": "6e18e062e453cec8541b1b62b49ffaa365faf9631c79b99ecf4f620d49f58597",
       "legacyLevel": "상",
@@ -17453,7 +17496,7 @@
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "NONE",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -17469,10 +17512,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 2,
       "level": "중",
@@ -17501,12 +17545,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "주어진 선분비와 두 중점의 절반 길이를 합하는 과정은 이미 확정된 중점·비 primary의 표준 풀이이므로 NONE으로 고친다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#7",
       "approvedSourceFingerprint": "4a5f4bbb0236da2331d2ed69f80e832b6fc50ad55b9d555d2997f9771409ac45",
       "legacyLevel": "중",
@@ -17660,7 +17706,9 @@
       "conceptClusterKey": "",
       "problemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM",
       "templateKey": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_VERTICAL_ANGLES"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
@@ -17679,10 +17727,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 4,
       "level": "상",
@@ -17711,12 +17760,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "맞꼭지각으로 두 부분의 보조각을 일치시킨 뒤 각합 식에서 소거하므로 SEQUENTIAL을 유지하고 맞꼭지각 CC를 기록한다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#19",
       "approvedSourceFingerprint": "e5c26d6b2f8e49fb4e5337c188298ce6f55c5574324d4d714edc05756170b85e",
       "legacyLevel": "상",
@@ -17739,8 +17790,11 @@
       "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_PERIMETER_CASES",
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -17756,10 +17810,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 3,
       "level": "중",
@@ -17788,12 +17843,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "세 변의 순서를 고정하고 최소변에 따라 가능한 정수 조합을 나누므로 CASE_BRANCH이며 자연수·1cm 초과 제한을 두 공식 Condition으로 기록한다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#11",
       "approvedSourceFingerprint": "d4b4f39afe48a903831d961bb289dabfa6ad451bada19d1e1c6782620ca58b78",
       "legacyLevel": "중",
@@ -19247,10 +19304,13 @@
       "conceptClusterKey": "",
       "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
       "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_TRIANGLE_INEQUALITY",
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "CASE_BRANCH",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -19266,10 +19326,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 4,
       "level": "상",
@@ -19294,12 +19355,13 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "자료의 조합마다 존재·SAS·SSA·ASA·세 각 조건을 나누어 검사하며 삼각부등식과 내각합이 각각 필요한 분기이므로 CASE_BRANCH와 두 CC를 기록한다.",
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#10",
       "approvedSourceFingerprint": "5f0750d5edc3619fef3beb6740645d4603a1e0ae5650df1edb9d9733517c077e",
       "legacyLevel": "상",
@@ -19581,7 +19643,7 @@
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "NONE",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -19597,10 +19659,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 1,
       "level": "하",
@@ -19629,12 +19692,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "반직선의 시작점과 방향 일치만 확인하는 현재 primary의 표준 풀이이므로 DIRECT를 NONE으로 고친다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#1",
       "approvedSourceFingerprint": "23cd4534794e015e56ff0ad546ec6736ada2a13036a19e1019f60e86981352de",
       "legacyLevel": "하",
@@ -19917,7 +19982,7 @@
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "NONE",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -19933,10 +19998,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 2,
       "level": "중",
@@ -19947,8 +20013,8 @@
         "l3": "평면에서의 위치 관계",
         "l4": "두 직선의 위치 관계"
       },
-      "primaryMethod": "같은 평면에서 두 직선의 교점 유무와 일치 여부를 구분한다.",
-      "decisiveStep": "그림에 제시된 직선 쌍을 교차·평행·일치라는 위치 관계로 판정한다.",
+      "primaryMethod": "같은 평면에 표시된 직선의 평행·수직·교점과 수선의 발을 구분한다.",
+      "decisiveStep": "그림의 평행·직각 표시와 점의 위치로 직선 관계와 수선의 발 진술을 대조한다.",
       "difficultyConfidence": "medium",
       "curriculumKey": "2022",
       "courseKey": "M1-2",
@@ -19965,12 +20031,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "표시된 평행·수직·교점·수선의 발을 판단하는 현재 위치 관계 primary의 정의 적용만 필요하므로 NONE으로 고친다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#3",
       "approvedSourceFingerprint": "04cee71543784b960e2297773bb68fe9bc5363563b809cc38988b0e6f101c2e4",
       "legacyLevel": "중",
@@ -20650,7 +20718,7 @@
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "NONE",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -20666,10 +20734,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 3,
       "level": "중",
@@ -20698,12 +20767,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "이웃각의 주어진 비를 평각 180°와 연결하는 과정은 확정된 평각 분할비 primary의 직접 풀이이므로 NONE으로 고친다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#22",
       "approvedSourceFingerprint": "0fc347007808ab5f26ff40494227b7f9922ffc9a487b620fc8d18afd9b5e5eaa",
       "legacyLevel": "중",
@@ -21761,10 +21832,12 @@
       "conceptClusterKey": "",
       "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
       "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_STRAIGHT_ANGLE"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "SEQUENTIAL",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -21780,10 +21853,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.6:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 2,
       "level": "중",
@@ -21812,12 +21886,14 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE1",
-      "metaFoundationPackVersion": "1.0.5",
+      "metaFoundationPackVersion": "1.0.6",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "평행선으로 각을 옮긴 결과에 평각의 180° 관계를 적용하여 두 각의 차를 구하므로 평각 CC와 SEQUENTIAL을 기록한다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#2",
       "approvedSourceFingerprint": "8b5502d36b57bd20535a9a4ea31ad801a3d9cbfc0cbf06cd7a021a636f609a95",
       "legacyLevel": "중",
@@ -26849,6 +26925,13 @@
     ],
     "crossConcepts": [
       {
+        "key": "CC_ANGLE_RELATIONS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_2cf0069ab9b9afaa64e02a03436d1ca0c60c3188c4314bc3bfd22f1b135e2d95"
+        ]
+      },
+      {
         "key": "CC_AREA",
         "count": 2,
         "questionUids": [
@@ -26866,9 +26949,12 @@
       },
       {
         "key": "CC_EQUILATERAL_TRIANGLE",
-        "count": 1,
+        "count": 4,
         "questionUids": [
-          "qid_v1_009a623840f3787069338e221321fafe3af2e0e315d9cb5b4d353776d75ebe80"
+          "qid_v1_009a623840f3787069338e221321fafe3af2e0e315d9cb5b4d353776d75ebe80",
+          "qid_v1_04ff9b066524c2ffdad5d559f03de2bff4129b1ab303b756d850608585d0da2b",
+          "qid_v1_20cf7db610d665dde2c04cf24f0f2b245236974a3aedeb514d7ddaab05271454",
+          "qid_v1_7b6ffc097c4b1406b5cee2111ebb8986751ffe11d939b413e0f90e0da85945e7"
         ]
       },
       {
@@ -27061,9 +27147,19 @@
       },
       {
         "key": "CC_STRAIGHT_ANGLE",
-        "count": 1,
+        "count": 2,
         "questionUids": [
-          "qid_v1_e8d3e7a91931e0ac34f0c811281f881f4c2e36e6d924e57fe1bc45459cbeb690"
+          "qid_v1_e8d3e7a91931e0ac34f0c811281f881f4c2e36e6d924e57fe1bc45459cbeb690",
+          "qid_v1_e914cbbda8bdf9cbca6a70473c7e3c9c1e93350d313a97a6da59072b8ccda284"
+        ]
+      },
+      {
+        "key": "CC_TRIANGLE_ANGLE_SUM",
+        "count": 3,
+        "questionUids": [
+          "qid_v1_20cf7db610d665dde2c04cf24f0f2b245236974a3aedeb514d7ddaab05271454",
+          "qid_v1_7b6ffc097c4b1406b5cee2111ebb8986751ffe11d939b413e0f90e0da85945e7",
+          "qid_v1_d47f3ed83f1c4b59063a208d4fa43128aedd4985161b81e7853068df7d0af269"
         ]
       },
       {
@@ -27085,16 +27181,18 @@
       },
       {
         "key": "CC_TRIANGLE_INEQUALITY",
-        "count": 2,
+        "count": 3,
         "questionUids": [
           "qid_v1_298a0fedf4b99765ce48e1a14852d07cb5fdda9c517e415eaad84ad0d478a0db",
+          "qid_v1_d47f3ed83f1c4b59063a208d4fa43128aedd4985161b81e7853068df7d0af269",
           "qid_v1_d91af73670352d7d8c510ced2a05437d57c6cb47c62c250c3e4b50925244d58c"
         ]
       },
       {
         "key": "CC_VERTICAL_ANGLES",
-        "count": 1,
+        "count": 2,
         "questionUids": [
+          "qid_v1_c4734e15ce731560fe8bfd5c52b47434248d820a881b48fc6941d9010096bcf6",
           "qid_v1_e8d3e7a91931e0ac34f0c811281f881f4c2e36e6d924e57fe1bc45459cbeb690"
         ]
       }
@@ -27116,7 +27214,7 @@
       },
       {
         "key": "COND_NATURAL_NUMBER",
-        "count": 19,
+        "count": 20,
         "questionUids": [
           "qid_v1_02d7e658bd500b0b67008fed8250bef0e87e8461fe3d30c39d873e84477c3fae",
           "qid_v1_20eb1925e02082e0bc984ef8d4987a2b84d0b33b8bdbdb69653dcea1774ea529",
@@ -27133,6 +27231,7 @@
           "qid_v1_a1a75735b2684fb4a04060caf8402f197a419419d376cffc70aa293b8e15a0b6",
           "qid_v1_b4475d3f516df4ae69b21504a246224731bfdd510be6b7ef1691d9072a0b062f",
           "qid_v1_bccedcb814a339234aed0562db801fe5e9ebb7c5b1ae0832ed5ac55cc32f0360",
+          "qid_v1_c5e54a9e9f5143af4e69c0637ca79755aca2e0ead620199853f76287f82cb5b1",
           "qid_v1_d269008218cd19d91814a439dfa20438a05cd0f0ec3cbe5e3cfb614d629231a8",
           "qid_v1_dbb0e60adcdad6053ace5789da6278a77c29f260376b8d9d6c0371070ca072cf",
           "qid_v1_e72d5960d8a95f87d7b9d05482cad9878d4a1c0fb1bc1f706183d47491f81e06",
@@ -27170,7 +27269,7 @@
       },
       {
         "key": "COND_RANGE",
-        "count": 19,
+        "count": 20,
         "questionUids": [
           "qid_v1_02d7e658bd500b0b67008fed8250bef0e87e8461fe3d30c39d873e84477c3fae",
           "qid_v1_2bb1489bc8575f9701588dd552e935e59ef7c312aabf935c069a55bc5179a845",
@@ -27185,6 +27284,7 @@
           "qid_v1_bccedcb814a339234aed0562db801fe5e9ebb7c5b1ae0832ed5ac55cc32f0360",
           "qid_v1_bdbd7a8ea6c6c046b655356a4485ade991ee950fc819c4735afe418abe91dbb1",
           "qid_v1_c1e6363f20354cdc84211fb85f4ebbedf89e01fae5fe4a32c8931c428a605538",
+          "qid_v1_c5e54a9e9f5143af4e69c0637ca79755aca2e0ead620199853f76287f82cb5b1",
           "qid_v1_c9f56b737937b2136e41860c98f1cc493135fe4dc90af16d21e4aaf51b3d6b57",
           "qid_v1_d269008218cd19d91814a439dfa20438a05cd0f0ec3cbe5e3cfb614d629231a8",
           "qid_v1_d91af73670352d7d8c510ced2a05437d57c6cb47c62c250c3e4b50925244d58c",

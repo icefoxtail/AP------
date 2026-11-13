@@ -21,7 +21,8 @@
     "reviewedExam_meta-pipeline-nov04-4-31cbb3b72991-20261104": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
     "reviewedExam_meta-pipeline-nov04-4-31cbb3b72991-20261104-final": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
     "reviewedExam_meta-pipeline-isu22-m3-2mid-20261104": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.json",
-    "reviewedExam_m1-shinheung-2026-mid-meta-review-20261113-rev3": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+    "reviewedExam_m1-shinheung-2026-mid-meta-review-20261113-rev3": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+    "reviewedExam_m1-shinheung-meta-closeout-20261113-bf-r1": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
   },
   "counts": {
     "records": 1017,
@@ -22662,7 +22663,7 @@
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "integrationPattern": "NONE",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -22678,10 +22679,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 5,
       "level": "상",
@@ -22716,6 +22718,8 @@
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "모서리를 돌아간 남은 끈 길이를 반지름으로 부채꼴 영역을 더하는 과정은 기존 장애물 부채꼴 primary의 표준 풀이이므로 NONE으로 고친다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#20",
       "approvedSourceFingerprint": "1455d3e6e9b31a9efb722868f4d792bd32b9d94d7f442825cdcccf7a11924c92",
       "legacyLevel": "상",
@@ -24416,7 +24420,7 @@
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "NONE",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -24432,10 +24436,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 1,
       "level": "하",
@@ -24447,7 +24452,7 @@
         "l4": "부채꼴의 호의 길이"
       },
       "primaryMethod": "같은 원에서 중심각과 호의 길이의 비례 관계를 적용한다.",
-      "decisiveStep": "전체 원의 둘레에서 주어진 중심각이 차지하는 비율로 호의 길이를 구한다.",
+      "decisiveStep": "같은 원에서 두 호의 길이의 비를 대응하는 두 중심각의 비와 같게 놓는다.",
       "difficultyConfidence": "medium",
       "curriculumKey": "2022",
       "courseKey": "M1-2",
@@ -24470,6 +24475,8 @@
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "같은 원의 호 길이비와 중심각비를 직접 대응시키는 current primary의 비례식이므로 NONE으로 고친다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#6",
       "approvedSourceFingerprint": "0ec2dfe8438c85d8ea70b0c941110ba5d4f6e8c9574e37a75b42ee804648fa33",
       "legacyLevel": "하",
@@ -40016,7 +40023,10 @@
       "conceptClusterKey": "",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_EQUILATERAL_TRIANGLE",
+        "CC_TRIANGLE_AREA"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
@@ -40035,10 +40045,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 5,
       "level": "상",
@@ -40073,6 +40084,8 @@
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "정삼각형에서 중심각을 정한 뒤 부채꼴 길이·넓이와 삼각형 넓이를 결합하므로 SEQUENTIAL을 유지하고 두 보조 CC를 기록한다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#23",
       "approvedSourceFingerprint": "c32b9babc311bd3dab83068341270fbb2ede2c2e5989c1fe58c80aa0877d0c45",
       "legacyLevel": "상",
@@ -40672,10 +40685,12 @@
       "conceptClusterKey": "",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "SEQUENTIAL",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -40691,10 +40706,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 4,
       "level": "상",
@@ -40729,6 +40745,8 @@
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "이등변삼각형의 각 관계로 중심각을 구한 뒤 부채꼴 넓이에 대입하므로 SEQUENTIAL과 이등변삼각형 CC를 기록한다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#16",
       "approvedSourceFingerprint": "c3945a27b8e59c131ea34890c5735b489634fdd42e58cd5c5b170351e620c1bd",
       "legacyLevel": "상",
@@ -50567,10 +50585,13 @@
       "conceptClusterKey": "",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_PARALLEL_LINE_ANGLES",
+        "CC_ISOSCELES_TRIANGLE"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DIRECT",
+      "integrationPattern": "SEQUENTIAL",
       "tagConfidence": "approved_final_qa",
       "tagStatus": "reviewed_pass",
       "reviewStatus": "reviewed_pass",
@@ -50586,10 +50607,11 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m1-shinheung-meta-closeout-20261113-bf-r1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json"
       ],
       "difficultyBucket": 4,
       "level": "상",
@@ -50624,6 +50646,8 @@
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "integrationReason": "평행선과 이등변삼각형으로 중심각 관계를 만든 뒤 호 길이비에 대입하므로 두 보조 CC와 SEQUENTIAL을 기록한다.",
+      "rpmSemanticStatus": null,
       "sourceIdentity": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js#15",
       "approvedSourceFingerprint": "e6c2af9332726ced6b7050a477dc18d837aa8f9f1c263bb489697a53d282b96e",
       "legacyLevel": "상",
@@ -54656,10 +54680,11 @@
       },
       {
         "key": "CC_EQUILATERAL_TRIANGLE",
-        "count": 2,
+        "count": 3,
         "questionUids": [
           "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6",
-          "qid_v1_675fd78074a129d25aeae426fc763ee79c0980b6c90f17976e51a1a206277ac7"
+          "qid_v1_675fd78074a129d25aeae426fc763ee79c0980b6c90f17976e51a1a206277ac7",
+          "qid_v1_c50c53350f4116c7e321c140a0aca9b17f0c3fae2696b4be588a002fe3606cb7"
         ]
       },
       {
@@ -54739,7 +54764,7 @@
       },
       {
         "key": "CC_ISOSCELES_TRIANGLE",
-        "count": 11,
+        "count": 13,
         "questionUids": [
           "qid_v1_122ae06f3b6f931f59e7bad4e5278e96c4c99955421ec31e544ccbf15ad4b7b4",
           "qid_v1_48699887eeb8beecdc4efaed4c1641d2b568d63481c1ca6023ca225626b730f1",
@@ -54750,7 +54775,9 @@
           "qid_v1_b702bf78495a4a65e6c15b164c9e41b299269f9bc253d54868adf87a584785d2",
           "qid_v1_bb041a51a6cb613d8a6d33bb2ef938a5d31aea93e4005a3dbf2055c2c64018fb",
           "qid_v1_c23cd794995f2092597e22f1af7b0f35423e538d15e1582f803e5969020177a3",
+          "qid_v1_c7e5d37effec38dafc5a9f4c1cc24fc969d5d04059bb629972e00276e2c7f3a2",
           "qid_v1_d73f321d3488f5b6c220bd5cfc4b742cef64f34861434d3447e3c22a24fd6a09",
+          "qid_v1_fba10cd79c78e131b33c9b8b44799e6585838df323d81eb4b22f9af5a0a786b1",
           "qid_v1_fdc584adc0bb7d0ab7c77addd88238d37ebf061993b4c242d64280f9e7cf050c"
         ]
       },
@@ -54824,6 +54851,13 @@
         "questionUids": [
           "qid_v1_675fd78074a129d25aeae426fc763ee79c0980b6c90f17976e51a1a206277ac7",
           "qid_v1_fe666e358be6ce39a16edad6c823caf7054cda5da58fbeaca379763cab2238c2"
+        ]
+      },
+      {
+        "key": "CC_PARALLEL_LINE_ANGLES",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_fba10cd79c78e131b33c9b8b44799e6585838df323d81eb4b22f9af5a0a786b1"
         ]
       },
       {
@@ -55422,7 +55456,7 @@
       },
       {
         "key": "CC_TRIANGLE_AREA",
-        "count": 91,
+        "count": 92,
         "questionUids": [
           "qid_v1_05daec14579c8b0ad326ad3ba39d161c8ff6564afc7d2ba08840126422e57601",
           "qid_v1_0a9c48e55c5a0d94082e2fe352c1a9d450ad0c16db0baccd66889876f74c34e6",
@@ -55491,6 +55525,7 @@
           "qid_v1_ba90c2bc8fd5d7e8585402b17acb189f82ff980e47309fea04cb0fa5e4f56be6",
           "qid_v1_bfd294b95008c4847e29edeead6ef68af185bda67573af3b502933d5ef1589b3",
           "qid_v1_c17ceb1f4f708094127580f300fff478efd095ee4a3371dc0af48eb6ad11589d",
+          "qid_v1_c50c53350f4116c7e321c140a0aca9b17f0c3fae2696b4be588a002fe3606cb7",
           "qid_v1_c6406ed5ada6bf1bba425cc8a0e8bcd461ba3501e34a7e51c659a4c6b3475d94",
           "qid_v1_c864233b4efacfd2761b77937754d8c923321cff193ade18ac5c55628ab82ac3",
           "qid_v1_c8a5e1820215e7468f382af7e81321e41dae636f0ed1c7a2e46642eae9adae02",
