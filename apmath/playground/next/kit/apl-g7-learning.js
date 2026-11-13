@@ -390,7 +390,18 @@
       this.originalGo = lab.goScene.bind(lab);
       lab.goScene = (i, options) => this.go(i, options);
       const setTab = lab.setTab.bind(lab);
-      lab.setTab = id => { if (!this.enabled()) return setTab(id); if (id !== lab.tab && lab._tabAvailable(id)) this.explore(); const result = setTab(id); if (this.current) this.current.explore = this.snapshot(); this.refresh(); this.store(); return result; };
+      lab.setTab = id => {
+        if (!this.enabled()) return setTab(id);
+        if (id !== lab.tab && lab._tabAvailable(id)) {
+          // Native tab changes preserve explicitly opened explanations and controls.
+          // Rebuild only when leaving playback or a pending learning entry.
+          if (this.mode === 'explore' && !this.active && p.state === 'idle' && !this.timer) this.cancelPending();
+          else this.explore();
+        }
+        const result = setTab(id);
+        if (this.current) this.current.explore = this.snapshot();
+        this.refresh(); this.store(); return result;
+      };
       const setTeach = lab.setTeach.bind(lab);
       lab.setTeach = on => {
         if (on === lab.teach) return setTeach(on);
