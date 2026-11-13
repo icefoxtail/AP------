@@ -1,0 +1,1331 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "similar-23-shinheung-m1-2mid-candidate-v1",
+  "examUid": "23_신흥중_2학기_중간_중1_유사",
+  "sourceArchiveFile": "archive/exams/similar/middle/m1/2mid/23_신흥중_2학기_중간_중1_유사.js",
+  "expectedSourceBlobSha1": "0b66bf7b986d0ca5035d74bfb15ec820f7faa1dc",
+  "expectedQuestionCount": 26,
+  "expectedTotalPoints": 100,
+  "sourceProvenance": {
+    "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+    "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+    "sourceOriginalJs": "archive/exams/original/middle/m1/2mid/23_신흥중_2학기_중간_중1_기출.js",
+    "sourceOriginalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79",
+    "sourceTextHashMethod": "NOT_RUN",
+    "evidenceDebt": "Docs 전체 텍스트 SHA-256 미계산. 문서 ID·revision과 원본 JS blob을 기록.",
+    "correctionLog": [
+      {
+        "scope": "Q2",
+        "change": "모순된 공선 조건 제거; 직선 4, 반직선 10, 선분 6으로 합 20(④).",
+        "mathContentChanged": true,
+        "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "Q3",
+        "change": "편집 메모 삭제; 공선 순서와 길이식으로 CD=15 확인.",
+        "mathContentChanged": true,
+        "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "Q4",
+        "change": "해설에만 있던 외각식 3x+5, x+5를 발문에 표시.",
+        "mathContentChanged": true,
+        "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "Q5",
+        "change": "반직선 순서 명시; 각을 64t,48t,36t,27t로 두어 답 4/3.",
+        "mathContentChanged": true,
+        "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "Q9",
+        "change": "전개도를 원본 복원으로 가장하지 않고 표준 직육면체를 텍스트 정의한 자체 완결형 변형.",
+        "mathContentChanged": true,
+        "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "Q10",
+        "change": "동측 내각이 되도록 점 배치를 명시; 답 45도.",
+        "mathContentChanged": true,
+        "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "Q14",
+        "change": "ray order·AD=2AB로 정삼각형 배치를 정의; 네 참/거짓을 확인하고 ③만 거짓.",
+        "mathContentChanged": true,
+        "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "Q15",
+        "change": "보기의 모호한 SSA를 제거해 ASA인 ③만 유일하게 결정.",
+        "mathContentChanged": true,
+        "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "Q16",
+        "change": "단일 추가 조건의 비유일성 문항으로 재구성; ㄱ은 SSA 두 교점, 나머지는 SAS/ASA.",
+        "mathContentChanged": true,
+        "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "Q17",
+        "change": "누락 그림 선택지를 텍스트로 재구성; 길이와 양 끝 각이 모두 맞는 ①.",
+        "mathContentChanged": true,
+        "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "Q18",
+        "change": "점의 순서와 내부각 조건을 보완; 3x=84에서 답 28도.",
+        "mathContentChanged": true,
+        "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "Q22",
+        "change": "그림 배치를 복원하지 않고 공통 꼭짓점 세 내각과 잔여각을 명시한 자체 완결 변형.",
+        "mathContentChanged": true,
+        "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "Q24",
+        "change": "누락 전개도를 복원하지 않고 표준 직육면체를 명시.",
+        "mathContentChanged": true,
+        "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "Q25",
+        "change": "두 정사각형의 좌표·방향·교점·겹침영역을 정의한 변형.",
+        "mathContentChanged": true,
+        "independentReview": "NOT_RUN"
+      }
+    ]
+  },
+  "items": [
+    {
+      "sourceQid": "1",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-07",
+      "subUnitKey": "M1-07-SOLID_FIGURE",
+      "conceptClusterKey": "SOLID_FIGURE",
+      "primaryMethod": "오각뿔의 꼭짓점 개수 a=6과 모서리 개수 b=10을 구하여 b-a=4를 계산한다.",
+      "decisiveStep": "a=6, b=10에서 b-a=4 산출",
+      "rpm": {
+        "majorUnit": "입체도형",
+        "midUnit": "다면체와 회전체",
+        "l3": "다면체",
+        "l4": "면·모서리·꼭짓점"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+        "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+        "why": "각뿔의 교점과 교선 개수 계산 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "오각뿔의 꼭짓점과 모서리 수를 공식으로 바로 계산하는 1단계 문항이다.",
+      "level": "하",
+      "hold": "",
+      "sourceOrdinal": 1,
+      "candidateAnswer": "①",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "NOT_NEEDED_TEXT_COMPLETE",
+        "solution": "NOT_NEEDED_TEXT_COMPLETE",
+        "status": "NOT_CREATED"
+      },
+      "correction": null
+    },
+    {
+      "sourceQid": "2",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "conceptClusterKey": "BASIC_FIGURE",
+      "primaryMethod": "한 직선 위의 세 점과 외부 한 점에서 직선 4개, 반직선 12개, 선분 6개를 분류하여 합 22를 구한다.",
+      "decisiveStep": "직선상 반직선 4개와 교차 반직선 8개(D 관련 6개+직선상 추가)를 정확히 세어 b=12 확정",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "점·선·면",
+        "l4": "직선·반직선·선분"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
+        "templateKey": "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_MULTI_OBJECT_COUNT",
+        "why": "직선, 반직선, 선분 개수를 종합 산출하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "일직선상 점들의 반직선 중복과 외부 점과의 연결을 엄밀히 분류 계수하는 3단계 문항이다.",
+      "level": "상",
+      "hold": "",
+      "sourceOrdinal": 2,
+      "candidateAnswer": "④",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": "모순된 공선 조건 제거; 직선 4, 반직선 10, 선분 6으로 합 20(④)."
+    },
+    {
+      "sourceQid": "3",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "conceptClusterKey": "BASIC_FIGURE",
+      "primaryMethod": "CD=x로 두고 BC=x/2, BD=3x/2, AB=x/2를 표현해 AD=2x=30으로부터 x=15를 푼다.",
+      "decisiveStep": "AD = AB + BD = x/2 + 3x/2 = 2x = 30에서 x = 15 산출",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "점·선·면",
+        "l4": "두 점 사이의 거리와 중점"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+        "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+        "why": "연속 선분의 비율 조건들을 일차방정식으로 풀어 특정 선분의 길이를 구하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "세 단계의 선분 비율 조건을 미지수 x의 일차방정식으로 모델링하는 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 3,
+      "candidateAnswer": "④",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": "편집 메모 삭제; 공선 순서와 길이식으로 CD=15 확인."
+    },
+    {
+      "sourceQid": "4",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "conceptClusterKey": "BASIC_FIGURE",
+      "primaryMethod": "평각 180도에서 직각 90도를 뺀 (3x+5)+(x+5)=90 방정식으로 x=20을 구한다.",
+      "decisiveStep": "4x + 10 = 90에서 4x = 80, x = 20 산출",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "각",
+        "l4": "각의 크기"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+        "why": "평각과 직각 조건을 이용한 일차방정식 각 계산 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "평각의 성질을 이용해 단순 일차방정식을 푸는 1단계 기본 문항이다.",
+      "level": "하",
+      "hold": "",
+      "sourceOrdinal": 4,
+      "candidateAnswer": "③",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "NOT_NEEDED_TEXT_COMPLETE",
+        "solution": "NOT_NEEDED_TEXT_COMPLETE",
+        "status": "NOT_CREATED"
+      },
+      "correction": "해설에만 있던 외각식 3x+5, x+5를 발문에 표시."
+    },
+    {
+      "sourceQid": "5",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "conceptClusterKey": "BASIC_FIGURE",
+      "primaryMethod": "연속 각비 4:3을 64t, 48t, 36t, 27t로 세팅하여 ∠AOD=148t, ∠BOE=111t로부터 a=4/3을 구한다.",
+      "decisiveStep": "148t / 111t = 4/3 공통인수 37 약분",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "각",
+        "l4": "각의 크기"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "연속적인 각의 비례 배분을 이용해 두 합성각의 배수를 구하는 문항"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "등비수열 형태의 연속 각비를 미지수 t로 설정하여 비율을 약분하는 2단계 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 5,
+      "candidateAnswer": "①",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": "반직선 순서 명시; 각을 64t,48t,36t,27t로 두어 답 4/3."
+    },
+    {
+      "sourceQid": "6",
+      "variationType": "CONDITION",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-POSITION_RELATION",
+      "conceptClusterKey": "POSITION_RELATION",
+      "primaryMethod": "동위각의 크기는 두 직선이 평행할 때만 같다는 조건을 바탕으로 전칭 명제의 오류를 판별한다.",
+      "decisiveStep": "동위각은 평행 조건이 없으면 일반적으로 크기가 다름을 확인",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "평행선과 각",
+        "l4": "동위각·엇각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "평행선과 동위각·맞꼭지각의 기본 성질 진위 판정 문항"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "동위각의 상등 조건(평행성 전제 필요)을 확인하는 1단계 개념 판정 문항이다.",
+      "level": "하",
+      "hold": "",
+      "sourceOrdinal": 6,
+      "candidateAnswer": "③",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "NOT_NEEDED_TEXT_COMPLETE",
+        "solution": "NOT_NEEDED_TEXT_COMPLETE",
+        "status": "NOT_CREATED"
+      },
+      "correction": null
+    },
+    {
+      "sourceQid": "7",
+      "variationType": "CONDITION",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-POSITION_RELATION",
+      "conceptClusterKey": "POSITION_RELATION",
+      "primaryMethod": "한 평면에서 같은 직선에 수직인 두 직선은 평행하다는 정리를 이용해 ㄴ만 참임을 판별한다.",
+      "decisiveStep": "한 평면 조건에서 수직-수직 관계는 평행(l∥n, m∥n)임을 확인",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계",
+        "l3": "평면에서의 위치 관계",
+        "l4": "두 직선의 위치 관계"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "평면에서 세 직선 사이의 수직·평행 전이 관계 판별 문항"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "평면에서의 평행과 수직 전이 성질을 논리적으로 검증하는 2단계 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 7,
+      "candidateAnswer": "②",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "NOT_NEEDED_TEXT_COMPLETE",
+        "solution": "NOT_NEEDED_TEXT_COMPLETE",
+        "status": "NOT_CREATED"
+      },
+      "correction": null
+    },
+    {
+      "sourceQid": "8",
+      "variationType": "CONDITION",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-POSITION_RELATION",
+      "conceptClusterKey": "POSITION_RELATION",
+      "primaryMethod": "평면과 공간의 위치 관계 차이(꼬인 위치의 공간 전용성 등)를 비교하여 평면 수직-평행 명제 ③을 선택한다.",
+      "decisiveStep": "평면에서 한 직선에 수직인 두 직선은 평행함을 확정",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계",
+        "l3": "평면에서의 위치 관계",
+        "l4": "두 직선의 위치 관계"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "평면과 공간에서의 위치 관계 명제 진위 종합 판독 문항"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "평면과 공간의 기하학적 공리 차이를 정확히 구별해야 하는 2단계 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 8,
+      "candidateAnswer": "③",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": null
+    },
+    {
+      "sourceQid": "9",
+      "variationType": "CONDITION",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-07",
+      "subUnitKey": "M1-07-SOLID_FIGURE",
+      "conceptClusterKey": "SOLID_FIGURE",
+      "primaryMethod": "전개도를 공간 직육면체로 조립하여 모서리 JC와 IH가 만나지도 평행하지도 않은 꼬인 위치임을 검증한다.",
+      "decisiveStep": "조립 후 세로 방향 모서리 JC와 가로 방향 모서리 IH의 꼬인 위치 판정",
+      "rpm": {
+        "majorUnit": "입체도형",
+        "midUnit": "다면체와 회전체",
+        "l3": "다면체",
+        "l4": "각기둥·각뿔"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+        "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_SPATIAL_LINE_CLASSIFICATION",
+        "why": "직육면체 전개도로부터 조립된 입체의 모서리 꼬인 위치 판별 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "2차원 전개도를 머릿속에서 3차원으로 복원해 공간 관계를 추론하는 2단계 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 9,
+      "candidateAnswer": "③",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": "전개도를 원본 복원으로 가장하지 않고 표준 직육면체를 텍스트 정의한 자체 완결형 변형."
+    },
+    {
+      "sourceQid": "10",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-POSITION_RELATION",
+      "conceptClusterKey": "POSITION_RELATION",
+      "primaryMethod": "동측내각 합 180도와 3/4 비례 배분으로 두 각의 합 3u+(135-3u)=135도를 도출하여 ∠ACB=45도를 구한다.",
+      "decisiveStep": "△ABC의 두 내각의 합이 u와 무관하게 135도로 일정함을 확인 후 180-135=45도 산출",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "평행선과 각",
+        "l4": "동위각·엇각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER",
+        "why": "평행선 동측내각의 합과 분할각을 이용해 삼각형 내각을 구하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "동측내각 합 180도와 각의 비례식을 대수적으로 소거하여 미지각을 구하는 2단계 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 10,
+      "candidateAnswer": "②",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": "동측 내각이 되도록 점 배치를 명시; 답 45도."
+    },
+    {
+      "sourceQid": "11",
+      "variationType": "CONDITION",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "conceptClusterKey": "BASIC_FIGURE",
+      "primaryMethod": "기본 작도 도구인 눈금 없는 자(선 긋기)와 컴퍼스(원 그리기 및 길이 옮기기)의 역할을 판별한다.",
+      "decisiveStep": "길이를 재어 옮기는 도구는 컴퍼스임을 확인",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "기본 작도",
+        "l4": "선분·각의 이동"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
+        "why": "작도 도구의 올바른 사용법 진위 판독 기본 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "작도의 기본 도구 사용 원칙을 1대1로 확인하는 1단계 개념 문항이다.",
+      "level": "하",
+      "hold": "",
+      "sourceOrdinal": 11,
+      "candidateAnswer": "②",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "NOT_NEEDED_TEXT_COMPLETE",
+        "solution": "NOT_NEEDED_TEXT_COMPLETE",
+        "status": "NOT_CREATED"
+      },
+      "correction": null
+    },
+    {
+      "sourceQid": "12",
+      "variationType": "CONDITION",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "conceptClusterKey": "BASIC_FIGURE",
+      "primaryMethod": "크기가 같은 각의 작도 단계(호 긋기 ㉢ -> 호 복사 ㉠ -> 현 복사 ㉡ -> 반직선 ㉣)를 순서대로 나열한다.",
+      "decisiveStep": "원래 각의 반지름 측정 ㉢ 후 복사 ㉠, 이어서 현 폭 측정·복사 ㉡ 순서 확인",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "기본 작도",
+        "l4": "선분·각의 이동"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+        "why": "크기가 같은 각의 작도 순서 결정 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "각의 복사 작도 표준 절차 4단계를 확인하는 1단계 기본 문항이다.",
+      "level": "하",
+      "hold": "",
+      "sourceOrdinal": 12,
+      "candidateAnswer": "⑤",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": null
+    },
+    {
+      "sourceQid": "13",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "conceptClusterKey": "BASIC_FIGURE",
+      "primaryMethod": "삼각부등식 a+b>c를 10가지 조합에 전수 검사하여 가능한 4쌍을 센다.",
+      "decisiveStep": "(2,4,5), (4,5,7), (4,7,9), (5,7,9) 4개 조합 선별",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 작도",
+        "l4": "세 변 조건"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "주어진 막대 길이 후보들 중 삼각형 형성 가능 조합의 개수를 구하는 문항"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "삼각형 성립 조건을 10개 조합에 대해 체계적으로 분기 판별하는 2단계 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 13,
+      "candidateAnswer": "④",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "NOT_NEEDED_TEXT_COMPLETE",
+        "solution": "NOT_NEEDED_TEXT_COMPLETE",
+        "status": "NOT_CREATED"
+      },
+      "correction": null
+    },
+    {
+      "sourceQid": "14",
+      "variationType": "CONDITION",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "conceptClusterKey": "BASIC_FIGURE",
+      "primaryMethod": "△ABD와 △ACE의 SAS 합동으로부터 변과 각의 상등을 증명하고 ∠CDF=∠ADF의 비동치성을 확인한다.",
+      "decisiveStep": "△ABD≡△ACE(SAS)의 대응각 관계에 포함되지 않는 ∠CDF=∠ADF 오류 확인",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 합동",
+        "l4": "SAS 합동"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+        "why": "공유 꼭짓점을 갖는 두 정삼각형의 SAS 합동 전이 문항"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "정삼각형 회전 합동에 따른 대응 관계들을 하나씩 검증하여 비대응각을 찾아내는 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 14,
+      "candidateAnswer": "③",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": "ray order·AD=2AB로 정삼각형 배치를 정의; 네 참/거짓을 확인하고 ③만 거짓."
+    },
+    {
+      "sourceQid": "15",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "conceptClusterKey": "BASIC_FIGURE",
+      "primaryMethod": "삼각형 결정 조건과 불능 조건(삼각부등식 등호, 내각합 초과)을 각 선지에 대조한다.",
+      "decisiveStep": "한 변 AB=9와 양 끝각 50도, 60도로 ASA 유일 결정 조건 확인",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 작도",
+        "l4": "한 변과 양 끝각 조건"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+        "why": "삼각형의 유일 결정 조건 판정 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "삼각형 결정 조건 및 작도 불능 조건을 선별 검증하는 1단계 문항이다.",
+      "level": "하",
+      "hold": "",
+      "sourceOrdinal": 15,
+      "candidateAnswer": "③",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": "보기의 모호한 SSA를 제거해 ASA인 ③만 유일하게 결정."
+    },
+    {
+      "sourceQid": "16",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "conceptClusterKey": "BASIC_FIGURE",
+      "primaryMethod": "AC와 ∠C에 ㄴ(변 BC로 SAS), ㄷ(∠A로 ASA), ㄹ(∠B로 ASA)의 추가 결정 가능성을 검증한다.",
+      "decisiveStep": "ㄴ(SAS), ㄷ(ASA), ㄹ(삼각형 내각 합을 통한 양 끝각 환원 ASA)의 3가지 유효 조건 판별",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 작도",
+        "l4": "한 변과 양 끝각 조건"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+        "why": "주어진 기본 요소에 추가 조건을 결합하여 삼각형 결정성을 완성하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "한 각과 한 변이 주어진 상태에서 SAS와 ASA를 완성하는 복수 조건을 선별하는 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 16,
+      "candidateAnswer": "①",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": "단일 추가 조건의 비유일성 문항으로 재구성; ㄱ은 SSA 두 교점, 나머지는 SAS/ASA."
+    },
+    {
+      "sourceQid": "17",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "conceptClusterKey": "BASIC_FIGURE",
+      "primaryMethod": "삼각형의 내각의 합으로 세 번째 각 80도를 구한 뒤 선지 ⑤와 ASA 합동임을 확인한다.",
+      "decisiveStep": "180 - (35 + 65) = 80도로부터 선지 ⑤의 (65도, 80도, 변 6)이 ASA 합동임을 판정",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 합동",
+        "l4": "ASA 합동"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
+        "why": "제시된 삼각형과 ASA 합동인 삼각형을 선지 그림에서 식별하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "삼각형 내각의 합을 이용해 세 각을 모두 구한 후 ASA 합동을 확인하는 1단계 문항이다.",
+      "level": "하",
+      "hold": "",
+      "sourceOrdinal": 17,
+      "candidateAnswer": "①",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": "누락 그림 선택지를 텍스트로 재구성; 길이와 양 끝 각이 모두 맞는 ①."
+    },
+    {
+      "sourceQid": "18",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "conceptClusterKey": "BASIC_FIGURE",
+      "primaryMethod": "이등변삼각형 밑각과 외각의 성질을 연속 적용하여 △CDE 내각의 합 3x+96=180으로부터 x=42도를 구한다.",
+      "decisiveStep": "∠CDE = 96 - x 설정 후 4x + (96 - x) = 180에서 3x = 84, x = 42 산출",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "각",
+        "l4": "각의 크기"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER",
+        "why": "연속된 이등변삼각형의 밑각과 외각 성질을 결합하는 각 방정식 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "외각 성질을 2회 적용하여 일차방정식을 세우는 2단계 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 18,
+      "candidateAnswer": "③",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": "점의 순서와 내부각 조건을 보완; 3x=84에서 답 28도."
+    },
+    {
+      "sourceQid": "19",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-POLYGON_CIRCLE",
+      "conceptClusterKey": "POLYGON_CIRCLE",
+      "primaryMethod": "내각:외각=4:1로부터 한 외각 36도, 정십각형(n=10)을 결정하고 삼각형 개수 n-2=8을 검증한다.",
+      "decisiveStep": "n=10에서 한 꼭짓점 대각선 분할 삼각형 개수가 10-2=8개임을 확인하여 6개 오류 선별",
+      "rpm": {
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "다각형의 내각과 외각",
+        "l4": "정다각형의 각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "내각과 외각의 비로 정다각형을 결정하고 다각형의 여러 성질을 평가하는 문항"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "내각·외각 비례배분으로 다각형을 결정하고 5개 성질을 종합 검증하는 2단계 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 19,
+      "candidateAnswer": "④",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "NOT_NEEDED_TEXT_COMPLETE",
+        "solution": "NOT_NEEDED_TEXT_COMPLETE",
+        "status": "NOT_CREATED"
+      },
+      "correction": null
+    },
+    {
+      "sourceQid": "20",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-POLYGON_CIRCLE",
+      "conceptClusterKey": "POLYGON_CIRCLE",
+      "primaryMethod": "180n = 2520으로부터 변의 수 n=14를 구하고 대각선 공식 14*11/2=77을 적용한다.",
+      "decisiveStep": "n=14 도출 후 대각선 총 개수 77 계산",
+      "rpm": {
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "삼각형·다각형의 각",
+        "l4": "변·대각선 개수"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "내각과 외각 총합으로부터 변의 수를 역산하여 대각선 총수를 구하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "내각·외각 총합에서 꼭짓점 수를 역산하고 대각선 공식으로 연결하는 2단계 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 20,
+      "candidateAnswer": "③",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "NOT_NEEDED_TEXT_COMPLETE",
+        "solution": "NOT_NEEDED_TEXT_COMPLETE",
+        "status": "NOT_CREATED"
+      },
+      "correction": null
+    },
+    {
+      "sourceQid": "21",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-POLYGON_CIRCLE",
+      "conceptClusterKey": "POLYGON_CIRCLE",
+      "primaryMethod": "칠각형의 대각선 총수 7*4/2=14를 구하고 m-3=14로부터 m=17을 결정한다.",
+      "decisiveStep": "칠각형 대각선 총수 14개 계산 및 m-3=14에서 m=17 도출",
+      "rpm": {
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "삼각형·다각형의 각",
+        "l4": "변·대각선 개수"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "대각선 총수와 한 꼭짓점 대각선 수 공식을 연립하여 다각형을 구하는 문항"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "대각선 공식 두 가지를 순차 적용해 다각형을 식별하는 1단계 문항이다.",
+      "level": "하",
+      "hold": "",
+      "sourceOrdinal": 21,
+      "candidateAnswer": "①",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "NOT_NEEDED_TEXT_COMPLETE",
+        "solution": "NOT_NEEDED_TEXT_COMPLETE",
+        "status": "NOT_CREATED"
+      },
+      "correction": null
+    },
+    {
+      "sourceQid": "22",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-POLYGON_CIRCLE",
+      "conceptClusterKey": "POLYGON_CIRCLE",
+      "primaryMethod": "정삼각형(60도), 정사각형(90도), 정오각형(108도)의 내각 크기로부터 꼭짓점 회전각을 계산해 ∠x=84도를 구한다.",
+      "decisiveStep": "각 정다각형의 내각(60도, 90도, 108도)과 한 점 둘레 각의 합으로 84도 산출",
+      "rpm": {
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "다각형의 내각과 외각",
+        "l4": "정다각형의 각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "복합 결합된 정다각형들의 내각 합성을 통한 사이각 계산 문항"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "서로 다른 정다각형들의 내각을 결합해 미지각을 추적하는 2단계 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 22,
+      "candidateAnswer": "④",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": "그림 배치를 복원하지 않고 공통 꼭짓점 세 내각과 잔여각을 명시한 자체 완결 변형."
+    },
+    {
+      "sourceQid": "23",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-POLYGON_CIRCLE",
+      "conceptClusterKey": "POLYGON_CIRCLE",
+      "primaryMethod": "180(x-2)=1800에서 변의 수 x=12를 구하고 한 내각 y=1800/12=150도를 계산해 x+y=162를 구한다.",
+      "decisiveStep": "x=12, y=150 산출 후 합 162 계산",
+      "rpm": {
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "다각형의 내각과 외각",
+        "l4": "내각의 합"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "내각의 합으로부터 변의 수와 한 내각의 크기를 구하는 템플릿"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "내각의 총합 공식과 정다각형 한 내각 공식을 순차 대입하는 1단계 문항이다.",
+      "level": "하",
+      "hold": "",
+      "sourceOrdinal": 23,
+      "candidateAnswer": "①",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "NOT_NEEDED_TEXT_COMPLETE",
+        "solution": "NOT_NEEDED_TEXT_COMPLETE",
+        "status": "NOT_CREATED"
+      },
+      "correction": null
+    },
+    {
+      "sourceQid": "24",
+      "variationType": "CONDITION",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-07",
+      "subUnitKey": "M1-07-SOLID_FIGURE",
+      "conceptClusterKey": "SOLID_FIGURE",
+      "primaryMethod": "공간에서 두 평면의 위치관계 2가지를 서술하고 직육면체 조립 후 모서리 IH와 꼬인 위치인 4개 모서리를 찾는다.",
+      "decisiveStep": "두 평면 위치관계 서술 및 전개도 접합 후 꼬인 위치 모서리 4개 적시",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계",
+        "l3": "공간에서의 위치 관계",
+        "l4": "평면과 평면의 위치 관계"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "공간 두 평면 위치관계 서술 및 전개도 조립 직육면체의 모서리 꼬인 위치 탐색 서술형 문항"
+      },
+      "crossConceptKeys": [
+        "M1-05-POSITION_RELATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "공간 두 평면의 기본 위치관계와 전개도 조립 후 꼬인 위치 모서리를 판별하는 2단계 서술형 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 24,
+      "candidateAnswer": "(1) 서로 평행하거나 한 직선에서 만난다. (2) $FG,HE,CG,DH$",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": "누락 전개도를 복원하지 않고 표준 직육면체를 명시."
+    },
+    {
+      "sourceQid": "25",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "conceptClusterKey": "BASIC_FIGURE",
+      "primaryMethod": "정사각형 대각선 교점에서 △BOH≡△COI(ASA)를 증명하고 겹치는 영역 넓이가 전체 정사각형의 1/4(25)임을 유도한다.",
+      "decisiveStep": "ASA 합동 증명 및 겹치는 사각형 넓이를 △OBC로 등적변형하여 100/4=25cm² 산출",
+      "rpm": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 합동",
+        "l4": "ASA 합동"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
+        "why": "회전 정사각형의 겹침 영역을 삼각형 합동과 등적변형으로 계산하는 서술형 템플릿"
+      },
+      "crossConceptKeys": [
+        "M1-06-PLANE_FIGURE_MEASURE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "정사각형 대각선 성질로 ASA 합동을 증명하고 겹친 넓이를 등적변형하는 3단계 심화 문항이다.",
+      "level": "상",
+      "hold": "",
+      "sourceOrdinal": 25,
+      "candidateAnswer": "(1) $\\triangle BOH\\equiv\\triangle COI$ (SAS 합동) (2) $25\\,\\mathrm{cm}^{2}$",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": "두 정사각형의 좌표·방향·교점·겹침영역을 정의한 변형."
+    },
+    {
+      "sourceQid": "26",
+      "variationType": "NUMERIC",
+      "standardCourse": "중1",
+      "courseKey": "MID-MATH-1",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-POLYGON_CIRCLE",
+      "conceptClusterKey": "POLYGON_CIRCLE",
+      "primaryMethod": "360도의 약수 조건으로 테셀레이션 정다각형 3종 및 정오각형 불능 이유를 서술하고, 5:1 비로부터 정십이각형 내각합 1800도를 산출한다.",
+      "decisiveStep": "한 꼭짓점 360도 조건으로 (1), (2) 서술 후 외각 30도로 n=12 결정하여 내각합 1800도 계산",
+      "rpm": {
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "다각형의 내각과 외각",
+        "l4": "내각의 합"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "테셀레이션 수학적 원리 서술 및 내각·외각 비례배분을 통한 내각합 계산 융합 서술형 문항"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "테셀레이션의 각도 정수배 조건과 정다각형 내각·외각 비례식을 단계별로 설명하는 서술형 문항이다.",
+      "level": "중",
+      "hold": "",
+      "sourceOrdinal": 26,
+      "candidateAnswer": "(1) 정삼각형 6개, 정사각형 4개, 정육각형 3개 (2) 정오각형의 한 내각의 크기는 $108^{\\circ}$이므로 $108^{\\circ}$의 자연수 배가 $360^{\\circ}$가 되지 않기 때문이다. (3) $1800^{\\circ}$",
+      "candidateStatus": "UNREVIEWED",
+      "solutionStatus": "UNREVIEWED",
+      "provenance": {
+        "driveDocumentId": "1ZTYi6zaDlA2udfpvFpgTbwgkr9Ydpx2MC9h4Sje2xn4",
+        "driveRevisionId": "AHj4eMSsfgO6BLYvLmNjLgmCEz3YQVUjkIKyEpdTD5ka3PZkJCWL_nvnjOPFSSefGpJsxLuNDLYVmgIW5hy090Ri01yygAJl_m6WZg3jpu0",
+        "originalJsBlobSha1": "acb2ad80209d57d57b29140b310b2163b3c59b79"
+      },
+      "visualNeed": {
+        "problem": "HELPFUL_P2",
+        "solution": "HELPFUL_P2",
+        "status": "NOT_CREATED"
+      },
+      "correction": null
+    }
+  ]
+}
