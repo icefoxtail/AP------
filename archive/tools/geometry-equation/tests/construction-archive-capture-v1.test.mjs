@@ -51,6 +51,20 @@ const candidateFileOf=runId=>`.tmp/archive/${runId}/${examUid}/candidates/${exam
 const read=relative=>fs.readFileSync(path.join(root,relative));
 const bare=sha=>sha.slice(7);
 const clone=value=>JSON.parse(JSON.stringify(value));
+const freeze=value=>{if(value&&typeof value==='object'){Object.values(value).forEach(freeze);Object.freeze(value);}return value;};
+// The current canonical q1 already has a solution SVG (also true on the pre-change main).
+// Its absence was an obsolete fixture assumption, not a capture gate. Freeze the actual source before
+// any browser work and require the entire original question and its existing SVG to remain exact.
+const originalQuestionBefore=freeze(clone(loadBank(read(sourcePath).toString('utf8')).find(question=>question.id===ORDINAL)));
+assert.equal(typeof originalQuestionBefore.solutionImage,'string','the current fixture has an existing solution image');
+assert.ok(originalQuestionBefore.solutionImage.startsWith('assets/images/'));
+const originalSolutionAssetPath='archive/'+originalQuestionBefore.solutionImage;
+const originalSolutionAssetBefore=freeze({ref:fileRef(root,originalSolutionAssetPath),hex:read(originalSolutionAssetPath).toString('hex')});
+function assertOriginalFixtureUnchanged(question){
+  assert.deepEqual(clone(question),originalQuestionBefore,'the full original question is unchanged from the immutable baseline');
+  assert.deepEqual(fileRef(root,originalSolutionAssetPath),originalSolutionAssetBefore.ref,'the existing solution SVG path, byte count and SHA are unchanged');
+  assert.equal(read(originalSolutionAssetPath).toString('hex'),originalSolutionAssetBefore.hex,'the existing solution SVG bytes are unchanged');
+}
 const pngSize=bytes=>{assert.equal(bytes.toString('hex',0,8),'89504e470d0a1a0a','PNG signature');return {width:bytes.readUInt32BE(16),height:bytes.readUInt32BE(20)};};
 function treeHash(dir){const out={},walk=current=>{for(const entry of fs.readdirSync(current,{withFileTypes:true})){const file=path.join(current,entry.name);if(entry.isDirectory())walk(file);else out[path.relative(dir,file)]=bytesSha(fs.readFileSync(file));}};walk(dir);return out;}
 const triangle=(bx,cy)=>({schemaVersion:'construction-spike-v1',nodes:[pointNode('A',0,0),pointNode('B',bx,0),pointNode('C',0,cy),node('M','MIDPOINT',['A','B'],'POINT')]});
@@ -128,7 +142,7 @@ function assertBound(result,{runId,composed,policy,evidenceIntegrity='NO_CALLER_
   assert.equal(bytesSha(Buffer.from(candidateText,'utf8')),L.candidateBankSha256);
   const candidate=loadBank(candidateText);assert.equal(candidate.length,original.length);
   original.forEach((question,index)=>{const before=clone(question),after=clone(candidate[index]);if(question.id===ORDINAL)for(const field of PATCHED){delete before[field];delete after[field];}assert.deepEqual(after,before,'question '+question.id);});
-  assert.equal(original[0].solutionImage,undefined,'the original question carried no solution image');
+  assertOriginalFixtureUnchanged(original.find(question=>question.id===ORDINAL));
   assert.deepEqual(Object.fromEntries(PATCHED.map(field=>[field,candidate[0][field]])),{solutionImage:`assets/images/${examUid}/q01-solution.svg`,solutionImageAlt:ALT,solutionImageSize:'medium'});
   assert.equal(result.protectedParity.status,'PASS');assert.equal(result.protectedParity.questionCount,original.length);assert.equal(result.protectedParity.originalQuestionSha256,objectSha(clone(original[0])));
   assert.deepEqual([...result.protectedParity.changedFields].sort(),PATCHED);assert.equal(result.protectedParity.targetOrdinal,ORDINAL);
@@ -383,6 +397,7 @@ test('E9 a caller abort propagates as a cancellation, never as a status, and not
 test('Z no exam JS, asset or engine write; no provider import; every artefact is under .tmp/archive',async()=>{
   const c=await context();assert.ok(c.c1);
   assert.deepEqual(fileRef(root,sourcePath),sourceBefore);assert.deepEqual(fileRef(root,'archive/engine.html'),engineBefore);
+  assertOriginalFixtureUnchanged(loadBank(read(sourcePath).toString('utf8')).find(question=>question.id===ORDINAL));
   const status=execFileSync('git',['status','--porcelain','--','archive/exams','archive/assets','archive/engine.html'],{cwd:root,encoding:'utf8'});
   assert.equal(status,'');
   assert.equal(fs.existsSync(path.join(root,'archive/assets/images',examUid,'q01-solution.svg')),false);
