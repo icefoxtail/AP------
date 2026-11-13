@@ -107,11 +107,19 @@ jobs:
           else
             node archive/tools/geometry-equation/production/problem-figure-runner.mjs --validate
           fi
+      - name: Validate optional exact published companions before browser setup
+        run: |
+          node --input-type=module <<'NODE'
+          import {loadPublishedProblemCapture,selectedProblemManifests} from './archive/tools/geometry-equation/production/published-problem-capture.mjs';
+          const selected=process.env.GITHUB_EVENT_NAME==='pull_request'?selectedProblemManifests():[process.env.PROBLEM_FIGURE_MANIFEST];
+          for(const manifest of selected){const result=loadPublishedProblemCapture(manifest);console.log(JSON.stringify({stage:'PUBLISHED_CAPTURE',manifest,status:result.status,count:result.items?.length??0,productionAuthorized:false,qualityReview:'NOT_RUN'}));}
+          NODE
       - name: Check problem isolation, manifest safety and unchanged solution defaults
         run: >-
           node --test
           archive/tools/geometry-equation/tests/problem-figure-path.test.mjs
           archive/tools/geometry-equation/tests/nested-panel-measurement.test.mjs
+          archive/tools/geometry-equation/tests/published-problem-capture.test.mjs
           archive/tools/geometry-equation/tests/problem-source-edge-styles.test.mjs
           archive/tools/geometry-equation/tests/render-plan.test.mjs
           archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs
@@ -140,16 +148,32 @@ jobs:
           node --test --test-concurrency=1
           archive/tools/geometry-equation/tests/problem-figure.browser.mjs
           archive/tools/geometry-equation/tests/nested-panel-measurement.browser.mjs
-      - name: Render the committed problem plans sequentially in actual Archive slots
+      - name: Render author plans or capture the exact published links in actual Archive slots
         shell: bash
         env:
           GEOMETRY_BROWSER_EXECUTABLE: ${{ steps.chrome.outputs.chrome-path }}
         run: |
-          if [[ "$GITHUB_EVENT_NAME" == pull_request ]]; then
-            node archive/tools/geometry-equation/production/problem-figure-runner.mjs --pr
-          else
-            node archive/tools/geometry-equation/production/problem-figure-runner.mjs
-          fi
+          node --input-type=module <<'NODE'
+          import {runProblemManifest} from './archive/tools/geometry-equation/production/problem-figure-runner.mjs';
+          import {loadPublishedProblemCapture,capturePublishedProblemManifest,selectedProblemManifests} from './archive/tools/geometry-equation/production/published-problem-capture.mjs';
+          const selected=process.env.GITHUB_EVENT_NAME==='pull_request'?selectedProblemManifests():[process.env.PROBLEM_FIGURE_MANIFEST];
+          let failed=false,index=0;
+          for(const manifest of selected){
+            const publication=loadPublishedProblemCapture(manifest);
+            if(publication.status==='NOT_REQUESTED'){
+              console.log(JSON.stringify(publication));
+              const result=await runProblemManifest(manifest);
+              console.log(JSON.stringify({stage:'PRODUCTION_RENDER',manifest,status:result.status,count:result.results.length}));
+              if(result.status!=='ARCHIVE_BOUND')failed=true;
+            }else{
+              const result=await capturePublishedProblemManifest(manifest,{runId:'published-'+process.env.GITHUB_RUN_ID+'-'+process.env.GITHUB_RUN_ATTEMPT+'-'+index++});
+              console.log(JSON.stringify({stage:'PUBLISHED_CAPTURE',manifest,status:result.status,rowCount:result.rowCount,targetCount:result.targetCount,productionAuthorized:false,qualityReview:'NOT_RUN'}));
+              if(result.status!=='READ_ONLY_PUBLISHED_CAPTURE')failed=true;
+            }
+          }
+          if(!selected.length)console.log(JSON.stringify({status:'NO_CHANGED_PROBLEM_MANIFESTS',stage:'PUBLISHED_CAPTURE',publication:'NOT_REQUESTED'}));
+          if(failed)process.exitCode=1;
+          NODE
       - name: Bind the exact source snapshot for artifact readback
         if: always()
         run: |

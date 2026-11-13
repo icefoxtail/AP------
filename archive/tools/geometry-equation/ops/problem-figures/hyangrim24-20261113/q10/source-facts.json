@@ -1,14 +1,13 @@
 {
   "ordinal": 10,
   "source_image": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q10.png",
-  "source_review": "Viewed q10 PNG: trapezoid with A upper-left, B lower-left, C lower-right, D upper-right; AD=3 cm; diagonal AC; E lies on AC and DE is perpendicular to AC with length 2 cm.",
+  "source_review": "Viewed q10 PNG: trapezoid with A upper-left, B lower-left, C lower-right, D upper-right; AD=3 cm; diagonal AC; E lies on AC and DE is perpendicular to AC with length 2 cm. There is a right-angle mark at E; no right-angle mark is printed at B.",
   "allowed_marks": [
     "trapezoid outline",
     "AD=3 cm",
     "diagonal AC",
     "foot E on AC",
-    "perpendicular mark and DE=2 cm",
-    "right-angle mark at B between AB and BC"
+    "perpendicular mark and DE=2 cm"
   ],
   "forbidden_solution_elements": [
     "the requested point-to-segment distance repeated as a conclusion",
@@ -19,7 +18,7 @@
     "B and C proportions are schematic; the exact construction enforces AD=3, DE=2, E on AC, DE⊥AC, and AD∥BC."
   ],
   "constructed_realization": {
-    "normalization": "A=(0,0), D=(3,0); E is the lower circle intersection of circle(A,√5) and circle(D,2), so AE²+DE²=AD² and DE⊥AC. AC meets the baseline y=-4 at C; B=(0,-4).",
+    "normalization": "A=(0,0), D=(3,0); E is the lower circle intersection of circle(A,√5) and circle(D,2), so AE²+DE²=AD² and DE⊥AC. AC meets the baseline y=-4 at C; B=(0,-4). B/C positions are schematic and the chosen coordinates make AB perpendicular to BC, but this incidental shape is not marked or claimed as a source condition.",
     "free_parameters": [
       {
         "symbol": "trapezoid_depth",
@@ -49,11 +48,6 @@
         "condition": "DE perpendicular AC",
         "status": "PASS",
         "residual": "0 direction dot product"
-      },
-      {
-        "condition": "AB perpendicular BC at B",
-        "status": "PASS",
-        "residual": "0 direction dot product; right-angle mark retained"
       },
       {
         "condition": "AD parallel BC",

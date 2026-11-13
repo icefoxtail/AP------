@@ -811,10 +811,10 @@
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "N1",
+        "id": "ellipsis1",
         "op": "TRANSLATE_POINT",
         "inputs": [
-          "C"
+          "E"
         ],
         "args": {
           "dx": {
@@ -826,30 +826,59 @@
                 "op": "div",
                 "args": [
                   {
-                    "kind": "expression",
-                    "op": "add",
-                    "args": [
-                      {
-                        "kind": "expression",
-                        "op": "sqrt",
-                        "args": [
-                          {
-                            "kind": "integer",
-                            "value": "6"
-                          }
-                        ]
-                      },
-                      {
-                        "kind": "expression",
-                        "op": "sqrt",
-                        "args": [
-                          {
-                            "kind": "integer",
-                            "value": "2"
-                          }
-                        ]
-                      }
-                    ]
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ellipsis2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
                   },
                   {
                     "kind": "integer",
@@ -868,30 +897,8 @@
                 "op": "div",
                 "args": [
                   {
-                    "kind": "expression",
-                    "op": "add",
-                    "args": [
-                      {
-                        "kind": "expression",
-                        "op": "sqrt",
-                        "args": [
-                          {
-                            "kind": "integer",
-                            "value": "6"
-                          }
-                        ]
-                      },
-                      {
-                        "kind": "expression",
-                        "op": "sqrt",
-                        "args": [
-                          {
-                            "kind": "integer",
-                            "value": "2"
-                          }
-                        ]
-                      }
-                    ]
+                    "kind": "integer",
+                    "value": "1"
                   },
                   {
                     "kind": "integer",
@@ -901,6 +908,78 @@
               }
             ]
           }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ellipsis3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ABarmTip",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
@@ -917,7 +996,7 @@
     {
       "id": "s1",
       "refs": [
-        "A",
+        "ABarmTip",
         "B"
       ]
     },
@@ -990,18 +1069,9 @@
         "F",
         "G"
       ]
-    },
-    {
-      "id": "continuationE",
-      "refs": [
-        "E",
-        "N1"
-      ],
-      "dashed": true
     }
   ],
   "displayPoints": [
-    "A",
     "B",
     "C",
     "D",
@@ -1011,7 +1081,10 @@
     "H",
     "I",
     "J",
-    "N1"
+    "ellipsis1",
+    "ellipsis2",
+    "ellipsis3",
+    "ABarmTip"
   ],
   "caption": "정n각형의 경계 일부와 변 BC에 붙은 정육각형, 변 CD에 붙은 정사각형을 나타낸 그림.",
   "sourceConditions": [
@@ -1033,7 +1106,38 @@
   },
   "sourceQuote": "오른쪽 그림과 같이 AB, BC, CD, DE, …를 변으로 갖는 정n각형과 정육각형, 정사각형이 변끼리 붙어 있다.",
   "hiddenPointNames": [
-    "N1"
+    "ellipsis1",
+    "ellipsis2",
+    "ellipsis3",
+    "ABarmTip"
   ],
-  "hiddenPointStyle": "NONE"
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "ellipsisDot1",
+        "at": "ellipsis1",
+        "text": "·",
+        "labelKind": "TEXT",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ellipsisDot2",
+        "at": "ellipsis2",
+        "text": "·",
+        "labelKind": "TEXT",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ellipsisDot3",
+        "at": "ellipsis3",
+        "text": "·",
+        "labelKind": "TEXT",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
 }
