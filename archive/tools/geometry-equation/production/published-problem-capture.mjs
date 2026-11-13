@@ -4,12 +4,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {execFileSync} from 'node:child_process';
-import {bytesSha,fileRef,objectSha} from '../../pipeline-core/canonical.mjs';
+import {bytesSha,fileRef,objectSha,readBoundFile} from '../../pipeline-core/canonical.mjs';
 import {loadBank} from '../build-visual-render-matrix.mjs';
 import {recordArchiveEvidence,normalizeArchiveImageUrlPath} from '../record-visual-browser-evidence.mjs';
 import {assertOutput} from '../visual-browser-runtime.mjs';
 import {verifyMeasuredLabelInventory} from '../nested-panel-measurement.mjs';
 import {assetIdentity} from './contracts.mjs';
+import {verifyPublishedResponseEvidence} from './published-response-evidence.mjs';
+import {bindActualBodyToCapturedTree,reproducePublishedIndex,verifyIndexReproductionSnapshots} from './published-index-reproduction.mjs';
 import {validateProblemReaderEvidence} from './problem-output-envelope.mjs';
 import {loadProblemManifest,discoverProblemManifests,selectChangedProblemManifests} from './problem-figure-runner.mjs';
 const repo=fileURLToPath(new URL('../../../../',import.meta.url));
@@ -95,7 +97,7 @@ export function verifyPublishedTarget(row,item,svgBytes){
  return {ordinal:item.ordinal,assetId:item.identity.assetId,svgSha256:item.svgRef.sha256,naturalWidth:target.naturalWidth,naturalHeight:target.naturalHeight,imageRect:target.rect,glyphCount:labels.length,minimumCssFontPx:Math.min(...labels.map(label=>label.finalViewportCssFontPx))};
 }
 function pngRef(root,relative){const bytes=readLocal(root,relative);if(bytes.length<24||bytes.toString('hex',0,8)!=='89504e470d0a1a0a')fail('PUBLISHED_PNG_REQUIRED');return fileRef(root,relative);}
-export function verifyPublishedCaptureRows(loaded,matrix,{root=repo,runRelative,attempt='final-linked'}={}){
+function verifyPublishedRowsBeforeIndex(loaded,matrix,{root=repo,runRelative,attempt='final-linked'}={}){
  if(!/^[A-Za-z0-9_-]+$/.test(attempt))fail('PUBLISHED_ATTEMPT_INVALID');
  const engineRef=fileRef(root,'archive/engine.html'),expectedMatrix=publishedCaptureMatrix(loaded,{runRelative,engineSha256:engineRef.sha256});if(objectSha(matrix)!==objectSha(expectedMatrix))fail('PUBLISHED_MATRIX_BINDING');
  if(bytesSha(readLocal(root,matrix.sources[0].candidatePath))!==loaded.sourceRef.sha256)fail('PUBLISHED_SOURCE_SNAPSHOT_BINDING');
@@ -110,28 +112,40 @@ export function verifyPublishedCaptureRows(loaded,matrix,{root=repo,runRelative,
   if(new URL(row.url).origin!==row.network.localOrigin)fail('PUBLISHED_READER_ORIGIN');
   const reader=validateProblemReaderEvidence(row,{root,sourcePath:loaded.sourceRef.path});
   const items=loaded.items.map(item=>verifyPublishedTarget(row,item,bound(root,item.svgRef)));
+  const runtimeResponses=verifyPublishedResponseEvidence(row,{root,runRelative});
   const screenshots={page:pngRef(root,folder+'/'+prefix+'.png'),items:loaded.items.map(item=>({ordinal:item.ordinal,image:pngRef(root,folder+'/'+prefix+'-'+item.identity.assetId+'.png'),context:pngRef(root,folder+'/'+prefix+'-'+item.identity.assetId+'-context.png')}))};
-  rows.push({viewport,rowRef:fileRef(root,rowPath),reader,geometry,items,screenshots});
+  rows.push({viewport,rowRef:fileRef(root,rowPath),reader,geometry,items,screenshots,runtimeResponses});
  }
  return {status:'READ_ONLY_PUBLISHED_CAPTURE',rowCount:rows.length,targetCount:rows.reduce((n,row)=>n+row.items.length,0),rows,productionAuthorized:false,qualityReview:'NOT_RUN',sourceAssetPreservation:'NOT_ASSESSED_BY_THIS_CAPTURE'};
 }
+export function verifyPublishedCaptureRows(loaded,matrix,options={}){const verified=verifyPublishedRowsBeforeIndex(loaded,matrix,options);const indexReproduction=verifyIndexReproductionSnapshots({root:options.root??repo,sourceRepo:repo,runRelative:options.runRelative,rows:verified.rows});return {...verified,indexReproduction};}
 function outputOnly(relative){const absolute=assertOutput(path.join(repo,relative));let cursor=repo;for(const part of path.relative(repo,absolute).split(path.sep)){cursor=path.join(cursor,part);try{if(fs.lstatSync(cursor).isSymbolicLink())fail('PUBLISHED_OUTPUT_REDIRECT');}catch(error){if(error.code==='ENOENT')break;throw error;}}let existing=absolute;while(!fs.existsSync(existing))existing=path.dirname(existing);if(fs.realpathSync(existing)!==existing)fail('PUBLISHED_OUTPUT_REDIRECT');return absolute;}
 function writeSnapshot(relative,bytes){const absolute=outputOnly(relative);fs.mkdirSync(path.dirname(absolute),{recursive:true});fs.writeFileSync(absolute,bytes,{flag:'wx'});if(bytesSha(readLocal(repo,relative))!==bytesSha(bytes))fail('PUBLISHED_SNAPSHOT_MISMATCH');}
 /** Browser work is available only here, with fixed output scope and no caller hooks. */
 export async function capturePublishedProblemManifest(manifestPath,{runId='published-'+Date.now()}={}){
  if(!/^[A-Za-z0-9_-]{1,80}$/.test(runId))fail('PUBLISHED_RUN_ID_INVALID');
  const loaded=loadPublishedProblemCapture(manifestPath);if(loaded.status==='NOT_REQUESTED')return loaded;
+ const capturedCommit=execFileSync('git',['rev-parse','HEAD'],{cwd:repo,encoding:'utf8'}).trim(),parents=execFileSync('git',['rev-list','--parents','-n','1',capturedCommit],{cwd:repo,encoding:'utf8'}).trim().split(' ');
+ if(parents.length!==3||process.env.GITHUB_BASE_REF!=='main'||process.env.SVG_ACCESSIBILITY_BASE_SHA)fail('PUBLISHED_RUNTIME_CI_MERGE_SCOPE_REQUIRED');
  for(const input of loaded.inputs)execFileSync('git',['ls-files','--error-unmatch','--',input.path],{cwd:repo,stdio:'pipe'});
  const runRelative=`.tmp/archive/${runId}/${loaded.examId}/published-capture`,run=outputOnly(runRelative);if(fs.existsSync(run))fail('PUBLISHED_OUTPUT_EXISTS');
  const engineRef=fileRef(repo,'archive/engine.html'),matrix=publishedCaptureMatrix(loaded,{runRelative,engineSha256:engineRef.sha256});
  for(const input of loaded.inputs){const bytes=readLocal(repo,input.path);if(bytesSha(bytes)!==input.sha256)fail('PUBLISHED_INPUT_CHANGED');writeSnapshot(runRelative+'/input-snapshots/'+input.path,bytes);}
  writeSnapshot(runRelative+'/input-snapshots/'+engineRef.path,bound(repo,engineRef));
  const matrixRelative=runRelative+'/archive-render-matrix.json';writeSnapshot(matrixRelative,Buffer.from(JSON.stringify(matrix,null,2)+'\n'));
- const raw=await recordArchiveEvidence({run,attempt:'final-linked',blockExternalRequests:true});
+ const raw=await recordArchiveEvidence({run,attempt:'final-linked',blockExternalRequests:true,publishedResponseEvidence:true});
  if(raw.status!=='PASS')fail('PUBLISHED_BROWSER_CAPTURE_FAILED');
+ const preliminary=verifyPublishedRowsBeforeIndex(loaded,matrix,{runRelative});
+
+ const bodies=new Map();let indexBytes=null;
+ for(const row of preliminary.rows)for(const binding of row.runtimeResponses.bindings){if(binding.status!==200)continue;const bytes=readBoundFile(repo,binding.bodyRef);if(binding.path==='archive/data/svg-accessibility-index.js'){if(indexBytes&&!indexBytes.equals(bytes))fail('PUBLISHED_DERIVED_RESPONSE_CONFLICT');indexBytes=bytes;}else if(binding.path!=='__geometry/problem-output-seed.html'){bindActualBodyToCapturedTree(repo,capturedCommit,binding.path,bytes);const old=bodies.get(binding.path);if(old&&!old.bytes.equals(bytes))fail('PUBLISHED_RUNTIME_RESPONSE_CONFLICT');bodies.set(binding.path,{path:binding.path,bytes});}}
+ if(!indexBytes)fail('PUBLISHED_DERIVED_RESPONSE_MISSING');
+ const reproductionDirectory=path.join(run,'runtime-index-reproduction');
+ const reproduction=reproducePublishedIndex({sourceRepo:repo,capturedCommit,ciBase:parents[1],expectedBody:indexBytes,outputDirectory:reproductionDirectory,canonicalBodies:[...bodies.values()]});
+ const runtimeIndexReproductionRef=fileRef(repo,runRelative+'/runtime-index-reproduction/reproduction-proof.json');
  const verified=verifyPublishedCaptureRows(loaded,matrix,{runRelative});
  for(const input of loaded.inputs)if(bytesSha(readLocal(repo,input.path))!==input.sha256)fail('PUBLISHED_INPUT_MUTATED');bound(repo,engineRef);
- const result={schemaVersion:'READ_ONLY_PUBLISHED_CAPTURE_v1',...verified,manifestRef:loaded.manifestRef,companionRef:loaded.companionRef,sourceRef:loaded.sourceRef,sourceSnapshotRef:fileRef(repo,matrix.sources[0].candidatePath),assetRefs:loaded.items.map(item=>({ordinal:item.ordinal,canonicalRef:item.svgRef,snapshotRef:fileRef(repo,runRelative+'/input-snapshots/'+item.svgRef.path)})),engineRef,engineSnapshotRef:fileRef(repo,runRelative+'/input-snapshots/'+engineRef.path),matrixRef:fileRef(repo,matrixRelative),commit:execFileSync('git',['rev-parse','HEAD'],{cwd:repo,encoding:'utf8'}).trim(),inputIdentitySha256:objectSha(loaded.inputs)};
+ const result={schemaVersion:'READ_ONLY_PUBLISHED_CAPTURE_v2',...verified,manifestRef:loaded.manifestRef,companionRef:loaded.companionRef,sourceRef:loaded.sourceRef,sourceSnapshotRef:fileRef(repo,matrix.sources[0].candidatePath),assetRefs:loaded.items.map(item=>({ordinal:item.ordinal,canonicalRef:item.svgRef,snapshotRef:fileRef(repo,runRelative+'/input-snapshots/'+item.svgRef.path)})),engineRef,engineSnapshotRef:fileRef(repo,runRelative+'/input-snapshots/'+engineRef.path),runtimeIndexReproductionRef,matrixRef:fileRef(repo,matrixRelative),commit:capturedCommit,inputIdentitySha256:objectSha(loaded.inputs)};
  writeSnapshot(runRelative+'/published-capture.json',Buffer.from(JSON.stringify(result,null,2)+'\n'));return result;
 }
 /** Fixed git reads, matching the renderer's PR scope; no arbitrary command input. */

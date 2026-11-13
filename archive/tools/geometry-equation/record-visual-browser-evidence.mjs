@@ -11,6 +11,7 @@ import {SOURCE_QUESTION_ID_PATTERN} from '../pipeline-core/question-uid.mjs';
 import {loadBank,bankAliasSuffix} from './build-visual-render-matrix.mjs';
 import {PROBLEM_ENVELOPE_SEED_PATH,seedProblemOutputEnvelope} from './production/problem-output-envelope.mjs';
 import {observeProblemKoreanFont} from './production/problem-browser-font.mjs';
+import {assertPublishedResponseOptIn,createPublishedResponseRecorder,observePublishedBrowserResponse,verifyPublishedResponseEvidence} from './production/published-response-evidence.mjs';
 
 export function normalizeArchiveImageUrlPath(url){
   try{return decodeURIComponent(new URL(url,'http://archive.invalid').pathname);}catch{return null;}
@@ -39,7 +40,7 @@ function persistArchiveAbortEvidence(run,attempt,error,cleanup){
   error.code='ARCHIVE_CAPTURE_CANCELLED';error.cleanup=cleanup;error.abortEvidenceRef=path.relative(repoRoot,abortPath).replaceAll('\\','/');return error;
 }
 
-export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onProgress,blockExternalRequests=false}={}) {
+export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onProgress,blockExternalRequests=false,publishedResponseEvidence=false}={}) {
   if(signal!==undefined&&(!signal||typeof signal.aborted!=='boolean'||typeof signal.addEventListener!=='function'||typeof signal.removeEventListener!=='function'))throw Error('ARCHIVE_CAPTURE_SIGNAL_INVALID');
   if(onProgress!==undefined&&typeof onProgress!=='function')throw Error('ARCHIVE_PROGRESS_HOOK_INVALID');
   if(typeof blockExternalRequests!=='boolean')throw Error('ARCHIVE_NETWORK_POLICY_INVALID');
@@ -47,6 +48,9 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
   run=assertOutput(run);if(signal?.aborted)throw writeArchiveAbortEvidence(run,attempt,{serverWasListening:false,browserWasLaunched:false,browserClosed:true,serverClosed:true});
   const matrix=JSON.parse(fs.readFileSync(path.join(run,'archive-render-matrix.json'),'utf8'));
   if(matrix.synthetic!==false||sha256(fs.readFileSync(path.join(repoRoot,'archive/engine.html')))!==matrix.engineSha256)throw Error('STALE_ENGINE_MATRIX');
+  if(typeof publishedResponseEvidence!=='boolean')throw Error('PUBLISHED_RESPONSE_OPT_IN_INVALID');
+  if(publishedResponseEvidence)assertPublishedResponseOptIn(matrix,blockExternalRequests);
+  const responseRecorder=publishedResponseEvidence?createPublishedResponseRecorder({root:repoRoot,runRelative:path.relative(repoRoot,run).replaceAll('\\','/')}):null;
   const overrides=new Map(matrix.sources.map(v=>['/'+v.sourcePath,assertOutput(path.join(repoRoot,v.candidatePath))]));
   for(const source of matrix.sources)for(const asset of source.assets||[])if(asset.archivePath){
     if(!/^assets\/images\/[\p{L}\p{N}_.\/-]+$/u.test(asset.archivePath)||asset.archivePath.split('/').some(part=>!part||part==='.'||part==='..'))throw Error('INVALID_ARCHIVE_ASSET_REFERENCE');
@@ -55,6 +59,11 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
   for(const source of matrix.sources){if(sha256(fs.readFileSync(path.join(repoRoot,source.sourcePath)))!==source.sourceSha256||sha256(fs.readFileSync(assertOutput(path.join(repoRoot,source.candidatePath))))!==source.candidateSha256)throw Error('STALE_SOURCE_MATRIX');for(const asset of source.assets||[])if(sha256(fs.readFileSync(assertOutput(path.join(repoRoot,asset.path))))!==archiveAssetSha256(asset.sha256))throw Error('STALE_ASSET_MATRIX');}
   const types={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.woff':'font/woff','.woff2':'font/woff2','.ico':'image/x-icon'};
   const server=http.createServer((req,res)=>{
+    if(responseRecorder){
+      const send=(status,headers,buffer)=>responseRecorder.send(req,res,status,headers,buffer);
+      if(req.url===PROBLEM_ENVELOPE_SEED_PATH){send(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'},Buffer.from('<!doctype html><meta charset="utf-8"><title>Problem output envelope producer</title>'));return;}
+      try{const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname),file=overrides.get(pathname)||path.resolve(repoRoot,'.'+pathname),extension=path.extname(file).toLowerCase();if(!file.startsWith(path.resolve(repoRoot)+path.sep)||!types[extension]||!fs.existsSync(file)||fs.realpathSync(file)!==file){send(404,{},Buffer.alloc(0));return;}const buffer=fs.readFileSync(file);send(200,{'Content-Type':types[extension],'Cache-Control':'no-store'},buffer);}catch(error){if(res.headersSent)res.destroy(error);else send(400,{},Buffer.alloc(0));}return;
+    }
     if(req.url===PROBLEM_ENVELOPE_SEED_PATH){res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});res.end('<!doctype html><meta charset="utf-8"><title>Problem output envelope producer</title>');return;}
     try{const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);const file=overrides.get(pathname)||path.resolve(repoRoot,'.'+pathname);const extension=path.extname(file).toLowerCase();if(!file.startsWith(path.resolve(repoRoot)+path.sep)||!types[extension]||!fs.existsSync(file)){res.writeHead(404);res.end();return;}res.writeHead(200,{'Content-Type':types[extension],'Cache-Control':'no-store'});res.end(fs.readFileSync(file));}catch(error){res.writeHead(400);res.end();}
   });
@@ -86,8 +95,10 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
         });
       }
       page.on('pageerror',error=>consoleErrors.push(String(error)));
-      page.on('response',r=>{responsePromises.push((async()=>{try{const bytes=await r.body();responses.push({url:r.url(),status:r.status(),sha256:sha256(bytes),bytes:bytes.length});}catch(error){responses.push({url:r.url(),status:r.status(),error:String(error)});}})());});
+      if(responseRecorder)page.on('response',r=>{responsePromises.push(observePublishedBrowserResponse(r).then(value=>responses.push(value)));});
+      else page.on('response',r=>{responsePromises.push((async()=>{try{const bytes=await r.body();responses.push({url:r.url(),status:r.status(),sha256:sha256(bytes),bytes:bytes.length});}catch(error){responses.push({url:r.url(),status:r.status(),error:String(error)});}})());});
       const prefix=item.id+'-'+item.mode+'-'+item.viewport;const errors=[];let state={};const layouts=[];let actualUrl=base+item.urlPath,outputEnvelopeEvidence=null,koreanFont=null;
+      if(responseRecorder)responseRecorder.beginRow(prefix);
       try {
         if(item.problemEnvelope){const seeded=await seedProblemOutputEnvelope({page,base,item,folder,prefix});actualUrl=seeded.url;outputEnvelopeEvidence=seeded.evidence;}
         await page.goto(sameOriginExamImageUrl(actualUrl),{waitUntil:'domcontentloaded',timeout:captureTimeoutMs(60000)});checkCancelled();
@@ -217,12 +228,18 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
       if(item.mode==='sol'||item.mode==='exam'&&(item.envelopeTargets||[]).some(t=>t.surface==='PROBLEM_VISUAL'))for(const target of item.envelopeTargets||[]){const index=Number(target.displayOrdinal||target.questionId)-1;if(index>=0&&index<item.questionCount){const block=page.locator('#print-area .q-box').nth(index);if(await block.count())await block.screenshot({path:path.join(folder,prefix+'-'+target.id+'-envelope-context.png')});}}
       const row={id:prefix,status:errors.length?'FAIL':'PASS',mode:item.mode,viewport:item.viewport,runtime:'playwright-chromium',synthetic:false,url:actualUrl,sourceSha256:item.sourceSha256,candidateSha256:item.candidateSha256,engineSha256:matrix.engineSha256,browserVersion:browser.version(),state,layouts,responses,errors,...(item.problemEnvelope?{outputEnvelopeEvidence,koreanFont}:{}),network:{policy:blockExternalRequests?'LOCAL_ONLY':'DEFAULT',localOrigin:base,externalRequests},
         capture:Object.keys(state).length?{status:'MEASURED',missingGlyphCount:layouts.reduce((s,v)=>s+v.missingGlyphCount,0),labelCollisionCount:layouts.reduce((s,v)=>s+v.labelCollisionCount,0),criticalCollisionCount:layouts.reduce((s,v)=>s+v.criticalCollisionCount,0),observedLabelCollisionCount:layouts.reduce((s,v)=>s+(v.observedLabelCollisionCount??v.labelCollisionCount),0),observedCriticalCollisionCount:layouts.reduce((s,v)=>s+(v.observedCriticalCollisionCount??v.criticalCollisionCount),0),clippedTextCount:layouts.reduce((s,v)=>s+v.clippedTextCount,0),overflowCount:Number(state.horizontalOverflow||false)+layouts.reduce((s,v)=>s+v.overflowCount,0),loadedSvgCount:(item.mode==='sol'||item.mode==='exam'&&item.assets.some(a=>a.surface==='PROBLEM_VISUAL'))?state.targets?.filter(v=>v.loaded).length||0:0,failedSvgCount:(item.mode==='sol'||item.mode==='exam'&&item.assets.some(a=>a.surface==='PROBLEM_VISUAL'))?state.targets?.filter(v=>!v.loaded).length||0:0}:{status:'NOT_MEASURED',missingGlyphCount:null,labelCollisionCount:null,criticalCollisionCount:null,observedLabelCollisionCount:null,observedCriticalCollisionCount:null,clippedTextCount:null,overflowCount:null,loadedSvgCount:null,failedSvgCount:null}};
-      checkCancelled();fs.writeFileSync(path.join(folder,prefix+'.json'),JSON.stringify(row,null,2)+'\n');rows.push(row);await page.close();checkCancelled();
+      if(responseRecorder){
+        await page.close();let count;do{count=responsePromises.length;await Promise.allSettled(responsePromises);await new Promise(resolve=>setImmediate(resolve));}while(count!==responsePromises.length);
+        row.runtimeResponseEvidenceRef=responseRecorder.finalizeRow(prefix);
+        try{verifyPublishedResponseEvidence(row,{root:repoRoot,runRelative:path.relative(repoRoot,run).replaceAll('\\','/')});}catch(error){row.errors.push(error.message);row.status='FAIL';}
+      }
+      checkCancelled();fs.writeFileSync(path.join(folder,prefix+'.json'),JSON.stringify(row,null,2)+'\n');rows.push(row);if(!responseRecorder)await page.close();checkCancelled();
     }
     checkCancelled();
   }catch(error){if(signal?.aborted)throw makeCancellationError();throw error;}
   finally{
     await closeBrowser();await closeServer();
+    responseRecorder?.persistAbortedRow();
     if(cancellationError){
       cancellationError.cleanup={serverWasListening,browserWasLaunched:Boolean(browser),browserClosed:!browser||!browser.isConnected(),serverClosed:!server.listening,browserCloseError,serverCloseError};
       persistArchiveAbortEvidence(run,attempt,cancellationError,cancellationError.cleanup);
