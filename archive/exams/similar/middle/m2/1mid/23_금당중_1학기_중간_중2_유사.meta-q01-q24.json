@@ -3,8 +3,8 @@
   "requestId": "similar-23-geumdang-m2-1mid-candidate-v1",
   "examUid": "23_금당중_1학기_중간_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/23_금당중_1학기_중간_중2_유사.js",
-  "expectedSourceBlobSha1": "580602864caf458b04f10a58fddb376dc4ed70ee",
-  "expectedSourceSha256": "74edd8e297938d3427254f22e770c3239b41b8f59cd0ebec21a0b5ee28aaa77e",
+  "expectedSourceBlobSha1": "88f901a51270c998a2624d17485dc43b2522a92a",
+  "expectedSourceSha256": "909b81683b3df611d7fb0021d2004d3f6761ca6523b00169a20e4f1b00598490",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -26,7 +26,7 @@
     "declaredTotalScore": 100,
     "verifiedItemScoreTotal": 100,
     "sourceRevisionRead": "Direct native Docs read of revision AHj4eMTXCOwC4FM5FZBBGAV9yjBzQ9jVHbNyByjoDBnl9qd3h85fT9zNXCJ4PQ-DUhkpb6A4bwqBSdhnnnHX0-Szt_r4NgLI9EsQvBzR3DM: 1839 paragraphs, 24 questions, no inline images or tables. Header generatedAt 2026-11-14 differs from Drive modified time. All problems/choices/answers/solutions were read. Q1 normalized repetend notation, Q10 divisor grouping, and Q16 answer format were clarified; no original image assets were used.",
-    "note": "Q1: clarified canonical shortest repetend beginning at earliest possible decimal place; ③ remains numerically equal but is noncanonical under the stated convention. Q10: grouped the divisor (1/3)xy^2 explicitly. Q16: preserved five statements and recast them as a five-choice combination question so its two correct statements map to unique option ⑤. Q21–24 were converted from source label 서답형 to supported JS type 서술형 and choices []. Independent review, semantic 4-slot review, official resolver, identity-map, registration, plans, SVG and visual QA NOT_RUN. JS SHA256 updated after final wording readback. The option order for Q16 was adjusted to preserve a balanced four-each MC answer-key distribution."
+    "note": "Q1: clarified canonical shortest repetend beginning at earliest possible decimal place; ③ remains numerically equal but is noncanonical under the stated convention. Q10: grouped the divisor (1/3)xy^2 explicitly. Q16: preserved five statements and recast them as a five-choice combination question so its two correct statements map to unique option ⑤. Q21–24 were converted from source label 서답형 to supported JS type 서술형 and choices []. Independent review, semantic 4-slot review, official resolver, identity-map, registration, plans, SVG and visual QA NOT_RUN. JS SHA256 updated after final wording readback. The option order for Q16 was adjusted to preserve a balanced four-each MC answer-key distribution. Follow-up repairs: Q3 explicitly requires the smallest b making denominator 2^2*5*b a power of 10; Q10 explanation now repeats the divisor parentheses; Q16 excludes right triangles so O≠N and the RHS pair is nondegenerate; Q20 replaces impossible area 75 with realizable area 30 (5-12-13 example), changing the correct radius to 2; Q21 explicitly fixes the mistaken denominator as 11 and numerator as 5, uniquely determining 7/12."
   },
   "items": [
     {
@@ -143,8 +143,8 @@
         "standardUnitKey": "M2-01",
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "conceptClusterKey": "POWER_OF_TEN_CONVERSION",
-        "primaryMethod": "27/60을 기약분수 9/(2^2*5)로 약분해 a=9, 분모 100 변환 인자 b=5, 소수 c=0.45를 구해 더한다.",
-        "decisiveStep": "a=9, b=5, c=0.45 도출 후 합 14.45 계산",
+        "primaryMethod": "27/60을 9/20으로 약분하고, 분모 2^2*5*b가 10의 거듭제곱이 되도록 하는 가장 작은 b=5를 찾아 c=0.45를 구해 더한다.",
+        "decisiveStep": "분모 2^2*5*b를 10의 거듭제곱으로 만드는 최소 인자 b=5 산출",
         "rpm": {
           "majorUnit": "유리수와 순환소수",
           "midUnit": "유리수와 순환소수",
@@ -162,7 +162,7 @@
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
-        "difficultyReason": "약분 후 분모 10의 거듭제곱 변환 빈칸 채우기",
+        "difficultyReason": "약분 후 분모를 10의 거듭제곱으로 만드는 최소 인자를 찾아 소수 변환",
         "level": "하",
         "item4slot": {
           "given": [
@@ -490,8 +490,8 @@
         "standardUnitKey": "M2-01",
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "conceptClusterKey": "MONOMIAL_MIXED_DIVISION_COEFFICIENTS",
-        "primaryMethod": "(-2xy^2)^3=-8x^3y^6으로 전개 후 괄호로 명확히 지정된 단항식 (1/3)xy^2로 나누어 -9x^4/y를 구해 a+b+c=14를 산출한다.",
-        "decisiveStep": "두 번째 나눗셈 대상을 (1/3)xy^2 전체로 묶어 역수 곱셈 적용",
+        "primaryMethod": "(-2xy^2)^3=-8x^3y^6으로 전개 후 발문과 일치하게 괄호로 묶은 제수 (1/3)xy^2 전체의 역수를 곱해 -9x^4/y를 구하고 a+b+c=14를 계산한다.",
+        "decisiveStep": "발문·해설에서 괄호 친 두 번째 제수 전체의 역수를 곱해 -9x^4/y로 정리",
         "rpm": {
           "majorUnit": "식의 계산",
           "midUnit": "단항식의 계산",
@@ -795,8 +795,8 @@
         "standardUnitKey": "M2-05",
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "conceptClusterKey": "CIRCUMCENTER_PROPERTIES_VS_INCENTER",
-        "primaryMethod": "외심 성질로 ㄱ의 OA=OB=OC를 확인하고, ㅁ의 두 직각삼각형 OBN·OCN을 RHS 합동으로 증명한 뒤 조합 ⑤를 고른다.",
-        "decisiveStep": "ㄱ과 ㅁ만 참임을 확인해 조합 ⑤ 선택",
+        "primaryMethod": "직각삼각형이 아닌 ABC에서 외심의 등거리 성질로 ㄱ을 확인하고, O≠N인 두 직각삼각형 OBN·OCN의 RHS 합동으로 ㅁ을 증명해 ⑤를 고른다.",
+        "decisiveStep": "직각삼각형 예외를 제외해 두 합동 삼각형이 퇴화하지 않음을 보이고 ㄱ·ㅁ 판별",
         "rpm": {
           "majorUnit": "삼각형의 성질",
           "midUnit": "삼각형의 외심과 내심",
@@ -830,7 +830,9 @@
             "외심",
             "합동"
           ],
-          "condition": []
+          "condition": [
+            "직각삼각형"
+          ]
         },
         "hold": ""
       }
@@ -1005,8 +1007,8 @@
         "standardUnitKey": "M2-05",
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "conceptClusterKey": "INCIRCLE_RADIUS_FROM_AREA_PERIMETER",
-        "primaryMethod": "삼각형 넓이 공식 75 = 1/2 * r * 30으로부터 내접원 반지름 r=5를 구한다.",
-        "decisiveStep": "15r = 75에서 r = 5 산출",
+        "primaryMethod": "넓이 30과 둘레 30인 삼각형에서 넓이=(1/2)*둘레*r을 적용해 내접원 반지름 r=2를 구한다.",
+        "decisiveStep": "r=2*30/30=2 계산; 5-12-13 직각삼각형으로 데이터 실현 가능 확인",
         "rpm": {
           "majorUnit": "삼각형의 성질",
           "midUnit": "삼각형의 외심과 내심",
@@ -1024,7 +1026,7 @@
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
-        "difficultyReason": "내접원 넓이 공식 직접 대입 풀이",
+        "difficultyReason": "삼각형 넓이와 둘레로 내접원 반지름 계산",
         "level": "하",
         "item4slot": {
           "given": [
@@ -1059,8 +1061,8 @@
         "standardUnitKey": "M2-01",
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "conceptClusterKey": "MISREAD_FRACTION_REPEATING_DECIMAL",
-        "primaryMethod": "방정식으로 0.63(63순환)=7/11과 0.416(6순환)=5/12를 구해 바른 분자 7과 분모 12의 비 7/12=0.583(3순환)을 산출한다.",
-        "decisiveStep": "분자 7, 분모 12 결합 후 7/12 = 0.583(3순환) 변환",
+        "primaryMethod": "민수의 분모 오독 11과 서연이의 분자 오독 5를 명시해 원래 분자 7, 분모 12를 각각 복원하고 7/12를 구한다.",
+        "decisiveStep": "11·5로 고정된 오독값과 두 순환소수에서 원래 분자·분모 유일 결정",
         "rpm": {
           "majorUnit": "유리수와 순환소수",
           "midUnit": "유리수와 순환소수",
