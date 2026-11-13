@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "existing-exam-targeted-validation-v1",
+  "scope": "2026 신흥중 중1 2학기 중간24문항 metadata only",
+  "sourcePayloadIdentical": 24,
+  "nativeV2DryRun": {
+    "status": "PASS",
+    "write": false,
+    "questions": 24,
+    "registryChanges": 17,
+    "fingerprintRepairs": 24,
+    "requestSha256": "24ba8de0d00e494b91268a00771d6b7d30cc2a17ac57c76bb7f1bc30a7a10ede",
+    "report": "01-shinheung-registration-dry-run.json"
+  },
+  "exactRpmClassifications": 22,
+  "rpmOnlyDebts": [
+    8,
+    10
+  ],
+  "actualRpmResolver": "NOT_RUN_UNVERIFIED_SOLUTION",
+  "regressions": {
+    "initialRun": {
+      "tests": 40,
+      "pass": 39,
+      "fail": 1,
+      "reason": "Existing single-row crosswalk ID expectation for RPM177 changed after two exact add-only rows."
+    },
+    "unchangedResolverAndNewGuardTests": {
+      "pass": 29
+    },
+    "afterExpectedIdUpdate": {
+      "parentHelperTests": 11,
+      "pass": 11,
+      "fail": 0,
+      "log": "01-shinheung-parent-helper-recheck.log"
+    }
+  },
+  "parentAuthority": {
+    "l1": 24,
+    "l2": 54,
+    "baseLeaves": 326,
+    "existingPlacementsChanged": 0,
+    "crosswalkRowsAdded": 12
+  },
+  "studentImagesChanged": 0,
+  "fullR1R2R3Rerun": false,
+  "consumerSearch": "NOT_RUN_UNTIL_SERVER_REGISTRATION",
+  "mainRegistration": "PENDING",
+  "CI": "CACHE_VERSION_FIX_PREPARED_PENDING_NEW_HEAD_CI",
+  "initialCi": {
+    "head": "8bab8a18877415b0d63ea79f01bf46d9a434be33",
+    "pr": 1960,
+    "testRun": 43418115865,
+    "testJob": 131861090667,
+    "tests": 336,
+    "pass": 335,
+    "fail": 1,
+    "failure": "tests/archive-cache-version-consistency.test.js:36: four HTML pages still referenced the previous rpm-middle-toc.js cache version",
+    "runtimeTests": { "pass": 252, "fail": 0 },
+    "runtimeRun": 43418115774,
+    "chromeStatus": "PASS_WITH_REAL_DATA_GAPS"
+  },
+  "cacheVersionCorrection": {
+    "changedReferences": 4,
+    "allHelperReferences": 6,
+    "version": "20261113-rpm-middle-shinheung-1",
+    "command": "node tests/archive-cache-version-consistency.test.js",
+    "exitCode": 0,
+    "stdout": "archive cache version consistency checks passed",
+    "scope": "Shared helper cache references only; source, request, metadata evidence, and helper contents unchanged."
+  }
+}

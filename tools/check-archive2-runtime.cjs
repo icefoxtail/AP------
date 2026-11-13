@@ -34,6 +34,7 @@ const files = [
   'tests/archive-rpm-middle-url.test.cjs',
   'archive/tools/meta-foundation/rpm-middle-toc.test.mjs',
   'archive/tools/meta-foundation/rpm-active-resolver.test.mjs',
+  'archive/tools/meta-foundation/rpm-crosswalk-additions.test.mjs',
   'tests/archive2-boot-order.test.js',
 ];
 

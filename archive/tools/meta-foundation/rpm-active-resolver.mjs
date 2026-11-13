@@ -282,18 +282,35 @@ function crosswalkMatch(file, context, rpmPath, scopeRelation = 'CURRENT_SCOPE')
       : rows;
     if (scopeRelation === 'CURRENT_SCOPE') {
       // An appended, explicitly linked mapping can replace an unmapped placeholder
-      // in this decision only. It must not shadow a previous mapping or another scope.
+      // or the same PT/TPL's old binding gap in this decision only. Historical rows stay intact.
       const effective = applicable.filter(placeholder => {
-        if (placeholder.mappingStatus !== 'RPM_ONLY' || placeholder.bindingStatus !== 'NO_ACTIVE_MAPPING'
-          || placeholder.problemTypeKey || placeholder.templateKey || placeholder.templateCandidates?.length
-          || !text(placeholder.id) || applicable.filter(item => item.id === placeholder.id).length !== 1) return true;
-        return !applicable.some(item => item.promotesRpmOnlyRowId === placeholder.id
-          && item.mappingStatus === 'DIRECT_ACTIVE' && item.bindingStatus === 'ACTIVE'
-          && text(item.problemTypeKey) && text(item.templateKey)
-          && item.standardUnitKey === placeholder.standardUnitKey
-          && item.subUnitKey === placeholder.subUnitKey
-          && item.standardCourse === context.standardCourse
-          && (!placeholder.standardCourse || item.standardCourse === placeholder.standardCourse));
+        const rpmOnly = placeholder.mappingStatus === 'RPM_ONLY' && placeholder.bindingStatus === 'NO_ACTIVE_MAPPING'
+          && !placeholder.problemTypeKey && !placeholder.templateKey && !placeholder.templateCandidates?.length;
+        const directGap = placeholder.mappingStatus === 'DIRECT_BINDING_GAP' && placeholder.bindingStatus === 'MISSING'
+          && text(placeholder.problemTypeKey) && text(placeholder.templateKey) && !placeholder.templateCandidates?.length;
+        if ((!rpmOnly && !directGap) || !text(placeholder.id)
+          || applicable.filter(item => item.id === placeholder.id).length !== 1) return true;
+        return !applicable.some(item => {
+          const linked = rpmOnly ? item.promotesRpmOnlyRowId === placeholder.id : item.promotesBindingGapRowId === placeholder.id;
+          if (!linked || item.mappingStatus !== 'DIRECT_ACTIVE' || item.bindingStatus !== 'ACTIVE'
+            || !text(item.problemTypeKey) || !text(item.templateKey)
+            || item.standardUnitKey !== placeholder.standardUnitKey || item.subUnitKey !== placeholder.subUnitKey
+            || item.standardCourse !== context.standardCourse
+            || (placeholder.standardCourse && item.standardCourse !== placeholder.standardCourse)) return false;
+          if (!directGap) return true;
+          // Binding repair is not permission to change the mapped method, native context, or RPM leaf.
+          const binding = item.binding || {};
+          return text(item.id) && item.id !== placeholder.id && applicable.filter(row => row.id === item.id).length === 1
+            && item.curriculum === placeholder.curriculum && item.curriculum === context.curriculum
+            && item.scope === placeholder.scope && item.scope === context.scope && equal(item.rpmPath, placeholder.rpmPath)
+            && item.standardUnitKey === context.standardUnitKey && item.subUnitKey === context.subUnitKey
+            && item.problemTypeKey === placeholder.problemTypeKey && item.templateKey === placeholder.templateKey
+            && !item.templateCandidates?.length
+            && (!binding.curriculum || binding.curriculum === item.curriculum)
+            && (!binding.standardUnitKey || binding.standardUnitKey === item.standardUnitKey)
+            && (!Object.hasOwn(binding, 'subUnitKey') || binding.subUnitKey === item.subUnitKey)
+            && (!binding.standardCourse || binding.standardCourse === item.standardCourse);
+        });
       });
       if (effective.length !== applicable.length) {
         // The RPM leaf may also describe a question whose template has yet to be added.
@@ -588,20 +605,28 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
   catch { return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_COMPATIBILITY_DATA_UNAVAILABLE'); }
   let selectedRow = null;
   if (matched.duplicate) {
-    // Several rows share this leaf and unit. They are usable only when each is a complete ACTIVE DIRECT row; the
-    // question's decisive step then picks one row AFTER the crosswalk lookup (same rule as FAMILY_ACTIVE).
+    // Several rows share this leaf and unit. Every row must declare a complete ACTIVE direct/family mapping.
+    // The exact row and one of that row's templates are selected AFTER lookup; canonical ownership and binding
+    // checks below still validate the selected pair before it can be reused.
     const candidates = matched.candidates || [];
+    const candidateTemplates = item => item.mappingStatus === 'DIRECT_ACTIVE' ? [text(item.templateKey)]
+      : item.mappingStatus === 'FAMILY_ACTIVE' ? (item.templateCandidates || []).map(candidate => text(candidate.templateKey)) : [];
     const complete = candidates.length >= (matched.requiresSelection ? 1 : 2)
-      && candidates.every(item => item.mappingStatus === 'DIRECT_ACTIVE'
-      && item.bindingStatus === 'ACTIVE' && text(item.problemTypeKey) && text(item.templateKey));
+      && candidates.every(item => {
+        const templates = candidateTemplates(item);
+        return item.bindingStatus === 'ACTIVE' && text(item.problemTypeKey) && text(item.id)
+          && candidates.filter(row => row.id === item.id).length === 1
+          && templates.length > 0 && templates.every(Boolean) && new Set(templates).size === templates.length
+          && (item.mappingStatus !== 'FAMILY_ACTIVE' || !text(item.templateKey));
+      });
     if (!complete) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_COMPATIBILITY_ROW_AMBIGUOUS');
     const selection = input.familyTemplateSelection;
     selectedRow = selection && selection.stage === 'POST_CROSSWALK' && selection.inputBundleSha === inputBundleSha
       && text(selection.decisiveStepReason)
-      ? candidates.find(item => item.id === selection.crosswalkRecordId && item.templateKey === selection.templateKey) : null;
+      ? candidates.find(item => item.id === selection.crosswalkRecordId && candidateTemplates(item).includes(selection.templateKey)) : null;
     if (!selectedRow) {
       return projectionPending(base, 'META_ONLY_COMPATIBILITY_PENDING', 'CROSSWALK_ROW_SELECTION_PENDING',
-        { mappedTemplateKeys: candidates.map(item => text(item.templateKey)) });
+        { mappedTemplateKeys: [...new Set(candidates.flatMap(candidateTemplates))] });
     }
   }
   if (matched.standardCourseMismatch) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_STANDARD_COURSE_PROJECTION_MISMATCH');

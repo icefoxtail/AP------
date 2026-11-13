@@ -1,0 +1,839 @@
+{
+  "schemaVersion": "existing-exam-source-metadata-delta-v1",
+  "status": "PREPARED_NOT_REGISTERED_OR_MERGED",
+  "reviewScope": "METADATA_ONLY_CURRENT_SOURCE",
+  "metadataEvidenceSha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0",
+  "sourceBefore": {
+    "path": "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+    "blobSha1": "c36139a90e9bcd378577ece8f891423bee6b0a19",
+    "rawSha256": "1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564",
+    "questionCount": 24
+  },
+  "sourceAfter": {
+    "path": "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+    "blobSha1": "930d4e3ef44e60757180aae6fc15fcc5b7228958",
+    "rawSha256": "bc4dcf03680da654dec43928f7b1a57942a6f616de9f03ca9ba3976203bd9a18"
+  },
+  "questionCount": 24,
+  "preservedStudentPayloadCount": 24,
+  "semanticOrConnectionCorrections": 15,
+  "bindingOnlyRepairs": 2,
+  "rpmEvidenceDebtOrdinals": [
+    8,
+    10
+  ],
+  "rpmVerifiedFinalAssertionsAdded": 0,
+  "fullR1R2R3Rerun": false,
+  "changes": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_d6bbf87bf0397aa29c28dd495d9c84c4bc2b33eac4873c56a7c5aa247eafdc31",
+      "changedFields": {
+        "canonicalBindingStatus": {
+          "before": "MISSING",
+          "after": "ACTIVE"
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "시작점이 같고 같은 쪽으로 뻗는 반직선을 동일한 대상으로 판정한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "반직선의 시작점과 뻗는 방향을 비교한다."
+        },
+        "rpmCrosswalkStatus": {
+          "before": "DIRECT_BINDING_GAP",
+          "after": "DIRECT_ACTIVE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-173",
+          "after": "M1-RPM-173-BINDING-20261113"
+        },
+        "runtimeMaterializationStatus": {
+          "before": "RPM_PRIMARY_MIGRATION_GAP",
+          "after": "ACTIVE_BOUND"
+        }
+      },
+      "nonMetadataPayloadSha256": "9f6be2fd0d0f5a77163e016a57fe196c72efe1964919a7afde5c69e85607d3ff",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_e914cbbda8bdf9cbca6a70473c7e3c9c1e93350d313a97a6da59072b8ccda284",
+      "changedFields": {
+        "canonicalBindingStatus": {
+          "before": "MISSING",
+          "after": "ACTIVE"
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "주어진 각을 다른 교점으로 전달한 뒤 요구된 두 각의 차를 비교한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "평행선의 동위각을 옮기고 이웃각의 보각 관계를 적용한다."
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_PARALLEL_ANGLE_POSITION",
+          "after": "PT_M1_PARALLEL_ANGLE_TRANSFER"
+        },
+        "rpmCrosswalkStatus": {
+          "before": "FAMILY_BINDING_GAP",
+          "after": "DIRECT_ACTIVE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-177",
+          "after": "M1-RPM-177-TRANSFER-DIRECT-20261113"
+        },
+        "runtimeMaterializationStatus": {
+          "before": "RPM_PRIMARY_MIGRATION_GAP",
+          "after": "ACTIVE_BOUND"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "위치 관계"
+        },
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-POSITION_RELATION"
+        },
+        "templateKey": {
+          "before": "TPL_M1_PARALLEL_ANGLE_POSITION_POSITIONAL_ANGLE_SUM",
+          "after": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER"
+        }
+      },
+      "nonMetadataPayloadSha256": "6e1327de7d2f0130a4bece10f34695c3ed907a344d1bb7e93843f12b8bfa503d",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_d89b5d5e9371abb2582e2607f667325d633faa2fd2656aacfc2cb300d1d1a0f2",
+      "changedFields": {
+        "canonicalBindingStatus": {
+          "before": "MISSING",
+          "after": "ACTIVE"
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "그림에 제시된 직선 쌍을 교차·평행·일치라는 위치 관계로 판정한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "같은 평면에서 두 직선의 교점 유무와 일치 여부를 구분한다."
+        },
+        "rpmCrosswalkStatus": {
+          "before": "DIRECT_BINDING_GAP",
+          "after": "DIRECT_ACTIVE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-179",
+          "after": "M1-RPM-179-BINDING-20261113"
+        },
+        "runtimeMaterializationStatus": {
+          "before": "RPM_PRIMARY_MIGRATION_GAP",
+          "after": "ACTIVE_BOUND"
+        }
+      },
+      "nonMetadataPayloadSha256": "6a992235b3de6adff9d84f0668f2cb385aaca7dfabaca68a251e104578d15d3c",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_97f9ad6aabd1e324eec3450d0c25addf60efd4ca77f5ea5cdd2962a808dcf4d1",
+      "changedFields": {
+        "canonicalBindingStatus": {
+          "before": "MISSING",
+          "after": "ACTIVE"
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "작도 순서와 각을 복사하기 위해 보존되는 선분 길이를 대조한다. 평행선 판정 결과보다 각 이동 작도가 핵심이다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "컴퍼스의 같은 반지름과 현의 길이를 사용하여 각을 옮기는 작도 절차를 판단한다."
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_PARALLEL_ANGLE_POSITION",
+          "after": "PT_M1_BASIC_CONSTRUCTION"
+        },
+        "rpmCrosswalkStatus": {
+          "before": "DIRECT_BINDING_GAP",
+          "after": "DIRECT_ACTIVE"
+        },
+        "rpmPrimaryPath": {
+          "before": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "평행선과 각",
+            "l4": "평행선 조건"
+          },
+          "after": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "기본 작도",
+            "l4": "선분·각의 이동"
+          }
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-178",
+          "after": "M1-RPM-185-CONSTRUCTION-20261113"
+        },
+        "runtimeMaterializationStatus": {
+          "before": "RPM_PRIMARY_MIGRATION_GAP",
+          "after": "ACTIVE_BOUND"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "작도와 합동"
+        },
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+        },
+        "templateKey": {
+          "before": "TPL_M1_PARALLEL_ANGLE_POSITION_ANGLE_POSITION_CLAIM_AUDIT",
+          "after": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY"
+        }
+      },
+      "nonMetadataPayloadSha256": "d6639f91f34c179eb2ced3d5cc68e36351bcdb408ae9bdd231663e35f5562ab0",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_6a2e9c320796f57d28232cd1f9ebfda5e29f4eb50926e74c0cc339d2eae8e593",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "한 꼭짓점에서 그을 수 있는 대각선 수와 전체 대각선 수를 중복 계수 여부로 구분한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "다각형의 꼭짓점 수와 대각선 수 사이의 관계를 적용한다."
+        }
+      },
+      "nonMetadataPayloadSha256": "710a02325571068ed9b8e5920f5d398d34312e458e83318fe6f75a3135f721a9",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_7b207e1ef1d35ff559f5fd6d11c98f5def0051a6fba9651d4ba092f792784e17",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "전체 원의 둘레에서 주어진 중심각이 차지하는 비율로 호의 길이를 구한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "같은 원에서 중심각과 호의 길이의 비례 관계를 적용한다."
+        }
+      },
+      "nonMetadataPayloadSha256": "293d5d0354362a911fabc0b3c8c69e2a15ecd2a242151c332a965d118954de55",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_c351e938ee7ccf461cb5141b2f81cf2fe0691f760d645b339462fd94bbed890a",
+      "changedFields": {
+        "canonicalBindingStatus": {
+          "before": "NO_ACTIVE_MAPPING",
+          "after": "ACTIVE"
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "두 중점 사이의 길이를 사이점 양쪽의 반쪽 선분의 합으로 표현한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "인접한 두 선분의 비와 중점의 반분 관계를 같은 기준 길이로 나타낸다."
+        },
+        "problemTypeKey": {
+          "before": "",
+          "after": "PT_M1_SEGMENT_LENGTH_RELATIONS"
+        },
+        "rpmCrosswalkStatus": {
+          "before": "RPM_ONLY",
+          "after": "DIRECT_ACTIVE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-174",
+          "after": "M1-RPM-174-MIDPOINT-20261113"
+        },
+        "runtimeMaterializationStatus": {
+          "before": "RPM_ONLY_NO_ACTIVE_MAPPING",
+          "after": "ACTIVE_BOUND"
+        },
+        "templateKey": {
+          "before": "",
+          "after": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT"
+        }
+      },
+      "nonMetadataPayloadSha256": "9e34053a03d49e7f20572f5e8c748c12e89fd6ce788ae5498ff8fa5390596461",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_b6c658fe81fb556f0b50dd0a137ae096115f366d679b1e1afd05b3346cb72b27",
+      "changedFields": {
+        "canonicalBindingStatus": {
+          "before": "NO_ACTIVE_MAPPING",
+          "after": "ACTIVE"
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "공통점·평행·같은 평면 여부로 모서리를 분류한 뒤 수직 교차와 꼬인 위치의 개수를 각각 센다."
+        },
+        "metaNullReason": {
+          "before": null,
+          "after": "RPM_PRIMARY_EXACT_LEAF_MISSING: 공간의 두 직선 관계를 직선-평면 관계 leaf로 대체하지 않는다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "공간도형의 기준 모서리와 다른 모서리의 수직 교차 및 꼬인 위치를 구분한다."
+        },
+        "problemTypeKey": {
+          "before": "",
+          "after": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS"
+        },
+        "rpmCrosswalkStatus": {
+          "before": "RPM_ONLY",
+          "after": "EVIDENCE_DEBT"
+        },
+        "rpmPrimaryPath": {
+          "before": {
+            "majorUnit": "기본 도형",
+            "midUnit": "위치 관계",
+            "l3": "공간에서의 위치 관계",
+            "l4": "직선과 평면의 위치 관계"
+          },
+          "after": null
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-181",
+          "after": null
+        },
+        "rpmSemanticStatus": {
+          "before": null,
+          "after": "HOLD"
+        },
+        "runtimeMaterializationStatus": {
+          "before": "RPM_ONLY_NO_ACTIVE_MAPPING",
+          "after": "RPM_PRIMARY_MIGRATION_GAP"
+        },
+        "templateKey": {
+          "before": "",
+          "after": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_PERPENDICULAR_AND_SKEW_EDGE_COUNTS"
+        }
+      },
+      "nonMetadataPayloadSha256": "2da4acd6070ed142c9769fb9e9d1965e93fe1534fb85ae7f395d8ad5fa9734fd",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_7383467201a34f11b4bcf2f850550ed903fe15dc84b34f15db25712094fccff8",
+      "changedFields": {
+        "canonicalBindingStatus": {
+          "before": "MISSING",
+          "after": "ACTIVE"
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "꺾인 점에서 각을 나누어 같은 방향의 각으로 옮긴 뒤 각의 합과 차를 연결한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "평행선 사이 꺾인 선의 각을 평행 보조선과 동위각·엇각으로 전달한다."
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_PARALLEL_ANGLE_POSITION",
+          "after": "PT_M1_PARALLEL_ANGLE_TRANSFER"
+        },
+        "rpmCrosswalkStatus": {
+          "before": "FAMILY_BINDING_GAP",
+          "after": "DIRECT_ACTIVE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-177",
+          "after": "M1-RPM-177-TRANSFER-BENT-20261113"
+        },
+        "runtimeMaterializationStatus": {
+          "before": "RPM_PRIMARY_MIGRATION_GAP",
+          "after": "ACTIVE_BOUND"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "위치 관계"
+        },
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-POSITION_RELATION"
+        },
+        "templateKey": {
+          "before": "TPL_M1_PARALLEL_ANGLE_POSITION_POSITIONAL_ANGLE_SUM",
+          "after": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE"
+        }
+      },
+      "nonMetadataPayloadSha256": "98a450d67c1c6a6d929aefa33afa4e0d6fe10c46ee0d6bbdf56e40f44f16798c",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_d47f3ed83f1c4b59063a208d4fa43128aedd4985161b81e7853068df7d0af269",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "세 변의 성립 조건과 SAS·ASA 등 결정 조건을 함께 판정한다. 한 가지 작도 조건만의 leaf로 좁힐 수 없다."
+        },
+        "metaNullReason": {
+          "before": null,
+          "after": "RPM_MIXED_CONSTRUCTION_CRITERIA_LEAF_MISSING: 여러 작도 조건을 비교하는 문항을 한 변과 양 끝각 조건에 강제하지 않는다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "여러 변·각 조건에서 삼각형의 존재와 유일성을 비교한다."
+        },
+        "rpmCrosswalkStatus": {
+          "before": "DIRECT_ACTIVE",
+          "after": "EVIDENCE_DEBT"
+        },
+        "rpmPrimaryPath": {
+          "before": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "삼각형의 작도",
+            "l4": "한 변과 양 끝각 조건"
+          },
+          "after": null
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-190",
+          "after": null
+        },
+        "rpmSemanticStatus": {
+          "before": null,
+          "after": "HOLD"
+        },
+        "runtimeMaterializationStatus": {
+          "before": "ACTIVE_BOUND",
+          "after": "RPM_PRIMARY_MIGRATION_GAP"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "작도와 합동"
+        },
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+        }
+      },
+      "nonMetadataPayloadSha256": "40086bad797feb2775f8a61395f70dd65fe4a61c78aaab2913396b387bf8cf1e",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_c5e54a9e9f5143af4e69c0637ca79755aca2e0ead620199853f76287f82cb5b1",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "짧은 두 변의 합이 가장 긴 변보다 큰 경우를 중복 없이 센다. 유일한 작도 조건의 선택과 구별한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "정수 길이의 변을 순서대로 놓고 삼각형 부등식으로 가능한 조합을 분류한다."
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_CONGRUENCE_UNIQUENESS",
+          "after": "PT_M1_TRIANGLE_SIDE_FEASIBILITY"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-188",
+          "after": "M1-RPM-188-SIDE-FEASIBILITY-20261113"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "작도와 합동"
+        },
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+        },
+        "templateKey": {
+          "before": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+          "after": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_PERIMETER_CASES"
+        }
+      },
+      "nonMetadataPayloadSha256": "e7668c61d86c21604d1bb6a46c07c585c4fbecd2804892257f06e2988300f29a",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_04ff9b066524c2ffdad5d559f03de2bff4129b1ab303b756d850608585d0da2b",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "합동 순서에 맞는 대응각·대응변을 적용하여 진술을 판정한다. 추가 합동 조건을 선택하는 유형과 구별한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "두 정삼각형의 같은 변과 끼인각으로 보조 삼각형의 SAS 합동을 만든다."
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_CONGRUENCE_UNIQUENESS",
+          "after": "PT_M1_CONGRUENCE_DATA_TRANSFER"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-192",
+          "after": "M1-RPM-192-CORRESPONDENCE-20261113"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "작도와 합동"
+        },
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+        },
+        "templateKey": {
+          "before": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+          "after": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER"
+        }
+      },
+      "nonMetadataPayloadSha256": "8c769f6b07bda5daf454942429360b539dcb8ffe9ad43ffcdb60110f5f8410bc",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_2cf0069ab9b9afaa64e02a03436d1ca0c60c3188c4314bc3bfd22f1b135e2d95",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "공유 변 끝점의 각과 연장선상의 보각을 이용해 빈 영역의 각을 정리한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "정다각형의 내각·외각과 공유 변 사이 빈 다각형의 내각합을 연결한다."
+        },
+        "rpmPrimaryPath": {
+          "before": {
+            "majorUnit": "평면도형",
+            "midUnit": "다각형",
+            "l3": "정다각형",
+            "l4": "조건으로 정다각형 찾기"
+          },
+          "after": {
+            "majorUnit": "평면도형",
+            "midUnit": "다각형",
+            "l3": "다각형의 내각과 외각",
+            "l4": "정다각형의 각"
+          }
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-200",
+          "after": "M1-RPM-196-SHARED-SIDE-EXTENSION-20261113"
+        },
+        "templateKey": {
+          "before": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
+          "after": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_SHARED_SIDE_EXTENSION_AUDIT"
+        }
+      },
+      "nonMetadataPayloadSha256": "aa44ac6e2c2ca493b4f53a6b89b76f144b00b69b83cc3cd4cf7986d7cb6c80d3",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_444e22172000b4cde0a859d8e727a75b44096ab6ff000a86410da1c87f9b494d",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "한 바퀴의 각을 외각으로 나누어 변 수를 확정한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "정다각형의 한 외각에서 변의 개수를 정하고 내각의 합을 계산한다."
+        }
+      },
+      "nonMetadataPayloadSha256": "61196930ec7a00771e609df0e21f8e277f402330faac76f23b5f07b45e4251fd",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_fba10cd79c78e131b33c9b8b44799e6585838df323d81eb4b22f9af5a0a786b1",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "같은 원에서 호의 길이 비를 중심각 비로 연결한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "반지름과 평행선의 각 관계로 중심각을 정한 뒤 호의 길이와 중심각의 비례를 사용한다."
+        }
+      },
+      "nonMetadataPayloadSha256": "f00111fb21756767e32020d09a04a047badffd7c79a84e4b7187d6723eac81f6",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_c7e5d37effec38dafc5a9f4c1cc24fc969d5d04059bb629972e00276e2c7f3a2",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "확정한 반지름과 중심각을 부채꼴 넓이 관계에 적용한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "같은 반지름과 이등변삼각형의 각 관계로 중심각을 정한 다음 부채꼴 넓이를 계산한다."
+        }
+      },
+      "nonMetadataPayloadSha256": "05e214e72711e9d23f8a74a071b0e0cb81867513af55ea44e903f1e11f6fda20",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_649d55ab303ead8530d7334f7bf0d24194e631e5ac0191d2ba99dddfaf2f2eb4",
+      "changedFields": {
+        "canonicalBindingStatus": {
+          "before": "NO_ACTIVE_MAPPING",
+          "after": "ACTIVE"
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "방향만으로 수직이나 교점을 보장하지 못하는 반례를 구별한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "공간에서 직선·평면의 평행·수직·꼬인 위치를 구별하며 보편 명제를 판정한다."
+        },
+        "problemTypeKey": {
+          "before": "",
+          "after": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS"
+        },
+        "rpmCrosswalkStatus": {
+          "before": "RPM_ONLY",
+          "after": "DIRECT_ACTIVE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-181",
+          "after": "M1-RPM-181-SPATIAL-CLAIM-20261113"
+        },
+        "runtimeMaterializationStatus": {
+          "before": "RPM_ONLY_NO_ACTIVE_MAPPING",
+          "after": "ACTIVE_BOUND"
+        },
+        "templateKey": {
+          "before": "",
+          "after": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT"
+        }
+      },
+      "nonMetadataPayloadSha256": "6fe22bdeba8d2e477e44ef921137ef503c56bef5efcae8f06af84ae5ff98bdbc",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7b6ffc097c4b1406b5cee2111ebb8986751ffe11d939b413e0f90e0da85945e7",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "합동으로 얻은 대응각을 각의 합 관계에 대입한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "정삼각형의 같은 변과 끼인각으로 보조 삼각형의 SAS 합동을 얻고 대응각을 옮긴다."
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_CONGRUENCE_UNIQUENESS",
+          "after": "PT_M1_CONGRUENCE_DATA_TRANSFER"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-192",
+          "after": "M1-RPM-192-CORRESPONDENCE-20261113"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "작도와 합동"
+        },
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+        },
+        "templateKey": {
+          "before": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+          "after": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER"
+        }
+      },
+      "nonMetadataPayloadSha256": "a801d9bb8063e00947ec6be9e4130eab87e7d84633fd41fa60706a38d4717a95",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_c4734e15ce731560fe8bfd5c52b47434248d820a881b48fc6941d9010096bcf6",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "맞꼭지각·한 점 둘레각·각 도형의 내각합을 연결한 부분합에서 공통 보조각을 소거한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "교차 도형을 삼각형과 다각형으로 나누고 공통 보조각을 이용해 표시각의 합을 정리한다."
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_TRIANGLE_ANGLE_CONDITION",
+          "after": "PT_M1_CROSSING_POLYGON_ANGLE_SUM"
+        },
+        "rpmCrosswalkStatus": {
+          "before": "FAMILY_ACTIVE",
+          "after": "DIRECT_ACTIVE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-197",
+          "after": "M1-RPM-197-CROSSING-ANGLE-SUM-20261113"
+        },
+        "templateKey": {
+          "before": "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
+          "after": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION"
+        }
+      },
+      "nonMetadataPayloadSha256": "f09442bda1ec9564e1a895baebd996b4426335a484e1ed70291c3696f4b1f733",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_73d4da5316f252d9835ecaa3d66a8b1eb09a4d7ed5c6aa07e8d20327466ec136",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "모서리까지 사용된 길이를 빼서 각 부채꼴의 반지름과 넓이를 정한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "장애물 모서리를 돌아갈 때 남은 줄 길이를 각 부채꼴의 반지름으로 두어 이동 영역을 합한다."
+        }
+      },
+      "nonMetadataPayloadSha256": "8f8c3bf421a2948becd4366a18a43b02d6fb86b6bbd29d8a65a52999d1c84977",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_3d9462aa63a14abe817fdd1b002390991d3d1a189b5d056fc38bfc85dabb5c07",
+      "changedFields": {
+        "canonicalBindingStatus": {
+          "before": "NO_ACTIVE_MAPPING",
+          "after": "ACTIVE"
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "중점에서 얻은 절반 길이들을 인접 선분의 합으로 연결한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "한 직선 위 인접 선분의 비와 중점을 이용해 두 중점 사이의 길이를 표현한다."
+        },
+        "problemTypeKey": {
+          "before": "",
+          "after": "PT_M1_SEGMENT_LENGTH_RELATIONS"
+        },
+        "rpmCrosswalkStatus": {
+          "before": "RPM_ONLY",
+          "after": "DIRECT_ACTIVE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-174",
+          "after": "M1-RPM-174-MIDPOINT-20261113"
+        },
+        "runtimeMaterializationStatus": {
+          "before": "RPM_ONLY_NO_ACTIVE_MAPPING",
+          "after": "ACTIVE_BOUND"
+        },
+        "templateKey": {
+          "before": "",
+          "after": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT"
+        }
+      },
+      "nonMetadataPayloadSha256": "2b2da233e85f61771c7304efe6ef103c52c238d056a28b91bdd6621d74a0f620",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_df32ee2e668d920b4718216a37e3012094fd902f9fd558a5bdb60c17042c20a3",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "인접각의 합이 평각이라는 관계로 목표 각들의 합을 정리한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "평각을 나누는 인접각의 등분 관계를 기준각의 배수로 표현한다."
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "after": "PT_M1_STRAIGHT_ANGLE_PARTITION"
+        },
+        "rpmCrosswalkStatus": {
+          "before": "FAMILY_ACTIVE",
+          "after": "DIRECT_ACTIVE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-175",
+          "after": "M1-RPM-175-STRAIGHT-ANGLE-PARTITION-20261113"
+        },
+        "templateKey": {
+          "before": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
+          "after": "TPL_M1_STRAIGHT_ANGLE_PARTITION_ADJACENT_RATIO_SUM"
+        }
+      },
+      "nonMetadataPayloadSha256": "d19cf39b78619461e67f965ce1a4641e2a60c56c826dd0ab633f096166b9e9f1",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_c50c53350f4116c7e321c140a0aca9b17f0c3fae2696b4be588a002fe3606cb7",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "부채꼴의 넓이에서 겹치는 삼각형 부분을 처리하고 경계 호의 길이를 연결한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "같은 반지름에서 중심각을 정하고 겹친 부채꼴과 삼각형의 넓이 및 호의 길이를 결합한다."
+        }
+      },
+      "nonMetadataPayloadSha256": "f7606454a6dfcf73b092ef2072938a7af7a3a85ed240d7a870ef2de79ff483d3",
+      "nonMetadataPayloadIdentical": true
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_20cf7db610d665dde2c04cf24f0f2b245236974a3aedeb514d7ddaab05271454",
+      "changedFields": {
+        "decisiveStep": {
+          "before": null,
+          "after": "합동의 대응각을 옮겨 삼각형의 각 관계를 정리한다."
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "정삼각형의 변·각과 주어진 같은 선분으로 보조 삼각형의 SAS 합동을 구성한다."
+        },
+        "problemTypeKey": {
+          "before": "PT_M1_CONGRUENCE_UNIQUENESS",
+          "after": "PT_M1_CONGRUENCE_DATA_TRANSFER"
+        },
+        "rpmPrimaryRecordId": {
+          "before": "M1-RPM-192",
+          "after": "M1-RPM-192-CORRESPONDENCE-20261113"
+        },
+        "subUnit": {
+          "before": "점·선·면과 각",
+          "after": "작도와 합동"
+        },
+        "subUnitKey": {
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+        },
+        "templateKey": {
+          "before": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+          "after": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER"
+        }
+      },
+      "nonMetadataPayloadSha256": "7cb4aa1e0681f612581d1f06e422c743f4604088ff2194521451c29219abe8eb",
+      "nonMetadataPayloadIdentical": true
+    }
+  ]
+}

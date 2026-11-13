@@ -46,7 +46,7 @@ window.questionBank = [
     "solutionSource": "fresh_create",
     "image": "assets/images/26_신흥중_2학기_중간_중1_기출/q01.png",
     "displayNo": "1",
-    "rpmPrimaryRecordId": "M1-RPM-173",
+    "rpmPrimaryRecordId": "M1-RPM-173-BINDING-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
       "midUnit": "기본 도형",
@@ -54,17 +54,19 @@ window.questionBank = [
       "l4": "직선·반직선·선분"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "DIRECT_BINDING_GAP",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
     "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
     "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY",
-    "canonicalBindingStatus": "MISSING",
-    "runtimeMaterializationStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "canonicalBindingStatus": "ACTIVE",
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "primaryMethod": "반직선의 시작점과 뻗는 방향을 비교한다.",
+    "decisiveStep": "시작점이 같고 같은 쪽으로 뻗는 반직선을 동일한 대상으로 판정한다."
   },
   {
     "id": 2,
@@ -75,8 +77,8 @@ window.questionBank = [
     "standardUnitKey": "M1-05",
     "standardUnit": "기본도형",
     "standardUnitOrder": 5,
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -112,7 +114,7 @@ window.questionBank = [
     "solutionSource": "fresh_create",
     "image": "assets/images/26_신흥중_2학기_중간_중1_기출/q02.png",
     "displayNo": "2",
-    "rpmPrimaryRecordId": "M1-RPM-177",
+    "rpmPrimaryRecordId": "M1-RPM-177-TRANSFER-DIRECT-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
       "midUnit": "기본 도형",
@@ -120,11 +122,11 @@ window.questionBank = [
       "l4": "동위각·엇각"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "FAMILY_BINDING_GAP",
-    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
-    "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_POSITIONAL_ANGLE_SUM",
-    "canonicalBindingStatus": "MISSING",
-    "runtimeMaterializationStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
+    "canonicalBindingStatus": "ACTIVE",
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "DIRECT",
@@ -134,7 +136,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 평행선 l, m과 한 점에서 만나는 두 직선이 있고, 그 점의 60°와 40°가 합쳐진 동위각 x(100°)와 40°의 이웃각 y(140°)가 표식으로 드러난다.",
     "solutionImageCaption": "l∥m이므로 ∠x는 60°+40°=100°와 같고 ∠y는 40°의 이웃각 140°이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "평행선의 동위각을 옮기고 이웃각의 보각 관계를 적용한다.",
+    "decisiveStep": "주어진 각을 다른 교점으로 전달한 뒤 요구된 두 각의 차를 비교한다."
   },
   {
     "id": 3,
@@ -183,7 +187,7 @@ window.questionBank = [
     "solutionSource": "fresh_create",
     "image": "assets/images/26_신흥중_2학기_중간_중1_기출/q03.png",
     "displayNo": "3",
-    "rpmPrimaryRecordId": "M1-RPM-179",
+    "rpmPrimaryRecordId": "M1-RPM-179-BINDING-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
       "midUnit": "위치 관계",
@@ -191,11 +195,11 @@ window.questionBank = [
       "l4": "두 직선의 위치 관계"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "DIRECT_BINDING_GAP",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
     "problemTypeKey": "PT_LINE_RELATION",
     "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
-    "canonicalBindingStatus": "MISSING",
-    "runtimeMaterializationStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "canonicalBindingStatus": "ACTIVE",
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "DIRECT",
@@ -205,7 +209,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: AD와 BC가 평행하고 점 A, B에서 직각인 사다리꼴 ABCD에 대각선 AC, BD가 점 O에서 만난다. AB⊥BC이므로 점 A에서 BC에 내린 수선의 발이 B임을 보여 준다. 수선 AB는 굵은 빨간 선으로 강조했다.",
     "solutionImageCaption": "AD∥BC이고 ∠B=90°이므로 점 A에서 BC에 내린 수선의 발은 B이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "같은 평면에서 두 직선의 교점 유무와 일치 여부를 구분한다.",
+    "decisiveStep": "그림에 제시된 직선 쌍을 교차·평행·일치라는 위치 관계로 판정한다."
   },
   {
     "id": 4,
@@ -216,8 +222,8 @@ window.questionBank = [
     "standardUnitKey": "M1-05",
     "standardUnit": "기본도형",
     "standardUnitOrder": 5,
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+    "subUnit": "작도와 합동",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -253,19 +259,19 @@ window.questionBank = [
     "solutionSource": "fresh_create",
     "image": "assets/images/26_신흥중_2학기_중간_중1_기출/q04.png",
     "displayNo": "4",
-    "rpmPrimaryRecordId": "M1-RPM-178",
+    "rpmPrimaryRecordId": "M1-RPM-185-CONSTRUCTION-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
-      "midUnit": "기본 도형",
-      "l3": "평행선과 각",
-      "l4": "평행선 조건"
+      "midUnit": "작도와 합동",
+      "l3": "기본 작도",
+      "l4": "선분·각의 이동"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "DIRECT_BINDING_GAP",
-    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
-    "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ANGLE_POSITION_CLAIM_AUDIT",
-    "canonicalBindingStatus": "MISSING",
-    "runtimeMaterializationStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+    "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+    "canonicalBindingStatus": "ACTIVE",
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "DIRECT",
@@ -275,7 +281,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 직선 l 위의 점 Q와 l 밖의 점 P에서 같은 반지름의 호를 그려 QA=QB=PC=PD이고, 각 AQB와 각 CPD가 같은 호 표시로 크기가 같음을 보여 준다. 각 호와 직선 옆의 ㉠~㉥은 문제 그림의 작도 기호이다.",
     "solutionImageCaption": "같은 반지름의 호로 PC=PD=QA=QB이고 ∠AQB=∠CPD이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "컴퍼스의 같은 반지름과 현의 길이를 사용하여 각을 옮기는 작도 절차를 판단한다.",
+    "decisiveStep": "작도 순서와 각을 복사하기 위해 보존되는 선분 길이를 대조한다. 평행선 판정 결과보다 각 이동 작도가 핵심이다."
   },
   {
     "id": 5,
@@ -339,7 +347,9 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "primaryMethod": "다각형의 꼭짓점 수와 대각선 수 사이의 관계를 적용한다.",
+    "decisiveStep": "한 꼭짓점에서 그을 수 있는 대각선 수와 전체 대각선 수를 중복 계수 여부로 구분한다."
   },
   {
     "id": 6,
@@ -409,7 +419,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 중심 O인 원에서 45° 부채꼴의 호가 3cm이고, 135° 부채꼴을 45°씩 세 부분으로 나누면 각 호가 3cm로 같음을 보여 준다.",
     "solutionImageCaption": "135°는 45°의 3배이므로 호의 길이도 3cm의 3배이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "같은 원에서 중심각과 호의 길이의 비례 관계를 적용한다.",
+    "decisiveStep": "전체 원의 둘레에서 주어진 중심각이 차지하는 비율로 호의 길이를 구한다."
   },
   {
     "id": 7,
@@ -456,7 +468,7 @@ window.questionBank = [
     "solutionSource": "fresh_create",
     "image": "assets/images/26_신흥중_2학기_중간_중1_기출/q07.png",
     "displayNo": "7",
-    "rpmPrimaryRecordId": "M1-RPM-174",
+    "rpmPrimaryRecordId": "M1-RPM-174-MIDPOINT-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
       "midUnit": "기본 도형",
@@ -464,11 +476,11 @@ window.questionBank = [
       "l4": "두 점 사이의 거리와 중점"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "RPM_ONLY",
-    "problemTypeKey": "",
-    "templateKey": "",
-    "canonicalBindingStatus": "NO_ACTIVE_MAPPING",
-    "runtimeMaterializationStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+    "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+    "canonicalBindingStatus": "ACTIVE",
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "DIRECT",
@@ -478,7 +490,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 한 직선 위에 A, M, B, N, C가 차례로 있고 M, N은 각각 AB, BC의 중점이다. BC=x cm이면 AB=2x이고 MB=x cm이며 MN=9cm가 길이 표시선으로 나타난다.",
     "solutionImageCaption": "BC=x, AB=2x이고 M, N이 중점이므로 MN=MB+BN이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "인접한 두 선분의 비와 중점의 반분 관계를 같은 기준 길이로 나타낸다.",
+    "decisiveStep": "두 중점 사이의 길이를 사이점 양쪽의 반쪽 선분의 합으로 표현한다."
   },
   {
     "id": 8,
@@ -527,19 +541,14 @@ window.questionBank = [
     "solutionSource": "fresh_create",
     "image": "assets/images/26_신흥중_2학기_중간_중1_기출/q08.png",
     "displayNo": "8",
-    "rpmPrimaryRecordId": "M1-RPM-181",
-    "rpmPrimaryPath": {
-      "majorUnit": "기본 도형",
-      "midUnit": "위치 관계",
-      "l3": "공간에서의 위치 관계",
-      "l4": "직선과 평면의 위치 관계"
-    },
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null,
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "RPM_ONLY",
-    "problemTypeKey": "",
-    "templateKey": "",
-    "canonicalBindingStatus": "NO_ACTIVE_MAPPING",
-    "runtimeMaterializationStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT",
+    "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_PERPENDICULAR_AND_SKEW_EDGE_COUNTS",
+    "canonicalBindingStatus": "ACTIVE",
+    "runtimeMaterializationStatus": "RPM_PRIMARY_MIGRATION_GAP",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -549,7 +558,11 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 정육면체를 네 모서리의 중점 M, N, P, Q를 지나는 평면으로 잘라 낸 입체이다. 절단면 MNPQ는 직사각형으로 칠했고, 모서리 MQ는 굵은 선, MQ와 꼬인 위치에 있는 모서리 7개는 빨간색이며 보이지 않는 모서리는 점선이다.",
     "solutionImageCaption": "MQ(굵은 선)와 꼬인 위치인 모서리 7개를 빨간색으로 나타낸 그림",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "공간도형의 기준 모서리와 다른 모서리의 수직 교차 및 꼬인 위치를 구분한다.",
+    "decisiveStep": "공통점·평행·같은 평면 여부로 모서리를 분류한 뒤 수직 교차와 꼬인 위치의 개수를 각각 센다.",
+    "rpmSemanticStatus": "HOLD",
+    "metaNullReason": "RPM_PRIMARY_EXACT_LEAF_MISSING: 공간의 두 직선 관계를 직선-평면 관계 leaf로 대체하지 않는다."
   },
   {
     "id": 9,
@@ -560,8 +573,8 @@ window.questionBank = [
     "standardUnitKey": "M1-05",
     "standardUnit": "기본도형",
     "standardUnitOrder": 5,
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -597,7 +610,7 @@ window.questionBank = [
     "solutionSource": "fresh_create",
     "image": "assets/images/26_신흥중_2학기_중간_중1_기출/q09.png",
     "displayNo": "9",
-    "rpmPrimaryRecordId": "M1-RPM-177",
+    "rpmPrimaryRecordId": "M1-RPM-177-TRANSFER-BENT-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
       "midUnit": "기본 도형",
@@ -605,11 +618,11 @@ window.questionBank = [
       "l4": "동위각·엇각"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "FAMILY_BINDING_GAP",
-    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
-    "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_POSITIONAL_ANGLE_SUM",
-    "canonicalBindingStatus": "MISSING",
-    "runtimeMaterializationStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+    "canonicalBindingStatus": "ACTIVE",
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "DIRECT",
@@ -619,7 +632,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 평행선 l, m 사이의 꺾은선에서 두 꼭짓점을 지나는 점선 보조선을 긋고, 엇각 30°, t, y를 표시하여 x=30°+t, 75°=t+y임을 보여 준다.",
     "solutionImageCaption": "보조 평행선으로 x=30°+t이고 t+y=75°이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "평행선 사이 꺾인 선의 각을 평행 보조선과 동위각·엇각으로 전달한다.",
+    "decisiveStep": "꺾인 점에서 각을 나누어 같은 방향의 각으로 옮긴 뒤 각의 합과 차를 연결한다."
   },
   {
     "id": 10,
@@ -630,8 +645,8 @@ window.questionBank = [
     "standardUnitKey": "M1-05",
     "standardUnit": "기본도형",
     "standardUnitOrder": 5,
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+    "subUnit": "작도와 합동",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -664,19 +679,14 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_create",
     "displayNo": "10",
-    "rpmPrimaryRecordId": "M1-RPM-190",
-    "rpmPrimaryPath": {
-      "majorUnit": "기본 도형",
-      "midUnit": "작도와 합동",
-      "l3": "삼각형의 작도",
-      "l4": "한 변과 양 끝각 조건"
-    },
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null,
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT",
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
     "canonicalBindingStatus": "ACTIVE",
-    "runtimeMaterializationStatus": "ACTIVE_BOUND",
+    "runtimeMaterializationStatus": "RPM_PRIMARY_MIGRATION_GAP",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "DIRECT",
@@ -686,7 +696,11 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: AB=7이고 ∠A=30°인 반직선 위에, B를 중심으로 반지름 5인 호가 반직선과 만나는 두 점 C₁, C₂를 표시했다. 삼각형 ABC₁과 ABC₂ 모두 BC=5이므로 조건을 만족해 삼각형이 하나로 정해지지 않는다.",
     "solutionImageCaption": "조건 ③을 만족하는 두 삼각형 ABC₁, ABC₂",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "여러 변·각 조건에서 삼각형의 존재와 유일성을 비교한다.",
+    "decisiveStep": "세 변의 성립 조건과 SAS·ASA 등 결정 조건을 함께 판정한다. 한 가지 작도 조건만의 leaf로 좁힐 수 없다.",
+    "rpmSemanticStatus": "HOLD",
+    "metaNullReason": "RPM_MIXED_CONSTRUCTION_CRITERIA_LEAF_MISSING: 여러 작도 조건을 비교하는 문항을 한 변과 양 끝각 조건에 강제하지 않는다."
   },
   {
     "id": 11,
@@ -697,8 +711,8 @@ window.questionBank = [
     "standardUnitKey": "M1-05",
     "standardUnit": "기본도형",
     "standardUnitOrder": 5,
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+    "subUnit": "작도와 합동",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -734,7 +748,7 @@ window.questionBank = [
     "solutionSource": "fresh_create",
     "image": "assets/images/26_신흥중_2학기_중간_중1_기출/q11.png",
     "displayNo": "11",
-    "rpmPrimaryRecordId": "M1-RPM-188",
+    "rpmPrimaryRecordId": "M1-RPM-188-SIDE-FEASIBILITY-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
       "midUnit": "작도와 합동",
@@ -743,8 +757,8 @@ window.questionBank = [
     },
     "rpmScope": "M1-2",
     "rpmCrosswalkStatus": "DIRECT_ACTIVE",
-    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
-    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+    "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+    "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_PERIMETER_CASES",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
@@ -752,7 +766,9 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "primaryMethod": "정수 길이의 변을 순서대로 놓고 삼각형 부등식으로 가능한 조합을 분류한다.",
+    "decisiveStep": "짧은 두 변의 합이 가장 긴 변보다 큰 경우를 중복 없이 센다. 유일한 작도 조건의 선택과 구별한다."
   },
   {
     "id": 12,
@@ -763,8 +779,8 @@ window.questionBank = [
     "standardUnitKey": "M1-05",
     "standardUnit": "기본도형",
     "standardUnitOrder": 5,
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+    "subUnit": "작도와 합동",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -800,7 +816,7 @@ window.questionBank = [
     "solutionSource": "fresh_create",
     "image": "assets/images/26_신흥중_2학기_중간_중1_기출/q12.png",
     "displayNo": "12",
-    "rpmPrimaryRecordId": "M1-RPM-192",
+    "rpmPrimaryRecordId": "M1-RPM-192-CORRESPONDENCE-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
       "midUnit": "작도와 합동",
@@ -809,8 +825,8 @@ window.questionBank = [
     },
     "rpmScope": "M1-2",
     "rpmCrosswalkStatus": "DIRECT_ACTIVE",
-    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
-    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
@@ -822,7 +838,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 점 C가 선분 AB 위에 있고 정삼각형 ACD, CBE를 세운 그림이다. AC=DC, CE=CB를 같은 눈금으로, ∠ACE와 ∠DCB가 모두 120°임을 호로 표시했고 삼각형 ACE와 DCB를 칠해 합동임을 보였다.",
     "solutionImageCaption": "합동인 두 삼각형 ACE, DCB",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "두 정삼각형의 같은 변과 끼인각으로 보조 삼각형의 SAS 합동을 만든다.",
+    "decisiveStep": "합동 순서에 맞는 대응각·대응변을 적용하여 진술을 판정한다. 추가 합동 조건을 선택하는 유형과 구별한다."
   },
   {
     "id": 13,
@@ -870,17 +888,17 @@ window.questionBank = [
     "solutionSource": "fresh_create",
     "image": "assets/images/26_신흥중_2학기_중간_중1_기출/q13.png",
     "displayNo": "13",
-    "rpmPrimaryRecordId": "M1-RPM-200",
+    "rpmPrimaryRecordId": "M1-RPM-196-SHARED-SIDE-EXTENSION-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "평면도형",
       "midUnit": "다각형",
-      "l3": "정다각형",
-      "l4": "조건으로 정다각형 찾기"
+      "l3": "다각형의 내각과 외각",
+      "l4": "정다각형의 각"
     },
     "rpmScope": "M1-2",
     "rpmCrosswalkStatus": "DIRECT_ACTIVE",
     "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
-    "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
+    "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_SHARED_SIDE_EXTENSION_AUDIT",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
@@ -892,7 +910,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 정오각형 ABCDE와 정팔각형 DEFGHIJK가 변 DE를 공유하고, BC와 JK의 연장선이 점 L에서 만난다. 오각형의 내각 a=108°, 팔각형의 내각 b=135°, 사각형 CDKL의 한 각 ∠CDK=117°를 표시했고, 사각형의 나머지 각 c, d, e는 이름만 표시했다.",
     "solutionImageCaption": "내각 a, b와 사각형 CDKL의 각 c, d, e",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "정다각형의 내각·외각과 공유 변 사이 빈 다각형의 내각합을 연결한다.",
+    "decisiveStep": "공유 변 끝점의 각과 연장선상의 보각을 이용해 빈 영역의 각을 정리한다."
   },
   {
     "id": 14,
@@ -956,7 +976,9 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "primaryMethod": "정다각형의 한 외각에서 변의 개수를 정하고 내각의 합을 계산한다.",
+    "decisiveStep": "한 바퀴의 각을 외각으로 나누어 변 수를 확정한다."
   },
   {
     "id": 15,
@@ -1027,7 +1049,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 지름 AB인 반원 O 위의 두 점 C, D에서 OC와 BD가 평행이다. 보조선 OD(점선)를 그어 ∠AOC=∠OBD=x, OB=OD, ∠BOD=180°-2x를 표시했다. 호 AC는 10cm, 호 BD는 16cm이다.",
     "solutionImageCaption": "평행선과 이등변삼각형으로 구한 중심각의 관계",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "반지름과 평행선의 각 관계로 중심각을 정한 뒤 호의 길이와 중심각의 비례를 사용한다.",
+    "decisiveStep": "같은 원에서 호의 길이 비를 중심각 비로 연결한다."
   },
   {
     "id": 16,
@@ -1097,7 +1121,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q16-solution.svg",
     "solutionImageAlt": "해설 그림: 반원의 중심 O에서 반지름 OD, OE를 그은 그림이다. ∠A=50°인 이등변삼각형 ABC의 밑각 65°에서 이등변삼각형 BOD, EOC의 두 밑각은 65°, 꼭지각은 50°이고 부채꼴 DOE(칠한 부분)의 중심각은 80°이다.",
     "solutionImageCaption": "이등변삼각형과 부채꼴 DOE의 중심각",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "같은 반지름과 이등변삼각형의 각 관계로 중심각을 정한 다음 부채꼴 넓이를 계산한다.",
+    "decisiveStep": "확정한 반지름과 중심각을 부채꼴 넓이 관계에 적용한다."
   },
   {
     "id": 17,
@@ -1143,7 +1169,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_create",
     "displayNo": "17",
-    "rpmPrimaryRecordId": "M1-RPM-181",
+    "rpmPrimaryRecordId": "M1-RPM-181-SPATIAL-CLAIM-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
       "midUnit": "위치 관계",
@@ -1151,11 +1177,11 @@ window.questionBank = [
       "l4": "직선과 평면의 위치 관계"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "RPM_ONLY",
-    "problemTypeKey": "",
-    "templateKey": "",
-    "canonicalBindingStatus": "NO_ACTIVE_MAPPING",
-    "runtimeMaterializationStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+    "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT",
+    "canonicalBindingStatus": "ACTIVE",
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "DIRECT",
@@ -1165,7 +1191,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 직육면체 세 개로 ①, ③, ④의 반례를 나타낸 그림. 왼쪽은 밑면(평면 P)에 수직인 모서리 l과 P에 평행한 모서리 m이 꼬인 위치, 가운데는 l에 수직인 m, n이 평행하지 않음, 오른쪽은 l과 평행한 m, l에 수직인 n이 만나지 않는 경우를 보인다.",
     "solutionImageCaption": "직육면체의 모서리로 ①, ③, ④가 성립하지 않는 경우를 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "공간에서 직선·평면의 평행·수직·꼬인 위치를 구별하며 보편 명제를 판정한다.",
+    "decisiveStep": "방향만으로 수직이나 교점을 보장하지 못하는 반례를 구별한다."
   },
   {
     "id": 18,
@@ -1176,8 +1204,8 @@ window.questionBank = [
     "standardUnitKey": "M1-05",
     "standardUnit": "기본도형",
     "standardUnitOrder": 5,
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+    "subUnit": "작도와 합동",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -1213,7 +1241,7 @@ window.questionBank = [
     "solutionSource": "fresh_create",
     "image": "assets/images/26_신흥중_2학기_중간_중1_기출/q18.png",
     "displayNo": "18",
-    "rpmPrimaryRecordId": "M1-RPM-192",
+    "rpmPrimaryRecordId": "M1-RPM-192-CORRESPONDENCE-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
       "midUnit": "작도와 합동",
@@ -1222,8 +1250,8 @@ window.questionBank = [
     },
     "rpmScope": "M1-2",
     "rpmCrosswalkStatus": "DIRECT_ACTIVE",
-    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
-    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
@@ -1235,7 +1263,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 정삼각형 ABC와 CDE가 꼭짓점 C를 공유한다. CA=CB, CD=CE를 같은 눈금으로, ∠ACD=∠BCE를 같은 호로 표시하고 합동인 삼각형 ACD와 BCE를 칠했다. ∠DBE=80°이다.",
     "solutionImageCaption": "합동인 두 삼각형 ACD, BCE",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "정삼각형의 같은 변과 끼인각으로 보조 삼각형의 SAS 합동을 얻고 대응각을 옮긴다.",
+    "decisiveStep": "합동으로 얻은 대응각을 각의 합 관계에 대입한다."
   },
   {
     "id": 19,
@@ -1283,7 +1313,7 @@ window.questionBank = [
     "solutionSource": "fresh_create",
     "image": "assets/images/26_신흥중_2학기_중간_중1_기출/q19.png",
     "displayNo": "19",
-    "rpmPrimaryRecordId": "M1-RPM-197",
+    "rpmPrimaryRecordId": "M1-RPM-197-CROSSING-ANGLE-SUM-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "평면도형",
       "midUnit": "다각형",
@@ -1291,9 +1321,9 @@ window.questionBank = [
       "l4": "각의 크기 계산"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
-    "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
-    "templateKey": "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "problemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM",
+    "templateKey": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
@@ -1305,7 +1335,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 별 모양 오각형에서 두 직선 AD와 BE의 교점 X를 잡고 보조선 XF를 점선으로 그은 그림. 맞꼭지각 ∠BXD와 ∠AXE는 t°로 표시하고 사각형 BXDC를 색칠했으며 ∠AFE=20°를 나타낸다.",
     "solutionImageCaption": "교점 X와 보조선 XF로 사각형 BXDC와 두 삼각형 AXF, EXF의 각을 나누어 본다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "교차 도형을 삼각형과 다각형으로 나누고 공통 보조각을 이용해 표시각의 합을 정리한다.",
+    "decisiveStep": "맞꼭지각·한 점 둘레각·각 도형의 내각합을 연결한 부분합에서 공통 보조각을 소거한다."
   },
   {
     "id": 20,
@@ -1376,7 +1408,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 직사각형 울타리의 꼭짓점 A에 묶인 끈 6 m가 닿는 영역을 세 부분으로 나눈 그림. A 중심 반지름 6 m의 3/4원(27π), 위쪽 모서리를 돌아 반지름 3 m인 사분원(9π/4), 왼쪽 모서리를 돌아 반지름 2 m인 사분원(π)을 색으로 구분했다.",
     "solutionImageCaption": "끈이 울타리를 돌아 닿는 영역을 세 부분으로 나눈 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "장애물 모서리를 돌아갈 때 남은 줄 길이를 각 부채꼴의 반지름으로 두어 이동 영역을 합한다.",
+    "decisiveStep": "모서리까지 사용된 길이를 빼서 각 부채꼴의 반지름과 넓이를 정한다."
   },
   {
     "id": 21,
@@ -1416,7 +1450,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_create",
     "displayNo": "서술형 1",
-    "rpmPrimaryRecordId": "M1-RPM-174",
+    "rpmPrimaryRecordId": "M1-RPM-174-MIDPOINT-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
       "midUnit": "기본 도형",
@@ -1424,11 +1458,11 @@ window.questionBank = [
       "l4": "두 점 사이의 거리와 중점"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "RPM_ONLY",
-    "problemTypeKey": "",
-    "templateKey": "",
-    "canonicalBindingStatus": "NO_ACTIVE_MAPPING",
-    "runtimeMaterializationStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+    "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+    "canonicalBindingStatus": "ACTIVE",
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "DIRECT",
@@ -1438,7 +1472,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 한 직선 위에 A, M, B, N, C가 차례로 놓인 그림. AB=2k, BC=3k를 아래 치수선으로, M은 AB의 중점이라 MB=k, N은 BC의 중점이라 BN=3k/2를 같은 눈금과 라벨로 나타냈다.",
     "solutionImageCaption": "점의 순서 A, M, B, N, C와 각 선분의 길이를 k로 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "한 직선 위 인접 선분의 비와 중점을 이용해 두 중점 사이의 길이를 표현한다.",
+    "decisiveStep": "중점에서 얻은 절반 길이들을 인접 선분의 합으로 연결한다."
   },
   {
     "id": 22,
@@ -1480,7 +1516,7 @@ window.questionBank = [
     "solutionSource": "fresh_create",
     "image": "assets/images/26_신흥중_2학기_중간_중1_기출/q22.png",
     "displayNo": "서술형 2",
-    "rpmPrimaryRecordId": "M1-RPM-175",
+    "rpmPrimaryRecordId": "M1-RPM-175-STRAIGHT-ANGLE-PARTITION-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
       "midUnit": "기본 도형",
@@ -1488,9 +1524,9 @@ window.questionBank = [
       "l4": "각의 크기"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
-    "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
-    "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "problemTypeKey": "PT_M1_STRAIGHT_ANGLE_PARTITION",
+    "templateKey": "TPL_M1_STRAIGHT_ANGLE_PARTITION_ADJACENT_RATIO_SUM",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
@@ -1502,7 +1538,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q22-solution.svg",
     "solutionImageAlt": "해설 그림: 직선 AB 위의 점 O에서 반직선 OC, OD, OE를 그은 그림. ∠AOC=2x, ∠COD=x, ∠DOE=y, ∠EOB=2y로 표시해 네 각의 합이 평각 180°임을 보여 준다.",
     "solutionImageCaption": "직선 AB 위의 네 각을 2x, x, y, 2y로 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "평각을 나누는 인접각의 등분 관계를 기준각의 배수로 표현한다.",
+    "decisiveStep": "인접각의 합이 평각이라는 관계로 목표 각들의 합을 정리한다."
   },
   {
     "id": 23,
@@ -1567,7 +1605,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 한 변이 8 cm인 정사각형 ABCD에서 A, B를 중심으로 하는 반지름 8의 호가 만나는 점 E를 잡은 그림. AB=AE=BE로 정삼각형 ABE이고 ∠BAE=∠ABE=60°이며, 두 호와 변 AB로 둘러싸인 색칠한 부분을 나타낸다.",
     "solutionImageCaption": "정삼각형 ABE와 두 부채꼴이 겹쳐 만든 색칠한 부분을 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "같은 반지름에서 중심각을 정하고 겹친 부채꼴과 삼각형의 넓이 및 호의 길이를 결합한다.",
+    "decisiveStep": "부채꼴의 넓이에서 겹치는 삼각형 부분을 처리하고 경계 호의 길이를 연결한다."
   },
   {
     "id": 24,
@@ -1578,8 +1618,8 @@ window.questionBank = [
     "standardUnitKey": "M1-05",
     "standardUnit": "기본도형",
     "standardUnitOrder": 5,
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+    "subUnit": "작도와 합동",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
@@ -1610,7 +1650,7 @@ window.questionBank = [
     "solutionSource": "fresh_create",
     "image": "assets/images/26_신흥중_2학기_중간_중1_기출/q24.png",
     "displayNo": "서술형 4",
-    "rpmPrimaryRecordId": "M1-RPM-192",
+    "rpmPrimaryRecordId": "M1-RPM-192-CORRESPONDENCE-20261113",
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
       "midUnit": "작도와 합동",
@@ -1619,8 +1659,8 @@ window.questionBank = [
     },
     "rpmScope": "M1-2",
     "rpmCrosswalkStatus": "DIRECT_ACTIVE",
-    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
-    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
     "canonicalBindingStatus": "ACTIVE",
     "runtimeMaterializationStatus": "ACTIVE_BOUND",
     "crossConceptKeys": [],
@@ -1632,6 +1672,8 @@ window.questionBank = [
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q24-solution.svg",
     "solutionImageAlt": "해설 그림: 정삼각형 ABC에서 BD=CE인 점 D, E를 잡고 AD와 BE의 교점 P를 나타낸 그림. BD, CE에 같은 눈금, ∠ABD=∠BCE=60°, 합동에서 같은 ∠ADB=∠BEC를 이중 호로 표시하고 삼각형 PBD를 색칠했다.",
     "solutionImageCaption": "합동인 삼각형 ABD와 BCE에서 대응하는 변과 각을 같은 표시로 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "정삼각형의 변·각과 주어진 같은 선분으로 보조 삼각형의 SAS 합동을 구성한다.",
+    "decisiveStep": "합동의 대응각을 옮겨 삼각형의 각 관계를 정리한다."
   }
 ];
