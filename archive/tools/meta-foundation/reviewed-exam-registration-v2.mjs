@@ -2393,7 +2393,8 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
     const courseCompact = value => String(value ?? "").normalize("NFC").replace(/\s/g, "");
     let usedLane = false;
     for (const f of ["curriculumKey", "courseKey", "L1", "L2", "standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket"]) {
-      if (isTypeHoldRecord(r) && ["problemTypeKey", "templateKey"].includes(f)) continue;   // type fields stay as registered (empty); nothing to compare
+      // A type-hold row has no foundation revision, so the Consumer does not publish PT/TPL nor CrossConcept/Condition for it; those are verified in the registrar (resolveUnitOnly) instead.
+      if (isTypeHoldRecord(r) && ["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys"].includes(f)) continue;
       // Archive2 omits unknown fields instead of publishing a false NONE. Verify an omitted IntegrationPattern against its exact active runtime value.
       if (f === "integrationPattern" && !Object.hasOwn(c, f)) {
         const runtime = runtimeByUid.get(r.questionUid);
