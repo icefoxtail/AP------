@@ -1,0 +1,2744 @@
+{
+  "schemaVersion": "m1s2-integrated-metadata-review-v1",
+  "assignmentId": "M1S2-20261114-B01-B",
+  "reviewer": "GPT_B2_3362DD3EDC06",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+  "baselineMainSha": "573fa32804480b2d70f7536b211e240e8d64d5ed",
+  "sourceGitBlobSha": "8f6a73e1f5e2d8de4853db395bb9c7d4d1242584",
+  "sourceSha256": "26eef06faeb3c713ab05a1b4992451f952f2f971e154f0d04186604a03ebd1a8",
+  "reviewMode": "USER_AUTHORIZED_FULL_RECHECK_CURRENT_SOURCE_EXISTING_SOLUTION",
+  "questionCount": 24,
+  "studentPayloadPreserved": 24,
+  "sourceSyntaxCheck": "PASS",
+  "uidJoinCheck": "PASS",
+  "officialRegistryStatus": "ACTIVE",
+  "machineCounts": {
+    "questions": 24,
+    "changedQuestions": 24,
+    "studentPayloadPreserved": 24,
+    "uidJoinValid": 24,
+    "formalTypesPresent": 17,
+    "exactCourseBindings": 16,
+    "sourceFieldValidationValid": 17,
+    "identityFingerprintMismatch": 24,
+    "registrationApply": 0,
+    "registrationHold": 24
+  },
+  "registrationStatus": "HOLD_IDENTITY_SOURCE_FINGERPRINT_MISMATCH_24",
+  "independent4SlotSample": "PENDING",
+  "rawProof": {
+    "fileId": "1UKCoJUoPKho3SJapL-sAyHPGXNGhQzkx",
+    "url": "https://drive.google.com/file/d/1UKCoJUoPKho3SJapL-sAyHPGXNGhQzkx/view?usp=drivesdk",
+    "parentId": "10RO6BaU2xS3l6WexNvHfyQGc04iQhdV8",
+    "sha256": "a6d6438482705e9d7a8cf3446a227315ddf6fa123c7478e66832a0e934301133",
+    "byteLength": 67791,
+    "rawReadback": "VERIFIED",
+    "revision": 1,
+    "status": "SOURCE_CHECKPOINT_PRELIMINARY_PENDING_FINAL_SAMPLE"
+  },
+  "fourSlotRaw": {
+    "fileId": "1vJwvm4tFI35z7JAQ07aqesMbT7xyuU66",
+    "url": "https://drive.google.com/file/d/1vJwvm4tFI35z7JAQ07aqesMbT7xyuU66/view?usp=drivesdk",
+    "parentId": "10RO6BaU2xS3l6WexNvHfyQGc04iQhdV8",
+    "sha256": "7f55eedb7a4332512c63068144aeb7ea368145b8aed647eb0926b18051a14ce1",
+    "byteLength": 45667,
+    "rawReadback": "VERIFIED",
+    "revision": 1,
+    "status": "SOURCE_CHECKPOINT_PRELIMINARY_PENDING_FINAL_SAMPLE"
+  },
+  "topics": {
+    "입체도형 구성요소": [
+      1
+    ],
+    "직선·반직선·선분과 수": [
+      2,
+      19
+    ],
+    "중점·선분의 길이": [
+      3
+    ],
+    "수직이등분선·거리·수선의 발": [
+      4
+    ],
+    "각의 비·맞꼭지각": [
+      5
+    ],
+    "공간의 두 직선·모서리 관계": [
+      6,
+      7
+    ],
+    "평행선과 각": [
+      8
+    ],
+    "작도·삼각형 결정": [
+      9,
+      10,
+      11
+    ],
+    "합동조건·주어진 합동·합동 증명": [
+      12,
+      13,
+      22
+    ],
+    "삼각형·정다각형의 각": [
+      14,
+      15,
+      17,
+      20,
+      21
+    ],
+    "정다각형 판정": [
+      16
+    ],
+    "다각형의 대각선·분할·내외각": [
+      18,
+      23,
+      24
+    ]
+  },
+  "typeCounts": {
+    "BINDING_GAP": 3,
+    "EXISTING_EXACT": 10,
+    "RPM_LEAF_GAP": 5,
+    "VISUAL_EVIDENCE_HOLD": 1,
+    "CROSSWALK_GAP": 2,
+    "NATIVE_TYPE_GAP": 3
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_1de743a20db4ea608b34c96bafaee1e51ac87b54a5f7bc3985837be5adbeed1a",
+      "judgment": "CORRECT",
+      "primaryMethod": "입체도형의 꼭짓점과 모서리 세기",
+      "decisiveStep": "위·아래 둘레와 연결 모서리로 교선을 나누어 중복 없이 세고 교점 수를 더한다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "입체도형",
+        "midUnit": "다면체와 회전체",
+        "l3": "다면체",
+        "l4": "면·모서리·꼭짓점"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "교점과 교선을 꼭짓점·모서리로 대응해 그림에서 직접 세는 기본 정의 적용이다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "BINDING_GAP",
+        "currentPair": [
+          "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+        ],
+        "candidatePair": [
+          "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+        ],
+        "crosswalkId": "M1-RPM-207",
+        "reason": "정확한 type/template와 unit/subunit binding은 있으나 binding.standardCourse가 한자 中을 쓴 \"中1 수학\"으로 등록되어 \"중1 수학\"과 다르다. 공식 resolver의 exact course binding 검사는 EXACT_ACTIVE_BINDING_PENDING이며 공통 사전/registry 수정은 범위 밖이다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "中1 수학"
+          ],
+          "exactActiveBindingCount": 0,
+          "exactActiveBindingOwners": []
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "pairMatches": false,
+          "validation": "PASS",
+          "evidenceSha": "sha256:e818d3a6256dbdc892c6b008a80726a576e915faf0ff722d110b51f51f461083"
+        }
+      },
+      "hashes": {
+        "QBODY": "48f3b6b404a0ccd2328d6ab36071d2efd56ae34e6ac45a695e40d9e89e648df7",
+        "QFULL": "fb869aa0adfa2357a9533408e3df17f0ecf2f5e7d9bf9f564508e90d6b666a94"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q01.png",
+          "sha256": "beef6435276a6d5e90df56fa19d5842ae851684a56b9fc05de20b9e9b10e6bce"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q1-solution.svg",
+          "sha256": "18b54b250a9085c48a5f9e0acb7ff7a97b6374374884822c7ab0d59f10825f39"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "subUnit",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_61a1adf27e0ad58c8b734aec08597afd0bc4bcac2a81395bc0fd6877f4a12724",
+      "judgment": "CORRECT",
+      "primaryMethod": "같은 직선과 다른 반직선·선분 구별",
+      "decisiveStep": "네 점이 같은 직선 위에 있음을 사용하여 AB와 CD가 같은 전체 직선을 나타내는지 확인한다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "점·선·면",
+        "l4": "직선·반직선·선분"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-05-BASIC_FIGURE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "하",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 하 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "직선·반직선·선분의 정의를 그대로 비교하는 문항이다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "EXISTING_EXACT",
+        "currentPair": [
+          "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+          "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY"
+        ],
+        "candidatePair": [
+          "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+          "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY"
+        ],
+        "crosswalkId": "M1-RPM-173-BINDING-20261113",
+        "reason": "현재 ACTIVE 유형과 템플릿이 결정 단계를 담고 해당 RPM leaf의 정확한 crosswalk에서 선택 가능하다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "pairMatches": true,
+          "validation": "PASS",
+          "evidenceSha": "sha256:c923d963eadf4ac71a2905787497d02363224845bb82b1d1ada3174472186f9e"
+        }
+      },
+      "hashes": {
+        "QBODY": "ea9e65260682f46bf2d4e25557e1c8de5dd04e78165fc157c15d623f95149ce3",
+        "QFULL": "67cb91160e90a51875bab2680e0a835ac3d2c38bbe911ee574290a5fac9654b2"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q02.png",
+          "sha256": "b6096a9b1fed1d12728eb88f66cfd456c141d7ed8866de73a2674d746225fac4"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q2-solution.svg",
+          "sha256": "2de536debd1d90e5aee2b226c32b34f2a3aac9b9f2e62cc4b115c41bb88f77e5"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_d154f77812aded0e57abffa79f81972f8bd1b7d9404e91a6c563f8bab59f8a8f",
+      "judgment": "CORRECT",
+      "primaryMethod": "두 중점과 선분 길이의 비를 등식으로 연결",
+      "decisiveStep": "BC를 x로 두어 MB=3x/2, BN=x/2를 구하고 MN=MB+BN을 적용한다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "점·선·면",
+        "l4": "두 점 사이의 거리와 중점"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-05-BASIC_FIGURE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "서로 다른 두 선분의 중점을 구별하고 합한 길이를 하나의 식으로 옮기는 한 번의 연결이 필요하다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "EXISTING_EXACT",
+        "currentPair": [
+          "PT_M1_SEGMENT_LENGTH_RELATIONS",
+          "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT"
+        ],
+        "candidatePair": [
+          "PT_M1_SEGMENT_LENGTH_RELATIONS",
+          "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT"
+        ],
+        "crosswalkId": "M1-RPM-174-MIDPOINT-20261113",
+        "reason": "현재 ACTIVE 유형과 템플릿이 결정 단계를 담고 해당 RPM leaf의 정확한 crosswalk에서 선택 가능하다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "pairMatches": true,
+          "validation": "PASS",
+          "evidenceSha": "sha256:7491d09fc36e918d1cb165251a71f623c9659afadcb156620ea7e95768e32a42"
+        }
+      },
+      "hashes": {
+        "QBODY": "d00342178cae78a7aa562737426e3b207bad2be04550f94dba34ccf207238279",
+        "QFULL": "1ff5e17258769a4e639233f9877946087a9c284be30f4f94c580980a461fa66d"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q03.png",
+          "sha256": "df51518140c73050bae2427d57553ac16ce40c24ef44554b47949b41681d01a8"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q3-solution.svg",
+          "sha256": "4a20c20e1dc515cb0cbfac6093892a1175bd848b0776eb38c430f746dea6bb31"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_25b2a3a390671af55dfef176c7603fc79ec2a2892eabddd78bd0c398c6dda4a5",
+      "judgment": "CORRECT_WITH_TYPE_HOLD",
+      "primaryMethod": "수직이등분선·거리·수선의 발 정의 대조",
+      "decisiveStep": "수직이등분선의 교점은 중점이지만 임의의 점 P까지의 길이와 반쪽 선분 길이는 같다고 할 수 없다.",
+      "rpmPrimaryPath": null,
+      "rpmProposedParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형"
+      },
+      "proposedSubUnitKey": "M1-05-BASIC_FIGURE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "그림에 명시된 수직이등분선의 정의와 거리의 정의를 직접 적용한다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "RPM_LEAF_GAP",
+        "currentPair": [
+          "PT_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE",
+          "TPL_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE_CORE"
+        ],
+        "candidatePair": [
+          "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+          "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT"
+        ],
+        "crosswalkId": null,
+        "reason": "거리 하나를 읽는 trapezoid template는 수직이등분선·중점·수선발의 복수 진술 판정과 다르다. 기본 용어 audit 재사용 후보와 수직이등분선 정의 leaf 부족을 분리한다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "TRUE_META_HOLD",
+          "semanticStatus": "HOLD",
+          "projectionStatus": "NOT_ATTEMPTED",
+          "reasonCode": "RPM_PRIMARY_PATH_NOT_FOUND",
+          "pairMatches": false,
+          "validation": "PASS",
+          "evidenceSha": "sha256:b853e130488e7211750b354a3ff51be7dbc373162a7f68d24b225261204601e4"
+        }
+      },
+      "hashes": {
+        "QBODY": "1248cd2926dbb316128e4c0fd24a7ec792cfa02d925a0367e3183e10517ef742",
+        "QFULL": "cfe1859fdc22d6fdae30327ef6ce989a751c83c8dbabaf83168445564d3a34bd"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q04.png",
+          "sha256": "39a8263ccedd8971bc09b9e0c9a09b954fae12b3b3ba36727f857e4592b77a69"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q4-solution.svg",
+          "sha256": "fd58104ecd73fdbd54df344768b2725f9071b0eb41d73c87508efdea88b0903c"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "problemTypeKey",
+        "templateKey",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_739f7c084f9bbf3cb430af86cb12ef7f147f284e69c6016b1b9ba5fd53135fc2",
+      "judgment": "CORRECT",
+      "primaryMethod": "수직·평각·맞꼭지각과 각의 비를 연결",
+      "decisiveStep": "BOC를 x로 두고 수직과 평각으로 DOE=90-x를 만든 뒤 2x=90-x를 푼다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "각",
+        "l4": "각의 크기"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-05-BASIC_FIGURE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "같은 직각을 두 부분으로 나눈 비 조건을 식으로 번역하고 맞꼭지각을 옮기는 과정이다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "EXISTING_EXACT",
+        "currentPair": [
+          "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+          "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO"
+        ],
+        "candidatePair": [
+          "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+          "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO"
+        ],
+        "crosswalkId": "M1-RPM-175-RIGHT-ANGLE-RATIO-20261113",
+        "reason": "현재 ACTIVE 유형과 템플릿이 결정 단계를 담고 해당 RPM leaf의 정확한 crosswalk에서 선택 가능하다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "pairMatches": true,
+          "validation": "PASS",
+          "evidenceSha": "sha256:572aecf187c3affd1d2707da0440ef3ea98c512c956a6706e60b21ff2cba04fe"
+        }
+      },
+      "hashes": {
+        "QBODY": "3a353c311a7626116ea6a917057cc45d38888b8f8d95f41b3b91e506fc19b15f",
+        "QFULL": "82d53b8577d6d3722b5e0005f74ed870b4e17372e5eb6cf9a7092f8ffc899534"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q05.png",
+          "sha256": "0b55f4e5fa8a6b0a383477c892da77a3d55207c3c634e858af4577e50ffba987"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q5-solution.svg",
+          "sha256": "10a96c5a0891c744278226ab6c367a6c46eebc6f73ac0bf964ad2786a2ba60a8"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_d00a79792c83e1631d2684f7a460bb3c452534b44b4d33fa3f158e73776c4e53",
+      "judgment": "CORRECT_WITH_TYPE_HOLD",
+      "primaryMethod": "공간에서 만남·평행·꼬인 위치의 정의 판정",
+      "decisiveStep": "서로 만나지 않는 두 직선에는 평행과 꼬인 위치가 모두 가능하므로 한 평면 포함 여부를 구별한다.",
+      "rpmPrimaryPath": null,
+      "rpmProposedParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계"
+      },
+      "proposedSubUnitKey": "M1-05-POSITION_RELATION",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "서로 다른 두 직선이라는 명시 조건은 4칸에 보존한다. 함수나 점의 상이 조건 키를 다른 대상으로 전용하지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "네 진술은 공간 직선 관계의 정의를 직접 대조하면 판정된다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "RPM_LEAF_GAP",
+        "currentPair": [
+          null,
+          null
+        ],
+        "candidatePair": [
+          "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+          "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_SPATIAL_LINE_CLASSIFICATION"
+        ],
+        "crosswalkId": null,
+        "reason": "공간의 두 직선에 대한 판정이다. 평면의 두 직선 leaf나 직선-평면 leaf로 강제하지 않는다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "TRUE_META_HOLD",
+          "semanticStatus": "HOLD",
+          "projectionStatus": "NOT_ATTEMPTED",
+          "reasonCode": "RPM_PRIMARY_PATH_NOT_FOUND",
+          "pairMatches": false,
+          "validation": "PASS",
+          "evidenceSha": "sha256:fd20b871e8058e00988dbe98b5460ffe4268bb12f01f7ebd212105634d9ef923"
+        }
+      },
+      "hashes": {
+        "QBODY": "2fcea0c08fbdce88f5a48392dafefaf87d1f5b540acad6f730d8e3e845b10509",
+        "QFULL": "d466fb935f82339da40d5a7646ccdbb2bcd1b0cf637ab59b1d4e8f56c48e8cfe"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q06.png",
+          "sha256": "3e28b6a12768fd1adcc38a14343df8080f0b1159bcaf25d2f07c84cd200dda84"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q6-solution.svg",
+          "sha256": "4c1ab03029cd2a17cff2cdfda3ce877c89ae8a15b2774041d0ff2d6b2c0a5d71"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "problemTypeKey",
+        "templateKey",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_cd96dcd0b7b1450dd2db46caf9242c4ed05987a83196f962012ba3365ed302b8",
+      "judgment": "CORRECT_WITH_TYPE_HOLD",
+      "primaryMethod": "정육면체의 모서리를 만남·평행·꼬임으로 분류",
+      "decisiveStep": "기준 모서리 자신을 제외하고 끝점을 공유하는 네 개와 평행한 세 개를 제외해 꼬인 네 개를 센다.",
+      "rpmPrimaryPath": null,
+      "rpmProposedParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계"
+      },
+      "proposedSubUnitKey": "M1-05-POSITION_RELATION",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "입체에서 끝점을 공유하는 관계와 평행 방향을 구별해 전체 모서리 수에서 제외한다. 전개도 자체의 복잡도 때문에 올리지 않는다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "RPM_LEAF_GAP",
+        "currentPair": [
+          "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+          "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT"
+        ],
+        "candidatePair": [
+          "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+          "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT"
+        ],
+        "crosswalkId": null,
+        "reason": "정육면체는 배경이고 목표는 공간의 모서리끼리 꼬임·평행이다. 공간 두 직선 leaf가 없다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "TRUE_META_HOLD",
+          "semanticStatus": "HOLD",
+          "projectionStatus": "NOT_ATTEMPTED",
+          "reasonCode": "RPM_PRIMARY_PATH_NOT_FOUND",
+          "pairMatches": false,
+          "validation": "PASS",
+          "evidenceSha": "sha256:93c694156e75b2046b5a5c1eace8007837d186ed44629089d273bc311066e3ff"
+        }
+      },
+      "hashes": {
+        "QBODY": "dcc806b59e4e930d834219c0f1f4138c5d6aa39752d15086f5b095d7b95cec04",
+        "QFULL": "62858d8006f8b5ca912148b12d7352e558ad39efc4a6824a4373bed3cab4bef0"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q07.png",
+          "sha256": "5bf2d6f8f9e1a61169f37f30563bab5362ea22b2055cd63ea38fb5745019f778"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q7-solution.svg",
+          "sha256": "881fdc7f72c035b578ae68022e982e5ff1192aeb7b74855ab25013981bdffa30"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "standardUnitKey",
+        "standardUnit",
+        "standardUnitOrder",
+        "subUnitKey",
+        "subUnit",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_f06383370cb8e359d7106f6307689e4a2f95270a221b13b3181c5c74a623ef30",
+      "judgment": "CORRECT",
+      "primaryMethod": "평행선에서 꺾인 각과 같은 쪽 안쪽각의 합 적용",
+      "decisiveStep": "왼쪽 꺾인 각은 두 기울기각의 합으로, 오른쪽 두 각은 평행선의 보각으로 계산한다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계",
+        "l3": "평행선과 각",
+        "l4": "동위각·엇각"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-05-POSITION_RELATION",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "두 평행선 그림에 서로 다른 표준 각 관계를 적용하지만 반복 분기나 복합 도형 발견은 없다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "EXISTING_EXACT",
+        "currentPair": [
+          "PT_M1_PARALLEL_ANGLE_TRANSFER",
+          "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE"
+        ],
+        "candidatePair": [
+          "PT_M1_PARALLEL_ANGLE_TRANSFER",
+          "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE"
+        ],
+        "crosswalkId": "M1-RPM-177-TRANSFER-BENT-20261113",
+        "reason": "현재 ACTIVE 유형과 템플릿이 결정 단계를 담고 해당 RPM leaf의 정확한 crosswalk에서 선택 가능하다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "pairMatches": true,
+          "validation": "PASS",
+          "evidenceSha": "sha256:542db7ff4f474c3d60da0d3cac20a54654bea62857b473671b311cf200146318"
+        }
+      },
+      "hashes": {
+        "QBODY": "5b3b2260c4f7dad32c52c30edb19083361b6ccb962de154b9a52447e8110e435",
+        "QFULL": "1a18c90102a1fb5299ff28304fae64f4717e6d57c8b22d63c8b7f52389548c4a"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q08.png",
+          "sha256": "36a2aa10f39b97beb798c8814e74a74b54439ff591627b5329b66440aaa8b8a9"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q8-solution-fig.svg",
+          "sha256": "c22629b6b6931707eac72d716ad5099904333dfb0e858b4c79ccc55a08311dd7"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_861b48d7516ff6594389c25839c958789b1216e9253ea830f3d05bc339fdb410",
+      "judgment": "CORRECT",
+      "primaryMethod": "삼각형 작도에서 끝점 선행 조건 판정",
+      "decisiveStep": "점 B의 위치가 정해지기 전에 B의 각을 먼저 옮길 수 없다는 순서 의존성을 확인한다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 작도",
+        "l4": "한 변과 양 끝각 조건"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "하",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 하 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "주어진 데이터의 종류뿐 아니라 작도 시점에 기준점이 존재하는지를 판단해야 한다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "EXISTING_EXACT",
+        "currentPair": [
+          "PT_M1_CONGRUENCE_UNIQUENESS",
+          "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA"
+        ],
+        "candidatePair": [
+          "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+          "TPL_M1_TRIANGLE_CONSTRUCTION_ORDER_ASA_VERTEX_DEPENDENCY"
+        ],
+        "crosswalkId": "M1-RPM-190-CONSTRUCTION-ORDER-20261113",
+        "reason": "현재 ACTIVE 유형과 템플릿이 결정 단계를 담고 해당 RPM leaf의 정확한 crosswalk에서 선택 가능하다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "pairMatches": true,
+          "validation": "PASS",
+          "evidenceSha": "sha256:c78906219ed52ec4e273a388228758c14bf0bd30c4e95f6c2a22aadbc3173aa2"
+        }
+      },
+      "hashes": {
+        "QBODY": "35843c1c821f272380bd89f7e54bdfbf64068d442766d15eeb8a282ecf017fa8",
+        "QFULL": "60fe1033f7573117a008b105a90a40afd6481042c008d50cc2c9a823f8d77b5d"
+      },
+      "imageEvidence": [],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "problemTypeKey",
+        "templateKey",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_27e7c6cd8a47d381ca7b08032c7328487f789748687763b0fb21cabeeb13d3d1",
+      "judgment": "CORRECT",
+      "primaryMethod": "같은 각의 작도에서 반지름과 현 길이 구별",
+      "decisiveStep": "컴퍼스 벌림으로 보존한 두 반지름과 옮긴 현을 구별하여 반지름 OA와 현 AB의 같음을 배제한다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "기본 작도",
+        "l4": "선분·각의 이동"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "작도 과정에서 어떤 길이가 같은 이유로 보존되는지를 구분해야 한다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "EXISTING_EXACT",
+        "currentPair": [
+          "PT_M1_BASIC_CONSTRUCTION",
+          "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY"
+        ],
+        "candidatePair": [
+          "PT_M1_BASIC_CONSTRUCTION",
+          "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY"
+        ],
+        "crosswalkId": "M1-RPM-185-CONSTRUCTION-20261113",
+        "reason": "현재 ACTIVE 유형과 템플릿이 결정 단계를 담고 해당 RPM leaf의 정확한 crosswalk에서 선택 가능하다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "pairMatches": true,
+          "validation": "PASS",
+          "evidenceSha": "sha256:61b9a97d4d38f18da6fa2ce339efb9fbf7c9c9bd7e0feef09d75672897107fe9"
+        }
+      },
+      "hashes": {
+        "QBODY": "9634c5c47ca8c8d14b6780fd69d2a0ef765a5d96dd39463cbcade5b48ed9df4e",
+        "QFULL": "e88bab49a47b5e9fb98f3ca3225820293978c224768e9d963474843397a41683"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q10.png",
+          "sha256": "d7f3f3595abfcf13d2c46be448e5ed32cba9c519cee3200c8e8437890fdc7537"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q10-solution.svg",
+          "sha256": "6c01af365355c2a52f3f90073f0d2cfb1149b705f432502242887a70f2c9fcf4"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "existingSolutionNote": "마지막 호 교점 D를 새로 정한다는 기존 해설의 표기와 그림의 C/D 표기를 후속 내용 검토 대상으로 보고한다. 정답 ③ 및 반지름과 현의 구별은 그림과 독립적으로 확인했다. 원문은 수정하지 않는다.",
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_c45d59721b3b654c77d9df16319f9756ed7fabaa91df4f82d74b43a0651f70b6",
+      "judgment": "CORRECT_WITH_TYPE_HOLD",
+      "primaryMethod": "삼각형의 성립과 유일 결정 조건 판정",
+      "decisiveStep": "세 변 3,6,9는 퇴화하여 삼각형이 없고, 세 각만 주어지면 크기가 결정되지 않음을 구별한다.",
+      "rpmPrimaryPath": null,
+      "rpmProposedParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      },
+      "proposedSubUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "존재 조건과 유일 결정 조건을 따로 확인해야 하며 두 조건은 같은 의미가 아니다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "RPM_LEAF_GAP",
+        "currentPair": [
+          "PT_M1_CONGRUENCE_UNIQUENESS",
+          "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA"
+        ],
+        "candidatePair": [
+          "PT_M1_CONGRUENCE_UNIQUENESS",
+          "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA"
+        ],
+        "crosswalkId": null,
+        "reason": "삼각형의 존재와 여러 SSS/SAS/ASA/AAA 유일조건을 함께 판정한다. 한 조건 leaf로 강제하면 AAA와 퇴화 삼각형의 핵심이 사라진다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "TRUE_META_HOLD",
+          "semanticStatus": "HOLD",
+          "projectionStatus": "NOT_ATTEMPTED",
+          "reasonCode": "RPM_PRIMARY_PATH_NOT_FOUND",
+          "pairMatches": false,
+          "validation": "PASS",
+          "evidenceSha": "sha256:466c859134578901cb5f0fbafcf4bc9999eb2c983d8d1263b8d91e08bd20c158"
+        }
+      },
+      "hashes": {
+        "QBODY": "f0f31eba868af9c7e777a349dc0ba64b2fec9fed43d44074fd357df3da4fbf3c",
+        "QFULL": "081aaf44890d24c90903305b5d08dc4e54745376956fefab9c50ddacbb1e7267"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q11.png",
+          "sha256": "d3f716f3d6a317df95bfa14f551c7d3187c1e97bb1fe6133713751235a4e05c5"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_c930a13551be77474292a0e839ba62b283959c79cb7fcd3103ee69587693393c",
+      "judgment": "CORRECT",
+      "primaryMethod": "주어진 한 변·한 각에 SAS 또는 ASA 조건 완성",
+      "decisiveStep": "추가 변이면 끼인각을 확인하고 추가 각이면 나머지 각을 얻어 주어진 변의 양 끝각을 맞춘다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 합동",
+        "l4": "ASA 합동"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "한 각 추가가 직접 양 끝각을 주지 않아 내각합으로 남은 각을 확인하는 단계가 있다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "EXISTING_EXACT",
+        "currentPair": [
+          "PT_M1_CONGRUENCE_UNIQUENESS",
+          "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION"
+        ],
+        "candidatePair": [
+          "PT_M1_CONGRUENCE_UNIQUENESS",
+          "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION"
+        ],
+        "crosswalkId": "M1-RPM-193-CONSTRUCTION-CRITERION-20261113",
+        "reason": "현재 ACTIVE 유형과 템플릿이 결정 단계를 담고 해당 RPM leaf의 정확한 crosswalk에서 선택 가능하다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "pairMatches": true,
+          "validation": "PASS",
+          "evidenceSha": "sha256:45094b07959aa3326e2637c192fbbbde41e252b5d4eb76a72e1b0cc07da1486f"
+        }
+      },
+      "hashes": {
+        "QBODY": "257db469967de99c0856599567827128a8ec5e4e307a146d365f50d3a7a865ed",
+        "QFULL": "73892ff0729e125d6b0d6ee38da9f2bae194f7e921dc1f33a9fe710c0cf89839"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q12.png",
+          "sha256": "ef545feb5efa043ddfeac54f79368873aacb96daf3b79d053f9b08ec939ff659"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q12-solution.svg",
+          "sha256": "298a4cb2f7464f1155de7f589bc987034444aa133285f40a69250b12fcc3ae76"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_f8e93aa14a3871b440d9480bab6e544ca9ee3b0ca0e4273ab99e160b6419ab17",
+      "judgment": "CORRECT_WITH_TYPE_HOLD",
+      "primaryMethod": "주어진 합동 순서의 대응변·대응각 읽기",
+      "decisiveStep": "ABC와 DEF의 순서에 맞춰 F의 각을 C로 옮기고 내각합 및 BC의 대응변 EF를 사용한다.",
+      "rpmPrimaryPath": null,
+      "rpmProposedParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동"
+      },
+      "proposedSubUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "auxiliaryConceptReview": {
+        "keys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "reason": "주분류 밖의 개념을 결정 단계에 사용한 근거는 primaryMethod와 decisiveStep에 기록했다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "SEQUENTIAL",
+        "reason": "판정에 명시한 주분류와 실제 보조 개념을 순서대로 연결한다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "합동이 이미 주어져 있어 대응요소 읽기와 내각합 공식만 바로 적용한다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "RPM_LEAF_GAP",
+        "currentPair": [
+          null,
+          null
+        ],
+        "candidatePair": [
+          "PT_M1_CONGRUENCE_DATA_TRANSFER",
+          "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE"
+        ],
+        "crosswalkId": null,
+        "reason": "합동은 주어졌으므로 SSS/SAS/ASA를 증명하는 문항으로 분류하지 않는다. 주어진 합동 순서 대응 leaf가 없다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "TRUE_META_HOLD",
+          "semanticStatus": "HOLD",
+          "projectionStatus": "NOT_ATTEMPTED",
+          "reasonCode": "RPM_PRIMARY_PATH_NOT_FOUND",
+          "pairMatches": false,
+          "validation": "PASS",
+          "evidenceSha": "sha256:f7ca571deaa8b0a6334fa9c900ebfa2866ab70fa20bc928a32f6e0b7b94bfc52"
+        }
+      },
+      "hashes": {
+        "QBODY": "beca1a2f51bf0f240b9db91f49e12de42c7001ab066598984ca886cd0f3dcfbd",
+        "QFULL": "a5ec8e49de6a05363c6300dc2bf86b5e3eb56c5a08ec7fa998815f6536bade66"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q13.png",
+          "sha256": "4bdbac9f15d403d40b5a139d15792faab1ffd7fe59658494e9beddc2fccb6051"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q13-solution.svg",
+          "sha256": "8103bf8538a77160b9f60030f352b5766a9f7d0ddfc6a8e78044543e343b92af"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "problemTypeKey",
+        "templateKey",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_092eebb971bbd68efd182b532ae3ff16b772d7ca168a0fa6d1d526ddbe6bfdce",
+      "judgment": "CORRECT_WITH_TYPE_HOLD",
+      "primaryMethod": "정다각형의 같은 변으로 이등변삼각형 구성",
+      "decisiveStep": "정사각형과 정삼각형의 공통 변 길이로 ABE와 CDE를 각각 이등변삼각형으로 만들고 밑각을 구한다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "삼각형·다각형의 각",
+        "l4": "각의 크기 계산"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "auxiliaryConceptReview": {
+        "keys": [
+          "CC_SQUARE_PROPERTIES",
+          "CC_EQUILATERAL_TRIANGLE"
+        ],
+        "reason": "주분류 밖의 개념을 결정 단계에 사용한 근거는 primaryMethod와 decisiveStep에 기록했다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "SEQUENTIAL",
+        "reason": "판정에 명시한 주분류와 실제 보조 개념을 순서대로 연결한다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "두 정다각형의 변 길이를 연결해 이등변삼각형을 알아보는 한 번의 구조 인식이 필요하다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": true
+      },
+      "typeReview": {
+        "status": "BINDING_GAP",
+        "currentPair": [
+          "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+          "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_COMPOSITE_ANGLE_SUM"
+        ],
+        "candidatePair": [
+          "PT_ISOSCELES_TRIANGLE",
+          "TPL_ISOSCELES_BASE_ANGLES"
+        ],
+        "crosswalkId": null,
+        "reason": "현재 COMPOSITE_ANGLE_SUM의 4삼각형 분할은 사용하지 않는다. 기존 ISOSCELES_BASE_ANGLES가 결정 단계에 맞으나 중1 다각형 binding이 없다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 0,
+          "scopeBindingCourses": [],
+          "exactActiveBindingCount": 0,
+          "exactActiveBindingOwners": []
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+          "pairMatches": false,
+          "validation": "PASS",
+          "evidenceSha": "sha256:b1a99f22646db108b375309addcf044f8d4b928461e4b340d0fa1d65c4f20cb0"
+        }
+      },
+      "hashes": {
+        "QBODY": "488b6c7d7a15f918bcfb2db6ea5e3d8f32122736065823166e854b32c39dac5a",
+        "QFULL": "182f5e3583807371fc6aa23b4aa33db565102585057db0487183835b974a107a"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q14.png",
+          "sha256": "9a9f01987f8c9f85e3af3de000abb9f49330e9957957eab01240c3f2c899fa19"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q14-solution.svg",
+          "sha256": "593db192aa6e2da0559e6027c7f655055b46f653a42824d7d53cb4fb8fc55d7e"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "problemTypeKey",
+        "templateKey",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_b8fe17673aa77ffa68f8d38ccaafc41c4c0fa3514e2c088999e936fe920588d1",
+      "judgment": "VISUAL_EVIDENCE_HOLD",
+      "primaryMethod": "삼각형 내각 합에 의한 표시각 합 (기존 해설의 잠정 방법)",
+      "decisiveStep": "원본 그림 위쪽 선분이 끊겨 32도와 23도를 어느 삼각형의 내각으로 옮기는지 확인할 수 없다.",
+      "rpmPrimaryPath": null,
+      "rpmProposedParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "평면도형",
+        "midUnit": "다각형"
+      },
+      "proposedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "시각 근거 부족으로 의미 통합은 확정하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": null,
+        "difficultyConfidence": "UNKNOWN",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevel": "상",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "시각 근거가 복원될 때까지 기존 level을 보존하고 충돌 확정을 보류한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "기존 해설만 가정하면 직접 내각합 계산으로 1단계 후보이나 실제 그림에서 삼각형 연결을 확인하지 못해 난이도 확정을 보류한다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": true,
+        "provisionalBucketFromSolutionOnly": 1
+      },
+      "typeReview": {
+        "status": "VISUAL_EVIDENCE_HOLD",
+        "currentPair": [
+          "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM"
+        ],
+        "candidatePair": [
+          "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM"
+        ],
+        "crosswalkId": null,
+        "reason": "실제 q15.png의 상단 선분과 전체 도형 연결이 잘려 기존 해설의 두 삼각형을 확인할 수 없다. root도 원본 픽셀을 재확인하여 이 UID만 시각 근거 HOLD에 동의했다."
+      },
+      "hashes": {
+        "QBODY": "3cfce563615491c53c7d5e48d4d3ff23ab74041412b331a16ab8c867e76c2fef",
+        "QFULL": "5e522ed29d8918ced7798857450ca2a244e3fc1f35485f4df8b98d604aee880a"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q15.png",
+          "sha256": "aba802dd10510deaf76de2c729601cf95f390ecb9cd986d8ed4b69a110e95ccf"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "HOLD_VISUAL_EVIDENCE_KEEP_CONTENT",
+      "qualityHolds": [
+        "VISUAL_EVIDENCE_HOLD"
+      ],
+      "changedFields": [
+        "problemTypeKey",
+        "templateKey",
+        "curriculum",
+        "curriculumKey",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ],
+      "sourceProjectionNote": "그림 연결관계 미확인으로 source의 난이도·통합·결정단계는 새로 확정하지 않는다. 잘못된 기존 유형만 null로 분리하고 확실한 L1/L2만 보존한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_a97d78f39f38107526b4216596cb9e5061f46c669feeb23a157c71bc95b43880",
+      "judgment": "CORRECT",
+      "primaryMethod": "내각·외각의 비에서 정다각형의 변 수 결정",
+      "decisiveStep": "이웃 내각과 외각의 합 180도로 외각을 구하고 외각의 합 360도로 변 수를 찾는다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "정다각형",
+        "l4": "조건으로 정다각형 찾기"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "비 조건을 각도 등식으로 바꾸고 외각에서 변 수를 역산하는 표준 연결이다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "EXISTING_EXACT",
+        "currentPair": [
+          "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+        ],
+        "candidatePair": [
+          "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+        ],
+        "crosswalkId": "M1-RPM-200-ANGLE-RATIO-IDENTIFICATION-20261113",
+        "reason": "현재 ACTIVE 유형과 템플릿이 결정 단계를 담고 해당 RPM leaf의 정확한 crosswalk에서 선택 가능하다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "pairMatches": true,
+          "validation": "PASS",
+          "evidenceSha": "sha256:871380d27453d29ebff70b669afd151297f4558315a9c63b358b0d29b984bb1a"
+        }
+      },
+      "hashes": {
+        "QBODY": "622094887c4d899b4443c51c31221fb48817ff8801a880994ef02f767215d41c",
+        "QFULL": "bc56bbd4d65787df0dc9cd3fcfddb9f17d44cea042f06225252f328460d9d737"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q16.png",
+          "sha256": "888649f3a29ce14b8cc29a9649babbc96bc25560100afa92a8ff919e597a0ae9"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_05219da57f59d9bcd41a8098f3879fd7989080775190e72ae73e8d3dc4fdd34a",
+      "judgment": "CORRECT_WITH_TYPE_HOLD",
+      "primaryMethod": "평행선으로 옮긴 꼭지각에 이등변삼각형 성질 적용",
+      "decisiveStep": "ABC의 외각을 평행선의 엇각으로 ADE의 꼭지각에 옮긴 뒤 같은 두 변의 밑각을 구한다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "삼각형·다각형의 각",
+        "l4": "각의 크기 계산"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "auxiliaryConceptReview": {
+        "keys": [
+          "CC_PARALLEL_LINE_ANGLES"
+        ],
+        "reason": "주분류 밖의 개념을 결정 단계에 사용한 근거는 primaryMethod와 decisiveStep에 기록했다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "SEQUENTIAL",
+        "reason": "판정에 명시한 주분류와 실제 보조 개념을 순서대로 연결한다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "상",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 상 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "내각합·평각·평행선·같은 밑각을 표준 순서로 연결하며 새 보조선을 만들지는 않는다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": true
+      },
+      "typeReview": {
+        "status": "BINDING_GAP",
+        "currentPair": [
+          "PT_ISOSCELES_TRIANGLE",
+          "TPL_ISOSCELES_BASE_ANGLES"
+        ],
+        "candidatePair": [
+          "PT_ISOSCELES_TRIANGLE",
+          "TPL_ISOSCELES_BASE_ANGLES"
+        ],
+        "crosswalkId": null,
+        "reason": "중2 단원으로 보내지 않고 2022 중1 삼각형 각 계산에 둔다. 이등변삼각형의 밑각 type 재사용 후보는 중1 binding이 없다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 0,
+          "scopeBindingCourses": [],
+          "exactActiveBindingCount": 0,
+          "exactActiveBindingOwners": []
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+          "pairMatches": false,
+          "validation": "PASS",
+          "evidenceSha": "sha256:eb272a0a56d4c139b582a15bef4dcbaf8efa85eae3dc64dc26b8e7710db03b93"
+        }
+      },
+      "hashes": {
+        "QBODY": "8ff361d1b3bfeebeead598786f107081729ea156538fd27789e331d76206aedb",
+        "QFULL": "5fef82b36d590987445e8e330169b345037ce0f0b77be355cd14aca7693048bd"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q17.png",
+          "sha256": "3aa313b1af9a2df3150a6ce0d6f23b02715af6de87c891f19c4693c5876cafe1"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q17-solution.svg",
+          "sha256": "7df3e0cdd9a862e9438cc878587dbebdf1da58a2204c12d076ec24b4ae0c444f"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "standardUnitKey",
+        "standardUnit",
+        "standardUnitOrder",
+        "subUnitKey",
+        "subUnit",
+        "problemTypeKey",
+        "templateKey",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_995b685703f8cfe75a5bc757dc5238bc22f80338ac7cf4bf8b8d39550020111b",
+      "judgment": "CORRECT",
+      "primaryMethod": "대각선 총개수로 변 수를 역산하고 내각합 계산",
+      "decisiveStep": "n(n-3)/2=20을 만족하는 자연수 n을 찾고 (n-2)×180을 적용한다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "삼각형·다각형의 각",
+        "l4": "변·대각선 개수"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "주어진 대각선 수에서 변 수를 역으로 결정하는 단계가 있어 단순 정방향 공식 대입과 구별한다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "EXISTING_EXACT",
+        "currentPair": [
+          "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA"
+        ],
+        "candidatePair": [
+          "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA"
+        ],
+        "crosswalkId": "M1-RPM-198-DIAGONAL-FORMULA-20261113",
+        "reason": "현재 ACTIVE 유형과 템플릿이 결정 단계를 담고 해당 RPM leaf의 정확한 crosswalk에서 선택 가능하다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "pairMatches": true,
+          "validation": "PASS",
+          "evidenceSha": "sha256:06cd143e52d13ac2a1bcb1ed4f2d56077982a918a519909572db594de88a3441"
+        }
+      },
+      "hashes": {
+        "QBODY": "5284b8b9baa17b7cf96ed1a04bb24b689d9b979bc656c7a26f60085e6214d117",
+        "QFULL": "ac7fb0c83844ea461cb7c71d47654bf36830ed6d7322d1e379a9d24421362bf6"
+      },
+      "imageEvidence": [],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_042036eea262c6da17d921050700e22a258401d7ecc79ee1e0cf83a0c1aceb5f",
+      "judgment": "CORRECT_WITH_TYPE_HOLD",
+      "primaryMethod": "두 끝점의 순서 중복을 제거하여 선분 수 계산",
+      "decisiveStep": "12개 점에서 두 끝점을 골라 생기는 선분을 순서를 바꾼 중복으로 두 번 세지 않는다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "점·선·면",
+        "l4": "직선·반직선·선분"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-05-BASIC_FIGURE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "원 위 점의 모든 쌍을 세는 12×11/2의 직접 적용이며 호·중심각·넓이 계산은 없다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "CROSSWALK_GAP",
+        "currentPair": [
+          null,
+          null
+        ],
+        "candidatePair": [
+          "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
+          "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_SEGMENT_COUNT"
+        ],
+        "crosswalkId": null,
+        "reason": "원은 점의 배치일 뿐이다. 모든 선분은 변과 대각선을 포함하므로 원·부채꼴 길이/넓이 또는 대각선만 세는 유형으로 넣지 않는다. SEGMENT_COUNT 기존 template는 정확하지만 해당 leaf crosswalk에 없다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+          "pairMatches": false,
+          "validation": "PASS",
+          "evidenceSha": "sha256:717aeb41ab3bb23feacc3045e91f8f107c2f664f59a243b184292fad5fffc48a"
+        }
+      },
+      "hashes": {
+        "QBODY": "85c653ac0374908926bb541c56f90f78fc4cdee17143e5cf3cf70aee5ad1bbeb",
+        "QFULL": "668032a683ac53bf02bf2d24d43859b6707b9e16761e8b493aa55b49d8968a32"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q19.png",
+          "sha256": "8c911e8faa5a311a9a7713e170b8421c9ecbe871ab2805a1334d962694ff8e06"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q19-solution.svg",
+          "sha256": "6e42cf4d7102117ecf31e5a8f4390a5bb9bb48e8b5e6f405409da77aa497195b"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "standardUnitKey",
+        "standardUnit",
+        "standardUnitOrder",
+        "subUnitKey",
+        "subUnit",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "problemTypeKey",
+        "templateKey",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e1af04a3532c02e779c09341dcac2648cd3f3234afcebdd4a59011da9cb486f0",
+      "judgment": "CORRECT_WITH_TYPE_HOLD",
+      "primaryMethod": "정오각형의 외각 회전과 평행선의 방향 연결",
+      "decisiveStep": "한 외각 72도를 두 번 누적하고 아래쪽 기울기 19도와 결합하여 위쪽 평행선의 각을 구한다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "다각형의 내각과 외각",
+        "l4": "정다각형의 각"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "auxiliaryConceptReview": {
+        "keys": [
+          "CC_PARALLEL_LINE_ANGLES"
+        ],
+        "reason": "주분류 밖의 개념을 결정 단계에 사용한 근거는 primaryMethod와 decisiveStep에 기록했다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "SEQUENTIAL",
+        "reason": "판정에 명시한 주분류와 실제 보조 개념을 순서대로 연결한다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "상",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 상 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "다각형의 꼭짓점을 따라 변 방향이 바뀌는 것을 추적해야 하며 각 공식 한 번의 대입으로 끝나지 않는다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "NATIVE_TYPE_GAP",
+        "currentPair": [
+          "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+        ],
+        "candidatePair": [
+          "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+        ],
+        "crosswalkId": null,
+        "reason": "현재 REGULAR_POLYGON_ANGLE은 외각으로 변 수를 역산한다. 이 문항은 이미 정오각형이며 두 변 방향의 72도 회전을 추적한다. exact 방향 누적 template가 필요하다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+          "pairMatches": false,
+          "validation": "PASS",
+          "evidenceSha": "sha256:d7cf99346e4b19061ee5ad17242636ad8af0e15034048f5a8053b90fb755c845"
+        }
+      },
+      "hashes": {
+        "QBODY": "f5e718529a85f7b484beddba815a2193b046b2a82fd7dc9de702f117e1fdc648",
+        "QFULL": "e5c9bc3f69ed0a184f8c18ac6ac2fc243d665e42447411be76616b30a23315ca"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q20.png",
+          "sha256": "3b59b0e451925fd361c602bd6c13ce6a4b6f422d47a5929361e26890001e369a"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q20-solution.svg",
+          "sha256": "82d758117eaa1cd583256b6a305107126e05d26133cfde97d587b4fcedab1171"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "problemTypeKey",
+        "templateKey",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_444d0c769a67b4997f9e0388815dbdfccf0b2d572405e59c91ccbdf30386d01f",
+      "judgment": "CORRECT",
+      "primaryMethod": "두 삼각형의 내각합을 맞꼭지각으로 연결",
+      "decisiveStep": "왼쪽 삼각형의 남은 각을 맞꼭지각으로 오른쪽 교점각에 옮긴 뒤 내각의 합을 적용한다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "삼각형·다각형의 각",
+        "l4": "각의 크기 계산"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "주어진 두 삼각형에 내각합과 맞꼭지각 정의를 순서대로 직접 적용한다. 서술형이라는 이유로 단계를 높이지 않는다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": true
+      },
+      "typeReview": {
+        "status": "CROSSWALK_GAP",
+        "currentPair": [
+          "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER"
+        ],
+        "candidatePair": [
+          "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER"
+        ],
+        "crosswalkId": null,
+        "reason": "기존 VERTICAL_ANGLE_TRANSFER는 실제 해설과 일치하므로 보존한다. 해당 각의 크기 계산 leaf의 후보 목록에 이 exact template가 없어 crosswalk 보완이 필요하다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+          "pairMatches": false,
+          "validation": "PASS",
+          "evidenceSha": "sha256:97d9a7ccbb97d0681b5925ac3f6cf0437e5f5557877d17d4df9e63e78c779d56"
+        }
+      },
+      "hashes": {
+        "QBODY": "d3a15a271d21fd47e80faaebd0e75fc397cba275becc61af6c28fb618a3c102d",
+        "QFULL": "b32ccc07ffd984968061a91531ffde72e961bf704efc4f7fbfab32010b21faeb"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q21.png",
+          "sha256": "17a52e3d1ce319ddfe26bf6506623798ab5612de79a3a31c61553ea00702422f"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q21-solution.svg",
+          "sha256": "2e5c0509668deafa5368ec4339e9a0ea464d8d76e0fc21130f6e32b51a666ff4"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_89f96ceb1ecd0267635574160c0fa3e720188999e51183f1372b1866236a68de",
+      "judgment": "CORRECT_WITH_TYPE_HOLD",
+      "primaryMethod": "두 정삼각형의 60도와 같은 변으로 SAS 합동 구성",
+      "decisiveStep": "BAE와 DAC의 끼인각을 공통각에 60도를 더한 같은 각으로 나타내어 ABE와 ADC의 SAS를 증명한다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 합동",
+        "l4": "SAS 합동"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "auxiliaryConceptReview": {
+        "keys": [
+          "CC_EQUILATERAL_TRIANGLE"
+        ],
+        "reason": "주분류 밖의 개념을 결정 단계에 사용한 근거는 primaryMethod와 decisiveStep에 기록했다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "SEQUENTIAL",
+        "reason": "판정에 명시한 주분류와 실제 보조 개념을 순서대로 연결한다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "상",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 상 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "그려진 정삼각형과 다른 두 보조 삼각형의 대응을 찾아 공통각을 이용해 끼인각의 같음을 구성한다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "NATIVE_TYPE_GAP",
+        "currentPair": [
+          "PT_M1_CONGRUENCE_UNIQUENESS",
+          "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION"
+        ],
+        "candidatePair": [
+          "PT_M1_CONGRUENCE_DATA_TRANSFER",
+          "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER"
+        ],
+        "crosswalkId": null,
+        "reason": "기존 source의 CONGRUENCE_CRITERION_SELECTION은 추가 조건 보기 선택이다. 실제 문항은 정삼각형을 이용한 보조 삼각형 SAS 증명이며 EQUILATERAL_SAS_TRANSFER 후보도 증명 뒤 각 전달 단계가 핵심으로 정확히 같지 않다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+          "pairMatches": false,
+          "validation": "PASS",
+          "evidenceSha": "sha256:bc28d53c7fb497823d6e531a33580cf853872dff9209f07ce00c28fbe8bc1bb7"
+        }
+      },
+      "hashes": {
+        "QBODY": "01c0746a1af1d273a95c22478e69dd680dbb8052c90d463f90b78f8fbe2407ae",
+        "QFULL": "5021baa72c64425de200deeeee4689484e744faf51e6278f8c59cc5a1da37345"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q22.png",
+          "sha256": "c9f1cca6d5b67f9a7e64f6e0170f27da267af838c0eb41eb1d8cafbf58d96379"
+        },
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q22-solution.svg",
+          "sha256": "b0cd2fcd2bdb93cc9b55442e1d21623d6c764b99dce923e6f097c878268e8a99"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "problemTypeKey",
+        "templateKey",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_198bfdb227e82b5d23b5b11fd13c1eb6f8f39baf02d956717da3f8517f5935e8",
+      "judgment": "CORRECT",
+      "primaryMethod": "외각으로 변 수를 구하고 한 꼭짓점의 분할 수 적용",
+      "decisiveStep": "외각 15도로 n을 정한 뒤 한 꼭짓점 대각선 n-3과 삼각형 n-2를 그대로 적용한다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "삼각형·다각형의 각",
+        "l4": "변·대각선 개수"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "표준 공식 세 개를 순서대로 대입하는 문제로 계산 항목 수나 서술 분량은 상승 근거가 아니다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": true
+      },
+      "typeReview": {
+        "status": "EXISTING_EXACT",
+        "currentPair": [
+          "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA"
+        ],
+        "candidatePair": [
+          "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS"
+        ],
+        "crosswalkId": "M1-RPM-198-PARTITION-COUNT-20261113",
+        "reason": "현재 ACTIVE 유형과 템플릿이 결정 단계를 담고 해당 RPM leaf의 정확한 crosswalk에서 선택 가능하다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "pairMatches": true,
+          "validation": "PASS",
+          "evidenceSha": "sha256:ae70f1c7f66a5af9764395f44306291daf310f7506f0c8a0037300ff4825307a"
+        }
+      },
+      "hashes": {
+        "QBODY": "35cecc5e20c8221ca7e976e002b3101463ad1348126d4dec37765fedf21567e0",
+        "QFULL": "1ae2a50f4e1bbd83181c3a14d58371eaf7639030d9fbb5511cf8a842c7d34be1"
+      },
+      "imageEvidence": [],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "templateKey",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_e7c3e3462fda1b6de3299f69d9d8345c6c8288d1f210125976dda42b65c80de0",
+      "judgment": "CORRECT_WITH_TYPE_HOLD",
+      "primaryMethod": "분할 도형의 변 수에서 내부 대각선 중복 제거",
+      "decisiveStep": "3+4+5에 두 대각선이 각각 두 번 들어 있음을 빼서 원래 변 수를 찾은 뒤 내각합과 외각합을 계산한다.",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "삼각형·다각형의 각",
+        "l4": "변·대각선 개수"
+      },
+      "rpmProposedParent": null,
+      "proposedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "auxiliaryConceptReview": {
+        "keys": [],
+        "reason": "주분류 안의 정의·공식을 적용하며 별도 독립 보조 개념의 근거가 없다."
+      },
+      "conditionReview": {
+        "keys": [],
+        "reason": "도형의 수치·표시 관계는 given으로 분류하고 독립 선택 제한을 추정하여 키로 만들지 않는다."
+      },
+      "integrationReview": {
+        "value": "NONE",
+        "reason": "같은 주분류의 공식 연속 적용·보기 점검이므로 다른 개념의 통합으로 분류하지 않는다."
+      },
+      "difficultyReview": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelDecision": "KEEP",
+        "legacyLevelReason": "기존 중 level은 독립 3단계 척도로 확인하고 유지한다. 구체적 요구는 난이도 근거에 기록했다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "부분 도형의 변을 더하면 내부 대각선이 두 번씩 세어진다는 구조를 한 번 해석해야 한다.",
+        "priorBucket": null,
+        "delta": null,
+        "recheckRequired": false
+      },
+      "typeReview": {
+        "status": "NATIVE_TYPE_GAP",
+        "currentPair": [
+          "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA"
+        ],
+        "candidatePair": [
+          "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS"
+        ],
+        "crosswalkId": null,
+        "reason": "기존 DIAGONAL_FORMULA 및 PARTITION_TO_DIAGONALS는 n(n-3)/2 또는 n-3,n-2 공식이다. 서로 다른 삼각형·사각형·오각형 분할의 내부변 중복 제거는 별도 결정 단계여서 정확 template 보완이 필요하다.",
+        "candidateValidity": {
+          "problemTypeActive": true,
+          "templateActive": true,
+          "templateParentMatches": true,
+          "scopeBindingCount": 1,
+          "scopeBindingCourses": [
+            "중1 수학"
+          ],
+          "exactActiveBindingCount": 1,
+          "exactActiveBindingOwners": [
+            "MIDDLE1"
+          ]
+        },
+        "officialResolver": {
+          "disposition": "RPM_SEMANTIC_FINAL",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+          "pairMatches": false,
+          "validation": "PASS",
+          "evidenceSha": "sha256:7d03980afff6d8e785590dea19d10d721656e22db730a948639fbddc55565692"
+        }
+      },
+      "hashes": {
+        "QBODY": "4ac697c1aa0ec9f37fb592af53186a5cd897f8ecf433832f0271bd6a637f689d",
+        "QFULL": "9115ed9e5ecc190f76b9292ed499dd1732217760617ff637c62599be04516635"
+      },
+      "imageEvidence": [
+        {
+          "path": "archive/assets/images/25_팔마중_2학기_중간_중1_기출/q24-solution.svg",
+          "sha256": "79786dd8646c30fd7c3d727e71127d317bc1d65e110c50da317fd85bdbf73ba4"
+        }
+      ],
+      "sourceContentPreserved": true,
+      "existingAnswerSolutionDecision": "KEEP",
+      "changedFields": [
+        "problemTypeKey",
+        "templateKey",
+        "curriculum",
+        "curriculumKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4"
+      ]
+    }
+  ],
+  "rootAdjudication": {
+    "visualHoldOrdinals": [
+      15
+    ],
+    "solutionLabelDebtOrdinals": [
+      10
+    ],
+    "studentContentChanged": false,
+    "mathFinalQaPerformed": false,
+    "fourSlotQ15Scope": "Explicit existing text descriptors only; visual condition completeness remains unverified",
+    "courseBindingGap": "PT_M1_POLYHEDRON_COMPONENT_COUNT ACTIVE 2022 binding uses 中1 수학 instead of source 중1 수학; shared binding untouched",
+    "preliminaryRawNote": "Immutable r1 proof predates correction of the binding-gap explanation and author-only import eligibility flags. Final sampled proof will supersede it before closeout."
+  }
+}
