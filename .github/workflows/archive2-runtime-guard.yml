@@ -1,186 +1,319 @@
-name: Archive2 Runtime Guard
+name: Shinheung Registered Main Chrome
 
 on:
   push:
-    branches: [main]
-    paths:
-      - 'AGENTS.md'
-      - 'archive/**'
-      - 'tests/archive2-*'
-      - 'tests/archive-solution-loading.test.cjs'
-      - 'tests/archive-render-feedback.test.cjs'
-      - 'tests/archive-font-invalidation.test.cjs'
-      - 'tests/fixtures/archive2-*'
-      - 'tools/check-archive2-runtime.cjs'
-      - 'tools/check-archive2-finder-filter-browser.cjs'
-      - 'tools/check-archive-rpm-middle-browser.cjs'
-      - 'tools/check-archive-content-browser.mjs'
-      - 'tools/ci/archive-ci-scope.mjs'
-      - 'tools/ci/run-scoped-tests.mjs'
-      - 'tests/archive-ci-scope.test.mjs'
-      - 'tests/archive-content-scope.test.mjs'
-      - 'tests/archive-original-exam-access.browser.cjs'
-      - 'tools/run-tests.js'
-      - 'docs/rules/01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md'
-      - '.github/workflows/archive2-runtime-guard.yml'
-  pull_request:
-    branches: [main]
-    paths:
-      - 'AGENTS.md'
-      - 'archive/**'
-      - 'tests/archive2-*'
-      - 'tests/archive-solution-loading.test.cjs'
-      - 'tests/archive-render-feedback.test.cjs'
-      - 'tests/archive-font-invalidation.test.cjs'
-      - 'tests/fixtures/archive2-*'
-      - 'tools/check-archive2-runtime.cjs'
-      - 'tools/check-archive2-finder-filter-browser.cjs'
-      - 'tools/check-archive-rpm-middle-browser.cjs'
-      - 'tools/check-archive-content-browser.mjs'
-      - 'tools/ci/archive-ci-scope.mjs'
-      - 'tools/ci/run-scoped-tests.mjs'
-      - 'tests/archive-ci-scope.test.mjs'
-      - 'tests/archive-content-scope.test.mjs'
-      - 'tests/archive-original-exam-access.browser.cjs'
-      - 'tools/run-tests.js'
-      - 'docs/rules/01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md'
-      - '.github/workflows/archive2-runtime-guard.yml'
+    branches: [verify/m1-shinheung-registered-chrome-20261113-bf]
   workflow_dispatch:
-    inputs:
-      solution_baseline_sha:
-        description: 'Optional exact baseline override; otherwise use the pinned correctness-only reference in tests/archive2-output-comparison-references.json.'
-        required: false
-        default: ''
-        type: string
 
 permissions:
   contents: read
 
-jobs:
-  runtime-contract:
-    name: Archive2 runtime contract
-    runs-on: ubuntu-latest
-    # Full history checkout plus the runtime suite consumed the former 5-minute
-    # job budget before Chrome could start. Keep every check and allow both stages.
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - name: Classify the fixed snapshot impact
-        id: scope
-        run: node tools/ci/archive-ci-scope.mjs --output "$RUNNER_TEMP/archive-ci-scope.json"
-      - name: Record unchanged shared runtime scope
-        if: steps.scope.outputs.runtime_contract != 'true'
-        env:
-          SCOPE_MODE: ${{ steps.scope.outputs.mode }}
-        run: |
-          printf 'Shared runtime regression: NOT_APPLICABLE for %s; common output/runtime code and its checkers are unchanged.\n' "$SCOPE_MODE" >> "$GITHUB_STEP_SUMMARY"
-          echo 'CI executes the selected source, Meta/Consumer, or registration fixtures. Existing Shared Meta Chrome checks retain their own policies.' >> "$GITHUB_STEP_SUMMARY"
-      - name: Verify original routes, response budgets, and storage failures
-        if: steps.scope.outputs.runtime_contract == 'true'
-        env:
-          SVG_ACCESSIBILITY_BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
-        run: node tools/check-archive2-runtime.cjs
-      - uses: browser-actions/setup-chrome@v1
-        if: steps.scope.outputs.runtime_chrome == 'true'
-        id: chrome
-        with:
-          chrome-version: stable
-      - name: Verify finder and current middle RPM selection in actual Chrome
-        if: steps.scope.outputs.runtime_chrome == 'true'
-        env:
-          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
-          RPM_MIDDLE_BROWSER_REPORT_DIR: ${{ runner.temp }}/archive-rpm-middle-browser
-        run: node tools/check-archive2-finder-filter-browser.cjs
-      - name: Upload middle RPM browser evidence
-        if: always() && steps.scope.outputs.runtime_chrome == 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: archive-rpm-middle-browser-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/archive-rpm-middle-browser/
-          if-no-files-found: warn
-          retention-days: 14
+concurrency:
+  group: shinheung-registered-chrome-${{ github.ref }}
+  cancel-in-progress: false
 
-  solution-loading:
-    name: Archive2 50-question solution Chrome
+env:
+  EXPECTED_MAIN_SHA: '440f412bd221e3d62df16130984a2626a3ee6441'
+  EXPECTED_SOURCE: 'original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js'
+  EXPECTED_SOURCE_RAW_SHA256: '2f1ab79eba940498b5c575ad1509a038b3f2dabd390823177635d83937fe4b56'
+  EXPECTED_SOURCE_BLOB_SHA1: 'f1a73e96053d17564b42672415ca6bfc5b73cb2c'
+  EXPECTED_REQUEST_ID: 'm1-shinheung-meta-closeout-20261113-bf-r1'
+  # Official v2 receipt uses the stable JSON digest, not the request file raw digest.
+  EXPECTED_REQUEST_DIGEST: 'e8368cd95a8e5820ec4fa312bbeb6adc1f0d10f32564f52f7a84e4816a7671c1'
+  EXPECTED_RECEIPT_SHA256: 'bd627b6fe34082ed8ca2a90e49955e75ffb7ee2cfc6e3e4411ae4041d4d2d555'
+  EXPECTED_RECEIPT_BLOB_SHA1: '6fe74ab3e215a064dbbbfc8d98555f12e075335d'
+  EXPECTED_DRIVER_SHA256: '63cd368aa8f3f6a5693228c31bb159c0bdd6cad523b32be5423fc49ee907e4f5'
+  EXPECTED_INPUT_SHA256: '948b05e71dab0730fa175355d9cf3773852c7f90260089597ce840a8e48ff0da'
+
+jobs:
+  registered-main-readonly:
+    if: ${{ github.ref == 'refs/heads/verify/m1-shinheung-registered-chrome-20261113-bf' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
+      - name: Read the verification-only commit
+        uses: actions/checkout@v4
         with:
-          # Test the same immutable PR merge snapshot as CI and runtime-contract.
           ref: ${{ github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Preserve and bind the three-file verification package
+        id: package
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto');
+          const assert = require('node:assert/strict'), { execFileSync } = require('node:child_process');
+          const git = args => execFileSync('git', args, { encoding: 'utf8' }).trim();
+          const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+          const expected = process.env.EXPECTED_MAIN_SHA;
+          assert.match(expected, /^[a-f0-9]{40}$/);
+          assert.equal(process.env.GITHUB_REF, 'refs/heads/verify/m1-shinheung-registered-chrome-20261113-bf');
+          assert.deepEqual(git(['show', '-s', '--format=%P', 'HEAD']).split(' '), [expected],
+            'verification commit must have the exact registered main as its sole parent');
+          const workflow = '.github/workflows/archive2-runtime-guard.yml';
+          const driver = 'tools/verification/check-shinheung-registered-browser.cjs';
+          const input = 'tools/verification/shinheung-effective-parent-report-input.json';
+          const changed = execFileSync('git', ['diff', '--name-only', '-z', expected, 'HEAD'], { encoding: 'utf8' })
+            .split('\0').filter(Boolean).sort();
+          assert.deepEqual(changed, [workflow, driver, input].sort(), 'exactly the three verification files may differ');
+          assert.equal(hash(fs.readFileSync(driver)), process.env.EXPECTED_DRIVER_SHA256);
+          assert.equal(hash(fs.readFileSync(input)), process.env.EXPECTED_INPUT_SHA256);
+          const task = path.join(process.env.RUNNER_TEMP, 'shinheung-registered-chrome');
+          const artifacts = path.join(task, 'artifacts');
+          fs.mkdirSync(artifacts, { recursive: true });
+          fs.copyFileSync(driver, path.join(task, 'driver.cjs'));
+          fs.copyFileSync(input, path.join(task, 'input.json'));
+          fs.writeFileSync(path.join(artifacts, 'verification-package.json'), JSON.stringify({
+            status: 'BYTE_BOUND_VERIFICATION_PACKAGE', verifierCommit: git(['rev-parse', 'HEAD']),
+            expectedRegisteredMain: expected, branch: process.env.GITHUB_REF,
+            files: changed.map(file => ({ path: file, sha256: hash(fs.readFileSync(file)) })),
+            productionChanges: false, automaticRegistration: false
+          }, null, 2) + '\n');
+          fs.appendFileSync(process.env.GITHUB_ENV, 'TASK_TEMP=' + task + '\nAUDIT_DIR=' + artifacts + '\n');
+          NODE
+
+      - name: Check out the immutable registered main snapshot
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.EXPECTED_MAIN_SHA }}
           fetch-depth: 0
           persist-credentials: false
-      - uses: actions/setup-node@v4
+          clean: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 22
-      - name: Classify the fixed snapshot impact
-        id: scope
-        run: node tools/ci/archive-ci-scope.mjs --output "$RUNNER_TEMP/archive-ci-scope.json"
-      - name: Verify image deadlines and render feedback regressions
-        if: steps.scope.outputs.solution_browser == 'true'
-        run: >-
-          node --test
-          tests/archive-solution-loading.test.cjs
-          tests/archive-render-feedback.test.cjs
-          tests/archive-font-invalidation.test.cjs
-          tests/archive-inline-image-readiness.test.js
-          tests/archive-question-image-map-regression.test.js
-          tests/archive2-output-strict-gate.test.cjs
-      - uses: browser-actions/setup-chrome@v1
-        if: steps.scope.outputs.solution_browser == 'true' || steps.scope.outputs.mode == 'archive-content' || steps.scope.outputs.scoped_browser_changed == 'true'
+          node-version: '22'
+
+      - name: Require the actual main receipt and unchanged registered inputs
+        id: preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto');
+          const assert = require('node:assert/strict'), { execFileSync } = require('node:child_process');
+          const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+          const git = args => execFileSync('git', args, { encoding: 'utf8' }).trim();
+          assert.equal(git(['rev-parse', 'HEAD']), process.env.EXPECTED_MAIN_SHA);
+          execFileSync('git', ['merge-base', '--is-ancestor', process.env.EXPECTED_MAIN_SHA, 'refs/remotes/origin/main']);
+          execFileSync('git', ['diff', '--exit-code']);
+          execFileSync('git', ['diff', '--cached', '--exit-code']);
+          const statusArgs = ['status', '--porcelain=v1', '--untracked-files=all', '--ignored=matching'];
+          assert.equal(git(statusArgs), '', 'registered checkout must be clean, including ignored files');
+          const source = 'archive/exams/' + process.env.EXPECTED_SOURCE;
+          assert.equal(hash(fs.readFileSync(source)), process.env.EXPECTED_SOURCE_RAW_SHA256);
+          assert.equal(git(['rev-parse', 'HEAD:' + source]), process.env.EXPECTED_SOURCE_BLOB_SHA1);
+          const input = JSON.parse(fs.readFileSync(path.join(process.env.TASK_TEMP, 'input.json')));
+          assert.equal(input.rows.length, 24);
+          const uids = input.rows.map(row => row.questionUid).sort();
+          assert.equal(new Set(uids).size, 24);
+          const receiptPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/' + process.env.EXPECTED_REQUEST_ID + '.json';
+          const receiptBytes = fs.readFileSync(receiptPath);
+          assert.equal(hash(receiptBytes), process.env.EXPECTED_RECEIPT_SHA256);
+          assert.equal(git(['rev-parse', 'HEAD:' + receiptPath]), process.env.EXPECTED_RECEIPT_BLOB_SHA1);
+          const receipt = JSON.parse(receiptBytes);
+          assert.equal(receipt.schemaVersion, 'archive-reviewed-exam-meta-registration-v2');
+          assert.equal(receipt.requestId, process.env.EXPECTED_REQUEST_ID);
+          assert.equal(receipt.requestSha256, process.env.EXPECTED_REQUEST_DIGEST);
+          assert.equal(receipt.metadataRegistrationStatus, 'REGISTERED');
+          assert.equal(receipt.sourceArchiveFile, process.env.EXPECTED_SOURCE);
+          assert.equal(receipt.sourceRawSha256, process.env.EXPECTED_SOURCE_RAW_SHA256);
+          assert.equal(receipt.sourceBlobSha1, process.env.EXPECTED_SOURCE_BLOB_SHA1);
+          assert.equal(receipt.approval.type, 'FINAL_QA');
+          assert.equal(receipt.approval.metadataReviewed, true);
+          assert.equal(receipt.totalQuestions, 24);
+          assert.deepEqual(receipt.registryChanges, []);
+          for (const field of ['appliedRecords', 'appliedIdentityRecords', 'runtimeRecords']) {
+            assert.equal(receipt[field].length, 24, field);
+            assert.deepEqual(receipt[field].map(row => row.questionUid).sort(), uids, field + ' exact UID set');
+            assert.deepEqual(receipt[field].map(row => Number(row.sourceOrdinal)).sort((a, b) => a - b),
+              Array.from({ length: 24 }, (_, i) => i + 1), field + ' exact ordinal set');
+          }
+          assert(!fs.existsSync('.archive-meta-register/inbox/' + process.env.EXPECTED_REQUEST_ID + '.json'),
+            'the actual writer must have consumed this request');
+          const approvalRefs = receipt.approval.evidenceRefs.map(ref => {
+            const full = path.resolve(ref.path);
+            assert(full.startsWith(process.cwd() + path.sep), 'approval evidence must remain in this checkout');
+            assert.equal(hash(fs.readFileSync(full)), ref.sha256, 'approval evidence raw hash');
+            return { path: ref.path, sha256: ref.sha256 };
+          });
+          const protectedPaths = [source, receiptPath, 'tests/archive-original-exam-access.browser.cjs',
+            'tests/meta-foundation-derivative-runtime.test.js', 'tests/meta-foundation-middle-geometry-runtime.test.js'];
+          const snapshot = {
+            status: 'REGISTERED_MAIN_PREFLIGHT_PASS', mainSha: git(['rev-parse', 'HEAD']),
+            observedOriginMain: git(['rev-parse', 'refs/remotes/origin/main']),
+            source, sourceRawSha256: process.env.EXPECTED_SOURCE_RAW_SHA256,
+            receiptPath, receiptRawSha256: hash(receiptBytes), requestDigest: receipt.requestSha256,
+            totalQuestions: 24, registryChanges: 0, approvalEvidence: approvalRefs,
+            protectedFiles: protectedPaths.map(file => ({ path: file, sha256: hash(fs.readFileSync(file)) })),
+            indexSha256: hash(execFileSync('git', ['ls-files', '-s', '-z'], { maxBuffer: 64 * 1024 * 1024 })),
+            statusArgs, gitStatus: '', capturedAtUtc: new Date().toISOString()
+          };
+          fs.writeFileSync(path.join(process.env.AUDIT_DIR, 'registered-main-preflight.json'), JSON.stringify(snapshot, null, 2) + '\n');
+          NODE
+
+      - name: Recheck the two pre-registration stale-runtime tests once
+        id: native_tests
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
+        shell: bash
+        run: |
+          set -uo pipefail
+          result=0
+          for file in tests/meta-foundation-derivative-runtime.test.js tests/meta-foundation-middle-geometry-runtime.test.js; do
+            name="$(basename "$file" .js)"
+            if node "$file" > "$AUDIT_DIR/$name.log" 2>&1; then
+              printf '%s PASS\n' "$file"
+            else
+              result=1
+              printf '%s FAIL; see uploaded log\n' "$file"
+            fi
+          done
+          exit "$result"
+
+      - name: Set up official Google Chrome
         id: chrome
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
+        uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: stable
-      - name: Install the pinned browser driver outside the checkout
-        if: steps.scope.outputs.solution_browser == 'true' || steps.scope.outputs.mode == 'archive-content' || steps.scope.outputs.scoped_browser_changed == 'true'
+
+      - name: Install the fixed browser driver outside the checkout
+        id: install
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' && steps.chrome.outcome == 'success' }}
+        shell: bash
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
-        run: npm install --prefix "$RUNNER_TEMP/archive-solution-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
-      - name: Compare 50 real solutions and verify asset failures in actual Chrome
-        if: steps.scope.outputs.solution_browser == 'true'
-        timeout-minutes: 8
-        # The test's checked-in reference applies only the shared image-fit fix
-        # to the old engine. Never accept the old overflow as output parity,
-        # and never widen the existing one-pixel geometry tolerance.
-        env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
-          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
-          ARCHIVE_SOLUTION_BASE_SHA: ${{ inputs.solution_baseline_sha }}
-          ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
-          ARCHIVE_SOLUTION_REPEATS: '2'
-        run: node tests/archive2-solution-loading-browser.cjs
-      - name: Load and print the changed original sources in actual Chrome
-        if: steps.scope.outputs.mode == 'archive-content'
-        env:
-          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
-          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
-          ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
-        run: node tools/check-archive-content-browser.mjs --scope "$RUNNER_TEMP/archive-ci-scope.json"
-      - name: Verify the changed scoped browser checker on one existing original
-        if: steps.scope.outputs.scoped_browser_changed == 'true'
-        env:
-          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
-          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
         run: |
-          node tests/archive-original-exam-access.browser.cjs
-          ARCHIVE_OUTPUT_MODE=sol node tests/archive-original-exam-access.browser.cjs
-      - name: Record unchanged common output scope
-        if: steps.scope.outputs.solution_browser != 'true' && steps.scope.outputs.mode != 'archive-content'
+          set -euo pipefail
+          npm install --prefix "$TASK_TEMP/deps" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+          export NODE_PATH="$TASK_TEMP/deps/node_modules"
+          printf 'NODE_PATH=%s\n' "$NODE_PATH" >> "$GITHUB_ENV"
+          printf 'CHROME_BIN=%s\n' "$CHROME_BIN" >> "$GITHUB_ENV"
+          node <<'NODE'
+          const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto');
+          const assert = require('node:assert/strict'), { execFileSync } = require('node:child_process');
+          const version = execFileSync(process.env.CHROME_BIN, ['--version'], { encoding: 'utf8' }).trim();
+          assert.match(version, /^Google Chrome(?: for Testing)? /, 'the executable must be actual Google Chrome');
+          const playwright = require('playwright/package.json').version;
+          assert.equal(playwright, '1.62.1');
+          fs.writeFileSync(path.join(process.env.AUDIT_DIR, 'browser-environment.json'), JSON.stringify({
+            chromeVersion: version, executableSha256: crypto.createHash('sha256').update(fs.readFileSync(process.env.CHROME_BIN)).digest('hex'),
+            playwrightVersion: playwright, nodeVersion: process.version
+          }, null, 2) + '\n');
+          NODE
+
+      - name: Open the original exam and solution in actual Chrome
+        id: original_outputs
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' && steps.install.outcome == 'success' }}
+        shell: bash
         env:
-          SCOPE_MODE: ${{ steps.scope.outputs.mode }}
-        run: printf '50-question output comparison NOT_APPLICABLE for %s; common output and checker versions did not change. Affected project and data checks run in their existing jobs.\n' "$SCOPE_MODE" >> "$GITHUB_STEP_SUMMARY"
-      - name: Upload solution loading metadata, including failures
+          ARCHIVE_ORIGINAL_EXAM: ${{ env.EXPECTED_SOURCE }}
+        run: |
+          set -uo pipefail
+          result=0
+          for mode in exam sol; do
+            if ARCHIVE_EXAM_ACCESS_ROOT="$GITHUB_WORKSPACE" ARCHIVE_OUTPUT_MODE="$mode" \
+              node tests/archive-original-exam-access.browser.cjs > "$AUDIT_DIR/original-$mode.json" 2> "$AUDIT_DIR/original-$mode.stderr.log"; then
+              printf '%s checker completed\n' "$mode"
+            else
+              result=1
+              printf '%s checker failed; see uploaded evidence\n' "$mode"
+            fi
+          done
+          if ! node <<'NODE'
+          const fs = require('node:fs'), path = require('node:path'), assert = require('node:assert/strict');
+          for (const mode of ['exam', 'sol']) {
+            const result = JSON.parse(fs.readFileSync(path.join(process.env.AUDIT_DIR, 'original-' + mode + '.json')));
+            assert.equal(result.status, 'OUTPUT_TECHNICAL_PASS');
+            assert.equal(result.source, process.env.EXPECTED_SOURCE);
+            assert.equal(result.mode, mode);
+            assert.equal(result.questions, 24, 'the exact Shinheung exam must contain 24 rendered questions');
+          }
+          NODE
+          then
+            result=1
+          fi
+          exit "$result"
+
+      - name: Verify all 24 actual parent searches and source selections
+        id: finder
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' && steps.install.outcome == 'success' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          node "$TASK_TEMP/driver.cjs" "$GITHUB_WORKSPACE" "$TASK_TEMP/input.json" "$AUDIT_DIR/finder" \
+            > "$AUDIT_DIR/finder.log" 2>&1
+
+      - name: Verify the registered checkout stayed unchanged
+        id: readonly
+        if: ${{ always() && steps.preflight.outcome == 'success' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto');
+          const assert = require('node:assert/strict'), { execFileSync } = require('node:child_process');
+          const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+          const git = args => execFileSync('git', args, { encoding: 'utf8' }).trim();
+          const before = JSON.parse(fs.readFileSync(path.join(process.env.AUDIT_DIR, 'registered-main-preflight.json')));
+          const after = { mainSha: git(['rev-parse', 'HEAD']), gitStatus: git(before.statusArgs),
+            indexSha256: hash(execFileSync('git', ['ls-files', '-s', '-z'], { maxBuffer: 64 * 1024 * 1024 })),
+            protectedFiles: before.protectedFiles.map(ref => ({ path: ref.path, sha256: hash(fs.readFileSync(ref.path)) })) };
+          fs.writeFileSync(path.join(process.env.AUDIT_DIR, 'checkout-after.json'), JSON.stringify(after, null, 2) + '\n');
+          execFileSync('git', ['diff', '--exit-code']);
+          execFileSync('git', ['diff', '--cached', '--exit-code']);
+          assert.equal(after.mainSha, before.mainSha);
+          assert.equal(after.gitStatus, before.gitStatus);
+          assert.equal(after.indexSha256, before.indexSha256);
+          assert.deepEqual(after.protectedFiles, before.protectedFiles);
+          assert.equal(hash(fs.readFileSync(path.join(process.env.TASK_TEMP, 'driver.cjs'))), process.env.EXPECTED_DRIVER_SHA256);
+          assert.equal(hash(fs.readFileSync(path.join(process.env.TASK_TEMP, 'input.json'))), process.env.EXPECTED_INPUT_SHA256);
+          NODE
+
+      - name: Record the exact verification verdict
+        if: always()
+        shell: bash
+        env:
+          PACKAGE_OUTCOME: ${{ steps.package.outcome }}
+          PREFLIGHT_OUTCOME: ${{ steps.preflight.outcome }}
+          NATIVE_OUTCOME: ${{ steps.native_tests.outcome }}
+          CHROME_OUTCOME: ${{ steps.chrome.outcome }}
+          INSTALL_OUTCOME: ${{ steps.install.outcome }}
+          OUTPUT_OUTCOME: ${{ steps.original_outputs.outcome }}
+          FINDER_OUTCOME: ${{ steps.finder.outcome }}
+          READONLY_OUTCOME: ${{ steps.readonly.outcome }}
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs'), path = require('node:path');
+          const directory = path.join(process.env.RUNNER_TEMP, 'shinheung-registered-chrome', 'artifacts');
+          fs.mkdirSync(directory, { recursive: true });
+          const outcomes = Object.fromEntries(['PACKAGE', 'PREFLIGHT', 'NATIVE', 'CHROME', 'INSTALL', 'OUTPUT', 'FINDER', 'READONLY']
+            .map(name => [name, process.env[name + '_OUTCOME'] || 'unknown']));
+          const passed = Object.values(outcomes).every(value => value === 'success');
+          const verdict = { status: passed ? 'REGISTERED_MAIN_ACTUAL_CHROME_PASS' : 'FAIL_OR_INCOMPLETE',
+            registeredMainSha: process.env.EXPECTED_MAIN_SHA, verificationCommit: process.env.GITHUB_SHA,
+            runId: process.env.GITHUB_RUN_ID, runAttempt: process.env.GITHUB_RUN_ATTEMPT,
+            outcomes, examQuestionsRequired: 24, solutionQuestionsRequired: 24, finderQuestionsRequired: 24,
+            registrationPerformed: false, productionWritesPerformed: false, mathematicalReviewPerformed: false,
+            finishedAtUtc: new Date().toISOString() };
+          fs.writeFileSync(path.join(directory, 'verdict.json'), JSON.stringify(verdict, null, 2) + '\n');
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
+            '### ' + verdict.status + '\n\nRegistered main: ' + verdict.registeredMainSha + '\n\n' +
+            Object.entries(outcomes).map(([key, value]) => '- ' + key + ': ' + value).join('\n') + '\n');
+          console.log(JSON.stringify(verdict));
+          if (!passed) process.exitCode = 1;
+          NODE
+
+      - name: Preserve evidence even when a required check fails
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: archive-solution-loading-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/archive-solution-loading-evidence/
+          name: shinheung-registered-main-chrome-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/shinheung-registered-chrome/artifacts
           if-no-files-found: warn
           retention-days: 14
