@@ -53,10 +53,13 @@
       "questionCount": 24,
       "baseSourceGitBlob": "7903fe2ceadcc2fe34f0bbf77aa8fd5e67054af5",
       "baseSourceSha256": "fece6adca630912537ada3da98a3e5215c02c04596afabddb961fb0ecd745e03",
-      "state": "REVIEWED_READY_FOR_4SLOT_IMPORT",
+      "state": "REVIEW_COMPLETE_WITH_EXPLICIT_HOLDS",
       "completedQuestions": 24,
       "reviewArtifact": "docs/operations/m1-s2-meta-b01-b-20261114/03-wangun-mid-review.json",
-      "nextAction": "IMPORT_SAMPLED_4SLOT"
+      "nextAction": "IMPORT_COMPACT_THEN_CI_AND_MAIN_MERGE",
+      "fourSlot": "VALIDATED_24_READY_FOR_COMPACT_IMPORT",
+      "sourceBlob": "c831c3a8cb263f2be9f612317704ee12a906d311",
+      "nativeRegistration": "HOLD_24_IDENTITY_SOURCE_FINGERPRINT"
     },
     {
       "sourcePath": "archive/exams/original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
@@ -89,7 +92,9 @@
     "wangui-finalFinalStudentPreservation": "PASS_24",
     "wangui-finalFourSlotQuoteValidation": "FAIL_0",
     "palma-finalFinalStudentPreservation": "PASS_24",
-    "palma-finalFourSlotQuoteValidation": "FAIL_0"
+    "palma-finalFourSlotQuoteValidation": "FAIL_0",
+    "wangun-midFinalStudentPreservation": "PASS_24",
+    "wangun-midFourSlotQuoteValidation": "FAIL_0"
   },
   "nextAction": "IMPORT_FINAL_COMPACT_AND_WAIT_FOR_REQUIRED_CI",
   "batchPr": 1973
