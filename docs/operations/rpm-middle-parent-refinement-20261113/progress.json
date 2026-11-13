@@ -2,7 +2,7 @@
   "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
   "owner": "GPT_ROOT_933015CD0A4F",
   "instructionRevision": 2,
-  "state": "CORRECTED_PARENTS_READY_FOR_FINAL_CI",
+  "state": "RPM_PARENT_MAIN_DONE",
   "branch": "fix/rpm-middle-l1-l2-20261113",
   "baseMainSha": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
   "authority": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
@@ -22,9 +22,9 @@
     "quickPools": "PASS_20_TESTS",
     "unitIntegration": "PASS_24_TESTS",
     "subunitGroups": "PASS_CHECK_NO_REGENERATION",
-    "runtimeGuard": "PRIOR_CI_243_PASS_FINAL_HEAD_PENDING",
-    "chrome": "PRIOR_50_OUTPUT_CHROME_PASS_NEW_RPM_UI_VIEWPORT_HARNESS_FIXED_FINAL_HEAD_PENDING",
-    "merge": "PENDING",
+    "runtimeGuard": "PASS_247_FINAL_HEAD",
+    "chrome": "PASS_WITH_REAL_DATA_GAPS_8_EMPTY_M2_M3_PARENTS",
+    "merge": "MAIN_DONE_REMOTE_SHA_TREE_AND_AUTHORITY_VERIFIED",
     "resolverAndParentAuthority": "PASS_35_TESTS_FINAL_V1_2",
     "urlAndStoredSelection": "PASS_5_TESTS",
     "consumerAndCiScope": "PASS_47_TESTS",
@@ -32,25 +32,26 @@
     "unitQuickUnifiedAndUrl": "PASS_69_TESTS_FINAL_V1_2",
     "legacyBridgeAndWorker": "PASS_38_TESTS_AFTER_CORE_DEPENDENCY_ISOLATION",
     "consumerUiProducerAndReader": "PASS_14_TESTS_INCLUDES_5_URL_TESTS",
-    "sourceReplayCore": "BYTE_EXACT_BASE_MAIN_NO_NEW_WORKER_DEPENDENCY"
+    "sourceReplayCore": "BYTE_EXACT_BASE_MAIN_NO_NEW_WORKER_DEPENDENCY",
+    "githubWorkflows": "ALL_5_SUCCESS"
   },
   "examReview": {
-    "state": "PAUSED_FOR_RPM_L1_L2_REFINEMENT",
+    "state": "RESUMING_AFTER_PARENT_MAIN_MERGE",
     "branch": "review/m1-existing-meta-20261113",
-    "checkpointSha": "f05383131e035ad28b613a238ec072c2c9b265b2",
+    "checkpointSha": "92e0256664eba86eed13cdf32060a3e3e1d73a3e",
     "totalExams": 44,
     "totalQuestions": 1047,
     "completedExams": 0,
     "next": "2026 신흥중 중1 2학기 중간 24문항",
     "candidateComparisonFile": "docs/operations/m1-meta-review-20261113/01-shinheung-candidate-comparison.json"
   },
-  "nextAction": "INTEGRATE_LATEST_MAIN_PUBLISH_EXACT_TREE_AND_VERIFY_CI_CHROME_BEFORE_MERGE",
-  "remoteCheckpointSha": "71137cfe8d6b0caba3926fce98ad28e53e80bdbf",
-  "remoteCheckpointTree": "5c092f6731d79fb4af26d6092cf6704de53c2a2c",
+  "nextAction": "RESUME_FIRST_M1_EXAM_FROM_PRESERVED_SEMANTIC_CANDIDATES",
+  "remoteCheckpointSha": "9a29f38c36a3a8531dbd9fe25a7cbe32c1899788",
+  "remoteCheckpointTree": "cc07dc4b5b7c886cde7fdfb670dfc65d4c9c98df",
   "awcr": {
-    "revision": 4,
-    "fileId": "1OPzyBkhimVFPj_vooQtMzpsDqVLqPib0",
-    "rawSha256": "c518a83ceb80141ebbce7d7577f458319593221292703db226c76fd40c875d08",
+    "revision": 6,
+    "fileId": "1mYrP0EJOjIZDERuBbS9vFLg0wrYGXWPb",
+    "rawSha256": "3fb629180d9754d50533a2eda58db65f9fd6b03f5843757b55a255d95f8c70ae",
     "readbackVerified": true
   },
   "latestMainObservedSha": "2b90b85dd848806ba62f844b85225db8bcae5ee3",
@@ -69,5 +70,7 @@
       "file": "m3-parent-placement-audit.json",
       "sha256": "cba8eae8713d0e88a4e5571049ec3e1ba171958d3dbe4043a7f9c7cb6f5ed489"
     }
-  ]
+  ],
+  "mainMergeSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
+  "mainMergeTree": "cc07dc4b5b7c886cde7fdfb670dfc65d4c9c98df"
 }

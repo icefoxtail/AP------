@@ -6,11 +6,20 @@
 - 작업자: `GPT_ROOT_933015CD0A4F`; AWCR taskId `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`, instructionRevision `2`.
 - 브랜치: `fix/rpm-middle-l1-l2-20261113`; PR: https://github.com/icefoxtail/AP------/pull/1958
 - 시작 main: `a6708a849faca7ccfd438937138d7e88bd5ee23c`; 최근 확인 main: `2b90b85dd848806ba62f844b85225db8bcae5ee3` (별도 G7 PR #1955 병합, 이 작업과 파일 겹침 없음).
-- 상태: **공식 부모 대조·수정과 집중 회귀 완료. 최종 tree의 CI·실제 Chrome 검사·main 병합 대기.**
+- 상태: **MAIN_DONE — PR #1958 병합 후 원격 main SHA·tree·정본/helper 바이트 검증 완료.**
 - 직전 원격 체크포인트: `71137cfe8d6b0caba3926fce98ad28e53e80bdbf`, tree `5c092f6731d79fb4af26d6092cf6704de53c2a2c`.
 - AWCR r4: Drive `1OPzyBkhimVFPj_vooQtMzpsDqVLqPib0`, raw SHA256 `c518a83ceb80141ebbce7d7577f458319593221292703db226c76fd40c875d08` (raw 재조회 검증).
 
 최신 상태는 `progress.json`, 원격 브랜치 HEAD, PR의 실제 검사 결과를 함께 확인한다. 오래된 PASS나 문서의 대기 상태만으로 운영 완료를 추정하지 않는다. 사용자는 이 범위의 PR/main 병합 및 연속 진행을 이미 승인했다.
+
+## 운영병합 완료
+
+- main: `8c1b6694c35e76399a6ad36a4b6683e2cb6726b7`; tree: `cc07dc4b5b7c886cde7fdfb670dfc65d4c9c98df`.
+- 검사된 PR HEAD: `9a29f38c36a3a8531dbd9fe25a7cbe32c1899788`; 5개 workflow 모두 성공.
+- 최종 runtime 247/247, 실제 Chrome의 PC/모바일·정확 UID풀·새 문서/뒤로가기 복원 및 기존 50문항 출력 통과. root가 스크린샷 5개를 직접 확인.
+- 새 중2/중3 부모 8개에 연결된 현행 자료가 없는 점은 별도 데이터 공백이다. 기존 2015를 2022로 바꾸지 않았다.
+- 세부 영수증: `ci-and-merge-receipt.json`; 복사용 재개 지시: `HANDOFF.md`.
+- AWCR r6: `1mYrP0EJOjIZDERuBbS9vFLg0wrYGXWPb`, raw SHA `3fb629180d9754d50533a2eda58db65f9fd6b03f5843757b55a255d95f8c70ae`, 원격 readback 검증.
 
 ## 현재 정본과 변경 범위
 
@@ -47,23 +56,20 @@ locked v1 정본·crosswalk·승인 fingerprint·시험지·정답·해설·이�
 - 직전 CI의 runtime 계약 243개와 50문항 실제 Chrome 출력은 통과했다. 새 RPM UI 검사는 세로 스크롤바를 제외한 `clientWidth`를 전체 viewport와 비교해 실패했다. 실제 너비 1440, clientWidth 1425, 가로 넘침 없음. viewport와 문서 폭을 구분하도록 검사 코드를 수정했다.
 - 직전 CI 통합 실패의 캐시 literal·producer fixture는 현재 변경에 맞게 수정했다. Core 의존성은 분리해 기존 bridge/Worker 계약을 그대로 만족시킨다.
 
-**최종 게시 tree의 CI와 RPM 실제 화면 검증을 아직 PASS로 선언하지 않는다.** 실제 Chrome 화면·선택 UID 풀·URL 복원·모바일 배치를 확인한 뒤 사용자 승인 범위로 main에 병합하고 원격 SHA를 확인한다. R1/R2/R3 전체 시험지 검증은 재실행하지 않는다.
+위 대기/실패 항목은 이전 시도 이력이다. 최종 게시 tree의 CI와 실제 Chrome 검증은 완료했고, 원격 main 병합 결과는 상단 운영병합 완료 절 및 영수증이 소유한다. R1/R2/R3 전체 시험지 검증은 재실행하지 않는다.
 
 ## 다음 실행
 
-1. 최신 main을 병합하고 정확한 tree를 원격 브랜치에 저장한다. 다른 작업의 파일을 수정하지 않는다.
-2. PR #1958의 최종 SHA에서 필요한 CI/Chrome 결과와 스크린샷을 확인하고 근거를 기록한다.
-3. main에 병합 후 원격 SHA/파일 바이트를 직접 확인한다. AWCR 다음 immutable revision을 저장·재조회한다.
-4. 이 브랜치에 병합 영수증과 인계 상태를 남긴 뒤 아래 시험지 작업을 재개한다.
+RPM 부모 정비는 완료했다. 추가 목차 검사를 반복하지 않는다. 다음은 중1 첫 시험지의 기존 24문항 읽기 근거를 재사용한 의미 분류/연결 수리다. 시험지별 PR/main·원격 SHA, 진행표와 AWCR를 이어간다.
 
 ## 중1 시험지 작업 재개점
 
 - 브랜치: `review/m1-existing-meta-20261113`
-- 원격 안전 체크포인트: `f05383131e035ad28b613a238ec072c2c9b265b2`, tree `39597ac187cb60af16eb4cdb7f7a9d28cc024de1`.
+- 원격 안전 체크포인트: `92e0256664eba86eed13cdf32060a3e3e1d73a3e`, tree `28e44eb7217061d5ed2abbf5169933880ee69d26`.
 - 진행표: `docs/operations/m1-meta-review-20261113/progress.json`
 - 읽기 근거: 같은 폴더 `01-shinheung-semantic-read-checkpoint.json`
 - 13~24번 후보 대조: `01-shinheung-candidate-comparison.json`, SHA256 `c887310c2501c3d70a010315a7fda02c73a6964ba45b70c3aa106a99c4a62ce9`.
-- 1~12번 후보 초안은 해당 worktree `.tmp/m1-meta-review/01-first-half-candidate.json`에 보존. SHA256 `b1858bef96295c38e8be7243aecbbbb91027446a7c4624459f3aa725f418c17b`. 이번 정본 병합 후 바뀐 부모를 대조하고 Git에 저장한다.
+- 1~12번 후보는 해당 브랜치 `docs/operations/m1-meta-review-20261113/01-shinheung-first-half-candidate.json`에 보존. SHA256 `60b32054eb8d0ba90fc6a37af29364e8685e7b30c4ee5b6a4a7aff1f01259218`. 병합된 정본과 같은 authority 바이트에 결속되어 있다.
 - 전체 **44시험지 / 1,047문항**, 완료 **0시험지**. 첫 대상은 **2026 신흥중 중1 2학기 중간 / 24문항**.
 - 원본 blob `c36139a90e9bcd378577ece8f891423bee6b0a19`, SHA256 `1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564`.
 
