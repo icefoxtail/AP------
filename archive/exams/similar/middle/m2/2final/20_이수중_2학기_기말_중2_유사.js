@@ -701,11 +701,9 @@ window.questionBank = [
     "provenance": "SIMILAR_OF:21",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "questionType": "서답형",
+    "questionType": "서술형",
     "content": "[서답형 1] 두 삼각형 $\\triangle ABC$와 $\\triangle DEF$에서 $\\overline{BA} = 4\\text{ cm}, \\overline{BC} = 6\\text{ cm}, \\angle B = \\angle E$이고 $\\overline{ED} = 12\\text{ cm}, \\overline{EF} = 18\\text{ cm}$이다. $\\triangle ABC \\sim \\triangle DEF$일 때, 다음 물음에 답하시오. (부분 점수 있음) [6점]\n(1) 이때 사용한 닮음 조건을 쓰시오. [2점]\n(2) 닮음비를 구하시오. [2점]\n(3) $\\overline{CA}$의 길이가 $5\\text{ cm}$라 할 때, $\\overline{FD}$의 길이를 구하시오. [2점]",
-    "choices": [
-      "없음"
-    ],
+    "choices": [],
     "answer": "(1) $\\mathrm{SAS}$ 닮음\n(2) $1 : 3$\n(3) $15\\text{ cm}$",
     "solution": "두 쌍의 대응변의 길이의 비와 그 끼인각의 크기를 확인한다.\n1. (1) 두 삼각형에서\n$$\\begin{aligned}\n\\overline{BA} : \\overline{ED} &= 4 : 12 = 1 : 3 \\\\\n\\overline{BC} : \\overline{EF} &= 6 : 18 = 1 : 3 \\\\\n\\angle B &= \\angle E\n\\end{aligned}$$\n두 쌍의 대응변의 길이의 비가 같고 그 끼인각의 크기가 같으므로 **$\\mathrm{SAS}$ 닮음**이다.\n2. (2) 대응변의 길이의 비로부터 닮음비는 **$1 : 3$**이다.\n3. (3) 닮음비가 $1 : 3$이므로\n$$\\begin{aligned}\n\\overline{CA} : \\overline{FD} &= 1 : 3 \\\\\n5 : \\overline{FD} &= 1 : 3 \\implies \\overline{FD} = 15\\text{ cm}\n\\end{aligned}$$\n답: (1) $\\mathrm{SAS}$ 닮음, (2) $1 : 3$, (3) $15\\text{ cm}$",
     "points": 6.0,
@@ -731,11 +729,9 @@ window.questionBank = [
     "provenance": "SIMILAR_OF:22",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "questionType": "서답형",
+    "questionType": "단답형",
     "content": "수평한 지면에 수직으로 선 나무와 키가 $1.6\\text{ m}$인 민준이가 있다. 민준이는 나무 밑동에서 그림자 끝 방향으로 $7.2\\text{ m}$ 떨어져 서 있고, 민준이와 나무의 그림자는 같은 방향으로 생긴다. 민준이의 그림자 끝은 나무 그림자의 끝과 일치하며, 햇빛은 평행하게 비친다. 민준이의 그림자 길이가 $2.4\\text{ m}$일 때 나무의 높이를 구하시오. [3점]",
-    "choices": [
-      "없음"
-    ],
+    "choices": [],
     "answer": "$6.4\\text{ m}$",
     "solution": "햇빛에 의해 만들어지는 두 직각삼각형의 AA 닮음을 이용한다.\n1. 나무의 그림자 전체 길이는\n$$\n7.2 + 2.4 = 9.6\\text{ m}\n$$\n2. 나무의 높이를 $h\\text{ m}$라 하면 닮음비에 의해\n$$\\begin{aligned}\nh : 1.6 &= 9.6 : 2.4 \\\\\nh : 1.6 &= 4 : 1 \\\\\nh &= 1.6 \\times 4 = 6.4\\text{ m}\n\\end{aligned}$$\n답: $6.4\\text{ m}$",
     "points": 3.0,
@@ -761,11 +757,9 @@ window.questionBank = [
     "provenance": "SIMILAR_OF:23",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "questionType": "서답형",
+    "questionType": "단답형",
     "content": "[서답형 3] $\\triangle ABC$에서 점 $D, E$는 각각 변 $AB, AC$의 중점이고, 점 $G$는 $\\triangle ABC$의 무게중심이다(선분 $BE$와 선분 $CD$의 교점이 $G$). $\\triangle ABC$의 넓이가 $48\\text{ cm}^2$일 때, 다음을 구하시오. (부분 점수 있음) [6점]\n(1) $\\triangle DBE$의 넓이 [2점]\n(2) $\\overline{BG} : \\overline{GE}$ [2점]\n(3) $\\triangle DGE$의 넓이 [2점]",
-    "choices": [
-      "없음"
-    ],
+    "choices": [],
     "answer": "(1) $12\\text{ cm}^2$\n(2) $2 : 1$\n(3) $4\\text{ cm}^2$",
     "solution": "중선에 의한 넓이 이등분과 무게중심의 $2 : 1$ 내분 성질을 단계별로 적용한다.\n1. (1) 점 $E$는 $\\overline{AC}$의 중점이므로 $\\triangle ABE = \\dfrac{1}{2} \\triangle ABC = \\dfrac{1}{2} \\times 48 = 24\\text{ cm}^2$이다.\n또 점 $D$는 $\\overline{AB}$의 중점이므로\n$$\n\\triangle DBE = \\dfrac{1}{2} \\triangle ABE = \\dfrac{1}{2} \\times 24 = 12\\text{ cm}^2\n$$\n2. (2) 점 $G$는 $\\triangle ABC$의 무게중심이므로 중선 $BE$를 꼭짓점으로부터 $2 : 1$로 나눈다.\n$$\n\\overline{BG} : \\overline{GE} = 2 : 1\n$$\n3. (3) $\\triangle DBE$에서 점 $G$가 밑변 $\\overline{BE}$를 $2 : 1$로 나누므로\n$$\n\\triangle DGE = \\dfrac{1}{2 + 1} \\triangle DBE = \\dfrac{1}{3} \\times 12 = 4\\text{ cm}^2\n$$\n답: (1) $12\\text{ cm}^2$, (2) $2 : 1$, (3) $4\\text{ cm}^2$",
     "points": 6.0,
@@ -791,11 +785,9 @@ window.questionBank = [
     "provenance": "SIMILAR_OF:24",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "questionType": "서답형",
+    "questionType": "서술형",
     "content": "$\\angle A=90^\\circ$인 직각삼각형 $ABC$의 세 변을 지름으로 하는 반원을 그린다. 지름 $AB,AC$의 반원은 삼각형 바깥쪽에, 지름 $BC$의 반원은 점 $A$가 있는 쪽에 그린다. 두 직각변 반원 내부 중 빗변 반원 내부에 포함되지 않는 두 초승달 모양 부분을 색칠한다. $\\overline{AB}=5\\text{ cm}, \\overline{BC}=13\\text{ cm}$일 때, 색칠한 부분의 넓이를 구하는 과정을 쓰시오. [5점]",
-    "choices": [
-      "없음"
-    ],
+    "choices": [],
     "answer": "$30\\text{ cm}^2$",
     "solution": "피타고라스 정리로 변 $AC$의 길이를 구한다. 지정된 방향의 세 반원에서 두 직각변 반원과 빗변 반원이 겹치지 않는 초승달 두 부분의 넓이 합은 직각삼각형 $ABC$의 넓이와 같다.\n1. 직각삼각형 $ABC$에서 빗변이 $\\overline{BC} = 13\\text{ cm}$이므로 피타고라스 정리에 의해\n$$\\begin{aligned}\n\\overline{AC}^2 &= \\overline{BC}^2 - \\overline{AB}^2 \\\\\n&= 13^2 - 5^2 = 169 - 25 = 144 \\\\\n\\overline{AC} &= 12\\text{ cm}\n\\end{aligned}$$\n2. 히포크라테스의 원의 성질에 의해 두 초승달 모양 부분의 넓이의 합은 $\\triangle ABC$의 넓이와 같으므로\n$$\\begin{aligned}\n\\text{색칠한 부분의 넓이} &= \\text{넓이}(\\triangle ABC) \\\\\n&= \\dfrac{1}{2} \\times \\overline{AB} \\times \\overline{AC} \\\\\n&= \\dfrac{1}{2} \\times 5 \\times 12 = 30\\text{ cm}^2\n\\end{aligned}$$\n답: $30\\text{ cm}^2$",
     "points": 5.0,
