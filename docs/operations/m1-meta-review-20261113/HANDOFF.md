@@ -77,6 +77,12 @@
 - 현재 source 준비본: blob `930d4e3ef44e60757180aae6fc15fcc5b7228958`, raw SHA256 `bc4dcf03680da654dec43928f7b1a57942a6f616de9f03ca9ba3976203bd9a18`.
 - 정상 학생 데이터는 같은 원본에서 그대로 보존했다. 정본 추가는 요청으로만 준비했으며 공용 metadata/identity/native runtime을 직접 쓰지 않았다.
 
-## 다음 시험지의 요청 생성 도구
+## PR과 캐시 참조 보완
+
+- 첫 시험지 PR은 [1960](https://github.com/icefoxtail/AP------/pull/1960)이다. 최초 제출 head는 `8bab8a18877415b0d63ea79f01bf46d9a434be33`이다.
+- 최초 CI의 336개 검사 중 335개가 통과했으며, 유일 실패는 공통 `rpm-middle-toc.js`의 HTML별 캐시 버전 불일치였다. 나머지 4개 HTML의 버전값을 `20261113-rpm-middle-shinheung-1`로 맞춰 총 6개 참조를 통일했다.
+- 직접 영향 검사 `node tests/archive-cache-version-consistency.test.js`는 PASS다. source·요청·hash 결속 증거 및 helper 파일 내용은 이 보완에서 바뀌지 않았다. 새 head의 CI와 실제 등록 확인을 마친 후 운영 마감한다.
+
+## 다음 시험지 요청 생성
 
 `checkpoint-tools/build-reviewed-exam-v2-request.mjs`와 같은 폴더의 `extract-reviewed-exam-projections.py`를 함께 사용한다. `--repo-root`를 실제 작업트리로 지정하고 입력·출력은 `.tmp/m1-meta-review/` 아래로 지정한다. source title·경로·문항 수·전 UID·owner 확인·최신 source/evidence SHA는 다음 시험지에 맞게 새로 결속한다. 이전 시험지의 요청 ID나 승인값을 복사하여 재사용하지 않는다. 공식 v2 등록기의 dry-run과 main writer 영수증이 최종 권위다.
