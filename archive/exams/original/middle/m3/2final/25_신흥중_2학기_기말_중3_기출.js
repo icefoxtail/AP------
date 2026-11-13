@@ -498,7 +498,7 @@ window.questionBank = [
     "standardUnit": "통계",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "그래프"
     ],
