@@ -6,7 +6,7 @@
     "남은 입체의 꼭짓점 A,C,D,E,F,G,H",
     "잘린 꼭짓점 B와 기존 모서리 AB,BC,BF는 점선으로 보임"
   ],
-  "layout": "직육면체의 원래 꼭짓점 B를 자른 뒤 남은 꼭짓점 A,C,D,E,F,G,H. 원래 AB,BC,BF를 점선으로 보존. ACF는 잘린 삼각형 면.",
+  "layout": "원본 PNG의 앞/뒤 방향을 맞추기 위해 PRISM 밑면 순서를 E(0,1)→F(0,0)→G(3,0)→H(3,1)로 둔다. 투영에서 상단 가로 순서는 B<A<C<D, 하단은 F<E<G<H가 되어 원본 배치에 맞는다. 이름 연결과 ACF 절단은 유지한다.",
   "visibleMarks": [
     "A~H 꼭짓점 이름",
     "잘린 꼭짓점 B와 원래 모서리 AB,BC,BF 점선",
@@ -17,7 +17,7 @@
   ],
   "construction": "CONSTRUCTED_REALIZATION using PRISM rectangular cuboid and exact ACF vertex cut. B is an auxiliary point projected from F to plane ACD; it is used only for three DASHED/REF reference segments and does not enter the cut solid topology.",
   "normalizationAndResiduals": {
-    "normalization": "Rectangular base width3/depth1, height2.4 chosen for view only; no side lengths are labelled.",
+    "normalization": "Rectangular base polygon E(0,1), F(0,0), G(3,0), H(3,1); height2.4 and yaw35 are schematic view choices only; no dimensions are labelled.",
     "expectedResiduals": {
       "cut_remaining_vertices": "E,F,G,H,A,C,D only",
       "cut_remaining_edges": "12",
@@ -29,7 +29,9 @@
       ],
       "projection_plane_residual": "0",
       "projection_direction_cross_normal_residual": "0",
-      "ghost_segment_topology": "AB,BC,BF are not edges of the cut solid"
+      "ghost_segment_topology": "AB,BC,BF are not edges of the cut solid",
+      "top_screen_x_order": "B<A<C<D",
+      "bottom_screen_x_order": "F<E<G<H"
     },
     "tolerance": "Independent observer projection tolerance 1e-6; model coordinates are exact for this rectangular construction."
   },

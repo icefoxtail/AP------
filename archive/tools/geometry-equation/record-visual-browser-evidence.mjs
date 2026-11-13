@@ -107,7 +107,7 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
         if(readinessError){if(signal?.aborted)checkCancelled();throw readinessError;}
         checkCancelled();
         await page.evaluate(async()=>{if(window.MathJax?.startup?.promise)await window.MathJax.startup.promise;await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));if(window.APPrintRuntime?.waitUntilReady)await window.APPrintRuntime.waitUntilReady();});checkCancelled();
-        if(item.problemEnvelope)koreanFont=await observeProblemKoreanFont(page);
+        if(item.problemEnvelope){koreanFont=await observeProblemKoreanFont(page);if(koreanFont.status!=='PASS')throw Error(koreanFont.error?.code??'PROBLEM_KOREAN_PLATFORM_FONT_NOT_VERIFIED');}
         state=await page.evaluate(async({mode,assets,envelopeTargets})=>{
           const root=document.getElementById('print-area');
           const numberNodes=[...root.querySelectorAll(mode==='ans'?'.ans-n':'.q-num')];
