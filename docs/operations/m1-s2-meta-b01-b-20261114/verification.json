@@ -1,8 +1,8 @@
 {
   "schemaVersion": "m1s2-four-slot-selected-production-consumer-preflight-v1",
   "assignmentId": "M1S2-20261114-B01-B",
-  "reviewer": "GPT_PREREQ_AUDIT_3362DD3EDC06",
-  "completedAt": "2026-11-13T23:20:20.151Z",
+  "reviewer": "GPT_ROOT_3362DD3EDC06_B_PUBLICATION_HOLD_REBIND",
+  "completedAt": "2026-11-13T23:40:03.553Z",
   "status": "PASS_SCOPED_PREMERGE_CONSUMER",
   "scope": {
     "sourceFiles": 4,
@@ -14,7 +14,7 @@
     "semanticApprovalGranted": false,
     "fullExamMathematicalQaPerformed": false
   },
-  "repositoryHeadObserved": "f690c8b757e21a62a0c1ef1d91048ee6ad4952cf",
+  "repositoryHeadObserved": "bb5db20c75fbe0c04a4c3a1ea13ec1cee57b1d2c",
   "officialApis": {
     "build": "tools/4slot/build-4slot-runtime.cjs#build",
     "verify": "tools/4slot/build-4slot-runtime.cjs#verify",
@@ -34,7 +34,7 @@
     "status": "PASS",
     "verified": 96,
     "pending": 0,
-    "indexSha256": "a7d6abdd0d83a20c15e96bab3a12a74a36049eeec6ca723142fee689b8f4f4cb",
+    "indexSha256": "3b60f84400b558304ddc1310c8cd51f734997ceee309db860a8dc42c7d27b647",
     "sourceMutation": 0,
     "semanticApprovalMutation": 0
   },
@@ -68,17 +68,21 @@
     "canonicalOrCommonFilesWritten": false
   },
   "preservedLimitations": [
+    "Wangun mid Q14 source metadata remains historical under explicit publication HOLD; its reviewed correction is preserved at 7d91834. Four-slot descriptor verification does not approve its retained classification or difficulty.",
     "The 96 historical identity fingerprints are preserved; runtime acceptance does not repair or approve semantic registration.",
     "Palma mid Q15 remains text-descriptor-only; visual condition completeness, mathematical correctness, and native metadata HOLD remain in the evidence.",
     "Asset hashing checks actual local byte identity only, not visual correctness.",
     "Main CI, main registration, and deployment must be separately verified by the coordinator."
   ],
   "rawProof": {
-    "fileId": "1PRC8pXic1xCUvx0MW67z8wknuvkXRoEl",
-    "url": "https://drive.google.com/file/d/1PRC8pXic1xCUvx0MW67z8wknuvkXRoEl/view?usp=drivesdk",
-    "sha256": "218676251bdd073248f90f7ec6b19f3bc8f70e6b6a89b542b0793f54b9b2c17f",
-    "byteLength": 90879,
-    "rawReadback": "VERIFIED"
+    "fileId": "1mLPsmV-hMrpIWAYscbcnuFUdqbCJAOPQ",
+    "url": "https://drive.google.com/file/d/1mLPsmV-hMrpIWAYscbcnuFUdqbCJAOPQ/view?usp=drivesdk",
+    "parentId": "10RO6BaU2xS3l6WexNvHfyQGc04iQhdV8",
+    "sha256": "c504404d1976d1bdd5bd759518eb12a811d05cd17f6f699ef60b6727d552acd0",
+    "byteLength": 91130,
+    "mimeType": "application/json",
+    "rawReadback": "VERIFIED",
+    "revision": "PUBLICATION_HOLD_REBIND_V2"
   },
   "examInputs": [
     {
@@ -171,11 +175,11 @@
     {
       "slug": "wangun-mid",
       "sourceArchiveFile": "original/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학.js",
-      "sourceBlob": "c831c3a8cb263f2be9f612317704ee12a906d311",
-      "sourceSha256": "905907308e73163854a74b78df1638d03099c8c2165341db517725c1f9efa8ae",
-      "compactSha256": "e25a28b789b27e48694adbf9e9f3e3806b93dac99245e8689a4ceb00604fcfa7",
-      "fullEvidenceSha256": "86313aea3eab6f2ba00001bb61f62c8fb0ec21a5a3dd9be293992f24733771e5",
-      "fullEvidenceDeclaredSourceBlob": "c831c3a8cb263f2be9f612317704ee12a906d311",
+      "sourceBlob": "adb1256f6034ca7a931557b6069c5c94b047d2fd",
+      "sourceSha256": "66e867046e70894a43b236587abcf52c7894dc97f4377bac9a28ea09c7f74886",
+      "compactSha256": "6b99ccace5af99a163c02bbfef94a80ca49526a6ac1015676c9d85eaab329258",
+      "fullEvidenceSha256": "a3b6ca15a9a551ca25530d3202d8fae00d7304b834b6ee6f3ff66acd80a17305",
+      "fullEvidenceDeclaredSourceBlob": "adb1256f6034ca7a931557b6069c5c94b047d2fd",
       "fullEvidenceDeclaredBlobMatchesCurrent": true,
       "dictionaryVersion": "term-dict-v1.5-2026-11-04",
       "items": 24,
@@ -190,7 +194,7 @@
       },
       "provenance": {
         "branch": "review/m1-s2-meta-b01-b-20261114",
-        "commit": "693e7e83a3ecd881a475d3877dea30db70093533",
+        "commit": "bb5db20c75fbe0c04a4c3a1ea13ec1cee57b1d2c",
         "path": "docs/operations/m1-s2-meta-b01-b-20261114/03-wangun-mid-review.json"
       },
       "fullValidation": {
@@ -289,16 +293,16 @@
       {
         "key": "wangun-mid",
         "sourcePath": "archive/exams/original/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학.js",
-        "sourceBlob": "c831c3a8cb263f2be9f612317704ee12a906d311",
-        "sourceSha256": "905907308e73163854a74b78df1638d03099c8c2165341db517725c1f9efa8ae",
+        "sourceBlob": "adb1256f6034ca7a931557b6069c5c94b047d2fd",
+        "sourceSha256": "66e867046e70894a43b236587abcf52c7894dc97f4377bac9a28ea09c7f74886",
         "counts": {
           "questions": 24,
-          "changedQuestions": 24,
+          "changedQuestions": 23,
           "studentPayloadPreserved": 24,
           "uidJoinValid": 24,
-          "formalTypesPresent": 19,
-          "exactCourseBindings": 18,
-          "sourceFieldValidationValid": 19,
+          "formalTypesPresent": 20,
+          "exactCourseBindings": 19,
+          "sourceFieldValidationValid": 20,
           "identityFingerprintMismatch": 24,
           "registrationApply": 0,
           "registrationHold": 24
@@ -333,5 +337,47 @@
     "total": 12,
     "allQuestionMathReviewClaim": false,
     "palmaMid15": "EXPLICIT_TEXT_ONLY_VISUAL_CONDITION_COMPLETENESS_UNVERIFIED"
+  },
+  "previousRawProof": {
+    "fileId": "1PRC8pXic1xCUvx0MW67z8wknuvkXRoEl",
+    "url": "https://drive.google.com/file/d/1PRC8pXic1xCUvx0MW67z8wknuvkXRoEl/view?usp=drivesdk",
+    "sha256": "218676251bdd073248f90f7ec6b19f3bc8f70e6b6a89b542b0793f54b9b2c17f",
+    "byteLength": 90879,
+    "rawReadback": "VERIFIED"
+  },
+  "sourcePublicationHolds": [
+    {
+      "status": "HOLD_SHARED_PARENT_CONSUMER_CONFLICT",
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_5dc391015ed027a806eaf6697a7f49cbf59c8c1a68b99a62a59c67aeb1be5194",
+      "reviewedCorrectionPreservedAt": "7d91834add635654d6a5c718464ca6678295822d",
+      "retainedBaselineMainSha": "573fa32804480b2d70f7536b211e240e8d64d5ed",
+      "retainedBaselineSourceBlob": "7903fe2ceadcc2fe34f0bbf77aa8fd5e67054af5",
+      "retainedSourceMeaning": "Historical metadata retained without semantic approval",
+      "reviewedMeaning": "수직이등분선·수선의 발·중점의 정의; 기본 도형; reviewed difficulty bucket 1; RPM_LEAF_GAP",
+      "reason": "CI unified-unit parity uses an older approved shared parent while current source parent is corrected. Existing official registration lanes cannot perform this partial parent correction with PT/TPL and RPM leaf HOLD. User-authorized isolation preserves this single question baseline metadata and publishes the other 95 corrections.",
+      "failedCheck": {
+        "runId": 43526525748,
+        "jobId": 132233823873,
+        "test": "archive2-unified-units.test.js",
+        "head": "7d91834add635654d6a5c718464ca6678295822d",
+        "actualUnit": "RPM22-M1-L1-06",
+        "expectedUnit": "RPM22-M1-L1-05"
+      },
+      "nextAction": "Official shared metadata/identity registration owner must resolve the parent conflict and apply the preserved Q14 correction; do not re-review the other 95 items"
+    }
+  ],
+  "reviewedSemanticCounts": {
+    "reviewed": 96,
+    "exactNativeProjection": 59,
+    "typeOrVisualHolds": 37,
+    "difficultyAssigned": 95,
+    "difficultyVisualHold": 1
+  },
+  "sourcePublicationCounts": {
+    "metadataChanged": 95,
+    "metadataRetainedOnPublicationHold": 1,
+    "studentPayloadPreserved": 96,
+    "legacyLevelChanged": 0
   }
 }

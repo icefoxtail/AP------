@@ -4000,9 +4000,9 @@
     "3": 7
   },
   "difficultyAdjudicationStatus": "95_ASSIGNED_ITEMS_RESOLVED_Q15_VISUAL_HOLD_ONLY",
-  "finalSourceCheckpointStatus": "PENDING_REMOTE_PUBLICATION",
+  "finalSourceCheckpointStatus": "REMOTE_VERIFIED",
   "nativeRegistrationPlan": "SUPPLEMENT_PENDING_IDENTITY_SOURCE_FINGERPRINT_MISMATCH",
-  "sourceCheckpointSha": null,
+  "sourceCheckpointSha": "bb5db20c75fbe0c04a4c3a1ea13ec1cee57b1d2c",
   "sourcePublicationHolds": [
     {
       "status": "HOLD_SHARED_PARENT_CONSUMER_CONFLICT",
@@ -4060,5 +4060,29 @@
       "quotes": 153
     }
   },
-  "compactStatus": "REBIND_AFTER_SOURCE_CHECKPOINT"
+  "compactStatus": "COMPACT_IMPORTED_24_CURRENT_SOURCE_BLOB",
+  "compactImport": {
+    "schemaVersion": "m1s2-exported-four-slot-import-v1",
+    "method": "Official validateData, compactItem and serialize exported functions; immutable Drive evidence referenced through committed small pointer",
+    "sourceArchiveFile": "original/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학.js",
+    "sourceGitBlobSha": "adb1256f6034ca7a931557b6069c5c94b047d2fd",
+    "fullRawSha256": "a3b6ca15a9a551ca25530d3202d8fae00d7304b834b6ee6f3ff66acd80a17305",
+    "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+    "validation": {
+      "fail": [],
+      "warn": [
+        "#10 only 4 distinct terms",
+        "#13 only 4 distinct terms"
+      ]
+    },
+    "sampled": [
+      4,
+      13,
+      20
+    ],
+    "target": "archive/data/item-4slot/original/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학.4slot.json",
+    "compactSha256": "6b99ccace5af99a163c02bbfef94a80ca49526a6ac1015676c9d85eaab329258",
+    "independentReviewClaim": "THREE_SAMPLES_ONLY",
+    "authoredSourceMutation": 0
+  }
 }
