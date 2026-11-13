@@ -220,7 +220,7 @@ for (let ordinal=1; ordinal<=count; ordinal++) {
   for (const field of SOURCE_FIELDS) if (Object.hasOwn(question,field) && !eq(question[field]??null,final[field]??null))
     fail('source must be reconciled by its owner before requesting registration: ' + ordinal + '.' + field);
   const patch = {questionUid:row.questionUid,sourceOrdinal:ordinal,
-    before:Object.fromEntries(Object.keys(after).map(field=>[field,row[field]??null])),after,
+    before:Object.fromEntries([...new Set([...Object.keys(after),'L1','L2','L3','L4'])].map(field=>[field,row[field]??null])),after,
     reason:need(decision.reason,'item reason'),evidenceRefs:references(decision.evidenceRefs)};
   if (identity.sourceFingerprint !== sourceFingerprint) patch.identityBefore = {sourceFingerprint:identity.sourceFingerprint??null};
   if (decision.crosswalkRecordId) {

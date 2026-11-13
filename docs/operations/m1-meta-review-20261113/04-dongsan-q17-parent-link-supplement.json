@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "dongsan-q17-existing-parent-link-supplement-v1",
+  "status": "EXISTING_PARENT_EVIDENCE_CONFIRMED_R3_NOT_EXECUTED",
+  "baselineMain": "573fa32804480b2d70f7536b211e240e8d64d5ed",
+  "sourceOrdinal": 17,
+  "questionUid": "qid_v1_a522a6981ee48b611c9394519acfe249450312545fcf0669ba4928e79b88ccc1",
+  "sourceCandidateSha256": "9a631f2376d09ded4c4ca4a8d924ea7f5ba8c3bf3bb8e29adb33e9e4d6bff35f",
+  "failure": {
+    "requestId": "m1-dongsan-2025-final-meta-review-20261113-r2",
+    "requestRawSha256": "b7f05f3f15d6afe1335ceea6771182ba76f82c356e3b6b7f0dd0cc0702b1c653",
+    "officialProjectionError": "Consumer metadata mismatch: qid_v1_a522a6981ee48b611c9394519acfe249450312545fcf0669ba4928e79b88ccc1.curriculumKey",
+    "actualRpmAuditStatus": "FAIL",
+    "actualRpmAuditSha256": "2dd72cfe40cbf5bab867c85f951897759e8c32d18843f5dd7c4655b3c3a510f7",
+    "nativeValueMatches": 23,
+    "exactLeafCount": 23,
+    "rpmDebtOrdinals": [
+      17
+    ],
+    "rawCatalogReasons": [
+      "canonical_parent_missing"
+    ],
+    "rawCatalogMetaBinding": "exact",
+    "resolvedCanonicalFieldsEmpty": [
+      "curriculumKey",
+      "courseKey",
+      "standardUnitKey",
+      "subUnitKey",
+      "problemTypeKey",
+      "templateKey"
+    ],
+    "runtimeMetadataRetained": {
+      "standardUnitKey": "M1-04",
+      "subUnitKey": "M1-04-COORDINATE_PLANE",
+      "problemTypeKey": "PT_COORDINATE_POINT_READING",
+      "templateKey": "TPL_COORDINATE_POINT_READING_QUADRANT_SIGN_TRANSFORM",
+      "curriculumKey": "2022",
+      "courseKey": "M1-1",
+      "L1": "좌표평면과 그래프",
+      "L2": "좌표평면",
+      "rpmPrimaryPath": null,
+      "rpmSemanticStatus": "HOLD",
+      "metadataApprovalType": "FINAL_QA"
+    },
+    "parentCounts": {
+      "M1-1 / 문자와 식 / 문자의 사용과 식의 계산 (LEAF)": 10,
+      "M1-1 / 문자와 식 / 일차방정식의 활용 (LEAF)": 2,
+      "M1-1 / 문자와 식 / 일차방정식의 풀이 (LEAF)": 4,
+      "M1-1 / 좌표평면과 그래프 / 좌표와 그래프 (LEAF)": 5,
+      "unresolved: NOT_FOUND": 1,
+      "M1-1 / 좌표평면과 그래프 / 정비례와 반비례 (LEAF)": 2
+    }
+  },
+  "cause": "The native binding has no explicit L2, so labelsFor derived the native subunit label 좌표평면. The existing canonical parent uses 좌표와 그래프. The post-build catalog reports canonical_parent_missing; canonical resolution clears the canonical fields. verifyConsumerValues only permits its usable-meta lane fallback for assignment_missing, so this mismatch correctly fails.",
+  "baselineExistingParentEvidence": {
+    "path": "archive/data/basic-scope-parent-links.json",
+    "sha256": "90d8822ebb0e98edc9fff461bbe5cb6170643e0c73047c86ff2557071a46d8e7",
+    "gitBlobSha1": "010b9ebf7067158598b70e86103f8f771dd217f6",
+    "zeroBasedRecordIndex": 233,
+    "exactMatchCount": 1,
+    "record": {
+      "grade": "중1",
+      "curriculumKey": "2022",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-04",
+      "subUnitKey": "M1-04-COORDINATE_PLANE",
+      "L1": "좌표평면과 그래프",
+      "L2": "좌표와 그래프"
+    },
+    "currentIsolatedSameScopedRecord": true,
+    "currentIsolatedWholeFileSha256": "e6258c940b22a4228729a3727ba2583ab02e3b3203922389009588cbb16b6a83",
+    "snapshotScope": "Whole parent-links bytes changed during the isolated build; this exact scoped record already existed identically in actual baseline main."
+  },
+  "minimalRoute": {
+    "kind": "EXISTING_BASIC_SCOPE_PARENT_REF",
+    "newNativeKeyCount": 0,
+    "newCrosswalkRowCount": 0,
+    "newRpmLeafCount": 0,
+    "bindingMutationRequired": false,
+    "targetParentRefUsed": false,
+    "siblingConsensusNeeded": false,
+    "formalProofWrittenByThisAgent": false,
+    "requiredProofSchema": "archive-meta-pipeline-parent-label-evidence-v1",
+    "requiredProofSourcePath": "archive/data/basic-scope-parent-links.json",
+    "requiredProofSourceSha256": "90d8822ebb0e98edc9fff461bbe5cb6170643e0c73047c86ff2557071a46d8e7",
+    "requiredProofRecords": [
+      {
+        "grade": "중1",
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프"
+      }
+    ],
+    "requiredProofPathPattern": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/*.parent-labels.json",
+    "requestPatch": "Root adds basicScopeParentRef:{path,sha256} and the identical proof ref in item.evidenceRefs for Q17 only; no targetParentRef or false RPM mapping.",
+    "derivedNativeParent": {
+      "curriculum": "2022",
+      "scope": "M1-1",
+      "majorUnit": "좌표평면과 그래프",
+      "midUnit": "좌표와 그래프"
+    },
+    "rpmDebtPreserved": true,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryRecordId": null,
+    "rpmSemanticStatus": "HOLD"
+  },
+  "officialGuardStaticReview": {
+    "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+    "sha256": "997347340a7dbd1ae05c1f70935aa23a125b9bd7aad3a08a463bd2fb85af55f1",
+    "unchanged": true,
+    "labelsForScopes": [
+      "1613-1621: evidence-bound path/schema/sourcePath/SHA shape",
+      "1622-1625: courseKey alias allowed by owner pack",
+      "1652-1655: exact curriculum/course/unit/subunit record match",
+      "1673-1675: set base L1/L2 only",
+      "1699-1702: targetParentRef direct label restriction remains intact",
+      "2025-2028: existing before L1-L4 keys permit checked derived labels"
+    ],
+    "actualPredicates": {
+      "uniqueExactBaselineRecord": true,
+      "curriculumMatches2022": true,
+      "courseM1_1IsActualPackAlias": true,
+      "unitAndSubunitMatchQ17": true,
+      "currentR2AlreadyHasL1L2L3L4Before": true,
+      "noCompetingTargetParentRef": true
+    },
+    "execution": "STATIC_CODE_AND_ACTUAL_INPUT_REVIEW_ONLY; no new registrar or Consumer run"
+  },
+  "semanticRevision": {
+    "oldPath": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json",
+    "oldSha256": "60526e5edf2ab259fbed1a911ed065bb0fcef0840178757eb694ca6dc0d0995c",
+    "newPath": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review-rev2.json",
+    "newSha256": "b21c50dadfa1dab31a2110c0f31df44ec39c33e3ea3caf4305b60f67df0aea44",
+    "onlyChangedJsonPointer": "/items/16/effectiveParent",
+    "before": null,
+    "after": {
+      "curriculum": "2022",
+      "scope": "M1-1",
+      "majorUnit": "좌표평면과 그래프",
+      "midUnit": "좌표와 그래프"
+    },
+    "allOtherSemanticDecisionsIdentical": true,
+    "nativeTypeAndRpmLeafDecisionsUnchanged": true
+  },
+  "failureEvidence": [
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r2-failed-request.json",
+      "sha256": "b7f05f3f15d6afe1335ceea6771182ba76f82c356e3b6b7f0dd0cc0702b1c653"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r2-parent-audit-failure.json",
+      "sha256": "2dd72cfe40cbf5bab867c85f951897759e8c32d18843f5dd7c4655b3c3a510f7"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r2-projection-failure.json",
+      "sha256": "5a35131127ecf96fbe050057750fd778da6a4c32eabd3fd11c74d388db86e36d"
+    }
+  ],
+  "scopeBoundaries": {
+    "originalLedgerChanged": false,
+    "sourceChanged": false,
+    "existingRequestChanged": false,
+    "canonicalChanged": false,
+    "officialGuardChanged": false,
+    "registrationOrBuildRepeated": false,
+    "fullConsumerRepeated": false,
+    "mathReReviewPerformed": false,
+    "fullR1R2R3Rerun": false,
+    "postRepairPassClaim": false
+  },
+  "nextAction": "Root writes the formal exact-baseline parent evidence, derives a new r3 request in the new isolated tree, and verifies official projection, Consumer24 and RPM audit. The expected debt is a known coarse parent with no exact RPM leaf."
+}

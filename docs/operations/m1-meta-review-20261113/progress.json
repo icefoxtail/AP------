@@ -15,7 +15,7 @@
   "completedExams": 3,
   "reviewedQuestions": 95,
   "currentOrder": 4,
-  "nextAction": "Apply exact reviewed DongSan24 source/crosswalk/parent candidates on actual main573fa, build normal24 request with TPL1 + four same-exam course spelling corrections, run direct official preflight, then one paper PR/main closeout.",
+  "nextAction": "Publish exact prepared branch/source/inbox/evidence, verify exact-head CI, merge, then verify actual writer receipt/final post-AutoMeta Consumer/remote main SHA before closing exam4.",
   "exams": [
     {
       "order": 1,
@@ -883,19 +883,50 @@
       "count": 24,
       "sourceBlob": "c75dc3e1ce47c0ec85e51a63b1a1e16ab479385f",
       "sourceSha256": "357bfa1d8b326e228179624bf4943ec151a53362e23b00d2dcaac717a5334029",
-      "status": "SEMANTIC_READ_COMPLETE_NOT_OPERATIONALLY_CLOSED",
+      "status": "ISOLATED_R3_PREFLIGHT_PASS_PR_MAIN_PENDING",
       "checklist": "[ ]",
       "operationallyClosed": false,
       "metadataReviewed": true,
       "reviewedQuestions": 24,
       "viewedFigures": 15,
       "semanticEvidence": {
-        "path": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json",
-        "sha256": "60526e5edf2ab259fbed1a911ed065bb0fcef0840178757eb694ca6dc0d0995c"
+        "path": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review-rev2.json",
+        "sha256": "b21c50dadfa1dab31a2110c0f31df44ec39c33e3ea3caf4305b60f67df0aea44"
       },
       "rpmDebtOrdinals": [
         17
-      ]
+      ],
+      "requestId": "m1-dongsan-2025-final-meta-review-20261113-r3",
+      "requestSha256": "575dab859b0e5b419a5f2428f19f0835ce11e236ccb9db5184e5a73dcdd9e0e4",
+      "sourceMetadataChangedQuestionCount": 24,
+      "rpmExactLeafCount": 23,
+      "parentLinkSupplement": {
+        "path": "docs/operations/m1-meta-review-20261113/04-dongsan-q17-parent-link-supplement.json",
+        "sha256": "c50545af31dba70a8f94ecdb34884be2c76f3dcf4b56ff3a2f91c5ca4b2010c1"
+      },
+      "isolatedFailureHistory": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r2-projection-failure.json",
+          "sha256": "5a35131127ecf96fbe050057750fd778da6a4c32eabd3fd11c74d388db86e36d"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r2-isolated-protection.json",
+          "sha256": "1dc35dbcdf52679708ba52d845e7859cb64d8081e54a02388fcb1c630365cd0e"
+        }
+      ],
+      "isolatedPreflight": {
+        "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r3-isolated-preflight.json",
+        "sha256": "da580d9434ab3de8d354c24f03bdac2bdc980fd96e616e852300c8fb7674fd96"
+      },
+      "nativeRegistrationDryRun": "PASS",
+      "consumerVerification": "LOCAL_ISOLATED_PASS_24_OF_24_NOT_MAIN",
+      "actualRpmParents": {
+        "nativeMatches": 24,
+        "exactLeaves": 23,
+        "parentOnlyDebtOrdinals": [
+          17
+        ]
+      }
     },
     {
       "order": 5,
@@ -1626,9 +1657,9 @@
   },
   "operationallyClosedQuestions": 71,
   "latestVerifiedRemoteCheckpoint": {
-    "head": "a70a155542016cc47215bced471a07a1f7602695",
-    "tree": "9ebe25c7be2c1ad06a6c5d09ac7effc385b7d1cd",
-    "status": "SHARED_BINDING_V2_PREFLIGHT_REMOTE_READBACK_VERIFIED"
+    "head": "9eccf682c8569459466703ca844c504cb1939833",
+    "tree": "3c7e6e2b5bbbf8914b9e75f7835f79f3b5f82cc3",
+    "status": "SHARED_BINDING_OPERATIONAL_CLOSEOUT_REMOTE_READBACK_VERIFIED"
   },
   "courseCorrectionDependency": {
     "pr": 1966,
@@ -1736,7 +1767,7 @@
     "rawSha256": "60526e5edf2ab259fbed1a911ed065bb0fcef0840178757eb694ca6dc0d0995c",
     "allQuestionsRead": 24,
     "allReferencedFiguresViewed": 15,
-    "candidateApplied": false,
+    "candidateApplied": true,
     "nativeSpellingCorrectionScope": "EXACT_17_CONSUMERS_DONGSAN16_PLUS_PUNGDEOK1_SHARED154_REQUIRES_SEPARATE_PRESERVATION_DEPENDENCY",
     "plannedExactLeaves": 23,
     "debtOrdinals": [
@@ -1745,6 +1776,11 @@
     "preparedCandidateAudit": {
       "path": "docs/operations/m1-meta-review-20261113/04-dongsan-candidate-independent-check.json",
       "sha256": "473effa71d29e7dcb84020214eb2b321a03f36da8dbf9ea97f8c4eedf0ea772e"
+    },
+    "candidateAppliedScope": "OWNED_BRANCH_AND_ISOLATED_PROOF_ONLY_NOT_MAIN",
+    "currentSemanticRevision": {
+      "path": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review-rev2.json",
+      "sha256": "b21c50dadfa1dab31a2110c0f31df44ec39c33e3ea3caf4305b60f67df0aea44"
     }
   },
   "dongsanSharedBindingDependency": {
@@ -1804,5 +1840,11 @@
     "normalDongsan24ProductionCandidateApplied": false,
     "sourceAndRuntimeRecordsChanged": false
   },
-  "latestMergedDependencyHead": "a70a155542016cc47215bced471a07a1f7602695"
+  "latestMergedDependencyHead": "a70a155542016cc47215bced471a07a1f7602695",
+  "latestAwcr": {
+    "sharedRevision": 30,
+    "fileId": "1V4LG5U6NGOG8Nr6GNmcm6TIZ4VRbXzjf",
+    "rawSha256": "80b6685af33f466ce6c60115e2b1de80f3cc0d8fd65292cea2bd24d1ceca01e8",
+    "remoteRawVerified": true
+  }
 }

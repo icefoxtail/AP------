@@ -52,6 +52,8 @@ DEPENDENCY_RECEIPT = (
 )
 FOREIGN_UID = "qid_v1_553b57b364c7ebc98905d8268bc248b500f3e8a62855de1769b6328dfff6fdb2"
 HELPER = DOCS + "checkpoint-tools/build-reviewed-exam-v2-request.mjs"
+DERIVED_LABEL_SUPPLEMENT = DOCS + "04-dongsan-derived-label-preconditions.json"
+DERIVED_LABEL_SUPPLEMENT_SHA = "256707102ba31a48a708a7c6ef9c733079aae0d46b4ef73b553cc19b90cae779"
 FROZEN = {
     "04-dongsan-semantic-review.json": "60526e5edf2ab259fbed1a911ed065bb0fcef0840178757eb694ca6dc0d0995c",
     "04-dongsan-candidate-independent-check.json": "473effa71d29e7dcb84020214eb2b321a03f36da8dbf9ea97f8c4eedf0ea772e",
@@ -278,8 +280,20 @@ def main():
     expected_parent_sha = next(r["sha256"] for r in audit["evidenceRefs"] if r["path"] == TMP + "04-dongsan-parents-candidate.json")
     require(sha(path(CROSSWALK).read_bytes()) == expected_cross_sha
             and sha(path(PARENTS).read_bytes()) == expected_parent_sha, "Crosswalk/parent candidate bytes drifted")
+    supplement_ref = ref(DERIVED_LABEL_SUPPLEMENT, DERIVED_LABEL_SUPPLEMENT_SHA)
+    supplement = read(DERIVED_LABEL_SUPPLEMENT)
+    audited_helpers = [r for r in audit["evidenceRefs"] if r["path"] == HELPER]
+    require(supplement["schemaVersion"] == "dongsan-derived-label-preconditions-v1"
+            and supplement["helperPath"] == HELPER and len(audited_helpers) == 1
+            and audited_helpers[0]["sha256"] == supplement["beforeHelperSha"]
+            and supplement["sourceCandidateSha256"] == CANDIDATE_SHA
+            and supplement["change"]["afterValuesChanged"] is False
+            and supplement["change"]["classificationDecisionChanges"] == 0,
+            "Derived-label supplement does not bind the original audited helper/candidate")
+    ref(HELPER, supplement["afterHelperSha"])
+    ref(supplement["officialRegistrarPath"], supplement["officialRegistrarSha256"])
     for evidence in audit["evidenceRefs"]:
-        if evidence["path"] in [MASTER, HELPER]:
+        if evidence["path"] == MASTER:
             ref(evidence["path"], evidence["sha256"])
     cross_by_id = {r["id"]:r for r in cross["records"]}
     require(len(cross_by_id) == 281, "Duplicate crosswalk ID")
@@ -302,7 +316,7 @@ def main():
             changed_indexes.append(base_bindings.index(before))
     require(sorted(changed_indexes) == [151,152,153,155], "Shared154 must not enter the normal exam request")
 
-    refs += [preflight_ref, ref(DEPENDENCY_RECEIPT), ref(HELPER)]
+    refs += [preflight_ref, ref(DEPENDENCY_RECEIPT), ref(HELPER), supplement_ref]
     item_refs = [ref(DOCS + "04-dongsan-semantic-review.json"), ref(DOCS + "04-dongsan-candidate-independent-check.json")]
     items = []
     for ordinal, (decision, q) in enumerate(zip(ledger["items"], bank), 1):

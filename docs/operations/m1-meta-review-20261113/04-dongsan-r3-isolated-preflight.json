@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "reviewed-exam-isolated-preflight-v1",
+  "status": "PASS_EXACT24_REGISTRATION_PROJECTION_CONSUMER_RPM_PARENT_AND_SCOPE_LOCAL_ONLY",
+  "scope": "LOCAL_ISOLATED_ONLY_NOT_OPERATIONAL_MAIN",
+  "baselineMain": "573fa32804480b2d70f7536b211e240e8d64d5ed",
+  "baselineOwnedCheckpoint": "9eccf682c8569459466703ca844c504cb1939833",
+  "requestId": "m1-dongsan-2025-final-meta-review-20261113-r3",
+  "requestRawSha256": "575dab859b0e5b419a5f2428f19f0835ce11e236ccb9db5184e5a73dcdd9e0e4",
+  "requestCanonicalSha256": "e07ebd2b66aabc927aba77c9cea81716c4ee67d9982abb2678a7102d800c9053",
+  "sourceRawSha256": "9a631f2376d09ded4c4ca4a8d924ea7f5ba8c3bf3bb8e29adb33e9e4d6bff35f",
+  "sourceBlobSha1": "eae025e4aa4e2a862c6e7db0a350682da142a086",
+  "questionCount": 24,
+  "sourceMetadataModifiedQuestions": 24,
+  "nativeUnitSubunitAndPtCorrections": 0,
+  "nativeTemplateCorrections": 1,
+  "registryChanges": 5,
+  "runtimeMaterialized": 24,
+  "nativePack": {
+    "packId": "MIDDLE1",
+    "beforeVersion": "1.0.9",
+    "packVersion": "1.0.10",
+    "problemTypeCount": 95,
+    "templateCount": 214,
+    "bindingCount": 179,
+    "runtimeUidCount": 659
+  },
+  "official": {
+    "dry-run": {
+      "status": "PASS",
+      "write": false,
+      "requestId": "m1-dongsan-2025-final-meta-review-20261113-r3",
+      "approvalType": "FINAL_QA",
+      "totalQuestions": 24,
+      "registryChangeCount": 5,
+      "runtimeMaterialized": 24,
+      "fingerprintRepairCount": 24,
+      "consumerSearchStatus": "NOT_RUN",
+      "replay": false,
+      "plannedPaths": [
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+        "archive/data/meta-foundation/canonical/registry_index.json",
+        "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+        "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "archive/data/question_metadata.json",
+        "archive/data/question_identity_map.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-dongsan-2025-final-meta-review-20261113-r3.json"
+      ]
+    },
+    "write": {
+      "status": "PASS",
+      "write": true,
+      "requestId": "m1-dongsan-2025-final-meta-review-20261113-r3",
+      "approvalType": "FINAL_QA",
+      "totalQuestions": 24,
+      "registryChangeCount": 5,
+      "runtimeMaterialized": 24,
+      "fingerprintRepairCount": 24,
+      "consumerSearchStatus": "NOT_RUN",
+      "replay": false,
+      "plannedPaths": [
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+        "archive/data/meta-foundation/canonical/registry_index.json",
+        "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+        "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "archive/data/question_metadata.json",
+        "archive/data/question_identity_map.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-dongsan-2025-final-meta-review-20261113-r3.json"
+      ]
+    },
+    "projection": {
+      "status": "PASS",
+      "requestId": "m1-dongsan-2025-final-meta-review-20261113-r3",
+      "totalQuestions": 24,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "browserStatus": "NOT_RUN",
+      "consumerLanes": {
+        "canonical": 24,
+        "usableMetaLane": 0
+      }
+    },
+    "consumer": {
+      "status": "PASS",
+      "mainSha": "9eccf682c8569459466703ca844c504cb1939833",
+      "counts": {
+        "changed": 24,
+        "checked": 24,
+        "passed": 24,
+        "skippedUnchanged": 0
+      },
+      "exams": [
+        {
+          "file": ".tmp/m1-meta-review/04-dongsan-actual573-r3.request.json",
+          "kind": "reviewed-exam-v2",
+          "exam": "25_동산중_2학기_기말_중1_기출",
+          "sourceFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+          "changed": 24,
+          "checked": 24,
+          "passed": 24,
+          "skippedUnchanged": 0
+        }
+      ],
+      "failures": [],
+      "unobservedFields": [],
+      "solverOnlyRevisions": [],
+      "assignmentPending": []
+    }
+  },
+  "build": {
+    "exitCode": 0,
+    "status": "ARCHIVE_REGISTRATION_SYNC_PASS",
+    "logSha256": "57913751d983378a8ddfd50b7e44f6bde19b6d0dc6dcd4dae109fbd882a694dd",
+    "logBytes": 19575
+  },
+  "actualRpmParents": {
+    "evidence": {
+      "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r3-actual-rpm-parents.json",
+      "sha256": "5258db3b90e94d9a9258728e3da9166ee7d945ebb329f28af37eee59ec4d2c97"
+    },
+    "status": "PASS",
+    "nativeMatches": 24,
+    "exactLeaves": 23,
+    "debtOrdinals": [
+      17
+    ],
+    "q17Parent": "EXACT_PARENT_ONLY_WITHOUT_RPM_LEAF",
+    "parentCounts": {
+      "M1-1 / 문자와 식 / 문자의 사용과 식의 계산 (LEAF)": 10,
+      "M1-1 / 문자와 식 / 일차방정식의 활용 (LEAF)": 2,
+      "M1-1 / 문자와 식 / 일차방정식의 풀이 (LEAF)": 4,
+      "M1-1 / 좌표평면과 그래프 / 좌표와 그래프 (LEAF)": 5,
+      "M1-1 / 좌표평면과 그래프 / 좌표와 그래프 (PARENT)": 1,
+      "M1-1 / 좌표평면과 그래프 / 정비례와 반비례 (LEAF)": 2
+    }
+  },
+  "outsideScopeProtection": {
+    "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r3-isolated-protection.json",
+    "sha256": "14ef3505e9d1b5c69e5b733f4dcebd1f52f14b62ab440aa42c65f6849b59907c"
+  },
+  "isolatedReuseFiles": {
+    "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r3-isolated-reuse-files.json",
+    "sha256": "75f7d107e28b61f49f15b17134a64013ebab53570ff1e8dc17d8790fbc33f005"
+  },
+  "semanticLedger": {
+    "path": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review-rev2.json",
+    "sha256": "b21c50dadfa1dab31a2110c0f31df44ec39c33e3ea3caf4305b60f67df0aea44"
+  },
+  "normalPreservationReused": {
+    "path": "docs/operations/m1-meta-review-20261113/04-dongsan-candidate-independent-check.json",
+    "sha256": "473effa71d29e7dcb84020214eb2b321a03f36da8dbf9ea97f8c4eedf0ea772e"
+  },
+  "preserved": {
+    "normalSourceQuestions": 24,
+    "figures": 15,
+    "target4slot": true,
+    "previousClosedQuestions": 71,
+    "foreignPungdeokConsumers": 1,
+    "otherRuntimePacks": 16,
+    "otherMetadataAndIdentityRows": 28866,
+    "otherM1RuntimeRows": 635,
+    "existingCrosswalkRows": 273,
+    "addedExactCrosswalkRows": 8,
+    "lockedMasterLeaves": 326,
+    "l1Count": 24,
+    "l2Count": 54,
+    "normalAnswersSolutionsImagesChanged": false,
+    "difficultySourceReviewStatusAndUidChanged": false
+  },
+  "formalReceipt": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-dongsan-2025-final-meta-review-20261113-r3.json",
+    "sha256": "9fcb84422138d7ecf9b5f7fce63ed9c8debd918cf446ea16d7d6c164d9f050b2",
+    "metadataRegistrationStatus": "REGISTERED",
+    "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+    "scope": "LOCAL_ONLY"
+  },
+  "resolvedLocalFailures": [
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-dongsan-derived-label-preconditions.json",
+      "sha256": "256707102ba31a48a708a7c6ef9c733079aae0d46b4ef73b553cc19b90cae779"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-dongsan-r2-projection-failure.json",
+      "sha256": "5a35131127ecf96fbe050057750fd778da6a4c32eabd3fd11c74d388db86e36d"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-dongsan-q17-parent-link-supplement.json",
+      "sha256": "c50545af31dba70a8f94ecdb34884be2c76f3dcf4b56ff3a2f91c5ca4b2010c1"
+    }
+  ],
+  "guardChanged": false,
+  "newRpmLeafAssignedToDebt": false,
+  "fullR1R2R3Rerun": false,
+  "examMathFinalQaPerformed": false,
+  "mainRegistration": "NOT_STARTED",
+  "nextAction": "Publish exact prepared branch/source/inbox/evidence, verify exact-head CI, merge, then verify actual writer receipt/final post-AutoMeta Consumer/remote main SHA before closing exam4."
+}
