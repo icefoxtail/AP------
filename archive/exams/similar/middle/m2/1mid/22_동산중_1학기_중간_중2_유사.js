@@ -452,7 +452,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "content": "$(-x^A y)^3 \\div 4xy^B \\times 8x^2y^6 = Cx^7y^5$일 때, $A + B + C$의 값은? (단, $A, B, C$는 수이고 $x\\ne0$, $y\\ne0$.)",
+    "content": "$(-x^A y)^3 \\div (4xy^B) \\times 8x^2y^6 = Cx^7y^5$일 때, $A + B + C$의 값은? (단, $A, B, C$는 실수이고, 모든 양수 $x,y$에 대해 성립한다.)",
     "choices": [
       "① $4$",
       "② $3$",
@@ -461,7 +461,7 @@ window.questionBank = [
       "⑤ $8$"
     ],
     "answer": "①",
-    "solution": "좌변을 정리하여 우변의 계수와 지수를 비교한다.\n$$\\begin{aligned}\n(-x^A y)^3 \\div 4xy^B \\times 8x^2y^6 &= (-x^{3A}y^3) \\times \\dfrac{1}{4xy^B} \\times 8x^2y^6 \\\\\n&= -2 x^{3A - 1 + 2} y^{3 - B + 6} \\\\\n&= -2 x^{3A + 1} y^{9 - B}\n\\end{aligned}$$\n우변 $Cx^7y^5$와 비교하면 $C = -2$, $3A + 1 = 7 \\implies A = 2$, $9 - B = 5 \\implies B = 4$이다.\n따라서 $A + B + C = 2 + 4 + (-2) = 4$이다.\n정답은 ①이다.",
+    "solution": "좌변을 정리하여 우변의 계수와 지수를 비교한다.\n$$\\begin{aligned}\n(-x^A y)^3 \\div (4xy^B) \\times 8x^2y^6 &= (-x^{3A}y^3) \\times \\dfrac{1}{4xy^B} \\times 8x^2y^6 \\\\\n&= -2 x^{3A - 1 + 2} y^{3 - B + 6} \\\\\n&= -2 x^{3A + 1} y^{9 - B}\n\\end{aligned}$$\n우변 $Cx^7y^5$와 비교하면 $C = -2$, $3A + 1 = 7 \\implies A = 2$, $9 - B = 5 \\implies B = 4$이다.\n따라서 $A + B + C = 2 + 4 + (-2) = 4$이다.\n정답은 ①이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -902,7 +902,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
-    "content": "$A = \\dfrac{2^{14} \\times 25^8}{10}$을 $a \\times 10^n$의 꼴로 나타내어 몇 자리의 자연수인지 구하려고 한다. (단, $a$는 자연수, $10 < a < 10^2$, 풀이 과정을 자세히 쓰시오.) [6점]\n(1) $a$와 $n$의 값을 각각 구하시오. [4점]\n(2) $A = \\dfrac{2^{14} \\times 25^8}{10}$는 몇 자리의 자연수인지 구하시오.",
+    "content": "$A = \\dfrac{2^{14} \\times 25^8}{10}$을 $a \\times 10^n$의 꼴로 나타내어 몇 자리의 자연수인지 구하려고 한다. (단, $a$는 자연수, $n$은 자연수, $10 < a < 10^2$, 풀이 과정을 자세히 쓰시오.) [6점]\n(1) $a$와 $n$의 값을 각각 구하시오. [4점]\n(2) $A = \\dfrac{2^{14} \\times 25^8}{10}$는 몇 자리의 자연수인지 구하시오.",
     "choices": [],
     "answer": "(1) $a = 25, \\; n = 13$, (2) $15$자리 자연수",
     "solution": "(1) 지수법칙을 이용해 식을 정리한다.\n$$\\begin{aligned}\nA = \\dfrac{2^{14} \\times (5^2)^8}{2 \\times 5} &= \\dfrac{2^{14} \\times 5^{16}}{2 \\times 5} \\\\\n&= 2^{13} \\times 5^{15} \\\\\n&= 5^2 \\times (2 \\times 5)^{13} \\\\\n&= 25 \\times 10^{13}\n\\end{aligned}$$\n$10 < 25 < 100$을 만족하므로 $a = 25, n = 13$이다.\n(2) $25$ 뒤에 $0$이 $13$개 붙으므로 $2 + 13 = 15$자리 자연수이다.\n정답은 (1) $a = 25, \\; n = 13$, (2) $15$자리 자연수이다.",

@@ -3,8 +3,8 @@
   "requestId": "similar-22-dongsan-m2-1mid-candidate-v1",
   "examUid": "22_동산중_1학기_중간_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/22_동산중_1학기_중간_중2_유사.js",
-  "expectedSourceBlobSha1": "3ac606bbf8b030921bd557fccc3aee1b38796004",
-  "expectedSourceSha256": "782249fc7eb9b921cfe5a038e5c19b7b7d153a7b819f7351f72d8f0b78d00f84",
+  "expectedSourceBlobSha1": "a49094a7c4c7be59a911e8ea920bda497a184d0f",
+  "expectedSourceSha256": "cc64b9856e08071923eac99f99bb9362df77c8c5671dc1d222d6fa464a43a35b",
   "expectedQuestionCount": 25,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -27,7 +27,7 @@
     "declaredTotalScore": 100,
     "verifiedItemScoreTotal": 100,
     "sourceRevisionRead": "Direct native Docs read of revision AHj4eMS4Tlm80ukiqySwzH1JhFPUQ38lIuL9PcFzPQYvr9XEstCPXr1Gv6EvF55mL_SI9sfhygcy8v5lp5C-1j6hm77D_CkurLnTAR8lP4Q: 1,856 paragraphs, 25 questions, no tables or inline images. Drive modified time 2026-11-13T21:33:31.693Z; document header generatedAt 2026-11-14 recorded separately. All prompts, choices, answers and solutions were read.",
-    "note": "Candidate similar exam only; original source JS is unchanged. Q7 explicitly specifies the misread numerator 37 and denominator 90 because the observed reduced decimal ratios alone did not determine the true values uniquely. Q8 converts the five original statements to one combination answer while preserving each statement. Q9 states a≠0 and asks for the differing simplified expression; Q12/Q14 state x,y≠0, Q15 states positive dimensions, Q16 states x≠0, and Q22 uses positive natural numbers. Q4’s repetend-dot notation and answer ① were checked. Q23–25 use empty choices. Math values checked from all 25 items. Independent review, semantic 4-slot review, official registration, SVG, screen and visual QA NOT_RUN. Mechanical checks: node --check PASS; Node VM confirmed 25 items, 100 points, 22 objective and 3 free-response items, free-response choices empty, 0 non-whitespace runtime control characters; objective answer distribution is 4/5/5/4/4 across ①–⑤. 4-slot validator: 25 items, 107 citations, 0 FAIL, 41 WARN (term-count, single-method, and repeated-vector warnings). Draft harness ran and stopped only because the candidate-specific author plans directory is absent; the plans directory was not created and no EXEMPT substitute was added. Independent review, semantic 4-slot review, official registration, SVG and visual QA remain NOT_RUN."
+    "note": "Candidate similar exam only; original source JS is unchanged. Q7 explicitly specifies the misread numerator 37 and denominator 90 because the observed reduced decimal ratios alone did not determine the true values uniquely. Q8 converts the five original statements to one combination answer while preserving each statement. Q9 states a≠0 and asks for the differing simplified expression; Q12/Q14 state x,y≠0, Q15 states positive dimensions, Q16 states x≠0, and Q22 uses positive natural numbers. Q4’s repetend-dot notation and answer ① were checked. Q23–25 use empty choices. Math values checked from all 25 items. Independent review, semantic 4-slot review, official registration, SVG, screen and visual QA NOT_RUN. Mechanical checks: node --check PASS; Node VM confirmed 25 items, 100 points, 22 objective and 3 free-response items, free-response choices empty, 0 non-whitespace runtime control characters; objective answer distribution is 4/5/5/4/4 across ①–⑤. 4-slot validator: 25 items, 107 citations, 0 FAIL, 41 WARN (term-count, single-method, and repeated-vector warnings). Draft harness ran and stopped only because the candidate-specific author plans directory is absent; the plans directory was not created and no EXEMPT substitute was added. Independent review, semantic 4-slot review, official registration, SVG and visual QA remain NOT_RUN. Follow-up corrections on 2026-11-13: Q12 groups the full divisor as (4xy^B) and states the identity holds for all positive x,y with A,B,C real, preserving answer ①; Q24 states n is a natural number, preserving (a,n)=(25,13) and 15 digits. Q12/Q24 condition-slot evidence synchronized. Independent review and formal registration remain NOT_RUN. Mechanical revalidation after Q12/Q24 correction: 25 items, 108 quotes, 0 FAIL, 40 WARN; semantic review NOT_RUN."
   },
   "items": [
     {
@@ -633,7 +633,7 @@
             "지수법칙"
           ],
           "condition": [
-            "정의역제한"
+            "양수"
           ]
         },
         "hold": ""
@@ -1238,7 +1238,9 @@
           "method": [
             "지수법칙"
           ],
-          "condition": []
+          "condition": [
+            "정의역제한"
+          ]
         },
         "hold": ""
       }
