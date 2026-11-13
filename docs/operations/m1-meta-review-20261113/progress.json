@@ -15,7 +15,7 @@
   "completedExams": 1,
   "reviewedQuestions": 47,
   "currentOrder": 2,
-  "nextAction": "Complete isolated Wangun23 actual Consumer/RPM parent and frozen17 outside-scope comparison. Wait other-owner PR1967 exact main registration before publishing the crosswalk; refresh main inputs and immutable request, then PR/main/actual receipt/final Consumer/remote SHA closeout.",
+  "nextAction": "Publish Wangun exact candidate/request on owned branch and create PR; verify exact-head CI. Merge only after PR1967 actual main writer closes and fresh main source/registry/evidence inputs are checked. Then actual Wangun receipt/final23 Consumer/remote SHA closeout.",
   "exams": [
     {
       "order": 1,
@@ -583,7 +583,7 @@
       "count": 23,
       "sourceBlob": "76377173ecb0ba989188561bbefac2afb3232479",
       "sourceSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
-      "status": "ISOLATED_REGISTRATION_APPLIED_CONSUMER_PENDING",
+      "status": "ISOLATED_PREFLIGHT_PASS_PR_PREPARATION",
       "checklist": "[ ]",
       "operationallyClosed": false,
       "reviewedQuestionCount": 23,
@@ -614,7 +614,12 @@
       "newExactCrosswalks": 15,
       "nativePlanEvidence": "02-wangun-native-registration-plan-rev2.json",
       "crosswalkPlanEvidence": "02-wangun-crosswalk-plan-rev2.json",
-      "independentSourcePreservationEvidence": "02-wangun-source-candidate-independent-review-rev3.json"
+      "independentSourcePreservationEvidence": "02-wangun-source-candidate-independent-review-rev3.json",
+      "requestId": "m1-wangun-2026-mid-meta-review-20261113",
+      "requestRawSha256": "feb528273a4167b654a50dcd6d825c7db9173b0bf2fee1c47904b20b4bb505c1",
+      "preparedSourceSha256": "c79551504949aee9ee09f5a8e2bf74898f7b7204d54a035a3e4b2acc7d808129",
+      "preflightEvidence": "02-wangun-main51cf-isolated-preflight.json",
+      "preflightSha256": "ea5437e08ddd76b96adeecfba1b0c4872c2faf2293abbc5c5277da8a0683d535"
     },
     {
       "order": 3,
@@ -1218,7 +1223,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "SECOND_EXAM_ISOLATED_REGISTRATION_APPLIED_CONSUMER_PENDING_CONCURRENT_SUPPLEMENT_PENDING",
+  "state": "SECOND_EXAM_PREFLIGHT_PASS_OWNED_BRANCH_READY_FOR_PR_MAIN_MERGE_WAITING_PR1967",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -1286,8 +1291,8 @@
   ],
   "activeMainTreeStatus": "COURSE_CORRECTION_ACTUALLY_REGISTERED_FINAL_CONSUMER_PRESERVED",
   "checkpointPublication": {
-    "lastVerifiedRemoteSha": "e403ce4b0fff47857e0579335a633a7a7b28dd3a",
-    "statusAtWriting": "COURSE_ACTUAL_CLOSEOUT_AND_SECOND_EXAM_LOCAL_PREFLIGHT_CHECKPOINT_PENDING_PUBLICATION",
+    "lastVerifiedRemoteSha": "ae5c6a83d248269f53ca96603d1e58a110f29e23",
+    "statusAtWriting": "EXACT_WANGUN_CANDIDATE_SOURCE_REQUEST_PREFLIGHT_READY_TO_PUBLISH",
     "currentSnapshotEvidence": {
       "path": "02-wangun-semantic-review-rev3.json",
       "sha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090"
@@ -1303,11 +1308,11 @@
     "mainRegistrationStillRequired": true
   },
   "awcrCheckpoint": {
-    "latestVerifiedRevision": 17,
-    "fileId": "1FEec09seuwP5KXCw4xjqsxvJzo_Zd6SO",
-    "rawSha256": "2adf3ba85e76d2669d7d9f3f31529dd13856e60436bb0d47cda3b41a076f3173",
-    "nextRevision": 18,
-    "nextRevisionPurpose": "Record course actual main51cf/receipt/final Consumer plus Wangun isolated preflight and exact PR1967 publication ordering gate."
+    "latestVerifiedRevision": 18,
+    "fileId": "1tbUoJQrJK28eB5NsCYCyQO8Ke25UFgQK",
+    "rawSha256": "94a8b71e950ae7a392d460d131f04a6ec12d21b380930fbdd7d5c8adba66e8f2",
+    "nextRevision": 19,
+    "nextRevisionPurpose": "Record exact Wangun source/request branch and PR, full local23Consumer/19RPM/17preservation; actual main gate remains PR1967."
   },
   "remainingExams": 43,
   "nextExam": {
@@ -1315,7 +1320,7 @@
     "path": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
     "file": "26_왕운중_2학기_중간_중1_기출.js",
     "questionCount": 23,
-    "status": "ISOLATED_REGISTRATION_APPLIED_CONSUMER_PENDING",
+    "status": "ISOLATED_PREFLIGHT_PASS_PR_PREPARATION",
     "semanticReadEvidence": "02-wangun-semantic-read-checkpoint.json"
   },
   "latestOperationalCloseout": {
@@ -1380,7 +1385,7 @@
     "currentDependencyEvidence": "02-pr1965-head9f828-review.json"
   },
   "operationallyClosedQuestions": 24,
-  "latestVerifiedRemoteCheckpoint": "e403ce4b0fff47857e0579335a633a7a7b28dd3a",
+  "latestVerifiedRemoteCheckpoint": "ae5c6a83d248269f53ca96603d1e58a110f29e23",
   "courseCorrectionDependency": {
     "pr": 1966,
     "url": "https://github.com/icefoxtail/AP------/pull/1966",
@@ -1416,10 +1421,10 @@
   "knownConcurrentOwnerBoundary": {
     "taskId": "241f49f8-fccb-4880-944e-9814a117b88e",
     "owner": "GPT_ROOT_BF50408FB63B",
-    "observedAwcrRevision": 12,
-    "fileId": "13N3Bgph_uBnALJ76MuZGrUUWntipCmY_",
-    "rawSha256": "2e96a4426d684f2aadba5a60eecd9111762b9eea9f884a4908e39d7032f707c2",
-    "scope": "Other owner narrows to Shinheung24, withholds Wangun and standalone course request. Other task is not adopted. Recheck exact remote/source hashes before each mutation.",
+    "observedAwcrRevision": 13,
+    "fileId": "1On2Gpe0EmP9W7IffBCg2qZLr0z0ZV288",
+    "rawSha256": "105d05f2df229857c3ff90f28a28f5b3881b31abf72f7b1c82ab7f1b9e77691f",
+    "scope": "Other owner remains Shinheung24 IN_PROGRESS/RUN_REQUIRED_CHECKS; no current CI-fix or handoff declaration observed. Wangun/course publication withheld. No other-task mutation or joining.",
     "candidateComparisonEvidence": "02-wangun-concurrent-candidate-conflicts.json"
   },
   "concurrentShinheungSupplement": {
@@ -1431,7 +1436,7 @@
     "registryChanges": 0,
     "metadataFieldsChanged": 56,
     "rootMutationsToOtherTask": 0,
-    "publicationOrdering": "Wait exact PR1967 main writer before changing the mutable crosswalk hash referenced by its24 item evidence refs. Existing approval/native Consumer uses immutable approval refs and is not invalidated by append alone.",
+    "publicationOrdering": "Separate owned branch and draft may be published. Merge crosswalk to main only after exact PR1967 actual writer closes; its pending request pins current crosswalk bytes.",
     "evidence": "02-crosswalk-append-existing-approval-impact.json",
     "firstExamHistoricalCloseoutPreserved": true
   },
@@ -1445,9 +1450,26 @@
     "questions": 23,
     "registryChanges": 16,
     "runtimeMaterialized": 23,
-    "consumerStatus": "PENDING_BUILD",
+    "consumerStatus": "PASS_23_OF_23",
     "productionSourceChanged": false,
     "productionRegistryChanged": false,
-    "frozenOutsideScopeConsumerCount": 17
+    "frozenOutsideScopeConsumerCount": 17,
+    "officialProjection": "PASS_STATIC_VALUES_VERIFIED_23",
+    "rpmExactLeaves": 19,
+    "rpmDebtOrdinals": [
+      2,
+      3,
+      4,
+      16
+    ],
+    "legacyParentAmbiguousOrdinals": [
+      4,
+      16
+    ],
+    "outsideScopeConsumersCompared": 17,
+    "outsideScopeChanges": 0,
+    "ownBranchSourceCandidatePrepared": true,
+    "actualMainRegistration": "NOT_APPLIED",
+    "evidence": "02-wangun-main51cf-isolated-preflight.json"
   }
 }
