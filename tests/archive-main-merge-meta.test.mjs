@@ -15,7 +15,7 @@ function fixture() {
   const previous={...q,problemTypeKey:null,templateKey:null};
   const current={...q,questionUid:uid,sourceArchiveFile:source,sourceOrdinal:1,sourceQuestionNo:1,problemTypeKey:'',templateKey:'',sourceFingerprint:sourceFingerprint(q),contentFingerprint:contentFingerprint(q),metadataStatus:'registration_pending_semantic_review',reviewStatus:'review_required',fieldStatus:{problemType:'manual_review_pending'}};
   const identity={questionUid:uid,sourceArchiveFile:source,sourceOrdinal:1,sourceQuestionNo:1,status:'VERIFIED',sourceFingerprint:sourceFingerprint(q)};
-  const registry={status:'ACTIVE',registrySha:'sha256:'+'b'.repeat(64),problemTypes:new Map([['PT_ROOT',{status:'ACTIVE',ownerPack:'MIDDLE3',canonicalLabelKo:'Root'}]]),templates:new Map([['TPL_ROOT',{status:'ACTIVE',ownerPack:'MIDDLE3',parentProblemTypeKey:'PT_ROOT',canonicalLabelKo:'Root test'}]]),activePacks:new Map([['MIDDLE3',{version:'1.0.0'}]]),bindingRows:[{status:'ACTIVE',curriculum:'2015',standardCourse:'중3 수학',standardUnitKey:'M3-01',subUnitKey:'M3-01-ROOT',problemTypeKey:'PT_ROOT',L1:'Numbers',L2:'Roots'}]};
+  const registry={status:'ACTIVE',registrySha:'sha256:'+'b'.repeat(64),problemTypes:new Map([['PT_ROOT',{status:'ACTIVE',ownerPack:'MIDDLE3',canonicalLabelKo:'Root'}]]),templates:new Map([['TPL_ROOT',{status:'ACTIVE',ownerPack:'MIDDLE3',parentProblemTypeKey:'PT_ROOT',canonicalLabelKo:'Root test'}]]),activePacks:new Map([['MIDDLE3',{id:'MIDDLE3',version:'1.0.0',status:'ACTIVE',curricula:['2015'],standardCourses:['중3 수학']}]]),bindingRows:[{status:'ACTIVE',curriculum:'2015',standardCourse:'중3 수학',standardUnitKey:'M3-01',subUnitKey:'M3-01-ROOT',problemTypeKey:'PT_ROOT',L1:'Numbers',L2:'Roots'}]};
   const validate=(row,reg)=>({status:reg.problemTypes.has(row.problemTypeKey)&&reg.templates.get(row.templateKey)?.parentProblemTypeKey===row.problemTypeKey?'VALIDATED':'FAIL',errors:reg.problemTypes.has(row.problemTypeKey)&&reg.templates.has(row.templateKey)?[]:['INVALID_KEY'],activeBinding:true,difficultyComplete:Number.isInteger(row.difficultyBucket)&&row.difficultyBucket>=1&&row.difficultyBucket<=5,curriculum:'2015'});
   return {question:q,previous,current,identity,registry,validate,source,ordinal:1};
 }
@@ -42,7 +42,7 @@ function nativeReviewFixture(t,{omitFields=[],questionOverrides={},officialValid
   if(officialValidator) {
     f.registry.concepts=new Map();f.registry.conditions=new Map();f.registry.integrationPatterns=new Set(['NONE']);
     f.registry.bindings=new Set(f.registry.bindingRows.map(b=>[b.curriculum,b.standardUnitKey,b.subUnitKey??'<DIRECT>',b.problemTypeKey].join('\0')));
-    f.registry.activePacks.set('MIDDLE3',{id:'MIDDLE3',version:'1.0.0',status:'ACTIVE'});
+    f.registry.activePacks.set('MIDDLE3',{...f.registry.activePacks.get('MIDDLE3'),id:'MIDDLE3',version:'1.0.0',status:'ACTIVE'});
     f.registry.bindingRows[0].ownerPack='MIDDLE3';
     f.validate=validateActiveMetaFields;
   }
@@ -127,6 +127,56 @@ test('native receipt reuse accepts missing producer-only fields without completi
   assert.deepEqual(calls,[false],'only existing-receipt validation is used after exact proof succeeds');
   assert.equal(JSON.stringify({question:f.question,current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,receipt:f.receipt}),before);
   for(const row of [f.question,f.current,f.nativeSource.runtimeRecord])for(const field of ['difficultyBoundaryFlag','legacyLevelCompatibility'])assert.equal(Object.hasOwn(row,field),false);
+});
+function useCrossPackDefinition(f) {
+  f.registry.problemTypes.get('PT_ROOT').ownerPack='GEOMETRY_EQUATIONS';
+  f.registry.templates.get('TPL_ROOT').ownerPack='GEOMETRY_EQUATIONS';
+  f.registry.activePacks.set('GEOMETRY_EQUATIONS',{id:'GEOMETRY_EQUATIONS',version:'9.0.0',status:'ACTIVE',
+    curricula:['2015','2022'],standardCourses:['수학(상)','공통수학2']});
+  f.registry.bindingRows[0].ownerPack='MIDDLE3';
+  f.runtimeOwner='MIDDLE3';
+  return f;
+}
+test('an exact binding may reuse another ACTIVE pack definition while retaining native runtime approval',t=>{
+  const f=useCrossPackDefinition(nativeReviewFixture(t,{omitFields:['difficultyBoundaryFlag','legacyLevelCompatibility'],officialValidator:true}));
+  const before=JSON.stringify({question:f.question,current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,receipt:f.receipt});
+  const context=activeBindingContext({candidate:f.current,check:{curriculum:'2015'},registry:f.registry,runtimeOwner:'MIDDLE3'});
+  assert.equal(context.reason,undefined);assert.equal(context.ownerPack,'MIDDLE3');assert.equal(context.pt.ownerPack,'GEOMETRY_EQUATIONS');
+  assert.equal(context.pack.version,'1.0.0');
+  assert.equal(nativeReviewReceipt({...f,pt:context.pt,tpl:context.tpl,ownerPack:context.ownerPack}),f.receiptPath);
+  assert.equal(nativeReviewReceipt({...f,pt:context.pt,tpl:context.tpl,ownerPack:context.pt.ownerPack}),null);
+  const r=planQuestion(f);assert.equal(r.status,'ALREADY_REGISTERED',JSON.stringify(r));assert.equal(r.nativeReviewReceipt,f.receiptPath);
+  assert.equal(r.final,undefined);assert.equal(JSON.stringify({question:f.question,current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,receipt:f.receipt}),before);
+});
+test('new production registration consistently uses the exact binding owner and its pack version',()=>{
+  const f=useCrossPackDefinition(fixture()),r=planQuestion(f);
+  assert.equal(r.status,'APPLY',JSON.stringify(r));assert.equal(r.ownerPack,'MIDDLE3');
+  assert.equal(r.final.metaFoundationPackId,'MIDDLE3');assert.equal(r.final.metaFoundationPackVersion,'1.0.0');
+  assert.equal(r.final.metadataApprovalType,'MAIN_MERGE');assert.equal(r.final.reviewStatus,'review_required');
+  assert.equal(f.registry.problemTypes.get(r.final.problemTypeKey).ownerPack,'GEOMETRY_EQUATIONS');
+});
+test('cross-pack native reuse still rejects wrong runtime, binding owner, definition owner and scope',async t=>{
+  const cases=[
+    ['wrong runtime owner',f=>{f.runtimeOwner='GEOMETRY_EQUATIONS';}],
+    ['unavailable binding owner',f=>{f.registry.bindingRows[0].ownerPack='MISSING_PACK';}],
+    ['wrong active binding owner scope',f=>{f.registry.bindingRows[0].ownerPack='GEOMETRY_EQUATIONS';f.runtimeOwner='GEOMETRY_EQUATIONS';}],
+    ['inactive binding owner',f=>{f.registry.activePacks.get('MIDDLE3').status='INACTIVE';}],
+    ['inactive definition owner',f=>{f.registry.activePacks.get('GEOMETRY_EQUATIONS').status='INACTIVE';}],
+    ['mismatched template definition owner',f=>{f.registry.templates.get('TPL_ROOT').ownerPack='MIDDLE3';}],
+    ['inactive exact binding',f=>{f.registry.bindingRows[0].status='INACTIVE';}],
+    ['ambiguous exact binding',f=>{f.registry.bindingRows.push({...f.registry.bindingRows[0]});}],
+    ['binding owner lacks curriculum',f=>{f.registry.activePacks.get('MIDDLE3').curricula=['2022'];}],
+    ['binding owner lacks course',f=>{f.registry.activePacks.get('MIDDLE3').standardCourses=['다른 과정'];}],
+    ['binding owner lacks course alias',f=>{f.question.courseKey='UNREGISTERED_ALIAS';f.current.courseKey='UNREGISTERED_ALIAS';}],
+    ['missing canonical owner document',f=>{f.registry.root=f.nativeSource.root;}],
+    ['receipt revision uses definition owner',f=>{f.current.metadataRevision=f.current.metadataRevision.replace('MIDDLE3@','GEOMETRY_EQUATIONS@');f.receipt.appliedRecords[0].metadataRevision=f.current.metadataRevision;}],
+    ['receipt metadata uses definition owner',f=>{f.current.metaFoundationPackId='GEOMETRY_EQUATIONS';f.receipt.appliedRecords[0].metaFoundationPackId='GEOMETRY_EQUATIONS';}],
+  ];
+  for(const [name,mutate] of cases)await t.test(name,t=>{
+    const f=useCrossPackDefinition(nativeReviewFixture(t,{omitFields:['difficultyBoundaryFlag','legacyLevelCompatibility'],officialValidator:true}));
+    mutate(f);f.saveReceipt();const r=planQuestion(f);
+    assert.equal(r.status,'SUPPLEMENT_PENDING',JSON.stringify(r));assert.equal(r.nativeReviewReceipt,undefined);assert.equal(r.final,undefined);
+  });
 });
 test('read-only receipt proof does not declare a legacy invalid enum eligible for producer reuse',t=>{
   const f=nativeReviewFixture(t,{questionOverrides:{integrationPattern:'DIRECT'},officialValidator:true});

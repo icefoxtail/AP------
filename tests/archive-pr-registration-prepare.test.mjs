@@ -46,7 +46,8 @@ function fixture(t, changedFile = 'archive/exams/original/new.js') {
 
 test('only registration inputs require a temporary projection; unknown scope is conservative', () => {
   for (const file of ['archive/exams/original/new.js', 'archive/assets/images/a.svg', 'archive/data/question_metadata.json',
-    'archive/data/meta-foundation/canonical/pack.json', 'archive/tools/build-archive2-catalog.mjs']) {
+    'archive/data/meta-foundation/canonical/pack.json', 'archive/tools/build-archive2-catalog.mjs',
+    '.archive-meta-register/inbox/native-v2.json', 'tools/ci/archive-pr-native-preview.mjs']) {
     assert.equal(registrationInputsChanged([file]), true, file);
   }
   for (const paths of [[], ['apmath/playground/labs/a.html'], ['.github/workflows/ci.yml'], ['docs/architecture/notes.md']]) {

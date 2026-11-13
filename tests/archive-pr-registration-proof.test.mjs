@@ -23,6 +23,8 @@ test('proof production follows registration inputs and direct checkers, not unre
     'shared/js/common-output.js', 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/source.json',
     'docs/rules/01_CANONICAL/taxonomy/units.json', 'tools/lib/canonical.mjs', '.gitignore',
     'tools/ci/archive-pr-registration-proof.mjs', 'tests/archive-pr-registration-proof.test.mjs',
+    '.archive-meta-register/inbox/reviewed-exam.json', 'tools/ci/archive-pr-native-preview.mjs',
+    'tests/archive-pr-native-preview.test.mjs',
     CI_WORKFLOW_PATH, ...REGISTRATION_CHECKS.map(check => check.file)]) {
     assert.equal(prRegistrationProofNeeded([file]), true, file);
   }
@@ -47,6 +49,7 @@ function fixture(t, changedFile = 'archive/exams/original/new.js') {
   const dependencyFiles = [...REGISTRATION_CHECKS.map(check => check.file), 'archive/build_db.py',
     'archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs', 'archive/tools/build-archive2-catalog.mjs',
     'tools/ci/archive-pr-registration-prepare.mjs', 'tools/ci/archive-pr-registration-proof.mjs',
+    'tools/ci/archive-pr-native-preview.mjs',
     'tools/ci/push-touches-paths.mjs', CI_WORKFLOW_PATH];
   for (const file of dependencyFiles) write(file, '// fixed fixture dependency\n');
   write('tools/ci/archive-pages-registration.paths', 'archive/db.js\narchive/data/archive2-catalog.json\narchive/data/archive2-canonical-input-manifest.json\narchive/data/meta-foundation/runtime/*.json\n');
