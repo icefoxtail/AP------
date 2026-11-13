@@ -15,7 +15,7 @@
   "completedExams": 0,
   "reviewedQuestions": 0,
   "currentOrder": 1,
-  "nextAction": "READ_CURRENT_EXAM_CONTENT_VISUAL_SOLUTION",
+  "nextAction": "RESUME_FIRST_EXAM_AFTER_TAXONOMY_MERGE",
   "exams": [
     {
       "order": 1,
@@ -26,7 +26,8 @@
       "count": 24,
       "sourceBlob": "c36139a90e9bcd378577ece8f891423bee6b0a19",
       "sourceSha256": "1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564",
-      "status": "IN_PROGRESS"
+      "status": "PARTIAL_SEMANTIC_READ_PAUSED",
+      "partialEvidence": "01-shinheung-semantic-read-checkpoint.json"
     },
     {
       "order": 2,
@@ -501,5 +502,8 @@
       "sourceSha256": "1029c285ed903c2153621edf56415e21e692cea3f17de5588fc855f6a32c9f34",
       "status": "PENDING"
     }
-  ]
+  ],
+  "instructionRevision": 2,
+  "state": "PAUSED_FOR_RPM_L1_L2_REFINEMENT",
+  "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113"
 }
