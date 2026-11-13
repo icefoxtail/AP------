@@ -111,12 +111,15 @@ try{
  await context.close();
  const auto=await open({width:390,height:844},'no-preference');
  await load(auto.page,'g7-coordinate-graphs','#s=coordinate-area');
+ await auto.page.waitForTimeout(850);
+ assert.equal(await auto.page.evaluate(()=>lab.learning.mode),'paused','a shared scene opens paused');
+ await auto.page.locator('.g7-learning-controls .primary').click();
  await auto.page.waitForFunction(()=>lab.learning.mode==='playing',null,{timeout:5000});
  const autoProof=await auto.page.evaluate(()=>lab.learning.active.id);assert.equal(autoProof,'coordinate-coordinate-area');
  await auto.page.evaluate(()=>lab.learning.pause());
  const stopped=await auto.page.evaluate(()=>lab.learning.elapsed);await auto.page.waitForTimeout(500);
  assert.equal(await auto.page.evaluate(()=>lab.learning.elapsed),stopped);
- report.interactions.push({name:'automatic-entry-and-manual-pause',short:autoProof});await auto.context.close();
+ report.interactions.push({name:'paused-shared-entry-explicit-play-and-pause',short:autoProof});await auto.context.close();
  assert.equal(report.errors.length,0,JSON.stringify(report.errors));report.status='TECHNICAL_CHECKS_PASSED';
 }catch(error){report.status='FAIL';report.failure=error.stack;process.exitCode=1;console.error(error);}
 finally{save();await browser.close()}

@@ -50,3 +50,70 @@ for(const spec of def.scenes)test(`coordinate short ${spec.id}: all explicit var
  }
 });
 test('all fifteen scenes have explicit distinct motion contracts, no legacy timeline fallback',()=>{assert.equal(def.scenes.length,15);assert.equal(Object.keys(api.registry).length,15);assert.equal(new Set(Object.values(api.recipes).map(r=>r.motion)).size,15)});
+
+// Exercise the production grid/axis renderer, so a visible 2.5-unit regression
+// cannot pass merely because a scene carries an unused configuration object.
+const boardContext=vm.createContext({window:{APLab:{clamp:(v,lo,hi)=>Math.max(lo,Math.min(hi,v))}}});
+vm.runInContext(fs.readFileSync(new URL('../kit/apl-board.js',import.meta.url),'utf8'),boardContext);
+const nativeScenes=M.compile('g7-coordinate-graphs').groups.flatMap(g=>g.scenes);
+function coordinateBoard(width=390,height=510){
+ const b=Object.create(boardContext.window.APLab.Board.prototype),labels=[],gridLines=[];
+ let from=null,inGrid=false;
+ const c=new Proxy({font:'11.5px sans-serif',textAlign:'center',textBaseline:'top',
+  measureText:t=>({width:String(t).length*6.5}),getTransform:()=>({a:1,b:0,c:0,d:1,e:0,f:0}),
+  fillText(text,x,y){labels.push({text:String(text),x,y,align:this.textAlign,baseline:this.textBaseline})},
+  moveTo(x,y){from={x,y}},lineTo(x,y){if(inGrid&&from)gridLines.push({from,to:{x,y}})}
+ },{get:(target,key)=>key in target?target[key]:(()=>{})});
+ Object.assign(b,{W:width,H:height,ctx:c,canvas:{width,height,getBoundingClientRect:()=>({left:0,top:0,width,height})},
+  kind:'cartesian',aspect:'1:1',focus:{x:[-6,6],y:[-6,6]},pad:.09,zoom:1,panX:0,panY:0,
+  insets:{top:74,right:36,bottom:100,left:40},panes:null,paneId:null,fs:1,lw:1,font:'sans-serif',
+  colors:{grid:'grid',gridMajor:'major',axis:'axis',tick:'tick'}});
+ const grid=b.grid;b.grid=function(options){inGrid=true;try{return grid.call(this,options)}finally{inGrid=false}};
+ for(const name of ['seg','point','handle','text','path','vline','plot'])b[name]=()=>b;
+ return{b,labels,gridLines};
+}
+function drawCoordinates(id,mode,width=390,height=510,values={}){
+ const spec=def.scenes.find(s=>s.id===id),v={...M.defaults(spec),...values};
+ const state=Object.fromEntries(Object.entries(v).map(([k,x])=>[M.prefix(spec,k),x]));
+ const result=coordinateBoard(width,height);result.b.aspect=spec.aspect||'1:1';
+ if(mode==='native')nativeScenes.find(s=>s.id===id).draw(result.b,state,{},null);
+ else {const p=api.build({M,scene:{_mf:spec}},state)[0];p.draw(result.b,id==='quantity-table'?6.8:0,p.model)}
+ return{...result,state,spec,v};
+}
+const axisValues=(labels,align)=>labels.filter(l=>l.align===align&&/^−?\d+(?:\.\d+)?$/.test(l.text)).map(l=>Number(l.text.replace('−','-')));
+test('integer-coordinate lessons render consecutive unit ticks and matching unit grid in native and short views',()=>{
+ for(const id of ['coord-order','read-coordinates','quadrants-boundary','point-move','axis-pair','axis-distance','coordinate-area','quantity-table']){
+  for(const mode of ['native','short']){
+   const {b,labels,gridLines}=drawCoordinates(id,mode);
+   for(const align of ['center','right']){
+    const ticks=axisValues(labels,align).sort((a,z)=>a-z);
+    assert.ok(ticks.length>=5,`${id}/${mode}: readable coordinate ticks`);
+    assert.ok(ticks.every(Number.isInteger),`${id}/${mode}: no fractional coordinate ticks`);
+    for(let i=1;i<ticks.length;i++)assert.equal(ticks[i]-ticks[i-1],ticks[i-1]===-1&&ticks[i]===1?2:1,`${id}/${mode}: consecutive unit labels`);
+   }
+   for(const x of [0,1,2,3]){
+    const pixel=Math.round(b.toS(x,0).x)+.5;
+    assert.ok(gridLines.some(l=>l.from.x===pixel&&l.to.x===pixel),`${id}/${mode}: grid at x=${x}`);
+   }
+  }
+ }
+});
+test('the initial P(3,2) and P(4,3) can be read without zoom on narrow boards',()=>{
+ for(const [id,x,y] of [['coord-order',3,2],['read-coordinates',4,3]])for(const mode of ['native','short'])for(const width of [320,390]){
+  const {b,labels,spec,v}=drawCoordinates(id,mode,width,450),q=spec.model(v).P,pixel=b.toS(q);
+  near(q.x,x);near(q.y,y);
+  assert.ok(axisValues(labels,'center').includes(x)&&axisValues(labels,'right').includes(y),`${id}/${mode}/${width}: actual point coordinates labelled`);
+  assert.ok(pixel.x>10&&pixel.x<width-10&&pixel.y>10&&pixel.y<b.H-10,`${id}/${mode}/${width}: point inside the initial board`);
+ }
+});
+test('coordinate exploration retains zoom and pan, while physical graphs retain their own axis scales',()=>{
+ const {b,state}=drawCoordinates('read-coordinates','native'),before=JSON.stringify(state);
+ b.zoom=1.7;b.panX=17;b.panY=-11;
+ nativeScenes.find(s=>s.id==='read-coordinates').draw(b,state,{},null);
+ assert.deepEqual([b.zoom,b.panX,b.panY],[1.7,17,-11]);assert.equal(JSON.stringify(state),before);
+ for(const mode of ['native','short']){
+  const temperature=drawCoordinates('read-time',mode),change=drawCoordinates('baseline-change',mode,390,880);
+  assert.ok(axisValues(temperature.labels,'center').some(x=>x>1)&&!axisValues(temperature.labels,'center').includes(1),'time axis keeps its wider interval');
+  assert.ok(axisValues(change.labels,'right').some(x=>!Number.isInteger(x)),'weight changes keep fractional axis labels');
+ }
+});

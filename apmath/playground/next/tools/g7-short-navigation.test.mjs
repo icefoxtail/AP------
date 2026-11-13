@@ -12,9 +12,11 @@ function fixture() {
   const A = { G7Shorts: {
     'g7-area/a2-para': (_lab, s) => [{ duration: 9, model: { w: s.a1W, h: s.a1H } }]
   } };
-  const context = { window: { APLab: A }, location, URLSearchParams,
+  const context = { window: { APLab: A, scrollY: 0, scrollTo() {} }, location, URLSearchParams,
     sessionStorage: { getItem: k => storage.get(k) || null, setItem: (k, v) => storage.set(k, v) },
-    history: { state: null, replaceState: (_s, _t, url) => { location.hash = url; } },
+    history: { state: null,
+      replaceState: (s, _t, url) => { context.history.state = s; location.hash = url; },
+      pushState: (s, _t, url) => { context.history.state = s; location.hash = url; } },
     clearTimeout() {}, cancelAnimationFrame() {}, console };
   vm.createContext(context);
   vm.runInContext(fs.readFileSync(new URL('../kit/apl-g7-learning.js', import.meta.url), 'utf8'), context);
@@ -25,7 +27,9 @@ function fixture() {
     board: { focus: { x: [-1, 1], y: [-1, 1] }, zoom: 1, panX: 0, panY: 0 },
     _buildPanel() {}, invalidate() {} };
   const learning = Object.create(A.G7Learning.Learning.prototype);
-  Object.assign(learning, { lab, player: { state: 'idle' }, records: new Map(),
+  Object.assign(learning, { lab, player: { state: 'idle' }, records: new Map(), entryRecords: new Map(),
+    view: 'lesson', session: 'navigation-test', depth: 0, contents: { scrollY: 0, listY: 0, onlyVideo: false },
+    setView(view) { this.view = view; },
     defaultState: { a1W: 6, a1H: 4, playing: false }, mode: 'explore', active: null,
     choice: 0, elapsed: 0, generation: 0, storageKey: 'learning-test',
     layout() {}, refresh() {}, schedule() {},

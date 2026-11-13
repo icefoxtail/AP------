@@ -1,0 +1,160 @@
+name: AP Math G7 contents UX verification
+
+on:
+  push:
+    branches: ['feat/g7-toc-ux-20261113']
+    paths:
+      - 'apmath/playground/**'
+      - 'docs/guides/APMATH_G7_TOC_UX_CONTRACT_CURRENT.md'
+      - '.github/workflows/apmath-g7-toc-ux.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apmath/playground/**'
+      - 'docs/guides/APMATH_G7_TOC_UX_CONTRACT_CURRENT.md'
+      - '.github/workflows/apmath-g7-toc-ux.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: g7-toc-ux-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: G7 contents, preserved proofs and player contracts
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: bash
+    env:
+      NODE_PATH: ${{ runner.temp }}/g7-toc-browser/node_modules
+      G7_BASE_URL: http://127.0.0.1:8765/apmath/playground/next/labs/
+      G7_REFERENCE_PLAYBACK: reuse
+      G7_REFERENCE_EVIDENCE: >-
+        PR https://github.com/icefoxtail/AP------/pull/1950;
+        verified prior G7 evidence https://github.com/icefoxtail/AP------/actions/runs/43348371314
+        and https://github.com/icefoxtail/AP------/actions/runs/43346417520.
+        Reuse applies only to unchanged proof mathematics and animation playback.
+        This run checks the current contents navigation, item mappings, state restoration
+        and scoped coordinate ticks; it does not claim to replay all 580 proofs.
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          sparse-checkout: |
+            apmath/playground
+            apmath/css
+            apmath/js
+            apmath/student
+            docs/agents
+            docs/guides
+            .github/workflows
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Bind evidence to the exact event snapshot
+        env:
+          EVENT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          EVENT_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          [[ "$(git rev-parse HEAD)" == "$GITHUB_SHA" ]]
+          mkdir -p "$RUNNER_TEMP/g7-toc-evidence/source"
+          git rev-parse HEAD > "$RUNNER_TEMP/g7-toc-evidence/source/commit.txt"
+          git rev-parse 'HEAD^{tree}' > "$RUNNER_TEMP/g7-toc-evidence/source/tree.txt"
+          git ls-tree -r HEAD -- AGENTS.md apmath/playground docs/agents docs/guides/APMATH_G7_TOC_UX_CONTRACT_CURRENT.md .github/workflows/apmath-g7-toc-ux.yml > "$RUNNER_TEMP/g7-toc-evidence/source/git-objects.txt"
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          const out = path.join(process.env.RUNNER_TEMP, 'g7-toc-evidence/source');
+          fs.writeFileSync(path.join(out, 'context.json'), JSON.stringify({
+            sourceSha: fs.readFileSync(path.join(out, 'commit.txt'), 'utf8').trim(),
+            sourceTree: fs.readFileSync(path.join(out, 'tree.txt'), 'utf8').trim(),
+            event: process.env.GITHUB_EVENT_NAME,
+            eventHeadSha: process.env.EVENT_HEAD_SHA,
+            eventBaseSha: process.env.EVENT_BASE_SHA || null,
+            runId: process.env.GITHUB_RUN_ID,
+            runAttempt: process.env.GITHUB_RUN_ATTEMPT,
+            reusedPlaybackEvidence: process.env.G7_REFERENCE_EVIDENCE
+          }, null, 2) + '\n');
+          NODE
+
+      - name: Mathematics, preserved lessons and player contracts
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          node --test \
+            apmath/playground/next/tools/g7-short-*.test.mjs \
+            apmath/playground/next/tools/video.test.mjs \
+            apmath/playground/next/tools/lessons.g7-*.test.mjs \
+            2>&1 | tee "$RUNNER_TEMP/g7-toc-evidence/unit.log"
+
+      - name: Install Chromium and Korean fonts
+        timeout-minutes: 10
+        run: |
+          set -euo pipefail
+          npm install --prefix "$RUNNER_TEMP/g7-toc-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/g7-toc-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+
+      - name: Actual contents flow followed by all G7 mappings at four viewports
+        timeout-minutes: 30
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/g7-toc-evidence/http.log" 2>&1 &
+          g7_toc_server_pid=$!
+          trap 'kill "$g7_toc_server_pid" 2>/dev/null || true' EXIT
+          curl --retry 20 --retry-connrefused --retry-delay 1 --max-time 5 --silent --fail "${G7_BASE_URL}../kit/apl-catalog.js" > /dev/null
+          G7_TOC_EVIDENCE="$RUNNER_TEMP/g7-toc-evidence/contents" \
+            node apmath/playground/next/tools/g7-toc-ux-browser.mjs \
+            2>&1 | tee "$RUNNER_TEMP/g7-toc-evidence/contents.log"
+          # The existing audit still visits every scene and maps every proof at
+          # all four viewports. Only unchanged reference playback is reused.
+          G7_EVIDENCE="$RUNNER_TEMP/g7-toc-evidence/mappings" \
+            node apmath/playground/next/tools/g7-learning-browser.mjs \
+            2>&1 | tee "$RUNNER_TEMP/g7-toc-evidence/mappings.log"
+
+      - name: Verify report source identities and publish the measured summary
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import fs from 'node:fs';
+          import path from 'node:path';
+          const out = path.join(process.env.RUNNER_TEMP, 'g7-toc-evidence');
+          const read = file => JSON.parse(fs.readFileSync(path.join(out, file), 'utf8'));
+          const source = read('source/context.json');
+          const contents = read('contents/toc-ux-report.json');
+          const mapping = read('mappings/report.json');
+          assert.equal(source.sourceSha, process.env.GITHUB_SHA);
+          assert.equal(contents.commit, source.sourceSha);
+          assert.equal(mapping.commit, source.sourceSha);
+          assert.equal(contents.status, 'UX_TECHNICAL_CHECKS_PASSED');
+          assert.equal(mapping.status, 'TECHNICAL_CHECKS_PASSED');
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, [
+            `Source: ${source.sourceSha}`,
+            `Contents scenarios: ${contents.scenarios.length}`,
+            `Current mappings: ${JSON.stringify(mapping.conversion)}`,
+            `Previous-report inventory comparison: ${contents.preservationBaseline?.status || 'NOT_PROVIDED'}`,
+            `Unchanged normal playback reused from: ${process.env.G7_REFERENCE_EVIDENCE}`,
+            'Browser technical checks and reused animation evidence are recorded separately.',
+            ''
+          ].join('\n'));
+          NODE
+
+      - name: Preserve source identity, reports, logs and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g7-toc-ux-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}
+          path: ${{ runner.temp }}/g7-toc-evidence/
+          retention-days: 14
+          if-no-files-found: error

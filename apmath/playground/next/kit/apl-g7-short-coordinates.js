@@ -25,7 +25,7 @@
     b.setInsets({top:74,right:36,bottom:100,left:40});
     b.zoom=1;b.panX=0;b.panY=0;
     b.setFocus(focus||call(d.spec.focus,d.v,d.m),false);
-    if(!plain){b.grid({});d.M.axes(b,call(d.spec.axes,d.v,d.m)||{});}
+    if(!plain){b.grid(call(d.spec.grid,d.v,d.m)||{});d.M.axes(b,call(d.spec.axes,d.v,d.m)||{});}
   }
   function projections(b,q,t,start=.8){
     if(t>=start)travel(b,q,P(q.x,0),phase(t,start,start+1.5),'sky');

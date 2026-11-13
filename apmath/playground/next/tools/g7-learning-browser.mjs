@@ -116,7 +116,7 @@ try {
  await load(page,'g7-circle-sector','#s=f1-star');
  const state=await page.evaluate(()=>{
   const l=lab.learning,star=lab.index,leaf=lab.list.findIndex(x=>x.id==='f3-leaf-area');
-  lab.s.f1_star_a=12;lab.s.f1_star_seed=17;lab.s.f1_star_pick=3;lab.board.zoom=1.4;lab.board.panX=23;
+  l.explore();lab.s.f1_star_a=12;lab.s.f1_star_seed=17;lab.s.f1_star_pick=3;lab.board.zoom=1.4;lab.board.panX=23;
   l.play();l.seek(4);l.explore();
   const restored={a:lab.s.f1_star_a,seed:lab.s.f1_star_seed,pick:lab.s.f1_star_pick,zoom:lab.board.zoom,panX:lab.board.panX};
   l.play();l.seek(3.3);lab.goScene(leaf);lab.s.f3a=8;l.play();l.seek(2);lab.goScene(star);
@@ -163,7 +163,8 @@ try {
  assert.equal(contents.handleVisible,false);assert.equal(contents.headerVisible,true);
  await page.screenshot({path:path.join(out,'three-choice-progress-and-header-390.png')});
  await page.locator('.apl-toc-btn').click();assert.equal(await page.evaluate(()=>lab.toc.isOpen),true);
- await page.keyboard.press('Escape');assert.equal(await page.evaluate(()=>lab.toc.isOpen),false);
+ await page.keyboard.press('Escape');assert.equal(await page.evaluate(()=>lab.toc.isOpen),true);
+ assert.equal(await page.evaluate(()=>lab.learning.active),null); // Contents is a page; Escape cannot reveal an unselected animation.
  report.interactions.push({name:'wrapped-progress-with-header-contents-navigation',result:contents});
  await load(page,'g7-circle-sector','#s=petal15');
  await page.evaluate(()=>{lab.learning.play();lab.learning.pause();lab.learning.seek(4.1);});

@@ -552,7 +552,7 @@ test('player·toc: 해설 단추 · 다음 해설 · play=<label> · 목차의 �
   assert.match(player, /this\.play\(this\.index, this\.lessonIndex\)/, '다시 보기는 방금 본 해설');
   assert.match(player, /_entryGo\(k\)/, '해설 단추 하나가 그 해설을 바로 재생');
   const toc = fs.readFileSync(path.resolve(DIR, '../kit/apl-toc.js'), 'utf8');
-  assert.match(toc, /this\.go\(i, x\.k\)/, '목차: 해설별 단추가 자기 해설을 재생');
+  assert.match(toc, /this\.go\(i, lab\.learning\?\.enabled\(\) \? x\.choice : x\.k\)/, '목차: 해설별 단추가 자기 해설을 재생');
 });
 
 test('compileLesson: 둘째 장 이후의 start 는 장이 시작하는 순간의 즉시 설정이고, 장 사이 값은 이어진다', () => {
@@ -688,6 +688,6 @@ test('player·shell: 해설 재생기는 해설을 영상보다 먼저 찾고, �
     const body = player.slice(player.indexOf(where), player.indexOf(where) + 2500);
     assert.match(body, /this\._release\(\)/, `${where} 가 _release 를 부른다`);
   }
-  assert.match(player, /const pv = urlParam\('play'\);\s*if \(pv && !lab\.teach\)/, 'play=… 가 있을 때만 자동 재생(없으면 재생하지 않음)');
+  assert.match(player, /const pv = urlParam\('play'\);\s*if \(pv && !lab\.teach && !lab\._g7LearningEntry\)/, 'play=… 가 있을 때만 자동 재생(없으면 재생하지 않음)');
   assert.match(player, /urlParam\('manual'\) === '1'/, 'manual=1');
 });
