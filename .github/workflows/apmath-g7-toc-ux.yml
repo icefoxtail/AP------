@@ -109,6 +109,16 @@ jobs:
           "$RUNNER_TEMP/g7-toc-browser/node_modules/.bin/playwright" install --with-deps chromium
           sudo apt-get install -y fonts-noto-cjk
 
+      - name: Shared disclosure controls through actual exploration entry
+        timeout-minutes: 5
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-toc-browser/node_modules
+        run: |
+          set -euo pipefail
+          node apmath/playground/next/tools/apl-shell-disclosure-browser.mjs \
+            --root . --out "$RUNNER_TEMP/g7-toc-evidence/shared-shell" \
+            2>&1 | tee "$RUNNER_TEMP/g7-toc-evidence/shared-shell.log"
+
       - name: Actual contents flow followed by all G7 mappings at four viewports
         timeout-minutes: 30
         env:
@@ -161,15 +171,20 @@ jobs:
           const out = path.join(process.env.RUNNER_TEMP, 'g7-toc-evidence');
           const read = file => JSON.parse(fs.readFileSync(path.join(out, file), 'utf8'));
           const source = read('source/context.json');
+          const shared = read('shared-shell/results.json');
           const contents = read('contents/toc-ux-report.json');
           const mapping = read('mappings/report.json');
           assert.equal(source.sourceSha, process.env.GITHUB_SHA);
+          assert.equal(shared.commit, source.sourceSha);
+          assert.equal(shared.failures.length, 0);
+          assert.ok(shared.checks.length > 0);
           assert.equal(contents.commit, source.sourceSha);
           assert.equal(mapping.commit, source.sourceSha);
           assert.equal(contents.status, 'UX_TECHNICAL_CHECKS_PASSED');
           assert.equal(mapping.status, 'TECHNICAL_CHECKS_PASSED');
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, [
             `Source: ${source.sourceSha}`,
+            `Shared disclosure checks passed: ${shared.checks.filter(check => check.pass === true).length}`,
             `Contents scenarios: ${contents.scenarios.length}`,
             `Current mappings: ${JSON.stringify(mapping.conversion)}`,
             `Previous-report inventory comparison: ${contents.preservationBaseline?.status || 'NOT_PROVIDED'}`,
