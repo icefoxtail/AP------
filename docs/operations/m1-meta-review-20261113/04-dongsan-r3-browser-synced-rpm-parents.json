@@ -1,0 +1,1833 @@
+{
+  "schemaVersion": "existing-exam-actual-rpm-parent-native-audit-v2",
+  "observedAt": "2026-11-13T22:37:50.102Z",
+  "status": "PASS",
+  "scope": "ISOLATED_POST_REGISTRATION_READ_ONLY",
+  "worktree": "/workspace/scratch/933015cd0a4f/m1-dongsan-register-r3",
+  "baseCommit": "9eccf682c8569459466703ca844c504cb1939833",
+  "requestId": "m1-dongsan-2025-final-meta-review-20261113-r3",
+  "evidence": {
+    "request": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-register-r3/.tmp/m1-meta-review/04-dongsan-actual573-r3.request.json",
+      "sha256": "575dab859b0e5b419a5f2428f19f0835ce11e236ccb9db5184e5a73dcdd9e0e4"
+    },
+    "semanticLedger": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review-rev2.json",
+      "sha256": "b21c50dadfa1dab31a2110c0f31df44ec39c33e3ea3caf4305b60f67df0aea44"
+    },
+    "source": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-register-r3/archive/exams/original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sha256": "9a631f2376d09ded4c4ca4a8d924ea7f5ba8c3bf3bb8e29adb33e9e4d6bff35f"
+    },
+    "canonicalInputManifest": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-register-r3/archive/data/archive2-canonical-input-manifest.json",
+      "sha256": "f891d6af29d18e9148cb1afb5d132aaa6634531ff433c5209f56223d38485ab8"
+    },
+    "rpmMiddleHelper": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-register-r3/archive/rpm-middle-toc.js",
+      "sha256": "1369c042bb941fa8867cd87039bfb2e2622000c74af733dc125e0e167f0e61b5"
+    },
+    "rpmMiddleParents": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-register-r3/archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+      "sha256": "6b51807e3abda9475fa4f9fce5c6d1df83cc3006e32f52e5baf8aafd6519e1a1"
+    },
+    "unifiedUnits": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-register-r3/archive/archive2-unified-units.js",
+      "sha256": "c374e7b3c6dbcc3b4bc5103bdf6a764283c2e5648b603afe65f651756a018121"
+    },
+    "officialConsumerLoader": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-register-r3/archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "sha256": "997347340a7dbd1ae05c1f70935aa23a125b9bd7aad3a08a463bd2fb85af55f1"
+    }
+  },
+  "allInputHashesUnchanged": true,
+  "questionCount": 24,
+  "nativeValueMatches": 24,
+  "exactLeafCount": 23,
+  "rpmDebtOrdinals": [
+    17
+  ],
+  "parentCounts": {
+    "M1-1 / 문자와 식 / 문자의 사용과 식의 계산 (LEAF)": 10,
+    "M1-1 / 문자와 식 / 일차방정식의 활용 (LEAF)": 2,
+    "M1-1 / 문자와 식 / 일차방정식의 풀이 (LEAF)": 4,
+    "M1-1 / 좌표평면과 그래프 / 좌표와 그래프 (LEAF)": 5,
+    "M1-1 / 좌표평면과 그래프 / 좌표와 그래프 (PARENT)": 1,
+    "M1-1 / 좌표평면과 그래프 / 정비례와 반비례 (LEAF)": 2
+  },
+  "rows": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_d7b96738e9d6598b1b4905d6ccffd342efa81007ff672f4edddc440021608072",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-141",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "문자의 사용과 식의 계산",
+            "L3": "문자의 사용",
+            "L4": "곱셈·나눗셈 기호 생략"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\",\"문자의 사용\",\"곱셈·나눗셈 기호 생략\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "문자의 사용",
+        "L4": "곱셈·나눗셈 기호 생략"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "문자의 사용",
+        "L4": "곱셈·나눗셈 기호 생략"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "parentL2": "문자의 사용과 식의 계산"
+      }
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_06868fd215d11b2d3508f0a0921c36298710ad1e73484bccbd627df856d12be3",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-140",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "문자의 사용과 식의 계산",
+            "L3": "문자의 사용",
+            "L4": "문자로 수량 나타내기"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\",\"문자의 사용\",\"문자로 수량 나타내기\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "문자의 사용",
+        "L4": "문자로 수량 나타내기"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "문자의 사용",
+        "L4": "문자로 수량 나타내기"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "parentL2": "문자의 사용과 식의 계산"
+      }
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_cc10b4d08c3aa07a1eac39b56c2e9be5ec804ad7ee63be7aae8de63b7b707595",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+        "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-142",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "문자의 사용과 식의 계산",
+            "L3": "식의 값",
+            "L4": "대입하여 식의 값 구하기"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\",\"식의 값\",\"대입하여 식의 값 구하기\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "식의 값",
+        "L4": "대입하여 식의 값 구하기"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "식의 값",
+        "L4": "대입하여 식의 값 구하기"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "parentL2": "문자의 사용과 식의 계산"
+      }
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_bff9adbdf8d75282f6a616ec39c2a5b771cc5f3abe3c7d4618067384f92b4cad",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+        "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-142",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "문자의 사용과 식의 계산",
+            "L3": "식의 값",
+            "L4": "대입하여 식의 값 구하기"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\",\"식의 값\",\"대입하여 식의 값 구하기\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "식의 값",
+        "L4": "대입하여 식의 값 구하기"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "식의 값",
+        "L4": "대입하여 식의 값 구하기"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "parentL2": "문자의 사용과 식의 계산"
+      }
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_ed1de40de7e0c8d94aaad317c2a528e2cd235a8712070d20e776d66db7225525",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_TERM_COEFFICIENT_AUDIT"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-144",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "문자의 사용과 식의 계산",
+            "L3": "일차식",
+            "L4": "일차식과 계수·상수항"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\",\"일차식\",\"일차식과 계수·상수항\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "일차식",
+        "L4": "일차식과 계수·상수항"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "일차식",
+        "L4": "일차식과 계수·상수항"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "parentL2": "문자의 사용과 식의 계산"
+      }
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_30d4bbedcab88624031547aecaab21f9eb7d53f0a1fd19dbd3bf4d4b6b167897",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_LIKE_TERMS"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-145",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "문자의 사용과 식의 계산",
+            "L3": "일차식",
+            "L4": "동류항 정리"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\",\"일차식\",\"동류항 정리\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "일차식",
+        "L4": "동류항 정리"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "일차식",
+        "L4": "동류항 정리"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "parentL2": "문자의 사용과 식의 계산"
+      }
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_a1f47262e984cf2360d5267f3236c4e4437206454a81fa2588c2832ea90e22ec",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-147",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "문자의 사용과 식의 계산",
+            "L3": "일차식의 계산",
+            "L4": "괄호가 있는 일차식 계산"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\",\"일차식의 계산\",\"괄호가 있는 일차식 계산\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "일차식의 계산",
+        "L4": "괄호가 있는 일차식 계산"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "일차식의 계산",
+        "L4": "괄호가 있는 일차식 계산"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "parentL2": "문자의 사용과 식의 계산"
+      }
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_82b306a8e72f0b42f9a235f304a85cbea85ccdd4d522b0ba8f34872e5e3c82f4",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-147",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "문자의 사용과 식의 계산",
+            "L3": "일차식의 계산",
+            "L4": "괄호가 있는 일차식 계산"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\",\"일차식의 계산\",\"괄호가 있는 일차식 계산\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "일차식의 계산",
+        "L4": "괄호가 있는 일차식 계산"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "일차식의 계산",
+        "L4": "괄호가 있는 일차식 계산"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "parentL2": "문자의 사용과 식의 계산"
+      }
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_e503bc22c72fb8e6da81af140c795b91d65306212c2cbbc797a1f0c1ff4ccf70",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-147",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "문자의 사용과 식의 계산",
+            "L3": "일차식의 계산",
+            "L4": "괄호가 있는 일차식 계산"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\",\"일차식의 계산\",\"괄호가 있는 일차식 계산\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "일차식의 계산",
+        "L4": "괄호가 있는 일차식 계산"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "일차식의 계산",
+        "L4": "괄호가 있는 일차식 계산"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "parentL2": "문자의 사용과 식의 계산"
+      }
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_51128c898d31ea8c392a5381789d670bc0a1a7c452182bfb24a4adda563d3449",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "일차방정식의 활용"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 활용"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-161",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "일차방정식의 활용",
+            "L3": "생활 속 관계식",
+            "L4": "요금·가격"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 활용\",\"생활 속 관계식\",\"요금·가격\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 활용",
+        "L3": "생활 속 관계식",
+        "L4": "요금·가격"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 활용",
+        "L3": "생활 속 관계식",
+        "L4": "요금·가격"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 활용\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 활용"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 활용\"]",
+        "parentL2": "일차방정식의 활용"
+      }
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_13e2eac8fb571a990e58082dd8da83a4e8e903655c974e591bcd17cc6a822522",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-149",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "일차방정식의 풀이",
+            "L3": "등식과 방정식",
+            "L4": "방정식의 해"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 풀이\",\"등식과 방정식\",\"방정식의 해\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이",
+        "L3": "등식과 방정식",
+        "L4": "방정식의 해"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이",
+        "L3": "등식과 방정식",
+        "L4": "방정식의 해"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 풀이\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 풀이\"]",
+        "parentL2": "일차방정식의 풀이"
+      }
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_d94fa7d473fa39559b5a1313bb6169d669806c4ff8226d1adff023029cbc88eb",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-148",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "일차방정식의 풀이",
+            "L3": "등식과 방정식",
+            "L4": "등식의 성질"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 풀이\",\"등식과 방정식\",\"등식의 성질\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이",
+        "L3": "등식과 방정식",
+        "L4": "등식의 성질"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이",
+        "L3": "등식과 방정식",
+        "L4": "등식의 성질"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 풀이\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 풀이\"]",
+        "parentL2": "일차방정식의 풀이"
+      }
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_63b7882e55688be203b1ad8541fae9d3c18e60e6678a855ea676afdeab51497b",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-151",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "일차방정식의 풀이",
+            "L3": "일차방정식의 풀이",
+            "L4": "괄호·분수·소수가 있는 방정식"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 풀이\",\"일차방정식의 풀이\",\"괄호·분수·소수가 있는 방정식\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이",
+        "L3": "일차방정식의 풀이",
+        "L4": "괄호·분수·소수가 있는 방정식"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이",
+        "L3": "일차방정식의 풀이",
+        "L4": "괄호·분수·소수가 있는 방정식"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 풀이\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 풀이\"]",
+        "parentL2": "일차방정식의 풀이"
+      }
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_9670b98fc8cec71dd9d7d31514c4870c73ca1584b14b331ee75fb5560eebf8ac",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-153",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "일차방정식의 풀이",
+            "L3": "해와 조건",
+            "L4": "계수 조건 결정"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 풀이\",\"해와 조건\",\"계수 조건 결정\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이",
+        "L3": "해와 조건",
+        "L4": "계수 조건 결정"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이",
+        "L3": "해와 조건",
+        "L4": "계수 조건 결정"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 풀이\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 풀이"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 풀이\"]",
+        "parentL2": "일차방정식의 풀이"
+      }
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_f30518505fe44d01d57555fd9096bb0f742b25b9bceb13f6666031e8bbdf06fe",
+      "actualNative": {
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "problemTypeKey": "PT_COORDINATE_POINT_READING",
+        "templateKey": "TPL_COORDINATE_POINT_READING_CORE"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-163",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "좌표평면과 그래프",
+            "L2": "좌표와 그래프",
+            "L3": "좌표평면",
+            "L4": "점의 좌표 읽기"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\",\"좌표평면\",\"점의 좌표 읽기\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "좌표평면",
+        "L4": "점의 좌표 읽기"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "좌표평면",
+        "L4": "점의 좌표 읽기"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\"]",
+        "unitKey": "RPM22-M1-L1-04",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-04",
+        "unitLabel": "좌표평면과 그래프",
+        "parentKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\"]",
+        "parentL2": "좌표와 그래프"
+      }
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_9bb9b64b29ed2301706ca6e221d28002de41dbb6616cf151ac5065ba9e969d77",
+      "actualNative": {
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "problemTypeKey": "PT_COORDINATE_POINT_READING",
+        "templateKey": "TPL_COORDINATE_POINT_READING_CLAIM_AUDIT"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-163",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "좌표평면과 그래프",
+            "L2": "좌표와 그래프",
+            "L3": "좌표평면",
+            "L4": "점의 좌표 읽기"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\",\"좌표평면\",\"점의 좌표 읽기\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "좌표평면",
+        "L4": "점의 좌표 읽기"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "좌표평면",
+        "L4": "점의 좌표 읽기"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\"]",
+        "unitKey": "RPM22-M1-L1-04",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-04",
+        "unitLabel": "좌표평면과 그래프",
+        "parentKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\"]",
+        "parentL2": "좌표와 그래프"
+      }
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_a522a6981ee48b611c9394519acfe249450312545fcf0669ba4928e79b88ccc1",
+      "actualNative": {
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "problemTypeKey": "PT_COORDINATE_POINT_READING",
+        "templateKey": "TPL_COORDINATE_POINT_READING_QUADRANT_SIGN_TRANSFORM"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프"
+      },
+      "exactLeafExpected": false,
+      "expectedBaseLeafRecordId": null,
+      "actualRpmEvidence": [],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "METADATA_PARENT",
+      "rpmGranularity": "PARENT",
+      "actualBaseLeafKey": null,
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "",
+        "L4": ""
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "",
+        "L4": ""
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\"]",
+        "unitKey": "RPM22-M1-L1-04",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-04",
+        "unitLabel": "좌표평면과 그래프",
+        "parentKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\"]",
+        "parentL2": "좌표와 그래프"
+      }
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_530b6b53eff5428ff17f5f160cf18275bd5f245b9dcb80cdd46b610f0e48ad2b",
+      "actualNative": {
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_SPEED_GRAPH"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-165",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "좌표평면과 그래프",
+            "L2": "좌표와 그래프",
+            "L3": "그래프",
+            "L4": "상황을 그래프로 나타내기"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\",\"그래프\",\"상황을 그래프로 나타내기\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "그래프",
+        "L4": "상황을 그래프로 나타내기"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "그래프",
+        "L4": "상황을 그래프로 나타내기"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\"]",
+        "unitKey": "RPM22-M1-L1-04",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-04",
+        "unitLabel": "좌표평면과 그래프",
+        "parentKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\"]",
+        "parentL2": "좌표와 그래프"
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_1a11efeba9bb9038e1dd00cd7761912209c47e790038b4c373ecbee99a46297f",
+      "actualNative": {
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-166",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "좌표평면과 그래프",
+            "L2": "좌표와 그래프",
+            "L3": "그래프",
+            "L4": "그래프 해석"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\",\"그래프\",\"그래프 해석\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "그래프",
+        "L4": "그래프 해석"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "그래프",
+        "L4": "그래프 해석"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\"]",
+        "unitKey": "RPM22-M1-L1-04",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-04",
+        "unitLabel": "좌표평면과 그래프",
+        "parentKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\"]",
+        "parentL2": "좌표와 그래프"
+      }
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_105e1a9e66ef8eb61ae37b8ad256d82b117ebeb6d50230a04f353cbc3d27af3e",
+      "actualNative": {
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+        "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-167",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "좌표평면과 그래프",
+            "L2": "정비례와 반비례",
+            "L3": "정비례",
+            "L4": "정비례 관계식"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\",\"정비례\",\"정비례 관계식\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "정비례",
+        "L4": "정비례 관계식"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "정비례",
+        "L4": "정비례 관계식"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\"]",
+        "unitKey": "RPM22-M1-L1-04",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-04",
+        "unitLabel": "좌표평면과 그래프",
+        "parentKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\"]",
+        "parentL2": "정비례와 반비례"
+      }
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_9a70f8dfb14b04696845323d046dedded271684fd020f1c73fd3d7f3a800dffc",
+      "actualNative": {
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-171",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "좌표평면과 그래프",
+            "L2": "정비례와 반비례",
+            "L3": "관계 해석",
+            "L4": "그래프에서 식 구하기"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\",\"관계 해석\",\"그래프에서 식 구하기\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "관계 해석",
+        "L4": "그래프에서 식 구하기"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "관계 해석",
+        "L4": "그래프에서 식 구하기"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\"]",
+        "unitKey": "RPM22-M1-L1-04",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-04",
+        "unitLabel": "좌표평면과 그래프",
+        "parentKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"정비례와 반비례\"]",
+        "parentL2": "정비례와 반비례"
+      }
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_UNIT_QUANTITY_AND_EVALUATION"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-140",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "문자의 사용과 식의 계산",
+            "L3": "문자의 사용",
+            "L4": "문자로 수량 나타내기"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\",\"문자의 사용\",\"문자로 수량 나타내기\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "문자의 사용",
+        "L4": "문자로 수량 나타내기"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산",
+        "L3": "문자의 사용",
+        "L4": "문자로 수량 나타내기"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "문자의 사용과 식의 계산"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"문자의 사용과 식의 계산\"]",
+        "parentL2": "문자의 사용과 식의 계산"
+      }
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_a5aa7c134853c9e34bce34ee1690a96d8c74b4f6967d52bc5c87a674ab0f89df",
+      "actualNative": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_RATE"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "문자와 식",
+        "L2": "일차방정식의 활용"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 활용"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-156",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "문자와 식",
+            "L2": "일차방정식의 활용",
+            "L3": "속력·시간·거리",
+            "L4": "거리 관계식"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 활용\",\"속력·시간·거리\",\"거리 관계식\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 활용",
+        "L3": "속력·시간·거리",
+        "L4": "거리 관계식"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 활용",
+        "L3": "속력·시간·거리",
+        "L4": "거리 관계식"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 활용\"]",
+        "unitKey": "RPM22-M1-L1-03",
+        "courseKey": "M1-1",
+        "L1": "문자와 식",
+        "L2": "일차방정식의 활용"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-03",
+        "unitLabel": "문자와 식",
+        "parentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 활용\"]",
+        "parentL2": "일차방정식의 활용"
+      }
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_0a7d7b3d981e3dfcb89aed3e22c4c0ef5440509f4657dc4a15ffdd0776751a93",
+      "actualNative": {
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_DISTANCE_TIME_FACT_AUDIT"
+      },
+      "nativeMatchesSemantic": true,
+      "actualCurriculumKey": "2022",
+      "actualCourseKey": "M1-1",
+      "canonicalParentLabels": {
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프"
+      },
+      "expectedEffectiveParent": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프"
+      },
+      "exactLeafExpected": true,
+      "expectedBaseLeafRecordId": "M1-RPM-166",
+      "actualRpmEvidence": [
+        {
+          "basis": "boundRpmMetadata",
+          "path": {
+            "curriculumKey": "",
+            "courseKey": "",
+            "L1": "좌표평면과 그래프",
+            "L2": "좌표와 그래프",
+            "L3": "그래프",
+            "L4": "그래프 해석"
+          }
+        }
+      ],
+      "rpmStatus": "EXACT",
+      "rpmReason": "",
+      "rpmBasis": "BOUND_RPM_METADATA_PATH",
+      "rpmGranularity": "LEAF",
+      "actualBaseLeafKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\",\"그래프\",\"그래프 해석\"]",
+      "actualBasePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "그래프",
+        "L4": "그래프 해석"
+      },
+      "actualEffectivePath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "그래프",
+        "L4": "그래프 해석"
+      },
+      "actualEffectiveParent": {
+        "key": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\"]",
+        "unitKey": "RPM22-M1-L1-04",
+        "courseKey": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프"
+      },
+      "unified": {
+        "placed": true,
+        "rpmParentStatus": "EXACT",
+        "unitKey": "RPM22-M1-L1-04",
+        "unitLabel": "좌표평면과 그래프",
+        "parentKey": "[\"2022\",\"M1-1\",\"좌표평면과 그래프\",\"좌표와 그래프\"]",
+        "parentL2": "좌표와 그래프"
+      }
+    }
+  ],
+  "observations": [],
+  "failures": [],
+  "path": "digest-checked loadResolvedConsumerCatalog -> target UID metadata -> RPMMiddleToc.resolveRecord + Archive2UnifiedUnits.classify",
+  "officialConsumerVerificationRepeated": false,
+  "actualRpmSolutionResolver": "NOT_RUN_UNVERIFIED_SOLUTION",
+  "sourceOrCanonicalMutation": false,
+  "indexOrRefsMutation": false,
+  "fullR1R2R3Rerun": false,
+  "noRemoteMainOrPublicationClaim": true
+}

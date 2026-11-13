@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "exact-pr-head-ci-concrete-failure-v1",
+  "status": "CI_FAILED_ON_EXACT_HEAD",
+  "observedAt": "2026-11-13 22:34:09 UTC",
+  "pr": 1971,
+  "headSha": "fad3422ea8b1afeada15ae7db8219b8c7336466d",
+  "baseSha": "573fa32804480b2d70f7536b211e240e8d64d5ed",
+  "runId": 43519441692,
+  "jobId": 132209710183,
+  "jobName": "Archive2 runtime contract",
+  "failedStep": {
+    "number": 6,
+    "name": "Verify original routes, response budgets, and storage failures"
+  },
+  "workflowJob": {
+    "id": 132209710183,
+    "name": "Archive2 runtime contract",
+    "status": "completed",
+    "conclusion": "failure",
+    "run_id": 43519441692,
+    "logs_url": null,
+    "steps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1
+      },
+      {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2
+      },
+      {
+        "name": "Run actions/setup-node@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3
+      },
+      {
+        "name": "Classify the fixed snapshot impact",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4
+      },
+      {
+        "name": "Record unchanged shared runtime scope",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 5
+      },
+      {
+        "name": "Verify original routes, response budgets, and storage failures",
+        "status": "completed",
+        "conclusion": "failure",
+        "number": 6
+      },
+      {
+        "name": "Run browser-actions/setup-chrome@v1",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 7
+      },
+      {
+        "name": "Verify finder and current middle RPM selection in actual Chrome",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 8
+      },
+      {
+        "name": "Upload middle RPM browser evidence",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 9
+      },
+      {
+        "name": "Post Run actions/setup-node@v4",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 17
+      },
+      {
+        "name": "Post Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 18
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 19
+      }
+    ]
+  },
+  "rawLog": {
+    "path": ".tmp/m1-meta-review/04-dongsan-r3-pr1971-fad3422e-runtime-job132209710183.log",
+    "decodedUtf8RawSha256": "ba77eba66ccef279e9fe193b5e042a7d40422e82ca947e3bb4273a8718a4b019",
+    "bytes": 305000
+  },
+  "failureFacts": {
+    "testFile": "archive/tools/meta-foundation/rpm-middle-toc.test.mjs",
+    "failedTests": [
+      "not ok 40 - the six publisher books define 24 units and 54 selectable parents, with matching generated browser data",
+      "not ok 41 - all 326 locked leaves keep their L3/L4 and round trip through one effective parent without losing crosswalk IDs"
+    ],
+    "firstError": "RPM_MIDDLE_HELPER_STALE",
+    "secondError": {
+      "expected": [
+        "M1-RPM-140",
+        "M1-RPM-140-UNIT-QUANTITY-EVALUATION-20261113"
+      ],
+      "actual": [
+        "M1-RPM-140"
+      ]
+    },
+    "counts": {
+      "tests": 262,
+      "passed": 260,
+      "failed": 2,
+      "skipped": 0
+    },
+    "inference": "The generated browser helper does not yet reflect the newly added supplemental crosswalk ID."
+  },
+  "noSuccessInferredForSkippedRuntimeChrome": true,
+  "otherJobsWereStillRunningAtFailureObservation": true,
+  "readOnlyObserver": true,
+  "localTestsOrWorkflowRerun": false,
+  "sourceOrGitMutation": false,
+  "supersededHeadResultsMustNotBeUsedForAnyLaterHead": true
+}

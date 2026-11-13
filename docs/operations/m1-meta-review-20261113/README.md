@@ -2,7 +2,7 @@
 
 ## 현재 진행
 
-**운영 완료 3/44장 · 남은 41장 · 읽기 95/1,047문항 · 운영 마감 71문항.** 현재 **2025 동산중 중1 2학기 기말24문항**의 발문·선지·제공 풀이와 실제 그림15개 읽기를 마쳤다. [의미 원장](04-dongsan-semantic-review.json)에 기존 PT 유지, TPL1 보완, 군집키24·결합방식23 정정, exact RPM23 및 Q17 debt를 기록했다. 동산 후보는 준비했고 아직 production source·정본에 적용하지 않았다. 공유 binding154의 과정명 한 필드 교정용 v2를 구현하고 독립 코드 검토·전용66사례 및 격리 등록 후 Consumer5/5/5·중1runtime659 보존을 확인했다. 정확한 요청을 별도 PR/main으로 마감한 뒤 동산24를 반영한다. 풍덕1문항은 보존 확인 대상이며 의미 검토 완료로 세지 않는다.
+**운영 완료 3/44장 · 남은 41장 · 읽기 95/1,047문항 · 운영 마감 71문항.** 현재 동산중 2025 기말24의 의미 읽기와 그림15 검토를 마쳤다. [현재 원장](04-dongsan-semantic-review-rev2.json)은 native PT 유지·Q22 TPL1·cluster24·integration23 정정, exact RPM23/Q17 debt를 기록한다. 공유 binding154는 PR1970/실제 main573fa에서 운영 마감했다. 동산 normal24는 r3 요청으로 격리 공식 등록·최종 Consumer24/24/24·RPM/native·범위 보존 검증을 통과했으며 PR/main 대기다. r2의 Q17 상위 단원 연결 누락은 현재 main의 유일한 기존 부모 근거를 명시해 보완하며, RPM leaf는 추가하지 않는다. 현재 동산24 main 등록 완료를 주장하지 않는다.
 
 팔마중24는 [PR1969](https://github.com/icefoxtail/AP------/pull/1969), 실제 등록 main `bf35b7e13417b033ee167117d567a9f0262712d6`에서 운영 마감했다. [마감 근거](03-palma-operational-closeout.json), [실제 writer](03-palma-pr1969-main-writer-final.json), [실제 부모 연결의 동일 입력 확인](03-palma-main-bf35-rpm-parent-reuse.json), [보존 비교](03-palma-main-bf35-minimal-protection.json)를 재사용한다. 등록24·identity24·runtime24·정본7, 최종 post-AutoMeta Consumer24/24/24 PASS 및 실패·미관측·대기0을 확인했다.
 
@@ -24,7 +24,7 @@
 
 진행 원장은 [progress.json](progress.json), 다음 담당 절차와 복사 프롬프트는 [HANDOFF.md](HANDOFF.md)다. 한 시험지의 의미 검토→최소 수정→정확 후보 검증→PR/main→실제 등록 영수증/최종 Consumer→원격 SHA를 끝낸 뒤 다음으로 이동한다. 기존 R1/R2/R3와 같은 입력의 검증은 반복하지 않는다. 수학 FINAL QA나 solution 기반 RPM FINAL을 수행했다고 기록하지 않는다.
 
-검증된 직전 원격 branch head는 `01a720162995440d1e7e398a9382e08a29d7108d`, tree `79153c80e4292a009ccc847805802514a94eabdc`, AWCR revision27이다. 이 shared-binding preflight 체크포인트의 실제 게시 head/tree는 원격 branch와 다음 immutable AWCR revision28에서 확인한다.
+검증된 직전 원격 branch head는 `fad3422ea8b1afeada15ae7db8219b8c7336466d`, tree `6cbaaa90bb6e4a7e2cf9ea224d1d15769c5bfbcf`, AWCR revision31이다. 이번 변경의 실제 게시 head/tree는 원격 branch 재읽기와 후속 immutable AWCR에서 확인한다.
 
 ## 시험지별 완료 체크리스트
 
@@ -33,7 +33,7 @@
 - [x] 01. 26 신흥중 2학기 중간 중1 기출 / 24문항 — 운영 완료 · RPM debt Q8/Q10 기록
 - [x] 02. 26 왕운중 2학기 중간 중1 기출 / 23문항 — 운영 완료 · 실제 등록23/최종Consumer23 · RPM debt Q2/Q3/Q4/Q16 기록
 - [x] 03. 26 팔마중 2학기 중간 중1 기출 / 24문항 — 운영 완료 · 실제 등록24/최종Consumer24 · RPM debt Q6/Q8/Q12/Q13/Q14 기록
-- [ ] 04. 25 동산중 2학기 기말 중1 기출 / 24문항 — 전체 의미 읽기24·그림15 완료 / 후보 준비·공유 키 교정 격리 검증 완료 / 실제 main 마감 대기
+- [ ] 04. 25 동산중 2학기 기말 중1 기출 / 24문항 — 의미 읽기24·그림15 완료 / 공유 의존 main 마감 / normal r3 격리 PASS24·PR1971 브라우저 생성 파일 보완18/18·새 head CI 대기
 - [ ] 05. 25 신흥중 2학기 기말 중1 기출 / 22문항 — PENDING
 - [ ] 06. 25 연향중 2학기 기말 중1 기출 / 23문항 — PENDING
 - [ ] 07. 25 왕운중 2학기 기말 중1 기출 / 24문항 — PENDING
@@ -78,4 +78,4 @@
 
 ## 동산 공유 키 선행 검증
 
-[구현과 전용 테스트](04-binding-v2-implementation.json), [독립 코드 검토](04-binding-v2-independent-review.json), [격리 실행 원본과 해시](04-binding-v2-isolated-artifacts.json)를 저장했다. 기존 v1과 일반 reviewed-exam-v2의 대상 밖 승인 보호는 유지한다. 공유 교정은 one binding의 `standardCourse`만 바꾸고, 기존 source2·승인·풀이·그림·metadata/identity/runtime를 보존한다. 이 기록은 격리 검증이며 실제 운영 main 등록 완료로 표시하지 않는다.
+[구현과 전용 테스트](04-binding-v2-implementation.json), [독립 코드 검토](04-binding-v2-independent-review.json), [격리 실행 원본과 해시](04-binding-v2-isolated-artifacts.json)를 저장했다. 기존 v1과 일반 reviewed-exam-v2의 대상 밖 승인 보호는 유지한다. 공유 교정은 one binding의 `standardCourse`만 바꾸고, 기존 source2·승인·풀이·그림·metadata/identity/runtime를 보존한다. 격리 검증과 구분하여 [실제 writer 근거](04-binding-v2-main-writer-evidence.json), [main 보존 대조](04-binding-v2-main-protection.json), [운영 마감](04-binding-v2-operational-closeout.json)을 추가했다. 요청은 APPLIED·소비 완료이며 inbox에 재투입하지 않는다.
