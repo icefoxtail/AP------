@@ -95,9 +95,10 @@ test('the four M1 basic/location leaves follow chapter content while retaining t
     assert.deepEqual(row.basePath, ['2022', 'M1-2', '기본 도형', baseL2, L3, L4]);
     const base = Toc.refinePath(row.basePath);
     assert.equal(base.effectivePath.L2, effectiveL2, id);
-    const expectedCrosswalkIds = id === 'M1-RPM-177'
-      ? [id, 'M1-RPM-177-ALTERNATE-POSITION-20261113', 'M1-RPM-177-TRANSFER-BENT-20261113', 'M1-RPM-177-TRANSFER-DIRECT-20261113']
-      : [id];
+    const expectedCrosswalkIds = {
+      'M1-RPM-177': [id, 'M1-RPM-177-ALTERNATE-POSITION-20261113', 'M1-RPM-177-TRANSFER-BENT-20261113', 'M1-RPM-177-TRANSFER-DIRECT-20261113', 'M1-RPM-177-ANGLE-RATIO-20261113'],
+      'M1-RPM-184': [id, 'M1-RPM-184-RIGHT-TRAPEZOID-DISTANCE-20261113'],
+    }[id] || [id];
     assert.deepEqual(base.crosswalkRecordIds, expectedCrosswalkIds);
     assert.deepEqual(Toc.refinePath(base.effectivePath).basePath, Toc.normalizePath(row.basePath));
     const record = { originalCurriculum: '2022', sourceGrade: '중1',

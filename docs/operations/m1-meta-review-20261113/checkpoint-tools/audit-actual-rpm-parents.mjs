@@ -22,6 +22,13 @@ const equal = (left, right) => JSON.stringify(left) === JSON.stringify(right);
 const compact = value => String(value ?? "").normalize("NFC").replace(/\s/g, "");
 const req = readJson(requestPath), ledger = readJson(ledgerPath);
 const ledgerByOrdinal = new Map(ledger.items.map(row => [row.ordinal, row]));
+const expectedQuestionCount = ledger.source?.questionCount;
+const expectedLeafCount = ledger.counts?.exactRpmLeaves;
+const expectedDebtOrdinals = ledger.rpmEvidenceDebtOrdinals;
+if (!Number.isInteger(expectedQuestionCount) || !Number.isInteger(expectedLeafCount) ||
+    !Array.isArray(expectedDebtOrdinals) || expectedQuestionCount !== req.expectedQuestionCount ||
+    expectedLeafCount + expectedDebtOrdinals.length !== expectedQuestionCount)
+  throw new Error("Reviewed ledger denominators are required and must match the request");
 const failures = [], observations = [], rows = [];
 if (req.items.length !== req.expectedQuestionCount || ledgerByOrdinal.size !== req.expectedQuestionCount)
   throw new Error("Request/semantic ordinal count mismatch");
@@ -75,12 +82,16 @@ for (const item of [...req.items].sort((a, b) => a.sourceOrdinal - b.sourceOrdin
     if (!equal(item.after[key], semantic.after[key])) fail("REQUEST_NATIVE_SEMANTIC_MISMATCH", { field: key });
   }
   if (nativeDifferences.length) fail("ACTUAL_NATIVE_VALUE_MISMATCH", { fields: nativeDifferences });
-  if (actual.curriculumKey !== "2022" || actual.courseKey !== semantic.courseScope)
+  const expectedCurriculum = semantic.after.curriculum || semantic.after.curriculumKey || semantic.effectiveParent?.curriculum;
+  const expectedCourse = semantic.courseScope || semantic.after.courseKey || semantic.effectiveParent?.scope;
+  if (!expectedCurriculum || !expectedCourse) throw new Error("Reviewed curriculum/course required: " + ordinal);
+  if (actual.curriculumKey !== expectedCurriculum || actual.courseKey !== expectedCourse)
     fail("ACTUAL_CURRICULUM_COURSE_MISMATCH", { curriculumKey: actual.curriculumKey, courseKey: actual.courseKey });
   const exactExpected = Boolean(semantic.after.rpmPrimaryPath);
   if (!equal(item.after.rpmPrimaryPath ?? null, semantic.after.rpmPrimaryPath ?? null))
     fail("REQUEST_RPM_PATH_SEMANTIC_MISMATCH");
-  const expected = toc.resolveRecord({ ...item.after, sourceGrade: "중1" }, "중1");
+  const expected = toc.resolveRecord({ ...item.after, curriculum: expectedCurriculum,
+    curriculumKey: expectedCurriculum, courseKey: expectedCourse, sourceGrade: "중1" }, "중1");
   const effective = toc.resolveRecord(actual, "중1");
   const classification = units.classify(actual), entry = classification.entry;
   const actualParent = parentSummary(effective);
@@ -136,8 +147,10 @@ for (const item of [...req.items].sort((a, b) => a.sourceOrdinal - b.sourceOrdin
 const afterHashes = Object.fromEntries(Object.entries(evidenceFiles).map(([key, file]) => [key, hash(file)]));
 if (!equal(beforeHashes, afterHashes)) failures.push({ reason: "INPUT_CHANGED_DURING_READ_ONLY_AUDIT" });
 const debtOrdinals = rows.filter(row => !row.exactLeafExpected).map(row => row.ordinal);
-if (rows.length !== 23 || rows.filter(row => row.exactLeafExpected).length !== 19 || !equal(debtOrdinals, [2, 3, 4, 16]))
-  failures.push({ reason: "WANGUN_REVIEW_COUNTS_MISMATCH", observedRows: rows.length, debtOrdinals });
+if (rows.length !== expectedQuestionCount || rows.filter(row => row.exactLeafExpected).length !== expectedLeafCount ||
+    !equal(debtOrdinals, expectedDebtOrdinals))
+  failures.push({ reason: "REVIEWED_EXAM_COUNTS_MISMATCH", expectedQuestionCount, expectedLeafCount,
+    expectedDebtOrdinals, observedRows: rows.length, debtOrdinals });
 const parentCounts = {};
 for (const row of rows) {
   const parent = row.actualEffectiveParent;

@@ -1,0 +1,446 @@
+{
+  "schemaVersion": "existing-exam-isolated-preflight-command-plan-v1",
+  "recordedAt": "2026-11-13T18:48:15.394657+00:00",
+  "status": "PLAN_ONLY_NO_COMMAND_EXECUTED",
+  "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+  "isolatedWorktreePlanned": "/workspace/scratch/933015cd0a4f/m1-palma-register",
+  "semanticAuthority": {
+    "path": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+    "sha256": "0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18",
+    "questionCount": 24,
+    "exactRpmLeaves": 19,
+    "debtOrdinals": [
+      6,
+      8,
+      12,
+      13,
+      14
+    ]
+  },
+  "requestBinding": {
+    "placeholder": "<PALMA_REQUEST_REL>",
+    "actualPath": null,
+    "actualRawSha256": null,
+    "instruction": "Root substitutes the finished request path relative to the isolated root, binds its SHA/source blob, and uses identical bytes in steps1,2,9,10. This plan does not imply that the request already exists.",
+    "schema": "archive-reviewed-exam-meta-register-request-v2",
+    "registryChangeCount": 7
+  },
+  "preconditions": [
+    "Refresh exact authorized main and record actual isolated HEAD/source/request/evidence hashes. A different base needs only affected-input refresh, not prior paper rereading.",
+    "Root prepares only the reviewed source, exact request/evidence and approved crosswalk/parent/helper/cache inputs in the isolated tree; native/compiled/metadata/runtime are still written by official registrar.",
+    "Run the tool files inside the isolated worktree: catalog/parent root is derived from script location, not cwd alone.",
+    "All tracked production sources and current DB/manifest inputs required by builders must exist. Search index uses git ls-files plus DB parity; sparse missing inputs must be hydrated, not bypassed.",
+    "This is an existing exam with unchanged source membership, so the local minimum does not need a separate db rebuild.",
+    "Run sequentially, capture stdout/stderr/exit code, stop on an actual failure; no optional concurrent whole-metadata loads."
+  ],
+  "minimalCommandSequence": [
+    {
+      "order": 1,
+      "id": "dry-run",
+      "cwd": "/workspace/scratch/933015cd0a4f/m1-palma-register",
+      "argv": [
+        "node",
+        "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs",
+        "--request",
+        "<PALMA_REQUEST_REL>"
+      ],
+      "mode": "READ_ONLY",
+      "purpose": "Exact request/approval/fingerprint/registry validation; expected PASS24/registry7/runtime24. Consumer not yet checked.",
+      "stdout": ".tmp/m1-meta-review/03-palma-preflight-dry-run.json",
+      "stderr": ".tmp/m1-meta-review/03-palma-preflight-dry-run.stderr",
+      "executed": false
+    },
+    {
+      "order": 2,
+      "id": "isolated-write",
+      "cwd": "/workspace/scratch/933015cd0a4f/m1-palma-register",
+      "argv": [
+        "node",
+        "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs",
+        "--request",
+        "<PALMA_REQUEST_REL>",
+        "--write"
+      ],
+      "mode": "ISOLATED_WRITE",
+      "purpose": "Official native/compiled/metadata/identity/runtime/receipt materialization. Same request bytes as dry-run. Source bytes must remain unchanged.",
+      "stdout": ".tmp/m1-meta-review/03-palma-preflight-isolated-write.json",
+      "stderr": ".tmp/m1-meta-review/03-palma-preflight-isolated-write.stderr",
+      "executed": false
+    },
+    {
+      "order": 3,
+      "id": "question-index",
+      "cwd": "/workspace/scratch/933015cd0a4f/m1-palma-register",
+      "argv": [
+        "node",
+        "archive/tools/build-question-index.mjs"
+      ],
+      "mode": "ISOLATED_DERIVED_WRITE",
+      "purpose": "Update separate source-based search index; catalog builds do not do this.",
+      "stdout": ".tmp/m1-meta-review/03-palma-preflight-question-index.log",
+      "stderr": ".tmp/m1-meta-review/03-palma-preflight-question-index.stderr",
+      "executed": false
+    },
+    {
+      "order": 4,
+      "id": "catalog-intermediate",
+      "cwd": "/workspace/scratch/933015cd0a4f/m1-palma-register",
+      "argv": [
+        "node",
+        "archive/tools/build-archive2-catalog.mjs"
+      ],
+      "mode": "ISOLATED_DERIVED_WRITE",
+      "purpose": "Build current catalog, source verification bundles and input manifest before parent links.",
+      "stdout": ".tmp/m1-meta-review/03-palma-preflight-catalog-intermediate.log",
+      "stderr": ".tmp/m1-meta-review/03-palma-preflight-catalog-intermediate.stderr",
+      "executed": false
+    },
+    {
+      "order": 5,
+      "id": "parent-links",
+      "cwd": "/workspace/scratch/933015cd0a4f/m1-palma-register",
+      "argv": [
+        "node",
+        "archive/tools/build-basic-scope-parent-links.mjs"
+      ],
+      "mode": "ISOLATED_DERIVED_WRITE",
+      "purpose": "Derive parent links from current intermediate manifest and crosswalks.",
+      "stdout": ".tmp/m1-meta-review/03-palma-preflight-parent-links.log",
+      "stderr": ".tmp/m1-meta-review/03-palma-preflight-parent-links.stderr",
+      "executed": false
+    },
+    {
+      "order": 6,
+      "id": "catalog-final",
+      "cwd": "/workspace/scratch/933015cd0a4f/m1-palma-register",
+      "argv": [
+        "node",
+        "archive/tools/build-archive2-catalog.mjs"
+      ],
+      "mode": "ISOLATED_DERIVED_WRITE",
+      "purpose": "Bind new parent-link bytes into final student catalog and manifest.",
+      "stdout": ".tmp/m1-meta-review/03-palma-preflight-catalog-final.log",
+      "stderr": ".tmp/m1-meta-review/03-palma-preflight-catalog-final.stderr",
+      "executed": false
+    },
+    {
+      "order": 7,
+      "id": "parent-links-check",
+      "cwd": "/workspace/scratch/933015cd0a4f/m1-palma-register",
+      "argv": [
+        "node",
+        "archive/tools/build-basic-scope-parent-links.mjs",
+        "--check"
+      ],
+      "mode": "READ_ONLY_DERIVATION_CHECK",
+      "purpose": "Retain official fixed-point check after final catalog.",
+      "stdout": ".tmp/m1-meta-review/03-palma-preflight-parent-links-check.log",
+      "stderr": ".tmp/m1-meta-review/03-palma-preflight-parent-links-check.stderr",
+      "executed": false
+    },
+    {
+      "order": 8,
+      "id": "catalog-check",
+      "cwd": "/workspace/scratch/933015cd0a4f/m1-palma-register",
+      "argv": [
+        "node",
+        "archive/tools/build-archive2-catalog.mjs",
+        "--check"
+      ],
+      "mode": "READ_ONLY_DERIVATION_CHECK",
+      "purpose": "Retain official final catalog and verification-bundle consistency check.",
+      "stdout": ".tmp/m1-meta-review/03-palma-preflight-catalog-check.log",
+      "stderr": ".tmp/m1-meta-review/03-palma-preflight-catalog-check.stderr",
+      "executed": false
+    },
+    {
+      "order": 9,
+      "id": "verify-projection",
+      "cwd": "/workspace/scratch/933015cd0a4f/m1-palma-register",
+      "argv": [
+        "node",
+        "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs",
+        "--request",
+        "<PALMA_REQUEST_REL>",
+        "--verify-projection"
+      ],
+      "mode": "READ_ONLY_TARGET24",
+      "purpose": "Receipt replay checks exact24 runtime/catalog/search values after all derivations. Intended24 canonical/0 fallback; investigate unexpected fallback.",
+      "stdout": ".tmp/m1-meta-review/03-palma-preflight-verify-projection.json",
+      "stderr": ".tmp/m1-meta-review/03-palma-preflight-verify-projection.stderr",
+      "executed": false
+    },
+    {
+      "order": 10,
+      "id": "consumer-final-24",
+      "cwd": "/workspace/scratch/933015cd0a4f/m1-palma-register",
+      "argv": [
+        "node",
+        "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+        "--root",
+        "/workspace/scratch/933015cd0a4f/m1-palma-register",
+        "--request",
+        "<PALMA_REQUEST_REL>"
+      ],
+      "mode": "READ_ONLY_TARGET24",
+      "purpose": "Actual student Consumer verification last, after all local writers stop. Pass only this request once.",
+      "stdout": ".tmp/m1-meta-review/03-palma-preflight-consumer-final-24.json",
+      "stderr": ".tmp/m1-meta-review/03-palma-preflight-consumer-final-24.stderr",
+      "executed": false
+    }
+  ],
+  "expectedEvidence": {
+    "dryWrite": {
+      "status": "PASS",
+      "totalQuestions": 24,
+      "registryChangeCount": 7,
+      "runtimeMaterialized": 24,
+      "writeFalseThenTrue": true,
+      "receipt": "REGISTERED at archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/<requestId>.json; local only"
+    },
+    "projection": {
+      "status": "PASS",
+      "replay": true,
+      "totalQuestions": 24,
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "intendedConsumerLanes": {
+        "canonical": 24,
+        "usableMetaLane": 0
+      }
+    },
+    "consumer": {
+      "status": "PASS",
+      "counts": {
+        "changed": 24,
+        "checked": 24,
+        "passed": 24,
+        "skippedUnchanged": 0
+      },
+      "failures": [],
+      "unobservedFields": [],
+      "assignmentPending": [],
+      "scopeNote": "The checker derives changed scope from actual before/after. The planned24 follows all24 explicit2022 additions to current missing-curriculum rows; confirm against final request, never invent a denominator.",
+      "mainShaNote": "Local checker HEAD is a baseline identifier, not registered operational main."
+    }
+  },
+  "flagsVerifiedFromCode": {
+    "registrar": {
+      "flags": [
+        "--request FILE",
+        "--repo-root DIR",
+        "--write",
+        "--verify-projection"
+      ],
+      "lines": "8-13,266-292",
+      "notes": [
+        "Default is dry-run.",
+        "--write plus --verify-projection is forbidden.",
+        "No --help handler."
+      ]
+    },
+    "catalog": {
+      "flags": [
+        "--check",
+        "--refresh-canonical-projection",
+        "--package-only"
+      ],
+      "lines": "23-28,164-172,1047-1144",
+      "use": "Default writes and --check only. Locked master unchanged, so no refresh-canonical-projection exception needed. package-only is not a replacement."
+    },
+    "parentLinks": {
+      "flags": [
+        "--check"
+      ],
+      "lines": "393-396",
+      "default": "Writes shared derived parent links. No --request/UID option."
+    },
+    "searchIndex": {
+      "flags": [],
+      "lines": "7-14,240-266,674,760,873",
+      "default": "Writes question-index.js and index/audit reports. No CLI --check/--request parser."
+    },
+    "consumer": {
+      "flags": [
+        "--request FILE (repeatable)",
+        "--scoped FILE (repeatable)",
+        "--summary-file FILE",
+        "--root DIR"
+      ],
+      "lines": "425-443",
+      "use": "Exactly one Palma --request; no --scoped or inbox glob."
+    }
+  },
+  "orderEvidence": [
+    {
+      "path": "archive/build_db.py",
+      "lines": "2088-2132",
+      "meaning": "Official order is question-index -> intermediate catalog -> parent links -> final catalog -> parent check -> final catalog check."
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "lines": "1451-1459,2238-2263",
+      "meaning": "Registrar already generates canonical compiled outputs and writes requested native/runtime/receipt transaction; no second compile-write needed for this minimal isolated sequence."
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "lines": "1835-1860,2390-2419",
+      "meaning": "Verify-projection requires existing receipt and independently reads question-index.js."
+    },
+    {
+      "path": "tools/ci/reviewed-meta-register-pass.sh",
+      "lines": "107-128",
+      "meaning": "Projection check precedes actual Consumer check."
+    }
+  ],
+  "priorWangunEvidence": {
+    "path": "docs/operations/m1-meta-review-20261113/02-wangun-main51cf-isolated-preflight.json",
+    "sha256": "ea5437e08ddd76b96adeecfba1b0c4872c2faf2293abbc5c5277da8a0683d535",
+    "reusedFinding": {
+      "check": "official registrar verify-projection",
+      "initialFailure": "Search metadata mismatch Q1.subUnitKey",
+      "cause": "Separate source-based question-index.js had not been regenerated by catalog/parent/catalog.",
+      "fix": "Ran official build-question-index.mjs; no source/canonical/guard change.",
+      "verification": "Failed projection rerun passed all23; existing Consumer23 proof unchanged."
+    },
+    "reuseLimit": "Reuse the established dependency and command order, not old PASS as Palma PASS."
+  },
+  "effectiveParentAudit": {
+    "requiredForFinalMeaningCheck": true,
+    "expectedNative": 24,
+    "exactLeaves": 19,
+    "debtOrdinals": [
+      6,
+      8,
+      12,
+      13,
+      14
+    ],
+    "existingBasis": {
+      "path": "docs/operations/m1-meta-review-20261113/checkpoint-tools/audit-actual-rpm-parents.mjs",
+      "sha256": "d0a81616bc446cbc80c7ecea222c49036dc61a54d379ee3cd8fc14a47e61c9b1",
+      "authority": "Current checkpoint helper in own worktree; not claimed byte-identical to pinned main."
+    },
+    "doNotRunUnmodified": true,
+    "neededNarrowAdaptations": [
+      "Line78 currently expects semantic.courseScope, absent in Palma ledger. Use the bound after.courseKey/effectiveParent.scope.",
+      "Lines139-140 hardcode Wangun23/19/debt[2,3,4,16]. Use bound Palma24/19/debt[6,8,12,13,14]."
+    ],
+    "preserveChecks": [
+      "explicit ordinal/UID1:1",
+      "source/request hash binding",
+      "actual native values",
+      "exact base/effective leaf and parent equality",
+      "Unified selection parent",
+      "debt has no fabricated RPM leaf; ambiguous parent stays explicit"
+    ],
+    "plannedInvocationAfterRootOwnedCopyExists": [
+      "node",
+      "<PALMA_READ_ONLY_PARENT_AUDIT_COPY>",
+      "/workspace/scratch/933015cd0a4f/m1-palma-register",
+      "<ABSOLUTE_PALMA_REQUEST>",
+      "/workspace/scratch/933015cd0a4f/m1-review/docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "/workspace/scratch/933015cd0a4f/m1-palma-register/.tmp/m1-meta-review/03-palma-actual-rpm-parent-check.json"
+    ],
+    "executed": false
+  },
+  "globalVsScoped": "The shared artifact builders have no supported UID filter. Their deterministic regeneration is necessary to reflect target24 and is not a global Consumer or math review. Assertions in steps9/10 are scoped to this exact request.",
+  "requiredMainWriterGatesPreserved": {
+    "doNotInvokeForLocalMinimum": [
+      "archive-registration-writer.mjs",
+      "reviewed-meta-register-pass.sh",
+      "archive-main-auto-meta-pass.sh",
+      "archive/build_db.py"
+    ],
+    "reason": "They own other inbox/native lanes and workflow-wide work. Required existing CI/main gates remain enabled; the narrow preflight does not replace them.",
+    "retainedByExistingCI": [
+      "v2 registration tests and request isolation",
+      "compile parity/canonical-only-check",
+      "build_db/registration parity",
+      "catalog/parent fixed point",
+      "exact request projection and Consumer",
+      "final post-semantic/shared Consumer and persisted snapshot verification"
+    ],
+    "finalOrdering": "archive-registration-writer.mjs:295-342 sorts the shared final rebuild first, runs reviewed final Consumer after it, and rechecks input/output digests over bounded convergence rounds. Initial APPLIED or workflow green is insufficient without actual receipt/final Consumer24.",
+    "operationalEvidence": "Actual registered main SHA, exact request/source/receipt binding, final post-AutoMeta Consumer24 and actual RPM19/debt5. Local proof does not close the paper."
+  },
+  "narrowReuse": {
+    "bindingImpact": {
+      "path": ".tmp/m1-meta-review/03-palma-native-binding-impact.json",
+      "sha256": "c08a9905975a22b3649c5407f2bfc423147ee4e839055d5207fe510762ec445f",
+      "finding": "No approved outside exact consumer for three new bindings; no pack scope addition."
+    },
+    "protected17": "Do not rerun the prior Wangun scope suite unless a changed input creates a concrete new impact.",
+    "excluded": [
+      "R1/R2/R3",
+      "solution FINAL claims",
+      "global changed-UID Consumer",
+      "manual automatic writer dispatch",
+      "unrelated test suites"
+    ]
+  },
+  "evidenceRefs": [
+    {
+      "path": "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs",
+      "sha256": "41ab37b94358320dfa1a4704ac87029b3f2c1ce2527f216c8a6108d97532dbcd",
+      "blobSha1": "318307cd34717e13e520aa8c99b5589b34977e25",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "sha256": "997347340a7dbd1ae05c1f70935aa23a125b9bd7aad3a08a463bd2fb85af55f1",
+      "blobSha1": "2d6f40082bf6f97cfbb93ec853fc39f5028833ff",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "sha256": "8a217ce01fa7c774214f17f069b0ac68e0b1e319d0b147b8273eb215579b9b43",
+      "blobSha1": "49af3949ed1beb2b4baf0ec433c714361cd97bba",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/tools/build-archive2-catalog.mjs",
+      "sha256": "83bb3e480b053ed8e9970451a2c123a268468b6645a6bd986d14c09cda2b648d",
+      "blobSha1": "7060951deb389d2cad29be8a99c9de1be35ff065",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/tools/build-basic-scope-parent-links.mjs",
+      "sha256": "eb6f93dc7331afebf37acb0584e5c62aa54a0962ec9a047b2295835d467474c6",
+      "blobSha1": "979c8e0713fbcf0c2cd4b8514771e429b1082553",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/tools/build-question-index.mjs",
+      "sha256": "c448eb784b28fb6fa67cf86249de7caf488af83d370537cc53f2baa94992d92b",
+      "blobSha1": "6f2e0cd6ae2dbd29ce59f1b54a9e7da0ca3cbb0a",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "tools/ci/reviewed-meta-register-pass.sh",
+      "sha256": "e42a9e08e3a76484dbb1dc07360f32c0a3d1ef5426a2fd7c907c9df3f7244cf0",
+      "blobSha1": "745c165026119a604ab8dadeb7291842bed1a2bd",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "tools/ci/archive-registration-writer.mjs",
+      "sha256": "e64c3db00788dd7c5bf64b53c53c013b303eb2fd202b17c9d0ebde3431e4fb7c",
+      "blobSha1": "1bb6f460596e498e98216c02ae5f05571c65c6ff",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "tools/ci/verify-registered-consumer-approval.sh",
+      "sha256": "a15700fece5adb325e8e4b53e232b02d8edb3367c4f91548d7ddc6b4f330e8ff",
+      "blobSha1": "26a85e4d7b2f426023f138bea06d2442648c42c8",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/build_db.py",
+      "sha256": "60ef72be78ee6e5d2a39b03815b2e261e5b53ca13f532ade81d33fdb531e9159",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+      "readMethod": "pinned Git object; working file not materialized"
+    }
+  ],
+  "commandsExecuted": 0,
+  "dataMutationsPerformed": false,
+  "onlyWrite": ".tmp/m1-meta-review/03-palma-preflight-command-plan.json"
+}

@@ -1,0 +1,578 @@
+{
+  "schemaVersion": "metadata-only-exact-native-registration-plan-v1",
+  "status": "ROOT_REVIEWED_EXACT_PLAN_NOT_APPLIED",
+  "baselineMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+  "semanticAuthority": {
+    "path": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+    "sha256": "0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18"
+  },
+  "source": {
+    "path": "archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+    "blobSha1": "a366f180ffe4b8495bb79fcc362ef1e0ff4618ca",
+    "rawSha256": "9a5e79c37b15d4e19054166b3eed5541df76992f39166518ac147aed18360861",
+    "questionCount": 24
+  },
+  "summary": {
+    "newProblemTypes": 1,
+    "newTemplates": 3,
+    "newBindings": 3,
+    "registryChanges": 7,
+    "existingExactBindingsReused": 21,
+    "packScopeChanges": 0,
+    "existingDefinitionEdits": 0
+  },
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "problemTypes",
+      "match": {
+        "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM",
+        "canonicalLabelKo": "별 모양 도형의 각의 합",
+        "definition": "별 모양의 교차 도형을 이루는 닫힌 경로에서 방향을 바꾸는 각의 총합을 이용해 표시된 꼭짓점 각들의 합을 결정한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "sourceUnits": [
+          "M1-06"
+        ],
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f"
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+          "sha256": "0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_TRIANGLE_ANGLE_CHASE"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_TRIANGLE_ANGLE_CHASE",
+        "parentProblemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "canonicalLabelKo": "정다각형의 대각선과 보조삼각형 각 추적",
+        "definition": "정다각형의 내각과 변의 같음을 이용해 대각선으로 나뉜 보조삼각형의 각을 정하고, 합동의 대응각 및 내각합·평각 관계로 대각선과 교점의 표시각을 구한다.",
+        "internalSkeleton": "정다각형의 내각을 정한다 → 같은 변으로 생기는 보조삼각형의 밑각과 필요한 대응각을 복원한다 → 대각선 교점의 삼각형에 내각합을 적용한다 → 직선 위 이웃각 관계로 표시각을 결정한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_24a00b1861775852d97237d6ff2bab7fbf8b523fde92649c50d5bb6aeab4fc2f"
+        ],
+        "observedConditionKeys": [],
+        "observedIntegrationPatterns": [
+          "SEQUENTIAL"
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+          "sha256": "0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIRECT_INTERIOR_EXTERIOR_TOTALS"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIRECT_INTERIOR_EXTERIOR_TOTALS",
+        "parentProblemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "canonicalLabelKo": "다각형의 내각의 합과 외각의 합 계산",
+        "definition": "변의 수가 주어진 다각형의 내각의 합과 볼록다각형의 외각의 합을 각각 적용하여 요구한 합이나 차를 구한다.",
+        "internalSkeleton": "주어진 변의 수로 내각의 합을 나타낸다 → 외각의 합이 변의 수와 무관한 일정한 값임을 적용한다 → 두 총합에 요구된 연산을 한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_8ddd54f26e647cf88c553a1f15133ae63dea7b6233caaa68e0194f88351c273b"
+        ],
+        "observedConditionKeys": [],
+        "observedIntegrationPatterns": [
+          "NONE"
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+          "sha256": "0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M1_STAR_POLYGON_ANGLE_SUM_TURNING_ANGLE_TOTAL"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_M1_STAR_POLYGON_ANGLE_SUM_TURNING_ANGLE_TOTAL",
+        "parentProblemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM",
+        "canonicalLabelKo": "별 모양 도형의 외각을 이용한 각의 합",
+        "definition": "닫힌 별 모양 경로를 한 번 따라갈 때의 전체 회전각을 확인하고, 각 꼭짓점에서 방향을 바꾸는 각을 표시각의 보각으로 나타내어 표시각의 합을 구한다.",
+        "internalSkeleton": "닫힌 경로를 따라갈 때 진행 방향이 총 몇 바퀴 회전하는지 확인한다 → 꼭짓점별 방향 전환각을 표시각의 보각으로 나타낸다 → 전환각 총합을 진행 방향의 회전 횟수와 연결한다 → 표시각의 합을 정리한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f"
+        ],
+        "observedConditionKeys": [],
+        "observedIntegrationPatterns": [
+          "NONE"
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+          "sha256": "0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "L1": "평면도형",
+        "L2": "다각형"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+          "sha256": "0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_b7a4e9fe41cebbe2f68649f03fbb6c7fde5a0ac4ff88c2b9ff08a3bce63966eb"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "L1": "평면도형",
+        "L2": "다각형"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+          "sha256": "0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_175a477a1b54c46883e3a4dc79848a6308d2f6b6d8adedd2445b0c7fad15e67f"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "L1": "기본 도형",
+        "L2": "작도와 합동"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+          "sha256": "0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18"
+        }
+      ]
+    }
+  ],
+  "bindingChecks": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_aeac61cf463b156ee3a77b9a0bf56197226b0f30293b013e4a435086e8a0bbd4",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_9b4acc2d19a0bf5b24044439b7a93d16cc01ed5491d251519cc48235ff223db8",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_dca5b1495c2fdb8706ba4ee7b2620c8703bc1467a10a19d8c165a07b3464a976",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_ad89956ceb68957e2871b30660000826f0e00d6ebb4a1a1e1b5c03261aff25a7",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_df3befa3fc3ac768ecd2db63406ae2b97508965f814eff8565d7901660ecb74e",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_6a23d2b43c9a6f7c1a1c175c6bb121d0a9f8c623f12711e85f5ab8c798abc556",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_690710e7ac7ec4e05e9fc07e1a1f468bb8147e84a5427104e530607a1f962e42",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_9b6c9e1f6b039fc6c4335114abd1392fd7ee680a60d038c0cda3f9a896ee7102",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_5394e91945cd93b47b3a1306dd912ec5c2b51d2621fae8dec5cda82bbd64c205",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_af907e6247a0fd85a870e048c96666ec886ef2d1057b98c14d958c1fdea72ce9",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_f68009c211068d63c42d9641a37dcc7826e42d90dc8001fc7f74e03db9a51ac4",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_eabe9270f247372c1649ff25c772e848daf06c69f7e6dfa889d21cb1f5ded39d",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_a49a108502b32e9910d324e69bd4b50fe60d4732208de0275e0f40e284af6676",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_24a00b1861775852d97237d6ff2bab7fbf8b523fde92649c50d5bb6aeab4fc2f",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_8ddd54f26e647cf88c553a1f15133ae63dea7b6233caaa68e0194f88351c273b",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_3ffc1c4b696a4ef7c2ba59b1d37004134fc05ff0ce0212d0b55acd689ff8fce7",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM"
+      },
+      "existingActiveCount": 0,
+      "action": "ADD_EXACT_BINDING"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_5ff9229265ef4aef481e014c3565592c9726b89f9ff8d2714b81fe3e3b097064",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_b7a4e9fe41cebbe2f68649f03fbb6c7fde5a0ac4ff88c2b9ff08a3bce63966eb",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE"
+      },
+      "existingActiveCount": 0,
+      "action": "ADD_EXACT_BINDING"
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_4fde7f4e5f3ba55ede413c85c7e48572ee8b2c26bf5add8a27cf71bac14fd139",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_2222cce621e720b3998c49bb63edb0c8ddb93f85655114d1630ec3daf7b9f832",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT"
+      },
+      "existingActiveCount": 1,
+      "action": "REUSE"
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_175a477a1b54c46883e3a4dc79848a6308d2f6b6d8adedd2445b0c7fad15e67f",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA"
+      },
+      "existingActiveCount": 0,
+      "action": "ADD_EXACT_BINDING"
+    }
+  ],
+  "authorityEvidence": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "sha256": "2a78e103a87399acd95e605209ce0960a1e8fc05bcbe576fc64d82803fb99b0e"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "sha256": "485ab5537f98f2229a93e10db69e74e5b23c8903db0b8459bc910e8b69f62fbd"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+      "sha256": "c081a326d25d22656380a0361f646100c409f2ed65bc726ca4f503032a3d982a"
+    }
+  ]
+}

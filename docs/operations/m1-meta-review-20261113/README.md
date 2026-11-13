@@ -2,7 +2,9 @@
 
 ## 현재 진행
 
-**운영 완료 2/44장 · 남은 42장 · 전체 읽기 및 운영 마감 47/1,047문항.** 다음은 **2026 팔마중 중1 2학기 중간24문항**이며 아직 시작하지 않았다. 최신 main과 병행 작업의 범위를 확인한 뒤 모든 발문·선지·그림·제공 풀이를 읽는다.
+**운영 완료 2/44장 · 남은 42장 · 읽기 71/1,047문항 · 운영 마감 47문항.** 현재 **2026 팔마중 중1 2학기 중간24문항**의 발문·선지·제공 풀이24개와 그림37개를 모두 읽고, 후보의 공식 격리 등록·projection·Consumer24/24와 대상 밖 보존을 확인했다. 팔마 PR 생성→필수CI→main 병합→실제 등록 영수증·최종 post-AutoMeta Consumer24·원격 SHA를 마감한 뒤 다음 시험지로 이동한다.
+
+팔마의 native 분류14문항과 메타 연결을 수정했고, 정확한 RPM leaf19개를 연결했다. Q6·Q8·Q12·Q13·Q14는 정확한 leaf가 없어 근거 누락 상태를 명시했다. [의미 원장](03-palma-semantic-review.json), [격리 검증](03-palma-isolated-preflight.json), [보존 비교](03-palma-isolated-minimal-protection.json)에 근거를 저장했다. 정상 source·37그림과 팔마 밖 metadata/identity/runtime·완료47문항·기존 영수증723파일을 보존했다. **팔마는 아직 운영 완료로 체크하지 않는다.**
 
 왕운중23은 [PR1968](https://github.com/icefoxtail/AP------/pull/1968), 실제 등록 main `738af248bd62813a572ac81725892b3f12ee2beb`에서 운영 마감했다. [마감 근거](02-wangun-operational-closeout.json), [실제 writer](02-wangun-pr1968-main-writer-final.json), [실제 분류·직접 영향 확인](02-wangun-main738-closeout-minimal-audit.json)을 재사용한다. 등록23·identity23·runtime23·정본16 및 최종 post-AutoMeta Consumer23/23/23 PASS, 실패·미관측·대기0이다. 기존 보호17·현재 신흥24의 관련 데이터 변경은0이다.
 
@@ -23,7 +25,7 @@
 
 진행 원장은 [progress.json](progress.json), 다음 담당 절차와 복사 프롬프트는 [HANDOFF.md](HANDOFF.md)다. 한 시험지의 의미 검토→최소 수정→정확 후보 검증→PR/main→실제 등록 영수증/최종 Consumer→원격 SHA를 끝낸 뒤 다음으로 이동한다. 기존 R1/R2/R3와 같은 입력의 검증은 반복하지 않는다. 수학 FINAL QA나 solution 기반 RPM FINAL을 수행했다고 기록하지 않는다.
 
-이 문서 작성 직전 검증된 원격 branch head는 `55a92fd7da1df7f53d18e15d3f28d5d9d2a4bc94`, AWCR revision21이다. 현재 마감 문서의 게시 head/tree는 원격 branch와 다음 immutable AWCR revision22에서 확인한다. 이 문서는 자신의 최종 commit SHA를 미리 생성해 기록하지 않는다.
+이 후보 문서 작성 직전 검증된 원격 branch head는 `ecf811789b4ba3a78fc6aeaec4a74ac6a2edebc7`, AWCR revision23이다. 후보 게시 head/tree와 PR은 원격 branch 및 다음 immutable AWCR revision24에서 확인한다. 이 문서는 자신의 최종 commit SHA를 미리 생성해 기록하지 않는다.
 
 ## 시험지별 완료 체크리스트
 
@@ -31,7 +33,7 @@
 
 - [x] 01. 26 신흥중 2학기 중간 중1 기출 / 24문항 — 운영 완료 · RPM debt Q8/Q10 기록
 - [x] 02. 26 왕운중 2학기 중간 중1 기출 / 23문항 — 운영 완료 · 실제 등록23/최종Consumer23 · RPM debt Q2/Q3/Q4/Q16 기록
-- [ ] 03. 26 팔마중 2학기 중간 중1 기출 / 24문항 — PENDING
+- [ ] 03. 26 팔마중 2학기 중간 중1 기출 / 24문항 — 의미24·그림37·격리Consumer24 PASS; PR/main 마감 대기
 - [ ] 04. 25 동산중 2학기 기말 중1 기출 / 24문항 — PENDING
 - [ ] 05. 25 신흥중 2학기 기말 중1 기출 / 22문항 — PENDING
 - [ ] 06. 25 연향중 2학기 기말 중1 기출 / 23문항 — PENDING
@@ -76,4 +78,4 @@
 
 ## 팔마24 현재 체크포인트
 
-발문·선지·제공 풀이24개와 실제 그림37개를 읽었습니다. [확정 의미 원장](03-palma-semantic-review.json), [현재 인계](HANDOFF.md), [완료표](progress.json)를 기준으로 재개합니다. 운영 완료는 여전히2/44장입니다. source·공식 등록·PR/main 마감은 아직이며, 같은 입력의 완료 검토를 반복하지 않습니다.
+[의미 원장](03-palma-semantic-review.json)의24문항·37그림 검토와 [격리 preflight](03-palma-isolated-preflight.json)의 공식 Consumer24가 완료됐습니다. [현재 인계](HANDOFF.md)와 [완료표](progress.json)를 기준으로 PR/main 실제 등록까지 마감합니다. 운영 완료는 아직2/44장입니다. source정상payload는 보존하며 RPM exact19/debt5를 구분했습니다.

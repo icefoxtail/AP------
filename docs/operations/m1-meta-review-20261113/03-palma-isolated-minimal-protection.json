@@ -1,0 +1,854 @@
+{
+  "authorizedTestFixtureChange": {
+    "dataInputChangedAfterConsumer": false,
+    "path": "archive/tools/meta-foundation/rpm-middle-toc.test.mjs",
+    "scope": "Root-reported expectedCrosswalkIds additions for leaves 177 and 184; preserves test cases and assertions.",
+    "testEvidence": "Root reported 18 tests passing; not rerun by this audit.",
+    "verification": "ROOT_REPORTED_NOT_REEXECUTED"
+  },
+  "baselineMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+  "baselineManifest": {
+    "path": "/workspace/scratch/933015cd0a4f/m1-review/.tmp/m1-meta-review/03-palma-protection-baseline/manifest.json",
+    "sha256": "076803f255d1fe29337d81e385e988c0e34520033c51df48ca649db491bd9570"
+  },
+  "changedCanonicalAndCompiledPaths": [
+    "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+    "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+    "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+    "archive/data/meta-foundation/canonical/registry_index.json",
+    "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+    "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+    "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+    "archive/data/meta-foundation/compiled/taxonomy_registry.json"
+  ],
+  "closed47": [
+    {
+      "expected": 24,
+      "identityObserved": 24,
+      "metadataObserved": 24,
+      "runtimeObservedUnique": 24,
+      "sourceArchiveFile": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js"
+    },
+    {
+      "expected": 23,
+      "identityObserved": 23,
+      "metadataObserved": 23,
+      "runtimeObservedUnique": 23,
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js"
+    }
+  ],
+  "crosswalk": {
+    "actualSummaryCountChecks": [
+      {
+        "actual": 273,
+        "declared": 273,
+        "field": "recordCount",
+        "matches": true
+      },
+      {
+        "actual": 127,
+        "declared": 127,
+        "field": "DIRECT_ACTIVE",
+        "matches": true
+      },
+      {
+        "actual": 92,
+        "declared": 92,
+        "field": "RPM_ONLY",
+        "matches": true
+      },
+      {
+        "actual": 10,
+        "declared": 10,
+        "field": "DIRECT_BINDING_GAP",
+        "matches": true
+      },
+      {
+        "actual": 42,
+        "declared": 42,
+        "field": "FAMILY_ACTIVE",
+        "matches": true
+      },
+      {
+        "actual": 2,
+        "declared": 2,
+        "field": "FAMILY_BINDING_GAP",
+        "matches": true
+      }
+    ],
+    "addedIds": [
+      "M1-RPM-174-CHAINED-MIDPOINT-20261113",
+      "M1-RPM-175-RIGHT-ANGLE-RATIO-20261113",
+      "M1-RPM-176-ANGLE-TRANSFER-20261113",
+      "M1-RPM-177-ANGLE-RATIO-20261113",
+      "M1-RPM-179-COPLANAR-IMPLICATION-20261113",
+      "M1-RPM-184-RIGHT-TRAPEZOID-DISTANCE-20261113",
+      "M1-RPM-193-SQUARE-CONGRUENT-AREA-20261113",
+      "M1-RPM-194-DIRECT-TOTALS-20261113",
+      "M1-RPM-196-DIAGONAL-TRIANGLE-ANGLES-20261113",
+      "M1-RPM-197-STAR-TURNING-ANGLES-20261113",
+      "M1-RPM-197-TRIANGLE-EXTERIOR-EQUATION-20261113",
+      "M1-RPM-198-PARTITION-COUNT-20261113",
+      "M1-RPM-200-ANGLE-RATIO-IDENTIFICATION-20261113"
+    ],
+    "afterCount": 273,
+    "beforeCount": 260,
+    "duplicates": false,
+    "existingChangedOrMissingIds": [],
+    "existingOrderAndRowsPreserved": true,
+    "summary": {
+      "DIRECT_ACTIVE": 127,
+      "DIRECT_BINDING_GAP": 10,
+      "FAMILY_ACTIVE": 42,
+      "FAMILY_BINDING_GAP": 2,
+      "RPM_ONLY": 92,
+      "recordCount": 273
+    }
+  },
+  "derivedHeaderBoundary": {
+    "canonicalRecordCollections": "Existing 94 problem types, 210 templates, 176 bindings are field-identical; only the authorized 1/3/3 records were added.",
+    "changedHeaders": {
+      "archive/data/meta-foundation/runtime/middle1-v1.json": [
+        "counts",
+        "generatedFrom",
+        "packVersion",
+        "runtimeVersion",
+        "usage"
+      ],
+      "archive/data/question_identity_map.json": [
+        "identityDigest"
+      ],
+      "archive/data/question_metadata.json": [
+        "counts",
+        "reviewedPassCount"
+      ]
+    },
+    "countVerification": "All audited declared record counts match actual records-array lengths; native collection counters, crosswalk status totals and RPM parent counts independently match actual arrays or distinct base-L3 paths.",
+    "identityTargetChangedCount": 4,
+    "metadataTargetChangedCount": 24,
+    "outsideRecordChangedCount": 0
+  },
+  "existingReceiptFiles": {
+    "changedOrMissing": [],
+    "checked": 723
+  },
+  "failures": [],
+  "fingerprintBoundary": "Official request-field application denominator24 differs from the root-observed actual four source fingerprint repairs Q1/Q3/Q4/Q10; no non-target fingerprint change is allowed by this audit.",
+  "isolatedTree": "/workspace/scratch/933015cd0a4f/m1-palma-register",
+  "nativeCollections": [
+    {
+      "addedKeys": [
+        "PT_M1_STAR_POLYGON_ANGLE_SUM"
+      ],
+      "afterCount": 95,
+      "beforeCount": 94,
+      "beforeDeclaredMatchesArray": true,
+      "collection": "problemTypes",
+      "countField": "problemTypeCount",
+      "declaredCount": 95,
+      "declaredMatchesArray": true,
+      "duplicateKeys": false,
+      "existingChangedOrMissingKeys": [],
+      "expectedAdded": 1,
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json"
+    },
+    {
+      "addedKeys": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_TRIANGLE_ANGLE_CHASE",
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIRECT_INTERIOR_EXTERIOR_TOTALS",
+        "TPL_M1_STAR_POLYGON_ANGLE_SUM_TURNING_ANGLE_TOTAL"
+      ],
+      "afterCount": 213,
+      "beforeCount": 210,
+      "beforeDeclaredMatchesArray": true,
+      "collection": "templates",
+      "countField": "templateCount",
+      "declaredCount": 213,
+      "declaredMatchesArray": true,
+      "duplicateKeys": false,
+      "existingChangedOrMissingKeys": [],
+      "expectedAdded": 3,
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json"
+    },
+    {
+      "addedKeys": [
+        "2022|중1 수학|M1-05|M1-05-CONSTRUCTION_CONGRUENCE|PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+        "2022|중1 수학|M1-06|M1-06-POLYGON_CIRCLE|PT_M1_STAR_POLYGON_ANGLE_SUM",
+        "2022|중1 수학|M1-06|M1-06-POLYGON_CIRCLE|PT_M1_TRIANGLE_ANGLE_CHASE"
+      ],
+      "afterCount": 179,
+      "beforeCount": 176,
+      "beforeDeclaredMatchesArray": true,
+      "collection": "bindings",
+      "countField": "bindingCount",
+      "declaredCount": 179,
+      "declaredMatchesArray": true,
+      "duplicateKeys": false,
+      "existingChangedOrMissingKeys": [],
+      "expectedAdded": 3,
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+    }
+  ],
+  "noConsumerRun": true,
+  "noGitIndexMutation": true,
+  "noR1R2R3": true,
+  "noTrackedEdits": true,
+  "recordAudits": [
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 28890,
+          "declared": 28890,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 28890,
+      "baselineGitBlob": "7e4883ea60d73968bdbc8d2405ebb6937f6711c4",
+      "baselineRawSha256": "474dc195ce71730ba33f2c10aca329a01e9488fd9427916b45da14ae0f2f7e9e",
+      "beforeCount": 28890,
+      "candidateRawSha256": "4842ee51b15b531576395440997eb53ccf5ef499b6680115c6091bd4d60f5d56",
+      "category": "metadata",
+      "closedBeforeCount": 47,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [
+        "counts",
+        "reviewedPassCount"
+      ],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/question_metadata.json",
+      "targetBeforeCount": 24,
+      "targetChangedCount": 24
+    },
+    {
+      "actualArrayCountChecks": [],
+      "afterCount": 28890,
+      "baselineGitBlob": "62b7969e01af2a9256d561245b3ea3c5de26d1f1",
+      "baselineRawSha256": "2926c12dee13dc2ecd1329267c4a0c9450f9073d391820beba83cc2a6ef1c522",
+      "beforeCount": 28890,
+      "candidateRawSha256": "d38b896a127c4cfd9679b03668a0668c31e5107a54403591dda3145ab20ebffe",
+      "category": "identity",
+      "closedBeforeCount": 47,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [
+        "identityDigest"
+      ],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/question_identity_map.json",
+      "targetBeforeCount": 24,
+      "targetChangedCount": 4
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 21,
+          "declared": 21,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 21,
+      "baselineGitBlob": "9d432747c8f7ceae187296a1c105c411461488fe",
+      "baselineRawSha256": "f0815609ab134bc69f86c318032f3be19be33260c372c0554f8ed421d28d298c",
+      "beforeCount": 21,
+      "candidateRawSha256": "f0815609ab134bc69f86c318032f3be19be33260c372c0554f8ed421d28d298c",
+      "category": "runtime",
+      "closedBeforeCount": 0,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/algebra-2022-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 395,
+          "declared": 395,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 395,
+      "baselineGitBlob": "5f1b68d3680ff031a53c873939f0e198844fa80c",
+      "baselineRawSha256": "eed7219e7991de43d41b74bda71ad0eb6eaa93f4be03a21d7c8ae335c586cc86",
+      "beforeCount": 395,
+      "candidateRawSha256": "eed7219e7991de43d41b74bda71ad0eb6eaa93f4be03a21d7c8ae335c586cc86",
+      "category": "runtime",
+      "closedBeforeCount": 0,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/derivative-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 16,
+          "declared": 16,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 16,
+      "baselineGitBlob": "744d2a1fc87d88d6b1c9b14ddfbaef5d390bdc93",
+      "baselineRawSha256": "b41f6fbd015af882647a863e8c9d0ffd515f6bb52d78f495226cee262588b2f6",
+      "beforeCount": 16,
+      "candidateRawSha256": "b41f6fbd015af882647a863e8c9d0ffd515f6bb52d78f495226cee262588b2f6",
+      "category": "runtime",
+      "closedBeforeCount": 0,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/exponents-logarithms-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 544,
+          "declared": 544,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 544,
+      "baselineGitBlob": "8cc13bb74270ce68f119aec69fe89ea6b72d024d",
+      "baselineRawSha256": "aef8bbb561544f47e4a3f77a6c0884dfb6c761114960b34ab0ac7a20d7477873",
+      "beforeCount": 544,
+      "candidateRawSha256": "aef8bbb561544f47e4a3f77a6c0884dfb6c761114960b34ab0ac7a20d7477873",
+      "category": "runtime",
+      "closedBeforeCount": 1,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 448,
+          "declared": 448,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 448,
+      "baselineGitBlob": "7ae77769a58ae4b494323ccc0cae82d6e98560bb",
+      "baselineRawSha256": "b4002030ca438d48891291178bc3b844031c6aee7615423a054938b6dbb7733c",
+      "beforeCount": 448,
+      "candidateRawSha256": "b4002030ca438d48891291178bc3b844031c6aee7615423a054938b6dbb7733c",
+      "category": "runtime",
+      "closedBeforeCount": 0,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 106,
+          "declared": 106,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 106,
+      "baselineGitBlob": "ad8b73867dc4731a840d516bb3de1dd2fdb80a2f",
+      "baselineRawSha256": "086b7af881c888fcd8622fc2fa8c1325e08e646e2dbf23981e7a0cc32fd14959",
+      "beforeCount": 106,
+      "candidateRawSha256": "086b7af881c888fcd8622fc2fa8c1325e08e646e2dbf23981e7a0cc32fd14959",
+      "category": "runtime",
+      "closedBeforeCount": 0,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/geometry-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 1284,
+          "declared": 1284,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 1284,
+      "baselineGitBlob": "3a8e84d5030f861669aa271e7f631adecc3cb62e",
+      "baselineRawSha256": "e8aa55f44fce8739605e4c2d31d1ea413f14ab917ea447b47807018aaf38c033",
+      "beforeCount": 1284,
+      "candidateRawSha256": "e8aa55f44fce8739605e4c2d31d1ea413f14ab917ea447b47807018aaf38c033",
+      "category": "runtime",
+      "closedBeforeCount": 0,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/h1-foundation-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 287,
+          "declared": 287,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 287,
+      "baselineGitBlob": "cff2c222c8e371eb55f66b8578a28db0b4bd1b90",
+      "baselineRawSha256": "08d04537134cdb893cebc14ec88cf35ff06e10bbbb39e1d3b2e2fa1512e8aaa9",
+      "beforeCount": 287,
+      "candidateRawSha256": "08d04537134cdb893cebc14ec88cf35ff06e10bbbb39e1d3b2e2fa1512e8aaa9",
+      "category": "runtime",
+      "closedBeforeCount": 0,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/h1-original-source-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 194,
+          "declared": 194,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 194,
+      "baselineGitBlob": "7e30642b331dd969df259e019f6134cfb2c1183d",
+      "baselineRawSha256": "c8976b8e61ea0d7d76b74b5f343c7471c8932802525c1e71ab05a49255462e84",
+      "beforeCount": 194,
+      "candidateRawSha256": "c8976b8e61ea0d7d76b74b5f343c7471c8932802525c1e71ab05a49255462e84",
+      "category": "runtime",
+      "closedBeforeCount": 0,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/integral-calculus-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 184,
+          "declared": 184,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 184,
+      "baselineGitBlob": "e305a34db250cea79fa4ba8dab6002ee733f0c59",
+      "baselineRawSha256": "d748bafa3923a1c1344253cb6701acbd97b7139a39d29d0aaf2090c899b42760",
+      "beforeCount": 184,
+      "candidateRawSha256": "d748bafa3923a1c1344253cb6701acbd97b7139a39d29d0aaf2090c899b42760",
+      "category": "runtime",
+      "closedBeforeCount": 0,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/limit-continuity-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 1017,
+          "declared": 1017,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 1017,
+      "baselineGitBlob": "1e1875d502537d5d5e503c315d30ded4a99472df",
+      "baselineRawSha256": "a30aa5bf76476fee5c1ebb7295ea53561030fcd3f4ac2488be23ab917e5c20ea",
+      "beforeCount": 1017,
+      "candidateRawSha256": "a30aa5bf76476fee5c1ebb7295ea53561030fcd3f4ac2488be23ab917e5c20ea",
+      "category": "runtime",
+      "closedBeforeCount": 5,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 659,
+          "declared": 659,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 659,
+      "baselineGitBlob": "409845657b3888d323be721a7c345a4bc5cbd4cc",
+      "baselineRawSha256": "f7bf73fd7ea3bd143a8d3f4120a402837e3cfe0923b678bd936a0802ef10f0b2",
+      "beforeCount": 635,
+      "candidateRawSha256": "70c27072c9c28bbf2014568dc4032f0735cbaf049f74a82543ae484baeec91d0",
+      "category": "runtime",
+      "closedBeforeCount": 41,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [
+        "counts",
+        "generatedFrom",
+        "packVersion",
+        "runtimeVersion",
+        "usage"
+      ],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 36,
+          "declared": 36,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 36,
+      "baselineGitBlob": "73a85105e604e475034b92af74cacac46a224f8d",
+      "baselineRawSha256": "7b2c33e080267539725efbb8089ed6f1cb2263150b610612403b0be5fa216dd8",
+      "beforeCount": 36,
+      "candidateRawSha256": "7b2c33e080267539725efbb8089ed6f1cb2263150b610612403b0be5fa216dd8",
+      "category": "runtime",
+      "closedBeforeCount": 0,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 126,
+          "declared": 126,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 126,
+      "baselineGitBlob": "3afc6f712f7e31b6d1ab5ee5928411566ca48eaa",
+      "baselineRawSha256": "636e6c7dc9248639a649d746e744b1430fa4c3a3e05da86a5895d155685cff30",
+      "beforeCount": 126,
+      "candidateRawSha256": "636e6c7dc9248639a649d746e744b1430fa4c3a3e05da86a5895d155685cff30",
+      "category": "runtime",
+      "closedBeforeCount": 0,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/middle3-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 902,
+          "declared": 902,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 902,
+      "baselineGitBlob": "c577dd9525165e0abd1476dbb1c71b1b6af8f165",
+      "baselineRawSha256": "6a0cb8ce17ef2e59b12d381a85db4cd8590ac878f5d557a33640274cde5d9cec",
+      "beforeCount": 902,
+      "candidateRawSha256": "6a0cb8ce17ef2e59b12d381a85db4cd8590ac878f5d557a33640274cde5d9cec",
+      "category": "runtime",
+      "closedBeforeCount": 0,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/probability-statistics-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 383,
+          "declared": 383,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 383,
+      "baselineGitBlob": "48ffe4bd8e3a063982bb9cf9daf0205dc12256f3",
+      "baselineRawSha256": "76835dfb6bcefe0362ed364a01b16eebb115af4f39273253b7fe9236cc2591a7",
+      "beforeCount": 383,
+      "candidateRawSha256": "76835dfb6bcefe0362ed364a01b16eebb115af4f39273253b7fe9236cc2591a7",
+      "category": "runtime",
+      "closedBeforeCount": 0,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/sets-propositions-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    },
+    {
+      "actualArrayCountChecks": [
+        {
+          "actual": 6,
+          "declared": 6,
+          "field": "counts.records",
+          "matches": true
+        }
+      ],
+      "afterCount": 6,
+      "baselineGitBlob": "1003a81b2a8844ef77cdfb0a6ae620dec082aa69",
+      "baselineRawSha256": "99d70fb0cf7344c8291757052d40ef06312989cf4e584fcb8a87c4f97353ae9a",
+      "beforeCount": 6,
+      "candidateRawSha256": "99d70fb0cf7344c8291757052d40ef06312989cf4e584fcb8a87c4f97353ae9a",
+      "category": "runtime",
+      "closedBeforeCount": 0,
+      "closedChangedUids": [],
+      "duplicateAfter": [],
+      "duplicateBefore": [],
+      "headerChangedFields": [],
+      "outsideAddedCount": 0,
+      "outsideAddedUids": [],
+      "outsideChangedCount": 0,
+      "outsideChanges": [],
+      "outsideMissingCount": 0,
+      "outsideMissingUids": [],
+      "path": "archive/data/meta-foundation/runtime/trigonometry-v1.json",
+      "targetBeforeCount": 0,
+      "targetChangedCount": 0
+    }
+  ],
+  "recordedAt": "2026-11-13T19:11:40.380532+00:00",
+  "requestRawSha256": "c59a32637f1fc578152a94297844500f4b4ca65b891757830aaf3264b2feb5f5",
+  "reusedEvidence": [
+    {
+      "covers": "Independent unchanged student payload and assets; not reread here.",
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/docs/operations/m1-meta-review-20261113/03-palma-candidate-independent-check.json",
+      "sha256": "207fbf6858edf9860d7b7fb228df18b22faff66c980a9f7f5ac67fb46f6cfd3b"
+    },
+    {
+      "covers": "No outside already-approved Consumer matches the three proposed exact bindings.",
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/docs/operations/m1-meta-review-20261113/03-palma-native-binding-impact.json",
+      "sha256": "c08a9905975a22b3649c5407f2bfc423147ee4e839055d5207fe510762ec445f"
+    }
+  ],
+  "rpmParents": {
+    "actualCountChecks": [
+      {
+        "actual": 24,
+        "declared": 24,
+        "field": "L1",
+        "matches": true
+      },
+      {
+        "actual": 54,
+        "declared": 54,
+        "field": "L2",
+        "matches": true
+      },
+      {
+        "actual": 155,
+        "declared": 155,
+        "field": "baseL3",
+        "matches": true
+      },
+      {
+        "actual": 326,
+        "declared": 326,
+        "field": "baseL4",
+        "matches": true
+      }
+    ],
+    "afterLeafMappings": 326,
+    "beforeLeafMappings": 326,
+    "changedBaseOrEffectiveParents": [],
+    "counts": {
+      "L1": 24,
+      "L2": 54,
+      "baseL3": 155,
+      "baseL4": 326
+    },
+    "legacySubUnitMappingsPreserved": true,
+    "newCrosswalkLinks": [
+      "M1-RPM-174-CHAINED-MIDPOINT-20261113",
+      "M1-RPM-175-RIGHT-ANGLE-RATIO-20261113",
+      "M1-RPM-176-ANGLE-TRANSFER-20261113",
+      "M1-RPM-177-ANGLE-RATIO-20261113",
+      "M1-RPM-179-COPLANAR-IMPLICATION-20261113",
+      "M1-RPM-184-RIGHT-TRAPEZOID-DISTANCE-20261113",
+      "M1-RPM-193-SQUARE-CONGRUENT-AREA-20261113",
+      "M1-RPM-194-DIRECT-TOTALS-20261113",
+      "M1-RPM-196-DIAGONAL-TRIANGLE-ANGLES-20261113",
+      "M1-RPM-197-STAR-TURNING-ANGLES-20261113",
+      "M1-RPM-197-TRIANGLE-EXTERIOR-EQUATION-20261113",
+      "M1-RPM-198-PARTITION-COUNT-20261113",
+      "M1-RPM-200-ANGLE-RATIO-IDENTIFICATION-20261113"
+    ],
+    "unitAndParentDefinitionsPreserved": true
+  },
+  "runtimeTargetAdditions": {
+    "afterCount": 659,
+    "beforeCount": 635,
+    "existing635RecordsUnchanged": true,
+    "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+    "targetAddedCount": 24,
+    "targetUidsMatchRequest": true
+  },
+  "schemaVersion": "palma-isolated-minimal-protection-v1",
+  "scope": "Read-only preservation comparison of actual main738 against the isolated official registration/build result; not operational registration or Consumer verification.",
+  "status": "PASS",
+  "streamingMethod": "Each metadata/identity baseline streamed and hashed once; each runtime records file streamed individually. Canonical JSON row hashes preserve every field; sparse Git objects were read without index mutation.",
+  "targetQuestionCount": 24,
+  "unexpectedCanonicalPaths": []
+}

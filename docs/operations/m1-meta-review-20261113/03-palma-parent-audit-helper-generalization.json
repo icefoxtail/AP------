@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "reviewed-exam-parent-audit-helper-scope-v1",
+  "reason": "The previous helper had a final Wangun23/19/debt list assertion. Derive strict denominators and curriculum/course from the supplied reviewed ledger before applying the same checks to Palma24.",
+  "changedPath": "docs/operations/m1-meta-review-20261113/checkpoint-tools/audit-actual-rpm-parents.mjs",
+  "beforePurpose": "Wangun-specific denominator assertion",
+  "afterPurpose": "Exact requested exam denominator from immutable semantic ledger; no fixed-count omission",
+  "enforcedChecks": [
+    "ledger source count == request expectedQuestionCount",
+    "declared exact leaves + declared debts == question count",
+    "all observed rows exactly match declared leaf/debt denominator",
+    "explicit reviewed curriculum/course used in expected resolver input",
+    "all existing actual native/RPM/effective/unified parent checks retained"
+  ],
+  "noProductionRuntimeChange": true,
+  "noConsumerGateWaiver": true,
+  "fullR1R2R3Rerun": false,
+  "afterSha256": "d0a81616bc446cbc80c7ecea222c49036dc61a54d379ee3cd8fc14a47e61c9b1"
+}
