@@ -26,3 +26,25 @@
 `manifest.json`은 실제 실행할 문항과 source/plan/image 원시 SHA-256을 결속한다. 정식 `production/problem-figure-runner.mjs`가 기존 엔진의 정확 모델·실제 글자 실측·SVG 합성·primitive 관측·Archive 문제 화면 캡처를 순차 실행한다. desktop/phone/tablet 세 화면의 원시 측정과 PNG를 회수한 뒤 독립 시각 검수와 ROOT 전수 확인을 진행한다.
 
 실행 결과와 원시 로그·캡처는 Git에 넣지 않고 증거 보관 위치에서 관리한다. 검수한 최종 SVG만 별도 운영 자산으로 추가한다. 미실행은 `NOT_RUN`, 실제 실패는 해당 오류 그대로 기록하며, 검사 실패를 건너뛰어 게시하지 않는다.
+
+## 최신 author 검수 및 최종 연결 단계 — 2026-11-13 Run14
+
+앞선 준비 시점의 미실행 표시는 이 절의 확인 범위와 구분한다. 공식 Run14
+(`43447637540`, author head `84c2eaeea1fc24167bff3cfdbbcf151a42d02ae2`)에서
+19개를 실제 측정·렌더하고 원본 artifact를 저장 후 raw readback했다.
+ROOT와 독립 검수자는 정확한 19개 SVG와 세 화면의 문항별 image/context를 승인했다.
+q14 접근성 제목은 꼭짓점 이름을 쉼표로 정상 열거하도록 수정하여 다시 생성했으며,
+기존 언어 규칙을 그대로 통과했다. 18개 SVG와 전체 19개의 여섯 target 캡처는
+Run12 승인본과 byte 동일했고, q14는 원문과 접근성 제목을 새로 검수했다.
+전체 페이지 캡처 승인은 재사용하지 않았다. 과거 실패 기록은 보존한다.
+
+이 commit은 승인된 정확한 SVG를 문제 JS의 `image`, `imageSize`, `imageAlt`에
+연결한 최종 통합 검사 입력이다. 23문항의 비대상 필드와 기존 자산39개 보존을
+독립 확인했다. `published.json`은 이 JS 및 19개 SVG의 정확한 바이트에 결속한다.
+기존 workflow의 최종 read-only full-bank capture(3화면,57대상)와 이 연결 commit의
+필수 CI가 성공해야 병합한다. 이 절은 최종 연결 캡처나 main 병합의 완료 선언이 아니다.
+
+기존 solution 경로·검사·legacy workflow 이벤트와 단계는 보존한다. 실제 실행한
+관련 검사와 M/C1/Z·problem/nested browser 결과를 각각 보고한다. 기존 특정 branch/
+dispatch용 broad legacy qualification은 이번에 추가 실행하지 않아 `NOT_RUN`이며,
+전체185-file 회귀를 통과했다고 주장하지 않는다.
