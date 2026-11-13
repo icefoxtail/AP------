@@ -819,8 +819,8 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
-    "wide": true,
+    "layoutTag": "grid",
+    "wide": false,
     "tags": [
       "도형",
       "서술형"
@@ -858,8 +858,8 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
-    "wide": true,
+    "layoutTag": "grid",
+    "wide": false,
     "tags": [
       "도형",
       "서술형"
@@ -897,8 +897,8 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
-    "wide": true,
+    "layoutTag": "subjective-2up",
+    "wide": false,
     "tags": [
       "도형",
       "서술형"
@@ -936,8 +936,8 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
-    "wide": true,
+    "layoutTag": "subjective-2up",
+    "wide": false,
     "tags": [
       "통계",
       "표",
