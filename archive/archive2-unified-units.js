@@ -137,9 +137,11 @@
   // Classification of everything except per-question identity rules depends only on the
   // profile, legacy key and legacy label, so identical triples are classified once per page.
   const unitMemo = new Map();
-  function unitFor(record, grade) {
+  function unitFor(record, grade, rpmResolution) {
     const pid = GRADE_PROFILE[grade];
     const profile = UnitCore.PROFILES[pid];
+    if (rpmResolution?.status === "EXACT" && rpmResolution.parent)
+      return { unitKey: rpmResolution.parent.unitKey, reason: "rpm-current-parent" };
     const key = text(record.legacyStandardUnitKey);
     const unitLabel = text(record.legacyStandardUnit);
     const numbered = Number(record.sourceQuestionNo);
@@ -157,7 +159,7 @@
       if (!unitMemo.has(memoKey)) unitMemo.set(memoKey, textbookChapterUnit(record, grade, pid, profile, unitLabel));
       return unitMemo.get(memoKey);
     }
-    const memoKey = `${pid}\u0000${key}\u0000${unitLabel}`;
+    const memoKey = `${pid}\u0000${key}\u0000${unitLabel}\u0000${rpmResolution?.status || ""}`;
     if (!unitMemo.has(memoKey)) unitMemo.set(memoKey, computeUnit(record, grade, pid, profile, key, unitLabel));
     return unitMemo.get(memoKey);
   }
@@ -174,9 +176,18 @@
       const name = norm(unit.name);
       seen.set(name, seen.has(name) ? "" : unit.key);
     }
+    if (isMiddle(profile.grade) && UnitCore.MiddleToc) {
+      for (const parent of UnitCore.MiddleToc.parents(profile.grade)) {
+        const name = norm(parent.L2);
+        if (!seen.has(name)) seen.set(name, parent.unitKey);
+        else if (seen.get(name) !== parent.unitKey) seen.set(name, "");
+      }
+    }
     for (const [name, key] of Object.entries(SUPPLEMENTAL_LABELS[pid] || {})) {
-      if (!seen.has(name)) seen.set(name, key);
-      else if (seen.get(name) !== key) seen.set(name, "");
+      const currentKey = UnitCore.resolveUnitKeyAlias(profile, key);
+      if (!profile.units.some(unit => unit.key === currentKey)) continue;
+      if (!seen.has(name)) seen.set(name, currentKey);
+      else if (seen.get(name) !== currentKey) seen.set(name, "");
     }
     chapterNameMaps.set(pid, seen);
     return seen;
@@ -195,6 +206,7 @@
   function computeUnit(record, grade, pid, profile, key, unitLabel) {
     const numberedId = Number(record.sourceQuestionNo);
     const base = {
+      ...record,
       sourceFile: record.sourceFile,
       id: Number.isInteger(numberedId) && numberedId > 0 ? numberedId : Number(record.sourceOrdinal),
       standardUnitKey: key,
@@ -203,7 +215,10 @@
     const result = UnitCore.classifyRecord(base, pid);
     if (result.status === "classified") return { unitKey: result.unitKey, reason: result.reason };
     const known = new Set(profile.units.map((unit) => unit.key));
-    const accept = (unitKey, reason) => (known.has(unitKey) ? { unitKey, reason } : null);
+    const accept = (unitKey, reason) => {
+      const current = UnitCore.resolveUnitKeyAlias(profile, unitKey);
+      return known.has(current) ? { unitKey: current, reason } : null;
+    };
     // "HH15-SA-01" is "H15-SA-01" with a stray prefix character.
     if (/^HH15-/.test(key)) {
       const retry = UnitCore.classifyRecord({ ...base, standardUnitKey: key.slice(1) }, pid);
@@ -222,12 +237,16 @@
   const HIGH_2015_SUBJECTS = /^(?:수학\(상\)|수학\(하\)|수학I|수학II|기하와벡터|미적분|미적분I|미적분II)$/;
   const HIGH_2022_ONLY_SUBJECTS = /^(?:공통수학1|공통수학2)$/;
   // Original curriculum is evidence about the SOURCE, never a key conversion. Order of evidence:
-  // 1) a validated canonical curriculumKey, 1b) the curriculum recorded in approved metadata,
+  // 0) explicit original curriculum, 1) a validated canonical curriculumKey,
+  // 1b) approved metadata, 1c) an explicit source curriculum,
   // 2) the exam-year roll-out rule (2022 curriculum:
   // 중1 2025, 중2 2026, 중3 2027, 고1 2025, 고2 2026, 고3 2027), 3) the exam subject name, 4) a
   // curriculum-specific legacy key prefix. Legacy "H22-*" unit keys are a 2022-based unit
   // vocabulary that also tags 2015-era exams, so a key prefix alone is the weakest evidence.
   function originalCurriculum(record, grade) {
+    const original = text(record.originalCurriculum);
+    if (isMiddle(grade) && (original === "2015" || original === "2022"))
+      return { value: original, basis: "explicit-original" };
     const canonical = text(record.curriculumKey);
     if (canonical === "2015" || canonical === "2022") return { value: canonical, basis: "canonical-key" };
     // The curriculum RECORDED in approved metadata (catalog lane metaHintCurriculum, bound to the
@@ -235,6 +254,10 @@
     // roll-out year rule. It is read as recorded: never converted between 2015 and 2022.
     const recorded = text(record.metaHintCurriculum);
     if (recorded === "2015" || recorded === "2022") return { value: recorded, basis: "approved-metadata" };
+    if (isMiddle(grade)) {
+      const source = text(record.curriculum || record.rpmCurriculum || record.metadataAssignmentEvidence?.rpmMetadata?.rpmCurriculum);
+      if (source === "2015" || source === "2022") return { value: source, basis: "explicit-source" };
+    }
     const year = Number(record.year);
     if (isMiddle(grade)) {
       const value = Core.middleCurriculumFromYear(grade, year);
@@ -276,8 +299,11 @@
     const grade = text(record?.effectiveBrowseGrade || record?.sourceGrade);
     if (!GRADE_PROFILE[grade])
       return { placed: false, reason: "GRADE_UNRESOLVED", grade: "" };
-    const unit = unitFor(record, grade);
     const curriculum = originalCurriculum(record, grade);
+    const rpmResolution = isMiddle(grade) && UnitCore.MiddleToc
+      ? UnitCore.MiddleToc.resolveRecord({ ...record, curriculumKey: curriculum.value }, grade)
+      : null;
+    const unit = unitFor(record, grade, rpmResolution);
     let subject, unitKey = "", unitLabel = UNCLASSIFIED_LABEL, unitOrder = 9999, unitReason = "";
     if (unit) {
       const row = unitsForGrade(grade).find((candidate) => candidate.key === unit.unitKey);
@@ -303,6 +329,8 @@
       reason: unitReason,
       originalCurriculum: curriculum.value,
       curriculumBasis: curriculum.basis,
+      ...(rpmResolution ? { rpmParent: rpmResolution.status === "EXACT" ? rpmResolution.parent : null,
+        rpmParentStatus: rpmResolution.status } : {}),
       views: viewGradesFor(record, grade, options.projectionPolicy),
     };
     return { placed: true, entry };
@@ -360,12 +388,14 @@
   }
 
   // Ordered group/unit skeleton for a grade view; used to sort scopes deterministically.
-  function structure(grade) {
+  function structure(grade, options = {}) {
     const subjects = subjectsForGrade(grade);
     const groups = subjects.map((subject) => ({
       subject: subject.value,
       label: subject.label,
-      units: unitsForSubject(grade, subject.value).map((unit) => ({ key: unit.key, label: unit.name, order: unit.order })),
+      units: (options.legacy && isMiddle(grade)
+        ? UnitCore.PROFILES[GRADE_PROFILE[grade]].legacyUnits
+        : unitsForSubject(grade, subject.value)).map((unit) => ({ key: unit.key, label: unit.name, order: unit.order })),
     }));
     return groups;
   }

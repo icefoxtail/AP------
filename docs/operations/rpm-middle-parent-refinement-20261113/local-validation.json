@@ -1,0 +1,114 @@
+{
+  "scope": "RPM_PARENT_REFINEMENT_LOCAL_CHECKPOINT",
+  "localLogs": [
+    {
+      "file": "rpm-middle-focused.log",
+      "sha256": "9298415d7496fda58565c2fae05d7fbaaedca6d4c875f95b91e0a714dc2945a7",
+      "summary": [
+        "ℹ tests 38",
+        "ℹ pass 38",
+        "ℹ fail 0",
+        "ℹ skipped 0"
+      ]
+    },
+    {
+      "file": "rpm-middle-integration.log",
+      "sha256": "9bc20201ea2759ff5fac14b0333c07fc7d4b6cfd2e5242c80e6ff3fab1e5172f",
+      "summary": [
+        "ℹ tests 24",
+        "ℹ pass 24",
+        "ℹ fail 0",
+        "ℹ skipped 0"
+      ]
+    },
+    {
+      "file": "rpm-middle-consumers.log",
+      "sha256": "c08950fc7ed0482625278feb93436f19056813b2389c5eea486ebb0673aed6a0",
+      "summary": [
+        "ℹ tests 47",
+        "ℹ pass 47",
+        "ℹ fail 0",
+        "ℹ skipped 0"
+      ]
+    },
+    {
+      "file": "rpm-middle-runtime-guard.log",
+      "sha256": "a0e85a330277d693fe15a5bc2419cbaa61bcee8da3ff40a63e16fac79da6d094",
+      "summary": [
+        "ℹ tests 184",
+        "ℹ pass 174",
+        "ℹ fail 10",
+        "ℹ skipped 0"
+      ]
+    },
+    {
+      "file": "rpm-middle-url-final.log",
+      "sha256": "f3ed9f5d7d5a97ee95ca9b9721f7ae71b5a9442af5ab9388ac19e7abb04849a0",
+      "summary": [
+        "ℹ tests 5",
+        "ℹ pass 5",
+        "ℹ fail 0",
+        "ℹ skipped 0"
+      ]
+    }
+  ],
+  "runtimeGuard": "INCOMPLETE_ENVIRONMENT_INPUTS; cache literal failure fixed and rechecked",
+  "chrome": "NOT_RUN: local socket EPERM and sandbox escalation automatically rejected",
+  "sourceFilesModified": false,
+  "questionMetadataModified": false,
+  "fullExamR1R2R3Rerun": false,
+  "ciFirstRuntimeAttempt": {
+    "runId": 43400746757,
+    "jobId": 131802679071,
+    "headSha": "3c3bf4605382b71ec15cc658239631311fb1aa13",
+    "tests": 243,
+    "pass": 243,
+    "fail": 0,
+    "durationMs": 88229.228263,
+    "jobConclusion": "CANCELLED_AT_5_MINUTE_JOB_LIMIT_BEFORE_CHROME",
+    "checkoutSeconds": 159.1,
+    "next": "Keep all assertions and increase runtime job budget to 10 minutes"
+  },
+  "finalAuthoritySha256": "6128cf2c8c863f132d6c9d8b51804aff9ba636ce5cdbaf99f41217962aec40ab",
+  "finalLocalChecks": [
+    {
+      "name": "parent-consumers-final",
+      "source": "rpm-parent-consumers-final.tap",
+      "tests": 69,
+      "pass": 69,
+      "fail": 0,
+      "sha256": "d47e96d39830a6254d99aaa33d236af0c3bc8086cc3a3226ba994d8906ebdc3d"
+    },
+    {
+      "name": "ui-safe-final",
+      "source": "rpm-ui-safe.tap",
+      "tests": 14,
+      "pass": 14,
+      "fail": 0,
+      "sha256": "7eaeb928aed69fe207d639f78091793ed1af23beb9f24c743b07f4805eb5e9d9"
+    },
+    {
+      "name": "adapter-final",
+      "source": "rpm-adapter-final.tap",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "sha256": "b5b950b9c5a626308e887ad73ea7a91ce7f4f27cc6310d4d543091d3891c6d47"
+    }
+  ],
+  "note": "Counts are per invocation, overlap exists. Final GitHub CI is still required. Earlier sparse-checkout runs include missing source fixtures and are not reported as full PASS.",
+  "ciSecondRuntimeAttempt": {
+    "runId": 43401666165,
+    "jobId": 131805757074,
+    "headSha": "71137cfe8d6b0caba3926fce98ad28e53e80bdbf",
+    "contractTests": "PASS_243",
+    "outputChromeJob": 131805756621,
+    "outputChromeConclusion": "SUCCESS",
+    "rpmUiConclusion": "FAIL_AT_VIEWPORT_ASSERTION",
+    "actualDocumentClientWidth": 1425,
+    "requestedWindowWidth": 1440,
+    "horizontalOverflow": false,
+    "correction": "Measure window.innerWidth for emulated viewport; keep document clientWidth horizontal-overflow assertion unchanged; check scrollbar width separately."
+  },
+  "finalArchitecture": "Archive2Core restored byte-exact to base; current helper is required directly by UnitPastExamsCore. Legacy apply bridge and Worker bundle checks pass 38/38 without adding Worker dependency."
+}

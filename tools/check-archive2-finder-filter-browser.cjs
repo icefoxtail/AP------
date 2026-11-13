@@ -61,6 +61,11 @@ async function main(){
   await run("(()=>{document.querySelector('.find-grade[aria-pressed=\"true\"]').click();return true})()");
   await wait("!new URLSearchParams(location.search).get('grade')",'grade button clears');
   console.log('ARCHIVE2_FINDER_FILTER_CHROME_PASS '+JSON.stringify({desktop,fold,mobile,mobileTermSelection:4,repeatTapClears:true}));
+  await require('./check-archive-rpm-middle-browser.cjs')({
+   send, run, wait,
+   baseUrl:'http://127.0.0.1:'+server.address().port,
+   reportDir:process.env.RPM_MIDDLE_BROWSER_REPORT_DIR||path.join(root,'.tmp','rpm-middle-browser-ci'),
+  });
  }finally{
   ws?.close();proc.kill('SIGTERM');await new Promise(resolve=>server.close(resolve));
   try{fs.rmSync(profile,{recursive:true,force:true});}catch(e){}

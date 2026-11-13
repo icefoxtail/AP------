@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { objectSha, fileRef } from '../pipeline-core/canonical.mjs';
 import { loadActiveMetaRegistry, validateActiveMetaFields } from './active-registry.mjs';
+import MiddleToc from '../../rpm-middle-toc.js';
 
 export const LEGACY_META_RESOLUTION_SCHEMA_V1 = 'JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1';
 export const META_RESOLUTION_SCHEMA = 'JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v2';
@@ -44,6 +45,7 @@ const readJson = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const pathRef = (root, rel) => fileRef(root, rel);
 const rpmBase = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0';
 const crosswalkBase = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0';
+const middleParentAuthorityPath = 'archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json';
 
 export function makeR2ESourceMetaProjection(question) {
   return Object.fromEntries(ADVANCED_META_FIELDS_EXCLUDED_FROM_SEMANTIC_INPUT
@@ -335,7 +337,9 @@ function bindingIdentity(binding) {
 
 function semanticRecord(fields) {
   const { bundle, rpmHit, refs = [], ...rest } = fields;
-  const rpmPath = bundle.semanticDecision.rpmPath;
+  // New parent choices retain the sealed v1.0 leaf as their stored compatibility
+  // path. The exact effective parent and its authority are additional evidence.
+  const rpmPath = rest.rpmPath || bundle.semanticDecision.rpmPath;
   const semantic = {
     status: 'FINAL',
     authorityVersion: 'RPM_PRIMARY_TAXONOMY_v1.0',
@@ -486,7 +490,7 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
   const isolated = buildDecisionIsolatedInput(input);
   const { bundle, sourceFingerprint, inputBundleSha } = isolated;
   const context = bundle.curriculumContext;
-  const rpmPath = bundle.semanticDecision.rpmPath;
+  let rpmPath = bundle.semanticDecision.rpmPath;
   const scopeRelation = bundle.semanticDecision.scopeRelation || 'CURRENT_SCOPE';
   const refs = [];
   const readRef = relative => {
@@ -500,7 +504,39 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
       semanticStatus: 'UNAVAILABLE', projectionStatus: 'NOT_ATTEMPTED', reasonCode: 'RPM_PRIMARY_AUTHORITY_UNAVAILABLE' });
   }
   const master = readJson(path.join(root, rpmMasterRef.path));
-  const rpmHits = findRpmRecords(master, rpmPath);
+  let rpmHits = findRpmRecords(master, rpmPath);
+  let parentRefinement = {};
+  // Existing exact paths take the unchanged route, preserving prior evidence
+  // hashes and every 2015/high-school decision. An effective 2022 middle parent
+  // is accepted only when its full path reverses to one leaf of this exact base.
+  if (!rpmHits.length && rpmPath.curriculum === '2022' && /^M[123]-[12]$/.test(rpmPath.scope)) {
+    try {
+      const authority = readJson(path.join(root, middleParentAuthorityPath));
+      if (authority.authorityStatus !== 'ACTIVE' || authority.baseAuthority?.path !== rpmMasterRef.path ||
+          `sha256:${authority.baseAuthority?.sha256}` !== rpmMasterRef.sha256)
+        throw new Error('RPM_MIDDLE_PARENT_BASE_AUTHORITY_MISMATCH');
+      const refined = MiddleToc.createAuthority(authority).refinePath(rpmPath);
+      if (refined.status === 'EXACT' && refined.granularity === 'LEAF') {
+        const basePath = MiddleToc.toRpmPath(refined.basePath);
+        const baseHits = findRpmRecords(master, basePath);
+        if (baseHits.length === 1) {
+          const authorityRef = readRef(middleParentAuthorityPath);
+          if (!authorityRef) throw new Error('RPM_MIDDLE_PARENT_AUTHORITY_UNAVAILABLE');
+          authorityRef.role = 'RPM_EFFECTIVE_PARENT_REFINEMENT';
+          parentRefinement = {
+            effectivePath: refined.effectivePath,
+            effectiveParentKey: refined.parentKey,
+            parentRefinementAuthority: { path: authorityRef.path, sha256: authorityRef.sha256, version: authority.authorityVersion },
+          };
+          rpmPath = basePath;
+          rpmHits = baseHits;
+        }
+      }
+    } catch {
+      // Refusal falls through to the existing exact-path HOLD. A missing or
+      // stale refinement never weakens the locked semantic-path validator.
+    }
+  }
   if (rpmHits.length === 0) {
     return semanticHold({ bundle, refs, sourceFingerprint, inputBundleSha,
       reasonCode: 'RPM_PRIMARY_PATH_NOT_FOUND', detail: 'The supplied curriculum/scope/L3/L4 tuple is not present in locked RPM Primary.' });
@@ -525,6 +561,7 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
   const rpmSemanticBase = {
     bundle, rpmHit, refs, sourceFingerprint, inputBundleSha,
     rpmPath, rpmL3: rpmPath.l3, rpmL4: rpmPath.l4, semanticScopeRelation: scopeRelation,
+    ...parentRefinement,
   };
   const semanticGrade = gradeForRpmScope(rpmPath.scope) || normalizeGrade(context.grade);
   const crosswalkContext = scopeRelation === 'CURRENT_SCOPE'

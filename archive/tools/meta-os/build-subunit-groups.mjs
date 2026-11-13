@@ -69,7 +69,9 @@ export function loadUnitIndex(root) {
   const subjectOrder = [];
   const unitOrder = new Map();
   for (const grade of Unified.GRADES) {
-    for (const group of Unified.structure(grade)) {
+    // Stored key-group decisions retain their historical unit IDs. The current RPM parent
+    // projection has separate IDs, so both namespaces remain valid without rewriting old rules.
+    for (const group of [...Unified.structure(grade), ...Unified.structure(grade, { legacy: true })]) {
       if (!subjects.has(group.subject)) { subjects.set(group.subject, group.label); subjectOrder.push(group.subject); }
       for (const unit of group.units) {
         const id = `${group.subject}|${unit.key}`;
