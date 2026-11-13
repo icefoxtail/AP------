@@ -1,0 +1,73 @@
+{
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "owner": "GPT_ROOT_933015CD0A4F",
+  "instructionRevision": 2,
+  "state": "CORRECTED_PARENTS_READY_FOR_FINAL_CI",
+  "branch": "fix/rpm-middle-l1-l2-20261113",
+  "baseMainSha": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+  "authority": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+  "counts": {
+    "books": 6,
+    "L1": 24,
+    "L2": 54,
+    "preservedLeaves": 326,
+    "reviewedConcepts": 155,
+    "correctedParentLeaves": 9,
+    "ambiguousLegacySubUnitKeys": 13
+  },
+  "questionMetadataModified": false,
+  "lockedSnapshotModified": false,
+  "validation": {
+    "parentRoundTrip": "PASS_326",
+    "quickPools": "PASS_20_TESTS",
+    "unitIntegration": "PASS_24_TESTS",
+    "subunitGroups": "PASS_CHECK_NO_REGENERATION",
+    "runtimeGuard": "PRIOR_CI_243_PASS_FINAL_HEAD_PENDING",
+    "chrome": "PRIOR_50_OUTPUT_CHROME_PASS_NEW_RPM_UI_VIEWPORT_HARNESS_FIXED_FINAL_HEAD_PENDING",
+    "merge": "PENDING",
+    "resolverAndParentAuthority": "PASS_35_TESTS_FINAL_V1_2",
+    "urlAndStoredSelection": "PASS_5_TESTS",
+    "consumerAndCiScope": "PASS_47_TESTS",
+    "independentReview": "FINAL_326_ROUND_TRIPS_13_AMBIGUITIES_EXPLICIT_CURRICULUM_PASS",
+    "unitQuickUnifiedAndUrl": "PASS_69_TESTS_FINAL_V1_2",
+    "legacyBridgeAndWorker": "PASS_38_TESTS_AFTER_CORE_DEPENDENCY_ISOLATION",
+    "consumerUiProducerAndReader": "PASS_14_TESTS_INCLUDES_5_URL_TESTS",
+    "sourceReplayCore": "BYTE_EXACT_BASE_MAIN_NO_NEW_WORKER_DEPENDENCY"
+  },
+  "examReview": {
+    "state": "PAUSED_FOR_RPM_L1_L2_REFINEMENT",
+    "branch": "review/m1-existing-meta-20261113",
+    "checkpointSha": "f05383131e035ad28b613a238ec072c2c9b265b2",
+    "totalExams": 44,
+    "totalQuestions": 1047,
+    "completedExams": 0,
+    "next": "2026 신흥중 중1 2학기 중간 24문항",
+    "candidateComparisonFile": "docs/operations/m1-meta-review-20261113/01-shinheung-candidate-comparison.json"
+  },
+  "nextAction": "INTEGRATE_LATEST_MAIN_PUBLISH_EXACT_TREE_AND_VERIFY_CI_CHROME_BEFORE_MERGE",
+  "remoteCheckpointSha": "71137cfe8d6b0caba3926fce98ad28e53e80bdbf",
+  "remoteCheckpointTree": "5c092f6731d79fb4af26d6092cf6704de53c2a2c",
+  "awcr": {
+    "revision": 4,
+    "fileId": "1OPzyBkhimVFPj_vooQtMzpsDqVLqPib0",
+    "rawSha256": "c518a83ceb80141ebbce7d7577f458319593221292703db226c76fd40c875d08",
+    "readbackVerified": true
+  },
+  "latestMainObservedSha": "2b90b85dd848806ba62f844b85225db8bcae5ee3",
+  "pullRequest": 1958,
+  "authoritySha256": "6128cf2c8c863f132d6c9d8b51804aff9ba636ce5cdbaf99f41217962aec40ab",
+  "parentAudits": [
+    {
+      "file": "m1-parent-placement-audit.json",
+      "sha256": "45d0f40b181f8372fac77998a6575b56a7b56164d11f638d14634ff2e6747dd8"
+    },
+    {
+      "file": "m2-parent-placement-audit.json",
+      "sha256": "e2fcc27861093b70e019164dbc2129642ad76f79c396ab56a19e2715eabc51e5"
+    },
+    {
+      "file": "m3-parent-placement-audit.json",
+      "sha256": "cba8eae8713d0e88a4e5571049ec3e1ba171958d3dbe4043a7f9c7cb6f5ed489"
+    }
+  ]
+}

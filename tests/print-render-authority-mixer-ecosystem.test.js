@@ -35,7 +35,8 @@ test('unit-past producer writes the real mixed storage contract with canonical p
     readyShelf: () => false,
     getPaperSources: () => [{ label: '2026 · Fixture School · 1학기 중간' }],
     core: {
-      getSubUnitLabel: record => record.subUnitLabel || '다항식',
+      getSelectionSubUnitKey: record => record.subUnitKey || '',
+      getSelectionSubUnitLabel: record => record.subUnitLabel || '다항식',
       getDifficultyBucket: record => record.difficulty || '중',
       getProblemTypeKey: record => record.problemTypeKey || '',
       getTemplateKey: record => record.templateKey || '',

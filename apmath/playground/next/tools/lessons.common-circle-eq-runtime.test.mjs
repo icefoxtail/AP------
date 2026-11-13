@@ -74,6 +74,19 @@ function apollonius(p) {
   return { center, radius };
 }
 
+test('shell can count review steps before PROB.attach without inventing inquiry steps', () => {
+  const initial = Object.fromEntries(Object.entries(lab.def.params || {}).map(([key, param]) => [key, param.value]));
+  Object.assign(initial, lab.def.state, { step: 0, part: null, revealed: false, playing: false });
+  // The VM replaces createLab's UI construction and attaches getters to its
+  // copied list. The original definitions retain the pre-attach functions
+  // that the real shell calls while it builds the very first review tab.
+  for (const group of lab.def.groups) for (const scene of group.scenes) {
+    const steps = typeof scene.steps === 'function' ? scene.steps(initial) : scene.steps;
+    assert.ok(Array.isArray(steps), `${scene.id}: initial review-tab construction needs a step list before PROB.attach`);
+    assert.equal(steps.length, 0, `${scene.id}: no inquiry steps are invented during initialization`);
+  }
+});
+
 test('actual HTML registers 32 scenes and 104 valid lessons with exactly one first original per scene', () => {
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(new URL('../kit/apl-catalog.js', import.meta.url), 'utf8'), context);

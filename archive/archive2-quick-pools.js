@@ -66,8 +66,10 @@
 
   // One pass over the unified index. Pools are per grade view, so a 고3 source question that is
   // browsable in the 고2 view is a candidate there too, exactly as in 문제지 만들기.
-  // metaByUid (optional, uid -> projected meta row) supplies the recorded 소단원; records without
-  // one are simply not part of any 소단원 pool (never guessed).
+  // Middle-school subunits use only the exact current RPM parent projected by the unified
+  // index. A legacy broad parent stays in its unit pool, but is never guessed into a child.
+  // An explicitly out-of-scope 2015 record keeps a separate legacy pool. High-school subunits
+  // keep the recorded metaByUid (uid -> projected meta row) contract.
   function buildPools(index, options = {}) {
     const difficultyMode = options.difficultyMode === "eligible" ? "eligible" : "recorded";
     const metaByUid = options.metaByUid || null;
@@ -106,19 +108,29 @@
           order: unitKey ? entry.unitOrder : 9999, buckets: emptyBuckets(),
         });
         unit.buckets[bucket].push(record);
+        const middle = /^중[123]$/.test(grade);
+        const legacyMiddle = middle && entry.rpmParentStatus === "OUT_OF_SCOPE" && entry.originalCurriculum === "2015";
+        const parent = middle && entry.rpmParentStatus === "EXACT" && entry.rpmParent?.grade === grade
+          ? entry.rpmParent : null;
         const meta = metaByUid?.get(uid);
-        const subKey = text(meta?.subUnitKey);
+        const subKey = middle && !legacyMiddle
+          ? parent && text(parent.L2) ? text(parent.parentKey) : ""
+          : text(meta?.subUnitKey);
         if (subKey) {
-          const subId = `${key}:${subKey}`;
+          const subId = `${key}:${legacyMiddle ? "legacy:2015:" : ""}${subKey}`;
           let sub = subMap.get(subId);
           if (!sub) subMap.set(subId, sub = {
             key: subId, kind: "subunit", grade, subject: entry.subject, subjectLabel: entry.subjectLabel,
-            unitKey, unitLabel: unit.label, subUnitKey: subKey, label: "", order: unit.order,
-            buckets: emptyBuckets(), names: new Map(),
+            unitKey, unitLabel: unit.label, subUnitKey: subKey,
+            label: parent ? text(parent.L2) : "",
+            order: parent ? parent.order : unit.order,
+            ...(parent ? { orderInUnit: parent.orderInUnit } : { names: new Map() }),
+            ...(legacyMiddle ? { legacyCurriculum: "2015" } : {}),
+            buckets: emptyBuckets(),
           });
           sub.buckets[bucket].push(record);
-          const name = text(meta.subUnit);
-          if (name) sub.names.set(name, (sub.names.get(name) || 0) + 1);
+          const name = text(meta?.subUnit);
+          if (sub.names && name) sub.names.set(name, (sub.names.get(name) || 0) + 1);
         }
       }
       const finish = (list) => {
@@ -130,10 +142,12 @@
             // then the most frequent.
             unit.label = [...unit.names.entries()].sort((a, b) =>
               hasHangul(b[0]) - hasHangul(a[0]) || b[1] - a[1] || compareKo(a[0], b[0]))[0]?.[0] || unit.subUnitKey;
+            if (unit.legacyCurriculum === "2015") unit.label = `이전 분류 · ${unit.label}`;
             delete unit.names;
           }
         }
         return list.sort((a, b) => compareKo(a.subject, b.subject) || a.order - b.order ||
+          (a.orderInUnit || 0) - (b.orderInUnit || 0) ||
           compareKo(a.label, b.label) || compareKo(a.key, b.key));
       };
       pools.units[grade] = groupBySubject(finish([...unitMap.values()]));
@@ -155,7 +169,8 @@
     });
   }
   // Units of one product for a grade/subject. Unclassified questions form a last "단원 미분류"
-  // unit for the unit based products; 소단원 are only the recorded ones.
+  // unit for the unit based products. Middle-school 소단원 use exact current parents or an
+  // explicitly separate 2015 legacy pool; high-school 소단원 retain their recorded metadata.
   function unitsFor(pools, view, grade, subject) {
     const product = PRODUCTS[view];
     if (!product) return [];

@@ -30,6 +30,10 @@ const files = [
   'tests/render-authority-question.test.js',
   'tests/archive2-key-resolver.test.js',
   'tests/archive2-quick-pools.test.js',
+  'tests/archive-rpm-middle-integration.test.cjs',
+  'tests/archive-rpm-middle-url.test.cjs',
+  'archive/tools/meta-foundation/rpm-middle-toc.test.mjs',
+  'archive/tools/meta-foundation/rpm-active-resolver.test.mjs',
   'tests/archive2-boot-order.test.js',
 ];
 

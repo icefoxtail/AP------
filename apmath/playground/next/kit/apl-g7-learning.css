@@ -1,72 +1,192 @@
-/* Only the Grade 7 learning route opts into this layer. The existing problem,
-   manual and teacher routes retain their original controls and layout. */
-.apl-g7-learning .apl-stage { display:flex; flex-direction:column; }
-.apl-g7-learning .apl-canvas-wrap { flex:1 1 auto; min-height:320px; }
-.g7-learning { flex:0 0 auto; margin:10px 14px 0; padding:13px 16px 10px; border:1px solid var(--line, #d5e3db); border-radius:16px; background:var(--surface, #fffefa); color:var(--ink, #17382a); position:relative; z-index:8; }
-[data-theme="board"] .g7-learning { background:#12241c; color:#e1eee7; border-color:#365343; }
-.g7-learning[hidden], .g7-learning [hidden], .g7-short-caption[hidden], .g7-short-formula[hidden] { display:none!important; }
-.g7-learning-goal { display:flex; flex-direction:column; gap:4px; min-width:0; overflow-wrap:anywhere; font-size:14px; line-height:1.45; }
-.g7-learning-goal b { font-size:18px; font-weight:850; letter-spacing:-.03em; }
-.g7-learning-goal > span { opacity:.83; }
-.g7-learning-controls { display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin-top:10px; }
-.g7-learning button { min-height:40px; padding:8px 12px; border-radius:10px; font-size:13px; }
-.g7-learning-targets { display:flex; flex-wrap:wrap; gap:6px; margin-top:9px; min-width:0; }
-.g7-learning-targets button { max-width:100%; white-space:normal; }
-.g7-learning-targets button[aria-pressed="true"] { background:#176f4e; color:white; }
-.g7-learning-time { font-variant-numeric:tabular-nums; font-size:12px; opacity:.75; margin-left:auto; }
-.g7-learning input[type="range"] { width:100%; height:18px; margin-top:5px; }
-.g7-learning-extra { margin-top:7px; font-size:12px; opacity:.9; }
-.g7-learning-extra summary { cursor:pointer; width:max-content; padding:4px 0; }
-.g7-learning-legacy { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
-.g7-short-caption,.g7-short-formula { position:absolute; left:14px; right:14px; z-index:5; text-align:center; pointer-events:none; color:var(--ink, #17382a); background:var(--surface, #fffefa); padding:8px 10px; border-radius:10px; line-height:1.45; }
-[data-theme="board"] .g7-short-caption,[data-theme="board"] .g7-short-formula { background:#11251d; color:#e1eee7; }
-.g7-short-caption { top:8px; font-size:14px; font-weight:650; }
-.g7-short-formula { bottom:12px; font-size:18px; font-weight:750; }
-.g7-short-active .apl-stage-chips,.g7-short-active .apl-stage-status,.g7-short-active .apl-stage-readouts,.g7-short-active .apl-float-card,.g7-short-active .apl-scene-guide,.g7-short-active .apl-stage-tools,.g7-short-active .apl-stage-tr { visibility:hidden; }
-.g7-short-active .apl-ink { pointer-events:none!important; visibility:hidden; }
-.g7-short-active .apl-panel { visibility:hidden; }
-.g7-short-active .apl-main { grid-template-columns:minmax(0,1fr); }
-.g7-short-active .apl-panel { display:none; }
-/* The fixed side handle can cover the time display when proof choices wrap.
-   The existing header table-of-contents button remains available. */
-.g7-short-active .apl-toc-handle { display:none; }
-@media(max-width:859px) {
-  .g7-learning { margin:8px 8px 0; padding:10px 11px 8px; border-radius:13px; }
-  .g7-learning-goal b { font-size:16px; }
-  .g7-learning-goal > span { font-size:12px; }
-  .g7-learning-controls { gap:5px; }
-  .g7-learning button { min-height:38px; padding:7px 9px; font-size:12px; }
-  .g7-short-active .apl-stage { height:auto!important; min-height:560px; }
-  .g7-short-active .apl-canvas-wrap { height:430px!important; min-height:430px; flex:none; }
-  .g7-short-caption { font-size:12px; left:8px; right:8px; }
-  .g7-short-formula { font-size:16px; left:8px; right:8px; }
+/* Grade 7 student learning only. Reuse the scene catalogue and exploration
+   controls; contents is a page state, not a modal over a playing lesson. */
+body.apl-g7-learning .apl-bar {
+  grid-template-columns:auto minmax(0,1fr) auto;
+  grid-template-areas:"back title actions";
+  height:auto; min-height:var(--bar-h);
 }
-@media(prefers-reduced-motion:reduce) { .g7-learning * { scroll-behavior:auto; transition:none; } }
-/* Focused playback keeps the hierarchy in the table of contents, without
-   spending the drawing viewport on three repeated selection bars. */
-.g7-short-active .apl-railwrap,.g7-short-active .apl-stage-top,.g7-short-active .apl-dock,.g7-short-active .apl-tape { display:none!important; }
-.g7-short-active .apl-float,.g7-short-active .sv-student-tip,.g7-short-active .apl-presenter,.g7-short-active .apl-pen-tools { visibility:hidden; }
-.g7-short-active .apl-bar { grid-template-areas:"back title actions"; }
-.g7-short-active .apl-stage { position:relative; top:0!important; height:calc(100svh - 57px)!important; min-height:620px; }
-.g7-short-active .apl-canvas-wrap { height:auto!important; min-height:360px; flex:1 1 auto; }
-.g7-learning-progress { display:flex; align-items:center; gap:8px; margin-top:7px; }
-.g7-learning-progress .g7-learning-range { flex:1; min-width:40px; height:16px; width:auto; margin:0; accent-color:#176f4e; }
-.g7-learning-progress button { min-height:28px; padding:3px 7px; font-size:11px; }
-.g7-learning-progress .g7-learning-time { margin:0; white-space:nowrap; }
-.g7-short-active .g7-learning { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(270px,1fr); align-items:center; column-gap:20px; padding:10px 15px; }
-.g7-short-active .g7-learning-goal { grid-column:1; grid-row:1; }
-.g7-short-active .g7-learning-targets { grid-column:2; grid-row:1; margin:0; }
-.g7-short-active .g7-learning-controls { grid-column:1; grid-row:2; margin-top:8px; }
-.g7-short-active .g7-learning-progress { grid-column:2; grid-row:2; min-width:270px; }
-@media(max-width:859px) {
-  .g7-short-active .apl-stage { min-height:680px; }
-  .g7-short-active .g7-learning { grid-template-columns:minmax(0,1fr); padding:9px 10px; column-gap:6px; }
-  .g7-short-active .g7-learning-goal { grid-column:1/-1; }
-  .g7-short-active .g7-learning-targets { grid-column:1/-1; grid-row:3; margin-top:6px; }
-  .g7-short-active .g7-learning-targets button { padding:5px 7px; min-height:34px; font-size:11px; }
-  .g7-short-active .g7-learning-controls { grid-column:1/-1; grid-row:2; flex-wrap:wrap; gap:4px; }
-  .g7-short-active .g7-learning-controls button { padding:6px 7px; font-size:11px; min-height:34px; white-space:nowrap; }
-  .g7-short-active .g7-learning-progress { grid-column:1/-1; grid-row:4; min-width:0; margin-top:5px; }
-  .g7-short-active .apl-canvas-wrap { min-height:450px; }
+body.apl-g7-learning .apl-railwrap,
+body.apl-g7-learning .apl-toc-handle,
+body.apl-g7-learning .apl-toc-edge,
+body.apl-g7-learning .apl-toc-scrim { display:none!important; }
+body.apl-g7-learning .apl-toc-btn { width:auto; min-height:44px; padding:8px 10px; }
+body.apl-g7-learning .apl-toc-btn .lbl { display:inline; }
+body.apl-g7-learning .apl-back { min-width:44px; min-height:44px; }
+body.apl-g7-learning .apl-main[hidden],
+body.apl-g7-learning .apl-toc[hidden],
+body.apl-g7-learning .g7-learning-head[hidden],
+body.apl-g7-learning .g7-learning[hidden],
+body.apl-g7-learning .g7-learning-head [hidden],
+body.apl-g7-learning .g7-learning [hidden],
+body.apl-g7-learning .g7-short-caption[hidden],
+body.apl-g7-learning .g7-short-formula[hidden] { display:none!important; }
+
+/* Keep the first entry quiet while its own unit module is being loaded. */
+body.apl-g7-loading .apl-main,
+body.apl-g7-loading .apl-lentry,
+body.apl-g7-loading .apl-toc,
+body.apl-g7-loading .apl-railwrap { display:none!important; }
+body.apl-g7-loading .apl-app { min-height:0; }
+body.apl-g7-loading::after {
+  content:"목차를 준비하고 있어요"; display:block;
+  max-width:960px; margin:32px auto; padding:24px;
+  color:var(--text-2); font-size:16px; text-align:center;
 }
-@media(max-width:859px) { .apl-g7-learning:not(.g7-short-active) .apl-stage { min-height:560px; height:auto; position:relative; top:0; } }
+
+/* This is normal document content. Back restores its window scroll position. */
+body.apl-g7-contents .apl-app { min-height:0; position:sticky; top:0; z-index:30; }
+body.apl-g7-contents .apl-toc {
+  position:relative; inset:auto; z-index:auto; display:flex;
+  width:min(1120px, calc(100% - 32px)); height:auto; max-height:none;
+  margin:20px auto 40px; padding:0 0 env(safe-area-inset-bottom);
+  border:1px solid var(--line); border-radius:18px;
+  background:var(--panel); box-shadow:none;
+  transform:none!important; transition:none; touch-action:pan-y;
+}
+body.apl-g7-contents .apl-toc-head { padding:24px 24px 12px; align-items:flex-start; }
+body.apl-g7-contents .apl-toc-ttl { min-width:0; }
+body.apl-g7-contents .apl-toc-ttl h2 { font-size:28px; line-height:1.3; overflow-wrap:anywhere; }
+body.apl-g7-contents .apl-toc-sub { margin-top:8px; font-size:14px; line-height:1.5; }
+body.apl-g7-contents .apl-toc-head > .apl-icon-btn { display:none; }
+body.apl-g7-contents .apl-toc-tools { padding:0 24px 16px; }
+body.apl-g7-contents .apl-toc-tools:has(> [hidden]:only-child) { display:none; }
+body.apl-g7-contents .apl-toc-list {
+  flex:none; height:auto; max-height:none; overflow:visible; overscroll-behavior:auto;
+  display:grid; grid-template-columns:minmax(0,1fr); align-items:start; gap:24px;
+  padding:12px 24px 24px;
+}
+body.apl-g7-contents .apl-toc-group { min-width:0; scroll-margin-top:calc(var(--bar-h) + 16px); }
+body.apl-g7-contents .apl-toc-gh {
+  position:static; margin:0 0 8px; padding:8px 0;
+  border-bottom:1px solid var(--line); background:transparent;
+  font-size:16px; line-height:1.45;
+}
+body.apl-g7-contents .apl-toc-item {
+  margin:8px 0 0; min-height:56px; padding:12px;
+  border:1px solid var(--line); background:var(--card); font-size:16px;
+}
+body.apl-g7-contents .apl-toc-item:hover { background:var(--hover); }
+body.apl-g7-contents .apl-toc-item.multi { gap:8px; }
+body.apl-g7-contents .apl-toc-item.multi .apl-toc-title { min-height:44px; padding:4px 0; }
+body.apl-g7-contents .apl-toc-item .tx,
+body.apl-g7-contents .apl-toc-item .lb { min-width:0; overflow-wrap:anywhere; }
+body.apl-g7-contents .apl-toc-item .vid { max-width:100%; font-size:14px; }
+body.apl-g7-contents .apl-toc-lessons .vid { min-height:44px; white-space:normal; text-align:left; }
+body.apl-g7-contents .apl-toc-lessons .sec { white-space:nowrap; }
+body.apl-g7-contents .apl-toc-item .flag { font-size:12px; }
+
+/* Natural document height: heading, figure, then playback and exploration.
+   Drawing height does not depend on how many navigation buttons wrap. */
+body.apl-g7-learning .apl-stage {
+  display:flex; flex-direction:column; position:relative; top:auto!important;
+  height:auto!important; min-height:0; overflow:visible; align-self:start;
+}
+body.apl-g7-learning .apl-canvas-wrap {
+  flex:none; width:100%; height:clamp(360px, 52svh, 560px);
+  min-height:320px; overflow:hidden;
+}
+body.apl-g7-learning .g7-learning-head,
+body.apl-g7-learning .g7-learning {
+  flex:none; min-width:0; position:relative; z-index:8;
+  margin:12px 14px; padding:14px 16px;
+  border:1px solid var(--line); border-radius:14px;
+  background:var(--panel); color:var(--text);
+}
+body.apl-g7-learning .g7-learning-head { margin-bottom:0; }
+body.apl-g7-learning .g7-learning { margin-top:0; }
+body.apl-g7-learning .g7-learning-nav { display:flex; align-items:center; gap:10px; margin-bottom:8px; min-width:0; }
+body.apl-g7-learning .g7-learning-location { flex:1; min-width:0; color:var(--text-2); font-size:14px; line-height:1.45; overflow-wrap:anywhere; }
+body.apl-g7-learning .g7-learning-goal { display:flex; flex-direction:column; gap:6px; min-width:0; overflow-wrap:anywhere; font-size:16px; line-height:1.5; }
+body.apl-g7-learning .g7-learning-goal b { font-size:20px; font-weight:800; letter-spacing:-.025em; }
+body.apl-g7-learning .g7-learning-goal > span { color:var(--text-2); }
+body.apl-g7-learning .g7-learning-goal .katex-display { max-width:100%; overflow-x:auto; overflow-y:hidden; }
+body.apl-g7-learning .g7-learning-head button,
+body.apl-g7-learning .g7-learning button { min-height:44px; padding:9px 12px; border-radius:10px; font-size:14px; line-height:1.3; }
+body.apl-g7-learning .g7-learning-head button:focus-visible,
+body.apl-g7-learning .g7-learning button:focus-visible,
+body.apl-g7-contents .apl-toc button:focus-visible { outline:2px solid var(--focus); outline-offset:3px; }
+body.apl-g7-learning .g7-learning-targets { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; min-width:0; }
+body.apl-g7-learning .g7-learning-targets button { max-width:100%; white-space:normal; text-align:left; }
+body.apl-g7-learning .g7-learning-targets button[aria-pressed="true"] { background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
+body.apl-g7-learning .g7-learning-controls { display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+body.apl-g7-learning .g7-learning-progress { display:grid; grid-template-columns:auto minmax(60px,1fr) auto auto; align-items:center; gap:8px; margin-top:12px; }
+body.apl-g7-learning .g7-learning-range { min-width:0; width:100%; height:44px; margin:0; accent-color:var(--accent); }
+body.apl-g7-learning .g7-learning-time { font-variant-numeric:tabular-nums; font-size:13px; color:var(--text-2); white-space:nowrap; }
+body.apl-g7-learning .g7-learning-items { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center; gap:8px; margin-top:12px; padding-top:12px; border-top:1px solid var(--line); }
+body.apl-g7-learning .g7-learning-prev-item { justify-self:start; }
+body.apl-g7-learning .g7-learning-next-item { justify-self:end; }
+body.apl-g7-learning .g7-learning-item-position { font-size:13px; font-variant-numeric:tabular-nums; color:var(--text-2); white-space:nowrap; }
+body.apl-g7-learning .g7-learning-extra { margin-top:12px; font-size:14px; }
+body.apl-g7-learning .g7-learning-extra summary { cursor:pointer; width:fit-content; min-height:44px; padding:12px 0; }
+body.apl-g7-learning .g7-learning-legacy { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+
+body.apl-g7-learning .g7-short-caption,
+body.apl-g7-learning .g7-short-formula {
+  position:absolute; left:14px; right:14px; z-index:5;
+  text-align:center; pointer-events:none; overflow-wrap:anywhere;
+  color:var(--text); background:var(--panel); padding:8px 10px; border-radius:10px; line-height:1.45;
+}
+body.apl-g7-learning .g7-short-caption { top:8px; font-size:14px; font-weight:650; }
+body.apl-g7-learning .g7-short-formula { bottom:12px; font-size:18px; font-weight:750; }
+body.apl-g7-learning.g7-short-active .apl-main { grid-template-columns:minmax(0,1fr); }
+body.apl-g7-learning.g7-short-active .apl-stage { width:100%; max-width:1120px; margin-inline:auto; border-right:0; box-shadow:none; }
+body.apl-g7-learning.g7-short-active .apl-canvas-wrap { touch-action:pan-y; }
+body.apl-g7-learning.g7-short-active .apl-panel,
+body.apl-g7-learning.g7-short-active .apl-stage-top,
+body.apl-g7-learning.g7-short-active .apl-dock,
+body.apl-g7-learning.g7-short-active .apl-tape { display:none!important; }
+body.apl-g7-learning.g7-short-active .apl-ink,
+body.apl-g7-learning.g7-short-active .apl-float,
+body.apl-g7-learning.g7-short-active .sv-student-tip,
+body.apl-g7-learning.g7-short-active .apl-presenter,
+body.apl-g7-learning.g7-short-active .apl-pen-tools { visibility:hidden; pointer-events:none!important; }
+
+/* Optional older lessons keep their controls and can scroll as well. */
+body.apl-g7-learning.apl-vid { overflow:auto; }
+body.apl-g7-learning.apl-vid .apl-app { height:auto; min-height:100svh; }
+body.apl-g7-learning.apl-vid .apl-main { overflow:visible; grid-template-rows:auto; }
+body.apl-g7-learning.apl-vid .apl-stage { display:flex!important; width:100%; max-width:1120px; margin-inline:auto; }
+body.apl-g7-learning.apl-vid .apl-canvas-wrap { flex:none; height:clamp(360px, 52svh, 560px); min-height:320px; }
+body.apl-g7-learning.apl-vplaying .apl-vbar .apl-vctl { display:flex; }
+
+@media(min-width:960px) {
+  body.apl-g7-contents .apl-toc-list { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(min-width:860px) {
+  body.apl-g7-learning .g7-learning-nav .g7-learning-toc { display:none; }
+}
+@media(max-width:859px) {
+  body.apl-g7-contents .apl-toc { width:calc(100% - 20px); margin:12px auto 24px; border-radius:14px; }
+  body.apl-g7-contents .apl-toc-head { padding:18px 14px 10px; }
+  body.apl-g7-contents .apl-toc-ttl h2 { font-size:24px; }
+  body.apl-g7-contents .apl-toc-tools { padding:0 14px 12px; }
+  body.apl-g7-contents .apl-toc-list { padding:4px 12px 16px; gap:20px; }
+  body.apl-g7-contents .apl-toc-item { padding:10px; font-size:15px; }
+  body.apl-g7-learning .apl-stage { border-right:0; box-shadow:none; }
+  body.apl-g7-learning .apl-canvas-wrap,
+  body.apl-g7-learning.apl-vid .apl-canvas-wrap { height:clamp(300px, 43svh, 460px); min-height:300px; }
+  body.apl-g7-learning .g7-learning-head,
+  body.apl-g7-learning .g7-learning { margin-inline:8px; padding:12px; border-radius:12px; }
+  body.apl-g7-learning .g7-learning-goal b { font-size:18px; }
+  body.apl-g7-learning .g7-learning-goal { font-size:15px; }
+  body.apl-g7-learning .g7-learning-location { font-size:13px; }
+  body.apl-g7-learning .g7-learning-controls { gap:6px; }
+  body.apl-g7-learning .g7-learning-controls button { flex:1 1 auto; }
+  body.apl-g7-learning .g7-learning-progress { grid-template-columns:auto minmax(50px,1fr) auto; gap:6px; }
+  body.apl-g7-learning .g7-learning-progress .g7-learning-time { grid-column:1/-1; justify-self:end; }
+  body.apl-g7-learning .g7-learning-progress button { padding-inline:8px; }
+  body.apl-g7-learning .g7-short-caption { left:8px; right:8px; font-size:13px; }
+  body.apl-g7-learning .g7-short-formula { left:8px; right:8px; font-size:16px; }
+}
+@media(max-width:380px) {
+  body.apl-g7-learning .apl-bar { column-gap:4px; padding-inline:6px; }
+  body.apl-g7-learning .apl-toc-btn { padding-inline:7px; }
+  body.apl-g7-learning .g7-learning-head button,
+  body.apl-g7-learning .g7-learning button { padding-inline:9px; }
+  body.apl-g7-contents .apl-toc-item:not(.multi) { flex-wrap:wrap; }
+}
+@media(prefers-reduced-motion:reduce) {
+  body.apl-g7-learning .g7-learning *,
+  body.apl-g7-learning .g7-learning-head *,
+  body.apl-g7-contents .apl-toc { scroll-behavior:auto; transition:none; }
+}

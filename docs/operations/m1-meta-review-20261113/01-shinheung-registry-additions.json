@@ -1,0 +1,704 @@
+{
+  "schemaVersion": "scratch-native-registry-change-plan-v1",
+  "status": "DRAFT_COMPLETE_NATIVE_PLAN_PENDING_OFFICIAL_DRY_RUN",
+  "baselineMain": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
+  "sourceBlob": "c36139a90e9bcd378577ece8f891423bee6b0a19",
+  "semanticPart": ".tmp/m1-meta-review/01-final-semantic-partA.json",
+  "semanticPartSha256": "8ead1dc8cdd94cd4dbc1c3f13b9a25b6dd6d00dab0bfef04215603f40c9eda6a",
+  "semanticPartB": ".tmp/m1-meta-review/01-final-semantic-partB.json",
+  "semanticPartBSha256": "7f4ad8caa9ddbe5d77d83cf1a85b34c1a566084229811a42ada45b82d52076e4",
+  "finalEvidencePath": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+  "finalEvidencePresent": true,
+  "bindingSearch": {
+    "activePackCount": 17,
+    "fullActiveBindingTuples": true
+  },
+  "rootSemanticOverride": {
+    "ordinals": [
+      18,
+      24
+    ],
+    "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+    "reason": "합동의 실제 핵심에 따라 Q12와 같은 신규 작도와 합동 native binding으로 묶는다."
+  },
+  "evidenceLimitation": "기존 전 문항 읽기 checkpoint에 결속한 기술 초안이다. 등록 전 root의 최종 UID별 의미 결정 원장에 대한 durable evidenceRef를 각 변경에 추가해야 한다.",
+  "noMathFinalQaClaim": true,
+  "noProductionMutation": true,
+  "registryChanges": [
+    {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "collection": "$",
+      "match": {
+        "key": "CONSTRUCTION_CONGRUENCE",
+        "keyType": "conceptClusterKey"
+      },
+      "before": null,
+      "after": {
+        "key": "CONSTRUCTION_CONGRUENCE",
+        "keyType": "conceptClusterKey",
+        "parentKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "labelKo": "작도와 합동",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "conceptClusterKey": "CONSTRUCTION_CONGRUENCE",
+        "evidencePolicy": "content_or_solution_required",
+        "autoApplyAllowed": false,
+        "reviewRequiredWhen": [
+          "source_solution_disagreement",
+          "multiple_subunits_possible"
+        ],
+        "sourceKind": "document",
+        "sourceTitle": "중1 기존 기출 메타 의미 재검토",
+        "sourceUrlOrPath": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+        "status": "active"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "collection": "$",
+      "match": {
+        "key": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "keyType": "subUnitKey"
+      },
+      "before": null,
+      "after": {
+        "key": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "keyType": "subUnitKey",
+        "parentKey": "M1-05",
+        "labelKo": "작도와 합동",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "conceptClusterKey": "CONSTRUCTION_CONGRUENCE",
+        "evidencePolicy": "content_or_solution_required",
+        "autoApplyAllowed": false,
+        "reviewRequiredWhen": [
+          "source_solution_disagreement",
+          "visual_only_evidence"
+        ],
+        "sourceKind": "document",
+        "sourceTitle": "중1 기존 기출 메타 의미 재검토",
+        "sourceUrlOrPath": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+        "status": "active",
+        "subUnit": "작도와 합동"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_PERPENDICULAR_AND_SKEW_EDGE_COUNTS"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_PERPENDICULAR_AND_SKEW_EDGE_COUNTS",
+        "parentProblemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "canonicalLabelKo": "모서리의 수직·꼬인 위치별 개수",
+        "definition": "공간도형의 기준 모서리와 다른 모서리의 위치 관계를 비교하여 수직으로 만나는 모서리와 꼬인 위치 모서리를 각각 세는 유형이다.",
+        "internalSkeleton": "공통점·평행 여부·동일 평면 여부로 후보 모서리를 분류하고 수직 교차와 꼬인 위치를 구분하여 요구된 두 개수를 결합한다.",
+        "ownerPack": "MIDDLE1",
+        "status": "ACTIVE",
+        "aliases": [],
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_b6c658fe81fb556f0b50dd0a137ae096115f366d679b1e1afd05b3346cb72b27"
+        ],
+        "observedConditionKeys": [],
+        "observedIntegrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "EXISTING_EXAM_METADATA_SEMANTIC_REVIEW",
+            "evidenceRef": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+            "rationale": "현재 원본의 핵심 위치 관계 판단을 재사용 가능한 수치 독립 풀이 구조로 기록한다."
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "problemTypes",
+      "match": {
+        "problemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM",
+        "canonicalLabelKo": "교차 다각형의 각의 합",
+        "definition": "변이 교차하는 도형을 삼각형과 다각형으로 나누고 교차점의 각 관계를 이용해 표시된 각의 합을 결정하는 유형이다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "sourceUnits": [
+          "M1-06"
+        ],
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_c4734e15ce731560fe8bfd5c52b47434248d820a881b48fc6941d9010096bcf6"
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "problemTypes",
+      "match": {
+        "problemTypeKey": "PT_M1_STRAIGHT_ANGLE_PARTITION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_M1_STRAIGHT_ANGLE_PARTITION",
+        "canonicalLabelKo": "평각의 인접각 분할과 비",
+        "definition": "평각을 나누는 인접각 사이의 등분 또는 비 관계를 이용해 목표 각이나 각의 합을 구하는 유형이다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "sourceUnits": [
+          "M1-05"
+        ],
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_df32ee2e668d920b4718216a37e3012094fd902f9fd558a5bdb60c17042c20a3"
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_SHARED_SIDE_EXTENSION_AUDIT"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_SHARED_SIDE_EXTENSION_AUDIT",
+        "parentProblemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+        "canonicalLabelKo": "공유 변과 연장선이 만드는 정다각형 복합각 검토",
+        "definition": "공유 변에 맞붙인 정다각형의 내각·외각과 변의 연장선이 만드는 빈 영역의 내각합을 연결해 표시각 또는 각에 대한 진술을 판정한다.",
+        "internalSkeleton": "주어진 정다각형의 내각과 외각을 정한다 → 공유 변의 끝점에서 한 바퀴의 각 관계로 빈 영역의 각을 나타낸다 → 연장선상의 보각과 빈 영역의 내각합을 연결한다 → 표시각을 확인하여 묻는 각이나 진술을 판정한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_2cf0069ab9b9afaa64e02a03436d1ca0c60c3188c4314bc3bfd22f1b135e2d95"
+        ],
+        "observedConditionKeys": [],
+        "observedIntegrationPatterns": [
+          "SEQUENTIAL"
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION",
+        "parentProblemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM",
+        "canonicalLabelKo": "교차 다각형의 분할과 보조각 소거",
+        "definition": "교차점의 공통 보조각을 도형별 내각합에 공유하여 나타낸 뒤 맞꼭지각과 한 바퀴의 각 관계로 보조각을 소거하고 표시각의 합을 구한다.",
+        "internalSkeleton": "교차점에서 연결선을 도입해 삼각형과 나머지 다각형을 구분한다 → 맞꼭지각을 같은 보조각으로 표현한다 → 한 점 둘레각과 각 도형의 내각합으로 표시각들의 부분합을 나타낸다 → 부분합을 더해 보조각을 소거한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_c4734e15ce731560fe8bfd5c52b47434248d820a881b48fc6941d9010096bcf6"
+        ],
+        "observedConditionKeys": [],
+        "observedIntegrationPatterns": [
+          "SEQUENTIAL"
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M1_STRAIGHT_ANGLE_PARTITION_ADJACENT_RATIO_SUM"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_M1_STRAIGHT_ANGLE_PARTITION_ADJACENT_RATIO_SUM",
+        "parentProblemTypeKey": "PT_M1_STRAIGHT_ANGLE_PARTITION",
+        "canonicalLabelKo": "인접각의 등분·비와 평각의 합",
+        "definition": "인접한 각들의 등분·배수 관계를 기준각의 배수로 표현한 후 평각의 합 관계로 목표 각이나 목표 각들의 합을 결정한다.",
+        "internalSkeleton": "같은 꼭짓점의 인접각을 순서대로 구분한다 → 등분·비 조건을 기준각의 배수로 나타낸다 → 인접각의 합을 평각과 같게 놓는다 → 목표 각 또는 목표 각의 합을 정리한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_df32ee2e668d920b4718216a37e3012094fd902f9fd558a5bdb60c17042c20a3"
+        ],
+        "observedConditionKeys": [],
+        "observedIntegrationPatterns": [
+          "DIRECT"
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_d6bbf87bf0397aa29c28dd495d9c84c4bc2b33eac4873c56a7c5aa247eafdc31"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_LINE_RELATION"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_LINE_RELATION",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_d89b5d5e9371abb2582e2607f667325d633faa2fd2656aacfc2cb300d1d1a0f2"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_97f9ad6aabd1e324eec3450d0c25addf60efd4ca77f5ea5cdd2962a808dcf4d1"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "L1": "기본 도형",
+        "L2": "작도와 합동"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_d47f3ed83f1c4b59063a208d4fa43128aedd4985161b81e7853068df7d0af269"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "L1": "기본 도형",
+        "L2": "작도와 합동"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_c5e54a9e9f5143af4e69c0637ca79755aca2e0ead620199853f76287f82cb5b1"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "L1": "기본 도형",
+        "L2": "작도와 합동"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "supportingItemCount": 3,
+        "supportingQuestionUids": [
+          "qid_v1_04ff9b066524c2ffdad5d559f03de2bff4129b1ab303b756d850608585d0da2b",
+          "qid_v1_7b6ffc097c4b1406b5cee2111ebb8986751ffe11d939b413e0f90e0da85945e7",
+          "qid_v1_20cf7db610d665dde2c04cf24f0f2b245236974a3aedeb514d7ddaab05271454"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "L1": "기본 도형",
+        "L2": "작도와 합동"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_c4734e15ce731560fe8bfd5c52b47434248d820a881b48fc6941d9010096bcf6"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_STRAIGHT_ANGLE_PARTITION"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_STRAIGHT_ANGLE_PARTITION",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_df32ee2e668d920b4718216a37e3012094fd902f9fd558a5bdb60c17042c20a3"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        }
+      ]
+    }
+  ],
+  "reusedBindings": [
+    {
+      "curriculum": "2022",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-POSITION_RELATION",
+      "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+      "ordinals": [
+        2,
+        9
+      ],
+      "action": "REUSE_EXISTING_ROW_WITHOUT_MUTATION"
+    },
+    {
+      "curriculum": "2022",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-POLYGON_CIRCLE",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "ordinals": [
+        5,
+        14
+      ],
+      "action": "REUSE_EXISTING_ROW_WITHOUT_MUTATION"
+    },
+    {
+      "curriculum": "2022",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "ordinals": [
+        6,
+        15,
+        16,
+        20,
+        23
+      ],
+      "action": "REUSE_EXISTING_ROW_WITHOUT_MUTATION"
+    },
+    {
+      "curriculum": "2022",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE",
+      "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+      "ordinals": [
+        7,
+        21
+      ],
+      "action": "REUSE_EXISTING_ROW_WITHOUT_MUTATION"
+    },
+    {
+      "curriculum": "2022",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-POSITION_RELATION",
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "ordinals": [
+        8
+      ],
+      "action": "REUSE_EXISTING_ROW_WITHOUT_MUTATION"
+    },
+    {
+      "curriculum": "2022",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-POLYGON_CIRCLE",
+      "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+      "ordinals": [
+        13
+      ],
+      "action": "REUSE_EXISTING_ROW_WITHOUT_MUTATION"
+    },
+    {
+      "curriculum": "2022",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-POSITION_RELATION",
+      "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+      "ordinals": [
+        17
+      ],
+      "action": "REUSE_EXISTING_ROW_WITHOUT_MUTATION"
+    }
+  ],
+  "pending": [
+    "Refresh final durable source-bound metadata-only review evidence SHA after root finishes the ledger.",
+    "Crosswalk plan is owned by checkpoint/root; it is not a registryChanges collection.",
+    "Keep raw locked RPM base parents in targetParentRef; effective parent is display/evidence only."
+  ]
+}

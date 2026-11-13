@@ -227,7 +227,9 @@
       boardKind: 'cartesian', aspect: spec.aspect || '1:1', startStep: 0,
       source: spec.source, _mf: spec,
       controls: Object.keys(spec.vars || {}).filter(key => !spec.vars[key].hidden).map(key => prefix(spec, key)),
-      focus: state => from('focus', state) || { x: [-6, 6], y: [-6, 6] },
+      // Native exploration may opt into a tighter initial fit; proof builders
+      // keep using the authored spec.focus unless they opt in separately.
+      focus: state => from(spec.nativeFocus ? 'nativeFocus' : 'focus', state) || { x: [-6, 6], y: [-6, 6] },
       enter(state, lab) { assign(spec, state, defaults(spec)); if (lab) lab.board.fit(); },
       question: state => from('question', state),
       guide: state => from('guide', state),
@@ -243,7 +245,7 @@
       } }],
       draw(b, state, view, lab) {
         const { v, model } = compute(state), ctx = context(spec, state, lab, v, model);
-        b.setFocus(call(spec.focus, v, model) || { x: [-6, 6], y: [-6, 6] }, false);
+        b.setFocus(call(spec.nativeFocus || spec.focus, v, model) || { x: [-6, 6], y: [-6, 6] }, false);
         b.grid(call(spec.grid, v, model) || {});
         axes(b, call(spec.axes, v, model) || {}, lab);
         spec.draw(b, v, model, ctx);

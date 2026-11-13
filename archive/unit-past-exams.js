@@ -89,7 +89,9 @@
         // facets: the recorded concept/type/template of the question from the catalog's
         // content-bound usable-meta lane (null when the record has none or is not bound).
         const eligibility = archive2.generalUseEligibility(found);
-        return { ...eligibility, facets: typeof archive2.metaFacetsOf === 'function' ? archive2.metaFacetsOf(found) : null };
+        return { ...eligibility,
+          rpmParentResolution: core.resolveRpmParent(found, state.profileId),
+          facets: typeof archive2.metaFacetsOf === 'function' ? archive2.metaFacetsOf(found) : null };
       }
     };
   }
@@ -111,7 +113,8 @@
       const useGate = generalUse
         ? generalUse.check(core.getQuestionUid(meta || {}) || core.getQuestionUid(record), file, record.sourceOrdinal)
         : null;
-      const useFields = useGate ? { generalUseEligible: useGate.ok, generalUseReasons: useGate.reasons } : {};
+      const useFields = useGate ? { generalUseEligible: useGate.ok, generalUseReasons: useGate.reasons,
+        rpmParentResolution: useGate.rpmParentResolution } : {};
       // S14: with the final catalog, concept/type/template come ONLY from its content-bound
       // usable-meta lane (never from a sidecar row that may describe older question bytes), with
       // their own 승인 / 검토 대기 status. Without a catalog the sidecar join below is unchanged.
@@ -267,7 +270,7 @@
   function isReplacementRecordAllowed(record) {
     if (!core.isAutomaticSelectable(record)) return false;
     if (getReplacementIncludeUnclassified()) return true;
-    return Boolean(core.getSubUnitKey(record)) && core.getDifficultyBucket(record) !== '미분류';
+    return Boolean(core.getSelectionSubUnitKey(record)) && core.getDifficultyBucket(record) !== '미분류';
   }
   function getReplacementSourcePool(unit, paper) {
     let records = unit.records;
@@ -308,15 +311,15 @@
   }
   function getReplacementFilterForRecord(record) {
     return {
-      subUnitKey: core.getSubUnitKey(record) || '',
+      subUnitKey: core.getSelectionSubUnitKey(record) || '',
       difficultyBucket: core.getDifficultyBucket(record)
     };
   }
   function getReplacementSubUnitOptions(records) {
     const options = new Map();
     records.forEach(record => {
-      const key = core.getSubUnitKey(record) || '__unclassified__';
-      if (!options.has(key)) options.set(key, core.getSubUnitLabel(record) || '미분류 소단원');
+      const key = core.getSelectionSubUnitKey(record) || '__unclassified__';
+      if (!options.has(key)) options.set(key, core.getSelectionSubUnitLabel(record) || '미분류 소단원');
     });
     return [...options.entries()]
       .map(([key, label]) => ({ key, label }))
@@ -332,7 +335,7 @@
     const difficultyBucket = filter?.difficultyBucket || '';
     return getReplacementSourcePool(unit, paper)
       .filter(record => {
-        const recordSubUnitKey = core.getSubUnitKey(record) || '';
+        const recordSubUnitKey = core.getSelectionSubUnitKey(record) || '';
         const recordDifficulty = core.getDifficultyBucket(record);
         if (subUnitKey && recordSubUnitKey !== (subUnitKey === '__unclassified__' ? '' : subUnitKey)) return false;
         if (difficultyBucket && recordDifficulty !== difficultyBucket) return false;
@@ -410,7 +413,7 @@
     const profile = getProfile();
     const selection = paper.selection || {};
     const collection = selection.collection || null;
-    const selectedSubUnits = [...new Map(paper.records.map(record => [record.subUnitKey || '__unclassified__', core.getSubUnitLabel(record) || '미분류 소단원'])).entries()].map(([key, label]) => ({ key, label }));
+    const selectedSubUnits = [...new Map(paper.records.map(record => [core.getSelectionSubUnitKey(record) || '__unclassified__', core.getSelectionSubUnitLabel(record) || '미분류 소단원'])).entries()].map(([key, label]) => ({ key, label }));
     const sourceSummary = getPaperSources(paper).map(source => source.label).filter(Boolean).join(' / ');
     const printHeaderOptions = ensurePaperPrintHeaderOptions(unit, paper);
     const meta = {
@@ -726,7 +729,7 @@
   }
   function getDefaultFilterState(unit) {
     const params = new URLSearchParams(window.location.search);
-    const requestedSubUnits = (params.get('subUnit') || '').split(',').filter(Boolean);
+    const requestedSubUnits = parseCollectionKeys(params.get('subUnit'));
     const requestedLevels = (params.get('difficulty') || '').split(',').map(value => value.trim()).filter(Boolean).map(core.normalizeDifficulty);
     const subUnitOptions = core.getSubUnitOptions(unit.records);
     let advancedRows = [{ subUnitKey: '', conceptLabel: '', problemTypeKey: '', templateKey: '', difficultyBucket: '', count: 4 }];
@@ -782,7 +785,7 @@
     if (filter.mode === 'advanced') url.searchParams.set('mode', 'advanced'); else url.searchParams.delete('mode');
     if (filter.preset !== 'exam') url.searchParams.set('preset', filter.preset); else url.searchParams.delete('preset');
     if (filter.count !== 12) url.searchParams.set('count', String(filter.count)); else url.searchParams.delete('count');
-    if (filter.subUnitKeys.length) url.searchParams.set('subUnit', filter.subUnitKeys.join(',')); else url.searchParams.delete('subUnit');
+    if (filter.subUnitKeys.length) url.searchParams.set('subUnit', JSON.stringify(filter.subUnitKeys)); else url.searchParams.delete('subUnit');
     if (filter.difficultyBuckets.length) url.searchParams.set('difficulty', filter.difficultyBuckets.join(',')); else url.searchParams.delete('difficulty');
     if (selectedStepTokens().length) url.searchParams.set('steps', selectedStepTokens().join(',')); else url.searchParams.delete('steps');
     if (filter.includeUnclassified) url.searchParams.set('includeUnclassified', '1'); else url.searchParams.delete('includeUnclassified');
@@ -808,7 +811,15 @@
   }
 
   function parseCollectionKeys(value) {
-    return String(value || '').split(',').map(item => item.trim()).filter(Boolean);
+    const text = String(value || '').trim();
+    if (text.startsWith('[')) {
+      try {
+        const keys = JSON.parse(text);
+        return Array.isArray(keys) ? keys.filter(key => typeof key === 'string' && key.trim()).map(key => key.trim()) : [];
+      } catch (_) { return []; }
+    }
+    // Retain existing shared URLs whose legacy keys do not contain commas.
+    return text.split(',').map(item => item.trim()).filter(Boolean);
   }
 
   function getCollectionDefaultState(unit) {
@@ -877,7 +888,7 @@
     if (collection.outputMode === 'combined') url.searchParams.set('collectionOutput', 'combined'); else url.searchParams.delete('collectionOutput');
     if (collection.countMode === 'fixed') { url.searchParams.set('collectionCountMode', 'fixed'); url.searchParams.set('collectionCount', String(collection.count)); }
     else { url.searchParams.delete('collectionCountMode'); url.searchParams.delete('collectionCount'); }
-    if (collection.subUnitKeys.length) url.searchParams.set('collectionSubUnit', collection.subUnitKeys.join(',')); else url.searchParams.delete('collectionSubUnit');
+    if (collection.subUnitKeys.length) url.searchParams.set('collectionSubUnit', JSON.stringify(collection.subUnitKeys)); else url.searchParams.delete('collectionSubUnit');
     if (collection.difficultyBuckets.length) url.searchParams.set('collectionDifficulty', collection.difficultyBuckets.join(',')); else url.searchParams.delete('collectionDifficulty');
     if (collection.includeUnclassified) url.searchParams.set('collectionIncludeUnclassified', '1'); else url.searchParams.delete('collectionIncludeUnclassified');
     const updateHistory = historyMode === 'push' ? history.pushState.bind(history) : history.replaceState.bind(history);
@@ -1830,13 +1841,13 @@
     const candidates = pageItems.map(candidate => {
       const candidateIndex = state.replacementCandidates.indexOf(candidate);
       const label = getSourceExamLabel(candidate.sourceFile, candidate) || '출처 확인 필요';
-      return `<article class="unit-replacement-candidate"><div><strong>${escapeHtml(label)}</strong><span>${escapeHtml(core.getSubUnitLabel(candidate) || '미분류 소단원')} · ${escapeHtml(core.getDifficultyBucket(candidate))} · 원본 ${escapeHtml(candidate.sourceQuestionNo || candidate.id || '')}번</span></div><button type="button" class="unit-btn" onclick="UnitPastExams.replaceSelectedQuestion(${candidateIndex})">이 문제로 교체</button></article>`;
+      return `<article class="unit-replacement-candidate"><div><strong>${escapeHtml(label)}</strong><span>${escapeHtml(core.getSelectionSubUnitLabel(candidate) || '미분류 소단원')} · ${escapeHtml(core.getDifficultyBucket(candidate))} · 원본 ${escapeHtml(candidate.sourceQuestionNo || candidate.id || '')}번</span></div><button type="button" class="unit-btn" onclick="UnitPastExams.replaceSelectedQuestion(${candidateIndex})">이 문제로 교체</button></article>`;
     }).join('');
-    return `<section id="${panelId}" class="unit-question-replacement-panel"><h3>선택 문항</h3><div class="unit-replacement-selected"><strong>${index + 1}번</strong><span>${escapeHtml(core.getSubUnitLabel(record) || '미분류 소단원')} · ${escapeHtml(core.getDifficultyBucket(record))}</span><small>${escapeHtml(getSourceExamLabel(record.sourceFile, record) || '출처 확인 필요')} · 원본 ${escapeHtml(record.sourceQuestionNo || record.id || '')}번</small></div><div class="unit-replacement-filters"><label>소단원<select id="unit-replacement-subunit" onchange="UnitPastExams.setReplacementFilter('subUnitKey', this.value)">${subUnitOptions}</select></label><label>난이도<select id="unit-replacement-difficulty" onchange="UnitPastExams.setReplacementFilter('difficultyBucket', this.value)">${difficultyOptions}</select></label></div><div class="unit-replacement-tools"><button type="button" class="unit-btn primary" onclick="UnitPastExams.quickReplaceSelectedQuestion()">같은 조건으로 교체</button><button type="button" class="unit-btn" onclick="UnitPastExams.undoLastQuestionReplacement()"${paper.replacementHistory?.length ? '' : ' disabled'}>교체 되돌리기</button></div><div class="unit-replacement-count">후보 ${state.replacementCandidates.length}문항</div>${candidates || '<p class="unit-replacement-empty">조건에 맞는 다른 문항이 없습니다.</p>'}${pageCount > 1 ? `<div class="unit-replacement-pagination"><button type="button" class="unit-btn" onclick="UnitPastExams.setReplacementCandidatePage(${page - 1})"${page <= 0 ? ' disabled' : ''}>이전</button><span>${page + 1} / ${pageCount}</span><button type="button" class="unit-btn" onclick="UnitPastExams.setReplacementCandidatePage(${page + 1})"${page >= pageCount - 1 ? ' disabled' : ''}>다음</button></div>` : ''}</section>`;
+    return `<section id="${panelId}" class="unit-question-replacement-panel"><h3>선택 문항</h3><div class="unit-replacement-selected"><strong>${index + 1}번</strong><span>${escapeHtml(core.getSelectionSubUnitLabel(record) || '미분류 소단원')} · ${escapeHtml(core.getDifficultyBucket(record))}</span><small>${escapeHtml(getSourceExamLabel(record.sourceFile, record) || '출처 확인 필요')} · 원본 ${escapeHtml(record.sourceQuestionNo || record.id || '')}번</small></div><div class="unit-replacement-filters"><label>소단원<select id="unit-replacement-subunit" onchange="UnitPastExams.setReplacementFilter('subUnitKey', this.value)">${subUnitOptions}</select></label><label>난이도<select id="unit-replacement-difficulty" onchange="UnitPastExams.setReplacementFilter('difficultyBucket', this.value)">${difficultyOptions}</select></label></div><div class="unit-replacement-tools"><button type="button" class="unit-btn primary" onclick="UnitPastExams.quickReplaceSelectedQuestion()">같은 조건으로 교체</button><button type="button" class="unit-btn" onclick="UnitPastExams.undoLastQuestionReplacement()"${paper.replacementHistory?.length ? '' : ' disabled'}>교체 되돌리기</button></div><div class="unit-replacement-count">후보 ${state.replacementCandidates.length}문항</div>${candidates || '<p class="unit-replacement-empty">조건에 맞는 다른 문항이 없습니다.</p>'}${pageCount > 1 ? `<div class="unit-replacement-pagination"><button type="button" class="unit-btn" onclick="UnitPastExams.setReplacementCandidatePage(${page - 1})"${page <= 0 ? ' disabled' : ''}>이전</button><span>${page + 1} / ${pageCount}</span><button type="button" class="unit-btn" onclick="UnitPastExams.setReplacementCandidatePage(${page + 1})"${page >= pageCount - 1 ? ' disabled' : ''}>다음</button></div>` : ''}</section>`;
   }
 
   function getSummarySubUnits(paper) {
-    return [...new Set(paper.records.map(record => core.getSubUnitLabel(record)).filter(Boolean))];
+    return [...new Set(paper.records.map(record => core.getSelectionSubUnitLabel(record)).filter(Boolean))];
   }
 
   function renderConfirmation(unit) {
@@ -2212,11 +2223,16 @@
   }
   function gridApplyStoredSelection(stored) {
     const known = new Set((state.catalog?.units || []).map(unit => unit.key));
+    const profileId = state.profileId || G.profileId || 'h1';
     for (const key of Array.isArray(stored.cells) ? stored.cells : []) {
-      const [unitKey, token] = String(key).split('|');
+      const [storedUnitKey, token] = String(key).split('|');
+      const unitKey = core.resolveUnitKeyAlias(profileId, storedUnitKey);
       if (known.has(unitKey) && (G.counts[unitKey]?.[token] || 0) > 0) G.cells.add(gridKey(unitKey, token));
     }
-    for (const unitKey of Array.isArray(stored.checked) ? stored.checked : []) if (known.has(unitKey)) G.checked.add(unitKey);
+    for (const storedUnitKey of Array.isArray(stored.checked) ? stored.checked : []) {
+      const unitKey = core.resolveUnitKeyAlias(profileId, storedUnitKey);
+      if (known.has(unitKey)) G.checked.add(unitKey);
+    }
   }
   function gridCatalogFor(profileId) {
     let entry = G.catalogs.get(profileId);
