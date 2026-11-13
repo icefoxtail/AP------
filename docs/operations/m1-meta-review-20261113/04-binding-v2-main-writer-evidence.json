@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "actual-main-writer-evidence-v1",
+  "verifiedBy": "GPT_ROOT_933015CD0A4F",
+  "verifiedAt": "2026-11-13T21:45:21.355191+00:00",
+  "pr": 1970,
+  "runId": 43510415775,
+  "jobId": 132178883256,
+  "workflowHeadSha": "c125a74c57176c72b4908c378c1c0eb8e01ff14c",
+  "registeredMainSha": "573fa32804480b2d70f7536b211e240e8d64d5ed",
+  "artifactId": 14079800307,
+  "artifactZipSha256": "62008cfdb3b45acb3cb700d7029aecf5ec0c4fc2d87a6908b0513df91f95c05c",
+  "jobLogSha256": "dca051b9518f50d1e25b4c9928157a37b7befb3b796b76e6338ccf46aa823a76",
+  "pushedLine": "2026-11-13T21:38:33.5318944Z [single Archive registration writer] result=PUSHED attempts=1 main_sha=573fa32804480b2d70f7536b211e240e8d64d5ed registered_sha=573fa32804480b2d70f7536b211e240e8d64d5ed",
+  "request": {
+    "commit": "a70a155542016cc47215bced471a07a1f7602695",
+    "path": ".archive-meta-register/inbox/m1-linear-equation-course-spelling-20261113.json",
+    "rawSha256": "2b4ce237d03dde8b4c70a9da859883f37a6c9d120639c65633ea0d425f917007",
+    "state": "APPLIED_AND_CONSUMED_DO_NOT_REINSERT"
+  },
+  "files": [
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-main-evidence/final-consumer.json",
+      "artifactMember": "reviewedFinal-1.log",
+      "rawSha256": "8443c25134762965340d2512bc226bc86689805c539d28cdc33ce9be8e771abb",
+      "sizeBytes": 753
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-main-evidence/prepare-report.json",
+      "artifactMember": "report.json",
+      "rawSha256": "05148967ba5e5fbb526eae11530279601fb4d5a8dce745e10fa86437bd30ca59",
+      "sizeBytes": 5663
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-main-evidence/persisted-report.json",
+      "artifactMember": "persisted/report.json",
+      "rawSha256": "af9cb5ef5f66fc038196947bf7eae380a72655e774503fee322b80de69aaad56",
+      "sizeBytes": 2500
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-main-evidence/applied.txt",
+      "artifactMember": "native/archive-meta-register-pass/applied.txt",
+      "rawSha256": "874dd0e80b536543d9b646fa755687677a39ba2ece68e0d3cd044bd4b5d2a983",
+      "sizeBytes": 78
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-main-evidence/rejected.txt",
+      "artifactMember": "native/archive-meta-register-pass/rejected.txt",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sizeBytes": 0
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-main-evidence/pending.txt",
+      "artifactMember": "native/archive-meta-register-pass/pending.txt",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sizeBytes": 0
+    }
+  ],
+  "finalConsumerPhase": "POST_AUTOMETA_PRE_PUSH",
+  "matchingPrepareAndPersistedDigests": true,
+  "postPushConsumerRerunClaimed": false,
+  "globalStatus": {
+    "prepare": "PREPARED_WITH_PENDING",
+    "persisted": "REGISTRATION_PARTIAL",
+    "reason": "Optional semantic lane still needs continuation; exact reviewed request is APPLIED and its final consumer VERIFIED, required lanes and persisted reviewed state verified."
+  }
+}

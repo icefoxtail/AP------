@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "binding-course-operational-closeout-v2",
+  "status": "CLOSED_EXISTING_CONSUMERS_PRESERVED",
+  "closedAt": "2026-11-13T21:50:44.095863+00:00",
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "owner": "GPT_ROOT_933015CD0A4F",
+  "requestId": "m1-linear-equation-course-spelling-20261113",
+  "pr": 1970,
+  "url": "https://github.com/icefoxtail/AP------/pull/1970",
+  "reviewedHead": "a70a155542016cc47215bced471a07a1f7602695",
+  "mergeCommit": "c125a74c57176c72b4908c378c1c0eb8e01ff14c",
+  "registeredMain": "573fa32804480b2d70f7536b211e240e8d64d5ed",
+  "registeredMainTree": "c2ba60775fc7d1c724d429e0a6eb7545cad96fe7",
+  "requestRawSha256": "2b4ce237d03dde8b4c70a9da859883f37a6c9d120639c65633ea0d425f917007",
+  "requestCanonicalSha256": "baecb1d7fe1c54899ae6b4d91500e42b94d010f395549fc18398a49325a0c5f6",
+  "receipt": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-linear-equation-course-spelling-20261113.binding-course-correction.json",
+    "rawSha256": "dde07d5cdc7bc9290dae8bef62d247c1521e47f54658efd44089e6092660a804",
+    "gitBlobSha1": "ca6d2f9abb3070b0f2166687ec501c0ddc7c98d4",
+    "equalsIsolatedExactBytes": true
+  },
+  "binding": {
+    "index": 154,
+    "field": "standardCourse",
+    "before": "中1 수학",
+    "after": "중1 수학",
+    "rowsBefore": 179,
+    "rowsAfter": 179,
+    "rowsOtherwiseChanged": 0,
+    "packVersionBefore": "1.0.8",
+    "packVersionAfter": "1.0.9"
+  },
+  "actualWriter": {
+    "runId": 43510415775,
+    "jobId": 132178883256,
+    "artifactId": 14079800307,
+    "requestApplied": true,
+    "rejectedCount": 0,
+    "pendingCount": 0,
+    "persistResult": "PUSHED",
+    "attempts": 1,
+    "finalConsumerPhase": "POST_AUTOMETA_PRE_PUSH",
+    "finalConsumerCounts": {
+      "changed": 5,
+      "checked": 5,
+      "passed": 5
+    },
+    "failures": 0,
+    "unobservedFields": 0,
+    "solverOnlyRevisions": 0,
+    "assignmentPending": 0,
+    "preservedRuntimeUids": 659,
+    "approvalCreated": false,
+    "postPushConsumerRerunClaimed": false
+  },
+  "preservation": {
+    "affectedSources": 2,
+    "affectedUids": 5,
+    "protectedFiles": 109,
+    "exactRegisteredOutputHashes": 7,
+    "exactRegisteredCodeHashes": 4,
+    "derivedOutputsByteEqualToIsolated": 4,
+    "metadataIdentityWholeFilesUnchanged": true,
+    "runtimeRecordsWholeArrayUnchanged": true,
+    "sourceAssetFourSlotChangedPaths": 0,
+    "previouslyClosedQuestionsPreserved": 71
+  },
+  "evidence": {
+    "writer": {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-main-writer-evidence.json",
+      "sha256": "4b7e0424cb298fe8fe83b54182f1665a7457df5610a653247cb9110001727b9a"
+    },
+    "mainProtection": {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-main-protection.json",
+      "sha256": "ccc8f787a8cd8af0c69e454e9a56478cd58d71949ad873bcf7fd244e8f1f3cff"
+    },
+    "ci": {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-pr1970-ci.json",
+      "sha256": "bf209705cf172be04f8f1c64da4c3d85987f460903f93ed2e187c1325b505831"
+    },
+    "rootMerge": {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-root-merge-observation.json",
+      "sha256": "661cf7c3649b7f6738e6a57910d1cf2413af4889d975447471327e125a75e695"
+    },
+    "isolatedPreflight": {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-preflight.json",
+      "sha256": "8c8b003668886e18abe8ad464734c484da4ea5f1766ea3f5adde4c74634fbc14"
+    }
+  },
+  "globalStatusBoundary": "Persisted REGISTRATION_PARTIAL is the existing optional semantic lane needing continuation, not this applied correction request. No global mathematical FINAL or all-project PASS is claimed.",
+  "examReviewCounters": {
+    "operationallyClosedExams": 3,
+    "examCount": 44,
+    "readQuestions": 95,
+    "operationallyClosedQuestions": 71,
+    "remainingExams": 41,
+    "currentOrder": 4,
+    "dongsan24ProductionCandidateApplied": false,
+    "pungdeokMeaningReviewedByThisCorrection": false
+  },
+  "nextAction": "Apply exact reviewed DongSan24 source/crosswalk/parent candidates on actual main573fa, build normal24 request with TPL1 + four same-exam course spelling corrections, run direct official preflight, then one paper PR/main closeout."
+}

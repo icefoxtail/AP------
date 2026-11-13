@@ -15,7 +15,7 @@
   "completedExams": 3,
   "reviewedQuestions": 95,
   "currentOrder": 4,
-  "nextAction": "Publish narrow shared binding154 course-spelling v2 implementation and exact preservation request; observe actual main receipt and final post-AutoMeta Consumer before applying the prepared DongSan24 candidate. Do not advance to exam5.",
+  "nextAction": "Apply exact reviewed DongSan24 source/crosswalk/parent candidates on actual main573fa, build normal24 request with TPL1 + four same-exam course spelling corrections, run direct official preflight, then one paper PR/main closeout.",
   "exams": [
     {
       "order": 1,
@@ -1473,7 +1473,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "DONGSAN_SHARED_BINDING_V2_LOCAL_PREFLIGHT_COMPLETE_PENDING_PR_MAIN",
+  "state": "DONGSAN_SHARED_BINDING_DEPENDENCY_OPERATIONALLY_CLOSED_NORMAL24_PREPARED",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -1492,7 +1492,7 @@
       "supersededBy": "01-shinheung-semantic-review.json"
     }
   },
-  "activeMain": "bf35b7e13417b033ee167117d567a9f0262712d6",
+  "activeMain": "573fa32804480b2d70f7536b211e240e8d64d5ed",
   "prerequisiteStatus": "RPM_L1_L2_MERGED",
   "prerequisiteMainSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
   "latestRemoteSemanticCheckpoint": "01a720162995440d1e7e398a9382e08a29d7108d",
@@ -1526,7 +1526,7 @@
     ],
     "noBlanketMetadataConflictWaiver": true
   },
-  "activeMainTree": "31bb7763bb56018167279ad094dd787989129f75",
+  "activeMainTree": "c2ba60775fc7d1c724d429e0a6eb7545cad96fe7",
   "subsequentMainChanges": [
     {
       "pr": 1962,
@@ -1541,8 +1541,8 @@
   ],
   "activeMainTreeStatus": "ACTUAL_REGISTERED_REMOTE_MAIN_VERIFIED",
   "checkpointPublication": {
-    "lastVerifiedRemoteSha": "01a720162995440d1e7e398a9382e08a29d7108d",
-    "statusAtWriting": "SHARED_BINDING_V2_PREFLIGHT_AWAIT_REMOTE_PUBLICATION",
+    "lastVerifiedRemoteSha": "a70a155542016cc47215bced471a07a1f7602695",
+    "statusAtWriting": "SHARED_BINDING_OPERATIONAL_CLOSEOUT_AWAIT_REMOTE_PUBLICATION",
     "selfCommitLookup": "Exact published head/tree is verified from own branch and next immutable AWCR revision."
   },
   "candidateConsumerPreflightPolicy": {
@@ -1554,11 +1554,11 @@
     "mainRegistrationStillRequired": true
   },
   "awcrCheckpoint": {
-    "latestVerifiedRevision": 27,
-    "fileId": "1SQeA9ET8GhSLvYnKjsw6a8TlADF17ukZ",
-    "rawSha256": "777bc29806e47b5d58cdd0f86f9e39b25a22da326ebc449a3f027ec763c72356",
-    "nextRevision": 28,
-    "nextRevisionPurpose": "Record shared binding154 v2 exact code/request/preflight publication and PR/main stage, still3/44 closed and DongSan candidate not applied."
+    "latestVerifiedRevision": 29,
+    "fileId": "1zz5PqK1kq7E7uizlzmYtBP9JWOI1uQCm",
+    "rawSha256": "7ac700125f71f83bc9bfc2d86d8b202877b7dc1ecfc35125e2c6dc5128f2a325",
+    "nextRevision": 30,
+    "nextRevisionPurpose": "Record actual shared dependency closure at main573fa and verified branch checkpoint; proceed to prepared DongSan normal24, still3/44closed."
   },
   "remainingExams": 41,
   "nextExam": {
@@ -1626,9 +1626,9 @@
   },
   "operationallyClosedQuestions": 71,
   "latestVerifiedRemoteCheckpoint": {
-    "head": "01a720162995440d1e7e398a9382e08a29d7108d",
-    "tree": "79153c80e4292a009ccc847805802514a94eabdc",
-    "status": "DONGSAN24_SEMANTIC_CHECKPOINT_REMOTE_READBACK_VERIFIED"
+    "head": "a70a155542016cc47215bced471a07a1f7602695",
+    "tree": "9ebe25c7be2c1ad06a6c5d09ac7effc385b7d1cd",
+    "status": "SHARED_BINDING_V2_PREFLIGHT_REMOTE_READBACK_VERIFIED"
   },
   "courseCorrectionDependency": {
     "pr": 1966,
@@ -1748,7 +1748,7 @@
     }
   },
   "dongsanSharedBindingDependency": {
-    "status": "LOCAL_ISOLATED_PREFLIGHT_COMPLETE_NOT_OPERATIONAL_MAIN",
+    "status": "ACTUALLY_REGISTERED_FINAL_CONSUMERS_PRESERVED",
     "bindingIndex": 154,
     "affectedUids": 5,
     "affectedSources": 2,
@@ -1772,7 +1772,6 @@
     },
     "packVersionBefore": "1.0.8",
     "packVersionAfter": "1.0.9",
-    "productionSourceCanonicalRuntimeApplied": false,
     "isolatedPreflight": {
       "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-preflight.json",
       "sha256": "8c8b003668886e18abe8ad464734c484da4ea5f1766ea3f5adde4c74634fbc14"
@@ -1780,6 +1779,30 @@
     "independentProtection": {
       "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-protection.json",
       "sha256": "7b373ffd3cee855af473f228b0216635bd4798eab7c1264499cdad2b084c228a"
-    }
-  }
+    },
+    "pr": 1970,
+    "reviewedHead": "a70a155542016cc47215bced471a07a1f7602695",
+    "mergeCommit": "c125a74c57176c72b4908c378c1c0eb8e01ff14c",
+    "registeredMain": "573fa32804480b2d70f7536b211e240e8d64d5ed",
+    "registeredMainTree": "c2ba60775fc7d1c724d429e0a6eb7545cad96fe7",
+    "receiptSha256": "dde07d5cdc7bc9290dae8bef62d247c1521e47f54658efd44089e6092660a804",
+    "writerRun": 43510415775,
+    "writerJob": 132178883256,
+    "actualConsumer": {
+      "changed": 5,
+      "checked": 5,
+      "passed": 5
+    },
+    "preservedRuntimeUids": 659,
+    "approvalCreated": false,
+    "operationalCloseout": {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-operational-closeout.json",
+      "sha256": "04e6b74052c33f824132335b59dc30629b25d6ba1b5a3b2e06ba886d4eb04ea2"
+    },
+    "productionBindingCorrected": true,
+    "sharedBindingAndDerivedVersionApplied": true,
+    "normalDongsan24ProductionCandidateApplied": false,
+    "sourceAndRuntimeRecordsChanged": false
+  },
+  "latestMergedDependencyHead": "a70a155542016cc47215bced471a07a1f7602695"
 }

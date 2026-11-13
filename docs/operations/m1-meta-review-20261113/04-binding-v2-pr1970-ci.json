@@ -1,0 +1,1167 @@
+{
+  "schemaVersion": "exact-pr-head-ci-evidence-v1",
+  "status": "CI_SUCCESS_WITH_DOCUMENTED_EXISTING_DIAGNOSTICS_AND_DATA_GAPS",
+  "observedAt": "2026-11-13 21:27:33 UTC",
+  "pr": {
+    "number": 1970,
+    "url": "https://github.com/icefoxtail/AP------/pull/1970",
+    "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+    "headTree": "9ebe25c7be2c1ad06a6c5d09ac7effc385b7d1cd",
+    "baseSha": "bf35b7e13417b033ee167117d567a9f0262712d6",
+    "testMergeSha": "d5d5d48904573ac27d271b02bc6e3833ae5a1cea",
+    "commits": 4,
+    "changedFiles": 59,
+    "initialRest": {
+      "state": "open",
+      "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+      "baseSha": "bf35b7e13417b033ee167117d567a9f0262712d6",
+      "mergeable": true,
+      "mergeableState": "unstable",
+      "merged": false
+    },
+    "finalRest": {
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-11-13T21:24:27Z",
+      "mergeSha": "c125a74c57176c72b4908c378c1c0eb8e01ff14c",
+      "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+      "baseSha": "bf35b7e13417b033ee167117d567a9f0262712d6"
+    },
+    "headUnchangedAcrossObservations": true
+  },
+  "changedFiles": {
+    "count": 59,
+    "apiAndGitDiffNamesEqual": true,
+    "paths": [
+      ".archive-meta-register/inbox/m1-linear-equation-course-spelling-20261113.json",
+      "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+      "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs",
+      "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "docs/operations/binding-course-correction-v1.md",
+      "docs/operations/binding-course-correction-v2.md",
+      "docs/operations/m1-meta-review-20261113/03-palma-candidate-publication.json",
+      "docs/operations/m1-meta-review-20261113/03-palma-candidate-remote-readback.json",
+      "docs/operations/m1-meta-review-20261113/03-palma-main-bf35-minimal-protection.json",
+      "docs/operations/m1-meta-review-20261113/03-palma-main-bf35-rpm-parent-reuse.json",
+      "docs/operations/m1-meta-review-20261113/03-palma-main-merge.json",
+      "docs/operations/m1-meta-review-20261113/03-palma-merge-pending-remote-readback.json",
+      "docs/operations/m1-meta-review-20261113/03-palma-operational-closeout.json",
+      "docs/operations/m1-meta-review-20261113/03-palma-pr1969-ci.json",
+      "docs/operations/m1-meta-review-20261113/03-palma-pr1969-main-writer-final.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-implementation.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-independent-review.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-artifacts.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-evidence/04-binding-v2-build-attempt1.log",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-evidence/04-binding-v2-build.log",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-evidence/04-binding-v2-consumer.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-evidence/04-binding-v2-dry-run.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-evidence/04-binding-v2-projection.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-evidence/04-binding-v2-write.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-preflight.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-protection.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-test-artifacts.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-test-evidence/consumer-refusal-regression.log",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-test-evidence/consumer-routing-regression.log",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-test-evidence/consumer-source-binding-retry.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-test-evidence/consumer-source-binding-retry.log",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-test-evidence/direct-regressions.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-test-evidence/focused-tests-final.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-test-evidence/focused-tests-final.log",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-test-evidence/focused-tests.json",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-test-evidence/focused-tests.log",
+      "docs/operations/m1-meta-review-20261113/04-binding-v2-test-evidence/test-fixture-materialization.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-binding-course-scope.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-candidate-independent-check.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-crosswalk-plan.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-entry-route.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-figure-read-evidence.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-intake.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-native-registration-plan.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-other-owner-pr1751-scope.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-pr1405-scope.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-q01-q08-review.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-q08-boundary.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-q09-q16-review.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-q17-q24-review.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-q22-native-proposal.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json",
+      "docs/operations/m1-meta-review-20261113/04-dongsan-source-candidate-delta.json",
+      "docs/operations/m1-meta-review-20261113/HANDOFF.md",
+      "docs/operations/m1-meta-review-20261113/README.md",
+      "docs/operations/m1-meta-review-20261113/checkpoint-tools/build-reviewed-exam-v2-request.mjs",
+      "docs/operations/m1-meta-review-20261113/progress.json",
+      "tests/archive-binding-course-correction.test.mjs",
+      "tools/ci/reviewed-meta-register-pass.sh"
+    ],
+    "sourceOrGeneratedCanonicalChanges": [],
+    "workflowFileChanges": []
+  },
+  "mergeGate": {
+    "allExpectedExactHeadJobsSucceeded": true,
+    "rootOwnsMerge": true,
+    "rootAlreadyMerged": true,
+    "preMergeRootEvidence": {
+      "path": ".tmp/m1-meta-review/04-binding-v2-root-merge-observation.json",
+      "rawSha256": "661cf7c3649b7f6738e6a57910d1cf2413af4889d975447471327e125a75e695",
+      "head": "a70a155542016cc47215bced471a07a1f7602695",
+      "mainBeforeMerge": "bf35b7e13417b033ee167117d567a9f0262712d6",
+      "expectedHeadUsed": "a70a155542016cc47215bced471a07a1f7602695"
+    },
+    "postMergeMainSha": "c125a74c57176c72b4908c378c1c0eb8e01ff14c"
+  },
+  "branchRulesObservation": {
+    "sha": "bf35b7e13417b033ee167117d567a9f0262712d6",
+    "protected": false,
+    "requiredStatusChecks": {
+      "enforcement_level": "off",
+      "contexts": [],
+      "checks": []
+    },
+    "rulesets": [],
+    "limitations": [
+      "GET /rules/branches/main is rejected by connector endpoint allowlist; branch and rulesets GET succeeded. Project-required checks still observed regardless of GitHub protection."
+    ]
+  },
+  "pollHistory": [
+    {
+      "observedAt": "2026-11-13 21:10:27 UTC",
+      "pr": {
+        "state": "open",
+        "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+        "baseSha": "bf35b7e13417b033ee167117d567a9f0262712d6",
+        "mergeable": true,
+        "mergeableState": "unstable",
+        "merged": false
+      },
+      "checks": [
+        {
+          "id": 132170800908,
+          "name": "test",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "status": "in_progress",
+          "conclusion": null,
+          "startedAt": "2026-11-13T21:09:04Z",
+          "completedAt": null,
+          "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049739/job/132170800908"
+        },
+        {
+          "id": 132170747872,
+          "name": "register",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "status": "completed",
+          "conclusion": "skipped",
+          "startedAt": "2026-11-13T21:08:56Z",
+          "completedAt": "2026-11-13T21:08:55Z",
+          "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049993/job/132170747872"
+        },
+        {
+          "id": 132170745281,
+          "name": "plan",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-13T21:08:57Z",
+          "completedAt": "2026-11-13T21:09:01Z",
+          "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049739/job/132170745281"
+        },
+        {
+          "id": 132170745226,
+          "name": "test",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "status": "in_progress",
+          "conclusion": null,
+          "startedAt": "2026-11-13T21:08:57Z",
+          "completedAt": null,
+          "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049993/job/132170745226"
+        },
+        {
+          "id": 132170744961,
+          "name": "Archive2 50-question solution Chrome",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "status": "in_progress",
+          "conclusion": null,
+          "startedAt": "2026-11-13T21:09:02Z",
+          "completedAt": null,
+          "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049692/job/132170744961"
+        },
+        {
+          "id": 132170744473,
+          "name": "Archive2 runtime contract",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "status": "in_progress",
+          "conclusion": null,
+          "startedAt": "2026-11-13T21:08:57Z",
+          "completedAt": null,
+          "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049692/job/132170744473"
+        },
+        {
+          "id": 132170744372,
+          "name": "shared-meta",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "status": "in_progress",
+          "conclusion": null,
+          "startedAt": "2026-11-13T21:08:57Z",
+          "completedAt": null,
+          "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049746/job/132170744372"
+        }
+      ],
+      "workflows": [
+        {
+          "id": 43508049993,
+          "name": "Archive Main Auto Metadata",
+          "path": ".github/workflows/archive-main-auto-meta.yml",
+          "event": "pull_request",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "status": "in_progress",
+          "conclusion": null,
+          "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049993",
+          "jobs": [
+            {
+              "id": 132170745226,
+              "name": "test",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049993,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Run actions/checkout@v4",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 2
+              }
+            },
+            {
+              "id": 132170747872,
+              "name": "register",
+              "status": "completed",
+              "conclusion": "skipped",
+              "run_id": 43508049993,
+              "logs_url": null
+            }
+          ]
+        },
+        {
+          "id": 43508049746,
+          "name": "Problem Bank Shared Meta",
+          "path": ".github/workflows/problem-bank-meta.yml",
+          "event": "pull_request",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "status": "in_progress",
+          "conclusion": null,
+          "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049746",
+          "jobs": [
+            {
+              "id": 132170744372,
+              "name": "shared-meta",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049746,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Run browser-actions/setup-chrome@v1",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 6
+              }
+            }
+          ]
+        },
+        {
+          "id": 43508049692,
+          "name": "Archive2 Runtime Guard",
+          "path": ".github/workflows/archive2-runtime-guard.yml",
+          "event": "pull_request",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "status": "in_progress",
+          "conclusion": null,
+          "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049692",
+          "jobs": [
+            {
+              "id": 132170744473,
+              "name": "Archive2 runtime contract",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049692,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Run actions/checkout@v4",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 2
+              }
+            },
+            {
+              "id": 132170744961,
+              "name": "Archive2 50-question solution Chrome",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049692,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Run actions/checkout@v4",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": 43508049739,
+          "name": "CI",
+          "path": ".github/workflows/ci.yml",
+          "event": "pull_request",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "status": "in_progress",
+          "conclusion": null,
+          "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049739",
+          "jobs": [
+            {
+              "id": 132170745281,
+              "name": "plan",
+              "status": "completed",
+              "conclusion": "success",
+              "run_id": 43508049739,
+              "logs_url": null,
+              "currentStepAtObservation": null
+            },
+            {
+              "id": 132170800908,
+              "name": "test",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049739,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Checkout",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 21:11:31 UTC",
+      "checks": [
+        {
+          "id": 132170800908,
+          "name": "test",
+          "status": "in_progress",
+          "conclusion": null,
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695"
+        },
+        {
+          "id": 132170747872,
+          "name": "register",
+          "status": "completed",
+          "conclusion": "skipped",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695"
+        },
+        {
+          "id": 132170745281,
+          "name": "plan",
+          "status": "completed",
+          "conclusion": "success",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695"
+        },
+        {
+          "id": 132170745226,
+          "name": "test",
+          "status": "in_progress",
+          "conclusion": null,
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695"
+        },
+        {
+          "id": 132170744961,
+          "name": "Archive2 50-question solution Chrome",
+          "status": "in_progress",
+          "conclusion": null,
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695"
+        },
+        {
+          "id": 132170744473,
+          "name": "Archive2 runtime contract",
+          "status": "in_progress",
+          "conclusion": null,
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695"
+        },
+        {
+          "id": 132170744372,
+          "name": "shared-meta",
+          "status": "completed",
+          "conclusion": "success",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695"
+        }
+      ],
+      "workflows": [
+        {
+          "id": 43508049739,
+          "jobs": [
+            {
+              "id": 132170745281,
+              "name": "plan",
+              "status": "completed",
+              "conclusion": "success",
+              "run_id": 43508049739,
+              "logs_url": null,
+              "currentStepAtObservation": null
+            },
+            {
+              "id": 132170800908,
+              "name": "test",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049739,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Checkout",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": 43508049746,
+          "jobs": [
+            {
+              "id": 132170744372,
+              "name": "shared-meta",
+              "status": "completed",
+              "conclusion": "success",
+              "run_id": 43508049746,
+              "logs_url": null,
+              "currentStepAtObservation": null
+            }
+          ]
+        },
+        {
+          "id": 43508049692,
+          "jobs": [
+            {
+              "id": 132170744473,
+              "name": "Archive2 runtime contract",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049692,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Verify original routes, response budgets, and storage failures",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 6
+              }
+            },
+            {
+              "id": 132170744961,
+              "name": "Archive2 50-question solution Chrome",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049692,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Run browser-actions/setup-chrome@v1",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 6
+              }
+            }
+          ]
+        },
+        {
+          "id": 43508049993,
+          "jobs": [
+            {
+              "id": 132170745226,
+              "name": "test",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049993,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Run actions/checkout@v4",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 2
+              }
+            },
+            {
+              "id": 132170747872,
+              "name": "register",
+              "status": "completed",
+              "conclusion": "skipped",
+              "run_id": 43508049993,
+              "logs_url": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 21:12:48 UTC",
+      "checks": [
+        {
+          "id": 132170800908,
+          "name": "test",
+          "status": "in_progress",
+          "conclusion": null,
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695"
+        },
+        {
+          "id": 132170747872,
+          "name": "register",
+          "status": "completed",
+          "conclusion": "skipped",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695"
+        },
+        {
+          "id": 132170745281,
+          "name": "plan",
+          "status": "completed",
+          "conclusion": "success",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695"
+        },
+        {
+          "id": 132170745226,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695"
+        },
+        {
+          "id": 132170744961,
+          "name": "Archive2 50-question solution Chrome",
+          "status": "in_progress",
+          "conclusion": null,
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695"
+        },
+        {
+          "id": 132170744473,
+          "name": "Archive2 runtime contract",
+          "status": "in_progress",
+          "conclusion": null,
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695"
+        },
+        {
+          "id": 132170744372,
+          "name": "shared-meta",
+          "status": "completed",
+          "conclusion": "success",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695"
+        }
+      ],
+      "workflows": [
+        {
+          "id": 43508049739,
+          "jobs": [
+            {
+              "id": 132170745281,
+              "name": "plan",
+              "status": "completed",
+              "conclusion": "success",
+              "run_id": 43508049739,
+              "logs_url": null,
+              "currentStepAtObservation": null
+            },
+            {
+              "id": 132170800908,
+              "name": "test",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049739,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Prepare and verify PR registration data once",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 11
+              }
+            }
+          ]
+        },
+        {
+          "id": 43508049746,
+          "jobs": [
+            {
+              "id": 132170744372,
+              "name": "shared-meta",
+              "status": "completed",
+              "conclusion": "success",
+              "run_id": 43508049746,
+              "logs_url": null,
+              "currentStepAtObservation": null
+            }
+          ]
+        },
+        {
+          "id": 43508049692,
+          "jobs": [
+            {
+              "id": 132170744473,
+              "name": "Archive2 runtime contract",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049692,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Verify original routes, response budgets, and storage failures",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 6
+              }
+            },
+            {
+              "id": 132170744961,
+              "name": "Archive2 50-question solution Chrome",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049692,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Compare 50 real solutions and verify asset failures in actual Chrome",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 8
+              }
+            }
+          ]
+        },
+        {
+          "id": 43508049993,
+          "jobs": [
+            {
+              "id": 132170745226,
+              "name": "test",
+              "status": "completed",
+              "conclusion": "success",
+              "run_id": 43508049993,
+              "logs_url": null,
+              "currentStepAtObservation": null
+            },
+            {
+              "id": 132170747872,
+              "name": "register",
+              "status": "completed",
+              "conclusion": "skipped",
+              "run_id": 43508049993,
+              "logs_url": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "observedAt": "2026-11-13 21:13:51 UTC",
+      "workflows": [
+        {
+          "id": 43508049739,
+          "jobs": [
+            {
+              "id": 132170745281,
+              "name": "plan",
+              "status": "completed",
+              "conclusion": "success",
+              "run_id": 43508049739,
+              "logs_url": null,
+              "currentStepAtObservation": null
+            },
+            {
+              "id": 132170800908,
+              "name": "test",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049739,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Prepare and verify PR registration data once",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 11
+              }
+            }
+          ]
+        },
+        {
+          "id": 43508049692,
+          "jobs": [
+            {
+              "id": 132170744473,
+              "name": "Archive2 runtime contract",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049692,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Verify finder and current middle RPM selection in actual Chrome",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 8
+              }
+            },
+            {
+              "id": 132170744961,
+              "name": "Archive2 50-question solution Chrome",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_id": 43508049692,
+              "logs_url": null,
+              "currentStepAtObservation": {
+                "name": "Compare 50 real solutions and verify asset failures in actual Chrome",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 8
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "executionBoundary": {
+    "localTestsRun": false,
+    "localConsumerRerun": false,
+    "mathR1R2R3Run": false,
+    "sourceOrCanonicalWrites": false,
+    "gitOrIndexMutations": false,
+    "githubMutations": false,
+    "workflowRerunOrCancel": false,
+    "prMergedByThisAgent": false,
+    "mainWriterObservedByThisAgent": false
+  },
+  "nonblockingDiagnostics": {
+    "current": {
+      "runId": 43508049746,
+      "jobId": 132170744372,
+      "eventHead": "a70a155542016cc47215bced471a07a1f7602695",
+      "diagnostics": {
+        "failedTests": [
+          "not ok 1 - legacy backfill is exact-roster, rerunnable, partial, and non-recertifying",
+          "not ok 2 - legacy roster ignores future UIDs and preserves withdrawn history as inactive evidence",
+          "not ok 4 - Consumer student payload hashes remain byte-equivalent to the evidence ledger"
+        ],
+        "crosswalkDriftErrors": [
+          "EXISTING_PROJECTION_EVIDENCE_DRIFT:ALITE-20261008-HYC26-Q18-001:crosswalk",
+          "EXISTING_PROJECTION_EVIDENCE_DRIFT:ALITE-20261008-HYC26-Q18-001:crosswalk"
+        ],
+        "studentPayloadUid": "ALITE-20261008-HYC26-Q18-001",
+        "expectedPayloadSha256": "310f94f7e55b23f08be2cea6a9b34febf56f5c47fa80391332d7269551f894cb",
+        "actualPayloadSha256": "dcecff99360b36e5b4f141f0b3baac68478c71d1c51fbc6ccf9b36f557841c68",
+        "tests": 20,
+        "passed": 17,
+        "failed": 3,
+        "skipped": 0,
+        "browserError": "문항 이미지 경로 오류",
+        "metaOutcome": "failure",
+        "browserOutcome": "failure"
+      },
+      "logPath": ".tmp/m1-meta-review/04-binding-v2-pr1970-shared-meta.log",
+      "decodedUtf8LogSha256": "5bb3d60df0d8b156218ee86eb59535043b14b8f9d7ddda4cc6fc1db3642f8a44"
+    },
+    "priorEvidence": "docs/operations/m1-meta-review-20261113/03-palma-pr1969-ci.json",
+    "exactSameDiagnosticSignature": true,
+    "criticalDependencies": [
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "baseGitObject": "d79446cba396d1c1acbdd59c2471a01b084cfeef",
+        "headGitObject": "d79446cba396d1c1acbdd59c2471a01b084cfeef",
+        "identical": true
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "baseGitObject": "ba2f9577f4feb148dba342cbec6db8dd3be4d123",
+        "headGitObject": "ba2f9577f4feb148dba342cbec6db8dd3be4d123",
+        "identical": true
+      },
+      {
+        "path": "archive/data/generated-lite-consumer/v1",
+        "baseGitObject": "03cc84bde8877cb2e237ee8ad4d81c325edf531f",
+        "headGitObject": "03cc84bde8877cb2e237ee8ad4d81c325edf531f",
+        "identical": true
+      },
+      {
+        "path": "archive/tools/backfill-generated-meta.cjs",
+        "baseGitObject": "7363265cda33090abeebe17dd23f250995e3d5ea",
+        "headGitObject": "7363265cda33090abeebe17dd23f250995e3d5ea",
+        "identical": true
+      },
+      {
+        "path": "tests/generated-meta-backfill.test.cjs",
+        "baseGitObject": "ec7922cfc72fb813e59fb1a6abc3deb869d63fcd",
+        "headGitObject": "ec7922cfc72fb813e59fb1a6abc3deb869d63fcd",
+        "identical": true
+      },
+      {
+        "path": "tests/problem-bank-meta-browser.cjs",
+        "baseGitObject": "679b11f82a39f518982e1991b8b2c5231c707392",
+        "headGitObject": "679b11f82a39f518982e1991b8b2c5231c707392",
+        "identical": true
+      }
+    ],
+    "classification": "PREEXISTING_NONBLOCKING_DIAGNOSTICS_REPRODUCED_WITH_IDENTICAL_SIGNATURE",
+    "interpretation": "Existing continue-on-error diagnostics are unresolved failures, not PASS. The original-exam access browser check separately completed OUTPUT_TECHNICAL_PASS."
+  },
+  "browserEvidence": {
+    "sharedOriginalAccess": {
+      "jobId": 132170744372,
+      "result": {
+        "status": "OUTPUT_TECHNICAL_PASS",
+        "source": "original/high/h2/1final/22_매산고_1학기_기말_고2_기하_기출.js",
+        "mode": "exam",
+        "questions": 20,
+        "pages": 5,
+        "visibleText": 3199,
+        "images": true,
+        "mathErrors": 0,
+        "unrenderedMath": 0,
+        "pdfBytes": 424856
+      }
+    }
+  },
+  "counts": {
+    "workflows": 4,
+    "successfulWorkflows": 4,
+    "activeJobs": 6,
+    "successfulJobs": 6,
+    "expectedPrRegistrationSkippedJobs": 1
+  },
+  "workflows": [
+    {
+      "id": 43508049746,
+      "name": "Problem Bank Shared Meta",
+      "path": ".github/workflows/problem-bank-meta.yml",
+      "event": "pull_request",
+      "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049746",
+      "jobs": [
+        {
+          "id": 132170744372,
+          "name": "shared-meta",
+          "status": "completed",
+          "conclusion": "success",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "startedAt": "2026-11-13T21:08:57Z",
+          "completedAt": "2026-11-13T21:10:27Z"
+        }
+      ]
+    },
+    {
+      "id": 43508049993,
+      "name": "Archive Main Auto Metadata",
+      "path": ".github/workflows/archive-main-auto-meta.yml",
+      "event": "pull_request",
+      "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049993",
+      "jobs": [
+        {
+          "id": 132170745226,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "startedAt": "2026-11-13T21:08:57Z",
+          "completedAt": "2026-11-13T21:12:07Z"
+        }
+      ]
+    },
+    {
+      "id": 43508049692,
+      "name": "Archive2 Runtime Guard",
+      "path": ".github/workflows/archive2-runtime-guard.yml",
+      "event": "pull_request",
+      "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049692",
+      "jobs": [
+        {
+          "id": 132170744961,
+          "name": "Archive2 50-question solution Chrome",
+          "status": "completed",
+          "conclusion": "success",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "startedAt": "2026-11-13T21:09:02Z",
+          "completedAt": "2026-11-13T21:14:36Z"
+        },
+        {
+          "id": 132170744473,
+          "name": "Archive2 runtime contract",
+          "status": "completed",
+          "conclusion": "success",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "startedAt": "2026-11-13T21:08:57Z",
+          "completedAt": "2026-11-13T21:14:00Z"
+        }
+      ]
+    },
+    {
+      "id": 43508049739,
+      "name": "CI",
+      "path": ".github/workflows/ci.yml",
+      "event": "pull_request",
+      "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43508049739",
+      "jobs": [
+        {
+          "id": 132170800908,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "startedAt": "2026-11-13T21:09:04Z",
+          "completedAt": "2026-11-13T21:22:29Z"
+        },
+        {
+          "id": 132170745281,
+          "name": "plan",
+          "status": "completed",
+          "conclusion": "success",
+          "headSha": "a70a155542016cc47215bced471a07a1f7602695",
+          "startedAt": "2026-11-13T21:08:57Z",
+          "completedAt": "2026-11-13T21:09:01Z"
+        }
+      ]
+    }
+  ],
+  "finalCiJobSteps": [
+    {
+      "id": 132170745281,
+      "name": "plan",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43508049739,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout the fixed event planner",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Decide whether this event needs a CI run",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Post Checkout the fixed event planner",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        }
+      ]
+    },
+    {
+      "id": 132170800908,
+      "name": "test",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43508049739,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Setup Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Classify the fixed snapshot impact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Install Worker test dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Syntax check (node --check)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Verify Git-managed project skills",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Git footprint regression",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Offline evidence authority and recovery regression",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Decide whether PR registration data proof is needed",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Prepare and verify PR registration data once",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Prepare temporary main source registration projection",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 12
+        },
+        {
+          "name": "Record META_V2 completeness diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Set up Chrome for registration search diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Install the registration search browser driver",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Verify original exam visibility in the student search UI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Record registration supplementation outcomes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Guard changed Git objects against footprint growth",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Run tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Post Setup Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 37
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 38
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        }
+      ]
+    }
+  ],
+  "afterMergeObserver": {
+    "reason": "Created after merge closure; distinct from the four pre-merge workflows.",
+    "runs": [
+      {
+        "id": 43510415126,
+        "name": "Archive Progress Observer",
+        "event": "pull_request",
+        "status": "in_progress",
+        "conclusion": null,
+        "createdAt": "2026-11-13T21:24:31Z"
+      }
+    ]
+  },
+  "ciRegistrationPreparation": {
+    "jobId": 132170800908,
+    "stepNumber": 11,
+    "conclusion": "success",
+    "legacyTemporaryProjectionStep12": "skipped",
+    "actualMainRegistrationReceiptVerifiedHere": false
+  },
+  "documentedSkips": {
+    "prRegisterJob": "skipped by pull_request condition",
+    "ciTemporaryProjection": 12,
+    "runtimeRecordUnchangedScope": 5,
+    "solutionChangedOriginalPrintSteps": [
+      9,
+      10
+    ],
+    "solutionUnchangedOutputStep": 11
+  },
+  "browserResultLimits": {
+    "rpmCurrentRealDataGaps": 15,
+    "rpmPreview": "NOT_EXERCISED_HERE",
+    "solutionFixedBrowserResult": {
+      "schema": "ARCHIVE_SOLUTION_LOADING_CHROME_V1",
+      "pass": true,
+      "cases": 16,
+      "comparisons": 6,
+      "baselineSha": "9efb9633b19b966b0611a10bc352172f217c2dcd",
+      "currentSha": "d5d5d48904573ac27d271b02bc6e3833ae5a1cea"
+    },
+    "source": "Previously read actual completed job logs; no repeat log audit after task narrowing."
+  },
+  "limitations": [
+    "Existing high1 generated legacy drift and metadata-browser image error remain unresolved diagnostics; workflow SUCCESS is not diagnostic PASS.",
+    "Actual main correction registration, final post-AutoMeta Consumer and persisted SHA are separate and not claimed by this PR CI report.",
+    "After parent narrowed the scope, only final job status and exact refs were read; no broad additional tests/log audit or workflow mutation."
+  ]
+}

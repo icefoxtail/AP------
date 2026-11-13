@@ -2,14 +2,14 @@
 
 ## 현재 상태
 
-**운영 완료 3/44장 · 읽기 95/1,047문항 · 운영 마감 71문항 · 남은 41장.** 현재 **04. 2025 동산중 중1 2학기 기말24**의 발문·선지·제공 풀이와 그림15개 읽기를 마쳤다. 후보는 scratch에 준비했으며 production 적용 전이다. 공유 binding154의 과정명 한 필드 교정 v2는 구현·독립 검토·격리 등록/빌드/Consumer5/5/5 및 runtime659 보존 확인까지 마쳤고, 별도 PR/main 실제 등록이 선행 의존이다. 5번으로 넘어가지 않는다.
+**운영 완료 3/44장 · 읽기 95/1,047문항 · 운영 마감 71문항 · 남은 41장.** 현재 **04. 2025 동산중 중1 2학기 기말24**의 발문·선지·제공 풀이와 그림15개 읽기를 마쳤다. 후보는 scratch에 준비했으며 production 적용 전이다. 공유 binding154의 과정명 한 필드 교정 v2는 PR1970/실제 main573fa에서 최종 Consumer5/5/5·runtime659 보존까지 운영 마감했다. 이제 준비된 동산24 후보의 공식 등록·PR/main 마감을 진행한다. 5번으로 넘어가지 않는다.
 
 - 저장소: https://github.com/icefoxtail/AP------
 - taskId `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`, owner `GPT_ROOT_933015CD0A4F`, instructionRevision2.
 - 담당 branch `review/m1-existing-meta-20261113`.
-- 최신 확인 main `bf35b7e13417b033ee167117d567a9f0262712d6`, tree `31bb7763bb56018167279ad094dd787989129f75`.
-- 직전 검증 branch checkpoint `01a720162995440d1e7e398a9382e08a29d7108d`, tree `79153c80e4292a009ccc847805802514a94eabdc`. 이 문서의 최종 게시 SHA는 branch 실제 재읽기와 후속 AWCR에서 확인한다.
-- 최신 원격 raw 검증 AWCR r27: file `1SQeA9ET8GhSLvYnKjsw6a8TlADF17ukZ`, SHA256 `777bc29806e47b5d58cdd0f86f9e39b25a22da326ebc449a3f027ec763c72356`. 다음 immutable revision은 r28이다.
+- 최신 확인 main `573fa32804480b2d70f7536b211e240e8d64d5ed`, tree `c2ba60775fc7d1c724d429e0a6eb7545cad96fe7`.
+- 직전 검증 branch checkpoint `a70a155542016cc47215bced471a07a1f7602695`, tree `9ebe25c7be2c1ad06a6c5d09ac7effc385b7d1cd`. 이 문서의 최종 게시 SHA는 branch 실제 재읽기와 후속 AWCR에서 확인한다.
+- 최신 원격 raw 검증 AWCR r29: file `1zz5PqK1kq7E7uizlzmYtBP9JWOI1uQCm`, SHA256 `7ac700125f71f83bc9bfc2d86d8b202877b7dc1ecfc35125e2c6dc5128f2a325`. 이 revision은 persist 진행 중의 역사적 체크포인트다. 실제 마감은 아래 main573fa 근거로 확인했고, 게시 후 다음 immutable revision r30에 기록한다.
 
 [README.md](README.md)의 전체44장 큐와 [progress.json](progress.json)의 상태를 함께 읽는다. 연도 내림차순 → 학기 내림차순 → 기말 먼저 → 학교명 순서로 한 장씩 마감한다. 사용자 승인은 연속 PR/main 병합을 포함한다.
 
@@ -23,7 +23,7 @@
 
 Q22는 기존 PT 아래 **단위량을 이용한 수량식과 식의 값** TPL1개를 보완한다. 키 `TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_UNIT_QUANTITY_AND_EVALUATION`. 단위량→수량식 모델→명시적 대입의 핵심 단계를 담으며 응답 형식 차이만으로 분리하지 않는다. [현재17팩 재사용 검색](04-dongsan-q22-native-proposal.json)에433PT/998TPL/531alias 검색·가까운18개 정의 대조가 있다. Exact RPM23/debt1, 현재 FAMILY의 선택을 정확한 native TPL과 부모에 결속하기 위한 DIRECT supplement8개 계획이다. 기존 leaf/정본 master 의미를 바꾸지 않는다.
 
-## 즉시 해결할 공유 binding154 의존
+## 운영 마감한 공유 binding154 의존 — 재등록 금지
 
 [전체 영향 범위](04-dongsan-binding-course-scope.json)에서 metadata28,890/approved12,320/runtime6,608을 확인했다. MIDDLE1 binding151–155의 `中1 수학`을 `중1 수학`으로 바꿀 때 exact 영향17 = 동산16 + 풍덕1이다. 151/152/153/155는 동산 내부만 영향이고, **154 LINEAR_EQUATION_SOLVING은 동산4와 풍덕Q20 하나**를 공유한다.
 
@@ -33,7 +33,9 @@ Q22는 기존 PT 아래 **단위량을 이용한 수량식과 식의 값** TPL1�
 
 [구현](04-binding-v2-implementation.json), [독립 코드 검토](04-binding-v2-independent-review.json), [전용 테스트 원본](04-binding-v2-test-artifacts.json), [격리 검증 원본](04-binding-v2-isolated-artifacts.json)을 재사용한다. 전용66/66 및 기존 직접 회귀 사례가 통과했고, exact request `m1-linear-equation-course-spelling-20261113` raw `2b4ce237d03dde8b4c70a9da859883f37a6c9d120639c65633ea0d425f917007`로 격리 write/build/projection/Consumer5/5/5를 확인했다. runtime659를 보존하며 새 승인0, source 변경0이다. 코드+request를 같은 선행 PR로 게시한다. 입력 데이터는 현재 mainbf35에서 결속했고 신규 코드를 main에 이미 있다고 주장하지 않는다.
 
-이 선행 교정은 별도 PR/main의 실제 영수증과 최종 post-AutoMeta 보존 Consumer까지 마감한다. 이후 새 main에서 동산의 normal24 요청을 만들고 남은4개 동산 내부 spelling row를 정확 before/after로 정정한다. 현재 production source/canonical/runtime는 변경하지 않았다.
+이 선행 교정은 [PR1970](https://github.com/icefoxtail/AP------/pull/1970) → merge `c125a74c57176c72b4908c378c1c0eb8e01ff14c` → actual main `573fa32804480b2d70f7536b211e240e8d64d5ed`에서 마감했다. [운영 마감](04-binding-v2-operational-closeout.json), [실제 writer](04-binding-v2-main-writer-evidence.json), [원격 main 보존](04-binding-v2-main-protection.json)을 확인한다. Writer43510415775/job132178883256의 exact request APPLIED·rejected/pending0, 최종 post-AutoMeta pre-push Consumer5/5/5·runtime659·새승인0, PUSHED1 및 persisted digest 결속을 확인했다. 실제 receipt raw `dde07d5cdc7bc9290dae8bef62d247c1521e47f54658efd44089e6092660a804`는 격리 검증본과 같다. 보호109·출력7·코드4·파생4를 실제 Git 객체와 대조했고 원문·이미지·4slot·이전71은 보존됐다. 전역 REGISTRATION_PARTIAL은 optional semantic continuation이며 이 요청의 실패가 아니다.
+
+이제 새 main573fa에서 동산 normal24 요청을 만들고 남은4개 동산 내부 spelling row를 정확 before/after로 정정한다. **공유 요청은 소비 완료됐으므로 inbox에 다시 넣지 않는다.** production에 적용된 것은 공유 binding 한 필드와 파생 버전뿐이며, 동산24 후보는 아직 적용 전이다.
 
 ## 병행 작업 경계
 
@@ -53,12 +55,10 @@ Q22는 기존 PT 아래 **단위량을 이용한 수량식과 식의 값** TPL1�
 
 새 세션은 연결 Notion 라우터→Archive 시작/생명주기/메타 라우트, 정확한 현재 AWCR, 최신 Git main/branch를 먼저 확인한다. 현 세션의 동산 진입 시 이미 읽었으며 해당 Git 정본 raw도 같음을 확인했다. Source와 관련 입력이 같으면 완료된 의미 읽기를 반복하지 않는다.
 
-공유 binding 교정 의존 마감 후 동산 source 메타-only 후보와 공식 소형 등록 요청을 만든다. 정상 문제·정답·해설·이미지15·UID·배점·난이도·source reviewStatus·4slot을 보존한다. Official v2/changed-UID Consumer·실제RPM 부모를 확인하고, 전체 R1/R2/R3를 실행하지 않는다. Generated common metadata/runtime/compiled JSON을 수동 게시하지 않는다.
+공유 의존은 마감했으므로 동산 source 메타-only 후보와 공식 소형 등록 요청을 만든다. [후보 독립 대조](04-dongsan-candidate-independent-check.json)의24 normal payload·567 보호 literal·15 assets·4slot을 재사용한다. [설정 준비 도구](checkpoint-tools/prepare-dongsan-v2-config.py)는 새 main573fa의 실제 영수증/1.0.9와 durable projection SHA를 요구하며 scratch intake를 요구하지 않는다. 정확한 source/crosswalk/parent 후보 적용 후 `python3 docs/operations/m1-meta-review-20261113/checkpoint-tools/prepare-dongsan-v2-config.py --baseline-main 573fa32804480b2d70f7536b211e240e8d64d5ed`로 config를 만들고 기존 request builder를 사용한다. 다른 owner로 global projection이 바뀌면 before 상태를 재결속하며 guard를 우회하지 않는다. 정상 문제·정답·해설·이미지15·UID·배점·난이도·source reviewStatus·4slot을 보존한다. Official v2/changed-UID Consumer·실제RPM 부모를 확인하고, 전체 R1/R2/R3를 실행하지 않는다. Generated common metadata/runtime/compiled JSON을 수동 게시하지 않는다.
 
 한 시험지 PR→정확 head CI→main merge→실제 등록 영수증→최종 post-AutoMeta Consumer→원격 SHA·보존 확인 후에만5번2025신흥기말22로 간다. 전역 workflow SUCCESS로 해당 요청 REGISTERED를 추정하지 않는다. 의미 있는 완료 단위마다 원장·인계·근거를 branch에 게시 후 실제 raw/blob/tree를 재읽고, AWCR는 안전한 상태·참조·SHA·남은 일·nextAction만 다음 immutable revision으로 저장 후 raw 확인한다. 원문 문제/정답/해설·credentials·upstream raw를 AWCR에 넣지 않는다.
 
 ## 복사용 인계 프롬프트
 
-> AP------ 중1 전수 메타 검토를 계속하세요. task f46ac6a5-f2f7-4ae1-a0af-5806b87de808, owner GPT_ROOT_933015CD0A4F, branch review/m1-existing-meta-20261113입니다. 연결Notion·정확AWCR r27이후·최신Git의 HANDOFF.md/progress.json을 먼저 확인하세요. RPM6권L1/L2와 신흥24·왕운23·팔마24는 운영 완료했으니 반복하지 마세요. 현재3/44완료,95문항읽기/71운영마감,41장남음. 4번2025동산기말24는 텍스트·그림15 의미읽기 완료,실제2022/M1-1,후보적용전입니다. 공유binding154 과정명 오타가 동산4+풍덕Q20 하나를 공유해 일반v2외부보호에 걸립니다. 좁은 한binding/두source 보존용course-correction v2의 구현·격리검증은완료됐으니기존근거를재사용해별도PR/main실제등록을마감하고 그후 동산24후보를 새main에서 만드세요. 일반guard를완화하거나풍덕을검토완료로세지마세요. 원장의PT유지/TPL1/cluster24/integration23/condition1/RPMexact23/Q17debt를이어적용합니다. 한장씩PR→main→실제영수증/최종Consumer/SHA→branch/AWCR마감후다음으로. 전체R1/R2/R3·동일입력검증반복금지,정상데이터/4slot/source reviewStatus보존.
-
-중1 전체 종료 후 남은 taxonomy debt와 학년·학기별 큐를 다음 담당에게 넘긴다. 미검토 학년·시험지를 완료 표시하지 않는다.
+> AP------ 중1 전수 메타 검토를 계속하세요. task f46ac6a5-f2f7-4ae1-a0af-5806b87de808, owner GPT_ROOT_933015CD0A4F, branch review/m1-existing-meta-20261113입니다. 연결 Notion·정확 AWCR r29 이후·최신 Git의 HANDOFF.md/progress.json을 확인하세요. RPM6권 L1/L2(PR1958)와 신흥24·왕운23·팔마24는 운영 완료했으니 반복하지 마세요. 현재3/44완료,95읽기/71운영마감,41장남음. 4번2025동산기말24는 실제2022/M1-1이며 텍스트·그림15 의미읽기와 후보 독립감사를 완료했습니다. 공유 binding154는 PR1970→실제main573fa32804480b2d70f7536b211e240e8d64d5ed에서 소비완료·최종Consumer5/5/5·runtime659보존·PUSHED1로 마감했습니다. 공유요청을 재등록하거나 풍덕1문항을 의미검토 완료로 세지 마세요. 이제 이 main에서 동산24 후보를 적용하고 설정 준비도구와 기존공식v2를 사용합니다. nativePT유지/TPL Q22 하나/cluster24/integration23/condition Q17/RPMexact23·Q17debt, registry는TPL1+동산내부spelling4만입니다. 문제·정답·풀이·이미지·난이도·UID·4slot을 보존하고 전체R1/R2/R3를 반복하지 마세요. 동산24의PR→main→실제영수증/최종Consumer/SHA→branch/AWCR 마감 후에만5번2025신흥기말22로 이동하세요.
