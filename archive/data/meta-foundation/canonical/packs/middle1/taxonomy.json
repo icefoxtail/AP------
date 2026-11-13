@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 94,
-  "templateCount": 210,
+  "problemTypeCount": 95,
+  "templateCount": 213,
   "problemTypes": [
     {
       "problemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
@@ -2970,6 +2970,21 @@
       "supportingItemCount": 1,
       "supportingQuestionUids": [
         "qid_v1_42849e0c412ae8bf1f70e578c0ccbce121008daaf975b9bcbed49176badc79b4"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM",
+      "canonicalLabelKo": "별 모양 도형의 각의 합",
+      "definition": "별 모양의 교차 도형을 이루는 닫힌 경로에서 방향을 바꾸는 각의 총합을 이용해 표시된 꼭짓점 각들의 합을 결정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "sourceUnits": [
+        "M1-06"
+      ],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f"
       ]
     }
   ],
@@ -9134,6 +9149,60 @@
       "observedConditionKeys": [],
       "observedIntegrationPatterns": [
         "SEQUENTIAL"
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_TRIANGLE_ANGLE_CHASE",
+      "parentProblemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "canonicalLabelKo": "정다각형의 대각선과 보조삼각형 각 추적",
+      "definition": "정다각형의 내각과 변의 같음을 이용해 대각선으로 나뉜 보조삼각형의 각을 정하고, 합동의 대응각 및 내각합·평각 관계로 대각선과 교점의 표시각을 구한다.",
+      "internalSkeleton": "정다각형의 내각을 정한다 → 같은 변으로 생기는 보조삼각형의 밑각과 필요한 대응각을 복원한다 → 대각선 교점의 삼각형에 내각합을 적용한다 → 직선 위 이웃각 관계로 표시각을 결정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_24a00b1861775852d97237d6ff2bab7fbf8b523fde92649c50d5bb6aeab4fc2f"
+      ],
+      "observedConditionKeys": [],
+      "observedIntegrationPatterns": [
+        "SEQUENTIAL"
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIRECT_INTERIOR_EXTERIOR_TOTALS",
+      "parentProblemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "canonicalLabelKo": "다각형의 내각의 합과 외각의 합 계산",
+      "definition": "변의 수가 주어진 다각형의 내각의 합과 볼록다각형의 외각의 합을 각각 적용하여 요구한 합이나 차를 구한다.",
+      "internalSkeleton": "주어진 변의 수로 내각의 합을 나타낸다 → 외각의 합이 변의 수와 무관한 일정한 값임을 적용한다 → 두 총합에 요구된 연산을 한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_8ddd54f26e647cf88c553a1f15133ae63dea7b6233caaa68e0194f88351c273b"
+      ],
+      "observedConditionKeys": [],
+      "observedIntegrationPatterns": [
+        "NONE"
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_STAR_POLYGON_ANGLE_SUM_TURNING_ANGLE_TOTAL",
+      "parentProblemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM",
+      "canonicalLabelKo": "별 모양 도형의 외각을 이용한 각의 합",
+      "definition": "닫힌 별 모양 경로를 한 번 따라갈 때의 전체 회전각을 확인하고, 각 꼭짓점에서 방향을 바꾸는 각을 표시각의 보각으로 나타내어 표시각의 합을 구한다.",
+      "internalSkeleton": "닫힌 경로를 따라갈 때 진행 방향이 총 몇 바퀴 회전하는지 확인한다 → 꼭짓점별 방향 전환각을 표시각의 보각으로 나타낸다 → 전환각 총합을 진행 방향의 회전 횟수와 연결한다 → 표시각의 합을 정리한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f"
+      ],
+      "observedConditionKeys": [],
+      "observedIntegrationPatterns": [
+        "NONE"
       ]
     }
   ],

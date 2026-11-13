@@ -1,87 +1,58 @@
 # 중1 기존 시험지 메타 전수 검토 인계
 
-## 팔마중24 — PR1969 병합, 실제 main 등록 마감 대기
+## 현재 상태
 
-- **운영 완료2/44장·47문항, 읽기71/1,047문항, 남은42장.** 팔마24는 실제 main 등록·최종Consumer·원격SHA 확인 전까지 완료 체크하지 않는다. 그 뒤4번2025동산중2학기기말24문항으로 이동한다.
-- [PR1969](https://github.com/icefoxtail/AP------/pull/1969) 병합: head `e5860a968cc65f4e8817dc8492c14959f8d9b7d1`, merge `e25ceabf2c977b667d2b7a3740ab8ef50670f781`, 실제 remote main tree `5a7d4f9a36431454bcefbb2d59ab0d8691f9c268`. 병합 tree는 검증한 후보 tree와 동일하다. root가 같은 head의6check-runs SUCCESS와 최신main738 불변·mergeable clean을 직접 확인하고 병합했다.
-- [정확한head의CI증거](03-palma-pr1969-ci.json) raw `f35430da360dd5ef597bc52d513d4611ec43a9fc8e9ab7571135abb1694a40a5`: 4workflow/6jobs SUCCESS, 실제RPM Chrome24/54/326. M2/M3 자료부족15와 scope SKIP을 구분했다. 공유고1 진단오류는 이전왕운과 UID/실패명/expected·actual해시/이미지오류가 동일하고 해당파일불변인 기존부채이며 팔마24등록검증으로 대체하지 않는다.
-- 공식 writer [43493276504](https://github.com/icefoxtail/AP------/actions/runs/43493276504), register job132119704696, event head는 위merge다. 2026-11-13T19:33:07Z 시작. 이 체크포인트의 관측은 초기실행이며 **요청등록/최종post-AutoMetaConsumer/PUSHED는 아직 미관측**이다. [병합 증거](03-palma-main-merge.json)를 현재 실제run 결과로 이어 갱신한다.
-- 최신 실제raw 검증 AWCR **r24**, file `1QPr5b3te3ZYNzsUYJI7W711OsM1ohV6w`, SHA `b1d073a2d990b6c91a307d7a50d55b3989855a46bda32224b988d66c3eefa11a`. 이 문서 게시 후 r25에 정확한게시head·병합·writer대기를 기록한다. 자신의최종commitSHA를미리기록하지않는다.
-- [확정 의미 원장](03-palma-semantic-review.json) SHA `0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18`: 발문·선지·제공풀이24 및 그림37을 읽었다. native분류14 수정, RPM exact19/debt Q6·Q8·Q12·Q13·Q14. 정상source·37그림·UID·배점·난이도·source reviewStatus 보존.
-- source SHA `1fa5adbc46ef6180400a4666c4328bb2d2b6655d059e660291ccf550803332c7`, blob `2b8411c03707eaa39fdf0159e3de448d459da181`. 공식요청 `m1-palma-2026-mid-meta-review-20261113`, raw `c59a32637f1fc578152a94297844500f4b4ca65b891757830aaf3264b2feb5f5`, canonical `7eabd34d965a39395f9121a14f037c70deb4f69ec9910d14fd647c73695cb0d4`. Q19 source before=null, metadata before=빈문자열을 구분했다.
-- PT1/TPL3/binding3, 정본총7개는 공식writer가적용한다. native/compiled/metadata/runtime생성물을직접복사하지않았다. 기존crosswalk260 보존+DIRECT13, 24L1/54L2/326leaf 유지. 연결된 exactleaf19, 작도·합동parent-only3, Q6/Q8 LEGACY_PARENT_AMBIGUOUS를명시했다.
-- [격리검증](03-palma-isolated-preflight.json) SHA `069fec837983caf5ee3c8104a8d0c9b10bcf8b0a8672c544ef9d928daf20f531`: 공식등록24/정본7/runtime24, projection24 및 최종로컬Consumer24/24/24 PASS, 실패·미관측·assignmentPending0. 직접영향기존RPM tests18/18 PASS. 같은입력은반복검사하지않는다. 이는운영완료증거가아니다.
-- [대상밖보존비교](03-palma-isolated-minimal-protection.json) SHA `661ca6380531220b14e5abffe51f86e7cbe887fd3d8d9113d50069f43ba3c875`: 대상밖metadata/identity/runtime 변경·추가·누락0, 기존native정의·crosswalk260·등록영수증723파일·완료47문항보존. 실제등록SHA가나오면격리와같은파일은hash로재사용하고달라진실제파일만대조한다.
-- [후보게시](03-palma-candidate-publication.json), [원격30파일재읽기](03-palma-candidate-remote-readback.json) SHA `1c81d104ad36c13dd06a38595ecc8f80132cc3e46a43827232f3e0a75daa17d7`에 실제raw/blob/tree 일치를 보존했다.
-- 현재 [Notion라우터기록](notion-current-metadata-route-refresh-20261113.json), [병행범위](03-palma-concurrent-work-check.json)를 재사용하되 다음시험지선택전 최신포인터/main/담당범위를확인한다. 다른owner의 신흥작업인수없음. PR1959의향림2024는그차례에서재확인한다.
-
-### 복사용 현재 인계
-
-> AP------ 중1 전수 메타 검토 task f46ac6a5-f2f7-4ae1-a0af-5806b87de808, owner GPT_ROOT_933015CD0A4F, branch review/m1-existing-meta-20261113을 이어 주세요. RPM6권 L1/L2·신흥24·왕운23 운영 완료를 반복하지 마세요. 최신 Notion라우터, AWCR r24 이후, remote main/own branch, docs/operations/m1-meta-review-20261113/HANDOFF.md·progress.json을 확인하세요. 현재3번2026팔마중2학기중간24문항/37그림 의미읽기 및 격리Consumer24 완료, PR1969는 head e5860a9…에서6필수CI통과 후 main e25ceab…에병합됐습니다. writer43493276504/job132119704696의 실제등록영수증24·최종post-AutoMetaConsumer24·PUSHED/원격SHA와대상밖보존을마감하세요. 요청rawc59a3263…/canonical7eabd34d…/source1fa5adbc…를결속하세요. 현재운영2/44·47문항·읽기71·남은42를유지하며, 실제마감후4번2025동산중2학기기말24문항으로진행합니다. 전체R1/R2/R3와같은입력의검사는반복하지않습니다.
-
-## 왕운 마감 시점의 기록 — 팔마 현재 상태는 위 절 우선
+**운영 완료 3/44장 · 읽기 및 운영 마감 71/1,047문항 · 남은 41장.** 다음은 **04. 2025 동산중 중1 2학기 기말 24문항**이며 아직 읽기나 수정에 착수하지 않았다.
 
 - 저장소: https://github.com/icefoxtail/AP------
-- taskId: `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`; owner: `GPT_ROOT_933015CD0A4F`.
+- taskId: `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`; owner: `GPT_ROOT_933015CD0A4F`; instructionRevision: `2`.
 - 담당 branch: `review/m1-existing-meta-20261113`.
-- 큐: [progress.json](progress.json)의 중1 **44장/1,047문항**. 연도 DESC → 학기 DESC → 기말 먼저 → 학교명 순서.
-- **운영 완료2장, 남은42장. 읽기 및 운영 마감47문항. 다음3번 팔마중24는 아직 시작하지 않았다.**
-- 최신 실제 등록 main: `738af248bd62813a572ac81725892b3f12ee2beb`, tree `40d92cfea35ea1108d4709aa7d7b87338e54aa17`.
-- 마감 문서 작성 직전 원격 branch 체크포인트: `55a92fd7da1df7f53d18e15d3f28d5d9d2a4bc94`, tree `4bba9251bbdd8600846d708d614be008b38aece6`. 현재 마감 게시 SHA는 원격 branch와 후속 AWCR에서 확인한다.
-- 마지막 실제 raw 검증 AWCR **r21**: file `149rSt5WWAArxdHVfvMv8KVlV7DPWnbEb`, SHA `21d365a950a7dcb9e844e862f235bc1a371506f09d855d166ad8b30add04c356`. 다음 r22는 실제 왕운 마감·게시 체크포인트·팔마 nextAction을 기록한다. 기존 revision을 덮어쓰지 않는다.
+- 최신 실제 등록 main: `bf35b7e13417b033ee167117d567a9f0262712d6`, tree `31bb7763bb56018167279ad094dd787989129f75`.
+- 마감 문서 작성 직전 원격 체크포인트: `9cb4da0e188c6d86df57f7d481792de256bf5e6f`, tree `4e233b44378e8fd9270a4bcd79e7cd70df567159`. 이 마감 문서의 최종 게시 head/tree는 원격 branch와 후속 AWCR에서 확인한다.
+- 최신 실제 raw 검증 AWCR **r25**: file `1TkwXt4gNdT8OOoZkkm_0Xkjnh7Clhl_V`, raw SHA256 `2ee49e31a74b94a0a59009e92decba963902950f879a2faa09fcef58cef47d2d`. **r26**에는 팔마 운영 마감과 정확한 마감 게시 head 및 동산 nextAction을 기록한다. 이전 revision을 덮어쓰지 않는다.
+- 완료표와 전체 큐는 [README.md](README.md), 실행 원장은 [progress.json](progress.json)이다. 큐는 연도 내림차순 → 학기 내림차순 → 기말 먼저 → 학교명 순서다.
 
-## 왕운중23 — 운영 완료
+## 이번에 마감한 팔마중 24문항
 
-[PR1968](https://github.com/icefoxtail/AP------/pull/1968), 검증 head `e03094dff7abe80ac6a66223b1f20ffea19a52fe`, merge `6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2`. 정확 head의 CI4개 workflow·6jobs가 모두 통과했다. main writer43474884078/job132056020809는 실제 `738af248bd62813a572ac81725892b3f12ee2beb`에 PUSHED attempts1로 반영했다.
+[PR1969](https://github.com/icefoxtail/AP------/pull/1969)의 head `e5860a968cc65f4e8817dc8492c14959f8d9b7d1`에서 필수 CI 4 workflow·6 job을 모두 확인한 뒤 merge `e25ceabf2c977b667d2b7a3740ab8ef50670f781`에 병합했다. 공식 writer [43493276504](https://github.com/icefoxtail/AP------/actions/runs/43493276504), register job132119704696은 실제 main `bf35b7e1…`에 PUSHED attempts1로 등록했다.
 
-[운영 마감](02-wangun-operational-closeout.json): source·native·identity·runtime23, 정본 변경16, 최종 post-AutoMeta Consumer changed/checked/passed23/23/23, 실패·미관측·assignmentPending0. request 적용1/거절0/대기0. 실제 등록 영수증과 ZIP의 final/persisted 결과를 root도 직접 읽었다. 전역 optional semantic backlog의 REGISTRATION_PARTIAL을 왕운 미완료나 전체 프로젝트 PASS로 해석하지 않는다.
+- [운영 마감](03-palma-operational-closeout.json) raw `c24ab0c96a956604c11aa2b0c6db5869d71afd2a6e155666d8cb9006b995b6e3`.
+- [실제 writer·영수증·최종 Consumer](03-palma-pr1969-main-writer-final.json) raw `110af27f8326ce3f8715a57c5ae5d53c6f61c6030c18626ca7ea04cd930c44d8`.
+- [실제 main 보호 비교](03-palma-main-bf35-minimal-protection.json) raw `bbbce5f85c1638ccc4642391e7960e3fb8276928f78727860b0063a2e65a183d`.
+- [실제 main의 동일 RPM 입력 확인](03-palma-main-bf35-rpm-parent-reuse.json) raw `5a390fc76a40013ea022ac96714d98df24afe18e20a3b6dfbe5e10790185180d`.
+- [의미 원장](03-palma-semantic-review.json) raw `0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18`.
 
-| 항목 | 실제 SHA256 |
-|---|---|
-| 최종 source | `c79551504949aee9ee09f5a8e2bf74898f7b7204d54a035a3e4b2acc7d808129` |
-| 의미 정본 rev3 | `51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090` |
-| 공식 요청 raw | `feb528273a4167b654a50dcd6d825c7db9173b0bf2fee1c47904b20b4bb505c1` |
-| 공식 요청 canonical | `3f6e0823c735fba24f769c4b2043001c1e1e8e9c2ad03246fb12638e6c4b3648` |
-| 실제 등록 영수증 | `0f673be4ab627f7d8d89ee66f2f1983ef3a212b9826f1064bf5e207894e92b88` |
-| 실제 분류·직접 영향 확인 | `facf6db626219f8fb5eaf24aa2529da0ff043d809cdbdb40444f897acc9ee5af` |
+전체 발문·선지·제공 풀이24와 실제 그림37을 읽었다. 메타24문항 중 native 분류14문항을 수정했다. 정확한 RPM leaf19개와 debt5개(Q6·Q8·Q12·Q13·Q14)를 구분했다. 작도·합동 parent-only3개, Q6/Q8의 LEGACY_PARENT_AMBIGUOUS를 명시했고 잘못된 leaf로 대체하지 않았다. 기존 crosswalk260을 보존하며 정확한 DIRECT13개만 추가했다. PT1·TPL3·binding3은 공식 writer가 적용했다.
 
-Source는 `archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js`, blob `21c4a9cee8baca27a43d20c64c0e69bd5bfe5670`. 요청 ID `m1-wangun-2026-mid-meta-review-20261113`, 영수증은 `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/`의 같은 이름 JSON이다. inbox는 정상 소비됐다. 원래 요청은 PR head의 Git snapshot에 보존돼 있다.
+실제 영수증의 metadata24·identity24·runtime24·정본7과 최종 post-AutoMeta Consumer changed/checked/passed24/24/24, 실패·미관측·solverOnly·assignmentPending0을 확인했다. 영수증 raw `174a337a8e6aaca46c897c7d3fbbc6bccbc0c30072b81a2e9781373aaa4c1fdd`, 승인 참조8개가 모두 실제 Git과 일치한다. Identity24는 적용 요청 수이며, 기준 대비 실제 fingerprint 변경은 Q1/Q3/Q4/Q10의4개다.
 
-발문·선지·제공 풀이23개와 외부 그림33개를 전부 읽었다. 분류·부모 연결20문항, 메타 근거23문항을 정리했다. 정상 문제·정답·해설·그림·UID·배점·난이도·source reviewStatus는 보존했다. **UID는 반드시 명시적인 sourceOrdinal로 결속한 semantic rev3를 사용한다.** 원래 임시 원장의 배열 순서 오류는 적용 전에 정정됐으며 [정정 기록](02-wangun-uid-association-correction.json)을 보존한다. 추출 배열 순서를 UID 순서로 가정하지 않는다.
+정상 문제·정답·해설·그림37·UID·배점·난이도·source reviewStatus를 보존했다. 실제 main의 핵심23파일이 격리 PASS와 같아 대상 밖 metadata/identity/runtime 및 완료47문항 보호 결과를 재사용했다. Canonical input manifest와141개 resource, 관련 runtime/loader9개도 같아 24문항의 부모 대조를 다시 실행하지 않았다. 실제 main의 최종 Consumer24는 공식 writer가 새로 확인했다.
 
-RPM exact leaf19, debt Q2·Q3·Q4·Q16이다. Q2/Q3는 작도와 합동 PARENT 정확 연결만 있으며 leaf가 없다. Q4/Q16은 LEGACY_PARENT_AMBIGUOUS와 상위 기본 도형을 유지한다. 가짜 leaf·잘못된 대체 유형을 넣지 않는다. Q6/7/8/10/14/22는 내용에 맞게 M1-1 비례 단원에 연결하되 시험지2학기 정보는 그대로다.
+Source raw `1fa5adbc46ef6180400a4666c4328bb2d2b6655d059e660291ccf550803332c7`, blob `2b8411c03707eaa39fdf0159e3de448d459da181`. 요청 `m1-palma-2026-mid-meta-review-20261113`의 raw는 `c59a32637f1fc578152a94297844500f4b4ca65b891757830aaf3264b2feb5f5`, canonical SHA는 `7eabd34d965a39395f9121a14f037c70deb4f69ec9910d14fd647c73695cb0d4`다. 요청은 실제 main에서 소비됐으므로 inbox에 다시 넣지 않는다. 필요한 경우 head `e5860a9…`의 원래 경로나 writer artifact의 archived request에서 읽는다.
 
-새 PT4·TPL5·binding5·M1-1 pack 과정 추가2 = 정본16이 실제 반영됐다. MIDDLE1은1.0.7, FUNCTIONS_GRAPHS는1.0.12이며, 다음 요청에서는 최신 값을 다시 읽는다. crosswalk는 기존245행을 보존하고 exact15행을 추가해260행이다. 부모 정본은24L1/54L2/326leaf와11개 leaf의 연결 ID 배열 보완을 유지한다. 기존 보호17·현재 신흥24의 metadata/identity/runtime/catalog 입력·원본·승인 참조 변경은0이다. 같은 입력의 의미·선택 상태 검증을 재사용했다.
+수학 FINAL QA나 실제 Pages 배포를 확인했다고 주장하지 않는다. 전역 REGISTRATION_PARTIAL은 optional semantic lane의 후속 상태이며 팔마 요청의 실패가 아니다. Shared Meta의 기존 고1 진단 오류와 M2/M3 자료 부족15개는 [CI 증거](03-palma-pr1969-ci.json)에 별도로 기록했다.
 
-[최종 실물 대조](02-wangun-main738-closeout-minimal-audit.json)가 정본이다. 함께 보존된 초기 minimal-protection/actual-rpm-parent 보고서의 FAIL은 임시 비교기가 writer 파생 count 갱신과 curriculum 문맥을 잘못 비교한 이력이다. 실제 count는 배열 길이와 일치하며, 실제19 base/effective 경로는 기존 검증 결과와 일치한다. 이 이력을 숨기거나 실제 오류로 혼동하지 않는다. production 수정이나 검사 완화는 필요하지 않았다.
+## 이미 완료한 작업 — 반복하지 말 것
 
-## 이미 끝난 선행 작업 — 반복 금지
+- RPM 6권의 2022 L1/L2 정리: [PR1958](https://github.com/icefoxtail/AP------/pull/1958), branch `fix/rpm-middle-l1-l2-20261113`, head `3292dc0b5457d8f6f1a491f7f4866fe5be4082b7`. 대단원24·중단원54, 기존326leaf 보존과 부모9개 정정.
+- 신흥중24: [PR1964](https://github.com/icefoxtail/AP------/pull/1964), [첫 마감](01-shinheung-operational-closeout.json). 다른 owner의 후속 [PR1967](https://github.com/icefoxtail/AP------/pull/1967) 이후 현재 source raw는 `2f1ab79eba940498b5c575ad1509a038b3f2dabd390823177635d83937fe4b56`이다. 그 최신 상태를 왕운·팔마 등록 후에도 보존했다.
+- 왕운중23: [PR1968](https://github.com/icefoxtail/AP------/pull/1968), actual main `738af248bd62813a572ac81725892b3f12ee2beb`, [마감](02-wangun-operational-closeout.json). 의미 원장은 sourceOrdinal/UID가 바로잡힌 [revision3](02-wangun-semantic-review-rev3.json)만 사용한다.
+- 과정명 한 필드 교정: [PR1966](https://github.com/icefoxtail/AP------/pull/1966), actual main51cf·Consumer1/1·기존runtime613 보존으로 마감했다.
 
-- RPM6권 L1/L2: [PR1958](https://github.com/icefoxtail/AP------/pull/1958), 24L1/54L2/326leaf 보존. 별도 branch `fix/rpm-middle-l1-l2-20261113`, head `3292dc0b5457d8f6f1a491f7f4866fe5be4082b7`. 기존2015 시험지를 일괄2022로 재표기하지 않는다.
-- 첫 신흥중24: [PR1964](https://github.com/icefoxtail/AP------/pull/1964), [역사적 마감](01-shinheung-operational-closeout.json), actual main `cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4`, 등록24·최종Consumer24 PASS, RPM exact22/debt Q8·Q10.
-- 신흥중 후속 다른 owner의 [PR1967](https://github.com/icefoxtail/AP------/pull/1967): actual main `440f412bd221e3d62df16130984a2626a3ee6441`, 새 `m1-shinheung-meta-closeout-20261113-bf-r1` 영수증 SHA `bd627b6fe34082ed8ca2a90e49955e75ffb7ee2cfc6e3e4411ae4041d4d2d555`, 현재 source raw `2f1ab79eba940498b5c575ad1509a038b3f2dabd390823177635d83937fe4b56`. 이후 보존 점검은 이 최신 영수증24를 쓴다. 옛 rev3 참조는 승인 이력이다.
-- 과정명 정정 [PR1966](https://github.com/icefoxtail/AP------/pull/1966): actual main `51cfb3f6fdaf3600ad06aa298d109093ad0b6b45`, M1 비례식 binding의 `中1 수학`→`중1 수학` 한 필드, 최종Consumer1/1·기존runtime613 보존. [마감](02-binding-course-operational-closeout.json)을 재사용한다.
+## 다음 실행 절차
 
-## 다음 실행
+1. 연결된 Notion의 최신 라우터 → Archive 시작 페이지 → 생명주기 → 해당 메타 정본 포인터를 읽는다. 현재 포인터는 [라우터 기록](notion-current-metadata-route-refresh-20261113.json)에 있다. 마지막 라우터 ID는 `3e10e68b-d69f-81f1-9397-e7cd1c8d3cfd`, 시작은 `3e10e68b-d69f-8189-8cc8-fb85cb4b1398`, 생명주기는 `3e10e68b-d69f-81fd-b161-ffc3f6227b6e`다. 실제 내용과 정본은 최신 Git에서 확인한다.
+2. 최신 원격 main·담당 branch·AWCR의 정확한 현재 task 및 병행 PR/UID 범위를 확인한다. [팔마 진입 시 범위](03-palma-concurrent-work-check.json)는 당시 기록이다. PR1405의 2023~2025 기말 sidecar, PR1751의 빈 메타 요청과 동산의 실제 UID 겹침을 다시 확인한다. PR1959는 향림2024 source/그림 변경이므로 그 차례에서 재확인한다. 알려진 다른 owner task를 임의 인수하지 않는다.
+3. 동산24의 sourceOrdinal과 questionUid를 명시적으로 결속한다. 배열 위치를 문항 번호로 쓰지 않는다. 메타가 있거나 과거 PASS여도 모든 발문·선지·그림·제공 풀이를 읽는다. 서브에이전트를 쓰면 실제 읽기 근거와 figure hash를 확인한다.
+4. 현재 native 정본, 잠긴 RPM master, crosswalk, 2022 부모 정본 및 실제 Archive 2.0 resolver를 대조한다. 정확한 기존 분류는 유지하고 명백한 오분류만 수정한다. 정본에 세부 유형이 없으면 근거 누락을 기록하며 임의 대체하지 않는다. 오래된 교육과정 source를 일괄 2022로 바꾸지 않는다.
+5. 같은 입력의 증거는 재사용한다. 필요한 정본 추가는 공식 reviewed-exam v2 요청을 통해 적용한다. Native/compiled/metadata/runtime 생성물을 직접 게시하지 않는다. `checkpoint-tools/build-reviewed-exam-v2-request.mjs`, `extract-reviewed-exam-projections.py`, `audit-actual-rpm-parents.mjs`를 사용한다. 원본 source before와 metadata before의 null/빈 문자열은 구분한다.
+6. 한 시험지의 PR → 정확한 head CI → main 병합 → 실제 요청별 영수증 → 최종 post-AutoMeta Consumer → 실제 원격 SHA·직접 영향 확인을 끝낸 뒤 다음 시험지로 이동한다. 전역 workflow SUCCESS만으로 요청 REGISTERED를 추정하지 않는다. 전체 R1/R2/R3는 실행하지 않는다.
+7. 완료표·인계·검증 근거를 담당 branch에 저장하고 원격 raw/blob/tree를 재읽는다. 새 AWCR revision에는 안전한 상태·참조·SHA·남은 일·nextAction만 저장하고 실제 raw를 재읽는다. 원문 프롬프트·정답/해설·credentials·upstream raw 출력은 공유하지 않는다.
 
-1. 현재 마감 문서의 원격 게시 및 AWCR r22 raw SHA/revision을 확인한다. 완료표는2/44, 다음은3번 팔마중24다.
-2. Notion 라우터·시작·생명주기와 최신 main 및 병행 작업을 확인한다. 다른 owner task `241f49f8-fccb-4880-944e-9814a117b88e`/`GPT_ROOT_BF50408FB63B`에는 임의 합류하거나 파일을 덮어쓰지 않는다. 마지막 확인 r13은 신흥 담당·왕운 및 과정명 발행 보류였으므로, 다음 시험지의 현재 범위를 새로 확인한다.
-3. `archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js`의 최신 source·metadata·identity·그림을 결속하고24문항을 모두 의미 검토한다. 기존 메타·PASS·REVIEW2를 정답으로 가정하지 않는다.
-4. 명백한 오분류만 최소 수정한다. Archive2 native PT/TPL과 실제 RPM leaf/effective parent까지 대조한다. 정본에 정확한 leaf/연결이 없으면 근거와 debt를 남기고 임의 대체하지 않는다.
-5. 소스 정상 데이터와 다른 담당 범위를 보존한다. 공식 v2 요청·필요한 정확 before 정본 변경만 준비하며, native pack/compiled/metadata/runtime은 공식 writer가 반영한다. 기존 검증과 같은 입력은 재사용한다. 전체 R1/R2/R3는 재실행하지 않는다.
-6. 한 시험지의 PR→main→실제 등록 영수증→최종 post-AutoMeta Consumer→원격 SHA를 마감하고 체크포인트·AWCR를 저장한 뒤 다음으로 간다. 추가 승인은 요청하지 않는다.
-7. 향후17·20·24·38·39·40번은 PR1751의 최신 요청/등록과 대조한다. 24번 향림2024 그림은 PR1959 최신 source/assets부터 확인한다. 다음 학년·학기도 별도 큐·완료표·해시·정확 nextAction 구조로 이어간다.
+최신 main을 담당 branch에 반영할 때는 다른 owner 변경을 보존한다. 현재 마감 체크포인트는 부모 `9cb4da0e…`와 실제 main `bf35b7e1…`를 합치며, main에서 가져오는 운영 파일은 그 Git blob과 같음을 확인한다. API 게시에는 `checkpoint-tools/prepare-staged-checkpoint-packet.py`를 사용하고 expected_sha lease·원격 재읽기를 유지한다.
 
-## 실행 환경과 체크포인트
+## 복사용 인계 프롬프트
 
-Root는 `/workspace/scratch/933015cd0a4f/m1-review`, 모든 shell은 `login:false`. 격리 `/workspace/scratch/933015cd0a4f/m1-wangun-register`는 main51cf에 공식 로컬 사전 등록을 적용한 증거 tree이며 운영 main이 아니다. 완료 증거가 같으면 다시 실행하지 않는다.
+> AP------ 중1 기존 시험지 메타 전수 검토를 이어 주세요. taskId f46ac6a5-f2f7-4ae1-a0af-5806b87de808, owner GPT_ROOT_933015CD0A4F, branch review/m1-existing-meta-20261113입니다. 연결된 Notion 라우터/시작/생명주기, 정확한 현재 AWCR r25 이후, 최신 Git main과 branch의 docs/operations/m1-meta-review-20261113/HANDOFF.md·progress.json을 먼저 확인하세요. RPM6권 L1/L2와 신흥24·왕운23·팔마24는 운영 완료했으므로 반복하지 마세요. 팔마 PR1969·actual main bf35b7e13417b033ee167117d567a9f0262712d6·등록24/정본7·최종Consumer24/24·대상밖보존을 검증했습니다. 현재3/44장·71문항 완료, 남은41장입니다. 다음은4번2025동산중중1 2학기기말24문항이며 아직 시작하지 않았습니다. 병행 빈 메타 작업의 실제 UID 겹침을 확인한 뒤 모든 발문·그림·제공 풀이를 읽고, native와 실제RPM/Archive부모를 의미 기준으로 최소 정정하세요. 한 시험지씩 PR→main→실제등록·최종Consumer·원격SHA→완료표·branch/AWCR 체크포인트를 마감하며44장 끝까지 이어갑니다. 전체R1/R2/R3와 같은 입력의 검증을 반복하지 말고 정상 데이터와 source reviewStatus를 보존하세요.
 
-Git push 인증 대신 GitHub tree/commit/ref API를 쓴다. `checkpoint-tools/prepare-staged-checkpoint-packet.py`로 frozen index를 캡처하고, server tree 일치·expected_sha lease·원격 raw SHA/blob readback을 확인한다. 현재 main imports는 origin/main의 정확 blob만 재사용한다. API commit 반영 전에 local MERGE_HEAD가 있으면 `git merge --quit` 후 `git reset --soft`로 해당 원격 checkpoint에 맞춘다.
-
-공식 요청 helper는 `checkpoint-tools/build-reviewed-exam-v2-request.mjs`, 추출은 `extract-reviewed-exam-projections.py`다. 배열 위치 대신 explicit sourceOrdinal을 사용한다. 부모 대조는 `audit-actual-rpm-parents.mjs`다. 전체 수학 QA나 source solution 기반 RPM FINAL을 수행했다고 주장하지 않는다.
-
-AWCR에는 safe metadata·상태·SHA·참조만 쓴다. 원문 문제/정답/해설·credentials·upstream raw 로그는 넣지 않는다. 기록 실패 시 미완료를 명시하고 완료를 추정하지 않는다.
-
-## 새 대화 복사용 프롬프트
-
-> icefoxtail/AP------ 중1 기존 시험지 메타 전수 검토를 이어 주세요. taskId f46ac6a5-f2f7-4ae1-a0af-5806b87de808, owner GPT_ROOT_933015CD0A4F, branch review/m1-existing-meta-20261113입니다. Notion 필독 라우터·시작·생명주기, 이 task 최신 AWCR, Git main/branch와 docs/operations/m1-meta-review-20261113/HANDOFF.md·progress.json을 확인하세요. RPM6권 L1/L2·신흥24·왕운23이 운영 마감되어2/44장,47/1,047문항 완료입니다. 왕운 PR1968은 실제 등록 main738af248bd62813a572ac81725892b3f12ee2beb, receipt23/정본16/최종Consumer23 PASS이며 RPM exact19/debt Q2·Q3·Q4·Q16을 기록했습니다. 같은 입력의 완료 검토·R1/R2/R3는 반복하지 마세요. 최신 마감 branch checkpoint와 AWCR r22 이후 기록을 확인한 뒤3번2026팔마중2학기중간24문항을 최신main·병행범위 확인부터 시작하세요. 기존 메타가 있어도 전 문항을 읽고, 정상 데이터와 다른owner 범위를 보존하며 정확한 세부 유형이 없으면 debt를 남기세요. 한 시험지씩 PR/main/실제 등록/최종Consumer/원격SHA를 마감하고 완료표·인계·immutable AWCR를 갱신하며44장 끝까지 추가 승인 없이 진행하세요.
+중1 전체를 마감하면 이 원장에 전체 종료와 남은 taxonomy debt를 기록하고, 같은 6권 L1/L2 정본·학년/학기별 큐 및 한 시험지 단위 마감 방식을 다음 학년·학기로 넘긴다. 아직 검토하지 않은 학년이나 시험지를 완료로 표시하지 않는다.
