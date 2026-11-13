@@ -1,8 +1,8 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "similar/middle/m2/2final/21_이수중_2학기_기말_중2_유사.js",
-  "sourceGitBlobSha": "4d46868f18437e6a6baaf26d1858884ce13b09a0",
-  "sourceSha256": "d1a6a79d513cf9e96edbe1818caebaca1a7b090394c975716f27eaaf33fe6d26",
+  "sourceGitBlobSha": "4a5bb21cf2d3770b03f3733b61614f2dbfcbf624",
+  "sourceSha256": "c0b190aa6e0b68a7fbecaad77a6c9f5f84d205ff223ce396ff3c6ead4cee2247",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "Codex stage-local MD migration",
@@ -21,11 +21,12 @@
     "sourceRead": "Direct Google Docs text plus complete text/plain export for 1ZRKCM7phBT2rbAW-GAkWtV6AcFiZ-QDk9h_lOct1ql0, revision AHj4eMTu_3o4D3ipGOPdtT6ubMZxfEksx_ERooYsgwyqsyUOPn0HQAdq_QzxdWtC2pY6mkXGD5Q4jxD-ysMuApHcgcXuUcu3GeEaaX8yYUc.",
     "sectionIsolation": "All prompt, choice, answer, solution, plan and metadata fields isolated by Q headings and fenced blocks.",
     "scoreCheck": "26 item scores sum to 100.",
-    "mathReview": "Local math audit completed for all 26 answers/solutions, including corrected Q10, Q20, Q23. Independent review is NOT_RUN; 4-slot semantic review and official resolver remain NOT_RUN.",
+    "mathReview": "PASS_ALL_26_AUTHOR_SECOND_PASS: independent re-solve and key/solution comparison completed, including Q10/Q20/Q23. Same Codex agent identity as author; separate peer review remains NOT_RUN.",
     "visualReview": "Problem and solution benefit assessed per item. No SVGs created, no rendering QA; source-figure reuse not validated.",
     "identityBinding": "Canonical candidate UID formula applied; identity-map registration NOT_RUN.",
     "registration": "NOT_RUN",
-    "fourSlotValidation": "PASS_WITH_WARNINGS: `node tools/4slot/validate-4slot.cjs` found 0 failures and 32 advisory warnings. Warnings (goal method terms, low slot diversity, one-term methods) remain visible; semantic review is NOT_RUN."
+    "fourSlotValidation": "PASS_WITH_WARNINGS: `node tools/4slot/validate-4slot.cjs` found 0 failures and 32 advisory warnings. Warnings (goal method terms, low slot diversity, one-term methods) remain visible; semantic review is NOT_RUN.",
+    "sourceBinding": "Updated after Q09 wording and Q24 LaTeX repairs; JS hash/blob and all QBODY/QFULL fingerprints recomputed."
   },
   "scope": {
     "items": 26,
@@ -1294,7 +1295,7 @@
           {
             "term": "선분",
             "src": "solution",
-            "quote": " $H$라 하자.\n사각선분 $AB \\perp BC$이고 $DH",
+            "quote": "발을 $H$라 하자.\n선분 $AB \\perp BC$이고 $DH \\perp BC$, $",
             "termId": 144
           }
         ],
@@ -1302,7 +1303,7 @@
           {
             "term": "선분",
             "src": "solution",
-            "quote": " $H$라 하자.\n사각선분 $AB \\perp BC$이고 $DH",
+            "quote": "발을 $H$라 하자.\n선분 $AB \\perp BC$이고 $DH \\perp BC$, $",
             "termId": 144
           }
         ],
@@ -1361,7 +1362,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "6d364894c9ce8a2ae9f513d3531bb711c0ef9dfb82f24d2bf4e67b9d16f5a1af"
+          "value": "3fb3a9cbfffe8f77f450ca47bc3a8ddbbffda4f8bc55a6f526c97d2eab03fe05"
         }
       ],
       "judgedBy": {
@@ -2790,7 +2791,7 @@
         {
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
-          "value": "79774f199dee145967c6f5a1c43232f8d70031f4b9144db979149f4648ffae50"
+          "value": "ab696ba84fe4bf666292df38bef389afb1230ca41ec8db8fd4d464104af7cb55"
         }
       ],
       "judgedBy": {
@@ -3010,8 +3011,8 @@
   "sourceBindingHistory": [
     {
       "sourceArchiveFile": "archive/exams/similar/middle/m2/2final/21_이수중_2학기_기말_중2_유사.js",
-      "sourceGitBlobSha": "4d46868f18437e6a6baaf26d1858884ce13b09a0",
-      "sourceSha256": "d1a6a79d513cf9e96edbe1818caebaca1a7b090394c975716f27eaaf33fe6d26",
+      "sourceGitBlobSha": "4a5bb21cf2d3770b03f3733b61614f2dbfcbf624",
+      "sourceSha256": "c0b190aa6e0b68a7fbecaad77a6c9f5f84d205ff223ce396ff3c6ead4cee2247",
       "basedOnDriveFileId": "1ZRKCM7phBT2rbAW-GAkWtV6AcFiZ-QDk9h_lOct1ql0",
       "basedOnDriveRevision": "AHj4eMTu_3o4D3ipGOPdtT6ubMZxfEksx_ERooYsgwyqsyUOPn0HQAdq_QzxdWtC2pY6mkXGD5Q4jxD-ysMuApHcgcXuUcu3GeEaaX8yYUc"
     }

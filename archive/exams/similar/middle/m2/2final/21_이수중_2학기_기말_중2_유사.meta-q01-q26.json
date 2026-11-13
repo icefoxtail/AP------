@@ -3,8 +3,8 @@
   "requestId": "similar-21-isu-m2-2final-candidate-v1",
   "examUid": "21_이수중_2학기_기말_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/2final/21_이수중_2학기_기말_중2_유사.js",
-  "expectedSourceBlobSha1": "4d46868f18437e6a6baaf26d1858884ce13b09a0",
-  "expectedSourceSha256": "d1a6a79d513cf9e96edbe1818caebaca1a7b090394c975716f27eaaf33fe6d26",
+  "expectedSourceBlobSha1": "4a5bb21cf2d3770b03f3733b61614f2dbfcbf624",
+  "expectedSourceSha256": "c0b190aa6e0b68a7fbecaad77a6c9f5f84d205ff223ce396ff3c6ead4cee2247",
   "expectedQuestionCount": 26,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -27,7 +27,7 @@
     "declaredQuestionCount": 26,
     "declaredTotalScore": 100,
     "verifiedItemScoreTotal": 100,
-    "note": "Read native Docs text and complete text/plain export for this revision, retaining math blocks. Isolated all Q01-Q26 prompts, choices, answers, solutions, plans and metadata by headings/fences. Local answer/key-step audit completed; corrected conditions and selection/score labels are recorded in changeLog. The MD marks items EXEMPT, but problem/solution visual needs were separately assessed by item. Repaired LaTeX macros lost to tab characters and restored aligned row breaks; corrected Q10 configuration, Q20 independence, and Q23 correspondence/ratio/answer. Original archive untouched; original figures were not linked because similar values/layout are not source-bound."
+    "note": "Read native Docs text and complete text/plain export for this revision, retaining math blocks. Isolated all Q01-Q26 prompts, choices, answers, solutions, plans and metadata by headings/fences. Local answer/key-step audit completed; corrected conditions and selection/score labels are recorded in changeLog. The MD marks items EXEMPT, but problem/solution visual needs were separately assessed by item. Repaired LaTeX macros lost to tab characters and restored aligned row breaks; corrected Q10 configuration, Q20 independence, and Q23 correspondence/ratio/answer. Original archive untouched; original figures were not linked because similar values/layout are not source-bound. Second-pass review found and repaired Q09 wording (`사각선분` to `선분`) and Q24 LaTeX `\\night` to `\\right`; all 26 item keys and solutions were checked against independent calculations. The source MD Q23 key/ratio were incorrect and the candidate correction was revalidated. Source Q24 display itself ends after \\overline{BC}; the candidate equation was completed as \\right)=1/3\\overline{BC}, following the prior proven ratios, and its malformed delimiter was corrected."
   },
   "items": [
     {
@@ -1754,12 +1754,193 @@
       "before": "Tab damage removed leading backslash from triangle/text/times; angle and aligned tokens were truncated, including malformed not-equal signs and row breaks.",
       "after": "Restores all 210 tab-damaged macros, missing angle/begin tokens, Q11 not-equal signs and aligned row terminators.",
       "reason": "Restores mathematical notation from the native document text export."
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "solution",
+      "before": "사각선분 AB ⟂ BC",
+      "after": "선분 AB ⟂ BC",
+      "reason": "Removes malformed Korean term; AB is the trapezoid side perpendicular to BC."
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "solution",
+      "before": "Source line ends at \\\\overline{BC} without closing the \\\\left( or finishing the derived equality; candidate contained malformed \\\\night).",
+      "after": "Completes with \\\\right)=\\\\dfrac{1}{3}\\\\overline{BC}.",
+      "reason": "Finishes the source-truncated display using GG′=(2/3)DE and DE=(1/2)BC; derived identity is mathematically valid."
     }
   ],
   "reviewEvidence": {
-    "independentMathReview": "NOT_RUN",
+    "independentMathReview": "NOT_RUN: no separate peer reviewer; author second-pass result is recorded separately.",
     "localSelfCheck": "PASS_WITH_Q10_Q20_Q23_CLARIFICATIONS_AND_LATEX_RESTORATION",
-    "reviewScope": "The migration author checked all 26 answer keys and solution steps. Independent review is NOT_RUN.",
-    "reviewer": "Codex stage-local migration author."
+    "reviewScope": "Author second-pass solved all 26 questions and checked all answer/solution reasoning. A separate peer review remains NOT_RUN.",
+    "reviewer": "Codex stage-local migration author.",
+    "authorSecondPass": {
+      "status": "PASS_ALL_26",
+      "reviewer": "Codex second-pass reviewer; same agent identity as migration author, so this is a fresh re-solve but not a separate peer reviewer.",
+      "sourceDocumentId": "1ZRKCM7phBT2rbAW-GAkWtV6AcFiZ-QDk9h_lOct1ql0",
+      "sourceRevision": "AHj4eMTu_3o4D3ipGOPdtT6ubMZxfEksx_ERooYsgwyqsyUOPn0HQAdq_QzxdWtC2pY6mkXGD5Q4jxD-ysMuApHcgcXuUcu3GeEaaX8yYUc",
+      "scope": "Re-solved all 26 source prompts and choices before comparing keys; checked each answer and solution reasoning. Rechecked Q10 positional conditions, Q20 independence, and Q23 correspondence/ratio. Q09 wording and Q24 LaTeX delimiter repaired. Answer-key comparison: Q01–Q22 and Q24–Q26 match the source; Q23 was the identified incorrect source key and remains corrected in the candidate.",
+      "independentAnswers": [
+        {
+          "sourceOrdinal": 1,
+          "answer": "②",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 2,
+          "answer": "①",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 3,
+          "answer": "⑤",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 4,
+          "answer": "③",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 5,
+          "answer": "④",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 6,
+          "answer": "②",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 7,
+          "answer": "①",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 8,
+          "answer": "⑤",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 9,
+          "answer": "③",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 10,
+          "answer": "④",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 11,
+          "answer": "①",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 12,
+          "answer": "②",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 13,
+          "answer": "⑤",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 14,
+          "answer": "③",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 15,
+          "answer": "④",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 16,
+          "answer": "①",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 17,
+          "answer": "②",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 18,
+          "answer": "⑤",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 19,
+          "answer": "④",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 20,
+          "answer": "③",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 21,
+          "answer": "①",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 22,
+          "answer": "②",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 23,
+          "answer": "(1) $\\triangle ABC \\sim \\triangle AED$ (AA 닮음)\n(2) $3 : 1$\n(3) $5$",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 24,
+          "answer": "$24\\text{ cm}$",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 25,
+          "answer": "(1) $16$개\n(2) $\\dfrac{5}{8}$",
+          "result": "PASS"
+        },
+        {
+          "sourceOrdinal": 26,
+          "answer": "$\\dfrac{1}{12}$",
+          "result": "PASS"
+        }
+      ],
+      "findings": [
+        {
+          "sourceOrdinal": 9,
+          "status": "FIXED",
+          "note": "Corrected malformed term “사각선분” to “선분”."
+        },
+        {
+          "sourceOrdinal": 24,
+          "status": "FIXED",
+          "note": "Repaired invalid \\night to \\right."
+        },
+        {
+          "sourceOrdinal": 10,
+          "status": "PASS",
+          "note": "E-B-C order and A,D same-side placement yield right triangle ABD, equal legs 20, area 200."
+        },
+        {
+          "sourceOrdinal": 20,
+          "status": "PASS",
+          "note": "Independent hit events give 1-(1/4)(1/3)=11/12."
+        },
+        {
+          "sourceOrdinal": 23,
+          "status": "PASS_CORRECTED",
+          "note": "ABC~AED, ratio 3:1, AC=9, EC=5."
+        }
+      ],
+      "separatePeerReview": "NOT_RUN"
+    }
   }
 }
