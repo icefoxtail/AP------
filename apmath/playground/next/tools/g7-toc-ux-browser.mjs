@@ -160,6 +160,38 @@ async function drawing(page) {
   return result;
 }
 
+async function coordinateGeometryReady(page) {
+  // Observe natural layout/ResizeObserver frames only. Numeric labels, glyph
+  // spacing and model answers are deliberately absent from this readiness gate.
+  return page.evaluate(() => new Promise((resolve, reject) => {
+    const started = performance.now();
+    let previous = '', stable = 0, frames = 0, raf;
+    const timeout = setTimeout(() => {
+      cancelAnimationFrame(raf);
+      reject(new Error(`Coordinate geometry did not settle within 2000ms: ${previous}`));
+    }, 2000);
+    const rect = el => {
+      const r = el.getBoundingClientRect();
+      return { left: r.left, top: r.top, width: r.width, height: r.height };
+    };
+    const observe = () => {
+      try {
+        const b = lab.board, canvas = lab.ui.canvas;
+        const current = JSON.stringify({ canvas: { css: rect(canvas), width: canvas.width, height: canvas.height },
+          board: { width: b.W, height: b.H, focus: b.focus, insets: b.insets, zoom: b.zoom, panX: b.panX, panY: b.panY },
+          mode: lab.learning.mode, view: lab.learning.view, scene: lab.scene.id, tools: rect(lab.ui.tools) });
+        stable = current === previous ? stable + 1 : 1;
+        previous = current; frames++;
+        if (stable === 3) {
+          clearTimeout(timeout);
+          resolve({ stableFrames: stable, observedFrames: frames, elapsedMs: performance.now() - started, geometry: JSON.parse(current) });
+        } else raf = requestAnimationFrame(observe);
+      } catch (error) { clearTimeout(timeout); reject(error); }
+    };
+    raf = requestAnimationFrame(observe);
+  }));
+}
+
 async function reachable(locator, message, { inViewport = false } = {}) {
   assert.equal(await locator.isVisible(), true, `${message}: visible`);
   if (!inViewport) await locator.scrollIntoViewIfNeeded();
@@ -692,6 +724,8 @@ try {
           const proofPosition = (await state(page)).elapsed;
           for (const mode of ['proof', 'explore']) {
             if (mode === 'explore') await exploreButton(page).click();
+            await page.locator('.apl-canvas-wrap').scrollIntoViewIfNeeded();
+            const readiness = await coordinateGeometryReady(page);
             const actual = await page.evaluate(pointNames => {
               const board = lab.board, ctx = lab.ui.canvas.getContext('2d');
               const original = ctx.fillText, labels = [];
@@ -752,8 +786,7 @@ try {
             }, Object.keys(expectedPoints));
             const threshold = mode === 'proof' ? firstCoordinateAt : 0;
             const phase = threshold ? 'first-coordinate-frame' : 'initial';
-            report.coordinateCurrent = { viewport, scene, mode, phase, threshold, ...actual };
-            await page.locator('.apl-canvas-wrap').scrollIntoViewIfNeeded();
+            report.coordinateCurrent = { viewport, scene, mode, phase, threshold, readiness, ...actual };
             await screenshot(page, `coordinates-${scene}-${viewport.width}-${mode}.png`);
             save();
             const tickSpacing = {};
@@ -806,7 +839,7 @@ try {
               failure = { message: error.message, operator: error.operator, actual: error.actual, expected: error.expected };
             }
             checks.push({ viewport, scene, mode, phase, status: failure ? 'FAIL' : 'PASS', failure,
-              coordinateThresholdSeconds: threshold, ...actual, tickSpacing, figure });
+              coordinateThresholdSeconds: threshold, readiness, ...actual, tickSpacing, figure });
             if (!failure) report.coordinateCurrent = null;
             save();
           }
