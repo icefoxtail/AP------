@@ -4,8 +4,10 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { spawnSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { loadCanonical, buildCompiled, compiledOutputs, buildRegistryIndex } from '../archive/tools/meta-foundation/compile-meta-foundation.mjs';
+import { collectConsumerRefusals } from '../tools/ci/collect-reviewed-consumer-refusals.mjs';
 
 // File-backed fixtures exercise the real registrar/compile/provenance code.
 // Only its consumer dependency is synthetic here; production always imports
@@ -16,6 +18,7 @@ const PACK = `${BASE}/pack.json`;
 const RT = 'archive/data/meta-foundation/runtime/middle1-v1.json';
 const META = 'archive/data/question_metadata.json', IDS = 'archive/data/question_identity_map.json';
 const SOURCE = 'original/middle/m1/2final/99_정정검증중_2학기_기말_중1.js';
+const SOURCE_2 = 'original/middle/m1/2final/99_공유검증중_2학기_기말_중1.js';
 const PT = 'PT_M1_PROPORTION_PARAMETER_EVALUATION', TPL = 'TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS';
 const h = v => crypto.createHash('sha256').update(v).digest('hex');
 const uid = n => `qid_v1_${h(SOURCE + '#' + n)}`;
@@ -274,4 +277,190 @@ test('new schema participates in dispatch, projection verification and the share
   assert.ok(gate.includes('verifyBindingCourseCorrectionWithConsumer({ root, request: unit.request, consumer })'));
   assert.ok(collect.includes('verifyChangedUidConsumerApproval') && collect.includes('VALUE_MISMATCH'));
   assert.ok(final.includes('verify-changed-uid-consumer-approval.mjs'));
+});
+
+async function multiSourceFixture(t) {
+  const f = await fixture(t), first = f.read(META).records[0];
+  const additional = [3, 4, 5, 6].map(n => ({ ...first, questionUid: uid(n),
+    sourceArchiveFile: n === 6 ? SOURCE_2 : SOURCE, sourceOrdinal: n === 6 ? 1 : n,
+    sourceQuestionNo: String(n === 6 ? 1 : n), sourceFingerprint: h(`historical-${n}`) }));
+  // Only the original UID is in supportingQuestionUids. The builder must also
+  // discover all four exact metadata/runtime consumers, including source 2.
+  f.patch(META, d => d.records.push(...additional));
+  f.patch(IDS, d => d.records.push(...additional.map(r => Object.fromEntries(
+    ['questionUid', 'sourceArchiveFile', 'sourceOrdinal', 'sourceQuestionNo', 'sourceFingerprint'].map(k => [k, r[k]])))));
+  f.patch(RT, d => d.records.push(...additional));
+  for (const source of [SOURCE, SOURCE_2]) {
+    const rows = f.read(META).records.filter(r => r.sourceArchiveFile === source).sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
+    f.put(`archive/exams/${source}`, `window.questionBank=${JSON.stringify(rows.map(r => ({ id: r.sourceOrdinal,
+      content: 'unchanged synthetic question', ...Object.fromEntries(['curriculum', 'standardCourse', 'standardUnitKey', 'subUnitKey', 'problemTypeKey', 'templateKey'].map(k => [k, r[k]])) })))};\n`);
+  }
+  const baseProof = f.read(f.proofPath);
+  for (const row of additional) {
+    const proof = { ...baseProof, questionUid: row.questionUid, sourceArchiveFile: row.sourceArchiveFile,
+      sourceOrdinal: row.sourceOrdinal, sourceFingerprint: row.sourceFingerprint };
+    const file = `archive/data/meta-foundation/evidence/review-overrides/v1/${row.questionUid}.json`;
+    f.put(file, proof);
+    f.patch('archive/data/archive2-item-review-overrides.json', d => d.records.push({ ...proof,
+      evidenceReference: file.slice('archive/'.length), evidenceSha256: h(j(proof)) }));
+  }
+  f.patch('fixture-consumer.json', d => {
+    for (const row of additional) {
+      const resolved = { ...d.resolved[0], questionUid: row.questionUid, sourceFile: row.sourceArchiveFile, sourceOrdinal: row.sourceOrdinal };
+      d.resolved.push(resolved); d.page.push({ ...resolved, directSelectable: true });
+    }
+  });
+  f.build = () => f.module.createBindingCourseCorrectionRequestV2({ root: f.root, requestId: 'test-shared-binding-spelling',
+    requestedBy: 'fixture-owner', reason: 'One shared binding spelling, all existing approvals preserved', before: f.before });
+  f.req = await f.build();
+  f.run = opts => f.module.registerBindingCourseCorrection({ root: f.root, request: f.req, ...opts });
+  f.secondProof = `archive/data/meta-foundation/evidence/review-overrides/v1/${uid(6)}.json`;
+  return f;
+}
+
+test('v2 derives all consumers and both sources, preserves every runtime row, and replays without approval', async t => {
+  const f = await multiSourceFixture(t), initial = filesSnapshot(f.root), runtime = f.read(RT);
+  assert.equal(f.req.schemaVersion, 'archive-binding-course-correction-request-v2');
+  assert.deepEqual(f.req.sourceSnapshots.map(s => s.sourceArchiveFile), [SOURCE_2, SOURCE].sort());
+  assert.deepEqual(f.req.sourceSnapshots.map(s => s.expectedQuestionCount), [1, 5]);
+  assert.equal(f.req.preservedConsumers.length, 5);
+  assert.equal(f.req.preservedConsumers.filter(r => r.sourceOrdinal === 1).length, 2, 'same ordinal in two sources remains two UIDs');
+  assert.ok(f.req.beforeFiles.some(r => r.path === `archive/exams/${SOURCE_2}`));
+  assert.ok(f.req.beforeFiles.some(r => r.path === f.secondProof));
+  const dry = await f.run({});
+  assert.equal(dry.affectedBindingUidCount, 5); assert.equal(dry.checkedRuntimeUids, 6);
+  assert.deepEqual(filesSnapshot(f.root), initial);
+  const result = await f.run({ write: true });
+  assert.equal(result.status, 'REGISTERED_CORRECTION');
+  assert.deepEqual(f.read(RT).records, runtime.records);
+  for (const p of [META, IDS, `archive/exams/${SOURCE}`, `archive/exams/${SOURCE_2}`, f.proofPath, f.secondProof, 'archive/data/archive2-item-review-overrides.json'])
+    assert.equal(h(fs.readFileSync(path.join(f.root, p))), initial.get(p));
+  const receipt = f.read(result.receiptPath);
+  assert.equal(receipt.schemaVersion, 'archive-binding-course-correction-receipt-v2');
+  assert.equal(receipt.approvalCreated, false); assert.equal(receipt.metadataApprovalStatus, 'NOT_CREATED');
+  assert.deepEqual(receipt.sourceSnapshots, f.req.sourceSnapshots);
+  assert.equal((await f.run({ verifyProjection: true })).checkedRuntimeUids, 6);
+  assert.equal((await f.run({ write: true })).status, 'REPLAY');
+});
+
+const invalidV2Requests = [
+  ['missing source', f => { f.req.sourceSnapshots = f.req.sourceSnapshots.filter(s => s.sourceArchiveFile !== SOURCE_2); }, /sourceSnapshots/],
+  ['extra source', f => { f.req.sourceSnapshots.push({ ...f.req.sourceSnapshots[0], sourceArchiveFile: SOURCE.replace('정정', '추가') }); f.req.sourceSnapshots.sort((a, b) => a.sourceArchiveFile < b.sourceArchiveFile ? -1 : 1); }, /sourceSnapshots/],
+  ['duplicate source', f => { f.req.sourceSnapshots.push(f.req.sourceSnapshots[0]); }, /duplicate sourceArchiveFile/],
+  ['second source raw hash', f => { f.req.sourceSnapshots.find(s => s.sourceArchiveFile === SOURCE_2).expectedSourceSha256 = '0'.repeat(64); }, /sourceSnapshots/],
+  ['second source blob', f => { f.req.sourceSnapshots.find(s => s.sourceArchiveFile === SOURCE_2).expectedSourceBlobSha1 = '0'.repeat(40); }, /sourceSnapshots/],
+  ['second source count', f => { f.req.sourceSnapshots.find(s => s.sourceArchiveFile === SOURCE_2).expectedQuestionCount++; }, /sourceSnapshots/],
+  ['missing derived consumer', f => { f.req.preservedConsumers = f.req.preservedConsumers.filter(r => r.questionUid !== uid(6)); }, /consumer set\/hash/],
+  ['cross-source consumer substitution', f => { f.req.preservedConsumers.find(r => r.questionUid === uid(6)).sourceArchiveFile = SOURCE; }, /consumer set\/hash/],
+  ['arbitrary source allowlist', f => { f.req.sourceArchiveFiles = [SOURCE]; }, /no approval/],
+  ['approval injection', f => { f.req.approval = { type: 'FINAL_QA' }; }, /no approval/],
+  ['second binding delta', f => { f.req.correction.extra = { standardCourse: '중1 수학' }; }, /no approval/],
+  ['non-course change', f => { f.req.correction.after.subUnitKey = 'DIFFERENT'; }, /only the literal/],
+];
+for (const [name, mutate, error] of invalidV2Requests) test(`v2 refuses ${name} without writes`, async t => {
+  const f = await multiSourceFixture(t); mutate(f); const before = filesSnapshot(f.root);
+  await assert.rejects(f.run({ write: true }), error); assert.deepEqual(filesSnapshot(f.root), before);
+});
+
+const invalidV2State = [
+  ['second source drift', f => f.put(`archive/exams/${SOURCE_2}`, fs.readFileSync(path.join(f.root, `archive/exams/${SOURCE_2}`), 'utf8') + '// changed\n'), /sourceSnapshots/],
+  ['second source missing', f => fs.rmSync(path.join(f.root, `archive/exams/${SOURCE_2}`)), /ENOENT/],
+  ['second proof drift', f => f.patch(f.secondProof, d => { d.latestAcceptedReview2.decisionId = 'changed'; }), /compact R2 proof mismatch/],
+  ['second proof removed', f => fs.rmSync(path.join(f.root, f.secondProof)), /ENOENT/],
+  ['second consumer unapproved', f => f.patch(META, d => { d.records.find(r => r.questionUid === uid(6)).reviewStatus = 'review_required'; }), /unapproved preserved/],
+  ['second identity source mismatch', f => f.patch(IDS, d => { d.records.find(r => r.questionUid === uid(6)).sourceArchiveFile = SOURCE; }), /unapproved preserved/],
+  ['second historical fingerprint mismatch', f => f.patch(IDS, d => { d.records.find(r => r.questionUid === uid(6)).sourceFingerprint = '0'.repeat(64); }), /unapproved preserved/],
+  ['second runtime missing', f => f.patch(RT, d => { d.records = d.records.filter(r => r.questionUid !== uid(6)); }), /incomplete consumer/],
+  ['correct binding duplicate', f => f.patch(`${BASE}/bindings.json`, d => d.bindings.push(f.req.correction.after)), /duplicate old\/corrected/],
+];
+for (const [name, mutate, error] of invalidV2State) test(`v2 refuses ${name}`, async t => {
+  const f = await multiSourceFixture(t); mutate(f); const before = filesSnapshot(f.root);
+  await assert.rejects(f.run({ write: true }), error); assert.deepEqual(filesSnapshot(f.root), before);
+});
+
+test('v2 builder refuses a caller-selected source subset and an unknown derived source', async t => {
+  const f = await multiSourceFixture(t);
+  await assert.rejects(f.module.createBindingCourseCorrectionRequestV2({ root: f.root, requestId: 'subset', requestedBy: 'owner',
+    reason: 'subset', before: f.before, sourceArchiveFiles: [SOURCE] }), /no source\/UID allowlist/);
+  for (const p of [META, IDS, RT]) f.patch(p, d => { d.records.find(r => r.questionUid === uid(6)).sourceArchiveFile = 'unknown/source.js'; });
+  await assert.rejects(f.build(), /derived source is not an original M1 exam/);
+});
+
+test('v2 replay re-derives closure when request and receipt jointly omit source 2', async t => {
+  const f = await multiSourceFixture(t), result = await f.run({ write: true });
+  f.req.sourceSnapshots = f.req.sourceSnapshots.filter(s => s.sourceArchiveFile !== SOURCE_2);
+  f.req.preservedConsumers = f.req.preservedConsumers.filter(r => r.sourceArchiveFile !== SOURCE_2);
+  f.patch(result.receiptPath, d => { d.sourceSnapshots = f.req.sourceSnapshots; d.preservedConsumers = f.req.preservedConsumers;
+    d.requestSha256 = h(f.module.stableBindingCorrectionJson(f.req)); });
+  await assert.rejects(f.run({ verifyProjection: true }), /registered source\/consumer closure mismatch/);
+});
+
+test('v2 replay refuses jointly omitted second-source protected inputs', async t => {
+  const f = await multiSourceFixture(t), result = await f.run({ write: true });
+  const hidden = new Set([`archive/exams/${SOURCE_2}`, f.secondProof]);
+  f.req.beforeFiles = f.req.beforeFiles.filter(ref => !hidden.has(ref.path));
+  f.patch(result.receiptPath, d => { d.protectedFiles = d.protectedFiles.filter(ref => !hidden.has(ref.path));
+    d.requestSha256 = h(f.module.stableBindingCorrectionJson(f.req)); });
+  await assert.rejects(f.run({ verifyProjection: true }), /registered source\/proof input omitted/);
+});
+
+test('v2 preserves unrelated runtime consumer approval and selection; write failure rolls back', async t => {
+  const f = await multiSourceFixture(t), before = filesSnapshot(f.root), original = fs.writeFileSync;
+  let armed = true;
+  fs.writeFileSync = function(file, ...args) {
+    if (armed && String(file) === path.join(f.root, RT)) { armed = false; throw new Error('v2 fixture write failure'); }
+    return original.call(fs, file, ...args);
+  };
+  try { await assert.rejects(f.run({ write: true }), /v2 fixture write failure/); }
+  finally { fs.writeFileSync = original; }
+  assert.deepEqual(filesSnapshot(f.root), before);
+  await f.run({ write: true });
+  const consumer = f.read('fixture-consumer.json');
+  f.patch('fixture-consumer.json', d => { d.page.find(r => r.questionUid === uid(2)).directSelectable = false; });
+  await assert.rejects(f.run({ verifyProjection: true }), /consumer classification\/approval\/selection changed/);
+  f.put('fixture-consumer.json', consumer);
+  f.patch('fixture-consumer.json', d => { d.resolved.find(r => r.questionUid === uid(6)).assignmentEvidence = { approvalStatus: 'APPROVED' }; });
+  await assert.rejects(f.run({ verifyProjection: true }), /consumer classification\/approval\/selection changed/);
+});
+
+test('v2 actual dispatch and shared gate bind both sources and retain one collector unit', async t => {
+  const f = await multiSourceFixture(t);
+  // Exercise the real routing/checking code with the same explicitly synthetic
+  // consumer dependency used above, not a second hand-written verifier.
+  const gatePath = 'archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs';
+  const raw = fs.readFileSync(path.join(repo, gatePath), 'utf8');
+  const loader = /export function loadConsumer\(root\) \{[\s\S]*?\n\}\n\nfunction findMetaPipelineRuntime/;
+  assert.ok(loader.test(raw));
+  f.put(gatePath, raw.replace(loader, `export function loadConsumer(root) {
+    const d = JSON.parse(fs.readFileSync(path.join(root, 'fixture-consumer.json'), 'utf8'));
+    return {resolvedBySource:new Map(d.resolved.map(r=>[r.sourceFile+'#'+r.sourceOrdinal,r])),
+      pageByUid:new Map(d.page.map(r=>[r.questionUid,r]))};
+  }\n\nfunction findMetaPipelineRuntime`));
+  f.put('archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs', 'export function loadResolvedConsumerCatalog(){throw new Error("unused fixture dependency");}\n');
+  f.put('archive/tools/meta-foundation/register-difficulty5.mjs', 'export function bindDifficulty5Source(){throw new Error("unused fixture dependency");}\n');
+  for (const name of ['register-reviewed-exam-meta-source.mjs', 'reviewed-runtime-summary.mjs'])
+    f.put(`archive/tools/meta-foundation/${name}`, fs.readFileSync(path.join(repo, 'archive/tools/meta-foundation', name), 'utf8'));
+  const requestFile = 'shared-request.json'; f.put(requestFile, f.req);
+  const dispatch = flags => spawnSync(process.execPath, [path.join(f.root, 'archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs'),
+    '--repo-root', f.root, '--request', requestFile, ...flags], { cwd: f.root, encoding: 'utf8' });
+  for (const [flags, status] of [[[], 'DRY_RUN'], [['--write'], 'REGISTERED_CORRECTION'], [['--verify-projection'], 'PASS']]) {
+    const out = dispatch(flags); assert.equal(out.status, 0, out.stderr); assert.equal(JSON.parse(out.stdout).status, status);
+  }
+  const gate = await import(pathToFileURL(path.join(f.root, gatePath)).href + '?routing-test');
+  const verify = () => gate.verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [requestFile] });
+  const result = verify();
+  assert.equal(result.status, 'PASS', JSON.stringify(result.failures));
+  assert.deepEqual(result.counts, { changed: 5, checked: 5, passed: 5, skippedUnchanged: 0 });
+  assert.equal(result.exams.length, 1); assert.equal(result.exams[0].exam, f.req.requestId);
+  assert.equal(result.exams[0].preservedRuntimeUids, 6); assert.equal(result.exams[0].approvalCreated, false);
+  assert.deepEqual(collectConsumerRefusals(result, [requestFile], f.root), []);
+  f.put(`archive/exams/${SOURCE_2}`, fs.readFileSync(path.join(f.root, `archive/exams/${SOURCE_2}`), 'utf8') + '// changed\n');
+  const failed = verify();
+  assert.equal(failed.status, 'FAIL'); assert.equal(failed.counts.checked, 0);
+  assert.equal(failed.failures[0].reason, 'SOURCE_BLOB_MISMATCH'); assert.equal(failed.failures[0].exam, f.req.requestId);
+  assert.deepEqual(collectConsumerRefusals(failed, [requestFile], f.root).map(r => r.request), [requestFile]);
+  f.req.sourceSnapshots[0].sourceArchiveFile = 'original/middle/m1/2final/..\\..\\outside.js';
+  f.put(requestFile, f.req);
+  const malformed = verify();
+  assert.equal(malformed.failures[0].reason, 'INVALID_REQUEST', 'reject a backslash path before source normalization or reading');
 });

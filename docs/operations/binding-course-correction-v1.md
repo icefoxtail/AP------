@@ -20,6 +20,10 @@ consumers are refused. A consumer still using the old spelling is refused: this
 operation does not migrate its metadata. An existing correct tuple is also
 refused; it must never create duplicate bindings.
 
+For one binding shared by several already approved source exams, use the
+[v2 derived-source extension](binding-course-correction-v2.md). V1 keeps this
+single-source restriction and its existing request/receipt format.
+
 The ACTIVE canonical pack must already allow the correctly spelled course and
 curriculum. Its version must equal the current runtime envelope version. A
 preexisting version mismatch is `VERSION_PRECONDITION_FAILED`, not an implicit

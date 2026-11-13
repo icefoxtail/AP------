@@ -266,7 +266,7 @@ console.log(JSON.stringify({
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   if (!requestPath.startsWith(root + path.sep) || !fs.existsSync(requestPath)) throw new Error("valid --request is required");
   const req = JSON.parse(fs.readFileSync(requestPath, "utf8"));
-  if (req.schemaVersion === "archive-binding-course-correction-request-v1") {
+  if (["archive-binding-course-correction-request-v1", "archive-binding-course-correction-request-v2"].includes(req.schemaVersion)) {
     const { registerBindingCourseCorrection } = await import("./register-binding-course-correction.mjs");
     console.log(JSON.stringify(await registerBindingCourseCorrection({ root, request: req, write, verifyProjection: Boolean(args["verify-projection"]) }), null, 2));
   } else if (req.schemaVersion === "archive-finalqa-pinpoint-register-request-v1") {

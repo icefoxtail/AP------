@@ -9,6 +9,9 @@ import { loadActiveMetaRegistry, curriculumForQuestion } from './active-registry
 
 export const BINDING_COURSE_CORRECTION_SCHEMA = 'archive-binding-course-correction-request-v1';
 export const BINDING_COURSE_CORRECTION_RECEIPT = 'archive-binding-course-correction-receipt-v1';
+export const BINDING_COURSE_CORRECTION_SCHEMA_V2 = 'archive-binding-course-correction-request-v2';
+export const BINDING_COURSE_CORRECTION_RECEIPT_V2 = 'archive-binding-course-correction-receipt-v2';
+export const isBindingCourseCorrectionSchema = schema => [BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2].includes(schema);
 const CANON = 'archive/data/meta-foundation/canonical';
 const BASE = `${CANON}/packs/middle1`;
 const BINDINGS = `${BASE}/bindings.json`, PACK = `${BASE}/pack.json`;
@@ -21,6 +24,7 @@ const OVERRIDES = 'archive/data/archive2-item-review-overrides.json';
 const RECEIPTS = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1';
 const HEX = /^[a-f0-9]{64}$/;
 const UID = /^qid_v1_[a-f0-9]{64}$/;
+const SOURCE = /^original\/middle\/m1\/(?:1|2)(?:mid|final)\/[^/]+\.js$/;
 const fail = message => { throw new Error(`BINDING_COURSE_CORRECTION: ${message}`); };
 export const stableBindingCorrectionJson = value => JSON.stringify(value, (_, v) => v && typeof v === 'object' && !Array.isArray(v)
   ? Object.fromEntries(Object.keys(v).sort().map(k => [k, v[k]])) : v);
@@ -109,8 +113,9 @@ function validateCorrection(req) {
       !same({ ...b, standardCourse: a.standardCourse }, a)) fail('only the literal standardCourse spelling may change');
 }
 
-function facts(root, req) {
-  if (!/^original\/middle\/m1\/(?:1|2)(?:mid|final)\/[^/]+\.js$/.test(req.sourceArchiveFile || '')) fail('one original M1 exam required');
+function facts(root, req, { registered = false } = {}) {
+  const multiSource = req.schemaVersion === BINDING_COURSE_CORRECTION_SCHEMA_V2;
+  if (!multiSource && !SOURCE.test(req.sourceArchiveFile || '')) fail('one original M1 exam required');
   validateCorrection(req);
   const { before: b, after: a } = req.correction;
   const cache = new Map();
@@ -121,15 +126,15 @@ function facts(root, req) {
       !pack.standardCourses?.includes(a.standardCourse) || pack.standardCourses.includes(b.standardCourse) ||
       !pack.curricula?.includes(a.curriculum) || !index.activePacks?.some(p => p.id === pack.packId && p.status === 'ACTIVE' && p.version === pack.packVersion))
     fail('ACTIVE pack / canonical target course / pack index required');
-  const rowMatches = bindings.bindings?.map((r, i) => same(r, b) ? i : -1).filter(i => i >= 0) || [];
+  const rowMatches = bindings.bindings?.map((r, i) => same(r, registered ? a : b) ? i : -1).filter(i => i >= 0) || [];
   if (rowMatches.length !== 1) fail('exact before binding missing/ambiguous');
   const allBindings = [];
   for (const p of index.activePacks || []) {
     const base = `${CANON}/packs/${p.id.toLowerCase().replaceAll('_', '-')}`;
     for (const r of data(`${base}/bindings.json`).bindings || []) allBindings.push(r);
   }
-  if (allBindings.filter(r => r.status === 'ACTIVE' && same(tuple(r), tuple(b))).length !== 1 ||
-      allBindings.some(r => r.status === 'ACTIVE' && same(tuple(r), tuple(a)))) fail('duplicate old/corrected binding tuple');
+  if (allBindings.filter(r => r.status === 'ACTIVE' && same(tuple(r), tuple(b))).length !== (registered ? 0 : 1) ||
+      allBindings.filter(r => r.status === 'ACTIVE' && same(tuple(r), tuple(a))).length !== (registered ? 1 : 0)) fail('duplicate old/corrected binding tuple');
   const taxonomy = data(`${BASE}/taxonomy.json`);
   if (taxonomy.problemTypes?.filter(p => p.problemTypeKey === b.problemTypeKey && p.status === 'ACTIVE' && p.ownerPack === 'MIDDLE1').length !== 1)
     fail('ACTIVE unchanged PT required');
@@ -172,8 +177,10 @@ function facts(root, req) {
     if (!m || !id || !r || !UID.test(uid) || !matches(m) || !matches({ ...m, ...r }) ||
         m.standardCourse !== a.standardCourse || (r.standardCourse ?? m.standardCourse) !== a.standardCourse)
       fail(`old spelling / incomplete consumer cannot be migrated: ${uid}`);
-    if (m.sourceArchiveFile !== req.sourceArchiveFile || id.sourceArchiveFile !== req.sourceArchiveFile ||
-        r.sourceArchiveFile !== req.sourceArchiveFile || m.sourceOrdinal !== id.sourceOrdinal || m.sourceOrdinal !== r.sourceOrdinal ||
+    const source = multiSource ? m.sourceArchiveFile : req.sourceArchiveFile;
+    if (!SOURCE.test(source || '')) fail(`derived source is not an original M1 exam: ${uid}`);
+    if (m.sourceArchiveFile !== source || id.sourceArchiveFile !== source ||
+        r.sourceArchiveFile !== source || m.sourceOrdinal !== id.sourceOrdinal || m.sourceOrdinal !== r.sourceOrdinal ||
         entry.file !== RUNTIME || m.reviewStatus !== 'reviewed_pass' || r.reviewStatus !== 'reviewed_pass' ||
         !String(m.metadataStatus).startsWith('approved_') || !String(r.metadataStatus).startsWith('approved_') ||
         id.sourceFingerprint !== m.sourceFingerprint)
@@ -188,30 +195,48 @@ function facts(root, req) {
     if (indexed.length !== 1 || indexed[0].evidenceReference !== proofPath.slice('archive/'.length) || indexed[0].evidenceSha256 !== sha(proofBytes) ||
         !same(Object.fromEntries(Object.entries(indexed[0]).filter(([k]) => !['evidenceReference', 'evidenceSha256'].includes(k))), proof) ||
         proof.schemaVersion !== 'archive-review2-runtime-override/v1' || proof.questionUid !== uid ||
-        proof.sourceArchiveFile !== req.sourceArchiveFile || proof.sourceOrdinal !== m.sourceOrdinal || proof.sourceFingerprint !== m.sourceFingerprint ||
+        proof.sourceArchiveFile !== source || proof.sourceOrdinal !== m.sourceOrdinal || proof.sourceFingerprint !== m.sourceFingerprint ||
         !HEX.test(proof.sourceFingerprint || '') || !['PASS', 'REPAIR'].includes(decision?.status) || decision?.runtimePackId !== pack.packId ||
         !['decisionId', 'decisionReason', 'evidencePath', 'decisionAt'].every(k => text(decision[k]))) fail(`existing compact R2 proof mismatch: ${uid}`);
-    preserved.push({ questionUid: uid, sourceOrdinal: m.sourceOrdinal, metadataRowSha256: rowSha(m), identityRowSha256: rowSha(id),
+    preserved.push({ questionUid: uid, ...(multiSource ? { sourceArchiveFile: source } : {}), sourceOrdinal: m.sourceOrdinal, metadataRowSha256: rowSha(m), identityRowSha256: rowSha(id),
       runtimeRowSha256: rowSha(r), priorProof: { path: proofPath, sha256: sha(proofBytes) } });
   }
-  const sourcePath = `archive/exams/${req.sourceArchiveFile}`, sourceBytes = bytes(sourcePath);
-  const context = { window: {}, console: { log() {}, warn() {}, error() {} } };
-  vm.runInNewContext(sourceBytes.toString('utf8'), context, { timeout: 5000 });
-  const bank = context.window.questionBank || context.window.questions;
-  if (!Array.isArray(bank) || !bank.length || metadata.records.filter(r => r.sourceArchiveFile === req.sourceArchiveFile).length !== bank.length ||
-      identity.records.filter(r => r.sourceArchiveFile === req.sourceArchiveFile).length !== bank.length ||
-      preserved.some(r => !Number.isInteger(r.sourceOrdinal) || r.sourceOrdinal < 1 || r.sourceOrdinal > bank.length)) fail('source/metadata/identity exam denominator');
-  for (const row of preserved) {
-    const q = bank[row.sourceOrdinal - 1], m = byUid.get(row.questionUid), id = ids.get(row.questionUid);
-    const questionNo = String(q.sourceQuestionNo ?? q.id ?? '');
-    if (!questionNo || questionNo !== m.sourceQuestionNo || questionNo !== id.sourceQuestionNo ||
-        curriculumForQuestion({ ...q, sourceArchiveFile: req.sourceArchiveFile }) !== m.curriculum)
-      fail(`current source question number/curriculum mismatch: ${row.questionUid}`);
-    for (const k of ['standardCourse', 'standardUnitKey', 'subUnitKey', 'problemTypeKey', 'templateKey'])
-      if (!same(q[k], m[k])) fail(`current source classification mismatch: ${row.questionUid}.${k}`);
+  // V2 derives this closure from actual consumers, never from a caller's list.
+  // V1 retains its one-source requirement and original request/receipt shape.
+  const sources = multiSource ? [...new Set(preserved.map(r => r.sourceArchiveFile))].sort() : [req.sourceArchiveFile];
+  const sourceSnapshots = [];
+  for (const source of sources) {
+    const sourceBytes = bytes(`archive/exams/${source}`);
+    const context = { window: {}, console: { log() {}, warn() {}, error() {} } };
+    vm.runInNewContext(sourceBytes.toString('utf8'), context, { timeout: 5000 });
+    const bank = context.window.questionBank || context.window.questions;
+    const sourceRows = preserved.filter(r => !multiSource || r.sourceArchiveFile === source);
+    const sourceMeta = metadata.records.filter(r => r.sourceArchiveFile === source);
+    const sourceIds = identity.records.filter(r => r.sourceArchiveFile === source);
+    if (!Array.isArray(bank) || !bank.length || sourceMeta.length !== bank.length || sourceIds.length !== bank.length ||
+        sourceRows.some(r => !Number.isInteger(r.sourceOrdinal) || r.sourceOrdinal < 1 || r.sourceOrdinal > bank.length)) fail('source/metadata/identity exam denominator');
+    if (multiSource) {
+      const ordinals = rows => rows.map(r => r.sourceOrdinal).sort((a, b) => a - b);
+      const expected = bank.map((_, i) => i + 1);
+      if (!same(ordinals(sourceMeta), expected) || !same(ordinals(sourceIds), expected) ||
+          sourceMeta.some(r => ids.get(r.questionUid)?.sourceArchiveFile !== source || ids.get(r.questionUid)?.sourceOrdinal !== r.sourceOrdinal))
+        fail(`source/metadata/identity ordinal binding: ${source}`);
+    }
+    for (const row of sourceRows) {
+      const q = bank[row.sourceOrdinal - 1], m = byUid.get(row.questionUid), id = ids.get(row.questionUid);
+      const questionNo = String(q.sourceQuestionNo ?? q.id ?? '');
+      if (!questionNo || questionNo !== m.sourceQuestionNo || questionNo !== id.sourceQuestionNo ||
+          curriculumForQuestion({ ...q, sourceArchiveFile: source }) !== m.curriculum ||
+          multiSource && q.questionUid && q.questionUid !== row.questionUid)
+        fail(`current source question number/curriculum mismatch: ${row.questionUid}`);
+      for (const k of ['standardCourse', 'standardUnitKey', 'subUnitKey', 'problemTypeKey', 'templateKey'])
+        if (!same(q[k], m[k])) fail(`current source classification mismatch: ${row.questionUid}.${k}`);
+    }
+    sourceSnapshots.push({ sourceArchiveFile: source, expectedSourceBlobSha1: blob(sourceBytes), expectedSourceSha256: sha(sourceBytes),
+      expectedQuestionCount: bank.length, affectedQuestionUids: sourceRows.map(r => r.questionUid).sort() });
   }
   return { cache, bytes, data, pack, index, bindings, runtime, taxonomy, rowIndex: rowMatches[0], preserved,
-    expectedSourceBlobSha1: blob(sourceBytes), expectedSourceSha256: sha(sourceBytes), expectedQuestionCount: bank.length,
+    ...(multiSource ? { sourceSnapshots } : Object.fromEntries(['expectedSourceBlobSha1', 'expectedSourceSha256', 'expectedQuestionCount'].map(k => [k, sourceSnapshots[0][k]]))),
     runtimeRecordsSha256: rowSha(runtime.records), versionBefore: { packVersion: pack.packVersion, runtimeVersion: runtime.runtimeVersion },
     beforeDocuments: [BINDINGS, PACK, RUNTIME, INDEX].map(path => ({ path, sha256: rowSha(data(path)) })),
     beforeFiles: sortedRefs([...cache].map(([path, value]) => ({ path, sha256: sha(value), sizeBytes: value.length }))) };
@@ -230,21 +255,49 @@ export async function createBindingCourseCorrectionRequest({ root, requestId, so
     runtimeRecordsSha256: f.runtimeRecordsSha256, preservedConsumers: f.preserved };
 }
 
+// Multi-source extension of the same single-field transaction. No source or
+// UID allowlist is accepted: all impacted sources must already be approved and
+// must carry the same indexed compact R2 provenance required by v1.
+export async function createBindingCourseCorrectionRequestV2({ root, requestId, requestedBy, reason, before, ...extra }) {
+  if (Object.keys(extra).length) fail('v2 builder derives all sources; no source/UID allowlist accepted');
+  const req = { schemaVersion: BINDING_COURSE_CORRECTION_SCHEMA_V2, requestId, requestedBy, reason,
+    correction: { path: BINDINGS, collection: 'bindings', before, after: { ...before, standardCourse: '중1 수학' } } };
+  const f = facts(root, req);
+  const consumerBefore = captureBindingCourseConsumers(await officialConsumer(root), f.runtime.records);
+  return { ...req, sourceSnapshots: f.sourceSnapshots, beforeFiles: f.beforeFiles,
+    beforeDocuments: f.beforeDocuments, versionBefore: f.versionBefore, expectedConsumerStateSha256: rowSha(consumerBefore),
+    runtimeRecordsSha256: f.runtimeRecordsSha256, preservedConsumers: f.preserved };
+}
+
 function validateRequestShape(req) {
-  const allowed = ['schemaVersion', 'requestId', 'sourceArchiveFile', 'requestedBy', 'reason', 'correction',
-    'expectedSourceBlobSha1', 'expectedSourceSha256', 'expectedQuestionCount', 'beforeFiles', 'beforeDocuments', 'versionBefore',
+  const multiSource = req.schemaVersion === BINDING_COURSE_CORRECTION_SCHEMA_V2;
+  const allowed = ['schemaVersion', 'requestId', 'requestedBy', 'reason', 'correction',
+    ...(multiSource ? ['sourceSnapshots'] : ['sourceArchiveFile', 'expectedSourceBlobSha1', 'expectedSourceSha256', 'expectedQuestionCount']),
+    'beforeFiles', 'beforeDocuments', 'versionBefore',
     'expectedConsumerStateSha256', 'runtimeRecordsSha256', 'preservedConsumers'];
-  if (req.schemaVersion !== BINDING_COURSE_CORRECTION_SCHEMA || !/^[A-Za-z0-9][A-Za-z0-9_-]{0,90}$/.test(req.requestId || '') ||
+  if (!isBindingCourseCorrectionSchema(req.schemaVersion) || !/^[A-Za-z0-9][A-Za-z0-9_-]{0,90}$/.test(req.requestId || '') ||
       !text(req.requestedBy) || !text(req.reason) || Object.keys(req).some(k => !allowed.includes(k)) ||
       !same(Object.keys(req.correction || {}).sort(), ['after', 'before', 'collection', 'path']) ||
       !HEX.test(req.expectedConsumerStateSha256 || '')) fail('request schema/scope; no approval or metadata delta accepted');
   validateCorrection(req);
+  if (multiSource) {
+    const sources = unique(req.sourceSnapshots, 'sourceArchiveFile', 'source snapshots');
+    if (!sources.size || !same([...sources.keys()], [...sources.keys()].sort())) fail('source snapshots must be a nonempty derived sorted set');
+    for (const s of sources.values()) {
+      if (!same(Object.keys(s).sort(), ['affectedQuestionUids', 'expectedQuestionCount', 'expectedSourceBlobSha1', 'expectedSourceSha256', 'sourceArchiveFile']) ||
+          !SOURCE.test(s.sourceArchiveFile) || !/^[a-f0-9]{40}$/.test(s.expectedSourceBlobSha1 || '') || !HEX.test(s.expectedSourceSha256 || '') ||
+          !Number.isSafeInteger(s.expectedQuestionCount) || s.expectedQuestionCount < 1 || !Array.isArray(s.affectedQuestionUids) ||
+          !s.affectedQuestionUids.length || s.affectedQuestionUids.some(u => !UID.test(u)) ||
+          !same(s.affectedQuestionUids, [...new Set(s.affectedQuestionUids)].sort())) fail('source snapshot fields/UID binding invalid');
+    }
+  }
 }
 
 function validateRequest(root, req) {
   validateRequestShape(req);
   const f = facts(root, req);
-  for (const k of ['expectedSourceBlobSha1', 'expectedSourceSha256', 'expectedQuestionCount', 'runtimeRecordsSha256', 'beforeFiles', 'beforeDocuments', 'versionBefore'])
+  const sourceFields = req.schemaVersion === BINDING_COURSE_CORRECTION_SCHEMA_V2 ? ['sourceSnapshots'] : ['expectedSourceBlobSha1', 'expectedSourceSha256', 'expectedQuestionCount'];
+  for (const k of [...sourceFields, 'runtimeRecordsSha256', 'beforeFiles', 'beforeDocuments', 'versionBefore'])
     if (!same(req[k], f[k])) fail(`stale/incorrect ${k}`);
   if (!same(req.preservedConsumers, f.preserved)) fail('preserved consumer set/hash mismatch; missing/extra/changed impact UID');
   const active = loadActiveMetaRegistry(root);
@@ -253,6 +306,7 @@ function validateRequest(root, req) {
 }
 
 function plan(root, req, f, beforeConsumer) {
+  const multiSource = req.schemaVersion === BINDING_COURSE_CORRECTION_SCHEMA_V2;
   const version = nextPatch(f.pack.packVersion);
   const bindings = structuredClone(f.bindings); bindings.bindings[f.rowIndex] = structuredClone(req.correction.after);
   const pack = { ...f.pack, packVersion: version };
@@ -265,9 +319,9 @@ function plan(root, req, f, beforeConsumer) {
   output.set(INDEX, json(buildRegistryIndex(canonical, output, file => output.get(file) ?? f.bytes(file).toString('utf8'))));
   for (const [file, value] of [...output]) if (fs.existsSync(safe(root, file)) && readBytes(root, file).equals(Buffer.from(value))) output.delete(file);
   const beforeRuntimeUids = f.runtime.records.map(r => r.questionUid).sort();
-  const receipt = { schemaVersion: BINDING_COURSE_CORRECTION_RECEIPT, requestId: req.requestId, requestSha256: rowSha(req),
+  const receipt = { schemaVersion: multiSource ? BINDING_COURSE_CORRECTION_RECEIPT_V2 : BINDING_COURSE_CORRECTION_RECEIPT, requestId: req.requestId, requestSha256: rowSha(req),
     operation: 'BINDING_COURSE_SPELLING_CORRECTION', status: 'CORRECTED_EXISTING_BINDING', approvalCreated: false,
-    sourceArchiveFile: req.sourceArchiveFile, expectedSourceBlobSha1: req.expectedSourceBlobSha1,
+    ...(multiSource ? { sourceSnapshots: f.sourceSnapshots } : { sourceArchiveFile: req.sourceArchiveFile, expectedSourceBlobSha1: req.expectedSourceBlobSha1 }),
     correction: req.correction, packVersionBefore: f.pack.packVersion, packVersionAfter: version,
     protectedFiles: f.beforeFiles.filter(r => !output.has(r.path)), runtimeRecordsSha256: f.runtimeRecordsSha256,
     preservedConsumers: f.preserved, runtimeConsumerUids: beforeRuntimeUids, consumerBefore: beforeConsumer,
@@ -279,13 +333,15 @@ function plan(root, req, f, beforeConsumer) {
 
 function checkReceiptFiles(root, req) {
   validateRequestShape(req);
+  const multiSource = req.schemaVersion === BINDING_COURSE_CORRECTION_SCHEMA_V2;
   const file = receiptPath(req), receipt = read(root, file);
   const version = nextPatch(req.versionBefore?.packVersion);
-  if (receipt.schemaVersion !== BINDING_COURSE_CORRECTION_RECEIPT || receipt.requestId !== req.requestId ||
+  const sourceMismatch = multiSource ? !same(receipt.sourceSnapshots, req.sourceSnapshots)
+    : receipt.sourceArchiveFile !== req.sourceArchiveFile || receipt.expectedSourceBlobSha1 !== req.expectedSourceBlobSha1;
+  if (receipt.schemaVersion !== (multiSource ? BINDING_COURSE_CORRECTION_RECEIPT_V2 : BINDING_COURSE_CORRECTION_RECEIPT) || receipt.requestId !== req.requestId ||
       receipt.requestSha256 !== rowSha(req) || receipt.approvalCreated !== false || receipt.metadataApprovalStatus !== 'NOT_CREATED' ||
       receipt.operation !== 'BINDING_COURSE_SPELLING_CORRECTION' || receipt.status !== 'CORRECTED_EXISTING_BINDING' ||
-      receipt.examFinalQaStatus !== 'NOT_EVALUATED' || receipt.sourceArchiveFile !== req.sourceArchiveFile ||
-      receipt.expectedSourceBlobSha1 !== req.expectedSourceBlobSha1 || receipt.runtimeRecordsSha256 !== req.runtimeRecordsSha256 ||
+      receipt.examFinalQaStatus !== 'NOT_EVALUATED' || sourceMismatch || receipt.runtimeRecordsSha256 !== req.runtimeRecordsSha256 ||
       !same(receipt.correction, req.correction) || !same(receipt.preservedConsumers, req.preservedConsumers) ||
       rowSha(receipt.consumerBefore) !== receipt.consumerBeforeSha256 || receipt.consumerBeforeSha256 !== req.expectedConsumerStateSha256 ||
       receipt.packVersionBefore !== req.versionBefore?.packVersion || receipt.packVersionAfter !== version) fail('receipt request/provenance mismatch');
@@ -342,6 +398,17 @@ function checkReceiptFiles(root, req) {
     const bytes = readBytes(root, ref.path);
     if (sha(bytes) !== ref.sha256 || (ref.sizeBytes !== undefined && bytes.length !== ref.sizeBytes)) fail(`receipt file drift: ${ref.path}`);
   }
+  if (multiSource) {
+    // Re-derive the closure even on replay, from the corrected binding and the
+    // immutable metadata/runtime/proof state. A request/receipt cannot narrow
+    // protection by jointly omitting a second exam or one supported UID.
+    const current = facts(root, req, { registered: true });
+    if (!same(current.sourceSnapshots, req.sourceSnapshots) || !same(current.preserved, req.preservedConsumers))
+      fail('registered source/consumer closure mismatch');
+    const protectedPaths = new Set(protectedRefs.map(ref => ref.path));
+    if (current.beforeFiles.some(ref => !expected.has(ref.path) && !protectedPaths.has(ref.path)))
+      fail('registered source/proof input omitted from protection');
+  }
   return { receipt, runtime };
 }
 
@@ -355,7 +422,9 @@ export function verifyBindingCourseCorrectionWithConsumer({ root, request, consu
   }
   return { status: 'PASS', verificationKind: 'EXISTING_CONSUMERS_PRESERVED', approvalCreated: false,
     bindingRowsCorrected: 1, affectedBindingUidCount: receipt.preservedConsumers.length, checkedRuntimeUids: after.length,
-    sourceArchiveFile: request.sourceArchiveFile, receiptPath: receiptPath(request) };
+    ...(request.schemaVersion === BINDING_COURSE_CORRECTION_SCHEMA_V2
+      ? { sourceArchiveFiles: request.sourceSnapshots.map(s => s.sourceArchiveFile) } : { sourceArchiveFile: request.sourceArchiveFile }),
+    receiptPath: receiptPath(request) };
 }
 
 export async function registerBindingCourseCorrection({ root, request: req, write = false, verifyProjection = false }) {

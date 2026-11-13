@@ -115,6 +115,30 @@ const references = values => {
 };
 const rootRefs = references(config.approval.evidenceRefs);
 const registryChanges = (config.registryChanges || []).map(change => {
+  // Same-exam spelling repair only. The official v2 registrar still checks every
+  // out-of-scope approved consumer; this builder cannot waive that guard.
+  if (change.path === 'archive/data/meta-foundation/canonical/packs/middle1/bindings.json' &&
+      change.collection === 'bindings' && change.before !== null) {
+    const before = change.before, after = change.after;
+    const keys = ['curriculum','standardUnitKey','subUnitKey','problemTypeKey','ownerPack'];
+    const targetUids = new Set(config.items.map(item => item.questionUid));
+    const rows = JSON.parse(fs.readFileSync(safe(change.path),'utf8')).bindings;
+    if (!before || before.status !== 'ACTIVE' || before.ownerPack !== 'MIDDLE1' ||
+        before.curriculum !== '2022' || before.standardCourse !== '中1 수학' ||
+        !eq(after,{...before,standardCourse:'중1 수학'}) ||
+        !eq(Object.keys(change.match || {}).sort(),[...keys].sort()) ||
+        !keys.every(key => change.match[key] === before[key]))
+      fail('same-exam binding repair may only correct the exact MIDDLE1 course spelling');
+    const matched = rows.filter(row => keys.every(key => row[key] === change.match[key]));
+    if (matched.length !== 1 || !eq(matched[0],before) ||
+        !Array.isArray(before.supportingQuestionUids) || !before.supportingQuestionUids.length ||
+        !before.supportingQuestionUids.every(uid => targetUids.has(uid)))
+      fail('binding spelling repair has ambiguous before state or supporting UID outside this exam');
+    const tupleKeys = ['curriculum','standardCourse','standardUnitKey','subUnitKey','problemTypeKey'];
+    if (rows.some(row => tupleKeys.every(key => row[key] === after[key])))
+      fail('correctly spelled binding already exists; do not create a duplicate');
+    return {...change,evidenceRefs:references(change.evidenceRefs)};
+  }
   // This reviewed course alias is required for exact M1-1 RPM parent references.
   // All other pack fields, including version and ownership, remain unchanged.
   if (!change.collection && [

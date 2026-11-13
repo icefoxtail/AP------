@@ -1,0 +1,29 @@
+[
+  {
+    "name": "consumer-routing-regression",
+    "command": [
+      "node",
+      "--test",
+      "--test-concurrency=1",
+      "--test-name-pattern=^(bindings:|assignment marker gates)",
+      "tests/archive-changed-uid-consumer-approval.test.mjs"
+    ],
+    "startedAt": "2026-11-13T20:47:41.271426+00:00",
+    "finishedAt": "2026-11-13T20:47:51.188609+00:00",
+    "exitCode": 1,
+    "log": ".tmp/binding-course-bridge/consumer-routing-regression.log"
+  },
+  {
+    "name": "consumer-refusal-regression",
+    "command": [
+      "node",
+      "--test",
+      "--test-concurrency=1",
+      "tests/archive-register-consumer-refusals.test.js"
+    ],
+    "startedAt": "2026-11-13T20:47:51.188719+00:00",
+    "finishedAt": "2026-11-13T20:47:51.384471+00:00",
+    "exitCode": 0,
+    "log": ".tmp/binding-course-bridge/consumer-refusal-regression.log"
+  }
+]
