@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "archive-difficulty5-register-request-v1",
+  "producer": "GPT_ROOT_90C1D51583CA_C",
+  "gemini": {
+    "schemaVersion": "v1",
+    "requestId": "m1s2-b01-c-25-pungdeok-mid-difficulty-20261114-source-gap",
+    "sourceArchiveFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+    "latestBlobSha": "ba372dca25302f43b0dbcab43adf2f149a54efe8",
+    "items": [
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_1ea07d7bc401d3f7661720a4cf03a386d49fccc7cb071ac311f7ba449ee71910",
+        "before": {
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "sourceFingerprint": "122e89aaf3fdaff1644e7153cb0aa1d61ad1cbfeefaae56fa8174544f7d01585",
+          "contentFingerprint": "7c9feed1205dc17f3a562df267bacec446d8beb6d818f24a015b506fd43114b6",
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        }
+      }
+    ]
+  },
+  "reviewedCorrection": {
+    "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+    "approvalRef": "M1S2-20261114-B01-C/INDEPENDENT_CHANGED_ITEM_REVIEW",
+    "evidencePath": ".archive-meta-register/evidence/m1s2-b01-c-25-pungdeok-mid-difficulty.json",
+    "evidenceSha256": "f42db88b19d8824684a241d534eec32612e3d2550dcdb1d14d4a56ebd2ef9b8c",
+    "rows": [
+      {
+        "sourceArchiveFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+        "ordinal": 6,
+        "questionUid": "qid_v1_1ea07d7bc401d3f7661720a4cf03a386d49fccc7cb071ac311f7ba449ee71910",
+        "decision": "CORRECT",
+        "sourceFingerprint": "ab1b15f7e622a6c087e9b9cc193353e21522bf51af3693e2d0149bd2b6fd1e9e",
+        "contentFingerprint": "4caedb2b880b0de640d5c90c0c77259c61b9cb00946527677df9410be44e39b4",
+        "staleSourceBinding": true,
+        "refreshBinding": false,
+        "before": {
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "sourceFingerprint": "122e89aaf3fdaff1644e7153cb0aa1d61ad1cbfeefaae56fa8174544f7d01585",
+          "contentFingerprint": "7c9feed1205dc17f3a562df267bacec446d8beb6d818f24a015b506fd43114b6",
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        },
+        "reason": "보수된 원본 SVG에 수선의 발과 길이가 직접 표시된다. 점-직선 거리 정의의 직접 판독으로 false claim을 고른다. source의 CLAIM_AUDIT 키는 ACTIVE registry에 없으며 CORE만 확인된다."
+      }
+    ]
+  }
+}
