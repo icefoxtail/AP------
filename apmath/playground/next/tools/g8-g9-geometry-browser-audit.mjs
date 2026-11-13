@@ -39,6 +39,39 @@ function nextNativeRangeInput(key) {
   }
   throw Error(`No distinct valid range value: ${key} ${JSON.stringify(dom)}`);
 }
+function readStudentEntry() {
+  const visible = selector => !!document.querySelector(selector)?.checkVisibility();
+  return {
+    sceneId: String(lab.scene.id), tab: lab.tab, nativePlayer: lab.video?.state ?? null,
+    lessonFirst: document.body.classList.contains('apl-lessonfirst'),
+    entryVisible: visible('.apl-lentry'), entryMode: document.querySelector('.apl-lentry')?.dataset.mode ?? null,
+    lessonButtons: document.querySelectorAll('.apl-lentry .apl-lgo').length,
+    directExploreVisible: visible('.apl-lentry .apl-lmanual'),
+    tabsVisible: visible('.apl-tabs'), exploreTabVisible: visible('button.apl-tab[aria-controls="apl-pane-explore"]'),
+    explorePanelVisible: visible('#apl-pane-explore')
+  };
+}
+async function enterStudentExploration(page, entry, settle) {
+  try {
+    // The native controls are reached through the real student entry, including
+    // on the fixed baseline. Never replace this action with a manual URL or setter.
+    if (entry.before.lessonFirst) {
+      if (!entry.before.entryVisible || entry.before.entryMode !== 'first' || !entry.before.lessonButtons || entry.before.nativePlayer !== 'idle') throw Error('Lesson-first screen has no idle lesson entry');
+      const selector = '.apl-lentry[data-mode="first"] .apl-lmanual', button = page.locator(selector);
+      if (await button.count() !== 1 || !await button.isVisible() || !await button.isEnabled()) throw Error('Lesson-first screen has no usable direct-exploration button');
+      entry.action = { selector, method: 'Playwright locator.click on the actual UI' };
+      await button.click();
+    }
+    await settle();
+    entry.after = await page.evaluate(readStudentEntry);
+    const after = entry.after;
+    if (after.lessonFirst || after.sceneId !== entry.before.sceneId || after.tab !== 'explore' || !after.tabsVisible || !after.exploreTabVisible || !after.explorePanelVisible) throw Error(`Exploration entry did not expose the original tabs and panel: ${JSON.stringify(after)}`);
+    entry.status = 'PASS';
+  } catch (error) {
+    entry.status = 'FAIL'; entry.error = error.message;
+    throw Error(`Student exploration entry failed: ${error.message}`);
+  }
+}
 
 const viewports = [
   { name: 'pc', width: 1440, height: 900 },
@@ -66,7 +99,7 @@ report.screenshotEnvironmentPolicy = SCREENSHOT_ENVIRONMENT_POLICY;
 report.viewportEvidencePolicy = { raw: 'Legacy full-page capture denominator; touch-context pixels UNVERIFIED_BEYOND_VIEWPORT', supporting: 'Fixed-viewport PNGs with actual environment and byte readback; separate denominator', pointerCoverage: 'Existing mouse probes only; no native touch claim' };
 try {
   for (const unit of units) {
-    report.units[unit] = { scenes: [], observations: [], captures: [], captureMetadata: {}, viewportCaptures: [], screenshotEnvironment: [], interactions: [] };
+    report.units[unit] = { scenes: [], observations: [], entries: [], captures: [], captureMetadata: {}, viewportCaptures: [], screenshotEnvironment: [], interactions: [] };
     const dest = report.units[unit];
     dest.controlCoverage = { allScenesRun: 'mobile-paper', otherRuns: 'targeted-scenes', numeric: 'first-visible-slider', drag: 'first-visible-draggable-handle', pointer: 'mouse', reset: 'native-click-stopped-and-rendered' };
     for (const run of runs) {
@@ -133,6 +166,7 @@ try {
       if(!fractionControl.pass)throw Error('Stacked-fraction clipping positive/negative control failed');
       const settle = () => page.evaluate(async () => { lab.render(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); window.__g89Labels = []; lab.render(); });
       const capture = async filename => {
+        const evidence = dest.entries?.find(entry => entry.capture === filename) || dest;
         const identity = await page.evaluate(() => ({ id: String(lab.scene.id), state: `${lab.tab}:${lab.s.step}` }));
         try {
           const bundle = await captureReviewState({ page, guard: screenshotGuard, out, name: filename, ...identity, fullPage: true, settle, collectContent: false,
@@ -142,15 +176,15 @@ try {
               const png = { sha256: sha256(bytes), bytes: bytes.length, width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
               if (!screenshotEnvironmentMatches(e.frame.touchEnvironment, screenshotGuard.expectedTouch)) throw Error(`Unverified screenshot environment: ${e.file}`);
               if (e.frame.fullPage === false && (png.width !== e.frame.viewport.width || png.height !== e.frame.viewport.height || e.frame.touchEnvironment.pixelEnvironment !== VIEWPORT_PIXEL_POLICY)) throw Error(`Viewport capture readback mismatch: ${e.file}`);
-              dest.captureMetadata[e.file] = { ...e.frame, png, pngSha256: png.sha256 };
+              evidence.captureMetadata[e.file] = { ...e.frame, png, pngSha256: png.sha256 };
             }
           });
           if (screenshotGuard.expectedTouch) {
-            const frame = dest.captureMetadata[bundle.file];
+            const frame = evidence.captureMetadata[bundle.file];
             if (frame?.fullPage !== false || bundle.rawReference?.file !== filename) throw Error(`Required viewport evidence missing: ${filename}`);
-            dest.viewportCaptures.push({ file: bundle.file, rawReference: filename, run: run.name, ...identity, frame });
+            evidence.viewportCaptures.push({ file: bundle.file, rawReference: filename, run: run.name, ...identity, frame });
           }
-          dest.captures.push(filename);
+          evidence.captures.push(filename);
         } catch (error) {
           report.failures.push({ unit, run: run.name, ...identity, reason: 'screenshot-evidence-failed', file: filename, error: error.message });
           throw error;
@@ -206,6 +240,13 @@ try {
         if (issues.length) report.failures.push({ unit, id: scene.id, run: run.name, state, issues, clipped: obs.clipped, katexErrors: obs.katexErrors });
         return row;
       };
+      const entry = { run: run.name, before: await page.evaluate(readStudentEntry), action: null, status: 'RUNNING', captures: [], captureMetadata: {}, viewportCaptures: [] };
+      dest.entries.push(entry);
+      entry.capture = `${unit}--${entry.before.sceneId}--${run.name}--entry.png`;
+      // Entry evidence is separate from the unchanged scene/state capture totals.
+      await capture(entry.capture);
+      await enterStudentExploration(page, entry, settle);
+      if (entry.action) dest.interactions.push({ id: entry.before.sceneId, run: run.name, control: 'enter-explore', ...entry.action });
       // First/middle/last plus supplied scene IDs provide reproducible captures.
       // All scenes still receive every measurement below.
       const targets = new Set([scenes[0]?.id, scenes[Math.floor(scenes.length / 2)]?.id, scenes.at(-1)?.id]);
