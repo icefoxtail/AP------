@@ -41,6 +41,17 @@ function nextNativeRangeInput(key) {
 }
 function readStudentEntry() {
   const visible = selector => !!document.querySelector(selector)?.checkVisibility();
+  const pane = document.querySelector('#apl-pane-explore');
+  // The narrow layout uses display: contents: the pane has no box, but its
+  // rendered children must still be visible and the pane must not be hidden.
+  const explorePanel = {
+    present: !!pane, hidden: pane?.hidden ?? true,
+    ariaHidden: pane?.getAttribute('aria-hidden') ?? null,
+    display: pane ? getComputedStyle(pane).display : null,
+    renderedChildren: pane ? [...pane.children]
+      .filter(child => child.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }))
+      .map(child => ({ tag: child.tagName.toLowerCase(), id: child.id || null, className: child.getAttribute('class') })) : []
+  };
   return {
     sceneId: String(lab.scene.id), tab: lab.tab, nativePlayer: lab.video?.state ?? null,
     lessonFirst: document.body.classList.contains('apl-lessonfirst'),
@@ -48,7 +59,8 @@ function readStudentEntry() {
     lessonButtons: document.querySelectorAll('.apl-lentry .apl-lgo').length,
     directExploreVisible: visible('.apl-lentry .apl-lmanual'),
     tabsVisible: visible('.apl-tabs'), exploreTabVisible: visible('button.apl-tab[aria-controls="apl-pane-explore"]'),
-    explorePanelVisible: visible('#apl-pane-explore')
+    explorePanelVisible: explorePanel.present && !explorePanel.hidden && explorePanel.ariaHidden !== 'true' && explorePanel.display !== 'none' && explorePanel.renderedChildren.length > 0,
+    explorePanel
   };
 }
 async function enterStudentExploration(page, entry, settle) {
