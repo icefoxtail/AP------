@@ -188,7 +188,7 @@
     if(t<.8)return frame(`${FACE_NAMES[p]} ${q}개의 같은 꼭짓점을 한 점에 모읍니다.`);
     if(t<5.5)return frame(compare?'한 꼭짓점 둘레 360°를 넘거나 채우는지 각 조각으로 비교합니다.':'각 면의 내각을 크기와 변 길이를 바꾸지 않고 차례로 모읍니다.');
     if(t<7.1)return frame(sum<360?'360°보다 작은 빈틈이 남아 입체의 꼭짓점이 될 수 있습니다.':sum===360?'한 바퀴를 모두 채워 평평해집니다.':'한 바퀴보다 커서 면이 겹칩니다.');
-    return frame(sum<360?'이 조합은 정다면체의 꼭짓점을 만들 수 있습니다.':'이 조합으로 정다면체의 꼭짓점을 만들 수 없습니다.',`$${q}\\times${th}°=${sum}°${sum<360?'<':sum===360?'=':'>'}360°$`,true);
+    return frame(sum<360?'이 조합은 정다면체의 꼭짓점을 만들 수 있습니다.':'이 조합으로 정다면체의 꼭짓점을 만들 수 없습니다.',`$${q}\\times${th}°=${sum}°${sum<360?'\\lt ':sum===360?'=':'\\gt '}360°$`,true);
   }
   function drawPlatonic(b,t,d,target){
     const {G,M}=d,S=M.S,D=prepare(b,d,S.V),faceIndex=Math.min(M.hf||0,S.F.length-1),vertex=Math.min(M.hv||0,S.V.length-1),adjacent=S.vf[vertex];

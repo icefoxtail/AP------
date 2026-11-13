@@ -199,7 +199,12 @@
       // Existing Player resets the scene before playing. Its full-lesson route
       // still resets, but the exact exploration snapshot is restored on exit.
       lab.list.forEach(sc => {
-        const draw = sc.draw || lab.def.draw, tick = sc.tick;
+        const draw = sc.draw || lab.def.draw, tick = sc.tick, view = sc.view;
+        // Native view builders may initialize question keys or other live state.
+        // A short owns its model and captions, so none of that native view work
+        // should run until the student returns to exploration.
+        sc.view = (s, owner) => this.active && sc === lab.scene ? {}
+          : view ? view.call(sc, s, owner) : lab.def.view?.(s, sc, owner) || {};
         sc.draw = (b, s, v, owner) => {
           if (this.active && sc === lab.scene) this.active.draw(b, this.elapsed, this.active.model);
           else draw?.(b, s, v, owner);

@@ -232,10 +232,10 @@
   const base = new URL('.', script.src);
   const json = value => JSON.parse(JSON.stringify(value));
   const css = document.createElement('link');
-  css.rel = 'stylesheet'; css.href = new URL('apl-g7-learning.css?v=20261113-3', base).href;
+  css.rel = 'stylesheet'; css.href = new URL('apl-g7-learning.css?v=20261113-4', base).href;
   document.head.append(css);
   const load = name => new Promise((resolve, reject) => {
-    const el = document.createElement('script'); el.src = new URL(name + '?v=20261113-3', base).href;
+    const el = document.createElement('script'); el.src = new URL(name + '?v=20261113-4', base).href;
     el.onload = resolve; el.onerror = () => reject(new Error('Grade 7 learning module unavailable: ' + name));
     document.head.append(el);
   });

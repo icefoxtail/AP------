@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
+import fs from 'node:fs';
+import vm from 'node:vm';
 import { load } from './helpers/surface-volume-lesson-runtime.mjs';
 const require=createRequire(import.meta.url),api=require('../kit/apl-g7-short-measurement.js');
 const copy=x=>JSON.parse(JSON.stringify(x));
@@ -201,4 +203,81 @@ test('all new families draw their initial givens and construction stops through 
       assert.equal(JSON.stringify(lab.s),before);
     }
   }
+});
+
+test('peer regression: inverse sphere equations pass through the actual math renderer',async()=>{
+  const window={katex:require('../kit/vendor/katex/katex.min.js')};
+  vm.runInNewContext(fs.readFileSync(new URL('../kit/apl-core.js',import.meta.url),'utf8'),{
+    window,URLSearchParams,location:{search:''},document:{documentElement:{setAttribute(){}}}
+  });
+  const lab=await load();
+  for(const shape of['full','half'])for(const r of[3,7,11]){
+    const p=build(lab,'sv3-6',{sAR:r,svShape6:shape,svAsk:'rev'}).find(p=>p.legacyLabel==='역으로');
+    for(const t of[.8,1.2,1.999]){
+      const html=window.APLab.renderMath(p.frame(t,p.model).formula),mathml=html.match(/<semantics>([\s\S]*?)<annotation/);
+      assert.ok(mathml,'the volume equation must produce real KaTeX MathML, not raw TeX');
+      assert.ok(!html.includes('$')&&!html.includes('katex-error'));
+      assert.ok(mathml[1].includes(`<mfrac><mn>${shape==='full'?4:2}</mn><mn>3</mn></mfrac>`));
+      assert.ok(mathml[1].includes('<msup><mi>r</mi><mn>3</mn></msup>'),'the radius stays an unknown in the first equation');
+      near(api.numeric(p.model.volume),(shape==='full'?4:2)*Math.PI*r**3/3);
+    }
+  }
+});
+
+test('peer regression: displayed composite perimeters multiply the whole sum by the height',async()=>{
+  // Evaluate the displayed arithmetic independently of the stored result.
+  const evaluate=source=>{
+    const expression=source.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g,'(($1)/($2))').replace(/\\times/g,'*').replace(/\\pi/g,'P').replace(/([\d)])P/g,'$1*P');
+    assert.match(expression,/^[\dP+\-*/().\s]+$/);
+    return Function('P',`"use strict"; return (${expression});`)(Math.PI);
+  };
+  const lab=await load(),cases=[
+    ['sv1-2',{sR2:4,sTh:90,sH2:7},(8+2*Math.PI)*7],
+    ['sv1-2',{sR2:7,sTh:240,sH2:9},(14+28*Math.PI/3)*9],
+    ['sv1-5',{sW:4,sRr:2,sH5:5},(12+2*Math.PI)*5],
+    ['sv1-5',{sW:9,sRr:4,sH5:7},(26+4*Math.PI)*7]
+  ];
+  for(const[id,state,expected]of cases){
+    const p=build(lab,id,state)[0];
+    for(const t of[5.2,5.6,6.799]){
+      const math=p.frame(t,p.model).formula.match(/\$([^$]+)\$/)?.[1];assert.ok(math);
+      const sides=math.split('=').filter(Boolean).map(evaluate);assert.equal(sides.length,2);
+      sides.forEach(side=>near(side,expected));
+    }
+  }
+});
+
+test('peer regression: marked radii start at the actual circle center through every net pose',async()=>{
+  const lab=await load(),G=lab.api,scene3=G.scene3,netPose=G.netPose;
+  let radii=[];
+  G.scene3=(...args)=>{
+    const D=scene3(...args),radius=D.radius;
+    D.radius=(a,b,text,...rest)=>{radii.push({a:copy(a),b:copy(b),text});return radius(a,b,text,...rest);};
+    return D;
+  };
+  const cases=[
+    ['sv1-2',{sR2:1,sTh:30,sH2:3}],['sv1-2',{sR2:4,sTh:90,sH2:7}],['sv1-2',{sR2:7,sTh:240,sH2:9}],
+    ['sv1-5',{sW:4,sRr:2,sH5:5}],['sv1-5',{sW:9,sRr:4,sH5:7}],['sv1-5',{sW:2,sRr:1,sH5:3}],
+    ['sv1-1',{svShape:'circ',sR:7,sH:9}]
+  ];
+  try{
+    for(const width of[390,1440]){
+      lab.board.resize(width,650);lab.setViewportWidth(width);
+      for(const[id,state]of cases){
+        const p=build(lab,id,state)[0],net=api.prismGeometry(G,p.model),before=JSON.stringify(lab.s);
+        for(const u of[0,.25,.5,.89,1]){
+          // Keep the initial dimension label visible while supplying every
+          // production net pose, including the fully unfolded endpoint.
+          G.netPose=(n)=>netPose(n,u);radii=[];render(lab,p,0);
+          assert.equal(radii.length,1);const mark=radii[0],T=netPose(net.net,u)[net.bot],at=q=>G.applyT(T,q),A=net.A.map(at);
+          const arc=p.model.base.shape==='sector'?A.slice(1):p.model.base.shape==='halfround'?A.slice(1,-1):A;
+          const origin=p.model.base.shape==='sector'?A[0]:p.model.base.shape==='halfround'?G.mul3(add(A[1],A.at(-2)),.5):G.mul3(add(A[0],A[A.length/2]),.5);
+          near(length(sub(mark.a,origin)),0);near(length(sub(mark.b,mark.a)),p.model.base.r);
+          assert.ok(arc.some(q=>length(sub(q,mark.b))<1e-8),'the radius ends on the actual circular arc');
+          assert.equal(mark.text,`반지름 ${p.model.base.r}`);
+        }
+        assert.equal(JSON.stringify(lab.s),before);
+      }
+    }
+  }finally{G.scene3=scene3;G.netPose=netPose;}
 });

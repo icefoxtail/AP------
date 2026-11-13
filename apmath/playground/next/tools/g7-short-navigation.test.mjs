@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import { load as loadPolyhedra } from './helpers/polyhedra-lesson-runtime.mjs';
+import { load as loadCircle } from './helpers/circle-lesson-runtime.mjs';
 
 // Exercise the real learning navigation and persistence code before the native
 // 250 ms URL debounce can run: this is the reload race observed in Chromium.
@@ -87,4 +88,25 @@ test('serialized polyhedra restoration preserves the native question choice orde
   learning.restoreSnapshot(changed);
   assert.notEqual(lab.s.phPC.Q.key, original.key);
   assert.equal(lab.s.phPC.q.p, 6);
+});
+
+test('an active short keeps native circle view initialization out of the live exploration state', async () => {
+  const native=await loadCircle();native.go('f1-ss2');
+  const key='f1_ss2_questionKey',before=JSON.stringify(native.s);
+  native.scene.view(native.s,native);
+  assert.notEqual(native.s[key],null,'the actual native view initializes its question key');
+  native.s=JSON.parse(before);
+  const {learning}=fixture();learning.lab=native;
+  learning.player={play(){},_leave(){},state:'idle'};
+  native.goScene=i=>native.go(native.list[i].id);
+  native.setTab=id=>{native.tab=id;};native.setTeach=on=>{native.teach=on;};
+  learning.wrap();learning.active={model:{},draw(){}};
+  for(let i=0;i<5;i++){
+    native.scene.view(native.s,native);
+    assert.equal(JSON.stringify(native.s),before,'each short render preserves the exact live state');
+  }
+  learning.active=null;
+  const view=native.scene.view(native.s,native);
+  assert.notEqual(native.s[key],null,'normal exploration still performs its native initialization');
+  assert.ok(view.readouts,'normal exploration still returns its native readouts');
 });

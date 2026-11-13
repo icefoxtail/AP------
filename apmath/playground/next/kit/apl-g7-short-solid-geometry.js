@@ -77,7 +77,13 @@
     S.drawAxis(D,sol.ymin,sol.ymax,{label:'회전축 l'});
     if(t>=7.4)text(b,D.P(V(sol.rmax,sol.ymin)),profileName[sol.kind],'green',{dy:33,size:13});
   }
-  for(const [kind,label] of [['frus','원뿔대'],['pencil','원뿔붙임'],['dbl','두원뿔']])reg('s1-6',label,'axial-cut-half-profile-and-physical-revolution-check',d=>{const actual=kind==='dbl'&&d.m.kind==='stairs'?'stairs':kind,m=source(d,{soK6:actual}),Q=question(d,m);return{...d,m,sol:m.sol,Q,answer:correct(Q)+1,display:actual==='stairs'?'현재 계단 모양 회전체':label};},inverseDraw,(t,d)=>t<1?F('현재 회전체의 바깥 경계와 높이가 꺾이는 지점을 확인합니다.'):t<3.2?F('축을 포함하는 평면으로 자른 뒤 축의 한쪽만 남깁니다.'):t<6.6?F('남긴 한쪽 도형을 같은 축 주위로 돌려 원래 입체와 맞춥니다.'):t<7.4?F('반지름이 변하는 높이까지 원래 입체와 같아야 합니다.'):F(`한쪽 평면도형은 ${profileName[d.sol.kind]}입니다.`,`${NUM[d.answer-1]} · 현재 보기의 한쪽 평면도형`),d=>`현재 ${d.sol.name} · 큰 반지름 ${cm(d.sol.rmax)}, 전체 높이 ${cm(d.sol.h)} · 축 한쪽 도형 찾기`);
+  for(const [kind,label] of [['frus','원뿔대'],['pencil','원뿔붙임'],['dbl','두원뿔']])reg('s1-6',label,'axial-cut-half-profile-and-physical-revolution-check',d=>{
+    const actual=kind==='dbl'&&d.m.kind==='stairs'?'stairs':kind,currentQuestion=actual===d.m.kind,m=currentQuestion?d.m:source(d,{soK6:actual});
+    // A comparison type has its own shape, but the visible question keeps its
+    // original choices. Only that actual question may supply a choice number.
+    const Q=currentQuestion?question(d):null;
+    return{...d,m,sol:m.sol,Q,currentQuestion,answer:Q?correct(Q)+1:null,display:actual==='stairs'?'현재 계단 모양 회전체':currentQuestion?label:label+' 비교'};
+  },inverseDraw,(t,d)=>t<1?F('현재 회전체의 바깥 경계와 높이가 꺾이는 지점을 확인합니다.'):t<3.2?F('축을 포함하는 평면으로 자른 뒤 축의 한쪽만 남깁니다.'):t<6.6?F('남긴 한쪽 도형을 같은 축 주위로 돌려 원래 입체와 맞춥니다.'):t<7.4?F('반지름이 변하는 높이까지 원래 입체와 같아야 합니다.'):F(`한쪽 평면도형은 ${profileName[d.sol.kind]}입니다.`,d.currentQuestion?`${NUM[d.answer-1]} · 현재 보기의 한쪽 평면도형`:`축 한쪽의 ${profileName[d.sol.kind]}`),d=>`${d.currentQuestion?'현재 문제':'현재 탐구 치수의 비교'} ${d.sol.name} · 큰 반지름 ${cm(d.sol.rmax)}, 전체 높이 ${cm(d.sol.h)} · 축 한쪽 도형 찾기`);
   const standard={cyl:{R:1.5,h1:3},cone:{R:1.6,h1:3},sphere:{R:1.6},frus:{R:1.8,r:.9,h1:3}};
   reg('s1-7','원기둥','invariant-circular-cross-section-under-any-axial-rotation',d=>{const kind=standard[d.m.k]?d.m.k:'cyl';return{...d,kind,sol:d.S3.solid(kind,standard[kind]),answer:true,display:standard[d.m.k]?d.m.name:'원기둥'};},(b,t,d)=>{
     const D=stage3(b,d,d.sol),a=d.m.rot+TAU*phase(t,1.3,6.4);d.S3.drawSolid(D,d.sol);d.S3.drawAxis(D,d.sol.ymin,d.sol.ymax,{label:'회전축 l'});const y=d.sol.sphere?0:d.sol.ymin,r=d.sol.rmax,p=polar(r,a,y);D.line(V(0,y),p,'amber',3);point(b,D.P(p),'P','amber');

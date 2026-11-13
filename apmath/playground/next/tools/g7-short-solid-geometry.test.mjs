@@ -65,6 +65,28 @@ test('generated shapes and shuffled choices bind to the actual stored problem wi
   lab.go('s4-1');for(const mode of ['rim','via','line'])for(const seed of [1,16,500]){Object.assign(lab.s,{soMode:mode,soSeed:seed});const old=JSON.stringify(lab.s),p=plans(lab)[0];assert.equal(p.model.answer,question(lab).choices.findIndex(c=>c.ok)+1);assert.equal(p.model.mode,native(lab).mode);capture(lab.board,p,3);capture(lab.board,p,8);assert.equal(JSON.stringify(lab.s),old);}
 });
 
+test('s1-6 comparison types never borrow a shuffled choice number from another question',async()=>{
+  const lab=await load();lab.go('s1-6');
+  const kinds={'원뿔대':'frus','원뿔붙임':'pencil','두원뿔':'dbl'},numbers=['①','②','③','④','⑤'];
+  for(const currentKind of ['frus','pencil','dbl','stairs'])for(const seed of [2,37,201]){
+    Object.assign(lab.s,{soK6:currentKind,soVR:5,soVr:2,soV1:7,soV2:3,soSeed:seed});
+    const before=JSON.stringify(lab.s),Q=question(lab),answer=Q.choices.findIndex(c=>c.ok)+1;
+    for(const p of plans(lab)){
+      const expectedKind=p.legacyLabel==='두원뿔'&&currentKind==='stairs'?'stairs':kinds[p.legacyLabel],same=expectedKind===currentKind,final=p.frame(p.duration,p.model);
+      assert.equal(p.model.sol.kind,expectedKind);near(p.model.sol.d.R,5);
+      if(same){
+        assert.equal(p.model.answer,answer);assert.deepEqual(plain(p.model.Q.choices),plain(Q.choices));
+        assert.ok(final.formula.startsWith(numbers[answer-1]));assert.match(p.given,/현재 문제/);
+      }else{
+        assert.equal(p.model.Q,null);assert.equal(p.model.answer,null);
+        assert.ok(!/[①②③④⑤]|현재 보기/.test(final.formula),'a comparison has no correspondence to the unchanged current choices');
+        assert.match(p.given,/현재 탐구 치수의 비교/);assert.match(p.label,/비교/);
+      }
+    }
+    assert.equal(JSON.stringify(lab.s),before,'the current type, dimensions, choices and seed remain unchanged');
+  }
+});
+
 test('axial section areas equal independent polygon areas and two rotated copies double them',async()=>{
   const lab=await load();lab.go('s2-3');
   for(const R of [2,5,10])for(const h of [3,7,14])for(const kind of ['cyl','cone','frus']){const r=Math.max(1,Math.floor(R/2));Object.assign(lab.s,{soPK:kind,soPR:R,soPr2:r,soPH:h,soSR:3,soSr:1,soSH:5});const p=plans(lab).find(p=>p.model.sol.kind===kind),d=p.model,ps=shorts.axial(d.sol),area=shoelace(ps);near(area,d.answer);near(area,numeric(lab));

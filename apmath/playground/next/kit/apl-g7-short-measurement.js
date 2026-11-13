@@ -127,7 +127,12 @@
     const net=m.geometry||(m.geometry=prismGeometry(G,m)),q=netDraw(G,b,t,m,net);
     const {D,tp,at,u}=q,base=m.base;
     if(u<.9) {
-      const c=center(net.A),rim=net.A[0];
+      let c=center(net.A),rim=net.A[0];
+      // solidNet rotates the base without changing vertex order. A sector's
+      // first vertex is its center; a semicircle's center is the midpoint of
+      // its diameter, not the vertex average of the adjoining rectangle.
+      if(base.shape==='sector'){c=net.A[0];rim=net.A[1];}
+      else if(base.shape==='halfround'){c=mix3(net.A[1],net.A[net.A.length-2],.5);rim=net.A[Math.floor((net.A.length-1)/2)];}
       if(base.r)D.radius(at(net.bot,c),at(net.bot,rim),`반지름 ${base.r}`,{size:12,dash:true});
       else if(base.sides)for(let i=0;i<Math.min(2,base.sides.length);i++)D.edgeLab(at(net.bot,net.A[i]),at(net.bot,net.A[(i+1)%net.A.length]),textNumber(base.sides[i]),{size:12,from:at(net.bot,c)});
     }
@@ -144,7 +149,7 @@
     if(t<.8)return{label:`현재 ${b.name} 밑면과 기둥의 높이를 확인합니다.`,formula:''};
     if(t<4)return{label:'같은 면을 경첩을 따라 펼칩니다. 밑면 두 개와 옆면을 구분합니다.',formula:'겉넓이 = 두 밑면 + 옆면'};
     if(t<5.2)return{label:b.shape==='sector'?'부채꼴 둘레에는 호와 반지름 두 개가 모두 들어갑니다.':b.shape==='halfround'?'직사각형과 반원이 맞붙은 지름은 바깥 둘레에서 빠집니다.':'밑면 둘레의 각 부분이 옆면의 가로와 이어집니다.',formula:`밑넓이 $S=${tex(m.area)}$ · 밑면 둘레 $P=${tex(m.perimeter)}$`};
-    if(t<6.8)return{label:'옆면 전체의 가로는 밑면의 둘레, 세로는 기둥의 높이입니다.',formula:`옆넓이 $=${tex(m.perimeter)}\\times${m.h}=${tex(m.lateral)}$`};
+    if(t<6.8)return{label:'옆면 전체의 가로는 밑면의 둘레, 세로는 기둥의 높이입니다.',formula:`옆넓이 $=(${tex(m.perimeter)})\\times${m.h}=${tex(m.lateral)}$`};
     return{label:'펼친 실제 면의 넓이를 모두 더합니다.',formula:`겉넓이 $=2\\times(${tex(m.area)})+(${tex(m.lateral)})=${tex(m.surface)}${unit(2)}$`};
   }
   function prismVolumeDraw(G,b,t,m) {
@@ -473,7 +478,7 @@
   function sphereInverseFrame(t,m) {
     const k=m.kind==='full'?4/3:2/3;
     if(t<.8)return{label:'주어진 것은 부피입니다. 반지름 r부터 구합니다.',formula:''};
-    if(t<2)return{label:'현재 구 또는 반구의 부피식을 세웁니다.',formula:`${number(k)}\\pi r^3=${tex(m.volume)}`};
+    if(t<2)return{label:'현재 구 또는 반구의 부피식을 세웁니다.',formula:`$${number(k)}\\pi r^3=${tex(m.volume)}$`};
     if(t<3)return{label:'양변에서 같은 계수를 나눕니다.',formula:`$r^3=${m.r**3}$`};
     if(t<4)return{label:'세 번 곱해서 주어진 수가 되는 양의 길이를 찾습니다.',formula:`$${m.r}\\times${m.r}\\times${m.r}=${m.r**3}\\quad\\Rightarrow\\quad r=${m.r}$`};
     if(t<6.8)return{label:m.kind==='half'?'찾은 반지름으로 곡면과 자른 원을 각각 구합니다.':'찾은 반지름으로 구의 겉넓이를 구합니다.',formula:`겉넓이 $=${m.kind==='full'?4:3}\\pi\\times${m.r}^2$`};

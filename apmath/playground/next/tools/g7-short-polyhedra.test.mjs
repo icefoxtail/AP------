@@ -14,6 +14,25 @@ const dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0);
 const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
 const norm=a=>Math.hypot(...a);
 const point=a=>({x:a[0],y:a[1],z:a[2]});
+
+test('native math renderer preserves strict regular-solid corner comparisons and all proof formulas',async()=>{
+  const katex=createRequire(import.meta.url)('../kit/vendor/katex/katex.min.js'),lab=await load({katex});
+  for(const [p,q,sign] of [[3,3,'<'],[6,3,'='],[6,4,'>']]){
+    for(const plan of build(lab,'p2-1',{phPp:p,phQq:q})){
+      const source=plan.frame(plan.duration,plan.model).formula,html=lab.renderMath(source);
+      assert.ok(!html.includes('$')&&!html.includes('katex-error'),'the browser renderer consumes the whole expression');
+      const semantics=html.match(/<semantics>([\s\S]*?)<annotation/);
+      assert.ok(semantics,'a real MathML expression is rendered');
+      const visible=semantics[1].replace(/<[^>]*>/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+      assert.equal(visible,`${q}×${180-360/p}°=${q*(180-360/p)}°${sign}360°`);
+    }
+  }
+  for(const key of Object.keys(api.registry))for(const plan of build(lab,key.split('/')[1]))for(const t of [0,...plan.stops,plan.duration]){
+    const source=plan.frame(t,plan.model).formula;if(!source)continue;
+    const html=lab.renderMath(source);
+    assert.ok(!html.includes('$')&&!html.includes('katex-error')&&html.includes('class="katex"'),`${plan.id}@${t}: formula renders completely`);
+  }
+});
 function capture(b,p,t){
   const texts=[],paths=[],oldText=b._text,oldPath=b.path;
   b._text=function(x,y,text,...rest){if(text!=null)texts.push(String(text));return oldText.call(this,x,y,text,...rest);};

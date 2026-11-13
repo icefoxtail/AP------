@@ -90,18 +90,17 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Reuse unchanged completed geometry evidence from 289bf8748a and
-          # bdaf15d2bd. Verify the native question-cache repair and the remaining
-          # three units; the four earlier reference scenes retain their evidence.
+          # Circle/polyhedra stopped before normal-clock verification in
+          # CI43339724069. All other units retain their completed evidence;
+          # the learning job checks the changed native-view boundary on all318.
           - { lab: g7-polyhedra, mode: full, live_scenes: '', exclude_scenes: '' }
           - { lab: g7-circle-sector, mode: full, live_scenes: '', exclude_scenes: 'f1-star,f3-leaf-area' }
-          - { lab: g7-surface-volume, mode: full, live_scenes: '', exclude_scenes: 'sv2-4,sv3-4' }
-          - { lab: g7-solids, mode: full, live_scenes: '', exclude_scenes: '' }
-          # Actual screenshot review found palette, formula and label defects.
-          # Seek every changed scene at four sizes; replay representative fixes.
-          - { lab: g7-points-lines, mode: static, scenes: 'ck1,ck2,vt,ve,th,bs,pd,tr', live_scenes: 'ck1,bs,pd,tr', exclude_scenes: '' }
-          - { lab: g7-construction, mode: static, scenes: 'c2-1,c2-2,c3-2,c3-4,c4-3,c6-1,c6-3', live_scenes: 'c2-2,c3-4,c6-1', exclude_scenes: '' }
-          - { lab: g7-spatial, mode: static, scenes: 's2-1,s2-2,s2-3,s2-4,s2-5,s2-6,s2-7,s4-1,s4-2,s4-3,s4-4', live_scenes: 's2-1,s4-1,s4-3,s4-4', exclude_scenes: '' }
+          # Independent review corrected displayed radii, equation grouping,
+          # one math delimiter and choice binding for a comparison shape.
+          - { lab: g7-surface-volume, mode: static, scenes: 'sv1-1,sv1-2,sv1-3,sv1-5,sv3-6', live_scenes: 'sv1-2,sv1-5,sv3-6', exclude_scenes: '' }
+          - { lab: g7-solids, mode: static, scenes: 's1-6', live_scenes: 's1-6', exclude_scenes: '' }
+          # Two corrected nondefault choices still lack a post-fix screenshot.
+          - { lab: g7-construction, mode: static, scenes: 'c3-2,c6-3', live_scenes: 'c3-2,c6-3', exclude_scenes: '' }
     steps:
       - uses: actions/checkout@v4
         with:

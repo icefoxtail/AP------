@@ -44,7 +44,18 @@ try {
      const legacy=lab.video.lessonInfo(lab.index);
      for(const row of legacy){const label=row.label||'',at=available.indexOf(label);if(at<0)missing.push(label);else available.splice(at,1);}
      const fadedMath=[...lab.learning.ui.goal.querySelectorAll('.katex')].some(x=>parseFloat(getComputedStyle(x).opacity)<.99);
-     return {scene:lab.scene.id,width:b.W,height:b.H,ink,controls:!lab.learning.ui.root.hidden,shorts:plans.length,legacy:legacy.length,missing,fadedMath,horizontalOverflow:document.documentElement.scrollWidth>innerWidth+2,canvasVisible:bounds.top<innerHeight&&bounds.bottom>0};
+     // The native view wrapper changed after an actual question-key mutation.
+     // Check its state boundary and initial/final drawing for every route while
+     // reusing unchanged geometry's already measured normal-clock evidence.
+     const state=()=>JSON.stringify(Object.fromEntries(Object.entries(lab.s).filter(([key])=>!['lessonOn','lessonEntry','playing'].includes(key))));
+     const before=state(),proofInk=[];
+     lab.learning.play();lab.learning.pause();
+     for(const t of [0,lab.learning.active.duration]){
+      lab.learning.seek(t);lab.render();const data=c.getContext('2d').getImageData(0,0,c.width,c.height).data;
+      let visible=0;for(let k=3;k<data.length;k+=4)if(data[k]>20)visible++;proofInk.push(visible);
+     }
+     const untouched=state()===before;lab.learning.explore();const restored=state()===before;
+     return {scene:lab.scene.id,width:b.W,height:b.H,ink,controls:!lab.learning.ui.root.hidden,shorts:plans.length,legacy:legacy.length,missing,fadedMath,horizontalOverflow:document.documentElement.scrollWidth>innerWidth+2,canvasVisible:bounds.top<innerHeight&&bounds.bottom>0,proofInk,untouched,restored};
     },i);
     checks.push(result);
     assert.ok(result.width>=150&&result.height>=150&&result.ink>200,`${item.id}/${result.scene}: initial drawing missing`);
@@ -53,6 +64,8 @@ try {
     assert.deepEqual(result.missing,[],`${item.id}/${result.scene}: legacy question has no visual proof`);
     assert.ok(!result.fadedMath,`${item.id}/${result.scene}: nested math opacity is compounded`);
     assert.ok(!result.horizontalOverflow,`${item.id}/${result.scene}: horizontal overflow`);
+    assert.ok(result.proofInk.every(n=>n>200),`${item.id}/${result.scene}: active proof drawing missing`);
+    assert.ok(result.untouched&&result.restored,`${item.id}/${result.scene}: proof view changed exploration state`);
    }
    report.coverage.push({viewport,id:item.id,inventory,checks});save();
   }
