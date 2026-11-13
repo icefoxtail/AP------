@@ -15,7 +15,7 @@
   "completedExams": 0,
   "reviewedQuestions": 24,
   "currentOrder": 1,
-  "nextAction": "CHECK_LATEST_AWCR_AND_OPEN_BRANCH_PR_THEN_SUBMIT_REV3_PR_VERIFY_CI_REQUEST_RECEIPT_MERGE_MAIN_WRITER_ACTUAL_24_MAIN_SHA_CLOSE_FIRST",
+  "nextAction": "WATCH_SINGLE_MAIN_WRITER_REV3_RECEIPT_THEN_VERIFY_EXACT_MAIN_24_NATIVE_CONSUMERS_AND_RPM_PARENTS_BIND_REMOTE_SHA_CLOSE_CHECKPOINT_AWCR_THEN_WANGUN_23",
   "exams": [
     {
       "order": 1,
@@ -26,7 +26,7 @@
       "count": 24,
       "sourceBlob": "c36139a90e9bcd378577ece8f891423bee6b0a19",
       "sourceSha256": "1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564",
-      "status": "REV3_READY_WITH_ISOLATED_24_PASS",
+      "status": "REV3_MERGED_WAITING_MAIN_REGISTRATION",
       "partialEvidence": "01-shinheung-semantic-read-checkpoint.json",
       "candidateComparisonEvidence": "01-shinheung-candidate-comparison.json",
       "candidateComparisonSha256": "c887310c2501c3d70a010315a7fda02c73a6964ba45b70c3aa106a99c4a62ce9",
@@ -46,29 +46,45 @@
         "exact": 22,
         "rpmOnlyDebt": 2
       },
-      "prNumber": null,
-      "prUrl": null,
-      "prHeadSha": null,
-      "mergeCommitSha": null,
-      "verifiedRemoteMainSha": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
-      "verifiedRemoteMainTree": "d52de79fedc3e134286d57707f78b783130d7d2c",
-      "nativeRegistrationActual": "REV3_NOT_SUBMITTED",
+      "prNumber": 1964,
+      "prUrl": "https://github.com/icefoxtail/AP------/pull/1964",
+      "prHeadSha": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
+      "mergeCommitSha": "c9b908a0025c6d32b1add22b47543035e14b8784",
+      "verifiedRemoteMainSha": "c9b908a0025c6d32b1add22b47543035e14b8784",
+      "verifiedRemoteMainTree": "e8a233eb8d12b9dd514bf4d977fc33e9d209737e",
+      "nativeRegistrationActual": "REV3_MAIN_WRITER_IN_PROGRESS_RECEIPT_NOT_YET_OBSERVED",
       "consumerVerification": "REV3_ISOLATED_24_PASS_REMOTE_MAIN_NOT_VERIFIED",
       "operationallyClosed": false,
       "ci": {
-        "state": "NOT_RUN",
-        "scope": "REV3_PR_NOT_CREATED_AT_SNAPSHOT"
+        "state": "SUCCESS",
+        "headSha": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
+        "successfulWorkflowCount": 4,
+        "successfulJobCount": 6,
+        "evidencePath": "01-shinheung-rev3-ci.json",
+        "evidenceSha256": "7efc6460fc988f7bc002c70eed21022f0b3dcf6045c334ac9b12ab7d2a12ae31",
+        "evidenceRecordedBy": "root",
+        "reviewedRegistrarExecutedByPrPreparation": false,
+        "semanticAutoMetaExecutedByPrPreparation": false,
+        "scope": "PR data/browser/test scopes passed; no formal reviewed-request application or final target24 post-AutoMeta proof."
       },
       "concurrentWorkEvidence": "01-shinheung-concurrent-work-check.json",
       "mainWriter": {
         "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev3",
-        "runId": null,
-        "jobId": null,
-        "observedStatus": "NOT_STARTED",
-        "requestOutcome": "NOT_SUBMITTED",
-        "registrationReceiptVerification": "NOT_VERIFIED"
+        "runId": 43443059116,
+        "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43443059116",
+        "jobId": 131945363207,
+        "jobUrl": "https://github.com/icefoxtail/AP------/actions/runs/43443059116/job/131945363207",
+        "headSha": "c9b908a0025c6d32b1add22b47543035e14b8784",
+        "startedAt": "2026-11-13T14:28:38Z",
+        "lastObservedAt": "2026-11-13T14:29:24Z",
+        "observedStatus": "IN_PROGRESS",
+        "observedPhase": "checkout",
+        "requestOutcome": "NOT_YET_OBSERVED",
+        "registrationReceiptVerification": "NOT_YET_OBSERVED",
+        "persistStatus": "NOT_YET_VERIFIED",
+        "observationSource": "Root exact-merge writer snapshot; do not infer later status from this checkpoint."
       },
-      "mainMergeEvidence": null,
+      "mainMergeEvidence": "01-shinheung-rev3-main-merge.json",
       "initialCiEvidence": "01-shinheung-ci-initial.json",
       "requestHistory": [
         {
@@ -198,10 +214,10 @@
         }
       ],
       "currentRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
-      "prRole": "CURRENT_REV3_PRE_PR_SNAPSHOT",
-      "repairPrNumber": null,
-      "repairPrStatus": "NOT_CREATED_AT_SNAPSHOT",
-      "repairCiStatus": "NOT_RUN",
+      "prRole": "CURRENT_REV3_MERGED",
+      "repairPrNumber": 1964,
+      "repairPrStatus": "MERGED",
+      "repairCiStatus": "SUCCESS",
       "nativeRegistrationDryRunDetails": {
         "requestRevision": "rev3",
         "status": "PASS",
@@ -238,18 +254,19 @@
       "sourceMetadataChangedQuestionCount": 24,
       "prNumbers": [
         1960,
-        1961
+        1961,
+        1964
       ],
-      "mergeTree": null,
-      "mainMergeEvidenceSha256": null,
+      "mergeTree": "e8a233eb8d12b9dd514bf4d977fc33e9d209737e",
+      "mainMergeEvidenceSha256": "40ba78ea21225431fb4f95d62c0b5a3f7bd1f3e9b12384f55a43af839d9a7bca",
       "verifiedRemoteMainTreeStatus": "VERIFIED_FROM_FETCHED_REMOTE_MAIN",
       "actualRegisteredQuestionCount": 0,
       "nativeRegistryChangesApplied": 0,
-      "requestStatus": "READY_NOT_SUBMITTED",
-      "lastSubmittedRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev2.json",
-      "requestSnapshotCommit": null,
+      "requestStatus": "MERGED_WAITING_MAIN_REGISTRATION",
+      "lastSubmittedRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+      "requestSnapshotCommit": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
       "parentLinkRepair": {
-        "status": "REV3_PREPARED_AND_ISOLATED_24_PASS",
+        "status": "REV3_MERGED_ISOLATED_24_PASS_MAIN_REGISTRATION_PENDING",
         "reproductionWorktree": "/workspace/scratch/933015cd0a4f/m1-registration-repro",
         "reproductionOwner": "root",
         "reproductionMode": "LOCAL_ISOLATED_OFFICIAL_V2_REGISTRAR_NOT_PRODUCTION_OR_PUBLICATION",
@@ -265,13 +282,13 @@
             "평면도형",
             "다각형"
           ],
-          "status": "PARENT_LINK_REPAIRED_IN_REV3_CANDIDATE",
+          "status": "PARENT_LINK_MERGED_NATIVE_APPLICATION_NOT_YET_VERIFIED",
           "appliedCandidateFix": "Preserve existing PT/TPL and RPM198 meaning; add-only exact 2022 crosswalk link and evidence-bound targetParentRef.",
           "exactCrosswalkId": "M1-RPM-198-DIAGONAL-FORMULA-20261113",
           "sourceFamilyIdPreserved": "M1-RPM-198"
         },
         "q8": {
-          "status": "REPRODUCED_AND_PARENT_ONLY_REF_REPAIRED_IN_REV3_CANDIDATE",
+          "status": "PARENT_ONLY_REF_MERGED_NATIVE_APPLICATION_NOT_YET_VERIFIED",
           "appliedCandidateFix": "Bind only the official basic-geometry/position-relation parent; keep RPM L3/L4 EVIDENCE_DEBT.",
           "rpmLeafAdded": false,
           "rpmCoarseParentStatus": "LEGACY_PARENT_AMBIGUOUS"
@@ -293,22 +310,22 @@
           "math-review and RPM FINAL boundaries"
         ],
         "nextRequestRevision": "rev3",
-        "nextRequestStatus": "READY_NOT_SUBMITTED",
+        "nextRequestStatus": "MERGED_WAITING_MAIN_REGISTRATION",
         "nextRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
-        "nextPrNumber": null,
-        "nextPrStatus": "NOT_CREATED_AT_SNAPSHOT",
+        "nextPrNumber": 1964,
+        "nextPrStatus": "MERGED",
         "sequence": [
-          "Read latest AWCR safe checkpoint and query this branch open PRs before creating a new PR",
-          "Submit prepared rev3 PR if absent; verify CI and request-specific registration receipts",
-          "Merge, then verify main writer exact request receipt and all 24 actual remote Consumers and native queries",
-          "Bind remote main SHA, close first exam, then begin Wangun"
+          "Read latest AWCR and exact writer state; PR1964 is already merged and must not be recreated",
+          "Verify exact rev3 main registration receipt using canonical request SHA, with source/raw request SHA bindings preserved",
+          "Verify all 24 final native Consumers and actual RPM parent mappings at the same remote main revision",
+          "Bind remote main SHA, publish closure docs and AWCR, close first exam, then begin Wangun 23"
         ],
         "isolatedConsumer24Pass": true,
         "productionConsumer24Pass": false,
         "evidencePath": "01-shinheung-canonical-parent-repair.json",
         "evidenceSha256": "025b76456d75f84c5f4f1c2aa73041eba1c96954232e7e6a2bffacf68877f8cb"
       },
-      "lastSubmittedRequestSnapshotCommit": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
+      "lastSubmittedRequestSnapshotCommit": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
       "parentRefRepairOrdinals": [
         5,
         8
@@ -367,6 +384,45 @@
         "q8NativeCanonicalAssignment": "APPROVED_IN_ISOLATED_CANDIDATE",
         "q10RpmGranularity": "PARENT",
         "actualRpmSolutionResolver": "NOT_RUN_UNVERIFIED_SOLUTION"
+      },
+      "mergedAt": "2026-11-13T14:28:35Z",
+      "requestRawSha256": "bd2b3223b3e45a920f2f57707fd9ea37621b13a550f6125edc66edfd3057826f",
+      "requestCanonicalSha256": "bd2014fead23196d068ad24de8529364cd81be83b4cd00dab898a2664798df50",
+      "requestSha256Meaning": "RAW_FILE_SHA256; native receipt.requestSha256 uses requestCanonicalSha256",
+      "registrationCountsBasis": "Confirmed operational rev3 registration count remains 0 until the exact writer receipt and all 24 final remote Consumers are verified; outcome is NOT_YET_OBSERVED, not REJECTED.",
+      "autoMetaDirectImpact": {
+        "evidencePath": "01-shinheung-rev3-autometa-plan.json",
+        "sha256": "acfb7b89f7f72aabb31bffd38e34e379385920c6a520025ccfd95b88900ecf47",
+        "scope": "ISOLATED_READONLY_PLAN_ON_EXACT_APPLIED_REV3",
+        "baselineMain": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+        "concurrentPr": 1963,
+        "concurrentPrHead": "bf87023732ce9c2df135ed51d374fb8803fa24e7",
+        "bothVersions": {
+          "questions": 24,
+          "supplementPending": 24,
+          "apply": 0,
+          "proposedFinal": 0,
+          "nativeReceiptReuse": 0,
+          "approvalReset": 0,
+          "parentChange": 0,
+          "inputMemoryUnchanged": true,
+          "trackedInputChanges": 0
+        },
+        "callerInputsConfirmed": {
+          "cursor": "afefac26892e29f8930a1deff0c3a655d7e803a9",
+          "targetPriorPending": 0,
+          "targetPilotOverrides": 0,
+          "targetPriorAutoMetaReceipts": 0,
+          "metadataAndRuntimeEqualNativeReceipt": 24
+        },
+        "interpretation": "Existing strict guards reject these exact AutoMeta inputs before mutation. PR1963 is not established as a prerequisite and was not merged by this task. REVIEW_REQUIRED in the probe means the expected native-reuse path was not reached, not a Consumer or native approval failure.",
+        "sourceAndDifficultyFieldsChanged": false,
+        "fullWriterExecuted": false,
+        "reportStatus": "REVIEW_REQUIRED",
+        "nativeReuseExpectationReached": false,
+        "consumerFailureImplied": false,
+        "requiredPrerequisitePr": null,
+        "concurrentPrMergedByThisTask": false
       }
     },
     {
@@ -898,7 +954,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "REV3_READY_WITH_ISOLATED_24_PASS",
+  "state": "REV3_MERGED_WAITING_MAIN_REGISTRATION",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -917,11 +973,11 @@
       "supersededBy": "01-shinheung-semantic-review.json"
     }
   },
-  "activeMain": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+  "activeMain": "c9b908a0025c6d32b1add22b47543035e14b8784",
   "prerequisiteStatus": "RPM_L1_L2_MERGED",
   "prerequisiteMainSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
   "latestRemoteSemanticCheckpoint": "ae19795a822db73448c7487aea4036c509720ecb",
-  "latestMergedReviewHead": "64650d1c2e34b49a0779769d8df502eb853ff693",
+  "latestMergedReviewHead": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
   "concurrentWorkCheck": {
     "path": "docs/operations/m1-meta-review-20261113/01-shinheung-concurrent-work-check.json",
     "sha256": "e06a73f3224e7c2eb44aa898a7c14e2ee1c2b21b52340c913b7e7bf1fc2e8891",
@@ -951,7 +1007,7 @@
     ],
     "noBlanketMetadataConflictWaiver": true
   },
-  "activeMainTree": "d52de79fedc3e134286d57707f78b783130d7d2c",
+  "activeMainTree": "e8a233eb8d12b9dd514bf4d977fc33e9d209737e",
   "subsequentMainChanges": [
     {
       "pr": 1962,
@@ -966,11 +1022,14 @@
   ],
   "activeMainTreeStatus": "VERIFIED_FROM_FETCHED_REMOTE_MAIN",
   "checkpointPublication": {
-    "scope": "PRE_PR_SNAPSHOT",
-    "status": "LOCAL_REV3_CHANGES_NOT_YET_PUBLISHED_AT_SNAPSHOT",
+    "scope": "POST_REV3_MERGE_WAITING_MAIN_REGISTRATION",
+    "status": "LOCAL_MUTABLE_DOC_CHECKPOINT_REMOTE_PUBLICATION_PENDING",
     "previousRemoteCheckpointShaPrefix": "dfb",
     "previousRemoteCheckpointState": "REV2_REJECTED_PARENT_LINK_REPAIR_IN_PROGRESS",
-    "resumeRequirement": "Read the latest AWCR safe checkpoint and query open PRs for this branch before creating a PR; a later publication may already exist."
+    "resumeRequirement": "Read latest AWCR and writer evidence. PR1964 is already merged; do not recreate it or repeat frozen reading/source repair/isolated verification. Publish this document checkpoint before AWCR revision14.",
+    "localBranchFastForwardedMain": "c9b908a0025c6d32b1add22b47543035e14b8784",
+    "observedRemoteOwnBranchSha": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
+    "newDocumentCheckpointSha": null
   },
   "candidateConsumerPreflightPolicy": {
     "scope": "EACH_REVIEWED_EXAM_EXACT_CANDIDATE",
@@ -979,5 +1038,11 @@
     "reuseExistingEvidence": true,
     "fullR1R2R3Rerun": false,
     "mainRegistrationStillRequired": true
+  },
+  "awcrCheckpoint": {
+    "latestVerifiedRevision": 13,
+    "verificationReportedBy": "root",
+    "nextRevision": 14,
+    "nextRevisionStatus": "PENDING_REMOTE_DOCUMENT_CHECKPOINT"
   }
 }

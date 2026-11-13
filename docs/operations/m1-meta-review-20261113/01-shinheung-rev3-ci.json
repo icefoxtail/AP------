@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "m1-review-pr-ci-observation-v1",
+  "observedAt": "2026-11-13T14:23:57.143Z",
+  "pr": {
+    "number": 1964,
+    "url": "https://github.com/icefoxtail/AP------/pull/1964",
+    "state": "open",
+    "merged": false,
+    "mergeable": true,
+    "headSha": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
+    "baseSha": "2dd58ebe1abb9123206782979f4ac23e3b891c49"
+  },
+  "observedMainSha": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+  "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev3",
+  "requestSha256": "bd2b3223b3e45a920f2f57707fd9ea37621b13a550f6125edc66edfd3057826f",
+  "result": "ALL_OBSERVED_PR_WORKFLOWS_SUCCESS",
+  "workflowCount": 4,
+  "jobCount": 6,
+  "workflows": [
+    {
+      "id": 43440174020,
+      "name": "Problem Bank Shared Meta",
+      "path": ".github/workflows/problem-bank-meta.yml",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43440174020",
+      "headSha": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-13T14:10:12Z",
+      "updatedAt": "2026-11-13T14:11:35Z",
+      "jobs": [
+        {
+          "id": 131935428605,
+          "name": "shared-meta",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43440174069,
+      "name": "Generated Consumer browser smoke",
+      "path": ".github/workflows/generated-consumer-browser-smoke.yml",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43440174069",
+      "headSha": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-13T14:10:12Z",
+      "updatedAt": "2026-11-13T14:13:17Z",
+      "jobs": [
+        {
+          "id": 131935430017,
+          "name": "browser-smoke",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43440173922,
+      "name": "Archive2 Runtime Guard",
+      "path": ".github/workflows/archive2-runtime-guard.yml",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43440173922",
+      "headSha": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-13T14:10:12Z",
+      "updatedAt": "2026-11-13T14:16:41Z",
+      "jobs": [
+        {
+          "id": 131935428970,
+          "name": "Archive2 50-question solution Chrome",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 131935428992,
+          "name": "Archive2 runtime contract",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43440173913,
+      "name": "CI",
+      "path": ".github/workflows/ci.yml",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43440173913",
+      "headSha": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-13T14:10:12Z",
+      "updatedAt": "2026-11-13T14:22:40Z",
+      "jobs": [
+        {
+          "id": 131935428349,
+          "name": "plan",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 131935631273,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "ciTestSelectedSteps": [
+    {
+      "number": 11,
+      "name": "Prepare and verify PR registration data once",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 12,
+      "name": "Prepare temporary main source registration projection",
+      "status": "completed",
+      "conclusion": "skipped"
+    },
+    {
+      "number": 19,
+      "name": "Run tests",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "requestSpecificPipelineCoverage": {
+    "ciArtifacts": [],
+    "completedJobLogChars": 1146345,
+    "exactRequestIdOccurrences": 2,
+    "requestOccurrenceContext": "Changed-path and footprint inventories only.",
+    "targetQuestionUidCount": 24,
+    "targetUidOccurrencesInCompletedJobLog": 0,
+    "preparedDataProofMarker": {
+      "state": "PASS",
+      "scope": "registration-data-only",
+      "chrome": "NOT_INCLUDED"
+    },
+    "producerSourceRef": {
+      "commit": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
+      "workflow": ".github/workflows/ci.yml",
+      "producer": "tools/ci/archive-pr-registration-proof.mjs",
+      "prepare": "tools/ci/archive-pr-registration-prepare.mjs"
+    },
+    "preparationCommands": [
+      "node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --write",
+      "python3 archive/build_db.py"
+    ],
+    "followingChecks": [
+      "Conditional catalog stabilization",
+      "identity-contract",
+      "identity-runtime",
+      "jeil-registration",
+      "palma-registration",
+      "registration-parity",
+      "diff-whitespace",
+      "derived-scope"
+    ],
+    "reviewedRegistrarInvokedByPreparation": false,
+    "semanticAutoMetaInvokedByPreparation": false,
+    "targetRequestAppliedEvidence": "NOT_OBSERVED",
+    "targetRequestProjectionEvidence": "NOT_OBSERVED",
+    "targetRequestConsumerAfterAutoMetaEvidence": "NOT_COVERED_BY_THIS_PR_PRODUCER",
+    "targetApprovalPreservationAfterAutoMetaEvidence": "NOT_COVERED_BY_THIS_PR_PRODUCER",
+    "targetSemanticAutoMetaOverrideEvidence": "NOT_OBSERVED; no such target pipeline was run by this producer.",
+    "conclusion": "This green PR CI proves its declared data/browser/test scopes. It does not establish reviewed-request application or final preservation of the 24 target values/approvals after the main writer semantic AutoMeta lane.",
+    "selectedLogEvidence": {
+      "path": "01-rev3-ci-preparation-scope.log",
+      "sha256": "acb6235955f0862fd215629880f8b25c9f77360326fd61c2091ac9f497b13ec5",
+      "bytes": 797,
+      "ansiFormattingRemoved": true
+    }
+  },
+  "parallelPr1963": {
+    "url": "https://github.com/icefoxtail/AP------/pull/1963",
+    "title": "fix(archive): 같은 원본에 결속된 native 메타 승인 보존",
+    "state": "open",
+    "mergeable": true,
+    "headSha": "bf87023732ce9c2df135ed51d374fb8803fa24e7",
+    "baseSha": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+    "paths": [
+      "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "docs/operations/m1-s2-meta-closeout-20261113-bf/04-native-approval-preservation.json",
+      "tests/archive-main-merge-meta.test.mjs"
+    ],
+    "firstExamSourceDirectPathOverlap": 0,
+    "requestOrCanonicalTableDirectPathOverlap": 0,
+    "sharedPipelineRelevance": "Changes the shared native automatic registration implementation; its post-registration behavior is relevant despite no direct source/table overlap."
+  },
+  "operationalRegistration": {
+    "status": "NOT_EVALUATED_BY_THIS_PR_CI_OBSERVATION",
+    "completedExams": 0
+  },
+  "observationActions": {
+    "readOnlyGithub": true,
+    "retryDispatched": false,
+    "writerInvoked": false,
+    "merged": false,
+    "commentsPosted": false,
+    "trackedFilesEdited": false
+  }
+}
