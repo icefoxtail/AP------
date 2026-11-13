@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {bytesSha,fileRef} from '../../pipeline-core/canonical.mjs';
+import {bytesSha,fileRef,readBoundFile,objectSha} from '../../pipeline-core/canonical.mjs';
 import {dependencyLock} from './dependencies.mjs';
+import {extractFontNamePairs,matchesFontNamePair} from './font-name-table.mjs';
 const root=fileURLToPath(new URL('../../../../',import.meta.url));
 export async function observeProblemKoreanFont(page){
   const observation={status:'NOT_RUN',runtime:'chromium-cdp-platform-fonts',platformFonts:[],uiPlatformFonts:[],probe:null,uiText:null};
@@ -11,6 +12,9 @@ export async function observeProblemKoreanFont(page){
     const metadata=JSON.parse(fs.readFileSync(path.join(root,metadataPath)));
     Object.assign(observation,{fontSha256:metadata.fontSha256,fontconfigRef:fileRef(root,metadataPath),family:metadata.family,koreanGlyphCoverage:metadata.glyphCoverage});
     if(metadata.status!=='FONTCONFIG_HASH_VERIFIED'||metadata.fontSha256!==dependencyLock.font.sha256||bytesSha(fs.readFileSync(metadata.matched))!==dependencyLock.font.sha256)throw Error('VERIFIED_BROWSER_FONT_SETUP_REQUIRED');
+    const fontBytes=readBoundFile(root,metadata.fontSourceRef),pairs=extractFontNamePairs(fontBytes);
+    if(bytesSha(fontBytes)!==dependencyLock.font.sha256||objectSha(pairs)!==objectSha(metadata.nameTablePairs))throw Error('VERIFIED_FONT_NAME_TABLE_REQUIRED');
+    Object.assign(observation,{fontSourceRef:metadata.fontSourceRef,nameTablePairs:pairs});
     // Platform-font data concerns painted glyphs. An offscreen node queried immediately after insertion
     // can have no painted font inventory. Paint this small probe, collect the raw metrics, then remove it
     // before any source screenshot; do not replace a missing or mismatched font with a guessed result.
@@ -44,9 +48,9 @@ export async function observeProblemKoreanFont(page){
       const {nodeId:uiNode}=await cdp.send('DOM.querySelector',{nodeId:document.nodeId,selector:'[data-geometry-korean-observed="1"]'});
       const {fonts:uiPlatformFonts}=await cdp.send('CSS.getPlatformFontsForNode',{nodeId:uiNode});observation.uiPlatformFonts=uiPlatformFonts;observation.uiText.nodeId=uiNode;
     }
-    if(!observation.platformFonts.some(f=>f.familyName===metadata.family&&f.glyphCount>0))throw Error('ACTUAL_KOREAN_PLATFORM_FONT_REQUIRED');
+    if(!observation.platformFonts.some(f=>matchesFontNamePair(f,pairs)))throw Error('ACTUAL_KOREAN_PLATFORM_FONT_REQUIRED');
     if(!observation.uiText)throw Error('ACTUAL_KOREAN_UI_TEXT_REQUIRED');
-    if(!observation.uiPlatformFonts.some(f=>f.familyName===metadata.family&&f.glyphCount>0))throw Error('ACTUAL_KOREAN_UI_PLATFORM_FONT_REQUIRED');
+    if(!observation.uiPlatformFonts.some(f=>matchesFontNamePair(f,pairs)))throw Error('ACTUAL_KOREAN_UI_PLATFORM_FONT_REQUIRED');
     observation.status='PASS';
   }catch(error){observation.status='FAIL';observation.error={code:error.message,message:String(error.stack??error)};}
   finally{

@@ -11,6 +11,7 @@ import {loadProblemManifest,verifyProblemEvidence,selectChangedProblemManifests}
 import {measureArchiveTypographyPolicy,captureArchiveCandidate,measureProblemTypographyPolicy,captureProblemCandidate,PROBLEM_CAPTURE_VIEWPORTS} from '../production/construction-archive-capture-v1.mjs';
 import {renderPlan} from '../production/render-plan.mjs';
 import {verifyPublishedProblemEnvelope} from '../production/problem-output-envelope.mjs';
+import {extractFontNamePairs,matchesFontNamePair} from '../production/font-name-table.mjs';
 const outputContract=createRequire(import.meta.url)('../../../archive2-output-contract.js');
 
 const prefix='archive/tools/geometry-equation/ops/problem-figures/';
@@ -109,4 +110,18 @@ test('problem reader consumes the official envelope and rejects missing IDs, wro
   await assert.rejects(outputContract.validateOutputEnvelope(envelope,{ownerId:crypto.randomUUID()}),/ownerId/);
   await assert.rejects(verifyPublishedProblemEnvelope({...envelope,outputRequestId:''},{bank,sourceId,url:url.href}),/outputRequestId/);
   await assert.rejects(verifyPublishedProblemEnvelope(envelope,{bank:[{id:1,content:'다른 문제'}],sourceId,url:url.href}),/PROBLEM_OUTPUT_ENVELOPE_BINDING_MISMATCH/);
+});
+
+test('font identity comes from exact paired sfnt names, not CSS family aliases or prefixes',()=>{
+  // Synthetic parser unit fixture only; this is not measured browser/font evidence.
+  const names=[[1,'Noto Sans KR Thin'],[6,'NotoSansKR-Thin'],[16,'Noto Sans KR']];
+  const strings=names.map(([,s])=>Buffer.from(s,'utf16le').swap16()),start=6+12*names.length,table=Buffer.alloc(start+strings.reduce((n,b)=>n+b.length,0));
+  table.writeUInt16BE(names.length,2);table.writeUInt16BE(start,4);let offset=0;
+  names.forEach(([id],i)=>{const at=6+12*i;[3,1,1033,id,strings[i].length,offset].forEach((v,k)=>table.writeUInt16BE(v,at+2*k));strings[i].copy(table,start+offset);offset+=strings[i].length;});
+  const bytes=Buffer.alloc(28+table.length);bytes.writeUInt32BE(0x00010000,0);bytes.writeUInt16BE(1,4);bytes.write('name',12);bytes.writeUInt32BE(28,20);bytes.writeUInt32BE(table.length,24);table.copy(bytes,28);
+  const pairs=extractFontNamePairs(bytes);assert.deepEqual(pairs,[{platform:3,encoding:1,language:1033,familyName:'Noto Sans KR Thin',postScriptName:'NotoSansKR-Thin'}]);
+  const actual={familyName:'Noto Sans KR Thin',postScriptName:'NotoSansKR-Thin',glyphCount:7,isCustomFont:false};
+  assert.equal(matchesFontNamePair(actual,pairs),true);
+  for(const change of [{familyName:'Noto Sans KR'},{familyName:'Noto Sans KR Thin Extra'},{postScriptName:'NotoSansKR-Other'},{glyphCount:0},{isCustomFont:true}])assert.equal(matchesFontNamePair({...actual,...change},pairs),false);
+  assert.throws(()=>extractFontNamePairs(bytes.subarray(0,bytes.length-1)),/FONT_NAME_TABLE_INVALID/);
 });

@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {objectSha,bytesSha,fileRef,readBoundFile} from '../../pipeline-core/canonical.mjs';
 import {loadBank} from '../build-visual-render-matrix.mjs';
 import {dependencyLock} from './dependencies.mjs';
+import {extractFontNamePairs,matchesFontNamePair} from './font-name-table.mjs';
 const require=createRequire(import.meta.url),contract=require('../../../archive2-output-contract.js');
 const root=fileURLToPath(new URL('../../../../',import.meta.url));
 export const PROBLEM_ENVELOPE_SEED_PATH='/__geometry/problem-output-seed.html';
@@ -27,7 +28,8 @@ export function validateProblemReaderEvidence(row,{root,sourcePath}){
   const received=(row.responses??[]).filter(r=>{try{return decodeURIComponent(new URL(r.url).pathname)==='/'+sourcePath;}catch{return false;}});
   if(bytesSha(candidate)!=='sha256:'+row.candidateSha256||objectSha(bank)!==evidence.questionBankSha256||objectSha(envelope.questions)!==evidence.questionBankSha256||bytesSha(Buffer.from(contract.canonicalizeOutputValue(unsigned))).slice(7)!==payloadHash||payloadHash!==evidence.payloadHash||envelope.outputRequestId!==evidence.outputRequestId||envelope.ownerId!==evidence.ownerId||envelope.contractVersion!==contract.CONTRACT_VERSION||envelope.mode!=='exam'||envelope.sourceId!==sourceId||envelope.meta.sourceArchiveFile!==sourceId||reader.pathname!=='/archive/engine.html'||reader.searchParams.get('archive2Context')!=='archive2'||reader.searchParams.get('archive2OutputContract')!==envelope.contractVersion||reader.searchParams.get('outputRequestId')!==envelope.outputRequestId||reader.searchParams.get('outputOwnerId')!==envelope.ownerId||received.length!==1||received[0].status!==200||received[0].sha256!==row.candidateSha256)invalid();
   const font=row.koreanFont,setup=font?.fontconfigRef?JSON.parse(readBoundFile(root,font.fontconfigRef)):null;
-  if(font?.status!=='PASS'||font.fontSha256!==dependencyLock.font.sha256||setup?.fontSha256!==dependencyLock.font.sha256||setup.status!=='FONTCONFIG_HASH_VERIFIED'||setup.glyphCoverage!=='ALL_PRESENT'||setup.family!==font.family||!font.platformFonts?.some(f=>f.familyName===font.family&&f.glyphCount>0)||!font.uiPlatformFonts?.some(f=>f.familyName===font.family&&f.glyphCount>0))throw Error('PROBLEM_READER_KOREAN_FONT_EVIDENCE_INVALID');
+  const fontBytes=readBoundFile(root,setup?.fontSourceRef),pairs=extractFontNamePairs(fontBytes);
+  if(font?.status!=='PASS'||font.fontSha256!==dependencyLock.font.sha256||bytesSha(fontBytes)!==dependencyLock.font.sha256||objectSha(setup.nameTablePairs)!==objectSha(pairs)||objectSha(font.nameTablePairs)!==objectSha(pairs)||setup?.fontSha256!==dependencyLock.font.sha256||setup.status!=='FONTCONFIG_HASH_VERIFIED'||setup.glyphCoverage!=='ALL_PRESENT'||setup.family!==font.family||!font.platformFonts?.some(f=>matchesFontNamePair(f,pairs))||!font.uiPlatformFonts?.some(f=>matchesFontNamePair(f,pairs)))throw Error('PROBLEM_READER_KOREAN_FONT_EVIDENCE_INVALID');
   return {status:'PASS',envelopeSha256:evidence.ref.sha256,payloadHash,fontSha256:font.fontSha256};
 }
 
