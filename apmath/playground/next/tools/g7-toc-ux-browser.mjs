@@ -697,10 +697,24 @@ try {
               const original = ctx.fillText, labels = [];
               const canvas = lab.ui.canvas, rect = canvas.getBoundingClientRect();
               const cssX = rect.width / canvas.width, cssY = rect.height / canvas.height;
+              const boardState = () => {
+                const spec = lab.scene._mf, values = APL_MF.values(spec, lab.s);
+                const model = lab.learning.active ? lab.learning.active.model.m : spec.model(values);
+                const points = Object.fromEntries(pointNames.map(name => {
+                  const point = model[name] || null;
+                  return [name, { model: point, pixel: point && board.toS(point) }];
+                }));
+                return structuredClone({ points, zoom: board.zoom, width: board.W, height: board.H, boardKind: board.kind,
+                  focus: board.focus, insets: board.insets, pad: board.pad, font: board.font, fontScale: board.fs });
+              };
+              let drawState = null;
               // Observe the canvas commands that survive the actual axis
               // clipping logic. Keep the real draw call and rendering intact.
               ctx.fillText = function (text, x, y, ...rest) {
                 const value = String(text), measured = this.measureText(value);
+                if (!drawState && /^−?\d+(?:\.\d+)?$/.test(value) &&
+                  ((this.textAlign === 'center' && this.textBaseline === 'top') ||
+                   (this.textAlign === 'right' && this.textBaseline === 'middle'))) drawState = boardState();
                 const metrics = Object.fromEntries(['width', 'actualBoundingBoxLeft', 'actualBoundingBoxRight', 'actualBoundingBoxAscent', 'actualBoundingBoxDescent']
                   .map(key => [key, measured[key]]));
                 let bounds = null;
@@ -723,18 +737,15 @@ try {
                 return original.call(this, text, x, y, ...rest);
               };
               try { lab.render(); } finally { ctx.fillText = original; }
-              const spec = lab.scene._mf, values = APL_MF.values(spec, lab.s);
-              const model = lab.learning.active ? lab.learning.active.model.m : spec.model(values);
-              const points = Object.fromEntries(pointNames.map(name => {
-                const point = model[name] || null;
-                return [name, { model: point, pixel: point && board.toS(point) }];
-              }));
+              // _renderStage updates board insets after the picture is drawn.
+              // Assert the positions used by the axis draw, keeping the later
+              // shell state separately so evidence cannot mix the two frames.
+              const postRenderState = boardState();
               const numericLabels = (align, baseline) => labels.filter(label => label.align === align && label.baseline === baseline && /^−?\d+(?:\.\d+)?$/.test(label.text));
               const tickGlyphs = { x: numericLabels('center', 'top'), y: numericLabels('right', 'middle') };
               const numbers = rows => rows.map(label => Number(label.text.replace('−', '-'))).sort((a, b) => a - b);
               const originGlyphs = labels.filter(label => label.text === 'O' && label.align === 'right' && label.baseline === 'top');
-              return { points, zoom: board.zoom, width: board.W, height: board.H, boardKind: board.kind,
-                focus: board.focus, insets: board.insets, pad: board.pad, font: board.font, fontScale: board.fs,
+              return { ...(drawState || postRenderState), boardStatePhase: drawState ? 'axis-draw' : 'after-render', postRenderState,
                 elapsed: lab.learning.elapsed, learningMode: lab.learning.mode,
                 rangeStepSeconds: (lab.learning.active?.duration || 0) / 1000,
                 xTicks: numbers(tickGlyphs.x), yTicks: numbers(tickGlyphs.y), tickGlyphs, originGlyphs };

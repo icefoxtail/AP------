@@ -128,6 +128,26 @@ test('integer-coordinate tick labels do not overlap on phone and short wide canv
   }
  }
 });
+test('axis-pair compact proof leaves room for the measured two-digit negative glyphs',()=>{
+ // Real Chromium at 1024x768 measured a 24.637451px ink box for −21/−20.
+ // The failed proof placed these ticks only 20.705px apart; the generic
+ // 6.5px-per-character VM proxy above cannot catch that font-specific overlap.
+ const negativeInkWidth=24.637451171875;
+ for(const [width,height]of [[1024,399],[820,460],[1120,468]]){
+  const {labels}=drawCoordinates('axis-pair','short',width,height);
+  const ticks=labels.filter(l=>l.align==='center'&&/^−?\d+$/.test(l.text)).sort((a,z)=>a.x-z.x);
+  assert.ok(ticks.length>1,'the actual axis tick positions are exercised');
+  if(width===1024)assert.ok(ticks.filter(l=>/^−\d{2}$/.test(l.text)).length>1,'the failed viewport still exercises adjacent negative two-digit labels');
+  for(let i=1;i<ticks.length;i++)assert.ok(ticks[i].x-ticks[i-1].x>=negativeInkWidth,`${width}x${height}: the drawn tick spacing clears the measured glyph ink`);
+ }
+ const spec=def.scenes.find(s=>s.id==='axis-pair');
+ for(const values of sample(spec)){
+  const {b,v}=drawCoordinates('axis-pair','short',1024,399,values),m=spec.model(v);
+  for(const point of [{x:0,y:0},...(v.mode?[m.Q]:[m.A,m.B])])assert.ok(point.x>=b.focus.x[0]&&point.x<=b.focus.x[1]&&point.y>=b.focus.y[0]&&point.y<=b.focus.y[1],'compact proof retains the origin and active model points');
+ }
+ const {b,v}=drawCoordinates('axis-pair','short',1120,560);
+ assert.equal(JSON.stringify(b.focus),JSON.stringify(spec.focus(v,spec.model(v))),'the large-canvas authored range stays unchanged');
+});
 test('coordinate fits keep positive and negative initial points visible and preserve the authored proof ranges',()=>{
  for(const id of ['coord-order','read-coordinates'])for(const [width,height,viewportWidth,top=0]of coordinateBoardSizes){
   for(const values of [{},{x:-3,y:2},{x:0,y:-4}]){

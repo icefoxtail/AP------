@@ -296,6 +296,7 @@
     vars:{a:V('조건 바꾸기',3,1,5,1,true),b:V('둘째 조건 바꾸기',2,1,5,1,true)},presets:[{label:'좌표축 조건',values:{mode:0,a:3,b:2}},{label:'같은 순서쌍',values:{mode:1,a:2,b:1}},{label:'새로운 조건',values:{a:4,b:3}}],
     model:v=>({A:P(2*v.a,0),B:P(0,-2*v.b),Q:P(3*v.a,2*v.b+2)}),focus:(v,m)=>M.box(v.mode?[m.Q]:[m.A,m.B],{minSpan:12,pad:2}),
     nativeFocus:(v,m)=>M.box(v.mode?[m.Q]:[m.A,m.B],{minSpan:10,pad:2}),
+    shortFocus:(v,m)=>M.box(v.mode?[m.Q]:[m.A,m.B],{minSpan:10,pad:2}),
     question:v=>v.mode?T`$(3a,2b+2)=(${F(4*v.a)}-a,-2b+${F(4*v.b+2)})$일 때 $a,b$를 구하세요.`:T`$A(2a,a-${F(v.a)})$는 x축, $B(b-${F(v.b)},-2b)$는 y축 위에 있습니다. $a,b$를 구하세요.`,
     guide:'조건 프리셋을 바꾸어 축의 0인 좌표와 순서쌍의 같은 성분을 비교하세요.',
     steps:v=>v.mode?['같은 순서쌍은 같은 위치의 수가 같아요.',T`첫째 성분에서 $3a=${F(4*v.a)}-a$예요.`,T`둘째 성분에서 $2b+2=-2b+${F(4*v.b+2)}$예요.`,T`$a=${F(v.a)},\ b=${F(v.b)}$예요.`]:['x축 위의 점은 세로 좌표가 0이에요.',T`$a-${F(v.a)}=0$을 세워요.`,T`y축 위에서는 $b-${F(v.b)}=0$이에요.`,T`$a=${F(v.a)},\ b=${F(v.b)}$예요.`],
