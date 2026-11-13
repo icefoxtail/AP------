@@ -1237,7 +1237,7 @@
     "ROOT appends draft rows only after their exact keys are ACTIVE. Keep all old IDs/paths/statuses intact and recompute crosswalk summary counts.",
     "ROOT recomputes parent leaf IDs and legacy subunit unions across all 2022 middle crosswalks; no locked leaf or effective parent rewrite.",
     "Run node archive/tools/meta-foundation/build-rpm-middle-toc.mjs and then --check for its generated helper.",
-    "Build question-specific selection evidence only after the isolated semantic input hash is fixed. Resolve every intended row with exact native context. Keep Q8/Q10 null RPM EVIDENCE_DEBT.",
+    "Check all 22 exact classifications and Q8/Q10 native debt keys without calling the semantic resolver. Actual resolver proof remains NOT_RUN_UNVERIFIED_SOLUTION unless genuine independent solution verification becomes available.",
     "Root applies metadata-only question changes and direct-effect validation; original math content and preserved receipts remain unchanged."
   ],
   "validation": {
@@ -1257,7 +1257,15 @@
       "countAsPass": false
     },
     "diffCheck": "PASS",
-    "productionCrosswalkOrParentEdited": false
+    "productionCrosswalkOrParentEdited": false,
+    "metadataClassification": {
+      "status": "SEE_SEPARATE_DIRECT_CHECK_RECEIPT",
+      "reportPath": ".tmp/m1-meta-review/01-metadata-classification-check.json",
+      "exactRows": 22,
+      "rpmDebtRows": 2,
+      "actualResolverProof": "NOT_RUN_UNVERIFIED_SOLUTION",
+      "solutionVerificationClaimed": false
+    }
   },
   "partBReference": {
     "path": ".tmp/m1-meta-review/01-final-semantic-partB.json",
@@ -1328,6 +1336,40 @@
       },
       "requiresPostCrosswalkSelection": false,
       "mode": "EXACT_CROSSWALK"
+    },
+    {
+      "sourceOrdinal": 5,
+      "crosswalkRecordId": "M1-RPM-198",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-POLYGON_CIRCLE",
+      "rpmPath": {
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "삼각형·다각형의 각",
+        "l4": "변·대각선 개수"
+      },
+      "requiresPostCrosswalkSelection": true,
+      "mode": "EXACT_CROSSWALK",
+      "changeIntent": "KEEP"
+    },
+    {
+      "sourceOrdinal": 6,
+      "crosswalkRecordId": "M1-RPM-202",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "rpmPath": {
+        "majorUnit": "평면도형",
+        "midUnit": "원과 부채꼴",
+        "l3": "원과 부채꼴의 기본",
+        "l4": "부채꼴의 호의 길이"
+      },
+      "requiresPostCrosswalkSelection": false,
+      "mode": "EXACT_CROSSWALK",
+      "changeIntent": "KEEP"
     },
     {
       "sourceOrdinal": 7,
@@ -1430,6 +1472,57 @@
       "mode": "EXACT_CROSSWALK"
     },
     {
+      "sourceOrdinal": 14,
+      "crosswalkRecordId": "M1-RPM-196",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-POLYGON_CIRCLE",
+      "rpmPath": {
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "다각형의 내각과 외각",
+        "l4": "정다각형의 각"
+      },
+      "requiresPostCrosswalkSelection": true,
+      "mode": "EXACT_CROSSWALK",
+      "changeIntent": "KEEP"
+    },
+    {
+      "sourceOrdinal": 15,
+      "crosswalkRecordId": "M1-RPM-202",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "rpmPath": {
+        "majorUnit": "평면도형",
+        "midUnit": "원과 부채꼴",
+        "l3": "원과 부채꼴의 기본",
+        "l4": "부채꼴의 호의 길이"
+      },
+      "requiresPostCrosswalkSelection": false,
+      "mode": "EXACT_CROSSWALK",
+      "changeIntent": "KEEP"
+    },
+    {
+      "sourceOrdinal": 16,
+      "crosswalkRecordId": "M1-RPM-203",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "rpmPath": {
+        "majorUnit": "평면도형",
+        "midUnit": "원과 부채꼴",
+        "l3": "부채꼴의 넓이",
+        "l4": "중심각을 이용한 넓이"
+      },
+      "requiresPostCrosswalkSelection": false,
+      "mode": "EXACT_CROSSWALK",
+      "changeIntent": "KEEP"
+    },
+    {
       "sourceOrdinal": 17,
       "crosswalkRecordId": "M1-RPM-181-SPATIAL-CLAIM-20261113",
       "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
@@ -1478,6 +1571,23 @@
       "mode": "EXACT_CROSSWALK"
     },
     {
+      "sourceOrdinal": 20,
+      "crosswalkRecordId": "M1-RPM-206",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "rpmPath": {
+        "majorUnit": "평면도형",
+        "midUnit": "원과 부채꼴",
+        "l3": "복합도형",
+        "l4": "부채꼴을 포함한 넓이"
+      },
+      "requiresPostCrosswalkSelection": false,
+      "mode": "EXACT_CROSSWALK",
+      "changeIntent": "KEEP"
+    },
+    {
       "sourceOrdinal": 21,
       "crosswalkRecordId": "M1-RPM-174-MIDPOINT-20261113",
       "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
@@ -1510,6 +1620,23 @@
       "mode": "EXACT_CROSSWALK"
     },
     {
+      "sourceOrdinal": 23,
+      "crosswalkRecordId": "M1-RPM-206",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "rpmPath": {
+        "majorUnit": "평면도형",
+        "midUnit": "원과 부채꼴",
+        "l3": "복합도형",
+        "l4": "부채꼴을 포함한 넓이"
+      },
+      "requiresPostCrosswalkSelection": false,
+      "mode": "EXACT_CROSSWALK",
+      "changeIntent": "KEEP"
+    },
+    {
       "sourceOrdinal": 24,
       "crosswalkRecordId": "M1-RPM-192-CORRESPONDENCE-20261113",
       "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
@@ -1527,15 +1654,25 @@
     }
   ],
   "proofRunnerInterface": {
-    "isolatedRegistry": "loadActiveMetaRegistry(root) + validated add-only registryChanges overlay; preserve raw compiled authority and mark overlay proof provisional",
-    "resolverCall": "resolveMetaRoute(input, {repoRoot: isolatedFixtureRoot, registry: overlayRegistry})",
-    "selectionCall": "buildDecisionIsolatedInput(input).inputBundleSha, then familyTemplateSelection={stage:POST_CROSSWALK,inputBundleSha,crosswalkRecordId,templateKey,decisiveStepReason}",
-    "fixtureRequirements": [
-      "copy each baseline resolver authorityRef to the isolated fixture",
-      "write derived crosswalk and derived parent authority only within fixture",
-      "copy or reuse unchanged locked RPM master/view bytes",
-      "do not seal provisional overlay evidence as production authority evidence"
-    ],
-    "productionProof": "After authorized v2 registry application and compile, rerun exact decisions against real canonical hashes. Q8/Q10 must remain null RPM debt."
+    "registryLoader": "loadActiveMetaRegistry(root) from archive/tools/meta-foundation/active-registry.mjs; load verified current compiled maps and exact canonical digests.",
+    "overlayConstructor": "await createProvisionalRegistryOverlay({root, registryChanges: validatedRequest.registryChanges}); supports 16 add-only changes and one approved MIDDLE_GEOMETRY pack scope append, memory only.",
+    "classificationCall": "checkMetadataClassifications({root, registry: overlay.registry, inputs: optional22ChoiceReferences}); does not call resolveMetaRoute or claim independent solution verification.",
+    "inputChoices": "All 22 exact ordinals are in ordinalChoices. Optional input.crosswalkRecordId or input.choice.crosswalkRecordId, templateKey and problemTypeKey must match the ledger. Q5 uses the existing FAMILY row-local DIAGONAL_FORMULA candidate; Q14 explicitly selects existing M1-RPM-196.",
+    "actualResolverProof": "NOT_RUN_UNVERIFIED_SOLUTION",
+    "resolverPrerequisite": "Only genuine VERIFIED_FINAL solutionIdentity with independentVerification=true permits proveExactCrosswalkChoices. The current exam does not have that evidence. Do not construct those fields for metadata review.",
+    "provisionalOnly": true,
+    "productionRegistryWritten": false,
+    "solutionVerificationClaimed": false,
+    "debtPolicy": "Q8 and Q10 retain null RPM crosswalk/path EVIDENCE_DEBT while native ACTIVE PT/TPL and exact bindings are checked."
+  },
+  "coverage": {
+    "totalQuestions": 24,
+    "exactCrosswalkQuestions": 22,
+    "keptCrosswalkChoices": 7,
+    "changedCrosswalkChoices": 15,
+    "rpmEvidenceDebtQuestions": [
+      8,
+      10
+    ]
   }
 }

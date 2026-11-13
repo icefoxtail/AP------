@@ -15,7 +15,7 @@
   "completedExams": 0,
   "reviewedQuestions": 24,
   "currentOrder": 1,
-  "nextAction": "PREPARE_FIRST_EXAM_REGISTRATION_AND_MERGE",
+  "nextAction": "CREATE_FIRST_EXAM_PR_AND_VERIFY_MAIN_REGISTRATION",
   "exams": [
     {
       "order": 1,
@@ -26,7 +26,7 @@
       "count": 24,
       "sourceBlob": "c36139a90e9bcd378577ece8f891423bee6b0a19",
       "sourceSha256": "1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564",
-      "status": "REVIEWED_PENDING_REGISTRATION_AND_MERGE",
+      "status": "PREPARED_NATIVE_DRY_RUN_PASS_PENDING_PR_AND_REGISTRATION",
       "partialEvidence": "01-shinheung-semantic-read-checkpoint.json",
       "candidateComparisonEvidence": "01-shinheung-candidate-comparison.json",
       "candidateComparisonSha256": "c887310c2501c3d70a010315a7fda02c73a6964ba45b70c3aa106a99c4a62ce9",
@@ -35,7 +35,17 @@
       "reviewedQuestionCount": 24,
       "correctionCount": 15,
       "bindingOnlyRepairCount": 2,
-      "rpmEvidenceDebtCount": 2
+      "rpmEvidenceDebtCount": 2,
+      "preparedSourceBlob": "930d4e3ef44e60757180aae6fc15fcc5b7228958",
+      "preparedSourceSha256": "bc4dcf03680da654dec43928f7b1a57942a6f616de9f03ca9ba3976203bd9a18",
+      "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev1",
+      "requestSha256": "24ba8de0d00e494b91268a00771d6b7d30cc2a17ac57c76bb7f1bc30a7a10ede",
+      "nativeRegistrationDryRun": "PASS",
+      "actualRpmResolver": "NOT_RUN_UNVERIFIED_SOLUTION",
+      "classificationCheck": {
+        "exact": 22,
+        "rpmOnlyDebt": 2
+      }
     },
     {
       "order": 2,
@@ -512,20 +522,27 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "PAUSED_FOR_RPM_L1_L2_REFINEMENT",
+  "state": "FIRST_EXAM_PREPARED_PENDING_PR_REGISTRATION",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
       "path": "docs/operations/m1-meta-review-20261113/01-shinheung-first-half-candidate.json",
       "sha256": "60b32054eb8d0ba90fc6a37af29364e8685e7b30c4ee5b6a4a7aff1f01259218",
-      "state": "PENDING_PARENT_MAIN_MERGE",
-      "parentAuthorityCommit": "9a29f38c36a3a8531dbd9fe25a7cbe32c1899788"
+      "state": "SUPERSEDED_BY_CONFIRMED_SEMANTIC_REVIEW",
+      "parentAuthorityCommit": "9a29f38c36a3a8531dbd9fe25a7cbe32c1899788",
+      "historicalState": "PENDING_PARENT_MAIN_MERGE",
+      "supersededBy": "01-shinheung-semantic-review.json"
     },
     "Q13_24": {
       "path": "docs/operations/m1-meta-review-20261113/01-shinheung-candidate-comparison.json",
       "sha256": "c887310c2501c3d70a010315a7fda02c73a6964ba45b70c3aa106a99c4a62ce9",
-      "state": "PENDING_ROOT_CONFIRMATION"
+      "state": "SUPERSEDED_BY_CONFIRMED_SEMANTIC_REVIEW",
+      "historicalState": "PENDING_ROOT_CONFIRMATION",
+      "supersededBy": "01-shinheung-semantic-review.json"
     }
   },
-  "activeMain": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7"
+  "activeMain": "ceeafbee1cc000f5308e040ba252729f0982c827",
+  "prerequisiteStatus": "RPM_L1_L2_MERGED",
+  "prerequisiteMainSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
+  "latestRemoteSemanticCheckpoint": "ae19795a822db73448c7487aea4036c509720ecb"
 }

@@ -1,0 +1,53 @@
+{
+  "scope": "Technical resolver, crosswalk additions, and middle TOC helper regression only; no exam math QA or R1/R2/R3",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "archive/tools/meta-foundation/rpm-active-resolver.test.mjs",
+    "archive/tools/meta-foundation/rpm-crosswalk-additions.test.mjs",
+    "archive/tools/meta-foundation/rpm-middle-toc.test.mjs"
+  ],
+  "loginShell": false,
+  "testConcurrency": 1,
+  "startedAtUtc": "2026-11-13T11:24:02.848400+00:00",
+  "state": "FAIL_OR_INTERRUPTED",
+  "processReturnCode": 1,
+  "shellEquivalentExitCode": 1,
+  "logPath": ".tmp/m1-meta-review/01-focused-regression.log",
+  "finishedAtUtc": "2026-11-13T11:24:15.411424+00:00",
+  "signalNumber": null,
+  "logSha256": "b4bd69ea69b0f31c0bac9d1dde1a337c592aebe8751a8548f98ff6cb970f4f68",
+  "logBytes": 5474,
+  "testSummary": {
+    "tests": "40",
+    "suites": "0",
+    "pass": "39",
+    "fail": "1",
+    "cancelled": "0",
+    "skipped": "0",
+    "todo": "0",
+    "duration_ms": "12449.258338"
+  },
+  "testRunCount": 1,
+  "resultKind": "ASSERTION_FAILURE",
+  "failureDetails": [
+    {
+      "testFile": "archive/tools/meta-foundation/rpm-middle-toc.test.mjs",
+      "testLine": 85,
+      "assertionLine": 98,
+      "testName": "the four M1 basic/location leaves follow chapter content while retaining their original leaf IDs",
+      "actual": [
+        "M1-RPM-177",
+        "M1-RPM-177-TRANSFER-BENT-20261113",
+        "M1-RPM-177-TRANSFER-DIRECT-20261113"
+      ],
+      "expected": [
+        "M1-RPM-177"
+      ],
+      "assessment": "The exact equality fixture assumes one crosswalk ID. The prepared authority and generated helper now retain two additional explicit mappings for the same locked leaf. The current tests otherwise pass including 326-leaf round-trip and crosswalk-ID preservation. Root must decide and update the explicit expected IDs if these additions are intentional; no production or fixture edits made by reviewer."
+    }
+  ],
+  "productionOrFixtureEditsPerformed": false,
+  "assertionNotWeakened": true
+}

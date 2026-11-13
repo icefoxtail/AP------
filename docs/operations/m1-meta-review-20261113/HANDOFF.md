@@ -22,7 +22,7 @@
 - 의미 확정 원장: `01-shinheung-semantic-review.json`
 - 원장 SHA256: `8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0`
 - 의미/빈 유형 연결 수정 15문항, 의미를 유지한 binding 보완 2문항. 의미 유지 9문항에는 binding 보완 2문항이 포함된다.
-- **등록·원격 main 병합은 아직 완료되지 않았다.** 원장에는 메타 의미 검토와 수학·해설 FINAL QA를 구분하여 기록했다.
+- **등록·원격 main 병합은 아직 완료되지 않았다. 24문항/17개 정본 변경의 공식 native v2 dry-run은 PASS다.** 원장에는 메타 의미 검토와 수학·해설 FINAL QA를 구분하여 기록했다.
 
 ### 확정한 주요 판단
 
@@ -49,7 +49,7 @@
 5. crosswalk를 추가하면 `rpm-middle-2022-parents.json`의 `leafMappings[].crosswalkRecordIds`와 `legacySubUnitMappings`를 재계산하고 기존 helper generator를 실행한다. 기존 부모 배치와 326개 leaf는 바꾸지 않는다.
 6. source의 메타만 최소 수정한다. 지문·보기·정답·해설·그림·UID·배점·난이도는 보존한다. `primaryMethod`와 `decisiveStep`은 의미 검토 요약으로 추가한다.
 7. 24 UID 전체의 공식 v2 dry-run을 수행한다. 기존 metadata/identity fingerprint 24개가 현 source 계산과 달라, `01-shinheung-fingerprint-preflight.json`의 정확한 before/after 및 `identityBefore`를 결속한다. 이 수선으로 학생용 내용을 바꾸지 않는다.
-8. 22개 exact RPM 경로는 수정 부분과 직접 영향만 resolver로 검사하고, 2개 RPM debt는 구별한다. 등록 후 native/Consumer 값을 확인한다.
+8. 22개 exact RPM 경로는 정본 경로·crosswalk의 실제 listed PT/TPL·ACTIVE binding·pack 범위 대조를 완료했다. 현재 독립 풀이 VERIFIED_FINAL 근거가 없으므로 실제 RPM resolver를 실행하거나 그 플래그를 만들지 않는다. 2개 RPM debt는 구별하고, 등록 후 native/Consumer 값을 확인한다.
 9. 첫 시험지 PR → main 병합 → 원격 SHA·등록 영수증 확인 → progress와 인계 갱신. 그 다음에만 2026 왕운중 2학기 중간 23문항으로 이동한다.
 
 ## 보존 및 검증 경계
@@ -59,9 +59,24 @@
 - fingerprint 진단: `01-shinheung-fingerprint-preflight.json` — 24/24 불일치와 공식 검증 함수의 명시적 repair 수용을 기록했다. 등록 완료 증거는 아니다.
 - 공용 metadata/identity/runtime/compiled 대형 파일을 직접 편집하지 않는다. 서버 writer가 소형 v2 요청을 적용한다.
 - 전체 시험지의 과거 수학 검수 완료를 추정하거나 새 R1/R2/R3 PASS를 만들지 않는다.
-- 현재 기본 코드 검사 환경에서 큰 기존 resolver suite는 assertion 전 SIGKILL을 받았다. 신규 좁은 resolver 검사 5개는 통과했으나 전체 suite 통과로 확대하여 보고하지 않는다. 실제 CI 결과가 필요하다.
+- 로그인 셸 지연은 exec의 login:false로 해소했다. 변경된 resolver 검사는 29개가 통과했다. 부모 helper 검사의 기존 단일 crosswalk ID 기대값을 추가된 두 정확 행에 맞춰 갱신한 뒤 11개 모두 통과했다. 실제 CI 및 운영 반영 확인은 남아 있다.
 - scratch 도구·초안은 보조물이다. 이 문서와 Git 원장만으로 확정 의미 판단을 재구성할 수 있어야 한다.
 
 ## 복사용 재개 프롬프트
 
 > `icefoxtail/AP------`의 `review/m1-existing-meta-20261113` 최신 원격 브랜치에서 중1 기존 시험지 메타 검토를 이어가 주세요. 먼저 Notion 필독 라우터와 최신 main, 이 브랜치의 `docs/operations/m1-meta-review-20261113/HANDOFF.md` 및 `progress.json`을 읽으세요. RPM L1/L2 선행 작업 PR1958은 main `8c1b6694c35e76399a6ad36a4b6683e2cb6726b7`로 병합했습니다. 첫 신흥중2026 2학기 중간24문항의 읽기와 의미 판단은 저장되어 있고, 등록/main 병합은 이 체크포인트에서 아직 미완료입니다. 기존 읽기를 반복하지 말고 확정 원장의 15개 의미/연결 수정과 2개 binding 보완을 적용하세요. Q8/Q10의 RPM-only EVIDENCE_DEBT는 숨기지 마세요. 한 시험지씩 PR→main→원격SHA 확인 후 다음 시험지로 이동하고, 전체 R1/R2/R3는 다시 실행하지 마세요. taskId는 `f46ac6a5-f2f7-4ae1-a0af-5806b87de808`, owner는 `GPT_ROOT_933015CD0A4F`입니다.
+
+## 이번 준비본의 추가 증거
+
+- 공식 v2 dry-run: `01-shinheung-registration-dry-run.json` — write:false, 24문항, 정본 변경17, fingerprint 보정24, Consumer/Search NOT_RUN.
+- 학생용 데이터 보존: `01-shinheung-source-metadata-delta.json` — 24/24 전체 비메타 값 동일.
+- 실제 분류 대조: `01-shinheung-classification-check.json` — exact22/RPM debt2. 수학 검수·실제 풀이 resolver PASS 주장이 아니다.
+- 검증 경계: `01-shinheung-verification-boundary.json`.
+- 새 정본 추가17: `01-shinheung-registry-additions.json`. MIDDLE_GEOMETRY의 기존 원·부채꼴 binding을 위한 scope append1건과 그 직접 영향4 binding/UID참조9개는 `01-shinheung-pack-scope-impact.json`에 있다.
+- 제출할 immutable 요청: `.archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev1.json`, SHA256 `24ba8de0d00e494b91268a00771d6b7d30cc2a17ac57c76bb7f1bc30a7a10ede`.
+- 현재 source 준비본: blob `930d4e3ef44e60757180aae6fc15fcc5b7228958`, raw SHA256 `bc4dcf03680da654dec43928f7b1a57942a6f616de9f03ca9ba3976203bd9a18`.
+- 정상 학생 데이터는 같은 원본에서 그대로 보존했다. 정본 추가는 요청으로만 준비했으며 공용 metadata/identity/native runtime을 직접 쓰지 않았다.
+
+## 다음 시험지의 요청 생성 도구
+
+`checkpoint-tools/build-reviewed-exam-v2-request.mjs`와 같은 폴더의 `extract-reviewed-exam-projections.py`를 함께 사용한다. `--repo-root`를 실제 작업트리로 지정하고 입력·출력은 `.tmp/m1-meta-review/` 아래로 지정한다. source title·경로·문항 수·전 UID·owner 확인·최신 source/evidence SHA는 다음 시험지에 맞게 새로 결속한다. 이전 시험지의 요청 ID나 승인값을 복사하여 재사용하지 않는다. 공식 v2 등록기의 dry-run과 main writer 영수증이 최종 권위다.
