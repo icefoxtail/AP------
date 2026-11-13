@@ -47,10 +47,10 @@
   const relation=(a,n)=>rational(n).startsWith('≈')?`${a}\\approx ${rational(n).slice(1)}`:`${a}=${tex(n)}`;
   const arc=(b,c,r,start,end,u=1,color='amber')=>{if(u>0)b.arc(c,r,start*R,(start+(end-start)*u)*R,{color,width:2.2,ccw:end<start});};
   function angleWedge(v,a,z){let start=direction(v,a),sweep=norm(direction(v,z)-start);if(sweep>180){start=direction(v,z);sweep=360-sweep;}return{c:v,start,sweep};}
-  function sector(b,w,color='amber',text='',r){
+  function sector(b,w,color='amber',text='',r,textOptions={}){
     r=r||25/b.k;const n=Math.max(4,Math.ceil(w.sweep/6));
     b.path([w.c,...Array.from({length:n+1},(_,i)=>polar(w.c,r,w.start+w.sweep*i/n))],{close:true,color,fill:color,fillAlpha:.16,width:1.8});
-    if(text)label(b,polar(w.c,r+18/b.k,w.start+w.sweep/2),text,color,{size:b.W<560?12:15});
+    if(text)label(b,polar(w.c,r+18/b.k,w.start+w.sweep/2),text,color,{size:b.W<560?12:15,...textOptions});
   }
   function tri(b,G,T,names='ABC',o={}){G.drawTri(b,T,{names:names?names.split(''):[],nameSize:b.W<560?12:16,fill:'sky',fa:.06,...o});}
   function side(b,G,T,i,text,color='sky'){G.sideTag(b,T[i],T[(i+1)%3],center(T),text,{color,size:b.W<560?12:15,gap:11});}
@@ -164,7 +164,7 @@
     line(b,A,B,'amber',mini?3:5);line(b,A,C,'sky',mini?3:5);line(b,B,D,'rose',mini?3:5);
     [A,B,C,D].forEach(p=>dot(b,p));
     if(!mini){label(b,mid(A,B),cm(m.L),'amber',{dy:24});label(b,mid(A,C),cm(m.a),'sky',{dx:-20});label(b,mid(B,D),cm(m.b),'rose',{dx:20});
-      if(t>=6.1)label(b,P(m.L/2,Math.max(1,m.L*.14)),`${rational(m.L)} ${m.ok?'<':m.L===m.sum?'=':'>'} ${rational(m.a)}+${rational(m.b)}`,t>=7.3?(m.ok?'green':'rose'):'ink');
+      if(t>=6.1)label(b,mid(A,B),`${rational(m.L)} ${m.ok?'<':m.L===m.sum?'=':'>'} ${rational(m.a)}+${rational(m.b)}`,t>=7.3?(m.ok?'green':'rose'):'ink',{dy:50});
     }
   }
   function cells(b,count){const cols=b.W<560?2:3,rows=Math.ceil(count/cols),cw=3.6,ch=3;setup(b,[P(-cols*cw/2,-rows*ch/2),P(cols*cw/2,rows*ch/2)],.035);return Array.from({length:count},(_,i)=>P((i%cols-(cols-1)/2)*cw,(Math.floor(i/cols)-(rows-1)/2)*ch));}
@@ -192,11 +192,11 @@
     line(b,A,B,'sky',4);line(b,B,C,'rose',4);line(b,A,C,'muted',1.8,{dash:[5,4]});
     label(b,mid(A,B),cm(a),'sky',{dy:23});label(b,mid(B,C),cm(bb),'rose',{dy:-22});label(b,mid(A,C),'x','amber',{dy:-18});
     if(t>=5.5){const x0=-a,x1=bb,scale=(x1-x0)/d.hi,y=2.1;line(b,P(x0,y),P(x1,y),'muted',1.5);
-      const l=P(x0+d.lo*scale,y),h=P(x0+d.hi*scale,y);line(b,l,h,'green',3);[l,h].forEach(p=>b.circle(p,5/b.k,{color:'green',fill:'paper',width:2}));
+      const l=P(x0+d.lo*scale,y),h=P(x0+d.hi*scale,y);line(b,l,h,'green',3);[l,h].forEach(p=>b.circle(p,5/b.k,{color:'green',fill:'halo',width:2}));
       label(b,l,rational(d.lo),'ink',{dy:20});label(b,h,rational(d.hi),'ink',{dy:20});
       if(t>=6.8&&d.goal!=='range')for(let v=d.lo+1;v<d.hi;v++){const p=P(x0+v*scale,y);dot(b,p,'',d.goal==='max'&&v===d.hi-1||d.goal==='min'&&v===d.lo+1?'amber':'green');if(d.hi-d.lo<12)label(b,p,String(v),'green',{dy:-19,size:11});}
     }
-  },(t,d)=>t<3.3?F('두 막대를 곧게 펴면 끝점 사이 거리는 두 길이의 합입니다.'):t<5.5?F('반대쪽으로 포개면 끝점 사이 거리는 두 길이의 차입니다.'):t<7.5?F('두 경계에서는 일직선이므로 양 끝값을 뺍니다.',`$${tex(d.lo)}<x<${tex(d.hi)}$`):F(goal==='range'?'열린 두 끝값 사이에서만 삼각형이 생깁니다.':goal==='count'?'열린 구간 안의 정수만 셉니다.':goal==='max'?'합보다 한 칸 작은 정수가 최댓값입니다.':'차보다 한 칸 큰 정수가 최솟값입니다.',goal==='range'?`$${tex(d.lo)}<x<${tex(d.hi)}$`:`$${tex(d.answer)}${goal==='count'?'\\text{개}':'\\text{ cm}'}$`),d=>`${goal==='range'?'현재 탐구':'현재 생성 문제'}의 두 변 ${cm(d.m.a)}, ${cm(d.m.b)} · ${goal==='range'?'x의 범위':goal==='count'?'정수 x 개수':goal==='max'?'정수 x 최댓값':'정수 x 최솟값'}`);
+  },(t,d)=>t<3.3?F('두 막대를 곧게 펴면 끝점 사이 거리는 두 길이의 합입니다.'):t<5.5?F('반대쪽으로 포개면 끝점 사이 거리는 두 길이의 차입니다.'):t<7.5?F('두 경계에서는 일직선이므로 양 끝값을 뺍니다.',`$${tex(d.lo)}\\lt x\\lt ${tex(d.hi)}$`):F(goal==='range'?'열린 두 끝값 사이에서만 삼각형이 생깁니다.':goal==='count'?'열린 구간 안의 정수만 셉니다.':goal==='max'?'합보다 한 칸 작은 정수가 최댓값입니다.':'차보다 한 칸 큰 정수가 최솟값입니다.',goal==='range'?`$${tex(d.lo)}\\lt x\\lt ${tex(d.hi)}$`:`$${tex(d.answer)}${goal==='count'?'\\text{개}':'\\text{ cm}'}$`),d=>`${goal==='range'?'현재 탐구':'현재 생성 문제'}의 두 변 ${cm(d.m.a)}, ${cm(d.m.b)} · ${goal==='range'?'x의 범위':goal==='count'?'정수 x 개수':goal==='max'?'정수 x 최댓값':'정수 x 최솟값'}`);
   for(const problem of [false,true])register('c2-3',problem?'조합문제':'조합익히기','omit-each-stick-once-and-test-four-triples',d=>{
     const m=problem?reviewed(d):d.m;return{...d,m,cards:m.cards.map((c,i)=>({name:letters[i],rods:rodModel(c.t),selected:false})),answer:m.cards.filter(c=>c.ok).length};
   },drawRodCards,(t,d)=>t<.9?F('막대 하나씩을 제외하면 서로 다른 세 막대 조합은 네 개입니다.'):t<5.8?F('네 조합의 막대를 각각 돌려 가장 긴 변의 양 끝을 이어 봅니다.'):t<7.7?F('끝이 만나는 조합만 남깁니다. 같은 막대를 순서만 바꾸어 다시 세지 않습니다.'):F('삼각형을 만들 수 있는 조합의 개수입니다.',`$${d.answer}\\text{개}$`),d=>`${problem?'현재 생성 문제':'현재 탐구'}의 네 막대 ${d.m.v.map(cm).join(', ')}`);
@@ -239,7 +239,7 @@
       line(b,n(O),n(P(c.adjacent,0)),'amber',3);line(b,n(O),n(ray),'muted',1.7,{dash:[4,4]});if(!mini){dot(b,O,(c.names||'ABC')[0]);dot(b,P(c.adjacent,0),(c.names||'ABC')[1]);}
       if(mini){sector(b,angleWedge(n(O),n(P(c.adjacent,0)),n(ray)),'sky',deg(c.A),9/b.k);const u=phase(t,.9,4.5);if(u>0)b.path(Array.from({length:25},(_,i)=>n(polar(P(c.adjacent,0),c.opposite,-180+180*u*i/24))),{color:'rose',width:1.3});}
       if(!mini){arc(b,P(c.adjacent,0),c.opposite,-180,0,phase(t,.9,4.5),'rose');sector(b,angleWedge(O,P(1,0),ray),'sky',deg(c.A));label(b,P(c.adjacent/2,0),cm(c.adjacent),'amber',{dy:22});label(b,P(c.adjacent,-c.opposite),cm(c.opposite),'rose',{dy:-17});}
-      m.points.forEach((q,i)=>{if(t>=4.5){if(mini){line(b,n(P(c.adjacent,0)),n(q),i?'rose':'green',2);dot(b,n(q));}else{line(b,P(c.adjacent,0),q,i?'rose':'green',2.6);dot(b,q,`C${i+1}`,i?'rose':'green',{dy:i?-18:18});}}});
+      m.points.forEach((q,i)=>{if(t>=4.5){if(mini){line(b,n(P(c.adjacent,0)),n(q),i?'rose':'green',2);dot(b,n(q));}else{line(b,P(c.adjacent,0),q,i?'rose':'green',2.6);dot(b,q,`C${i+1}`,i?'rose':'green',{dx:-24,dy:i?-18:0,align:'right'});}}});
       return;
     }
     let other=null;
@@ -463,7 +463,7 @@
     const g=d.geo,{A,B,C,D,E,P:X}=g;regularBase(b,d,[[A,B,C],[C,D,E]],[[B,D],[A,E]]);const moving=rotateTriangle(b,[B,C,D],C,60,t);
     [[B,C],[A,C]].forEach(([a,z])=>b.ticks(a,z,{color:'sky',count:1}));[[C,D],[C,E]].forEach(([a,z])=>b.ticks(a,z,{color:'rose',count:2}));
     if(t>=.8){sector(b,angleWedge(C,B,D),'amber',t>=2? '120°':'');sector(b,angleWedge(C,A,E),'amber',t>=2?'120°':'');}
-    if(d.goal==='correspond'){sector(b,angleWedge(D,B,C),'sky',deg(g.y));if(t>=6.4)sector(b,angleWedge(E,A,C),'sky',deg(g.y));sector(b,angleWedge(E,D,A),'green',t>=7.7?deg(d.answer):'x');if(t>=6.8)sector(b,angleWedge(E,D,C),'rose','60°',40/b.k);}
+    if(d.goal==='correspond'){sector(b,angleWedge(D,B,C),'sky',deg(g.y));if(t>=6.4)sector(b,angleWedge(E,A,C),'sky',deg(g.y));sector(b,angleWedge(E,D,A),'green',t>=7.7?deg(d.answer):'x');if(t>=6.8)sector(b,angleWedge(E,D,C),'rose','60°',40/b.k,{dx:18,dy:-28});}
     else if(d.goal!=='congruence'&&X){const ray=d.query.split('').map(n=>g[n]);sector(b,angleWedge(ray[1],ray[0],ray[2]),'green',t>=7.7?deg(d.answer):'x');if(t>=6.4){line(b,B,D,'amber',3.5);line(b,A,E,'green',3.5);arc(b,C,1.1,direction(C,B),direction(C,B)+60,1,'green');label(b,C,'60°','green',{dx:-33,dy:-31});}}
     void moving;
   },(t,d)=>t<1.6?F('정삼각형의 같은 변과 한 직선 위의 B, C, E를 확인합니다.'):t<6.4?F('△BCD를 점 C 중심으로 60° 돌리면 B→A, D→E가 됩니다.'):t<7.7?F(d.goal==='correspond'?'대응각 ∠AEC=∠BDC를 정삼각형의 60°에서 뺍니다.':d.goal==='congruence'?'두 변과 그 사이 120°가 각각 같아 두 삼각형이 포개집니다.':'BD가 AE에 평행한 방향으로 60° 회전하므로 교차하는 두 직선의 예각은 60°입니다.'):F(d.goal==='congruence'?'SAS 합동이므로 대응하는 변과 각이 같습니다.':d.goal==='adjacent'?'이웃한 각은 일직선을 이루므로 180°에서 60°를 뺍니다.':'대응 관계로 목표 각을 구했습니다.',d.goal==='congruence'?'$\\triangle BCD\\equiv\\triangle ACE$':d.goal==='correspond'?`$x=60^{\\circ}-${tex(d.m.y)}^{\\circ}=${tex(d.answer)}^{\\circ}$`:`$\\angle ${d.query}=${tex(d.answer)}^{\\circ}$`),d=>`△ABC, △CDE 정삼각형 · B,C,E는 일직선${d.goal==='correspond'?` · 현재 ∠BDC=${deg(d.m.y)}, ∠DEA=x°`:d.goal==='congruence'?` · 현재 BC=${cm(d.m.a)}, CE=${cm(d.m.b)}`:` · AE∩BD=P, ∠${d.query}=x°`}`);

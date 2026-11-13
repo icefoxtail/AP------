@@ -303,7 +303,9 @@
     const data = { ...d, bank, cases, answer };
     return make(data, '현재 다섯 보기의 조건과 반례 비교', bank.map((id, i) => `${NUM[i]} ${ST_NAME[id]}`).join(' · '), 'five-current-statements-with-hypothesis-preserving-counterexamples', (b, t, d) => {
       const cols = b.W < 560 ? 2 : 3, rows = Math.ceil(cases.length / cols), cw = 5.2, ch = 4.3;
-      b.kind = 'figure'; b.aspect = '1:1'; b.setPanes(null); b.setInsets({ top: 48, right: 12, bottom: 82, left: 12 }); b.zoom = 1; b.panX = 0; b.panY = 0;
+      // The HTML proof caption can wrap to three lines on a phone. Reserve its
+      // entire height before the first row's condition labels, not just the art.
+      b.kind = 'figure'; b.aspect = '1:1'; b.setPanes(null); b.setInsets({ top: 90, right: 12, bottom: 82, left: 12 }); b.zoom = 1; b.panX = 0; b.panY = 0;
       b.setFocus({ x: [-cols * cw / 2, cols * cw / 2], y: [-rows * ch / 2, rows * ch / 2] }, false);
       cases.forEach((q, i) => {
         const c = V((i % cols - (cols - 1) / 2) * cw, (Math.floor(i / cols) - (rows - 1) / 2) * ch), start = .8 + i * 1.22, end = start + 1.05;
@@ -430,6 +432,37 @@
     sol.edgeFaces = Object.fromEntries(sol.edges.map(e => [e.key, names.map((vs, i) => vs.some((v, j) => (v === e.u && vs[(j + 1) % vs.length] === e.v) || (v === e.v && vs[(j + 1) % vs.length] === e.u)) ? i : -1).filter(i => i >= 0)]));
     return sol;
   }
+  // Clip an edge against each projected face triangle and its depth plane.
+  // Native spatial depth increases away from the viewer. Coplanar paper and
+  // shared hinges have equal depth, so they never become hidden intervals.
+  function netEdgePieces(projectedFaces, a, z) {
+    const hidden = [];
+    for (const face of projectedFaces) for (let j = 1; j + 1 < face.length; j++) {
+      const [p, q, r] = [face[0], face[j], face[j + 1]], det = (q.y - r.y) * (p.x - r.x) + (r.x - q.x) * (p.y - r.y);
+      if (Math.abs(det) < 1e-10) continue;
+      const bary = v => { const u = ((q.y - r.y) * (v.x - r.x) + (r.x - q.x) * (v.y - r.y)) / det, w = ((r.y - p.y) * (v.x - r.x) + (p.x - r.x) * (v.y - r.y)) / det; return [u, w, 1 - u - w]; };
+      const wa = bary(a), wz = bary(z); let lo = 0, hi = 1;
+      const clip = (v0, v1, minimum) => {
+        const slope = v1 - v0;
+        if (Math.abs(slope) < 1e-12) { if (v0 < minimum) hi = -1; return; }
+        const t = (minimum - v0) / slope;
+        if (slope > 0) lo = Math.max(lo, t); else hi = Math.min(hi, t);
+      };
+      for (let k = 0; k < 3; k++) clip(wa[k], wz[k], -1e-9);
+      const depth = w => w[0] * p.d + w[1] * q.d + w[2] * r.d;
+      clip(a.d - depth(wa), z.d - depth(wz), 1e-7);
+      if (hi - lo > 1e-8) hidden.push([lo, hi]);
+    }
+    const union = [];
+    for (const range of hidden.sort((a, z) => a[0] - z[0])) {
+      const previous = union.at(-1);
+      if (previous && range[0] <= previous[1] + 1e-8) previous[1] = Math.max(previous[1], range[1]); else union.push(range.slice());
+    }
+    const parts = []; let at = 0;
+    for (const [lo, hi] of union) { if (lo > at + 1e-8) parts.push({ lo: at, hi: lo, hidden: false }); parts.push({ lo, hi, hidden: true }); at = hi; }
+    if (at < 1 - 1e-8) parts.push({ lo: at, hi: 1, hidden: false });
+    return parts;
+  }
   function netDraw(b, t, d) {
     const { net, goal, ref, groups, initialFold } = d, f = foldAt(t, initialFold), faces = net.at(f), end = f > .999;
     const D = drawing(b, d, faces.flat(), t, { spYaw: (d.s.spYaw ?? -12) - 20 * f, spPitch: Math.max(15, (d.s.spPitchN ?? 62) - 34 * f) });
@@ -443,22 +476,38 @@
     };
     const faceVisible = faces.map((_, i) => !end || D.facing(net.faceInfo[i].n));
     faces.map((pts, i) => ({ i, depth: D.depth(center(pts)) })).sort((a, z) => z.depth - a.depth).forEach(({ i }) => {
-      if (faceVisible[i]) D.panel(faces[i], selectedFace(i), selectedFace(i) === 'sky' ? .07 : .15, selectedFace(i), 1.7);
+      // Boundary strokes are drawn below after their actual occlusion is known.
+      if (faceVisible[i]) D.fill(faces[i], selectedFace(i), selectedFace(i) === 'sky' ? .07 : .15);
     });
-    const eVisible = new Map(), seen = new Map();
+    const eVisible = new Map(), vVisible = new Map(), vertices = new Map(), drawnEdges = new Set(), segments = [];
+    const vertexKey = (a, p) => `${a}:${format(p.x)},${format(p.y)},${format(p.z)}`;
+    const project = p => d.G.proj(D.cam, p), projectedFaces = end || f < 1e-6 ? null : faces.map(ps => ps.map(project));
     faces.forEach((ps, i) => ps.forEach((p, j) => {
       const a = net.vname(i, j), z = net.vname(i, (j + 1) % ps.length), key = [a, z].sort().join('');
-      if (faceVisible[i]) eVisible.set(key, true);
+      if (faceVisible[i]) { eVisible.set(key, true); vVisible.set(vertexKey(a, p), true); }
     }));
     faces.forEach((ps, i) => ps.forEach((p, j) => {
       const a = net.vname(i, j), z = net.vname(i, (j + 1) % ps.length), edge = d.sol.edges.find(e => (e.u === a && e.v === z) || (e.u === z && e.v === a)), key = [a, z].sort().join('');
       const isRef = ref && edge.key === ref.key, chosen = t >= 6.4 && groups?.skew.some(e => e.key === edge.key);
       let color = isRef ? 'amber' : chosen && (goal === 'name' || goal === 'count') ? 'green' : (goal === 'apex' || goal === 'lateral') && (a === 'V' || z === 'V') ? 'rose' : 'ink';
       if (end && t >= 5.7 && t < 6.4 && groups && (groups.meet.some(e => e.key === edge.key) || groups.parallel.some(e => e.key === edge.key))) color = groups.parallel.some(e => e.key === edge.key) ? 'sky' : 'rose';
-      line(D, p, ps[(j + 1) % ps.length], color, isRef || chosen ? 4 : 2, { dash: end && !eVisible.get(key) ? [5, 4] : undefined, alpha: end && !eVisible.get(key) ? .65 : 1 });
-      const pointKey = `${a}:${format(p.x)},${format(p.y)},${format(p.z)}`;
-      if (!seen.has(pointKey)) { seen.set(pointKey, true); D.dot(p, a === 'V' && (goal === 'apex' || goal === 'lateral') ? 'amber' : 'ink', 3.5); if (!end || faceVisible[i]) name(D, p, a, a === 'V' ? 'amber' : 'ink'); }
+      const q = ps[(j + 1) % ps.length], pointKey = vertexKey(a, p), edgeKey = [pointKey, vertexKey(z, q)].sort().join('|');
+      if (!drawnEdges.has(edgeKey)) {
+        drawnEdges.add(edgeKey);
+        const parts = projectedFaces ? netEdgePieces(projectedFaces, project(p), project(q)) : [{ lo: 0, hi: 1, hidden: end && !eVisible.get(key) }];
+        parts.forEach(part => segments.push({ p: mix(p, q, part.lo), q: mix(p, q, part.hi), color, width: isRef || chosen ? 4 : 2, hidden: part.hidden }));
+      }
+      if (!vertices.has(pointKey)) vertices.set(pointKey, { a, p });
     }));
+    segments.sort((a, z) => Number(z.hidden) - Number(a.hidden)).forEach(e => line(D, e.p, e.q, e.color, e.width, { dash: e.hidden ? [5, 4] : undefined, alpha: e.hidden ? .65 : 1 }));
+    vertices.forEach(({ a, p }, pointKey) => {
+      const back = end && !vVisible.get(pointKey), hot = a === 'V' && (goal === 'apex' || goal === 'lateral');
+      D.dot(p, hot ? 'amber' : back ? 'muted' : 'ink', 3.5);
+      // A hidden face may be the first copy of a visible vertex. Decide from
+      // every incident face before deduplicating; keep rear names muted as in
+      // the native net so the question's reference/answer can still be read.
+      D.label(p, a, { color: a === 'V' ? 'amber' : 'ink', size: 15, dir: D.out(p, O), gap: 10, leader: true, alpha: back && !hot ? .55 : undefined });
+    });
     if (goal === 'face-parallel' || goal === 'face-perp') faces.forEach((ps, i) => { if (faceVisible[i]) name(D, center(ps), net.faceName[i], selectedFace(i)); });
     if (end && t >= 6.4 && (goal === 'base-perp' || goal === 'face-perp')) {
       const baseIndex = goal === 'base-perp' ? net.faces.findIndex(f => f.poly.length === 3) : base;
@@ -520,5 +569,5 @@
   }
   const registry = Object.fromEntries(Object.keys(recipes).map(id => [`g7-spatial/${id}`, build]));
   const lessonInfo = Object.fromEntries(Object.entries(recipes).map(([id, list]) => [`g7-spatial/${id}`, list.map(({ legacyLabel, duration }) => ({ legacyLabel, duration }))]));
-  return { registry, lessonInfo, recipes, build, phase, lineRelation, lineIntersection, classifyEdges, planeThrough, planeDistance, planeGroups, spanningPanel, solidFaceRelations, statementData, statementPose, completeWallIntersection, foldAt, netSolid, fanPose };
+  return { registry, lessonInfo, recipes, build, phase, lineRelation, lineIntersection, classifyEdges, planeThrough, planeDistance, planeGroups, spanningPanel, solidFaceRelations, statementData, statementPose, completeWallIntersection, foldAt, netSolid, netEdgePieces, fanPose };
 });

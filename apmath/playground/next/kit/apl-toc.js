@@ -232,18 +232,19 @@
   const base = new URL('.', script.src);
   const json = value => JSON.parse(JSON.stringify(value));
   const css = document.createElement('link');
-  css.rel = 'stylesheet'; css.href = new URL('apl-g7-learning.css?v=20261113-2', base).href;
+  css.rel = 'stylesheet'; css.href = new URL('apl-g7-learning.css?v=20261113-3', base).href;
   document.head.append(css);
   const load = name => new Promise((resolve, reject) => {
-    const el = document.createElement('script'); el.src = new URL(name + '?v=20261113-2', base).href;
+    const el = document.createElement('script'); el.src = new URL(name + '?v=20261113-3', base).href;
     el.onload = resolve; el.onerror = () => reject(new Error('Grade 7 learning module unavailable: ' + name));
     document.head.append(el);
   });
   // Each lab needs only its own proof models. Loading every unit here makes
   // the common entry progressively heavier as the G7 collection grows.
   const shortModules = {
-    'g7-circle-sector': 'apl-g7-short-scenes.js',
-    'g7-surface-volume': 'apl-g7-short-solids.js',
+    'g7-circle-sector': ['apl-g7-short-scenes.js', 'apl-g7-short-circle.js'],
+    'g7-surface-volume': ['apl-g7-short-solids.js', 'apl-g7-short-measurement.js'],
+    'g7-solids': 'apl-g7-short-solid-geometry.js',
     'g7-coordinate-graphs': 'apl-g7-short-coordinates.js',
     'g7-proportion': 'apl-g7-short-proportion.js',
     'g7-area': 'apl-g7-short-area.js',
@@ -255,7 +256,7 @@
     'g7-polyhedra': 'apl-g7-short-polyhedra.js'
   };
   const unit = location.pathname.split('/').pop().replace(/\.html$/, '');
-  const ready = (shortModules[unit] ? load(shortModules[unit]) : Promise.resolve())
+  const ready = Promise.all([].concat(shortModules[unit] || []).map(load))
     .then(() => load('apl-g7-learning.js'));
   // This hook runs before the legacy player can substitute its fixed example.
   A.labHooks.unshift(lab => {

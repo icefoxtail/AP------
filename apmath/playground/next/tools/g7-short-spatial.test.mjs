@@ -197,6 +197,29 @@ test('five-choice proofs keep the generated statement order, selected item, seed
   }
 });
 
+test('five-choice card conditions clear the wrapped HTML caption at mobile and desktop board sizes', async () => {
+  const lab = await load();
+  for (const [width, height] of [[390, 500], [390, 600], [820, 600], [1024, 500]]) {
+    lab.board.resize(width, height); lab.setViewportWidth(width);
+    // Actual g7-learning caption CSS: top 8, vertical padding 16, line-height
+    // 1.45, font 12 on phones / 14 on desktop. Allow three mobile lines.
+    const captionBottom = 8 + 16 + 1.45 * (width < 560 ? 12 * 3 : 14 * 2);
+    for (let scene = 1; scene <= 7; scene++) {
+      const p = plans(lab, `s2-${scene}`).find(q => q.legacyLabel === '다섯 보기');
+      const before = JSON.stringify(lab.s);
+      for (const t of [7.3, 9.8]) {
+        const result = capture(lab.board, p, t), conditions = result.texts.filter(q => /^[①②③④⑤] /.test(q.text));
+        assert.equal(conditions.length, 5, `${p.id}: every condition remains visible`);
+        const font = 12 * lab.board.fs * lab.board._ts();
+        for (const q of conditions.slice(0, width < 560 ? 2 : 3)) {
+          assert.ok(q.y - .8 * font >= captionBottom + 4, `${p.id} ${width} at ${t}: ${q.text} clears the caption`);
+        }
+      }
+      assert.equal(JSON.stringify(lab.s), before);
+    }
+  }
+});
+
 test('rotating plane pencils contain entire current objects, including collinear, intersecting, parallel and skew limits', async () => {
   const lab = await load();
   const inputs = [
@@ -287,6 +310,85 @@ test('all native nets fold rigidly with consistent vertex names and preserve the
       assert.equal(m.parallel.length, 1); assert.equal(m.perpendicular.length, 4);
       const n = normal(closed[m.base]); assert.equal(rank([n, normal(closed[m.parallel[0]])]), 1);
       m.perpendicular.forEach(i => near(dot(n, normal(closed[i])), 0)); assert.equal(lab.s.spBase, base);
+    }
+  }
+});
+
+test('folded net labels retain each vertex once regardless of the first incident face being hidden', async () => {
+  const lab = await load();
+  for (const [width, height] of [[390, 560], [820, 600]]) {
+    lab.board.resize(width, height); lab.setViewportWidth(width);
+    for (const [scene, nets] of [['s4-1', ['cross', 'off', 'n231', 'stair']], ['s4-3', ['']], ['s4-4', ['']]]) {
+      for (const spNet of nets) for (const spYaw of [-47, -12, 38]) {
+        const p = plans(lab, scene, { spNet, spYaw, spPitchN: 62 })[0], m = p.model, saved = JSON.stringify(lab.s);
+        const result = capture(lab.board, p, 9.8), cam = lab.api.camOf({ ...m.s, spYaw: spYaw - 20, spPitch: 28 });
+        for (const vertex of m.sol.order) {
+          const labels = result.texts.filter(q => q.text === vertex);
+          assert.equal(labels.length, 1, `${scene} ${spNet} ${spYaw}: vertex ${vertex} survives deduplication`);
+          const visible = m.net.faces.some((face, i) => face.poly.some((_, j) => m.net.vname(i, j) === vertex) && lab.api.facing(cam, m.net.faceInfo[i].n));
+          const hot = vertex === 'V' && ['apex', 'lateral'].includes(m.goal);
+          assert.equal(labels[0].options.alpha, !visible && !hot ? .55 : undefined, `${scene}: only a rear vertex is muted`);
+        }
+        assert.ok(result.paths.some(q => q.options.dash?.length), `${scene}: hidden edges remain dashed`);
+        assert.equal(JSON.stringify(lab.s), saved);
+      }
+    }
+  }
+});
+
+test('partial net occlusion clips true depth coverage and leaves coplanar paper and shared hinges solid', async () => {
+  const point = (x, y, d) => ({ x, y, d });
+  const square = [point(-1, -1, 1), point(1, -1, 1), point(1, 1, 1), point(-1, 1, 1)];
+  const behind = shorts.netEdgePieces([square], point(-2, 0, 2), point(2, 0, 2));
+  assert.deepEqual(behind.map(p => p.hidden), [false, true, false]);
+  near(behind[1].lo, .25); near(behind[1].hi, .75);
+  for (const depth of [0, 1]) assert.deepEqual(shorts.netEdgePieces([square], point(-2, 0, depth), point(2, 0, depth)), [{ lo: 0, hi: 1, hidden: false }]);
+
+  // Independent 3-D ray/plane intersections, with an edge-cross-product
+  // inside test, verify the projected triangle clipping on real hinge meshes.
+  function rayBlocked(faces, p, view) {
+    for (const face of faces) {
+      const n = cross(vector(face[0], face[1]), vector(face[0], face[2])), den = dot(n, view);
+      if (Math.abs(den) < 1e-10) continue;
+      const depth = dot(n, vector(face[0], p)) / den;
+      if (depth <= 1e-7) continue;
+      const hit = { x: p.x - depth * view[0], y: p.y - depth * view[1], z: p.z - depth * view[2] };
+      const sides = face.map((a, i) => dot(cross(vector(a, face[(i + 1) % face.length]), vector(a, hit)), n));
+      if (sides.every(x => x >= -1e-8) || sides.every(x => x <= 1e-8)) return true;
+    }
+    return false;
+  }
+  const lab = await load(); let hiddenCount = 0;
+  for (const [kind, keys] of [['cube', ['cross', 'off', 'n231', 'stair']], ['prism3', ['']], ['pyr4', ['']]]) for (const key of keys) {
+    const net = lab.api.netOf(kind, key);
+    for (const fold of [0, .2, shorts.foldAt(4.1, 0), .92]) for (const yaw of [-12, 38]) {
+      const faces = net.at(fold), cam = lab.api.camOf({ spYaw: yaw - 20 * fold, spPitch: 62 - 34 * fold });
+      const projected = faces.map(face => face.map(p => lab.api.proj(cam, p))), view = [cam.sy * cam.cp, cam.cy * cam.cp, -cam.sp];
+      faces.forEach(face => face.forEach((a, i) => {
+        const z = face[(i + 1) % face.length], pieces = shorts.netEdgePieces(projected, lab.api.proj(cam, a), lab.api.proj(cam, z));
+        near(pieces.reduce((sum, p) => sum + p.hi - p.lo, 0), 1);
+        pieces.forEach(piece => {
+          const t = (piece.lo + piece.hi) / 2, p = { x: a.x + (z.x - a.x) * t, y: a.y + (z.y - a.y) * t, z: a.z + (z.z - a.z) * t };
+          assert.equal(piece.hidden, rayBlocked(faces, p, view), `${kind}/${key} at fold ${fold}: actual 3-D coverage`);
+          if (piece.hidden) hiddenCount++;
+          if (fold === 0) assert.equal(piece.hidden, false, 'flat paper does not occlude itself');
+        });
+      }));
+    }
+  }
+  assert.ok(hiddenCount > 0, 'all-solid partial folds would fail this check');
+});
+
+test('production Board keeps partial net hidden edges dashed without a solid panel outline underneath', async () => {
+  const lab = await load(); lab.board.resize(390, 560); lab.setViewportWidth(390);
+  for (const scene of ['s4-1', 's4-2', 's4-3', 's4-4']) {
+    for (const p of plans(lab, scene, { spFold: 0 })) {
+      const saved = JSON.stringify(lab.s), flat = capture(lab.board, p, 0), partial = capture(lab.board, p, 4.1);
+      assert.ok(!flat.paths.some(q => q.options.dash?.length), `${p.id}: flat net is solid`);
+      assert.ok(partial.paths.some(q => q.options.dash?.length), `${p.id}: covered partial-fold edges are dashed`);
+      assert.ok(partial.paths.some(q => !q.options.dash?.length && q.points.length === 2), `${p.id}: visible edges stay solid`);
+      assert.ok(partial.paths.filter(q => q.options.close && q.options.fill).every(q => q.options.color === null), `${p.id}: a full solid outline cannot cover the dash pattern`);
+      assert.equal(JSON.stringify(lab.s), saved);
     }
   }
 });

@@ -12,7 +12,15 @@
   const param = name => new URLSearchParams(location.search).get(name) || new URLSearchParams(location.hash.slice(1)).get(name);
   const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   const sceneKey = sc => `${sc.id}@${sc.gi || 0}`;
-  const safeState = s => { const out = clone(s); delete out.lessonOn; delete out.lessonEntry; out.playing = false; return out; };
+  const safeState = s => {
+    const out = clone(s);
+    // The native polyhedra question cache identifies its source by reference.
+    // JSON storage duplicates that object; reconnect equal source conditions so
+    // leaving a proof cannot silently shuffle the student's existing choices.
+    if (out.phPC && out.phQ && JSON.stringify(out.phPC.q) === JSON.stringify(out.phQ)) out.phPC.q = out.phQ;
+    delete out.lessonOn; delete out.lessonEntry; out.playing = false;
+    return out;
+  };
   const button = (text, fn, label = text) => A.h('button', { type: 'button', class: 'apl-btn', text, 'aria-label': label, onclick: fn });
 
   class Learning {

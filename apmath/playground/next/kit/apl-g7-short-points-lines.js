@@ -129,10 +129,11 @@
   }
   function arc(b, a, z, r, color = 'amber', o = {}, center = pt(0, 0)) {
     if (Math.abs(z - a) < 1e-8) return;
+    const { fill, ...style } = o;
     const count = Math.max(3, Math.ceil(Math.abs(z - a) / 4));
     const p = Array.from({ length: count + 1 }, (_, i) => polar(a + (z - a) * i / count, r, center));
-    if (o.fill) b.path([center, ...p], { close: true, color: null, fill: color, fillAlpha: .15, ...o });
-    b.path(p, { color, width: 3, ...o });
+    if (fill) b.path([center, ...p], { close: true, color: null, fill: color, fillAlpha: .15, ...style });
+    b.path(p, { color, width: 3, ...style });
   }
   function unitTicks(b, a, z, n, color = 'amber', u = 1) {
     const show = Math.floor(n * u + 1e-7);
@@ -612,7 +613,7 @@
     infiniteLine(b,pt(Math.min(-3,Q.x-1),0),pt(Math.max(3,Q.x+1),0),'sky');
     line(b,P,H,'sky');if(m.q!==0)line(b,P,Q,'rose');
     b.right(H,P,pt(H.x+1,0),{color:'amber',size:13});
-    dot(b,P,'P','ink',{dy:-21});dot(b,H,m.q===0?'H = Q':'H');if(m.q!==0)dot(b,Q,'Q','rose',{dy:Math.abs(m.q)<1.2?42:21});
+    dot(b,P,'P','ink',{dy:-21});dot(b,H,'');if(m.q!==0)dot(b,Q,'Q','rose',{dy:Math.abs(m.q)<1.2?42:21});
     text(b,mix(P,H,.5),`${m.d} cm`,'sky',{dx:-16,align:'right'});
     if(t>.8)trace(b,P,H,phase(t,.8,3.3),'amber',{width:5});
     if(v===0){
@@ -621,6 +622,9 @@
       const end=swingToPerpendicular(P,Q,H,phase(t,3.4,5.3));line(b,P,end,'rose',{width:4,dash:[7,4]});
       if(t>5.4){line(b,P,H,'green',{width:6});if(m.q!==0)line(b,H,end,'rose',{width:5});}
     }
+    // The rotated longer segment may pass beneath H's caption. Paint the
+    // caption (and its Board halo) last so the foot remains identifiable.
+    text(b,H,m.q===0?'H = Q':'H','ink',{dy:21});
   }
   function bisectorAngles(m){return {A:180,C:180-m.g,B:180-m.T,M:180-m.g/2,N:180-(m.T+m.g)/2};}
   function drawBisectors(b,t,m,v){
@@ -648,8 +652,13 @@
     infiniteLine(b,pt(Math.min(0,q.sa)-.8,0),pt(Math.max(q.b,q.sa)+.8,0),'muted',{dash:[5,5],width:1.5});
     line(b,A,H,'sky',{dash:[5,4],width:2});b.right(H,A,q.sa<q.b?C:B,{color:'amber',size:12});
     dot(b,A,'A','ink',{dy:-22});dot(b,B,q.sa===0?'B = H':'B','ink',{dx:-10});dot(b,C,q.sa===q.b?'C = H':'C','ink',{dx:12});
-    if(q.sa!==0&&q.sa!==q.b)dot(b,H,'H','ink',{dy:Math.abs(q.sa)<.9||Math.abs(q.sa-q.b)<.9?44:22});
-    bracket(b,pt(0,1),pt(q.b,1),`${q.b} cm`,'sky');
+    const footDy=Math.abs(q.sa)<.9||Math.abs(q.sa-q.b)<.9?44:22;
+    const separateFoot=q.sa!==0&&q.sa!==q.b;
+    if(separateFoot)dot(b,H,'H','ink',{dy:footDy});
+    // Keep the dimension caption below every baseline point caption. A pixel
+    // gap remains legible when the fitted triangle changes its world scale.
+    const dimensionY=((separateFoot?footDy:21)+42)/(b.k||40);
+    bracket(b,pt(0,dimensionY),pt(q.b,dimensionY),`${q.b} cm`,'sky');
     text(b,mix(A,H,.5),`${q.h} cm`,'sky',{dx:q.sa>=q.b?18:-18,align:q.sa>=q.b?'left':'right'});
     if(v===1)text(b,mix(A,B,.5),`${q.ab} cm`,'sky',{dx:-15,dy:-17,align:'right'});
     if(t>.8)trace(b,A,H,phase(t,.8,3.3),'amber',{width:5});

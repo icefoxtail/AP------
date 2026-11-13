@@ -16,6 +16,8 @@ const labs=ctx.window.APLab.catalog.labs.filter(l=>l.course==='g7');
 const base=process.env.G7_BASE_URL || 'http://127.0.0.1:8765/apmath/playground/next/labs/';
 const viewports=[{width:1440,height:900},{width:820,height:1180},{width:1024,height:768},{width:390,height:844}];
 const report={kind:'G7_LEARNING_HTTP_CHROMIUM',commit:process.env.GITHUB_SHA || null,coverage:[],references:[],interactions:[],boundaries:[],errors:[],pedagogicalApproval:'NOT_ASSIGNED',studentObservation:'NOT_RUN'};
+const reuseReferencePlayback=process.env.G7_REFERENCE_PLAYBACK==='reuse';
+if(reuseReferencePlayback){assert.ok(process.env.G7_REFERENCE_EVIDENCE,'Reused playback requires its exact evidence reference');report.reusedReferencePlayback=process.env.G7_REFERENCE_EVIDENCE;}
 const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});
 const save=()=>fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');
 async function pageFor(viewport,reducedMotion='reduce'){
@@ -38,21 +40,31 @@ try {
      const b=lab.board,c=lab.ui.canvas,rgba=c.getContext('2d').getImageData(0,0,c.width,c.height).data;
      let ink=0;for(let j=3;j<rgba.length;j+=4)if(rgba[j]>20)ink++;
      const plans=lab.learning.plans(),bounds=lab.ui.canvasWrap.getBoundingClientRect();
-     return {scene:lab.scene.id,width:b.W,height:b.H,ink,controls:!lab.learning.ui.root.hidden,shorts:plans.length,horizontalOverflow:document.documentElement.scrollWidth>innerWidth+2,canvasVisible:bounds.top<innerHeight&&bounds.bottom>0};
+     const available=plans.map(p=>p.legacyLabel||''),missing=[];
+     const legacy=lab.video.lessonInfo(lab.index);
+     for(const row of legacy){const label=row.label||'',at=available.indexOf(label);if(at<0)missing.push(label);else available.splice(at,1);}
+     const fadedMath=[...lab.learning.ui.goal.querySelectorAll('.katex')].some(x=>parseFloat(getComputedStyle(x).opacity)<.99);
+     return {scene:lab.scene.id,width:b.W,height:b.H,ink,controls:!lab.learning.ui.root.hidden,shorts:plans.length,legacy:legacy.length,missing,fadedMath,horizontalOverflow:document.documentElement.scrollWidth>innerWidth+2,canvasVisible:bounds.top<innerHeight&&bounds.bottom>0};
     },i);
     checks.push(result);
     assert.ok(result.width>=150&&result.height>=150&&result.ink>200,`${item.id}/${result.scene}: initial drawing missing`);
     assert.ok(result.controls,`${item.id}/${result.scene}: learning controls missing`);
+    assert.ok(result.shorts>0,`${item.id}/${result.scene}: individual visual proof missing`);
+    assert.deepEqual(result.missing,[],`${item.id}/${result.scene}: legacy question has no visual proof`);
+    assert.ok(!result.fadedMath,`${item.id}/${result.scene}: nested math opacity is compounded`);
     assert.ok(!result.horizontalOverflow,`${item.id}/${result.scene}: horizontal overflow`);
    }
    report.coverage.push({viewport,id:item.id,inventory,checks});save();
   }
   await context.close();
  }
+ const converted=report.coverage.filter(row=>row.viewport.width===390).flatMap(row=>row.checks);
+ report.conversion={scenes:converted.length,legacy:converted.reduce((n,row)=>n+row.legacy,0),shorts:converted.reduce((n,row)=>n+row.shorts,0)};
+ assert.deepEqual(report.conversion,{scenes:318,legacy:579,shorts:580});save();
  // Live, normal-speed proofs: capture actual animation frames, never report a
  // seek-only capture as measured playback. Representative PC and phone.
  const references=[['g7-circle-sector','f1-star',0],['g7-circle-sector','f1-star',1],['g7-circle-sector','f3-leaf-area',0],['g7-surface-volume','sv2-4',0],['g7-surface-volume','sv2-4',1],['g7-surface-volume','sv3-4',0],['g7-surface-volume','sv3-4',1]];
- for(const viewport of [viewports[0],viewports[3]]){
+ for(const viewport of reuseReferencePlayback?[]:[viewports[0],viewports[3]]){
   const {page,context}=await pageFor(viewport,'no-preference');
   for(const [id,scene,choice] of references){
    await load(page,id,'#s='+scene);
@@ -109,6 +121,14 @@ try {
  const dirty=await page.evaluate(()=>{lab.learning.explore();lab.s.f1_star_a=16;lab.s.f1_star_seed=23;lab.learning.playLegacy(0);lab.video.close();return{a:lab.s.f1_star_a,seed:lab.s.f1_star_seed}});
  assert.deepEqual(dirty,{a:16,seed:23});
  report.interactions.push({name:'explicit-answer-and-unsaved-exploration',result:{explicitReview,dirty}});
+
+ // A raw '<' in inline mathematics was consumed as an HTML tag. The corrected
+ // text keeps the existing lattice animation and its measured timing intact.
+ await load(page,'g7-proportion','#s=lattice-below');
+ const strictBoundary=await page.evaluate(()=>{lab.learning.play();lab.learning.pause();lab.learning.seek(0);return{text:lab.learning.ui.formula.textContent,math:lab.learning.ui.formula.querySelectorAll('.katex').length,errors:lab.learning.ui.formula.querySelectorAll('.katex-error').length};});
+ assert.ok(strictBoundary.math>0&&!strictBoundary.text.includes('$')&&strictBoundary.text.includes('x')&&strictBoundary.text.includes('k'),'strict inequality is rendered completely');
+ assert.equal(strictBoundary.errors,0);report.interactions.push({name:'strict-lattice-inequality-rendering',result:strictBoundary});
+ await page.screenshot({path:path.join(out,'lattice-below-strict-inequality-390.png')});
 
  for(const query of ['?manual=1','?teach=1','?mode=assessment']){
   await page.goto(base+'g7-circle-sector.html'+query+'#s=f1-star');await page.waitForFunction(()=>window.lab?.video);await page.waitForTimeout(350);

@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { load as loadPolyhedra } from './helpers/polyhedra-lesson-runtime.mjs';
 
 // Exercise the real learning navigation and persistence code before the native
 // 250 ms URL debounce can run: this is the reload race observed in Chromium.
@@ -66,4 +67,24 @@ test('an explicit new input wins over a saved paused instance and is persisted o
   const saved = new Map(JSON.parse(storage.get('learning-test')).records).get('a2-para@1');
   assert.equal(saved.mode, 'ready'); assert.equal(saved.elapsed, 0);
   assert.equal(saved.explore.s.a1W, 11);
+});
+
+test('serialized polyhedra restoration preserves the native question choice order and selected answer', async () => {
+  const native = await loadPolyhedra(); native.go('p2-1');
+  const D = native.scene.ph, original = native.api.probOf(D, native.s);
+  native.s.phPick = { key: `${D.id}|${original.key}|${native.s.phSeed || 0}`, idx: 2 };
+  const { learning, lab } = fixture(); lab.s = native.s;
+  lab._buildPanel = () => native.api.probOf(D, lab.s);
+  const before = JSON.stringify({ Q: original, pick: lab.s.phPick });
+  const serialized = JSON.parse(JSON.stringify(learning.snapshot()));
+  assert.notEqual(serialized.s.phPC.q, serialized.s.phQ, 'JSON loses native shared references');
+  learning.restoreSnapshot(serialized);
+  const restored = native.api.probOf(D, lab.s);
+  assert.equal(lab.s.phPC.q, lab.s.phQ, 'restoration repairs only the equal question source');
+  assert.equal(JSON.stringify({ Q: restored, pick: lab.s.phPick }), before);
+  // A changed question must still invalidate the old cached choices.
+  const changed = JSON.parse(JSON.stringify(serialized)); changed.s.phQ.p = 6;
+  learning.restoreSnapshot(changed);
+  assert.notEqual(lab.s.phPC.Q.key, original.key);
+  assert.equal(lab.s.phPC.q.p, 6);
 });

@@ -229,11 +229,62 @@ test('perpendicular rotations, angle bisectors and selected triangle conditions 
   }
 });
 
+test('perpendicular foot captions stay above comparison strokes and triangle dimensions stay below point names', async () => {
+  const lab=await load(),board=lab.board,originalPath=board.path,originalText=board._text;
+  let paint=[];
+  board.path=function(points,o={}){paint.push({kind:'path'});return originalPath.call(this,points,o);};
+  board._text=function(x,y,value,o={},screen=false){
+    paint.push({kind:'text',x,y,value:String(value),size:(o.size||13)*this.fs*this._ts(),o});
+    return originalText.call(this,x,y,value,o,screen);
+  };
+  const capture=(plan,t)=>{paint=[];board.begin();plan.draw(board,t,plan.model);board.end();return paint;};
+  try {
+    for(const [width,height] of [[390,600],[820,900],[1024,600],[1440,760]]) {
+      board.resize(width,height);
+      for(const [d,q,px] of [[4,3,0],[2,-4,-2],[3,0,1],[5,.5,2]]) {
+        lab.go('pd');Object.assign(lab.s,{pd_d:d,pd_q:q,pd_px:px});
+        const before=JSON.stringify(lab.s),plans=api.registry['g7-points-lines/pd'](lab,lab.s);
+        for(const plan of plans)for(const t of [0,4.4,7.1,9.6]) {
+          const calls=capture(plan,t),foot=calls.findLastIndex(c=>c.kind==='text'&&c.value===(q===0?'H = Q':'H'));
+          assert.ok(foot>calls.findLastIndex(c=>c.kind==='path'),'H and its halo are painted after the rotating comparison line');
+          assert.notEqual(calls[foot].o.halo,false);
+        }
+        assert.equal(JSON.stringify(lab.s),before);
+      }
+      for(const [b,h,sa] of [[5,4,2.5],[6,2,-2],[10,8,.2],[10,8,9.8],[5,4,0],[5,4,5],[3,2,.5]]) {
+        lab.go('tr');Object.assign(lab.s,{tr_b:b,tr_h:h,tr_sa:sa});
+        const before=JSON.stringify(lab.s),plans=api.registry['g7-points-lines/tr'](lab,lab.s);
+        for(const [v,plan] of plans.entries())for(const t of [0,4.4,7.1,9.6]) {
+          const q=api.triangleFor(plan.model,v),calls=capture(plan,t),labels=calls.filter(c=>c.kind==='text');
+          const dimension=labels.find(c=>c.value===`${q.b} cm`),baseline=board.toS({x:q.sa,y:0});
+          const names=labels.filter(c=>/^(?:B|C|H|B = H|C = H)$/.test(c.value));
+          assert.ok(dimension&&names.length>=2);
+          for(const name of names)assert.ok(dimension.y-name.y>=(dimension.size+name.size)/2+5,`${width}px: ${name.value} clears ${dimension.value}`);
+          if(q.sa===0||q.sa===q.b){
+            assert.ok(labels.some(c=>c.value===(q.sa===0?'B = H':'C = H')),'coincident endpoint names stay combined');
+            assert.ok(!labels.some(c=>c.value==='H'));
+          }else{
+            const foot=labels.find(c=>c.value==='H'),nearEndpoint=Math.abs(q.sa)<.9||Math.abs(q.sa-q.b)<.9;
+            near(foot.y-baseline.y,nearEndpoint?44:22);
+          }
+          for(const name of [...names,dimension])assert.ok(name.y+name.size/2<board.H,'captions remain on the canvas');
+        }
+        assert.equal(JSON.stringify(lab.s),before);
+      }
+    }
+  }finally{board.path=originalPath;board._text=originalText;}
+});
+
 test('production Board renders full given figures and all proof stages at narrow and wide sizes', async () => {
   const lab=await load(),board=lab.board;
   const originalPath=board.path,originalText=board._text,originalPoint=board.point;
   let paths=[],labels=[],points=[];
-  board.path=function(points,o={}) { paths.push(points.map(p=>({x:p.x??p[0],y:p.y??p[1]})));return originalPath.call(this,points,o); };
+  board.path=function(points,o={}) {
+    // Canvas silently ignores boolean fillStyle and retains opaque black.
+    // Filled angle sectors must supply an actual themed color to the Board.
+    if(o.fill)assert.equal(typeof o.fill,'string','filled geometry has a color, not a boolean switch');
+    paths.push(points.map(p=>({x:p.x??p[0],y:p.y??p[1]})));return originalPath.call(this,points,o);
+  };
   board._text=function(x,y,value,o={},screen=false) { labels.push({x,y,value:String(value),o});return originalText.call(this,x,y,value,o,screen); };
   board.point=function(p,o={}) {points.push({x:p.x??p[0],y:p.y??p[1]});return originalPoint.call(this,p,o);};
   try {

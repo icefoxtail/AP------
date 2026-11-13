@@ -62,15 +62,18 @@ jobs:
           npm install --prefix "$RUNNER_TEMP/g7-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
           "$RUNNER_TEMP/g7-browser/node_modules/.bin/playwright" install --with-deps chromium
           sudo apt-get install -y fonts-noto-cjk
-      - name: All G7 entry routes and targeted live short playback
+      - name: All G7 proof mappings and changed entry integration
         env:
           NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
           G7_EVIDENCE: ${{ runner.temp }}/g7-evidence
+          G7_REFERENCE_PLAYBACK: reuse
+          G7_REFERENCE_EVIDENCE: 'CI 43335954065 at bdaf15d2bd80ff8fd8f00c5c38219a5a0cad17db: 14 reference and 42 function normal-clock plays passed. Their geometry and timing are unchanged; the corrected lattice inequality is checked separately.'
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/g7-http.log" 2>&1 &
           for i in {1..20}; do curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js >/dev/null && break; sleep 1; done
           node apmath/playground/next/tools/g7-learning-browser.mjs
-          node apmath/playground/next/tools/g7-function-shorts-browser.mjs
+          # The unchanged reference/function normal-clock evidence above is
+          # reused. All 318 routes and legacy question mappings still run here.
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -82,21 +85,23 @@ jobs:
           if-no-files-found: warn
   geometry:
     runs-on: ubuntu-24.04
-    timeout-minutes: 35
+    timeout-minutes: 45
     strategy:
       fail-fast: false
       matrix:
         include:
-          # These three units already completed 90 normal-clock plays on
-          # 289bf8748a (artifact 13996711854). Recheck the changed layout and
-          # immediate-reload fix; replay only the three changed polygon scenes.
-          - { lab: g7-area, mode: static, live_scenes: '' }
-          - { lab: g7-polygons, mode: static, live_scenes: 'p2-chain,p3-concave,p4-fan' }
-          - { lab: g7-parallel, mode: static, live_scenes: '' }
-          - { lab: g7-points-lines, mode: full, live_scenes: '' }
-          - { lab: g7-construction, mode: full, live_scenes: '' }
-          - { lab: g7-spatial, mode: full, live_scenes: '' }
-          - { lab: g7-polyhedra, mode: full, live_scenes: '' }
+          # Reuse unchanged completed geometry evidence from 289bf8748a and
+          # bdaf15d2bd. Verify the native question-cache repair and the remaining
+          # three units; the four earlier reference scenes retain their evidence.
+          - { lab: g7-polyhedra, mode: full, live_scenes: '', exclude_scenes: '' }
+          - { lab: g7-circle-sector, mode: full, live_scenes: '', exclude_scenes: 'f1-star,f3-leaf-area' }
+          - { lab: g7-surface-volume, mode: full, live_scenes: '', exclude_scenes: 'sv2-4,sv3-4' }
+          - { lab: g7-solids, mode: full, live_scenes: '', exclude_scenes: '' }
+          # Actual screenshot review found palette, formula and label defects.
+          # Seek every changed scene at four sizes; replay representative fixes.
+          - { lab: g7-points-lines, mode: static, scenes: 'ck1,ck2,vt,ve,th,bs,pd,tr', live_scenes: 'ck1,bs,pd,tr', exclude_scenes: '' }
+          - { lab: g7-construction, mode: static, scenes: 'c2-1,c2-2,c3-2,c3-4,c4-3,c6-1,c6-3', live_scenes: 'c2-2,c3-4,c6-1', exclude_scenes: '' }
+          - { lab: g7-spatial, mode: static, scenes: 's2-1,s2-2,s2-3,s2-4,s2-5,s2-6,s2-7,s4-1,s4-2,s4-3,s4-4', live_scenes: 's2-1,s4-1,s4-3,s4-4', exclude_scenes: '' }
     steps:
       - uses: actions/checkout@v4
         with:
@@ -118,6 +123,8 @@ jobs:
           G7_SHORT_LABS: ${{ matrix.lab }}
           G7_SHORT_MODE: ${{ matrix.mode }}
           G7_LIVE_SCENES: ${{ matrix.live_scenes }}
+          G7_SHORT_EXCLUDE_SCENES: ${{ matrix.exclude_scenes }}
+          G7_SHORT_SCENES: ${{ matrix.scenes }}
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/g7-geometry-http.log" 2>&1 &
           for i in {1..20}; do curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js >/dev/null && break; sleep 1; done

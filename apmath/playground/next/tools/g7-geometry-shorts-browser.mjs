@@ -12,12 +12,13 @@ const mode = process.env.G7_SHORT_MODE || 'full';
 assert.ok(['full', 'static'].includes(mode), 'unknown browser verification mode');
 const liveScenes = new Set((process.env.G7_LIVE_SCENES || '').split(',').filter(Boolean));
 const excludeScenes = new Set((process.env.G7_SHORT_EXCLUDE_SCENES || '').split(',').filter(Boolean));
+const includeScenes = new Set((process.env.G7_SHORT_SCENES || '').split(',').filter(Boolean));
 const out = path.resolve(process.env.G7_EVIDENCE || '.tmp/g7-geometry-browser');
 const base = process.env.G7_BASE_URL || 'http://127.0.0.1:8765/apmath/playground/next/labs/';
 fs.mkdirSync(out, { recursive: true });
 const report = {
   kind: 'G7_NEW_GEOMETRY_SHORT_HTTP_CHROMIUM', commit: process.env.GITHUB_SHA || null,
-  targets, mode, liveScenes: [...liveScenes], excludeScenes: [...excludeScenes], inventory: [], static: [], screenshots: [], live: [], interactions: [], errors: [],
+  targets, mode, liveScenes: [...liveScenes], includeScenes: [...includeScenes], excludeScenes: [...excludeScenes], inventory: [], static: [], screenshots: [], live: [], interactions: [], errors: [],
   visualReview: 'PENDING_SCREENSHOT_REVIEW', studentObservation: 'NOT_RUN'
 };
 const save = () => fs.writeFileSync(path.join(out, 'geometry-report.json'), JSON.stringify(report, null, 2) + '\n');
@@ -42,7 +43,7 @@ async function inventory(page) {
     labels: lab.video.lessonInfo(i).map(x => x.label || ''),
     shortInfo: APLab.G7ShortInfo?.[`${lab.id}/${scene.id}`] || []
   })));
-  return entries.filter(x => !excludeScenes.has(x.scene));
+  return entries.filter(x => !excludeScenes.has(x.scene) && (!includeScenes.size || includeScenes.has(x.scene)));
 }
 
 try {
@@ -83,6 +84,7 @@ try {
                 t, ink, width: b.W, height: b.H,
                 overflow: document.documentElement.scrollWidth > innerWidth + 2,
                 katexErrors: document.querySelectorAll('.katex-error').length,
+                unrenderedMath: /\$/.test(lab.learning.ui.caption.textContent + lab.learning.ui.formula.textContent + lab.learning.ui.goal.textContent),
                 finiteText: text.every(x => Number.isFinite(x.x) && Number.isFinite(x.y)),
                 clippedControls: [...lab.learning.ui.root.querySelectorAll('button')].filter(x => {
                   const r = x.getBoundingClientRect();
@@ -92,11 +94,19 @@ try {
                 caption: lab.learning.ui.caption.textContent, formula: lab.learning.ui.formula.textContent
               });
             }
-            const untouched = before === state(); lab.learning.explore();
-            rows.push({ id: p.id, label: p.legacyLabel, duration: p.duration, frames, untouched, restored: before === state() });
+            const during = state(); lab.learning.explore();
+            const after = state(), originalState = JSON.parse(before);
+            const changedKeys = value => {
+              const other = JSON.parse(value);
+              return [...new Set([...Object.keys(originalState), ...Object.keys(other)])].filter(key => JSON.stringify(originalState[key]) !== JSON.stringify(other[key]));
+            };
+            rows.push({ id: p.id, label: p.legacyLabel, duration: p.duration, frames, untouched: before === during, restored: before === after, changedDuring: changedKeys(during), changedAfter: changedKeys(after) });
           }
           return { labels: plans.map(p => p.legacyLabel), rows };
         }, { i: entry.i, labels: entry.labels });
+        // Keep the failing row as evidence too; a boolean-only assertion hid
+        // which native cache changed in the earlier polyhedra restoration bug.
+        report.static.push({ id, scene: entry.scene, viewport, ...checks });
         assert.deepEqual([...checks.labels].sort(), [...entry.labels].sort(), `${id}/${entry.scene}: missing visual solution`);
         for (const row of checks.rows) {
           assert.ok(row.duration > 0 && row.duration <= 10, `${row.id}: duration`);
@@ -105,11 +115,11 @@ try {
             assert.ok(f.width >= 150 && f.height >= 150 && f.ink > 200, `${row.id}: missing drawing`);
             assert.ok(f.finiteText, `${row.id}: nonfinite label`);
             assert.equal(f.katexErrors, 0, `${row.id}: invalid formula`);
+            assert.ok(!f.unrenderedMath, `${row.id}: inline mathematics was not rendered at ${viewport.width}`);
             assert.ok(!f.overflow, `${row.id}: horizontal overflow at ${viewport.width}`);
             assert.deepEqual(f.clippedControls, [], `${row.id}: clipped learning buttons at ${viewport.width}`);
           }
         }
-        report.static.push({ id, scene: entry.scene, viewport, ...checks });
         // End-state sheets from all four viewports support actual visual review.
         const shown = await page.evaluate(async i => {
           lab.goScene(i); lab.learning.explore(); lab.learning.choice = 0;

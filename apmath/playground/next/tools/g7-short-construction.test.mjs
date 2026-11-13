@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
+import fs from 'node:fs';
 import { load } from './helpers/construction-lesson-runtime.mjs';
 const require=createRequire(import.meta.url),shorts=require('../kit/apl-g7-short-construction.js');
 const DEG=Math.PI/180,near=(a,b,e=1e-7)=>assert.ok(Math.abs(a-b)<e*Math.max(1,Math.abs(a),Math.abs(b)),`${a} != ${b}`);
@@ -10,12 +11,22 @@ const rotate=(p,v,a)=>{const x=p.x-v.x,y=p.y-v.y;return{x:v.x+x*Math.cos(a*DEG)-
 const plans=lab=>shorts.registry[`g7-construction/${lab.scene.id}`](lab,lab.s);
 const plan=(lab,label)=>plans(lab).find(p=>p.legacyLabel===label);
 function capture(board,p,t){
-  const result={paths:[],texts:[],arcs:[]},old={path:board.path,_text:board._text,arc:board.arc};
+  const result={paths:[],texts:[],textItems:[],arcs:[]},old={path:board.path,_text:board._text,arc:board.arc};
   board.path=function(ps,o){result.paths.push({points:ps,options:o});return old.path.call(this,ps,o);};
-  board._text=function(x,y,text,...rest){result.texts.push(String(text));return old._text.call(this,x,y,text,...rest);};
+  board._text=function(x,y,text,...rest){
+    const value=String(text),o=rest[0]||{},height=(o.size||13)*this.fs*this._ts(),width=this.ctx.measureText(value).width;
+    const left=o.align==='right'?x-width:o.align==='left'?x:x-width/2;
+    result.texts.push(value);result.textItems.push({value,x,y,color:o.color,left:left-2,right:left+width+2,top:y-height/2-2,bottom:y+height/2+2});
+    return old._text.call(this,x,y,text,...rest);
+  };
   board.arc=function(...args){result.arcs.push(args);return old.arc.apply(this,args);};
   try{board.begin();p.draw(board,t,p.model);board.end();return result;}finally{Object.assign(board,old);}
 }
+function separate(a,b,context){
+  assert.ok(a&&b,`${context}: both labels exist`);
+  assert.ok(a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top,`${context}: ${a.value} and ${b.value} overlap at (${a.x},${a.y}) / (${b.x},${b.y})`);
+}
+function onCanvas(items,board,context){for(const x of items)assert.ok(x.left>=0&&x.right<=board.W&&x.top>=0&&x.bottom<=board.H,`${context}: ${x.value} leaves the canvas`);}
 function triangleCongruent(A,B){
   // Congruence is checked independently by sorted squared Euclidean side lengths,
   // without trusting either native candidate flags or the short's permutation.
@@ -66,6 +77,76 @@ test('rigid rod endpoints give strict triangle inequalities and exact integer bo
     assert.equal(plan(lab,'정수개수').model.answer,feasible.length);assert.equal(plan(lab,'최댓값').model.answer,Math.max(...feasible));assert.equal(plan(lab,'최솟값').model.answer,Math.min(...feasible));
   }
   for(const id of ['c2-1','c2-3']){lab.go(id);for(let i=0;i<12;i++){lab.scene.cn.reroll(lab.s);for(const p of plans(lab)){if(p.model.cards)for(const c of p.model.cards){const [a,b,z]=c.rods.values;assert.equal(c.rods.ok,a+b>z&&b+z>a&&z+a>b);}capture(lab.board,p,7.8);}}}
+});
+
+test('visual regression: strict range formulas survive the real math renderer and endpoints use each theme background',async()=>{
+  const lab=await load({katex:require('../kit/vendor/katex/katex.min.js')}),board=lab.board;
+  const css=fs.readFileSync(new URL('../kit/apl.css',import.meta.url),'utf8');
+  const halos=Array.from(css.matchAll(/--m-halo:\s*([^;]+);/g),m=>m[1]);
+  assert.equal(halos.length,2,'use the actual board and paper theme halo tokens');
+  lab.go('c2-2');
+  for(const [a,b] of [[7,4],[3,7],[5,5],[10,2]]){
+    Object.assign(lab.s,{cnXa:a,cnXb:b,cnPk:{a,b,kind:0}});
+    const before=JSON.stringify(lab.s);
+    for(const p of plans(lab))for(const t of p.legacyLabel==='범위'?[5.5,7.1,9.6]:[5.5,7.1]){
+      const html=lab.renderMath(p.frame(t,p.model).formula);
+      assert.ok(!html.includes('$')&&!html.includes('katex-error'),'the whole inequality renders, including both strict comparison signs');
+      const mathml=html.match(/<semantics>([\s\S]*?)<annotation/);
+      assert.ok(mathml,'the native renderer produces real KaTeX MathML');
+      assert.equal(mathml[1].replace(/<[^>]*>/g,'').replace(/&lt;/g,'<'),`${Math.abs(a-b)}<x<${a+b}`);
+    }
+    const p=plan(lab,'범위'),circle=board.circle;
+    try{
+      for(const halo of halos)for(const width of [390,1024]){
+        board.colors.halo=halo;board.resize(width,598);const endpoints=[];
+        board.circle=function(center,radius,options){
+          const fills=[],fill=this.ctx.fill;this.ctx.fill=function(...args){fills.push(this.fillStyle);return fill.apply(this,args);};
+          try{const value=circle.call(this,center,radius,options);endpoints.push({center,options,fills});return value;}finally{this.ctx.fill=fill;}
+        };
+        capture(board,p,7.1);
+        assert.equal(endpoints.length,2);
+        for(const e of endpoints){assert.equal(e.options.color,'green');assert.deepEqual(e.fills,[halo],'an open endpoint erases the interval underneath with the active theme background');}
+      }
+    }finally{board.circle=circle;}
+    assert.equal(JSON.stringify(lab.s),before);
+  }
+});
+
+test('visual regression: rod lengths and the strict/equal comparison occupy separate readable rows',async()=>{
+  const lab=await load();lab.go('c2-1');
+  for(const width of [390,820,1024,1440])for(const name of ['성립조건','같은합'])for(const t of [6.1,7.1,9.6]){
+    lab.board.resize(width,598);const p=plan(lab,name),items=capture(lab.board,p,t).textItems;
+    const length=items.find(x=>x.value===`${p.model.rods.L} cm`),comparison=items.find(x=>/^[\d.]+ [<=>] /.test(x.value));
+    separate(length,comparison,`${name}/${width}/${t}`);onCanvas([length,comparison],lab.board,name);
+  }
+});
+
+test('visual regression: SSA intersection names clear angle and radius labels at both saved and changed conditions',async()=>{
+  const lab=await load();
+  for(const id of ['c3-2','c3-4']){
+    lab.go(id);
+    for(const [adjacent,opposite,A] of [[7,6,50],[7,5,40],[7,4,30],[6,4,35]]){
+      Object.assign(lab.s,{cnMc:adjacent,cnMb:opposite,cnMA:A});const p=plan(lab,'끼인각 아님');
+      for(const width of [390,820,1024,1440])for(const t of [4.5,7.1,9.6]){
+        lab.board.resize(width,598);const items=capture(lab.board,p,t).textItems,names=items.filter(x=>/^C\d$/.test(x.value)),values=items.filter(x=>x.value===`${A}°`||x.value===`${opposite} cm`);
+        assert.equal(names.length,2);assert.equal(values.length,2);
+        for(const name of names)for(const value of values)separate(name,value,`${id}/${width}/${A}/${t}`);
+        separate(names[0],names[1],`${id}/${width}/${A}/${t}`);onCanvas([...names,...values],lab.board,id);
+      }
+    }
+  }
+});
+
+test('visual regression: the whole equilateral angle and its two parts have separate text bounds',async()=>{
+  const lab=await load();lab.go('c6-1');
+  for(const y of [25,30,35,40,45]){
+    lab.s.cnPk={y,kind:0,q:0};const p=plan(lab,'대응각');
+    for(const width of [390,820,1024,1440])for(const t of [6.8,7.1,9.6]){
+      lab.board.resize(width,598);const items=capture(lab.board,p,t).textItems,whole=items.find(x=>x.color==='rose'&&x.value==='60°');
+      const angles=items.filter(x=>x!==whole&&(/°$/.test(x.value)||x.value==='x'));
+      assert.ok(whole);for(const value of angles)separate(whole,value,`c6-1/${width}/${y}/${t}`);onCanvas([whole,...angles],lab.board,'c6-1');
+    }
+  }
 });
 
 test('SSA circle-ray intersections and generated construction choices match independent Euclidean measurements',async()=>{

@@ -7,7 +7,7 @@
 .g7-learning[hidden], .g7-learning [hidden], .g7-short-caption[hidden], .g7-short-formula[hidden] { display:none!important; }
 .g7-learning-goal { display:flex; flex-direction:column; gap:4px; min-width:0; overflow-wrap:anywhere; font-size:14px; line-height:1.45; }
 .g7-learning-goal b { font-size:18px; font-weight:850; letter-spacing:-.03em; }
-.g7-learning-goal span { opacity:.83; }
+.g7-learning-goal > span { opacity:.83; }
 .g7-learning-controls { display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin-top:10px; }
 .g7-learning button { min-height:40px; padding:8px 12px; border-radius:10px; font-size:13px; }
 .g7-learning-targets { display:flex; flex-wrap:wrap; gap:6px; margin-top:9px; min-width:0; }
@@ -30,7 +30,7 @@
 @media(max-width:859px) {
   .g7-learning { margin:8px 8px 0; padding:10px 11px 8px; border-radius:13px; }
   .g7-learning-goal b { font-size:16px; }
-  .g7-learning-goal span { font-size:12px; }
+  .g7-learning-goal > span { font-size:12px; }
   .g7-learning-controls { gap:5px; }
   .g7-learning button { min-height:38px; padding:7px 9px; font-size:12px; }
   .g7-short-active .apl-stage { height:auto!important; min-height:560px; }
