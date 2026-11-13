@@ -15,7 +15,7 @@
   "completedExams": 0,
   "reviewedQuestions": 24,
   "currentOrder": 1,
-  "nextAction": "SUBMIT_REV2_REPAIR_PR_THEN_CI_MAIN_WRITER_VERIFY_24_CONSUMER_CLOSE_FIRST_THEN_WANGUN",
+  "nextAction": "WATCH_EXACT_REV2_MAIN_WRITER_VERIFY_RECEIPT_24_CONSUMER_REMOTE_SHA_CLOSE_FIRST_THEN_WANGUN",
   "exams": [
     {
       "order": 1,
@@ -26,7 +26,7 @@
       "count": 24,
       "sourceBlob": "c36139a90e9bcd378577ece8f891423bee6b0a19",
       "sourceSha256": "1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564",
-      "status": "REV2_PREPARED_AFTER_REGISTRATION_REJECTION",
+      "status": "REV2_MERGED_WAITING_MAIN_REGISTRATION",
       "partialEvidence": "01-shinheung-semantic-read-checkpoint.json",
       "candidateComparisonEvidence": "01-shinheung-candidate-comparison.json",
       "candidateComparisonSha256": "c887310c2501c3d70a010315a7fda02c73a6964ba45b70c3aa106a99c4a62ce9",
@@ -46,42 +46,40 @@
         "exact": 22,
         "rpmOnlyDebt": 2
       },
-      "prNumber": 1960,
-      "prUrl": "https://github.com/icefoxtail/AP------/pull/1960",
-      "prHeadSha": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
-      "mergeCommitSha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
-      "verifiedRemoteMainSha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
-      "verifiedRemoteMainTree": "1f0eeecb4e7fafed89050c300b36aae949873437",
-      "nativeRegistrationActual": "NOT_RUN_FOR_REV2",
+      "prNumber": 1961,
+      "prUrl": "https://github.com/icefoxtail/AP------/pull/1961",
+      "prHeadSha": "64650d1c2e34b49a0779769d8df502eb853ff693",
+      "mergeCommitSha": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
+      "verifiedRemoteMainSha": "3cc9e93b28d9f97f202c4bfd96a116d9fa42d7fb",
+      "verifiedRemoteMainTree": "c5801f45830f1d2193b3222adc6fe5d92c412816",
+      "nativeRegistrationActual": "AWAITING_EXACT_REV2_SERVER_RECEIPT",
       "consumerVerification": "NOT_RUN",
       "operationallyClosed": false,
       "ci": {
         "state": "SUCCESS",
-        "fixedHeadSha": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
-        "successfulWorkflowCount": 5,
-        "successfulJobCount": 7,
-        "initialFailure": "HTML_CACHE_VERSION_REFERENCE_MISMATCH_FIXED",
-        "fixedCacheVersion": "20261113-rpm-middle-shinheung-1",
-        "evidencePath": "01-shinheung-ci-fixed-head.json",
-        "evidenceRecordedBy": "root"
+        "headSha": "64650d1c2e34b49a0779769d8df502eb853ff693",
+        "successfulWorkflowCount": 3,
+        "successfulJobCount": 5,
+        "evidencePath": "01-shinheung-rev2-ci.json",
+        "evidenceRecordedBy": "root",
+        "evidenceSha256": "6774dbcee746791603c16b4d98ff4c7c55d95099681064faec96a8ccae3b0a71"
       },
       "concurrentWorkEvidence": "01-shinheung-concurrent-work-check.json",
       "mainWriter": {
-        "runId": 43421975843,
-        "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43421975843",
-        "jobId": 131873926621,
-        "jobUrl": "https://github.com/icefoxtail/AP------/actions/runs/43421975843/job/131873926621",
-        "observedStatus": "COMPLETED",
-        "headSha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
-        "observationSource": "root verified exact-merge writer run",
-        "registrationReceiptVerification": "REJECTION_CONFIRMED",
-        "conclusion": "SUCCESS",
-        "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev1",
-        "requestOutcome": "REJECTED",
-        "registryChangesApplied": 0,
-        "rejectionEvidence": "01-shinheung-registration-rev1-rejected.json"
+        "runId": 43429595931,
+        "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43429595931",
+        "jobId": 131899473141,
+        "jobUrl": "https://github.com/icefoxtail/AP------/actions/runs/43429595931/job/131899473141",
+        "observedStatus": "IN_PROGRESS",
+        "observedPhase": "STEP_6_PREPARATION",
+        "persistStatus": "PENDING",
+        "headSha": "f2e98717e9c3dc242683d5614376ecfd1e3c2ee6",
+        "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev2",
+        "requestOutcome": "PENDING",
+        "registrationReceiptVerification": "NOT_VERIFIED",
+        "observationSource": "root verified writer run at exact rev2 merge head"
       },
-      "mainMergeEvidence": "01-shinheung-main-merge-checkpoint.json",
+      "mainMergeEvidence": "01-shinheung-rev2-main-merge.json",
       "initialCiEvidence": "01-shinheung-ci-initial.json",
       "requestHistory": [
         {
@@ -117,14 +115,31 @@
           "writerRunId": 43421975843,
           "writerWorkflowConclusion": "SUCCESS",
           "rejectionEvidence": "01-shinheung-registration-rev1-rejected.json",
-          "rejectionEvidenceSha256": "d33758236925429be7f323a4bcab4f011d446ca15b36b267a4323251a2b330df"
+          "rejectionEvidenceSha256": "d33758236925429be7f323a4bcab4f011d446ca15b36b267a4323251a2b330df",
+          "mainWriter": {
+            "runId": 43421975843,
+            "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43421975843",
+            "jobId": 131873926621,
+            "jobUrl": "https://github.com/icefoxtail/AP------/actions/runs/43421975843/job/131873926621",
+            "observedStatus": "COMPLETED",
+            "headSha": "81fb1c3a7c861ede3690157234bf0415c2585e45",
+            "observationSource": "root verified exact-merge writer run",
+            "registrationReceiptVerification": "REJECTION_CONFIRMED",
+            "conclusion": "SUCCESS",
+            "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev1",
+            "requestOutcome": "REJECTED",
+            "registryChangesApplied": 0,
+            "rejectionEvidence": "01-shinheung-registration-rev1-rejected.json"
+          },
+          "mainMergeEvidence": "01-shinheung-main-merge-checkpoint.json",
+          "initialCiEvidence": "01-shinheung-ci-initial.json"
         }
       ],
       "currentRequestPath": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev2.json",
-      "prRole": "ORIGINAL_REV1_MERGED_HISTORY",
-      "repairPrNumber": null,
-      "repairPrStatus": "NOT_CREATED",
-      "repairCiStatus": "NOT_RUN",
+      "prRole": "CURRENT_REV2_REPAIR_MERGED",
+      "repairPrNumber": 1961,
+      "repairPrStatus": "MERGED",
+      "repairCiStatus": "SUCCESS",
       "nativeRegistrationDryRunDetails": {
         "requestRevision": "rev2",
         "exitCode": 0,
@@ -158,7 +173,13 @@
         "evidenceSha256": "2cab1eb2d69efbc6f0fcbb80f3dc41d2d40fbc5bc1e6a199f7c5e703095a33a0"
       },
       "annotationChangedQuestionCount": 24,
-      "sourceMetadataChangedQuestionCount": 24
+      "sourceMetadataChangedQuestionCount": 24,
+      "prNumbers": [
+        1960,
+        1961
+      ],
+      "mergeTree": "25dcd5f8086207e5e630aa3ec51ba8ab6b95f69c",
+      "mainMergeEvidenceSha256": "8f9c0772bd4dccf301cb70494f501a7a2c7119a64514904e636a41e4a5f8f4db"
     },
     {
       "order": 2,
@@ -689,7 +710,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "REV2_PREPARED_AFTER_REGISTRATION_REJECTION",
+  "state": "REV2_MERGED_WAITING_MAIN_REGISTRATION",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -708,11 +729,11 @@
       "supersededBy": "01-shinheung-semantic-review.json"
     }
   },
-  "activeMain": "d7c468679b7877bba82e63e3b3f9f5dcb8a1363c",
+  "activeMain": "3cc9e93b28d9f97f202c4bfd96a116d9fa42d7fb",
   "prerequisiteStatus": "RPM_L1_L2_MERGED",
   "prerequisiteMainSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
   "latestRemoteSemanticCheckpoint": "ae19795a822db73448c7487aea4036c509720ecb",
-  "latestMergedReviewHead": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
+  "latestMergedReviewHead": "64650d1c2e34b49a0779769d8df502eb853ff693",
   "concurrentWorkCheck": {
     "path": "docs/operations/m1-meta-review-20261113/01-shinheung-concurrent-work-check.json",
     "sha256": "e06a73f3224e7c2eb44aa898a7c14e2ee1c2b21b52340c913b7e7bf1fc2e8891",
@@ -741,5 +762,18 @@
       "RPM FINAL claims"
     ],
     "noBlanketMetadataConflictWaiver": true
-  }
+  },
+  "activeMainTree": "c5801f45830f1d2193b3222adc6fe5d92c412816",
+  "subsequentMainChanges": [
+    {
+      "pr": 1962,
+      "mergeCommitSha": "3cc9e93b28d9f97f202c4bfd96a116d9fa42d7fb",
+      "tree": "c5801f45830f1d2193b3222adc6fe5d92c412816",
+      "scope": "L3 parent search/helper change; source exam and canonical authority unchanged",
+      "sourceBlobUnchanged": "a8de75bc9cc2b6a4479866d75b8ebec637404a04",
+      "sourceSha256Unchanged": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+      "verifiedBy": "root",
+      "preserveConcurrentChanges": true
+    }
+  ]
 }
