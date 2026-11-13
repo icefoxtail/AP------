@@ -15,7 +15,7 @@
   "completedExams": 1,
   "reviewedQuestions": 47,
   "currentOrder": 2,
-  "nextAction": "Publish Wangun exact candidate/request on owned branch and create PR; verify exact-head CI. Merge only after PR1967 actual main writer closes and fresh main source/registry/evidence inputs are checked. Then actual Wangun receipt/final23 Consumer/remote SHA closeout.",
+  "nextAction": "Publish current registered-main merge to owned PR1968 branch; require exact fresh-head CI before merge, then actual Wangun receipt/final23 Consumer/remoteSHA.",
   "exams": [
     {
       "order": 1,
@@ -572,6 +572,17 @@
         "sourceCanonicalMetadataRuntimeCatalogParentHelperAndEvidenceUnchanged": true,
         "actual24ConsumerAndRpmParentEvidenceReused": true,
         "newSemanticReviewOrConsumerTestsRun": false
+      },
+      "supplementalCloseout": {
+        "owner": "GPT_ROOT_BF50408FB63B",
+        "pr": 1967,
+        "registeredMain": "440f412bd221e3d62df16130984a2626a3ee6441",
+        "receiptSha256": "bd627b6fe34082ed8ca2a90e49955e75ffb7ee2cfc6e3e4411ae4041d4d2d555",
+        "finalConsumerPassed": 24,
+        "sourceSha256": "2f1ab79eba940498b5c575ad1509a038b3f2dabd390823177635d83937fe4b56",
+        "sourceBlobSha1": "f1a73e96053d17564b42672415ca6bfc5b73cb2c",
+        "evidence": "02-wangun-main440f-refresh.json",
+        "firstHistoricalCloseoutPreserved": true
       }
     },
     {
@@ -583,7 +594,7 @@
       "count": 23,
       "sourceBlob": "76377173ecb0ba989188561bbefac2afb3232479",
       "sourceSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
-      "status": "ISOLATED_PREFLIGHT_PASS_PR_PREPARATION",
+      "status": "PR_OPEN_FRESH_MAIN_BOUND_REQUEST_UNCHANGED_CI_PENDING",
       "checklist": "[ ]",
       "operationallyClosed": false,
       "reviewedQuestionCount": 23,
@@ -594,7 +605,7 @@
       "sourceReviewedSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
       "sourceMetadataEditsApplied": false,
       "registrationApplied": false,
-      "prNumber": null,
+      "prNumber": 1968,
       "unresolvedDependencyPr": 1966,
       "semanticReviewEvidence": "02-wangun-semantic-review-rev3.json",
       "semanticReviewSha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090",
@@ -619,7 +630,11 @@
       "requestRawSha256": "feb528273a4167b654a50dcd6d825c7db9173b0bf2fee1c47904b20b4bb505c1",
       "preparedSourceSha256": "c79551504949aee9ee09f5a8e2bf74898f7b7204d54a035a3e4b2acc7d808129",
       "preflightEvidence": "02-wangun-main51cf-isolated-preflight.json",
-      "preflightSha256": "ea5437e08ddd76b96adeecfba1b0c4872c2faf2293abbc5c5277da8a0683d535"
+      "preflightSha256": "ea5437e08ddd76b96adeecfba1b0c4872c2faf2293abbc5c5277da8a0683d535",
+      "prUrl": "https://github.com/icefoxtail/AP------/pull/1968",
+      "prHeadSha": "29707a569189aacd886cf84776ae31ec0640f2b1",
+      "freshMainDryRun": "PASS_23_REGISTRY16_RUNTIME23",
+      "freshMainRecheckEvidence": "02-wangun-main440f-refresh.json"
     },
     {
       "order": 3,
@@ -1223,7 +1238,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "SECOND_EXAM_PREFLIGHT_PASS_OWNED_BRANCH_READY_FOR_PR_MAIN_MERGE_WAITING_PR1967",
+  "state": "SECOND_EXAM_FRESH_REGISTERED_MAIN_MERGED_LOCALLY_REQUEST_UNCHANGED_NEXT_EXACT_HEAD_CI",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -1242,7 +1257,7 @@
       "supersededBy": "01-shinheung-semantic-review.json"
     }
   },
-  "activeMain": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+  "activeMain": "440f412bd221e3d62df16130984a2626a3ee6441",
   "prerequisiteStatus": "RPM_L1_L2_MERGED",
   "prerequisiteMainSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
   "latestRemoteSemanticCheckpoint": "e403ce4b0fff47857e0579335a633a7a7b28dd3a",
@@ -1276,7 +1291,7 @@
     ],
     "noBlanketMetadataConflictWaiver": true
   },
-  "activeMainTree": "52bb30a7efe875985d8f3fa2214236332c062b66",
+  "activeMainTree": "c77b8e1c88357ea17ac1b650db2029a1f836ebfc",
   "subsequentMainChanges": [
     {
       "pr": 1962,
@@ -1289,10 +1304,10 @@
       "preserveConcurrentChanges": true
     }
   ],
-  "activeMainTreeStatus": "COURSE_CORRECTION_ACTUALLY_REGISTERED_FINAL_CONSUMER_PRESERVED",
+  "activeMainTreeStatus": "OTHER_OWNER_SHINHEUNG_SUPPLEMENT_REGISTERED_AND_FINAL24_CONSUMER_VERIFIED",
   "checkpointPublication": {
-    "lastVerifiedRemoteSha": "ae5c6a83d248269f53ca96603d1e58a110f29e23",
-    "statusAtWriting": "EXACT_WANGUN_CANDIDATE_SOURCE_REQUEST_PREFLIGHT_READY_TO_PUBLISH",
+    "lastVerifiedRemoteSha": "29707a569189aacd886cf84776ae31ec0640f2b1",
+    "statusAtWriting": "PR1968_PUBLISHED_FULL_ISOLATED_PREFLIGHT_PASS_MAIN_GATE_PENDING",
     "currentSnapshotEvidence": {
       "path": "02-wangun-semantic-review-rev3.json",
       "sha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090"
@@ -1308,11 +1323,11 @@
     "mainRegistrationStillRequired": true
   },
   "awcrCheckpoint": {
-    "latestVerifiedRevision": 18,
-    "fileId": "1tbUoJQrJK28eB5NsCYCyQO8Ke25UFgQK",
-    "rawSha256": "94a8b71e950ae7a392d460d131f04a6ec12d21b380930fbdd7d5c8adba66e8f2",
-    "nextRevision": 19,
-    "nextRevisionPurpose": "Record exact Wangun source/request branch and PR, full local23Consumer/19RPM/17preservation; actual main gate remains PR1967."
+    "latestVerifiedRevision": 19,
+    "fileId": "1Thmo7BeqfbQ9jNN_xo_fC02Jp2pC0HNS",
+    "rawSha256": "a002d90381ce0305adafa9ff974bc78c65de3bd612bdbdba6ee4206a89ca2561",
+    "nextRevision": 20,
+    "nextRevisionPurpose": "Record next verified main writer/PR1968 CI or operational closeout."
   },
   "remainingExams": 43,
   "nextExam": {
@@ -1320,7 +1335,7 @@
     "path": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
     "file": "26_왕운중_2학기_중간_중1_기출.js",
     "questionCount": 23,
-    "status": "ISOLATED_PREFLIGHT_PASS_PR_PREPARATION",
+    "status": "PR_OPEN_FRESH_MAIN_BOUND_REQUEST_UNCHANGED_CI_PENDING",
     "semanticReadEvidence": "02-wangun-semantic-read-checkpoint.json"
   },
   "latestOperationalCloseout": {
@@ -1385,7 +1400,7 @@
     "currentDependencyEvidence": "02-pr1965-head9f828-review.json"
   },
   "operationallyClosedQuestions": 24,
-  "latestVerifiedRemoteCheckpoint": "ae5c6a83d248269f53ca96603d1e58a110f29e23",
+  "latestVerifiedRemoteCheckpoint": "29707a569189aacd886cf84776ae31ec0640f2b1",
   "courseCorrectionDependency": {
     "pr": 1966,
     "url": "https://github.com/icefoxtail/AP------/pull/1966",
@@ -1429,16 +1444,30 @@
   },
   "concurrentShinheungSupplement": {
     "pr": 1967,
-    "head": "a52b2d5d440a9f03eb6a22f8a11cb84df045a6f2",
+    "head": "bab8fc177dc8f841708ac88f1664bc36d60864bd",
     "owner": "GPT_ROOT_BF50408FB63B",
-    "stateAtObservation": "OPEN_CI_ONE_FAILURE",
+    "stateAtObservation": "ACTUALLY_REGISTERED_FINAL_POST_AUTOMETA_CONSUMER_24_PASS",
     "sourceNormalPayloadChanges": 0,
     "registryChanges": 0,
     "metadataFieldsChanged": 56,
     "rootMutationsToOtherTask": 0,
     "publicationOrdering": "Separate owned branch and draft may be published. Merge crosswalk to main only after exact PR1967 actual writer closes; its pending request pins current crosswalk bytes.",
     "evidence": "02-crosswalk-append-existing-approval-impact.json",
-    "firstExamHistoricalCloseoutPreserved": true
+    "firstExamHistoricalCloseoutPreserved": true,
+    "mergeCommitSha": "2391df9b009b1c1f47ab450ed501fe06dd78f918",
+    "writerRun": 43467456637,
+    "writerJob": 132030268013,
+    "actualNewReceiptVerified": true,
+    "registeredMain": "440f412bd221e3d62df16130984a2626a3ee6441",
+    "receiptSha256": "bd627b6fe34082ed8ca2a90e49955e75ffb7ee2cfc6e3e4411ae4041d4d2d555",
+    "finalConsumer": {
+      "changed": 24,
+      "checked": 24,
+      "passed": 24,
+      "failures": 0,
+      "unobservedFields": 0,
+      "assignmentPending": 0
+    }
   },
   "wangunIsolatedPreflight": {
     "baselineMain": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",

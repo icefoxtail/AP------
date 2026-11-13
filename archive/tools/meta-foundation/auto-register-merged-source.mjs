@@ -56,7 +56,7 @@ const semantic = q => pick(q,FIELDS);
 // The reviewed lane may have just registered this exact source before AutoMeta reaches an older
 // pending cursor. Reuse its byte-bound native receipt, never the approval flags alone. Returning
 // ALREADY_REGISTERED also leaves the native metadata revision, runtime and RPM parent untouched.
-export function nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl}) {
+export function nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,ownerPack=pt?.ownerPack}) {
   if(!nativeSource||!previous||!equal(pick(previous,STUDENT),pick(question,STUDENT)))return null;
   const {root,bytes,blobSha1,bank,runtimeRecord,runtimeStatus}=nativeSource;
   if(!Buffer.isBuffer(bytes)||!Array.isArray(bank)||!equal(bank[ordinal-1],question)
@@ -66,7 +66,7 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
     ||!String(current.metadataStatus||'').startsWith('approved_')||current.tagStatus!=='reviewed_pass'
     ||current.sourceFingerprint!==sourceFingerprint(question)||current.contentFingerprint!==contentFingerprint(question)
     ||FIELDS.some(k=>Object.hasOwn(question,k)&&!equal(question[k],current[k]))
-    ||current.metaFoundationStatus!=='ACTIVE'||current.metaFoundationPackId!==pt.ownerPack
+    ||current.metaFoundationStatus!=='ACTIVE'||current.metaFoundationPackId!==ownerPack
     ||!String(current.L1||'').trim()||!String(current.L2||'').trim()
     ||current.L3!==pt.canonicalLabelKo||current.L4!==tpl.canonicalLabelKo)return null;
   const boundRead=relative=>{
@@ -102,7 +102,7 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||registeredIdentity?.length!==1||registeredIdentity[0].sourceArchiveFile!==source
         ||registeredIdentity[0].sourceOrdinal!==ordinal||registeredIdentity[0].sourceFingerprint!==identity.sourceFingerprint
         ||!equal(registeredIdentity[0].sourceQuestionNo,identity.sourceQuestionNo)
-        ||current.metadataRevision!==`meta-foundation:${pt.ownerPack}@${current.metaFoundationPackVersion}:exam-${approval.type.toLowerCase()}-v2:${requestId}`)continue;
+        ||current.metadataRevision!==`meta-foundation:${ownerPack}@${current.metaFoundationPackVersion}:exam-${approval.type.toLowerCase()}-v2:${requestId}`)continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }
@@ -113,11 +113,22 @@ export function activeBindingContext({candidate,check,registry,runtimeOwner}) {
   const pt=registry.problemTypes.get(candidate.problemTypeKey),tpl=registry.templates.get(candidate.templateKey);
   const bindings=registry.bindingRows.filter(b=>b.status==='ACTIVE'&&b.curriculum===check.curriculum&&b.standardUnitKey===candidate.standardUnitKey&&(b.subUnitKey??null)===(candidate.subUnitKey??null)&&b.problemTypeKey===candidate.problemTypeKey&&String(b.standardCourse||'').replaceAll(' ','')===String(candidate.standardCourse||'').replaceAll(' ',''));
   if(bindings.length!==1)return {reason:'EXACT_COURSE_BINDING_MISSING_OR_AMBIGUOUS'};
-  const binding=bindings[0],pack=registry.activePacks.get(pt?.ownerPack);
-  if(!pack||pt?.status!=='ACTIVE'||tpl?.status!=='ACTIVE'||tpl.ownerPack!==pt.ownerPack
-    ||pack.status&&pack.status!=='ACTIVE'||binding.ownerPack&&binding.ownerPack!==pt.ownerPack)return {reason:'ACTIVE_OWNER_PACK_MISMATCH'};
-  if(runtimeOwner&&runtimeOwner!==pt.ownerPack)return {reason:'EXISTING_RUNTIME_OWNER_CONFLICT'};
-  return {pt,tpl,binding,pack};
+  const binding=bindings[0],definitionPack=registry.activePacks.get(pt?.ownerPack);
+  if(!definitionPack||pt?.status!=='ACTIVE'||tpl?.status!=='ACTIVE'||tpl.ownerPack!==pt.ownerPack
+    ||tpl.parentProblemTypeKey!==candidate.problemTypeKey||definitionPack.status&&definitionPack.status!=='ACTIVE')return {reason:'ACTIVE_OWNER_PACK_MISMATCH'};
+  // An exact ACTIVE binding may reuse another pack's PT/TPL definitions.
+  // Its owner controls runtime placement and course scope, as in official v2 resolve().
+  const ownerPack=binding.ownerPack||pt.ownerPack,pack=registry.activePacks.get(ownerPack);
+  if(!/^[A-Z][A-Z0-9_]*$/.test(ownerPack)||!pack||pack.status&&pack.status!=='ACTIVE')return {reason:'ACTIVE_OWNER_PACK_MISMATCH'};
+  if(runtimeOwner&&runtimeOwner!==ownerPack)return {reason:'EXISTING_RUNTIME_OWNER_CONFLICT'};
+  let scope;
+  try {scope=registry.root?read(registry.root,`archive/data/meta-foundation/canonical/packs/${ownerPack.toLowerCase().replaceAll('_','-')}/pack.json`,null):pack;}
+  catch {return {reason:'BINDING_OWNER_PACK_SCOPE_MISMATCH'};}
+  const course=candidate.standardCourse||candidate.courseKey,courseKey=candidate.courseKey||course;
+  if(!scope||(scope.packId||scope.id)!==ownerPack||(scope.packVersion||scope.version)!==pack.version
+    ||scope.canonicalStatus&&scope.canonicalStatus!=='ACTIVE'||!scope.curricula?.includes(check.curriculum)
+    ||!scope.standardCourses?.includes(course)||!scope.standardCourses?.includes(courseKey))return {reason:'BINDING_OWNER_PACK_SCOPE_MISMATCH'};
+  return {pt,tpl,binding,pack,ownerPack};
 }
 
 // The official ACTIVE validator is supplied by loadContext; fixtures use the same public interface.
@@ -161,7 +172,7 @@ export function planQuestion({question:q, previous, current, identity, registry,
     if(supplied.status==='VALIDATED'&&supplied.activeBinding) {
       const context=activeBindingContext({candidate,check:supplied,registry,runtimeOwner});
       if(!context.reason&&hasSourceRationale) {
-        const nativeReceipt=nativeReviewReceipt({nativeSource,question:q,previous,current,identity,source,ordinal,pt:context.pt,tpl:context.tpl});
+        const nativeReceipt=nativeReviewReceipt({nativeSource,question:q,previous,current,identity,source,ordinal,pt:context.pt,tpl:context.tpl,ownerPack:context.ownerPack});
         if(nativeReceipt)return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,
           sourceOrdinal:ordinal,inputHash,nativeReviewReceipt:nativeReceipt};
       }
@@ -174,7 +185,7 @@ export function planQuestion({question:q, previous, current, identity, registry,
   if(check.status!=='VALIDATED'||!check.activeBinding||!check.difficultyComplete) return reject(...check.errors, ...(!check.difficultyComplete?['DIFFICULTY_INCOMPLETE']:[]), ...(!check.activeBinding?['ACTIVE_BINDING_MISSING']:[]));
   const context=activeBindingContext({candidate,check,registry,runtimeOwner});
   if(context.reason)return reject(context.reason);
-  const {pt,tpl,binding,pack}=context;
+  const {pt,tpl,binding,pack,ownerPack}=context;
   // Existing declarations are evidence of what was merged, not proof of independent mathematical QA.
   if(!hasSourceRationale) return reject('SOURCE_SEMANTIC_RATIONALE_MISSING');
   if(!binding.L1||!binding.L2||!pt.canonicalLabelKo||!tpl.canonicalLabelKo) return reject('CANONICAL_LABELS_MISSING');
@@ -182,7 +193,7 @@ export function planQuestion({question:q, previous, current, identity, registry,
     courseKey:check.curriculum===current.curriculumKey&&current.courseKey?current.courseKey:candidate.standardCourse,
     L1:binding.L1,L2:binding.L2,L3:pt.canonicalLabelKo,L4:tpl.canonicalLabelKo,
     foundationTaxonomyStatus:'CONFIRMED',projectionStatus:'REUSE',metaFoundationStatus:'ACTIVE',
-    metaFoundationPackId:pt.ownerPack,metaFoundationPackVersion:pack.version,
+    metaFoundationPackId:ownerPack,metaFoundationPackVersion:pack.version,
     metadataRegistrationStatus:'REGISTERED',metadataRegistrationBasis:'MAIN_MERGED_EXPLICIT_METADATA',
     independentMathReviewStatus:studentChanged?'NOT_PERFORMED_BY_AUTO_REGISTRAR':current.independentMathReviewStatus||'NOT_PERFORMED_BY_AUTO_REGISTRAR',
     l3Disposition:'ASSIGNED',l4Disposition:'ASSIGNED',curriculumApplicability:current.curriculumApplicability||'DEFAULT_SCOPE',
@@ -201,7 +212,7 @@ export function planQuestion({question:q, previous, current, identity, registry,
   // A rerun after a build can canonicalize summary fields; compare actual registered values, not wall-clock data.
   const effectiveFields=[...FIELDS.filter(k=>Object.hasOwn(final,k)), 'sourceFingerprint','contentFingerprint','L1','L2','L3','L4'];
   if(priorReceipt?.inputHash===inputHash&&priorReceipt.metadataRegistrationStatus==='REGISTERED'&&effectiveFields.every(k=>equal(current[k],final[k]))) return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,inputHash};
-  return {status:'APPLY',questionUid:identity.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,inputHash,ownerPack:pt.ownerPack,final,
+  return {status:'APPLY',questionUid:identity.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,inputHash,ownerPack,final,
     changedFields:effectiveFields.filter(k=>!equal(current[k],final[k])),preserveReview,coreChanged,sourceMetaChanged,
     studentPayloadHash:hash(pick(q,STUDENT)),sourceQuestionNo:questionNo};
 }
