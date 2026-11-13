@@ -88,3 +88,9 @@ GAP이 우선인 상호배타적 의미 판정이다. 정상 의미값을 보존
 정확한 raw path·SHA, 당시 docs raw path, compact hash는 `final-verification.json`에 있다. 전용 원격 브랜치는 squash 병합 후에도 삭제하지 않는다.
 
 다음 실행: 이 배치의 PR 필수 CI → main squash 병합 → 원격 SHA 확인 → 해당 native/difficulty/4slot 등록 영수증 확인 → Consumer·Pages 상태를 별도 확인 → AWCR immutable revision 저장 및 raw SHA 재조회. 네 시험지 밖의 작업은 총괄의 새 배정 전 시작하지 않는다.
+
+## 필수 CI 직접 의존 복구
+
+PR #1974의 첫 CI run `43528778641`은 runtime readiness가 manifest 입력을 변경한 뒤 즉시 이전 해시를 검사하여 중단됐다. main 공식 reviewed writer에 이미 있는 build_db 최대 1회 재생성 절차를 `archive-pr-registration-prepare.mjs`에 동일하게 연결했다. 두 번째 실패는 그대로 전파하며 기존 snapshot·derived scope·native proof·필수 검사를 유지한다.
+
+관련 prepare/proof 회귀검사 28 PASS·0 FAIL·0 SKIP, A2 독립 diff 리뷰 결함 0건. A1이 열린 PR 73개 전부를 대조해 두 CI 파일과의 기존 작업 겹침 0건을 확인했다. 시험지·요청·compact 및 공용 정본/파생 데이터는 이 복구에서 변경하지 않았다. 이 두 CI 파일은 본 배치의 필수 병합 검사를 실행하기 위한 직접 의존 수정이다. 정확한 실패·수정 바이트·검증 근거는 `ci-recovery-verification.json`에 있다. 새 커밋의 원격 CI 결과는 별도로 확인한다.

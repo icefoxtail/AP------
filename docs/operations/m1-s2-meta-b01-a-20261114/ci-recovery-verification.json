@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "m1s2-ci-direct-dependency-recovery-v1",
+  "assignmentId": "M1S2-20261114-B01-A",
+  "owner": "GPT_ROOT_54CB21AF3005_A",
+  "failedPrHead": "84002d5a9d23ff48525aecda11636dafdcb2f7a1",
+  "failedRun": "https://github.com/icefoxtail/AP------/actions/runs/43528778641",
+  "failedJob": 132241065748,
+  "failedStep": "Prepare and verify PR registration data once",
+  "observedError": "Archive2 canonical input digest mismatch: data/meta-foundation/runtime/middle-geometry-v1.json",
+  "observedSequence": [
+    "registration parity PASS",
+    "catalog --check PASS",
+    "refresh-runtime-source-readiness --write changed runtime count bytes",
+    "immediate readiness --check rejected the prior manifest hash"
+  ],
+  "necessaryDependency": "Required PR registration gate for this assigned four-exam batch; no source scope expansion. Existing reviewed-meta-register-pass.sh already retries build_db once for this fixed point.",
+  "correction": "Retry only the official build_db command once in the same temporary checkout; propagate second failure; retain exact HEAD, derived allowlist, native preview, proof and required validation gates.",
+  "files": [
+    {
+      "path": "tools/ci/archive-pr-registration-prepare.mjs",
+      "beforeGitBlobSha": "e1ca9feaaeb00564d1767c533b4e03492851a9eb",
+      "afterSha256": "7f27f37549dcc3e096fd9f957c32ca194fff7d582df60843e4c50dc3ed8ac19f"
+    },
+    {
+      "path": "tests/archive-pr-registration-prepare.test.mjs",
+      "beforeGitBlobSha": "564f1b76300774f6f9b7a69786995c0335389bdf",
+      "afterSha256": "0d26559f4ea13e18ab426a9abe54da531f8b15df41fb95e39e3558f2ca0deedd"
+    }
+  ],
+  "ownershipCheck": {
+    "openPrCount": 73,
+    "queriedChangedFileLists": 73,
+    "overlappingPrCount": 0,
+    "reviewer": "GPT_ROOT_54CB21AF3005_A/A1"
+  },
+  "tests": {
+    "command": "node --test tests/archive-pr-registration-prepare.test.mjs tests/archive-pr-registration-proof.test.mjs",
+    "pass": 28,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 4448.211042,
+    "newCases": [
+      "first fixed-point failure reuses generated runtime bytes",
+      "second builder failure remains fatal",
+      "source mutation from failed first run remains rejected"
+    ]
+  },
+  "independentCodeReview": {
+    "reviewer": "GPT_ROOT_54CB21AF3005_A/A2",
+    "findings": 0,
+    "testResultsReused": true
+  },
+  "protectedTaskInputsUnchanged": true,
+  "sharedCanonicalAndDerivedWrites": 0,
+  "remoteRequiredCi": "PENDING_NEW_COMMIT"
+}
