@@ -1,0 +1,34 @@
+{
+  "ordinal": 17,
+  "givenFacts": [
+    "l∥m",
+    "위쪽 교차부 30°",
+    "첫 꺾임 x−10°",
+    "다음 꺾임 x+20°",
+    "아래쪽 교차부 x"
+  ],
+  "layout": "U→상부 l 교점의 방향 150°, U→V 방향 200°, V→U 방향 20°, V→하부 m 교점 방향 300°. l,m은 평행 수평선. 내부 기하에서 x−10=50°, x+20=80°, x=60°가 성립하나 해당 숫자를 문제 그림에는 쓰지 않는다.",
+  "visibleMarks": [
+    "l,m 이름",
+    "30°, x−10°, x+20°, x 각호"
+  ],
+  "mustNotAdd": [
+    "풀이용 보조 평행선",
+    "x의 수치"
+  ],
+  "unresolvedVisuals": [],
+  "normalizationAndResiduals": {
+    "normalization": "upper line horizontal; chosen segment lengths are schematic and unlabelled",
+    "freeVariables": [
+      "translation, scale, and the segment lengths between line/vertex intersections"
+    ],
+    "expectedResiduals": {
+      "l_parallel_m": "0",
+      "angle_top": "30 degrees",
+      "angle_U": "50 degrees (the label remains x-10)",
+      "angle_V": "80 degrees (the label remains x+20)",
+      "angle_bottom": "60 degrees (the label remains x)"
+    },
+    "tolerance": "exact 22-digit angular construction; marks compared to constructed rays"
+  }
+}

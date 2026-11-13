@@ -10,6 +10,7 @@ import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-lay
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {assetIdentity} from './contracts.mjs';
 import {DISPLAY_SIZE_CLASSES,requestedProfileTypographyPolicy} from './display-envelope.mjs';
+import {validateProblemReaderEvidence} from './problem-output-envelope.mjs';
 
 export const ARCHIVE_CAPTURE_VERSION='construction-archive-capture-v1';
 const root=fileURLToPath(new URL('../../../../',import.meta.url));
@@ -209,6 +210,7 @@ function checkMeasuredPolicy({measuredPolicy,composed,identity,sourceRef,engineR
       const entry=entries[0];let raw,matrix;
       try{
         raw=JSON.parse(readBoundFile(root,entry.archiveRow));matrix=JSON.parse(readBoundFile(root,entry.matrix));
+        validateProblemReaderEvidence(raw,{root,sourcePath:sourceRef.path});
         for(const name of ['context','page']){const png=readBoundFile(root,entry.screenshots?.[name]);if(png.length<24||png.toString('hex',0,8)!=='89504e470d0a1a0a')bad('PROBLEM_PREFLIGHT_PNG_INVALID');}
       }catch{bad('PROBLEM_VIEWPORT_EVIDENCE_STALE');}
       const observed=raw.state?.displayEnvelopes?.find(e=>e.id===identity.assetId),profile=observed?.profiles?.find(p=>p.sizeClass===measuredPolicy.policy.requestedSizeClass);
@@ -301,8 +303,8 @@ async function captureCandidate({composed,identity,sourcePath,ordinal,requestedS
     writeNew(candidateFile,candidateBytes);lineage.candidateBankSha256=bytesSha(candidateBytes);
     // matrix: phase2.mjs 738-740, except that the asset carries no sizeClass, so the row reports the class of the rendered wrapper instead of echoing the request
     const info={id:assetId,sourcePath,sourceSha256:bare(input.sourceRef.sha256),candidatePath:rel(candidateFile),candidateSha256:bare(lineage.candidateBankSha256),questionCount:input.bank.length,assets:[{id:assetId,path:lineage.assetPath,archivePath:archiveAssetRef,sha256:bare(svgSha256),questionId:ordinal,...(problem?{surface}:{})}]};
-    const urlPath='/archive/engine.html?mode='+mode+'&qpp=4&data='+encodeURIComponent(sourcePath.replace(/^archive\//,''))+(problem?'&archive2Context=archive2&fit=screen':'');
-    const matrix={synthetic:false,legacyHashAlgorithm:'SHA256_RAW_HEX_v1',engineSha256:bare(engineRef.sha256),sources:[info],rows:problem?PROBLEM_CAPTURE_VIEWPORTS.map(({name,...size})=>({...info,mode,viewport:name,...size,requireLocalResources:true,requireQrRenderer:true,urlPath})):[{...info,mode,viewport:'desktop',...PUBLICATION_VIEWPORT,requireLocalResources:true,requireQrRenderer:true,urlPath}]};
+    const urlPath='/archive/engine.html?mode='+mode+'&qpp=4&data='+encodeURIComponent(sourcePath.replace(/^archive\//,''))+(problem?'&fit=screen':'');
+    const matrix={synthetic:false,legacyHashAlgorithm:'SHA256_RAW_HEX_v1',engineSha256:bare(engineRef.sha256),sources:[info],rows:problem?PROBLEM_CAPTURE_VIEWPORTS.map(({name,...size})=>({...info,mode,viewport:name,...size,problemEnvelope:true,requireLocalResources:true,requireQrRenderer:true,urlPath})):[{...info,mode,viewport:'desktop',...PUBLICATION_VIEWPORT,requireLocalResources:true,requireQrRenderer:true,urlPath}]};
     const archiveRun=path.join(input.productionDir,'archive-capture'),matrixFile=path.join(archiveRun,'archive-render-matrix.json'),matrixBytes=Buffer.from(canonicalJson(matrix),'utf8');
     writeNew(matrixFile,matrixBytes);lineage.matrixSha256=bytesSha(matrixBytes);
     state.paths={runRoot:rel(input.runRoot),asset:lineage.assetPath,candidateBank:rel(candidateFile),matrix:rel(matrixFile),archiveRow:null,screenshots:null};
@@ -325,6 +327,7 @@ async function captureCandidate({composed,identity,sourcePath,ordinal,requestedS
     if(problem){
       state.problemViewports=PROBLEM_CAPTURE_VIEWPORTS.map(viewport=>{
         const prefix=assetId+'-exam-'+viewport.name,rowFile=path.join(captureFolder,prefix+'.json'),raw=JSON.parse(fs.readFileSync(rowFile));
+        validateProblemReaderEvidence(raw,{root,sourcePath});
         const target=raw.state?.targets?.find(t=>t.id===assetId),layout=raw.layouts?.find(l=>l.id===assetId),rect=target?.rect;
         const expected=measuredPolicy.evidence.problemViewportMeasurements.find(m=>m.viewport.name===viewport.name).scale;
         const scale=rect?Math.min(rect.width/intrinsic.width,rect.height/intrinsic.height):NaN;

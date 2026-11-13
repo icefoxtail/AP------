@@ -1,0 +1,26 @@
+{
+  "ordinal": 20,
+  "givenFacts": [
+    "오각별",
+    "내부 교차로 생긴 다섯 위치에 두 개씩 이름 a,b,c,d,e,f,g,h,i,j"
+  ],
+  "layout": "Irregular schematic five-tip star from five source points, with its five actual straight diagonals intersecting to form the inner pentagon. Five crossings X1-X5 each carry two adjacent labelled angles a-j. The source states no side lengths or numeric angles; coordinates are construction-only and unshown.",
+  "visibleMarks": [
+    "별의 실선",
+    "안쪽 각 이름 a~j"
+  ],
+  "mustNotAdd": [
+    "triangle fills/decomposition or sum/answer hints",
+    "outer tip angle marks"
+  ],
+  "normalizationAndResiduals": {
+    "normalization": "arbitrary coordinates used only for an irregular illustrative star; labels a-j attach to actual intersections",
+    "freeVariables": [
+      "all tip locations are schematic because the source gives no metric constraints"
+    ],
+    "expectedResiduals": {
+      "line_intersections": "each X lies on its two source diagonals"
+    },
+    "tolerance": "exact line intersections"
+  }
+}

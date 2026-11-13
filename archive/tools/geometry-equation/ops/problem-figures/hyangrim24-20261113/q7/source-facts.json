@@ -1,0 +1,51 @@
+{
+  "ordinal": 7,
+  "source_image": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q7.png",
+  "source_review": "Viewed q7 PNG: A-M-B-N-C lie on one straight line in that order, with only the AM dimension shown as 18 cm.",
+  "allowed_marks": [
+    "collinear point order A-M-B-N-C",
+    "point names",
+    "AM=18 cm dimension only"
+  ],
+  "forbidden_solution_elements": [
+    "36 cm for AB",
+    "24 cm for BC",
+    "12 cm for BN or NC",
+    "30 cm for MN",
+    "highlighting MN or other solution-only marks"
+  ],
+  "uncertainties": [
+    "The schematic positions use the exact source relations and are not additional printed lengths."
+  ],
+  "constructed_realization": {
+    "normalization": "A=(0,0) and the line is the x-axis with source-length units in cm. M and N are computed with MIDPOINT operations rather than independent free coordinates.",
+    "free_parameters": [],
+    "source_condition_residuals": [
+      {
+        "condition": "AM=18 cm",
+        "expected": "18",
+        "observed": "18",
+        "residual": "0; DISTANCE_EQUALS audit PASS"
+      },
+      {
+        "condition": "M midpoint of AB",
+        "expected": "AM/MB=1",
+        "observed": "1",
+        "residual": "0; MIDPOINT_RATIO audit PASS"
+      },
+      {
+        "condition": "N midpoint of BC",
+        "expected": "BN/NC=1",
+        "observed": "1",
+        "residual": "0; MIDPOINT_RATIO audit PASS"
+      },
+      {
+        "condition": "2AB=3BC",
+        "expected": "AB/BC=3/2",
+        "observed": "3/2",
+        "residual": "0; MIDPOINT_RATIO audit PASS"
+      }
+    ],
+    "display_boundary": "Only AM=18 cm is printed as a dimension; other exact internal coordinates are not labels or marks."
+  }
+}

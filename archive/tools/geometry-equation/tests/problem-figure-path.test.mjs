@@ -4,11 +4,14 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import {createRequire} from 'node:module';
 import {bytesSha} from '../../pipeline-core/canonical.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {loadProblemManifest,verifyProblemEvidence,selectChangedProblemManifests} from '../production/problem-figure-runner.mjs';
 import {measureArchiveTypographyPolicy,captureArchiveCandidate,measureProblemTypographyPolicy,captureProblemCandidate,PROBLEM_CAPTURE_VIEWPORTS} from '../production/construction-archive-capture-v1.mjs';
 import {renderPlan} from '../production/render-plan.mjs';
+import {verifyPublishedProblemEnvelope} from '../production/problem-output-envelope.mjs';
+const outputContract=createRequire(import.meta.url)('../../../archive2-output-contract.js');
 
 const prefix='archive/tools/geometry-equation/ops/problem-figures/';
 function fixture(t){
@@ -91,4 +94,19 @@ test('problem evidence verifier rejects status-only, caller-injected and missing
 test('problem viewport inventory includes exact desktop, phone and tablet sizes',()=>{
   assert.deepEqual(PROBLEM_CAPTURE_VIEWPORTS.map(({width,height})=>[width,height]),[[1440,1000],[390,844],[768,1024]]);
   assert.ok(Object.isFrozen(PROBLEM_CAPTURE_VIEWPORTS));
+});
+
+test('problem reader consumes the official envelope and rejects missing IDs, wrong owner and changed source questions',async()=>{
+  const bank=[{id:1,content:'한글 문제'}],sourceId='original/middle/fixture.js';
+  const envelope=await outputContract.createOutputEnvelope({sourceKind:'archive2-original',sourceId,mode:'exam',questionCount:1,questionUids:[null],meta:{sourceArchiveFile:sourceId,qpp:4},questions:bank});
+  const url=new URL('http://127.0.0.1/archive/engine.html');
+  for(const [key,value] of Object.entries({archive2Context:'archive2',archive2OutputContract:envelope.contractVersion,outputRequestId:envelope.outputRequestId,outputOwnerId:envelope.ownerId,mode:'exam',q:'1'}))url.searchParams.set(key,value);
+  await assert.doesNotReject(verifyPublishedProblemEnvelope(envelope,{bank,sourceId,url:url.href}));
+  const missing=new URL(url);missing.searchParams.delete('outputRequestId');
+  await assert.rejects(verifyPublishedProblemEnvelope(envelope,{bank,sourceId,url:missing.href}),/PROBLEM_OUTPUT_ENVELOPE_BINDING_MISMATCH/);
+  const wrongOwner=new URL(url);wrongOwner.searchParams.set('outputOwnerId',crypto.randomUUID());
+  await assert.rejects(verifyPublishedProblemEnvelope(envelope,{bank,sourceId,url:wrongOwner.href}),/PROBLEM_OUTPUT_ENVELOPE_BINDING_MISMATCH/);
+  await assert.rejects(outputContract.validateOutputEnvelope(envelope,{ownerId:crypto.randomUUID()}),/ownerId/);
+  await assert.rejects(verifyPublishedProblemEnvelope({...envelope,outputRequestId:''},{bank,sourceId,url:url.href}),/outputRequestId/);
+  await assert.rejects(verifyPublishedProblemEnvelope(envelope,{bank:[{id:1,content:'다른 문제'}],sourceId,url:url.href}),/PROBLEM_OUTPUT_ENVELOPE_BINDING_MISMATCH/);
 });

@@ -8,6 +8,7 @@ import {bytesSha,objectSha} from '../../pipeline-core/canonical.mjs';
 import {loadBank} from '../build-visual-render-matrix.mjs';
 import {SOURCE_QUESTION_ID_PATTERN} from '../../pipeline-core/question-uid.mjs';
 import {requestedProfileTypographyPolicy} from './display-envelope.mjs';
+import {validateProblemReaderEvidence} from './problem-output-envelope.mjs';
 
 const repo=fileURLToPath(new URL('../../../../',import.meta.url));
 const PREFIX='archive/tools/geometry-equation/ops/problem-figures/';
@@ -73,6 +74,7 @@ export function verifyProblemEvidence(state,{root=repo}={}){
   const measured=capture.typographyMeasurement;
   if(measured?.status!=='MEASURED'||measured.provenance!=='ARCHIVE_MEASURED'||measured.evidenceIntegrity!=='NO_CALLER_HOOK'||objectSha(measured.policy)!==capture.lineage.policySha256||measured.policySha256!==capture.lineage.policySha256||measured.policySha256!==composed.lineage.typographyPolicySha256)fail('PROBLEM_TYPOGRAPHY_LINEAGE_REQUIRED');
   const selectedRaw=JSON.parse(readEvidence(root,measured.evidence?.archiveRow?.path,measured.evidence?.archiveRow?.sha256));
+  validateProblemReaderEvidence(selectedRaw,{root,sourcePath:sourceRef.path});
   const selected=selectedRaw.state?.displayEnvelopes?.find(v=>v.id===identity.assetId);
   if(selected?.surface!=='PROBLEM_VISUAL'||selectedRaw.mode!=='exam'||selectedRaw.status!=='PASS'||selectedRaw.sourceSha256!==sourceRef.sha256.slice(7)||selectedRaw.state.solutionVisualCount!==0)fail('PROBLEM_TYPOGRAPHY_LINEAGE_REQUIRED');
   const observation={...selected,questionUid:identity.questionUid,synthetic:false,runtime:selectedRaw.runtime,browserVersion:selectedRaw.browserVersion,sourceRef,sourceAuthorityStatus:'MEASUREMENT_ONLY'};
@@ -80,7 +82,7 @@ export function verifyProblemEvidence(state,{root=repo}={}){
   const preflights=measured.evidence.problemViewportMeasurements;
   if(!Array.isArray(preflights)||preflights.length!==3)fail('PROBLEM_PREFLIGHT_VIEWPORTS_REQUIRED');
   for(const preflight of preflights){
-    readEvidence(root,preflight.archiveRow?.path,preflight.archiveRow?.sha256);readEvidence(root,preflight.matrix?.path,preflight.matrix?.sha256);
+    const raw=JSON.parse(readEvidence(root,preflight.archiveRow?.path,preflight.archiveRow?.sha256));validateProblemReaderEvidence(raw,{root,sourcePath:sourceRef.path});readEvidence(root,preflight.matrix?.path,preflight.matrix?.sha256);
     for(const name of ['context','page']){const ref=preflight.screenshots?.[name],png=readEvidence(root,ref?.path,ref?.sha256);if(png.length<24||png.toString('hex',0,8)!=='89504e470d0a1a0a')fail('PROBLEM_PNG_INVALID');}
   }
   const before=JSON.parse(JSON.stringify(loadBank(source.bytes.toString('utf8')))),after=JSON.parse(JSON.stringify(loadBank(candidateBytes.toString('utf8'))));
@@ -105,6 +107,7 @@ export function verifyProblemEvidence(state,{root=repo}={}){
     if(matches.length!==1)fail('PROBLEM_VIEWPORT_EVIDENCE_REQUIRED');const view=matches[0];
     if(view.status!=='PASS'||view.viewport.width!==width||view.viewport.height!==height||!view.checks||Object.values(view.checks).some(v=>v!==true))fail('PROBLEM_VIEWPORT_CHECK_FAILED');
     const raw=JSON.parse(readEvidence(root,view.archiveRow?.path,view.archiveRow?.sha256)),target=raw.state?.targets?.find(t=>t.id===identity.assetId),layout=raw.layouts?.find(l=>l.id===identity.assetId);
+    validateProblemReaderEvidence(raw,{root,sourcePath:sourceRef.path});
     if(raw.status!=='PASS'||raw.synthetic!==false||raw.mode!=='exam'||raw.viewport!==name||raw.runtime!=='playwright-chromium'||raw.state.solutionVisualCount!==0||target?.problemWrapper!==true||target.surface!=='PROBLEM_VISUAL'||layout?.status!=='PASS')fail('PROBLEM_VIEWPORT_RAW_EVIDENCE_INVALID');
     if(!Array.isArray(layout.labelMeasurements)||layout.labelMeasurements.some(l=>!Number.isFinite(l.finalViewportCssFontPx)||l.finalViewportCssFontPx<11-1e-7))fail('PROBLEM_ACTUAL_FONT_FLOOR_FAILED');
     for(const shot of ['image','context','page']){

@@ -1,0 +1,46 @@
+{
+  "ordinal": 9,
+  "source_image": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q9.png",
+  "source_review": "Viewed q9 PNG: triangular prism with upper triangular face A-B-C and lower face D-E-F; A-D, B-E, C-F connect corresponding vertices. Edge BE is hidden/dashed in the source.",
+  "allowed_marks": [
+    "triangular prism outline",
+    "vertex labels A, B, C, D, E, F",
+    "hidden edge dashed by the solid model"
+  ],
+  "forbidden_solution_elements": [
+    "highlighting BC or any edge class",
+    "red/blue answer grouping",
+    "list or count of skew edges",
+    "extra lengths or measurements"
+  ],
+  "uncertainties": [],
+  "constructed_realization": {
+    "normalization": "An unnamed metric base polygon is chosen for a clear schematic triangular prism; height and base coordinates are display proportions only.",
+    "free_parameters": [
+      {
+        "symbol": "base_points",
+        "value": "[[0,0],[4,0],[4.8,2.5]]",
+        "purpose": "schematic shape only; no lengths or equal-side conditions are stated"
+      },
+      {
+        "symbol": "prism_height",
+        "value": "3.5",
+        "purpose": "schematic projection depth only"
+      }
+    ],
+    "source_condition_residuals": [
+      {
+        "condition": "triangular prism topology",
+        "status": "PASS",
+        "observed": "6 vertices, 9 edges, 2 triangular bases, 3 connector edges AD/BE/CF",
+        "residual": "0 incidence mismatch"
+      }
+    ],
+    "expected_original_page_order": "Top face A is upper-left; B is below and inward from A; C is upper-right. Lower face D/E/F corresponds to A/B/C respectively. Solid projection preflight projects A≈(0,3.297), B≈(3.532,2.655), C≈(5.412,3.281), preserving A upper-left, B lower/inward, C upper-right. Confirm the final rendered PNG against this ordering."
+  },
+  "source_geometry": {
+    "top_triangle": "A upper-left; B below and inward; C upper-right",
+    "bottom_triangle": "D/E/F correspond to A/B/C",
+    "hidden_edge": "BE is dashed behind top triangle"
+  }
+}

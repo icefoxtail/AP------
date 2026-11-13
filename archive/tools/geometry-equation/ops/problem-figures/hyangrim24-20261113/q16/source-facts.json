@@ -1,0 +1,48 @@
+{
+  "ordinal": 16,
+  "givenFacts": [
+    "직육면체",
+    "절단 평면은 A,C,F를 지남",
+    "남은 입체의 꼭짓점 A,C,D,E,F,G,H",
+    "잘린 꼭짓점 B와 기존 모서리 AB,BC,BF는 점선으로 보임"
+  ],
+  "layout": "직육면체의 원래 꼭짓점 B를 자른 뒤 남은 꼭짓점 A,C,D,E,F,G,H. 원래 AB,BC,BF를 점선으로 보존. ACF는 잘린 삼각형 면.",
+  "visibleMarks": [
+    "A~H 꼭짓점 이름",
+    "잘린 꼭짓점 B와 원래 모서리 AB,BC,BF 점선",
+    "절단면 ACF"
+  ],
+  "mustNotAdd": [
+    "꼬인 위치/평행/수직 모서리 강조색 및 풀이 분류"
+  ],
+  "construction": "CONSTRUCTED_REALIZATION using PRISM rectangular cuboid and exact ACF vertex cut. B is an auxiliary point projected from F to plane ACD; it is used only for three DASHED/REF reference segments and does not enter the cut solid topology.",
+  "normalizationAndResiduals": {
+    "normalization": "Rectangular base width3/depth1, height2.4 chosen for view only; no side lengths are labelled.",
+    "expectedResiduals": {
+      "cut_remaining_vertices": "E,F,G,H,A,C,D only",
+      "cut_remaining_edges": "12",
+      "cut_remaining_faces": "7",
+      "projected_B_minus_original_B": [
+        0,
+        0,
+        0
+      ],
+      "projection_plane_residual": "0",
+      "projection_direction_cross_normal_residual": "0",
+      "ghost_segment_topology": "AB,BC,BF are not edges of the cut solid"
+    },
+    "tolerance": "Independent observer projection tolerance 1e-6; model coordinates are exact for this rectangular construction."
+  },
+  "sourceEvidence": {
+    "givenFact": "원본 PNG에는 잘려 나간 직육면체의 원래 꼭짓점 B와 원래 모서리 AB·BC·BF가 점선 참고선으로 표시되어 있다.",
+    "constructionEvidence": "직육면체에서 BF는 윗면 ACD에 수직이므로, 남아 있는 F를 A,C,D가 정하는 평면에 정사영한 점이 원래 B와 일치한다. 정사영은 내부 재구성에만 쓰고 수직표시나 풀이 설명을 그림에 추가하지 않는다.",
+    "topologySeparation": "B는 solids[0].points 보조점으로만 정의되며 solids[0].vertices/edges/faces에는 포함하지 않는다. AB·BC·BF는 별도 top-level DASHED/REF segments다.",
+    "guidanceSha256": "daa42e06a0772a1768c9acf07b1a96fd423886dca2af56f637f7c9ef634f722c",
+    "remainingVisualChecks": [
+      "B와 A,C,F 라벨/참고선 배치",
+      "2.4px DASHED/REF 점선의 가독성",
+      "보조점 B의 점 표식이 원본 도형과 어울리는지",
+      "실제 렌더에서 남은 입체의 선과 점선 구분"
+    ]
+  }
+}

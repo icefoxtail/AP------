@@ -119,6 +119,8 @@ jobs:
           chrome-version: stable
       - name: Install the engine's locked runtime, Python packages and hash-verified font
         run: node archive/tools/geometry-equation/production/setup-spikes.mjs
+      - name: Register the same hash-verified Korean font for real Chrome UI text
+        run: node archive/tools/geometry-equation/production/setup-problem-browser-font.mjs
       - name: Verify the original solution capture with real Chrome
         env:
           GEOMETRY_BROWSER_EXECUTABLE: ${{ steps.chrome.outputs.chrome-path }}

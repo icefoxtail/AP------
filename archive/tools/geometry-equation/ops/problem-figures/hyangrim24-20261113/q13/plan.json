@@ -1,0 +1,505 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "G"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "G"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "G",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "H",
+          "G"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "I",
+          "H"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "C",
+          "D",
+          "G"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "D",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "len1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "len2",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "len3",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "C",
+          "D"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "len4",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "D",
+          "E"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "len5",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "C",
+          "G"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "len6",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "G",
+          "H"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "len7",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "H",
+          "I"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "len8",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "I",
+          "J"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "len9",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "J",
+          "B"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "len10",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "D",
+          "F"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "len11",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "F",
+          "G"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        },
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "H",
+        "I"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "I",
+        "J"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "J",
+        "B"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "s11",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "continuationE",
+      "refs": [
+        "E",
+        "N1"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "N1"
+  ],
+  "caption": "정n각형의 경계 일부와 변 BC에 붙은 정육각형, 변 CD에 붙은 정사각형을 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정n각형의 변 AB, BC, CD, DE, …와 정육각형 및 정사각형이 변끼리 붙어 있음",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 도형들의 공통 꼭짓점과 공유 변"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "sourceQuote": "오른쪽 그림과 같이 AB, BC, CD, DE, …를 변으로 갖는 정n각형과 정육각형, 정사각형이 변끼리 붙어 있다.",
+  "hiddenPointNames": [
+    "N1"
+  ],
+  "hiddenPointStyle": "NONE"
+}

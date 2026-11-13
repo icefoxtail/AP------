@@ -1,0 +1,33 @@
+{
+  "ordinal": 23,
+  "givenFacts": [
+    "AD∥BC",
+    "AD=4",
+    "BC=4",
+    "대각선 BD"
+  ],
+  "layout": "CONSTRUCTED_REALIZATION: source-length coordinates A(0,4), D(4,4), B(-1,0), C(3,0). Translation vector AD=BC=(4,0), so both source lengths are exactly 4 and the figure is a non-rectangular parallelogram. No other lengths/angles are stated.",
+  "visibleMarks": [
+    "A,B,C,D",
+    "BD 대각선",
+    "AD/BC 평행화살표",
+    "AD,BC의 4"
+  ],
+  "mustNotAdd": [
+    "AC 대각선",
+    "풀이용 삼각형 색칠",
+    "합동/정답 표시"
+  ],
+  "normalizationAndResiduals": {
+    "normalization": "source-length: chosen base vector length 4 from the printed AD=4 and BC=4",
+    "freeVariables": [
+      "slant/height of parallelogram chosen for a schematic, nonrectangular realization; does not affect AD∥BC or AD=BC=4"
+    ],
+    "expectedResiduals": {
+      "AD_parallel_BC": "0",
+      "length_AD_minus_4": "0",
+      "length_BC_minus_4": "0"
+    },
+    "tolerance": "exact rational construction"
+  }
+}

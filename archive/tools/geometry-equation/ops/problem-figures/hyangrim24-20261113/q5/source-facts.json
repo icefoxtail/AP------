@@ -1,0 +1,60 @@
+{
+  "ordinal": 5,
+  "source_image": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q5.png",
+  "source_review": "Viewed q5 PNG: apex-to-base cevian, 40° at apex on its right, 120° exterior at right base vertex, and x at the cevian foot on the left.",
+  "allowed_marks": [
+    "triangle outline",
+    "cevian from apex to base point",
+    "40° at right apex wedge",
+    "120° exterior angle at right base",
+    "x at foot on left"
+  ],
+  "forbidden_solution_elements": [
+    "y",
+    "the adjacent interior angle 60°",
+    "derived 80°",
+    "answer value for x",
+    "extra angle labels"
+  ],
+  "uncertainties": [],
+  "constructed_realization": {
+    "normalization": "A=(0,0), C=(8,0), P is placed 4 units from C on the ray at 120° to the rightward baseline. The cevian line leaves P at 260° and meets AC at F.",
+    "free_parameters": [
+      {
+        "symbol": "AC_base_length",
+        "value": "8",
+        "purpose": "schematic only; no base length is printed"
+      },
+      {
+        "symbol": "CP",
+        "value": "4",
+        "purpose": "schematic only; no side length is printed"
+      },
+      {
+        "symbol": "extension_length",
+        "value": "2",
+        "purpose": "display-only continuation to the right"
+      }
+    ],
+    "source_condition_residuals": [
+      {
+        "condition": "apex right-hand marked angle",
+        "expected": "40°",
+        "observed": "40.00000000000001°",
+        "residual": "+7.1e-15°"
+      },
+      {
+        "condition": "right-base exterior angle",
+        "expected": "120°",
+        "observed": "120.00000000000001°",
+        "residual": "+1.4e-14°"
+      },
+      {
+        "condition": "cevian foot lies on baseline AC",
+        "status": "PASS",
+        "residual": "0"
+      }
+    ],
+    "answer_angle_handling": "x remains an unknown source label and is not given a numeric value in captions or accessibility text."
+  }
+}

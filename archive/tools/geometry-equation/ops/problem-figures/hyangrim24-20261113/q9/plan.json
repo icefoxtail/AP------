@@ -1,0 +1,45 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4.8,
+            2.5
+          ]
+        ]
+      },
+      "height": 3.5,
+      "names": {
+        "base": "DEF",
+        "top": "ABC"
+      }
+    }
+  ],
+  "caption": "삼각기둥 ABC-DEF의 모서리와 꼭짓점을 나타낸 그림.",
+  "accessibilityDescription": "삼각기둥의 두 삼각형 면은 ABC와 DEF이고 옆모서리는 AD, BE, CF다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "그림은 삼각기둥 ABC-DEF이며 A-D, B-E, C-F가 대응 꼭짓점",
+      "mappedTo": [
+        "s1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각기둥의 두 삼각형 면과 연결 모서리의 배치"
+  ]
+}

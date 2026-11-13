@@ -8,6 +8,8 @@ import {captureAtDisplaySize,analyzeRenderedLayout} from './verify-rendered-layo
 import {fileRef,readBoundFile} from '../pipeline-core/canonical.mjs';
 import {SOURCE_QUESTION_ID_PATTERN} from '../pipeline-core/question-uid.mjs';
 import {loadBank,bankAliasSuffix} from './build-visual-render-matrix.mjs';
+import {PROBLEM_ENVELOPE_SEED_PATH,seedProblemOutputEnvelope} from './production/problem-output-envelope.mjs';
+import {observeProblemKoreanFont} from './production/problem-browser-font.mjs';
 
 export function normalizeArchiveImageUrlPath(url){
   try{return decodeURIComponent(new URL(url,'http://archive.invalid').pathname);}catch{return null;}
@@ -52,6 +54,7 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
   for(const source of matrix.sources){if(sha256(fs.readFileSync(path.join(repoRoot,source.sourcePath)))!==source.sourceSha256||sha256(fs.readFileSync(assertOutput(path.join(repoRoot,source.candidatePath))))!==source.candidateSha256)throw Error('STALE_SOURCE_MATRIX');for(const asset of source.assets||[])if(sha256(fs.readFileSync(assertOutput(path.join(repoRoot,asset.path))))!==archiveAssetSha256(asset.sha256))throw Error('STALE_ASSET_MATRIX');}
   const types={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.woff':'font/woff','.woff2':'font/woff2','.ico':'image/x-icon'};
   const server=http.createServer((req,res)=>{
+    if(req.url===PROBLEM_ENVELOPE_SEED_PATH){res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});res.end('<!doctype html><meta charset="utf-8"><title>Problem output envelope producer</title>');return;}
     try{const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);const file=overrides.get(pathname)||path.resolve(repoRoot,'.'+pathname);const extension=path.extname(file).toLowerCase();if(!file.startsWith(path.resolve(repoRoot)+path.sep)||!types[extension]||!fs.existsSync(file)){res.writeHead(404);res.end();return;}res.writeHead(200,{'Content-Type':types[extension],'Cache-Control':'no-store'});res.end(fs.readFileSync(file));}catch(error){res.writeHead(400);res.end();}
   });
   let browser=null,serverWasListening=false,browserClosePromise=null,serverClosePromise=null,browserCloseError=null,serverCloseError=null,cancellationError=null,base='';
@@ -83,25 +86,28 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
       }
       page.on('pageerror',error=>consoleErrors.push(String(error)));
       page.on('response',r=>{responsePromises.push((async()=>{try{const bytes=await r.body();responses.push({url:r.url(),status:r.status(),sha256:sha256(bytes),bytes:bytes.length});}catch(error){responses.push({url:r.url(),status:r.status(),error:String(error)});}})());});
-      const prefix=item.id+'-'+item.mode+'-'+item.viewport;const errors=[];let state={};const layouts=[];
+      const prefix=item.id+'-'+item.mode+'-'+item.viewport;const errors=[];let state={};const layouts=[];let actualUrl=base+item.urlPath,outputEnvelopeEvidence=null,koreanFont=null;
       try {
-        await page.goto(sameOriginExamImageUrl(base+item.urlPath),{waitUntil:'domcontentloaded',timeout:captureTimeoutMs(60000)});checkCancelled();
-        const readiness=page.waitForFunction(({mode,count})=>{
+        if(item.problemEnvelope){const seeded=await seedProblemOutputEnvelope({page,base,item,folder,prefix});actualUrl=seeded.url;outputEnvelopeEvidence=seeded.evidence;}
+        await page.goto(sameOriginExamImageUrl(actualUrl),{waitUntil:'domcontentloaded',timeout:captureTimeoutMs(60000)});checkCancelled();
+        const readiness=page.waitForFunction(({mode,count,envelope})=>{
           // The Archive page reports its own render failure in dataset.apRenderError: fail at once with that code instead of waiting out the timeout.
-          const renderError=document.documentElement.dataset.apRenderError,titleNode=document.getElementById('ctrl-title');if(renderError||(titleNode&&titleNode.innerText==='시험지 데이터를 불러올 수 없습니다'))throw new Error('ARCHIVE_PAGE_RENDER_ERROR:'+String(renderError||'NO_CODE').slice(0,200));
+          const renderError=document.documentElement.dataset.apRenderError||window.__AP_OUTPUT_RENDER_ERROR__,titleNode=document.getElementById('ctrl-title');if(renderError||(titleNode&&titleNode.innerText==='시험지 데이터를 불러올 수 없습니다'))throw new Error('ARCHIVE_PAGE_RENDER_ERROR:'+String(renderError||'NO_CODE').slice(0,200));
           const root=document.getElementById('print-area');
           if(!root||!root.querySelector('.page'))return false;
           const readiness=document.documentElement.dataset.apPrintReadiness;
           if(readiness){const state=JSON.parse(readiness);if(state.failed||!['RENDER_READY','PRINT_READY'].includes(state.state))return false;}
           const numbers=[...root.querySelectorAll(mode==='ans'?'.ans-n':'.q-num')].map(v=>v.textContent.match(/^\s*(\d+)/)?.[1]).filter(Boolean);
+          if(envelope){const ready=window.__AP_OUTPUT_RENDER_READY__;if(!ready||ready.outputRequestId!==envelope.outputRequestId||ready.payloadHash!==envelope.payloadHash||ready.contractVersion!==envelope.contractVersion)return false;}
           return new Set(numbers).size===count;
-        },{mode:item.mode,count:item.questionCount},{timeout:captureTimeoutMs(60000)});
+        },{mode:item.mode,count:item.questionCount,envelope:outputEnvelopeEvidence},{timeout:captureTimeoutMs(60000)});
         const readinessResult=readiness.then(()=>null,error=>error);
         onProgress?.({event:'PAGE_READINESS_WAIT',attempt,rowId:item.id,urlPath:item.urlPath});
         const readinessError=await readinessResult;
         if(readinessError){if(signal?.aborted)checkCancelled();throw readinessError;}
         checkCancelled();
         await page.evaluate(async()=>{if(window.MathJax?.startup?.promise)await window.MathJax.startup.promise;await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));if(window.APPrintRuntime?.waitUntilReady)await window.APPrintRuntime.waitUntilReady();});checkCancelled();
+        if(item.problemEnvelope)koreanFont=await observeProblemKoreanFont(page);
         state=await page.evaluate(async({mode,assets,envelopeTargets})=>{
           const root=document.getElementById('print-area');
           const numberNodes=[...root.querySelectorAll(mode==='ans'?'.ans-n':'.q-num')];
@@ -194,10 +200,15 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
       }catch(error){if(signal?.aborted)throw makeCancellationError();errors.push(String(error.stack||error));await page.screenshot({path:path.join(folder,prefix+'-error.png'),fullPage:true}).catch(()=>{});}
       await Promise.allSettled(responsePromises);
       checkCancelled();
+      if(item.problemEnvelope){
+        const sourceResponses=responses.filter(r=>normalizeArchiveImageUrlPath(r.url)==='/'+item.sourcePath);
+        if(!outputEnvelopeEvidence||sourceResponses.length!==1||sourceResponses[0].status!==200||sourceResponses[0].sha256!==item.candidateSha256)errors.push('PROBLEM_ENVELOPE_SOURCE_RESPONSE_MISMATCH');
+        if(koreanFont?.status!=='PASS')errors.push('PROBLEM_KOREAN_PLATFORM_FONT_NOT_VERIFIED');
+      }
         if(item.mode==='sol'||item.mode==='exam'&&item.assets.some(a=>a.surface==='PROBLEM_VISUAL'))for(const target of state.targets||[]){const asset=item.assets.find(v=>v.id===target.id);if(!asset||!responses.some(v=>v.url===target.src&&v.status===200&&v.sha256===archiveAssetSha256(asset.sha256)))errors.push('ACTUAL_LOADED_ASSET_SHA_MISMATCH:'+target.id);}
         if(consoleErrors.length)errors.push(...consoleErrors);
       if(item.mode==='sol'||item.mode==='exam'&&(item.envelopeTargets||[]).some(t=>t.surface==='PROBLEM_VISUAL'))for(const target of item.envelopeTargets||[]){const index=Number(target.displayOrdinal||target.questionId)-1;if(index>=0&&index<item.questionCount){const block=page.locator('#print-area .q-box').nth(index);if(await block.count())await block.screenshot({path:path.join(folder,prefix+'-'+target.id+'-envelope-context.png')});}}
-      const row={id:prefix,status:errors.length?'FAIL':'PASS',mode:item.mode,viewport:item.viewport,runtime:'playwright-chromium',synthetic:false,url:base+item.urlPath,sourceSha256:item.sourceSha256,candidateSha256:item.candidateSha256,engineSha256:matrix.engineSha256,browserVersion:browser.version(),state,layouts,responses,errors,network:{policy:blockExternalRequests?'LOCAL_ONLY':'DEFAULT',localOrigin:base,externalRequests},
+      const row={id:prefix,status:errors.length?'FAIL':'PASS',mode:item.mode,viewport:item.viewport,runtime:'playwright-chromium',synthetic:false,url:actualUrl,sourceSha256:item.sourceSha256,candidateSha256:item.candidateSha256,engineSha256:matrix.engineSha256,browserVersion:browser.version(),state,layouts,responses,errors,...(item.problemEnvelope?{outputEnvelopeEvidence,koreanFont}:{}),network:{policy:blockExternalRequests?'LOCAL_ONLY':'DEFAULT',localOrigin:base,externalRequests},
         capture:Object.keys(state).length?{status:'MEASURED',missingGlyphCount:layouts.reduce((s,v)=>s+v.missingGlyphCount,0),labelCollisionCount:layouts.reduce((s,v)=>s+v.labelCollisionCount,0),criticalCollisionCount:layouts.reduce((s,v)=>s+v.criticalCollisionCount,0),observedLabelCollisionCount:layouts.reduce((s,v)=>s+(v.observedLabelCollisionCount??v.labelCollisionCount),0),observedCriticalCollisionCount:layouts.reduce((s,v)=>s+(v.observedCriticalCollisionCount??v.criticalCollisionCount),0),clippedTextCount:layouts.reduce((s,v)=>s+v.clippedTextCount,0),overflowCount:Number(state.horizontalOverflow||false)+layouts.reduce((s,v)=>s+v.overflowCount,0),loadedSvgCount:(item.mode==='sol'||item.mode==='exam'&&item.assets.some(a=>a.surface==='PROBLEM_VISUAL'))?state.targets?.filter(v=>v.loaded).length||0:0,failedSvgCount:(item.mode==='sol'||item.mode==='exam'&&item.assets.some(a=>a.surface==='PROBLEM_VISUAL'))?state.targets?.filter(v=>!v.loaded).length||0:0}:{status:'NOT_MEASURED',missingGlyphCount:null,labelCollisionCount:null,criticalCollisionCount:null,observedLabelCollisionCount:null,observedCriticalCollisionCount:null,clippedTextCount:null,overflowCount:null,loadedSvgCount:null,failedSvgCount:null}};
       checkCancelled();fs.writeFileSync(path.join(folder,prefix+'.json'),JSON.stringify(row,null,2)+'\n');rows.push(row);await page.close();checkCancelled();
     }
@@ -240,7 +251,7 @@ export async function measureArchiveDisplayEnvelope({run,sourceRef,sourceOrdinal
   const sourceInfo={id:targetId,sourcePath:sourceRef.path,sourceSha256:rawSha(sourceRef),candidatePath:path.relative(repoRoot,candidatePath).replaceAll('\\','/'),candidateSha256:rawSha(candidateRef),questionCount:bank.length,assets:[]};
   const mode=surface==='PROBLEM_VISUAL'?'exam':'sol';
   const viewport=problemViewport??{name:'desktop',width:1440,height:1000};
-  const row={...sourceInfo,mode,viewport:viewport.name+'-envelope',width:viewport.width,height:viewport.height,urlPath:'/archive/engine.html?mode='+mode+'&qpp=4&data='+encodeURIComponent(sourceRef.path.replace(/^archive\//,''))+(surface==='PROBLEM_VISUAL'?'&archive2Context=archive2&fit=screen':''),requireLocalResources:blockExternalRequests,requireQrRenderer:blockExternalRequests,envelopeTargets:[{id:targetId,questionId:sourceOrdinal,displayOrdinal:index+1,intrinsicSvg,sizeClasses,sourceAuthorityStatus,...(surface==='PROBLEM_VISUAL'?{surface}:{})}]};
+  const row={...sourceInfo,mode,viewport:viewport.name+'-envelope',width:viewport.width,height:viewport.height,urlPath:'/archive/engine.html?mode='+mode+'&qpp=4&data='+encodeURIComponent(sourceRef.path.replace(/^archive\//,''))+(surface==='PROBLEM_VISUAL'?'&fit=screen':''),...(surface==='PROBLEM_VISUAL'?{problemEnvelope:true}:{}),requireLocalResources:blockExternalRequests,requireQrRenderer:blockExternalRequests,envelopeTargets:[{id:targetId,questionId:sourceOrdinal,displayOrdinal:index+1,intrinsicSvg,sizeClasses,sourceAuthorityStatus,...(surface==='PROBLEM_VISUAL'?{surface}:{})}]};
   const matrix={schemaVersion:'GEOMETRY_ARCHIVE_DISPLAY_ENVELOPE_MATRIX_v1',synthetic:false,measurementOnly:true,engineSha256:sha256(fs.readFileSync(path.join(repoRoot,'archive/engine.html'))),sources:[sourceInfo],rows:[row]};
   fs.writeFileSync(path.join(run,'archive-render-matrix.json'),JSON.stringify(matrix,null,2)+'\n');
   const archive=await recordArchiveEvidence({run,attempt:'envelope-preflight',signal,onProgress,blockExternalRequests});

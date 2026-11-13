@@ -1,0 +1,220 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "UL",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "H"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "145"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "UR",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "H"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "35"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "LL",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "H"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "215"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "LR",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "H"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "325"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "d1",
+      "refs": [
+        "UL",
+        "O",
+        "LR"
+      ]
+    },
+    {
+      "id": "d2",
+      "refs": [
+        "LL",
+        "O",
+        "UR"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "UL",
+    "UR",
+    "LL",
+    "LR",
+    "O"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "top",
+        "refs": [
+          "UL",
+          "O",
+          "UR"
+        ],
+        "label": "110",
+        "factRole": "GIVEN",
+        "value": 110,
+        "labelKind": "DEGREE"
+      },
+      {
+        "id": "bottom",
+        "refs": [
+          "LR",
+          "O",
+          "LL"
+        ],
+        "label": "a",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "value": 110,
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "hiddenPointNames": [
+    "O",
+    "UL",
+    "UR",
+    "LL",
+    "LR"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "두 직선이 교차하고, 위쪽 각에 110°, 맞은편 아래쪽 각에 a를 표시한 그림.",
+  "accessibilityDescription": "교차하는 두 직선에서 위쪽 각은 110°, 맞은편 아래쪽 각은 a로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 직선의 교점에서 위쪽 각은 110°이고 맞은편 아래쪽 각은 a",
+      "mappedTo": [
+        "UL",
+        "O",
+        "UR",
+        "LR",
+        "LL"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 직선의 교차 배치와 문제에 표시된 두 각"
+  ]
+}

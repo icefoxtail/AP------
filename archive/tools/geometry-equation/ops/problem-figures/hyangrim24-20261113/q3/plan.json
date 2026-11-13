@@ -1,0 +1,340 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "LL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "LR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ML",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "MR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Lx",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Mx",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lTop",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "LL",
+          "LR"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBottom",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "ML",
+          "MR"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "transversal",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "T0",
+          "T1"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "parallelLines",
+        "kind": "PARALLEL",
+        "refs": [
+          "lTop",
+          "lBottom"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sl",
+      "refs": [
+        "LL",
+        "LR"
+      ]
+    },
+    {
+      "id": "sm",
+      "refs": [
+        "ML",
+        "MR"
+      ]
+    },
+    {
+      "id": "st",
+      "refs": [
+        "T0",
+        "T1"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "LL",
+    "LR",
+    "ML",
+    "MR",
+    "T0",
+    "T1",
+    "Lx",
+    "Mx"
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "pl",
+        "count": 1,
+        "segments": [
+          "sl",
+          "sm"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aTop",
+        "refs": [
+          "LR",
+          "Lx",
+          "T1"
+        ],
+        "label": "a",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "value": 45,
+        "labelKind": "MATH"
+      },
+      {
+        "id": "aBottom",
+        "refs": [
+          "MR",
+          "Mx",
+          "T1"
+        ],
+        "label": "45",
+        "factRole": "GIVEN",
+        "value": 45,
+        "labelKind": "DEGREE"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "labell",
+        "at": [
+          5.6,
+          3.25
+        ],
+        "text": "l",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labelm",
+        "at": [
+          3.6,
+          0.25
+        ],
+        "text": "m",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "hiddenPointNames": [
+    "LL",
+    "LR",
+    "ML",
+    "MR",
+    "T0",
+    "T1",
+    "Lx",
+    "Mx"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "평행한 두 직선 l, m을 한 직선이 가로지르고, 위쪽 l 오른쪽 각에 a, 아래쪽 m 오른쪽 각에 45°를 표시한 그림.",
+  "accessibilityDescription": "평행한 수평선 l, m을 오른쪽 위로 기운 직선이 가로지른다. 두 교점의 위쪽 오른편 각에 각각 a와 45°가 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "l∥m이며, 위쪽 직선 l의 오른쪽 위 대응각을 a, 아래쪽 직선 m의 오른쪽 위 대응각을 45°로 표시",
+      "mappedTo": [
+        "LL",
+        "LR",
+        "ML",
+        "MR",
+        "T0",
+        "T1",
+        "Lx",
+        "Mx"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행선과 가로지르는 직선의 원문상 배치 및 대응각 표시"
+  ]
+}

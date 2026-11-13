@@ -1,0 +1,53 @@
+{
+  "ordinal": 3,
+  "source_image": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q3.png",
+  "source_review": "Viewed original q3 PNG and the full PDF render page-01.png: the PDF has a above l and right of the transversal, and 45° above m and right of the transversal. The existing q3 PNG incorrectly puts a below l and is not used for placement.",
+  "allowed_marks": [
+    "parallel lines l and m",
+    "transversal rising to the right",
+    "a above l and right of transversal",
+    "45° above m and right of transversal"
+  ],
+  "forbidden_solution_elements": [
+    "numerical value for a",
+    "answer-choice number",
+    "the solution text’s incorrect “alternate interior” description"
+  ],
+  "uncertainties": [
+    "Chosen line spacing and transversal span are schematic; the two marked angles are exact and in corresponding positions."
+  ],
+  "constructed_realization": {
+    "normalization": "Original-source layout is realized by horizontal lines y=3 and y=0 and transversal y=x. The printed intersection labels are in the upper-right corresponding wedges.",
+    "free_parameters": [
+      {
+        "symbol": "line_spacing",
+        "value": "3",
+        "purpose": "schematic spacing, not a given length"
+      },
+      {
+        "symbol": "line_span",
+        "value": "chosen endpoints",
+        "purpose": "cropped display extent only"
+      }
+    ],
+    "source_condition_residuals": [
+      {
+        "condition": "l parallel m",
+        "status": "PASS",
+        "residual": "0 direction difference"
+      },
+      {
+        "condition": "angle a at l upper-right",
+        "expected": "45°",
+        "observed": "45.00000000000001°",
+        "residual": "+7.1e-15°"
+      },
+      {
+        "condition": "angle at m upper-right",
+        "expected": "45°",
+        "observed": "45.00000000000001°",
+        "residual": "+7.1e-15°"
+      }
+    ]
+  }
+}

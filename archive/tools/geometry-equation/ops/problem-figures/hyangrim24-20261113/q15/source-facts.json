@@ -1,0 +1,32 @@
+{
+  "ordinal": 15,
+  "givenFacts": [
+    "직사각형 ABCD",
+    "접기 전 D가 접은 뒤 R에 포개짐",
+    "접는 선 PQ",
+    "∠PRB=68°"
+  ],
+  "layout": "Construct R=(1,0), B=(0,0), then P at ∠PRB=68°. D is placed horizontally from P by length PR, making PD=PR. The crease through P is perpendicular to RD; Q is its intersection with the rectangle right side. A and C complete the rectangle. Internal length 2 and coordinates are normalization only, not displayed.",
+  "visibleMarks": [
+    "A,B,P,D,Q,R",
+    "PD,DQ 점선",
+    "직각표시 및 ∠PRB=68°"
+  ],
+  "mustNotAdd": [
+    "∠PQR의 답",
+    "접기에 따른 풀이 각도",
+    "내부 구성에 사용된 길이 1, 2 및 좌표"
+  ],
+  "normalizationAndResiduals": {
+    "normalization": "B=(0,0), R=(1,0), chosen source-length PR=2 only to size the schematic",
+    "freeVariables": [
+      "rectangle size/orientation chosen to accommodate a crease; not printed in labels"
+    ],
+    "expectedResiduals": {
+      "angle_PRB_minus_68_degrees": "0 within the construction angle tolerance",
+      "PD_minus_PR": "<1e-24 in the high-precision polar realization",
+      "crease_perpendicular_to_RD": "0"
+    },
+    "tolerance": "angle marking contract 0.5 degrees; polar coordinates use 22-digit rational approximation. The crease is built perpendicular through P and P,D,R are constructed equidistant to P."
+  }
+}

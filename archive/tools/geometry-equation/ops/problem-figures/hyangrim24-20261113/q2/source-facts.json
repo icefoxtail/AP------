@@ -1,0 +1,40 @@
+{
+  "ordinal": 2,
+  "source_image": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q2.png",
+  "source_review": "Viewed q2 PNG: two diagonal straight lines cross, with 110° above the crossing and a below it.",
+  "allowed_marks": [
+    "two crossing lines",
+    "110° at the upper angle",
+    "a at the vertically opposite lower angle"
+  ],
+  "forbidden_solution_elements": [
+    "a numerical value for a",
+    "answer-choice number",
+    "extra angle values"
+  ],
+  "uncertainties": [],
+  "constructed_realization": {
+    "normalization": "Set intersection O=(0,0) and a hidden horizontal reference H=(1,0); all four rays use radius 4. This only normalizes scale.",
+    "free_parameters": [
+      {
+        "symbol": "ray_radius",
+        "value": "4",
+        "purpose": "uniform schematic extent; not a printed length"
+      }
+    ],
+    "source_condition_residuals": [
+      {
+        "condition": "upper marked angle",
+        "expected": "110°",
+        "observed": "110°",
+        "residual": "0°"
+      },
+      {
+        "condition": "opposite marked angle a shares the same vertical-opposite geometry",
+        "expected": "same size as upper angle",
+        "observed": "110° geometric measure, label remains a",
+        "residual": "0°"
+      }
+    ]
+  }
+}
