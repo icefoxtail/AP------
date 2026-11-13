@@ -6,7 +6,8 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {planQuestion,sourceFingerprint,contentFingerprint,loadBank,sourcePath,selectTargets} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
+import {planQuestion,nativeReviewReceipt,activeBindingContext,sourceFingerprint,contentFingerprint,loadBank,sourcePath,selectTargets} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
+import {validateActiveMetaFields} from '../archive/tools/meta-foundation/active-registry.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source='original/middle/m3/1mid/fixture.js',uid='qid_v1_'+'a'.repeat(64);
 function fixture() {
@@ -33,29 +34,45 @@ test('runtime owner is not silently moved',()=>{const f=fixture();f.runtimeOwner
 test('missing semantic rationale is not synthesized',()=>{const f=fixture();delete f.question.decisiveStep;assert.deepEqual(planQuestion(f).reasons,['SOURCE_SEMANTIC_RATIONALE_MISSING']);});
 test('unknown difficulty is retained as debt',()=>{const f=fixture();f.question.difficultyBucket='UNKNOWN';assert.ok(planQuestion(f).reasons.includes('DIFFICULTY_INCOMPLETE'));});
 test('unchanged approved values keep independent review provenance',()=>{const f=fixture();f.previous=structuredClone(f.question);f.current={...f.current,problemTypeKey:'PT_ROOT',templateKey:'TPL_ROOT',metadataStatus:'approved_semantic_review',reviewStatus:'reviewed_pass',metadataApprovalType:'REVIEW2'};const r=planQuestion(f);assert.equal(r.final.reviewStatus,'reviewed_pass');assert.equal(r.final.metadataApprovalType,'REVIEW2');assert.equal(r.preserveReview,true);});
-function nativeReviewFixture(t) {
+function nativeReviewFixture(t,{omitFields=[],questionOverrides={},officialValidator=false,ordinal=1,globalQuestionNo=ordinal}={}) {
   const f=fixture(),dir=fs.mkdtempSync(path.join(os.tmpdir(),'auto-meta-native-review-'));
   t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  Object.assign(f.question,questionOverrides);Object.assign(f.current,questionOverrides);
+  for(const field of omitFields){delete f.question[field];delete f.current[field];}
+  if(officialValidator) {
+    f.registry.concepts=new Map();f.registry.conditions=new Map();f.registry.integrationPatterns=new Set(['NONE']);
+    f.registry.bindings=new Set(f.registry.bindingRows.map(b=>[b.curriculum,b.standardUnitKey,b.subUnitKey??'<DIRECT>',b.problemTypeKey].join('\0')));
+    f.registry.activePacks.set('MIDDLE3',{id:'MIDDLE3',version:'1.0.0',status:'ACTIVE'});
+    f.registry.bindingRows[0].ownerPack='MIDDLE3';
+    f.validate=validateActiveMetaFields;
+  }
   const requestId='same-source-finalqa',receiptPath=`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${requestId}.json`;
   const evidencePath='review/metadata.json',evidence=Buffer.from('{"scope":"metadata review fixture"}\n');
   const sha=value=>crypto.createHash('sha256').update(value).digest('hex');
   f.previous={...f.question,primaryMethod:'prior method',decisiveStep:'prior step'};
-  f.current={...f.current,problemTypeKey:f.question.problemTypeKey,templateKey:f.question.templateKey,
+  f.ordinal=ordinal;f.identity={...f.identity,sourceOrdinal:ordinal,sourceQuestionNo:globalQuestionNo};
+  f.current={...f.current,sourceOrdinal:ordinal,sourceQuestionNo:globalQuestionNo,problemTypeKey:f.question.problemTypeKey,templateKey:f.question.templateKey,
     L1:'Reviewed RPM parent',L2:'Reviewed RPM middle',L3:'Root',L4:'Root test',
     metadataStatus:'approved_semantic_review',reviewStatus:'reviewed_pass',metadataApprovalType:'FINAL_QA',
     tagStatus:'reviewed_pass',tagConfidence:'approved_final_qa',metaFoundationStatus:'ACTIVE',
     metaFoundationPackId:'MIDDLE3',metaFoundationPackVersion:'1.0.0',
     metadataRevision:`meta-foundation:MIDDLE3@1.0.0:exam-final_qa-v2:${requestId}`,
     approvalEvidence:[receiptPath],fieldStatus:{problemType:'approved_final_qa'}};
-  const bytes=Buffer.from('window.questionBank='+JSON.stringify([f.question])+';\n');
+  const bank=Array.from({length:ordinal},(_,i)=>i===ordinal-1?structuredClone(f.question):
+    {...structuredClone(f.question),id:i+1,...(Object.hasOwn(f.question,'sourceQuestionNo')?{sourceQuestionNo:String(i+1)}:{})});
+  const appliedRecords=bank.map((q,i)=>i===ordinal-1?structuredClone(f.current):{...structuredClone(f.current),
+    questionUid:'qid_v1_'+(i+1).toString(16).padStart(64,'0'),sourceOrdinal:i+1,sourceQuestionNo:String(i+1)});
+  const appliedIdentityRecords=appliedRecords.map(r=>({...structuredClone(f.identity),questionUid:r.questionUid,
+    sourceOrdinal:r.sourceOrdinal,sourceQuestionNo:r.sourceQuestionNo}));
+  const runtimeRecords=appliedRecords.map((r,i)=>({...structuredClone(r),sourceIdentity:source+'#'+(i+1),
+    sourceQuestionNo:String(bank[i].sourceQuestionNo??bank[i].id??''),approvedSourceFingerprint:r.sourceFingerprint}));
+  const bytes=Buffer.from('window.questionBank='+JSON.stringify(bank)+';\n');
   const blobSha1=crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
-  const runtime={...structuredClone(f.current),sourceIdentity:source+'#1',approvedSourceFingerprint:f.current.sourceFingerprint};
-  f.nativeSource={root:dir,bytes,blobSha1,bank:[structuredClone(f.question)],runtimeRecord:runtime,runtimeStatus:'ACTIVE'};
+  f.nativeSource={root:dir,bytes,blobSha1,bank,runtimeRecord:structuredClone(runtimeRecords[ordinal-1]),runtimeStatus:'ACTIVE'};
   f.receipt={schemaVersion:'archive-reviewed-exam-meta-registration-v2',requestId,requestSha256:'a'.repeat(64),
-    examUid:'fixture',sourceArchiveFile:source,sourceRawSha256:sha(bytes),sourceBlobSha1:blobSha1,totalQuestions:1,
+    examUid:'fixture',sourceArchiveFile:source,sourceRawSha256:sha(bytes),sourceBlobSha1:blobSha1,totalQuestions:bank.length,
     metadataRegistrationStatus:'REGISTERED',approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'fixture-reviewer',
-      evidenceRefs:[{path:evidencePath,sha256:sha(evidence)}]},appliedRecords:[structuredClone(f.current)],
-    appliedIdentityRecords:[structuredClone(f.identity)],runtimeRecords:[structuredClone(runtime)]};
+      evidenceRefs:[{path:evidencePath,sha256:sha(evidence)}]},appliedRecords,appliedIdentityRecords,runtimeRecords};
   for(const [relative,data] of [['archive/exams/'+source,bytes],[evidencePath,evidence]]) {
     const full=path.join(dir,relative);fs.mkdirSync(path.dirname(full),{recursive:true});fs.writeFileSync(full,data);
   }
@@ -100,6 +117,128 @@ test('native approval reuse still requires the ACTIVE registry, exact binding an
   assert.deepEqual(planQuestion(noBinding).reasons,['EXACT_COURSE_BINDING_MISSING_OR_AMBIGUOUS']);
   const noRationale=nativeReviewFixture(t);delete noRationale.question.decisiveStep;
   assert.deepEqual(planQuestion(noRationale).reasons,['SOURCE_SEMANTIC_RATIONALE_MISSING']);
+});
+test('native receipt reuse accepts missing producer-only fields without completing or rewriting them',t=>{
+  const f=nativeReviewFixture(t,{omitFields:['difficultyBoundaryFlag','legacyLevelCompatibility'],officialValidator:true});
+  const before=JSON.stringify({question:f.question,current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,receipt:f.receipt});
+  const calls=[];f.validate=(q,registry,options)=>{calls.push(options.requireFields);return validateActiveMetaFields(q,registry,options);};
+  const r=planQuestion(f);
+  assert.equal(r.status,'ALREADY_REGISTERED',JSON.stringify(r));assert.equal(r.nativeReviewReceipt,f.receiptPath);assert.equal(r.final,undefined);
+  assert.deepEqual(calls,[false],'only existing-receipt validation is used after exact proof succeeds');
+  assert.equal(JSON.stringify({question:f.question,current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,receipt:f.receipt}),before);
+  for(const row of [f.question,f.current,f.nativeSource.runtimeRecord])for(const field of ['difficultyBoundaryFlag','legacyLevelCompatibility'])assert.equal(Object.hasOwn(row,field),false);
+});
+test('read-only receipt proof does not declare a legacy invalid enum eligible for producer reuse',t=>{
+  const f=nativeReviewFixture(t,{questionOverrides:{integrationPattern:'DIRECT'},officialValidator:true});
+  const before=JSON.stringify({question:f.question,current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord});
+  const context=activeBindingContext({candidate:f.current,check:{curriculum:'2015'},registry:f.registry,runtimeOwner:'MIDDLE3'});
+  assert.equal(context.reason,undefined);
+  assert.equal(nativeReviewReceipt({...f,nativeSource:f.nativeSource,pt:context.pt,tpl:context.tpl}),f.receiptPath);
+  const planned=planQuestion(f);
+  assert.equal(planned.status,'SUPPLEMENT_PENDING');assert.ok(planned.reasons.includes('ADVANCED_META_INTEGRATION_PATTERN_INVALID'));
+  assert.equal(planned.nativeReviewReceipt,undefined);assert.equal(planned.final,undefined);
+  assert.equal(JSON.stringify({question:f.question,current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord}),before);
+});
+const restartedNumberFixture=t=>nativeReviewFixture(t,{ordinal:23,globalQuestionNo:'23',
+  questionOverrides:{id:23,sourceQuestionNo:'3'},omitFields:['difficultyBoundaryFlag','legacyLevelCompatibility'],officialValidator:true});
+test('native receipt reuse preserves global ordinal 23 and restarted explicit display number 3',t=>{
+  const f=restartedNumberFixture(t),before=JSON.stringify({question:f.question,current:f.current,identity:f.identity,
+    runtime:f.nativeSource.runtimeRecord,receipt:f.receipt});
+  const r=planQuestion(f);assert.equal(r.status,'ALREADY_REGISTERED',JSON.stringify(r));
+  assert.equal(r.nativeReviewReceipt,f.receiptPath);assert.equal(r.final,undefined);
+  assert.equal(f.current.sourceQuestionNo,'23');assert.equal(f.identity.sourceQuestionNo,'23');
+  assert.equal(f.nativeSource.runtimeRecord.sourceQuestionNo,'3');assert.equal(f.question.id,23);
+  assert.equal(JSON.stringify({question:f.question,current:f.current,identity:f.identity,
+    runtime:f.nativeSource.runtimeRecord,receipt:f.receipt}),before);
+});
+test('restarted display numbers cannot hide native identity, ordinal, receipt, runtime or source drift',async t=>{
+  const cases=[
+    ['identity global number',f=>{f.identity.sourceQuestionNo='22';}],
+    ['metadata global number',f=>{f.current.sourceQuestionNo='22';}],
+    ['coordinated global numbers',f=>{f.current.sourceQuestionNo='22';f.identity.sourceQuestionNo='22';}],
+    ['identity ordinal',f=>{f.identity.sourceOrdinal=22;}],
+    ['metadata ordinal',f=>{f.current.sourceOrdinal=22;}],
+    ['receipt identity global number',f=>{f.receipt.appliedIdentityRecords[22].sourceQuestionNo='22';}],
+    ['receipt ordinal',f=>{f.receipt.appliedRecords[22].sourceOrdinal=22;}],
+    ['explicit display number',f=>{f.question.sourceQuestionNo='4';}],
+    ['prior display number',f=>{f.previous.sourceQuestionNo='2';}],
+    ['display id in source bytes',f=>{f.question.id=99;}],
+    ['coordinated runtime display number',f=>{f.nativeSource.runtimeRecord.sourceQuestionNo='23';f.receipt.runtimeRecords[22].sourceQuestionNo='23';}],
+    ['missing runtime display number',f=>{delete f.nativeSource.runtimeRecord.sourceQuestionNo;delete f.receipt.runtimeRecords[22].sourceQuestionNo;}],
+    ['source raw bytes',f=>{f.nativeSource.bytes=Buffer.concat([f.nativeSource.bytes,Buffer.from('\n')]);}],
+    ['absent native proof',f=>{f.current.approvalEvidence=[];}],
+  ];
+  for(const [name,mutate] of cases)await t.test(name,t=>{
+    const f=restartedNumberFixture(t);mutate(f);f.saveReceipt();const r=planQuestion(f);
+    assert.equal(r.status,'SUPPLEMENT_PENDING',JSON.stringify(r));assert.equal(r.nativeReviewReceipt,undefined);assert.equal(r.final,undefined);
+  });
+});
+test('read-only native receipt proof binds its identity number and official runtime display number',t=>{
+  const f=restartedNumberFixture(t),context=activeBindingContext({candidate:f.current,check:{curriculum:'2015'},registry:f.registry});
+  const verify=()=>nativeReviewReceipt({...f,pt:context.pt,tpl:context.tpl});
+  assert.equal(verify(),f.receiptPath);
+  f.receipt.appliedIdentityRecords[22].sourceQuestionNo='22';f.saveReceipt();assert.equal(verify(),null);
+  f.receipt.appliedIdentityRecords[22].sourceQuestionNo='23';
+  f.nativeSource.runtimeRecord.sourceQuestionNo='23';f.receipt.runtimeRecords[22].sourceQuestionNo='23';
+  f.saveReceipt();assert.equal(verify(),null);
+});
+test('missing producer fields still refuse absent or stale native proof through the original strict validator',async t=>{
+  const cases=[
+    ['no native input',f=>{f.nativeSource=undefined;}],
+    ['missing receipt link',f=>{f.current.approvalEvidence=[];}],
+    ['stale source hash',f=>{f.receipt.sourceRawSha256='0'.repeat(64);}],
+    ['stale Git blob',f=>{f.receipt.sourceBlobSha1='0'.repeat(40);}],
+    ['changed proof bytes',f=>{fs.writeFileSync(f.evidenceFile,'changed proof');}],
+    ['changed metadata',f=>{f.current.fieldStatus.problemType='changed';}],
+    ['changed runtime',f=>{f.nativeSource.runtimeRecord.tagStatus='review_required';}],
+    ['inactive runtime',f=>{f.nativeSource.runtimeStatus='INACTIVE';}],
+    ['wrong receipt identity',f=>{f.receipt.appliedIdentityRecords[0].sourceFingerprint='0'.repeat(64);}],
+    ['changed prior student payload',f=>{f.previous.content='changed student content';}],
+  ];
+  for(const [name,mutate] of cases)await t.test(name,t=>{
+    const f=nativeReviewFixture(t,{omitFields:['difficultyBoundaryFlag','legacyLevelCompatibility'],officialValidator:true});
+    mutate(f);f.saveReceipt();const calls=[];
+    f.validate=(q,registry,options)=>{calls.push(options.requireFields);return validateActiveMetaFields(q,registry,options);};
+    const r=planQuestion(f);
+    assert.equal(r.status,'SUPPLEMENT_PENDING');assert.equal(r.nativeReviewReceipt,undefined);assert.equal(r.final,undefined);
+    assert.ok(r.reasons.includes('ADVANCED_META_FIELD_MISSING:difficultyBoundaryFlag'));
+    assert.ok(r.reasons.includes('ADVANCED_META_FIELD_MISSING:legacyLevelCompatibility'));
+    assert.ok(r.reasons.includes('DIFFICULTY_INCOMPLETE'));assert.equal(calls.at(-1),true);
+  });
+});
+test('exact native proof never excuses an invalid supplied key, enum or value',async t=>{
+  const cases=[['unknown PT',{problemTypeKey:'UNKNOWN'}],['unknown TPL',{templateKey:'UNKNOWN'}],
+    ['unknown CC',{crossConceptKeys:['CC_UNKNOWN']}],['unknown condition',{conditionKeys:['COND_UNKNOWN']}],
+    ['invalid integration',{integrationPattern:'INVALID'}],['invalid difficulty confidence',{difficultyConfidence:'INVALID'}],
+    ['invalid boundary',{difficultyBoundaryFlag:'INVALID'}],['invalid legacy compatibility',{legacyLevelCompatibility:'INVALID'}]];
+  for(const [name,questionOverrides] of cases)await t.test(name,t=>{
+    // The source/current/receipt all contain the same invalid value. Rejection
+    // must come from the official ACTIVE field validator, not a stale fixture.
+    const f=nativeReviewFixture(t,{questionOverrides,officialValidator:true}),r=planQuestion(f);
+    assert.equal(r.status,'SUPPLEMENT_PENDING');assert.equal(r.nativeReviewReceipt,undefined);assert.equal(r.final,undefined);
+  });
+});
+test('native reuse retains ACTIVE, exact binding, owner and source-rationale guards',async t=>{
+  const cases=[
+    ['inactive registry',f=>{f.registry.status='UNAVAILABLE';}],
+    ['inactive PT',f=>{f.registry.problemTypes.get('PT_ROOT').status='INACTIVE';}],
+    ['inactive TPL',f=>{f.registry.templates.get('TPL_ROOT').status='INACTIVE';}],
+    ['inactive pack',f=>{f.registry.activePacks.get('MIDDLE3').status='INACTIVE';}],
+    ['inactive binding',f=>{f.registry.bindingRows[0].status='INACTIVE';}],
+    ['wrong exact course',f=>{f.registry.bindingRows[0].standardCourse='다른 과정';}],
+    ['ambiguous exact binding',f=>{f.registry.bindingRows.push({...f.registry.bindingRows[0]});}],
+    ['wrong template owner',f=>{f.registry.templates.get('TPL_ROOT').ownerPack='OTHER';}],
+    ['wrong binding owner',f=>{f.registry.bindingRows[0].ownerPack='OTHER';}],
+    ['wrong runtime owner',f=>{f.runtimeOwner='OTHER';}],
+  ];
+  for(const [name,mutate] of cases)await t.test(name,t=>{
+    const f=nativeReviewFixture(t,{officialValidator:true});mutate(f);const r=planQuestion(f);
+    assert.equal(r.status,'SUPPLEMENT_PENDING');assert.equal(r.nativeReviewReceipt,undefined);assert.equal(r.final,undefined);
+  });
+  await t.test('missing rationale in exact current receipt',t=>{
+    const f=nativeReviewFixture(t,{omitFields:['decisiveStep'],officialValidator:true}),r=planQuestion(f);
+    assert.deepEqual(r.reasons,['SOURCE_SEMANTIC_RATIONALE_MISSING']);assert.equal(r.nativeReviewReceipt,undefined);
+  });
 });
 test('student content changes invalidate old independent review, not other rows',()=>{const f=fixture();f.previous=structuredClone(f.question);f.question.content='new question';f.identity.sourceFingerprint=sourceFingerprint(f.question);f.current.reviewStatus='reviewed_pass';const r=planQuestion(f);assert.equal(r.status,'APPLY');assert.equal(r.coreChanged,true);assert.equal(r.final.reviewStatus,'review_required');});
 test('a repeated identical input does not create duplicate registration',()=>{const f=fixture(),one=planQuestion(f);const two=planQuestion({...f,current:one.final,priorReceipt:{inputHash:one.inputHash,metadataRegistrationStatus:'REGISTERED'}});assert.equal(two.status,'ALREADY_REGISTERED');});

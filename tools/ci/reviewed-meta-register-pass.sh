@@ -36,6 +36,7 @@ if [[ ${#reqs[@]} -gt 0 ]]; then
   has_legacy_finalqa=false
   has_difficulty5=false
   has_basic_rebind=false
+  has_binding_course_correction=false
   for request in "${reqs[@]}"; do
     schema="$(node -e 'try { console.log(JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).schemaVersion || "") } catch {}' "$request")"
     if [[ "$schema" == "archive-finalqa-nonpt-register-request-v1" ]]; then
@@ -47,8 +48,14 @@ if [[ ${#reqs[@]} -gt 0 ]]; then
     if [[ "$schema" == "archive-basic-scope-rebind-request-v1" ]]; then
       has_basic_rebind=true
     fi
+    if [[ "$schema" == "archive-binding-course-correction-request-v1" ]]; then
+      has_binding_course_correction=true
+    fi
   done
   node --test tests/archive-reviewed-exam-registration-v2.test.mjs
+  if [[ "$has_binding_course_correction" == "true" ]]; then
+    node --test tests/archive-binding-course-correction.test.mjs
+  fi
   if [[ "$has_basic_rebind" == "true" ]]; then
     node --test tests/archive-basic-scope-rebind.test.mjs
   fi
@@ -101,7 +108,7 @@ for round in 1 2; do
   verify_failed=(); verify_errors=(); verify_stages=(); consumer_candidates=()
   for request in "${applied[@]}"; do
     schema="$(node -e 'console.log(JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).schemaVersion)' "$request")"
-    if [[ "$schema" == "archive-reviewed-exam-meta-register-request-v2" || "$schema" == "archive-finalqa-pinpoint-register-request-v1" || "$schema" == "archive-finalqa-nonpt-register-request-v1" || "$schema" == "archive-difficulty5-register-request-v1" || "$schema" == "archive-basic-scope-rebind-request-v1" ]]; then
+    if [[ "$schema" == "archive-reviewed-exam-meta-register-request-v2" || "$schema" == "archive-finalqa-pinpoint-register-request-v1" || "$schema" == "archive-finalqa-nonpt-register-request-v1" || "$schema" == "archive-difficulty5-register-request-v1" || "$schema" == "archive-basic-scope-rebind-request-v1" || "$schema" == "archive-binding-course-correction-request-v1" ]]; then
       verify_rc=0
       out="$(node "$registrar" --request "$request" --verify-projection 2>&1)" || verify_rc=$?
       if [[ "$verify_rc" -ne 0 ]]; then
