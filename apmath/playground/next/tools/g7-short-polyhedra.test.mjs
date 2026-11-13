@@ -222,7 +222,7 @@ test('net lettering, moving point identities, outward normals and partial-fold e
   for(const phSolid of [0,1,2])for(const phFold of [0,.42,1]){
     const p=build(lab,'p3-4',{phSolid,phNet:0,phFold,phSeed:818})[phSolid],before=JSON.stringify(lab.s),initial=api.skewPose(p.model,0),closed=api.skewPose(p.model,2.6);
     near(initial.fold,phFold);near(closed.fold,1);assert.deepEqual(plain(initial.faces),plain(p.model.M.net.at(phFold)));
-    const rendered=capture(lab.board,p,0),screen=initial.faces.flat().map(v=>lab.board.toS(p.model.G.proj(p.model.G.camOf(p.model.s),v)));
+    const rendered=capture(lab.board,p,0),screen=initial.faces.flat().map(v=>lab.board.toS(p.model.G.proj(p.model.G.camOf(api.skewView(p.model,initial.fold).s),v)));
     for(const q of screen)assert.ok(rendered.paths.some(path=>path.points.some(p=>Math.hypot(p.x-q.x,p.y-q.y)<1e-6)),'the actual initial net corner is drawn');
     capture(lab.board,p,9.4);assert.equal(JSON.stringify(lab.s),before);
   }
@@ -308,4 +308,126 @@ test('truncation vertices stay on original edges and every intermediate solid pr
     }
     assert.equal(lab.s.phTr,ratio);assert.deepEqual(plain(lab.s.phQ),{k:'cube',ask:'F'});
   }
+});
+
+test('net boundary regression clips only the genuinely occluded interval and keeps coplanar hinges solid',()=>{
+  const P=(x,y,z)=>({x,y,z}),D={P:p=>({x:p.x,y:p.y}),depth:p=>p.z};
+  const rear=[P(-2,0,1),P(2,0,1),P(2,-2,1),P(-2,-2,1)],front=[P(-1,-1,0),P(1,-1,0),P(1,1,0),P(-1,1,0)];
+  const edge=api.netBoundaryEdges(D,[rear,front]).find(e=>distance(e.a,rear[0])<1e-9&&distance(e.b,rear[1])<1e-9);
+  assert.deepEqual(edge.segments.map(s=>s.hidden),[false,true,false]);near(edge.segments[1].lo,.25,1e-7);near(edge.segments[1].hi,.75,1e-7);
+  const flat=api.netBoundaryEdges(D,[rear.map(p=>({...p,z:0})),front]);assert.ok(flat.every(e=>e.segments.every(s=>!s.hidden)));
+  const paired=api.netBoundaryEdges(D,[[P(0,0,0),P(1,0,0),P(1,1,0),P(0,1,0)],[P(1,0,0),P(2,0,0),P(2,1,0),P(1,1,0)]]);
+  assert.equal(paired.length,7);assert.equal(paired.filter(e=>e.faces.length===2).length,1,'a real shared hinge has only one stroke candidate');
+});
+
+function rayHidden(p,viewer,faces){
+  for(const poly of faces){
+    const n=cross(vec(poly[0],poly[1]),vec(poly[0],poly[2])),den=dot(n,viewer);if(Math.abs(den)<1e-10)continue;
+    const t=dot(n,vec(p,poly[0]))/den;if(t<=1e-7)continue;
+    const hit=point(coords(p).map((x,i)=>x+t*viewer[i]));
+    if(poly.every((a,i)=>dot(cross(vec(a,poly[(i+1)%poly.length]),vec(a,hit)),n)>=-1e-8))return true;
+  }
+  return false;
+}
+test('net boundary regression agrees with independent 3D ray-plane occlusion through partial and closed folds',async()=>{
+  const lab=await load(),cases=[['p3-2',0],['p3-5',0],['p3-6',0],['p3-6',1],['p3-6',2]];
+  for(const[id,choice]of cases){
+    const p=build(lab,id)[choice],d=p.model,net=d.M.net,before=JSON.stringify(lab.s);
+    for(const fold of[0,.35,.69,1])for(const yaw of[-52,26]){
+      const faces=net.at(fold),s={...d.s,phYaw:yaw,phPitch:84-56*fold},cam=d.G.camOf(s),D=d.G.scene3(lab.board,s,{}),viewer=[-cam.sy*cam.cp,-cam.cy*cam.cp,cam.sp],edges=api.netBoundaryEdges(D,faces);
+      for(const edge of edges){
+        near(edge.segments.reduce((s,x)=>s+x.hi-x.lo,0),1);
+        for(const piece of edge.segments){
+          if(piece.hi-piece.lo<1e-6)continue;
+          const u=(piece.lo+piece.hi)/2,q=point(coords(edge.a).map((x,i)=>x+(coords(edge.b)[i]-x)*u));
+          assert.equal(piece.hidden,rayHidden(q,viewer,faces),`${id}/${choice} fold ${fold}: independent ray-plane mismatch`);
+        }
+      }
+      if(!fold)assert.ok(edges.every(e=>e.segments.every(s=>!s.hidden)));
+      if(fold===1){
+        assert.equal(edges.length,faces.reduce((s,f)=>s+f.length,0)/2);assert.ok(edges.every(e=>e.faces.length===2));
+        const center=point([0,1,2].map(k=>faces.flat().reduce((sum,p)=>sum+coords(p)[k],0)/faces.flat().length));
+        const visible=faces.map(poly=>{let n=cross(vec(poly[0],poly[1]),vec(poly[0],poly[2]));if(dot(n,vec(center,poly[0]))<0)n=n.map(x=>-x);return dot(n,viewer)>1e-9;});
+        for(const e of edges){const hidden=e.segments.filter(s=>s.hidden).reduce((s,p)=>s+p.hi-p.lo,0);assert.ok(e.faces.some(i=>visible[i])?hidden<1e-5:hidden>1-1e-5,'closed-solid face incidence and depth occlusion agree');}
+      }
+    }
+    assert.equal(JSON.stringify(lab.s),before);
+  }
+});
+
+test('net boundary regression strokes each shared production segment once without solid panel underlays',async()=>{
+  const lab=await load(),G=lab.api,scene3=G.scene3;let D;
+  G.scene3=(...args)=>(D=scene3(...args));
+  try{
+    for(const[viewport,w,h]of[[1440,1439,713],[820,820,920],[1024,1023,581],[390,390,638]]){
+      lab.board.resize(w,h);lab.setViewportWidth(viewport);
+      for(const id of['p3-1','p3-2','p3-3','p3-5','p3-6','p3-8']){
+        const plans=build(lab,id),before=JSON.stringify(lab.s);
+        for(const p of plans)for(const t of[0,3.9,9.4]){
+          const r=capture(lab.board,p,t);
+          if(id==='p3-1'&&p.legacyLabel==='종류 수'&&t>=5.7)continue;
+          assert.ok(r.paths.filter(x=>x.options.close).every(x=>x.options.color===null),'face fills cannot redraw a continuous outline under the dashed edges');
+          const edges=api.netBoundaryEdges(D,p.model.M.net.at(api.netFold(p.model,t))),same=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y)<1e-6;
+          for(const edge of edges)for(const piece of edge.segments){
+            const at=u=>G.add3(edge.a,G.mul3(G.sub3(edge.b,edge.a),u)),a=lab.board.toS(D.P(at(piece.lo))),b=lab.board.toS(D.P(at(piece.hi)));
+            if(Math.hypot(a.x-b.x,a.y-b.y)<.001)continue;
+            const strokes=r.paths.filter(x=>x.points.length===2&&Boolean(x.options.dash)===piece.hidden&&((same(a,x.points[0])&&same(b,x.points[1]))||(same(a,x.points[1])&&same(b,x.points[0]))));
+            assert.equal(strokes.length,1,`${id} ${p.legacyLabel}@${t}, width ${viewport}: repeated or missing shared edge`);
+          }
+        }
+        assert.equal(JSON.stringify(lab.s),before);
+      }
+    }
+  }finally{G.scene3=scene3;}
+});
+
+test('skew display regression applies native camera offsets and marks actual shared green endpoints',async()=>{
+  const lab=await load(),G=lab.api,scene3=G.scene3;let D;
+  G.scene3=(...args)=>(D=scene3(...args));
+  try{
+    for(const[viewport,w,h]of[[1440,1439,713],[820,820,920],[1024,1023,581],[390,390,638]]){
+      lab.board.resize(w,h);lab.setViewportWidth(viewport);
+      const plans=build(lab,'p3-4',{phYaw:-4,phPitch:66,phFold:1}),before=JSON.stringify(lab.s);
+      for(const p of plans){
+        const r=capture(lab.board,p,9.4),kind=p.model.M.net.kind,kp=kind==='cube'?38:kind==='tetra'?46:48;
+        near(D.s.phYaw,kind==='cube'?-22:-28);near(D.s.phPitch,66-kp);
+        assert.equal(p.model.s.phYaw,-4);assert.equal(p.model.s.phPitch,66);assert.equal(p.model.s.phFold,1);
+        const {sol,ref,c}=p.model.M,skew=sol.edges.filter(e=>G.relEdges(sol,ref,e)==='skew');assert.equal(skew.length,c.nSkew);
+        const degree=new Map();skew.forEach(e=>[e.u,e.v].forEach(k=>degree.set(k,(degree.get(k)||0)+1)));
+        for(const[k,count]of degree)if(count>1)assert.ok(r.texts.includes(k),'the actual junction is labelled so adjacent edges cannot read as one long edge');
+        if(kind==='cube')for(const[k,count]of degree)if(count===2){
+          const neighbors=skew.filter(e=>e.u===k||e.v===k).map(e=>D.P(sol.verts[e.u===k?e.v:e.u])),p0=D.P(sol.verts[k]),u={x:neighbors[0].x-p0.x,y:neighbors[0].y-p0.y},v={x:neighbors[1].x-p0.x,y:neighbors[1].y-p0.y};
+          assert.ok(Math.abs(u.x*v.y-u.y*v.x)/(Math.hypot(u.x,u.y)*Math.hypot(v.x,v.y))>.15,'the two cube edges meeting at the marked vertex are visibly non-collinear');
+        }
+      }
+      assert.equal(JSON.stringify(lab.s),before);
+    }
+  }finally{G.scene3=scene3;}
+});
+
+test('skew display regression preserves reference edge identity and single strokes through an actual half-fold',async()=>{
+  const lab=await load(),G=lab.api,scene3=G.scene3;let D;
+  G.scene3=(...args)=>(D=scene3(...args));
+  try{
+    for(const[viewport,w,h]of[[1440,1439,713],[820,820,920],[1024,1023,581],[390,390,638]]){
+      lab.board.resize(w,h);lab.setViewportWidth(viewport);
+      const plans=build(lab,'p3-4',{phFold:0,phYaw:-4,phPitch:66}),before=JSON.stringify(lab.s);
+      for(const p of plans)for(const t of[1.2,1.55,1.9]){
+        const rendered=capture(lab.board,p,t),pose=api.skewPose(p.model,t),faces=pose.faces,edges=api.netBoundaryEdges(D,faces),same=(a,b)=>distance(a,b)<1e-7,screenSame=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y)<1e-6;
+        if(t===1.55){near(pose.fold,.5);assert.ok(edges.some(e=>e.segments.some(s=>s.hidden&&s.hi-s.lo>1e-4)),'the regression must exercise real partial-fold occlusion');}
+        assert.ok(rendered.paths.filter(x=>x.options.close).every(x=>x.options.color===null));
+        const references=[];faces.forEach((ps,i)=>ps.forEach((a,j)=>{if(p.model.M.net.edgeKey(i,j)===p.model.M.ref.key)references.push([a,ps[(j+1)%ps.length]]);}));
+        for(const edge of edges){
+          const reference=references.some(([a,b])=>(same(edge.a,a)&&same(edge.b,b))||(same(edge.a,b)&&same(edge.b,a)));
+          for(const piece of edge.segments){
+            const at=u=>G.add3(edge.a,G.mul3(G.sub3(edge.b,edge.a),u)),a=lab.board.toS(D.P(at(piece.lo))),b=lab.board.toS(D.P(at(piece.hi)));
+            if(Math.hypot(a.x-b.x,a.y-b.y)<.001)continue;
+            const paths=rendered.paths.filter(path=>path.points.length===2&&path.options.color===(reference?'amber':'muted')&&Boolean(path.options.dash)===piece.hidden&&((screenSame(a,path.points[0])&&screenSame(b,path.points[1]))||(screenSame(a,path.points[1])&&screenSame(b,path.points[0]))));
+            assert.equal(paths.length,1,`${p.legacyLabel}@${t}: current reference or partial-fold edge was dropped or redrawn`);
+          }
+        }
+      }
+      assert.equal(JSON.stringify(lab.s),before);
+    }
+  }finally{G.scene3=scene3;}
 });

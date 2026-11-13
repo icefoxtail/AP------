@@ -314,3 +314,176 @@ test('production Board draws full geometry at entry and all stages at 390/1440 w
     }
   } finally { b.path = originalPath; b._text = originalText; }
 });
+
+// Scoped visual-condition regressions use the actual Board projection, text
+// metrics and drawing order. Browser screenshots still check the real font.
+function conditionCapture(lab, plan, t, width) {
+  const b = lab.board, saved = { path: b.path, point: b.point, text: b.text, _text: b._text };
+  const paths = [], points = [], worldTexts = [], labels = [];
+  const xy = p => ({ x: p.x ?? p[0], y: p.y ?? p[1] });
+  b.resize(width, width === 390 ? 600 : 760); b.canvas.__commands.length = 0;
+  b.path = function (poly, o = {}) { paths.push({ poly: Array.from(poly, xy), o }); return saved.path.call(this, poly, o); };
+  b.point = function (p, o = {}) { points.push({ p: xy(p), o }); return saved.point.call(this, p, o); };
+  b.text = function (p, value, o = {}) { worldTexts.push({ p: xy(p), value: String(value), o }); return saved.text.call(this, p, value, o); };
+  b._text = function (x, y, value, o = {}, screen) {
+    const size = b.annotationSize(value, o), left = o.align === 'right' ? x - size.width : o.align === 'left' ? x : x - size.width / 2;
+    labels.push({ x, y, value: String(value), left, right: left + size.width, top: y - size.height / 2, bottom: y + size.height / 2 });
+    return saved._text.call(this, x, y, value, o, screen);
+  };
+  try { b.begin(); plan.draw(b, t, plan.model); b.end(); }
+  finally { Object.assign(b, saved); }
+  return { paths, points, worldTexts, labels, commands: b.canvas.__commands.slice(), kind: b.kind, W: b.W, H: b.H };
+}
+function conditionLabel(capture, value) {
+  const label = capture.labels.find(x => x.value === value);
+  assert.ok(label, `missing condition label ${value}`);
+  assert.ok(label.left >= 0 && label.right <= capture.W && label.top >= 0 && label.bottom <= capture.H, `condition label clipped: ${value}`);
+  return label;
+}
+function conditionPoint(capture, value) {
+  const label = capture.worldTexts.find(x => x.value === value); assert.ok(label, `missing point name ${value}`);
+  assert.ok(capture.points.some(x => distance(x.p, label.p) < 1e-8), `${value} must name an actual marked point`);
+  conditionLabel(capture, value); return label.p;
+}
+function separateConditions(a, b, message) {
+  assert.ok(a.right <= b.left || b.right <= a.left || a.bottom <= b.top || b.bottom <= a.top, message);
+}
+
+test('condition display: rotation centers, semicircle radii and both arc centers use the actual current dimensions', async () => {
+  const lab = await load();
+  for (const id of ['rot', 'y12', 'f3-two-arcs']) for (const changed of [false, true]) {
+    const plans = factory(lab, id, changed ? variants[id] : {}), before = JSON.stringify(lab.s);
+    for (const plan of plans) {
+      const modelBefore = JSON.stringify(plan.model), M = plan.model.native, v = plan.model.values;
+      for (const width of [390, 820, 1024, 1440]) for (const t of [0, 3.9, 9.8]) {
+        const capture = conditionCapture(lab, plan, t, width);
+        if (id === 'rot') {
+          const A = conditionPoint(capture, 'A'), O = conditionPoint(capture, 'O'), B = conditionPoint(capture, 'B');
+          near(distance(A, O), v.r); near(distance(O, B), v.r); near(distance(A, B), 2 * v.r);
+          near(A.x, 0); near(O.x, v.r); near(B.x, 2 * v.r); near(A.y + O.y + B.y, 0);
+          M.items[2].poly.forEach(p => near(distance(p, O), v.r));
+          assert.ok(capture.paths.some(x => x.o.color === 'sky' && x.poly.length === 2 && distance(x.poly[0], A) < 1e-8 && distance(x.poly[1], O) < 1e-8));
+          const r = conditionLabel(capture, `AO=${v.r} cm`), d = conditionLabel(capture, `2r=${2 * v.r} cm`);
+          separateConditions(r, d, 'radius and diameter must occupy separate rows');
+          for (const name of ['A', 'O', 'B']) separateConditions(r, conditionLabel(capture, name), `AO measurement obscures ${name}`);
+        } else if (id === 'y12') {
+          const r1 = conditionLabel(capture, `r₁=${v.p} cm`), r2 = conditionLabel(capture, `r₂=${v.q} cm`);
+          separateConditions(r1, r2, 'the two small radii must remain distinct');
+          for (const [i, radius] of [[1, v.p], [2, v.q]]) {
+            const item = M.items[i]; near(item.r, radius); item.poly.forEach(p => near(distance(p, item.c), radius));
+            const anchor = capture.worldTexts.find(x => x.value === `r${i === 1 ? '₁' : '₂'}=${radius} cm`).p; near(distance(anchor, item.c), 0);
+          }
+        } else {
+          const a = M.a, A = conditionPoint(capture, 'A'), B = conditionPoint(capture, 'B'), C = conditionPoint(capture, 'C'), D = conditionPoint(capture, 'D'), E = conditionPoint(capture, 'E');
+          assert.deepEqual(A, { x: 0, y: 0 }); assert.deepEqual(D, { x: a, y: 0 }); assert.deepEqual(B, { x: 0, y: a }); assert.deepEqual(C, { x: a, y: a });
+          near(distance(B, E), a); near(distance(C, E), a); near(E.x, a / 2); near(E.y, a * (1 - Math.sqrt(3) / 2));
+          separateConditions(conditionLabel(capture, 'E'), conditionLabel(capture, `${a} cm`), 'E cannot overlap the top edge dimension');
+          if (t > 1.4) separateConditions(conditionLabel(capture, 'E'), conditionLabel(capture, '60°'), 'E cannot overlap its angle proof');
+        }
+      }
+      assert.equal(JSON.stringify(plan.model), modelBefore, `${id}: rendering does not change the bound native model`);
+    }
+    assert.equal(JSON.stringify(lab.s), before, `${id}: current inputs and seed preserved`);
+  }
+});
+
+test('condition display: 1106 preserves the native four-point AOB and COD geometry', async () => {
+  const lab = await load(), b = lab.board;
+  for (const values of [{}, variants['1106'], { b1106_al: 30, b1106_be: 10, b1106_S: 144 }, { b1106_al: 200, b1106_be: 90, b1106_S: 36 }]) {
+    const plan = factory(lab, '1106', values)[0], q = plan.model.values, native = {}, original = b.point;
+    b.point = function (p, o = {}) { if (/^[ABCD]$/.test(o.label || '')) native[o.label] = { x: p.x ?? p[0], y: p.y ?? p[1] }; return original.call(this, p, o); };
+    try { lab.draw(); } finally { b.point = original; }
+    assert.deepEqual(Object.keys(native).sort(), ['A', 'B', 'C', 'D']);
+    const before = JSON.stringify(lab.s);
+    for (const width of [390, 820, 1024, 1440]) for (const t of [0, 3.9, 9.8]) {
+      const capture = conditionCapture(lab, plan, t, width), points = {};
+      for (const name of ['A', 'B', 'C', 'D']) {
+        const p = points[name] = conditionPoint(capture, name), scale = (q.r || 5) / 100;
+        near(p.x, native[name].x * scale); near(p.y, native[name].y * scale);
+      }
+      assert.ok(distance(points.A, points.D) > 1, 'A and D must not be collapsed into a shared ray');
+      const degrees = p => Math.atan2(-p.y, p.x) * 180 / Math.PI, turn = (a, z) => ((degrees(z) - degrees(a)) % 360 + 360) % 360;
+      near(turn(points.A, points.B), q.al); near(turn(points.C, points.D), q.be);
+      separateConditions(conditionLabel(capture, `${q.be}°`), conditionLabel(capture, 'x cm²'), 'COD angle and area must be readable independently');
+    }
+    assert.equal(JSON.stringify(lab.s), before);
+  }
+});
+
+test('condition display: rolling names the actual final target and keeps the semicircle center clear', async () => {
+  const lab = await load();
+  for (const id of ['rl-turn60', 'rl-turn45', 'rl-semi']) for (const values of [{}, variants[id]]) {
+    const plan = factory(lab, id, values)[0], M = plan.model.native, before = JSON.stringify(lab.s), modelBefore = JSON.stringify(plan.model);
+    for (const width of [390, 820, 1024, 1440]) for (const t of [0, 2.4, 4.1, 6.1, 9.8]) {
+      const capture = conditionCapture(lab, plan, t, width);
+      if (M.kind === 'turn') {
+        const name = `${M.names[M.T]}′`, target = M.states[M.N][M.T], labelled = capture.worldTexts.find(x => x.value === name);
+        conditionLabel(capture, 'l'); conditionLabel(capture, name); assert.ok(labelled);
+        near(labelled.p.x, target.x); near(labelled.p.y, -target.y);
+        if (t < 6.1) assert.ok(capture.points.some(p => p.o.hollow === true && distance(p.p, labelled.p) < 1e-8), 'destination is visible before the rotation reaches it');
+        assert.ok(capture.worldTexts.some(x => x.value === M.names[M.T]) || t >= 6.1);
+      } else {
+        const O = conditionLabel(capture, 'O');
+        for (const dimension of capture.labels.filter(x => x.value.endsWith(' cm'))) separateConditions(O, dimension, `center O hidden by ${dimension.value} at ${t}`);
+      }
+    }
+    assert.equal(JSON.stringify(lab.s), before); assert.equal(JSON.stringify(plan.model), modelBefore);
+  }
+});
+
+test('condition display: swept-circle radius and polygon dimensions stay in separate rows at entry and mid-motion', async () => {
+  const lab = await load();
+  for (const id of ['sw-square', 'sw-center', 'sw-rect']) for (const value of [{}, id === 'sw-rect' ? { swW: 6, swH: 4, swR: 1 } : { swA: 6, swR: 1 }, id === 'sw-rect' ? { swW: 3, swH: 2, swR: 2 } : { swA: 3, swR: 2 }]) {
+    const plan = factory(lab, id, value)[0], M = plan.model.native, before = JSON.stringify(lab.s);
+    for (const width of [390, 820, 1024, 1440]) for (const t of [0, 1, 2, 3, 4.1, 4.5]) {
+      const capture = conditionCapture(lab, plan, t, width), radius = conditionLabel(capture, `r=${M.r} cm`), dimensions = conditionLabel(capture, M.shape === 'rect' ? `가로 ${M.a} · 세로 ${M.b} cm` : `한 변 ${M.a} cm`);
+      separateConditions(radius, dimensions, `${id} radius and side lengths overlap at ${width}/${t}`);
+    }
+    assert.equal(JSON.stringify(lab.s), before);
+  }
+});
+
+test('condition display: traced perimeters cannot paint over point names or the given band width', async () => {
+  const lab = await load();
+  for (const id of ['f5-sn', 'f5-ring240']) for (const changed of [false, true]) {
+    const plan = factory(lab, id, changed ? variants[id] : {})[0], M = plan.model.native, before = JSON.stringify(lab.s), modelBefore = JSON.stringify(M);
+    for (const width of [390, 820, 1024, 1440]) for (const t of [0, 3.9, 9.8]) {
+      const capture = conditionCapture(lab, plan, t, width), names = id === 'f5-sn' ? ['A', 'B', 'C', 'D'] : [`폭 ${M.g.w} cm`];
+      const lastBoundary = capture.commands.findLastIndex(x => x[0] === 'stroke');
+      for (const name of names) {
+        conditionLabel(capture, name);
+        const paint = capture.commands.findLastIndex(x => x[0] === 'fillText' && x[1] === name), halo = capture.commands.findLastIndex(x => x[0] === 'strokeText' && x[1] === name);
+        assert.ok(paint > lastBoundary && halo > lastBoundary, `${id}/${name}: boundary must be painted before the label halo and text`);
+      }
+    }
+    assert.equal(JSON.stringify(lab.s), before); assert.equal(JSON.stringify(M), modelBefore);
+  }
+});
+
+test('condition display: the slideq cut remains upper-left in the native Cartesian model during an area-preserving horizontal slide', async () => {
+  const lab = await load();
+  for (const values of [{}, { f4_slideq_W: 14, f4_slideq_H: 8, f4_slideq_r: 6 }]) {
+    const plan = factory(lab, 'f4-slideq', values)[0], M = plan.model.native, v = plan.model.values, piece = M.pieces[0], before = JSON.stringify(lab.s), modelBefore = JSON.stringify(M);
+    assert.equal(lab.scene.boardKind, 'cartesian'); assert.ok(plan.given.includes('왼쪽 위'));
+    assert.deepEqual(plain(M), plain(lab.scene.csModel(plain(lab.s))));
+    near(M.resX.c[0] / M.resX.c[1], v.W * v.H); near(piece.tf.dx, -v.W);
+    for (const u of [0, .25, .5, .75, 1]) {
+      const pose = api.math.piecePose(piece, u)[0], src = piece.polys[0];
+      near(api.math.area(pose), api.math.area(src));
+      pose.forEach((p, i) => { near(p.y, src[i].y); near(p.x, src[i].x - v.W * u); });
+      if (u === 1) pose.forEach((p, i) => near(distance(p, piece.dst[0][i]), 0));
+    }
+    for (const width of [390, 820, 1024, 1440]) for (const t of [0, 3.65, 9.8]) {
+      const capture = conditionCapture(lab, plan, t, width), b = lab.board;
+      assert.equal(capture.kind, 'cartesian');
+      const upperLeft = b.toS(0, v.H), lowerLeft = b.toS(0, 0), right = b.toS(v.W, v.H);
+      assert.ok(upperLeft.y < lowerLeft.y && upperLeft.x < right.x, 'native (0,H) must display above (0,0)');
+      const cut = M.shade0[1].map(p => ({ x: p.x ?? p[0], y: p.y ?? p[1] }));
+      assert.ok(capture.paths.some(x => x.poly.length === cut.length && x.poly.every((p, i) => distance(p, cut[i]) < 1e-8)), 'the native cut boundary remains unchanged');
+      for (const label of capture.labels) conditionLabel(capture, label.value);
+      for (const path of capture.paths) for (const p of path.poly) { const s = b.toS(p.x, p.y); assert.ok(s.x >= 0 && s.x <= b.W && s.y >= 0 && s.y <= b.H); }
+    }
+    assert.equal(JSON.stringify(lab.s), before); assert.equal(JSON.stringify(M), modelBefore);
+    assert.equal(plan.duration, 9.8); assert.equal(plan.frame(6.79, plan.model).answer, false); assert.equal(plan.frame(9.8, plan.model).answer, true);
+  }
+});

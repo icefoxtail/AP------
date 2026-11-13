@@ -27,6 +27,9 @@
 .g7-short-active .apl-panel { visibility:hidden; }
 .g7-short-active .apl-main { grid-template-columns:minmax(0,1fr); }
 .g7-short-active .apl-panel { display:none; }
+/* The fixed side handle can cover the time display when proof choices wrap.
+   The existing header table-of-contents button remains available. */
+.g7-short-active .apl-toc-handle { display:none; }
 @media(max-width:859px) {
   .g7-learning { margin:8px 8px 0; padding:10px 11px 8px; border-radius:13px; }
   .g7-learning-goal b { font-size:16px; }

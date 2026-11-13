@@ -137,6 +137,53 @@ test('visual regression: SSA intersection names clear angle and radius labels at
   }
 });
 
+test('visual regression: SSA angle text and its theme halo are painted after every crossing candidate edge',async()=>{
+  const lab=await load();let crossings=0;
+  // Independent segment/rectangle clipping establishes that the real line
+  // actually enters the glyph area; drawing an unrelated label later cannot
+  // satisfy this regression. The production Board paints the halo and text.
+  const enters=(a,z,r)=>{
+    let lo=0,hi=1;
+    for(const [key,min,max] of [['x',r.left,r.right],['y',r.top,r.bottom]]){
+      const delta=z[key]-a[key];
+      if(Math.abs(delta)<1e-9){if(a[key]<min||a[key]>max)return false;continue;}
+      const t0=(min-a[key])/delta,t1=(max-a[key])/delta;
+      lo=Math.max(lo,Math.min(t0,t1));hi=Math.min(hi,Math.max(t0,t1));
+      if(lo>hi)return false;
+    }
+    return true;
+  };
+  for(const id of ['c3-2','c3-4']){
+    lab.go(id);
+    for(const [adjacent,opposite,A] of [[7,6,50],[7,5,40],[7,4,30],[6,4,35],[5,7,110]]){
+      Object.assign(lab.s,{cnMc:adjacent,cnMb:opposite,cnMA:A});const saved=JSON.stringify(lab.s),p=plan(lab,'끼인각 아님');
+      for(const [width,height] of [[390,598],[820,880],[1023,581],[1439,713]])for(const t of [0,4,4.5,7.1,9.6])for(const halo of ['#ffffff','#17202a']){
+        const b=lab.board,c=b.ctx,paint=[],old={path:b.path,fillText:c.fillText,strokeText:c.strokeText,halo:b.colors.halo};
+        b.resize(width,height);b.colors.halo=halo;
+        b.path=function(ps,o={}){paint.push({type:'path',points:ps.map(q=>this.toS(q)),options:o});return old.path.call(this,ps,o);};
+        c.strokeText=function(value,x,y){paint.push({type:'halo',value:String(value),x,y,color:this.strokeStyle,width:this.lineWidth});return old.strokeText.call(this,value,x,y);};
+        c.fillText=function(value,x,y){paint.push({type:'text',value:String(value),x,y});return old.fillText.call(this,value,x,y);};
+        try{
+          const draw=capture(b,p,t),name=`${id}/${width}/${A}/${t}`,angleText=draw.textItems.find(x=>x.value===`${A}°`&&x.color==='sky');
+          assert.ok(angleText);onCanvas([angleText],b,name);
+          const textIndex=paint.findLastIndex(x=>x.type==='text'&&x.value===`${A}°`),outline=paint[textIndex-1];
+          assert.equal(outline.type,'halo');assert.equal(outline.value,`${A}°`);assert.equal(outline.color,halo);assert.equal(outline.width,4);
+          near(outline.x,angleText.x);near(outline.y,angleText.y);
+          for(let i=0;i<paint.length;i++){
+            const op=paint[i];
+            if(op.type==='path'&&op.points.length===2&&op.options.width===2.6&&enters(op.points[0],op.points[1],angleText)){
+              crossings++;assert.ok(i<textIndex-1,`${name}: candidate edge must not paint over the given angle or its halo`);
+            }
+          }
+          for(const other of draw.textItems.filter(x=>/^C\d$/.test(x.value)||x.value===`${opposite} cm`))separate(angleText,other,name);
+        }finally{b.path=old.path;c.fillText=old.fillText;c.strokeText=old.strokeText;b.colors.halo=old.halo;}
+      }
+      assert.equal(JSON.stringify(lab.s),saved,'reordering the angle label preserves the current condition and question');
+    }
+  }
+  assert.ok(crossings>0,'the saved overlap and changed-input overlaps are exercised');
+});
+
 test('visual regression: the whole equilateral angle and its two parts have separate text bounds',async()=>{
   const lab=await load();lab.go('c6-1');
   for(const y of [25,30,35,40,45]){

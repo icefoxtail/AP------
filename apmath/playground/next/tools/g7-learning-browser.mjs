@@ -17,7 +17,9 @@ const base=process.env.G7_BASE_URL || 'http://127.0.0.1:8765/apmath/playground/n
 const viewports=[{width:1440,height:900},{width:820,height:1180},{width:1024,height:768},{width:390,height:844}];
 const report={kind:'G7_LEARNING_HTTP_CHROMIUM',commit:process.env.GITHUB_SHA || null,coverage:[],references:[],interactions:[],boundaries:[],errors:[],pedagogicalApproval:'NOT_ASSIGNED',studentObservation:'NOT_RUN'};
 const reuseReferencePlayback=process.env.G7_REFERENCE_PLAYBACK==='reuse';
-if(reuseReferencePlayback){assert.ok(process.env.G7_REFERENCE_EVIDENCE,'Reused playback requires its exact evidence reference');report.reusedReferencePlayback=process.env.G7_REFERENCE_EVIDENCE;}
+const referenceSceneFilter=new Set((process.env.G7_REFERENCE_SCENES||'').split(',').filter(Boolean));
+if(reuseReferencePlayback||referenceSceneFilter.size){assert.ok(process.env.G7_REFERENCE_EVIDENCE,'Reused playback requires its exact evidence reference');report.reusedReferencePlayback=process.env.G7_REFERENCE_EVIDENCE;}
+if(referenceSceneFilter.size)report.referenceReplayScenes=[...referenceSceneFilter];
 const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});
 const save=()=>fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');
 async function pageFor(viewport,reducedMotion='reduce'){
@@ -26,7 +28,15 @@ async function pageFor(viewport,reducedMotion='reduce'){
  page.on('console',m=>{if(m.type()==='error')report.errors.push({url:page.url(),error:m.text()})});
  return {page,context};
 }
-async function load(page,id,hash='') {await page.goto(base+id+'.html'+hash);await page.waitForFunction(()=>window.lab?.learning);await page.evaluate(()=>document.fonts.ready);}
+async function load(page,id,hash='') {
+ const url=base+id+'.html'+hash,scene=new URLSearchParams(hash.replace(/^#/,'')).get('s');
+ // A same-document hash navigation can leave the previous scene active. Use
+ // a fresh deep-link load and require the actual scene before measuring it.
+ if(scene&&page.url().split('#')[0]===url.split('#')[0])await page.goto('about:blank');
+ await page.goto(url);
+ await page.waitForFunction(({id,scene})=>window.lab?.learning&&lab.id===id&&(!scene||lab.scene.id===scene),{id,scene});
+ await page.evaluate(()=>document.fonts.ready);
+}
 try {
  for(const viewport of viewports){
   const {page,context}=await pageFor(viewport);
@@ -76,13 +86,15 @@ try {
  assert.deepEqual(report.conversion,{scenes:318,legacy:579,shorts:580});save();
  // Live, normal-speed proofs: capture actual animation frames, never report a
  // seek-only capture as measured playback. Representative PC and phone.
- const references=[['g7-circle-sector','f1-star',0],['g7-circle-sector','f1-star',1],['g7-circle-sector','f3-leaf-area',0],['g7-surface-volume','sv2-4',0],['g7-surface-volume','sv2-4',1],['g7-surface-volume','sv3-4',0],['g7-surface-volume','sv3-4',1]];
+ const references=[['g7-circle-sector','f1-star',0,'star-area'],['g7-circle-sector','f1-star',1,'star-perimeter'],['g7-circle-sector','f3-leaf-area',0,'leaf-area'],['g7-surface-volume','sv2-4',0,'frustum-surface'],['g7-surface-volume','sv2-4',1,'frustum-volume'],['g7-surface-volume','sv3-4',0,'tank-remain'],['g7-surface-volume','sv3-4',1,'tank-over']];
  for(const viewport of reuseReferencePlayback?[]:[viewports[0],viewports[3]]){
   const {page,context}=await pageFor(viewport,'no-preference');
-  for(const [id,scene,choice] of references){
+  for(const [id,scene,choice,expectedPlan] of references){
+   if(referenceSceneFilter.size&&!referenceSceneFilter.has(scene))continue;
    await load(page,id,'#s='+scene);
    await page.evaluate(choice=>{lab.learning.explore();lab.learning.choice=choice;lab.learning.play();window.g7Start=performance.now();},choice);
-   const plan=await page.evaluate(()=>({duration:lab.learning.active.duration,id:lab.learning.active.id}));
+   const plan=await page.evaluate(()=>({duration:lab.learning.active.duration,id:lab.learning.active.id,scene:lab.scene.id,lab:lab.id}));
+   assert.equal(plan.scene,scene);assert.equal(plan.lab,id);assert.equal(plan.id,expectedPlan,`${id}/${scene}/${choice}: wrong active proof`);
    const row={viewport,id,scene,choice,plan,frames:[]};
    for(const t of [0,.9,2.1,3.4,5.5,7.5]){
     await page.waitForFunction(t=>lab.learning.elapsed>=t,t,{timeout:12000});
@@ -142,6 +154,22 @@ try {
  assert.ok(strictBoundary.math>0&&!strictBoundary.text.includes('$')&&strictBoundary.text.includes('x')&&strictBoundary.text.includes('k'),'strict inequality is rendered completely');
  assert.equal(strictBoundary.errors,0);report.interactions.push({name:'strict-lattice-inequality-rendering',result:strictBoundary});
  await page.screenshot({path:path.join(out,'lattice-below-strict-inequality-390.png')});
+
+ // Three proof choices wrap onto two rows on a phone. The floating native
+ // contents handle used to cover the elapsed time; header navigation remains.
+ await load(page,'g7-surface-volume','#s=sv3-6');
+ await page.evaluate(()=>{lab.learning.play();lab.learning.pause();lab.learning.seek(lab.learning.active.duration);});
+ const contents=await page.evaluate(()=>({handleVisible:lab.toc.ui.handle.getClientRects().length>0,headerVisible:lab.toc.ui.topBtn.checkVisibility(),time:lab.learning.ui.time.textContent}));
+ assert.equal(contents.handleVisible,false);assert.equal(contents.headerVisible,true);
+ await page.screenshot({path:path.join(out,'three-choice-progress-and-header-390.png')});
+ await page.locator('.apl-toc-btn').click();assert.equal(await page.evaluate(()=>lab.toc.isOpen),true);
+ await page.keyboard.press('Escape');assert.equal(await page.evaluate(()=>lab.toc.isOpen),false);
+ report.interactions.push({name:'wrapped-progress-with-header-contents-navigation',result:contents});
+ await load(page,'g7-circle-sector','#s=petal15');
+ await page.evaluate(()=>{lab.learning.play();lab.learning.pause();lab.learning.seek(4.1);});
+ assert.equal(await page.evaluate(()=>lab.toc.ui.handle.getClientRects().length),0);
+ await page.screenshot({path:path.join(out,'wrapped-petal-caption-and-header-390.png')});
+ report.interactions.push({name:'wrapped-petal-caption-clear-of-floating-contents',scene:'petal15',elapsed:4.1});
 
  for(const query of ['?manual=1','?teach=1','?mode=assessment']){
   await page.goto(base+'g7-circle-sector.html'+query+'#s=f1-star');await page.waitForFunction(()=>window.lab?.video);await page.waitForTimeout(350);

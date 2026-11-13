@@ -236,10 +236,14 @@
     if(c.kind==='ssa'){
       const m=ssaModel(c.adjacent,c.opposite,c.A),ray=polar(O,Math.max(c.adjacent+c.opposite,7),-c.A);
       if(!mini)setup(b,[O,P(c.adjacent+c.opposite,1),P(-1,-c.opposite),ray],.18);
+      const givenAngle=angleWedge(O,P(1,0),ray),angleRadius=25/b.k;
       line(b,n(O),n(P(c.adjacent,0)),'amber',3);line(b,n(O),n(ray),'muted',1.7,{dash:[4,4]});if(!mini){dot(b,O,(c.names||'ABC')[0]);dot(b,P(c.adjacent,0),(c.names||'ABC')[1]);}
       if(mini){sector(b,angleWedge(n(O),n(P(c.adjacent,0)),n(ray)),'sky',deg(c.A),9/b.k);const u=phase(t,.9,4.5);if(u>0)b.path(Array.from({length:25},(_,i)=>n(polar(P(c.adjacent,0),c.opposite,-180+180*u*i/24))),{color:'rose',width:1.3});}
-      if(!mini){arc(b,P(c.adjacent,0),c.opposite,-180,0,phase(t,.9,4.5),'rose');sector(b,angleWedge(O,P(1,0),ray),'sky',deg(c.A));label(b,P(c.adjacent/2,0),cm(c.adjacent),'amber',{dy:22});label(b,P(c.adjacent,-c.opposite),cm(c.opposite),'rose',{dy:-17});}
+      if(!mini){arc(b,P(c.adjacent,0),c.opposite,-180,0,phase(t,.9,4.5),'rose');sector(b,givenAngle,'sky',t<4.5?deg(c.A):'',angleRadius);label(b,P(c.adjacent/2,0),cm(c.adjacent),'amber',{dy:22});label(b,P(c.adjacent,-c.opposite),cm(c.opposite),'rose',{dy:-17});}
       m.points.forEach((q,i)=>{if(t>=4.5){if(mini){line(b,n(P(c.adjacent,0)),n(q),i?'rose':'green',2);dot(b,n(q));}else{line(b,P(c.adjacent,0),q,i?'rose':'green',2.6);dot(b,q,`C${i+1}`,i?'rose':'green',{dx:-24,dy:i?-18:0,align:'right'});}}});
+      // The existing thin theme halo must cover any candidate edge under the
+      // given angle's glyphs. Keep its position and the construction unchanged.
+      if(!mini&&t>=4.5)label(b,polar(O,angleRadius+18/b.k,givenAngle.start+givenAngle.sweep/2),deg(c.A),'sky',{size:b.W<560?12:15});
       return;
     }
     let other=null;

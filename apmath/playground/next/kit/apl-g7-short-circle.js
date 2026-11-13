@@ -332,12 +332,15 @@
       return;
     }
     if (id === '1106') {
-      wedge(0, q.al, 'amber'); wedge(360 - q.be, q.be, 'rose');
-      [0, q.al, 360 - q.be].forEach((a, i) => spoke(a, 'ABC'[i]));
-      angle(b, O, 0, -q.al * D, `${q.al}°`, R * .24); angle(b, O, q.be * D, 0, `${q.be}°`, R * .4, 'rose');
-      text(b, polar(O, R * .72, -q.al * D / 2), `${fraction(q.S * q.al, 360).replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2')}π cm²`, 'amber');
-      text(b, polar(O, R * .72, q.be * D / 2), 'x cm²', 'rose');
-      for (let i = 0; i < Math.floor(12 * phase(t, 1, 5.5)); i++) line(b, O, polar(O, R, -q.al * D * i / 12), 'green', { width: 1 });
+      // Match the native AOB/COD figure: four distinct boundary points, with
+      // AOB centred on the left and COD on the right of the same circle.
+      const a0 = 180 - q.al / 2, a1 = 180 + q.al / 2, c0 = -q.be / 2, c1 = q.be / 2;
+      wedge(a0, q.al, 'amber'); wedge(c0, q.be, 'rose');
+      for (let i = 0; i < Math.floor(12 * phase(t, 1, 5.5)); i++) line(b, O, polar(O, R, -(a0 + q.al * i / 12) * D), 'green', { width: 1 });
+      [a0, a1, c0, c1].forEach((a, i) => spoke(a, 'ABCD'[i]));
+      angle(b, O, -a0 * D, -a1 * D, `${q.al}°`, R * .24); angle(b, O, -c0 * D, -c1 * D, `${q.be}°`, R * .24, 'rose');
+      text(b, polar(O, R * .66, -PI), `${fraction(q.S * q.al, 360).replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2')}π cm²`, 'amber', { dy: -30 });
+      text(b, polar(O, R * .66, 0), 'x cm²', 'rose', { dy: -30 });
       return;
     }
     if (id === '1719') {
@@ -468,6 +471,9 @@
   function moveDraw(b, t, m) {
     const M = m.native, u = phase(t, 1.6, 5.7), moving = M.pieces.filter(p => p.fill !== false), src = moving.flatMap(p => p.polys);
     const all = [...M.shade0, ...M.target, ...M.pieces.flatMap(p => p.dst), ...M.pieces.flatMap(p => piecePose(p, .5))]; prepare(b, all.flat());
+    // This native Cartesian model cuts the corner at (0,H), the upper left.
+    // Keep its coordinates and horizontal translation instead of reflecting it.
+    if (m.id === 'f4-slideq') b.kind = 'cartesian';
     if (M.crossfade) { eo(b, M.shade0, 'green', .22 * (1 - u)); if (u > 0) eo(b, M.target, 'green', .22 * u); }
     else eo(b, M.shade0.concat(src), 'green', .22);
     (M.base || []).forEach(p => path(b, p.pts, 'muted', { width: 1.7, dash: [4, 4] }));
@@ -532,7 +538,7 @@
     if (m.id === 'f5-sn') {
       path(b, arc(pt(0, 0), 1.5, 0, 2 * PI), 'muted', { width: 1.5 });
       const pts = [-1.5, -.5, .5, 1.5].map(x => pt(x, 0)); line(b, pts[0], pts[3], 'muted');
-      pts.forEach((p, i) => dot(b, p, 'ABCD'[i], 'ink', { dy: i % 2 ? 20 : -20 }));
+      pts.forEach(p => dot(b, p));
       for (let i = 0; i < 3; i++) b.ticks(pts[i], pts[i + 1], { count: 1 });
       text(b, pt(0, -1.5), `AD=${M.AD} cm`, 'ink', { dy: -22 });
     } else if (m.id === 'f5-star') {
@@ -550,7 +556,7 @@
       const g = M.g, O = pt(0, 0), a = m.id === 'f5-ring' ? -g.t : -g.h;
       radius(b, O, g.r, m.id === 'f5-ring' ? 0 : PI, `${g.r} cm`, 'muted');
       if (m.id === 'f5-ring') { radius(b, O, g.R, a, `${g.R} cm`, 'muted'); angle(b, O, a, 0, `${g.th}°`, g.r * .3); }
-      else { angle(b, O, -g.h, g.h, `${g.phi}°`, g.r * .4); text(b, mid(M.P[1].p, M.P[1].q), `폭 ${g.w} cm`, 'ink', { dy: -20 }); }
+      else angle(b, O, -g.h, g.h, `${g.phi}°`, g.r * .4);
       dot(b, O, 'O', 'ink', { dx: -16 });
     } else if (m.band) {
       const c = M.G.uniq[0]; radius(b, pt(c.x * M.r, c.y * M.r), M.r, PI, `r=${M.r} cm`, 'muted');
@@ -577,6 +583,10 @@
         else text(b, mid(p.p, p.q), `${num(p.cm ?? p.len.c)} cm`, 'rose', { dy: -20 });
       }
     });
+    // These native condition labels sit beside the very boundary being traced.
+    // Paint their halos last so the proof's coloured strokes cannot erase them.
+    if (m.id === 'f5-sn') [-1.5, -.5, .5, 1.5].forEach((x, i) => text(b, pt(x, 0), 'ABCD'[i], 'ink', { dy: i % 2 ? 20 : -20 }));
+    if (m.id === 'f5-ring240') text(b, mid(M.P[1].p, M.P[1].q), `폭 ${M.g.w} cm`, 'ink', { dy: -20 });
   }
   function perimeterFrame(t, m) {
     const M = m.native, parts = m.band ? bandParts(M) : M.P;
@@ -609,7 +619,7 @@
     } else if (id === 'y12') {
       const { p, q } = v, R = p + q; width = 2 * R;
       semi('큰 반원', pt(R, 0), R, 0); semi('작은 반원 1', pt(p, 0), p, 0, -1); semi('작은 반원 2', pt(2 * p + q, 0), q, 0, -1);
-      base.push([pt(0, 0), pt(2 * R, 0)]); labels.push({ p: pt(1.5 * p, 0), text: `${p} cm`, dy: 20 }, { p: pt(2 * p + q / 2, 0), text: `${q} cm`, dy: 20 });
+      base.push([pt(0, 0), pt(2 * R, 0)]); labels.push({ p: pt(p, 0), text: `r₁=${p} cm`, dy: 20 }, { p: pt(2 * p + q, 0), text: `r₂=${q} cm`, dy: 20 });
     } else if (id === 'cc08' || id === 'nc' || id === 'ns') {
       const R = v.R, n = id === 'cc08' ? 2 : Math.round(v.n), r = R / n, circle = id !== 'ns'; width = 2 * R;
       const add = (name, c, rr, sign) => circle ? disk(name, c, rr, sign) : semi(name, c, rr, 0, sign);
@@ -621,7 +631,7 @@
       width = 4 * r;
       items.push({ name: '회전한 반원', poly: moved, sign: 1, p: r * r / 2, constant: 0 }, { name: '부채꼴', poly: wedge, sign: 1, p: 4 * r * r * v.th / 360, constant: 0 }, { name: '처음 반원', poly: source, sign: -1, p: r * r / 2, constant: 0 });
       base.push(source, moved, [O, polar(O, 2 * r, 0)], [O, polar(O, 2 * r, -th)]);
-      labels.push({ p: pt(r / 2, 0), text: `${r} cm`, dy: 21 });
+      labels.push({ p: pt(r / 2, 0), text: `AO=${r} cm`, dy: 44 });
     } else if (id === 'lune13') {
       const { p, q } = v, c = Math.hypot(p, q), B = pt(0, 0), C = pt(c, 0), A = pt(p * p / c, -p * q / c); width = c;
       const outwardSemi = (name, a, z, other, len) => {
@@ -677,6 +687,11 @@
       if (m.id === 'lune13' && t > 5.2) shape(b, M.items[2].poly, 'green', .32 * phase(t, 5.2, 6.3));
     }
     M.base.forEach(p => path(b, p, 'muted', { dash: [5, 5], width: 1.5 })); M.labels.forEach(p => text(b, p.p, p.text, 'ink', { dx: p.dx || 0, dy: p.dy || 0 }));
+    if (m.id === 'rot') {
+      const A = pt(0, 0), O = pt(m.values.r, 0), B = pt(2 * m.values.r, 0);
+      line(b, A, O, 'sky', { width: 3 });
+      dot(b, A, 'A', 'ink', { dx: -12, dy: 18 }); dot(b, O, 'O'); dot(b, B, 'B', 'ink', { dx: 12, dy: 18 });
+    }
   }
   function compoundFrame(t, m, label) {
     const M = m.native, v = m.values, perimeter = label === '둘레'; let steps, formula;
@@ -743,6 +758,8 @@
       eo(b, [sq, s1, s2], 'green', .24); path(b, arc(B, a, -PI / 2, 0), 'muted'); path(b, arc(C, a, -PI, -PI / 2), 'muted');
       path(b, [B, E, C], 'sky'); if (t > 1.4) { b.ticks(B, C, { count: 1 }); b.ticks(B, E, { count: 1 }); b.ticks(C, E, { count: 1 }); text(b, E, '60°', 'sky', { dy: 24 }); }
       if (t > 3.4) { shape(b, s1, 'amber', .26); shape(b, s2, 'rose', .26); angle(b, B, -PI / 2, -PI / 3, '30°', a * .3); angle(b, C, -2 * PI / 3, -PI / 2, '30°', a * .3, 'rose'); }
+      dot(b, pt(0, 0), 'A', 'ink', { dx: -14, dy: -17 }); dot(b, pt(a, 0), 'D', 'ink', { dx: 14, dy: -17 });
+      dot(b, B, 'B', 'ink', { dx: -14, dy: 18 }); dot(b, C, 'C', 'ink', { dx: 14, dy: 18 }); dot(b, E, 'E', 'ink', { dy: -17 });
     } else if (id === 'f3-crescent') {
       const h = a / 2, BL = pt(0, a), M1 = pt(0, h), M2 = pt(h, a), Q = sector(BL, a, -PI / 2, 0), H1 = arc(M1, h, -PI / 2, PI / 2), H2 = arc(M2, h, PI, 2 * PI);
       const cres = [...arc(BL, a, -PI / 2, 0), ...arc(M2, h, 2 * PI, 3 * PI / 2), ...arc(M1, h, 0, -PI / 2)], lens = [...arc(M1, h, 0, PI / 2), ...arc(M2, h, PI, 3 * PI / 2)];
@@ -830,7 +847,8 @@
     const xs = bounds.map(p => p.x); line(b, pt(Math.min(...xs), 0), pt(Math.max(...xs), 0), 'muted');
     path(b, [...M.states[0].slice(0, M.nOut), M.states[0][0]].map(up), 'muted', { dash: [5, 5], width: 1.5 });
     const poly = pose.points.slice(0, M.nOut).map(up); shape(b, poly, 'sky', .16);
-    const marked = up(pose.points[M.T]); dot(b, marked, M.names[M.T], 'rose', { dy: -20 });
+    const marked = up(pose.points[M.T]), turnScene = M.kind === 'turn';
+    dot(b, marked, turnScene && progress === 1 ? '' : M.names[M.T], 'rose', { dy: M.kind === 'semi' ? -42 : -20 });
     M.turns.forEach((turn, i) => {
       const u = clamp(progress * M.N - i); if (!u) return;
       if (turn.kind === 'roll') trace(b, [up(turn.c), up(pt(turn.c.x + turn.length, turn.c.y))], u, COLORS[i % 5]);
@@ -843,6 +861,12 @@
       if (pose.u > .25) angle(b, up(rt.c), -rt.a0, -rt.a0 + rt.deg * D, `${num(rt.deg)}°`, Math.max(rt.r * .22, (M.cfg.a || M.cfg.R || M.cfg.d || M.cfg.w) * .2));
     } else radius(b, up(pose.points[M.T]), M.cfg.R, PI / 2, `r=${M.cfg.R} cm`);
     if (t < 1.2) M.names.forEach((name, i) => { if (name && i !== M.T) dot(b, up(M.states[0][i]), name, 'ink'); });
+    if (turnScene) {
+      const target = up(M.states[M.N][M.T]);
+      if (progress < 1) b.point(target, { hollow: true, color: 'rose', r: 5, glow: false });
+      text(b, target, `${M.names[M.T]}′`, 'rose', { dy: 20 });
+      text(b, pt(Math.max(...xs), 0), 'l', 'muted', { dx: 19, dy: -12 });
+    }
   }
   function rollingFrame(t, m) {
     const M = m.native, pose = rollingPose(M, phase(t, 1.2, 6.1)), rt = pose.turn, target = M.names[M.T];
@@ -885,7 +909,9 @@
     }
     if (t < 4.6) {
       const a = M.shape === 'rect' ? `가로 ${M.a} · 세로 ${M.b} cm` : `한 변 ${M.a} cm`;
-      text(b, vertices[0], a, 'ink', { dy: 24 });
+      const separate = ['sw-square', 'sw-center', 'sw-rect'].includes(m.id);
+      const at = separate ? pt((Math.min(...vertices.map(p => p.x)) + Math.max(...vertices.map(p => p.x))) / 2, Math.max(...vertices.map(p => p.y))) : vertices[0];
+      text(b, at, a, 'ink', { dy: 24 });
     }
   }
   function sweepFrame(t, m) {

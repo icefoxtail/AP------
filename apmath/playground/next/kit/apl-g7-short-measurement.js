@@ -102,12 +102,26 @@
     return {base,h,area:base.area,perimeter:base.perimeter,lateral:times(base.perimeter,h),surface:sum(times(base.area,2),times(base.perimeter,h)),volume:times(base.area,h)};
   }
   function prismGeometry(G,m) {return G.solidNet(m.base.poly,m.h,1,m.base.smooth,m.base.root);}
+  function netCutBoundaries(G,net,poses) {
+    // A smooth surface subdivision stays invisible while its two pieces share
+    // a hinge. The one cut in that strip becomes two real boundary edges only
+    // when their current rigid poses actually separate them.
+    if(!net.pieces.some(pc=>pc.edges.some(e=>e.kind==='s')))return net;
+    const pieces=net.pieces.map((pc,k)=>({...pc,edges:pc.edges.map(e=>{
+      const nb=net.pieces[e.nb];
+      if(e.kind!=='s'||!nb||pc.parent===e.nb||nb.parent===k)return e;
+      const a=pc.pts[e.i],b=pc.pts[(e.i+1)%pc.pts.length],tol=1e-7*Math.max(1,norm3(sub3(b,a)));
+      const apart=[a,b].some(p=>norm3(sub3(G.applyT(poses[k],p),G.applyT(poses[e.nb],p)))>tol);
+      return apart?{...e,kind:'c',nb:-1}:e;
+    })}));
+    return{...net,pieces};
+  }
   function netDraw(G,b,t,m,net,start=.8,end=4) {
     const u=phase(t,start,end),yaw=(m.camera.svYaw??28)*(1-u),pitch=(m.camera.svPitch??22)*(1-u),D=scene(G,b,m,u,{yaw,pitch});
     const poses=G.netPose(net.net,u),pts=net.net.pieces.flatMap((pc,i)=>pc.pts.map(p=>G.applyT(poses[i],p)));
     fit(D,pts);
     const focus=t<4.9?'base':t<6.8?'side':'all';
-    const tp=G.netDraw(D,net.net,poses,pc=>{
+    const tp=G.netDraw(D,netCutBoundaries(G,net.net,poses),poses,pc=>{
       const base=pc.tag==='bot'||pc.tag==='top'||pc.tag==='base';
       return {fill:base?'sky':'green',alpha:focus==='all'||(focus==='base')===base?.16:.05,edge:'ink',ew:2.1};
     });
@@ -297,7 +311,7 @@
     return{label:'세 합동 부분 중 하나의 부피를 구합니다.',formula:`사각뿔의 부피 $=${tex(m.big)}\\div3=${tex(m.volume)}${unit(3)}$`};
   }
   function frustumVolumeDraw(G,b,t,m) {
-    const D=scene(G,b,m,t),mesh=pyramidMesh(G,m),top=m.base.map(p=>[p[0]*m.ratio,p[1]*m.ratio]),cap=G.loftMesh(top,m.h,m.h2,0,0,0),u=phase(t,3.2,5.6),extent=Math.max(...m.base.flat().map(Math.abs)),shift=D.hx((2.4*extent+1)*u),moving=G.xfMesh(cap,G.shiftT(shift));
+    const D=scene(G,b,m,t),mesh=pyramidMesh(G,m),top=m.base.map(p=>[p[0]*m.ratio,p[1]*m.ratio]),cap=m.kind==='cone-frustum'?G.revolveMesh([[0,m.h],[m.r1,m.h],[0,m.h2]],{N:48}):G.loftMesh(top,m.h,m.h2,0,0,0),u=phase(t,3.2,5.6),extent=Math.max(...m.base.flat().map(Math.abs)),shift=D.hx((2.4*extent+1)*u),moving=G.xfMesh(cap,G.shiftT(shift));
     fit(D,pointsOf(mesh).concat(t>.8?pointsOf(moving):[]));body(D,mesh,'green');
     if(t>.8)body(D,moving,'rose',{alpha:.12*phase(t,.8,1.8),edge:'rose',edgeFn:()=>({alpha:phase(t,.8,1.8)})});
     if(t>1.8) {
@@ -316,7 +330,9 @@
   function rotationConeDraw(G,b,t,m) {
     if(t>=2.2){pyramidAreaDraw(G,b,t-1.4,m);return;}
     const D=scene(G,b,m,t),theta=TAU*phase(t,.5,2.2),profile=[[0,0],[m.r,0],[0,m.h]],mesh=G.revolveMesh(profile,{N:48,a0:0,a1:Math.max(.00001,theta)});
-    fit(D,[v(-m.r,0,-m.r),v(m.r,m.h,m.r)]);
+    // Both extreme corners on one diagonal can project almost onto each
+    // other. All eight corners bound the complete rotation and both axis ends.
+    fit(D,[-m.r,m.r].flatMap(x=>[-m.h*.1,m.h*1.1].flatMap(y=>[-m.r,m.r].map(z=>v(x,y,z)))));
     if(theta>.0001)body(D,mesh,'sky');
     D.panel([v(0,0),v(m.r,0),v(0,m.h)],'amber',.13,'amber',2.5);
     D.line(v(0,-m.h*.1),v(0,m.h*1.1),'rose',2,{dash:[5,4]});
@@ -351,7 +367,10 @@
     if(m.kind==='half')return G.revolveMesh([[0,0],...G.sphereProfile(r,0,90,n)],{N,tags:['flat']});
     if(m.kind==='quarter')return G.revolveMesh(G.sphereProfile(r,-90,90,n),{N,a0:PI,a1:1.5*PI});
     if(m.kind==='eighth')return G.revolveMesh([...G.sphereProfile(r,-90,0,n),[0,0]],{N,a0:PI,a1:1.5*PI,tags:Array(n).fill('curve').concat('flat')});
-    if(m.kind==='threequarter')return G.revolveMesh(G.sphereProfile(r,-90,90,n),{N,a0:PI/2,a1:TAU});
+    if(m.kind==='threequarter'){
+      const mesh=G.revolveMesh(G.sphereProfile(r,-90,90,n),{N,a0:PI/2,a1:TAU});
+      mesh.convexOuterSilhouette=true;return mesh;
+    }
     const lower=G.revolveMesh(G.sphereProfile(r,-90,0,n),{N}),upper=G.revolveMesh(G.sphereProfile(r,0,90,n),{N,a0:PI/2,a1:TAU});
     // The removed upper octant exposes a horizontal quarter disk. The other
     // three quarters of the equator are interior joins, not exposed faces.
@@ -359,7 +378,7 @@
     upper.edges=upper.edges.filter(e=>!(Math.abs(e.a.y)<1e-7&&Math.abs(e.b.y)<1e-7));
     const flat=[v(0,0),...Array.from({length:25},(_,i)=>v(r*Math.cos(PI/2*i/24),0,r*Math.sin(PI/2*i/24)))];
     const cap=G.polyMesh([{pts:flat,n:v(0,1),tag:'flat',cut:true}],v(0,-r/2));
-    const mesh=mergeMeshes([lower,upper,cap]);mesh.silhouetteParts=[lower,upper];return mesh;
+    const mesh=mergeMeshes([lower,upper,cap]);mesh.silhouetteParts=[lower,upper];mesh.convexOuterSilhouette=true;return mesh;
   }
   function sphericalFlats(G,m) {
     const r=m.r,n=48;
@@ -572,16 +591,24 @@
     return{parts,joins,name:parts.map(p=>p.name).join(' + '),given,closed,hidden,surface:minus(closed,hidden),volume:sum(...parts.map(p=>p.volume))};
   }
   function joinedDraw(G,b,t,m) {
-    const D=scene(G,b,m,t),u=phase(t,1.1,4.3),extent=Math.max(...m.parts.map(p=>p.r||p.a/2)),offsets=m.parts.map((_,i)=>D.hx(i*(2.6*extent+1)*u)),meshes=m.parts.map((p,i)=>G.xfMesh(componentMesh(G,p),G.shiftT(offsets[i])));
+    const D=scene(G,b,m,t),u=phase(t,1.1,4.3),extent=Math.max(...m.parts.map(p=>p.r||p.a/2)),offsets=m.parts.map((_,i)=>D.hx(i*(2.6*extent+1)*u));
+    const key=[u,D.vw.x,D.vw.y,D.vw.z].join('|');
+    if(m.joinedPose?.key!==key){
+      const original=m.joinedMeshes||(m.joinedMeshes=m.parts.map(p=>componentMesh(G,p))),meshes=original.map((mesh,i)=>G.xfMesh(mesh,G.shiftT(offsets[i])));
+      m.joinedPose={key,meshes,edges:joinedEdgeVisibility(G,D,meshes)};
+    }
+    const {meshes,edges}=m.joinedPose;
     fit(D,meshes.flatMap(pointsOf));
-    D.bodies(meshes.map((mesh,i)=>({mesh,fill:['sky','amber','green'][i],alpha:.1,edge:'ink',edgeW:2.1,dashBack:e=>{const j=m.joins.find(j=>(j.lower===i||j.upper===i)&&Math.abs(e.a.y-j.y)<1e-7&&Math.abs(e.b.y-j.y)<1e-7);return j&&u<.01?add3(v(0,j.y),offsets[i]):null;}})));
+    D.bodies(meshes.map((mesh,i)=>({mesh,fill:['sky','amber','green'][i],alpha:.1,edgeFn:()=>({skip:true}),sil:false})));
+    for(const hidden of[true,false])for(const e of edges.filter(e=>e.hidden===hidden))D.path(e.points,'ink',hidden?1.68:2.1,{dash:hidden?[6,5]:undefined,alpha:hidden?.7:1});
     if(t>=1.1)m.joins.forEach(j=>[j.lower,j.upper].forEach((i,k)=>{
       const pts=j.kind==='circle'?ring(G,j.r,j.y):rectangle(j.a,j.a).map(p=>v(p[0],j.y,p[1])),moved=pts.map(p=>add3(p,offsets[i]));
       D.panel(moved,m.target==='volume'?'muted':'rose',m.target==='volume'?.035:.16,'rose',1.7,{dash:[4,4]});
       if(t>=4.3&&m.target!=='volume')tag(D,center(moved),`붙은 면 ${plain(j.area)}`,'rose',{dy:k?-15:18,size:12});
     }));
     if(t>=4.3)m.parts.forEach((p,i)=>{
-      const c=center(pointsOf(meshes[i]));tag(D,c,m.target==='volume'?`${p.name} ${t>=5.5?plain(p.volume):''}`:p.name,['sky','amber','green'][i],{dy:-12,size:12});
+      const middle=(p.kind==='hemisphere'?p.r:p.h)/2,c=add3(v(0,(p.y||0)+(p.down?-middle:middle)),offsets[i]);
+      tag(D,c,m.target==='volume'?`${p.name} ${t>=5.5?plain(p.volume):''}`:p.name,['sky','amber','green'][i],{dy:p.kind==='cone'?(p.down?8:-6):0,size:12});
     });
   }
   function joinedFrame(t,m) {
@@ -674,12 +701,55 @@
     const triangles=mesh._triangles||(mesh._triangles=meshTriangles(mesh));
     return triangles.some(t=>!skip.includes(t.face)&&triangleRayDistance(p,view,t.a,t.b,t.c)<Infinity);
   }
+  function joinedEdgeVisibility(G,D,meshes) {
+    // Ray/triangle intersection coordinates are affine along a straight edge.
+    // Clip those coordinates to obtain the actual hidden interval instead of
+    // deciding an entire rear edge from its midpoint or its own face normals.
+    const triangles=meshes.map(mesh=>meshTriangles(mesh).flatMap(t=>{
+      const ab=sub3(t.b,t.a),ac=sub3(t.c,t.a),h=cross3(D.vw,ac),det=dot3(ab,h);
+      if(Math.abs(det)<1e-10)return[];
+      const p=[t.a,t.b,t.c].map(D.P),xs=p.map(q=>q.x),ys=p.map(q=>q.y);
+      return[{a:t.a,U:mul3(h,1/det),V:mul3(cross3(ab,D.vw),1/det),T:mul3(cross3(ab,ac),1/det),x0:Math.min(...xs),x1:Math.max(...xs),y0:Math.min(...ys),y1:Math.max(...ys)}];
+    }));
+    const out=[];
+    meshes.forEach((mesh,part)=>{
+      const front=k=>k>=0&&D.facing(mesh.faces[k].n),blockers=triangles.flatMap((ts,i)=>i===part?[]:ts);
+      const candidates=mesh.edges.concat(mesh.rev?G.silLines(mesh,D.vw).map(([a,b])=>({a,b,f1:-1,f2:-1,silhouette:true})):[]);
+      candidates.forEach((e,edge)=>{
+        if(e.smooth&&front(e.f1)===front(e.f2))return;
+        const ownHidden=!e.silhouette&&!(front(e.f1)||front(e.f2)||(e.f1<0&&e.f2<0));
+        const push=(lo,hi,hidden)=>{if(hi-lo>1e-8)out.push({points:[mix3(e.a,e.b,lo),mix3(e.a,e.b,hi)],hidden,ownHidden,part,edge,source:e,lo,hi});};
+        if(ownHidden){push(0,1,true);return;}
+        const a2=D.P(e.a),b2=D.P(e.b),x0=Math.min(a2.x,b2.x),x1=Math.max(a2.x,b2.x),y0=Math.min(a2.y,b2.y),y1=Math.max(a2.y,b2.y),delta=sub3(e.b,e.a),intervals=[];
+        for(const tri of blockers){
+          if(x1<tri.x0-1e-8||x0>tri.x1+1e-8||y1<tri.y0-1e-8||y0>tri.y1+1e-8)continue;
+          const s=sub3(e.a,tri.a),u=dot3(s,tri.U),du=dot3(delta,tri.U),v0=dot3(s,tri.V),dv=dot3(delta,tri.V),distance=dot3(s,tri.T),dt=dot3(delta,tri.T);
+          let lo=0,hi=1;
+          for(const [value,slope] of[[u+1e-8,du],[v0+1e-8,dv],[1-u-v0+1e-8,-du-dv],[distance-1e-6,dt]]){
+            if(Math.abs(slope)<1e-12){if(value<0){hi=-1;break;}}
+            else if(slope>0)lo=Math.max(lo,-value/slope);else hi=Math.min(hi,-value/slope);
+            if(hi<=lo)break;
+          }
+          if(hi-lo>1e-8)intervals.push([lo,hi]);
+        }
+        intervals.sort((a,b)=>a[0]-b[0]);const merged=[];
+        for(const interval of intervals){const last=merged.at(-1);if(last&&interval[0]<=last[1]+1e-8)last[1]=Math.max(last[1],interval[1]);else merged.push(interval.slice());}
+        let from=0;for(const[lo,hi]of merged){push(from,lo,false);push(lo,hi,true);from=hi;}push(from,1,false);
+      });
+    });
+    return out;
+  }
   function edgeVisibility(G,D,mesh) {
     const key=[D.vw.x,D.vw.y,D.vw.z].map(x=>x.toFixed(6)).join('|');mesh._visibility=mesh._visibility||new Map();
     if(mesh._visibility.has(key))return mesh._visibility.get(key);
-    const list=[],edges=mesh.edges.concat((mesh.silhouetteParts||(mesh.rev?[mesh]:[])).flatMap(part=>G.silLines(part,D.vw).map(([a,b])=>({a,b,f1:-1,f2:-1}))));
+    const list=[],edges=mesh.edges.concat((mesh.silhouetteParts||(mesh.rev?[mesh]:[])).flatMap(part=>G.silLines(part,D.vw).map(([a,b])=>({a,b,f1:-1,f2:-1,silhouette:true}))));
     for(const e of edges) {
       if(e.smooth&&D.facing(mesh.faces[e.f1].n)===D.facing(mesh.faces[e.f2].n))continue;
+      // A retained part of a convex sphere's outer contour cannot be hidden
+      // by the sphere itself. Its polygonal chord lies inside the sphere, so a
+      // midpoint ray test would falsely hide that analytic silhouette. Cut
+      // edges and the silhouettes of genuinely concave cavities still use it.
+      if(e.silhouette&&mesh.convexOuterSilhouette){list.push({points:[e.a,e.b],hidden:false,faces:[-1,-1],silhouette:true});continue;}
       const pieces=8;let run=null;
       for(let i=0;i<pieces;i++) {
         const a=mix3(e.a,e.b,i/pieces),b=mix3(e.a,e.b,(i+1)/pieces),hidden=isOccluded(mesh,mix3(a,b,.5),D.vw,[e.f1,e.f2]);
@@ -896,5 +966,5 @@
     return plan(d,label,`${m.name}의 겉면 변화`,m,notchDraw,notchFrame,given,'surface-'+i);
   }));
   register('sv5-5',['겉넓이','부피'],(lab,s)=>{const d=bind('sv5-5',lab,s),m=cavityModel(d.M);return ['겉넓이','부피'].map(label=>{const target=label==='부피'?'volume':'surface';return plan(d,label,target==='volume'?'파낸 원뿔의 부피 빼기':'원뿔 안쪽에 생긴 겉면 더하기',{...m,target},cavityDraw,cavityFrame,`큰 원뿔: 반지름 ${m.r2} cm, 높이 ${m.h2} cm, 모선 ${m.R2} cm · 같은 밑면 평면에서 파낸 작은 원뿔: ${m.r1}, ${m.h1}, ${m.R1} cm`,target);});});
-  return{registry,lessonInfo,bind,value,sum,times,minus,numeric,tex,rational,prismModel,prismGeometry,sectorPolygon,stadiumHalf,coneModel,squarePyramidModel,triangularPyramidModel,triangularNet,pyramidGeometry,pyramidMesh,cubePyramids,mergeMeshes,sphereModel,sphereGeometry,sphericalFlats,sphereSectionArea,displaced,coneFrustumModel,component,componentMesh,joinedModel,trapezoidAxes,holeModel,holeMesh,circleHoleMesh,unrolledWall,triangleRayDistance,isOccluded,edgeVisibility,notchModel,cornerBoxes,removedFaces,cavityModel,cavityMesh};
+  return{registry,lessonInfo,bind,value,sum,times,minus,numeric,tex,rational,prismModel,prismGeometry,netCutBoundaries,sectorPolygon,stadiumHalf,coneModel,squarePyramidModel,triangularPyramidModel,triangularNet,pyramidGeometry,pyramidMesh,cubePyramids,mergeMeshes,sphereModel,sphereGeometry,sphericalFlats,sphereSectionArea,displaced,coneFrustumModel,component,componentMesh,joinedModel,joinedEdgeVisibility,trapezoidAxes,holeModel,holeMesh,circleHoleMesh,unrolledWall,triangleRayDistance,isOccluded,edgeVisibility,notchModel,cornerBoxes,removedFaces,cavityModel,cavityMesh};
 });

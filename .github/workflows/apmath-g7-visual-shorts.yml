@@ -66,14 +66,15 @@ jobs:
         env:
           NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
           G7_EVIDENCE: ${{ runner.temp }}/g7-evidence
-          G7_REFERENCE_PLAYBACK: reuse
-          G7_REFERENCE_EVIDENCE: 'CI 43335954065 at bdaf15d2bd80ff8fd8f00c5c38219a5a0cad17db: 14 reference and 42 function normal-clock plays passed. Their geometry and timing are unchanged; the corrected lattice inequality is checked separately.'
+          G7_REFERENCE_PLAYBACK: scoped
+          G7_REFERENCE_SCENES: 'f3-leaf-area,sv3-4'
+          G7_REFERENCE_EVIDENCE: 'CI 43335954065 at bdaf15d2bd80ff8fd8f00c5c38219a5a0cad17db: four correctly identified reference plans and 36 unique function scenes retain their normal-clock evidence. Leaf and two tank plans had stale active-plan IDs in the old reference report; those three are measured again here with scene and plan assertions.'
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/g7-http.log" 2>&1 &
           for i in {1..20}; do curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js >/dev/null && break; sleep 1; done
           node apmath/playground/next/tools/g7-learning-browser.mjs
-          # The unchanged reference/function normal-clock evidence above is
-          # reused. All 318 routes and legacy question mappings still run here.
+          # Repeat only the three reference plans whose old report had stale
+          # scene/plan identity. All 318 routes and question mappings still run.
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -90,17 +91,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Circle/polyhedra stopped before normal-clock verification in
-          # CI43339724069. All other units retain their completed evidence;
-          # the learning job checks the changed native-view boundary on all318.
-          - { lab: g7-polyhedra, mode: full, live_scenes: '', exclude_scenes: '' }
-          - { lab: g7-circle-sector, mode: full, live_scenes: '', exclude_scenes: 'f1-star,f3-leaf-area' }
-          # Independent review corrected displayed radii, equation grouping,
-          # one math delimiter and choice binding for a comparison shape.
-          - { lab: g7-surface-volume, mode: static, scenes: 'sv1-1,sv1-2,sv1-3,sv1-5,sv3-6', live_scenes: 'sv1-2,sv1-5,sv3-6', exclude_scenes: '' }
-          - { lab: g7-solids, mode: static, scenes: 's1-6', live_scenes: 's1-6', exclude_scenes: '' }
-          # Two corrected nondefault choices still lack a post-fix screenshot.
-          - { lab: g7-construction, mode: static, scenes: 'c3-2,c6-3', live_scenes: 'c3-2,c6-3', exclude_scenes: '' }
+          # CI43341402870 holds the full circle/polyhedra run. Retain all
+          # unchanged scene evidence and capture the visually corrected ranges.
+          - { lab: g7-polyhedra, mode: static, scenes: 'p3-1,p3-2,p3-3,p3-4,p3-5,p3-6,p3-8', live_scenes: 'p3-1,p3-2,p3-3,p3-4,p3-5,p3-6,p3-8', exclude_scenes: '' }
+          - { lab: g7-circle-sector, mode: static, scenes: '1106,rot,y12,f3-two-arcs,f4-slideq,f5-sn,f5-ring240,rl-turn60,rl-turn45,rl-semi,sw-square,sw-center,sw-rect', live_scenes: '1106,rot,y12,f3-two-arcs,f4-slideq,f5-sn,f5-ring240,rl-turn60,rl-turn45,rl-semi,sw-square,sw-center,sw-rect', exclude_scenes: '' }
+          - { lab: g7-surface-volume, mode: static, scenes: 'sv1-1,sv1-2,sv1-3,sv1-5,sv2-2,sv2-3,sv3-7,sv4-1,sv4-2,sv4-3,sv4-4,sv5-6,sv6-1', live_scenes: 'sv1-3,sv2-2,sv3-7,sv4-1,sv4-2,sv4-3,sv4-4,sv5-6', exclude_scenes: '' }
+          - { lab: g7-solids, mode: static, scenes: 's2-3,s3-5,s4-1,s4-2,s4-4', live_scenes: 's2-3,s3-5,s4-1,s4-2,s4-4', exclude_scenes: '' }
+          - { lab: g7-construction, mode: static, scenes: 'c3-2,c3-4', live_scenes: 'c3-2,c3-4', exclude_scenes: '' }
     steps:
       - uses: actions/checkout@v4
         with:

@@ -17,12 +17,22 @@ const native=lab=>lab.scene.so.model(lab.s);
 const question=lab=>lab.scene.so.prob(native(lab),lab.s);
 const numeric=lab=>Number(question(lab).choices.find(q=>q.ok).p.match(/^[\d.]+/)?.[0]);
 function capture(board,p,t){
-  const out={paths:[],texts:[],circles:[]},old={path:board.path,_text:board._text,circle:board.circle};
+  const out={paths:[],texts:[],textItems:[],circles:[]},old={path:board.path,_text:board._text,circle:board.circle};
   board.path=function(ps,options={}){out.paths.push({points:ps,options});return old.path.call(this,ps,options);};
-  board._text=function(x,y,text,...rest){out.texts.push(String(text));return old._text.call(this,x,y,text,...rest);};
+  board._text=function(x,y,text,...rest){
+    const value=String(text),o=rest[0]||{},height=(o.size||13)*this.fs*this._ts(),width=this.ctx.measureText(value).width;
+    const left=o.align==='right'?x-width:o.align==='left'?x:x-width/2;
+    out.texts.push(value);out.textItems.push({value,x,y,color:o.color,left:left-2,right:left+width+2,top:y-height/2-2,bottom:y+height/2+2});
+    return old._text.call(this,x,y,text,...rest);
+  };
   board.circle=function(center,r,options={}){out.circles.push({center,r,options});return old.circle.call(this,center,r,options);};
   try{board.begin();p.draw(board,t,p.model);board.end();return out;}finally{Object.assign(board,old);}
 }
+function separate(a,b,context){
+  assert.ok(a&&b,`${context}: both labels exist`);
+  assert.ok(a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top,`${context}: ${a.value} and ${b.value} overlap at (${a.x},${a.y}) / (${b.x},${b.y})`);
+}
+function onCanvas(items,board,context){for(const x of items)assert.ok(x.left>=0&&x.right<=board.W&&x.top>=0&&x.bottom<=board.H,`${context}: ${x.value} leaves the canvas`);}
 function shoelace(ps){return Math.abs(ps.reduce((sum,p,i)=>{const q=ps[(i+1)%ps.length];return sum+p.x*q.y-p.y*q.x;},0))/2;}
 function derivative(fn,x,h=1e-5){const a=fn(x+h),b=fn(x-h);return{x:(a.x-b.x)/(2*h),y:(a.y-b.y)/(2*h),z:((a.z||0)-(b.z||0))/(2*h)};}
 function curveLength(fn,a,b,n=1200){let old=fn(a),length=0;for(let i=1;i<=n;i++){const next=fn(a+(b-a)*i/n);length+=dist(old,next);old=next;}return length;}
@@ -159,5 +169,56 @@ test('every allowed frustum chord stays outside the removed cap and the active p
     const foot=shorts.closestOnSegment({x:0,y:0},A,B),distanceFromApex=Math.hypot(foot.x,foot.y);assert.ok(distanceFromApex>d.R1);near(d.clearance,distanceFromApex-d.R1);
     for(const u of [0,.25,.5,.75,1]){const q={x:A.x+(B.x-A.x)*u,y:A.y+(B.y-A.y)*u};assert.ok(Math.hypot(q.x,q.y)>=d.R1);assert.ok(Math.hypot(q.x,q.y)<=d.R2+1e-7);}
     capture(lab.board,p,0);capture(lab.board,p,7.8);
+  }
+});
+
+// These checks use production Board coordinates and padded text extents. The
+// canvas shim measures glyph width deterministically; new browser screenshots
+// remain necessary to approve actual font/layout appearance after the fix.
+const visualSizes=[[390,581],[820,880],[1023,581],[1439,713]];
+test('visual regression: removed-cap descriptions clear the central angle and small slant length',async()=>{
+  const lab=await load();
+  for(const id of ['s3-5','s4-4']){
+    lab.go(id);
+    for(const [k,r1,r2] of [[3,2,4],[2,1,3],[5,3,5]]){
+      Object.assign(lab.s,{soFk:k,soF1:r1,soF2:r2,soQk:k,soQ1:r1,soQ2:r2,soQg:r2,soQf:r1});
+      const saved=JSON.stringify(lab.s);
+      for(const p of plans(lab))for(const [w,h] of visualSizes)for(const t of [6.2,7.1,9.6]){
+        lab.board.resize(w,h);const items=capture(lab.board,p,t).textItems,description=items.find(x=>x.value==='잘라 낸 부분');
+        const angle=items.find(x=>/°$/.test(x.value)),slant=items.find(x=>x.value.startsWith('R₁='));
+        separate(description,angle,`${id}/${p.legacyLabel}/${w}/${t}`);separate(description,slant,`${id}/${p.legacyLabel}/${w}/${t}`);
+        onCanvas([description,angle,slant],lab.board,id);
+      }
+      assert.equal(JSON.stringify(lab.s),saved,'labels do not change the current question or exploration dimensions');
+    }
+  }
+});
+
+test('visual regression: starting point A stays outside its given base-radius label',async()=>{
+  const lab=await load();
+  for(const id of ['s4-1','s4-2','s4-4']){
+    lab.go(id);
+    for(const r of [1,2,4]){
+      Object.assign(lab.s,{soTr:r,soTR:6*r,soQa:60,soQr:r,soQg:r+1,soQf:1});
+      const saved=JSON.stringify(lab.s);
+      for(const p of plans(lab))for(const [w,h] of visualSizes)for(const t of [0,.6,1.19]){
+        lab.board.resize(w,h);const items=capture(lab.board,p,t).textItems,A=items.find(x=>x.value==='A'),radius=items.find(x=>/^r(?:₂)?=/.test(x.value));
+        separate(A,radius,`${id}/${p.legacyLabel}/${w}/${t}`);onCanvas([A,radius],lab.board,id);
+      }
+      assert.equal(JSON.stringify(lab.s),saved);
+    }
+  }
+});
+
+test('visual regression: the frustum top-radius value clears its rotation-axis label',async()=>{
+  const lab=await load();lab.go('s2-3');
+  for(const active of [false,true])for(const [R,r,h,pitch] of [[3,2,6,25],[2,1,8,6],[5,4,3,80],[15,14,20,25]]){
+    Object.assign(lab.s,{soPK:active?'frus':'cyl',soSR:R,soSr:r,soSH:h,soPR:R,soPr2:r,soPH:h,soPitch:pitch});
+    const saved=JSON.stringify(lab.s),p=plan(lab,'원뿔대');
+    for(const [w,height] of visualSizes)for(const t of [0,4,7.1,9.6]){
+      lab.board.resize(w,height);const items=capture(lab.board,p,t).textItems,axis=items.find(x=>x.value==='회전축 l'),radius=items.find(x=>x.value===`${r} cm`&&x.color==='sky');
+      separate(axis,radius,`s2-3/${active}/${R}/${r}/${pitch}/${w}/${t}`);onCanvas([axis,radius],lab.board,'s2-3');
+    }
+    assert.equal(JSON.stringify(lab.s),saved);
   }
 });

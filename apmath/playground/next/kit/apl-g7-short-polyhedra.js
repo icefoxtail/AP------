@@ -239,19 +239,62 @@
   }
   function matchingPoints(net,k){return net.pt.map((_,i)=>i).filter(i=>i!==k&&net.ptCl[i]===net.ptCl[k]);}
   function netFold(d,t){const start=clamp(d.s.phFold||0);return t<1.8?start*(1-phase(t,.6,1.8)):phase(t,2,5.7);}
+  function netBoundaryEdges(D,faces){
+    const vertices=[],edges=new Map(),projected=faces.map(ps=>ps.map(p=>({...D.P(p),d:D.depth(p)})));
+    const vertex=p=>{let i=vertices.findIndex(q=>Math.hypot(p.x-q.x,p.y-q.y,p.z-q.z)<1e-7);if(i<0){i=vertices.length;vertices.push(p);}return i;};
+    faces.forEach((ps,fi)=>ps.forEach((a,i)=>{
+      const b=ps[(i+1)%ps.length],u=vertex(a),v=vertex(b),key=u<v?`${u}:${v}`:`${v}:${u}`;
+      if(!edges.has(key))edges.set(key,{a,b,faces:[]});edges.get(key).faces.push(fi);
+    }));
+    // Projected barycentric coordinates and depth differences vary linearly
+    // along an edge. Their intersection gives the exact part behind each
+    // posed face, including partially folded paper. Coplanar hinges have no
+    // positive depth gap and therefore remain visible.
+    const triangles=projected.flatMap((ps,face)=>ps.slice(1,-1).map((_,i)=>({face,p:[ps[0],ps[i+1],ps[i+2]]})));
+    for(const edge of edges.values()){
+      const a={...D.P(edge.a),d:D.depth(edge.a)},b={...D.P(edge.b),d:D.depth(edge.b)},hidden=[];
+      for(const tri of triangles){
+        if(edge.faces.includes(tri.face))continue;
+        const[p,q,r]=tri.p,den=(q.x-p.x)*(r.y-p.y)-(q.y-p.y)*(r.x-p.x);if(Math.abs(den)<1e-10)continue;
+        const weights=s=>{const u=((s.x-p.x)*(r.y-p.y)-(s.y-p.y)*(r.x-p.x))/den,v=((q.x-p.x)*(s.y-p.y)-(q.y-p.y)*(s.x-p.x))/den;return[1-u-v,u,v];};
+        const wa=weights(a),wb=weights(b),da=a.d-wa.reduce((s,w,i)=>s+w*tri.p[i].d,0),db=b.d-wb.reduce((s,w,i)=>s+w*tri.p[i].d,0);
+        const limits=wa.map((w,i)=>[w+1e-9,wb[i]-w]).concat([[da-1e-7,db-da]]);let lo=0,hi=1;
+        for(const[value,slope]of limits){
+          if(Math.abs(slope)<1e-12){if(value<0){hi=-1;break;}}
+          else if(slope>0)lo=Math.max(lo,-value/slope);else hi=Math.min(hi,-value/slope);
+          if(hi<=lo)break;
+        }
+        if(hi-lo>1e-8)hidden.push([lo,hi]);
+      }
+      hidden.sort((a,b)=>a[0]-b[0]);const merged=[];
+      for(const interval of hidden){const last=merged.at(-1);if(last&&interval[0]<=last[1]+1e-8)last[1]=Math.max(last[1],interval[1]);else merged.push(interval.slice());}
+      edge.segments=[];const push=(lo,hi,hidden)=>{if(hi-lo>1e-8)edge.segments.push({lo,hi,hidden});};let from=0;
+      for(const[lo,hi]of merged){push(from,lo,false);push(lo,hi,true);from=hi;}push(from,1,false);
+    }
+    return[...edges.values()];
+  }
   function drawNet(b,t,d,o={}){
     const {G,M}=d,net=M.net,fold=netFold(d,t),faces=net.at(fold),view={...d,s:{...d.s,phYaw:(d.s.phYaw||0)-22*fold,phPitch:Math.max(28,84-56*fold)}};
     const D=prepare(b,view,faces.flat(),{t:28,b:34,l:35,r:35}),shown=t>=5.7,ref=M.refFace,paired=M.paired||[],point=M.point;
     const hi=point==null?[]:[point,...(t>=2?M.partners||[]:[])];
     const order=faces.map((ps,i)=>({i,depth:D.depth(G.cen3(ps))})).sort((a,z)=>z.depth-a.depth);
-    order.forEach(({i})=>{
-      const ps=faces[i],normal=G.mul3(G.cross3(G.sub3(ps[1],ps[0]),G.sub3(ps[2],ps[0])),d.netSigns[i]);
+    const styles=faces.map((_,i)=>{
       const isRef=i===ref,isPaired=shown&&paired.includes(i),bad=shown&&o.overlap&&net.overlap[i];
       const color=bad?'rose':isRef?'amber':isPaired?'green':'sky';
-      D.panel(ps,color,isRef||isPaired||bad?.24:.055,color,isRef||isPaired?3.2:1.8,{dash:fold>.9&&!D.facing(normal)?[5,4]:undefined});
+      return{isRef,isPaired,color,alpha:isRef||isPaired||bad?.24:.055,width:isRef||isPaired?3.2:1.8,priority:bad?3:isRef?2:isPaired?1:0};
+    });
+    order.forEach(({i})=>{
+      const ps=faces[i],{isRef,isPaired,color,alpha}=styles[i];D.fill(ps,color,alpha);
       if(o.faceNames){const text=o.dice?(i===M.hidden?(t>=7.1?String(M.values[i]):'?'):String(M.values[i])):String.fromCharCode(65+(net.num?net.num[i]-1:i));
         if(fold<.8||isRef||isPaired||i===M.hidden)D.label(G.cen3(ps),text,{color:isRef?'amber':isPaired?'green':'ink',size:o.dice?21:16,at:[[0,0],[0,-17],[0,17]]});}
     });
+    const edges=netBoundaryEdges(D,faces),at=(e,u)=>G.add3(e.a,G.mul3(G.sub3(e.b,e.a),u));
+    // Stroke each actual shared edge once. Drawing both face outlines makes
+    // offset dash patterns fill one another's gaps and look like a solid edge.
+    for(const hidden of[true,false])for(const edge of edges){
+      const style=edge.faces.map(i=>styles[i]).reduce((a,b)=>b.priority>a.priority?b:a);
+      for(const s of edge.segments)if(s.hidden===hidden)D.line(at(edge,s.lo),at(edge,s.hi),style.color,style.width*(hidden?.8:1),{dash:hidden?[5,4]:undefined,alpha:hidden?.7:1});
+    }
     if(point!=null&&net.pt.length<=26){
       // The question's complete lettering is part of the given diagram. Keep
       // neutral points visible while only the tracked copies gain emphasis.
@@ -292,17 +335,20 @@
     const start=clamp(d.s.phFold||0),fold=start+(1-start)*phase(t,.5,2.6);
     return{fold,faces:d.M.net.at(fold)};
   }
+  function skewView(d,fold){
+    // Native p3-4 camA4/camFold is a display transform, separate from the
+    // explorer values and the exact edge-classification geometry.
+    const kind=d.M.net.kind,pitch=d.s.phPitch==null?70:d.s.phPitch,kp=kind==='tetra'?46:kind==='octa'?48:Math.max(0,(d.s.phPitch==null?66:d.s.phPitch)-28);
+    return{...d,s:{...d.s,phYaw:(d.s.phYaw==null?0:d.s.phYaw)+(kind==='cube'?-18:-24)*fold,phPitch:Math.max(-10,pitch-kp*fold)}};
+  }
   function drawSkew(b,t,d){
-    const {G,M}=d,sol=M.sol,{fold,faces}=skewPose(d,t),D=prepare(b,d,faces.flat()),stage=t<2.6?'fold':t<4.3?'meet':t<5.7?'par':t<6.5?'rest':'skew';
+    const {G,M}=d,sol=M.sol,{fold,faces}=skewPose(d,t),D=prepare(b,skewView(d,fold),faces.flat()),stage=t<2.6?'fold':t<4.3?'meet':t<5.7?'par':t<6.5?'rest':'skew';
     if(fold<.999){
-      faces.map((ps,i)=>({i,depth:D.depth(G.cen3(ps))})).sort((a,z)=>z.depth-a.depth).forEach(({i})=>D.panel(faces[i],'sky',.055,'muted',1.7));
-      const labelled=new Set();
-      faces.forEach((ps,i)=>ps.forEach((p,j)=>{
-        const key=M.net.edgeKey(i,j);if(key!==M.ref.key)return;
-        const q=ps[(j+1)%ps.length];D.line(p,q,'amber',4.5);
-        const center=G.mid3(p,q),signature=[center.x,center.y,center.z].map(v=>v.toFixed(6)).join(',');
-        if(!labelled.has(signature)){labelled.add(signature);D.label(center,M.ref.name,{color:'amber',size:16,gap:13});}
-      }));
+      faces.map((ps,i)=>({i,depth:D.depth(G.cen3(ps))})).sort((a,z)=>z.depth-a.depth).forEach(({i})=>D.fill(faces[i],'sky',.055));
+      const same=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y,a.z-b.z)<1e-7,edges=netBoundaryEdges(D,faces),at=(e,u)=>G.add3(e.a,G.mul3(G.sub3(e.b,e.a),u));
+      for(const e of edges)e.reference=e.faces.some(i=>faces[i].some((a,j)=>{const b=faces[i][(j+1)%faces[i].length];return M.net.edgeKey(i,j)===M.ref.key&&((same(e.a,a)&&same(e.b,b))||(same(e.a,b)&&same(e.b,a)));}));
+      for(const hidden of[true,false])for(const e of edges)for(const s of e.segments)if(s.hidden===hidden)D.line(at(e,s.lo),at(e,s.hi),e.reference?'amber':'muted',(e.reference?4.5:1.7)*(hidden?.8:1),{dash:hidden?[5,4]:undefined,alpha:hidden?.7:1});
+      edges.filter(e=>e.reference).forEach(e=>D.label(G.mid3(e.a,e.b),M.ref.name,{color:'amber',size:16,gap:13}));
       D.flush();return;
     }
     const visible=new Set();M.net.faceInfo.forEach((f,i)=>{if(D.facing(f.n))M.net.faces[i].poly.forEach((_,j)=>visible.add(M.net.edgeKey(i,j)));});
@@ -311,6 +357,10 @@
       const r=G.relEdges(sol,M.ref,e),selected=stage==='meet'&&(r==='meet'||r==='ext')||stage==='par'&&r==='par'||stage==='skew'&&r==='skew';
       for(const[a,z]of parts.get(e.key))D.line(a,z,r==='ref'?'amber':selected?(r==='par'?'sky':r==='skew'?'green':'rose'):'muted',r==='ref'?4.5:selected?3.8:1.6,{dash:visible.has(e.key)?undefined:[5,4],alpha:visible.has(e.key)?1:.7});
     });
+    if(stage==='skew'){
+      const degree=new Map();sol.edges.filter(e=>G.relEdges(sol,M.ref,e)==='skew').forEach(e=>[e.u,e.v].forEach(k=>degree.set(k,(degree.get(k)||0)+1)));
+      degree.forEach((count,k)=>{D.dot(sol.verts[k],'green',3.2);if(count>1)D.label(sol.verts[k],k,{color:'green',size:12,gap:10});});
+    }
     D.label(G.mid3(sol.verts[M.ref.u],sol.verts[M.ref.v]),M.ref.name,{color:'amber',size:16});D.flush();
   }
   function projectedEdgePieces(sol,D,G){
@@ -432,5 +482,5 @@
     const key=`g7-polyhedra/${id}`;lessonInfo[key]=rows.map(r=>({legacyLabel:r.legacyLabel,duration:9.4}));
     registry[key]=(lab,state)=>{const source=bind(id,lab,state);if(!source)return[];return rows.map((r,i)=>{const d=r.build(source);if(d.M.net){const closed=d.M.net.at(1);d.netSigns=closed.map((ps,j)=>Math.sign(d.G.dot3(d.G.cross3(d.G.sub3(ps[1],ps[0]),d.G.sub3(ps[2],ps[0])),d.M.net.faceInfo[j].n))||1);}return{id:`polyhedra-${id}-${i}`,label:id==='p2-1'||id==='p4-3'?r.title:r.legacyLabel||'그림으로 풀이',legacyLabel:r.legacyLabel,title:r.title,duration:9.4,stops:[.8,2.6,4.5,5.6,7.1],model:d,given:r.given(d),draw:r.draw,frame:r.describe};});};
   }
-  return {bind,groups,countPose,facingFace,cornerPolygons,incidenceCounts,exceptionSolid,netPoint,matchingPoints,netFold,skewPose,projectedEdgePieces,shortestGeometry,sectionWorld,sectionModel,sectionExpansion,truncationPose,prepare,plain,recipes,registry,lessonInfo};
+  return {bind,groups,countPose,facingFace,cornerPolygons,incidenceCounts,exceptionSolid,netPoint,matchingPoints,netFold,netBoundaryEdges,skewPose,skewView,projectedEdgePieces,shortestGeometry,sectionWorld,sectionModel,sectionExpansion,truncationPose,prepare,plain,recipes,registry,lessonInfo};
 });

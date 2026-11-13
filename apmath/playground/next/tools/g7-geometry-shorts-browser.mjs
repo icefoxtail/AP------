@@ -80,11 +80,19 @@ try {
               try { lab.render(); } finally { b._text = original; }
               const c = lab.ui.canvas, rgba = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
               let ink = 0; for (let k = 3; k < rgba.length; k += 4) if (rgba[k] > 20) ink++;
+              // KaTeX retains source TeX in its accessibility annotation. Only
+              // inspect text outside rendered math; a missing delimiter used
+              // to leave bare commands visible while the dollar-only gate passed.
+              const plainMathText = [lab.learning.ui.caption, lab.learning.ui.formula, lab.learning.ui.goal].map(el => {
+                const clone = el.cloneNode(true);
+                clone.querySelectorAll('.katex').forEach(node => node.remove());
+                return clone.textContent;
+              }).join(' ');
               frames.push({
                 t, ink, width: b.W, height: b.H,
                 overflow: document.documentElement.scrollWidth > innerWidth + 2,
                 katexErrors: document.querySelectorAll('.katex-error').length,
-                unrenderedMath: /\$/.test(lab.learning.ui.caption.textContent + lab.learning.ui.formula.textContent + lab.learning.ui.goal.textContent),
+                unrenderedMath: /\$|\\[A-Za-z]+/.test(plainMathText),
                 finiteText: text.every(x => Number.isFinite(x.x) && Number.isFinite(x.y)),
                 clippedControls: [...lab.learning.ui.root.querySelectorAll('button')].filter(x => {
                   const r = x.getBoundingClientRect();
@@ -184,6 +192,33 @@ try {
     }
   }
   await context.close();
+
+  // The native p3-4 default starts fully folded. Its separate editable zero
+  // fold condition exposed a real missing-occlusion path between .5 and 2.6s.
+  // Capture that actual pose explicitly; seeking is static evidence only.
+  if (targets.includes('g7-polyhedra') && (!includeScenes.size || includeScenes.has('p3-4'))) {
+    for (const viewport of [viewports[0], viewports[3]]) {
+      const extra = await pageFor(viewport);
+      await load(extra.page, 'g7-polyhedra');
+      for (const choice of [0, 1, 2]) {
+        const result = await extra.page.evaluate(async choice => {
+          lab.goScene(lab.list.findIndex(sc => sc.id === 'p3-4')); lab.learning.explore();
+          lab.s.phFold = 0;
+          const state = () => JSON.stringify(Object.fromEntries(Object.entries(lab.s).filter(([key]) => !['lessonOn', 'lessonEntry', 'playing'].includes(key))));
+          const before = state();
+          lab.learning.choice = choice; lab.learning.play(); lab.learning.pause(); lab.learning.seek(1.55);
+          await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+          return { scene: lab.scene.id, plan: lab.learning.active.id, startFold: lab.learning.active.model.s.phFold, elapsed: lab.learning.elapsed, untouched: before === state() };
+        }, choice);
+        assert.equal(result.scene, 'p3-4'); assert.equal(result.startFold, 0); assert.equal(result.elapsed, 1.55); assert.ok(result.untouched);
+        const file = `geometry-native-g7-polyhedra-p3-4-${choice}-${viewport.width}-fold-half.png`;
+        await extra.page.screenshot({ path: path.join(out, file) });
+        report.interactions.push({ name: 'native-zero-fold-skew-edge-midpoint', viewport, choice, file, ...result });
+      }
+      await extra.context.close();
+    }
+    save();
+  }
 
   // A native edit, replay, navigation, reload and an explicit question choice.
   if (targets.includes('g7-area')) {

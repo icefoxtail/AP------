@@ -281,3 +281,185 @@ test('peer regression: marked radii start at the actual circle center through ev
     }
   }finally{G.scene3=scene3;G.netPose=netPose;}
 });
+
+test('visual regression: only separated smooth cut edges become net boundaries',async()=>{
+  const lab=await load(),G=lab.api;
+  const samePoint=(a,b)=>length(sub(a,b))<1e-6;
+  const polygonNet=G.solidNet([[-2,-2],[2,-2],[2,2],[-2,2]],5,.4,null,0).net;
+  for(const u of[0,.38,1])assert.equal(api.netCutBoundaries(G,polygonNet,G.netPose(polygonNet,u)),polygonNet,'non-smooth polyhedral nets retain the identical native object');
+  for(const kind of['cylinder','cone'])for(const r of[2,7]){
+    const h=kind==='cone'?4:9,net=G.solidNet(G.circleBase(r,32),h,kind==='cone'?0:1,Array(32).fill(true),16),before=JSON.stringify(net.net);
+    for(const u of[0,.23,.61,1]){
+      const poses=G.netPose(net.net,u),drawNet=api.netCutBoundaries(G,net.net,poses),actualEdges=[];
+      // Count actual transformed patch edges, independently of the stored
+      // parent/neighbor graph. A shared strip edge has incidence two; a cut
+      // that has opened has one occurrence on either side of the gap.
+      for(const k of net.lat){const f=net.net.pieces[k],p=f.pts.map(q=>G.applyT(poses[k],q));p.forEach((a,i)=>actualEdges.push([a,p[(i+1)%p.length]]));}
+      let opened=0;
+      for(const k of net.lat){const f=net.net.pieces[k];f.edges.forEach((e,i)=>{
+        const changed=drawNet.pieces[k].edges[i];
+        if(e.kind!=='s'){assert.deepEqual(changed,e);return;}
+        const a=G.applyT(poses[k],f.pts[e.i]),b=G.applyT(poses[k],f.pts[(e.i+1)%f.pts.length]);
+        const boundary=actualEdges.filter(([c,d])=>(samePoint(a,c)&&samePoint(b,d))||(samePoint(a,d)&&samePoint(b,c))).length===1;
+        assert.equal(changed.kind,boundary?'c':'s',`${kind} u=${u}, piece ${k}`);
+        if(boundary){opened++;assert.equal(changed.nb,-1);near(length(sub(a,b)),kind==='cone'?Math.hypot(r,h):h);}
+        else assert.equal(changed.nb,e.nb);
+      });}
+      assert.equal(opened,u===0?0:2);
+      assert.equal(JSON.stringify(net.net),before,'render-only boundary classification cannot mutate the native net');
+    }
+  }
+});
+
+test('visual regression: production Board draws both open cylinder and cone boundaries without subdivision lines',async()=>{
+  const lab=await load(),G=lab.api,scene3=G.scene3;
+  let D;
+  G.scene3=(...args)=>(D=scene3(...args));
+  try{
+    for(const[width,height]of[[1439,713],[820,880],[1023,581],[390,598]]){
+      lab.board.resize(width,height);lab.setViewportWidth(width);
+      for(const[id,settings,label]of[['sv1-3',{sR3:5,sH3:7},'겉넓이'],['sv1-1',{svShape:'circ',sR:3,sH:8},'겉넓이'],['sv2-2',{},'겉넓이'],['sv2-3',{svTri:'D',s3K:2},'겉넓이'],['sv4-1',{svTri:'B',s41K:2,svAxis:'short'},'겉넓이']]){
+        const p=build(lab,id,settings).find(p=>p.legacyLabel===label),before=JSON.stringify(lab.s),r=render(lab,p,p.duration),net=p.model.geometry.net,poses=G.netPose(net,1),drawNet=api.netCutBoundaries(G,net,poses);
+        const close=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y)<1e-7;
+        const exactPath=(a,b)=>r.paths.filter(path=>path.points.length===2&&((close(path.points[0],a)&&close(path.points[1],b))||(close(path.points[1],a)&&close(path.points[0],b))));
+        let count=0;
+        net.pieces.forEach((f,k)=>f.edges.forEach((e,i)=>{
+          if(e.kind!=='s')return;
+          const a=D.P(G.applyT(poses[k],f.pts[e.i])),b=D.P(G.applyT(poses[k],f.pts[(e.i+1)%f.pts.length])),paths=exactPath(a,b);
+          if(drawNet.pieces[k].edges[i].kind==='c'){
+            count++;assert.ok(paths.some(x=>x.options.color==='ink'&&!x.options.dash),`${id}: missing cut boundary`);
+          }else assert.equal(paths.length,0,`${id}: internal smooth subdivision must remain invisible`);
+        }));
+        assert.equal(count,2);assert.equal(JSON.stringify(lab.s),before);
+      }
+    }
+  }finally{G.scene3=scene3;}
+});
+
+test('visual regression: cone rotation profile and complete sweep fit four actual canvas sizes',async()=>{
+  const lab=await load();
+  // Canvas extents are from the reviewed 1440/820/1024/390 browser captures.
+  for(const[viewport,width,height]of[[1440,1439,713],[820,820,880],[1024,1023,581],[390,390,598]]){
+    lab.board.resize(width,height);lab.setViewportWidth(viewport);
+    for(const settings of[{svTri:'B',s41K:1,svAxis:'long'},{svTri:'D',s41K:1,svAxis:'short'},{svTri:'D',s41K:1,svAxis:'long',svYaw:-60,svPitch:35}]){
+      const plans=build(lab,'sv4-1',settings),before=JSON.stringify(lab.s);
+      for(const p of plans)for(const t of[0,.5,1.1,1.8,2.199]){
+        const {paths}=render(lab,p,t);assert.ok(paths.length>0);
+        for(const path of paths)for(const point of path.points){const q=lab.board.toS(point);assert.ok(q.x>=0&&q.x<=width&&q.y>=0&&q.y<=height,`${p.id}@${t} ${viewport}: clipped geometry ${JSON.stringify(q)}`);}
+      }
+      assert.equal(JSON.stringify(lab.s),before);
+    }
+  }
+});
+
+test('visual regression: joined boundaries clip actual ray-triangle intervals and a finite cylinder independently',async()=>{
+  const lab=await load(),G=lab.api,vec=(x,y,z)=>({x,y,z});
+  const D={vw:vec(0,0,1),P:p=>({x:p.x,y:p.y}),facing:n=>n.z>0};
+  const edgeMesh=z=>({faces:[],edges:[{a:vec(-2,0,z),b:vec(2,0,z),f1:-1,f2:-1}]}),square={faces:[{pts:[vec(-1,-1,1),vec(1,-1,1),vec(1,1,1),vec(-1,1,1)],n:vec(0,0,1)}],edges:[]};
+  const clipped=api.joinedEdgeVisibility(G,D,[edgeMesh(0),square]);
+  assert.deepEqual(clipped.map(r=>r.hidden),[false,true,false]);near(clipped[1].lo,.25,1e-7);near(clipped[1].hi,.75,1e-7);
+  for(const z of[1,2])assert.ok(api.joinedEdgeVisibility(G,D,[edgeMesh(z),square]).every(r=>!r.hidden),'coplanar and front edges stay solid');
+  const p=build(lab,'sv5-6',{svTop:'cyl',s56A:8,s56H:4,s56R:3,s56Z:3})[0],m=p.model;
+  const d=G.scene3(lab.board,m.camera,{tab:'review'}),extent=4;
+  // Independent finite-cylinder ray intersection: solve the radial quadratic
+  // and intersect its parameter interval with the actual height slab.
+  const cylinderHit=(q,center)=>{
+    const x=q.x-center.x,z=q.z-center.z,V=d.vw,A=V.x*V.x+V.z*V.z,B=2*(x*V.x+z*V.z),C=x*x+z*z-9,disc=B*B-4*A*C;
+    if(disc<0)return false;
+    const lo=(-B-Math.sqrt(disc))/(2*A),hi=(-B+Math.sqrt(disc))/(2*A),y0=(4-q.y)/V.y,y1=(7-q.y)/V.y;
+    return Math.min(hi,y1)>Math.max(lo,y0,1e-6)+1e-5;
+  };
+  let hiddenAtStart=0;
+  for(const u of[0,.35,1]){
+    const offset=d.hx((2.6*extent+1)*u),meshes=m.parts.map((part,i)=>G.xfMesh(api.componentMesh(G,part),G.shiftT(i?offset:vec(0,0,0)))),runs=api.joinedEdgeVisibility(G,d,meshes);
+    for(const r of runs.filter(r=>r.part===0&&!r.ownHidden&&r.source.a.y===4&&r.source.b.y===4)){
+      const q=G.mul3(add(r.points[0],r.points[1]),.5);assert.equal(r.hidden,cylinderHit(q,offset),'box roof edge must agree with a separate finite-cylinder equation');
+      if(!u&&r.hidden)hiddenAtStart++;
+      if(u===1)assert.equal(r.hidden,false,'the fully separated cylinder cannot hide the box roof');
+    }
+  }
+  assert.ok(hiddenAtStart>0,'the actual reported top-edge occlusion is exercised');
+});
+
+test('visual regression: joined production paths preserve current poses and separate cone names from caps',async()=>{
+  const lab=await load(),G=lab.api,scene3=G.scene3;let D;
+  G.scene3=(...args)=>(D=scene3(...args));
+  try{
+    for(const[viewport,w,h]of[[1440,1439,713],[820,820,880],[1024,1023,581],[390,390,598]]){
+      lab.board.resize(w,h);lab.setViewportWidth(viewport);
+      for(const[id,state]of[['sv5-6',{svTop:'cyl'}],['sv5-6',{svTop:'hemi'}],['sv4-3',{}],['sv4-4',{}],['sv6-1',{jcKind:'pyramid'}]]){
+        const p=build(lab,id,state)[0],before=JSON.stringify(lab.s);
+        for(const t of[0,2.5,9.8]){
+          const rendered=render(lab,p,t),runs=p.model.joinedPose.edges;
+          const same=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y)<1e-7;
+          for(const run of runs){const points=run.points.map(D.P);assert.ok(rendered.paths.some(path=>path.options.color==='ink'&&Boolean(path.options.dash)===run.hidden&&path.points.length===2&&same(path.points[0],points[0])&&same(path.points[1],points[1])),`${id}@${t}: exact visible/hidden production segment missing`);}
+        }
+        assert.equal(JSON.stringify(lab.s),before);
+      }
+      const p=build(lab,'sv4-3')[0],drawn=[],old=lab.board.ctx.fillText;
+      lab.board.ctx.fillText=function(text,x,y){drawn.push({text:String(text),x,y});return old.call(this,text,x,y);};
+      try{render(lab,p,9.8);}finally{lab.board.ctx.fillText=old;}
+      const names=drawn.filter(x=>x.text==='원뿔'),caps=drawn.filter(x=>x.text.startsWith('붙은 면'));
+      assert.equal(names.length,2);assert.equal(caps.length,2);
+      for(const name of names){const cap=caps.reduce((a,b)=>Math.abs(a.x-name.x)<Math.abs(b.x-name.x)?a:b);assert.ok(Math.abs(name.y-cap.y)>=24,`${viewport}: cone label overlaps its cap label`);}
+    }
+  }finally{G.scene3=scene3;}
+});
+
+test('visual regression: retained spherical silhouettes stay solid while cut edges retain occlusion',async()=>{
+  const lab=await load(),G=lab.api,scene3=G.scene3;let D;
+  G.scene3=(...args)=>(D=scene3(...args));
+  try{
+    lab.board.resize(1023,581);lab.setViewportWidth(1024);
+    for(const remKind of['three','seven']){
+      const p=build(lab,'sv3-7',{remR:3,remKind})[0],before=JSON.stringify(lab.s),rendered=render(lab,p,9.8),mesh=p.model.geometry,runs=api.edgeVisibility(G,D,mesh),silhouettes=(mesh.silhouetteParts||[mesh]).flatMap(part=>G.silLines(part,D.vw));
+      assert.equal(runs.filter(r=>r.silhouette).length,silhouettes.length);assert.ok(silhouettes.length>0);
+      assert.ok(runs.filter(r=>r.silhouette).every(r=>!r.hidden));
+      const same=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y)<1e-7;
+      for(const[a,b]of silhouettes){const x=D.P(a),y=D.P(b);assert.ok(rendered.paths.some(path=>!path.options.dash&&path.options.color==='ink'&&path.points.length===2&&same(path.points[0],x)&&same(path.points[1],y)),'retained analytic silhouette has a solid production path');}
+      const away=scene3(lab.board,{svYaw:-60,svPitch:0},{tab:'review'}),occluded=api.edgeVisibility(G,away,mesh);
+      assert.ok(occluded.some(r=>!r.silhouette&&r.hidden),'turning away exposes real cut-edge occlusion, which must remain dashed');
+      assert.equal(JSON.stringify(lab.s),before);
+    }
+    const cavity=api.cavityMesh(G,{r2:6,r1:3,h2:8,h1:4});assert.equal(cavity.convexOuterSilhouette,undefined,'the exemption cannot disable real cavity occlusion');
+  }finally{G.scene3=scene3;}
+});
+
+test('visual regression: removed cone-frustum cap keeps a curved outline without radial subdivision spokes',async()=>{
+  const lab=await load(),G=lab.api,scene3=G.scene3;let bodies=[];
+  G.scene3=(...args)=>{const D=scene3(...args),body=D.body;D.body=bd=>{bodies.push(bd);return body(bd);};return D;};
+  try{
+    for(const[viewport,w,h]of[[1440,1439,713],[820,820,880],[1024,1023,581],[390,390,598]]){
+      lab.board.resize(w,h);lab.setViewportWidth(viewport);
+      const p=build(lab,'sv4-2',{svAxis2:'leg',s42J:3,s42K:1}).find(p=>p.legacyLabel==='부피'),before=JSON.stringify(lab.s);
+      for(const t of[4.1,5.5,7.3]){
+        bodies=[];const r=render(lab,p,t),cap=bodies.find(bd=>bd.fill==='rose')?.mesh;assert.ok(cap?.rev,'the supplemental cone must carry native curved-surface metadata');
+        const m=p.model.proof;near(Math.max(...cap.faces.flatMap(f=>f.pts.map(p=>p.y))),m.h2);near(Math.min(...cap.faces.flatMap(f=>f.pts.map(p=>p.y))),m.h);
+        const nonRim=cap.edges.filter(e=>Math.abs(e.a.y-e.b.y)>1e-8);assert.ok(nonRim.every(e=>e.smooth),'sampling generators are not true cone edges');
+        const d=scene3(lab.board,p.model.camera,{tab:'review'});assert.equal(G.silLines(cap,d.vw).length,2,'a full cone retains its two true view-dependent generators');
+        const longRose=r.paths.filter(path=>path.options.color==='rose'&&!path.options.dash&&path.points.length===2&&Math.hypot(path.points[0].x-path.points[1].x,path.points[0].y-path.points[1].y)>m.h1*.6);
+        assert.ok(longRose.length<=6,`${viewport}@${t}: radial cone sampling spokes leaked into production drawing`);
+      }
+      assert.equal(JSON.stringify(lab.s),before);
+    }
+  }finally{G.scene3=scene3;}
+});
+
+test('visual regression: sector and half-round prism strips close at both actual horizontal extrema',async()=>{
+  const lab=await load(),G=lab.api,scene3=G.scene3;let D;
+  G.scene3=(...args)=>(D=scene3(...args));
+  try{
+    for(const[w,h]of[[1439,713],[820,880],[1023,581],[390,598]]){
+      lab.board.resize(w,h);lab.setViewportWidth(w);
+      for(const[id,state]of[['sv1-2',{sR2:4,sTh:90,sH2:7}],['sv1-2',{sR2:7,sTh:240,sH2:9}],['sv1-5',{sW:4,sRr:2,sH5:5}],['sv1-5',{sW:9,sRr:4,sH5:7}]]){
+        const p=build(lab,id,state)[0],before=JSON.stringify(lab.s),drawn=render(lab,p,9.8),geometry=p.model.geometry,poses=G.netPose(geometry.net,1);
+        const sidePoints=geometry.lat.flatMap(k=>geometry.net.pieces[k].pts.map(q=>D.P(G.applyT(poses[k],q)))),xs=sidePoints.map(p=>p.x),ys=sidePoints.map(p=>p.y),y0=Math.min(...ys),y1=Math.max(...ys);
+        near(y1-y0,p.model.h);
+        // These two extremal vertical segments follow from the actual laid-out
+        // lateral surface, without consulting edge kind or parent metadata.
+        for(const x of[Math.min(...xs),Math.max(...xs)])assert.ok(drawn.paths.some(path=>path.points.length===2&&path.options.color==='ink'&&!path.options.dash&&path.points.every(p=>Math.abs(p.x-x)<1e-7)&&Math.abs(Math.min(...path.points.map(p=>p.y))-y0)<1e-7&&Math.abs(Math.max(...path.points.map(p=>p.y))-y1)<1e-7),`${id}, width ${w}: open lateral-strip end`);
+        assert.equal(JSON.stringify(lab.s),before);
+      }
+    }
+  }finally{G.scene3=scene3;}
+});
