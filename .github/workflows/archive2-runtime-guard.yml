@@ -60,7 +60,9 @@ jobs:
   runtime-contract:
     name: Archive2 runtime contract
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    # Full history checkout plus the runtime suite consumed the former 5-minute
+    # job budget before Chrome could start. Keep every check and allow both stages.
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
