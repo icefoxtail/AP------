@@ -1,0 +1,52 @@
+{
+  "ordinal": 11,
+  "source_image": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q11.png",
+  "source_review": "Viewed q11 PNG: a skew quadrilateral ABCD with diagonals AC and BD crossing at M. AC halves have one tick style and BD halves a distinct tick style. No angles, colors, or auxiliary lines are present.",
+  "allowed_marks": [
+    "quadrilateral ABCD",
+    "diagonals AC and BD meeting at M",
+    "AM=CM as a distinct equal-length tick group",
+    "BM=DM as another distinct equal-length tick group"
+  ],
+  "forbidden_solution_elements": [
+    "vertical-angle marks",
+    "congruence coloring or shaded triangles",
+    "proof-only labels or values",
+    "answer choice or statement of which option is false"
+  ],
+  "uncertainties": [
+    "Quadrilateral shape is schematic; exact condition preserved is that M bisects both diagonals."
+  ],
+  "constructed_realization": {
+    "normalization": "M is the unique line intersection of AC and BD. Schematic endpoints A=(-2,2), C=(2,-2), B=(-2,-1), D=(2,1) make both diagonals bisected at M=(0,0).",
+    "free_parameters": [
+      {
+        "symbol": "A_and_C_offsets",
+        "value": "±(2,2)",
+        "purpose": "schematic diagonal direction/scale only"
+      },
+      {
+        "symbol": "B_and_D_offsets",
+        "value": "±(2,1)",
+        "purpose": "schematic diagonal direction/scale only"
+      }
+    ],
+    "source_condition_residuals": [
+      {
+        "condition": "M lies on AC and BD",
+        "status": "PASS",
+        "residual": "0 incidence on both lines"
+      },
+      {
+        "condition": "AM=CM",
+        "status": "PASS",
+        "residual": "0 length difference; EQUAL_DISTANCE audit PASS"
+      },
+      {
+        "condition": "BM=DM",
+        "status": "PASS",
+        "residual": "0 length difference; EQUAL_DISTANCE audit PASS"
+      }
+    ]
+  }
+}

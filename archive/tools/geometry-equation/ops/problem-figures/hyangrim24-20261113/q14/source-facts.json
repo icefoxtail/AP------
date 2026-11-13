@@ -1,0 +1,33 @@
+{
+  "ordinal": 14,
+  "givenFacts": [
+    "정구각형 ABCDEFGHI",
+    "AB와 DC의 연장선의 교점 J",
+    "각 x 표시"
+  ],
+  "layout": "정확 작도: 중심 O와 반지름 5의 정구각형. A는 위쪽(90°), B~I는 40° 간격으로 시계 방향. J는 직선 AB와 DC의 실제 교점. 회전 각도 및 O는 내부 구성이고 보이지 않음.",
+  "visibleMarks": [
+    "A~I 이름",
+    "J 이름",
+    "x 각호"
+  ],
+  "mustNotAdd": [
+    "정구각형 외각 크기",
+    "x의 수치",
+    "x 뒤 도 기호"
+  ],
+  "normalizationAndResiduals": {
+    "normalization": "A radius-5 circle centered at hidden O; scale and translation are arbitrary",
+    "freeVariables": [
+      "global rotation, translation, and scale; all nine vertices remain equally spaced by 40 degrees"
+    ],
+    "expectedResiduals": {
+      "nine_side_lengths_equal": "constructed from common center and common radius at 40-degree spacing",
+      "J_incidence": "J is the actual intersection of lines AB and DC"
+    },
+    "tolerance": "polar construction is high-precision; angle markings checked against actual derived geometry"
+  },
+  "evidence": [
+    ".tmp/problem-svg/source/q14-pdf-400dpi-detail.png (original PDF page 2; x has no degree glyph)"
+  ]
+}

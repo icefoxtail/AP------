@@ -1,0 +1,490 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "88"
+            },
+            {
+              "kind": "integer",
+              "value": "44"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "95"
+            },
+            {
+              "kind": "integer",
+              "value": "-78"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-40"
+            },
+            {
+              "kind": "integer",
+              "value": "-72"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-85"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L3",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L4",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L5",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X1",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "L1",
+          "L3"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X2",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "L3",
+          "L5"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X3",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "L5",
+          "L2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X4",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "L2",
+          "L4"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X5",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "L4",
+          "L1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "l1s1",
+      "refs": [
+        "A",
+        "X1"
+      ]
+    },
+    {
+      "id": "l1s2",
+      "refs": [
+        "X1",
+        "X5"
+      ]
+    },
+    {
+      "id": "l1s3",
+      "refs": [
+        "X5",
+        "C"
+      ]
+    },
+    {
+      "id": "l2s1",
+      "refs": [
+        "C",
+        "X4"
+      ]
+    },
+    {
+      "id": "l2s2",
+      "refs": [
+        "X4",
+        "X3"
+      ]
+    },
+    {
+      "id": "l2s3",
+      "refs": [
+        "X3",
+        "E"
+      ]
+    },
+    {
+      "id": "l3s1",
+      "refs": [
+        "E",
+        "X2"
+      ]
+    },
+    {
+      "id": "l3s2",
+      "refs": [
+        "X2",
+        "X1"
+      ]
+    },
+    {
+      "id": "l3s3",
+      "refs": [
+        "X1",
+        "B"
+      ]
+    },
+    {
+      "id": "l4s1",
+      "refs": [
+        "B",
+        "X5"
+      ]
+    },
+    {
+      "id": "l4s2",
+      "refs": [
+        "X5",
+        "X4"
+      ]
+    },
+    {
+      "id": "l4s3",
+      "refs": [
+        "X4",
+        "D"
+      ]
+    },
+    {
+      "id": "l5s1",
+      "refs": [
+        "D",
+        "X3"
+      ]
+    },
+    {
+      "id": "l5s2",
+      "refs": [
+        "X3",
+        "X2"
+      ]
+    },
+    {
+      "id": "l5s3",
+      "refs": [
+        "X2",
+        "A"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "X1",
+    "X2",
+    "X3",
+    "X4",
+    "X5"
+  ],
+  "caption": "다섯 꼭짓점을 잇는 오각별에서 안쪽 오각형의 꼭짓점에 표시된 각 a부터 j까지를 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "오른쪽 그림의 오각별에서 표시된 열 각 a,b,c,d,e,f,g,h,i,j",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks.angles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "오각별 선분과 교차부에 붙은 각 이름 a~j"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "sourceQuote": "오른쪽 그림에서 ∠a+∠b+∠c+∠d+∠e+∠f+∠g+∠h+∠i+∠j의 크기는?",
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "X1",
+    "X2",
+    "X3",
+    "X4",
+    "X5"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "abx1",
+        "refs": [
+          "A",
+          "X2",
+          "B"
+        ],
+        "label": "a",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "cex1",
+        "refs": [
+          "D",
+          "X2",
+          "E"
+        ],
+        "label": "b",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "eax2",
+        "refs": [
+          "E",
+          "X3",
+          "A"
+        ],
+        "label": "c",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "bdx2",
+        "refs": [
+          "C",
+          "X3",
+          "D"
+        ],
+        "label": "d",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "dcx3",
+        "refs": [
+          "E",
+          "X4",
+          "D"
+        ],
+        "label": "e",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "aex3",
+        "refs": [
+          "B",
+          "X4",
+          "C"
+        ],
+        "label": "f",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "cbx4",
+        "refs": [
+          "C",
+          "X5",
+          "D"
+        ],
+        "label": "g",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "edx4",
+        "refs": [
+          "A",
+          "X5",
+          "B"
+        ],
+        "label": "h",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "bax5",
+        "refs": [
+          "B",
+          "X1",
+          "C"
+        ],
+        "label": "i",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "dcx5",
+        "refs": [
+          "E",
+          "X1",
+          "A"
+        ],
+        "label": "j",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      }
+    ]
+  }
+}

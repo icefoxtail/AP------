@@ -1,0 +1,94 @@
+{
+  "ordinal": 13,
+  "givenFacts": [
+    "정n각형의 연속 경계 변 AB, BC, CD, DE, …",
+    "정육각형의 경계 BC-G-H-I-J-B",
+    "정사각형의 경계 C-D-F-G-C"
+  ],
+  "layout": "정확 작도: BC=CD=CG=1로 정규화. 기저 방향을 수평 기준에서 15° 시계방향으로 회전한 뒤, 해당 기저에 대해 정육각형 BC-G-H-I-J와 정사각형 C-D-F-G를 구성한다. BC,CD,DE는 같은 정다각형 연속변 경계와 일치하도록 놓는다. 원문에서 B로 들어오는 북서쪽 AB 방향은 전체 변이 아니라 일부만 보이므로, 화면에는 A-B의 중점을 끝으로 하는 무라벨·무점 짧은 선분으로 표시한다. 전역 15° 회전은 원문 그림 기울기만 반영하며 내각·변 길이 관계를 바꾸지 않는다. 내부 방향·회전 계산은 렌더 텍스트가 아니다.",
+  "visibleMarks": [
+    "B,C,D,E,F,G,H,I,J 점 이름 (A는 원문에 표시되지 않음)",
+    "정육각형·정사각형 및 정n각형의 일부 변",
+    "E의 남서쪽에 떨어져 있는 세 개의 계속점"
+  ],
+  "mustNotAdd": [
+    "n 값",
+    "정n각형 내각/정육각형 내각/정사각형 내각의 수치",
+    "풀이 또는 정답 유도 문구",
+    "내부작도 숫자나 각도 (1, 60°, 90°, 120°, 150°)의 화면 표시",
+    "15° 회전값 또는 축 보조점 axisX의 표시",
+    "A 이름/끝점 표시, E의 세 점을 잇는 점선, 정n각형의 나머지 경계"
+  ],
+  "uncertainties": [
+    "PDF 원본 crop에서 B로 들어오는 북서쪽 선은 A 이름이나 끝점 점 없이 잘린 일부 경계로 보인다. A 좌표는 내부 작도에만 쓰고 점 표시/문자 라벨은 생략한다.",
+    "E 남서쪽의 세 점은 서로 떨어진 계속점이다. 이를 선/점선으로 연결하거나 정다각형 경계를 더 그리지 않는다."
+  ],
+  "normalizationAndResiduals": {
+    "normalization": "source-length=1 for shared edges; exact rigid clockwise rotation 15° from horizontal basis",
+    "freeVariables": [
+      "global translation and scale; no displayed metric scale",
+      "unlabelled AB arm is a cropped visual stub, shown to half the constructed AB edge length as a neutral source-proportion approximation"
+    ],
+    "expectedResiduals": {
+      "rigidRotation": "The exact radical coordinates are the original constructed points transformed by the common matrix [[(√6+√2)/4,(√6−√2)/4],[(√2−√6)/4,(√6+√2)/4]]",
+      "nGonConsecutiveEdges": "AB=BC=CD=DE=1 by exact transformed coordinates",
+      "hexagon": "BC=CG=GH=HI=IJ=JB=1 and all six regular-hexagon turns preserved by the same rigid transform",
+      "square": "CD=DF=FG=GC=1 and all four right angles preserved by the same rigid transform",
+      "displayedABStub": "ABarmTip is the exact internal midpoint of B and the constructed A; only the B-to-midpoint arm is displayed, with no endpoint point or A label."
+    },
+    "tolerance": "Exact radical scalar expressions; no rounded intermediate values. The operation chain encodes one rigid clockwise 15° rotation."
+  },
+  "evidence": [
+    ".tmp/problem-svg/source/q13-pdf-400dpi-detail.png (원본 PDF page 2 crop: B 북서쪽 경계는 무라벨/무점, E 남서쪽은 분리된 세 점)",
+    "archive/assets/images/24_향림중_2학기_중간_중1_기출/q13.png (기존 표시 대조용; 일부 영역 마스킹)"
+  ],
+  "continuationDotPlacement": "세 점은 기존 E에서 남서쪽 source-length 1/4 간격의 ellipsis1/2/3 좌표에 놓는다. 좌표·displayPoints·hiddenPointNames는 그대로 두고 기존 hiddenPointNames 기본 DOT 옵션으로 세 개의 이름 없는 검은 POINT 마커를 표시한다. ABarmTip만 unmarkedPointNames에 남겨 B로 들어오는 북서쪽 짧은 변의 끝에 점이나 이름을 추가하지 않는다. TEXT 중점 문자 세 개를 대체하며 점 사이의 선/점선은 추가하지 않는다.",
+  "continuationDotReadabilityAdjustment": {
+    "reason": "Run11 actual original middle-dot text outlines occupy approximately 0.91–0.98 by 1.00–1.07 CSS px despite passing the measured font-size floor; original PDF continuation marks are three visible separate black dots.",
+    "supportedOption": "Existing hiddenPointNames default DOT with unmarkedPointNames [ABarmTip]; no engine extension, no new line or geometry.",
+    "removedTextLabels": [
+      "ellipsisDot1",
+      "ellipsisDot2",
+      "ellipsisDot3"
+    ],
+    "enabledExistingPointMarkers": [
+      "ellipsis1",
+      "ellipsis2",
+      "ellipsis3"
+    ],
+    "preserved": [
+      "every mathPlan node and coordinate",
+      "all display segments, circles, point selections and canvas640x480",
+      "all B–J names",
+      "cropped AB arm remains unnamed and has no endpoint dot",
+      "three separate continuation centers; no connecting line"
+    ],
+    "baselineMeasuredRootScale": {
+      "desktop": 0.4939778645833333,
+      "mobile": 0.5,
+      "tablet": 0.46780598958333336
+    },
+    "structuralPredictionOnly": {
+      "classification": "EXISTING_POINT_TOKEN_TIMES_MEASURED_BASELINE_CTM_NOT_NEW_BROWSER_EVIDENCE",
+      "radiusSvgPx": 3.2,
+      "strokeSvgPx": 0.8,
+      "radiusCssPx": {
+        "desktop": 1.5807291666666667,
+        "mobile": 1.6,
+        "tablet": 1.4969791666666667
+      },
+      "filledDiameterCssPx": {
+        "desktop": 3.1614583333333335,
+        "mobile": 3.2,
+        "tablet": 2.9939583333333335
+      },
+      "strokeOuterDiameterCssPx": {
+        "desktop": 3.556640625,
+        "mobile": 3.6,
+        "tablet": 3.368203125
+      },
+      "preflightRef": ".tmp/problem-svg/engine-q13-dot-preflight.json"
+    },
+    "actualCorrectedCandidateRender": "NOT_RUN; requires fresh approved remote production render, primitive observer and all three Archive viewports plus independent source/UI review"
+  }
+}

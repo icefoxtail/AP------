@@ -6,7 +6,7 @@ from solid_figure_observer import audit
 
 input_hash,payload=read_request(sys.stdin.buffer.read(4000001))
 try:
-    result=audit(payload['solidFigure'],payload['svg'])
+    result=audit(payload['solidFigure'],payload['svg'],payload.get('visualIdentity'))
     status='OK'
 except (ValueError,KeyError,TypeError) as error:
     result,status={'code':str(error)},'ERROR'

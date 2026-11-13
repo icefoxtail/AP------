@@ -1,0 +1,37 @@
+{
+  "ordinal": 20,
+  "givenFacts": [
+    "오각별",
+    "내부 교차로 생긴 다섯 위치에 두 개씩 이름 a,b,c,d,e,f,g,h,i,j"
+  ],
+  "layout": "원본 PDF page-3의 비대칭 오각별 실루엣을 따라 다섯 꼭짓점을 비대칭으로 둔다. 라벨 wedge는 PDF crop에서 읽어 X2(좌상) a=A-X2-B, b=D-X2-E; X1(상중/우측) j=E-X1-A, i=B-X1-C; X3(좌하) c=E-X3-A, d=C-X3-D; X4(하중) e=E-X4-D(왼쪽 wedge), f=B-X4-C(오른쪽 wedge); X5(우하) g=C-X5-D, h=A-X5-B로 지정한다. 각 쌍은 원문에 인쇄된 표시 위치만 따라가며 수치 각·정답·풀이 분할을 뜻하지 않는다.",
+  "visibleMarks": [
+    "원문과 비슷한 비대칭 오각별의 실선",
+    "원문이 표시한 열 wedge의 a~j 이름"
+  ],
+  "mustNotAdd": [
+    "각도 수치/정답/합 공식",
+    "삼각형 분할선, 색칠, 강조",
+    "원문에 없는 각 표시"
+  ],
+  "normalizationAndResiduals": {
+    "normalization": "five schematic tip positions from the original PDF shape; no metric values claimed",
+    "freeVariables": [
+      "all five tip locations because the source gives no lengths or numeric angles"
+    ],
+    "expectedResiduals": {
+      "topology": "five line segments through five crossings form the source pentagram and inner pentagon",
+      "wedgeLabels": "each a..j points to the source-indicated pair of rays at its crossing"
+    },
+    "tolerance": "exact intersections; visual positions remain a schematic realization"
+  },
+  "evidence": [
+    ".tmp/problem-svg/source/q20-pdf-400dpi-detail.png (direct original PDF page 3 crop)",
+    ".tmp/problem-svg/source/q20-x1-pdfcrop.png (upper-right crossing wedge labels)",
+    ".tmp/problem-svg/source/q20-x2-pdfcrop.png (upper-left a,b wedge pair)",
+    ".tmp/problem-svg/source/x3-centered.png (left-lower c,d)",
+    ".tmp/problem-svg/source/x4-centered.png (lower e,f)",
+    ".tmp/problem-svg/source/q20-x5-pdfcrop3.png (right-lower g,h)",
+    ".tmp/problem-svg/source/q20-x4-pdfcrop2.png (direct crop shows e on the left wedge E-X4-D and f on the right wedge B-X4-C)"
+  ]
+}

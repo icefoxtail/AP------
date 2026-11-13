@@ -1,0 +1,273 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAC",
+          "lBD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "mOnAC",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "M",
+          "lAC"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "mOnBD",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "M",
+          "lBD"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "acBisected",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "A",
+          "M",
+          "C",
+          "M"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "bdBisected",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "B",
+          "M",
+          "D",
+          "M"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "sMD",
+      "refs": [
+        "M",
+        "D"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M"
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eAC",
+        "count": 2,
+        "segments": [
+          "sAM",
+          "sMC"
+        ]
+      },
+      {
+        "id": "eBD",
+        "count": 1,
+        "segments": [
+          "sBM",
+          "sMD"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "caption": "사각형 ABCD의 대각선 AC와 BD가 M에서 만나고, 각각 AM=CM 및 BM=DM을 다른 눈금으로 표시한 그림.",
+  "accessibilityDescription": "사각형 ABCD의 두 대각선 AC, BD가 M에서 교차한다. AM과 CM은 두 눈금, BM과 DM은 한 눈금으로 각각 같은 길이를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "M은 AC와 BD의 중점이므로 AM=CM, BM=DM",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "M"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사각형과 두 대각선의 교점, 각 대각선의 서로 다른 같은 길이 표식"
+  ]
+}

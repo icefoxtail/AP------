@@ -1,0 +1,203 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "24"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "amLength",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "M"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "18"
+        }
+      },
+      {
+        "id": "mMidpoint",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "A",
+          "M",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "nMidpoint",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "B",
+          "N",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "abBcRatio",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "rational",
+          "numerator": "3",
+          "denominator": "2"
+        }
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "M",
+    "B",
+    "N",
+    "C"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAM",
+        "from": "A",
+        "to": "M",
+        "label": "18",
+        "unit": "cm",
+        "side": "ABOVE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "caption": "한 직선 위에 A, M, B, N, C가 이 순서로 놓이고, M은 AB의 중점, N은 BC의 중점이며 AM=18 cm, 2AB=3BC인 그림.",
+  "accessibilityDescription": "한 직선 위에 A, M, B, N, C가 차례로 있고 M, N은 각각 AB, BC의 중점이다. AM의 길이는 18 cm로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A-M-B-N-C가 일직선 순서, M은 AB의 중점, N은 BC의 중점, AM=18 cm, 2AB=3BC",
+      "mappedTo": [
+        "A",
+        "M",
+        "B",
+        "N",
+        "C"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직선 위 점의 순서, 중점 관계, AM=18 cm 표기"
+  ]
+}

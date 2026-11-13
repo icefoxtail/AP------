@@ -33,6 +33,8 @@ import {failureGuidance} from './error-guidance.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
 const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../../').replace(/\\/g,'/')+'/';
+const hasProblemCaption=v=>!!v&&typeof v==='object'&&(Object.hasOwn(v,'problemCaption')||Object.values(v).some(hasProblemCaption));
+const hasProblemSourceStrokes=v=>!!v&&typeof v==='object'&&(Object.hasOwn(v,'problemSourceEdgeStyles')||Object.values(v).some(hasProblemSourceStrokes));
 const clip=v=>JSON.stringify(v??null).slice(0,600);
 // result.detail stays the 600 character clip above; result.detailFull and result.errors keep the whole thing (still capped so one huge detail cannot flood the file).
 const FULL_MAX=200000;
@@ -53,6 +55,18 @@ const tagPanel=(run,index)=>{try{return run();}catch(error){if(error&&typeof err
 const stdoutView=r=>{const {detailFull,errors,hint,...rest}=r;return {...rest,...(hint?{hint:hint.map(h=>h.length>160?h.slice(0,160)+'...':h)}:{}),...(detailFull!==undefined?{detailFile:true}:{})};};
 
 // plan: a parsed plan object, or a path to plan.json. Returns the result record (also written as <name>-result.json).
+// Fail closed for problem author input before an expander can destructure refs.
+// The established solution path and its output contract remain unchanged.
+export function validateProblemDisplaySegments(plan,surface){
+  if(surface!=='PROBLEM_VISUAL')return;
+  const visit=value=>{
+    if(!value||typeof value!=='object')return;
+    if(Object.hasOwn(value,'displaySegments')&&(!Array.isArray(value.displaySegments)||value.displaySegments.some(segment=>!segment||!Array.isArray(segment.refs)||segment.refs.length!==2)))throw Error('PROBLEM_DISPLAY_SEGMENT_REFS_EXACTLY_TWO_REQUIRED');
+    for(const child of Object.values(value))visit(child);
+  };
+  visit(plan);
+}
+
 export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSizeClass}){
   fs.mkdirSync(outDir,{recursive:true});
   const meta={...item};
@@ -76,7 +90,11 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
   try{
     if(typeof meta.sourcePath!=='string'||!(Number.isSafeInteger(meta.ordinal)&&meta.ordinal>=1||typeof meta.ordinal==='string'&&SOURCE_QUESTION_ID_PATTERN.test(meta.ordinal)))throw new Error('item needs sourcePath (string) and ordinal (integer, or the string id of a bank whose ids are strings)');
     const examUid=path.basename(meta.sourcePath,'.js');
-    const identity=assetIdentity(`${examUid}|${meta.ordinal}`,'SOLUTION_VISUAL','decisive-relation');
+    const surface=meta.surface??'SOLUTION_VISUAL';
+    if(!['SOLUTION_VISUAL','PROBLEM_VISUAL'].includes(surface))throw Error('INVALID_RENDER_SURFACE');
+    if(surface==='PROBLEM_VISUAL'&&packetDir)throw Error('PROBLEM_SOLUTION_OBSERVER_PACKET_UNSUPPORTED');
+    const captureApi=surface==='PROBLEM_VISUAL'?{measure:cap.measureProblemTypographyPolicy,capture:cap.captureProblemCandidate}:{measure:cap.measureArchiveTypographyPolicy,capture:cap.captureArchiveCandidate};
+    const identity=assetIdentity(`${examUid}|${meta.ordinal}`,surface,'decisive-relation');
     row.identity=identity;
     process.env.APMS_DRAFT_TAG=name;
     let authored=planInput;
@@ -89,10 +107,13 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     // A curve label {hidden:true,reason:"ANSWER",name} is the neutral-name label the plan stands for (hidden-curve-label.mjs); plans without it pass through untouched.
     {const hiddenLabels=expandHiddenCurveLabels(authored);if(hiddenLabels.notes.length){authored=hiddenLabels.plan;row.hiddenFormulaLabels=hiddenLabels.notes;}}
     if(authored.status==='EXEMPT'||authored.status==='UNSUPPORTED'){row.status=authored.status;row.detail=authored.reason;return finish();}
+    validateProblemDisplaySegments(authored,surface);
     // Two discontinuous functions (graphPlan.referenceCurves, layout STACKED) are the two-panel composite they stand for.
     if(authored.capability==='piecewise-discontinuous-spike-v1'&&authored.graphPlan?.referenceCurves!==undefined)authored=expandDiscontinuousPair(authored);
     // planeMarks.vectors / vectorOps (G3) are unfolded into arrows, labels and construction points before the exact model is built.
     if(authored.capability==='construction-spike-v1')authored=expandPlaneVectors(authored);
+    if(hasProblemCaption(authored)&&authored.capability!==sol.SOLID_CAPABILITY)throw Error('PROBLEM_CAPTION_STANDALONE_REQUIRED');
+    if(hasProblemSourceStrokes(authored)&&(surface!=='PROBLEM_VISUAL'||authored.capability!==sol.SOLID_CAPABILITY))throw Error('PROBLEM_SOURCE_STROKE_STANDALONE_REQUIRED');
     row.capability=authored.capability;log.setPlan(authored,meta.fam);where.plan=authored;
     // Writes the shared success outputs (state, svg, optional observer packet).
     const bind=async({plan,model,composed,capture})=>{
@@ -100,20 +121,20 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       let packet;
       if(packetDir)packet=await obs.prepareInverseObservationPacket({capture,packetDir:path.join(packetDir,`packet-${name}-${tag}`)});
       write(`${name}-state.json`,JSON.stringify({meta,identity,plan,model,composed,capture,packetDir:packet?.packetDir,packetSha256:packet?.packetSha256},null,1));
-      write(`${name}-solution.svg`,composed.svg);
+      write(`${name}-${surface==='PROBLEM_VISUAL'?'problem':'solution'}.svg`,composed.svg);
     };
     if(authored.capability===sdg.FIGURE_CAPABILITY){
       // A standalone set diagram: the exact regions and shading derived once, composed, read back by its own observer, then the same Archive capture.
       stage='set-diagram';
       const model=sdg.checkSetDiagramPlan(authored),size=sdg.setDiagramSize(model);
       stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      const measured=await captureApi.measure({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
       stage='compose';
       const composed=await sdg.composeSetDiagramFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
       stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
+      const capture=await captureApi.capture({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
       if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
       await bind({plan:authored,model,composed,capture});
       row.status='ARCHIVE_BOUND';row.sizeClass='full';
@@ -124,7 +145,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       stage='stat-chart';
       const model=scf.checkStatChartPlan(authored);let size=scf.statChartSize(model);
       stage='measure';
-      let measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      let measured=await captureApi.measure({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
       // A frame that grows to fit its labels (a long legend, a long x title, tree path probabilities) depends on the font size the measurement gives, and the font on the size: measure again at the
       // larger size until the font that size gives needs no more room (sizes only grow; the figure is then composed at exactly the measured size).
@@ -132,14 +153,14 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
         const exact=scf.statChartSize(model,{fontPx:measured.policy.baseFontPx});
         if(exact.width<=size.width&&exact.height<=size.height)break;
         size={width:Math.max(size.width,exact.width),height:Math.max(size.height,exact.height)};
-        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
+        measured=await captureApi.measure({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
         if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
       }
       stage='compose';
       const composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy,minSize:size});
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
       stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
+      const capture=await captureApi.capture({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
       if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
       await bind({plan:authored,model,composed,capture});
       row.status='ARCHIVE_BOUND';row.sizeClass='full';
@@ -150,13 +171,13 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       stage='container-fill';
       const model=cfv.checkContainerFillPlan(authored),size=cfv.containerFillSize(model);
       stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      const measured=await captureApi.measure({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
       stage='compose';
       const composed=await cfv.composeContainerFillFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
       stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
+      const capture=await captureApi.capture({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
       if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
       await bind({plan:authored,model,composed,capture});
       row.status='ARCHIVE_BOUND';row.sizeClass='full';
@@ -167,13 +188,13 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       stage='lattice-path';
       const model=lpf.checkLatticePathPlan(authored),size=lpf.latticePathSize(model);
       stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      const measured=await captureApi.measure({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
       stage='compose';
       const composed=await lpf.composeLatticePathFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
       stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
+      const capture=await captureApi.capture({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
       if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
       await bind({plan:authored,model,composed,capture});
       row.status='ARCHIVE_BOUND';row.sizeClass='full';
@@ -184,13 +205,13 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       stage='ellipse';
       const model=await ell.solveEllipseFigure(authored),size=ell.ellipseFigureSize(model);
       stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      const measured=await captureApi.measure({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
       stage='compose';
       const composed=await ell.composeEllipseFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
       stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
+      const capture=await captureApi.capture({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
       if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
       await bind({plan:authored,model,composed,capture});
       row.status='ARCHIVE_BOUND';row.sizeClass='full';
@@ -203,7 +224,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       // A quadratic inequality chain is the composite it stands for: its graph panel over its number-line panel (solved exactly first).
       // A standalone number-line figure (number-line-figure-v1) is the one-panel composite it stands for.
       stage=authored.capability===chain.CHAIN_CAPABILITY||authored.capability===nlf.FIGURE_CAPABILITY||authored.capability===sol.SOLID_CAPABILITY?'chain':stage;
-      let current=authored.capability===chain.CHAIN_CAPABILITY?chain.expandInequalityChain(authored):authored.capability===nlf.FIGURE_CAPABILITY?nlf.expandNumberLineFigure(authored):authored.capability===sol.SOLID_CAPABILITY?sol.expandSolidFigure(authored):authored,checked,framedPanels,panelModels,plan,measured,composed;stage='composite-panels';
+      let current=authored.capability===chain.CHAIN_CAPABILITY?chain.expandInequalityChain(authored):authored.capability===nlf.FIGURE_CAPABILITY?nlf.expandNumberLineFigure(authored):authored.capability===sol.SOLID_CAPABILITY?sol.expandSolidFigure(authored,{identity}):authored,checked,framedPanels,panelModels,plan,measured,composed;stage='composite-panels';
       for(let attempt=0;attempt<3;attempt++){
       const watch=stopwatch();
       where.plan=current;
@@ -231,7 +252,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
           framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(scf.statChartSize(solved));continue;
         }
         if(comp.isSolidPanel(panel.plan)){
-          const solved=sol.solveSolidFigure(panel.plan);
+          const solved=sol.solveSolidFigure(panel.plan,{identity});
           framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(sol.figurePanelSize(solved));continue;
         }
         if(comp.isNumberLinePanel(panel.plan)){
@@ -252,9 +273,9 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       // first one; when the composed figure came out taller (or shorter) than measured, the policy is measured again for the size it really has and composed again.
       let captionRow=comp.COMPOSITE_CAPTION_ROW;
       for(let pass=0;pass<3;pass++){
-        const {width,height}=comp.compositeStackSize(panelSizes,comp.compositeSharedRowCount(checked),stackLayout,captionRow);
+        const {width,height}=comp.compositeStackSize(panelSizes,comp.compositeSharedRowCount(checked),stackLayout,captionRow,{omitCaption:current.problemCaption?.visible===false});
         stage='measure';
-        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:{width,height},runId:`pilot-measure-${tag}${attempt?'-retry'+attempt:''}${pass?'-size'+pass:''}`});
+        measured=await captureApi.measure({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:{width,height},runId:`pilot-measure-${tag}${attempt?'-retry'+attempt:''}${pass?'-size'+pass:''}`});
         watch.lap('measure');
         if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
         stage='compose';
@@ -295,7 +316,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
         if(shown.status!=='PASS')throw {stage,detail:{code:'POINT_DISPLAY_NAME_MISMATCH',panel:i,errors:shown.errors}};
       }
       stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
+      const capture=await captureApi.capture({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
       if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
       await bind({plan,model,composed,capture});
       row.status='ARCHIVE_BOUND';row.sizeClass='full';row.panels=checked.length;
@@ -319,9 +340,9 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       // otherwise get at medium only shrinks the base font of a tall canvas. When full cannot be measured the figure keeps the earlier medium request.
       const multiCurve=candidatePlan.graphPlan?.family==='multi-curve';
       const fullRequested=['trigonometric','sqrt-affine'].includes(candidatePlan.graphPlan?.family)&&candidatePlan.graphPlan.displaySize==='full';
-      let size=forceSizeClass??(model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)||multiCurve||fullRequested?'full':'medium');   // forceSizeClass: a test/diagnostic seam only (the CLI never sets it)
+      let size=forceSizeClass??(surface==='PROBLEM_VISUAL'?'full':undefined)??(model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)||multiCurve||fullRequested?'full':'medium');   // forceSizeClass: a test/diagnostic seam only (the CLI never sets it)
       stage='measure';
-      const measure=(sizeClass,runSuffix='')=>cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:sizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},runId:`pilot-measure-${tag}${suffix}${runSuffix}`});
+      const measure=(sizeClass,runSuffix='')=>captureApi.measure({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:sizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},runId:`pilot-measure-${tag}${suffix}${runSuffix}`});
       let measured=await measure(size);
       if(measured.status!=='MEASURED'&&multiCurve&&size==='full'&&forceSizeClass===undefined){size='medium';measured=await measure(size,'-medium');}
       // A wide family graph (520-610 px) cannot reach the requested profile font scale at medium; the same figure is retried once at full.
@@ -409,7 +430,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     const shown=observeDisplayedPointNames(composed.svg,planNameExpectations(plan));
     if(shown.status!=='PASS')throw {stage,detail:{code:'POINT_DISPLAY_NAME_MISMATCH',errors:shown.errors}};
     stage='capture';
-    const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:size,composed,measuredPolicy:measured,alt:plan.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
+    const capture=await captureApi.capture({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:size,composed,measuredPolicy:measured,alt:plan.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
     if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
     await bind({plan,model,composed,capture});
     row.status='ARCHIVE_BOUND';row.sizeClass=size;

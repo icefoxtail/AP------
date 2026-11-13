@@ -1,0 +1,220 @@
+{
+  "ordinal": 9,
+  "source_image": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q9.png",
+  "source_review": "Viewed q9 PNG: triangular prism with upper triangular face A-B-C and lower face D-E-F; A-D, B-E, C-F connect corresponding vertices. Edge BE is hidden/dashed in the source.",
+  "allowed_marks": [
+    "triangular prism outline",
+    "vertex labels A, B, C, D, E, F",
+    "source-display BE dashed; source-display DF solid is supported by the clean PNG only"
+  ],
+  "forbidden_solution_elements": [
+    "highlighting BC or any edge class",
+    "red/blue answer grouping",
+    "list or count of skew edges",
+    "extra lengths or measurements",
+    "reproducing heavy overdraw or altered stroke weight on BC, AD, DE, or DF"
+  ],
+  "uncertainties": [
+    "The original PDF crop does not independently establish DF's printed stroke type because a broad dark overdraw obscures it; DF solid is corroborated only by the existing clean q9 PNG."
+  ],
+  "constructed_realization": {
+    "normalization": "An unnamed metric base polygon is chosen for a clear schematic triangular prism; height and base coordinates are display proportions only.",
+    "free_parameters": [
+      {
+        "symbol": "base_points",
+        "value": "[[0,0],[4,0],[4.8,2.5]]",
+        "purpose": "schematic shape only; no lengths or equal-side conditions are stated"
+      },
+      {
+        "symbol": "prism_height",
+        "value": "3.5",
+        "purpose": "schematic projection depth only"
+      }
+    ],
+    "source_condition_residuals": [
+      {
+        "condition": "triangular prism topology",
+        "status": "PASS",
+        "observed": "6 vertices, 9 edges, 2 triangular bases, 3 connector edges AD/BE/CF",
+        "residual": "0 incidence mismatch"
+      }
+    ],
+    "expected_original_page_order": "Top face A is upper-left; B is below and inward from A; C is upper-right. Lower face D/E/F corresponds to A/B/C respectively. Solid projection preflight projects A≈(0,3.297), B≈(3.532,2.655), C≈(5.412,3.281), preserving A upper-left, B lower/inward, C upper-right. Confirm the final rendered PNG against this ordering."
+  },
+  "source_geometry": {
+    "top_triangle": "A upper-left; B below and inward; C upper-right",
+    "bottom_triangle": "D/E/F correspond to A/B/C",
+    "source_line_display": "BE is dashed in the PDF crop and clean PNG. DF is continuous solid in the clean PNG; its printed style cannot be independently read beneath the broad PDF overdraw."
+  },
+  "source_line_style_review": {
+    "review_kind": "independent source-only line-style review; candidate quality not assessed",
+    "review_addendum": {
+      "path": ".tmp/problem-svg/reviewer/source-addendum-q9.json",
+      "sha256": "ae0dd3c7711d25a0a97f07277bb872510feb1c58bf9b6c9363ffb0709d65fe31"
+    },
+    "evidence": {
+      "original_pdf": {
+        "path": ".tmp/problem-svg/source/hyangrim24.pdf",
+        "sha256": "a2a4ed5d2e98eb4fbf8f736c6d172b92a376b1fd8dc20de0da2aad0bb7c1340c"
+      },
+      "pdf_page_2_q9_crop": {
+        "path": ".tmp/problem-svg/source/q9-detail.png",
+        "sha256": "108d5b4184dcc91573c20476317b9c8f8fb6e2a0f087257fbc386827af3a19d0"
+      },
+      "clean_comparison_png": {
+        "path": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q9.png",
+        "sha256": "2a1832d715d24886e1b2dfe980e2b12dc7c964fd067d786ec0992c6c9caafb59"
+      },
+      "plan_sha256_at_review": "b0677208c38f7bacfc05435390c91822c6be3eab37f6221511567ce5671eb18f"
+    },
+    "source_findings": {
+      "BE": "PDF crop directly shows a thin dashed trace; the clean PNG independently corroborates dashed. Source stroke: dashed, confidence HIGH.",
+      "DF": "Clean PNG shows a continuous solid edge. In the PDF crop, the path is covered by broad dark overdraw, so PDF alone does not establish the underlying print style. Source stroke: solid conditional on the clean PNG being source-faithful; cross-source confidence MEDIUM, PDF-only unresolved.",
+      "do_not_reproduce_overdraw": [
+        "BC",
+        "AD",
+        "DE",
+        "DF"
+      ],
+      "overdraw_basis": "These paths are unusually broad/dark/irregular in the PDF crop and ordinary thin solid edges in the clean PNG; do not infer or copy printed stroke width from those marks."
+    },
+    "model_geometry_separate_from_source_stroke": {
+      "computed_classification_to_preserve": "Keep the current mathematical depth result unchanged: BE computed visible/solid and DF computed hidden. Do not rewrite model classification to match raster stroke styling.",
+      "source_display_to_validate_separately": "BE dashed (high confidence); DF solid only with clean-PNG corroboration, while PDF-only remains uncertain.",
+      "actual_render_status": "NOT_RUN",
+      "quality_verdict": "NOT_ASSESSED"
+    },
+    "binding_rule": "The independent source reviewer assessed the source images while the plan still had SHA256 b0677208c38f7bacfc05435390c91822c6be3eab37f6221511567ce5671eb18f. The bounded engine field was later added without changing prism geometry; current plan SHA256 is b86c610d197259f356f51074c18dd204093cf23ea81766c2f578ad73c3189b72. Recheck current plan SHA before using this evidence after further edits."
+  },
+  "engine_supported_problem_source_strokes": {
+    "guidance": {
+      "path": ".tmp/problem-svg/engine-q9-guidance.json",
+      "sha256": "937cbef33ce50e98c5e1eb9dd675a3b34727f4175058fb1bb332832e8bfd90ef"
+    },
+    "plan_field": {
+      "scope": "PROBLEM_ONLY",
+      "sourceImageRef": {
+        "path": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q9.png",
+        "bytes": 11550,
+        "sha256": "sha256:2a1832d715d24886e1b2dfe980e2b12dc7c964fd067d786ec0992c6c9caafb59"
+      },
+      "edges": [
+        {
+          "solid": "s1",
+          "from": "B",
+          "to": "E",
+          "stroke": "DASHED"
+        },
+        {
+          "solid": "s1",
+          "from": "D",
+          "to": "F",
+          "stroke": "SOLID"
+        }
+      ]
+    },
+    "constraints_respected": [
+      "problem-only standalone PRISM identity",
+      "exact preserved source PNG path, byte count, and SHA",
+      "existing BE and DF edges only",
+      "no segments overlay",
+      "no custom width, colour, or dash pattern",
+      "geometry, topology, coordinates, and automatic depth runs unchanged"
+    ],
+    "style_semantics": "Displayed source stroke is distinct from mathematical visibility. Computed visibility remains BE solid/visible and DF hidden; source display is BE dashed and DF solid."
+  },
+  "nonbrowser_problem_preflight": {
+    "status": "MODEL_SPEC_PASS_EDGE_OBSERVER_PASS",
+    "plan_sha256": "sha256:b86c610d197259f356f51074c18dd204093cf23ea81766c2f578ad73c3189b72",
+    "identity": {
+      "questionUid": "24_향림중_2학기_중간_중1_기출|9",
+      "surface": "PROBLEM_VISUAL",
+      "visualRole": "decisive-relation",
+      "visualAssetKey": "sha256:287f4580856db979e4b9617f9352d80be143115fd8db7e83ac9a159a4d877e16",
+      "assetId": "va-e7113ba1d2d14f73a657126e663842613cd1e3a1ad83c14a194380d48fc1c7b8"
+    },
+    "evidence": {
+      "model_spec": {
+        "path": ".tmp/problem-svg/maker-a/q9/preflight/nonbrowser-model-spec.json",
+        "sha256": "536ecc5e0239c0b5b042242baadff1d56e08b5f60ab84df2d96e4354df4d38ae",
+        "model_sha256": "9192d8a92bc755013b4a15e2e7b8c42020db035f7fad87f39385766cb4c55fa9",
+        "spec_sha256": "d5784094d95b6698b499823e63d1844267f5f04bfd9b5f1b5fbb143fe80dc454",
+        "geometry_comparison": {
+          "status": "PASS",
+          "baselineModelSha256": "9192d8a92bc755013b4a15e2e7b8c42020db035f7fad87f39385766cb4c55fa9",
+          "modelDeepEqualToPlanWithoutProblemSourceEdgeStyles": true,
+          "allExistingSpecPrimitivesPreservedExceptDeclaredStrokeFields": true,
+          "counts": {
+            "vertices": 6,
+            "edges": 9,
+            "faces": 5
+          }
+        }
+      },
+      "observer": {
+        "path": ".tmp/problem-svg/maker-a/q9/preflight/observer-evidence.json",
+        "sha256": "683ffd3763c72d9b1b97ce0e055cefd06aa0ec6f563f97868dfee3e08dcf480a",
+        "status": "PASS",
+        "errors": [],
+        "observer": "solid_figure_observer.check_poly_edges",
+        "scope": "All nine existing prism edges; independent computed depth and declared source stroke checks for BE/DF. Edge-only observer fixture, not full SVG/layout/render."
+      },
+      "observer_fixture_svg": {
+        "path": ".tmp/problem-svg/maker-a/q9/preflight/observer-fixture.svg",
+        "sha256": "25b617b6f76d19b9c6f803e2516d6527956d145d756da7b0f28b24846f300422"
+      }
+    },
+    "computed_vs_displayed": {
+      "BE": {
+        "computedVis": "solid",
+        "sourceStroke": "DASHED",
+        "displayVis": "hidden"
+      },
+      "DF": {
+        "computedVis": "hidden",
+        "sourceStroke": "SOLID",
+        "displayVis": "solid"
+      }
+    },
+    "actual_render_status": "NOT_RUN",
+    "full_svg_layout_typography_qa": "NOT_RUN",
+    "quality_verdict": "NOT_ASSESSED"
+  },
+  "source_style_revision_preflight": {
+    "guidanceSha256": "c205a60249561e74188192e9a570a23b406567bfeacaa37155767c511baa4dbd",
+    "sourceImage": {
+      "path": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q9.png",
+      "bytes": 11550,
+      "sha256": "2a1832d715d24886e1b2dfe980e2b12dc7c964fd067d786ec0992c6c9caafb59"
+    },
+    "sourcePdf": {
+      "path": ".tmp/problem-svg/source/hyangrim24.pdf",
+      "sha256": "a2a4ed5d2e98eb4fbf8f736c6d172b92a376b1fd8dc20de0da2aad0bb7c1340c"
+    },
+    "sourceViewing": "Viewed original q9 PNG and PDF crop: clean PNG shows BE dashed and DF continuous solid. PDF q9 crop shows the thin dashed BE trace; DF print is obscured by broad dark overdraw, so preserve the maintained clean-PNG-supported DF SOLID source style conditionally. Do not reproduce overdraw.",
+    "pdfCrop": {
+      "path": ".tmp/problem-svg/source/q9-detail.png",
+      "sha256": "108d5b4184dcc91573c20476317b9c8f8fb6e2a0f087257fbc386827af3a19d0"
+    },
+    "problemCaption": {
+      "scope": "PROBLEM_ONLY",
+      "visible": false
+    },
+    "sourceStyles": [
+      {
+        "solid": "s1",
+        "from": "B",
+        "to": "E",
+        "stroke": "DASHED"
+      },
+      {
+        "solid": "s1",
+        "from": "D",
+        "to": "F",
+        "stroke": "SOLID"
+      }
+    ],
+    "modelClassification": "Unchanged mathematical topology and automatic visible/hidden classification; displayed source edge styles are handled separately.",
+    "actualRender": "NOT_RUN"
+  }
+}

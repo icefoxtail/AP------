@@ -1,0 +1,71 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4.8,
+            2.5
+          ]
+        ]
+      },
+      "height": 3.5,
+      "names": {
+        "base": "DEF",
+        "top": "ABC"
+      }
+    }
+  ],
+  "caption": "삼각기둥 ABC-DEF의 모서리와 꼭짓점을 나타낸 그림.",
+  "accessibilityDescription": "삼각기둥의 두 삼각형 면은 ABC와 DEF이고 옆모서리는 AD, BE, CF다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "그림은 삼각기둥 ABC-DEF이며 A-D, B-E, C-F가 대응 꼭짓점",
+      "mappedTo": [
+        "s1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각기둥의 두 삼각형 면과 연결 모서리의 배치"
+  ],
+  "problemSourceEdgeStyles": {
+    "scope": "PROBLEM_ONLY",
+    "sourceImageRef": {
+      "path": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q9.png",
+      "bytes": 11550,
+      "sha256": "sha256:2a1832d715d24886e1b2dfe980e2b12dc7c964fd067d786ec0992c6c9caafb59"
+    },
+    "edges": [
+      {
+        "solid": "s1",
+        "from": "B",
+        "to": "E",
+        "stroke": "DASHED"
+      },
+      {
+        "solid": "s1",
+        "from": "D",
+        "to": "F",
+        "stroke": "SOLID"
+      }
+    ]
+  },
+  "problemCaption": {
+    "scope": "PROBLEM_ONLY",
+    "visible": false
+  }
+}

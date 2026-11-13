@@ -7,6 +7,7 @@ import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-lay
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
 import {sphereCutModel,arcPoint,SPHERE_PLANES,AXES as CUT_AXES} from './sphere-parts.mjs';
 import {PALETTE,isPaletteName} from './palette.mjs';
+import {problemSourceEdgeStyles,problemCaptionHidden} from './problem-source-edge-styles.mjs';
 
 // A solid figure (solid-figure-v1): prisms, pyramids, pyramid frusta, cylinders, cones, cone frusta, spheres and hemispheres drawn in ONE fixed
 // orthographic projection (yaw 28 deg, pitch 20 deg: a textbook "dimetric" look; circles become axis-aligned ellipses), with hidden edges dashed by
@@ -1209,9 +1210,10 @@ function planYaw(plan){
 function checkViewNotDegenerate(model){
   for(const solid of model.solids)if(solid.category==='POLY')for(const face of solid.faces)if(Math.abs(dot(faceNormal(face.idx.map(i=>solid.vertices[i].p)),VIEW))<0.02)bad('SOLID_VIEW_DEGENERATE:'+solid.id+'/'+face.id);
 }
-export function solveSolidFigure(plan){
+export function solveSolidFigure(plan,{identity}={}){
   if(!isPlain(plan)||plan.capability!==SOLID_CAPABILITY)bad('SOLID_PLAN_INVALID');
-  onlyKeys(plan,['capability','unit','solids','net','space','dims','highlights','segments','section','marks','labels','solidCaption','caption','accessibilityDescription','sourceConditions','newVisualInformation','sourceQuote','panelWidth','view'],'SOLID_PLAN_INVALID');
+  onlyKeys(plan,['capability','unit','solids','net','space','dims','highlights','segments','section','marks','labels','solidCaption','caption','accessibilityDescription','sourceConditions','newVisualInformation','sourceQuote','panelWidth','view','problemSourceEdgeStyles','problemCaption'],'SOLID_PLAN_INVALID');
+  problemCaptionHidden(plan,identity);
   // a figure is a net, or solids and/or a space (free points, planes and lines, G4b)
   if(plan.net!==undefined?plan.solids!==undefined||plan.space!==undefined:plan.solids===undefined&&plan.space===undefined)bad('SOLID_PLAN_INVALID');
   if(plan.labels!==undefined&&plan.net!==undefined)bad('SOLID_LABELS_UNSUPPORTED:NET');
@@ -1222,6 +1224,7 @@ export function solveSolidFigure(plan){
   applyView(planYaw(plan));// the projection of this figure (28 degrees unless plan.view says otherwise); also resets whatever an earlier figure set
   const model=plan.net!==undefined?solveNet(plan):solveSolids(plan);
   if(plan.view!==undefined)checkViewNotDegenerate(model);
+  problemSourceEdgeStyles(plan,model,identity);
   // the Archive publication check reads text: a figure with no name and no length at all cannot be published
   const names=model.mode==='SOLIDS'?model.solids.reduce((sum,solid)=>sum+(solid.category==='POLY'?solid.vertices:solid.points).filter(q=>q.name).length+(solid.aux?.length??0)+(solid.count?(solid.count.vertices?solid.vertices.length:0)+(solid.count.edges?solid.edges.length:0):0),0)+spaceNames(model.space)
     :model.netKind==='POLYHEDRON'?model.faces.reduce((sum,f)=>sum+f.corners.filter(Boolean).length,0):0;
@@ -2256,14 +2259,14 @@ const ELL_SAMPLES=36;
  * The figure before typesetting: every primitive in px with its role, then the label requests (anchor, preferred direction). Deterministic.
  * Primitives: {t:'line'|'arc'|'circle'|'poly'|'path',...}.
  */
-export function solidFigureSpec(plan,model){
+export function solidFigureSpec(plan,model,{identity}={}){
   if(plan?.capability!==SOLID_CAPABILITY)bad('SOLID_PLAN_INVALID');
-  if(objectSha(solveSolidFigure(plan))!==objectSha(model))bad('SOLID_MODEL_MISMATCH');
+  if(objectSha(solveSolidFigure(plan,{identity}))!==objectSha(model))bad('SOLID_MODEL_MISMATCH');
   const frame=figureFrame(model),S=frame.scale,[OX,OY]=frame.origin;
   const X=u=>r6(OX+S*u),Y=v=>r6(OY-S*v),pt=q=>[X(q[0]),Y(q[1])];
   const prims=[],labels=[];
   const line=(id,role,a,b,extra={})=>{prims.push({t:'line',id,role,x1:a[0],y1:a[1],x2:b[0],y2:b[1],...extra});};
-  if(model.mode==='SOLIDS')spec3d(plan,model,{S,X,Y,pt,prims,labels,line,frame});
+  if(model.mode==='SOLIDS')spec3d(plan,model,{S,X,Y,pt,prims,labels,line,frame,sourceStyles:problemSourceEdgeStyles(plan,model,identity)});
   else specNet(plan,model,{S,X,Y,pt,prims,labels,line,frame});
   return {schemaVersion:SOLID_SPEC_VERSION,size:{width:frame.width,height:frame.height},frame:{scale:S,origin:frame.origin},prims,labels};
 }
@@ -2372,7 +2375,8 @@ function spec3d(plan,model,ctx){
         runs.forEach((run,k)=>{
           const p0=pt(project(lerp(va.p,vb.p,run.t0))),p1=pt(project(lerp(va.p,vb.p,run.t1)));
           if(Math.hypot(p1[0]-p0[0],p1[1]-p0[1])<0.4)return;
-          line(`${sid}-edge-${nm(va,a)}${nm(vb,b)}-${k+1}`,'edge',p0,p1,{solid:sid,edge:nm(va,a)+nm(vb,b),vis:run.hidden?'hidden':'solid',t0:run.t0,t1:run.t1});
+          const sourceStroke=ctx.sourceStyles.get([va.name,vb.name].sort().join('|')),computedVis=run.hidden?'hidden':'solid';
+          line(`${sid}-edge-${nm(va,a)}${nm(vb,b)}-${k+1}`,'edge',p0,p1,{solid:sid,edge:nm(va,a)+nm(vb,b),vis:sourceStroke===undefined?computedVis:sourceStroke==='DASHED'?'hidden':'solid',t0:run.t0,t1:run.t1,...(sourceStroke===undefined?{}:{sourceStroke,computedVis})});
         });
       }
     }else if(solid.category==='REV')specRev(solid,ctx,arcPrim);
@@ -3339,7 +3343,7 @@ function renderPrims(spec,model){
     if(p.t==='line'){
       const accent=p.accent==='ACCENT'?' stroke="#c0392b"':'';
       const w=p.role==='dim-line'||p.role==='dim-ext'||p.role==='axis-line'||p.role==='cut-radius'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)||(p.role==='space-segment'&&p.accent==='ACCENT')?2.4:p.role==='silhouette'?1.7:1.6;
-      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face&&p.diagonal===undefined?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.diagonal!==undefined?`data-face="${p.face}" data-diagonal="${p.diagonal}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',(p.role==='net-edge'||p.role==='net-diagonal'||p.role==='space-segment')&&p.accent?`data-accent="${p.accent}"`:'',p.lineId?`data-line="${p.lineId}"`:'',p.space?'data-space="1"':''].filter(Boolean).join(' ');
+      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.sourceStroke?`data-source-stroke="${p.sourceStroke}" data-computed-vis="${p.computedVis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face&&p.diagonal===undefined?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.diagonal!==undefined?`data-face="${p.face}" data-diagonal="${p.diagonal}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',(p.role==='net-edge'||p.role==='net-diagonal'||p.role==='space-segment')&&p.accent?`data-accent="${p.accent}"`:'',p.lineId?`data-line="${p.lineId}"`:'',p.space?'data-space="1"':''].filter(Boolean).join(' ');
       body+=`<g data-layer="40"><line ${attrs}${p.color!==undefined?` data-color="${p.color}"`:''} stroke="${p.color!==undefined?PALETTE[p.color].line:p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
       void accent;
     }else if(p.t==='arc'){
@@ -3368,7 +3372,7 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
     lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
     let spec;
-    try{spec=solidFigureSpec(plan,model);}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='SOLID_MODEL_MISMATCH'?error.message:'SOLID_SPEC_ERROR',{code:error.message});}
+    try{spec=solidFigureSpec(plan,model,{identity});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='SOLID_MODEL_MISMATCH'?error.message:'SOLID_SPEC_ERROR',{code:error.message});}
     lineage.specSha256=objectSha(spec);
     const typeset=typesetter(),font=typographyPolicy.baseFontPx,fragments=new Map();
     for(const label of spec.labels){
@@ -3385,12 +3389,12 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     for(const {label,fragment,box,leader} of placed){
       body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':label.role==='face-label'?'AREA_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.mark?` data-mark="${label.mark}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''}${label.countKind?` data-count="${label.countKind}" data-count-n="${label.countN}" data-solid="${label.solid}"`:''}${label.faceOf?` data-face-of="${label.faceOf}"`:''}${label.spaceOf?` data-space-of="${label.spaceOf}"`:''}${label.textId?` data-text-id="${label.textId}" data-at-kind="${label.atKind}" data-target="${esc(label.target)}"`:''} ${label.kind==='TEXT'?`data-text="${esc(label.text)}"`:`data-tex="${esc(label.tex)}"`} data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
-    const dataAttrs=` data-solid-figure="${SOLID_CAPABILITY}" data-mode="${model.mode}" data-scale="${spec.frame.scale}" data-origin="${spec.frame.origin.join(' ')}"${model.mode==='SOLIDS'?` data-yaw="${YAW_DEG}" data-pitch="${PITCH_DEG}"`:''}${model.unit?` data-unit="${model.unit}"`:''}`;
+    const dataAttrs=`${plan.problemSourceEdgeStyles?' data-visual-surface="PROBLEM_VISUAL"':''} data-solid-figure="${SOLID_CAPABILITY}" data-mode="${model.mode}" data-scale="${spec.frame.scale}" data-origin="${spec.frame.origin.join(' ')}"${model.mode==='SOLIDS'?` data-yaw="${YAW_DEG}" data-pitch="${PITCH_DEG}"`:''}${model.unit?` data-unit="${model.unit}"`:''}`;
     const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${dataAttrs} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-solid-'+Date.now()+'.svg',svg);
     let response;
-    try{response=await pythonWorker({solidFigure:plan,svg},{script:OBSERVER_SCRIPT,timeoutMs:30000});}catch(error){throw new Stop('WORKER_ERROR',{stage:'solidFigureAudit',code:String(error?.message??error)});}
+    try{response=await pythonWorker({solidFigure:plan,svg,...(plan.problemSourceEdgeStyles?{visualIdentity:identity}:{})},{script:OBSERVER_SCRIPT,timeoutMs:30000});}catch(error){throw new Stop('WORKER_ERROR',{stage:'solidFigureAudit',code:String(error?.message??error)});}
     if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'solidFigureAudit',code:response?.result?.code??null});
     const audit=response.result;lineage.staticAuditSha256=objectSha(audit);
     const errors=[...(audit.errors??[])];
@@ -3418,14 +3422,14 @@ const CAPTION_TEXT=/^.{1,24}$/,CAPTION_MATH_OK=/^[A-Za-z0-9=+\-<>.,()\/^{}]{1,24
  * {capability:'solid-figure-v1',solids|net,dims?,highlights?,segments?,section?,unit?,solidCaption?:{text?,math?},caption,sourceConditions,newVisualInformation}
  * -> the one-panel composite-panels-v1 it stands for. The model is built here first, so a plan that cannot be drawn is refused before anything is.
  */
-export function expandSolidFigure(plan){
-  const model=solveSolidFigure(plan);
+export function expandSolidFigure(plan,{identity}={}){
+  const model=solveSolidFigure(plan,{identity});
   const cap=plan.solidCaption;
   // solidCaption: {text} (a phrase), {math} (an expression with exponents such as V=8a^5b^3) or {math,text} (the expression, then the phrase)
   if(cap!==undefined&&(!isPlain(cap)||Object.keys(cap).some(k=>k!=='text'&&k!=='math')||(cap.text===undefined&&cap.math===undefined)
     ||(cap.text!==undefined&&(typeof cap.text!=='string'||!CAPTION_TEXT.test(cap.text)))||(cap.math!==undefined&&(typeof cap.math!=='string'||!CAPTION_MATH_OK.test(cap.math)))))bad('SOLID_CAPTION_INVALID');
   if(plan.panelWidth!==undefined)bad('SOLID_PLAN_INVALID');
   // the author's solidCaption stays in the panel's plan: it is what lets a figure with nothing written on it stand (the panel caption carries the text)
-  const {caption,accessibilityDescription,sourceConditions,newVisualInformation,solidCaption,sourceQuote,...figure}=plan;void solidCaption;
-  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,panels:[{caption:cap??{text:model.mode==='NET'?'전개도':model.solids.length===0?'공간도형':'입체도형'},plan:cap!==undefined?{...figure,solidCaption:cap}:figure}],caption,...(accessibilityDescription!==undefined?{accessibilityDescription}:{}),sourceConditions,newVisualInformation,...(sourceQuote!==undefined?{sourceQuote}:{})};
+  const {caption,accessibilityDescription,sourceConditions,newVisualInformation,solidCaption,sourceQuote,problemCaption,...figure}=plan;void solidCaption;
+  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,...(problemCaption!==undefined?{problemCaption}:{}),panels:[{caption:cap??{text:model.mode==='NET'?'전개도':model.solids.length===0?'공간도형':'입체도형'},plan:cap!==undefined?{...figure,solidCaption:cap}:figure}],caption,...(accessibilityDescription!==undefined?{accessibilityDescription}:{}),sourceConditions,newVisualInformation,...(sourceQuote!==undefined?{sourceQuote}:{})};
 }

@@ -1,0 +1,130 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "직육면체를 세 꼭짓점 A, C, F를 지나는 평면으로 잘라 남은 입체도형.",
+  "view": {
+    "yawDeg": 35
+  },
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            3,
+            1
+          ]
+        ]
+      },
+      "height": 2.4,
+      "names": "EFGHABCD",
+      "cuts": [
+        {
+          "vertices": [
+            "A",
+            "C",
+            "F"
+          ]
+        }
+      ],
+      "points": [
+        {
+          "id": "B",
+          "at": {
+            "projection": {
+              "from": "F",
+              "plane": [
+                "A",
+                "C",
+                "D"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "caption": "직육면체에서 A, C, F를 지나는 평면으로 잘라 낸 입체도형.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직육면체를 A,C,F를 지나는 평면으로 자르고 남은 입체도형; 원래 B, AB, BC, BF는 점선으로 표시",
+      "mappedTo": [
+        "solids[0].cuts",
+        "solids[0].points",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "절단면 ACF"
+  ],
+  "solidCaption": {
+    "text": "절단면 ACF"
+  },
+  "segments": [
+    {
+      "from": "A",
+      "to": "B",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "F",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "problemCaption": {
+    "scope": "PROBLEM_ONLY",
+    "visible": false
+  },
+  "problemSourceEdgeStyles": {
+    "scope": "PROBLEM_ONLY",
+    "mode": "RETAINED_CUT_EDGES",
+    "sourceImageRef": {
+      "path": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q16.png",
+      "bytes": 11666,
+      "sha256": "sha256:4050831da922508c1dde82ec27b196587b8652ecd4fe4a90e8de8bc09fb031c0"
+    },
+    "edges": [
+      {
+        "solid": "s1",
+        "from": "E",
+        "to": "A",
+        "stroke": "SOLID"
+      },
+      {
+        "solid": "s1",
+        "from": "E",
+        "to": "F",
+        "stroke": "SOLID"
+      },
+      {
+        "solid": "s1",
+        "from": "E",
+        "to": "H",
+        "stroke": "SOLID"
+      }
+    ]
+  }
+}

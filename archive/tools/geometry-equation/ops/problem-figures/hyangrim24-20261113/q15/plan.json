@@ -1,0 +1,387 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-43",
+              "denominator": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "R",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "68"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "upRay",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rightDown",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "topLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "leftLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "upRay"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bottomLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "R"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rightLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "rightDown"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "R",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "crease",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "P",
+          "rd"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "leftLine",
+          "topLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bottomLine",
+          "rightLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "crease",
+          "rightLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "creasePerp",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "crease",
+          "rd"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBR",
+      "refs": [
+        "B",
+        "R"
+      ]
+    },
+    {
+      "id": "sRC",
+      "refs": [
+        "R",
+        "C"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDQ",
+      "refs": [
+        "D",
+        "Q"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sQC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sPR",
+      "refs": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "id": "sRQ",
+      "refs": [
+        "R",
+        "Q"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "P",
+    "Q",
+    "R",
+    "C"
+  ],
+  "caption": "직사각형 종이에서 D를 R에 오도록 PQ를 접은 모습과 ∠PRB=68°를 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직사각형 ABCD, 점 D가 R에 오도록 PQ를 접음, ∠PRB=68°",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접힌 선분 PR, PQ와 원래 직사각형의 점선 경계"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "D": "D",
+    "P": "P",
+    "Q": "Q",
+    "R": "R"
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given68",
+        "refs": [
+          "P",
+          "R",
+          "B"
+        ],
+        "value": 68,
+        "label": "68",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceQuote": "직사각형 모양의 종이를 점 D가 점 R에 오도록 선분 PQ를 접는 선으로 하여 접었다. ∠PRB=68°일 때, ∠PQR의 크기는?",
+  "hiddenPointNames": [
+    "C"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "raPRQ",
+      "refs": [
+        "P",
+        "R",
+        "Q"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "ordinal": 8,
+  "source_image": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q8.png",
+  "source_review": "Viewed q8 PNG: AB horizontal, CD diagonal rising right, E above O, F down-right, and C opposite D. The source marks EOD as 48°.",
+  "allowed_marks": [
+    "labeled rays/segments A through F at O",
+    "right-angle marks for OE⊥AB and OF⊥CD",
+    "48° at angle EOD"
+  ],
+  "forbidden_solution_elements": [
+    "42°",
+    "48° at BOF",
+    "132° for AOF",
+    "answer-choice number",
+    "solution-only extra angles"
+  ],
+  "uncertainties": [],
+  "constructed_realization": {
+    "normalization": "O=(0,0), AB is horizontal, E is above O, D lies at a 42° direction from the rightward horizontal, C is opposite D, and F is perpendicular to CD down-right.",
+    "free_parameters": [
+      {
+        "symbol": "OA_OB",
+        "value": "4",
+        "purpose": "schematic extent only"
+      },
+      {
+        "symbol": "OD_OC",
+        "value": "4",
+        "purpose": "schematic extent only"
+      },
+      {
+        "symbol": "OE_OF",
+        "value": "3",
+        "purpose": "schematic extent only"
+      }
+    ],
+    "source_condition_residuals": [
+      {
+        "condition": "∠EOD",
+        "expected": "48°",
+        "observed": "48°",
+        "residual": "0°"
+      },
+      {
+        "condition": "OE perpendicular AB",
+        "status": "PASS",
+        "residual": "0 direction dot product"
+      },
+      {
+        "condition": "OF perpendicular CD",
+        "status": "PASS",
+        "residual": "0 direction dot product"
+      }
+    ]
+  }
+}

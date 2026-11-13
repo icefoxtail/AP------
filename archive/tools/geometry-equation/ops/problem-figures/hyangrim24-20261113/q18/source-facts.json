@@ -1,0 +1,120 @@
+{
+  "ordinal": 18,
+  "givenFacts": [
+    "가위바위보 대회 참가자 7명",
+    "원탁에 둘러앉음"
+  ],
+  "layout": "PDF crop q18-detail.png 우선: 양의 y 방향 위쪽, 동호 상단, 아라 우상, 민기 오른쪽, 가은 아래오른쪽, 종현 아래왼쪽, 윤조 왼쪽, 영민 좌상. 원탁은 중심 점 이름 없이 원으로 표시하며, 각 참가자 이름은 해당 좌석 원의 중심에 놓는다.",
+  "visibleMarks": [
+    "탁자 원",
+    "7개 좌석 원 안의 이름"
+  ],
+  "mustNotAdd": [
+    "참가자 사이의 경기선/연결선",
+    "원탁 중심 점이나 이름",
+    "총 경기 수 또는 풀이값"
+  ],
+  "confirmedNames": [
+    "동호",
+    "아라",
+    "민기",
+    "가은",
+    "종현",
+    "윤조",
+    "영민"
+  ],
+  "evidence": [
+    ".tmp/problem-svg/source/q18-detail.png (PDF crop, names confirmed)",
+    "archive/assets/images/24_향림중_2학기_중간_중1_기출/q18.png (existing derivative differs at two names)"
+  ],
+  "unresolvedVisuals": [],
+  "positioning": "PDF crop의 원탁 중심/반지름을 기준으로 한 기존 일곱 좌석의 비례 배치를 사용한다. 원탁 반지름24, 좌석 반지름8과 시계방향 이름 순서는 유지하고, 각 이름은 대응 SOURCE_POINT와 같은 at 좌표의 CENTER에 둔다. 캔버스720×600은 기존 지원 범위이며 dot/경기선/보조선은 추가하지 않는다.",
+  "layoutAdjustmentEvidence": {
+    "reason": "Run10 current spread left each seat circle too small for the source Korean two-character name at the measured policy font; all25 CENTER/ring candidates collided with the same seat circle.",
+    "source": "PDF crop .tmp/problem-svg/source/q18-detail.png; diagram positions are schematic DERIVED_INTERMEDIATE helpers, not stated lengths.",
+    "normalizedSeatCenters": {
+      "P1": [
+        0,
+        33
+      ],
+      "P2": [
+        27,
+        19
+      ],
+      "P3": [
+        33,
+        -6
+      ],
+      "P4": [
+        17,
+        -28
+      ],
+      "P5": [
+        -16,
+        -28
+      ],
+      "P6": [
+        -32,
+        -6
+      ],
+      "P7": [
+        -27,
+        19
+      ]
+    },
+    "preserved": [
+      "all seven PDF-confirmed names and clockwise order",
+      "eight circles: one table and seven seats",
+      "table radius24 and all seat radii8",
+      "all names centered in their own seat",
+      "no center-point mark, participant lines or answer information"
+    ],
+    "offlineOnly": {
+      "artifact": ".tmp/problem-svg/engine-q18-diagnosis/containment-diagnosis.json",
+      "classification": "OFFLINE_CONTAINMENT_DIAGNOSIS_NOT_BROWSER_EVIDENCE",
+      "worstAllowedFontPx": 32,
+      "seatRadiusSvgPx": 48.00716524854456,
+      "requiredRadiusIncludingExisting6pxClearance": 45.89951877743382
+    },
+    "actualCandidateRender": "NOT_RUN; requires next approved remote production render and source visual review"
+  },
+  "displayReadabilityAdjustment": {
+    "reason": "Run11 actual desktop/mobile/tablet context PNGs retain all seven correct readable Korean names, but their unweighted Noto outline strokes are visually too thin beside surrounding source text.",
+    "supportedOption": "Existing E32 planeMarks.textLabels labelKind TEXT labelWeight MATH; adds a black outline stroke of 0.06 times the actual font size. No new engine behavior or global typography change.",
+    "appliedTo": [
+      "name1",
+      "name2",
+      "name3",
+      "name4",
+      "name5",
+      "name6",
+      "name7"
+    ],
+    "preserved": [
+      "all seven PDF-confirmed names and clockwise order",
+      "all seven at coordinates and CENTER anchors",
+      "mathPlan, eight circles, source points, display selections and canvas720x600",
+      "no participant lines, center-point marks or answer information"
+    ],
+    "run11ObservedBaseline": {
+      "source": "Actual Run11 q18 candidate.svg and three raw Archive rows; existing unweighted candidate only",
+      "baseFontPx": 29.7,
+      "measuredRootScale": {
+        "desktop": 0.4,
+        "mobile": 0.4,
+        "tablet": 0.378828125
+      }
+    },
+    "structuralPredictionOnly": {
+      "classification": "CURRENT_OUTLINE_AND_MEASURED_BASELINE_CTM_PREDICTION_NOT_NEW_BROWSER_EVIDENCE",
+      "addedStrokeSvgPx": 1.782,
+      "addedStrokeCssPxAtBaselineCTM": {
+        "desktop": 0.7128,
+        "mobile": 0.7128,
+        "tablet": 0.67507171875
+      },
+      "preflightRef": ".tmp/problem-svg/engine-q18-weight-preflight.json"
+    },
+    "actualWeightedCandidateRender": "NOT_RUN; requires fresh approved remote production composition, all three Archive viewports, observer stroke binding and independent source/UI visual review"
+  }
+}

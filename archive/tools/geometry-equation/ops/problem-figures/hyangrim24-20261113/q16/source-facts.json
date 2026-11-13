@@ -1,0 +1,93 @@
+{
+  "ordinal": 16,
+  "givenFacts": [
+    "직육면체",
+    "절단 평면은 A,C,F를 지남",
+    "남은 입체의 꼭짓점 A,C,D,E,F,G,H",
+    "잘린 꼭짓점 B와 기존 모서리 AB,BC,BF는 점선으로 보임"
+  ],
+  "layout": "원본 PNG의 앞/뒤 방향을 맞추기 위해 PRISM 밑면 순서를 E(0,1)→F(0,0)→G(3,0)→H(3,1)로 둔다. 투영에서 상단 가로 순서는 B<A<C<D, 하단은 F<E<G<H가 되어 원본 배치에 맞는다. 이름 연결과 ACF 절단은 유지한다.",
+  "visibleMarks": [
+    "A~H 꼭짓점 이름",
+    "잘린 꼭짓점 B와 원래 모서리 AB,BC,BF 점선",
+    "절단면 ACF"
+  ],
+  "mustNotAdd": [
+    "꼬인 위치/평행/수직 모서리 강조색 및 풀이 분류"
+  ],
+  "construction": "CONSTRUCTED_REALIZATION using PRISM rectangular cuboid and exact ACF vertex cut. B is an auxiliary point projected from F to plane ACD; it is used only for three DASHED/REF reference segments and does not enter the cut solid topology.",
+  "normalizationAndResiduals": {
+    "normalization": "Rectangular base polygon E(0,1), F(0,0), G(3,0), H(3,1); height2.4 and yaw35 are schematic view choices only; no dimensions are labelled.",
+    "expectedResiduals": {
+      "cut_remaining_vertices": "E,F,G,H,A,C,D only",
+      "cut_remaining_edges": "12",
+      "cut_remaining_faces": "7",
+      "projected_B_minus_original_B": [
+        0,
+        0,
+        0
+      ],
+      "projection_plane_residual": "0",
+      "projection_direction_cross_normal_residual": "0",
+      "ghost_segment_topology": "AB,BC,BF are not edges of the cut solid",
+      "top_screen_x_order": "B<A<C<D",
+      "bottom_screen_x_order": "F<E<G<H"
+    },
+    "tolerance": "Independent observer projection tolerance 1e-6; model coordinates are exact for this rectangular construction."
+  },
+  "sourceEvidence": {
+    "givenFact": "원본 PNG에는 잘려 나간 직육면체의 원래 꼭짓점 B와 원래 모서리 AB·BC·BF가 점선 참고선으로 표시되어 있다.",
+    "constructionEvidence": "직육면체에서 BF는 윗면 ACD에 수직이므로, 남아 있는 F를 A,C,D가 정하는 평면에 정사영한 점이 원래 B와 일치한다. 정사영은 내부 재구성에만 쓰고 수직표시나 풀이 설명을 그림에 추가하지 않는다.",
+    "topologySeparation": "B는 solids[0].points 보조점으로만 정의되며 solids[0].vertices/edges/faces에는 포함하지 않는다. AB·BC·BF는 별도 top-level DASHED/REF segments다.",
+    "guidanceSha256": "daa42e06a0772a1768c9acf07b1a96fd423886dca2af56f637f7c9ef634f722c",
+    "remainingVisualChecks": [
+      "B와 A,C,F 라벨/참고선 배치",
+      "2.4px DASHED/REF 점선의 가독성",
+      "보조점 B의 점 표식이 원본 도형과 어울리는지",
+      "실제 렌더에서 남은 입체의 선과 점선 구분"
+    ]
+  },
+  "source_style_revision_preflight": {
+    "guidanceSha256": "c205a60249561e74188192e9a570a23b406567bfeacaa37155767c511baa4dbd",
+    "sourceImage": {
+      "path": "archive/assets/images/24_향림중_2학기_중간_중1_기출/q16.png",
+      "bytes": 11666,
+      "sha256": "4050831da922508c1dde82ec27b196587b8652ecd4fe4a90e8de8bc09fb031c0"
+    },
+    "sourcePdf": {
+      "path": ".tmp/problem-svg/source/hyangrim24.pdf",
+      "sha256": "a2a4ed5d2e98eb4fbf8f736c6d172b92a376b1fd8dc20de0da2aad0bb7c1340c"
+    },
+    "sourceViewing": "Viewed original q16 PNG and PDF page-3 crop: AB, BC, BF are dashed reference edges; EA, EF, EH are continuous solid retained edges. Keep current solid topology, ghost B and cut, and source orientation unchanged.",
+    "pdfCrop": {
+      "path": ".tmp/problem-svg/source/q16-page3-crop-maker-a.png",
+      "sha256": "645f29438435bfc45ad72d251bb4cb2a1bc1a32e973415a1b3b8840be312c8e8"
+    },
+    "problemCaption": {
+      "scope": "PROBLEM_ONLY",
+      "visible": false
+    },
+    "sourceStyles": [
+      {
+        "solid": "s1",
+        "from": "E",
+        "to": "A",
+        "stroke": "SOLID"
+      },
+      {
+        "solid": "s1",
+        "from": "E",
+        "to": "F",
+        "stroke": "SOLID"
+      },
+      {
+        "solid": "s1",
+        "from": "E",
+        "to": "H",
+        "stroke": "SOLID"
+      }
+    ],
+    "modelClassification": "Unchanged mathematical topology and automatic visible/hidden classification; displayed source edge styles are handled separately.",
+    "actualRender": "NOT_RUN"
+  }
+}

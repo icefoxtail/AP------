@@ -1,0 +1,325 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "TL",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "L",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "TR",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "R",
+          "L"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "55"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "PL",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "L",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "35"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "PR",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "R",
+          "L"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "25"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lTop",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "L",
+          "TL"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rTop",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "R",
+          "TR"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lInner",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "L",
+          "PL"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rInner",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "R",
+          "PR"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lTop",
+          "rTop"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lInner",
+          "rInner"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "T",
+        "L"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "T",
+        "R"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "L",
+        "P"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "P",
+        "R"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "L",
+    "R",
+    "T",
+    "P"
+  ],
+  "caption": "삼각형 안의 꺾은 선과 주어진 각 55°, 120°, 30°, x를 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "큰 삼각형 꼭짓점 각 55°; 안쪽 꺾임의 각 120°; 오른쪽 꼭짓점 바깥변과 안쪽 선 사이 30°; 왼쪽 x",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks.angles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 경계와 안쪽 꺾은 선의 각 위치"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a55",
+        "refs": [
+          "L",
+          "T",
+          "R"
+        ],
+        "value": 55,
+        "label": "55",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a120",
+        "refs": [
+          "L",
+          "P",
+          "R"
+        ],
+        "value": 120,
+        "label": "120",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a30",
+        "refs": [
+          "T",
+          "R",
+          "P"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ax",
+        "refs": [
+          "T",
+          "L",
+          "P"
+        ],
+        "label": "x",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "sourceQuote": "오른쪽 그림에서 ∠x의 크기는?",
+  "hiddenPointNames": [
+    "L",
+    "R",
+    "T",
+    "P"
+  ],
+  "hiddenPointStyle": "NONE"
+}

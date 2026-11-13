@@ -1,0 +1,41 @@
+{
+  "ordinal": 15,
+  "givenFacts": [
+    "직사각형 ABCD",
+    "접기 전 D가 접은 뒤 R에 포개짐",
+    "접는 선 PQ",
+    "∠PRB=68°"
+  ],
+  "layout": "직사각형 ABCD에서 P는 AD 위, Q는 CD 위이고 PQ가 접는 선이다. 접힘 D→R은 PR=PD이며 PQ가 DR의 수직이등분선으로 구성된다. PR=1로 정규화하고 ∠PRB=68°를 정확히 유지한다. source-length W/H≈2.993, AP/H≈1.916으로 원문 스케치 비율에 가깝게 선택했다. C는 경계 연결점으로만 두며 글자와 점 표시는 없다.",
+  "visibleMarks": [
+    "A,B,D,P,Q,R 이름",
+    "직사각형 경계 AB, BR, RC, CD, DA",
+    "AD의 PD 부분 및 DQ의 원래 점선",
+    "접는 선 PQ",
+    "접힌 선분 PR,RQ",
+    "∠PRB=68° 및 ∠PRQ 직각"
+  ],
+  "mustNotAdd": [
+    "C 이름/점 표식",
+    "추가 접힘·각도 수치",
+    "풀이보조선이나 힌트"
+  ],
+  "normalizationAndResiduals": {
+    "normalization": "PR=PD=1 source-length; B=(-43/20,0), R=(0,0) are schematic placements, not source measurements",
+    "freeVariables": [
+      "unlabelled rectangle scale and source-schematic horizontal/height ratio"
+    ],
+    "expectedResiduals": {
+      "fold_D_to_R": "PD−PR=0 exactly",
+      "crease_bisects_DR": "PQ is perpendicular to DR and passes through its midpoint P",
+      "angle_PRB": "68 degrees exactly",
+      "rectangle": "AB∥CD, AD∥BC, all corners right",
+      "sourceProportion": "AD/H≈2.993; AP/H≈1.916",
+      "right_angle_PRQ": "90 degrees exactly"
+    },
+    "tolerance": "exact 68-degree POLAR_POINT; line intersections exact; ratios approximate only to source sketch"
+  },
+  "evidence": [
+    ".tmp/problem-svg/source/q15-pdf-400dpi-detail.png (original PDF page 3 crop; source rectangle ratio and unlabelled C)"
+  ]
+}

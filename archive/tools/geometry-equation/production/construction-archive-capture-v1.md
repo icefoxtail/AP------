@@ -1,5 +1,7 @@
 # Construction archive capture v1
 
+For the separate opt-in problem APIs, actual problem slots and three-viewport evidence contract, see [problem-figure-path.md](problem-figure-path.md). The solution API and default behavior documented below remain unchanged.
+
 `construction-archive-capture-v1.mjs` closes two gaps between the L1 candidate SVG (`construction-candidate-svg-v1`)
 and the real Archive, with no provider and no change to any shared tool:
 
