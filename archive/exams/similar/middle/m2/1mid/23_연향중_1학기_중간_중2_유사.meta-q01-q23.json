@@ -3,8 +3,8 @@
   "requestId": "similar-23-yeonhyang-m2-1mid-candidate-v1",
   "examUid": "23_연향중_1학기_중간_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/23_연향중_1학기_중간_중2_유사.js",
-  "expectedSourceBlobSha1": "1e28261619e9b906f29a430c1dfbf59a6dd24f63",
-  "expectedSourceSha256": "68e47690607b46fea635b193ddd00ee4c2c0b65a9766dbb30801d8247f2e00eb",
+  "expectedSourceBlobSha1": "7b1fb1a3ddcad7782c3ca21bb618484ed666d593",
+  "expectedSourceSha256": "1a05b70764ff5990936272413176f3a6faf2e1797bfd94df9adb7e1fed0c2fda",
   "expectedQuestionCount": 23,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -26,8 +26,8 @@
     "declaredQuestionCount": 23,
     "declaredTotalScore": 100,
     "verifiedItemScoreTotal": 100,
-    "sourceRevisionRead": "Direct native Docs read of revision AHj4eMQ6W6kHgpGUN-knYaOayFCqaTkfkQPf5tRXJkQzqZZqgqP4MdBWTuw6g85jWE47csFWQ-ZlOXJrwjAZBwo0KngR9Nv2YnNRs306kEk: 1718 paragraphs, 23 questions, 0 tables and 0 inline images. Drive modified time 2026-11-13T21:09:56.990Z; header generatedAt 2026-11-14 is recorded separately. All prompts, choices, answers and solutions were read.",
-    "note": "Candidate similar exam only. Original source JS and original image assets are unchanged. Q1 repetend notation corrected; Q3/Q4/Q6/Q9/Q10/Q14/Q18 domain conditions clarified; Q14 now asks for equations in which both variables appear; Q15 solution handles a=0 before coefficient-ratio reasoning; Q17 requires exactly two decimal places. Math checks: Q1 ④ notation, Q3 ⑤ -8y^9, Q4 a,b,c=5,3,8, Q6 6x/y, Q7 -a-2b-1, Q8 -2x²-12x+10, Q9 ⑤, Q10 a+b=4, Q11 ②, Q12 largest integer -1, Q13 x=5, Q14 two equations, Q15 a=-3/2, Q16 digit sum19, Q17 max34, Q18 a+b=3, Q19 a∈(7/2,4], Q20 13/60, Q21 15 digits, Q22 26 tickets, Q23 (-1,-3). Diagram need separately assessed in checklist; no SVG, screen inspection, rendering or visual QA performed. Independent review, official registration and semantic 4-slot review NOT_RUN. Mechanical checks run: node --check PASS; Node VM confirmed 23 items, 100 points, 19 objective and 4 free-response items, free-response choices empty, 0 non-whitespace runtime control characters. 4-slot validator: 23 items, 93 citations, 0 FAIL, 40 WARN (term-count/method-singleton/duplicate-vector warnings). Draft harness ran and was blocked only because the candidate-specific plans directory is absent; no substitute plans or EXEMPT entries were created. Independent review, semantic 4-slot review, official registration, SVG and visual QA remain NOT_RUN."
+    "sourceRevisionRead": "Direct native Docs read of revision AHj4eMQ6W6kHgpGUN-knYaOayFCqaTkfkQPf5tRXJkQzqZZqgqP4MdBWTuw6g85jWE47csFWQ-ZlOXJrwjAZBwo0KngR9Nv2YnNRs306kEk: 1718 paragraphs, 23 questions, 0 tables and 0 inline images. Drive modified time 2026-11-13T21:09:56.990Z; header generatedAt 2026-11-14 recorded separately. All prompts, choices, answers and solutions were read.",
+    "note": "Candidate similar exam only. Original source JS and assets remain unchanged. Correction after independent review: Q1 choice ④ was restored to the source-intended incorrect notation -0.\\dot{7}\\dot{2}; it denotes repetend 72 although -0.7222... repeats only digit 2, so answer remains ④ and the solution was aligned. Q6 now groups its divisor as (3xy^3). Q15 explanation line breaks are real line breaks. Q5 illustration note now shows rectangle sides and the triangle base/height correspondence. Taxonomy dictionary docs/rules/90_ARCHIVE/JS아카이브_세부단원체계_설계_v1.md confirm Q14, Q15 and Q23 use M2-03-SIMULTANEOUS_LINEAR_EQUATION, not an inequality key. Prior domain/notation fixes remain. Math values remain unchanged. Independent review, official registration, semantic 4-slot review, SVG, screen and visual QA NOT_RUN. Correction source binding: JS blob 2d2c435c1a9132015e1e90e907d2b8269ab449c1, SHA-256 4ae1b90967962fdb31a4cc69b62752e4166056d4a5a83557baa545f15f6cadfe."
   },
   "items": [
     {
@@ -43,8 +43,8 @@
         "standardUnitKey": "M2-01",
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "conceptClusterKey": "REPEATING_DECIMAL_NOTATION_ERROR",
-        "primaryMethod": "소수점 아래 첫째 자리부터 순환하지 않는 -0.7222...을 -0.72(72순환)로 잘못 표기한 ④를 찾는다.",
-        "decisiveStep": "비순환 숫자 7 위에 점을 찍은 ④ 오류 판별",
+        "primaryMethod": "④는 $-0.7222\\cdots$의 순환마디가 2인데 점 표기가 72 반복을 뜻하므로 잘못되었음을 판별한다.",
+        "decisiveStep": "④의 점 표기 72 반복과 실제 순환마디 2의 불일치 확인",
         "rpm": {
           "majorUnit": "유리수와 순환소수",
           "midUnit": "유리수와 순환소수",
@@ -696,13 +696,13 @@
         "standardCourse": "중2",
         "courseKey": "M2",
         "curriculum": "2015",
-        "standardUnitKey": "M2-02",
-        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "conceptClusterKey": "TWO_VARIABLE_LINEAR_EQUATION_COUNT",
         "primaryMethod": "각 식을 정리해 x^2 소거되는 ㄱ과 일차식 ㄴ만 미지수 2개인 일차방정식(2개)임을 판별한다.",
         "decisiveStep": "ㄱ의 x^2 소거 및 ㄹ(분모x)·ㅂ(xy항) 제외 판별",
         "rpm": {
-          "majorUnit": "일차부등식과 연립일차방정식",
+          "majorUnit": "연립일차방정식",
           "midUnit": "연립일차방정식",
           "l3": "연립방정식의 풀이",
           "l4": "가감법"
@@ -747,13 +747,13 @@
         "standardCourse": "중2",
         "courseKey": "M2",
         "curriculum": "2015",
-        "standardUnitKey": "M2-02",
-        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "conceptClusterKey": "SYSTEM_NO_SOLUTION_COEFFICIENT",
         "primaryMethod": "해가 없을 조건 4/2 = -3/a != 5/3을 적용하여 a = -3/2를 구한다.",
         "decisiveStep": "4/2 = -3/a에서 a = -3/2 산출",
         "rpm": {
-          "majorUnit": "일차부등식과 연립일차방정식",
+          "majorUnit": "연립일차방정식",
           "midUnit": "연립일차방정식",
           "l3": "해가 특수한 연립방정식",
           "l4": "해가 없거나 무수히 많은 경우"
@@ -1149,13 +1149,13 @@
         "standardCourse": "중2",
         "courseKey": "M2",
         "curriculum": "2015",
-        "standardUnitKey": "M2-02",
-        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "conceptClusterKey": "SYSTEM_SUBSTITUTION_METHOD",
         "primaryMethod": "x=2y+5를 3x+y=-6에 대입해 y=-3을 구하고 x=-1을 산출한다.",
         "decisiveStep": "3(2y+5)+y=-6에서 y=-3 도출 후 x=-1 계산",
         "rpm": {
-          "majorUnit": "일차부등식과 연립일차방정식",
+          "majorUnit": "연립일차방정식",
           "midUnit": "연립일차방정식",
           "l3": "연립방정식의 풀이",
           "l4": "대입법"

@@ -1,8 +1,8 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "similar/middle/m2/1mid/23_연향중_1학기_중간_중2_유사.js",
-  "sourceGitBlobSha": "1e28261619e9b906f29a430c1dfbf59a6dd24f63",
-  "sourceSha256": "68e47690607b46fea635b193ddd00ee4c2c0b65a9766dbb30801d8247f2e00eb",
+  "sourceGitBlobSha": "7b1fb1a3ddcad7782c3ca21bb618484ed666d593",
+  "sourceSha256": "1a05b70764ff5990936272413176f3a6faf2e1797bfd94df9adb7e1fed0c2fda",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "Codex stage-local MD migration",
@@ -21,12 +21,12 @@
     "sourceRead": "Direct native Docs read for 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, revision AHj4eMQ6W6kHgpGUN-knYaOayFCqaTkfkQPf5tRXJkQzqZZqgqP4MdBWTuw6g85jWE47csFWQ-ZlOXJrwjAZBwo0KngR9Nv2YnNRs306kEk.",
     "sectionIsolation": "23 questions isolated; no tables or inline images.",
     "scoreCheck": "23 question scores total 100.",
-    "mathReview": "All 23 prompts, choices, answers and solutions were read and checked; identified notation/domain/ambiguity fixes were applied and independently recomputed. Independent review NOT_RUN.",
-    "visualReview": "Problem/solution illustration need assessed separately; no SVGs, screen inspection or rendering QA.",
+    "mathReview": "All 23 prompts, choices, answers and solutions read; Q1 source-intended incorrect period notation restored, Q6 divisor grouped, and Q14/Q15/Q23 taxonomy keys checked against current taxonomy. Independent review NOT_RUN.",
+    "visualReview": "Problem/solution illustration need assessed separately; no SVG, screen inspection or rendering QA.",
     "identityBinding": "Candidate UID references only; official identity-map registration NOT_RUN.",
     "registration": "NOT_RUN",
-    "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN.",
-    "draftHarness": "RAN: failed only because candidate-specific author plans directory is absent; plans were not created and no EXEMPT substitute was added.",
+    "fourSlotValidation": "RAN: 23/23 items, 93 citations, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN.",
+    "draftHarness": "RAN: blocked because candidate-specific author plans directory is absent; plans were not created and no EXEMPT substitute was added.",
     "fourSlotValidationWarnings": [
       "#1 only 2 distinct terms",
       "#1 method has 1 term",
@@ -116,7 +116,7 @@
           {
             "term": "순환마디",
             "src": "solution",
-            "quote": "점 아래 반복되는 순환마디의 첫 숫자와 끝 ",
+            "quote": " 반복되는 숫자와 순환마디 점 표기가 일치하",
             "termId": 429
           }
         ],
@@ -133,7 +133,7 @@
       },
       "evidenceDebt": [],
       "reasons": {
-        "method": "소수점 아래 첫째 자리부터 순환하지 않는 -0.7222...을 -0.72(72순환)로 잘못 표기한 ④를 찾는다."
+        "method": "④는 $-0.7222\\cdots$의 순환마디가 2인데 점 표기가 72 반복을 뜻하므로 잘못되었음을 판별한다."
       },
       "steps": [],
       "scenarioNote": "",
@@ -161,9 +161,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q01",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -174,13 +174,13 @@
           {
             "term": "유리수",
             "src": "choices",
-            "quote": "유리수",
+            "quote": "① $2.75$는 유리수이다.",
             "termId": 3
           },
           {
             "term": "분수",
             "src": "choices",
-            "quote": "분수 꼴",
+            "quote": "② 분수 꼴로 나타낸 수는",
             "termId": 27
           }
         ],
@@ -188,7 +188,7 @@
           {
             "term": "유리수",
             "src": "choices",
-            "quote": "유리수",
+            "quote": "① $2.75$는 유리수이다.",
             "termId": 3
           }
         ],
@@ -233,9 +233,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q02",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -245,16 +245,16 @@
         "given": [
           {
             "term": "거듭제곱",
-            "src": "stem",
-            "quote": "다음 중 계산 결과가 잘못된 것은? (단, $x\\ne0$,",
+            "src": "solution",
+            "quote": "지수법칙을 적용하여 계산을 확인한다.\n⑤ $(-2y^3)^",
             "termId": 20
           }
         ],
         "goal": [
           {
             "term": "단항식",
-            "src": "stem",
-            "quote": "다음 중 계산 결과가 잘못된 것은? (단, $x\\ne0$,",
+            "src": "solution",
+            "quote": "지수법칙을 적용하여 계산을 확인한다.\n⑤ $(-2y^3)^",
             "termId": 430
           }
         ],
@@ -306,9 +306,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q03",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -318,14 +318,14 @@
         "given": [
           {
             "term": "거듭제곱",
-            "src": "stem",
-            "quote": "세 자연수 $a, b, c$에 대하여 항등식 $\\left(",
+            "src": "solution",
+            "quote": "좌변을 지수법칙으로 전개하여 우변과 지수 및 계수를 비교한",
             "termId": 20
           },
           {
             "term": "단항식",
-            "src": "stem",
-            "quote": "세 자연수 $a, b, c$에 대하여 항등식 $\\left(",
+            "src": "solution",
+            "quote": "좌변을 지수법칙으로 전개하여 우변과 지수 및 계수를 비교한",
             "termId": 430
           }
         ],
@@ -385,9 +385,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q04",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -409,8 +409,8 @@
           },
           {
             "term": "단항식",
-            "src": "stem",
-            "quote": "가로의 길이가 $4a^3b^2$, 세로의 길이가 $3ab$",
+            "src": "solution",
+            "quote": "직사각형의 넓이와 삼각형의 넓이가 같음을 이용해 삼각형의 ",
             "termId": 430
           },
           {
@@ -423,18 +423,19 @@
         "goal": [
           {
             "term": "단항식",
-            "src": "stem",
-            "quote": "가로의 길이가 $4a^3b^2$, 세로의 길이가 $3ab$",
+            "src": "solution",
+            "quote": "직사각형의 넓이와 삼각형의 넓이가 같음을 이용해 삼각형의 ",
             "termId": 430
           }
         ],
         "method": [
           {
             "term": "지수법칙",
-            "src": "stem",
-            "quote": "가로의 길이가 $4a^3b^2$, 세로의 길이가 $3ab$",
+            "src": "solution",
+            "quote": "직사각형의 넓이와 삼각형의 넓이가 같음을 이용해 삼각형의 ",
             "termId": 277,
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형 넓이 12a^4b^3을 삼각형 밑변의 절반 4a^2b^5로 나누어 높이 3a^2/b^2를 구한다."
           }
         ],
         "condition": []
@@ -469,9 +470,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q05",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -481,26 +482,27 @@
         "given": [
           {
             "term": "단항식",
-            "src": "stem",
-            "quote": "$A = (-8xy^2) \\div 3xy^3$, $B = ",
+            "src": "solution",
+            "quote": "$A$와 $B$를 각각 간단히 한 뒤 곱한다.\n$$\\beg",
             "termId": 430
           }
         ],
         "goal": [
           {
             "term": "단항식",
-            "src": "stem",
-            "quote": "$A = (-8xy^2) \\div 3xy^3$, $B = ",
+            "src": "solution",
+            "quote": "$A$와 $B$를 각각 간단히 한 뒤 곱한다.\n$$\\beg",
             "termId": 430
           }
         ],
         "method": [
           {
             "term": "지수법칙",
-            "src": "stem",
-            "quote": "$A = (-8xy^2) \\div 3xy^3$, $B = ",
+            "src": "solution",
+            "quote": "$A$와 $B$를 각각 간단히 한 뒤 곱한다.\n$$\\beg",
             "termId": 277,
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "A=-8/(3y)와 B=-9x/4를 각각 구해 곱하여 6x/y를 산출한다."
           }
         ],
         "condition": [
@@ -542,9 +544,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q06",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -554,26 +556,27 @@
         "given": [
           {
             "term": "다항식",
-            "src": "stem",
-            "quote": "$3a - 5b + 4$에 어떤 식 $A$를 더해야 할 것",
+            "src": "solution",
+            "quote": "어떤 식 $A$를 먼저 구한 뒤 원래 식에 더한다.\n1. ",
             "termId": 35
           }
         ],
         "goal": [
           {
             "term": "다항식",
-            "src": "stem",
-            "quote": "$3a - 5b + 4$에 어떤 식 $A$를 더해야 할 것",
+            "src": "solution",
+            "quote": "어떤 식 $A$를 먼저 구한 뒤 원래 식에 더한다.\n1. ",
             "termId": 35
           }
         ],
         "method": [
           {
             "term": "다항식",
-            "src": "stem",
-            "quote": "$3a - 5b + 4$에 어떤 식 $A$를 더해야 할 것",
+            "src": "solution",
+            "quote": "어떤 식 $A$를 먼저 구한 뒤 원래 식에 더한다.\n1. ",
             "termId": 35,
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "잘못 뺀 식에서 A=-4a+3b-5를 구하고 원래 식 3a-5b+4에 더해 -a-2b-1을 산출한다."
           }
         ],
         "condition": []
@@ -608,9 +611,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q07",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -620,26 +623,27 @@
         "given": [
           {
             "term": "다항식",
-            "src": "stem",
-            "quote": "$6x^2 - 2\\{4x^2 - 3(1 - 2x) - 2\\",
+            "src": "solution",
+            "quote": "소괄호부터 차례대로 전개하여 동류항을 정리한다.\n$$\\be",
             "termId": 35
           }
         ],
         "goal": [
           {
             "term": "다항식",
-            "src": "stem",
-            "quote": "$6x^2 - 2\\{4x^2 - 3(1 - 2x) - 2\\",
+            "src": "solution",
+            "quote": "소괄호부터 차례대로 전개하여 동류항을 정리한다.\n$$\\be",
             "termId": 35
           }
         ],
         "method": [
           {
             "term": "다항식",
-            "src": "stem",
-            "quote": "$6x^2 - 2\\{4x^2 - 3(1 - 2x) - 2\\",
+            "src": "solution",
+            "quote": "소괄호부터 차례대로 전개하여 동류항을 정리한다.\n$$\\be",
             "termId": 35,
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "소괄호 -3(1-2x)부터 중괄호를 풀어 -2x^2-12x+10으로 정리한다."
           }
         ],
         "condition": []
@@ -674,9 +678,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q08",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -715,10 +719,11 @@
           },
           {
             "term": "지수법칙",
-            "src": "stem",
-            "quote": "다음 중 계산 결과가 옳은 것은? (단, $x\\ne0$, ",
+            "src": "solution",
+            "quote": "분배법칙과 다항식·단항식 나눗셈을 확인한다.\n1. ① $-",
             "termId": 277,
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "단항식과 다항식의 곱셈·나눗셈을 항별로 계산해 옳은 식 ⑤를 고른다."
           }
         ],
         "condition": [
@@ -760,9 +765,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q09",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -772,8 +777,8 @@
         "given": [
           {
             "term": "다항식",
-            "src": "stem",
-            "quote": "$\\dfrac{16x^2 - 12xy}{-4x} - \\df",
+            "src": "solution",
+            "quote": "두 분수식을 각각 단항식으로 나눈 뒤 뺄셈을 계산한다.\n$",
             "termId": 35
           },
           {
@@ -786,24 +791,25 @@
         "goal": [
           {
             "term": "계수",
-            "src": "stem",
-            "quote": "$\\dfrac{16x^2 - 12xy}{-4x} - \\df",
+            "src": "solution",
+            "quote": "두 분수식을 각각 단항식으로 나눈 뒤 뺄셈을 계산한다.\n$",
             "termId": 50
           },
           {
             "term": "정수",
-            "src": "stem",
-            "quote": "$\\dfrac{16x^2 - 12xy}{-4x} - \\df",
+            "src": "solution",
+            "quote": "두 분수식을 각각 단항식으로 나눈 뒤 뺄셈을 계산한다.\n$",
             "termId": 2
           }
         ],
         "method": [
           {
             "term": "다항식",
-            "src": "stem",
-            "quote": "$\\dfrac{16x^2 - 12xy}{-4x} - \\df",
+            "src": "solution",
+            "quote": "두 분수식을 각각 단항식으로 나눈 뒤 뺄셈을 계산한다.\n$",
             "termId": 35,
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "앞 항 -4x+3y에서 뒤 항 -2x-3y를 빼서 -2x+6y를 얻고 계수 합 -2+6=4를 구한다."
           }
         ],
         "condition": [
@@ -845,9 +851,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q10",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -911,9 +917,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q11",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -932,7 +938,7 @@
           {
             "term": "정수",
             "src": "stem",
-            "quote": "가장 큰 정수",
+            "quote": " 중에서 가장 큰 정수는?",
             "termId": 2
           }
         ],
@@ -977,9 +983,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q12",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -989,26 +995,27 @@
         "given": [
           {
             "term": "자연수",
-            "src": "stem",
-            "quote": "민지가 등산을 하는데 올라갈 때에는 시속 $3\\text{ ",
+            "src": "solution",
+            "quote": "올라간 거리를 $x\\text{ km}$라 하고 총 소요 시",
             "termId": 1
           }
         ],
         "goal": [
           {
             "term": "길이",
-            "src": "stem",
-            "quote": "민지가 등산을 하는데 올라갈 때에는 시속 $3\\text{ ",
+            "src": "solution",
+            "quote": "올라간 거리를 $x\\text{ km}$라 하고 총 소요 시",
             "termId": 215
           }
         ],
         "method": [
           {
             "term": "일차부등식",
-            "src": "stem",
-            "quote": "민지가 등산을 하는데 올라갈 때에는 시속 $3\\text{ ",
+            "src": "solution",
+            "quote": "올라간 거리를 $x\\text{ km}$라 하고 총 소요 시",
             "termId": 355,
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "시간 단위를 통일해 x/3+1/3+x/4 <= 13/4 부등식을 세우고 풀어 최대 거리 5 km를 구한다."
           }
         ],
         "condition": []
@@ -1043,9 +1050,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q13",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -1071,10 +1078,11 @@
         "method": [
           {
             "term": "다항식",
-            "src": "stem",
-            "quote": "다음 보기 중 미지수 $x$와 $y$가 모두 나타나는 일차",
+            "src": "solution",
+            "quote": "모든 항을 좌변으로 이항해 $ax + by + c = 0$",
             "termId": 35,
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "각 식을 정리해 x^2 소거되는 ㄱ과 일차식 ㄴ만 미지수 2개인 일차방정식(2개)임을 판별한다."
           }
         ],
         "condition": [
@@ -1116,9 +1124,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q14",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -1144,10 +1152,11 @@
         "method": [
           {
             "term": "비율",
-            "src": "stem",
-            "quote": "연립방정식 $\\begin{cases} 4x - 3y = 5",
+            "src": "solution",
+            "quote": "먼저 $a=0$인 경우를 보면 두 번째 식에서 $x=\\df",
             "termId": 650,
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "해가 없을 조건 4/2 = -3/a != 5/3을 적용하여 a = -3/2를 구한다."
           }
         ],
         "condition": []
@@ -1182,9 +1191,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q15",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -1202,8 +1211,8 @@
         "goal": [
           {
             "term": "자연수",
-            "src": "stem",
-            "quote": "분수 $\\dfrac{2}{7}$을 소수로 나타낼 때, 소수",
+            "src": "solution",
+            "quote": "$\\dfrac{2}{7} = 0.\\dot{2}8571\\do",
             "termId": 1
           }
         ],
@@ -1248,9 +1257,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q16",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -1295,10 +1304,11 @@
           },
           {
             "term": "소인수분해",
-            "src": "stem",
-            "quote": "$\\dfrac{a}{40}$을 약분하면 $\\dfrac{3}",
+            "src": "solution",
+            "quote": "주어진 등식에서 $ab = 120$이고 $\\dfrac{3}",
             "termId": 14,
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "ab=120과 소수점 아래 두 자리 유한소수 분모 조건으로 b=4(a=30), b=20(a=6)을 찾아 최댓값 34를 구한다."
           }
         ],
         "condition": []
@@ -1333,9 +1343,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q17",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -1345,8 +1355,8 @@
         "given": [
           {
             "term": "다항식",
-            "src": "stem",
-            "quote": "$12x\\left(\\dfrac{x}{3} + 1\\right",
+            "src": "solution",
+            "quote": "분자의 괄호를 먼저 전개해 정리한 뒤 단항식 $xy$로 나",
             "termId": 35
           },
           {
@@ -1359,24 +1369,25 @@
         "goal": [
           {
             "term": "계수",
-            "src": "stem",
-            "quote": "$12x\\left(\\dfrac{x}{3} + 1\\right",
+            "src": "solution",
+            "quote": "분자의 괄호를 먼저 전개해 정리한 뒤 단항식 $xy$로 나",
             "termId": 50
           },
           {
             "term": "정수",
-            "src": "stem",
-            "quote": "$12x\\left(\\dfrac{x}{3} + 1\\right",
+            "src": "solution",
+            "quote": "분자의 괄호를 먼저 전개해 정리한 뒤 단항식 $xy$로 나",
             "termId": 2
           }
         ],
         "method": [
           {
             "term": "다항식",
-            "src": "stem",
-            "quote": "$12x\\left(\\dfrac{x}{3} + 1\\right",
+            "src": "solution",
+            "quote": "분자의 괄호를 먼저 전개해 정리한 뒤 단항식 $xy$로 나",
             "termId": 35,
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "분자 동류항 정리 후 xy로 나누어 (4x^2+12x)-(y^2+12x)=4x^2-y^2을 얻고 계수 합 3을 구한다."
           }
         ],
         "condition": [
@@ -1418,9 +1429,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q18",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -1490,9 +1501,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q19",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -1511,25 +1522,25 @@
           {
             "term": "기약분수",
             "src": "stem",
-            "quote": "기약분수로 나타내시오",
+            "quote": "\\dot{6}$을 기약분수로 나타내시오.",
             "termId": 558
           }
         ],
         "method": [
           {
             "term": "순환마디",
-            "src": "stem",
-            "quote": "순환소수 $0.21\\dot{6}$을 기약분수로 나타내시오.",
+            "src": "solution",
+            "quote": "$x = 0.21\\dot{6} = 0.21666\\cdots",
             "termId": 429,
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "x=0.21666...에 대해 1000x-100x=195를 계산하고 약분해 13/60을 구한다."
           },
           {
             "term": "약분",
             "src": "stem",
-            "quote": "기약분수로 나타내시오",
+            "quote": "dot{6}$을 기약분수로 나타내시오.",
             "termId": 58,
-            "evidenceType": "IMPLIED",
-            "justification": "순환소수의 반복마디를 소거한 뒤 기약분수로 약분하는 풀이 단계가 발문 목표에 내포된다."
+            "evidenceType": "NAMED"
           }
         ],
         "condition": []
@@ -1564,9 +1575,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q20",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -1585,17 +1596,18 @@
           {
             "term": "자연수",
             "src": "stem",
-            "quote": "몇 자리 자연수인지",
+            "quote": "})$이 몇 자리 자연수인지 구하시오.",
             "termId": 1
           }
         ],
         "method": [
           {
             "term": "지수법칙",
-            "src": "stem",
-            "quote": "$(2^{12} + 2^{12} + 2^{12} + 2^{",
+            "src": "solution",
+            "quote": "같은 거듭제곱의 합을 곱셈으로 고친 뒤 $10$의 거듭제곱",
             "termId": 277,
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "덧셈을 5*2^12과 2*5^14로 고쳐 곱한 25*10^13으로부터 15자리 자연수임을 구한다."
           },
           {
             "term": "곱",
@@ -1637,9 +1649,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q21",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -1649,26 +1661,27 @@
         "given": [
           {
             "term": "자연수",
-            "src": "stem",
-            "quote": "어느 놀이공원에서 판매하는 청소년 자유 이용권의 가격이 한",
+            "src": "solution",
+            "quote": "청소년 수를 $x$명($x < 30$)이라 하면, 단체권을",
             "termId": 1
           }
         ],
         "goal": [
           {
             "term": "자연수",
-            "src": "stem",
-            "quote": "어느 놀이공원에서 판매하는 청소년 자유 이용권의 가격이 한",
+            "src": "solution",
+            "quote": "청소년 수를 $x$명($x < 30$)이라 하면, 단체권을",
             "termId": 1
           }
         ],
         "method": [
           {
             "term": "일차부등식",
-            "src": "stem",
-            "quote": "어느 놀이공원에서 판매하는 청소년 자유 이용권의 가격이 한",
+            "src": "solution",
+            "quote": "청소년 수를 $x$명($x < 30$)이라 하면, 단체권을",
             "termId": 355,
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "20000x > 20000*30*0.85 부등식을 풀어 x>25.5로부터 최소 인원 26명을 구한다."
           }
         ],
         "condition": []
@@ -1703,9 +1716,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q22",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     },
     {
@@ -1769,9 +1782,9 @@
       "selfCheck": {
         "status": "SOURCE_TRANSFER_ONLY",
         "sourceRead": "Google Docs 1BRkTXRfsXG4Q144jSHlJiXHPAY_dLHQX7yQFVpGbnNs, Q23",
-        "visualReview": "NOT_RUN: no SVG creation, screen inspection or rendering QA.",
+        "visualReview": "NOT_RUN: no SVG, screen inspection or rendering QA.",
         "registration": "NOT_RUN",
-        "fourSlotValidation": "RAN: 23 items, 93 quotes, 0 FAIL, 40 WARN. Mechanical validator only; semantic review NOT_RUN."
+        "fourSlotValidation": "RAN: whole-file validator covers this item; 0 FAIL, 40 WARN overall. Semantic review NOT_RUN."
       }
     }
   ]
