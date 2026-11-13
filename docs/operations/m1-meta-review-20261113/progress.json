@@ -15,7 +15,7 @@
   "completedExams": 1,
   "reviewedQuestions": 47,
   "currentOrder": 2,
-  "nextAction": "Merge PR1966 only after exact-head CI; verify actual main correction receipt and final 613-Consumer preservation. Refresh current main pack befores; use semantic revision3 to apply the metadata-only Wangun candidate, append exact crosswalks, build official v2 request, verify all23 Consumer and close the exam.",
+  "nextAction": "Complete isolated Wangun23 actual Consumer/RPM parent and frozen17 outside-scope comparison. Wait other-owner PR1967 exact main registration before publishing the crosswalk; refresh main inputs and immutable request, then PR/main/actual receipt/final Consumer/remote SHA closeout.",
   "exams": [
     {
       "order": 1,
@@ -583,7 +583,7 @@
       "count": 23,
       "sourceBlob": "76377173ecb0ba989188561bbefac2afb3232479",
       "sourceSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
-      "status": "METADATA_SEMANTICS_CONFIRMED_REGISTRATION_PENDING",
+      "status": "ISOLATED_REGISTRATION_APPLIED_CONSUMER_PENDING",
       "checklist": "[ ]",
       "operationallyClosed": false,
       "reviewedQuestionCount": 23,
@@ -1218,7 +1218,7 @@
     }
   ],
   "instructionRevision": 2,
-  "state": "SECOND_EXAM_SEMANTICS_REV3_CONFIRMED_COURSE_CORRECTION_PR_OPEN",
+  "state": "SECOND_EXAM_ISOLATED_REGISTRATION_APPLIED_CONSUMER_PENDING_CONCURRENT_SUPPLEMENT_PENDING",
   "prerequisiteBranch": "fix/rpm-middle-l1-l2-20261113",
   "candidateCheckpoints": {
     "Q1_12": {
@@ -1237,10 +1237,10 @@
       "supersededBy": "01-shinheung-semantic-review.json"
     }
   },
-  "activeMain": "281b83f0326edcdb9dbfb5f121c03f068d7aad20",
+  "activeMain": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
   "prerequisiteStatus": "RPM_L1_L2_MERGED",
   "prerequisiteMainSha": "8c1b6694c35e76399a6ad36a4b6683e2cb6726b7",
-  "latestRemoteSemanticCheckpoint": "68627aab94cd553e09ef0a760e7b1bd59791d485",
+  "latestRemoteSemanticCheckpoint": "e403ce4b0fff47857e0579335a633a7a7b28dd3a",
   "latestMergedReviewHead": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
   "concurrentWorkCheck": {
     "path": "docs/operations/m1-meta-review-20261113/01-shinheung-concurrent-work-check.json",
@@ -1271,7 +1271,7 @@
     ],
     "noBlanketMetadataConflictWaiver": true
   },
-  "activeMainTree": "2c94ec6e6085415acc1d2de2aea8f4721c643b95",
+  "activeMainTree": "52bb30a7efe875985d8f3fa2214236332c062b66",
   "subsequentMainChanges": [
     {
       "pr": 1962,
@@ -1284,10 +1284,10 @@
       "preserveConcurrentChanges": true
     }
   ],
-  "activeMainTreeStatus": "PR1965_MERGED_THEN_CURSOR_ONLY_ADVANCE_COURSE_REQUEST_PREFLIGHT_INPUTS_UNCHANGED",
+  "activeMainTreeStatus": "COURSE_CORRECTION_ACTUALLY_REGISTERED_FINAL_CONSUMER_PRESERVED",
   "checkpointPublication": {
-    "lastVerifiedRemoteSha": "68627aab94cd553e09ef0a760e7b1bd59791d485",
-    "statusAtWriting": "REV3_AND_DEPENDENCY_PREFLIGHT_PREPARED_FOR_REMOTE_PUBLICATION",
+    "lastVerifiedRemoteSha": "e403ce4b0fff47857e0579335a633a7a7b28dd3a",
+    "statusAtWriting": "COURSE_ACTUAL_CLOSEOUT_AND_SECOND_EXAM_LOCAL_PREFLIGHT_CHECKPOINT_PENDING_PUBLICATION",
     "currentSnapshotEvidence": {
       "path": "02-wangun-semantic-review-rev3.json",
       "sha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090"
@@ -1303,11 +1303,11 @@
     "mainRegistrationStillRequired": true
   },
   "awcrCheckpoint": {
-    "latestVerifiedRevision": 16,
-    "fileId": "1xlYCsfWSdsMdngPZGZ6ew-G4Nwf6eblh",
-    "rawSha256": "5dbd1e4d4008931f661f4f44caf6b654960b968fba8b9fe6c78c92ad7df1faa4",
-    "nextRevision": 17,
-    "nextRevisionPurpose": "Record remote semantic rev3, preserved UID mapping, native/crosswalk plans, source candidate preservation evidence and standalone course correction PR1966."
+    "latestVerifiedRevision": 17,
+    "fileId": "1FEec09seuwP5KXCw4xjqsxvJzo_Zd6SO",
+    "rawSha256": "2adf3ba85e76d2669d7d9f3f31529dd13856e60436bb0d47cda3b41a076f3173",
+    "nextRevision": 18,
+    "nextRevisionPurpose": "Record course actual main51cf/receipt/final Consumer plus Wangun isolated preflight and exact PR1967 publication ordering gate."
   },
   "remainingExams": 43,
   "nextExam": {
@@ -1315,7 +1315,7 @@
     "path": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
     "file": "26_왕운중_2학기_중간_중1_기출.js",
     "questionCount": 23,
-    "status": "CURRENT_SEMANTICS_REV3_CONFIRMED_COURSE_CORRECTION_PR_OPEN",
+    "status": "ISOLATED_REGISTRATION_APPLIED_CONSUMER_PENDING",
     "semanticReadEvidence": "02-wangun-semantic-read-checkpoint.json"
   },
   "latestOperationalCloseout": {
@@ -1380,7 +1380,7 @@
     "currentDependencyEvidence": "02-pr1965-head9f828-review.json"
   },
   "operationallyClosedQuestions": 24,
-  "latestVerifiedRemoteCheckpoint": "68627aab94cd553e09ef0a760e7b1bd59791d485",
+  "latestVerifiedRemoteCheckpoint": "e403ce4b0fff47857e0579335a633a7a7b28dd3a",
   "courseCorrectionDependency": {
     "pr": 1966,
     "url": "https://github.com/icefoxtail/AP------/pull/1966",
@@ -1388,7 +1388,7 @@
     "tree": "d675bf7b430e2e91479ef21903273331a58fa5d8",
     "requestId": "m1-proportion-course-spelling-20261113",
     "requestRawSha256": "b5c56ef1dca62d921297b75dc80415392e006a2bed1f9494c94f0e8c58146ba4",
-    "status": "ISOLATED_PREFLIGHT_PASS_PR_CI_PENDING_MAIN_NOT_APPLIED",
+    "status": "ACTUALLY_REGISTERED_FINAL_CONSUMER_PRESERVED",
     "isolatedBaseline": "e2aa30e7c95aac4fc1a6a0748d13f078382b6f40",
     "affectedUidCount": 1,
     "preservedRuntimeUidCount": 613,
@@ -1396,7 +1396,22 @@
     "approvalCreated": false,
     "evidence": "02-binding-course-correction-preflight.json",
     "cursorAdvanceEvidence": "02-binding-course-main-cursor-advance.json",
-    "ciRun": 43459412070
+    "ciRun": 43459412070,
+    "mergeCommitSha": "57bd2b9c4a1d028c531a1dee86446fedd895e62d",
+    "registeredMainSha": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+    "registeredMainTree": "52bb30a7efe875985d8f3fa2214236332c062b66",
+    "actualReceiptSha256": "6533efaaeb1684991b992e10153d7db9eb09790f762b906093df72f3bb37beb6",
+    "writerRun": 43461439913,
+    "finalConsumer": {
+      "changed": 1,
+      "checked": 1,
+      "passed": 1,
+      "preservedRuntimeUidCount": 613,
+      "approvalCreated": false
+    },
+    "operationalCloseoutEvidence": "02-binding-course-operational-closeout.json",
+    "operationalCloseoutSha256": "8feaea616bc5e346ba90336aae0c819e6ac01112e0ec4be49a8370b676856a90",
+    "globalWriterStatus": "REGISTRATION_PARTIAL_OPTIONAL_SEMANTIC_NOT_REQUIRED"
   },
   "knownConcurrentOwnerBoundary": {
     "taskId": "241f49f8-fccb-4880-944e-9814a117b88e",
@@ -1406,5 +1421,33 @@
     "rawSha256": "2e96a4426d684f2aadba5a60eecd9111762b9eea9f884a4908e39d7032f707c2",
     "scope": "Other owner narrows to Shinheung24, withholds Wangun and standalone course request. Other task is not adopted. Recheck exact remote/source hashes before each mutation.",
     "candidateComparisonEvidence": "02-wangun-concurrent-candidate-conflicts.json"
+  },
+  "concurrentShinheungSupplement": {
+    "pr": 1967,
+    "head": "a52b2d5d440a9f03eb6a22f8a11cb84df045a6f2",
+    "owner": "GPT_ROOT_BF50408FB63B",
+    "stateAtObservation": "OPEN_CI_ONE_FAILURE",
+    "sourceNormalPayloadChanges": 0,
+    "registryChanges": 0,
+    "metadataFieldsChanged": 56,
+    "rootMutationsToOtherTask": 0,
+    "publicationOrdering": "Wait exact PR1967 main writer before changing the mutable crosswalk hash referenced by its24 item evidence refs. Existing approval/native Consumer uses immutable approval refs and is not invalidated by append alone.",
+    "evidence": "02-crosswalk-append-existing-approval-impact.json",
+    "firstExamHistoricalCloseoutPreserved": true
+  },
+  "wangunIsolatedPreflight": {
+    "baselineMain": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+    "scope": "LOCAL_ONLY_NOT_OPERATIONAL_MAIN",
+    "requestId": "m1-wangun-2026-mid-meta-review-20261113",
+    "requestRawSha256": "feb528273a4167b654a50dcd6d825c7db9173b0bf2fee1c47904b20b4bb505c1",
+    "dryRun": "PASS",
+    "officialIsolatedWrite": "PASS",
+    "questions": 23,
+    "registryChanges": 16,
+    "runtimeMaterialized": 23,
+    "consumerStatus": "PENDING_BUILD",
+    "productionSourceChanged": false,
+    "productionRegistryChanged": false,
+    "frozenOutsideScopeConsumerCount": 17
   }
 }

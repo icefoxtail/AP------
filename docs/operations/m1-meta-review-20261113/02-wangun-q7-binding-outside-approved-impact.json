@@ -1,0 +1,268 @@
+{
+  "schemaVersion": "exact-native-binding-outside-approved-impact-v1",
+  "recordedAt": "2026-11-13T16:20:14.071328+00:00",
+  "status": "NO_OUTSIDE_APPROVED_EXACT_BINDING_CONSUMERS",
+  "owner": "GPT_META_AUTHORITY_933015CD0A4F",
+  "question": "Wangun Q7 only; new ACTIVE 2022/중1 수학/M1-04/M1-04-GRAPH_RELATION/PT_FUNCTION_GRAPH_PROPERTIES binding",
+  "lookupTuple": {
+    "curriculum": "2022",
+    "standardCourse": "중1 수학",
+    "standardUnitKey": "M1-04",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES"
+  },
+  "lookupSemantics": "Same exact comparison as official v2 signature: curriculum||curriculumKey; standardCourse||courseKey; exact standardUnitKey, null-equivalent subUnitKey, problemTypeKey. No normalization, template filtering, source-grade guessing or scope-alias widening.",
+  "targetUidAuthority": {
+    "path": "docs/operations/m1-meta-review-20261113/02-wangun-semantic-review-rev3.json",
+    "sha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090"
+  },
+  "targetUidCount": 23,
+  "officialGuard": {
+    "authority": {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "sha256": "997347340a7dbd1ae05c1f70935aa23a125b9bd7aad3a08a463bd2fb85af55f1"
+    },
+    "approvedPredicate": "row.reviewStatus === \"reviewed_pass\" || String(row.metadataStatus || \"\").startsWith(\"approved_\")",
+    "predicateLocation": "approved() constant at line25",
+    "signatureLocation": "out-of-scope approved consumer guard around lines1879–1888",
+    "signatureRule": "For each approved non-target UID, signature includes the exact matching binding rows in addition to unchanged PT/TPL/master/CC/condition references. A newly added matching binding changes that signature even if its existing native keys remain the same.",
+    "expectedErrorIfAnyMatch": "registry change affects out-of-scope approved UID: <questionUid>"
+  },
+  "metadataSnapshot": {
+    "path": "archive/data/question_metadata.json",
+    "sha256": "f736b93822412471136634a929a19afa4a350033059856c71780c9c3cf219e00",
+    "sha256UnchangedAfterStream": true,
+    "allRecordsStreamed": 28890
+  },
+  "counts": {
+    "matchingMetadataRows": 0,
+    "matchingOutOfWangunMetadataRows": 0,
+    "matchingApprovedOutOfWangunMetadataRows": 0,
+    "matchingNotApprovedOutOfWangunMetadataRows": 0,
+    "matchingWangunMetadataRows": 0,
+    "currentGlobalExactCanonicalBindings": 0,
+    "matchingRuntimeRows": 0,
+    "matchingOutOfWangunRuntimeRows": 0,
+    "runtimeFilesChecked": 17
+  },
+  "matchingMetadataRows": [],
+  "approvedOutOfWangunConsumers": [],
+  "matchingRuntimeRows": [],
+  "currentExactBindings": [],
+  "proposedAddOnlyBinding": {
+    "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+    "collection": "bindings",
+    "match": {
+      "curriculum": "2022",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-04",
+      "subUnitKey": "M1-04-GRAPH_RELATION",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES"
+    },
+    "before": null,
+    "after": {
+      "curriculum": "2022",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-04",
+      "subUnitKey": "M1-04-GRAPH_RELATION",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_13c5c93007955b679fe9896938511efccef68cb26e5450a54e1a98a5ac61b59e"
+      ],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "L1": "좌표평면과 그래프",
+      "L2": "정비례와 반비례"
+    },
+    "evidenceRefs": [
+      {
+        "path": "docs/operations/m1-meta-review-20261113/02-wangun-semantic-review-rev3.json",
+        "sha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090"
+      }
+    ]
+  },
+  "signatureConclusion": {
+    "baselineMatchingBindingCount": 0,
+    "afterMatchingBindingCount": 1,
+    "outsideApprovedSignatureChanges": [],
+    "scopeAliasImpactExcluded": true,
+    "conclusion": "This specific Q7 new-binding edit has no approved outside-target exact consumers under the current metadata snapshot, so this particular official guard has no matching outside row to reject."
+  },
+  "limitations": [
+    "Read-only static inspection, not official registrar dry-run, not full Consumer proof.",
+    "No inference of approval from runtime ACTIVE flags; approved() is evaluated on current metadata exactly.",
+    "Scope-alias consumers are explicitly outside this report and remain covered by the separate baseline owner.",
+    "Recheck snapshot hashes if another main metadata writer advances before request construction."
+  ],
+  "noChanges": {
+    "source": true,
+    "canonical": true,
+    "runtime": true,
+    "trackedDocs": true,
+    "gitIndex": true,
+    "api": true,
+    "mathReviewOrFullR1R2R3": true
+  },
+  "evidenceRefs": [
+    {
+      "path": ".tmp/m1-meta-review/02-wangun-native-registration-plan-rev2.json",
+      "sha256": "830b474917b08779353ab34aea2035c1d49718c85507b9a98da129ac21bdc62a"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/bindings.json",
+      "sha256": "d659538f5253bd081706c299b82ac5814ba3cb85e64420a8a282ab042adbf61c"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "sha256": "ff59576b8df6c016103841234f0bc64bdfcc16ac875df2f23f8d299b4ff66330"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/bindings.json",
+      "sha256": "2a2b9d2cdf3d5b2cdbf27279d85d69b392f70e5706d073b8ed92bf2a4ea13160"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+      "sha256": "834ecd3fb6580fe00a73c02c5beba552bbb0bbba10e19d0e374d62cadbb79d2c"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry/bindings.json",
+      "sha256": "af843d20885e448ea5a730d3c8a7a5e8b21abf93c45d5658f4b6aa5e9ab3b1f7"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/bindings.json",
+      "sha256": "35302a5b1448feea34bb03ee24c9b7059a7f84dd9510fb19274250f39fab29ad"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/bindings.json",
+      "sha256": "7c2334d36cd2eee4eb90f6962d4301317fcde385a9cb88f1c1e15a10f75ae9f8"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/bindings.json",
+      "sha256": "ab37bbce702c73d28dd14415d6ba7fe1cb55c42417162f97f497b277f3da9379"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/bindings.json",
+      "sha256": "b6fdbe6d462617c257673cb6cb23ad24abdd6993c753979d34e2e54db8a2f71e"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "sha256": "50605f20f9f4a37f186ee79c983db4631b4e8922cb7dfedf791722b37497ffe4"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "sha256": "83f10a0787289d40a896f6118015d224b3672ebac059121f59bb7d31a500a83d"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "sha256": "1404a9bcb5fe1387a2deafbaaf8fe135bef3613580670a46fd3d3252fd6e12de"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+      "sha256": "6a70842eea515775860fdfc627817cc1ca79f6930b0e474cb807bbc5fe2d0367"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/bindings.json",
+      "sha256": "9754ff2e0a58cecfa6828a204fb00b989cb68e7f30f3c58d35d29d51338c3a55"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/bindings.json",
+      "sha256": "ca1523d9fc65cd2b37c7b4cd99203e1785b231b4c09bc30a9cd7d9b3e86bf685"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json",
+      "sha256": "5d11705a488f3de996a1a0be10154168748299015052e6d5e1b19d7037817fb9"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/trigonometry/bindings.json",
+      "sha256": "ba5f1e2fa976ef7434fae7e461b1228df6f5b0ce07043e1448a291e6233b9149"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/algebra-2022-v1.json",
+      "sha256": "f0815609ab134bc69f86c318032f3be19be33260c372c0554f8ed421d28d298c"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/derivative-v1.json",
+      "sha256": "eed7219e7991de43d41b74bda71ad0eb6eaa93f4be03a21d7c8ae335c586cc86"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/exponents-logarithms-v1.json",
+      "sha256": "b41f6fbd015af882647a863e8c9d0ffd515f6bb52d78f495226cee262588b2f6"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+      "sha256": "6eeefba95e297a9b5f9d439bb6f37e1173532aebab5551f8bf3b4f53d91c2807"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+      "sha256": "b4002030ca438d48891291178bc3b844031c6aee7615423a054938b6dbb7733c"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/geometry-v1.json",
+      "sha256": "086b7af881c888fcd8622fc2fa8c1325e08e646e2dbf23981e7a0cc32fd14959"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/h1-foundation-v1.json",
+      "sha256": "e8aa55f44fce8739605e4c2d31d1ea413f14ab917ea447b47807018aaf38c033"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/h1-original-source-v1.json",
+      "sha256": "08d04537134cdb893cebc14ec88cf35ff06e10bbbb39e1d3b2e2fa1512e8aaa9"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/integral-calculus-v1.json",
+      "sha256": "c8976b8e61ea0d7d76b74b5f343c7471c8932802525c1e71ab05a49255462e84"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/limit-continuity-v1.json",
+      "sha256": "d748bafa3923a1c1344253cb6701acbd97b7139a39d29d0aaf2090c899b42760"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "sha256": "11460d2e6374a06393cedc429edaa70af5119adbec28389a68fff00ef80adb33"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "sha256": "d285d4b4651e32c9bc4b3b2f94b397eee59bd3e99da4450f445dbb27d8c003ac"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+      "sha256": "7b2c33e080267539725efbb8089ed6f1cb2263150b610612403b0be5fa216dd8"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle3-v1.json",
+      "sha256": "636e6c7dc9248639a649d746e744b1430fa4c3a3e05da86a5895d155685cff30"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/probability-statistics-v1.json",
+      "sha256": "6a0cb8ce17ef2e59b12d381a85db4cd8590ac878f5d557a33640274cde5d9cec"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/sets-propositions-v1.json",
+      "sha256": "76835dfb6bcefe0362ed364a01b16eebb115af4f39273253b7fe9236cc2591a7"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/trigonometry-v1.json",
+      "sha256": "99d70fb0cf7344c8291757052d40ef06312989cf4e584fcb8a87c4f97353ae9a"
+    }
+  ],
+  "runtimeRecordCounts": {
+    "archive/data/meta-foundation/runtime/algebra-2022-v1.json": 21,
+    "archive/data/meta-foundation/runtime/derivative-v1.json": 395,
+    "archive/data/meta-foundation/runtime/exponents-logarithms-v1.json": 16,
+    "archive/data/meta-foundation/runtime/functions-graphs-v1.json": 543,
+    "archive/data/meta-foundation/runtime/geometry-equations-v1.json": 448,
+    "archive/data/meta-foundation/runtime/geometry-v1.json": 106,
+    "archive/data/meta-foundation/runtime/h1-foundation-v1.json": 1284,
+    "archive/data/meta-foundation/runtime/h1-original-source-v1.json": 287,
+    "archive/data/meta-foundation/runtime/integral-calculus-v1.json": 194,
+    "archive/data/meta-foundation/runtime/limit-continuity-v1.json": 184,
+    "archive/data/meta-foundation/runtime/middle-geometry-v1.json": 1017,
+    "archive/data/meta-foundation/runtime/middle1-v1.json": 613,
+    "archive/data/meta-foundation/runtime/middle2-v1.json": 36,
+    "archive/data/meta-foundation/runtime/middle3-v1.json": 126,
+    "archive/data/meta-foundation/runtime/probability-statistics-v1.json": 902,
+    "archive/data/meta-foundation/runtime/sets-propositions-v1.json": 383,
+    "archive/data/meta-foundation/runtime/trigonometry-v1.json": 6
+  }
+}
