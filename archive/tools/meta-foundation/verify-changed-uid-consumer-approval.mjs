@@ -253,8 +253,11 @@ function checkRow(consumer, unit, row) {
   if (row.bodyFingerprint !== undefined && row.bodyFingerprint !== resolved.assignmentFingerprint)
     return { ...out, reason: "BODY_FINGERPRINT_MISMATCH", detail: `request ${row.bodyFingerprint} != consumer assignmentFingerprint ${resolved.assignmentFingerprint}` };
   if (row.fullFingerprint !== undefined && row.fullFingerprint !== resolved.sourceFingerprint) out.solverOnlyRevision = true;
-  if (Array.isArray(resolved.metadataConflicts) && resolved.metadataConflicts.length)
-    return { ...out, reason: "METADATA_CONFLICT", detail: resolved.metadataConflicts.join(",") };
+  // REVIEW2 (two independent judgments): the exam file's own review annotation (e.g. SELF_CHECKED) differs from the registrar-forced
+  // reviewed_pass by design; it is kept in the exam file and is not a metadata conflict. Every other conflicting field still refuses.
+  const blockingConflicts = (resolved.metadataConflicts || []).filter(f => !(unit.approvalType === "REVIEW2" && f === "reviewStatus"));
+  if (blockingConflicts.length)
+    return { ...out, reason: "METADATA_CONFLICT", detail: blockingConflicts.join(",") };
   const evidence = resolved.assignmentEvidence;
   const reasons = resolved.canonicalAssignmentReasons;
   if (!Array.isArray(reasons) || reasons.length || evidence?.approvalStatus !== "APPROVED" || evidence?.reviewEvidence?.status !== "PASS") {
