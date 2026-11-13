@@ -128,6 +128,29 @@ jobs:
             node apmath/playground/next/tools/g7-learning-browser.mjs \
             2>&1 | tee "$RUNNER_TEMP/g7-toc-evidence/mappings.log"
 
+      - name: Validation branch regressions using the existing full-scope audits
+        if: github.ref == 'refs/heads/feat/g7-toc-ux-check-20261113'
+        timeout-minutes: 25
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-toc-browser/node_modules
+        run: |
+          set -euo pipefail
+          g7_validation_out="$RUNNER_TEMP/g7-toc-evidence/validation-branch"
+          mkdir -p "$g7_validation_out/g8-g9-student-flow" "$g7_validation_out/common-circle-eq" "$g7_validation_out/g7-proportion"
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory "$GITHUB_WORKSPACE" > "$g7_validation_out/http.log" 2>&1 &
+          g7_validation_server_pid=$!
+          trap 'kill "$g7_validation_server_pid" 2>/dev/null || true' EXIT
+          curl --retry 20 --retry-connrefused --retry-delay 1 --max-time 5 --silent --fail "${G7_BASE_URL}../kit/apl-catalog.js" > /dev/null
+          node apmath/playground/next/tools/g8-g9-student-live-smoke.mjs \
+            --base-url "$G7_BASE_URL" --out "$g7_validation_out/g8-g9-student-flow" \
+            2>&1 | tee "$g7_validation_out/g8-g9-student-flow/run.log"
+          node apmath/playground/next/tools/scene-smoke.mjs "$G7_BASE_URL" \
+            --only common-circle-eq --report "$g7_validation_out/common-circle-eq/report.json" \
+            2>&1 | tee "$g7_validation_out/common-circle-eq/run.log"
+          node apmath/playground/next/tools/middle-functions-browser.mjs \
+            --base "$G7_BASE_URL" --only g7-proportion --out "$g7_validation_out/g7-proportion" \
+            2>&1 | tee "$g7_validation_out/g7-proportion/run.log"
+
       - name: Verify report source identities and publish the measured summary
         run: |
           set -euo pipefail
@@ -227,19 +250,21 @@ jobs:
             runId: process.env.GITHUB_RUN_ID, runAttempt: process.env.GITHUB_RUN_ATTEMPT,
             release: { id: release.id, url: release.html_url, eventHeadSha: release.head_sha, conclusion: release.conclusion },
             expectedScenarios: process.env.G7_TOC_SCENARIOS.split(','),
+            extraNativeCheck: { lab: 'common-circle-eq', environment: 'PC·칠판', expectedScenes: 32, entryMode: 'Existing scene-smoke native manual route, separate from ordinary G7 student URLs' },
             reusedPlaybackEvidence: process.env.G7_REFERENCE_EVIDENCE,
-            sourceMeaning: 'Browser test source is checked-out main. Release event SHA is metadata, not a deployed-source assertion. The published-byte comparison covers exactly the seven listed changed runtime files.'
+            sourceMeaning: 'Browser test source is checked-out main. Release event SHA is metadata, not a deployed-source assertion. The published-byte comparison covers exactly the eight listed changed runtime files.'
           };
           fs.writeFileSync(path.join(sourceDir, 'context.json'), JSON.stringify(source, null, 2) + '\n');
           fs.writeFileSync(path.join(sourceDir, 'git-objects.txt'), execFileSync('git', [
             'ls-tree', '-r', 'HEAD', '--', 'apmath/playground/next', '.github/workflows/apmath-g7-toc-ux.yml'
           ]));
-          // The Pages manifest includes apmath; its builder copies these JS/CSS
+          // The Pages manifest includes apmath; its builder copies these JS/CSS/HTML
           // bytes unchanged. Its JSON compaction and added SVG projections do not apply.
           const files = [
             'kit/apl-g7-learning.css', 'kit/apl-g7-learning.js',
             'kit/apl-g7-short-coordinates.js', 'kit/apl-player.js',
-            'kit/apl-toc.js', 'labs/middle-functions/g7.js', 'labs/middle-functions/core.js'
+            'kit/apl-toc.js', 'labs/middle-functions/g7.js', 'labs/middle-functions/core.js',
+            'labs/common-circle-eq.html'
           ];
           const nextBase = new URL('../', process.env.G7_BASE_URL);
           const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
@@ -308,6 +333,22 @@ jobs:
             node apmath/playground/next/tools/g7-toc-ux-browser.mjs \
             2>&1 | tee "$RUNNER_TEMP/g7-toc-live/browser.log"
 
+      - name: Read the published common-circle-eq native bootstrap separately
+        timeout-minutes: 5
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-toc-live-browser/node_modules
+          G7_PUBLISHED_SOURCE_SHA: ${{ steps.published_source.outputs.sha }}
+        run: |
+          set -euo pipefail
+          [[ "$(git rev-parse HEAD)" == "$G7_PUBLISHED_SOURCE_SHA" ]]
+          g7_native_out="$RUNNER_TEMP/g7-toc-live/extra-native/common-circle-eq"
+          mkdir -p "$g7_native_out"
+          # This existing native/manual smoke is additional to the six ordinary
+          # G7 student routes above; their entry URLs and checks remain unchanged.
+          node apmath/playground/next/tools/scene-smoke.mjs "$G7_BASE_URL" \
+            --only common-circle-eq --runs 'PC·칠판' --report "$g7_native_out/report.json" \
+            2>&1 | tee "$g7_native_out/run.log"
+
       - name: Verify published evidence identities and measured scenarios
         run: |
           set -euo pipefail
@@ -321,21 +362,32 @@ jobs:
           const source = read('source/context.json');
           const bytes = read('published-bytes.json');
           const browser = read('browser/toc-ux-report.json');
+          const native = read('extra-native/common-circle-eq/report.json');
           assert.equal(source.sourceSha, execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim());
           assert.equal(bytes.sourceSha, source.sourceSha);
           assert.equal(bytes.status, 'PUBLISHED_BYTES_MATCHED');
-          assert.equal(bytes.files.length, 7);
+          assert.equal(bytes.files.length, 8);
           assert.ok(bytes.files.every(file => file.match));
           assert.equal(browser.commit, source.sourceSha);
           assert.equal(browser.status, 'UX_TECHNICAL_CHECKS_PASSED');
           assert.deepEqual(browser.scenarios.map(row => row.name).sort(), [...source.expectedScenarios].sort());
           assert.ok(browser.scenarios.every(row => row.status === 'PASS'));
+          assert.equal(native.source, source.sourceSha);
+          assert.equal(native.status, 'PASS');
+          assert.equal(native.runs.length, 1);
+          const nativeRun = native.runs[0];
+          assert.equal(nativeRun.file, `${source.extraNativeCheck.lab}.html`);
+          assert.equal(nativeRun.environment, source.extraNativeCheck.environment);
+          assert.equal(nativeRun.status, 'PASS');
+          assert.equal(nativeRun.rows.length, source.extraNativeCheck.expectedScenes);
+          assert.equal(new Set(nativeRun.rows.map(row => row.id)).size, source.extraNativeCheck.expectedScenes);
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, [
             `Published student URL: ${source.baseURL}`,
             `Checked-out source: ${source.sourceSha}`,
-            `Seven changed runtime files: exact published SHA256 and bytes matched`,
+            `Eight changed runtime files: exact published SHA256 and bytes matched`,
             `Measured student scenarios: ${browser.scenarios.map(row => row.name).join(', ')}`,
             `Current contents inventory: ${JSON.stringify(browser.conversion)}`,
+            `Additional native bootstrap: ${source.extraNativeCheck.lab}, ${nativeRun.environment}, ${nativeRun.rows.length} scenes; separate from ordinary G7 student routes`,
             `Release event: ${source.release.url} (event SHA ${source.release.eventHeadSha}; not assumed to be deployed source)`,
             'Scope: published navigation and exploration; unchanged proof playback uses the recorded prior evidence.',
             ''
