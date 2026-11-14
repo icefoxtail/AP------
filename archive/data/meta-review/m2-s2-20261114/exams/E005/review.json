@@ -1399,9 +1399,9 @@
     {
       "sourceOrdinal": 14,
       "questionUid": "qid_v1_893c41d3f82cfaa4ceba527b58ef0fa25a4c23e919ed1aede00b2cef09293323",
-      "verdict": "CORRECT",
-      "rpmRecordId": "M2-RPM-114",
-      "rpmDecision": "CORRECT",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
       "primaryMethod": "추가 개수를 포함하는 확률식",
       "decisiveStep": "빨간7을 고정하고 전체12+n을 분모로 세운다.",
       "before": {
@@ -1457,29 +1457,19 @@
       },
       "after": {
         "curriculum": "2015",
-        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
-        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "problemTypeKey": "",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-        "rpmL1": "확률",
-        "rpmL2": "확률",
-        "rpmL3": "확률의 뜻",
-        "rpmL4": "확률 계산",
-        "rpmPrimaryPath": {
-          "majorUnit": "확률",
-          "midUnit": "확률",
-          "l3": "확률의 뜻",
-          "l4": "확률 계산"
-        }
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
       },
       "fieldReview": {
-        "classification": "확률의 뜻 / 확률 계산: 표본공간 크기를 미지수로 바꾸어 한 번 역산한다.",
-        "binding": "PT_PROBABILITY_PROPERTIES_APPLICATION / TPL_PROBABILITY_BASIC_COUNT_RATIO의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "classification": "주어진 확률 1/3을 만족하는 추가 공 수 n이 목표이다. 확률을 출력하는 RPM114 및 PT_PROBABILITY_PROPERTIES_APPLICATION/TPL_PROBABILITY_BASIC_COUNT_RATIO 정의와 입력/목표 방향이 다르다. 현행 RPM 확률계산·사건·반복시행 leaf 중 정확한 역산 목표가 없어 RPM_LEAF_GAP.",
+        "binding": "확률→전체/구성 개수 역산 exact PT/TPL 등록 대기. E013-INVERSE-COUNT와 같은 제안으로 통합하며 미등록 키를 after에 사용하지 않음.",
         "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
         "condition": "도형의 주어진 관계는 4칸 condition에 보존. 별도 값의 허용범위를 제한하는 canonical 조건은 없어 conditionKeys=[] 유지.",
         "integration": "NONE: 표본공간 크기를 미지수로 바꾸어 한 번 역산한다.",
@@ -1488,9 +1478,12 @@
       },
       "reason": "표본공간 크기를 미지수로 바꾸어 한 번 역산한다.",
       "registrationDebt": [
-        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음",
+        "NEW_PT/RPM_LEAF_GAP: 주어진 확률에서 전체 또는 구성 개수 역산; E013-INVERSE-COUNT 동일 정의 재사용"
       ],
-      "proposalRefs": [],
+      "proposalRefs": [
+        "B-E005-INVERSE-COUNT"
+      ],
       "finalDifficulty": {
         "level": "하",
         "difficultyBucket": 2,
@@ -2706,6 +2699,28 @@
         "CC_CENTROID",
         "CC_TRIANGLE_CENTROID"
       ]
+    },
+    {
+      "id": "B-E005-INVERSE-COUNT",
+      "type": "NEW_PT",
+      "name": "주어진 확률에서 전체 또는 구성 개수 역산",
+      "definition": "미지 개수를 포함하는 유리한 경우와 전체 경우의 비를 주어진 확률에 같게 놓고 미지 구성 개수 또는 추가 개수를 결정한다.",
+      "parent": "확률의 뜻 / RPM_LEAF_GAP",
+      "distinguishingCriteria": "E013-INVERSE-COUNT와 같은 정의. E005 Q14는 분자7 고정·분모12+n에서 추가개수 역산, E013 Q23은 분자x·분모x+8에서 구성개수 역산이다. 두 경우 모두 확률 자체를 구하는 기존 정의의 역방향이다.",
+      "existingCandidatesReviewed": [
+        "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "M2-RPM-114",
+        "M2-RPM-117",
+        "M2-RPM-118"
+      ],
+      "ordinals": [
+        14
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_893c41d3f82cfaa4ceba527b58ef0fa25a4c23e919ed1aede00b2cef09293323"
+      ],
+      "reuseProposalRef": "E013-INVERSE-COUNT"
     }
   ],
   "notes": [
@@ -2774,6 +2789,13 @@
         17
       ],
       "evidence": "2026-11-14 ROOT actual stem/choices/solution recheck: Q5 여섯등넓이 직접배수, Q14 확률식으로 추가공 개수 1회 역산, Q17 무승부 여사건 선택. 제안 bucket와 기존 level 인접 경계 수용."
+    },
+    {
+      "type": "ROOT_AUTHORIZED_FROZEN_REPAIR",
+      "ordinals": [
+        14
+      ],
+      "reason": "E013 독립 교차검토에서 확인한 주어진 확률→미지 개수 역산 목표 경계를 공통 적용. ROOT 동결 해제 승인 후 기존 PT/TPL 및 RPM114 의미 확정을 철회하고 exact 등록 공백으로 정리. 난도/4칸/학생 source 및 다른 모든 문항 판정 유지."
     }
   ]
 }
