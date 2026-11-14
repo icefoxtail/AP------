@@ -19,10 +19,10 @@
     "existingFourSlotCount": 24,
     "canonicalUidCount": 1780
   },
-  "reviewedExams": 13,
-  "reviewedQuestions": 310,
-  "remainingExams": 62,
-  "remainingQuestions": 1470,
+  "reviewedExams": 14,
+  "reviewedQuestions": 333,
+  "remainingExams": 61,
+  "remainingQuestions": 1447,
   "nextAction": "Continue remaining disjoint exam queues and actual author-independent checks; publish and remote-verify one exam at a time.",
   "registrationStatus": "NOT_RUN",
   "mainMergeStatus": "NOT_AUTHORIZED",
@@ -1654,10 +1654,115 @@
       "solutionCount": 23,
       "existingFourSlotCount": 0,
       "existingFourSlotRef": null,
-      "status": "QUEUED",
-      "reviewedQuestionCount": 0,
-      "localWorkStatus": "AUTHOR_ARTIFACT_LOCAL_ONLY_INDEPENDENT_NOT_STARTED",
-      "localWorkReference": "docs/operations/m2-s1-meta-full-20261114/LOCAL_RECOVERY.json"
+      "status": "REVIEWED_RELEASE_PENDING",
+      "reviewedQuestionCount": 23,
+      "localWorkStatus": "AUTHOR_AND_INDEPENDENT_BYTES_PRESERVED",
+      "localWorkReference": "docs/operations/m2-s1-meta-full-20261114/LOCAL_RECOVERY.json",
+      "fullyJudgedQuestionCount": 23,
+      "finalSourceBlob": "51707a15619f2ecfd451783cd0399a881673d079",
+      "sourceFieldEditCount": 44,
+      "artifactDir": "docs/operations/m2-s1-meta-full-20261114/exams/E014",
+      "currentArtifactIndex": "docs/operations/m2-s1-meta-full-20261114/exams/E014/CURRENT.json",
+      "independentReviewer": "C",
+      "independentSampleOrdinals": [
+        14,
+        17,
+        23
+      ],
+      "rpmGapOrdinals": [
+        15,
+        16
+      ],
+      "registrationPendingOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "contentDebtOrdinals": [],
+      "unresolved": [],
+      "requiredEvidenceDebt": [],
+      "topicSummary": [
+        {
+          "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+          "count": 1,
+          "ordinals": [
+            14
+          ]
+        },
+        {
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "count": 5,
+          "ordinals": [
+            6,
+            7,
+            8,
+            9,
+            21
+          ]
+        },
+        {
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "count": 5,
+          "ordinals": [
+            10,
+            11,
+            12,
+            13,
+            22
+          ]
+        },
+        {
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "count": 5,
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "count": 6,
+          "ordinals": [
+            15,
+            16,
+            17,
+            18,
+            19,
+            23
+          ]
+        },
+        {
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "count": 1,
+          "ordinals": [
+            20
+          ]
+        }
+      ],
+      "nextAction": "CODEX_RESOLVE_NAMED_DEBTS_AND_REGISTER"
     },
     {
       "examId": "E015",
@@ -2579,8 +2684,8 @@
       "reviewedQuestionCount": 0
     }
   ],
-  "fullyJudgedQuestions": 302,
-  "updatedAt": "2026-11-14T11:01:13.447853+00:00",
+  "fullyJudgedQuestions": 325,
+  "updatedAt": "2026-11-14T11:05:09.638739+00:00",
   "verifiedExamPublications": [
     {
       "examId": "E001",
@@ -2824,11 +2929,11 @@
   "pendingAmendmentsReference": "docs/operations/m2-s1-meta-full-20261114/PENDING_AMENDMENTS.json",
   "localRecoveryReference": "docs/operations/m2-s1-meta-full-20261114/LOCAL_RECOVERY.json",
   "workingSnapshot": {
-    "inspectedAndRemotelyPreservedQuestions": 310,
-    "independentThreeItemSamples": 39,
+    "inspectedAndRemotelyPreservedQuestions": 333,
+    "independentThreeItemSamples": 42,
     "unresolvedMarkedQuestions": 8,
-    "rpmGapQuestions": 65,
-    "registrationPendingQuestions": 298,
+    "rpmGapQuestions": 67,
+    "registrationPendingQuestions": 321,
     "contentDebtQuestions": 10,
     "requiredMethodEvidenceDebtQuestions": 0,
     "interpretation": "Counts overlap. Reviewed means the bounded review and its named debts were preserved, not full quality PASS or registration. The current publication becomes remotely preserved only after CAS push and remote HEAD readback."
@@ -3087,6 +3192,30 @@
         "docs/operations/m2-s1-meta-full-20261114/progress.json"
       ],
       "verifiedAt": "2026-11-14T10:51:59.935290+00:00"
+    },
+    {
+      "label": "E013",
+      "commitSha": "dbdda8555a653f7c9938aa29bbafb5b2cf9d2844",
+      "parentSha": "ddcb14cdfe0dffd7bedeab8289d40fa2519ca02e",
+      "treeSha": "ca61a5db968878ca77b5e5ca9f5179dc9222f68a",
+      "remoteHeadVerified": true,
+      "files": [
+        "archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+        "docs/operations/m2-s1-meta-full-20261114/HANDOFF.md",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E013/CURRENT.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E013/accepted-review.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E013/author-four-slot.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E013/four-slot.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E013/independent-supplements/E013.q22-method-evidence-amendment.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E013/independent.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E013/review.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E013/root-review.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E013/source-writer-deferred.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E013/validation.json",
+        "docs/operations/m2-s1-meta-full-20261114/history/HANDOFF.previous-pause-20261114.md",
+        "docs/operations/m2-s1-meta-full-20261114/progress.json"
+      ],
+      "verifiedAt": "2026-11-14T11:02:34.433835+00:00"
     }
   ]
 }

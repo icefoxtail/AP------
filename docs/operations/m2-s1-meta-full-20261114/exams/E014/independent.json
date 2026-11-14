@@ -1,0 +1,278 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E014",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "reviewer": "M2-S1-META-FULL/C",
+  "at": "2026-11-14T10:59:36.133423+00:00",
+  "reviewedAuthorArtifacts": {
+    "reviewPath": "/workspace/scratch/59e0f5bd3a77/workers/B/E014.review.json",
+    "reviewSha256": "1d930c0f5bf8c57c22eb1c86702504afd177dc33da46a03ec7b63867962d52ba",
+    "fourSlotPath": "/workspace/scratch/59e0f5bd3a77/workers/B/E014.4slot.json",
+    "fourSlotSha256": "4998a6b5fa8a51bed0ba0862371e4580df74abf916846abb37d2db500525fefe"
+  },
+  "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+  "sourceSha256": "ea76881452909601f624a25591f25742e02b7af87db04106ec9805b9cc5ccbac",
+  "scope": {
+    "sevenAxisSampleOrdinals": [
+      14,
+      17,
+      23
+    ],
+    "difficultyOrdinals": [
+      2,
+      5,
+      9,
+      12,
+      14,
+      16,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23
+    ],
+    "notRepeated": "Previously preserved E001–E012 reviews were not rerun."
+  },
+  "status": "ACCEPT_SAMPLES_WITH_ONE_DIFFICULTY_ADJUDICATION",
+  "samples": [
+    {
+      "sourceOrdinal": 14,
+      "status": "ACCEPT",
+      "classification": "M1-RPM-214 원기둥의 부피가 결정적이다. 학교 학년과 다항식 외형은 Primary를 대체하지 않는다.",
+      "binding": "실제 ACTIVE family와 standard/rotation 관련 세 template 정의를 읽었다. 기본 수치 대입이나 회전축 구성은 상대 배율 부피비와 정확히 일치한다고 확정할 수 없어 HOLD가 타당하다.",
+      "crossConcept": "반지름·높이 배율과 역비는 원기둥 부피 계산 내부의 표준 조작으로 CC=[] 허용.",
+      "condition": "추가 정의역·정수·부호 제한은 주어지지 않아[] 허용.",
+      "integration": "한 Primary의 배율 절차로NONE 허용.",
+      "fourSlot": "원기둥·높이·반지름 given, 부피비 goal, 부피·비례 method의 literal quote 및 term ID를 실제 사전과 대조했다. 해설의 공식과 비례 명시가 있어 NAMED 허용. 닮음을 주장하지 않는다.",
+      "difficulty": "중/2/high/NONE/NORMAL 승인."
+    },
+    {
+      "sourceOrdinal": 17,
+      "status": "ACCEPT",
+      "classification": "소수 계수가 있는 부등식의 풀이139와 정수 최소 선택 CC_INTEGER_CONDITION의 실제 정의가 일치한다.",
+      "binding": "현재 M2 template는 여러 제시해의 정오 선택 또는 자연수해 합이므로 이번 단일 최소 정수 목표와 같다고 단정하지 않은 HOLD를 승인한다.",
+      "crossConcept": "CC_INTEGER_CONDITION 실제 정의의 정수 최솟값 선택에 부합.",
+      "condition": "명시된 정수 제한을COND_INTEGER로 보존하고 자연수 조건을 추가하지 않았다.",
+      "integration": "실수 해구간을 구한 뒤 정수 최솟값을 고르는SEQUENTIAL 타당.",
+      "fourSlot": "부등식의성질은 음수 나눗셈 설명과 표준 식이 직접 있고 정수해는 최종 정수 선택에 직접 대응한다. 인용과 사전ID를 실제 대조했다.",
+      "difficulty": "하/2/medium/B12/BORDERLINE_ACCEPTABLE 승인."
+    },
+    {
+      "sourceOrdinal": 23,
+      "status": "ACCEPT",
+      "classification": "원본 PNG에−1의 닫힌 점과 오른쪽 화살표가 실제 확인된다. 계수 조건141로 판정하는 것이 맞다.",
+      "binding": "H1 parameter template 정의는 넓지만 internalSkeleton은 CHAIN_INEQUALITY_SPLIT_AND_INTERSECT라 본 단일 식 역문제와 차이가 있다. definition/skeleton 충돌 debt 유지 타당.",
+      "crossConcept": "수직선 읽기·계수 부호·끝점 등식은 이번Primary 내부라별도CC를 늘리지 않는다.",
+      "condition": "a<−4와 상수a,b를4slot에 보존했다. 정수 조건을 만들지 않았다.",
+      "integration": "단일 계수조건 풀이의NONE 타당.",
+      "fourSlot": "해집합은 해설 첫 문장에 이름이 있고 부등식성질·끝점등식의 표준 식이 직접 있어세 method NAMED 허용. Literal quote/IDs/fingerprints 대조 완료.",
+      "difficulty": "중/2/medium/B23/NORMAL 승인."
+    }
+  ],
+  "difficultyReview": [
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_2d47081b6a1c7aad81595e81716d11222bc22ee7be12251413e52ea16573ea25",
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT",
+      "reason": "무한 반복의 정의로 정답이 직접 결정된다. 제시된 분수·점 표기의 읽기가 함께 있는 하/중 경계이므로 기존중을 폐기하지 않고 numeric1과 인접 호환을 승인한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_5c48fbbe18c392783068313f90997b71122e839f7070403ec5529bd85b01ba15",
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ROOT_ADJUDICATION_REQUIRED",
+      "reason": "7/(20x)로 약분하고 한 자리 후보1~9에서 분모의3 여부 및 분자7의 약분을 확인하면 된다. 분자7의 취소는 익숙한 조건 해석이며 새로운 접근 선택이 없어2를 제안한다. 저자3과의 차이는 root 판정 필요."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_6e0c850aba7fb53103c1f6e0630f572cf06938444d26d7bbcc6c4e7e7895db86",
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "지수법칙으로 한 단항식으로 정리하고 y지수부터B, x지수에서A, 계수C를 구하는 순서가 직접 주어진다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_e5f28268fbe3ca266745790a0d92990c312b80e1d18a6a87c8154557fe9d10b5",
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "잘못한 곱셈을 역으로 나누고 원래 나눗셈을 다시 수행하는 명시된 표준 복원이다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_2edcbb5f0e092c2a04092ec95db7fab83705293a67637bc7826281934ea9a3ba",
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "원기둥 부피의 반지름 제곱·높이 배율을 곱한 뒤 질문의 비를 뒤집는 익숙한 직접 활용이다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_0c83bcc298910fc31990c18d7f12d82394da99b8b5fe77726a934da2d76377b2",
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT",
+      "reason": "정답은 가격×수량의 표현 오류로 바로 결정된다. 여러 문장 속 연산·부등호의 읽기를 함께 요구하는 하/중 경계에서 기존중 유지와 numeric1을 함께 허용한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_28e95fc765f1612111b94b67ba9d0ff6c96b4d3a3618f831bd13dc51838a8369",
+      "independentDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT",
+      "reason": "소수 정수화 후 음수 나눗셈과 최소 정수 해석은2의 전처리에 해당한다. 계수가 한 자리 소수이고 경계가 이미 정수2여서 추가 반올림·선택 부담은 작아 기존하 유지도 인접 경계로 허용한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_9f2168ef1cbf50773727a1f3a13fe169b310dec906f681621992a6a6d10e1f77",
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT",
+      "reason": "음수배의 방향 반전이라는 한 성질로 판정한다. 분수·괄호 표현의 읽기를 포함한 하/중 경계로 기존중을 유지하는 인접 호환을 승인한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_5f2dba7e727d63873e8f786dd47d16eb0a1c64b3aeef8c9de165e097424601ab",
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "두 부등식의 해 방향이 같도록 직접 정리한 다음 경계값을 같게 두는 표준 조건 해석이다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_61ff5f8d23486bb057128cbace5a2f6720b947716da75fecf567c89e8792caf8",
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "같은 편도거리, 주어진 두 속력과 휴식시간을 합한 부등식이 즉시 정해진다. 다른 경로나 경우를 선택할 필요가 없다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_e19912e0939aa6424dcacb6bbf51399531a5c63d990582afba997d3cef96eb7a",
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "소문항이 식 정리 후 대입 순서를 명시한다. 다항식÷단항식 연산 길이를3의 근거로 사용하지 않는다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_52d2c67faafaa51afb1b1c7d7996d4904789dbf10842d474b0230689c7cfd8ad",
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "a<−4가 a+4의 음수를 이미 보장하므로 경우 분기는 없다. 음수 나눗셈 후 수직선의 닫힌−1과 경계를 같게 두어 바로 합을 얻는 정형 역문제이다."
+    }
+  ],
+  "requiredAmendments": [
+    {
+      "sourceOrdinals": [
+        2,
+        16,
+        17,
+        18
+      ],
+      "field": "finalDifficulty.legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "Actual independent review completed and adjacent historical level retained."
+    }
+  ],
+  "rootAdjudication": [
+    {
+      "sourceOrdinal": 5,
+      "authorBucket": 3,
+      "independentBucket": 2,
+      "boundary": "B23",
+      "reason": "7/(20x)로 약분하고 한 자리 후보1~9에서 분모의3 여부 및 분자7의 약분을 확인하면 된다. 분자7의 취소는 익숙한 조건 해석이며 새로운 접근 선택이 없어2를 제안한다. 저자3과의 차이는 root 판정 필요."
+    }
+  ],
+  "actualReferencesRead": [
+    "inputs/E014.json scoped stems/choices/existing solutions for12 questions",
+    "compiled taxonomy_registry template definitions/internalSkeleton",
+    "compiled concept_registry CC_INTEGER_CONDITION definition",
+    "middle1/middle2 crosswalk actual214/139/141",
+    "4slot dictionary v1.5 actual cited IDs",
+    "difficultyBucket v1.3 definitions and boundaries1/2,2/3"
+  ],
+  "visualEvidence": [
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/E014-q23.png",
+      "sha256": "5ba80c17565e096150c68dcc8b09abae047f98a5ff6d01649ef46a5f050290d3",
+      "finding": "−1 closed endpoint with rightward solution ray."
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/E014-q19-solution.png",
+      "sha256": "5a3353ee0b04834bdb319078d2767aa56965a6e26be79723ace1728af5280fa0",
+      "finding": "Upper x<2 open endpoint; lower P is boundary-position marker5a/4."
+    }
+  ],
+  "resolverEvidence": {
+    "status": "NOT_RUN",
+    "reason": "Semantic independent sample does not fabricate an official VERIFIED_FINAL resolver receipt."
+  }
+}
