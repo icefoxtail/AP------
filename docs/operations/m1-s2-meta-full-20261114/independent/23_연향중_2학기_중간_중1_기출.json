@@ -1,0 +1,406 @@
+{
+  "schemaVersion": "m1-s2-independent-sample-review-v1",
+  "reviewer": "meta-a",
+  "author": "meta-c",
+  "revision": 2,
+  "sourceArchiveFile": "original/middle/m1/2mid/23_연향중_2학기_중간_중1_기출.js",
+  "candidateSourceBlob": "6731b8d49f26d59daf5983f6854613a9f916d636",
+  "candidateSourceRawSha256": "d470879146f8839c385786fb070ebba6d4ab565dbe4f9767346539ce93f1a248",
+  "raw4slotSha256": "1712b4fad81d4f4ca139b39d0507847039f5077978d6f6074a0879a84ab9b4af",
+  "authorReviewSha256": "e12f6452b988f7715a3fc8498f5885d63bb094b55426ab3a3f88233402883c01",
+  "sampled": [
+    7,
+    10,
+    12,
+    15,
+    17,
+    18,
+    19,
+    20
+  ],
+  "coreSamples": [
+    12,
+    17,
+    20
+  ],
+  "additionalDifficulty": [
+    7,
+    10,
+    15,
+    18
+  ],
+  "additionalPrimary": [
+    19
+  ],
+  "status": "PASS_EIGHT_SAMPLES_AFTER_METADATA_CORRECTIONS",
+  "directReads": [
+    "current candidate content/choices/solution before raw slots",
+    "six current Git original PNGs visually inspected separately",
+    "author raw4slot and review/proposals",
+    "official whole PT/TPL definitions"
+  ],
+  "figureEvidence": [
+    {
+      "n": 7,
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/23-yeonhyang-mid-images/q7.png",
+      "sha256": "d25b4d9dab143ad99fea6e5974bcfddb5eaf315bd767cf2d816682c3f65752bd",
+      "gitPath": "archive/assets/images/23_연향중_2학기_중간_중1_기출/q7.png"
+    },
+    {
+      "n": 10,
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/23-yeonhyang-mid-images/q10.png",
+      "sha256": "3f24de013ee647d1795598370bc608e4cd64530c7fb78e99f7bf0bef2f5a5047",
+      "gitPath": "archive/assets/images/23_연향중_2학기_중간_중1_기출/q10.png"
+    },
+    {
+      "n": 15,
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/23-yeonhyang-mid-images/q15.png",
+      "sha256": "26d034297fc150f260a5aa9e1cfe3b548cf5bb0b0e8d5f8d814b7a10e10d86f8",
+      "gitPath": "archive/assets/images/23_연향중_2학기_중간_중1_기출/q15.png"
+    },
+    {
+      "n": 17,
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/23-yeonhyang-mid-images/q17.png",
+      "sha256": "0118dedd6f62814fb0c6a32b3ea94b7ff6919118042fcbc90bf56ddf2b871e60",
+      "gitPath": "archive/assets/images/23_연향중_2학기_중간_중1_기출/q17.png"
+    },
+    {
+      "n": 18,
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/23-yeonhyang-mid-images/q18.png",
+      "sha256": "d4882688b2f6e8b2a86fe50fdc3d9a15d6e58b4d6730e60bdc072bb5c9dc425f",
+      "gitPath": "archive/assets/images/23_연향중_2학기_중간_중1_기출/q18.png"
+    },
+    {
+      "n": 20,
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/23-yeonhyang-mid-images/q20.png",
+      "sha256": "9e9a38e714300f9b1543e569f3d325707b34df352393fb00361ec429b25a2471",
+      "gitPath": "archive/assets/images/23_연향중_2학기_중간_중1_기출/q20.png"
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 7,
+      "verdict": "ACCEPT_BUCKET3",
+      "meaning": "오각기둥 원그림에서 AB와 교차하거나 평행한 모서리를 제외한다. 보이지 않는 모서리를 포함하여 위치관계를 구분하는 표준 공간 판별이므로 단순 대입2보다3이 적절하고 별도 전략을 만들4는 요구되지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "compatibility": "NORMAL"
+      },
+      "fourSlot": "꼬인 위치의 개수 목표와 평행·교점·꼬인위치 제외 판별 근거를 수용한다.",
+      "questionUid": "qid_v1_fc2ead11b5e2bb900a94b558e5cda55cc4916a6af95e0b663b630034915e5e93",
+      "officialDefinitions": {
+        "problemType": {
+          "definition": "다면체에서 면의 모양, 모서리·면·꼭짓점의 관계, 한 꼭짓점에 모이는 면의 성질과 공간 관계를 진술별로 판단한다.",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1"
+        },
+        "template": {
+          "definition": "모든 모서리를 접점·평행·꼬임으로 분류해 꼬인 위치만 집계한다.",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS"
+        }
+      }
+    },
+    {
+      "ordinal": 10,
+      "verdict": "ACCEPT_ADJACENT_DIFFICULTY",
+      "meaning": "원그림의 여러 꺾인 선을 평행 보조선으로 나누고 y=β+35, x=β+100을 얻어 공통 미지각이 차에서 사라짐을 이용한다. 표준 평행선 각 이동의 반복과 한 번의 소거이므로3을 지지하되3/4 경계 가능성은 있다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "compatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "boundaryRecommendation": "현재 B23보다 B34가 실제 불확실성에 가깝다. 독립 검토 수용으로 호환성만 ACCEPTABLE로 바꿔도 난도 결론은 충족한다.",
+      "fourSlot": "보조선·엇각·평각의 실제 처리 단계와 평행 제약을 수용한다.",
+      "questionUid": "qid_v1_98cfbc3714e72da3018c6dfd4df8336bd847096e032efc6afced70c7bcab28d3",
+      "officialDefinitions": {
+        "problemType": {
+          "definition": "두 평행선과 꺾은 선이 만드는 연쇄 각으로 표시된 각을 구한다.",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1"
+        },
+        "template": {
+          "definition": "윗쪽 기울기각에 한 꺾임각을 더해 중간 선분의 방향을 구하고 아래쪽 기울기각과 결합한다.",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER"
+        }
+      }
+    },
+    {
+      "ordinal": 12,
+      "verdict": "ACCEPT_BUCKET4_TO2",
+      "meaning": "보기별로 각만 주어짐, 삼각형 존재 불가능한 세 변, 비끼인각 자료, 한 변과 두 각의 결정 조건을 대조한다. 복잡한 구성이나 다단계 새로운 추론 없이 표준 결정 조건을 선택하는2이다. 기존 상위 bucket4는 실제 요구를 과대평가한다.",
+      "native": "PT_M1_CONGRUENCE_UNIQUENESS / UNIQUE_TRIANGLE_DATA의 존재·유일성 비교 정의와 직접 맞는다. 교과서의 세변조건은 사전 id76 삼각함수 부등식과 다르며 현재 후보 용어 처리가 맞다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "compatibility": "NORMAL"
+      },
+      "fourSlot": "합동조건·삼각형의세변조건·끼인각 의미를 실제 보기와 기존 해설로 구분한 현재 슬롯을 수용한다.",
+      "contentDebt": "기존 해설의 나머지는 SSA라는 일괄 문장은 3·9·5 존재 불가능 보기까지 정확히 설명하지 않는다. C가 기록한 원문 부채를 보존하며 본 교차에서는 정답/해설을 수정하지 않는다.",
+      "questionUid": "qid_v1_84af768ddb3b17d734bd6f0a01a3c24401cb84f5f93aa707cdf673021f1a7278",
+      "officialDefinitions": {
+        "problemType": {
+          "definition": "The goal is to identify data that determine exactly one triangle; compare existence and uniqueness across construction conditions.",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1"
+        },
+        "template": {
+          "definition": "The template contrasts SSA, ASA, SSS, angle-only, and ambiguous SSA cases.",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS"
+        }
+      }
+    },
+    {
+      "ordinal": 15,
+      "verdict": "ACCEPT_ADJACENT_DIFFICULTY",
+      "meaning": "원그림에서 A를 지나는 직선으로 내린 두 수선과 AB=AC, 직각 A를 이용하여 두 직각삼각형의 합동을 인식한 뒤 대응 길이를 옮긴다. AD=7, AE=BD와 DE=28의 선분합을 연결하는 표준 합동 확장이므로3을 지지한다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "compatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "native": "빗변과 예각을 이용한 직각삼각형 합동의 핵심은 실제 도형에서 성립한다. 기존 글로벌 RHA 템플릿의 의미 재사용과 등록 대기를 구분한 판단을 수용한다.",
+      "fourSlot": "직각이등변삼각형·수선의 발과 합동조건·대응변·선분합 근거를 수용한다.",
+      "questionUid": "qid_v1_9ef7638fa8442a1fa1e6f90abbd59ee4a197efcb98c1995aff3c5babb8bd1e2c",
+      "officialDefinitions": {
+        "problemType": {
+          "definition": "RHS·RHA 등 직각삼각형 합동 조건을 핵심 전략으로 이용하는 유형.",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE_GEOMETRY"
+        },
+        "template": {
+          "definition": "직각삼각형에서 빗변과 한 예각의 대응을 이용한다.",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE_GEOMETRY",
+          "parentProblemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE"
+        }
+      }
+    },
+    {
+      "ordinal": 17,
+      "verdict": "ACCEPT_BUCKET4_AND_COMPLETED_DECISIVE_METHOD",
+      "meaning": "원그림의 세 교차점에서 세 작은 삼각형과 오목8각형을 선택하여 합을 두 부분으로 나누어야 한다. 8각형의 세 반사각을 360−x,360−y,360−z로 바꾸고 세 삼각형 식과 합해 공통 보조각을 소거하는 구조 선택이 핵심이다. 계산량보다 이 재구성과 소거 전략을 근거로4/medium/B34를 제안한다.",
+      "native": "현재 CROSSING_POLYGON_ANGLE_SUM / AUXILIARY_ANGLE_ELIMINATION의 전체 정의와 정확히 일치한다. 기존 regular-four-triangle 템플릿으로 되돌리지 않는다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "compatibility": "NORMAL"
+      },
+      "integration": "NONE 수용: 현재 primary 자체가 도형별 내각합과 교차각 소거를 포함한다.",
+      "fourSlotCorrections": [
+        {
+          "slot": "method",
+          "operation": "ADD",
+          "term": "소거",
+          "dictionaryId": 368,
+          "src": "solution",
+          "quote": "(540^\\circ-x-y-z)+(x+y+z)=540^\\circ",
+          "evidenceType": "IMPLIED",
+          "justification": "세 삼각형과 오목8각형에서 공유하는 보조각 x,y,z가 합산 과정에서 사라져 표시각 총합만 남는다."
+        }
+      ],
+      "questionUid": "qid_v1_89a8a97d3c7cf1152abbd4f94130be90be6cf3c78c1dd9d1aafb74cf5fd43c7b",
+      "officialDefinitions": {
+        "problemType": {
+          "definition": "변이 교차하는 도형을 삼각형과 다각형으로 나누고 교차점의 각 관계를 이용해 표시된 각의 합을 결정하는 유형이다.",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1"
+        },
+        "template": {
+          "definition": "교차점의 공통 보조각을 도형별 내각합에 공유하여 나타낸 뒤 맞꼭지각과 한 바퀴의 각 관계로 보조각을 소거하고 표시각의 합을 구한다.",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM"
+        }
+      }
+    },
+    {
+      "ordinal": 18,
+      "verdict": "ACCEPT_ADJACENT_DIFFICULTY",
+      "meaning": "원그림의 두 정다각형과 변의 연장으로 만들어진 빈 사각형을 확인했다. 내각135·108을 각각 평각에서 뺀45·72, 한 점 둘레의 나머지117을 구성하여 사각형 내각합에서126을 얻는 연결이다. 표준 내각 계산에 빈 도형 인식과 각 이동을 더한3, B34가 적절하다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "compatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fourSlot": "정팔각형·정오각형, 내각·평각·사각형의 연결을 수용한다.",
+      "questionUid": "qid_v1_1f83170c9598475023d8ff009183e7e3175cbf1762b58817c46bc07890ffde80",
+      "officialDefinitions": {
+        "problemType": {
+          "definition": "Fresh M1 type for an angle formed by multiple regular polygons rather than one polygon formula in isolation.",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1"
+        },
+        "template": {
+          "definition": "This template depends on the triangle-square-pentagon arrangement and combines their interior/exterior directions at x.",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE"
+        }
+      }
+    },
+    {
+      "ordinal": 19,
+      "verdict": "ACCEPT_COUNTING_PRIMARY_AND_EXISTING_GLOBAL_TYPE_REUSE",
+      "meaning": "세 국적 집단에서 서로 다른 두 집단을 선택한 뒤 각 집단의 한 사람씩 짝지어 2×3,2×4,3×4를 세고 합한다. 발문에는 점·직선·선분의 일치 또는 공선성에 관한 구조가 없으며 악수 쌍의 일반 합·곱 경우 세기이다.",
+      "native": "PT_H1_COUNTING_PRINCIPLE_GENERAL의 합·곱 법칙 정의와 TPL_H1_COUNTING_DIRECT_CASE의 독립 선택 곱/배타적 경우 합 정의가 정확히 맞는다. H1 소유팩은 재사용을 막지 않는다.",
+      "primary": "경우의 수 의미의 M2-08 / PROBABILITY_COUNTING을 유지하고 2015 중1 exact binding 공백을 명시한다. 중1 시험이라는 이유만으로 기본도형 선분·직선 개수로 바꾸지 않는다. 현재 course와 M2 부모의 행정적 등록 문제는 의미 판정과 분리한다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "compatibility": "NORMAL"
+      },
+      "fourSlot": "집단 given, 개수 goal, 합의법칙·곱의법칙, 중복불허·서로다른범주 제약이 풀이 구조를 정확하게 반영한다.",
+      "questionUid": "qid_v1_0d4243828ae864211f7ad293fd342424baa6c3e5f739054e7923a32d575089e8",
+      "officialDefinitions": {
+        "problemType": {
+          "definition": "합의 법칙·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반적인 경우의 수를 세는 유형.",
+          "status": "ACTIVE",
+          "ownerPack": "H1_FOUNDATION"
+        },
+        "template": {
+          "definition": "독립 선택은 곱하고 서로 배타적인 경우는 합하여 센다.",
+          "status": "ACTIVE",
+          "ownerPack": "H1_FOUNDATION",
+          "parentProblemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL"
+        }
+      }
+    },
+    {
+      "ordinal": 20,
+      "verdict": "ACCEPT_BUCKET5",
+      "meaning": "원본에는 점G가 없다. CD의 연장에 DG=BE인 점을 새로 잡는 전략으로 SAS 합동을 만들고, 대응각·변을 옮겨 직각이등변삼각형 AEG를 구성한다. 주어진45도를 이등분선으로 바꿔 수직이등분선의 등거리 성질과 다른 이등변삼각형의 각을 이어야 하므로 routine4보다5를 지지한다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 5,
+        "confidence": "medium",
+        "boundaryFlag": "B45",
+        "compatibility": "NORMAL"
+      },
+      "native": "정사각형의 같은 변과 직각에서 보조삼각형 SAS를 만든 뒤 대응각을 옮기는 기존 SQUARE_CONGRUENCE_TRANSFER의 골격 재사용을 지지한다. 추가 성질은 CC와 SEQUENTIAL에 명시돼 있다.",
+      "fourSlot": "보조선·SAS·각이등분선·수직이등분선·이등변삼각형은 실제 결정 단계가 각각 달라 5개 method를 유지할 근거가 있다.",
+      "questionUid": "qid_v1_56f87fcf14af7ab287a95d89b4c77abbb8d815221cd55bce76e560b88b8cb16f",
+      "officialDefinitions": {
+        "problemType": {
+          "definition": "보조 삼각형의 합동으로 대응각을 옮겨 목표 각을 구하는 유형이다.",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1"
+        },
+        "template": {
+          "definition": "정사각형에서 같은 변·직각을 얻고 한 길이 조건으로 SAS를 완성한 후 대응각과 직각의 차를 구한다.",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER"
+        }
+      }
+    }
+  ],
+  "sourceModified": false,
+  "mathFullR1R2Performed": false,
+  "finalReadback": {
+    "changesDirectlyVerified": [
+      "Q17 bucket4/medium/B34/NORMAL and 소거 exact evidence",
+      "Q10 B34",
+      "Q10/Q15/Q18 BORDERLINE_ACCEPTABLE",
+      "6 candidate parent same-slot additions"
+    ],
+    "unresolvedSampleDefects": 0
+  },
+  "compactSha256": "4a4e55348af662dc0acf943362a0c7538ecb570197578e7b1412daef9332b74c",
+  "technicalReadbacks": [
+    {
+      "contract": "4slot §10 candidate parent same slot",
+      "beforeBinding": {
+        "candidateSourceBlob": "b6228a19aee846dae31fbd53cfbfdbe1884ee698",
+        "candidateSourceRawSha256": "fb40b88351662901f96fad0b5ccaf548de6266350c3150e2514e1d5dbb218dfc",
+        "raw4slotSha256": "0992110214ee47d4baf5d55a5ca92510c67a32b880ab2f3f22e0ef77ef17c49d",
+        "authorReviewSha256": "c297ab3ce9bb2fe4e603db21ff9bba9365957239e48dec4ae607dbcfeeb58636"
+      },
+      "sourceUnchanged": false,
+      "semanticConclusionsRetained": true,
+      "changesDirectlyVerified": [
+        {
+          "exam": "23_연향중_2학기_중간_중1_기출",
+          "ordinal": 4,
+          "slot": "method",
+          "candidate": "교각",
+          "parent": "각",
+          "parentDictionaryId": 174,
+          "src": "solution",
+          "quote": "교각은 네 개"
+        },
+        {
+          "exam": "23_연향중_2학기_중간_중1_기출",
+          "ordinal": 9,
+          "slot": "condition",
+          "candidate": "비일치",
+          "parent": "위치관계",
+          "parentDictionaryId": 307,
+          "src": "stem",
+          "quote": "일치하는 경우는 제외"
+        },
+        {
+          "exam": "23_연향중_2학기_중간_중1_기출",
+          "ordinal": 12,
+          "slot": "method",
+          "candidate": "삼각형의세변조건",
+          "parent": "삼각형",
+          "parentDictionaryId": 158,
+          "src": "choices",
+          "quote": "$\\overline{AB}=3\\,\\mathrm{cm}$, $\\overline{BC}=9\\,\\mathrm{cm}$, $\\overline{CA}=5\\,\\mathrm{cm}$"
+        },
+        {
+          "exam": "23_연향중_2학기_중간_중1_기출",
+          "ordinal": 17,
+          "slot": "method",
+          "candidate": "한점둘레각",
+          "parent": "각",
+          "parentDictionaryId": 174,
+          "src": "solution",
+          "quote": "$360^\\circ-x$"
+        },
+        {
+          "exam": "23_연향중_2학기_중간_중1_기출",
+          "ordinal": 18,
+          "slot": "given",
+          "candidate": "정팔각형",
+          "parent": "정다각형",
+          "parentDictionaryId": 169,
+          "src": "stem",
+          "quote": "정팔각형"
+        },
+        {
+          "exam": "23_연향중_2학기_중간_중1_기출",
+          "ordinal": 19,
+          "slot": "condition",
+          "candidate": "서로다른범주",
+          "parent": "집단",
+          "parentDictionaryId": 350,
+          "src": "stem",
+          "quote": "같은 국적을 가진 사람들끼리는 서로 악수하지 않았다"
+        }
+      ],
+      "status": "ACCEPTED"
+    }
+  ]
+}
