@@ -1,0 +1,1300 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "1ceb612edef29dbbbcf49799b13753238ed166ca",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "worker-c",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_b9a92fdc5cbdda2f0a99f4fe69f38753b29ded99964db1cefc0d4830f4eb9ea3",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "$x$의 식"
+          },
+          {
+            "term": "정사각형",
+            "src": "choices",
+            "quote": "정사각형"
+          },
+          {
+            "term": "원",
+            "src": "choices",
+            "quote": "원"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "이차함수인 것을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "대각선 수를 식으로 쓰면",
+            "evidenceType": "IMPLIED",
+            "justification": "도형과 속력 관계를 각각 y의 식으로 바꾸고 최고차항이 2차인지 확인하여 두 관계를 고른다."
+          },
+          {
+            "term": "최고차항",
+            "src": "solution",
+            "quote": "이차함수이다",
+            "evidenceType": "IMPLIED",
+            "justification": "도형과 속력 관계를 각각 y의 식으로 바꾸고 최고차항이 2차인지 확인하여 두 관계를 고른다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정답 2개"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "도형과 속력 관계를 각각 y의 식으로 바꾸고 최고차항이 2차인지 확인하여 두 관계를 고른다.",
+        "method": "도형과 속력 관계를 각각 y의 식으로 바꾸고 최고차항이 2차인지 확인하여 두 관계를 고른다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_5dfd7d21c9042d22df0701c1aaef0c7f832701e5aee95e1e59a8611196cc442c",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(1)$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=1$을 대입",
+            "evidenceType": "IMPLIED",
+            "justification": "x=1을 함수식에 대입해 정해진 함숫값을 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "x=1을 함수식에 대입해 정해진 함숫값을 계산한다.",
+        "method": "x=1을 함수식에 대입해 정해진 함숫값을 계산한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_81d22b0372dd2fd0cb2efad7d7b940f7d9afba16423599074637696db5a496fa",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "규칙",
+            "src": "stem",
+            "quote": "규칙으로 바둑돌을 배열"
+          },
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=ax^2+bx+c$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$a-b-c$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱수",
+            "src": "solution",
+            "quote": "$1^2,2^2,3^2$의 규칙",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 1·4·9 배열을 제곱수 규칙으로 읽어 y=x²로 쓰고 계수를 비교한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "비교하면",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 1·4·9 배열을 제곱수 규칙으로 읽어 y=x²로 쓰고 계수를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "그림의 1·4·9 배열을 제곱수 규칙으로 읽어 y=x²로 쓰고 계수를 비교한다.",
+        "method": "그림의 1·4·9 배열을 제곱수 규칙으로 읽어 y=x²로 쓰고 계수를 비교한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_614958d8101fe667fbedbbe48f773beb892e249a6b8f5dfbf15884510cafa681",
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "축",
+            "src": "solution",
+            "quote": "축은 $x=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "음의 계수인 기본 포물선의 축·볼록성·대칭·증감을 각 보기와 대조한다."
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "$x$축 대칭",
+            "evidenceType": "IMPLIED",
+            "justification": "음의 계수인 기본 포물선의 축·볼록성·대칭·증감을 각 보기와 대조한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정답 2개"
+          },
+          {
+            "term": "범위",
+            "src": "choices",
+            "quote": "$x\\lt0$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "음의 계수인 기본 포물선의 축·볼록성·대칭·증감을 각 보기와 대조한다.",
+        "method": "음의 계수인 기본 포물선의 축·볼록성·대칭·증감을 각 보기와 대조한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_508bd86b01bd19c8c9b5a0d8514f38a267a88faf69a420cf5640f73befd0ba7f",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "실수 $a$의 값의 범위"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$a<0$",
+            "evidenceType": "IMPLIED",
+            "justification": "포물선의 열리는 방향에서 a<0을, 기준보다 넓은 폭에서 절댓값 상한을 얻어 결합한다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$|a|<\\dfrac32$",
+            "evidenceType": "IMPLIED",
+            "justification": "포물선의 열리는 방향에서 a<0을, 기준보다 넓은 폭에서 절댓값 상한을 얻어 결합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "$-\\dfrac32<a<0$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "포물선의 열리는 방향에서 a<0을, 기준보다 넓은 폭에서 절댓값 상한을 얻어 결합한다.",
+        "method": "포물선의 열리는 방향에서 a<0을, 기준보다 넓은 폭에서 절댓값 상한을 얻어 결합한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_041fee0fb6e84425e0ab3b69322ce65a167dd4dafc9ecb66dc0639c8de33a5f3",
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점은 $(-5,0)$",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형에서 축과 위치를 읽고 평행이동·대칭·증감·폭에 관한 설명을 검토한다."
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "$x$축 대칭",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형에서 축과 위치를 읽고 평행이동·대칭·증감·폭에 관한 설명을 검토한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "choices",
+            "quote": "$x\\gt-5$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "꼭짓점형에서 축과 위치를 읽고 평행이동·대칭·증감·폭에 관한 설명을 검토한다.",
+        "method": "꼭짓점형에서 축과 위치를 읽고 평행이동·대칭·증감·폭에 관한 설명을 검토한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_2d58e9b59d51b64ec40f34a7a57829da6b930e232c33524bb3a7232792e6e275",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "평행이동"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$q$를 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "평행이동한 식",
+            "evidenceType": "IMPLIED",
+            "justification": "수직 평행이동을 상수 q의 덧셈으로 표현하고 주어진 점을 대입해 이동량을 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$1=3(-1)^2+q$",
+            "evidenceType": "IMPLIED",
+            "justification": "수직 평행이동을 상수 q의 덧셈으로 표현하고 주어진 점을 대입해 이동량을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "$(-1,1)$을 지날 때"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "수직 평행이동을 상수 q의 덧셈으로 표현하고 주어진 점을 대입해 이동량을 구한다.",
+        "method": "수직 평행이동을 상수 q의 덧셈으로 표현하고 주어진 점을 대입해 이동량을 구한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_af3dff171b6dcc9686412c0c501d49810b97514711461a508049adcf3fdee1a1",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "꼭짓점의 좌표"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점은 $(p,q)$",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형의 x−p 부호를 읽어 p와 q를 좌표로 답한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "꼭짓점형의 x−p 부호를 읽어 p와 q를 좌표로 답한다.",
+        "method": "꼭짓점형의 x−p 부호를 읽어 p와 q를 좌표로 답한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_4ba14c1f95e0596d2fc506ceabb1c54dc5261c6bb8935f49ea117e6a2591c1e5",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "평행이동"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$p+q$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "두 $y$좌표의 합이 $10$",
+            "evidenceType": "IMPLIED",
+            "justification": "평행이동한 식의 같은 x에서 y좌표 합이 10이라는 대칭 조건을 적용해 새 식을 만들고 계수를 비교한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "비교하면",
+            "evidenceType": "IMPLIED",
+            "justification": "평행이동한 식의 같은 x에서 y좌표 합이 10이라는 대칭 조건을 적용해 새 식을 만들고 계수를 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "대칭성",
+            "src": "stem",
+            "quote": "직선 $y=5$에 대하여 대칭"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "평행이동한 식의 같은 x에서 y좌표 합이 10이라는 대칭 조건을 적용해 새 식을 만들고 계수를 비교한다.",
+        "method": "평행이동한 식의 같은 x에서 y좌표 합이 10이라는 대칭 조건을 적용해 새 식을 만들고 계수를 비교한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_02ce4127a5a46761f8a41e012c0f29c3cb7edce7cd57c3cdb29e9ec34605f08d",
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          },
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "제1사분면, 제2사분면, 제4사분면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$a>0$",
+            "evidenceType": "IMPLIED",
+            "justification": "지나는 사분면과 빠진 제3사분면을 꼭짓점의 두 좌표·열림 방향·y절편의 부호 조건으로 역해석해 진술을 판정한다."
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점의 $x$좌표",
+            "evidenceType": "IMPLIED",
+            "justification": "지나는 사분면과 빠진 제3사분면을 꼭짓점의 두 좌표·열림 방향·y절편의 부호 조건으로 역해석해 진술을 판정한다."
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "$ap^2+q\\ge0$",
+            "evidenceType": "IMPLIED",
+            "justification": "지나는 사분면과 빠진 제3사분면을 꼭짓점의 두 좌표·열림 방향·y절편의 부호 조건으로 역해석해 진술을 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$a\\ne0$, $p\\ne0$, $q\\ne0$"
+          },
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "지나는 사분면이 모두 제1사분면, 제2사분면, 제4사분면"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "지나는 사분면과 빠진 제3사분면을 꼭짓점의 두 좌표·열림 방향·y절편의 부호 조건으로 역해석해 진술을 판정한다.",
+        "method": "지나는 사분면과 빠진 제3사분면을 꼭짓점의 두 좌표·열림 방향·y절편의 부호 조건으로 역해석해 진술을 판정한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_0486393932dd534d0155b90c64b31d0d01e503dcae228e106306bc3f4daf564c",
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "계수와 꼭짓점을 본다",
+            "evidenceType": "IMPLIED",
+            "justification": "각 식의 꼭짓점·축·계수 절댓값을 읽어 볼록성·폭·사분면 진술을 비교한다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$|a|$가 가장 큰",
+            "evidenceType": "IMPLIED",
+            "justification": "각 식의 꼭짓점·축·계수 절댓값을 읽어 볼록성·폭·사분면 진술을 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "각 식의 꼭짓점·축·계수 절댓값을 읽어 볼록성·폭·사분면 진술을 비교한다.",
+        "method": "각 식의 꼭짓점·축·계수 절댓값을 읽어 볼록성·폭·사분면 진술을 비교한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_9cc20572060846583b7508af9ddcabe81d9c3d4c3d81fdc5908fd99954130015",
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "잘못 짝지어진 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱을 만들기 위해 넣고 뺀 상수를 바깥 음수와 함께 정리하여 부호가 틀린 빈칸을 찾는다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$-9$로 적은",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱을 만들기 위해 넣고 뺀 상수를 바깥 음수와 함께 정리하여 부호가 틀린 빈칸을 찾는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "완전제곱을 만들기 위해 넣고 뺀 상수를 바깥 음수와 함께 정리하여 부호가 틀린 빈칸을 찾는다.",
+        "method": "완전제곱을 만들기 위해 넣고 뺀 상수를 바깥 음수와 함께 정리하여 부호가 틀린 빈칸을 찾는다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_3a04987ddab08ef50bfe01e98c85f84d18d11419b6d856d61d83d7ca39a3ee74",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수식",
+            "src": "stem",
+            "quote": "이차함수 식"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$=-(x+2)^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형을 완전제곱으로 묶어 꼭짓점을 얻고 같은 꼭짓점을 갖는 다른 식을 선택한다."
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점은 $(-2,0)$",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형을 완전제곱으로 묶어 꼭짓점을 얻고 같은 꼭짓점을 갖는 다른 식을 선택한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "꼭짓점이 같은"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "일반형을 완전제곱으로 묶어 꼭짓점을 얻고 같은 꼭짓점을 갖는 다른 식을 선택한다.",
+        "method": "일반형을 완전제곱으로 묶어 꼭짓점을 얻고 같은 꼭짓점을 갖는 다른 식을 선택한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_ced3dbfd24996c44ea495b7589f3c9c39f9b715db47ce79f811fc52adec9d6dc",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "평행이동"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수식",
+            "src": "stem",
+            "quote": "이차함수 식"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "왼쪽으로 $1$, 위로 $2$",
+            "evidenceType": "IMPLIED",
+            "justification": "왼쪽 이동을 x+1 대입으로, 위 이동을 +2로 반영한 뒤 식을 전개한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x$ 대신 $x+1$",
+            "evidenceType": "IMPLIED",
+            "justification": "왼쪽 이동을 x+1 대입으로, 위 이동을 +2로 반영한 뒤 식을 전개한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "왼쪽 이동을 x+1 대입으로, 위 이동을 +2로 반영한 뒤 식을 전개한다.",
+        "method": "왼쪽 이동을 x+1 대입으로, 위 이동을 +2로 반영한 뒤 식을 전개한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_32fe0d47b7486e5d8460678a79a139e70774c000ac2221ea74826fe7e9a43e9c",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이가 $16$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$a$를 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "직사각형의 높이는 $4$",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 꼭짓점으로 직사각형 높이를 정하고 넓이에서 두 꼭짓점의 수평거리를 얻어 두 번째 축 좌표와 계수를 연결한다."
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점의 $x$좌표는",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 꼭짓점으로 직사각형 높이를 정하고 넓이에서 두 꼭짓점의 수평거리를 얻어 두 번째 축 좌표와 계수를 연결한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "두 꼭짓점의 $y$좌표는 같다"
+          },
+          {
+            "term": "위치",
+            "src": "solution",
+            "quote": "$Q$는 $P$의 오른쪽"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "첫 꼭짓점으로 직사각형 높이를 정하고 넓이에서 두 꼭짓점의 수평거리를 얻어 두 번째 축 좌표와 계수를 연결한다.",
+        "method": "첫 꼭짓점으로 직사각형 높이를 정하고 넓이에서 두 꼭짓점의 수평거리를 얻어 두 번째 축 좌표와 계수를 연결한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_986f51b44566c7f73389f2a0279e5c8457e54ee44bedd8ab5fa10ceb6ec2790e",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "$x$좌표가 될 수 있는 것"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "서로 곱한 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "$s^2=9t^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 높이 조건에서 두 x좌표가 3배 또는 −3배임을 구하고 수평거리의 절댓값 방정식을 각 가지에 적용한다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$|s-t|=6$",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 높이 조건에서 두 x좌표가 3배 또는 −3배임을 구하고 수평거리의 절댓값 방정식을 각 가지에 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$y$좌표가 서로 같고"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AB}=6$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "같은 높이 조건에서 두 x좌표가 3배 또는 −3배임을 구하고 수평거리의 절댓값 방정식을 각 가지에 적용한다.",
+        "method": "같은 높이 조건에서 두 x좌표가 3배 또는 −3배임을 구하고 수평거리의 절댓값 방정식을 각 가지에 적용한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_fc7031dcd660e5d84aa3a872886dc2b24e74bf279cd18f55e12edf1b4ef46486",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "$\\sin A=\\dfrac{3}{5}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$\\cos A$"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AB=\\sqrt{5^2-3^2}=4$",
+            "evidenceType": "IMPLIED",
+            "justification": "사인으로 두 변의 3:5 비를 정하고 피타고라스로 남은 변을 얻어 코사인으로 바꾼다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\cos A=\\dfrac{AB}{AC}",
+            "evidenceType": "IMPLIED",
+            "justification": "사인으로 두 변의 3:5 비를 정하고 피타고라스로 남은 변을 얻어 코사인으로 바꾼다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "$\\angle B=90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "사인으로 두 변의 3:5 비를 정하고 피타고라스로 남은 변을 얻어 코사인으로 바꾼다.",
+        "method": "사인으로 두 변의 3:5 비를 정하고 피타고라스로 남은 변을 얻어 코사인으로 바꾼다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_8721e0e4ac93bd352f70ee08fe14807dfacfaef9b37196ca5021fb417ae7aa19",
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "$\\triangle ABC\\sim\\triangle ADE$",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 예각과 직각으로 닮음을 확인해 대응 길이를 옮기고 두 각 기준의 삼각비를 구별해 거짓 진술을 찾는다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\tan A=\\dfrac{BC}{AB}",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 예각과 직각으로 닮음을 확인해 대응 길이를 옮기고 두 각 기준의 삼각비를 구별해 거짓 진술을 찾는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\angle A$가 공통"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "공통 예각과 직각으로 닮음을 확인해 대응 길이를 옮기고 두 각 기준의 삼각비를 구별해 거짓 진술을 찾는다.",
+        "method": "공통 예각과 직각으로 닮음을 확인해 대응 길이를 옮기고 두 각 기준의 삼각비를 구별해 거짓 진술을 찾는다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_03e962b41a24d3959224dd18ef0ed113aab35cb531ae6a825a3b874f6b293225",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "정육면체"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$EG=\\sqrt{1^2+1^2}",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체 밑면 대각선과 공간 대각선을 피타고라스로 구하고 공간 직각삼각형의 삼각비를 읽는다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\tan x=\\dfrac{AE}{EG}$",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체 밑면 대각선과 공간 대각선을 피타고라스로 구하고 공간 직각삼각형의 삼각비를 읽는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "$AE\\perp EG$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "정육면체 밑면 대각선과 공간 대각선을 피타고라스로 구하고 공간 직각삼각형의 삼각비를 읽는다.",
+        "method": "정육면체 밑면 대각선과 공간 대각선을 피타고라스로 구하고 공간 직각삼각형의 삼각비를 읽는다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ae5d7c4aec3190a689cf32a79024d6afaa43818477a734917fb056e02e21d15b",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "$\\sqrt3\\times\\tan45^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "계산하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "특수각의 값",
+            "evidenceType": "IMPLIED",
+            "justification": "특수각의 사인·코사인·탄젠트 값을 주어진 식에 대입한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "값을 넣는다",
+            "evidenceType": "IMPLIED",
+            "justification": "특수각의 사인·코사인·탄젠트 값을 주어진 식에 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "특수각의 사인·코사인·탄젠트 값을 주어진 식에 대입한다.",
+        "method": "특수각의 사인·코사인·탄젠트 값을 주어진 식에 대입한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_2f1c6871a360c933c586690c0172cdf81583513bac99c73ec55f6bc4f3203993",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "상수 $a$, $b$, $c$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점이 $P(2,3)$",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점으로 꼭짓점형을 놓고 y절편 한 점을 대입해 계수를 정한 뒤 전개하여 a,b,c를 읽는다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$1=a(0-2)^2+3$",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점으로 꼭짓점형을 놓고 y절편 한 점을 대입해 계수를 정한 뒤 전개하여 a,b,c를 읽는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "점 $P$는 포물선의 꼭짓점"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "꼭짓점으로 꼭짓점형을 놓고 y절편 한 점을 대입해 계수를 정한 뒤 전개하여 a,b,c를 읽는다.",
+        "method": "꼭짓점으로 꼭짓점형을 놓고 y절편 한 점을 대입해 계수를 정한 뒤 전개하여 a,b,c를 읽는다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_740048efa639c596f616b7d3bbca023b4e3a6826f40132f120519014362346e6",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "꼭짓점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱으로 꼭짓점 좌표를 구하고 y절편을 읽어 축 위 밑변과 꼭짓점의 수평거리로 넓이를 계산한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱으로 꼭짓점 좌표를 구하고 y절편을 읽어 축 위 밑변과 꼭짓점의 수평거리로 넓이를 계산한다."
+          },
+          {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$[\\triangle AOB]=\\dfrac12\\times3\\times2=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱으로 꼭짓점 좌표를 구하고 y절편을 읽어 축 위 밑변과 꼭짓점의 수평거리로 넓이를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "완전제곱으로 꼭짓점 좌표를 구하고 y절편을 읽어 축 위 밑변과 꼭짓점의 수평거리로 넓이를 계산한다.",
+        "method": "완전제곱으로 꼭짓점 좌표를 구하고 y절편을 읽어 축 위 밑변과 꼭짓점의 수평거리로 넓이를 계산한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_4842e885e7118aab2ee214e40955ce81ace75dcb9947013fdff469a304867033",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "삼각비의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리",
+            "evidenceType": "IMPLIED",
+            "justification": "두 직각변으로 빗변을 피타고라스에서 구하고 각 A의 세 삼각비를 정의에 따라 쓴다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\sin A=\\dfrac2{\\sqrt{13}}",
+            "evidenceType": "IMPLIED",
+            "justification": "두 직각변으로 빗변을 피타고라스에서 구하고 각 A의 세 삼각비를 정의에 따라 쓴다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "$\\angle B=90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "두 직각변으로 빗변을 피타고라스에서 구하고 각 A의 세 삼각비를 정의에 따라 쓴다.",
+        "method": "두 직각변으로 빗변을 피타고라스에서 구하고 각 A의 세 삼각비를 정의에 따라 쓴다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    }
+  ],
+  "candidates": [
+    {
+      "en": [
+        "TRIANGLE_AREA_FORMULA"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "넓이",
+      "note": "밑변과 높이 또는 두 변과 끼인각의 사인으로 삼각형 넓이를 산출하는 결정 방법. 기존 넓이 용어는 목표량이므로 공식 적용과 구분한다.",
+      "term": "삼각형넓이공식",
+      "usedIn": [
+        {
+          "sourceOrdinal": 22,
+          "slot": "method"
+        }
+      ]
+    }
+  ],
+  "selfCheck": {
+    "allQuestionsRead": true,
+    "allSolutionDecisionStepsRead": true,
+    "quotesVerifiedAgainstExactSource": true,
+    "independentSample": "PENDING_A",
+    "studentPayloadPreserved": true
+  }
+}

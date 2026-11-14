@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "archive-independent-semantic-sample-v1",
+  "examId": "E021",
+  "author": "review_c",
+  "reviewer": "review_a",
+  "sourceGitBlobSha": "1ceb612edef29dbbbcf49799b13753238ed166ca",
+  "artifactHashes": {
+    "review.json": "b09873a637b0a7f4d62e09736a83910428cd238f78152dcc226b81f83e7cba9b",
+    "E021.4slot.json": "cb4f928c6c3cda505263b8d302d65f12bb51a011b3b4781c34a55901fbb0fd74",
+    "source-patch.json": "4fcdab6dc87616fa34758e7b5ea5753916d2efc8021420f4cd62f186cc1ab77d"
+  },
+  "sampleOrdinals": [
+    8,
+    10,
+    16
+  ],
+  "items": [
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_af3dff171b6dcc9686412c0c501d49810b97514711461a508049adcf3fdee1a1",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "표준형의 부호를 읽어 꼭짓점좌표를 직접 구하는 기본문항이다. 일반형완전제곱변환이나계수결정을 실제로 하지 않으므로 세부TPL gap 분리와 단일방법WARN 수용이 적절하다.",
+      "assetsInspected": []
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_02ce4127a5a46761f8a41e012c0f29c3cb7edce7cd57c3cdb29e9ec34605f08d",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "지나는 세사분면과 빠진제3사분면에서 열림방향·꼭짓점좌표·y절편의 부호를 역해석한다. 세 매개변수의 nonzero와 사분면전체 조건이 정확히 보존됐고 범용단일사분면 확인TPL과 구별했다. current2022는 실제 꼭짓점형에 맞는 그래프(1) 부모+exactleaf gap으로 보완되었고 2015 RPM053은 보존한다.",
+      "assetsInspected": []
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_986f51b44566c7f73389f2a0279e5c8457e54ee44bedd8ab5fa10ceb6ec2790e",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "같은 높이에서 s=±3t를 얻고 수평거리 |s−t|=6으로 좌표미지수를 결정하는 CASE_BRANCH가 정확하다. GLOBAL ACTIVE PT_COORD_DISTANCE 및 TPL_DISTANCE_UNKNOWN의 정의·internalSkeleton이 실제 결정골격과 일치하므로 신규PT/TPL 제안 대신 기존재사용+M3 context/bindinggap으로 보완했다. 원래M3 RPM 경로를 보존한다.",
+      "assetsInspected": []
+    }
+  ],
+  "status": "PASS_AFTER_ACTIVE_REUSE_AND_PARENT_CORRECTIONS",
+  "scope": "Metadata/4slot semantic review only; no new mathematical R1/R2/R3",
+  "globalActiveRecheck": {
+    "selectedPT": "PT_COORD_DISTANCE",
+    "selectedTPL": "TPL_DISTANCE_UNKNOWN",
+    "definitionMatch": "거리 조건으로 좌표의 미지수를 결정",
+    "rejectedNearest": [
+      {
+        "key": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+        "reason": "축위점과 도형넓이·둘레를 다루므로 이 문제의 두 곡선점 수평거리와 다름"
+      },
+      {
+        "key": "PT_M3_QUADRATIC_FUNCTION_VERTICAL_SEGMENT_MINIMUM",
+        "reason": "같은x 수직차와최솟값 골격이므로 같은y 수평거리의±분기와 다름"
+      }
+    ]
+  },
+  "additionalParentReview": {
+    "ordinal": 10,
+    "status": "PASS_AFTER_PARENT_CORRECTION",
+    "original2015RecordId": "M3-RPM-053",
+    "current2022ConfirmedParent": [
+      "2022",
+      "M3-1",
+      "이차함수",
+      "이차함수의 그래프(1)"
+    ],
+    "current2022RecordId": null,
+    "reason": "주어진 꼭짓점형에서 열림·꼭짓점·축·y절편 부호를 역추론하므로 그래프(1) 부모가 타당하다. 일반형 변환·그래프그리기·최대최소·식결정은 실제 결정방법이 아니다. 사분면 집합 역추론 전체에 맞는 exactleaf는 확인되지 않는다.",
+    "authority": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json; crosswalks/rpm-primary-v1.0/middle3.json",
+    "reviewedSourceFields": [
+      "content",
+      "choices",
+      "answer",
+      "solution"
+    ],
+    "rootReceiptSha256": "c65987efe6946f251bfe5c0cb724048d8ba8c5f00205f08fb85ac60fce498855"
+  }
+}
