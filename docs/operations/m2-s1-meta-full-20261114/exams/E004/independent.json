@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E004",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "sourceGitBlobSha": "c0d0d94b3d6d5d557200ddb7acb36480b53b0019",
+  "reviewSha256": "3d5b55fe16c11383e6465d22fccb8dde754a90352290b6e1ea8613976e091064",
+  "fourSlotSha256": "92035a8c95f19ee2fe756c8a0017334cd86e65112f8486e81f3ecfb0c86a5021",
+  "sampleOrdinals": [
+    1,
+    20,
+    24
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_5a41577238f1cdb519bd43fce86a05463684419df98ac7614d8fe7d01658c5d0",
+      "status": "PASS",
+      "findings": "하나의 이변수 일차방정식 자연수해를 짝수 조건과 범위로 제한해 센다. goal 해+개수, method 홀짝+대입, condition 자연수가 원문·해설에 결속된다. 문장상황 모델이 없어 WORD→basic 교정 및 정확 leaf gap 판정에 동의.",
+      "quoteCheck": "Every submitted sample quote found in exact current source.",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_4aec83ffba6cc4cfeaadc9271ce8c8cf2b10bf93b1fdfc40dd148175b809935f",
+      "status": "PASS",
+      "findings": "⑤는 원문 B=3L/min,A=1L/min의 직접 비교로 확정된다. 보강된 given 인용은 두 감소율을 모두 포함한다. 기존 해설의 모델링과 감소량 비교는 실제 수행 단계이며 goal 판정과 혼동하지 않았다.",
+      "quoteCheck": "Every submitted sample quote found in exact current source.",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_d421053d75356fdceb9f146132c465b7a9aa1933ff58873786ff517ed04bac14",
+      "status": "PASS",
+      "findings": "무수해·무해의 계수 조건과 ab=4의 정수 인수쌍 열거를 구분한다. 보강된 goal 곱/순서쌍/개수는 A와B의 실제 대상을 정확히 표현하고 method 계수비교/기울기/약수와 역전되지 않는다. 실제 Q24는 특수 연립방정식과 정수 순서쌍 과제이다.",
+      "quoteCheck": "Every submitted sample quote found in exact current source.",
+      "goalMethodInversion": false
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_5a41577238f1cdb519bd43fce86a05463684419df98ac7614d8fe7d01658c5d0",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "세 후보를 빠짐없이 세려면 자연수 범위와 홀짝 조건을 함께 써야 하므로 하/2 B12 허용."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_f9a90576161d4a4b4ad2fadf1a39d0c1c30cdc000e9573f4d5ce61d3077357ec",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "주어진(2,-1)을 각 식에 직접 대입하는 정의 과제여서 숫자1 타당."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0a5879853cd0dfd8ac95b89eef2482aad32844808071d121500308bd0968a134",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "y가 이미 정리되어 한 번 대입 후 역대입하는 기본 대입법. 분수 결과 때문에 올리지 않은1 허용."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_7584d163a97bbedf4b355f08e49154692f8542fef10595212f204529f7f7fe15",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "분수와 소수 제거 후 계수맞춤과 소거를 수행하므로2, 기존 level하의 경계보존 타당."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_1a81f5780a114c537dc9c8b9fc0d9e9b2102d4d1336677a8a8a2b234742bc123",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "총수500에서 잔여 집단을500-x로 두고 증가·감소율을 적용하는 정형 모델이므로3→2 수용."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_29ce12590a8fe792af888f39a0e4317c4b46c4876d2184b84fdd28082f8444a3",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "수직 이동을 상수항+k로 표현하고 한점을 대입하는 통상 연결이므로2 수용."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_6b684ba54f12db90bee313213abccfac0180bba36c1699d86f3818078a6f2ea3",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 점 기울기를 먼저 구해 두번째 직선의 미지좌표 식에 동일하게 적용하므로2 수용."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_3f74417a58d33a8750bdf304369e424cc1627db71dd61c710549771a446afa8e",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "기울기가 주어져 y=4x+b의 절편 하나만 대입으로 결정한다. 숫자1/기존중/B12의 독립 보존 가능."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_0433ce4b5b05b5e73040232a9dcfc5dea3a01ef18a8da2503a38af415ae34817",
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "삼각형이 안 생기는 평행과 공점의 표준 두 경우를 분리하고 가능한 a세개를 합한다. 숫자3, 기존상/B34 보존 타당."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_4aec83ffba6cc4cfeaadc9271ce8c8cf2b10bf93b1fdfc40dd148175b809935f",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "원문에 B분당3L,A분당1L가 직접 주어지고 선택지⑤가 이 사실을 그대로 묻는다. 별도 수식이나 역산 없이 확정 가능하므로 기존상/2와의 강한 충돌을 인정하고 하/1 수용."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_cb7bdb62c7910a477954e5e961506e38e3b796691a94c8688f918dfc362f3f5d",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 구간 시간합과 거리합 모델을 연립해 거리를 복원하는 익숙한 문제로3→2 수용."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_d421053d75356fdceb9f146132c465b7a9aa1933ff58873786ff517ed04bac14",
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "무수해는 같은계수,무해는ab=4인 인수쌍에서(2,2)제외이다. 비정형 발상보다는 정형 조건 분기+정수계수 열거여서 숫자3,기존상/B34 유지 가능."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "ACCEPT",
+      "reason": "상황을 모델링하지 않는 단일 식 자연수해 개수이므로 WORD 부적합; basic+RPM gap 타당."
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "ACCEPT",
+      "reason": "y=mx+b 함수식의 그래프 성질 설명이며 결정적 오류가 Δy=mΔx이므로 BASIC/166 타당."
+    },
+    {
+      "sourceOrdinal": 12,
+      "decision": "ACCEPT",
+      "reason": "두 그래프와 x축의 삼각형넓이 조건으로 계수를 구하므로 EQUATION/176 타당."
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "ACCEPT",
+      "reason": "일차방정식ax+by+1=0을 y형으로 정리해 그림의 기울기·절편 부호를 연결한다. 실제 q16.png도 상승/음절편이므로 EQUATION/172 타당."
+    }
+  ],
+  "status": "PASS",
+  "at": "2026-11-14T08:53:11.201795+00:00",
+  "scopedCorrectionsConfirmed": [
+    "Q20 given 양쪽 감소율 인용 보강",
+    "Q24 goal 곱·순서쌍 대상 보강"
+  ]
+}

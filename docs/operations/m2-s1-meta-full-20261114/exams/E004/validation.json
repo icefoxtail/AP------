@@ -1,0 +1,394 @@
+{
+  "schemaVersion": "m2-s1-mechanical-check-v1",
+  "examId": "E004",
+  "sourceBlob": "c0d0d94b3d6d5d557200ddb7acb36480b53b0019",
+  "sourceSha256": "79f689b23c5a3c78f43cff0dcfeff798865b8434a497a72c440d87179d92d399",
+  "reviewSha256": "3d5b55fe16c11383e6465d22fccb8dde754a90352290b6e1ea8613976e091064",
+  "fourSlotSha256": "92035a8c95f19ee2fe756c8a0017334cd86e65112f8486e81f3ecfb0c86a5021",
+  "questionCount": 24,
+  "structuralStatus": "PASS",
+  "fourSlotStatus": "PASS_STATIC_ONLY",
+  "fail": [],
+  "warn": [
+    "#2 only 4 distinct terms",
+    "#2 method has 1 term",
+    "#3 only 3 distinct terms",
+    "#3 method has 1 term",
+    "#7 method has 1 term",
+    "#8 only 3 distinct terms",
+    "#8 method has 1 term",
+    "#13 only 4 distinct terms",
+    "#15 only 4 distinct terms",
+    "#20 only 3 distinct terms",
+    "#21 only 4 distinct terms"
+  ],
+  "requiredEvidenceDebt": [],
+  "keyDebt": [],
+  "changedOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "difficultyRecheckOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    9,
+    10,
+    13,
+    19,
+    20,
+    21,
+    24
+  ],
+  "sourceOnlyOrdinals": [],
+  "fourSlotCounts": {
+    "items": 24,
+    "examItems": 24,
+    "quotes": 132,
+    "fail": 0,
+    "warn": 11
+  },
+  "semanticApproval": "NOT_A_MACHINE_VERDICT",
+  "reviewedSourceBlob": "c0d0d94b3d6d5d557200ddb7acb36480b53b0019",
+  "finalSourceBlob": "e119850a3b621efe0509d1340a0bc6b92de0a0fc",
+  "finalSourceSha256": "c401cf17539aa48095ca42fe7833d32fb1072f7e415ba2105dc4785691e2e3aa",
+  "finalFourSlotSha256": "72a578fad375d81832a5091544790f3cb13d316c11b25ceba686be82dd21645a",
+  "finalFourSlotValidation": {
+    "fail": [],
+    "warn": [
+      "#2 only 4 distinct terms",
+      "#2 method has 1 term",
+      "#3 only 3 distinct terms",
+      "#3 method has 1 term",
+      "#7 method has 1 term",
+      "#8 only 3 distinct terms",
+      "#8 method has 1 term",
+      "#13 only 4 distinct terms",
+      "#15 only 4 distinct terms",
+      "#20 only 3 distinct terms",
+      "#21 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 24,
+      "examItems": 24,
+      "quotes": 132
+    }
+  },
+  "sourceSyntax": "PASS_VM_AND_JSON",
+  "sourceContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "uidOrderPreservation": "PASS",
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_5a41577238f1cdb519bd43fce86a05463684419df98ac7614d8fe7d01658c5d0",
+      "field": "subUnitKey",
+      "before": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "reason": "기존 WORD는 상황 모델이 없어 부적합. 두 변수 방정식의 자연수해 개수 leaf가 없음. Exact canonical label for the semantically accepted key. 자연수 범위와 짝수 조건을 묶어 세 후보 확인. 단순 식 대입보다 조건 판별 한 단계 추가."
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_5a41577238f1cdb519bd43fce86a05463684419df98ac7614d8fe7d01658c5d0",
+      "field": "subUnit",
+      "before": "연립일차방정식의 활용",
+      "after": "연립일차방정식",
+      "reason": "기존 WORD는 상황 모델이 없어 부적합. 두 변수 방정식의 자연수해 개수 leaf가 없음. Exact canonical label for the semantically accepted key. 자연수 범위와 짝수 조건을 묶어 세 후보 확인. 단순 식 대입보다 조건 판별 한 단계 추가."
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_5a41577238f1cdb519bd43fce86a05463684419df98ac7614d8fe7d01658c5d0",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "기존 WORD는 상황 모델이 없어 부적합. 두 변수 방정식의 자연수해 개수 leaf가 없음. Exact canonical label for the semantically accepted key. 자연수 범위와 짝수 조건을 묶어 세 후보 확인. 단순 식 대입보다 조건 판별 한 단계 추가."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_f9a90576161d4a4b4ad2fadf1a39d0c1c30cdc000e9573f4d5ce61d3077357ec",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "해가 이미 주어져 모든 보기에 대입만 한다. 기존2→1 직접정의 교정."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_f9a90576161d4a4b4ad2fadf1a39d0c1c30cdc000e9573f4d5ce61d3077357ec",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "해가 이미 주어져 모든 보기에 대입만 한다. 기존2→1 직접정의 교정."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_f9a90576161d4a4b4ad2fadf1a39d0c1c30cdc000e9573f4d5ce61d3077357ec",
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_ACCEPTABLE",
+      "after": "NORMAL",
+      "reason": "해가 이미 주어져 모든 보기에 대입만 한다. 기존2→1 직접정의 교정."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0a5879853cd0dfd8ac95b89eef2482aad32844808071d121500308bd0968a134",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "y가 이미 풀린 기본 식이라 대입과 값 합만 수행. 분수 결과만으로2를 올리지 않음."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0a5879853cd0dfd8ac95b89eef2482aad32844808071d121500308bd0968a134",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "y가 이미 풀린 기본 식이라 대입과 값 합만 수행. 분수 결과만으로2를 올리지 않음."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0a5879853cd0dfd8ac95b89eef2482aad32844808071d121500308bd0968a134",
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_ACCEPTABLE",
+      "after": "NORMAL",
+      "reason": "y가 이미 풀린 기본 식이라 대입과 값 합만 수행. 분수 결과만으로2를 올리지 않음."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_7584d163a97bbedf4b355f08e49154692f8542fef10595212f204529f7f7fe15",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "분모 제거와 소거계수 맞추기를 한 뒤 해의 일차결합 계산."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_1a81f5780a114c537dc9c8b9fc0d9e9b2102d4d1336677a8a8a2b234742bc123",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "두 집단의 증가율/감소율을 선형식으로 바꾸는 표준 활용. 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_1a81f5780a114c537dc9c8b9fc0d9e9b2102d4d1336677a8a8a2b234742bc123",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "두 집단의 증가율/감소율을 선형식으로 바꾸는 표준 활용. 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_29ce12590a8fe792af888f39a0e4317c4b46c4876d2184b84fdd28082f8444a3",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "이동식을 세우고 점을 대입하는 표준 두 단계."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_6b684ba54f12db90bee313213abccfac0180bba36c1699d86f3818078a6f2ea3",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "한 직선 기울기를 구해 다른 직선의 식에 연결."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_cd6290f9fd5899dcbb15d2a10c39c376b5246cef992c46d162c7c00b2ccf245c",
+      "field": "subUnitKey",
+      "before": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "after": "M2-04-LINEAR_FUNCTION_BASIC",
+      "reason": "주어진 함수의 그래프 설명이라 기존 EQUATION→BASIC. 결정 단계는 수치 기울기 적용이므로166. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_cd6290f9fd5899dcbb15d2a10c39c376b5246cef992c46d162c7c00b2ccf245c",
+      "field": "subUnit",
+      "before": "일차함수와 일차방정식의 관계",
+      "after": "일차함수의 뜻과 그래프",
+      "reason": "주어진 함수의 그래프 설명이라 기존 EQUATION→BASIC. 결정 단계는 수치 기울기 적용이므로166. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c6d016fb6dfacb6f26a9d4e5350274e2b4819ffbe6079a4368657c399de4d09",
+      "field": "subUnitKey",
+      "before": "M2-04-LINEAR_FUNCTION_BASIC",
+      "after": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "reason": "그래프활용 넓이176/E가 핵심; 기존BASIC보다 구체적. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c6d016fb6dfacb6f26a9d4e5350274e2b4819ffbe6079a4368657c399de4d09",
+      "field": "subUnit",
+      "before": "일차함수의 뜻과 그래프",
+      "after": "일차함수와 일차방정식의 관계",
+      "reason": "그래프활용 넓이176/E가 핵심; 기존BASIC보다 구체적. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_3f74417a58d33a8750bdf304369e424cc1627db71dd61c710549771a446afa8e",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "이미 기울기와 점이 주어져 상수항만 직접 구함. legacy중은 원래 상대난도 값으로 독립 유지."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_3f74417a58d33a8750bdf304369e424cc1627db71dd61c710549771a446afa8e",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "이미 기울기와 점이 주어져 상수항만 직접 구함. legacy중은 원래 상대난도 값으로 독립 유지."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_012dc09b0157e20b06a5d85fd830acd1f60ea48929dd2a8a68ffae40ac69e1aa",
+      "field": "subUnitKey",
+      "before": "M2-04-LINEAR_FUNCTION_BASIC",
+      "after": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "reason": "일차방정식ax+by+1=0의 그래프이므로 BASIC→EQUATION172. 원본 그림 확인. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_012dc09b0157e20b06a5d85fd830acd1f60ea48929dd2a8a68ffae40ac69e1aa",
+      "field": "subUnit",
+      "before": "일차함수의 뜻과 그래프",
+      "after": "일차함수와 일차방정식의 관계",
+      "reason": "일차방정식ax+by+1=0의 그래프이므로 BASIC→EQUATION172. 원본 그림 확인. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_0433ce4b5b05b5e73040232a9dcfc5dea3a01ef18a8da2503a38af415ae34817",
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "삼각형미성립 경우를 평행/공점으로 나누는 표준 관계 결합. 기존4→3 제안, legacy상 독립 유지."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_0433ce4b5b05b5e73040232a9dcfc5dea3a01ef18a8da2503a38af415ae34817",
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "삼각형미성립 경우를 평행/공점으로 나누는 표준 관계 결합. 기존4→3 제안, legacy상 독립 유지."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_0433ce4b5b05b5e73040232a9dcfc5dea3a01ef18a8da2503a38af415ae34817",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B34",
+      "reason": "삼각형미성립 경우를 평행/공점으로 나누는 표준 관계 결합. 기존4→3 제안, legacy상 독립 유지."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_0433ce4b5b05b5e73040232a9dcfc5dea3a01ef18a8da2503a38af415ae34817",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "삼각형미성립 경우를 평행/공점으로 나누는 표준 관계 결합. 기존4→3 제안, legacy상 독립 유지."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_4aec83ffba6cc4cfeaadc9271ce8c8cf2b10bf93b1fdfc40dd148175b809935f",
+      "field": "level",
+      "before": "상",
+      "after": "하",
+      "reason": "정답⑤는 주어진 분당감소량3L와1L의 직접 비교로 확정된다. 다른 보기 계산도 단순 대입. 기존상/2는 이 결정 단계와 충돌하므로 하/1 제안."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_4aec83ffba6cc4cfeaadc9271ce8c8cf2b10bf93b1fdfc40dd148175b809935f",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "정답⑤는 주어진 분당감소량3L와1L의 직접 비교로 확정된다. 다른 보기 계산도 단순 대입. 기존상/2는 이 결정 단계와 충돌하므로 하/1 제안."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_4aec83ffba6cc4cfeaadc9271ce8c8cf2b10bf93b1fdfc40dd148175b809935f",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "정답⑤는 주어진 분당감소량3L와1L의 직접 비교로 확정된다. 다른 보기 계산도 단순 대입. 기존상/2는 이 결정 단계와 충돌하므로 하/1 제안."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_4aec83ffba6cc4cfeaadc9271ce8c8cf2b10bf93b1fdfc40dd148175b809935f",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "STRONG_CONFLICT",
+      "reason": "정답⑤는 주어진 분당감소량3L와1L의 직접 비교로 확정된다. 다른 보기 계산도 단순 대입. 기존상/2는 이 결정 단계와 충돌하므로 하/1 제안."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_cb7bdb62c7910a477954e5e961506e38e3b796691a94c8688f918dfc362f3f5d",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "시간합과거리합 두식을 세워 해를 거리로 되돌리는 익숙한 연립활용. 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_cb7bdb62c7910a477954e5e961506e38e3b796691a94c8688f918dfc362f3f5d",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "시간합과거리합 두식을 세워 해를 거리로 되돌리는 익숙한 연립활용. 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_d421053d75356fdceb9f146132c465b7a9aa1933ff58873786ff517ed04bac14",
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "계수비 조건과 정수인수쌍 세기를 연결하는 표준 다단계. 기존4→3제안, legacy상은 독립 유지."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_d421053d75356fdceb9f146132c465b7a9aa1933ff58873786ff517ed04bac14",
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "계수비 조건과 정수인수쌍 세기를 연결하는 표준 다단계. 기존4→3제안, legacy상은 독립 유지."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_d421053d75356fdceb9f146132c465b7a9aa1933ff58873786ff517ed04bac14",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B34",
+      "reason": "계수비 조건과 정수인수쌍 세기를 연결하는 표준 다단계. 기존4→3제안, legacy상은 독립 유지."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_d421053d75356fdceb9f146132c465b7a9aa1933ff58873786ff517ed04bac14",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "계수비 조건과 정수인수쌍 세기를 연결하는 표준 다단계. 기존4→3제안, legacy상은 독립 유지."
+    }
+  ]
+}

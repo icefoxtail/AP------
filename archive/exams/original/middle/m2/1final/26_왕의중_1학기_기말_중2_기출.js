@@ -29,15 +29,15 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "자연수 조건을 먼저 반영해 가능한 순서쌍을 빠짐없이 센다.\n$3x+2y=20$에서 $2y=20-3x$이다. 오른쪽이 짝수여야 하므로 $x$는 짝수이다. 또 $x,y$가 자연수이므로 $3x<20$에서 가능한 짝수 $x$는 $2,4,6$이다.\n$x=2$이면 $y=7$, $x=4$이면 $y=4$, $x=6$이면 $y=1$이다. 따라서 자연수 해는 $(2,7),(4,4),(6,1)$의 3개이다.\n해의 개수는 3개이므로 정답은 ④이다.",
-    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
-    "subUnit": "연립일차방정식의 활용",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "curriculum": "2022",
     "course": "중2 수학",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
@@ -74,10 +74,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "curriculum": "2022",
     "course": "중2 수학",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -112,10 +112,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "curriculum": "2022",
     "course": "중2 수학",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -153,7 +153,7 @@ window.questionBank = [
     "course": "중2 수학",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
@@ -229,9 +229,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "curriculum": "2022",
     "course": "중2 수학",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -347,7 +347,7 @@ window.questionBank = [
     "course": "중2 수학",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
@@ -387,7 +387,7 @@ window.questionBank = [
     "course": "중2 수학",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
@@ -420,8 +420,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "기울기 $-\\dfrac34$와 $y$절편 $6$을 이용해 각 설명을 확인한다.\n\n① $x=4$를 대입하면\n$$y=-\\dfrac34\\times4+6=3$$\n이므로 점 $(4,3)$을 지난다. 옳다.\n\n② $x=0$일 때 $y=6$이므로 $y$절편은 $6$이다.\n$y=0$이면 $-\\dfrac34x+6=0$에서 $x=8$이다.\n따라서 제1, 제2, 제4사분면을 지난다. 옳다.\n\n③ 기울기 $-\\dfrac34$가 음수이므로 오른쪽으로 갈수록 그래프가 내려간다. 옳다.\n\n④ 두 직선 $y=-\\dfrac34x+6$, $y=-\\dfrac34x-3$의 기울기는 모두 $-\\dfrac34$이다. 서로 다른 평행한 직선이므로 옳다.\n\n⑤ $x$가 $6$만큼 증가할 때 $y$의 변화량은\n$$\\begin{aligned}\n\\Delta y&=-\\dfrac34\\times6\\\\\n&=-\\dfrac{18}{4}\\\\\n&=-\\dfrac92\n\\end{aligned}$$\n이다. 따라서 $y$는 $\\dfrac92$만큼 감소하며, $8$만큼 감소하는 것은 아니다. 옳지 않다.\n\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "curriculum": "2022",
@@ -464,8 +464,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "두 직선의 $x$절편 사이 거리를 밑변, 공통 $y$절편 6을 높이로 본다.\n$y=ax+6$의 $x$절편은 $-\\dfrac6a$, $y=-2x+6$의 $x$절편은 3이다.\n$a>0$이므로 밑변은 $3+\\dfrac6a$, 높이는 6이다.\n$\\dfrac12\\left(3+\\dfrac6a\\right)\\cdot6=15$에서\n$3+\\dfrac6a=5$, 따라서 $a=3$이다.\n정답은 ③이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "curriculum": "2022",
@@ -516,8 +516,8 @@ window.questionBank = [
     "course": "중2 수학",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 14,
@@ -627,8 +627,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "일반형을 $y=-\\dfrac abx-\\dfrac1b$로 바꾸고 실제 그래프의 기울기와 $y$절편 부호를 읽는다.\n원본 그래프는 오른쪽 위로 올라가므로 기울기 $-\\dfrac ab>0$이다. 또 $y$축과 원점 아래에서 만나므로 $-\\dfrac1b<0$, 따라서 $b>0$이다.\n$b>0$이고 $-\\dfrac ab>0$이려면 $a<0$이다.\n$a<0,b>0$이므로 정답은 ③이다.",
     "image": "assets/images/26_왕의중_1학기_기말_중2_기출/q16.png",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "curriculum": "2022",
@@ -754,10 +754,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "curriculum": "2022",
     "course": "중2 수학",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 점 (0,1)을 지나는 직선 y=ax+1을 세 가지로 점선으로 그렸다. a=2인 직선은 y=2x-3과, a=-1/2인 직선은 y=-1/2x-1/2와 평행하고, a=-2인 직선은 두 실선이 만나는 점 (1,-1)을 지난다.",
     "solutionImageCaption": "직선 y=ax+1은 항상 점 (0,1)을 지난다. a=2, -1/2이면 각각 y=2x-3, y=-1/2x-1/2와 평행하고, a=-2이면 두 직선의 교점 (1,-1)을 지난다.",
@@ -765,7 +765,7 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "level": "상",
+    "level": "하",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
     "standardCourse": "중2 수학",
@@ -797,10 +797,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "curriculum": "2022",
     "course": "중2 수학",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
     "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 가로축을 시간(분), 세로축을 물의 양(L)으로 하여 A물통 y=18-x와 B물통 y=30-3x의 그래프를 그렸다. 처음 양 (0,18), (0,30)과 4분 후 (4,14), (4,18), 7분 후 (7,11), (7,9)를 점으로 표시했다.",
     "solutionImageCaption": "마개를 연 지 x분 후 A물통은 y=18-x, B물통은 y=30-3x(L)가 남는다. 4분 후에는 A 14 L, B 18 L이고, 7분 후에는 A 11 L, B 9 L이다.",
@@ -834,9 +834,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "curriculum": "2022",
     "course": "중2 수학",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -938,9 +938,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "curriculum": "2022",
     "course": "중2 수학",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   }
 ];

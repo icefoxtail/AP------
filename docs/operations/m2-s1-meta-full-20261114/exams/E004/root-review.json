@@ -1,0 +1,263 @@
+{
+  "sampleReviewer": "B",
+  "sampleFile": "E004.sample.json",
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "세 후보를 빠짐없이 세려면 자연수 범위와 홀짝 조건을 함께 써야 하므로 하/2 B12 허용.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 2,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "주어진(2,-1)을 각 식에 직접 대입하는 정의 과제여서 숫자1 타당.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 3,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "y가 이미 정리되어 한 번 대입 후 역대입하는 기본 대입법. 분수 결과 때문에 올리지 않은1 허용.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 4,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "분수와 소수 제거 후 계수맞춤과 소거를 수행하므로2, 기존 level하의 경계보존 타당.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "총수500에서 잔여 집단을500-x로 두고 증가·감소율을 적용하는 정형 모델이므로3→2 수용.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 9,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "수직 이동을 상수항+k로 표현하고 한점을 대입하는 통상 연결이므로2 수용.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 10,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 점 기울기를 먼저 구해 두번째 직선의 미지좌표 식에 동일하게 적용하므로2 수용.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 13,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "기울기가 주어져 y=4x+b의 절편 하나만 대입으로 결정한다. 숫자1/기존중/B12의 독립 보존 가능.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 19,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "삼각형이 안 생기는 평행과 공점의 표준 두 경우를 분리하고 가능한 a세개를 합한다. 숫자3, 기존상/B34 보존 타당.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "원문에 B분당3L,A분당1L가 직접 주어지고 선택지⑤가 이 사실을 그대로 묻는다. 별도 수식이나 역산 없이 확정 가능하므로 기존상/2와의 강한 충돌을 인정하고 하/1 수용.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 21,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 구간 시간합과 거리합 모델을 연립해 거리를 복원하는 익숙한 문제로3→2 수용.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 24,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "무수해는 같은계수,무해는ab=4인 인수쌍에서(2,2)제외이다. 비정형 발상보다는 정형 조건 분기+정수계수 열거여서 숫자3,기존상/B34 유지 가능.",
+      "independentReviewer": "B"
+    }
+  ],
+  "targetedSemanticChecks": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "ACCEPT",
+      "reason": "상황을 모델링하지 않는 단일 식 자연수해 개수이므로 WORD 부적합; basic+RPM gap 타당."
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "ACCEPT",
+      "reason": "y=mx+b 함수식의 그래프 성질 설명이며 결정적 오류가 Δy=mΔx이므로 BASIC/166 타당."
+    },
+    {
+      "sourceOrdinal": 12,
+      "decision": "ACCEPT",
+      "reason": "두 그래프와 x축의 삼각형넓이 조건으로 계수를 구하므로 EQUATION/176 타당."
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "ACCEPT",
+      "reason": "일차방정식ax+by+1=0을 y형으로 정리해 그림의 기울기·절편 부호를 연결한다. 실제 q16.png도 상승/음절편이므로 EQUATION/172 타당."
+    }
+  ],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 1,
+      "after": {
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "기존 WORD는 상황 모델이 없어 부적합. 두 변수 방정식의 자연수해 개수 leaf가 없음. Exact canonical label for the semantically accepted key. 자연수 범위와 짝수 조건을 묶어 세 후보 확인. 단순 식 대입보다 조건 판별 한 단계 추가."
+    },
+    {
+      "sourceOrdinal": 2,
+      "after": {
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "reason": "해가 이미 주어져 모든 보기에 대입만 한다. 기존2→1 직접정의 교정."
+    },
+    {
+      "sourceOrdinal": 3,
+      "after": {
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "reason": "y가 이미 풀린 기본 식이라 대입과 값 합만 수행. 분수 결과만으로2를 올리지 않음."
+    },
+    {
+      "sourceOrdinal": 4,
+      "after": {
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "분모 제거와 소거계수 맞추기를 한 뒤 해의 일차결합 계산."
+    },
+    {
+      "sourceOrdinal": 6,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "두 집단의 증가율/감소율을 선형식으로 바꾸는 표준 활용. 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 9,
+      "after": {
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "이동식을 세우고 점을 대입하는 표준 두 단계."
+    },
+    {
+      "sourceOrdinal": 10,
+      "after": {
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "한 직선 기울기를 구해 다른 직선의 식에 연결."
+    },
+    {
+      "sourceOrdinal": 11,
+      "after": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프"
+      },
+      "reason": "주어진 함수의 그래프 설명이라 기존 EQUATION→BASIC. 결정 단계는 수치 기울기 적용이므로166. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 12,
+      "after": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reason": "그래프활용 넓이176/E가 핵심; 기존BASIC보다 구체적. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 13,
+      "after": {
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "이미 기울기와 점이 주어져 상수항만 직접 구함. legacy중은 원래 상대난도 값으로 독립 유지."
+    },
+    {
+      "sourceOrdinal": 16,
+      "after": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reason": "일차방정식ax+by+1=0의 그래프이므로 BASIC→EQUATION172. 원본 그림 확인. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 19,
+      "after": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "삼각형미성립 경우를 평행/공점으로 나누는 표준 관계 결합. 기존4→3 제안, legacy상 독립 유지."
+    },
+    {
+      "sourceOrdinal": 20,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "STRONG_CONFLICT"
+      },
+      "reason": "정답⑤는 주어진 분당감소량3L와1L의 직접 비교로 확정된다. 다른 보기 계산도 단순 대입. 기존상/2는 이 결정 단계와 충돌하므로 하/1 제안."
+    },
+    {
+      "sourceOrdinal": 21,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "시간합과거리합 두식을 세워 해를 거리로 되돌리는 익숙한 연립활용. 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 24,
+      "after": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "계수비 조건과 정수인수쌍 세기를 연결하는 표준 다단계. 기존4→3제안, legacy상은 독립 유지."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "notes": [
+    "Root read and accepted the author-independent focused report; item-by-item semantic reasons remain in author and independent files. Mechanical serialization does not decide classification.",
+    "Only explicit existing source metadata fields are minimally changed; shared registry, runtime, metadata projection and production inbox remain untouched.",
+    "Unsupported/missing source fields and unresolved evidence stay in the source-bound small proposal packet for Codex; no unknowns are silently filled."
+  ],
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E004",
+  "owner": "GPT_ROOT_6F3D37EEA78A",
+  "reviewedSourceBlob": "c0d0d94b3d6d5d557200ddb7acb36480b53b0019",
+  "finalSourceBlob": "e119850a3b621efe0509d1340a0bc6b92de0a0fc",
+  "reviewSha256": "3d5b55fe16c11383e6465d22fccb8dde754a90352290b6e1ea8613976e091064",
+  "independentSha256": "2152672873679d35f942f9189ff51c28e2bbd8633c8ee371a1608626a03a07c1",
+  "reviewedFourSlotSha256": "92035a8c95f19ee2fe756c8a0017334cd86e65112f8486e81f3ecfb0c86a5021",
+  "finalFourSlotSha256": "72a578fad375d81832a5091544790f3cb13d316c11b25ceba686be82dd21645a",
+  "fourSlotRebind": {
+    "transformation": "Replace the unique sourceGitBlobSha string only; every item/quote/slot and dictionary binding is byte-identical.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "createdAt": "2026-11-14T08:56:22.310703+00:00"
+}
