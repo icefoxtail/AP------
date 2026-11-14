@@ -30,7 +30,7 @@ window.questionBank = [
   "answer": "②",
   "solution": "각 보기를 $y$를 $x$에 대한 식으로 나타내고, 이차항이 남는지 확인한다. ①은 $y=x^2+5x$이고, ③은 정사각형의 넓이이므로 $y=x^2$, ⑤는 원의 넓이이므로 $y=\\pi x^2$이다. ④에서 $x$각형의 한 꼭짓점에서는 양옆 두 꼭짓점을 제외한 $x-3$개의 꼭짓점에 대각선을 그을 수 있다. 이를 $x$개 꼭짓점에 대해 세면 각 대각선을 양 끝에서 두 번 세므로 $y=\\frac{x(x-3)}{2}$이다. 따라서 ①, ③, ④, ⑤는 모두 이차함수이다. 한편 ②는 $y=(x+3)^2-x^2-3=x^2+6x+9-x^2-3=6x+6$으로 이차항이 사라져 일차함수이다. 그러므로 이차함수가 아닌 것은 ②이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
   "difficultyBucket": 2,
@@ -55,11 +55,9 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "RPM_ONLY",
-  "problemTypeKey": null,
-  "templateKey": null,
-  "crossConceptKeys": [],
+  "crossConceptKeys": ["CC_POLYNOMIAL_EXPANSION"],
   "conditionKeys": [],
-  "integrationPattern": "NONE",
+  "integrationPattern": "SEQUENTIAL",
   "metaStatus": "RPM_ONLY",
   "metaDebtFields": [
     "problemTypeKey",
@@ -72,7 +70,8 @@ window.questionBank = [
     "subConcept": "이차함수의 뜻",
     "conditionsUsed": "이차함수의 뜻",
     "integrationPatternExplanation": "이차함수의 뜻"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 2,
@@ -103,7 +102,7 @@ window.questionBank = [
   "answer": "⑤",
   "solution": "그림의 어두운 부분은 두 그래프 사이, 즉 $-\\frac12x^2<y<x^2$인 부분이다. $y=ax^2$가 이 영역을 지나려면 $x\\ne0$인 점에서 $-\\frac12x^2<ax^2<x^2$를 만족해야 한다. 이때 $x^2>0$이므로 양변을 $x^2$로 나누어 $-\\frac12<a<1$을 얻는다. 보기의 계수 중 이 범위에 속하는 것은 $-\\frac14$뿐이므로 $y=-\\frac14x^2$인 ⑤가 정답이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
   "difficultyBucket": 2,
@@ -128,10 +127,8 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "RPM_ONLY",
-  "problemTypeKey": null,
-  "templateKey": null,
   "crossConceptKeys": [],
-  "conditionKeys": [],
+  "conditionKeys": ["COND_RANGE","COND_NONZERO"],
   "integrationPattern": "NONE",
   "metaStatus": "RPM_ONLY",
   "metaDebtFields": [
@@ -145,7 +142,8 @@ window.questionBank = [
     "subConcept": "y=ax² 그래프의 폭과 위치",
     "conditionsUsed": "y=ax² 그래프의 폭과 위치",
     "integrationPatternExplanation": "y=ax² 그래프의 폭과 위치"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 3,
@@ -176,7 +174,7 @@ window.questionBank = [
   "answer": "③",
   "solution": "$y=x^2$의 꼭짓점은 $(0,0)$이고 위로 열린다. $y=-x^2$를 $x$축에 대칭이동한 그래프이며, 대칭축은 $y$축인 $x=0$이다. $x<0$에서 감소하고 $x>0$에서 증가하며, $(-3,9)$를 지난다. 따라서 축을 $y=0$이라고 한 ③이 옳지 않다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
   "difficultyBucket": 1,
@@ -201,8 +199,6 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "RPM_ONLY",
-  "problemTypeKey": null,
-  "templateKey": null,
   "crossConceptKeys": [],
   "conditionKeys": [],
   "integrationPattern": "NONE",
@@ -218,7 +214,8 @@ window.questionBank = [
     "subConcept": "꼭짓점·대칭축·증감",
     "conditionsUsed": "꼭짓점·대칭축·증감",
     "integrationPatternExplanation": "꼭짓점·대칭축·증감"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 4,
@@ -249,7 +246,7 @@ window.questionBank = [
   "answer": "④",
   "solution": "$y=ax^2+q$의 그래프는 아래로 열리므로 $a<0$이다. $x=0$일 때 $y=q$이고, 그림에서 그래프가 $y$축과 만나는 점은 $x$축 위이므로 $q>0$이다. 따라서 옳은 것은 ④이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
   "difficultyBucket": 1,
@@ -274,8 +271,6 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "RPM_ONLY",
-  "problemTypeKey": null,
-  "templateKey": null,
   "crossConceptKeys": [],
   "conditionKeys": [],
   "integrationPattern": "NONE",
@@ -291,7 +286,8 @@ window.questionBank = [
     "subConcept": "그래프의 열린 방향과 y절편",
     "conditionsUsed": "그래프의 열린 방향과 y절편",
     "integrationPatternExplanation": "그래프의 열린 방향과 y절편"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 5,
@@ -322,13 +318,13 @@ window.questionBank = [
   "answer": "②",
   "solution": "점 $P(2,-8)$을 $y=ax^2$에 대입하면 $-8=4a$이므로 $a=-2$이다. 점 $Q(-1,b)$도 그래프 위에 있으므로 $b=a(-1)^2=-2$이다. 따라서 $a+b=-4$이고 정답은 ②이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
-  "difficultyBucket": 2,
-  "difficultyConfidence": "high",
-  "difficultyBoundaryFlag": "NONE",
-  "legacyLevelCompatibility": "NORMAL",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B12",
+  "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
   "difficultyReason": "첫 점에서 계수를 구한 뒤 둘째 점에 대입해 값을 더하는 익숙한 두 단계이다.",
   "level": "중",
   "levelReason": "중 수준: 첫 점에서 계수를 구한 뒤 둘째 점에 대입해 값을 더하는 익숙한 두 단계이다.",
@@ -347,10 +343,8 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "FAMILY_BINDING_GAP",
-  "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
-  "templateKey": null,
   "crossConceptKeys": [],
-  "conditionKeys": [],
+  "conditionKeys": ["COND_FUNCTION_VALUE_CONSTRAINT"],
   "integrationPattern": "NONE",
   "metaStatus": "FAMILY_BINDING_GAP",
   "metaDebtFields": [
@@ -364,7 +358,8 @@ window.questionBank = [
     "subConcept": "점의 좌표에서 계수 계산",
     "conditionsUsed": "점의 좌표에서 계수 계산",
     "integrationPatternExplanation": "점의 좌표에서 계수 계산"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 6,
@@ -395,7 +390,7 @@ window.questionBank = [
   "answer": "⑤",
   "solution": "$y=-2x^2+c$ 꼴은 모두 $y$축, 즉 $x=0$을 대칭축으로 한다. ⑤는 $y=-2(x-1)^2$이므로 대칭축은 $x=1$이다. 따라서 나머지 넷과 다른 것은 ⑤이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
   "difficultyBucket": 1,
@@ -420,8 +415,6 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "RPM_ONLY",
-  "problemTypeKey": null,
-  "templateKey": null,
   "crossConceptKeys": [],
   "conditionKeys": [],
   "integrationPattern": "NONE",
@@ -437,7 +430,8 @@ window.questionBank = [
     "subConcept": "y=ax²의 대칭축",
     "conditionsUsed": "y=ax²의 대칭축",
     "integrationPatternExplanation": "y=ax²의 대칭축"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 7,
@@ -468,7 +462,7 @@ window.questionBank = [
   "answer": "①",
   "solution": "$y=-2x^2-3$의 그래프를 위로 $k$만큼 옮기면 $y=-2x^2-3+k$이다. 이것이 $y=-2x^2+1$과 같으므로 $-3+k=1$, 따라서 $k=4$이다. 정답은 ①이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
   "difficultyBucket": 1,
@@ -493,8 +487,6 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "DIRECT_BINDING_GAP",
-  "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
-  "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
   "crossConceptKeys": [],
   "conditionKeys": [],
   "integrationPattern": "NONE",
@@ -509,7 +501,8 @@ window.questionBank = [
     "subConcept": "세로 평행이동",
     "conditionsUsed": "세로 평행이동",
     "integrationPatternExplanation": "세로 평행이동"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 8,
@@ -540,13 +533,13 @@ window.questionBank = [
   "answer": "①",
   "solution": "$x$축 방향으로 $-3$만큼 옮기면 식의 $x$를 $x+3$으로 바꾼다. 이어 $y$축 방향으로 $5$만큼 옮기면 5를 더하므로 $y=-(x+3)^2+5$이다. 정답은 ①이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
-  "difficultyBucket": 2,
+  "difficultyBucket": 1,
   "difficultyConfidence": "high",
   "difficultyBoundaryFlag": "NONE",
-  "legacyLevelCompatibility": "NORMAL",
+  "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
   "difficultyReason": "가로 이동과 세로 이동을 각각 식에 반영해야 한다.",
   "level": "중",
   "levelReason": "중 수준: 가로 이동과 세로 이동을 각각 식에 반영해야 한다.",
@@ -565,8 +558,6 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "DIRECT_BINDING_GAP",
-  "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
-  "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
   "crossConceptKeys": [],
   "conditionKeys": [],
   "integrationPattern": "NONE",
@@ -581,7 +572,8 @@ window.questionBank = [
     "subConcept": "가로·세로 평행이동",
     "conditionsUsed": "가로·세로 평행이동",
     "integrationPatternExplanation": "가로·세로 평행이동"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 9,
@@ -612,7 +604,7 @@ window.questionBank = [
   "answer": "②",
   "solution": "$y=-x^2+4x-4=-(x-2)^2$이다. 축은 $x=2$이고, 아래로 열린 포물선이라 $x$축과 $(2,0)$에서 접하며 최댓값 0만 있고 최솟값은 없다. $y=-2x^2$와는 계수의 절댓값이 달라 폭도 같지 않다. 따라서 옳지 않은 것은 ②이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
   "difficultyBucket": 2,
@@ -637,8 +629,6 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "RPM_ONLY",
-  "problemTypeKey": null,
-  "templateKey": null,
   "crossConceptKeys": [],
   "conditionKeys": [],
   "integrationPattern": "NONE",
@@ -654,7 +644,8 @@ window.questionBank = [
     "subConcept": "꼭짓점형과 최댓값",
     "conditionsUsed": "꼭짓점형과 최댓값",
     "integrationPatternExplanation": "꼭짓점형과 최댓값"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 10,
@@ -685,13 +676,13 @@ window.questionBank = [
   "answer": "③",
   "solution": "$y=-3(x+1)^2+5$의 꼭짓점은 $(-1,5)$이고 아래로 열린다. 꼭짓점의 왼쪽에서는 $x$가 증가할수록 $y$도 증가하므로 $x<-1$이다. 정답은 ③이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
-  "difficultyBucket": 2,
+  "difficultyBucket": 1,
   "difficultyConfidence": "high",
   "difficultyBoundaryFlag": "NONE",
-  "legacyLevelCompatibility": "NORMAL",
+  "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
   "difficultyReason": "꼭짓점의 x좌표를 읽고 아래로 열린 그래프의 증가 구간을 적용한다.",
   "level": "중",
   "levelReason": "중 수준: 꼭짓점의 x좌표를 읽고 아래로 열린 그래프의 증가 구간을 적용한다.",
@@ -710,8 +701,6 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "RPM_ONLY",
-  "problemTypeKey": null,
-  "templateKey": null,
   "crossConceptKeys": [],
   "conditionKeys": [],
   "integrationPattern": "NONE",
@@ -727,7 +716,8 @@ window.questionBank = [
     "subConcept": "꼭짓점 기준 증감 구간",
     "conditionsUsed": "꼭짓점 기준 증감 구간",
     "integrationPatternExplanation": "꼭짓점 기준 증감 구간"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 11,
@@ -758,12 +748,12 @@ window.questionBank = [
   "answer": "④",
   "solution": "그래프가 아래로 열리므로 $a<0$이다. 꼭짓점의 $x$좌표는 $-p$이고 그래프에서 꼭짓점은 $y$축 왼쪽이므로 $-p<0$, 즉 $p>0$이다. 꼭짓점의 $y$좌표는 $-q$이고 $x$축 위이므로 $-q>0$, 즉 $q<0$이다. 따라서 ④이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
   "difficultyBucket": 2,
-  "difficultyConfidence": "high",
-  "difficultyBoundaryFlag": "NONE",
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B12",
   "legacyLevelCompatibility": "NORMAL",
   "difficultyReason": "그래프의 열린 방향과 꼭짓점 좌표에서 a,p,q의 부호를 각각 역으로 해석한다.",
   "level": "중",
@@ -783,8 +773,6 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "RPM_ONLY",
-  "problemTypeKey": null,
-  "templateKey": null,
   "crossConceptKeys": [],
   "conditionKeys": [],
   "integrationPattern": "NONE",
@@ -800,7 +788,8 @@ window.questionBank = [
     "subConcept": "꼭짓점 위치로 부호 판정",
     "conditionsUsed": "꼭짓점 위치로 부호 판정",
     "integrationPatternExplanation": "꼭짓점 위치로 부호 판정"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 12,
@@ -831,12 +820,12 @@ window.questionBank = [
   "answer": "③",
   "solution": "꼭짓점이 $(-1,4)$이므로 $y=a(x+1)^2+4$이다. $y$절편이 2이므로 $x=0$을 대입해 $a+4=2$, 따라서 $a=-2$이다. 식을 전개하면 $y=-2x^2-4x+2$이므로 $a=-2, b=-4, c=2$이고 $abc=16$이다. 정답은 ③이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
-  "difficultyBucket": 3,
-  "difficultyConfidence": "high",
-  "difficultyBoundaryFlag": "NONE",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
   "legacyLevelCompatibility": "NORMAL",
   "difficultyReason": "꼭짓점형의 계수를 y절편 조건으로 결정하고 일반형 계수의 곱까지 계산한다.",
   "level": "중",
@@ -856,10 +845,8 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "FAMILY_BINDING_GAP",
-  "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
-  "templateKey": null,
-  "crossConceptKeys": [],
-  "conditionKeys": [],
+  "crossConceptKeys": ["CC_POLYNOMIAL_EXPANSION"],
+  "conditionKeys": ["COND_FUNCTION_VALUE_CONSTRAINT"],
   "integrationPattern": "SEQUENTIAL",
   "metaStatus": "FAMILY_BINDING_GAP",
   "metaDebtFields": [
@@ -873,7 +860,8 @@ window.questionBank = [
     "subConcept": "꼭짓점형에서 일반형 계수 계산",
     "conditionsUsed": "꼭짓점형에서 일반형 계수 계산",
     "integrationPatternExplanation": "꼭짓점형에서 일반형 계수 계산"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 13,
@@ -904,7 +892,7 @@ window.questionBank = [
   "answer": "②",
   "solution": "$y=2x^2+4x+2=2(x+1)^2$이다. 이를 오른쪽으로 3만큼 옮기면 $y=2(x-2)^2$이다. $x=3$을 대입하면 $m=2(3-2)^2=2$이다. 정답은 ②이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
   "difficultyBucket": 2,
@@ -929,10 +917,8 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "DIRECT_BINDING_GAP",
-  "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
-  "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
-  "crossConceptKeys": [],
-  "conditionKeys": [],
+  "crossConceptKeys": ["CC_COMPLETE_SQUARE"],
+  "conditionKeys": ["COND_FUNCTION_VALUE_CONSTRAINT"],
   "integrationPattern": "SEQUENTIAL",
   "metaStatus": "DIRECT_BINDING_GAP",
   "metaDebtFields": [
@@ -945,7 +931,8 @@ window.questionBank = [
     "subConcept": "가로 평행이동 후 대입",
     "conditionsUsed": "가로 평행이동 후 대입",
     "integrationPatternExplanation": "가로 평행이동 후 대입"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 14,
@@ -976,12 +963,12 @@ window.questionBank = [
   "answer": "⑤",
   "solution": "그래프의 $x$절편이 $-1,3$이므로 $y=a(x+1)(x-3)$이다. $y$절편은 3이므로 $x=0,y=3$을 대입하면 $-3a=3$, 따라서 $a=-1$이다. 두 $x$절편의 중점은 $x=\\frac{-1+3}{2}=1$이므로 대칭축은 $x=1$이다. 이때 $y(1)=a(1+1)(1-3)=(-1)\\cdot2\\cdot(-2)=4$이다. $a=-1<0$이므로 포물선은 아래로 열리고, 꼭짓점의 $y$좌표 4가 최댓값이다. 따라서 정답은 ⑤이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
   "difficultyBucket": 3,
-  "difficultyConfidence": "high",
-  "difficultyBoundaryFlag": "NONE",
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
   "legacyLevelCompatibility": "NORMAL",
   "difficultyReason": "그림에서 두 x절편과 y절편을 읽어 식을 복원한 뒤 꼭짓점의 최댓값을 구한다.",
   "level": "중",
@@ -1001,11 +988,9 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "RPM_ONLY",
-  "problemTypeKey": null,
-  "templateKey": null,
   "crossConceptKeys": [],
-  "conditionKeys": [],
-  "integrationPattern": "SEQUENTIAL",
+  "conditionKeys": ["COND_FUNCTION_VALUE_CONSTRAINT"],
+  "integrationPattern": "NONE",
   "metaStatus": "RPM_ONLY",
   "metaDebtFields": [
     "problemTypeKey",
@@ -1018,7 +1003,8 @@ window.questionBank = [
     "subConcept": "x절편과 y절편으로 꼭짓점값 계산",
     "conditionsUsed": "x절편과 y절편으로 꼭짓점값 계산",
     "integrationPatternExplanation": "x절편과 y절편으로 꼭짓점값 계산"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 15,
@@ -1049,12 +1035,12 @@ window.questionBank = [
   "answer": "⑤",
   "solution": "$y=-3x^2+4ax+2$의 꼭짓점 $x$좌표는 $-\\frac{4a}{2(-3)}=\\frac{2a}{3}$이다. 최댓값을 $x=-2$에서 가지므로 $\\frac{2a}{3}=-2$, 따라서 $a=-3$이다. 정답은 ⑤이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
   "difficultyBucket": 2,
-  "difficultyConfidence": "high",
-  "difficultyBoundaryFlag": "NONE",
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B12",
   "legacyLevelCompatibility": "NORMAL",
   "difficultyReason": "일반형의 꼭짓점 x좌표 공식을 이용해 계수를 결정한다.",
   "level": "중",
@@ -1074,10 +1060,8 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "RPM_ONLY",
-  "problemTypeKey": null,
-  "templateKey": null,
   "crossConceptKeys": [],
-  "conditionKeys": [],
+  "conditionKeys": ["COND_FUNCTION_VALUE_CONSTRAINT"],
   "integrationPattern": "NONE",
   "metaStatus": "RPM_ONLY",
   "metaDebtFields": [
@@ -1091,7 +1075,8 @@ window.questionBank = [
     "subConcept": "꼭짓점의 x좌표로 계수 결정",
     "conditionsUsed": "꼭짓점의 x좌표로 계수 결정",
     "integrationPatternExplanation": "꼭짓점의 x좌표로 계수 결정"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 16,
@@ -1122,12 +1107,12 @@ window.questionBank = [
   "answer": "④",
   "solution": "$-x^2-2x+8=0$에서 $x^2+2x-8=(x+4)(x-2)=0$이므로 $A=(-4,0), B=(2,0)$이다. $y$축과의 교점은 $C=(0,8)$이다. 밑변 $AB=6$, 높이는 점 $C$의 $y$좌표 8이므로 삼각형의 넓이는 $\\frac12\\cdot6\\cdot8=24$이다. 정답은 ④이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
   "difficultyBucket": 3,
-  "difficultyConfidence": "high",
-  "difficultyBoundaryFlag": "NONE",
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
   "legacyLevelCompatibility": "NORMAL",
   "difficultyReason": "이차방정식을 인수분해해 두 교점을 찾고, y절편을 높이로 삼아 좌표도형 넓이를 구한다.",
   "level": "중",
@@ -1147,11 +1132,9 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "RPM_ONLY",
-  "problemTypeKey": null,
-  "templateKey": null,
-  "crossConceptKeys": [],
+  "crossConceptKeys": ["CC_QUADRATIC_EQUATIONS","CC_TRIANGLE_AREA"],
   "conditionKeys": [],
-  "integrationPattern": "SEQUENTIAL",
+  "integrationPattern": "REINTERPRETATION",
   "metaStatus": "RPM_ONLY",
   "metaDebtFields": [
     "problemTypeKey",
@@ -1164,7 +1147,8 @@ window.questionBank = [
     "subConcept": "x절편·y절편으로 삼각형 넓이",
     "conditionsUsed": "x절편·y절편으로 삼각형 넓이",
     "integrationPatternExplanation": "x절편·y절편으로 삼각형 넓이"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 17,
@@ -1199,8 +1183,8 @@ window.questionBank = [
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
   "difficultyBucket": 2,
-  "difficultyConfidence": "high",
-  "difficultyBoundaryFlag": "NONE",
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B12",
   "legacyLevelCompatibility": "NORMAL",
   "difficultyReason": "직각삼각형의 변 길이와 30°·60° 특수각 비를 적용해 보기를 판정한다.",
   "level": "중",
@@ -1221,10 +1205,10 @@ window.questionBank = [
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "DIRECT_ACTIVE",
   "problemTypeKey": "PT_TRIG_RATIO",
-  "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
-  "crossConceptKeys": [],
+  "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+  "crossConceptKeys": ["CC_PYTHAGOREAN"],
   "conditionKeys": [],
-  "integrationPattern": "NONE",
+  "integrationPattern": "SEQUENTIAL",
   "metaStatus": "DIRECT_ACTIVE",
   "metaDebtFields": [],
   "projectionStatus": "PROJECTION_REUSE",
@@ -1234,7 +1218,8 @@ window.questionBank = [
     "subConcept": "30°·60° 삼각비",
     "conditionsUsed": "30°·60° 삼각비",
     "integrationPatternExplanation": "30°·60° 삼각비"
-  }
+  },
+  "conceptClusterKey": "TRIG_RATIO"
 },
 {
   "id": 18,
@@ -1264,13 +1249,13 @@ window.questionBank = [
   ],
   "answer": "⑤",
   "solution": "주어진 직각삼각형에서 $BC^2=AC^2-AB^2=3^2-1^2=8$이므로 $BC=2\\sqrt2$이다. $D$는 $BC$의 중점이므로 $BD=\\sqrt2$이다. 직각삼각형 $ABD$에서 $AD^2=AB^2+BD^2=1^2+(\\sqrt2)^2=3$이므로 $AD=\\sqrt3$이다. 따라서 $\\cos x=\\frac{AB}{AD}=\\frac1{\\sqrt3}$이고 정답은 ⑤이다.",
-  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-  "subUnit": "삼각비의 활용",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "subUnit": "삼각비",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
-  "difficultyBucket": 3,
-  "difficultyConfidence": "high",
-  "difficultyBoundaryFlag": "NONE",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
   "legacyLevelCompatibility": "NORMAL",
   "difficultyReason": "명시된 직각삼각형의 길이로 BC를 구하고 중점으로 BD를 정한 뒤, 직각삼각형 ABD에서 cos를 계산한다.",
   "level": "중",
@@ -1290,9 +1275,9 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "DIRECT_ACTIVE",
-  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-  "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-  "crossConceptKeys": [],
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+  "crossConceptKeys": ["CC_PYTHAGOREAN","CC_SEGMENT_MIDPOINT"],
   "conditionKeys": [],
   "integrationPattern": "SEQUENTIAL",
   "metaStatus": "DIRECT_ACTIVE",
@@ -1304,7 +1289,8 @@ window.questionBank = [
     "subConcept": "중점과 피타고라스 정리로 cos 계산",
     "conditionsUsed": "중점과 피타고라스 정리로 cos 계산",
     "integrationPatternExplanation": "중점과 피타고라스 정리로 cos 계산"
-  }
+  },
+  "conceptClusterKey": "TRIG_RATIO"
 },
 {
   "id": 19,
@@ -1362,9 +1348,9 @@ window.questionBank = [
   "mappingStatus": "DIRECT_ACTIVE",
   "problemTypeKey": "PT_TRIG_RATIO",
   "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
-  "crossConceptKeys": [],
-  "conditionKeys": [],
-  "integrationPattern": "NONE",
+  "crossConceptKeys": ["CC_PYTHAGOREAN"],
+  "conditionKeys": ["COND_RANGE"],
+  "integrationPattern": "SEQUENTIAL",
   "metaStatus": "DIRECT_ACTIVE",
   "metaDebtFields": [],
   "projectionStatus": "PROJECTION_REUSE",
@@ -1374,7 +1360,8 @@ window.questionBank = [
     "subConcept": "tan으로 sin·cos 구하기",
     "conditionsUsed": "tan으로 sin·cos 구하기",
     "integrationPatternExplanation": "tan으로 sin·cos 구하기"
-  }
+  },
+  "conceptClusterKey": "TRIG_RATIO"
 },
 {
   "id": 20,
@@ -1408,9 +1395,9 @@ window.questionBank = [
   "subUnit": "삼각비",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
-  "difficultyBucket": 3,
-  "difficultyConfidence": "high",
-  "difficultyBoundaryFlag": "NONE",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
   "legacyLevelCompatibility": "NORMAL",
   "difficultyReason": "단위원 좌표, 여각 관계, 접선 길이를 함께 사용해 다섯 삼각비 진술을 비교한다.",
   "level": "중",
@@ -1434,7 +1421,7 @@ window.questionBank = [
   "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
   "crossConceptKeys": [],
   "conditionKeys": [],
-  "integrationPattern": "SEQUENTIAL",
+  "integrationPattern": "NONE",
   "metaStatus": "DIRECT_ACTIVE",
   "metaDebtFields": [],
   "projectionStatus": "PROJECTION_REUSE",
@@ -1444,7 +1431,8 @@ window.questionBank = [
     "subConcept": "sin·cos·tan과 여각 관계",
     "conditionsUsed": "sin·cos·tan과 여각 관계",
     "integrationPatternExplanation": "sin·cos·tan과 여각 관계"
-  }
+  },
+  "conceptClusterKey": "TRIG_RATIO"
 },
 {
   "id": 21,
@@ -1472,7 +1460,7 @@ window.questionBank = [
   "subUnit": "삼각비",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
-  "difficultyBucket": 3,
+  "difficultyBucket": 2,
   "difficultyConfidence": "high",
   "difficultyBoundaryFlag": "NONE",
   "legacyLevelCompatibility": "NORMAL",
@@ -1494,9 +1482,9 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "DIRECT_ACTIVE",
-  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-  "crossConceptKeys": [],
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+  "crossConceptKeys": ["CC_PYTHAGOREAN"],
   "conditionKeys": [],
   "integrationPattern": "SEQUENTIAL",
   "metaStatus": "DIRECT_ACTIVE",
@@ -1508,7 +1496,8 @@ window.questionBank = [
     "subConcept": "sin으로 변과 나머지 삼각비 구하기",
     "conditionsUsed": "sin으로 변과 나머지 삼각비 구하기",
     "integrationPatternExplanation": "sin으로 변과 나머지 삼각비 구하기"
-  }
+  },
+  "conceptClusterKey": "TRIG_RATIO"
 },
 {
   "id": 22,
@@ -1533,13 +1522,13 @@ window.questionBank = [
   "answer": "(1) $(-2,-1)$; (2) $x=-2$; (3) $y=3(x+2)^2+1$; (4) 최댓값 $-1$; (5) 증가 $x<-2$, 감소 $x>-2$",
   "solution": "$y=-3(x+2)^2-1$은 꼭짓점형 $y=a(x-p)^2+q$에서 $a=-3$, $p=-2$, $q=-1$인 식이다. (1) 꼭짓점은 $(-2,-1)$이다. (2) 대칭축은 $x=-2$이다. (3) $x$축에 대칭이동하면 $y$의 부호가 바뀌므로 $y=3(x+2)^2+1$이다. (4) 아래로 열린 포물선이므로 최댓값 $-1$이 존재한다. (5) 꼭짓점 왼쪽 $x<-2$에서는 증가하고, 오른쪽 $x>-2$에서는 감소한다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
-  "difficultyBucket": 4,
+  "difficultyBucket": 1,
   "difficultyConfidence": "high",
   "difficultyBoundaryFlag": "NONE",
-  "legacyLevelCompatibility": "NORMAL",
+  "legacyLevelCompatibility": "STRONG_CONFLICT",
   "difficultyReason": "5개 소문항이 꼭짓점·축·대칭·극값·증감으로 나뉘어 여러 서로 다른 성질을 구조화해야 한다.",
   "level": "상",
   "levelReason": "상 수준: 5개 소문항이 꼭짓점·축·대칭·극값·증감으로 나뉘어 여러 서로 다른 성질을 구조화해야 한다.",
@@ -1561,11 +1550,9 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
   "mappingStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-  "problemTypeKey": null,
-  "templateKey": null,
-  "crossConceptKeys": [],
+  "crossConceptKeys": ["CC_REFLECTION"],
   "conditionKeys": [],
-  "integrationPattern": null,
+  "integrationPattern": "SEQUENTIAL",
   "metaStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
   "metaDebtFields": [
     "integrationPattern"
@@ -1610,7 +1597,8 @@ window.questionBank = [
       "l3": "y=ax²의 그래프",
       "l4": "대칭축·증감"
     }
-  ]
+  ],
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 23,
@@ -1635,10 +1623,10 @@ window.questionBank = [
   "answer": "-5",
   "solution": "$y=2x^2-4x=2(x-1)^2-2$이므로 최솟값 $A=-2$이다. 또 $y=-2x^2+4x+1=-2(x-1)^2+3$이므로 최댓값 $B=3$이다. 따라서 $A-B=-2-3=-5$이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
-  "difficultyBucket": 3,
+  "difficultyBucket": 2,
   "difficultyConfidence": "high",
   "difficultyBoundaryFlag": "NONE",
   "legacyLevelCompatibility": "NORMAL",
@@ -1660,9 +1648,7 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "RPM_ONLY",
-  "problemTypeKey": null,
-  "templateKey": null,
-  "crossConceptKeys": [],
+  "crossConceptKeys": ["CC_COMPLETE_SQUARE"],
   "conditionKeys": [],
   "integrationPattern": "SEQUENTIAL",
   "metaStatus": "RPM_ONLY",
@@ -1677,7 +1663,8 @@ window.questionBank = [
     "subConcept": "두 이차함수의 극값 계산과 차",
     "conditionsUsed": "두 이차함수의 극값 계산과 차",
     "integrationPatternExplanation": "두 이차함수의 극값 계산과 차"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 },
 {
   "id": 24,
@@ -1702,12 +1689,12 @@ window.questionBank = [
   "answer": "-3/4",
   "solution": "그래프의 폭이 $y=-\\frac12x^2$와 같으므로 $|a|=1/2$이다. $x=1$에서 최댓값을 가지므로 아래로 열려 $a=-1/2$이다. 꼭짓점이 $(1,2)$이므로 $y=-\\frac12(x-1)^2+2$이다. 전개하면 $y=-\\frac12x^2+x+\\frac32$이므로 $a=-1/2, b=1, c=3/2$이다. 따라서 $abc=-3/4$이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-  "subUnit": "이차함수와 그래프",
+  "subUnit": "이차함수의 그래프",
   "subUnitConfidence": "candidate_evidence",
   "subUnitClassificationDepth": "complete_candidate",
-  "difficultyBucket": 3,
-  "difficultyConfidence": "high",
-  "difficultyBoundaryFlag": "NONE",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
   "legacyLevelCompatibility": "NORMAL",
   "difficultyReason": "그래프의 폭과 최대점 조건을 식으로 바꾸어 세 계수를 복원한 다음 곱한다.",
   "level": "중",
@@ -1727,10 +1714,8 @@ window.questionBank = [
   },
   "rpmSemanticStatus": "FINAL",
   "mappingStatus": "FAMILY_BINDING_GAP",
-  "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
-  "templateKey": null,
-  "crossConceptKeys": [],
-  "conditionKeys": [],
+  "crossConceptKeys": ["CC_POLYNOMIAL_EXPANSION"],
+  "conditionKeys": ["COND_NEGATIVE","COND_FUNCTION_VALUE_CONSTRAINT"],
   "integrationPattern": "SEQUENTIAL",
   "metaStatus": "FAMILY_BINDING_GAP",
   "metaDebtFields": [
@@ -1744,7 +1729,8 @@ window.questionBank = [
     "subConcept": "폭과 최댓값 위치로 식 결정",
     "conditionsUsed": "폭과 최댓값 위치로 식 결정",
     "integrationPatternExplanation": "폭과 최댓값 위치로 식 결정"
-  }
+  },
+  "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
 }
 ];
 window.examMeta = {

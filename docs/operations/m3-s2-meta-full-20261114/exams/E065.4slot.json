@@ -1,0 +1,1936 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2mid/20_신흥중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "b78a18b29941861b62d267519ae26c6770e3ec36",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "author_b",
+    "at": "2026-11-14T10:59:29.104231+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_ac2a8f30d2e2554ce01baff4bffff07a20f887bd6bf460bf8894af16f0451488",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a128c7d04aa9e1fe5e61dbe4b2ce0fa4c6768e16b4b9ca20dec19e424158dbe7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ff5986d438c5d20bc9b1564383c81e17870367a1d99d638f3e2254261140435f"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "choices",
+            "quote": "$y=(x+3)^2-x^2-3$"
+          },
+          {
+            "term": "정사각형",
+            "src": "choices",
+            "quote": "정사각형의 넓이"
+          },
+          {
+            "term": "대각선",
+            "src": "choices",
+            "quote": "대각선의 총 수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수가 아닌"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "이차항이 사라져 일차함수이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱식을 전개하고 최종 차수가 2인지 비교한다. 도형 보기는 각각 넓이와 대각선 개수의 식으로 판단한다."
+          },
+          {
+            "term": "차수",
+            "src": "solution",
+            "quote": "이차항이 남는지 확인한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱식을 전개하고 최종 차수가 2인지 비교한다. 도형 보기는 각각 넓이와 대각선 개수의 식으로 판단한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱식을 전개하고 최종 차수가 2인지 비교한다. 도형 보기는 각각 넓이와 대각선 개수의 식으로 판단한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_9921058446de1f7c3e639b0d2f436948eb6fea018110c252d6285b0e4e69b2df",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d7b6096982eaad4c1c2e40db117f662a11c4670b83414ed72dbc01b364764065"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8498174b193b037240b0a7e7dc8fa50e0e22360f6daa2fdc40889867e4fae043"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "두 이차함수"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "어두운 부분"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수식",
+            "src": "stem",
+            "quote": "어두운 부분을 지나는 것을"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "양변을 $x^2$로 나누어",
+            "evidenceType": "IMPLIED",
+            "justification": "두 곡선 사이를 부등식으로 읽고 양수 x²로 나눈 계수 범위를 보기와 비교한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "보기의 계수 중 이 범위에 속하는 것은",
+            "evidenceType": "IMPLIED",
+            "justification": "두 곡선 사이를 부등식으로 읽고 양수 x²로 나눈 계수 범위를 보기와 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "두 그래프 사이"
+          },
+          {
+            "term": "제외",
+            "src": "solution",
+            "quote": "$x\\ne0$인 점"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 곡선 사이를 부등식으로 읽고 양수 x²로 나눈 계수 범위를 보기와 비교한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_fcd0626b491f711ec12cd2ace36869d723056c54e4d94e4642daf4fb6dbf4b2c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d8a666a3e9729939f6264611c8232c9f43c751fb1b245321152169474ed6ba74"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "22005f5b0709e5d532cf2d516cd923851784445fa61f93ef38cde6f641f22875"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성질",
+            "src": "stem",
+            "quote": "대한 설명"
+          },
+          {
+            "term": "축",
+            "src": "choices",
+            "quote": "축의 방정식"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "대칭축은 $y$축인 $x=0$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "기본 포물선의 대칭축이 x=0이라는 성질로 틀린 진술을 확정한다. 이 단일 방법으로 충분한지 재독했다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "기본 포물선의 대칭축이 x=0이라는 성질로 틀린 진술을 확정한다. 이 단일 방법으로 충분한지 재독했다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_6d75c46827bc3f4e820379591b84f243ea96aedc1ca86d7981c84412ecdbbd3e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1784cb86d6aca08b4262af869443604b844248cc0d99a23e77d93bd527fe2a63"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c9939cf8bbd5295ed2365a0e1e5a02a81f2f173fbecf849372b789227d457954"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2+q$"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프가 그림과 같을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$a<0$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "그래프의개형",
+            "src": "solution",
+            "quote": "그래프는 아래로 열리므로",
+            "evidenceType": "IMPLIED",
+            "justification": "개형은 a의 부호를, y절편 위치는 q의 부호를 결정한다."
+          },
+          {
+            "term": "y절편",
+            "src": "solution",
+            "quote": "그래프가 $y$축과 만나는 점은 $x$축 위",
+            "evidenceType": "IMPLIED",
+            "justification": "개형은 a의 부호를, y절편 위치는 q의 부호를 결정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "개형은 a의 부호를, y절편 위치는 q의 부호를 결정한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_00980fc68da2a87e382d4ae87bf56cfd7b07d87cdbed493fe161df1ba411403e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "76db3d6da4145db3053afc8a9041a6c2fb128664931c60c20ef62db61e685958"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7985902dc14afc80240696c8956164233094078381059185ea1f3f0e7dc525b3"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=ax^2$"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "$P(2, -8)$, $Q(-1, b)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "대입하면 $-8=4a$",
+            "evidenceType": "IMPLIED",
+            "justification": "P 대입으로 a를 구한 뒤 Q의 함숫값 b를 정하여 더한다."
+          },
+          {
+            "term": "함숫값",
+            "src": "solution",
+            "quote": "$b=a(-1)^2=-2$",
+            "evidenceType": "IMPLIED",
+            "justification": "P 대입으로 a를 구한 뒤 Q의 함숫값 b를 정하여 더한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "P 대입으로 a를 구한 뒤 Q의 함숫값 b를 정하여 더한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_4db790f96bccec2d9d33c7ab53b7a768625debabbacc2b7526dd4ff7ae9253fc",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b139779dafa9f5f4e6c97d5ad0aeb5d73492bebec22a1b8d06e6d9c93d192af4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "226a8005b7f05c155dbbc7c99d9887ab89322704a1fa8784089bb4b773da12cc"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "축",
+            "src": "stem",
+            "quote": "축의 방정식"
+          }
+        ],
+        "method": [
+          {
+            "term": "표준형",
+            "src": "solution",
+            "quote": "$y=-2(x-1)^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형의 x 이동항을 읽어 축 x=1과 나머지의 x=0을 구별한다."
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "대칭축은 $x=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형의 x 이동항을 읽어 축 x=1과 나머지의 x=0을 구별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "꼭짓점형의 x 이동항을 읽어 축 x=1과 나머지의 x=0을 구별한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_7e2e82628ae8ad0b2ed72e6718b90d19af1a8d8145f3d78f5af7ba1fe4972211",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "679f2a146d3073a91506922bc213cb83e23e991e26e8d8df85aa51a36630aadb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5977e69ac687008c9f63ba6f5df8375f38d5b6968a8474d3575180740a72c803"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=-2x^2-3$"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$y$축의 방향으로 $k$만큼 평행이동"
+          }
+        ],
+        "goal": [
+          {
+            "term": "변화량",
+            "src": "stem",
+            "quote": "$k$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "위로 $k$만큼 옮기면",
+            "evidenceType": "IMPLIED",
+            "justification": "수직이동을 상수항에 k를 더하는 것으로 나타내고 등식으로 k를 정한다."
+          },
+          {
+            "term": "등식의성질",
+            "src": "solution",
+            "quote": "$-3+k=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "수직이동을 상수항에 k를 더하는 것으로 나타내고 등식으로 k를 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "수직이동을 상수항에 k를 더하는 것으로 나타내고 등식으로 k를 정한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_225559aa3ab34f1701a3e9ae920ae70e02a584baba1244c0ae350f0931b9424a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a8ce0a83b6224849493a40b3aa523e9b5074f0cfe47df73450283d6fe0aceb36"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ed090f6d31c0e51fd8c4161c3fdb1aa6e8524abd3c743c912e10569fdc30c9e4"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=-x^2$"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$x$축의 방향으로 $-3$만큼, $y$축의 방향으로 $5$만큼"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수식",
+            "src": "stem",
+            "quote": "평행이동한 식"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "식의 $x$를 $x+3$으로 바꾼다.",
+            "evidenceType": "IMPLIED",
+            "justification": "수평·수직 이동 공식 한 가지를 두 성분에 적용한다. 별도의 독립 방법을 인위적으로 추가하지 않았다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "수평·수직 이동 공식 한 가지를 두 성분에 적용한다. 별도의 독립 방법을 인위적으로 추가하지 않았다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_94bbe83e5696d812e8ce233bfd651292212d9fdc69cd378175f0ed471d78aca7",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6bb17fa7f050c1c5f08ca49aab8d20bebe3e6ab6723d7c2eff3679d9a7e394ab"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "51958d50523556ae3baa79ece465e6a02009ac474a5cedd04fdb0e9f12649471"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=-x^2+4x-4$"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프에 대한"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성질",
+            "src": "stem",
+            "quote": "설명 중 옳지 않은"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$y=-x^2+4x-4=-(x-2)^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형을 꼭짓점형으로 고치고 계수 절댓값과 폭의 관계를 비교한다."
+          },
+          {
+            "term": "그래프의개형",
+            "src": "solution",
+            "quote": "계수의 절댓값이 달라 폭도 같지 않다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형을 꼭짓점형으로 고치고 계수 절댓값과 폭의 관계를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "일반형을 꼭짓점형으로 고치고 계수 절댓값과 폭의 관계를 비교한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_2bd91750663d35aef0ebe2dc5f0e4df90f2048c86d7ebf860fff8b479a0b5ea4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "26672e3820e48d2b7005f000ebb766571e6a92b4c96d652b45052d2136294bb6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "82197afd84e2c4dd45a1e3cafcc34e3f0116eec61f9ac206087310ef3052ae7b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=-3(x+1)^2+5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "증가감소",
+            "src": "stem",
+            "quote": "$y$의 값도 증가"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$x$의 값의 범위"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점은 $(-1,5)$",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점의 위치와 아래로 열림을 결합하면 왼쪽 증가 구간이 정해진다. 구간은 답으로 요구되어 condition에는 중복하지 않는다."
+          },
+          {
+            "term": "그래프의개형",
+            "src": "solution",
+            "quote": "아래로 열린다.",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점의 위치와 아래로 열림을 결합하면 왼쪽 증가 구간이 정해진다. 구간은 답으로 요구되어 condition에는 중복하지 않는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "꼭짓점의 위치와 아래로 열림을 결합하면 왼쪽 증가 구간이 정해진다. 구간은 답으로 요구되어 condition에는 중복하지 않는다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_7977148d92ea01e4db49f421e57e90ba974137f996ed8cb13919d07203ae4fa6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5aba20beee4a7615d50cc8baba9e113d0ae92b29806fdea352e959a63cb9c1c4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0438881e72166e97566bed21d4e7f00ffcbe96e14246036e8d048260149d51db"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=a(x+p)^2-q$"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프가 다음 그림과 같을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "$a, p, q$의 부호"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점의 $x$좌표는 $-p$",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점 좌표 −p,−q와 각 매개변수의 부호를 구분하고 아래로 열림에서 a의 부호를 읽는다."
+          },
+          {
+            "term": "그래프의개형",
+            "src": "solution",
+            "quote": "그래프가 아래로 열리므로",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점 좌표 −p,−q와 각 매개변수의 부호를 구분하고 아래로 열림에서 a의 부호를 읽는다."
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "$-q>0$, 즉 $q<0$",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점 좌표 −p,−q와 각 매개변수의 부호를 구분하고 아래로 열림에서 a의 부호를 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "꼭짓점 좌표 −p,−q와 각 매개변수의 부호를 구분하고 아래로 열림에서 a의 부호를 읽는다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_8b3144b57ae0d883a10a088a65f3ff51760916b008256ee9ac97723d9afff472",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "90b3ec8153cb7e3066254216222ca1dec22e5cfc05b44724625580c0f6d3f947"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8cc6ca22aaf20546850f646347537c5b98c8607b905b2da96ee4ecea37b1aa00"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=ax^2+bx+c$"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "꼭짓점의 좌표가 $(-1, 4)$"
+          },
+          {
+            "term": "y절편",
+            "src": "stem",
+            "quote": "$y$절편이 $2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$abc$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "표준형",
+            "src": "solution",
+            "quote": "$y=a(x+1)^2+4$",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형을 세운 뒤 y절편을 대입하고 전개하여 일반형 세 계수를 얻는다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=0$을 대입해",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형을 세운 뒤 y절편을 대입하고 전개하여 일반형 세 계수를 얻는다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "식을 전개하면",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형을 세운 뒤 y절편을 대입하고 전개하여 일반형 세 계수를 얻는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "꼭짓점형을 세운 뒤 y절편을 대입하고 전개하여 일반형 세 계수를 얻는다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_31cfd0b819a9763ce5ae2285b96bd9bd09ee99ea36b299c210ae351d5047d226",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "37d2df2ccaadb33f416719c87101bcfd2740928c6bbab5b6e002dba2da93822b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4187aec9a62912becef4a0c4481d04fe41037f191bbe7f1f2e5f920c1d71788f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=2x^2+4x+2$"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "점 $(3, m)$"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$x$축 방향으로 $3$만큼 평행이동"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "상수 $m$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$y=2x^2+4x+2=2(x+1)^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱형으로 옮겨 이동 부호를 확인하고 새 그래프의 y좌표를 계산한다."
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "오른쪽으로 3만큼 옮기면",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱형으로 옮겨 이동 부호를 확인하고 새 그래프의 y좌표를 계산한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=3$을 대입하면",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱형으로 옮겨 이동 부호를 확인하고 새 그래프의 y좌표를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "완전제곱형으로 옮겨 이동 부호를 확인하고 새 그래프의 y좌표를 계산한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_112f823bafc300f195254d760b19b0dd6277e19a325edffe179883246aa98cc4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "69130fb2d45c4c265a7d263e269329dc1aaa3e2e95970d823ba7522d94d0ceb9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a921274d84b47a1e7814a51c1bd78f731fcaa2097405c623eb141b17610bcd2d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=ax^2+bx+c$"
+          },
+          {
+            "term": "x절편",
+            "src": "solution",
+            "quote": "$x$절편이 $-1,3$"
+          },
+          {
+            "term": "y절편",
+            "src": "solution",
+            "quote": "$y$절편은 3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "이차함수의 최댓값"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$y=a(x+1)(x-3)$",
+            "evidenceType": "IMPLIED",
+            "justification": "근을 이용한 인수형으로 계수를 정하고 두 근의 중점을 축으로 삼아 꼭짓점값을 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=0,y=3$을 대입하면",
+            "evidenceType": "IMPLIED",
+            "justification": "근을 이용한 인수형으로 계수를 정하고 두 근의 중점을 축으로 삼아 꼭짓점값을 구한다."
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "대칭축은 $x=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "근을 이용한 인수형으로 계수를 정하고 두 근의 중점을 축으로 삼아 꼭짓점값을 구한다."
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점의 $y$좌표 4가 최댓값",
+            "evidenceType": "IMPLIED",
+            "justification": "근을 이용한 인수형으로 계수를 정하고 두 근의 중점을 축으로 삼아 꼭짓점값을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근을 이용한 인수형으로 계수를 정하고 두 근의 중점을 축으로 삼아 꼭짓점값을 구한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_13ec8cc340c4e7107b25d1f7274c8268a6cd61914c827b3dfc1ab31e70ea1295",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cf91cff4f1d29ae272bb922752acec574182a9e0291557da6053f75a45870a2e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4204b96e27510cc6d163e8c18701d152f845f1b51477f1bc63ec07ccbe4c75c8"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=-3x^2+4ax+2$"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$x=-2$일 때 최댓값"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점 $x$좌표",
+            "evidenceType": "IMPLIED",
+            "justification": "최대가 나타나는 입력을 축의 x좌표와 같게 두고 a의 일차식을 푼다."
+          },
+          {
+            "term": "등식의성질",
+            "src": "solution",
+            "quote": "$\\frac{2a}{3}=-2$",
+            "evidenceType": "IMPLIED",
+            "justification": "최대가 나타나는 입력을 축의 x좌표와 같게 두고 a의 일차식을 푼다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "최대가 나타나는 입력을 축의 x좌표와 같게 두고 a의 일차식을 푼다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_9d65b21bc5d20be0cd00ed9619b59b9fd406826c6458508d4fc32ddaae16bf6d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "366c6c20b40c615e0610b9880dc063f6b0e1434e5834b6a19184bd5d8a912b90"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "58a0e18fa1e6e81d42e3b8ae558b93262f72af3b519eb7caa9dff60981fb0c03"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=-x^2-2x+8$"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle \\mathrm{ABC}$"
+          },
+          {
+            "term": "좌표축",
+            "src": "stem",
+            "quote": "$x$축과의 교점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이는"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(x+4)(x-2)=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "축과의 교점을 구한 뒤 밑변·높이에 해당하는 좌표 차를 이용해 삼각형 넓이를 계산한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$C=(0,8)$",
+            "evidenceType": "IMPLIED",
+            "justification": "축과의 교점을 구한 뒤 밑변·높이에 해당하는 좌표 차를 이용해 삼각형 넓이를 계산한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "밑변 $AB=6$, 높이는 점 $C$의 $y$좌표 8",
+            "evidenceType": "IMPLIED",
+            "justification": "축과의 교점을 구한 뒤 밑변·높이에 해당하는 좌표 차를 이용해 삼각형 넓이를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "축과의 교점을 구한 뒤 밑변·높이에 해당하는 좌표 차를 이용해 삼각형 넓이를 계산한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_aa06905e169688d1c900786190663baefbc0cd33826b6084574ded247aad384c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ff3497a359df1c3c58dd084a43308e979a2724da8bdc59be8742cee368903157"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a4c28ec967b6664e940da2a2c2abd8c97c6ee5c5b1492db1d2897356a204d2d8"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "$\\angle C=90^\\circ$"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "$AC=\\sqrt3$, $BC=1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사인",
+            "src": "choices",
+            "quote": "\\sin B"
+          },
+          {
+            "term": "코사인",
+            "src": "choices",
+            "quote": "\\cos B"
+          },
+          {
+            "term": "탄젠트",
+            "src": "choices",
+            "quote": "\\tan A"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리에 따라",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스로 빗변을 보충하고 각에 대한 대변·인접변의 비를 확인한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\sin B=\\frac{AC}{AB}=\\frac{\\sqrt3}{2}$",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스로 빗변을 보충하고 각에 대한 대변·인접변의 비를 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "$\\angle C=90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "피타고라스로 빗변을 보충하고 각에 대한 대변·인접변의 비를 확인한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_081077fd83bcdaed4e983046f4ef0069ffd42ab060652548419b2bcbd0ec0706",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8c544438d5adcb3ac5d663c91964f0691187bec212949d6f90fc9dad113389dd"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5faec49a157e4b0a04a5a1b58b87cb6ad86741ba914be62bf06b2e5438f077fb"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "중점을"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AB}}=1$, $\\overline{\\mathrm{AC}}=3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$\\cos x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$BC^2=AC^2-AB^2=3^2-1^2=8$",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 삼각형의 BC를 구해 반으로 나눈 뒤 작은 삼각형의 AD와 코사인을 구한다."
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "$D$는 $BC$의 중점이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 삼각형의 BC를 구해 반으로 나눈 뒤 작은 삼각형의 AD와 코사인을 구한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\cos x=\\frac{AB}{AD}=\\frac1{\\sqrt3}$",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 삼각형의 BC를 구해 반으로 나눈 뒤 작은 삼각형의 AD와 코사인을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "$\\angle \\mathrm{ABC}=90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "큰 삼각형의 BC를 구해 반으로 나눈 뒤 작은 삼각형의 AD와 코사인을 구한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_e9c502ade2f211c70614af4080b99bf21e4bfb63add6456f219003833e4a5faa",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c107394f879dca7d6142b0423f16fce285407d4e62203bab4bb6467d138ee8a6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d8daa415165f23bd77c17f119be32b040a2778ee3f6c2b3abd75e0bdc2854405"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "$\\tan A = \\frac{5}{12}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$\\cos A - \\sin A$"
+          },
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "\\cos A"
+          },
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "\\sin A"
+          }
+        ],
+        "method": [
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "변의 비는 $5:12$",
+            "evidenceType": "IMPLIED",
+            "justification": "탄젠트의 비로 직각변을 정하고 피타고라스로 빗변을 보충하여 사인·코사인의 차를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$\\sqrt{5^2+12^2}=13$",
+            "evidenceType": "IMPLIED",
+            "justification": "탄젠트의 비로 직각변을 정하고 피타고라스로 빗변을 보충하여 사인·코사인의 차를 구한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\sin A=5/13$, $\\cos A=12/13$",
+            "evidenceType": "IMPLIED",
+            "justification": "탄젠트의 비로 직각변을 정하고 피타고라스로 빗변을 보충하여 사인·코사인의 차를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "예각",
+            "src": "stem",
+            "quote": "$0^\\circ < A < 90^\\circ$"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$0^\\circ < A < 90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "탄젠트의 비로 직각변을 정하고 피타고라스로 빗변을 보충하여 사인·코사인의 차를 구한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_712182951413a100b5171adcc1a3fdc79a13ecbddffe522ef636e962bb6e9893",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a885cc11e152aad6657bfb494baf7b03f5212e0dc545ffadbb0d8b864b2ced20"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bf93aba598f68c18b010299e90fdaf6b818d4ed2cae71435f949422bd0f28022"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "사분원",
+            "src": "stem",
+            "quote": "반지름의 길이가 $1$인 사분원"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접선 및 선분"
+          }
+        ],
+        "goal": [
+          {
+            "term": "관계",
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$CD=\\tan x$"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\sin x=\\frac{AB}{OA}=AB$",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름 1인 두 직각삼각형의 비와 여각 관계를 써 선분별 삼각비를 비교한다. goal의 삼각비는 구할 값의 종류로 썼다."
+          },
+          {
+            "term": "여각",
+            "src": "solution",
+            "quote": "$\\angle y=90^\\circ-x$",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름 1인 두 직각삼각형의 비와 여각 관계를 써 선분별 삼각비를 비교한다. goal의 삼각비는 구할 값의 종류로 썼다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "$OD\\perp CD$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "반지름 1인 두 직각삼각형의 비와 여각 관계를 써 선분별 삼각비를 비교한다. goal의 삼각비는 구할 값의 종류로 썼다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_00f03a5e74b4b4cde06bb298ac92ed37150bbaa7c09182451fd384860399b22a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9558c524de67dbf93c299b0d98755e540405833ada0c2378f8303e7d393940cc"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1ab63bc824e55b8eea863bfb8233816dca42433301ee8e9f53069160007851a7"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AC}}=8$"
+          },
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "$\\sin A = \\frac{3}{4}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이를 구하여라"
+          },
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$\\cos A$"
+          },
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "$\\tan A$"
+          },
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "$\\sin C$"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$BC=8\\cdot\\frac34=6$",
+            "evidenceType": "IMPLIED",
+            "justification": "BC를 먼저 얻고 AB를 구한 뒤 동일한 세 변에서 남은 비를 읽는 순서이다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리를 쓰면",
+            "evidenceType": "IMPLIED",
+            "justification": "BC를 먼저 얻고 AB를 구한 뒤 동일한 세 변에서 남은 비를 읽는 순서이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "$\\angle B=90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "BC를 먼저 얻고 AB를 구한 뒤 동일한 세 변에서 남은 비를 읽는 순서이다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_bbd5b24daef608b0dafa3ae3b6738b28ce6f298689d67df9403fce313938d159",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "514dd141db035d0bbd0c66375c8e348012e189c5fa678f310ac2af6362d015db"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "022878ddd50514584b12a82f6d31e65308ba5f68146b0d07da6c194bdef11c4b"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=-3(x+2)^2-1$"
+          },
+          {
+            "term": "표준형",
+            "src": "solution",
+            "quote": "꼭짓점형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "꼭짓점의 좌표"
+          },
+          {
+            "term": "축",
+            "src": "stem",
+            "quote": "대칭축"
+          },
+          {
+            "term": "함수식",
+            "src": "stem",
+            "quote": "대칭인 식"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값 또는 최솟값"
+          },
+          {
+            "term": "증가감소",
+            "src": "stem",
+            "quote": "증가하고"
+          }
+        ],
+        "method": [
+          {
+            "term": "표준형",
+            "src": "solution",
+            "quote": "$a=-3$, $p=-2$, $q=-1$",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형의 세 상수를 읽어 성질을 정하고 x축 반사는 함수 전체의 부호를 반전한다."
+          },
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "$x$축에 대칭이동하면",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형의 세 상수를 읽어 성질을 정하고 x축 반사는 함수 전체의 부호를 반전한다."
+          },
+          {
+            "term": "그래프의개형",
+            "src": "solution",
+            "quote": "아래로 열린 포물선",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형의 세 상수를 읽어 성질을 정하고 x축 반사는 함수 전체의 부호를 반전한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "꼭짓점형의 세 상수를 읽어 성질을 정하고 x축 반사는 함수 전체의 부호를 반전한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_f932d2fd04745cbf7f882d9e63104e6653acbd86d9363af812777dfb3eef5002",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6257dda934a470c297be37b6e8b450500b3b38fbd9c0156bb34eb5859567af17"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2fb3f38e9d2adb2c2a36619812de7404f85f8c931242113ca538beca7424cb4e"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=2x^2-4x$"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값이 $\\mathrm{A}$"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값이 $\\mathrm{B}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$\\mathrm{A}-\\mathrm{B}$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$y=2x^2-4x=2(x-1)^2-2$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 식을 각각 완전제곱꼴로 고친 뒤 제곱항이 0일 때 얻는 최소와 최대를 뺀다."
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "최솟값 $A=-2$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 식을 각각 완전제곱꼴로 고친 뒤 제곱항이 0일 때 얻는 최소와 최대를 뺀다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 식을 각각 완전제곱꼴로 고친 뒤 제곱항이 0일 때 얻는 최소와 최대를 뺀다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_65e3a5806d63880ce623eefee66bdee9f22c446703e15aa17bd7431578fe7819",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "085d29a3aa1d6311f77bf0b36f6fd24988281a95aafeb10682bffe1281cccceb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ac58b913e6d11b7aeeef161e46e5b75d84705ef5348c1795fc9d8193d815b00d"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=ax^2+bx+c$"
+          },
+          {
+            "term": "그래프의개형",
+            "src": "stem",
+            "quote": "그래프와 폭이 같고"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$x=1$일 때 최댓값이 $2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$abc$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$|a|=1/2$",
+            "evidenceType": "IMPLIED",
+            "justification": "폭은 |a|를, 최대 조건은 a의 음수 부호와 꼭짓점을 정한다. 전개한 계수 세 개를 곱한다."
+          },
+          {
+            "term": "표준형",
+            "src": "solution",
+            "quote": "꼭짓점이 $(1,2)$",
+            "evidenceType": "IMPLIED",
+            "justification": "폭은 |a|를, 최대 조건은 a의 음수 부호와 꼭짓점을 정한다. 전개한 계수 세 개를 곱한다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "전개하면",
+            "evidenceType": "IMPLIED",
+            "justification": "폭은 |a|를, 최대 조건은 a의 음수 부호와 꼭짓점을 정한다. 전개한 계수 세 개를 곱한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "아래로 열려 $a=-1/2$",
+            "evidenceType": "IMPLIED",
+            "justification": "최댓값 조건에서 a<0를 추론하는 단계이므로 발문에 주어진 부호 조건과 구별해 method에 기록한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$x=1$일 때 최댓값이 $2$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "폭은 |a|를, 최대 조건은 a의 음수 부호와 꼭짓점을 정한다. 전개한 계수 세 개를 곱한다.",
+        "condition": "발문의 최대 위치·최댓값 제약을 기록한다. a의 음수 부호는 학생이 도출하는 방법이다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T10:59:29.104231+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "allItemsRead": true,
+    "goalsAreTargets": true,
+    "methodCompletenessRead": true,
+    "specificStructuresRead": true,
+    "conditionsRead": true,
+    "freshSourceJudgment": true,
+    "notAnIndependentReview": true
+  }
+}

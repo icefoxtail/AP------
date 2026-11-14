@@ -1,0 +1,65 @@
+{
+  "examId": "E065",
+  "sourceArchiveFile": "original/middle/m3/2mid/20_신흥중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "b78a18b29941861b62d267519ae26c6770e3ec36",
+  "actualAssetsInspected": [
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_신흥중_2학기_중간_중3_수학/q02.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_신흥중_2학기_중간_중3_수학/q04.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_신흥중_2학기_중간_중3_수학/q11.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_신흥중_2학기_중간_중3_수학/q14.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_신흥중_2학기_중간_중3_수학/q16.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_신흥중_2학기_중간_중3_수학/q17.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_신흥중_2학기_중간_중3_수학/q18_alive.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_신흥중_2학기_중간_중3_수학/q20.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_신흥중_2학기_중간_중3_수학/s01.png"
+  ],
+  "sourceIssues": [],
+  "scope": "Metadata authoring; source content and answer/solution/assets unmodified. Not new blind mathematical certification.",
+  "validation": {
+    "command": "node tools/4slot/validate-4slot.cjs /workspace/scratch/00fbac4c0777/worker-b/E065.4slot.json",
+    "items": 24,
+    "quotes": 156,
+    "fail": 0,
+    "warn": 7
+  },
+  "warningReview": [
+    {
+      "ordinals": [
+        3
+      ],
+      "warning": "4 terms; one method",
+      "disposition": "기본 y=x² 대칭축의 직접 판정. 대칭성 한 방법으로 결정되므로 최소 집합 유지."
+    },
+    {
+      "ordinals": [
+        6
+      ],
+      "warning": "4 terms",
+      "disposition": "다섯 꼭짓점형에서 대칭축만 비교하는 좁은 과제. 축·대칭성·표준형·이차함수면 충분."
+    },
+    {
+      "ordinals": [
+        7
+      ],
+      "warning": "4 terms",
+      "disposition": "수직 평행이동 k는 상수항 차로만 결정되어 필수 구조가 보존되어 있다."
+    },
+    {
+      "ordinals": [
+        8
+      ],
+      "warning": "3 terms; one method",
+      "disposition": "두 방향 평행이동 공식을 직접 적용한다. 주어진 이차함수·목표 함수식·평행이동 외 불필요 용어를 추가하지 않음."
+    },
+    {
+      "ordinals": [
+        17,
+        21
+      ],
+      "warning": "same 4-slot set",
+      "disposition": "둘 다 직각삼각형에서 피타고라스로 변을 보충하고 세 삼각비를 묻는다. 객관식 진술판정과 서답형 소문항 묶음의 차이는 format과 근거에 보존되어 동일 개념 집합은 타당."
+    }
+  ],
+  "unresolvedFields": [],
+  "projection": "PT/TPL resolver and independent sample review owned by root; no projection PASS claimed."
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "M3S2_ROOT_SAMPLE_COMPARISON_v1",
+  "examId": "E065",
+  "reviewer": "GPT_ROOT_00FBAC4C0777",
+  "at": "2026-11-14T11:12:35.609715+00:00",
+  "sourceFirstNotes": "E065.source-first-notes.json",
+  "items": [
+    {
+      "ordinal": 5,
+      "status": "PASS_WITH_EXPLICIT_DEBTS",
+      "reason": "점 두 개의 직접대입으로 a+b=-4를 재계산했다. 계수결정 RPM과 bucket1 일치. 기존 level중을 인접경계로 유지한다. 정확 TPL 여부는 후속 정의검토에 따라 처리한다.",
+      "fourSlotMeaningRead": true
+    },
+    {
+      "ordinal": 15,
+      "status": "PASS_WITH_EXPLICIT_DEBTS",
+      "reason": "최대 위치를 축의 x좌표와 같게 두어 a=-3을 재계산했다. 목표가 계수이므로 조건에 의한 식구하기 RPM을 수용하며 bucket2 일치, 기존 level중 유지.",
+      "fourSlotMeaningRead": true
+    },
+    {
+      "ordinal": 24,
+      "status": "PASS_WITH_EXPLICIT_DEBTS",
+      "reason": "폭과 최대조건으로 꼭짓점형을 구성한 뒤 abc=-3/4를 재계산했다. 식 복원 RPM 및 bucket2 일치. 4칸의 각 인용과 목표곱·절댓값·표준형·전개 의미를 확인했다.",
+      "fourSlotMeaningRead": true
+    }
+  ],
+  "scope": "Metadata sample meaning only; production registration and R1/R2/R3 are separate."
+}

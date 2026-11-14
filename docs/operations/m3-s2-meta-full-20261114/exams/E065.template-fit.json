@@ -1,0 +1,175 @@
+{
+  "examId": "E065",
+  "sourceArchiveFile": "original/middle/m3/2mid/20_신흥중_2학기_중간_중3_수학.js",
+  "basis": "Official projection candidates definitions read after fresh author freeze; semantic fit only, exact binding remains root resolver responsibility.",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_ac2a8f30d2e2554ce01baff4bffff07a20f887bd6bf460bf8894af16f0451488",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "식 전개 후 이차함수 여부를 판별하는 정확한 후보가 반환되지 않았다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_9921058446de1f7c3e639b0d2f436948eb6fea018110c252d6285b0e4e69b2df",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "y=ax²의 계수 범위와 음영 영역 판독에 대한 후보가 없다."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_fcd0626b491f711ec12cd2ace36869d723056c54e4d94e4642daf4fb6dbf4b2c",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "기본 포물선 성질 진술의 참거짓을 판정하는 후보가 없다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_6d75c46827bc3f4e820379591b84f243ea96aedc1ca86d7981c84412ecdbbd3e",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "개형과 절편에서 계수 부호를 읽는 후보가 없다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_00980fc68da2a87e382d4ae87bf56cfd7b07d87cdbed493fe161df1ba411403e",
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "MULTI_CONDITION의 internalSkeleton은 두 이차함수의 근·부호 조건 복원이고 ROOT_VERTEX는 이동된 꼭짓점 조건을 계수로 전환한다. 이 문항은 y=ax²에 P와Q를 순차 대입할 뿐 근·축·이동 꼭짓점 조건을 결정적으로 쓰지 않으므로 두 후보에 강제 귀속하지 않는다."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_4db790f96bccec2d9d33c7ab53b7a768625debabbacc2b7526dd4ff7ae9253fc",
+      "status": "FIT",
+      "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
+      "reason": "꼭짓점형의 대칭축을 직접 읽어 비교하므로 함수 그래프 대칭성 골격과 일치한다. 공식파일의2022후보가 의미상 맞지만2015exact바인딩은 별도 필요하다."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_7e2e82628ae8ad0b2ed72e6718b90d19af1a8d8145f3d78f5af7ba1fe4972211",
+      "status": "FIT",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "reason": "수직 평행이동량으로 상수항 차를 구하는 바로 그 변환이다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_225559aa3ab34f1701a3e9ae920ae70e02a584baba1244c0ae350f0931b9424a",
+      "status": "FIT",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "reason": "수평−3,수직5의 평행이동 공식을 직접 적용한다."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_94bbe83e5696d812e8ce233bfd651292212d9fdc69cd378175f0ed471d78aca7",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "완전제곱 전처리와 여러 그래프성질 비교에 대한 공식후보가 없다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_2bd91750663d35aef0ebe2dc5f0e4df90f2048c86d7ebf860fff8b479a0b5ea4",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "꼭짓점형에서 증가구간을 판정하는 정확한 후보가 없다."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_7977148d92ea01e4db49f421e57e90ba974137f996ed8cb13919d07203ae4fa6",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "꼭짓점의 사분면과 개형에서 매개변수 부호를 역추론하는 후보가 없다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_8b3144b57ae0d883a10a088a65f3ff51760916b008256ee9ac97723d9afff472",
+      "status": "FIT",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "reason": "꼭짓점(−1,4)과 한 점(0,2)으로 이동된 꼭짓점형을 만들고 일반형 계수로 전환하여 정의와 internalSkeleton 모두 맞는다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_31cfd0b819a9763ce5ae2285b96bd9bd09ee99ea36b299c210ae351d5047d226",
+      "status": "FIT",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "reason": "평행이동 후 통과점의 함숫값을 구하며 결정적 연산이 입력의 수평이동이다."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_112f823bafc300f195254d760b19b0dd6277e19a325edffe179883246aa98cc4",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "절편으로 복원한 이차함수의 전체실수 최대값에 대한 후보가 반환되지 않았다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_13ec8cc340c4e7107b25d1f7274c8268a6cd61914c827b3dfc1ab31e70ea1295",
+      "status": "FIT",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "reason": "최대위치 x=−2를 축으로 해석하여 미정계수 a를 정한다. 정의에 포함된 축 조건에 의한 계수 복원이며 두 함수의 복합근부호 골격은 쓰지 않는다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_9d65b21bc5d20be0cd00ed9619b59b9fd406826c6458508d4fc32ddaae16bf6d",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "포물선의 축교점을 좌표 삼각형 넓이로 재해석하는 후보가 없다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_aa06905e169688d1c900786190663baefbc0cd33826b6084574ded247aad384c",
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "직각삼각형 변·각을 sin cos tan 정의의 비로 직접 바꾸어 진술을 비교한다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_081077fd83bcdaed4e983046f4ef0069ffd42ab060652548419b2bcbd0ec0706",
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "피타고라스·중점으로 필요한 두 변을 준비한 뒤 해당각 코사인의 정의를 적용한다. 최종 목표는 삼각비값이며 길이응용 템플릿으로 바꿀 이유가 없다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_e9c502ade2f211c70614af4080b99bf21e4bfb63add6456f219003833e4a5faa",
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "tan 값에서 직각변의 비를 읽어 sin과cos로 변환하는 명시된 정의에 해당한다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_712182951413a100b5171adcc1a3fdc79a13ecbddffe522ef636e962bb6e9893",
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "단위사분원의 두 직각삼각형에서 선분과 삼각비를 직접 대응시키고 여각으로 비를 전환한다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_00f03a5e74b4b4cde06bb298ac92ed37150bbaa7c09182451fd384860399b22a",
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "sinA로부터 변과 나머지 삼각비를 연쇄 결정하여 한 삼각비에서 다른 비로의 변환 정의를 충족한다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_bbd5b24daef608b0dafa3ae3b6738b28ce6f298689d67df9403fce313938d159",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "꼭짓점형의 위치·축·반사·최댓값·증감 소문항 묶음을 포괄하는 실제후보가 없다."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_f932d2fd04745cbf7f882d9e63104e6653acbd86d9363af812777dfb3eef5002",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "전체실수 범위의 최대·최소 두 값을 완전제곱으로 읽는 후보가 없다."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_65e3a5806d63880ce623eefee66bdee9f22c446703e15aa17bd7431578fe7819",
+      "status": "FIT",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "reason": "폭에서|a|,최대에서a<0와 꼭짓점(1,2)를 얻어 이동된 꼭짓점형을 계수로 전환한다. ROOT_VERTEX의 정의·풀이골격에 직접 부합한다."
+    }
+  ]
+}
