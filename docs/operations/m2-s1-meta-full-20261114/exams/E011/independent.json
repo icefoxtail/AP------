@@ -1,0 +1,377 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E011",
+  "author": "B",
+  "reviewer": "C",
+  "independent": true,
+  "sourceGitBlobSha": "4c05c572ccff2287d2546beda1059c66b71e9342",
+  "reviewSha256": "8e60bf2f7e0bb1a8eb77ee22ecbd779b0faca1f58dc0cfb66e000f88f7d7b4bc",
+  "fourSlotSha256": "a4fb8b2768d0c5f055415c11961feac552b076856f317d821ebb0563ca24569c",
+  "sampleOrdinals": [
+    14,
+    18,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_07f6edee6e305b95146cafac1b73748399cd953e2295af1e259ab6135b9cff09",
+      "classification": "기울기와 절편 부호에서 통과사분면을 판정하는 최종 오류이며 단순 증가감소 leaf와 다르다. 사분면 RPM 공백을 수용한다.",
+      "binding": "ACTIVE 그래프 성질 판정 generic template의 실제 definition/internalSkeleton을 확인했다. M2 scoped binding debt를 유지한다.",
+      "fourSlot": "given 일차함수, goal 그래프+판정, method 기울기/y절편/사분면의 역할이 정확하다. 별도 수체계 제한이 없는 condition 빈칸도 타당하다.",
+      "fourSlotEvidence": [
+        {
+          "slot": "given",
+          "term": "일차함수",
+          "src": "stem",
+          "quote": "$y=-\\dfrac{3}{4}x-3$",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "그래프",
+          "src": "stem",
+          "quote": "그래프에 대한 설명",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "판정",
+          "src": "stem",
+          "quote": "옳지 않은 것은",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "기울기",
+          "src": "solution",
+          "quote": "기울기는 $-\\dfrac34$",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "y절편",
+          "src": "solution",
+          "quote": "$y$절편은 $-3$",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "사분면",
+          "src": "solution",
+          "quote": "제2, 제3, 제4사분면을 지난다.",
+          "literalVerified": true
+        }
+      ],
+      "criticalGoalMethodDefects": 0,
+      "fabricatedQuotes": 0,
+      "status": "PASS"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_de381bb5aafc560b21544d8b8678371e14a69c6c2476825072d3c170ec659366",
+      "classification": "일정 속력의 이동거리에서 넓이식을 만들고 목표 도달시간을 구하는 모델이다. 그래프가 둘러싼 넓이176으로 분류하지 않은 gap 판단을 수용한다.",
+      "binding": "범용 기하공식 CC는 실제 사다리꼴 넓이를 시간의 식으로 만드는 절차에 해당한다. 확률밀도 전용 사다리꼴 CC를 쓰지 않았다.",
+      "fourSlot": "given 직사각형/속력에 넓이130이 추가되어 고정 목표면적의 역할을 보존했다. goal 몇초의 값, method 비례식→넓이공식→일차방정식, condition B→C 범위가 실제 지문과 부합한다.",
+      "fourSlotEvidence": [
+        {
+          "slot": "given",
+          "term": "직사각형",
+          "src": "stem",
+          "quote": "직사각형 $\\text{ABCD}$",
+          "literalVerified": true
+        },
+        {
+          "slot": "given",
+          "term": "속력",
+          "src": "stem",
+          "quote": "초속 $2\\text{cm}$",
+          "literalVerified": true
+        },
+        {
+          "slot": "given",
+          "term": "넓이",
+          "src": "stem",
+          "quote": "넓이가 $130\\text{ cm}^2$가 되는",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "값",
+          "src": "stem",
+          "quote": "출발한 지 몇 초 후",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "비례",
+          "src": "solution",
+          "quote": "$\\overline{BP}=2x\\text{ cm}$",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "넓이",
+          "src": "solution",
+          "quote": "$\\dfrac12(18+2x)\\times10=90+10x$",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "일차방정식",
+          "src": "solution",
+          "quote": "$90+10x=130$",
+          "literalVerified": true
+        },
+        {
+          "slot": "condition",
+          "term": "범위",
+          "src": "stem",
+          "quote": "점 $\\text{B}$를 출발하여 점 $\\text{C}$까지",
+          "literalVerified": true
+        }
+      ],
+      "criticalGoalMethodDefects": 0,
+      "fabricatedQuotes": 0,
+      "status": "PASS"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_8372620e06be5a2f74ea4db96f4ca07bae638bd7cac1c8e67c248ff399b9c174",
+      "classification": "일차방정식을 y형으로 바꾸고 사분면 회피조건과 정수 계수 개수를 연결하므로 EQUATION 부모가 타당하다. 일반 일차함수 기울기≠0을 가정하여 a=-1을 제거해서는 안 된다.",
+      "binding": "ACTIVE TPL_M2_FIND_PARAMETER_RANGE_AVOIDING_FIRST_QUADRANT는 두 부호조건의 공통범위를 다루되 최종출력은 경계값합이다. 범위 골격 재사용과 정수개수 output-variant 부채를 구분한 최종기록을 수용한다.",
+      "fourSlot": "goal 매개변수+개수, condition 정수+제1사분면 회피가 모두 있다. method 기울기/절편/공통범위/열거개수의 인용과 경계 포함이 실제 기존 해설에 있다.",
+      "fourSlotEvidence": [
+        {
+          "slot": "given",
+          "term": "일차방정식",
+          "src": "stem",
+          "quote": "일차방정식 $(a+1)x+y-a+7=0$",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "매개변수",
+          "src": "stem",
+          "quote": "정수 $a$",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "개수",
+          "src": "stem",
+          "quote": "정수 $a$의 개수",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "기울기",
+          "src": "solution",
+          "quote": "$-(a+1)\\le0$",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "y절편",
+          "src": "solution",
+          "quote": "따라서\n$a-7\\le0$",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "범위",
+          "src": "solution",
+          "quote": "$-1\\le a\\le7$",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "개수",
+          "src": "solution",
+          "quote": "정수 $a$는 $-1,0,1,2,3,4,5,6,7$의 $9$개",
+          "literalVerified": true
+        },
+        {
+          "slot": "condition",
+          "term": "정수",
+          "src": "stem",
+          "quote": "정수 $a$",
+          "literalVerified": true
+        },
+        {
+          "slot": "condition",
+          "term": "사분면",
+          "src": "stem",
+          "quote": "제1사분면을 지나지 않도록",
+          "literalVerified": true
+        }
+      ],
+      "criticalGoalMethodDefects": 0,
+      "fabricatedQuotes": 0,
+      "status": "PASS"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 3,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "한 문자가 x=4y+1로 이미 고립되어 있어 대입·역대입 방향이 즉시 정해진다. 기존2→1 B12를 수용한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 시스템에서 미지상수 없는 두 식을 골라 공통해를 구한 다음 상수를 대입하는 표준 연결이다. 분수/소수10배 전처리도 정형적이므로2/B23을 수용한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 구매의 단가 방정식을 세우고 x소거가 바로 결정되는 정형 모델이다. legacy하/2 인접 mismatch를 독립 확인하여 허용한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "실제 원그림의 위5개 짧은변과 아래4개 긴변을 읽어5x=4y를 만들고 둘레식에서 각 변 및 작은 넓이로 돌아가는 구조선택이 있다. 상/3 인접 mismatch를 허용한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "음의 절편a를 길이-a로 바꾸고 세로길이비를 두 가로절편 사이의 거리로 연결해야 한다. 실제 그림의 A/B/C/D 위치를 확인했고 상/3을 허용한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "점대입·절편·평행·사분면 성질을 대조하는 정형 판단이며 하/2의 인접경계를 허용한다. 잘못된 보조 SVG 라벨은 별도 contentDebt이다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "직선다발의 공통점P와 선분양끝의 두 경계기울기를 인식하고 포함구간의 정수만 세는 접근선택이 있다. 상/3을 허용한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "BP=2x를 이미 정해진 사다리꼴 넓이공식에 넣고130과 같게 하는 직선 절차이다. 기존상 때문에 숫자를 올리지 않는다. 숫자2를 독립 확인하되 상/2 STRONG의 역사적 조정은 root 별도판정 대상으로 유지한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 직선의 교점·x절편이 즉시 밑변과 높이가 되는 표준절차이다. E009Q18의 두직선+y축 삼각형과 같은 구조라 초기3 제안을 보류했고 B가 기존2 유지로 수정했다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "x>0 전체에서 y>0이 없다는 조건을 기울기와 절편 두 부호범위로 구조화하고 수평선 경계 및 정수개수로 연결한다. 상/3을 허용한다."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 13,
+      "decision": "ACCEPT",
+      "reason": "BASIC→EQUATION/M2-RPM-177. 두 절편의 길이비와 x절편 사이거리로 미정계수를 정하는 그래프 조건 활용이다. 실제 CC_RATIO는 곱셈공식 연쇄대입, CC_RATIO_AND_PROPORTION은 전체의 비례분배라는 좁은 정의이므로 exact-key null+명시 debt를 수용한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "decision": "ACCEPT_AFTER_CORRECTION",
+      "reason": "실제 ACTIVE PT_LINE_INTERSECTION_CONDITION/TPL_INTERSECTION_SEGMENT_RANGE를 C가 확인하여 알려주었다. definition/internalSkeleton이 경계직선→매개변수범위로 동일하다. B는 NEW_TEMPLATE_REQUIRED를 철회했고 M2 binding/정수출력 차이 부채만 남겼다. 조건계수 그래프활용177/EQUATION은 타당하다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "ACCEPT",
+      "reason": "원그림은 양기울기·양y절편이다. ax+by+c=0에서 -a/b,-c/b 부호를 읽어 ab<0,ac>0을 판단하므로 일차방정식그래프172/EQUATION이 맞으며 실제 ACTIVE 진술판정 template를 재사용한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT",
+      "reason": "a<0인 절편의 절댓값을 두 축 삼각형 넓이에 적용하므로 그래프넓이176/EQUATION, CC_TRIANGLE_AREA, COND_NEGATIVE를 수용한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "decision": "ACCEPT",
+      "reason": "방정식의 x계수가0인 수평선도 허용하는 사분면 회피 계수문제이다. EQUATION 수정과 사분면 leaf gap, 기존 범위template 재사용+정수출력 scope debt를 함께 수용한다."
+    }
+  ],
+  "canonicalEvidence": {
+    "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "rawSha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+    "templates": [
+      {
+        "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
+        "parentProblemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+        "definition": "매개변수 직선이 주어진 선분과 만나는 경계 직선을 구해 매개변수 범위를 정한다.",
+        "internalSkeleton": "매개변수 직선이 주어진 선분과 만나는 경계 직선을 구해 매개변수 범위를 정한다.",
+        "status": "ACTIVE"
+      },
+      {
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "definition": "`함수 그래프의 성질` 안에서 '함수 그래프의 성질 판정'을 핵심 풀이 골격으로 사용하는 유형.",
+        "internalSkeleton": "함수 그래프의 성질 판정",
+        "status": "ACTIVE"
+      },
+      {
+        "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+        "parentProblemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+        "definition": "일차방정식을 일차함수 꼴로 고친 뒤 기울기, y절편, 지나는 사분면, 특정 점의 통과 여부를 각각 계산해 보기의 참·거짓을 판정한다.",
+        "internalSkeleton": null,
+        "status": "ACTIVE"
+      },
+      {
+        "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_AVOIDING_FIRST_QUADRANT",
+        "parentProblemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+        "definition": "그래프가 특정 사분면을 지나지 않기 위한 기울기 부호 조건과 y절편 부호 조건을 각각 부등식으로 세우고, 두 부등식의 공통 범위를 구해 경계값의 합을 계산한다.",
+        "internalSkeleton": null,
+        "status": "ACTIVE"
+      }
+    ]
+  },
+  "assetEvidence": [
+    {
+      "path": "/workspace/scratch/6f3d37eea78a/workers/B/assets/E011/q8.png",
+      "rawSha256": "5b6305b92c7720d631b3e83defaf8dc4f9018391a651ba09f728571a55acc8a9",
+      "finding": "위5개/아래4개 벽돌의 방향 및 공통가로를 확인"
+    },
+    {
+      "path": "/workspace/scratch/6f3d37eea78a/workers/B/assets/E011/q13.png",
+      "rawSha256": "28dbc4e1f04853b3ff78581265966d0351a3b6a5a52554904e4026b3fd8ae42f",
+      "finding": "A는양y절편,B는음y절편,C/D양x절편 위치를 확인"
+    },
+    {
+      "path": "/workspace/scratch/6f3d37eea78a/workers/B/assets/E011/q14-solution-v2.png",
+      "rawSha256": "8226fc575a54974adcd4308f32c009bd884d50ab98250d664caea59fb768f847",
+      "finding": "실선(-8,3),(-4,0),(0,-3)에 +3라벨, 위점선에-3라벨로 서로 뒤바뀐 오류를 확인"
+    },
+    {
+      "path": "/workspace/scratch/6f3d37eea78a/workers/B/assets/E011/q17.png",
+      "rawSha256": "65fac1a432fd9a2f24d9f46e67a290e3c46557f82680ae01fe2f33143bfd2248",
+      "finding": "A(3,9),B(7,5)의 실제 좌표 확인"
+    },
+    {
+      "path": "/workspace/scratch/6f3d37eea78a/workers/B/assets/E011/q18.png",
+      "rawSha256": "4bea18f4551e18a8fc2d3bd5cb5690e541b779bf2dfe1b19f71b215f74974572",
+      "finding": "AD18,AB10,P가BC위에 놓인 ABPD사다리꼴을 확인"
+    },
+    {
+      "path": "/workspace/scratch/6f3d37eea78a/workers/B/assets/E011/q19.png",
+      "rawSha256": "15b6644f4153645ca6d1183184f9866afc7478cd72e9c1ae0cda958c35b81a22",
+      "finding": "양기울기와양y절편을 직접 확인"
+    }
+  ],
+  "revisionNotes": [
+    "Initial review bytes ae29a91bb159693565bf3869b97fddccbdc2e606c52c6b5ba2abc836d4a28af6 and fourSlot b1e6288003a458df7cdced147dc5f30233bdd20ee410903ea25782065f43041c actually read.",
+    "B scoped corrections: Q17 existing active segment-range template; Q20 numeric3→2 after cross-exam comparison; Q18 given area130 added. Each changed scope was read again before binding final hashes.",
+    "No new R1/R2 mathematical solution verification or full-exam independent semantic review is claimed. Strong level/bucket conflict Q18 remains a root adjudication item."
+  ],
+  "reviewedAt": "2026-11-14T09:23:49.948157+00:00"
+}
