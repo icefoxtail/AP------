@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "m1-s1-independent-exam-review-v1",
+  "workKey": "M1-S1-META-FULL",
+  "sourceArchiveFile": "original/middle/m1/1final/19_연향중_1학기_기말_중1_수학.js",
+  "author": "META_A",
+  "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+  "at": "2026-11-14T08:16:02.920Z",
+  "sourceBaselineBlob": "41599518ea6690c26003fb3f211e16ee9bc25fbb",
+  "sourceCurrentBlob": "41599518ea6690c26003fb3f211e16ee9bc25fbb",
+  "workerReviewSha256": "86c89aa5b96b10fdacf9cbca504b21759aa20e9ee17830ed768e8facf7b5d240",
+  "workerFourSlotSha256": "78753450716536cb91d676323fe8bdc357f453911823df0a9ff9457828d2ad02",
+  "sampleSelection": "WARN/IMPLIED and unresolved boundary or content risks first",
+  "samples": [
+    {
+      "ordinal": 1,
+      "result": "ACCEPTED_PROPOSAL_WITH_DEBT",
+      "notes": "이차항을 포함한 다항식의 항·계수·차수 판별을 직접 읽었다. 현행 일차식 전용 L4를 exact라고 쓰지 않고 nearest candidate와 leaf gap으로 분리한 최종수정을 확인했다. given 다항식/거듭제곱, goal 판정이 발문·선지 구조와 맞는다.",
+      "questionUid": "qid_v1_e3d1a29ca5e72aa5f159dccd6eefbb9576b092076b78ae091ec92d9b0eeb5d11"
+    },
+    {
+      "ordinal": 13,
+      "result": "ACCEPTED_AFTER_CONDITION_REPAIR_WITH_DEBT",
+      "notes": "용기 그림과 선택 그래프5장을 모두 직접 확인했다. 일정 유입량에서 형상에 따른 수위 그래프를 고르는 과제로 역방향 그래프→용기형상 TPL과 구분해야 한다. 초기 condition 공란에 시간당 일정한 양 조건을 보완하도록 요청했고 최종 기록을 확인했다. 방법은 해설 부재로 확정하지 않는다.",
+      "questionUid": "qid_v1_1869550c8e2c9ed1836d811da08ec7a1de017af03c9b0ec4e3dca74c90bb79e5"
+    },
+    {
+      "ordinal": 21,
+      "result": "ACCEPTED_PROPOSAL_WITH_DEBT",
+      "notes": "분수계수의 일차식을 계산한 뒤 x계수와 상수항으로 새 식의 값을 요구하는 발문을 읽었다. goal 식의값과 일차식 given, 괄호/분수 연산 경로가 적절하다. 소문항 연결 부담을 고려한 bucket2/B23은 제안이며 2015 exact binding과 해설 근거는 미완으로 남긴다.",
+      "questionUid": "qid_v1_8fc304a5235c3ec41914e55fcabb286916ed9a0c6be511f6381bebd57683e293"
+    }
+  ],
+  "scope": "Metadata and 4-slot sample comparison against current stems/choices/existing solutions/required images. No new exhaustive solving or R1/R2/R3.",
+  "overall": "REVIEWED_PROPOSAL_WITH_SOURCE_ONLY_DEBT",
+  "sourcePatchPolicy": "SOURCE_ONLY source와 빈 정답·해설, 원본 그림을 그대로 보존했다. source curriculum 미기재는 UNKNOWN으로 두고 2015/2022 분류는 비교 후보로만 기록한다.",
+  "deferredPatchPolicy": "Unregistered, binding-gap and unsupported source fields remain proposals. No shared registration has been run."
+}
