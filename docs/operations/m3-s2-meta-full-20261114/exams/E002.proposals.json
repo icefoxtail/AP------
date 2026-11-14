@@ -1,0 +1,112 @@
+[
+  {
+    "id": "B-E002-TRIG_ORDER",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_TRIG_RATIO_GENERAL_ANGLE_ORDER",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "definition": "0도부터 90도 사이 일반각의 사인·코사인·탄젠트 값을 단조성, 같은 각의 비 관계 및 0·1 경계값으로 비교하고 순서를 판정한다.",
+    "internalSkeleton": "기준값 0·1 및 45도 관계를 잡는다 → 각의 순서나 동일각 sin/cos/tan 관계로 부등호를 정한다 → 전체 순서 또는 진위를 결정한다.",
+    "distinguishFrom": {
+      "TPL_TRIG_RATIO_SPECIAL_ANGLE": "일반각의 값 자체를 알지 않고 대소 관계로 결정한다.",
+      "TPL_TRIG_RATIO_BASIC_RELATION": "하나의 주어진 삼각비에서 다른 수치를 복원하는 절차가 아니다.",
+      "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION": "주목적이 식의 간소화가 아니라 대소 순서 판정이다."
+    },
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "supportOrdinals": [
+      6
+    ],
+    "rpmRecordId": "M3-RPM-056",
+    "requiredChanges": [
+      "taxonomy TPL",
+      "RPM056/144 family 연결",
+      "exact binding 검증"
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_1b5921815d46d39d6bd4c156f581d6cf972e7b5a9e8349e988aaae8e7538593f"
+    ]
+  },
+  {
+    "id": "B-E002-TRIANGLE_AREA_SCALE",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_TRIG_APPLICATION_SHARED_INCLUDED_ANGLE_AREA_RATIO",
+    "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "definition": "끼인각이 같은 두 삼각형에서 그 각을 끼는 두 변의 변화 배율을 곱하여 넓이비 또는 변경 후 넓이를 결정한다.",
+    "internalSkeleton": "공유 끼인각을 확인한다 → 두 넓이에 1/2 ab sin C를 쓴다 → 같은 사인 인자를 소거하고 두 변의 배율을 곱한다.",
+    "distinguishFrom": {
+      "TPL_TRIG_APPLICATION_DIRECT_MEASURE": "실제 길이·높이의 측정값을 구하지 않는다.",
+      "TPL_TRIG_APPLICATION_CHAINED_MEASURE": "삼각비로 새 중간 길이를 계산해 다른 도형량에 넘기지 않는다.",
+      "CC_RECTANGLE_PERCENT_AREA": "직사각형 가로·세로의 곱에 한정된 정의를 삼각형에 억지 적용하지 않는다."
+    },
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "supportOrdinals": [
+      12
+    ],
+    "rpmRecordId": "M3-RPM-061",
+    "requiredChanges": [
+      "taxonomy TPL",
+      "RPM061/149 family 연결"
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_763678c7f343c5bac5cadb5609bed76bfeb03877905b04e4a77c1a3128b5f0fd"
+    ]
+  },
+  {
+    "id": "B-E002-CENTROID",
+    "kind": "NEW_CC",
+    "proposedKey": "CC_CENTROID_MEDIAN_RATIO",
+    "definition": "삼각형의 무게중심은 각 중선을 꼭짓점에서 2:1로 나누므로 주어진 중선 부분의 길이에서 전체 중선 또는 나머지 부분을 복원한다.",
+    "distinguishFrom": {
+      "CC_CENTROID": "등록 정의는 꼭짓점 좌표의 평균이다.",
+      "CC_TRIANGLE_CENTROID": "등록 정의는 세 꼭짓점과 무게중심의 좌표 관계이다."
+    },
+    "parent": "삼각형의 무게중심",
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "exactMatch": false
+    },
+    "supportOrdinals": [
+      7
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_07f2a2d9ffade1b306afc80e93a2ed65cd1f45036f14dfb164c17415bc4ef7e0"
+    ]
+  },
+  {
+    "id": "B-E002-ACTIVE_CONNECTION",
+    "kind": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+    "existingTemplates": [
+      "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION"
+    ],
+    "supportOrdinals": [
+      5,
+      7,
+      14
+    ],
+    "definition": "해당 GLOBAL ACTIVE 골격은 이미 존재하므로 새 TPL을 만들지 않고 실제 RPM 의미 잎에 family 또는 좁은 연결 행을 검토한다.",
+    "rpmRecordIds": [
+      "M3-RPM-055",
+      "M3-RPM-056",
+      "M3-RPM-143",
+      "M3-RPM-144"
+    ],
+    "requiredChanges": [
+      "crosswalk family/refinement",
+      "existing binding 확인"
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_c28e9c13282182e1b1a5e00099b45d4aea91b14be2b61491923edbf088674529",
+      "qid_v1_07f2a2d9ffade1b306afc80e93a2ed65cd1f45036f14dfb164c17415bc4ef7e0",
+      "qid_v1_fe666e358be6ce39a16edad6c823caf7054cda5da58fbeaca379763cab2238c2"
+    ]
+  }
+]

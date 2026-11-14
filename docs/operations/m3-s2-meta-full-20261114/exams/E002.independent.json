@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "examId": "E002",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "ba3582119eb5f731beb716fe11ffb5ef9ad32174",
+  "sampled4slotSha256": "54b2844e3bc311156001d02f3cc8af4cfd67ce3aeca99a18bfd26ce634b0de3f",
+  "sampledReviewSha256": "e93a42882fb7e98c16010feefe5647b46390b637094953783d1e5f208b075a08",
+  "sourcePacketSha256": "6e9e5061b7e0055ed7639936b4c507cc41604a4f316f320389b552c9762d00dc",
+  "sampled": [
+    7,
+    12,
+    14
+  ],
+  "status": "PASS_AFTER_TARGETED_CORRECTION",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_07f2a2d9ffade1b306afc80e93a2ed65cd1f45036f14dfb164c17415bc4ef7e0",
+      "sourceImageRead": true,
+      "quotesAllExact": true,
+      "quotesChecked": 6,
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "목표 sin B, 무게중심 2:1→빗변 중점의 외심→사인 정의의 방법 세 항목은 실제 풀이와 일치한다.",
+      "initialRequestedChanges": [
+        "메타 Cross에서 CC_TRIANGLE_CENTROID가 제거되었으나 중선 길이 복원의 필수 단계다. CC_CIRCUMCIRCLE와 함께 복구 필요.",
+        "integration은 무게중심→외심→삼각비의 순차 흐름이므로 SEQUENTIAL이 더 정확하다."
+      ],
+      "status": "PASS",
+      "outstandingChanges": []
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_763678c7f343c5bac5cadb5609bed76bfeb03877905b04e4a77c1a3128b5f0fd",
+      "sourceImageRead": true,
+      "quotesAllExact": true,
+      "quotesChecked": 5,
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "공유 끼인각의 사인 인자가 약분되어 두 변 배율의 곱이 넓이 배율이 된다. 넓이/비율 goal과 삼각비/비 method가 타당하다.",
+      "initialRequestedChanges": [],
+      "status": "PASS",
+      "outstandingChanges": []
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_fe666e358be6ce39a16edad6c823caf7054cda5da58fbeaca379763cab2238c2",
+      "sourceImageRead": true,
+      "quotesAllExact": true,
+      "quotesChecked": 5,
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "접는 선의 수직이등분선→피타고라스로 대각선 복원→사인의 방법 골격과 목표는 타당하다.",
+      "initialRequestedChanges": [
+        "A와 C가 겹치도록 접는다는 필수 명시 관계가 given/condition에서 빠져 있다. given 접기 또는 condition 상등/합동에 원문 인용을 추가할 것.",
+        "integration은 접기 관계→필요 길이→사인으로 선형 진행되어 SEQUENTIAL이 적절하다."
+      ],
+      "status": "PASS",
+      "outstandingChanges": []
+    }
+  ],
+  "scope": "3 independent samples; not full-exam R1/R2/R3 or answer correctness certification",
+  "previousSampled4slotSha256": "c4594069d835702da2b7da9c7b6d3491c1adcde1e446b287549e778de9bcd906",
+  "followup": {
+    "sourceReadRepeated": false,
+    "changedFieldsRechecked": true,
+    "Q7": "CC_TRIANGLE_CENTROID의 ACTIVE 정의는 좌표 전용이므로 복원 권고 철회. 중선2:1 신규CC 제안·기술debt 분리가 맞다. SEQUENTIAL 반영 확인.",
+    "Q14": "접기 term/원문 인용 given 추가 및 SEQUENTIAL 확인.",
+    "goalMethodCriticalErrors": 0
+  }
+}
