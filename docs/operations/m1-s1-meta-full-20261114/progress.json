@@ -343,7 +343,7 @@
       "sourceSchema": "questionBank",
       "sourceOnly": false,
       "owner": "META_A",
-      "status": "ASSIGNED",
+      "status": "REVIEWED_WITH_REGISTRY_OR_EVIDENCE_DEBT",
       "questionUids": [
         "qid_v1_7994be197a1b8b0003d66fa187642f5f54415a04a495ce3f4a7669da83da2940",
         "qid_v1_c2105252f573de05ead0f47fc8482d1903829db0ddba92aaac269be28d35f393",
@@ -370,8 +370,29 @@
         "qid_v1_bccedcb814a339234aed0562db801fe5e9ebb7c5b1ae0832ed5ac55cc32f0360",
         "qid_v1_542dd8bfcd425fd0ce55d3a2e09c22d8fc0f81d9d55cc84f041995b36e55f536"
       ],
-      "inputPath": ".tmp/m1-s1/input/19_왕운중_1학기_중간_중1_기출.json",
-      "nextAction": "READ_SOURCE_AND_REVIEW_ALL_META"
+      "nextAction": "CODEX_REBIND_AND_REVIEW_DECLARED_PROPOSALS",
+      "reviewCompletedAt": "2026-11-14T08:17:13.244Z",
+      "reviewArtifacts": {
+        "review": "docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_중간_중1_기출/review.json",
+        "fourSlot": "docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_중간_중1_기출/four-slot.json",
+        "independent": "docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_중간_중1_기출/independent-review.json",
+        "checks": "docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_중간_중1_기출/checks.json"
+      },
+      "sourceCurrentBlob": "1b075d51268df1bbec555439e1ebb89e4929437b",
+      "sourceCurrentSha256": "467a557f1e742066620812efb4ac7adcae91ac31a38488899eeb847374c3a013",
+      "independentSampleOrdinals": [
+        18,
+        22,
+        24
+      ],
+      "validation": {
+        "mechanical": "PASS",
+        "officialFourSlotFail": 0,
+        "officialFourSlotWarn": 20,
+        "expectedMethodDebt": 0,
+        "unexpectedFailureCount": 0,
+        "registeredCurrentQfullMatches": 0
+      }
     },
     {
       "sourcePath": "archive/exams/original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
@@ -537,7 +558,7 @@
       "baselineSha256": "1029c285ed903c2153621edf56415e21e692cea3f17de5588fc855f6a32c9f34",
       "sourceSchema": "examData",
       "sourceOnly": true,
-      "owner": "META_C",
+      "owner": "META_A",
       "status": "ASSIGNED",
       "questionUids": [
         "qid_v1_b1b9b4f24a62724d1a5206d65bde5562ac27e821df7b45d297eea353d59478ec",
@@ -566,7 +587,15 @@
         "qid_v1_aec6efb9551263f18b6961aa0177273d36e14a43afc72c45ee7d5d17acf62d01"
       ],
       "inputPath": ".tmp/m1-s1/input/16_연향중_1학기_중간_중1_수학.json",
-      "nextAction": "READ_SOURCE_AND_REVIEW_ALL_META"
+      "nextAction": "READ_SOURCE_AND_REVIEW_ALL_META",
+      "assignmentHistory": [
+        {
+          "from": "META_C",
+          "to": "META_A",
+          "reason": "META_C confirmed source unread/unstarted; first free worker reassignment",
+          "at": "2026-11-14T08:17:13.119159+00:00"
+        }
+      ]
     }
   ],
   "nextAction": "REVIEW_REMAINING_ASSIGNED_EXAMS_AND_PRESERVE_PER_EXAM",
@@ -605,18 +634,18 @@
     }
   ],
   "awcr": {
-    "revision": 1,
-    "fileId": "1xuvhbDa5zSrTnrmsT2VWh-hQyru9NtQg",
-    "rawSha256": "7f10c936aac3bfb6022a1568d2290d61851cb27c2e7ed87a15ec1a7fe53bd3ad"
+    "revision": 2,
+    "fileId": "1p7F9QUGNsNU0jwTZf5_0qsWY4AFG0w0L",
+    "rawSha256": "171f2f1e7510967f96d98691225c85a1718434a26a445e0512c843144e1a68c5"
   },
   "initialVerification": {
     "canonicalUidJoinCount": 286,
     "uniqueUids": 286,
     "sourceOnlyMethodPolicy": "PROPOSE_SEPARATELY_DO_NOT_INVENT_SOLUTION_EVIDENCE"
   },
-  "updatedAt": "2026-11-14T08:16:02.920Z",
-  "reviewedExamCount": 4,
-  "reviewedQuestionCount": 95,
+  "updatedAt": "2026-11-14T08:17:13.244Z",
+  "reviewedExamCount": 5,
+  "reviewedQuestionCount": 119,
   "remoteReceipts": [
     {
       "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
@@ -643,6 +672,15 @@
       "tree": "5f74a6854d660590f329b7a0548356d19db99fe6",
       "remoteHeadVerified": "40f43100027e34cf0e61e20e925453bc1e7bd34a",
       "verifiedAt": "2026-11-14T08:13:31.036Z",
+      "method": "GitHub create_tree/create_commit + compare-and-swap fast-forward update_ref; git fetch/ls-remote readback and tree equality"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/1final/19_연향중_1학기_기말_중1_수학.js",
+      "commit": "4fabdeee184fbd1eb0e5e6998fa41565192e98f1",
+      "parent": "40f43100027e34cf0e61e20e925453bc1e7bd34a",
+      "tree": "3806f5a1fb1c7e371c5980f87048fcab0ecbc464",
+      "remoteHeadVerified": "4fabdeee184fbd1eb0e5e6998fa41565192e98f1",
+      "verifiedAt": "2026-11-14T08:16:32.348Z",
       "method": "GitHub create_tree/create_commit + compare-and-swap fast-forward update_ref; git fetch/ls-remote readback and tree equality"
     }
   ]

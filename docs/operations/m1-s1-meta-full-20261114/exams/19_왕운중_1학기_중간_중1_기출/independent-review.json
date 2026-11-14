@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "m1-s1-independent-exam-review-v1",
+  "workKey": "M1-S1-META-FULL",
+  "sourceArchiveFile": "original/middle/m1/1mid/19_왕운중_1학기_중간_중1_기출.js",
+  "author": "META_A",
+  "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+  "at": "2026-11-14T08:17:13.244Z",
+  "sourceBaselineBlob": "990684b2efb3bd1126418dcf5ef5d754751af687",
+  "sourceCurrentBlob": "1b075d51268df1bbec555439e1ebb89e4929437b",
+  "workerReviewSha256": "1304bd42fd420db63bda3e5dafa24d1ffde42407fb2414e3f02450e35308113d",
+  "workerFourSlotSha256": "a6a11cee911bd98f15d8023f9702f0e87a1b01d19b1e51f7a6b4a2cea4414e0f",
+  "sampleSelection": "WARN/IMPLIED and unresolved boundary or content risks first",
+  "samples": [
+    {
+      "ordinal": 18,
+      "result": "ACCEPTED",
+      "notes": "원문과 현재해설의 거듭제곱·괄호·분수나눗셈 순서를 대조했다. method 거듭제곱/역수/사칙연산은 계산 자체의 목표에 적절하다. 복합개념 결합이 아닌 순수 유리수 혼합계산이므로 Integration NONE 정정은 수용하고, TPL 교체는 parent 정의와 Resolver 근거가 해결될 때까지 제안으로 둔다.",
+      "questionUid": "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
+    },
+    {
+      "ordinal": 22,
+      "result": "ACCEPTED",
+      "notes": "세 절댓값 조건에서 부호선택에 따른 최댓값·최솟값과 그 합을 묻는다. 현재해설이 양 끝 부호선택을 별도로 다루므로 CASE_BRANCH 유지가 맞다. goal 세 항목과 method 부호·경우분류의 인용을 직접 확인했다.",
+      "questionUid": "qid_v1_95cda2403680d62e0019fbe0b7599743e8c55855ac75face03d0b85aa4c5fdbb"
+    },
+    {
+      "ordinal": 24,
+      "result": "ACCEPTED_DIFFICULTY_CORRECTION",
+      "notes": "세 나머지 조건을 공통으로 2 부족한 구조로 재해석한 후 최소공배수를 적용한다는 현재해설을 읽었다. 독립적인 여러 발상을 중첩하기보다 핵심 재해석 하나와 표준 절차로 끝나므로 bucket3/B34를 수용한다. 기존 level 상은 보존하고 인접 mismatch를 BORDERLINE_ACCEPTABLE로 기록한다. method의 공배수·최소공배수는 해설에 실제 등장한다.",
+      "questionUid": "qid_v1_542dd8bfcd425fd0ce55d3a2e09c22d8fc0f81d9d55cc84f041995b36e55f536"
+    }
+  ],
+  "scope": "Metadata and 4-slot sample comparison against current stems/choices/existing solutions/required images. No new exhaustive solving or R1/R2/R3.",
+  "overall": "ACCEPTED_METADATA_REVIEW_WITH_DECLARED_DEBT",
+  "sourcePatchPolicy": "표본과 변경·경계 항목의 현재 발문·기존해설을 다시 확인하고 정확한 지원필드만 최소 변경했다. 기존 학습 level과 본문/선지/정답/해설을 보존한다.",
+  "deferredPatchPolicy": "기존 PT/TPL의 좁은 정의, RPM 연결 공백, 현재 등록 QFULL 불일치는 제안 및 등록 재결속 부채로 둔다. sourcePatch의 단순 confidence/boundary 재조정이나 공식 Resolver가 확인하지 않은 키 교체는 실행하지 않는다."
+}
