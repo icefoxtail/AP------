@@ -1387,7 +1387,7 @@ window.questionBank = [
       "RPM_CANDIDATE"
     ],
     "wide": false,
-    "content": "[서술형 4] 다음 그림과 같이 정사각형 모양의 종이의 네 귀퉁이에서 한 변의 길이가 $3\\text{cm}$인 정사각형 모양을 잘라 내어 뚜껑이 없는 직육면체 모양의 선물 상자를 만들었더니 부피가 $300\\text{cm}^3$가 되었다. 처음 정사각형 모양의 종이의 한 변의 길이를 이차방정식을 세워서 구하시오. [5점]<br><br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q24.png\" class=\"exam-img\">",
+    "content": "[서술형 4] 다음 그림과 같이 정사각형 모양의 종이의 네 귀퉁이에서 한 변의 길이가 $3\\text{cm}$인 정사각형 모양을 잘라 내어 뚜껑이 없는 직육면체 모양의 선물 상자를 만들었더니 부피가 $300\\text{cm}^3$가 되었다. 처음 정사각형 모양의 종이의 한 변의 길이를 이차방정식을 세워서 구하시오. [5점]<br><br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q24_question-v2.svg\" class=\"exam-img\">",
     "choices": [],
     "answer": "16 cm",
     "solution": "처음 종이의 한 변을 $L$ cm라 둔다. 네 모서리에서 $3$ cm 정사각형을 자르므로<br>접은 상자의 높이는 $3$ cm, 바닥의 각 변은 $L-6$ cm이다.<br>부피 $=3(L-6)^2=300$<br>$(L-6)^2=100$<br>$L-6=\\pm10$에서 $L=16$ 또는 $L=-4$.<br>처음 길이는 $L>6$이어야 하므로 $L=-4$를 버린다.<br>따라서 처음 종이의 한 변은 $16$ cm이다.<br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q24_solution.svg\" class=\"exam-img\" style=\"max-width: 100%; height: auto;\">",
