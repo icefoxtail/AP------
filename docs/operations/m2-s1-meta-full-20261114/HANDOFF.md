@@ -56,6 +56,7 @@
 | E014 | `222a4cd8cb97e5dc02601dbf9b669b5091053021` |
 | E015 | `caacba16681c49df26d5fe93fced089fc4f0cd32` |
 | E007-prerequisite-scope | `450b261932fa91883817c7227e4b331793de80c3` |
+| E012-scoped-calibration | `6a6830e3b5aa0c957da7af95e7c0c0fef8befb8f` |
 
 현재 커밋의 receipt는 원격 확인 후 다음 checkpoint에 추가한다. 원격 HEAD가 최신 권위다.
 
@@ -64,9 +65,9 @@
 | subUnitKey | 문항 수 |
 |---|---:|
 | M1-03-LINEAR_EQUATION_WORD | 1 |
-| M1-07-SOLID_FIGURE_MEASURE | 3 |
+| M1-07-SOLID_FIGURE_MEASURE | 2 |
 | M2-01-EXPONENT_LAW | 23 |
-| M2-01-POLYNOMIAL_OPERATIONS | 24 |
+| M2-01-POLYNOMIAL_OPERATIONS | 25 |
 | M2-01-REPEATING_DECIMAL | 36 |
 | M2-02-LINEAR_INEQUALITY | 27 |
 | M2-02-LINEAR_INEQUALITY_WORD | 10 |

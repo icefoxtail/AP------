@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "m2-s1-root-scoped-acceptance-v1",
+  "examId": "E014",
+  "rootReviewer": "GPT_ROOT_59E0F5BD3A77",
+  "at": "2026-11-14T11:18:03.339896+00:00",
+  "decision": "ACCEPT_NARROW_EVIDENCE_BOUND_CORRECTION",
+  "config": {
+    "examId": "E014",
+    "revisionName": "resume-prerequisite-scope-r1",
+    "namespaceRestores": [
+      14
+    ],
+    "semanticScopes": {
+      "14": "M1-2"
+    },
+    "canonicalAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md#1.4.1",
+    "reason": "A lower-prerequisite RPM primary does not authorize changing the target course/L1/L2 namespace. Preserve the existing semantic review and correct only the source/proposal namespace and provenance."
+  },
+  "previousCurrent": {
+    "effectiveReview": "accepted-review.json",
+    "authorEvidence": "review.json",
+    "authorFourSlot": "author-four-slot.json",
+    "fourSlot": "four-slot.json",
+    "originalIndependent": "independent.json",
+    "scopedAdjudication": "root-review.json",
+    "validation": "validation.json",
+    "sourceWriterDeferred": "source-writer-deferred.json",
+    "currentSourceGitBlobSha": "51707a15619f2ecfd451783cd0399a881673d079",
+    "currentFourSlotSha256": "07ade84e01647770cd9ae5c69b675858fb20983c8bcbea52736db1653a946d79",
+    "registrationStatus": "NOT_RUN"
+  },
+  "previousReviewSha256": "6eb9bae59ce3746b25ac55750de80c221d4a163c3c8736dafc3506ede064afa8",
+  "previousFourSlotSha256": "07ade84e01647770cd9ae5c69b675858fb20983c8bcbea52736db1653a946d79",
+  "acceptedReviewSha256": "42b10c5588ad6c070e68c817003c1c6ae4e40d07b729474ef12c9e3d3c78a544",
+  "acceptedFourSlotSha256": "fd51c441a7f0cb99387a5a2df30158d614712a4968d631cf55b9c62e9529e146",
+  "reviewedSourceBlob": "51707a15619f2ecfd451783cd0399a881673d079",
+  "finalSourceBlob": "d45c4430664115da7c265c36ed4069d2b45cac47",
+  "changes": [
+    {
+      "sourceOrdinal": 14,
+      "fields": [
+        "standardCourse",
+        "course",
+        "standardUnitKey",
+        "standardUnit",
+        "standardUnitOrder",
+        "category",
+        "subUnitKey",
+        "subUnit"
+      ],
+      "before": {
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "입체도형의 성질",
+        "standardUnitOrder": 7,
+        "subUnit": "입체도형의 측정",
+        "category": "입체도형의 성질"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "다항식의 계산",
+        "category": "14. 입체도형의 부피와 식의 계산",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "semanticSourceScope": "M1-2",
+      "basis": "Canonical prerequisite namespace correction only; no whole-item semantic rerun."
+    }
+  ],
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 14,
+      "field": "standardUnitKey",
+      "before": "M1-07",
+      "after": "M2-01",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "standardUnit",
+      "before": "입체도형의 성질",
+      "after": "수와 식",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "standardUnitOrder",
+      "before": 7,
+      "after": 1,
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "category",
+      "before": "입체도형의 성질",
+      "after": "14. 입체도형의 부피와 식의 계산",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "subUnitKey",
+      "before": "M1-07-SOLID_FIGURE_MEASURE",
+      "after": "M2-01-POLYNOMIAL_OPERATIONS",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "subUnit",
+      "before": "입체도형의 측정",
+      "after": "다항식의 계산",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    }
+  ],
+  "evidence": [],
+  "studentContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "registrationStatus": "NOT_RUN"
+}
