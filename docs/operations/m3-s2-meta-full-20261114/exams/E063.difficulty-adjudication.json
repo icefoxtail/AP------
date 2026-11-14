@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "m3-s2-independent-difficulty-adjudication-v1",
+  "examId": "E063",
+  "sourceGitBlobSha": "338b921cfb322b38ec418acac108aab0befb61f3",
+  "reviewer": "m3_b",
+  "author": "m3_a",
+  "authority": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+  "items": [
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_227b3619e71eba39ef5f137bbbef2295dec4f6ad5b12bc25d933d5f21b445e81",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "historicalLevel": "하",
+      "reason": "원본에는 AB지름, D에서호AC를보는65도, E에서호BC를보는x가그려져있다. 아랫반원180에서130을뺀호BC50의절반25도. 단일중심/원주각을한번대입하는것보다반원분할한번이추가되는난도2.",
+      "disposition": "ADJUDICATED",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "mathematicalQualityPASSClaimed": false
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_0a444aeaecab857af3a841dd4d47fa7fb6338beb9cb02e911c59726ec934cb13",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "historicalLevel": "하",
+      "reason": "원본편차표A7,B−2,C빈칸,D−6,E3을직접읽었다. 편차합0으로C편차−2를정한뒤평균12를더해실제대기시간10. 편차값과실제관측값을혼동하지않는한전처리의난도2.",
+      "disposition": "ADJUDICATED",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "mathematicalQualityPASSClaimed": false
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_f32726fad84f7b7680aa7b0e77b337cfefc3a369d7f9d7fbfb580a54b552357a",
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "historicalLevel": "중",
+      "reason": "원본산점도는명백히우하향하고본문은정답2개를요구한다. 낮/밤길이와이동거리/남은연료가음의상관,판매/수입·기온/냉방비는양의상관,신발크기/가격은무상관. 개념을상황에직접대응하는난도1이며정답개수2를난도상향근거로삼지않는다.",
+      "disposition": "ADJUDICATED",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "mathematicalQualityPASSClaimed": false
+    }
+  ],
+  "sourceQualityHolds": [
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_28d6f79d7bd4ceb8c89afb550413959d8f0aff6618ea0be553cc90ec157f9717",
+      "type": "SOURCE_SOLUTION_INCOMPLETE_CASE_ANALYSIS",
+      "reason": "a>15이면 중앙 두 값이 항상 a,17이라는 현해설 주장은 a>19에서 틀린다. a>19의 실제 중앙값은(17+19)/2=18이다. a≤15인 범위와 정답⑤는 독립 확인되었다.",
+      "nextAction": "a≤15,15<a≤19,a>19의 정렬 위치를 구분하거나 보기의 범위 12~16에 한정해 논증하도록 해설을 재서술하고 검수한다.",
+      "release": "HOLD_SOURCE_EXPLANATION_REWRITE"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_af2b98435a45a532a88fef39ec135a60a0184e846eea39d1edbecd53f0a83ebe",
+      "type": "SOURCE_DIAGRAM_AXIS_LABEL_CROPPED",
+      "reason": "원본 산점도의 세로축 제목이 왼쪽 crop으로 보이지 않는다. 가로축 왼쪽 눈과 본문의 좌우 시력 설명 및 현해설로 뜻을 파악하였으나 축 제목 원문 대조는 남는다.",
+      "nextAction": "원본 인쇄 또는 고해상도 이미지에서 세로축 오른쪽 눈 표기를 회수하여 대조하고 이미지 QA를 완료한다.",
+      "release": "HOLD_SOURCE_IMAGE_QA"
+    }
+  ]
+}

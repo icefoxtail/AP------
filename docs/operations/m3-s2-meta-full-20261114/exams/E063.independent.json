@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E063",
+  "author": "m3_a",
+  "reviewer": "m3_b",
+  "sourceArchiveFile": "original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+  "sourceGitBlobSha": "338b921cfb322b38ec418acac108aab0befb61f3",
+  "targetReviewSha256": "255814ba6aa08ebf5e0d500bbb62465c66bb865baf26d8a484a2abe7600b2fc9",
+  "target4slotSha256": "d0c100d76e715a1f59adf831413c56c46f830ce9d251c54e96e0c1dce2e4590b",
+  "sampledSourcePatchSha256": "f5938dc4028580695bc5d4ee89d19d6d2b7f6d397c3718a14ebe4f51349967c7",
+  "sampleOrdinals": [
+    12,
+    18,
+    20
+  ],
+  "sampleRule": "Independent reviewer m3_b read source and current original assets before author semantic decisions; selected median constraint intersection, scatter-coordinate inequality count, and two mandated regular-pentagon inscribed-angle methods; reviewed all three difficulty exceptions and checked the mode-only template against the current canonical definition. Source explanation scope and cropped-axis debts remain explicit.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_28d6f79d7bd4ceb8c89afb550413959d8f0aff6618ea0be553cc90ec157f9717",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "홀수5자료의중앙값10은a≥10. 짝수6자료는a≤15일때중앙두값15/17로평균16,15<a<17일때a/17로16초과,17≤a<19이면17/a로17이상,19≤a이면17/19로18이다. 따라서전체가능범위10≤a≤15로보기16만제외된다. 현해설의a>15이면항상a/17이라는문장은a>19에서성립하지않으나결론범위는맞는다. 전역분기문장재서술을별도보류한다. 자료 조건 복원 ACTIVE TPL은 두 중앙값 조건으로 공통 미지수 범위를 정하는 실제 풀이에 맞는다. 2015 RPM087 비교와 2022 정확 leaf gap을 구분했으며 4칸의 순서·중앙값·범위가 타당하다.",
+      "quotesChecked": 7,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_af2b98435a45a532a88fef39ec135a60a0184e846eea39d1edbecd53f0a83ebe",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "원본가로축은왼쪽눈의시력이고세로축제목은왼쪽잘림으로보이지않는다. 같은눈금체계의15점에서세로좌표가큰점은(0.8,0.9),(0.9,1.0),(1.0,1.2),(1.2,1.5)의4개이다. 같은시력대각선상의점은제외하여4/15. 축제목은현해설의오른쪽눈설명에의존하므로원본이미지QA보류를남긴다. L3/L4 산점도 읽기, 두 좌표 부등식으로 점 개수와 비율을 구하는 native gap을 수용한다. 4칸 goal 비율과 method 좌표·대소비교·개수·비가 실제 자료 읽기 과정을 담는다.",
+      "quotesChecked": 7,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_0cb0d4f62192cfffeb6424fb88d334787efd59e09cf240c355eef578bd56608c",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "원본정오각형A-B-C-D-E와별모양의선분을확인했다. 발문은(1)COD중심각,(2)BAE내각과세등호를각각이용하는두방법을의무로요구한다. 첫방법360/5의절반36,둘째정오각형내각108을세같은원주각으로나눈36. 정다각형내각공식은둘째방법의필수보조개념이며임의단일풀이로축소할수없다. 기존 중심각/원주각 ACTIVE TPL을 중심으로 분리한 두 필수 방법을 4칸 condition의 중심각·호 및 method의 내각으로 보존했다. 정다각형의 한 내각에 맞는 ACTIVE CC가 없어 등록 debt를 남긴 판단에 동의하며 정다면체 꼭짓점 CC로 강제하지 않는다.",
+      "quotesChecked": 10,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_28d6f79d7bd4ceb8c89afb550413959d8f0aff6618ea0be553cc90ec157f9717",
+      "type": "SOURCE_SOLUTION_INCOMPLETE_CASE_ANALYSIS",
+      "reason": "a>15이면 중앙 두 값이 항상 a,17이라는 현해설 주장은 a>19에서 틀린다. a>19의 실제 중앙값은(17+19)/2=18이다. a≤15인 범위와 정답⑤는 독립 확인되었다.",
+      "nextAction": "a≤15,15<a≤19,a>19의 정렬 위치를 구분하거나 보기의 범위 12~16에 한정해 논증하도록 해설을 재서술하고 검수한다.",
+      "release": "HOLD_SOURCE_EXPLANATION_REWRITE"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_af2b98435a45a532a88fef39ec135a60a0184e846eea39d1edbecd53f0a83ebe",
+      "type": "SOURCE_DIAGRAM_AXIS_LABEL_CROPPED",
+      "reason": "원본 산점도의 세로축 제목이 왼쪽 crop으로 보이지 않는다. 가로축 왼쪽 눈과 본문의 좌우 시력 설명 및 현해설로 뜻을 파악하였으나 축 제목 원문 대조는 남는다.",
+      "nextAction": "원본 인쇄 또는 고해상도 이미지에서 세로축 오른쪽 눈 표기를 회수하여 대조하고 이미지 QA를 완료한다.",
+      "release": "HOLD_SOURCE_IMAGE_QA"
+    }
+  ],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "7be8e71d332266d3a411ac6235ed0e7bfc2823413ef7e2399f37a44c2eb90538"
+}
