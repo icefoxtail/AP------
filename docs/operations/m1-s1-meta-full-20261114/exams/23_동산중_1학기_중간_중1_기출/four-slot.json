@@ -1,0 +1,1591 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+  "sourceGitBlobSha": "ed56c5132ac231c26537eff700e8877493c50c6a",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "META_A",
+    "role": "AUTHOR",
+    "at": "2026-11-14T08:06:06.014677+00:00"
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c",
+      "sourceOrdinal": 1,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0f0184fe0acd3989e65b26141d9fe11882ff09f28e4ee5c576107f2092479e1c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9ad44202d4f73b3d195ef4f118e1cdeebd99d1aaabbabd190c52943e61a193ca"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$1,\\ 14,\\ 17,\\ 23,\\ 35,\\ 48$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "소수"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "몇 개"
+          }
+        ],
+        "method": [
+          {
+            "term": "소수",
+            "src": "solution",
+            "quote": "1$과 자기 자신만을 약수",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "약수로 갖는 수",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "1은 소수가 아니며 약수 개수로 목록을 분류한다.",
+      "reasons": {
+        "classification": "소수 판정이 핵심이며 비연속 목록이므로 기존 폐구간 소수 개수 유형의 정의와 다르다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_769b940cdf602ea1c1f5a1b699f8a956289bf4ea7b8ddd549958f548ae85f8bb",
+      "sourceOrdinal": 2,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ef5c40e847b4d5c5e4ad7541e48a4b861d8124fa021ec9e44f087a006428b83c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "23c0f1450689c615585d6dfced5943b7241eac559723b6128871217237ca2c1c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$72$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "소인수분해"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$=2^3\\times3^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$=2^3\\times3^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "합성 인수를 모두 소수의 거듭제곱으로 표현했는지 확인한다.",
+      "reasons": {
+        "classification": "소인수분해 정의의 직접 적용이며 복잡한 조건 결합이 없다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_aceb4afaef2ea2aae836b5151e1eaaee074acc6653b586fedc2ff792423f225f",
+      "sourceOrdinal": 3,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "08992b17b9cb64ecaf630ac48b622c7467bccbea23f01d52b30fef7361d1d648"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4fc68ab6a388ae50eab8aac47a9a6d806f70090c67e8d764a796601458297253"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$3^2\\times 5^3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "약수가 아닌"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "지수가 $0,1,2$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "지수가 $3$이므로 약수가 아니다",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "각 후보의 3과 5 지수가 원수의 지수를 넘는지 비교한다.",
+      "reasons": {
+        "classification": "현재 PT/TPL의 두 소수 거듭제곱 약수 판정 정의에 정확히 맞는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_b90c407c17be832b547e966febc3b1118c945cb3b75b1e4cf42de18f98a48c7f",
+      "sourceOrdinal": 4,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2a7fe5f4bb454228bae5937e3c3e331d2706826cc4ed0d2e00d0dfbecbe51387"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "63ab9649c0792890395d66b96813482a6393cdb447a241cdd376d30ecd4ea973"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "최대공약수",
+            "src": "stem",
+            "quote": "최대공약수"
+          },
+          {
+            "term": "최소공배수",
+            "src": "stem",
+            "quote": "최소공배수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b+c$"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "$a=1,\\ c=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "소인수",
+            "src": "solution",
+            "quote": "최소공배수에 $5$가 있으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 자연수"
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "$b$는 소수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "3,7의 지수와 추가 소인수 5를 조건에서 복원한다.",
+      "reasons": {
+        "classification": "동시 최대공약수·최소공배수 조건의 역추론으로 단순 직접 계산보다 한 단계 높다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_857098e9fa0fa6ef17a0437a5b518c4d6a5be84011c0125738c8a56ef60cc205",
+      "sourceOrdinal": 5,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b6a70c1a66c7fad5d38254efa64824023c6f0134995cf24f0208db9f7d3d0d86"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9f3f27ec64404d9a17431dbe3f3709116ef0a79e8495c0c6346fc19667962f61"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "$\\dfrac{120}{n}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "가장 큰 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "공약수",
+            "src": "solution",
+            "quote": "공약수이다",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "최대공약수",
+            "src": "solution",
+            "quote": "가장 큰 값은 최대공약수",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모두 자연수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "n의 최댓값이 두 분모 대상의 최대공약수임을 연결한다.",
+      "reasons": {
+        "classification": "주기·묶음이 아니라 공약수 조건으로 미지 자연수의 최댓값을 찾는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_e5b6802b71d2b6aa92f27203eeb6b8a3dbcd5134c474b88d44683a12d1ee3cc1",
+      "sourceOrdinal": 6,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "77a9cb0439295d157fee634024ae61e6f130396ce823a43edfdc2b7658d5ccea"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bdf5bab8464a861d9dbad8bae5fa28e7d59ada43a930bf885148b1c1623cb2f9"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "주기",
+            "src": "stem",
+            "quote": "같은 톱니에서 처음으로 다시 맞물리려면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "몇 바퀴"
+          }
+        ],
+        "method": [
+          {
+            "term": "공배수",
+            "src": "solution",
+            "quote": "공배수여야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "최소공배수",
+            "src": "solution",
+            "quote": "$\\operatorname{lcm}(36,48)=144$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "공통 톱니 수를 B의 톱니 수로 나누어 회전 수로 변환한다.",
+      "reasons": {
+        "classification": "최소공배수의 한 응용이며 회전 수로 환산하는 것을 독립 개념 결합으로 보지 않는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17",
+      "sourceOrdinal": 7,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e3582b70486abd45f01aae7169bcf6da959150e95725cf79375f3d8cbe30dbae"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "19e5f575bad8cadf2b07f80974eef67f26ca5c3741b54e284c140d57e6bad81f"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "choices",
+            "quote": "유리수"
+          },
+          {
+            "term": "정수",
+            "src": "choices",
+            "quote": "정수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은"
+          }
+        ],
+        "method": [
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "$0$도 유리수이다",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "분류",
+            "src": "solution",
+            "quote": "양의 유리수, $0$, 음의 유리수",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "유리수 분류에서 0을 누락한 진술을 찾는다.",
+      "reasons": {
+        "classification": "수 체계의 정의 확인이며 절댓값 진술 중심의 기존 PT/TPL 설명과 맞지 않는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_e59f822a160a15684a3d4472c6506c8cab2094e8fd7b7094274ced8164e912eb",
+      "sourceOrdinal": 8,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9e8f23a7baa9969e95dd479f8061cc3ea9a29618820bea097c367bab2e9483e9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0d09fe2dbedae2a1d1353c5ccabe25fc41efdd3b61b497e8404257fed8a697ab"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "수직선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "가장 오른쪽"
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "오른쪽에 있을수록 큰 수",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "순서",
+            "src": "solution",
+            "quote": "$-6<-3<0<2<5$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "주어진 정수 가운데 가장 큰 수를 오른쪽 끝으로 대응한다.",
+      "reasons": {
+        "classification": "SIGNED_NUMBER_ORDER TPL은 주어진 혼합 부호 정수 중 오른쪽 수 선택과 정확히 맞는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_879ab6a5d7ac9127373ca65d8a7626a8e61e2f5e9eb52846fdd0de1899775a0f",
+      "sourceOrdinal": 9,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ec7e33fe5ae01a317cdf36ce4477d83ab46ca0fb87e2ce603058fdf298c0df46"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cee7d26b6b2ec22f03b5c2092049ebea2a651df00d68396fa089e28ddbb64af9"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "절댓값이 같고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "B의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$A=-B$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "$A-B=\\dfrac43$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "A가 B보다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "A=-B를 차 조건에 대입해 낮은 끝점을 결정한다.",
+      "reasons": {
+        "classification": "반대수 구조의 단일 핵심을 적용하며 일차방정식 표기는 이를 풀어 쓰는 보조 계산이다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_a6df586db995581b452b568267388ee1dbb74117098ba780212e1ce8bb49cde2",
+      "sourceOrdinal": 10,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "92c65c947cd77dedbb33c45ab5ebc84ada9224e280c5a17db4be10cd9728e439"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3d129735526b81e63c75ce9be83777f28af5c748c250a73249ba515625a7833a"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "네 수의 합"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "구한 수를 모두 더하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "$-3+7-5+x=5$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "$x+y=6-3=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "합이 모두 같도록"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "이미 채워진 밑변 합을 공통값으로 정한 뒤 다른 두 변을 차례로 맞춘다.",
+      "reasons": {
+        "classification": "그림은 덧셈 제약의 배치이며 기하 정리를 쓰지 않는다. 현재 equal-side-sums 골격과 일치한다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "REVIEWED_SAMPLE",
+        "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+        "at": "2026-11-14T08:09:17.048Z",
+        "result": "ACCEPTED",
+        "notes": "발문·해설과 실제 삼각형 수배열 그림을 대조했다. 그림은 기하 정리가 아니라 세 변의 합 제약을 담는다. goal 합, method 등식·사칙연산, condition 등식이 실제 미지수 복원과 일치한다. 계산 자체가 목표의 일부라 사칙연산 경고를 수용한다."
+      }
+    },
+    {
+      "questionUid": "qid_v1_83c412a3308f831b03eed898edf409f7d1b65289e93b0f7ef2b7db74d8ede53f",
+      "sourceOrdinal": 11,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bb6d7fcc3dd5c6494d694c6ab5107633f53ba54bde8d7c68905ff86ba7268d39"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c9fe3c9bd54d9894aa96b112d825cddf4ebc08a9cbf27ec542fd83da6e403f55"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "$\\dfrac{3}{5}+\\dfrac{2}{3}-\\dfrac{7}{10}-\\dfrac{4}{3}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "계산하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "$=-\\dfrac3{30}-\\dfrac{20}{30}$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "$=-\\dfrac{23}{30}$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "같은 분모 항을 먼저 묶고 남은 두 분수를 통분한다.",
+      "reasons": {
+        "classification": "덧셈과 뺄셈이 혼합된 직접 계산이다. 소수 변환·공통인수 추출이라는 현 PT/TPL 정의는 실제 풀이에 없다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_5efe4ce5a066bd5db3518a969b170b7e1db7a1b4d3aa83c55af132f76c09f805",
+      "sourceOrdinal": 12,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e8ebf7601b163e5bc1bde27b52e6fac6b65c3fb8c7d5c60ea4cb892084fe92cd"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b1e72d3654793ae9220a5340c405e1f0b5dda3b924a6b33c02654d5cdc0906bf"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "연산",
+            "src": "stem",
+            "quote": "계산 과정"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은"
+          }
+        ],
+        "method": [
+          {
+            "term": "교환법칙",
+            "src": "solution",
+            "quote": "교환법칙",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "결합법칙",
+            "src": "solution",
+            "quote": "결합법칙",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "곱하는 순서만 바꿈과 묶음만 바꿈을 구별한다.",
+      "reasons": {
+        "classification": "연산법칙 이름 감별이 목표이며 현재 PT/TPL은 실제 단계 그림과 일치한다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_7230b9c55a8e2617748e92e90e8bf2af6148434c13b81fd84c95389bfada9e4a",
+      "sourceOrdinal": 13,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2fed7a2fa1ea11152a35670d10a11cb42fe0b2fb725681b3e953609c1a111021"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0567d534c15a60299fbb506aba80aee5f078448b36842226299d1e811ae68d9d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "네 유리수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "뽑아 곱할 때"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "가장 큰"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "세 수를 고른 곱을 모두 계산한다",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "가장 큰 값",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 세 수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "양수인 곱을 이루는 조합과 값의 크기를 비교하여 최댓값을 고른다.",
+      "reasons": {
+        "classification": "서로 다른 세 수 선택의 유한 경우비교가 필요하다. 기존 CASE_BRANCH는 해설의 네 선택조합 분기를 정확히 나타내므로 유지한다. 현 유형은 최대·최소의 합을 목표로 한정해 이 문항과 다르다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_408b1406613bf0cd05e2ba7a1fb3232ea81bb032001c9e78bb14a58927811f72",
+      "sourceOrdinal": 14,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c21ad2f3c23b115b425397be0b88887e13e33e7098403319bfb829c72810b755"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cf071486017066f7d12566bef4fcd02727f047fb6023bb99ae537ead9d29e4ef"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "작은 것부터 차례대로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "세 번째 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "\\left(-\\dfrac25\\right)^2",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "$-\\dfrac4{25}<\\dfrac2{25}<\\dfrac4{25}<\\dfrac45$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "음수 제곱과 제곱에 붙은 음수 부호를 구별한다.",
+      "reasons": {
+        "classification": "현재 EVALUATE_AND_RANK 골격이 음의 분수 제곱·분모 제곱을 그대로 다룬다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_1289da23e9da2528aabc4e0febc9b86150d9057cc2ed3683b9d9efc27f2ed7f3",
+      "sourceOrdinal": 15,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e5ad586ff3cbe5d106df4e2e7d168af8794119d735f267258bd5e39a094628f3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8ea643baa1286ca4964eb9375d0b49c54123f42e1b1adc0a30f9787dbadd1f74"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "전개도",
+            "src": "stem",
+            "quote": "전개도"
+          },
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "정육면체"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개도",
+            "src": "solution",
+            "quote": "전개도를 접으면 마주 보는 면",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "역수",
+            "src": "solution",
+            "quote": "마주 보는 수가 서로 역수",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "역수",
+            "src": "stem",
+            "quote": "마주 보는 면에 적힌 두 수가 서로 역수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "a와 -2/3, c와 -2/5, b와 1/4의 반대면 쌍을 실제 그림에서 식별한다.",
+      "reasons": {
+        "classification": "전개도 topology와 역수의 의미가 순차적으로 모두 필요해 기존 입체도형 주분류·역수 보조개념·SEQUENTIAL이 타당하다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_1c933c43526ab46d73371168ba8a41c0f2a8465bca8de007ffcd2221a33b289a",
+      "sourceOrdinal": 16,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2b1551e6cfa5e7e7492b20b68c0c989c9a6bb19560446222109fd3f7a4e45ed3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2a653d4f144c6db18bb66b7b5e8ba628442e9a1dc80841610dd6a08ab16e1ef2"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "\\left(-\\dfrac{4}{3}\\right)^2"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "$\\square$ 안"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$\\left(-\\dfrac43\\right)^2=\\dfrac{16}{9}$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "역수",
+            "src": "solution",
+            "quote": "$\\square=6\\times\\left(-\\dfrac49\\right)$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "유리수의 제곱으로 나눗셈 계수를 정리한 뒤 미지 인수만 남긴다.",
+      "reasons": {
+        "classification": "ISOLATE_UNKNOWN_FACTOR TPL이 제곱 유리수 제수와 미지 승수 구조에 맞는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_74d4d68e5cd8ec512c16efaf5e7434667cb34eb3cc689aba1b57595e332b7ca3",
+      "sourceOrdinal": 17,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "de69b6dc77310fc0503ac6e81286238d456563acdbd7b59c8550edc9197d0424"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b57133af91a7337106347ee4f7ff42d247c37f7140345b36598ab17283b945d3"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "$a\\times c=\\dfrac{4}{5}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$b\\times c$"
+          }
+        ],
+        "method": [
+          {
+            "term": "분배법칙",
+            "src": "solution",
+            "quote": "$(a+b)c=ac+bc$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "$-1=\\dfrac45+bc$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "(a+b)c=ac+bc로 바꾼 뒤 알려진 ac를 제거한다.",
+      "reasons": {
+        "classification": "현재 ALGBRAIC_PRODUCT_TERM_RECOVERY PT/TPL은 ac와 (a+b)c에서 bc 복원하는 골격과 일치한다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc",
+      "sourceOrdinal": 18,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "51bb08d84b19430f7d46caf7c2f8a7c5592fd5689d289c68643d168206f8e8e1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b1a32eea4fd4b77c31f41a97a5e6c53f5b011b3d7fe360a0f4f913add474d2d0"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "$20\\%$"
+          },
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "$a$원"
+          }
+        ],
+        "goal": [
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "문자를 사용한 식"
+          }
+        ],
+        "method": [
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "$a\\times(1-0.2)=0.8a$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "문자식",
+            "src": "solution",
+            "quote": "$50000-0.8a$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "할인 후 가격이 0.8a임을 반영해 거스름돈을 표현한다.",
+      "reasons": {
+        "classification": "문자를 사용한 수량 표현이 목표이며 가격과 비율의 번역 범위 안에 있다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "REVIEWED_SAMPLE",
+        "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+        "at": "2026-11-14T08:09:17.048Z",
+        "result": "ACCEPTED_AFTER_PINPOINT_REPAIR",
+        "notes": "할인가를 비율로 표현한 뒤 거스름돈을 문자식으로 나타내는 문제다. 초기 사칙연산 filler를 작성자에게 반려했고 비율·문자식으로 수정한 최종 파일을 확인했다. goal 문자식은 방법어가 아니다. PT/TPL 정의 범위 보완은 등록 전 부채로 유지한다."
+      }
+    },
+    {
+      "questionUid": "qid_v1_30c291c6598021a7dd7fd9bb63dfeefd5c794ff5906efe79314df3e06319d3b6",
+      "sourceOrdinal": 19,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c1638fe8365eeeb91dedde011ad1b62a8a767c1c147bb4ab47375ed5823080d4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "83c1116ecba3009fe342728402f7c3a5d06046dfa9cb83979103c386839d711c"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "나타낸 식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은"
+          }
+        ],
+        "method": [
+          {
+            "term": "역수",
+            "src": "solution",
+            "quote": "$=ab\\times\\left(-\\dfrac12\\right)\\times b$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$=-\\dfrac12ab^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "음수로 나누기를 음의 역수 곱으로 처리하고 같은 문자를 거듭제곱으로 묶는다.",
+      "reasons": {
+        "classification": "OPERATION_NOTATION TPL이 문자·음수·계수의 생략 표기 감별에 맞는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_573a827f1d9204561710ae964c0fc75af34d1d870a437d5f2bee29531eabf8b4",
+      "sourceOrdinal": 20,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fb45a421965c9cae38e408d2dd248b896b618b0c46e18cb16e18528d4cb818e8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bfeb205601c58632ab30dab63d39804d19015767457fee1c19a87115a9f28b4a"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "$a=\\dfrac{1}{3}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "식의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "대입한다",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "$=3\\left(-\\dfrac23\\right)$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "문자의 자리에 1/3을 넣고 괄호·곱셈을 계산한다.",
+      "reasons": {
+        "classification": "신정의 연산이 아니므로 일반 문자식 대입 ACTIVE 정의를 재사용해야 한다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_a1a75735b2684fb4a04060caf8402f197a419419d376cffc70aa293b8e15a0b6",
+      "sourceOrdinal": 21,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "04e8bbff370a9a49a15879fa8eb141d3cd4936da55b1a1fbb51ddebdb6c8523b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4953e435c2cb516ecd61027c8b81bbd05c82c1eb5548d3ca7f33ee562b5ccce1"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "최대공약수",
+            "src": "stem",
+            "quote": "최대공약수"
+          },
+          {
+            "term": "최소공배수",
+            "src": "stem",
+            "quote": "최소공배수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$A$가 될 수 있는 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "$10$의 배수",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "$200$의 약수",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$200=2^3\\times5^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "세 자연수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "미지수는 최대공약수의 배수이자 최소공배수의 약수이며 부족한 2의 지수를 제공해야 한다.",
+      "reasons": {
+        "classification": "후보 범위와 필수 지수를 동시에 결정해야 한다. 단일 GCD/LCM 개념 내 두 조건이므로 INTERDEPENDENT는 과대 표기다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_8bebcc6498ee3c67f0f667c0026994659471a518190591839829c1e495f3507a",
+      "sourceOrdinal": 22,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d9a12b57f2a13bc7e34fec33f0e7f9fc7989ccae17af64439ab12ada972dfce5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0393f5797370d804e2167b17f40877bb998b165077825cd07427a4b6db1ffccb"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "세 유리수"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$a\\times b<0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "부호를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "부호는 서로 다르다",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "이면 성립할 수 없다",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "ab<0과 a-b>0으로 첫 두 수의 부호를 정하고 b/c>0을 통해 셋째 부호를 결정한다.",
+      "reasons": {
+        "classification": "정수와 유리수의 뜻보다 유리수 연산 부호 규칙이 결정적이다. 세 조건 연결을 서로 다른 개념 결합으로 부풀리지 않는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      }
+    },
+    {
+      "questionUid": "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3",
+      "sourceOrdinal": 23,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6e7f1af7c30f90b70d31745713f3666ad48be1aa885bb6536c63a11b5e609102"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ad8077b3f3092e53d0070df2f4aac4203fe23f42a2f1b8e3fc4d9aa9a086a51a"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "연산",
+            "src": "stem",
+            "quote": "식의 계산"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "계산 순서"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "계산하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$\\left(-\\dfrac23\\right)^2=\\dfrac49$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "순서",
+            "src": "solution",
+            "quote": "ㄹ → ㄷ → ㄴ → ㅁ → ㄱ",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "$3-7=-4$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 해설의 인용 단계에서 이 개념을 실제로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "거듭제곱→나눗셈→중괄호→곱셈→뺄셈 순서를 그림 화살표에 대응한다.",
+      "reasons": {
+        "classification": "소수 공통인수 PRODUCT_QUOTIENT가 아니라 거듭제곱 포함 혼합계산이며 ACTIVE MIXED_ORDER 골격 재사용이 맞는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:06:06.014677+00:00"
+      },
+      "review": {
+        "status": "REVIEWED_SAMPLE",
+        "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+        "at": "2026-11-14T08:09:17.048Z",
+        "result": "ACCEPTED",
+        "notes": "원문 그림의 연산 기호 위치를 직접 열고 해설의 ㄹ→ㄷ→ㄴ→ㅁ→ㄱ와 대조했다. goal 순서·값과 method 거듭제곱·순서·사칙연산이 모두 필요하다. 기존 TEMPLATE의 정의 mismatch는 proposal에만 보존하며 현재 운영 키를 임의 확정하지 않는다."
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "AUTHOR_REVIEWED",
+    "independentReview": "NOT_RUN",
+    "sourceOnlyMethodPolicy": "SOURCE_ONLY에서는 계약 §8에 따른 해설 method 근거가 없으므로 method=[]; 추론은 proposedMethodSlots로 분리."
+  },
+  "rootReviewRef": "docs/operations/m1-s1-meta-full-20261114/exams/23_동산중_1학기_중간_중1_기출/independent-review.json",
+  "sourceBaselineGitBlobSha": "dae641deaa4bd41783d3ac639f071f705af26656",
+  "sourceCurrentSha256": "293da8392b8c70fed7aab96f807f782be68e606555e2e83910b350776909217a"
+}

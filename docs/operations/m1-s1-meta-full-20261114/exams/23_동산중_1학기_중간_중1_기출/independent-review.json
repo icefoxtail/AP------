@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "m1-s1-independent-exam-review-v1",
+  "workKey": "M1-S1-META-FULL",
+  "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+  "author": "META_A",
+  "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+  "at": "2026-11-14T08:09:17.048Z",
+  "sourceBaselineBlob": "dae641deaa4bd41783d3ac639f071f705af26656",
+  "sourceCurrentBlob": "ed56c5132ac231c26537eff700e8877493c50c6a",
+  "workerReviewSha256": "8e4c7aef03eec146aa8e1893f1b909b501ffffbf751d99b83b25db4403a2a8df",
+  "workerFourSlotSha256": "9cb19281ddf9a24b10ea610c6d5aa96c8be76b32946945cb897f91920ad543b8",
+  "sampleSelection": "WARN/IMPLIED and unresolved boundary or content risks first",
+  "samples": [
+    {
+      "ordinal": 10,
+      "result": "ACCEPTED",
+      "notes": "발문·해설과 실제 삼각형 수배열 그림을 대조했다. 그림은 기하 정리가 아니라 세 변의 합 제약을 담는다. goal 합, method 등식·사칙연산, condition 등식이 실제 미지수 복원과 일치한다. 계산 자체가 목표의 일부라 사칙연산 경고를 수용한다.",
+      "questionUid": "qid_v1_a6df586db995581b452b568267388ee1dbb74117098ba780212e1ce8bb49cde2"
+    },
+    {
+      "ordinal": 18,
+      "result": "ACCEPTED_AFTER_PINPOINT_REPAIR",
+      "notes": "할인가를 비율로 표현한 뒤 거스름돈을 문자식으로 나타내는 문제다. 초기 사칙연산 filler를 작성자에게 반려했고 비율·문자식으로 수정한 최종 파일을 확인했다. goal 문자식은 방법어가 아니다. PT/TPL 정의 범위 보완은 등록 전 부채로 유지한다.",
+      "questionUid": "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc"
+    },
+    {
+      "ordinal": 23,
+      "result": "ACCEPTED",
+      "notes": "원문 그림의 연산 기호 위치를 직접 열고 해설의 ㄹ→ㄷ→ㄴ→ㅁ→ㄱ와 대조했다. goal 순서·값과 method 거듭제곱·순서·사칙연산이 모두 필요하다. 기존 TEMPLATE의 정의 mismatch는 proposal에만 보존하며 현재 운영 키를 임의 확정하지 않는다.",
+      "questionUid": "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3"
+    }
+  ],
+  "scope": "Metadata and 4-slot sample comparison against current stems/choices/existing solutions/required images. No new exhaustive solving or R1/R2/R3.",
+  "overall": "ACCEPTED_METADATA_REVIEW_WITH_DECLARED_DEBT",
+  "sourcePatchPolicy": "ROOT는 현재 23문항 발문·보기·기존해설을 읽고 sourcePatch 변경·충돌 항목을 다시 확인했다. 주유형 내부의 단계 나열만으로 SEQUENTIAL/INTERDEPENDENT를 부여한 항목은 NONE으로 정리한다. q13은 실제 네 선택조합 분기이므로 기존 CASE_BRANCH를 유지한다. 다른 지원 필드의 최소 정정만 반영하며 현재 level, PT/TPL, 단원은 보존한다.",
+  "deferredPatchPolicy": "q20 PT/TPL, q22 세부단원은 정확한2015 binding 부재와 공식 Resolver prerequisite 미확인으로 proposal에만 둔다. q23 TPL 변경과 다른 정의 보완도 운영 등록 전 확정하지 않는다. 근거가 충분한 기존 confidence/boundary의 소폭 재조정은 실행 변경에서 제외하고 작성자의 평가와 사유를 보존한다. 기존 승인 메타의 현재 QFULL 불일치는 Codex 재결속 대상이며 이번 검토로 해설 독립검증을 가장하지 않는다."
+}

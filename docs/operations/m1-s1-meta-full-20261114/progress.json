@@ -27,7 +27,7 @@
       "sourceSchema": "questionBank",
       "sourceOnly": false,
       "owner": "META_A",
-      "status": "ASSIGNED",
+      "status": "REVIEWED_WITH_REGISTRY_OR_EVIDENCE_DEBT",
       "questionUids": [
         "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c",
         "qid_v1_769b940cdf602ea1c1f5a1b699f8a956289bf4ea7b8ddd549958f548ae85f8bb",
@@ -53,8 +53,29 @@
         "qid_v1_8bebcc6498ee3c67f0f667c0026994659471a518190591839829c1e495f3507a",
         "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3"
       ],
-      "inputPath": ".tmp/m1-s1/input/23_동산중_1학기_중간_중1_기출.json",
-      "nextAction": "READ_SOURCE_AND_REVIEW_ALL_META"
+      "nextAction": "CODEX_REBIND_AND_REVIEW_DECLARED_PROPOSALS",
+      "reviewCompletedAt": "2026-11-14T08:09:17.048Z",
+      "reviewArtifacts": {
+        "review": "docs/operations/m1-s1-meta-full-20261114/exams/23_동산중_1학기_중간_중1_기출/review.json",
+        "fourSlot": "docs/operations/m1-s1-meta-full-20261114/exams/23_동산중_1학기_중간_중1_기출/four-slot.json",
+        "independent": "docs/operations/m1-s1-meta-full-20261114/exams/23_동산중_1학기_중간_중1_기출/independent-review.json",
+        "checks": "docs/operations/m1-s1-meta-full-20261114/exams/23_동산중_1학기_중간_중1_기출/checks.json"
+      },
+      "sourceCurrentBlob": "ed56c5132ac231c26537eff700e8877493c50c6a",
+      "sourceCurrentSha256": "293da8392b8c70fed7aab96f807f782be68e606555e2e83910b350776909217a",
+      "independentSampleOrdinals": [
+        10,
+        18,
+        23
+      ],
+      "validation": {
+        "mechanical": "PASS",
+        "officialFourSlotFail": 0,
+        "officialFourSlotWarn": 21,
+        "expectedMethodDebt": 0,
+        "unexpectedFailureCount": 0,
+        "registeredCurrentQfullMatches": 0
+      }
     },
     {
       "sourcePath": "archive/exams/original/middle/m1/1final/19_금당중_1학기_기말_중1_수학.js",
@@ -485,7 +506,7 @@
       "nextAction": "READ_SOURCE_AND_REVIEW_ALL_META"
     }
   ],
-  "nextAction": "THREE_WORKERS_REVIEW_DISJOINT_EXAMS",
+  "nextAction": "REVIEW_REMAINING_ASSIGNED_EXAMS_AND_PRESERVE_PER_EXAM",
   "authorityRefs": [
     {
       "path": "AGENTS.md",
@@ -529,5 +550,8 @@
     "canonicalUidJoinCount": 286,
     "uniqueUids": 286,
     "sourceOnlyMethodPolicy": "PROPOSE_SEPARATELY_DO_NOT_INVENT_SOLUTION_EVIDENCE"
-  }
+  },
+  "updatedAt": "2026-11-14T08:09:17.048Z",
+  "reviewedExamCount": 1,
+  "reviewedQuestionCount": 23
 }
