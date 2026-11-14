@@ -6,7 +6,7 @@
   "reviewer": "GPT_ROOT_75DAEF2BA0F3",
   "at": "2026-11-14T08:17:13.244Z",
   "sourceBaselineBlob": "990684b2efb3bd1126418dcf5ef5d754751af687",
-  "sourceCurrentBlob": "1b075d51268df1bbec555439e1ebb89e4929437b",
+  "sourceCurrentBlob": "638c458733cd72f5fb859633b31bba175fd2d506",
   "workerReviewSha256": "1304bd42fd420db63bda3e5dafa24d1ffde42407fb2414e3f02450e35308113d",
   "workerFourSlotSha256": "a6a11cee911bd98f15d8023f9702f0e87a1b01d19b1e51f7a6b4a2cea4414e0f",
   "sampleSelection": "WARN/IMPLIED and unresolved boundary or content risks first",
@@ -33,5 +33,22 @@
   "scope": "Metadata and 4-slot sample comparison against current stems/choices/existing solutions/required images. No new exhaustive solving or R1/R2/R3.",
   "overall": "ACCEPTED_METADATA_REVIEW_WITH_DECLARED_DEBT",
   "sourcePatchPolicy": "표본과 변경·경계 항목의 현재 발문·기존해설을 다시 확인하고 정확한 지원필드만 최소 변경했다. 기존 학습 level과 본문/선지/정답/해설을 보존한다.",
-  "deferredPatchPolicy": "기존 PT/TPL의 좁은 정의, RPM 연결 공백, 현재 등록 QFULL 불일치는 제안 및 등록 재결속 부채로 둔다. sourcePatch의 단순 confidence/boundary 재조정이나 공식 Resolver가 확인하지 않은 키 교체는 실행하지 않는다."
+  "deferredPatchPolicy": "기존 PT/TPL의 좁은 정의, RPM 연결 공백, 현재 등록 QFULL 불일치는 제안 및 등록 재결속 부채로 둔다. sourcePatch의 단순 confidence/boundary 재조정이나 공식 Resolver가 확인하지 않은 키 교체는 실행하지 않는다.",
+  "finalAuthorArtifactReadback": {
+    "at": "2026-11-14T08:36:50.228492+00:00",
+    "reviewSha256": "1304bd42fd420db63bda3e5dafa24d1ffde42407fb2414e3f02450e35308113d",
+    "fourSlotSha256": "9b18110e63d092157dee171b983af7036e54a27630504e89b48a59e97a1cbdfd",
+    "sampleSlotContentChanged": false
+  },
+  "finalAdjudications": [
+    {
+      "sourceArchiveFile": "original/middle/m1/1mid/19_왕운중_1학기_중간_중1_기출.js",
+      "ordinal": 17,
+      "questionUid": "qid_v1_dc5e6e04949ddb1077e0a7f06eebe29a56b35167246b43caa225e008c2c3995f",
+      "field": "integrationPattern",
+      "previousBranchValue": "SEQUENTIAL",
+      "finalValue": "NONE",
+      "reason": "같은 톱니 재맞물림 LCM 후 회전수 환산은 주유형 내부 계산이다. 동산23 q6과 같은 구조이며 추가 개념이나 경우 분기 없음."
+    }
+  ]
 }

@@ -6,7 +6,7 @@
   "reviewer": "GPT_ROOT_75DAEF2BA0F3",
   "at": "2026-11-14T08:09:17.048Z",
   "sourceBaselineBlob": "dae641deaa4bd41783d3ac639f071f705af26656",
-  "sourceCurrentBlob": "ed56c5132ac231c26537eff700e8877493c50c6a",
+  "sourceCurrentBlob": "8435cb85d90fceeac758b9e46883edb9d8a8efed",
   "workerReviewSha256": "8e4c7aef03eec146aa8e1893f1b909b501ffffbf751d99b83b25db4403a2a8df",
   "workerFourSlotSha256": "9cb19281ddf9a24b10ea610c6d5aa96c8be76b32946945cb897f91920ad543b8",
   "sampleSelection": "WARN/IMPLIED and unresolved boundary or content risks first",
@@ -33,5 +33,31 @@
   "scope": "Metadata and 4-slot sample comparison against current stems/choices/existing solutions/required images. No new exhaustive solving or R1/R2/R3.",
   "overall": "ACCEPTED_METADATA_REVIEW_WITH_DECLARED_DEBT",
   "sourcePatchPolicy": "ROOT는 현재 23문항 발문·보기·기존해설을 읽고 sourcePatch 변경·충돌 항목을 다시 확인했다. 주유형 내부의 단계 나열만으로 SEQUENTIAL/INTERDEPENDENT를 부여한 항목은 NONE으로 정리한다. q13은 실제 네 선택조합 분기이므로 기존 CASE_BRANCH를 유지한다. 다른 지원 필드의 최소 정정만 반영하며 현재 level, PT/TPL, 단원은 보존한다.",
-  "deferredPatchPolicy": "q20 PT/TPL, q22 세부단원은 정확한2015 binding 부재와 공식 Resolver prerequisite 미확인으로 proposal에만 둔다. q23 TPL 변경과 다른 정의 보완도 운영 등록 전 확정하지 않는다. 근거가 충분한 기존 confidence/boundary의 소폭 재조정은 실행 변경에서 제외하고 작성자의 평가와 사유를 보존한다. 기존 승인 메타의 현재 QFULL 불일치는 Codex 재결속 대상이며 이번 검토로 해설 독립검증을 가장하지 않는다."
+  "deferredPatchPolicy": "q20 PT/TPL, q22 세부단원은 정확한2015 binding 부재와 공식 Resolver prerequisite 미확인으로 proposal에만 둔다. q23 TPL 변경과 다른 정의 보완도 운영 등록 전 확정하지 않는다. 근거가 충분한 기존 confidence/boundary의 소폭 재조정은 실행 변경에서 제외하고 작성자의 평가와 사유를 보존한다. 기존 승인 메타의 현재 QFULL 불일치는 Codex 재결속 대상이며 이번 검토로 해설 독립검증을 가장하지 않는다.",
+  "finalAuthorArtifactReadback": {
+    "at": "2026-11-14T08:36:50.228492+00:00",
+    "reviewSha256": "21b978de382469945af642bdcbb1ac31cdbe815a594755e2e8ac86a364cd1ee8",
+    "fourSlotSha256": "66a8c8a7fd7e819c8065bf0c533e970729bbfd4e266ecbf59abd72fea9529ce6",
+    "sampleSlotContentChanged": false
+  },
+  "finalAdjudications": [
+    {
+      "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+      "ordinal": 21,
+      "questionUid": "qid_v1_a1a75735b2684fb4a04060caf8402f197a419419d376cffc70aa293b8e15a0b6",
+      "field": "integrationPattern",
+      "previousBranchValue": "NONE",
+      "finalValue": "CASE_BRANCH",
+      "reason": "허용 지수1/2의 두 후보를 실제 열거하므로 CASE_BRANCH. META_C 교차검수 수용."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+      "ordinal": 22,
+      "questionUid": "qid_v1_8bebcc6498ee3c67f0f667c0026994659471a518190591839829c1e495f3507a",
+      "field": "integrationPattern",
+      "previousBranchValue": "NONE",
+      "finalValue": "CASE_BRANCH",
+      "reason": "곱·차·몫 부호 조건에서 이부호 두 경우 중 하나를 배제한다. 연향19 q16과 구조 일관성 확보."
+    }
+  ]
 }

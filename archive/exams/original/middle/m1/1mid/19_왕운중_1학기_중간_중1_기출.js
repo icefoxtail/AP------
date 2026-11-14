@@ -627,7 +627,7 @@ window.questionBank = [
     "templateKey": "TPL_LCM_APPLICATION_GEAR_CYCLE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",

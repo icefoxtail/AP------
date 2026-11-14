@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "original/middle/m1/1mid/19_왕운중_1학기_중간_중1_기출.js",
-  "sourceGitBlobSha": "1b075d51268df1bbec555439e1ebb89e4929437b",
+  "sourceGitBlobSha": "638c458733cd72f5fb859633b31bba175fd2d506",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "META_A",
@@ -550,6 +550,12 @@
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
           "value": "035160b693b42158d6770cd1807f81ec8ffa949b883399ccdf06be29926e387a"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256-file-bytes-v1",
+          "path": "archive/assets/images/19_왕운중_1학기_중간_중1_기출/q9-solution.svg",
+          "value": "170a9442be75542cf96b26937343211e932d20c4c02a40a3384a7ddac9472fe1"
         }
       ],
       "format": "단일 정답",
@@ -609,7 +615,19 @@
         "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
         "author": "META_A"
       },
-      "assetEvidence": []
+      "assetEvidence": [
+        {
+          "path": "archive/assets/images/19_왕운중_1학기_중간_중1_기출/q9-solution.svg",
+          "sha256": "170a9442be75542cf96b26937343211e932d20c4c02a40a3384a7ddac9472fe1",
+          "gitBlob": "dae8218d4c2be4232742b58649fe81b35399a629",
+          "role": "existing_solution_image",
+          "reviewer": "META_A",
+          "visualReview": "RENDERED_AND_ACTUALLY_VIEWED_NO_MATERIAL_CONTRADICTION",
+          "scope": "VISUAL_CONSISTENCY_ONLY_NOT_NEW_SOLUTION_VERIFICATION",
+          "evidenceRef": "docs/operations/m1-s1-meta-full-20261114/verification/solution-svg-review-meta-a.json",
+          "evidenceSha256": "b73de9e544665d33e2381133c5c95a6d33f4e61c1c69ea9c4fb544a7675c9ba6"
+        }
+      ]
     },
     {
       "questionUid": "qid_v1_ae204ecf6206ea478f89ef3996e71897dbfcb908862df24d0fbbea9e42bdd25e",
@@ -1398,6 +1416,12 @@
           "scope": "QFULL",
           "algo": "sha256-canonical-json-v1",
           "value": "0d0741eeb73f9e85d847dca4988eb6eb98537908f82069f80ada6bcb36eaba0a"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256-file-bytes-v1",
+          "path": "archive/assets/images/19_왕운중_1학기_중간_중1_기출/q21-solution.svg",
+          "value": "8d8df461b1182010b1d79888326d3565ea19c5234360798d6d2335f50854e170"
         }
       ],
       "format": "서술",
@@ -1463,7 +1487,19 @@
         "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
         "author": "META_A"
       },
-      "assetEvidence": []
+      "assetEvidence": [
+        {
+          "path": "archive/assets/images/19_왕운중_1학기_중간_중1_기출/q21-solution.svg",
+          "sha256": "8d8df461b1182010b1d79888326d3565ea19c5234360798d6d2335f50854e170",
+          "gitBlob": "a59511f8e2598fb20307aaf4fe07b6718ee97ccf",
+          "role": "existing_solution_image",
+          "reviewer": "META_A",
+          "visualReview": "RENDERED_AND_ACTUALLY_VIEWED_NO_MATERIAL_CONTRADICTION",
+          "scope": "VISUAL_CONSISTENCY_ONLY_NOT_NEW_SOLUTION_VERIFICATION",
+          "evidenceRef": "docs/operations/m1-s1-meta-full-20261114/verification/solution-svg-review-meta-a.json",
+          "evidenceSha256": "b73de9e544665d33e2381133c5c95a6d33f4e61c1c69ea9c4fb544a7675c9ba6"
+        }
+      ]
     },
     {
       "questionUid": "qid_v1_95cda2403680d62e0019fbe0b7599743e8c55855ac75face03d0b85aa4c5fdbb",
@@ -1706,7 +1742,7 @@
   "candidates": [],
   "selfCheck": {
     "status": "AUTHOR_REVIEWED",
-    "independentReview": "NOT_RUN",
+    "independentReview": "ROOT_SAMPLED_THREE_ONLY",
     "sourceOnlyMethodPolicy": "SOURCE_ONLY에서는 계약 §8에 따른 해설 method 근거가 없으므로 method=[]; 추론은 proposedMethodSlots로 분리.",
     "mechanical": {
       "items": 24,
@@ -1715,6 +1751,7 @@
       "unexpectedFailures": [],
       "expectedSourceOnlyMethodDebt": 0,
       "warnings": [
+        "sourceGitBlobSha 990684b2efb3bd1126418dcf5ef5d754751af687 != current exam blob 1b075d51268df1bbec555439e1ebb89e4929437b",
         "#1 only 4 distinct terms",
         "#2 only 4 distinct terms",
         "#3 only 3 distinct terms",
@@ -1738,11 +1775,16 @@
       ],
       "proposedMethodQuoteCount": 0,
       "proposedMethodMechanicalFailures": [],
-      "at": "2026-11-14T08:16:03.991860+00:00"
+      "at": "2026-11-14T08:21:27.204353+00:00"
     },
-    "semanticWarningDisposition": "간단한 정의/계산 문항은 정확한 개념 수만 기록하며 용어수 경고를 없애기 위해 불필요한 용어를 추가하지 않음. method 사칙연산은 계산 자체 또는 소문항이 계산을 요구한 문항에 한정."
+    "semanticWarningDisposition": "간단한 정의/계산 문항은 정확한 개념 수만 기록하며 용어수 경고를 없애기 위해 불필요한 용어를 추가하지 않음. method 사칙연산은 계산 자체 또는 소문항이 계산을 요구한 문항에 한정.",
+    "independentSampleOrdinals": [
+      18,
+      22,
+      24
+    ]
   },
-  "rootReviewRef": "docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_중간_중1_기출/independent-review.json",
   "sourceBaselineGitBlobSha": "990684b2efb3bd1126418dcf5ef5d754751af687",
-  "sourceCurrentSha256": "467a557f1e742066620812efb4ac7adcae91ac31a38488899eeb847374c3a013"
+  "sourceCurrentSha256": "58a9474391a24420f37ddeffe824923d221f316a1ef7ed4361b9361eb0df4bc6",
+  "rootReviewRef": "docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_중간_중1_기출/independent-review.json"
 }

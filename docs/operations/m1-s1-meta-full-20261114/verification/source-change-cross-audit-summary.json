@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "m1-s1-source-cross-audit-v1",
+  "author": "META_C",
+  "recordedAt": "2026-11-14T08:29:07.957Z",
+  "taskId": "M1-S1-META-FULL",
+  "baseline": "8c3b8fe05348d7235546d7d2d9ec063029d19e4d",
+  "headAtReportAssembly": "e0ae0de9bc072bbf3f1703030d53d3b00e56d590",
+  "observationWindow": "Initial source comparison was before ROOT accepted the final Dong23 q21/q22 and Wang19 q17 corrections. The planned final corrections were not redundantly re-audited here.",
+  "scope": {
+    "examCount": 12,
+    "itemCount": 286,
+    "inputDirectory": ".tmp/m1-s1/input",
+    "comparison": "All parsed raw item properties in each current source versus provided baseline input.source; also read git diff against baseline, including staged and working changes.",
+    "initialWorkingTreeStatus": "CLEAN",
+    "semanticReadScope": "Changed source metadata items and exact-structure counterpart existing solutions; no new all-item solving.",
+    "excludedKnownFinding": "23 Dong23 q22 NONE already known and scheduled for CASE_BRANCH before this audit.",
+    "originalWorkerCFilesRemain": "WRITING_CLOSED"
+  },
+  "protectedPayloadResult": {
+    "status": "PASS_AT_AUDITED_SNAPSHOT",
+    "itemsCompared": 286,
+    "protectedFieldChanges": 0,
+    "levelChanges": 0,
+    "changedItems": 15,
+    "changedFieldOccurrences": 18,
+    "changedFieldNames": [
+      "integrationPattern",
+      "conditionKeys",
+      "difficultyBucket",
+      "legacyLevelCompatibility"
+    ],
+    "fieldChangeCounts": {
+      "integrationPattern": 11,
+      "conditionKeys": 1,
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": 3
+    },
+    "difficultyChanges": [
+      {
+        "exam": "23_동산중_1학기_중간_중1_기출",
+        "ordinal": 2,
+        "from": 2,
+        "to": 1
+      },
+      {
+        "exam": "23_동산중_1학기_중간_중1_기출",
+        "ordinal": 7,
+        "from": 2,
+        "to": 1
+      },
+      {
+        "exam": "19_왕운중_1학기_중간_중1_기출",
+        "ordinal": 24,
+        "from": 4,
+        "to": 3
+      }
+    ],
+    "compatibility": "All three difficulty changes also change NORMAL to canonical BORDERLINE_ACCEPTABLE; existing level is preserved."
+  },
+  "changedKeyChecks": {
+    "newCondition": "COND_NATURAL_NUMBER",
+    "registryStatus": "ACTIVE",
+    "sourceEvidence": "Dong23 q4 explicitly describes two natural numbers.",
+    "compatibilityEnumEvidence": "archive/tools/meta-foundation/active-registry.mjs exports BORDERLINE_ACCEPTABLE.",
+    "newSourceKeyOrParentDefectFound": false
+  },
+  "findings": [
+    {
+      "id": "CROSS_SOURCE_01",
+      "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+      "ordinal": 21,
+      "questionUid": "qid_v1_a1a75735b2684fb4a04060caf8402f197a419419d376cffc70aa293b8e15a0b6",
+      "field": "integrationPattern",
+      "observedBefore": "INTERDEPENDENT",
+      "observedAfter": "NONE",
+      "recommendation": "CASE_BRANCH",
+      "reason": "기존 해설이 허용 소인수 지수 범위를 좁힌 뒤 가능한 지수 두 경우를 실제로 열거한다. 여러 선택지를 단순 계산한 경우와 구별한다.",
+      "rootDisposition": "ACCEPTED_FINAL_SOURCE_META_PATCH_PLANNED",
+      "fixRecheckedByMetaC": false
+    },
+    {
+      "id": "CROSS_SOURCE_02",
+      "field": "integrationPattern",
+      "items": [
+        {
+          "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+          "ordinal": 6,
+          "questionUid": "qid_v1_e5b6802b71d2b6aa92f27203eeb6b8a3dbcd5134c474b88d44683a12d1ee3cc1",
+          "observedIntegration": "NONE"
+        },
+        {
+          "sourceArchiveFile": "original/middle/m1/1mid/19_왕운중_1학기_중간_중1_기출.js",
+          "ordinal": 17,
+          "questionUid": "qid_v1_dc5e6e04949ddb1077e0a7f06eebe29a56b35167246b43caa225e008c2c3995f",
+          "observedIntegration": "SEQUENTIAL"
+        }
+      ],
+      "templateKey": "TPL_LCM_APPLICATION_GEAR_CYCLE",
+      "reason": "두 기존 해설 모두 첫 재맞물림 톱니수의 최소공배수→지정 톱니바퀴의 톱니수로 나눠 회전수 산출이라는 동일 구조이며 추가 개념/분기 차이가 없다.",
+      "recommendation": "왕운 q17 NONE으로 통일하여 ROOT의 Primary 내부 절차 기준과 일치",
+      "rootDisposition": "ACCEPTED_FINAL_SOURCE_META_PATCH_PLANNED",
+      "fixRecheckedByMetaC": false
+    }
+  ],
+  "additionalCheckerCoverageIssue": {
+    "description": "root-verify.cjs checks after PT/TPL but not every candidate field. A separate candidate-registry audit covers the remaining containers.",
+    "report": ".tmp/m1-s1/cross-audit/candidate-registry-audit.json",
+    "concreteExample": "19 Yeonhyang q16: proposed arithmetic subUnit versus PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS exact binding is already a declared gap outside after PT/TPL."
+  },
+  "limitations": [
+    "This is not an independent full-solution verification or a semantic PASS for all 286 items.",
+    "Source-only raw content:null fingerprints have the already-known legacy body coverage limitation; UID/ordinal/blob and separate source-question hashes remain necessary.",
+    "The final ROOT corrections and final branch HEAD need ROOT final verification.",
+    "No source, shared registry, Git index, commit, or remote mutation was performed. Only cross-audit artifacts were written."
+  ]
+}
