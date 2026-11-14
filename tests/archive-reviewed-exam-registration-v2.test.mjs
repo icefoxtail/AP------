@@ -2495,3 +2495,144 @@ test("SOP_v1.2 approval v4 cannot be mixed with legacy audit or proof schemas", 
   legacyProof.request.approval.metaPipelineAudit.correctiveReviewRef = legacyProof.evidenceRefs[0];
   assert.throws(() => registerReviewedExamV2({ root: legacyProof.root, request: legacyProof.request }), /source identity.schema mismatch/);
 });
+
+// ---- REVIEW2 relaxation (2026-11-13): source without carried fields, reviewStatus waiver, type-hold rows ----
+function rewriteSource(f, mutate) {
+  const full = path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`);
+  const q = JSON.parse(fs.readFileSync(full, "utf8").replace(/^window\.questions = /, "").replace(/;\s*$/, ""))[0];
+  mutate(q);
+  const text = `window.questions = ${JSON.stringify([q])};\n`;
+  fs.writeFileSync(full, text);
+  f.request.expectedSourceBlobSha1 = blob(text);
+  return q;
+}
+function review2(f) { f.request.approval.type = "REVIEW2"; f.request.approval.reviewPassCount = 2; return f; }
+
+test("REVIEW2 may register a question whose source carries no level; other approvals and carried values stay strict", t => {
+  const f = review2(fixture(t));
+  rewriteSource(f, q => { delete q.level; });
+  delete f.request.items[0].after.level; delete f.request.items[0].before.level;
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).status, "PASS");
+  assert.equal(f.read(META).records[0].level, undefined);
+  const g = fixture(t); rewriteSource(g, q => { delete q.level; });
+  delete g.request.items[0].after.level; delete g.request.items[0].before.level;
+  assert.throws(() => registerReviewedExamV2({ root: g.root, request: g.request }), /level invalid/);
+  const h = review2(fixture(t)); rewriteSource(h, q => { q.level = "최상"; }); h.request.items[0].after.level = "최상";
+  assert.throws(() => registerReviewedExamV2({ root: h.root, request: h.request }), /level invalid/);
+  const i = review2(fixture(t)); delete i.request.items[0].after.level; delete i.request.items[0].before.level;
+  assert.throws(() => registerReviewedExamV2({ root: i.root, request: i.request }), /metadata parity: uid1.level/);
+});
+
+function searchFixture(t, mutateIndex) {
+  const f = review2(fixture(t));
+  rewriteSource(f, q => { delete q.level; delete q.standardUnitKey; delete q.subUnitKey; delete q.standardCourse; });
+  delete f.request.items[0].after.level; delete f.request.items[0].before.level;
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  const catalogRow = { ...row, sourceFile: row.sourceArchiveFile, metadataConflicts: [] };
+  delete catalogRow.L3; delete catalogRow.L4;
+  const idx = { ...row, sourceFile: row.sourceArchiveFile, course: "", standardUnitKey: "", subUnitKey: "", level: "" };
+  f.put("archive/question-index.js", `window.questionIndex=${JSON.stringify([mutateIndex ? mutateIndex(idx) : idx])};`);
+  return { f, records: f.read(META).records, runtime: f.read("archive/data/meta-foundation/runtime/new-course-v1.json").records, catalog: { records: [catalogRow] } };
+}
+
+test("REVIEW2 Search check accepts fields the source does not carry, but not a carried value that differs", t => {
+  const { f, records, runtime, catalog } = searchFixture(t);
+  assert.doesNotThrow(() => verifyConsumerValues(f.root, records, runtime, catalog));
+  const strict = structuredClone(records); strict[0].metadataApprovalType = "FINAL_QA";
+  assert.throws(() => verifyConsumerValues(f.root, strict, runtime, catalog), /Search metadata mismatch/);
+  const carried = searchFixture(t, idx => ({ ...idx, standardUnitKey: "OTHER_UNIT" }));
+  const src = path.join(carried.f.root, `archive/exams/${carried.records[0].sourceArchiveFile}`);
+  const q = JSON.parse(fs.readFileSync(src, "utf8").replace(/^window\.questions = /, "").replace(/;\s*$/, ""))[0]; q.standardUnitKey = "OTHER_UNIT";
+  fs.writeFileSync(src, `window.questions = ${JSON.stringify([q])};\n`);
+  assert.throws(() => verifyConsumerValues(carried.f.root, carried.records, carried.runtime, carried.catalog), /Search metadata mismatch/);
+  const course = searchFixture(t, idx => ({ ...idx, course: "다른 과목" }));
+  assert.throws(() => verifyConsumerValues(course.f.root, course.records, course.runtime, course.catalog), /Search course mismatch/);
+});
+
+test("REVIEW2 waives only a reviewStatus conflict in the Consumer check", t => {
+  const { f, records, runtime, catalog } = searchFixture(t);
+  catalog.records[0].metadataConflicts = ["reviewStatus"];
+  assert.doesNotThrow(() => verifyConsumerValues(f.root, records, runtime, catalog));
+  catalog.records[0].metadataConflicts = ["reviewStatus", "difficultyBucket"];
+  assert.throws(() => verifyConsumerValues(f.root, records, runtime, catalog), /Consumer metadata conflict/);
+  catalog.records[0].metadataConflicts = ["reviewStatus"];
+  const other = structuredClone(records); other[0].metadataApprovalType = "FINAL_QA";
+  assert.throws(() => verifyConsumerValues(f.root, other, runtime, catalog), /Consumer metadata conflict/);
+});
+
+function typeHoldFixture(t) {
+  const f = review2(fixture(t));
+  rewriteSource(f, q => { delete q.problemTypeKey; delete q.templateKey; });
+  const item = f.request.items[0];
+  for (const k of ["problemTypeKey", "templateKey", "rpmL3", "rpmL4"]) { delete item.after[k]; delete item.before[k]; }
+  item.typeHold = true;
+  return f;
+}
+
+test("typeHold registers unit/sub-unit only, leaves PT/TPL untouched and writes no runtime row", t => {
+  const f = typeHoldFixture(t);
+  const dry = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(dry.runtimeMaterialized, 0);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.problemTypeKey, undefined); assert.equal(row.templateKey, undefined);
+  assert.equal(row.standardUnitKey, "UNIT_NEW"); assert.equal(row.subUnitKey, "SUB_NEW");
+  assert.equal(row.fieldStatus.problemType, "manual_review_pending"); assert.equal(row.fieldStatus.standardUnit, "approved_review2");
+  assert.equal(row.metadataStatus, "approved_partial_with_explicit_holds"); assert.equal(row.metaFoundationHoldReason, "TYPE_PATH_UNBOUND_UNIT_SUB_ONLY");
+  assert.equal(fs.readdirSync(path.join(f.root, "archive/data/meta-foundation/runtime")).filter(n => n.endsWith(".json")).length, 0);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).replay, true);
+});
+
+test("typeHold neighbours stay refused: other approvals, PT/TPL given, registered PT/TPL, bad flag, bad unit, missing flag", t => {
+  const final = typeHoldFixture(t); final.request.approval.type = "FINAL_QA"; delete final.request.approval.reviewPassCount;
+  assert.throws(() => registerReviewedExamV2({ root: final.root, request: final.request }), /typeHold requires REVIEW2/);
+  const given = typeHoldFixture(t); given.request.items[0].after.problemTypeKey = "PT_NEW"; given.request.items[0].before.problemTypeKey = null;
+  assert.throws(() => registerReviewedExamV2({ root: given.root, request: given.request }), /typeHold must not set problemTypeKey|source\/approved metadata parity/);
+  const noFlag = typeHoldFixture(t); delete noFlag.request.items[0].typeHold;
+  assert.throws(() => registerReviewedExamV2({ root: noFlag.root, request: noFlag.request }), /inactive\/missing PT/);
+  const registered = typeHoldFixture(t);
+  const meta = registered.read(META); meta.records[0].problemTypeKey = "PT_NEW"; registered.put(META, meta);
+  assert.throws(() => registerReviewedExamV2({ root: registered.root, request: registered.request }), /typeHold only for unregistered PT\/TPL|source\/approved metadata parity|before mismatch/);
+  const truthy = typeHoldFixture(t); truthy.request.items[0].typeHold = "yes";
+  assert.throws(() => registerReviewedExamV2({ root: truthy.root, request: truthy.request }), /typeHold requires REVIEW2 and true/);
+  const badUnit = typeHoldFixture(t); badUnit.request.items[0].after.standardUnitKey = "NO_SUCH_UNIT";
+  assert.throws(() => registerReviewedExamV2({ root: badUnit.root, request: badUnit.request }), /standard unit missing|source\/approved metadata parity/);
+});
+
+test("typeHold accepts a source that carries empty PT/TPL placeholders; a resolved type still must equal the source value", t => {
+  const f = typeHoldFixture(t);
+  rewriteSource(f, q => { q.problemTypeKey = null; q.templateKey = ""; });
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).status, "PASS");
+  // without typeHold the same null placeholder is still a parity refusal when a type is asserted
+  const g = review2(fixture(t));
+  rewriteSource(g, q => { q.problemTypeKey = null; });
+  assert.throws(() => registerReviewedExamV2({ root: g.root, request: g.request }), /metadata parity: uid1.problemTypeKey/);
+  // and a non-empty source value is never waived
+  const h = typeHoldFixture(t);
+  rewriteSource(h, q => { q.problemTypeKey = "PT_NEW"; });
+  assert.throws(() => registerReviewedExamV2({ root: h.root, request: h.request }), /metadata parity: uid1.problemTypeKey/);
+});
+
+test("typeHold labels follow a verified basicScopeParentRef; an inconsistent proof is refused", t => {
+  const f = typeHoldFixture(t);
+  const rel = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.parent-labels.json";
+  const proof = { schemaVersion: "archive-meta-pipeline-parent-label-evidence-v1", sourcePath: "archive/data/basic-scope-parent-links.json", sourceSha256: "a".repeat(64),
+    records: [{ curriculumKey: "2022", courseKey: "중1수학", standardUnitKey: "UNIT_NEW", subUnitKey: "SUB_NEW", L1: "부모 대단원", L2: "부모 중단원" }], derivedRecords: [] };
+  f.put(rel, proof);
+  const ref = { path: rel, sha256: hash(fs.readFileSync(path.join(f.root, rel))) };
+  const item = f.request.items[0];
+  item.basicScopeParentRef = ref; item.evidenceRefs = [...item.evidenceRefs, ref];
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.deepEqual([row.L1, row.L2], ["부모 대단원", "부모 중단원"]);
+  const bad = typeHoldFixture(t);
+  bad.put(rel, { ...proof, records: [{ ...proof.records[0], standardUnitKey: "OTHER" }] });
+  const badRef = { path: rel, sha256: hash(fs.readFileSync(path.join(bad.root, rel))) };
+  bad.request.items[0].basicScopeParentRef = badRef; bad.request.items[0].evidenceRefs = [...bad.request.items[0].evidenceRefs, badRef];
+  assert.throws(() => registerReviewedExamV2({ root: bad.root, request: bad.request }), /basic scope parent evidence missing\/ambiguous/);
+  const unbound = typeHoldFixture(t);
+  unbound.put(rel, proof);
+  unbound.request.items[0].basicScopeParentRef = { path: rel, sha256: hash(fs.readFileSync(path.join(unbound.root, rel))) };
+  assert.throws(() => registerReviewedExamV2({ root: unbound.root, request: unbound.request }), /not evidence-bound/);
+});

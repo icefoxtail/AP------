@@ -22,6 +22,7 @@ const stable = value => JSON.stringify(value, (_, v) => v && !Array.isArray(v) &
 const digest = value => crypto.createHash("sha256").update(value).digest("hex");
 const eq = (a, b) => isDeepStrictEqual(a, b);
 const slug = value => value.toLowerCase().replaceAll("_", "-");
+const isTypeHoldRecord = r => r.metadataApprovalType === "REVIEW2" && r.metaFoundationHoldReason === "TYPE_PATH_UNBOUND_UNIT_SUB_ONLY" && !r.problemTypeKey;
 const approved = row => row.reviewStatus === "reviewed_pass" || String(row.metadataStatus || "").startsWith("approved_");
 const fail = message => { throw new Error(message); };
 const requireText = (value, name) => typeof value === "string" && value.trim() ? value : fail(`${name} required`);
@@ -1608,6 +1609,21 @@ function resolve(row, tables, { allowConditionDebt = false } = {}) {
   return { pt, tpl, unit, sub, binding, pack, curriculum, course, extensions };
 }
 
+// Type-hold rows (REVIEW2): validate everything except PT/TPL/binding/pack, which are deliberately absent.
+function resolveUnitOnly(row, tables) {
+  const active = (map, key, type) => { const r = map.get(key); if (!r || r.status !== "ACTIVE") fail(`inactive/missing ${type}: ${key}`); return r; };
+  for (const [field, map] of [["crossConceptKeys", tables.cc], ["conditionKeys", tables.cond]]) {
+    if (!Array.isArray(row[field]) || new Set(row[field]).size !== row[field].length) fail(`invalid ${field}`);
+    for (const k of row[field]) active(map, k, field);
+  }
+  const unit = tables.master.get(row.standardUnitKey), sub = tables.master.get(row.subUnitKey);
+  if (!unit || unit.keyType !== "standardUnitKey" || !["active", "ACTIVE"].includes(unit.status)) fail(`standard unit missing: ${row.standardUnitKey}`);
+  if (row.subUnitKey && (!sub || sub.keyType !== "subUnitKey" || !["active", "ACTIVE"].includes(sub.status))) fail(`subunit missing: ${row.subUnitKey}`);
+  if (sub && (sub.standardUnitKey || sub.parentKey) !== row.standardUnitKey) fail(`subunit parent mismatch: ${row.subUnitKey}`);
+  requireText(row.integrationPattern, "integrationPattern");
+  return { unit, sub, curriculum: requireText(row.curriculum || row.curriculumKey, "curriculum"), course: requireText(row.standardCourse || row.courseKey, "standardCourse") };
+}
+
 function labelsFor(root, patch, row, resolved, read, sourceBlob, { registeredReplay = false } = {}) {
   const base = { L1: resolved.binding.L1 || resolved.unit.labelKo, L2: resolved.binding.L2 || resolved.sub?.labelKo || "", L3: resolved.pt.canonicalLabelKo, L4: resolved.tpl.canonicalLabelKo };
   if (patch.basicScopeParentRef) {
@@ -1842,7 +1858,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     for (const record of previous.appliedRecords) if (!eq(rows.find(r => r.questionUid === record.questionUid), record)) fail(`registered metadata drift: ${record.questionUid}`);
     for (const record of previous.appliedIdentityRecords || []) if (!eq(ids.get(record.questionUid), record)) fail(`registered identity drift: ${record.questionUid}`);
     const currentPlan = registryPlan(root, [], evidenceRefs), currentTables = lookup(currentPlan);
-    for (const record of previous.approval?.sourceRebind ? [] : previous.appliedRecords) {
+    for (const record of previous.approval?.sourceRebind ? [] : previous.appliedRecords.filter(r => !isTypeHoldRecord(r))) {
       const r = resolve(record, currentTables, { allowConditionDebt: metaPipelineAudit?.conditionDebtUids.includes(record.questionUid) });
       const labels = labelsFor(root, patches.get(record.questionUid), record, r, read, blob, { registeredReplay: true });
       for (const [key, value] of Object.entries(labels)) if (record[key] !== value) fail(`registered canonical label drift: ${record.questionUid}.${key}`);
@@ -1970,7 +1986,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     if (req.approval.type === "META_PIPELINE_AUDIT" && metaPipelineAudit?.inputAuditVariant === "sop_v12_corrective_review" &&
         !eq(final.conditionKeys ?? null, current.conditionKeys ?? null))
       fail(`SOP_v1.2 audit has no Condition evidence; existing conditionKeys must be preserved: ${current.questionUid}`);
-    for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f])) {
+    for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f]) &&
+        // typeHold (REVIEW2): a source that carries an empty PT/TPL placeholder (null/"") is consistent with PT/TPL staying unregistered.
+        !(patch.typeHold === true && req.approval.type === "REVIEW2" && ["problemTypeKey", "templateKey"].includes(f) && (q[f] === null || q[f] === "") && !current[f])) {
       const preservesApprovedAuditValue = req.approval.type === "META_PIPELINE_AUDIT" && approved(current) &&
         eq(current[f] ?? null, final[f] ?? null);
       const sopAuditedRecord = req.approval.type === "META_PIPELINE_AUDIT" && metaPipelineAudit?.inputAuditVariant === "sop_v12_corrective_review"
@@ -1995,7 +2013,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     });
     if (checked.identityChanged) { Object.assign(id, checked.identityAfter); identityChanged = true; }
     appliedIdentityRecords.push(structuredClone(id));
-    if (!["하", "중", "상"].includes(final.level)) fail(`level invalid: ${current.questionUid}`);
+    // REVIEW2 only: a source that does not carry `level` at all may stay without one (nothing is invented); a carried value must still be valid.
+    const reviewTwoLevelAbsent = req.approval.type === "REVIEW2" && !Object.hasOwn(q, "level") && (final.level === undefined || final.level === null || final.level === "");
+    if (!reviewTwoLevelAbsent && !["하", "중", "상"].includes(final.level)) fail(`level invalid: ${current.questionUid}`);
     const debtRows = req.approval.type === "META_PIPELINE_AUDIT" ? (req.approval.metaPipelineAudit.unreviewedFields || []) : [];
     let difficultyEvidenceDebt = null;
     if (!Number.isInteger(final.difficultyBucket) || final.difficultyBucket < 1 || final.difficultyBucket > 5) {
@@ -2017,6 +2037,34 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         requireText(final.integrationPattern, "integrationPattern (explicit NONE if not applicable)");
       integrationPatternEvidenceDebt = debt.reason;
     } else requireText(final.integrationPattern, "integrationPattern");
+    if (patch.typeHold !== undefined) {
+      // REVIEW2 only: register unit/sub-unit (and the judged CrossConcept/Condition/Integration) of a question whose type path cannot be bound.
+      // PT/TPL are never guessed: they must be unregistered, stay exactly as they are, and the row keeps an explicit type hold.
+      if (patch.typeHold !== true || req.approval.type !== "REVIEW2") fail(`typeHold requires REVIEW2 and true: ${current.questionUid}`);
+      if (current.problemTypeKey || current.templateKey) fail(`typeHold only for unregistered PT/TPL: ${current.questionUid}`);
+      for (const k of ["problemTypeKey", "templateKey", "L3", "L4", "rpmL3", "rpmL4"]) if (Object.hasOwn(patch.after, k)) fail(`typeHold must not set ${k}: ${current.questionUid}`);
+      const held = resolveUnitOnly(final, tables);
+      // With a basicScopeParentRef (same evidence the full path accepts) L1/L2 are the verified basic-scope parent labels the Consumer exposes.
+      const labels = patch.basicScopeParentRef
+        ? (({ L1, L2 }) => ({ L1, L2 }))(labelsFor(root, patch, final, { course: held.course, curriculum: held.curriculum, binding: {}, unit: held.unit, sub: held.sub,
+            pt: { canonicalLabelKo: "" }, tpl: { canonicalLabelKo: "" }, pack: null }, read, blob))
+        : { L1: held.unit.labelKo, L2: held.sub?.labelKo || "" };
+      for (const [field, label] of Object.entries(labels)) {
+        if (Object.hasOwn(patch.after, field) && patch.after[field] !== label) fail(`canonical label mismatch: ${current.questionUid}.${field}`);
+        if (approved(current) && current[field] !== label && !Object.hasOwn(patch.before, field)) fail(`before required for derived label: ${current.questionUid}.${field}`);
+        final[field] = label;
+      }
+      const holdFieldStatus = { ...(current.fieldStatus || {}), ...Object.fromEntries(["standardUnit", "subUnit", "crossConcept", "condition", "integrationPattern"].map(k => [k, "approved_review2"])),
+        problemType: "manual_review_pending", template: "manual_review_pending" };
+      Object.assign(final, { curriculum: held.curriculum, curriculumKey: held.curriculum, standardCourse: held.course, courseKey: final.courseKey || held.course,
+        reviewStatus: "reviewed_pass", metadataStatus: "approved_partial_with_explicit_holds", metadataApprovalType: "REVIEW2",
+        metadataRevision: `archive-review2-type-hold-v2:${req.requestId}`, tagStatus: "reviewed_pass", tagConfidence: "independent_review2",
+        metaFoundationHoldReason: "TYPE_PATH_UNBOUND_UNIT_SUB_ONLY", l3Disposition: "HOLD", l4Disposition: "HOLD",
+        curriculumApplicability: final.curriculumApplicability || "DEFAULT_SCOPE", defaultSelectable: final.defaultSelectable !== false,
+        approvalEvidence: [...new Set([...(current.approvalEvidence || []), receiptPath])], fieldStatus: holdFieldStatus });
+      Object.assign(current, final); applied.push(structuredClone(final));
+      continue;
+    }
     const resolved = resolve(final, tables, { allowConditionDebt: metaPipelineAudit?.conditionDebtUids.includes(current.questionUid) }), { pt, tpl, unit, sub, pack, curriculum, course } = resolved;
     for (const use of resolved.extensions) {
       const seen = extensionUsage.get(use.key) || { ...use, questionUids: [] };
@@ -2286,6 +2334,24 @@ export function loadResolvedConsumerCatalog(root, read = file => JSON.parse(fs.r
   return canonical.resolveCatalog({ versionBundle: { manifest, projectionVersion: manifest.projectionVersion, files, resources } });
 }
 
+// REVIEW2 only: the search index is source-only. A field the exam source does not carry at all (and the index therefore leaves empty)
+// is not a mismatch with the registered value. A source value that is carried and differs is still refused.
+function reviewTwoSourceLacks(root, r, field, indexValue, cache) {
+  const empty = v => v === undefined || v === null || v === "";
+  if (!empty(indexValue)) return false;
+  const sourceFile = "archive/exams/" + r.sourceArchiveFile;
+  let bank = cache.get(sourceFile);
+  if (!bank) {
+    const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
+    vm.createContext(ctx);
+    vm.runInContext(fs.readFileSync(safePath(root, sourceFile), "utf8"), ctx, { timeout: 5000 });
+    bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
+    cache.set(sourceFile, bank);
+  }
+  const q = bank?.[Number(r.sourceOrdinal) - 1];
+  return Boolean(q) && empty(q[field]);
+}
+
 function verifyConsumer(root, records, runtimeRecords, read) {
   return verifyConsumerValues(root, records, runtimeRecords, loadResolvedConsumerCatalog(root, read));
 }
@@ -2327,9 +2393,12 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
     const courseCompact = value => String(value ?? "").normalize("NFC").replace(/\s/g, "");
     let usedLane = false;
     for (const f of ["curriculumKey", "courseKey", "L1", "L2", "standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket"]) {
+      // A type-hold row has no foundation revision, so the Consumer does not publish PT/TPL nor CrossConcept/Condition for it; those are verified in the registrar (resolveUnitOnly) instead.
+      if (isTypeHoldRecord(r) && ["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys"].includes(f)) continue;
       // Archive2 omits unknown fields instead of publishing a false NONE. Verify an omitted IntegrationPattern against its exact active runtime value.
       if (f === "integrationPattern" && !Object.hasOwn(c, f)) {
         const runtime = runtimeByUid.get(r.questionUid);
+        if (!runtime && isTypeHoldRecord(r)) continue;   // type-hold rows have no runtime row by design
         if (!runtime) fail("Consumer runtime UID missing: " + r.questionUid);
         if (!eq(runtime[f], r[f])) fail("Consumer runtime metadata mismatch: " + r.questionUid + "." + f);
         continue;
@@ -2359,11 +2428,13 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
       if (!same) fail("Consumer metadata mismatch: " + r.questionUid + "." + f);
     }
     lanes[usedLane ? "usableMetaLane" : "canonical"]++;
+    const typeHold = isTypeHoldRecord(r);
+    if (typeHold) lanes.typeHold = (lanes.typeHold || 0) + 1;
     const runtime = runtimeByUid.get(r.questionUid);
-    if (!runtime) fail(`Consumer runtime UID missing: ${r.questionUid}`);
+    if (!runtime && !typeHold) fail(`Consumer runtime UID missing: ${r.questionUid}`);
     // Archive2's catalog exposes the verified basic path (L1/L2). The
     // Meta Foundation runtime owns the deeper canonical path (L3/L4).
-    for (const f of ["L3", "L4"]) {
+    for (const f of typeHold ? [] : ["L3", "L4"]) {
       // A lane-bound record has no canonical L3/L4 (they are blanked, not absent); its recorded
       // L3 is exposed as metaHintL3 and L4 only exists in the runtime pack.
       const canonicalBlank = laneBound && empty(c[f]);
@@ -2383,7 +2454,7 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
     const extensionExplained = field => field === "foundationTaxonomy" && hasExtensionKey(r) &&
       resolve(r, (extensionTables ||= lookup(registryPlan(root, [], () => {}))),
         { allowConditionDebt: r.conditionKeysEvidenceDebt?.status === "EVIDENCE_DEBT" }).extensions.length > 0;
-    const blockingConflicts = (c.metadataConflicts || []).filter(field => !(laneBound && field === "reviewStatus") && !extensionExplained(field));
+    const blockingConflicts = (c.metadataConflicts || []).filter(field => !(laneBound && field === "reviewStatus") && !(r.metadataApprovalType === "REVIEW2" && field === "reviewStatus") && !extensionExplained(field));
     if (blockingConflicts.length) fail(`Consumer metadata conflict: ${r.questionUid}`);
     if ((c.metadataConflicts || []).includes("foundationTaxonomy") && hasExtensionKey(r)) lanes.generatedExtension = (lanes.generatedExtension || 0) + 1;
   }
@@ -2396,6 +2467,7 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
     if (!found) fail(`Search UID source missing: ${r.questionUid}`);
     for (const f of ["standardUnitKey", "subUnitKey", "level"]) {
       if (eq(found[f], r[f])) continue;
+      if (r.metadataApprovalType === "REVIEW2" && ["standardUnitKey", "subUnitKey", "level"].includes(f) && reviewTwoSourceLacks(root, r, f, found[f], searchSourceCache)) continue;
       if (r.metadataApprovalType === "META_PIPELINE_AUDIT" && ["standardUnitKey", "subUnitKey", "level"].includes(f)) {
         const sourceFile = "archive/exams/" + r.sourceArchiveFile;
         let bank = searchSourceCache.get(sourceFile);
@@ -2413,12 +2485,12 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
       }
       fail("Search metadata mismatch: " + r.questionUid + "." + f);
     }
-    if (found.course !== r.standardCourse) {
+    if (found.course !== r.standardCourse && !(r.metadataApprovalType === "REVIEW2" && reviewTwoSourceLacks(root, r, "standardCourse", found.course, searchSourceCache))) {
       const sourceQuestion = searchSourceCache.get("archive/exams/" + r.sourceArchiveFile)?.[Number(r.sourceOrdinal) - 1];
       if (!(r.metadataApprovalType === "META_PIPELINE_AUDIT" && sourceQuestion &&
           eq(found.course ?? "", sourceQuestion.standardCourse ?? ""))) fail(`Search course mismatch: ${r.questionUid}`);
     }
   }
-  if (!runtimeRecords.length) fail("runtime records missing");
+  if (!runtimeRecords.length && !records.every(isTypeHoldRecord)) fail("runtime records missing");
   return lanes;
 }
