@@ -1,0 +1,2598 @@
+{
+  "schemaVersion": "m2-s2-meta-review-v1",
+  "examId": "E029",
+  "owner": "B",
+  "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "a608b1a6773e4dfd624eb782424b98e6427ac5f7",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewedQuestionCount": 24,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_48699887eeb8beecdc4efaed4c1641d2b568d63481c1ca6023ca225626b730f1",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-060",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "외각에서 밑각 후 꼭짓각",
+      "decisiveStep": "평각으로 밑각60도를 얻어 같은 두 밑각을 내각합에서 뺀다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE",
+          "CC_SUPPLEMENTARY_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "legacyLevelCompatibility": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmL1": "삼각형의 성질",
+        "rpmL2": "이등변삼각형",
+        "rpmL3": "이등변삼각형의 성질",
+        "rpmL4": "밑각",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "이등변삼각형",
+          "l3": "이등변삼각형의 성질",
+          "l4": "밑각"
+        }
+      },
+      "fieldReview": {
+        "classification": "이등변삼각형의 성질 / 밑각: 외각을 내각으로 바꾼 뒤 이등변의 같은 밑각을 적용한다.",
+        "binding": "PT_ISOSCELES_TRIANGLE / TPL_ISOSCELES_BASE_ANGLES의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 외각을 내각으로 바꾼 뒤 이등변의 같은 밑각을 적용한다.",
+        "difficulty": "외각을 내각으로 바꾼 뒤 이등변의 같은 밑각을 적용한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "외각을 내각으로 바꾼 뒤 이등변의 같은 밑각을 적용한다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "외각을 내각으로 바꾼 뒤 이등변의 같은 밑각을 적용한다."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_f79602b4b00d7a9d9501abe8027cea374d5167488219a5062d963f3d76c12911",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-062",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "내각합 뒤 이등변 역성질",
+      "decisiveStep": "B각50도를 얻어 C와 같으므로 반대편 두 변이 같음을 적용한다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_CONVERSE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_CONVERSE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_CONVERSE",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_CONVERSE",
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "legacyLevelCompatibility": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_CONVERSE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmL1": "삼각형의 성질",
+        "rpmL2": "이등변삼각형",
+        "rpmL3": "이등변삼각형의 판정",
+        "rpmL4": "두 각 조건",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "이등변삼각형",
+          "l3": "이등변삼각형의 판정",
+          "l4": "두 각 조건"
+        }
+      },
+      "fieldReview": {
+        "classification": "이등변삼각형의 판정 / 두 각 조건: 알려지지 않은 각을 계산한 뒤 새 등각 관계를 변길이에 연결한다.",
+        "binding": "PT_ISOSCELES_TRIANGLE / TPL_ISOSCELES_CONVERSE의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 알려지지 않은 각을 계산한 뒤 새 등각 관계를 변길이에 연결한다.",
+        "difficulty": "알려지지 않은 각을 계산한 뒤 새 등각 관계를 변길이에 연결한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "알려지지 않은 각을 계산한 뒤 새 등각 관계를 변길이에 연결한다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "알려지지 않은 각을 계산한 뒤 새 등각 관계를 변길이에 연결한다."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_2617c93580d88efbf74f9b780f119735d761afb3fbb1f32c9cbdff6ba552574e",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "RHS와 RHA로 그림의 합동 쌍 분류",
+      "decisiveStep": "빗변·직각변 쌍과 빗변·예각 쌍을 구분해 어느 쌍에도 속하지 않는 그림을 고른다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium"
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium"
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "crossConceptKeys": [
+          "CC_RIGHT_TRIANGLE_CONGRUENCE_RHS",
+          "CC_RIGHT_TRIANGLE_CONGRUENCE_RHA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium"
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "high"
+      },
+      "fieldReview": {
+        "classification": "직각삼각형의 RHS/RHA 혼합 쌍 분류 exact RPM leaf 공백.",
+        "binding": "일치하는 등록 TPL이 없어 신규 정의 제안.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 그림에서 빗변 위치와 대응 예각을 구별하고40도를50도로 바꾸어 비교한다.",
+        "difficulty": "그림에서 빗변 위치와 대응 예각을 구별하고40도를50도로 바꾸어 비교한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "그림에서 빗변 위치와 대응 예각을 구별하고40도를50도로 바꾸어 비교한다.",
+      "registrationDebt": [
+        "NEW_TPL: RHS·RHA 조건으로 직각삼각형 합동 쌍 비교",
+        "RPM_LEAF_GAP: 여러 직각삼각형의 합동 쌍 분류",
+        "PT/TPL 의미 대응의 공식 등록 대기",
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [
+        "B-E029-RIGHT-PAIR",
+        "B-E029-RIGHT-PAIR-RPM"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "그림에서 빗변 위치와 대응 예각을 구별하고40도를50도로 바꾸어 비교한다."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_bb041a51a6cb613d8a6d33bb2ef938a5d31aea93e4005a3dbf2055c2c64018fb",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-071",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "겹쳐 만든 이등변삼각형 뒤 RHA",
+      "decisiveStep": "같은 빗변으로 생긴 큰 이등변삼각형의 밑각을 두 직각삼각형의 대응 예각으로 쓴다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "crossConceptKeys": [
+          "CC_RIGHT_TRIANGLE_CONGRUENCE_RHS",
+          "CC_RIGHT_TRIANGLE_CONGRUENCE_RHA",
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "rpmL1": "삼각형의 성질",
+        "rpmL2": "삼각형의 성질",
+        "rpmL3": "직각삼각형의 합동",
+        "rpmL4": "RHA",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHA"
+        }
+      },
+      "fieldReview": {
+        "classification": "직각삼각형의 합동 / RHA: 그림의 겹침과 밑각 동등을 읽어 이미 제시된 증명의 빈칸을 완성한다.",
+        "binding": "PT_RIGHT_TRIANGLE_CONGRUENCE / TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "RHA에 필요한 대응 예각을, 같은 빗변을 겹쳐 만든 이등변삼각형에서 얻는다. RHS는 이 증명의 목표이며 실제 적용한 합동 기준은 RHA이다.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "SEQUENTIAL: 그림의 겹침과 밑각 동등을 읽어 이미 제시된 증명의 빈칸을 완성한다.",
+        "difficulty": "그림의 겹침과 밑각 동등을 읽어 이미 제시된 증명의 빈칸을 완성한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "그림의 겹침과 밑각 동등을 읽어 이미 제시된 증명의 빈칸을 완성한다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "그림의 겹침과 밑각 동등을 읽어 이미 제시된 증명의 빈칸을 완성한다."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_029e922c45313570290b440c270cb1a0a2b5f53544b6db7a6e0f1fd326df983c",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-066",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 이등분선 사이각 공식 역산",
+      "decisiveStep": "114=90+A/2에서 A를 바로 결정한다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_INCENTER",
+          "CC_ANGLE_BISECTOR"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "rpmL1": "삼각형의 성질",
+        "rpmL2": "삼각형의 외심과 내심",
+        "rpmL3": "내심",
+        "rpmL4": "각의 이등분선과 내심",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "내심",
+          "l4": "각의 이등분선과 내심"
+        }
+      },
+      "fieldReview": {
+        "classification": "내심 / 각의 이등분선과 내심: 주어진 내심 각에 정해진 공식을 대입하는 직접 계산이다.",
+        "binding": "PT_TRIANGLE_CENTERS / TPL_TRIANGLE_INCENTER의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 주어진 내심 각에 정해진 공식을 대입하는 직접 계산이다.",
+        "difficulty": "주어진 내심 각에 정해진 공식을 대입하는 직접 계산이다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "주어진 내심 각에 정해진 공식을 대입하는 직접 계산이다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 내심 각에 정해진 공식을 대입하는 직접 계산이다."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_122ae06f3b6f931f59e7bad4e5278e96c4c99955421ec31e544ccbf15ad4b7b4",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-065",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "외심 등거리로 세 이등변삼각형",
+      "decisiveStep": "반지름 같음을 써 두 각을 전달하고 내각합의 미지각 식을 푼다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_CIRCUMCENTER",
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "rpmL1": "삼각형의 성질",
+        "rpmL2": "삼각형의 외심과 내심",
+        "rpmL3": "외심",
+        "rpmL4": "외심의 위치·각",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각"
+        }
+      },
+      "fieldReview": {
+        "classification": "외심 / 외심의 위치·각: 외심에서 생기는 각 관계를 차례로 연결한 정형 한 식이다.",
+        "binding": "PT_TRIANGLE_CENTERS / TPL_TRIANGLE_CIRCUMCENTER의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 외심에서 생기는 각 관계를 차례로 연결한 정형 한 식이다.",
+        "difficulty": "외심에서 생기는 각 관계를 차례로 연결한 정형 한 식이다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "외심에서 생기는 각 관계를 차례로 연결한 정형 한 식이다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "외심에서 생기는 각 관계를 차례로 연결한 정형 한 식이다."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_72e49a2a2750e5d84eb7fafebe43c1fc6f7a06148692d51525383206e8de0901",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "내접원에 그은 접선 조각의 길이",
+      "decisiveStep": "꼭짓점마다 두 접선 길이를 같게 두고 세 변 합의 식으로 BE를 복원한다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium"
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium"
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_INCENTER",
+          "CC_CIRCLE_TANGENT_PROPERTY",
+          "CC_LINEAR_EQUATIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium"
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high"
+      },
+      "fieldReview": {
+        "classification": "접선조각의 동등을 사용한 길이 목표 exact RPM leaf 공백. 내심각/거리 leaf에 강제하지 않음.",
+        "binding": "PT_CIRCLE_TANGENT / TM_TANGENT_LENGTH의 ACTIVE 정의·parent 대조. 현재 curriculum binding 공백.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 접선 조각들을 하나의 미지수로 표현하여 일차식 하나를 구성한다.",
+        "difficulty": "접선 조각들을 하나의 미지수로 표현하여 일차식 하나를 구성한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "접선 조각들을 하나의 미지수로 표현하여 일차식 하나를 구성한다.",
+      "registrationDebt": [
+        "RPM_LEAF_GAP: 원의 접선 길이",
+        "LINK_MISSING: 2015/중2 수학/M2-05/M2-05-TRIANGLE_PROPERTIES → PT_CIRCLE_TANGENT",
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [
+        "B-E029-TANGENT-RPM"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "접선 조각들을 하나의 미지수로 표현하여 일차식 하나를 구성한다."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_73d597dd1f8762886bf19b4dd9b725682b5eda5253fffac149ef7d0aecba94d2",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-073",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "대각선 이등분과 대변 동등",
+      "decisiveStep": "주어진 세 길이를 대응하는 OCD의 세변에 옮겨 합한다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAM_PROPERTIES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": "사각형의 성질",
+        "rpmL2": "평행사변형",
+        "rpmL3": "평행사변형의 성질",
+        "rpmL4": "평행사변형의 대각선 성질",
+        "rpmPrimaryPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "평행사변형의 대각선 성질"
+        }
+      },
+      "fieldReview": {
+        "classification": "평행사변형의 성질 / 평행사변형의 대각선 성질: 성질로 길이를 그대로 복사한 뒤 더하는 직접 적용이다.",
+        "binding": "PT_QUADRILATERAL_PROPERTIES / TPL_QUADRILATERAL_PROPERTIES의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 성질로 길이를 그대로 복사한 뒤 더하는 직접 적용이다.",
+        "difficulty": "성질로 길이를 그대로 복사한 뒤 더하는 직접 적용이다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "성질로 길이를 그대로 복사한 뒤 더하는 직접 적용이다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "성질로 길이를 그대로 복사한 뒤 더하는 직접 적용이다."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_97f145491b0da158f9974de4783f0eb9e51150cdf357c75dd9ac8d0fb4ab11e5",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-072",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "이웃각 합과 대변 동등",
+      "decisiveStep": "x는180에서115를 빼고 y는맞은편5를 그대로 읽는다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAM_PROPERTIES",
+          "CC_SUPPLEMENTARY_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": "사각형의 성질",
+        "rpmL2": "평행사변형",
+        "rpmL3": "평행사변형의 성질",
+        "rpmL4": "변·각의 성질",
+        "rpmPrimaryPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질"
+        }
+      },
+      "fieldReview": {
+        "classification": "평행사변형의 성질 / 변·각의 성질: 두 기본 성질을 각각 직접 적용한다.",
+        "binding": "PT_QUADRILATERAL_PROPERTIES / TPL_QUADRILATERAL_PROPERTIES의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 두 기본 성질을 각각 직접 적용한다.",
+        "difficulty": "두 기본 성질을 각각 직접 적용한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "두 기본 성질을 각각 직접 적용한다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 기본 성질을 각각 직접 적용한다."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_ef2732975bb8c7e04e71a8c8cc99735d6fff7980c3aeda10f4d1217cdec1d039",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-074",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "다섯 그림의 평행사변형 충분조건",
+      "decisiveStep": "다섯 판정조건과 비교해 다른 쌍의 길이동등은 등변사다리꼴도 허용함을 찾는다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAM_CRITERIA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": "사각형의 성질",
+        "rpmL2": "평행사변형",
+        "rpmL3": "평행사변형의 판정",
+        "rpmL4": "변·각 조건",
+        "rpmPrimaryPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 판정",
+          "l4": "변·각 조건"
+        }
+      },
+      "fieldReview": {
+        "classification": "평행사변형의 판정 / 변·각 조건: 평행한 쌍과 길이가 같은 쌍이 서로 다름을 읽는 한 번의 조건 해석이다.",
+        "binding": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION / TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION의 ACTIVE 정의·parent 대조. 현재 curriculum binding 공백.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 평행한 쌍과 길이가 같은 쌍이 서로 다름을 읽는 한 번의 조건 해석이다.",
+        "difficulty": "평행한 쌍과 길이가 같은 쌍이 서로 다름을 읽는 한 번의 조건 해석이다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "평행한 쌍과 길이가 같은 쌍이 서로 다름을 읽는 한 번의 조건 해석이다.",
+      "registrationDebt": [
+        "LINK_MISSING: 2015/중2 수학/M2-05/M2-05-QUADRILATERAL_PROPERTIES → PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평행한 쌍과 길이가 같은 쌍이 서로 다름을 읽는 한 번의 조건 해석이다."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_d4edb719f8af918f15ffc77a3eec6158c856bb18dba548ad89d3e8de9b43bf9b",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-079",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "마름모 대각선의 길이와 각 이등분",
+      "decisiveStep": "대각선 절반8을 읽고120도 이웃각60도의 반을 구해 더한다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [
+          "CC_RHOMBUS_PROPERTIES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": "사각형의 성질",
+        "rpmL2": "여러 가지 사각형",
+        "rpmL3": "직사각형·마름모·정사각형",
+        "rpmL4": "특수 사각형의 대각선 성질",
+        "rpmPrimaryPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질"
+        }
+      },
+      "fieldReview": {
+        "classification": "직사각형·마름모·정사각형 / 특수 사각형의 대각선 성질: 길이조건과 각조건을 각기 정형 성질에 연결한다.",
+        "binding": "PT_QUADRILATERAL_PROPERTIES / TPL_SPECIAL_QUADRILATERALS의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 길이조건과 각조건을 각기 정형 성질에 연결한다.",
+        "difficulty": "길이조건과 각조건을 각기 정형 성질에 연결한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "길이조건과 각조건을 각기 정형 성질에 연결한다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "길이조건과 각조건을 각기 정형 성질에 연결한다."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_d73f321d3488f5b6c220bd5cfc4b742cef64f34861434d3447e3c22a24fd6a09",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-079",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "같은 대각선의 절반으로 이등변각",
+      "decisiveStep": "OB=OC에서42도를 전달해 직각과 함께 남은각48도를 정한다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [
+          "CC_RECTANGLE_PROPERTIES",
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmL1": "사각형의 성질",
+        "rpmL2": "여러 가지 사각형",
+        "rpmL3": "직사각형·마름모·정사각형",
+        "rpmL4": "특수 사각형의 대각선 성질",
+        "rpmPrimaryPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질"
+        }
+      },
+      "fieldReview": {
+        "classification": "직사각형·마름모·정사각형 / 특수 사각형의 대각선 성질: 대각선 길이 동등을 삼각형의 밑각으로 바꾸는 한 단계가 필요하다.",
+        "binding": "PT_QUADRILATERAL_PROPERTIES / TPL_SPECIAL_QUADRILATERALS의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "사각형의 대각선 성질이 제공한 두 같은 길이를 이등변삼각형의 같은 밑각으로 바꾸는 단계.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "SEQUENTIAL: 대각선 길이 동등을 삼각형의 밑각으로 바꾸는 한 단계가 필요하다.",
+        "difficulty": "대각선 길이 동등을 삼각형의 밑각으로 바꾸는 한 단계가 필요하다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "대각선 길이 동등을 삼각형의 밑각으로 바꾸는 한 단계가 필요하다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "대각선 길이 동등을 삼각형의 밑각으로 바꾸는 한 단계가 필요하다."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_c23cd794995f2092597e22f1af7b0f35423e538d15e1582f803e5969020177a3",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-080",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "등변사다리꼴 대각선 대칭",
+      "decisiveStep": "같은 대각선 길이로 y를 구하고 대칭인 OB,OC의 밑각에서 x를 얻는다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRAPEZOID",
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "rpmL1": "사각형의 성질",
+        "rpmL2": "여러 가지 사각형",
+        "rpmL3": "사다리꼴",
+        "rpmL4": "등변사다리꼴",
+        "rpmPrimaryPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사다리꼴",
+          "l4": "등변사다리꼴"
+        }
+      },
+      "fieldReview": {
+        "classification": "사다리꼴 / 등변사다리꼴: 알려진 대칭을 길이와 각 계산에 각각 적용한다.",
+        "binding": "PT_QUADRILATERAL_PROPERTIES / TPL_SPECIAL_QUADRILATERALS의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "사각형의 대각선 성질이 제공한 두 같은 길이를 이등변삼각형의 같은 밑각으로 바꾸는 단계.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "SEQUENTIAL: 알려진 대칭을 길이와 각 계산에 각각 적용한다.",
+        "difficulty": "알려진 대칭을 길이와 각 계산에 각각 적용한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "알려진 대칭을 길이와 각 계산에 각각 적용한다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "알려진 대칭을 길이와 각 계산에 각각 적용한다."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_cabeb01d604c16c39e86b56cb545700147864caafc640dfef6d4b2782d418f0a",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-093",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "세 평행선의 대응 선분 비",
+      "decisiveStep": "전체10 중 남은 부분을10−x로 놓고 5:7의 비례식을 푼다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [
+          "CC_PARALLEL_LINES_RATIO",
+          "CC_LINEAR_EQUATIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": "도형의 닮음과 피타고라스 정리",
+        "rpmL2": "평행선과 선분의 길이의 비",
+        "rpmL3": "평행선 사이 선분비",
+        "rpmL4": "여러 평행선",
+        "rpmPrimaryPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "평행선 사이 선분비",
+          "l4": "여러 평행선"
+        }
+      },
+      "fieldReview": {
+        "classification": "평행선 사이 선분비 / 여러 평행선: 부분과 전체의 차를 한 번 표현한 뒤 정형 비례식을 적용한다.",
+        "binding": "PT_PARALLEL_SEGMENT_RATIO / TPL_PARALLEL_SEGMENT_RATIO_GENERAL의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 부분과 전체의 차를 한 번 표현한 뒤 정형 비례식을 적용한다.",
+        "difficulty": "부분과 전체의 차를 한 번 표현한 뒤 정형 비례식을 적용한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "부분과 전체의 차를 한 번 표현한 뒤 정형 비례식을 적용한다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "부분과 전체의 차를 한 번 표현한 뒤 정형 비례식을 적용한다."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_2dbe074968a39a72d85171ebf0ea5ab7438e801d2f2973b29974636e94d37a36",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-085",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "주어진 닮음의 대응각과 변비 판정",
+      "decisiveStep": "길이에는2:3이지만 대응각에는1:1을 적용해 틀린 보기를 고른다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "crossConceptKeys": [
+          "CC_SIMILAR_FIGURES_RATIO"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "legacyLevelCompatibility": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmL1": "도형의 닮음과 피타고라스 정리",
+        "rpmL2": "도형의 닮음",
+        "rpmL3": "닮은 도형",
+        "rpmL4": "대응변·대응각",
+        "rpmPrimaryPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "대응변·대응각"
+        }
+      },
+      "fieldReview": {
+        "classification": "닮은 도형 / 대응변·대응각: 닮음의 정의에 대응각과 대응변을 직접 대조한다.",
+        "binding": "일치하는 등록 TPL이 없어 신규 정의 제안.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 닮음의 정의에 대응각과 대응변을 직접 대조한다.",
+        "difficulty": "닮음의 정의에 대응각과 대응변을 직접 대조한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "닮음의 정의에 대응각과 대응변을 직접 대조한다.",
+      "registrationDebt": [
+        "NEW_TPL: 닮은 도형의 대응변·대응각 성질 판정",
+        "PT/TPL 의미 대응의 공식 등록 대기",
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [
+        "B-E029-SIMILAR-PROPERTIES"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "닮음의 정의에 대응각과 대응변을 직접 대조한다."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_d31a0ac582f6caf524088510149a1a99cb521778936702dd9f903793769d2dc2",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-090",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "닮음비 제곱으로 겉넓이",
+      "decisiveStep": "3:4를9:16으로 바꿔27에16/9를 곱한다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "crossConceptKeys": [
+          "CC_SIMILAR_FIGURES_AREA_VOLUME"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": "도형의 닮음과 피타고라스 정리",
+        "rpmL2": "도형의 닮음",
+        "rpmL3": "닮음의 활용",
+        "rpmL4": "넓이·부피 비",
+        "rpmPrimaryPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "넓이·부피 비"
+        }
+      },
+      "fieldReview": {
+        "classification": "닮음의 활용 / 넓이·부피 비: 겉넓이비 공식을 주어진 비에 바로 적용한다.",
+        "binding": "PT_SIMILAR_FIGURES / TPL_SIMILAR_FIGURES_AREA_VOLUME의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 겉넓이비 공식을 주어진 비에 바로 적용한다.",
+        "difficulty": "겉넓이비 공식을 주어진 비에 바로 적용한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "겉넓이비 공식을 주어진 비에 바로 적용한다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "겉넓이비 공식을 주어진 비에 바로 적용한다."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_ad78c39cb384b8f7c42183424b8cf37172d3c0577ed584c52b42c50bee1ece10",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-090",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "길이비의 제곱 뒤 기둥 부피",
+      "decisiveStep": "높이10:5로 넓이를4배하여 밑넓이24를 얻고 높이10을 곱한다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "crossConceptKeys": [
+          "CC_SIMILAR_FIGURES_AREA_VOLUME"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmL1": "도형의 닮음과 피타고라스 정리",
+        "rpmL2": "도형의 닮음",
+        "rpmL3": "닮음의 활용",
+        "rpmL4": "넓이·부피 비",
+        "rpmPrimaryPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "넓이·부피 비"
+        }
+      },
+      "fieldReview": {
+        "classification": "닮음의 활용 / 넓이·부피 비: 대응 길이에서 밑넓이로 옮긴 후 표준 부피 공식을 적용한다.",
+        "binding": "PT_SIMILAR_FIGURES / TPL_SIMILAR_FIGURES_AREA_VOLUME의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "닮음으로 구한 밑넓이에 각기둥의 높이를 곱하는 별도 부피 개념이 필요. 현행 원기둥/원뿔/다항식 모델 CC와 구별하여 각기둥 부피 CC 제안.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "SEQUENTIAL: 대응 길이에서 밑넓이로 옮긴 후 표준 부피 공식을 적용한다.",
+        "difficulty": "대응 길이에서 밑넓이로 옮긴 후 표준 부피 공식을 적용한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "대응 길이에서 밑넓이로 옮긴 후 표준 부피 공식을 적용한다.",
+      "registrationDebt": [
+        "CC: 각기둥의 부피",
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [
+        "B-E029-CC-PRISM-VOLUME"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "대응 길이에서 밑넓이로 옮긴 후 표준 부피 공식을 적용한다."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_149693b41bb7c7d07f61089bf7e98ff1b5505ac01e2164e1f5b9cae121172453",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-087",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "대응 순서를 바꾼 SAS 닮음",
+      "decisiveStep": "AD:AC와 AE:AB의 비를 맞추고 공통 끼인각으로 ADE와 ACB를 닮음으로 정한다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_SIMILARITY_SAS",
+          "CC_RATIO"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "high",
+        "rpmL1": "도형의 닮음과 피타고라스 정리",
+        "rpmL2": "도형의 닮음",
+        "rpmL3": "삼각형의 닮음",
+        "rpmL4": "SAS",
+        "rpmPrimaryPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "SAS"
+        }
+      },
+      "fieldReview": {
+        "classification": "삼각형의 닮음 / SAS: 작은변과 큰변의 대응 순서를 교차해 선택해야 하는 닮음 구성이다.",
+        "binding": "PT_TRIANGLE_SIMILARITY / TPL_TRIANGLE_SIMILARITY_CRITERIA의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 작은변과 큰변의 대응 순서를 교차해 선택해야 하는 닮음 구성이다.",
+        "difficulty": "작은변과 큰변의 대응 순서를 교차해 선택해야 하는 닮음 구성이다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "작은변과 큰변의 대응 순서를 교차해 선택해야 하는 닮음 구성이다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "작은변과 큰변의 대응 순서를 교차해 선택해야 하는 닮음 구성이다."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_2e129f6257b3e65287cd624222c6ef1b54dbdd4e91b3b1f85363ff4165de1804",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-095",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 평행밑변의 모래시계 닮음비",
+      "decisiveStep": "BD전체25에서 AD10을 빼 AB15를 정하고 밑변 비2:3을 적용한다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "crossConceptKeys": [
+          "CC_PARALLEL_LINES_RATIO",
+          "CC_TRIANGLE_SIMILARITY_AA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmL1": "도형의 닮음과 피타고라스 정리",
+        "rpmL2": "평행선과 선분의 길이의 비",
+        "rpmL3": "비례 활용",
+        "rpmL4": "미지 길이",
+        "rpmPrimaryPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "미지 길이"
+        }
+      },
+      "fieldReview": {
+        "classification": "비례 활용 / 미지 길이: 전체길이와 부분길이를 구별한 뒤 표준 평행선 비례를 적용한다.",
+        "binding": "PT_PARALLEL_SEGMENT_RATIO / TPL_PARALLEL_SEGMENT_RATIO_GENERAL의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 전체길이와 부분길이를 구별한 뒤 표준 평행선 비례를 적용한다.",
+        "difficulty": "전체길이와 부분길이를 구별한 뒤 표준 평행선 비례를 적용한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "전체길이와 부분길이를 구별한 뒤 표준 평행선 비례를 적용한다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "전체길이와 부분길이를 구별한 뒤 표준 평행선 비례를 적용한다."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_01b63ab1f20fee132af096170dcf8e8f4d99023cfa56b2e8b94c225f8240c748",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-099",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "무게중심의 중선·등적 분할 성질 판정",
+      "decisiveStep": "중점과2:1 및 여섯 등적부분은 맞고 꼭짓점 등거리는 보장되지 않음을 고른다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_CENTROID"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmL1": "도형의 닮음과 피타고라스 정리",
+        "rpmL2": "삼각형의 무게중심",
+        "rpmL3": "넓이와 무게중심",
+        "rpmL4": "넓이 분할",
+        "rpmPrimaryPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "넓이 분할"
+        }
+      },
+      "fieldReview": {
+        "classification": "넓이와 무게중심 / 넓이 분할: 기본 무게중심 성질에 보기를 직접 대조한다.",
+        "binding": "일치하는 등록 TPL이 없어 신규 정의 제안.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 기본 무게중심 성질에 보기를 직접 대조한다.",
+        "difficulty": "기본 무게중심 성질에 보기를 직접 대조한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "기본 무게중심 성질에 보기를 직접 대조한다.",
+      "registrationDebt": [
+        "NEW_TPL: 무게중심의 중선·길이비·등적 분할 성질 판정",
+        "PT/TPL 의미 대응의 공식 등록 대기",
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [
+        "B-E029-CENTROID-PROPERTIES"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "기본 무게중심 성질에 보기를 직접 대조한다."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_8990c9c9fa76871210a4690b9e27e1f43bab743072b3235f224d0b2d20d5da58",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-069",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "한 꼭짓각으로 외심각과 내심각",
+      "decisiveStep": "같은 A각80을 외심의 중심각160과 내심 사이각130으로 각각 연결한다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_CIRCUMCENTER",
+          "CC_TRIANGLE_INCENTER",
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "rpmL1": "삼각형의 성질",
+        "rpmL2": "삼각형의 외심과 내심",
+        "rpmL3": "외접원·내접원 활용",
+        "rpmL4": "외심·내심을 이용한 복합도형",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "외심·내심을 이용한 복합도형"
+        }
+      },
+      "fieldReview": {
+        "classification": "외접원·내접원 활용 / 외심·내심을 이용한 복합도형: 두 중심에서 사용하는 표준 각 관계를 구별하여 순차 적용한다.",
+        "binding": "PT_TRIANGLE_CENTERS / TPL_TRIANGLE_CENTERS_COMBINED의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 두 중심에서 사용하는 표준 각 관계를 구별하여 순차 적용한다.",
+        "difficulty": "두 중심에서 사용하는 표준 각 관계를 구별하여 순차 적용한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "두 중심에서 사용하는 표준 각 관계를 구별하여 순차 적용한다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 중심에서 사용하는 표준 각 관계를 구별하여 순차 적용한다."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_296d10458b92438351df35ee9f31908c44448145b806b9c9f7bd2f3cc8fb4abc",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M1-RPM-079",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "정사각형 대각선의 SAS 뒤 외각",
+      "decisiveStep": "대각선45도와 공통DE로20도를 대응각에 전달한 뒤 외각45+20을 구한다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [
+          "CC_SQUARE_PROPERTIES",
+          "CC_TRIANGLE_CONGRUENCE_SAS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_SUPPLEMENTARY_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmL1": "기본 도형",
+        "rpmL2": "작도와 합동",
+        "rpmL3": "삼각형의 합동",
+        "rpmL4": "SAS 합동",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동"
+        }
+      },
+      "fieldReview": {
+        "classification": "공식 M1-RPM079 SAS 선수 Primary로 대응각 전달이 결정 단계. source M2 소속 유지.",
+        "binding": "일치하는 등록 TPL이 없어 신규 정의 제안.",
+        "crossConcept": "SAS로 대응각20도를 얻은 뒤 발문이 지정한 삼각형 외각을 두 떨어진 내각의 합으로 계산한다. 외각 정리는 CC_SUPPLEMENTARY_ANGLES의 명시된 정의에 포함.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "SEQUENTIAL: 합동시킬 두 삼각형을 고른 뒤 옮긴 각과 외각 성질을 결합한다.",
+        "difficulty": "합동시킬 두 삼각형을 고른 뒤 옮긴 각과 외각 성질을 결합한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "합동시킬 두 삼각형을 고른 뒤 옮긴 각과 외각 성질을 결합한다.",
+      "registrationDebt": [
+        "NEW_TPL: 정사각형 대각선상 점의 SAS 대응각 전달",
+        "PT/TPL 의미 대응의 공식 등록 대기",
+        "LINK_MISSING: 2015/중2 수학/M2-05/M2-05-QUADRILATERAL_PROPERTIES → PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음",
+        "LOWER_GRADE_PREREQUISITE: M1-RPM079와 source M2 소속의 exact semantic binding 등록 대기"
+      ],
+      "proposalRefs": [
+        "B-E029-SQUARE-DIAGONAL-SAS"
+      ],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "합동시킬 두 삼각형을 고른 뒤 옮긴 각과 외각 성질을 결합한다."
+      },
+      "semanticSourceScope": "M1-2",
+      "scopeDecision": "LOWER_GRADE_PREREQUISITE"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_b702bf78495a4a65e6c15b164c9e41b299269f9bc253d54868adf87a584785d2",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-077",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 대각 이등분선이 만드는 평행사변형 넓이",
+      "decisiveStep": "두 이등변삼각형에서 밑변ED=BF=3을 정하고 공통높이6으로 작은 평행사변형 넓이를 구한다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_ANGLE_BISECTOR",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_ANGLE_BISECTOR",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_ANGLE_BISECTOR",
+          "CC_TRIANGLE_AREA",
+          "CC_PARALLELOGRAM_PROPERTIES",
+          "CC_ANGLE_BISECTOR_PARALLEL",
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmL1": "사각형의 성질",
+        "rpmL2": "평행사변형",
+        "rpmL3": "넓이와 활용",
+        "rpmL4": "분할도형",
+        "rpmPrimaryPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "넓이와 활용",
+          "l4": "분할도형"
+        }
+      },
+      "fieldReview": {
+        "classification": "넓이와 활용 / 분할도형: 평행선과 이등분선에서 같은 길이를 복원하고 작은 사각형의 판정과 넓이로 연결한다.",
+        "binding": "일치하는 등록 TPL이 없어 신규 정의 제안.",
+        "crossConcept": "기존 CC를 빈 배열로 교정한다. 이등분선·평행각에서 두 이등변삼각형을 구성하고 내부 평행사변형의 밑변을 복원하는 과정은 새 Primary 정의에 포함되어 중복 태그를 제거한다. 현재 넓이는 평행사변형 밑변×공통높이로 계산하므로 삼각형 넓이 CC는 쓰지 않으며, 대각선 이등분만 정의한 CC_PARALLELOGRAM_PROPERTIES도 실제 방법에 쓰이지 않는다.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 평행선과 이등분선에서 같은 길이를 복원하고 작은 사각형의 판정과 넓이로 연결한다.",
+        "difficulty": "평행선과 이등분선에서 같은 길이를 복원하고 작은 사각형의 판정과 넓이로 연결한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "평행선과 이등분선에서 같은 길이를 복원하고 작은 사각형의 판정과 넓이로 연결한다.",
+      "registrationDebt": [
+        "NEW_PT: 평행사변형의 대각 이등분선이 만드는 내부 넓이",
+        "PT/TPL 의미 대응의 공식 등록 대기",
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [
+        "B-E029-OPPOSITE-BISECTOR-AREA"
+      ],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "평행선과 이등분선에서 같은 길이를 복원하고 작은 사각형의 판정과 넓이로 연결한다."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_40ab56f5f5e00e5cae9652c7b1173eba524b4d1909ccdc687ddc335d37ca6469",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-086",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "빗변에 내린 높이의 AA 닮음",
+      "decisiveStep": "ABD와 CBA의 직각과 공통각을 대응시켜 AB²=BD·BC를 세운다.",
+      "before": {
+        "curriculum": null,
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeSource": {
+        "curriculum": null,
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "beforeMetadata": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [
+          "CC_RIGHT_TRIANGLE_SIMILARITY",
+          "CC_TRIANGLE_SIMILARITY_AA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "curriculum": "2015",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "rpmL1": "도형의 닮음과 피타고라스 정리",
+        "rpmL2": "도형의 닮음",
+        "rpmL3": "삼각형의 닮음",
+        "rpmL4": "AA",
+        "rpmPrimaryPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "AA"
+        }
+      },
+      "fieldReview": {
+        "classification": "삼각형의 닮음 / AA: 두 직각삼각형의 대응을 한 번 확인한 뒤 표준 비례식으로 길이를 계산한다.",
+        "binding": "PT_TRIANGLE_SIMILARITY / TPL_TRIANGLE_SIMILARITY_CRITERIA의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
+        "condition": "주어진 도형 조건과 지정 설명방법은4칸에 보존. 미지수·해·후보값의 별도 값·부호·범위 제한은 없어 canonical Condition NOT_APPLICABLE.",
+        "integration": "NONE: 두 직각삼각형의 대응을 한 번 확인한 뒤 표준 비례식으로 길이를 계산한다.",
+        "difficulty": "두 직각삼각형의 대응을 한 번 확인한 뒤 표준 비례식으로 길이를 계산한다.",
+        "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
+      },
+      "reason": "두 직각삼각형의 대응을 한 번 확인한 뒤 표준 비례식으로 길이를 계산한다.",
+      "registrationDebt": [
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 직각삼각형의 대응을 한 번 확인한 뒤 표준 비례식으로 길이를 계산한다."
+      }
+    }
+  ],
+  "topicSummary": [
+    {
+      "rpmL1": "삼각형의 성질",
+      "rpmL2": "이등변삼각형",
+      "ordinals": [
+        1,
+        2
+      ]
+    },
+    {
+      "rpmL1": "삼각형의 성질",
+      "rpmL2": "삼각형의 성질",
+      "ordinals": [
+        4
+      ]
+    },
+    {
+      "rpmL1": "삼각형의 성질",
+      "rpmL2": "삼각형의 외심과 내심",
+      "ordinals": [
+        5,
+        6,
+        21
+      ]
+    },
+    {
+      "rpmL1": "사각형의 성질",
+      "rpmL2": "평행사변형",
+      "ordinals": [
+        8,
+        9,
+        10,
+        23
+      ]
+    },
+    {
+      "rpmL1": "사각형의 성질",
+      "rpmL2": "여러 가지 사각형",
+      "ordinals": [
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "rpmL1": "도형의 닮음과 피타고라스 정리",
+      "rpmL2": "평행선과 선분의 길이의 비",
+      "ordinals": [
+        14,
+        19
+      ]
+    },
+    {
+      "rpmL1": "도형의 닮음과 피타고라스 정리",
+      "rpmL2": "도형의 닮음",
+      "ordinals": [
+        15,
+        16,
+        17,
+        18,
+        24
+      ]
+    },
+    {
+      "rpmL1": "도형의 닮음과 피타고라스 정리",
+      "rpmL2": "삼각형의 무게중심",
+      "ordinals": [
+        20
+      ]
+    },
+    {
+      "rpmL1": "기본 도형",
+      "rpmL2": "작도와 합동",
+      "ordinals": [
+        22
+      ]
+    }
+  ],
+  "proposals": [
+    {
+      "id": "B-E029-RIGHT-PAIR",
+      "type": "NEW_TPL",
+      "name": "RHS·RHA 조건으로 직각삼각형 합동 쌍 비교",
+      "definition": "여러 직각삼각형의 빗변·직각변·예각 정보를 비교하고 RHS 또는 RHA로 같은 크기인 쌍과 불일치 대상을 판정한다.",
+      "parent": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "distinguishingCriteria": "E026의 조건 충분성 판정과 같은 상위 비교 목표이며 본 입력은 여러 실제 그림의 매칭이다. 단일 RHS TPL만으로 RHA 쌍을 제외하지 않음.",
+      "existingCandidatesReviewed": [
+        "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE"
+      ],
+      "ordinals": [
+        3
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_2617c93580d88efbf74f9b780f119735d761afb3fbb1f32c9cbdff6ba552574e"
+      ]
+    },
+    {
+      "id": "B-E029-RIGHT-PAIR-RPM",
+      "type": "RPM_LEAF_GAP",
+      "name": "여러 직각삼각형의 합동 쌍 분류",
+      "definition": "RHS·RHA 조건을 혼합 비교하여 합동인 쌍과 남는 도형을 식별한다.",
+      "parent": "직각삼각형 합동",
+      "distinguishingCriteria": "한 기준만 적용하는70/71과 구분.",
+      "existingCandidatesReviewed": [
+        "M2-RPM-070",
+        "M2-RPM-071"
+      ],
+      "ordinals": [
+        3
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_2617c93580d88efbf74f9b780f119735d761afb3fbb1f32c9cbdff6ba552574e"
+      ]
+    },
+    {
+      "id": "B-E029-TANGENT-RPM",
+      "type": "RPM_LEAF_GAP",
+      "name": "원의 접선 길이",
+      "definition": "원 밖 한 점에서 그은 접선의 길이 동등을 이용해 삼각형 변의 접선조각 길이를 구한다.",
+      "parent": "원과 접선",
+      "distinguishingCriteria": "E010Q11 공백 재사용. 내심 각이등분/등거리 leaf와 달리 외부점 접선길이가 primary.",
+      "existingCandidatesReviewed": [
+        "M2-RPM-066",
+        "M2-RPM-067",
+        "PT_CIRCLE_TANGENT"
+      ],
+      "ordinals": [
+        7
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_72e49a2a2750e5d84eb7fafebe43c1fc6f7a06148692d51525383206e8de0901"
+      ]
+    },
+    {
+      "id": "B-E029-SIMILAR-PROPERTIES",
+      "type": "NEW_TPL",
+      "name": "닮은 도형의 대응변·대응각 성질 판정",
+      "definition": "닮음이 주어진 두 도형에서 대응변 길이비는 닮음비, 대응각은 같음을 적용하여 복수 진술의 참·거짓을 판단한다.",
+      "parent": "PT_SIMILAR_FIGURES",
+      "distinguishingCriteria": "기존RATIO는 대응변·둘레 계산이 중심. 각의 비와 변비의 차이를 판정하는 목표를 명시.",
+      "existingCandidatesReviewed": [
+        "TPL_SIMILAR_FIGURES_RATIO",
+        "TPL_TRIANGLE_SIMILARITY_CRITERIA"
+      ],
+      "ordinals": [
+        15
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_2dbe074968a39a72d85171ebf0ea5ab7438e801d2f2973b29974636e94d37a36"
+      ]
+    },
+    {
+      "id": "B-E029-CC-PRISM-VOLUME",
+      "type": "CC",
+      "name": "각기둥의 부피",
+      "definition": "각기둥의 부피를 밑면의 넓이와 높이의 곱으로 계산한다.",
+      "parent": "입체도형의 부피",
+      "distinguishingCriteria": "현행 CC_GEOMETRIC_AREA_VOLUME_FORMULA는 길이를 x의 식으로 쓰는 정의이며 CC_CYLINDER_VOLUME 원기둥/CC_CONE_VOLUME 원뿔과 구별. 한국어 부피·밑넓이 및 VOLUME 키를 모두 대조함.",
+      "existingCandidatesReviewed": [
+        "CC_GEOMETRIC_AREA_VOLUME_FORMULA",
+        "CC_CYLINDER_VOLUME",
+        "CC_CONE_VOLUME",
+        "CC_VOLUME_MODELING_POLYNOMIAL"
+      ],
+      "ordinals": [
+        17
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_ad78c39cb384b8f7c42183424b8cf37172d3c0577ed584c52b42c50bee1ece10"
+      ]
+    },
+    {
+      "id": "B-E029-CENTROID-PROPERTIES",
+      "type": "NEW_TPL",
+      "name": "무게중심의 중선·길이비·등적 분할 성질 판정",
+      "definition": "무게중심이 만드는 중점, 중선2:1, 여섯 삼각형 등적 분할을 이용해 진술을 판정하고 꼭짓점 등거리 등의 다른 중심 성질과 구별한다.",
+      "parent": "PT_COORD_CENTROID",
+      "distinguishingCriteria": "좌표평균/역산 및 다른도형조건 결합APPLICATION와 달리 무게중심 자체의 기본 성질 진위판정.",
+      "existingCandidatesReviewed": [
+        "TPL_CENTROID_DIRECT",
+        "TPL_CENTROID_REVERSE",
+        "TPL_CENTROID_APPLICATION"
+      ],
+      "ordinals": [
+        20
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_01b63ab1f20fee132af096170dcf8e8f4d99023cfa56b2e8b94c225f8240c748"
+      ]
+    },
+    {
+      "id": "B-E029-SQUARE-DIAGONAL-SAS",
+      "type": "NEW_TPL",
+      "name": "정사각형 대각선상 점의 SAS 대응각 전달",
+      "definition": "대각선 위 점과 이웃한 두 꼭짓점으로 만든 삼각형 쌍에서 같은변·공통변·45도 SAS를 적용하여 알려졌거나 계산한 각을 대응각에 옮긴다.",
+      "parent": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+      "distinguishingCriteria": "B-E026-SQUARE-DIAGONAL-SAS 같은 골격. 특수사각형 성질만으로는 요구된 합동 각전달을 대체할 수 없음.",
+      "existingCandidatesReviewed": [
+        "TPL_M1_CONGRUENCE_DATA_TRANSFER_SQUARE_CONGRUENCE_TRANSFER",
+        "TPL_SPECIAL_QUADRILATERALS"
+      ],
+      "ordinals": [
+        22
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_296d10458b92438351df35ee9f31908c44448145b806b9c9f7bd2f3cc8fb4abc"
+      ]
+    },
+    {
+      "id": "B-E029-OPPOSITE-BISECTOR-AREA",
+      "type": "NEW_PT",
+      "name": "평행사변형의 대각 이등분선이 만드는 내부 넓이",
+      "definition": "평행사변형의 마주 보는 두 각의 이등분선에서 이등변삼각형을 찾아 밑변 조각을 복원하고, 이 두 이등분선과 대변이 만드는 작은 평행사변형의 공통높이로 넓이를 구한다.",
+      "parent": "M2-RPM077 분할도형",
+      "distinguishingCriteria": "기존 MG 두이등분선 유형은 겹치는 선분 길이가 목표이며 본 문항은 마주보는 각의 이등분선과 작은 평행사변형 넓이가 목표. 내부점 삼각형 넓이·조건을 찾는 등적 역문제와도 구별.",
+      "existingCandidatesReviewed": [
+        "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+        "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+        "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+        "TPL_QUADRILATERAL_PROPERTIES"
+      ],
+      "ordinals": [
+        23
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_b702bf78495a4a65e6c15b164c9e41b299269f9bc253d54868adf87a584785d2"
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "type": "VISUAL_READ",
+      "ordinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "evidence": "원본의23개 그림을 실제 확인. Q4 그림 안의 전체 증명문, Q3/10 다섯 보기 도형, Q19 BD전체25와AD10을 구별."
+    },
+    {
+      "type": "SOURCE_IMAGE_NOTE",
+      "ordinal": 12,
+      "note": "그림 D 부근의 작은 각표시는 상단변과 대각선 사이로 보이나 발문은 BDC를 명시한다. 메타는 명시한 BDC 목표와 기존해설48도를 기준으로 하며 그림표시를 수정하지 않음."
+    },
+    {
+      "type": "INDEPENDENT_DIFFICULTY_RECHECK",
+      "reviewer": "ROOT",
+      "ordinals": [
+        1,
+        2,
+        15,
+        20,
+        22,
+        23
+      ],
+      "result": "BORDERLINE_ACCEPTABLE",
+      "evidence": "실제 발문/해설 독립 재독 후 각각 외각환산, 등각→등변, 닮음정의 직접대조, 무게중심성질 직접대조, 지정SAS/외각 연결, 이등분선→작은평행사변형과 넓이 연결에 근거하여 bucket/legacy 유지 수용."
+    },
+    {
+      "type": "INDEPENDENT_SAMPLE_REPAIR",
+      "reviewer": "C",
+      "ordinals": [
+        4,
+        17,
+        23
+      ],
+      "result": "세 문항 주분류/공백/난도 독립수용. Q4 최초 두변동등 condition 추가; Q23 평행사변형 NAMED quote 보강, 높이 IMPLIED와 발문 지정근거 보강, CC 제거 설명 정확화. 원표본 보존."
+    }
+  ]
+}

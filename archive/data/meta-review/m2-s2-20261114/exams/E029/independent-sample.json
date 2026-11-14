@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E029",
+  "examiner": "C",
+  "author": "B",
+  "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "a608b1a6773e4dfd624eb782424b98e6427ac5f7",
+  "reviewSha256": "70890c6b29b23c5422c0f16d1b42b97814345ae4dcdf95c9addaa4edbe478f18",
+  "fourSlotSha256": "ab9e270d011cc000eb93c34e1787962e77c1b085fd4588ac121988ce1b9892aa",
+  "ordinals": [
+    4,
+    17,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_bb041a51a6cb613d8a6d33bb2ef938a5d31aea93e4005a3dbf2055c2c64018fb",
+      "verdict": "REPAIR",
+      "reason": "그림의 두 직각삼각형을 뒤집어 한 변을 겹친 구성과 빈칸을 모두 읽었다. RHS는 증명할 성질이고 실제 빈칸의 합동 기준은 이등변삼각형 밑각으로 확보한 RHA이므로 primary 교정과 CC_ISOSCELES_TRIANGLE만 남기는 판단이 정확하다. 주어진 증명 흐름의 빈칸 완성이므로2도 타당하다. 다만 실제 처음 주어진 두 변의 같은 길이 조건을 4칸에 명시하면 입력 구조가 보존된다.",
+      "repairs": [
+        {
+          "field": "4slot.condition",
+          "instruction": "상등을 추가하고 원문의 빗변의 길이와 다른 한 변의 길이가 각각 같은 문구를 인용해 증명 입력의 동일 길이 조건을 보존할 것."
+        }
+      ],
+      "imageViewed": true,
+      "quotesExact": true,
+      "quoteCount": 4,
+      "fourSlotCriticalDefect": false,
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL",
+        "accepted": true
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_ad78c39cb384b8f7c42183424b8cf37172d3c0577ed584c52b42c50bee1ece10",
+      "verdict": "PASS",
+      "reason": "그림의 대응 높이10과5, 원문의 작은 밑면 넓이6을 확인했다. 닮음비 제곱으로 큰 밑넓이를 얻는 것이 primary이고 각기둥 부피 공식은 후속 보조이다. CC_GEOMETRIC_AREA_VOLUME_FORMULA는 x의 식으로 표현하는 대수 모델, CYLINDER/CONE은 각기둥과 다른 도형, VOLUME_MODELING_POLYNOMIAL은 함수 최대값 모델이라 exact 각기둥 부피 CC 공백 제안이 맞다. 4칸 given 넓이와 goal 부피, method 닮음/부피도 분리되어 있다.",
+      "repairs": [],
+      "imageViewed": true,
+      "quotesExact": true,
+      "quoteCount": 6,
+      "fourSlotCriticalDefect": false,
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL",
+        "accepted": true
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_b702bf78495a4a65e6c15b164c9e41b299269f9bc253d54868adf87a584785d2",
+      "verdict": "REPAIR",
+      "reason": "그림의 마주보는 각 이등분선 두 개는 서로 다른 평행 대변 위의 조각 ED,BF를 정하고 내부 평행사변형을 만든다. 기존 MG 겹치는 한 선분 길이 유형과 구조가 다르고, 내부점 삼각형 넓이합 유형 및 등적이 되게 하는 평행조건 찾기 역유형과도 다르다. NEW_PT/RPM077 제안에 동의하며 제안 정의가 두 이등변·밑변복원·평행사변형 판정·공통높이를 포함해 CC 중복을 제거할 수 있다. 목표 넓이/방법 분리는 맞지만 두 method의 NAMED quote 범위와 CC 제거 설명을 소형 정밀화해야 한다.",
+      "repairs": [
+        {
+          "field": "4slot.method",
+          "instruction": "평행사변형 NAMED 인용을 한 쌍의 대변이 평행하고 길이가 같아 사각형 $EBFD$는 평행사변형이다까지 넓히거나 IMPLIED+정의 근거로 전환. 높이의 인용 $h=6$은 명칭이 없으므로 stem의 높이는 h 지정과 연결한 IMPLIED justification으로 명시하거나 실제 높이 명칭이 있는 인용으로 보강할 것."
+        },
+        {
+          "field": "fieldReview.crossConcept",
+          "instruction": "기존 빈 배열 유지 문구는 before CC가 존재하므로 실제 제거 사유로 정정. 새 primary 정의에 포함된 이등변/이등분선과 삼각형넓이 미사용·대각선 이등분 CC 미사용을 구분해 기록할 것."
+        }
+      ],
+      "imageViewed": true,
+      "quotesExact": true,
+      "quoteCount": 7,
+      "fourSlotCriticalDefect": false,
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "accepted": true
+      }
+    }
+  ],
+  "overallStatus": "REPAIR",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "independent": true,
+  "notes": [
+    "세 문항 발문·선지·기존 해설·그림 실물과 관련 ACTIVE 전체 정의를 대조했다. 메타의 핵심 주방법·공백·난도는 수용하며 4칸 명칭 근거/조건 및 변경 설명만 수리 권고. 저자 파일과 학생 source를 수정하지 않았다."
+  ]
+}

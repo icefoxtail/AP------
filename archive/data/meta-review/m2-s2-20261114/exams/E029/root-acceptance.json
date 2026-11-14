@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E029",
+  "owner": "B",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "a608b1a6773e4dfd624eb782424b98e6427ac5f7",
+  "sourceSha256": "210efd28d8cc6dbe82b163191e9be2a617e3d603a638146939ad6089a71e6ad8",
+  "reviewSha256": "cfaa00f0d5960c0007c3513e06faeaf2cc5b5d7ce508958afb7f8d149af2721a",
+  "fourSlotSha256": "8808249fce12cd7aed2e806c3ed7a87bfbbb459822f981e84a18d480f6f0aa87",
+  "independentSampleSha256": "2497317a71641b3c4a4dc32bbd0caceeaaceea80a7084a2ffa31eadde96db549",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE",
+  "operationalStatus": "REGISTRATION_PENDING",
+  "sampleReviewer": "C",
+  "sampleOrdinals": [
+    4,
+    17,
+    23
+  ],
+  "sampleResolution": [
+    {
+      "ordinal": 4,
+      "resolution": "RHS is the property being proved, while RHA is the actual criterion used inside the supplied argument. Preserve the corrected primary and add the exact equal-hypotenuse-and-leg input condition to the four-slot annotation."
+    },
+    {
+      "ordinal": 17,
+      "resolution": "Similarity squared supplies the required base area. The following prism volume formula is a distinct support concept not exactly covered by the existing algebraic-model or cone/cylinder concepts; preserve the new concept proposal."
+    },
+    {
+      "ordinal": 23,
+      "resolution": "Opposite bisectors create two equal opposite segments and an inner parallelogram; this differs from a single overlap-segment goal. Retain the new primary and RPM077. The author repaired the explicit/paraphrased method evidence and explained which old supporting concepts were removed because they are internal to the new primary or unused."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "Convert the given exterior angle to an interior angle before using equal base angles."
+    },
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "Calculate the missing angle and use the converse equal-angle relation to recover a side."
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "Directly compare the statements to equal corresponding angles and proportional corresponding sides."
+    },
+    {
+      "ordinal": 20,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "Directly compare the offered statements to standard median, area and centroid properties."
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "Select the two triangles needed for the prescribed SAS argument and transfer the angle into the prescribed exterior-angle relation."
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "Recover equal segments from the bisectors, establish the smaller parallelogram and transfer the common height to its area."
+    }
+  ],
+  "notes": []
+}

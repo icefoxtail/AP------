@@ -3366,7 +3366,8 @@
           "sha256": "686f94c07b8765843620da1cdbf78e2fcbd5891a3929a038580047730ee7807a"
         }
       },
-      "remoteSaveState": "PENDING_READBACK"
+      "remoteSaveState": "VERIFIED",
+      "remoteCommit": "503748dfa80d8e2ba8121802976c706b04a886d7"
     },
     {
       "examId": "E025",
@@ -3692,12 +3693,126 @@
         23,
         24
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": null,
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "57f890adfe0aad85f89aa5f4fb3d3a4f77ca891bc230f55ca0c0b433395fc68d"
+      "uidSetSha256": "57f890adfe0aad85f89aa5f4fb3d3a4f77ca891bc230f55ca0c0b433395fc68d",
+      "reviewedQuestionCount": 24,
+      "registrationPendingQuestionCount": 24,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 0,
+      "sourceHoldOrdinals": [],
+      "changedQuestionCount": 24,
+      "fourSlotQuestionCount": 24,
+      "independentSampleOrdinals": [
+        4,
+        17,
+        23
+      ],
+      "independentReviewer": "C",
+      "topicSummary": [
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "이등변삼각형",
+          "ordinals": [
+            1,
+            2
+          ]
+        },
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "삼각형의 성질",
+          "ordinals": [
+            4
+          ]
+        },
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "삼각형의 외심과 내심",
+          "ordinals": [
+            5,
+            6,
+            21
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "평행사변형",
+          "ordinals": [
+            8,
+            9,
+            10,
+            23
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "여러 가지 사각형",
+          "ordinals": [
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선과 선분의 길이의 비",
+          "ordinals": [
+            14,
+            19
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            15,
+            16,
+            17,
+            18,
+            24
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            20
+          ]
+        },
+        {
+          "rpmL1": "기본 도형",
+          "rpmL2": "작도와 합동",
+          "ordinals": [
+            22
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E029/four-slot.json",
+          "sha256": "8808249fce12cd7aed2e806c3ed7a87bfbbb459822f981e84a18d480f6f0aa87"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E029/independent-sample.json",
+          "sha256": "2497317a71641b3c4a4dc32bbd0caceeaaceea80a7084a2ffa31eadde96db549"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E029/mechanical-check.json",
+          "sha256": "ea198cddf7eb55e1cd00d3366769daf3769507438751208ed41e2e74f03bced2"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E029/review.json",
+          "sha256": "cfaa00f0d5960c0007c3513e06faeaf2cc5b5d7ce508958afb7f8d149af2721a"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E029/root-acceptance.json",
+          "sha256": "6e35db131209805070f278ef79c772ddb74a7a4a9b673f0260fbea36146107b2"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK"
     },
     {
       "examId": "E030",
@@ -5380,11 +5495,11 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 24,
-    "reviewedQuestions": 571,
+    "reviewedExams": 25,
+    "reviewedQuestions": 595,
     "unresolvedQuestions": 0,
-    "remainingExams": 43,
-    "remainingQuestions": 1033
+    "remainingExams": 42,
+    "remainingQuestions": 1009
   },
-  "lastVerifiedExamCommit": "43df030a2384ed163bb2a03494f4654814fd4329"
+  "lastVerifiedExamCommit": "503748dfa80d8e2ba8121802976c706b04a886d7"
 }
