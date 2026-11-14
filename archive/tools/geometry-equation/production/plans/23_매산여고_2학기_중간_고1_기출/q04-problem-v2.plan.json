@@ -1,0 +1,128 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "벤다이어그램 선택지",
+  "panels": [
+    {
+      "caption": {
+        "math": "1"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "shade": "A∪B",
+          "showUniverse": false
+        }
+      }
+    },
+    {
+      "caption": {
+        "math": "2"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "shade": "(A∩B)∪(A∩C)∪(B∩C)",
+          "showUniverse": false
+        }
+      }
+    },
+    {
+      "caption": {
+        "math": "3"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "shade": "A",
+          "showUniverse": false
+        }
+      }
+    },
+    {
+      "caption": {
+        "math": "4"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "shade": "(A∩C)∪(B∩C)",
+          "showUniverse": false
+        }
+      }
+    },
+    {
+      "caption": {
+        "math": "5"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "shade": "(B-A)∪(A∩C)",
+          "showUniverse": false
+        }
+      }
+    }
+  ],
+  "newVisualInformation": [],
+  "accessibilityDescription": "다섯 벤다이어그램에 A, B, C의 서로 다른 부분이 회색으로 표시되어 있다."
+}

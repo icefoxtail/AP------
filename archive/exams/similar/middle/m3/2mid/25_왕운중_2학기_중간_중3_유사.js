@@ -273,7 +273,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "사분원에서 $50^\\circ$의 동경에 대해\n$x = \\cos 50^\\circ = 0.64, y = \\sin 50^\\circ = 0.77$\n$\\tan 50^\\circ \\approx 1.19$\n\n여각 관계에 의해\n$\\cos 40^\\circ = \\sin 50^\\circ = 0.77$\n$\\sin 40^\\circ = \\cos 50^\\circ = 0.64$\n\n따라서 $\\cos 40^\\circ = 0.64$로 표기한 ②는 옳지 않다.\n정답은 ②이다.",
-    "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q7.svg",
+    "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q07-problem-v2.svg",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",

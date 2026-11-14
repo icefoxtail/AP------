@@ -788,7 +788,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "삼각기둥의 전개도가 [그림 1]과 같다. 삼각기둥의 겉넓이가 [그림 2]와 같이 밑면이 사다리꼴인 사각기둥의 겉넓이의 $\\dfrac{1}{2}$배일 때, 사각기둥의 높이는? (5점)<br><br><img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q14-student.svg\" style=\"max-width: 480px; display: block; margin: 10px 0;\">",
+    "content": "삼각기둥의 전개도가 [그림 1]과 같다. 삼각기둥의 겉넓이가 [그림 2]와 같이 밑면이 사다리꼴인 사각기둥의 겉넓이의 $\\dfrac{1}{2}$배일 때, 사각기둥의 높이는? (5점)<br><br><div style=\"display:flex;gap:8px;align-items:center;justify-content:center\"><div style=\"flex:1; text-align:center\">그림 1<img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q14-net-problem-v2.svg\" alt=\"삼각기둥 전개도\" style=\"height:auto; width:100%; max-width:175px; margin:0 auto 4px\"></div><div style=\"flex:1; text-align:center\">그림 2<img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q14-prism-problem-v2.svg\" alt=\"사다리꼴을 밑면으로 하는 사각기둥\" style=\"height:auto; width:100%; max-width:175px; margin:0 auto 4px\"></div></div>",
     "choices": [
       "$8\\text{ cm}$",
       "$10\\text{ cm}$",
