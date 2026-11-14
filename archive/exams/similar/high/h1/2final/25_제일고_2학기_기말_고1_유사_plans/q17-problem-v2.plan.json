@@ -1,0 +1,258 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "curves": [
+      {
+        "hideLabels": [
+          "start"
+        ],
+        "id": "f",
+        "kind": "SQRT",
+        "label": "y=sqrt(kx)",
+        "radicand": [
+          "0",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "9/2"
+        ]
+      },
+      {
+        "hideLabels": [
+          "start"
+        ],
+        "id": "g",
+        "kind": "SQRT",
+        "label": "y=sqrt(x)",
+        "radicand": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "9/2"
+        ]
+      }
+    ],
+    "family": "multi-curve",
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "3/4",
+          "y": "3/2"
+        },
+        {
+          "id": "B",
+          "x": "3/4",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "9/4",
+          "y": "0"
+        },
+        {
+          "id": "D",
+          "x": "9/4",
+          "y": "3/2"
+        },
+        {
+          "id": "E",
+          "x": "3",
+          "y": "3"
+        }
+      ],
+      "segments": [
+        {
+          "from": "A",
+          "id": "ab",
+          "to": "B"
+        },
+        {
+          "from": "B",
+          "id": "bc",
+          "to": "C"
+        },
+        {
+          "from": "C",
+          "id": "cd",
+          "to": "D"
+        },
+        {
+          "from": "D",
+          "id": "da",
+          "to": "A"
+        }
+      ]
+    },
+    "domain": [
+      -1.0434782608695654,
+      5.043478260869565
+    ],
+    "viewport": [
+      -1.0434782608695654,
+      5.043478260869565,
+      -1.0489130434782612,
+      4.548913043478262
+    ],
+    "shapeIntent": "OVERVIEW",
+    "overviewPolicy": "MULTI_CURVE_OVERVIEW_v1",
+    "equalUnits": true,
+    "axisRatio": 1,
+    "plotCanvas": {
+      "width": 448,
+      "height": 412
+    },
+    "multiCurveFeatures": {
+      "schemaVersion": "MULTI_CURVE_FEATURES_v1",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "SQRT",
+          "interval": [
+            "0",
+            "9/2"
+          ],
+          "radicand": [
+            "0",
+            "3"
+          ],
+          "amplitude": "1",
+          "offset": "0",
+          "start": {
+            "x": "0",
+            "y": "0",
+            "drawn": true
+          },
+          "hideLabels": [
+            "start"
+          ],
+          "label": "y=sqrt(kx)",
+          "branches": [
+            {
+              "side": "FUNCTION",
+              "xInterval": [
+                "0",
+                "9/2"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g",
+          "kind": "SQRT",
+          "interval": [
+            "0",
+            "9/2"
+          ],
+          "radicand": [
+            "0",
+            "1"
+          ],
+          "amplitude": "1",
+          "offset": "0",
+          "start": {
+            "x": "0",
+            "y": "0",
+            "drawn": true
+          },
+          "hideLabels": [
+            "start"
+          ],
+          "label": "y=sqrt(x)",
+          "branches": [
+            {
+              "side": "FUNCTION",
+              "xInterval": [
+                "0",
+                "9/2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "overlaysFeatures": {
+      "schemaVersion": "GRAPH_OVERLAYS_FEATURES_v1",
+      "points": [
+        {
+          "id": "A",
+          "x": 0.75,
+          "y": 1.5,
+          "xExact": "3/4",
+          "yExact": "3/2"
+        },
+        {
+          "id": "B",
+          "x": 0.75,
+          "y": 0,
+          "xExact": "3/4",
+          "yExact": "0"
+        },
+        {
+          "id": "C",
+          "x": 2.25,
+          "y": 0,
+          "xExact": "9/4",
+          "yExact": "0"
+        },
+        {
+          "id": "D",
+          "x": 2.25,
+          "y": 1.5,
+          "xExact": "9/4",
+          "yExact": "3/2"
+        },
+        {
+          "id": "E",
+          "x": 3,
+          "y": 3,
+          "xExact": "3",
+          "yExact": "3"
+        }
+      ],
+      "lines": [],
+      "segments": [
+        {
+          "id": "ab",
+          "from": "A",
+          "to": "B",
+          "dashed": false
+        },
+        {
+          "id": "bc",
+          "from": "B",
+          "to": "C",
+          "dashed": false
+        },
+        {
+          "id": "cd",
+          "from": "C",
+          "to": "D",
+          "dashed": false
+        },
+        {
+          "id": "da",
+          "from": "D",
+          "to": "A",
+          "dashed": false
+        }
+      ],
+      "guides": [],
+      "polygons": []
+    }
+  },
+  "caption": "두 무리함수 그래프와 정사각형 ABCD, 주어진 점 E",
+  "sourceConditions": [
+    "위 그래프는 점 E(3,3)을 지나고 ABCD는 정사각형이며 A,D는 각각 위, 아래 그래프 위에 있다."
+  ],
+  "newVisualInformation": [
+    "문제에 주어진 두 그래프와 정사각형의 관계"
+  ]
+}

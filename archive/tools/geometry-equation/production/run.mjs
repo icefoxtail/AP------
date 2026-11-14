@@ -41,7 +41,7 @@ async function runFrozenInWorkspace(root, request, workspace) {
   if(action==='construction'){
     const peer=reconstruct(plan.mathPlan);observation={...compareReconstruction(model,peer),peer};axis='CINDY_RECONSTRUCTION';
   }else{
-    const response=await pythonWorker({graphPlan:plan.graphPlan,svg:model.svg,transform:model.transform},{script:fileURLToPath(new URL('graph-observer-worker.py',import.meta.url))});
+    const response=await pythonWorker({action:'modelBinding',graphPlan:plan.graphPlan,svg:model.svg,transform:model.transform},{script:fileURLToPath(new URL('graph-observer-worker.py',import.meta.url))});
     observation=response.result;axis='GRAPH_INTERIOR_BOUND';
   }
   const auditReceipt=commitStage(root,{stage:'AUDIT',key:objectSha({key,fingerprint,invocation:crypto.randomUUID()}),provenance,outputs:{'observation.json':canonicalJson(observation)}});
