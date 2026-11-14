@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E013",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "b14cd8a127d003d193160047f8b8022b55a37cb2",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "878321180f39f053ea8f8114bff7351c04514941af126d64ddf482f8848137c4",
+  "fourSlotInputSha256": "4221dbfb3c3130f9d9e9985cbcce04069a1d40cb1e7929d3059e6ab021d5534c",
+  "sampleOrdinals": [
+    8,
+    12,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_207a3ceb971ccdc2f23334ba528ac7c6b6c7dd348a9369452753e726ebbf4869",
+      "verdict": "NEEDS_REVISION",
+      "metadataReview": "각 이등분선 대변비의 ACTIVE PT_TRIANGLE_ANGLE_BISECTOR/TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO 및 CC_PARALLEL_LINES_RATIO가 실제 결정 단계와 일치하며 RPM leaf 공백 분리 타당. 다만 비1:2→평행선으로 CE8/AE4→둘째 이등분선으로 BC12→DC8은 일방향 결과 전달이므로 integrationPattern은 INTERDEPENDENT보다 SEQUENTIAL이 정확하다.",
+      "fourSlotReview": "삼각형·길이·각의이등분선정리·닮음의 현재 정확 인용은 타당. condition에는 첫 각의 등각만 들어 있으므로 둘째 등각과 DE∥AB도 추가하면 실제 두 이등분선 및 평행 표시를 온전히 보존한다.",
+      "difficultyReview": "두 이등분선의 비와 평행선 비례를 연결하여 전체 길이를 복원하는 bucket4/상 유지 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 5,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/A/tmp/E013/8.png"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_7f6b2a2477b2e2d8cc2b2f1fb75fa504f068d8abc725b32f191a3c413bdbab9d",
+      "verdict": "PASS",
+      "metadataReview": "무게중심 2:1 외에 이등변삼각형의 두 중선이 같은 길이임을 SAS로 연결하므로 TPL_CENTROID_APPLICATION 및 CC_TRIANGLE_CONGRUENCE는 정확하다. 순수 중선 길이 신규 TPL과 구별된다.",
+      "fourSlotReview": "그림의 D/E 위치, G 교점, EG5 표시와 실제 발문/해설을 대조했다. 중점·길이·무게중심·대칭 중선의 method와 정확 인용은 타당.",
+      "difficultyReview": "서로 다른 중선 길이의 동일 관계를 도입하여 2:1을 전달하는 bucket3/중 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 7,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/A/tmp/E013/12.png"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_d955df581b45ac8df8403eb2c68cdf330f02c4f40f8b1882b487bdbccee6e956",
+      "verdict": "PASS_WITH_RELATED_REPAIR",
+      "metadataReview": "미지수가 분자와 분모에 함께 들어가는 x/(x+8)=2/3에서 개수를 역산한다. 현재 확률 PT/TPL의 정의는 확률을 구하는 목표에 한정하여 NEW_PT/RPM leaf 공백 분리는 타당하다. E005 Q14의 7/(12+n)=1/3도 분모만 미지인 같은 상위 역산 골격이다. E005는 기존 검토에서 기본확률 PT/TPL을 유지했으므로 동결 해제 후 동일 제안으로 교정할 근거를 ROOT에 전달한다.",
+      "fourSlotReview": "확률 given, 개수 goal, 수학적확률·분수방정식 method가 실제 목표와 일치한다. 모든 정확 인용 확인.",
+      "difficultyReview": "전체에도 미지수가 들어감을 해석해 식1개로 역산하는 bucket2/중 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 4,
+      "imageViewed": null
+    }
+  ],
+  "approvalScope": "metadata/4slot independent sample only; no independent full-exam solution verification",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}

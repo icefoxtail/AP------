@@ -693,8 +693,8 @@
           "sha256": "3306795644939c3e24c12c6453d7972f519373ada35f77b55a55c3283402c0cb"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
-      "remoteCommit": "f47a7bdf275344abe504b991c503e3e3bc63cc25"
+      "remoteSaveState": "VERIFIED",
+      "remoteCommit": "2912845432bce8859e9c7c3c80ea58ce47977bcb"
     },
     {
       "examId": "E006",
@@ -1753,12 +1753,124 @@
         23,
         24
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "ac9f7b8cb4fbafdc9c871c2adfe1988561abd4da76a9e520b4a2a2f9a2e7f177"
+      "uidSetSha256": "ac9f7b8cb4fbafdc9c871c2adfe1988561abd4da76a9e520b4a2a2f9a2e7f177",
+      "reviewedQuestionCount": 24,
+      "registrationPendingQuestionCount": 24,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 1,
+      "sourceHoldOrdinals": [
+        24
+      ],
+      "changedQuestionCount": 23,
+      "fourSlotQuestionCount": 24,
+      "independentSampleOrdinals": [
+        8,
+        12,
+        23
+      ],
+      "independentReviewer": "B",
+      "topicSummary": [
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "여러 가지 사각형",
+          "ordinals": [
+            1,
+            2
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            3,
+            4,
+            21
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            5,
+            7
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선 사이의 선분의 길이의 비",
+          "ordinals": [
+            6,
+            9,
+            10,
+            11,
+            22
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음",
+          "rpmL2": "평행선과 선분의 길이의 비",
+          "ordinals": [
+            8
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            12,
+            13
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            14,
+            15,
+            16
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            17,
+            18,
+            19,
+            20,
+            23,
+            24
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E013/four-slot.json",
+          "sha256": "d872d4feab66312717f939912c7b62c3e5e716ebec7cbf23b347105d5602741d"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E013/independent-sample.json",
+          "sha256": "de43704da771eac0e9c24ad6e48e6eeb090a9a63f6c7434b350faf960b99d285"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E013/mechanical-check.json",
+          "sha256": "b31846e54baa7a7ce703bfb6207c1194137076d460445b5408ee3d85c3bbbc50"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E013/review.json",
+          "sha256": "55e9e060e045904b2f66c634ee29ea4c49e13880203c9bb0625cd4124532d19e"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E013/root-acceptance.json",
+          "sha256": "8876ea89d7cc38f0246b5e3a6620317d0af78c14b7ad1f93c913250f78224a4b"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK"
     },
     {
       "examId": "E014",
@@ -4579,11 +4691,11 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 16,
-    "reviewedQuestions": 381,
+    "reviewedExams": 17,
+    "reviewedQuestions": 405,
     "unresolvedQuestions": 0,
-    "remainingExams": 51,
-    "remainingQuestions": 1223
+    "remainingExams": 50,
+    "remainingQuestions": 1199
   },
-  "lastVerifiedExamCommit": "064fa0e70e532c6146a0a7b47e85ad271191cbad"
+  "lastVerifiedExamCommit": "2912845432bce8859e9c7c3c80ea58ce47977bcb"
 }
