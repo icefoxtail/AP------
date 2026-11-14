@@ -114,3 +114,7 @@ Q13의 `standardUnitKey`, `standardUnit`, `standardUnitOrder`, `subUnitKey`, `su
 ### 최종 게시 직전 main 재조회
 
 최신 `main`은 `0f638ef02303919e82136e4671d0f9f70db436b1`입니다. 이전 `ed83f05220b64f75cbbd5de360a68dd6ddaadd22` 이후 #1975는 Meta OS 방향 원칙 6을 PT/TPL·4칸으로 확장했고, 등록 코드·정본 키·등록 경로는 그대로임을 명시했습니다. 해당 문서 diff와 writer state 변경을 직접 확인했으며 본 배정 소스·공식 요청과의 충돌은 없습니다. 새 값에 관한 이름·상위·이유는 기존 coordinator 요청 근거에 보존하며, 본 배정의 임의 키 생성 금지 및 공용 정의 담당 분리는 유지합니다.
+
+### CI 예산 기대값 정합화
+
+최종 HEAD `2c9949b1dd600689b01198e22a53068a7cb814d8`의 전체 CI는 등록·projection 검증을 통과했고 전체 테스트 파일 336개 중 335 PASS / 1 FAIL이었습니다. 유일한 실패는 `tests/ci-signal-hygiene.test.mjs`가 여전히 `timeout-minutes: 15` 문자열을 요구한 점입니다. 앞서 늘린 30분 예산에 맞춰 해당 기존 기대값 하나만 30으로 바꿨으며 gate·검사 선택·quarantine는 그대로입니다. 같은 기존 파일의 19개 검사가 모두 통과했습니다. 시험지·등록 요청·compact는 변경하지 않았으며 새 HEAD의 전체 필수 CI는 다시 확인합니다. 상세 근거는 `ci-budget-expectation-verification.json`입니다.
