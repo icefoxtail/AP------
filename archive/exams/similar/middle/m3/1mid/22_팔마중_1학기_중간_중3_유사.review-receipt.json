@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "similar-exam-candidate-review-receipt-v1",
+  "examUid": "22_팔마중_1학기_중간_중3_유사",
+  "source": {
+    "documentId": "1CIecfQYdTanlZBwirIYSRgvk34q5y46NTGP2b7RuMMQ",
+    "revisionId": "AHj4eMQeX-wmYiSGeMUODQOCtIxjvH218cbLhSmksPjHw5V5KiPCA22W2XTNzaXkUrC90KYBG3IglA4KRFze0lEfghRmQjYp2Oi86xDwr_A",
+    "title": "22_팔마중_1학기_중간_중3_유사_일체형.md",
+    "questionCount": 25,
+    "totalScore": 100,
+    "sourceArchiveFile": "archive/exams/original/middle/m3/1mid/22_팔마중_1학기_중간_중3_기출.js",
+    "docParagraphCount": 387,
+    "inlineObjects": 0,
+    "positionedObjects": 0,
+    "tables": 0
+  },
+  "candidateJs": "archive/exams/similar/middle/m3/1mid/22_팔마중_1학기_중간_중3_유사.js",
+  "candidateBlobSha1": "a52f2527229fc30378ae12c19a1ebcb56da50f8b",
+  "authoringStatus": "R1_R2_REVIEWED_CANDIDATE_WITH_Q22_CORRECTION; VISUAL_AND_METADATA_REGISTRATION_PENDING",
+  "sourceAudit": {
+    "sourceMainFileVerified": true,
+    "sourceMainQuestionCount": 25,
+    "duplicateCandidateOnAccumulationBranch": false,
+    "repairs": [
+      "Q15: repaired the source encoding loss in “빈틈없이”.",
+      "Q02, Q05, Q06, Q09, Q15, Q16, Q17, Q24: repaired unambiguous U+FFFD text damage in the source explanation/metadata; no mathematical content changed.",
+      "Post-R2 parity repair: normalized candidate standardCourse from a Hanzi lookalike 中3 to the canonical Korean spelling 중3 across all 25 items; metadata already used Korean spelling. No student-facing stem/options/key/solution changed.",
+      "Q13: source figure was absent; rewrote as a self-contained text variation specifying the two ab strips and their b-by-b overlap. This does not claim to reconstruct the original figure.",
+      "Q22: source figure was absent; rewrote as a self-contained text variation specifying A-B-C left-to-right order and common baseline, then stated the exposed step-edge sum. This does not claim to reconstruct the original figure.",
+      "All 25 candidate standardCourse values corrected from Hanzi 中3 수학 to canonical Korean 중3 수학; meta after values already used Korean form. Provenance meta expectedSourceBlobSha1 corrected to the exact source JS blob."
+    ],
+    "openSourceVisuals": [
+      "Google Doc source has no embedded Q13/Q22 figure; candidate questions are explicit text-defined variations and are not source-layout reconstructions."
+    ]
+  },
+  "mathReview": {
+    "status": "R1_R2_COMPLETE_WITH_Q22_POST_FREEZE_CORRECTION",
+    "scope": "All 25 current candidate questions reviewed; Q13/Q22 were rewritten as self-contained text variations after original-source visual absence was identified.",
+    "r1": {
+      "status": "PASS_WITH_DISCLOSED_POST_FREEZE_CORRECTION",
+      "sourceReview": "Source-stem R1 matched all 23 reviewable questions; original-source Q13/Q22 were excluded because their visuals were missing.",
+      "sourceFreeze": {
+        "path": "/workspace/r1-22-palma-freeze.json",
+        "sha256": "d68a49ebe4a6a692f01db9ea87faefa53d37071b5039bf1ca6125b526c93e74c"
+      },
+      "sourceComparison": {
+        "path": "/workspace/r1-22-palma-comparison.json",
+        "sha256": "80e7614c20398b82edf9ec5713bd038fe5e3cb6515c55e183b69a5700bb5fc62"
+      },
+      "changedQids": [
+        2,
+        5,
+        6,
+        9,
+        15,
+        16,
+        17,
+        24
+      ],
+      "changedFreeze": {
+        "path": "/workspace/r1-22-palma-changed-freeze.json",
+        "sha256": "68de338cee756344ced0c35dedb3e4a9e85d67f2fc1e099ad614567463a0d07d"
+      },
+      "changedComparison": {
+        "path": "/workspace/r1-22-palma-changed-comparison.json",
+        "sha256": "36567a9e7edcba23646a6aadd0ec03f1a76ef871f438fb6f87e53fb38b64ad5f"
+      },
+      "reframedQids": [
+        13,
+        22
+      ],
+      "reframedFreeze": {
+        "path": "/workspace/r1-22-palma-reframed-freeze.json",
+        "sha256": "ebbd8af9987fc676aa3db4fb7a5c2e8a6971c68df9779ef1e0d3588d447c314a"
+      },
+      "q22Correction": {
+        "path": "/workspace/r1-22-palma-reframed-q22-correction.json",
+        "sha256": "621b61364efc02bd9f89070156bcd636826ab2b2a55c0966f591904a33be7a0c",
+        "disclosure": "Initial blind perimeter was 20√5; post-freeze boundary audit corrected it to 18√5."
+      },
+      "separateQ22Check": {
+        "path": "/workspace/r1-22-palma-q22-verify.json",
+        "sha256": "b5005db7ffd9ec43477bce8dd4a09b888a8f388fcdfd349a676060046f3bf11c",
+        "result": "18√5 cm"
+      },
+      "reframedAnswers": "Q13=④; Q22 areas 45,20,5 cm²; side lengths 3√5,2√5,√5 cm; perimeter 18√5 cm."
+    },
+    "r2": {
+      "status": "PASS",
+      "coverage": "All 25 final qids reviewed. Q13 and Q22 post-edit answers are uniquely determined and correct; all JS standardCourse values match companion meta.",
+      "evidence": {
+        "path": "/workspace/r2-22-palma-review.json",
+        "sha256": "50fb0c6d90a1975ef2c1c837f4c3911d27bef2e1ecba4d6bc250c28b844b6764"
+      },
+      "postEditEvidence": {
+        "path": "/workspace/r2-22-palma-post-edit.json",
+        "sha256": "bc6720a40135b60cbfde7eb9b5941f21bd938e5b8f06f3c72b39a65a457900df"
+      },
+      "postEditCoverage": "Q13/Q22 independently rechecked as text-defined variations; 25/25 standardCourse parity verified; Q22 corrected 20√5→18√5 with independent corroboration."
+    },
+    "openIssues": [
+      "Q13/Q22 replacement SVGs remain unmade per instruction; visual plan/assets remain incomplete for Q06,Q13,Q15,Q22,Q25.",
+      "Q22 initial blind error is preserved with its post-freeze correction; final answer 18√5 is independently confirmed."
+    ]
+  },
+  "metadataReview": {
+    "status": "R2_SEMANTICALLY_REVIEWED_WITH_EVIDENCE_DEBT",
+    "candidateRows": 25,
+    "r2Review": "All 25 metadata rows reviewed against final question/solution; standardCourse parity verified after correction.",
+    "resolverStatus": "NOT_RUN",
+    "4slotStatus": "UNREVIEWED_25; all entries remain EVIDENCE_DEBT stubs",
+    "registrationStatus": "NOT_SUBMITTED",
+    "unclassifiedCandidates": "Preserved in separate unclassified-meta-candidates file; no false registry claim."
+  },
+  "visualReview": {
+    "status": "NOT_RUN_BY_USER_SCOPE",
+    "problemNeed": [
+      6,
+      13,
+      15,
+      22,
+      25
+    ],
+    "solutionNeed": [
+      6,
+      13,
+      15,
+      22,
+      25
+    ],
+    "createdAssets": [],
+    "renderedItems": [],
+    "unresolvedVisualSource": [],
+    "note": "Source Q13/Q22 figures were absent and are not reconstructed; candidate statements are self-contained variations. SVG creation and screen/render review remain NOT_RUN."
+  },
+  "checks": {
+    "nodeCheck": "PASS: node --check on final JS blob a52f2527229fc30378ae12c19a1ebcb56da50f8b",
+    "tableCheck": "PASS: node tools/check-ap-tables.cjs --files <JS> (1 file, 0 tables, 0 FAIL)",
+    "similarExamHarness": "FAIL: --phase=draft reports only missing author plans directory after meta expectedSourceBlobSha1 was aligned to the candidate JS blob. Figure plans/assets are deferred.",
+    "remoteCommit": "NOT_RUN",
+    "metadataParity": "PASS: all 25 JS standardCourse values now match the metadata proposal spelling; request source hash refreshed."
+  }
+}
