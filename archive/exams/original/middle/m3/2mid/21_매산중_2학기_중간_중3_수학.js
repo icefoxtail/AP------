@@ -211,6 +211,8 @@ window.examData = {
     },
     {
       "id": 6,
+      "image": "assets/images/21_매산중_2학기_중간_중3_수학/q6-problem-v2.svg",
+      "imageSize": "tall",
       "score": 4.0,
       "question": "【대체 문항】좌표평면에서 $O=(0,0)$이고 반지름이 $1$인 원의 오른쪽 끝점을 $A=(1,0)$, 위쪽 끝점을 $C=(0,1)$, 왼쪽 끝점을 $D=(-1,0)$이라 하자. 점 $A$를 지나고 $OA$에 수직인 직선과, 양의 $x$축에서 $x^\\circ$ 위로 기울어진 반직선이 만나는 점을 $B$라 한다($0<x<90$). $\\tan x$를 나타내는 선분은?<br><img src=\"assets/replacements/q06_tan_segment.png\" />",
       "choices": [
@@ -246,7 +248,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】좌표평면에서 $O=(0,0)$이고 반지름이 $1$인 원의 오른쪽 끝점을 $A=(1,0)$, 위쪽 끝점을 $C=(0,1)$, 왼쪽 끝점을 $D=(-1,0)$이라 하자. 점 $A$를 지나고 $OA$에 수직인 직선과, 양의 $x$축에서 $x^\\circ$ 위로 기울어진 반직선이 만나는 점을 $B$라 한다($0<x<90$). $\\tan x$를 나타내는 선분은?"
+      "content": "【대체 문항】좌표평면에서 $O=(0,0)$이고 반지름이 $1$인 원의 오른쪽 끝점을 $A=(1,0)$, 위쪽 끝점을 $C=(0,1)$, 왼쪽 끝점을 $D=(-1,0)$이라 하자. 점 $A$를 지나고 $OA$에 수직인 직선과, 양의 $x$축에서 $x^\\circ$ 위로 기울어진 반직선이 만나는 점을 $B$라 한다($0<x<90$). $\\tan x$를 나타내는 선분은?",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q6-solution.svg",
+      "solutionImageAlt": "해설 그림: 단위원에서 파란 선분 OA는 양의 가로 방향에 있고, 주황 선분 AB는 A에서 원에 접한다. 각 x는 OA와 반직선 OB 사이에 있다.",
+      "solutionImageCaption": "직각삼각형 OAB에서 각 x에 이웃한 변 OA의 길이는 1이다. 따라서 tan x=AB/OA=AB이며, 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 7,
@@ -844,7 +850,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "다음 그림과 같이 $\\square\\mathrm{ABCD}$가 원 $\\mathrm{O}$에 외접하고, $\\angle \\mathrm{B} = 90^\\circ$, $\\overline{\\mathrm{AB}} = 4\\,\\text{cm}$, $\\overline{\\mathrm{AC}} = 2\\sqrt13\\,\\text{cm}$, $\\overline{\\mathrm{AD}} = 3\\,\\text{cm}$일 때, $\\overline{\\mathrm{CD}}$의 길이를 구하면?<br>"
+      "content": "다음 그림과 같이 $\\square\\mathrm{ABCD}$가 원 $\\mathrm{O}$에 외접하고, $\\angle \\mathrm{B} = 90^\\circ$, $\\overline{\\mathrm{AB}} = 4\\,\\text{cm}$, $\\overline{\\mathrm{AC}} = 2\\sqrt13\\,\\text{cm}$, $\\overline{\\mathrm{AD}} = 3\\,\\text{cm}$일 때, $\\overline{\\mathrm{CD}}$의 길이를 구하면?<br>",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 사각형 안의 내접원에 닿는 두 선분을 각 꼭짓점마다 같은 색으로 짝지었다. 대각선이 직각삼각형 ABC를 만든다.",
+      "solutionImageCaption": "직각삼각형 ABC에서 BC=√((2√13)²−4²)=6 cm이다. 같은 꼭짓점의 접선 쌍이 각각 같으므로 AB+CD=AD+BC이다. CD=3+6−4=5 cm이며 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 21,
@@ -953,7 +963,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【서답형 3】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 3-①】</b> (4점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=6\\,\\text{cm}$, $BC=8\\,\\text{cm}$이다. 원 $O$가 삼각형 $ABC$의 내접원일 때, 원 $O$의 반지름을 구하시오.<br><br><b>【수준별 3-②】</b> (5점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=15\\,\\text{cm}$, $BC=20\\,\\text{cm}$이다. 원 $I$는 삼각형 $ABC$의 내접원이며, 변 $AB,BC,CA$와의 접점은 각각 $D,E,F$이다. 사각형 $DBEI$의 넓이를 구하시오."
+      "content": "【서답형 3】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 3-①】</b> (4점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=6\\,\\text{cm}$, $BC=8\\,\\text{cm}$이다. 원 $O$가 삼각형 $ABC$의 내접원일 때, 원 $O$의 반지름을 구하시오.<br><br><b>【수준별 3-②】</b> (5점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=15\\,\\text{cm}$, $BC=20\\,\\text{cm}$이다. 원 $I$는 삼각형 $ABC$의 내접원이며, 변 $AB,BC,CA$와의 접점은 각각 $D,E,F$이다. 사각형 $DBEI$의 넓이를 구하시오.",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q23-solution.svg",
+      "solutionImageAlt": "해설 그림: 첫 패널은 AC=6, BC=8인 직각삼각형과 내접원, 둘째 패널은 AC=15, BC=20인 직각삼각형과 세 접점, DBEI의 두 부분을 보여 준다.",
+      "solutionImageCaption": "3-①: 넓이 24, 반둘레 12이므로 내접원 반지름은 2 cm이다. 3-②: r=5 cm, BD=BE=15 cm이므로 [DBEI]=½·15·5+½·15·5=75 cm²이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 24,
