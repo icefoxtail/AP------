@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E017",
+  "examiner": "C",
+  "author": "B",
+  "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+  "reviewSha256": "201a1dc6aa41517caeaad31055003787243b65c3aeb2e833cf32fd8a98bfcd7d",
+  "fourSlotSha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+  "ordinals": [
+    2,
+    22,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 2,
+      "verdict": "PASS",
+      "reason": "실제 그림에는 BE=BC의 같은 길이 눈금과 E/C의 두 직각이 있으며 BD는 공통 빗변이다. BDE와 BDC의 RHS로 B의 두 각이 같음을 얻는 분류가 타당하다. source 해설의 같은 각 표시라는 말과 그림은 다르며, 저자는 이 차이를 명시하고 결론각을 IMPLIED 근거로 사용했다. 그림에서 읽은 합동을 텍스트에 명시된 합동이라고 주장하지 않아 현 상태 수용 가능하다. 이는 기존 수학 해설의 공식 재검수 PASS는 아니다.",
+      "repairs": [],
+      "imageViewed": "workers/B/images/E017-02.png",
+      "sourceContentNote": "기존 해설의 같은 각 표시 설명과 원본 그림의 같은 변 표시 차이는 별도 source note로 보존.",
+      "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+      "fourSlotCriticalDefect": false,
+      "quotesExact": true,
+      "quoteCount": 4,
+      "inspectedRpmRecordId": "M2-RPM-070"
+    },
+    {
+      "sourceOrdinal": 22,
+      "verdict": "REPAIR",
+      "reason": "실제 겹친 두 정사각형에서 중앙 거리·45도·수직인 두 선쌍으로 ASA를 만든 뒤 합동 넓이를 옮긴다. native PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA와 CORE의 내부골격이 이 구조를 정확히 포함하므로 기존키 재사용과 M2 바인딩 공백 기록은 맞다. 다만 RPM079 특수사각형 대각선 성질은 입력 성질에 머무르므로 주결정인 ASA에 해당하는 선수 M1-RPM-080(2022 M1-RPM-193)을 우선 검토하는 것이 일관된다. 4칸 ASA·등적변형, 두 목표 및 중심 교점 조건은 정확하고 별도 CC 중복도 없다.",
+      "repairs": [
+        {
+          "field": "rpmRecordId / primary path",
+          "recommendation": "M1-RPM-080 / 2022 M1-RPM-193, semanticSourceScope M1-2, LOWER_GRADE_PREREQUISITE",
+          "reason": "합동 증명과 합동 조각의 넓이 이동이 전체 주풀이이며 대각선 성질만으로 목표가 완결되지 않는다. 원본 M2 소속은 유지."
+        }
+      ],
+      "imageViewed": "workers/B/images/E017-22.png",
+      "questionUid": "qid_v1_ec4315a58b66e1ebad91df2b293bc4368c9a198026fe07235d1c7051c557102b",
+      "fourSlotCriticalDefect": false,
+      "quotesExact": true,
+      "quoteCount": 6,
+      "inspectedRpmRecordId": "M2-RPM-079"
+    },
+    {
+      "sourceOrdinal": 23,
+      "verdict": "PASS",
+      "reason": "그림의 D가 AB 위에 있고 한 대응각이 직접 주어져 다른 공통각과 AA가 바로 결정된다. 한 번의 대응변 비례식으로 길이를 구하므로 bucket2에 독립 동의한다. 서술형이라는 형식이나 historical 상 때문에 사고단계를 올릴 이유가 없다. 4칸은 닮음조건·닮음비·길이의 세 목표와 각 조건을 정확하게 구분하며 STRONG_CONFLICT는 유지한다.",
+      "repairs": [],
+      "imageViewed": "workers/B/images/E017-23.png",
+      "difficultyIndependentRecheck": {
+        "bucket": 2,
+        "legacy": "상",
+        "compatibility": "STRONG_CONFLICT",
+        "reason": "명시된 등각과 공통각으로 정형 AA가 정해지고 대응비 한 번으로 길이를 구한다."
+      },
+      "questionUid": "qid_v1_59226ef933e59db710d0814eb8f94bfc56270f061f29a306a03837395c1b7472",
+      "fourSlotCriticalDefect": false,
+      "quotesExact": true,
+      "quoteCount": 7,
+      "inspectedRpmRecordId": "M2-RPM-086"
+    }
+  ],
+  "overallStatus": "REPAIR",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "independent": true,
+  "notes": [
+    "저자 파일 직접 수정 없음. 실제 발문·보기·해설 및 표시한 원본 그림과 현행 ACTIVE 정의를 대조했다. 전체 수학 독립 재검수로 확장하지 않음."
+  ]
+}
