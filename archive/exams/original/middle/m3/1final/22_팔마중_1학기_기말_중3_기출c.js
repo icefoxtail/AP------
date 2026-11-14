@@ -807,7 +807,7 @@ window.questionBank = [
   },
   {
     "id": 25,
-    "level": "상",
+    "level": "중",
     "category": "이차함수와 그래프",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",

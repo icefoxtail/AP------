@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E038",
+  "status": "PASS_WITH_PROPOSALS",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "at": "2026-11-14T14:21:22.849665+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+  "sourceBlob": "9af6aa5982aacd39796861fcec16303b92a5df81",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E038.review.json",
+      "sha256": "84487269b225845a5667df9accdf78ccf4e32ea23c80170018376f9169e5f096"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E038.4slot.json",
+      "sha256": "2409cb7028225ceed95b04121cda3cf20e9715b49b2f24ddd88e6d0f980214a8"
+    }
+  },
+  "sampledOrdinals": [
+    9,
+    16,
+    25
+  ],
+  "additionalChangedOrBoundaryOrdinals": [
+    3,
+    4,
+    7,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "scope": "METADATA_ONLY; 11 necessary sample/change/boundary question stems, choices, existing solutions and 4slot sets directly compared. q16/19/21 original PNG and q25 solution SVG viewed; contact additionally shows q10/24 without claiming textual semantic review of those items.",
+  "findings": [
+    {
+      "ordinal": 9,
+      "status": "PASS_AFTER_REVISION",
+      "note": "근호비음수범위에서자연수후보1~5를열거하여유리수근조건을판정하는3/B34수용.036부모와exact유리수근매개값합gap분리됨."
+    },
+    {
+      "ordinal": 16,
+      "status": "PASS_AFTER_REVISION",
+      "note": "원그림A,B가각포물선의같은쪽가지대응점임을직접확인했다.수평이동량7을거리로읽는2와049부모+거리targetgap수용."
+    },
+    {
+      "ordinal": 25,
+      "status": "PASS_AFTER_REVISION",
+      "note": "x축접점·축1·y절편-1이직접꼭짓점(1,0)과계수를정한다.상→중2/B23교정수용.그래프2/꼭짓점1/함수식2의perPart와해설도형을확인."
+    },
+    {
+      "ordinal": 4,
+      "status": "PASS_AFTER_REVISION",
+      "note": "한근으로계수를정한후다른근의합까지요구하는031부모+exactgap확인.표준2수용."
+    },
+    {
+      "ordinal": 7,
+      "status": "PASS",
+      "note": "완전제곱식의우변0조건·매개값·중근의연결을3/B23경계로판정한근거수용."
+    },
+    {
+      "ordinal": 19,
+      "status": "PASS",
+      "note": "원그림의아래쪽열림,왼쪽축,양의y절편확인.부호관계를3/B23경계로보는판정과2022정확leaf부재확인."
+    },
+    {
+      "ordinal": 20,
+      "status": "PASS",
+      "note": "축1과절편거리6에서좌표를복원하여계수곱을구하는3/B34수용."
+    },
+    {
+      "ordinal": 21,
+      "status": "PASS",
+      "note": "원그림의원점·A절편·P꼭짓점삼각형과실제삼각형넓이보조기여를확인.054부모+넓이targetgap수용."
+    }
+  ],
+  "additionalCheck": "q3주어진명시적근의제곱꼴역비교2,q22방법지정소문항의제곱근/완전제곱식2/B12,q23원래근의합곱→새근방정식3과부모+정확구조gap실제대조. 위험없는나머지문항은저자전수검토재사용하며독립재독범위로주장하지않는다.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}
