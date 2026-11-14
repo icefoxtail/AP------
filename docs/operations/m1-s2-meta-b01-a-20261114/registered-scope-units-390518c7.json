@@ -1,0 +1,1972 @@
+{
+  "schemaVersion": "B01_A_REGISTERED_SCOPE_UNITS_V1",
+  "assignmentId": "M1S2-20261114-B01-A",
+  "status": "PASS",
+  "registeredMainSHA": "390518c7fc34a8c742ba190163b478acb09da39f",
+  "operation": "READ_ONLY_LOCAL_ARTIFACT",
+  "network": "DISABLED",
+  "sourceExamExecution": "NOT_PERFORMED",
+  "registrationAndDeploymentSuccess": "NOT_INFERRED",
+  "readinessReceiptCheck": "SEPARATE_OFFICIAL_WRITER_GATE",
+  "scopeManifest": {
+    "path": "/workspace/scratch/54cb21af3005/inspect-main-registration-artifact.py",
+    "sha256": "d2a38dc1c3aa7020d04e8d43cfe1f038c71971975e470d4d6d3b07c65d7dd45f",
+    "uidOrder": "source ordinal, 1-based",
+    "selectedFields": [
+      "examNumber",
+      "sourceArchiveFile",
+      "questionCount",
+      "allUids"
+    ],
+    "selectedPayloadSha256": "28b4d496eecc900e779bb6d5dd4aefaa38f73e53702d842fb0cd5955c9f0208a"
+  },
+  "officialFunctions": [
+    {
+      "path": "tests/archive2-unified-units.test.js",
+      "function": "unified classification agrees with every 단원별 기출 classification",
+      "reference": "sourceFile#sourceQuestionNo join and assert.equal(entry.unitKey, result.unitKey)"
+    },
+    {
+      "path": "tests/helpers/archive2-scope-harness.cjs",
+      "function": "productionCatalog",
+      "reference": "same VM + local fetch route; do not import top-level readProjection fixture"
+    },
+    {
+      "path": "archive/meta-foundation-runtime.js",
+      "function": "applyArchiveMetaFoundationCatalog",
+      "reference": "loadInputBundle -> resolveCatalog -> finalCatalog"
+    },
+    {
+      "path": "archive/archive2-canonical.js",
+      "function": "loadInputBundle / resolveCatalog",
+      "reference": "official manifest version, input digest and canonical resolution checks"
+    },
+    {
+      "path": "archive/archive2-unified-units.js",
+      "function": "buildIndex / classify / private unitFor",
+      "reference": "actual unitKey"
+    },
+    {
+      "path": "archive/unit-past-exams-core.js",
+      "function": "normalizePath / getQuestionNo / classifyRecord",
+      "reference": "expected unitKey"
+    }
+  ],
+  "counts": {
+    "expected": 95,
+    "catalogRows": 95,
+    "catalogUniqueAssignedUids": 95,
+    "questionIndexRows": 95,
+    "joined": 95,
+    "compared": 95,
+    "matched": 95,
+    "unplaced": 0,
+    "unclassified": 0,
+    "mismatched": 0
+  },
+  "exams": [
+    {
+      "examNumber": 1,
+      "sourceFile": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js",
+      "expected": 23,
+      "catalogRows": 23,
+      "questionIndexRows": 23,
+      "joined": 23,
+      "compared": 23,
+      "matched": 23,
+      "unplaced": 0,
+      "unclassified": 0,
+      "mismatched": 0
+    },
+    {
+      "examNumber": 2,
+      "sourceFile": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js",
+      "expected": 24,
+      "catalogRows": 24,
+      "questionIndexRows": 24,
+      "joined": 24,
+      "compared": 24,
+      "matched": 24,
+      "unplaced": 0,
+      "unclassified": 0,
+      "mismatched": 0
+    },
+    {
+      "examNumber": 3,
+      "sourceFile": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+      "expected": 24,
+      "catalogRows": 24,
+      "questionIndexRows": 24,
+      "joined": 24,
+      "compared": 24,
+      "matched": 24,
+      "unplaced": 0,
+      "unclassified": 0,
+      "mismatched": 0
+    },
+    {
+      "examNumber": 4,
+      "sourceFile": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js",
+      "expected": 24,
+      "catalogRows": 24,
+      "questionIndexRows": 24,
+      "joined": 24,
+      "compared": 24,
+      "matched": 24,
+      "unplaced": 0,
+      "unclassified": 0,
+      "mismatched": 0
+    }
+  ],
+  "results": [
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_4645375fc8d91e4a879bc3a19c5d48db2a0f3789bde9dee9d7360d13fb3218d6",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#1",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_53311861e37719615dc603db64c1ff8a413a01daec5580b8b0a5a129b9f5afbf",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#2",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_4bb877da6e4bb5441e18c36687a9f0bbc01eab3d19cac457cc3cb7ef799342b8",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#3",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_1df6f3c53c22679b87c4c170c6f368d867b924be560cd69f6baa2cd3468255f5",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#4",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_40c01ce6a1b0c59462238a9569acf481e61d32f6dd115b1429906782353e9d2b",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#5",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_71c1c30b662418fb46def41379a06967e78c5e19d7239c004b1a5b0be6a28ad8",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#6",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_60a01803a994f2e64293b2fda6278172505188e40653c8646b7316ca665f7645",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#7",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_1fc449531d368e7283a46b223907aa72e6b1a5178930267671e61c65c5d14075",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#8",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_92ad3a05430b30ee63b375de09ae635f950339391df4569f2f87edf7c15b03cb",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#9",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_3e6a4452298d733fdd51ed48e9a37c02ab8ead4ce4e30ad48ead8389d146a3dd",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#10",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_a94ccfc2dd22bf72606b84f2284aecfc83018bd9d9dc2d547614576d4f754196",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#11",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_dac159f88b041dbfe23bee2a8bb6a54536139a7106304c35721e829d53c1e4dc",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#12",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_28c548b3d7d879690980de8f555292c118522ce28c8eb0952b131e8c9dd3c584",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#13",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_93f3c56129d4f5ed10271eeb13a5e4ac319314b53e1fdf529f89f9893afa7ae2",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#14",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_ffcd4992e7ec7512be232e19f56037887e79e2d8706930dd9561b3857daa473a",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#15",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_64d3b95ee51ba9885c4b63cf4ae32b89c5d421ca6be5f1cb58aecbe432228be5",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#16",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_f37124d064bc58716515294d2299d077f71db938c78e70532b833154e5fef9db",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#17",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-08",
+      "expectedUnitKey": "RPM22-M1-L1-08"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_107e12507edec26393f63b78e6ce047d05afc5365a3f0284575460f1ad83ed47",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#18",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-08",
+      "expectedUnitKey": "RPM22-M1-L1-08"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_355e74d9f609e333c2940cdb78799a0b31689ad41d5e1a7ad02c251d863c1d7d",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#19",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-08",
+      "expectedUnitKey": "RPM22-M1-L1-08"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_6b1b1ca5a079ec503132ad4834946469bfa7e36bb50dc6b92dd36973d819ebf7",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#20",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-08",
+      "expectedUnitKey": "RPM22-M1-L1-08"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_67eb2d2f33f50a13c3ca2f82f8eccb73051fc85492458f4258234c4e0bbd3af9",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#21",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_7b83f4c730303f4668dc2d0d44df70d20c35664a10a45b77d11a229ba97eb882",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#22",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 1,
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_182ccc2b6c2772f8a12f87e0048539e10c4f52e8f341ab35103b859e3d2e46dd",
+      "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#23",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cbad75c4eb55bd19cf1de16ffa0a5259b1f9730cb717f5a7e9817720db19bc15",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#1",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0bc8c861739c94238388304386b6fb85000500f1f463bc9e21d0423c4b0b874b",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#2",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_94282bace49b7efac917d83724beb6c5b9f77411b3af8b4eee228a073829bf8b",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#3",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_385d314e84730242ba2e90344059e54559444f286192d8ae88beb5835ea826c3",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#4",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_bf96f1e1a94e3d1d870f8dcadcfb1b43e00f25468d52ec16892851e7d7902017",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#5",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_76bd5d12df09268493b1f61107cacb61746c366839eba4339034447ac95951e6",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#6",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_033e9f7a2a765b9c0c16ec9a3a7d1407ae2fd1581765f2718a9b3a5229908383",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#7",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_3096b414386ca69f7d356adbe704b481843bbe095cf4f87b2f899766cb982e97",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#8",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_58619239fa5796489ce1cad319ecdeaea957b763109843e4e2dec5e6a46cd4fb",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#9",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_00dfff2608c2a51eb012e1e6731bb4e01c8b6411ef96c0817bbf1d3aba552ede",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#10",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-08",
+      "expectedUnitKey": "RPM22-M1-L1-08"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_c89c38b53a4ff4f49954f91d1a20d9d0123e9fd117f7122de40fbca1c5146832",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#11",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_cb9115964cd7a5270799edf570788c87706c67085edc250a39bbf6ed7b2dccea",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#12",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_8c06039ac25ba0c28436e749c93b6d2833392d970a95df1a1a798cae44ca3eb2",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#13",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_1a8159b4dc0fa361db9e4e976d3a3b4009b4bc927f6fae737f7d54aa94dc1dde",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#14",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-08",
+      "expectedUnitKey": "RPM22-M1-L1-08"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_5877b6de040fb2ad6562ab96ec6affdeb618c0bdfd7017dbcce572c49e263953",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#15",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-08",
+      "expectedUnitKey": "RPM22-M1-L1-08"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_81bfb7002460d5476195b35a673184d06288914753f5cecd84af6aec3d40d002",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#16",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-08",
+      "expectedUnitKey": "RPM22-M1-L1-08"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_adadf0810ade818ef1f3ddc6f9de24615497bad4df4e73de69286658a8daae79",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#17",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-08",
+      "expectedUnitKey": "RPM22-M1-L1-08"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_77c11c683e138f6fcc117c68e4347724ac2aa5797b4c78db03c27ced1cc6b065",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#18",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-08",
+      "expectedUnitKey": "RPM22-M1-L1-08"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_d9f125289ff7fb870667cd902ed5e7a60846069f8f9139709f3ca42b52b23ad9",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#19",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-08",
+      "expectedUnitKey": "RPM22-M1-L1-08"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_03941b7e264dfb63c7271e2399e09076840e7c73e18261e767f43ac6283c9aac",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#20",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-08",
+      "expectedUnitKey": "RPM22-M1-L1-08"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_382314a3713c9d61ec63b7c54dde290271cd467b42c1e9c58d3dd7274790b554",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#21",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_37458bc65f27a6f3a2ffb6fdd229d027b984e3134ff4aa5962900a0aa547154a",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#22",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-06",
+      "expectedUnitKey": "RPM22-M1-L1-06"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_378417836e32662281c15dd16fae018a76dfb486b235ebe1d91c4a6041f4f3fc",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#23",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 2,
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_4fcdf70b120a3b9e8f0b47a1afb8867e4eff5cec7e9c84cd73182733d5f2b391",
+      "identity": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js#24",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-08",
+      "expectedUnitKey": "RPM22-M1-L1-08"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_739e1aa780820f52cc6e83ca25b1a1508345da33cfd41c2b2aa15b02ab622d81",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#1",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_539d36380fba5e6eaca4f2755efe690eaada61820b364928db2cccfa13614058",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#2",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_3f786ea3f678d34b1c57c95643f071599c532fb6e51eca405d0cffd64777b46e",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#3",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ac28d71dcdee035cda402539898e93d767004e529304b6430d4a7e8257bfaea9",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#4",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_e33fa670068a0649ff0431a64e1551ae2694a047277ca6fa2a9633c5274825f2",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#5",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b71e5dd308c16ae4d40ceb1cd4b974220eca9177e0ca07e555eecddc5627f1d0",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#6",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_008e99d3101749b349c08fa5e412c4f59c9bfc8b098e48d8ce26d08a4c8c053a",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#7",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_d485821d8e9f62c6ddb2f155dfd0d84a217db84aeeb32b41b9a3ce95629fd54a",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#8",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_335da5e2c7a6f42520c7c59790de98393e76b80210f54b7b91d6c433ffd93782",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#9",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_f9c54052280ef5a5bf6ebc57c42509083d2d7740770ceceef12adc7d73c700ea",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#10",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_e91debd5d9851ee135e3d3f941c2476429d2e9cf1d37e29994a0663f768014b6",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#11",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_00d5faf57a4654c3c6cf9814946c4f5c29bfb232f33b2a09418d166032122f1b",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#12",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#13",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-07",
+      "expectedUnitKey": "RPM22-M1-L1-07"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_4c7fca50942ca10775327523c18ccbe2d18160249662d698ea44a96c72f5e774",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#14",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_bdb9d3bbc904d9ae1bc39e408002ef43155c4f853dee344645c378b4b9a20270",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#15",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_c45b20b2f087a643b82bdbc0405b2b2c1c96194ba953a77af50d9d15c31a1798",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#16",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_26a62a5c2fc811fe37310857f79339211a308a9983b16cec54deb0b0f8f0fb62",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#17",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_fdc2c11452f888f0c7e935b40eee4f284b64de7f0344a354b368d8fd841da5f6",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#18",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_63f6f87ada000980090636747d14c464d02f8b8833e329b72f3df7b18eec46f4",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#19",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_aa67f2a9ec608f26ddcb2a911e675f1db7ebef15bd969c2b9dde373fde0bbeb3",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#20",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_71befc5c53542a307028afdb767f331a43590195f1537cc323e6dd76013291c6",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#21",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_dbd2626d30b8c1157df867b00f5eddc5e4f528aad38fd308424ea68bd9e31af2",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#22",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_7e7daaa8de9d161000e9669ff4da4f7bf381397beaa4ad5f3b499110fb9d0125",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#23",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_9c648fe8e985af08e260cc06bde504a2d65e296cf1139d81723717bcf202549e",
+      "identity": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#24",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_0ee31a8617859f5a8f0090bb6d1a13af4c47c62aeedba338acf8af39b94b94bd",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#1",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_f36c896c76828c6f22a77abd6733d63c943326317c2bbe17ecf766dbe374cae5",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#2",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_8fefacc7377977e7d202171f2572deb5df047dc37cb42668e30bf928269ad9c7",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#3",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_da90f2e94b1e04b94755c573a2f5786592b17561a9b92d050089ddbb1ae26c39",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#4",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_5b2fdfe974ead21d89c52ffaf85f6dd4a3e88e4e15a8f9170de86425c90b8660",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#5",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_022b0ec1efd064ef47e2ac232b7bc88e29a6bd93dac5d74dc25bde7636217fe6",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#6",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_db992e5f8aef95b1223311bf0dbdb4d67cd2e0cfded4c0f97d52607efff5e0a3",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#7",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_8431ee3bd4df3895ef8ca1fd54fc7136761c1396d5c27350bbb29e3ccff96191",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#8",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_134c29fd3862476f394b04d939c5eb3ed5a94056f4313b939b2949320381d968",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#9",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_b02d2dc46b20083602584d8ce6786be763e708503ca13267c06c7f41cfd3de93",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#10",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_05b2a7160ed874cf3445fedb2e7b9e7ef3eb756d18c4f41e45c7696e2e67f4ee",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#11",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_4fe0556f3bfaafa7500dae34feadcdd9015598f7960f37c07b710bc62df23a5e",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#12",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_efd4f2cf5eb98e85c40414ca19702d725c6e41c6994fa20a12147352b05b35bb",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#13",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_2cfa18c1f4ffb7ed65d11c0c643a0bf8aaa2da3ea2bd2097fae7f7167ad5cda3",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#14",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_83bca144794af90fb844d2c2c640d293ccf7fa690cf6075c150b6bdf83b37f80",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#15",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_ea46f9d463fb4f1aeeb7e5deaba6d5c2f91db952029ace8ad4f31b92ab3b5138",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#16",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1ae24cf5c559c262aa94f72eed1a0439cf84a3056f18f2a9884aa5e0886086bd",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#17",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_067dc2c69b264cd8714ce78a0c0ade967111edaeabac40074373499ce2f957cc",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#18",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_97ba9773e526e9742012fac950e7b061acde40b29e723dc29cd1823f23a7c060",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#19",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_c9638401d996469034940b48bedf48c4966b43160628edd1f0980b3ac7679044",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#20",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_19b0e03abefda951bfd4aa21f0a957e55bc681fe6e8915e98a5720f4dcf0f657",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#21",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_18bcc5cd2692ad84322f864082ef275c787d061ac9560ed035b441d43b4e41c3",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#22",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-04",
+      "expectedUnitKey": "RPM22-M1-L1-04"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_4449ad0a401e744e39838df6077b897146763b5bbb3750a66c6747134db68357",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#23",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    },
+    {
+      "examNumber": 4,
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_33ce79ce6d63307569c57580f67a056ddbf76be1a97558e402b871daa1ff2a9f",
+      "identity": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js#24",
+      "status": "PASS",
+      "actualUnitKey": "RPM22-M1-L1-05",
+      "expectedUnitKey": "RPM22-M1-L1-05"
+    }
+  ],
+  "mismatches": [],
+  "issues": [],
+  "inputFiles": [
+    {
+      "path": "_archive-release.json",
+      "bytes": 538,
+      "sha256": "7f2bf74f420e708d461a822543ec33979ddd1ae7fb8179d9d1dd81bda2fa5a8d",
+      "sha256LfText": "7f2bf74f420e708d461a822543ec33979ddd1ae7fb8179d9d1dd81bda2fa5a8d",
+      "roles": [
+        "SITE_RELEASE_RECEIPT"
+      ]
+    },
+    {
+      "path": "archive/archive2-canonical.js",
+      "bytes": 88465,
+      "sha256": "f431557509e91ff70ea8d02be69c4ed1a2981c5e99b02b8b62e8636bd56e6760",
+      "sha256LfText": "f431557509e91ff70ea8d02be69c4ed1a2981c5e99b02b8b62e8636bd56e6760",
+      "roles": [
+        "OFFICIAL_RUNTIME_MODULE"
+      ]
+    },
+    {
+      "path": "archive/archive2-core.js",
+      "bytes": 56719,
+      "sha256": "7541493a2f603248357ed953656184bbcf7643d87f5ac99134a0fad55552a0be",
+      "sha256LfText": "7541493a2f603248357ed953656184bbcf7643d87f5ac99134a0fad55552a0be",
+      "roles": [
+        "OFFICIAL_RUNTIME_MODULE"
+      ]
+    },
+    {
+      "path": "archive/archive2-unified-units.js",
+      "bytes": 24917,
+      "sha256": "c374e7b3c6dbcc3b4bc5103bdf6a764283c2e5648b603afe65f651756a018121",
+      "sha256LfText": "c374e7b3c6dbcc3b4bc5103bdf6a764283c2e5648b603afe65f651756a018121",
+      "roles": [
+        "OFFICIAL_RUNTIME_MODULE"
+      ]
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "bytes": 24245,
+      "sha256": "764cbeef6edc323471bb4d3d01f63e7330fbd81d9163bd7ac1819f8f24ec026f",
+      "sha256LfText": "764cbeef6edc323471bb4d3d01f63e7330fbd81d9163bd7ac1819f8f24ec026f",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/archive2-canonical-projection-policy.json",
+      "bytes": 13272,
+      "sha256": "8c68854f404eb4c2125d9713715c874647e48bb0d1127608cf725cee7204ea37",
+      "sha256LfText": "8c68854f404eb4c2125d9713715c874647e48bb0d1127608cf725cee7204ea37",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "bytes": 68041341,
+      "sha256": "573fdbe4269090ecee5de8ff3213fb53b4cc19c06cd13dd0efe38ab82e23c296",
+      "sha256LfText": "573fdbe4269090ecee5de8ff3213fb53b4cc19c06cd13dd0efe38ab82e23c296",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/archive2-item-review-overrides.json",
+      "bytes": 256446,
+      "sha256": "de96971c50a8c71ecc6d2dff95e59951f7fe10411fba0c6c176903d8242297c1",
+      "sha256LfText": "de96971c50a8c71ecc6d2dff95e59951f7fe10411fba0c6c176903d8242297c1",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/basic-scope-parent-links.json",
+      "bytes": 2163896,
+      "sha256": "ac84e6ec34c443be794058ebd0eb22e9e4433394ab7c26464a35a4208ec588c7",
+      "sha256LfText": "ac84e6ec34c443be794058ebd0eb22e9e4433394ab7c26464a35a4208ec588c7",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "bytes": 949630,
+      "sha256": "4a8b9715bafd9b70d0fa66a1f51e7ee03eac3af0272934075007c9c9894f55bd",
+      "sha256LfText": "4a8b9715bafd9b70d0fa66a1f51e7ee03eac3af0272934075007c9c9894f55bd",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "bytes": 2275384,
+      "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "sha256LfText": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-geumdang-26-2mid-h2-geo-source-rebind-20261102.json",
+      "bytes": 145797,
+      "sha256": "e42379a32636cd7fe742404c6dea4813bc1e050fbff7626eebad51da74a7c5c5",
+      "sha256LfText": "e42379a32636cd7fe742404c6dea4813bc1e050fbff7626eebad51da74a7c5c5",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-jeil-25-2final-h2-probstat-source-rebind-20261102.json",
+      "bytes": 221764,
+      "sha256": "daf7546583c345c16ceeb680b2ba681ae5cf9d6c733ab9adf1274cad07423682",
+      "sha256LfText": "daf7546583c345c16ceeb680b2ba681ae5cf9d6c733ab9adf1274cad07423682",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-maesan-26-1mid-h2-geo-source-rebind-20261102.json",
+      "bytes": 178844,
+      "sha256": "30448f5fda800b3784a6c9cfbfd21fc780e510010d312e9bb328bd9c45e3acb5",
+      "sha256LfText": "30448f5fda800b3784a6c9cfbfd21fc780e510010d312e9bb328bd9c45e3acb5",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-content-fix-20261102.json",
+      "bytes": 366858,
+      "sha256": "5c2ffe523a3c56168cde7d1dd1ec9134a625f8c43e8bdc816aa47203fd4a9f65",
+      "sha256LfText": "5c2ffe523a3c56168cde7d1dd1ec9134a625f8c43e8bdc816aa47203fd4a9f65",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.json",
+      "bytes": 372118,
+      "sha256": "b454b2a1c2dfc1c1bf0a53115360a47f3de61b8e386114373adde25df251abbd",
+      "sha256LfText": "b454b2a1c2dfc1c1bf0a53115360a47f3de61b8e386114373adde25df251abbd",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-source-rebind-20261102.json",
+      "bytes": 354955,
+      "sha256": "5468a9e996a5542ec4c7d7075a4c60be74320bc1400d935b63ff30e0c9065d34",
+      "sha256LfText": "5468a9e996a5542ec4c7d7075a4c60be74320bc1400d935b63ff30e0c9065d34",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/gangnam25-probstat-finalqa-meta-20261021.json",
+      "bytes": 172594,
+      "sha256": "95c65c0b6d73a3de6c35753b540ac46d3ae9b04059f599dae31eb86e34a51b70",
+      "sha256LfText": "95c65c0b6d73a3de6c35753b540ac46d3ae9b04059f599dae31eb86e34a51b70",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/jeil-h1-2final-runtime-refresh-a011ae38.json",
+      "bytes": 263060,
+      "sha256": "dc06f88cd133c9c3e012c8a2fe66e71ccd8e8b95d55224e68cb1a772aa6303e2",
+      "sha256LfText": "dc06f88cd133c9c3e012c8a2fe66e71ccd8e8b95d55224e68cb1a772aa6303e2",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-palma-2026-mid-meta-review-20261113.json",
+      "bytes": 217229,
+      "sha256": "174a337a8e6aaca46c897c7d3fbbc6bccbc0c30072b81a2e9781373aaa4c1fdd",
+      "sha256LfText": "174a337a8e6aaca46c897c7d3fbbc6bccbc0c30072b81a2e9781373aaa4c1fdd",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+      "bytes": 223815,
+      "sha256": "aea5a3bb228638586c4a36c3eb4d1e8528d76d5a3787a0f52bcac8ab2f2c9054",
+      "sha256LfText": "aea5a3bb228638586c4a36c3eb4d1e8528d76d5a3787a0f52bcac8ab2f2c9054",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json",
+      "bytes": 211068,
+      "sha256": "bd627b6fe34082ed8ca2a90e49955e75ffb7ee2cfc6e3e4411ae4041d4d2d555",
+      "sha256LfText": "bd627b6fe34082ed8ca2a90e49955e75ffb7ee2cfc6e3e4411ae4041d4d2d555",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
+      "bytes": 228810,
+      "sha256": "0f673be4ab627f7d8d89ee66f2f1983ef3a212b9826f1064bf5e207894e92b88",
+      "sha256LfText": "0f673be4ab627f7d8d89ee66f2f1983ef3a212b9826f1064bf5e207894e92b88",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-a-exam2-native-20261114-r3.json",
+      "bytes": 275587,
+      "sha256": "50fe086411fa374ce44913219a4ec29ba2ab93f0e226aa47ffd735daae79c60d",
+      "sha256LfText": "50fe086411fa374ce44913219a4ec29ba2ab93f0e226aa47ffd735daae79c60d",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-01-yeonhang-m1-2mid-20261026-rev1.json",
+      "bytes": 303168,
+      "sha256": "7ed9277750830fe5f5e7ec9fc9a48c15d17fe8f180765d557214cb5bf5615ed0",
+      "sha256LfText": "7ed9277750830fe5f5e7ec9fc9a48c15d17fe8f180765d557214cb5bf5615ed0",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.json",
+      "bytes": 445012,
+      "sha256": "76390c29c40b0dbd50c94b840e23609aa51abe502940e8c061b3e48225eb16af",
+      "sha256LfText": "76390c29c40b0dbd50c94b840e23609aa51abe502940e8c061b3e48225eb16af",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+      "bytes": 294963,
+      "sha256": "328ed9348cafe3028d88d5d9a55f4eaf898a7a8338b0e7e14bb8ebff00dee61b",
+      "sha256LfText": "328ed9348cafe3028d88d5d9a55f4eaf898a7a8338b0e7e14bb8ebff00dee61b",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024-codex-audit-v1.json",
+      "bytes": 449908,
+      "sha256": "d4fff968c816e1b09515b605347589a6ceaf52abfa87c982c3b645d915568a06",
+      "sha256LfText": "d4fff968c816e1b09515b605347589a6ceaf52abfa87c982c3b645d915568a06",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-18-maesan-h2-probstats-20261024-codex-audit.json",
+      "bytes": 221801,
+      "sha256": "9197900627f99b4d2bdf1c38815042a2b88305c25dfa9fac655e65ebdd04aa26",
+      "sha256LfText": "9197900627f99b4d2bdf1c38815042a2b88305c25dfa9fac655e65ebdd04aa26",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-22-geumdang-h2-geo-20261023.json",
+      "bytes": 208713,
+      "sha256": "5ae6d3669abac0cfcbec49633b01d71b26099bbc72b5f18848013f192afaa057",
+      "sha256LfText": "5ae6d3669abac0cfcbec49633b01d71b26099bbc72b5f18848013f192afaa057",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-23-maesan-h2-geo-20261023.json",
+      "bytes": 193005,
+      "sha256": "51434873b1481c392064c51fe032c61137f46ea129dc3a1fdbb7464eab664a9b",
+      "sha256LfText": "51434873b1481c392064c51fe032c61137f46ea129dc3a1fdbb7464eab664a9b",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-24-maesanyeogo-h2-math1-20261024-codex-audit-v2.json",
+      "bytes": 537764,
+      "sha256": "6983a29434fead3880e93f927106202929f6f08e0a213b919cbdefa7cdeefab4",
+      "sha256LfText": "6983a29434fead3880e93f927106202929f6f08e0a213b919cbdefa7cdeefab4",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-24-maesanyeogo-h2-math1-parent-correction-20261024-v1.json",
+      "bytes": 356365,
+      "sha256": "9ed9cb2858f8f292cd57f832486ebf6121b1aabdb28640ae867b94e1fe820b4f",
+      "sha256LfText": "9ed9cb2858f8f292cd57f832486ebf6121b1aabdb28640ae867b94e1fe820b4f",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-25-jeil-2final-probstat-20261023.json",
+      "bytes": 235018,
+      "sha256": "35407a55673ea594c829912c55a07b773bb3edd41ec679ccff360df276ed9435",
+      "sha256LfText": "35407a55673ea594c829912c55a07b773bb3edd41ec679ccff360df276ed9435",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-25-jeil-h2-probstats-20261023.json",
+      "bytes": 216156,
+      "sha256": "5ef8c3d51230529cde449e7b3743a8bffcc0a36156f46a26adf7ebc7fd6a049a",
+      "sha256LfText": "5ef8c3d51230529cde449e7b3743a8bffcc0a36156f46a26adf7ebc7fd6a049a",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-26-geumdang-h2-geo-20261023.json",
+      "bytes": 158386,
+      "sha256": "2f7be5667a0c39a01936382f459534a65bfc3e83e798684a55dccc53bd1f8daa",
+      "sha256LfText": "2f7be5667a0c39a01936382f459534a65bfc3e83e798684a55dccc53bd1f8daa",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-26-jeil-h2-geo-20261023.json",
+      "bytes": 207323,
+      "sha256": "59e6976187ad67b41d46c6aee49527196857851488a1789505273c2de4755e17",
+      "sha256LfText": "59e6976187ad67b41d46c6aee49527196857851488a1789505273c2de4755e17",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-26-maesan-h2-geo-20261023.json",
+      "bytes": 181694,
+      "sha256": "f882eb813149a0ce0c9b3816338f194faddec599e2d90284afbf0c9edb9293a3",
+      "sha256LfText": "f882eb813149a0ce0c9b3816338f194faddec599e2d90284afbf0c9edb9293a3",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1.json",
+      "bytes": 361065,
+      "sha256": "d12755628a0f062d276ba4754cabdbec4be808936293456ad079bb5979bbc0d9",
+      "sha256LfText": "d12755628a0f062d276ba4754cabdbec4be808936293456ad079bb5979bbc0d9",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.json",
+      "bytes": 421469,
+      "sha256": "2b6bfffdc42ecbba53112eafc51f0dd80a95a654228612ad3cb222a27e109f73",
+      "sha256LfText": "2b6bfffdc42ecbba53112eafc51f0dd80a95a654228612ad3cb222a27e109f73",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+      "bytes": 319011,
+      "sha256": "1ffcf343518ee6eb758752e5ff013b17c6c28e8e9453c96dfe1c0ae449b13ecb",
+      "sha256LfText": "1ffcf343518ee6eb758752e5ff013b17c6c28e8e9453c96dfe1c0ae449b13ecb",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.json",
+      "bytes": 473781,
+      "sha256": "1733b7e57d36afa165bfe59e6523d719b96fb69b3a35d4761919b52d72f464ad",
+      "sha256LfText": "1733b7e57d36afa165bfe59e6523d719b96fb69b3a35d4761919b52d72f464ad",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang25-v2rev-20261026.json",
+      "bytes": 377100,
+      "sha256": "555feef838acd228d42d17255b11f232cf20d1928481607bf3549afa22626384",
+      "sha256LfText": "555feef838acd228d42d17255b11f232cf20d1928481607bf3549afa22626384",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+      "bytes": 405042,
+      "sha256": "02bd14c78050b084febbf042d33b0796bdb682b19ea2be234a0cd3f4c89a1d2b",
+      "sha256LfText": "02bd14c78050b084febbf042d33b0796bdb682b19ea2be234a0cd3f4c89a1d2b",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.json",
+      "bytes": 222613,
+      "sha256": "f47f72bbc67257aa2bbfea1bf7fb472ef39066f4efec0f5a2eb0decea65cff51",
+      "sha256LfText": "f47f72bbc67257aa2bbfea1bf7fb472ef39066f4efec0f5a2eb0decea65cff51",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-maesan20-8c976117425d-20261027.json",
+      "bytes": 331228,
+      "sha256": "7d123c949955a257569b987b5fec602ffe447f02debdacc7b5b6cc6b9342fdcc",
+      "sha256LfText": "7d123c949955a257569b987b5fec602ffe447f02debdacc7b5b6cc6b9342fdcc",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.json",
+      "bytes": 306397,
+      "sha256": "fbcc34634e83824fdc3d527916d2d22035f8109d271d73bd7b6ebbf12e4a11fc",
+      "sha256LfText": "fbcc34634e83824fdc3d527916d2d22035f8109d271d73bd7b6ebbf12e4a11fc",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-2-d835bd2d8b27-20261026.json",
+      "bytes": 343503,
+      "sha256": "f4bbc610f081eea80873834e96f57cee08eed354d3ab0a2d02ab9d65885c85ea",
+      "sha256LfText": "f4bbc610f081eea80873834e96f57cee08eed354d3ab0a2d02ab9d65885c85ea",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+      "bytes": 269556,
+      "sha256": "c76bccf42cfee25575a38137ef75ac9a5ebcd73ccc9922fc4bfbce857a2f4ffd",
+      "sha256LfText": "c76bccf42cfee25575a38137ef75ac9a5ebcd73ccc9922fc4bfbce857a2f4ffd",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
+      "bytes": 270284,
+      "sha256": "d92574d3194af7c8aced87a3c5ec924c340fc9af5802f11d3557d02c920ff90a",
+      "sha256LfText": "d92574d3194af7c8aced87a3c5ec924c340fc9af5802f11d3557d02c920ff90a",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+      "bytes": 1032414,
+      "sha256": "37b455f3e08fb40d2aa9e08d8a96b40f5783afe6ed60c26f9353d3604aeeba61",
+      "sha256LfText": "37b455f3e08fb40d2aa9e08d8a96b40f5783afe6ed60c26f9353d3604aeeba61",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.json",
+      "bytes": 699133,
+      "sha256": "8bd9fedea8d8b79dbdb2a8fd32a533690830554815bcea127502fc10cc416e51",
+      "sha256LfText": "8bd9fedea8d8b79dbdb2a8fd32a533690830554815bcea127502fc10cc416e51",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual.json",
+      "bytes": 242988,
+      "sha256": "147a0a70ee7eda748c1574e3080c2699c16363a2e55d41e083a92ab540c29867",
+      "sha256LfText": "147a0a70ee7eda748c1574e3080c2699c16363a2e55d41e083a92ab540c29867",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final.json",
+      "bytes": 228599,
+      "sha256": "f568588d466b4646166c7eb0df6668acd1d65f3b59ea1d2edc544cab61cea9a1",
+      "sha256LfText": "f568588d466b4646166c7eb0df6668acd1d65f3b59ea1d2edc544cab61cea9a1",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync.json",
+      "bytes": 222181,
+      "sha256": "16000f699fefc1635753ee7439e233989bbdb418b65aee564ba3cfba16cac965",
+      "sha256LfText": "16000f699fefc1635753ee7439e233989bbdb418b65aee564ba3cfba16cac965",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.json",
+      "bytes": 629190,
+      "sha256": "c48d43a3cd7c7cb7b23fe4f5b085920183b24d244fbe5b67c8cc90f739a4b587",
+      "sha256LfText": "c48d43a3cd7c7cb7b23fe4f5b085920183b24d244fbe5b67c8cc90f739a4b587",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104-raw.json",
+      "bytes": 258460,
+      "sha256": "39f3810d8442378f913e5de34bda6ad8e6dbacbd170e28da25267224b2d1652b",
+      "sha256LfText": "39f3810d8442378f913e5de34bda6ad8e6dbacbd170e28da25267224b2d1652b",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.json",
+      "bytes": 572166,
+      "sha256": "daa5e52791c1ec838bfb53e4746122e32112d8a89b91f6249f5c1a5c6df94532",
+      "sha256LfText": "daa5e52791c1ec838bfb53e4746122e32112d8a89b91f6249f5c1a5c6df94532",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.json",
+      "bytes": 503829,
+      "sha256": "9e84d8489f3d7adb26e3386ab64d510c1b45a071bc894e2b0e1cf36e00c59277",
+      "sha256LfText": "9e84d8489f3d7adb26e3386ab64d510c1b45a071bc894e2b0e1cf36e00c59277",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json",
+      "bytes": 429587,
+      "sha256": "d6be40f9f8f4c8c895d2e27d1868747406ea3424ca436c674d10fa26d28caef1",
+      "sha256LfText": "d6be40f9f8f4c8c895d2e27d1868747406ea3424ca436c674d10fa26d28caef1",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.json",
+      "bytes": 298572,
+      "sha256": "2128ae385a9684880840d62107cc2bbab9c890a38e12b4e5cd73d208c7bfe10a",
+      "sha256LfText": "2128ae385a9684880840d62107cc2bbab9c890a38e12b4e5cd73d208c7bfe10a",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+      "bytes": 296951,
+      "sha256": "9fa8a880cb18f5f3721d2a4b9650135a8fe62cf62ea45fc921822489febbb65c",
+      "sha256LfText": "9fa8a880cb18f5f3721d2a4b9650135a8fe62cf62ea45fc921822489febbb65c",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.json",
+      "bytes": 276549,
+      "sha256": "22b8eb31b91ddb60214be4fdfcdf6ea086ca4b3d02bdd6ad93b3bb47483d03b5",
+      "sha256LfText": "22b8eb31b91ddb60214be4fdfcdf6ea086ca4b3d02bdd6ad93b3bb47483d03b5",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.json",
+      "bytes": 564554,
+      "sha256": "414673f7a1aebc6e27c8d5ccf4bb593a4dde6c02c5d063af97a5ae79dfc70621",
+      "sha256LfText": "414673f7a1aebc6e27c8d5ccf4bb593a4dde6c02c5d063af97a5ae79dfc70621",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheon21-final-20261026.json",
+      "bytes": 440855,
+      "sha256": "31b8042cbb9f9a6952572e1677590431fc3ad4994116b50fa6d6101f678ee406",
+      "sha256LfText": "31b8042cbb9f9a6952572e1677590431fc3ad4994116b50fa6d6101f678ee406",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheongirls-a1c3b0b45d96-20261027.json",
+      "bytes": 410770,
+      "sha256": "9a8e9ddc521a5a112f9124a13bf4ec0b69c1710337c5ae96d9feff9e8aa27a38",
+      "sha256LfText": "9a8e9ddc521a5a112f9124a13bf4ec0b69c1710337c5ae96d9feff9e8aa27a38",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-1f9a56cb8af8764e.json",
+      "bytes": 168570,
+      "sha256": "7ede9fa993c3a5ccef3d1048395798e7d71a252964c0d87418a4da97d069b682",
+      "sha256LfText": "7ede9fa993c3a5ccef3d1048395798e7d71a252964c0d87418a4da97d069b682",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+      "bytes": 139762,
+      "sha256": "6b7fddd2ef76e98f835ed7649c1926005e8a35e52f71d046370edd8237ddb9ce",
+      "sha256LfText": "6b7fddd2ef76e98f835ed7649c1926005e8a35e52f71d046370edd8237ddb9ce",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-7f94c812b604136d.json",
+      "bytes": 175143,
+      "sha256": "2c7fe1121d31577987d8243dc461ae4c5ae6a92c587871a6f53c3d187b4dded1",
+      "sha256LfText": "2c7fe1121d31577987d8243dc461ae4c5ae6a92c587871a6f53c3d187b4dded1",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-92b1d189eaf50121.json",
+      "bytes": 168560,
+      "sha256": "d0ea8e2f3eff4f90fc0cc6bb6be15eddc5727c89c6258a4be0b3cdf8ab5172bd",
+      "sha256LfText": "d0ea8e2f3eff4f90fc0cc6bb6be15eddc5727c89c6258a4be0b3cdf8ab5172bd",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json",
+      "bytes": 148667,
+      "sha256": "c00332a62e1f052aeee2adaeb8990ebe66575d03f72ffe2ef0d6fb5a5090a6f6",
+      "sha256LfText": "c00332a62e1f052aeee2adaeb8990ebe66575d03f72ffe2ef0d6fb5a5090a6f6",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-12e9e218ca82052e.json",
+      "bytes": 165039,
+      "sha256": "263ecb7e40deb1e61a0ad72a2e2184cb191753233e9eed6b2b1d3c0dfe22fb20",
+      "sha256LfText": "263ecb7e40deb1e61a0ad72a2e2184cb191753233e9eed6b2b1d3c0dfe22fb20",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-1f9a56cb8af8764e.json",
+      "bytes": 145964,
+      "sha256": "75d1fb2554ab616a5317e3982ce2db33c9002da484e611e476f36ad306e97e08",
+      "sha256LfText": "75d1fb2554ab616a5317e3982ce2db33c9002da484e611e476f36ad306e97e08",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-23125c2044a1d1d1.json",
+      "bytes": 156867,
+      "sha256": "dbf8d27f1e1d47ffc35161fd0f59ee70c673c84fb4058129485bb0e77c04af4c",
+      "sha256LfText": "dbf8d27f1e1d47ffc35161fd0f59ee70c673c84fb4058129485bb0e77c04af4c",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-309cbc6dec7b1e3e.json",
+      "bytes": 139325,
+      "sha256": "754585d6dffa399e7e8fbee0823fc307861af38b9d84498d2c4a27e093ca0097",
+      "sha256LfText": "754585d6dffa399e7e8fbee0823fc307861af38b9d84498d2c4a27e093ca0097",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
+      "bytes": 125102,
+      "sha256": "3fe40dd86c2e36c976f9583b55148e5b50efebe2b48b9fbbc37bb10078e64c07",
+      "sha256LfText": "3fe40dd86c2e36c976f9583b55148e5b50efebe2b48b9fbbc37bb10078e64c07",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-40700db8e79be7c2.json",
+      "bytes": 173413,
+      "sha256": "23643749566c81ee6c848cc45e7d2164e2afd9b782500a41ccba897cb6386979",
+      "sha256LfText": "23643749566c81ee6c848cc45e7d2164e2afd9b782500a41ccba897cb6386979",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-473dc256ab199924.json",
+      "bytes": 147593,
+      "sha256": "7fc2b25ff48509bfa8dd390e95fe1ac992bfdf7776d6a6aa23eb2c280fbf904a",
+      "sha256LfText": "7fc2b25ff48509bfa8dd390e95fe1ac992bfdf7776d6a6aa23eb2c280fbf904a",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-57977f1342cf4cb2.json",
+      "bytes": 152746,
+      "sha256": "413af189f2f21c8eebd1beb95fc19bc35daabeb18502fb3b14a7d1502ade14c1",
+      "sha256LfText": "413af189f2f21c8eebd1beb95fc19bc35daabeb18502fb3b14a7d1502ade14c1",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-92b1d189eaf50121.json",
+      "bytes": 147626,
+      "sha256": "7932175125822baee2161d76e50e78c26b5a69512c207c3bf405126da253a64a",
+      "sha256LfText": "7932175125822baee2161d76e50e78c26b5a69512c207c3bf405126da253a64a",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-aa9bdf130235e586.json",
+      "bytes": 167267,
+      "sha256": "da34b2add50265804415624869f948b396bd6495d64745bf2ee0a09c3d79aa4c",
+      "sha256LfText": "da34b2add50265804415624869f948b396bd6495d64745bf2ee0a09c3d79aa4c",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-e9401baf94b1fce7.json",
+      "bytes": 157824,
+      "sha256": "709bd30b614ddd3415e86e0251a788e6684af8806e72225d985c2ca4ae23eec4",
+      "sha256LfText": "709bd30b614ddd3415e86e0251a788e6684af8806e72225d985c2ca4ae23eec4",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-finalqa-meta-20261021.json",
+      "bytes": 172461,
+      "sha256": "2af7a3ce819d4cbc3d853519b3b2a161880aea18d6500fb95e9d53cd8e092d0e",
+      "sha256LfText": "2af7a3ce819d4cbc3d853519b3b2a161880aea18d6500fb95e9d53cd8e092d0e",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/algebra-2022-v1.json",
+      "bytes": 79180,
+      "sha256": "f0815609ab134bc69f86c318032f3be19be33260c372c0554f8ed421d28d298c",
+      "sha256LfText": "f0815609ab134bc69f86c318032f3be19be33260c372c0554f8ed421d28d298c",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/derivative-v1.json",
+      "bytes": 938989,
+      "sha256": "eed7219e7991de43d41b74bda71ad0eb6eaa93f4be03a21d7c8ae335c586cc86",
+      "sha256LfText": "eed7219e7991de43d41b74bda71ad0eb6eaa93f4be03a21d7c8ae335c586cc86",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/exponents-logarithms-v1.json",
+      "bytes": 133751,
+      "sha256": "b41f6fbd015af882647a863e8c9d0ffd515f6bb52d78f495226cee262588b2f6",
+      "sha256LfText": "b41f6fbd015af882647a863e8c9d0ffd515f6bb52d78f495226cee262588b2f6",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+      "bytes": 1277556,
+      "sha256": "aef8bbb561544f47e4a3f77a6c0884dfb6c761114960b34ab0ac7a20d7477873",
+      "sha256LfText": "aef8bbb561544f47e4a3f77a6c0884dfb6c761114960b34ab0ac7a20d7477873",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+      "bytes": 986922,
+      "sha256": "b4002030ca438d48891291178bc3b844031c6aee7615423a054938b6dbb7733c",
+      "sha256LfText": "b4002030ca438d48891291178bc3b844031c6aee7615423a054938b6dbb7733c",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/geometry-v1.json",
+      "bytes": 450510,
+      "sha256": "086b7af881c888fcd8622fc2fa8c1325e08e646e2dbf23981e7a0cc32fd14959",
+      "sha256LfText": "086b7af881c888fcd8622fc2fa8c1325e08e646e2dbf23981e7a0cc32fd14959",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/h1-foundation-v1.json",
+      "bytes": 4245414,
+      "sha256": "e8aa55f44fce8739605e4c2d31d1ea413f14ab917ea447b47807018aaf38c033",
+      "sha256LfText": "e8aa55f44fce8739605e4c2d31d1ea413f14ab917ea447b47807018aaf38c033",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/h1-original-source-v1.json",
+      "bytes": 6727222,
+      "sha256": "08d04537134cdb893cebc14ec88cf35ff06e10bbbb39e1d3b2e2fa1512e8aaa9",
+      "sha256LfText": "08d04537134cdb893cebc14ec88cf35ff06e10bbbb39e1d3b2e2fa1512e8aaa9",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/integral-calculus-v1.json",
+      "bytes": 537959,
+      "sha256": "c8976b8e61ea0d7d76b74b5f343c7471c8932802525c1e71ab05a49255462e84",
+      "sha256LfText": "c8976b8e61ea0d7d76b74b5f343c7471c8932802525c1e71ab05a49255462e84",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/limit-continuity-v1.json",
+      "bytes": 309698,
+      "sha256": "d748bafa3923a1c1344253cb6701acbd97b7139a39d29d0aaf2090c899b42760",
+      "sha256LfText": "d748bafa3923a1c1344253cb6701acbd97b7139a39d29d0aaf2090c899b42760",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "bytes": 2776589,
+      "sha256": "d6e069960a61c5e2fd3f236384d8cae3df3607e6b8b1e85c3395ee2c5c00e987",
+      "sha256LfText": "d6e069960a61c5e2fd3f236384d8cae3df3607e6b8b1e85c3395ee2c5c00e987",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "bytes": 1549272,
+      "sha256": "70019b6e60237ec671555f5903eec33d1335f201b810fb6bf11bfeeb3e27aa45",
+      "sha256LfText": "70019b6e60237ec671555f5903eec33d1335f201b810fb6bf11bfeeb3e27aa45",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+      "bytes": 213520,
+      "sha256": "7b2c33e080267539725efbb8089ed6f1cb2263150b610612403b0be5fa216dd8",
+      "sha256LfText": "7b2c33e080267539725efbb8089ed6f1cb2263150b610612403b0be5fa216dd8",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle3-v1.json",
+      "bytes": 818892,
+      "sha256": "636e6c7dc9248639a649d746e744b1430fa4c3a3e05da86a5895d155685cff30",
+      "sha256LfText": "636e6c7dc9248639a649d746e744b1430fa4c3a3e05da86a5895d155685cff30",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/probability-statistics-v1.json",
+      "bytes": 2374117,
+      "sha256": "6a0cb8ce17ef2e59b12d381a85db4cd8590ac878f5d557a33640274cde5d9cec",
+      "sha256LfText": "6a0cb8ce17ef2e59b12d381a85db4cd8590ac878f5d557a33640274cde5d9cec",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/sets-propositions-v1.json",
+      "bytes": 837204,
+      "sha256": "76835dfb6bcefe0362ed364a01b16eebb115af4f39273253b7fe9236cc2591a7",
+      "sha256LfText": "76835dfb6bcefe0362ed364a01b16eebb115af4f39273253b7fe9236cc2591a7",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/trigonometry-v1.json",
+      "bytes": 51675,
+      "sha256": "99d70fb0cf7344c8291757052d40ef06312989cf4e584fcb8a87c4f97353ae9a",
+      "sha256LfText": "99d70fb0cf7344c8291757052d40ef06312989cf4e584fcb8a87c4f97353ae9a",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    },
+    {
+      "path": "archive/meta-foundation-runtime.js",
+      "bytes": 15324,
+      "sha256": "6cc3c4f5a141390d249dff749557a08cfa7a54c4d1ef5d1d6a89300ccba5dc17",
+      "sha256LfText": "6cc3c4f5a141390d249dff749557a08cfa7a54c4d1ef5d1d6a89300ccba5dc17",
+      "roles": [
+        "OFFICIAL_RUNTIME_MODULE"
+      ]
+    },
+    {
+      "path": "archive/mixer-selector.js",
+      "bytes": 27112,
+      "sha256": "1cd4e6786d2a465ff4ce4fc0571b3feabd933eb8113f1fdad013260ab03e76a5",
+      "sha256LfText": "1cd4e6786d2a465ff4ce4fc0571b3feabd933eb8113f1fdad013260ab03e76a5",
+      "roles": [
+        "OFFICIAL_RUNTIME_MODULE"
+      ]
+    },
+    {
+      "path": "archive/question-index.js",
+      "bytes": 11602983,
+      "sha256": "eb6790e886693e06135831b29376d0426f3c12f4ba6fba256ba2a0b1ffa15282",
+      "sha256LfText": "eb6790e886693e06135831b29376d0426f3c12f4ba6fba256ba2a0b1ffa15282",
+      "roles": [
+        "OFFICIAL_QUESTION_INDEX"
+      ]
+    },
+    {
+      "path": "archive/rpm-middle-toc.js",
+      "bytes": 168358,
+      "sha256": "ea3d33592a5d0545cd44e9b08fc5f26dfd660ec163ce2dd4e74404a3717711b7",
+      "sha256LfText": "ea3d33592a5d0545cd44e9b08fc5f26dfd660ec163ce2dd4e74404a3717711b7",
+      "roles": [
+        "OFFICIAL_RUNTIME_MODULE"
+      ]
+    },
+    {
+      "path": "archive/unit-past-exams-core.js",
+      "bytes": 101833,
+      "sha256": "df3d083f04d2a66288a0e5e606d7e42102a789ed7ec95cca53e780b38a6d4caf",
+      "sha256LfText": "df3d083f04d2a66288a0e5e606d7e42102a789ed7ec95cca53e780b38a6d4caf",
+      "roles": [
+        "OFFICIAL_RUNTIME_MODULE"
+      ]
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "bytes": 559927,
+      "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+      "sha256LfText": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+      "roles": [
+        "CANONICAL_LOADER_INPUT"
+      ]
+    }
+  ],
+  "siteRoot": "/workspace/scratch/54cb21af3005/pages-site-390518c7",
+  "siteReceipt": {
+    "schemaVersion": "ARCHIVE_PAGES_RELEASE_V1",
+    "registeredMainSHA": "390518c7fc34a8c742ba190163b478acb09da39f",
+    "releaseGate": "RELEASE_GATE_PASS",
+    "packageDigest": "f12951143a26653fed8452dbe2149c2d515bade59af0b974f136c6c0bbb6d52c",
+    "externalDependencyDigest": "69a0a38e4b60fafcdef46790df80e15479262006b65ebcca881023e6867e2012",
+    "validatorDigest": "4f7fa5cd4005e1d488f7739cbc617046002e52efabf0e64e0dadd9128be9cd2d",
+    "archiveValidationDigest": "657d3a0115ceaf50331e9235b01641359d51fd26e2d19b5462ea2d5d352e9d71",
+    "fileCount": 15035,
+    "totalBytes": 528684739
+  },
+  "snapshotBinding": {
+    "basis": "ACTUAL_SITE_RECEIPT_PLUS_OFFICIAL_CANONICAL_INPUT_DIGEST_CHECKS",
+    "fullPackageDigestRecomputed": false,
+    "artifactOriginBinding": "EXTERNAL_PAGES_ARTIFACT_AND_DIAGNOSTICS_REQUIRED",
+    "successfulCheckMeans": "ONLY_95_ASSIGNED_UNIT_COMPARISONS_ON_THE_SUPPLIED_SITE_BYTES"
+  },
+  "canonicalInput": {
+    "resolverVersion": "1.1.0",
+    "projectionVersion": "archive2-canonical-v1:9f9d43c73b82bf71909835433342c08a47a6de1623c86b83786576a5398379d5",
+    "resolvedIndexVersion": "archive2-canonical-v1:9f9d43c73b82bf71909835433342c08a47a6de1623c86b83786576a5398379d5",
+    "manifestFileCount": 142,
+    "fetchedInputCount": 97,
+    "digestValidation": "OFFICIAL_LOADER_PASSED"
+  },
+  "focusExam1Q3": {
+    "examNumber": 1,
+    "sourceOrdinal": 3,
+    "questionUid": "qid_v1_4bb877da6e4bb5441e18c36687a9f0bbc01eab3d19cac457cc3cb7ef799342b8",
+    "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#3",
+    "status": "PASS",
+    "actualUnitKey": "RPM22-M1-L1-06",
+    "expectedUnitKey": "RPM22-M1-L1-06"
+  },
+  "helperSha256": "86c75fa500117fd664725c4ff362bbd5cd3b06740edc9b04d7e83ad61c218e5c"
+}
