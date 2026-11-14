@@ -1,0 +1,91 @@
+[
+  {
+    "type": "TRIG_MONOTONICITY_ENDPOINT_TEMPLATE_GAP",
+    "ordinal": 5,
+    "questionUid": "qid_v1_d7480acb0b1c7f0bc1c51f4b06ec464eb01653b60f5bfd424d7145cf6bbfb22d",
+    "supportingQuestionUids": [
+      "qid_v1_d7480acb0b1c7f0bc1c51f4b06ec464eb01653b60f5bfd424d7145cf6bbfb22d"
+    ],
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "rpmRecordId": "M3-RPM-056",
+    "reason": "여각 y와 단위사분원의 sin·cos·tan이 x→90°에서 어떻게 변하는지를 판정한다. 정의 대입이나 특수각의 정적 값 계산과 다른 단조·극한적 변화 골격으로 exact ACTIVE 연결을 요청한다.",
+    "registrationStatus": "CODEX_REGISTRATION_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "GIVEN_STANDARD_DEVIATION_COMPARISON_TEMPLATE_GAP",
+    "ordinal": 15,
+    "questionUid": "qid_v1_63b582f9984654e662fcd4f76dba55bb619ff9779c81eb034d24352ac8dfaf92",
+    "supportingQuestionUids": [
+      "qid_v1_63b582f9984654e662fcd4f76dba55bb619ff9779c81eb034d24352ac8dfaf92"
+    ],
+    "problemTypeKey": null,
+    "rpmRecordId": "M3-RPM-086",
+    "reason": "표에 이미 주어진 표준편차10,4,1,5,3 중 최솟값을 골라 가장 고른 선수를 해석한다. 막대그래프 비교·편차복원 템플릿과 입력형이 달라 수치표 비교 후보로 기록한다.",
+    "registrationStatus": "CODEX_REGISTRATION_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "MEDIAN_MODE_EQUALITY_CLAIM_TEMPLATE_GAP",
+    "ordinal": 17,
+    "questionUid": "qid_v1_161d583839c719d1635977c68bf8ad86e422728b4ff6f6a25ffd744972f62f48",
+    "supportingQuestionUids": [
+      "qid_v1_161d583839c719d1635977c68bf8ad86e422728b4ff6f6a25ffd744972f62f48"
+    ],
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "rpmRecordId": "M3-RPM-081",
+    "reason": "네 자료의 순서와 빈도를 읽어 중앙값·최빈값이 같은지를 판정한다. 평균을 계산하는 세대푯값 결합 템플릿을 강제하지 않고 중앙값/최빈값 동등성 판정 후보를 기록한다.",
+    "registrationStatus": "CODEX_REGISTRATION_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "POOLED_EQUAL_MEAN_VARIANCE_TEMPLATE_GAP",
+    "ordinal": 18,
+    "questionUid": "qid_v1_15ece0d00ac0a30a0c3e9fac9a92113e1c1286c220f5b9643e799eea64b738e4",
+    "supportingQuestionUids": [
+      "qid_v1_15ece0d00ac0a30a0c3e9fac9a92113e1c1286c220f5b9643e799eea64b738e4"
+    ],
+    "problemTypeKey": null,
+    "rpmRecordId": "M3-RPM-085",
+    "reason": "두 집단의 평균이 같음을 확인해 각 분산을 학생수로 가중합하고 전체분산의 제곱근을 취한다. 확률변수 분산템플릿으로 표본자료 합산을 대체하지 않는다.",
+    "registrationStatus": "CODEX_REGISTRATION_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "DATA_TRANSLATION_MEAN_VARIANCE_TEMPLATE_GAP",
+    "ordinal": 21,
+    "questionUid": "qid_v1_dbdc03672eaabe13c2ba57f5d12c3703895defa200f8751dc3b08f1f470d1505",
+    "supportingQuestionUids": [
+      "qid_v1_dbdc03672eaabe13c2ba57f5d12c3703895defa200f8751dc3b08f1f470d1505"
+    ],
+    "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+    "rpmRecordId": "M3-RPM-086",
+    "reason": "모든 자료에서2를 빼면 평균은2 줄고 편차는 불변이므로 분산은 원표준편차의 제곱2이다. PT의 선형변환 범위는 맞지만 현재 ACTIVE TPL은 k배만 명시하므로 상수이동 TPL 후보를 요청한다.",
+    "registrationStatus": "CODEX_REGISTRATION_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "CURRENT_2022_RPM_EXACT_LEAF_GAP",
+    "ordinal": 16,
+    "questionUid": "qid_v1_fcede883522dcc600b722b81b0a3fe848fd2d875a19b9aadf1303908ee3f3d63",
+    "supportingQuestionUids": [
+      "qid_v1_fcede883522dcc600b722b81b0a3fe848fd2d875a19b9aadf1303908ee3f3d63"
+    ],
+    "effectiveParentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+    "reason": "두집단 평균·중앙값·최빈값을 동시에 비교하는 단일 exact leaf가 없다. 성분221·223·224의 결합 의미와 ACTIVE 템플릿을 보존한다.",
+    "registrationStatus": "CODEX_LEAF_LINK_PENDING",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "CURRENT_2022_RPM_EXACT_LEAF_GAP",
+    "ordinal": 17,
+    "questionUid": "qid_v1_161d583839c719d1635977c68bf8ad86e422728b4ff6f6a25ffd744972f62f48",
+    "supportingQuestionUids": [
+      "qid_v1_161d583839c719d1635977c68bf8ad86e422728b4ff6f6a25ffd744972f62f48"
+    ],
+    "effectiveParentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+    "reason": "중앙값과 최빈값의 동등성을 함께 판정하는 단일 exact leaf가 없다. 두 성분223·224 중 임의 하나만 전체로 삼지 않는다.",
+    "registrationStatus": "CODEX_LEAF_LINK_PENDING",
+    "sourceNewStringKeyInserted": false
+  }
+]

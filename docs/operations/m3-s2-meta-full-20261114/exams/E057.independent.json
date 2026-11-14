@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E057",
+  "author": "m3_a",
+  "reviewer": "root",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_연향중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "c52d837998daba56a97bd91bc37a31860ac677c6",
+  "targetReviewSha256": "8eb7e38382dd8eed4839c90c3927ad305b9d7737278568986924f58ff35af3ca",
+  "target4slotSha256": "f81bccab7e839f8dfad7142f5bea94437c635a5638821f6e0a607ec895aa1842",
+  "sampledSourcePatchSha256": "14a0dc24db2f8b6dfab45df002806681d56a54bc3fab59bbde929134a9c0f6cd",
+  "sampleOrdinals": [
+    8,
+    14,
+    20
+  ],
+  "sampleRule": "Root-selected current-source samples cover distinct methods and nontrivial conditions; original full review is not repeated.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_272e954bf28a86f8f498b22a76c2aeebfa4f365fb2e58ccf48cb6278955d6eb7",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "현재원본에서중심까지같은거리인두현의상등과등변삼각형의각구조를확인했다. 다만115도표시는수선OD/OE사이에있고해설은AOC/BOC중심각으로사용하며x전체각/분할각도확정되지않는다. 저자의same-distance/chord Primary와4칸의등거리·등변·내각method는메타의미로유효하지만정답65도와원본정합은명시HOLD로보존한다.",
+      "quotesChecked": 7,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_5b61d80ca06f4d907fe7d20d75922a90731a3a28b79da4abffb067612dbefad3",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "짝수자료중앙값16이a≤14,홀수자료중앙값14가a≥14를각각강제하여공통값을정하는문항이다. 중앙값제약복원TPL과INTERDEPENDENT가정확하며4칸goal매개변수결정,method중앙값·순서·부등식이두조건을포괄한다. 현행2022 M1중앙값경로를사용하되중3시험출처는바꾸지않는다.",
+      "quotesChecked": 7,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_1c022ccbc579e83749e3a6294c087a27b81be2ac87c9f61991f4c8dc41082c75",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "직각삼각형내접원의동일접선조각x로(x+6)^2+(x+9)^2=15^2를세우고양근3을선택한후반지름3과두중심연결길이로둘레를구한다. 현원본그림의접점배치와길이6/9를확인했다. ACTIVE접선길이골격과세보조CC·SEQUENTIAL,4칸의반지름/둘레목표및접선·이차식·피타고라스method가맞다. 첫읽기4가능성에서정형접선미지수선택과안내소문항을근거로B34/3을수용한다.",
+      "quotesChecked": 11,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 8,
+      "type": "SOURCE_DIAGRAM_SOLUTION_ANGLE_MISMATCH",
+      "release": "HOLD_SOURCE_QA"
+    }
+  ],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "5742488155d1a0547a3132ab08dd2b7e7fb23d71424f0cd3132808b02091afe9"
+}
