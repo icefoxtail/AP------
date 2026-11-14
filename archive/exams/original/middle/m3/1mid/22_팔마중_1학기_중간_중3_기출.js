@@ -197,7 +197,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마중_1학기_중간_중3_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선의 A=1, B=2를 정사각형 ABCD의 밑변으로 두고, 대각선 AC를 중심 A의 반지름으로 하는 위쪽 반원이 P(a), Q(b)에서 수직선과 만난다.",
+    "solutionImageCaption": "P의 좌표 a=1−√2, Q의 좌표 b=1+√2이다. 따라서 a/b=(1−√2)/(1+√2)=−3+2√2이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -336,7 +340,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마중_1학기_중간_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: T=4−√5는 1과 2 사이, R=√5는 2와 3 사이에 있다. 1에서 T까지의 거리가 소수 부분이고 2에서 R까지의 거리는 a이다.",
+    "solutionImageCaption": "a=√5−2이므로 4−√5의 소수 부분은 3−√5=1−a이다. 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -432,7 +440,11 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/22_팔마중_1학기_중간_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 a인 정사각형을 남는 파란 (a−b)² 정사각형, 같은 주황 띠 두 개, 초록 b² 모서리로 분할한 관계 모식도이다. 도식의 비례는 예시이다.",
+    "solutionImageCaption": "두 띠의 넓이는 각각 b(a−b)이다. 따라서 (a−b)²=a²−2ab+b²이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -498,7 +510,11 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/22_팔마중_1학기_중간_중3_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: x² 타일 두 개, x 타일 세 개, 단위 타일 하나를 각각 파랑·주황·초록으로 묶어 직사각형으로 배열했다. 변은 2x+1과 x+1이다.",
+    "solutionImageCaption": "전체 직사각형의 둘레는 2{(2x+1)+(x+1)}=6x+4이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -733,7 +749,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마중_1학기_중간_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 A, B, C를 변 길이가 3u, 2u, u인 순서로 나란히 붙였다. 세 정사각형의 면은 파란색, 주황색, 초록색이다.",
+    "solutionImageCaption": "14k=84에서 k=6이므로 한 변은 3√6, 2√6, √6 cm이다. 세 정사각형의 이어진 도형 둘레는 18√6 cm이다. 정답은 18√6 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -757,7 +777,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마중_1학기_중간_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축은 f(n)이다. 함숫값 0, 1, 2, 3 위에 입력의 개수만큼 색이 다른 점이 각각 쌓여 있다.",
+    "solutionImageCaption": "f(n)=0, 1, 2, 3이 되는 입력은 각각 1개, 3개, 5개, 2개이다. 따라서 0×1+1×3+2×5+3×2=19이다. 답은 19이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -781,7 +805,11 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/22_팔마중_1학기_중간_중3_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 x<3과 x>−1/5의 열린 범위를 따로 그리고 공통 구간을 마지막 줄에 표시했다.",
+    "solutionImageCaption": "주어진 구간에서 식은 (3−x)−(5x+1)=2−6x이다. 답은 2−6x이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -806,6 +834,10 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/22_팔마중_1학기_중간_중3_기출/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 52.52 cm와 47.48 cm인 두 원을 각각 8등분하고 같은 위치의 한 조각씩 주황색으로 표시했다.",
+    "solutionImageCaption": "한 조각 넓이 차는 (π/8)(52.52²−47.48²)=(π/8)(100)(5.04)=63π cm²이다. 답은 63π cm²이다.",
+    "solutionImageSize": "full"
   }
 ];

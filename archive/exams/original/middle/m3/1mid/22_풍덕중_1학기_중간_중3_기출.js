@@ -327,7 +327,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "primaryMethod": "0<a<3으로 부호를 판단하고 √(t²)=|t|를 쓴다.",
-    "decisiveStep": "|3-a|+|a|=(3-a)+a=3."
+    "decisiveStep": "|3-a|+|a|=(3-a)+a=3.",
+    "solutionImage": "assets/images/22_풍덕중_1학기_중간_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 0과 3이 열린 끝점인 구간을 나타낸다. a의 정확한 위치는 특정하지 않는다.",
+    "solutionImageCaption": "0<a<3이므로 |3−a|+|a|=(3−a)+a=3이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -364,7 +368,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "primaryMethod": "1<√2<2를 이용해 모든 수를 정렬한다.",
-    "decisiveStep": "1-√2<1/2<1<√2<5-√2."
+    "decisiveStep": "1-√2<1/2<1<√2<5-√2.",
+    "solutionImage": "assets/images/22_풍덕중_1학기_중간_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 주어진 다섯 수를 정확한 위치에 표시한 수직선이다.",
+    "solutionImageCaption": "1−√2<1/2<1<√2<5−√2이므로 세 번째 수는 1이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -471,7 +479,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "MULTI_STEP_COUPLING",
     "primaryMethod": "겉넓이 2(ab+bc+ca)에 변 길이를 대입하고 근호를 정리한다.",
-    "decisiveStep": "2(√10+5√5+8√2)=2√10+10√5+16√2."
+    "decisiveStep": "2(√10+5√5+8√2)=2√10+10√5+16√2.",
+    "solutionImage": "assets/images/22_풍덕중_1학기_중간_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체의 세 방향 길이는 각각 √2, √5, 3+√10이다. 세 종류의 직사각형 면이 다른 색으로 나타난다.",
+    "solutionImageCaption": "겉넓이는 마주 보는 세 면 쌍의 넓이를 더한 2{√2·√5+√5(3+√10)+√2(3+√10)}이다. 이를 정리하면 2√10+10√5+16√2이며 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -782,6 +794,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "MULTI_STEP_COUPLING",
     "primaryMethod": "s²=24x와 소인수 짝수 지수 조건에서 최소 s를 찾는다.",
-    "decisiveStep": "24=2³×3이므로 최소 s=12이고 x=6."
+    "decisiveStep": "24=2³×3이므로 최소 s=12이고 x=6.",
+    "solutionImage": "assets/images/22_풍덕중_1학기_중간_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형의 변 24 cm와 x cm, 한 변 s cm인 정사각형의 같은 넓이를 파란색으로 표시한 모식도이다.",
+    "solutionImageCaption": "정사각형의 변을 s라 하면 s²=24x이다. 24=2³×3이므로 자연수 s의 최소는 12이고 이때 x=6도 자연수이다. 따라서 정사각형 한 변의 길이는 12 cm, 정답은 ①이다.",
+    "solutionImageSize": "full"
   }
 ];

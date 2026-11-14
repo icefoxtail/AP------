@@ -292,7 +292,11 @@ window.questionBank = [
       "sourceBlobSha": "64ab94423bcca371dab4b7def24505d55515a748",
       "extractedExamId": "22_향림중_1학기_중간_중3_수학",
       "sourceOrdinal": 5
-    }
+    },
+    "solutionImage": "assets/images/22_향림중_1학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: p로 표시한 원주율은 3과 4 사이에 있다. 3에서 원주율까지의 거리는 왼쪽, 원주율에서 4까지는 오른쪽 화살표이다.",
+    "solutionImageCaption": "3<π<4이므로 |π−3|=π−3, |π−4|=4−π이다. 차는 2π−7이고 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -353,7 +357,11 @@ window.questionBank = [
       "sourceBlobSha": "64ab94423bcca371dab4b7def24505d55515a748",
       "extractedExamId": "22_향림중_1학기_중간_중3_수학",
       "sourceOrdinal": 6
-    }
+    },
+    "solutionImage": "assets/images/22_향림중_1학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 1은 닫힌 점, 6은 열린 점이며 사이에 자연수 표식이 놓인다.",
+    "solutionImageCaption": "4≤x+3<9에서 1≤x<6이다. 자연수 1,2,3,4,5의 합은 15이고 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -412,7 +420,10 @@ window.questionBank = [
       "extractedExamId": "22_향림중_1학기_중간_중3_수학",
       "sourceOrdinal": 7
     },
-    "solutionImage": "assets/images/22_향림중_1학기_중간_중3_수학/q07_solution_GEOMETRY.svg"
+    "solutionImage": "assets/images/22_향림중_1학기_중간_중3_수학/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위 A는 2이다. 모눈에서 A를 중심으로 D와 B까지의 같은 길이를 각각 왼쪽 및 오른쪽 호로 옮겨 P와 Q를 잡는다.",
+    "solutionImageCaption": "AD=AB=√(3²+1²)=√10이다. 따라서 P는 2−√10, Q는 2+√10에 대응한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -703,7 +714,11 @@ window.questionBank = [
       "sourceBlobSha": "64ab94423bcca371dab4b7def24505d55515a748",
       "extractedExamId": "22_향림중_1학기_중간_중3_수학",
       "sourceOrdinal": 12
-    }
+    },
+    "solutionImage": "assets/images/22_향림중_1학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 4−√2는 2와 3 사이에 있고 2로부터의 거리를 화살표로 나타낸다.",
+    "solutionImageCaption": "1<√2<2이므로 2<4−√2<3이다. 정수 부분 a=2, 소수 부분 b=2−√2이므로 a−b=√2, ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
