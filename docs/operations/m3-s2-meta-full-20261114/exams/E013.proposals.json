@@ -1,0 +1,49 @@
+[
+  {
+    "ordinal": 11,
+    "questionUid": "qid_v1_77d78f3bca75f44ef9f2544cb25f62c7e8d7c01cbea94128c2b169e1d8146023",
+    "type": "RPM_LEAF_LINK_PROPOSAL",
+    "nameKo": "삼각비로 기울기와 직선식 구성",
+    "definition": "삼각비에서 직선의 기울기를 구하여 주어진 절편 등으로 직선식을 구성한다.",
+    "distinction": "특수각 값 자체를 목표로 하지 않으며 기존 평면도형의 길이·넓이 leaf에도 정확히 들어가지 않는다.",
+    "parent": [
+      "2022",
+      "M3-2",
+      "삼각비",
+      "삼각비의 활용"
+    ],
+    "reuseTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 20,
+    "questionUid": "qid_v1_03d625a6a8c7bfefeb10b9d01602b30986891a6f7ed9219f397b72999cb2737f",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "동일 접선 길이의 RHS 증명 근거 판정",
+    "definition": "접점수직·공통빗변·반지름동일을 전제로 두 직각삼각형의 RHS합동을 설명하는 증명칸을 판정",
+    "distinction": "목표는 접선의 수치 길이가 아니며 결론PA=PB를 합동 전제OA=OB와 구별해야 함",
+    "parent": "PT_CIRCLE_TANGENT",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TM_TANGENT_LENGTH",
+      "TM_TANGENCY_CONDITION"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 24,
+    "questionUid": "qid_v1_0ccaa24dc139ce4cf597356d5d1003afa0b37e8b9f5a0155fd7d0fddfc68acf1",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접점수직과 삼각비로 접선사각형 넓이",
+    "definition": "접점의 직각에서 삼각비로 반지름과 접선길이를 구하고 합동인 두 삼각형 넓이를 합한다.",
+    "distinction": "접함의 여부나 접선길이 자체가 목표인 TPL과 구분",
+    "parent": "PT_CIRCLE_TANGENT",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TM_TANGENCY_CONDITION",
+      "TM_TANGENT_LENGTH"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]

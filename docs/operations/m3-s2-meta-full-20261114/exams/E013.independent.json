@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E013",
+  "author": "review_a",
+  "reviewer": "review_b",
+  "sourceArchiveFile": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+  "sourceBlob": "c8c33339e5a61f10d4212706ea11e963fb06eaa4",
+  "target4slotSha256": "6dacb8b70e4c9197a0b1097dffe05c87f14c9c6a0e57003d2ba9c883c838a670",
+  "targetReviewSha256": "1ca2c76176e39be25a67aca8c3a1402d37fe93cbfa152c91514a5214691f3904",
+  "sampleRule": "WARN/IMPLIED·goal 경계·이미지 전용 필수 조건 우선",
+  "sampleOrdinals": [
+    11,
+    20,
+    23
+  ],
+  "status": "PASS_AFTER_REQUESTED_CORRECTIONS",
+  "decisiveErrorCount": 0,
+  "fabricatedQuoteCount": 0,
+  "items": [
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_77d78f3bca75f44ef9f2544cb25f62c7e8d7c01cbea94128c2b169e1d8146023",
+      "status": "PASS_AFTER_CORRECTION",
+      "independentMeaningReview": "일반 직선으로 given을 바로잡고 목표·방법을 직선의방정식으로 보완했다. tan30=√3/3의 전체 비와 최종 직선식을 인용하여 실제 기울기·절편 연결을 정확히 보존한다.",
+      "quotesChecked": 5,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "givenObjectError": false,
+      "requiredConditionOmission": false,
+      "imageRead": true
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_03d625a6a8c7bfefeb10b9d01602b30986891a6f7ed9219f397b72999cb2737f",
+      "status": "PASS",
+      "independentMeaningReview": "두 접선 길이 같음을 RHS 합동으로 증명하는 빈칸의 근거 판정이다. 실제 그림의③은 두 반지름의 같음이며 수직·반지름·RHS방법이 전제를 정확히 담는다.",
+      "quotesChecked": 7,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "givenObjectError": false,
+      "requiredConditionOmission": false,
+      "imageRead": true
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_42e6667be8df1c261747d3b70538e38dbbc42c9d1eb3edb2a885329090c49b35",
+      "status": "PASS_AFTER_CORRECTION",
+      "independentMeaningReview": "두 각 조건의 전체 exact 인용을 확인했다. 실제 그림의 B 직각을 독립 확인했고, 원 해설의 삼각비 및 별도 image condition evidence가 그 전제를 보존한다. 대각선 복원→두 넓이 합의 목표·방법이 타당하다.",
+      "quotesChecked": 8,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "givenObjectError": false,
+      "requiredConditionOmission": false,
+      "imageRead": true
+    }
+  ],
+  "correctionHistory": [
+    {
+      "initial4slotSha256": "f698d9ac9c71eb9aa30e77a44ed3c51f16a63b5e41d071cad9164610b59f430a",
+      "resolved": [
+        "Q11 given 접선→직선",
+        "Q11 goal/method 직선의방정식 및 전체 수식",
+        "Q23 두 각 전체 식 인용"
+      ]
+    }
+  ],
+  "rootReceiptsObserved": [
+    {
+      "path": "root-validation/E013.difficulty-adjudication.json",
+      "sha256": "ebc643849bf0bca61c9be4e88a66510d6af8b66c081182390473197f546d9fad"
+    },
+    {
+      "path": "root-validation/E013.rpm-leaf-gap-adjudication.json",
+      "sha256": "dfce3a88ea00eb85d74c04dde91ee750dec20bc1b584120e1053e26f5e43581e"
+    }
+  ]
+}

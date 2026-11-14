@@ -43,7 +43,8 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 2,
@@ -88,12 +89,13 @@ window.questionBank = [
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 3,
@@ -135,7 +137,8 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 4,
@@ -175,7 +178,7 @@ window.questionBank = [
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
@@ -183,7 +186,8 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 반지름 1의 사분원에서 각 53°의 수평 투영, 수직 투영과 접선 높이를 비교한다.",
     "solutionImageCaption": "cos37°=sin53°≈0.80, tan53°≈1.33이므로 cos37°+tan53°≈2.13이다. 정답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 5,
@@ -231,7 +235,8 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q5-solution.svg",
     "solutionImageAlt": "해설 그림: x축 위 H30·H60 위치로 cos 감소, 주황 수직 투영으로 sin 증가, 초록 x=1 접선 높이로 tan 증가를 비교한다.",
     "solutionImageCaption": "예각에서 각이 커질수록 sin A와 tan A는 커지고 cos A는 작아진다. 정답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 6,
@@ -272,16 +277,15 @@ window.questionBank = [
     "solutionImageSize": "full",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
-    ],
+    "crossConceptKeys": ["CC_PYTHAGOREAN_THEOREM"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 7,
@@ -324,16 +328,15 @@ window.questionBank = [
     "solutionImageSize": "full",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
-    ],
+    "crossConceptKeys": ["CC_PYTHAGOREAN_THEOREM"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 8,
@@ -368,14 +371,15 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 9,
@@ -415,18 +419,16 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN",
-      "CC_PERPENDICULAR"
-    ],
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN_THEOREM","CC_PERPENDICULAR"],
     "conditionKeys": [],
     "integrationPattern": "REINTERPRETATION",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 10,
@@ -464,14 +466,15 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 11,
@@ -504,16 +507,13 @@ window.questionBank = [
     "answer": "③",
     "solution": "직선이 $x$축의 양의 방향과 이루는 각이 $30^\\circ$이므로\n기울기는\n$\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$이다.\n\n또 그림에서 $y$절편은 $2$이다.\n\n따라서 직선의 방정식은\n$y=\\dfrac{\\sqrt3}{3}x+2$이다.\n\n정답은 ③이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q11.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
-    "crossConceptKeys": [
-      "CC_LINE_EQUATION",
-      "CC_SLOPE"
-    ],
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_SLOPE","CC_LINE_EQUATION"],
     "conditionKeys": [],
     "integrationPattern": "REINTERPRETATION",
     "difficultyBucket": 2,
@@ -523,7 +523,8 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q11-solution.svg",
     "solutionImageAlt": "해설 그림: 30° 기울기와 y절편 2인 직선의 한 예, 수평 변화 3과 수직 변화 √3.",
     "solutionImageCaption": "기울기는 tan30°=√3/3이고 y절편은 2이므로 직선은 y=(√3/3)x+2이다. 정답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
   },
   {
     "id": 12,
@@ -559,20 +560,21 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
-    "crossConceptKeys": [],
+    "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+    "crossConceptKeys": ["CC_RADICAL_ABSOLUTE_VALUE"],
     "conditionKeys": [
       "COND_RANGE"
     ],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 단위원의 대표 예각 A=30°에서 cos A, sin A와 x=1 접선 높이 tan A를 나타낸다.",
     "solutionImageCaption": "대표 예각 A=30°에서 수평 투영 cos A=√3/2, 수직 투영 sin A=1/2, 접선 높이 tan A=√3/3이다. 따라서 cos A>sin A, tan A>sin A이고 식은 cos A−tan A이다. 정답은 ①이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 13,
@@ -621,7 +623,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
   },
   {
     "id": 14,
@@ -663,17 +666,16 @@ window.questionBank = [
     "solutionImageCaption": "해설의 핵심 관계: 같은 반지름 5에서 아래 현 반길이 4, 중심거리 3; 위 현 반길이 4이므로 x²+4²=5², x=3.",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
-    "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
-    ],
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN_THEOREM"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "conceptClusterKey": "CIRCLE_LINE"
   },
   {
     "id": 15,
@@ -720,7 +722,8 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "conceptClusterKey": "CIRCLE_LINE"
   },
   {
     "id": 16,
@@ -760,17 +763,16 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
-    "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
-    ],
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN_THEOREM","CC_CIRCLE_CIRCUMFERENCE"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "conceptClusterKey": "CIRCLE_LINE"
   },
   {
     "id": 17,
@@ -813,14 +815,15 @@ window.questionBank = [
     "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "conceptClusterKey": "CIRCLE_LINE"
   },
   {
     "id": 18,
@@ -865,12 +868,13 @@ window.questionBank = [
     "templateKey": "TM_TANGENT_LENGTH",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "conceptClusterKey": "CIRCLE_LINE"
   },
   {
     "id": 19,
@@ -911,17 +915,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
-    ],
+    "crossConceptKeys": ["CC_PYTHAGOREAN_THEOREM"],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImageAlt": "해설 그림: 위쪽 반원 O, 접점 A·B·E와 D·C에서 그은 두 접선 쌍의 길이 대응.",
-    "solutionImageCaption": "AD=DE=x, BC=CE=5이고 DC=x+5이다. 피타고라스로 x=9/5이므로 정답은 ②이다."
+    "solutionImageCaption": "AD=DE=x, BC=CE=5이고 DC=x+5이다. 피타고라스로 x=9/5이므로 정답은 ②이다.",
+    "conceptClusterKey": "CIRCLE_LINE"
   },
   {
     "id": 20,
@@ -964,17 +967,16 @@ window.questionBank = [
     "solutionImageCaption": "해설의 핵심 관계: 접점에서 OA⊥PA, OB⊥PB이고 OP 공통, OA=OB이므로 직각삼각형 PAO와 PBO가 RHS 합동, PA=PB.",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
-    "templateKey": "TM_TANGENT_LENGTH",
-    "crossConceptKeys": [
-      "CC_PERPENDICULAR"
-    ],
+    "templateKey": null,
+    "crossConceptKeys": ["CC_RIGHT_TRIANGLE_CONGRUENCE_RHS"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "conceptClusterKey": "CIRCLE_LINE"
   },
   {
     "id": 21,
@@ -1010,7 +1012,8 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 22,
@@ -1050,11 +1053,12 @@ window.questionBank = [
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
   },
   {
     "id": 23,
@@ -1093,12 +1097,13 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B23",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 대각선 AC가 나누는 두 삼각형, 직각 B와 높이 DH=4√3.",
     "solutionImageCaption": "[ABC]=18√3, [ACD]=24√3이므로 [ABCD]=42√3 cm²이다. 정답은 42√3 cm²이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
   },
   {
     "id": 24,
@@ -1132,17 +1137,16 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
-    "templateKey": "TM_TANGENCY_CONDITION",
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
-    ],
+    "templateKey": null,
+    "crossConceptKeys": ["CC_TRIG_RATIO","CC_TRIANGLE_AREA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "conceptClusterKey": "CIRCLE_LINE"
   },
   {
     "id": 25,
@@ -1178,11 +1182,12 @@ window.questionBank = [
     "templateKey": "TM_TANGENT_LENGTH",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-    "solutionImageLayout": "fullwidth"
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "solutionImageLayout": "fullwidth",
+    "conceptClusterKey": "CIRCLE_LINE"
   }
 ];
