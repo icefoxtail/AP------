@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-f92c43fb2956-5743d415",
+  "sourceArchiveFile": "original/high/h2/1mid/22_효천고_1학기_중간_고2_수학I.js",
+  "createdAt": "2026-11-14T05:49:17.024Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "e9cdc120e2a7d7b26b2bac01306191276b8fbcc1",
+  "sourceBlobSha1": "eab0e8fd33a14e536b1157234a1180e7b06154f4",
+  "ledgers": [
+    {
+      "role": "pass1",
+      "source": "A-out/ledgers/22_효천고_1학기_중간_고2_수학I.json",
+      "sourceSha256": "0209492d016cd24b6bae831356cba62dc85b46ed255fcb52ee1174e9f73fae98",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-f92c43fb2956-5743d415.pass1-ledger.json",
+      "repoSha256": "0209492d016cd24b6bae831356cba62dc85b46ed255fcb52ee1174e9f73fae98",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass2",
+      "source": "A2-out/ledgers/22_효천고_1학기_중간_고2_수학I.json",
+      "sourceSha256": "2628d2ecdc82c63c077fb2a31e861788dfd0ff990acf407d4ff33a61602a6ee7",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-f92c43fb2956-5743d415.pass2-ledger.json",
+      "repoSha256": "2628d2ecdc82c63c077fb2a31e861788dfd0ff990acf407d4ff33a61602a6ee7",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/l/ledgers/shard2-007.json",
+      "sourceSha256": "5258074bb5b9b2d3b18131422b2af50f1b904f260eaccc3a1b594e6031ed3316",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-f92c43fb2956-5743d415.pass3-ledger.json",
+      "repoSha256": "f121c2a3c408e80ea7a8949e56491ef50c003ac82574c636d7433d7c8fb1b91f",
+      "lineEndingNormalized": true
+    }
+  ],
+  "fieldSources": {
+    "registered": 100,
+    "agree": 106,
+    "p3": 19
+  },
+  "itemSources": {
+    "registered+agree+p3": 16,
+    "registered+agree": 9
+  },
+  "typeHoldQuestions": 16,
+  "idWarnings": []
+}
