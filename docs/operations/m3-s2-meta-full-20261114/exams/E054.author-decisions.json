@@ -1,0 +1,1706 @@
+[
+  {
+    "ordinal": 1,
+    "rpm": 49,
+    "after": {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "y축 평행이동을 상수항 q로 나타내고 주어진 점(−2,−5)을 대입해 q를 정한다. 기존 평행이동 TPL은 실제 결정 방법과 일치한다.",
+    "difficulty": "평행이동한 식을 만들고 한 점을 대입하는 정형 전처리2이다. 원본 하 문자열은 보존하고 B12 예외로 구별한다.",
+    "step": "y축 평행이동을 상수항 q로 나타내고 주어진 점(−2,−5)을 대입해 q를 정한다. 기존 평행이동 TPL은 실제 결정 방법과 일치한다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 136,
+    "slots": {
+      "given": [
+        [
+          91,
+          "stem:이차함수 $y = -2x^2$의 그래프를 $y$축의 방향으로 $q$만큼 평행이동하면 점 $(-2, -5)$를 지난다. $q$의 값을 구하면?"
+        ],
+        [
+          210,
+          "stem:이차함수 $y = -2x^2$의 그래프를 $y$축의 방향으로 $q$만큼 평행이동하면 점 $(-2, -5)$를 지난다. $q$의 값을 구하면?"
+        ],
+        [
+          142,
+          "stem:이차함수 $y = -2x^2$의 그래프를 $y$축의 방향으로 $q$만큼 평행이동하면 점 $(-2, -5)$를 지난다. $q$의 값을 구하면?"
+        ],
+        [
+          148,
+          "stem:이차함수 $y = -2x^2$의 그래프를 $y$축의 방향으로 $q$만큼 평행이동하면 점 $(-2, -5)$를 지난다. $q$의 값을 구하면?"
+        ]
+      ],
+      "goal": [
+        [
+          308,
+          "stem:이차함수 $y = -2x^2$의 그래프를 $y$축의 방향으로 $q$만큼 평행이동하면 점 $(-2, -5)$를 지난다. $q$의 값을 구하면?"
+        ]
+      ],
+      "method": [
+        [
+          210,
+          "solution:$y=-2x^2+q$이고 $x=-2$일 때 $y=-5$이므로 $-5=-2\\cdot(-2)^2+q=-8+q$이다. 따라서 $q=3$이고 정답은 ③이다."
+        ],
+        [
+          53,
+          "solution:$y=-2x^2+q$이고 $x=-2$일 때 $y=-5$이므로 $-5=-2\\cdot(-2)^2+q=-8+q$이다. 따라서 $q=3$이고 정답은 ③이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 308를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 2,
+    "rpm": 49,
+    "after": {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "수직 이동량 a를 점(3,2)의 함숫값으로 구하고 이동 후 꼭짓점의 두 좌표 b,c를 읽어 합한다.",
+    "difficulty": "이동량 복원 뒤 꼭짓점 읽기라는 직접적인 표준 연결2이다. 단순 세 수의 합 때문에3으로 올리지 않는다.",
+    "step": "수직 이동량 a를 점(3,2)의 함숫값으로 구하고 이동 후 꼭짓점의 두 좌표 b,c를 읽어 합한다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 136,
+    "slots": {
+      "given": [
+        [
+          91,
+          "stem:이차함수 $y = \\frac{2}{3}x^2$의 그래프를 $y$축의 방향으로 $a$만큼 평행이동하면 점 $(3, 2)$를 지나고 꼭짓점의 좌표는 $(b, c)$가 될 때, $a+b+c$의 값을 구하면?"
+        ],
+        [
+          210,
+          "stem:이차함수 $y = \\frac{2}{3}x^2$의 그래프를 $y$축의 방향으로 $a$만큼 평행이동하면 점 $(3, 2)$를 지나고 꼭짓점의 좌표는 $(b, c)$가 될 때, $a+b+c$의 값을 구하면?"
+        ],
+        [
+          142,
+          "stem:이차함수 $y = \\frac{2}{3}x^2$의 그래프를 $y$축의 방향으로 $a$만큼 평행이동하면 점 $(3, 2)$를 지나고 꼭짓점의 좌표는 $(b, c)$가 될 때, $a+b+c$의 값을 구하면?"
+        ],
+        [
+          311,
+          "stem:이차함수 $y = \\frac{2}{3}x^2$의 그래프를 $y$축의 방향으로 $a$만큼 평행이동하면 점 $(3, 2)$를 지나고 꼭짓점의 좌표는 $(b, c)$가 될 때, $a+b+c$의 값을 구하면?"
+        ]
+      ],
+      "goal": [
+        [
+          286,
+          "stem:이차함수 $y = \\frac{2}{3}x^2$의 그래프를 $y$축의 방향으로 $a$만큼 평행이동하면 점 $(3, 2)$를 지나고 꼭짓점의 좌표는 $(b, c)$가 될 때, $a+b+c$의 값을 구하면?"
+        ]
+      ],
+      "method": [
+        [
+          210,
+          "solution:점 $(3,2)$를 식 $y=\\frac23x^2+a$에 대입하면 $2=\\frac23\\cdot9+a=6+a$이므로 $a=-4$이다. 이 그래프의 꼭짓점은 $(0,-4)$이므로 $a+b+c=-4+0-4=-8$이고 정답은 ⑤이다."
+        ],
+        [
+          53,
+          "solution:점 $(3,2)$를 식 $y=\\frac23x^2+a$에 대입하면 $2=\\frac23\\cdot9+a=6+a$이므로 $a=-4$이다. 이 그래프의 꼭짓점은 $(0,-4)$이므로 $a+b+c=-4+0-4=-8$이고 정답은 ⑤이다."
+        ],
+        [
+          311,
+          "solution:점 $(3,2)$를 식 $y=\\frac23x^2+a$에 대입하면 $2=\\frac23\\cdot9+a=6+a$이므로 $a=-4$이다. 이 그래프의 꼭짓점은 $(0,-4)$이므로 $a+b+c=-4+0-4=-8$이고 정답은 ⑤이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 286를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 3,
+    "rpm": 49,
+    "after": {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "꼭짓점형 y=2(x+2)²의 x를 x−5로 바꾸어 오른쪽5 이동한 식을 쓴다.",
+    "difficulty": "이동량이 직접 주어져 평행이동 공식에 바로 대입하는1이다.",
+    "step": "꼭짓점형 y=2(x+2)²의 x를 x−5로 바꾸어 오른쪽5 이동한 식을 쓴다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 136,
+    "slots": {
+      "given": [
+        [
+          91,
+          "stem:이차함수 $y = 2(x+2)^2$의 그래프를 $x$축의 방향으로 $5$만큼 평행이동한 이차함수의 식을 구하면?"
+        ],
+        [
+          210,
+          "stem:이차함수 $y = 2(x+2)^2$의 그래프를 $x$축의 방향으로 $5$만큼 평행이동한 이차함수의 식을 구하면?"
+        ]
+      ],
+      "goal": [
+        [
+          332,
+          "stem:이차함수 $y = 2(x+2)^2$의 그래프를 $x$축의 방향으로 $5$만큼 평행이동한 이차함수의 식을 구하면?"
+        ]
+      ],
+      "method": [
+        [
+          210,
+          "solution:원래 식은 $f(x)=2(x+2)^2$이다. 그래프를 오른쪽으로 5만큼 옮기면 새 식은 $f(x-5)=2((x-5)+2)^2=2(x-3)^2$이다. 따라서 정답은 ②이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 332를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 4,
+    "rpm": 49,
+    "after": {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "수평 이동에서 이차항 계수는 보존되므로 a=−2이고 꼭짓점의 x좌표3이−2가 되는 이동량 p=−5를 구한다.",
+    "difficulty": "두 식의 같은 계수와 꼭짓점 차를 대조하는 정형2이다. 이동 방향 확인을 별도 고난도 분기로 보지 않는다.",
+    "step": "수평 이동에서 이차항 계수는 보존되므로 a=−2이고 꼭짓점의 x좌표3이−2가 되는 이동량 p=−5를 구한다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 136,
+    "slots": {
+      "given": [
+        [
+          91,
+          "stem:이차함수 $y = a(x-3)^2$의 그래프를 $x$축의 방향으로 $p$만큼 평행이동한 그래프가 이차함수 $y = -2(x+2)^2$의 그래프와 일치한다고 할 때, $a+p$의 값을 구하면?"
+        ],
+        [
+          210,
+          "stem:이차함수 $y = a(x-3)^2$의 그래프를 $x$축의 방향으로 $p$만큼 평행이동한 그래프가 이차함수 $y = -2(x+2)^2$의 그래프와 일치한다고 할 때, $a+p$의 값을 구하면?"
+        ],
+        [
+          308,
+          "stem:이차함수 $y = a(x-3)^2$의 그래프를 $x$축의 방향으로 $p$만큼 평행이동한 그래프가 이차함수 $y = -2(x+2)^2$의 그래프와 일치한다고 할 때, $a+p$의 값을 구하면?"
+        ]
+      ],
+      "goal": [
+        [
+          286,
+          "stem:이차함수 $y = a(x-3)^2$의 그래프를 $x$축의 방향으로 $p$만큼 평행이동한 그래프가 이차함수 $y = -2(x+2)^2$의 그래프와 일치한다고 할 때, $a+p$의 값을 구하면?"
+        ]
+      ],
+      "method": [
+        [
+          210,
+          "solution:꼭짓점의 $x$좌표가 3에서 $-2$가 되므로 $p=-5$이고 계수는 $a=-2$로 같다. $a+p=-2-5=-7$이므로 ⑤이다."
+        ],
+        [
+          311,
+          "solution:꼭짓점의 $x$좌표가 3에서 $-2$가 되므로 $p=-5$이고 계수는 $a=-2$로 같다. $a+p=-2-5=-7$이므로 ⑤이다."
+        ],
+        [
+          696,
+          "solution:꼭짓점의 $x$좌표가 3에서 $-2$가 되므로 $p=-5$이고 계수는 $a=-2$로 같다. $a+p=-2-5=-7$이므로 ⑤이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 286를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 5,
+    "rpm": 49,
+    "after": {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "x축 방향2와 y축 방향−5 이동을 꼭짓점(3,4)에 직접 더해(5,−1)로 옮긴 식을 고른다.",
+    "difficulty": "두 축의 명시 이동량을 표준형에 바로 넣는 공식 직접 적용1이다.",
+    "step": "x축 방향2와 y축 방향−5 이동을 꼭짓점(3,4)에 직접 더해(5,−1)로 옮긴 식을 고른다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 136,
+    "slots": {
+      "given": [
+        [
+          91,
+          "stem:이차함수 $y = 2(x-3)^2 + 4$의 그래프를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $-5$만큼 평행이동한 이차함수의 식을 구하면?"
+        ],
+        [
+          210,
+          "stem:이차함수 $y = 2(x-3)^2 + 4$의 그래프를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $-5$만큼 평행이동한 이차함수의 식을 구하면?"
+        ]
+      ],
+      "goal": [
+        [
+          332,
+          "stem:이차함수 $y = 2(x-3)^2 + 4$의 그래프를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $-5$만큼 평행이동한 이차함수의 식을 구하면?"
+        ]
+      ],
+      "method": [
+        [
+          210,
+          "solution:오른쪽으로 2만큼, 아래로 5만큼 옮기면 $y=2(x-5)^2+4-5=2(x-5)^2-1$이다. 정답은 ③이다."
+        ],
+        [
+          311,
+          "solution:오른쪽으로 2만큼, 아래로 5만큼 옮기면 $y=2(x-5)^2+4-5=2(x-5)^2-1$이다. 정답은 ③이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 332를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 6,
+    "rpm": 48,
+    "after": {
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "그림과 발문의 꼭짓점(2,−4)으로 p,q를 읽고 원점 대입으로 a=1을 구한다. 실제 ACTIVE 지원 문항도 꼭짓점/y절편→a,p,q→합의 동일 골격이다.",
+    "difficulty": "꼭짓점 읽기와 한 점 대입의 정형 계수 복원2이다. E039Q4와 같은 입력형이다.",
+    "step": "그림과 발문의 꼭짓점(2,−4)으로 p,q를 읽고 원점 대입으로 a=1을 구한다. 실제 ACTIVE 지원 문항도 꼭짓점/y절편→a,p,q→합의 동일 골격이다.",
+    "image": "CURRENT_INLINE_ORIGINAL_IMAGE_READ",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [
+      {
+        "type": "CURRENT_2022_RPM_EXACT_LEAF_GAP",
+        "detail": "명시 꼭짓점형에서 그림·원점으로 계수 복원. E039Q4와 동일한2022 그래프(1) exact leaf 공백이며 일반형 조건으로 식 결정142를 강제하지 않는다."
+      }
+    ],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "slots": {
+      "given": [
+        [
+          91,
+          "stem:원점을 지나는 이차함수 $y=a(x-p)^2+q$의 그래프가 그림과 같고 꼭짓점의 좌표가 $(2,-4)$일 때, $a+p+q$의 값을 구하면? (4점)"
+        ],
+        [
+          403,
+          "stem:원점을 지나는 이차함수 $y=a(x-p)^2+q$의 그래프가 그림과 같고 꼭짓점의 좌표가 $(2,-4)$일 때, $a+p+q$의 값을 구하면? (4점)"
+        ],
+        [
+          311,
+          "stem:원점을 지나는 이차함수 $y=a(x-p)^2+q$의 그래프가 그림과 같고 꼭짓점의 좌표가 $(2,-4)$일 때, $a+p+q$의 값을 구하면? (4점)"
+        ],
+        [
+          148,
+          "stem:원점을 지나는 이차함수 $y=a(x-p)^2+q$의 그래프가 그림과 같고 꼭짓점의 좌표가 $(2,-4)$일 때, $a+p+q$의 값을 구하면? (4점)"
+        ]
+      ],
+      "goal": [
+        [
+          286,
+          "stem:원점을 지나는 이차함수 $y=a(x-p)^2+q$의 그래프가 그림과 같고 꼭짓점의 좌표가 $(2,-4)$일 때, $a+p+q$의 값을 구하면? (4점)"
+        ]
+      ],
+      "method": [
+        [
+          311,
+          "solution:꼭짓점 $(p,q)=(2,-4)$이므로 그래프는 $y=a(x-2)^2-4$이다. 원점을 지나므로 $0=4a-4$에서 $a=1$. 따라서 $a+p+q=1+2-4=-1$이고 ②이다."
+        ],
+        [
+          53,
+          "solution:꼭짓점 $(p,q)=(2,-4)$이므로 그래프는 $y=a(x-2)^2-4$이다. 원점을 지나므로 $0=4a-4$에서 $a=1$. 따라서 $a+p+q=1+2-4=-1$이고 ②이다."
+        ],
+        [
+          50,
+          "solution:꼭짓점 $(p,q)=(2,-4)$이므로 그래프는 $y=a(x-2)^2-4$이다. 원점을 지나므로 $0=4a-4$에서 $a=1$. 따라서 $a+p+q=1+2-4=-1$이고 ②이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 286를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 7,
+    "rpm": 51,
+    "after": {
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "일반형에서 음수 계수를 먼저 묶고 완전제곱식과 상수 조정으로 −(x−3)²+8을 만든 뒤 세 계수 합을 계산한다. ACTIVE 일반형→표준형 변형의 같은 골격을 재사용한다.",
+    "difficulty": "변형할 표준형이 명시되어 완전제곱식 공식으로 직접 정리하는1이다. 부호 처리와 합의 산술만으로2나3을 부여하지 않는다.",
+    "step": "일반형에서 음수 계수를 먼저 묶고 완전제곱식과 상수 조정으로 −(x−3)²+8을 만든 뒤 세 계수 합을 계산한다. ACTIVE 일반형→표준형 변형의 같은 골격을 재사용한다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 139,
+    "slots": {
+      "given": [
+        [
+          91,
+          "stem:$y = -x^2 + 6x - 1$을 $y = a(x-p)^2 + q$의 꼴로 나타낼 때, $a+p+q$의 값을 구하면? (단 $a, p, q$는 상수)"
+        ],
+        [
+          332,
+          "stem:$y = -x^2 + 6x - 1$을 $y = a(x-p)^2 + q$의 꼴로 나타낼 때, $a+p+q$의 값을 구하면? (단 $a, p, q$는 상수)"
+        ]
+      ],
+      "goal": [
+        [
+          286,
+          "stem:$y = -x^2 + 6x - 1$을 $y = a(x-p)^2 + q$의 꼴로 나타낼 때, $a+p+q$의 값을 구하면? (단 $a, p, q$는 상수)"
+        ],
+        [
+          50,
+          "stem:$y = -x^2 + 6x - 1$을 $y = a(x-p)^2 + q$의 꼴로 나타낼 때, $a+p+q$의 값을 구하면? (단 $a, p, q$는 상수)"
+        ]
+      ],
+      "method": [
+        [
+          59,
+          "solution:먼저 $-x^2+6x-1=-(x^2-6x)-1$로 묶는다. $x^2-6x=(x-3)^2-9$이므로 $-(x^2-6x)-1=-\\{(x-3)^2-9\\}-1=-(x-3)^2+8$이다. 따라서 $a=-1$, $p=3$, $q=8$이고 $a+p+q=-1+3+8=10$이므로 ④이다."
+        ],
+        [
+          50,
+          "solution:먼저 $-x^2+6x-1=-(x^2-6x)-1$로 묶는다. $x^2-6x=(x-3)^2-9$이므로 $-(x^2-6x)-1=-\\{(x-3)^2-9\\}-1=-(x-3)^2+8$이다. 따라서 $a=-1$, $p=3$, $q=8$이고 $a+p+q=-1+3+8=10$이므로 ④이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 286, 50를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 8,
+    "rpm": 53,
+    "after": {
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION",
+      "templateKey": "TPL_M3_FIND_PARAMETER_RANGE_AVOIDING_SPECIFIC_QUADRANT",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "제3사분면을 피하려면 x<0에서 y<0이 없어야 함을 읽고 계수의 양수 방향과 열린 경계 x=0의 함숫값 조건9a−4≥0을 결합한다. ACTIVE 제2사분면 회피 지원의 y부호를 반사한 같은 절편-부호 골격이다.",
+    "difficulty": "사분면 회피를 반직선 전체의 부호와 y절편 경계로 바꾸는 표준 구조 선택3이다. 기존 해설의 a≤0 배제와 경계 검토는 필요하지만 여러 독립 해 영역을 복원하는 고난도4의 분기는 아니다.",
+    "step": "제3사분면을 피하려면 x<0에서 y<0이 없어야 함을 읽고 계수의 양수 방향과 열린 경계 x=0의 함숫값 조건9a−4≥0을 결합한다. ACTIVE 제2사분면 회피 지원의 y부호를 반사한 같은 절편-부호 골격이다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [
+      {
+        "type": "CURRENT_2022_RPM_EXACT_LEAF_GAP",
+        "detail": "명시 꼭짓점형의 사분면 회피 조건을 매개변수 범위로 바꾸는 exact leaf가 없다. 평행이동/꼭짓점 좌표 읽기와 구별한다."
+      }
+    ],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "slots": {
+      "given": [
+        [
+          91,
+          "stem:이차함수 $y = a(x-3)^2 - 4$의 그래프가 제3사분면을 지나지 않을 때, $a$값의 범위를 구하면?"
+        ],
+        [
+          149,
+          "stem:이차함수 $y = a(x-3)^2 - 4$의 그래프가 제3사분면을 지나지 않을 때, $a$값의 범위를 구하면?"
+        ]
+      ],
+      "goal": [
+        [
+          297,
+          "stem:이차함수 $y = a(x-3)^2 - 4$의 그래프가 제3사분면을 지나지 않을 때, $a$값의 범위를 구하면?"
+        ],
+        [
+          308,
+          "stem:이차함수 $y = a(x-3)^2 - 4$의 그래프가 제3사분면을 지나지 않을 때, $a$값의 범위를 구하면?"
+        ]
+      ],
+      "method": [
+        [
+          149,
+          "solution:제3사분면의 점은 $x<0$이면서 $y<0$이다. $x<0$이면 $(x-3)^2>9$이다. $a>0$일 때 $y=a(x-3)^2-4>9a-4$이므로 $9a-4\\ge0$이면 모든 $x<0$에서 $y>0$이고 제3사분면을 지나지 않는다. 반대로 $0<a<4/9$이면 $x$를 0에 가까운 음수로 잡았을 때 $y<0$이며, $a\\le0$이면 $x<0$에서 $y<0$인 점이 생긴다. 따라서 조건은 $a\\ge4/9$이고 ③이다."
+        ],
+        [
+          151,
+          "solution:제3사분면의 점은 $x<0$이면서 $y<0$이다. $x<0$이면 $(x-3)^2>9$이다. $a>0$일 때 $y=a(x-3)^2-4>9a-4$이므로 $9a-4\\ge0$이면 모든 $x<0$에서 $y>0$이고 제3사분면을 지나지 않는다. 반대로 $0<a<4/9$이면 $x$를 0에 가까운 음수로 잡았을 때 $y<0$이며, $a\\le0$이면 $x<0$에서 $y<0$인 점이 생긴다. 따라서 조건은 $a\\ge4/9$이고 ③이다.",
+          "x=0에 가까운 음수에서 경계값9a−4를 읽어 y절편 부호와 전역 회피를 연결한다."
+        ],
+        [
+          293,
+          "solution:제3사분면의 점은 $x<0$이면서 $y<0$이다. $x<0$이면 $(x-3)^2>9$이다. $a>0$일 때 $y=a(x-3)^2-4>9a-4$이므로 $9a-4\\ge0$이면 모든 $x<0$에서 $y>0$이고 제3사분면을 지나지 않는다. 반대로 $0<a<4/9$이면 $x$를 0에 가까운 음수로 잡았을 때 $y<0$이며, $a\\le0$이면 $x<0$에서 $y<0$인 점이 생긴다. 따라서 조건은 $a\\ge4/9$이고 ③이다.",
+          "a>0의 충분·필요 조건과 a≤0 배제를 기존 해설에서 각각 확인한다."
+        ],
+        [
+          63,
+          "solution:제3사분면의 점은 $x<0$이면서 $y<0$이다. $x<0$이면 $(x-3)^2>9$이다. $a>0$일 때 $y=a(x-3)^2-4>9a-4$이므로 $9a-4\\ge0$이면 모든 $x<0$에서 $y>0$이고 제3사분면을 지나지 않는다. 반대로 $0<a<4/9$이면 $x$를 0에 가까운 음수로 잡았을 때 $y<0$이며, $a\\le0$이면 $x<0$에서 $y<0$인 점이 생긴다. 따라서 조건은 $a\\ge4/9$이고 ③이다."
+        ]
+      ],
+      "condition": [
+        [
+          149,
+          "stem:이차함수 $y = a(x-3)^2 - 4$의 그래프가 제3사분면을 지나지 않을 때, $a$값의 범위를 구하면?"
+        ]
+      ]
+    },
+    "goalReason": "원문에서 실제로 요구한 297, 308를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 9,
+    "rpm": 53,
+    "after": {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "아래로 볼록한 그래프의 두 x절편−1,2에서 a>0 및 y=a(x+1)(x−2)를 얻어 각 계수 진술을 대조한다. 잘못된④는 f(−1)=0과도 직접 충돌한다.",
+    "difficulty": "표시된 두 근을 인수꼴로 쓰거나 x절편에 함수값0을 대입하는 익숙한 전처리2이다. 다섯 진술의 산술을 구조화4로 세지 않는다.",
+    "step": "아래로 볼록한 그래프의 두 x절편−1,2에서 a>0 및 y=a(x+1)(x−2)를 얻어 각 계수 진술을 대조한다. 잘못된④는 f(−1)=0과도 직접 충돌한다.",
+    "image": "CURRENT_INLINE_ORIGINAL_IMAGE_READ",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [
+      {
+        "type": "CURRENT_2022_RPM_EXACT_LEAF_GAP",
+        "detail": "일반형 그래프의 근·계수 부호 진술 판정에 대한 exact leaf가 없다. 그래프 그리기140으로 강제하지 않는다."
+      }
+    ],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "slots": {
+      "given": [
+        [
+          91,
+          "stem:이차함수 $y=ax^2+bx+c$의 그래프는 아래로 볼록하고 $x$축과 $x=-1$, $x=2$에서 만난다. 다음 중 옳지 않은 것은? (4점)"
+        ],
+        [
+          648,
+          "stem:이차함수 $y=ax^2+bx+c$의 그래프는 아래로 볼록하고 $x$축과 $x=-1$, $x=2$에서 만난다. 다음 중 옳지 않은 것은? (4점)"
+        ]
+      ],
+      "goal": [
+        [
+          305,
+          "stem:이차함수 $y=ax^2+bx+c$의 그래프는 아래로 볼록하고 $x$축과 $x=-1$, $x=2$에서 만난다. 다음 중 옳지 않은 것은? (4점)"
+        ]
+      ],
+      "method": [
+        [
+          648,
+          "solution:그래프가 $x=-1,2$에서 $x$축과 만나고 아래로 볼록하므로 $a>0$이다. 따라서 $y=a(x+1)(x-2)=ax^2-ax-2a$이고 $b=-a<0$, $c=-2a<0$이다. 그러므로 $abc=2a^3>0$, $a+b+c=-2a<0$, $4a+2b+c=0$이다. 한편 $a-b+c=a-(-a)-2a=0$이므로 $a-b+c<0$이라는 ④만 옳지 않다."
+        ],
+        [
+          42,
+          "solution:그래프가 $x=-1,2$에서 $x$축과 만나고 아래로 볼록하므로 $a>0$이다. 따라서 $y=a(x+1)(x-2)=ax^2-ax-2a$이고 $b=-a<0$, $c=-2a<0$이다. 그러므로 $abc=2a^3>0$, $a+b+c=-2a<0$, $4a+2b+c=0$이다. 한편 $a-b+c=a-(-a)-2a=0$이므로 $a-b+c<0$이라는 ④만 옳지 않다.",
+          "두 근으로 a(x+1)(x−2)를 쓰고 계수 관계를 읽는다."
+        ],
+        [
+          50,
+          "solution:그래프가 $x=-1,2$에서 $x$축과 만나고 아래로 볼록하므로 $a>0$이다. 따라서 $y=a(x+1)(x-2)=ax^2-ax-2a$이고 $b=-a<0$, $c=-2a<0$이다. 그러므로 $abc=2a^3>0$, $a+b+c=-2a<0$, $4a+2b+c=0$이다. 한편 $a-b+c=a-(-a)-2a=0$이므로 $a-b+c<0$이라는 ④만 옳지 않다."
+        ],
+        [
+          53,
+          "solution:그래프가 $x=-1,2$에서 $x$축과 만나고 아래로 볼록하므로 $a>0$이다. 따라서 $y=a(x+1)(x-2)=ax^2-ax-2a$이고 $b=-a<0$, $c=-2a<0$이다. 그러므로 $abc=2a^3>0$, $a+b+c=-2a<0$, $4a+2b+c=0$이다. 한편 $a-b+c=a-(-a)-2a=0$이므로 $a-b+c<0$이라는 ④만 옳지 않다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 305를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 10,
+    "rpm": 49,
+    "after": {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "일반형을 −2(x−3)²+9로 정리하여 꼭짓점·축·증가 구간·절편을 확인하고 왼쪽3 이동이라는 진술을 배제한다. 결정 진술에 기존 평행이동 TPL이 유효하다.",
+    "difficulty": "완전제곱식 전처리 뒤 이동 방향을 직접 읽는2이다.",
+    "step": "일반형을 −2(x−3)²+9로 정리하여 꼭짓점·축·증가 구간·절편을 확인하고 왼쪽3 이동이라는 진술을 배제한다. 결정 진술에 기존 평행이동 TPL이 유효하다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [
+      {
+        "type": "CURRENT_2022_RPM_EXACT_LEAF_GAP",
+        "detail": "일반형을 완전제곱식으로 변형한 후 평행이동 방향의 진술을 판정한다. 그래프(1)의 직접 평행이동136은 해당 일반형 문맥의 exact leaf로 단정하지 않는다."
+      }
+    ],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "slots": {
+      "given": [
+        [
+          91,
+          "stem:이차함수 $y = -2x^2 + 12x - 9$의 그래프에 대한 설명으로 틀린 것을 찾으면?"
+        ],
+        [
+          332,
+          "stem:이차함수 $y = -2x^2 + 12x - 9$의 그래프에 대한 설명으로 틀린 것을 찾으면?"
+        ]
+      ],
+      "goal": [
+        [
+          305,
+          "stem:이차함수 $y = -2x^2 + 12x - 9$의 그래프에 대한 설명으로 틀린 것을 찾으면?"
+        ]
+      ],
+      "method": [
+        [
+          59,
+          "solution:$-2x^2+12x-9=-2(x-3)^2+9$로 완전제곱식으로 고치면 꼭짓점은 $(3,9)$이고 축은 $x=3$이다. 계수가 음수이므로 $x<3$에서는 꼭짓점 쪽으로 갈수록 함수값이 증가한다. $y$절편은 $x=0$을 대입해 $-9$이고, 원래 그래프 $y=-2x^2$에서 오른쪽 3, 위쪽 9만큼 옮긴 그래프이다. 따라서 왼쪽 3만큼 옮겼다는 ②가 틀렸다."
+        ],
+        [
+          311,
+          "solution:$-2x^2+12x-9=-2(x-3)^2+9$로 완전제곱식으로 고치면 꼭짓점은 $(3,9)$이고 축은 $x=3$이다. 계수가 음수이므로 $x<3$에서는 꼭짓점 쪽으로 갈수록 함수값이 증가한다. $y$절편은 $x=0$을 대입해 $-9$이고, 원래 그래프 $y=-2x^2$에서 오른쪽 3, 위쪽 9만큼 옮긴 그래프이다. 따라서 왼쪽 3만큼 옮겼다는 ②가 틀렸다."
+        ],
+        [
+          340,
+          "solution:$-2x^2+12x-9=-2(x-3)^2+9$로 완전제곱식으로 고치면 꼭짓점은 $(3,9)$이고 축은 $x=3$이다. 계수가 음수이므로 $x<3$에서는 꼭짓점 쪽으로 갈수록 함수값이 증가한다. $y$절편은 $x=0$을 대입해 $-9$이고, 원래 그래프 $y=-2x^2$에서 오른쪽 3, 위쪽 9만큼 옮긴 그래프이다. 따라서 왼쪽 3만큼 옮겼다는 ②가 틀렸다."
+        ],
+        [
+          210,
+          "solution:$-2x^2+12x-9=-2(x-3)^2+9$로 완전제곱식으로 고치면 꼭짓점은 $(3,9)$이고 축은 $x=3$이다. 계수가 음수이므로 $x<3$에서는 꼭짓점 쪽으로 갈수록 함수값이 증가한다. $y$절편은 $x=0$을 대입해 $-9$이고, 원래 그래프 $y=-2x^2$에서 오른쪽 3, 위쪽 9만큼 옮긴 그래프이다. 따라서 왼쪽 3만큼 옮겼다는 ②가 틀렸다."
+        ],
+        [
+          649,
+          "solution:$-2x^2+12x-9=-2(x-3)^2+9$로 완전제곱식으로 고치면 꼭짓점은 $(3,9)$이고 축은 $x=3$이다. 계수가 음수이므로 $x<3$에서는 꼭짓점 쪽으로 갈수록 함수값이 증가한다. $y$절편은 $x=0$을 대입해 $-9$이고, 원래 그래프 $y=-2x^2$에서 오른쪽 3, 위쪽 9만큼 옮긴 그래프이다. 따라서 왼쪽 3만큼 옮겼다는 ②가 틀렸다."
+        ],
+        [
+          111,
+          "solution:$-2x^2+12x-9=-2(x-3)^2+9$로 완전제곱식으로 고치면 꼭짓점은 $(3,9)$이고 축은 $x=3$이다. 계수가 음수이므로 $x<3$에서는 꼭짓점 쪽으로 갈수록 함수값이 증가한다. $y$절편은 $x=0$을 대입해 $-9$이고, 원래 그래프 $y=-2x^2$에서 오른쪽 3, 위쪽 9만큼 옮긴 그래프이다. 따라서 왼쪽 3만큼 옮겼다는 ②가 틀렸다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 305를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 11,
+    "rpm": 50,
+    "after": {
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "주어진 일반형의 축 a/8을 명시된 x=−1과 같게 두어 미지계수를 정한다. 축 조건으로 함수의 남은 계수가 결정되는 GLOBAL 재구성 골격이다.",
+    "difficulty": "축 공식에 계수와 알려진 축을 바로 대입하는1이다. 방정식 a/8=−1의 단순 계산은 별도 전처리 단계가 아니다.",
+    "step": "주어진 일반형의 축 a/8을 명시된 x=−1과 같게 두어 미지계수를 정한다. 축 조건으로 함수의 남은 계수가 결정되는 GLOBAL 재구성 골격이다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 142,
+    "slots": {
+      "given": [
+        [
+          91,
+          "stem:이차함수 $y = 4x^2 - ax + 4$의 그래프의 축의 방정식이 $x = -1$일 때, 상수 $a$의 값을 구하면?"
+        ],
+        [
+          340,
+          "stem:이차함수 $y = 4x^2 - ax + 4$의 그래프의 축의 방정식이 $x = -1$일 때, 상수 $a$의 값을 구하면?"
+        ]
+      ],
+      "goal": [
+        [
+          309,
+          "stem:이차함수 $y = 4x^2 - ax + 4$의 그래프의 축의 방정식이 $x = -1$일 때, 상수 $a$의 값을 구하면?"
+        ]
+      ],
+      "method": [
+        [
+          340,
+          "solution:이차함수 $y=4x^2-ax+4$에서 $x^2$의 계수는 4, $x$의 계수는 $-a$이다. 축의 공식에 따라 $x=-\\frac{-a}{2\\cdot4}=\\frac a8$이다. 축이 $x=-1$이므로 $a/8=-1$, 따라서 $a=-8$이고 ④이다."
+        ],
+        [
+          53,
+          "solution:이차함수 $y=4x^2-ax+4$에서 $x^2$의 계수는 4, $x$의 계수는 $-a$이다. 축의 공식에 따라 $x=-\\frac{-a}{2\\cdot4}=\\frac a8$이다. 축이 $x=-1$이므로 $a/8=-1$, 따라서 $a=-8$이고 ④이다."
+        ],
+        [
+          50,
+          "solution:이차함수 $y=4x^2-ax+4$에서 $x^2$의 계수는 4, $x$의 계수는 $-a$이다. 축의 공식에 따라 $x=-\\frac{-a}{2\\cdot4}=\\frac a8$이다. 축이 $x=-1$이므로 $a/8=-1$, 따라서 $a=-8$이고 ④이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 309를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 12,
+    "rpm": 50,
+    "after": {
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "첫 일반형을 완전제곱식으로 바꿔 꼭짓점(−2,6)을 얻고 둘째 함수의 축 및 함숫값에 이 좌표를 적용해 p,q를 정한다.",
+    "difficulty": "한 함수의 꼭짓점을 정한 뒤 다른 함수의 계수를 대입해 정하는 정형2이다. 공통 꼭짓점이 직접 주어져 추가 전략 선택이 없다.",
+    "step": "첫 일반형을 완전제곱식으로 바꿔 꼭짓점(−2,6)을 얻고 둘째 함수의 축 및 함숫값에 이 좌표를 적용해 p,q를 정한다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 142,
+    "slots": {
+      "given": [
+        [
+          91,
+          "stem:이차함수 $y = -2x^2 - 8x - 2$의 그래프와 $y = -\\frac{1}{2}x^2 + px + q$의 그래프의 꼭짓점이 같을 때, $p+q$의 값을 구하면?"
+        ],
+        [
+          311,
+          "stem:이차함수 $y = -2x^2 - 8x - 2$의 그래프와 $y = -\\frac{1}{2}x^2 + px + q$의 그래프의 꼭짓점이 같을 때, $p+q$의 값을 구하면?"
+        ]
+      ],
+      "goal": [
+        [
+          286,
+          "stem:이차함수 $y = -2x^2 - 8x - 2$의 그래프와 $y = -\\frac{1}{2}x^2 + px + q$의 그래프의 꼭짓점이 같을 때, $p+q$의 값을 구하면?"
+        ]
+      ],
+      "method": [
+        [
+          59,
+          "solution:첫째 식을 완전제곱식으로 고치면 $-2x^2-8x-2=-2(x+2)^2+6$이므로 꼭짓점은 $(-2,6)$이다. 둘째 식 $y=-\\frac12x^2+px+q$의 축은 $x=-\\frac{p}{2(-1/2)}=p$이므로 같은 꼭짓점을 가지려면 $p=-2$이다. 꼭짓점의 $y$좌표가 6이므로 $-\\frac12(-2)^2+(-2)(-2)+q=6$, 즉 $-2+4+q=6$에서 $q=4$이다. 따라서 $p+q=2$이고 ①이다."
+        ],
+        [
+          311,
+          "solution:첫째 식을 완전제곱식으로 고치면 $-2x^2-8x-2=-2(x+2)^2+6$이므로 꼭짓점은 $(-2,6)$이다. 둘째 식 $y=-\\frac12x^2+px+q$의 축은 $x=-\\frac{p}{2(-1/2)}=p$이므로 같은 꼭짓점을 가지려면 $p=-2$이다. 꼭짓점의 $y$좌표가 6이므로 $-\\frac12(-2)^2+(-2)(-2)+q=6$, 즉 $-2+4+q=6$에서 $q=4$이다. 따라서 $p+q=2$이고 ①이다."
+        ],
+        [
+          340,
+          "solution:첫째 식을 완전제곱식으로 고치면 $-2x^2-8x-2=-2(x+2)^2+6$이므로 꼭짓점은 $(-2,6)$이다. 둘째 식 $y=-\\frac12x^2+px+q$의 축은 $x=-\\frac{p}{2(-1/2)}=p$이므로 같은 꼭짓점을 가지려면 $p=-2$이다. 꼭짓점의 $y$좌표가 6이므로 $-\\frac12(-2)^2+(-2)(-2)+q=6$, 즉 $-2+4+q=6$에서 $q=4$이다. 따라서 $p+q=2$이고 ①이다."
+        ],
+        [
+          53,
+          "solution:첫째 식을 완전제곱식으로 고치면 $-2x^2-8x-2=-2(x+2)^2+6$이므로 꼭짓점은 $(-2,6)$이다. 둘째 식 $y=-\\frac12x^2+px+q$의 축은 $x=-\\frac{p}{2(-1/2)}=p$이므로 같은 꼭짓점을 가지려면 $p=-2$이다. 꼭짓점의 $y$좌표가 6이므로 $-\\frac12(-2)^2+(-2)(-2)+q=6$, 즉 $-2+4+q=6$에서 $q=4$이다. 따라서 $p+q=2$이고 ①이다."
+        ]
+      ],
+      "condition": [
+        [
+          311,
+          "stem:이차함수 $y = -2x^2 - 8x - 2$의 그래프와 $y = -\\frac{1}{2}x^2 + px + q$의 그래프의 꼭짓점이 같을 때, $p+q$의 값을 구하면?",
+          "두 함수의 꼭짓점이 같아야 한다는 동일 위치 조건을 보존한다."
+        ]
+      ]
+    },
+    "goalReason": "원문에서 실제로 요구한 286를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 13,
+    "rpm": 56,
+    "after": {
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "직각삼각형 ABC에서 BC13을 복원하고 수선 DE의 직각에서 x와 B가 여각임을 확인해 cos x=sin B를 사용한다. 삼각비 사이의 관계가 최종 결정이다.",
+    "difficulty": "Pyth 누락변 복원과 여각 확인 뒤 같은 삼각비의 관계를 적용하는 정형2이다.",
+    "step": "직각삼각형 ABC에서 BC13을 복원하고 수선 DE의 직각에서 x와 B가 여각임을 확인해 cos x=sin B를 사용한다. 삼각비 사이의 관계가 최종 결정이다.",
+    "image": "CURRENT_INLINE_ORIGINAL_IMAGE_READ",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 144,
+    "slots": {
+      "given": [
+        [
+          161,
+          "stem:그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $AB=12$, $AC=5$이다. 점 $D$는 선분 $AB$ 위에, 점 $E$는 선분 $BC$ 위에 있고 $DE\\perp BC$이다. $\\angle BDE=x$일 때, $13\\cos x$의 값을 구하면? (3점)"
+        ],
+        [
+          215,
+          "stem:그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $AB=12$, $AC=5$이다. 점 $D$는 선분 $AB$ 위에, 점 $E$는 선분 $BC$ 위에 있고 $DE\\perp BC$이다. $\\angle BDE=x$일 때, $13\\cos x$의 값을 구하면? (3점)"
+        ],
+        [
+          179,
+          "stem:그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $AB=12$, $AC=5$이다. 점 $D$는 선분 $AB$ 위에, 점 $E$는 선분 $BC$ 위에 있고 $DE\\perp BC$이다. $\\angle BDE=x$일 때, $13\\cos x$의 값을 구하면? (3점)"
+        ],
+        [
+          174,
+          "stem:그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $AB=12$, $AC=5$이다. 점 $D$는 선분 $AB$ 위에, 점 $E$는 선분 $BC$ 위에 있고 $DE\\perp BC$이다. $\\angle BDE=x$일 때, $13\\cos x$의 값을 구하면? (3점)"
+        ]
+      ],
+      "goal": [
+        [
+          675,
+          "stem:그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $AB=12$, $AC=5$이다. 점 $D$는 선분 $AB$ 위에, 점 $E$는 선분 $BC$ 위에 있고 $DE\\perp BC$이다. $\\angle BDE=x$일 때, $13\\cos x$의 값을 구하면? (3점)"
+        ]
+      ],
+      "method": [
+        [
+          195,
+          "solution:$AB=12$, $AC=5$이고 $\\angle A=90^\\circ$이므로 피타고라스 정리로 $BC=\\sqrt{12^2+5^2}=13$이다. $D\\in AB$, $E\\in BC$이므로 $\\angle DBE=\\angle ABC=\\angle B$이다. 또 $DE\\perp BC$이고 $BE$는 $BC$ 위에 있으므로 $\\angle BED=90^\\circ$이다. 따라서 삼각형 $BDE$에서 $x=\\angle BDE=90^\\circ-\\angle B$이다. 그러므로 $\\cos x=\\sin B=AC/BC=5/13$이고 $13\\cos x=5$이므로 답은 ①이다."
+        ],
+        [
+          610,
+          "solution:$AB=12$, $AC=5$이고 $\\angle A=90^\\circ$이므로 피타고라스 정리로 $BC=\\sqrt{12^2+5^2}=13$이다. $D\\in AB$, $E\\in BC$이므로 $\\angle DBE=\\angle ABC=\\angle B$이다. 또 $DE\\perp BC$이고 $BE$는 $BC$ 위에 있으므로 $\\angle BED=90^\\circ$이다. 따라서 삼각형 $BDE$에서 $x=\\angle BDE=90^\\circ-\\angle B$이다. 그러므로 $\\cos x=\\sin B=AC/BC=5/13$이고 $13\\cos x=5$이므로 답은 ①이다."
+        ],
+        [
+          194,
+          "solution:$AB=12$, $AC=5$이고 $\\angle A=90^\\circ$이므로 피타고라스 정리로 $BC=\\sqrt{12^2+5^2}=13$이다. $D\\in AB$, $E\\in BC$이므로 $\\angle DBE=\\angle ABC=\\angle B$이다. 또 $DE\\perp BC$이고 $BE$는 $BC$ 위에 있으므로 $\\angle BED=90^\\circ$이다. 따라서 삼각형 $BDE$에서 $x=\\angle BDE=90^\\circ-\\angle B$이다. 그러므로 $\\cos x=\\sin B=AC/BC=5/13$이고 $13\\cos x=5$이므로 답은 ①이다."
+        ],
+        [
+          675,
+          "solution:$AB=12$, $AC=5$이고 $\\angle A=90^\\circ$이므로 피타고라스 정리로 $BC=\\sqrt{12^2+5^2}=13$이다. $D\\in AB$, $E\\in BC$이므로 $\\angle DBE=\\angle ABC=\\angle B$이다. 또 $DE\\perp BC$이고 $BE$는 $BC$ 위에 있으므로 $\\angle BED=90^\\circ$이다. 따라서 삼각형 $BDE$에서 $x=\\angle BDE=90^\\circ-\\angle B$이다. 그러므로 $\\cos x=\\sin B=AC/BC=5/13$이고 $13\\cos x=5$이므로 답은 ①이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 675를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 14,
+    "rpm": 55,
+    "after": {
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "AC의 중점 D에서 CD=AC/2를 읽고 AC=BC를 대입해 직각삼각형 DBC의 tan x=CD/BC를 계산한다. 직접 길이비를 삼각비로 바꾸는 기존 BASIC_RELATION을 보존한다.",
+    "difficulty": "중점의 절반 길이와 등변을 한 번 대조하는 정형 전처리2이다. 역사적 하와는 B12로 기록한다.",
+    "step": "AC의 중점 D에서 CD=AC/2를 읽고 AC=BC를 대입해 직각삼각형 DBC의 tan x=CD/BC를 계산한다. 직접 길이비를 삼각비로 바꾸는 기존 BASIC_RELATION을 보존한다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 143,
+    "slots": {
+      "given": [
+        [
+          606,
+          "stem:$\\angle \\mathrm{C} = 90^\\circ$이고 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{BC}}$인 직각이등변삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}$의 중점이 $\\mathrm{D}$, $\\angle \\mathrm{DBC} = x$라고 할 때, $\\tan x$의 값을 구하면? (3점)"
+        ],
+        [
+          188,
+          "stem:$\\angle \\mathrm{C} = 90^\\circ$이고 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{BC}}$인 직각이등변삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}$의 중점이 $\\mathrm{D}$, $\\angle \\mathrm{DBC} = x$라고 할 때, $\\tan x$의 값을 구하면? (3점)"
+        ],
+        [
+          174,
+          "stem:$\\angle \\mathrm{C} = 90^\\circ$이고 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{BC}}$인 직각이등변삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}$의 중점이 $\\mathrm{D}$, $\\angle \\mathrm{DBC} = x$라고 할 때, $\\tan x$의 값을 구하면? (3점)"
+        ]
+      ],
+      "goal": [
+        [
+          449,
+          "stem:$\\angle \\mathrm{C} = 90^\\circ$이고 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{BC}}$인 직각이등변삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}$의 중점이 $\\mathrm{D}$, $\\angle \\mathrm{DBC} = x$라고 할 때, $\\tan x$의 값을 구하면? (3점)"
+        ]
+      ],
+      "method": [
+        [
+          188,
+          "solution:$D$는 $AC$의 중점이므로 $CD=AC/2$. 또 $AC=BC$이므로 $\\tan x=CD/BC=1/2$. 정답은 ①이다."
+        ],
+        [
+          194,
+          "solution:$D$는 $AC$의 중점이므로 $CD=AC/2$. 또 $AC=BC$이므로 $\\tan x=CD/BC=1/2$. 정답은 ①이다."
+        ],
+        [
+          449,
+          "solution:$D$는 $AC$의 중점이므로 $CD=AC/2$. 또 $AC=BC$이므로 $\\tan x=CD/BC=1/2$. 정답은 ①이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 449를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 15,
+    "rpm": 58,
+    "after": {
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "sin30°, cos60°, tan60°·tan30°의 알려진 특수각 값을 직접 대입하여 식을 계산한다.",
+    "difficulty": "특수각 표준값과 곱·합의 직접 계산1이다. 별도 도형 복원이나 식의 전략적 변형은 없다.",
+    "step": "sin30°, cos60°, tan60°·tan30°의 알려진 특수각 값을 직접 대입하여 식을 계산한다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 146,
+    "slots": {
+      "given": [
+        [
+          194,
+          "stem:$\\sin 30^\\circ + \\cos 60^\\circ + \\tan 60^\\circ \\times \\tan 30^\\circ$의 값을 구하면?"
+        ]
+      ],
+      "goal": [
+        [
+          286,
+          "stem:$\\sin 30^\\circ + \\cos 60^\\circ + \\tan 60^\\circ \\times \\tan 30^\\circ$의 값을 구하면?"
+        ]
+      ],
+      "method": [
+        [
+          194,
+          "solution:$\\sin30^\\circ=1/2$, $\\cos60^\\circ=1/2$, $\\tan60^\\circ\\tan30^\\circ=\\sqrt3\\cdot(1/\\sqrt3)=1$. 합은 2이므로 ②이다."
+        ],
+        [
+          674,
+          "solution:$\\sin30^\\circ=1/2$, $\\cos60^\\circ=1/2$, $\\tan60^\\circ\\tan30^\\circ=\\sqrt3\\cdot(1/\\sqrt3)=1$. 합은 2이므로 ②이다."
+        ],
+        [
+          675,
+          "solution:$\\sin30^\\circ=1/2$, $\\cos60^\\circ=1/2$, $\\tan60^\\circ\\tan30^\\circ=\\sqrt3\\cdot(1/\\sqrt3)=1$. 합은 2이므로 ②이다."
+        ],
+        [
+          449,
+          "solution:$\\sin30^\\circ=1/2$, $\\cos60^\\circ=1/2$, $\\tan60^\\circ\\tan30^\\circ=\\sqrt3\\cdot(1/\\sqrt3)=1$. 합은 2이므로 ②이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 286를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 16,
+    "rpm": 55,
+    "after": {
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "반지름1인 사분원의 직각삼각형 OPH에서 sin x=PH, cos x=OH, tan x=PH/OH를 대응하여 sin x=OP라는 진술을 배제한다. 원은 삼각비를 표현하는 주어진 그림이다.",
+    "difficulty": "단위 빗변에서 정의를 직접 읽는1이다. 0<x<90° 때문에 sin x<1이고 OP1과 같지 않다는 범위를 함께 보존한다.",
+    "step": "반지름1인 사분원의 직각삼각형 OPH에서 sin x=PH, cos x=OH, tan x=PH/OH를 대응하여 sin x=OP라는 진술을 배제한다. 원은 삼각비를 표현하는 주어진 그림이다.",
+    "image": "CURRENT_INLINE_ORIGINAL_IMAGE_READ",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 143,
+    "slots": {
+      "given": [
+        [
+          152,
+          "stem:중심이 $O$이고 반지름의 길이가 $1$인 사분원에서 점 $P$는 호 위에 있다. $H$는 $P$에서 사분원의 반지름에 내린 수선의 발이고 $\\angle POH=x$ ($0^\\circ<x<90^\\circ$)일 때, 다음 중 옳지 않은 것은? (3점)"
+        ],
+        [
+          153,
+          "stem:중심이 $O$이고 반지름의 길이가 $1$인 사분원에서 점 $P$는 호 위에 있다. $H$는 $P$에서 사분원의 반지름에 내린 수선의 발이고 $\\angle POH=x$ ($0^\\circ<x<90^\\circ$)일 때, 다음 중 옳지 않은 것은? (3점)"
+        ],
+        [
+          179,
+          "stem:중심이 $O$이고 반지름의 길이가 $1$인 사분원에서 점 $P$는 호 위에 있다. $H$는 $P$에서 사분원의 반지름에 내린 수선의 발이고 $\\angle POH=x$ ($0^\\circ<x<90^\\circ$)일 때, 다음 중 옳지 않은 것은? (3점)"
+        ],
+        [
+          174,
+          "stem:중심이 $O$이고 반지름의 길이가 $1$인 사분원에서 점 $P$는 호 위에 있다. $H$는 $P$에서 사분원의 반지름에 내린 수선의 발이고 $\\angle POH=x$ ($0^\\circ<x<90^\\circ$)일 때, 다음 중 옳지 않은 것은? (3점)"
+        ]
+      ],
+      "goal": [
+        [
+          305,
+          "stem:중심이 $O$이고 반지름의 길이가 $1$인 사분원에서 점 $P$는 호 위에 있다. $H$는 $P$에서 사분원의 반지름에 내린 수선의 발이고 $\\angle POH=x$ ($0^\\circ<x<90^\\circ$)일 때, 다음 중 옳지 않은 것은? (3점)"
+        ]
+      ],
+      "method": [
+        [
+          194,
+          "solution:빗변 $OP=1$인 직각삼각형에서 $\\sin x=PH/OP=PH$, $\\cos x=OH/OP=OH$, $\\tan x=PH/OH$, 그리고 $OP=1$은 참이다. $\\sin x$는 $OP$가 아니라 $PH$이므로 ④가 옳지 않다."
+        ],
+        [
+          674,
+          "solution:빗변 $OP=1$인 직각삼각형에서 $\\sin x=PH/OP=PH$, $\\cos x=OH/OP=OH$, $\\tan x=PH/OH$, 그리고 $OP=1$은 참이다. $\\sin x$는 $OP$가 아니라 $PH$이므로 ④가 옳지 않다."
+        ],
+        [
+          675,
+          "solution:빗변 $OP=1$인 직각삼각형에서 $\\sin x=PH/OP=PH$, $\\cos x=OH/OP=OH$, $\\tan x=PH/OH$, 그리고 $OP=1$은 참이다. $\\sin x$는 $OP$가 아니라 $PH$이므로 ④가 옳지 않다."
+        ],
+        [
+          449,
+          "solution:빗변 $OP=1$인 직각삼각형에서 $\\sin x=PH/OP=PH$, $\\cos x=OH/OP=OH$, $\\tan x=PH/OH$, 그리고 $OP=1$은 참이다. $\\sin x$는 $OP$가 아니라 $PH$이므로 ④가 옳지 않다."
+        ]
+      ],
+      "condition": [
+        [
+          297,
+          "stem:중심이 $O$이고 반지름의 길이가 $1$인 사분원에서 점 $P$는 호 위에 있다. $H$는 $P$에서 사분원의 반지름에 내린 수선의 발이고 $\\angle POH=x$ ($0^\\circ<x<90^\\circ$)일 때, 다음 중 옳지 않은 것은? (3점)"
+        ]
+      ]
+    },
+    "goalReason": "원문에서 실제로 요구한 305를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 17,
+    "rpm": 60,
+    "after": {
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "빗변 AB100과 각B70°에서 대변 AC=100sin70°를 쓰고 제공된 표의0.9397을 대입한다. 표 값 조회 자체가 최종 목표가 아니므로 직접 길이 측정 TPL을 보존한다.",
+    "difficulty": "직각삼각형의 사인 공식과 제공된 근삿값을 바로 적용하는1이다. 배점4점은 단계3의 근거가 아니다.",
+    "step": "빗변 AB100과 각B70°에서 대변 AC=100sin70°를 쓰고 제공된 표의0.9397을 대입한다. 표 값 조회 자체가 최종 목표가 아니므로 직접 길이 측정 TPL을 보존한다.",
+    "image": "CURRENT_INLINE_ORIGINAL_IMAGE_READ",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 148,
+    "slots": {
+      "given": [
+        [
+          161,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=100$, $\\angle B=70^\\circ$이다. 다음 삼각비표를 이용하여 $AC$의 길이를 구하면? (3점)"
+        ],
+        [
+          174,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=100$, $\\angle B=70^\\circ$이다. 다음 삼각비표를 이용하여 $AC$의 길이를 구하면? (3점)"
+        ],
+        [
+          215,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=100$, $\\angle B=70^\\circ$이다. 다음 삼각비표를 이용하여 $AC$의 길이를 구하면? (3점)"
+        ],
+        [
+          194,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=100$, $\\angle B=70^\\circ$이다. 다음 삼각비표를 이용하여 $AC$의 길이를 구하면? (3점)"
+        ]
+      ],
+      "goal": [
+        [
+          144,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=100$, $\\angle B=70^\\circ$이다. 다음 삼각비표를 이용하여 $AC$의 길이를 구하면? (3점)"
+        ],
+        [
+          215,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=100$, $\\angle B=70^\\circ$이다. 다음 삼각비표를 이용하여 $AC$의 길이를 구하면? (3점)"
+        ]
+      ],
+      "method": [
+        [
+          674,
+          "solution:$AB$는 빗변이고 $AC$는 $\\angle B$의 맞은편 변이다. $\\sin70^\\circ=AC/100=0.9397$이므로 $AC=93.97$, ①이다."
+        ],
+        [
+          53,
+          "solution:$AB$는 빗변이고 $AC$는 $\\angle B$의 맞은편 변이다. $\\sin70^\\circ=AC/100=0.9397$이므로 $AC=93.97$, ①이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 144, 215를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 18,
+    "rpm": 66,
+    "after": {
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "tanB=3/2와 BC8로 중간길이 AC12를 만든 뒤 피타고라스로 빗변 AB를 구한다. 삼각비 결과를 다른 길이로 잇는 기존 CHAINED를 재사용한다.",
+    "difficulty": "주어진 비와 한 변에서 나머지 직각변을 구해 Pyth로 옮기는 정형2이다. 보조선이나 조건 재구성은 없다.",
+    "step": "tanB=3/2와 BC8로 중간길이 AC12를 만든 뒤 피타고라스로 빗변 AB를 구한다. 삼각비 결과를 다른 길이로 잇는 기존 CHAINED를 재사용한다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 154,
+    "slots": {
+      "given": [
+        [
+          161,
+          "stem:$\\angle \\mathrm{C} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\tan B = \\frac32$이다. $\\overline{\\mathrm{BC}} = 8\\,\\text{cm}$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? (4점)"
+        ],
+        [
+          449,
+          "stem:$\\angle \\mathrm{C} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\tan B = \\frac32$이다. $\\overline{\\mathrm{BC}} = 8\\,\\text{cm}$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? (4점)"
+        ],
+        [
+          215,
+          "stem:$\\angle \\mathrm{C} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\tan B = \\frac32$이다. $\\overline{\\mathrm{BC}} = 8\\,\\text{cm}$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? (4점)"
+        ]
+      ],
+      "goal": [
+        [
+          144,
+          "stem:$\\angle \\mathrm{C} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\tan B = \\frac32$이다. $\\overline{\\mathrm{BC}} = 8\\,\\text{cm}$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? (4점)"
+        ],
+        [
+          215,
+          "stem:$\\angle \\mathrm{C} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\tan B = \\frac32$이다. $\\overline{\\mathrm{BC}} = 8\\,\\text{cm}$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? (4점)"
+        ]
+      ],
+      "method": [
+        [
+          449,
+          "solution:$\\tan B=AC/BC=3/2$이고 $BC=8$이므로 $AC=12$이다. $\\angle C=90^\\circ$이므로 피타고라스 정리에서 $AB=\\sqrt{AC^2+BC^2}=\\sqrt{12^2+8^2}=\\sqrt{208}=4\\sqrt{13}\\,\\mathrm{cm}$이다. 정답은 ④이다."
+        ],
+        [
+          195,
+          "solution:$\\tan B=AC/BC=3/2$이고 $BC=8$이므로 $AC=12$이다. $\\angle C=90^\\circ$이므로 피타고라스 정리에서 $AB=\\sqrt{AC^2+BC^2}=\\sqrt{12^2+8^2}=\\sqrt{208}=4\\sqrt{13}\\,\\mathrm{cm}$이다. 정답은 ④이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 144, 215를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 19,
+    "rpm": 65,
+    "after": {
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM",
+        "CC_ISOSCELES_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "주어진 D와 각30°·120°에서 ABD가 이등변임을 확인해 AD=BD8을 전달하고 ACD의60° 사인으로 AC를 구한다.",
+    "difficulty": "그려진 보조선에 두 각이 주어져 각합과 등변 길이 전달 후 특수각을 쓰는 정형2이다. 스스로 비정형 보조선을 선택하지 않는다.",
+    "step": "주어진 D와 각30°·120°에서 ABD가 이등변임을 확인해 AD=BD8을 전달하고 ACD의60° 사인으로 AC를 구한다.",
+    "image": "CURRENT_INLINE_ORIGINAL_IMAGE_READ",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 153,
+    "slots": {
+      "given": [
+        [
+          161,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $BD=8\\,\\mathrm{cm}$, $\\angle B=30^\\circ$, $\\angle ADB=120^\\circ$일 때, $AC$의 길이를 구하면? (4점)"
+        ],
+        [
+          142,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $BD=8\\,\\mathrm{cm}$, $\\angle B=30^\\circ$, $\\angle ADB=120^\\circ$일 때, $AC$의 길이를 구하면? (4점)"
+        ],
+        [
+          174,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $BD=8\\,\\mathrm{cm}$, $\\angle B=30^\\circ$, $\\angle ADB=120^\\circ$일 때, $AC$의 길이를 구하면? (4점)"
+        ],
+        [
+          215,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $BD=8\\,\\mathrm{cm}$, $\\angle B=30^\\circ$, $\\angle ADB=120^\\circ$일 때, $AC$의 길이를 구하면? (4점)"
+        ]
+      ],
+      "goal": [
+        [
+          144,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $BD=8\\,\\mathrm{cm}$, $\\angle B=30^\\circ$, $\\angle ADB=120^\\circ$일 때, $AC$의 길이를 구하면? (4점)"
+        ],
+        [
+          215,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $BD=8\\,\\mathrm{cm}$, $\\angle B=30^\\circ$, $\\angle ADB=120^\\circ$일 때, $AC$의 길이를 구하면? (4점)"
+        ]
+      ],
+      "method": [
+        [
+          174,
+          "solution:$B,D,C$가 한 직선 위이고 $\\angle ADB=120^\\circ$이므로 $\\angle ADC=60^\\circ$이다. 삼각형 $ABD$에서 $\\angle ABD=30^\\circ$, 따라서 $\\angle BAD=30^\\circ$이고 마주 보는 변이 같아 $AD=BD=8$이다. 직각삼각형 $ACD$에서 빗변 $AD=8$, $\\angle D=60^\\circ$이므로 $AC=AD\\sin60^\\circ=8\\cdot\\frac{\\sqrt3}{2}=4\\sqrt3\\,\\mathrm{cm}$이다. 정답은 ⑤이다."
+        ],
+        [
+          159,
+          "solution:$B,D,C$가 한 직선 위이고 $\\angle ADB=120^\\circ$이므로 $\\angle ADC=60^\\circ$이다. 삼각형 $ABD$에서 $\\angle ABD=30^\\circ$, 따라서 $\\angle BAD=30^\\circ$이고 마주 보는 변이 같아 $AD=BD=8$이다. 직각삼각형 $ACD$에서 빗변 $AD=8$, $\\angle D=60^\\circ$이므로 $AC=AD\\sin60^\\circ=8\\cdot\\frac{\\sqrt3}{2}=4\\sqrt3\\,\\mathrm{cm}$이다. 정답은 ⑤이다."
+        ],
+        [
+          674,
+          "solution:$B,D,C$가 한 직선 위이고 $\\angle ADB=120^\\circ$이므로 $\\angle ADC=60^\\circ$이다. 삼각형 $ABD$에서 $\\angle ABD=30^\\circ$, 따라서 $\\angle BAD=30^\\circ$이고 마주 보는 변이 같아 $AD=BD=8$이다. 직각삼각형 $ACD$에서 빗변 $AD=8$, $\\angle D=60^\\circ$이므로 $AC=AD\\sin60^\\circ=8\\cdot\\frac{\\sqrt3}{2}=4\\sqrt3\\,\\mathrm{cm}$이다. 정답은 ⑤이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 144, 215를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 20,
+    "rpm": 65,
+    "after": {
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR_THEOREM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "30°의 사인·코사인으로 AC3과 BC3√3을 정하고 명시된 각이등분선 AD의 비2:1로 목표 BD를 구한다. 삼각비의 중간 길이를 다른 분할 길이로 연결하는 ACTIVE CHAINED를 재사용한다.",
+    "difficulty": "이등분선이 직접 제시되어 각이등분선 정리를 선택한 뒤 표준 분할비를 적용하는2이다. 세 변 복원과 분할이라는 산술 길이로4를 유지하지 않는다.",
+    "step": "30°의 사인·코사인으로 AC3과 BC3√3을 정하고 명시된 각이등분선 AD의 비2:1로 목표 BD를 구한다. 삼각비의 중간 길이를 다른 분할 길이로 연결하는 ACTIVE CHAINED를 재사용한다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 153,
+    "slots": {
+      "given": [
+        [
+          161,
+          "stem:$\\triangle \\mathrm{ABC}$에서 $\\angle \\mathrm{C} = 90^\\circ$, $\\angle \\mathrm{B} = 30^\\circ$, $\\overline{\\mathrm{AB}} = 6$이고, $\\angle \\mathrm{A}$의 이등분선이 $\\overline{\\mathrm{BC}}$와 만나는 점을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{BD}}$의 길이를 구하면? (4점)"
+        ],
+        [
+          174,
+          "stem:$\\triangle \\mathrm{ABC}$에서 $\\angle \\mathrm{C} = 90^\\circ$, $\\angle \\mathrm{B} = 30^\\circ$, $\\overline{\\mathrm{AB}} = 6$이고, $\\angle \\mathrm{A}$의 이등분선이 $\\overline{\\mathrm{BC}}$와 만나는 점을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{BD}}$의 길이를 구하면? (4점)"
+        ],
+        [
+          215,
+          "stem:$\\triangle \\mathrm{ABC}$에서 $\\angle \\mathrm{C} = 90^\\circ$, $\\angle \\mathrm{B} = 30^\\circ$, $\\overline{\\mathrm{AB}} = 6$이고, $\\angle \\mathrm{A}$의 이등분선이 $\\overline{\\mathrm{BC}}$와 만나는 점을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{BD}}$의 길이를 구하면? (4점)"
+        ],
+        [
+          177,
+          "stem:$\\triangle \\mathrm{ABC}$에서 $\\angle \\mathrm{C} = 90^\\circ$, $\\angle \\mathrm{B} = 30^\\circ$, $\\overline{\\mathrm{AB}} = 6$이고, $\\angle \\mathrm{A}$의 이등분선이 $\\overline{\\mathrm{BC}}$와 만나는 점을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{BD}}$의 길이를 구하면? (4점)"
+        ]
+      ],
+      "goal": [
+        [
+          144,
+          "stem:$\\triangle \\mathrm{ABC}$에서 $\\angle \\mathrm{C} = 90^\\circ$, $\\angle \\mathrm{B} = 30^\\circ$, $\\overline{\\mathrm{AB}} = 6$이고, $\\angle \\mathrm{A}$의 이등분선이 $\\overline{\\mathrm{BC}}$와 만나는 점을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{BD}}$의 길이를 구하면? (4점)"
+        ],
+        [
+          215,
+          "stem:$\\triangle \\mathrm{ABC}$에서 $\\angle \\mathrm{C} = 90^\\circ$, $\\angle \\mathrm{B} = 30^\\circ$, $\\overline{\\mathrm{AB}} = 6$이고, $\\angle \\mathrm{A}$의 이등분선이 $\\overline{\\mathrm{BC}}$와 만나는 점을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{BD}}$의 길이를 구하면? (4점)"
+        ]
+      ],
+      "method": [
+        [
+          194,
+          "solution:$\\angle C=90^\\circ$, $\\angle B=30^\\circ$이고 $AB=6$은 빗변이므로 $AC=6\\sin30^\\circ=3$, $BC=6\\cos30^\\circ=3\\sqrt3$이다. $AD$가 $\\angle A$의 이등분선이므로 각의 이등분선 정리에서 $BD:DC=AB:AC=6:3=2:1$이다. 따라서 $BD=\\frac23BC=2\\sqrt3$이고 정답은 ③이다."
+        ],
+        [
+          442,
+          "solution:$\\angle C=90^\\circ$, $\\angle B=30^\\circ$이고 $AB=6$은 빗변이므로 $AC=6\\sin30^\\circ=3$, $BC=6\\cos30^\\circ=3\\sqrt3$이다. $AD$가 $\\angle A$의 이등분선이므로 각의 이등분선 정리에서 $BD:DC=AB:AC=6:3=2:1$이다. 따라서 $BD=\\frac23BC=2\\sqrt3$이고 정답은 ③이다."
+        ],
+        [
+          578,
+          "solution:$\\angle C=90^\\circ$, $\\angle B=30^\\circ$이고 $AB=6$은 빗변이므로 $AC=6\\sin30^\\circ=3$, $BC=6\\cos30^\\circ=3\\sqrt3$이다. $AD$가 $\\angle A$의 이등분선이므로 각의 이등분선 정리에서 $BD:DC=AB:AC=6:3=2:1$이다. 따라서 $BD=\\frac23BC=2\\sqrt3$이고 정답은 ③이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 144, 215를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 21,
+    "rpm": 62,
+    "after": {
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "주어진 마름모의 변 s와60°에서 높이 s sin60°를 직접 구하고 밑변과 곱한다. source의 단일 삼각비 직접 측정+기본 넓이 계산은 기존 DIRECT_MEASURE로 재사용한다.",
+    "difficulty": "두 변과 끼인각이 바로 주어져 s²sin60°의 넓이 공식을 직접 적용하는1이다. 해설이 높이와 곱으로 풀어 썼다는 이유로4를 유지하지 않는다.",
+    "step": "주어진 마름모의 변 s와60°에서 높이 s sin60°를 직접 구하고 밑변과 곱한다. source의 단일 삼각비 직접 측정+기본 넓이 계산은 기존 DIRECT_MEASURE로 재사용한다.",
+    "image": "CURRENT_INLINE_ORIGINAL_IMAGE_READ",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 150,
+    "slots": {
+      "given": [
+        [
+          164,
+          "stem:네 변의 길이가 모두 $4\\sqrt3$인 마름모 $ABCD$의 한 각이 $60^\\circ$일 때, 마름모의 넓이를 구하면? (4점)"
+        ],
+        [
+          215,
+          "stem:네 변의 길이가 모두 $4\\sqrt3$인 마름모 $ABCD$의 한 각이 $60^\\circ$일 때, 마름모의 넓이를 구하면? (4점)"
+        ],
+        [
+          174,
+          "stem:네 변의 길이가 모두 $4\\sqrt3$인 마름모 $ABCD$의 한 각이 $60^\\circ$일 때, 마름모의 넓이를 구하면? (4점)"
+        ]
+      ],
+      "goal": [
+        [
+          164,
+          "stem:네 변의 길이가 모두 $4\\sqrt3$인 마름모 $ABCD$의 한 각이 $60^\\circ$일 때, 마름모의 넓이를 구하면? (4점)"
+        ],
+        [
+          213,
+          "stem:네 변의 길이가 모두 $4\\sqrt3$인 마름모 $ABCD$의 한 각이 $60^\\circ$일 때, 마름모의 넓이를 구하면? (4점)"
+        ]
+      ],
+      "method": [
+        [
+          674,
+          "solution:마름모의 한 변을 밑변으로 보면 높이는 그 변에 수직인 성분이다. 변의 길이가 $s=4\\sqrt3$이고 끼인각이 $60^\\circ$이므로 높이는 $s\\sin60^\\circ=4\\sqrt3\\cdot\\frac{\\sqrt3}{2}=6$이다. 넓이는 밑변 곱하기 높이이므로 $4\\sqrt3\\cdot6=24\\sqrt3$이고 ⑤이다."
+        ],
+        [
+          218,
+          "solution:마름모의 한 변을 밑변으로 보면 높이는 그 변에 수직인 성분이다. 변의 길이가 $s=4\\sqrt3$이고 끼인각이 $60^\\circ$이므로 높이는 $s\\sin60^\\circ=4\\sqrt3\\cdot\\frac{\\sqrt3}{2}=6$이다. 넓이는 밑변 곱하기 높이이므로 $4\\sqrt3\\cdot6=24\\sqrt3$이고 ⑤이다."
+        ],
+        [
+          213,
+          "solution:마름모의 한 변을 밑변으로 보면 높이는 그 변에 수직인 성분이다. 변의 길이가 $s=4\\sqrt3$이고 끼인각이 $60^\\circ$이므로 높이는 $s\\sin60^\\circ=4\\sqrt3\\cdot\\frac{\\sqrt3}{2}=6$이다. 넓이는 밑변 곱하기 높이이므로 $4\\sqrt3\\cdot6=24\\sqrt3$이고 ⑤이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 164, 213를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 22,
+    "rpm": 55,
+    "after": {
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_POLYGON_AREA",
+        "CC_TRIANGLE_AREA_TRIG"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "정사각형의 분할비로 BE·BF를 피타고라스로 복원하고 전체에서 세 직각삼각형의 넓이를 빼 BEF 넓이를 구한 뒤 S=½·BE·BF·sin x를 역으로 적용한다. 실제 해설에는 좌표나 벡터 방법이 없고 최종 목표는 삼각비 값이다.",
+    "difficulty": "두 보조 길이와 넓이 차감 표현을 같은 s에 연결한 뒤 넓이 공식을 역이용하여 사인을 정하는 구조화4이다. 배점이 아니라 실제 길이·넓이 표현 결합을 근거로 유지한다.",
+    "step": "정사각형의 분할비로 BE·BF를 피타고라스로 복원하고 전체에서 세 직각삼각형의 넓이를 빼 BEF 넓이를 구한 뒤 S=½·BE·BF·sin x를 역으로 적용한다. 실제 해설에는 좌표나 벡터 방법이 없고 최종 목표는 삼각비 값이다.",
+    "image": "CURRENT_INLINE_ORIGINAL_IMAGE_READ",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 143,
+    "slots": {
+      "given": [
+        [
+          166,
+          "stem:정사각형 $ABCD$에서 $E$는 선분 $AD$의 중점이고, $F$는 선분 $CD$의 삼등분점 중 $C$에 더 가까운 점이다. $\\angle EBF=x$일 때, $\\sin x$의 값을 구하면? (4점)"
+        ],
+        [
+          188,
+          "stem:정사각형 $ABCD$에서 $E$는 선분 $AD$의 중점이고, $F$는 선분 $CD$의 삼등분점 중 $C$에 더 가까운 점이다. $\\angle EBF=x$일 때, $\\sin x$의 값을 구하면? (4점)"
+        ],
+        [
+          189,
+          "stem:정사각형 $ABCD$에서 $E$는 선분 $AD$의 중점이고, $F$는 선분 $CD$의 삼등분점 중 $C$에 더 가까운 점이다. $\\angle EBF=x$일 때, $\\sin x$의 값을 구하면? (4점)",
+          "CD의 삼등분점 중 C 쪽 점을 지정한 내부 분할비다."
+        ],
+        [
+          174,
+          "stem:정사각형 $ABCD$에서 $E$는 선분 $AD$의 중점이고, $F$는 선분 $CD$의 삼등분점 중 $C$에 더 가까운 점이다. $\\angle EBF=x$일 때, $\\sin x$의 값을 구하면? (4점)"
+        ]
+      ],
+      "goal": [
+        [
+          674,
+          "stem:정사각형 $ABCD$에서 $E$는 선분 $AD$의 중점이고, $F$는 선분 $CD$의 삼등분점 중 $C$에 더 가까운 점이다. $\\angle EBF=x$일 때, $\\sin x$의 값을 구하면? (4점)"
+        ]
+      ],
+      "method": [
+        [
+          195,
+          "solution:정사각형의 한 변을 $s$라 하자. $AE=DE=s/2$이므로 직각삼각형 $ABE$에서 $BE=\\sqrt{s^2+(s/2)^2}=\\frac{\\sqrt5}{2}s$이다. $CF=s/3$이므로 직각삼각형 $BCF$에서 $BF=\\sqrt{s^2+(s/3)^2}=\\frac{\\sqrt{10}}{3}s$이다. 삼각형 $BEF$의 넓이는 정사각형에서 직각삼각형 $ABE$, $BCF$, $DEF$의 넓이를 빼면 $s^2-\\frac{s^2}{4}-\\frac{s^2}{6}-\\frac{s^2}{6}=\\frac{5s^2}{12}$이다. 또 이 넓이는 $\\frac12BE\\cdot BF\\sin x$이므로 $\\sin x=\\frac{2(5s^2/12)}{(\\sqrt5s/2)(\\sqrt{10}s/3)}=\\frac{\\sqrt2}{2}$이다. 정답은 ②이다."
+        ],
+        [
+          213,
+          "solution:정사각형의 한 변을 $s$라 하자. $AE=DE=s/2$이므로 직각삼각형 $ABE$에서 $BE=\\sqrt{s^2+(s/2)^2}=\\frac{\\sqrt5}{2}s$이다. $CF=s/3$이므로 직각삼각형 $BCF$에서 $BF=\\sqrt{s^2+(s/3)^2}=\\frac{\\sqrt{10}}{3}s$이다. 삼각형 $BEF$의 넓이는 정사각형에서 직각삼각형 $ABE$, $BCF$, $DEF$의 넓이를 빼면 $s^2-\\frac{s^2}{4}-\\frac{s^2}{6}-\\frac{s^2}{6}=\\frac{5s^2}{12}$이다. 또 이 넓이는 $\\frac12BE\\cdot BF\\sin x$이므로 $\\sin x=\\frac{2(5s^2/12)}{(\\sqrt5s/2)(\\sqrt{10}s/3)}=\\frac{\\sqrt2}{2}$이다. 정답은 ②이다."
+        ],
+        [
+          674,
+          "solution:정사각형의 한 변을 $s$라 하자. $AE=DE=s/2$이므로 직각삼각형 $ABE$에서 $BE=\\sqrt{s^2+(s/2)^2}=\\frac{\\sqrt5}{2}s$이다. $CF=s/3$이므로 직각삼각형 $BCF$에서 $BF=\\sqrt{s^2+(s/3)^2}=\\frac{\\sqrt{10}}{3}s$이다. 삼각형 $BEF$의 넓이는 정사각형에서 직각삼각형 $ABE$, $BCF$, $DEF$의 넓이를 빼면 $s^2-\\frac{s^2}{4}-\\frac{s^2}{6}-\\frac{s^2}{6}=\\frac{5s^2}{12}$이다. 또 이 넓이는 $\\frac12BE\\cdot BF\\sin x$이므로 $\\sin x=\\frac{2(5s^2/12)}{(\\sqrt5s/2)(\\sqrt{10}s/3)}=\\frac{\\sqrt2}{2}$이다. 정답은 ②이다."
+        ],
+        [
+          194,
+          "solution:정사각형의 한 변을 $s$라 하자. $AE=DE=s/2$이므로 직각삼각형 $ABE$에서 $BE=\\sqrt{s^2+(s/2)^2}=\\frac{\\sqrt5}{2}s$이다. $CF=s/3$이므로 직각삼각형 $BCF$에서 $BF=\\sqrt{s^2+(s/3)^2}=\\frac{\\sqrt{10}}{3}s$이다. 삼각형 $BEF$의 넓이는 정사각형에서 직각삼각형 $ABE$, $BCF$, $DEF$의 넓이를 빼면 $s^2-\\frac{s^2}{4}-\\frac{s^2}{6}-\\frac{s^2}{6}=\\frac{5s^2}{12}$이다. 또 이 넓이는 $\\frac12BE\\cdot BF\\sin x$이므로 $\\sin x=\\frac{2(5s^2/12)}{(\\sqrt5s/2)(\\sqrt{10}s/3)}=\\frac{\\sqrt2}{2}$이다. 정답은 ②이다."
+        ]
+      ],
+      "condition": [
+        [
+          307,
+          "stem:정사각형 $ABCD$에서 $E$는 선분 $AD$의 중점이고, $F$는 선분 $CD$의 삼등분점 중 $C$에 더 가까운 점이다. $\\angle EBF=x$일 때, $\\sin x$의 값을 구하면? (4점)",
+          "두 삼등분점 중 C에 가까운 점이라는 선택 조건이 CF=s/3을 정한다."
+        ]
+      ]
+    },
+    "goalReason": "원문에서 실제로 요구한 674를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 23,
+    "rpm": 53,
+    "after": {
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "일반형에서 y절편A와 꼭짓점B를 구해 수선의 발C 좌표를 읽고 OA·BC·OC를 사다리꼴의 두 밑변과 높이로 사용한다. E037Q23과 같이 그래프 좌표를 후속 넓이로 연결하는 GLOBAL 정의를 재사용한다.",
+    "difficulty": "문장에 필요한 교점·꼭짓점·수선이 지정되어 좌표를 표준 절차로 구한 뒤 넓이를 계산하는2이다. 새로운 교점 선택이나 넓이 조건 역추론은 없다.",
+    "step": "일반형에서 y절편A와 꼭짓점B를 구해 수선의 발C 좌표를 읽고 OA·BC·OC를 사다리꼴의 두 밑변과 높이로 사용한다. E037Q23과 같이 그래프 좌표를 후속 넓이로 연결하는 GLOBAL 정의를 재사용한다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [
+      {
+        "type": "CURRENT_2022_RPM_EXACT_LEAF_GAP",
+        "detail": "일반형 그래프의 교점·꼭짓점 좌표를 사다리꼴 넓이에 연결하는 exact leaf가 없다. E037Q23의 같은 일반형 좌표·넓이 공백을 재사용한다."
+      }
+    ],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "slots": {
+      "given": [
+        [
+          91,
+          "stem:[서답형 1] 이차함수 $y = -\\frac14x^2 + 2x + 4$의 그래프이다. $y$축과의 교점을 $\\mathrm{A}$, 꼭짓점을 $\\mathrm{B}$, 점 $\\mathrm{B}$에서 $x$축에 내린 수선의 발을 $\\mathrm{C}$라고 할 때, $\\square\\mathrm{OABC}$의 넓이를 구하여라. (단, 점 $\\mathrm{O}$는 원점) (7점)"
+        ],
+        [
+          181,
+          "stem:[서답형 1] 이차함수 $y = -\\frac14x^2 + 2x + 4$의 그래프이다. $y$축과의 교점을 $\\mathrm{A}$, 꼭짓점을 $\\mathrm{B}$, 점 $\\mathrm{B}$에서 $x$축에 내린 수선의 발을 $\\mathrm{C}$라고 할 때, $\\square\\mathrm{OABC}$의 넓이를 구하여라. (단, 점 $\\mathrm{O}$는 원점) (7점)"
+        ],
+        [
+          311,
+          "stem:[서답형 1] 이차함수 $y = -\\frac14x^2 + 2x + 4$의 그래프이다. $y$축과의 교점을 $\\mathrm{A}$, 꼭짓점을 $\\mathrm{B}$, 점 $\\mathrm{B}$에서 $x$축에 내린 수선의 발을 $\\mathrm{C}$라고 할 때, $\\square\\mathrm{OABC}$의 넓이를 구하여라. (단, 점 $\\mathrm{O}$는 원점) (7점)"
+        ],
+        [
+          718,
+          "stem:[서답형 1] 이차함수 $y = -\\frac14x^2 + 2x + 4$의 그래프이다. $y$축과의 교점을 $\\mathrm{A}$, 꼭짓점을 $\\mathrm{B}$, 점 $\\mathrm{B}$에서 $x$축에 내린 수선의 발을 $\\mathrm{C}$라고 할 때, $\\square\\mathrm{OABC}$의 넓이를 구하여라. (단, 점 $\\mathrm{O}$는 원점) (7점)"
+        ],
+        [
+          403,
+          "stem:[서답형 1] 이차함수 $y = -\\frac14x^2 + 2x + 4$의 그래프이다. $y$축과의 교점을 $\\mathrm{A}$, 꼭짓점을 $\\mathrm{B}$, 점 $\\mathrm{B}$에서 $x$축에 내린 수선의 발을 $\\mathrm{C}$라고 할 때, $\\square\\mathrm{OABC}$의 넓이를 구하여라. (단, 점 $\\mathrm{O}$는 원점) (7점)"
+        ]
+      ],
+      "goal": [
+        [
+          162,
+          "stem:[서답형 1] 이차함수 $y = -\\frac14x^2 + 2x + 4$의 그래프이다. $y$축과의 교점을 $\\mathrm{A}$, 꼭짓점을 $\\mathrm{B}$, 점 $\\mathrm{B}$에서 $x$축에 내린 수선의 발을 $\\mathrm{C}$라고 할 때, $\\square\\mathrm{OABC}$의 넓이를 구하여라. (단, 점 $\\mathrm{O}$는 원점) (7점)"
+        ],
+        [
+          213,
+          "stem:[서답형 1] 이차함수 $y = -\\frac14x^2 + 2x + 4$의 그래프이다. $y$축과의 교점을 $\\mathrm{A}$, 꼭짓점을 $\\mathrm{B}$, 점 $\\mathrm{B}$에서 $x$축에 내린 수선의 발을 $\\mathrm{C}$라고 할 때, $\\square\\mathrm{OABC}$의 넓이를 구하여라. (단, 점 $\\mathrm{O}$는 원점) (7점)"
+        ]
+      ],
+      "method": [
+        [
+          53,
+          "solution:$y=-\\frac14x^2+2x+4$에서 $x=0$을 대입하면 $A=(0,4)$이다. 완전제곱식으로 고치면 $y=-\\frac14(x-4)^2+8$이므로 꼭짓점은 $B=(4,8)$이고 $B$에서 $x$축에 내린 수선의 발은 $C=(4,0)$이다. $OA$와 $BC$는 평행한 변의 길이가 4와 8인 사다리꼴의 두 밑변이고, 두 변 사이 거리는 4이다. 따라서 넓이는 $\\frac{4+8}{2}\\cdot4=24$이다."
+        ],
+        [
+          59,
+          "solution:$y=-\\frac14x^2+2x+4$에서 $x=0$을 대입하면 $A=(0,4)$이다. 완전제곱식으로 고치면 $y=-\\frac14(x-4)^2+8$이므로 꼭짓점은 $B=(4,8)$이고 $B$에서 $x$축에 내린 수선의 발은 $C=(4,0)$이다. $OA$와 $BC$는 평행한 변의 길이가 4와 8인 사다리꼴의 두 밑변이고, 두 변 사이 거리는 4이다. 따라서 넓이는 $\\frac{4+8}{2}\\cdot4=24$이다."
+        ],
+        [
+          148,
+          "solution:$y=-\\frac14x^2+2x+4$에서 $x=0$을 대입하면 $A=(0,4)$이다. 완전제곱식으로 고치면 $y=-\\frac14(x-4)^2+8$이므로 꼭짓점은 $B=(4,8)$이고 $B$에서 $x$축에 내린 수선의 발은 $C=(4,0)$이다. $OA$와 $BC$는 평행한 변의 길이가 4와 8인 사다리꼴의 두 밑변이고, 두 변 사이 거리는 4이다. 따라서 넓이는 $\\frac{4+8}{2}\\cdot4=24$이다."
+        ],
+        [
+          167,
+          "solution:$y=-\\frac14x^2+2x+4$에서 $x=0$을 대입하면 $A=(0,4)$이다. 완전제곱식으로 고치면 $y=-\\frac14(x-4)^2+8$이므로 꼭짓점은 $B=(4,8)$이고 $B$에서 $x$축에 내린 수선의 발은 $C=(4,0)$이다. $OA$와 $BC$는 평행한 변의 길이가 4와 8인 사다리꼴의 두 밑변이고, 두 변 사이 거리는 4이다. 따라서 넓이는 $\\frac{4+8}{2}\\cdot4=24$이다."
+        ],
+        [
+          213,
+          "solution:$y=-\\frac14x^2+2x+4$에서 $x=0$을 대입하면 $A=(0,4)$이다. 완전제곱식으로 고치면 $y=-\\frac14(x-4)^2+8$이므로 꼭짓점은 $B=(4,8)$이고 $B$에서 $x$축에 내린 수선의 발은 $C=(4,0)$이다. $OA$와 $BC$는 평행한 변의 길이가 4와 8인 사다리꼴의 두 밑변이고, 두 변 사이 거리는 4이다. 따라서 넓이는 $\\frac{4+8}{2}\\cdot4=24$이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 162, 213를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 24,
+    "rpm": 55,
+    "after": {
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "주어진 AD와 CD에서 AC²12를 복원하고 이를 큰 직각삼각형 ABC에 전달해 BC²24를 구한 뒤 cosB=BC/AB를 계산한다. 직접비만 주어진 BASIC보다 길이 복원 후 삼각비의 GEOMETRIC_DERIVATION이 실제 골격에 맞는다.",
+    "difficulty": "공통 AC를 쓰는 두 표준 Pyth 뒤 코사인 정의로 연결하는2이다. 서술형6점 때문에3을 유지하지 않는다.",
+    "step": "주어진 AD와 CD에서 AC²12를 복원하고 이를 큰 직각삼각형 ABC에 전달해 BC²24를 구한 뒤 cosB=BC/AB를 계산한다. 직접비만 주어진 BASIC보다 길이 복원 후 삼각비의 GEOMETRIC_DERIVATION이 실제 골격에 맞는다.",
+    "image": "CURRENT_INLINE_ORIGINAL_IMAGE_READ",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 143,
+    "slots": {
+      "given": [
+        [
+          161,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $AB=6$, $AD=4$, $CD=2$일 때, $\\cos B$의 값을 구하여라. (6점)"
+        ],
+        [
+          142,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $AB=6$, $AD=4$, $CD=2$일 때, $\\cos B$의 값을 구하여라. (6점)"
+        ],
+        [
+          144,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $AB=6$, $AD=4$, $CD=2$일 때, $\\cos B$의 값을 구하여라. (6점)"
+        ],
+        [
+          215,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $AB=6$, $AD=4$, $CD=2$일 때, $\\cos B$의 값을 구하여라. (6점)"
+        ]
+      ],
+      "goal": [
+        [
+          675,
+          "stem:직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $AB=6$, $AD=4$, $CD=2$일 때, $\\cos B$의 값을 구하여라. (6점)"
+        ]
+      ],
+      "method": [
+        [
+          195,
+          "solution:$D$가 $BC$ 위에 있고 $\\angle C=90^\\circ$이므로 $AC\\perp CD$이다. 직각삼각형 $ACD$에서 $AD^2=AC^2+CD^2$이므로 $AC^2=4^2-2^2=12$, 즉 $AC=2\\sqrt3$이다. 직각삼각형 $ABC$에서 $BC^2=AB^2-AC^2=6^2-12=24$이므로 $BC=2\\sqrt6$이다. 따라서 $\\cos B=BC/AB=2\\sqrt6/6=\\sqrt6/3$이다."
+        ],
+        [
+          675,
+          "solution:$D$가 $BC$ 위에 있고 $\\angle C=90^\\circ$이므로 $AC\\perp CD$이다. 직각삼각형 $ACD$에서 $AD^2=AC^2+CD^2$이므로 $AC^2=4^2-2^2=12$, 즉 $AC=2\\sqrt3$이다. 직각삼각형 $ABC$에서 $BC^2=AB^2-AC^2=6^2-12=24$이므로 $BC=2\\sqrt6$이다. 따라서 $\\cos B=BC/AB=2\\sqrt6/6=\\sqrt6/3$이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 675를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  },
+  {
+    "ordinal": 25,
+    "rpm": 66,
+    "after": {
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "기존 해설대로 C에서 AB에 수선CH를 내려 AC40의 투영 AH20·높이20√3을 구하고 BH=30−20을 만든 뒤 Pyth로 BC를 구한다.",
+    "difficulty": "높이를 선택하고 원래 밑변에서 투영 길이를 빼 다른 직각삼각형으로 옮기는 표준 전략 선택3이다. 익숙한 보조선이므로4로 올리지 않는다.",
+    "step": "기존 해설대로 C에서 AB에 수선CH를 내려 AC40의 투영 AH20·높이20√3을 구하고 BH=30−20을 만든 뒤 Pyth로 BC를 구한다.",
+    "image": "NOT_PRESENT",
+    "compatibility": "EXISTING_ACTIVE_REUSE",
+    "debts": [],
+    "slotReason": "현재 판본의 발문·기존 답·해설·필요 그림을 실제 읽어 최초 4칸을 작성했다. 기존 메타 키를 용어로 기계 치환하지 않았다.",
+    "rpm2022": 154,
+    "slots": {
+      "given": [
+        [
+          158,
+          "stem:[서답형 3] 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 30$, $\\overline{\\mathrm{AC}} = 40$, $\\angle \\mathrm{A} = 60^\\circ$일 때, $\\overline{\\mathrm{BC}}$의 거리를 구하여라. (7점)"
+        ],
+        [
+          215,
+          "stem:[서답형 3] 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 30$, $\\overline{\\mathrm{AC}} = 40$, $\\angle \\mathrm{A} = 60^\\circ$일 때, $\\overline{\\mathrm{BC}}$의 거리를 구하여라. (7점)"
+        ],
+        [
+          174,
+          "stem:[서답형 3] 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 30$, $\\overline{\\mathrm{AC}} = 40$, $\\angle \\mathrm{A} = 60^\\circ$일 때, $\\overline{\\mathrm{BC}}$의 거리를 구하여라. (7점)"
+        ]
+      ],
+      "goal": [
+        [
+          144,
+          "stem:[서답형 3] 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 30$, $\\overline{\\mathrm{AC}} = 40$, $\\angle \\mathrm{A} = 60^\\circ$일 때, $\\overline{\\mathrm{BC}}$의 거리를 구하여라. (7점)"
+        ],
+        [
+          215,
+          "stem:[서답형 3] 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 30$, $\\overline{\\mathrm{AC}} = 40$, $\\angle \\mathrm{A} = 60^\\circ$일 때, $\\overline{\\mathrm{BC}}$의 거리를 구하여라. (7점)"
+        ]
+      ],
+      "method": [
+        [
+          179,
+          "solution:점 $C$에서 $AB$에 내린 수선의 발을 $H$라 하자. 직각삼각형 $ACH$에서 $AH=AC\\cos60^\\circ=40\\cdot\\frac12=20$, $CH=AC\\sin60^\\circ=40\\cdot\\frac{\\sqrt3}{2}=20\\sqrt3$이다. 따라서 $BH=AB-AH=30-20=10$이다. 직각삼각형 $BCH$에서 $BC=\\sqrt{BH^2+CH^2}=\\sqrt{10^2+(20\\sqrt3)^2}=\\sqrt{1300}=10\\sqrt{13}$이다."
+        ],
+        [
+          194,
+          "solution:점 $C$에서 $AB$에 내린 수선의 발을 $H$라 하자. 직각삼각형 $ACH$에서 $AH=AC\\cos60^\\circ=40\\cdot\\frac12=20$, $CH=AC\\sin60^\\circ=40\\cdot\\frac{\\sqrt3}{2}=20\\sqrt3$이다. 따라서 $BH=AB-AH=30-20=10$이다. 직각삼각형 $BCH$에서 $BC=\\sqrt{BH^2+CH^2}=\\sqrt{10^2+(20\\sqrt3)^2}=\\sqrt{1300}=10\\sqrt{13}$이다."
+        ],
+        [
+          195,
+          "solution:점 $C$에서 $AB$에 내린 수선의 발을 $H$라 하자. 직각삼각형 $ACH$에서 $AH=AC\\cos60^\\circ=40\\cdot\\frac12=20$, $CH=AC\\sin60^\\circ=40\\cdot\\frac{\\sqrt3}{2}=20\\sqrt3$이다. 따라서 $BH=AB-AH=30-20=10$이다. 직각삼각형 $BCH$에서 $BC=\\sqrt{BH^2+CH^2}=\\sqrt{10^2+(20\\sqrt3)^2}=\\sqrt{1300}=10\\sqrt{13}$이다."
+        ]
+      ],
+      "condition": []
+    },
+    "goalReason": "원문에서 실제로 요구한 144, 215를 기록한다. 정답 번호나 메타 라벨을 목표 용어로 바꾸지 않는다."
+  }
+]
