@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E060",
+  "author": "m3_a",
+  "reviewer": "m3_b",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_풍덕중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "77c85d57b45a09c4615252c3d518996f62c326c4",
+  "targetReviewSha256": "36d5fc40cac4e405e96a1b087478936333ff60affd0a15d11a9fe2d578823af4",
+  "target4slotSha256": "3f9826bd91479c45f9e7fb163479c9fa76cb569ca88095b466534fd582b7074f",
+  "sampledSourcePatchSha256": "2e0d01e7ba7cc151161c60cdfbeaab435e46c78649d88c46270c5cc025d828bc",
+  "sampleOrdinals": [
+    13,
+    19,
+    24
+  ],
+  "sampleRule": "Independent reviewer m3_b read source and current original images before author semantic decisions; selected regular-hexagon Pythagorean derivation, area-derived sine and incircle tangent-length samples, plus the sole difficulty exception.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_e423b108de1c4bfd8a91546c053922b5da47e02c334e5dee142be1dfd8b2cff0",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "실제해설은정육각형을6개정삼각형으로나눈후Pyth로높이3√3/2를구하고면적을계산한다. 따라서M2평면Pyth활용RPM105/223과SIDE_LENGTH·정삼각형/넓이CC의선택이타당하다.4칸의수선/Pyth/넓이방법과goal넓이가실제해설을포괄하며canonical course도중2로동기화확인했다.",
+      "quotesChecked": 8,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_887e6a2a5eb2b13195ff2815c981fe4b9014e38358880dab7116c41ea0a41c92",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "그림은A부근만남았으나본문이C직각,D의BC위치,BD=DC4,x=∠DAC,y=∠BAD를모두정의한다. sinx에서AD와Pyth변길이를복원한뒤△ABD와△ADC의넓이를같게두어보조수선으로siny를얻는GEOMETRIC_DERIVATION이다.4칸수선·넓이·사인이결정적과정을담고있다. 원본crop은별도보류,난도3/B34는독립동의.",
+      "quotesChecked": 8,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_af3356bc793ee34721fb8fe1e33d44bcb974a593f4b7e5c5927ed4a28988103d",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "실제접점배치와본문6-8직각변을확인했다.접선상등과직각꼭짓점에서반지름같은접선조각r을사용해2r=6+8-10,나머지접선길이4/6과원제외넓이24-4π를구하므로tangent-length와세넓이/Pyth CC·4칸이맞는다. 접점E라벨crop은QA보류로분리한다.",
+      "quotesChecked": 14,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_887e6a2a5eb2b13195ff2815c981fe4b9014e38358880dab7116c41ea0a41c92",
+      "type": "SOURCE_DIAGRAM_CROPPED_TEXT_COMPENSATED",
+      "reason": "원본그림이하단에서잘려일부꼭짓점/접점라벨이보이지않는다. 본문에필요관계가명시되어메타의미만판정했다.",
+      "nextAction": "인쇄원문또는고해상도도형을회수하여잘린라벨과기하관계를대조한후이미지QA를완료한다.",
+      "release": "HOLD_SOURCE_IMAGE_QA"
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_af3356bc793ee34721fb8fe1e33d44bcb974a593f4b7e5c5927ed4a28988103d",
+      "type": "SOURCE_DIAGRAM_CROPPED_TEXT_COMPENSATED",
+      "reason": "원본그림이하단에서잘려일부꼭짓점/접점라벨이보이지않는다. 본문에필요관계가명시되어메타의미만판정했다.",
+      "nextAction": "인쇄원문또는고해상도도형을회수하여잘린라벨과기하관계를대조한후이미지QA를완료한다.",
+      "release": "HOLD_SOURCE_IMAGE_QA"
+    }
+  ],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "2ab705a1cc5506007e7b71758af3bb5bdccb954645fb058012a187aeb82ee40b"
+}
