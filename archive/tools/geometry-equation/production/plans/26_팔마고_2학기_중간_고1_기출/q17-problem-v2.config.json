@@ -1,0 +1,392 @@
+{
+  "sourcePath": "archive/exams/original/high/h1/2mid/26_팔마고_2학기_중간_고1_기출.js",
+  "questionId": 17,
+  "figures": [
+    {
+      "slot": "body",
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.55,
+        "fontFloorCssPx": 11
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "SOURCE_COORDINATE_AXES_v1",
+            "unit": "source-coordinate",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "NORMALIZATION_ORIGIN",
+              "inputs": [],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "N",
+              "op": "NORMALIZATION_AXIS",
+              "inputs": [],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Yref",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "xAxis",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "O",
+                "T"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "normalAtT",
+              "op": "PERPENDICULAR_THROUGH",
+              "inputs": [
+                "T",
+                "xAxis"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "sourceCircle",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "tangentCircle",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "T"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "tangentHits",
+              "op": "INTERSECTION",
+              "inputs": [
+                "normalAtT",
+                "tangentCircle"
+              ],
+              "args": {},
+              "outputType": "POINT_SET",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Oprime",
+              "op": "SELECT_POINT",
+              "inputs": [
+                "tangentHits"
+              ],
+              "args": {},
+              "branch": {
+                "kind": "SIDE_OF_ORIENTED_LINE",
+                "refs": [
+                  "O",
+                  "T"
+                ],
+                "sign": 1
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "centersLine",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "O",
+                "Oprime"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "foldMidpoint",
+              "op": "MIDPOINT",
+              "inputs": [
+                "O",
+                "Oprime"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "foldLine",
+              "op": "PERPENDICULAR_THROUGH",
+              "inputs": [
+                "foldMidpoint",
+                "centersLine"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "chordHits",
+              "op": "INTERSECTION",
+              "inputs": [
+                "foldLine",
+                "sourceCircle"
+              ],
+              "args": {},
+              "outputType": "POINT_SET",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "SELECT_POINT",
+              "inputs": [
+                "chordHits"
+              ],
+              "args": {},
+              "branch": {
+                "kind": "SIDE_OF_ORIENTED_LINE",
+                "refs": [
+                  "O",
+                  "Yref"
+                ],
+                "sign": 1
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SELECT_POINT",
+              "inputs": [
+                "chordHits"
+              ],
+              "args": {},
+              "branch": {
+                "kind": "SIDE_OF_ORIENTED_LINE",
+                "refs": [
+                  "O",
+                  "Yref"
+                ],
+                "sign": -1
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "foldedCircle",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "Oprime"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "conditionAudits": [
+            {
+              "id": "sourceTangent",
+              "kind": "TANGENCY_AT_POINT",
+              "refs": [
+                "foldedCircle",
+                "T",
+                "xAxis"
+              ],
+              "sourceConditionId": "given_tangent_at_2_0"
+            },
+            {
+              "id": "foldPerpendicular",
+              "kind": "PERPENDICULAR",
+              "refs": [
+                "centersLine",
+                "foldLine"
+              ],
+              "sourceConditionId": "fold_perpendicular_bisector"
+            }
+          ]
+        },
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "displayPoints": [
+          "O",
+          "P",
+          "Q",
+          "T",
+          "Yref",
+          "Oprime"
+        ],
+        "displaySegments": [
+          {
+            "id": "chordPQ",
+            "refs": [
+              "P",
+              "Q"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "originalDashedArc",
+              "circle": "sourceCircle",
+              "center": "O",
+              "from": "P",
+              "to": "Q",
+              "side": "CW",
+              "dashed": true
+            },
+            {
+              "id": "originalRemainingArc",
+              "circle": "sourceCircle",
+              "center": "O",
+              "from": "Q",
+              "to": "P",
+              "side": "CW",
+              "highlight": false
+            },
+            {
+              "id": "foldedArc",
+              "circle": "foldedCircle",
+              "center": "Oprime",
+              "from": "Q",
+              "to": "P",
+              "side": "CW",
+              "highlight": false
+            }
+          ],
+          "regions": [
+            {
+              "id": "foldedSegment",
+              "fill": "MEDIUM",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "P",
+                    "steps": [
+                      {
+                        "to": "Q"
+                      },
+                      {
+                        "to": "P",
+                        "arc": {
+                          "center": "Oprime",
+                          "side": "CW"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "textLabels": [
+            {
+              "id": "contactValue",
+              "text": "2",
+              "at": [
+                2,
+                -0.65
+              ],
+              "labelKind": "MATH",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "원에서 접힌 호 PQ와 선분 PQ 사이의 음영 부분",
+        "sourceConditions": [
+          "원 x²+y²=36 위의 점 P,Q와 접는 선분 PQ, 접힌 호 PQ가 x축의 (2,0)에서 접함"
+        ],
+        "newVisualInformation": [],
+        "hiddenPointNames": [
+          "T",
+          "Yref",
+          "Oprime"
+        ],
+        "hiddenPointStyle": "NONE",
+        "coordinateCanvas": {
+          "width": 560,
+          "height": 520
+        },
+        "displayLines": [
+          "xAxis"
+        ]
+      }
+    }
+  ]
+}
