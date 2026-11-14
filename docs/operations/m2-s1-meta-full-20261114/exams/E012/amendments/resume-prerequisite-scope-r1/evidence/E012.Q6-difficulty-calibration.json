@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "m2-s1-scoped-independent-amendment-v1",
+  "examId": "E012",
+  "sourceOrdinal": 6,
+  "questionUid": "qid_v1_f9eae02d56bb52b8cfa79edac166942e6b1dcce9b3e3ff3c273c37d41d49aa7f",
+  "reviewer": "M2-S1-META-FULL/C",
+  "at": "2026-11-14T11:01:51.689559+00:00",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "sourceGitBlobSha": "b750a4ccba7e4e555fa6b412963054fbfb3718e9",
+  "sourceSha256": "9d0fcf2fada93e1b9d15e415045dd326d946097faaa18353aebbdc010ab921f1",
+  "preservedReviewSha256": "0a7a6a680925d4ccbcfdc6311df195f1989b8035724bc064be8599710a7ebea4",
+  "scope": "Only Q6 difficulty calibration against E014 Q5; no prior whole exam review repeated.",
+  "sourceRead": "Actual Q6 stem, all5 choices and existing solution read; source bytes match current extracted input pack.",
+  "decision": "RECOMMEND_NARROW_AMENDMENT",
+  "before": {
+    "level": "중",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
+  },
+  "after": {
+    "level": "중",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
+  },
+  "comparison": {
+    "referenceExam": "E014",
+    "referenceOrdinal": 5,
+    "commonStructure": "선행 약분으로7/(c*x)를 만든 뒤 x=1~9의 소인수 중2,5외 인수가 분자7과 소거되는지 직접 확인한다.",
+    "difference": "E012는 순환소수 후보3,6,9의 합, E014는 유한소수 후보1,2,4,5,7,8의 합을 묻는다. 허용 집합이 서로 여집합이며 접근 부담은 같다.",
+    "reason": "분모의 남는 소인수를 검사하는 방법이 즉시 정해지고, 분자7과 약분되는 x=7의 예외는 익숙한 한 번의 조건 해석이다. 후보 나열 외에 새로운 표현·경우 전략을 선택할 필요가 없으므로 v1.3 §4.2·§9의2에 해당한다. 기존3의 근거였던 원식 약분과상쇄를 함께 확인한다는 사실만으로3을 부여하지 않는다."
+  },
+  "preservedAxes": [
+    "classification",
+    "PT/TPL",
+    "CrossConcept",
+    "Condition",
+    "Integration",
+    "four-slot",
+    "student content"
+  ],
+  "oldEvidencePreserved": true,
+  "resolverEvidence": "NOT_RUN_NOT_REQUIRED_FOR_THIS_SCOPED_DIFFICULTY_REVIEW"
+}

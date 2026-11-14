@@ -1,0 +1,184 @@
+{
+  "schemaVersion": "m2-s1-root-scoped-acceptance-v1",
+  "examId": "E012",
+  "rootReviewer": "GPT_ROOT_59E0F5BD3A77",
+  "at": "2026-11-14T11:17:26.266501+00:00",
+  "decision": "ACCEPT_NARROW_EVIDENCE_BOUND_CORRECTION",
+  "config": {
+    "examId": "E012",
+    "revisionName": "resume-prerequisite-scope-r1",
+    "namespaceRestores": [
+      22
+    ],
+    "semanticScopes": {
+      "22": "M1-2"
+    },
+    "canonicalAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md#1.4.1",
+    "reason": "A lower-prerequisite RPM primary does not authorize changing the target course/L1/L2 namespace. Preserve the existing semantic review and correct only the source/proposal namespace and provenance.",
+    "difficultyOverrides": [
+      {
+        "sourceOrdinal": 6,
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "reason": "Exact structural comparison with E014Q5 exposed a condition-count inflation: after reducing7/(2x), filtering the finite one-digit candidates by remaining denominator factors is one familiar procedure. No representation or strategy selection is required. Root reread this item only; independent A and calibration C separately accepted2/medium/B23. Original level중 and all other axes remain unchanged."
+      }
+    ],
+    "evidencePaths": [
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/A/cross/E012.Q6-difficulty-independent.json",
+        "role": "INDEPENDENT_A"
+      },
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/C/cross/E012.Q6-difficulty-calibration.json",
+        "role": "CALIBRATION_C"
+      }
+    ]
+  },
+  "previousCurrent": {
+    "effectiveReview": "review.json",
+    "fourSlot": "four-slot.json",
+    "sourceWriterDeferred": null
+  },
+  "previousReviewSha256": "0a7a6a680925d4ccbcfdc6311df195f1989b8035724bc064be8599710a7ebea4",
+  "previousFourSlotSha256": "ed7fe5f1cf6a5f8ec333386f8124f7a038fd87fd02f09ddf7b9b1da8096047e0",
+  "acceptedReviewSha256": "93d68dd97a32aa3987516ea834044af0a87dc561eff5a453a042844b9a442383",
+  "acceptedFourSlotSha256": "2c1ce0f4c28882f42d3736c7993aebf4499c929a2b6465626dfc26695c4cec5e",
+  "reviewedSourceBlob": "b750a4ccba7e4e555fa6b412963054fbfb3718e9",
+  "finalSourceBlob": "27edd8076031a6240c97e51ec06c973c84001588",
+  "changes": [
+    {
+      "sourceOrdinal": 22,
+      "fields": [
+        "standardCourse",
+        "course",
+        "standardUnitKey",
+        "standardUnit",
+        "standardUnitOrder",
+        "category",
+        "subUnitKey",
+        "subUnit"
+      ],
+      "before": {
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "category": "서답형 2",
+        "subUnit": "지수법칙"
+      },
+      "semanticSourceScope": "M1-2",
+      "basis": "Canonical prerequisite namespace correction only; no whole-item semantic rerun."
+    },
+    {
+      "sourceOrdinal": 6,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "약분 전 소인수만 보면7을 잘못 포함하므로 원식 약분과 x별 소인수·상쇄 여부를 함께 확인한다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Exact structural comparison with E014Q5 exposed a condition-count inflation: after reducing7/(2x), filtering the finite one-digit candidates by remaining denominator factors is one familiar procedure. No representation or strategy selection is required. Root reread this item only; independent A and calibration C separately accepted2/medium/B23. Original level중 and all other axes remain unchanged.",
+        "authorReason": "약분 전 소인수만 보면7을 잘못 포함하므로 원식 약분과 x별 소인수·상쇄 여부를 함께 확인한다."
+      },
+      "basis": "Exact structural comparison with E014Q5 exposed a condition-count inflation: after reducing7/(2x), filtering the finite one-digit candidates by remaining denominator factors is one familiar procedure. No representation or strategy selection is required. Root reread this item only; independent A and calibration C separately accepted2/medium/B23. Original level중 and all other axes remain unchanged."
+    }
+  ],
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 22,
+      "field": "standardUnitKey",
+      "before": "M1-07",
+      "after": "M2-01",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "standardUnit",
+      "before": "입체도형의 성질",
+      "after": "수와 식",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "standardUnitOrder",
+      "before": 7,
+      "after": 1,
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "category",
+      "before": "입체도형의 성질",
+      "after": "서답형 2",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "subUnitKey",
+      "before": "M1-07-SOLID_FIGURE_MEASURE",
+      "after": "M2-01-EXPONENT_LAW",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "subUnit",
+      "before": "입체도형의 측정",
+      "after": "지수법칙",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "Exact structural comparison with E014Q5 exposed a condition-count inflation: after reducing7/(2x), filtering the finite one-digit candidates by remaining denominator factors is one familiar procedure. No representation or strategy selection is required. Root reread this item only; independent A and calibration C separately accepted2/medium/B23. Original level중 and all other axes remain unchanged."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Exact structural comparison with E014Q5 exposed a condition-count inflation: after reducing7/(2x), filtering the finite one-digit candidates by remaining denominator factors is one familiar procedure. No representation or strategy selection is required. Root reread this item only; independent A and calibration C separately accepted2/medium/B23. Original level중 and all other axes remain unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "file": "evidence/E012.Q6-difficulty-independent.json",
+      "sha256": "8677a44e1dbf5d5ec99f7702e1a8ebc7ecaf3b569389e52ba7371302b3f70a91",
+      "role": "INDEPENDENT_A"
+    },
+    {
+      "file": "evidence/E012.Q6-difficulty-calibration.json",
+      "sha256": "fc75fa07a93402bcdc6b62898f3f590cfc9e97cd06df96f4fe046cc6908a2505",
+      "role": "CALIBRATION_C"
+    }
+  ],
+  "studentContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "registrationStatus": "NOT_RUN"
+}
