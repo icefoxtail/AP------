@@ -619,7 +619,7 @@ window.questionBank = [
     "sourceExamId": "21_팔마중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4,
-    "content": "다음 그림은 서로 $200\\text{ m}$ 떨어진 해안가의 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$에서 $\\mathrm{C}$지점을 관측하였더니 다음 그림과 같은 결과를 얻었다. 두 지점 $\\mathrm{B}$와 $\\mathrm{C}$사이의 거리를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q09.png\" />",
+    "content": "다음 그림은 서로 $200\\text{ m}$ 떨어진 해안가의 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$에서 $\\mathrm{C}$지점을 관측하였더니 다음 그림과 같은 결과를 얻었다. 두 지점 $\\mathrm{B}$와 $\\mathrm{C}$사이의 거리를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q9-problem-v2.svg\" />",
     "choices": [
       "$100\\sqrt{3}\\text{ m}$",
       "$100\\sqrt{5}\\text{ m}$",
@@ -1096,7 +1096,7 @@ window.questionBank = [
     "sourceExamId": "21_팔마중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4,
-    "content": "다음 그림과 같이 반지름의 길이가 $12\\text{ cm}$인 원 모양의 종이를 현 $\\mathrm{AB}$를 접는 선으로 하여 접었더니 호 $\\mathrm{AB}$가 원의 중심 $\\mathrm{O}$를 지난다. 이 때 현 $\\mathrm{AB}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q15.png\" />",
+    "content": "다음 그림과 같이 반지름의 길이가 $12\\text{ cm}$인 원 모양의 종이를 현 $\\mathrm{AB}$를 접는 선으로 하여 접었더니 호 $\\mathrm{AB}$가 원의 중심 $\\mathrm{O}$를 지난다. 이 때 현 $\\mathrm{AB}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q15-problem-v2.svg\" />",
     "choices": [
       "$4\\text{ cm}$",
       "$6\\text{ cm}$",
@@ -1825,7 +1825,7 @@ window.questionBank = [
     "sourceExamId": "21_팔마중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 5,
-    "content": "[서술형3] 다음 접선의 성질을 아래 순서에 따라 증명하려고 한다. 빈 칸 ① ~ ⑤에 알맞은 답을 기호를 써서 구하시오.[5점, 각 1점씩]<br><br>&lt;접선의 성질&gt;<br>원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 같다.<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s03.png\" /><br><br>원 $O$ 밖의 한 점 $P$에서 이 원에 그은 두 접선의 접점을 각각 $A$와 $B$라고 할 때,<br>$\\triangle\\mathrm{PAO}, \\triangle\\mathrm{PBO}$에서<br>( ① )<br>( ② )<br>( ③ )을 만족한다.<br>①②③에 의해<br>$\\triangle\\mathrm{PAO} \\equiv \\triangle\\mathrm{PBO}$ ( ④ 합동) 이다.<br>따라서, 합동인 삼각형의 대응하는 두 변의 길이는 같으므로<br>( ⑤ ) 이다.",
+    "content": "[서술형3] 다음 접선의 성질을 아래 순서에 따라 증명하려고 한다. 빈 칸 ① ~ ⑤에 알맞은 답을 기호를 써서 구하시오.[5점, 각 1점씩]<br><br>&lt;접선의 성질&gt;<br>원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 같다.<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q24-problem-v2.svg\" /><br><br>원 $O$ 밖의 한 점 $P$에서 이 원에 그은 두 접선의 접점을 각각 $A$와 $B$라고 할 때,<br>$\\triangle\\mathrm{PAO}, \\triangle\\mathrm{PBO}$에서<br>( ① )<br>( ② )<br>( ③ )을 만족한다.<br>①②③에 의해<br>$\\triangle\\mathrm{PAO} \\equiv \\triangle\\mathrm{PBO}$ ( ④ 합동) 이다.<br>따라서, 합동인 삼각형의 대응하는 두 변의 길이는 같으므로<br>( ⑤ ) 이다.",
     "choices": [],
     "answer": "① $OA=OB$; ② $\\angle PAO=\\angle PBO=90^\\circ$; ③ $PO=PO$; ④ RHS; ⑤ $PA=PB$",
     "solution": "① $OA$와 $OB$는 같은 원의 반지름이므로 $OA=OB$이다.<br>② 반지름은 접점에서 접선과 수직이므로 $\\angle PAO=\\angle PBO=90^\\circ$이다.<br>③ $PO$는 두 삼각형의 공통 빗변이므로 $PO=PO$이다.<br>따라서 한 쌍의 빗변과 한 쌍의 다른 변이 각각 같고 두 삼각형이 직각삼각형이므로 RHS 합동이다. 대응변이 같아 $PA=PB$이다.",
@@ -1836,7 +1836,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "wide",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "원의 성질",
